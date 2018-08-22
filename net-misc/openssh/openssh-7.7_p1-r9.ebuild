@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
 inherit user flag-o-matic multilib autotools pam systemd versionator
 
@@ -13,11 +13,7 @@ HPN_VER="14v15-gentoo2" HPN_PATCH="${PARCH}-hpnssh${HPN_VER}.patch.xz"
 SCTP_VER="1.1" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
 X509_VER="11.3.1" X509_PATCH="${PARCH}-x509-${X509_VER}.patch.xz"
 
-# Disable LDAP support until someone will rewrite the patch,
-# upstream removed auth_parse_options() via commit 7c856857607112a3dfe6414696bf4c7ab7fb0cb3
-#LDAP_VER="0.3.14" LDAP_PATCH="${PN}-lpk-7.7p1-${LDAP_VER}.patch.xz"
-
-PATCH_SET="openssh-7.7p1-patches-1.1"
+PATCH_SET="openssh-7.7p1-patches-1.2"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
@@ -25,7 +21,6 @@ SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	https://dev.gentoo.org/~whissi/dist/${PN}/${PATCH_SET}.tar.xz
 	${SCTP_PATCH:+sctp? ( https://dev.gentoo.org/~whissi/dist/openssh/${SCTP_PATCH} )}
 	${HPN_PATCH:+hpn? ( https://dev.gentoo.org/~whissi/dist/openssh/${HPN_PATCH} )}
-	${LDAP_PATCH:+ldap? ( https://dev.gentoo.org/~whissi/dist/openssh/${LDAP_PATCH} )}
 	${X509_PATCH:+X509? ( https://dev.gentoo.org/~whissi/dist/openssh/${X509_PATCH} )}
 	"
 
@@ -33,11 +28,12 @@ LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
-IUSE="abi_mips_n32 audit bindist debug hpn kerberos kernel_linux ldap ldns libedit libressl livecd pam +pie sctp selinux skey +ssl static test X X509"
+IUSE="abi_mips_n32 audit bindist debug hpn kerberos kernel_linux ldns libedit libressl livecd pam +pie sctp selinux skey +ssl static test X X509"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="ldns? ( ssl )
 	pie? ( !static )
 	static? ( !kerberos !pam )
-	X509? ( !ldap !sctp ssl )
+	X509? ( !sctp ssl )
 	test? ( ssl )"
 
 LIB_DEPEND="
@@ -62,8 +58,7 @@ LIB_DEPEND="
 RDEPEND="
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	pam? ( virtual/pam )
-	kerberos? ( virtual/krb5 )
-	ldap? ( net-nds/openldap )"
+	kerberos? ( virtual/krb5 )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
 	virtual/pkgconfig
@@ -82,7 +77,6 @@ pkg_pretend() {
 	maybe_fail() { [[ -z ${!2} ]] && echo "$1" ; }
 	local fail="
 		$(use hpn && maybe_fail hpn HPN_PATCH)
-		$(use ldap && maybe_fail ldap LDAP_PATCH)
 		$(use sctp && maybe_fail sctp SCTP_PATCH)
 		$(use X509 && maybe_fail X509 X509_PATCH)
 	"
@@ -148,16 +142,6 @@ src_prepare() {
 		rm "${WORKDIR}"/patch/2025_all_openssh-7.7p1-X509_prefer-argv0-to-ssh-when-re-executing-ssh-for-proxyjump.patch || die
 	fi
 
-	if use ldap ; then
-		eapply "${WORKDIR}"/${LDAP_PATCH%.*}
-
-		einfo "Patching version.h to expose LDAP patch set ..."
-		sed -i \
-			-e "/^#define SSH_PORTABLE.*/a #define SSH_LDAP               \"-ldap-${LDAP_VER}\"" \
-			"${S}"/version.h || die "Failed to sed-in LDAP patch version"
-		PATCHSET_VERSION_MACROS+=( 'SSH_LDAP' )
-	fi
-
 	if use sctp ; then
 		eapply "${WORKDIR}"/${SCTP_PATCH%.*}
 
@@ -213,7 +197,7 @@ src_prepare() {
 			"${S}"/packet.c || die "Failed to patch ssh_packet_set_connection() (packet.c)"
 	fi
 
-	if use X509 || use sctp || use ldap || use hpn ; then
+	if use X509 || use sctp || use hpn ; then
 		einfo "Patching sshconnect.c to use SSH_RELEASE in send_client_banner() ..."
 		sed -i \
 			-e "s/PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_VERSION/PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_RELEASE/" \
@@ -278,9 +262,8 @@ src_configure() {
 		--with-privsep-user=sshd
 		$(use_with audit audit linux)
 		$(use_with kerberos kerberos5 "${EPREFIX%/}"/usr)
-		# We apply the ldap and sctp patch conditionally, so can't pass --without-{ldap,sctp}
+		# We apply the sctp patch conditionally, so can't pass --without-sctp
 		# unconditionally else we get unknown flag warnings.
-		$(use ldap && use_with ldap)
 		$(use sctp && use_with sctp)
 		$(use_with ldns)
 		$(use_with libedit)
@@ -383,17 +366,12 @@ src_install() {
 	emake install-nokeys DESTDIR="${D}"
 	fperms 600 /etc/ssh/sshd_config
 	dobin contrib/ssh-copy-id
-	newinitd "${FILESDIR}"/sshd.rc6.5 sshd
+	newinitd "${FILESDIR}"/sshd.initd sshd
 	newconfd "${FILESDIR}"/sshd-r1.confd sshd
 
 	newpamd "${FILESDIR}"/sshd.pam_include.2 sshd
 
 	tweak_ssh_configs
-
-	if use ldap && [[ -n ${LDAP_PATCH} ]] ; then
-		insinto /etc/openldap/schema/
-		newins openssh-lpk_openldap.schema openssh-lpk.schema
-	fi
 
 	doman contrib/ssh-copy-id.1
 	dodoc CREDITS OVERVIEW README* TODO sshd_config
@@ -439,6 +417,12 @@ pkg_postinst() {
 	if has_version "<${CATEGORY}/${PN}-7.6_p1" ; then
 		elog "Starting with openssh-7.6p1, openssh upstream has removed ssh1 support entirely."
 		elog "Furthermore, rsa keys with less than 1024 bits will be refused."
+	fi
+	if has_version "<${CATEGORY}/${PN}-7.7_p1" ; then
+		elog "Starting with openssh-7.7p1, we no longer patch openssh to provide LDAP functionality."
+		elog "Install sys-auth/ssh-ldap-pubkey and use OpenSSH's \"AuthorizedKeysCommand\" option"
+		elog "if you need to authenticate against LDAP."
+		elog "See https://wiki.gentoo.org/wiki/SSH/LDAP_migration for more details."
 	fi
 	if ! use ssl && has_version "${CATEGORY}/${PN}[ssl]" ; then
 		elog "Be aware that by disabling openssl support in openssh, the server and clients"

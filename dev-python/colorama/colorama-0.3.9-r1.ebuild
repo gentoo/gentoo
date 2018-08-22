@@ -36,9 +36,8 @@ python_install_all() {
 }
 
 python_test() {
-	# Skip two tests which seem to fail when stdout isn't a TTY
+	# Some tests require stdout to be a TTY
 	# https://github.com/tartley/colorama/issues/169
-	pytest -vv -k "not (testInitDoesntWrapOnEmulatedWindows \
-		or testInitDoesntWrapOnNonWindows)" \
+	script -eqc "pytest -vv -s" /dev/null \
 		|| die "tests failed with ${EPYTHON}"
 }
