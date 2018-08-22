@@ -64,6 +64,9 @@ src_configure() {
 }
 
 pkg_preinst() {
+	# The users and groups created here would nominally be created by
+	# systemtap's build system; systemtap checks to see if it's being built
+	# using uid 0, and runs groupadd/useradd.
 	homedir=/var/lib/stap-server
 	enewgroup stap-server 155
 	enewgroup stapusr 156
