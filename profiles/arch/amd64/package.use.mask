@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (23 Aug 2018)
+# Dependency sys-cluster/ceph is keyworded for amd64
+net-fs/samba -ceph
+
 # Göktürk Yüksek <gokturk@gentoo.org> (6 Jul 2018)
 # Dependency app-crypt/jitterentropy is keyworded for amd64
 sys-apps/rng-tools -jitterentropy

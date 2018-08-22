@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Thomas Deutschmann <whissi@gentoo.org> (23 Aug 2018)
+# Dependency sys-cluster/ceph is keyworded for x86
+net-fs/samba -ceph
+
 # Rick Farina <zerochaos@gentoo.org> (27 Jun 2018)
 # Catalyst has support for assembling bootloader on this arch
 dev-util/catalyst -system-bootloader

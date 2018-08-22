@@ -100,7 +100,8 @@ media-plugins/vdr-music graphtft
 # Lars Wendler <polynomial-c@gentoo.org> (14 Mar 2018)
 # Broken on all 32bit arches. Globally masked because of sys-apps/dmapi having
 # no active upstream anymore.
-net-fs/samba dmapi
+# sys-cluster/ceph is only available on amd64 & x86, unmask per arch
+net-fs/samba dmapi ceph
 
 # Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (14 Mar 2018)
 # Mask local USE flag to satisfy repoman
