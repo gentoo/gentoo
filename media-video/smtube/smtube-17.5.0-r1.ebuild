@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,13 +23,18 @@ CDEPEND="
 	dev-qt/qtwebkit:5
 	dev-qt/qtscript:5
 "
-DEPEND="
-	${CDEPEND}
+DEPEND="${CDEPEND}
 	dev-qt/linguist-tools:5
 "
-RDEPEND="
-	${CDEPEND}
-	|| ( media-video/smplayer media-video/mpv media-video/mplayer media-video/vlc media-video/totem media-video/gnome-mplayer )
+RDEPEND="${CDEPEND}
+	|| (
+		media-video/smplayer
+		media-video/mpv
+		media-video/mplayer
+		media-video/vlc
+		media-video/totem
+		media-video/gnome-mplayer
+	)
 "
 
 gen_translation() {
