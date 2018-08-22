@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201808-04">
+  <title>WebkitGTK+: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in WebKitGTK+, the worst
+    of which may lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">webkit-gtk</product>
+  <announced>2018-08-22</announced>
+  <revised count="1">2018-08-22</revised>
+  <bug>652820</bug>
+  <bug>658168</bug>
+  <bug>662974</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/webkit-gtk" auto="yes" arch="*">
+      <unaffected range="ge">2.20.4</unaffected>
+      <vulnerable range="lt">2.20.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>WebKitGTK+ is a full-featured port of the WebKit rendering engine,
+      suitable for projects requiring any kind of web integration, from hybrid
+      HTML/CSS applications to full-fledged web browsers.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in WebKitGTK+. Please
+      review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary commands or cause a denial of
+      service condition  via a maliciously crafted web content.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WebkitGTK+ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/webkit-gtk-2.20.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-11646">CVE-2018-11646</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-11712">CVE-2018-11712</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-11713">CVE-2018-11713</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12293">CVE-2018-12293</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12294">CVE-2018-12294</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4101">CVE-2018-4101</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4113">CVE-2018-4113</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4114">CVE-2018-4114</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4117">CVE-2018-4117</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4118">CVE-2018-4118</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4119">CVE-2018-4119</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4120">CVE-2018-4120</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4121">CVE-2018-4121</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4122">CVE-2018-4122</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4125">CVE-2018-4125</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4127">CVE-2018-4127</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4128">CVE-2018-4128</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4129">CVE-2018-4129</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4133">CVE-2018-4133</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4146">CVE-2018-4146</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4162">CVE-2018-4162</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4163">CVE-2018-4163</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4165">CVE-2018-4165</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4190">CVE-2018-4190</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4192">CVE-2018-4192</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4199">CVE-2018-4199</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4200">CVE-2018-4200</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4201">CVE-2018-4201</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4204">CVE-2018-4204</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4214">CVE-2018-4214</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4218">CVE-2018-4218</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4222">CVE-2018-4222</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4232">CVE-2018-4232</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4233">CVE-2018-4233</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4261">CVE-2018-4261</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4262">CVE-2018-4262</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4263">CVE-2018-4263</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4264">CVE-2018-4264</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4265">CVE-2018-4265</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4266">CVE-2018-4266</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4267">CVE-2018-4267</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4270">CVE-2018-4270</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4272">CVE-2018-4272</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4273">CVE-2018-4273</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4278">CVE-2018-4278</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4284">CVE-2018-4284</uri>
+    <uri link="https://webkitgtk.org/security/WSA-2018-0003.html">WebKitGTK+
+      Security Advisory WSA-2018-0003
+    </uri>
+    <uri link="https://webkitgtk.org/security/WSA-2018-0004.html">WebKitGTK+
+      Security Advisory WSA-2018-0004
+    </uri>
+    <uri link="https://webkitgtk.org/security/WSA-2018-0005.html">WebKitGTK+
+      Security Advisory WSA-2018-0005
+    </uri>
+    <uri link="https://webkitgtk.org/security/WSA-2018-0006.html">WebKitGTK+
+      Security Advisory WSA-2018-0006
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-08-06T19:11:23Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-08-22T21:15:04Z">irishluck83</metadata>
+</glsa>

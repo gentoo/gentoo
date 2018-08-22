@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201808-03">
+  <title>NetworkManager VPNC plugin: Privilege escalation</title>
+  <synopsis>A vulnerability in NetworkManager VPNC plugin allows local users to
+    escalate privileges.
+  </synopsis>
+  <product type="ebuild">networkmanager-vpnc</product>
+  <announced>2018-08-22</announced>
+  <revised count="1">2018-08-22</revised>
+  <bug>661712</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/networkmanager-vpnc" auto="yes" arch="*">
+      <unaffected range="ge">1.2.6</unaffected>
+      <vulnerable range="lt">1.2.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>NetworkManager is an universal network configuration daemon for laptops,
+      desktops, servers and virtualization hosts.
+    </p>
+    
+    <p>The VPNC plugin provides easy access Cisco Concentrator based VPN’s
+      utilizing NetworkManager.
+    </p>
+  </background>
+  <description>
+    <p>When initiating a VPNC connection, NetworkManager spawns a new vpnc
+      process and passes the configuration via STDIN. By injecting a special
+      character into a configuration parameter, an attacker can coerce
+      NetworkManager to set the Password helper option to an attacker
+      controlled executable file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker is able to escalate privileges via a specially crafted
+      configuration file.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NetworkManager VPNC plugin users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-misc/networkmanager-vpnc-1.2.6"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10900">CVE-2018-10900</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-07-30T00:25:20Z">irishluck83</metadata>
+  <metadata tag="submitter" timestamp="2018-08-22T21:14:54Z">irishluck83</metadata>
+</glsa>
