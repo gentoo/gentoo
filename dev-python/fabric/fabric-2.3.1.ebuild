@@ -18,16 +18,14 @@ IUSE="doc fab2 test"
 
 RDEPEND="
 	!fab2? ( !dev-python/fabric:0 )
-	>=dev-python/cryptography-1.1[${PYTHON_USEDEP}]
-	>=dev-python/invoke-1.0[${PYTHON_USEDEP}]
-	<dev-python/invoke-2.0
+	dev-python/cryptography[${PYTHON_USEDEP}]
+	<dev-python/invoke-2[${PYTHON_USEDEP}]
 	>=dev-python/paramiko-2.4[${PYTHON_USEDEP}]"
 
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
-		>=dev-python/alabaster-0.7[${PYTHON_USEDEP}]
-		<dev-python/alabaster-2.0[${PYTHON_USEDEP}]
+		dev-python/alabaster[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-1.4[${PYTHON_USEDEP}]
 		<dev-python/sphinx-1.7[${PYTHON_USEDEP}]
 	)
