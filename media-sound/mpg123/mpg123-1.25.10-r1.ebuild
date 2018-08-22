@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit flag-o-matic toolchain-funcs libtool multilib-minimal
 
 DESCRIPTION="a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3"
@@ -14,7 +15,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~a
 IUSE="cpu_flags_x86_3dnow cpu_flags_x86_3dnowext alsa altivec coreaudio int-quality ipv6 jack cpu_flags_x86_mmx nas oss portaudio pulseaudio sdl cpu_flags_x86_sse"
 
 # No MULTILIB_USEDEP here since we only build libmpg123 for non native ABIs.
-RDEPEND="app-eselect/eselect-mpg123
+RDEPEND="
+	app-eselect/eselect-mpg123
 	dev-libs/libltdl:0
 	alsa? ( media-libs/alsa-lib )
 	jack? ( virtual/jack )
@@ -91,7 +93,7 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	einstalldocs
 	mv "${ED}"/usr/bin/mpg123{,-mpg123}
-	find "${ED}" -name '*.la' -exec sed -i -e "/^dependency_libs/s:=.*:='':" {} +
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
