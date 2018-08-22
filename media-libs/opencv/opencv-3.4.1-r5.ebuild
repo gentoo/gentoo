@@ -272,6 +272,19 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	local cpu_flags=()
+
+	use cpu_flags_x86_sse && cpu_flags+=( SSE )
+	use cpu_flags_x86_sse2 && cpu_flags+=( SSE2 )
+	use cpu_flags_x86_sse3 && cpu_flags+=( SSE3 )
+	use cpu_flags_x86_ssse3 && cpu_flags+=( SSSE3 )
+	use cpu_flags_x86_sse4_1 && cpu_flags+=( SSE4_1 )
+	use cpu_flags_x86_sse4_2 && cpu_flags+=( SSE4_2 )
+	use cpu_flags_x86_popcnt && cpu_flags+=( POPCNT )
+	use cpu_flags_x86_avx && cpu_flags+=( AVX )
+	use cpu_flags_x86_avx2 && cpu_flags+=( AVX2 )
+	use cpu_flags_x86_fma3 && cpu_flags+=( FMA3 )
+
 	# please dont sort here, order is the same as in CMakeLists.txt
 	GLOBALCMAKEARGS=(
 	# Optional 3rd party components
@@ -405,17 +418,8 @@ multilib_src_configure() {
 	# cpu flags, should solve 633900
 	#===================================================
 		-DOPENCV_CPU_OPT_IMPLIES_IGNORE=ON
+		-DCPU_BASELINE=$(printf "%s," "${cpu_flags[@]}")
 		-DCPU_DISPATCH=
-		-DENABLE_SSE=$(usex cpu_flags_x86_sse)
-		-DENABLE_SSE2=$(usex cpu_flags_x86_sse2)
-		-DENABLE_SSE3=$(usex cpu_flags_x86_sse3)
-		-DENABLE_SSSE3=$(usex cpu_flags_x86_ssse3)
-		-DENABLE_SSE41=$(usex cpu_flags_x86_sse4_1)
-		-DENABLE_SSE42=$(usex cpu_flags_x86_sse4_2)
-		-DENABLE_POPCNT=$(usex cpu_flags_x86_popcnt)
-		-DENABLE_AVX=$(usex cpu_flags_x86_avx)
-		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2)
-		-DENABLE_FMA3=$(usex cpu_flags_x86_fma3)
 	)
 
 	# ===================================================
