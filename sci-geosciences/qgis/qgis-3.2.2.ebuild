@@ -23,7 +23,7 @@ HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d examples georeferencer grass mapserver oracle polar postgres python qml webkit"
+IUSE="3d examples georeferencer grass mapserver oracle polar postgres python +webkit"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
@@ -80,7 +80,6 @@ COMMON_DEPEND="
 		>=sci-libs/gdal-2.2.3[python,${PYTHON_USEDEP}]
 		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 	)
-	qml? ( >=dev-qt/qtdeclarative-${QT_MIN_VER}:5 )
 	webkit? ( >=dev-qt/qtwebkit-5.9.1:5 )
 "
 DEPEND="${COMMON_DEPEND}
@@ -101,8 +100,7 @@ RESTRICT="test"
 PATCHES=(
 	# git master
 	"${FILESDIR}/${PN}-2.18.12-cmake-lib-suffix.patch"
-	# TODO upstream
-	"${FILESDIR}/${PN}-3.0.0-featuresummary.patch"
+	"${FILESDIR}/${PN}-3.2.1-qtwebkit-optional.patch" # bug 663394
 )
 
 pkg_setup() {
@@ -132,7 +130,6 @@ src_configure() {
 		-DQWT_INCLUDE_DIR=/usr/include/qwt6
 		-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6-qt5.so
 		-DPEDANTIC=OFF
-		-DUSE_CCACHE=OFF
 		-DWITH_APIDOC=OFF
 		-DWITH_QSPATIALITE=ON
 		-DENABLE_TESTS=OFF
@@ -145,7 +142,6 @@ src_configure() {
 		-DWITH_POSTGRESQL=$(usex postgres)
 		-DWITH_BINDINGS=$(usex python)
 		-DWITH_CUSTOM_WIDGETS=$(usex python)
-		-DWITH_QUICK=$(usex qml)
 		-DWITH_QTWEBKIT=$(usex webkit)
 	)
 
