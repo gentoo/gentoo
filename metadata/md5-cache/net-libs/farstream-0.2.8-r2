@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
+DEPEND=>=media-libs/gstreamer-1.4:1.0 >=media-libs/gst-plugins-base-1.4:1.0 >=dev-libs/glib-2.32:2 >=net-libs/libnice-0.1.8 introspection? ( >=dev-libs/gobject-introspection-0.10.11:= ) upnp? ( >=net-libs/gupnp-igd-0.2:= ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-util/gtk-doc-am-1.18 virtual/pkgconfig test? ( media-libs/gst-plugins-base:1.0[vorbis] media-libs/gst-plugins-good:1.0 ) >=app-portage/elt-patches-20170422 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Audio/video conferencing framework specifically designed for instant messengers
+EAPI=6
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/Farstream
+IUSE=+introspection test upnp
+KEYWORDS=~amd64 ~hppa ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-2.1+
+RDEPEND=>=media-libs/gstreamer-1.4:1.0 >=media-libs/gst-plugins-base-1.4:1.0 >=dev-libs/glib-2.32:2 >=net-libs/libnice-0.1.8 introspection? ( >=dev-libs/gobject-introspection-0.10.11:= ) upnp? ( >=net-libs/gupnp-igd-0.2:= ) >=media-libs/gst-plugins-bad-1.4:1.0 >=media-libs/gst-plugins-good-1.4:1.0 media-plugins/gst-plugins-srtp:1.0 media-plugins/gst-plugins-libnice:1.0
+RESTRICT=test
+SLOT=0.2/5
+SRC_URI=https://freedesktop.org/software/farstream/releases/farstream/farstream-0.2.8.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	acac536f2c3bbcd312ac3faaa3e55e40	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	libtool	0081a71a261724730ec4c248494f044d	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=996065d2c2c13456ac835b3e6554cc51
