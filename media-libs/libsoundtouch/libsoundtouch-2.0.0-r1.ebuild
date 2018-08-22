@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools flag-o-matic ltprune multilib-minimal
 
 MY_PN="${PN/lib}"
+inherit autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="Audio processing library for changing tempo, pitch and playback rates"
 HOMEPAGE="https://www.surina.net/soundtouch/"
@@ -19,6 +19,8 @@ IUSE="cpu_flags_x86_sse openmp static-libs"
 DEPEND=">=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
 
 S="${WORKDIR}/${MY_PN}"
+
+PATCHES=( "${FILESDIR}/${P}-CVE-2017-92xx.patch" )
 
 src_prepare() {
 	default
@@ -50,5 +52,5 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
