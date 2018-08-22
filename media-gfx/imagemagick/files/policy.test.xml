@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policymap [
+  <!ELEMENT policymap (policy)+>
+  <!ATTLIST policymap xmlns CDATA #FIXED ''>
+  <!ELEMENT policy EMPTY>
+  <!ATTLIST policy xmlns CDATA #FIXED '' domain NMTOKEN #REQUIRED
+    name NMTOKEN #IMPLIED pattern CDATA #IMPLIED rights NMTOKEN #IMPLIED
+    stealth NMTOKEN #IMPLIED value CDATA #IMPLIED>
+]>
+<policymap>
+  <!-- Policy used for test suite only to allow passing test suite
+       in case user has installed a restriction which would prevent
+       the execution of some tests -->
+  <policy domain="delegate" rights="read|write" pattern="*" />
+  <policy domain="filter"   rights="read|write" pattern="*" />
+  <policy domain="coder"    rights="read|write" pattern="*" />
+</policymap>
