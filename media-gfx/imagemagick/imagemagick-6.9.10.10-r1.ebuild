@@ -66,6 +66,8 @@ REQUIRED_USE="corefonts? ( truetype )
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}"/policy-hardening.patch )
+
 src_prepare() {
 	local mesa_cards ati_cards nvidia_cards render_cards
 	default
@@ -183,4 +185,34 @@ src_install() {
 
 	insinto /usr/share/${PN}
 	doins config/*icm
+}
+
+pkg_postinst() {
+	local _show_policy_xml_notice=
+
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		# This is a new installation
+		_show_policy_xml_notice=yes
+	else
+		local v
+		for v in ${REPLACING_VERSIONS}; do
+			if ! version_is_at_least "6.9.10.10-r1" ${v}; then
+				# This is an upgrade
+				_show_policy_xml_notice=yes
+
+				# Show this elog only once
+				break
+			fi
+		done
+	fi
+
+	if [[ -n "${_show_policy_xml_notice}" ]]; then
+		elog "For security reasons, a policy.xml file was installed in /etc/ImageMagick-6"
+		elog "which will prevent the usage of the following coders by default:"
+		elog ""
+		elog "  - PS"
+		elog "  - EPS"
+		elog "  - PDF"
+		elog "  - XPS"
+	fi
 }
