@@ -704,7 +704,7 @@ app-emacs/setnu 1.06: Display line numbers in Emacs buffers
 app-emacs/slime 2.15 2.20: SLIME, the Superior Lisp Interaction Mode (Extended)
 app-emacs/sml-mode 6.4: Emacs major mode for editing Standard ML
 app-emacs/sokoban 1.4: Implementation of Sokoban for Emacs
-app-emacs/stripes 0.2-r1: An Emacs mode that alternates the background color of lines
+app-emacs/stripes 0.2-r2: An Emacs mode that alternates the background color of lines
 app-emacs/tdtd 0.7.1-r1: Emacs Major Mode for SGML and XML DTDs
 app-emacs/thinks 1.9: Insert text in a think bubble
 app-emacs/thumbs 2.0-r1: Emacs thumbnail previewer for image files
