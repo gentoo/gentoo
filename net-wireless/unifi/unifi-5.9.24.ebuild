@@ -4,7 +4,7 @@
 EAPI=6
 
 # Used, when it's an unstable, beta or release candidate
-RC_SUFFIX="-5975c092ea"
+RC_SUFFIX="-64c9fed777"
 
 inherit systemd user
 
