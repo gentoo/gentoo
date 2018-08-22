@@ -12,8 +12,8 @@ SRC_URI="https://people.freedesktop.org/~hughsient/${PN}/releases/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/8" # soname version
-KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 sparc x86"
-IUSE="+introspection nls stemmer"
+KEYWORDS="*"
+IUSE="+introspection nls stemmer gtk"
 
 RDEPEND="
 	app-arch/gcab
@@ -27,7 +27,7 @@ RDEPEND="
 	>=net-libs/libsoup-2.51.92:2.4
 	sys-apps/util-linux
 	>=x11-libs/gdk-pixbuf-2.31.5:2[introspection?]
-	x11-libs/gtk+:3
+	gtk? ( x11-libs/gtk+:3 )
 	x11-libs/pango
 	introspection? ( >=dev-libs/gobject-introspection-0.9.8:= )
 	stemmer? ( dev-libs/snowball-stemmer )
@@ -47,7 +47,7 @@ RDEPEND="${RDEPEND}
 
 src_configure() {
 	gnome2_src_configure \
-		--enable-builder \
+		$(use_enable gtk builder) \
 		--enable-firmware \
 		--enable-fonts \
 		--disable-rpm \
