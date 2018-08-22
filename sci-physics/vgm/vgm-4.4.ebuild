@@ -21,9 +21,10 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc examples +geant4 +root test"
 
+# sci-physics/root[root7] flag activates std=c++14, only supported from VGM >4.4.
 RDEPEND="
 	sci-physics/clhep:=
-	root? ( sci-physics/root:= )
+	root? ( sci-physics/root:=[-root7] )
 	geant4? ( >=sci-physics/geant-4.10.03 )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )"
