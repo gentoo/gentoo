@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">chromium</product>
   <announced>2018-08-22</announced>
-  <revised count="1">2018-08-22</revised>
+  <revised count="2">2018-08-22</revised>
   <bug>657376</bug>
   <bug>662436</bug>
   <access>remote</access>
@@ -37,8 +37,8 @@
     </p>
   </description>
   <impact type="normal">
-    <p>A remote attacker could escalte privleges, cause a heap buffer overflow,
-      obtain sensitive information or spoof a URL.
+    <p>A remote attacker could escalate privileges, cause a heap buffer
+      overflow, obtain sensitive information or spoof a URL.
     </p>
   </impact>
   <workaround>
@@ -101,5 +101,5 @@
     </uri>
   </references>
   <metadata tag="requester" timestamp="2018-07-30T23:07:09Z">irishluck83</metadata>
-  <metadata tag="submitter" timestamp="2018-08-22T21:14:32Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2018-08-22T21:30:07Z">Zlogene</metadata>
 </glsa>
