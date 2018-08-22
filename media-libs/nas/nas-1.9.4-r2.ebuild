@@ -37,6 +37,7 @@ DOCS=( BUILDNOTES FAQ HISTORY README RELEASE TODO )
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.2-asneeded.patch
 	"${FILESDIR}"/${PN}-1.9.4-remove-abs-fabs.patch
+	"${FILESDIR}"/${PN}-1.9.4-libfl.patch
 )
 
 src_prepare() {
