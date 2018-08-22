@@ -1,28 +1,19 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
-inherit eutils flag-o-matic libtool multilib toolchain-funcs
+inherit eutils flag-o-matic libtool multilib toolchain-funcs eapi7-ver
 
-PATCHES=( "${FILESDIR}"/policy-hardening.patch )
-
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/ImageMagick/ImageMagick.git"
-	inherit git-r3
-	MY_P="imagemagick-9999"
-else
-	inherit eapi7-ver
-	MY_P=ImageMagick-$(ver_rs 3 '-')
-	SRC_URI="mirror://${PN}/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-fi
+MY_P=ImageMagick-$(ver_rs 3 '-')
 
 DESCRIPTION="A collection of tools and libraries for many image formats"
 HOMEPAGE="https://www.imagemagick.org/"
+SRC_URI="mirror://${PN}/${MY_P}.tar.xz"
 
 LICENSE="imagemagick"
 SLOT="0/${PV}"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="bzip2 corefonts cxx djvu fftw fontconfig fpx graphviz hdri jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
 
 RESTRICT="perl? ( userpriv )"
@@ -75,8 +66,10 @@ REQUIRED_USE="corefonts? ( truetype )
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}"/policy-hardening.patch )
+
 src_prepare() {
-	local ati_cards mesa_cards nvidia_cards render_cards
+	local mesa_cards ati_cards nvidia_cards render_cards
 	default
 
 	elibtoolize # for Darwin modules
@@ -91,7 +84,7 @@ src_prepare() {
 	if test -n "${mesa_cards}"; then
 		addpredict "${mesa_cards}"
 	fi
-	nvidia_cards=$(echo -n /dev/nvidia* | sed 's/ /:/g')
+	nvidia_cards=$(echo -n /dev/nvidia** | sed 's/ /:/g')
 	if test -n "${nvidia_cards}"; then
 		addpredict "${nvidia_cards}"
 	fi
@@ -203,7 +196,7 @@ pkg_postinst() {
 	else
 		local v
 		for v in ${REPLACING_VERSIONS}; do
-			if ! version_is_at_least "7.0.8.10-r1" ${v}; then
+			if ! version_is_at_least "6.9.10.10-r1" ${v}; then
 				# This is an upgrade
 				_show_policy_xml_notice=yes
 
@@ -214,7 +207,7 @@ pkg_postinst() {
 	fi
 
 	if [[ -n "${_show_policy_xml_notice}" ]]; then
-		elog "For security reasons, a policy.xml file was installed in /etc/ImageMagick-7"
+		elog "For security reasons, a policy.xml file was installed in /etc/ImageMagick-6"
 		elog "which will prevent the usage of the following coders by default:"
 		elog ""
 		elog "  - PS"
