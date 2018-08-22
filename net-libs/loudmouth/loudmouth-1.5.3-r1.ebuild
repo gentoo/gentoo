@@ -29,7 +29,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${P}-gcc7.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc7.patch
+	"${FILESDIR}"/${P}-skip-gtk-doc.patch
+)
 
 src_prepare() {
 	default

@@ -23,6 +23,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( >=app-doc/doxygen-1.4.7 )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
+
 src_configure() {
 	econf \
 		--disable-crypto-engine-polarssl \

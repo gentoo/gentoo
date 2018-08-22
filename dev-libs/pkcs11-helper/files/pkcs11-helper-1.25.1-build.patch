@@ -1,0 +1,33 @@
+From 0e2ae10ef9611beef92457171e8c78d8e936dfca Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Wed, 22 Aug 2018 20:24:19 +0300
+Subject: [PATCH] openssl: build with openssl ec disabled
+
+---
+ ChangeLog             | 1 +
+ lib/pkcs11h-openssl.c | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lib/pkcs11h-openssl.c b/lib/pkcs11h-openssl.c
+index c981e21..4ebc211 100644
+--- a/lib/pkcs11h-openssl.c
++++ b/lib/pkcs11h-openssl.c
+@@ -263,6 +263,7 @@ DSA_SIG_set0 (DSA_SIG *sig, BIGNUM *r, BIGNUM *s)
+ }
+ #endif
+ 
++#ifdef __ENABLE_EC
+ #ifndef HAVE_ECDSA_SIG_SET0
+ static int
+ ECDSA_SIG_set0 (ECDSA_SIG *sig, BIGNUM *r, BIGNUM *s)
+@@ -275,7 +276,6 @@ ECDSA_SIG_set0 (ECDSA_SIG *sig, BIGNUM *r, BIGNUM *s)
+ }
+ #endif
+ 
+-#ifdef __ENABLE_EC
+ #ifndef HAVE_EC_KEY_METHOD_GET_SIGN
+ void EC_KEY_METHOD_get_sign(const EC_KEY_METHOD *meth,
+ 	int (**psign)(int type, const unsigned char *dgst,
+-- 
+2.16.4
+
