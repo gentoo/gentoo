@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,16 +8,17 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="A bond allows two processes, A and B, to know when the other has terminated"
+DESCRIPTION="C++ implementation of bond, a mechanism for checking when another process has terminated"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
 	dev-ros/bond
-	dev-ros/bondcpp
-	dev-ros/bondpy
+	dev-ros/cmake_modules
+	>=dev-ros/roscpp-1.13.6
 	dev-ros/smclib
-	dev-ros/test_bond
+	dev-libs/boost:=
+	sys-apps/util-linux
 "
 DEPEND="${RDEPEND}"
