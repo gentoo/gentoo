@@ -31,7 +31,6 @@ SLOT="0"
 IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gbm gles lcms libressl libusb lirc mysql nfs +opengl pulseaudio samba systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	gbm? ( gles )
 	|| ( gles opengl )
 	^^ ( gbm wayland X )
 	udev? ( !libusb )
@@ -266,16 +265,17 @@ src_configure() {
 	fi
 
 	if use gbm; then
-		mycmakeargs+=( -DCORE_PLATFORM_NAME="gbm" )
+		mycmakeargs+=(
+			-DCORE_PLATFORM_NAME="gbm"
+			-DGBM_RENDER_SYSTEM="$(usex opengl gl gles)"
+		)
 	fi
 
 	if use wayland; then
-		mycmakeargs+=( -DCORE_PLATFORM_NAME="wayland" )
-		if use opengl; then
-			mycmakeargs+=( -DWAYLAND_RENDER_SYSTEM="gl" )
-		else
-			mycmakeargs+=( -DWAYLAND_RENDER_SYSTEM="gles" )
-		fi
+		mycmakeargs+=(
+			-DCORE_PLATFORM_NAME="wayland"
+			-DWAYLAND_RENDER_SYSTEM="$(usex opengl gl gles)"
+		)
 	fi
 
 	if use X; then
