@@ -32,6 +32,10 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/pwsafe-${MY_PV}
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.06_beta-system-gtest.patch"
+)
+
 pkg_pretend() {
 	einfo "Checking for -std=c++11 support in compiler"
 	test-flags-CXX -std=c++11 > /dev/null || die
@@ -54,6 +58,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DNO_QR=$(usex !qr)
 		-DNO_GTEST=$(usex !test)
+		-DSYSTEM_GTEST=ON
 		-DXML_XERCESC=$(usex xml)
 		-DNO_YUBI=$(usex !yubikey)
 	)
