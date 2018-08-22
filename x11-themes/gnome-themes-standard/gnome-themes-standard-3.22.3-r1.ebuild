@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools gnome.org
+inherit autotools gnome.org gnome2-utils
 
 DESCRIPTION="Standard Themes for GNOME Applications"
 HOMEPAGE="https://git.gnome.org/browse/gnome-themes-standard/"
@@ -42,4 +42,12 @@ src_configure() {
 		--disable-gtk2-engine \
 		--disable-gtk3-engine \
 		GTK_UPDATE_ICON_CACHE=$(type -P true)
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
