@@ -69,6 +69,13 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=( "${FILESDIR}"/policy-hardening.patch )
 
 src_prepare() {
+	# Install default (unrestricted) policy in $HOME for test suite #664238
+	local _im_local_config_home="${HOME}/.config/ImageMagick"
+	mkdir -p "${_im_local_config_home}" || \
+		die "Failed to create IM config dir in '${_im_local_config_home}'"
+	cp "${FILESDIR}"/policy.test.xml "${_im_local_config_home}/policy.xml" || \
+		die "Failed to install default blank policy.xml in '${_im_local_config_home}'"
+
 	local mesa_cards ati_cards nvidia_cards render_cards
 	default
 
