@@ -1,8 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils gnome2-utils wxwidgets xdg-utils
+EAPI=6
+
+inherit autotools gnome2-utils wxwidgets xdg-utils
 
 MY_P="${PN}-minsrc-${PV}"
 DOC_PV="${PV}"
@@ -17,6 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="alsa cpu_flags_x86_sse doc ffmpeg +flac id3tag jack +ladspa +lame libav
 	+lv2 mad +midi nls +portmixer sbsms +soundtouch twolame vamp +vorbis +vst"
+
 RESTRICT="test"
 
 RDEPEND=">=app-arch/zip-2.3
@@ -56,7 +58,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
 
 	# needed because of portmixer patch
 	eautoreconf
