@@ -22,6 +22,7 @@ RDEPEND=">=dev-libs/elfutils-0.142
 	libvirt? ( >=app-emulation/libvirt-1.0.2 )
 	sqlite? ( dev-db/sqlite:3 )"
 DEPEND="${RDEPEND}
+	dev-python/setuptools
 	>=sys-devel/gettext-0.18.2"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
