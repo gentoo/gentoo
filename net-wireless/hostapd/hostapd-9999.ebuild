@@ -15,7 +15,7 @@ if [[ $PV == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://w1.fi/hostap.git"
 else
-	SRC_URI+="https://w1.fi/releases/${P}.tar.gz"
+	SRC_URI+=" https://w1.fi/releases/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86"
 fi
 
