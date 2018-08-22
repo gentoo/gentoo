@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
 <glsa id="201808-02">
-  <title>LinuX Containers userspace utilities: Arbitrary file read</title>
+  <title>LinuX Containers user space utilities: Arbitrary file read</title>
   <synopsis>A vulnerability has been found in LXC which may allow for arbitrary
     file access (read-only).
   </synopsis>
   <product type="ebuild">lxc</product>
   <announced>2018-08-22</announced>
-  <revised count="1">2018-08-22</revised>
+  <revised count="2">2018-08-22</revised>
   <bug>662780</bug>
   <access>local</access>
   <affected>
@@ -17,7 +17,7 @@
     </package>
   </affected>
   <background>
-    <p>LinuX Containers userspace utilities.</p>
+    <p>LinuX Containers user space utilities.</p>
   </background>
   <description>
     <p>lxc-user-nic when asked to delete a network interface will
@@ -47,5 +47,5 @@
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6556">CVE-2018-6556</uri>
   </references>
   <metadata tag="requester" timestamp="2018-08-13T17:16:02Z">irishluck83</metadata>
-  <metadata tag="submitter" timestamp="2018-08-22T21:14:44Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2018-08-22T21:31:58Z">Zlogene</metadata>
 </glsa>
