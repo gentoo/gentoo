@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtscript:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 dev-qt/linguist-tools:5
+DESCRIPTION=YouTube Browser for SMPlayer
+EAPI=6
+HOMEPAGE=http://smplayer.sourceforge.net/smtube
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtscript:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 || ( media-video/smplayer media-video/mpv media-video/mplayer media-video/vlc media-video/totem media-video/gnome-mplayer )
+SLOT=0
+SRC_URI=mirror://sourceforge/smtube/smtube-17.5.0.tar.bz2
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	estack	43ddf5aaffa7a8d0482df54d25a66a1f	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=cd830a0e6270fdf96f0aa1166d314b9b

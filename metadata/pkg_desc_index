@@ -8262,7 +8262,7 @@ media-video/rovclock 0.6e-r1: Overclocking utility for ATI Radeon cards
 media-video/rtmpdump 2.4_p20161210: RTMP client intended to stream audio or video flash content
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
 media-video/smplayer 18.3.0: Great Qt GUI front-end for mplayer/mpv
-media-video/smtube 17.5.0-r1: YouTube Browser for SMPlayer
+media-video/smtube 17.5.0-r2: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subviewer srt
 media-video/subliminal 2.0.5-r2: Python library to search and download subtitles
