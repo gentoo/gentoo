@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+# Because of its <pytest-3.3 constraint, python3_7 can't be added
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
 inherit distutils-r1
 
