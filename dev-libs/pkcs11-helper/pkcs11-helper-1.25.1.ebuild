@@ -12,10 +12,10 @@ SRC_URI="https://github.com/OpenSC/${PN}/releases/download/${P}/${P}.tar.bz2"
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd"
-IUSE="doc gnutls libressl nss static-libs"
+IUSE="bindist doc gnutls libressl nss static-libs"
 
 RDEPEND="
-	!libressl? ( >=dev-libs/openssl-0.9.7:= )
+	!libressl? ( >=dev-libs/openssl-0.9.7:=[bindist=] )
 	libressl? ( dev-libs/libressl )
 	gnutls? ( >=net-libs/gnutls-1.4.4 )
 	nss? ( dev-libs/nss )"
