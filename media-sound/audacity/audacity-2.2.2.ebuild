@@ -8,7 +8,7 @@ inherit autotools gnome2-utils wxwidgets xdg-utils
 MY_P="${PN}-minsrc-${PV}"
 DOC_PV="${PV}"
 DESCRIPTION="Free crossplatform audio editor"
-HOMEPAGE="http://web.audacityteam.org/"
+HOMEPAGE="https://web.audacityteam.org/"
 SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${MY_P}.tar.xz
 	doc? ( https://dev.gentoo.org/~polynomial-c/dist/${PN}-manual-${DOC_PV}.zip )"
 	# wget doesn't seem to work on FossHub links, so we mirror
@@ -28,8 +28,10 @@ RDEPEND=">=app-arch/zip-2.3
 	media-libs/soxr
 	x11-libs/wxGTK:3.0[X]
 	alsa? ( media-libs/alsa-lib )
-	ffmpeg? ( libav? ( media-video/libav:= )
-		!libav? ( >=media-video/ffmpeg-1.2:= ) )
+	ffmpeg? (
+		libav? ( media-video/libav:= )
+		!libav? ( >=media-video/ffmpeg-1.2:= )
+	)
 	flac? ( >=media-libs/flac-1.3.1[cxx] )
 	id3tag? ( media-libs/libid3tag )
 	jack? ( virtual/jack )
@@ -43,7 +45,6 @@ RDEPEND=">=app-arch/zip-2.3
 	vamp? ( >=media-libs/vamp-plugin-sdk-2.0 )
 	vorbis? ( >=media-libs/libvorbis-1.0 )"
 DEPEND="${RDEPEND}
-	app-arch/xz-utils
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
@@ -59,7 +60,6 @@ PATCHES=(
 
 src_prepare() {
 	default
-
 	# needed because of portmixer patch
 	eautoreconf
 }
@@ -110,7 +110,7 @@ src_install() {
 	rm -r "${D%/}"/usr/share/doc || die
 
 	# Install our docs
-	dodoc README.txt
+	einstalldocs
 
 	if use doc ; then
 		docinto html
