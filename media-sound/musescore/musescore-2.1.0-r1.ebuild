@@ -13,7 +13,7 @@ SRC_URI="https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.ta
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa debug jack mp3 portaudio portmidi pulseaudio vorbis"
+IUSE="alsa debug jack portaudio portmidi pulseaudio vorbis"
 REQUIRED_USE="portmidi? ( portaudio )"
 
 RDEPEND="
@@ -32,10 +32,10 @@ RDEPEND="
 	dev-qt/qtxmlpatterns:5
 	>=media-libs/freetype-2.5.2
 	media-libs/libsndfile
+	media-sound/lame
 	sys-libs/zlib:=
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	jack? ( virtual/jack )
-	mp3? ( media-sound/lame )
 	portaudio? ( media-libs/portaudio )
 	portmidi? ( media-libs/portmidi )
 	pulseaudio? ( media-sound/pulseaudio )
@@ -62,7 +62,7 @@ src_configure() {
 		-DUSE_SYSTEM_FREETYPE=ON
 		-DBUILD_ALSA="$(usex alsa)"
 		-DBUILD_JACK="$(usex jack)"
-		-DBUILD_LAME="$(usex mp3)"
+		-DBUILD_LAME=ON
 		-DBUILD_PORTAUDIO="$(usex portaudio)"
 		-DBUILD_PORTMIDI="$(usex portmidi)"
 		-DBUILD_PULSEAUDIO="$(usex pulseaudio)"
