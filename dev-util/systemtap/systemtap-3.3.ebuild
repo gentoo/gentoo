@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit linux-info autotools eutils python-single-r1
+inherit linux-info autotools python-single-r1
 
 DESCRIPTION="A linux trace/probe tool"
 HOMEPAGE="https://www.sourceware.org/systemtap/"
