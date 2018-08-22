@@ -15,7 +15,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+client +oracle server"
 
 RDEPEND="
-	dev-libs/protobuf
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -27,6 +26,11 @@ RDEPEND="
 		dev-qt/qtsvg:5
 	)
 	oracle? ( sys-libs/zlib:= )
+	server? (
+		dev-libs/protobuf:=
+		dev-qt/qtsql:5
+		dev-qt/qtwebsockets:5
+	)
 "
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
