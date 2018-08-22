@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install postinst setup
+DEPEND=net-libs/gnutls sys-libs/libcap pam? ( virtual/pam ) seccomp? ( sys-libs/libseccomp ) selinux? ( sys-libs/libselinux ) >=app-text/docbook-sgml-utils-0.6.14-r2 >=sys-kernel/linux-headers-3.2 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=LinuX Containers userspace utilities
+EAPI=7
+HOMEPAGE=https://linuxcontainers.org/
+IUSE=apparmor examples pam python seccomp selinux +templates kernel_linux
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+LICENSE=LGPL-3
+PDEPEND=templates? ( app-emulation/lxc-templates ) python? ( dev-python/python3-lxc )
+RDEPEND=net-libs/gnutls sys-libs/libcap pam? ( virtual/pam ) seccomp? ( sys-libs/libseccomp ) selinux? ( sys-libs/libselinux ) sys-apps/util-linux app-misc/pax-utils virtual/awk
+SLOT=0
+SRC_URI=https://linuxcontainers.org/downloads/lxc/lxc-3.0.2.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	5128c4729303400bd8d4b0b966530955	libtool	0081a71a261724730ec4c248494f044d	linux-info	915cae3d7d636732918d18827fb1c226	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=af3f835b07e40c72f4a2937ec36c4aba
