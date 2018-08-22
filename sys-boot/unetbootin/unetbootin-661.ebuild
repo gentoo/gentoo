@@ -27,14 +27,16 @@ done
 
 S=${WORKDIR}/${P}/src/${PN}
 
-DEPEND="
+COMMON_DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 "
-RDEPEND="
-	${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	dev-qt/linguist-tools:5
+"
+RDEPEND="${COMMON_DEPEND}
 	app-arch/p7zip
 	sys-boot/syslinux
 	sys-fs/mtools
