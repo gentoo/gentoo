@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=dev-embedded/sdcc[device-lib,mcs51,sdbinutils]
+DESCRIPTION=Firmware and research tools for nRF24LU1+ based USB dongles and breakout boards
+EAPI=6
+HOMEPAGE=https://www.mousejack.com/
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=dev-embedded/sdcc[device-lib,mcs51,sdbinutils] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] dev-python/pyusb[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)]
+SLOT=0
+SRC_URI=https://github.com/BastilleResearch/nrf-research-firmware/archive/02b84d1c4e59c0fb98263c83b2e7c7f9863a3b93.tar.gz -> mousejack-0.0_p20160726.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=c1abfc2169787c82d2ff11119eae2d0e
