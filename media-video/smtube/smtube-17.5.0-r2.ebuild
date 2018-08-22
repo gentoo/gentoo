@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 PLOCALES="bg cs da de en_GB en es eu fr gl he_IL hr hu it ja ko ms nn_NO pl pt_BR pt ru sq sr tr uk zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit eutils l10n qmake-utils
+inherit desktop l10n qmake-utils
 
 DESCRIPTION="YouTube Browser for SMPlayer"
 HOMEPAGE="http://smplayer.sourceforge.net/smtube"
@@ -20,16 +20,23 @@ SLOT="0"
 CDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtwebkit:5
+	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtscript:5
+	dev-qt/qtwebkit:5
+	dev-qt/qtwidgets:5
 "
-DEPEND="
-	${CDEPEND}
+DEPEND="${CDEPEND}
 	dev-qt/linguist-tools:5
 "
-RDEPEND="
-	${CDEPEND}
-	|| ( media-video/smplayer media-video/mpv media-video/mplayer media-video/vlc media-video/totem media-video/gnome-mplayer )
+RDEPEND="${CDEPEND}
+	|| (
+		media-video/smplayer
+		media-video/mpv
+		media-video/mplayer
+		media-video/vlc
+		media-video/totem
+		media-video/gnome-mplayer
+	)
 "
 
 gen_translation() {
