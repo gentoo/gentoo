@@ -15,7 +15,7 @@ else
 	GIT_ECLASS="git-r3"
 	EGIT_REPO_URI="https://github.com/${PN}/${PN^^}.git"
 fi
-inherit cmake-utils eutils ${GIT_ECLASS} gnome2-utils python-single-r1 qmake-utils xdg-utils
+inherit cmake-utils desktop ${GIT_ECLASS} gnome2-utils python-single-r1 qmake-utils xdg-utils
 unset GIT_ECLASS
 
 DESCRIPTION="User friendly Geographic Information System"
