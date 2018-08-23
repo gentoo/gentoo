@@ -12,6 +12,7 @@ if [ "${PV}" != 9999 ]
 then
 	# git tag cr3.2.2-1
 	SRC_URI="https://github.com/buggins/${PN}/archive/cr${CR_PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-cr${CR_PV}"
 else
 	inherit git-r3
 	# github mirror has some new commits to fix page margins settings
@@ -34,11 +35,9 @@ DEPEND="sys-libs/zlib
 	virtual/jpeg:0
 	media-libs/freetype
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER} )
-	!wxwidgets? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )"
+	!wxwidgets? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/linguist-tools:5 )"
 RDEPEND="${DEPEND}
 	wxwidgets? ( || ( media-fonts/liberation-fonts media-fonts/corefonts ) )"
-
-S="${WORKDIR}/${PN}-cr${CR_PV}"
 
 for lang in ${PLOCALES}; do
 	IUSE="${IUSE} l10n_${lang}"
