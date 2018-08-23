@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
 inherit distutils-r1
 
@@ -19,7 +19,7 @@ IUSE="distributed test"
 RDEPEND="
 	>=dev-python/cloudpickle-0.2.1[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.11[${PYTHON_USEDEP}]
-	>=dev-python/pandas-0.19[${PYTHON_USEDEP}]
+	>=dev-python/pandas-0.23.4[${PYTHON_USEDEP}]
 	>=dev-python/partd-0.3.8[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
 	>=dev-python/toolz-0.7.3[${PYTHON_USEDEP}]
@@ -33,7 +33,6 @@ DEPEND="
 	dev-python/toolz[${PYTHON_USEDEP}]
 	test? (
 	   ${RDEPEND}
-	   >=dev-python/bottleneck-1.2.1[${PYTHON_USEDEP}]
 	   dev-python/numexpr[${PYTHON_USEDEP}]
 	   dev-python/pytest[${PYTHON_USEDEP}]
 	   dev-python/pyyaml[${PYTHON_USEDEP}]
