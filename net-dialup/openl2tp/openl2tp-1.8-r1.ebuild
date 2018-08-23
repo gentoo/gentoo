@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit linux-info
 
@@ -16,18 +16,18 @@ IUSE="+client debug dmalloc doc +examples rpc server stats"
 
 REQUIRED_USE="|| ( client server )"
 
-CDEPEND="
+BDEPEND="
+	>=net-libs/rpcsvc-proto-1.3.1-r1
+	sys-devel/bison
+	sys-devel/flex
+"
+DEPEND="
 	>=net-dialup/ppp-2.4.5
 	>=net-libs/libtirpc-1.0.3
 	sys-libs/readline:=
 	dmalloc? ( dev-libs/dmalloc )
 "
-DEPEND="${CDEPEND}
-	>=net-libs/rpcsvc-proto-1.3.1-r1
-	sys-devel/bison
-	sys-devel/flex
-"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	rpc? ( net-nds/rpcbind )
 "
 
@@ -55,32 +55,31 @@ src_prepare() {
 }
 
 src_configure() {
-	declare -a myconf	# not local, should be used at src_compile()
+	myconf=
 
-	use client	|| myconf+=( L2TP_FEATURE_LAC_SUPPORT=n
+	use client	|| myconf+=" L2TP_FEATURE_LAC_SUPPORT=n
 							 L2TP_FEATURE_LAIC_SUPPORT=n
-							 L2TP_FEATURE_LAOC_SUPPORT=n )
+							 L2TP_FEATURE_LAOC_SUPPORT=n "
 
-	use server	|| myconf+=( L2TP_FEATURE_LNS_SUPPORT=n
+	use server	|| myconf+=" L2TP_FEATURE_LNS_SUPPORT=n
 							 L2TP_FEATURE_LNIC_SUPPORT=n
-							 L2TP_FEATURE_LNOC_SUPPORT=n )
+							 L2TP_FEATURE_LNOC_SUPPORT=n "
 
-	use rpc		|| myconf+=( L2TP_FEATURE_RPC_MANAGEMENT=n )
+	use rpc		|| myconf+=" L2TP_FEATURE_RPC_MANAGEMENT=n "
 
-	use stats	&& myconf+=( L2TP_FEATURE_LOCAL_STAT_FILE=y )
-	use debug	&& myconf+=( L2TP_DEBUG=y )
-	use dmalloc	&& myconf+=( USE_DMALLOC=y )
+	use stats	&& myconf+=" L2TP_FEATURE_LOCAL_STAT_FILE=y "
+	use debug	&& myconf+=" L2TP_DEBUG=y "
+	use dmalloc	&& myconf+=" USE_DMALLOC=y "
 
-	# pppd plugin is only needed for pppd < 2.4.5
-	unset PPPD_SUBDIR
+	echo ${myconf} > "${T}/myconf"
 }
 
 src_compile() {
-	emake ${myconf[@]}
+	emake $(cat "${T}/myconf")
 }
 
 src_install() {
-	emake ${myconf[@]} DESTDIR="${D}" install
+	emake $(cat "${T}/myconf") DESTDIR="${D}" install
 
 	if use examples; then
 		docinto event_socket
