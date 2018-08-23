@@ -3,6 +3,8 @@
 
 EAPI=7
 
+WANT_AUTOMAKE="1.15"
+
 inherit autotools bash-completion-r1 linux-info flag-o-matic systemd readme.gentoo-r1 pam
 
 DESCRIPTION="LinuX Containers userspace utilities"
