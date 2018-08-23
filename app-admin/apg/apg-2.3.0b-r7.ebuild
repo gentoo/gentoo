@@ -15,6 +15,7 @@ KEYWORDS="~alpha amd64 hppa ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="cracklib"
 
 DEPEND="cracklib? ( sys-libs/cracklib )"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
