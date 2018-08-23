@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Ben Kohler <bkohler@gentoo.org> (23 Aug 2018)
+# Unmask iwd support where net-wireless/iwd is keyworded
+net-misc/connman -iwd
+
 # Thomas Deutschmann <whissi@gentoo.org> (23 Aug 2018)
 # Dependency sys-cluster/ceph is keyworded for x86
 net-fs/samba -ceph
