@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit toolchain-funcs git-r3
 
 DESCRIPTION="Utility to view Radeon GPU utilization"
@@ -24,9 +24,9 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	tc-export CC
