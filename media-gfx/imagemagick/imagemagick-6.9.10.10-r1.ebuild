@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic libtool multilib toolchain-funcs eapi7-ver
+inherit eapi7-ver eutils flag-o-matic libtool multilib toolchain-funcs
 
 MY_P=ImageMagick-$(ver_rs 3 '-')
 
@@ -203,7 +203,7 @@ pkg_postinst() {
 	else
 		local v
 		for v in ${REPLACING_VERSIONS}; do
-			if ! version_is_at_least "6.9.10.10-r1" ${v}; then
+			if ! ver_test "${v}" -gt "6.9.10.10-r1"; then
 				# This is an upgrade
 				_show_policy_xml_notice=yes
 
