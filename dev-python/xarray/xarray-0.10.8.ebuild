@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{5,6}} )
 
 inherit distutils-r1
 
@@ -17,15 +17,21 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
+	>=dev-python/numpy-1.14[${PYTHON_USEDEP}]
 	dev-python/pandas[${PYTHON_USEDEP}]"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
+		>=dev-python/dask-0.18.2[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
 	)"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.10.8-skip-broken-test.patch"
+)
+
 python_test() {
-	py.test -v || die
+	pytest -v || die
 }
