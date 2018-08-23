@@ -28,7 +28,7 @@ DEPEND="
 	)"
 
 python_prepare_all() {
-	cat > jsonrpc/six.py <<- EOF
+	cat > jsonrpc/six.py <<- EOF || die
 	from __future__ import absolute_import
 	from six import *
 	EOF
@@ -36,5 +36,5 @@ python_prepare_all() {
 }
 
 python_test() {
-	esetup.py test
+	esetup.py test || die
 }
