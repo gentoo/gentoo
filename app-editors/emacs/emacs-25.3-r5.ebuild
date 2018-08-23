@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.xz
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="25"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk gtk2 gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses:0=
@@ -61,8 +61,8 @@ RDEPEND="sys-libs/ncurses:0=
 			)
 		)
 		gtk? (
-			gtk3? ( x11-libs/gtk+:3 )
-			!gtk3? ( x11-libs/gtk+:2 )
+			gtk2? ( x11-libs/gtk+:2 )
+			!gtk2? ( x11-libs/gtk+:3 )
 		)
 		!gtk? (
 			motif? (
@@ -181,12 +181,8 @@ src_configure() {
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			#if use xwidgets; then
-			#	myconf+=" --with-x-toolkit=gtk3 --with-xwidgets"
-			#else
-				myconf+=" --with-x-toolkit=$(usex gtk3 gtk3 gtk2)"
-				myconf+=" --without-xwidgets"
-			#fi
+			myconf+=" --with-x-toolkit=$(usex gtk2 gtk2 gtk3)"
+			myconf+=" --without-xwidgets"
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
@@ -205,8 +201,6 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
-		#! use gtk && use xwidgets && ewarn \
-		#	"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Cocoa) support"
 		myconf+=" --with-ns --disable-ns-self-contained"
