@@ -28,7 +28,7 @@ HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="27"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk +gtk3 gzip-el imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gtk2 gzip-el imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
 RESTRICT="test"
 
@@ -82,14 +82,13 @@ RDEPEND="sys-libs/ncurses:0=
 			)
 		)
 		gtk? (
-			xwidgets? (
-				net-libs/webkit-gtk:4=
+			gtk2? ( x11-libs/gtk+:2 )
+			!gtk2? (
 				x11-libs/gtk+:3
-				x11-libs/libXcomposite
-			)
-			!xwidgets? (
-				gtk3? ( x11-libs/gtk+:3 )
-				!gtk3? ( x11-libs/gtk+:2 )
+				xwidgets? (
+					net-libs/webkit-gtk:4=
+					x11-libs/libXcomposite
+				)
 			)
 		)
 		!gtk? (
@@ -213,11 +212,12 @@ src_configure() {
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			if use xwidgets; then
-				myconf+=" --with-x-toolkit=gtk3 --with-xwidgets"
+			if use gtk2; then
+				myconf+=" --with-x-toolkit=gtk2 --without-xwidgets"
+				use xwidgets && ewarn \
+					"USE flag \"xwidgets\" has no effect if \"gtk2\" is set."
 			else
-				myconf+=" --with-x-toolkit=$(usex gtk3 gtk3 gtk2)"
-				myconf+=" --without-xwidgets"
+				myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
 			fi
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \

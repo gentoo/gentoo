@@ -3,51 +3,32 @@
 
 EAPI=7
 
-inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
-
-if [[ ${PV##*.} = 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emacs.git"
-	EGIT_BRANCH="emacs-26"
-	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
-	S="${EGIT_CHECKOUT_DIR}"
-else
-	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/emacs-${PV}.tar.xz
-		mirror://gnu-alpha/emacs/pretest/emacs-${PV}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-	# FULL_VERSION keeps the full version number, which is needed in
-	# order to determine some path information correctly for copy/move
-	# operations later on
-	FULL_VERSION="${PV%%_*}"
-	S="${WORKDIR}/emacs-${FULL_VERSION}"
-	[[ ${FULL_VERSION} != ${PV} ]] && S="${WORKDIR}/emacs"
-fi
+inherit elisp-common flag-o-matic multilib readme.gentoo-r1
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
+SRC_URI="mirror://gnu/emacs/${P}.tar.xz
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-1.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-SLOT="26"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk gtk2 gzip-el imagemagick +inotify jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
+SLOT="25"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk gtk2 gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
 REQUIRED_USE="?? ( aqua X )"
-RESTRICT="test"
 
 RDEPEND="sys-libs/ncurses:0=
 	>=app-eselect/eselect-emacs-1.16
 	>=app-emacs/emacs-common-gentoo-1.5[games?,X?]
+	net-libs/liblockfile
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	kerberos? ( virtual/krb5 )
-	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
-	mailutils? ( net-mail/mailutils[clients] )
-	!mailutils? ( net-libs/liblockfile )
 	selinux? ( sys-libs/libselinux )
 	ssl? ( net-libs/gnutls:0= )
-	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
 	X? (
 		x11-libs/libICE
@@ -81,13 +62,7 @@ RDEPEND="sys-libs/ncurses:0=
 		)
 		gtk? (
 			gtk2? ( x11-libs/gtk+:2 )
-			!gtk2? (
-				x11-libs/gtk+:3
-				xwidgets? (
-					net-libs/webkit-gtk:4=
-					x11-libs/libXcomposite
-				)
-			)
+			!gtk2? ( x11-libs/gtk+:3 )
 		)
 		!gtk? (
 			motif? (
@@ -118,33 +93,27 @@ BDEPEND="virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
 #	pax_kernel? ( sys-apps/attr )
 
-if [[ ${PV##*.} = 9999 ]]; then
-	DEPEND="${DEPEND}
-	sys-apps/texinfo"
-fi
+RDEPEND="${RDEPEND}
+	!<app-editors/emacs-vcs-${PV}"
 
 EMACS_SUFFIX="${PN/emacs/emacs-${SLOT}}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
+# FULL_VERSION keeps the full version number, which is needed in
+# order to determine some path information correctly for copy/move
+# operations later on
+FULL_VERSION="${PV%%_*}"
+S="${WORKDIR}/emacs-${FULL_VERSION}"
 
 src_prepare() {
-	if [[ ${PV##*.} = 9999 ]]; then
-		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[ \t]*\([^ \t,)]*\).*/\1/p' \
-			configure.ac)
-		[[ ${FULL_VERSION} ]] || die "Cannot determine current Emacs version"
-		einfo "Emacs branch: ${EGIT_BRANCH}"
-		einfo "Commit: ${EGIT_VERSION}"
-		einfo "Emacs version number: ${FULL_VERSION}"
-		[[ ${FULL_VERSION} =~ ^${PV%.*}(\..*)?$ ]] \
-			|| die "Upstream version number changed to ${FULL_VERSION}"
-	fi
-
+	eapply ../patch
 	eapply_user
 
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
 		|| die "unable to sed ctags.1"
 
-	AT_M4DIR=m4 eautoreconf
+	#AT_M4DIR=m4 eautoreconf
+	#touch src/stamp-h.in || die
 }
 
 src_configure() {
@@ -158,6 +127,9 @@ src_configure() {
 	else
 		replace-flags "-O[3-9]" -O2
 	fi
+
+	# Don't trigger a floating point exception for NaNs on alpha
+	use alpha && append-flags -mieee
 
 	local myconf
 
@@ -209,13 +181,8 @@ src_configure() {
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			if use gtk2; then
-				myconf+=" --with-x-toolkit=gtk2 --without-xwidgets"
-				use xwidgets && ewarn \
-					"USE flag \"xwidgets\" has no effect if \"gtk2\" is set."
-			else
-				myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
-			fi
+			myconf+=" --with-x-toolkit=$(usex gtk2 gtk2 gtk3)"
+			myconf+=" --without-xwidgets"
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
@@ -234,8 +201,6 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
-		! use gtk && use xwidgets && ewarn \
-			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Cocoa) support"
 		myconf+=" --with-ns --disable-ns-self-contained"
@@ -249,23 +214,18 @@ src_configure() {
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--localstatedir="${EPREFIX}"/var \
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
+		--with-gameuser=":gamestat" \
 		--without-compress-install \
 		--without-hesiod \
-		--without-pop \
 		--with-file-notification=$(usev inotify || usev gfile || echo no) \
 		$(use_enable acl) \
 		$(use_with dbus) \
 		$(use_with dynamic-loading modules) \
-		$(use_with games gameuser ":gamestat") \
 		$(use_with gpm) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
-		$(use_with lcms lcms2) \
 		$(use_with libxml2 xml2) \
-		$(use_with mailutils) \
 		$(use_with selinux) \
 		$(use_with ssl gnutls) \
-		$(use_with systemd libsystemd) \
-		$(use_with threads) \
 		$(use_with wide-int) \
 		$(use_with zlib) \
 		${myconf}
@@ -293,7 +253,6 @@ src_install () {
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el
 	rm -rf "${ED}"/usr/share/{appdata,applications,icons}
-	rm -rf "${ED}/usr/$(get_libdir)"
 	rm -rf "${ED}"/var
 
 	# remove unused <version>/site-lisp dir
