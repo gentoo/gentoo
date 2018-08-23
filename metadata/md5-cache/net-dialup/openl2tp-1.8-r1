@@ -1,7 +1,8 @@
+BDEPEND=>=net-libs/rpcsvc-proto-1.3.1-r1 sys-devel/bison sys-devel/flex
 DEFINED_PHASES=compile configure install postinst prepare setup
-DEPEND=>=net-dialup/ppp-2.4.5 >=net-libs/libtirpc-1.0.3 sys-libs/readline:= dmalloc? ( dev-libs/dmalloc ) >=net-libs/rpcsvc-proto-1.3.1-r1 sys-devel/bison sys-devel/flex
+DEPEND=>=net-dialup/ppp-2.4.5 >=net-libs/libtirpc-1.0.3 sys-libs/readline:= dmalloc? ( dev-libs/dmalloc )
 DESCRIPTION=Userspace tools for kernel L2TP implementation
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.openl2tp.org/
 IUSE=+client debug dmalloc doc +examples rpc server stats kernel_linux
 KEYWORDS=~amd64 ~x86
@@ -10,5 +11,5 @@ RDEPEND=>=net-dialup/ppp-2.4.5 >=net-libs/libtirpc-1.0.3 sys-libs/readline:= dma
 REQUIRED_USE=|| ( client server )
 SLOT=0
 SRC_URI=mirror://sourceforge/openl2tp/openl2tp-1.8.tar.gz
-_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	linux-info	915cae3d7d636732918d18827fb1c226	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
-_md5_=988ef4321bff073e5da34f2844d0116c
+_eclasses_=linux-info	915cae3d7d636732918d18827fb1c226	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=ade8a3c65ab389a69e75266a39fba456
