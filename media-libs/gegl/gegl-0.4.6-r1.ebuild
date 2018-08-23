@@ -7,10 +7,10 @@ PYTHON_COMPAT=( python2_7 )
 # vala and introspection support is broken, bug #468208
 VALA_USE_DEPEND=vapigen
 
-inherit versionator gnome2-utils eutils autotools python-any-r1 vala
+inherit autotools gnome2-utils python-any-r1 vala
 
 if [[ ${PV} == *9999* ]]; then
-	inherit autotools git-r3
+	inherit git-r3
 	EGIT_REPO_URI="git://git.gnome.org/gegl"
 	SRC_URI=""
 else
@@ -21,7 +21,7 @@ fi
 DESCRIPTION="A graph based image processing framework"
 HOMEPAGE="http://www.gegl.org/"
 
-LICENSE="|| ( GPL-3 LGPL-3 )"
+LICENSE="|| ( GPL-3+ LGPL-3 )"
 SLOT="0.4"
 
 IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg2k lcms lensfun openexr raw sdl svg test tiff umfpack vala v4l webp"
