@@ -4987,7 +4987,7 @@ dev-python/josepy 1.0.1 1.1.0: JOSE protocol implementation in Python
 dev-python/jplephem 2.6: Python version of NASA DE4xx ephemerides for Astronomical Alamanac
 dev-python/jpype 0.6.1 0.6.2: JPype is an effort to allow Python programs full access to Java class librairies
 dev-python/jsmin 2.2.1: JavaScript minifier
-dev-python/json-rpc 1.10.1: JSON-RPC transport implementation for python
+dev-python/json-rpc 1.11.0: JSON-RPC transport implementation for python
 dev-python/json-tools 0.4.0: A set of tools to manipulate JSON: diff, patch, and pretty-printing
 dev-python/jsonpatch 1.13 1.21: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
 dev-python/jsonpickle 0.9.3: Python library for serializing any arbitrary object graph into JSON
