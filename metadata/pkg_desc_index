@@ -8181,7 +8181,7 @@ media-tv/dvbstream 0.7_pre20080516-r1: RTP multicast stream server and other too
 media-tv/dvbtune 0.5-r1: simple tuning app for DVB cards
 media-tv/gentoo-vdr-scripts 2.0.0 2.5 2.7 2.7.3: Scripts necessary for use of vdr as a set-top-box
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
-media-tv/kodi 17.3-r1: Kodi is a free and open source media-player and entertainment hub
+media-tv/kodi 17.3-r1: A free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20100223-r1: Small utils for DVB to scan, zap, view signal strength, ...
 media-tv/plex-media-server 1.11.3 1.12.3: A free media library that is intended for use with a plex client.
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
