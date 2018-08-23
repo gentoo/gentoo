@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit systemd toolchain-funcs
+inherit flag-o-matic systemd toolchain-funcs
 
 MY_P="${P/_/-}"
 
@@ -65,6 +65,10 @@ src_configure() {
 			--enable-scdaemon
 			$(use_enable usb ccid-driver)
 		)
+		if use prefix && use usb ; then
+			# bug #649598
+			append-cppflags -I"${EPREFIX}/usr/include/libusb-1.0"
+		fi
 	else
 		myconf+=( --disable-scdaemon )
 	fi
