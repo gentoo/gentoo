@@ -16,7 +16,7 @@ HOMEPAGE="http://inertiawar.com/microcode/ https://downloadcenter.intel.com/Deta
 SRC_URI="https://downloadmirror.intel.com/${NUM}/eng/microcode-${INTEL_SNAPSHOT}.tgz
 	https://dev.gentoo.org/~whissi/dist/intel-microcode/intel-microcode-collection-${COLLECTION_SNAPSHOT}.tar.xz"
 
-LICENSE="intel-ucode"
+LICENSE="intel-ucode-20180807"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="hostonly initramfs +split-ucode vanilla"
@@ -28,7 +28,7 @@ DEPEND="sys-apps/iucode_tool"
 RDEPEND="!<sys-apps/microcode-ctl-1.17-r2
 	hostonly? ( sys-apps/iucode_tool )"
 
-RESTRICT="binchecks strip"
+RESTRICT="binchecks bindist mirror strip"
 
 S=${WORKDIR}
 
