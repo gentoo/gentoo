@@ -15,17 +15,21 @@ SRC_URI="${ARCHIVE_URI}"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
-DEPEND="dev-go/go-tools:="
+DEPEND="dev-go/go-net:=
+	dev-go/go-tools:="
 
 src_compile() {
-	GOPATH="${S}:$(get_golibdir_gopath)" GOBIN="${S}/bin" \
-		go build -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}"
-	[[ -x $(find "${T}" -name a.out) ]] || die "a.out not found"
+	local x
+	mkdir -p "${T}/golibdir/src/golang.org/x" || die
+	for x in net tools; do
+		ln -s "$(get_golibdir_gopath)/src/golang.org/x/${x}" "${T}/golibdir/src/golang.org/x/${x}" || die
+	done
+	GOPATH="${S}:${T}/golibdir" GOBIN="${S}/bin" \
+		go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}"
+	[[ -x bin/gotour ]] || die "gotour not found"
 }
 
 src_install() {
-	GOPATH="${S}:$(get_golibdir_gopath)" GOBIN="${S}/bin" \
-		go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}"
 	exeinto "$(go env GOTOOLDIR)"
 	newexe bin/gotour tour
 	insinto "$(go env GOROOT)"
@@ -33,6 +37,6 @@ src_install() {
 }
 
 src_test() {
-	GOPATH="${S}:$(get_golibdir_gopath)" GOBIN="${S}/bin" \
+	GOPATH="${S}:${T}/golibdir" GOBIN="${S}/bin" \
 		go test -v -work -x "${EGO_PN}" || die
 }
