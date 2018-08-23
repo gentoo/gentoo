@@ -118,9 +118,10 @@ pkg_postinst() {
 	# by comparing the mtimes of save files and its own binary. This would require admin interaction even
 	# during upgrades which don't change the file format, so we'll just touch the files and warn the admin
 	# manually in case of compatibility issues.
-	( shopt -s nullglob
+	(
+		shopt -s nullglob
 		local saves=( bones* save/* )
-		test ${#saves[@]} -gt 0 && touch -c "${saves[@]}"
+		[[ -n "${saves[*]}" ]] && touch -c "${saves[@]}"
 	) # non-fatal
 
 	elog "A minimal default .nethackrc has been placed in /etc/skel/"

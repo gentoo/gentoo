@@ -93,7 +93,7 @@ EANT_GENTOO_CLASSPATH="swt-3.8,json-simple,log4j,commons-cli-1 commons-lang-2.1"
 src_compile() {
 	local mem
 	use amd64 && mem="320"
-	use x86   && mem="192"
+	use x86   && mem="256"
 	use ppc   && mem="192"
 	use ppc64 && mem="256"
 	use sparc && mem="320"
