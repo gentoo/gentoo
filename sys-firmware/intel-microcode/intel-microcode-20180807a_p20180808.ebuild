@@ -10,13 +10,13 @@ inherit linux-info toolchain-funcs mount-boot
 
 COLLECTION_SNAPSHOT="${PV##*_p}"
 INTEL_SNAPSHOT="${PV/_p*}"
-NUM="28039"
+NUM="28087"
 DESCRIPTION="Intel IA32/IA64 microcode update data"
 HOMEPAGE="http://inertiawar.com/microcode/ https://downloadcenter.intel.com/Detail_Desc.aspx?DwnldID=${NUM}"
 SRC_URI="https://downloadmirror.intel.com/${NUM}/eng/microcode-${INTEL_SNAPSHOT}.tgz
 	https://dev.gentoo.org/~whissi/dist/intel-microcode/intel-microcode-collection-${COLLECTION_SNAPSHOT}.tar.xz"
 
-LICENSE="intel-ucode-20180807"
+LICENSE="intel-ucode"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
 IUSE="hostonly initramfs +split-ucode vanilla"
@@ -48,15 +48,6 @@ MICROCODE_SIGNATURES_DEFAULT=""
 MICROCODE_SIGNATURES="${MICROCODE_SIGNATURES:=${MICROCODE_SIGNATURES_DEFAULT}}"
 
 pkg_pretend() {
-	if [[ "${MICROCODE_BLACKLIST}" != "${MICROCODE_BLACKLIST_DEFAULT}" ]]; then
-		ewarn "MICROCODE_BLACKLIST is set to \"${MICROCODE_BLACKLIST}\" instead of default \"${MICROCODE_BLACKLIST_DEFAULT}\". You are on your own!"
-	fi
-
-	if [[ "${MICROCODE_SIGNATURES}" != "${MICROCODE_SIGNATURES_DEFAULT}" ]]; then
-		ewarn "The user has opted in for advanced use:"
-		ewarn "MICROCODE_SIGNATURES is set to \"${MICROCODE_SIGNATURES}\" instead of default \"${MICROCODE_SIGNATURES_DEFAULT}\"!"
-	fi
-
 	use initramfs && mount-boot_pkg_pretend
 }
 
@@ -112,13 +103,46 @@ src_install() {
 		|| die "iucode_tool ${opts[@]} ${MICROCODE_SRC[@]}"
 
 	dodoc releasenote
+
+	# Record how package was created so we can show this in build.log
+	# even for binary packages.
+	if [[ "${MICROCODE_BLACKLIST}" != "${MICROCODE_BLACKLIST_DEFAULT}" ]]; then
+		echo ${MICROCODE_BLACKLIST} > "${ED%/}/tmp/.blacklist_altered" || die "Failed to add marker that MICROCODE_BLACKLIST variable was used"
+	fi
+
+	if [[ "${MICROCODE_SIGNATURES}" != "${MICROCODE_SIGNATURES_DEFAULT}" ]]; then
+		echo ${MICROCODE_SIGNATURES} > "${ED%/}/tmp/.signatures_altered" || die "Failed to add marker that MICROCODE_SIGNATURES variable was used"
+	fi
 }
 
 pkg_preinst() {
+	if [[ -f "${ED%/}/tmp/.blacklist_altered" ]]; then
+		local _recorded_MICROCODE_BLACKLIST_value=$(cat "${ED%/}/tmp/.blacklist_altered")
+		ewarn "MICROCODE_BLACKLIST is set to \"${_recorded_MICROCODE_BLACKLIST_value}\" instead of default \"${MICROCODE_BLACKLIST_DEFAULT}\". You are on your own!"
+	fi
+
+	if [[ -f "${ED%/}/tmp/.signatures_altered" ]]; then
+		local _recorded_MICROCODE_SIGNATURES_value=$(cat "${ED%/}/tmp/.signatures_altered")
+		ewarn "Package was created using advanced options:"
+		ewarn "MICROCODE_SIGNATURES is set to \"${_recorded_MICROCODE_SIGNATURES_value}\" instead of default \"${MICROCODE_SIGNATURES_DEFAULT}\"!"
+	fi
+
+	# Make sure /boot is available if needed.
 	use initramfs && mount-boot_pkg_preinst
 
+	local _initramfs_file="${ED%/}/boot/intel-uc.img"
+	local _ucode_dir="${ED%/}/lib/firmware/intel-ucode"
+
 	if use hostonly; then
-		einfo "Removing ucode(s) not supported by any currently available (=online) processor(s) due to USE=hostonly ..."
+		# While this output looks redundant we do this check to detect
+		# rare cases where iucode_tool was unable to detect system's processor(s).
+		local _detected_processors=$(iucode_tool --scan-system 2>&1)
+		if [[ -z "${_detected_processors}" ]]; then
+			ewarn "Looks like iucode_tool was unable to detect any processor!"
+		else
+			einfo "Only installing ucode(s) for ${_detected_processors#iucode_tool: system has } due to USE=hostonly ..."
+		fi
+
 		opts=(
 			--scan-system
 			# be strict about what we are doing
@@ -135,9 +159,9 @@ pkg_preinst() {
 
 		# The earlyfw cpio needs to be in /boot because it must be loaded before
 		# rootfs is mounted.
-		use initramfs && opts+=( --write-earlyfw="${ED%/}"/boot/intel-uc.img )
+		use initramfs && opts+=( --write-earlyfw=${_initramfs_file} )
 		# split location:
-		use split-ucode && dodir /lib/firmware/intel-ucode && opts+=( --write-firmware="${ED%/}"/lib/firmware/intel-ucode )
+		use split-ucode && dodir /lib/firmware/intel-ucode && opts+=( --write-firmware=${_ucode_dir} )
 
 		iucode_tool \
 			"${opts[@]}" \
@@ -152,27 +176,15 @@ pkg_preinst() {
 		fi
 	fi
 
-	# Cleanup any temporary leftovers so that we don't merge any
-	# unneeded files on disk
-	rm -r "${ED%/}/tmp" || die "Failed to cleanup '${ED%/}/tmp'"
-}
-
-pkg_prerm() {
-	use initramfs && mount-boot_pkg_prerm
-}
-
-pkg_postrm() {
-	use initramfs && mount-boot_pkg_postrm
-}
-
-pkg_postinst() {
-	use initramfs && mount-boot_pkg_postinst
-
+	# Because it is possible that this package will install not one single file
+	# due to user selection which is still somehow unexpected we add the following
+	# check to inform user so that the user has at least a chance to detect
+	# a problem/invalid select.
 	local _has_installed_something=
-	if use initramfs && [[ -s "${EROOT%/}/boot/intel-uc.img" ]]; then
+	if use initramfs && [[ -s "${_initramfs_file}" ]]; then
 		_has_installed_something="yes"
 	elif use split-ucode; then
-		_has_installed_something=$(find "${EROOT%/}/lib/firmware/intel-ucode" -maxdepth 0 -not -empty -exec echo yes \;)
+		_has_installed_something=$(find "${_ucode_dir}" -maxdepth 0 -not -empty -exec echo yes \;)
 	fi
 
 	if use hostonly && [[ -n "${_has_installed_something}" ]]; then
@@ -182,10 +194,19 @@ pkg_postinst() {
 		elog ""
 	elif [[ -z "${_has_installed_something}" ]]; then
 		ewarn "WARNING:"
-		ewarn "No ucode was installed! You can ignore this warning if there"
-		ewarn "aren't any microcode updates available for your processor(s)."
-		ewarn "But if you use MICROCODE_SIGNATURES variable please double check"
-		ewarn "if you have an invalid select."
+		if [[ -f "${ED%/}/tmp/.signatures_altered" ]]; then
+			ewarn "No ucode was installed! Because you have created this package"
+			ewarn "using MICROCODE_SIGNATURES variable please double check if you"
+			ewarn "have an invalid select."
+			ewarn "It's rare but it is also possible that just no ucode update"
+			ewarn "is available for your processor(s). In this case it is safe"
+			ewarn "to ignore this warning."
+		else
+			ewarn "No ucode was installed! It's rare but it is also possible"
+			ewarn "that just no ucode update is available for your processor(s)."
+			ewarn "In this case it is safe to ignore this warning."
+		fi
+
 		ewarn ""
 
 		if use hostonly; then
@@ -193,6 +214,25 @@ pkg_postinst() {
 			ewarn ""
 		fi
 	fi
+
+	# Cleanup any temporary leftovers so that we don't merge any
+	# unneeded files on disk.
+	rm -r "${ED%/}/tmp" || die "Failed to cleanup '${ED%/}/tmp'"
+}
+
+pkg_prerm() {
+	# Make sure /boot is mounted so that we can remove /boot/intel-uc.img!
+	use initramfs && mount-boot_pkg_prerm
+}
+
+pkg_postrm() {
+	# Don't forget to umount /boot if it was previously mounted by us.
+	use initramfs && mount-boot_pkg_postrm
+}
+
+pkg_postinst() {
+	# Don't forget to umount /boot if it was previously mounted by us.
+	use initramfs && mount-boot_pkg_postinst
 
 	# We cannot give detailed information if user is affected or not:
 	# If MICROCODE_BLACKLIST wasn't modified, user can still use MICROCODE_SIGNATURES
