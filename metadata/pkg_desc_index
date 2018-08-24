@@ -11322,6 +11322,7 @@ xfce-extra/thunar-vcs-plugin 0.1.5-r1: Adds Subversion and GIT actions to the co
 xfce-extra/thunar-volman 0.8.1-r1: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503: A small daemon to watch for window creation and set window transparency values
 xfce-extra/tumbler 0.2.0: A thumbnail service for Thunar
+xfce-extra/xfce4-alsa-plugin 0.1.1: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.1.0: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-cellmodem-plugin 0.0.5: A panel plug-in with monitoring support for GPRS/UMTS(3G)/HSDPA(3.5G) modems
 xfce-extra/xfce4-clipman-plugin 1.4.2: A clipboard manager plug-in for the Xfce panel
