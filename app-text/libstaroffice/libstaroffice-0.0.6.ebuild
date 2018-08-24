@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/fosnola/libstaroffice"
 LICENSE="|| ( LGPL-2.1+ MPL-2.0 )"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 
 IUSE="debug doc tools +zlib"
 
