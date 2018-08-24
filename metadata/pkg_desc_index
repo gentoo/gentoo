@@ -10576,7 +10576,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20160329-r2: GNU Flash movie player that supports many SWF v7,8,9 features
-www-servers/apache 2.2.34 2.4.27-r1 2.4.33-r1 2.4.34-r1: The Apache Web Server
+www-servers/apache 2.2.34 2.4.27-r1 2.4.33-r1 2.4.34-r2: The Apache Web Server
 www-servers/gunicorn 19.1.1 19.6.0: A WSGI HTTP Server for UNIX
 www-servers/lighttpd 1.4.45-r1: Lightweight high-performance web server
 www-servers/monkeyd 1.6.9-r1: A small, fast, and scalable web server
