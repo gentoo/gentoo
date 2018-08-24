@@ -62,6 +62,11 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 
+	# Apply before we create archive with Linux guest kernel modules
+	pushd "${S}" &>/dev/null || die
+	eapply "${FILESDIR}"/virtualbox-guest-additions-5.2.18-linux-4.18.patch # 663488
+	popd &>/dev/null || die
+
 	# Create and unpack a tarball with the sources of the Linux guest
 	# kernel modules, to include all the needed files
 	"${S}"/src/VBox/Additions/linux/export_modules.sh "${WORKDIR}/vbox-kmod.tar.gz"
