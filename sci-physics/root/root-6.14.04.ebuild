@@ -155,6 +155,7 @@ src_configure() {
 		-Dshared=ON
 		-Dsoversion=ON
 		-Dbuiltin_llvm=ON
+		-Dbuiltin_clang=ON
 		-Dbuiltin_afterimage=OFF
 		-Dbuiltin_cfitsio=OFF
 		-Dbuiltin_davix=OFF
@@ -238,7 +239,7 @@ src_configure() {
 		-Droot7=$(usex root7)
 		-Drootbench=OFF
 		-Droottest=$(usex test)
-		# -Drpath=ON # needed for multi-slot to work
+		-Drpath=OFF
 		-Druby=OFF # deprecated and broken
 		-Druntime_cxxmodules=OFF # does not work yet
 		-Dr=$(usex R)
