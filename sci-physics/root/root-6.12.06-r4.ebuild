@@ -28,9 +28,10 @@ KEYWORDS="~amd64 ~x86"
 
 REQUIRED_USE="
 	!X? ( !asimage !opengl !qt5 !tiff )
-	python? ( ${PYTHON_REQUIRED_USE} )
-	tmva? ( gsl )
 	davix? ( ssl xml )
+	python? ( ${PYTHON_REQUIRED_USE} )
+	qt5? ( root7 )
+	tmva? ( gsl )
 "
 
 CDEPEND="

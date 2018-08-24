@@ -36,9 +36,10 @@ LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
 
 REQUIRED_USE="
 	!X? ( !asimage !opengl !qt5 !tiff )
-	python? ( ${PYTHON_REQUIRED_USE} )
-	tmva? ( gsl )
 	davix? ( ssl xml )
+	python? ( ${PYTHON_REQUIRED_USE} )
+	qt5? ( root7 )
+	tmva? ( gsl )
 "
 
 CDEPEND="
