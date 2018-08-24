@@ -8105,7 +8105,7 @@ media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Dae
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
-media-sound/qmmp 1.1.7-r1: Qt5-based audio player with winamp/xmms skins support
+media-sound/qmmp 1.1.7-r1 1.2.3: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsynth 0.4.4: A Qt application to control FluidSynth
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.0: A Qt5 client for the music player daemon (MPD) written in C++
@@ -9778,6 +9778,7 @@ sys-apps/groff 1.22.2: Text formatter used for man pages
 sys-apps/gscanbus 0.8: Bus scanning, testing and topology visualizing tool for Linux IEEE1394 subsystem
 sys-apps/gsmartcontrol 1.0.2: Hard disk drive health inspection tool
 sys-apps/haveged 1.9.1 1.9.2-r1: A simple entropy daemon using the HAVEGE algorithm
+sys-apps/hd-idle 1.05: Utility for spinning down hard disks after a period of idle time
 sys-apps/hdparm 9.51 9.52: Utility to change hard drive performance parameters
 sys-apps/help2man 1.47.4: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
