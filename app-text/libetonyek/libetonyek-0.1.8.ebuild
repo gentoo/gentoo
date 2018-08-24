@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libetonyek"
 LICENSE="|| ( GPL-2+ LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE="doc static-libs test"
 
 RDEPEND="
