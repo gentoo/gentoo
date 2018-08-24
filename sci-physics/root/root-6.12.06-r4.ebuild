@@ -19,7 +19,7 @@ SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 IUSE="+X avahi aqua +asimage +davix emacs +examples fits fftw fortran
 	+gdml graphviz +gsl http jemalloc kerberos ldap libcxx memstat
 	+minuit mysql odbc +opengl oracle postgres prefix pythia6 pythia8
-	+python qt4 qt5 R +roofit root7 shadow sqlite +ssl table +tbb test
+	+python qt5 R +roofit root7 shadow sqlite +ssl table +tbb test
 	+threads +tiff +tmva +unuran vc xinetd +xml xrootd"
 
 SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
@@ -27,7 +27,7 @@ LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
 KEYWORDS="~amd64 ~x86"
 
 REQUIRED_USE="
-	!X? ( !asimage !opengl !qt4 !qt5 !tiff )
+	!X? ( !asimage !opengl !qt5 !tiff )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	tmva? ( gsl )
 	davix? ( ssl xml )
@@ -55,10 +55,6 @@ CDEPEND="
 			virtual/opengl
 			virtual/glu
 			x11-libs/gl2ps:0=
-		)
-		qt4? (
-			dev-qt/qtcore:4=
-			dev-qt/qtgui:4=
 		)
 		qt5? (
 			dev-qt/qtcore:5=
@@ -233,8 +229,8 @@ src_configure() {
 		-Dpythia8=$(usex pythia8)
 		-Dpython=$(usex python)
 		-Dqt5web=$(usex qt5)
-		-Dqtgsi=$(usex qt4)
-		-Dqt=$(usex qt4)
+		-Dqtgsi=OFF
+		-Dqt=OFF
 		-Drfio=OFF
 		-Droofit=$(usex roofit)
 		-Droot7=$(usex root7)
