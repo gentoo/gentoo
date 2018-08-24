@@ -274,6 +274,7 @@ src_configure() {
 		$(use_with ssl openssl)
 		$(use_with ssl md5-passwords)
 		$(use_with ssl ssl-engine)
+		$(use_with !elibc_Cygwin hardening) #659210
 	)
 
 	# stackprotect is broken on musl x86
