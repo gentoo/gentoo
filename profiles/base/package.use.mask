@@ -164,10 +164,6 @@ dev-java/oracle-jre-bin:9 gentoo-vm
 # Requires audacious, which is masked. Bug 632513
 media-libs/freeverb3 jack
 
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2017)
-# USE=qt4 depends on masked dev-qt/qtwebkit:4, bug #620754
-sci-physics/root qt4
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (18 Sep 2017)
 # Ian Stakenvicius <axs@gentoo.org> (27 Sep 2017)
 # Depends on >=icu-59, still masked.
