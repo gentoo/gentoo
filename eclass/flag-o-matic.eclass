@@ -34,6 +34,9 @@ setup-allowed-flags() {
 
 		# CPPFLAGS and LDFLAGS
 		'-[DUILR]*' '-Wl,*'
+
+		# Linker choice flag
+		'-fuse-ld'
 	)
 
 	# allow a bunch of flags that negate features / control ABI
