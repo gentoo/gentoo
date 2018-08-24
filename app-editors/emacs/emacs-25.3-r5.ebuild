@@ -201,6 +201,8 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
+		! use gtk && use gtk2 && ewarn \
+			"USE flag \"gtk2\" has no effect if \"gtk\" is not set."
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Cocoa) support"
 		myconf+=" --with-ns --disable-ns-self-contained"
