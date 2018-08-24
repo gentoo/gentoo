@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="Wine Mono is a replacement for the .NET runtime and class libraries in Wine"
+DESCRIPTION="A replacement for the .NET runtime and class libraries in Wine"
 HOMEPAGE="https://www.winehq.org/"
 SRC_URI="https://dl.winehq.org/wine/${PN}/${PV}/${P}.msi"
 
