@@ -52,8 +52,8 @@ SRC_URI="${SRC_URI}
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
 CDEPEND="
-	>=dev-libs/nss-3.28.3
-	>=dev-libs/nspr-4.13.1
+	>=dev-libs/nss-3.36.4
+	>=dev-libs/nspr-4.19
 	"
 
 DEPEND="rust? ( dev-lang/rust )
