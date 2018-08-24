@@ -9,7 +9,7 @@ CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
-inherit cmake-utils eapi7-ver elisp-common eutils fortran-2 \
+inherit cmake-utils cuda eapi7-ver elisp-common eutils fortran-2 \
 	prefix python-single-r1 toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
@@ -26,7 +26,7 @@ fi
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 
-IUSE="+X avahi aqua +asimage +davix emacs +examples fits fftw fortran
+IUSE="+X avahi aqua +asimage cuda +davix emacs +examples fits fftw fortran
 	+gdml graphviz +gsl http jemalloc kerberos ldap libcxx memstat
 	+minuit mysql odbc +opengl oracle postgres prefix pythia6 pythia8
 	+python qt5 R +roofit root7 shadow sqlite +ssl table +tbb test
@@ -77,6 +77,7 @@ CDEPEND="
 		>=x11-wm/afterstep-2.2.11[gif,jpeg,png,tiff?]
 	) )
 	avahi? ( net-dns/avahi[mdnsresponder-compat] )
+	cuda? ( >=dev-util/nvidia-cuda-toolkit-9.0 )
 	davix? ( net-libs/davix )
 	emacs? ( virtual/emacs )
 	fftw? ( sci-libs/fftw:3.0= )
@@ -198,6 +199,7 @@ src_configure() {
 		-Dchirp=OFF
 		-Dcling=ON # cling=OFF is broken
 		-Dcocoa=$(usex aqua)
+		-Dcuda=$(usex cuda)
 		-Dcxx14=$(usex root7)
 		-Dcxxmodules=OFF # requires clang, unstable
 		-Ddavix=$(usex davix)
@@ -260,9 +262,9 @@ src_configure() {
 		-Dtcmalloc=OFF
 		-Dtesting=$(usex test)
 		-Dthread=$(usex threads)
-		-Dtmva-cpu=$(usex tmva)
-		-Dtmva-gpu=OFF
 		-Dtmva=$(usex tmva)
+		-Dtmva-cpu=$(usex tmva)
+		-Dtmva-gpu=$(usex cuda)
 		-Dunuran=$(usex unuran)
 		-Dvc=$(usex vc)
 		-Dvdt=OFF
