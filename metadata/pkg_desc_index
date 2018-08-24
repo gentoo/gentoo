@@ -3034,7 +3034,7 @@ dev-libs/libcdio 0.93: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.90_p1-r1 0.93_p1: an advanced CDDA reader with error correction
 dev-libs/libcec 3.1.0-r1 4.0.2 4.0.2-r2: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
 dev-libs/libcgroup 0.41-r5: Tools and libraries to configure and manage kernel control groups
-dev-libs/libclc 0.2.0_pre20170929 0.2.0_pre20180610: OpenCL C library
+dev-libs/libclc 0.2.0_pre20180610: OpenCL C library
 dev-libs/libcli 1.9.4-r1 1.9.7: Cisco-style (telnet) command-line interface library
 dev-libs/libconfig 1.5: Libconfig is a simple library for manipulating structured configuration files
 dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
@@ -10687,7 +10687,7 @@ x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
 x11-drivers/xf86-input-keyboard 1.9.0: Keyboard input driver
 x11-drivers/xf86-input-libinput 0.27.1: X.org input driver based on libinput
 x11-drivers/xf86-input-mouse 1.9.2 1.9.3: X.Org driver for mouse input devices
-x11-drivers/xf86-input-mtrack 0.4.1 0.5.0: Xorg Driver for Multitouch Trackpads
+x11-drivers/xf86-input-mtrack 0.5.0: Xorg Driver for Multitouch Trackpads
 x11-drivers/xf86-input-synaptics 1.9.0 1.9.1: Driver for Synaptics touchpads
 x11-drivers/xf86-input-tslib 0.0.6-r3 1.2.0_rc1: X.org tslib input driver
 x11-drivers/xf86-input-vmmouse 13.1.0-r1: VMWare mouse input driver
@@ -10711,7 +10711,7 @@ x11-drivers/xf86-video-tdfx 1.4.7: 3Dfx video driver
 x11-drivers/xf86-video-vboxvideo 1.0.0: VirtualBox guest video driver
 x11-drivers/xf86-video-vesa 2.3.3 2.3.4 2.4.0: Generic VESA video driver
 x11-drivers/xf86-video-virtualbox 5.1.36: VirtualBox X11 video driver for Gentoo guest
-x11-drivers/xf86-video-vmware 13.0.1-r1 13.1.0 13.2.1 13.3.0: VMware SVGA video driver
+x11-drivers/xf86-video-vmware 13.3.0: VMware SVGA video driver
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++
 x11-libs/c++-gtk-utils 2.0.27 2.2.10: A number of classes and functions for programming GTK+ programs using C++
