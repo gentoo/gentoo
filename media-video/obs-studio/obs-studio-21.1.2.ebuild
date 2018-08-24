@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 CMAKE_MIN_VERSION=3.9.6
 
-inherit cmake-utils gnome2-utils python-any-r1
+inherit cmake-utils gnome2-utils python-single-r1
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -23,6 +23,7 @@ HOMEPAGE="https://obsproject.com"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+alsa fdk imagemagick jack luajit nvenc pulseaudio python speexdsp truetype v4l"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMON_DEPEND="
 	>=dev-libs/jansson-2.5
