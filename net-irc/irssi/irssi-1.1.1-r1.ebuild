@@ -1,22 +1,26 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 GENTOO_DEPEND_ON_PERL="no"
 
-inherit autotools perl-module git-r3
+inherit ltprune perl-module
 
-EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+# Keep for _rc compability
+MY_P="${P/_/-}"
 
 DESCRIPTION="A modular textUI IRC client with IPv6 support"
 HOMEPAGE="https://irssi.org/"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV/_/-}/${MY_P}.tar.xz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+perl selinux socks5 +proxy libressl"
 
-CDEPEND="sys-libs/ncurses:0=
+CDEPEND="
+	sys-libs/ncurses:0=
 	>=dev-libs/glib-2.6.0
 	!libressl? ( dev-libs/openssl:= )
 	libressl? ( dev-libs/libressl:= )
@@ -25,25 +29,16 @@ CDEPEND="sys-libs/ncurses:0=
 
 DEPEND="
 	${CDEPEND}
-	virtual/pkgconfig
-	dev-lang/perl
-	|| (
-		www-client/lynx
-		www-client/elinks
-	)"
+	virtual/pkgconfig"
 
 RDEPEND="
 	${CDEPEND}
 	selinux? ( sec-policy/selinux-irc )
 	perl? ( !net-im/silc-client )"
 
-src_prepare() {
-	sed -i -e /^autoreconf/d autogen.sh || die
-	NOCONFIGURE=1 ./autogen.sh || die
+RESTRICT="test"
 
-	eapply_user
-	eautoreconf
-}
+S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	econf \
@@ -55,11 +50,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-
+	default
 	use perl && perl_delete_localpod
-
 	prune_libtool_files --modules
-
-	dodoc AUTHORS ChangeLog README.md TODO NEWS
 }
