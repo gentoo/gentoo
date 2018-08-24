@@ -5,8 +5,6 @@ EAPI="6"
 
 inherit eapi7-ver eutils flag-o-matic libtool multilib toolchain-funcs
 
-PATCHES=( "${FILESDIR}"/policy-hardening.patch )
-
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/ImageMagick/ImageMagick.git"
 	inherit git-r3
@@ -75,6 +73,18 @@ REQUIRED_USE="corefonts? ( truetype )
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	default
+
+	# Apply hardening #664236
+	cp "${FILESDIR}"/policy-hardening.snippet "${S}" || die
+	sed -i -e '/^<policymap>$/ {
+			r policy-hardening.snippet
+			d
+		}' \
+		config/policy.xml || \
+		die "Failed to apply hardening of policy.xml"
+	einfo "policy.xml hardened"
+
 	# Install default (unrestricted) policy in $HOME for test suite #664238
 	local _im_local_config_home="${HOME}/.config/ImageMagick"
 	mkdir -p "${_im_local_config_home}" || \
@@ -82,12 +92,10 @@ src_prepare() {
 	cp "${FILESDIR}"/policy.test.xml "${_im_local_config_home}/policy.xml" || \
 		die "Failed to install default blank policy.xml in '${_im_local_config_home}'"
 
-	local ati_cards mesa_cards nvidia_cards render_cards
-	default
-
 	elibtoolize # for Darwin modules
 
 	# For testsuite, see https://bugs.gentoo.org/show_bug.cgi?id=500580#c3
+	local ati_cards mesa_cards nvidia_cards render_cards
 	shopt -s nullglob
 	ati_cards=$(echo -n /dev/ati/card* | sed 's/ /:/g')
 	if test -n "${ati_cards}"; then
@@ -209,7 +217,7 @@ pkg_postinst() {
 	else
 		local v
 		for v in ${REPLACING_VERSIONS}; do
-			if ! ver_test "${v}" -gt "7.0.8.10-r1"; then
+			if ! ver_test "${v}" -gt "7.0.8.10-r2"; then
 				# This is an upgrade
 				_show_policy_xml_notice=yes
 
@@ -224,6 +232,8 @@ pkg_postinst() {
 		elog "which will prevent the usage of the following coders by default:"
 		elog ""
 		elog "  - PS"
+		elog "  - PS2"
+		elog "  - PS3"
 		elog "  - EPS"
 		elog "  - PDF"
 		elog "  - XPS"
