@@ -24,16 +24,18 @@ RDEPEND="
 	dev-python/xlwt[${PYTHON_USEDEP}]
 "
 
-# Presence of pandas older than v0.23 makes tablib tests (which sometimes tries
-# to load pandas dataframes) fail.
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
-		!<dev-python/pandas-0.23
 	)
 "
+
+# Test require >=dev-python/pandas-0.23 which is difficult to stabilize. At the
+# time of this writing, we had to stabilize tablib due to a security bug, which
+# is why we temporarily RESTRICT tests. Bug #659790
+RESTRICT="test"
 
 PATCHES=(
 	# https://github.com/kennethreitz/tablib/issues/297
