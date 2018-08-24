@@ -773,7 +773,7 @@ app-emulation/virtualbox-guest-additions 5.1.36 5.2.14: VirtualBox kernel module
 app-emulation/virtualbox-modules 5.1.36 5.2.14: Kernel Modules for Virtualbox
 app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
-app-emulation/wine-mono 4.6.4 4.7.1: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
+app-emulation/wine-mono 4.6.4 4.7.1: A replacement for the .NET runtime and class libraries in Wine
 app-emulation/wine-vanilla 3.0.1 3.0.2: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170823: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4 0.6.4-r1: HP48 Calculator Emulator
@@ -1164,10 +1164,10 @@ app-office/kexi 3.1.0: Visual database applications creator
 app-office/kmymoney 5.0.1-r2: Personal finance manager based on KDE Frameworks
 app-office/ledger 3.1.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.1: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 6.0.3.2: A full office productivity suite
+app-office/libreoffice 6.0.3.2 6.0.6.2: A full office productivity suite
 app-office/libreoffice-bin 6.0.3.2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.0.3.2: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 6.0.3.2: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 6.0.3.2 6.0.6.2: Translations for the Libreoffice suite
 app-office/lyx 2.3.0: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
@@ -1376,22 +1376,22 @@ app-text/lcdf-typetools 2.106: Font utilities for eg manipulating OTF
 app-text/lesspipe 1.83: a preprocessor for less
 app-text/libabw 0.1.2: Library parsing abiword documents
 app-text/libebook 0.1.2-r1: Library parsing various ebook formats
-app-text/libepubgen 0.1.0: EPUB generator for librevenge
-app-text/libetonyek 0.1.7: Library parsing Apple Keynote presentations
+app-text/libepubgen 0.1.0 0.1.1: EPUB generator for librevenge
+app-text/libetonyek 0.1.7 0.1.8: Library parsing Apple Keynote presentations
 app-text/libexttextcat 3.4.5: Library implementing N-gram-based text categorization
 app-text/libgepub 0.4: GObject based library for handling and rendering epub documents
 app-text/libgxps 0.3.0: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.2: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.4: Library parsing Microsoft Publisher documents
-app-text/libmwaw 0.3.13: Library parsing many pre-OSX MAC text formats
+app-text/libmwaw 0.3.13 0.3.14: Library parsing many pre-OSX MAC text formats
 app-text/libodfgen 0.1.6: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24-r2: Library for handling paper characteristics
 app-text/libqxp 0.0.1: Library parsing QuarkXpress documents
 app-text/libspectre 0.2.7: A library for rendering Postscript documents
-app-text/libstaroffice 0.0.5: Import filter for old StarOffice documents
+app-text/libstaroffice 0.0.5 0.0.6: Import filter for old StarOffice documents
 app-text/libwpd 0.10.2: WordPerfect Document import/export library
 app-text/libwpg 0.3.2: C++ library to read and parse graphics in WPG
-app-text/libwps 0.4.8: Microsoft Works file word processor format import filter library
+app-text/libwps 0.4.8 0.4.10: Microsoft Works file word processor format import filter library
 app-text/linuxdoc-tools 0.9.72: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 26b_p20180114: graphical PDF viewer which aims to superficially resemble less(1)
 app-text/lout 3.40: High-level language for document formatting
@@ -7606,7 +7606,7 @@ media-libs/libopendaap 0.4.0: A library to connect to iTunes(R) music shares
 media-libs/libopenraw 0.0.9 0.1.2: A decoding library for RAW image formats
 media-libs/libopenshot 0.1.8: Video editing library used by OpenShot
 media-libs/libopenshot-audio 0.1.4: Audio library used by OpenShot
-media-libs/libpagemaker 0.0.3-r1: C++ Library that parses the file format of Aldus/Adobe PageMaker documents.
+media-libs/libpagemaker 0.0.3-r1 0.0.4: C++ Library that parses the file format of Aldus/Adobe PageMaker documents.
 media-libs/libpano13 2.9.18 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 6.11.32 6.12.27: Library to load, handle and manipulate images in the PGF format
 media-libs/libpng 1.2.57 1.5.28 1.6.34: Portable Network Graphics library
