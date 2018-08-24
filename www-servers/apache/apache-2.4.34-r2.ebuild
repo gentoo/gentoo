@@ -122,7 +122,7 @@ MODULE_CRITICAL="
 	mime
 	unixd
 "
-inherit apache-2 systemd toolchain-funcs
+inherit apache-2 systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="The Apache Web Server"
 HOMEPAGE="https://httpd.apache.org/"
@@ -220,6 +220,9 @@ src_install() {
 
 pkg_postinst() {
 	apache-2_pkg_postinst || die "apache-2_pkg_postinst failed"
+
+	tmpfiles_process apache.conf #662544
+
 	# warnings that default config might not work out of the box
 	local mod cmod
 	for mod in ${MODULE_CRITICAL} ; do
