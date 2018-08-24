@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 MPL-2.0 )"
 SLOT="0.10"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc64 x86 ~x86-fbsd"
 IUSE="doc +tools"
 
 RDEPEND="dev-libs/librevenge"
