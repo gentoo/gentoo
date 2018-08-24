@@ -151,6 +151,7 @@ REQUIRED_USE="apache2_modules_http2? ( ssl )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4.34-suexec_parallel_install.patch" #661358
+	"${FILESDIR}"/${P}-PR62557.patch #663312
 )
 
 pkg_setup() {
