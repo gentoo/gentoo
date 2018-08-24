@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.6-mingw.patch #393573
 	"${FILESDIR}"/${PN}-1.0.6-out-of-tree-build.patch
 	"${FILESDIR}"/${PN}-1.0.6-CVE-2016-3189.patch #620466
+	"${FILESDIR}"/${PN}-1.0.6-ubsan-error.patch
 )
 
 DOCS=( CHANGES README{,.COMPILATION.PROBLEMS,.XML.STUFF} manual.pdf )
