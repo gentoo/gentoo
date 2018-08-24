@@ -46,7 +46,7 @@ COMMON_DEPEND="
 	imagemagick? ( media-gfx/imagemagick:= )
 	jack? ( virtual/jack )
 	luajit? ( dev-lang/luajit:2 )
-	nvenc? ( media-video/ffmpeg:=[nvenc(+),video_cards_nvidia(+)] )
+	nvenc? ( media-video/ffmpeg:=[nvenc] )
 	pulseaudio? ( media-sound/pulseaudio )
 	python? ( ${PYTHON_DEPS} )
 	speexdsp? ( media-libs/speexdsp )
