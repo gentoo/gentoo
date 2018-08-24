@@ -162,7 +162,7 @@ app-arch/arj 3.10.22-r5: Utility for opening arj archives
 app-arch/atool 0.39.0: a script for managing file archives of various types
 app-arch/brotli 1.0.2: Generic-purpose lossless compression algorithm
 app-arch/bsdsfv 1.18-r2: all-in-one SFV checksum utility
-app-arch/bzip2 1.0.6-r9: A high-quality data compressor used extensively by Gentoo Linux
+app-arch/bzip2 1.0.6-r10: A high-quality data compressor used extensively by Gentoo Linux
 app-arch/cabextract 1.6: Extracts files from Microsoft cabinet archive files
 app-arch/cfv 1.18.3-r1: Utility to test and create .sfv, .csv, .crc and md5sum files
 app-arch/cksfv 1.3.14: SFV checksum utility (simple file verification)
