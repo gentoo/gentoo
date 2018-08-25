@@ -3,36 +3,35 @@
 
 EAPI=6
 
+REV="249"
 WANT_AUTOMAKE=1.9
-
 inherit autotools desktop gnome2-utils xdg-utils
-
-rev="r249"
 
 DESCRIPTION="Analog waveform viewer for SPICE-like simulations"
 HOMEPAGE="http://gwave.sourceforge.net"
-SRC_URI="https://sourceforge.net/code-snapshots/svn/g/gw/gwave/code/gwave-code-${rev}-trunk.zip"
+SRC_URI="https://sourceforge.net/code-snapshots/svn/g/gw/gwave/code/gwave-code-${REV}-trunk.zip"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE="gnuplot plotutils"
 SLOT="0"
 
-DEPEND="app-arch/unzip
+COMMON_DEPEND="
 	>=dev-scheme/guile-2[deprecated,networking]
 	<dev-scheme/guile-2.2
 	dev-scheme/guile-gnome-platform
 	x11-libs/guile-gtk"
 
-RDEPEND="${DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	sci-electronics/electronics-menu
 	gnuplot? ( sci-visualization/gnuplot )
 	plotutils? ( media-libs/plotutils )"
 
-DEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	app-arch/unzip
 	app-text/docbook-sgml-utils"
 
-S="${WORKDIR}/gwave-code-${rev}-trunk"
+S="${WORKDIR}/gwave-code-${REV}-trunk"
 
 PATCHES=(
 	"${FILESDIR}"/${P}_as-needed.patch
@@ -45,8 +44,9 @@ PATCHES=(
 	)
 
 src_prepare() {
-	sed 's/AM_INIT_AUTOMAKE(gwave, [0-9]*)/AM_INIT_AUTOMAKE(gwave, ${PV})/' -i configure.ac || die
 	default
+	sed -e 's/AM_INIT_AUTOMAKE(gwave, [0-9]*)/AM_INIT_AUTOMAKE(gwave, ${PV})/' \
+		-i configure.ac || die
 	eautoreconf
 }
 
@@ -54,10 +54,6 @@ src_install() {
 	default
 	newicon icons/wave-drag-ok.xpm gwave.xpm
 	make_desktop_entry gwave "Gwave" gwave "Electronics"
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
