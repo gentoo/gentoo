@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=sys-fs/lvm2:= ostree? ( dev-libs/glib:= dev-util/ostree:= ) dev-go/go-md2man test? ( sys-apps/util-linux ) >=dev-lang/go-1.9
+DESCRIPTION=containers/storage library
+EAPI=6
+HOMEPAGE=https://github.com/containers/storage
+IUSE=ostree test
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=sys-fs/lvm2:= ostree? ( dev-libs/glib:= dev-util/ostree:= )
+RESTRICT=test? ( userpriv ) !test? ( test )
+SLOT=0
+SRC_URI=https://github.com/containers/storage/archive/17c7d1fee5603ccf6dd97edc14162fc1510e7e23.tar.gz -> containers-storage-0_pre20180730.tar.gz https://github.com/pquerna/ffjson/archive/af8b230fcd2007c7095168ca8ab94c68b60840c6.tar.gz -> github.com-pquerna-ffjson-af8b230fcd2007c7095168ca8ab94c68b60840c6.tar.gz
+_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
+_md5_=c50bc1336d1ae36455335ca578a32d28
