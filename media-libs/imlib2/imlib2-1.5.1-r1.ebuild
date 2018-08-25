@@ -64,12 +64,13 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	V=1 emake install DESTDIR="${D}"
+	find "${D}" -name '*.la' -delete || die
+}
 
+multilib_src_install_all() {
 	if use doc; then
 		local HTML_DOCS=( "${S}"/doc/. )
 		rm "${S}"/doc/Makefile.{am,in} || die
 	fi
 	einstalldocs
-
-	find "${D}" -name '*.la' -delete || die
 }
