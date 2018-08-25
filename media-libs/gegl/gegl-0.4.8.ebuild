@@ -11,11 +11,11 @@ inherit autotools gnome2-utils python-any-r1 vala
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gegl.git"
+	EGIT_REPO_URI="git://git.gnome.org/gegl"
 	SRC_URI=""
 else
 	SRC_URI="http://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A graph based image processing framework"
@@ -73,6 +73,11 @@ DEPEND="${RDEPEND}
 	)
 	vala? ( $(vala_depend) )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.3.12-failing-tests.patch"
+	"${FILESDIR}/${P}-remove-imath-version.patch"
+)
 
 pkg_setup() {
 	use test && use introspection && python-any-r1_pkg_setup
@@ -151,7 +156,7 @@ src_configure() {
 	if use test; then
 		myeconfargs+=( $(use_with ffmpeg gexiv2) )
 	else
-		myeconfargs+=( "--without-gexiv2" )
+		myeconfargs+=( --without-gexiv2 )
 	fi
 
 	econf "${myeconfargs[@]}"

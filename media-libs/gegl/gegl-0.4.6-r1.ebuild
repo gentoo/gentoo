@@ -7,10 +7,10 @@ PYTHON_COMPAT=( python2_7 )
 # vala and introspection support is broken, bug #468208
 VALA_USE_DEPEND=vapigen
 
-inherit versionator gnome2-utils eutils autotools python-any-r1 vala
+inherit autotools gnome2-utils python-any-r1 vala
 
 if [[ ${PV} == *9999* ]]; then
-	inherit autotools git-r3
+	inherit git-r3
 	EGIT_REPO_URI="git://git.gnome.org/gegl"
 	SRC_URI=""
 else
@@ -21,7 +21,7 @@ fi
 DESCRIPTION="A graph based image processing framework"
 HOMEPAGE="http://www.gegl.org/"
 
-LICENSE="|| ( GPL-3 LGPL-3 )"
+LICENSE="|| ( GPL-3+ LGPL-3 )"
 SLOT="0.4"
 
 IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg2k lcms lensfun openexr raw sdl svg test tiff umfpack vala v4l webp"
@@ -36,7 +36,7 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	dev-libs/json-glib
-	>=media-libs/babl-0.1.46
+	>=media-libs/babl-0.1.54
 	sys-libs/zlib
 	>=x11-libs/gdk-pixbuf-2.32:2
 	x11-libs/pango
@@ -50,7 +50,7 @@ RDEPEND="
 	jpeg2k? ( >=media-libs/jasper-1.900.1:= )
 	lcms? ( >=media-libs/lcms-2.8:2 )
 	lensfun? ( >=media-libs/lensfun-0.2.5 )
-	openexr? ( >=media-libs/openexr-1.6.1:= )
+	openexr? ( =media-libs/openexr-2.2*:= )
 	>=media-libs/libpng-1.6.0:0=
 	raw? ( >=media-libs/libraw-0.15.4:0= )
 	sdl? ( >=media-libs/libsdl-1.2.0 )
@@ -78,8 +78,6 @@ pkg_setup() {
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.12-failing-tests.patch
-	"${FILESDIR}"/${P}-ffmpeg-4-0-compat-1.patch  # bug 654172
-	"${FILESDIR}"/${P}-ffmpeg-4-0-compat-2.patch  # bug 654172
 )
 
 src_prepare() {
