@@ -24,9 +24,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 python_test() {
-	cd example || die
 	# Upstream's package mistakenly includes __pycache__ directory that make
 	# tests fail.
-	rm -rf __pycache__ || die
+	rm -rf example/__pycache__ || die
 	pytest -v || die
 }
