@@ -13,6 +13,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="git://git.osmocom.org/${PN}.git"
+	KEYWORDS=""
 else
 	#SRC_URI="http://cgit.osmocom.org/gr-osmosdr/snapshot/gr-osmosdr-${PV}.tar.xz"
 	#git clone git://git.osmocom.org/gr-osmosdr.git
@@ -24,7 +25,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-IUSE="bladerf fcd hackrf iqbalance mirisdr python rtlsdr soapy uhd"
+IUSE="bladerf fcd hackrf iqbalance mirisdr python rtlsdr sdrplay soapy uhd"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
@@ -34,6 +35,7 @@ RDEPEND="${PYTHON_DEPS}
 	iqbalance? ( net-wireless/gr-iqbal:=[${PYTHON_USEDEP}] )
 	mirisdr? ( net-libs/libmirisdr:= )
 	rtlsdr? ( >=net-wireless/rtl-sdr-0.5.3:= )
+	sdrplay? ( net-wireless/sdrplay )
 	soapy? ( net-wireless/soapysdr )
 	uhd? ( net-wireless/uhd:=[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
@@ -56,6 +58,8 @@ src_configure() {
 		-DENABLE_RTL_TCP="$(usex rtlsdr)"
 		-DENABLE_SOAPY="$(usex soapy)"
 		-DENABLE_UHD="$(usex uhd)"
+		-DENABLE_SDRPLAY="$(usex sdrplay)"
+		-DENABLE_NONFREE="$(usex sdrplay)"
 	)
 
 	cmake-utils_src_configure
