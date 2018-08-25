@@ -5847,7 +5847,7 @@ dev-ruby/http 0.9.8-r2: An easy-to-use client library for making requests from R
 dev-ruby/http-cookie 1.0.3: A ruby library to handle HTTP cookies
 dev-ruby/http-form_data 1.0.3: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
-dev-ruby/httparty 0.16.0: Makes http fun! Also, makes consuming restful web services dead easy
+dev-ruby/httparty 0.16.0 0.16.2: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpclient 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
 dev-ruby/i18n 0.7.0-r3 0.9.1 0.9.5-r1: Add Internationalization support to your Ruby application
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
@@ -5874,7 +5874,7 @@ dev-ruby/minitest 4.7.5-r2 5.3.3-r1 5.10.3: minitest/unit is a small and fast re
 dev-ruby/mocha 0.10.5-r2 0.14.0 1.1.0 1.4.0: Mocking and stubbing using a syntax like that of JMock and SchMock
 dev-ruby/multi_json 1.12.1: A gem to provide swappable JSON backends
 dev-ruby/multi_test 0.1.2: A uniform interface for Ruby testing libraries
-dev-ruby/multi_xml 0.5.5: A generic swappable back-end for XML parsing
+dev-ruby/multi_xml 0.5.5 0.6.0-r1: A generic swappable back-end for XML parsing
 dev-ruby/mustache 1.0.5: Mustache is a framework-agnostic way to render logic-free views
 dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
 dev-ruby/narray 0.6.1.2: Numerical N-dimensional Array class
@@ -5889,7 +5889,7 @@ dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/nokogiri 1.8.1: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
-dev-ruby/ox 2.8.2: A fast XML parser and Object marshaller
+dev-ruby/ox 2.8.2 2.9.4: A fast XML parser and Object marshaller
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
 dev-ruby/patron 0.10.0: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pg 0.18.4-r1 0.21.0: Ruby extension library providing an API to PostgreSQL
