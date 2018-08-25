@@ -38,6 +38,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/findassimp-3.3.1.patch"
 	"${FILESDIR}/${P}-qt-5.11.0.patch"
+	"${FILESDIR}/${P}-disabletest.patch" # bug 659122
 )
 
 src_configure() {
