@@ -20,7 +20,10 @@ EGIT_COMMIT="17c7d1fee5603ccf6dd97edc14162fc1510e7e23"
 SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 RDEPEND="sys-fs/lvm2:=
-	ostree? ( dev-libs/glib:= )"
+	ostree? (
+		dev-libs/glib:=
+		dev-util/ostree:=
+	)"
 DEPEND="${RDEPEND}
 	dev-go/go-md2man
 	test? ( sys-apps/util-linux )"
