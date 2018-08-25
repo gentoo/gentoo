@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Gentoo's genpatches for Linux 4.14, with Con Kolivas' MuQSS process scheduler.
+EAPI=6
+HOMEPAGE=https://www.kernel.org/ https://www.gentoo.org/ https://dev.gentoo.org/~mpagano/genpatches/ http://kernel.kolivas.org/ https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/
+IUSE=experimental symlink build deblob
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 !deblob? ( linux-firmware )
+RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf )
+RESTRICT=binchecks strip
+SLOT=4.14.66
+SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.14.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.14-gnu/deblob-4.14 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.14-gnu/deblob-check -> deblob-check-4.14 ) mirror://gentoo/genpatches-4.14-72.base.tar.xz mirror://gentoo/genpatches-4.14-72.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.14-72.experimental.tar.xz ) http://ck.kolivas.org/patches/muqss/4.0/4.14/4.14-sched-MuQSS_162.patch -> ck-sources-4.14-muqss.patch https://github.com/ckolivas/linux/commit/25849740d77dfc089fdbfb53623e50d38a972aff.patch -> ck-sources-4.14-blkio-fix.patch https://github.com/ckolivas/linux/commit/7bb09fbdf490f5de8eafc635ab858b1f38dca84c.patch -> ck-sources-4.14-irqregsdeclaration-fix.patch
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	43ddf5aaffa7a8d0482df54d25a66a1f	kernel-2	bc2f2b5caeb6f89c673a8a4dced6511e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=5f8b5ea95724c5da6f209548a3032509
