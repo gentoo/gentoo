@@ -1,12 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit linux-mod versionator
+inherit linux-mod
 
 MY_P="${P/_rc/-rc}"
-MY_SLOT="$(get_version_component_range 1-2)"
+MY_SLOT="$(ver_cut 1-2)"
 
 DESCRIPTION="LTTng Kernel Tracer Modules"
 HOMEPAGE="http://lttng.org"
