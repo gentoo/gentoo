@@ -26,8 +26,8 @@ fi
 LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT"
 SLOT="4"
 KEYWORDS=""
-IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
-REQUIRED_USE="cairo? ( X ) pango? ( cairo ) qt4? ( X )"
+IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango static-libs +table test +xml"
+REQUIRED_USE="cairo? ( X ) pango? ( cairo )"
 
 RDEPEND="dev-libs/glib:2
 	sys-apps/dbus
@@ -58,11 +58,6 @@ RDEPEND="dev-libs/glib:2
 	lua? ( dev-lang/lua:= )
 	nls? ( sys-devel/gettext )
 	opencc? ( app-i18n/opencc:= )
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtdbus:4
-		dev-qt/qtgui:4
-	)
 	xml? (
 		app-text/iso-codes
 		dev-libs/libxml2
@@ -109,9 +104,9 @@ src_configure() {
 		-DENABLE_LUA=$(usex lua)
 		-DENABLE_OPENCC=$(usex opencc)
 		-DENABLE_PANGO=$(usex pango)
-		-DENABLE_QT=$(usex qt4)
-		-DENABLE_QT_GUI=$(usex qt4)
-		-DENABLE_QT_IM_MODULE=$(usex qt4)
+		-DENABLE_QT=OFF
+		-DENABLE_QT_GUI=OFF
+		-DENABLE_QT_IM_MODULE=OFF
 		-DENABLE_SNOOPER=$(if use gtk2 || use gtk3; then echo yes; else echo no; fi)
 		-DENABLE_STATIC=$(usex static-libs)
 		-DENABLE_TABLE=$(usex table)
