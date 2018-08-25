@@ -4,6 +4,10 @@
 	<maintainer type="person">
 		<email>radhermit@gentoo.org</email>
 	</maintainer>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
 	<use>
 		<flag name="alias">Enable plugin for alias control</flag>
 		<flag name="buflist">Enable buflist plugin</flag>
