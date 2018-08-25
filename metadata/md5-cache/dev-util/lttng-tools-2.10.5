@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure pretend setup
+DEPEND=dev-libs/userspace-rcu dev-libs/popt dev-libs/libxml2 ust? ( dev-util/lttng-ust:= )
+DESCRIPTION=Linux Trace Toolkit - next generation
+EAPI=7
+HOMEPAGE=http://lttng.org
+IUSE=+ust kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/userspace-rcu dev-libs/popt dev-libs/libxml2 ust? ( dev-util/lttng-ust:= )
+SLOT=0/2.10
+SRC_URI=http://lttng.org/files/lttng-tools/lttng-tools-2.10.5.tar.bz2
+_eclasses_=linux-info	915cae3d7d636732918d18827fb1c226	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=7b4acae0630e99d96b00a0e16e80c71e
