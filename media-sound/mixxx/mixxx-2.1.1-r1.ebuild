@@ -50,6 +50,7 @@ RDEPEND="
 	media-libs/taglib
 	media-libs/vamp-plugin-sdk
 	sci-libs/fftw:3.0=
+	sys-power/upower
 	virtual/libusb:1
 	virtual/opengl
 	x11-libs/libX11
