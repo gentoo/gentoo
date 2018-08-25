@@ -4,10 +4,10 @@ DESCRIPTION=provides an XS boost for some of Type::Tiny's built-in type constrai
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Type-Tiny-XS/
 IUSE=test minimal
-KEYWORDS=amd64 ~hppa ppc x86
+KEYWORDS=amd64 hppa ppc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!minimal? ( dev-perl/Type-Tiny ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TO/TOBYINK/Type-Tiny-XS-0.012.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
-_md5_=4611bde9757ca31267f47ef0a1a9bd66
+_md5_=01b0f2a65fefbe44c181b9bb6e52e49f
