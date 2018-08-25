@@ -14,10 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 x86 ppc ppc64"
 
 RDEPEND="
+	dev-python/httplib2
 	sys-libs/ncurses:0="
 
 DEPEND="
 	${RDEPEND}"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.1-tinfo.patch
 )
