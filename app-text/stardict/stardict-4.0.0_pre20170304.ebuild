@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ LICENSE="CPL-1.0 GPL-3 LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="advertisement cal debug dictdotcn espeak examples flite
-fortune gnome gucharmap +htmlparse info man perl +powerwordparse
+fortune gucharmap +htmlparse info man perl +powerwordparse
 pronounce python qqwry spell tools updateinfo +wikiparse +wordnet
 +xdxfparse youdaodict"
 
@@ -40,19 +40,13 @@ COMMON_DEPEND="
 	x11-libs/pango
 	espeak? ( >=app-accessibility/espeak-1.29 )
 	flite? ( app-accessibility/flite )
-	gnome? (
-		gnome-base/gconf:2
-		gnome-base/libbonobo
-		gnome-base/libgnome
-		gnome-base/orbit:2
-	)
-	gucharmap? ( gnome-extra/gucharmap:0= )
+	gucharmap? ( gnome-extra/gucharmap:2.90= )
 	spell? ( >=app-text/enchant-1.2 )
 	tools? (
+		dev-db/mysql-connector-c
 		dev-libs/expat
 		dev-libs/libpcre:=
 		dev-libs/libxml2:=
-		virtual/mysql
 		python? ( ${PYTHON_DEPS} )
 	)
 "
@@ -74,7 +68,7 @@ REQUIRED_USE="tools? ( python? ( ${PYTHON_REQUIRED_USE} ) )"
 # docs are messy, installed manually below
 DOCS=""
 
-PATCHES=( "${FILESDIR}/${P}-tabfile.patch" )
+PATCHES=( "${FILESDIR}/${PN}-4.0.0_pre20160518-tabfile.patch" )
 
 src_prepare() {
 	# From Fedora
@@ -98,9 +92,7 @@ src_prepare() {
 	fi
 
 	# bug 604318
-	if ! use gnome; then
-		sed -i '/AM_GCONF_SOURCE_2/d' dict/configure.ac || die
-	fi
+	sed -i '/AM_GCONF_SOURCE_2/d' dict/configure.ac || die
 
 	eapply_user
 	eautoreconf
@@ -108,15 +100,12 @@ src_prepare() {
 }
 
 src_configure() {
-	# Hint: EXTRA_ECONF="--enable-gnome-support" and manual install of
-	# libbonobo-2, libgnome-2, libgnomeui-2, gconf-2 and orbit-2 will
-	# give you GNOME 2.x support, that is otherwise considered deprecated
-	# because of the deep GNOME 2.x core library dependencies
-
 	# Festival plugin crashes, bug 188684. Disable for now.
+	# Gnome2 support is disabled due to deprecation request, bug 644346
 	gnome2_src_configure \
 		--disable-darwin-support \
 		--disable-festival \
+		--disable-gnome-support \
 		--disable-gpe-support \
 		--disable-maemo-support \
 		--disable-schemas-install \
@@ -128,7 +117,6 @@ src_configure() {
 		$(use_enable espeak) \
 		$(use_enable flite) \
 		$(use_enable fortune) \
-		$(use_enable gnome gnome-support) \
 		$(use_enable gucharmap) \
 		$(use_enable htmlparse) \
 		$(use_enable info) \
