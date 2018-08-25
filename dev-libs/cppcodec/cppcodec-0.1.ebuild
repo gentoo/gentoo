@@ -20,7 +20,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-LICENSE="GPL-3"
+LICENSE="MIT"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
