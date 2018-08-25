@@ -13,6 +13,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
 
 DEPEND="gnome-base/libgtop
 	media-libs/imlib2[X]"
+RDEPEND="${DEPEND}"
 
 # Easier to patch configure directly here
 PATCHES=( "${FILESDIR}"/${P}-cflags.patch )

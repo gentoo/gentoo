@@ -15,3 +15,4 @@ DEPEND="x11-libs/libXext
 	x11-libs/libXfixes
 	x11-libs/libXmu
 	x11-libs/libXpm"
+RDEPEND="${DEPEND}"
