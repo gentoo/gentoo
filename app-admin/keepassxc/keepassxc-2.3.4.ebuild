@@ -47,6 +47,10 @@ DEPEND="
 	dev-qt/qtconcurrent:5
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.3.3-qt-5.11-edit-entry-widget-includes.patch" #655844
+)
+
 src_prepare() {
 	 use test || \
 		sed -e "/^find_package(Qt5Test/d" -i CMakeLists.txt || die

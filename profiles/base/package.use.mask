@@ -72,10 +72,6 @@ sci-libs/ipopt hsl
 dev-lang/rust extended
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# app-backup/holland-lib-mysql will be removed (#643502)
-app-backup/holland mysql
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # media-sound/mp3gain and media-sound/aacgain will be removed (#630954).
 media-sound/abcde lame
 media-sound/split2flac mp3 mp4

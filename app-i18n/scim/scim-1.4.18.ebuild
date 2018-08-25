@@ -12,16 +12,12 @@ SRC_URI="https://github.com/scim-im/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 sparc x86 ~x86-fbsd"
-IUSE="doc gtk3 qt4"
+IUSE="doc gtk3"
 
 RDEPEND="x11-libs/libX11
 	dev-libs/glib:2
 	gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( x11-libs/gtk+:2 )
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-	)
 	>=dev-libs/atk-1
 	>=x11-libs/pango-1"
 DEPEND="${RDEPEND}
@@ -51,8 +47,7 @@ src_configure() {
 		--enable-ld-version-script \
 		$(usex gtk3 --with-gtk-version={3,2}) \
 		--disable-qt3-immodule \
-		$(use_enable qt4 qt4-immodule) \
-		--with-qt4-moc="$(qt4_get_bindir)/moc"
+		--disable-qt4-immodule
 }
 
 src_compile() {
