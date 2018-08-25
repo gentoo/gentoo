@@ -25,16 +25,17 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-IUSE="bladerf fcd hackrf iqbalance mirisdr python rtlsdr soapy uhd"
+IUSE="bladerf fcd hackrf iqbalance mirisdr python rtlsdr sdrplay soapy uhd"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
 	>=net-wireless/gnuradio-3.7_rc:0=[fcd?,${PYTHON_USEDEP}]
-	bladerf? ( net-wireless/bladerf:= )
+	bladerf? ( >=net-wireless/bladerf-2018.08_rc1:= )
 	hackrf? ( net-libs/libhackrf:= )
 	iqbalance? ( net-wireless/gr-iqbal:=[${PYTHON_USEDEP}] )
 	mirisdr? ( net-libs/libmirisdr:= )
 	rtlsdr? ( >=net-wireless/rtl-sdr-0.5.3:= )
+	sdrplay? ( net-wireless/sdrplay )
 	soapy? ( net-wireless/soapysdr )
 	uhd? ( net-wireless/uhd:=[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
@@ -57,6 +58,8 @@ src_configure() {
 		-DENABLE_RTL_TCP="$(usex rtlsdr)"
 		-DENABLE_SOAPY="$(usex soapy)"
 		-DENABLE_UHD="$(usex uhd)"
+		-DENABLE_SDRPLAY="$(usex sdrplay)"
+		-DENABLE_NONFREE="$(usex sdrplay)"
 	)
 
 	cmake-utils_src_configure
