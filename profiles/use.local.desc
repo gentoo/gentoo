@@ -4023,7 +4023,6 @@ net-im/gajim:xhtml - Enable XHTML support
 net-im/kadu:gadu - Enables Gadu communication protocol
 net-im/kadu:mpd - Enables Music Player Daemon support
 net-im/kadu:otr - Enable char encryption via OTR library
-net-im/kadu:phonon - Enables phonon audio plugin
 net-im/kadu:sdk - Install Kadu SDK (cmake module, API headers)
 net-im/kadu:speech - Enables speech module
 net-im/mcabber:aspell - Adds support for app-text/aspell spell checker.
