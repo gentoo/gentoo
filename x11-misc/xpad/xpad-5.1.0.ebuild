@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-fbsd"
 
 RDEPEND="
-	dev-libs/glib:2
+	>=dev-libs/glib-2.56:2
 	app-accessibility/at-spi2-atk
 	dev-libs/atk
 	sys-devel/gettext
