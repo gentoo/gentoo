@@ -9,5 +9,5 @@ RDEPEND=dev-libs/ocl-icd
 RESTRICT=mirror fetch strip
 SLOT=0
 SRC_URI=amdgpu-pro-17.50-552542.tar.xz
-_eclasses_=unpacker	87633b2194cdb56adaa1f5a5c8862c44
+_eclasses_=unpacker	ee2f5086cd7e7b747b061f58db14d89e
 _md5_=85b5fd32cac988e4535b4b7af2f2b818
