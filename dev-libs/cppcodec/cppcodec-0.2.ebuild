@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	test? (
 		virtual/pkgconfig
-		>=dev-cpp/catch-2.2.0
+		>=dev-cpp/catch-2.3.0
 	)"
 
 src_configure() {
