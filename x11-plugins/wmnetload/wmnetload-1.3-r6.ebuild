@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 DEPEND=">=x11-libs/libdockapp-0.7:="
+RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-r4-configure.patch" )
 
