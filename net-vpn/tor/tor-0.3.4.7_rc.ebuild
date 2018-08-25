@@ -48,8 +48,6 @@ pkg_setup() {
 }
 
 src_configure() {
-	# We have to enable unit tests since they break the build.
-	# See: https://trac.torproject.org/projects/tor/ticket/26792
 	export ac_cv_lib_cap_cap_init=$(usex caps)
 	econf \
 		--localstatedir="${EPREFIX}/var" \
@@ -61,7 +59,6 @@ src_configure() {
 		--disable-rust \
 		--disable-restart-debugging \
 		--disable-zstd-advanced-apis  \
-		--enable-unittests \
 		$(use_enable lzma) \
 		$(use_enable scrypt libscrypt) \
 		$(use_enable seccomp) \
@@ -69,6 +66,7 @@ src_configure() {
 		$(use_enable tor-hardening gcc-hardening) \
 		$(use_enable tor-hardening linker-hardening) \
 		$(use_enable web tor2web-mode) \
+		$(use_enable test unittests) \
 		$(use_enable test coverage) \
 		$(use_enable zstd)
 }
