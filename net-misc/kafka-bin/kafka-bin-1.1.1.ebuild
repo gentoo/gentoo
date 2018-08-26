@@ -21,9 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="internal-zookeeper"
 
-RDEPEND="
-	|| ( virtual/jre:1.8 virtual/jre:1.7 )
-"
+RDEPEND="virtual/jre:1.8"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"

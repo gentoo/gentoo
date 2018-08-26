@@ -33,9 +33,7 @@ DEPEND="${CP_DEPEND}
 RDEPEND="${CP_DEPEND}
 	ecdsa? (
 		|| (
-			dev-java/icedtea:7[-sunec]
 			dev-java/icedtea:8[-sunec]
-			dev-java/icedtea-bin:7
 			dev-java/icedtea-bin:8
 			dev-java/oracle-jre-bin
 			dev-java/oracle-jdk-bin

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE=""
 
 RDEPEND="dev-lang/php[hash,ldap,session,xml,nls]
-		 || ( <dev-lang/php-5.3[pcre] >=dev-lang/php-5.3 )
+	>=dev-lang/php-5.3
 	virtual/httpd-php"
 
 need_httpd_cgi
