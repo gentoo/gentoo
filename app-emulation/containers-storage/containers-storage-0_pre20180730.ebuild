@@ -14,19 +14,25 @@ DESCRIPTION="containers/storage library"
 HOMEPAGE="https://github.com/containers/storage"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="ostree test"
+IUSE="btrfs +device-mapper ostree test"
 EGO_PN="${HOMEPAGE#*//}"
 EGIT_COMMIT="17c7d1fee5603ccf6dd97edc14162fc1510e7e23"
 SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
-RDEPEND="sys-fs/lvm2:=
+RDEPEND="
+	btrfs? ( sys-fs/btrfs-progs )
+	device-mapper? ( sys-fs/lvm2:= )
 	ostree? (
 		dev-libs/glib:=
 		dev-util/ostree:=
 	)"
 DEPEND="${RDEPEND}
 	dev-go/go-md2man
-	test? ( sys-apps/util-linux )"
+	test? (
+		sys-fs/btrfs-progs
+		sys-fs/lvm2
+		sys-apps/util-linux
+	)"
 RESTRICT="test? ( userpriv ) !test? ( test )"
 
 src_unpack() {
@@ -35,6 +41,14 @@ src_unpack() {
 
 src_prepare() {
 	default
+
+	[[ -f ${S}/src/${EGO_PN}/hack/btrfs_tag.sh ]] || die
+	use btrfs || { echo -e "#!/bin/sh\necho btrfs_noversion exclude_graphdriver_btrfs" > \
+		"${S}/src/${EGO_PN}/hack/btrfs_tag.sh" || die; }
+
+	[[ -f ${S}/src/${EGO_PN}/hack/libdm_tag.sh ]] || die
+	use device-mapper || { echo -e "#!/bin/sh\necho btrfs_noversion exclude_graphdriver_devicemapper" > \
+		"${S}/src/${EGO_PN}/hack/libdm_tag.sh" || die; }
 
 	[[ -f ${S}/src/${EGO_PN}/hack/ostree_tag.sh ]] || die
 	use ostree || { echo -e "#!/bin/sh\ntrue" > \
@@ -65,8 +79,6 @@ src_prepare() {
 		-e 's:TestCopyCaseH(:_\0:' \
 		-e 's:TestCopyCaseHFSym(:_\0:' \
 		-e 's:TestCopyCaseJ(:_\0:' \
-		-e 's:TestCopyCaseEFSym(:_\0:' \
-		-e 's:TestCopyCaseG(:_\0:' \
 		-e 's:TestCopyCaseJFSym(:_\0:' \
 		-i "${S}/src/${EGO_PN}/pkg/archive/copy_unix_test.go" || die
 	sed -e 's:TestMount(:_\0:' \
@@ -78,9 +90,9 @@ src_compile() {
 	ln -s "${S}/src/${EGO_PN}/vendor/github.com/pquerna/ffjson" "${WORKDIR}/${P}/src/github.com/pquerna/ffjson" || die
 	mkdir -p "${S}/bin" || die
 	cd "${S}/bin" || die
-	GOPATH="${S}" GOBIN="${S}/bin" \
+	GOPATH="${S}" GOBIN="${S}/bin" GOCACHE=off \
 		go build -v -work -x ${EGO_BUILD_FLAGS} "${S}/src/github.com/pquerna/ffjson/ffjson.go" || die
-	GOPATH="${S}" GOBIN="${S}/bin" PATH="${S}/bin:${PATH}" \
+	GOPATH="${S}" GOBIN="${S}/bin" PATH="${S}/bin:${PATH}" GOCACHE=off \
 		emake -C "${S}/src/${EGO_PN}" containers-storage docs
 }
 
@@ -93,5 +105,5 @@ src_install() {
 }
 
 src_test() {
-	GOPATH="${S}" unshare -m emake -C "${S}/src/${EGO_PN}" local-test-unit
+	GOPATH="${S}" GOCACHE=off unshare -m emake -C "${S}/src/${EGO_PN}" local-test-unit
 }
