@@ -20,13 +20,12 @@ else
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
-IUSE="alsa +analog +digital doc examples fcd +filter grc jack oss pager performance-counters portaudio qt4 sdl uhd +utils wavelet"
+IUSE="alsa +analog +digital doc examples fcd +filter grc jack oss pager performance-counters portaudio sdl uhd +utils wavelet"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		analog? ( filter )
 		digital? ( filter analog )
 		pager? ( filter analog )
-		qt4? ( filter )
 		uhd? ( filter analog )
 		fcd? ( || ( alsa oss ) )
 		wavelet? ( analog )"
@@ -54,11 +53,6 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	portaudio? (
 		>=media-libs/portaudio-19_pre
-	)
-	qt4? (
-		dev-python/PyQt4[X,opengl,${PYTHON_USEDEP}]
-		dev-python/pyqwt:5
-		dev-qt/qtgui:4
 	)
 	sdl? ( media-libs/libsdl )
 	uhd? ( >=net-wireless/uhd-3.4.3-r1:=[${PYTHON_USEDEP}] )
@@ -109,14 +103,13 @@ src_configure() {
 		$(cmake-utils_use_enable uhd GR_UHD) \
 		$(cmake-utils_use_enable utils GR_UTILS) \
 		$(cmake-utils_use_enable wavelet GR_WAVELET) \
-		$(cmake-utils_use_enable qt4 GR_QTGUI) \
 		$(cmake-utils_use_enable sdl GR_VIDEO_SDL) \
+		-DENABLE_GR_QTGUI=OFF \
 		-DENABLE_GR_WXGUI=OFF \
 		-DENABLE_GR_CORE=ON \
 		-DSYSCONFDIR="${EPREFIX}"/etc \
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
-	use qt4 && mycmakeargs+=( -DQWT_INCLUDE_DIRS="${EPREFIX}"/usr/include/qwt5 )
 	cmake-utils_src_configure
 }
 
