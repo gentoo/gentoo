@@ -63,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-configure-flags.patch
 	"${FILESDIR}"/${P}-pkg-config.patch
 	"${FILESDIR}"/${P}-CVE-2017-1154{6,7}.patch
+	"${FILESDIR}"/${P}-gcc5.patch # bug 606894
 )
 
 src_prepare() {
