@@ -68,10 +68,6 @@ dev-lang/rust extended
 # dev-python/visual will be removed (#630252)
 net-analyzer/scapy visual
 
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# net-dns/hesiod will be removed (#606652)
-sys-freebsd/freebsd-lib hesiod
-
 # Lars Wendler <polynomial-c@gentoo.org> (14 Mar 2018)
 # Broken on all 32bit arches. Globally masked because of sys-apps/dmapi having
 # no active upstream anymore.
