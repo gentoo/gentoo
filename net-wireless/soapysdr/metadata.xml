@@ -16,6 +16,6 @@
 		<flag name="uhd">Add support for Ettus USRP hardware</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">cpothosware/SoapySDR</remote-id>
+		<remote-id type="github">pothosware/SoapySDR</remote-id>
 	</upstream>
 </pkgmetadata>
