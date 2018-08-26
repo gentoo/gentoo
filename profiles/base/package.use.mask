@@ -443,10 +443,6 @@ net-nds/nsscache nssdb
 # java wrappers fail to build (bug #548858)
 =app-admin/setools-3.3.8-r7 java
 
-# James Le Cuirot <chewi@gentoo.org> (05 Apr 2015)
-# dev-java/sun-j2me-bin is going away.
-dev-java/proguard j2me
-
 # Lars Wendler <polynomial-c@gentoo.org> (19 Mar 2015)
 # >=games-strategy/freeciv-2.5.0 requires >=dev-lang/lua-5.2
 games-strategy/freeciv system-lua
