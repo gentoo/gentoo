@@ -1,13 +1,13 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit cmake-utils eutils
+inherit cmake-utils
 
 DESCRIPTION="The DICOM Toolkit"
 HOMEPAGE="https://dicom.offis.de/dcmtk.php.en"
-SRC_URI="ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/dcmtk360/${P}.tar.gz"
+SRC_URI="ftp://dicom.offis.de/pub/dicom/offis/software/${PN}/${PN}363/${P}.tar.gz"
 
 LICENSE="OFFIS"
 KEYWORDS="~amd64 ~arm ~x86"
@@ -15,27 +15,21 @@ SLOT="0"
 IUSE="doc png ssl tcpd tiff +threads xml zlib"
 
 RDEPEND="
+	dev-libs/icu:=
 	virtual/jpeg:0
 	png? ( media-libs/libpng:* )
-	ssl? ( dev-libs/openssl:0 )
+	ssl? ( dev-libs/openssl:0= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	tiff? ( media-libs/tiff:0 )
 	xml? ( dev-libs/libxml2:2 )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )
-	media-gfx/graphviz"
+	media-gfx/graphviz
+	doc? ( app-doc/doxygen )"
 
 PATCHES=(
-	"${FILESDIR}"/01_fix_perl_script_path.patch
-	"${FILESDIR}"/02_dcmtk_3.6.0-1.patch
-	"${FILESDIR}"/04_nostrip.patch
-	"${FILESDIR}"/dcmtk_version_number.patch
-	"${FILESDIR}"/png_tiff.patch
-	"${FILESDIR}"/regression_stacksequenceisodd.patch
-	"${FILESDIR}"/${PN}-asneeded.patch
-	"${FILESDIR}"/${PN}-gcc472-error.patch
-	"${FILESDIR}"/${PN}-fix_doc_install.patch
+	"${FILESDIR}"/${P}-dcmqrdb-cfg.patch
+	"${FILESDIR}"/${P}-nostrip.patch
 )
 
 src_prepare() {
@@ -61,14 +55,14 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
-		-DCMAKE_INSTALL_PREFIX=/
-		$(cmake-utils_use tiff DCMTK_WITH_TIFF)
-		$(cmake-utils_use png DCMTK_WITH_PNG)
-		$(cmake-utils_use xml DCMTK_WITH_XML)
-		$(cmake-utils_use zlib DCMTK_WITH_ZLIB)
-		$(cmake-utils_use ssl DCMTK_WITH_OPENSSL)
-		$(cmake-utils_use doc DCMTK_WITH_DOXYGEN)
-		$(cmake-utils_use threads DCMTK_WITH_THREADS)
+		-DDCMTK_WITH_ICU=ON
+		-DDCMTK_WITH_TIFF=$(usex tiff)
+		-DDCMTK_WITH_PNG=$(usex png)
+		-DDCMTK_WITH_XML=$(usex xml)
+		-DDCMTK_WITH_ZLIB=$(usex zlib)
+		-DDCMTK_WITH_OPENSSL=$(usex ssl)
+		-DDCMTK_WITH_DOXYGEN=$(usex doc)
+		-DDCMTK_WITH_THREADS=$(usex threads)
 	)
 
 	cmake-utils_src_configure
@@ -88,11 +82,10 @@ src_compile() {
 }
 
 src_install() {
-	cmake-utils_src_install
-
 	doman doxygen/manpages/man1/*
 
 	if use doc; then
-		dohtml -r "${S}"/doxygen/htmldocs/*
+		local HTML_DOCS=( "${S}"/doxygen/htmldocs/. )
 	fi
+	cmake-utils_src_install
 }

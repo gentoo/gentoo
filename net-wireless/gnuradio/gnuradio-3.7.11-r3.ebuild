@@ -21,7 +21,7 @@ else
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
-IUSE="+audio +alsa atsc +analog +digital channels doc dtv examples fcd fec +filter grc jack log noaa oss pager performance-counters portaudio +qt4 sdl test trellis uhd vocoder +utils wavelet wxwidgets zeromq"
+IUSE="+audio +alsa atsc +analog +digital channels doc dtv examples fcd fec +filter grc jack log noaa oss pager performance-counters portaudio sdl test trellis uhd vocoder +utils wavelet wxwidgets zeromq"
 #tests are entirely broken on newer gcc even with -fpermissive added to *FLAGS
 RESTRICT=test
 
@@ -35,7 +35,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		digital? ( filter analog )
 		dtv? ( fec )
 		pager? ( filter analog )
-		qt4? ( filter )
 		uhd? ( filter analog )
 		fcd? ( || ( alsa oss ) )
 		wavelet? ( analog )
@@ -66,13 +65,6 @@ RDEPEND="${PYTHON_DEPS}
 	log? ( dev-libs/log4cpp )
 	portaudio? (
 		>=media-libs/portaudio-19_pre
-	)
-	qt4? (
-		>=dev-python/PyQt4-4.4[X,opengl,${PYTHON_USEDEP}]
-		>=dev-python/pyqwt-5.2:5[${PYTHON_USEDEP}]
-		>=dev-qt/qtcore-4.4:4
-		>=dev-qt/qtgui-4.4:4
-		x11-libs/qwt:6[qt4(-)]
 	)
 	sdl? ( >=media-libs/libsdl-1.2.0 )
 	uhd? ( >=net-wireless/uhd-3.9.6:=[${PYTHON_USEDEP}] )
@@ -158,7 +150,7 @@ src_configure() {
 		-DENABLE_GR_VOCODER="$(usex vocoder)"
 		-DENABLE_GR_WAVELET="$(usex wavelet)"
 		-DENABLE_GR_WXGUI="$(usex wxwidgets)"
-		-DENABLE_GR_QTGUI="$(usex qt4)"
+		-DENABLE_GR_QTGUI=OFF
 		-DENABLE_GR_VIDEO_SDL="$(usex sdl)"
 		-DENABLE_GR_ZEROMQ="$(usex zeromq)"
 		-DENABLE_GR_CORE=ON
