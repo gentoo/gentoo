@@ -5,7 +5,7 @@ EAPI=6
 VIM_VERSION="8.0"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="threads"
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 inherit vim-doc flag-o-matic xdg-utils gnome2-utils versionator bash-completion-r1 prefix python-single-r1 ruby-single
 
