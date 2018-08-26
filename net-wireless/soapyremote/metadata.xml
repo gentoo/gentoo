@@ -6,6 +6,6 @@
 		<name>Christian Ruppert</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">pothosware/SoapySDRPlay</remote-id>
+		<remote-id type="github">pothosware/SoapyRemote</remote-id>
 	</upstream>
 </pkgmetadata>
