@@ -1,5 +1,5 @@
---- ccextractor/src/CMakeLists.txt.orig	2017-07-25 12:22:29.294144514 -0600
-+++ ccextractor/src/CMakeLists.txt	2017-07-25 12:23:33.979149436 -0600
+--- a/CMakeLists.txt	2017-07-25 12:22:29.294144514 -0600
++++ b/CMakeLists.txt	2017-07-25 12:23:33.979149436 -0600
 @@ -25,14 +25,13 @@
  include_directories ("${PROJECT_SOURCE_DIR}/protobuf-c/")
  include_directories ("${PROJECT_SOURCE_DIR}/zvbi")
@@ -43,8 +43,8 @@
  
  ########################################################
  # Build using FFmpeg libraries
---- ccextractor/src/lib_ccx/CMakeLists.txt.orig	2017-07-25 12:32:32.803190443 -0600
-+++ ccextractor/src/lib_ccx/CMakeLists.txt	2017-07-25 12:25:40.819159089 -0600
+--- a/lib_ccx/CMakeLists.txt	2017-07-25 12:32:32.803190443 -0600
++++ b/lib_ccx/CMakeLists.txt	2017-07-25 12:25:40.819159089 -0600
 @@ -1,6 +1,6 @@
  cmake_policy (SET CMP0037 NEW)
  
