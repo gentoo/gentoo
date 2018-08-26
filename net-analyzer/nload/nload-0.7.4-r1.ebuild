@@ -20,6 +20,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${P}-tinfo.patch
 	"${FILESDIR}"/${P}-Eliminate-flicker-on-some-terminals.patch
+	"${FILESDIR}"/${P}-Makefile-spec-don-t-compress-man-page.patch
 )
 
 src_prepare() {
