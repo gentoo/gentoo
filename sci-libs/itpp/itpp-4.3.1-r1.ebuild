@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -37,8 +37,8 @@ src_prepare() {
 		itpp/CMakeLists.txt || die
 
 	# respect gentoo libdir
-	sed -i "s#/lib#/$(get_libdir)#" itpp-config.cmake.in
-	sed -i "s#/lib#/$(get_libdir)#" itpp.pc.cmake.in
+	sed -i "s#/lib#/$(get_libdir)#" itpp-config.cmake.in || die
+	sed -i "s#/lib#/$(get_libdir)#" itpp.pc.cmake.in || die
 	sed -i \
 		-e "s#LIBRARY DESTINATION lib#LIBRARY DESTINATION $(get_libdir)#" \
 		-e "s#ARCHIVE DESTINATION lib#ARCHIVE DESTINATION $(get_libdir)#" \
