@@ -199,10 +199,6 @@ gnome-extra/zeitgeist icu
 # require it.
 net-analyzer/check_mk livestatus wato
 
-# Matthias Maier <tamiko@gentoo.org> (31 May 2017)
-# mask dependencies on old paraview versions, bug #561084
-<sci-libs/openfoam-2.4.0 paraview
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (29 May 2017)
 # Does not build
 sci-libs/linux-gpib php
