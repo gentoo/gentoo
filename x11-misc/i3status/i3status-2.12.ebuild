@@ -38,9 +38,9 @@ src_compile() {
 
 pkg_postinst() {
 	fcaps cap_net_admin usr/bin/${PN}
-	einfo "${PN} can be used with any of the following programs:"
-	einfo "   i3bar (x11-wm/i3)"
-	einfo "   x11-misc/xmobar"
-	einfo "   x11-misc/dzen"
-	einfo "Please refer to manual: man ${PN}"
+	elog "${PN} can be used with any of the following programs:"
+	elog "   i3bar (x11-wm/i3)"
+	elog "   x11-misc/xmobar"
+	elog "   x11-misc/dzen"
+	elog "Please refer to manual: man ${PN}"
 }
