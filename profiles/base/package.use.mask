@@ -89,10 +89,6 @@ sys-freebsd/freebsd-lib hesiod
 # sys-fabric/mstflint will be removed (#594908)
 sys-fabric/ofed mstflint
 
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# x11-themes/vdrgraphtft-avp is being removed (#592066)
-media-plugins/vdr-music graphtft
-
 # Lars Wendler <polynomial-c@gentoo.org> (14 Mar 2018)
 # Broken on all 32bit arches. Globally masked because of sys-apps/dmapi having
 # no active upstream anymore.
