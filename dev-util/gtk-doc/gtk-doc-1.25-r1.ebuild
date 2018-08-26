@@ -50,6 +50,10 @@ src_prepare() {
 	# Remove global Emacs keybindings, bug #184588
 	eapply "${FILESDIR}"/${PN}-1.8-emacs-keybindings.patch
 
+	# Apply upstream commit 1baf9a6, bug #646850
+	sed -e '1,/exit 1/s/exit 1/exit $1/' \
+		-i gtkdoc-mkpdf.in || die
+
 	gnome2_src_prepare
 }
 
