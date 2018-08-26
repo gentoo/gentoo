@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils xdg-utils
 
 MY_P=Kst-${PV}
 
@@ -59,4 +59,12 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
