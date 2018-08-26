@@ -5482,7 +5482,6 @@ sys-devel/llvm:xar - Support dumping LLVM bitcode sections in Mach-O files (uses
 sys-fabric/ofed:dapl - Add support for DAPL abstraction layer
 sys-fabric/ofed:diags - Add dignostic tools for infiniband
 sys-fabric/ofed:ibacm - Add support for userspace pre-connection services
-sys-fabric/ofed:mstflint - Tools to burn Mellanox firmware
 sys-fabric/ofed:opensm - Add OpenSM - Subnet manager for infiniband
 sys-fabric/ofed:perftest - Add perftest utils
 sys-fabric/ofed:qperf - Add rdma tests
