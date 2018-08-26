@@ -24,7 +24,7 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ppc ~ppc64 ~sparc x86"
-IUSE="X +agg cairo cygnal dbus directfb doc dump egl fbcon +ffmpeg libav libressl gnome gtk harden jemalloc lirc mysql +nls nsplugin opengl openvg python sdl +sdl-sound ssh ssl test vaapi"
+IUSE="X +agg cairo cygnal dbus doc dump egl fbcon +ffmpeg libav libressl gnome gtk harden jemalloc lirc mysql +nls nsplugin opengl openvg python sdl +sdl-sound ssh ssl test vaapi"
 REQUIRED_USE="
 	dump? ( agg ffmpeg )
 	fbcon? ( agg )
@@ -50,9 +50,6 @@ RDEPEND="
 	media-libs/giflib:=
 	agg? ( x11-libs/agg )
 	cairo? ( x11-libs/cairo )
-	directfb? (
-		dev-libs/DirectFB
-	)
 	doc? (
 		>=app-text/docbook2X-0.8.8
 		app-text/docbook-sgml-utils
@@ -156,7 +153,6 @@ src_configure() {
 
 	# Set hardware acceleration.
 	use X && device+=",x11"
-	use directfb && device+=",directfb"
 	use egl && device+=",egl"
 	use fbcon && device+=",rawfb"
 	use vaapi && device+=",vaapi"
