@@ -133,9 +133,7 @@ RDEPEND="${COMMON_DEP}
 DEPEND="${COMMON_DEP} ${ALSA_COMMON_DEP} ${CUPS_COMMON_DEP} ${X_COMMON_DEP} ${X_DEPEND}
 	|| (
 		dev-java/icedtea-bin:8
-		dev-java/icedtea-bin:7
 		dev-java/icedtea:8
-		dev-java/icedtea:7
 	)
 	app-arch/cpio
 	app-arch/unzip
