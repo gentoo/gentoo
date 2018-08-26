@@ -43,7 +43,7 @@ DOCS=( AUTHORS README.kstScript )
 
 PATCHES=(
 	"${FILESDIR}/${P}-includes.patch"
-	"${FILESDIR}/${P}-qt-5.11b3.patch"
+	"${FILESDIR}/${P}-qt-5.11.patch"
 )
 
 src_configure() {
