@@ -18,7 +18,7 @@ IUSE="gog"
 REQUIRED_USE="^^ ( cdinstall gog )"
 RESTRICT="mirror bindist gog? ( fetch )"
 
-RDEPEND="|| ( games-fps/eduke32 games-fps/duke3d )"
+RDEPEND="games-fps/eduke32"
 DEPEND="gog? ( app-arch/unzip )"
 
 S=${WORKDIR}
