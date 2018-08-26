@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (26 Aug 2018)
+# Unused Java virtual from the days when the JDK was proprietary. Now
+# we assume that com.sun is always available. Removal in 30 days.
+java-virtuals/jdk-with-com-sun
+
 # Joerg Bornkessel <hd_brummy@gentoo.org> (26 Aug 2018)
 # masked for removal in ~30 Days
 # the plugin is written to manage the vdr2gentoo distribution,
@@ -557,10 +562,11 @@ app-admin/amazon-ec2-init
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1*
 
-# James Le Cuirot <chewi@gentoo.org> (03 Apr 2016)
-# Masking Spring Framework for the time being as 3.2.4 is old, has
-# multiple vulnerabilities, and we're not likely to update it
-# soon. Hopefully we can revisit it when the Maven stuff works out.
+# James Le Cuirot <chewi@gentoo.org> (26 Aug 2018)
+# Although the Spring Framework is very much alive, our packages are
+# ancient and our infrastructure is not ready to update it any time
+# soon. If you want this then join the Java team and be prepared to do
+# a lot of work. Removal in 30 days.
 dev-java/spring-aop
 dev-java/spring-beans
 dev-java/spring-core
