@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -39,7 +39,6 @@ RDEPEND="${COMMON_DEPEND}
 	|| (
 		x11-themes/adwaita-icon-theme
 		x11-themes/faenza-icon-theme
-		x11-themes/gnome-icon-theme
 		x11-themes/mate-icon-theme
 	)
 	appindicator? ( dev-libs/libappindicator:3[introspection] )
