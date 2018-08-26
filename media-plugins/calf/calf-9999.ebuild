@@ -46,6 +46,7 @@ src_configure() {
 	#$(use_with jack)
 	econf \
 		--prefix="${EPREFIX}"/usr \
+		--without-obsolete-check \
 		$(use_with lash) \
 		$(use_with lv2 lv2) \
 		$(usex lv2 "--with-lv2-dir=${EPREFIX}/usr/$(get_libdir)/lv2" "") \

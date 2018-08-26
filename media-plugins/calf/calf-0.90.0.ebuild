@@ -45,6 +45,7 @@ src_configure() {
 	#$(use_with gtk gui)
 	#$(use_with jack)
 	econf \
+		--without-obsolete-check \
 		$(use_with lash) \
 		$(use_with lv2 lv2) \
 		$(usex lv2 "--with-lv2-dir=/usr/$(get_libdir)/lv2" "") \
