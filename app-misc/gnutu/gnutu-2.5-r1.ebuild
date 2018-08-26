@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ IUSE=""
 
 RDEPEND="
 	>=dev-lang/mono-1.2.5.1-r1
-	|| ( ( >=dev-dotnet/gtk-sharp-2.10.0 >=dev-dotnet/glade-sharp-2.10.0 ) >=dev-dotnet/gtk-sharp-2.12.21 )
+	>=dev-dotnet/gtk-sharp-2.12.21
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
