@@ -12,7 +12,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
-DEPEND="|| ( >=dev-util/cweb-3.00 virtual/tex-base )"
+DEPEND="virtual/tex-base"
 S="${WORKDIR}"
 
 src_unpack() {
