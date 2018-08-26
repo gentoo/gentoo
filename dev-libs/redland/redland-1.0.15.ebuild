@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -13,8 +13,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="berkdb iodbc mysql odbc postgres sqlite ssl static-libs +xml"
 
-# Drop the libtool dep once libltdl goes stable.
-RDEPEND="|| ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 )
+RDEPEND="dev-libs/libltdl:0
 	mysql? ( virtual/mysql )
 	sqlite? ( =dev-db/sqlite-3* )
 	berkdb? ( sys-libs/db )
