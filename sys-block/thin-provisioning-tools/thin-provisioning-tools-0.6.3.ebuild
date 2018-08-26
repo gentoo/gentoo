@@ -17,11 +17,10 @@ IUSE="static test"
 LIB_DEPEND="dev-libs/expat[static-libs(+)]
 	dev-libs/libaio[static-libs(+)]"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
-# || ( ) is a non-future proof workaround for Portage unefficiency wrt #477050
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
 	test? (
-		|| ( dev-lang/ruby:2.9 dev-lang/ruby:2.8 dev-lang/ruby:2.7 dev-lang/ruby:2.6 dev-lang/ruby:2.5 dev-lang/ruby:2.4 dev-lang/ruby:2.3 dev-lang/ruby:2.2 dev-lang/ruby:2.1 dev-lang/ruby:2.0 )
+		|| ( dev-lang/ruby:2.5 dev-lang/ruby:2.4 dev-lang/ruby:2.3 )
 		>=dev-cpp/gtest-1.8.0
 		dev-util/cucumber
 		dev-util/aruba
