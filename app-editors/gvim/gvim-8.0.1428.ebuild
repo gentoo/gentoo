@@ -66,7 +66,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	racket? ( dev-scheme/racket )
-	ruby? ( || ( dev-lang/ruby:2.4 dev-lang/ruby:2.3 dev-lang/ruby:2.2 ) )
+	ruby? ( || ( dev-lang/ruby:2.4 dev-lang/ruby:2.3 ) )
 	selinux? ( sys-libs/libselinux )
 	session? ( x11-libs/libSM )
 	tcl? ( dev-lang/tcl:0= )
