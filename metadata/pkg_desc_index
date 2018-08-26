@@ -8507,7 +8507,7 @@ net-firewall/shorewall 5.2.0.4: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35-r1: A program used to manage a netfilter firewall
 net-firewall/xtables-addons 2.13: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.2: Kernel based automounter
-net-fs/cifs-utils 6.4 6.7: Tools for Managing Linux CIFS Client Filesystems
+net-fs/cifs-utils 6.7: Tools for Managing Linux CIFS Client Filesystems
 net-fs/curlftpfs 0.9.2-r3: File system for accessing ftp hosts based on FUSE
 net-fs/davfs2 1.5.4: Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
 net-fs/libnfs 1.9.7 2.0.0: Client library for accessing NFS shares over a network
