@@ -55,7 +55,7 @@ src_prepare() {
 	# fix -D deprecation warnings
 	sed -i -e "s|_BSD_SOURCE|_DEFAULT_SOURCE|g" \
 		"${S}"/config/configure.in \
-		"${S}"/CMakeLists.txt
+		"${S}"/CMakeLists.txt || die
 }
 
 src_configure() {
@@ -74,7 +74,7 @@ src_configure() {
 	cmake-utils_src_configure
 
 	if use doc; then
-		cd "${S}"/doxygen
+		cd "${S}"/doxygen || die
 		econf
 	fi
 }
@@ -83,16 +83,16 @@ src_compile() {
 	cmake-utils_src_compile
 
 	if use doc; then
-		emake -C "${S}"/doxygen || die
+		emake -C "${S}"/doxygen
 	fi
 }
 
 src_install() {
 	cmake-utils_src_install
 
-	doman doxygen/manpages/man1/* || die
+	doman doxygen/manpages/man1/*
 
 	if use doc; then
-		dohtml -r "${S}"/doxygen/htmldocs/* || die
+		dohtml -r "${S}"/doxygen/htmldocs/*
 	fi
 }
