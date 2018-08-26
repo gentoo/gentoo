@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,14 +14,12 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-IUSE="nssdb nsscache"
+IUSE="nsscache"
 
 DEPEND="${PYTHON_DEPS}
 		dev-python/python-ldap[${PYTHON_USEDEP}]
-		dev-python/pycurl[${PYTHON_USEDEP}]
-		nssdb? ( dev-python/bsddb3[${PYTHON_USEDEP}] )"
+		dev-python/pycurl[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
-		nssdb? ( sys-libs/nss-db )
 		nsscache? ( >=sys-auth/libnss-cache-0.10 )"
 RESTRICT="test"
 S="${WORKDIR}/${PN}-version-${PV}"
