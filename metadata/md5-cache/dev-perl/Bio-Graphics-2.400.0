@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-perl/GD-2.300.0 dev-perl/CGI || ( >=dev-perl/Bio-Coordinate-1.7.1 <=sci-biology/bioperl-1.6.924 ) >=dev-perl/Statistics-Descriptive-2.600.0 >=sci-biology/bioperl-1.5.9.1 dev-perl/CGI >=dev-perl/Module-Build-0.420.0 dev-lang/perl:=
+DEPEND=dev-perl/CGI >=dev-perl/GD-2.300.0 >=dev-perl/Statistics-Descriptive-2.600.0 <=sci-biology/bioperl-1.6.924 >=sci-biology/bioperl-1.5.9.1 >=dev-perl/Module-Build-0.420.0 dev-lang/perl:=
 DESCRIPTION=Generate images from Bio::Seq objects for visualization purposes
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Bio-Graphics/
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
-RDEPEND=>=dev-perl/GD-2.300.0 dev-perl/CGI || ( >=dev-perl/Bio-Coordinate-1.7.1 <=sci-biology/bioperl-1.6.924 ) >=dev-perl/Statistics-Descriptive-2.600.0 >=sci-biology/bioperl-1.5.9.1 dev-perl/CGI dev-lang/perl:=
+RDEPEND=dev-perl/CGI >=dev-perl/GD-2.300.0 >=dev-perl/Statistics-Descriptive-2.600.0 <=sci-biology/bioperl-1.6.924 >=sci-biology/bioperl-1.5.9.1 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/C/CJ/CJFIELDS/Bio-Graphics-2.40.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
-_md5_=ec951c09ac60ba617ec6162cce41df85
+_md5_=1c0ed6adc05a3fba46f68c2e0265d599
