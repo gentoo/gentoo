@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib multilib-minimal
+
+inherit multilib-minimal
 
 DESCRIPTION="An audio time-stretching and pitch-shifting library and utility program"
 HOMEPAGE="https://www.breakfastquay.com/rubberband/"
@@ -13,10 +14,11 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="static-libs"
 
-RDEPEND="media-libs/vamp-plugin-sdk[${MULTILIB_USEDEP}]
+RDEPEND="
+	media-libs/ladspa-sdk
 	media-libs/libsamplerate[${MULTILIB_USEDEP}]
 	media-libs/libsndfile
-	media-libs/ladspa-sdk
+	media-libs/vamp-plugin-sdk[${MULTILIB_USEDEP}]
 	sci-libs/fftw:3.0[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -43,5 +45,5 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	dodoc CHANGELOG README.txt
+	einstalldocs
 }
