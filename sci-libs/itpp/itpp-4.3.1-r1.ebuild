@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils multilib
+inherit cmake-utils
 
 DESCRIPTION="C++ library of mathematical, signal processing and communication"
 HOMEPAGE="http://itpp.sourceforge.net/"
@@ -15,12 +15,17 @@ KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 RDEPEND="
+	sci-libs/fftw:3.0=
 	virtual/blas
 	virtual/lapack
-	>=sci-libs/fftw-3"
+"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen virtual/latex-base )"
+	doc? (
+		app-doc/doxygen
+		virtual/latex-base
+	)
+"
 
 DOCS=( ChangeLog NEWS AUTHORS README )
 
@@ -48,7 +53,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBLA_VENDOR=Generic
-		$(cmake-utils_use doc HTML_DOCS)
+		-DHTML_DOCS=$(usex doc)
 	)
 	cmake-utils_src_configure
 }
