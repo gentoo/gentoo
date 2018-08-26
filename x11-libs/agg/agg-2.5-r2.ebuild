@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -17,7 +17,7 @@ IUSE="+gpc +truetype +X"
 # preffer X with enabled xcb, really
 RDEPEND="
 	media-libs/libsdl[X?]
-	X? ( || ( <x11-libs/libX11-1.3.99.901[xcb] >=x11-libs/libX11-1.3.99.901 ) )
+	X? ( >=x11-libs/libX11-1.3.99.901 )
 	truetype? ( media-libs/freetype:2 )
 "
 DEPEND="${RDEPEND}
