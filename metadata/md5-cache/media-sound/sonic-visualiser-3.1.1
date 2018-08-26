@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm prepare test
+DEPEND=app-arch/bzip2 >=dev-libs/capnproto-0.6:= dev-libs/serd dev-libs/sord dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 media-libs/alsa-lib media-libs/dssi media-libs/ladspa-sdk media-libs/liblrdf media-libs/libsamplerate media-libs/libsndfile media-libs/rubberband media-libs/speex media-libs/vamp-plugin-sdk sci-libs/fftw:3.0= id3tag? ( media-libs/libid3tag ) jack? ( media-sound/jack-audio-connection-kit ) mad? ( media-libs/libmad ) ogg? ( media-libs/libfishsound >=media-libs/liboggz-1.1.0 ) osc? ( media-libs/liblo ) portaudio? ( >=media-libs/portaudio-19_pre20071207 ) pulseaudio? ( media-sound/pulseaudio ) dev-qt/qttest:5 virtual/pkgconfig >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Music audio files viewer and analiser
+EAPI=6
+HOMEPAGE=https://www.sonicvisualiser.org/
+IUSE=id3tag jack mad ogg osc +portaudio pulseaudio
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-arch/bzip2 >=dev-libs/capnproto-0.6:= dev-libs/serd dev-libs/sord dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 media-libs/alsa-lib media-libs/dssi media-libs/ladspa-sdk media-libs/liblrdf media-libs/libsamplerate media-libs/libsndfile media-libs/rubberband media-libs/speex media-libs/vamp-plugin-sdk sci-libs/fftw:3.0= id3tag? ( media-libs/libid3tag ) jack? ( media-sound/jack-audio-connection-kit ) mad? ( media-libs/libmad ) ogg? ( media-libs/libfishsound >=media-libs/liboggz-1.1.0 ) osc? ( media-libs/liblo ) portaudio? ( >=media-libs/portaudio-19_pre20071207 ) pulseaudio? ( media-sound/pulseaudio )
+REQUIRED_USE=|| ( jack pulseaudio portaudio )
+SLOT=0
+SRC_URI=https://code.soundsoftware.ac.uk/attachments/download/2391/sonic-visualiser-3.1.1.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	b1d22ac8bdd4679ab79c71aca235009d	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=3dfd9f4750ae6abb8f5dfe70bce72d91
