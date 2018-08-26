@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-python/httplib2 sys-libs/ncurses:0= >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=a text-based calendar and scheduling application
+EAPI=6
+HOMEPAGE=https://calcurse.org/
+IUSE=abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~x86 ~ppc ~ppc64
+LICENSE=BSD-2
+RDEPEND=dev-python/httplib2 sys-libs/ncurses:0=
+RESTRICT=test
+SLOT=0
+SRC_URI=https://calcurse.org/files/calcurse-4.3.0.tar.gz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	0081a71a261724730ec4c248494f044d	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=4c2118e839ac9e51a08fbf3839418c41
