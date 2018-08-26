@@ -510,7 +510,6 @@ dev-java/jboss-logging doc
 # Mask ruby18-only compatible flags
 # Bugs: 483104, 483102
 <media-libs/libcaca-0.99_beta19 ruby
-media-sound/podcatcher bittorrent
 
 # Mike Frysinger <vapier@gentoo.org> (03 Feb 2014)
 # Upstream says to not use this for now.
