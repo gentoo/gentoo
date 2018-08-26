@@ -29,6 +29,39 @@
 
 #--- END OF EXAMPLES ---
 
+# Joerg Bornkessel <hd_brummy@gentoo.org> (26 Aug 2018)
+# masked for removal in ~30 Days
+# the plugin is written to manage the vdr2gentoo distribution,
+# useless in gentoo
+# bug 664670
+media-plugins/vdr-admin
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (26 Aug 2018)
+# masked for removal in ~30 Days
+# do not work anymore since paytv provider provider has changed to paytv provider sky
+# no converted to gettext handling
+# old makefile handling
+# dead on upstream since years..
+# bug 664672
+media-plugins/vdr-arghdirector
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (26 Aug 2018)
+# masked for removal in ~30 Days
+# full integrated in core vdr
+# dead on upstream thince years
+# useless
+#bug 664676
+media-plugins/vdr-rotor
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (26 Aug 2018)
+# masked for removal in ~30 Days
+# no converted to gettext handling
+# use old makefile handling
+# no upstream
+# dead since years
+# Bug 664678
+media-plugins/vdr-videosystem
+
 # Michał Górny <mgorny@gentoo.org> (26 Aug 2018)
 # Live ebuild only.  Dependencies can no longer be satisfied by ::gentoo
 # packages.  Bug #664658.  Removal in 30 days.
