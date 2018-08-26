@@ -48,5 +48,6 @@ src_configure() {
 
 	strip-linguas be bg ca de en en_CA en_GB en_US es fi fr hu it ja nb nl pl_PL pt_BR ru sr vi zh_CN zh_HK zh_TW
 
-	econf
+	econf \
+		--disable-werror
 }
