@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=x11-libs/libXt || ( >=app-i18n/scim-1.1 >=app-i18n/scim-cvs-1.1 ) nls? ( virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170422
+DEPEND=x11-libs/libXt >=app-i18n/scim-1.1 nls? ( virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170422
 DESCRIPTION=Smart Common Input Method (SCIM) Smart Pinyin Input Method
 EAPI=4
 HOMEPAGE=http://www.scim-im.org/
 IUSE=nls
 KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-2
-RDEPEND=x11-libs/libXt || ( >=app-i18n/scim-1.1 >=app-i18n/scim-cvs-1.1 ) nls? ( virtual/libintl )
+RDEPEND=x11-libs/libXt >=app-i18n/scim-1.1 nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://sourceforge/scim/scim-pinyin-0.5.92.tar.gz
 _eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	autotools-utils	696393cddf6200db17a31641f597b403	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	0081a71a261724730ec4c248494f044d	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=74fbb18d010d3cae7ece0ebd70f05ed8
+_md5_=b74fe45c6967c6f7341b01300d1dd57e
