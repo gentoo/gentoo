@@ -16,14 +16,15 @@ IUSE="graphviz"
 
 RDEPEND="
 	dev-libs/capstone
-	graphviz? ( media-gfx/graphviz )
+	dev-qt/qtconcurrent:5
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtconcurrent:5
-	dev-qt/qtgui:5
-	dev-qt/qtcore:5
+	graphviz? ( media-gfx/graphviz )
 "
 
 DEPEND="

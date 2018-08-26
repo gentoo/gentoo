@@ -45,13 +45,6 @@ app-emulation/qemu static
 sys-block/fio static
 sys-cluster/ceph static-libs
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (01 Jun 2018)
-# Qt 4 not available.
-app-i18n/fcitx:4 qt4
-app-i18n/scim qt4
-app-i18n/scim-bridge qt4
-app-i18n/uim qt4
-
 # Michał Górny <mgorny@gentoo.org> (16 May 2018)
 # Depends on last-rited sci-libs/coinhsl.
 sci-libs/ipopt hsl
@@ -70,11 +63,6 @@ sci-libs/ipopt hsl
 # rust[extended] file collides with dev-util/cargo, while everything
 # in tree uses the latter at the moment (#645562)
 dev-lang/rust extended
-
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# media-sound/mp3gain and media-sound/aacgain will be removed (#630954).
-media-sound/abcde lame
-media-sound/split2flac mp3 mp4
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # dev-python/visual will be removed (#630252)
@@ -510,7 +498,6 @@ dev-java/jboss-logging doc
 # Mask ruby18-only compatible flags
 # Bugs: 483104, 483102
 <media-libs/libcaca-0.99_beta19 ruby
-media-sound/podcatcher bittorrent
 
 # Mike Frysinger <vapier@gentoo.org> (03 Feb 2014)
 # Upstream says to not use this for now.
