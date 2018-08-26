@@ -25,7 +25,6 @@ RDEPEND="${CDEPEND}
 	|| (
 		>=sys-apps/sysvinit-2.87-r3
 		sys-apps/systemd[sysv-utils]
-		sys-apps/systemd-sysv-utils
 	)
 	sys-apps/coreutils[xattr(-)]
 	>=sys-apps/util-linux-2.21
