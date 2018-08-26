@@ -3,8 +3,6 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
-
 inherit cmake-utils
 
 DESCRIPTION="Soapy SDR plugin for SDRPlay"
