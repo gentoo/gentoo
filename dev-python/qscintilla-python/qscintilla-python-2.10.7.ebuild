@@ -33,14 +33,16 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}/Python
 
+src_prepare() {
+	default
+	python_copy_sources
+}
+
 src_configure() {
 	configuration() {
-		# Fix out-of-source build and installation of .sip files
-		ln -s "${S}"/sip || die
-
 		local myconf=(
 			"${PYTHON}"
-			"${S}"/configure.py
+			configure.py
 			--pyqt=PyQt5
 			--qmake="$(qt5_get_bindir)"/qmake
 			--sip-incdir="$(python_get_includedir)"
