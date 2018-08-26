@@ -49,6 +49,9 @@ all_ruby_prepare() {
 	sed -i -e '/httpclient streams response/,/^  end/ s:^:#:' \
 		-e '/are detected when manually specifying Authorization header/,/^    end/ s:^:#:' \
 		spec/acceptance/httpclient/httpclient_spec.rb
+
+	# Avoid specs that require network access
+	sed -i -e '/when request is not stubbed/,/^      end/ s:^:#:' spec/acceptance/shared/callbacks.rb
 }
 
 each_ruby_test() {
