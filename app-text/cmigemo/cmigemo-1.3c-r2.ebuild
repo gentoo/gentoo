@@ -19,7 +19,7 @@ DEPEND=">=app-dicts/migemo-dict-200812[unicode=]
 	|| (
 		net-misc/curl
 		net-misc/wget
-		net-misc/fetch
+		www-client/fetch
 	)
 	app-i18n/nkf"
 RDEPEND="${RDEPEND}
