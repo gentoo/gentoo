@@ -14,9 +14,8 @@ SRC_URI="https://github.com/Syncplay/syncplay/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 x86"
-IUSE="+client +server gui vlc"
+IUSE="+client +server vlc"
 REQUIRED_USE="vlc? ( client )
-	gui? ( client )
 	${PYTHON_REQUIRED_USE}"
 
 DEPEND=""
@@ -27,16 +26,13 @@ RDEPEND="${PYTHON_DEPS}
 		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 		dev-python/twisted-core[${PYTHON_USEDEP}]
 	)
-	gui? ( dev-python/pyside[${PYTHON_USEDEP}] )
 	vlc? ( media-video/vlc[lua] )"
 
 src_prepare() {
 	default
-	if ! use gui; then
-		sed -i 's/"noGui": False,/"noGui": True,/' \
-			syncplay/ui/ConfigurationGetter.py \
+	sed -i 's/"noGui": False,/"noGui": True,/' \
+		syncplay/ui/ConfigurationGetter.py \
 		|| die "Failed to patch ConfigurationGetter.py"
-	fi
 }
 
 src_compile() {

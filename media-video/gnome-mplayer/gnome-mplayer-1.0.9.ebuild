@@ -31,7 +31,7 @@ COMMON_DEPEND=">=dev-libs/glib-2.30
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.14 )"
 RDEPEND="${COMMON_DEPEND}
 	x11-themes/gnome-icon-theme-symbolic
-	|| ( >=media-video/mplayer-1.0_rc4_p20100101[libass] media-video/mplayer2[libass] )"
+	>=media-video/mplayer-1.0_rc4_p20100101[libass]"
 DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"

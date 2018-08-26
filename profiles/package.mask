@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (26 Aug 2018)
+# mod_python removal caused it to be reduced to agent-only, which is
+# apparently redundant to net-analyzer/check_mk_agent.  The package
+# is unmaintained and potentially vulnerable.  Bug #632648.
+# Removal in 30 days.
+net-analyzer/check_mk
+
+# Michał Górny <mgorny@gentoo.org> (26 Aug 2018)
 # Live ebuild only.  Dependencies can no longer be satisfied by ::gentoo
 # packages.  Unmaintained.  Bug #659370.  Removal in 30 days.
 app-crypt/simp_le
