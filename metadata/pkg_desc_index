@@ -7881,8 +7881,6 @@ media-plugins/vamp-aubio-plugins 0.5.0: Onset detection, pitch tracking, note tr
 media-plugins/vamp-libxtract-plugins 0.6.6.20121204: Vamp plugin encapsulating many of the functions of the LibXtract library
 media-plugins/vco-plugins 0.3.0: SAW-VCO ladspa plugin package. Anti-aliased oscillators
 media-plugins/vdr-actuator 1.2.1: VDR plugin: control an linear or horizon actuator attached trough the parallel port
-media-plugins/vdr-admin 0.8.0: VDR plugin: Admin OSD - This is not! the webadmin program called vdradmin
-media-plugins/vdr-arghdirector 0.2.6: VDR plugin: use the multifeed option of some Premiere channels - fork of vdr-director
 media-plugins/vdr-avards 0.2.4: VDR Plugin: Automatic Video Aspect Ratio Detection and Signaling
 media-plugins/vdr-cinebars 0.0.5: VDR Plugin: Show black bars to hide station logo
 media-plugins/vdr-clock 1.0.0-r1: VDR Plugin: Tea clock, clock
@@ -7911,7 +7909,6 @@ media-plugins/vdr-powermate 0.0.5: VDR PLUGIN: support the Powermate device
 media-plugins/vdr-remote 0.6.0-r1 0.7.0: VDR Plugin: use various devices for controlling vdr (keyboards, lirc, remotes bundled with tv-cards)
 media-plugins/vdr-remoteosd 1.0.0: VDR Plugin: server/client remoteosd
 media-plugins/vdr-remotetimers 1.0.2: VDR plugin: edit timers on remote vdr instances
-media-plugins/vdr-rotor 0.1.5: VDR Plugin: Add support for dishes with rotation control engine
 media-plugins/vdr-rssreader 2.0.0 2.2.1-r1: VDR Plugin: RSS reader
 media-plugins/vdr-screenshot 0.0.15: VDR Plugin: takes screenshots of the current video or tv screen by one keypress on your remote
 media-plugins/vdr-skincurses 2.0.0: VDR plugin: show content of menu in a shell window
