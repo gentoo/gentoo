@@ -313,10 +313,6 @@ virtual/jre:9
 # (<0.6) that have been punted from the tree.
 net-misc/cocaine-core
 
-# Patrice Clement <monsieurp@gentoo.org> (28 Oct 2017)
-# Missing dependencies.
->=dev-python/scrapy-1.4.0
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (22 Oct 2017)
 # Broken with recent Perl (5.26) and not used by anything
 # in the Gentoo repository. Please uninstall.
