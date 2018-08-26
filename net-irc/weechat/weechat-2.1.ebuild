@@ -40,7 +40,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	php? ( >=dev-lang/php-7.0:* )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( || ( dev-lang/ruby:2.5 dev-lang/ruby:2.4 dev-lang/ruby:2.3 dev-lang/ruby:2.2 ) )
+	ruby? ( || ( dev-lang/ruby:2.5 dev-lang/ruby:2.4 dev-lang/ruby:2.3 ) )
 	ssl? ( net-libs/gnutls )
 	spell? ( app-text/aspell )
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
