@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (26 Aug 2018)
+# Unused Java virtual from the days when the JDK was proprietary. Now
+# we assume that com.sun is always available. Removal in 30 days.
+java-virtuals/jdk-with-com-sun
+
 # Joerg Bornkessel <hd_brummy@gentoo.org> (26 Aug 2018)
 # masked for removal in ~30 Days
 # the plugin is written to manage the vdr2gentoo distribution,
