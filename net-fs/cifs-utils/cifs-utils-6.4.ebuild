@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,10 +25,7 @@ DEPEND="!net-fs/mount-cifs
 	caps? ( caps-ng? ( sys-libs/libcap-ng ) )
 	creds? ( sys-apps/keyutils )"
 PDEPEND="${DEPEND}
-	acl? ( || (
-		=net-fs/samba-3.6*[winbind]
-		>=net-fs/samba-4.0.0_alpha1
-	) )
+	acl? ( >=net-fs/samba-4.0.0_alpha1 )
 "
 
 REQUIRED_USE="acl? ( ads )"
