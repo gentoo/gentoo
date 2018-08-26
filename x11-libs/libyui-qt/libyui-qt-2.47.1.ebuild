@@ -1,13 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils
 
-DESCRIPTION="UI abstraction library - GTK plugin"
-HOMEPAGE="https://github.com/libyui/libyui-gtk"
-SRC_URI="https://github.com/libyui/${PN}/archive/${PN}/master/${PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="UI abstraction library - Qt plugin"
+HOMEPAGE="https://github.com/libyui/libyui-qt"
+SRC_URI="https://github.com/libyui/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/6"
@@ -16,14 +16,22 @@ KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
 RDEPEND="
-	x11-libs/gtk+:3
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
+	media-libs/freetype
+	x11-libs/libX11
 	x11-libs/libyui:${SLOT}
 "
 # Only Boost headers are needed
+# QtSvg headers only required, no linking
 DEPEND="${RDEPEND}
-	dev-libs/boost"
+	dev-libs/boost
+	dev-qt/qtsvg:5
+"
 
-S="${WORKDIR}/${PN}-${PN}-master-${PV}"
+PATCHES=( "${FILESDIR}/${PN}-2.46.21-norpc.patch" )
 
 src_prepare() {
 	cp "${EPREFIX}/usr/share/libyui/buildtools/CMakeLists.common" CMakeLists.txt || die
@@ -39,9 +47,9 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_EXAMPLES=OFF
 		-DENABLE_WERROR=OFF
-		-DDOC_DIR="${EPREFIX}/usr/share/doc/${P}"
+		-DDOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DRESPECT_FLAGS=ON
-		$(cmake-utils_use_enable static-libs STATIC)
+		-DENABLE_STATIC=$(usex static-libs)
 	)
 	cmake-utils_src_configure
 }

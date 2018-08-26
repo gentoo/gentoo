@@ -434,10 +434,6 @@ dev-java/gcj-jdk awt
 # Gentoo bug: 554484
 >=dev-lang/mono-3.12.1 doc
 
-# Manuel Rüger <mrueg@gentoo.org> (05 Jul 2015)
-# app-text/migemo is masked because it fails for ruby20
-app-text/cmigemo emacs
-
 # Mike Gilbert <floppym@gentoo.org> (16 May 2015)
 # dev-lang/python[berkdb] fails with recent multilib sys-libs/db (bug 519584).
 dev-lang/python berkdb
@@ -446,10 +442,6 @@ net-nds/nsscache nssdb
 # Jason Zaman <perfinion@gentoo.org> (08 May 2015)
 # java wrappers fail to build (bug #548858)
 =app-admin/setools-3.3.8-r7 java
-
-# James Le Cuirot <chewi@gentoo.org> (05 Apr 2015)
-# dev-java/sun-j2me-bin is going away.
-dev-java/proguard j2me
 
 # Lars Wendler <polynomial-c@gentoo.org> (19 Mar 2015)
 # >=games-strategy/freeciv-2.5.0 requires >=dev-lang/lua-5.2

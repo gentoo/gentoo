@@ -15,13 +15,11 @@ SRC_URI="mirror://sourceforge/proguard/${MY_P}.tar.gz"
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="ant j2me"
+IUSE="ant"
 
-DEPEND=">=virtual/jdk-1.4
-		j2me? ( >=dev-java/sun-j2me-bin-2.2:0 )"
+DEPEND=">=virtual/jdk-1.4"
 RDEPEND=">=virtual/jre-1.4
-		>=dev-java/ant-core-1.7:0
-		j2me? ( >=dev-java/sun-j2me-bin-2.2:0 )"
+		>=dev-java/ant-core-1.7:0"
 
 S=${WORKDIR}/${MY_P}
 
@@ -34,14 +32,12 @@ EANT_BUILD_TARGET="basic"
 EANT_DOC_TARGET=""
 
 src_compile() {
-	local j2mearg antarg
+	local antarg
 
 	use ant && antarg="-Dant.jar=$(java-pkg_getjar ant-core ant.jar)"
-	use j2me && j2mearg="-Dwtk.jar=$(java-pkg_getjar sun-j2me-bin kenv.zip)"
 
 	java-pkg-2_src_compile \
-		$(use ant && echo anttask ${antarg}) \
-		$(use j2me && echo wtkplugin ${j2mearg})
+		$(use ant && echo anttask ${antarg})
 
 	if use doc; then
 		mkdir javadoc || die

@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -12,18 +12,17 @@ SRC_URI="http://www.kaoriya.net/dist/var/${MY_P}.tar.bz2"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ppc x86"
-IUSE="emacs unicode vim-syntax"
+IUSE="unicode vim-syntax"
 
 DEPEND=">=app-dicts/migemo-dict-200812[unicode=]
 	dev-lang/perl
 	|| (
 		net-misc/curl
 		net-misc/wget
-		net-misc/fetch
+		www-client/fetch
 	)
 	app-i18n/nkf"
-RDEPEND="${RDEPEND}
-	emacs? ( >=app-text/migemo-0.40-r1 )"
+RDEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -74,18 +73,4 @@ src_install() {
 	fi
 
 	dodoc doc/{README_j,TODO_j,vimigemo}.txt
-}
-
-pkg_postinst() {
-	if use emacs ; then
-		elog
-		elog "Please add to your ~/.emacs"
-		elog "    (setq migemo-command \"cmigemo\")"
-		elog "    (setq migemo-options '(\"-q\" \"--emacs\" \"-i\" \"\\\\a\"))"
-		elog "    (setq migemo-dictionary \"/usr/share/migemo/migemo-dict\")"
-		elog "    (setq migemo-user-dictionary nil)"
-		elog "    (setq migemo-regex-dictionary nil)"
-		elog "to use cmigemo instead of migemo under emacs."
-		elog
-	fi
 }

@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs cmake-utils
+inherit cmake-utils toolchain-funcs
 
 DESCRIPTION="Extract closed captioning subtitles from video to SRT"
-HOMEPAGE="http://ccextractor.sourceforge.net/"
+HOMEPAGE="https://www.ccextractor.org/"
 SRC_URI="mirror://sourceforge/ccextractor/${PN}-src-nowin.${PV}.zip"
 
 LICENSE="GPL-2"
@@ -24,10 +24,9 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${PN}/src"
 
-PATCHES=(
-	"${FILESDIR}/${P}-makefile.patch"
-)
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
 
-src_prepare() {
-	cmake-utils_src_prepare
+src_install() {
+	cmake-utils_src_install
+	dodoc ../docs/*.TXT
 }
