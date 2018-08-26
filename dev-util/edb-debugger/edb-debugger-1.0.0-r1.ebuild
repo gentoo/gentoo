@@ -14,8 +14,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="graphviz"
 
-S="${WORKDIR}/${P}"
-
 RDEPEND="
 	dev-libs/capstone
 	dev-qt/qtconcurrent:5
