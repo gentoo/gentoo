@@ -3750,7 +3750,6 @@ net-analyzer/sarg:gd - Enable support for graphs in reports through media-libs/g
 net-analyzer/sarg:pcre - Enable support for regular expressions in the hostalias file through dev-libs/libpcre
 net-analyzer/scapy:pyx - Enable dev-python/pyx support for psdump/pdfdump commands
 net-analyzer/scapy:tcpreplay - Enable net-analyzer/tcpreplay support for fast packet replay
-net-analyzer/scapy:visual - Enable visual package support for 3d graphs
 net-analyzer/smokeping:dig - Install net-dns/bind-tools for dig functionality
 net-analyzer/smokeping:echoping - Install net-analyzer/echoping for echoping functionality
 net-analyzer/smokeping:ssh - Install ssh functionality
@@ -3999,7 +3998,6 @@ net-im/bitlbee:twitter - Enable Twitter protocol support
 net-im/choqok:attica - Build Open Collaboration Services plugin using kde-frameworks/attica
 net-im/choqok:konqueror - Build Konqueror Choqok plugin
 net-im/choqok:telepathy - Enable support for the real-time communication framework telepathy
-net-im/climm:otr - Enable encrypted conversations
 net-im/ejabberd:captcha - Support for CAPTCHA Forms (XEP-158) on registration
 net-im/ejabberd:full-xml - Use XML features in XMPP stream (ex: CDATA), requires XML compliant clients
 net-im/ejabberd:hipe - Compile natively with HiPE, not recommended
