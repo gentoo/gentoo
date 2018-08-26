@@ -44,6 +44,7 @@ DOCS=( AUTHORS README.kstScript )
 PATCHES=(
 	"${FILESDIR}/${P}-includes.patch"
 	"${FILESDIR}/${P}-qt-5.11.patch"
+	"${FILESDIR}/${P}-gsl-2.0.patch"
 )
 
 src_configure() {
