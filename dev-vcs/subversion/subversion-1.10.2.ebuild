@@ -73,6 +73,9 @@ DEPEND="${COMMON_DEPEND}
 		virtual/pkgconfig
 	)
 	nls? ( sys-devel/gettext )
+	perl? ( dev-lang/swig )
+	python? ( dev-lang/swig )
+	ruby? ( dev-lang/swig )
 	test? ( ${PYTHON_DEPS} )"
 
 REQUIRED_USE="
