@@ -362,10 +362,6 @@ mail-client/thunderbird system-cairo
 # you're doing. This has upstream's approval.
 dev-java/icedtea cacao jamvm
 
-# Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2016)
-# Need vulnerable libotr version (see bug #576914).
-=net-im/climm-0.7.1 otr
-
 # Patrice Clement <monsieurp@gentoo.org> (27 Nov 2015)
 # Unsastified dependencies are upsetting repoman. Needs investigation.
 app-arch/cfv bittorrent

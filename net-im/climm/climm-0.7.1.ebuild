@@ -10,7 +10,7 @@ SRC_URI="http://www.climm.org/source/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="xmpp gnutls otr tcl ssl"
+IUSE="xmpp gnutls tcl ssl"
 
 # In case user don't need xmpp there is a choice gnutls/openssl. Since xmpp
 # requires gnutls then without explicit request to use gnutls (USE=gnutls)
@@ -31,8 +31,7 @@ RDEPEND="
 			)
 		!gnutls? ( dev-libs/openssl )
 	)
-	tcl? ( dev-lang/tcl:0 )
-	otr? ( <net-libs/libotr-4 )"
+	tcl? ( dev-lang/tcl:0 )"
 DEPEND="${RDEPEND}
 	ssl? ( gnutls? ( virtual/pkgconfig ) )"
 
@@ -52,7 +51,7 @@ src_configure() {
 
 	econf \
 		$(use_enable xmpp) \
-		$(use_enable otr) \
+		--disable-otr \
 		$(use_enable tcl) \
 		${myconf}
 }
