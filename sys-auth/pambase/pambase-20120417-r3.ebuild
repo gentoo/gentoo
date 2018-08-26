@@ -21,7 +21,7 @@ MIN_PAM_REQ=1.1.3
 RDEPEND="
 	|| (
 		>=sys-libs/pam-${MIN_PAM_REQ}
-		( sys-auth/openpam || ( sys-freebsd/freebsd-pam-modules sys-netbsd/netbsd-pam-modules ) )
+		( sys-auth/openpam sys-freebsd/freebsd-pam-modules )
 		)
 	consolekit? ( >=sys-auth/consolekit-0.4.5_p2012[pam] )
 	cracklib? ( >=sys-libs/pam-${MIN_PAM_REQ}[cracklib] )
