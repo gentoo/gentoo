@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="x86"
 IUSE="freewnn"
 
-RDEPEND="|| ( >=app-i18n/scim-1.0 >=app-i18n/scim-cvs-1.0 )
+RDEPEND=">=app-i18n/scim-1.0
 	dev-libs/wnn7sdk
 	freewnn? ( app-i18n/freewnn )"
 DEPEND="${RDEPEND}
