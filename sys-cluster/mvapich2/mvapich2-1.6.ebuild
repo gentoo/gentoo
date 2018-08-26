@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -15,13 +15,10 @@ KEYWORDS="~x86 ~amd64"
 IUSE="debug fortran large-cluster medium-cluster romio threads"
 
 RDEPEND="
-	|| (
-		(
-			sys-fabric/libibverbs
-			sys-fabric/libibumad
-			sys-fabric/libibmad
-			sys-fabric/librdmacm )
-		sys-fabric/openib-userspace )"
+	sys-fabric/libibverbs
+	sys-fabric/libibumad
+	sys-fabric/libibmad
+	sys-fabric/librdmacm"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/mvapich2-${PV/_/-}"
