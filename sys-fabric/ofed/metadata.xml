@@ -9,7 +9,6 @@
 		<flag name="dapl">Add support for DAPL abstraction layer</flag>
 		<flag name="diags">Add dignostic tools for infiniband</flag>
 		<flag name="ibacm">Add support for userspace pre-connection services</flag>
-		<flag name="mstflint">Tools to burn Mellanox firmware</flag>
 		<flag name="opensm">Add OpenSM - Subnet manager for infiniband</flag>
 		<flag name="perftest">Add perftest utils</flag>
 		<flag name="qperf">Add rdma tests</flag>

@@ -72,10 +72,6 @@ net-analyzer/scapy visual
 # net-dns/hesiod will be removed (#606652)
 sys-freebsd/freebsd-lib hesiod
 
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# sys-fabric/mstflint will be removed (#594908)
-sys-fabric/ofed mstflint
-
 # Lars Wendler <polynomial-c@gentoo.org> (14 Mar 2018)
 # Broken on all 32bit arches. Globally masked because of sys-apps/dmapi having
 # no active upstream anymore.
