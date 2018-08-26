@@ -68,14 +68,6 @@ dev-lang/rust extended
 # dev-python/visual will be removed (#630252)
 net-analyzer/scapy visual
 
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# net-dns/hesiod will be removed (#606652)
-sys-freebsd/freebsd-lib hesiod
-
-# Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
-# sys-fabric/mstflint will be removed (#594908)
-sys-fabric/ofed mstflint
-
 # Lars Wendler <polynomial-c@gentoo.org> (14 Mar 2018)
 # Broken on all 32bit arches. Globally masked because of sys-apps/dmapi having
 # no active upstream anymore.
@@ -555,10 +547,6 @@ sys-auth/pam_mktemp prevent-removal
 # Samuli Suominen <ssuominen@gentoo.org> (20 Mar 2012)
 # This is for udev-acl. Unmasked in default/linux/package.use.mask.
 sys-auth/consolekit acl
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (25 Feb 2012)
-# directfb build issues, bug #405817.
-www-plugins/gnash directfb
 
 # Bernard Cafarelli <voyageur@gentoo.org> (08 Feb 2012)
 # libobjc2/clang experimental support

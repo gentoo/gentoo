@@ -36,7 +36,6 @@ EXTRACTONLY="
 
 if [ "${CATEGORY#*cross-}" = "${CATEGORY}" ]; then
 	RDEPEND="ssl? ( dev-libs/openssl:0= )
-		hesiod? ( net-dns/hesiod )
 		kerberos? ( app-crypt/heimdal )
 		pam? ( virtual/pam )
 		usb? ( !dev-libs/libusb )
@@ -71,7 +70,7 @@ if [ "${CTARGET}" = "${CHOST}" -a "${CATEGORY#*cross-}" != "${CATEGORY}" ]; then
 	export CTARGET=${CATEGORY/cross-}
 fi
 
-IUSE="atm bluetooth ssl hesiod ipv6 kerberos usb netware
+IUSE="atm bluetooth ssl ipv6 kerberos usb netware
 	build headers-only zfs pam xinetd
 	userland_GNU userland_BSD"
 
@@ -91,7 +90,7 @@ pkg_setup() {
 
 	use atm || mymakeopts="${mymakeopts} WITHOUT_ATM= "
 	use bluetooth || mymakeopts="${mymakeopts} WITHOUT_BLUETOOTH= "
-	use hesiod || mymakeopts="${mymakeopts} WITHOUT_HESIOD= "
+	mymakeopts="${mymakeopts} WITHOUT_HESIOD= "
 	use ipv6 || mymakeopts="${mymakeopts} WITHOUT_INET6_SUPPORT= "
 	use kerberos || mymakeopts="${mymakeopts} WITHOUT_KERBEROS_SUPPORT= WITHOUT_GSSAPI= "
 	use netware || mymakeopts="${mymakeopts} WITHOUT_IPX= WITHOUT_IPX_SUPPORT= WITHOUT_NCP= "

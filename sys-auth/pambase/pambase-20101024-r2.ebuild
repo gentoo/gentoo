@@ -18,9 +18,7 @@ RESTRICT="binchecks"
 RDEPEND="
 	|| (
 		>=sys-libs/pam-0.99.9.0-r1
-		( sys-auth/openpam
-		  || ( sys-freebsd/freebsd-pam-modules sys-netbsd/netbsd-pam-modules )
-		)
+		( sys-auth/openpam sys-freebsd/freebsd-pam-modules )
 	)
 	cracklib? ( >=sys-libs/pam-0.99[cracklib] )
 	consolekit? ( >=sys-auth/consolekit-0.3[pam] )

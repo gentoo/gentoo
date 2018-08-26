@@ -24,7 +24,7 @@ inherit openib udev toolchain-funcs
 
 DESCRIPTION="OpenIB system files"
 KEYWORDS="amd64 ~x86 ~amd64-linux"
-IUSE="dapl +diags ibacm mstflint +opensm perftest qperf rds srp ${IUSE_OFED_DRIVERS}"
+IUSE="dapl +diags ibacm +opensm perftest qperf rds srp ${IUSE_OFED_DRIVERS}"
 
 RDEPEND="!sys-fabric/openib
 		!sys-fabric/openib-files
@@ -35,7 +35,6 @@ RDEPEND="!sys-fabric/openib
 		dapl? ( sys-fabric/dapl:${SLOT} )
 		diags? ( sys-fabric/infiniband-diags:${SLOT} )
 		ibacm? ( sys-fabric/ibacm:${SLOT} )
-		mstflint? ( sys-fabric/mstflint:${SLOT} )
 		opensm? ( sys-fabric/opensm:${SLOT} )
 		perftest? ( sys-fabric/perftest:${SLOT} )
 		qperf? ( sys-fabric/qperf:${SLOT} )
