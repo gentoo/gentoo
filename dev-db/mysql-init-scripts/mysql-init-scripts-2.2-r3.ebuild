@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit systemd s6
+inherit systemd s6 tmpfiles
 
 DESCRIPTION="Gentoo MySQL init scripts."
 HOMEPAGE="https://www.gentoo.org/"
@@ -44,13 +44,14 @@ src_install() {
 	doexe "${FILESDIR}"/mysqld-wait-ready
 	systemd_newunit "${FILESDIR}/mysqld-v2.service" "mysqld.service"
 	systemd_newunit "${FILESDIR}/mysqld_at-v2.service" "mysqld@.service"
-	systemd_dotmpfilesd "${FILESDIR}/mysql.conf"
+	dotmpfiles "${FILESDIR}/mysql.conf"
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/logrotate.mysql" "mysql"
 }
 
 pkg_postinst() {
+	tmpfiles_process mysql.conf
 	if use amd64 || use x86 ; then
 		elog ""
 		elog "To use the mysql-s6 script, you need to install the optional sys-apps/s6 package."
