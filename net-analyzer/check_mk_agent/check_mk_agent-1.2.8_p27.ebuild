@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,12 +9,12 @@ DESCRIPTION="Agent to report data to Check_MK for monitoring"
 HOMEPAGE="http://mathias-kettner.de/check_mk.html"
 
 MY_PV="${PV/_p/p}"
-MY_P="check_mk-${MY_PV}"
+MY_P="check-mk-raw-${MY_PV}.cre"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="apache_status logwatch mysql nfsexports oracle postgres smart +xinetd zypper"
+IUSE="apache_status inventory logwatch mysql nfsexports oracle postgres smart +xinetd zypper"
 
 RDEPEND="!!net-analyzer/check_mk
 	app-shells/bash:*
@@ -22,44 +22,23 @@ RDEPEND="!!net-analyzer/check_mk
 	"
 DEPEND="${RDEPEND}"
 
-SRC_URI="http://mathias-kettner.de/download/${MY_P}.tar.gz"
+SRC_URI="http://mathias-kettner.de/support/${MY_PV}/${MY_P}.tar.gz"
 
 src_unpack() {
 	# check_mk is a tarball containing tarballs
 	unpack ${A}
+	unpack "${WORKDIR}"/${MY_P}/packages/check_mk/check_mk-${MY_PV}.tar.gz
 	mkdir -p "${S}" || die
 	cd "${S}" || die
-	unpack "${WORKDIR}"/${MY_P}/agents.tar.gz
+	unpack "${WORKDIR}"/check_mk-${MY_PV}/agents.tar.gz
 	mkdir -p "${S}"/doc || die
 	cd "${S}"/doc || die
-	unpack "${WORKDIR}"/${MY_P}/doc.tar.gz
-}
-
-src_prepare() {
-	cat <<EOF >Makefile
-all: waitmax
-
-waitmax: waitmax.c
-	\$(CC) \$(CFLAGS) \$< -o \$@ \$(LDFLAGS)
-
-EOF
-
-	if [[ -f waitmax ]]; then
-		rm waitmax || die "Couldn't delete precompiled waitmax file"
-	fi
-
-	default
-}
-
-src_compile() {
-	# compile waitmax
-	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)"
+	unpack "${WORKDIR}"/check_mk-${MY_PV}/doc.tar.gz
 }
 
 src_install() {
 	# Install agent related files
 	newbin check_mk_agent.linux check_mk_agent
-	dobin waitmax
 
 	keepdir /usr/lib/check_mk_agent/local
 	dodir /usr/lib/check_mk_agent/plugins
@@ -84,6 +63,7 @@ src_install() {
 
 	# Install any other useflag-enabled agent plugins
 	exeinto /usr/lib/check_mk_agent/plugins
+	use inventory && newexe plugins/mk_inventory.linux mk_inventory
 	use smart && doexe plugins/smart
 	use mysql && doexe plugins/mk_mysql
 	use postgres && doexe plugins/mk_postgres
