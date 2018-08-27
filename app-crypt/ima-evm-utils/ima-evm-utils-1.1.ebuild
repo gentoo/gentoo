@@ -3,11 +3,11 @@
 
 EAPI=6
 
-inherit autotools git-r3
+inherit autotools
 
 DESCRIPTION="Supporting tools for IMA and EVM"
 HOMEPAGE="http://linux-ima.sourceforge.net"
-EGIT_REPO_URI="git://git.code.sf.net/p/linux-ima/ima-evm-utils"
+SRC_URI="mirror://sourceforge/linux-ima/${P}.tar.gz"
 
 RDEPEND="
 	dev-libs/openssl:0=
@@ -19,6 +19,7 @@ DEPEND="${RDEPEND}
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 src_prepare() {
