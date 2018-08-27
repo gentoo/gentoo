@@ -22,6 +22,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1-configure-use-sys-xattr-bug-649790.patch"
+)
+
 src_prepare() {
 	default
 
