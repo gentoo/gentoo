@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=>=sys-devel/gcc-4.7.0 >=sys-devel/patch-2.7.4 !build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Linux-Mips GIT sources for MIPS-based machines, dated 20161216
+EAPI=6
+HOMEPAGE=https://www.linux-mips.org/ https://www.gentoo.org/
+IUSE=experimental ip27 ip28 ip30 symlink build
+KEYWORDS=-* ~mips
+LICENSE=GPL-2 linux-firmware
+RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf )
+RESTRICT=binchecks strip
+SLOT=4.9.124
+SRC_URI=mirror://kernel/linux/kernel/v4.x/patch-4.9.124.xz mirror://kernel/linux/kernel/v4.x/linux-4.9.tar.xz mirror://gentoo/mipsgit-4.9.0-20161216.diff.xz mirror://gentoo/mips-sources-4.9.0-patches-v1.tar.xz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	kernel-2	bc2f2b5caeb6f89c673a8a4dced6511e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=b6feb7168a623e02e26d9a0e76da350c
