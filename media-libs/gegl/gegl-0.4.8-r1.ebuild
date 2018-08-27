@@ -36,7 +36,7 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	dev-libs/json-glib
-	>=media-libs/babl-0.1.54
+	>=media-libs/babl-0.1.56
 	>=media-libs/libpng-1.6.0:0=
 	sys-libs/zlib
 	virtual/jpeg:0=
