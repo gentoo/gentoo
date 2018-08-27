@@ -5467,7 +5467,6 @@ dev-python/qpid-python 0.20: A high-speed platform independent enterprise messag
 dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.10.4: Python bindings for QScintilla
 dev-python/qtconsole 4.3.1: Qt-based console for Jupyter with support for rich media output
-dev-python/queuelib 1.1.1: Collection of persistent (disk-based) queues
 dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
 dev-python/quixote 2.8: Python HTML templating framework for developing web applications
 dev-python/rarfile 3.0: Module for RAR archive reading
