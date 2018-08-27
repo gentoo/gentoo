@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # EAPI Version
-EAPI="5"
+EAPI="6"
 
 #//------------------------------------------------------------------------------
 
@@ -24,7 +24,7 @@ K_FROM_GIT="yes"
 ETYPE="sources"
 
 # Inherit Eclasses
-inherit eapi7-ver eutils kernel-2
+inherit kernel-2 eutils eapi7-ver
 detect_version
 
 # EPATCH Vars
@@ -343,6 +343,8 @@ src_prepare() {
 	# Now go into the kernel source and patch it.
 	cd "${S}"
 	epatch "${WORKDIR}/${psym}"/*.patch
+
+	eapply_user
 }
 
 #//------------------------------------------------------------------------------
