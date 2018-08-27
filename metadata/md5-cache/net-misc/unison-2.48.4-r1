@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst test
+DEPEND=dev-lang/ocaml[ocamlopt?] gtk? ( dev-ml/lablgtk )
+DESCRIPTION=Two-way cross-platform file synchronizer
+EAPI=7
+HOMEPAGE=https://www.seas.upenn.edu/~bcpierce/unison/
+IUSE=gtk doc static debug threads +ocamlopt test
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+LICENSE=GPL-2
+RDEPEND=gtk? ( dev-ml/lablgtk || ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) ) >=app-eselect/eselect-unison-0.4
+RESTRICT=test
+SLOT=2.48
+SRC_URI=https://www.seas.upenn.edu/~bcpierce/unison/download/releases/unison-2.48.4/unison-2.48.4.tar.gz doc? ( https://www.seas.upenn.edu/~bcpierce/unison/download/releases/unison-2.48.4/unison-2.48.4-manual.pdf https://www.seas.upenn.edu/~bcpierce/unison/download/releases/unison-2.48.4/unison-2.48.4-manual.html )
+_md5_=21180c8a5876149b30d2982b5c20856b
