@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils gnome2-utils
+
+inherit desktop eutils gnome2-utils
 
 DESCRIPTION="A mashup of \"Not\" and \"Pacman\""
 HOMEPAGE="http://stabyourself.net/notpacman/"
