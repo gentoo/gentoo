@@ -3,14 +3,14 @@
 
 EAPI=6
 
-PATCH_VER=1
+PATCH_VER=2
 
 inherit eutils toolchain-funcs multilib-minimal
 
 MY_PN="binutils"
 MY_P="${MY_PN}-${PV}"
 PATCH_BINUTILS_VER=${PATCH_BINUTILS_VER:-${PV}}
-PATCH_DEV=${PATCH_DEV:-dilfridge}
+PATCH_DEV=${PATCH_DEV:-slyfox}
 
 DESCRIPTION="Core binutils libraries (libbfd, libopcodes, libiberty) for external packages"
 HOMEPAGE="https://sourceware.org/binutils/"

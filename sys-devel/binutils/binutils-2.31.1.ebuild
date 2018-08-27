@@ -19,7 +19,7 @@ IUSE="+cxx doc multitarget +nls static-libs test"
 #                      for the patchsets
 #                      Default: dilfridge :)
 
-PATCH_VER=1
+PATCH_VER=2
 
 case ${PV} in
 	9999)
@@ -49,7 +49,7 @@ esac
 # The Gentoo patchset
 #
 PATCH_BINUTILS_VER=${PATCH_BINUTILS_VER:-${PV}}
-PATCH_DEV=${PATCH_DEV:-dilfridge}
+PATCH_DEV=${PATCH_DEV:-slyfox}
 
 [[ -z ${PATCH_VER} ]] || SRC_URI="${SRC_URI}
 	https://dev.gentoo.org/~${PATCH_DEV}/distfiles/binutils-${PATCH_BINUTILS_VER}-patches-${PATCH_VER}.tar.xz"
