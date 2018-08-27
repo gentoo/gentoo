@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+
+inherit desktop eutils
 
 MY_P="${PN}-src-${PV}"
 DESCRIPTION="A NES-like platform arcade game"
