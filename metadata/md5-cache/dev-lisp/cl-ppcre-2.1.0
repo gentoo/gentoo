@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=CL-PPCRE is a portable regular expression library for Common Lisp.
+EAPI=6
+HOMEPAGE=http://weitz.de/cl-ppcre/ http://www.cliki.net/cl-ppcre
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=BSD-2
+PDEPEND=dev-lisp/cl-ppcre-unicode virtual/commonlisp
+RDEPEND=dev-lisp/flexi-streams
+SLOT=0
+SRC_URI=https://github.com/edicl/cl-ppcre/archive/v2.1.0.tar.gz -> cl-ppcre-2.1.0.tar.gz
+_eclasses_=common-lisp-3	3f23602a5efddf587c5205de7b6de7f8	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=c0c17dd1030cdbd2c32c0e12c211830c
