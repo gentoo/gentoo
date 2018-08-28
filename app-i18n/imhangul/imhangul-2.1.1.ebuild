@@ -5,17 +5,17 @@ EAPI="6"
 
 inherit gnome2-utils
 
-DESCRIPTION="GTK+ 3 Hangul Input Modules"
+DESCRIPTION="GTK+ 2 Hangul Input Modules"
 HOMEPAGE="https://github.com/libhangul/imhangul"
 SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
-SLOT="3"
+SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND="app-i18n/libhangul
-	x11-libs/gtk+:3
+	x11-libs/gtk+:2
 	virtual/libintl"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -28,7 +28,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --with-gtk-im-module-dir="${EPREFIX%/}"/usr/$(get_libdir)/gtk-3.0/$(pkg-config gtk+-3.0 --variable=gtk_binary_version)/immodules
+	econf --with-gtk-im-module-dir="${EPREFIX%/}"/usr/$(get_libdir)/gtk-2.0/$(pkg-config gtk+-2.0 --variable=gtk_binary_version)/immodules
 }
 
 src_install() {
@@ -44,7 +44,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_query_immodules_gtk3
+	gnome2_query_immodules_gtk2
 	elog
 	elog "If you want to use one of the module as a default input method, "
 	elog
@@ -54,5 +54,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_query_immodules_gtk3
+	gnome2_query_immodules_gtk2
 }
