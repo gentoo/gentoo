@@ -8672,7 +8672,7 @@ net-libs/libnsl 0-r1 1.2.0: Public client interface for NIS(YP) and NIS+ in a IP
 net-libs/libntlm 1.3 1.4: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3: A C-library for parsing and writing XML 1.0/1.1 files or streams
 net-libs/liboauth 1.0.3: C library implementing the OAuth secure authentication protocol
-net-libs/liboping 1.9.0 1.10.0: Protocol independent ANSI-C ping library and command line utility
+net-libs/liboping 1.10.0-r1: Protocol independent ANSI-C ping library and command line utility
 net-libs/libosip 3.6.0 4.0.0: a simple way to support the Session Initiation Protocol
 net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
 net-libs/libpcap 1.8.1: A system-independent library for user-level network packet capture
