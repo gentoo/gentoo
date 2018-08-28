@@ -1150,12 +1150,17 @@
     <member>
       <email>alicef@gentoo.org</email>
       <name>Alice Ferrazzi</name>
-      <role>Board Member, Officer:Vice Secretary</role>
+      <role>Officer:Vice Secretary, Board Member</role>
+    </member>
+    <member is-lead="1">
+      <email>antarus@gentoo.org</email>
+      <name>Alec Warner</name>
+      <role>Officer:President, Board Member</role>
     </member>
     <member>
-      <email>dabbott@gentoo.org</email>
-      <name>David Abbott</name>
-      <role>Board Member, Officer:Secretary, Chairman</role>
+      <email>bman@gentoo.org</email>
+      <name>Aaron Bauman</name>
+      <role>Officer:Secretary, Board Member</role>
     </member>
     <member>
       <email>jmbsvicetto@gentoo.org</email>
@@ -1163,29 +1168,19 @@
       <role>Officer: Infra Liaison</role>
     </member>
     <member>
-      <email>kensington@gentoo.org</email>
-      <name>Michael Palimaka</name>
-      <role>Board Member</role>
-    </member>
-    <member>
-      <email>klondike@gentoo.org</email>
-      <name>Francisco Blas Izquierdo Riera</name>
-      <role>Board Member</role>
-    </member>
-    <member>
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
       <role>Foundation Wiki Editor</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>prometheanfire@gentoo.org</email>
       <name>Matthew Thode</name>
-      <role>Board Member, Officer:President</role>
+      <role>Board Member</role>
     </member>
     <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
-      <role>Officer: Assistant Infra Liaison, Assistant Treasurer</role>
+      <role>Treasurer, Officer: Assistant Infra Liaison, Board Member</role>
     </member>
   </project>
   <project>
