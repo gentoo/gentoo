@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -19,8 +19,6 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	test? ( dev-libs/check )"
 
-DOCS=(AUTHORS ChangeLog NEWS)
-
 src_configure() {
 	econf \
 		$(use_enable nls) \
@@ -33,5 +31,5 @@ src_test() {
 
 src_install() {
 	default
-	find "${D}" -name "*.la" -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
