@@ -1,6 +1,6 @@
 diff -urN a/cmake/FindBlosc.cmake b/cmake/FindBlosc.cmake
---- a/cmake/FindBlosc.cmake	2018-04-10 19:22:17.000000000 +0100
-+++ b/cmake/FindBlosc.cmake	2018-08-07 21:01:16.869879255 +0100
+--- a/cmake/FindBlosc.cmake	2018-08-13 16:33:07.000000000 +0100
++++ b/cmake/FindBlosc.cmake	2018-08-28 12:20:33.331930720 +0100
 @@ -37,7 +37,7 @@
  
  FIND_PACKAGE ( PackageHandleStandardArgs )
@@ -28,8 +28,8 @@ diff -urN a/cmake/FindBlosc.cmake b/cmake/FindBlosc.cmake
  
  ENDIF ( BLOSC_FOUND )
 diff -urN a/cmake/FindCPPUnit.cmake b/cmake/FindCPPUnit.cmake
---- a/cmake/FindCPPUnit.cmake	2018-04-10 19:22:17.000000000 +0100
-+++ b/cmake/FindCPPUnit.cmake	2018-08-07 21:02:15.421037954 +0100
+--- a/cmake/FindCPPUnit.cmake	2018-08-13 16:33:07.000000000 +0100
++++ b/cmake/FindCPPUnit.cmake	2018-08-28 12:20:33.333930718 +0100
 @@ -38,7 +38,7 @@
  
  FIND_PACKAGE ( PackageHandleStandardArgs )
@@ -56,8 +56,8 @@ diff -urN a/cmake/FindCPPUnit.cmake b/cmake/FindCPPUnit.cmake
    
  ENDIF ( CPPUNIT_FOUND )
 diff -urN a/cmake/FindGLEW.cmake b/cmake/FindGLEW.cmake
---- a/cmake/FindGLEW.cmake	2018-04-10 19:22:17.000000000 +0100
-+++ b/cmake/FindGLEW.cmake	2018-08-07 21:04:32.804431135 +0100
+--- a/cmake/FindGLEW.cmake	2018-08-13 16:33:07.000000000 +0100
++++ b/cmake/FindGLEW.cmake	2018-08-28 12:20:33.333930718 +0100
 @@ -39,7 +39,7 @@
  
  FIND_PACKAGE ( PackageHandleStandardArgs )
@@ -105,8 +105,8 @@ diff -urN a/cmake/FindGLEW.cmake b/cmake/FindGLEW.cmake
  		NO_SYSTEM_ENVIRONMENT_PATH
  		)
 diff -urN a/cmake/FindGLFW3.cmake b/cmake/FindGLFW3.cmake
---- a/cmake/FindGLFW3.cmake	2018-04-10 19:22:17.000000000 +0100
-+++ b/cmake/FindGLFW3.cmake	2018-08-07 21:07:24.458954825 +0100
+--- a/cmake/FindGLFW3.cmake	2018-08-13 16:33:07.000000000 +0100
++++ b/cmake/FindGLFW3.cmake	2018-08-28 12:20:33.334930718 +0100
 @@ -39,7 +39,7 @@
  
  FIND_PACKAGE ( PackageHandleStandardArgs )
@@ -116,30 +116,32 @@ diff -urN a/cmake/FindGLFW3.cmake b/cmake/FindGLFW3.cmake
    "$ENV{GLFW3_ROOT}"
    NO_DEFAULT_PATH
    NO_SYSTEM_ENVIRONMENT_PATH
-@@ -50,9 +50,9 @@
+@@ -50,11 +50,11 @@
    )
  
  IF (GLFW3_FOUND)
 -  SET( GLFW3_INCLUDE_DIR "${GLFW3_LOCATION}/include" CACHE STRING "GLFW3 include path")
 +  SET( GLFW3_INCLUDE_DIR "${GLFW3_LOCATION}/${CMAKE_INSTALL_INCLUDEDIR}" CACHE STRING "GLFW3 include path")
+   SET (GLFW3_PATH_SUFFIXES x86_64-linux-gnu)
    IF (GLFW3_USE_STATIC_LIBS)
--    FIND_LIBRARY ( GLFW3_glfw_LIBRARY  glfw3  ${GLFW3_LOCATION}/lib
-+    FIND_LIBRARY ( GLFW3_glfw_LIBRARY  glfw3  ${GLFW3_LOCATION}/${CMAKE_INSTALL_LIBDIR}
+     FIND_LIBRARY ( GLFW3_glfw_LIBRARY  glfw3
+-      PATHS ${GLFW3_LOCATION}/lib
++      PATHS ${GLFW3_LOCATION}/${CMAKE_INSTALL_LIBDIR}
+       PATH_SUFFIXES ${GLFW3_PATH_SUFFIXES}
  	  NO_DEFAULT_PATH
  	  NO_CMAKE_ENVIRONMENT_PATH
- 	  NO_CMAKE_PATH
-@@ -60,7 +60,7 @@
- 	  NO_CMAKE_SYSTEM_PATH
+@@ -64,7 +64,7 @@
  	  )
    ELSE (GLFW3_USE_STATIC_LIBS)
--    FIND_LIBRARY ( GLFW3_glfw_LIBRARY  glfw  ${GLFW3_LOCATION}/lib
-+    FIND_LIBRARY ( GLFW3_glfw_LIBRARY  glfw  ${GLFW3_LOCATION}/${CMAKE_INSTALL_LIBDIR}
+     FIND_LIBRARY ( GLFW3_glfw_LIBRARY  glfw
+-      PATHS ${GLFW3_LOCATION}/lib
++      PATHS ${GLFW3_LOCATION}/${CMAKE_INSTALL_LIBDIR}
+       PATH_SUFFIXES ${GLFW3_PATH_SUFFIXES}
  	  NO_DEFAULT_PATH
  	  NO_CMAKE_ENVIRONMENT_PATH
- 	  NO_CMAKE_PATH
 diff -urN a/cmake/FindGLFW.cmake b/cmake/FindGLFW.cmake
---- a/cmake/FindGLFW.cmake	2018-04-10 19:22:17.000000000 +0100
-+++ b/cmake/FindGLFW.cmake	2018-08-07 21:06:26.358774164 +0100
+--- a/cmake/FindGLFW.cmake	2018-08-13 16:33:07.000000000 +0100
++++ b/cmake/FindGLFW.cmake	2018-08-28 12:20:33.334930718 +0100
 @@ -38,12 +38,12 @@
  
  SET ( GLFW_FOUND FALSE )
@@ -174,8 +176,8 @@ diff -urN a/cmake/FindGLFW.cmake b/cmake/FindGLFW.cmake
  	  )
    ENDIF (APPLE)
 diff -urN a/cmake/FindOpenVDB.cmake b/cmake/FindOpenVDB.cmake
---- a/cmake/FindOpenVDB.cmake	2018-04-10 19:22:17.000000000 +0100
-+++ b/cmake/FindOpenVDB.cmake	2018-08-07 21:10:41.640588458 +0100
+--- a/cmake/FindOpenVDB.cmake	2018-08-13 16:33:07.000000000 +0100
++++ b/cmake/FindOpenVDB.cmake	2018-08-28 12:20:33.334930718 +0100
 @@ -45,7 +45,7 @@
  
  FIND_PACKAGE( PackageHandleStandardArgs )
@@ -199,8 +201,8 @@ diff -urN a/cmake/FindOpenVDB.cmake b/cmake/FindOpenVDB.cmake
    
    FIND_LIBRARY( OpenVDB_OPENVDB_LIBRARY openvdb
 diff -urN a/cmake/FindTBB.cmake b/cmake/FindTBB.cmake
---- a/cmake/FindTBB.cmake	2018-04-10 19:22:17.000000000 +0100
-+++ b/cmake/FindTBB.cmake	2018-08-07 21:11:48.477809067 +0100
+--- a/cmake/FindTBB.cmake	2018-08-13 16:33:07.000000000 +0100
++++ b/cmake/FindTBB.cmake	2018-08-28 12:20:33.335930717 +0100
 @@ -42,7 +42,7 @@
  
  # SET ( TBB_FOUND FALSE )
@@ -229,8 +231,8 @@ diff -urN a/cmake/FindTBB.cmake b/cmake/FindTBB.cmake
  	  IF ( TBB_MATCH_COMPILER_VERSION )
  		STRING(REGEX MATCHALL "[0-9]+" GCC_VERSION_COMPONENTS ${CMAKE_CXX_COMPILER_VERSION})
 diff -urN a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2018-04-10 19:22:17.000000000 +0100
-+++ b/CMakeLists.txt	2018-08-07 20:59:54.149613568 +0100
+--- a/CMakeLists.txt	2018-08-13 16:33:07.000000000 +0100
++++ b/CMakeLists.txt	2018-08-28 12:20:33.335930717 +0100
 @@ -32,6 +32,8 @@
  
  ENABLE_TESTING()
@@ -241,8 +243,8 @@ diff -urN a/CMakeLists.txt b/CMakeLists.txt
  if(CCACHE_FOUND)
      set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
 diff -urN a/openvdb/CMakeLists.txt b/openvdb/CMakeLists.txt
---- a/openvdb/CMakeLists.txt	2018-04-10 19:22:17.000000000 +0100
-+++ b/openvdb/CMakeLists.txt	2018-08-07 21:21:02.352705838 +0100
+--- a/openvdb/CMakeLists.txt	2018-08-13 16:33:07.000000000 +0100
++++ b/openvdb/CMakeLists.txt	2018-08-28 12:20:33.335930717 +0100
 @@ -414,7 +414,7 @@
      )
  
@@ -298,26 +300,9 @@ diff -urN a/openvdb/CMakeLists.txt b/openvdb/CMakeLists.txt
    PATTERN "python" EXCLUDE
    PATTERN "cmd" EXCLUDE
 diff -urN a/openvdb/python/CMakeLists.txt b/openvdb/python/CMakeLists.txt
---- a/openvdb/python/CMakeLists.txt	2018-04-10 19:22:17.000000000 +0100
-+++ b/openvdb/python/CMakeLists.txt	2018-08-07 21:20:56.549685541 +0100
-@@ -54,10 +54,12 @@
-   pyVec3Grid.cc
-   )
- 
--SET ( PYOPENVDB_INSTALL_DIRECTORY
--  lib/python${OPENVDB_PYTHON_VERSION_MAJOR}.${OPENVDB_PYTHON_VERSION_MINOR}
--  CACHE STRING "The directory to install the pyopenvdb.so module."
--  )
-+IF ( NOT DEFINED PYOPENVDB_INSTALL_DIRECTORY )
-+  SET ( PYOPENVDB_INSTALL_DIRECTORY
-+    lib/python${OPENVDB_PYTHON_VERSION_MAJOR}.${OPENVDB_PYTHON_VERSION_MINOR}
-+    CACHE STRING "The directory to install the pyopenvdb.so module."
-+    )
-+ENDIF ( NOT DEFINED PYOPENVDB_INSTALL_DIRECTORY )
- 
- SET_SOURCE_FILES_PROPERTIES ( ${OPENVDB_PYTHON_MODULE_SOURCE_FILES}
-   PROPERTIES
-@@ -110,6 +112,6 @@
+--- a/openvdb/python/CMakeLists.txt	2018-08-13 16:33:07.000000000 +0100
++++ b/openvdb/python/CMakeLists.txt	2018-08-28 12:20:33.336930716 +0100
+@@ -107,6 +107,6 @@
    ${PYOPENVDB_INSTALL_DIRECTORY}
    )       
  

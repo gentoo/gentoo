@@ -14,7 +14,7 @@ HOMEPAGE="http://www.blender.org"
 SRC_URI="http://download.blender.org/source/${P}.tar.gz"
 
 # Blender can have letters in the version string,
-# so strip of the letter if it exists.
+# so strip off the letter if it exists.
 MY_PV="$(ver_cut 1-2)"
 
 SLOT="0"
@@ -75,7 +75,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	opensubdiv? ( >=media-libs/opensubdiv-3.3.0:=[cuda=,opencl=] )
 	openvdb? (
-		media-gfx/openvdb[${PYTHON_USEDEP},-abi3-compat(-)]
+		media-gfx/openvdb[${PYTHON_USEDEP},-abi3-compat(-),abi4-compat(+)]
 		dev-cpp/tbb
 		>=dev-libs/c-blosc-1.5.2
 	)
@@ -139,6 +139,8 @@ src_configure() {
 	# shadows, see bug #276338 for reference
 	append-flags -funsigned-char
 	append-lfs-flags
+	# Blender is compatible ABI 4 or less, so use ABI 4.
+	append-cppflags -DOPENVDB_ABI_VERSION_NUMBER=4
 
 	local mycmakeargs=(
 		-DPYTHON_VERSION="${EPYTHON/python/}"

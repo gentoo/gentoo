@@ -14,7 +14,7 @@ SRC_URI="https://github.com/dreamworksanimation/${PN}/archive/v${PV}.tar.gz -> $
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc python test"
+IUSE="+abi4-compat doc python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
@@ -40,9 +40,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[latex] )
 	test? ( dev-util/cppunit )"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-4.0.2-findboost-fix.patch"
-	"${FILESDIR}/${P}-use-gnuinstalldirs.patch"
+PATCHES=( "${FILESDIR}/${P}-use-gnuinstalldirs.patch"
 	"${FILESDIR}/${P}-use-pkgconfig-for-ilmbase-and-openexr.patch"
 )
 
@@ -57,6 +55,7 @@ src_configure() {
 		-DBLOSC_LOCATION="${myprefix}"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 		-DGLFW3_LOCATION="${myprefix}"
+		-DOPENVDB_ABI_VERSION_NUMBER=$(usex abi4-compat 4 5)
 		-DOPENVDB_BUILD_DOCS=$(usex doc)
 		-DOPENVDB_BUILD_PYTHON_MODULE=$(usex python)
 		-DOPENVDB_BUILD_UNITTESTS=$(usex test)
