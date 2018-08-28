@@ -20,7 +20,7 @@ IUSE="+nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	app-i18n/ibus[python,${PYTHON_USEDEP}]
+	app-i18n/ibus[python(+),${PYTHON_USEDEP}]
 	~app-i18n/sunpinyin-${PV}:=
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
