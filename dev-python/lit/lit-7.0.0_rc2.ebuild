@@ -4,13 +4,12 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
-inherit distutils-r1 git-r3 multiprocessing
+inherit distutils-r1 multiprocessing
 
+MY_P=llvm-${PV/_/}.src
 DESCRIPTION="A stand-alone install of the LLVM suite testing tool"
 HOMEPAGE="https://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
-	https://github.com/llvm-mirror/llvm.git"
+SRC_URI="https://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
@@ -18,7 +17,7 @@ KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-S=${WORKDIR}/${P}/utils/lit
+S=${WORKDIR}/${MY_P}/utils/lit
 
 # Tests require 'FileCheck' and 'not' utilities (from llvm)
 DEPEND="
@@ -30,8 +29,8 @@ DEPEND="
 # TODO: move the manpage generation here (from sys-devel/llvm)
 
 src_unpack() {
-	git-r3_fetch
-	git-r3_checkout '' '' '' utils/lit
+	einfo "Unpacking parts of ${MY_P}.tar.xz ..."
+	tar -xJf "${DISTDIR}/${MY_P}.tar.xz" "${MY_P}/utils/lit" || die
 }
 
 python_test() {
