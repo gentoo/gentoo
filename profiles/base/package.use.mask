@@ -23,16 +23,6 @@ app-emulation/wine-staging ffmpeg
 # only a subset of the archs rng-tools supports
 sys-apps/rng-tools jitterentropy
 
-# Andreas Sturmlechner <asturm@gentoo.org> (18 Jun 2018)
-# Qt4 is dead and going away. Bug #638260
-sci-libs/ViSP qt4
-
-# Andreas Sturmlechner <asturm@gentoo.org> (18 Jun 2018)
-# dev-python/PyQt4 and dev-python/pyside are dead and going away.
-dev-python/pandas X
-media-video/syncplay gui
-net-wireless/gnuradio qt4
-
 # Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
 # dev-libs/DirectFB is being removed (#606194)
 www-plugins/gnash directfb
