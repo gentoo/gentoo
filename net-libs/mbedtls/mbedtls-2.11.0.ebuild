@@ -13,7 +13,7 @@ S=${WORKDIR}/${PN}-${P}
 LICENSE="Apache-2.0"
 SLOT="0/11" # slot for libmbedtls.so
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="cpu_flags_x86_sse2 doc havege libressl programs test threads zlib"
+IUSE="cpu_flags_x86_sse2 doc havege libressl programs -static-libs test threads zlib"
 
 RDEPEND="
 	programs? (
@@ -47,7 +47,7 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PROGRAMS=$(multilib_native_usex programs)
 		-DENABLE_ZLIB_SUPPORT=$(usex zlib)
-		-DUSE_STATIC_MBEDTLS_LIBRARY=OFF
+		-DUSE_STATIC_MBEDTLS_LIBRARY=$(usex static-libs)
 		-DENABLE_TESTING=$(usex test)
 		-DUSE_SHARED_MBEDTLS_LIBRARY=ON
 		-DINSTALL_MBEDTLS_HEADERS=ON
