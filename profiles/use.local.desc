@@ -1614,7 +1614,7 @@ dev-libs/log4cplus:working-locale - Use C++'s std::locale for wchar_t <-> char c
 dev-libs/m17n-lib:X - Build the Graphical User Interface API and utilities
 dev-libs/m17n-lib:anthy - Enable support for app-i18n/anthy input method
 dev-libs/m17n-lib:athena - Enable the MIT Athena widget set (x11-libs/libXaw)
-dev-libs/m17n-lib:gd - Build API and utilities based on media-libs/gd. This flag is only meaningful if the X USE flag is also enabled.
+dev-libs/m17n-lib:gd - Build API and utilities based on media-libs/gd. This flag is only meaningful if the X USE flag is also enabled
 dev-libs/m17n-lib:libotf - Use dev-libs/libotf to handle OpenType fonts
 dev-libs/m17n-lib:libxml2 - Use dev-libs/libxml2 to parse XML
 dev-libs/nss:cacert - Include root/class3 certs from CAcert (http://www.cacert.org/)
