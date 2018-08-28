@@ -19,6 +19,7 @@ RDEPEND=${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.6.2-nouidmagic.patch"
+	"${FILESDIR}"/${P}-gcc8-fix.patch
 )
 
 src_prepare() {
