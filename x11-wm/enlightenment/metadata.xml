@@ -10,6 +10,7 @@
   </maintainer>
   <use>
     <flag name="egl">Enable EGL rendering</flag>
+    <flag name="packagekit">Enable module for package manager integration</flag>
     <flag name="ukit">Use upower/udisks to automount devices</flag>
   </use>
   <longdescription>
