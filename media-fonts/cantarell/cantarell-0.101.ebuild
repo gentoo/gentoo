@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/CantarellFonts"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 RDEPEND="media-libs/fontconfig"
