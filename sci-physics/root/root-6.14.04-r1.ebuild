@@ -311,5 +311,5 @@ src_install() {
 	fi
 
 	# clean up unnecessary files from installation
-	rm -r config emacs etc/vmc || die
+	rm -r emacs || die
 }
