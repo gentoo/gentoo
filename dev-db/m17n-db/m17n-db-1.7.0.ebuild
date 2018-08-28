@@ -13,8 +13,7 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~sh sparc x86"
 IUSE=""
 
 DEPEND="sys-devel/gettext"
-RDEPEND="!dev-db/m17n-contrib
-	virtual/libintl"
+RDEPEND="virtual/libintl"
 
 src_install() {
 	default
