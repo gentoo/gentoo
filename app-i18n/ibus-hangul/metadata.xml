@@ -10,7 +10,6 @@
 		<pkg>app-i18n/libhangul</pkg>.
 	</longdescription>
 	<upstream>
-		<remote-id type="google-code">ibus</remote-id>
-		<remote-id type="github">ibus/ibus</remote-id>
+		<remote-id type="github">libhangul/ibus-hangul</remote-id>
 	</upstream>
 </pkgmetadata>

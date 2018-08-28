@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit python-single-r1
 
 DESCRIPTION="Hangul engine for IBus"
-HOMEPAGE="https://github.com/ibus/ibus/wiki"
-SRC_URI="https://github.com/choehwanjin/${PN}/releases/download/${PV}/${P}.tar.gz"
+HOMEPAGE="https://github.com/libhangul/ibus-hangul/wiki"
+SRC_URI="https://github.com/libhangul/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
