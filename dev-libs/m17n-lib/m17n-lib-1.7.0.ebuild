@@ -35,10 +35,10 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-configure.patch
+	"${FILESDIR}"/${PN}-freetype.patch
 	"${FILESDIR}"/${PN}-gui.patch
 	"${FILESDIR}"/${PN}-ispell.patch
 	"${FILESDIR}"/${PN}-parallel-make.patch
-	"${FILESDIR}"/${PN}-1.7.0-no-freetype.patch
 )
 
 src_prepare() {
