@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install test unpack
+DESCRIPTION=Common files shared between multiple slots of clang
+EAPI=6
+HOMEPAGE=https://llvm.org/
+LICENSE=UoI-NCSA
+PDEPEND=sys-devel/clang:*
+SLOT=0
+SRC_URI=https://prereleases.llvm.org/7.0.0/rc2/cfe-7.0.0rc2.src.tar.xz
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=e9873fa448f424e3f247b876d6a1a432
