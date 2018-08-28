@@ -21,6 +21,7 @@ RDEPEND="
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtwidgets:5
 	client? (
+		dev-libs/protobuf:=
 		dev-qt/qtmultimedia:5
 		dev-qt/qtprintsupport:5
 		dev-qt/qtsvg:5
