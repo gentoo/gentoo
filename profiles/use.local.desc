@@ -2785,6 +2785,7 @@ media-gfx/nvidia-texture-tools:glew - Enable support for The OpenGL Extension Wr
 media-gfx/openclipart:gzip - Compresses clip art using gzip
 media-gfx/openexr_viewers:cg - Add support for nvidia's cg shaders
 media-gfx/openvdb:abi3-compat - Disables newer features to maintain compatibility with ABI3. Enabled by default.
+media-gfx/openvdb:abi4-compat - Disables newer features to maintain compatibility with ABI4. Enabled by default.
 media-gfx/photoqt:devil - Support additional image formats using media-libs/devil
 media-gfx/photoqt:exiv2 - Use media-gfx/exiv2 as optional dependency
 media-gfx/photoqt:freeimage - Support additional iamge formats using media-libs/freeimage
