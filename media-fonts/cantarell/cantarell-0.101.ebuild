@@ -15,7 +15,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE=""
 
 RDEPEND="media-libs/fontconfig"
+# appstream-glib provided .loc and .its files required by gettext msgfmt for translation of .metainfo.xml
 DEPEND="
+	dev-libs/appstream-glib
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
