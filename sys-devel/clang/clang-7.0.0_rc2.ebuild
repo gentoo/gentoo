@@ -104,6 +104,7 @@ src_unpack() {
 	if use test; then
 		einfo "Unpacking parts of ${LLVM_P}.tar.xz ..."
 		tar -xf "${DISTDIR}/${LLVM_P}.tar.xz" \
+			"${LLVM_P}"/lib/Testing/Support \
 			"${LLVM_P}"/utils/{lit,llvm-lit,unittest} || die
 		mv "${LLVM_P}" "${WORKDIR}"/llvm || die
 	fi
