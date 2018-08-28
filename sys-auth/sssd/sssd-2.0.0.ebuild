@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{4..7} )
 
@@ -86,7 +86,7 @@ src_prepare() {
 	multilib_copy_sources
 
 	# Maybe run it before eautoreconf?
-	epatch_user
+	eapply_user
 }
 
 src_configure() {
@@ -177,7 +177,7 @@ multilib_src_install() {
 		dopammod .libs/pam_sss.so
 
 		into /
-		dolib .libs/libnss_sss.so*
+		dolib.so .libs/libnss_sss.so*
 
 		if use locator; then
 			exeinto /usr/$(get_libdir)/krb5/plugins/libkrb5
@@ -188,7 +188,7 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 
 	insinto /etc/sssd
 	insopts -m600
