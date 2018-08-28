@@ -1,6 +1,6 @@
 diff -urN a/openvdb/CMakeLists.txt b/openvdb/CMakeLists.txt
---- a/openvdb/CMakeLists.txt	2018-08-07 21:21:02.000000000 +0100
-+++ b/openvdb/CMakeLists.txt	2018-08-07 21:47:02.355277361 +0100
+--- a/openvdb/CMakeLists.txt	2018-08-28 12:20:33.000000000 +0100
++++ b/openvdb/CMakeLists.txt	2018-08-28 12:25:19.807755722 +0100
 @@ -83,11 +83,12 @@
    ADD_DEFINITIONS ( -DBOOST_ALL_NO_LIB )
  ENDIF ()
@@ -58,8 +58,8 @@ diff -urN a/openvdb/CMakeLists.txt b/openvdb/CMakeLists.txt
    stdc++
    )
 diff -urN a/openvdb/python/CMakeLists.txt b/openvdb/python/CMakeLists.txt
---- a/openvdb/python/CMakeLists.txt	2018-08-07 21:20:56.000000000 +0100
-+++ b/openvdb/python/CMakeLists.txt	2018-08-07 21:31:55.508016795 +0100
+--- a/openvdb/python/CMakeLists.txt	2018-08-28 12:20:33.000000000 +0100
++++ b/openvdb/python/CMakeLists.txt	2018-08-28 12:25:19.808755721 +0100
 @@ -9,8 +9,8 @@
  IF ( NOT OPENVDB_BUILD_CORE )
    FIND_PACKAGE ( OpenVDB REQUIRED )
@@ -82,7 +82,7 @@ diff -urN a/openvdb/python/CMakeLists.txt b/openvdb/python/CMakeLists.txt
  INCLUDE_DIRECTORIES ( SYSTEM ${Boost_INCLUDE_DIR} )
  INCLUDE_DIRECTORIES ( SYSTEM ${BLOSC_INCLUDE_DIR} )
  INCLUDE_DIRECTORIES ( SYSTEM ${TBB_INCLUDE_DIR} )
-@@ -96,7 +96,7 @@
+@@ -91,7 +91,7 @@
    ${GLEW_GLEW_LIBRARY}
    ${Boost_PYTHON_LIBRARY}
    ${PYTHON_LIBRARY}
