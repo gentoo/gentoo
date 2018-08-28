@@ -27,6 +27,10 @@ DEPEND="${RDEPEND}
 	>=sys-devel/libtool-2.2.6
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/0001-fix-build-with-libical-version-3.patch
+)
+
 src_configure() {
 	local myconf=(
 		--libexecdir="${EPREFIX}/usr/$(get_libdir)"
