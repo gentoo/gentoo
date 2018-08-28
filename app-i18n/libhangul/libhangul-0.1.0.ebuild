@@ -4,8 +4,8 @@
 EAPI="6"
 
 DESCRIPTION="Library for hangul input method logic, hanja dictionary"
-HOMEPAGE="https://github.com/choehwanjin/libhangul"
-SRC_URI="https://libhangul.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://github.com/libhangul/libhangul"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/1"
