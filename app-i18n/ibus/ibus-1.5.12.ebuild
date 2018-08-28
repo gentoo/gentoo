@@ -145,8 +145,6 @@ src_install() {
 
 pkg_preinst() {
 	use gconf && gnome2_gconf_savelist
-	gnome2_icon_savelist
-	gnome2_schemas_savelist
 }
 
 pkg_postinst() {

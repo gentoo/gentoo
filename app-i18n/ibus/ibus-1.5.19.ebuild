@@ -72,9 +72,14 @@ DEPEND="${CDEPEND}
 	nls? ( sys-devel/gettext )
 	unicode? ( app-i18n/unicode-data )"
 
+PATCHES=( "${FILESDIR}"/${P}-gdk-wayland.patch )
+
 src_prepare() {
 	vala_src_prepare --ignore-use
 	sed -i "/UCD_DIR=/s/\$with_emoji_annotation_dir/\$with_ucd_dir/" configure.ac
+	if ! has_version 'x11-libs/gtk+:3[wayland]'; then
+		touch ui/gtk3/panelbinding.vala
+	fi
 	if ! use emoji; then
 		touch \
 			tools/main.vala \
@@ -89,12 +94,9 @@ src_prepare() {
 	# for multiple Python implementations
 	sed -i "s/^\(PYGOBJECT_DIR =\).*/\1/" bindings/Makefile.am
 	# fix for parallel install
-	sed -i \
-		-e "/^py2_compile/,/^$/d" \
-		-e "/^install-data-hook/,/^$/d" \
-		bindings/pygobject/Makefile.am
+	sed -i "/^if ENABLE_PYTHON2/,/^endif/d" bindings/pygobject/Makefile.am
 	# require user interaction
-	sed -i "/^TESTS += ibus-compose/d" src/tests/Makefile.am
+	sed -i "/^TESTS += ibus-\(compose\|keypress\)/d" src/tests/Makefile.am
 
 	sed -i "/^bash_completion/d" tools/Makefile.am
 
