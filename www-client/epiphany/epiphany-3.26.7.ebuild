@@ -38,8 +38,10 @@ RDEPEND="${COMMON_DEPEND}
 	x11-themes/adwaita-icon-theme
 "
 # paxctl needed for bug #407085
+# appstream-glib needed for appdata.xml gettext translation
 DEPEND="${COMMON_DEPEND}
 	app-text/yelp-tools
+	dev-libs/appstream-glib
 	dev-util/gdbus-codegen
 	sys-apps/paxctl
 	>=sys-devel/gettext-0.19.8
