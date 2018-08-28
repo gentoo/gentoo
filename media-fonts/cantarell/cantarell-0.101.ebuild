@@ -11,12 +11,11 @@ HOMEPAGE="https://wiki.gnome.org/Projects/CantarellFonts"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND="media-libs/fontconfig"
 DEPEND="
-	dev-libs/appstream
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
