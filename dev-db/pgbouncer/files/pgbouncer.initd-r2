@@ -48,7 +48,7 @@ start() {
                       --pidfile ${PIDFILE} \
                       --background \
                       --make-pidfile \
-                      --user pgbouncer \
+                      --user pgbouncer:postgres \
                       --exec /usr/bin/pgbouncer \
                       -- -q "${INIFILE}"
     eend $?
@@ -67,7 +67,7 @@ stop() {
 
     # Loops through nice and force quit in one go.
     start-stop-daemon --stop \
-                      --user pgbouncer \
+                      --user pgbouncer:postgres \
                       --pidfile ${PIDFILE} \
                       --retry ${retries}
 
