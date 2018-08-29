@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst
+DEPEND=libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:= ) >=dev-libs/boost-1.35:= botan? ( dev-libs/botan:2= ) lua? ( !luajit? ( dev-lang/lua:= ) luajit? ( dev-lang/luajit:= ) ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) ldap? ( >=net-nds/openldap-2.0.27-r4 app-crypt/mit-krb5 ) sqlite? ( dev-db/sqlite:3 ) opendbx? ( dev-db/opendbx ) geoip? ( >=dev-cpp/yaml-cpp-0.5.1:= dev-libs/geoip ) sodium? ( dev-libs/libsodium:= ) tinydns? ( >=dev-db/tinycdb-0.77 ) protobuf? ( dev-libs/protobuf ) virtual/pkgconfig doc? ( app-doc/doxygen )
+DESCRIPTION=The PowerDNS Daemon
+EAPI=6
+HOMEPAGE=https://www.powerdns.com/
+IUSE=botan debug doc geoip ldap libressl lua luajit mydns mysql opendbx postgres protobuf remote sodium sqlite systemd tools tinydns test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:= ) >=dev-libs/boost-1.35:= botan? ( dev-libs/botan:2= ) lua? ( !luajit? ( dev-lang/lua:= ) luajit? ( dev-lang/luajit:= ) ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) ldap? ( >=net-nds/openldap-2.0.27-r4 app-crypt/mit-krb5 ) sqlite? ( dev-db/sqlite:3 ) opendbx? ( dev-db/opendbx ) geoip? ( >=dev-cpp/yaml-cpp-0.5.1:= dev-libs/geoip ) sodium? ( dev-libs/libsodium:= ) tinydns? ( >=dev-db/tinycdb-0.77 ) protobuf? ( dev-libs/protobuf )
+REQUIRED_USE=mydns? ( mysql )
+SLOT=0
+SRC_URI=https://downloads.powerdns.com/releases/pdns-4.1.4.tar.bz2
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
+_md5_=272d018c76beba3635dde1e603a37fec
