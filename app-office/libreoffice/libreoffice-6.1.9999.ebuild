@@ -398,9 +398,11 @@ src_configure() {
 		--disable-epm
 		--disable-fetch-external
 		--disable-gstreamer-0-10
+		--disable-kde5
 		--disable-online-update
 		--disable-openssl
 		--disable-pdfium
+		--disable-qt5
 		--disable-report-builder
 		--with-alloc=system
 		--with-build-version="Gentoo official package"
@@ -432,8 +434,6 @@ src_configure() {
 		$(use_enable gtk gtk3)
 		$(use_enable gtk2 gtk)
 		$(use_enable kde gtk3-kde5)
-		$(use_enable kde kde5)
-		$(use_enable kde qt5)
 		$(use_enable mysql ext-mariadb-connector)
 		$(use_enable odk)
 		$(use_enable pdfimport)
