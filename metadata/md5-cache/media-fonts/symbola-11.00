@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare setup
+DEPEND=app-arch/unzip X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Unicode font for Latin, IPA Extensions, Greek, Cyrillic and many Symbol Blocks
+EAPI=7
+HOMEPAGE=http://users.teilar.gr/~g1951d/
+IUSE=doc X
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=Unicode_Fonts_for_Ancient_Scripts
+SLOT=0
+SRC_URI=http://users.teilar.gr/~g1951d/Symbola.zip -> symbola-11.00.zip
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	font	82836641e7d4639329d8c195234ad0e3
+_md5_=a0421355c265d5911c8129813c4ada20
