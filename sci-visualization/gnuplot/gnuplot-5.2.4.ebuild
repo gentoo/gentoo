@@ -9,22 +9,20 @@ DESCRIPTION="Command-line driven interactive plotting program"
 HOMEPAGE="http://www.gnuplot.info/"
 
 if [[ -z ${PV%%*9999} ]]; then
-	inherit cvs
-	ECVS_SERVER="gnuplot.cvs.sourceforge.net:/cvsroot/gnuplot"
-	ECVS_MODULE="gnuplot"
-	ECVS_BRANCH="HEAD"
-	ECVS_USER="anonymous"
-	ECVS_CVS_OPTIONS="-dP"
+	inherit git-r3
+	EGIT_REPO_URI="https://git.code.sf.net/p/gnuplot/gnuplot-main"
+	EGIT_BRANCH="branch-5-2-stable"
 	MY_P="${PN}"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/${MY_P}"
 else
 	MY_P="${P/_/.}"
 	SRC_URI="mirror://sourceforge/gnuplot/${MY_P}.tar.gz"
-	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 ~s390 ~sparc x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="gnuplot bitmap? ( free-noncomm )"
 SLOT="0"
-IUSE="aqua bitmap cairo compat doc examples +gd ggi latex libcaca libcerf lua qt5 readline svga wxwidgets X"
+IUSE="aqua bitmap cairo compat doc examples +gd ggi latex libcaca libcerf lua qt5 readline regis svga wxwidgets X"
 
 RDEPEND="
 	cairo? (
@@ -71,6 +69,7 @@ TEXMF="${EPREFIX}/usr/share/texmf-site"
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-5.0.1-fix-underlinking.patch
 	eapply "${FILESDIR}"/${PN}-5.0.6-no-picins.patch
+	eapply "${FILESDIR}"/${PN}-5.2.2-regis.patch
 	eapply_user
 
 	if [[ -z ${PV%%*9999} ]]; then
@@ -96,7 +95,6 @@ src_prepare() {
 		environment variables. See the FAQ file in /usr/share/doc/${PF}/
 		for more information.'
 
-	mv configure.in configure.ac || die
 	eautoreconf
 
 	# Make sure we don't mix build & host flags.
@@ -125,7 +123,6 @@ src_configure() {
 	use qt5 && append-cxxflags -std=c++11
 
 	econf \
-		--without-pdf \
 		--with-texdir="${TEXMF}/tex/latex/${PN}" \
 		--with-readline=$(usex readline gnu builtin) \
 		$(use_with bitmap bitmap-terminals) \
@@ -138,6 +135,7 @@ src_configure() {
 		"$(use_with libcaca caca "${EPREFIX}/usr/$(get_libdir)")" \
 		$(use_with libcerf) \
 		$(use_with lua) \
+		$(use_with regis) \
 		$(use_with svga linux-vga) \
 		$(use_with X x) \
 		--enable-stats \
@@ -175,7 +173,7 @@ src_compile() {
 src_install () {
 	emake DESTDIR="${D}" install
 
-	dodoc BUGS ChangeLog NEWS PGPKEYS PORTING README*
+	dodoc BUGS ChangeLog NEWS PGPKEYS README* RELEASE_NOTES TODO
 	newdoc term/PostScript/README README-ps
 	newdoc term/js/README README-js
 	use lua && newdoc term/lua/README README-lua

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,15 +9,11 @@ DESCRIPTION="Command-line driven interactive plotting program"
 HOMEPAGE="http://www.gnuplot.info/"
 
 if [[ -z ${PV%%*9999} ]]; then
-	inherit cvs
-	ECVS_SERVER="gnuplot.cvs.sourceforge.net:/cvsroot/gnuplot"
-	ECVS_MODULE="gnuplot"
-	ECVS_BRANCH="branch-5-2-stable"
-	ECVS_USER="anonymous"
-	ECVS_CVS_OPTIONS="-dP"
+	inherit git-r3
+	EGIT_REPO_URI="https://git.code.sf.net/p/gnuplot/gnuplot-main"
+	EGIT_BRANCH="branch-5-2-stable"
 	MY_P="${PN}"
-	SRC_URI=""
-	KEYWORDS=""
+	EGIT_CHECKOUT_DIR="${WORKDIR}/${MY_P}"
 else
 	MY_P="${P/_/.}"
 	SRC_URI="mirror://sourceforge/gnuplot/${MY_P}.tar.gz"
