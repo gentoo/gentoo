@@ -75,7 +75,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
-	default
+	cmake-utils_src_install
 
 	if use cube; then
 		mv "${ED%/}"/usr/bin/cube "${ED%/}"/usr/bin/vulkancube || die
