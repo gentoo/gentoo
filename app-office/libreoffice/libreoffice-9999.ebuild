@@ -69,7 +69,6 @@ $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
-	kde? ( gtk )
 	libreoffice_extensions_nlpsolver? ( java )
 	libreoffice_extensions_scripting-beanshell? ( java )
 	libreoffice_extensions_scripting-javascript? ( java )
@@ -433,7 +432,6 @@ src_configure() {
 		$(use_enable gstreamer gstreamer-1-0)
 		$(use_enable gtk gtk3)
 		$(use_enable gtk2 gtk)
-		$(use_enable kde gtk3-kde5)
 		$(use_enable kde kde5)
 		$(use_enable kde qt5)
 		$(use_enable mysql ext-mariadb-connector)
@@ -448,6 +446,10 @@ src_configure() {
 		$(use_with mysql system-mysql-cppconn)
 		$(use_with odk doxygen)
 	)
+
+	if use gtk && use kde; then
+		myeconfargs+=( --enable-gtk3-kde5 )
+	fi
 
 	if use eds || use gtk; then
 		myeconfargs+=( --enable-dconf --enable-gio )
