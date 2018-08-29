@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit python-single-r1
+inherit gnome2-utils python-single-r1
 
 DESCRIPTION="Hangul engine for IBus"
 HOMEPAGE="https://github.com/libhangul/ibus-hangul/wiki"
@@ -34,4 +34,12 @@ src_prepare() {
 
 src_configure() {
 	econf $(use_enable nls)
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
