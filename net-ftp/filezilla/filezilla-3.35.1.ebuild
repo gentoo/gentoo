@@ -12,7 +12,7 @@ MY_P="FileZilla_${MY_PV}"
 
 DESCRIPTION="FTP client with lots of useful features and an intuitive interface"
 HOMEPAGE="https://filezilla-project.org/"
-SRC_URI="https://dl2.cdn.filezilla-project.org/client/${MY_P}_src.tar.bz2"
+SRC_URI="https://download.filezilla-project.org/client/${MY_P}_src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
