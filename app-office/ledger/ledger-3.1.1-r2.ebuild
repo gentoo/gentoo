@@ -12,7 +12,7 @@ HOMEPAGE="https://www.ledger-cli.org/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		 https://github.com/ledger/ledger/commit/de1b48a013b6f4bdf68f7edf333db63a0994ef20.patch"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="debug doc emacs python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
