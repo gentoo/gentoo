@@ -1376,22 +1376,22 @@ app-text/lcdf-typetools 2.106: Font utilities for eg manipulating OTF
 app-text/lesspipe 1.83: a preprocessor for less
 app-text/libabw 0.1.2: Library parsing abiword documents
 app-text/libebook 0.1.2-r1: Library parsing various ebook formats
-app-text/libepubgen 0.1.0 0.1.1: EPUB generator for librevenge
-app-text/libetonyek 0.1.7 0.1.8: Library parsing Apple Keynote presentations
+app-text/libepubgen 0.1.1: EPUB generator for librevenge
+app-text/libetonyek 0.1.8: Library parsing Apple Keynote presentations
 app-text/libexttextcat 3.4.5: Library implementing N-gram-based text categorization
 app-text/libgepub 0.4: GObject based library for handling and rendering epub documents
 app-text/libgxps 0.3.0: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.2: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.4: Library parsing Microsoft Publisher documents
-app-text/libmwaw 0.3.13 0.3.14: Library parsing many pre-OSX MAC text formats
+app-text/libmwaw 0.3.14: Library parsing many pre-OSX MAC text formats
 app-text/libodfgen 0.1.6: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24-r2: Library for handling paper characteristics
 app-text/libqxp 0.0.1: Library parsing QuarkXpress documents
 app-text/libspectre 0.2.7: A library for rendering Postscript documents
-app-text/libstaroffice 0.0.5 0.0.6: Import filter for old StarOffice documents
+app-text/libstaroffice 0.0.6: Import filter for old StarOffice documents
 app-text/libwpd 0.10.2: WordPerfect Document import/export library
 app-text/libwpg 0.3.2: C++ library to read and parse graphics in WPG
-app-text/libwps 0.4.8 0.4.10: Microsoft Works file word processor format import filter library
+app-text/libwps 0.4.10: Microsoft Works file word processor format import filter library
 app-text/linuxdoc-tools 0.9.72: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 26b_p20180114: graphical PDF viewer which aims to superficially resemble less(1)
 app-text/lout 3.40: High-level language for document formatting
@@ -7605,7 +7605,7 @@ media-libs/libopendaap 0.4.0: A library to connect to iTunes(R) music shares
 media-libs/libopenraw 0.0.9 0.1.2: A decoding library for RAW image formats
 media-libs/libopenshot 0.1.8: Video editing library used by OpenShot
 media-libs/libopenshot-audio 0.1.4: Audio library used by OpenShot
-media-libs/libpagemaker 0.0.3-r1 0.0.4: C++ Library that parses the file format of Aldus/Adobe PageMaker documents.
+media-libs/libpagemaker 0.0.4: C++ Library that parses the file format of Aldus/Adobe PageMaker documents.
 media-libs/libpano13 2.9.18 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 6.11.32 6.12.27: Library to load, handle and manipulate images in the PGF format
 media-libs/libpng 1.2.57 1.5.28 1.6.34: Portable Network Graphics library
