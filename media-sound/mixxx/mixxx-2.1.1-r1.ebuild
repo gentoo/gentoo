@@ -14,7 +14,7 @@ else
 	#SRC_URI="https://downloads.mixxx.org/${P}/${P}-src.tar.gz"
 	SRC_URI="https://github.com/mixxxdj/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-release-${PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 fi
 
 LICENSE="GPL-2"
