@@ -119,6 +119,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/nss
 	>=dev-libs/redland-1.0.16
 	>=dev-libs/xmlsec-1.2.24[nss]
+	media-gfx/fontforge
 	media-gfx/graphite2
 	media-libs/fontconfig
 	media-libs/freetype:2
@@ -221,7 +222,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3
 	dev-util/intltool
-	>=dev-util/mdds-1.2.3:1=
+	>=dev-util/mdds-1.4.1:1=
 	media-libs/glm
 	sys-devel/bison
 	sys-devel/flex
@@ -387,6 +388,7 @@ src_configure() {
 		--with-system-headers
 		--with-system-jars
 		--with-system-libs
+		--enable-build-opensymbol
 		--enable-cairo-canvas
 		--enable-largefile
 		--enable-mergelibs
