@@ -1,0 +1,12 @@
+diff -Naur a/build/libraries.py b/build/libraries.py
+--- a/build/libraries.py	2017-08-03 11:26:28.000000000 +0100
++++ b/build/libraries.py	2018-08-29 23:11:04.392981071 +0100
+@@ -304,7 +304,7 @@
+ class SDL_ttf(Library):
+ 	libName = 'SDL_ttf'
+ 	makeName = 'SDL_TTF'
+-	header = '<SDL_ttf.h>'
++	header = '<SDL/SDL_ttf.h>'
+ 	function = 'TTF_OpenFont'
+ 	dependsOn = ('SDL', 'FREETYPE')
+ 
