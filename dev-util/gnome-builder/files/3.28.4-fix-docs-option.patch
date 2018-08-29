@@ -1,0 +1,42 @@
+From 054ef6d2e47da9f41e7c24908b251d074e11a03b Mon Sep 17 00:00:00 2001
+From: Christian Hergert <chergert@redhat.com>
+Date: Wed, 8 Aug 2018 13:03:50 -0700
+Subject: [PATCH] help: fix get_option() to check for proper value
+
+We want to check for help docs, not sdk docs. Also, if enabled, don't be
+automatic about it. Fail hard so the caller knows there is an issue.
+---
+ doc/help/meson.build | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
+
+diff --git a/doc/help/meson.build b/doc/help/meson.build
+index 1336e6a26..e684f078c 100644
+--- a/doc/help/meson.build
++++ b/doc/help/meson.build
+@@ -1,15 +1,13 @@
+-if get_option('with_docs')
++if get_option('with_help')
+ 
+-sphinx = find_program(['sphinx-build-3', 'sphinx-build'], required: false)
++sphinx = find_program(['sphinx-build-3', 'sphinx-build'], required: true)
+ 
+-if sphinx.found()
+-    custom_target('en user documentation',
+-                  command: [sphinx, '-b', 'html', '-c', meson.current_source_dir(), meson.current_source_dir(), '@OUTPUT@'],
+-                   output: 'en',
+-         build_by_default: true)
++custom_target('en user documentation',
++           command: [sphinx, '-b', 'html', '-c', meson.current_source_dir(), meson.current_source_dir(), '@OUTPUT@'],
++            output: 'en',
++  build_by_default: true
++)
+ 
+-
+-    install_subdir(meson.current_build_dir() + '/en', install_dir: pkgdocdir_abs)
+-endif
++install_subdir(meson.current_build_dir() + '/en', install_dir: pkgdocdir_abs)
+ 
+ endif
+-- 
+2.17.0
+
