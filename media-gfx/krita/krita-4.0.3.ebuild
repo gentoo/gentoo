@@ -3,7 +3,7 @@
 
 EAPI=6
 
-KDE_TEST="forceoptional-recursive"
+KDE_TEST="forceoptional"
 VIRTUALX_REQUIRED="test"
 PYTHON_COMPAT=( python3_{4,5,6} )
 inherit kde5 python-single-r1
@@ -86,7 +86,10 @@ RDEPEND="${COMMON_DEPEND}
 # bug 630508
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${P}-libraw-0.19.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-tests-optional.patch"
+	"${FILESDIR}/${P}-libraw-0.19.patch"
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
