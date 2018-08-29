@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="6"
 
 DESCRIPTION="Provides access to GPIO and other IO functions on the Broadcom BCM2835"
 HOMEPAGE="http://www.airspayce.com/mikem/bcm2835/"
@@ -16,11 +16,10 @@ DEPEND="doc? ( app-doc/doxygen )"
 RDEPEND=""
 
 src_install() {
-	default
+	use doc && HTML_DOCS=( doc/html/. )
 	if use examples; then
 		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
-	if use doc; then
-		dohtml -r doc/html/.
-	fi
+	default
 }
