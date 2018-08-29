@@ -180,6 +180,7 @@ multilib_src_compile() {
 	export NSDISTMODE=copy
 	export NSS_ENABLE_ECC=1
 	export FREEBL_NO_DEPEND=1
+	export NSS_SEED_ONLY_DEV_URANDOM=1
 	export ASFLAGS=""
 
 	local d
