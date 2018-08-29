@@ -69,7 +69,7 @@ COMMON_DEPEND="
 		dev-python/sip[${PYTHON_USEDEP}]
 	)
 	qtmedia? ( $(add_qt_dep qtmultimedia) )
-	raw? ( <media-libs/libraw-0.19:= )
+	raw? ( media-libs/libraw:= )
 	tiff? ( media-libs/tiff:0 )
 "
 DEPEND="${COMMON_DEPEND}
@@ -85,6 +85,8 @@ RDEPEND="${COMMON_DEPEND}
 
 # bug 630508
 RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}/${P}-libraw-0.19.patch" )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
