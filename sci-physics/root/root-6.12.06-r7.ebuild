@@ -110,6 +110,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.12.04-no-ocaml.patch
 	"${FILESDIR}"/${PN}-6.12.04-no-opengl.patch
 	"${FILESDIR}"/${PN}-6.12.04-z3.patch
+	"${FILESDIR}"/${PN}-6.12.06_cling-runtime-sysroot.patch
 )
 
 pkg_setup() {
