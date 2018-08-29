@@ -96,6 +96,10 @@ pkg_setup() {
 }
 
 src_configure() {
+	# Prevent sandbox violation from FindPyQt5.py module
+	# See Gentoo-bug 655918
+	addpredict /dev/dri
+
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package color-management OCIO)
 		$(cmake-utils_use_find_package fftw FFTW3)
