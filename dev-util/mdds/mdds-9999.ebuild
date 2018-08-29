@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	valgrind? ( dev-util/valgrind )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.2.3-buildsystem.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.4.1-buildsystem.patch" )
 
 src_prepare(){
 	default
