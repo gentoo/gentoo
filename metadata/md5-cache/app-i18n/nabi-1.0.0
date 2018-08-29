@@ -1,13 +1,12 @@
-DEFINED_PHASES=configure install postinst prepare
-DEPEND=>=app-i18n/libhangul-0.1.0 dev-libs/glib:2 x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-2.4:2 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/pango virtual/libintl virtual/pkgconfig sys-devel/gettext >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install postinst
+DEPEND=>=app-i18n/libhangul-0.1 dev-libs/glib:2 x11-libs/gtk+:2 x11-libs/libICE x11-libs/libSM x11-libs/libX11 virtual/libintl virtual/pkgconfig sys-devel/gettext
 DESCRIPTION=Simple Hanguk X Input Method
 EAPI=6
-HOMEPAGE=https://github.com/choehwanjin/nabi
+HOMEPAGE=https://github.com/libhangul/nabi
 IUSE=debug nls
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
-RDEPEND=>=app-i18n/libhangul-0.1.0 dev-libs/glib:2 x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-2.4:2 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/pango virtual/libintl
+RDEPEND=>=app-i18n/libhangul-0.1 dev-libs/glib:2 x11-libs/gtk+:2 x11-libs/libICE x11-libs/libSM x11-libs/libX11 virtual/libintl
 SLOT=0
-SRC_URI=https://github.com/choehwanjin/nabi/archive/nabi-1.0.0.tar.gz
-_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
-_md5_=1d8ece0814397eb31389ea056a9316e1
+SRC_URI=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/nabi/nabi-1.0.0.tar.gz
+_md5_=96d5afda3ab575e1f58786a167267e56
