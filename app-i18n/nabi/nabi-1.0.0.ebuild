@@ -3,11 +3,9 @@
 
 EAPI="6"
 
-inherit autotools
-
 DESCRIPTION="Simple Hanguk X Input Method"
-HOMEPAGE="https://github.com/choehwanjin/nabi"
-SRC_URI="https://github.com/choehwanjin/${PN}/archive/${P}.tar.gz"
+HOMEPAGE="https://github.com/libhangul/nabi"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,14 +22,8 @@ RDEPEND=">=app-i18n/libhangul-0.1
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext"
-S="${WORKDIR}/${PN}-${P}"
 
 DOCS=( AUTHORS ChangeLog.0 NEWS README TODO )
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	local myconf=()
