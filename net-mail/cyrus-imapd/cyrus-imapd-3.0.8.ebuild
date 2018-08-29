@@ -4,7 +4,6 @@
 EAPI=6
 inherit autotools flag-o-matic pam ssl-cert user
 
-
 DESCRIPTION="The Cyrus IMAP Server"
 HOMEPAGE="http://www.cyrusimap.org/"
 SRC_URI="https://github.com/cyrusimap/${PN}/releases/download/${P}/${P}.tar.gz"
