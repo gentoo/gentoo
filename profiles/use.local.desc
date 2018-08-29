@@ -5857,16 +5857,6 @@ www-misc/vdradmin-am:vdr - Support for media-video/vdr. Disable this if the VDR 
 www-plugins/freshplayerplugin:gles2 - Use system GLESv2 libraries instead of ANGLE for shader translation
 www-plugins/freshplayerplugin:gtk3 - Build with GTK+ 3 instead of GTK+ 2
 www-plugins/freshplayerplugin:v4l - Use libv4l2 for colorspace conversion
-www-plugins/gnash:agg - Rendering based on the Anti-Grain Geometry Rendering Engine library
-www-plugins/gnash:cygnal - Enable building of the cygnal server
-www-plugins/gnash:dump - Enable dump output module for creating video from SWF
-www-plugins/gnash:egl - Enable EGL support for the OpenVG, OpenGL and X11 renderers
-www-plugins/gnash:harden - Enable upstream recommended hardening build flags (may conflict with system ones)
-www-plugins/gnash:jemalloc - Use dev-libs/jemalloc for allocations
-www-plugins/gnash:openvg - Rendering based on the OpenVG graphics acceleration API
-www-plugins/gnash:sdl-sound - Enable SDL audio output for the standalone player
-www-plugins/gnash:ssh - Enable using SSH for network authentication in libnet
-www-plugins/gnash:ssl - Enable directly using OpenSSL in libnet (not needed for nsplugin ssl support)
 www-servers/apache:apache2_modules_access_compat - Group authorizations based on host (name or IP address). Available as a compatibility module with previous versions.
 www-servers/apache:apache2_modules_authn_core - Provides core authentication capabilities common to all authentication providers (functionality provided by authn_alias in previous versions).
 www-servers/apache:apache2_modules_authz_core - Provides core authorization capabilities to various authorization/authorization modules, such as authn_file and authz_user.
