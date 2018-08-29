@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=!<dev-db/mongodb-3.0.0 dev-lang/go:= net-libs/libpcap sasl? ( dev-libs/cyrus-sasl ) ssl? ( dev-libs/openssl:0= )
+DESCRIPTION=A high-performance, open source, schema-free document-oriented database
+EAPI=7
+HOMEPAGE=https://www.mongodb.com
+IUSE=sasl ssl
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=!<dev-db/mongodb-3.0.0
+SLOT=0
+SRC_URI=https://github.com/mongodb/mongo-tools/archive/r3.6.7.tar.gz -> mongo-tools-3.6.7.tar.gz
+_md5_=b40248e61500752354b139c4a4876bae
