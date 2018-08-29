@@ -99,7 +99,7 @@ waf-utils_src_configure() {
 waf-utils_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 	local _mywafconfig
-	[[ "${WAF_VERBOSE}" ]] && _mywafconfig="--verbose"
+	[[ ${WAF_VERBOSE} == ON ]] && _mywafconfig="--verbose"
 
 	local jobs="--jobs=$(makeopts_jobs)"
 	echo "\"${WAF_BINARY}\" build ${_mywafconfig} ${jobs}"
