@@ -22,7 +22,7 @@ fi
 
 LICENSE="gnuplot bitmap? ( free-noncomm )"
 SLOT="0"
-IUSE="aqua bitmap cairo compat doc examples +gd ggi latex libcaca libcerf lua qt5 readline svga wxwidgets X"
+IUSE="aqua bitmap cairo doc examples +gd ggi latex libcaca libcerf lua qt5 readline wxwidgets X"
 
 RDEPEND="
 	cairo? (
@@ -45,7 +45,6 @@ RDEPEND="
 		dev-qt/qtwidgets:5= )
 	readline? ( sys-libs/readline:0= )
 	libcerf? ( sci-libs/libcerf )
-	svga? ( media-libs/svgalib )
 	wxwidgets? (
 		x11-libs/wxGTK:3.0[X]
 		x11-libs/cairo
@@ -85,10 +84,6 @@ src_prepare() {
 	DOC_CONTENTS='Gnuplot no longer links against pdflib, see the ChangeLog
 		for details. You can use the "pdfcairo" terminal for PDF output.'
 	use cairo || DOC_CONTENTS+=' It is available with USE="cairo".'
-	use svga && DOC_CONTENTS+='\n\nIn order to enable ordinary users to use
-		SVGA console graphics, gnuplot needs to be set up as setuid root.
-		Please note that this is usually considered to be a security hazard.
-		As root, manually "chmod u+s /usr/bin/gnuplot".'
 	use gd && DOC_CONTENTS+='\n\nFor font support in png/jpeg/gif output,
 		you may have to set the GDFONTPATH and GNUPLOT_DEFAULT_GDFONT
 		environment variables. See the FAQ file in /usr/share/doc/${PF}/
@@ -126,7 +121,6 @@ src_configure() {
 		--with-readline=$(usex readline gnu builtin) \
 		$(use_with bitmap bitmap-terminals) \
 		$(use_with cairo) \
-		$(use_enable compat backwards-compatibility) \
 		$(use_with doc tutorial) \
 		$(use_with gd) \
 		"$(use_with ggi ggi "${EPREFIX}/usr/$(get_libdir)")" \
@@ -134,7 +128,6 @@ src_configure() {
 		"$(use_with libcaca caca "${EPREFIX}/usr/$(get_libdir)")" \
 		$(use_with libcerf) \
 		$(use_with lua) \
-		$(use_with svga linux-vga) \
 		$(use_with X x) \
 		--enable-stats \
 		$(use_with qt5 qt qt5) \
@@ -146,10 +139,6 @@ src_configure() {
 src_compile() {
 	# Prevent access violations, see bug 201871
 	export VARTEXFONTS="${T}/fonts"
-
-	# We believe that the following line is no longer needed.
-	# In case of problems file a bug report at bugs.gentoo.org.
-	#addwrite /dev/svga:/dev/mouse:/dev/tts/0
 
 	emake all
 
