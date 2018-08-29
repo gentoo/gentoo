@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-freetype.patch
 	"${FILESDIR}"/${PN}-ispell.patch
 	"${FILESDIR}"/${PN}-parallel-make.patch
+	"${FILESDIR}"/${PN}-pkg-config.patch
 )
 
 src_prepare() {
