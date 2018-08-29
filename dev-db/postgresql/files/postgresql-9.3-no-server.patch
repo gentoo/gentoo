@@ -1,6 +1,5 @@
-diff -Naur a/contrib/Makefile b/contrib/Makefile
---- a/contrib/Makefile	2013-05-06 20:57:06.000000000 +0000
-+++ b/contrib/Makefile	2013-06-09 01:48:22.351874929 +0000
+--- a/contrib/Makefile
++++ b/contrib/Makefile
 @@ -5,61 +5,10 @@
  include $(top_builddir)/src/Makefile.global
  
@@ -64,9 +63,8 @@ diff -Naur a/contrib/Makefile b/contrib/Makefile
  
  ifeq ($(with_ossp_uuid),yes)
  SUBDIRS += uuid-ossp
-diff -Naur a/src/backend/Makefile b/src/backend/Makefile
---- a/src/backend/Makefile	2013-05-06 20:57:06.000000000 +0000
-+++ b/src/backend/Makefile	2013-06-09 01:50:19.655864258 +0000
+--- a/src/backend/Makefile
++++ b/src/backend/Makefile
 @@ -47,7 +47,7 @@
  
  ##########################################################################
@@ -111,9 +109,8 @@ diff -Naur a/src/backend/Makefile b/src/backend/Makefile
  
  install-bin: postgres $(POSTGRES_IMP) installdirs
  	$(INSTALL_PROGRAM) postgres$(X) '$(DESTDIR)$(bindir)/postgres$(X)'
-diff -Naur a/src/bin/Makefile b/src/bin/Makefile
---- a/src/bin/Makefile	2013-05-06 20:57:06.000000000 +0000
-+++ b/src/bin/Makefile	2013-06-09 01:51:56.143824442 +0000
+--- a/src/bin/Makefile
++++ b/src/bin/Makefile
 @@ -13,8 +13,7 @@
  top_builddir = ../..
  include $(top_builddir)/src/Makefile.global
@@ -124,9 +121,8 @@ diff -Naur a/src/bin/Makefile b/src/bin/Makefile
  
  ifeq ($(PORTNAME), win32)
  SUBDIRS += pgevent
-diff -Naur a/src/Makefile b/src/Makefile
---- a/src/Makefile	2013-05-06 20:57:06.000000000 +0000
-+++ b/src/Makefile	2013-06-09 01:54:30.479704228 +0000
+--- a/src/Makefile
++++ b/src/Makefile
 @@ -15,17 +15,11 @@
  SUBDIRS = \
  	common \
