@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,8 +16,6 @@ if [[ -z ${PV%%*9999} ]]; then
 	ECVS_USER="anonymous"
 	ECVS_CVS_OPTIONS="-dP"
 	MY_P="${PN}"
-	SRC_URI=""
-	KEYWORDS=""
 else
 	MY_P="${P/_/.}"
 	SRC_URI="mirror://sourceforge/gnuplot/${MY_P}.tar.gz"
