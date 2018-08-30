@@ -18,6 +18,9 @@ elif [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == compile ]]; th
     sed -e '/^extern int pipe2/d' -i "${S}"/posix/unistd.h || die
     einfo "Removing epoll_create1 definitions..."
     sed -e '/^extern int epoll_create1/d' -i "${S}"/sysdeps/unix/sysv/linux/sys/epoll.h || die
+    einfo "Removing lutimes and utimensat definitions..."
+    sed -e '/^extern int lutimes/,/__THROW/d' -i "${S}"/time/sys/time.h || die
+    sed -e '/^extern int utimensat/,/__THROW/d' -i "${S}"/io/sys/stat.h || die
 fi
 
 # Local Variables:
