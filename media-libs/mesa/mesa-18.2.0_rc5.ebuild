@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_4 python3_5 python3_6 python3_7 )
+PYTHON_COMPAT=( python2_7 )
 
 inherit llvm meson multilib-minimal pax-utils python-any-r1
 
@@ -134,9 +134,9 @@ RDEPEND="${RDEPEND}
 # 1. List all the working slots (with min versions) in ||, newest first.
 # 2. Update the := to specify *max* version, e.g. < 7.
 # 3. Specify LLVM_MAX_SLOT, e.g. 6.
+LLVM_MAX_SLOT="7"
 LLVM_DEPSTR="
 	|| (
-		sys-devel/llvm:8[${MULTILIB_USEDEP}]
 		sys-devel/llvm:7[${MULTILIB_USEDEP}]
 		sys-devel/llvm:6[${MULTILIB_USEDEP}]
 		sys-devel/llvm:5[${MULTILIB_USEDEP}]
