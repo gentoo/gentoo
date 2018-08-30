@@ -23,3 +23,13 @@ CMAKE_IN_SOURCE_BUILD=1
 
 # fails 1 of 7
 RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/${P}-no-release.patch" )
+
+src_configure() {
+	local mycmakeargs=(
+		-DCMAKE_FEDORA_ENABLE_FEDORA_BUILD=0
+		-DMANAGE_DEPENDENCY_PACKAGE_EXISTS_CMD=true
+	)
+	cmake-utils_src_configure
+}
