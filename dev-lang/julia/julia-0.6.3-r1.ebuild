@@ -31,15 +31,18 @@ RDEPEND+="
 	dev-libs/double-conversion:0=
 	dev-libs/gmp:0=
 	dev-libs/libgit2:0=
+	>=dev-libs/libpcre2-10.23:0=[jit]
 	dev-libs/mpfr:0=
 	dev-libs/openspecfun
+	sci-libs/amd:0=
 	sci-libs/arpack:0=
 	sci-libs/camd:0=
+	sci-libs/ccolamd:0=
 	sci-libs/cholmod:0=
+	sci-libs/colamd:0=
 	sci-libs/fftw:3.0=[threads]
 	sci-libs/openlibm:0=
 	sci-libs/spqr:0=
-	>=dev-libs/libpcre2-10.23:0=[jit]
 	sci-libs/umfpack:0=
 	sci-mathematics/glpk:0=
 	>=sys-libs/libunwind-1.1:7=
