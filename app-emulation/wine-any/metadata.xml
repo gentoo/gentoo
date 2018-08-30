@@ -9,11 +9,6 @@
 			Any changes need to be run past the maintainer to ensure the two repositories are kept in sync.
 		</description>
 	</maintainer>
-	<maintainer type="person">
-		<description>Only CC on bugs that involve USE="d3d9"</description>
-		<email>sarnex@gentoo.org</email>
-		<name>Nick Sarnie</name>
-	</maintainer>
 	<longdescription>
 Wine is an Open Source implementation of the Windows API on top of X and Unix.
 
