@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jplana/python-etcd/archive/${PV}.zip -> ${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
