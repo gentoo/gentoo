@@ -164,15 +164,6 @@ dev-python/jsonfield
 ~app-portage/gemato-14.0m
 ~app-portage/gemato-9999m
 
-# Joonas Niilola <juippis@gmail.com> (31 Jul 2018)
-# Old and obsolete. Merged into one EFL package since 1.18 release. 
-# Removal in ~30 days. Bug #662510
-=dev-libs/efl-1.17.0-r1
-media-libs/elementary
-media-plugins/emotion_generic_players
-media-plugins/evas_generic_loaders
-x11-themes/ethemes
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jul 2018)
 # Parallel-installable old versions with no remaining consumers
 # in main tree. Use applications ported to wxGTK:3.0 and

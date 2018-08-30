@@ -122,10 +122,6 @@ gnome-extra/nm-applet teamd
 # Missing test deps keyword #575366
 dev-cpp/eigen test
 
-# Mike Frysinger <vapier@gentoo.org> (21 Feb 2016)
-# Needs arch love for elementary. #575322
-media-libs/elementary javascript
-
 # Pacho Ramos <pacho@gentoo.org> (20 Feb 2016)
 # Missing keywords, bug #551580
 app-office/planner eds
