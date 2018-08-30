@@ -9,7 +9,6 @@ dev-ruby/jsobfu test
 dev-ruby/rails asset-pipeline
 dev-ruby/sprockets test
 dev-ruby/tilt test
-media-libs/elementary javascript
 net-analyzer/netdata nodejs
 dev-lang/nim test
 www-apps/jekyll test
