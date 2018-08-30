@@ -112,7 +112,7 @@ src_configure() {
 
 	if use wxwidgets; then
 		WX_GTK_VER="3.0"
-		need-wxwidgets unicode
+		setup-wxwidgets
 	fi
 
 	tc-export CC CXX			#453174
