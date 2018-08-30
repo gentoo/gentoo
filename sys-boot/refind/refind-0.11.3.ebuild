@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs flag-o-matic versionator
+inherit toolchain-funcs flag-o-matic eapi7-ver
 
 DESCRIPTION="The UEFI Boot Manager by Rod Smith"
 HOMEPAGE="https://www.rodsbooks.com/refind/"
@@ -142,7 +142,7 @@ src_compile() {
 src_install() {
 	exeinto "/usr/share/${P}"
 	doexe refind-install
-	dosym "/usr/share/${P}/refind-install" "/usr/sbin/refind-install"
+	dosym "../share/${P}/refind-install" "/usr/sbin/refind-install"
 
 	dodoc "${S}"/{COPYING.txt,LICENSE.txt,CREDITS.txt}
 	if use doc; then
@@ -177,7 +177,7 @@ pkg_postinst() {
 	elog ""
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "refind-install requires additional packages to be fully functional:"
-		elog " app-crypt/sbsigntools for binary signing for use with SecureBoot"
+		elog " app-crypt/sbsigntool for binary signing for use with SecureBoot"
 		elog " sys-boot/efibootmgr for writing to NVRAM"
 		elog " sys-block/parted for automatic ESP location and mount"
 		elog ""
