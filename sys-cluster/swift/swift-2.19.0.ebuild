@@ -11,7 +11,7 @@ HOMEPAGE="https://launchpad.net/swift"
 if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/openstack/swift.git"
-	EGIT_BRANCH="stable/queens"
+	EGIT_BRANCH="stable/pike"
 else
 	SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
@@ -31,6 +31,7 @@ RDEPEND="
 	${CDEPEND}
 	>=dev-python/dnspython-1.14.0:0[${PYTHON_USEDEP}]
 	>=dev-python/eventlet-0.17.4[${PYTHON_USEDEP}]
+	!~dev-python/eventlet-0.23.0[${PYTHON_USEDEP}]
 	>=dev-python/greenlet-0.3.1[${PYTHON_USEDEP}]
 	>=dev-python/netifaces-0.5[${PYTHON_USEDEP}]
 	!~dev-python/netifaces-0.10.0[${PYTHON_USEDEP}]
@@ -41,6 +42,7 @@ RDEPEND="
 	>=dev-python/PyECLib-1.3.1[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.6.0[${PYTHON_USEDEP}]
 	!~dev-python/cryptography-2.0[${PYTHON_USEDEP}]
+	>=dev-python/ipaddress-1.0.16[${PYTHON_USEDEP}]
 	memcached? ( net-misc/memcached )
 	net-misc/rsync[xattr]"
 
