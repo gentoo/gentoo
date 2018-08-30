@@ -11,7 +11,7 @@ SRC_URI="https://github.com/vasi/squashfuse/archive/${EGIT_COMMIT}.zip -> ${P}.z
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="lzma lzo +zlib"
 REQUIRED_USE="|| ( lzma zlib lzo )"
 
