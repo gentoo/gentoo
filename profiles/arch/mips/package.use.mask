@@ -71,10 +71,6 @@ net-dns/dnsmasq conntrack
 # net-libs/openpgm is not keyworded on mips
 net-libs/zeromq pgm
 
-# Mike Frysinger <vapier@gentoo.org> 21 Feb 2016
-# Needs arch love for elementary. #575322
-media-libs/elementary javascript
-
 # Mike Frysinger <vapier@gentoo.org> (17 Dec 2015)
 # The tlsdate seccomp logic is open-coded and doesn't support this arch yet.
 net-misc/tlsdate seccomp
