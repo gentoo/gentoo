@@ -5,21 +5,35 @@ EAPI=6
 
 RESTRICT="test"
 
-inherit git-r3 llvm pax-utils toolchain-funcs
+inherit llvm pax-utils toolchain-funcs
+
+MY_LIBUV_V="ed3700c849289ed01fe04273a7bf865340b2bd7e"
+MY_UTF8PROC_V="97ef668b312b96382714dbb8eaac4affce0816e6"
+MY_LIBWHICH_V="81e9723c0273d78493dc8c8ed570f68d9ce7e89e"
+MY_DSFMT_V="2.2.3"
 
 DESCRIPTION="High-performance programming language for technical computing"
 HOMEPAGE="https://julialang.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/JuliaLang/julia.git"
+SRC_URI="
+	https://github.com/JuliaLang/${PN}/releases/download/v${PV}/${P}.tar.gz
+	https://api.github.com/repos/JuliaLang/libuv/tarball/${MY_LIBUV_V} -> ${PN}-libuv-${MY_LIBUV_V}.tar.gz
+	https://api.github.com/repos/JuliaLang/utf8proc/tarball/${MY_UTF8PROC_V} -> ${PN}-utf8proc-${MY_UTF8PROC_V}.tar.gz
+	https://api.github.com/repos/vtjnash/libwhich/tarball/${MY_LIBWHICH_V} -> ${PN}-libwhich-${MY_LIBWHICH_V}.tar.gz
+	http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT/dSFMT-src-${MY_DSFMT_V}.tar.gz -> ${PN}-dsfmt-${MY_DSFMT_V}.tar.gz
+"
+
+S="${WORKDIR}/${PN}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
+# julia 0.7* is compatible with llvm-6
 RDEPEND="
 	sys-devel/llvm:6=
 	sys-devel/clang:6="
+LLVM_MAX_SLOT=6
 
 RDEPEND+="
 	dev-libs/double-conversion:0=
@@ -44,6 +58,7 @@ RDEPEND+="
 	virtual/lapack"
 
 DEPEND="${RDEPEND}
+	dev-vcs/git
 	dev-util/patchelf
 	virtual/pkgconfig"
 
@@ -51,15 +66,28 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.0-fix_build_system.patch
 )
 
+src_unpack() {
+	tounpack=(${A})
+	# the main source tree, followed by deps
+	unpack "${A/%\ */}"
+
+	mkdir -p "${S}/deps/srccache/"
+	for i in "${tounpack[@]:1}"; do
+		cp "${DISTDIR}/${i}" "${S}/deps/srccache/${i#julia-}" || die
+	done
+}
+
 src_prepare() {
 	default
 
 	# Sledgehammer:
+	# - prevent fetching of bundled stuff in compile and install phase
 	# - respect CFLAGS
 	# - respect EPREFIX and Gentoo specific paths
 	# - fix BLAS and LAPACK link interface
 
 	sed -i \
+		-e 's|git submodule|${EPREFIX}/bin/true|g' \
 		-e "s|GENTOOCFLAGS|${CFLAGS}|g" \
 		-e "s|/usr/include|${EPREFIX%/}/usr/include|g" \
 		deps/Makefile || die
@@ -89,6 +117,9 @@ src_prepare() {
 	sed -i \
 		-e "s|ar -rcs|$(tc-getAR) -rcs|g" \
 		src/Makefile || die
+
+	# disable doc install starting	git fetching
+	sed -i -e 's~install: $(build_depsbindir)/stringreplace $(BUILDROOT)/doc/_build/html/en/index.html~install: $(build_depsbindir)/stringreplace~' Makefile || die
 }
 
 src_configure() {
@@ -143,6 +174,14 @@ src_test() {
 }
 
 src_install() {
+	# Julia is special. It tries to find a valid git repository (that would
+	# normally be cloned during compilation/installation). Just make it
+	# happy...
+	git init && \
+		git config --local user.email "whatyoudoing@example.com" && \
+		git config --local user.name "Whyyyyyy" && \
+		git commit -a --allow-empty -m "initial" || die "git failed"
+
 	emake install \
 		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
 		CC="$(tc-getCC)" CXX="$(tc-getCXX)"
