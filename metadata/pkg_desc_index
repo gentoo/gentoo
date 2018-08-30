@@ -319,7 +319,7 @@ app-crypt/acme 0.24.0 0.25.1: An implementation of the ACME protocol
 app-crypt/aespipe 2.4e: Encrypts data from stdin to stdout
 app-crypt/argon2 20171227: Password hashing software that won the Password Hashing Competition (PHC)
 app-crypt/bcwipe 1.9.13: Secure file removal utility
-app-crypt/ccid 1.4.27 1.4.29: CCID free software driver
+app-crypt/ccid 1.4.29: CCID free software driver
 app-crypt/ccrypt 1.10: Encryption and decryption
 app-crypt/certbot 0.24.0 0.25.1: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 0.24.0 0.25.1: Apache plugin for certbot (Let's Encrypt Client)
@@ -9057,7 +9057,7 @@ net-p2p/ktorrent 5.1.0: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mldonkey 3.1.5-r1: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
 net-p2p/ncdc 1.19.1: ncurses directconnect client
-net-p2p/qbittorrent 4.0.4 4.1.1 4.1.2: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 4.1.1 4.1.2: BitTorrent client in C++ and Qt
 net-p2p/retroshare 0.6.3-r1: P2P private sharing application
 net-p2p/rtorrent 0.9.7-r1: BitTorrent Client using libtorrent
 net-p2p/syncthing 0.14.38: Open Source Continuous File Synchronization
