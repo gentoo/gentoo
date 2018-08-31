@@ -77,7 +77,7 @@ src_prepare() {
 		for i in "${FEDORA_PATCH[@]}" ; do
 			eapply "${DISTDIR}"/"${i}"
 		done
-		eapply "${FILESDIR}"/openssl-1.0.2o-hobble-ecc.patch
+		eapply "${FILESDIR}"/openssl-1.0.2p-hobble-ecc.patch
 		# Also see the configure parts below:
 		# enable-ec \
 		# $(use_ssl !bindist ec2m) \
