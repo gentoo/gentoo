@@ -20,6 +20,7 @@ DEPEND="!prefix? ( >=sys-kernel/linux-headers-2.6.11 )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.10-endian-check-1.patch
 	"${FILESDIR}"/${PN}-1.5.10-makefile-fixup.patch
+	"${FILESDIR}"/${PN}-1.5.10-silence-rpm-check.patch #656446
 	"${FILESDIR}"/${PN}-1.5.10-disable-tests.patch #519062 #522050
 	"${FILESDIR}"/${PN}-1.5.9-header-extern-c.patch
 )
