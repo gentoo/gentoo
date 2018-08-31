@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (31 Aug 2018)
+# (on behalf of QA)
+# Major file→dir replacement that is both a PMS violation and leaves
+# a lot of unmanaged cruft on the filesystem.  Bug #664938.
+=media-gfx/gimp-2.10.6
+
 # Mikle Kolyada <zlogene@gentoo.org> (30 Aug 2018)
 # Dead upstream, does not work properly.
 # Unmaintained.
