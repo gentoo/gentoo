@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit vdr-plugin-2
 
@@ -25,18 +25,3 @@ src_prepare() {
 
 	eapply "${FILESDIR}/${P}_c++11.patch"
 }
-
-#src_install() {
-#	vdr-plugin-2_src_install
-
-#	dobin iptv/image.sh
-#	dobin iptv/iptvstream-notrap.sh
-#	dobin iptv/linein.sh
-#	dobin iptv/webcam.sh
-#	dobin iptv/internetradio.sh
-#	dobin iptv/iptvstream.sh
-#	dobin iptv/vlc2iptv
-
-#	insinto /usr/share/vdr/plugins/iptv
-#	doins iptv/*
-#}
