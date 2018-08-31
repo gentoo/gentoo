@@ -50,7 +50,6 @@ RDEPEND+="
 	>=virtual/blas-3.6
 	virtual/lapack"
 
-
 DEPEND="${RDEPEND}
 	dev-vcs/git
 	dev-util/patchelf
