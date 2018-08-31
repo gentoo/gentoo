@@ -5781,7 +5781,7 @@ dev-ruby/activesupport 5.0.7 5.1.4 5.1.6: Utility Classes and Extension to the S
 dev-ruby/addressable 2.5.2: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
 dev-ruby/archive-tar-minitar 0.6.1: Provides POSIX tarchive management from Ruby programs
-dev-ruby/asciidoctor 1.5.5-r1 1.5.7.1: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
+dev-ruby/asciidoctor 1.5.7.1: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
 dev-ruby/asciimath 1.0.4: A pure Ruby AsciiMath parsing and conversion library
 dev-ruby/atomic 1.1.99 1.1.101: An atomic reference implementation for JRuby, Rubinius, and MRI
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
@@ -5863,7 +5863,7 @@ dev-ruby/locale 2.1.2-r1: A pure ruby library which provides basic APIs for loca
 dev-ruby/log4r 1.1.10-r2: A comprehensive and flexible logging library written in Ruby
 dev-ruby/logue 1.0.11 1.0.13-r1: A module that adds logging/trace functionality
 dev-ruby/loofah 2.2.1: Library for manipulating and transforming HTML/XML documents and fragments.
-dev-ruby/maruku 0.7.2-r1 0.7.3: A Markdown-superset interpreter written in Ruby
+dev-ruby/maruku 0.7.3: A Markdown-superset interpreter written in Ruby
 dev-ruby/maxitest 2.8.0: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
 dev-ruby/mechanize 2.7.5-r2: A Ruby library used for automating interaction with websites
