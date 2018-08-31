@@ -16,7 +16,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
 	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -30,18 +30,20 @@ DEPEND="
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	>=dev-python/gst-python-1.12.0:1.0[${PYTHON_USEDEP}]
-	media-plugins/swh-plugins
-	>=x11-libs/gtk+-3.18:3
+	>=x11-libs/gtk+-3.18:3[introspection]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-0.18[${PYTHON_USEDEP}]
 	>=media-libs/lilv-0.24.2-r1
 	>=media-plugins/calf-0.90.0[lv2]
 	>=media-libs/gstreamer-1.12.0:1.0
 	>=media-libs/gst-plugins-good-1.12.0:1.0
-	>=media-libs/gst-plugins-bad-1.12.0:1.0
+	>=media-libs/gst-plugins-bad-1.12.0:1.0[introspection]
+	>=media-plugins/gst-plugins-bs2b-1.12.0:1.0
 	>=media-plugins/gst-plugins-ladspa-1.12.0:1.0
 	>=media-plugins/gst-plugins-lv2-1.12.0:1.0
 	>=media-plugins/gst-plugins-pulse-1.12.0:1.0
+	dev-libs/appstream-glib
+	sys-devel/gettext
 "
 RDEPEND="${DEPEND}
 	media-sound/pulseaudio[equalizer]

@@ -22,17 +22,17 @@ SLOT="0"
 IUSE="bs2b calf mda-lv2 rubberband"
 
 #TODO: optional : lilv, zam-plugins (check from archlinux pkg)
-DEPEND="
+RDEPEND="
 	>=dev-libs/boost-1.41
 	>=dev-cpp/glibmm-2.56.0
 	>=dev-cpp/gtkmm-3.20:3.0
 	>=dev-libs/glib-2.56:2
 	>=dev-libs/libsigc++-2.10:2
-	>=x11-libs/gtk+-3.18:3[introspection]
+	>=x11-libs/gtk+-3.18:3
 	>=media-libs/lilv-0.24.2-r1
 	>=media-libs/gstreamer-1.12.0:1.0
 	>=media-libs/gst-plugins-good-1.12.0:1.0
-	>=media-libs/gst-plugins-bad-1.12.0:1.0[introspection]
+	>=media-libs/gst-plugins-bad-1.12.0:1.0
 	bs2b? ( >=media-plugins/gst-plugins-bs2b-1.12.0:1.0 )
 	>=media-plugins/gst-plugins-ladspa-1.12.0:1.0
 	>=media-plugins/gst-plugins-lv2-1.12.0:1.0
@@ -41,16 +41,16 @@ DEPEND="
 	mda-lv2? ( media-plugins/mda-lv2 )
 	rubberband? ( media-libs/rubberband )
 	>=media-libs/zita-convolver-3.0.0
-	dev-util/itstool
 	media-libs/libebur128
+	media-sound/pulseaudio"
+# see 47a950b00c6db383ad07502a8fc396ecca98c1ce for dev-libs/appstream-glib
+# and sys-devel/gettext depends reasoning
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+	dev-libs/appstream-glib
+	sys-devel/gettext
 "
-RDEPEND="${DEPEND}
-	media-sound/pulseaudio
-"
-
-pkg_preinst(){
-	gnome2_schemas_savelist
-}
 
 pkg_postinst(){
 	gnome2_gconf_install
