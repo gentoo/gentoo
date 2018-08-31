@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eapi7-ver linux-mod
+inherit linux-mod
 
 MY_DATE="$(ver_cut 4)"
 MY_PN="${PN//-/_}"
@@ -26,10 +26,8 @@ BUILD_TARGETS="default"
 MODULE_NAMES="sum_bios(misc:${S})"
 
 pkg_nofetch() {
-	elog "Please download ${A} from"
-	elog "sftp://dataharbor.supermicro.com"
-	elog "Username: dpguest\$ts"
-	elog "Password: supermicro!@#"
+	elog "Please contact the Supermicro support at support@supermicro.com,"
+	elog "in order to obtain a copy of ${A}"
 	elog "and place it in your DISTDIR directory."
 }
 
