@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="6"
 
-inherit multilib eutils toolchain-funcs linux-info multilib-minimal
+inherit multilib toolchain-funcs linux-info multilib-minimal
 
 DESCRIPTION="Linux Key Management Utilities"
 HOMEPAGE="https://people.redhat.com/dhowells/keyutils/"
@@ -36,7 +36,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
 
 	# The lsb check is useless, so avoid spurious command not found messages.
 	sed -i -e 's,lsb_release,:,' tests/prepare.inc.sh || die
