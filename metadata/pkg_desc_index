@@ -7898,10 +7898,10 @@ media-plugins/vdr-femon 2.0.4: VDR Plugin: DVB Frontend Status Monitor (signal s
 media-plugins/vdr-fepg 0.4.1: VDR plugin: show epg of multiple channels graphically
 media-plugins/vdr-freecell 0.0.2-r3: VDR plugin: play 'Freecell' on the On Screen Display
 media-plugins/vdr-fritzbox 1.5.3: VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook
-media-plugins/vdr-image 0.3.1 0.4.0: VDR plugin: display of digital images, like jpeg, tiff, png, bmp
+media-plugins/vdr-image 0.4.0: VDR plugin: display of digital images, like jpeg, tiff, png, bmp
 media-plugins/vdr-lcr 0.0.9 0.0.9-r1: VDR Plugin: informe about Least Cost Routing (LCR)
 media-plugins/vdr-live 0.3.0_p20130504-r1: VDR Plugin: Web Access To Settings
-media-plugins/vdr-mailbox 0.6.0 0.7.0 0.7.0-r1: VDR plugin: MailBox provides access to multiple e-mail accounts
+media-plugins/vdr-mailbox 0.7.0-r1: VDR plugin: MailBox provides access to multiple e-mail accounts
 media-plugins/vdr-markad 0.1.4 0.1.4-r1: VDR Plugin: marks advertisements in VDR recordings
 media-plugins/vdr-mlist 1.0.2: VDR plugin: Show a history of the last OSD message
 media-plugins/vdr-osdpip 0.1.2-r1: VDR plugin: Show another channel in the OSD
