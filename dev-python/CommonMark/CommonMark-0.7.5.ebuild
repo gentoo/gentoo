@@ -21,7 +21,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
-		>=dev-python/flake8-3.4.0[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-3.7.1[${PYTHON_USEDEP}]
 	)
 	dev-python/setuptools[${PYTHON_USEDEP}]
