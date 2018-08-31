@@ -9,4 +9,4 @@ RESTRICT=mirror fetch strip
 SLOT=0
 SRC_URI=amdgpu-pro-18.20-606296.tar.xz
 _eclasses_=unpacker	ee2f5086cd7e7b747b061f58db14d89e
-_md5_=1fb7152c29cb6efa649948afe0112207
+_md5_=2d1f6eeec33c367a29ac72a6c39e6e7b

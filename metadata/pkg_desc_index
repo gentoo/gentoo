@@ -6265,6 +6265,7 @@ dev-util/gtk-update-icon-cache 3.22.19: GTK update icon cache
 dev-util/gyp 20170904022846: GYP (Generate Your Projects) meta-build system
 dev-util/howdoi 1.1.12: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
+dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
 dev-util/indent 2.2.11-r1: Indent program source files
 dev-util/intltool 0.51.0-r2: Internationalization Tool Collection
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
