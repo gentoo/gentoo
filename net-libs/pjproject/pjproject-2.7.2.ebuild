@@ -44,7 +44,8 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 
 	net-libs/libsrtp:0"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	!!media-plugins/mediastreamer-bcg729"
 
 REQUIRED_USE="?? ( ${SOUND_FLAGS} )"
 
