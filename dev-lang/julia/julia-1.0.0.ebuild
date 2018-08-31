@@ -21,11 +21,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-# julia 0.6* is compatible with llvm-4
 RDEPEND="
-	sys-devel/llvm:4=
-	sys-devel/clang:4="
-LLVM_MAX_SLOT=4
+	>=sys-devel/llvm-4.0.0:=
+	>=sys-devel/clang-4.0.0:="
+LLVM_MAX_SLOT=5
 
 RDEPEND+="
 	dev-libs/double-conversion:0=
@@ -51,13 +50,14 @@ RDEPEND+="
 	>=virtual/blas-3.6
 	virtual/lapack"
 
+
 DEPEND="${RDEPEND}
 	dev-vcs/git
 	dev-util/patchelf
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.6.3-fix_build_system.patch
+	"${FILESDIR}"/${PN}-1.0.0-fix_build_system.patch
 )
 
 src_prepare() {
@@ -121,7 +121,7 @@ src_configure() {
 		USE_SYSTEM_PCRE=1
 		USE_SYSTEM_RMATH=0
 		USE_SYSTEM_UTF8PROC=0
-		USE_LLVM_SHLIB=1
+		USE_LLVM_SHLIB=0
 		USE_SYSTEM_ARPACK=1
 		USE_SYSTEM_BLAS=1
 		USE_SYSTEM_FFTW=1
@@ -151,6 +151,19 @@ src_compile() {
 	addpredict /proc/self/mem
 
 	emake cleanall
+
+	# Create symlinks...
+	local libblas="$($(tc-getPKG_CONFIG) --libs-only-l blas)"
+	libblas="${libblas%% *}"
+	libblas="lib${libblas#-l}"
+	local liblapack="$($(tc-getPKG_CONFIG) --libs-only-l lapack)"
+	liblapack="${liblapack%% *}"
+	liblapack="lib${liblapack#-l}"
+	mkdir -p "${S}"/usr/lib/julia || die "mkdir failed"
+	for i in ${libblas}.so ${liblapack}.so libumfpack.so libspqr.so; do
+		ln -s "${EROOT}/usr/$(get_libdir)/${i}" "${S}"/usr/lib/julia/ || die "ln failed"
+	done
+
 	emake VERBOSE=1 julia-release \
 		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
 		CC="$(tc-getCC)" CXX="$(tc-getCXX)"
