@@ -51,8 +51,6 @@ src_prepare() {
 src_configure() {
 	use static && append-ldflags -static
 
-	# We don't need perl unless we run tests.
-	use test || export ac_cv_path_PERL=true
 	local myeconfargs=(
 		--docdir='$(datarootdir)'/doc/${PF}
 		$(use_enable examples)
