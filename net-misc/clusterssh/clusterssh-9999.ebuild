@@ -9,7 +9,7 @@ EGIT_REPO_URI="git://git.code.sf.net/p/clusterssh/code"
 EGIT_PROJECT="${PN}"
 
 DESCRIPTION="Concurrent Multi-Server Terminal Access"
-HOMEPAGE="http://clusterssh.sourceforge.net"
+HOMEPAGE="https://github.com/duncs/clusterssh"
 
 LICENSE="GPL-2"
 SLOT="0"
