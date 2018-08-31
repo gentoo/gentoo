@@ -1,0 +1,125 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+extra_commands="checkconfig"
+
+depend() {
+	need net
+}
+
+# bug #218043
+if [ ! -f /etc/init.d/sysfs ]; then
+	conf="$(add_suffix /etc/conf.d/vblade)"
+	[ -e "${conf}" ] && . "${conf}"
+	vblade_name="${myservice#*.}"
+else
+	conf="/etc/conf.d/vblade"
+	[ -e "${conf}" ] && . "${conf}"
+	vblade_name="${RC_SVCNAME#*.}"
+fi
+
+vblade_conf_variable="config_${vblade_name}"
+vblade_conf="${!vblade_conf_variable}"
+pidfile="/var/run/vblade-${vblade_name}.pid"
+srvname="vblade.${vblade_name}"
+
+getconfig() {
+	args=""
+	while getopts b:dsrm: FLAG; do
+		case "${FLAG}" in 
+		b)	is_valid_numeric "${OPTARG}" && args="${args} -b ${OPTARG}" || ewarn "vblade block size argument is non-numeric IGNORING";;
+
+		d|s|r)	args="${args} -${FLAG}";;
+
+		# FIXME: there is no sanity checking on the MAC address...we'll leave that up to vblade
+		m)	args="${args} -m ${OPTARG}";;
+		esac
+	done
+
+	shift $(( OPTIND - 1 ))
+
+	shelf=${1}
+	slot=${2}
+	netif=${3}
+	src=${4}
+
+	export args shelf slot netif src
+}
+
+checkconfig() {
+	if [ -z "${vblade_conf}" ]; then
+		eerror "vblade configuration not specified for ${vblade_name}"
+		return 1
+	fi
+	getconfig ${vblade_conf}
+	
+	is_valid_numeric "${shelf}" 0
+	if [ $? -ne 0 ]; then
+		eerror "Shelf '${shelf}' is non-numeric or less than zero."
+		return 1
+	fi
+	is_valid_numeric "${slot}" 0 15
+	if [ $? -ne 0 ]; then
+		eerror "Slot '${slot}' is outside the valid range [0..15]."
+		return 1
+	fi
+
+	sysfs_base="/sys/class/net/"
+	procfs_base="/proc/sys/net/ipv4/conf/"
+	if test ! \( -e "${sysfs_base}${netif}" -o -e "${procfs_base}${netif}" \); then
+		eerror "Network interface '${netif}' does not exist"
+		return 1
+	fi
+	
+	if test ! \( -f "${src}" -o -b "${src}" \) ; then
+		eerror "Source '${src}' must be a file or block device"
+		return 1
+	fi
+	
+	if test ! \( -e "${src}" -a -r "${src}" \) ; then
+		eerror "Source '${src}' is not readable."
+		return 1
+	fi
+
+	return 0
+}
+
+is_valid_numeric() {
+	num="${1}"
+	min="${2}"
+	max="${3}"
+	# non-numeric
+	test "$num" -ge "0" 2>/dev/null
+	rc=$?
+	test "$rc" -eq 2 && return 2
+	# check for min
+	test -z "$min" && return 0
+	test "$num" -lt "$min" && return 1
+	# check for max
+	test -z "$max" && return 0
+	test "$num" -gt "$max" && return 1
+	# done
+	return 0
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting ${srvname}: e${shelf}.${slot} on ${netif} using '${src}'"
+	export LOGTAG="${srvname}"
+	start-stop-daemon --start --quiet \
+	--pidfile ${pidfile} --background \
+	--make-pidfile --exec /usr/sbin/vbladed -- \
+	${args} ${shelf} ${slot} ${netif} "${src}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${srvname}"
+	getconfig ${vblade_conf}
+	ps -Ao pid,args | egrep "^[[:space:]]*[[:digit:]]+ /usr/sbin/vblade.* ${shelf} ${slot} " | awk '{print $1}' | xargs kill
+	eend $?
+}
+
+# vim: ft=gentoo-init-d syntax=gentoo-init-d :
+# vim: ai sw=4 sts=4 ts=4 :
