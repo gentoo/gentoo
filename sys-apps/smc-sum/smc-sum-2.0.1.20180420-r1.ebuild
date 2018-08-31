@@ -1,9 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit eapi7-ver
+EAPI=7
 
 MY_DATE="$(ver_cut 4)"
 MY_PN="${PN/smc-/}"
@@ -29,9 +27,7 @@ QA_PREBUILT="usr/bin/smc-sum"
 
 pkg_nofetch() {
 	elog "Please download ${A} from"
-	elog "sftp://dataharbor.supermicro.com"
-	elog "Username: dpguest\$ts"
-	elog "Password: supermicro!@#"
+	elog "https://www.supermicro.com/SwDownload/UserInfo.aspx?sw=0&cat=SUM"
 	elog "and place it in your DISTDIR directory."
 }
 
