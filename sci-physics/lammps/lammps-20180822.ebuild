@@ -55,6 +55,7 @@ src_configure() {
 	    -DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 	    -DBUILD_SHARED_LIBS=ON
 		-DBUILD_MPI=$(usex mpi)
+		-DBUILD_LIB=ON
 		-DPKG_GPU=$(usex cuda)
 		-DGPU_API=CUDA
 		-DENABLE_TESTING=$(usex test)
