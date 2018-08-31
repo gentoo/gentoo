@@ -39,3 +39,5 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!media-gfx/kxstitch:4
 "
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
