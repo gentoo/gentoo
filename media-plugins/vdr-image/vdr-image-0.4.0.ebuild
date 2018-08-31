@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vdr-plugin-2
 
@@ -39,7 +39,7 @@ src_prepare() {
 	# dangerous warning
 	sed -e "s:mktemp:mkstemp:" -i data-image.c
 
-	epatch "${FILESDIR}/${P}-gentoo.diff" \
+	eapply "${FILESDIR}/${P}-gentoo.diff" \
 		"${FILESDIR}/${P}-ffmpeg3.patch"
 
 	# ffmpeg-2.2.12, libav10
