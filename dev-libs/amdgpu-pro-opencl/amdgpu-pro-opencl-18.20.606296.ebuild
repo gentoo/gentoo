@@ -29,7 +29,7 @@ pkg_nofetch() {
 	local pkgver=$(ver_cut 1-2)
 	einfo "Please download the Radeon Software for Linux Driver ${pkgver} for Ubuntu 16 from"
 	einfo "    ${HOMEPAGE}"
-	einfo "The archive should then be placed into ${DISTDIR}."
+	einfo "The archive should then be placed in your distfiles directory."
 }
 
 src_unpack() {
