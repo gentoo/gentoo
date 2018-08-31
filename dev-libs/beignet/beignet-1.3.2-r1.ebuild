@@ -82,7 +82,7 @@ multilib_src_configure() {
 	VENDOR_DIR="/usr/$(get_libdir)/OpenCL/vendors/${PN}"
 
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX%/}/${VENDOR_DIR}"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}${VENDOR_DIR}"
 		-DOCLICD_COMPAT=$(usex ocl-icd)
 		$(usex ocl20 "" "-DENABLE_OPENCL_20=OFF")
 	)
@@ -96,7 +96,7 @@ multilib_src_install() {
 	cmake-utils_src_install
 
 	insinto /etc/OpenCL/vendors/
-	echo "${EPREFIX%/}/${VENDOR_DIR}/lib/${PN}/libcl.so" > "${PN}-${ABI}.icd" || die "Failed to generate ICD file"
+	echo "${EPREFIX}${VENDOR_DIR}/lib/${PN}/libcl.so" > "${PN}-${ABI}.icd" || die "Failed to generate ICD file"
 	doins "${PN}-${ABI}.icd"
 
 	dosym "lib/${PN}/libcl.so" "${VENDOR_DIR}"/libOpenCL.so.1
