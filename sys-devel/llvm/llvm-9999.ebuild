@@ -59,7 +59,11 @@ DEPEND="${RDEPEND}
 		<sys-libs/libcxx-$(ver_cut 1-3).9999
 		>=sys-devel/binutils-apple-5.1
 	)
-	doc? ( dev-python/sphinx )
+	doc? ( $(python_gen_any_dep '
+		dev-python/recommonmark[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
+	') )
+	!doc? ( ${PYTHON_DEPS} )
 	gold? ( sys-libs/binutils-libs )
 	libffi? ( virtual/pkgconfig )
 	!!<dev-python/configparser-3.3.0.2
@@ -76,6 +80,13 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
+
+python_check_deps() {
+	use doc || return 0
+
+	has_version "dev-python/recommonmark[${PYTHON_USEDEP}]" &&
+	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
 
 src_prepare() {
 	# Fix llvm-config for shared linking and sane flags
