@@ -15,7 +15,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="static static-libs test"
 
 RDEPEND=""
-DEPEND="!prefix? ( >=sys-kernel/linux-headers-2.6.11 )"
+DEPEND="app-crypt/mit-krb5
+	!prefix? ( >=sys-kernel/linux-headers-2.6.11 )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.10-endian-check-1.patch
