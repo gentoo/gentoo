@@ -1,25 +1,27 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="6"
 
-inherit multilib eutils toolchain-funcs linux-info multilib-minimal
+inherit multilib toolchain-funcs linux-info multilib-minimal
 
 DESCRIPTION="Linux Key Management Utilities"
 HOMEPAGE="https://people.redhat.com/dhowells/keyutils/"
 SRC_URI="https://people.redhat.com/dhowells/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
-SLOT="0"
+SLOT="0/1.7"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="static static-libs test"
 
 RDEPEND=""
-DEPEND="!prefix? ( >=sys-kernel/linux-headers-2.6.11 )"
+DEPEND="app-crypt/mit-krb5
+	!prefix? ( >=sys-kernel/linux-headers-2.6.11 )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.10-endian-check-1.patch
 	"${FILESDIR}"/${PN}-1.5.10-makefile-fixup.patch
+	"${FILESDIR}"/${PN}-1.5.10-silence-rpm-check.patch #656446
 	"${FILESDIR}"/${PN}-1.5.10-disable-tests.patch #519062 #522050
 	"${FILESDIR}"/${PN}-1.5.9-header-extern-c.patch
 )
@@ -29,14 +31,14 @@ pkg_setup() {
 	ERROR_KEYS="You must have CONFIG_KEYS to use this package!"
 
 	if use test && kernel_is lt 4 0 0; then
-		CONFIG_CHECK="${CONFIG_CHECK} ~KEYS_DEBUG_PROC_KEYS"
+		CONFIG_CHECK="${CONFIG_CHECK} ~KEYS_DEBUG_PROC_KEYS ~KEY_DH_OPERATIONS"
 		ERROR_KEYS_DEBUG_PROC_KEYS="You must have CONFIG_KEYS_DEBUG_PROC_KEYS to run the package testsuite!"
 	fi
 	linux-info_pkg_setup
 }
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
 
 	# The lsb check is useless, so avoid spurious command not found messages.
 	sed -i -e 's,lsb_release,:,' tests/prepare.inc.sh || die
