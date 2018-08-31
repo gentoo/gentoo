@@ -25,6 +25,9 @@ DEPEND_COMMON="
 		=sys-cluster/libdlm-3*
 	)
 
+	dev-libs/libaio[static-libs?]
+	static? ( dev-libs/libaio[static-libs] )
+	!static? ( dev-libs/libaio[static-libs?] )
 	readline? ( sys-libs/readline:0= )
 	sanlock? ( sys-cluster/sanlock )
 	systemd? ( >=sys-apps/systemd-205:0= )
