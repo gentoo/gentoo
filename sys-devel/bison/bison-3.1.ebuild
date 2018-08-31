@@ -1,18 +1,18 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
 inherit flag-o-matic
 
 DESCRIPTION="A general-purpose (yacc-compatible) parser generator"
 HOMEPAGE="https://www.gnu.org/software/bison/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
-	https://dev.gentoo.org/~polynomial-c/${P}-patches-01.tar.xz"
+	https://dev.gentoo.org/~whissi/dist/bison/${P}-patches-1.0.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="examples nls static test"
 
 RDEPEND=">=sys-devel/m4-1.4.16"
@@ -30,14 +30,22 @@ PATCHES=(
 )
 
 src_prepare() {
+	# Record date to avoid 'config.status --recheck' & regen of 'tests/package.m4'
+	touch -r configure.ac old.configure.ac || die
+	touch -r configure old.configure || die
+
 	default
+
+	# Restore date after patching
+	touch -r old.configure.ac configure.ac || die
+	touch -r old.configure configure || die
+
 	# The makefiles make the man page depend on the configure script
 	# which we patched above.  Touch it to prevent regeneration.
-	touch doc/bison.1 #548778 #538300#9
+	touch doc/bison.1 || die #548778 #538300#9
+
 	# Avoid regenerating the info page when the timezone is diff. #574492
 	sed -i '2iexport TZ=UTC' build-aux/mdate-sh || die
-	# ugly workaround to avoid maintainer mode (see #647410 and #648012)
-	printf '#!/bin/sh\nexit 0\n' > build-aux/missing || die
 }
 
 src_configure() {
@@ -68,7 +76,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	local f="${EROOT}/usr/bin/yacc"
+	local f="${EROOT%/}/usr/bin/yacc"
 	if [[ ! -e ${f} ]] ; then
 		ln -s yacc.bison "${f}"
 	fi
@@ -76,7 +84,7 @@ pkg_postinst() {
 
 pkg_postrm() {
 	# clean up the dead symlink when we get unmerged #377469
-	local f="${EROOT}/usr/bin/yacc"
+	local f="${EROOT%/}/usr/bin/yacc"
 	if [[ -L ${f} && ! -e ${f} ]] ; then
 		rm -f "${f}"
 	fi
