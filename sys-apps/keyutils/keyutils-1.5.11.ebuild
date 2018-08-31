@@ -30,7 +30,7 @@ pkg_setup() {
 	ERROR_KEYS="You must have CONFIG_KEYS to use this package!"
 
 	if use test && kernel_is lt 4 0 0; then
-		CONFIG_CHECK="${CONFIG_CHECK} ~KEYS_DEBUG_PROC_KEYS"
+		CONFIG_CHECK="${CONFIG_CHECK} ~KEYS_DEBUG_PROC_KEYS ~KEY_DH_OPERATIONS"
 		ERROR_KEYS_DEBUG_PROC_KEYS="You must have CONFIG_KEYS_DEBUG_PROC_KEYS to run the package testsuite!"
 	fi
 	linux-info_pkg_setup
