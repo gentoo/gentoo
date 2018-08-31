@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=vblade exports a block device using AoE
+EAPI=6
+HOMEPAGE=https://github.com/OpenAoE/vblade
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/util-linux
+SLOT=0
+SRC_URI=https://github.com/OpenAoE/vblade/archive/vblade-24.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=fe211b5fd3b3266d0b8c75ddddee83c7
