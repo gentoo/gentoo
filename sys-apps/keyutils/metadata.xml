@@ -8,4 +8,7 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<slots>
+	<subslots>Reflect ABI compatibility for libkeyutils.so.</subslots>
+</slots>
 </pkgmetadata>
