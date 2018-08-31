@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
 	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="GPL-3"
@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="bs2b calf mda-lv2 rubberband"
 
 #TODO: optional : lilv, zam-plugins (check from archlinux pkg)
-DEPEND="
+RDEPEND="
 	>=dev-libs/boost-1.41
 	>=dev-cpp/glibmm-2.56.0
 	>=dev-cpp/gtkmm-3.20:3.0
@@ -41,16 +41,16 @@ DEPEND="
 	mda-lv2? ( media-plugins/mda-lv2 )
 	rubberband? ( media-libs/rubberband )
 	>=media-libs/zita-convolver-3.0.0
-	dev-util/itstool
 	media-libs/libebur128
+	media-sound/pulseaudio"
+# see 47a950b00c6db383ad07502a8fc396ecca98c1ce for dev-libs/appstream-glib
+# and sys-devel/gettext depends reasoning
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+	dev-libs/appstream-glib
+	sys-devel/gettext
 "
-RDEPEND="${DEPEND}
-	media-sound/pulseaudio
-"
-
-pkg_preinst(){
-	gnome2_schemas_savelist
-}
 
 pkg_postinst(){
 	gnome2_gconf_install
