@@ -4,8 +4,8 @@
 EAPI=0
 
 DESCRIPTION="A small bundle of utilities to work with CVS repositories"
-HOMEPAGE="http://www.red-bean.com/cvsutils/"
-SRC_URI="http://www.red-bean.com/cvsutils/releases/${P}.tar.gz"
+HOMEPAGE="https://www.red-bean.com/cvsutils/"
+SRC_URI="https://www.red-bean.com/cvsutils/releases/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
