@@ -19,6 +19,10 @@ IUSE="+acpi apm bluetooth"
 RDEPEND="sys-apps/iproute2
 	sys-apps/ethtool
 	sys-apps/which
+	|| (
+		sys-apps/sdparm
+		sys-apps/hdparm
+	)
 	acpi? ( sys-power/acpid )
 	apm? ( sys-apps/apmd )
 	bluetooth? ( net-wireless/bluez:= )"
