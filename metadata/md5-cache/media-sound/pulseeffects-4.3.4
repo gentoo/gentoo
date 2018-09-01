@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm test
+DEPEND=>=dev-libs/boost-1.41 >=dev-cpp/glibmm-2.56.0 >=dev-cpp/gtkmm-3.20:3.0 >=dev-libs/glib-2.56:2 >=dev-libs/libsigc++-2.10:2 >=x11-libs/gtk+-3.18:3 >=media-libs/lilv-0.24.2-r1 >=media-libs/gstreamer-1.12.0:1.0 >=media-libs/gst-plugins-good-1.12.0:1.0 >=media-libs/gst-plugins-bad-1.12.0:1.0 bs2b? ( >=media-plugins/gst-plugins-bs2b-1.12.0:1.0 ) >=media-plugins/gst-plugins-ladspa-1.12.0:1.0 >=media-plugins/gst-plugins-lv2-1.12.0:1.0 >=media-plugins/gst-plugins-pulse-1.12.0:1.0 calf? ( >=media-plugins/calf-0.90.0[lv2] ) mda-lv2? ( media-plugins/mda-lv2 ) rubberband? ( media-libs/rubberband ) >=media-libs/zita-convolver-3.0.0 media-libs/libebur128 media-sound/pulseaudio sys-apps/dbus virtual/pkgconfig dev-libs/appstream-glib sys-devel/gettext >=sys-apps/sed-4 >=dev-util/meson-0.45.1 >=dev-util/ninja-1.7.2
+DESCRIPTION=Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
+EAPI=6
+HOMEPAGE=https://github.com/wwmm/pulseeffects
+IUSE=bs2b calf mda-lv2 rubberband
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=>=dev-libs/boost-1.41 >=dev-cpp/glibmm-2.56.0 >=dev-cpp/gtkmm-3.20:3.0 >=dev-libs/glib-2.56:2 >=dev-libs/libsigc++-2.10:2 >=x11-libs/gtk+-3.18:3 >=media-libs/lilv-0.24.2-r1 >=media-libs/gstreamer-1.12.0:1.0 >=media-libs/gst-plugins-good-1.12.0:1.0 >=media-libs/gst-plugins-bad-1.12.0:1.0 bs2b? ( >=media-plugins/gst-plugins-bs2b-1.12.0:1.0 ) >=media-plugins/gst-plugins-ladspa-1.12.0:1.0 >=media-plugins/gst-plugins-lv2-1.12.0:1.0 >=media-plugins/gst-plugins-pulse-1.12.0:1.0 calf? ( >=media-plugins/calf-0.90.0[lv2] ) mda-lv2? ( media-plugins/mda-lv2 ) rubberband? ( media-libs/rubberband ) >=media-libs/zita-convolver-3.0.0 media-libs/libebur128 media-sound/pulseaudio sys-apps/dbus
+SLOT=0
+SRC_URI=https://github.com/wwmm/pulseeffects/archive/v4.3.4.tar.gz -> pulseeffects-4.3.4.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	meson	b953e9f7b0c7db44d8b115086b11ba16	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=ef8f5a3ddf27f68c7093dca9f1239cb9
