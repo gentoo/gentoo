@@ -40,6 +40,12 @@ DEPEND="${PYTHON_DEPS}
 REQUIRED_USE="|| ( X wayland )
 			  vulkaninfo? ( X )"
 
+MULTILIB_CHOST_TOOLS=(
+	/usr/bin/vulkancube
+	/usr/bin/vulkancubecpp
+	/usr/bin/vulkaninfo
+)
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=True
@@ -77,18 +83,9 @@ multilib_src_configure() {
 multilib_src_install() {
 	cmake-utils_src_install
 
-	if ! multilib_is_native_abi; then
-		mv "${ED%/}"/usr/bin/vulkaninfo "${ED%/}"/usr/bin/vulkaninfo32 || die
-	fi
-
 	if use cube; then
-		if multilib_is_native_abi; then
-			mv "${ED%/}"/usr/bin/cube "${ED%/}"/usr/bin/vulkancube || die
-			mv "${ED%/}"/usr/bin/cubepp "${ED%/}"/usr/bin/vulkancubecpp || die
-		else
-			mv "${ED%/}"/usr/bin/cube "${ED%/}"/usr/bin/vulkancube32 || die
-			mv "${ED%/}"/usr/bin/cubepp "${ED%/}"/usr/bin/vulkancubecpp32 || die
-		fi
+		mv "${ED%/}"/usr/bin/cube "${ED%/}"/usr/bin/vulkancube || die
+		mv "${ED%/}"/usr/bin/cubepp "${ED%/}"/usr/bin/vulkancubecpp || die
 	fi
 }
 
