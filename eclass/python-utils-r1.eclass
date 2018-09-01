@@ -211,9 +211,15 @@ _python_impl_matches() {
 #
 # distutils-r1: Set within any of the python sub-phase functions.
 #
-# Example value:
+# If SYSROOT or EPREFIX are effectively set then this will point to an
+# automatically generated wrapper rather than the usual path under
+# /usr/bin in order to accommodate cross-compiling. We could do this all
+# the time but it would add unnecessary complexity.
+#
+# Example values:
 # @CODE
 # /usr/bin/python2.7
+# /var/tmp/portage/dev-python/pyblake2-1.2.3/temp/python2.7/bin/python2.7
 # @CODE
 
 # @ECLASS-VARIABLE: EPYTHON
@@ -256,6 +262,10 @@ _python_impl_matches() {
 # Set and exported on request using python_export().
 # Requires a proper build-time dependency on the Python implementation.
 #
+# This is prepended with SYSROOT in order to accommodate
+# cross-compiling. You may need to strip SYSROOT and EPREFIX if using it
+# to install new headers.
+#
 # Example value:
 # @CODE
 # /usr/include/python2.7
@@ -269,6 +279,9 @@ _python_impl_matches() {
 # Set and exported on request using python_export().
 # Valid only for CPython. Requires a proper build-time dependency
 # on the Python implementation.
+#
+# This is prepended with SYSROOT in order to accommodate
+# cross-compiling.
 #
 # Example value:
 # @CODE
@@ -313,6 +326,10 @@ _python_impl_matches() {
 # Set and exported on request using python_export().
 # Valid only for CPython. Requires a proper build-time dependency
 # on the Python implementation and on pkg-config.
+#
+# This is prepended with SYSROOT in order to accommodate
+# cross-compiling. You generally should not execute files within SYSROOT
+# but python-config is always a shell script.
 #
 # Example value:
 # @CODE
@@ -380,6 +397,10 @@ python_export() {
 	esac
 	debug-print "${FUNCNAME}: implementation: ${impl}"
 
+	# Many variables below need a PYTHON variable but we should not
+	# export it unless explicitly requested so use _PYTHON instead.
+	local _PYTHON
+
 	for var; do
 		case "${var}" in
 			EPYTHON)
@@ -387,21 +408,21 @@ python_export() {
 				debug-print "${FUNCNAME}: EPYTHON = ${EPYTHON}"
 				;;
 			PYTHON)
-				export PYTHON=${EPREFIX}/usr/bin/${impl}
+				python_wrapper_setup ${impl} PYTHON
 				debug-print "${FUNCNAME}: PYTHON = ${PYTHON}"
 				;;
 			PYTHON_SITEDIR)
-				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
+				python_wrapper_setup ${impl} _PYTHON
 				# sysconfig can't be used because:
 				# 1) pypy doesn't give site-packages but stdlib
 				# 2) jython gives paths with wrong case
-				PYTHON_SITEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())') || die
+				PYTHON_SITEDIR=$("${_PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())') || die
 				export PYTHON_SITEDIR
 				debug-print "${FUNCNAME}: PYTHON_SITEDIR = ${PYTHON_SITEDIR}"
 				;;
 			PYTHON_INCLUDEDIR)
-				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				PYTHON_INCLUDEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())') || die
+				python_wrapper_setup ${impl} _PYTHON
+				PYTHON_INCLUDEDIR=${SYSROOT}$("${_PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())') || die
 				export PYTHON_INCLUDEDIR
 				debug-print "${FUNCNAME}: PYTHON_INCLUDEDIR = ${PYTHON_INCLUDEDIR}"
 
@@ -411,8 +432,8 @@ python_export() {
 				fi
 				;;
 			PYTHON_LIBPATH)
-				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				PYTHON_LIBPATH=$("${PYTHON}" -c 'import os.path, sysconfig; print(os.path.join(sysconfig.get_config_var("LIBDIR"), sysconfig.get_config_var("LDLIBRARY")) if sysconfig.get_config_var("LDLIBRARY") else "")') || die
+				python_wrapper_setup ${impl} _PYTHON
+				PYTHON_LIBPATH=${SYSROOT}$("${_PYTHON}" -c 'import os.path, sysconfig; print(os.path.join(sysconfig.get_config_var("LIBDIR"), sysconfig.get_config_var("LDLIBRARY")) if sysconfig.get_config_var("LDLIBRARY") else "")') || die
 				export PYTHON_LIBPATH
 				debug-print "${FUNCNAME}: PYTHON_LIBPATH = ${PYTHON_LIBPATH}"
 
@@ -457,9 +478,9 @@ python_export() {
 
 				case "${impl}" in
 					python*)
-						[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-						flags=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS") or "")') || die
-						val=${PYTHON}${flags}-config
+						python_wrapper_setup ${impl} _PYTHON
+						flags=$("${_PYTHON}" -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS") or "")') || die
+						val=${ESYSROOT-${SYSROOT}${EPREFIX}}/usr/bin/${PYTHON##*/}${flags}-config
 						;;
 					*)
 						die "${impl}: obtaining ${var} not supported"
@@ -954,7 +975,7 @@ python_doheader() {
 	local d PYTHON_INCLUDEDIR=${PYTHON_INCLUDEDIR}
 	[[ ${PYTHON_INCLUDEDIR} ]] || python_export PYTHON_INCLUDEDIR
 
-	d=${PYTHON_INCLUDEDIR#${EPREFIX}}
+	d=${PYTHON_INCLUDEDIR#${ESYSROOT-${SYSROOT}${EPREFIX}}}
 
 	(
 		insopts -m 0644
@@ -964,7 +985,7 @@ python_doheader() {
 }
 
 # @FUNCTION: python_wrapper_setup
-# @USAGE: [<impl> [<path>]]
+# @USAGE: [<impl> [<pyvar> [<path>]]]
 # @DESCRIPTION:
 # Create proper 'python' executable and pkg-config wrappers
 # (if available) in the directory named by <path>. Set up PATH
@@ -972,6 +993,9 @@ python_doheader() {
 #
 # The wrappers will be created for implementation named by <impl>,
 # or for one named by ${EPYTHON} if no <impl> passed.
+#
+# The path to the 'python' executable wrapper is exported to the
+# variable named <pyvar> if given.
 #
 # If the named directory contains a python symlink already, it will
 # be assumed to contain proper wrappers already and only environment
@@ -981,23 +1005,39 @@ python_wrapper_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local impl=${1:-${EPYTHON}}
-	local workdir=${2:-${T}/${impl}}
+	local pyvar=${2}
+	local lpyvar=_${pyvar:-PYTHON}
+
+	# Use separate directories for SYSROOT in case we need to execute
+	# Python in the context of the build host by unsetting SYSROOT.
+	local workdir=${3:-${T}/${impl}${SYSROOT:+-sysroot}}
 
 	[[ ${workdir} ]] || die "${FUNCNAME}: no workdir specified."
 	[[ ${impl} ]] || die "${FUNCNAME}: no impl nor EPYTHON specified."
 
+	local EPYTHON
+	python_export "${impl}" EPYTHON
+
+	# We could use BROOT here but using the PATH accommodates
+	# cross-prefix where the PATH is sometimes manipulated to prefer
+	# build tools from the target prefix (i.e. EPREFIX).
+	#
+	# Also make sure we don't pick up an existing wrapper by replacing
+	# instances of ${T} with a bogus location. The workdir can be
+	# overridden but hopefully it will be somewhere under ${T}.
+	local ${lpyvar}=$(PATH=${PATH//${T}//dev/null} type -P "${EPYTHON}" || die "${FUNCNAME}: can't find ${EPYTHON} in PATH")
+
+	local pysysroot=${ESYSROOT-${SYSROOT%/}${EPREFIX}}
+
 	if [[ ! -x ${workdir}/bin/python ]]; then
 		_python_check_dead_variables
 
-		mkdir -p "${workdir}"/{bin,pkgconfig} || die
+		mkdir -p "${workdir}"/{bin,lib,pkgconfig} || die
 
 		# Clean up, in case we were supposed to do a cheap update.
 		rm -f "${workdir}"/bin/python{,2,3}{,-config} || die
 		rm -f "${workdir}"/bin/2to3 || die
 		rm -f "${workdir}"/pkgconfig/python{,2,3}.pc || die
-
-		local EPYTHON PYTHON
-		python_export "${impl}" EPYTHON PYTHON
 
 		local pyver pyother
 		if python_is_python3; then
@@ -1012,36 +1052,54 @@ python_wrapper_setup() {
 		# note: we don't use symlinks because python likes to do some
 		# symlink reading magic that breaks stuff
 		# https://bugs.gentoo.org/show_bug.cgi?id=555752
-		cat > "${workdir}/bin/python" <<-_EOF_ || die
-			#!/bin/sh
-			exec "${PYTHON}" "\${@}"
-		_EOF_
-		cp "${workdir}/bin/python" "${workdir}/bin/python${pyver}" || die
-		chmod +x "${workdir}/bin/python" "${workdir}/bin/python${pyver}" || die
+		echo '#!/bin/sh' > "${workdir}/bin/python" || die
 
 		local nonsupp=( "python${pyother}" "python${pyother}-config" )
 
 		# CPython-specific
 		if [[ ${EPYTHON} == python* ]]; then
+			local pysysrootlib=${pysysroot}/usr/$(get_libdir)
+
 			cat > "${workdir}/bin/python-config" <<-_EOF_ || die
 				#!/bin/sh
-				exec "${PYTHON}-config" "\${@}"
+				exec "${pysysroot}/usr/bin/${EPYTHON}-config" "\${@}"
 			_EOF_
-			cp "${workdir}/bin/python-config" \
-				"${workdir}/bin/python${pyver}-config" || die
-			chmod +x "${workdir}/bin/python-config" \
-				"${workdir}/bin/python${pyver}-config" || die
+			cp "${workdir}"/bin/{python,python${pyver}}-config  || die
+			chmod +x "${workdir}"/bin/{python,python${pyver}}-config || die
+
+			if [[ -n ${pysysroot} ]]; then
+				# Use host-specific data from SYSROOT. Python 2 looks
+				# for _sysconfigdata while Python 3 uses
+				# _PYTHON_SYSCONFIGDATA_NAME.
+				ln -s "${pysysrootlib}/${EPYTHON}"/_sysconfigdata*.py "${workdir}"/lib/_sysconfigdata.py || die
+
+				# Use distutils/sysconfig from SYSROOT as parts of it
+				# have GENTOO_LIBDIR baked in at Python build time.
+				ln -s "${pysysrootlib}/${EPYTHON}"/{distutils,sysconfig.py} "${workdir}"/lib/ || die
+
+				# Add env vars to python wrapper accordingly.
+				cat >> "${workdir}/bin/python" <<-_EOF_ || die
+					export \
+						PYTHONPATH="${workdir}/lib\${PYTHONPATH:+:}\${PYTHONPATH}" \
+						_PYTHON_SYSCONFIGDATA_NAME=_sysconfigdata
+				_EOF_
+			fi
 
 			# Python 2.6+.
-			ln -s "${PYTHON/python/2to3-}" "${workdir}"/bin/2to3 || die
+			ln -s "${EPYTHON/python/2to3-}" "${workdir}"/bin/2to3 || die
 
 			# Python 2.7+.
-			ln -s "${EPREFIX}"/usr/$(get_libdir)/pkgconfig/${EPYTHON/n/n-}.pc \
+			ln -s "${pysysrootlib}"/pkgconfig/${EPYTHON/n/n-}.pc \
 				"${workdir}"/pkgconfig/python.pc || die
 			ln -s python.pc "${workdir}"/pkgconfig/python${pyver}.pc || die
 		else
 			nonsupp+=( 2to3 python-config "python${pyver}-config" )
 		fi
+
+		echo "exec \"${!lpyvar}\" \"\${@}\"" >> "${workdir}"/bin/python || die
+		cp "${workdir}"/bin/{python,python${pyver}} || die
+		cp "${workdir}"/bin/{python,"${EPYTHON}"} || die
+		chmod +x "${workdir}"/bin/{python,python${pyver},"${EPYTHON}"} || die
 
 		local x
 		for x in "${nonsupp[@]}"; do
@@ -1064,6 +1122,14 @@ python_wrapper_setup() {
 		PKG_CONFIG_PATH=${workdir}/pkgconfig${PKG_CONFIG_PATH:+:${PKG_CONFIG_PATH}}
 	fi
 	export PATH PKG_CONFIG_PATH
+
+	if [[ -n ${pyvar} ]]; then
+		if [[ -n ${pysysroot} ]]; then
+			export -- ${pyvar}=${workdir}/bin/${EPYTHON}
+		else
+			export -- ${pyvar}=${!lpyvar}
+		fi
+	fi
 }
 
 # @FUNCTION: python_is_python3
