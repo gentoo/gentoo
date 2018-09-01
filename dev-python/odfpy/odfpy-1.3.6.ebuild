@@ -28,6 +28,9 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( examples/. )
+	if use examples; then
+		docinto examples
+		dodoc -r examples/.
+	fi
 	distutils-r1_python_install_all
 }
