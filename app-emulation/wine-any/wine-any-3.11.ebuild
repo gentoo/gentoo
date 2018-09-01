@@ -56,7 +56,8 @@ REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	pipelight? ( staging )
 	test? ( abi_x86_32 )
 	themes? ( staging )
-	vaapi? ( staging )" # osmesa-opengl #286560 # X-truetype #551124
+	vaapi? ( staging )
+	vkd3d? ( vulkan )" # osmesa-opengl #286560 # X-truetype #551124
 
 # FIXME: the test suite is unsuitable for us; many tests require net access
 # or fail due to Xvfb's opengl limitations.
