@@ -50,6 +50,7 @@ src_configure() {
 		--enable-posix-shm
 		--enable-threads
 		$(use_enable static-libs static)
+		--with-installbuilddir=/usr/share/${PN}/build
 	)
 
 	[[ ${CHOST} == *-mint* ]] && export ac_cv_func_poll=no
