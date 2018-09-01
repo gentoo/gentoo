@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit ltprune multilib-minimal
+inherit multilib-minimal
 
 MY_P="SDL2_mixer-${PV}"
 DESCRIPTION="Simple Direct Media Layer Mixer Library"
@@ -11,7 +11,7 @@ SRC_URI="http://www.libsdl.org/projects/SDL_mixer/release/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~x86"
 IUSE="flac fluidsynth mad midi mikmod mod modplug mp3 playtools smpeg static-libs timidity tremor vorbis +wav"
 REQUIRED_USE="
 	midi? ( || ( timidity fluidsynth ) )
@@ -49,6 +49,10 @@ RDEPEND=">=media-libs/libsdl2-2.0.1-r1[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-smpeg.patch
+)
 
 multilib_src_configure() {
 	local myeconfargs=(
@@ -89,7 +93,7 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	dodoc {CHANGES,README}.txt
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
