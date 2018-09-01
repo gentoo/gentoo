@@ -50,6 +50,10 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-smpeg.patch
+)
+
 multilib_src_configure() {
 	local myeconfargs=(
 		$(use_enable static-libs static)
