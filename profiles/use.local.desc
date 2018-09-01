@@ -1797,7 +1797,6 @@ dev-python/anyvc:mercurial - Add support for Mercurial
 dev-python/celery:redis - Enables redis support
 dev-python/celery:sqs - Enables Amazon SQS transport module for celery
 dev-python/celery:yaml - Enable support of yaml as a configuration file format
-dev-python/celery:zeromq - Enable logging and deployment via ZeroMQ
 dev-python/cgkit:3ds - Enable support for importing 3D Studio models
 dev-python/dap:server - Enable OpenDAP server support
 dev-python/dask:distributed - Add support for distributed computing with dev-python/distributed
@@ -1815,7 +1814,6 @@ dev-python/ipython:nbconvert - Enable support for converting notebooks to variou
 dev-python/ipython:notebook - Install requirements for the web notebook based on www-servers/tornado
 dev-python/kaa-base:tls - SSL/TLS support via dev-python/tlslite
 dev-python/kazoo:gevent - Enable support for the gevent based handler
-dev-python/kombu:amqplib - Enable amqplib support
 dev-python/kombu:mongodb - Enables MongoDB backend
 dev-python/kombu:msgpack - Enables MessagePack (de)serializer for Python
 dev-python/kombu:redis - Enables Redis backend
