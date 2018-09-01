@@ -83,9 +83,20 @@ multilib_src_configure() {
 multilib_src_install() {
 	cmake-utils_src_install
 
+	MULTILIB_CHOST_TOOLS=()
+
+	if use vulkaninfo; then
+		MULTILIB_CHOST_TOOLS+=( /usr/bin/vulkaninfo )
+	fi
+
 	if use cube; then
 		mv "${ED%/}"/usr/bin/cube "${ED%/}"/usr/bin/vulkancube || die
 		mv "${ED%/}"/usr/bin/cubepp "${ED%/}"/usr/bin/vulkancubecpp || die
+
+		MULTILIB_CHOST_TOOLS+=(
+			/usr/bin/vulkancube
+			/usr/bin/vulkancubecpp
+		)
 	fi
 }
 
