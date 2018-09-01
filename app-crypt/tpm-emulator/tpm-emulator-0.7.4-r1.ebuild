@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,6 +25,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${P/-/_}
 
 pkg_setup() {
+	enewgroup tss
 	enewuser tss -1 -1 /var/lib/tpm tss
 	if use modules; then
 		CONFIG_CHECK="MODULES"
