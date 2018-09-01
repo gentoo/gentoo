@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools libtool ltprune multilib toolchain-funcs
+inherit autotools libtool multilib toolchain-funcs
 
 DESCRIPTION="Apache Portable Runtime Library"
 HOMEPAGE="https://apr.apache.org/"
@@ -140,7 +140,9 @@ src_install() {
 	# Prallel install breaks since apr-1.5.1
 	#make -j1 DESTDIR="${D}" install || die
 
-	prune_libtool_files --all
+	if ! use static-libs; then
+		find "${ED%/}" -name '*.la' -delete || die
+	fi
 
 	if use doc; then
 		docinto html
