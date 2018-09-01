@@ -2,12 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit multilib-minimal
 
 MY_P="SDL2_mixer-${PV}"
+inherit multilib-minimal
+
 DESCRIPTION="Simple Direct Media Layer Mixer Library"
-HOMEPAGE="http://www.libsdl.org/projects/SDL_mixer/"
-SRC_URI="http://www.libsdl.org/projects/SDL_mixer/release/${MY_P}.tar.gz"
+HOMEPAGE="https://www.libsdl.org/projects/SDL_mixer/"
+SRC_URI="https://www.libsdl.org/projects/SDL_mixer/release/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
@@ -24,35 +25,35 @@ REQUIRED_USE="
 	mikmod? ( mod )
 	modplug? ( mod )
 	tremor? ( vorbis )
-	"
+"
 
-RDEPEND=">=media-libs/libsdl2-2.0.1-r1[${MULTILIB_USEDEP}]
+RDEPEND="
+	>=media-libs/libsdl2-2.0.7[${MULTILIB_USEDEP}]
 	flac? ( >=media-libs/flac-1.2.1-r5[${MULTILIB_USEDEP}] )
 	midi? (
 		fluidsynth? ( >=media-sound/fluidsynth-1.1.6-r1[${MULTILIB_USEDEP}] )
 		timidity? ( media-sound/timidity++ )
 	)
+	mod? (
+		mikmod? ( >=media-libs/libmikmod-3.3.6-r1[${MULTILIB_USEDEP}] )
+		modplug? ( >=media-libs/libmodplug-0.8.8.4-r1[${MULTILIB_USEDEP}] )
+	)
 	mp3? (
 		mad? ( >=media-libs/libmad-0.15.1b-r8[${MULTILIB_USEDEP}] )
 		smpeg? ( >=media-libs/smpeg2-2.0.0-r1[${MULTILIB_USEDEP}] )
-	)
-	mod? (
-		modplug? ( >=media-libs/libmodplug-0.8.8.4-r1[${MULTILIB_USEDEP}] )
-		mikmod? ( >=media-libs/libmikmod-3.3.6-r1[${MULTILIB_USEDEP}] )
 	)
 	vorbis? (
 		tremor? ( >=media-libs/tremor-0_pre20130223[${MULTILIB_USEDEP}] )
 		!tremor? (
 			>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
 			>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}] )
-	)"
+	)
+"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-smpeg.patch
-)
+PATCHES=( "${FILESDIR}"/${P}-smpeg.patch )
 
 multilib_src_configure() {
 	local myeconfargs=(
@@ -99,17 +100,14 @@ multilib_src_install_all() {
 pkg_postinst() {
 	# bug 412035
 	# https://bugs.gentoo.org/show_bug.cgi?id=412035
-	if use midi ; then
-		if use fluidsynth; then
-			ewarn "FluidSynth support requires you to set the SDL_SOUNDFONTS"
-			ewarn "environment variable to the location of a SoundFont file"
-			ewarn "unless the game or application happens to do this for you."
-
-			if use timidity; then
-				ewarn "Failing to do so will result in Timidity being used instead."
-			else
-				ewarn "Failing to do so will result in silence."
-			fi
+	if use midi && use fluidsynth; then
+		ewarn "FluidSynth support requires you to set the SDL_SOUNDFONTS"
+		ewarn "environment variable to the location of a SoundFont file"
+		ewarn "unless the game or application happens to do this for you."
+		if use timidity; then
+			ewarn "Failing to do so will result in Timidity being used instead."
+		else
+			ewarn "Failing to do so will result in silence."
 		fi
 	fi
 }
