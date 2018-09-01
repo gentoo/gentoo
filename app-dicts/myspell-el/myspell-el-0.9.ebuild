@@ -18,7 +18,7 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="Greek dictionaries for myspell/hunspell"
-HOMEPAGE="http://elspell.math.upatras.gr"
+HOMEPAGE="http://www.elspell.gr/"
 SRC_URI="http://elspell.math.upatras.gr/files/ooffice/el_GR-${PV}.zip http://elspell.math.upatras.gr/files/ooffice/hyph_el.zip"
 
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1"
