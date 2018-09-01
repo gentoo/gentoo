@@ -7,4 +7,4 @@ KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-l
 LICENSE=HPND
 SLOT=2
 SRC_URI=mirror://sourceforge/iperf2/iperf-2.0.12.tar.gz
-_md5_=631b213216bd2a2327856479cb927abd
+_md5_=86c1d3718bcccccf49d6ce99f3424812
