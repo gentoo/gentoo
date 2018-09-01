@@ -54,7 +54,7 @@ app-admin/drush 6.7.0: Command line shell and scripting interface for Drupal
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
 app-admin/eclean-kernel 0.4.2: Remove outdated built kernels
 app-admin/emacs-updater 1.15: Rebuild Emacs packages
-app-admin/eselect 1.4.12: Gentoo's multi-purpose configuration and management tool
+app-admin/eselect 1.4.12 1.4.13: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/fam 2.7.0-r7 2.7.0_p17_p2: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
@@ -3206,7 +3206,7 @@ dev-libs/oniguruma 6.7.1 6.8.2: Regular expression library for different charact
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.2: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.16.0 0.18.0: Libraries and applications to access smartcards
-dev-libs/openssl 0.9.8z_p8 0.9.8z_p8-r1 1.0.2o-r3: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 0.9.8z_p8 0.9.8z_p8-r1 1.0.2o-r3 1.0.2o-r6: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/pcre++ 0.9.5-r1: A C++ support library for libpcre
