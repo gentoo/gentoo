@@ -3,10 +3,10 @@ DEPEND=dev-perl/common-sense virtual/perl-ExtUtils-MakeMaker dev-perl/Canary-Sta
 DESCRIPTION=Perl interface to libev, a high performance full-featured event loop
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/EV/
-KEYWORDS=amd64 ~arm ppc ppc64 ~x86
+KEYWORDS=amd64 ~arm ppc ppc64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/common-sense dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/ML/MLEHMANN/EV-4.22.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
-_md5_=07e0d88fc0031bc4fa38941a2aef99a5
+_md5_=2ad761ddffd8c0a094e63b4f4e5901b6
