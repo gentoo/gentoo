@@ -107,7 +107,7 @@ src_install() {
 	fperms -R 775 /opt/puppetlabs/server/data/puppetserver
 	fperms -R 700 /var/log/puppetlabs/puppetserver
 	insinto /opt/puppetlabs/server/data
-	newins ext/build-scripts/gem-list.txt puppetserver-gem-list.txt
+	newins ext/build-scripts/jruby-gem-list.txt puppetserver-gem-list.txt
 	newtmpfiles ext/puppetserver.tmpfiles.conf puppetserver.conf
 }
 
