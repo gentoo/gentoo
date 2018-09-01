@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit ltprune multilib-minimal
+inherit multilib-minimal
 
 MY_P="SDL2_mixer-${PV}"
 DESCRIPTION="Simple Direct Media Layer Mixer Library"
@@ -93,7 +93,7 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	dodoc {CHANGES,README}.txt
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
