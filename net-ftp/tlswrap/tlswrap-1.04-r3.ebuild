@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="FTP wrapper which supports TLS with every FTP client"
-HOMEPAGE="http://www.tlswrap.com/"
-SRC_URI="http://www.tlswrap.com/${P}.tar.gz"
+HOMEPAGE="https://www.tlswrap.com/"
+SRC_URI="https://www.tlswrap.com/${P}.tar.gz"
 
 # GPL-2 for Gentoo init script
 LICENSE="BSD GPL-2"
