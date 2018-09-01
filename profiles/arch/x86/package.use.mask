@@ -3,6 +3,11 @@
 
 # This file requires >=portage-2.1.1
 
+# Andreas Sturmlechner <asturm@gentoo.org> (01 Sep 2018)
+# media-libs/libaom not yet keyworded
+# media-libs/aribb24 not yet keyworded, bug #665048
+media-video/vlc aom aribsub
+
 # Ben Kohler <bkohler@gentoo.org> (23 Aug 2018)
 # Unmask iwd support where net-wireless/iwd is keyworded
 net-misc/connman -iwd
@@ -24,10 +29,6 @@ media-video/mpv -vulkan
 # LO kde support on x86 is broken, see bug 650208
 =app-office/libreoffice-bin-6.0* kde
 =app-office/libreoffice-bin-debug-6.0* kde
-
-# Andreas Sturmlechner <asturm@gentoo.org> (18 May 2018)
-# media-libs/libaom not yet keyworded
-media-video/vlc aom
 
 # Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (14 Mar 2018)
 # Expose SVGA backend for x86 users
