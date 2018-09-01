@@ -64,6 +64,7 @@ multilib_src_configure() {
 		-DWITH_SERVER="$(usex server)"
 		-DWITH_SFTP="$(usex sftp)"
 		-DWITH_SSH1="$(usex ssh1)"
+		-DWITH_STACK_PROTECTOR=OFF
 		-DWITH_STATIC_LIB="$(usex static-libs)"
 		-DWITH_STATIC_LIB="$(usex test)"
 		-DWITH_TESTING="$(usex test)"
