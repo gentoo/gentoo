@@ -4,7 +4,7 @@
 EAPI=0
 
 DESCRIPTION="produces a GNU-style ChangeLog for CVS-controlled sources"
-HOMEPAGE="http://www.red-bean.com/cvs2cl/"
+HOMEPAGE="https://www.red-bean.com/cvs2cl/"
 SRC_URI="mirror://gentoo/${P}.pl.bz2"
 
 LICENSE="GPL-2"
