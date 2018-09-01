@@ -28,6 +28,12 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+#
+# Matthias Maier <tamiko@gentoo.org> (1 Sep 2018)
+# Mask 1.0.0 for the time being until a compatible LLVM version made it
+# into the tree.
+~dev-lang/julia-1.0.0
+
 
 # Michał Górny <mgorny@gentoo.org> (31 Aug 2018)
 # (on behalf of QA)
