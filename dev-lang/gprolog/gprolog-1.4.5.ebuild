@@ -23,6 +23,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-links.patch
 	epatch "${FILESDIR}"/${P}-nodocs.patch
 	epatch "${FILESDIR}"/${P}-txt-file.patch
+	epatch "${FILESDIR}"/${P}-check-boot.patch
 
 	eapply_user
 }
