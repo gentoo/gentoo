@@ -27,13 +27,33 @@ PATCHES=(
 )
 
 pkg_setup() {
-	CONFIG_CHECK="~KEYS"
-	ERROR_KEYS="You must have CONFIG_KEYS to use this package!"
+	# To prevent a failure in test phase and false positive bug reports
+	# we are enforcing the following options because testsuite expects
+	# that these options are available. I.e. testsuite only decides based
+	# on kernel version which tests will be called, no feature checking.
+	if use test ; then
+		CONFIG_CHECK="KEYS"
+		ERROR_KEYS="You must have CONFIG_KEYS to run the package testsuite!"
 
-	if use test && kernel_is lt 4 0 0; then
-		CONFIG_CHECK="${CONFIG_CHECK} ~KEYS_DEBUG_PROC_KEYS ~KEY_DH_OPERATIONS"
-		ERROR_KEYS_DEBUG_PROC_KEYS="You must have CONFIG_KEYS_DEBUG_PROC_KEYS to run the package testsuite!"
+		if kernel_is -ge 2 6 10 && kernel_is -lt 4 0 0 ; then
+			CONFIG_CHECK="${CONFIG_CHECK} KEYS_DEBUG_PROC_KEYS"
+			ERROR_KEYS_DEBUG_PROC_KEYS="You must have CONFIG_KEYS_DEBUG_PROC_KEYS to run the package testsuite!"
+		fi
+
+		if kernel_is -ge 4 7 ; then
+			CONFIG_CHECK="${CONFIG_CHECK} KEY_DH_OPERATIONS"
+			ERROR_KEY_DH_OPERATIONS="You must have CONFIG_KEY_DH_OPERATIONS to run the package testsuite!"
+		fi
+	else
+		CONFIG_CHECK="~KEYS"
+		ERROR_KEYS="You will be unable to use this package on this system because CONFIG_KEYS is not set!"
+
+		if kernel_is -ge 4 7 ; then
+			CONFIG_CHECK="${CONFIG_CHECK} ~KEY_DH_OPERATIONS"
+			ERROR_KEY_DH_OPERATIONS="You will be unable to use Diffie-Hellman on this system because CONFIG_KEY_DH_OPERATIONS is not set!"
+		fi
 	fi
+
 	linux-info_pkg_setup
 }
 
