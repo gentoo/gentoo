@@ -1,5 +1,5 @@
---- a/Makefile	2018-06-21 15:39:27.000000000 +0200
-+++ b/Makefile	2018-06-24 14:46:41.773596760 +0200
+--- a/Makefile	2018-08-23 17:55:27.000000000 +0200
++++ b/Makefile	2018-09-01 14:46:51.000000000 +0200
 @@ -21,7 +21,7 @@
  # Codename "portable pressure producer"
  #
@@ -9,7 +9,7 @@
  
  #
  # Pedantic flags
-@@ -319,12 +319,10 @@
+@@ -337,12 +337,10 @@
  .o: stress-ng.h Makefile
  
  .c.o: stress-ng.h Makefile $(SRC)
@@ -17,14 +17,14 @@
 -	@$(CC) $(CFLAGS) -c -o $@ $<
 +	$(CC) $(CFLAGS) -c -o $@ $<
  
- stress-ng: info $(OBJS)
+ stress-ng: $(OBJS)
 -	@echo "LD $@"
 -	@$(CC) $(CPPFLAGS) $(CFLAGS) $(OBJS) -lm $(LDFLAGS) -lc -o $@
 +	$(CC) $(CPPFLAGS) $(CFLAGS) $(OBJS) -lm $(LDFLAGS) -lc -o $@
  	@sync
  
- .PHONY: info
-@@ -344,8 +342,7 @@
+ makeconfig:
+@@ -363,8 +361,7 @@
  		sed '$$ s/.$$//' >> apparmor-data.c
  	@echo "};" >> apparmor-data.c
  	@echo "const size_t g_apparmor_data_len = sizeof(g_apparmor_data);" >> apparmor-data.c
@@ -34,7 +34,7 @@
  	@rm -rf apparmor-data.c apparmor-data.bin
  
  #
-@@ -360,12 +357,10 @@
+@@ -379,12 +376,10 @@
  perf.o: perf.c perf-event.c
  	@$(CC) $(CFLAGS) -E perf-event.c | grep "PERF_COUNT" | sed 's/,/ /' | \
  	awk {'print "#define _SNG_" $$1 " (1)"'} > perf-event.h
@@ -49,8 +49,8 @@
  	@touch stress-ng.c
  
  $(OBJS): stress-ng.h Makefile
-@@ -405,10 +400,10 @@
- 	STRESS_NG=./stress-ng debian/tests/fast-test-all
+@@ -428,10 +423,10 @@
+ 	./stress-ng --seq 0 -t 15 --pathological --verbose --times --tz --metrics
  
  .PHONY: install
 -install: stress-ng stress-ng.1.gz
