@@ -40,6 +40,7 @@ src_configure() {
 		--with-c-flags="${CFLAGS}" \
 		--with-install-dir="${EPREFIX}"/usr/$(get_libdir)/${P} \
 		--with-links-dir="${EPREFIX}"/usr/bin \
+		$(use_enable !x86 regs) \
 		$(use_with doc doc-dir "${EPREFIX}"/usr/share/doc/${PF}) \
 		$(use_with doc html-dir "${EPREFIX}"/usr/share/doc/${PF}/html) \
 		$(use_with examples examples-dir "${EPREFIX}"/usr/share/doc/${PF}/examples)
