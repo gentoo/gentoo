@@ -15,7 +15,12 @@ if [[ $PV == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://w1.fi/hostap.git"
 else
-	SRC_URI+=" https://w1.fi/releases/${P}.tar.gz"
+	if [[ $PV =~ ^.*_p[0-9]{8}$ ]]; then
+		SRC_URI+=" https://dev.gentoo.org/~andrey_utkin/distfiles/${P}.tar.xz"
+	else
+		SRC_URI+=" https://w1.fi/releases/${P}.tar.gz"
+	fi
+	# Never stabilize snapshot ebuilds please
 	KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86"
 fi
 
