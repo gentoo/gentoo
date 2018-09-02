@@ -17,10 +17,11 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="!test? ( test )"
 
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/libinput-1.8.0
