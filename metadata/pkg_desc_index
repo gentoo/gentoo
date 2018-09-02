@@ -7913,7 +7913,6 @@ media-plugins/vdr-remoteosd 1.0.0: VDR Plugin: server/client remoteosd
 media-plugins/vdr-remotetimers 1.0.2: VDR plugin: edit timers on remote vdr instances
 media-plugins/vdr-rssreader 2.0.0 2.2.1-r1: VDR Plugin: RSS reader
 media-plugins/vdr-screenshot 0.0.15: VDR Plugin: takes screenshots of the current video or tv screen by one keypress on your remote
-media-plugins/vdr-skincurses 2.0.0: VDR plugin: show content of menu in a shell window
 media-plugins/vdr-skinsoppalusikka 2.0.0: VDR Skin Plugin: soppalusikka
 media-plugins/vdr-streamdev 0.6.1: VDR Plugin: Client/Server and http streaming plugin
 media-plugins/vdr-sudoku 0.3.5 0.3.5-r1: VDR plugin: to generate and solve Number Place puzzles, so called Sudokus
