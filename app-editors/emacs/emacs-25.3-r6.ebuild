@@ -3,12 +3,12 @@
 
 EAPI=7
 
-inherit elisp-common flag-o-matic multilib readme.gentoo-r1
+inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-1.tar.xz"
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-2.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="25"
@@ -48,8 +48,7 @@ RDEPEND="sys-libs/ncurses:0=
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff:0 )
 		xpm? ( x11-libs/libXpm )
-		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0=
-			<media-gfx/imagemagick-7:0= )
+		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0= )
 		xft? (
 			media-libs/fontconfig
 			media-libs/freetype
@@ -113,8 +112,8 @@ src_prepare() {
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
 		|| die "unable to sed ctags.1"
 
-	#AT_M4DIR=m4 eautoreconf
-	#touch src/stamp-h.in || die
+	AT_M4DIR=m4 eautoreconf
+	touch src/stamp-h.in || die
 }
 
 src_configure() {
