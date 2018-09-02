@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile config install postinst postrm prepare setup unpack
+DEPEND==media-video/vdr-2.2* pcre? ( dev-libs/libpcre ) tre? ( dev-libs/tre ) >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers
+DESCRIPTION=VDR plugin: create timers from epg content based on saved search expressions
+EAPI=7
+HOMEPAGE=https://projects.vdr-developer.org/git/vdr-plugin-epgsearch.git
+IUSE=+conflictcheckonly +epgsearchonly pcre +quicksearch tre
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND==media-video/vdr-2.2* pcre? ( dev-libs/libpcre ) tre? ( dev-libs/tre ) >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
+REQUIRED_USE=?? ( pcre tre )
+SLOT=0
+SRC_URI=https://projects.vdr-developer.org/git/vdr-plugin-epgsearch.git/snapshot/vdr-plugin-epgsearch-2.2.0.tar.gz -> vdr-epgsearch-2.2.0.tgz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	unpacker	ee2f5086cd7e7b747b061f58db14d89e	vdr-plugin-2	fbdfa56b71cf0193ab303e13ea40b188
+_md5_=47d594fb90526edc82d58344d7478e3a
