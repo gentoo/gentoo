@@ -6,8 +6,8 @@ EAPI=6
 inherit git-r3 java-pkg-2 java-ant-2
 
 DESCRIPTION="gcj-free version of pdftk written in Java"
-HOMEPAGE="https://gitlab.com/marcvinyals/pdftk"
-EGIT_REPO_URI="https://gitlab.com/marcvinyals/pdftk/"
+HOMEPAGE="https://gitlab.com/pdftk-java/pdftk"
+EGIT_REPO_URI="https://gitlab.com/pdftk-java/pdftk/"
 
 LICENSE="GPL-2"
 SLOT="0"
