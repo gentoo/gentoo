@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=ruby_targets_ruby23? ( dev-ruby/rex-random_identifier[ruby_targets_ruby23] dev-ruby/rex-text[ruby_targets_ruby23] ) ruby_targets_ruby24? ( dev-ruby/rex-random_identifier[ruby_targets_ruby24] dev-ruby/rex-text[ruby_targets_ruby24] ) ruby_targets_ruby25? ( dev-ruby/rex-random_identifier[ruby_targets_ruby25] dev-ruby/rex-text[ruby_targets_ruby25] ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby23? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby23] ) ) ruby_targets_ruby24? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby24] ) ) ruby_targets_ruby25? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby25] ) ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25] ) test? ( ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25] ) )
+DESCRIPTION=Ruby Exploitation(Rex) library for generating/manipulating Powershell scripts
+EAPI=6
+HOMEPAGE=https://rubygems.org/gems/rex-powershell
+IUSE=elibc_FreeBSD ruby_targets_ruby23 ruby_targets_ruby24 ruby_targets_ruby25 doc test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD
+RDEPEND=ruby_targets_ruby23? ( dev-lang/ruby:2.3 ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby23? ( virtual/rubygems[ruby_targets_ruby23] ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25] )
+REQUIRED_USE=|| ( ruby_targets_ruby23 ruby_targets_ruby24 ruby_targets_ruby25 )
+SLOT=0
+SRC_URI=mirror://rubygems/rex-powershell-0.1.79.gem
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	java-utils-2	0ee72667014428e01a01df2345244cf3	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	ruby-fakegem	b71c34d64e24dcf087f9d6a84bb32dbe	ruby-ng	9ffc1c055a3294fcc48de781c94825f6	ruby-utils	a43d6cd7f05b4d013e7e40104ddfd3c7	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
+_md5_=be69a4b0e18a15cd9f35659e89628d58
