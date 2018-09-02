@@ -146,9 +146,11 @@ src_install() {
 	echo "MANPATH=\"${EPREFIX}${ERL_LIBDIR}/man\"" > "${ED}/etc/env.d/90erlang"
 
 	if use doc ; then
-		dohtml -A README,erl,hrl,c,h,kwc,info -r \
-			"${WORKDIR}"/doc "${WORKDIR}"/lib "${WORKDIR}"/erts-*
+		local DOCS=( "AUTHORS" "HOWTO"/* "README.md" "CONTRIBUTING.md" "${WORKDIR}"/doc "${WORKDIR}"/lib "${WORKDIR}"/erts-* )
+		docompress -x /usr/share/doc/${PF}
 	fi
+
+	einstalldocs
 
 	if use emacs ; then
 		pushd "${S}"
