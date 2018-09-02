@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install postinst preinst setup
+DEPEND=!net-misc/openswan gmp? ( >=dev-libs/gmp-4.1.5:= ) gcrypt? ( dev-libs/libgcrypt:0 ) caps? ( sys-libs/libcap ) curl? ( net-misc/curl ) ldap? ( net-nds/openldap ) openssl? ( >=dev-libs/openssl-0.9.8:=[-bindist] ) mysql? ( virtual/mysql ) sqlite? ( >=dev-db/sqlite-3.3.1 ) systemd? ( sys-apps/systemd ) networkmanager? ( net-misc/networkmanager ) pam? ( sys-libs/pam ) strongswan_plugins_unbound? ( net-dns/unbound net-libs/ldns ) virtual/linux-sources sys-kernel/linux-headers
+DESCRIPTION=IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
+EAPI=7
+HOMEPAGE=https://www.strongswan.org/
+IUSE=+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite systemd pam pkcs11 +strongswan_plugins_led +strongswan_plugins_lookip +strongswan_plugins_systime-fix +strongswan_plugins_unity +strongswan_plugins_vici strongswan_plugins_aesni strongswan_plugins_blowfish strongswan_plugins_ccm strongswan_plugins_chapoly strongswan_plugins_ctr strongswan_plugins_forecast strongswan_plugins_gcm strongswan_plugins_ha strongswan_plugins_ipseckey strongswan_plugins_newhope strongswan_plugins_ntru strongswan_plugins_padlock strongswan_plugins_rdrand strongswan_plugins_save-keys strongswan_plugins_unbound strongswan_plugins_whitelist kernel_linux
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+LICENSE=GPL-2 RSA DES
+RDEPEND=!net-misc/openswan gmp? ( >=dev-libs/gmp-4.1.5:= ) gcrypt? ( dev-libs/libgcrypt:0 ) caps? ( sys-libs/libcap ) curl? ( net-misc/curl ) ldap? ( net-nds/openldap ) openssl? ( >=dev-libs/openssl-0.9.8:=[-bindist] ) mysql? ( virtual/mysql ) sqlite? ( >=dev-db/sqlite-3.3.1 ) systemd? ( sys-apps/systemd ) networkmanager? ( net-misc/networkmanager ) pam? ( sys-libs/pam ) strongswan_plugins_unbound? ( net-dns/unbound net-libs/ldns ) virtual/logger sys-apps/iproute2 !net-vpn/libreswan selinux? ( sec-policy/selinux-ipsec )
+SLOT=0
+SRC_URI=https://download.strongswan.org/strongswan-5.6.3.tar.bz2
+_eclasses_=linux-info	915cae3d7d636732918d18827fb1c226	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=315f1a7b7727a83b286360a685d0be8b

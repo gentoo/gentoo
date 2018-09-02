@@ -4798,17 +4798,22 @@ net-vpn/strongswan:gcrypt - Enable dev-libs/libgcrypt plugin which provides 3DES
 net-vpn/strongswan:non-root - Force IKEv1/IKEv2 daemons to normal user privileges. This might impose some restrictions mainly to the IKEv1 daemon. Disable only if you really require superuser privileges.
 net-vpn/strongswan:openssl - Enable dev-libs/openssl plugin which is required for Elliptic Curve Cryptography (DH groups 19-21,25,26) and ECDSA. Also provides 3DES, AES, Blowfish, Camellia, CAST, DES, IDEA and RC5 ciphers along with MD2, MD4, MD5 and SHA1/2 hash algorithms, RSA and DH groups 1,2,5,14-18 and 22-24(4.4+) dev-libs/openssl has to be compiled with USE="-bindist".
 net-vpn/strongswan:pkcs11 - Enable pkcs11 support
+net-vpn/strongswan:strongswan_plugins_aesni - Enable support for Intel AES-NI crypto plugin
 net-vpn/strongswan:strongswan_plugins_blowfish - Enable support for the blowfish plugin
 net-vpn/strongswan:strongswan_plugins_ccm - Enable support for the ccm plugin
+net-vpn/strongswan:strongswan_plugins_chapoly - Enable ChaCha20/Poly1305 AEAD implementation and ChaCha20 XOF plugin
 net-vpn/strongswan:strongswan_plugins_ctr - Enable support for the ctr plugin
+net-vpn/strongswan:strongswan_plugins_forecast - Enable multicast and broadcast forwarding plugin
 net-vpn/strongswan:strongswan_plugins_gcm - Enable support for the gcm plugin
 net-vpn/strongswan:strongswan_plugins_ha - Enable support for the ha plugin
 net-vpn/strongswan:strongswan_plugins_ipseckey - Enable support for the ipseckey plugin
 net-vpn/strongswan:strongswan_plugins_led - Enable support for the led plugin
 net-vpn/strongswan:strongswan_plugins_lookip - Enable support for the lookip plugin
+net-vpn/strongswan:strongswan_plugins_newhope - Enable plugin that allows key exchange based on post-quantum computer New Hope algorithm
 net-vpn/strongswan:strongswan_plugins_ntru - Enable support for the ntru plugin
 net-vpn/strongswan:strongswan_plugins_padlock - Enable support for the padlock plugin
 net-vpn/strongswan:strongswan_plugins_rdrand - Enable support for the rdrand plugin
+net-vpn/strongswan:strongswan_plugins_save-keys - Enable plugin that saves IKE and/or ESP keys to files compatible with Wireshark (for debugging)
 net-vpn/strongswan:strongswan_plugins_systime-fix - Enable support for the systime-fix plugin
 net-vpn/strongswan:strongswan_plugins_unbound - Enable support for the unbound plugin
 net-vpn/strongswan:strongswan_plugins_unity - Enable support for the unity plugin
