@@ -37,7 +37,6 @@ This variant of the wine packaging allows for the use of the Wine-Staging patchs
 			For versions before wine-1.7.55 or hardened, do not disable if you do not know what this means as it can break things at runtime</flag>
 		<flag name="realtime">Pull in <pkg>sys-auth/rtkit</pkg> for low-latency pulseaudio support</flag>
 		<flag name="run-exes">Use Wine to open and run .EXE and .MSI files</flag>
-		<flag name="s3tc">Pull in <pkg>media-libs/libtxc_dxtn</pkg> for DXTn texture compression, needed for many games</flag>
 		<flag name="samba">Add support for NTLM auth. see
 		http://wiki.winehq.org/NtlmAuthSetupGuide and
 		http://wiki.winehq.org/NtlmSigningAndSealing</flag>
