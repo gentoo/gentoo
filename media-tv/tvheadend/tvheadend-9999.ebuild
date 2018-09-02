@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="+capmt +constcw +cwc dbus debug +ddci dvbcsa +dvb +ffmpeg hdhomerun +imagecache +inotify iptv libressl opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib"
+IUSE="dbus debug +ddci dvbcsa +dvb +ffmpeg hdhomerun +imagecache +inotify iptv libressl opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib"
 
 RDEPEND="
 	virtual/libiconv
@@ -47,7 +47,6 @@ RDEPEND+="
 	xmltv? ( media-tv/xmltv )"
 
 REQUIRED_USE="
-	dvbcsa? ( || ( capmt constcw cwc ) )
 	ddci? ( dvb )
 "
 
@@ -55,9 +54,9 @@ REQUIRED_USE="
 # https://github.com/rpmfusion/tvheadend
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.0.9-use_system_queue.patch"
-	"${FILESDIR}/${PN}-4.2.1-hdhomerun.patch"
-	"${FILESDIR}/${PN}-4.2.2-dtv_scan_tables.patch"
+	"${FILESDIR}"/${PN}-4.0.9-use_system_queue.patch
+	"${FILESDIR}"/${PN}-4.2.1-hdhomerun.patch
+	"${FILESDIR}"/${PN}-4.2.2-dtv_scan_tables.patch
 )
 
 DOCS=( README.md )
@@ -89,14 +88,15 @@ src_configure() {
 		--enable-libtheora \
 		--enable-libvorbis \
 		--nowerror \
-		$(use_enable capmt) \
-		$(use_enable constcw) \
-		$(use_enable cwc) \
 		$(use_enable dbus dbus_1) \
 		$(use_enable debug trace) \
 		$(use_enable ddci) \
 		$(use_enable dvb linuxdvb) \
 		$(use_enable dvbcsa) \
+		$(use_enable dvbcsa capmt) \
+		$(use_enable dvbcsa cccam) \
+		$(use_enable dvbcsa constcw) \
+		$(use_enable dvbcsa cwc) \
 		$(use_enable ffmpeg libav) \
 		$(use_enable hdhomerun hdhomerun_client) \
 		$(use_enable imagecache) \
