@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,9 +44,11 @@ REQUIRED_USE="dvbcsa? ( || ( capmt constcw cwc dvben50221 ) )"
 # https://github.com/rpmfusion/tvheadend
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.0.9-use_system_queue.patch"
-	"${FILESDIR}/${PN}-4.2.1-hdhomerun.patch"
-	"${FILESDIR}/${PN}-4.2.2-dtv_scan_tables.patch"
+	"${FILESDIR}"/${PN}-4.0.9-use_system_queue.patch
+	"${FILESDIR}"/${PN}-4.2.1-hdhomerun.patch
+	"${FILESDIR}"/${PN}-4.2.2-dtv_scan_tables.patch
+	"${FILESDIR}"/${PN}-4.2.5-ffmpeg_3.5.patch
+	"${FILESDIR}"/${PN}-4.2.5-gcc8.patch
 )
 
 DOCS=( README.md )
