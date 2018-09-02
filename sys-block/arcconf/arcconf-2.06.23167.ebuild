@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PV="v${PV//./_}"
 
@@ -20,7 +20,7 @@ RDEPEND="${RDEPEND}"
 
 RESTRICT="fetch mirror bindist"
 
-S="${WORKDIR}"
+S="${WORKDIR}/linux_x64"
 
 QA_PREBUILT="usr/bin/arcconf"
 
@@ -39,5 +39,5 @@ pkg_setup() {
 }
 
 src_install() {
-	dobin linux_x64/arcconf
+	dobin cmdline/arcconf
 }
