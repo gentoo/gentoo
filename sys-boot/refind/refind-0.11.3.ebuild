@@ -101,6 +101,9 @@ src_compile() {
 		AS="$(tc-getAS)"
 		LD="$(tc-getLD)"
 		AR="$(tc-getAR)"
+		GNUEFILIB="/usr/$(get_libdir)"
+		EFILIB="/usr/$(get_libdir)"
+		EFICRT0="/usr/$(get_libdir)"
 		RANLIB="$(tc-getRANLIB)"
 		OBJCOPY="$(tc-getOBJCOPY)"
 		GNUEFI_LDFLAGS="-T \$(GNUEFI_LDSCRIPT) -shared -nostdlib -Bsymbolic \
@@ -177,7 +180,7 @@ pkg_postinst() {
 	elog ""
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "refind-install requires additional packages to be fully functional:"
-		elog " app-crypt/sbsigntool for binary signing for use with SecureBoot"
+		elog " app-crypt/sbsigntools for binary signing for use with SecureBoot"
 		elog " sys-boot/efibootmgr for writing to NVRAM"
 		elog " sys-block/parted for automatic ESP location and mount"
 		elog ""
