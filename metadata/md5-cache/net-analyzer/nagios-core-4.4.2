@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst setup
+DEPEND=sys-devel/libtool virtual/mailx perl? ( dev-lang/perl:= ) web? ( app-arch/unzip media-libs/gd[jpeg,png] lighttpd? ( www-servers/lighttpd[php] ) apache2? ( || ( >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_cgi] >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_cgid] >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_fcgid] ) || ( dev-lang/php:*[apache2] dev-lang/php:*[cgi] dev-lang/php:*[fpm] ) ) )
+DESCRIPTION=Nagios core - monitoring daemon, web GUI, and documentation
+EAPI=6
+HOMEPAGE=https://www.nagios.org/
+IUSE=apache2 classicui lighttpd perl +web vim-syntax
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=sys-devel/libtool virtual/mailx perl? ( dev-lang/perl:= ) web? ( app-arch/unzip media-libs/gd[jpeg,png] lighttpd? ( www-servers/lighttpd[php] ) apache2? ( || ( >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_cgi] >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_cgid] >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_fcgid] ) || ( dev-lang/php:*[apache2] dev-lang/php:*[cgi] dev-lang/php:*[fpm] ) ) ) vim-syntax? ( app-vim/nagios-syntax )
+REQUIRED_USE=apache2? ( !lighttpd )
+SLOT=0
+SRC_URI=mirror://sourceforge/nagios/nagios-4.4.2.tar.gz web? ( https://dev.gentoo.org/~mjo/distfiles/nagios-core-gentoo-icons-20141125.tar )
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=1cba7f464dcceaedd129d27fd864c7b4
