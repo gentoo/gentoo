@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PLOCALES="cs da de en_GB es fr hu it ja ko pl ru zh_CN"
+PLOCALES="cs da de en_GB es fr hu it ja ko pl pt_BR ru zh_CN"
 inherit cmake-utils gnome2-utils l10n qmake-utils xdg-utils
 
 DESCRIPTION="Featureful and configurable Qt client for the music player daemon (MPD)"
@@ -46,7 +46,7 @@ COMMON_DEPEND="
 		media-sound/mpg123
 		virtual/ffmpeg
 	)
-	streaming? ( media-video/vlc:0= )
+	streaming? ( dev-qt/qtmultimedia:5 )
 	taglib? (
 		media-libs/taglib[asf(+),mp4(+)]
 		udisks? ( sys-fs/udisks:2 )
@@ -66,6 +66,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-headers.patch"
+	"${FILESDIR}/${P}-opusfile.patch"
 )
 
 src_prepare() {
