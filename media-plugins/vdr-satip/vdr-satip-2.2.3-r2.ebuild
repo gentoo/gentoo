@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit vdr-plugin-2
 
@@ -25,6 +25,9 @@ src_prepare() {
 
 	# c++11 compile fix
 	eapply "${FILESDIR}/${P}_c++11.patch"
+
+	#gcc 7 compile fix
+	eapply "${FILESDIR}/${P}_missinginclude.patch"
 
 	if has_version "dev-libs/tinyxml" ; then
 		sed -e "s:#SATIP_USE_TINYXML:SATIP_USE_TINYXML:" -i Makefile
