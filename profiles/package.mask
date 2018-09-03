@@ -205,17 +205,6 @@ sys-apps/microcode-ctl
 # experimental features and accept a more unstable release.
 >=www-client/chromium-70
 
-# Virgil Dupras <vdupras@gentoo.org> (02 Aug 2018)
-# Django 1.8 is unsupported and insecure. These packages haven't been updated
-# to work with up-to-date django. Removal in 30 days. Bug #662632
-<dev-python/django-1.11
-dev-python/django-compressor
-dev-python/django-openstack-auth
-dev-python/django-tastypie
-dev-python/jingo
-dev-python/Coffin
-dev-python/jsonfield
-
 # Michał Górny <mgorny@gentoo.org> (01 Aug 2018)
 # Multiprocessing versions of gemato.  They are known to hang on some
 # users, so let's keep them masked until somebody figures out what's
