@@ -633,7 +633,7 @@ multilib_src_install_all() {
 }
 
 # Official test instructions:
-# USE='extraengine perl server static-libs' \
+# USE='extraengine perl server' \
 # FEATURES='test userpriv -usersandbox' \
 # ebuild mariadb-X.X.XX.ebuild \
 # digest clean package
