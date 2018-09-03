@@ -58,7 +58,7 @@ src_prepare() {
 		-e '/^MAKEDEPPROG/s:=.*:=$(CC):' \
 		-e $(has noman FEATURES \
 			&& echo '/^install:/s:install_docs::' \
-			|| echo '/^MANDIR=/s:=.*:='${EPREFIX}'/usr/share/man:') \
+			|| echo '/^MANDIR=/s:=.*:='${EPREFIX%/}'/usr/share/man:') \
 		-e "/^DOCDIR/s@\$(BASENAME)@&-${PF}@" \
 		Configurations/unix-Makefile.tmpl \
 		|| die
@@ -78,7 +78,7 @@ src_prepare() {
 
 	# Prefixify Configure shebang (#141906)
 	sed \
-		-e "1s,/usr/bin/env,${EPREFIX}&," \
+		-e "1s,/usr/bin/env,${EPREFIX%/}&," \
 		-i Configure || die
 	# Remove test target when FEATURES=test isn't set
 	if ! use test ; then
@@ -150,8 +150,8 @@ multilib_src_configure() {
 		$(use_ssl sctp) \
 		$(use_ssl tls-heartbeat heartbeats) \
 		$(use_ssl zlib) \
-		--prefix="${EPREFIX}"/usr \
-		--openssldir="${EPREFIX}"${SSL_CNF_DIR} \
+		--prefix="${EPREFIX%/}"/usr \
+		--openssldir="${EPREFIX%/}"${SSL_CNF_DIR} \
 		--libdir=$(get_libdir) \
 		shared threads \
 		|| die
@@ -185,7 +185,13 @@ multilib_src_test() {
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" install
+	# We need to create $D/usr on our own to avoid a race condition #665130
+	if [[ ! -d "${D%/}/usr" ]]; then
+		# We can only create this directory once
+		mkdir "${D%/}"/usr || die
+	fi
+
+	emake DESTDIR="${D%}" install
 }
 
 multilib_src_install_all() {
