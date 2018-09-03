@@ -16,13 +16,19 @@ DESCRIPTION="Capybara aims to simplify the process of integration testing Rack a
 HOMEPAGE="https://github.com/jnicklas/capybara"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
+KEYWORDS="~amd64 ~x86"
 SLOT="3"
 IUSE="test"
 
 DEPEND="${DEPEND} test? ( www-client/firefox )"
 
-ruby_add_bdepend "test? ( dev-ruby/rspec:3 dev-ruby/launchy >=dev-ruby/selenium-webdriver-2.0 dev-ruby/sinatra )"
+ruby_add_bdepend "test? (
+	dev-ruby/rspec:3
+	>=dev-ruby/launchy-2.4.0
+	>=dev-ruby/selenium-webdriver-3.5:3
+	dev-ruby/sinatra:2
+	www-servers/puma
+)"
 
 ruby_add_rdepend "
 	dev-ruby/addressable
@@ -30,7 +36,7 @@ ruby_add_rdepend "
 	>=dev-ruby/nokogiri-1.8:0
 	>=dev-ruby/rack-1.6.0:*
 	>=dev-ruby/rack-test-0.6.3:*
-	dev-ruby/xpath:3"
+	>=dev-ruby/xpath-3.1:3"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/d' -e '/pry/d' -e '1igem "sinatra"' spec/spec_helper.rb || die
