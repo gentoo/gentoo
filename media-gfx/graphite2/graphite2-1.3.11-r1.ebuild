@@ -62,7 +62,8 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		"-DVM_MACHINE_TYPE=direct"
+		# Renamed VM_MACHINE_TYPE to GRAPHITE2_VM_TYPE
+		"-DGRAPHITE2_VM_TYPE=direct"
 		# https://sourceforge.net/p/silgraphite/bugs/49/
 		$([[ ${CHOST} == powerpc*-apple* ]] && \
 			echo "-DGRAPHITE2_NSEGCACHE:BOOL=ON")
