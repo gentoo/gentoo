@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit gnome2-utils meson mono-env python-single-r1 xdg-utils
 
@@ -83,9 +83,10 @@ src_configure() {
 		-Dwith-checksum="$(usex plugin-checksum true false)"
 		-Dwith-fishlim="$(usex plugin-fishlim true false)"
 		-Dwith-lua="$(usex lua lua false)"
-		-Dwith-perl="$(usex perl true false)"
+		-Dwith-perl="$(usex perl "${EPREFIX}"/usr/bin/perl false)"
 		-Dwith-python="$(usex python "${EPYTHON/.*}" false)"
 		-Dwith-sysinfo="$(usex plugin-sysinfo true false)"
+		-Dwith-appdata=false
 	)
 	meson_src_configure
 }
