@@ -12,7 +12,7 @@ HOMEPAGE="https://www.kde.org/applications/education/labplot/"
 
 LICENSE="GPL-2"
 KEYWORDS=""
-IUSE="cantor fftw fits hdf5 netcdf"
+IUSE="cantor fftw fits hdf5 netcdf root"
 
 [[ ${KDE_BUILD_TYPE} != live ]] && S="${WORKDIR}/${P}-kf5"
 
@@ -44,6 +44,10 @@ COMMON_DEPEND="
 	fits? ( sci-libs/cfitsio:= )
 	hdf5? ( sci-libs/hdf5:= )
 	netcdf? ( sci-libs/netcdf:= )
+	root? (
+		app-arch/lz4
+		sys-libs/zlib
+	)
 "
 DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
@@ -68,6 +72,7 @@ src_configure() {
 		-DENABLE_FITS=$(usex fits)
 		-DENABLE_HDF5=$(usex hdf5)
 		-DENABLE_NETCDF=$(usex netcdf)
+		-DENABLE_ROOT=$(usex root)
 	)
 
 	kde5_src_configure
