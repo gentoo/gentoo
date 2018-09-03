@@ -22,16 +22,16 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa ao bluetooth discord-presence doc egl +evdev ffmpeg libav log lto openal portaudio profile pulseaudio +qt5 sdl systemd upnp"
+IUSE="alsa bluetooth discord-presence doc egl +evdev ffmpeg libav log lto profile pulseaudio +qt5 sdl systemd upnp"
 
 RDEPEND="
-	>=media-libs/libsfml-2.1
-	>net-libs/enet-1.3.7
-	>=net-libs/mbedtls-2.1.1:=
 	dev-libs/hidapi:0=
 	dev-libs/lzo:2=
 	dev-libs/pugixml:0=
 	media-libs/libpng:0=
+	media-libs/libsfml
+	net-libs/enet:1.3
+	net-libs/mbedtls
 	net-misc/curl:0=
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
@@ -41,7 +41,6 @@ RDEPEND="
 	virtual/libusb:1
 	virtual/opengl
 	alsa? ( media-libs/alsa-lib )
-	ao? ( media-libs/libao )
 	bluetooth? ( net-wireless/bluez )
 	egl? ( media-libs/mesa[egl] )
 	evdev? (
@@ -52,11 +51,6 @@ RDEPEND="
 		libav? ( media-video/libav:= )
 		!libav? ( media-video/ffmpeg:= )
 	)
-	openal? (
-		media-libs/openal
-		media-libs/libsoundtouch
-	)
-	portaudio? ( media-libs/portaudio )
 	profile? ( dev-util/oprofile )
 	pulseaudio? ( media-sound/pulseaudio )
 	qt5? (
@@ -66,7 +60,7 @@ RDEPEND="
 	)
 	sdl? ( media-libs/libsdl2[haptic,joystick] )
 	systemd? ( sys-apps/systemd:0= )
-	upnp? ( >=net-libs/miniupnpc-1.7 )
+	upnp? ( net-libs/miniupnpc )
 "
 DEPEND="${RDEPEND}
 	app-arch/zip
@@ -77,26 +71,6 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	cmake-utils_src_prepare
-
-	# Remove automatic dependencies to prevent building without flags enabled.
-	if use !alsa; then
-		sed -i -e '/include(FindALSA/d' CMakeLists.txt || die
-	fi
-	if use !ao; then
-		sed -i -e '/check_lib(AO/d' CMakeLists.txt || die
-	fi
-	if use !bluetooth; then
-		sed -i -e '/check_lib(BLUEZ/d' CMakeLists.txt || die
-	fi
-	if use !openal; then
-		sed -i -e '/include(FindOpenAL/d' CMakeLists.txt || die
-	fi
-	if use !portaudio; then
-		sed -i -e '/CMAKE_REQUIRED_LIBRARIES portaudio/d' CMakeLists.txt || die
-	fi
-	if use !pulseaudio; then
-		sed -i -e '/check_lib(PULSEAUDIO/d' CMakeLists.txt || die
-	fi
 
 	# Remove all the bundled libraries that support system-installed
 	# preference. See CMakeLists.txt for conditional 'add_subdirectory' calls.
@@ -141,19 +115,23 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DUSE_SHARED_ENET=ON
-		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
-		-DENCODE_FRAMEDUMPS=$(usex ffmpeg)
-		-DFASTLOG=$(usex log)
-		-DOPROFILING=$(usex profile)
-
+		# Use ccache only when user did set FEATURES=ccache (or similar)
+		# not when ccache binary is present in system (automagic).
+		-DCCACHE_BIN=CCACHE_BIN-NOTFOUND
+		-DENABLE_ALSA=$(usex alsa)
+		-DENABLE_BLUEZ=$(usex bluetooth)
 		-DENABLE_EVDEV=$(usex evdev)
+		-DENCODE_FRAMEDUMPS=$(usex ffmpeg)
 		-DENABLE_LLVM=OFF
 		-DENABLE_LTO=$(usex lto)
+		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_SDL=$(usex sdl)
-
+		-DFASTLOG=$(usex log)
+		-DOPROFILING=$(usex profile)
+		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
 		-DUSE_EGL=$(usex egl)
+		-DUSE_SHARED_ENET=ON
 		-DUSE_UPNP=$(usex upnp)
 	)
 
@@ -176,12 +154,6 @@ src_install() {
 pkg_postinst() {
 	# Add pax markings for hardened systems
 	pax-mark -m "${EPREFIX}"/usr/games/bin/"${PN}"-emu
-
-	if ! use portaudio; then
-		ewarn "If you want microphone capabilities in dolphin-emu, rebuild with"
-		ewarn "USE=\"portaudio\""
-	fi
-
 	gnome2_icon_cache_update
 }
 
