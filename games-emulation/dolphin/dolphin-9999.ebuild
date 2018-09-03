@@ -115,27 +115,24 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DUSE_SHARED_ENET=ON
-		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
-		-DENCODE_FRAMEDUMPS=$(usex ffmpeg)
-		-DFASTLOG=$(usex log)
-		-DOPROFILING=$(usex profile)
-
-		-DENABLE_EVDEV=$(usex evdev)
-		-DENABLE_LLVM=OFF
-		-DENABLE_LTO=$(usex lto)
-		-DENABLE_QT=$(usex qt5)
-		-DENABLE_SDL=$(usex sdl)
-
-		-DUSE_EGL=$(usex egl)
-		-DUSE_UPNP=$(usex upnp)
-
-		-DENABLE_ALSA=$(usex alsa)
-		-DENABLE_BLUEZ=$(usex bluetooth)
 		# Use ccache only when user did set FEATURES=ccache (or similar)
 		# not when ccache binary is present in system (automagic).
 		-DCCACHE_BIN=CCACHE_BIN-NOTFOUND
+		-DENABLE_ALSA=$(usex alsa)
+		-DENABLE_BLUEZ=$(usex bluetooth)
+		-DENABLE_EVDEV=$(usex evdev)
+		-DENCODE_FRAMEDUMPS=$(usex ffmpeg)
+		-DENABLE_LLVM=OFF
+		-DENABLE_LTO=$(usex lto)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
+		-DENABLE_QT=$(usex qt5)
+		-DENABLE_SDL=$(usex sdl)
+		-DFASTLOG=$(usex log)
+		-DOPROFILING=$(usex profile)
+		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
+		-DUSE_EGL=$(usex egl)
+		-DUSE_SHARED_ENET=ON
+		-DUSE_UPNP=$(usex upnp)
 	)
 
 	cmake-utils_src_configure
