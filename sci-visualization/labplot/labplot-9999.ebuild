@@ -37,7 +37,11 @@ COMMON_DEPEND="
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	>=sci-libs/gsl-1.15:=
-	cantor? ( $(add_kdeapps_dep cantor) )
+	cantor? (
+		$(add_frameworks_dep kparts)
+		$(add_frameworks_dep kservice)
+		$(add_kdeapps_dep cantor)
+	)
 	fftw? ( sci-libs/fftw:3.0= )
 	fits? ( sci-libs/cfitsio:= )
 	hdf5? ( sci-libs/hdf5:= )
