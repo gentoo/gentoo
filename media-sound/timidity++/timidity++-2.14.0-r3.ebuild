@@ -18,6 +18,8 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="motif oss nas X gtk vorbis tk slang alsa jack emacs ao selinux speex flac ncurses"
 
+REQUIRED_USE="tk? ( X )"
+
 DEPEND="
 	alsa? ( media-libs/alsa-lib )
 	ao? ( >=media-libs/libao-0.8.5 )
