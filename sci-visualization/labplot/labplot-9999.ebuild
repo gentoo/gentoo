@@ -29,6 +29,7 @@ COMMON_DEPEND="
 	$(add_frameworks_dep ktextwidgets)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
+	$(add_frameworks_dep syntax-highlighting)
 	$(add_qt_dep qtconcurrent)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtprintsupport)
@@ -52,6 +53,7 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
+	sys-devel/bison
 	sys-devel/gettext
 	x11-misc/shared-mime-info
 "
