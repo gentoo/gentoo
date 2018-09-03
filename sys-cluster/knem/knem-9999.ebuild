@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit autotools linux-mod linux-info toolchain-funcs udev multilib
 
@@ -9,7 +9,7 @@ DESCRIPTION="High-Performance Intra-Node MPI Communication"
 HOMEPAGE="http://runtime.bordeaux.inria.fr/knem/"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gforge.inria.fr/git/knem/knem.git"
-	inherit git-2
+	inherit git-r3
 	KEYWORDS=""
 else
 	SRC_URI="http://runtime.bordeaux.inria.fr/knem/download/${P}.tar.gz"
@@ -41,6 +41,7 @@ pkg_setup() {
 src_prepare() {
 	sed 's:driver/linux::g' -i Makefile.am
 	eautoreconf
+	default
 }
 
 src_configure() {
