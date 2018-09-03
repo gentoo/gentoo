@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsql:5[sqlite] dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 || ( kde-frameworks/breeze-icons:5 kde-frameworks/oxygen-icons:* ) sys-libs/zlib virtual/libudev:= cdda? ( media-sound/cdparanoia ) cddb? ( media-libs/libcddb ) cdio? ( dev-libs/libcdio-paranoia ) mtp? ( media-libs/libmtp ) musicbrainz? ( media-libs/musicbrainz:5= ) replaygain? ( media-libs/libebur128 media-sound/mpg123 virtual/ffmpeg ) streaming? ( dev-qt/qtmultimedia:5 ) taglib? ( media-libs/taglib[asf(+),mp4(+)] udisks? ( sys-fs/udisks:2 ) ) zeroconf? ( net-dns/avahi ) dev-qt/qtconcurrent:5 dev-qt/linguist-tools:5 sys-devel/make >=dev-util/cmake-3.9.6 >=sys-apps/sed-4
+DESCRIPTION=Featureful and configurable Qt client for the music player daemon (MPD)
+EAPI=6
+HOMEPAGE=https://github.com/CDrummond/cantata
+IUSE=cdda cddb cdio http-server mtp musicbrainz replaygain streaming taglib udisks zeroconf
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsql:5[sqlite] dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 || ( kde-frameworks/breeze-icons:5 kde-frameworks/oxygen-icons:* ) sys-libs/zlib virtual/libudev:= cdda? ( media-sound/cdparanoia ) cddb? ( media-libs/libcddb ) cdio? ( dev-libs/libcdio-paranoia ) mtp? ( media-libs/libmtp ) musicbrainz? ( media-libs/musicbrainz:5= ) replaygain? ( media-libs/libebur128 media-sound/mpg123 virtual/ffmpeg ) streaming? ( dev-qt/qtmultimedia:5 ) taglib? ( media-libs/taglib[asf(+),mp4(+)] udisks? ( sys-fs/udisks:2 ) ) zeroconf? ( net-dns/avahi ) dev-lang/perl[ithreads]
+REQUIRED_USE=?? ( cdda cdio ) cdda? ( udisks || ( cddb musicbrainz ) ) cddb? ( || ( cdio cdda ) taglib ) cdio? ( udisks || ( cddb musicbrainz ) ) mtp? ( taglib udisks ) musicbrainz? ( || ( cdio cdda ) taglib ) replaygain? ( taglib )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/CDrummond/cantata/releases/download/v2.3.2/cantata-2.3.2.tar.bz2
+_eclasses_=cmake-utils	ec27c4d90ac99a1a0fb77d97bfc597ee	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=76fe31989caac3667eb054713db33036
