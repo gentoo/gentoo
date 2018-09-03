@@ -34,6 +34,11 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 	use debug && append-flags -DDEBUG
 
+	if tc-enables-pie; then
+		# gplc generates its own native ASM; disable PIE
+		append-ldflags -no-pie
+	fi
+
 	cd "${S}"/src
 	econf \
 		CFLAGS_MACHINE="${CFLAGS_MACHINE}" \
