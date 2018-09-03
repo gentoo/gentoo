@@ -302,8 +302,8 @@ amd64		hardened/linux/amd64/selinux				stable
 amd64		hardened/linux/amd64/no-multilib			stable
 amd64		hardened/linux/amd64/no-multilib/selinux		stable
 amd64		hardened/linux/amd64/x32				dev
-arm		hardened/linux/arm/armv7a				dev
 arm		hardened/linux/arm/armv6j				dev
+arm		hardened/linux/arm/armv7a				dev
 ia64		hardened/linux/ia64					dev
 mips		hardened/linux/mips/mipsel/multilib/n32			exp
 mips		hardened/linux/mips/mipsel/multilib/n64			exp
