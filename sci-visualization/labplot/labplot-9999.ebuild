@@ -4,6 +4,7 @@
 EAPI=6
 
 KDE_HANDBOOK="forceoptional"
+KDE_TEST="forceoptional"
 inherit kde5
 
 DESCRIPTION="Scientific data analysis and visualisation based on KDE Frameworks"
@@ -73,6 +74,7 @@ src_configure() {
 		-DENABLE_HDF5=$(usex hdf5)
 		-DENABLE_NETCDF=$(usex netcdf)
 		-DENABLE_ROOT=$(usex root)
+		-DENABLE_TEST=$(usex test)
 	)
 
 	kde5_src_configure
