@@ -36,12 +36,15 @@ RESTRICT=test
 
 S="${WORKDIR}/${P/_/-}"
 
+PATCHES=(
+	"${FILESDIR}"/chronyd-systemd-gentoo.patch
+)
+
 src_prepare() {
+	default
 	sed -i \
 		-e 's:/etc/chrony\.conf:/etc/chrony/chrony.conf:g' \
 		doc/* examples/* || die
-
-	default
 }
 
 src_configure() {
@@ -116,6 +119,5 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/chrony-2.4-r1.logrotate chrony
 
-	systemd_newunit "${FILESDIR}"/chronyd.service-r2 chronyd.service
-	systemd_enable_ntpunit 50-chrony chronyd.service
+	systemd_dounit examples/chronyd.service
 }

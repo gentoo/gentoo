@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,13 +33,16 @@ RDEPEND="
 RESTRICT=test
 S="${WORKDIR}/${P/_/-}"
 
+PATCHES=(
+	"${FILESDIR}"/chronyd-systemd-gentoo.patch
+)
+
 src_prepare() {
+	default
 	sed -i \
 		-e 's:/etc/chrony\.:/etc/chrony/chrony.:g' \
 		-e 's:/var/run:/run:g' \
 		conf.c doc/*.adoc examples/* || die
-
-	default
 }
 
 src_configure() {
@@ -111,6 +114,5 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/chrony-2.4-r1.logrotate chrony
 
-	systemd_newunit "${FILESDIR}"/chronyd.service-r2 chronyd.service
-	systemd_enable_ntpunit 50-chrony chronyd.service
+	systemd_dounit examples/chronyd.service
 }
