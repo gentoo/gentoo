@@ -17,8 +17,9 @@ case ${PV} in
 	;;
 *)
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/peak3d/inputstream.adaptive/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/inputstream.adaptive-${PV}"
+	GIT_COMMIT="c51b9a9b58a645f820883e6d99982277fc58aac5"
+	SRC_URI="https://codeload.github.com/peak3d/inputstream.adaptive/tar.gz/${GIT_COMMIT} -> ${P}.tar.gz"
+	S="${WORKDIR}/inputstream.adaptive-${GIT_COMMIT}"
 	;;
 esac
 
@@ -28,8 +29,8 @@ IUSE=""
 
 DEPEND="
 	dev-libs/expat
-	~media-tv/kodi-9999
-	~media-libs/kodi-platform-9999
+	=media-tv/kodi-17*
+	=media-libs/kodi-platform-17*
 	=dev-libs/libplatform-2*
 	"
 RDEPEND="
