@@ -3,9 +3,9 @@
 
 EAPI="6"
 
-inherit eutils flag-o-matic multilib toolchain-funcs
+inherit flag-o-matic multilib toolchain-funcs
 
-MY_PN=${PN}src
+MY_PN="${PN}src"
 
 DESCRIPTION="Uncompress rar files"
 HOMEPAGE="https://www.rarlab.com/rar_add.htm"
