@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${P}-cython-022.patch )
+PATCHES=( "${FILESDIR}"/${P}-cython-0.22.patch )
 
 src_prepare() {
 	default

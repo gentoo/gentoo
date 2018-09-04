@@ -1,8 +1,6 @@
-diff --git a/Makefile.am b/Makefile.am
-index 6762b97..c0cc699 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -47,19 +47,19 @@ pkgpyexecdir = $(pyexecdir)/cangjie
+@@ -47,19 +47,19 @@
  
  src/cangjie/_core.c: src/cangjie/_core.pyx src/cangjie/_core.pxd
  	$(MKDIR_P) src/cangjie
