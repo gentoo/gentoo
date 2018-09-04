@@ -5,15 +5,15 @@ EAPI=6
 
 inherit bash-completion-r1 llvm multiprocessing toolchain-funcs
 
-BV=0.25.1
-BV_AMD64=${BV}-1-linux-x86_64
-BV_X86=${BV}-1-linux-i686
+BV=0.25.1-1
+BV_AMD64=${BV}-linux-x86_64
+BV_X86=${BV}-linux-i686
 
 DESCRIPTION="The Crystal Programming Language"
 HOMEPAGE="https://crystal-lang.org"
 SRC_URI="https://github.com/crystal-lang/crystal/archive/${PV}.tar.gz -> ${P}.tar.gz
-	amd64? ( https://github.com/crystal-lang/crystal/releases/download/${BV/}/crystal-${BV_AMD64}.tar.gz )
-	x86? ( https://github.com/crystal-lang/crystal/releases/download/${BV}/crystal-${BV_X86}.tar.gz )"
+	amd64? ( https://github.com/crystal-lang/crystal/releases/download/${BV/-*}/crystal-${BV_AMD64}.tar.gz )
+	x86? ( https://github.com/crystal-lang/crystal/releases/download/${BV/-*}/crystal-${BV_X86}.tar.gz )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
