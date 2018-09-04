@@ -23,7 +23,7 @@ IUSE="dbus +foomatic ipp_autosetup jpeg ldap pclm pdf perl png +postscript stati
 
 RDEPEND="
 	>=app-text/poppler-0.32:=[cxx,jpeg?,lcms,tiff?,utils]
-	>=app-text/qpdf-3.0.2:=
+	>=app-text/qpdf-8.1.0:=
 	dev-libs/glib:2
 	media-libs/fontconfig
 	media-libs/freetype:2
@@ -36,7 +36,7 @@ RDEPEND="
 	foomatic? ( !net-print/foomatic-filters )
 	jpeg? ( virtual/jpeg:0 )
 	ldap? ( net-nds/openldap )
-	pclm? ( >=app-text/qpdf-7.0_beta1 )
+	pclm? ( >=app-text/qpdf-8.1.0:= )
 	pdf? ( app-text/mupdf )
 	perl? ( dev-lang/perl:= )
 	png? ( media-libs/libpng:0= )
