@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=app-arch/brotli app-arch/bzip2 app-arch/xz-utils dev-db/sqlite dev-libs/openssl:0= >=dev-libs/boost-1.66:0=[context] net-misc/curl sys-libs/libseccomp sys-libs/zlib gc? ( dev-libs/boehm-gc[cxx] ) doc? ( dev-libs/libxml2 dev-libs/libxslt app-text/docbook-xsl-stylesheets ) sodium? ( dev-libs/libsodium:0= ) >=sys-devel/bison-2.6 >=sys-devel/flex-2.5.35 >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A purely functional package manager
+EAPI=6
+HOMEPAGE=https://nixos.org/nix
+IUSE=+etc_profile +gc doc sodium
+LICENSE=LGPL-2.1
+RDEPEND=app-arch/brotli app-arch/bzip2 app-arch/xz-utils dev-db/sqlite dev-libs/openssl:0= >=dev-libs/boost-1.66:0=[context] net-misc/curl sys-libs/libseccomp sys-libs/zlib gc? ( dev-libs/boehm-gc[cxx] ) doc? ( dev-libs/libxml2 dev-libs/libxslt app-text/docbook-xsl-stylesheets ) sodium? ( dev-libs/libsodium:0= )
+SLOT=0
+SRC_URI=http://nixos.org/releases/nix/nix-2.1/nix-2.1.tar.xz
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	0081a71a261724730ec4c248494f044d	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=5752ba87031e46f6c3f7d20bb22e59f8
