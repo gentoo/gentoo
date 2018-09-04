@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=!sys-cluster/torque !net-analyzer/slurm !net-analyzer/sinfo || ( sys-cluster/pmix[-pmi] >=sys-cluster/openmpi-2.0.0 ) mysql? ( virtual/mysql ) munge? ( sys-auth/munge ) pam? ( virtual/pam ) ssl? ( dev-libs/openssl:0= ) lua? ( dev-lang/lua:0= ) !lua? ( !dev-lang/lua ) ipmi? ( sys-libs/freeipmi ) json? ( dev-libs/json-c:= ) amd64? ( netloc? ( sys-apps/netloc ) ) hdf5? ( sci-libs/hdf5:= ) numa? ( sys-process/numactl ) ofed? ( sys-fabric/ofed ) X? ( net-libs/libssh2 ) >=sys-apps/hwloc-1.1.1-r1 sys-libs/ncurses:0= app-arch/lz4:0= sys-libs/readline:0= html? ( sys-apps/man2html ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-lang/perl:= virtual/pkgconfig
+DESCRIPTION=A Highly Scalable Resource Manager
+EAPI=6
+HOMEPAGE=https://www.schedmd.com
+IUSE=debug hdf5 html ipmi json lua multiple-slurmd +munge mysql netloc numa ofed pam perl ssl static-libs torque X
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!sys-cluster/torque !net-analyzer/slurm !net-analyzer/sinfo || ( sys-cluster/pmix[-pmi] >=sys-cluster/openmpi-2.0.0 ) mysql? ( virtual/mysql ) munge? ( sys-auth/munge ) pam? ( virtual/pam ) ssl? ( dev-libs/openssl:0= ) lua? ( dev-lang/lua:0= ) !lua? ( !dev-lang/lua ) ipmi? ( sys-libs/freeipmi ) json? ( dev-libs/json-c:= ) amd64? ( netloc? ( sys-apps/netloc ) ) hdf5? ( sci-libs/hdf5:= ) numa? ( sys-process/numactl ) ofed? ( sys-fabric/ofed ) X? ( net-libs/libssh2 ) >=sys-apps/hwloc-1.1.1-r1 sys-libs/ncurses:0= app-arch/lz4:0= sys-libs/readline:0= dev-libs/libcgroup dev-lang/perl:=
+REQUIRED_USE=torque? ( perl )
+RESTRICT=primaryuri test
+SLOT=0
+SRC_URI=https://download.schedmd.com/slurm/slurm-18.08.0.tar.bz2
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	0081a71a261724730ec4c248494f044d	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	pam	3e788d86170dfcd5b06824d898315e18	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce	prefix	e51c7882b7b721e54e684f7eb143cbfe	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=25efa282b1ccba9d4faf0077b30c2fd5
