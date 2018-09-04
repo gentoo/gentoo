@@ -38,9 +38,8 @@ S="${WORKDIR}/${P/_/-}"
 
 src_prepare() {
 	sed -i \
-		-e 's:/etc/chrony\.:/etc/chrony/chrony.:g' \
-		-e 's:/var/run:/run:g' \
-		conf.c doc/*.man.in examples/* || die
+		-e 's:/etc/chrony\.conf:/etc/chrony/chrony.conf:g' \
+		doc/* examples/* || die
 
 	default
 }
@@ -75,12 +74,13 @@ src_configure() {
 		$(usex rtc '' --disable-rtc) \
 		${CHRONY_EDITLINE} \
 		${EXTRA_ECONF} \
-		--docdir=/usr/share/doc/${PF} \
 		--chronysockdir=/run/chrony \
+		--disable-sechash \
+		--docdir=/usr/share/doc/${PF} \
 		--mandir=/usr/share/man \
 		--prefix=/usr \
 		--sysconfdir=/etc/chrony \
-		--disable-sechash \
+		--with-pidfile="${EPREFIX}/run/chrony/chronyd.pid"
 		--without-nss \
 		--without-tomcrypt
 	"
@@ -97,7 +97,7 @@ src_compile() {
 src_install() {
 	default
 
-	newinitd "${FILESDIR}"/chronyd.init-r1 chronyd
+	newinitd "${FILESDIR}"/chronyd.init-r2 chronyd
 	newconfd "${FILESDIR}"/chronyd.conf chronyd
 
 	insinto /etc/${PN}
