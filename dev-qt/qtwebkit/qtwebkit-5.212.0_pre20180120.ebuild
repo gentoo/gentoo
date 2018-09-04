@@ -106,12 +106,14 @@ src_configure() {
 	local mycmakeargs=(
 		-DPORT=Qt
 		-DENABLE_API_TESTS=OFF
+		-DENABLE_TOOLS=OFF
 		-DENABLE_GEOLOCATION=$(usex geolocation)
 		-DUSE_GSTREAMER=$(usex gstreamer)
 		-DENABLE_JIT=$(usex jit)
 		-DUSE_QT_MULTIMEDIA=$(usex multimedia)
 		-DENABLE_NETSCAPE_PLUGIN_API=$(usex nsplugin)
 		-DENABLE_OPENGL=$(usex opengl)
+		-DENABLE_PRINT_SUPPORT=$(usex printsupport)
 		-DENABLE_DEVICE_ORIENTATION=$(usex orientation)
 		-DENABLE_WEBKIT2=$(usex qml)
 		$(cmake-utils_use_find_package webp WebP)
