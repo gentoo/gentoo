@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit gnome2-utils python-single-r1
 
-DESCRIPTION="Hangul engine for IBus"
+DESCRIPTION="Korean Hangul engine for IBus"
 HOMEPAGE="https://github.com/libhangul/ibus-hangul/wiki"
 SRC_URI="https://github.com/libhangul/${PN}/releases/download/${PV}/${P}.tar.gz"
 
