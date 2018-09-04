@@ -46,15 +46,13 @@ src_prepare() {
 src_install() {
 	dobin ddclient
 
-	newinitd "${FILESDIR}"/ddclient.initd-r5 ddclient
-	systemd_newunit "${FILESDIR}"/ddclient.service-r1 ddclient
-
 	insinto /etc/ddclient
 	insopts -m 0600 -o ddclient -g ddclient
 	newins sample-etc_ddclient.conf ddclient.conf
 
 	newinitd "${FILESDIR}"/ddclient.initd-r5 ddclient
-	systemd_dounit "${FILESDIR}"/ddclient.service
+	systemd_newunit "${FILESDIR}"/ddclient.service-r1 ddclient.service
+	systemd_newtmpfilesd "${FILESDIR}"/ddclient.tmpfiles ddclient.conf
 
 	dodoc Change* README* RELEASENOTE TODO UPGRADE
 
