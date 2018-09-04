@@ -106,6 +106,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DPORT=Qt
 		-DENABLE_API_TESTS=OFF
+		-DENABLE_TOOLS=OFF
 		-DENABLE_GEOLOCATION=$(usex geolocation)
 		-DUSE_GSTREAMER=$(usex gstreamer)
 		-DENABLE_JIT=$(usex jit)
