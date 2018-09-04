@@ -67,11 +67,8 @@ src_install() {
 	exeinto /opt/teamspeak3-client/soundbackends
 	doexe soundbackends/*.so
 
-	local folders=( "gfx" "html" "resources" "sound" "styles" "translations" )
-	for folder in ${folders[@]}; do
-		insinto /opt/teamspeak3-client
-		doins -r ${folder}
-	done
+	insinto /opt/teamspeak3-client
+	doins -r gfx html resources sound styles translations
 
 	dosym ../../usr/$(get_libdir)/qt5/libexec/QtWebEngineProcess /opt/teamspeak3-client/QtWebEngineProcess
 
