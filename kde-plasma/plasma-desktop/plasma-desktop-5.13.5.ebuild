@@ -124,6 +124,8 @@ RDEPEND="${COMMON_DEPEND}
 	!kde-plasma/systemsettings:4
 "
 
+PATCHES=( "${FILESDIR}/${P}-activityswitcher.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package appstream AppStreamQt)
