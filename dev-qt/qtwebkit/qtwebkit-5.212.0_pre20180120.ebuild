@@ -113,6 +113,7 @@ src_configure() {
 		-DUSE_QT_MULTIMEDIA=$(usex multimedia)
 		-DENABLE_NETSCAPE_PLUGIN_API=$(usex nsplugin)
 		-DENABLE_OPENGL=$(usex opengl)
+		-DENABLE_PRINT_SUPPORT=$(usex printsupport)
 		-DENABLE_DEVICE_ORIENTATION=$(usex orientation)
 		-DENABLE_WEBKIT2=$(usex qml)
 		$(cmake-utils_use_find_package webp WebP)
