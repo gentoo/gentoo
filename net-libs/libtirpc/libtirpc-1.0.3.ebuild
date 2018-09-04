@@ -27,7 +27,6 @@ PATCHES=(
 src_prepare() {
 	cp -r "${WORKDIR}"/tirpc "${S}"/ || die
 	default
-	eapply_user
 	eautoreconf
 }
 
