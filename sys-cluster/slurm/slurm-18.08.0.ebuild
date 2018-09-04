@@ -8,12 +8,13 @@ if [[ ${PV} == *9999* ]]; then
 	INHERIT_GIT="git-r3"
 	SRC_URI=""
 	KEYWORDS=""
+	MY_P="${P}"
 else
-	inherit versionator
+	inherit eapi7-ver
 	if [[ ${PV} == *pre* || ${PV} == *rc* ]]; then
-		MY_PV=$(replace_version_separator 3 '-0.') # pre-releases or release-candidate
+		MY_PV=$(ver_rs '-0.') # pre-releases or release-candidate
 	else
-		MY_PV=$(replace_version_separator 3 '-') # stable releases
+		MY_PV=$(ver_rs 3 '-') # stable releases
 	fi
 	MY_P="${PN}-${MY_PV}"
 	INHERIT_GIT=""
@@ -22,35 +23,46 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-inherit autotools bash-completion-r1 eutils pam perl-module prefix toolchain-funcs user ${INHERIT_GIT}
+inherit autotools bash-completion-r1 eutils pam perl-module prefix toolchain-funcs user systemd ${INHERIT_GIT}
 
 DESCRIPTION="A Highly Scalable Resource Manager"
 HOMEPAGE="https://www.schedmd.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug lua multiple-slurmd +munge mysql pam perl ssl static-libs torque X"
+IUSE="debug hdf5 html ipmi json lua multiple-slurmd +munge mysql netloc numa ofed pam perl ssl static-libs torque X"
 
-DEPEND="
+CDEPEND="
 	!sys-cluster/torque
 	!net-analyzer/slurm
 	!net-analyzer/sinfo
-	sys-cluster/pmix[-pmi]
+	|| ( sys-cluster/pmix[-pmi] >=sys-cluster/openmpi-2.0.0 )
 	mysql? ( virtual/mysql )
 	munge? ( sys-auth/munge )
 	pam? ( virtual/pam )
 	ssl? ( dev-libs/openssl:0= )
 	lua? ( dev-lang/lua:0= )
 	!lua? ( !dev-lang/lua )
+	ipmi? ( sys-libs/freeipmi )
+	json? ( dev-libs/json-c:= )
+	amd64? ( netloc? ( sys-apps/netloc ) )
+	hdf5? ( sci-libs/hdf5:= )
+	numa? ( sys-process/numactl )
+	ofed? ( sys-fabric/ofed )
 	X? ( net-libs/libssh2 )
-	>=sys-apps/hwloc-1.1.1-r1"
-RDEPEND="${DEPEND}
+	>=sys-apps/hwloc-1.1.1-r1
+	sys-libs/ncurses:0=
+	app-arch/lz4:0=
+	sys-libs/readline:0="
+DEPEND="${CDEPEND}
+	html? ( sys-apps/man2html )"
+RDEPEND="${CDEPEND}
 	dev-libs/libcgroup"
 
 REQUIRED_USE="torque? ( perl )"
 
-LIBSLURM_PERL_S="${WORKDIR}/${P}/contribs/perlapi/libslurm/perl"
-LIBSLURMDB_PERL_S="${WORKDIR}/${P}/contribs/perlapi/libslurmdb/perl"
+LIBSLURM_PERL_S="${WORKDIR}/${MY_P}/contribs/perlapi/libslurm/perl"
+LIBSLURMDB_PERL_S="${WORKDIR}/${MY_P}/contribs/perlapi/libslurmdb/perl"
 
 RESTRICT="primaryuri test"
 
@@ -60,7 +72,7 @@ PATCHES=(
 
 src_unpack() {
 	if [[ ${PV} == *9999* ]]; then
-		git-2_src_unpack
+		git-r3_src_unpack
 	else
 		default
 	fi
@@ -76,10 +88,13 @@ src_prepare() {
 	default
 
 	# pids should go to /var/run/slurm
-	sed -e "s:/var/run/slurmctld.pid:${EPREFIX}/var/run/slurm/slurmctld.pid:g" \
-		-e "s:/var/run/slurmd.pid:${EPREFIX}/var/run/slurm/slurmd.pid:g" \
+	sed -e "s:/var/run/slurmctld.pid:${EPREFIX}/run/slurm/slurmctld.pid:g" \
+		-e "s:/var/run/slurmd.pid:${EPREFIX}/run/slurm/slurmd.pid:g" \
 		-i "${S}/etc/slurm.conf.example" \
 			|| die "Can't sed for /var/run/slurmctld.pid"
+	sed -i "s:/var/run/slurmdbd.pid:${EPREFIX}/run/slurm/slurmdbd.pid:g" \
+		-i "${S}/etc/slurmdbd.conf.example" \
+			|| die "Can't sed for /var/run/slurmdbd.pid"
 	# also state dirs are in /var/spool/slurm
 	sed -e "s:StateSaveLocation=*.:StateSaveLocation=${EPREFIX}/var/spool/slurm:g" \
 		-e "s:SlurmdSpoolDir=*.:SlurmdSpoolDir=${EPREFIX}/var/spool/slurm/slurmd:g" \
@@ -89,26 +104,35 @@ src_prepare() {
 	sed -e 's:/tmp:/var/tmp:g' \
 		-i "${S}/etc/slurm.conf.example" \
 			|| die "Can't sed for StateSaveLocation=*./tmp"
+	# gentooify systemd services
+	sed -e 's:sysconfig/.*:conf.d/slurm:g' \
+		-e 's:var/run/:run/slurm/:g' \
+		-i "${S}/etc"/*.service.in \
+			|| die "Can't sed systemd services for sysconfig or var/run/"
 
 	hprefixify auxdir/{ax_check_zlib,x_ac_{lz4,ofed,munge}}.m4
 	eautoreconf
 }
 
 src_configure() {
-	local myconf=(
-			--sysconfdir="${EPREFIX}/etc/${PN}"
-			--with-hwloc="${EPREFIX}/usr"
-			--docdir="${EPREFIX}/usr/share/doc/${P}"
-			--htmldir="${EPREFIX}/usr/share/doc/${P}"
-			)
 	use debug || myconf+=( --disable-debug )
+	local myconf=(
+		--sysconfdir="${EPREFIX}/etc/${PN}"
+		--with-hwloc="${EPREFIX}/usr"
+		--docdir="${EPREFIX}/usr/share/doc/${P}"
+		--htmldir="${EPREFIX}/usr/share/doc/${P}"
+	)
 	use pam && myconf+=( --with-pam_dir=$(getpam_mod_dir) )
 	use mysql || myconf+=( --without-mysql_config )
+	use amd64 && myconf+=( $(use_with netloc) )
 	econf "${myconf[@]}" \
 		$(use_enable pam) \
 		$(use_enable X x11) \
 		$(use_with ssl) \
 		$(use_with munge) \
+		$(use_with json) \
+		$(use_with hdf5) \
+		$(use_with ofed) \
 		$(use_enable static-libs static) \
 		$(use_enable multiple-slurmd)
 
@@ -173,20 +197,28 @@ src_install() {
 	exeinto /etc/slurm
 	doexe \
 		etc/slurm.epilog.clean
+	keepdir /etc/slurm/layouts.d
+	insinto /etc/slurm/layouts.d
+	newins etc/layouts.d.power.conf.example power.conf.example
+	newins etc/layouts.d.power_cpufreq.conf.example power_cpufreq.conf.example
+	newins etc/layouts.d.unit.conf.example unit.conf.example
 	# install init.d files
-	newinitd "$(prefixify_ro ${FILESDIR}/slurmd.initd)" slurmd
-	newinitd "$(prefixify_ro ${FILESDIR}/slurmctld.initd)" slurmctld
-	newinitd "$(prefixify_ro ${FILESDIR}/slurmdbd.initd)" slurmdbd
+	newinitd "$(prefixify_ro "${FILESDIR}/slurmd.initd")" slurmd
+	newinitd "$(prefixify_ro "${FILESDIR}/slurmctld.initd")" slurmctld
+	newinitd "$(prefixify_ro "${FILESDIR}/slurmdbd.initd")" slurmdbd
 	# install conf.d files
 	newconfd "${FILESDIR}/slurm.confd" slurm
-	# Install logrotate file
+	# install logrotate file
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/logrotate" slurm
-
+	# install bashcomp
 	newbashcomp contribs/slurm_completion_help/slurm_completion.sh scontrol
 	bashcomp_alias scontrol \
 		sreport sacctmgr squeue scancel sshare sbcast sinfo \
 		sprio sacct salloc sbatch srun sattach sdiag sstat
+	# install systemd files
+	systemd_newtmpfilesd "${FILESDIR}/slurm.tmpfiles" slurm.conf
+	systemd_dounit etc/slurmd.service etc/slurmctld.service etc/slurmdbd.service
 }
 
 pkg_preinst() {
@@ -197,8 +229,8 @@ pkg_preinst() {
 
 create_folders_and_fix_permissions() {
 	einfo "Fixing permissions in ${@}"
-	mkdir -p ${@}
-	chown -R ${PN}:${PN} ${@}
+	mkdir -p ${@} || die
+	chown -R ${PN}:${PN} ${@} || die
 }
 
 pkg_postinst() {
@@ -207,11 +239,12 @@ pkg_postinst() {
 		"${EROOT}"var/${PN}
 		"${EROOT}"var/spool/${PN}/slurmd
 		"${EROOT}"var/spool/${PN}
-		"${EROOT}"var/run/${PN}
 		"${EROOT}"var/log/${PN}
 		/var/tmp/${PN}/${PN}d
 		/var/tmp/${PN}
-		)
+		/run/${PN}
+	)
+	local folder_path
 	for folder_path in ${paths[@]}; do
 		create_folders_and_fix_permissions $folder_path
 	done
@@ -223,16 +256,12 @@ pkg_postinst() {
 	echo
 	elog "For cgroup support, please see https://www.schedmd.com/slurmdocs/cgroup.conf.html"
 	elog "Your kernel must be compiled with the wanted cgroup feature:"
-	elog "    General setup  --->"
-	elog "        [*] Control Group support  --->"
-	elog "            [*]   Freezer cgroup subsystem"
-	elog "            [*]   Device controller for cgroups"
-	elog "            [*]   Cpuset support"
-	elog "            [*]   Simple CPU accounting cgroup subsystem"
-	elog "            [*]   Resource counters"
-	elog "            [*]     Memory Resource Controller for Control Groups"
-	elog "            [*]   Group CPU scheduler  --->"
-	elog "                [*]   Group scheduling for SCHED_OTHER"
+	elog "    For the proctrack plugin:"
+	elog "        freezer"
+	elog "    For the task plugin:"
+	elog "        cpuset, memory, devices"
+	elog "    For the accounting plugin:"
+	elog "        cpuacct, memory, blkio"
 	elog "Then, set these options in /etc/slurm/slurm.conf:"
 	elog "    ProctrackType=proctrack/cgroup"
 	elog "    TaskPlugin=task/cgroup"
