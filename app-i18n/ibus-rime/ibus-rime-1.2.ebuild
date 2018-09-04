@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-DESCRIPTION="Rime Input Method Engine for IBus"
+DESCRIPTION="Chinese Rime Input Method Engine for IBus"
 HOMEPAGE="https://rime.im/ https://github.com/rime/ibus-rime"
 SRC_URI="http://dl.bintray.com/lotem/rime/${P}.tar.gz"
 
