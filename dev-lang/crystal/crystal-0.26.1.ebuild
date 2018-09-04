@@ -5,15 +5,15 @@ EAPI=6
 
 inherit bash-completion-r1 llvm multiprocessing toolchain-funcs
 
-BV=0.26.0
-BV_AMD64=${BV}-1-linux-x86_64
-BV_X86=${BV}-1-linux-i686
+BV=0.26.0-1
+BV_AMD64=${BV}-linux-x86_64
+BV_X86=${BV}-linux-i686
 
 DESCRIPTION="The Crystal Programming Language"
 HOMEPAGE="https://crystal-lang.org"
 SRC_URI="https://github.com/crystal-lang/crystal/archive/${PV}.tar.gz -> ${P}.tar.gz
-	amd64? ( https://github.com/crystal-lang/crystal/releases/download/${BV/}/crystal-${BV_AMD64}.tar.gz )
-	x86? ( https://github.com/crystal-lang/crystal/releases/download/${BV}/crystal-${BV_X86}.tar.gz )"
+	amd64? ( https://github.com/crystal-lang/crystal/releases/download/${BV/-*}/crystal-${BV_AMD64}.tar.gz )
+	x86? ( https://github.com/crystal-lang/crystal/releases/download/${BV/-*}/crystal-${BV_X86}.tar.gz )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -53,6 +53,12 @@ src_prepare() {
 }
 
 src_compile() {
+	local bootstrap_path=${WORKDIR}/${PN}-${BV}/bin
+	if [[ ! -d ${bootstrap_path} ]]; then
+		eerror "Binary tarball does not contain expected directory:"
+		die "'${bootstrap_path}' path does not exist."
+	fi
+
 	emake \
 		$(usex debug "" release=1) \
 		progress=true \
@@ -64,7 +70,7 @@ src_compile() {
 		CXX=$(tc-getCXX) \
 		AR=$(tc-getAR) \
 		\
-		PATH="${WORKDIR}"/${PN}-${BV}/bin:"${PATH}" \
+		PATH="${bootstrap_path}:${PATH}" \
 		CRYSTAL_PATH=src \
 		CRYSTAL_CONFIG_VERSION=${PV} \
 		CRYSTAL_CONFIG_PATH="lib:${EPREFIX}/usr/$(get_libdir)/crystal"
