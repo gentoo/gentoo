@@ -24,7 +24,7 @@ fi
 LICENSE="Boost-1.0"
 SLOT="0"
 
-IUSE="bladerf hackrf python rtlsdr uhd"
+IUSE="bladerf hackrf python rtlsdr plutosdr uhd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
@@ -34,6 +34,7 @@ DEPEND="${RDEPEND}
 PDEPEND="bladerf? ( net-wireless/soapybladerf )
 		hackrf? ( net-wireless/soapyhackrf )
 		rtlsdr? ( net-wireless/soapyrtlsdr )
+		plutosdr? ( net-wireless/soapyplutosdr )
 		uhd? ( net-wireless/soapyuhd )"
 
 src_configure() {
