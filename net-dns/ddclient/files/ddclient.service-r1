@@ -4,7 +4,7 @@ ConditionPathExists=/etc/ddclient/ddclient.conf
 Description=DDclient
 
 [Service]
-ExecStart=/usr/sbin/ddclient --foreground
+ExecStart=/usr/bin/ddclient --foreground
 Group=ddclient
 Type=simple
 User=ddclient
