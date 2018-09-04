@@ -12,10 +12,8 @@ inherit kde5
 
 DESCRIPTION="Integrated Development Environment, supporting KF5/Qt, C/C++ and much more"
 LICENSE="GPL-2 LGPL-2"
-IUSE="cvs +gdbui hex +plasma +qmake reviewboard subversion webkit +welcomepage"
+IUSE="cvs +gdbui hex +plasma +qmake reviewboard subversion webkit"
 [[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="~amd64 ~x86"
-
-REQUIRED_USE="test? ( welcomepage )"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep karchive)
@@ -49,7 +47,7 @@ COMMON_DEPEND="
 	$(add_frameworks_dep threadweaver)
 	$(add_kdeapps_dep libkomparediff2)
 	$(add_qt_dep qtdbus)
-	$(add_qt_dep qtdeclarative)
+	$(add_qt_dep qtdeclarative 'widgets')
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qthelp)
 	$(add_qt_dep qtnetwork)
@@ -74,7 +72,6 @@ COMMON_DEPEND="
 	)
 	webkit? ( $(add_qt_dep qtwebkit) )
 	!webkit? ( $(add_qt_dep qtwebengine 'widgets') )
-	welcomepage? ( $(add_qt_dep qtdeclarative 'widgets') )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
@@ -109,7 +106,6 @@ src_configure() {
 		$(cmake-utils_use_find_package reviewboard KF5Purpose)
 		$(cmake-utils_use_find_package subversion SubversionLibrary)
 		$(cmake-utils_use_find_package !webkit Qt5WebEngineWidgets)
-		$(cmake-utils_use_find_package welcomepage Qt5QuickWidgets)
 	)
 
 	use reviewboard || mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KDEExperimentalPurpose=ON )
