@@ -28,5 +28,8 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
+	local DOCS=( ChangeLog README )
+	einstalldocs
+
 	find "${ED}" -name "*.la" -delete || die
 }
