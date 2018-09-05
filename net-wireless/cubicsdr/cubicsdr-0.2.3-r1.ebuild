@@ -7,7 +7,7 @@ WX_GTK_VER="3.0"
 inherit cmake-utils wxwidgets
 
 MY_P="CubicSDR"
-SRC_URI="https://github.com/cjcliffe/${MY_P}/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/cjcliffe/${MY_P}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}-${PV}"
 
 DESCRIPTION="Cross-Platform and Open-Source Software Defined Radio Application"
