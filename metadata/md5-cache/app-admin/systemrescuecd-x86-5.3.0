@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=isohybrid? ( >=sys-boot/syslinux-4 )
+DESCRIPTION=The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+EAPI=6
+HOMEPAGE=http://www.sysresccd.org/
+IUSE=+isohybrid
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=5.3.0
+SRC_URI=mirror://sourceforge/systemrescuecd/sysresccd-x86/5.3.0/systemrescuecd-x86-5.3.0.iso
+_md5_=b1199bbecf4da8961eb1e01c5c78ddda
