@@ -36,7 +36,6 @@ S="${WORKDIR}/meshlab-${PV}/src"
 
 PATCHES=(
 		"${FILESDIR}/${PV}/0001-set-shader-and-texture-paths.patch"
-		"${FILESDIR}/${PV}/0001-update-1.3.3-pluginmanager.patch.patch"
 		#remove ot working plugins
 		"${FILESDIR}/${PV}/remove-edit_mutualcorrs.patch"
 		"${FILESDIR}/${PV}/remove-io_TXT.patch"
@@ -56,6 +55,10 @@ PATCHES=(
 		"${FILESDIR}/${PV}/0001-use-external-glew.patch"
 		#cause gnu stack quickstart related qa
 		"${FILESDIR}/${PV}/0001-remove-not-sane-plugins.patch"
+		"${FILESDIR}/${PV}/${P}-fix-plugins-path.patch"
+		"${FILESDIR}/${PV}/${P}-align1.patch"
+		"${FILESDIR}/${PV}/${P}-align2.patch"
+		"${FILESDIR}/${PV}/${P}-asString.patch"
 	)
 
 src_prepare(){
@@ -75,6 +78,10 @@ src_prepare(){
 	#rm -r "external"
 	rm -r "distrib/plugins/U3D_W32" || die
 	rm -r "distrib/plugins/U3D_OSX" || die
+
+	# Fix bug 638796
+	cd "${WORKDIR}" || die
+	eapply "${FILESDIR}/${PV}/${P}-remove-header.patch"
 }
 
 src_configure() {
