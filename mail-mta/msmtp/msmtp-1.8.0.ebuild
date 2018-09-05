@@ -14,6 +14,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="daemon doc idn libsecret +mta nls sasl ssl vim-syntax"
 
+# fcaps.eclass unconditionally defines "filecaps" USE flag which we need for
+# USE="daemon" in order to set the caps we need.
+REQUIRED_USE="daemon? ( filecaps )"
+
 # Upstream discourages usage of openssl. See also
 # https://marlam.de/msmtp/news/openssl-discouraged/
 DEPEND="
@@ -82,7 +86,7 @@ src_install() {
 	default
 
 	if use daemon ; then
-		fcaps CAP_NET_BIND_SERVICE "${ED%/}"/usr/bin/msmtpd
+		fcaps CAP_NET_BIND_SERVICE usr/bin/msmtpd
 		newinitd "${FILESDIR}"/msmtpd.init msmtpd
 		newconfd "${FILESDIR}"/msmtpd.confd msmtpd
 	fi
