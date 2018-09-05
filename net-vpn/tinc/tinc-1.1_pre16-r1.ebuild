@@ -24,12 +24,11 @@ SRC_URI="http://www.tinc-vpn.org/packages/${MY_P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="+lzo +ncurses gui libressl +readline +ssl uml vde upnp +zlib"
+IUSE="+lzo +ncurses libressl +readline +ssl uml vde upnp +zlib"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	${PYTHON_DEPS}
-	gui? ( dev-python/wxpython:3.0[${PYTHON_USEDEP}] )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -89,12 +88,6 @@ src_install() {
 	doconfd "${FILESDIR}"/tinc.networks
 	newconfd "${FILESDIR}"/tincd.conf tincd
 	newinitd "${FILESDIR}"/tincd-r2 tincd
-
-	if use gui; then
-		python_fix_shebang "${ED}"/usr/bin/tinc-gui
-	else
-		rm -f "${ED}"/usr/bin/tinc-gui || die
-	fi
 }
 
 pkg_postinst() {
