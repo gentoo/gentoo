@@ -17,7 +17,6 @@ LLVM_P=llvm-${PV/_/}.src
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
 SRC_URI="https://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz
-	https://dev.gentoo.org/~mgorny/dist/llvm/${PN}-6.0.1-patchset.tar.xz
 	test? ( https://releases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )"
 
 LICENSE="|| ( UoI-NCSA MIT )"
@@ -29,6 +28,7 @@ RESTRICT="!test? ( test ) !clang? ( test )"
 CLANG_SLOT=${SLOT%%.*}
 # llvm-6 for new lit options
 DEPEND="
+	net-libs/libtirpc
 	>=sys-devel/llvm-6
 	clang? ( sys-devel/clang )
 	test? (
@@ -63,8 +63,6 @@ pkg_setup() {
 src_unpack() {
 	einfo "Unpacking ${MY_P}.tar.xz ..."
 	tar -xf "${DISTDIR}/${MY_P}.tar.xz" || die
-	einfo "Unpacking ${P}-patchset.tar.xz ..."
-	tar -xf "${DISTDIR}/${PN}-6.0.1-patchset.tar.xz" || die
 
 	if use test; then
 		einfo "Unpacking parts of ${LLVM_P}.tar.xz ..."
@@ -77,12 +75,12 @@ src_unpack() {
 src_prepare() {
 	cmake-utils_src_prepare
 
-	# apply the patchset (new glibc fixes)
-	eapply "${WORKDIR}/${PN}-6.0.1-patchset/0007-sanitizer_common-Fix-using-libtirpc-on-Linux.patch"
-	eapply "${WORKDIR}/${PN}-6.0.1-patchset/0008-test-Support-using-libtirpc-on-Linux.patch"
+	# apply the fixes for new glibc / split tirpc
+	eapply "${FILESDIR}/9999/0001-sanitizer_common-Fix-using-libtirpc-on-Linux.patch"
+	eapply "${FILESDIR}/9999/0002-test-Support-using-libtirpc-on-Linux.patch"
 
 	if use test; then
-		# remove tests that are broken by new glibc
+		# remove tests that are (still) broken by new glibc
 		# https://bugs.llvm.org/show_bug.cgi?id=36065
 		if use elibc_glibc && has_version '>=sys-libs/glibc-2.25'; then
 			rm test/lsan/TestCases/Linux/use_tls_dynamic.cc || die
