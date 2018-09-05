@@ -38,5 +38,5 @@ DEPEND="
 
 src_install() {
 	java-pkg_newjar "build/jar/pdftk.jar"
-	java-pkg_dolauncher
+	java-pkg_dolauncher ${PN} --main com.gitlab.pdftk_java.pdftk
 }
