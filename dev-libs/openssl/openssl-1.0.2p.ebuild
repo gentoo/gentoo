@@ -239,10 +239,10 @@ multilib_src_test() {
 }
 
 multilib_src_install() {
-	# We need to create $D/usr on our own to avoid a race condition #665130
-	if [[ ! -d "${D%/}/usr" ]]; then
+	# We need to create $ED/usr on our own to avoid a race condition #665130
+	if [[ ! -d "${ED%/}/usr" ]]; then
 		# We can only create this directory once
-		mkdir "${D%/}"/usr || die
+		mkdir "${ED%/}"/usr || die
 	fi
 
 	emake INSTALL_PREFIX="${D%/}" install

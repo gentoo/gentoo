@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,7 @@ IUSE="caps +cmdmon ipv6 libedit +ntp +phc pps readline +refclock +rtc seccomp se
 REQUIRED_USE="
 	?? ( libedit readline )
 "
+
 CDEPEND="
 	caps? ( sys-libs/libcap )
 	libedit? ( dev-libs/libedit )
@@ -33,13 +34,15 @@ RDEPEND="
 RESTRICT=test
 S="${WORKDIR}/${P/_/-}"
 
-src_prepare() {
-	sed -i \
-		-e 's:/etc/chrony\.:/etc/chrony/chrony.:g' \
-		-e 's:/var/run:/run:g' \
-		conf.c doc/*.adoc examples/* || die
+PATCHES=(
+	"${FILESDIR}"/chronyd-systemd-gentoo.patch
+)
 
+src_prepare() {
 	default
+	sed -i \
+		-e 's:/etc/chrony\.conf:/etc/chrony/chrony.conf:g' \
+		doc/* examples/* || die
 }
 
 src_configure() {
@@ -72,12 +75,13 @@ src_configure() {
 		$(usex rtc '' --disable-rtc) \
 		${CHRONY_EDITLINE} \
 		${EXTRA_ECONF} \
-		--docdir=/usr/share/doc/${PF} \
 		--chronysockdir=/run/chrony \
+		--disable-sechash \
+		--docdir=/usr/share/doc/${PF} \
 		--mandir=/usr/share/man \
 		--prefix=/usr \
 		--sysconfdir=/etc/chrony \
-		--disable-sechash \
+		--with-pidfile="${EPREFIX}/run/chrony/chronyd.pid"
 		--without-nss \
 		--without-tomcrypt
 	"
@@ -94,7 +98,7 @@ src_compile() {
 src_install() {
 	default
 
-	newinitd "${FILESDIR}"/chronyd.init-r1 chronyd
+	newinitd "${FILESDIR}"/chronyd.init-r2 chronyd
 	newconfd "${FILESDIR}"/chronyd.conf chronyd
 
 	insinto /etc/${PN}
@@ -111,6 +115,5 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/chrony-2.4-r1.logrotate chrony
 
-	systemd_newunit "${FILESDIR}"/chronyd.service-r2 chronyd.service
-	systemd_enable_ntpunit 50-chrony chronyd.service
+	systemd_dounit examples/chronyd.service
 }
