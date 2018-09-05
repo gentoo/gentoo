@@ -1,22 +1,21 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
+EAPI=6
 inherit multilib
 
 DESCRIPTION="An SMTP client and SMTP plugin for mail user agents such as Mutt"
-HOMEPAGE="https://marlam.de/msmtp/"
-SRC_URI="https://marlam.de/msmtp/releases/${P}.tar.xz"
+HOMEPAGE="http://msmtp.sourceforge.net/"
+SRC_URI="mirror://sourceforge/msmtp/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="doc gnutls idn libressl libsecret +mta nls sasl ssl vim-syntax"
+KEYWORDS="alpha amd64 ~arm ~arm64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+IUSE="doc gnome-keyring gnutls idn libressl +mta nls sasl ssl vim-syntax"
 
-DEPEND="
+CDEPEND="
+	gnome-keyring? ( app-crypt/libsecret )
 	idn? ( net-dns/libidn:= )
-	libsecret? ( app-crypt/libsecret )
 	nls? ( virtual/libintl )
 	sasl? ( virtual/gsasl )
 	ssl? (
@@ -28,7 +27,7 @@ DEPEND="
 	)
 "
 
-RDEPEND="${DEPEND}
+RDEPEND="${CDEPEND}
 	net-mail/mailbase
 	mta? (
 		!mail-mta/courier
@@ -46,7 +45,7 @@ RDEPEND="${DEPEND}
 	)
 "
 
-BDEPEND="${DEPEND}
+DEPEND="${CDEPEND}
 	doc? ( virtual/texi2dvi )
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
@@ -64,14 +63,12 @@ src_prepare() {
 }
 
 src_configure() {
-	local myeconfargs=(
-		$(use_enable nls)
-		$(use_with ssl tls $(usex gnutls gnutls openssl))
-		$(use_with sasl libgsasl)
-		$(use_with idn libidn)
-		$(use_with libsecret)
-	)
-	econf "${myeconfargs[@]}"
+	econf \
+		$(use_enable nls) \
+		$(use_with ssl ssl $(usex gnutls gnutls openssl)) \
+		$(use_with sasl libgsasl) \
+		$(use_with idn libidn) \
+		$(use_with gnome-keyring libsecret)
 }
 
 src_compile() {
@@ -93,9 +90,9 @@ src_install() {
 
 	if use mta ; then
 		dodir /usr/sbin
-		dosym ../bin/msmtp /usr/sbin/sendmail
-		dosym msmtp /usr/bin/sendmail
-		dosym ../bin/msmtp /usr/$(get_libdir)/sendmail
+		dosym /usr/bin/msmtp /usr/sbin/sendmail
+		dosym /usr/bin/msmtp /usr/bin/sendmail
+		dosym /usr/bin/msmtp /usr/$(get_libdir)/sendmail
 	fi
 
 	if use vim-syntax ; then
@@ -125,13 +122,13 @@ src_install_contrib() {
 	subdir="$1"
 	bins="$2"
 	docs="$3"
-	local dir=/usr/share/${PN}/${subdir}
+	local dir=/usr/share/${PN}/$subdir
 	insinto ${dir}
 	exeinto ${dir}
-	for i in ${bins} ; do
-		doexe scripts/${subdir}/${i}
+	for i in $bins ; do
+		doexe scripts/$subdir/$i
 	done
-	for i in ${docs} ; do
-		newdoc scripts/${subdir}/${i} ${subdir}.${i}
+	for i in $docs ; do
+		newdoc scripts/$subdir/$i $subdir.$i
 	done
 }

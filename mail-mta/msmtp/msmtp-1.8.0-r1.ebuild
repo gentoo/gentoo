@@ -1,33 +1,34 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit multilib
+EAPI=7
+
+inherit fcaps multilib user
 
 DESCRIPTION="An SMTP client and SMTP plugin for mail user agents such as Mutt"
-HOMEPAGE="http://msmtp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/msmtp/${P}.tar.xz"
+HOMEPAGE="https://marlam.de/msmtp/"
+SRC_URI="https://marlam.de/msmtp/releases/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="doc gnutls idn libressl libsecret +mta nls sasl ssl vim-syntax"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+IUSE="daemon doc gnome-keyring idn +mta nls sasl ssl vim-syntax"
 
-CDEPEND="
-	idn? ( net-dns/libidn:= )
-	libsecret? ( app-crypt/libsecret )
+# fcaps.eclass unconditionally defines "filecaps" USE flag which we need for
+# USE="daemon" in order to set the caps we need.
+REQUIRED_USE="daemon? ( filecaps )"
+
+# Upstream discourages usage of openssl. See also
+# https://marlam.de/msmtp/news/openssl-discouraged/
+DEPEND="
+	gnome-keyring? ( app-crypt/libsecret )
 	nls? ( virtual/libintl )
 	sasl? ( virtual/gsasl )
-	ssl? (
-		gnutls? ( net-libs/gnutls )
-		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
-		)
-	)
+	ssl? ( net-libs/gnutls[idn?] )
+	!ssl? ( idn? ( net-dns/libidn2:= ) )
 "
 
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	net-mail/mailbase
 	mta? (
 		!mail-mta/courier
@@ -45,13 +46,11 @@ RDEPEND="${CDEPEND}
 	)
 "
 
-DEPEND="${CDEPEND}
+BDEPEND="${DEPEND}
 	doc? ( virtual/texi2dvi )
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
 "
-
-REQUIRED_USE="gnutls? ( ssl )"
 
 DOCS="AUTHORS ChangeLog NEWS README THANKS doc/msmtprc*"
 
@@ -63,12 +62,15 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable nls) \
-		$(use_with ssl ssl $(usex gnutls gnutls openssl)) \
-		$(use_with sasl libgsasl) \
-		$(use_with idn libidn) \
-		$(use_with libsecret )
+	local myeconfargs=(
+		$(use_enable nls)
+		$(use_with daemon msmtpd)
+		$(use_with gnome-keyring libsecret)
+		$(use_with idn libidn)
+		$(use_with sasl libgsasl)
+		$(use_with ssl tls gnutls)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -83,6 +85,12 @@ src_compile() {
 src_install() {
 	default
 
+	if use daemon ; then
+		fcaps CAP_NET_BIND_SERVICE usr/bin/msmtpd
+		newinitd "${FILESDIR}"/msmtpd.init msmtpd
+		newconfd "${FILESDIR}"/msmtpd.confd msmtpd
+	fi
+
 	if use doc ; then
 		dohtml doc/msmtp.html
 		dodoc doc/msmtp.pdf
@@ -90,9 +98,9 @@ src_install() {
 
 	if use mta ; then
 		dodir /usr/sbin
-		dosym /usr/bin/msmtp /usr/sbin/sendmail
-		dosym /usr/bin/msmtp /usr/bin/sendmail
-		dosym /usr/bin/msmtp /usr/$(get_libdir)/sendmail
+		dosym ../bin/msmtp /usr/sbin/sendmail
+		dosym msmtp /usr/bin/sendmail
+		dosym ../bin/msmtp /usr/$(get_libdir)/sendmail
 	fi
 
 	if use vim-syntax ; then
@@ -109,9 +117,15 @@ src_install() {
 	src_install_contrib set_sendmail set_sendmail.sh set_sendmail.conf
 }
 
+pkg_preinst() {
+	if use daemon ; then
+		enewuser msmtpd
+	fi
+}
+
 pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		einfo "Please edit ${ROOT}etc/msmtprc before first use."
+		einfo "Please edit ${EROOT%/}/etc/msmtprc before first use."
 		einfo "In addition, per user configuration files can be placed"
 		einfo "as '~/.msmtprc'.  See the msmtprc-user.example file under"
 		einfo "/usr/share/doc/${PF}/ for an example."
@@ -122,13 +136,13 @@ src_install_contrib() {
 	subdir="$1"
 	bins="$2"
 	docs="$3"
-	local dir=/usr/share/${PN}/$subdir
+	local dir=/usr/share/${PN}/${subdir}
 	insinto ${dir}
 	exeinto ${dir}
-	for i in $bins ; do
-		doexe scripts/$subdir/$i
+	for i in ${bins} ; do
+		doexe scripts/${subdir}/${i}
 	done
-	for i in $docs ; do
-		newdoc scripts/$subdir/$i $subdir.$i
+	for i in ${docs} ; do
+		newdoc scripts/${subdir}/${i} ${subdir}.${i}
 	done
 }
