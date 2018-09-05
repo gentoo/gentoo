@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib
+inherit fcaps multilib user
 
 DESCRIPTION="An SMTP client and SMTP plugin for mail user agents such as Mutt"
 HOMEPAGE="https://marlam.de/msmtp/"
@@ -12,23 +12,19 @@ SRC_URI="https://marlam.de/msmtp/releases/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="doc gnutls idn libressl libsecret +mta nls sasl ssl vim-syntax"
+IUSE="daemon doc idn libsecret +mta nls sasl ssl vim-syntax"
 
-CDEPEND="
-	idn? ( net-dns/libidn:= )
+# Upstream discourages usage of openssl. See also
+# https://marlam.de/msmtp/news/openssl-discouraged/
+DEPEND="
 	libsecret? ( app-crypt/libsecret )
 	nls? ( virtual/libintl )
 	sasl? ( virtual/gsasl )
-	ssl? (
-		gnutls? ( net-libs/gnutls )
-		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
-		)
-	)
+	ssl? ( net-libs/gnutls[idn?] )
+	!ssl? ( idn? ( net-dns/libidn2:= ) )
 "
 
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	net-mail/mailbase
 	mta? (
 		!mail-mta/courier
@@ -46,13 +42,11 @@ RDEPEND="${CDEPEND}
 	)
 "
 
-DEPEND="${CDEPEND}
+BDEPEND="${DEPEND}
 	doc? ( virtual/texi2dvi )
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
 "
-
-REQUIRED_USE="gnutls? ( ssl )"
 
 DOCS="AUTHORS ChangeLog NEWS README THANKS doc/msmtprc*"
 
@@ -66,10 +60,11 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		$(use_enable nls)
-		$(use_with ssl ssl $(usex gnutls gnutls openssl))
+		$(use_with daemon msmtpd)
+		$(use_with ssl tls gnutls)
 		$(use_with sasl libgsasl)
 		$(use_with idn libidn)
-		$(use_with libsecret )
+		$(use_with libsecret)
 	)
 	econf "${myeconfargs[@]}"
 }
@@ -85,6 +80,12 @@ src_compile() {
 
 src_install() {
 	default
+
+	if use daemon ; then
+		fcaps CAP_NET_BIND_SERVICE "${ED%/}"/usr/bin/msmtpd
+		newinitd "${FILESDIR}"/msmtpd.init msmtpd
+		newconfd "${FILESDIR}"/msmtpd.confd msmtpd
+	fi
 
 	if use doc ; then
 		dohtml doc/msmtp.html
@@ -112,9 +113,15 @@ src_install() {
 	src_install_contrib set_sendmail set_sendmail.sh set_sendmail.conf
 }
 
+pkg_preinst() {
+	if use daemon ; then
+		enewuser msmtpd
+	fi
+}
+
 pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		einfo "Please edit ${ROOT}etc/msmtprc before first use."
+		einfo "Please edit ${EROOT%/}/etc/msmtprc before first use."
 		einfo "In addition, per user configuration files can be placed"
 		einfo "as '~/.msmtprc'.  See the msmtprc-user.example file under"
 		einfo "/usr/share/doc/${PF}/ for an example."
