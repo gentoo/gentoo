@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/pdftk-java/pdftk/"
 else
 	SRC_URI="https://gitlab.com/pdftk-java/pdftk/-/archive/v${PV}/pdftk-v${PV}.tar.bz2"
-	KEYWORDS=""
+	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/pdftk-v${PV}"
 fi
 
