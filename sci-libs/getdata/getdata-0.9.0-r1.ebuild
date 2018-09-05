@@ -6,7 +6,7 @@ EAPI=6
 FORTRAN_STANDARD="95"
 FORTRAN_NEEDED=fortran
 PYTHON_COMPAT=( python2_7 )
-inherit autotools eutils fortran-2 python-single-r1
+inherit autotools fortran-2 python-single-r1
 
 DESCRIPTION="Reference implementation of the Dirfile, format for time-ordered binary data"
 HOMEPAGE="http://getdata.sourceforge.net/"
@@ -60,5 +60,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
