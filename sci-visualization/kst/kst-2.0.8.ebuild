@@ -34,6 +34,7 @@ RDEPEND="
 	sci-libs/netcdf-cxx:3
 "
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	test? ( dev-qt/qttest:5 )
 "
 
