@@ -19,6 +19,7 @@ RDEPEND="dev-qt/qtwebkit:5
 	dev-qt/qttest:5
 	dev-qt/designer:5
 	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtsql:5
 	dev-libs/quazip
 	>=sci-geosciences/routino-3.1.1
 	sci-libs/gdal

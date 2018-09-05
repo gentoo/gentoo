@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit autotools elisp-common eutils
+inherit autotools elisp-common eutils xdg-utils
 
 DESCRIPTION="Free computer algebra environment based on Macsyma"
 HOMEPAGE="http://maxima.sourceforge.net/"
@@ -95,20 +95,22 @@ pkg_setup() {
 
 src_prepare() {
 	local n PATCHES v
-	PATCHES=( emacs-0 rmaxima-0 wish-2 xdg-utils-0 )
+	PATCHES=( emacs-0 emacs-27 rmaxima-0 wish-2 xdg-utils-1 )
 
 	n=${#PATCHES[*]}
 	for ((n--; n >= 0; n--)); do
-		epatch "${FILESDIR}"/${PATCHES[${n}]}.patch
+		eapply "${FILESDIR}"/${PATCHES[${n}]}.patch
 	done
 
 	n=${#LISPS[*]}
 	for ((n--; n >= 0; n--)); do
 		v=${PATCH_V[${n}]}
 		if [ "${v}" != "." ]; then
-			epatch "${FILESDIR}"/${LISPS[${n}]}-${v}.patch
+			eapply "${FILESDIR}"/${LISPS[${n}]}-${v}.patch
 		fi
 	done
+
+	eapply_user
 
 	# bug #343331
 	rm share/Makefile.in || die
@@ -194,6 +196,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_mimeinfo_database_update
 	if use emacs; then
 		elisp-site-regen
 		mktexlsr
@@ -201,6 +204,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	xdg_mimeinfo_database_update
 	if use emacs; then
 		elisp-site-regen
 		mktexlsr
