@@ -51,7 +51,7 @@ RDEPEND="
 		gstreamer? (
 			dev-python/pygobject:3[${PYTHON_USEDEP}]
 			media-libs/gst-plugins-good:1.0
-			media-plugins/gst-plugins-meta:1.0
+			media-plugins/gst-plugins-meta:1.0[ffmpeg]
 		)
 		!gstreamer? ( media-sound/mp3gain )
 	)
