@@ -17,7 +17,7 @@ HOMEPAGE="http://beets.io/ https://pypi.org/project/beets/"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="MIT"
-IUSE="badfiles chromaprint doc discogs ffmpeg flac gstreamer lastfm mpd ogg opus replaygain test thumbnail webserver"
+IUSE="badfiles chromaprint doc discogs ffmpeg gstreamer lastfm mpd replaygain test thumbnail webserver"
 
 RDEPEND="
 	dev-python/jellyfish[${PYTHON_USEDEP}]
@@ -45,15 +45,13 @@ RDEPEND="
 	mpd? (
 		dev-python/bluelet[${PYTHON_USEDEP}]
 		dev-python/python-mpd[${PYTHON_USEDEP}]
+		gstreamer? ( media-plugins/gst-plugins-meta:1.0 )
 	)
 	replaygain? (
 		gstreamer? (
 			dev-python/pygobject:3[${PYTHON_USEDEP}]
-			media-libs/gstreamer:1.0[introspection]
-			media-libs/gst-plugins-base:1.0[ogg?]
 			media-libs/gst-plugins-good:1.0
-			flac? ( media-plugins/gst-plugins-flac:1.0 )
-			opus? ( media-plugins/gst-plugins-opus:1.0 )
+			media-plugins/gst-plugins-meta:1.0
 		)
 		!gstreamer? ( media-sound/mp3gain )
 	)
