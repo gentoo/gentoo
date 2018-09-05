@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] e300? ( virtual/udev ) usb? ( virtual/libusb:1 ) dev-libs/boost:= sys-libs/ncurses:0[tinfo] doc? ( app-doc/doxygen ) dev-python/mako app-arch/unzip app-arch/gzip >=sys-apps/sed-4 sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=Universal Software Radio Peripheral (USRP) Hardware Driver
+EAPI=6
+HOMEPAGE=https://kb.ettus.com
+IUSE=b100 b200 doc e300 examples mpmd octoclock n230 test usb usrp1 usrp2 +utils x300 python_targets_python2_7
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] e300? ( virtual/udev ) usb? ( virtual/libusb:1 ) dev-libs/boost:= sys-libs/ncurses:0[tinfo]
+REQUIRED_USE=python_targets_python2_7 b100? ( usb ) b200? ( usb ) usrp1? ( usb ) usrp2? ( usb ) || ( b100 b200 e300 mpmd n230 usrp1 usrp2 x300 )
+SLOT=0/3.13
+SRC_URI=https://github.com/EttusResearch/uhd/archive/v3.13.0.1.tar.gz -> EttusResearch-UHD-3.13.0.1.tar.gz https://github.com/EttusResearch/uhd/releases/download/v3.13.0.1/uhd-images_3.13.0.1.tar.xz
+_eclasses_=cmake-utils	ec27c4d90ac99a1a0fb77d97bfc597ee	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=c77a8584e45df109c75e0c87a8ae95c9
