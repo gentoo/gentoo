@@ -27,6 +27,7 @@ RESTRICT="!test? ( test ) !clang? ( test )"
 CLANG_SLOT=${SLOT%%.*}
 # llvm-6 for new lit options
 DEPEND="
+	net-libs/libtirpc
 	>=sys-devel/llvm-6
 	clang? ( sys-devel/clang )
 	test? (
