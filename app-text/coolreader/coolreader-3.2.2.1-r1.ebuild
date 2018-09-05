@@ -30,13 +30,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="wxwidgets"
 
-DEPEND="sys-libs/zlib
+CDEPEND="sys-libs/zlib
 	media-libs/libpng:0
 	virtual/jpeg:0
 	media-libs/freetype
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER} )
-	!wxwidgets? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/linguist-tools:5 )"
-RDEPEND="${DEPEND}
+	!wxwidgets? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )"
+DEPEND="${CDEPEND}
+	!wxwidgets? ( dev-qt/linguist-tools:5 )"
+RDEPEND="${CDEPEND}
 	wxwidgets? ( || ( media-fonts/liberation-fonts media-fonts/corefonts ) )"
 
 for lang in ${PLOCALES}; do
