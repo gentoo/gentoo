@@ -76,6 +76,8 @@ REQUIRED_USE="test? ( designer )"
 # hangs + installs files
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-designer-optional.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DSKG_BUILD_TEST=$(usex test)
