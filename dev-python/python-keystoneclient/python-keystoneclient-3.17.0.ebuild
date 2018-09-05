@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 RESTRICT="test"
 
@@ -24,18 +24,14 @@ DEPEND="
 RDEPEND="
 	${CDEPEND}
 	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]
-	>=dev-python/keystoneauth-3.0.1[${PYTHON_USEDEP}]
-	>=dev-python/oslo-config-4.0.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-config-4.3.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-config-4.4.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-i18n-3.15.2[${PYTHON_USEDEP}]
-	>=dev-python/oslo-serialization-1.10.0[${PYTHON_USEDEP}]
+	>=dev-python/keystoneauth-3.4.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-config-5.2.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-i18n-3.15.3[${PYTHON_USEDEP}]
+	>=dev-python/oslo-serialization-1.18.0[${PYTHON_USEDEP}]
 	!~dev-python/oslo-serialization-2.19.1[${PYTHON_USEDEP}]
-	>=dev-python/oslo-utils-3.20.0[${PYTHON_USEDEP}]
-	>=dev-python/positional-1.1.1[${PYTHON_USEDEP}]
+	>=dev-python/oslo-utils-3.33.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.14.2[${PYTHON_USEDEP}]
-	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
+	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.20.0[${PYTHON_USEDEP}]
 "
 #PATCHES=(
