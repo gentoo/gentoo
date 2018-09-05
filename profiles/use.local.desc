@@ -2586,7 +2586,6 @@ mail-mta/exim:spf - Adds support for Sender Policy Framework
 mail-mta/exim:srs - Adds support for Sender Rewriting Scheme
 mail-mta/exim:tpda - Adds support for Transport Post-Delivery Actions
 mail-mta/msmtp:daemon - Build/install msmtpd MTA daemon
-mail-mta/msmtp:libsecret - Enable libsecret support to store login credentials
 mail-mta/msmtp:mta - Enable this to install as system-wide MTA
 mail-mta/netqmail:authcram - Enable AUTHCRAM support
 mail-mta/netqmail:gencertdaily - Generate SSL certificates daily instead of hourly
