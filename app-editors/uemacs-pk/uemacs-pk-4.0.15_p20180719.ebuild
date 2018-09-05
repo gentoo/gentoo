@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="uEmacs/PK is an enhanced version of MicroEMACS"
 HOMEPAGE="https://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary
@@ -13,17 +13,14 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/uemacs-${PV}.tar.xz"
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 
-RDEPEND="sys-libs/ncurses:0"
+RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 S="${WORKDIR}/uemacs"
-
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-4.0.15_p20110825-gentoo.patch
-}
+PATCHES=("${FILESDIR}"/${PN}-4.0.15_p20110825-gentoo.patch)
 
 src_compile() {
 	emake V=1 \
