@@ -9775,7 +9775,7 @@ sys-apps/grep 2.27-r1 3.0: GNU regular expression matcher
 sys-apps/groff 1.22.2: Text formatter used for man pages
 sys-apps/gscanbus 0.8: Bus scanning, testing and topology visualizing tool for Linux IEEE1394 subsystem
 sys-apps/gsmartcontrol 1.0.2: Hard disk drive health inspection tool
-sys-apps/haveged 1.9.1 1.9.2-r1: A simple entropy daemon using the HAVEGE algorithm
+sys-apps/haveged 1.9.2-r1: A simple entropy daemon using the HAVEGE algorithm
 sys-apps/hd-idle 1.05: Utility for spinning down hard disks after a period of idle time
 sys-apps/hdparm 9.51 9.52: Utility to change hard drive performance parameters
 sys-apps/help2man 1.47.4: GNU utility to convert program --help output to a man page
