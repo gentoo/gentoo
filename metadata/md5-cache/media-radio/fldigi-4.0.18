@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=x11-libs/fltk:1[threads,xft] media-libs/libsamplerate media-libs/libpng:0 x11-misc/xdg-utils dev-perl/RPC-XML dev-perl/Term-ReadLine-Perl || ( media-libs/portaudio[oss] media-libs/portaudio[alsa] ) hamlib? ( media-libs/hamlib ) pulseaudio? ( media-sound/pulseaudio ) >=media-libs/libsndfile-1.0.10 nls? ( sys-devel/gettext ) virtual/pkgconfig
+DESCRIPTION=Sound card based multimode software modem for Amateur Radio use
+EAPI=6
+HOMEPAGE=http://www.w1hkj.com
+IUSE=hamlib nls pulseaudio cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/fltk:1[threads,xft] media-libs/libsamplerate media-libs/libpng:0 x11-misc/xdg-utils dev-perl/RPC-XML dev-perl/Term-ReadLine-Perl || ( media-libs/portaudio[oss] media-libs/portaudio[alsa] ) hamlib? ( media-libs/hamlib ) pulseaudio? ( media-sound/pulseaudio ) >=media-libs/libsndfile-1.0.10
+SLOT=0
+SRC_URI=mirror://sourceforge/fldigi/fldigi-4.0.18.tar.gz
+_md5_=327e7b46aef125fa31f2cee2918a94ad
