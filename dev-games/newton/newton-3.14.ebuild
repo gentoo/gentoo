@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""
-DEPEND=""
+DEPEND="dev-libs/tinyxml"
 
 S=${WORKDIR}/${MY_P}
 
