@@ -4,7 +4,7 @@
 EAPI=6
 
 BASHCOMP_P=bashcomp-2.0.2
-inherit versionator
+inherit eapi7-ver
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
@@ -112,7 +112,7 @@ src_install() {
 pkg_postinst() {
 	local v
 	for v in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least 2.1-r90 ${v}; then
+		if ver_test "${v}" -lt 2.1-r90; then
 			ewarn "For bash-completion autoloader to work, all completions need to"
 			ewarn "be installed in /usr/share/bash-completion/completions. You may"
 			ewarn "need to rebuild packages that installed completions in the old"
