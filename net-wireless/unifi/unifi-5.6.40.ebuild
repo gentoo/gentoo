@@ -4,7 +4,7 @@
 EAPI=6
 
 # Used, when it's an unstable, beta or release candidate
-RC_SUFFIX="-34502471b9"
+RC_SUFFIX="-508ed3ce93"
 
 inherit systemd user
 
@@ -14,8 +14,7 @@ SRC_URI="https://dl.ubnt.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
 
 KEYWORDS="~amd64 ~x86"
 LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
-SLOT="0/5.8"
-IUSE="systemd"
+SLOT="0/5.6"
 
 RDEPEND="dev-db/mongodb
 	virtual/jre:1.8"
@@ -37,10 +36,7 @@ pkg_setup() {
 
 src_prepare() {
 	# Remove unneeded files Linux, Mac and Windows
-	rm -r lib/native/Linux/{aarch64,armv7} lib/native/{Mac,Windows} || die
-	if ! use systemd; then
-		rm lib/native/Linux/x86_64/libubnt_sdnotify_jni.so || die
-	fi
+	rm -r lib/native/Linux/armhf lib/native/{Mac,Windows} || die
 
 	default
 }
