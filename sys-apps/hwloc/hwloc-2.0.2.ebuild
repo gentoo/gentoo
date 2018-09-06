@@ -5,7 +5,7 @@ EAPI=6
 
 inherit autotools cuda flag-o-matic eapi7-ver multilib-minimal
 
-MY_PV=v$(ver_rs 1-2)
+MY_PV=v$(ver_cut 1-2)
 
 DESCRIPTION="displays the hardware topology in convenient formats"
 HOMEPAGE="http://www.open-mpi.org/projects/hwloc/"
