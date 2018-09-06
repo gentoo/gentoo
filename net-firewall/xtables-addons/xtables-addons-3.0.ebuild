@@ -171,7 +171,7 @@ src_configure() {
 	set_arch_to_kernel # .. or it'll look for /arch/amd64/Makefile
 	econf --prefix="${EPREFIX}/" \
 		--libexecdir="${EPREFIX}/$(get_libdir)/" \
-		--with-kbuild="${KV_DIR}"
+		--with-kbuild="${KV_OUT_DIR}"
 }
 
 src_compile() {
