@@ -32,7 +32,8 @@ CDEPEND=">=dev-libs/libuv-1.2.0
 	dev-libs/libvterm
 	dev-lua/lpeg[luajit=]
 	dev-lua/mpack[luajit=]
-	jemalloc? ( dev-libs/jemalloc )"
+	jemalloc? ( dev-libs/jemalloc )
+	net-libs/libnsl"
 
 DEPEND="
 	${CDEPEND}
