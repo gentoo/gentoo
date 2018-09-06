@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -171,7 +171,7 @@ src_configure() {
 	set_arch_to_kernel # .. or it'll look for /arch/amd64/Makefile
 	econf --prefix="${EPREFIX}/" \
 		--libexecdir="${EPREFIX}/$(get_libdir)/" \
-		--with-kbuild="${KV_DIR}"
+		--with-kbuild="${KV_OUT_DIR}"
 }
 
 src_compile() {
