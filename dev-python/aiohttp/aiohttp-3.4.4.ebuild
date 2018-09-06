@@ -38,7 +38,7 @@ DEPEND="
 	)
 	test? (
 		${CDEPEND}
-		>=app-arch/brotli-1.0.5[${PYTHON_USEDEP}]
+		dev-python/async_generator[${PYTHON_USEDEP}]
 		>=dev-python/pytest-3.4.0[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
