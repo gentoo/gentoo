@@ -11,7 +11,7 @@ HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
 IUSE="experimental"
 
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER="65"
+K_GENPATCHES_VER="73"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
@@ -41,9 +41,14 @@ BLKIO_HASH="25849740d77dfc089fdbfb53623e50d38a972aff"
 BLKIO_FILE="${PN}-4.14-blkio-fix.patch"
 BLKIO_URI="https://github.com/ckolivas/linux/commit/${BLKIO_HASH}.patch -> ${BLKIO_FILE}"
 
-SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_URI} ${BLKIO_URI}"
+# Upstream: https://github.com/ckolivas/linux/pull/9/
+IRQREGS_HASH="7bb09fbdf490f5de8eafc635ab858b1f38dca84c"
+IRQREGS_FILE="${PN}-4.14-irqregsdeclaration-fix.patch"
+IRQREGS_URI="https://github.com/ckolivas/linux/commit/${IRQREGS_HASH}.patch -> ${IRQREGS_FILE}"
 
-UNIPATCH_LIST="${DISTDIR}/${MUQSS_DISTNAME} ${DISTDIR}/${BLKIO_FILE}"
+SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_URI} ${BLKIO_URI} ${IRQREGS_URI}"
+
+UNIPATCH_LIST="${DISTDIR}/${MUQSS_DISTNAME} ${DISTDIR}/${BLKIO_FILE} ${DISTDIR}/${IRQREGS_FILE}"
 UNIPATCH_STRICTORDER="yes"
 
 pkg_setup() {

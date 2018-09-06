@@ -11,7 +11,7 @@ HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
 IUSE="experimental"
 
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER="120"
+K_GENPATCHES_VER="128"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
