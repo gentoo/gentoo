@@ -25,7 +25,7 @@
 +foreach(th_build ${WSUG_TOOLS_COMMANDS})
 +if (TARGET ${th_build})
 +	list(APPEND WSUG_TOOLS_HELP_COMMANDS ${th_build})
-+endif(BUILD_${th_build})
++endif(TARGET ${th_build})
 +endforeach()
  
  # We want the wsug_* targets to depend on the tools help files.
@@ -38,3 +38,19 @@
  	list(APPEND WSUG_TOOLS_HELP_FILES ${th_file})
  	add_custom_command(
  		OUTPUT ${th_file}
+@@ -103,6 +105,7 @@
+ # Extra command output
+ # Note that these won't work on Windows unless we make -F and -T write
+ # to stdout and return 0 or wrap the commands similar to hhc.exe.
++if (TARGET editcap)
+ set(th_file ${CMAKE_CURRENT_SOURCE_DIR}/wsug_src/editcap-F.txt)
+ list(APPEND WSUG_TOOLS_HELP_FILES ${th_file})
+ add_custom_command(
+@@ -117,6 +120,7 @@
+ 	COMMAND $<TARGET_FILE:editcap> -T > ${th_file}
+ 	DEPENDS $<TARGET_FILE:editcap>
+ )
++endif(TARGET editcap)
+ 
+ add_custom_target(update_tools_help
+ 	DEPENDS ${WSUG_TOOLS_HELP_FILES}
