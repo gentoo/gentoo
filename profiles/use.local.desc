@@ -181,7 +181,6 @@ app-arch/libarchive:e2fsprogs - Use file flags from sys-fs/e2fsprogs headers ins
 app-arch/libarchive:lz4 - Enable support for LZ4 compression using app-arch/lz4
 app-arch/libarchive:nettle - Use dev-libs/nettle as crypto backend
 app-arch/libarchive:zlib - Allow accessing gzip-compressed archives through sys-libs/zlib. This only affects libarchive's native support: bsdtar will keep using gunzip as a filter if that's not built-in. It's also needed for supporting extraction of ZIP files.
-app-arch/lz4:valgrind - Enable usage of dev-util/valgrind in tests
 app-arch/p7zip:rar - Enable support for non-free rar decoder
 app-arch/pbzip2:symlink - Install symlinks which override app-arch/bzip2 implementation
 app-arch/pigz:symlink - Install symlinks which override app-arch/gzip implementation
@@ -5257,7 +5256,6 @@ sys-auth/consolekit:systemd-units - Install systemd unit files to replace the mo
 sys-auth/keystone:memcached - Installs dependencies needed for using memcached as a backend
 sys-auth/keystone:mongo - Installs dependencies needed for using mongo as a backend
 sys-auth/munge:gcrypt - Use libgcrypt instead of openssl
-sys-auth/nss-mdns:search-domains - Honour search domains from /etc/resolv.conf (see bug #201948 for possible side effects)
 sys-auth/nss-pam-ldapd:pynslcd - Install the python implementation along with the standard implementation
 sys-auth/nss-pam-ldapd:utils - Install the command-line utilities
 sys-auth/pam_mktemp:prevent-removal - If supported, set EXT2_APPEND_FL on /tmp/.private to prevent temporary directories from being removed
