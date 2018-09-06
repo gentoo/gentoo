@@ -20,6 +20,8 @@ RDEPEND="
 	lcms? ( >=media-libs/lcms-2.5:2[static-libs?,${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-jpeg-9a.patch )
+
 src_prepare() {
 	emake distclean
 	default
