@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,7 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-db/sqlite:3
+	dev-libs/atf
 	dev-lua/lutok
 "
 DEPEND="${RDEPEND}
