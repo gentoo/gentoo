@@ -47,7 +47,7 @@ src_prepare() {
 src_compile() {
 	local options=( $(usex btrfs "" "no_btrfs") $(usex cri "" "no_cri") $(usex seccomp "seccomp" "") $(usex apparmor "apparmor" "") )
 	export GOPATH="${WORKDIR}/${P}" # ${PWD}/vendor
-	LDFLAGS=$(usex hardened '-extldflags -fno-PIC' '') emake BUILDTAGS="${options[@]}"
+	LDFLAGS=$(usex hardened '-extldflags -fno-PIC' '') BUILDTAGS="${options[@]}" emake
 }
 
 src_install() {
