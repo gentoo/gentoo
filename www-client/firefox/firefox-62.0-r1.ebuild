@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 VIRTUALX_REQUIRED="pgo"
 WANT_AUTOCONF="2.1"
 MOZ_ESR=""
@@ -34,7 +34,7 @@ inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils llvm \
 		mozcoreconf-v6 pax-utils xdg-utils autotools mozlinguas-v2
 
 DESCRIPTION="Firefox Web Browser"
-HOMEPAGE="http://www.mozilla.com/firefox"
+HOMEPAGE="https://www.mozilla.com/firefox"
 
 KEYWORDS="~amd64 ~x86"
 
@@ -118,6 +118,8 @@ DEPEND="${CDEPEND}
 	>=sys-devel/clang-4.0.1
 	amd64? ( >=dev-lang/yasm-1.1 virtual/opengl )
 	x86? ( >=dev-lang/yasm-1.1 virtual/opengl )"
+
+REQUIRED_USE="wifi? ( dbus )"
 
 S="${WORKDIR}/firefox-${PV%_*}"
 
@@ -342,6 +344,10 @@ src_configure() {
 	if use kernel_linux && ! use pulseaudio ; then
 		mozconfig_annotate '-pulseaudio' --enable-alsa
 	fi
+
+	mozconfig_use_enable dbus
+
+	mozconfig_use_enable wifi necko-wifi
 
 	# enable JACK, bug 600002
 	mozconfig_use_enable jack
