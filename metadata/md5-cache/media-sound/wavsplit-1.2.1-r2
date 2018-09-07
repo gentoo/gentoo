@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare test
+DESCRIPTION=Simple command line tool to split WAV files
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/wavsplit/
+KEYWORDS=~amd64 -sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/wavsplit/wavsplit-1.2.1.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=9b4204cb903665286c952f6a4a298063
