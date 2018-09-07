@@ -38,7 +38,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="dev-libs/oniguruma"
+DEPEND="app-misc/jq
+	dev-libs/oniguruma"
 
 RESTRICT="test"
 
