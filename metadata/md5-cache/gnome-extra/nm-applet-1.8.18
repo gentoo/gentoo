@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=app-crypt/libsecret-0.18 >=dev-libs/glib-2.38:2[dbus] >=dev-libs/dbus-glib-0.88 >=sys-apps/dbus-1.4.1 >=sys-auth/polkit-0.96-r1 >=x11-libs/gtk+-3.10:3[introspection?] >=x11-libs/libnotify-0.7.0 app-text/iso-codes >=net-misc/networkmanager-1.7:=[introspection?,modemmanager?,teamd?] net-misc/mobile-broadband-provider-info ayatana? ( dev-libs/libappindicator:3 >=dev-libs/libdbusmenu-16.04.0 ) introspection? ( >=dev-libs/gobject-introspection-0.9.6:= ) virtual/freedesktop-icon-theme virtual/libgudev:= gcr? ( >=app-crypt/gcr-3.14:=[gtk] ) modemmanager? ( net-misc/modemmanager ) selinux? ( sys-libs/libselinux ) teamd? ( >=dev-libs/jansson-2.7 ) >=dev-util/gtk-doc-am-1.0 >=dev-util/intltool-0.50.1 virtual/pkgconfig >=app-portage/elt-patches-20170422 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=GNOME applet for NetworkManager
+EAPI=6
+HOMEPAGE=https://wiki.gnome.org/Projects/NetworkManager
+IUSE=ayatana +introspection +gcr +modemmanager selinux teamd
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+PDEPEND=virtual/notification-daemon
+RDEPEND=>=app-crypt/libsecret-0.18 >=dev-libs/glib-2.38:2[dbus] >=dev-libs/dbus-glib-0.88 >=sys-apps/dbus-1.4.1 >=sys-auth/polkit-0.96-r1 >=x11-libs/gtk+-3.10:3[introspection?] >=x11-libs/libnotify-0.7.0 app-text/iso-codes >=net-misc/networkmanager-1.7:=[introspection?,modemmanager?,teamd?] net-misc/mobile-broadband-provider-info ayatana? ( dev-libs/libappindicator:3 >=dev-libs/libdbusmenu-16.04.0 ) introspection? ( >=dev-libs/gobject-introspection-0.9.6:= ) virtual/freedesktop-icon-theme virtual/libgudev:= gcr? ( >=app-crypt/gcr-3.14:=[gtk] ) modemmanager? ( net-misc/modemmanager ) selinux? ( sys-libs/libselinux ) teamd? ( >=dev-libs/jansson-2.7 )
+SLOT=0
+SRC_URI=mirror://gnome/sources/network-manager-applet/1.8/network-manager-applet-1.8.18.tar.xz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	acac536f2c3bbcd312ac3faaa3e55e40	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	libtool	0081a71a261724730ec4c248494f044d	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=86cc83dcd74dfba1b59e396253ac4bfd

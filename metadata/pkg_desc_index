@@ -1116,6 +1116,7 @@ app-misc/tmux 2.6: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 3.4.0: CPU, RAM memory, and load monitor for use with tmux
 app-misc/tmux-xpanes 2.2.2: tmux-based terminal divider
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
+app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
 app-misc/tracker 1.12.4: A tagging metadata database, search tool and indexer
 app-misc/trash-cli 0.12.9.14-r2: Python scripts to manipulate trash cans via the command line
@@ -7372,7 +7373,7 @@ media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
 media-gfx/pqiv 2.10.2: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
-media-gfx/qrencode 4.0.0: C library for encoding data in a QR Code symbol
+media-gfx/qrencode 4.0.0 4.0.2: C library for encoding data in a QR Code symbol
 media-gfx/quat 1.20-r1: A 3D quaternionic fractal generator
 media-gfx/raw-thumbnailer 0.2.1 0.2.1-r1: A lightweight and fast raw image thumbnailer
 media-gfx/rawtherapee 5.2: A powerful cross-platform raw image processing program
@@ -8812,7 +8813,7 @@ net-misc/adjtimex 1.29-r1: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
-net-misc/aria2 1.33.1: A download utility with segmented downloading with BitTorrent support
+net-misc/aria2 1.33.1 1.34.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/asterisk 11.25.3 13.19.0-r1: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22: Core sounds for asterisk
