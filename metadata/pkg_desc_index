@@ -444,7 +444,7 @@ app-dicts/myspell-cy 20130708: Welsh dictionaries for myspell/hunspell
 app-dicts/myspell-da 2.1: Danish dictionaries for myspell/hunspell
 app-dicts/myspell-de 2015.12.28: German dictionaries for myspell/hunspell
 app-dicts/myspell-de_1901 20120929: German (traditional orthography) dictionaries for myspell/hunspell
-app-dicts/myspell-el 0.8: Greek dictionaries for myspell/hunspell
+app-dicts/myspell-el 0.8 0.9: Greek dictionaries for myspell/hunspell
 app-dicts/myspell-en 20160901 20170101: English dictionaries for myspell/hunspell
 app-dicts/myspell-eo 1.0-r1: Esperanto dictionaries for myspell/hunspell
 app-dicts/myspell-es 0.7: Spanish dictionaries for myspell/hunspell
@@ -4104,18 +4104,18 @@ dev-perl/Proc-ProcessTable 0.530.0: Unix process table information
 dev-perl/Proc-Simple 1.320.0: Launch and control background processes
 dev-perl/Proc-Wait3 0.50.0: Perl extension for wait3 system call
 dev-perl/Proc-WaitStat 1.0.0-r1: Interpret and act on wait() status values
-dev-perl/RPC-XML 0.790.0: An implementation of XML-RPC
-dev-perl/Readonly 2.0.0: Facility for creating read-only scalars, arrays, hashes
+dev-perl/RPC-XML 0.790.0 0.800.0: An implementation of XML-RPC
+dev-perl/Readonly 2.0.0 2.50.0: Facility for creating read-only scalars, arrays, hashes
 dev-perl/Readonly-XS 1.50.0-r1: Companion module for Readonly.pm, to speed up read-only scalar variables
 dev-perl/Ref-Util-XS 0.116.0: XS Implementation for Ref::Util
 dev-perl/Regexp-Common 2017060201.0.0: Provide commonly requested regular expressions
-dev-perl/Regexp-Common-net-CIDR 0.20.0-r1: Provides patterns for CIDR blocks
+dev-perl/Regexp-Common-net-CIDR 0.20.0-r1 0.30.0: Provides patterns for CIDR blocks
 dev-perl/Regexp-IPv6 0.30.0-r1: Regular expression for IPv6 addresses
 dev-perl/Regexp-Shellish 0.930.0-r1: Regexp::Shellish - Shell-like regular expressions
 dev-perl/Regexp-Util 0.3.0: General purpose utilities for working with Regular Expressions
-dev-perl/Return-Value 1.666.1-r1: Polymorphic Return Values
+dev-perl/Return-Value 1.666.1-r1 1.666.5: Polymorphic Return Values
 dev-perl/Role-Basic 0.130.0: Just roles. Nothing else
-dev-perl/Role-Tiny 2.0.5: Roles. Like a nouvelle cuisine portion size slice of Moose
+dev-perl/Role-Tiny 2.0.5 2.0.6: Roles. Like a nouvelle cuisine portion size slice of Moose
 dev-perl/Roman 1.240.0: Perl module for conversion between Roman and Arabic numerals
 dev-perl/Router-Simple 0.170.0: Simple HTTP router
 dev-perl/SDL 2.546: Simple DirectMedia Layer (SDL) bindings for perl
@@ -6322,7 +6322,7 @@ dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50: quilt patch manager
 dev-util/ragel 6.7-r1 6.10: Compiles finite state machines from regular languages into executable code
 dev-util/rbtools 0.7.10: Command line tools for use with Review Board
-dev-util/re2c 0.13.5-r1 0.16: tool for generating C-based recognizers from regular expressions
+dev-util/re2c 0.13.5-r1 0.16 1.0.3: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.6.1 2.6.4: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16: A utility for solving diff/patch rejects
@@ -8483,7 +8483,7 @@ net-dns/rbldnsd 0.998: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.5: A wrapper for DNS name resolving or DNS faking
 net-dns/unbound 1.5.1-r2 1.5.10: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
-net-firewall/arno-iptables-firewall 2.0.1e: Arno's iptables firewall script
+net-firewall/arno-iptables-firewall 2.0.1e 2.0.3: Arno's iptables firewall script
 net-firewall/arptables 0.0.4: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
 net-firewall/conntrack-tools 1.4.2 1.4.4-r1: Connection tracking userspace tools
 net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.org
