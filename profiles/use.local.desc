@@ -1110,18 +1110,23 @@ dev-games/mygui:samples - Install MyGUI demos (needs ogre USE flag)
 dev-games/mygui:tools - Build the tools for development
 dev-games/ode:double-precision - more precise calculations at the expense of speed
 dev-games/ode:gyroscopic - enable gyroscopic term (may cause instability)
-dev-games/ogre:boost - enable boost support
+dev-games/ogre:boost - Enable boost support
+dev-games/ogre:cache - Enable GL state cache support
 dev-games/ogre:cg - NVIDIA toolkit plugin
-dev-games/ogre:double-precision - more precise calculations at the expense of speed
-dev-games/ogre:freeimage - support images via freeimage
+dev-games/ogre:double-precision - More precise calculations at the expense of speed
+dev-games/ogre:egl - Use egl instead of glx
+dev-games/ogre:experimental - Build experimental BETA components 'Bites' and 'HLMS'
+dev-games/ogre:freeimage - Support images via media-libs/freeimage
 dev-games/ogre:gl3plus - Build OpenGL 3+ RenderSystem (EXPERIMENTAL)
-dev-games/ogre:gles2 - build OpenGL ES 2.x RenderSystem
+dev-games/ogre:gles2 - Build OpenGL ES 2.x RenderSystem
 dev-games/ogre:gles3 - Enable OpenGL ES 3.x Features
-dev-games/ogre:ois - pull in Object-oriented Input System library for samples
-dev-games/ogre:poco - when USE=threads, use poco for threading
-dev-games/ogre:tbb - when USE=threads, use tbb for threading
-dev-games/ogre:tools - build+install helper tools
-dev-games/ogre:zip - support zip archives
+dev-games/ogre:ois - Pull in Object-oriented Input System library dev-games/ois for samples
+dev-games/ogre:poco - When USE=threads, use poco for threading
+dev-games/ogre:resman-pedantic - Resource Manager PEDANTIC : require an explicit resource group. Case sensitive lookup. Some demos might not work with this setting. (default: case-insensitive + sensitive lookup in all groups)
+dev-games/ogre:resman-strict - Resource Manager STRICT : search in default group if not specified otherwise. Case sensitive lookup. Some demos might not work with this setting. (default: case-insensitive + sensitive lookup in all groups)
+dev-games/ogre:tbb - When USE=threads, use tbb for threading
+dev-games/ogre:tools - Build and install helper tools
+dev-games/ogre:zip - Support zip archives
 dev-games/openscenegraph:asio - Enable support for dev-cpp/asio library
 dev-games/openscenegraph:fox - Build examples using x11-libs/fox library
 dev-games/openscenegraph:gdal - Enable support for sci-libs/gdal library

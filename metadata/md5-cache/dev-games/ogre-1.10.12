@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-games/ois dev-libs/boost:= dev-libs/zziplib media-libs/freetype:2 x11-libs/libX11 x11-libs/libXaw x11-libs/libXrandr x11-libs/libXt cg? ( media-gfx/nvidia-cg-toolkit ) egl? ( media-libs/mesa[egl] ) freeimage? ( media-libs/freeimage ) gles2? ( media-libs/mesa[gles2] ) opengl? ( virtual/glu virtual/opengl ) tools? ( dev-libs/tinyxml[stl] ) virtual/pkgconfig x11-base/xorg-proto doc? ( app-doc/doxygen ) sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=Object-oriented Graphics Rendering Engine
+EAPI=6
+HOMEPAGE=https://www.ogre3d.org/
+IUSE=+cache cg doc double-precision egl examples experimental +freeimage gles2 +opengl profile resman-pedantic resman-strict tools
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=MIT public-domain
+RDEPEND=dev-games/ois dev-libs/boost:= dev-libs/zziplib media-libs/freetype:2 x11-libs/libX11 x11-libs/libXaw x11-libs/libXrandr x11-libs/libXt cg? ( media-gfx/nvidia-cg-toolkit ) egl? ( media-libs/mesa[egl] ) freeimage? ( media-libs/freeimage ) gles2? ( media-libs/mesa[gles2] ) opengl? ( virtual/glu virtual/opengl ) tools? ( dev-libs/tinyxml[stl] )
+REQUIRED_USE=|| ( gles2 opengl ) ?? ( resman-pedantic resman-strict ) examples? ( experimental )
+RESTRICT=test
+SLOT=0/1.10.0
+SRC_URI=https://github.com/OGRECave/ogre/archive/v1.10.12.zip -> ogre-1.10.12.zip
+_eclasses_=cmake-utils	ec27c4d90ac99a1a0fb77d97bfc597ee	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=b414db3ca2145dd7f308337d8f5dadb3
