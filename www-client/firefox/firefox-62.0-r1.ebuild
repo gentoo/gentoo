@@ -439,7 +439,7 @@ src_install() {
 	DESTDIR="${D}" ./mach install
 
 	# Install language packs
-	mozlinguas_src_install
+	MOZ_INSTALL_L10N_XPIFILE="1" mozlinguas_src_install
 
 	local size sizes icon_path icon name
 	if use bindist; then
