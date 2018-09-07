@@ -17,7 +17,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-util/promu"
+DEPEND="dev-util/promu
+	net-analyzer/net-snmp"
 
 pkg_setup() {
 	enewgroup ${PN}
