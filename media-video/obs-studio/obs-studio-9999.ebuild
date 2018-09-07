@@ -62,8 +62,6 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}"
 
-PATCHES="${FILESDIR}/${PN}-21.1.2-use-less-automagic.patch"
-
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 
 src_configure() {
