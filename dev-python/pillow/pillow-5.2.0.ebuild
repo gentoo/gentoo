@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 virtualx
@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.2.0-no-usr-lib.patch"
+	"${FILESDIR}/${PN}-5.2.0-fix-lib-paths.patch"
 )
 
 python_configure_all() {
