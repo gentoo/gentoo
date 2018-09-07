@@ -103,7 +103,7 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		GEGL="${EPREFIX}"/usr/bin/gegl-0.4
-		GDBUS_CODEGEN="${EPREFIX}"/bin/false
+		GDBUS_CODEGEN="${EPREFIX}"/usr/bin/gdbus-codegen
 
 		--enable-default-binary
 		--disable-silent-rules
