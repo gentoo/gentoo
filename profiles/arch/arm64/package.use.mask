@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Virgil Dupras <vdupras@gentoo.org> (06 Sep 2018)
+# sci-electronics/ngspice not yet keyworded, bug #665416
+# sci-libs/oce not yet keyworded
+sci-electronics/kicad oce ngspice
+
 # Ulrich Müller <ulm@gentoo.org> (02 Sep 2018)
 # =media-gfx/imagemagick-6* not keyworded
 <app-editors/emacs-24.5-r7:24 imagemagick
