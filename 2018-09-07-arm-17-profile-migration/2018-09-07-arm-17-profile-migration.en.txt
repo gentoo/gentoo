@@ -1,0 +1,59 @@
+Title: ARM 17.0 profile migration with CHOST change
+Author: James Le Cuirot <chewi@gentoo.org>
+Content-Type: text/plain
+Posted: 2018-09-07
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Keyword: arm
+Display-If-Keyword: arm-linux
+
+The new 17.0 profiles for ARM are now officially available. This not
+only features the PIE migration previously announced for other
+architectures but also a tuple (CHOST) change for hardfloat systems.
+
+In short, the tuple will change from armv7a-hardfloat-linux-gnueabi to
+armv7a-unknown-linux-gnueabihf or similar. This is to fall in line with
+what the rest of the Linux community are now using. If the vendor (2nd)
+part of your tuple is different or missing then you may keep it as it
+is. The hf ending is what matters.
+
+If you are using an unversioned alternative profile such as
+hardened/linux/arm/armv7a then the default CHOST will have changed for
+you already. Hopefully, you were shielded from the change by having
+CHOST explicitly set in your make.conf. In this case, a migration is
+still required.
+
+Changing CHOST is never simple and does carry some risk. We encourage
+users to migrate but if you do not have sys-devel/llvm on your system
+and you do not cross-compile for ARM then you may choose to keep your
+existing CHOST. We will continue to support this to some degree
+although we cannot promise that other packages will not be affected in
+future.
+
+If you choose not to migrate or your system is not hardfloat then you
+must ensure that CHOST is explicitly set in make.conf and then proceed
+with a regular 17.0 migration to deal with PIE as detailed here:
+
+https://www.gentoo.org/support/news-items/2017-11-30-new-17-profiles.html
+
+Otherwise, if you do wish to migrate then we have written a script to
+do the necessary steps for you:
+
+https://gist.github.com/chewi/1601684ad8f3cf8de0b786c00fa09b3c
+
+It takes a minimal backup of the existing toolchain with quickpkg
+before changing anything but we strongly recommend that you take a
+full backup first. The script echos each command as it goes along so
+that you can keep an eye on what it's doing. You are, of course,
+welcome to tinker with the script or perform the migration manually if
+you think you know your own system better. It is heavily commented for
+this reason.
+
+If the script fails then you can take remedial action before running
+it again and it should skip any time-consuming builds that it has
+already done. If the migration doesn't go to plan then please do seek
+help in #gentoo-arm.
+
+A migration of this kind can justify rebuilding @world but with ARM
+typically being very slow, the script does just the minimum
+necessary. You are free to rebuild @world yourself after running it.
