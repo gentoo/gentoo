@@ -31,15 +31,14 @@ COMMON_DEPEND=">=x11-libs/wxGTK-3.0.2:${WX_GTK_VER}[X,opengl]
 		net-misc/curl[ssl]
 	)
 	media-libs/glew:0=
+	media-libs/glm
 	media-libs/freeglut
 	media-libs/mesa
 	ngspice? (
 		sci-electronics/ngspice[shared]
 	)
-	amd64? (
-		oce? (
-			sci-libs/oce
-		)
+	oce? (
+		sci-libs/oce
 	)
 	x11-libs/cairo"
 DEPEND="${COMMON_DEPEND}
