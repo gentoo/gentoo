@@ -15,6 +15,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+blender +fastmath +fasttrig jpeg opencv openexr png +python tiff truetype"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="dev-libs/boost:=
 	dev-libs/libxml2
@@ -49,6 +50,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DYAF_LIB_DIR=$(get_libdir)
 		-DWITH_YAF_PY_BINDINGS=$(usex python)
+		-DYAF_PY_VERSION=${EPYTHON#python}
 		-DWITH_YAF_RUBY_BINDINGS=OFF
 		-DBLENDER_ADDON=OFF # addon is a separate package called blender-exporter
 		-DCMAKE_SKIP_RPATH=ON # NULL DT_RUNPATH security problem
