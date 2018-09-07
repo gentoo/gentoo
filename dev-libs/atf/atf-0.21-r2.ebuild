@@ -1,9 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit ltprune
 
 DESCRIPTION="Libraries to write tests in C, C++ and shell"
 HOMEPAGE="https://github.com/jmmv/atf"
@@ -16,9 +14,10 @@ IUSE=""
 
 DEPEND="virtual/pkgconfig"
 
-PATCHES=( ${FILESDIR}/${P}-getopt-solaris.patch )
+PATCHES=( "${FILESDIR}"/${P}-getopt-solaris.patch )
 
 src_install() {
 	default
-	prune_libtool_files
+	rm -r "${ED%/}"/usr/tests || die
+	find "${ED}" -name '*.la' -delete || die
 }
