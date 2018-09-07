@@ -17,7 +17,7 @@
     <flag name="luajit">Build support for scripting via Luajit.</flag>
     <flag name="nvenc">Enable NVENC encoding for nVidia video cards.</flag>
     <flag name="python">Build support for scripting via Python 3.</flag>
-    <flag name="speexdsp">Enable noise suppression filter support via
+    <flag name="speex">Enable noise suppression filter support via
       <pkg>media-libs/speexdsp</pkg>.</flag>
   </use>
   <upstream>
