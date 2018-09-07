@@ -4,6 +4,7 @@
 # Ben Kohler <bkohler@gentoo.org> (23 Aug 2018)
 # Mask iwd support until net-wireless/iwd is keyworded
 net-misc/connman iwd
+net-misc/networkmanager iwd
 
 # Rick Farina <zerochaos@gentoo.org> (27 Jun 2018)
 # Catalyst only has support for assembling bootloader on some arches
