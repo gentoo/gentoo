@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.52.0-darwin-no-python-framework.patch"
 	"${FILESDIR}/${PN}-1.54.0-support_dots_in_python-buildid.patch"
 	"${FILESDIR}/${PN}-1.55.0-ppc-aix.patch"
+	"${FILESDIR}/${PN}-1.62.0-sparc-no-default-flags.patch"
 )
 
 pkg_setup() {
