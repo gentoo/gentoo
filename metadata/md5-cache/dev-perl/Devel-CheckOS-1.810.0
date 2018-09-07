@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/Data-Compare-1.210.0 >=dev-perl/File-Find-Rule-0.280.0 virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-File-Temp-0.190.0 >=virtual/perl-Test-Simple-0.880.0 ) dev-lang/perl:=
+DESCRIPTION=require that we are running on a particular OS
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Devel-CheckOS/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Data-Compare-1.210.0 >=dev-perl/File-Find-Rule-0.280.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DC/DCANTRELL/Devel-CheckOS-1.81.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_md5_=2eac97e9e383639ce110c997be4a4cab
