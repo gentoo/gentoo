@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( pypy3 python3_{5,6,7} )
 
 inherit distutils-r1
 
@@ -20,7 +20,6 @@ IUSE="doc test"
 
 RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
-	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/jeepney[${PYTHON_USEDEP}]
 "
 BDEPEND="
