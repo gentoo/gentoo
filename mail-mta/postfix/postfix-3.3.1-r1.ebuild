@@ -16,7 +16,7 @@ SRC_URI="${MY_URI}/${MY_SRC}.tar.gz"
 LICENSE="|| ( IBM EPL-2.0 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~x86-fbsd"
-IUSE="+berkdb cdb doc dovecot-sasl +eai hardened ldap ldap-bind libressl lmdb memcached mbox mysql nis pam postgres sasl selinux sqlite ssl"
+IUSE="+berkdb cdb dovecot-sasl +eai hardened ldap ldap-bind libressl lmdb memcached mbox mysql nis pam postgres sasl selinux sqlite ssl"
 
 DEPEND=">=dev-libs/libpcre-3.4
 	dev-lang/perl
@@ -196,10 +196,6 @@ src_configure() {
 }
 
 src_install () {
-	local myconf
-	use doc && myconf="readme_directory=\"/usr/share/doc/${PF}/readme\" \
-		html_directory=\"/usr/share/doc/${PF}/html\""
-
 	LD_LIBRARY_PATH="${S}/lib" \
 	/bin/sh postfix-install \
 		-non-interactive \
@@ -210,7 +206,6 @@ src_install () {
 		mailq_path="/usr/bin/mailq" \
 		newaliases_path="/usr/bin/newaliases" \
 		sendmail_path="/usr/sbin/sendmail" \
-		${myconf} \
 		|| die "postfix-install failed"
 
 	# Fix spool removal on upgrade
@@ -256,7 +251,7 @@ src_install () {
 	use postgres || sed -i -e "s/postgresql //" "${D}/etc/init.d/postfix"
 
 	dodoc *README COMPATIBILITY HISTORY PORTING RELEASE_NOTES*
-	use doc && mv "${S}"/examples "${D}"/usr/share/doc/${PF}/
+	mv "${S}"/examples "${D}"/usr/share/doc/${PF}/
 
 	pamd_mimic_system smtp auth account
 
