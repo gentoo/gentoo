@@ -60,7 +60,8 @@ DEPEND="rust? ( dev-lang/rust )
 	amd64? ( ${ASM_DEPEND}
 		virtual/opengl )
 	x86? ( ${ASM_DEPEND}
-		virtual/opengl )"
+		virtual/opengl )
+	sys-devel/clang"
 
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-thunderbird )
