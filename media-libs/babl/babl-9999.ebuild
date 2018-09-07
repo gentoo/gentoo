@@ -27,10 +27,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.1.48-configure-cflags.patch
-)
-
 src_prepare() {
 	default
 	[[ ${PV} == *9999* ]] && eautoreconf
