@@ -1,5 +1,5 @@
---- bak/wavsplit.c	2006-11-24 17:53:36.056883000 +0100
-+++ wavsplit.c	2006-11-24 17:52:38.345276250 +0100
+--- a/wavsplit.c	2006-11-24 17:53:36.056883000 +0100
++++ b/wavsplit.c	2006-11-24 17:52:38.345276250 +0100
 @@ -403,7 +403,7 @@
    ptr += 4;                     /* we move past fmt_ */
    memcpy (&waveformat, ptr, sizeof (WAVEFORMAT));
@@ -27,8 +27,8 @@
      printf ("Samplebits: %d\n", waveformat.wBitsPerSample);
      printf ("Databytes: %llu\n\n", databytes);
      printf ("Split         Hours  Mins   Seconds         Bytes         %%\n");
---- bak/wavsplit.h	2006-11-24 17:53:36.056883000 +0100
-+++ wavsplit.h	2006-11-24 17:43:58.648797250 +0100
+--- a/wavsplit.h	2006-11-24 17:53:36.056883000 +0100
++++ b/wavsplit.h	2006-11-24 17:43:58.648797250 +0100
 @@ -46,29 +46,29 @@
  } TIMEFORMAT;
  
