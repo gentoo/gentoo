@@ -14,6 +14,8 @@
 			getting ip</flag>
 		<flag name="dhcpcd">Use <pkg>net-misc/dhcpcd</pkg> for getting ip</flag>
 		<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking</flag>
+		<flag name="iwd">Use <pkg>net-wireless/iwd</pkg> instead of
+			<pkg>net-wireless/wpa_supplicant</pkg> for wifi support by default</flag>
 		<flag name="json">Enable JSON validation via <pkg>dev-libs/jansson</pkg>
 			in libnm.</flag>
 		<flag name="modemmanager">Enable support for mobile broadband devices
@@ -26,8 +28,7 @@
 		<flag name="resolvconf">Use <pkg>net-dns/openresolv</pkg> for managing
 			DNS information</flag>
 		<flag name="teamd">Enable Teamd control support</flag>
-		<flag name="wifi">Enable support for wifi and 802.1x security using
-			<pkg>net-wireless/wpa_supplicant</pkg></flag>
+		<flag name="wifi">Enable support for wifi and 802.1x security</flag>
 		<flag name="wext">Enable support for the deprecated Wext (Wireless
 			Extensions) API; needed for some older drivers (e.g. ipw2200,
 			ndiswrapper)</flag>
