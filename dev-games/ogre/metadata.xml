@@ -82,7 +82,10 @@ Exporters
     <flag name="cg">NVIDIA toolkit plugin</flag>
     <flag name="double-precision">More precise calculations at the expense of speed</flag>
     <flag name="egl">Use egl instead of glx</flag>
-    <flag name="experimental">Build experimental BETA components 'Bites' and 'HLMS'</flag>
+    <flag name="experimental" restrict="&lt;dev-games/ogre-1.11">
+        Build experimental BETA components 'Bites' and 'HLMS'
+    </flag>
+    <flag name="experimental">Build experimental BETA component 'HLMS'</flag>
     <flag name="freeimage">Support images via media-libs/freeimage</flag>
     <flag name="gl3plus">Build OpenGL 3+ RenderSystem (EXPERIMENTAL)</flag>
     <flag name="gles2" restrict="&gt;dev-games/ogre-1.10">
@@ -90,6 +93,7 @@ Exporters
     </flag>
     <flag name="gles2">Build OpenGL ES 2.x RenderSystem</flag>
     <flag name="gles3">Enable OpenGL ES 3.x Features</flag>
+    <flag name="json">Use dev-libs/rapidjson (needed by Hlms JSON materials)</flag>
     <flag name="ois">Pull in Object-oriented Input System library dev-games/ois for samples</flag>
     <flag name="poco">When USE=threads, use poco for threading</flag>
     <flag name="resman-pedantic">
