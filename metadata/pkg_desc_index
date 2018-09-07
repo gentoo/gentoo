@@ -3242,7 +3242,7 @@ dev-libs/starpu 1.1.5: Unified runtime system for heterogeneous multicore archit
 dev-libs/stfl 0.24: A library which implements a curses-based widget set for text terminals
 dev-libs/svrcore 4.0.4-r1: Mozilla LDAP C SDK
 dev-libs/tinyxml 2.6.2-r2: Simple and small C++ XML parser
-dev-libs/tinyxml2 2.2.0 3.0.0 6.2.0: A simple, small, efficient, C++ XML parser
+dev-libs/tinyxml2 6.2.0: A simple, small, efficient, C++ XML parser
 dev-libs/tntnet 2.2.1: Modular, multithreaded web application server extensible with C++
 dev-libs/totem-pl-parser 3.10.8: Playlist parsing library
 dev-libs/tre 0.8.0-r1: Lightweight, robust, and efficient POSIX compliant regexp matching library
@@ -7658,7 +7658,7 @@ media-libs/mediastreamer 2.9.0-r2: Mediastreaming library for telephony applicat
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 17.3.9 18.1.6: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.8-r1: An Open Source library for Flash movie generation
-media-libs/mlt 6.4.1-r6 6.6.0-r1 6.10.0: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.10.0: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.35.1 1.40.0: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1 1.9.4-r2: Network Audio System
@@ -7697,7 +7697,7 @@ media-libs/quvi 0.2.19 0.4.2 0.9.5: A command line tool for parsing video downlo
 media-libs/raptor 2.0.14: The RDF Parser Toolkit
 media-libs/raul 0.8.0-r1: C++ utility library primarily aimed at audio/musical applications
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
-media-libs/rtaudio 4.0.12-r1 4.1.2: A set of cross-platform C++ classes for realtime audio I/O
+media-libs/rtaudio 4.1.2: A set of cross-platform C++ classes for realtime audio I/O
 media-libs/rubberband 1.8.1-r1: An audio time-stretching and pitch-shifting library and utility program
 media-libs/sampleicc 1.6.6: C++ library for reading, writing, manipulating, and applying ICC profiles
 media-libs/sbc 1.3: An audio codec to connect bluetooth high quality audio devices like headphones or loudspeakers
@@ -7875,7 +7875,7 @@ media-plugins/mediastreamer-bcg729 1.0.0: Backported G729 implementation for Lin
 media-plugins/mediastreamer-ilbc 2.0.3: mediastreamer plugin: add iLBC support
 media-plugins/mediastreamer-silk 0.0.1: SILK (skype codec) implementation for Linphone
 media-plugins/mediastreamer-x264 1.4.1: mediastreamer plugin: add H264 support
-media-plugins/qmmp-plugin-pack 1.1.3-r1 1.2.2: A set of extra plugins for Qmmp
+media-plugins/qmmp-plugin-pack 1.2.2: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
 media-plugins/swh-lv2 1.0.16: Large collection of LV2 audio plugins/effects
 media-plugins/swh-plugins 0.4.15-r3: Large collection of LADSPA audio plugins/effects
@@ -8049,7 +8049,7 @@ media-sound/mcdp 0.4a 0.4b: A very small console cd player
 media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audio system
 media-sound/mhwaveedit 1.4.22: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.6: A console MOD-Player based on libmikmod
-media-sound/mixxx 2.0.0-r5 2.1.1-r1: Advanced Digital DJ tool based on Qt
+media-sound/mixxx 2.1.1-r1: Advanced Digital DJ tool based on Qt
 media-sound/moc 2.5.2: Music On Console - ncurses interface for playing audio files
 media-sound/modplugtools 0.5.1: libmodplug based module players modplug123 and modplugplay
 media-sound/moosic 1.5.6-r1: Music player that focuses on easy playlist management
@@ -8104,7 +8104,7 @@ media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Dae
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
-media-sound/qmmp 1.1.7-r1 1.2.3: Qt5-based audio player with winamp/xmms skins support
+media-sound/qmmp 1.2.3: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsynth 0.4.4: A Qt application to control FluidSynth
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.0: A Qt5 client for the music player daemon (MPD) written in C++
