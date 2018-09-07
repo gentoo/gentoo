@@ -94,8 +94,16 @@ Exporters
     <flag name="gles2">Build OpenGL ES 2.x RenderSystem</flag>
     <flag name="gles3">Enable OpenGL ES 3.x Features</flag>
     <flag name="json">Use dev-libs/rapidjson (needed by Hlms JSON materials)</flag>
+    <flag name="legacy-animations">
+        Use the skeletal animation from 1.x. It's much slower, but the new system
+        is still experimental.
+    </flag>
     <flag name="ois">Pull in Object-oriented Input System library dev-games/ois for samples</flag>
     <flag name="poco">When USE=threads, use poco for threading</flag>
+    <flag name="mobile">
+        Build for OpenGL ES 2.0 only and use the mobile variants of the PBS and
+        unlit material systems.
+    </flag>
     <flag name="resman-pedantic">
         Resource Manager PEDANTIC : require an explicit resource group. Case
         sensitive lookup. Some demos might not work with this setting.
