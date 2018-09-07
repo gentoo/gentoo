@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/jedisct1/dnscrypt-proxy"
 
 LICENSE="ISC"
 SLOT="0"
-IUSE="test"
+IUSE="pie test"
 
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
 PATCHES=( "${FILESDIR}"/config-full-paths-r10.patch )
@@ -36,6 +36,10 @@ src_prepare() {
 	mkdir -p "src/${EGO_PN%/*}" || die
 	mv "${PN}" "src/${EGO_PN}" || die
 	mv "vendor" "src/" || die
+}
+
+src_configure() {
+	EGO_BUILD_FLAGS="-buildmode=$(usex pie pie default)"
 }
 
 src_install() {
