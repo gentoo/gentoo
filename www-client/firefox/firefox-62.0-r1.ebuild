@@ -345,6 +345,10 @@ src_configure() {
 		mozconfig_annotate '-pulseaudio' --enable-alsa
 	fi
 
+	# Disable built-in ccache support to avoid sandbox violation, #665420
+	# Use FEATURES=ccache instead!
+	mozconfig_annotate '' --without-ccache
+
 	mozconfig_use_enable dbus
 
 	mozconfig_use_enable wifi necko-wifi
