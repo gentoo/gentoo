@@ -3,6 +3,8 @@
 
 EAPI=6
 
+CMAKE_REMOVE_MODULES="yes"
+CMAKE_REMOVE_MODULES_LIST="FindFreetype FindDoxygen FindZLIB"
 inherit cmake-utils
 
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
@@ -13,41 +15,45 @@ LICENSE="MIT public-domain"
 SLOT="0/1.10.0"
 KEYWORDS="~amd64 ~arm ~x86"
 
-IUSE="cg doc double-precision examples +freeimage gl3plus gles2 gles3 ois +opengl profile tools"
+IUSE="+cache cg doc double-precision egl examples experimental +freeimage gles2
+	+opengl profile resman-pedantic resman-strict tools"
 
-REQUIRED_USE="examples? ( ois )
-	gles3? ( gles2 )
-	gl3plus? ( opengl )"
-
+REQUIRED_USE="
+	|| ( gles2 opengl )
+	?? ( resman-pedantic resman-strict )
+	examples? ( experimental )
+"
 RESTRICT="test" #139905
 
 RDEPEND="
-	dev-libs/boost
+	dev-games/ois
+	dev-libs/boost:=
 	dev-libs/zziplib
 	media-libs/freetype:2
-	virtual/glu
-	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXaw
 	x11-libs/libXrandr
 	x11-libs/libXt
 	cg? ( media-gfx/nvidia-cg-toolkit )
+	egl? ( media-libs/mesa[egl] )
 	freeimage? ( media-libs/freeimage )
-	gl3plus? ( >=media-libs/mesa-9.2.5 )
-	gles2? ( >=media-libs/mesa-9.0.0[gles2] )
-	gles3? ( >=media-libs/mesa-10.0.0[gles2] )
-	ois? ( dev-games/ois )
-	tools? ( dev-libs/tinyxml[stl] )"
+	gles2? ( media-libs/mesa[gles2] )
+	opengl? (
+		virtual/glu
+		virtual/opengl
+	)
+	tools? ( dev-libs/tinyxml[stl] )
+"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-base/xorg-proto
 	doc? ( app-doc/doxygen )"
 
 PATCHES=(
-	"${FILESDIR}/${P}-samples.patch"
-	"${FILESDIR}/${P}-resource_path.patch"
-	"${FILESDIR}/${P}-media_path.patch"
-	"${FILESDIR}/${P}-fix_double_precision-88f0d5b.patch"
+	"${FILESDIR}/${PN}-1.10.11-samples.patch"
+	"${FILESDIR}/${PN}-1.10.11-resource_path.patch"
+	"${FILESDIR}/${PN}-1.10.11-media_path.patch"
+	"${FILESDIR}/${P}-use_system_tinyxml.patch"
 )
 
 src_prepare() {
@@ -59,38 +65,40 @@ src_prepare() {
 		-e '/CONFIGURATIONS/s:CONFIGURATIONS Release.*::' \
 		CMake/Utils/OgreConfigTargets.cmake || die
 
-	# make sure we're not using the included tinyxml
-	# Update for 1.10.11: Unfortunately the build system does not
-	#   search for a system wide tinyxml at this moment. However,
-	#   TinyXML is meant to be built into and not linked to a using
-	#   project anyway.
-	# rm -f Tools/XMLConverter/{include,src}/tiny*.*
-
 	# Fix some path issues
 	cmake-utils_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DOGRE_BUILD_COMPONENT_JAVA=NO
-		-DOGRE_BUILD_COMPONENT_PYTHON=NO
-		-DOGRE_BUILD_DEPENDENCIES=NO
+		-DOGRE_BUILD_COMPONENT_BITES=$(usex experimental)
+		-DOGRE_BUILD_COMPONENT_HLMS=$(usex experimental)
+		-DOGRE_BUILD_COMPONENT_JAVA=no
+		-DOGRE_BUILD_COMPONENT_PYTHON=no
+		-DOGRE_BUILD_DEPENDENCIES=no
 		-DOGRE_BUILD_PLUGIN_CG=$(usex cg)
+		-DOGRE_BUILD_RENDERSYSTEM_GL=$(usex opengl)
+		-DOGRE_BUILD_RENDERSYSTEM_GL3PLUS=$(usex opengl)
+		-DOGRE_BUILD_RENDERSYSTEM_GLES2=$(usex gles2)
 		-DOGRE_BUILD_SAMPLES=$(usex examples)
-		-DOGRE_BUILD_TESTS=FALSE
+		-DOGRE_BUILD_TESTS=no
 		-DOGRE_BUILD_TOOLS=$(usex tools)
 		-DOGRE_CONFIG_DOUBLE=$(usex double-precision)
 		-DOGRE_CONFIG_ENABLE_FREEIMAGE=$(usex freeimage)
+		-DOGRE_CONFIG_ENABLE_GL_STATE_CACHE_SUPPORT=$(usex cache)
 		-DOGRE_CONFIG_THREADS=3
 		-DOGRE_CONFIG_THREAD_PROVIDER=std
-		-DOGRE_FULL_RPATH=NO
+		-DOGRE_FULL_RPATH=no
+		-DOGRE_GLSUPPORT_USE_EGL=$(usex egl)
 		-DOGRE_INSTALL_DOCS=$(usex doc)
 		-DOGRE_INSTALL_SAMPLES=$(usex examples)
 		-DOGRE_INSTALL_SAMPLES_SOURCE=$(usex examples)
-		-DOGRE_NODE_STORAGE_LEGACY=NO
+		-DOGRE_NODE_STORAGE_LEGACY=no
 		-DOGRE_PROFILING=$(usex profile)
-		-DOGRE_RESOURCEMANAGER_STRICT=strict
-		-DOGRE_USE_STD11=YES
+		-DOGRE_RESOURCEMANAGER_STRICT=$(\
+			usex resman-pedantic 1 $(\
+			usex resman-strict 2 0))
+		-DOGRE_USE_STD11=yes
 	)
 
 	cmake-utils_src_configure
