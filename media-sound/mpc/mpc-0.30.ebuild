@@ -15,18 +15,19 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="iconv test"
 
 RDEPEND="media-libs/libmpdclient
-		iconv? ( virtual/libiconv )"
+	iconv? ( virtual/libiconv )"
+
 DEPEND="${RDEPEND}
-		dev-python/sphinx
-		virtual/pkgconfig
-		test? ( dev-libs/check )"
+	dev-python/sphinx
+	virtual/pkgconfig
+	test? ( dev-libs/check )"
 
 src_configure() {
 	local emesonargs=(
-			-Dtest=$(usex iconv true false)
-			-Diconv=$(usex test true false)
-			)
-			meson_src_configure
+		-Dtest=$(usex iconv true false)
+		-Diconv=$(usex test true false)
+	)
+	meson_src_configure
 }
 
 src_install() {
