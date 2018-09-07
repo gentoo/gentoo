@@ -37,7 +37,7 @@ DEPEND="
 	l10n_it? ( dev-texlive/texlive-langitalian )
 	l10n_ja? ( dev-texlive/texlive-langjapanese media-fonts/vlgothic )
 	l10n_pl? ( dev-texlive/texlive-langpolish )"
-RDEPEND="!!app-doc/kicad-doc-bin"
+RDEPEND=""
 
 src_configure() {
 	local mycmakeargs=(
