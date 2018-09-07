@@ -21,7 +21,7 @@ HOMEPAGE="https://obsproject.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+alsa fdk imagemagick jack luajit nvenc pulseaudio python speexdsp truetype v4l"
+IUSE="+alsa fdk imagemagick jack luajit nvenc pulseaudio python speex truetype v4l"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMON_DEPEND="
@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	nvenc? ( media-video/ffmpeg:=[nvenc] )
 	pulseaudio? ( media-sound/pulseaudio )
 	python? ( ${PYTHON_DEPS} )
-	speexdsp? ( media-libs/speexdsp )
+	speex? ( media-libs/speexdsp )
 	truetype? (
 		media-libs/fontconfig
 		media-libs/freetype
@@ -77,7 +77,7 @@ src_configure() {
 		-DDISABLE_JACK=$(usex !jack)
 		-DDISABLE_LIBFDK=$(usex !fdk)
 		-DDISABLE_PULSEAUDIO=$(usex !pulseaudio)
-		-DDISABLE_SPEEXDSP=$(usex !speexdsp)
+		-DDISABLE_SPEEXDSP=$(usex !speex)
 		-DDISABLE_V4L2=$(usex !v4l)
 		-DLIBOBS_PREFER_IMAGEMAGICK=$(usex imagemagick)
 		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
