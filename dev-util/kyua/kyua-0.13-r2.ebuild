@@ -24,3 +24,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( dev-libs/atf )
 "
+
+src_install() {
+	default
+	rm -r "${ED%/}"/usr/tests || die
+}
