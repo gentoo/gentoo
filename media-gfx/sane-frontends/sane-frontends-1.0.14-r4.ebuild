@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Scanner Access Now Easy"
 HOMEPAGE="http://www.sane-project.org"
-SRC_URI="https://alioth.debian.org/frs/download.php/file/1140/${P}.tar.gz"
+SRC_URI="https://salsa.debian.org/debian/sane-frontends/-/archive/upstream/${PV}/${PN}-upstream-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,6 +27,8 @@ REQUIRED_USE="gimp? ( gtk )"
 DOCS=( AUTHORS Changelog NEWS PROBLEMS README )
 
 PATCHES=( "${FILESDIR}/MissingCapsFlag.patch" )
+
+S="${WORKDIR}"/"${PN}"-upstream-"${PV}"
 
 src_configure() {
 	econf \
