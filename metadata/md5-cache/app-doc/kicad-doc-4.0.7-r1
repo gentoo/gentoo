@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=app-text/asciidoc-8.6.9 >=app-text/dblatex-0.3.10 >=app-text/po4a-0.45 >=sys-devel/gettext-0.18 dev-perl/Unicode-LineBreak dev-util/source-highlight l10n_ca? ( dev-texlive/texlive-langspanish ) l10n_de? ( dev-texlive/texlive-langgerman ) l10n_en? ( dev-texlive/texlive-langenglish ) l10n_es? ( dev-texlive/texlive-langspanish ) l10n_fr? ( dev-texlive/texlive-langfrench ) l10n_it? ( dev-texlive/texlive-langitalian ) l10n_ja? ( dev-texlive/texlive-langjapanese media-fonts/vlgothic ) l10n_pl? ( dev-texlive/texlive-langpolish ) sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=Electronic Schematic and PCB design tools manuals
+EAPI=6
+HOMEPAGE=http://www.kicad-pcb.org/
+IUSE=html +pdf l10n_ca l10n_de l10n_en l10n_es l10n_fr l10n_id l10n_it l10n_ja l10n_pl
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( GPL-3+ CC-BY-3.0 ) GPL-2
+REQUIRED_USE=|| ( html pdf ) ^^ ( l10n_ca l10n_de l10n_en l10n_es l10n_fr l10n_id l10n_it l10n_ja l10n_pl )
+SLOT=0
+SRC_URI=https://github.com/KiCad/kicad-doc/archive/4.0.7.tar.gz -> kicad-doc-4.0.7.tar.gz
+_eclasses_=cmake-utils	ec27c4d90ac99a1a0fb77d97bfc597ee	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=4ee0eca7fca97f27f7c20635645fd2bf

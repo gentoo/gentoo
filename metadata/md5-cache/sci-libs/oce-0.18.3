@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install preinst prepare pretend setup test
+DEPEND=dev-lang/tcl:0= dev-lang/tk:0= dev-tcltk/itcl dev-tcltk/itk dev-tcltk/tix media-libs/ftgl media-libs/freetype virtual/glu virtual/opengl x11-libs/libXmu freeimage? ( media-libs/freeimage ) gl2ps? ( x11-libs/gl2ps ) tbb? ( dev-cpp/tbb ) vtk? ( =sci-libs/vtk-8.1*[boost,imaging,qt5,python,rendering,views,xdmf2] ) sys-devel/make >=dev-util/cmake-3.9.6 java? ( >=dev-java/java-config-2.2.0-r3 )
+DESCRIPTION=Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
+EAPI=6
+HOMEPAGE=https://github.com/tpaviot/oce
+IUSE=examples freeimage gl2ps +openmp tbb vtk elibc_FreeBSD java
+KEYWORDS=~amd64
+LICENSE=|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )
+RDEPEND=dev-lang/tcl:0= dev-lang/tk:0= dev-tcltk/itcl dev-tcltk/itk dev-tcltk/tix media-libs/ftgl media-libs/freetype virtual/glu virtual/opengl x11-libs/libXmu freeimage? ( media-libs/freeimage ) gl2ps? ( x11-libs/gl2ps ) tbb? ( dev-cpp/tbb ) vtk? ( =sci-libs/vtk-8.1*[boost,imaging,qt5,python,rendering,views,xdmf2] ) java? ( >=dev-java/java-config-2.2.0-r3 )
+REQUIRED_USE=?? ( openmp tbb )
+SLOT=0.18.3
+SRC_URI=https://github.com/tpaviot/oce/archive/OCE-0.18.3.tar.gz
+_eclasses_=check-reqs	21aa24510a44d259c03425a957336b3b	cmake-utils	ec27c4d90ac99a1a0fb77d97bfc597ee	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	0ee72667014428e01a01df2345244cf3	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=9b1f8d25bc52259e44bb5ec8fb763b94

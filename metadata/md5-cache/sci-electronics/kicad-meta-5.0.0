@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=Electronic Schematic and PCB design tools (meta package)
+EAPI=7
+HOMEPAGE=http://www.kicad-pcb.org
+IUSE=doc nls
+KEYWORDS=~amd64
+LICENSE=metapackage
+RDEPEND=>=sci-electronics/kicad-5.0.0 >=sci-electronics/kicad-symbols-5.0.0 >=sci-electronics/kicad-footprints-5.0.0 >=sci-electronics/kicad-packages3d-5.0.0 >=sci-electronics/kicad-templates-5.0.0 doc? ( >=app-doc/kicad-doc-5.0.0 ) nls? ( >=sci-electronics/kicad-i18n-5.0.0 )
+SLOT=0
+_md5_=7c8986000070d5298d576ddceaa38f0d
