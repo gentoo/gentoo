@@ -236,6 +236,7 @@ src_install () {
 	doman man/man1/smtp-{source,sink}.1 man/man1/qmqp-{source,sink}.1
 
 	keepdir /etc/postfix
+	keepdir /etc/postfix/postfix-files.d
 	if use mbox; then
 		mypostconf="mail_spool_directory=/var/spool/mail"
 	else
