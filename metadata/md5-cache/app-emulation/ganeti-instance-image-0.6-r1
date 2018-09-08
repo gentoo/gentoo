@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install prepare
+DESCRIPTION=Scripts to build out CD or image based VMs using Ganeti
+EAPI=7
+HOMEPAGE=http://code.osuosl.org/projects/ganeti-image
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-arch/dump >=app-emulation/ganeti-2.15.2-r7 app-emulation/qemu sys-apps/util-linux sys-fs/multipath-tools sys-fs/e2fsprogs
+SLOT=0
+SRC_URI=http://ftp.osuosl.org/pub/osl/ganeti-instance-image/ganeti-instance-image-0.6.tar.gz
+_md5_=22aac4db005212c70381da44b2b192c3
