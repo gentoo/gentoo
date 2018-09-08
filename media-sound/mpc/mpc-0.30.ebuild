@@ -24,8 +24,8 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local emesonargs=(
-		-Dtest=$(usex iconv true false)
-		-Diconv=$(usex test true false)
+		-Dtest=$(usex test true false)
+		-Diconv=$(usex iconv true false)
 	)
 	meson_src_configure
 }
