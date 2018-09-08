@@ -51,6 +51,8 @@ src_configure() {
 		[[ ${EPYTHON} == ${SPHINX_IMPL} ]] &&
 			myconf+=( --enable-documentation )
 
+		PYTHON_CPPFLAGS="$(python_get_CFLAGS)" \
+		PYTHON_LIBS="$(python_get_LIBS)" \
 		econf "${myconf[@]}"
 	}
 	python_foreach_impl run_in_build_dir configuring
