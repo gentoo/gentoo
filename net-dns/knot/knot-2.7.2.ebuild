@@ -14,11 +14,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 KNOT_MODULES=(
+	"+cookies"
 	"+dnsproxy"
 	"dnstap"
+	"geoip"
 	"+noudp"
 	"+onlinesign"
-	"rosedb"
 	"+rrl"
 	"+stats"
 	"+synthrecord"
@@ -27,21 +28,22 @@ KNOT_MODULES=(
 IUSE="doc caps +fastparser idn libidn2 systemd +utils ${KNOT_MODULES[@]}"
 
 RDEPEND="
-	>=dev-db/lmdb-0.9.15
+	dev-db/lmdb
 	dev-libs/libedit
-	>=dev-libs/userspace-rcu-0.5.4
+	dev-libs/userspace-rcu
 	dev-python/lmdb
-	>=net-libs/gnutls-3.3:=
-	caps? ( >=sys-libs/libcap-ng-0.6.4 )
+	net-libs/gnutls
+	caps? ( sys-libs/libcap-ng )
 	dnstap? (
 		dev-libs/fstrm
 		dev-libs/protobuf-c
 	)
+	geoip? ( dev-libs/libmaxminddb )
 	idn? (
-		!libidn2? ( net-dns/libidn )
-		libidn2? ( >=net-dns/libidn2-2.0.0 )
+		!libidn2? ( net-dns/libidn:* )
+		libidn2? ( net-dns/libidn2 )
 	)
-	systemd? ( >=sys-apps/systemd-229 )
+	systemd? ( sys-apps/systemd )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -52,21 +54,22 @@ S="${WORKDIR}/${P/_/-}"
 
 src_configure() {
 	local u
-	local my_conf=()
+	local my_conf=(
+		--with-storage="${EPREFIX}/var/lib/${PN}"
+		--with-rundir="${EPREFIX}/var/run/${PN}"
+		$(use_enable fastparser)
+		$(use_enable dnstap)
+		$(use_enable doc documentation)
+		$(use_enable utils utilities)
+		--enable-systemd=$(usex systemd)
+		$(use_with idn libidn)
+	)
+
 	for u in "${KNOT_MODULES[@]#+}"; do
-		my_conf+=("$(use_with $u module-$u)")
+		my_conf+=("$(use_with ${u} module-${u})")
 	done
 
-	econf \
-		--with-storage="${EPREFIX}/var/lib/${PN}" \
-		--with-rundir="${EPREFIX}/var/run/${PN}" \
-		$(use_enable fastparser) \
-		$(use_enable dnstap) \
-		$(use_enable doc documentation) \
-		$(use_enable utils utilities) \
-		--enable-systemd=$(usex systemd) \
-		$(use_with idn libidn) \
-		"${my_conf[@]}"
+	econf "${my_conf[@]}"
 }
 
 src_compile() {
@@ -90,7 +93,7 @@ src_install() {
 
 	newinitd "${FILESDIR}/knot.init" knot
 	if use systemd; then
-		systemd_newunit "${FILESDIR}/knot-1.service" knot
+		systemd_newunit "${FILESDIR}/knot-1.service" knot.service
 	fi
 
 	find "${D}" -name '*.la' -delete || die

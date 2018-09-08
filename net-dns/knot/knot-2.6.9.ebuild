@@ -38,7 +38,7 @@ RDEPEND="
 		dev-libs/protobuf-c
 	)
 	idn? (
-		!libidn2? ( net-dns/libidn )
+		!libidn2? ( net-dns/libidn:* )
 		libidn2? ( net-dns/libidn2 )
 	)
 	systemd? ( sys-apps/systemd )

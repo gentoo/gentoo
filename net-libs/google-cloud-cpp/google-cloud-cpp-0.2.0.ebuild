@@ -19,10 +19,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-DEPEND="dev-libs/protobuf
+RDEPEND="dev-libs/protobuf
 	net-misc/curl
 	net-libs/grpc"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-cpp/gtest"
 
 DOCS=( README.md )
 PATCHES=(
