@@ -6,10 +6,10 @@ EAPI=6
 inherit bash-completion-r1 meson
 
 DESCRIPTION="A commandline client for Music Player Daemon (media-sound/mpd)"
-HOMEPAGE="https://www.musicpd.org"
+HOMEPAGE="https://www.musicpd.org https://github.com/MusicPlayerDaemon/mpc"
 SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="iconv test"
