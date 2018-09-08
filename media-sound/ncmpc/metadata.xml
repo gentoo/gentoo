@@ -13,6 +13,7 @@
 		<flag name="key-screen">Enable key editor screen</flag>
 		<flag name="lyrics-screen">Enable lyrics screen</flag>
 		<flag name="mouse">Enable curses getmouse support</flag>
+		<flag name="outputs-screen">Enable outputs screen</flag>
 		<flag name="search-screen">Enable search screen</flag>
 		<flag name="song-screen">Enable song viewer screen</flag>
 	</use>

@@ -1,0 +1,39 @@
+From fa73e3faa29af8638d2557c6c808bda9dc67afc2 Mon Sep 17 00:00:00 2001
+From: Aleksi Blinnikka <aleksi.blinnikka@gmail.com>
+Date: Tue, 10 Apr 2018 02:33:30 +0300
+Subject: [PATCH] Fix blank progressbar when colors are not in use
+
+When moving wbkgd() call in 9c22a95 it was not conditional like it was
+for others (commits 7946611 and 6b337bc), which caused progress bar to
+not show.
+---
+ src/ProgressBar.cxx | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/ProgressBar.cxx b/src/ProgressBar.cxx
+index 7ddc72f..02782db 100644
+--- a/src/ProgressBar.cxx
++++ b/src/ProgressBar.cxx
+@@ -19,6 +19,7 @@
+ 
+ #include "ProgressBar.hxx"
+ #include "colors.hxx"
++#include "options.hxx"
+ 
+ #include <assert.h>
+ 
+@@ -26,7 +27,10 @@ ProgressBar::ProgressBar(Point p, unsigned _width)
+ 	:window(p, {_width, 1u})
+ {
+ 	leaveok(window.w, true);
+-	wbkgd(window.w, COLOR_PAIR(COLOR_PROGRESSBAR));
++#ifdef ENABLE_COLORS
++	if (options.enable_colors)
++		wbkgd(window.w, COLOR_PAIR(COLOR_PROGRESSBAR));
++#endif
+ }
+ 
+ void
+-- 
+2.16.4
+
