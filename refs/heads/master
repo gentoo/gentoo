@@ -1,17 +1,12 @@
 certificate version 0.1
-pusher 0x6D144E3C 1536398009 +0200
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1536398009-929988946802ad35109315c10a4319b505b83f1f
+pusher 0xB00BC66A401A1600 1536398512 +0200
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1536398512-6362e94db0afcfd80b4fdebd7a95bfdc0ee816c7
 
-4113523b8904167f383c6fb0ecc854ea556e4cfe c00640c07294afbb2a36fd819db53b2efdb9cc48 refs/heads/master
+c00640c07294afbb2a36fd819db53b2efdb9cc48 a753e52d96f72ab54bd959982e39b26fafd21076 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCAAdFiEEQwXByBBw8WdBpeHBoxriUZNShEoFAluTkrkACgkQoxriUZNS
-hErD5wgAn2FIGDWi3Fx/eJuKCsWML0L0R5i6RfvdX3mEAGx4qHQAOjG+D+Cw8XvZ
-P2UBznWpIYZTTpd7peyV8gSm1u4j/9LupxTaqxyFI+i90lsoTFWLObwhCSucsJLT
-TS+aSob7laKa2odZc2k17PMnabxJbbvM2BhVnJqAs2lxwMRhf+Nyb24pUoeCqEZq
-8qKYbns9bvcXNOWyn9muLZqkz1+vW6slQ/H0O4cFw+8eNgQ+Dwqg40DH+PdiVI+K
-eWr4kPv3cBEnHrKxBDXG5Hqfvs3/RaFPuxKBMM3oUf6QN2P7wf6z2OMWeZdz27sb
-OpyZtmTgfymJ+mbjx87YKmdRtFCdyA==
-=bS09
+iF0EABECAB0WIQQ9fpWdifrP7jg3GSGwC8ZqQBoWAAUCW5OUsAAKCRCwC8ZqQBoW
+ANAOAKC7RZtV2nJwuMBbKtd/qwzFNNsppACfV77Va+s+93daepnA8Rt6wm0aMIc=
+=fP24
 -----END PGP SIGNATURE-----
