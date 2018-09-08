@@ -3515,6 +3515,7 @@ dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
 dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1: Encrypt Data with Cipher Block Chaining Mode
 dev-perl/Crypt-Cracklib 1.700.0-r1: Perl interface to Alec Muffett's Cracklib
+dev-perl/Crypt-Curve25519 0.60.0: Shared secret elliptic-curve Diffie-Hellman generator
 dev-perl/Crypt-DES 2.70.0-r1: Perl DES encryption module
 dev-perl/Crypt-DES_EDE3 0.10.0-r1: Triple-DES EDE encryption/decryption
 dev-perl/Crypt-DH 0.70.0-r2: Diffie-Hellman key exchange system
@@ -3540,6 +3541,7 @@ dev-perl/Crypt-Simple 0.60.0-r1: Crypt::Simple - encrypt stuff simply
 dev-perl/Crypt-SmbHash 0.120.0-r1 0.120.0-r2: LM/NT hashing, for Samba's smbpasswd entries
 dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
+dev-perl/CryptX 0.53.0: Self-contained crypto toolkit
 dev-perl/Curses 1.360.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r2: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r2: Provide high level APIs for rapid user interface design on the console in Perl
@@ -3984,56 +3986,56 @@ dev-perl/Mozilla-CA 20999999: Mozilla's CA cert bundle in PEM format (Gentoo stu
 dev-perl/MusicBrainz-DiscID 0.40.0: Perl interface for the MusicBrainz libdiscid library
 dev-perl/Net-Amazon 0.620.0: Framework for accessing amazon.com via SOAP and XML/HTTP
 dev-perl/Net-CIDR 0.180.0: Manipulate netblock lists in CIDR notation
-dev-perl/Net-CIDR-Lite 0.210.0: Perl extension for merging IPv4 or IPv6 CIDR addresses
-dev-perl/Net-CUPS 0.630.0: CUPS C API Interface
+dev-perl/Net-CIDR-Lite 0.210.0 0.210.0-r1: Perl extension for merging IPv4 or IPv6 CIDR addresses
+dev-perl/Net-CUPS 0.630.0 0.640.0: CUPS C API Interface
 dev-perl/Net-DBus 1.1.0: Perl extension for the DBus message system
 dev-perl/Net-DNS 1.40.0 1.100.0: Perl Net::DNS - Perl DNS Resolver Module
 dev-perl/Net-DNS-Async 1.70.0-r1: Asynchronous DNS helper for high volume applications
 dev-perl/Net-DNS-Resolver-Mock 1.201.710.310: Mock a DNS Resolver object for testing
-dev-perl/Net-DNS-Resolver-Programmable 0.3.0-r1: programmable DNS resolver class for offline emulation of DNS
-dev-perl/Net-DNS-SEC 1.20.0: DNSSEC extensions to Net::DNS
+dev-perl/Net-DNS-Resolver-Programmable 0.3.0-r1 0.9.0: programmable DNS resolver class for offline emulation of DNS
+dev-perl/Net-DNS-SEC 1.20.0 1.30.0: DNSSEC extensions to Net::DNS
 dev-perl/Net-Daemon 0.480.0-r2: Abstract base class for portable servers
-dev-perl/Net-Domain-TLD 1.740.0: Current top level domain names including new ICANN additions and ccTLDs
-dev-perl/Net-FreeDB 0.80.0-r1: OOP interface to the FreeDB database
-dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1: Query a Google SafeBrowsing table
-dev-perl/Net-HTTP 6.90.0: Low-level HTTP connection (client)
-dev-perl/Net-IDN-Encode 2.303.0: Internationalizing Domain Names in Applications (IDNA)
+dev-perl/Net-Domain-TLD 1.740.0 1.750.0: Current top level domain names including new ICANN additions and ccTLDs
+dev-perl/Net-FreeDB 0.80.0-r1 0.100.0: OOP interface to the FreeDB database
+dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1 1.40.0-r2: Query a Google SafeBrowsing table
+dev-perl/Net-HTTP 6.90.0 6.170.0: Low-level HTTP connection (client)
+dev-perl/Net-IDN-Encode 2.303.0 2.400.0: Internationalizing Domain Names in Applications (IDNA)
 dev-perl/Net-IP 1.260.0-r1: Perl extension for manipulating IPv4/IPv6 addresses
 dev-perl/Net-IP-Minimal 0.60.0: Minimal functions from Net::IP
 dev-perl/Net-IPv4Addr 0.100.0: Perl extension for manipulating IPv4 addresses
 dev-perl/Net-IRC 0.790.0-r1: Perl IRC module
-dev-perl/Net-Ident 1.240.0: lookup the username on the remote end of a TCP/IP connection
+dev-perl/Net-Ident 1.240.0 1.240.0-r1: lookup the username on the remote end of a TCP/IP connection
 dev-perl/Net-Jabber 2.0.0-r1: Jabber Perl library
 dev-perl/Net-Kismet 0.04-r1: Module for writing perl Kismet clients
 dev-perl/Net-LibIDN 0.120.0-r1: Perl bindings for GNU Libidn
 dev-perl/Net-Netmask 1.902.200: Parse, manipulate and lookup IP network blocks
 dev-perl/Net-OpenID-Common 1.200.0: Libraries shared between Net::OpenID::Consumer and Net::OpenID::Server
 dev-perl/Net-OpenID-Consumer 1.180.0: Library for consumers of OpenID identities
-dev-perl/Net-OpenSSH 0.700.0: Net::OpenSSH, Perl wrapper for OpenSSH secure shell client
+dev-perl/Net-OpenSSH 0.700.0 0.740.0: Net::OpenSSH, Perl wrapper for OpenSSH secure shell client
 dev-perl/Net-Patricia 1.220.0-r1: Patricia Trie perl module for fast IP address lookups
-dev-perl/Net-Pcap 0.170.0-r1: Perl Net::Pcap - Perl binding to the LBL pcap
-dev-perl/Net-PcapUtils 0.10.0-r1: Perl Net::PcapUtils - Net::Pcap library utils
-dev-perl/Net-RBLClient 0.500.0-r1: Net::RBLClient - Queries multiple Realtime Blackhole Lists in parallel
-dev-perl/Net-RawIP 0.250.0-r1: Perl Net::RawIP - Raw IP packets manipulation Module
-dev-perl/Net-SFTP 0.100.0-r1: Secure File Transfer Protocol client
-dev-perl/Net-SFTP-Foreign 1.810.0: SSH File Transfer Protocol client
-dev-perl/Net-SMTP-SSL 1.30.0: SSL support for Net::SMTP
-dev-perl/Net-SNMP 6.0.1-r1: A SNMP Perl Module
-dev-perl/Net-SNPP 1.170.0-r1: libnet SNPP component
+dev-perl/Net-Pcap 0.170.0-r1 0.180.0: Interface to the pcap(3) LBL packet capture library
+dev-perl/Net-PcapUtils 0.10.0-r1 0.10.0-r2: Utility routines for use with Net::Pcap
+dev-perl/Net-RBLClient 0.500.0-r1 0.500.0-r2: Queries multiple Realtime Blackhole Lists in parallel
+dev-perl/Net-RawIP 0.250.0-r1 0.250.0-r2: Raw IP packets manipulation Module
+dev-perl/Net-SFTP 0.100.0-r1 0.100.0-r2: Secure File Transfer Protocol client
+dev-perl/Net-SFTP-Foreign 1.810.0 1.870.0: SSH File Transfer Protocol client
+dev-perl/Net-SMTP-SSL 1.30.0 1.40.0: (Deprecated) SSL support for Net::SMTP
+dev-perl/Net-SNMP 6.0.1-r1 6.0.1-r2: A SNMP Perl Module
+dev-perl/Net-SNPP 1.170.0-r1 1.170.0-r2: libnet SNPP component
 dev-perl/Net-SSH-Any 0.40.0: Use any SSH module
-dev-perl/Net-SSH-AuthorizedKeysFile 0.170.0: Read and modify ssh's authorized_keys files
-dev-perl/Net-SSH-Perl 1.360.0-r1: Perl client Interface to SSH
+dev-perl/Net-SSH-AuthorizedKeysFile 0.170.0 0.180.0: Read and modify ssh's authorized_keys files
+dev-perl/Net-SSH-Perl 1.360.0-r1 2.140.0: Perl client Interface to SSH
 dev-perl/Net-SSLeay 1.820.0: Perl extension for using OpenSSL
 dev-perl/Net-Server 2.9.0: Extensible, general Perl server engine
 dev-perl/Net-Server-Mail 0.230.0: Class to easily create a mail server
 dev-perl/Net-Telnet 3.40.0: interact with TELNET port or other TCP ports in Perl
-dev-perl/Net-Telnet-Cisco 1.100.0-r1: Automate telnet sessions w/ routers&switches
+dev-perl/Net-Telnet-Cisco 1.100.0-r1 1.110.0: Automate telnet sessions w/ routers&switches
 dev-perl/Net-UPnP 1.4.3: Perl extension for UPnP
 dev-perl/Net-XMPP 1.50.0: XMPP Perl Library
-dev-perl/NetAddr-IP 4.78.0: Manipulation and operations on IP addresses
+dev-perl/NetAddr-IP 4.78.0 4.79.0: Manipulation and operations on IP addresses
 dev-perl/NetPacket 1.6.0: Assemble / disassemble network packets at the protocol level
 dev-perl/News-Newsrc 1.110.0: Manage newsrc files
-dev-perl/Nmap-Parser 1.310.0: Nmap::Parser - parse nmap scan data with perl
+dev-perl/Nmap-Parser 1.310.0 1.360.0: Parse nmap scan data with perl
 dev-perl/Number-Compare 0.30.0-r1: Numeric comparisons
 dev-perl/Number-Format 1.750.0: Package for formatting numbers for display
 dev-perl/OLE-StorageLite 0.190.0-r1: Simple Class for OLE document interface
