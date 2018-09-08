@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Utility routines for use with Net::Pcap"
 
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="dev-perl/Net-Pcap"
