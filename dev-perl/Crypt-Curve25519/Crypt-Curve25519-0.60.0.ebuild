@@ -9,7 +9,7 @@ inherit perl-module flag-o-matic
 
 DESCRIPTION="Shared secret elliptic-curve Diffie-Hellman generator"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="
