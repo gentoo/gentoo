@@ -179,6 +179,8 @@ src_unpack() {
 src_prepare() {
 	eapply "${WORKDIR}/firefox"
 
+	eapply "${FILESDIR}"/${PN}-60.0-blessings-TERM.patch # 654316
+
 	# Enable gnomebreakpad
 	if use debug ; then
 		sed -i -e "s:GNOME_DISABLE_CRASH_DIALOG=1:GNOME_DISABLE_CRASH_DIALOG=0:g" \

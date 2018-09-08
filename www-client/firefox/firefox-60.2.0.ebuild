@@ -125,7 +125,8 @@ src_prepare() {
 	rm "${WORKDIR}/firefox/2005_ffmpeg4.patch"
 	eapply "${WORKDIR}/firefox"
 
-	eapply "${FILESDIR}/bug_1461221.patch"
+	eapply "${FILESDIR}"/bug_1461221.patch
+	eapply "${FILESDIR}"/${PN}-60.0-blessings-TERM.patch # 654316
 
 	# Enable gnomebreakpad
 	if use debug ; then
