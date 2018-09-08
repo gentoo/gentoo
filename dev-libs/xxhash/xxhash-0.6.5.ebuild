@@ -16,6 +16,9 @@ IUSE="static-libs"
 DEPEND=""
 
 S="${WORKDIR}/xxHash-${PV}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.6.5-do-not-compile-xxhash.o-twice.patch
+)
 
 src_configure() {
 	use hppa && replace-flags '-O*' '-O0'

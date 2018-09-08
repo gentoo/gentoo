@@ -125,7 +125,8 @@ src_prepare() {
 	rm "${WORKDIR}/firefox/2005_ffmpeg4.patch"
 	eapply "${WORKDIR}/firefox"
 
-	eapply "${FILESDIR}/bug_1461221.patch"
+	eapply "${FILESDIR}"/bug_1461221.patch
+	eapply "${FILESDIR}"/${PN}-60.0-blessings-TERM.patch # 654316
 
 	# Enable gnomebreakpad
 	if use debug ; then
@@ -214,6 +215,13 @@ src_configure() {
 
 	# Only available on mozilla-overlay for experimentation -- Removed in Gentoo repo per bug 571180
 	#use egl && mozconfig_annotate 'Enable EGL as GL provider' --with-gl-provider=EGL
+
+	# Disable built-in ccache support to avoid sandbox violation, #665420
+	# Use FEATURES=ccache instead!
+	mozconfig_annotate '' --without-ccache
+	sed -i -e 's/ccache_stats = None/return None/' \
+		python/mozbuild/mozbuild/controller/building.py || \
+		die "Failed to disable ccache stats call"
 
 	# Setup api key for location services
 	echo -n "${_google_api_key}" > "${S}"/google-api-key
