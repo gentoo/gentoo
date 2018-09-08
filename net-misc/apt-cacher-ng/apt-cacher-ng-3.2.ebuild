@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit cmake-utils eutils toolchain-funcs user
+EAPI=6
+inherit cmake-utils toolchain-funcs user
 
 DESCRIPTION="Yet another caching HTTP proxy for Debian/Ubuntu software packages"
 HOMEPAGE="
@@ -93,7 +93,8 @@ src_install() {
 	dodoc doc/README TODO VERSION INSTALL ChangeLog
 	if use doc; then
 		dodoc doc/*.pdf
-		dohtml doc/html/*
+		docinto html
+		dodoc doc/html/*
 		docinto examples/conf
 		dodoc conf/*
 	fi
