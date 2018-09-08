@@ -3,6 +3,8 @@
 
 EAPI=6
 
+FRAMEWORKS_MINIMAL="5.46.0"
+QT_MINIMAL="5.9.4"
 KDE_HANDBOOK="forceoptional"
 KDE_SELINUX_MODULE="games"
 inherit kde5
