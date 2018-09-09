@@ -12,7 +12,7 @@ SRC_URI="https://bitbucket.org/IndigoJo/${PN}-$(ver_cut 1-2)/downloads/${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="dbus debug"
 RESTRICT="strip"
 
