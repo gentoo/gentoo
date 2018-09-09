@@ -1,0 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=sys-auth/oath-toolkit:= virtual/pam qrcode? ( media-gfx/qrencode:= ) >=app-portage/elt-patches-20170422 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=PAM Module for two step verification via mobile platform
+EAPI=7
+HOMEPAGE=https://github.com/mgorny/google-authenticator-libpam-hardened
+IUSE=+qrcode
+LICENSE=Apache-2.0
+RDEPEND=sys-auth/oath-toolkit:= virtual/pam qrcode? ( media-gfx/qrencode:= ) !sys-auth/google-authenticator
+SLOT=0
+_eclasses_=autotools	d0e5375d47f4c809f406eb892e531513	git-r3	918d6a744039c29af2cadc7317459765	libtool	0081a71a261724730ec4c248494f044d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=d395cf76c8503ae84776596cd804dc05
