@@ -25,8 +25,7 @@ REQUIRED_USE="|| ( initramfs split-ucode )"
 DEPEND="sys-apps/iucode_tool"
 
 # !<sys-apps/microcode-ctl-1.17-r2 due to bug #268586
-RDEPEND="!<sys-apps/microcode-ctl-1.17-r2
-	hostonly? ( sys-apps/iucode_tool )"
+RDEPEND="hostonly? ( sys-apps/iucode_tool )"
 
 RESTRICT="binchecks bindist mirror strip"
 

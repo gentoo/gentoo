@@ -199,13 +199,6 @@ dev-python/django-pipeline
 # to upstream CVS in 2010. Masked for removal in 30 days. Bug #663030.
 app-emacs/cmail
 
-# Thomas Deutschmann <whissi@gentoo.org> (05 Aug 2018)
-# Deprecated. Using recent microcodes with this package either won't work
-# or crash your system. Please change your setup and make use of kernel's
-# early microcode loading feature, see https://wiki.gentoo.org/wiki/Microcode
-# for more details. Removal in 30 days.
-sys-apps/microcode-ctl
-
 # Mike Gilbert <floppym@gentoo.org> (04 Aug 2018)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
