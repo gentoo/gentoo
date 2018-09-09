@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare unpack
+DEPEND=>=dev-lang/go-1.10.3
+DESCRIPTION=Lightweight log shipper for Logstash and Elasticsearch
+EAPI=7
+HOMEPAGE=https://www.elastic.co/products/beats
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=!app-admin/filebeat-bin
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/elastic/beats/archive/v6.4.0.tar.gz -> filebeat-6.4.0.tar.gz
+_md5_=918c34d05449e6863977eae313747cde
