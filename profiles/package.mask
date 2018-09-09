@@ -29,6 +29,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron W. Swenson <titanofold@gentoo.org> (09 Sep 2018)
+# PostgreSQL beta and release candidate releases are pre-release testing
+# versions, not meant for production use. They are feature-frozen, and are
+# released to the public for testing before final release
+#
+# NOTE: Successive beta or candidate releases may not be backwards compatible,
+# so it is important that you review the release notes before upgrading.
+#
+# For more information about beta and release candidate versions, see:
+#     https://www.postgresql.org/developer/beta/
+=dev-db/postgresql-11_beta1
+=dev-db/postgresql-11_beta2
+=dev-db/postgresql-11_beta3
+
 # Lars Wendler <polynomial-c@gentoo.org> (05 Sep 2018)
 # Broken "killall -SIG". Breaks many scripts.
 # See https://bugs.gentoo.org/664066
