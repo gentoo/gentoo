@@ -1,0 +1,31 @@
+From ca99fe81c8aee204c1a8b7f3ca264130e54d9418 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sat, 1 Sep 2018 21:32:07 +0300
+Subject: [PATCH] tpm: tpm_deprecated.c fix compare
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+tpm/tpm_deprecated.c:437:7: error: ‘__builtin_memcmp_eq’ reading 20 bytes from a region of size 8 [-Werror=stringop-overflow=]
+   if (memcmp(&b1, &newAuthLink, sizeof(TPM_HMAC))) {
+       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+
+Bug: https://bugs.gentoo.org/show_bug.cgi?id=664198
+---
+ tpm/tpm_deprecated.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tpm/tpm_deprecated.c b/tpm/tpm_deprecated.c
+index c362b56..4c49f54 100644
+--- a/tpm/tpm_deprecated.c
++++ b/tpm/tpm_deprecated.c
+@@ -434,7 +434,7 @@ TPM_RESULT TPM_ChangeAuthAsymFinish(TPM_KEY_HANDLE parentHandle,
+   tpm_hmac_final(&hmac_ctx, b1.digest);
+   /* 6. The TPM SHALL compare b1 with newAuthLink. The TPM SHALL
+         indicate a failure if the values do not match. */
+-  if (memcmp(&b1, &newAuthLink, sizeof(TPM_HMAC))) {
++  if (memcmp(&b1, newAuthLink, sizeof(TPM_HMAC))) {
+     debug("TPM_ChangeAuthAsymFinish(): newAuthLink value does not match.");
+     return TPM_FAIL;
+   }
