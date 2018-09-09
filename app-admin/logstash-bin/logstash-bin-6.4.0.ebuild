@@ -10,12 +10,14 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tool for managing events and logs"
 HOMEPAGE="https://www.elastic.co/products/logstash"
-SRC_URI="https://artifacts.elastic.co/downloads/${MY_PN}/${MY_PN}-oss-${PV}.tar.gz"
+SRC_URI="x-pack? ( https://artifacts.elastic.co/downloads/${MY_PN}/${MY_P}.tar.gz )
+	!x-pack? ( https://artifacts.elastic.co/downloads/${MY_PN}/${MY_PN}-oss-${PV}.tar.gz )"
 
 # source: LICENSE.txt and NOTICE.txt
-LICENSE="Apache-2.0 MIT"
+LICENSE="Apache-2.0 MIT x-pack? ( Elastic )"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="x-pack"
 
 RESTRICT="strip"
 QA_PREBUILT="opt/logstash/vendor/jruby/lib/jni/*/libjffi*.so"

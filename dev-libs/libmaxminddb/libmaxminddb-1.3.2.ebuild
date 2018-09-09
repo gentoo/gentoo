@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
 
 DESCRIPTION="C library for the MaxMind DB file format"
 HOMEPAGE="https://github.com/maxmind/libmaxminddb"
@@ -22,5 +21,5 @@ src_configure() {
 src_install() {
 	default
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
