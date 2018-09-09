@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eapi7-ver eutils flag-o-matic libtool multilib toolchain-funcs
+inherit eapi7-ver eutils flag-o-matic libtool perl-functions toolchain-funcs multilib
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/ImageMagick/ImageMagick.git"
@@ -125,6 +125,8 @@ src_configure() {
 
 	local openmp=disable
 	use openmp && { tc-has-openmp && openmp=enable; }
+
+	use perl && perl_check_env
 
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lnsl -lsocket
 
