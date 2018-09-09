@@ -4,6 +4,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Aaron W. Swenson <titanofold@gentoo.org> (09 Sep 2018)
+# Mask PostgreSQL 12 while in (pre-)alpha.
+postgres_targets_postgres12
+
+# Aaron W. Swenson <titanofold@gentoo.org> (09 Sep 2018)
+# Mask PostgreSQL 11 while in beta/RC.
+postgres_targets_postgres11
+
 # Brian Evans <grknight@gentoo.org> (10 Aug 2018)
 # Mask PHP 7.3 target while in beta
 php_targets_php7-3
