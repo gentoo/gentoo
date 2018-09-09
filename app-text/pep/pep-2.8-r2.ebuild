@@ -11,7 +11,7 @@ SRC_URI="http://hannemyr.com/enjoy/${PN}${PV//./}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~x86 ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~mips ppc x86 ~x86-linux ~ppc-macos"
 
 DEPEND="app-arch/unzip"
 
