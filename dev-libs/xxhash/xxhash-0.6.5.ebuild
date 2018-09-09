@@ -13,8 +13,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x64-macos"
 IUSE="static-libs"
 
-DEPEND=""
-
 S="${WORKDIR}/xxHash-${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.5-compile-xxhash.o-once.patch
