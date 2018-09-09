@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst postrm prepare unpack
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=Team collaboration tool
+EAPI=6
+HOMEPAGE=http://www.slack.com/
+IUSE=ayatana gnome-keyring pax_kernel abi_x86_64
+KEYWORDS=~amd64 -*
+LICENSE=all-rights-reserved
+RDEPEND=dev-libs/atk:0[abi_x86_64(-)?] dev-libs/expat:0[abi_x86_64(-)?] dev-libs/glib:2[abi_x86_64(-)?] dev-libs/nspr:0[abi_x86_64(-)?] dev-libs/nss:0[abi_x86_64(-)?] gnome-base/gconf:2[abi_x86_64(-)?] media-libs/alsa-lib:0[abi_x86_64(-)?] media-libs/fontconfig:1.0[abi_x86_64(-)?] media-libs/freetype:2[abi_x86_64(-)?] net-misc/curl:0[abi_x86_64(-)?] net-print/cups:0[abi_x86_64(-)?] sys-apps/dbus:0[abi_x86_64(-)?] x11-libs/cairo:0[abi_x86_64(-)?] x11-libs/gdk-pixbuf:2[abi_x86_64(-)?] x11-libs/gtk+:3[abi_x86_64(-)?] x11-libs/libX11:0[abi_x86_64(-)?] x11-libs/libxcb:0/1.12[abi_x86_64(-)?] x11-libs/libXcomposite:0[abi_x86_64(-)?] x11-libs/libXcursor:0[abi_x86_64(-)?] x11-libs/libXdamage:0[abi_x86_64(-)?] x11-libs/libXext:0[abi_x86_64(-)?] x11-libs/libXfixes:0[abi_x86_64(-)?] x11-libs/libXi:0[abi_x86_64(-)?] x11-libs/libxkbfile:0[abi_x86_64(-)?] x11-libs/libXrandr:0[abi_x86_64(-)?] x11-libs/libXrender:0[abi_x86_64(-)?] x11-libs/libXScrnSaver:0[abi_x86_64(-)?] x11-libs/libXtst:0[abi_x86_64(-)?] x11-libs/pango:0[abi_x86_64(-)?] ayatana? ( dev-libs/libappindicator:3[abi_x86_64(-)?] ) gnome-keyring? ( app-crypt/libsecret:0[abi_x86_64(-)?] )
+REQUIRED_USE=|| ( abi_x86_64 )
+RESTRICT=bindist mirror
+SLOT=0
+SRC_URI=https://downloads.slack-edge.com/linux_releases/slack-desktop-3.3.1-amd64.deb
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	b42436dc1260f475af229754c165cb6b	pax-utils	e85f015e815dd463b0c206d781ef45a5	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	unpacker	ee2f5086cd7e7b747b061f58db14d89e	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=71f92fca0a1b11952d5439dc5fe7fce7
