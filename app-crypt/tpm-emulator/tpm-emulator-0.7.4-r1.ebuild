@@ -24,6 +24,10 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${P/-/_}
 
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
+
 pkg_setup() {
 	enewgroup tss
 	enewuser tss -1 -1 /var/lib/tpm tss
