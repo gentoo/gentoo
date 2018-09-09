@@ -22,7 +22,7 @@ index 98b75c3..3872b5f 100644
 -            setupterm(kind or environ.get('TERM', 'unknown'),
 -                      self._init_descriptor)
 +            try:
-+                setupterm(kind or environ.get('TERM', 'dumb'),
++                setupterm(kind or environ.get('TERM', 'dumb') or 'dumb',
 +                          self._init_descriptor)
 +            except:
 +                # There was an error setting up the terminal, either curses is
