@@ -75,6 +75,15 @@ src_compile() {
 	echo "EXTRA_LDFLAGS = ${LDFLAGS}" >> Mmake.params
 	echo "EXTRA_MLFLAGS = --no-strip" >> Mmake.params
 
+	if use x86; then
+		echo "CFLAGS-ml_backend.ml_closure_gen = -O0" >> Mmake.params
+		echo "CFLAGS-ml_backend.ml_unify_gen = -O0" >> Mmake.params
+		echo "CFLAGS-ml_backend.rtti_to_mlds = -O0" >> Mmake.params
+		echo "CFLAGS-display_report = -O0" >> Mmake.params
+		echo "CFLAGS-mercury_ho_call = -O0" >> Mmake.params
+		echo "CFLAGS-mercury_trace_vars = -O0" >> Mmake.params
+	fi
+
 	# Build Mercury using bootstrap grade
 	emake \
 		PARALLEL="'${MAKEOPTS}'" \
