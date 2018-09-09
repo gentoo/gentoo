@@ -69,6 +69,7 @@ src_configure() {
 		-DKICAD_SCRIPTING_WXPYTHON="$(usex python)"
 		-DKICAD_SPICE="$(usex ngspice)"
 		-DKICAD_USE_OCC=OFF
+		-DKICAD_USE_OCE="$(usex oce)"
 		-DKICAD_INSTALL_DEMOS="$(usex examples)"
 	)
 	use python && mycmakeargs+=(
@@ -76,9 +77,6 @@ src_configure() {
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
-	)
-	use amd64 && use oce && mycmakeargs+=(
-		-DKICAD_USE_OCE=ON
 	)
 	cmake-utils_src_configure
 }
