@@ -7,7 +7,7 @@ EAPI=6
 # pypy bundles a modified version of cffi. Use python_gen_cond_dep instead.
 PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 
-inherit distutils-r1
+inherit distutils-r1 toolchain-funcs
 
 DESCRIPTION="Foreign Function Interface for Python calling C code"
 HOMEPAGE="https://cffi.readthedocs.io/ https://pypi.org/project/cffi/"
@@ -28,6 +28,10 @@ DEPEND="${RDEPEND}
 
 # Avoid race on _configtest.c (distutils/command/config.py:_gen_temp_sourcefile)
 DISTUTILS_IN_SOURCE_BUILD=1
+
+src_configure() {
+	tc-export PKG_CONFIG
+}
 
 python_compile_all() {
 	use doc && emake -C doc html
