@@ -2763,7 +2763,8 @@ media-gfx/gthumb:webp - Enable support for webp image format
 media-gfx/hugin:sift - automatically align images with media-gfx/autopano-sift-C
 media-gfx/imagemagick:corefonts - Use media-fonts/corefonts which is required by some commands
 media-gfx/imagemagick:fpx - Enable media-libs/libfpx support
-media-gfx/imagemagick:hdri - enable High Dynamic Range Images formats
+media-gfx/imagemagick:hdri - Enable High Dynamic Range Images formats
+media-gfx/imagemagick:heif - Enable support for ISO/IEC 23008-12:2017 HEIF/HEIC image format using media-libs/libheif
 media-gfx/imagemagick:lqr - Enable experimental liquid rescale support using media-libs/liblqr
 media-gfx/imagemagick:opencl - Enable OpenCL support
 media-gfx/imagemagick:pango - Enable Pango support using x11-libs/pango
