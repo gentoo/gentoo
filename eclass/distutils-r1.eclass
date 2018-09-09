@@ -250,7 +250,7 @@ esetup.py() {
 	local die_args=()
 	[[ ${EAPI} != [45] ]] && die_args+=( -n )
 
-	[[ ${BUILD_DIR} ]] && _distutils-r1_create_setup_cfg
+	[[ ${BUILD_DIR} ]] && distutils-r1_create_setup_cfg
 
 	set -- "${EPYTHON:-python}" setup.py "${mydistutilsargs[@]}" "${@}"
 
@@ -288,7 +288,7 @@ distutils_install_for_testing() {
 	#    so we need to set it properly and mkdir them,
 	# 4) it runs a bunch of commands which write random files to cwd,
 	#    in order to avoid that, we add the necessary path overrides
-	#    in _distutils-r1_create_setup_cfg.
+	#    in distutils-r1_create_setup_cfg.
 
 	TEST_DIR=${BUILD_DIR}/test
 	local bindir=${TEST_DIR}/scripts
@@ -377,15 +377,16 @@ distutils-r1_python_configure() {
 	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI 6 (it was a no-op)"
 }
 
-# @FUNCTION: _distutils-r1_create_setup_cfg
-# @INTERNAL
+# @FUNCTION: distutils-r1_create_setup_cfg
 # @DESCRIPTION:
 # Create implementation-specific configuration file for distutils,
 # setting proper build-dir (and install-dir) paths.
-_distutils-r1_create_setup_cfg() {
+distutils-r1_create_setup_cfg() {
+	local build_base=${BUILD_DIR:-${PWD}}
+
 	cat > "${HOME}"/.pydistutils.cfg <<-_EOF_ || die
 		[build]
-		build-base = ${BUILD_DIR}
+		build-base = ${build_base}
 
 		# using a single directory for them helps us export
 		# ${PYTHONPATH} and ebuilds find the sources independently
@@ -403,7 +404,7 @@ _distutils-r1_create_setup_cfg() {
 		# this is needed by distutils_install_for_testing since
 		# setuptools like to create .egg files for install --home.
 		[bdist_egg]
-		dist-dir = ${BUILD_DIR}/dist
+		dist-dir = ${build_base}/dist
 
 		# this is needed when cross-compiling
 		[build_ext]
