@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Extremely fast non-cryptographic hash algorithm"
 HOMEPAGE="http://www.xxhash.com"
@@ -19,10 +19,6 @@ S="${WORKDIR}/xxHash-${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.5-compile-xxhash.o-once.patch
 )
-
-src_configure() {
-	use hppa && replace-flags '-O*' '-O0'
-}
 
 src_compile() {
 	PREFIX="${EPREFIX}/usr" \
