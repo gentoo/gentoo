@@ -18,7 +18,6 @@ HOMEPAGE="https://github.com/strukturag/libheif"
 
 LICENSE="GPL-3"
 SLOT="0/1.3.9999"
-KEYWORDS=""
 IUSE="static-libs +threads"
 
 # Doesn't yet support libjpeg-turbo-2, https://github.com/strukturag/libheif/issues/70
