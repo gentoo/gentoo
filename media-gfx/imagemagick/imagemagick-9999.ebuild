@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eapi7-ver eutils flag-o-matic libtool multilib toolchain-funcs
+inherit eapi7-ver eutils flag-o-matic libtool perl-functions toolchain-funcs multilib
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/ImageMagick/ImageMagick.git"
@@ -20,9 +20,7 @@ HOMEPAGE="https://www.imagemagick.org/"
 
 LICENSE="imagemagick"
 SLOT="0/${PV}"
-IUSE="bzip2 corefonts cxx djvu fftw fontconfig fpx graphviz hdri jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
-
-RESTRICT="perl? ( userpriv )"
+IUSE="bzip2 corefonts cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
 
 RDEPEND="
 	dev-libs/libltdl:0
@@ -33,6 +31,7 @@ RDEPEND="
 	fontconfig? ( media-libs/fontconfig )
 	fpx? ( >=media-libs/libfpx-1.3.0-r1 )
 	graphviz? ( media-gfx/graphviz )
+	heif? ( media-libs/libheif:= )
 	jbig? ( >=media-libs/jbigkit-2:= )
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( >=media-libs/openjpeg-2.1.0:2 )
@@ -125,6 +124,8 @@ src_configure() {
 	local openmp=disable
 	use openmp && { tc-has-openmp && openmp=enable; }
 
+	use perl && perl_check_env
+
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lnsl -lsocket
 
 	local myeconfargs=(
@@ -151,6 +152,7 @@ src_configure() {
 		$(use_with truetype freetype)
 		$(use_with postscript gslib)
 		$(use_with graphviz gvc)
+		$(use_with heif heic)
 		$(use_with jbig)
 		$(use_with jpeg)
 		$(use_with jpeg2k openjp2)
