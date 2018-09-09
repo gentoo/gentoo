@@ -22,8 +22,6 @@ LICENSE="imagemagick"
 SLOT="0/${PV}"
 IUSE="bzip2 corefonts cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
 
-RESTRICT="perl? ( userpriv )"
-
 RDEPEND="
 	dev-libs/libltdl:0
 	bzip2? ( app-arch/bzip2 )
