@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mgorny/gpyutils/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 RDEPEND=">=app-portage/gentoopm-0.2.9[${PYTHON_USEDEP}]"
