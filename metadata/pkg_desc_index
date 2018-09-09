@@ -180,7 +180,7 @@ app-arch/gnome-autoar 0.2.2: Automatic archives creating and extracting library
 app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them back together
 app-arch/gzip 1.8: Standard GNU compressor
 app-arch/hardlink 0.2.0: A tool which replaces copies of a file with hardlinks
-app-arch/innoextract 1.6: A tool to unpack installers created by Inno Setup
+app-arch/innoextract 1.6 1.7: A tool to unpack installers created by Inno Setup
 app-arch/lbzip2 2.3-r1 2.5: Parallel bzip2 utility
 app-arch/lha 114i-r7: Utility for creating and opening lzh archives
 app-arch/libarchive 3.3.1: BSD tar command
@@ -1298,7 +1298,7 @@ app-text/build-docbook-catalog 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
 app-text/calibre 3.15.0 3.26.1: Ebook management application
 app-text/catdoc 0.95: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
-app-text/cb2bib 1.9.7: Tool for extracting unformatted bibliographic references
+app-text/cb2bib 1.9.7 1.9.8: Tool for extracting unformatted bibliographic references
 app-text/cedilla 0.6: UTF-8 to postscript converter
 app-text/chasen 2.4.4-r3: Japanese Morphological Analysis System, ChaSen
 app-text/chm2pdf 0.9.1-r2: A script that converts a CHM file into a single PDF file
