@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit linux-mod
+inherit linux-mod toolchain-funcs
 
 case ${PV} in
 9999)
@@ -29,19 +29,20 @@ CONFIG_CHECK="VIDEO_DEV"
 MODULE_NAMES="v4l2loopback(video:)"
 BUILD_TARGETS="all"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-
 pkg_setup() {
 	linux-mod_pkg_setup
 	export KERNELRELEASE=${KV_FULL}
 }
 
+src_prepare() {
+	default
+	sed -i -e 's/gcc /$(CC) /' examples/Makefile || die
+}
+
 src_compile() {
 	linux-mod_src_compile
 	if use examples; then
-		cd "${S}"/examples
-		emake
+		emake CC=$(tc-getCC) -C examples
 	fi
 }
 
