@@ -13,7 +13,6 @@ MAJOR_V="$(get_version_component_range 1-2)"
 
 if [[ $PV == *9999 ]]; then
 	inherit git-r3
-	KEYWORDS=""
 	REPO="xen.git"
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
