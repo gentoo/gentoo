@@ -2,7 +2,7 @@ Title: ARM 17.0 profile migration with CHOST change
 Author: James Le Cuirot <chewi@gentoo.org>
 Content-Type: text/plain
 Posted: 2018-09-07
-Revision: 1
+Revision: 2
 News-Item-Format: 1.0
 Display-If-Keyword: arm
 Display-If-Keyword: arm-linux
@@ -37,8 +37,12 @@ with a regular 17.0 migration to deal with PIE as detailed here:
 https://www.gentoo.org/support/news-items/2017-11-30-new-17-profiles.html
 
 Otherwise, if you do wish to migrate then we have written a script to
-do the necessary steps for you:
+do the necessary steps for you.
 
+Download the raw script here:
+https://dev.gentoo.org/~chewi/armhf-migrate.bash
+
+View with syntax highlighting and change history here:
 https://gist.github.com/chewi/1601684ad8f3cf8de0b786c00fa09b3c
 
 It takes a minimal backup of the existing toolchain with quickpkg
