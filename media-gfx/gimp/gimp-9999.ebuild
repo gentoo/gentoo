@@ -69,6 +69,7 @@ RDEPEND=">=dev-libs/glib-2.54.2:2
 DEPEND="${RDEPEND}
 	>=dev-lang/perl-5.10.0
 	dev-libs/appstream-glib
+	dev-util/gdbus-codegen
 	dev-util/gtk-update-icon-cache
 	sys-apps/findutils
 	virtual/pkgconfig
