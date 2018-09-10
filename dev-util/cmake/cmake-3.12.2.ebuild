@@ -37,7 +37,10 @@ RDEPEND="
 	system-jsoncpp? ( >=dev-libs/jsoncpp-0.6.0_rc2:0= )
 "
 DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx )
+	doc? (
+		dev-python/requests
+		dev-python/sphinx
+	)
 "
 
 S="${WORKDIR}/${MY_P}"
