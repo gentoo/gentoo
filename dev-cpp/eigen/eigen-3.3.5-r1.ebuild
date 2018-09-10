@@ -41,6 +41,8 @@ DEPEND="
 # METIS-5
 # GOOGLEHASH
 
+PATCHES=( "${FILESDIR}/${P}-fix-prototype.patch" )
+
 src_unpack() {
 	default
 	mv ${PN}* ${P} || die

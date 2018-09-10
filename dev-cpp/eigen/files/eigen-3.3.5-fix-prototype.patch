@@ -1,0 +1,19 @@
+# HG changeset patch
+# User Gael Guennebaud <g.gael@free.fr>
+# Date 1528444561 -7200
+# Node ID 27cac8430247a65739fcd0b83ef984d0a9c010c7
+# Parent  d4cbff8d06baf95045869ed7d0c012d641c88fcf
+fix prototype
+
+diff --git a/unsupported/Eigen/src/IterativeSolvers/DGMRES.h b/unsupported/Eigen/src/IterativeSolvers/DGMRES.h
+--- a/unsupported/Eigen/src/IterativeSolvers/DGMRES.h
++++ b/unsupported/Eigen/src/IterativeSolvers/DGMRES.h
+@@ -173,7 +173,7 @@
+   /** 
+    * Set the restart value (default is 30)  
+    */
+-  Index set_restart(const Index restart) { m_restart=restart; }
++  void set_restart(const Index restart) { m_restart=restart; }
+   
+   /** 
+    * Set the number of eigenvalues to deflate at each restart 

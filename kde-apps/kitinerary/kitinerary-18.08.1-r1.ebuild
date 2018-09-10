@@ -17,11 +17,12 @@ DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep ki18n)
 	$(add_kdeapps_dep kcalcore)
+	$(add_kdeapps_dep kcontacts)
 	$(add_kdeapps_dep kmime)
 	$(add_kdeapps_dep kpkpass)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
-	sys-libs/zlib:=
+	sys-libs/zlib
 	pdf? ( app-text/poppler:=[qt5] )
 "
 RDEPEND="${DEPEND}
