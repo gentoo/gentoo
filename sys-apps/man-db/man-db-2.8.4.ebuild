@@ -44,6 +44,8 @@ RDEPEND="
 "
 PDEPEND="manpager? ( app-text/manpager )"
 
+PATCHES=( "${FILESDIR}"/${P}-berkdb_build_fix.patch )
+
 pkg_setup() {
 	# Create user now as Makefile in src_install does setuid/chown
 	enewgroup man 15
