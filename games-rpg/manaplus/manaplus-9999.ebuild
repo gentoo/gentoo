@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-[[ ${PV} == 9999 ]] && inherit autotools git-r3
+EAPI=7
 
 DESCRIPTION="OpenSource 2D MMORPG client for Evol Online and The Mana World"
 HOMEPAGE="http://manaplus.evolonline.org"
 if [[ ${PV} == 9999 ]] ; then
+	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/ManaPlus/ManaPlus.git"
 else
 	SRC_URI="http://download.evolonline.org/manaplus/download/${PV}/${P}.tar.xz"
