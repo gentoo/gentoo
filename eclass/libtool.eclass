@@ -18,8 +18,8 @@ if [[ -z ${_LIBTOOL_ECLASS} ]]; then
 _LIBTOOL_ECLASS=1
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) DEPEND=">=app-portage/elt-patches-20170422" ;;
-	7) BDEPEND=">=app-portage/elt-patches-20170422" ;;
+	0|1|2|3|4|5|6) DEPEND=">=app-portage/elt-patches-20170815" ;;
+	7) BDEPEND=">=app-portage/elt-patches-20170815" ;;
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
