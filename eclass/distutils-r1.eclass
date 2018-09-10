@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: distutils-r1.eclass
@@ -99,11 +99,8 @@ if [[ ! ${_DISTUTILS_R1} ]]; then
 
 if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
 	RDEPEND=${PYTHON_DEPS}
-	if [[ ${EAPI} != [56] ]]; then
-		BDEPEND=${PYTHON_DEPS}
-	else
-		DEPEND=${PYTHON_DEPS}
-	fi
+	DEPEND=${PYTHON_DEPS}
+	[[ ${EAPI} != [56] ]] && BDEPEND=${PYTHON_DEPS}
 	REQUIRED_USE=${PYTHON_REQUIRED_USE}
 fi
 
@@ -407,7 +404,20 @@ _distutils-r1_create_setup_cfg() {
 		# setuptools like to create .egg files for install --home.
 		[bdist_egg]
 		dist-dir = ${BUILD_DIR}/dist
+
+		# this is needed when cross-compiling
+		[build_ext]
 	_EOF_
+
+	if [[ ${EPYTHON} != jython* ]]; then
+		echo "include-dirs = $(python_get_includedir)" \
+			>> "${HOME}"/.pydistutils.cfg || die
+	fi
+
+	if [[ ${EPYTHON} == python* ]]; then
+		echo "library-dirs = $(dirname $(python_get_library_path))" \
+			>> "${HOME}"/.pydistutils.cfg || die
+	fi
 
 	# we can't refer to ${D} before src_install()
 	if [[ ${EBUILD_PHASE} == install ]]; then
