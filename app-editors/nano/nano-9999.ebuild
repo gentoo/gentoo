@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit eutils flag-o-matic
+inherit flag-o-matic
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.sv.gnu.org/nano.git"
 	inherit git-r3 autotools
