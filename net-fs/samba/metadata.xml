@@ -12,7 +12,6 @@
 		<flag name="addc">Enable Active Directory Domain Controller support</flag>
 		<flag name="addns">Enable AD DNS integration</flag>
 		<flag name="ads">Enable Active Directory support</flag>
-		<flag name="aio">Enable asynchronous IO support</flag>
 		<flag name="ceph">Enable support for Ceph distributed filesystem via <pkg>sys-cluster/ceph</pkg></flag>
 		<flag name="client">Enables the client part</flag>
 		<flag name="cluster">Enable support for clustering</flag>
