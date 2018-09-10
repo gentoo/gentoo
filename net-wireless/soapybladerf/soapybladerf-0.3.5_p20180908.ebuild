@@ -14,8 +14,9 @@ if [ "${PV}" = "9999" ]; then
 	KEYWORDS=""
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/pothosware/SoapyBladeRF/archive/soapy-bladerf-${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}"/SoapyBladeRF-soapy-bladerf-"${PV}"
+	COMMIT="b210241694e0a6e56beddda09fbabcfa8e14be56"
+	SRC_URI="https://github.com/pothosware/SoapyBladeRF/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/SoapyBladeRF-${COMMIT}"
 fi
 
 LICENSE="MIT"
