@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=net-wireless/soapysdr >=net-wireless/bladerf-2018.08:= sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=Soapy SDR plugin for the Blade RF
+EAPI=6
+HOMEPAGE=https://github.com/pothosware/SoapyBladeRF
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=net-wireless/soapysdr >=net-wireless/bladerf-2018.08:=
+SLOT=0
+SRC_URI=https://github.com/pothosware/SoapyBladeRF/archive/b210241694e0a6e56beddda09fbabcfa8e14be56.tar.gz -> soapybladerf-0.3.5_p20180908.tar.gz
+_eclasses_=cmake-utils	ec27c4d90ac99a1a0fb77d97bfc597ee	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=cc61a98f153f9cda868c6611a7b6d145
