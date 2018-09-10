@@ -18,9 +18,6 @@ IUSE="debug +libnotify +nls +sound"
 RDEPEND="
 	>=dev-libs/boost-1.35:=
 	dev-libs/openssl:=
-	sound? ( media-libs/alure
-		media-libs/openal
-	)
 	net-misc/curl
 	sys-libs/zlib[minizip]
 	x11-libs/libICE
@@ -28,6 +25,9 @@ RDEPEND="
 	x11-libs/libXext
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	libnotify? ( x11-libs/libnotify )
+	sound? ( media-libs/alure
+		media-libs/openal
+	)
 "
 
 DEPEND="${RDEPEND}
