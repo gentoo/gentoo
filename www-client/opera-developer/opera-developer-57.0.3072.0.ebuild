@@ -7,7 +7,7 @@ CHROMIUM_LANGS="
 	ja ko lt lv ms nb nl pl pt-BR pt-PT ro ru sk sr sv sw ta te th tr uk vi
 	zh-CN zh-TW
 "
-inherit chromium-2 gnome2-utils multilib unpacker xdg-utils
+inherit chromium-2 gnome2-utils multilib rpm xdg-utils
 
 DESCRIPTION="A fast and secure web browser"
 HOMEPAGE="https://www.opera.com/"
@@ -22,7 +22,7 @@ SRC_URI_BASE="
 SRC_URI="amd64? ("
 for uri in ${SRC_URI_BASE}; do
 SRC_URI+="
-	"${uri}${PN}/${PV}/linux/${PN}_${PV}_amd64.deb"
+	"${uri}${PN}/${PV}/linux/${PN}_${PV}_amd64.rpm"
 "
 done
 SRC_URI+=")"
@@ -62,25 +62,8 @@ QA_PREBUILT="*"
 S=${WORKDIR}
 OPERA_HOME="usr/$(get_libdir)/${PN}"
 
-src_unpack() {
-	unpack_deb ${A}
-}
-
 src_prepare() {
-	case ${ARCH} in
-		amd64)
-			mv usr/lib/x86_64-linux-gnu usr/$(get_libdir) || die
-			rm -r usr/lib || die
-			;;
-		x86)
-			mv usr/lib/i386-linux-gnu/${PN} usr/$(get_libdir)/ || die
-			;;
-	esac
-
 	rm usr/bin/${PN} || die
-
-	rm usr/share/doc/${PN}/copyright || die
-	mv usr/share/doc/${PN} usr/share/doc/${PF} || die
 
 	pushd "${OPERA_HOME}/localization" > /dev/null || die
 	chromium_remove_language_paks
