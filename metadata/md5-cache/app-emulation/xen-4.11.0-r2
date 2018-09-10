@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm pretend setup
+DEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7 ) efi? ( >=sys-devel/binutils-2.22[multitarget] ) !efi? ( >=sys-devel/binutils-2.22 )
+DESCRIPTION=The Xen virtual machine monitor
+EAPI=7
+HOMEPAGE=https://www.xenproject.org
+IUSE=custom-cflags debug efi flask
+KEYWORDS=~amd64 ~arm -x86
+LICENSE=GPL-2
+PDEPEND=~app-emulation/xen-tools-4.11.0
+REQUIRED_USE=arm? ( debug )
+RESTRICT=test splitdebug strip
+SLOT=0
+SRC_URI=https://downloads.xenproject.org/release/xen/4.11.0/xen-4.11.0.tar.gz https://dev.gentoo.org/~dlan/distfiles/xen-4.11.0-upstream-patches-1.tar.xz https://github.com/hydrapolic/gentoo-dist/raw/master/xen/xen-4.11.0-upstream-patches-1.tar.xz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=8565cbbeb6f31010fafb619911314ffb
