@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,11 +20,14 @@ IUSE="test"
 # https://github.com/cannatag/ldap3/blob/master/test/config.py).
 RESTRICT="test"
 
-RDEPEND=">=dev-python/pyasn1-0.1.8[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
+RDEPEND="
+	dev-python/pyasn1[${PYTHON_USEDEP}]"
+
+DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )
-	"
+	test? (
+		dev-python/nose[${PYTHON_USEDEP}]
+		${RDEPEND} )"
 
 python_test() {
 	nosetests -v -s test || die
