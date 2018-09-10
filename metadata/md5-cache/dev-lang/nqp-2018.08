@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install preinst prepare pretend setup test unpack
+DEPEND=java? ( dev-java/asm:4 dev-java/jline:0 dev-java/jna:4 ) moar? ( ~dev-lang/moarvm-2018.08[clang=] ) clang? ( sys-devel/clang ) java? ( >=virtual/jdk-1.7 ) dev-lang/perl java? ( >=dev-java/java-config-2.2.0-r3 )
+DESCRIPTION=Not Quite Perl, a Perl 6 bootstrapping compiler
+EAPI=6
+HOMEPAGE=https://rakudo.org
+IUSE=doc clang java +moar test elibc_FreeBSD java
+KEYWORDS=~amd64 ~x86
+LICENSE=Artistic-2
+RDEPEND=java? ( dev-java/asm:4 dev-java/jline:0 dev-java/jna:4 ) moar? ( ~dev-lang/moarvm-2018.08[clang=] ) java? ( >=virtual/jre-1.7 ) java? ( >=dev-java/java-config-2.2.0-r3 )
+REQUIRED_USE=|| ( java moar )
+SLOT=0
+SRC_URI=https://github.com/perl6/nqp/tarball/2018.08 -> nqp-2018.08.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	0ee72667014428e01a01df2345244cf3	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vcs-snapshot	b77011b62e2053c646ad720defe6d921	versionator	2352c3fc97241f6a02042773c8287748
+_md5_=540e2c28c3b6e7eaed3f4df7a4974a36
