@@ -13,6 +13,7 @@
     <flag name="man">Build and install man pages</flag>
     <flag name="pkcs7">Enable PKCS7 verification support via <pkg>net-libs/gnutls</pkg>.</flag>
     <flag name="redfish">Install redfish plugin</flag>
+    <flag name="thunderbolt">Install thunderbolt plugin</flag>
     <flag name="uefi">Enable UEFI support</flag>
     <flag name="uefi_labels">Enable UEFI labels support</flag>
   </use>
