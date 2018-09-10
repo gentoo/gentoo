@@ -24,9 +24,10 @@ RDEPEND="
 	dev-python/pyasn1[${PYTHON_USEDEP}]"
 
 DEPEND="
-	${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+	test? (
+		dev-python/nose[${PYTHON_USEDEP}]
+		${RDEPEND} )"
 
 python_test() {
 	nosetests -v -s test || die
