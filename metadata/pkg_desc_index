@@ -1082,7 +1082,7 @@ app-misc/pysmssend 1.48-r2: Python Application for sending sms over multiple ISP
 app-misc/pystopwatch 2012.12.24.1-r1: clock and two countdown functions that can minimize to the tray
 app-misc/ranger 1.9.1: A vim-inspired file manager for the console
 app-misc/realpath 1.17: Return the canonicalized absolute pathname
-app-misc/recoll 1.23.3 1.24.1: A personal full text search package
+app-misc/recoll 1.24.1: A personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.1-r1 0.2: Sets the region on DVD drives
 app-misc/remind 03.01.15: Ridiculously functional reminder program
@@ -1298,7 +1298,7 @@ app-text/build-docbook-catalog 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
 app-text/calibre 3.15.0 3.26.1: Ebook management application
 app-text/catdoc 0.95: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
-app-text/cb2bib 1.9.7 1.9.8: Tool for extracting unformatted bibliographic references
+app-text/cb2bib 1.9.8: Tool for extracting unformatted bibliographic references
 app-text/cedilla 0.6: UTF-8 to postscript converter
 app-text/chasen 2.4.4-r3: Japanese Morphological Analysis System, ChaSen
 app-text/chm2pdf 0.9.1-r2: A script that converts a CHM file into a single PDF file
@@ -8101,7 +8101,7 @@ media-sound/pianobar 2016.06.02: A console-based replacement for Pandora's flash
 media-sound/picard 2.0.0_beta3: A cross-platform music tagger
 media-sound/playerctl 0.5.0: A CLI utility to control media players over MPRIS
 media-sound/playmidi 2.5-r2: Command Line and GUI based MIDI Player
-media-sound/pnmixer 0.6_pre20111213 0.7.2: Volume mixer for the system tray
+media-sound/pnmixer 0.7.2: Volume mixer for the system tray
 media-sound/podracer 1.4-r2: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1-r1: Synchronization manager for the Neuros Audio Computer
 media-sound/pragha 1.3.3: A lightweight music player (for Xfce)
@@ -8954,7 +8954,7 @@ net-misc/pump 0.8.24-r4: This is the DHCP/BOOTP client written by RedHat
 net-misc/putty 0.68: A Free Telnet/SSH Client
 net-misc/pycnb 0.0.4-r1: Access cnb.cz daily rates with the comfort of your command line
 net-misc/pytvshows 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
-net-misc/qtm 1.3.18-r1 1.3.19: Qt blogging client
+net-misc/qtm 1.3.19: Qt blogging client
 net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.045.08: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.9: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
