@@ -26,3 +26,7 @@ RDEPEND="sys-apps/pciutils
 		x11-apps/xrandr
 		x11-apps/xwininfo
 	)"
+
+src_install() {
+	emake DESTDIR="${ED}/usr" install
+}
