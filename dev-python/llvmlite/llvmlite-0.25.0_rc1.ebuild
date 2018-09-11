@@ -34,13 +34,20 @@ PATCHES=(
 	"${FILESDIR}"/llvmlite-0.15.0-use-system-six.patch
 )
 
-python_prepare_all() {
-	# disable -flto, we do not force it against user's wishes
-	# add -fPIC, needed to link against shared libraries
-	# plus use those vars to force our CXXFLAGS/LDFLAGS in...
-	export CXX_FLTO_FLAGS="${CXXFLAGS} -fPIC"
-	export LD_FLTO_FLAGS="${LDFLAGS} -fPIC"
-	distutils-r1_python_prepare_all
+python_configure_all() {
+	# upstream's build system is just horrible, and they ignored the PR
+	# fixing it, so let's build the shared lib properly using implicit
+	# make rules
+
+	export LDLIBS=$(llvm-config --libs all)
+	export CXXFLAGS="$(llvm-config --cxxflags) -fPIC ${CXXFLAGS}"
+	export LDFLAGS="$(llvm-config --ldflags) ${LDFLAGS}"
+
+	local files=( ffi/*.cpp )
+	emake -f - <<EOF
+ffi/libllvmlite.so: ${files[*]/.cpp/.o}
+	\$(CXX) -shared \$(CXXFLAGS) \$(LDFLAGS) -o \$@ \$^ \$(LDLIBS)
+EOF
 }
 
 python_test() {
