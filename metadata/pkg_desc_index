@@ -813,7 +813,7 @@ app-eselect/eselect-postgresql 2.3: Utility to select the default PostgreSQL slo
 app-eselect/eselect-python 20160516 20171204: Eselect module for management of multiple Python versions
 app-eselect/eselect-rails 0.23: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.7: Manages renpy symlink
-app-eselect/eselect-repository 3 4: Manage repos.conf via eselect
+app-eselect/eselect-repository 4: Manage repos.conf via eselect
 app-eselect/eselect-ruby 20161226 20170723: Manages multiple Ruby versions
 app-eselect/eselect-rust 0.3_pre20150428: eselect module for rust
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
@@ -1222,7 +1222,7 @@ app-portage/euscan 0.1.1-r2: Ebuild upstream scan utility
 app-portage/euses 2.5.9: look up USE flag descriptions fast
 app-portage/flaggie 0.2.1-r1: A smart CLI mangler for package.* files
 app-portage/g-cpan 0.16.5 0.16.9-r1: Autogenerate and install ebuilds for CPAN modules
-app-portage/gemato 13.0-r1 14.0: Stand-alone Manifest generation & verification tool
+app-portage/gemato 14.0: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1: A nice emerge.log parser
 app-portage/gentoolkit 0.3.3 0.4.0 0.4.2-r1: Collection of administration scripts for Gentoo
 app-portage/gentoolkit-dev 0.2.8.3-r1 0.3.0: Collection of developer scripts for Gentoo
@@ -1240,11 +1240,11 @@ app-portage/porthole 0.6.1-r5: A GTK+-based frontend to Portage
 app-portage/porticron 0.7_p20140126: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.1.21 2.1.25: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/repoman 2.3.0-r1 2.3.6 2.3.9: Repoman is a Quality Assurance tool for Gentoo ebuilds
-app-portage/smart-live-rebuild 1.3.5 1.3.6: Check live packages for updates and emerge them as necessary
+app-portage/smart-live-rebuild 1.3.6: Check live packages for updates and emerge them as necessary
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.4 0.5: arch testing tool
 app-portage/ufed 0.91 0.92: Gentoo Linux USE flags editor
-app-portage/unsymlink-lib 12-r1 13: Convert your system to SYMLINK_LIB=no
+app-portage/unsymlink-lib 13: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.2.4-r4: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r1 4.4_p12: The standard GNU Bourne again shell
 app-shells/bash-completion 2.7-r3: Programmable Completion for bash
@@ -4578,7 +4578,7 @@ dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
 dev-python/Kivy 1.9.1 1.10.1: Library for rapid development of hardware-accelerated multitouch applications
 dev-python/PyContracts 1.7.9: Declare constraints on function parameters and return values
 dev-python/PyECLib 1.5.0: Messaging API for RPC and notifications over different messaging transports
-dev-python/PyGithub 1.28 1.39: Python library to access the Github API v3
+dev-python/PyGithub 1.39: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.9.2 5.10.1-r1: Python bindings for the Qt framework
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
@@ -8820,7 +8820,7 @@ net-misc/adjtimex 1.29-r1: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
-net-misc/aria2 1.33.1 1.34.0: A download utility with segmented downloading with BitTorrent support
+net-misc/aria2 1.34.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/asterisk 11.25.3 13.19.0-r1: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22: Core sounds for asterisk

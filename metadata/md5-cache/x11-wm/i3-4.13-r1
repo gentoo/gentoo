@@ -10,4 +10,4 @@ RDEPEND=dev-libs/libev dev-libs/libpcre >=dev-libs/yajl-2.0.3 x11-libs/libxcb[xk
 SLOT=0
 SRC_URI=https://i3wm.org/downloads/i3-4.13.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
-_md5_=01a627db5d18eb235f3b41b2f0f2fa27
+_md5_=22b728b18618434edf2d814be1ca9a7e
