@@ -4,6 +4,12 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (11 Sep 2018)
+# Sometimes crashes Plasma with Appstream versions pre-0.12. Newer versions
+# of dev-libs/appstream are blocked, bug #646252, #639016. See also:
+# https://mail.kde.org/pipermail/kde-distro-packagers/2018-September/000347.html
+kde-plasma/plasma-desktop appstream
+
 # Andreas Sturmlechner <asturm@gentoo.org> (22 Jul 2018)
 # >=media-video/libav-12 not stable yet, bug #617508
 >=media-libs/mlt-6.6.0 libav

@@ -26,7 +26,7 @@ DOCS=(
 )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.0.6-build.patch"
+	"${FILESDIR}/${P}-build.patch"
 )
 
 pkg_setup() {
@@ -69,10 +69,13 @@ src_install() {
 }
 
 pkg_postinst() {
+	linux-mod_pkg_postinst
+
 	ewarn
 	ewarn "The BestCrypt drivers are not free - Please purchace a license from "
 	ewarn "http://www.jetico.com/"
 	ewarn
-
-	linux-mod_pkg_postinst
+	ewarn "Upstream do not support this package any more, it was patched to"
+	ewarn "make it built. Use at your own risk!"
+	ewarn
 }
