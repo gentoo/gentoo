@@ -125,7 +125,7 @@ wincolor-0.1.6
 wincolor-1.0.0
 "
 
-inherit cargo bash-completion-r1 versionator
+inherit cargo bash-completion-r1 multiprocessing versionator
 
 BOOTSTRAP_VERSION="0.$(($(get_version_component_range 2) - 1)).0"
 
@@ -195,7 +195,7 @@ src_configure() {
 src_compile() {
 	export CARGO_HOME="${ECARGO_HOME}"
 	local cargo="${WORKDIR}/cargo-${BOOTSTRAP_VERSION}-${TRIPLE}/cargo/bin/cargo"
-	${cargo} build --release
+	${cargo} build -j$(makeopts_jobs) --release || die
 
 	# Building HTML documentation
 	use doc && ${cargo} doc
