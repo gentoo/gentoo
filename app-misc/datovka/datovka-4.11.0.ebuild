@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-qt/qtsql-${QT_PV}[sqlite]
 	>=dev-qt/qtsvg-${QT_PV}
 	>=dev-qt/qtwidgets-${QT_PV}
-	>=net-libs/libisds-0.10.7
+	>=net-libs/libisds-0.10.8
 "
 DEPEND="
 	${RDEPEND}
