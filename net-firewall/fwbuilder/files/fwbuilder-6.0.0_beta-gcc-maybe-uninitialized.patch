@@ -1,0 +1,52 @@
+From 1ec3d2315d6c1a8f020763cd7fa019c9b8ed2921 Mon Sep 17 00:00:00 2001
+From: Hannes Schweizer <nilathak@users.noreply.github.com>
+Date: Tue, 11 Sep 2018 21:18:10 +0200
+Subject: [PATCH] fix: demote GCC maybe-uninitialized error to warning again
+
+After enabling stricter compile warnings with the following commit
+https://github.com/fwbuilder/fwbuilder/commit/302299ec52956c98f2cbf0a6a6056c3ae458925f
+it is necessary to add "-Wno-error=maybe-uninitialized" to CXXFLAGS, otherwise the compile fails with gcc-7.3.0/gcc-8.2.0:
+
+../fwbuilder/FWObject.h:64:65: warning: 'nserv' may be used uninitialized in this function [-Wmaybe-uninitialized]
+PIXImporter.cpp:968:40: warning: 'obj' may be used uninitialized in this function [-Wmaybe-uninitialized]
+linux24Interfaces.cpp:279:21: warning: 'itype' may be used uninitialized in this function [-Wmaybe-uninitialized]
+RuleSetDiffDialog.cpp:179:101: warning: 'originalRuleSetModel' may be used uninitialized in this function [-Wmaybe-uninitialized]
+RuleSetDiffDialog.cpp:186:99: warning: 'currentRuleSetModel' may be used uninitialized in this function [-Wmaybe-uninitialized]
+---
+ qmake.inc.in                  | 4 ++--
+ src/libfwbuilder/qmake.inc.in | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/qmake.inc.in b/qmake.inc.in
+index 09748142..c0823e80 100644
+--- a/qmake.inc.in
++++ b/qmake.inc.in
+@@ -199,8 +199,8 @@ FWB_SIG = $$(FWB_SIG)
+ if (isEmpty(FWB_SIG)) { FWB_SIG=26932 }
+ DEFINES += FWB_SIG=$$FWB_SIG
+ 
+-QMAKE_CXXFLAGS_DEBUG += -D__STDC_FORMAT_MACROS -Wall -Wextra -Werror $$(CXXFLAGS)
+-QMAKE_CXXFLAGS_RELEASE += -D__STDC_FORMAT_MACROS -Wall -Wextra -Werror $$(CXXFLAGS)
++QMAKE_CXXFLAGS_DEBUG += -D__STDC_FORMAT_MACROS -Wall -Wextra -Werror -Wno-error=maybe-uninitialized $$(CXXFLAGS)
++QMAKE_CXXFLAGS_RELEASE += -D__STDC_FORMAT_MACROS -Wall -Wextra -Werror -Wno-error=maybe-uninitialized $$(CXXFLAGS)
+ 
+ exists(qmake2.inc) {
+   include(qmake2.inc)
+diff --git a/src/libfwbuilder/qmake.inc.in b/src/libfwbuilder/qmake.inc.in
+index 0ec1ad98..4401369c 100644
+--- a/src/libfwbuilder/qmake.inc.in
++++ b/src/libfwbuilder/qmake.inc.in
+@@ -16,8 +16,8 @@ CPPUNIT_LIBS = @CPPUNIT_LIBS@
+ CONFIG -= qt
+ CONFIG += c++14
+ 
+-QMAKE_CXXFLAGS_DEBUG += -D__STDC_FORMAT_MACROS -Wall -Wextra -Werror $$(CXXFLAGS)
+-QMAKE_CXXFLAGS_RELEASE += -D__STDC_FORMAT_MACROS -Wall -Wextra -Werror $$(CXXFLAGS)
++QMAKE_CXXFLAGS_DEBUG += -D__STDC_FORMAT_MACROS -Wall -Wextra -Werror -Wno-error=maybe-uninitialized $$(CXXFLAGS)
++QMAKE_CXXFLAGS_RELEASE += -D__STDC_FORMAT_MACROS -Wall -Wextra -Werror -Wno-error=maybe-uninitialized $$(CXXFLAGS)
+ 
+ 
+ unix {
+-- 
+2.16.4
+
