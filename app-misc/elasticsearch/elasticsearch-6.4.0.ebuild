@@ -16,7 +16,7 @@ IUSE="x-pack"
 
 RDEPEND="virtual/jre:1.8"
 
-QA_PRESTRIPPED="usr/share/elasticsearch/modules/x-pack/x-pack-ml/platform/linux-x86_64/\(bin\|lib\)/.*"
+QA_PRESTRIPPED="usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/\(bin\|lib\)/.*"
 
 pkg_setup() {
 	enewgroup ${PN}
@@ -31,7 +31,7 @@ src_prepare() {
 
 	if use x-pack; then
 		rm bin/x-pack/*.bat || die
-		rm -r modules/x-pack/x-pack-ml/platform/{darwin,windows}-x86_64 || die
+		rm -r modules/x-pack-ml/platform/{darwin,windows}-x86_64 || die
 	fi
 }
 
@@ -55,7 +55,7 @@ src_install() {
 	chmod +x "${ED}"/usr/share/${PN}/bin/* || die
 
 	if use x-pack; then
-		chmod +x "${ED}"/usr/share/${PN}/modules/x-pack/x-pack-ml/platform/linux-x86_64/bin/* || die
+		chmod +x "${ED}"/usr/share/${PN}/modules/x-pack-ml/platform/linux-x86_64/bin/* || die
 	fi
 
 	keepdir /var/{lib,log}/${PN}
