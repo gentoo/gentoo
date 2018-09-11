@@ -29,3 +29,72 @@ index c362b56..4c49f54 100644
      debug("TPM_ChangeAuthAsymFinish(): newAuthLink value does not match.");
      return TPM_FAIL;
    }
+From 035af1df2b18afd695150c6f9e426133b775c0a1 Mon Sep 17 00:00:00 2001
+From: Florian Larysch <fl@n621.de>
+Date: Tue, 24 Oct 2017 19:33:00 +0200
+Subject: [PATCH] tpm_command_handler: fix switch fallthrough
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Compiling with a recent GCC fails as follows:
+
+  tpm-emulator/tpm/tpm_cmd_handler.c: In function ‘tpm_setup_rsp_auth’:
+  tpm-emulator/tpm/tpm_cmd_handler.c:3332:7: error: this statement may fall through [-Werror=implicit-fallthrough=]
+         tpm_hmac_final(&hmac, rsp->auth2->auth);
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  tpm-emulator/tpm/tpm_cmd_handler.c:3333:5: note: here
+       case TPM_TAG_RSP_AUTH1_COMMAND:
+
+Looking at the code, this does indeed seem unintentional. Add a break
+state in the appropriate place.
+---
+ tpm/tpm_cmd_handler.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tpm/tpm_cmd_handler.c b/tpm/tpm_cmd_handler.c
+index 288d1ce..5aea4e7 100644
+--- a/tpm/tpm_cmd_handler.c
++++ b/tpm/tpm_cmd_handler.c
+@@ -3330,6 +3330,7 @@ static void tpm_setup_rsp_auth(TPM_COMMAND_CODE ordinal, TPM_RESPONSE *rsp)
+                   sizeof(rsp->auth2->nonceOdd.nonce));
+       tpm_hmac_update(&hmac, (BYTE*)&rsp->auth2->continueAuthSession, 1);
+       tpm_hmac_final(&hmac, rsp->auth2->auth);
++      break;
+     case TPM_TAG_RSP_AUTH1_COMMAND:
+       tpm_hmac_init(&hmac, rsp->auth1->secret, sizeof(rsp->auth1->secret));
+       tpm_hmac_update(&hmac, rsp->auth1->digest, sizeof(rsp->auth1->digest));
+-- 
+2.16.4
+
+From 0f4579e913aeb3a893631a3caee420a0e9803683 Mon Sep 17 00:00:00 2001
+From: Peter Huewe <peterhuewe@gmx.de>
+Date: Mon, 26 Jun 2017 00:25:43 +0200
+Subject: [PATCH] Workaround wrong fallthrough case by returning TPM_FAIL
+
+The spec says that the number of verified PCRs should be returned - which it currently does not and breaks compilation with gcc7
+See #26
+Since this code is probably unused anyway, we now simply return TPM_FAIL until someone comes up with a solution.
+
+Spec:
+https://www.trustedcomputinggroup.org/wp-content/uploads/Revision_7.02-_29April2010-tcg-mobile-trusted-module-1.0.pdf
+---
+ mtm/mtm_capability.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/mtm/mtm_capability.c b/mtm/mtm_capability.c
+index a09b116..4046de5 100644
+--- a/mtm/mtm_capability.c
++++ b/mtm/mtm_capability.c
+@@ -87,6 +87,8 @@ static TPM_RESULT cap_mtm_permanent_data(UINT32 subCapSize, BYTE *subCap,
+         tpm_free(*resp);
+         return TPM_FAIL;
+       }
++      error("[TPM_CAP_MTM_PERMANENT_DATA] SubCap 2 not Implemented");
++      return TPM_FAIL; // TODO not implemented.
+ 
+     case 3:
+       return return_UINT32(respSize, resp,
+-- 
+2.16.4
+
