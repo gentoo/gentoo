@@ -4,7 +4,7 @@
 EAPI=6
 
 FRAMEWORKS_MINIMAL="5.50.0" # for syndication
-KDE_HANDBOOK="forceoptional"
+KDE_HANDBOOK="optional"
 KDE_TEST="optional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
