@@ -140,9 +140,6 @@ PATCHES=(
 	"${FILESDIR}"/git-2.18.0_rc1-optional-cvs.patch
 
 	"${FILESDIR}"/git-2.2.0-svn-fe-linking.patch
-
-	# Bug #493306, where FreeBSD 10.x merged libiconv into its libc.
-	"${FILESDIR}"/git-2.5.1-freebsd-10.x-no-iconv.patch
 )
 
 pkg_setup() {
@@ -294,12 +291,6 @@ src_prepare() {
 	# Fix docbook2texi command
 	sed -r -i 's/DOCBOOK2X_TEXI[[:space:]]*=[[:space:]]*docbook2x-texi/DOCBOOK2X_TEXI = docbook2texi.pl/' \
 		Documentation/Makefile || die
-
-	# Fix git-subtree missing DESTDIR
-	sed -i \
-		-e '/$(INSTALL)/s/ $(libexecdir)/ $(DESTDIR)$(libexecdir)/g' \
-		-e '/$(INSTALL)/s/ $(man1dir)/ $(DESTDIR)$(man1dir)/g'  \
-		contrib/subtree/Makefile || die
 }
 
 git_emake() {
