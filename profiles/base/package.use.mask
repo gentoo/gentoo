@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Alon Bar-Lev <alonbl@gentoo.org> (11 Sep 2018)
+# Waiting for >=dev-libs/libressl-2.7 to be stablized.
+>=dev-libs/opensc-0.18.0 libressl
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (3 Aug 2018)
 # New and for Gentoo still quite experimental. You've been
 # warned. (Also, works only on x86_64 and with certain CPUs
