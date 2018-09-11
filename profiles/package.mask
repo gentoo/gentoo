@@ -559,7 +559,7 @@ dev-ruby/poltergeist
 # (isolated) use case, feel free to unmask them on your system.
 # (updated 27 Dec 2017 with gcc < 5.4)
 <sys-devel/gcc-5.4
-<sys-libs/glibc-2.25-r9
+<sys-libs/glibc-2.26
 <sys-devel/binutils-2.29.1-r1
 
 # Michał Górny <mgorny@gentoo.org> (20 May 2017)
