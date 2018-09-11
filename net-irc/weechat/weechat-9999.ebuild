@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 CMAKE_MAKEFILE_GENERATOR=emake
-inherit python-single-r1 cmake-utils
+inherit cmake-utils gnome2-utils python-single-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
@@ -148,4 +148,12 @@ src_configure() {
 	fi
 
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
