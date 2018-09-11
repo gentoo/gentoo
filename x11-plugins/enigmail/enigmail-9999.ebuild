@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-any-r1
 
 DESCRIPTION="Mozilla extension to provide GPG support in mail clients"
-HOMEPAGE="http://www.enigmail.net/"
+HOMEPAGE="https://www.enigmail.net/"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-3"
@@ -18,9 +18,9 @@ if [[ ${PV} == *9999 ]]; then
 	S="${WORKDIR}/${P}"
 else
 	if [[ ${PV} = *_beta* ]] ; then
-		SRC_URI="http://www.enigmail.net/download/beta/${P/_/-}.tar.gz"
+		SRC_URI="https://www.enigmail.net/download/beta/${P/_/-}.tar.gz"
 	else
-		SRC_URI="http://www.enigmail.net/download/source/${P}.tar.gz"
+		SRC_URI="https://www.enigmail.net/download/source/${P}.tar.gz"
 		KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 	fi
 	S="${WORKDIR}/${PN}"
