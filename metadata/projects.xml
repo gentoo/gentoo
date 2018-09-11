@@ -1690,7 +1690,7 @@
     <member>
       <email>antarus@gentoo.org</email>
       <name>Alec Warner</name>
-      <role>General wrangling / Packages site</role>
+      <role>General wrangling, packages site</role>
     </member>
     <member>
       <email>blueknight@gentoo.org</email>
@@ -1714,7 +1714,7 @@
     <member>
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
-      <role>General system administration, Wiki</role>
+      <role>General system administration, wiki, documentation editor</role>
     </member>
     <member>
       <email>mgorny@gentoo.org</email>
@@ -1724,7 +1724,7 @@
     <member>
       <email>prometheanfire@gentoo.org</email>
       <name>Matthew Thode</name>
-      <role>General system administration, Automation, Virtualization</role>
+      <role>General sys admin, Automation, Virtualization</role>
     </member>
     <member is-lead="1">
       <email>robbat2@gentoo.org</email>
