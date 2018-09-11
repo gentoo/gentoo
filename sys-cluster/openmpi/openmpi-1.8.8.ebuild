@@ -60,7 +60,7 @@ CDEPEND="
 	!sys-cluster/pmix
 	dev-libs/libevent
 	dev-libs/libltdl:0
-	>=sys-apps/hwloc-1.9.1[numa?]
+	<sys-apps/hwloc-2[numa?]
 	sys-libs/zlib
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
