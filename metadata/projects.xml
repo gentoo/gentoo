@@ -3106,18 +3106,8 @@ developers and volunteer mentors.</description>
       <role>Lead</role>
     </member>
     <member>
-      <email>creffett@gentoo.org</email>
-      <name>Chris Reffett</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>mrueg@gentoo.org</email>
       <name>Manuel Rüger</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>patrick@gentoo.org</email>
-      <name>Patrick Lauer</name>
       <role>Developer</role>
     </member>
     <member>
@@ -3138,11 +3128,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>williamh@gentoo.org</email>
       <name>William Hubbs</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>zerochaos@gentoo.org</email>
-      <name>Rick Farina</name>
       <role>Developer</role>
     </member>
     <member>
