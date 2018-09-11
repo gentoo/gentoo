@@ -1,6 +1,21 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (11 Sep 2018)
+# All glibc versions that include RPC code are masked now.
+dev-libs/libspt libtirpc
+dev-perl/Lab-VXI11 libtirpc
+mail-mta/exim libtirpc
+net-analyzer/argus libtirpc
+net-analyzer/snort libtirpc
+net-firewall/conntrack-tools libtirpc
+net-fs/autofs libtirpc
+net-libs/libnsl libtirpc
+net-libs/rpcsvc-proto libtirpc
+net-misc/netkit-bootparamd libtirpc
+sci-astronomy/esomidas libtirpc
+sys-cluster/glusterfs libtirpc
+
 # Matt Turner <mattst88@gentoo.org> (13 Jun 2018)
 # Upstream is transitioning to Meson, but does not yet have any configuration
 # options. Until those configuration options are provided, force USE flags on
