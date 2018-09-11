@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] ) ruby? ( dev-lang/ruby:* ) doc? ( app-doc/doxygen ) python? ( dev-lang/swig:0 ) ruby? ( dev-lang/swig:0 )
+DESCRIPTION=Geometry engine library for Geographic Information Systems
+EAPI=6
+HOMEPAGE=http://trac.osgeo.org/geos/
+IUSE=doc python ruby static-libs python_targets_python2_7
+KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris
+LICENSE=LGPL-2.1
+RDEPEND=python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] ) ruby? ( dev-lang/ruby:* )
+REQUIRED_USE=python? ( python_targets_python2_7 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://download.osgeo.org/geos/geos-3.7.0.tar.bz2
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=4bf0990c93772445b6497c43322ac6ed
