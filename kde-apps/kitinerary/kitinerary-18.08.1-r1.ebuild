@@ -4,6 +4,7 @@
 EAPI=6
 
 KDE_TEST="forceoptional"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Data Model and Extraction System for Travel Reservation information"
