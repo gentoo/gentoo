@@ -18,7 +18,7 @@ HOMEPAGE="http://icinga.org/icinga2"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+mysql postgres classicui console libressl lto mail minimal nano-syntax +plugins systemd +vim-syntax"
+IUSE="classicui console libressl lto mail mariadb minimal +mysql nano-syntax +plugins postgres systemd +vim-syntax"
 WX_GTK_VER="3.0"
 
 CDEPEND="
@@ -26,10 +26,8 @@ CDEPEND="
 	libressl? ( dev-libs/libressl:0= )
 	>=dev-libs/boost-1.58-r1
 	console? ( dev-libs/libedit )
-	mysql? ( || (
-		dev-db/mariadb-connector-c
-		dev-db/mysql-connector-c )
-	)
+	mariadb? ( dev-db/mariadb-connector-c:= )
+	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
 	dev-libs/yajl"
 
@@ -47,7 +45,7 @@ RDEPEND="
 	mail? ( virtual/mailx )
 	classicui? ( net-analyzer/icinga[web] )"
 
-REQUIRED_USE="!minimal? ( || ( mysql postgres ) )"
+REQUIRED_USE="!minimal? ( || ( mariadb mysql postgres ) )"
 
 want_apache2
 
@@ -118,7 +116,14 @@ src_install() {
 		newdoc "${WORKDIR}"/icinga2-${PV}/lib/db_ido_mysql/schema/mysql.sql mysql.sql
 		docinto schema/upgrade
 		dodoc "${WORKDIR}"/icinga2-${PV}/lib/db_ido_mysql/schema/upgrade/*
-	elif use postgres ; then
+	fi
+	if use mariadb ; then  # same as mysql
+		docinto schema
+		newdoc "${WORKDIR}"/icinga2-${PV}/lib/db_ido_mysql/schema/mysql.sql mysql.sql
+		docinto schema/upgrade
+		dodoc "${WORKDIR}"/icinga2-${PV}/lib/db_ido_mysql/schema/upgrade/*
+	fi
+	if use postgres ; then
 		docinto schema
 		newdoc "${WORKDIR}"/icinga2-${PV}/lib/db_ido_pgsql/schema/pgsql.sql pgsql.sql
 		docinto schema/upgrade
