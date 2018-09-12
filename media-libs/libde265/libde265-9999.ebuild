@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
 inherit autotools multilib-minimal
 
@@ -21,11 +21,11 @@ HOMEPAGE="https://github.com/strukturag/libde265"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug qt5 static-libs cpu_flags_x86_sse"
+IUSE="cpu_flags_x86_sse debug qt5 static-libs"
 
 DEPEND="
-	media-libs/libsdl
-	virtual/ffmpeg
+	media-libs/libsdl[${MULTILIB_USEDEP}]
+	virtual/ffmpeg[${MULTILIB_USEDEP}]
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -50,10 +50,18 @@ multilib_src_configure() {
 		$(use_enable debug log-info)
 		$(use_enable debug log-debug)
 		$(use_enable debug log-trace)
-		$(use_enable qt5 dec265)
-		$(use_enable qt5 sherlock265)
 		--enable-log-error
 	)
+
+	if ! multilib_is_native_abi; then
+		myeconfargs+=( --disable-dec265 --disable-sherlock265 )
+	else
+		myeconfargs+=(
+			$(use_enable qt5 dec265)
+			$(use_enable qt5 sherlock265)
+		)
+	fi
+
 	econf "${myeconfargs[@]}"
 }
 
