@@ -5,7 +5,7 @@ EAPI=6
 
 # Package requires newer meson than eclass provides
 MESON_AUTO_DEPEND="no"
-PYTHON_COMPAT=( python3_4 python3_5 python3_6 )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit meson python-single-r1 vala xdg-utils
 
@@ -17,7 +17,7 @@ LICENSE="GPL-2+"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="colorhug dell doc gpg +man pkcs7 redfish systemd test uefi"
+IUSE="colorhug dell doc gpg +man nvme pkcs7 redfish systemd test thunderbolt uefi"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	dell? ( uefi )
@@ -47,6 +47,7 @@ RDEPEND="
 		app-crypt/gpgme
 		dev-libs/libgpg-error
 	)
+	nvme? ( sys-libs/efivar )
 	pkcs7? ( >=net-libs/gnutls-3.4.4.1:= )
 	redfish? (
 		dev-libs/json-glib
@@ -54,6 +55,7 @@ RDEPEND="
 	)
 	systemd? ( >=sys-apps/systemd-211 )
 	!systemd? ( >=sys-auth/consolekit-1.0.0 )
+	thunderbolt? ( sys-apps/thunderbolt-software-user-space )
 	uefi? (
 		media-libs/fontconfig
 		media-libs/freetype
@@ -72,6 +74,7 @@ DEPEND="
 	$(vala_depend)
 	doc? ( dev-util/gtk-doc )
 	man? ( app-text/docbook-sgml-utils )
+	nvme? (	>=sys-kernel/linux-headers-4.4 )
 	test? ( net-libs/gnutls[tools] )
 "
 
@@ -97,10 +100,10 @@ src_configure() {
 		-Dman="$(usex man true false)"
 		-Dpkcs7="$(usex pkcs7 true false)"
 		-Dplugin_dell="$(usex dell true false)"
+		-Dplugin_nvme="$(usex nvme true false)"
 		-Dplugin_redfish="$(usex redfish true false)"
 		-Dplugin_synaptics="$(usex dell true false)"
-		# requires libtbtfwu which is not packaged (yet?)
-		-Dplugin_thunderbolt=false
+		-Dplugin_thunderbolt="$(usex thunderbolt true false)"
 		-Dplugin_uefi="$(usex uefi true false)"
 		-Dsystemd="$(usex systemd true false)"
 		-Dtests="$(usex test true false)"

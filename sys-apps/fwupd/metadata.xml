@@ -11,11 +11,11 @@
     <flag name="dell">Enable Dell-specific support.</flag>
     <flag name="gpg">Enable GPG support.</flag>
     <flag name="man">Build and install man pages</flag>
+    <flag name="nvme">Build and install nvme plugin</flag>
     <flag name="pkcs7">Enable PKCS7 verification support via <pkg>net-libs/gnutls</pkg>.</flag>
     <flag name="redfish">Install redfish plugin</flag>
     <flag name="thunderbolt">Install thunderbolt plugin</flag>
     <flag name="uefi">Enable UEFI support</flag>
-    <flag name="uefi_labels">Enable UEFI labels support</flag>
   </use>
   <upstream>
     <remote-id type="github">hughsie/fwupd</remote-id>
