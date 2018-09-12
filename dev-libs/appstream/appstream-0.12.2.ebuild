@@ -21,7 +21,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Distributions/AppStream/"
 LICENSE="LGPL-2.1+ GPL-2+"
 # check as_api_level
 SLOT="0/4"
-IUSE="apt introspection qt5 test"
+IUSE="apt +introspection qt5 test"
 
 RDEPEND="
 	dev-libs/glib:2
