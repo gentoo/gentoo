@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install postinst setup
+DESCRIPTION=Light, fast and simple C library focused on standards-conformance and safety
+EAPI=6
+HOMEPAGE=http://www.musl-libc.org/
+IUSE=headers-only
+KEYWORDS=-* ~amd64 ~arm ~arm64 ~mips ~ppc ~x86
+LICENSE=MIT LGPL-2 GPL-2
+SLOT=0
+SRC_URI=http://www.musl-libc.org/releases/musl-1.1.20.tar.gz https://dev.gentoo.org/~blueness/musl-misc/getconf.c https://dev.gentoo.org/~blueness/musl-misc/getent.c https://dev.gentoo.org/~blueness/musl-misc/iconv.c
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=edc1503a7bdbd37d866bab4075a0299e
