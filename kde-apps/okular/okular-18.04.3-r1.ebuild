@@ -65,7 +65,7 @@ RDEPEND="${DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-tests.patch"
+	"${FILESDIR}/${PN}-18.08.0-tests.patch"
 	"${FILESDIR}/${P}-path-traversal-issue.patch"
 )
 
