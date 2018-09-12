@@ -16,7 +16,6 @@
     <flag name="redfish">Install redfish plugin</flag>
     <flag name="thunderbolt">Install thunderbolt plugin</flag>
     <flag name="uefi">Enable UEFI support</flag>
-    <flag name="uefi_labels">Enable UEFI labels support</flag>
   </use>
   <upstream>
     <remote-id type="github">hughsie/fwupd</remote-id>
