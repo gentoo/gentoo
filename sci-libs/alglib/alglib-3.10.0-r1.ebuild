@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Numerical analysis and data processing library"
 HOMEPAGE="http://www.alglib.net/"
@@ -16,8 +16,11 @@ IUSE="test"
 
 S="${WORKDIR}"/cpp/
 
+PATCHES=( "${FILESDIR}/${P}-disable-minlm-test.patch" )
+
 src_prepare() {
 	cp "${FILESDIR}"/CMakeLists.txt-3.8.2 CMakeLists.txt || die
+	use x86 && append-cppflags -ffloat-store
 	cmake-utils_src_prepare
 }
 
