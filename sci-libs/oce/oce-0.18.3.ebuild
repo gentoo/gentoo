@@ -11,7 +11,7 @@ SRC_URI="https://github.com/tpaviot/oce/archive/OCE-$PV.tar.gz"
 
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
 SLOT="${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples freeimage gl2ps +openmp tbb vtk"
 REQUIRED_USE="?? ( openmp tbb )"
 

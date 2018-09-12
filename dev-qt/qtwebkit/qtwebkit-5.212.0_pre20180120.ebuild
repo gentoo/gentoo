@@ -12,7 +12,7 @@ inherit check-reqs cmake-utils flag-o-matic python-any-r1 qmake-utils ruby-singl
 
 DESCRIPTION="WebKit rendering library for the Qt5 framework (deprecated)"
 HOMEPAGE="https://www.qt.io/"
-SRC_URI="http://code.qt.io/cgit/qt/${PN}.git/snapshot/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="BSD LGPL-2+"
 SLOT="5/5.212"
