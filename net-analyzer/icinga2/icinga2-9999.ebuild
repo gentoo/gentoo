@@ -26,7 +26,10 @@ CDEPEND="
 	libressl? ( dev-libs/libressl:0= )
 	>=dev-libs/boost-1.58-r1
 	console? ( dev-libs/libedit )
-	mysql? ( virtual/mysql )
+	mysql? ( || (
+		dev-db/mariadb-connector-c
+		dev-db/mysql-connector-c )
+	)
 	postgres? ( dev-db/postgresql:= )
 	dev-libs/yajl"
 
