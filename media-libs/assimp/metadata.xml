@@ -5,7 +5,6 @@
 		<email>slis@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name="boost">Build assimp with boost support</flag>
 		<flag name="samples">Build viewer library</flag>
 		<flag name="tools">Build assimp tool binary</flag>
 	</use>
