@@ -16,6 +16,8 @@ IUSE="test"
 
 S="${WORKDIR}"/cpp/
 
+PATCHES=( "${FILESDIR}/${P}-disable-minlm-test.patch" )
+
 src_prepare() {
 	cp "${FILESDIR}"/CMakeLists.txt-3.8.2 CMakeLists.txt || die
 	cmake-utils_src_prepare
