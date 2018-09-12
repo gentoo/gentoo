@@ -41,8 +41,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
-
 src_configure() {
 	append-cxxflags -std=c++11
 	econf \
