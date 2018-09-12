@@ -981,7 +981,7 @@ app-misc/cstream 3.1.1: general-purpose stream-handling tool like UNIX dd
 app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common unix-based commands
 app-misc/dailystrips 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.17: A program (and preload library) to fake system date
-app-misc/datovka 3.0.3-r1: GUI to access Czech eGov "Datove schranky"
+app-misc/datovka 3.0.3-r1 4.10.3: GUI to access the Czech eGov system of Datove schranky
 app-misc/delay 1.6-r2: Sleeplike program that counts down the number of seconds specified
 app-misc/detachtty 9-r1: Attach/detach from interactive processes across the network
 app-misc/detox 1.2.0-r3: Safely remove spaces and strange characters from filenames
@@ -8657,6 +8657,7 @@ net-libs/libhubbub 0.3.3: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32-r1: A small library to interface to the Ident protocol server
 net-libs/libircclient 1.6-r2 1.8: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.18.0: iscsi client library and utilities
+net-libs/libisds 0.10.8: Client library for accessing ISDS Soap services
 net-libs/libktorrent 2.1-r1: BitTorrent library based on KDE Frameworks
 net-libs/liblockfile 1.09: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.14.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
@@ -10849,7 +10850,7 @@ x11-misc/bbmail 0.9.3-r1: blackbox mail notification
 x11-misc/bbpager 0.4.7-r1: An understated pager for Blackbox
 x11-misc/bbppp 0.2.5-r1: blackbox ppp frontend/monitor
 x11-misc/bbrun 1.6-r1: blackbox program execution dialog box
-x11-misc/bbweather 0.6.3-r1 0.6.3-r2: blackbox weather monitor
+x11-misc/bbweather 0.6.3-r2: blackbox weather monitor
 x11-misc/bumblebee 3.2.1: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/cairo-clock 0.3.4-r1: An analog clock displaying the system-time
 x11-misc/calise 0.4.2: Computes ambient brightness and sets screen's correct backlight using a webcam
