@@ -11,7 +11,7 @@ SRC_URI="https://secure.nic.cz/files/datove_schranky/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 # minimum Qt version required
