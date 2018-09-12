@@ -1,41 +1,51 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE='xml(+),threads(+)'
+DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1
 
 DESCRIPTION="CLI for extracting streams from websites to a video player of your choice"
 HOMEPAGE="https://streamlink.github.io/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 LICENSE="BSD-2 Apache-2.0"
 SLOT="0"
 IUSE="doc test"
 
-RDEPEND="dev-python/pycryptodome[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
+RDEPEND="
 	virtual/python-futures[${PYTHON_USEDEP}]
 	virtual/python-singledispatch[${PYTHON_USEDEP}]
-	dev-python/backports-shutil_which[$(python_gen_usedep 'python2*')]
+	>dev-python/requests-2.17.1[${PYTHON_USEDEP}]
+	dev-python/urllib3[${PYTHON_USEDEP}]
+	dev-python/websocket-client[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/backports-shutil_which[${PYTHON_USEDEP}]' 'python2*')
 	$(python_gen_cond_dep 'dev-python/backports-shutil_get_terminal_size[${PYTHON_USEDEP}]' 'python2*')
 	dev-python/pycountry[${PYTHON_USEDEP}]
-	dev-python/websocket-client[${PYTHON_USEDEP}]
-	media-video/rtmpdump
-	virtual/ffmpeg"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	>=dev-python/pycryptodome-3.4.3[${PYTHON_USEDEP}]
+"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/docutils[${PYTHON_USEDEP}]
+		dev-python/recommonmark[${PYTHON_USEDEP}]
 	)
 	test? (
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
-		${RDEPEND}
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/requests-mock[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/freezegun[${PYTHON_USEDEP}]
 	)"
+RDEPEND="${RDEPEND}
+	media-video/rtmpdump
+	virtual/ffmpeg
+"
 
 python_configure_all() {
 	# Avoid iso-639, iso3166 dependencies since we use pycountry.
