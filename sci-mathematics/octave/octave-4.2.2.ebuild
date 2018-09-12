@@ -92,6 +92,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-ncurses-pkgconfig.patch
 	"${FILESDIR}"/${PN}-4.2.0-zlib-underlinking.patch
 	"${FILESDIR}"/${P}-fix-qscintilla-detection.patch
+	"${FILESDIR}"/${PN}-4.4.0-qt-5.11.patch
 )
 
 src_prepare() {
