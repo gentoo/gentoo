@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -81,7 +81,7 @@ multilib_src_install() {
 	fi
 
 	if multilib_is_native_abi && use java; then
-		java-pkg_dojar "${BUILD_DIR}"/.libs/${PN}-j2se-*.jar
+		java-pkg_dojar "${BUILD_DIR}"/.libs/${PN}{,-awt}-j2se-*.jar
 	fi
 }
 
