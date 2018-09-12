@@ -210,11 +210,6 @@ dev-python/pyfire
 # Beta release with new features, masked for testing
 =app-text/tesseract-4.0.0_beta*
 
-# Virgil Dupras <vdupras@gentoo.org> (12 Aug 2018)
-# django-pipeline hasn't been maintained and has been broken for a while.
-# No revdep. Removal in 30 days. Bug #649838
-dev-python/django-pipeline
-
 # Ulrich Müller <ulm@gentoo.org> (07 Aug 2018)
 # Fails to build with emacs-26.1. Last release in 2003, last commit
 # to upstream CVS in 2010. Masked for removal in 30 days. Bug #663030.
