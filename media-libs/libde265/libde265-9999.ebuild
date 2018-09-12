@@ -20,12 +20,12 @@ HOMEPAGE="https://github.com/strukturag/libde265"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE="cpu_flags_x86_sse debug qt5 static-libs"
+IUSE="cpu_flags_x86_sse debug libav qt5 static-libs"
 
 DEPEND="
 	media-libs/libsdl[${MULTILIB_USEDEP}]
-	virtual/ffmpeg[${MULTILIB_USEDEP}]
+	!libav? ( media-video/ffmpeg:=[${MULTILIB_USEDEP}] )
+	libav? ( media-video/libav:=[${MULTILIB_USEDEP}] )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
