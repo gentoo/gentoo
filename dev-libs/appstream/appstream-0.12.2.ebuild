@@ -21,21 +21,22 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Distributions/AppStream/"
 LICENSE="LGPL-2.1+ GPL-2+"
 # check as_api_level
 SLOT="0/4"
-IUSE="apt qt5 test"
+IUSE="apt +introspection qt5 test"
 
 RDEPEND="
 	dev-libs/glib:2
-	>=dev-libs/gobject-introspection-1.56
 	dev-libs/libxml2:2
 	dev-libs/libyaml
 	dev-libs/snowball-stemmer
+	introspection? ( >=dev-libs/gobject-introspection-1.56:= )
 	qt5? ( dev-qt/qtcore:5 )
 "
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.5
+	dev-libs/appstream-glib
 	dev-util/itstool
 	>=dev-util/meson-0.42.0
-	sys-devel/gettext
+	>=sys-devel/gettext-0.19.8
 	test? (
 		qt5? ( dev-qt/qttest:5 )
 	)
@@ -56,6 +57,7 @@ src_configure() {
 		-Dstemming=true
 		-Dvapi=false
 		-Dapt-support=$(usex apt true false)
+		-Dgir=$(usex introspection true false)
 		-Dqt=$(usex qt5 true false)
 	)
 
