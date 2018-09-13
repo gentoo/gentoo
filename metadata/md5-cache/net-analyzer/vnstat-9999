@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install setup unpack
-DEPEND=gd? ( media-libs/gd[png] ) test? ( dev-libs/check ) >=dev-vcs/git-1.8.2.1[curl] virtual/pkgconfig
+DEPEND=dev-db/sqlite gd? ( media-libs/gd[png] ) test? ( dev-libs/check ) >=dev-vcs/git-1.8.2.1[curl] virtual/pkgconfig
 DESCRIPTION=Console-based network traffic monitor that keeps statistics of network usage
 EAPI=6
 HOMEPAGE=https://humdi.net/vnstat/
 IUSE=gd selinux test
 LICENSE=GPL-2
-RDEPEND=gd? ( media-libs/gd[png] ) selinux? ( sec-policy/selinux-vnstatd )
+RDEPEND=dev-db/sqlite gd? ( media-libs/gd[png] ) selinux? ( sec-policy/selinux-vnstatd )
 SLOT=0
 _eclasses_=git-r3	918d6a744039c29af2cadc7317459765	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	user	8bc2845510e2109af75e3eeac607ec81
-_md5_=f93484dd893a82aa71f97a83a4bb0e72
+_md5_=ad6cc8ca2cacc9b542be251a5e1b8b2b
