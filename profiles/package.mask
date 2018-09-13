@@ -32,6 +32,7 @@
 # Michał Górny <mgorny@gentoo.org> (13 Sep 2018)
 # Depends on old version of dev-libs/jsoncpp, blocking its pruning.
 # Downstream maintainer is inactive to bump it.  Removal in 30 days.
+# Bug #656678.
 dev-lang/solidity
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 Sep 2018)
