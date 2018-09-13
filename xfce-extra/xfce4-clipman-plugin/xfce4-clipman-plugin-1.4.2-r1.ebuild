@@ -16,9 +16,7 @@ IUSE="qrcode"
 
 RDEPEND=">=dev-libs/glib-2.32:2=
 	>=x11-libs/gtk+-3.14:3=
-	dev-libs/libunique:1=
 	x11-libs/libXtst:=
-	>=xfce-base/exo-0.10:=
 	>=xfce-base/libxfce4ui-4.12:=
 	>=xfce-base/libxfce4util-4.12:=
 	>=xfce-base/xfce4-panel-4.12:=
