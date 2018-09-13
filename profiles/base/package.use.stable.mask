@@ -138,10 +138,6 @@ app-office/kmymoney weboob
 # Stable-masking it so Boost 1.62 stabilization can go ahead
 sci-libs/vtk mpi
 
-# Doug Goldstein <cardoe@gentoo.org> (04 Jan 2017)
-# libcxx is not stable so we can't let users use it
-dev-lang/rust libcxx
-
 # Alon Bar-Lev <alonbl@gentoo.org> (01 Jan 2017)
 # Will always require unstable packages.
 net-libs/gnutls test-full

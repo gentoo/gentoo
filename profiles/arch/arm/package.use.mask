@@ -402,10 +402,6 @@ dev-libs/weston rdp screen-sharing
 # Firmware loader not keyworded yet
 sci-libs/linux-gpib firmware
 
-# Markus Meier <maekke@gentoo.org> (10 May 2013)
-# unkeyworded deps for dev-python/ipython
-dev-python/ipython mongodb
-
 # Christoph Junghans <junghans@gentoo.org> (29 Apr 2013)
 # MKL not available on this arch
 media-gfx/povray mkl
@@ -431,12 +427,10 @@ media-gfx/pstoedit emf
 # masking all stable packages with java use flag
 net-vpn/openconnect java
 dev-util/oprofile java
-=dev-db/qdbm-1.8.78-r1 java
 dev-libs/beecrypt java
 dev-libs/cyrus-sasl java
 dev-tex/tex4ht java
 dev-vcs/subversion java
-=media-libs/libcaca-0.99_beta18-r2 java
 media-libs/libjpeg-turbo java
 net-dns/libidn java
 net-misc/tigervnc java

@@ -58,4 +58,3 @@ dev-util/geany-plugins gtkspell
 gnome-base/gvfs google
 >=x11-libs/gtk+-3.12.2 cloudprint
 x11-libs/gksu gnome
-x11-wm/icewm gnome

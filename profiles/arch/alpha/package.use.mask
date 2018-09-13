@@ -400,7 +400,7 @@ x11-misc/rss-glx quesoglc
 
 # Raúl Porcel <armin76@gentoo.org> (07 Jul 2008)
 # Make clisp deps minimal
-dev-lisp/clisp hyperspec pari svm
+dev-lisp/clisp hyperspec svm
 
 # Tobias Klausmann <klausman@gentoo.org> (15 Jun 2008)
 # No hardware to test net-dialup/linux-atm on alpha, so mask atm use flag
