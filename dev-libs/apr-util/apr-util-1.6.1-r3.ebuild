@@ -48,6 +48,7 @@ DOCS=(CHANGES NOTICE README)
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.3-sysroot.patch #385775
+	"${FILESDIR}"/${PN}-1.6.1-fix-gdbm-error-handling.patch
 )
 
 src_prepare() {
@@ -114,6 +115,11 @@ src_configure() {
 src_compile() {
 	emake
 	use doc && emake dox
+}
+
+src_test() {
+	# Building tests in parallel is broken
+	emake -j1 check
 }
 
 src_install() {

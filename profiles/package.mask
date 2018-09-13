@@ -216,11 +216,6 @@ dev-python/pyfire
 # Beta release with new features, masked for testing
 =app-text/tesseract-4.0.0_beta*
 
-# Ulrich Müller <ulm@gentoo.org> (07 Aug 2018)
-# Fails to build with emacs-26.1. Last release in 2003, last commit
-# to upstream CVS in 2010. Masked for removal in 30 days. Bug #663030.
-app-emacs/cmail
-
 # Mike Gilbert <floppym@gentoo.org> (04 Aug 2018)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
@@ -293,11 +288,6 @@ dev-python/wxpython:2.8
 =virtual/perl-threads-2.220.0
 =virtual/perl-version-0.992.300
 
-# Brian Dolbec <dolsen@gentoo.org> (4 July 2018)
-# No longer needed, newer gpg-2 versions have simple cli options
-# for generating new keys and doing key maintenance. Removal in a month
-app-crypt/gkeys-gen
-
 # Thomas Deutschmann <whissi@gentoo.org> (23 Jun 2018)
 # Doesn't pass QA full boot test
 =sys-kernel/ck-sources-4.16.17
@@ -309,11 +299,6 @@ app-crypt/gkeys-gen
 # issues are tracked in bug #658278.  Somebody really needs to step up
 # and start actively maintaining it.  Otherwise -- removal in 90 days.
 sys-apps/paludis
-
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Dead since 2013, not compatible with latest profiles (#642568). Removal in
-# a month
-net-vpn/miredo
 
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
