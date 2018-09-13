@@ -2,7 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>tommy@gentoo.org</email>
-		<name>Thomas Sachau (Tommy[D])</name>
+		<email>tharvik@gmail.com</email>
+		<name>Tharvik</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 </pkgmetadata>
