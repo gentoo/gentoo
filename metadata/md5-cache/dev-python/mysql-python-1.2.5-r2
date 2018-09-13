@@ -1,0 +1,15 @@
+BDEPEND=dev-db/mysql-connector-c app-arch/unzip dev-python/setuptools[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)] doc? ( dev-python/sphinx[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)] ) python_targets_pypy? ( >=virtual/pypy-5:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)]
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-db/mysql-connector-c
+DESCRIPTION=Python interface to MySQL
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/mysql-python/ https://pypi.org/project/MySQL-python/
+IUSE=doc python_targets_pypy python_targets_python2_7
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=dev-db/mysql-connector-c python_targets_pypy? ( >=virtual/pypy-5:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_pypy python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://pypi/M/MySQL-python/MySQL-python-1.2.5.zip
+_eclasses_=distutils-r1	8595c9c7530ac3963f3aa0d77aa7e2d8	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=cd4851a41f85431c468b6fcade190a5a
