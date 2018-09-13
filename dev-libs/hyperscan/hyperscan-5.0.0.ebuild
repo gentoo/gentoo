@@ -1,9 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils
+PYTHON_COMPAT=( python2_7 )
+
+inherit cmake-utils python-r1
 
 DESCRIPTION="High-performance regular expression matching library"
 SRC_URI="https://github.com/01org/hyperscan/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -14,10 +16,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_ssse3 static-libs"
 
-DEPEND="dev-util/ragel
-	=dev-lang/python-2*
+RDEPEND="${PYTHON_DEPS}
+	dev-util/ragel
 	dev-libs/boost
 	net-libs/libpcap"
+DEPEND="${RDEPEND}"
 
 REQUIRED_USE="cpu_flags_x86_ssse3"
 
