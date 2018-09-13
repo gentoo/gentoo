@@ -31,10 +31,10 @@ _KDE5_ECLASS=1
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit cmake-utils flag-o-matic gnome2-utils kde5-functions virtualx xdg
+inherit cmake-utils flag-o-matic kde5-functions virtualx xdg
 
 case ${EAPI} in
-	6) inherit eapi7-ver eutils ;;
+	6) inherit eapi7-ver eutils gnome2-utils ;;
 esac
 
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
@@ -717,7 +717,7 @@ kde5_src_install() {
 kde5_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	gnome2_icon_savelist
+	[[ ${EAPI} == 6 ]] && gnome2_icon_savelist
 	xdg_pkg_preinst
 }
 
@@ -727,7 +727,7 @@ kde5_pkg_preinst() {
 kde5_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
+	if [[ ${EAPI} == 6 && -n ${GNOME2_ECLASS_ICONS} ]]; then
 		gnome2_icon_cache_update
 	fi
 	xdg_pkg_postinst
@@ -748,7 +748,7 @@ kde5_pkg_postinst() {
 kde5_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
+	if [[ ${EAPI} == 6 && -n ${GNOME2_ECLASS_ICONS} ]]; then
 		gnome2_icon_cache_update
 	fi
 	xdg_pkg_postrm
