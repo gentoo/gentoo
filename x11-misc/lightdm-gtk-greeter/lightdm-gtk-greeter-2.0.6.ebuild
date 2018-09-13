@@ -3,11 +3,11 @@
 
 EAPI=6
 
-inherit versionator gnome2-utils
+inherit autotools gnome2-utils eapi7-ver
 
 DESCRIPTION="LightDM GTK+ Greeter"
 HOMEPAGE="https://launchpad.net/lightdm-gtk-greeter"
-SRC_URI="https://launchpad.net/lightdm-gtk-greeter/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz
+SRC_URI="https://launchpad.net/lightdm-gtk-greeter/$(ver_cut 1-2)/${PV}/+download/${P}.tar.gz
 	branding? ( https://dev.gentoo.org/~hwoarang/distfiles/lightdm-gentoo-patch-2.tar.gz )"
 
 LICENSE="GPL-3 LGPL-3
@@ -46,6 +46,10 @@ src_prepare() {
 			>> "${WORKDIR}"/${PN}.conf || die
 	fi
 	default
+
+	# Fix docdir
+	sed "/^docdir/s@${PN}@${PF}@" -i data/Makefile.am || die
+	eautoreconf
 }
 
 src_configure() {
