@@ -6797,7 +6797,7 @@ kde-apps/marble 18.04.3: Virtual Globe and World Atlas to learn more about Earth
 kde-apps/mbox-importer 18.04.3: Import mbox email archives from various sources into Akonadi
 kde-apps/messagelib 18.04.3: Libraries for messaging functions
 kde-apps/minuet 18.04.3: A KDE Software for Music Education
-kde-apps/okular 18.04.3 18.04.3-r1: Universal document viewer based on KDE Frameworks
+kde-apps/okular 18.04.3-r1: Universal document viewer based on KDE Frameworks
 kde-apps/palapeli 18.04.3: Jigsaw puzzle game by KDE
 kde-apps/parley 18.04.3: A vocabulary trainer to help you memorize things
 kde-apps/picmi 18.04.3: Nonogram logic game by KDE
