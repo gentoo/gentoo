@@ -6797,7 +6797,7 @@ kde-apps/marble 18.04.3: Virtual Globe and World Atlas to learn more about Earth
 kde-apps/mbox-importer 18.04.3: Import mbox email archives from various sources into Akonadi
 kde-apps/messagelib 18.04.3: Libraries for messaging functions
 kde-apps/minuet 18.04.3: A KDE Software for Music Education
-kde-apps/okular 18.04.3: Universal document viewer based on KDE Frameworks
+kde-apps/okular 18.04.3 18.04.3-r1: Universal document viewer based on KDE Frameworks
 kde-apps/palapeli 18.04.3: Jigsaw puzzle game by KDE
 kde-apps/parley 18.04.3: A vocabulary trainer to help you memorize things
 kde-apps/picmi 18.04.3: Nonogram logic game by KDE
@@ -10805,7 +10805,7 @@ x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) 
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.24.1: A window navigation construction kit
 x11-libs/libxcb 1.13: X C-language Bindings library
-x11-libs/libxkbcommon 0.8.0: X.Org xkbcommon library
+x11-libs/libxkbcommon 0.8.0 0.8.2: X.Org xkbcommon library
 x11-libs/libxkbfile 1.0.9-r2: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r2: X.Org xkbui library
 x11-libs/libxklavier 5.4: A library for the X Keyboard Extension (high-level API)
