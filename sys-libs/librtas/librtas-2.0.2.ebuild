@@ -10,7 +10,7 @@ SRC_URI="https://github.com/ibm-power-utilities/${PN}/archive/v${PV}.tar.gz -> $
 
 LICENSE="IBM"
 SLOT="0"
-KEYWORDS="~ppc ~ppc64"
+KEYWORDS="~ppc ppc64"
 IUSE=""
 
 DOCS="README"
