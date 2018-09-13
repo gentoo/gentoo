@@ -201,7 +201,7 @@ src_configure() {
 		-Dcling=ON # cling=OFF is broken
 		-Dcocoa=$(usex aqua)
 		-Dcuda=$(usex cuda)
-		-Dcxx14=$(usex root7)
+		-Dcxx14=ON
 		-Dcxxmodules=OFF # requires clang, unstable
 		-Ddavix=$(usex davix)
 		-Ddcache=OFF
