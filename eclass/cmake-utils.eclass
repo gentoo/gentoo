@@ -125,7 +125,13 @@ esac
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
 
-[[ ${WANT_CMAKE} ]] && eqawarn "\${WANT_CMAKE} has been removed and is a no-op now"
+if [[ ${WANT_CMAKE} ]]; then
+	if [[ ${EAPI} != [56] ]]; then
+		die "\${WANT_CMAKE} has been removed and is a no-op now"
+	else
+		eqawarn "\${WANT_CMAKE} has been removed and is a no-op now"
+	fi
+fi
 [[ ${PREFIX} ]] && die "\${PREFIX} has been removed and is a no-op now"
 
 case ${CMAKE_MAKEFILE_GENERATOR} in
@@ -208,8 +214,13 @@ _cmake_check_build_dir() {
 		# Respect both the old variable and the new one, depending
 		# on which one was set by the ebuild.
 		if [[ ! ${BUILD_DIR} && ${CMAKE_BUILD_DIR} ]]; then
-			eqawarn "The CMAKE_BUILD_DIR variable has been renamed to BUILD_DIR."
-			eqawarn "Please migrate the ebuild to use the new one."
+			if [[ ${EAPI} != [56] ]]; then
+				eerror "The CMAKE_BUILD_DIR variable has been renamed to BUILD_DIR."
+				die "The ebuild must be migrated to BUILD_DIR."
+			else
+				eqawarn "The CMAKE_BUILD_DIR variable has been renamed to BUILD_DIR."
+				eqawarn "Please migrate the ebuild to use the new one."
+			fi
 
 			# In the next call, both variables will be set already
 			# and we'd have to know which one takes precedence.
@@ -224,7 +235,7 @@ _cmake_check_build_dir() {
 	fi
 
 	# Backwards compatibility for getting the value.
-	CMAKE_BUILD_DIR=${BUILD_DIR}
+	[[ ${EAPI} == [56] ]] && CMAKE_BUILD_DIR=${BUILD_DIR}
 
 	mkdir -p "${BUILD_DIR}" || die
 	echo ">>> Working in BUILD_DIR: \"$BUILD_DIR\""
@@ -508,7 +519,11 @@ cmake-utils_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ! ${_CMAKE_UTILS_SRC_PREPARE_HAS_RUN} ]]; then
-		eqawarn "cmake-utils_src_prepare has not been run, please open a bug on https://bugs.gentoo.org/"
+		if [[ ${EAPI} != [56] ]]; then
+			die "FATAL: cmake-utils_src_prepare has not been run"
+		else
+			eqawarn "cmake-utils_src_prepare has not been run, please open a bug on https://bugs.gentoo.org/"
+		fi
 	fi
 
 	[[ ${EAPI} == 5 ]] && _cmake_cleanup_cmake
