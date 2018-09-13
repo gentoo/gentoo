@@ -11333,7 +11333,7 @@ xfce-extra/tumbler 0.2.0: A thumbnail service for Thunar
 xfce-extra/xfce4-alsa-plugin 0.1.1: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.1.0: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-cellmodem-plugin 0.0.5: A panel plug-in with monitoring support for GPRS/UMTS(3G)/HSDPA(3.5G) modems
-xfce-extra/xfce4-clipman-plugin 1.4.2: A clipboard manager plug-in for the Xfce panel
+xfce-extra/xfce4-clipman-plugin 1.4.2-r1: A clipboard manager plug-in for the Xfce panel
 xfce-extra/xfce4-cpufreq-plugin 1.1.3 1.1.90: A panel plugin for showing information about cpufreq settings
 xfce-extra/xfce4-cpugraph-plugin 1.0.5: A system load plug-in for the Xfce panel
 xfce-extra/xfce4-datetime-plugin 0.7.0: A panel plug-in with date, time and embedded calender
