@@ -17,7 +17,7 @@ LICENSE="GPL-2+"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="colorhug dell doc gpg +man nvme pkcs7 redfish systemd test thunderbolt uefi"
+IUSE="colorhug dell doc +gpg +man nvme pkcs7 redfish systemd test thunderbolt uefi"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	dell? ( uefi )
