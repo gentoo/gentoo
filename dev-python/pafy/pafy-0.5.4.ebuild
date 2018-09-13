@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Python library to retrieve YouTube content and metadata"
-HOMEPAGE="http://np1.github.io/pafy/ https://pypi.org/project/pafy/"
+HOMEPAGE="https://pythonhosted.org/pafy/ https://pypi.org/project/pafy/"
 
 LICENSE="LGPL-3"
 SLOT="0"

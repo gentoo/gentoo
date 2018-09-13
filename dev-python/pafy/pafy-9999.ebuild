@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Python library to retrieve YouTube content and metadata"
-HOMEPAGE="http://np1.github.io/pafy/ https://pypi.org/project/pafy/"
+HOMEPAGE="https://pythonhosted.org/pafy/ https://pypi.org/project/pafy/"
 
 LICENSE="LGPL-3"
 SLOT="0"
