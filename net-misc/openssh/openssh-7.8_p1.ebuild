@@ -24,7 +24,7 @@ HOMEPAGE="https://www.openssh.com/"
 SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	${SCTP_PATCH:+sctp? ( https://dev.gentoo.org/~chutzpah/dist/openssh/${SCTP_PATCH} )}
 	${HPN_VER:+hpn? ( $(printf "mirror://sourceforge/hpnssh/HPN-SSH%%20${HPN_VER/./v}%%20${PV/_}/%s\n" "${HPN_PATCHES[@]}") )}
-	${X509_PATCH:+X509? ( https://roumenpetrov.info/openssh/x509-${X509_ver}/${X509_PATCH} )}
+	${X509_PATCH:+X509? ( https://roumenpetrov.info/openssh/x509-${X509_VER}/${X509_PATCH} )}
 	"
 
 LICENSE="BSD GPL-2"
