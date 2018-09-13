@@ -18,7 +18,6 @@ move net-misc/vpnc net-vpn/vpnc
 move net-misc/vpncwatch net-vpn/vpncwatch
 move net-misc/wireguard net-vpn/wireguard
 move net-misc/vtun net-vpn/vtun
-move net-misc/miredo net-vpn/miredo
 move net-misc/isatapd net-vpn/isatapd
 move net-misc/iodine net-vpn/iodine
 move net-misc/corkscrew net-vpn/corkscrew

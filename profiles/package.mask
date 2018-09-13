@@ -310,11 +310,6 @@ app-crypt/gkeys-gen
 # and start actively maintaining it.  Otherwise -- removal in 90 days.
 sys-apps/paludis
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# Dead since 2013, not compatible with latest profiles (#642568). Removal in
-# a month
-net-vpn/miredo
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
