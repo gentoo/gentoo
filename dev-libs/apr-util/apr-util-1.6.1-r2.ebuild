@@ -1,16 +1,16 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # Usually apr-util has the same PV as apr, but in case of security fixes, this may change.
 # APR_PV="${PV}"
 APR_PV="1.6.2"
 
-inherit autotools db-use eutils libtool multilib toolchain-funcs
+inherit autotools db-use libtool multilib toolchain-funcs
 
 DESCRIPTION="Apache Portable Runtime Utility Library"
-HOMEPAGE="http://apr.apache.org/"
+HOMEPAGE="https://apr.apache.org/"
 SRC_URI="mirror://apache/apr/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
@@ -21,11 +21,14 @@ IUSE="berkdb doc gdbm ldap libressl mysql nss odbc openssl postgres sqlite stati
 
 RDEPEND="
 	dev-libs/expat
-	>=dev-libs/apr-${APR_PV}:1
+	>=dev-libs/apr-${APR_PV}:1=
 	berkdb? ( >=sys-libs/db-4:= )
 	gdbm? ( sys-libs/gdbm:= )
 	ldap? ( =net-nds/openldap-2* )
-	mysql? ( =virtual/mysql-5* )
+	mysql? ( || (
+		dev-db/mariadb-connector-c
+		dev-db/mysql-connector-c
+	) )
 	nss? ( dev-libs/nss )
 	odbc? ( dev-db/unixODBC )
 	openssl? (

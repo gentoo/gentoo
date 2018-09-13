@@ -1,10 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit flag-o-matic
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 sparc x86"
 
 DESCRIPTION="Fast, production-quality, standard-conformant FTP server"
 HOMEPAGE="http://www.pureftpd.org/"
@@ -21,7 +22,10 @@ REQUIRED_USE="implicittls? ( ssl )"
 DEPEND="caps? ( sys-libs/libcap )
 	charconv? ( virtual/libiconv )
 	ldap? ( >=net-nds/openldap-2.0.25 )
-	mysql? ( virtual/mysql )
+	mysql? ( || (
+		dev-db/mariadb-connector-c
+		dev-db/mysql-connector-c
+	) )
 	pam? ( virtual/pam )
 	postgres? ( dev-db/postgresql:= )
 	ssl? (
@@ -37,7 +41,9 @@ RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-ftp )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.0.28-pam.patch
+	"${FILESDIR}/${PN}-1.0.28-pam.patch"
+	"${FILESDIR}/${P}-openssl-1.1.patch"
+	"${FILESDIR}/${PN}-1.0.47-MAX_DATA_SIZE.patch"
 )
 
 src_configure() {

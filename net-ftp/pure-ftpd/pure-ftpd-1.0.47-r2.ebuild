@@ -1,7 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit flag-o-matic
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
@@ -21,7 +22,10 @@ REQUIRED_USE="implicittls? ( ssl )"
 DEPEND="caps? ( sys-libs/libcap )
 	charconv? ( virtual/libiconv )
 	ldap? ( >=net-nds/openldap-2.0.25 )
-	mysql? ( virtual/mysql )
+	mysql? ( || (
+		dev-db/mariadb-connector-c
+		dev-db/mysql-connector-c
+	) )
 	pam? ( virtual/pam )
 	postgres? ( dev-db/postgresql:= )
 	ssl? (
