@@ -93,7 +93,6 @@ games-fps/etqw-demo
 games-fps/glxquake-bin
 games-fps/legends
 games-fps/postal2
-games-fps/postal2mp-demo
 games-fps/quake3-bin
 games-fps/quake3-demo
 games-fps/quake3-ra3
@@ -113,14 +112,12 @@ games-fps/ut2003-demo
 games-fps/ut2004-demo
 games-misc/little-inferno
 games-misc/papers-please
-games-puzzle/hoh-bin
 games-puzzle/triptych
 games-roguelike/adom
 games-rpg/baldurs-gate-ee
 games-rpg/dear-esther
 games-rpg/dungeon-defenders
 games-rpg/eschalon-book-1-demo
-games-rpg/penumbra-collection
 games-rpg/wasteland2
 games-server/etqw-ded
 games-server/nwn-ded

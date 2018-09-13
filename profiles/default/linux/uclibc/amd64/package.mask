@@ -17,10 +17,8 @@ app-emulation/virtualbox-guest-additions
 >=app-i18n/atokx3-3.0.0
 app-office/ooextras
 app-emulation/winetricks
-app-text/acroread
 dev-embedded/libftd2xx
 dev-embedded/openocd
-dev-perl/Archive-Rar
 dev-util/android-sdk-update-manager
 dev-util/android-ndk
 dev-util/biew
@@ -65,7 +63,6 @@ games-fps/etqw-demo
 games-fps/glxquake-bin
 games-fps/legends
 games-fps/postal2
-games-fps/postal2mp-demo
 games-fps/quake3-bin
 games-fps/quake3-demo
 games-fps/quake3-ra3
@@ -83,10 +80,8 @@ games-fps/unreal-tournament
 games-fps/ut2003
 games-fps/ut2003-demo
 games-fps/ut2004-demo
-games-puzzle/hoh-bin
 games-roguelike/adom
 games-rpg/eschalon-book-1-demo
-games-rpg/penumbra-collection
 games-server/etqw-ded
 games-server/nwn-ded
 games-server/ut2003-ded
@@ -99,7 +94,6 @@ games-strategy/heroes3
 games-strategy/majesty-demo
 games-strategy/smac
 games-strategy/spaz
-media-fonts/acroread-asianfonts
 media-sound/ventrilo-server-bin
 media-video/binkplayer
 media-video/tsmuxer
