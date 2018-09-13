@@ -198,12 +198,6 @@
     </member>
   </project>
   <project>
-    <email>alt@gentoo.org</email>
-    <name>Alt</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Alt</url>
-    <description>Provide Gentoo solutions for non-GNU/Linux platforms.</description>
-  </project>
-  <project>
     <email>antivirus@gentoo.org</email>
     <name>Gentoo Antivirus Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Antivirus</url>
@@ -3461,15 +3455,15 @@ developers and volunteer mentors.</description>
       <name>Fabian Groffen</name>
       <role>Member</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Member</role>
+      <role>Lead</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-      <role>Lead</role>
+      <role>Member</role>
     </member>
   </project>
   <project>
