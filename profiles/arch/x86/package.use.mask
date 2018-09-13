@@ -55,7 +55,6 @@ app-laptop/pbbuttonsd -macbook
 # Test dependencies are no longer keyworded due to dropped Rails
 # keyword.
 dev-ruby/asciidoctor test
-dev-ruby/tilt:0 test
 
 # Tim Harder <radhermit@gentoo.org> (11 Sep 2017)
 # Pulls in dev-ruby/asciidoctor which has too large of a ruby testing
@@ -117,10 +116,6 @@ dev-db/percona-server -numa
 # Brian Evans <grknight@gentoo.org> (18 Aug 2016)
 # Allow jdbc on this arch
 dev-db/mariadb -jdbc
-
-# Rick Farina <zerochaos@gentoo.org> (23 Mar 2016)
-# rspec:3 is not keyworded for x86 at this time
-=dev-ruby/bundler-audit-0.5.0 test
 
 # Mike Gilbert <floppym@gentoo.org> (03 Mar 2016)
 # chrome-binary-plugins dropped x86 support

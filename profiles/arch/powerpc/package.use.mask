@@ -180,7 +180,6 @@ sys-auth/sssd samba
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
 dev-libs/efl physics sdl
-media-libs/elementary sdl
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (15 Feb 2015)
 # There's no keyworded office implementation anymore.
@@ -221,7 +220,7 @@ dev-ruby/haml test
 
 # Anthony G. Basile <blueness@gentoo.org> (14 Aug 2014)
 # Mask these flags since mongodb is broken on ppc/ppc64
-dev-python/ipython doc matplotlib mongodb nbconvert notebook test
+dev-python/ipython doc matplotlib nbconvert notebook test
 
 # Anthony G. Basile <blueness@gentoo.org> (12 Aug 2014)
 # Ultimately pulls in nodejs which is broken.
@@ -292,11 +291,6 @@ net-im/choqok telepathy
 >=dev-db/mysql-5.5 tcmalloc
 >=dev-db/mariadb-5.5 tcmalloc
 >=dev-db/percona-server-5.5 tcmalloc
-
-# Anthony G. Basile <blueness@gentoo.org> (29 Sep 2012)
-# dev-cpp/tbb does not build on ppc ppc64 so mask any
-# dependencies on it
-media-libs/openimageio tbb
 
 # Samuli Suominen <ssuominen@gentoo.org> (27 Sep 2012)
 # I don't want to open this can of worms yet. Feel free

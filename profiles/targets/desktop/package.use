@@ -83,7 +83,6 @@ media-libs/libpng apng
 # introspection, exception, enabled from here instead of ebuild to skip extra deps for a system package
 dev-libs/libgudev introspection
 sys-fs/eudev introspection
-sys-fs/udev gudev introspection
 virtual/libgudev introspection
 
 # Samuli Suominen <ssuominen@gentoo.org> (19 Dec 2010)

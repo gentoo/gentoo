@@ -23,9 +23,6 @@ dev-lang/python sqlite
 # Required by app-accessibility/orca-3
 app-accessibility/speech-dispatcher python
 
-# gtk3 input method plugins required for gnome3; gnome-shell wants ibus[dconf]
-app-i18n/uim gtk3
-
 # Pulled in by grilo-plugins which is needed for gnome-music
 media-libs/grilo playlist
 

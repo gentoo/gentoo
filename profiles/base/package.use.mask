@@ -27,10 +27,6 @@ app-emulation/wine-staging ffmpeg
 # only a subset of the archs rng-tools supports
 sys-apps/rng-tools jitterentropy
 
-# Pacho Ramos <pacho@gentoo.org> (17 Jun 2018)
-# dev-libs/DirectFB is being removed (#606194)
-www-plugins/gnash directfb
-
 # Michał Górny <mgorny@gentoo.org> (13 Jun 2018)
 # Requires app-arch/snappy[static-libs] that is no longer available.
 # Bugs #651604, #651606.
@@ -58,10 +54,6 @@ sci-libs/ipopt hsl
 # in tree uses the latter at the moment (#645562)
 dev-lang/rust extended
 
-# Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
-# dev-python/visual will be removed (#630252)
-net-analyzer/scapy visual
-
 # Lars Wendler <polynomial-c@gentoo.org> (14 Mar 2018)
 # Broken on all 32bit arches. Globally masked because of sys-apps/dmapi having
 # no active upstream anymore.
@@ -84,7 +76,6 @@ app-admin/testdisk ewf
 # Mask embedded USE on virtual/mysql and friends to transition it to be obsolete
 virtual/mysql embedded
 dev-db/mariadb embedded
-dev-db/mariadb-galera embedded
 dev-db/mysql embedded
 dev-db/mysql-cluster embedded
 dev-perl/DBD-mysql embedded
@@ -284,10 +275,6 @@ app-editors/emacs-vcs cairo
 # Needs a Gstreamer plugin from gst-plugins-bad that is not packaged to date
 media-plugins/grilo-plugins chromaprint
 
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# x11-libs/libsvg-cairo is being removed, bug #537918
-dev-ml/cairo-ocaml svg
-
 # Lars Wendler <polynomial-c@gentoo.org> (19 Aug 2016)
 # gnutls is broken for years
 >=net-libs/gsoap-2.8.0 gnutls
@@ -396,7 +383,6 @@ games-strategy/freeciv system-lua
 # Brian Evans <grknight@gentoo.org> (17 Mar 2015)
 # Mask the cluster flag for deprecation. Use dev-db/mysql-cluster if
 # you need NDB.
-dev-db/mariadb cluster
 dev-db/mysql cluster
 
 # Andrew Savchenko <bircoph@gentoo.org> (11 Feb 2015)
@@ -437,10 +423,6 @@ dev-db/percona-server embedded
 # Thomas Sachau <tommy@gentoo.org> (30 Jun 2014)
 # Mask pixman USE flag of dev-libs/efl for future removal, bug 501074
 dev-libs/efl pixman
-
-# Manuel Rüger <mrueg@gentoo.org> (05 Jun 2014)
-# Fails to build with net-libs/libotr-4.0.0
-net-im/climm otr
 
 # Pacho Ramos <pacho@gentoo.org> (01 Jun 2014)
 # Needs hardmasked lua-5.2
@@ -493,7 +475,6 @@ media-libs/libsdl2 custom-cflags
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (13 Jul 2013)
 # GL/GLES support in cairo is mutually exclusive, bug #428770.
 x11-libs/cairo gles2
-dev-libs/weston rpi
 
 # Kacper Kowalik <xarthisius@gentoo.org> (19 May 2013)
 # Fails to build, haven't had time to debug

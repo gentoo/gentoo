@@ -5,13 +5,10 @@
 # All glibc versions that include RPC code are masked now.
 dev-libs/libspt libtirpc
 dev-perl/Lab-VXI11 libtirpc
-mail-mta/exim libtirpc
 net-analyzer/argus libtirpc
 net-analyzer/snort libtirpc
 net-firewall/conntrack-tools libtirpc
 net-fs/autofs libtirpc
-net-libs/libnsl libtirpc
-net-libs/rpcsvc-proto libtirpc
 net-misc/netkit-bootparamd libtirpc
 sci-astronomy/esomidas libtirpc
 sys-cluster/glusterfs libtirpc
