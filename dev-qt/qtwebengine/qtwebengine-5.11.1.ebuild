@@ -39,7 +39,6 @@ RDEPEND="
 	media-libs/libwebp:=
 	media-libs/mesa[egl]
 	media-libs/opus
-	net-libs/libsrtp:0=
 	sys-apps/dbus
 	sys-apps/pciutils
 	sys-libs/libcap
