@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=caps? ( sys-libs/libcap ) charconv? ( virtual/libiconv ) ldap? ( >=net-nds/openldap-2.0.25 ) mysql? ( || ( dev-db/mariadb-connector-c dev-db/mysql-connector-c ) ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:= ) ssl? ( !libressl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] ) libressl? ( dev-libs/libressl:= ) ) sysquota? ( sys-fs/quota[-rpc] ) xinetd? ( virtual/inetd )
+DESCRIPTION=Fast, production-quality, standard-conformant FTP server
+EAPI=7
+HOMEPAGE=http://www.pureftpd.org/
+IUSE=anondel anonperm anonren anonres caps charconv implicittls ldap libressl mysql noiplog pam paranoidmsg postgres resolveids selinux ssl sysquota vchroot xinetd
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD
+RDEPEND=caps? ( sys-libs/libcap ) charconv? ( virtual/libiconv ) ldap? ( >=net-nds/openldap-2.0.25 ) mysql? ( || ( dev-db/mariadb-connector-c dev-db/mysql-connector-c ) ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:= ) ssl? ( !libressl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] ) libressl? ( dev-libs/libressl:= ) ) sysquota? ( sys-fs/quota[-rpc] ) xinetd? ( virtual/inetd ) dev-libs/libsodium:= net-ftp/ftpbase selinux? ( sec-policy/selinux-ftp )
+REQUIRED_USE=implicittls? ( ssl )
+SLOT=0
+SRC_URI=ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.47.tar.bz2 http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.47.tar.bz2
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=8459d12f489d29e7b45aa0fdeab97d38
