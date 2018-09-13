@@ -29,6 +29,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (17 Sep 2018)
+# Obsolete LogiLab packages that are full of issues and were never
+# maintained properly.  Recently dev-python/logilab-common started
+# colliding with dev-python/pytest, making it practically non-
+# installable.  The only revdep left is app-vim/python-mode where
+# the dep looks completely mistaken.  Bug #666152.
+app-vim/python-mode
+dev-python/astng
+dev-python/logilab-common
+dev-python/logilab-constraint
+
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Sep 2018)
 # was merged into the IETF Opus codec and is now obsolete
 # Removal in 30 days, bug #664154
