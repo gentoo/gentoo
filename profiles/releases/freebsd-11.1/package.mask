@@ -24,8 +24,6 @@
 >sys-freebsd/freebsd-usbin-11.1.99
 <sys-freebsd/freebsd-share-11.1_alpha
 >sys-freebsd/freebsd-share-11.1.99
-<sys-freebsd/freebsd-contrib-11.1_alpha
->sys-freebsd/freebsd-contrib-11.1.99
 <sys-freebsd/freebsd-cddl-11.1_alpha
 >sys-freebsd/freebsd-cddl-11.1.99
 <sys-freebsd/boot0-11.1_alpha

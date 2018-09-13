@@ -99,7 +99,6 @@ openexr
 
 # Ryan Hill <dirtyepic@gentoo.org>
 # Various Gnome flags
-gtkhtml
 gnome
 
 # Peter Volkov <pva@gentoo.org> MPI was never tested on mips, but

@@ -167,11 +167,6 @@ media-video/mpv libav
 
 # Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
 # (on behalf of Treecleaner project)
-# dev-libs/dee is masked for removal, mask flags that requires it.
-gnome-extra/zeitgeist icu
-
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
 # www-apache/mod_python is masked for removal, mask flags that
 # require it.
 net-analyzer/check_mk livestatus wato
@@ -195,10 +190,6 @@ sys-devel/gcc pie
 # Mike Gilbert <floppym@gentoo.org> (28 Apr 2017)
 # Needs sandbox-2.11 (masked)
 >=www-client/chromium-59 tcmalloc
-
-# Michał Górny <mgorny@gentoo.org> (18 Mar 2017)
-# Requires removed old version of media-gfx/graphviz.
-media-gfx/nip2 graphviz
 
 # Matt Turner <mattst88@gentoo.org> (04 Mar 2017)
 # Requires dev-util/cmdtest stabilization, bug 611052
@@ -266,10 +257,6 @@ app-editors/emacs-vcs cairo
 # It's no longer available in -9999 line, and it won't be in 3.9.0
 # either unless somebody steps up to fix it.
 >=sys-devel/llvm-3.9.0_rc lldb
-
-# Brian Evans <grknight@gentoo.org> (22 Aug 2016)
-# Depends on masked, end-of-life php versions
-<=dev-libs/ossp-uuid-1.6.2-r4 php
 
 # Gilles Dartiguelongue <eva@gentoo.org> (21 Aug 2016)
 # Needs a Gstreamer plugin from gst-plugins-bad that is not packaged to date
@@ -349,12 +336,6 @@ app-arch/cfv bittorrent
 # Unmasked in default/linux/package.use.mask.
 sys-auth/consolekit cgroups
 
-# Manuel Rüger <mrueg@gentoo.org> (03 Sep 2015)
-# Mask USE=ruby for packages that solely rely on the soon to be deprecated
-# ruby 1.9
-# See bug #541648
-<dev-libs/Ice-3.6 ruby
-
 # James Le Cuirot <chewi@gentoo.org> (18 Aug 2015)
 # gcc[awt] is only used by gcj-jdk[awt] and that isn't needed by
 # anything in the tree. The toolchain folks aren't keen to support it
@@ -371,10 +352,6 @@ dev-java/gcj-jdk awt
 # Mike Gilbert <floppym@gentoo.org> (16 May 2015)
 # dev-lang/python[berkdb] fails with recent multilib sys-libs/db (bug 519584).
 dev-lang/python berkdb
-
-# Jason Zaman <perfinion@gentoo.org> (08 May 2015)
-# java wrappers fail to build (bug #548858)
-=app-admin/setools-3.3.8-r7 java
 
 # Lars Wendler <polynomial-c@gentoo.org> (19 Mar 2015)
 # >=games-strategy/freeciv-2.5.0 requires >=dev-lang/lua-5.2
@@ -402,10 +379,6 @@ net-analyzer/nmap system-lua
 # Mike Frysinger <vapier@gentoo.org> (21 Oct 2014)
 # Most targets do not support ASAN/etc... #504200.
 sys-devel/gcc sanitize
-
-# Pacho Ramos <pacho@gentoo.org> (19 Oct 2014)
-# swfdec is masked for removal, bug #525834
-dev-libs/DirectFB swfdec
 
 # Rick Farina <zerochaos@gentoo.org> (26 Aug 2014)
 # mirisdr does not seem to like making releases
@@ -437,11 +410,6 @@ net-analyzer/metasploit development test
 # Documentation generation needs APIviz which is not in the Portage tree yet.
 # Tracked in Gentoo bug #509602.
 dev-java/jboss-logging doc
-
-# Manuel Rüger <mrueg@gentoo.org> (07 Mar 2014)
-# Mask ruby18-only compatible flags
-# Bugs: 483104, 483102
-<media-libs/libcaca-0.99_beta19 ruby
 
 # Mike Frysinger <vapier@gentoo.org> (03 Feb 2014)
 # Upstream says to not use this for now.

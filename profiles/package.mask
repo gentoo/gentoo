@@ -670,6 +670,8 @@ dev-java/jcs
 # is working on replacing them in the wip/dedup-syscall branch.
 # Keep it masked until they are done. sys-fs/duperemove is
 # the suggested replacement for the meantime.
+# Michał Górny <mgorny@gentoo.org> (13 Sep 2018)
+# No upstream commits since 2016.  Removal in 30 days.  Bug #546144.
 sys-fs/bedup
 
 # Robin H. Johnson <robbat2@gentoo.org> (04 Aug 2014)

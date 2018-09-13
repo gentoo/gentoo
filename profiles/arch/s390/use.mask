@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -20,7 +20,6 @@ python_single_target_python3_7
 -big-endian
 
 # Stuff we don't want/not tested
-pbins
 R
 octave
 xindy

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
 
 # Make sure we don't get wrong versions
@@ -24,8 +24,6 @@
 >sys-freebsd/freebsd-usbin-9.1.99
 <sys-freebsd/freebsd-share-9.1_alpha
 >sys-freebsd/freebsd-share-9.1.99
-<sys-freebsd/freebsd-contrib-9.1_alpha
->sys-freebsd/freebsd-contrib-9.1.99
 <sys-freebsd/freebsd-cddl-9.1_alpha
 >sys-freebsd/freebsd-cddl-9.1.99
 <sys-freebsd/boot0-9.1_alpha
