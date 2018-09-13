@@ -216,11 +216,6 @@ dev-python/pyfire
 # Beta release with new features, masked for testing
 =app-text/tesseract-4.0.0_beta*
 
-# Ulrich Müller <ulm@gentoo.org> (07 Aug 2018)
-# Fails to build with emacs-26.1. Last release in 2003, last commit
-# to upstream CVS in 2010. Masked for removal in 30 days. Bug #663030.
-app-emacs/cmail
-
 # Mike Gilbert <floppym@gentoo.org> (04 Aug 2018)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
