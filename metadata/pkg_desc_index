@@ -7009,7 +7009,7 @@ mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.3.6: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
 mail-client/thunderbird 45.8.0 52.5.2 52.9.1: Thunderbird Mail Client
-mail-client/thunderbird-bin 52.9.1: Thunderbird Mail Client
+mail-client/thunderbird-bin 52.9.1-r1: Thunderbird Mail Client
 mail-client/trojita 0.7-r2: A Qt IMAP e-mail client
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1: sendmail milter for amavisd-new
 mail-filter/amavisd-new 2.7.2 2.8.1-r1 2.11.0-r3: High-performance interface between the MTA and content checkers
@@ -8818,7 +8818,7 @@ net-mail/vacation 1.2.7.0: automatic mail answering program
 net-mail/vchkuser 0.4: qmail-spp plugin to check recipient existance with vpopmail
 net-mail/vpopmail 5.4.33: Collection of programs to manage virtual email on Qmail servers
 net-mail/yosucker 73: Downloads mail from a Yahoo! webmail account to a local mail spool, an mbox file, or to procmail
-net-mail/ytnef 1.9.2 1.9.3: Yeraze's TNEF Stream Reader - for winmail.dat files
+net-mail/ytnef 1.9.3: Yeraze's TNEF Stream Reader - for winmail.dat files
 net-misc/adjtimex 1.29-r1: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
