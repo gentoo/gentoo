@@ -213,13 +213,13 @@ src_prepare() {
 		ebegin "Make depend"
 		emake .dependencies >/dev/null
 		eend $? "make depend failed"
+
+		eapply "${FILESDIR}/${P}_gcc7extpng.patch"
 	fi
 
 	eapply "${FILESDIR}/${P}_gentoo.patch"
-	#gcc-7.2, this will fix only the core vdr, not the extpatch
 	eapply "${FILESDIR}/${P}_unsignedtosigned.patch"
 	eapply "${FILESDIR}/${P}_glibc-2.24.patch"
-	eapply "${FILESDIR}/${P}_gcc7extpng.patch"
 
 	# fix some makefile issues
 	sed -e "s:ifndef NO_KBD:ifeq (\$(USE_KBD),1):" \
