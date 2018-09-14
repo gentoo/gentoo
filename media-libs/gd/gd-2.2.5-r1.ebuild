@@ -1,12 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
-inherit libtool ltprune multilib-minimal
+inherit libtool multilib-minimal
 
-DESCRIPTION="A graphics library for fast image creation"
-HOMEPAGE="http://libgd.org/ http://www.boutell.com/gd/"
+DESCRIPTION="Graphics library for fast image creation"
+HOMEPAGE="https://libgd.org/ https://www.boutell.com/gd/"
 SRC_URI="https://github.com/libgd/libgd/releases/download/${P}/lib${P}.tar.xz"
 
 LICENSE="gd IJG HPND BSD"
@@ -60,5 +60,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	dodoc README.md
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
