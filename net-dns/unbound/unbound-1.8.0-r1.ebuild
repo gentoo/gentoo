@@ -110,7 +110,7 @@ multilib_src_configure() {
 		--enable-tfo-server \
 		--with-libevent="${EPREFIX%/}"/usr \
 		$(multilib_native_usex redis --with-libhiredis="${EPREFIX%/}/usr" --without-libhiredis) \
-		--with-pidfile="${EPREFIX%/}"/var/run/unbound.pid \
+		--with-pidfile="${EPREFIX%/}"/run/unbound.pid \
 		--with-rootkey-file="${EPREFIX%/}"/etc/dnssec/root-anchors.txt \
 		--with-ssl="${EPREFIX%/}"/usr \
 		--with-libexpat="${EPREFIX%/}"/usr
@@ -125,8 +125,8 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	use python && python_optimize
 
-	newinitd "${FILESDIR}"/unbound.initd unbound
-	newconfd "${FILESDIR}"/unbound.confd unbound
+	newinitd "${FILESDIR}"/unbound-r1.initd unbound
+	newconfd "${FILESDIR}"/unbound-r1.confd unbound
 
 	systemd_dounit "${FILESDIR}"/unbound.service
 	systemd_dounit "${FILESDIR}"/unbound.socket
@@ -151,6 +151,11 @@ multilib_src_install_all() {
 		-e '/# auto-trust-anchor-file:/s,/etc/dnssec/root-anchors.txt,/etc/unbound/var/root-anchors.txt,' \
 		"${ED%/}/etc/unbound/unbound.conf" || \
 		die
+
+	# Used to store cache data
+	keepdir /var/lib/${PN}
+	fowners root:unbound /var/lib/${PN}
+	fperms 0750 /var/lib/${PN}
 
 	find "${ED}" -name '*.la' -delete || die
 	if ! use static-libs ; then

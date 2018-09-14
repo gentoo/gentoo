@@ -103,7 +103,7 @@ multilib_src_configure() {
 		--disable-flto \
 		--disable-rpath \
 		--with-libevent="${EPREFIX%/}"/usr \
-		--with-pidfile="${EPREFIX%/}"/var/run/unbound.pid \
+		--with-pidfile="${EPREFIX%/}"/run/unbound.pid \
 		--with-rootkey-file="${EPREFIX%/}"/etc/dnssec/root-anchors.txt \
 		--with-ssl="${EPREFIX%/}"/usr \
 		--with-libexpat="${EPREFIX%/}"/usr
@@ -118,8 +118,8 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	use python && python_optimize
 
-	newinitd "${FILESDIR}"/unbound.initd unbound
-	newconfd "${FILESDIR}"/unbound.confd unbound
+	newinitd "${FILESDIR}"/unbound-r1.initd unbound
+	newconfd "${FILESDIR}"/unbound-r1.confd unbound
 
 	systemd_dounit "${FILESDIR}"/unbound.service
 	systemd_dounit "${FILESDIR}"/unbound.socket
