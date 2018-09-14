@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=dev-libs/glib-2.18:2 >=x11-libs/gtk+-2.91.7:3[X,introspection?] >=x11-libs/libxklavier-5.2[introspection?] introspection? ( >=dev-libs/gobject-introspection-0.6.7:= ) dev-util/glib-utils >=sys-devel/gettext-0.19.4 virtual/pkgconfig >=app-portage/elt-patches-20170815 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Gnome keyboard configuration library
+EAPI=6
+HOMEPAGE=https://www.gnome.org
+IUSE=+introspection test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=LGPL-2+
+RDEPEND=>=dev-libs/glib-2.18:2 >=x11-libs/gtk+-2.91.7:3[X,introspection?] >=x11-libs/libxklavier-5.2[introspection?] introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
+SLOT=0/8
+SRC_URI=mirror://gnome/sources/libgnomekbd/3.26/libgnomekbd-3.26.0.tar.xz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	acac536f2c3bbcd312ac3faaa3e55e40	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=ad92ec4f5b853e14a24df90a384d76f3
