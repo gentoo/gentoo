@@ -6992,7 +6992,7 @@ lxqt-base/lxqt-qtplugin 0.11.0: LXQt system integration plugin for Qt
 lxqt-base/lxqt-runner 0.11.0: LXQt quick launcher
 lxqt-base/lxqt-session 0.11.0: LXQT session manager
 lxqt-base/lxqt-sudo 0.11.0: LXQt GUI frontend for sudo
-mail-client/alpine 2.00-r7 2.21.1: An easy to use text-based based mail and news client
+mail-client/alpine 2.00-r7 2.21.1 2.21.1-r1: An easy to use text-based based mail and news client
 mail-client/balsa 2.5.3-r1: Email client for GNOME
 mail-client/claws-mail 3.15.0-r2: An email client (and news reader) based on GTK+
 mail-client/clawsker 0.7.8: Applet to edit Claws Mail's hidden preferences
