@@ -16,6 +16,9 @@
   DNSSEC (secure DNS) validation and stub-resolvers (that do not run
   as a server, but are linked into an application) are easily possible.
   </longdescription>
+  <slots>
+    <subslots>Reflect ABI of libunbound.so.</subslots>
+  </slots>
   <use>
     <flag name="dnscrypt">Enable DNSCrypt support</flag>
     <flag name="dnstap">Enable dnstap support</flag>
