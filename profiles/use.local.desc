@@ -3898,7 +3898,9 @@ net-dns/pdnsd:urandom - Linux-only: use /dev/urandom (pseudo-random number gener
 net-dns/unbound:dnscrypt - Enable DNSCrypt support
 net-dns/unbound:dnstap - Enable dnstap support
 net-dns/unbound:ecdsa - Enable ECDSA support
+net-dns/unbound:ecs - Enable EDNS client subnet support
 net-dns/unbound:gost - Enable GOST support
+net-dns/unbound:redis - Enable cache db backend which uses dev-libs/hiredis
 net-firewall/arno-iptables-firewall:plugins - Install optional plugins
 net-firewall/conntrack-tools:cthelper - Use net-libs/libnetfilter_cthelper for userspace conntrack helper support
 net-firewall/conntrack-tools:cttimeout - Use net-libs/libnetfilter_cttimeout for conntrack timeout support
