@@ -5,29 +5,26 @@ EAPI=6
 
 inherit versionator user systemd
 
-MY_BASEURI="https://fah.stanford.edu/file-releases/public/release/fahclient"
-MY_64B_URI="${MY_BASEURI}/centos-5.3-64bit/v$(get_version_component_range 1-2)/fahclient_${PV}-64bit-release.tar.bz2"
-MY_32B_URI="${MY_BASEURI}/centos-5.5-32bit/v$(get_version_component_range 1-2)/fahclient_${PV}-32bit-release.tar.bz2"
-
 DESCRIPTION="Folding@Home is a distributed computing project for protein folding"
-HOMEPAGE="http://folding.stanford.edu/FAQ-SMP.html"
-SRC_URI="x86? ( ${MY_32B_URI} )
-	amd64? ( ${MY_64B_URI} )"
+HOMEPAGE="https://foldingathome.org/"
+SRC_URI="https://download.foldingathome.org/releases/public/release/fahclient/centos-6.7-64bit/v$(get_version_component_range 1-2)/fahclient_${PV}-64bit-release.tar.bz2"
 
 RESTRICT="mirror bindist strip"
 
 LICENSE="FAH-EULA-2014 FAH-special-permission"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 # Expressly listing all deps, as this is a binpkg and it is doubtful whether
 # i.e. uclibc or clang can provide what is necessary at runtime
+DEPEND="dev-util/patchelf"
 RDEPEND="app-arch/bzip2
+	=dev-libs/openssl-1.0*:*
 	sys-devel/gcc
 	sys-libs/glibc
 	sys-libs/zlib"
 
-S="${WORKDIR}"
+S="${WORKDIR}/fahclient_${PV}-64bit-release"
 
 QA_PREBUILT="opt/foldingathome/*"
 
@@ -47,10 +44,17 @@ pkg_setup() {
 }
 
 src_install() {
-	local myS="fahclient_${PV}-64bit-release"
-	use x86 && myS="${myS//64bit/32bit}"
+	patchelf --set-rpath "${EPREFIX}/opt/foldingathome" FAHClient || die
+	patchelf --set-rpath "${EPREFIX}/opt/foldingathome" FAHCoreWrapper || die
+
+	dosym "../../usr/$(get_libdir)/libssl.so.1.0.0" /opt/foldingathome/libssl.so.10
+	dosym "../../usr/$(get_libdir)/libcrypto.so.1.0.0" /opt/foldingathome/libcrypto.so.10
+
 	exeinto /opt/foldingathome
-	doexe "${myS}"/{FAHClient,FAHCoreWrapper}
+	doexe {FAHClient,FAHCoreWrapper}
+
+	insinto /opt/foldingathome
+	doins sample-config.xml
 
 	newconfd "${FILESDIR}"/7.3/folding-conf.d foldingathome
 	cat <<EOF >"${T}"/fah-init
@@ -70,7 +74,7 @@ EOF
 	cat <<EOF >"${T}"/fah-init.service
 [Unit]
 Description=Folding@Home V7 Client
-Documentation=https://folding.stanford.edu/home/the-software/
+Documentation=https://foldingathome.org
 
 [Service]
 Type=simple
