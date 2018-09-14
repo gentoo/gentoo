@@ -35,7 +35,7 @@ COMMON_DEPEND="!net-misc/openswan
 	systemd? ( sys-apps/systemd )
 	networkmanager? ( net-misc/networkmanager )
 	pam? ( sys-libs/pam )
-	strongswan_plugins_unbound? ( net-dns/unbound net-libs/ldns )"
+	strongswan_plugins_unbound? ( net-dns/unbound:= net-libs/ldns )"
 DEPEND="${COMMON_DEPEND}
 	virtual/linux-sources
 	sys-kernel/linux-headers"
