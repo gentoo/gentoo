@@ -4,10 +4,10 @@ DESCRIPTION=Network Audio System
 EAPI=7
 HOMEPAGE=https://radscan.com/nas.html
 IUSE=doc static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd
+KEYWORDS=alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd
 LICENSE=HPND MIT
 RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=x11-libs/libXau-1.0.7-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] x11-libs/libXaw x11-libs/libXext x11-libs/libXmu x11-libs/libXpm >=x11-libs/libXt-1.1.4[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
 SLOT=0
 SRC_URI=mirror://sourceforge/nas/nas-1.9.4.src.tar.gz
 _eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
-_md5_=6f100969d7d82126814def915c81a054
+_md5_=d36aea885029e3993186fe889afcc739
