@@ -8,8 +8,8 @@ inherit autotools flag-o-matic multilib-minimal python-single-r1 systemd user
 
 MY_P=${PN}-${PV/_/}
 DESCRIPTION="A validating, recursive and caching DNS resolver"
-HOMEPAGE="http://unbound.net/"
-SRC_URI="http://unbound.net/downloads/${MY_P}.tar.gz"
+HOMEPAGE="https://unbound.net/ https://nlnetlabs.nl/projects/unbound/about/"
+SRC_URI="https://nlnetlabs.nl/downloads/unbound/${MY_P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
