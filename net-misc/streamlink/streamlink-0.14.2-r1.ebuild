@@ -23,6 +23,7 @@ RDEPEND="
 	virtual/python-singledispatch[${PYTHON_USEDEP}]
 	>dev-python/requests-2.17.1[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]
+	dev-python/isodate[${PYTHON_USEDEP}]
 	dev-python/websocket-client[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/backports-shutil_which[${PYTHON_USEDEP}]' 'python2*')
 	$(python_gen_cond_dep 'dev-python/backports-shutil_get_terminal_size[${PYTHON_USEDEP}]' 'python2*')

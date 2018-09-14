@@ -14,7 +14,7 @@ IUSE=""
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.40:2
-	dev-libs/libgnome-games-support:1
+	dev-libs/libgnome-games-support:1=
 	>=gnome-base/librsvg-2.32.0:2
 	>=x11-libs/gtk+-3.12:3
 "
