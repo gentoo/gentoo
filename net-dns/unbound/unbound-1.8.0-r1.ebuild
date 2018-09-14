@@ -57,6 +57,7 @@ RDEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.7-trust-anchor-file.patch
+	"${FILESDIR}"/${PN}-1.6.3-pkg-config.patch
 )
 
 S=${WORKDIR}/${MY_P}
