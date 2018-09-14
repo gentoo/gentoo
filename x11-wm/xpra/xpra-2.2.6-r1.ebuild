@@ -39,20 +39,20 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		libav? ( media-video/libav:0= )
 	)
 	dec_avcodec2? (
-		!libav? ( >=media-video/ffmpeg-2:0= )
-		libav? ( media-video/libav:0= )
+		!libav? ( >=media-video/ffmpeg-2:0=[x264,x265] )
+		libav? ( media-video/libav:0=[x264,x265] )
 	)
 	enc_ffmpeg? (
 		!libav? ( >=media-video/ffmpeg-3.2.2:0= )
 		libav? ( media-video/libav:0= )
 	)
 	enc_x264? ( media-libs/x264
-		!libav? ( >=media-video/ffmpeg-1.0.4:0= )
-		libav? ( media-video/libav:0= )
+		!libav? ( >=media-video/ffmpeg-1.0.4:0=[x264] )
+		libav? ( media-video/libav:0=[x264] )
 	)
 	enc_x265? ( media-libs/x265
-		!libav? ( >=media-video/ffmpeg-2:0= )
-		libav? ( media-video/libav:0= ) )
+		!libav? ( >=media-video/ffmpeg-2:0=[x264] )
+		libav? ( media-video/libav:0=[x264] ) )
 	jpeg? ( media-libs/libjpeg-turbo )
 	opengl? ( dev-python/pygtkglext )
 	pulseaudio? ( media-sound/pulseaudio )
