@@ -18,7 +18,7 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (20 May 2018)
-# media-gfx/ufraw is not stable
+# media-libs/libraw is not stable
 media-gfx/imagemagick raw
 
 # Andreas Sturmlechner <asturm@gentoo.org> (20 May 2018)
