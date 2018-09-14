@@ -10,4 +10,4 @@ RDEPEND=virtual/jpeg:* sys-libs/libcap >=media-libs/fontconfig-2.4.2 >=media-lib
 SLOT=0
 SRC_URI=ftp://ftp.tvdr.de/vdr/vdr-2.2.0.tar.bz2 https://dev.gentoo.org/~hd_brummy/distfiles/extpng-vdr-2.2.0-gentoo-edition-v1.patch.bz2
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
-_md5_=e275a5ae8a146612214950c1d1526cb5
+_md5_=ef75bf07fc89169134d533f5b19b7594
