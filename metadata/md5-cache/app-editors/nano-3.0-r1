@@ -10,4 +10,4 @@ RDEPEND=!static? ( >=sys-libs/ncurses-5.9-r1:0=[unicode?] sys-libs/ncurses:0= ma
 SLOT=0
 SRC_URI=https://www.nano-editor.org/dist/v3/nano-3.0.tar.xz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
-_md5_=12c5a261d1f9f0e9e8d506e6ef17d28f
+_md5_=ee3c615ea09d559edb5c869a25796fcf
