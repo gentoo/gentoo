@@ -8,6 +8,6 @@ LICENSE=google-chrome
 RDEPEND=widevine? ( dev-libs/glib:2 dev-libs/nspr dev-libs/nss !<www-client/chromium-57[widevine(-)] ) !www-plugins/chrome-binary-plugins:0 !www-plugins/chrome-binary-plugins:stable !www-plugins/chrome-binary-plugins:unstable
 RESTRICT=bindist mirror strip
 SLOT=beta
-SRC_URI=https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_69.0.3497.92-1_amd64.deb
+SRC_URI=https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_70.0.3538.16-1_amd64.deb
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	unpacker	ee2f5086cd7e7b747b061f58db14d89e
 _md5_=af88fcb905f586fa4bf5adc077702ee1
