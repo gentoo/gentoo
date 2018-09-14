@@ -40,11 +40,7 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_GMOCK=ON
 		-DINSTALL_GTEST=ON
-
-		# currently only static libs work
-		# due to numerous ODR violations
-		# https://github.com/google/googletest/issues/930
-		-DBUILD_SHARED_LIBS=OFF
+		-DBUILD_SHARED_LIBS=ON
 
 		# tests
 		-Dgmock_build_tests=$(usex test)
