@@ -574,7 +574,7 @@ app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20171014 20180408: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.6 1.9: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0-r1: GTK+-based editor for the Xfce Desktop Environment
-app-editors/nano 2.8.7: GNU GPL'd Pico clone with more functionality
+app-editors/nano 2.8.7 2.9.8: GNU GPL'd Pico clone with more functionality
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r7: Vi clone
@@ -9326,7 +9326,7 @@ sci-geosciences/tcd-utils 20120115: Utilities for working with Tidal Constituent
 sci-geosciences/xtide 2.13.2: XTide provides tide and current predictions in a wide variety of formats
 sci-libs/Shapely 1.5.17-r1: Geometric objects, predicates, and operations
 sci-libs/adolc 2.4.1: Automatic differentiation system for C/C++
-sci-libs/alglib 3.8.2-r1: Numerical analysis and data processing library
+sci-libs/alglib 3.8.2-r1 3.10.0-r1: Numerical analysis and data processing library
 sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/armadillo 6.200.3 8.300.2: Streamlined C++ linear algebra library
 sci-libs/arpack 3.1.5: Arnoldi package library to solve large scale eigenvalue problems
