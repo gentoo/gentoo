@@ -89,23 +89,23 @@ src_prepare() {
 }
 
 src_configure() {
-	local myclient mydatabase myeconfargs
+	local myclient=() mydatabase=() myeconfargs=()
 
 	if use auth ; then
 		if ! use mysql && ! use sqlite ; then
 			einfo "No database backend chosen, defaulting"
 			einfo "to mysql!"
-			mydatabase=mysql
+			mydatabase=( mysql )
 		else
-			use mysql && mydatabase+=" mysql"
-			use sqlite && mydatabase+=" sqlite3"
+			use mysql && mydatabase+=( mysql )
+			use sqlite && mydatabase+=( sqlite3 )
 		fi
 	else
-		mydatabase=no
+		mydatabase=( no )
 	fi
 
 	if use dedicated ; then
-		myclient="no"
+		myclient=( no )
 		myeconfargs+=(
 			--enable-server
 			--enable-freeciv-manual=html
@@ -114,12 +114,12 @@ src_configure() {
 		if use !sdl && use !gtk && ! use qt5 ; then
 			einfo "No client backend given, defaulting to"
 			einfo "gtk2 client!"
-			myclient="gtk2"
+			myclient=( gtk2 )
 		else
-			use sdl && myclient+=" sdl2"
-			use gtk && myclient+=" gtk2"
+			use sdl && myclient+=( sdl2 )
+			use gtk && myclient+=( gtk2 )
 			if use qt5 ; then
-				myclient+=" qt"
+				myclient+=( qt )
 				append-cxxflags -std=c++11
 			fi
 		fi
@@ -131,8 +131,8 @@ src_configure() {
 
 	myeconfargs+=(
 		--enable-aimodules="$(usex aimodules "yes" "no")"
-		--enable-client="${myclient}"
-		--enable-fcdb="${mydatabase}"
+		--enable-client="${myclient[*]}"
+		--enable-fcdb="${mydatabase[*]}"
 		--enable-fcmp="$(usex modpack "gtk2" "no")"
 		# disabling shared libs will break aimodules USE flag
 		--enable-shared
