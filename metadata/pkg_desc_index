@@ -5584,7 +5584,7 @@ dev-python/sqlitecachec 1.1.4-r1: sqlite cacher for python applications
 dev-python/ssl-fetch 0.2 0.3 0.4: A small convenience library for fetching files securely
 dev-python/statsd 3.2.1: A simple statsd client
 dev-python/statsmodels 0.6.1: Statistical computations and models for use with SciPy
-dev-python/stestr 1.1.0 2.1.0: A parallel Python test runner built around subunit
+dev-python/stestr 2.1.0: A parallel Python test runner built around subunit
 dev-python/stevedore 1.25.1 1.28.0: Manage dynamic plugins for Python applications
 dev-python/stomper 0.3.0: Transport neutral client implementation of the STOMP protocol
 dev-python/strict-rfc3339 0.6: Strict, simple, lightweight RFC3339 functions
@@ -10250,7 +10250,7 @@ sys-libs/uclibc-ng 1.0.26 1.0.30-r1: C library for developing embedded Linux sys
 sys-libs/uid_wrapper 1.2.1: A wrapper to fake privilege separation
 sys-libs/zlib 1.2.11 1.2.11-r1 1.2.11-r2: Standard (de)compression library
 sys-power/acpi 1.6: Displays information about ACPI devices
-sys-power/acpid 2.0.28 2.0.29-r1: Daemon for Advanced Configuration and Power Interface
+sys-power/acpid 2.0.29-r1: Daemon for Advanced Configuration and Power Interface
 sys-power/acpilight 1.0 1.1: Replacement for xbacklight that uses the ACPI interface to set brightness
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
 sys-power/apcupsd 3.14.13 3.14.14-r1: APC UPS daemon with integrated tcp/ip remote shutdown
