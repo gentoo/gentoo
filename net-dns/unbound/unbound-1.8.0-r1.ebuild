@@ -14,7 +14,7 @@ SRC_URI="https://nlnetlabs.nl/downloads/unbound/${MY_P}.tar.gz"
 LICENSE="BSD GPL-2"
 SLOT="0/8" # ABI version of libunbound.so
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
-IUSE="debug dnscrypt dnstap +ecdsa gost libressl python selinux static-libs systemd test threads"
+IUSE="debug dnscrypt dnstap +ecdsa gost libressl python redis selinux static-libs systemd test threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Note: expat is needed by executable only but the Makefile is custom
@@ -34,7 +34,8 @@ CDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	ecdsa? (
 		!libressl? ( dev-libs/openssl:0[-bindist] )
 	)
-	python? ( ${PYTHON_DEPS} )"
+	python? ( ${PYTHON_DEPS} )
+	redis? ( dev-libs/hiredis:= )"
 
 BDEPEND="virtual/pkgconfig"
 
@@ -89,13 +90,13 @@ src_configure() {
 }
 
 multilib_src_configure() {
-	# TODO: cachedb
 	econf \
 		$(use_enable debug) \
 		$(use_enable gost) \
 		$(use_enable dnscrypt) \
 		$(use_enable dnstap) \
 		$(use_enable ecdsa) \
+		$(multilib_native_use_enable redis cachedb) \
 		$(use_enable static-libs static) \
 		$(use_enable systemd) \
 		$(multilib_native_use_with python pythonmodule) \
@@ -108,6 +109,7 @@ multilib_src_configure() {
 		--enable-tfo-client \
 		--enable-tfo-server \
 		--with-libevent="${EPREFIX%/}"/usr \
+		$(multilib_native_usex redis --with-libhiredis="${EPREFIX%/}/usr" --without-libhiredis) \
 		--with-pidfile="${EPREFIX%/}"/var/run/unbound.pid \
 		--with-rootkey-file="${EPREFIX%/}"/etc/dnssec/root-anchors.txt \
 		--with-ssl="${EPREFIX%/}"/usr \

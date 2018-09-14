@@ -24,5 +24,6 @@
     <flag name="dnstap">Enable dnstap support</flag>
     <flag name="ecdsa">Enable ECDSA support</flag>
     <flag name="gost">Enable GOST support</flag>
+    <flag name="redis">Enable cache db backend which uses <pkg>dev-libs/hiredis</pkg></flag>
   </use>
 </pkgmetadata>
