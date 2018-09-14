@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-EGO_PN="github.com/golang/lint/..."
+EGO_PN="golang.org/x/lint/..."
 
 if [[ ${PV} = *9999* ]]; then
 	inherit golang-vcs
 else
-	EGIT_COMMIT=206c0f0
+	EGIT_COMMIT=06c8688
 	SRC_URI="https://github.com/golang/lint/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 	inherit golang-vcs-snapshot
@@ -20,18 +20,18 @@ LICENSE="BSD"
 SLOT="0/${PVR}"
 IUSE=""
 DEPEND=">=dev-lang/go-1.6
-	<dev-go/go-tools-0_pre20180817"
+	dev-go/go-tools"
 RDEPEND="!<dev-lang/go-1.6
 	dev-go/go-tools:="
 
 DOCS=(
-	src/github.com/golang/lint/CONTRIBUTING.md
-	src/github.com/golang/lint/README.md
-	src/github.com/golang/lint/misc
-	)
+	src/golang.org/x/lint/CONTRIBUTING.md
+	src/golang.org/x/lint/README.md
+	src/golang.org/x/lint/misc
+)
 
-	src_install() {
-		golang-build_src_install
-		einstalldocs
+src_install() {
+	golang-build_src_install
+	einstalldocs
 	dobin bin/*
 }
