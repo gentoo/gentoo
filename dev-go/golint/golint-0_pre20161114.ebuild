@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ LICENSE="BSD"
 SLOT="0/${PVR}"
 IUSE=""
 DEPEND=">=dev-lang/go-1.6
-	dev-go/go-tools"
+	<dev-go/go-tools-0_pre20180817"
 RDEPEND="!<dev-lang/go-1.6
 	dev-go/go-tools:="
 
