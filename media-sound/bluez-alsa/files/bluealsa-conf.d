@@ -1,4 +1,0 @@
-# Config file for /etc/init.d/bluealsa
-
-# Allow additional options to be set
-BLUEALSA_CONF="--disable-hsp"
