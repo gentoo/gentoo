@@ -14,7 +14,7 @@ SRC_URI="https://nlnetlabs.nl/downloads/unbound/${MY_P}.tar.gz"
 LICENSE="BSD GPL-2"
 SLOT="0/8" # ABI version of libunbound.so
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
-IUSE="debug dnscrypt dnstap +ecdsa gost libressl python redis selinux static-libs systemd test threads"
+IUSE="debug dnscrypt dnstap +ecdsa ecs gost libressl python redis selinux static-libs systemd test threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Note: expat is needed by executable only but the Makefile is custom
@@ -96,6 +96,7 @@ multilib_src_configure() {
 		$(use_enable dnscrypt) \
 		$(use_enable dnstap) \
 		$(use_enable ecdsa) \
+		$(use_enable ecs subnet) \
 		$(multilib_native_use_enable redis cachedb) \
 		$(use_enable static-libs static) \
 		$(use_enable systemd) \
@@ -105,7 +106,6 @@ multilib_src_configure() {
 		--disable-flto \
 		--disable-rpath \
 		--enable-ipsecmod \
-		--enable-subnet \
 		--enable-tfo-client \
 		--enable-tfo-server \
 		--with-libevent="${EPREFIX%/}"/usr \
