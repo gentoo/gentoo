@@ -30,6 +30,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-libs/gobject-introspection-common
 	dev-libs/vala-common
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.13
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	vala? ( $(vala_depend) )
