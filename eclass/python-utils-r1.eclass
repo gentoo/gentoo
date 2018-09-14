@@ -1165,8 +1165,7 @@ python_fix_shebang() {
 		[[ -d ${path} ]] && is_recursive=1
 
 		while IFS= read -r -d '' f; do
-			local shebang i
-			local error= from=
+			local shebang i= error= fix=
 
 			# note: we can't ||die here since read will fail if file
 			# has no newline characters
@@ -1175,65 +1174,60 @@ python_fix_shebang() {
 			# First, check if it's shebang at all...
 			if [[ ${shebang} == '#!'* ]]; then
 				local split_shebang=()
-				read -r -a split_shebang <<<${shebang} || die
+				read -r -a split_shebang <<<${shebang#\#!} || die
 
 				# Match left-to-right in a loop, to avoid matching random
 				# repetitions like 'python2.7 python2'.
-				for i in "${split_shebang[@]}"; do
-					case "${i}" in
-						*"${EPYTHON}")
+				for i in "${!split_shebang[@]}"; do
+					case "/${split_shebang[i]}" in
+						*/${EPYTHON})
 							debug-print "${FUNCNAME}: in file ${f#${D%/}}"
 							debug-print "${FUNCNAME}: shebang matches EPYTHON: ${shebang}"
 
 							# Nothing to do, move along.
 							any_correct=1
-							from=${EPYTHON}
+							continue 2
+							;;
+						*/python)
+							fix=1
 							break
 							;;
-						*python|*python[23])
-							debug-print "${FUNCNAME}: in file ${f#${D%/}}"
-							debug-print "${FUNCNAME}: rewriting shebang: ${shebang}"
-
-							if [[ ${i} == *python2 ]]; then
-								from=python2
-								if [[ ! ${force} ]]; then
-									python_is_python3 "${EPYTHON}" && error=1
-								fi
-							elif [[ ${i} == *python3 ]]; then
-								from=python3
-								if [[ ! ${force} ]]; then
-									python_is_python3 "${EPYTHON}" || error=1
-								fi
-							else
-								from=python
-							fi
-							break
-							;;
-						*python[23].[0123456789]|*pypy|*pypy3|*jython[23].[0123456789])
-							# Explicit mismatch.
+						*/python2)
 							if [[ ! ${force} ]]; then
-								error=1
-							else
-								case "${i}" in
-									*python[23].[0123456789])
-										from="python[23].[0123456789]";;
-									*pypy)
-										from="pypy";;
-									*pypy3)
-										from="pypy3";;
-									*jython[23].[0123456789])
-										from="jython[23].[0123456789]";;
-									*)
-										die "${FUNCNAME}: internal error in 2nd pattern match";;
-								esac
+								python_is_python3 "${EPYTHON}" && error=1
 							fi
+							fix=1
+							break
+							;;
+						*/python3)
+							if [[ ! ${force} ]]; then
+								python_is_python3 "${EPYTHON}" || error=1
+							fi
+							fix=1
+							break
+							;;
+						*/python[2-3].[0-9]|*/pypy|*/pypy3|*/jython[2-3].[0-9])
+							# Explicit mismatch.
+							[[ ! ${force} ]] && error=1
+							fix=1
 							break
 							;;
 					esac
 				done
 			fi
 
-			if [[ ! ${error} && ! ${from} ]]; then
+			if [[ ${fix} ]]; then
+				debug-print "${FUNCNAME}: in file ${f#${D%/}}"
+				debug-print "${FUNCNAME}: rewriting shebang: ${shebang}"
+
+				# Rewrite the part of the shebang that matched above,
+				# whether it is simply a name or a full path. For
+				# example, python3 becomes python3.6 and
+				# /usr/bin/python3 becomes /usr/bin/python3.6.
+				split_shebang[i]=/${split_shebang[i]}
+				split_shebang[i]=${split_shebang[i]%/*}
+				split_shebang[i]=${split_shebang[i]#/}${split_shebang[i]:+/}${EPYTHON}
+			elif [[ ! ${error} ]]; then
 				# Non-Python shebang. Allowed in recursive mode,
 				# disallowed when specifying file explicitly.
 				[[ ${is_recursive} ]] && continue
@@ -1245,13 +1239,7 @@ python_fix_shebang() {
 			fi
 
 			if [[ ! ${error} ]]; then
-				# We either want to match ${from} followed by space
-				# or at end-of-string.
-				if [[ ${shebang} == *${from}" "* ]]; then
-					sed -i -e "1s:${from} :${EPYTHON} :" "${f}" || die
-				else
-					sed -i -e "1s:${from}$:${EPYTHON}:" "${f}" || die
-				fi
+				sed -i -e "1c#\!${split_shebang[*]}" "${f}" || die
 				any_fixed=1
 			else
 				eerror "The file has incompatible shebang:"
