@@ -8716,7 +8716,7 @@ net-libs/nativebiginteger 0.8.7: jbigi JNI library for net.i2p.util.NativeBigInt
 net-libs/neon 0.30.2: HTTP and WebDAV client library
 net-libs/net6 1.3.14-r2: Network access framework for IPv4/IPv6 written in C++
 net-libs/nghttp2 1.31.1 1.33.0: HTTP/2 C Library
-net-libs/nodejs 0.12.18 4.8.7 4.9.1 6.11.5 6.14.4 8.11.1: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 0.12.18 4.8.7 4.9.1 6.11.5 6.14.4 8.11.1 8.12.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/openpgm 5.1.118-r1 5.2.122: Open source implementation of the Pragmatic General Multicast specification
 net-libs/openslp 1.2.1-r3 2.0.0-r4: An open-source implementation of Service Location Protocol
