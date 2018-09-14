@@ -39,11 +39,7 @@ pkg_setup() {
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_GMOCK=ON
-		-DBUILD_GTEST=ON
-		-DINSTALL_GMOCK=ON
 		-DINSTALL_GTEST=ON
-		-Dgtest_build_samples=OFF
-		-Dgtest_disable_pthreads=OFF
 
 		# currently only static libs work
 		# due to numerous ODR violations
