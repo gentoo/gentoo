@@ -1,0 +1,46 @@
+From 09ab2e3d0eeb33bc4d0702623404ba01b1f8fa9a Mon Sep 17 00:00:00 2001
+From: Benno Schulenberg <bensberg@telfort.nl>
+Date: Wed, 12 Sep 2018 13:18:17 +0200
+Subject: [PATCH] bindings: when Ctrl+Shift+Delete has no keycode, don't
+ use KEY_BSP
+
+When curses gives no code for Ctrl+Shift+Delete, do not fall back
+to KEY_BACKSPACE, because then ^H and/or <Backspace> get bound to
+'cutwordleft'.
+
+This fixes https://savannah.gnu.org/bugs/?54642.
+
+Bug was introduced with version 3.0, commit e6429e78.
+---
+ src/nano.c | 2 +-
+ src/nano.h | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/nano.c b/src/nano.c
+index c7e0ca2d..74e12439 100644
+--- a/src/nano.c
++++ b/src/nano.c
+@@ -2580,7 +2580,7 @@ int main(int argc, char **argv)
+ 	controlhome = get_keycode("kHOM5", CONTROL_HOME);
+ 	controlend = get_keycode("kEND5", CONTROL_END);
+ 	controldelete = get_keycode("kDC5", CONTROL_DELETE);
+-	controlshiftdelete = get_keycode("kDC6", KEY_BACKSPACE);
++	controlshiftdelete = get_keycode("kDC6", CONTROL_SHIFT_DELETE);
+ #ifndef NANO_TINY
+ 	/* Ask for the codes for Shift+Control+Left/Right/Up/Down. */
+ 	shiftcontrolleft = get_keycode("kLFT6", SHIFT_CONTROL_LEFT);
+diff --git a/src/nano.h b/src/nano.h
+index e1042759..7de34bf3 100644
+--- a/src/nano.h
++++ b/src/nano.h
+@@ -588,6 +588,7 @@ enum
+ #define SHIFT_CONTROL_DOWN 0x414
+ #define SHIFT_CONTROL_HOME 0x415
+ #define SHIFT_CONTROL_END 0x416
++#define CONTROL_SHIFT_DELETE 0x417
+ #define ALT_LEFT 0x421
+ #define ALT_RIGHT 0x422
+ #define ALT_UP 0x423
+-- 
+2.17.1
+

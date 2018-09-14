@@ -31,6 +31,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	static? ( ${LIB_DEPEND} )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-misbinding.patch
+)
+
 src_prepare() {
 	default
 	if [[ ${PV} == "9999" ]] ; then
