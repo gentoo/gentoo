@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,7 +32,7 @@ DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
 	lmdb? ( dev-db/lmdb )
 	memcached? ( dev-libs/libmemcached )
 	sasl? ( dev-libs/cyrus-sasl )
-	unbound? ( >=net-dns/unbound-1.4.1 net-dns/dnssec-root )
+	unbound? ( >=net-dns/unbound-1.4.1:= net-dns/dnssec-root )
 	!unbound? ( net-libs/ldns )
 	gnutls? ( >=net-libs/gnutls-3.3 )"
 

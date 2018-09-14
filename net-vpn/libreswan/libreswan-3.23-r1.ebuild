@@ -21,7 +21,7 @@ COMMON_DEPEND="
 	dev-libs/nspr
 	caps? ( sys-libs/libcap-ng )
 	curl? ( net-misc/curl )
-	dnssec? ( net-dns/unbound net-libs/ldns )
+	dnssec? ( net-dns/unbound:= net-libs/ldns )
 	ldap? ( net-nds/openldap )
 	pam? ( sys-libs/pam )
 	seccomp? ( sys-libs/libseccomp )

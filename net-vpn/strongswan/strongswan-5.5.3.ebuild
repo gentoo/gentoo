@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -34,7 +34,7 @@ COMMON_DEPEND="!net-misc/openswan
 	sqlite? ( >=dev-db/sqlite-3.3.1 )
 	networkmanager? ( net-misc/networkmanager )
 	pam? ( sys-libs/pam )
-	strongswan_plugins_unbound? ( net-dns/unbound net-libs/ldns )"
+	strongswan_plugins_unbound? ( net-dns/unbound:= net-libs/ldns )"
 DEPEND="${COMMON_DEPEND}
 	virtual/linux-sources
 	sys-kernel/linux-headers"
