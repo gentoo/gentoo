@@ -11,7 +11,7 @@ SRC_URI="http://www.alglib.net/translator/re/${P}.cpp.gpl.tgz"
 
 SLOT="0/3.8"
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 S="${WORKDIR}"/cpp/
