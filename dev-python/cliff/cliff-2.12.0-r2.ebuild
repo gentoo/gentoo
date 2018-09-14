@@ -30,6 +30,7 @@ DEPEND="
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/coverage-4.0[${PYTHON_USEDEP}]
 		!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
+		>=dev-python/stestr-2.1.0[${PYTHON_USEDEP}]
 	)
 	doc? (
 		>=dev-python/sphinx-1.6.2[${PYTHON_USEDEP}]
