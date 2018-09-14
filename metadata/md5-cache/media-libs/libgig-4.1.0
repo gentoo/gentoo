@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen )
+DEFINED_PHASES=compile install
+DEPEND=media-libs/audiofile media-libs/libsndfile
+DESCRIPTION=C++ library for loading Gigasampler and DLS level 1/2 files
+EAPI=7
+HOMEPAGE=https://www.linuxsampler.org/libgig/
+IUSE=doc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/audiofile media-libs/libsndfile
+SLOT=0
+SRC_URI=https://download.linuxsampler.org/packages/libgig-4.1.0.tar.bz2
+_md5_=f246a5606938e751fefd12534cada6ba
