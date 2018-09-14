@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.rdoc"
 RUBY_FAKEGEM_TASK_DOC=""
@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_bdepend "test? ( dev-ruby/mail:2.6 )"
+ruby_add_bdepend "test? ( >=dev-ruby/mail-2.6:* )"
 ruby_add_rdepend ">=dev-ruby/launchy-2.2:0"
 
 all_ruby_prepare() {
