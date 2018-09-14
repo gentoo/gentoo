@@ -8,7 +8,7 @@ CHAPPA_PL=115
 DESCRIPTION="An easy to use text-based based mail and news client"
 HOMEPAGE="http://www.washington.edu/alpine/ http://alpine.freeiz.com/alpine/"
 SRC_URI="ftp://ftp.cac.washington.edu/alpine/${P}.tar.bz2
-	chappa? ( http://alpine.freeiz.com/alpine/patches/${P}/all.patch.gz
+	chappa? ( http://alpine.x10host.com/alpine/patches/${P}/all.patch.gz
 	-> ${P}-chappa-${CHAPPA_PL}-all.patch.gz )"
 
 LICENSE="Apache-2.0"
