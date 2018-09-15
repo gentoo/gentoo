@@ -57,8 +57,8 @@ src_install() {
 		udev_newrules "tpmd_dev/linux/tpmd_dev.rules" 60-tpmd_dev.rules
 	fi
 
-	newinitd "${FILESDIR}/${PN}.initd-r2" "${PN}"
-	newconfd "${FILESDIR}/${PN}.confd-r2" "${PN}"
+	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
+	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 
 	keepdir /var/log/tpm
 	fowners tss:tss /var/log/tpm
