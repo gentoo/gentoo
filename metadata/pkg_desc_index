@@ -4655,8 +4655,8 @@ dev-python/blockcanvas 4.0.3-r1: Enthought Tool Suite: Numerical modeling
 dev-python/blosc 1.2.8: High performance compressor optimized for binary data
 dev-python/bokeh 0.11.1 0.12.6: Statistical and interactive HTML plots for Python
 dev-python/boto 2.41.0: Amazon Web Services API
-dev-python/boto3 1.4.7 1.5.27 1.7.19: The AWS SDK for Python
-dev-python/botocore 1.7.39 1.8.41 1.10.19: Low-level, data-driven core of boto 3.
+dev-python/boto3 1.7.19: The AWS SDK for Python
+dev-python/botocore 1.10.19: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.16 0.17.1: Syntax highlighting and autocompletion for the Python interpreter
