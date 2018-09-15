@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-gfx/tuxpaint
+DESCRIPTION=Set of 'Rubber Stamp' images which can be used within Tux Paint
+EAPI=7
+HOMEPAGE=http://www.tuxpaint.org/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=media-gfx/tuxpaint
+SLOT=0
+SRC_URI=mirror://sourceforge/tuxpaint/tuxpaint-stamps-2009.06.28.tar.gz
+_md5_=3aab94aaad4e43cd4b1dc9ad5f0d711b
