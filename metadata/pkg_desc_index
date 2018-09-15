@@ -5047,7 +5047,7 @@ dev-python/logilab-constraint 0.5.0-r1: A finite domain constraints solver writt
 dev-python/logutils 0.3.3: The logutils package provides a set of handlers for the Python standard
 dev-python/louie 1.1-r1: Signal dispatching mechanism for Python
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
-dev-python/lxml 3.8.0 4.1.1: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 4.1.1: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.24.0: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
