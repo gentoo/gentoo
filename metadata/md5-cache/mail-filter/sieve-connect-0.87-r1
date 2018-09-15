@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install
 DEPEND=>=dev-lang/perl-5
 DESCRIPTION=Sieve Command Line Interface
-EAPI=5
+EAPI=7
 HOMEPAGE=https://people.spodhuis.org/phil.pennock/software/
-KEYWORDS=amd64 x86
+KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=>=dev-lang/perl-5 >=dev-perl/Authen-SASL-2.11 dev-perl/IO-Socket-INET6 >=dev-perl/IO-Socket-SSL-0.97 dev-perl/Net-DNS dev-perl/Net-SSLeay dev-perl/TermReadKey dev-perl/Term-ReadLine-Gnu
 SLOT=0
 SRC_URI=https://github.com/syscomet/sieve-connect/releases/download/v0.87/sieve-connect-0.87.tar.bz2
-_md5_=b22848bd85c44a112e5e009baa59e5e1
+_md5_=8ace52029d12c7aeb13f197b130014dc

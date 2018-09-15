@@ -2948,7 +2948,7 @@ dev-libs/cloog 0.18.1 0.18.4: A loop generator for scanning polyhedra
 dev-libs/concurrencykit 0.5.2 0.6.0: A library with concurrency related algorithms and data structures in C
 dev-libs/confuse 3.0: a configuration file parser library
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
-dev-libs/crypto++ 5.6.5-r1: C++ class library of cryptographic schemes
+dev-libs/crypto++ 5.6.5-r1 7.0.0-r2: C++ class library of cryptographic schemes
 dev-libs/cvector 1.0.3-r1: An ANSI C implementation of dynamic arrays (Approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p03-r1 3.99.5_p11: REINER SCT cyberJack pinpad/e-com USB user space driver library
@@ -5774,7 +5774,7 @@ dev-qt/qtvirtualkeyboard 5.9.6: Virtual keyboard plugin for the Qt5 framework
 dev-qt/qtwayland 5.9.6: Wayland platform plugin for Qt
 dev-qt/qtwebchannel 5.9.6: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
 dev-qt/qtwebengine 5.9.6-r1: Library for rendering dynamic web content in Qt5 C++ and QML applications
-dev-qt/qtwebkit 5.9.1: WebKit rendering library for the Qt5 framework (deprecated)
+dev-qt/qtwebkit 5.9.1 5.212.0_pre20180120: WebKit rendering library for the Qt5 framework (deprecated)
 dev-qt/qtwebsockets 5.9.6: Implementation of the WebSocket protocol for the Qt5 framework
 dev-qt/qtwidgets 5.9.6-r1: Set of components for creating classic desktop-style UIs for the Qt5 framework
 dev-qt/qtx11extras 5.9.6: Linux/X11-specific support library for the Qt5 framework
