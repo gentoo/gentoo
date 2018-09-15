@@ -12,7 +12,7 @@ SRC_URI="https://mediaarea.net/download/source/${PN}/${PV}/${P/-/_}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="curl mms wxwidgets"
 
 RDEPEND="sys-libs/zlib
@@ -26,11 +26,14 @@ S=${WORKDIR}/MediaInfo
 
 pkg_setup() {
 	TARGETS="CLI"
-	use wxwidgets && TARGETS+=" GUI"
+	if use wxwidgets; then
+		TARGETS+=" GUI"
+		setup-wxwidgets
+	fi
 }
 
 src_prepare() {
-	eapply_user
+	default
 
 	local target
 	for target in ${TARGETS}; do

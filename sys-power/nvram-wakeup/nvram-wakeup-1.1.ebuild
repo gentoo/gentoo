@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/nvram-wakeup/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 [[ -n ${REV} ]] && RESTRICT="mirror" #168114
 
