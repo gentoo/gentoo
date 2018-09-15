@@ -122,8 +122,6 @@ fi
 # URIs are completely unsecured and their use (even if only as
 # a fallback) renders the ebuild completely vulnerable to MITM attacks.
 #
-# It can be overridden via env using ${PN}_LIVE_REPO variable.
-#
 # Can be a whitespace-separated list or an array.
 #
 # Example:
@@ -152,8 +150,6 @@ fi
 # @DESCRIPTION:
 # The branch name to check out. If unset, the upstream default (HEAD)
 # will be used.
-#
-# It can be overridden via env using ${PN}_LIVE_BRANCH variable.
 
 # @ECLASS-VARIABLE: EGIT_COMMIT
 # @DEFAULT_UNSET
@@ -162,8 +158,6 @@ fi
 # commit from the branch will be used. Note that if set to a commit
 # not on HEAD branch, EGIT_BRANCH needs to be set to a branch on which
 # the commit is available.
-#
-# It can be overridden via env using ${PN}_LIVE_COMMIT variable.
 
 # @ECLASS-VARIABLE: EGIT_COMMIT_DATE
 # @DEFAULT_UNSET
@@ -178,8 +172,6 @@ fi
 # (assuming that merges are done correctly). In other words, each merge
 # will be considered alike a single commit with date corresponding
 # to the merge commit date.
-#
-# It can be overridden via env using ${PN}_LIVE_COMMIT_DATE variable.
 
 # @ECLASS-VARIABLE: EGIT_CHECKOUT_DIR
 # @DESCRIPTION:
@@ -262,6 +254,7 @@ _git-r3_env_setup() {
 	esc_pn=${PN//[-+]/_}
 	[[ ${esc_pn} == [0-9]* ]] && esc_pn=_${esc_pn}
 
+	# note: deprecated, use EGIT_OVERRIDE_* instead
 	livevar=${esc_pn}_LIVE_REPO
 	EGIT_REPO_URI=${!livevar-${EGIT_REPO_URI}}
 	[[ ${!livevar} ]] \
