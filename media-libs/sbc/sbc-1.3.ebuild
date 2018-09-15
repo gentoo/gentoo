@@ -4,7 +4,7 @@
 EAPI=7
 inherit multilib multilib-minimal
 
-DESCRIPTION="An audio codec to connect bluetooth high quality audio devices like headphones or loudspeakers"
+DESCRIPTION="Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers"
 HOMEPAGE="https://git.kernel.org/?p=bluetooth/sbc.git http://www.bluez.org/sbc-10/"
 SRC_URI="mirror://kernel/linux/bluetooth/${P}.tar.xz"
 
