@@ -896,7 +896,7 @@ app-i18n/mozc 2.23.2815.102: Mozc - Japanese input method editor
 app-i18n/multiskkserv 20100128: SKK server that handles multiple dictionaries
 app-i18n/nkf 2.1.3-r2: Network Kanji code conversion Filter with UTF-8/16 support
 app-i18n/opencc 1.0.5: Libraries for conversion between Traditional and Simplified Chinese
-app-i18n/poedit 2.0.9: GUI gettext translations editor
+app-i18n/poedit 2.0.9 2.1.1: GUI gettext translations editor
 app-i18n/pology 0.12: A framework for custom processing of PO files
 app-i18n/pyzy 0.1.0-r2: The Chinese PinYin and Bopomofo conversion library
 app-i18n/qkc 1.00: Quick KANJI code Converter
@@ -7592,7 +7592,7 @@ media-libs/libmad 0.15.1b-r8: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.12.1-r1 1.18.0: Mixer library for MATE Desktop
 media-libs/libmatroska 1.4.5 1.4.8: Extensible multimedia container format based on EBML
 media-libs/libmediaart 1.9.4: Manages, extracts and handles media art caches
-media-libs/libmediainfo 18.03: MediaInfo libraries
+media-libs/libmediainfo 18.05: MediaInfo libraries
 media-libs/libmetalink 0.1.0-r1 0.1.1 0.1.1-r1: Library for handling Metalink files
 media-libs/libmikmod 3.3.8: A library to play a wide range of module formats
 media-libs/libmkv 0.6.5.1: Lightweight Matroska muxer written for HandBrake
@@ -8246,7 +8246,7 @@ media-video/kmplayer 0.12.0b-r1: Video player plugin for Konqueror and basic MPl
 media-video/libav 9.17 11.8: Complete solution to record, convert and stream audio and video
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
-media-video/mediainfo 18.03: MediaInfo supplies technical and tag information about media files
+media-video/mediainfo 18.05: MediaInfo supplies technical and tag information about media files
 media-video/minitube 2.5.2-r1: Qt5 YouTube Client
 media-video/mjpegtools 2.1.0-r3: Tools for MJPEG video
 media-video/mkvtoolnix 19.0.0: Tools to create, alter, and inspect Matroska files
@@ -10261,7 +10261,7 @@ sys-power/iasl 20140828 20160729: Intel ACPI Source Language (ASL) compiler
 sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
 sys-power/nut 2.6.5-r1 2.7.3 2.7.4-r1: Network-UPS Tools
 sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
-sys-power/nvram-wakeup 1.0: read and write the WakeUp time in the BIOS
+sys-power/nvram-wakeup 1.1: read and write the WakeUp time in the BIOS
 sys-power/pm-quirks 20100619-r1: Video Quirks database for pm-utils
 sys-power/pm-utils 1.4.1-r6 1.4.1-r7: Suspend and hibernation utilities
 sys-power/pmtools 20110323-r1: Collection of tools for ACPI and power management
