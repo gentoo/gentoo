@@ -2819,7 +2819,6 @@ media-libs/alsa-lib:alisp - Enable support for ALISP (ALSA LISP) interpreter for
 media-libs/alsa-lib:thread-safety - thread-safe API functions
 media-libs/alure:dumb - Enable media-libs/dumb module library support
 media-libs/alure:fluidsynth - Enables Fluidsynth MIDI software synthesis
-media-libs/assimp:boost - Build assimp with boost support
 media-libs/assimp:samples - Build viewer library
 media-libs/assimp:tools - Build assimp tool binary
 media-libs/aubio:double-precision - Compile in double precision mode.

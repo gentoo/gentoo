@@ -3170,7 +3170,7 @@ dev-libs/libuv 1.20.0: Cross-platform asychronous I/O
 dev-libs/libverto 0.2.5 0.2.5-r1: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvterm 0.0_pre20160305: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
-dev-libs/libwacom 0.24 0.25 0.30: Library for identifying Wacom tablets and their model-specific features
+dev-libs/libwacom 0.25 0.30: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x86 code
 dev-libs/libx86emu 1.1: A library for emulating x86
@@ -7430,7 +7430,7 @@ media-libs/allegro 4.4.2-r1 5.0.11: A game programming library
 media-libs/alsa-lib 1.1.2: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.0.28: Advanced Linux Sound Architecture OSS compatibility layer
 media-libs/alure 1.2-r1: The OpenAL Utility Toolkit
-media-libs/assimp 3.1.1 4.0.1: Importer library to import assets from 3D files
+media-libs/assimp 4.0.1: Importer library to import assets from 3D files
 media-libs/aubio 0.4.1-r1: Library for audio labelling
 media-libs/audiofile 0.3.6-r3: An elegant API for accessing audio files
 media-libs/babl 0.1.12 0.1.18 0.1.38: A dynamic, any to any, pixel format conversion library
@@ -7525,7 +7525,7 @@ media-libs/libao 1.2.2: The Audio Output library
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.13.6: Library for SSA/ASS subtitles rendering
 media-libs/libbdplus 0.1.2: Blu-ray library for BD+ decryption
-media-libs/libbluray 0.9.3 1.0.2: Blu-ray playback libraries
+media-libs/libbluray 1.0.2: Blu-ray playback libraries
 media-libs/libbs2b 3.1.0-r1: Bauer stereophonic-to-binaural DSP library
 media-libs/libbsb 0.0.7: A portable C library for reading and writing BSB format image files
 media-libs/libcaca 0.99_beta19: A library that creates colored ASCII-art graphics
@@ -7629,10 +7629,10 @@ media-libs/libqaccessibilityclient 0.2.0: Library for writing accessibility clie
 media-libs/libquicktime 1.2.4-r2: An enhanced version of the quicktime4linux library
 media-libs/libquvi 0.4.1 0.4.1-r1 0.4.1-r2 0.9.4 0.9.4-r1: Library for parsing video download links
 media-libs/libquvi-scripts 0.4.14 0.4.21-r1 0.4.21-r2 0.9.20131130 0.9.20131130-r1: Embedded lua scripts for libquvi
-media-libs/libraw 0.18.4 0.18.8 0.18.11: LibRaw is a library for reading RAW files obtained from digital photo cameras
+media-libs/libraw 0.18.11: LibRaw is a library for reading RAW files obtained from digital photo cameras
 media-libs/libreplaygain 477-r1: Replay Gain library from Musepack
 media-libs/libsamplerate 0.1.9: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
-media-libs/libsbsms 2.0.2 2.0.2-r1: A library for high quality time and pitch scale modification
+media-libs/libsbsms 2.0.2-r1: A library for high quality time and pitch scale modification
 media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
 media-libs/libsdl2 2.0.8-r1: Simple Direct Media Layer
 media-libs/libsfml 2.4.2: Simple and Fast Multimedia Library (SFML)
@@ -7670,7 +7670,7 @@ media-libs/ming 0.4.8-r1: An Open Source library for Flash movie generation
 media-libs/mlt 6.10.0: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.35.1 1.40.0: Audio metadata tag reader and writer implemented in pure Python
-media-libs/nas 1.9.4 1.9.4-r1 1.9.4-r2: Network Audio System
+media-libs/nas 1.9.4-r1 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/openal 1.18.2-r1: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.58 1.6.62: Stream based read/write library for COLLADA files
@@ -7681,7 +7681,7 @@ media-libs/openexr 1.7.0 2.1.0 2.2.0-r2: ILM's OpenEXR high dynamic-range image 
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openh264 1.7.0-r1: Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
 media-libs/openimageio 1.6.13 1.7.17: A library for reading and writing images
-media-libs/openjpeg 1.5.2 1.5.2-r1 2.3.0: An open-source JPEG 2000 library
+media-libs/openjpeg 1.5.2-r1 2.3.0: An open-source JPEG 2000 library
 media-libs/opensubdiv 3.3.0: An Open-Source subdivision surface library
 media-libs/opus 1.2.1: Open codec designed for internet transmission of interactive speech and audio
 media-libs/opusfile 0.6: A high-level decoding and seeking API for .opus files
@@ -7716,7 +7716,7 @@ media-libs/sdl-gfx 2.0.25: Graphics drawing primitives library for SDL
 media-libs/sdl-image 1.2.12-r2: image file loading library
 media-libs/sdl-mixer 1.2.12-r4: Simple Direct Media Layer Mixer Library
 media-libs/sdl-net 1.2.8-r1: Simple Direct Media Layer Network Support Library
-media-libs/sdl-pango 0.1.2 0.1.2-r1: connect the text rendering engine of GNOME to SDL
+media-libs/sdl-pango 0.1.2-r1: connect the text rendering engine of GNOME to SDL
 media-libs/sdl-sound 1.0.3-r1: A library that handles the decoding of sound file formats
 media-libs/sdl-terminal 1.1.3-r1: library that provides a pseudo-ansi color terminal that can be used with any SDL application
 media-libs/sdl-ttf 2.0.11-r1: library that allows you to use TrueType fonts in SDL applications
@@ -8008,7 +8008,7 @@ media-sound/flac123 0.0.12: console app for playing FLAC audio files
 media-sound/flacon 4.1.0: Extracts audio tracks from an audio CD image to separate tracks
 media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
-media-sound/fluidsynth 1.1.6-r1 1.1.11: Software real-time synthesizer based on the Soundfont 2 specifications
+media-sound/fluidsynth 1.1.11: Software real-time synthesizer based on the Soundfont 2 specifications
 media-sound/fmdrv 1.0.7: Console mode MIDI player with builtin userland OPL2 driver
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
 media-sound/freebirth 0.3.2-r1: Free software bass synthesizer step sequencer
@@ -8114,7 +8114,7 @@ media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.2.3: Qt5-based audio player with winamp/xmms skins support
-media-sound/qsynth 0.4.4 0.5.0: A Qt application to control FluidSynth
+media-sound/qsynth 0.5.0: A Qt application to control FluidSynth
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.0: A Qt5 client for the music player daemon (MPD) written in C++
 media-sound/quodlibet 3.8.1-r1 3.9.1: audio library tagger, manager, and player for GTK+
@@ -9326,7 +9326,7 @@ sci-geosciences/tcd-utils 20120115: Utilities for working with Tidal Constituent
 sci-geosciences/xtide 2.13.2: XTide provides tide and current predictions in a wide variety of formats
 sci-libs/Shapely 1.5.17-r1: Geometric objects, predicates, and operations
 sci-libs/adolc 2.4.1: Automatic differentiation system for C/C++
-sci-libs/alglib 3.8.2-r1 3.10.0-r1: Numerical analysis and data processing library
+sci-libs/alglib 3.10.0-r1: Numerical analysis and data processing library
 sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/armadillo 6.200.3 8.300.2: Streamlined C++ linear algebra library
 sci-libs/arpack 3.1.5: Arnoldi package library to solve large scale eigenvalue problems
