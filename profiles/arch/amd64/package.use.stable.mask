@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (15 Sep 2018)
+# the de[endency is unstable
+media-video/libav nvidia
+
 # Thomas Deutschmann <whissi@gentoo.org> (01 Jun 2018)
 net-analyzer/wireshark -doc
 
