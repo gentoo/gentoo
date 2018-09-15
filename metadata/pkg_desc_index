@@ -11132,7 +11132,7 @@ x11-plugins/wmmoonclock 1.27-r1: dockapp that shows lunar ephemeris to a high ac
 x11-plugins/wmmp 0.10.0-r1: A Window Maker dock app client for Music Player Daemon(media-sound/mpd)
 x11-plugins/wmnd 0.4.16: WindowMaker Network Devices (dockapp)
 x11-plugins/wmnet 1.06-r1: WMnet is a dock.app network monitor
-x11-plugins/wmpager 1.2-r1: A simple pager docklet for the WindowMaker window manager
+x11-plugins/wmpager 1.2-r2: A simple pager docklet for the WindowMaker window manager
 x11-plugins/wmpasman 0.8.5.3: Password storage/retrieval in a dockapp
 x11-plugins/wmpinboard 1.0: Window Maker dock applet resembling a miniature pinboard
 x11-plugins/wmpop3 0.5.6a-r1: dockapp for checking pop3 accounts
