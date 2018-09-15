@@ -18,8 +18,9 @@ KEYWORDS="amd64 x86"
 # there has been no apparent expression of interest or demand by users for them. See requires.txt
 IUSE="doc examples redis sqs test yaml"
 
+# kombu < 4.2: #666228 (can be loosened in next bump)
 RDEPEND="
-	<dev-python/kombu-5.0[${PYTHON_USEDEP}]
+	<dev-python/kombu-4.2[${PYTHON_USEDEP}]
 	>=dev-python/kombu-4.0.2[${PYTHON_USEDEP}]
 	>=dev-python/billiard-3.5.0.2[${PYTHON_USEDEP}]
 	<dev-python/billiard-3.6.0[${PYTHON_USEDEP}]
