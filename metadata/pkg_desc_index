@@ -6405,7 +6405,7 @@ dev-vcs/hgsubversion 1.8.5 1.8.6: hgsubversion is a Mercurial extension for work
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
 dev-vcs/mercurial 4.5.2 4.6.2: Scalable distributed SCM
 dev-vcs/mr 1.20170129 1.20171231: Multiple Repository management tool
-dev-vcs/qgit 2.7: Qt GUI for git repositories
+dev-vcs/qgit 2.7 2.8: Qt GUI for git repositories
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
 dev-vcs/rcs 5.8.2 5.9.3: Revision Control System
 dev-vcs/stgit 0.16-r2: Manage a stack of patches using GIT as a backend
@@ -8980,7 +8980,7 @@ net-misc/siproxd 0.8.0-r3: A proxy/masquerading daemon for the SIP protocol
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
 net-misc/sks 1.1.6-r2: An OpenPGP keyserver which is decentralized with highly reliable synchronization
 net-misc/smb4k 2.1.0: Advanced network neighborhood browser
-net-misc/snarf 7.0-r3: Small and fast CLI resource grabber for http, gopher, finger, ftp
+net-misc/snarf 7.0-r4: Small and fast CLI resource grabber for http, gopher, finger, ftp
 net-misc/sobby 0.4.8-r1: Standalone Obby server
 net-misc/socat 1.7.3.2: Multipurpose relay (SOcket CAT)
 net-misc/sock 1.1-r1: A shell interface to network sockets
@@ -9319,7 +9319,7 @@ sci-geosciences/mtkbabel 0.8.3.1-r1: MTKBabel is a Perl program to operate the i
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0: Converts OSM data to SQL and insert into PostgreSQL db
 sci-geosciences/qgis 3.0.3-r1: User friendly Geographic Information System
-sci-geosciences/qmapshack 1.6.3: GPS mapping utility
+sci-geosciences/qmapshack 1.6.3 1.11.1-r1: GPS mapping utility
 sci-geosciences/routino 3.1.1: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1: Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB
 sci-geosciences/swmm 5.0.022: Storm Water Management Model-SWMM, hydrology, hydraulics, water quality model
