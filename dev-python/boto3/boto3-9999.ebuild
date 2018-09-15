@@ -21,7 +21,7 @@ else
 fi
 
 RDEPEND="
-	>=dev-python/botocore-1.10.35[${PYTHON_USEDEP}]
+	>=dev-python/botocore-1.12.4[${PYTHON_USEDEP}]
 	dev-python/jmespath[${PYTHON_USEDEP}]
 	dev-python/s3transfer[${PYTHON_USEDEP}]
 "
