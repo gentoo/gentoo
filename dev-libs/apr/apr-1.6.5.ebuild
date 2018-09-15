@@ -3,14 +3,14 @@
 
 EAPI=6
 
-inherit autotools libtool ltprune multilib toolchain-funcs
+inherit autotools libtool multilib toolchain-funcs
 
 DESCRIPTION="Apache Portable Runtime Library"
 HOMEPAGE="https://apr.apache.org/"
 SRC_URI="mirror://apache/apr/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
-SLOT="1"
+SLOT="1/${PV%.*}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc elibc_FreeBSD older-kernels-compatibility selinux static-libs +urandom"
 
@@ -29,11 +29,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.0-libtool.patch
 	"${FILESDIR}"/${PN}-1.5.0-cross-types.patch
 	"${FILESDIR}"/${PN}-1.5.0-sysroot.patch #385775
+	"${FILESDIR}"/${PN}-1.6.3-skip-known-failing-tests.patch
 )
 
 src_prepare() {
 	default
 
+	mv configure.in configure.ac || die
 	AT_M4DIR="build" eautoreconf
 	elibtoolize
 
@@ -47,6 +49,7 @@ src_configure() {
 		--enable-posix-shm
 		--enable-threads
 		$(use_enable static-libs static)
+		--with-installbuilddir=/usr/share/${PN}/build
 	)
 
 	[[ ${CHOST} == *-mint* ]] && export ac_cv_func_poll=no
@@ -126,13 +129,20 @@ src_compile() {
 	fi
 }
 
+src_test() {
+	# Building tests in parallel is broken
+	emake -j1 check
+}
+
 src_install() {
 	default
 
 	# Prallel install breaks since apr-1.5.1
 	#make -j1 DESTDIR="${D}" install || die
 
-	prune_libtool_files --all
+	if ! use static-libs; then
+		find "${ED%/}" -name '*.la' -delete || die
+	fi
 
 	if use doc; then
 		docinto html

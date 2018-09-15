@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit ltprune
+inherit bash-completion-r1 ltprune
 
 DESCRIPTION="Libraries and applications to access smartcards"
 HOMEPAGE="https://github.com/OpenSC/OpenSC/wiki"
@@ -41,6 +41,7 @@ PATCHES=(
 
 src_configure() {
 	econf \
+		--with-completiondir="$(get_bashcompdir)" \
 		--disable-openpace \
 		--disable-static \
 		--enable-man \
