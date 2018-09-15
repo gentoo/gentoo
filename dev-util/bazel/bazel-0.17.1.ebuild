@@ -8,9 +8,7 @@ inherit bash-completion-r1 java-pkg-2 multiprocessing
 DESCRIPTION="Fast and correct automated build system"
 HOMEPAGE="http://bazel.io/"
 
-bazel_external_uris="https://github.com/google/desugar_jdk_libs/archive/f5e6d80c6b4ec6b0a46603f72b015d45cf3c11cd.zip -> google-desugar_jdk_libs-f5e6d80c6b4ec6b0a46603f72b015d45cf3c11cd.zip"
-SRC_URI="https://github.com/bazelbuild/bazel/releases/download/${PV}/${P}-dist.zip
-	${bazel_external_uris}"
+SRC_URI="https://github.com/bazelbuild/bazel/releases/download/${PV}/${P}-dist.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -24,6 +22,7 @@ DEPEND="${RDEPEND}
 	app-arch/zip"
 
 S="${WORKDIR}"
+QA_FLAGS_IGNORED="usr/bin/bazel"
 
 bazel-get-flags() {
 	local i fs=()
@@ -43,25 +42,6 @@ bazel-get-flags() {
 	echo "${fs[*]}"
 }
 
-load_distfiles() {
-	# Populate the bazel distdir to fetch from since it cannot use the network
-	local s d uri rename
-	mkdir -p "${T}/bazel-distdir" || die "failed to create distdir"
-
-	while read uri rename d; do
-		[[ -z "$uri" ]] && continue
-		if [[ "$rename" == "->" ]]; then
-			s="${uri##*/}"
-			einfo "Copying $d to bazel distdir $s ..."
-		else
-			s="${uri##*/}"
-			d="${s}"
-			einfo "Copying $d to bazel distdir ..."
-		fi
-		cp "${DISTDIR}/${d}" "${T}/bazel-distdir/${s}" || die
-	done <<< "${bazel_external_uris}"
-}
-
 pkg_setup() {
 	echo ${PATH} | grep -q ccache && \
 		ewarn "${PN} usually fails to compile with ccache, you have been warned"
@@ -74,8 +54,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	load_distfiles
 	default
+
+	sed -i 's@//src:bazel@//src:bazel_nojdk@' scripts/BUILD || die
 
 	# F: fopen_wr
 	# S: deny
@@ -91,7 +72,7 @@ src_prepare() {
 	build --verbose_failures
 	build --spawn_strategy=standalone --genrule_strategy=standalone
 
-	build --experimental_distdir=${T}/bazel-distdir
+	build --distdir=${S}/derived/distdir/
 	build --jobs=$(makeopts_jobs) $(bazel-get-flags)
 
 	test --verbose_failures --verbose_test_summary
@@ -104,8 +85,8 @@ src_prepare() {
 src_compile() {
 	export EXTRA_BAZEL_ARGS="--jobs=$(makeopts_jobs)"
 	VERBOSE=yes ./compile.sh || die
-	output/bazel --bazelrc="${T}/bazelrc" build scripts:bazel-complete.bash || die
-	mv bazel-bin/scripts/bazel-complete.bash output/ || die
+	output/bazel --bazelrc="${T}/bazelrc" build //scripts:bazel-complete.bash || die
+	output/bazel shutdown
 }
 
 src_test() {
@@ -115,17 +96,18 @@ src_test() {
 		--genrule_strategy=standalone \
 		--verbose_test_summary \
 		examples/cpp:hello-success_test || die
+	output/bazel shutdown
 }
 
 src_install() {
-	output/bazel shutdown
 	dobin output/bazel
-	newbashcomp output/bazel-complete.bash ${PN}
+	newbashcomp bazel-bin/scripts/bazel-complete.bash ${PN}
 	bashcomp_alias ${PN} ibazel
 	if use zsh-completion ; then
 		insinto /usr/share/zsh/site-functions
 		doins scripts/zsh_completion/_bazel
 	fi
+
 	if use examples; then
 		docinto examples
 		dodoc -r examples/*
