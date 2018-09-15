@@ -26,11 +26,14 @@ S=${WORKDIR}/MediaInfo
 
 pkg_setup() {
 	TARGETS="CLI"
-	use wxwidgets && TARGETS+=" GUI"
+	if use wxwidgets; then
+		TARGETS+=" GUI"
+		setup-wxwidgets
+	fi
 }
 
 src_prepare() {
-	eapply_user
+	default
 
 	local target
 	for target in ${TARGETS}; do
