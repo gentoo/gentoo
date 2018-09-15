@@ -207,11 +207,6 @@ app-crypt/simp_le
 # Will be removed in 30 days (bug 663774).
 net-analyzer/nagios-check_openvpn-simple
 
-# Sergey Popov <pinkbyte@gentoo.org> (16 Aug 2018)
-# Upstream is dead, no consumers in tree
-# Masked for removal in 30 days
-dev-python/pyfire
-
 # Bernard Cafarelli <voyageur@gentoo.org> (13 Aug 2018)
 # Beta release with new features, masked for testing
 =app-text/tesseract-4.0.0_beta*
