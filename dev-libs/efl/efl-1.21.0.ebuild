@@ -11,7 +11,7 @@ SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="avahi +bmp dds connman debug drm +eet egl examples fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz hyphen +ico ibus jpeg2k libressl libuv luajit neon nls opengl ssl pdf physics postscript +ppm +psd pulseaudio raw scim sdl sound static-libs svg +system-lz4 systemd tga tiff tslib unwind v4l valgrind vlc vnc wayland webp X xcf xim xine xpresent xpm"
 
 REQUIRED_USE="

@@ -11,7 +11,7 @@ SRC_URI="https://github.com/liballeg/allegro5/releases/download/${PV}/${P}.tar.g
 
 LICENSE="BSD ZLIB"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ppc ppc64 ~x86"
 IUSE="alsa dumb flac gtk jpeg openal opengl opus oss physfs png pulseaudio test truetype vorbis webp X xinerama"
 
 REQUIRED_USE="X? ( opengl ) xinerama? ( X )"
