@@ -28,6 +28,8 @@ RDEPEND="dev-qt/qtwebkit:5
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5"
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
+
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
