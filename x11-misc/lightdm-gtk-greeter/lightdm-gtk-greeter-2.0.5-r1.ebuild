@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/lightdm-gtk-greeter/$(get_version_component_range
 LICENSE="GPL-3 LGPL-3
 	branding? ( CC-BY-3.0 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="ayatana branding"
 
 COMMON_DEPEND="ayatana? ( dev-libs/libindicator:3 )

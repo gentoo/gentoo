@@ -12,7 +12,7 @@ SRC_URI="https://github.com/CanonicalLtd/lightdm/releases/download/${PV}/${P}.ta
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="audit +gnome +gtk +introspection qt5 vala"
 
 COMMON_DEPEND="

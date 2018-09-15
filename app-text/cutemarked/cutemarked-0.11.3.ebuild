@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -31,6 +31,7 @@ S="${WORKDIR}/CuteMarkEd-${PV}"
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}"-0.11.1-respect-destdir.patch
+	epatch "${FILESDIR}/${PN}"-0.11.3-qaction-include.patch
 }
 
 src_configure() {
