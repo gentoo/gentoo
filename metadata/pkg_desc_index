@@ -8923,6 +8923,7 @@ net-misc/netkit-rwho 0.17-r4: Netkit - ruptime/rwho/rwhod
 net-misc/netkit-talk 0.17-r5: Netkit - talkd
 net-misc/netkit-telnetd 0.17-r10: Standard Linux telnet client and server
 net-misc/netkit-timed 0.17-r10: Netkit - timed
+net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using UDP broadcasting techniques
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
@@ -10899,8 +10900,8 @@ x11-misc/imwheel 1.0.0_pre12: mouse tool for advanced features such as wheels an
 x11-misc/kdocker 5.0-r1: Helper to dock any application into the system tray
 x11-misc/kronometer 2.2.1: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
-x11-misc/lightdm 1.18.3-r1: A lightweight display manager
-x11-misc/lightdm-gtk-greeter 2.0.1-r1: LightDM GTK+ Greeter
+x11-misc/lightdm 1.18.3-r1 1.26.0-r1: A lightweight display manager
+x11-misc/lightdm-gtk-greeter 2.0.1-r1 2.0.5-r1: LightDM GTK+ Greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1: Mute/unmute and other macros for LINEAK
 x11-misc/lineak-xosdplugin 0.9.0-r1: Xosd plugin for LINEAK
 x11-misc/lineakd 0.9.0-r1 0.9.0-r2: Linux support for Easy Access and Internet Keyboards
