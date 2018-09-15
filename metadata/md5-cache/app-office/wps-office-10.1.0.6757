@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm preinst prepare
+DEPEND=>=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=WPS Office is an office productivity suite
+EAPI=6
+HOMEPAGE=http://www.wps.cn/product/wpslinux/ http://wps-community.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=WPS-EULA
+RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXext x11-libs/libXrender x11-libs/libxcb media-libs/fontconfig:1.0 media-libs/freetype:2 dev-libs/glib:2 sys-libs/zlib:0 net-print/cups media-libs/libpng:1.2 virtual/glu dev-libs/libpcre:3 dev-libs/libffi media-sound/pulseaudio app-arch/bzip2:0 media-libs/libpng:0 dev-libs/expat sys-apps/util-linux dev-libs/libbsd x11-libs/libXau x11-libs/libXdmcp sys-apps/dbus x11-libs/libXtst sys-apps/tcp-wrappers media-libs/libsndfile net-libs/libasyncns dev-libs/libgcrypt:0 app-arch/xz-utils app-arch/lz4 sys-libs/libcap media-libs/flac media-libs/libogg media-libs/libvorbis dev-libs/libgpg-error sys-apps/attr
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=amd64? ( http://kdl.cc.ksosoft.com/wps-community/download/6757/.tar.xz ) x86? ( http://kdl.cc.ksosoft.com/wps-community/download/6757/.tar.xz )
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=b4200335190aa1ad2d78b5e963bb39fc
