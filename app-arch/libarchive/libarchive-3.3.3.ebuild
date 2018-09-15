@@ -119,7 +119,7 @@ multilib_src_install() {
 	fi
 
 	# Libs.private: should be used from libarchive.pc instead
-	prune_libtool_files
+	find "${ED}" -name "*.la" -delete || die
 }
 
 multilib_src_install_all() {
