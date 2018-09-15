@@ -9,7 +9,7 @@ SRC_URI="https://www.chiark.greenend.org.uk/~neilt/mbr/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-alpha ~amd64 -ppc -sparc ~x86"
+KEYWORDS="-alpha amd64 -ppc -sparc x86"
 IUSE="test"
 
 DEPEND="
