@@ -21,8 +21,8 @@ HOMEPAGE="http://www.wps.cn/product/wpslinux/ http://wps-community.org/"
 KEYWORDS="~amd64 ~x86"
 
 SRC_URI="
-	amd64? ( http://kdl.cc.ksosoft.com/wps-community/download/${MY_PV}/${MY_P}.tar.xz )
-	x86? ( http://kdl.cc.ksosoft.com/wps-community/download/${MY_PV}/${MY_P}.tar.xz )
+	amd64? ( http://kdl.cc.ksosoft.com/wps-community/download/${MY_PV}/${PN}_${PV}_x86_64.tar.xz )
+	x86? ( http://kdl.cc.ksosoft.com/wps-community/download/${MY_PV}/${PN}_${PV}_x86.tar.xz )
 "
 
 SLOT="0"
