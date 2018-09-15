@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="Sieve Command Line Interface"
 HOMEPAGE="https://people.spodhuis.org/phil.pennock/software/"
@@ -9,8 +9,7 @@ SRC_URI="https://github.com/syscomet/sieve-connect/releases/download/v${PV}/${P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 
 DEPEND=">=dev-lang/perl-5"
 RDEPEND="${DEPEND}
