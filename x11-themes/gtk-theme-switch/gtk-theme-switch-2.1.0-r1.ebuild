@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="Utility to switch and preview GTK+ theme"
@@ -18,6 +19,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
+	default
 	sed -i \
 		-e 's:${GCC}:$(CC) $(LDFLAGS):' \
 		Makefile || die
@@ -25,11 +27,11 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
-	emake CFLAGS="${CFLAGS} -Wall" || die
+	emake CFLAGS="${CFLAGS} -Wall"
 }
 
 src_install() {
-	newbin ${PN}2 ${PN} || die
-	newman ${PN}2.1 ${PN}.1 || die
+	newbin ${PN}2 ${PN}
+	newman ${PN}2.1 ${PN}.1
 	dodoc ChangeLog readme todo
 }

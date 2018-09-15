@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-MY_PV="d0caafb8438ebd206f99930cfaecfa6c9a13dca0"
+MY_PV="fe123682e9cb30031eae351764f653500b7396c9"
 
 inherit readme.gentoo-r1 java-pkg-2 user
 
@@ -40,7 +40,7 @@ src_install() {
 	java-pkg_newjar minecraft-server-${PV}.jar minecraft-server.jar
 	java-pkg_dolauncher minecraft-server --jar minecraft-server.jar --java_args "\${JAVA_OPTS}"
 
-	newinitd "${FILESDIR}"/minecraft-server-r1.initd minecraft-server
+	newinitd "${FILESDIR}"/minecraft-server.initd-r2 minecraft-server
 	newconfd "${FILESDIR}"/minecraft-server.confd minecraft-server
 
 	diropts -o minecraft -g minecraft

@@ -38,7 +38,7 @@ start_pre() {
 		cd "${minecraft_path}" && ln -s ../../../log/minecraft-server/"${instance}" logs
 	fi
 
-	if [ -z ${MINECRAFT_OPTS} ]; then
+	if [ -z "${MINECRAFT_OPTS}" ]; then
 		eerror "You must define MINECRAFT_OPTS in /etc/conf.d/minecraft.${SVCNAME}!"
 		return 1
 	fi

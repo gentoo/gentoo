@@ -1,8 +1,7 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils
+EAPI=7
 
 MY_P=${PN}-${PV:0:4}.${PV:4:2}.${PV:6:2}
 
@@ -13,7 +12,6 @@ SRC_URI="mirror://sourceforge/tuxpaint/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
 RDEPEND="media-gfx/tuxpaint"
 DEPEND="${RDEPEND}"
@@ -21,12 +19,13 @@ DEPEND="${RDEPEND}"
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-make-382.patch
+	default
+	eapply "${FILESDIR}"/${P}-make-382.patch
 }
 
 src_install() {
 	emake PREFIX="${D}/usr" install-all || die
 
-	rm -f docs/COPYING.txt
+	rm -f docs/COPYING.txt || die
 	dodoc docs/*.txt
 }
