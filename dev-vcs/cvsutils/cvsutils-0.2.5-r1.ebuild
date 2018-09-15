@@ -7,7 +7,7 @@ DESCRIPTION="A small bundle of utilities to work with CVS repositories"
 HOMEPAGE="https://www.red-bean.com/cvsutils/"
 SRC_URI="https://www.red-bean.com/cvsutils/releases/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 
