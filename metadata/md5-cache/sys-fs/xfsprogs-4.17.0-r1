@@ -4,11 +4,11 @@ DESCRIPTION=xfs filesystem utilities
 EAPI=6
 HOMEPAGE=https://xfs.wiki.kernel.org/
 IUSE=icu libedit nls readline static static-libs
-KEYWORDS=alpha amd64 ~arm arm64 hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86
+KEYWORDS=alpha amd64 ~arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86
 LICENSE=LGPL-2.1
 RDEPEND=!static? ( >=sys-apps/util-linux-2.17.2 icu? ( dev-libs/icu:= ) readline? ( sys-libs/readline:0= ) !readline? ( libedit? ( dev-libs/libedit ) ) ) !<sys-fs/xfsdump-3
 REQUIRED_USE=static? ( static-libs )
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-4.17.0.tar.xz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
-_md5_=295694200d0e88a86b3d287959b98337
+_md5_=092f4924c092d82c3fc15dc6d6450b32
