@@ -5,7 +5,7 @@ EAPI=6
 inherit gnome2-utils xdg
 
 DESCRIPTION="Platform game about a blob and his quest to rescue MIAs from an alien invader"
-HOMEPAGE="https://sourceforge.net/projects/blobwars/"
+HOMEPAGE="https://sourceforge.net/projects/blobwars/ https://www.parallelrealities.co.uk/games/metalBlobSolid/ https://github.com/perpendicular-dimensions/blobwars"
 SRC_URI="mirror://sourceforge/blobwars/${P}.tar.gz"
 
 LICENSE="BSD CC-BY-SA-3.0 CC-BY-3.0 GPL-2 LGPL-2.1 fairuse public-domain"
