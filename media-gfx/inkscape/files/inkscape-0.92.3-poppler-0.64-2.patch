@@ -1,0 +1,160 @@
+From 66d05776ea2d403f2f48437f70d096a09724dfec Mon Sep 17 00:00:00 2001
+From: Eduard Braun <eduard.braun2@gmx.de>
+Date: Wed, 5 Sep 2018 00:31:06 +0200
+Subject: [PATCH] Modified fix for compatibility with poppler 0.64
+
+This is slightly uglier than f0697de012598ea84edafea9a326e5e101eccd2a
+but avoids duplicating strings (which is unnecessary and leaked memory).
+
+It's also closer to what upstream intended with the changes in 0.64.
+
+(cherry picked from commit 722e121361d0f784083d10e897155b7d4e44e515)
+---
+ .../internal/pdfinput/pdf-parser.cpp          | 19 ++++++++++++++++---
+ src/extension/internal/pdfinput/pdf-parser.h  |  6 ++++++
+ .../internal/pdfinput/svg-builder.cpp         |  6 +++---
+ src/extension/internal/pdfinput/svg-builder.h |  4 ++--
+ 4 files changed, 27 insertions(+), 8 deletions(-)
+
+diff --git a/src/extension/internal/pdfinput/pdf-parser.cpp b/src/extension/internal/pdfinput/pdf-parser.cpp
+index a3aa3213a1..ea9f902e09 100644
+--- a/src/extension/internal/pdfinput/pdf-parser.cpp
++++ b/src/extension/internal/pdfinput/pdf-parser.cpp
+@@ -36,6 +36,7 @@ extern "C" {
+ #include "pdf-parser.h"
+ #include "util/units.h"
+ 
++#include "glib/poppler-features.h"
+ #include "goo/gmem.h"
+ #include "goo/GooString.h"
+ #include "GlobalParams.h"
+@@ -2581,7 +2582,11 @@ void PdfParser::opShowSpaceText(Object args[], int /*numArgs*/)
+   }
+ }
+ 
++#if POPPLER_CHECK_VERSION(0,64,0)
+ void PdfParser::doShowText(const GooString *s) {
++#else
++void PdfParser::doShowText(GooString *s) {
++#endif
+   GfxFont *font;
+   int wMode;
+   double riseX, riseY;
+@@ -2594,7 +2599,11 @@ void PdfParser::doShowText(const GooString *s) {
+   Object charProc;
+   Dict *resDict;
+   Parser *oldParser;
++#if POPPLER_CHECK_VERSION(0,64,0)
++  const char *p;
++#else
+   char *p;
++#endif
+   int len, n, uLen;
+ 
+   font = state->getFont();
+@@ -2630,7 +2639,7 @@ void PdfParser::doShowText(const GooString *s) {
+     double lineX = state->getLineX();
+     double lineY = state->getLineY();
+     oldParser = parser;
+-    p = g_strdup(s->getCString());
++    p = s->getCString();
+     len = s->getLength();
+     while (len > 0) {
+       n = font->getNextChar(p, len, &code,
+@@ -2685,7 +2694,7 @@ void PdfParser::doShowText(const GooString *s) {
+ 
+   } else {
+     state->textTransformDelta(0, state->getRise(), &riseX, &riseY);
+-    p = g_strdup(s->getCString());
++    p = s->getCString();
+     len = s->getLength();
+     while (len > 0) {
+       n = font->getNextChar(p, len, &code,
+@@ -2731,7 +2740,11 @@ void PdfParser::opXObject(Object args[], int /*numArgs*/)
+ {
+   Object obj1, obj2, obj3, refObj;
+ 
+-  char *name = g_strdup(args[0].getName());
++#if POPPLER_CHECK_VERSION(0,64,0)
++  const char *name = args[0].getName();
++#else
++  char *name = args[0].getName();
++#endif
+ #if defined(POPPLER_NEW_OBJECT_API)
+   if ((obj1 = res->lookupXObject(name)).isNull()) {
+ #else
+diff --git a/src/extension/internal/pdfinput/pdf-parser.h b/src/extension/internal/pdfinput/pdf-parser.h
+index f985b15cad..ed28274f42 100644
+--- a/src/extension/internal/pdfinput/pdf-parser.h
++++ b/src/extension/internal/pdfinput/pdf-parser.h
+@@ -25,6 +25,7 @@ namespace Inkscape {
+ // TODO clean up and remove using:
+ using Inkscape::Extension::Internal::SvgBuilder;
+ 
++#include "glib/poppler-features.h"
+ #include "goo/gtypes.h"
+ #include "Object.h"
+ 
+@@ -287,7 +288,12 @@ private:
+   void opMoveShowText(Object args[], int numArgs);
+   void opMoveSetShowText(Object args[], int numArgs);
+   void opShowSpaceText(Object args[], int numArgs);
++#if POPPLER_CHECK_VERSION(0,64,0)
+   void doShowText(const GooString *s);
++#else
++  void doShowText(GooString *s);
++#endif
++  
+ 
+   // XObject operators
+   void opXObject(Object args[], int numArgs);
+diff --git a/src/extension/internal/pdfinput/svg-builder.cpp b/src/extension/internal/pdfinput/svg-builder.cpp
+index 617861928d..767c8af4d4 100644
+--- a/src/extension/internal/pdfinput/svg-builder.cpp
++++ b/src/extension/internal/pdfinput/svg-builder.cpp
+@@ -1020,9 +1020,9 @@ void SvgBuilder::updateFont(GfxState *state) {
+     GfxFont *font = state->getFont();
+     // Store original name
+     if (font->getName()) {
+-        _font_specification = g_strdup(font->getName()->getCString());
++        _font_specification = font->getName()->getCString();
+     } else {
+-        _font_specification = (char*) "Arial";
++        _font_specification = "Arial";
+     }
+ 
+     // Prune the font name to get the correct font family name
+@@ -1030,7 +1030,7 @@ void SvgBuilder::updateFont(GfxState *state) {
+     char *font_family = NULL;
+     char *font_style = NULL;
+     char *font_style_lowercase = NULL;
+-    char *plus_sign = strstr(_font_specification, "+");
++    const char *plus_sign = strstr(_font_specification, "+");
+     if (plus_sign) {
+         font_family = g_strdup(plus_sign + 1);
+         _font_specification = plus_sign + 1;
+diff --git a/src/extension/internal/pdfinput/svg-builder.h b/src/extension/internal/pdfinput/svg-builder.h
+index ed2a4d48e0..55daacee74 100644
+--- a/src/extension/internal/pdfinput/svg-builder.h
++++ b/src/extension/internal/pdfinput/svg-builder.h
+@@ -80,7 +80,7 @@ struct SvgGlyph {
+     bool style_changed;  // Set to true if style has to be reset
+     SPCSSAttr *style;
+     int render_mode;    // Text render mode
+-    char *font_specification;   // Pointer to current font specification
++    const char *font_specification;   // Pointer to current font specification
+ };
+ 
+ /**
+@@ -202,7 +202,7 @@ private:
+ 
+     SPCSSAttr *_font_style;          // Current font style
+     GfxFont *_current_font;
+-    char *_font_specification;
++    const char *_font_specification;
+     double _font_scaling;
+     bool _need_font_update;
+     Geom::Affine _text_matrix;
+-- 
+2.19.0
+
