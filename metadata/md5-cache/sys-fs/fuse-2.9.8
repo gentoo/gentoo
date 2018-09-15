@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 virtual/pkgconfig
+DESCRIPTION=An interface for filesystems implemented in userspace
+EAPI=6
+HOMEPAGE=https://github.com/libfuse/libfuse
+IUSE=examples kernel_linux kernel_FreeBSD static-libs kernel_linux
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+PDEPEND=kernel_FreeBSD? ( sys-fs/fuse4bsd )
+RDEPEND=sys-fs/fuse-common
+SLOT=0
+SRC_URI=https://github.com/libfuse/libfuse/releases/download/fuse-2.9.8/fuse-2.9.8.tar.gz
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	915cae3d7d636732918d18827fb1c226	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	udev	7af0412965eeadeee9e3b7ad98adabdf
+_md5_=1f3f703d54ed8efe91da8983beed494a
