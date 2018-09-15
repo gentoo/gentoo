@@ -1890,7 +1890,7 @@ dev-db/pgadmin4 3.0: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 9.2: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.8.1: Lightweight connection pooler for PostgreSQL
-dev-db/pgpool2 3.7.0: Connection pool server for PostgreSQL
+dev-db/pgpool2 3.7.0 3.7.5: Connection pool server for PostgreSQL
 dev-db/pgtap 0.98.0: Unit testing for PostgreSQL
 dev-db/phpmyadmin 4.7.0 4.7.8: Web-based administration for MySQL database in PHP
 dev-db/postgis 2.4.2: Geographic Objects for PostgreSQL
@@ -6391,7 +6391,7 @@ dev-vcs/cvsd 1.0.17: CVS pserver daemon
 dev-vcs/cvsgraph 1.6.1 1.7.0: CVS/RCS repository grapher
 dev-vcs/cvsps 2.1-r1: Generates patchset information from a CVS repository
 dev-vcs/darcs 2.8.4-r6 2.12.0 2.12.5: a distributed, interactive, smart revision control system
-dev-vcs/fossil 2.4: Simple, high-reliability, source control management, and more
+dev-vcs/fossil 2.4 2.6: Simple, high-reliability, source control management, and more
 dev-vcs/git 2.16.4: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-bzr-ng 0_pre20120822-r2: Git subcommand providing a bidirectional bridge to Bazaar repositories
 dev-vcs/git-cola 2.11: The highly caffeinated git GUI
@@ -11242,6 +11242,8 @@ x11-themes/murrine-themes 0.98.0-r1: Themes for the Murrine GTK+2 Cairo Engine
 x11-themes/neutral-xcursors 20150106: A family of smoothed and shadowed cursors that resemble the standard X ones
 x11-themes/nimbus 0.1.7-r1: The default OpenSolaris theme (GTK+ 2.x engine, icon- and metacity theme)
 x11-themes/noia 1.0-r1: The Noia icon theme
+x11-themes/numix-icon-theme 18.07.17: An official icon theme from the Numix Project
+x11-themes/numix-icon-theme-circle 18.08.29: An icon theme for Linux from the Numix project
 x11-themes/nuvola 1.0-r1: Nuvola SVG icon theme
 x11-themes/nuvox 07.1-r1: NuvoX SVG icon theme
 x11-themes/obsidian-xcursors 1.0: A shiny and clean xcursor theme
