@@ -6,7 +6,7 @@ EAPI="6"
 inherit xdg-utils
 
 DESCRIPTION="A GUI to OpenSSL, RSA public keys, certificates, signing requests etc"
-HOMEPAGE="http://hohnstaedt.de/xca/"
+HOMEPAGE="https://hohnstaedt.de/xca/"
 SRC_URI="https://github.com/chris2511/${PN}/releases/download/RELEASE.${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
