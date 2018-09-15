@@ -11162,7 +11162,7 @@ x11-terms/root-tail 1.2-r3: Terminal to display (multiple) log files on the root
 x11-terms/roxterm 3.1.5-r1: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt-unicode 9.21: rxvt clone with xft and unicode support
 x11-terms/sakura 3.5.0: sakura is a terminal emulator based on GTK and VTE
-x11-terms/st 0.7: simple terminal implementation for X
+x11-terms/st 0.8.1: simple terminal implementation for X
 x11-terms/terminator 1.91: Multiple GNOME terminals in one window
 x11-terms/terminology 1.1.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 0.9.6-r1 1.4.1: A drop down terminal, similar to the consoles found in first person shooters
@@ -11299,7 +11299,7 @@ x11-wm/mutter 3.22.4-r1 3.24.4: GNOME 3 compositing window manager based on Clut
 x11-wm/openbox 3.6.1: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
 x11-wm/pekwm 0.1.17-r1: A lightweight window manager initially based on aewm++
-x11-wm/ratpoison 1.4.8-r1: window manager without mouse dependency
+x11-wm/ratpoison 1.4.8-r1 1.4.9: window manager without mouse dependency
 x11-wm/sawfish 1.9.1-r2: Extensible window manager using a Lisp-based scripting language
 x11-wm/selectwm 0.4.1: window manager selector tool
 x11-wm/spectrwm 2.7.2-r1 3.1.0: Small dynamic tiling window manager for X11
