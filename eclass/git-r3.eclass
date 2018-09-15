@@ -586,6 +586,8 @@ git-r3_fetch() {
 	local -x GIT_DIR
 	_git-r3_set_gitdir "${repos[0]}"
 
+	einfo "Repository id: ${GIT_DIR##*/}"
+
 	# prepend the local mirror if applicable
 	if [[ ${EGIT_MIRROR_URI} ]]; then
 		repos=(
@@ -618,10 +620,11 @@ git-r3_fetch() {
 			COMMIT_DATE:commit_date
 		)
 
-		local localvar livevar live_warn=
+		local localvar livevar live_warn= override_vars=()
 		for localvar in "${varmap[@]}"; do
 			livevar=EGIT_OVERRIDE_${localvar%:*}_${override_name}
 			localvar=${localvar#*:}
+			override_vars+=( "${livevar}" )
 
 			if [[ -n ${!livevar} ]]; then
 				[[ ${localvar} == repos ]] && repos=()
@@ -633,6 +636,13 @@ git-r3_fetch() {
 
 		if [[ ${live_warn} ]]; then
 			ewarn "No support will be provided."
+		else
+			einfo "To override fetched repository properties, use:"
+			local x
+			for x in "${override_vars[@]}"; do
+				einfo "  ${x}"
+			done
+			einfo
 		fi
 	fi
 
