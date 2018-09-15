@@ -8243,7 +8243,7 @@ media-video/kaffeine 2.0.15: Media player with digital TV support by KDE
 media-video/kamerka 0.12_p20161002-r1: Simple photo taking application with fancy animated interface
 media-video/kino 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b-r1: Video player plugin for Konqueror and basic MPlayer frontend
-media-video/libav 9.17 11.8: Complete solution to record, convert and stream audio and video
+media-video/libav 9.17 11.8 12.2: Complete solution to record, convert and stream audio and video
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/mediainfo 18.05: MediaInfo supplies technical and tag information about media files
