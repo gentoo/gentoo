@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=app-text/discount app-text/hunspell dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qttest:5 dev-qt/qtwebkit:5
+DESCRIPTION=Qt5 markdown editor
+EAPI=7
+HOMEPAGE=https://github.com/cloose/CuteMarkEd
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-text/discount app-text/hunspell dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qttest:5 dev-qt/qtwebkit:5
+SLOT=0
+SRC_URI=https://github.com/cloose/cutemarked/archive/v0.11.3.tar.gz -> cutemarked-0.11.3.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=42cb91d04d624b10fcdbd3b68583ecc4
