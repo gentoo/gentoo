@@ -14,8 +14,9 @@ SRC_URI="mirror://sourceforge/freeciv/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-[[ ${PV} != *_beta* ]] || [[ ${PV} != *_rc* ]] || \
-KEYWORDS="~amd64 ~ppc64 ~x86"
+if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
+	KEYWORDS="~amd64 ~x86"
+fi
 IUSE="auth aimodules dedicated +gtk ipv6 mapimg modpack mysql nls qt5 readline sdl +server +sound sqlite system-lua"
 
 # postgres isn't yet really supported by upstream
