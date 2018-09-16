@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,6 +27,6 @@ src_prepare() {
 
 src_compile() {
 	emake -j1
-	rm README.txt
-	mv doc/rm README.txt .
+	rm README.txt || die "rm README.txt failed"
+	mv doc/README.txt . || die "mv doc/README.txt . failed"
 }

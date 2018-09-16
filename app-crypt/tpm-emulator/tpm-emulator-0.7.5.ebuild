@@ -3,12 +3,12 @@
 
 EAPI=6
 MODULES_OPTIONAL_USE="modules"
-inherit flag-o-matic user linux-mod cmake-utils udev
+inherit user linux-mod cmake-utils udev
 
 MY_P=${P/-/_}
 DESCRIPTION="Emulator driver for tpm"
-HOMEPAGE="https://sourceforge.net/projects/tpm-emulator.berlios/"
-SRC_URI="mirror://sourceforge/tpm-emulator/${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/PeterHuewe/tpm-emulator"
+SRC_URI="https://github.com/PeterHuewe/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
@@ -21,13 +21,6 @@ RDEPEND="ssl? (
 	)"
 DEPEND="${RDEPEND}
 	!ssl? ( dev-libs/gmp )"
-
-S=${WORKDIR}/${P/-/_}
-
-PATCHES=(
-	"${FILESDIR}/${P}-build.patch"
-	"${FILESDIR}/${P}-cmake.patch"
-)
 
 pkg_setup() {
 	enewgroup tss
@@ -64,8 +57,8 @@ src_install() {
 		udev_newrules "tpmd_dev/linux/tpmd_dev.rules" 60-tpmd_dev.rules
 	fi
 
-	newinitd "${FILESDIR}/${PN}.initd-r2" "${PN}"
-	newconfd "${FILESDIR}/${PN}.confd-r2" "${PN}"
+	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
+	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 
 	keepdir /var/log/tpm
 	fowners tss:tss /var/log/tpm
