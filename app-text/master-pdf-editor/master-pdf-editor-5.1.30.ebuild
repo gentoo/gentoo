@@ -7,7 +7,7 @@ inherit xdg-utils desktop
 
 DESCRIPTION="A complete solution for viewing and editing PDF files"
 HOMEPAGE="https://code-industry.net/free-pdf-editor/"
-SRC_URI="http://code-industry.net/public/${P}_qt5.amd64.tar.gz"
+SRC_URI="https://code-industry.net/public/${P}_qt5.amd64.tar.gz"
 
 LICENSE="master-pdf-editor"
 SLOT="0"
@@ -34,8 +34,8 @@ src_install() {
 
 	exeinto /opt/${PN}
 	doexe masterpdfeditor5
-
 	dosym ../${PN}/masterpdfeditor5 /opt/bin/masterpdfeditor5
+
 	make_desktop_entry "masterpdfeditor5 %f" \
 		"Master PDF Editor ${PV}" /opt/${PN}/masterpdfeditor5.png \
 		"Office;Graphics;Viewer" \
