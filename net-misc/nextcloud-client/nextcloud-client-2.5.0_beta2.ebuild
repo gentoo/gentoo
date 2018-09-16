@@ -54,8 +54,6 @@ DEPEND="${COMMON_DEPEND}
 
 S=${WORKDIR}/desktop-${PV/_/-}
 
-PATCHES=( "${FILESDIR}"/${P}-fix_cmake.patch )
-
 src_prepare() {
 	# Keep tests in ${T}
 	sed -i -e "s#\"/tmp#\"${T}#g" test/test*.cpp || die

@@ -7,7 +7,7 @@ inherit multilib multilib-minimal
 
 DESCRIPTION="C library and tools for interacting with the linux GPIO character device"
 HOMEPAGE="https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/"
-SRC_URI="https://dev.gentoo.org/~blueness/libgpiod/${P}.tar.gz"
+SRC_URI="https://mirrors.edge.kernel.org/pub/software/libs/libgpiod/libgpiod-1.1.1.tar.xz"
 
 LICENSE="LGPL-2.1"
 # Reflects the ABI of libgpiod.so
