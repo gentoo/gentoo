@@ -3178,7 +3178,7 @@ dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories S
 dev-libs/libxdiff 0.23-r1: Library for creating diff files
 dev-libs/libxls 1.4.0-r1: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.8: XML C parser and toolkit
-dev-libs/libxslt 1.1.30-r2 1.1.32: XSLT libraries and tools
+dev-libs/libxslt 1.1.32: XSLT libraries and tools
 dev-libs/libyaml 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzia 4.11: platform abstraction code for tucnak package
 dev-libs/libzip 1.3.0: Library for manipulating zip archives
