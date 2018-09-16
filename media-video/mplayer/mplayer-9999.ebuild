@@ -3,7 +3,7 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://git.videolan.org/ffmpeg.git"
+EGIT_REPO_URI="https://git.videolan.org/git/ffmpeg.git"
 ESVN_REPO_URI="svn://svn.mplayerhq.hu/mplayer/trunk"
 [[ ${PV} = *9999* ]] && SVN_ECLASS="subversion git-r3" || SVN_ECLASS=""
 
@@ -213,7 +213,7 @@ src_unpack() {
 		subversion_src_unpack
 		cd "${WORKDIR}"
 		rm -rf "${WORKDIR}/${P}/ffmpeg/"
-		( S="${WORKDIR}/${P}/ffmpeg/" git-2_src_unpack )
+		( EGIT_CHECKOUT_DIR="${WORKDIR}/${P}/ffmpeg/" git-r3_src_unpack )
 	else
 		unpack ${A}
 	fi
