@@ -541,7 +541,7 @@ dev-ruby/poltergeist
 >=sys-firmware/b43-firmware-6.30.163.46
 
 # Michał Górny <mgorny@gentoo.org>, Andreas K. Hüttel <dilfridge@gentoo.org>,
-# Matthias Maier <tamiko@gentoo.org> (21 May 2017)
+# Matthias Maier <tamiko@gentoo.org> (21 May 2017 and later updates)
 # These old versions of toolchain packages (binutils, gcc, glibc) are no
 # longer officially supported and are not suitable for general use. Using
 # these packages can result in build failures (and possible breakage) for
@@ -550,10 +550,10 @@ dev-ruby/poltergeist
 # If you still use one of these old toolchain packages, please upgrade (and
 # switch the compiler / the binutils) ASAP. If you need them for a specific
 # (isolated) use case, feel free to unmask them on your system.
-# (updated 27 Dec 2017 with gcc < 5.4)
 <sys-devel/gcc-5.4
 <sys-libs/glibc-2.26
-<sys-devel/binutils-2.29.1-r1
+<sys-devel/binutils-2.30-r2
+<sys-libs/binutils-libs-2.30-r2
 
 # Michał Górny <mgorny@gentoo.org> (20 May 2017)
 # Old versions of CUDA and their reverse dependencies. They do not
