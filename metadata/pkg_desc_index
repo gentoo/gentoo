@@ -8040,7 +8040,7 @@ media-sound/id3ted 1.0_beta3: A Command-line ID3 Tag Editor
 media-sound/id3tool 1.2a: A command line utility for easy manipulation of the ID3 tags present in MPEG Layer 3 audio files
 media-sound/id3v2 0.1.12-r1: A command line editor for id3v2 tags
 media-sound/jaaa 0.8.4: JACK and ALSA Audio Analyser is an audio signal generator and spectrum analyser
-media-sound/jack-audio-connection-kit 0.121.3-r1 0.125.0: A low-latency audio server
+media-sound/jack-audio-connection-kit 0.125.0: A low-latency audio server
 media-sound/jack-keyboard 2.5: A virtual MIDI keyboard for JACK MIDI
 media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the JACK low latency audio API
 media-sound/jamin 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
