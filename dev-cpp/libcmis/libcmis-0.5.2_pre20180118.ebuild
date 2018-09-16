@@ -46,6 +46,11 @@ BDEPEND="
 
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.5.2-boost-1.68.patch"
+	"${FILESDIR}/${PN}-0.5.2-oauth2-encode.patch"
+)
+
 [[ ${PV} = *_pre* ]] && S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {

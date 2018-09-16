@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 	valgrind? ( dev-util/valgrind )
 "
 
-PATCHES=( "${FILESDIR}/${P}-buildsystem.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.4.1-buildsystem.patch" )
 
 src_prepare(){
 	default
