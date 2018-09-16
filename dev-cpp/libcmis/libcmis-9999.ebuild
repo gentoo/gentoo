@@ -12,7 +12,7 @@ elif [[ ${PV} = *_pre* ]]; then
 else
 	SRC_URI="https://github.com/tdf/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
-inherit alternatives autotools flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="C++ client library for the CMIS interface"
 HOMEPAGE="https://github.com/tdf/libcmis"
@@ -68,12 +68,4 @@ src_configure() {
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
-}
-
-pkg_postinst() {
-	alternatives_auto_makesym /usr/bin/cmis-client "/usr/bin/cmis-client-[0-9].[0-9]"
-}
-
-pkg_postrm() {
-	alternatives_auto_makesym /usr/bin/cmis-client "/usr/bin/cmis-client-[0-9].[0-9]"
 }
