@@ -10113,7 +10113,7 @@ sys-fs/btrfs-progs 4.4.1 4.10.2: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.4 0.4.1-r1: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.9 0.10.10-r1: Provides a caching directory on an already mounted filesystem
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
-sys-fs/cryfs 0.9.7: Encrypted FUSE filesystem that conceals metadata
+sys-fs/cryfs 0.9.7 0.9.9: Encrypted FUSE filesystem that conceals metadata
 sys-fs/cryptsetup 1.7.5-r1: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/dd-rescue 1.46 1.99.8: Similar to dd but can copy from source with errors
