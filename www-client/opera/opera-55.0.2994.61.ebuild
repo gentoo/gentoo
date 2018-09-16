@@ -40,7 +40,7 @@ RDEPEND="
 	sys-apps/dbus
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
-	x11-libs/gtk+:2
+	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/libXScrnSaver
 	x11-libs/libXcomposite
@@ -65,6 +65,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	epatch_user
+
 	case ${ARCH} in
 		amd64)
 			mv usr/lib/x86_64-linux-gnu usr/$(get_libdir) || die
