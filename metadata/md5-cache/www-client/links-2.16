@@ -9,6 +9,6 @@ LICENSE=GPL-2
 RDEPEND=bzip2? ( app-arch/bzip2 ) fbcon? ( media-libs/libpng:0= ) gpm? ( sys-libs/gpm ) jpeg? ( virtual/jpeg:0 ) libevent? ( dev-libs/libevent:0= ) livecd? ( media-libs/libpng:0= sys-libs/gpm virtual/jpeg:0 ) lzma? ( app-arch/xz-utils ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) svga? ( media-libs/libpng:0= media-libs/svgalib ) tiff? ( media-libs/tiff:0 ) X? ( media-libs/libpng:0= x11-libs/libXext ) zlib? ( sys-libs/zlib )
 REQUIRED_USE=!livecd? ( fbcon? ( gpm ) ) svga? ( suid )
 SLOT=2
-SRC_URI=http://links.twibright.com/download/links-2.16.tar.bz2 mirror://debian/pool/main/l/links2/links2_2.14-5.debian.tar.xz
+SRC_URI=http://links.twibright.com/download/links-2.16.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
-_md5_=084f5332b4d7b7042a1a00e8d878cffd
+_md5_=1554ec6e483e25d32dbeff477f96b49d
