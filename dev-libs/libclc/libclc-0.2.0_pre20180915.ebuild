@@ -4,15 +4,16 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
 
-EGIT_REPO_URI="http://llvm.org/git/${PN}.git
+EGIT_REPO_URI="https://llvm.org/git/${PN}.git
 	https://github.com/llvm-mirror/${PN}.git"
-EGIT_COMMIT="96d10f2e9ec4c87d6b8d91e01d4d061915413f3e"
+EGIT_COMMIT="dabae5a2afb78cba0320a86e3f5f0b5dc83e077c"
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 	EXPERIMENTAL="true"
 else
-	GIT_ECLASS="vcs-snapshot"
+	GIT_ECLASS=""
+	S="${WORKDIR}/libclc-${EGIT_COMMIT}"
 fi
 
 inherit llvm prefix python-any-r1 toolchain-funcs ${GIT_ECLASS}
@@ -29,18 +30,19 @@ fi
 
 LICENSE="|| ( MIT BSD )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
+IUSE_VIDEO_CARDS="video_cards_nvidia video_cards_r600 video_cards_radeonsi"
+IUSE="${IUSE_VIDEO_CARDS}"
+REQUIRED_USE="|| ( ${IUSE_VIDEO_CARDS} )"
 
-RDEPEND="
+DEPEND="
 	|| (
 		sys-devel/clang:7
 		sys-devel/clang:6
 		sys-devel/clang:5
 		sys-devel/clang:4
 		>=sys-devel/clang-3.9:0
-	)"
-DEPEND="${RDEPEND}
+	)
 	${PYTHON_DEPS}"
 
 LLVM_MAX_SLOT=7
@@ -62,10 +64,18 @@ pkg_setup() {
 }
 
 src_configure() {
+	local libclc_targets=()
+
+	use video_cards_nvidia && libclc_targets+=("nvptx--" "nvptx64--" "nvptx--nvidiacl" "nvptx64--nvidiacl")
+	use video_cards_r600 && libclc_targets+=("r600--")
+	use video_cards_radeonsi && libclc_targets+=("amdgcn--" "amdgcn-mesa-mesa3d" "amdgcn--amdhsa")
+
+	[[ ${#libclc_targets[@]} ]] || die "libclc target missing!"
+
 	./configure.py \
 		--with-cxx-compiler="$(tc-getCXX)" \
 		--with-llvm-config="$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config" \
-		--prefix="${EPREFIX}/usr" || die
+		--prefix="${EPREFIX}/usr" "${libclc_targets[@]}" || die
 }
 
 src_compile() {
