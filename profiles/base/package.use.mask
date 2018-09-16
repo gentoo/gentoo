@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Sep 2018)
+# media-libs/celt is going away, superseded by opus, bug #664154
+media-sound/jack2 celt
+media-video/ffmpeg celt
+
 # Alon Bar-Lev <alonbl@gentoo.org> (11 Sep 2018)
 # Waiting for >=dev-libs/libressl-2.7 to be stablized.
 >=dev-libs/opensc-0.18.0 libressl
