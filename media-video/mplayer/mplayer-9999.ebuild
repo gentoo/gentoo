@@ -5,7 +5,7 @@ EAPI=6
 
 EGIT_REPO_URI="https://git.videolan.org/git/ffmpeg.git"
 ESVN_REPO_URI="svn://svn.mplayerhq.hu/mplayer/trunk"
-[[ ${PV} = *9999* ]] && SVN_ECLASS="subversion git-r3" || SVN_ECLASS=""
+[[ ${PV} = *9999* ]] && SVN_ECLASS="subversion git-r3"
 
 inherit toolchain-funcs flag-o-matic ${SVN_ECLASS}
 
@@ -152,8 +152,6 @@ SLOT="0"
 LICENSE="GPL-2"
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-else
-	KEYWORDS=""
 fi
 
 # faac codecs are nonfree
