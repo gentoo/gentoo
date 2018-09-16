@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/tdf/libcmis.git"
@@ -31,7 +31,8 @@ RDEPEND="
 	dev-libs/libxml2
 	net-misc/curl
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	man? (
 		app-text/docbook2X
@@ -62,7 +63,7 @@ src_configure() {
 	append-cxxflags -std=c++14
 
 	econf \
-		--program-suffix=-${SLOT} \
+		--program-suffix=-$(ver_cut 1-2) \
 		--disable-werror \
 		$(use_with man) \
 		$(use_enable static-libs static) \
