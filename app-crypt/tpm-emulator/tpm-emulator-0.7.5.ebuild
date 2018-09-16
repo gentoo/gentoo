@@ -22,6 +22,10 @@ RDEPEND="ssl? (
 DEPEND="${RDEPEND}
 	!ssl? ( dev-libs/gmp )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
+
 pkg_setup() {
 	enewgroup tss
 	enewuser tss -1 -1 /var/lib/tpm tss
