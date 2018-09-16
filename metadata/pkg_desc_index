@@ -7670,7 +7670,7 @@ media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStre
 media-libs/mesa 17.3.9 18.1.6: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.8-r1: An Open Source library for Flash movie generation
 media-libs/mlt 6.10.0: Open source multimedia framework for television broadcasting
-media-libs/musicbrainz 3.0.3 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
+media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.35.1 1.40.0: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4-r1 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00: A set of utilities for converting to/from the netpbm (and related) formats
@@ -8231,7 +8231,7 @@ media-video/ffmpegthumbnailer 2.2.0: Lightweight video thumbnailer that can be u
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
 media-video/gaupol 1.4: A subtitle editor for text-based subtitles
 media-video/get_flash_videos 1.24-r1: Downloads videos from various Flash-based video hosting sites
-media-video/gnome-mplayer 1.0.8 1.0.9: A GTK+ interface to MPlayer
+media-video/gnome-mplayer 1.0.9-r1: A GTK+ interface to MPlayer
 media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and picture application
 media-video/gpac 0.6.1-r2: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
 media-video/griffith 0.13-r2: Movie collection manager
