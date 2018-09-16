@@ -4758,7 +4758,7 @@ dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.c
 dev-python/distlib 0.2.1: Distribution utilities
 dev-python/distributed 1.18.0: Python library for distributed computation
 dev-python/dj-database-url 0.4.2: Use Database URLs in your Django Application
-dev-python/django 1.11.15 2.0.8: High-level Python web framework
+dev-python/django 1.11.15 2.0.8 2.1.1: High-level Python web framework
 dev-python/django-annoying 0.7.7: This is django application that try to eliminate annoying things in Django framework
 dev-python/django-appconf 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-auth-ldap 1.2.2: Django LDAP authentication backend
