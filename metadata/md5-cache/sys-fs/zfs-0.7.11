@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=net-libs/libtirpc sys-apps/util-linux[static-libs?] sys-libs/zlib[static-libs(+)?] virtual/awk virtual/pkgconfig >=app-portage/elt-patches-20170815 virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Userland utilities for ZFS Linux kernel module
+EAPI=5
+HOMEPAGE=http://zfsonlinux.org/
+IUSE=custom-cflags debug kernel-builtin +rootfs test-suite static-libs kernel_linux python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6
+KEYWORDS=~amd64
+LICENSE=BSD-2 CDDL MIT
+RDEPEND=net-libs/libtirpc sys-apps/util-linux[static-libs?] sys-libs/zlib[static-libs(+)?] virtual/awk !=sys-apps/grep-2.13* !kernel-builtin? ( =sys-fs/zfs-kmod-0.7.11* ) !sys-fs/zfs-fuse !prefix? ( virtual/udev ) test-suite? ( sys-apps/util-linux sys-devel/bc sys-block/parted sys-fs/lsscsi sys-fs/mdadm sys-process/procps virtual/modutils ) rootfs? ( app-arch/cpio app-misc/pax-utils !<sys-boot/grub-2.00-r2:2 !<sys-kernel/genkernel-3.5.1.1 !<sys-kernel/genkernel-next-67 !<sys-kernel/bliss-initramfs-7.1.0 !<sys-kernel/dracut-044-r1 ) sys-fs/udev-init-scripts
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.11/zfs-0.7.11.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	autotools-utils	696393cddf6200db17a31641f597b403	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	915cae3d7d636732918d18827fb1c226	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	udev	7af0412965eeadeee9e3b7ad98adabdf	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=56dd74b77dee8d638651acc6da457cc8
