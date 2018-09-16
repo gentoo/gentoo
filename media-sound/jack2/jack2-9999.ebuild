@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
@@ -13,7 +13,6 @@ HOMEPAGE="http://jackaudio.org/"
 if [[ "${PV}" = "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/jackaudio/${PN}.git"
-	KEYWORDS=""
 else
 	MY_PV="${PV/_rc/-RC}"
 	MY_P="${PN}-${MY_PV}"
