@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (16 Sep 2018)
+# requires >=nodejs-7.6.0 which is not available in 13.0 based profiles.
+>=www-client/chromium-70
+
 # Patrick McLean <chutzpah@gentoo.org> (10 Jul 2018)
 # requires >=nodejs-8.10 which is not available in 13.0 based profiles.
 # Please migrate to one of the 17.0 release profiles
