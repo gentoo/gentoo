@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
@@ -13,7 +13,6 @@ HOMEPAGE="http://jackaudio.org/"
 if [[ "${PV}" = "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/jackaudio/${PN}.git"
-	KEYWORDS=""
 else
 	MY_PV="${PV/_rc/-RC}"
 	MY_P="${PN}-${MY_PV}"
@@ -24,7 +23,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="2"
-IUSE="alsa celt dbus doc opus pam +classic sndfile libsamplerate readline"
+IUSE="alsa dbus doc opus pam +classic sndfile libsamplerate readline"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -35,7 +34,6 @@ CDEPEND="media-libs/libsamplerate
 	sys-libs/readline:0=
 	${PYTHON_DEPS}
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
-	celt? ( media-libs/celt:0[${MULTILIB_USEDEP}] )
 	dbus? (
 		dev-libs/expat[${MULTILIB_USEDEP}]
 		sys-apps/dbus[${MULTILIB_USEDEP}]
@@ -62,7 +60,7 @@ multilib_src_configure() {
 		$(usex dbus --dbus "")
 		$(usex classic --classic "")
 		--alsa=$(usex alsa yes no)
-		--celt=$(usex celt yes no)
+		--celt=no
 		--doxygen=$(multilib_native_usex doc yes no)
 		--firewire=no
 		--freebob=no
