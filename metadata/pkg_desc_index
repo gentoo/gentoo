@@ -6325,6 +6325,8 @@ dev-util/pmd 4.2.5: A Java source code analyzer
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/promu 0.1.0: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
+dev-util/pycharm-community 2018.2.1: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-professional 2018.2.1: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.11.1: Modern build tool for software projects
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
