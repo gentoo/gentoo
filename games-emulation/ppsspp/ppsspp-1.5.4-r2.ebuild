@@ -49,6 +49,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.2-assets-lookup.patch
 	"${FILESDIR}"/${PN}-1.4-O2.patch
+	"${FILESDIR}"/${P}-ffmpeg-4.patch
 )
 
 src_unpack() {
