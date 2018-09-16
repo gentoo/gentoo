@@ -10808,7 +10808,7 @@ x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) 
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.24.1: A window navigation construction kit
 x11-libs/libxcb 1.13: X C-language Bindings library
-x11-libs/libxkbcommon 0.8.0 0.8.2: X.Org xkbcommon library
+x11-libs/libxkbcommon 0.8.2: X.Org xkbcommon library
 x11-libs/libxkbfile 1.0.9-r2: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r2: X.Org xkbui library
 x11-libs/libxklavier 5.4: A library for the X Keyboard Extension (high-level API)
