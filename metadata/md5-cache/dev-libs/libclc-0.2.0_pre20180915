@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure prepare setup
+DEPEND=|| ( sys-devel/clang:7 sys-devel/clang:6 sys-devel/clang:5 sys-devel/clang:4 >=sys-devel/clang-3.9:0 ) || ( dev-lang/python:3.6 dev-lang/python:3.5 dev-lang/python:3.4 >=dev-lang/python-2.7.5-r2:2.7 )
+DESCRIPTION=OpenCL C library
+EAPI=6
+HOMEPAGE=http://libclc.llvm.org/
+IUSE=video_cards_nvidia video_cards_r600 video_cards_radeonsi
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( MIT BSD )
+REQUIRED_USE=|| ( video_cards_nvidia video_cards_r600 video_cards_radeonsi )
+SLOT=0
+SRC_URI=https://github.com/llvm-mirror/libclc/archive/dabae5a2afb78cba0320a86e3f5f0b5dc83e077c.tar.gz -> libclc-0.2.0_pre20180915.tar.gz
+_eclasses_=llvm	01fccd3367b527770b74bfbf59d616c6	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	e51c7882b7b721e54e684f7eb143cbfe	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=5dc970b30ba28319109b8dd2595d8552
