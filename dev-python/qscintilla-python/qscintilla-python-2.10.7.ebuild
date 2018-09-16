@@ -48,6 +48,7 @@ src_configure() {
 			--sip-incdir="$(python_get_includedir)"
 			$(usex debug '--debug --trace' '')
 			--verbose
+			--no-dist-info # bug 664690, fixed in 2.10.8
 		)
 		echo "${myconf[@]}"
 		"${myconf[@]}" || die
