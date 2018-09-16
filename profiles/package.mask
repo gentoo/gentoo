@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (16 Sep 2018)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-71
+
 # Brian Evans <grknight@gentoo.org> (16 Sep 2018)
 # Broken build on modern clients. Please update to latest slot.
 # Slot to be removed in 30 days
@@ -215,11 +220,6 @@ net-analyzer/nagios-check_openvpn-simple
 # Bernard Cafarelli <voyageur@gentoo.org> (13 Aug 2018)
 # Beta release with new features, masked for testing
 =app-text/tesseract-4.0.0_beta*
-
-# Mike Gilbert <floppym@gentoo.org> (04 Aug 2018)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-70
 
 # Michał Górny <mgorny@gentoo.org> (01 Aug 2018)
 # Multiprocessing versions of gemato.  They are known to hang on some

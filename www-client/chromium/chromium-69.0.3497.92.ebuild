@@ -101,6 +101,7 @@ DEPEND="${COMMON_DEPEND}
 	sys-apps/hwids[usb(+)]
 	>=sys-devel/bison-2.4.3
 	sys-devel/flex
+	>=sys-devel/clang-5
 	virtual/pkgconfig
 	dev-vcs/git
 "
@@ -370,12 +371,12 @@ src_configure() {
 	# Make sure the build system will use the right tools, bug #340795.
 	tc-export AR CC CXX NM
 
-	#if ! tc-is-clang; then
-	#	# Force clang since gcc is pretty broken at the moment.
-	#	CC=${CHOST}-clang
-	#	CXX=${CHOST}-clang++
-	#	strip-unsupported-flags
-	#fi
+	if ! tc-is-clang; then
+		# Force clang since gcc is pretty broken at the moment.
+		CC=${CHOST}-clang
+		CXX=${CHOST}-clang++
+		strip-unsupported-flags
+	fi
 
 	if tc-is-clang; then
 		myconf_gn+=" is_clang=true clang_use_chrome_plugins=false"
