@@ -5,13 +5,9 @@ EAPI=6
 
 inherit autotools desktop xdg
 
-DEBIAN_REVISION=2.14-5
-
 DESCRIPTION="A fast and lightweight web browser running in both graphics and text mode"
 HOMEPAGE="http://links.twibright.com/"
-SRC_URI="
-	http://${PN}.twibright.com/download/${P}.tar.bz2
-	mirror://debian/pool/main/${PN:0:1}/${PN}2/${PN}2_${DEBIAN_REVISION}.debian.tar.xz"
+SRC_URI="http://${PN}.twibright.com/download/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"
