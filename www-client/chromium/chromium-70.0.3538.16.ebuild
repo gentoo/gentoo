@@ -203,6 +203,7 @@ src_prepare() {
 		net/third_party/nss
 		net/third_party/quic
 		net/third_party/spdy
+		net/third_party/uri_template
 		third_party/WebKit
 		third_party/abseil-cpp
 		third_party/analytics
@@ -342,6 +343,7 @@ src_prepare() {
 		v8/src/third_party/valgrind
 		v8/src/third_party/utf8-decoder
 		v8/third_party/inspector_protocol
+		v8/third_party/v8
 
 		# gyp -> gn leftovers
 		base/third_party/libevent
@@ -584,6 +586,9 @@ src_compile() {
 			pax-mark m "out/Release/${x}"
 		fi
 	done
+
+	# Work around broken deps
+	eninja -C out/Release gen/ui/accessibility/ax_enums.mojom.h
 
 	# Even though ninja autodetects number of CPUs, we respect
 	# user's options, for debugging with -j 1 or any other reason.
