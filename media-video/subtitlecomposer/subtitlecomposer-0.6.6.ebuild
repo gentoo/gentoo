@@ -70,6 +70,6 @@ src_configure() {
 pkg_postinst() {
 	kde5_pkg_postinst
 
-	elog "Some example scripts provided by ${PV} require dev-lang/ruby"
+	elog "Some example scripts provided by ${PN} require dev-lang/ruby"
 	elog "or dev-lang/python to be installed."
 }
