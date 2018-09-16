@@ -4,11 +4,11 @@ DESCRIPTION=Python FTP server library
 EAPI=6
 HOMEPAGE=https://github.com/giampaolo/pyftpdlib https://pypi.org/project/pyftpdlib/
 IUSE=doc examples ssl test python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6
-KEYWORDS=amd64 ~arm ~hppa ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris
+KEYWORDS=amd64 ~arm ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris
 LICENSE=MIT
 RDEPEND=ssl? ( dev-python/pyopenssl[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ssl(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[ssl(+)] ) python_targets_python3_5? ( dev-lang/python:3.5[ssl(+)] ) python_targets_python3_6? ( dev-lang/python:3.6[ssl(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 )
 SLOT=0
 SRC_URI=mirror://pypi/p/pyftpdlib/pyftpdlib-1.5.4.tar.gz
 _eclasses_=distutils-r1	8595c9c7530ac3963f3aa0d77aa7e2d8	multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
-_md5_=5a1c611a15645f5749738a3a609e12ad
+_md5_=8c83103632868523917387346902a4d8
