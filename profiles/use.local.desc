@@ -6137,6 +6137,7 @@ x11-themes/zuki-themes:mate - Install Metacity theme for mate-base/mate
 x11-themes/zuki-themes:xfce - Install theme for xfce-base/xfwm4
 x11-themes/zukitwo:gnome-shell - Install theme for gnome-base/gnome-shell
 x11-wm/enlightenment:egl - Enable EGL rendering
+x11-wm/enlightenment:packagekit - Enable module for package manager integration
 x11-wm/enlightenment:ukit - Use upower/udisks to automount devices
 x11-wm/fluxbox:bidi - Enable bidirectional language support with dev-libs/fribidi
 x11-wm/fluxbox:slit - Enables the Fluxbox slit (or dock)

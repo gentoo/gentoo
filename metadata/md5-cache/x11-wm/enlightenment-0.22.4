@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=>=dev-libs/efl-1.20.5[eet,X] virtual/udev x11-libs/libXext x11-libs/libxcb x11-libs/xcb-util-keysyms x11-misc/xkeyboard-config acpi? ( sys-power/acpid ) bluetooth? ( net-wireless/bluez ) connman? ( dev-libs/efl[connman] ) geolocation? ( app-misc/geoclue:2.0 ) packagekit? ( app-admin/packagekit-base ) pam? ( sys-libs/pam ) systemd? ( sys-apps/systemd ) udisks? ( sys-fs/udisks:2 ) wayland? ( >=dev-libs/efl-1.21.0[drm,wayland] dev-libs/wayland x11-libs/libxkbcommon x11-libs/pixman ) >=dev-util/meson-0.45.1 >=dev-util/ninja-1.7.2
+DESCRIPTION=Enlightenment window manager
+EAPI=6
+HOMEPAGE=https://www.enlightenment.org
+IUSE=acpi bluetooth connman doc geolocation nls packagekit pam systemd udisks wayland wifi
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=BSD-2
+RDEPEND=>=dev-libs/efl-1.20.5[eet,X] virtual/udev x11-libs/libXext x11-libs/libxcb x11-libs/xcb-util-keysyms x11-misc/xkeyboard-config acpi? ( sys-power/acpid ) bluetooth? ( net-wireless/bluez ) connman? ( dev-libs/efl[connman] ) geolocation? ( app-misc/geoclue:2.0 ) packagekit? ( app-admin/packagekit-base ) pam? ( sys-libs/pam ) systemd? ( sys-apps/systemd ) udisks? ( sys-fs/udisks:2 ) wayland? ( >=dev-libs/efl-1.21.0[drm,wayland] dev-libs/wayland x11-libs/libxkbcommon x11-libs/pixman )
+SLOT=0.17/0.22.4
+SRC_URI=https://download.enlightenment.org/rel/apps/enlightenment/enlightenment-0.22.4.tar.xz
+_eclasses_=meson	b953e9f7b0c7db44d8b115086b11ba16	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=b1f5a3dbe65ad02e0b5d6aff29f91b7c
