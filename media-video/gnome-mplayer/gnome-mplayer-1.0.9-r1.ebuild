@@ -11,7 +11,7 @@ SRC_URI="https://${PN}.googlecode.com/svn/packages/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ppc ~ppc64 x86 ~x86-fbsd"
-IUSE="alsa +dbus +dconf gda gnome ipod libnotify musicbrainz pulseaudio"
+IUSE="alsa +dbus +dconf gda gnome ipod libnotify pulseaudio"
 
 COMMON_DEPEND=">=dev-libs/glib-2.30
 	>=media-libs/gmtk-${PV}[dconf=]
@@ -24,10 +24,6 @@ COMMON_DEPEND=">=dev-libs/glib-2.30
 	gnome? ( gnome-base/nautilus )
 	ipod? ( >=media-libs/libgpod-0.7 )
 	libnotify? ( >=x11-libs/libnotify-0.7 )
-	musicbrainz? (
-		media-libs/musicbrainz:3
-		net-misc/curl
-		)
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.14 )"
 RDEPEND="${COMMON_DEPEND}
 	x11-themes/gnome-icon-theme-symbolic
@@ -51,7 +47,7 @@ src_configure() {
 		$(use_with pulseaudio) \
 		$(use_with libnotify) \
 		$(use_with ipod libgpod) \
-		$(use_with musicbrainz libmusicbrainz3)
+		--without-libmusicbrainz3
 }
 
 src_install() {
