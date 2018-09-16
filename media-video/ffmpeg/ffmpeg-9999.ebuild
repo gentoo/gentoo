@@ -24,13 +24,13 @@ fi
 inherit eutils flag-o-matic multilib multilib-minimal toolchain-funcs ${SCM}
 
 DESCRIPTION="Complete solution to record, convert and stream audio and video. Includes libavcodec"
-HOMEPAGE="http://ffmpeg.org/"
+HOMEPAGE="https://ffmpeg.org/"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 elif [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
 	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 else # Release
-	SRC_URI="http://ffmpeg.org/releases/${P/_/-}.tar.bz2"
+	SRC_URI="https://ffmpeg.org/releases/${P/_/-}.tar.bz2"
 fi
 FFMPEG_REVISION="${PV#*_p}"
 
