@@ -112,7 +112,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/icu:=
 	dev-libs/libassuan
 	dev-libs/libgpg-error
-	>=dev-libs/liborcus-0.13.3
+	=dev-libs/liborcus-0.13*
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-libs/libxslt
@@ -219,7 +219,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3
 	dev-util/intltool
-	>=dev-util/mdds-1.2.3:1=
+	=dev-util/mdds-1.3*:1=
 	media-libs/glm
 	sys-devel/bison
 	sys-devel/flex
