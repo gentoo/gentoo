@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/NigelCunningham/pam-MySQL"
 SRC_URI="https://github.com/NigelCunningham/pam-MySQL/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 DEPEND="
 	>=sys-libs/pam-0.72:0=
-	virtual/mysql:0=
+	dev-db/mysql-connector-c:0=
 	openssl? ( dev-libs/openssl:0= )
 "
 RDEPEND="${DEPEND}"
