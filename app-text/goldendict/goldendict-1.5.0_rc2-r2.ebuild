@@ -51,6 +51,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-1.5.0-qtsingleapplication-unbundle.patch"
 	"${FILESDIR}/${PN}-1.5.0-qt-5.11.patch"
+	"${FILESDIR}/${PN}-1.5.0-ffmpeg-4.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
