@@ -11,7 +11,7 @@ SRC_URI="http://www.ferzkopp.net/Software/SDL2_gfx/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="doc cpu_flags_x86_mmx static-libs"
 
 DEPEND=">=media-libs/libsdl2-2.0.1-r1[video,${MULTILIB_USEDEP}]"
