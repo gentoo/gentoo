@@ -45,6 +45,17 @@ media-libs/celt
 dev-db/myodbc:5.2
 
 # Michał Górny <mgorny@gentoo.org> (13 Sep 2018)
+# Obsolete LogiLab packages that are full of issues and were never
+# maintained properly.  Recently dev-python/logilab-common started
+# colliding with dev-python/pytest, making it practically non-
+# installable.  The only revdep left is app-vim/python-mode where
+# the dep looks completely mistaken.  Bug #666152.
+app-vim/python-mode
+dev-python/astng
+dev-python/logilab-common
+dev-python/logilab-constraint
+
+# Michał Górny <mgorny@gentoo.org> (13 Sep 2018)
 # Depends on old version of dev-libs/jsoncpp, blocking its pruning.
 # Downstream maintainer is inactive to bump it.  Removal in 30 days.
 # Bug #656678.
