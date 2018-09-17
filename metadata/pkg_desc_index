@@ -1246,7 +1246,7 @@ app-portage/tatt 0.4 0.5: arch testing tool
 app-portage/ufed 0.91 0.92: Gentoo Linux USE flags editor
 app-portage/unsymlink-lib 13: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.2.4-r4: change directory command that learns
-app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r1 4.4_p12: The standard GNU Bourne again shell
+app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p12: The standard GNU Bourne again shell
 app-shells/bash-completion 2.7-r3: Programmable Completion for bash
 app-shells/bashdb 4.3.0.91-r2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
