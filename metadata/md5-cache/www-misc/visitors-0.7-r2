@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Fast web log analyzer
+EAPI=7
+HOMEPAGE=http://www.hping.org/visitors/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.hping.org/visitors/visitors-0.7.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=7db34f9e503f2904bc94758a9da6d4b4
