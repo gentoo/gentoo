@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,9 +22,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/hdbc-2.1.0:=[profile?]
-		dev-haskell/utf8-string:=[profile?]
-		>=dev-lang/ghc-6.12.1:=
-		virtual/mysql"
+	dev-haskell/utf8-string:=[profile?]
+	>=dev-lang/ghc-6.12.1:=
+	dev-db/mysql-connector-c:0=
+"
 DEPEND="${RDEPEND}
 		>=dev-haskell/cabal-1.6"
 
