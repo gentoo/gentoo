@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare setup unpack
+DESCRIPTION=Host app for the PassFF WebExtension
+EAPI=7
+HOMEPAGE=https://github.com/passff/passff-host
+IUSE=chrome chromium firefox vivaldi python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+REQUIRED_USE=|| ( chrome chromium firefox vivaldi )
+SLOT=0
+SRC_URI=https://github.com/passff/passff-host/releases/download/1.0.2/passff.py -> passff-host-1.0.2.py https://github.com/passff/passff-host/releases/download/1.0.2/passff.json -> passff-host-1.0.2.json
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=185ee121cad5e7e864165de3d922f946
