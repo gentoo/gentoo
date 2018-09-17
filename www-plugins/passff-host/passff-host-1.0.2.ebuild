@@ -1,20 +1,18 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_4 python3_5 python3_6 )
+PYTHON_COMPAT=( python3_5 python3_6 python3_7 )
 
 inherit python-single-r1
 
 DESCRIPTION="Host app for the PassFF WebExtension"
 HOMEPAGE="https://github.com/passff/passff-host"
 
-# Using raw because of difference between git and release
-# See https://github.com/passff/passff-host/issues/18
 SRC_URI="
-	https://github.com/passff/passff-host/raw/${PV}/src/passff.py -> ${P}.py
-	https://github.com/passff/passff-host/raw/${PV}/src/passff.json -> ${P}.json
+	https://github.com/passff/passff-host/releases/download/${PV}/passff.py -> ${P}.py
+	https://github.com/passff/passff-host/releases/download/${PV}/passff.json -> ${P}.json
 "
 
 LICENSE="GPL-2"
@@ -32,8 +30,6 @@ src_unpack() {
 
 src_prepare() {
 	default
-
-	sed -i "s/_VERSIONHOLDER_/${PV}/" "${P}.py" || die
 	python_fix_shebang "${P}.py"
 }
 
