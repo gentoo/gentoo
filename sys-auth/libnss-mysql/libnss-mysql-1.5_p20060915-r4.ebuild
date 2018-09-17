@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils multilib autotools
+inherit autotools
 
 KEYWORDS="amd64 ppc ~sparc x86"
 
@@ -14,16 +14,17 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug"
 
-DEPEND="virtual/mysql"
+DEPEND="dev-db/mysql-connector-c:="
 RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}"
 
 DOCS=( AUTHORS DEBUGGING FAQ INSTALL NEWS README THANKS
 	TODO UPGRADING ChangeLog
 )
+PATCHES=( "${FILESDIR}"/${P}-no-automagic-debug.diff )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-no-automagic-debug.diff
+	default
 	eautoconf
 }
 

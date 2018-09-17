@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="TCL MySQL Interface"
 HOMEPAGE="http://www.xdobry.de/mysqltcl/"
@@ -14,7 +14,7 @@ IUSE=""
 
 DEPEND="
 	dev-lang/tcl:0=
-	virtual/mysql:0="
+	dev-db/mysql-connector-c:0="
 RDEPEND="${DEPEND}"
 PATCHES=( "${FILESDIR}"/${PN}-3.05-ldflags.patch )
 HTML_DOCS=( doc/mysqltcl.html )
