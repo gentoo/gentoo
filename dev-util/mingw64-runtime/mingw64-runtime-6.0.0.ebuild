@@ -11,8 +11,6 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 	fi
 fi
 
-WANT_AUTOMAKE="1.15"
-
 inherit autotools flag-o-matic eutils
 
 DESCRIPTION="Free Win64 runtime and import library definitions"
@@ -21,21 +19,20 @@ SRC_URI="mirror://sourceforge/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v$
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="headers-only idl libraries tools"
 RESTRICT="strip"
 
 S="${WORKDIR}/mingw-w64-v${PV}"
 
-PATCHES=(
-	"${FILESDIR}/${P}-build.patch"
-)
-
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
 just_headers() {
-	use headers-only && [[ ${CHOST} != ${CTARGET} ]]
+	use headers-only
+}
+alt_prefix() {
+	is_crosscompile && echo /usr/${CTARGET}
 }
 crt_with() {
 	just_headers && echo --without-$1 || echo --with-$1
@@ -53,11 +50,6 @@ pkg_setup() {
 	fi
 }
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
 	CHOST=${CTARGET} strip-unsupported-flags
 
@@ -73,10 +65,12 @@ src_configure() {
 		append-cppflags "-I${T}/tmproot/include"
 	fi
 
+	# By default configure tries to set --sysroot=${prefix}. We disable
+	# this behaviour with --with-sysroot=no to use gcc's sysroot default.
+	# That way we can cross-build mingw64-runtime with cross-emerge.
 	CHOST=${CTARGET} econf \
-		--prefix=/usr/${CTARGET} \
-		--includedir=/usr/${CTARGET}/usr/include \
-		--libdir=/usr/${CTARGET}/usr/lib \
+		--with-sysroot=no \
+		--prefix="${EPREFIX}"$(alt_prefix)/usr \
 		--with-headers \
 		--enable-sdk \
 		$(crt_with crt) \
