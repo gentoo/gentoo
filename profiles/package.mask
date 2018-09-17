@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Ulrich Müller <ulm@gentoo.org> (17 Sep 2018)
+# [QA] Ebuild incompletely ported to EAPI 7. Breaks compilation
+# of libreoffice and other packages, bug 666418.
+=media-libs/fontconfig-2.13.1
+
+# Ulrich Müller <ulm@gentoo.org> (17 Sep 2018)
 # ebuild-mode-1.46 supports GLEP 76 copyright policy, bug 666358.
 # Masked for testing until other tools like repoman support it too.
 ~app-emacs/ebuild-mode-1.46
