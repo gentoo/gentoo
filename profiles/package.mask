@@ -363,11 +363,13 @@ media-libs/libglvnd
 >=sci-electronics/pcb-20000000
 
 # James Le Cuirot <chewi@gentoo.org> (17 Dec 2017)
-# Java 9 is not yet fully supported on Gentoo. Packages cannot depend
+# Java 9+ is not yet fully supported on Gentoo. Packages cannot depend
 # on it so these virtuals are not yet required. If you wish to use
-# Java 9 now then install oracle-(jdk|jre)-bin:9 directly.
+# Java 9+ then install oracle-(jdk|jre)-bin or openjdk(-bin) directly.
 virtual/jdk:9
 virtual/jre:9
+virtual/jdk:11
+virtual/jre:11
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (22 Oct 2017)
 # Broken with recent Perl (5.26) and not used by anything
