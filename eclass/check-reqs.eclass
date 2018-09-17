@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Bo Ørsted Andresen <zlin@gentoo.org>
 # Original Author: Ciaran McCreesh <ciaranm@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: Provides a uniform way of handling ebuild which have very high build requirements
 # @DESCRIPTION:
 # This eclass provides a uniform way of handling ebuilds which have very high
@@ -63,7 +63,7 @@ if [[ ! ${_CHECK_REQS_ECLASS_} ]]; then
 EXPORT_FUNCTIONS pkg_setup
 case "${EAPI:-0}" in
 	0|1|2|3) ;;
-	4|5|6) EXPORT_FUNCTIONS pkg_pretend ;;
+	4|5|6|7) EXPORT_FUNCTIONS pkg_pretend ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
