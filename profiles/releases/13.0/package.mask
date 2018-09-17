@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Tomáš Mózes <hydrapolic@gmail.com> (17 Sep 2018)
+# requires >=nodejs-8 which is not available in 13.0 based profiles.
+>=www-apps/kibana-bin-6
+
 # Mike Gilbert <floppym@gentoo.org> (16 Sep 2018)
 # requires >=nodejs-7.6.0 which is not available in 13.0 based profiles.
 >=www-client/chromium-70
