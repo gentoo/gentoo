@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=sys-libs/zlib:= mysql? ( dev-db/mysql-connector-c:= ) postgres? ( dev-db/postgresql:*[server] ) sys-devel/bison sys-devel/flex >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 =sys-devel/automake-1.13* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
+EAPI=6
+HOMEPAGE=http://vegan.net/tony/supersmack/
+IUSE=+mysql postgres
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib:= mysql? ( dev-db/mysql-connector-c:= ) postgres? ( dev-db/postgresql:*[server] ) mysql? ( virtual/mysql )
+REQUIRED_USE=|| ( mysql postgres )
+SLOT=0
+SRC_URI=mirror://gentoo/super-smack-1.3.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=196f05f2b009047b4c37ba639637d3db
