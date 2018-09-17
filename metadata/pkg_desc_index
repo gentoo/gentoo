@@ -1115,7 +1115,7 @@ app-misc/timestamp 1.1-r1: A text filtering pipe that marks each line with a tim
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
 app-misc/tmux 2.6: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 3.4.0: CPU, RAM memory, and load monitor for use with tmux
-app-misc/tmux-xpanes 2.2.2: tmux-based terminal divider
+app-misc/tmux-xpanes 3.0.0: tmux-based terminal divider
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
 app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
