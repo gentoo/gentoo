@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
-RUBY_FAKEGEM_RECIPE_TEST="rspec"
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -32,10 +32,4 @@ all_ruby_prepare() {
 
 	# Avoid unneeded dependency on git.
 	sed -i -e '/files/ s:^:#:' ${RUBY_FAKEGEM_GEMSPEC} || die
-}
-
-each_ruby_prepare() {
-	# Make sure the test scripts use the right ruby interpreter
-	#sed -i -e 's:ruby:'${RUBY}':' script/* || die
-	:
 }
