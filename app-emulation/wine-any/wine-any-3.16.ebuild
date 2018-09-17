@@ -26,10 +26,12 @@ S="${WORKDIR}/${MY_P}"
 
 STAGING_P="wine-staging-${PV}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}"
+D3D9_P="wine-d3d9-${PV}"
+D3D9_DIR="${WORKDIR}/wine-d3d9-patches-${D3D9_P}"
 GWP_V="20180120"
 PATCHDIR="${WORKDIR}/gentoo-wine-patches"
 
-DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine-Staging patchset"
+DESCRIPTION="Free implementation of Windows(tm) on Unix, with optional external patchsets"
 HOMEPAGE="https://www.winehq.org/"
 SRC_URI="${SRC_URI}
 	https://dev.gentoo.org/~np-hardass/distfiles/wine/gentoo-wine-patches-${GWP_V}.tar.xz
@@ -37,14 +39,16 @@ SRC_URI="${SRC_URI}
 
 if [[ ${PV} == "9999" ]] ; then
 	STAGING_EGIT_REPO_URI="https://github.com/wine-staging/wine-staging.git"
+	D3D9_EGIT_REPO_URI="https://github.com/sarnex/wine-d3d9-patches.git"
 else
 	SRC_URI="${SRC_URI}
-	staging? ( https://github.com/wine-staging/wine-staging/archive/v${PV}.tar.gz -> ${STAGING_P}.tar.gz )"
+	staging? ( https://github.com/wine-staging/wine-staging/archive/v${PV}.tar.gz -> ${STAGING_P}.tar.gz )
+	d3d9? ( https://github.com/sarnex/wine-d3d9-patches/archive/${D3D9_P}.tar.gz )"
 fi
 
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc ffmpeg +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl staging test themes +threads +truetype udev +udisks v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags d3d9 dos elibc_glibc ffmpeg +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl staging test themes +threads +truetype udev +udisks v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -72,6 +76,12 @@ COMMON_DEPEND="
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	capi? ( net-libs/libcapi[${MULTILIB_USEDEP}] )
 	cups? ( net-print/cups:=[${MULTILIB_USEDEP}] )
+	d3d9? (
+		media-libs/mesa[d3d9,egl,${MULTILIB_USEDEP}]
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libXext[${MULTILIB_USEDEP}]
+		x11-libs/libxcb[${MULTILIB_USEDEP}]
+	)
 	ffmpeg? ( >=media-video/ffmpeg-4:=[${MULTILIB_USEDEP}] )
 	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
 	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
@@ -129,7 +139,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-emulation/wine:0
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:4.7.1 )
+	mono? ( app-emulation/wine-mono:4.7.3 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -265,10 +275,10 @@ wine_env_vcs_vars() {
 	local pn_live_val="${pn_live_var}"
 	eval pn_live_val='$'${pn_live_val}
 	if [[ ! -z ${pn_live_val} ]]; then
-		if use staging; then
+		if use staging || use d3d9; then
 			eerror "Because of the multi-repo nature of ${MY_PN}, ${pn_live_var}"
 			eerror "cannot be used to set the commit. Instead, you may use the"
-			eerror "environmental variables WINE_COMMIT, and STAGING_COMMIT."
+			eerror "environmental variables WINE_COMMIT, STAGING_COMMIT, and D3D9_COMMIT."
 			eerror
 			return 1
 		fi
@@ -329,6 +339,10 @@ src_unpack() {
 				einfo "Example: WINE_COMMIT=${COMPAT_WINE_COMMIT} emerge -1 wine"
 			fi
 		fi
+		if use d3d9; then
+			git-r3_fetch "${D3D9_EGIT_REPO_URI}" "${D3D9_COMMIT}"
+			git-r3_checkout "${D3D9_EGIT_REPO_URI}" "${D3D9_DIR}"
+		fi
 	fi
 
 	default
@@ -362,6 +376,14 @@ src_prepare() {
 			source "${STAGING_DIR}/patches/patchinstall.sh"
 		)
 		eend $? || die "Failed to apply Wine-Staging patches"
+	fi
+	if use d3d9; then
+		if use staging; then
+			PATCHES+=( "${D3D9_DIR}/staging-helper.patch" )
+		else
+			PATCHES+=( "${D3D9_DIR}/d3d9-helper.patch" )
+		fi
+		PATCHES+=( "${D3D9_DIR}/wine-d3d9.patch" )
 	fi
 
 	default
@@ -485,6 +507,7 @@ multilib_src_configure() {
 		$(use_with themes gtk3)
 		$(use_with vaapi va)
 	)
+	use d3d9 && myconf+=( $(use_with d3d9 d3d9-nine) )
 
 	local PKG_CONFIG AR RANLIB
 	# Avoid crossdev's i686-pc-linux-gnu-pkg-config if building wine32 on amd64; #472038
@@ -574,6 +597,9 @@ pkg_postinst() {
 		if use staging; then
 			eselect wine register --staging ${P} || die
 		fi
+		if use d3d9; then
+			eselect wine register --d3d9 ${P} || die
+		fi
 	fi
 
 	eselect wine update --all --if-unset || die
@@ -601,6 +627,9 @@ pkg_prerm() {
 	else
 		if use staging; then
 			eselect wine deregister --staging ${P} || die
+		fi
+		if use d3d9; then
+			eselect wine deregister --d3d9 ${P} || die
 		fi
 	fi
 
