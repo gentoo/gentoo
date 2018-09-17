@@ -36,6 +36,7 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.12
 "
 
