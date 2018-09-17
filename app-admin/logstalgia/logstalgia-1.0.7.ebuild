@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Replays or streams an access_log as a retro arcade game-like simulation"
-HOMEPAGE="http://logstalgia.io/"
+HOMEPAGE="https://logstalgia.io/"
 SRC_URI="https://github.com/acaudwell/Logstalgia/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="GPL-3"
