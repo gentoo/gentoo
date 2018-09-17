@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 # There are no unit tests, only integration tests against a full Rails
 # 3.2 application. Skipping those for now due to difficulty in getting
