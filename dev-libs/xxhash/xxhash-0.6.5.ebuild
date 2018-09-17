@@ -15,7 +15,7 @@ IUSE="static-libs"
 
 S="${WORKDIR}/xxHash-${PV}"
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.6.5-compile-xxhash.o-once.patch
+	"${FILESDIR}"/${PN}-0.6.5-do-not-compile-xxhash.o-twice.patch
 )
 
 src_compile() {
