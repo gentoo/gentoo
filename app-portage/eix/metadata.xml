@@ -11,10 +11,6 @@
     <description>Upstream developer, CC on bugs, do not copy ebuilds
       from his overlay</description>
   </maintainer>
-  <maintainer type="project">
-  <email>proxy-maint@gentoo.org</email>
-  <name>Proxy Maintainers</name>
-  </maintainer>
   <use>
     <flag name="debug">Build with upstream's CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.</flag>
     <flag name="doc">Create description of the eix cache file additionally in html format</flag>
