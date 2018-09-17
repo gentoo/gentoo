@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile postinst prepare
+DESCRIPTION=DMI (Desktop Management Interface) table related utilities
+EAPI=6
+HOMEPAGE=https://www.nongnu.org/dmidecode/
+IUSE=selinux
+KEYWORDS=-* ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=selinux? ( sec-policy/selinux-dmidecode )
+SLOT=0
+SRC_URI=https://savannah.nongnu.org/download/dmidecode/dmidecode-3.2.tar.xz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=ba020aa58e80ed96467c76b3fd19fe4f
