@@ -1871,7 +1871,7 @@ dev-db/myodbc 5.3.10-r2: ODBC driver for MySQL
 dev-db/mysql 5.6.38 5.6.39 5.6.40 5.6.40-r2: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 3.2.1: C++ API interface to the MySQL database
 dev-db/mysql-connector-c 6.1.11-r1: C client library for MariaDB/MySQL
-dev-db/mysql-connector-c++ 1.1.3 1.1.6 1.1.9: MySQL database connector for C++ (mimics JDBC 4.0 API)
+dev-db/mysql-connector-c++ 1.1.9: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/mysql-init-scripts 2.2-r3: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r3: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
 dev-db/mysql-workbench 6.3.4-r1: MySQL Workbench
@@ -9855,7 +9855,7 @@ sys-apps/pcmciautils 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.23: PC/SC Architecture smartcard middleware library
 sys-apps/pmount 0.9.99_alpha-r3: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/policycoreutils 2.7 2.8: SELinux core utilities
-sys-apps/portage 2.3.8 2.3.24-r1 2.3.40-r1: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.8 2.3.40-r1: Portage is the package management and distribution system for Gentoo
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
 sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so forth
 sys-apps/pv 1.6.0-r1: Pipe Viewer: a tool for monitoring the progress of data through a pipe
@@ -9911,7 +9911,7 @@ sys-auth/elogind 238.1: The systemd project's logind, extracted to a standalone 
 sys-auth/fprintd 0.5.0: D-Bus service to access fingerprint readers
 sys-auth/keystone 12.0.1 13.0.1: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.6.0-r2: library to add support for consumer fingerprint readers
-sys-auth/libnss-mysql 1.5_p20060915-r3: NSS MySQL Library
+sys-auth/libnss-mysql 1.5_p20060915-r4: NSS MySQL Library
 sys-auth/libyubikey 1.13: Yubico C low-level library
 sys-auth/munge 0.5.10-r2: An authentication service for creating and validating credentials
 sys-auth/nss-mdns 0.13: Name Service Switch module for Multicast DNS
@@ -9926,7 +9926,7 @@ sys-auth/pam_krb5 4.6: Kerberos V PAM Authentication Module
 sys-auth/pam_ldap 186-r1: PAM LDAP Module
 sys-auth/pam_mktemp 1.1.1: Create per-user private temporary directories during login
 sys-auth/pam_mount 2.14 2.15 2.16: A PAM module that can mount volumes for a user session
-sys-auth/pam_mysql 0.7_rc1-r5 0.8.1: pam_mysql is a module for pam to authenticate users with mysql
+sys-auth/pam_mysql 0.8.1-r1: pam_mysql is a module for pam to authenticate users with mysql
 sys-auth/pam_p11 0.2.0: PAM module for authenticating against PKCS#11 tokens
 sys-auth/pam_passwdqc 1.0.5: Password strength checking for PAM aware password changing programs
 sys-auth/pam_skey 1.1.5-r5: PAM interface for the S/Key authentication system

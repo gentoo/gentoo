@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=sys-libs/pam-0.72:0= virtual/mysql:0= openssl? ( dev-libs/openssl:0= ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=sys-libs/pam-0.72:0= dev-db/mysql-connector-c:0= openssl? ( dev-libs/openssl:0= ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=pam_mysql is a module for pam to authenticate users with mysql
 EAPI=6
 HOMEPAGE=https://github.com/NigelCunningham/pam-MySQL
 IUSE=openssl
 KEYWORDS=alpha amd64 ppc ~sparc x86
 LICENSE=GPL-2
-RDEPEND=>=sys-libs/pam-0.72:0= virtual/mysql:0= openssl? ( dev-libs/openssl:0= )
+RDEPEND=>=sys-libs/pam-0.72:0= dev-db/mysql-connector-c:0= openssl? ( dev-libs/openssl:0= )
 SLOT=0
 SRC_URI=https://github.com/NigelCunningham/pam-MySQL/archive/v0.8.1.tar.gz -> pam_mysql-0.8.1.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=8c63fcc286ce2a95b038f0ef54e3ed96
+_md5_=e8b04b3cd2c050e46a5afb594a057e0b
