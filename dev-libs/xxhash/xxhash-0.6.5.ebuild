@@ -14,9 +14,6 @@ KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x64-macos"
 IUSE="static-libs"
 
 S="${WORKDIR}/xxHash-${PV}"
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.6.5-do-not-compile-xxhash.o-twice.patch
-)
 
 src_compile() {
 	PREFIX="${EPREFIX}/usr" \
