@@ -198,6 +198,7 @@ src_configure() {
 		-Dccache=OFF # use ccache via portage
 		-Dcastor=OFF
 		-Dchirp=OFF
+		-Dclad=OFF
 		-Dcling=ON # cling=OFF is broken
 		-Dcocoa=$(usex aqua)
 		-Dcuda=$(usex cuda)
@@ -308,15 +309,11 @@ src_install() {
 		elisp-install ${PN}-$(ver_cut 1-2) "${BUILD_DIR}"/root-help.el
 	fi
 
-	if ! use gdml; then
-		rm -r geom || die
-	fi
-
 	if ! use examples; then
 		rm -r test tutorials || die
 	fi
 
-	if use tmva; then
+	if ! use tmva; then
 		rm -r tmva || die
 	fi
 
