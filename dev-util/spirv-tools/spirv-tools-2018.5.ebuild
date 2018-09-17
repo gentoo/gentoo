@@ -17,11 +17,9 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
 RDEPEND=""
-DEPEND="dev-util/spirv-headers"
-
+DEPEND=">=dev-util/spirv-headers-1.3.1_pre20180710"
+EGIT_COMMIT="b4cb01c7c451dd90e26174f6b94ba6a37c53d917"
 S="${WORKDIR}/SPIRV-Tools-${PV}"
-
-UPSTREAM_COMMIT="8d8a71278bf9e83dd0fb30d5474386d30870b74d"
 
 multilib_src_configure() {
 	local mycmakeargs=(
@@ -33,7 +31,7 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	default
-	echo "${UPSTREAM_COMMIT}" > "${PN}-commit.h" || die
+	echo "${EGIT_COMMIT}" > "${PN}-commit.h" || die
 	insinto /usr/include/"${PN}"
 	doins  "${PN}-commit.h"
 }
