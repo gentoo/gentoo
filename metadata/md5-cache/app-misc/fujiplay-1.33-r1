@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postinst postrm
+DESCRIPTION=Utility for Fujifilm/Leica digital cameras (via serial port)
+EAPI=7
+HOMEPAGE=https://www.math.u-psud.fr/~bousch/fujiplay.html
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=https://www.math.u-psud.fr/~bousch/fujiplay.tgz -> fujiplay-1.33.tar.gz
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=8c4ec4c69fe33aaf480eb8021278698f
