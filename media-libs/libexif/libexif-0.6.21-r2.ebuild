@@ -21,7 +21,10 @@ BDEPEND="
 	doc? ( app-doc/doxygen )
 	nls? ( sys-devel/gettext )"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.6.13-pkgconfig.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.6.13-pkgconfig.patch
+	"${FILESDIR}"/${P}-CVE-2017-7544.patch
+)
 
 src_prepare() {
 	default
