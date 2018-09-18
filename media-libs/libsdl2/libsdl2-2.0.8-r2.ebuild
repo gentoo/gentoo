@@ -166,7 +166,10 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	emake V=1
+	# -j1 for this error in wayland build
+	# /build/SDL2-2.0.7/src/video/wayland/SDL_waylandevents.c:41:10: fatal error:
+	# pointer-constraints-unstable-v1-client-protocol.h: No such file or directory
+	emake V=1 $(usex wayland "-j1" "")
 }
 
 multilib_src_install() {
