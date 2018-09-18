@@ -11,7 +11,7 @@ SRC_URI="https://github.com/leethomason/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="ZLIB"
 SLOT="0/6"
-KEYWORDS="amd64 arm ~arm64 hppa sparc x86"
+KEYWORDS="amd64 arm ~arm64 hppa ~ppc64 sparc x86"
 IUSE="static-libs test"
 
 multilib_src_configure() {
