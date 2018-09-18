@@ -179,6 +179,18 @@ mips            default/linux/mips/13.0/mipsel/n64              exp
 mips            default/linux/mips/13.0/mipsel/multilib/o32     exp
 mips            default/linux/mips/13.0/mipsel/multilib/n32     exp
 mips            default/linux/mips/13.0/mipsel/multilib/n64     exp
+mips            default/linux/mips/17.0/o32                     exp
+mips            default/linux/mips/17.0/n32                     exp
+mips            default/linux/mips/17.0/n64                     exp
+mips            default/linux/mips/17.0/multilib/o32            exp
+mips            default/linux/mips/17.0/multilib/n32            exp
+mips            default/linux/mips/17.0/multilib/n64            exp
+mips            default/linux/mips/17.0/mipsel/o32              exp
+mips            default/linux/mips/17.0/mipsel/n32              exp
+mips            default/linux/mips/17.0/mipsel/n64              exp
+mips            default/linux/mips/17.0/mipsel/multilib/o32     exp
+mips            default/linux/mips/17.0/mipsel/multilib/n32     exp
+mips            default/linux/mips/17.0/mipsel/multilib/n64     exp
 
 # PPC32 Profiles
 # @MAINTAINER: ppc@gentoo.org
