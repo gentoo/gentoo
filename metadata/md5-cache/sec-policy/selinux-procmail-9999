@@ -6,5 +6,5 @@ HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-9999
 SLOT=0
-_eclasses_=git-r3	918d6a744039c29af2cadc7317459765	selinux-policy-2	a877fdfed4ddd74aa04c64b88cdd974c
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	selinux-policy-2	a877fdfed4ddd74aa04c64b88cdd974c
 _md5_=a5c3deceea5f9853ded289be0e60f785

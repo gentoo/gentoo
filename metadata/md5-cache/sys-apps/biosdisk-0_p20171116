@@ -9,5 +9,5 @@ RDEPEND=>=app-text/dos2unix-5.0 sys-boot/syslinux python_targets_python2_7? ( >=
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=https://github.com/dell/biosdisk/archive/f534dd22a795dca9c42f44b52f206bf02eadb682.tar.gz -> biosdisk-0_p20171116.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	80c4202f2f51d22b08be7d3299e507af	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
 _md5_=fb48b4a981605e9f53fd5c2f07dce73d

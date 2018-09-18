@@ -6,5 +6,5 @@ HOMEPAGE=http://www.logwatch.org/
 LICENSE=MIT
 RDEPEND=virtual/cron virtual/mta virtual/mailx dev-lang/perl dev-perl/Date-Calc dev-perl/Date-Manip dev-perl/Tie-IxHash dev-perl/Sys-CPU dev-perl/Sys-MemInfo virtual/tmpfiles
 SLOT=0
-_eclasses_=git-r3	918d6a744039c29af2cadc7317459765	tmpfiles	c8f9ea76ade103890e42d0f339afb64c
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	tmpfiles	c8f9ea76ade103890e42d0f339afb64c
 _md5_=af91a6161fa761dc338c3edc311a3461

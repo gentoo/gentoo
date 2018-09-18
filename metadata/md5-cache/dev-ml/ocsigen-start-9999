@@ -6,5 +6,5 @@ HOMEPAGE=https://github.com/ocsigen/ocsigen-start
 LICENSE=LGPL-3
 RDEPEND=dev-lang/ocaml:= dev-ml/pgocaml:= dev-ml/macaque:= dev-ml/ocaml-safepass:= >=dev-ml/eliom-6.2:= dev-ml/ocsigen-toolkit:= dev-ml/ppx_deriving:= dev-ml/yojson:= dev-ml/OCaml-ImageMagick:=
 SLOT=0/9999
-_eclasses_=findlib	45d6030075064a68da8d7143726a1150	git-r3	918d6a744039c29af2cadc7317459765
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150	git-r3	0d4635eeb5a96cd5315597a47eba25c9
 _md5_=e1dd4ef3b85d3c53be1810f6687852a3

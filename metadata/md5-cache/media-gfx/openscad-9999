@@ -7,5 +7,5 @@ IUSE=emacs
 LICENSE=GPL-2
 RDEPEND=dev-cpp/eigen:3 dev-libs/boost:= dev-libs/glib:2 dev-libs/gmp:0= dev-libs/mpfr:0= dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5[-gles2] dev-qt/qtopengl:5 media-gfx/opencsg media-libs/fontconfig:1.0 media-libs/freetype:2 >=media-libs/glew-2.0.0:* media-libs/harfbuzz sci-mathematics/cgal:= >=x11-libs/qscintilla-2.9.4:=[qt5(+)] emacs? ( virtual/emacs )
 SLOT=0
-_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	918d6a744039c29af2cadc7317459765	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
 _md5_=d18c36b63a46c395a1e8fb3cf6e33dcc

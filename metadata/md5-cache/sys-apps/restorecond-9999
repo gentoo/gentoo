@@ -6,5 +6,5 @@ HOMEPAGE=https://github.com/SELinuxProject/selinux/wiki
 LICENSE=GPL-2
 RDEPEND=>=sys-libs/libsepol-9999:= >=sys-libs/libselinux-9999:= dev-libs/dbus-glib dev-libs/libpcre:= >=sys-libs/libcap-1.10-r10:= !<sys-apps/policycoreutils-2.7_pre
 SLOT=0
-_eclasses_=git-r3	918d6a744039c29af2cadc7317459765	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
 _md5_=9ca8985a7f9b39c0b2c4efe1a43dabee

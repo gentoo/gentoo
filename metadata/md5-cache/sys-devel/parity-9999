@@ -6,5 +6,5 @@ HOMEPAGE=https://github.com/haubi/parity
 IUSE=+vc_x86 +vc7_0 +vc7_1 +vc8_0 +vc9_0 +vc10_0 +vc11_0 +vc12_0 +vc14_0 +vc15_0
 LICENSE=LGPL-3
 SLOT=0
-_eclasses_=git-r3	918d6a744039c29af2cadc7317459765
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
 _md5_=c9b8c94e5b2d0c442a7f034c0fd4bf8b

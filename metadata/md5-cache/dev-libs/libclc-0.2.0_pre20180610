@@ -9,5 +9,5 @@ LICENSE=|| ( MIT BSD )
 REQUIRED_USE=|| ( video_cards_nvidia video_cards_r600 video_cards_radeonsi )
 SLOT=0
 SRC_URI=https://github.com/llvm-mirror/libclc/archive/96627043299f52bf08f6a68aa6d00b8037a0a2b0.tar.gz -> libclc-0.2.0_pre20180610.tar.gz
-_eclasses_=llvm	01fccd3367b527770b74bfbf59d616c6	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	e51c7882b7b721e54e684f7eb143cbfe	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=llvm	01fccd3367b527770b74bfbf59d616c6	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	e51c7882b7b721e54e684f7eb143cbfe	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	80c4202f2f51d22b08be7d3299e507af	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
 _md5_=b5481a1ea4fa645b58b062aa844da43e

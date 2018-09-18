@@ -6,5 +6,5 @@ HOMEPAGE=http://www.flameeyes.eu/projects/modsec
 LICENSE=CC-BY-SA-3.0
 RDEPEND=>=www-apache/mod_security-2.5.1
 SLOT=0
-_eclasses_=git-r3	918d6a744039c29af2cadc7317459765	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=36128a6f73fe78bca98f196139a59f98

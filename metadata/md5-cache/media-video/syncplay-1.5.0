@@ -9,5 +9,5 @@ RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/
 REQUIRED_USE=vlc? ( client ) || ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://github.com/Syncplay/syncplay/archive/v1.5.0.tar.gz -> syncplay-1.5.0.tar.gz
-_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	80c4202f2f51d22b08be7d3299e507af	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
 _md5_=c4b817e6811b327d3770980bff768e22

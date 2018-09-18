@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=daemon? ( acl? ( sys-apps/acl ) ) daemon? ( dev-lang/php:*[mysqli?,postgres?,curl,cli,pcntl,pdo] ) !daemon? ( dev-lang/php:*[mysqli?,postgres?,curl,pdo] ) virtual/httpd-php:* >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysqli postgres )
 SLOT=99999999
-_eclasses_=git-r3	918d6a744039c29af2cadc7317459765	prefix	e51c7882b7b721e54e684f7eb143cbfe	user	8bc2845510e2109af75e3eeac607ec81	webapp	6ae2395d7f341093c36057cb4f69101a
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	prefix	e51c7882b7b721e54e684f7eb143cbfe	user	8bc2845510e2109af75e3eeac607ec81	webapp	6ae2395d7f341093c36057cb4f69101a
 _md5_=f0a1328243b13bf334e7b2522698296c

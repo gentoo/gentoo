@@ -6,5 +6,5 @@ HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Package_Manager_Specification
 IUSE=html twoside
 LICENSE=CC-BY-SA-3.0
 SLOT=live
-_eclasses_=git-r3	918d6a744039c29af2cadc7317459765
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
 _md5_=28b8216069a3c1e73a25f6c11f1c2077

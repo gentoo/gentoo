@@ -6,5 +6,5 @@ HOMEPAGE=http://os-autoinst.org/
 LICENSE=GPL-2
 RDEPEND=media-libs/libogg:= media-libs/libsndfile:= media-libs/libtheora:= >=media-libs/opencv-2.4:= sci-libs/fftw:3.0= dev-lang/perl[ithreads] dev-perl/JSON app-emulation/qemu app-text/gocr media-gfx/imagemagick media-video/ffmpeg2theora
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	918d6a744039c29af2cadc7317459765	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
 _md5_=cc5fd4a53dc4adac639e5e4b58f6a6ca

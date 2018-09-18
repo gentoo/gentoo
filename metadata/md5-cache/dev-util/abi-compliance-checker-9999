@@ -6,5 +6,5 @@ HOMEPAGE=http://ispras.linuxbase.org/index.php/ABI_compliance_checker
 LICENSE=LGPL-2.1
 RDEPEND=dev-lang/perl dev-util/abi-dumper dev-util/ctags
 SLOT=0
-_eclasses_=git-r3	918d6a744039c29af2cadc7317459765
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
 _md5_=1d57c8502ec31829d441911ad0fb687f

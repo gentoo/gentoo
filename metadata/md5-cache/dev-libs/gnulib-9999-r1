@@ -6,5 +6,5 @@ HOMEPAGE=https://www.gnu.org/software/gnulib
 IUSE=doc
 LICENSE=GPL-2
 SLOT=0
-_eclasses_=git-r3	918d6a744039c29af2cadc7317459765
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
 _md5_=e9573a93c839c0d5b0f0ae1e4ebf6cd2

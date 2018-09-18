@@ -7,5 +7,5 @@ IUSE=+ocamlopt debug
 LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=dev-lang/ocaml:=[ocamlopt?] >dev-ml/js_of_ocaml-2.7:= >=dev-ml/eliom-5.1:=[ppx] dev-ml/ppx_deriving:= dev-ml/calendar:= dev-ml/lwt:= >=dev-lang/ocaml-4:=
 SLOT=0/9999
-_eclasses_=findlib	45d6030075064a68da8d7143726a1150	git-r3	918d6a744039c29af2cadc7317459765	opam	14f75966224f5922dd3bc77f7bd61338
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150	git-r3	0d4635eeb5a96cd5315597a47eba25c9	opam	14f75966224f5922dd3bc77f7bd61338
 _md5_=3c71932883f9e7b977c7d9ea22525c89

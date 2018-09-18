@@ -5,5 +5,5 @@ EAPI=7
 HOMEPAGE=https://github.com/speed47/spectre-meltdown-checker
 LICENSE=GPL-3+
 SLOT=0
-_eclasses_=git-r3	918d6a744039c29af2cadc7317459765
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
 _md5_=3079831aa528c3427b1fc452281cde02

@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1 CDDL
 RDEPEND=app-i18n/scim[gtk3=] ~app-i18n/sunpinyin-3.0.0_rc1:=
 SLOT=0
 SRC_URI=https://github.com/sunpinyin/sunpinyin/archive/v3.0.0-rc1.tar.gz -> sunpinyin-3.0.0_rc1.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	scons-utils	741000d14c0b59263aac3f3cf6e39909	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	80c4202f2f51d22b08be7d3299e507af	scons-utils	741000d14c0b59263aac3f3cf6e39909	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-snapshot	b77011b62e2053c646ad720defe6d921
 _md5_=a0311e0de4414a2ec2c575b5a0787f5a

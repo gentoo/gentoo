@@ -7,5 +7,5 @@ IUSE=vhosts
 LICENSE=GPL-2
 RDEPEND=virtual/httpd-php >=app-admin/webapp-config-1.50.15
 SLOT=9999
-_eclasses_=git-r3	918d6a744039c29af2cadc7317459765	webapp	6ae2395d7f341093c36057cb4f69101a
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	webapp	6ae2395d7f341093c36057cb4f69101a
 _md5_=2aa3aa7f2ae58b6dcc67261986216186
