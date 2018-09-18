@@ -1043,21 +1043,11 @@ python_wrapper_setup() {
 			nonsupp+=( 2to3 python-config "python${pyver}-config" )
 		fi
 
-		# block all other interpreters as incompatible
-		local orig_EPYTHON=${EPYTHON}
 		local x
-		for x in "${_PYTHON_ALL_IMPLS[@]}"; do
-			python_export "${x}" EPYTHON
-			[[ ${EPYTHON} == ${orig_EPYTHON} ]] && continue
-
-			nonsupp+=( "${EPYTHON}" )
-			[[ ${EPYTHON} == python* ]] && nonsupp+=( "${EPYTHON}-config" )
-		done
-
 		for x in "${nonsupp[@]}"; do
 			cat >"${workdir}"/bin/${x} <<-_EOF_ || die
 				#!/bin/sh
-				echo "${ECLASS}: ${FUNCNAME}: ${x} is not supported by ${orig_EPYTHON} (PYTHON_COMPAT)" >&2
+				echo "${ECLASS}: ${FUNCNAME}: ${x} is not supported by ${EPYTHON} (PYTHON_COMPAT)" >&2
 				exit 127
 			_EOF_
 			chmod +x "${workdir}"/bin/${x} || die
