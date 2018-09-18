@@ -4,7 +4,7 @@
 EAPI="6"
 
 # Python is required for tests and some build tasks.
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
+PYTHON_COMPAT=( python2_7 pypy )
 
 inherit cmake-multilib python-any-r1
 
