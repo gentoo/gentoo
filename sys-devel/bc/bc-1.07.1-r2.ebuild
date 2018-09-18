@@ -23,13 +23,13 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	sys-apps/ed
 	sys-devel/flex
 	virtual/yacc
 "
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.07.1-sandbox.patch"
+	"${FILESDIR}/${PN}-1.07.1-no-ed-its-sed.patch"
 )
 
 src_prepare() {
