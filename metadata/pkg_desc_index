@@ -8777,7 +8777,7 @@ net-mail/mairix 0.23: Indexes and searches Maildir/MH folders
 net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail messages
 net-mail/metamail 2.7.53.3-r1: Metamail (with Debian patches) - Generic MIME package
 net-mail/mhonarc 2.6.18-r2: Perl Mail-to-HTML Converter
-net-mail/mlmmj 1.2.18.0 1.2.19.0-r1: Mailing list managing made joyful
+net-mail/mlmmj 1.2.19.0-r1: Mailing list managing made joyful
 net-mail/mpack 1.6-r4: Command-line MIME encoding and decoding utilities
 net-mail/mu 0.9.18-r2: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
