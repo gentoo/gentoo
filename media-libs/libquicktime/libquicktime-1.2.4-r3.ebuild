@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit libtool multilib-minimal
 
@@ -11,20 +11,21 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="aac alsa doc dv encode ffmpeg gtk jpeg lame libav cpu_flags_x86_mmx opengl png schroedinger static-libs vorbis X x264"
 
-RDEPEND=">=virtual/libintl-0-r1[${MULTILIB_USEDEP}]
-	sys-libs/zlib:=
+RDEPEND="
+	sys-libs/zlib
+	>=virtual/libintl-0-r1[${MULTILIB_USEDEP}]
 	aac? (
 		>=media-libs/faad2-2.7-r3[${MULTILIB_USEDEP}]
 		encode? ( >=media-libs/faac-1.28-r3[${MULTILIB_USEDEP}] )
-		)
+	)
 	alsa? ( >=media-libs/alsa-lib-1.0.20 )
 	dv? ( >=media-libs/libdv-1.0.0-r3[${MULTILIB_USEDEP}] )
 	ffmpeg? (
-		libav? ( media-video/libav:0=[${MULTILIB_USEDEP}] )
-		!libav? ( media-video/ffmpeg:0=[${MULTILIB_USEDEP}] )
+		libav? ( >=media-video/libav-12:0=[${MULTILIB_USEDEP}] )
+		!libav? ( >=media-video/ffmpeg-3.2.6:0=[${MULTILIB_USEDEP}] )
 	)
 	gtk? ( x11-libs/gtk+:2 )
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
@@ -35,16 +36,17 @@ RDEPEND=">=virtual/libintl-0-r1[${MULTILIB_USEDEP}]
 	vorbis? (
 		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
 		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
-		)
+	)
 	X? (
 		x11-libs/libX11
 		x11-libs/libXaw
 		x11-libs/libXext
 		x11-libs/libXt
 		x11-libs/libXv
-		)
+	)
 	x264? ( >=media-libs/x264-0.0.20130506:=[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	sys-devel/gettext
 	doc? ( app-doc/doxygen )
@@ -57,15 +59,14 @@ DOCS=( ChangeLog README TODO )
 PATCHES=(
 	"${FILESDIR}"/${P}+libav-9.patch
 	"${FILESDIR}"/${P}-ffmpeg2.patch
+	"${FILESDIR}"/${P}-ffmpeg29.patch
 	"${FILESDIR}"/${P}-CVE-2016-2399.patch
+	"${FILESDIR}"/${P}-CVE-2017-9122_et_al.patch
 )
 
 src_prepare() {
 	default
-	if has_version '>=media-video/ffmpeg-2.9' ||
-		has_version '>=media-video/libav-12'; then
-			eapply "${FILESDIR}"/${P}-ffmpeg29.patch
-	fi
+
 	if has_version '>media-video/ffmpeg-3.5' ; then
 		eapply "${FILESDIR}/${P}-ffmpeg4.patch"
 	fi
