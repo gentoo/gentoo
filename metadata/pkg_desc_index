@@ -1894,7 +1894,7 @@ dev-db/pgtap 0.98.0: Unit testing for PostgreSQL
 dev-db/phpmyadmin 4.7.0 4.7.8: Web-based administration for MySQL database in PHP
 dev-db/postgis 2.4.2: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.3.22 9.3.24 9.4.17 9.4.19 9.5.12 9.5.14 9.6.8 9.6.10 10.3 10.5: PostgreSQL RDBMS
-dev-db/pspg 0.8.0 1.3.0: A better pager for psql and mysql
+dev-db/pspg 1.3.0: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/redis 3.2.8-r5 3.2.12 4.0.2-r1 4.0.10: A persistent caching system, key-value and data structures database
