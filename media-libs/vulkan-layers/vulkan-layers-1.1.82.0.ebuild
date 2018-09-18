@@ -38,6 +38,7 @@ DEPEND="${PYTHON_DEPS}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-Use-a-file-to-get-the-spirv-tools-commit-ID.patch"
+	"${FILESDIR}/${PN}-1.1.82.0-Modify-scripts-to-accomodate-new-exts.patch"
 	 )
 
 multilib_src_configure() {
