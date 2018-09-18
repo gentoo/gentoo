@@ -8,7 +8,7 @@ EAPI=6
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
-DESCRIPTION="Reading, writing and manipulating \\"
+DESCRIPTION="Reading, writing and manipulating '.tar' archive files"
 HOMEPAGE="http://hackage.haskell.org/package/tar"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
