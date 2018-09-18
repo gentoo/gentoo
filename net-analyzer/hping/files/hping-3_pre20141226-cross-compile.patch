@@ -1,0 +1,12 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -52,9 +52,6 @@
+ hping3: byteorder.h $(OBJ)
+ 	$(CC) -o hping3 $(CCOPT) $(DEBUG) $(OBJ) -L/usr/local/lib $(PCAP) @SOLARISLIB@ @TCL_LIB@
+ 	@echo
+-	./hping3 -v
+-	@echo "use \`make strip' to strip hping3 binary"
+-	@echo "use \`make install' to install hping3"
+ 
+ hping3-static: byteorder.h $(OBJ)
+ 	$(CC) -static -o hping3-static $(CCOPT) $(DEBUG) $(OBJ) -L/usr/local/lib $(PCAP) @SOLARISLIB@ @TCL_LIB@ -ldl
