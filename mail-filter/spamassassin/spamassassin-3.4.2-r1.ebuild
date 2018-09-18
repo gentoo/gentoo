@@ -16,9 +16,6 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="berkdb cron ipv6 ldap libressl mysql postgres qmail sqlite ssl test"
 
-# Upstream bug 7622.
-RESTRICT=test
-
 # The Makefile.PL script checks for dependencies, but only fails if a
 # required (i.e. not optional) dependency is missing. We therefore
 # require most of the optional modules only at runtime.
@@ -93,6 +90,11 @@ src_prepare() {
 	# spamd tests themselves -- see src_test), so use a crude
 	# workaround.
 	perl_rm_files t/spamc_*.t || die 'failed to remove spamc tests'
+
+	# Upstream bug 7622: this thing needs network access but doesn't
+	# respect the 'run_net_tests' setting.
+	perl_rm_files t/urilocalbl_geoip.t \
+		|| die 'failed to remove urilocalbl_geoip tests'
 }
 
 src_configure() {
