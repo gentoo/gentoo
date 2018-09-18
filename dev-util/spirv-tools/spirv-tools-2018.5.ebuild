@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
 RDEPEND=""
-DEPEND=">=dev-util/spirv-headers-1.3.1_pre20180710"
+DEPEND=">=dev-util/spirv-headers-1.3.4_pre20180917"
 EGIT_COMMIT="b4cb01c7c451dd90e26174f6b94ba6a37c53d917"
 S="${WORKDIR}/SPIRV-Tools-${PV}"
 

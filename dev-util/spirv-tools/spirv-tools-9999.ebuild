@@ -17,7 +17,7 @@ SLOT="0"
 RESTRICT="test"
 
 RDEPEND=""
-DEPEND=">=dev-util/spirv-headers-1.3.1_pre20180710"
+DEPEND=">=dev-util/spirv-headers-1.3.4_pre20180917"
 
 multilib_src_configure() {
 	local mycmakeargs=(
