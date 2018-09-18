@@ -1,9 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Script to rescan the SCSI bus without rebooting"
 HOMEPAGE="http://www.garloff.de/kurt/linux/"
@@ -16,6 +14,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86"
 
 RDEPEND=">=sys-apps/sg3_utils-1.24
+	<sys-apps/sg3_utils-1.44
 	app-admin/killproc
 	virtual/modutils
 	app-shells/bash"
