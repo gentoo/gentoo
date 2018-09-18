@@ -10,10 +10,6 @@
 # https://mail.kde.org/pipermail/kde-distro-packagers/2018-September/000347.html
 kde-plasma/plasma-desktop appstream
 
-# Andreas Sturmlechner <asturm@gentoo.org> (22 Jul 2018)
-# >=media-video/libav-12 not stable yet, bug #617508
->=media-libs/mlt-6.6.0 libav
-
 # Michał Górny <mgorny@gentoo.org> (07 Jun 2018)
 # sys-libs/netbsd-csu not stable yet.
 sys-devel/clang-runtime crt
@@ -24,9 +20,7 @@ net-analyzer/wireshark doc
 
 # Andreas Sturmlechner <asturm@gentoo.org> (29 May 2018)
 # Depends on unstable media-libs/libaom, net-libs/srt
-# >=media-video/libav-12 not stable yet, bug #617508
 media-video/vlc aom srt
->=media-video/vlc-3.0.3-r1 libav
 
 # Andreas Sturmlechner <asturm@gentoo.org> (21 May 2018)
 # Depends on lots of unstable dependencies
