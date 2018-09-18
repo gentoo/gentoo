@@ -4,6 +4,10 @@
 # PPC Specific use flags
 #
 
+# Matt Turner <mattst88@gentoo.org> (18 Sep 2018)
+# sci-libs/coinor-mp is not keyworded
+coinmp
+
 # Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
 # Python 3.7 support requires fresh versions of packages which are stuck
 # at keywordreqs.
