@@ -6,7 +6,7 @@ EAPI="6"
 # Python is required for tests and some build tasks.
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 
-inherit python-any-r1 cmake-multilib
+inherit cmake-multilib python-any-r1
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -34,6 +34,13 @@ PATCHES=(
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	cmake-utils_src_prepare
+
+	sed -i -e '/set(cxx_base_flags /s:-Werror::' \
+		googletest/cmake/internal_utils.cmake || die "sed failed!"
 }
 
 multilib_src_configure() {
