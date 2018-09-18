@@ -376,19 +376,8 @@ media-libs/libglvnd
 >=dev-db/mysql-connector-c++-8.0.0
 
 # Jeroen Roovers <jer@gentoo.org> (6 Apr 2018)
-# Requires >=dev-libs/icu-61.1
-# https://bugs.gentoo.org/651698
-=net-libs/nodejs-9.11*
-
-# Jeroen Roovers <jer@gentoo.org> (6 Apr 2018)
 # Requires >=dev-libs/openssl-1.1.0
 =net-libs/nodejs-10*
-
-# Lars Wendler <polynomial-c@gentoo.org> (27 Mar 2018)
-# Breaks a couple of revdeps. See tracker bug at
-# https://bugs.gentoo.org/651698
->=dev-libs/icu-61.1
->=dev-libs/icu-layoutex-61.1
 
 # Tony Vroon <chainsaw@gentoo.org> (24 Mar 2018)
 # This is a vulnerable version of Asterisk and should not be used except
