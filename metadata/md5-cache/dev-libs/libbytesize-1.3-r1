@@ -10,5 +10,5 @@ RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targ
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/rhinstaller/libbytesize/archive/1.3.tar.gz -> libbytesize-1.3.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	80c4202f2f51d22b08be7d3299e507af	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
 _md5_=20f5c87d87394a512fc2a714bab9b9ae

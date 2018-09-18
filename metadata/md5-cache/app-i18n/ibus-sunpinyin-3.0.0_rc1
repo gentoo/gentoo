@@ -10,5 +10,5 @@ RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=https://github.com/sunpinyin/sunpinyin/archive/v3.0.0-rc1.tar.gz -> sunpinyin-3.0.0_rc1.tar.gz
-_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	80c4202f2f51d22b08be7d3299e507af	scons-utils	741000d14c0b59263aac3f3cf6e39909	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	scons-utils	741000d14c0b59263aac3f3cf6e39909	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-snapshot	b77011b62e2053c646ad720defe6d921
 _md5_=e2aaa1dd5f44957cef150dd251834e8e

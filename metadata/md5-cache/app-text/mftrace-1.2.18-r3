@@ -10,5 +10,5 @@ RDEPEND=>=app-text/t1utils-1.25 media-gfx/potrace truetype? ( media-gfx/fontforg
 REQUIRED_USE=python_targets_python2_7
 SLOT=1
 SRC_URI=http://lilypond.org/downloads/sources/mftrace/mftrace-1.2.18.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	80c4202f2f51d22b08be7d3299e507af	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
 _md5_=424000d3920eed4a820609b6e8644a7a

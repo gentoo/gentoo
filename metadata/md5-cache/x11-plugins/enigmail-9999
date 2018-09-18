@@ -7,5 +7,5 @@ HOMEPAGE=https://www.enigmail.net/
 LICENSE=MPL-2.0 GPL-3
 RDEPEND=|| ( ( >=app-crypt/gnupg-2.0 || ( app-crypt/pinentry[gtk(-)] app-crypt/pinentry[qt5(-)] ) ) =app-crypt/gnupg-1.4* ) !<mail-client/thunderbird-52.5.0 !<www-client/seamonkey-2.49.5.0_p0
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	80c4202f2f51d22b08be7d3299e507af	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
 _md5_=50297617fcfbc55f2d7179882d2a18c1
