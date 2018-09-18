@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 MY_PV="${PV/_rc/-RC}"
 MY_P="${PN}-${MY_PV}"
@@ -10,12 +10,15 @@ HOMEPAGE="http://mlmmj.org/"
 SRC_URI="http://mlmmj.org/releases/${MY_P}.tar.bz2"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 DEPEND="virtual/mta"
 S="${WORKDIR}/${MY_P}"
 
 DOCS="AUTHORS ChangeLog FAQ README* TODO TUNABLES UPGRADE"
+PATCHES=(
+	"${FILESDIR}"/mlmmj-1.2.19.0-listcontrol-customheaders.patch
+)
 
 src_configure() {
 	econf --enable-receive-strip

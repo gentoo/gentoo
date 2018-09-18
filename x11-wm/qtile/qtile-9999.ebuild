@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,15 +34,25 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		x11-base/xorg-server[kdrive]
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
+		dev-python/xvfbwrapper[${PYTHON_USEDEP}]
+		x11-base/xorg-server[xephyr]
+		x11-apps/xeyes
+		x11-apps/xcalc
+		x11-apps/xclock
 	)
 "
 
+# display retry backoff slowness and failures 
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}"/${PN}-0.12.0-tests.patch )
+
 python_test() {
-	VIRTUALX_COMMAND="nosetests" virtualmake
+	# force usage of built module
+	rm -rf "${S}"/libqtile || die
+	PYTHONPATH="${BUILD_DIR}/lib" py.test -v "${S}"/test || die "tests failed under ${EPYTHON}"
 }
 
 python_install_all() {
