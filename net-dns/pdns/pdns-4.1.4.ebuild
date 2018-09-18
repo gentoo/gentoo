@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit eutils multilib user toolchain-funcs versionator
+inherit multilib user
 
 DESCRIPTION="The PowerDNS Daemon"
 HOMEPAGE="https://www.powerdns.com/"
@@ -40,8 +40,8 @@ RDEPEND="
 	sodium? ( dev-libs/libsodium:= )
 	tinydns? ( >=dev-db/tinycdb-0.77 )
 	protobuf? ( dev-libs/protobuf )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
 S="${WORKDIR}"/${P/_/-}
@@ -104,7 +104,10 @@ src_install() {
 
 	keepdir /var/empty
 
-	use doc && dohtml -r codedocs/html/.
+	if use doc; then
+		docinto html
+		dodoc -r codedocs/html/.
+	fi
 
 	# Install development headers
 	insinto /usr/include/pdns
@@ -117,7 +120,7 @@ src_install() {
 		doins "${FILESDIR}"/dnsdomain2.schema
 	fi
 
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_preinst() {
@@ -139,8 +142,7 @@ pkg_postinst() {
 
 	local old
 	for old in ${REPLACING_VERSIONS}; do
-		version_compare ${old} 3.2
-		[[ $? -eq 1 ]] || continue
+		ver_test ${old} -lt 3.2 || continue
 
 		ewarn "To fix a security bug (bug #458018) had the following"
 		ewarn "files/directories the world-readable bit removed (if set):"
