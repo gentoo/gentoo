@@ -33,8 +33,8 @@ media-video/vlc aom srt
 dev-python/s3fs test
 
 # Andreas Sturmlechner <asturm@gentoo.org> (22 Apr 2018)
-# Not ready for stable, crashes LO on some systems.
->=app-office/libreoffice-6.0 kde
+# Huge patchset in 6.0, early crash reports with fix in ~arch KF5/Plasma-5
+=app-office/libreoffice-6.0* kde
 
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Mar 2018)
 # Depends on unstable dependencies; qt3d bug #652046
