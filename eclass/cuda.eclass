@@ -144,6 +144,48 @@ cuda_sanitize() {
 	export NVCCFLAGS
 }
 
+# @FUNCTION: cuda_add_sandbox
+# @USAGE: [-w]
+# @DESCRIPTION:
+# Add nvidia dev nodes to the sandbox predict list.
+# with -w, add to the sandbox write list.
+cuda_add_sandbox() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	local i
+	for i in /dev/nvidia*; do
+		if [[ $1 == '-w' ]]; then
+			addwrite $i
+		else
+			addpredict $i
+		fi
+	done
+}
+
+# @FUNCTION: cuda_toolkit_version
+# @DESCRIPTION:
+# echo the installed version of dev-util/nvidia-cuda-toolkit
+cuda_toolkit_version() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	local v
+	v="$(best_version dev-util/nvidia-cuda-toolkit)"
+	v="${v##*cuda-toolkit-}"
+	ver_cut 1-2 "${v}"
+}
+
+# @FUNCTION: cuda_cudnn_version
+# @DESCRIPTION:
+# echo the installed version of dev-libs/cudnn
+cuda_cudnn_version() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	local v
+	v="$(best_version dev-libs/cudnn)"
+	v="${v##*cudnn-}"
+	ver_cut 1-2 "${v}"
+}
+
 # @FUNCTION: cuda_src_prepare
 # @DESCRIPTION:
 # Sanitise and export NVCCFLAGS by default
