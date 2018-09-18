@@ -38,7 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.12.3-latin-update.patch # 130466 + make liberation default
 
 	# Patches from upstream (can usually be removed with next version bump)
-	#"${FILESDIR}"/${P}-static_build.patch
+	"${FILESDIR}"/${P}-static_build.patch
 	"${FILESDIR}"/${P}-proper_homedir.patch
 )
 
@@ -87,11 +87,6 @@ multilib_src_configure() {
 	)
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
-
-	# Ugly hackaround to prevent build failure
-	find "${BUILD_DIR}" -name "Makefile" -print0 \
-		| xargs --null sed 's@ FcStrBuildFilename\.3@@' -i \
-		|| die
 }
 
 multilib_src_install() {
