@@ -23,17 +23,20 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	sys-apps/ed
 	sys-devel/flex
 	virtual/yacc
 "
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.07.1-sandbox.patch"
+	"${FILESDIR}/${PN}-1.07.1-no-ed-its-sed.patch"
 )
 
 src_prepare() {
 	default
+
+	# Avoid bad build tool usage when cross-compiling.  #627126
+	tc-is-cross-compiler && eapply "${FILESDIR}/${PN}-1.07.1-use-system-bc.patch"
 
 	# A patch to make this into a configure option has been sent upstream,
 	# but lets avoid regenerating all the autotools just for this.
