@@ -15,6 +15,13 @@ SLOT="1.0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc static-libs"
 
+BDEPEND="dev-util/gperf
+	>=sys-devel/gettext-0.19.8
+	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	doc? (
+		=app-text/docbook-sgml-dtd-3.1*
+		app-text/docbook-sgml-utils[jadetex]
+	)"
 # Purposefully dropped the xml USE flag and libxml2 support.  Expat is the
 # default and used by every distro.  See bug #283191.
 RDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
@@ -22,12 +29,7 @@ RDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	!elibc_Darwin? ( sys-apps/util-linux[${MULTILIB_USEDEP}] )
 	elibc_Darwin? ( sys-libs/native-uuid )
 	virtual/libintl[${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	dev-util/gperf
-	>=sys-devel/gettext-0.19.8
-	doc? ( =app-text/docbook-sgml-dtd-3.1*
-		app-text/docbook-sgml-utils[jadetex] )"
+DEPEND="${RDEPEND}"
 PDEPEND="!x86-winnt? ( app-eselect/eselect-fontconfig )
 	virtual/ttf-fonts"
 
@@ -46,7 +48,7 @@ pkg_setup() {
 	DOC_CONTENTS="Please make fontconfig configuration changes using
 	\`eselect fontconfig\`. Any changes made to /etc/fonts/fonts.conf will be
 	overwritten. If you need to reset your configuration to upstream defaults,
-	delete the directory ${EROOT%/}/etc/fonts/conf.d/ and re-emerge fontconfig."
+	delete the directory ${EROOT}/etc/fonts/conf.d/ and re-emerge fontconfig."
 }
 
 src_prepare() {
@@ -116,9 +118,9 @@ multilib_src_install_all() {
 
 	dodoc doc/fontconfig-user.{txt,pdf}
 
-	if [[ -e ${ED}usr/share/doc/fontconfig/ ]];  then
-		mv "${ED}"usr/share/doc/fontconfig/* "${ED}"/usr/share/doc/${P} || die
-		rm -rf "${ED}"usr/share/doc/fontconfig
+	if [[ -e ${ED}/usr/share/doc/fontconfig/ ]];  then
+		mv "${ED}"/usr/share/doc/fontconfig/* "${ED}"/usr/share/doc/${P} || die
+		rm -rf "${ED}"/usr/share/doc/fontconfig
 	fi
 
 	# Changes should be made to /etc/fonts/local.conf, and as we had
@@ -144,11 +146,11 @@ pkg_preinst() {
 		for file in "${EROOT}"/etc/fonts/conf.avail/*; do
 			f=${file##*/}
 			if [[ -L ${EROOT}/etc/fonts/conf.d/${f} ]]; then
-				[[ -f ${ED}etc/fonts/conf.avail/${f} ]] \
-					&& ln -sf ../conf.avail/"${f}" "${ED}"etc/fonts/conf.d/ &>/dev/null
+				[[ -f ${ED}/etc/fonts/conf.avail/${f} ]] \
+					&& ln -sf ../conf.avail/"${f}" "${ED}"/etc/fonts/conf.d/ &>/dev/null
 			else
-				[[ -f ${ED}etc/fonts/conf.avail/${f} ]] \
-					&& rm "${ED}"etc/fonts/conf.d/"${f}" &>/dev/null
+				[[ -f ${ED}/etc/fonts/conf.avail/${f} ]] \
+					&& rm "${ED}"/etc/fonts/conf.d/"${f}" &>/dev/null
 			fi
 		done
 	fi
@@ -156,12 +158,12 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	einfo "Cleaning broken symlinks in ${EROOT%/}/etc/fonts/conf.d/"
-	find -L "${EROOT}"etc/fonts/conf.d/ -type l -delete
+	einfo "Cleaning broken symlinks in ${EROOT}/etc/fonts/conf.d/"
+	find -L "${EROOT}"/etc/fonts/conf.d/ -type l -delete
 
 	readme.gentoo_print_elog
 
-	if [[ ${ROOT} = / ]]; then
+	if [[ ${ROOT} == "" ]]; then
 		multilib_pkg_postinst() {
 			ebegin "Creating global font cache for ${ABI}"
 			"${EPREFIX}"/usr/bin/${CHOST}-fc-cache -srf
