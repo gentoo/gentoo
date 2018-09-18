@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit toolchain-funcs flag-o-matic eutils versionator
+inherit flag-o-matic
 
 DESCRIPTION="The PowerDNS Recursor"
 HOMEPAGE="https://www.powerdns.com/"
@@ -28,8 +28,7 @@ DEPEND="!luajit? ( >=dev-lang/lua-5.1:= )
 	>=dev-libs/boost-1.35:="
 RDEPEND="${DEPEND}
 	!<net-dns/pdns-2.9.20-r1"
-DEPEND="${DEPEND}
-	virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}"/${P/_/-}
 
@@ -69,8 +68,7 @@ pkg_postinst() {
 	local old
 
 	for old in ${REPLACING_VERSIONS}; do
-		version_compare ${old} 4.0.0-r1
-		[[ $? -eq 1 ]] || continue
+		ver_test ${old} -lt 4.0.0-r1 || continue
 
 		ewarn "Starting with 4.0.0-r1 the init script has been renamed from precursor"
 		ewarn "to pdns-recursor, please update your runlevels accordingly."
