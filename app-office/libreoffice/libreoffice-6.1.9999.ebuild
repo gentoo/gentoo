@@ -63,8 +63,8 @@ unset ADDONS_SRC
 # Extensions that need extra work:
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
-IUSE="bluetooth +branding coinmp +cups dbus debug eds firebird googledrive
-gstreamer +gtk gtk2 kde mysql odk pdfimport postgres test vlc
+IUSE="accessibility bluetooth +branding coinmp +cups dbus debug eds firebird
+googledrive gstreamer +gtk gtk2 kde mysql odk pdfimport postgres test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -144,6 +144,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
+	accessibility? ( dev-python/lxml[${PYTHON_USEDEP}] )
 	bluetooth? ( net-wireless/bluez )
 	coinmp? ( sci-libs/coinor-mp )
 	cups? ( net-print/cups )
@@ -439,6 +440,7 @@ src_configure() {
 		$(use_enable pdfimport)
 		$(use_enable postgres postgresql-sdbc)
 		$(use_enable vlc)
+		$(use_with accessibility lxml)
 		$(use_with coinmp system-coinmp)
 		$(use_with googledrive gdrive-client-id ${google_default_client_id})
 		$(use_with googledrive gdrive-client-secret ${google_default_client_secret})
