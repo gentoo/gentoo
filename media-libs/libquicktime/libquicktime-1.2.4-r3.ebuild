@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-ffmpeg2.patch
 	"${FILESDIR}"/${P}-ffmpeg29.patch
 	"${FILESDIR}"/${P}-CVE-2016-2399.patch
+	"${FILESDIR}"/${P}-CVE-2017-9122_et_al.patch
 )
 
 src_prepare() {
