@@ -23,15 +23,17 @@ IUSE="python +spreadsheet-model static-libs tools"
 
 RDEPEND="
 	dev-libs/boost:=
-	sys-libs/zlib:=
+	sys-libs/zlib
 	python? ( ${PYTHON_DEPS} )
-	spreadsheet-model? ( >=dev-libs/libixion-0.13.0:= )
+	spreadsheet-model? ( =dev-libs/libixion-0.13*:= )
 "
 DEPEND="${RDEPEND}
 	=dev-util/mdds-1.3*:1
 "
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+PATCHES=( "${FILESDIR}/${P}-boost-1.67.patch" )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
