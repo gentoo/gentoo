@@ -9,11 +9,11 @@ CMAKE_MAKEFILE_GENERATOR=emake
 # Keeping eutils in EAPI=6 for emktemp in pkg_config
 
 inherit linux-info python-any-r1 eutils flag-o-matic prefix toolchain-funcs \
-	versionator user cmake-utils multilib-minimal
+	eapi7-ver user cmake-utils multilib-minimal
 
-MY_PV=$(replace_version_separator 3 '-')
+MY_PV=$(ver_rs 3 '-')
 MY_PN="Percona-Server"
-MY_MAJOR_PV=$(get_version_component_range 1-2)
+MY_MAJOR_PV=$(ver_cut 1-2)
 MY_RELEASE_NOTES_URI="https://www.percona.com/doc/percona-server/5.6/release-notes/release-notes_index.html"
 SRC_URI="https://www.percona.com/downloads/${MY_PN}-${MY_MAJOR_PV}/${MY_PN}-${MY_PV}/source/tarball/${PN}-${MY_PV}.tar.gz"
 
@@ -680,12 +680,12 @@ pkg_postinst() {
 			einfo
 		else
 			local _replacing_version=
+			local _new_version_branch=$(ver_cut 1-3 "${PV}")
 			for _replacing_version in ${REPLACING_VERSIONS}; do
-				local _new_version_branch=$(get_version_component_range 1-3 "${PV}")
-				local _replacing_version_branch=$(get_version_component_range 1-3 "${_replacing_version}")
+				local _replacing_version_branch=$(ver_cut 1-3 "${_replacing_version}")
 				debug-print "Updating an existing installation (v${_replacing_version}; branch '${_replacing_version_branch}') ..."
 
-				if ! version_is_at_least "${_new_version_branch}" "${_replacing_version_branch}"; then
+				if ver_test "${_new_version_branch}" -gt "${_replacing_version_branch}"; then
 					debug-print "Upgrading from v${_replacing_version_branch} to v${_new_version_branch} ..."
 					# https://www.percona.com/blog/2014/09/19/mysql-upgrade-best-practices/
 
