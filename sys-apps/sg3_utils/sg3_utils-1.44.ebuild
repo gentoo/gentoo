@@ -16,8 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="static-libs"
 
 DEPEND="sys-devel/libtool"
-RDEPEND=""
-PDEPEND=">=sys-apps/rescan-scsi-bus-1.24"
+RDEPEND="!sys-apps/rescan-scsi-bus"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.26-stdint.patch #580236
