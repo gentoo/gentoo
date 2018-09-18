@@ -16,6 +16,12 @@
 		reconfiguration of specific application parameters as needed by the
 		engineering or operations.
 	</longdescription>
+	<use>
+		<flag name="php5-6">Support for PHP 5.6</flag>
+		<flag name="php7-0">Support for PHP 7.0</flag>
+		<flag name="php7-1">Support for PHP 7.1</flag>
+		<flag name="php7-2">Support for PHP 7.2</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">nginx/unit</remote-id>
 	</upstream>
