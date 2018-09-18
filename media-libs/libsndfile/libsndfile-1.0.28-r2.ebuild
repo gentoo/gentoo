@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
 
@@ -30,7 +30,8 @@ RDEPEND="
 	)
 	alsa? ( media-libs/alsa-lib )
 	sqlite? ( >=dev-db/sqlite-3.2 )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	test? ( ${PYTHON_DEPS} )"
 
