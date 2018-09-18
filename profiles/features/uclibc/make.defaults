@@ -1,0 +1,12 @@
+# Copyright 1999-2018 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+PORTAGE_LIBC="uClibc"
+ELIBC=uclibc
+
+FEATURES="sandbox sfperms strict"
+
+USE="nptl unicode -berkdb"
+BOOTSTRAP_USE="${BOOTSTRAP_USE} nptl -berkdb"
+
+SYMLINK_LIB="no"
