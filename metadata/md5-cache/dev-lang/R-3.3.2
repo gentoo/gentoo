@@ -4,7 +4,7 @@ DESCRIPTION=Language and environment for statistical computing and graphics
 EAPI=5
 HOMEPAGE=http://www.r-project.org/
 IUSE=cairo doc icu java jpeg lapack minimal nls openmp perl png prefix profile readline static-libs tiff tk X
-KEYWORDS=~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos
+KEYWORDS=~amd64 ~hppa ~ia64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos
 LICENSE=|| ( GPL-2 GPL-3 ) LGPL-2.1
 RDEPEND=app-arch/bzip2:0= app-arch/xz-utils:0= app-text/ghostscript-gpl >=dev-libs/libpcre-8.35:3= virtual/blas:0 || ( >=sys-apps/coreutils-8.15 sys-freebsd/freebsd-bin app-misc/realpath ) cairo? ( x11-libs/cairo:0=[X] x11-libs/pango:0= ) icu? ( dev-libs/icu:= ) jpeg? ( virtual/jpeg:0 ) lapack? ( virtual/lapack:0 ) perl? ( dev-lang/perl ) png? ( media-libs/libpng:0= ) readline? ( sys-libs/readline:0= ) tiff? ( media-libs/tiff:0= ) tk? ( dev-lang/tk:0= ) X? ( x11-libs/libXmu:0= x11-misc/xdg-utils ) >=sys-libs/zlib-1.2.5.1-r2:0[minizip] java? ( >=virtual/jre-1.5 ) virtual/fortran
 REQUIRED_USE=png? ( || ( cairo X ) ) jpeg? ( || ( cairo X ) ) tiff? ( || ( cairo X ) )
@@ -12,4 +12,4 @@ RESTRICT=minimal? ( test )
 SLOT=0
 SRC_URI=mirror://cran/src/base/R-3/R-3.3.2.tar.gz https://dev.gentoo.org/~bicatali/distfiles/R-20130129.bash_completion.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	fortran-2	68fcf50e02640de6eb5698ea038d9537	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=bcfa6a6e09057637b60c691f354a3bc7
+_md5_=79b9e1c0f796bd1b1d95d3a9db8d9abd
