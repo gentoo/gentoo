@@ -9,7 +9,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	EGIT_COMMIT="384fff68c802a10b5d7f4f352a4bb43b3efe5f23"
+	EGIT_COMMIT="2cfddd146d666efe0ed06ef1d2bc5565821df144"
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-Tools/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-Tools-${EGIT_COMMIT}"
@@ -39,6 +39,23 @@ DEPEND="${PYTHON_DEPS}
 # Vulkaninfo does not support wayland
 REQUIRED_USE="|| ( X wayland )
 			  vulkaninfo? ( X )"
+
+pkg_setup() {
+	MULTILIB_CHOST_TOOLS=()
+
+	if use vulkaninfo; then
+		MULTILIB_CHOST_TOOLS+=( /usr/bin/vulkaninfo )
+	fi
+
+	if use cube; then
+		MULTILIB_CHOST_TOOLS+=(
+			/usr/bin/vulkancube
+			/usr/bin/vulkancubecpp
+		)
+	fi
+
+	python-any-r1_pkg_setup
+}
 
 multilib_src_configure() {
 	local mycmakeargs=(
