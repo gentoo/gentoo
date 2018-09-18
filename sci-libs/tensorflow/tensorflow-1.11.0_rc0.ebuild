@@ -4,7 +4,7 @@
 EAPI=6
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 MY_PV=${PV/_rc/-rc}
 MY_P=${PN}-${MY_PV}
 
@@ -87,6 +87,8 @@ RDEPEND="
 		dev-python/six[${PYTHON_USEDEP}]
 		dev-python/termcolor[${PYTHON_USEDEP}]
 		>=net-libs/grpc-1.13.0[python,${PYTHON_USEDEP}]
+		sci-libs/keras-applications[${PYTHON_USEDEP}]
+		sci-libs/keras-preprocessing[${PYTHON_USEDEP}]
 		virtual/python-enum34[${PYTHON_USEDEP}]
 		system-libs? (
 			net-libs/google-cloud-cpp
