@@ -1,0 +1,77 @@
+From 31ecd29b3b3f51145fd78f63087c10e9fcadf999 Mon Sep 17 00:00:00 2001
+From: Steve Dickson <steved@redhat.com>
+Date: Tue, 22 May 2018 12:41:59 +0200
+Subject: [PATCH] Listen on a TCP socket
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+rpc.rquotad spins in libtirpc's rendezvous_request() on accepting TCP
+connections because the polled TCP socket is not listening:
+
+poll([{fd=4, events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}, {fd=5,
+  events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}, {fd=6,
+  events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}, {fd=7,
+  events=POLLIN|POLLPRI|POLLRDNORM|POLLRDBAND}], 4, -1) = 2 ([{fd=5,
+  revents=POLLHUP}, {fd=7, revents=POLLHUP}])
+accept(5, 0x7ffe61698700, [128])        = -1 EINVAL (Invalid argument)
+accept(7, 0x7ffe61698700, [128])        = -1 EINVAL (Invalid argument)
+
+The polled descriptors are:
+
+rpc.rquot 21981 root    4u  IPv4 80449159      0t0      UDP *:rquotad
+rpc.rquot 21981 root    5u  sock      0,9      0t0 80449162 protocol: TCP
+rpc.rquot 21981 root    6u  IPv6 80449165      0t0      UDP *:rquotad
+rpc.rquot 21981 root    7u  sock      0,9      0t0 80449168 protocol: TCPv6
+
+That results into a high CPU usage just after staring rpc.rquotad
+process.
+
+This patch adds a listen() call to svc_create_sock()
+routine which is needed with libtirpc version of svc_tli_create()
+as well as a needed IPv6 setsockopt().
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ svc_socket.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/svc_socket.c b/svc_socket.c
+index 8a44604..d2e3abf 100644
+--- a/svc_socket.c
++++ b/svc_socket.c
+@@ -118,6 +118,15 @@ static int svc_create_sock(struct addrinfo *ai)
+ 		return -1;
+ 	}
+ 
++	if (ai->ai_family == AF_INET6) {
++		if (setsockopt(fd, IPPROTO_IPV6, IPV6_V6ONLY,
++				&optval, sizeof(optval)) < 0) {
++			errstr(_("Cannot set IPv6 socket options: %s\n"), strerror(errno));
++			close(fd);
++			return -1;
++		}
++	}
++
+ 	if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval)) < 0) {
+ 		errstr(_("Cannot set socket options: %s\n"), strerror(errno));
+ 		close(fd);
+@@ -129,6 +138,15 @@ static int svc_create_sock(struct addrinfo *ai)
+ 		close(fd);
+ 		return -1;
+ 	}
++
++	if (ai->ai_protocol == IPPROTO_TCP) {
++		if (listen(fd, SOMAXCONN) < 0) {
++			errstr(_("Cannot listen to address: %s\n"), strerror(errno));
++			close(fd);
++			return -1;
++		}
++	}
++
+ 	return fd;
+ }
+ 
+-- 
+2.14.3
+
