@@ -2318,7 +2318,7 @@ dev-haskell/system-fileio 0.3.16.3: Consistent filesystem interaction across GHC
 dev-haskell/system-filepath 0.4.8-r1: High-level, byte-based file and directory path manipulations
 dev-haskell/tagged 0.7.3 0.8.4: Haskell 98 phantom types to avoid unsafely passing dummy arguments
 dev-haskell/tagsoup 0.13.3-r1 0.13.10: Parsing and extracting information from (possibly malformed) HTML/XML documents
-dev-haskell/tar 0.4.0.1 0.4.2.1 0.5.0.3: Reading, writing and manipulating ".tar" archive files
+dev-haskell/tar 0.4.0.1 0.4.2.1 0.5.0.3: Reading, writing and manipulating '.tar' archive files
 dev-haskell/tasty 0.3.1 0.5.2 0.8.1.2 0.10.1.2 0.11.0.4: Modern and extensible testing framework
 dev-haskell/tasty-ant-xml 1.0.1 1.0.2: Render tasty output to XML for Jenkins
 dev-haskell/tasty-golden 2.2.2.4 2.3.1.1: Golden tests support for tasty
@@ -6185,7 +6185,7 @@ dev-util/bbe 0.2.2: Sed-like editor for binary files
 dev-util/bcpp 20150811-r1: Indents C/C++ source code
 dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disassembler modes
 dev-util/bitcoin-tx 0.15.1: Command-line Bitcoin transaction tool
-dev-util/boost-build 1.62.0-r1 1.63.0 1.65.0: A system for large project software construction, simple to use and powerful
+dev-util/boost-build 1.63.0 1.65.0: A system for large project software construction, simple to use and powerful
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/buildbot 0.8.12-r3: BuildBot build automation system
 dev-util/buildbot-slave 0.8.12: BuildBot Slave Daemon
