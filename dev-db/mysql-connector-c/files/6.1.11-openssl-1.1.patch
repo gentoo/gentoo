@@ -243,8 +243,8 @@ index da5449a..87b30c3 100644
 +#else
 +    if (! DH_set0_pqg(dh,
 +              BN_bin2bn(dh2048_p,sizeof(dh2048_p),NULL),
-+              BN_bin2bn(dh2048_g,sizeof(dh2048_g),NULL),
-+              NULL))
++              NULL,
++              BN_bin2bn(dh2048_g,sizeof(dh2048_g),NULL)))
 +    {
 +#endif
        DH_free(dh);
