@@ -20,9 +20,9 @@ fi
 LICENSE="BSD"
 SLOT="0"
 IUSE="mongodb mysql postgres redis sqlite"
-RDEPEND="|| ( dev-libs/libevent[-ssl,libressl] dev-libs/libevent[ssl] )
+RDEPEND="|| ( dev-libs/libevent[-ssl,libressl] dev-libs/libevent[ssl,-libressl] >dev-libs/libevent-2.1.8[ssl,libressl] )
 	 mongodb? ( dev-libs/mongo-c-driver )
-	 mysql? ( virtual/mysql )
+	 mysql?  ( dev-db/mysql-connector-c )
 	 postgres? ( dev-db/postgresql:* )
 	 redis? ( dev-libs/hiredis )
 	 sqlite? ( dev-db/sqlite )"
