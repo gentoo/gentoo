@@ -35,6 +35,9 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# Avoid bad build tool usage when cross-compiling.  #627126
+	tc-is-cross-compiler && eapply "${FILESDIR}/${PN}-1.07.1-use-system-bc.patch"
+
 	# A patch to make this into a configure option has been sent upstream,
 	# but lets avoid regenerating all the autotools just for this.
 	if use forced-sandbox ; then
