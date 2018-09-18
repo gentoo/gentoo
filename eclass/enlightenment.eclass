@@ -1,6 +1,12 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
+# Joonas Niilola <juippis@gmail.com> (18 Aug 2018)
+# Outdated, unmaintained, not being used by any package in the tree, 
+# has unattended bugs open. 
+# Bug: #666460. Removal in ~30 days.
+
 # @ECLASS: enlightenment.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
