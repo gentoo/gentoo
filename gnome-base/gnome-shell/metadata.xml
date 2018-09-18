@@ -5,6 +5,13 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
+<longdescription>
+	GNOME Shell provides core user interface functions for the GNOME 3
+	desktop, like switching to windows and launching applications.
+	GNOME Shell takes advantage of the capabilities of modern graphics
+	hardware and introduces innovative user interface concepts to
+	provide a visually attractive and easy to use experience.
+</longdescription>
 <use>
 	<flag name="browser-extension">Ensure the presence of extensions.gnome.org
 		native connector <pkg>gnome-extra/chrome-gnome-shell</pkg></flag>
