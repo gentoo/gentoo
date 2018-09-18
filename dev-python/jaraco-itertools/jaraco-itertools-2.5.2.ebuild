@@ -49,7 +49,7 @@ python_compile_all() {
 
 python_test() {
 	# Override pytest options to skip flake8
-	PYTHONPATH=. pytest -v --override-ini="addopts=--doctest-modules" \
+	PYTHONPATH=. pytest -vv --override-ini="addopts=--doctest-modules" \
 		|| die "tests failed with ${EPYTHON}"
 }
 
