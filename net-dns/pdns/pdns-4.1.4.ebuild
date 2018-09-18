@@ -31,7 +31,7 @@ RDEPEND="
 		!luajit? ( dev-lang/lua:= )
 		luajit? ( dev-lang/luajit:= )
 	)
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c )
 	postgres? ( dev-db/postgresql:= )
 	ldap? ( >=net-nds/openldap-2.0.27-r4 app-crypt/mit-krb5 )
 	sqlite? ( dev-db/sqlite:3 )
