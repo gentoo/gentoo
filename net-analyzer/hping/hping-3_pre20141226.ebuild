@@ -27,32 +27,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3_pre20051105-libtcl.patch
 	"${FILESDIR}"/${PN}-3_pre20051105-tcl.patch
 	"${FILESDIR}"/${PN}-3_pre20051105-tclsh-proper-escaping.patch
-	"${FILESDIR}"/${PN}-3_pre20141226-cross-compile.patch
+	"${FILESDIR}"/${PN}-3_pre20141226-compile.patch
+	"${FILESDIR}"/${PN}-3_pre20141226-hping2-2-hping.patch
 	"${FILESDIR}"/${PN}-3_pre20141226-indent.patch
-	"${FILESDIR}"/${PN}-3_pre20141226-ldflags.patch
 	"${FILESDIR}"/${PN}-3_pre20141226-pcap-bpf.patch
 	"${FILESDIR}"/${PN}-3_pre20141226-scan-overflow.patch
 	"${FILESDIR}"/${PN}-3_pre20141226-unused-but-set.patch
 )
-
-src_prepare() {
-	default
-
-	# Correct hard coded values
-	sed -i Makefile.in \
-		-e '/^CC=/d' \
-		-e '/^AR=/d' \
-		-e '/^RANLIB=/d' \
-		-e 's:/usr/local/lib:/usr/$(LIBDIR):g' \
-		-e 's:-O2:$(CFLAGS):' \
-		|| die
-
-	# Change name from hping2 to hping3
-	sed -i docs/hping3.8 \
-		-e 's|HPING2|HPING|g' \
-		-e 's|hping2|hping|g' \
-		|| die
-}
 
 src_configure() {
 	tc-export CC
