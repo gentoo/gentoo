@@ -62,9 +62,9 @@ multilib_src_install_all() {
 
 	if use doc; then
 		docinto googletest
-		dodoc -r googletest/docs/*
+		dodoc -r googletest/docs/.
 		docinto googlemock
-		dodoc -r googlemock/docs/*
+		dodoc -r googlemock/docs/.
 	fi
 
 	if use examples; then
