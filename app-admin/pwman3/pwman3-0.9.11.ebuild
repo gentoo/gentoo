@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite?"
 inherit distutils-r1
 
 DESCRIPTION="A lightweight password-manager with multiple database backends"
-HOMEPAGE="https://pwman3.github.io"
+HOMEPAGE="https://pwman3.github.io/pwman3/"
 SRC_URI="https://github.com/pwman3/pwman3/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
