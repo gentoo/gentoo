@@ -19,6 +19,7 @@ KEYWORDS=""
 IUSE="gnome sqlite"
 
 RDEPEND="
+	dev-python/pyxdg[${PYTHON_USEDEP}]
 	virtual/python-dnspython[${PYTHON_USEDEP}]
 	gnome? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 "

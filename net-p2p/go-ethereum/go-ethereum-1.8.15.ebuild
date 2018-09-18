@@ -19,6 +19,9 @@ DEPEND="dev-lang/go:=
 "
 RDEPEND="${DEPEND}"
 
+# Does all kinds of wonky stuff like connecting to Docker daemon, network activity, ...
+RESTRICT="test"
+
 src_compile() {
 	use opencl && export GO_OPENCL=true
 
