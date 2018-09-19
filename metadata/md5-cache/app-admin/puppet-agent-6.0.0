@@ -1,0 +1,14 @@
+DEFINED_PHASES=install setup unpack
+DEPEND=!app-admin/augeas !app-admin/puppet !dev-ruby/hiera !dev-ruby/facter !app-emulation/virt-what virtual/pkgconfig
+DESCRIPTION=general puppet client utils along with hiera and facter
+EAPI=6
+HOMEPAGE=https://puppetlabs.com/
+IUSE=puppetdb selinux
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=!app-admin/augeas !app-admin/puppet !dev-ruby/hiera !dev-ruby/facter !app-emulation/virt-what app-portage/eix sys-apps/dmidecode sys-libs/glibc sys-libs/readline:0/7 sys-libs/ncurses:0[tinfo] selinux? ( sys-libs/libselinux[ruby] sec-policy/selinux-puppet ) puppetdb? ( >=dev-ruby/puppetdb-termini-5.0.1 )
+RESTRICT=strip
+SLOT=0
+SRC_URI=amd64? ( http://apt.puppetlabs.com/pool/stretch/puppet/p/puppet-agent/puppet-agent_6.0.0-1stretch_amd64.deb ) x86? ( http://apt.puppetlabs.com/pool/stretch/puppet/p/puppet-agent/puppet-agent_6.0.0-1stretch_i386.deb )
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	unpacker	ee2f5086cd7e7b747b061f58db14d89e	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=2db33d2f57241fae89e84810463f163f
