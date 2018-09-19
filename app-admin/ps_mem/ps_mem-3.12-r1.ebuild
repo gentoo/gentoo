@@ -11,7 +11,7 @@ DESCRIPTION="A utility to report core memory usage per program"
 HOMEPAGE="https://github.com/pixelb/${PN}"
 SRC_URI="https://github.com/pixelb/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
 IUSE=""
