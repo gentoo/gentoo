@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install setup
+DEPEND=virtual/pkgconfig
+DESCRIPTION=A simple daemon to control fan speed on all Macbook/Macbook Pros
+EAPI=6
+HOMEPAGE=https://github.com/dgraziotin/mbpfan
+IUSE=kernel_linux
+KEYWORDS=~amd64
+LICENSE=GPL-3+
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/dgraziotin/mbpfan/archive/v2.1.0.tar.gz -> mbpfan-2.1.0.tar.gz
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	linux-info	915cae3d7d636732918d18827fb1c226	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=de7dca4a10c96903fb73e2e69449aba6
