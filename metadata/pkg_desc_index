@@ -7639,7 +7639,7 @@ media-libs/libsidplay 1.36.59-r1 1.36.59-r2 2.1.1-r4: C64 SID player library
 media-libs/libsidplayfp 1.1.0: A library for the sidplay2 fork with resid-fp
 media-libs/libsixel 1.8.1: A lightweight, fast implementation of DEC SIXEL graphics codec
 media-libs/libsmf 1.3: Standard MIDI File format library
-media-libs/libsndfile 1.0.28-r1: A C library for reading and writing files containing sampled sound
+media-libs/libsndfile 1.0.28-r1 1.0.28-r3: C library for reading and writing files containing sampled sound
 media-libs/libsoundtouch 2.0.0-r1: Audio processing library for changing tempo, pitch and playback rates
 media-libs/libtaginfo 0.2.1: a library for reading media metadata
 media-libs/libtheora 1.1.1-r1: The Theora Video Compression Codec
