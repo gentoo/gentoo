@@ -21,6 +21,7 @@
 		<flag name="mongodb">Build the MongoDB output module (requires <pkg>dev-libs/libmongo-client</pkg>)</flag>
 		<flag name="mysql">Build the MySQL database output module (requires <pkg>virtual/mysql</pkg>)</flag>
 		<flag name="normalize">Build the normalize modify module (requires <pkg>dev-libs/libee</pkg> and <pkg>dev-libs/liblognorm</pkg>)</flag>
+		<flag name="omhttp">Build the http output module (requires <pkg>net-misc/curl</pkg>)</flag>
 		<flag name="omhttpfs">Build the httpfs output module (requires <pkg>net-misc/curl</pkg>)</flag>
 		<flag name="omudpspoof">Build the udpspoof output module (requires <pkg>net-libs/libnet</pkg>)</flag>
 		<flag name="openssl">Build the OpenSSL network stream driver (requires <pkg>dev-libs/openssl</pkg>)</flag>
