@@ -16,12 +16,12 @@ LLVM_P=llvm-${PV/_/}.src
 
 DESCRIPTION="The LLVM debugger"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz
-	test? ( https://prereleases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
+	test? ( https://releases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="libedit ncurses python test"
 RESTRICT="!test? ( test )"
 

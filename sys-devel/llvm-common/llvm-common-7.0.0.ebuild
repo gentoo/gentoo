@@ -6,11 +6,11 @@ EAPI=6
 MY_P=llvm-${PV/_/}.src
 DESCRIPTION="Common files shared between multiple slots of LLVM"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE=""
 
 RDEPEND="!sys-devel/llvm:0"

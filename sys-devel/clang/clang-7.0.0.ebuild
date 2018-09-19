@@ -18,10 +18,10 @@ LLVM_P=llvm-${PV/_/}.src
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz
-	https://prereleases.llvm.org/${PV/_//}/${EXTRA_P}.tar.xz
-	test? ( https://prereleases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )"
-#	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2 )"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
+	https://releases.llvm.org/${PV/_//}/${EXTRA_P}.tar.xz
+	test? ( https://releases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )
+	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2 )"
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -31,7 +31,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug default-compiler-rt default-libcxx doc +static-analyzer
 	test xml z3 kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 RESTRICT="!test? ( test )"
@@ -60,8 +60,7 @@ PDEPEND="
 	default-libcxx? ( >=sys-libs/libcxx-${PV} )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	|| ( ${ALL_LLVM_TARGETS[*]} )
-	doc"
+	|| ( ${ALL_LLVM_TARGETS[*]} )"
 
 # We need extra level of indirection for CLANG_RESOURCE_DIR
 S=${WORKDIR}/x/y/${MY_P}

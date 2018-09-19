@@ -9,11 +9,11 @@ inherit distutils-r1 multiprocessing
 MY_P=llvm-${PV/_/}.src
 DESCRIPTION="A stand-alone install of the LLVM suite testing tool"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-fbsd"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
