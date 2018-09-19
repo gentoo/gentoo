@@ -22,7 +22,7 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa bluetooth discord-presence doc egl +evdev ffmpeg libav log lto profile pulseaudio +qt5 sdl systemd upnp"
+IUSE="alsa bluetooth discord-presence doc egl +evdev ffmpeg libav log lto profile pulseaudio +qt5 -sdl systemd upnp"
 
 RDEPEND="
 	dev-libs/hidapi:0=

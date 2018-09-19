@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Pythonic library to create text UIs and ASCII art animations"
-HOMEPAGE="https://github.com/pwaller/pyfiglet"
+HOMEPAGE="https://github.com/peterbrittain/asciimatics"
 SRC_URI="https://github.com/peterbrittain/asciimatics/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
