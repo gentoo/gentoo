@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2 BSD-4 RSA DES
 RDEPEND=dev-libs/gmp:0= dev-libs/libevent:0= dev-libs/nspr caps? ( sys-libs/libcap-ng ) curl? ( net-misc/curl ) dnssec? ( net-dns/unbound:= net-libs/ldns ) ldap? ( net-nds/openldap ) pam? ( sys-libs/pam ) seccomp? ( sys-libs/libseccomp ) selinux? ( sys-libs/libselinux ) systemd? ( sys-apps/systemd:0= ) dev-libs/nss[utils(+)] sys-apps/iproute2 !net-misc/openswan !net-vpn/strongswan selinux? ( sec-policy/selinux-ipsec )
 SLOT=0
-SRC_URI=https://download.libreswan.org/libreswan-3.23.tar.gz
+SRC_URI=https://download.libreswan.org/libreswan-3.26.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
-_md5_=7d1ca8d26c813d0ce3441c7dc8cebb8d
+_md5_=9a382b3e028bd4fdb20bd678d7a87920
