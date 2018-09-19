@@ -32,7 +32,7 @@ LICENSE="UoI-NCSA rc BSD public-domain
 	arm? ( LLVM-Grant )
 	multitarget? ( LLVM-Grant )"
 SLOT="0/${PV}"
-KEYWORDS="arm ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~arm ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="clang debug doc gold libedit +libffi lldb multitarget ncurses ocaml
 	python +static-analyzer test xml video_cards_radeon
 	kernel_Darwin"
