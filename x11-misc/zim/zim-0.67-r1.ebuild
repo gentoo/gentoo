@@ -59,6 +59,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
 	gnome2_icon_cache_update
 	if ! has_version ${CATEGORY}/${PN}; then
@@ -76,6 +77,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
