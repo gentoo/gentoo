@@ -12,7 +12,7 @@ inherit cmake-multilib linux-info multiprocessing python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
-SRC_URI="https://prereleases.llvm.org/${PV/_//}/openmp-${PV/_/}.src.tar.xz"
+SRC_URI="https://releases.llvm.org/${PV/_//}/openmp-${PV/_/}.src.tar.xz"
 
 # Additional licenses:
 # - MIT-licensed Intel code,
@@ -20,7 +20,7 @@ SRC_URI="https://prereleases.llvm.org/${PV/_//}/openmp-${PV/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~x64-macos"
 IUSE="cuda hwloc kernel_linux offload ompt test"
 # CUDA works only with the x86_64 ABI
 REQUIRED_USE="offload? ( cuda? ( abi_x86_64 ) )"
