@@ -7627,7 +7627,7 @@ media-libs/libqaccessibilityclient 0.2.0: Library for writing accessibility clie
 media-libs/libquicktime 1.2.4-r2: An enhanced version of the quicktime4linux library
 media-libs/libquvi 0.4.1 0.4.1-r1 0.4.1-r2 0.9.4 0.9.4-r1: Library for parsing video download links
 media-libs/libquvi-scripts 0.4.14 0.4.21-r1 0.4.21-r2 0.9.20131130 0.9.20131130-r1: Embedded lua scripts for libquvi
-media-libs/libraw 0.18.11: LibRaw is a library for reading RAW files obtained from digital photo cameras
+media-libs/libraw 0.18.11 0.18.13: LibRaw is a library for reading RAW files obtained from digital photo cameras
 media-libs/libreplaygain 477-r1: Replay Gain library from Musepack
 media-libs/libsamplerate 0.1.9: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
 media-libs/libsbsms 2.0.2-r1: A library for high quality time and pitch scale modification

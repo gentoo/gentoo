@@ -4,10 +4,10 @@ DESCRIPTION=LibRaw is a library for reading RAW files obtained from digital phot
 EAPI=7
 HOMEPAGE=https://www.libraw.org/ https://github.com/LibRaw/LibRaw
 IUSE=demosaic examples jpeg jpeg2k +lcms openmp abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=LGPL-2.1 CDDL demosaic? ( GPL-2 GPL-3 )
 RDEPEND=jpeg? ( >=virtual/jpeg-0-r2:0[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) jpeg2k? ( >=media-libs/jasper-1.900.1-r6:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) lcms? ( >=media-libs/lcms-2.5:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
 SLOT=0/16
 SRC_URI=https://www.libraw.org/data/LibRaw-0.18.13.tar.gz demosaic? ( https://www.libraw.org/data/LibRaw-demosaic-pack-GPL2-0.18.8.tar.gz https://www.libraw.org/data/LibRaw-demosaic-pack-GPL3-0.18.8.tar.gz )
 _eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
-_md5_=ab5934adfb5b14362619911486960929
+_md5_=ff52cb97d8a70eb5204d13f15e1120aa
