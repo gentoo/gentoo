@@ -7739,7 +7739,7 @@ media-libs/stops 0.3.0: Organ stops for aeolus by Fons Adriaensen <fons.adriaens
 media-libs/t1lib 5.1.2-r2: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.11.1-r1: A library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
-media-libs/tiff 3.9.7-r1 4.0.9-r3: Tag Image File Format (TIFF) library
+media-libs/tiff 3.9.7-r1 4.0.9-r3 4.0.9-r4: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with raster images
