@@ -12,4 +12,4 @@ RDEPEND=>=dev-libs/expat-2.1.0-r3[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,
 SLOT=1.0
 SRC_URI=https://fontconfig.org/release/fontconfig-2.13.1.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
-_md5_=06efe080540d72671a9530417fea643d
+_md5_=7d3cc043bb7b2e55cbf69677d32d1edc
