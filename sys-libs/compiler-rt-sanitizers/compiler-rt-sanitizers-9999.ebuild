@@ -27,9 +27,9 @@ RESTRICT="!test? ( test ) !clang? ( test )"
 CLANG_SLOT=${SLOT%%.*}
 # llvm-6 for new lit options
 DEPEND="
-	net-libs/libtirpc
 	>=sys-devel/llvm-6
 	clang? ( sys-devel/clang )
+	elibc_glibc? ( net-libs/libtirpc )
 	test? (
 		!<sys-apps/sandbox-2.13
 		$(python_gen_any_dep ">=dev-python/lit-5[\${PYTHON_USEDEP}]")
