@@ -314,14 +314,6 @@ dev-python/wxpython:2.8
 # Doesn't pass QA full boot test
 =sys-kernel/ck-sources-4.16.17
 
-# Michał Górny <mgorny@gentoo.org> (20 Jun 2018)
-# Multiple serious bugs.  Upstream does not support Gentoo, and getting
-# any fixes applied is very difficult.  Regularly fails to build.
-# Does not support modern EAPIs, Manifests, news items...  Most severe
-# issues are tracked in bug #658278.  Somebody really needs to step up
-# and start actively maintaining it.  Otherwise -- removal in 90 days.
-sys-apps/paludis
-
 # Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
 # No upstream (website disappeared), no upstream plugin maintainer,
 # and pretty much a fringe format anyway.
