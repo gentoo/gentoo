@@ -18,7 +18,7 @@ DEPEND="${RDEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~ppc x86"
 
 S="${WORKDIR}/${PN}-1.0.5"
 

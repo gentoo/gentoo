@@ -9,7 +9,7 @@ SRC_URI="https://www.dockapps.net/download/${P/-}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="~amd64 ~sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11

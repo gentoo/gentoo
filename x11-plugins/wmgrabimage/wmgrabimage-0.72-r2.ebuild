@@ -13,7 +13,7 @@ SRC_URI="https://www.dockapps.net/download/${MY_PN}-${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND=">=net-misc/wget-1.9-r2

@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~mips ~ppc ~sparc x86"
 
 RDEPEND=">=x11-libs/libdockapp-0.7:=
 	x11-libs/libX11
