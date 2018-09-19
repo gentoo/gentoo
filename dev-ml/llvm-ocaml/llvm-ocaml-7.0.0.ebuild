@@ -13,7 +13,7 @@ inherit cmake-utils llvm multiprocessing python-any-r1
 MY_P=llvm-${PV/_/}.src
 DESCRIPTION="OCaml bindings for LLVM"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz"
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -23,7 +23,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug test ${ALL_LLVM_TARGETS[*]}"
 RESTRICT="!test? ( test )"
 
