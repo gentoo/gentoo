@@ -11,7 +11,7 @@ SRC_URI="https://www.dockapps.net/download/${P/_}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext
