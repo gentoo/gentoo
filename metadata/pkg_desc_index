@@ -792,7 +792,7 @@ app-eselect/eselect-emacs 1.18: Manage multiple Emacs versions on one system
 app-eselect/eselect-fontconfig 1.0 1.1: An eselect module to manage /etc/fonts/conf.d symlinks
 app-eselect/eselect-gnat 1.3-r1: gnat module for eselect
 app-eselect/eselect-gnome-shell-extensions 20180306: Manages system defaults for GNOME Shell extensions
-app-eselect/eselect-infinality 1-r1: Eselect module to choose an infinality font configuration style
+app-eselect/eselect-infinality 1-r1 1.1: Eselect module to choose an infinality font configuration style
 app-eselect/eselect-java 0.4.0: A set of eselect modules for Java
 app-eselect/eselect-lapack 0.1: LAPACK module for eselect
 app-eselect/eselect-lcdfilter 1: Eselect module to choose Freetype infinality-enhanced LCD filtering settings
