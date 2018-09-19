@@ -20,7 +20,7 @@ RDEPEND="
 	geoip? ( dev-libs/geoip )
 	gnutls? ( net-libs/gnutls:= dev-libs/libgcrypt:0 )
 	ldap? ( net-nds/openldap )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c )
 	postgres? ( dev-db/postgresql:= )
 	pcre? ( dev-libs/libpcre )
 	sqlite? ( >=dev-db/sqlite-3.0 )
