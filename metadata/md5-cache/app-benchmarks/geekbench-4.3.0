@@ -1,0 +1,10 @@
+DEFINED_PHASES=install nofetch postinst
+DESCRIPTION=A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
+EAPI=7
+HOMEPAGE=https://www.geekbench.com
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=geekbench
+RESTRICT=bindist fetch mirror strip
+SLOT=4
+SRC_URI=https://cdn.geekbench.com/Geekbench-4.3.0-Linux.tar.gz
+_md5_=dede8148e0a57e6e01acd362a55739a3
