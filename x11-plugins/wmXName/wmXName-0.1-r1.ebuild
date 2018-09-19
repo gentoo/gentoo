@@ -14,7 +14,7 @@ SRC_URI="http://source.xname.org/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE=""
 
 COMMON_DEPEND=">=x11-libs/libXpm-3.5.7
