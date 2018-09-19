@@ -22,7 +22,7 @@ SLOT="0.5"
 
 # Don't move KEYWORDS on the previous line or ekeyword won't work # 399061
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="man static-libs test"
 
