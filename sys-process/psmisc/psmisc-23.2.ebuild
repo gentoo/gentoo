@@ -21,6 +21,10 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
+PATCHES=(
+	"${FILESDIR}/${P}-killall_options_parsing.patch"
+)
+
 src_configure() {
 	local myeconfargs=(
 		--disable-harden-flags
