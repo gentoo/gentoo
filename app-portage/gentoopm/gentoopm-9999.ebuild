@@ -20,8 +20,7 @@ RDEPEND="
 	|| (
 		>=sys-apps/pkgcore-0.9.4[${PYTHON_USEDEP}]
 		>=sys-apps/portage-2.1.10.3[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-		>=sys-apps/paludis-3.0.0_pre20170219[python,${PYTHON_USEDEP}] )"
+		sys-apps/portage-mgorny[${PYTHON_USEDEP}] )"
 PDEPEND="app-eselect/eselect-package-manager"
 
 python_test() {
