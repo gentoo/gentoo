@@ -10,7 +10,7 @@ SRC_URI="http://www.ne.jp/asahi/linux/timecop/software/${PN}-dockapp-${PV}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2"
