@@ -45,13 +45,14 @@ RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-ipsec )
 "
 
-PATCHES=( "${FILESDIR}/${P}-modern-kernels.patch" )
-
 usetf() {
 	usex "$1" true false
 }
 
 src_prepare() {
+	eapply "${FILESDIR}/${P}-nss.patch"
+	eapply "${FILESDIR}/${P}-nss-link.patch"
+
 	sed -i -e 's:/sbin/runscript:/sbin/openrc-run:' initsystems/openrc/ipsec.init.in || die
 	sed -i -e '/^install/ s/postcheck//' -e '/^doinstall/ s/oldinitdcheck//' initsystems/systemd/Makefile || die
 	default
