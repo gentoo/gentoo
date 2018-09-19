@@ -644,7 +644,7 @@ app-emacs/flim 1.14.9-r2: A library to provide basic features about message repr
 app-emacs/folding 2012.0226.1623 2013.0613.1821: A folding-editor-like Emacs minor mode
 app-emacs/ghub 2.0.0: minuscule client library for the Github API
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
-app-emacs/gnuserv 3.12.8-r3: Attach to an already running Emacs
+app-emacs/gnuserv 3.12.8-r3 3.12.8-r4: Attach to an already running Emacs
 app-emacs/google-c-style 20091009-r1: Provides the google C/C++ coding style
 app-emacs/graphviz-dot-mode 0.3.7: Emacs mode for editing and previewing Graphviz dot graphs
 app-emacs/h4x0r 0.13-r1: Aid in writing like a script kiddie does
@@ -666,7 +666,7 @@ app-emacs/lua-mode 20130419: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20161231 0.48_p20180410: Elisp client for the LysKOM conference system
 app-emacs/magit 2.11.0 2.12.1: A Git porcelain inside Emacs
 app-emacs/magit-popup 2.12.3: Define prefix-infix-suffix command combos
-app-emacs/mailcrypt 3.5.9: Provides a simple interface to public key cryptography with OpenPGP
+app-emacs/mailcrypt 3.5.9 3.5.9-r1: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
 app-emacs/mew 6.5 6.6: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
@@ -7470,7 +7470,7 @@ media-libs/freeverb3 3.1.2_pre20151102-r1: Reverb and Impulse Response Convoluti
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.1 0.6.2: Video game music file emulators
 media-libs/gavl 1.2.0 1.4.0-r1: library for handling uncompressed audio and video data
-media-libs/gd 2.2.5: A graphics library for fast image creation
+media-libs/gd 2.2.5 2.2.5-r1: Graphics library for fast image creation
 media-libs/gegl 0.2.0-r2 0.2.0-r5 0.3.0 0.3.8 0.3.26: A graph based image processing framework
 media-libs/gexiv2 0.10.8: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
@@ -7551,7 +7551,7 @@ media-libs/libebur128 1.2.3: A library implementing the EBU R128 loudness standa
 media-libs/libemf 1.0.4-r1: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
 media-libs/libepoxy 1.4.2 1.5.1: Epoxy is a library for handling OpenGL function pointer management for you
-media-libs/libexif 0.6.21 0.6.21-r1: Library for parsing, editing, and saving EXIF data
+media-libs/libexif 0.6.21 0.6.21-r1 0.6.21-r2: Library for parsing, editing, and saving EXIF data
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
 media-libs/libextractor 1.6: Library to extract metadata from files of arbitrary type
 media-libs/libfame 0.9.1-r1 0.9.1-r2: MPEG-1 and MPEG-4 video encoding library

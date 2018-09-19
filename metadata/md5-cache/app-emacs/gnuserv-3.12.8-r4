@@ -4,10 +4,10 @@ DESCRIPTION=Attach to an already running Emacs
 EAPI=6
 HOMEPAGE=http://meltin.net/hacks/emacs/
 IUSE=X
-KEYWORDS=~amd64 ~ppc ~x86 ~x86-linux ~ppc-macos
+KEYWORDS=amd64 ~ppc x86 ~x86-linux ~ppc-macos
 LICENSE=GPL-2+
 RDEPEND=>=app-eselect/eselect-emacs-1.15 X? ( x11-libs/libXau ) >=virtual/emacs-23
 SLOT=0
 SRC_URI=http://meltin.net/hacks/emacs/src/gnuserv-3.12.8.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
-_md5_=935c904ceb9423b050ea43e1758857c8
+_md5_=9b278294180524d8d7f52ed42e664960

@@ -3,11 +3,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Provides a simple interface to public key cryptography with OpenPGP
 EAPI=7
 HOMEPAGE=http://mailcrypt.sourceforge.net/
-KEYWORDS=~amd64 ~ppc ~sparc ~x86
+KEYWORDS=amd64 ppc sparc x86
 LICENSE=GPL-2+
 RDEPEND=app-crypt/gnupg >=virtual/emacs-23
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/mailcrypt/mailcrypt-3.5.9.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
-_md5_=680f60eb4780d64096e102206514932e
+_md5_=080640b282f2c3a81f615bd07e47c005
