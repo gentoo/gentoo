@@ -89,8 +89,8 @@ src_install() {
 
 	einstalldocs
 
-	newinitd "${FILESDIR}/${PN}-r3.initd" "${PN}"
-	newconfd "${FILESDIR}/${PN}-r3.confd" "${PN}"
+	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
+	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 
 	keepdir "/var/log/${PN}"
 
