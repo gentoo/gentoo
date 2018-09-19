@@ -9,11 +9,11 @@ inherit python-r1
 MY_P=cfe-${PV/_/}.src
 DESCRIPTION="Python bindings for sys-devel/clang"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-fbsd"
 IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
