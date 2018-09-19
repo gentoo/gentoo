@@ -5057,6 +5057,7 @@ dev-python/markdown2 2.3.0: Python Markdown language reimplementation
 dev-python/markups 2.0.0: A wrapper around various text markups
 dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/matplotlib 2.2.2-r1: Pure python plotting library with matlab like syntax
+dev-python/matterhook 0.1: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.2.1 0.6.1: flake8 plugin: McCabe complexity checker
 dev-python/mecab-python 0.996: Python binding for MeCab
 dev-python/mechanize 0.2.5-r1: Stateful programmatic web browsing in Python
