@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/mailcrypt/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ppc sparc x86"
 RESTRICT="test"
 
 RDEPEND="app-crypt/gnupg"
