@@ -5,11 +5,11 @@ DESCRIPTION=C++ client library for the CMIS interface
 EAPI=7
 HOMEPAGE=https://github.com/tdf/libcmis
 IUSE=man static-libs test
-KEYWORDS=~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=|| ( GPL-2 LGPL-2 MPL-1.1 )
 RDEPEND=dev-libs/boost:= dev-libs/libxml2 net-misc/curl
 RESTRICT=test
 SLOT=0.5
 SRC_URI=https://github.com/tdf/libcmis/archive/738528d790b2b1d52d9b72d673842969a852815d.tar.gz -> libcmis-0.5.2_pre20180118.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
-_md5_=6b51f743b23719e70fa63594b914b1b4
+_md5_=deae41f6a6e6207ca7be31bf9fbbba66

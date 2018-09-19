@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm
+DEPEND=>=dev-libs/boost-1.62.0-r1:= dev-qt/qtcore:5 dev-qt/qtnetwork:5[ssl] >=dev-qt/qtsingleapplication-2.6.1_p20130904-r1[qt5(+),X?] dev-qt/qtxml:5 >=net-libs/libtorrent-rasterbar-1.0.6:0= sys-libs/zlib dbus? ( dev-qt/qtdbus:5 ) X? ( dev-libs/geoip dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 ) dev-qt/linguist-tools:5 virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=BitTorrent client in C++ and Qt
+EAPI=6
+HOMEPAGE=https://www.qbittorrent.org https://github.com/qbittorrent
+IUSE=+dbus debug webui +X
+KEYWORDS=~amd64 ~arm ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/boost-1.62.0-r1:= dev-qt/qtcore:5 dev-qt/qtnetwork:5[ssl] >=dev-qt/qtsingleapplication-2.6.1_p20130904-r1[qt5(+),X?] dev-qt/qtxml:5 >=net-libs/libtorrent-rasterbar-1.0.6:0= sys-libs/zlib dbus? ( dev-qt/qtdbus:5 ) X? ( dev-libs/geoip dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 )
+REQUIRED_USE=dbus? ( X )
+SLOT=0
+SRC_URI=https://github.com/qbittorrent/qBittorrent/archive/release-4.1.3.tar.gz -> qbittorrent-4.1.3.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=393d930f6d7921ffa454df9917e96bba
