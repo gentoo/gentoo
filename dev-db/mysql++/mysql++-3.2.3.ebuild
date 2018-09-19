@@ -11,7 +11,7 @@ SRC_URI="http://www.tangentsoft.net/mysqlpp/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0/3"
-KEYWORDS="~alpha amd64 ~hppa ~mips ~ppc ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 ~hppa ~mips ~ppc ~sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc"
 
 RDEPEND="virtual/libmysqlclient:="
