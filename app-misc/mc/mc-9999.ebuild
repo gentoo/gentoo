@@ -4,7 +4,7 @@
 EAPI=6
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="https://github.com/MidnightCommander/mc.git git://repo.or.cz/midnight-commander.git"
+	EGIT_REPO_URI="https://github.com/MidnightCommander/mc.git"
 	LIVE_ECLASSES="git-r3 autotools"
 	LIVE_EBUILD=yes
 fi
