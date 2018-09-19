@@ -60,7 +60,7 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install
 
-	if ! use minimal; then
+	if ! use minimal && use X; then
 		#racket now comes with desktop files, but DESTDIR is mishandled
 		for f in /usr/share/applications/{drracket,slideshow}.desktop; do
 			sed -e "s|${D}||g" \
