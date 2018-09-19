@@ -11,6 +11,5 @@ RDEPEND="
 	|| (
 		sys-apps/portage
 		sys-apps/portage-mgorny
-		sys-apps/paludis
 		sys-apps/pkgcore
 	)"
