@@ -8267,7 +8267,7 @@ media-video/recordmydesktop 0.3.8.1-r4 0.3.8.1-r5: A desktop session recorder pr
 media-video/rovclock 0.6e-r1: Overclocking utility for ATI Radeon cards
 media-video/rtmpdump 2.4_p20161210: RTMP client intended to stream audio or video flash content
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
-media-video/smplayer 18.3.0 18.6.0: Great Qt GUI front-end for mplayer/mpv
+media-video/smplayer 18.6.0: Great Qt GUI front-end for mplayer/mpv
 media-video/smtube 17.5.0-r2: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subviewer srt
