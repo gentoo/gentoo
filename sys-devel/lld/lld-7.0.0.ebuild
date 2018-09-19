@@ -15,12 +15,12 @@ LLVM_P=llvm-${PV/_/}.src
 
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz
-	test? ( https://prereleases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
+	test? ( https://releases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-fbsd"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
