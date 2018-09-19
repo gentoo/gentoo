@@ -19,6 +19,7 @@ LICENSE="MIT"
 SLOT="0"
 RDEPEND="app-crypt/gnupg"
 DEPEND="${RDEPEND}
+	dev-go/fuzzy:=
 	dev-go/twofactor:=
 	dev-go/zglob:="
 
@@ -28,19 +29,23 @@ src_compile() {
 	EGO_PN="${EGO_PN}/cmd/browserpass" golang-build_src_compile
 
 	pushd "src/${EGO_PN}" >/dev/null || die
-	sed -e 's|%%replace%%|'${EPREFIX}'/usr/bin/browserpass|' \
+	sed -e 's|%%replace%%|'${EPREFIX}'/usr/libexec/browserpass|' \
 		-i firefox/host.json chrome/host.json || die
 	popd >/dev/null || die
 }
 
 src_install() {
-	dobin browserpass
+	exeinto /usr/libexec
+	doexe browserpass
 
 	pushd "src/${EGO_PN}" >/dev/null || die
 	insinto /usr/$(get_libdir)/mozilla/native-messaging-hosts
 	newins firefox/host.json com.dannyvankooten.browserpass.json
 
 	insinto /etc/chromium/native-messaging-hosts
+	newins chrome/host.json com.dannyvankooten.browserpass.json
+
+	insinto /etc/opt/chrome/native-messaging-hosts
 	newins chrome/host.json com.dannyvankooten.browserpass.json
 
 	einstalldocs
