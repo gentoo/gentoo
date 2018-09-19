@@ -28,7 +28,6 @@ RDEPEND="app-shells/bash
 		( sys-apps/portage app-portage/portage-utils )
 		( sys-apps/portage-mgorny app-portage/portage-utils )
 		sys-apps/pkgcore
-		sys-apps/paludis
 	)
 "
 

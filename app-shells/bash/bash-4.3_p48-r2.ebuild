@@ -44,8 +44,7 @@ DEPEND=">=sys-libs/ncurses-5.2-r2:0=
 	readline? ( >=sys-libs/readline-${READLINE_VER}:0= )
 	nls? ( virtual/libintl )"
 RDEPEND="${DEPEND}
-	!<sys-apps/portage-2.1.6.7_p1
-	!<sys-apps/paludis-0.26.0_alpha5"
+	!<sys-apps/portage-2.1.6.7_p1"
 # we only need yacc when the .y files get patched (bash42-005)
 DEPEND+=" virtual/yacc"
 
