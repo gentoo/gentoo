@@ -1,32 +1,29 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils multilib toolchain-funcs perl-functions python-any-r1
+inherit multilib toolchain-funcs python-any-r1
 
 DESCRIPTION="easy hugepage access"
 HOMEPAGE="https://github.com/libhugetlbfs/libhugetlbfs"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-# Switch to github tarball w/next release.
-#SRC_URI="https://github.com/libhugetlbfs/libhugetlbfs/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/libhugetlbfs/libhugetlbfs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="perl static-libs test"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~s390 ~x86"
+IUSE="static-libs test"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"
-RDEPEND="perl? ( dev-lang/perl:= )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.6-fixup-testsuite.patch
+)
 
 src_prepare() {
-	perl_set_version
-
-	epatch "${FILESDIR}"/${PN}-2.9-build.patch #332517
-	epatch "${FILESDIR}"/${PN}-2.6-noexec-stack.patch
-	epatch "${FILESDIR}"/${PN}-2.6-fixup-testsuite.patch
+	default
 	sed -i \
 		-e '/^PREFIX/s:/local::' \
 		-e '1iBUILDTYPE = NATIVEONLY' \
@@ -34,13 +31,17 @@ src_prepare() {
 		-e '/gzip.*MANDIR/d' \
 		-e "/^LIB\(32\)/s:=.*:= $(get_libdir):" \
 		-e '/^CC\(32\|64\)/s:=.*:= $(CC):' \
-		-e "/^PMDIR = .*\/perl5\/TLBC/s::PMDIR = ${VENDOR_LIB}\/TLBC:" \
+		-e 's@^\(ARCH\) ?=@\1 =@' \
 		Makefile || die "sed failed"
 	if [ "$(get_libdir)" == "lib64" ]; then
 		sed -i \
 			-e "/^LIB\(32\)/s:=.*:= lib32:" \
 				Makefile
 	fi
+
+	# Tarballs from github don't have the version set.
+	# https://github.com/libhugetlbfs/libhugetlbfs/issues/7
+	[[ -f version ]] || echo "${PV}" > version
 }
 
 src_compile() {
@@ -50,15 +51,7 @@ src_compile() {
 
 src_install() {
 	default
-	use static-libs || rm -f "${ED}"/usr/$(get_libdir)/*.a
-	rm "${ED}"/usr/bin/oprofile* || die
-	if ! use perl ; then
-		rm -r \
-			"${ED}"/usr/bin/cpupcstat \
-			"${ED}"/usr/share/man/man8/cpupcstat.8 \
-			"${ED}/${VENDOR_LIB}" \
-			|| die
-	fi
+	use static-libs || rm -f "${ED%/}"/usr/$(get_libdir)/*.a
 }
 
 src_test_alloc_one() {
