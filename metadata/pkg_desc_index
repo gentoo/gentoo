@@ -644,7 +644,7 @@ app-emacs/flim 1.14.9-r2: A library to provide basic features about message repr
 app-emacs/folding 2012.0226.1623 2013.0613.1821: A folding-editor-like Emacs minor mode
 app-emacs/ghub 2.0.0: minuscule client library for the Github API
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
-app-emacs/gnuserv 3.12.8-r3 3.12.8-r4: Attach to an already running Emacs
+app-emacs/gnuserv 3.12.8-r4: Attach to an already running Emacs
 app-emacs/google-c-style 20091009-r1: Provides the google C/C++ coding style
 app-emacs/graphviz-dot-mode 0.3.7: Emacs mode for editing and previewing Graphviz dot graphs
 app-emacs/h4x0r 0.13-r1: Aid in writing like a script kiddie does
@@ -663,10 +663,10 @@ app-emacs/keywiz 1.4: Emacs key sequence quiz
 app-emacs/limit 1.14.10_pre200811252332: Library about Internet Message, for IT generation
 app-emacs/lookup 1.4.1: An interface to search CD-ROM books and network dictionaries
 app-emacs/lua-mode 20130419: An Emacs major mode for editing Lua scripts
-app-emacs/lyskom-elisp-client 0.48_p20161231 0.48_p20180410: Elisp client for the LysKOM conference system
+app-emacs/lyskom-elisp-client 0.48_p20180410: Elisp client for the LysKOM conference system
 app-emacs/magit 2.11.0 2.12.1: A Git porcelain inside Emacs
 app-emacs/magit-popup 2.12.3: Define prefix-infix-suffix command combos
-app-emacs/mailcrypt 3.5.9 3.5.9-r1: Provides a simple interface to public key cryptography with OpenPGP
+app-emacs/mailcrypt 3.5.9-r1: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
 app-emacs/mew 6.5 6.6: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
@@ -8435,7 +8435,7 @@ net-analyzer/trafshow 5.2.3: Full screen visualization of the network traffic
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/w3af 1.1-r1: Web Application Attack and Audit Framework
-net-analyzer/wireshark 2.6.2 2.6.3: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.6.3: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
 net-analyzer/zabbix 2.2.16: ZABBIX is software for monitoring of your applications, network and servers
