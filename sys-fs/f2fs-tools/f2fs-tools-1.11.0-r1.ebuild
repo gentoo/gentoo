@@ -10,7 +10,7 @@ HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git/ab
 SRC_URI="https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0/4"
+SLOT="0/5"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="selinux"
 

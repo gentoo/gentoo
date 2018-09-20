@@ -9,7 +9,7 @@ SRC_URI="https://dev.gentoo.org/~blueness/f2fs-tools/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/4"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="selinux"
 
 RDEPEND="
