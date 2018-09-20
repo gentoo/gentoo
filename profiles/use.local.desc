@@ -5492,6 +5492,7 @@ sys-devel/llvm:clang - Build the clang C/C++ compiler
 sys-devel/llvm:default-compiler-rt - Use compiler-rt instead of libgcc as the default rtlib for clang
 sys-devel/llvm:default-libcxx - Use libc++ instead of libstdc++ as the default stdlib for clang
 sys-devel/llvm:doc - Build and install the HTML documentation and regenerate the man pages
+sys-devel/llvm:exegesis - Enable performance counter support for llvm-exegesis tool that can be used to measure host machine instruction characteristics
 sys-devel/llvm:gold - Build the gold linker plugin
 sys-devel/llvm:lldb - Build the lldb debugger
 sys-devel/llvm:multitarget - Build all host targets (default: host only)
