@@ -14,15 +14,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+artist-screen async-connect chat-screen doc +help-screen key-screen lirc lyrics-screen outputs-screen search-screen +song-screen +mouse nls tcp"
 
-RDEPEND="dev-libs/glib:2
-	 media-libs/libmpdclient
-	 sys-libs/ncurses:0=[unicode]
-	 lirc? ( app-misc/lirc )"
+RDEPEND="
+	dev-libs/glib:2
+	media-libs/libmpdclient
+	sys-libs/ncurses:0=[unicode]
+	lirc? ( app-misc/lirc )
+"
 
-DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx
-	       app-doc/doxygen )
-	virtual/pkgconfig"
+DEPEND="
+	${RDEPEND}
+	doc? (
+		app-doc/doxygen
+		dev-python/sphinx
+	)
+	virtual/pkgconfig
+"
 
 DOCS=( doc/. AUTHORS README.rst )
 
@@ -34,7 +40,7 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		-Dcurses=ncursesw
-		-Dcolors=ncursesw
+		-Dcolors=true
 		-Dmini=false
 		-Dlyrics_plugin_dir="${EPREFIX}/usr/$(get_libdir)/ncmpc/lyrics"
 		-Dartist_screen=$(usex artist-screen true false)
