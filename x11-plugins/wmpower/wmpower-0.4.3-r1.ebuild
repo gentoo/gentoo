@@ -20,8 +20,11 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS BUGS ChangeLog LEGGIMI NEWS README README.compal THANKS TODO )
 
-src_compile() {
+src_configure() {
 	# override wmpower self-calculated cflags
 	econf MY_CFLAGS="${CFLAGS}"
+}
+
+src_compile() {
 	emake prefix="/usr/"
 }
