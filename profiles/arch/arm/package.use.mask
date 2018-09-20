@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (20 Sep 2018)
+# dev-libs/libpfm not keyworded here (and unclear if it supports ARM).
+# Bug #666651.
+sys-devel/llvm exegesis
+
 # Andreas Sturmlechner <asturm@gentoo.org> (01 Sep 2018)
 # media-libs/libaom not yet keyworded
 # media-libs/aribb24 not yet keyworded, bug #665048
