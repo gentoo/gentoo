@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=dev-lang/fpc-3.0.4[source] net-misc/rsync x11-libs/gtk+:2 >=sys-devel/binutils-2.19.1-r1:=
+DESCRIPTION=Lazarus IDE is a feature rich visual programming environment emulating Delphi
+EAPI=6
+HOMEPAGE=https://www.lazarus-ide.org/
+IUSE=minimal python
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2.1-with-linking-exception
+RDEPEND=>=dev-lang/fpc-3.0.4[source] net-misc/rsync x11-libs/gtk+:2 >=sys-devel/binutils-2.19.1-r1:=
+RESTRICT=strip
+SLOT=0
+SRC_URI=python? ( https://github.com/Alexey-T/Python-for-Lazarus/archive/586eec1a5ea609ef9df2bf586be06825d9fbd50f.tar.gz -> lazarus-1.8.4-python.tar.gz ) https://sourceforge.net/projects/lazarus/files/Lazarus%20Zip%20_%20GZip/Lazarus%201.8.4/lazarus-1.8.4.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
+_md5_=e55d83d420e2d950bdc0a99ffc58a7f7
