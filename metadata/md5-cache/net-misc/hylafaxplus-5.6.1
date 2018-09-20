@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=sys-libs/zlib-1.1.4 app-text/ghostscript-gpl virtual/mta media-libs/tiff:0[jbig?] virtual/jpeg:0 jbig? ( media-libs/jbigkit ) virtual/awk lcms? ( media-libs/lcms ) ldap? ( net-nds/openldap ) pam? ( virtual/pam ) mgetty? ( net-dialup/mgetty[-fax] ) !net-dialup/mgetty[fax]
+DESCRIPTION=Enterprise client-server fax package for class 1 and 2 fax modems
+EAPI=6
+HOMEPAGE=http://hylafax.sourceforge.net
+IUSE=jbig html lcms ldap mgetty pam
+KEYWORDS=~amd64 ~x86
+LICENSE=hylafaxplus
+RDEPEND=>=sys-libs/zlib-1.1.4 app-text/ghostscript-gpl virtual/mta media-libs/tiff:0[jbig?] virtual/jpeg:0 jbig? ( media-libs/jbigkit ) virtual/awk lcms? ( media-libs/lcms ) ldap? ( net-nds/openldap ) pam? ( virtual/pam ) mgetty? ( net-dialup/mgetty[-fax] ) !net-dialup/mgetty[fax] net-mail/metamail !net-dialup/sendpage
+SLOT=0
+SRC_URI=mirror://sourceforge/hylafax/hylafax-5.6.1.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	pam	3e788d86170dfcd5b06824d898315e18	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=487e0a386c8404b7ebc77f18e6a4530f
