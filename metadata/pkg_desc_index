@@ -10126,7 +10126,7 @@ sys-fs/eudev 3.2.5: Linux dynamic and persistent device naming support (aka user
 sys-fs/exfat-utils 1.2.8: exFAT filesystem utilities
 sys-fs/ext4magic 0.3.2: Tool for recovery of deleted or overwritten files on ext3/ext4 filesystems
 sys-fs/extundelete 0.2.4: A utility to undelete files from an ext3 or ext4 partition
-sys-fs/f2fs-tools 1.6.1: Tools for Flash-Friendly File System (F2FS)
+sys-fs/f2fs-tools 1.6.1 1.10.0: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatsort 1.4.2: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fuse 2.9.7: An interface for filesystems implemented in userspace
 sys-fs/fuse-exfat 1.2.8: exFAT filesystem FUSE module
