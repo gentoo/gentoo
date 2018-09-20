@@ -14,7 +14,7 @@ LICENSE="Broadcom"
 SLOT="b43"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
-RESTRICT="mirror binchecks strip"
+RESTRICT="binchecks strip"
 
 DEPEND=">=net-wireless/b43-fwcutter-015"
 RDEPEND=""
