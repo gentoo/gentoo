@@ -63,6 +63,7 @@ src_install() {
 	insinto /opt/puppetlabs/server/apps/puppetserver/scripts
 	doins install.sh
 	insinto /opt/puppetlabs/server/apps/puppetserver/cli/apps
+	doins ext/cli/ca
 	doins ext/cli/irb
 	doins ext/cli/foreground
 	doins ext/cli/gem
@@ -105,7 +106,8 @@ src_install() {
 	fperms -R 775 /opt/puppetlabs/server/data/puppetserver
 	fperms -R 700 /var/log/puppetlabs/puppetserver
 	insinto /opt/puppetlabs/server/data
-	newins ext/build-scripts/jruby-gem-list.txt puppetserver-gem-list.txt
+	doins ext/build-scripts/jruby-gem-list.txt
+	doins ext/build-scripts/mri-gem-list.txt
 	newtmpfiles ext/puppetserver.tmpfiles.conf puppetserver.conf
 }
 
@@ -120,9 +122,12 @@ pkg_postinst() {
 	elog
 	elog "# install puppetserver gems"
 	elog "cd /opt/puppetlabs/server/apps/puppetserver"
-	elog "echo "jruby-puppet: { gem-home: ${DESTDIR}/opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems }" > jruby.conf"
-	elog "while read LINE"
-	elog "do"
-	elog "	java -cp puppet-server-release.jar:jruby-1_7.jar clojure.main -m puppetlabs.puppetserver.cli.gem --config jruby.conf -- install \$(echo \$LINE |awk '{print \$1}') --version \$(echo \$LINE |awk '{print \$2}')"
-	elog "done < /opt/puppetlabs/server/data/puppetserver-gem-list.txt"
+	elog "echo \"jruby-puppet: { gem-home: ${DESTDIR}/opt/puppetlabs/server/data/puppetserver/vendored-jruby-gems }\" > jruby.conf"
+	elog "while read LINE do"
+	elog "  java -cp puppet-server-release.jar:jruby-9k.jar clojure.main -m puppetlabs.puppetserver.cli.gem --config jruby.conf -- install --no-ri --no-rdoc \$(echo \$LINE |awk '{print \$1}') --version \$(echo \$LINE |awk '{print \$2}')"
+	elog "done < /opt/puppetlabs/server/data/jruby-gem-list.txt"
+	elog "echo \"jruby-puppet: { gem-home: ${DESTDIR}/opt/puppetlabs/puppet/lib/ruby/vendor_gems }\" > jruby.conf"
+	elog "while read LINE do"
+	elog "  java -cp puppet-server-release.jar:jruby-9k.jar clojure.main -m puppetlabs.puppetserver.cli.gem --config jruby.conf -- install --no-ri --no-rdoc \$(echo \$LINE |awk '{print \$1}') --version \$(echo \$LINE |awk '{print \$2}')"
+	elog "done < /opt/puppetlabs/server/data/mri-gem-list.txt"
 }
