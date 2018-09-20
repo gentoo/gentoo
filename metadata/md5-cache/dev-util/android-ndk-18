@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install pretend setup
+DEPEND=app-arch/p7zip
+DESCRIPTION=Open Handset Alliance's Android NDK (Native Dev Kit)
+EAPI=6
+HOMEPAGE=http://developer.android.com/sdk/ndk/
+KEYWORDS=~amd64
+LICENSE=android
+RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81 sys-libs/ncurses:5/5[tinfo]
+RESTRICT=mirror strip installsources test
+SLOT=0
+SRC_URI=https://dl.google.com/android/repository/android-ndk-r18-linux-x86_64.zip
+_eclasses_=check-reqs	21aa24510a44d259c03425a957336b3b
+_md5_=9bd7386ad0fa6a755d1108568176dad2
