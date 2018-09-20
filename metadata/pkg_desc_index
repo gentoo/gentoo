@@ -8374,7 +8374,7 @@ net-analyzer/nessus-client 1.0.2-r2: A client for the Nessus vulnerability scann
 net-analyzer/net-snmp 5.7.3-r5: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9: the network swiss army knife
 net-analyzer/netcat6 1.0-r2: netcat clone with better IPv6 support, improved code, etc...
-net-analyzer/nethogs 0.8.1: A small 'net top' tool, grouping bandwidth by process
+net-analyzer/nethogs 0.8.1 0.8.5-r1: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/netperf 2.7.0-r2: Network performance benchmark
 net-analyzer/netselect 0.3-r3: Ultrafast implementation of ping
 net-analyzer/nettop 0.2.3-r2: top like program for network activity
