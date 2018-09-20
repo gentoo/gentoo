@@ -146,7 +146,8 @@ REQUIRED_USE="
 	readline? ( !libedit )
 	recode? ( !imap !mysqli !mysql )
 	session-mm? ( session !threads )
-	mysql? ( || ( mysqli pdo ) )
+	mysql? ( hash || ( mysqli pdo ) )
+	mysqli? ( hash )
 	zip-encryption? ( zip )
 "
 PATCHES=(
