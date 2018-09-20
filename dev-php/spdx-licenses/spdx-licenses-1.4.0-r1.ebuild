@@ -16,7 +16,10 @@ RDEPEND="
 	dev-php/fedora-autoloader"
 
 src_install() {
+	insinto "/usr/share/php/Composer/res"
+	doins -r res/.
+
 	insinto "/usr/share/php/Composer/Spdx"
-	doins -r src/. res "${FILESDIR}"/autoload.php
+	doins -r src/. "${FILESDIR}"/autoload.php
 	dodoc README.md
 }
