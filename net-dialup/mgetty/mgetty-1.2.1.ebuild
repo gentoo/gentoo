@@ -9,7 +9,6 @@ HOMEPAGE="http://mgetty.greenie.net/"
 SRC_URI="ftp://mgetty.greenie.net/pub/mgetty/source/1.2/${P}.tar.gz"
 
 DEPEND="
-	doc? ( virtual/latex-base virtual/texi2dvi )
 	>=sys-apps/sed-4
 	sys-apps/groff
 	dev-lang/perl
@@ -27,7 +26,7 @@ RDEPEND="${DEPEND}
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="doc +fax fidonet"
+IUSE="+fax fidonet"
 
 pkg_setup() {
 	enewgroup fax
@@ -55,12 +54,6 @@ src_prepare() {
 
 	sed -e "/^doc-all:/s/mgetty.asc mgetty.info mgetty.dvi mgetty.ps/mgetty.info/" \
 		-i doc/Makefile || die 'first sed on doc/Makefile failed'
-	if use doc; then
-		sed -i \
-			-e "s/^doc-all:/doc-all: mgetty.ps/" \
-			-e "s/^all:/all: doc-all/" \
-			doc/Makefile || die 'second sed on doc/Makefile failed'
-	fi
 
 	sed -i \
 		-e 's:^CC=:CC?=:g' \
@@ -75,6 +68,8 @@ src_prepare() {
 
 src_configure() {
 	tc-export AR CC RANLIB
+	use fidonet && append-cppflags "-DFIDO"
+	append-cppflags "-DAUTO_PPP"
 
 	sed -e 's:var/log/mgetty:var/log/mgetty/mgetty:' \
 		-e 's:var/log/sendfax:var/log/mgetty/sendfax:' \
@@ -89,21 +84,21 @@ src_configure() {
 }
 
 src_compile() {
-	use fidonet && append-cppflags "-DFIDO"
-	append-cppflags "-DAUTO_PPP"
-	# bug #299421
-	VARTEXFONTS="${T}"/fonts emake -j1 prefix=/usr \
-		CONFDIR=/etc/mgetty+sendfax \
-		CFLAGS="${CFLAGS} ${CPPFLAGS}" \
-		LDFLAGS="${LDFLAGS}" \
-		all vgetty
+	local target
+	for target in mgetty sedscript all vgetty;do
+		VARTEXFONTS="${T}"/fonts emake prefix=/usr \
+			CONFDIR=/etc/mgetty+sendfax \
+			CFLAGS="${CFLAGS} ${CPPFLAGS}" \
+			LDFLAGS="${LDFLAGS}" \
+			${target}
+	done
 }
 
 src_install () {
 	# parallelization issue: vgetty-install target fails if install target
 	#                        isn't finished
-	local targets
-	for targets in install "vgetty-install install-callback"; do
+	local target
+	for target in install "vgetty-install install-callback"; do
 		emake prefix="${D}/usr" \
 			INFODIR="${D}/usr/share/info" \
 			CONFDIR="${D}/etc/mgetty+sendfax" \
@@ -117,7 +112,7 @@ src_install () {
 			PHONE_GROUP=fax \
 			PHONE_PERMS=755 \
 			spool="${D}/var/spool" \
-			${targets}
+			${target}
 	done
 
 	keepdir /var/log/mgetty
@@ -135,10 +130,6 @@ src_install () {
 
 	docinto vgetty
 	dodoc voice/{Readme,Announce,ChangeLog,Credits}
-
-	if use doc; then
-		dodoc doc/mgetty.ps
-	fi
 
 	docinto vgetty/doc
 	dodoc voice/doc/*
