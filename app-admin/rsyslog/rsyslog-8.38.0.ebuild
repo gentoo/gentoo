@@ -23,7 +23,7 @@ else
 		doc? ( https://www.rsyslog.com/files/download/${PN}/${PN}-doc-${PV}.tar.gz )
 	"
 
-	PATCHES=()
+	PATCHES=( "${FILESDIR}"/${P}-fix-omprog-output-capture-mt-test.patch )
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
