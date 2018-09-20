@@ -1560,7 +1560,7 @@ app-vim/eselect-syntax 20070506: vim plugin: Eselect syntax highlighting, filety
 app-vim/extra-syntax 4-r2: vim plugin: metapackage for all extra syntax packages
 app-vim/fluxbox-syntax 1.5: vim plugin: fluxbox files syntax and indent
 app-vim/foldutil 3.0-r1: vim plugin: fold creation utility
-app-vim/fugitive 2.2: vim plugin: a git wrapper for vim
+app-vim/fugitive 2.3: vim plugin: a git wrapper for vim
 app-vim/fuzzyfinder 4.2.2: vim plugin: buffer/file/command/tag/etc explorer with fuzzy matching
 app-vim/genindent 1.1-r1: vim plugin: library for simplifying indent files
 app-vim/gentoo-syntax 20160530 20170225 20180821: vim plugin: Gentoo and Portage syntax highlighting
