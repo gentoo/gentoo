@@ -10336,7 +10336,7 @@ virtual/gsasl 2: Virtual for the GNU SASL library
 virtual/httpd-basic 0-r2: Virtual for static HTML-enabled webservers
 virtual/httpd-cgi 0-r1 0-r2: Virtual for CGI-enabled webservers
 virtual/httpd-fastcgi 0-r1: Virtual for FastCGI-enabled webservers
-virtual/httpd-php 5.6 7.0 7.1: Virtual to provide PHP-enabled webservers
+virtual/httpd-php 5.6 7.0 7.1 7.2: Virtual to provide PHP-enabled webservers
 virtual/imagemagick-tools 0: Virtual for imagemagick command line tools
 virtual/imap-c-client 0 1 2: Virtual for IMAP c-client
 virtual/inetd 0: Virtual for the internet super-server daemon
