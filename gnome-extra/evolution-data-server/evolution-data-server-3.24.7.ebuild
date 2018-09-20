@@ -76,6 +76,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${PV}-DESTDIR-honoring.patch
 	"${FILESDIR}"/${PV}-libical3-compat.patch
+	"${FILESDIR}"/icu61-compat.patch
 )
 
 pkg_setup() {

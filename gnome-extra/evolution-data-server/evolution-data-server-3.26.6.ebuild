@@ -78,10 +78,9 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
-# global scope PATCHES or DOCS array mustn't be used due to double default_src_prepare
-# call; if needed, set them after cmake-utils_src_prepare call, if that works
-
+# global scope PATCHES or DOCS array mustn't be used due to double default_src_prepare call
 src_prepare() {
+	eapply "${FILESDIR}"/icu61-compat.patch
 	use vala && vala_src_prepare
 	cmake-utils_src_prepare
 	gnome2_src_prepare
