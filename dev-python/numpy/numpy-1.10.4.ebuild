@@ -117,6 +117,8 @@ python_prepare_all() {
 }
 
 python_compile() {
+	export MAKEOPTS=-j1 # bug #660754
+
 	distutils-r1_python_compile \
 		$(usex python_targets_python3_5 "" "-j $(makeopts_jobs)") \
 		${NUMPY_FCONFIG}

@@ -127,6 +127,8 @@ python_prepare_all() {
 }
 
 python_compile() {
+	export MAKEOPTS=-j1 # bug #660754
+
 	local python_makeopts_jobs=""
 	python_is_python3 || python_makeopts_jobs="-j $(makeopts_jobs)"
 	distutils-r1_python_compile \
