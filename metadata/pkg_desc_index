@@ -8077,7 +8077,7 @@ media-sound/mpd 0.20.10: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
-media-sound/mpg123 1.25.6 1.25.10-r1: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
+media-sound/mpg123 1.25.10-r1: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mserv 0.35-r1: Jukebox-style music server
 media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP server
@@ -8175,7 +8175,7 @@ media-sound/vorbisgain 0.37-r2: Calculator of perceived sound level for Ogg Vorb
 media-sound/vsound 0.6-r1: A virtual audio loopback cable
 media-sound/wavbreaker 0.11: wavbreaker/wavmerge GTK+ utility to break or merge WAV files
 media-sound/wavegain 1.3.1: ReplayGain for WAVE audio files
-media-sound/wavpack 5.1.0 5.1.0-r1: Hybrid lossless audio compression tools
+media-sound/wavpack 5.1.0-r1: Hybrid lossless audio compression tools
 media-sound/wildmidi 0.2.3.5 0.3.13: Midi processing library and a midi player using the gus patch set
 media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
 media-sound/xfmpc 0.2.3-r1: Music Player Daemon (MPD) client for the Xfce desktop environment
