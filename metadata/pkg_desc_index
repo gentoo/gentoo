@@ -7103,7 +7103,7 @@ media-fonts/arphicfonts 0.2.20080216.1-r2: Chinese TrueType Arphic Fonts
 media-fonts/artwiz-aleczapka-en 1.3: Artwiz Aleczapko fonts
 media-fonts/artwiz-latin1 1.1: A set of improved Artwiz fonts with bold and full ISO-8859-1 support
 media-fonts/baekmuk-fonts 2.2-r2: Korean Baekmuk Font
-media-fonts/bitstream-cyberbit 2.0 2.0-r1: Cyberbit Unicode (including CJK) font
+media-fonts/bitstream-cyberbit 2.0-r2: Cyberbit Unicode (including CJK) font
 media-fonts/cantarell 0.0.25: Default fontset for GNOME Shell
 media-fonts/cardo 1.04: Unicode font for classicists, medievalists and linguists
 media-fonts/cheapskatefonts 1.0: Dustismo's decorative font collection
