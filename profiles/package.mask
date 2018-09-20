@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (20 Sep 2018)
+# Dead upstream and unmaintained for a long time,
+# has multiple bugs open, use sys-process/cronie
+# instead (the fork). Removal in 30 days.
+sys-process/vixie-cron
+
 # Ulrich Müller <ulm@gentoo.org> (17 Sep 2018)
 # ebuild-mode-1.46 supports GLEP 76 copyright policy, bug 666358.
 # Masked for testing until other tools like repoman support it too.
