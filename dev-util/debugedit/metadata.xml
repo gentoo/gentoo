@@ -5,8 +5,4 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>base-system@gentoo.org</email>
-		<name>Gentoo Base System</name>
-	</maintainer>
 </pkgmetadata>
