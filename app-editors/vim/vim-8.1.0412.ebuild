@@ -2,10 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-VIM_VERSION="8.0"
+VIM_VERSION="8.1"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-PYTHON_REQ_USE=threads
-inherit vim-doc flag-o-matic versionator bash-completion-r1 python-single-r1
+PYTHON_REQ_USE="threads"
+USE_RUBY="ruby23 ruby24 ruby25"
+
+inherit vim-doc flag-o-matic bash-completion-r1 python-single-r1 ruby-single desktop
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -45,7 +47,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	racket? ( dev-scheme/racket )
-	ruby? ( || ( dev-lang/ruby:2.4 dev-lang/ruby:2.3 ) )
+	ruby? ( ${RUBY_DEPS} )
 	selinux? ( sys-libs/libselinux )
 	tcl? ( dev-lang/tcl:0= )
 	X? ( x11-libs/libXt )
@@ -285,6 +287,8 @@ src_install() {
 		doins runtime/macros/manpager.sh
 		fperms a+x ${vimfiles}/macros/manpager.sh
 	fi
+
+	domenu runtime/vim.desktop
 
 	newbashcomp "${FILESDIR}"/${PN}-completion ${PN}
 

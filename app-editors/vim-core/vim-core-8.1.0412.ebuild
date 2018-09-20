@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-VIM_VERSION="8.0"
-inherit estack vim-doc flag-o-matic versionator bash-completion-r1 prefix
+VIM_VERSION="8.1"
+inherit estack vim-doc flag-o-matic bash-completion-r1 prefix
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3

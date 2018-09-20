@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="threads"
 USE_RUBY="ruby23 ruby24 ruby25"
 
-inherit vim-doc flag-o-matic xdg-utils gnome2-utils versionator bash-completion-r1 prefix python-single-r1 ruby-single
+inherit vim-doc flag-o-matic xdg-utils gnome2-utils bash-completion-r1 prefix python-single-r1 ruby-single
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -48,7 +48,6 @@ RDEPEND="
 			gtk? (
 				>=x11-libs/gtk+-2.6:2
 				x11-libs/libXft
-				gnome? ( >=gnome-base/libgnomeui-2.6 )
 			)
 			!gtk? (
 				motif? ( >=x11-libs/motif-2.3:0 )

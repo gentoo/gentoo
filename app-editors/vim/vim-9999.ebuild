@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-VIM_VERSION="8.0"
+VIM_VERSION="8.1"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="threads"
 USE_RUBY="ruby23 ruby24 ruby25"
 
-inherit vim-doc flag-o-matic versionator bash-completion-r1 python-single-r1 ruby-single
+inherit vim-doc flag-o-matic bash-completion-r1 python-single-r1 ruby-single desktop
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -287,6 +287,8 @@ src_install() {
 		doins runtime/macros/manpager.sh
 		fperms a+x ${vimfiles}/macros/manpager.sh
 	fi
+
+	domenu runtime/vim.desktop
 
 	newbashcomp "${FILESDIR}"/${PN}-completion ${PN}
 
