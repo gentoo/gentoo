@@ -77,11 +77,7 @@ src_install() {
 	insinto /usr/share/locale
 	doins -r src/ui/wxWidgets/I18N/mos/*
 
-	# The upstream Makefile builds this .zip file from html source material for
-	# use by the package's internal help system. Must prevent
-	# Portage from applying additional compression.
-	docompress -x /usr/share/doc/${PN}/help
-	insinto /usr/share/doc/${PN}/help
+	insinto /usr/share/${PN}/help
 	doins help/*.zip
 
 	popd || die
@@ -90,8 +86,8 @@ src_install() {
 
 	dodoc README.md README.LINUX.* docs/{ReleaseNotes.txt,ChangeLog.txt}
 
-	insinto /usr/share/pwsafe/xml
-	doins xml/*
+	insinto /usr/share/${PN}
+	doins -r xml
 
 	newicon install/graphics/pwsafe.png ${PN}.png
 	newmenu install/desktop/pwsafe.desktop ${PN}.desktop
