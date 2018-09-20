@@ -8964,7 +8964,7 @@ net-misc/rabbitmq-server 3.6.9: RabbitMQ is a high-performance AMQP-compliant me
 net-misc/radvd 2.14 2.17-r1: Linux IPv6 Router Advertisement Daemon
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.3: A Remote Desktop Protocol Client
-net-misc/redir 2.2.1-r1: Redir is a port redirector
+net-misc/redir 3.2: Redir is a port redirector
 net-misc/remmina 1.2.0_rc24: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/rsync 3.1.3: File transfer program to keep remote files into sync
@@ -10307,6 +10307,7 @@ sys-process/systemd-cron 1.5.4 1.5.12-r1: systemd units to create timers for cro
 sys-process/time 1.7-r1 1.7-r3 1.7.2: Displays info about resources used by a program
 sys-process/tini 0.16.1: A tiny but valid init for containers
 sys-process/tiptop 2.2: top for performance counters
+sys-process/vixie-cron 4.1-r14 4.1-r15: Paul Vixie's cron daemon, a fully featured crond implementation
 sys-process/wait_on_pid 0.0.2: small utility to wait for an arbitrary process to exit
 sys-process/watchpid 0.1-r2: Watches a process for termination
 sys-process/xjobs 20170829: Reads commands line by line and executes them in parallel
