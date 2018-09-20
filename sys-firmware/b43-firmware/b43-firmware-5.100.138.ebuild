@@ -12,7 +12,7 @@ SRC_URI="http://www.lwfinger.com/b43-firmware/${MY_P}.tar.bz2"
 
 LICENSE="Broadcom"
 SLOT="b43"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc ~x86"
 IUSE=""
 RESTRICT="binchecks strip"
 
