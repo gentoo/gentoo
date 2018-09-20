@@ -142,7 +142,8 @@ REQUIRED_USE="
 	readline? ( !libedit )
 	recode? ( !imap !mysqli !mysql )
 	session-mm? ( session !threads )
-	mysql? ( || ( mysqli pdo ) )
+	mysql? ( hash || ( mysqli pdo ) )
+	mysqli? ( hash )
 "
 PATCHES=(
 	"${FILESDIR}/php-freetype-2.9.1.patch"
