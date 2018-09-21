@@ -9,5 +9,5 @@ RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81 || ( sys-
 RESTRICT=mirror strip installsources test
 SLOT=0
 SRC_URI=https://dl.google.com/android/repository/android-ndk-r11c-linux-x86_64.zip
-_eclasses_=check-reqs	21aa24510a44d259c03425a957336b3b
+_eclasses_=check-reqs	2c6f909675083dce8430b648bf737cb0
 _md5_=e8d4e3b2b09da979350616de8369f86d

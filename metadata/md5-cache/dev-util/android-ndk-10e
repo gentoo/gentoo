@@ -9,5 +9,5 @@ RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81 sys-libs/
 RESTRICT=mirror strip installsources test
 SLOT=0
 SRC_URI=x86? ( https://dl.google.com/android/ndk/android-ndk-r10e-linux-x86.bin -> android-ndk-10e-x86.7z ) amd64? ( https://dl.google.com/android/ndk/android-ndk-r10e-linux-x86_64.bin -> android-ndk-10e-amd64.7z )
-_eclasses_=check-reqs	21aa24510a44d259c03425a957336b3b
+_eclasses_=check-reqs	2c6f909675083dce8430b648bf737cb0
 _md5_=3a931836701b0a75429489ffe0aa5a3e
