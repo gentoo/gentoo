@@ -5169,7 +5169,7 @@ dev-python/oslo-versionedobjects 1.31.3: A library that provides a generic versi
 dev-python/oslo-vmware 2.26.0: Oslo VMware library for OpenStack projects
 dev-python/oslotest 3.2.0: Oslo test framework
 dev-python/osprofiler 1.11.0 1.15.2: OpenStack Profiler Library
-dev-python/ovs 2.7.0 2.7.2 2.8.1: OVS bindings for python.
+dev-python/ovs 2.7.0 2.7.2 2.8.1 2.9.2: OVS bindings for python.
 dev-python/ovsdbapp 0.4.0 0.10.0: A library for creating OVSDB applications
 dev-python/owslib 0.16.0 0.16.0-r1: Library for client programming with Open Geospatial Consortium web service
 dev-python/packaging 16.8: Core utilities for Python packages
@@ -8944,7 +8944,7 @@ net-misc/openntpd 6.0_p1: Lightweight NTP server ported from OpenBSD
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
 net-misc/openssh 7.5_p1-r4 7.7_p1-r9: Port of OpenBSD's free SSH release
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
-net-misc/openvswitch 2.7.2 2.7.2-r1 2.8.1: Production quality, multilayer virtual switch
+net-misc/openvswitch 2.7.2 2.7.2-r1 2.8.1 2.10.0: Production quality, multilayer virtual switch
 net-misc/packETH 1.7.3: Packet generator tool for ethernet
 net-misc/pedro 1.6: Pedro is a subscription/notification communications system
 net-misc/pen 0.25.1: TCP Load Balancing Port Forwarder
