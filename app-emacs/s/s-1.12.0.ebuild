@@ -11,7 +11,7 @@ SRC_URI="https://github.com/magnars/s.el/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~ppc64 x86"
 
 S="${WORKDIR}/s.el-${PV}"
 SITEFILE="50${PN}-gentoo.el"
