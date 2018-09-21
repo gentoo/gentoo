@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup
+DEPEND=kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
+DESCRIPTION=RTSP conntrack module for Netfilter
+EAPI=7
+HOMEPAGE=http://mike.it-loops.com/rtsp
+IUSE=kernel_linux kernel_linux
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=http://mike.it-loops.com/rtsp/rtsp-module-3.7.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	915cae3d7d636732918d18827fb1c226	linux-mod	4b8528d500d6555ad20763a77b31766c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=186ced34a99a1202968d3c7701ab38ec

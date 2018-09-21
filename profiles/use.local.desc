@@ -3233,7 +3233,6 @@ media-sound/mpg123:int-quality - Use rounding instead of fast truncation for int
 media-sound/ncmpc:artist-screen - Enable artist screen
 media-sound/ncmpc:async-connect - Enable asynchronous connect
 media-sound/ncmpc:chat-screen - Enable the chat screen
-media-sound/ncmpc:colors - Enable color support
 media-sound/ncmpc:help-screen - Enable the help screen
 media-sound/ncmpc:key-screen - Enable key editor screen
 media-sound/ncmpc:lyrics-screen - Enable lyrics screen

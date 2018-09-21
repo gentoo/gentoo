@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare pretend
+DEPEND=>=dev-libs/libsecp256k1-0.0.0_pre20151118:=[recovery] !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Bitcoin Core consensus library
+EAPI=6
+HOMEPAGE=https://bitcoincore.org/ https://bitcoinknots.org/
+IUSE=+asm knots libressl
+KEYWORDS=~amd64 ~amd64-linux ~arm ~arm64 ~mips ~ppc ~x86 ~x86-linux
+LICENSE=MIT
+RDEPEND=>=dev-libs/libsecp256k1-0.0.0_pre20151118:=[recovery] !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= )
+SLOT=0
+SRC_URI=https://github.com/bitcoin/bitcoin/archive/49e34e288005a5b144a642e197b628396f5a0765.tar.gz -> bitcoin-v0.16.3.tar.gz https://bitcoinknots.org/files/0.16.x/0.16.3.knots20180918/bitcoin-0.16.3.knots20180918.patches.txz -> bitcoin-0.16.3.knots20180918.patches.tar.xz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=fee7f5c0faf2059d1ec4e7db23d16080

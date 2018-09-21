@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=>=sys-devel/binutils-config-3 sys-libs/zlib doc? ( sys-apps/texinfo ) test? ( dev-util/dejagnu ) nls? ( sys-devel/gettext ) sys-devel/flex virtual/yacc >=sys-libs/binutils-libs-2.31.1 >=app-portage/elt-patches-20170815 sys-devel/gnuconfig
+DESCRIPTION=Tools necessary to build programs
+EAPI=6
+HOMEPAGE=https://sourceware.org/binutils/
+IUSE=+cxx doc multitarget +nls static-libs test
+KEYWORDS=-* ~hppa
+LICENSE=GPL-3+
+RDEPEND=>=sys-devel/binutils-config-3 sys-libs/zlib
+SLOT=2.31
+SRC_URI=mirror://gnu/binutils/binutils-2.31.1.tar.xz https://sourceware.org/pub/binutils/releases/binutils-2.31.1.tar.xz https://dev.gentoo.org/~slyfox/distfiles/binutils-2.31.1-patches-3.tar.xz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
+_md5_=5d9c717d6b5fa60c63512c9074973052

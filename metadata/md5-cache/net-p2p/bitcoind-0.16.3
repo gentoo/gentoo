@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare pretend setup
+DEPEND=>=dev-libs/boost-1.52.0:=[threads(+)] dev-libs/libevent:= >=dev-libs/libsecp256k1-0.0.0_pre20151118:=[recovery] dev-libs/univalue:= virtual/bitcoin-leveldb !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) upnp? ( >=net-libs/miniupnpc-1.9.20150916:= ) wallet? ( sys-libs/db:4.8=[cxx] ) zeromq? ( net-libs/zeromq:= ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Original Bitcoin crypto-currency wallet for automated services
+EAPI=6
+HOMEPAGE=https://bitcoincore.org/ https://bitcoinknots.org/
+IUSE=+asm +bitcoin_policy_rbf examples knots libressl test upnp +wallet zeromq
+KEYWORDS=~amd64 ~amd64-linux ~arm ~arm64 ~mips ~ppc ~x86 ~x86-linux
+LICENSE=MIT
+RDEPEND=>=dev-libs/boost-1.52.0:=[threads(+)] dev-libs/libevent:= >=dev-libs/libsecp256k1-0.0.0_pre20151118:=[recovery] dev-libs/univalue:= virtual/bitcoin-leveldb !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) upnp? ( >=net-libs/miniupnpc-1.9.20150916:= ) wallet? ( sys-libs/db:4.8=[cxx] ) zeromq? ( net-libs/zeromq:= )
+SLOT=0
+SRC_URI=https://github.com/bitcoin/bitcoin/archive/49e34e288005a5b144a642e197b628396f5a0765.tar.gz -> bitcoin-v0.16.3.tar.gz https://bitcoinknots.org/files/0.16.x/0.16.3.knots20180918/bitcoin-0.16.3.knots20180918.patches.txz -> bitcoin-0.16.3.knots20180918.patches.tar.xz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	db-use	501a5d0963e0d17f30260023f292ae8e	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=bad21cd2d778a976bb1f1cf23136030b

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare pretend
+DEPEND=>=dev-libs/boost-1.52.0:=[threads(+)] >=dev-libs/libsecp256k1-0.0.0_pre20151118:=[recovery] dev-libs/univalue:= dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 virtual/bitcoin-leveldb bip70? ( dev-libs/protobuf:= ) dbus? ( dev-qt/qtdbus:5 ) libevent? ( dev-libs/libevent:= ) !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) qrcode? ( media-gfx/qrencode:= ) upnp? ( >=net-libs/miniupnpc-1.9.20150916:= ) wallet? ( sys-libs/db:4.8=[cxx] ) zeromq? ( net-libs/zeromq:= ) dev-qt/linguist-tools:5 knots? ( gnome-base/librsvg media-gfx/imagemagick[png] ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DESCRIPTION=An end-user Qt GUI for the Bitcoin crypto-currency
+EAPI=6
+HOMEPAGE=https://bitcoincore.org/ https://bitcoinknots.org/
+IUSE=+asm +bip70 +bitcoin_policy_rbf dbus kde +libevent knots libressl +qrcode test upnp +wallet zeromq
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=>=dev-libs/boost-1.52.0:=[threads(+)] >=dev-libs/libsecp256k1-0.0.0_pre20151118:=[recovery] dev-libs/univalue:= dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 virtual/bitcoin-leveldb bip70? ( dev-libs/protobuf:= ) dbus? ( dev-qt/qtdbus:5 ) libevent? ( dev-libs/libevent:= ) !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) qrcode? ( media-gfx/qrencode:= ) upnp? ( >=net-libs/miniupnpc-1.9.20150916:= ) wallet? ( sys-libs/db:4.8=[cxx] ) zeromq? ( net-libs/zeromq:= )
+SLOT=0
+SRC_URI=https://github.com/bitcoin/bitcoin/archive/49e34e288005a5b144a642e197b628396f5a0765.tar.gz -> bitcoin-v0.16.3.tar.gz https://bitcoinknots.org/files/0.16.x/0.16.3.knots20180918/bitcoin-0.16.3.knots20180918.patches.txz -> bitcoin-0.16.3.knots20180918.patches.tar.xz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	db-use	501a5d0963e0d17f30260023f292ae8e	desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=07d6a42a858065d88ab5707743747fee

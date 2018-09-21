@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst pretend setup
+DEPEND=kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
+DESCRIPTION=LTTng Kernel Tracer Modules
+EAPI=7
+HOMEPAGE=http://lttng.org
+IUSE=kernel_linux kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0/2.10
+SRC_URI=http://lttng.org/files/lttng-modules/lttng-modules-2.10.6.tar.bz2
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	915cae3d7d636732918d18827fb1c226	linux-mod	4b8528d500d6555ad20763a77b31766c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=b9f777ac3b5498db4b0a64731a4c5ab5
