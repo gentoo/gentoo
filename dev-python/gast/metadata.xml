@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>perfinion@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		A generic AST to represent Python2 and Python3's Abstract Syntax Tree(AST).
+		GAST provides a compatibility layer between the AST of various Python versions, as produced by ast.parse from the standard ast module.
+	</longdescription>
+</pkgmetadata>
