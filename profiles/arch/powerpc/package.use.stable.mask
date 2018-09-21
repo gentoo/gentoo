@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (18 Sep 2018)
+# >=media-video/libav-12 not stable yet, bug #617508
+media-video/vlc libav
+
 # Michał Górny <mgorny@gentoo.org> (26 Aug 2018)
 # Non-stable dependency.  Used to be masked completely.
 media-sound/abcde replaygain
