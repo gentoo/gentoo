@@ -14,7 +14,7 @@ SLOT="0/3.1"
 KEYWORDS="~amd64 ~arm"
 IUSE="
 	+coin demos +dmtx doc examples gsl ieee1394 jpeg lapack motif ogre
-	ois opencv png test tutorials usb v4l X xml +zbar zlib
+	opencv png test tutorials usb v4l X xml +zbar zlib
 	cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3
 "
 
@@ -26,7 +26,7 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	lapack? ( virtual/lapack )
 	motif? ( media-libs/SoXt )
-	ogre? ( dev-games/ogre[ois?] dev-libs/boost:=[threads] )
+	ogre? ( dev-games/ogre[ois(+)] dev-libs/boost:=[threads] )
 	opencv? ( media-libs/opencv:= )
 	png? ( media-libs/libpng:0= )
 	usb? ( virtual/libusb:1 )
@@ -37,16 +37,13 @@ RDEPEND="
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen virtual/latex-base media-gfx/graphviz )
 	virtual/pkgconfig
+	doc? ( app-doc/doxygen virtual/latex-base media-gfx/graphviz )
 	test? ( sci-misc/ViSP-images )
 	v4l? ( virtual/os-headers )"
 RDEPEND="${RDEPEND}
 	demos? ( sci-misc/ViSP-images )"
-REQUIRED_USE="
-	ois? ( ogre )
-	motif? ( coin )
-"
+REQUIRED_USE="motif? ( coin )"
 
 S="${WORKDIR}/visp-${PV}"
 PATCHES=( "${FILESDIR}/${PN}-3.0.1-opencv.patch" )
@@ -66,7 +63,7 @@ src_configure() {
 		"-DUSE_PNG=$(usex png ON OFF)"
 		"-DUSE_LIBUSB_1=$(usex usb ON OFF)"
 		"-DUSE_OGRE=$(usex ogre ON OFF)"
-		"-DUSE_OIS=$(usex ois ON OFF)"
+		"-DUSE_OIS=$(usex ogre ON OFF)"
 		"-DUSE_OPENCV=$(usex opencv ON OFF)"
 		"-DUSE_SOQT=OFF"
 		"-DUSE_SOXT=$(usex motif ON OFF)"
