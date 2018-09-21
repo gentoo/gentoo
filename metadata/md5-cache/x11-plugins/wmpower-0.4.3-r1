@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile
+DEFINED_PHASES=compile configure
 DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-base/xorg-proto
 DESCRIPTION=a dockapp to get/set power management status for laptops (APM, ACPI and CPUfreq)
 EAPI=7
@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
 SLOT=0
 SRC_URI=mirror://sourceforge/wmpower/wmpower-0.4.3.tar.bz2
-_md5_=94372bcca8480ab2dc347493ed416a3a
+_md5_=46391691dc814fd92a23792261b3771f
