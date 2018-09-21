@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=coin? ( media-libs/coin virtual/opengl ) dmtx? ( media-libs/libdmtx ) gsl? ( sci-libs/gsl ) ieee1394? ( media-libs/libdc1394 ) jpeg? ( virtual/jpeg:0 ) lapack? ( virtual/lapack ) motif? ( media-libs/SoXt ) ogre? ( dev-games/ogre[ois(+)] dev-libs/boost:=[threads] ) opencv? ( media-libs/opencv:= ) png? ( media-libs/libpng:0= ) usb? ( virtual/libusb:1 ) v4l? ( media-libs/libv4l ) X? ( x11-libs/libX11 ) xml? ( dev-libs/libxml2 ) zbar? ( media-gfx/zbar ) zlib? ( sys-libs/zlib ) virtual/pkgconfig doc? ( app-doc/doxygen virtual/latex-base media-gfx/graphviz ) test? ( sci-misc/ViSP-images ) v4l? ( virtual/os-headers ) sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=Visual Servoing Platform: visual tracking and visual servoing library
+EAPI=5
+HOMEPAGE=http://www.irisa.fr/lagadic/visp/visp.html
+IUSE=+coin demos +dmtx doc examples gsl ieee1394 jpeg lapack motif ogre opencv png test tutorials usb v4l X xml +zbar zlib cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3
+KEYWORDS=~amd64 ~arm
+LICENSE=GPL-2
+RDEPEND=coin? ( media-libs/coin virtual/opengl ) dmtx? ( media-libs/libdmtx ) gsl? ( sci-libs/gsl ) ieee1394? ( media-libs/libdc1394 ) jpeg? ( virtual/jpeg:0 ) lapack? ( virtual/lapack ) motif? ( media-libs/SoXt ) ogre? ( dev-games/ogre[ois(+)] dev-libs/boost:=[threads] ) opencv? ( media-libs/opencv:= ) png? ( media-libs/libpng:0= ) usb? ( virtual/libusb:1 ) v4l? ( media-libs/libv4l ) X? ( x11-libs/libX11 ) xml? ( dev-libs/libxml2 ) zbar? ( media-gfx/zbar ) zlib? ( sys-libs/zlib ) demos? ( sci-misc/ViSP-images )
+REQUIRED_USE=motif? ( coin )
+SLOT=0/3.1
+SRC_URI=http://gforge.inria.fr/frs/download.php/latestfile/475/visp-3.1.0.tar.gz
+_eclasses_=cmake-utils	f0bc1c175684130a76ab6c17f575d820	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=9096ed523b649c4c28b8110226746c44
