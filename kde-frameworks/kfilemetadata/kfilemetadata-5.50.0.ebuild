@@ -16,7 +16,7 @@ RDEPEND="
 	epub? ( app-text/ebook-tools )
 	exif? ( media-gfx/exiv2:= )
 	ffmpeg? (
-		libav? ( media-video/libav:= )
+		libav? ( >=media-video/libav-12.2:= )
 		!libav? ( media-video/ffmpeg:0= )
 	)
 	office? ( $(add_frameworks_dep karchive) )

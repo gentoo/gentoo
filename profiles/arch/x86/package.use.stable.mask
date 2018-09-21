@@ -17,11 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (18 Sep 2018)
-# >=media-video/libav-12 not stable yet, bug #617508
-media-libs/mlt libav
-media-video/vlc libav
-
 # Thomas Deutschmann <whissi@gentoo.org> (01 Jun 2018)
 net-analyzer/wireshark -doc
 
