@@ -3,11 +3,11 @@ DEPEND=app-emacs/dash app-emacs/s >=virtual/emacs-23
 DESCRIPTION=Modern API for working with files and directories in Emacs
 EAPI=6
 HOMEPAGE=https://github.com/rejeep/f.el
-KEYWORDS=amd64 x86
+KEYWORDS=amd64 ~ppc64 x86
 LICENSE=GPL-3+
 RDEPEND=app-emacs/dash app-emacs/s >=virtual/emacs-23
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/rejeep/f.el/archive/v0.20.0.tar.gz -> f-0.20.0.tar.gz
 _eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=13b53a37a122f3c5265a288ae1fc3ed0
+_md5_=ad0f4f561922757ecec6931e83b0fa73

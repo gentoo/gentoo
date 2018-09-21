@@ -3,10 +3,10 @@ DESCRIPTION=Stores, retrieves, generates, and synchronizes passwords securely
 EAPI=6
 HOMEPAGE=https://www.passwordstore.org/
 IUSE=+git X zsh-completion fish-completion emacs dmenu importers elibc_Darwin
-KEYWORDS=amd64 ~arm x86 ~x86-macos
+KEYWORDS=amd64 ~arm ~ppc64 x86 ~x86-macos
 LICENSE=GPL-2
 RDEPEND=app-crypt/gnupg media-gfx/qrencode >=app-text/tree-1.7.0 git? ( dev-vcs/git ) X? ( x11-misc/xclip ) elibc_Darwin? ( app-misc/getopt ) zsh-completion? ( app-shells/gentoo-zsh-completions ) fish-completion? ( app-shells/fish ) dmenu? ( x11-misc/dmenu x11-misc/xdotool ) emacs? ( virtual/emacs >=app-emacs/f-0.11.0 >=app-emacs/s-1.9.0 >=app-emacs/with-editor-2.5.11 )
 SLOT=0
 SRC_URI=https://git.zx2c4.com/password-store/snapshot/password-store-1.7.3.tar.xz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	elisp-common	23f47b2e1de7abf387105eddd1318738	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
-_md5_=d375e65a421fb72fb9020f5708a878e7
+_md5_=f1498ba39154441501c85c15d73d4821

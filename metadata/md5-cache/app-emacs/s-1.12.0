@@ -3,10 +3,10 @@ DEPEND=>=virtual/emacs-23
 DESCRIPTION=The long lost Emacs string manipulation library
 EAPI=6
 HOMEPAGE=https://github.com/magnars/s.el
-KEYWORDS=amd64 ~arm x86
+KEYWORDS=amd64 ~arm ~ppc64 x86
 LICENSE=GPL-3+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/magnars/s.el/archive/1.12.0.tar.gz -> s-1.12.0.tar.gz
 _eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=00460a268bf319a1254297912968e78f
+_md5_=15829919e149aeb7ee3b9883b40f0f9e
