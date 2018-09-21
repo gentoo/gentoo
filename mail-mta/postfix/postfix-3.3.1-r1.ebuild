@@ -252,6 +252,8 @@ src_install () {
 
 	dodoc *README COMPATIBILITY HISTORY PORTING RELEASE_NOTES*
 	mv "${S}"/examples "${D}"/usr/share/doc/${PF}/
+	# postfix set-permissions expects uncompressed man files
+	docompress -x /usr/share/man
 
 	pamd_mimic_system smtp auth account
 
@@ -282,7 +284,7 @@ pkg_postinst() {
 	fi
 
 	# check and fix file permissions
-	"${EROOT}"/usr/sbin/postfix set-permissions 2>/dev/null
+	"${EROOT}"/usr/sbin/postfix set-permissions
 
 	# configure tls
 	if use ssl ; then

@@ -9,7 +9,6 @@
 		<flag name="artist-screen">Enable artist screen</flag>
 		<flag name="async-connect">Enable asynchronous connect</flag>
 		<flag name="chat-screen">Enable the chat screen</flag>
-		<flag name="colors">Enable color support</flag>
 		<flag name="help-screen">Enable the help screen</flag>
 		<flag name="key-screen">Enable key editor screen</flag>
 		<flag name="lyrics-screen">Enable lyrics screen</flag>

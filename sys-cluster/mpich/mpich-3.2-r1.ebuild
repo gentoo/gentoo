@@ -20,7 +20,7 @@ IUSE="+cxx doc fortran mpi-threads romio threads"
 
 COMMON_DEPEND="
 	>=dev-libs/libaio-0.3.109-r5[${MULTILIB_USEDEP}]
-	>=sys-apps/hwloc-1.10.0-r2[${MULTILIB_USEDEP}]
+	<sys-apps/hwloc-2[${MULTILIB_USEDEP}]
 	romio? ( net-fs/nfs-utils )"
 
 DEPEND="${COMMON_DEPEND}

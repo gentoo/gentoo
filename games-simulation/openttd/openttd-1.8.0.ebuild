@@ -52,6 +52,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.0-cflags.patch
 	"${FILESDIR}"/${PN}-1.8.0-icu61.patch
+	"${FILESDIR}"/${PN}-1.8.0-icu62.patch
 )
 
 src_configure() {

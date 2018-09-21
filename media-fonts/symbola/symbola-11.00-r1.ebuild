@@ -9,7 +9,7 @@ inherit font
 
 DESCRIPTION="Unicode font for Latin, IPA Extensions, Greek, Cyrillic and many Symbol Blocks"
 HOMEPAGE="http://users.teilar.gr/~g1951d/"
-SRC_URI="http://users.teilar.gr/~g1951d/${MY_PN}.zip -> ${P}.zip"
+SRC_URI="http://users.teilar.gr/~g1951d/${MY_PN}.zip -> ${P}.zip doc? ( http://users.teilar.gr/~g1951d/${MY_PN}.pdf -> ${P}.pdf )"
 LICENSE="Unicode_Fonts_for_Ancient_Scripts"
 
 SLOT="0"
@@ -25,7 +25,7 @@ FONT_SUFFIX="ttf"
 
 src_prepare() {
 	if use doc; then
-		DOCS="${MY_PN}.pdf"
+		DOCS="${DISTDIR}/${P}.pdf"
 	fi
 	default
 }
