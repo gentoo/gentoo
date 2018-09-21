@@ -75,6 +75,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.6-static-libs.patch
 	# https://bugzilla.libsdl.org/show_bug.cgi?id=4144
 	"${FILESDIR}"/${P}-rework-variables.patch
+	# https://bugzilla.libsdl.org/show_bug.cgi?id=3977
+	"${FILESDIR}"/${P}-wayland-headers.patch
 )
 
 S="${WORKDIR}/${MY_P}"
