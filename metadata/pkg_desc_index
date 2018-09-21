@@ -89,7 +89,7 @@ app-admin/lsat 0.9.7.1-r2: The Linux Security Auditing Tool
 app-admin/lsyncd 2.2.0: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/mcelog 154: A tool to log and decode Machine Check Exceptions
-app-admin/mcollective 2.12.1 2.12.2: Framework to build server orchestration or parallel job execution systems
+app-admin/mcollective 2.12.2 2.12.3: Framework to build server orchestration or parallel job execution systems
 app-admin/metalog 3-r2: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.6 1.0.0: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
@@ -5827,7 +5827,7 @@ dev-ruby/erubi 1.7.0: a ERB template engine for ruby; a simplified fork of Erubi
 dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
 dev-ruby/eventmachine 1.2.7: EventMachine is a fast, simple event-processing library for Ruby programs
 dev-ruby/execjs 2.6.0 2.7.0: ExecJS lets you run JavaScript code from Ruby
-dev-ruby/facter 2.4.6 3.9.2 3.11.1 3.11.2 3.11.3-r1: A cross-platform ruby library for retrieving facts from operating systems
+dev-ruby/facter 2.4.6 3.9.2 3.11.3-r1 3.11.4: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/fakefs 0.11.3: A fake filesystem. Use it in your tests
 dev-ruby/fakeweb 1.3.0.20131201-r1 1.3.0.20170806: Helper for faking web requests in Ruby
 dev-ruby/fast_gettext 1.6.0: GetText but 3.5x faster, 560x less memory, clean namespace and threadsave!
