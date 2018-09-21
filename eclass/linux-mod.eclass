@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-mod.eclass
@@ -244,7 +244,7 @@ update_depmod() {
 	ebegin "Updating module dependencies for ${KV_FULL}"
 	if [ -r "${KV_OUT_DIR}"/System.map ]
 	then
-		depmod -ae -F "${KV_OUT_DIR}"/System.map -b "${ROOT}" ${KV_FULL}
+		depmod -ae -F "${KV_OUT_DIR}"/System.map -b "${ROOT:-/}" ${KV_FULL}
 		eend $?
 	else
 		ewarn
@@ -263,8 +263,8 @@ update_depmod() {
 move_old_moduledb() {
 	debug-print-function ${FUNCNAME} $*
 
-	local OLDDIR="${ROOT}"/usr/share/module-rebuild/
-	local NEWDIR="${ROOT}"/var/lib/module-rebuild/
+	local OLDDIR="${ROOT%/}"/usr/share/module-rebuild
+	local NEWDIR="${ROOT%/}"/var/lib/module-rebuild
 
 	if [[ -f "${OLDDIR}"/moduledb ]]; then
 		[[ ! -d "${NEWDIR}" ]] && mkdir -p "${NEWDIR}"
@@ -283,7 +283,7 @@ move_old_moduledb() {
 update_moduledb() {
 	debug-print-function ${FUNCNAME} $*
 
-	local MODULEDB_DIR="${ROOT}"/var/lib/module-rebuild/
+	local MODULEDB_DIR="${ROOT%/}"/var/lib/module-rebuild
 	move_old_moduledb
 
 	if [[ ! -f "${MODULEDB_DIR}"/moduledb ]]; then
@@ -306,7 +306,7 @@ update_moduledb() {
 remove_moduledb() {
 	debug-print-function ${FUNCNAME} $*
 
-	local MODULEDB_DIR="${ROOT}"/var/lib/module-rebuild/
+	local MODULEDB_DIR="${ROOT%/}"/var/lib/module-rebuild
 	move_old_moduledb
 
 	if grep -qs ${CATEGORY}/${PN}-${PVR} "${MODULEDB_DIR}"/moduledb ; then
@@ -731,8 +731,8 @@ linux-mod_pkg_preinst() {
 	debug-print-function ${FUNCNAME} $*
 	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
 
-	[ -d "${D}lib/modules" ] && UPDATE_DEPMOD=true || UPDATE_DEPMOD=false
-	[ -d "${D}lib/modules" ] && UPDATE_MODULEDB=true || UPDATE_MODULEDB=false
+	[ -d "${D%/}/lib/modules" ] && UPDATE_DEPMOD=true || UPDATE_DEPMOD=false
+	[ -d "${D%/}/lib/modules" ] && UPDATE_MODULEDB=true || UPDATE_MODULEDB=false
 }
 
 # @FUNCTION: linux-mod_pkg_postinst
