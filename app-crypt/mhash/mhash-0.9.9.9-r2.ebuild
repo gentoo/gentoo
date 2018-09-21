@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit ltprune
 
 DESCRIPTION="library providing a uniform interface to a large number of hash algorithms"
 HOMEPAGE="http://mhash.sourceforge.net/"
@@ -39,7 +38,7 @@ src_prepare() {
 	default
 	sed -i \
 		-e 's/--netscape//' \
-		"${S}"/doc/Makefile.in
+		"${S}"/doc/Makefile.in || die
 }
 
 src_configure() {
@@ -56,5 +55,5 @@ src_compile() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
