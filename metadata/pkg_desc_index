@@ -8844,7 +8844,7 @@ net-misc/clusterssh 4.03.03: Concurrent Multi-Server Terminal Access
 net-misc/connect 1.103: network connection relaying command (proxy)
 net-misc/connman 1.29 1.35-r1: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.1.1: GTK GUI for Connman
-net-misc/curl 7.60.0 7.61.0 7.61.1: A Client that groks URLs
+net-misc/curl 7.61.1: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/dhcp 4.3.6_p1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
