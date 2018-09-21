@@ -18,10 +18,11 @@
 	<flag name="sound">Enable audio playing.</flag>
 </use>
 <upstream>
-	<maintainer status="active">
+	<maintainer status="inactive">
 		<email>superjoe30@gmail.com</email>
 		<name>Andrew Kelley</name>
 	</maintainer>
 	<remote-id type="github">andrewrk/libgroove</remote-id>
+	<bugs-to>https://github.com/andrewrk/libgroove/issues</bugs-to>
 </upstream>
 </pkgmetadata>
