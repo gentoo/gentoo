@@ -1,11 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=yes
-
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="A Tk widget library"
 HOMEPAGE="http://www.tkzinc.org"
@@ -17,8 +15,8 @@ KEYWORDS="~amd64 ~x86 ~ppc"
 IUSE="debug doc threads"
 
 DEPEND="
-	dev-lang/tk
-	media-libs/glew
+	dev-lang/tk:=
+	media-libs/glew:=
 	virtual/opengl
 	doc? ( virtual/latex-base )"
 RDEPEND="${DEPEND}"
@@ -30,28 +28,33 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.4-latex.patch
 	)
 
-AUTOTOOLS_IN_SOURCE_BUILD=1
+HTML_DOCS='doc/*png doc/*html doc/*css'
 
-DOCS=( BUGS )
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
-	local myeconfargs=(
-		--enable-shared
-		--enable-gl=damage
-		$(use_enable debug symbols)
+	econf \
+		--enable-shared \
+		--enable-gl=damage \
+		$(use_enable debug symbols) \
 		$(use_enable threads)
-	)
-	autotools-utils_src_configure
 }
 
 src_compile() {
-	autotools-utils_src_compile
-	use doc && emake pdf
+	default
+	if use doc; then
+		VARTEXFONTS="${T}"/fonts emake pdf
+	fi
 }
 
 src_install() {
-	autotools-utils_src_install
-
-	dohtml -r doc/*
+	default
 	use doc && dodoc doc/refman.pdf
+}
+
+src_test() {
+	emake test
 }
