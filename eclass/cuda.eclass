@@ -1,12 +1,21 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-inherit flag-o-matic toolchain-funcs versionator
+case "${EAPI:-0}" in
+	0|1|2|3|4)
+		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
+		;;
+	5|6|7)
+		;;
+	*)
+		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
+		;;
+esac
 
 # @ECLASS: cuda.eclass
 # @MAINTAINER:
 # Justin Lecher <jlec@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Common functions for cuda packages
 # @DESCRIPTION:
 # This eclass contains functions to be used with cuda package. Currently it is
@@ -17,6 +26,9 @@ inherit flag-o-matic toolchain-funcs versionator
 # inherit cuda
 
 if [[ -z ${_CUDA_ECLASS} ]]; then
+
+inherit flag-o-matic toolchain-funcs
+[[ ${EAPI} == [56] ]] && inherit eapi7-ver
 
 # @ECLASS-VARIABLE: NVCCFLAGS
 # @DESCRIPTION:
@@ -44,15 +56,15 @@ if [[ -z ${_CUDA_ECLASS} ]]; then
 cuda_gccdir() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	local gcc_bindir ver args="" flag ret
+	local dirs gcc_bindir ver vers="" flag
 
 	# Currently we only support the gnu compiler suite
-	if  ! tc-is-gcc ; then
+	if ! tc-is-gcc ; then
 		ewarn "Currently we only support the gnu compiler suite"
 		return 2
 	fi
 
-	while [ "$1" ]; do
+	while [[ "$1" ]]; do
 		case $1 in
 			-f)
 				flag="--compiler-bindir "
@@ -63,34 +75,50 @@ cuda_gccdir() {
 		shift
 	done
 
-	if ! args=$(cuda-config -s); then
+	if ! vers="$(cuda-config -s)"; then
 		eerror "Could not execute cuda-config"
 		eerror "Make sure >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 is installed"
 		die "cuda-config not found"
-	else
-		args=$(version_sort ${args})
-		if [[ -z ${args} ]]; then
-			die "Could not determine supported gcc versions from cuda-config"
+	fi
+	if [[ -z ${vers} ]]; then
+		die "Could not determine supported gcc versions from cuda-config"
+	fi
+
+	# Try the current gcc version first
+	ver=$(gcc-version)
+	if [[ -n "${ver}" ]] && [[ ${vers} =~ ${ver} ]]; then
+		dirs=( ${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/${ver}*/ )
+		gcc_bindir="${dirs[${#dirs[@]}-1]}"
+	fi
+
+	if [[ -z ${gcc_bindir} ]]; then
+		ver=$(best_version "sys-devel/gcc")
+		ver=$(ver_cut 1-2 "${ver##*sys-devel/gcc-}")
+
+		if [[ -n "${ver}" ]] && [[ ${vers} =~ ${ver} ]]; then
+			dirs=( ${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/${ver}*/ )
+			gcc_bindir="${dirs[${#dirs[@]}-1]}"
 		fi
 	fi
 
-	for ver in ${args}; do
-		has_version "=sys-devel/gcc-${ver}*" && \
-		 gcc_bindir="$(ls -d ${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/${ver}* | tail -n 1)"
+	for ver in ${vers}; do
+		if has_version "=sys-devel/gcc-${ver}*"; then
+			dirs=( ${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/${ver}*/ )
+			gcc_bindir="${dirs[${#dirs[@]}-1]}"
+		fi
 	done
 
 	if [[ -n ${gcc_bindir} ]]; then
 		if [[ -n ${flag} ]]; then
-			ret="${flag}\"${gcc_bindir}\""
+			echo "${flag}\"${gcc_bindir%/}\""
 		else
-			ret="${gcc_bindir}"
+			echo "${gcc_bindir%/}"
 		fi
-		echo ${ret}
 		return 0
 	else
-		eerror "Only gcc version(s) ${args} are supported,"
+		eerror "Only gcc version(s) ${vers} are supported,"
 		eerror "of which none is installed"
-		die "Only gcc version(s) ${args} are supported"
+		die "Only gcc version(s) ${vers} are supported"
 		return 1
 	fi
 }
@@ -116,13 +144,46 @@ cuda_sanitize() {
 	export NVCCFLAGS
 }
 
-# @FUNCTION: cuda_pkg_setup
+# @FUNCTION: cuda_add_sandbox
+# @USAGE: [-w]
 # @DESCRIPTION:
-# Call cuda_src_prepare for EAPIs not supporting src_prepare
-cuda_pkg_setup() {
+# Add nvidia dev nodes to the sandbox predict list.
+# with -w, add to the sandbox write list.
+cuda_add_sandbox() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	cuda_src_prepare
+	local i
+	for i in /dev/nvidia*; do
+		if [[ $1 == '-w' ]]; then
+			addwrite $i
+		else
+			addpredict $i
+		fi
+	done
+}
+
+# @FUNCTION: cuda_toolkit_version
+# @DESCRIPTION:
+# echo the installed version of dev-util/nvidia-cuda-toolkit
+cuda_toolkit_version() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	local v
+	v="$(best_version dev-util/nvidia-cuda-toolkit)"
+	v="${v##*cuda-toolkit-}"
+	ver_cut 1-2 "${v}"
+}
+
+# @FUNCTION: cuda_cudnn_version
+# @DESCRIPTION:
+# echo the installed version of dev-libs/cudnn
+cuda_cudnn_version() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	local v
+	v="$(best_version dev-libs/cudnn)"
+	v="${v##*cudnn-}"
+	ver_cut 1-2 "${v}"
 }
 
 # @FUNCTION: cuda_src_prepare
@@ -134,13 +195,7 @@ cuda_src_prepare() {
 	cuda_sanitize
 }
 
-case "${EAPI:-0}" in
-	0|1)
-		EXPORT_FUNCTIONS pkg_setup ;;
-	2|3|4|5|6)
-		EXPORT_FUNCTIONS src_prepare ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
-esac
+EXPORT_FUNCTIONS src_prepare
 
 _CUDA_ECLASS=1
 fi
