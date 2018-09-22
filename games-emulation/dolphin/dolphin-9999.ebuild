@@ -22,7 +22,7 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa bluetooth discord-presence doc egl +evdev ffmpeg libav log lto profile pulseaudio +qt5 -sdl systemd upnp"
+IUSE="alsa bluetooth discord-presence doc egl +evdev ffmpeg libav log lto profile pulseaudio +qt5 systemd upnp"
 
 RDEPEND="
 	dev-libs/hidapi:0=
@@ -58,7 +58,6 @@ RDEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 	)
-	sdl? ( media-libs/libsdl2[haptic,joystick] )
 	systemd? ( sys-apps/systemd:0= )
 	upnp? ( net-libs/miniupnpc )
 "
@@ -126,7 +125,7 @@ src_configure() {
 		-DENABLE_LTO=$(usex lto)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_QT=$(usex qt5)
-		-DENABLE_SDL=$(usex sdl)
+		-DENABLE_SDL=OFF # not supported: #666558
 		-DFASTLOG=$(usex log)
 		-DOPROFILING=$(usex profile)
 		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
