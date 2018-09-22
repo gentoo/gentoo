@@ -29,12 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Ulrich Müller <ulm@gentoo.org> (17 Sep 2018)
-# ebuild-mode-1.46 supports GLEP 76 copyright policy, bug 666358.
-# Masked for testing until other tools like repoman support it too.
-~app-emacs/ebuild-mode-1.46
-~app-xemacs/ebuild-mode-1.46
-
 # Michał Górny <mgorny@gentoo.org> (17 Sep 2018)
 # Obsolete LogiLab packages that are full of issues and were never
 # maintained properly.  Recently dev-python/logilab-common started
