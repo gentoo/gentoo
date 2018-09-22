@@ -11112,11 +11112,11 @@ x11-plugins/wmdots 0.2_beta: multishape 3d rotating dots
 x11-plugins/wmdrawer 0.10.5-r2: dockapp which provides a drawer (retractable button bar) to launch applications
 x11-plugins/wmfire 1.2.4-r2: Load monitoring dockapp displaying dancing flame
 x11-plugins/wmfishtime 1.24-r1 1.24-r2: A fun clock applet for your desktop featuring swimming fish
-x11-plugins/wmfortune 0.241: a dockapp showing fortune-mod messages
+x11-plugins/wmfortune 0.241-r1: a dockapp showing fortune-mod messages
 x11-plugins/wmfrog 0.2.0-r1: a weather application, it shows the weather in a graphical way
 x11-plugins/wmfsm 0.36: dockapp for monitoring filesystem usage
 x11-plugins/wmget 0.6.1: a libcurl based dockapp for automated downloads
-x11-plugins/wmifinfo 0.10: a dockapp for monitoring network interfaces
+x11-plugins/wmifinfo 0.10-r1: a dockapp for monitoring network interfaces
 x11-plugins/wmifs 1.8: Network monitoring dockapp
 x11-plugins/wminet 3.0.0-r1: dockapp for monitoring internet connections to and from your computer
 x11-plugins/wmitime 0.5: Overglorified clock dockapp w/time, date, and internet time
@@ -11124,7 +11124,7 @@ x11-plugins/wmix 3.2: Dockapp mixer for OSS or ALSA
 x11-plugins/wmload 0.9.7: yet another dock application showing a system load gauge
 x11-plugins/wmmaiload 2.2.1-r1: dockapp that monitors one or more mailboxes
 x11-plugins/wmmemload 0.1.8: dockapp that displays memory and swap space usage
-x11-plugins/wmmenu 1.3-r1: a popup menu of icons like in AfterStep, as a dockapp
+x11-plugins/wmmenu 1.3-r2: a popup menu of icons like in AfterStep, as a dockapp
 x11-plugins/wmmon 1.2_beta1: Dockable system resources monitor applet for WindowMaker
 x11-plugins/wmmon+smp 1.0-r2: Dockapp CPU monitor resembling Xosview, support for smp
 x11-plugins/wmmoonclock 1.27-r1: dockapp that shows lunar ephemeris to a high accuracy
