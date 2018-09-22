@@ -8176,6 +8176,7 @@ media-sound/vsound 0.6-r1: A virtual audio loopback cable
 media-sound/wavbreaker 0.11: wavbreaker/wavmerge GTK+ utility to break or merge WAV files
 media-sound/wavegain 1.3.1: ReplayGain for WAVE audio files
 media-sound/wavpack 5.1.0-r1: Hybrid lossless audio compression tools
+media-sound/wavsplit 1.2.1-r2: Simple command line tool to split WAV files
 media-sound/wildmidi 0.2.3.5 0.3.13: Midi processing library and a midi player using the gus patch set
 media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
 media-sound/xfmpc 0.2.3-r1: Music Player Daemon (MPD) client for the Xfce desktop environment
@@ -8383,7 +8384,7 @@ net-analyzer/nfdump 1.6.14-r1: A set of tools to collect and process netflow dat
 net-analyzer/ngrep 1.45-r3: A grep for network layers
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
 net-analyzer/nmap 7.70: A utility for network discovery and security auditing
-net-analyzer/nmbscan 1.2.5: Scans the shares of a SMB/NetBIOS network
+net-analyzer/nmbscan 1.2.5-r1: Scans the shares of a SMB/NetBIOS network
 net-analyzer/nrpe 2.15-r3: Nagios Remote Plugin Executor
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r2: Displays statistics about ethernet traffic including protocol breakdown
