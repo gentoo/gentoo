@@ -17,7 +17,7 @@ DEPEND="${RDEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~mips ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~mips ppc ppc64 ~sparc x86"
 IUSE=""
 
 S="${WORKDIR}/${P}/Src"
