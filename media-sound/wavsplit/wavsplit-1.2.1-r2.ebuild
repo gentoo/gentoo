@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 #-sparc, -amd64: 1.0: "Only supports PCM wave format" error message.
-KEYWORDS="~amd64 -sparc ~x86"
+KEYWORDS="amd64 -sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-Makefile.patch
