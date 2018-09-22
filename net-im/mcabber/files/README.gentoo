@@ -1,0 +1,17 @@
+MCabber requires you to create a subdirectory .mcabber in your home
+directory and to place a configuration file there.
+An example mcabberrc was installed as part of the documentation.
+To create a new mcabberrc based on the example mcabberrc, execute the
+following commands:
+
+  mkdir -p ~/.mcabber
+  bzcat /usr/share/doc/mcabber*/mcabberrc.example.bz2 > ~/.mcabber/mcabberrc
+
+Then edit ~/.mcabber/mcabberrc with your favorite editor.
+
+See the CONFIGURATION FILE and FILES sections of the mcabber
+manual page (section 1) for more information.
+
+MCabber supports PGP encryption of messages. See README_PGP.txt for details.
+
+Check out /usr/share/mcabber/ for contributed themes and event scripts.

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic
+inherit flag-o-matic readme.gentoo-r1
 
 DESCRIPTION="A small Jabber console client with various features, like MUC, SSL, PGP"
 HOMEPAGE="http://mcabber.com/"
@@ -90,27 +90,10 @@ src_install() {
 		insinto /usr/share/vim/vimfiles/ftdetect
 		doins mcabber_log-ftdetect.vim
 	fi
+
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	elog
-	elog "MCabber requires you to create a subdirectory .mcabber in your home"
-	elog "directory and to place a configuration file there."
-	elog "An example mcabberrc was installed as part of the documentation."
-	elog "To create a new mcabberrc based on the example mcabberrc, execute the"
-	elog "following commands:"
-	elog
-	elog "  mkdir -p ~/.mcabber"
-	elog "  bzcat ${EROOT}usr/share/doc/${PF}/mcabberrc.example.bz2 >~/.mcabber/mcabberrc"
-	elog
-	elog "Then edit ~/.mcabber/mcabberrc with your favorite editor."
-	elog
-	elog "See the CONFIGURATION FILE and FILES sections of the mcabber"
-	elog "manual page (section 1) for more information."
-	elog
-	elog "From version 0.9.0 on, MCabber supports PGP encryption of messages."
-	elog "See README_PGP.txt for details."
-	echo
-	einfo "Check out ${EROOT}usr/share/${PN} for contributed themes and event scripts."
-	echo
+	readme.gentoo_print_elog
 }
