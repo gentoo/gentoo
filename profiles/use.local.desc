@@ -87,7 +87,6 @@ app-admin/puppet:diff - Enable diff support
 app-admin/puppet:experimental - Add patches for things in testing
 app-admin/puppet:rrdtool - Enable rrdtool support
 app-admin/puppet:shadow - Enable shadow support
-app-admin/puppet-agent:experimental - Add patches for things in testing
 app-admin/puppet-agent:puppetdb - Adds puppetdb support
 app-admin/puppetserver:puppetdb - Adds support for connecting to puppetdb
 app-admin/pwgen:livecd - Install init script for root password scrambling on boot
