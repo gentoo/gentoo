@@ -28,6 +28,7 @@ RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.1[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
+	app-crypt/gpgme[python,${PYTHON_USEDEP}]
 "
 if [[ ${PV} == *9999 ]] ; then
 	RDEPEND+=" =dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
