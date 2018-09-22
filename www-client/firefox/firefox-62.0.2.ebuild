@@ -153,8 +153,8 @@ pkg_setup() {
 		einfo
 		elog "You are enabling official branding. You may not redistribute this build"
 		elog "to any users on your network or the internet. Doing so puts yourself into"
-		elog "a legal problem with Mozilla Foundation"
-		elog "You can disable it by emerging ${PN} _with_ the bindist USE-flag"
+		elog "a legal problem with Mozilla Foundation."
+		elog "You can disable it by emerging ${PN} _with_ the bindist USE-flag."
 	fi
 
 	addpredict /proc/self/oom_score_adj
