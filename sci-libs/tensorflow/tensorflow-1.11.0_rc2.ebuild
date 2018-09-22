@@ -193,6 +193,9 @@ setup_bazelrc() {
 	build --define=LIBDIR=\$(PREFIX)/$(get_libdir)
 
 	EOF
+
+	tc-is-cross-compiler || \
+		echo "build --nodistinct_host_configuration" >> "${T}/bazelrc" || die
 }
 
 ebazel() {
@@ -227,7 +230,8 @@ load_distfiles() {
 		else
 			einfo "Copying $dst to bazel distdir $src ..."
 		fi
-		ln -s "${DISTDIR}/${dst}" "${T}/bazel-distdir/${src}" || die
+		dst="$(readlink -f "${DISTDIR}/${dst}")"
+		ln -s "${dst}" "${T}/bazel-distdir/${src}" || die
 	done <<< "$(sed -re 's/!?[A-Za-z]+\?\s+\(\s*//g; s/\s+\)//g' <<< "${bazel_external_uris}")"
 }
 
