@@ -10751,7 +10751,7 @@ x11-libs/libFS 1.0.7-r1: X.Org FS library
 x11-libs/libGLw 8.0.0: Mesa GLw library
 x11-libs/libICE 1.0.9-r2: X.Org Inter-Client Exchange library
 x11-libs/libSM 1.2.2-r2: X.Org Session Management library
-x11-libs/libX11 1.6.5-r1 1.6.6: X.Org X11 library
+x11-libs/libX11 1.6.6: X.Org X11 library
 x11-libs/libXScrnSaver 1.2.2-r2 1.2.3: X.Org XScrnSaver library
 x11-libs/libXTrap 1.0.1-r1: X.Org XTrap library
 x11-libs/libXau 1.0.8-r1: X.Org X authorization library
