@@ -324,7 +324,7 @@ app-crypt/ccrypt 1.10: Encryption and decryption
 app-crypt/certbot 0.24.0 0.25.1: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 0.24.0 0.25.1: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-nginx 0.24.0 0.25.1: Nginx plugin for certbot (Let's Encrypt Client)
-app-crypt/easy-rsa 3.0.1-r1: Small RSA key management package, based on OpenSSL
+app-crypt/easy-rsa 3.0.4: Small RSA key management package, based on OpenSSL
 app-crypt/gcr 3.20.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201807020151: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
 app-crypt/glep63-check 6: GLEP 63 compliance checker for OpenPGP keys
@@ -11170,7 +11170,7 @@ x11-terms/xfce4-terminal 0.8.6 0.8.7.2: A terminal emulator for the Xfce desktop
 x11-terms/xterm 327: Terminal Emulator for X Windows
 x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
-x11-themes/QGnomePlatform 0.3-r1: A Qt Platform Theme aimed to accommodate GNOME settings
+x11-themes/QGnomePlatform 0.3-r1 0.4: A Qt Platform Theme aimed to accommodate GNOME settings
 x11-themes/Tulliana 2.0: Tulliana icon set for KDE
 x11-themes/adwaita-icon-theme 3.22.0-r2 3.24.0: GNOME default icon theme
 x11-themes/adwaita-qt 1.0-r1: A style to bend Qt applications to look like they belong into GNOME Shell
