@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>kajzersoze72@gmail.com</email>
-		<name>Kajzer</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!--maintainer-needed-->
 	<use>
 		<flag name="i3wm">Add support for i3 window manager</flag>
 		<flag name="ipc">Add support for Inter-Process Messaging</flag>
