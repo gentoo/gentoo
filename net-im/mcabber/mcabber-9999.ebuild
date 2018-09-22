@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="aspell crypt idn modules otr spell ssl vim-syntax"
+IUSE="aspell crypt idn otr spell ssl vim-syntax"
 
 LANGS="cs de fr it nl pl ru uk"
 # localized help versions are installed only, when L10N var is set
@@ -50,11 +50,11 @@ pkg_setup() {
 
 src_configure() {
 	local myeconfargs=(
+		--enable-modules \
 		$(use_enable crypt gpgme) \
 		$(use_enable otr) \
 		$(use_enable aspell) \
 		$(use_enable spell enchant) \
-		$(use_enable modules) \
 		$(use_with idn libidn)
 	)
 	autotools-utils_src_configure
