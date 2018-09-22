@@ -18,7 +18,7 @@ SRC_URI="mirror://debian/pool/main/w/${MY_PN}/${MY_P_ORIG}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~sparc x86"
+KEYWORDS="~amd64 ~hppa ~mips ppc ~sparc x86"
 
 DOCS=( ../{BUGS,CHANGES,HINTS,README} )
 
