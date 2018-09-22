@@ -89,7 +89,7 @@ waf-utils_src_configure() {
 	CCFLAGS="${CFLAGS}" LINKFLAGS="${CFLAGS} ${LDFLAGS}" "${WAF_BINARY}" \
 		"--prefix=${EPREFIX}/usr" \
 		"${libdir[@]}" \
-		"$@" \
+		"${@}" \
 		configure || die "configure failed"
 }
 
@@ -102,8 +102,8 @@ waf-utils_src_compile() {
 	[[ ${WAF_VERBOSE} == ON ]] && _mywafconfig="--verbose"
 
 	local jobs="--jobs=$(makeopts_jobs)"
-	echo "\"${WAF_BINARY}\" build ${_mywafconfig} ${jobs}"
-	"${WAF_BINARY}" ${_mywafconfig} ${jobs} || die "build failed"
+	echo "\"${WAF_BINARY}\" build ${_mywafconfig} ${jobs} ${*}"
+	"${WAF_BINARY}" ${_mywafconfig} ${jobs} "${@}" || die "build failed"
 }
 
 # @FUNCTION: waf-utils_src_install
@@ -112,8 +112,8 @@ waf-utils_src_compile() {
 waf-utils_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	echo "\"${WAF_BINARY}\" --destdir=\"${D}\" install"
-	"${WAF_BINARY}" --destdir="${D}" install  || die "Make install failed"
+	echo "\"${WAF_BINARY}\" --destdir=\"${D}\" ${*} install"
+	"${WAF_BINARY}" --destdir="${D}" "${@}" install  || die "Make install failed"
 
 	# Manual document installation
 	einstalldocs
