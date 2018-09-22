@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-devel/autoconf doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Erasure Code API library written in C with pluggable Erasure Code backends.
+EAPI=6
+HOMEPAGE=https://bitbucket.org/tsg-/liberasurecode/overview
+IUSE=doc static-libs
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/openstack/liberasurecode/archive/1.6.0.tar.gz -> liberasurecode-1.6.0.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=c78d930a9e896a48d16bca59a6942c17
