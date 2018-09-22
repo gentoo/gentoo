@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=sys-libs/ncurses:0= sendmail? ( virtual/mta )
+DESCRIPTION=A small and easy to use folding editor
+EAPI=7
+HOMEPAGE=http://www.moria.de/~michael/fe/
+IUSE=sendmail
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0= sendmail? ( virtual/mta )
+SLOT=0
+SRC_URI=http://www.moria.de/~michael/fe/fe-2.0.tar.gz
+_md5_=8633f2c5a58cfe38201a20cb2907a817
