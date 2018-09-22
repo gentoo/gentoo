@@ -28,7 +28,7 @@ RDEPEND="crypt? ( >=app-crypt/gpgme-1.0.0 )
 	otr? ( >=net-libs/libotr-3.1.0 )
 	aspell? ( app-text/aspell )
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
-	idn? ( net-dns/libidn  )
+	idn? ( net-dns/libidn:= )
 	spell? ( app-text/enchant )
 	dev-libs/glib:2
 	net-libs/libnsl:0=
