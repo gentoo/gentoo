@@ -1,6 +1,5 @@
-diff -Nur fe-1.8-orig/Makefile.in fe-1.8/Makefile.in
---- fe-1.8-orig/Makefile.in	2007-08-31 20:47:09.000000000 +0200
-+++ fe-1.8/Makefile.in	2011-08-27 21:07:43.000000000 +0200
+--- fe-1.8-orig/Makefile.in
++++ fe-1.8/Makefile.in
 @@ -40,10 +40,10 @@
  
  install:	all
