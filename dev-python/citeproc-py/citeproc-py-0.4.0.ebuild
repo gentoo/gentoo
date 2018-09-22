@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+PATCHES=( "${FILESDIR}/b1a5f925527093b0b5c11507f379a908e3354820.patch" )
+
 DEPEND="
 	dev-python/rnc2rng[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]"
