@@ -106,14 +106,14 @@ DEPEND="${CDEPEND}
 	>=sys-devel/binutils-2.16.1
 	sys-apps/findutils
 	pulseaudio? ( media-sound/pulseaudio )
-	elibc_glibc? ( || (
-		( >=dev-lang/rust-1.24.0[-extended(-)] >=dev-util/cargo-0.25.0 )
-		>=dev-lang/rust-1.24.0[extended]
-		( >=dev-lang/rust-bin-1.24.0 >=dev-util/cargo-0.25.0 )
-	) )
-	elibc_musl? ( || ( >=dev-lang/rust-1.24.0
-		>=dev-util/cargo-0.25.0
-	) )
+	elibc_glibc? (
+		virtual/cargo
+		virtual/rust
+	)
+	elibc_musl? (
+		virtual/cargo
+		virtual/rust
+	)
 	>=sys-devel/llvm-4.0.1
 	>=sys-devel/clang-4.0.1
 	amd64? ( >=dev-lang/yasm-1.1 virtual/opengl )
