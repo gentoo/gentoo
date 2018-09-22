@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit flag-o-matic autotools-utils mercurial
+inherit flag-o-matic mercurial
 
 DESCRIPTION="A small Jabber console client with various features, like MUC, SSL, PGP"
 HOMEPAGE="http://mcabber.com/"
@@ -37,9 +37,6 @@ RDEPEND="crypt? ( >=app-crypt/gpgme-1.0.0 )
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-## autotools-utils.eclass settings
-AUTOTOOLS_AUTORECONF="1"
-AUTOTOOLS_IN_SOURCE_BUILD="1"
 DOCS=( AUTHORS ChangeLog NEWS README TODO mcabberrc.example doc/README_PGP.txt )
 
 pkg_setup() {
@@ -49,19 +46,17 @@ pkg_setup() {
 }
 
 src_configure() {
-	local myeconfargs=(
+	econf \
 		--enable-modules \
 		$(use_enable crypt gpgme) \
 		$(use_enable otr) \
 		$(use_enable aspell) \
 		$(use_enable spell enchant) \
 		$(use_with idn libidn)
-	)
-	autotools-utils_src_configure
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 
 	# clean unneeded language documentation
 	for i in ${LANGS}; do
