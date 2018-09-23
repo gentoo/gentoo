@@ -3,18 +3,24 @@
 
 EAPI=7
 
-inherit flag-o-matic mercurial
+inherit flag-o-matic
 
 DESCRIPTION="A small Jabber console client with various features, like MUC, SSL, PGP"
 HOMEPAGE="http://mcabber.com/"
-EHG_REPO_URI="https://bitbucket.org/McKael/mcabber"
-EHG_CHECKOUT_DIR="${WORKDIR}"
-EHG_BOOTSTRAP="autogen.sh"
-S="${WORKDIR}/${PN}"
+
+if [[ "${PV}" == 9999 ]]; then
+	inherit mercurial
+	EHG_REPO_URI="https://bitbucket.org/McKael/mcabber"
+	EHG_CHECKOUT_DIR="${WORKDIR}"
+	EHG_BOOTSTRAP="autogen.sh"
+	S="${WORKDIR}/${PN}"
+else
+	SRC_URI="http://mcabber.com/files/${P}.tar.bz2"
+	KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 
 IUSE="aspell crypt idn otr spell ssl vim-syntax"
 
