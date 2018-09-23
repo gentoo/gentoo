@@ -28,7 +28,7 @@ RDEPEND="
 	>=net-libs/nghttp2-1.33.0
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-62.1:= )
-	ssl? ( >=dev-libs/openssl-1.1.0:0=[-bindist] )
+	ssl? ( =dev-libs/openssl-1.1.0*:0=[-bindist] )
 "
 DEPEND="
 	${RDEPEND}
