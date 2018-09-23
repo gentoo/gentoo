@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit cuda eutils flag-o-matic toolchain-funcs pax-utils multilib
 
@@ -27,7 +27,7 @@ REQUIRED_USE="openmp? ( !minimal )
 	opencl? ( !minimal )
 	mozilla? ( !minimal )"
 
-DEPEND="sys-libs/zlib
+RDEPEND="sys-libs/zlib
 	!minimal? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -37,7 +37,7 @@ DEPEND="sys-libs/zlib
 		dev-util/nvidia-cuda-toolkit:= )
 	opencl? ( virtual/opencl )
 	mozilla? ( dev-libs/nss dev-libs/nspr )"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
