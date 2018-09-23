@@ -40,7 +40,7 @@ KEYWORDS="~amd64 ~x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist dbus debug eme-free +gmp-autoupdate hardened hwaccel jack neon
+IUSE="bindist clang dbus debug eme-free +gmp-autoupdate hardened hwaccel jack lto neon
 	pulseaudio +screenshot selinux startup-notification system-harfbuzz system-icu
 	system-jpeg system-libevent system-sqlite system-libvpx test wifi"
 RESTRICT="!bindist? ( bindist )"
@@ -103,8 +103,13 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	app-arch/zip
 	app-arch/unzip
-	>=sys-devel/binutils-2.16.1
+	>=sys-devel/binutils-2.30
 	sys-apps/findutils
+	>=sys-devel/llvm-4.0.1
+	>=sys-devel/clang-4.0.1
+	clang? (
+		>=sys-devel/lld-4.0.1
+	)
 	pulseaudio? ( media-sound/pulseaudio )
 	elibc_glibc? (
 		virtual/cargo
@@ -114,8 +119,6 @@ DEPEND="${CDEPEND}
 		virtual/cargo
 		virtual/rust
 	)
-	>=sys-devel/llvm-4.0.1
-	>=sys-devel/clang-4.0.1
 	amd64? ( >=dev-lang/yasm-1.1 virtual/opengl )
 	x86? ( >=dev-lang/yasm-1.1 virtual/opengl )"
 
@@ -180,6 +183,8 @@ src_prepare() {
 	eapply "${WORKDIR}/firefox"
 
 	eapply "${FILESDIR}"/${PN}-60.0-blessings-TERM.patch # 654316
+	eapply "${FILESDIR}"/${PN}-60.0-do-not-force-lld.patch
+	eapply "${FILESDIR}"/${PN}-60.0-sandbox-lto.patch # 666580
 
 	# Enable gnomebreakpad
 	if use debug ; then
@@ -242,6 +247,20 @@ src_configure() {
 	# get your own set of keys.
 	_google_api_key=AIzaSyDEAOvatFo0eTgsV_ZlEzx0ObmepsMzfAc
 
+	if use clang && ! tc-is-clang ; then
+		# Force clang
+		einfo "Enforcing the use of clang due to USE=clang ..."
+		CC=${CHOST}-clang
+		CXX=${CHOST}-clang++
+		strip-unsupported-flags
+	elif ! use clang && ! tc-is-gcc ; then
+		# Force gcc
+		einfo "Enforcing the use of gcc due to USE=-clang ..."
+		CC=${CHOST}-gcc
+		CXX=${CHOST}-gcc++
+		strip-unsupported-flags
+	fi
+
 	####################################
 	#
 	# mozconfig, CFLAGS and CXXFLAGS setup
@@ -260,11 +279,29 @@ src_configure() {
 	# Must pass release in order to properly select linker
 	mozconfig_annotate 'Enable by Gentoo' --enable-release
 
-	# Must pass --enable-gold if using ld.gold
-	if tc-ld-is-gold ; then
-		mozconfig_annotate 'tc-ld-is-gold=true' --enable-gold
+	# Don't let user's LTO flags clash with upstream's flags
+	filter-flags -flto*
+
+	if use lto ; then
+		if use clang ; then
+			# Upstream only supports lld when using clang
+			mozconfig_annotate "forcing ld=lld due to USE=clang and USE=lto" --enable-linker=lld
+		else
+			# Linking only works when using ld.gold when LTO is enabled
+			mozconfig_annotate "forcing ld=gold due to USE=lto" --enable-linker=gold
+		fi
+
+		mozconfig_annotate '+lto' --enable-lto=full
 	else
-		mozconfig_annotate 'tc-ld-is-gold=false' --disable-gold
+		# Avoid auto-magic on linker
+		if use clang ; then
+			# This is upstream's default
+			mozconfig_annotate "forcing ld=lld due to USE=clang" --enable-linker=lld
+		elif tc-ld-is-gold ; then
+			mozconfig_annotate "linker is set to gold" --enable-linker=gold
+		else
+			mozconfig_annotate "linker is set to bfd" --enable-linker=bfd
+		fi
 	fi
 
 	# It doesn't compile on alpha without this LDFLAGS
