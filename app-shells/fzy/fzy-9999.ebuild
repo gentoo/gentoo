@@ -3,13 +3,13 @@
 
 EAPI=6
 
-inherit savedconfig toolchain-funcs
+inherit eutils savedconfig toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/jhawthorn/fzy.git"
 else
-	SRC_URI="https://github.com/jhawthorn/fzy/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/jhawthorn/${PN}/releases/download/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -31,9 +31,14 @@ src_prepare() {
 src_install() {
 	local DOCS=( ALGORITHM.md CHANGELOG.md README.md )
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr install
-	exeinto /usr/share/fzy
-	doexe contrib/fzy-tmux
-	doexe contrib/fzy-dvtm
+	dobin contrib/fzy-tmux
+	dobin contrib/fzy-dvtm
 	einstalldocs
 	save_config config.h
+}
+
+pkg_postinst() {
+	savedconfig_pkg_postinst
+	optfeature "opening search results in dvtm pane with provided ${EPREFIX}/usr/bin/fzy-dvtm" app-misc/dvtm
+	optfeature "opening search results in tmux pane with provided ${EPREFIX}/usr/bin/fzy-tmux" app-misc/tmux
 }
