@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools ltprune
+inherit autotools
 
 MY_P="${P/-tpm-/_tpm_}"
 
@@ -38,5 +38,5 @@ src_prepare() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${D}" -name '*.la' -delete || die
 }
