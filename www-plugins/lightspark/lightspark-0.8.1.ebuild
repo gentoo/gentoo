@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit cmake-utils gnome2-utils nsplugins toolchain-funcs xdg-utils
+inherit cmake-utils gnome2-utils llvm nsplugins toolchain-funcs xdg-utils
 
 EGIT_COMMIT="f6ed8284810ad91c277ed5d0835b215e7329450e"
 DESCRIPTION="High performance flash player"
@@ -24,7 +24,7 @@ RDEPEND="app-arch/xz-utils:0=
 	media-libs/libpng:0=
 	media-libs/libsdl2:0=
 	media-libs/sdl2-mixer:0=
-	>=sys-devel/llvm-3.4:=
+	<sys-devel/llvm-7:=
 	sys-libs/zlib:0=
 	x11-libs/cairo:0=
 	x11-libs/libX11:0=
@@ -33,7 +33,7 @@ RDEPEND="app-arch/xz-utils:0=
 	curl? ( net-misc/curl:0= )
 	ffmpeg? (
 		libav? ( <media-video/libav-13_pre:0= )
-		!libav? ( <media-video/ffmpeg-4:0= )
+		!libav? ( media-video/ffmpeg:0= )
 	)
 	gles? ( media-libs/mesa:0=[gles2] )
 	!gles? (
@@ -47,6 +47,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 S=${WORKDIR}/${P/_rc*/}
+
+LLVM_MAX_SLOT=6
 
 src_configure() {
 	local mycmakeargs=(
