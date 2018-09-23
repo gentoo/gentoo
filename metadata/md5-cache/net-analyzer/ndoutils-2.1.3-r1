@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install postinst
-DEPEND=dev-perl/DBD-mysql dev-perl/DBI >=net-analyzer/nagios-core-4 virtual/mysql virtual/pkgconfig
+DEPEND=dev-db/mysql-connector-c dev-perl/DBD-mysql dev-perl/DBI >=net-analyzer/nagios-core-4 virtual/pkgconfig
 DESCRIPTION=Nagios addon to store Nagios data in a MySQL database
 EAPI=6
 HOMEPAGE=http://www.nagios.org/
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
-RDEPEND=dev-perl/DBD-mysql dev-perl/DBI >=net-analyzer/nagios-core-4 virtual/mysql
+RDEPEND=dev-db/mysql-connector-c dev-perl/DBD-mysql dev-perl/DBI >=net-analyzer/nagios-core-4 virtual/mysql
 SLOT=0
 SRC_URI=https://github.com/NagiosEnterprises/ndoutils/archive/ndoutils-2.1.3.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
-_md5_=0d9475d628130f5a80ea78ec465ffb46
+_md5_=a22c4ded65f9244e1b772d0d9139659d
