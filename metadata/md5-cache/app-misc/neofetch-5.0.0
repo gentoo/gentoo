@@ -8,4 +8,4 @@ LICENSE=MIT-with-advertising
 RDEPEND=sys-apps/pciutils X? ( media-gfx/imagemagick media-libs/imlib2 www-client/w3m[imlib] x11-apps/xprop x11-apps/xrandr x11-apps/xwininfo )
 SLOT=0
 SRC_URI=https://github.com/dylanaraps/neofetch/archive/5.0.0/neofetch-5.0.0.tar.gz
-_md5_=87e395c97581d201e9b3ac165b36d6c1
+_md5_=17af3c2dcb0af21798eac933d3a62058
