@@ -1,0 +1,102 @@
+From 7bcbfd712044a5455f03d607a60c557f90d16671 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sun, 23 Sep 2018 15:49:32 +0300
+Subject: [PATCH] build
+
+---
+ src/extract.c  | 2 +-
+ src/findkey.c  | 2 +-
+ src/main.c     | 2 +-
+ src/makekey.c  | 3 ++-
+ src/mktmptbl.c | 1 +
+ src/zdmain.c   | 2 +-
+ 6 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/src/extract.c b/src/extract.c
+index 6cb7800..58e740d 100644
+--- a/src/extract.c
++++ b/src/extract.c
+@@ -90,7 +90,7 @@ static void usage( char *prg )
+     fprintf( stderr, " -s <size>\textract only specified number of bytes\n" );
+ }
+ 
+-void main(int argc, char *argv[])
++int main(int argc, char *argv[])
+ {
+ char	*ret, *outname;
+ int	outfile, err=0, i, caseflg=0, size=0;
+diff --git a/src/findkey.c b/src/findkey.c
+index 0de9dd3..ab2094a 100644
+--- a/src/findkey.c
++++ b/src/findkey.c
+@@ -56,7 +56,7 @@ static void usage( char *name )
+     exit( 1 );
+ }
+ 
+-void main( int argc, char **argv )
++int main( int argc, char **argv )
+ {
+ uword	key0, key1, key2;
+ int	pwdLen=0;
+diff --git a/src/main.c b/src/main.c
+index 8e58072..d84b339 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -128,7 +128,7 @@ static void usage( char *myself )
+     fprintf( stderr, " -n\tno progress indicator\n" );
+ }
+ 
+-void main( int argc, char **argv )
++int main( int argc, char **argv )
+ {
+ int		crypt, plain, cryptlength, plainlength;
+ struct stat	filestat;
+diff --git a/src/makekey.c b/src/makekey.c
+index 271fab3..f28029c 100644
+--- a/src/makekey.c
++++ b/src/makekey.c
+@@ -12,6 +12,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ #include "pkcrack.h"
+ #include "keystuff.h"
+ #include "crc.h"
+@@ -24,7 +25,7 @@ static void usage( char *name )
+     exit( 1 );
+ }
+ 
+-void main( int argc, char **argv )
++int main( int argc, char **argv )
+ {
+ char *	pwd;  
+ int	pwdLen, i;
+diff --git a/src/mktmptbl.c b/src/mktmptbl.c
+index 46f1402..848f171 100644
+--- a/src/mktmptbl.c
++++ b/src/mktmptbl.c
+@@ -43,6 +43,7 @@
+ static char RCSID[]="$Id: mktmptbl.c,v 1.9 2002/11/02 15:12:06 lucifer Exp $";
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include "mktmptbl.h"
+ 
+ ushort	tempTable[256][64];
+diff --git a/src/zdmain.c b/src/zdmain.c
+index bfb1f6b..6909b2d 100644
+--- a/src/zdmain.c
++++ b/src/zdmain.c
+@@ -35,7 +35,7 @@ static char RCSID[]="$Id: zdmain.c,v 1.4 2002/12/28 17:01:42 lucifer Exp $";
+ 
+ extern void zipdecrypt( char*infile, char*outfile, int k0, int k1, int k2 );
+ 
+-void main( int argc, char **argv )
++int main( int argc, char **argv )
+ {
+ char *c;
+ 
+-- 
+2.16.4
+
