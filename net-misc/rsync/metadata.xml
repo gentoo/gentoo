@@ -10,5 +10,6 @@
 	</upstream>
 	<use>
 		<flag name="stunnel">Provide helper scripts for using rsync via &gt;=net-misc/stunnel-4</flag>
+		<flag name="system-zlib">Use system <pkg>sys-libs/zlib</pkg>.</flag>
 	</use>
 </pkgmetadata>

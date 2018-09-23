@@ -14,7 +14,7 @@ LICENSE="GPL-3"
 SLOT="0"
 [[ ${PV} = *_pre* ]] || \
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="acl examples iconv ipv6 static stunnel xattr"
+IUSE="acl examples iconv ipv6 static stunnel system-zlib xattr"
 
 LIB_DEPEND="acl? ( virtual/acl[static-libs(+)] )
 	xattr? ( kernel_linux? ( sys-apps/attr[static-libs(+)] ) )
@@ -31,6 +31,7 @@ src_configure() {
 	local myeconfargs=(
 		--with-rsyncd-conf="${EPREFIX}"/etc/rsyncd.conf
 		--without-included-popt
+		$(use_with !system-zlib included-zlib)
 		$(use_enable acl acl-support)
 		$(use_enable iconv)
 		$(use_enable ipv6)
@@ -87,5 +88,15 @@ pkg_postinst() {
 		einfo
 		einfo "You maybe have to update the certificates configured in"
 		einfo "${EROOT}/etc/stunnel/rsync.conf"
+	fi
+	if use system-zlib ; then
+		ewarn "Using system-zlib is incompatible with <rsync-3.1.1 when"
+		ewarn "using the --compress option."
+		ewarn
+		ewarn "When syncing with >=rsync-3.1.1 built with bundled zlib,"
+		ewarn "and the --compress option, add --new-compress (-zz)."
+		ewarn
+		ewarn "For syncing the portage tree, add:"
+		ewarn "PORTAGE_RSYNC_EXTRA_OPTS=\"--new-compress\" to make.conf"
 	fi
 }
