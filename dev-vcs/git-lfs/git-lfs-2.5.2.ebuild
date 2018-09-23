@@ -21,6 +21,7 @@ SLOT="0"
 IUSE="+doc"
 
 DEPEND="doc? ( app-text/ronn )"
+
 RDEPEND="dev-vcs/git"
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
