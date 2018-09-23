@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-MOZ_ESR=0
+MOZ_ESR=1
 
 # Can be updated using scripts/get_langs.sh from mozilla overlay
 # Missing when bumped : be
@@ -122,7 +122,7 @@ src_install() {
 	newins "${FILESDIR}"/all-gentoo-1.js all-gentoo.js
 
 	# Install language packs
-	mozlinguas_src_install
+	MOZ_INSTALL_L10N_XPIFILE="1" mozlinguas_src_install
 
 	local LANG=${LINGUAS%% *}
 	if [[ -n ${LANG} && ${LANG} != "en" ]]; then
