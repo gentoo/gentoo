@@ -325,9 +325,6 @@ mozconfig_config() {
 		mozconfig_annotate '-pulseaudio' --enable-alsa
 	fi
 
-	# For testing purpose only
-	mozconfig_annotate 'Sandbox' --enable-content-sandbox
-
 	mozconfig_use_enable system-sqlite
 	mozconfig_use_with system-jpeg
 	mozconfig_use_with system-icu
