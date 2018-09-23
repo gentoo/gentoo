@@ -21,8 +21,6 @@ DEPEND="dev-libs/glib:2[${MULTILIB_USEDEP}]
 RDEPEND="${DEPEND}
 	!!media-plugins/alsa-plugins[pulseaudio]"
 
-MULTILIB_CHOST_TOOLS=( /usr/bin/apulse )
-
 PATCHES=( "${FILESDIR}/sdk.patch" )
 
 src_prepare() {
@@ -52,6 +50,11 @@ multilib_src_test() {
 
 multilib_src_install_all() {
 	cmake-utils_src_install
+	if ! use sdk; then
+		dobin "${T}"/apulse
+		export MULTILIB_CHOST_TOOLS=( /usr/bin/apulse )
+		multilib_foreach_abi multilib_prepare_wrappers
+		multilib_install_wrappers
+	fi
 	einstalldocs
-	use sdk || dobin "${T}"/apulse
 }
