@@ -11092,7 +11092,7 @@ x11-plugins/wmMatrix 0.2-r1: WMaker DockApp: Slightly modified version of Jamie 
 x11-plugins/wmSMPmon 3.1-r1: SMP system monitor dockapp
 x11-plugins/wmSpaceWeather 1.04_p19: dockapp showing weather at geosynchronous orbit
 x11-plugins/wmSun 1.05: dockapp which displays the rise/set time of the sun
-x11-plugins/wmacpi 2.3: DockApp ACPI status monitor for laptops
+x11-plugins/wmacpi 2.3-r1: DockApp ACPI status monitor for laptops
 x11-plugins/wmapm 3.1-r1: WindowMaker DockApp: Battery/Power status monitor for laptops
 x11-plugins/wmapmload 0.3.4-r1: dockapp that monitors your apm battery status
 x11-plugins/wmappl 0.71: Simple application launcher for the Window Maker dock
@@ -11148,7 +11148,7 @@ x11-plugins/wmtz 0.7_p20150816: dockapp that shows the time in multiple timezone
 x11-plugins/wmudmount 2.2: A filesystem mounter that uses udisks to handle notification and mounting
 x11-plugins/wmweather 2.4.4: a dockable weather monitor for standard METAR stations using ICAO location
 x11-plugins/wmweather+ 2.13: A dockapp for displaying data collected from METAR, AVN, ETA, and MRF forecasts
-x11-plugins/wmwifi 0.6: wireless network interface monitor dockapp
+x11-plugins/wmwifi 0.6-r1: wireless network interface monitor dockapp
 x11-terms/aterm 1.0.1-r3: rxvt compatible terminal emulator with transparency support
 x11-terms/eterm 0.9.6-r2: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.24.2: The Gnome Terminal
