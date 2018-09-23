@@ -10864,7 +10864,7 @@ x11-misc/compton 0.1_beta2: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/dclock 2.2.2_p9: Digital clock for the X window system
 x11-misc/devilspie 0.23: A Window Matching utility similar to Sawfish's Matched Windows feature
 x11-misc/devilspie2 0.42: Devilspie like window matching utility, using LUA for scripting
-x11-misc/dmenu 4.6: a generic, highly customizable, and efficient menu for the X Window System
+x11-misc/dmenu 4.6 4.8: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/driconf 0.9.1-r2: driconf is a GTK+2 GUI configurator for DRI
 x11-misc/dunst 1.3.2: Customizable and lightweight notification-daemon
 x11-misc/dzen 0.9.5-r1: a general purpose messaging, notification and menuing program for X11
