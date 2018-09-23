@@ -33,7 +33,7 @@ RDEPEND="app-arch/xz-utils:0=
 	curl? ( net-misc/curl:0= )
 	ffmpeg? (
 		libav? ( <media-video/libav-13_pre:0= )
-		!libav? ( <media-video/ffmpeg-4:0= )
+		!libav? ( media-video/ffmpeg:0= )
 	)
 	gles? ( media-libs/mesa:0=[gles2] )
 	!gles? (
