@@ -1,3 +1,38 @@
+--- audiofile-0.3.6/configure.ac
++++ audiofile-0.3.6/configure.ac
+@@ -160,7 +160,6 @@
+ 	audiofile-uninstalled.pc
+ 	sfcommands/Makefile
+ 	test/Makefile
+-	gtest/Makefile
+ 	examples/Makefile
+ 	libaudiofile/Makefile
+ 	libaudiofile/alac/Makefile
+--- audiofile-0.3.6/libaudiofile/Makefile.am
++++ audiofile-0.3.6/libaudiofile/Makefile.am
+@@ -108,10 +108,9 @@
+ TESTS_ENVIRONMENT = $(top_builddir)/libtool --mode=execute $(VALGRIND) $(VALGRIND_FLAGS)
+ endif
+ 
+-LIBGTEST = ../gtest/libgtest.la
+ 
+-UnitTests_SOURCES = modules/UT_RebufferModule.cpp
+-UnitTests_LDADD = libaudiofile.la $(LIBGTEST)
++UnitTests_SOURCES = modules/UT_RebufferModule.cpp $(libaudiofile_la_SOURCES)
++UnitTests_LDADD = $(libaudiofile_la_LIBADD) -lgtest
+ UnitTests_CPPFLAGS = -I$(top_srcdir)
+ UnitTests_CXXFLAGS = -fno-rtti -fno-exceptions -DGTEST_HAS_RTTI=0 -DGTEST_HAS_EXCEPTIONS=0
+ UnitTests_LDFLAGS = -static
+--- audiofile-0.3.6/Makefile.am
++++ audiofile-0.3.6/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-SUBDIRS = gtest libaudiofile sfcommands test examples docs
++SUBDIRS =  libaudiofile sfcommands test examples docs
+ 
+ EXTRA_DIST = \
+ 	ACKNOWLEDGEMENTS \
 --- audiofile-0.3.6/test/Makefile.am
 +++ audiofile-0.3.6/test/Makefile.am
 @@ -59,79 +59,77 @@
