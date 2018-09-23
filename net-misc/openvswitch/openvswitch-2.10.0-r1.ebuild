@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -106,8 +106,9 @@ src_install() {
 	newinitd "${FILESDIR}/ovsdb-server-r1" ovsdb-server
 	newinitd "${FILESDIR}/ovs-vswitchd-r1" ovs-vswitchd
 
-	systemd_dounit "${FILESDIR}/ovsdb-server.service"
-	systemd_dounit "${FILESDIR}/ovs-vswitchd.service"
+	systemd_newunit "${FILESDIR}/ovsdb-server2.service" ovsdb-server.service
+	systemd_newunit "${FILESDIR}/ovs-vswitchd2.service" ovs-vswitchd.service
+	systemd_newunit rhel/usr_lib_systemd_system_ovs-delete-transient-ports.service ovs-delete-transient-ports.service
 	systemd_newtmpfilesd "${FILESDIR}/openvswitch.tmpfiles" openvswitch.conf
 
 	insinto /etc/logrotate.d
@@ -131,6 +132,7 @@ pkg_postinst() {
 		fi
 	done
 
+	# only needed on non-systemd, but helps anyway
 	elog "Use the following command to create an initial database for ovsdb-server:"
 	elog "   emerge --config =${CATEGORY}/${PF}"
 	elog "(will create a database in /var/lib/openvswitch/conf.db)"
