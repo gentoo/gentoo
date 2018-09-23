@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils fdo-mime multilib toolchain-funcs
 
@@ -14,13 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="gtk network-cron"
 
-RDEPEND=">=sys-apps/pcsc-lite-1.4.14"
-
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
-RDEPEND="${RDEPEND}
+DEPEND=">=sys-apps/pcsc-lite-1.4.14"
+RDEPEND="${DEPEND}
 	dev-perl/pcsc-perl
 	gtk? ( dev-perl/Gtk2 )"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=(
 	README Changelog
