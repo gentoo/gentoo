@@ -28,5 +28,5 @@ RDEPEND="sys-apps/pciutils
 	)"
 
 src_install() {
-	emake DESTDIR="${ED}/usr" install
+	emake DESTDIR="${ED}" install
 }
