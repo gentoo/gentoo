@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools ltprune
+inherit autotools
 
 DESCRIPTION="Command line tool for signing, verifying, encrypting and decrypting XML"
 HOMEPAGE="https://www.aleksey.com/xmlsec"
@@ -28,8 +28,8 @@ RDEPEND=">=dev-libs/libxml2-2.7.4
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${PN}1-${PV}"
 
@@ -61,5 +61,5 @@ src_test() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
