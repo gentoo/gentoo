@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit ltprune multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="Provides a standard configuration setup for installing PKCS#11"
 HOMEPAGE="https://p11-glue.freedesktop.org/p11-kit.html https://github.com/p11-glue/p11-kit"
@@ -18,8 +18,8 @@ REQUIRED_USE="trust? ( asn1 )"
 RDEPEND="asn1? ( >=dev-libs/libtasn1-3.4[${MULTILIB_USEDEP}] )
 	libffi? ( >=dev-libs/libffi-3.0.0[${MULTILIB_USEDEP}] )
 	trust? ( app-misc/ca-certificates )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 pkg_setup() {
 	# disable unsafe tests, bug#502088
@@ -56,5 +56,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files --modules
+	find "${D}" -name '*.la' -delete || die
 }
