@@ -14,6 +14,7 @@
 		<flag name="i18n">Allow GUI internationalization through l10n_* use flags</flag>
 		<flag name="minimal">Build only binaries without parts library and examples</flag>
 		<flag name="ngspice">Enable circuit simulation</flag>
+		<flag name="occ">Enable viewing 3D rendering of designs via opencascade</flag>
 		<flag name="oce">Enable viewing 3D rendering of designs via OCE</flag>
 		<flag name="python">Enable python scripting support</flag>
 	</use>
