@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit flag-o-matic ltprune multilib udev user
+inherit flag-o-matic multilib udev user
 
 DESCRIPTION="library for accessing smart card terminals"
 HOMEPAGE="https://github.com/OpenSC/openct/wiki"
@@ -13,22 +13,13 @@ KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="doc pcsc-lite usb debug +udev"
+IUSE="doc pcsc-lite usb debug"
 
-# Drop the libtool dep once libltdl goes stable.
 RDEPEND="pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1:= )
 	usb? ( virtual/libusb:0 )
 	dev-libs/libltdl:0="
-
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
-
-# udev is not required at all at build-time as it's only a matter of
-# installing the rules; add openrc for the checkpath used in the new
-# init script
-RDEPEND="${RDEPEND}
-	udev? ( virtual/udev )
-	sys-apps/openrc"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 pkg_setup() {
 	enewgroup openct
@@ -56,10 +47,10 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 	rm "${D}"/usr/$(get_libdir)/openct-ifd.*
 
-	use udev && udev_newrules etc/openct.udev 70-openct.rules
+	udev_newrules etc/openct.udev 70-openct.rules
 
 	newinitd "${FILESDIR}"/openct.initd openct
 }
