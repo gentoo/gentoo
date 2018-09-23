@@ -8,8 +8,8 @@ FORTRAN_STANDARD=90
 inherit autotools toolchain-funcs cuda fortran-2
 
 DESCRIPTION="Unified runtime system for heterogeneous multicore architectures"
-HOMEPAGE="http://runtime.bordeaux.inria.fr/StarPU/"
-SRC_URI="${HOMEPAGE}/files/${P}.tar.gz"
+HOMEPAGE="http://starpu.gforge.inria.fr/"
+SRC_URI="https://gforge.inria.fr/frs/download.php/file/37744/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/8"
@@ -19,7 +19,7 @@ IUSE="blas cuda debug doc examples fftw gcc-plugin mpi opencl opengl
 	static-libs test"
 
 RDEPEND="
-	<sys-apps/hwloc-2.0.0:0=
+	sys-apps/hwloc:0=
 	sci-mathematics/glpk:0=
 	blas? ( virtual/blas )
 	cuda? ( dev-util/nvidia-cuda-toolkit
