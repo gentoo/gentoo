@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ IUSE="blas cuda debug doc examples fftw gcc-plugin mpi opencl opengl
 	static-libs test"
 
 RDEPEND="
-	sys-apps/hwloc:0=
+	<sys-apps/hwloc-2.0.0:0=
 	sci-mathematics/glpk:0=
 	blas? ( virtual/blas )
 	cuda? ( dev-util/nvidia-cuda-toolkit
