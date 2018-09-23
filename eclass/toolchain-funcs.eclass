@@ -235,6 +235,14 @@ tc-detect-is-softfloat() {
 		# hardfloat but we now treat it as softfloat like most everyone
 		# else. Check existing toolchains to respect existing systems.
 		arm*)
+			# All tests are meaningless when `multilib` flag is enabled.
+			# Furthermore `--with-float=` compilation option is incompatible
+			# with `--with-multilib-list=`.
+			if use multilib; then
+				echo "no"
+				return 0
+			fi
+
 			if tc-cpp-is-true "defined(__ARM_PCS_VFP)"; then
 				echo "no"
 			else
