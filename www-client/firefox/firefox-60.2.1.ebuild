@@ -39,7 +39,7 @@ KEYWORDS="~amd64 ~x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist eme-free +gmp-autoupdate hardened hwaccel jack +screenshot selinux test"
+IUSE="bindist eme-free geckodriver +gmp-autoupdate hardened hwaccel jack +screenshot selinux test"
 RESTRICT="!bindist? ( bindist )"
 
 SRCHASH=239e434d6d2b8e1e2b697c3416d1e96d48fe98e5
@@ -197,6 +197,8 @@ src_configure() {
 
 	mozconfig_init
 	mozconfig_config
+
+	mozconfig_use_enable geckodriver
 
 	# enable JACK, bug 600002
 	mozconfig_use_enable jack
