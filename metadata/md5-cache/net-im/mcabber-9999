@@ -1,11 +1,11 @@
-DEFINED_PHASES=compile configure install postinst prepare setup test unpack
-DEPEND=crypt? ( >=app-crypt/gpgme-1.0.0 ) otr? ( >=net-libs/libotr-3.1.0 ) aspell? ( app-text/aspell ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) idn? ( net-dns/libidn ) spell? ( app-text/enchant ) dev-libs/glib:2 net-libs/libnsl:0= sys-libs/ncurses:0= >=net-libs/loudmouth-1.4.3-r1[ssl?] virtual/pkgconfig >=app-portage/elt-patches-20170815 dev-vcs/mercurial
+DEFINED_PHASES=configure install postinst setup unpack
+DEPEND=crypt? ( >=app-crypt/gpgme-1.0.0 ) otr? ( >=net-libs/libotr-3.1.0 ) aspell? ( app-text/aspell ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) idn? ( net-dns/libidn:= ) spell? ( app-text/enchant ) dev-libs/glib:2 net-libs/libnsl:0= sys-libs/ncurses:0= >=net-libs/loudmouth-1.4.3-r1[ssl?] virtual/pkgconfig dev-vcs/mercurial
 DESCRIPTION=A small Jabber console client with various features, like MUC, SSL, PGP
-EAPI=5
+EAPI=7
 HOMEPAGE=http://mcabber.com/
-IUSE=aspell crypt idn modules otr spell ssl vim-syntax l10n_cs l10n_de l10n_fr l10n_it l10n_nl l10n_pl l10n_ru l10n_uk
+IUSE=aspell crypt idn otr spell ssl vim-syntax l10n_cs l10n_de l10n_fr l10n_it l10n_nl l10n_pl l10n_ru l10n_uk
 LICENSE=GPL-2
-RDEPEND=crypt? ( >=app-crypt/gpgme-1.0.0 ) otr? ( >=net-libs/libotr-3.1.0 ) aspell? ( app-text/aspell ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) idn? ( net-dns/libidn ) spell? ( app-text/enchant ) dev-libs/glib:2 net-libs/libnsl:0= sys-libs/ncurses:0= >=net-libs/loudmouth-1.4.3-r1[ssl?]
+RDEPEND=crypt? ( >=app-crypt/gpgme-1.0.0 ) otr? ( >=net-libs/libotr-3.1.0 ) aspell? ( app-text/aspell ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) idn? ( net-dns/libidn:= ) spell? ( app-text/enchant ) dev-libs/glib:2 net-libs/libnsl:0= sys-libs/ncurses:0= >=net-libs/loudmouth-1.4.3-r1[ssl?]
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	autotools-utils	696393cddf6200db17a31641f597b403	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	mercurial	9813bb616cb1bd0c943177ab52204409	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=6b503e74f408c7a22761b09bf0cdb866
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	mercurial	9813bb616cb1bd0c943177ab52204409	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=61a2cb19f666ba29248a23a176085ffb
