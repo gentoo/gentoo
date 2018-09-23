@@ -12,6 +12,7 @@
 	<flag name="custom-optimization">Build with user-specified compiler optimizations
 		(-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)</flag>
 	<flag name="eme-free">Disable EME (DRM plugin) cabability at build time</flag>
+	<flag name="geckodriver">Enable WebDriver support</flag>
 	<flag name="gtk2">Use the cairo-gtk2 rendering engine</flag>
 	<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically
 		downloaded and kept up-to-date in user profiles</flag>
