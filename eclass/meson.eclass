@@ -1,11 +1,11 @@
-# Copyright 2017 Gentoo Foundation
+# Copyright 2017-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
 # Mike Gilbert <floppym@gentoo.org>
-# @SUPPORTED_EAPIS: 6
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: common ebuild functions for meson-based packages
 # @DESCRIPTION:
 # This eclass contains the default phase functions for packages which
@@ -35,7 +35,7 @@
 # @CODE
 
 case ${EAPI:-0} in
-	6) ;;
+	6|7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
@@ -70,7 +70,11 @@ MESON_DEPEND=">=dev-util/meson-0.45.1
 # their own DEPEND string.
 : ${MESON_AUTO_DEPEND:=yes}
 if [[ ${MESON_AUTO_DEPEND} != "no" ]] ; then
-	DEPEND=${MESON_DEPEND}
+	if [[ ${EAPI:-0} == [0123456] ]]; then
+		DEPEND=${MESON_DEPEND}
+	else
+		BDEPEND=${MESON_DEPEND}
+	fi
 fi
 __MESON_AUTO_DEPEND=${MESON_AUTO_DEPEND} # See top of eclass
 
