@@ -5,7 +5,7 @@ EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit fcaps gnome2 pam python-any-r1 versionator virtualx
+inherit fcaps gnome2 pam python-any-r1 virtualx
 
 DESCRIPTION="Password and keyring managing daemon"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeKeyring"
@@ -25,7 +25,7 @@ RDEPEND="
 	pam? ( virtual/pam )
 	selinux? ( sec-policy/selinux-gnome )
 	>=app-crypt/gnupg-2.0.28:=
-	net-misc/openssh
+	ssh-agent? ( net-misc/openssh )
 "
 DEPEND="${RDEPEND}
 	>=app-eselect/eselect-pinentry-0.5
@@ -52,7 +52,6 @@ src_prepare() {
 
 src_configure() {
 	gnome2_src_configure \
-		--enable-ssh-agent \
 		$(use_with caps libcap-ng) \
 		$(use_enable pam) \
 		$(use_with pam pam-dir $(getpam_mod_dir)) \
