@@ -2,10 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 FORTRAN_STANDARD=90
-
-inherit autotools toolchain-funcs cuda fortran-2
+FORTRAN_NEEDED="fortran"
+inherit autotools cuda fortran-2 toolchain-funcs
 
 DESCRIPTION="Unified runtime system for heterogeneous multicore architectures"
 HOMEPAGE="http://starpu.gforge.inria.fr/"
@@ -15,12 +14,14 @@ LICENSE="LGPL-2.1"
 SLOT="0/8"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="blas cuda debug doc examples fftw gcc-plugin mpi opencl opengl
-	static-libs test"
+IUSE="
+	blas cuda doc examples fftw fortran gcc-plugin mpi opencl opengl
+	spinlock-check static-libs test valgrind
+"
 
 RDEPEND="
-	sys-apps/hwloc:0=
 	sci-mathematics/glpk:0=
+	sys-apps/hwloc:0=
 	blas? ( virtual/blas )
 	cuda? ( dev-util/nvidia-cuda-toolkit
 			x11-drivers/nvidia-drivers
@@ -28,19 +29,24 @@ RDEPEND="
 	fftw? ( sci-libs/fftw:3.0= )
 	mpi? ( virtual/mpi )
 	opencl? ( virtual/opencl )
-	opengl? ( media-libs/freeglut:0= )"
+	opengl? ( media-libs/freeglut:0= )
+	valgrind? ( dev-util/valgrind )
+"
 
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen virtual/latex-base )
-	test? ( gcc-plugin? ( dev-scheme/guile ) )"
+	test? ( gcc-plugin? ( dev-scheme/guile ) )
+"
 
 src_prepare() {
 	default
-	# upstream did not want the patches so apply sed's
-	sed -i -e 's/-O3 $CFLAGS/$CFLAGS/' configure.ac || die
+
 	sed -i -e '/Libs.private/s/@LDFLAGS@//g' *.pc.in */*.pc.in || die
+	sed -i -e 's:-O3::g;s:-D_FORTIFY_SOURCE=1::g' configure.ac || die
 	eautoreconf
+
 	use cuda && cuda_src_prepare
 }
 
@@ -48,19 +54,24 @@ src_configure() {
 	use blas && export BLAS_LIBS="$($(tc-getPKG_CONFIG) --libs blas)"
 
 	econf \
-		--disable-build-examples \
-		--disable-starpu-top \
+		$(use cuda && use_enable blas magma) \
+		$(use mpi && use_enable test mpi-check) \
 		$(use_enable cuda) \
-		$(use_enable debug) \
 		$(use_enable doc build-doc) \
 		$(use_enable fftw starpufft) \
+		$(use_enable fortran) \
 		$(use_enable gcc-plugin gcc-extensions) \
 		$(use_enable opencl) \
 		$(use_enable opengl opengl-render) \
+		$(use_enable spinlock-check) \
 		$(use_enable static-libs static) \
+		$(use_enable valgrind) \
 		$(use_with mpi mpicc "$(type -P mpicc)") \
-		$(use cuda && use_enable blas magma) \
-		$(use mpi && use_enable test mpi-check)
+		--disable-build-examples \
+		--disable-debug \
+		--disable-fstack-protector-all \
+		--disable-full-gdb-information \
+		--disable-starpu-top
 }
 
 src_test() {
