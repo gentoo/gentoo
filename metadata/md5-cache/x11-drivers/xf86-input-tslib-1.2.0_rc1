@@ -3,10 +3,10 @@ DEPEND=x11-libs/tslib x11-base/xorg-server:= x11-base/xorg-proto >=app-portage/e
 DESCRIPTION=X.org tslib input driver
 EAPI=6
 HOMEPAGE=https://github.com/merge/xf86-input-tslib
-KEYWORDS=alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sh sparc x86
+KEYWORDS=alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~sh sparc x86
 LICENSE=GPL-2
 RDEPEND=x11-libs/tslib x11-base/xorg-server:=
 SLOT=0
 SRC_URI=https://github.com/merge/xf86-input-tslib/archive/1.2.0-rc1.tar.gz -> xf86-input-tslib-1.2.0_rc1.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-snapshot	b77011b62e2053c646ad720defe6d921
-_md5_=8dc7e1a2de6782856d457af14d8192a1
+_md5_=4175448b85550de62f8a84be05dd514b
