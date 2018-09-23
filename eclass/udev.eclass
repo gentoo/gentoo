@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: udev.eclass
 # @MAINTAINER:
 # udev-bugs@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: Default eclass for determining udev directories.
 # @DESCRIPTION:
 # Default eclass for determining udev directories.
@@ -34,12 +34,16 @@ _UDEV_ECLASS=1
 inherit toolchain-funcs
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) ;;
+	0|1|2|3|4|5|6|7) ;;
 	*) die "${ECLASS}.eclass API in EAPI ${EAPI} not yet established."
 esac
 
-RDEPEND=""
-DEPEND="virtual/pkgconfig"
+if [[ ${EAPI:-0} == [0123456] ]]; then
+	RDEPEND=""
+	DEPEND="virtual/pkgconfig"
+else
+	BDEPEND="virtual/pkgconfig"
+fi
 
 # @FUNCTION: _udev_get_udevdir
 # @INTERNAL
