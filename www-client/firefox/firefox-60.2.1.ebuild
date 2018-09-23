@@ -354,8 +354,12 @@ PROFILE_EOF
 			|| die
 	fi
 
+	# firefox and firefox-bin are identical
+	rm "${ED%/}"${MOZILLA_FIVE_HOME}/firefox-bin || die
+	dosym firefox ${MOZILLA_FIVE_HOME}/firefox-bin
+
 	# Required in order to use plugins and even run firefox on hardened.
-	pax-mark m "${ED}"${MOZILLA_FIVE_HOME}/{firefox,firefox-bin,plugin-container}
+	pax-mark m "${ED}"${MOZILLA_FIVE_HOME}/{firefox,plugin-container}
 }
 
 pkg_preinst() {
