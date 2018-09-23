@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit python-single-r1 systemd udev user multilib-minimal
@@ -27,18 +27,16 @@ REQUIRED_USE="^^ ( udev libusb ) \
 
 # No dependencies need the MULTILIB_DEPS because the libraries are actually
 # standalone, the deps are only needed for the daemon itself.
-CDEPEND="libusb? ( virtual/libusb:1 )
+DEPEND="libusb? ( virtual/libusb:1 )
 	udev? ( virtual/udev )
 	policykit? ( >=sys-auth/polkit-0.111 )
 	python? ( ${PYTHON_DEPS} )"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	!<app-crypt/ccid-1.4.1-r1
 	!<sys-apps/baselayout-2
 	!<sys-apps/openrc-0.11.8
-	selinux? ( sec-policy/selinux-pcscd )
-"
+	selinux? ( sec-policy/selinux-pcscd )"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.11-polkit-pcscd.patch
