@@ -3,17 +3,11 @@
 
 EAPI=7
 
-if [[ ${PV} == 9999 ]]; then
-	MATE_THEMES_V=".9999"
-else
-	MATE_THEMES_V="*"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-fi
-
 DESCRIPTION="Meta package to facilitate easy use of x11-themes/mate-themes"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:MATE"
 SRC_URI=""
 
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 LICENSE="metapackage"
 SLOT="0"
 IUSE="gtk2-only"
