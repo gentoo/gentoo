@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=dev-libs/glib-2.44:2 sys-auth/polkit elogind? ( >=sys-auth/elogind-229.4 ) introspection? ( >=dev-libs/gobject-introspection-0.9.12:= ) systemd? ( >=sys-apps/systemd-186:0= ) !systemd? ( !elogind? ( sys-auth/consolekit ) ) dev-libs/libxslt dev-util/gdbus-codegen >=dev-util/gtk-doc-am-1.15 >=dev-util/intltool-0.40 sys-devel/gettext virtual/pkgconfig doc? ( app-text/docbook-xml-dtd:4.1.2 app-text/xmlto ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info virtual/pkgconfig
+DESCRIPTION=D-Bus interfaces for querying and manipulating user account information
+EAPI=6
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/AccountsService/
+IUSE=doc elogind +introspection selinux systemd
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-3+
+RDEPEND=>=dev-libs/glib-2.44:2 sys-auth/polkit elogind? ( >=sys-auth/elogind-229.4 ) introspection? ( >=dev-libs/gobject-introspection-0.9.12:= ) systemd? ( >=sys-apps/systemd-186:0= ) !systemd? ( !elogind? ( sys-auth/consolekit ) ) selinux? ( sec-policy/selinux-accountsd )
+REQUIRED_USE=?? ( elogind systemd )
+SLOT=0
+SRC_URI=https://www.freedesktop.org/software/accountsservice/accountsservice-0.6.50.tar.xz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	acac536f2c3bbcd312ac3faaa3e55e40	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=029000aa0ceb15bc0d584fcd24670980
