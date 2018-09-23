@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
 inherit desktop unpacker xdg-utils
 
@@ -18,8 +18,8 @@ SLOT="0"
 IUSE="alsa pulseaudio"
 REQUIRED_USE="|| ( alsa pulseaudio )"
 
-RDEPEND="app-arch/snappy:=
-	<dev-libs/openssl-1.1:0=
+RDEPEND="app-arch/snappy:0/1
+	<dev-libs/openssl-1.1:0
 	dev-libs/quazip
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[accessibility,dbus,xcb]
@@ -29,9 +29,9 @@ RDEPEND="app-arch/snappy:=
 	dev-qt/qtwebchannel:5
 	dev-qt/qtwebengine:5[geolocation,widgets]
 	dev-qt/qtwidgets:5
-	net-libs/libsrtp:=
+	net-libs/libsrtp:0
 	sys-libs/libcxx[libcxxabi]
-	sys-libs/zlib:=
+	sys-libs/zlib:0/1
 	virtual/udev
 	alsa? ( media-libs/alsa-lib )
 	pulseaudio? ( media-sound/pulseaudio )"
