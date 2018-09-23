@@ -10560,7 +10560,7 @@ www-client/epiphany 3.24.5 3.26.7: GNOME webbrowser based on Webkit
 www-client/falkon 3.0.1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0 60.2.0: Firefox Web Browser
-www-client/firefox-bin 52.9.0 60.1.0 60.2.0 61.0.2 62.0: Firefox Web Browser
+www-client/firefox-bin 52.9.0 60.2.1 62.0.2: Firefox Web Browser
 www-client/httrack 3.48.21-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/links 2.14-r1: A fast and lightweight web browser running in both graphics and text mode
 www-client/lynx 2.8.9_pre11 2.8.9_pre16: An excellent console-based web browser with ssl support
