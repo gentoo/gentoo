@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools multilib-build multilib-minimal multilib toolchain-funcs
 
@@ -24,8 +24,6 @@ MULTILIB_WRAPPED_HEADERS=(
 
 DOCS=()
 HTML_DOCS=()
-
-S="${WORKDIR}/${PN}-3.4"
 
 pkg_setup() {
 	use doc && DOCS+=(
