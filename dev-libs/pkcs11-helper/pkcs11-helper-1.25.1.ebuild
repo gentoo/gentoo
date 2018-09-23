@@ -1,9 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-
-inherit ltprune
+EAPI=7
 
 DESCRIPTION="PKCS#11 helper library"
 HOMEPAGE="https://github.com/OpenSC/pkcs11-helper"
@@ -19,8 +17,8 @@ RDEPEND="
 	libressl? ( dev-libs/libressl )
 	gnutls? ( >=net-libs/gnutls-1.4.4 )
 	nss? ( dev-libs/nss )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	doc? ( >=app-doc/doxygen-1.4.7 )"
 
 PATCHES=(
@@ -39,5 +37,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
