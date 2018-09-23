@@ -221,7 +221,7 @@ app-arch/unar 1.10.1: unpacker for various archiving formats, e.g. rar v3
 app-arch/unarj 2.65: Utility for opening arj archives
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7_p1-r1: Script for unpacking various file formats
-app-arch/unrar 5.5.8: Uncompress rar files
+app-arch/unrar 5.5.8 5.6.6: Uncompress rar files
 app-arch/unshield 1.4: InstallShield CAB file extractor
 app-arch/unzip 6.0_p20 6.0_p21-r2: unzipper for pkzip-compressed files
 app-arch/xar 1.8-r1: An easily extensible archive format
@@ -3027,7 +3027,7 @@ dev-libs/libaio 0.3.110: Asynchronous input/output library that uses the kernels
 dev-libs/libappindicator 12.10.0-r201 12.10.0-r301: A library to allow applications to export a menu into the Unity Menu bar
 dev-libs/libassuan 2.4.3-r1 2.5.1: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19-r1 0.19-r2: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
-dev-libs/libatomic_ops 7.6.4: Implementation for atomic memory update operations
+dev-libs/libatomic_ops 7.6.4 7.6.6: Implementation for atomic memory update operations
 dev-libs/libax25 0.0.12_rc4: AX.25 library for hamradio applications
 dev-libs/libbase58 0.1.4: C implementation of Bitcoin's base58 encoding
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
@@ -7285,7 +7285,7 @@ media-gfx/eom 1.12.2-r3 1.18.3: The MATE image viewer
 media-gfx/evoluspencil 2.0.5: A simple GUI prototyping tool to create mockups
 media-gfx/exif 0.6.21: Small CLI util to show EXIF infos hidden in JPEG files
 media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
-media-gfx/exiv2 0.26_p20180319: EXIF, IPTC and XMP metadata C++ library and command line utility
+media-gfx/exiv2 0.26_p20180319 0.26_p20180811-r3: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/fbgrab 1.0-r2 1.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/feh 2.18.3: A fast, lightweight imageviewer using imlib2
