@@ -11,4 +11,4 @@ REQUIRED_USE=?? ( elogind systemd )
 SLOT=2
 SRC_URI=https://github.com/storaged-project/udisks/releases/download/udisks-2.8.0/udisks-2.8.0.tar.bz2
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	linux-info	915cae3d7d636732918d18827fb1c226	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	udev	7af0412965eeadeee9e3b7ad98adabdf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
-_md5_=25340100ae3be08476994647150872c5
+_md5_=83c835a6a87c00556f53753617d5c6db

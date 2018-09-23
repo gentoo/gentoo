@@ -1,9 +1,9 @@
 DEFINED_PHASES=compile configure install postinst postrm setup test
-DEPEND=>=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8 test? ( dev-haskell/hunit >=dev-haskell/quickcheck-2.8 >=dev-haskell/random-1.0.1.0 dev-haskell/test-framework >=dev-haskell/test-framework-quickcheck2-0.3 ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DEPEND=>=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
 DESCRIPTION=Binary serialisation for Haskell values using lazy ByteStrings
 EAPI=5
 HOMEPAGE=https://github.com/kolmodin/binary
-IUSE=doc hscolour profile test
+IUSE=doc hscolour profile
 KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=>=dev-lang/ghc-7.4.1:=
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0/0.7.6.1
 SRC_URI=mirror://hackage/packages/archive/binary/0.7.6.1/binary-0.7.6.1.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ghc-package	a0d34e2f5f204f01c404ae1ce539542a	haskell-cabal	45605f3898bdc59eb016fb50ca27bf18	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=746bbf1ee418e9cefbcaf8c39f44ce54
+_md5_=bd9c79e71112796f8f425e8438e2605e
