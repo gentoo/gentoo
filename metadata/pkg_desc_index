@@ -624,7 +624,7 @@ app-emacs/dircolors 1.0-r2: Provide the same facility of ls --color inside Emacs
 app-emacs/dired-sort-menu 1.26: Sort entries in Dired mode
 app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
-app-emacs/ebuild-mode 1.44: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.44 1.45: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
 app-emacs/elib 1.0-r1: The Emacs Lisp Library
 app-emacs/elscreen 1.4.6-r1: Frame configuration management for GNU Emacs modelled after GNU Screen
@@ -1694,7 +1694,7 @@ app-xemacs/dictionary 1.16: Interface to RFC2229 dictionary servers
 app-xemacs/dired 1.17 1.20: Manage file systems
 app-xemacs/docbookide 0.08: DocBook editing support
 app-xemacs/easypg 1.03-r1: GnuPG interface for Emacs
-app-xemacs/ebuild-mode 1.44: Emacs modes for editing ebuilds and other Gentoo specific files
+app-xemacs/ebuild-mode 1.44 1.45: Emacs modes for editing ebuilds and other Gentoo specific files
 app-xemacs/ecrypto 0.20 0.21: Crypto functionality in Emacs Lisp
 app-xemacs/edebug 1.22: An Emacs Lisp debugger
 app-xemacs/edict 1.16 1.17: MULE: Lisp Interface to EDICT, Kanji Dictionary
