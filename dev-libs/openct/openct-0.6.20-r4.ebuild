@@ -61,7 +61,7 @@ src_install() {
 
 	use udev && udev_newrules etc/openct.udev 70-openct.rules
 
-	newinitd "${FILESDIR}"/openct.rc.2 openct
+	newinitd "${FILESDIR}"/openct.initd openct
 }
 
 pkg_postinst() {
