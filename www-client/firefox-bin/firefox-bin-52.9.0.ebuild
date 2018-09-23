@@ -124,7 +124,7 @@ src_install() {
 	newins "${FILESDIR}"/all-gentoo-1.js all-gentoo.js
 
 	# Install language packs
-	mozlinguas_src_install
+	MOZ_INSTALL_L10N_XPIFILE="1" mozlinguas_src_install
 
 	local LANG=${LINGUAS%% *}
 	if [[ -n ${LANG} && ${LANG} != "en" ]]; then
