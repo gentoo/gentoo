@@ -9931,7 +9931,7 @@ sys-auth/pam_passwdqc 1.0.5: Password strength checking for PAM aware password c
 sys-auth/pam_skey 1.1.5-r5: PAM interface for the S/Key authentication system
 sys-auth/pam_ssh 1.98: Uses ssh-agent to provide single sign-on
 sys-auth/pam_u2f 1.0.4-r1: Library for authenticating against PAM with a Yubikey
-sys-auth/pambase 20101024-r2 20120417-r3 20150213 20150213-r1: PAM base configuration files
+sys-auth/pambase 20150213-r1: PAM base configuration files
 sys-auth/polkit 0.113-r4: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
 sys-auth/polkit-qt 0.112.0_p20160416-r2: PolicyKit Qt API wrapper library
