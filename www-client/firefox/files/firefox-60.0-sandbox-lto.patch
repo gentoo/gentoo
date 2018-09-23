@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/666580
+
+--- a/security/sandbox/linux/moz.build
++++ b/security/sandbox/linux/moz.build
+@@ -101,7 +101,7 @@ if CONFIG['CC_TYPE'] in ('clang', 'gcc'):
+ # forcing there to be only one partition.
+ for f in CONFIG['OS_CXXFLAGS']:
+     if f.startswith('-flto') and CONFIG['CC_TYPE'] != 'clang':
+-        LDFLAGS += ['--param lto-partitions=1']
++        LDFLAGS += ['--param=lto-partitions=1']
+ 
+ DEFINES['NS_NO_XPCOM'] = True
+ DisableStlWrapping()

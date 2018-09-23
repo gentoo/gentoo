@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,11 +14,12 @@ KEYWORDS="~amd64 ~ppc ~x86"
 
 # We require the "nagios" user from net-analyzer/nagios-core at build
 # time.
-DEPEND="dev-perl/DBD-mysql
+DEPEND="dev-db/mysql-connector-c
+	dev-perl/DBD-mysql
 	dev-perl/DBI
-	>=net-analyzer/nagios-core-4
+	>=net-analyzer/nagios-core-4"
+RDEPEND="${DEPEND}
 	virtual/mysql"
-RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-${P}"
 
@@ -74,12 +75,17 @@ src_install() {
 	# The documentation isn't installed by the build system
 	dodoc -r docs/html
 
-	# Use symlinks because the installdb/upgradedb scripts use relative
-	# paths to the SQL queries.
 	insinto "/usr/share/${PN}"
 	doins -r db
-	dosym "/usr/share/${PN}/db/installdb" /usr/bin/ndoutils-installdb
-	dosym "/usr/share/${PN}/db/upgradedb" /usr/bin/ndoutils-upgradedb
+
+	# These need to be executable...
+	exeinto "/usr/share/${PN}/db"
+	doexe db/{installdb,prepsql,upgradedb}
+
+	# Use symlinks because the installdb/upgradedb scripts use relative
+	# paths to the SQL queries.
+	dosym "../share/${PN}/db/installdb" /usr/bin/ndoutils-installdb
+	dosym "../share/${PN}/db/upgradedb" /usr/bin/ndoutils-upgradedb
 }
 
 pkg_postinst() {
