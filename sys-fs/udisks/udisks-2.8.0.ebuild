@@ -45,6 +45,7 @@ DEPEND="${COMMON_DEPEND}
 	nls? ( dev-util/intltool )
 "
 # If adding a eautoreconf, then these might be needed at buildtime:
+# dev-libs/gobject-introspection-common
 # gnome-base/gnome-common:3
 # sys-devel/autoconf-archive
 
