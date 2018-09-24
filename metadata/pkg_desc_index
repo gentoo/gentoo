@@ -1998,7 +1998,7 @@ dev-games/libmt_client 0.1.98: backend library for the maitretarot clients
 dev-games/libnw 1.30.02: Tools and libraries for NWN file manipulation
 dev-games/mercator 0.3.3: WorldForge library primarily aimed at terrain
 dev-games/mygui 3.2.2: A library for creating GUIs for games
-dev-games/newton 3.13 3.14: Integrated solution for real time simulation of physics environments
+dev-games/newton 3.14: Integrated solution for real time simulation of physics environments
 dev-games/ode 0.11.1 0.12 0.14-r1: Open Dynamics Engine SDK
 dev-games/ogre 1.9.0-r1: Object-oriented Graphics Rendering Engine
 dev-games/ois 1.3: Object-oriented Input System - A cross-platform C++ input handling library
@@ -5772,7 +5772,7 @@ dev-qt/qtvirtualkeyboard 5.9.6: Virtual keyboard plugin for the Qt5 framework
 dev-qt/qtwayland 5.9.6: Wayland platform plugin for Qt
 dev-qt/qtwebchannel 5.9.6: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
 dev-qt/qtwebengine 5.9.6-r1: Library for rendering dynamic web content in Qt5 C++ and QML applications
-dev-qt/qtwebkit 5.9.1 5.212.0_pre20180120: WebKit rendering library for the Qt5 framework (deprecated)
+dev-qt/qtwebkit 5.212.0_pre20180120: WebKit rendering library for the Qt5 framework (deprecated)
 dev-qt/qtwebsockets 5.9.6: Implementation of the WebSocket protocol for the Qt5 framework
 dev-qt/qtwidgets 5.9.6-r1: Set of components for creating classic desktop-style UIs for the Qt5 framework
 dev-qt/qtx11extras 5.9.6: Linux/X11-specific support library for the Qt5 framework
