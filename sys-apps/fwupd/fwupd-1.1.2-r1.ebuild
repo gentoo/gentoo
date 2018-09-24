@@ -94,6 +94,7 @@ src_prepare() {
 src_configure() {
 	xdg_environment_reset
 	local emesonargs=(
+		--localstatedir "${EPREFIX}"/var
 		-Dconsolekit="$(usex systemd false true)"
 		-Dgpg="$(usex gpg true false)"
 		-Dgtkdoc="$(usex doc true false)"
