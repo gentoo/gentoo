@@ -8856,7 +8856,7 @@ net-misc/dibbler 1.0.1: Portable DHCPv6 implementation (server, client and relay
 net-misc/dleyna-server 0.5.0: library for implementing services that allow clients to discover, browse and manipulate DLNA Servers
 net-misc/drive 0.3.9.1: Google Drive client for the commandline
 net-misc/dropbear 2017.75: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 45.3.88: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 48.3.56: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
 net-misc/electrum 3.0.5 3.1.3: User friendly Bitcoin client
