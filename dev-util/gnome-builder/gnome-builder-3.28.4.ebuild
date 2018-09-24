@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -75,6 +75,7 @@ DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )
 	dev-libs/appstream-glib
 	dev-util/desktop-file-utils
+	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
