@@ -10,7 +10,7 @@
 # This eclass handles apache-2.x ebuild functions such as LoadModule generation
 # and inter-module dependency checking.
 
-inherit autotools eutils flag-o-matic multilib ssl-cert user toolchain-funcs eapi7-ver
+inherit autotools flag-o-matic multilib ssl-cert user toolchain-funcs eapi7-ver
 
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
@@ -293,7 +293,7 @@ setup_modules() {
 		if ver_test ${PV} -ge 2.4.34 ; then
 			MY_CONF+=( $(use_with !suexec-syslog suexec-logfile "${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}") )
 			MY_CONF+=( $(use_with suexec-syslog) )
-			MY_CONF+=( $(use_with suexec-caps suexec-capabilities) )
+			MY_CONF+=( $(usex suexec-syslog $(use_enable suexec-caps suexec-capabilities) --disable-suexec-capabilities) )
 		else
 			MY_CONF+=( --with-suexec-logfile="${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}" )
 		fi
@@ -627,10 +627,13 @@ apache-2_src_install() {
 
 	# set some sane permissions for suexec
 	if use suexec ; then
-		fowners 0:${SUEXEC_CALLER:-apache} /usr/sbin/suexec
-		fperms 4710 /usr/sbin/suexec
-		# provide legacy symlink for suexec, bug 177697
-		dosym /usr/sbin/suexec /usr/sbin/suexec2
+		local needs_adjustment="$(ver_test ${PV} -ge 2.4.34 && { { ! use suexec-syslog || ! use suexec-caps ; } && echo true || echo false ; } || echo true)"
+		if ${needs_adjustment} ; then
+			fowners 0:${SUEXEC_CALLER:-apache} /usr/sbin/suexec
+			fperms 4710 /usr/sbin/suexec
+			# provide legacy symlink for suexec, bug 177697
+			dosym /usr/sbin/suexec /usr/sbin/suexec2
+		fi
 	fi
 
 	# empty dirs

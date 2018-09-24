@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # latest gentoo apache files
-GENTOO_PATCHSTAMP="20180529"
+GENTOO_PATCHSTAMP="20180716"
 GENTOO_DEVELOPER="polynomial-c"
-GENTOO_PATCHNAME="gentoo-apache-2.4.33-r1"
+GENTOO_PATCHNAME="gentoo-apache-2.4.34"
 
 # IUSE/USE_EXPAND magic
 IUSE_MPMS_FORK="prefork"
@@ -122,7 +122,7 @@ MODULE_CRITICAL="
 	mime
 	unixd
 "
-inherit eutils apache-2 systemd toolchain-funcs
+inherit apache-2 systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="The Apache Web Server"
 HOMEPAGE="https://httpd.apache.org/"
@@ -130,25 +130,24 @@ HOMEPAGE="https://httpd.apache.org/"
 # some helper scripts are Apache-1.1, thus both are here
 LICENSE="Apache-2.0 Apache-1.1"
 SLOT="2"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ~ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
+
 # Enable http2 by default (bug #563452)
 # FIXME: Move to apache-2.eclass once this has reached stable.
 IUSE="${IUSE/apache2_modules_http2/+apache2_modules_http2}"
+# New suexec options (since 2.4.34)
+IUSE="${IUSE} +suexec-caps suexec-syslog"
 
 CDEPEND="apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
 	apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 )
 	apache2_modules_md? ( >=dev-libs/jansson-2.10 )"
 
-DEPEND+="${CDEPEND}"
+DEPEND+="${CDEPEND}
+	suexec? ( suexec-caps? ( sys-libs/libcap ) )"
 RDEPEND+="${CDEPEND}"
 
 REQUIRED_USE="apache2_modules_http2? ( ssl )
 	apache2_modules_md? ( ssl )"
-
-PATCHES=(
-	# this *should* be included from upstream in the next release as it is currently in Git head
-	"${FILESDIR}/${P}-libressl-compatibility.patch"
-)
 
 pkg_setup() {
 	# dependend critical modules which are not allowed in global scope due
@@ -182,17 +181,14 @@ src_compile() {
 src_install() {
 	apache-2_src_install
 	local i
-	for i in /usr/bin/{htdigest,logresolve,htpasswd,htdbm,ab,httxt2dbm}; do
+	local apache_tools_prune_list=(
+		/usr/bin/{htdigest,logresolve,htpasswd,htdbm,ab,httxt2dbm}
+		/usr/sbin/{checkgid,fcgistarter,htcacheclean,rotatelogs}
+		/usr/share/man/man1/{logresolve.1,htdbm.1,htdigest.1,htpasswd.1,dbmmanage.1,ab.1}
+		/usr/share/man/man8/{rotatelogs.8,htcacheclean.8}
+	)
+	for i in ${apache_tools_prune_list[@]} ; do
 		rm "${ED%/}"/$i || die "Failed to prune apache-tools bits"
-	done
-	for i in /usr/share/man/man8/{rotatelogs.8,htcacheclean.8}; do
-		rm "${ED%/}"/$i || die "Failed to prune apache-tools bits"
-	done
-	for i in /usr/share/man/man1/{logresolve.1,htdbm.1,htdigest.1,htpasswd.1,dbmmanage.1,ab.1}; do
-		rm "${ED%/}"/$i || die "Failed to prune apache-tools bits"
-	done
-	for i in /usr/sbin/{checkgid,fcgistarter,htcacheclean,rotatelogs}; do
-		rm "${ED%/}/"$i || die "Failed to prune apache-tools bits"
 	done
 
 	# install apxs in /usr/bin (bug #502384) and put a symlink into the
@@ -219,8 +215,12 @@ src_install() {
 
 pkg_postinst() {
 	apache-2_pkg_postinst || die "apache-2_pkg_postinst failed"
+
+	tmpfiles_process apache.conf #662544
+
 	# warnings that default config might not work out of the box
-	for mod in $MODULE_CRITICAL; do
+	local mod cmod
+	for mod in ${MODULE_CRITICAL} ; do
 		if ! use "apache2_modules_${mod}"; then
 			echo
 			ewarn "Warning: Critical module not installed!"
@@ -228,7 +228,7 @@ pkg_postinst() {
 			ewarn "are highly recomended but might not be in the base profile yet."
 			ewarn "Default config for ssl needs module 'socache_shmcb'."
 			ewarn "Enabling the following flags is highly recommended:"
-			for cmod in $MODULE_CRITICAL; do
+			for cmod in ${MODULE_CRITICAL} ; do
 				use "apache2_modules_${cmod}" || \
 					ewarn "+ apache2_modules_${cmod}"
 			done
