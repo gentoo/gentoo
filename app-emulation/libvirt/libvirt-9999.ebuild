@@ -107,7 +107,7 @@ RDEPEND="
 	wireshark-plugins? ( net-analyzer/wireshark:= )
 	xen? (
 		app-emulation/xen
-		app-emulation/xen-tools:=[api,hvm]
+		app-emulation/xen-tools
 	)
 	udev? (
 		virtual/udev
