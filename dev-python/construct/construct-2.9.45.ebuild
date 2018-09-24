@@ -19,6 +19,7 @@ RESTRICT="test"
 DEPEND="test? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/scimath[${PYTHON_USEDEP}]' 'python2_7')
 	)"
 
 python_test() {
