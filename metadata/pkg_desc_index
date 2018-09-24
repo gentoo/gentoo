@@ -33,7 +33,7 @@ app-admin/ansible 2.5.6 2.5.8 2.6.1 2.6.3: Model-driven deployment, config manag
 app-admin/apache-tools 2.2.34 2.4.27 2.4.34: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r7: Another Password Generator
-app-admin/augeas 1.8.1 1.10.1: A library for changing configuration files
+app-admin/augeas 1.10.1 1.11.0: A library for changing configuration files
 app-admin/ccze 0.2.1-r3: A flexible and fast logfile colorizer
 app-admin/cgmanager 0.41: Control Group manager daemon
 app-admin/checksec 1.7.5: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)

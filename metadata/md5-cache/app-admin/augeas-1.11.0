@@ -4,10 +4,10 @@ DESCRIPTION=A library for changing configuration files
 EAPI=6
 HOMEPAGE=http://augeas.net/
 IUSE=static-libs test
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=alpha amd64 ~arm hppa ia64 ppc ~ppc64 sparc x86
 LICENSE=LGPL-2.1
 RDEPEND=dev-libs/libxml2 sys-libs/readline:=
 SLOT=0
 SRC_URI=http://download.augeas.net/augeas-1.11.0.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
-_md5_=f459fc414cd81b3b90dc3bc337903f30
+_md5_=adc2e1296ddf71793b4bb92a3578b969
