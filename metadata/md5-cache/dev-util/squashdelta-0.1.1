@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=lz4? ( app-arch/lz4:0= ) lzo? ( dev-libs/lzo:2= )
+DESCRIPTION=Efficient (partially uncompressed) SquashFS binary delta tool
+EAPI=6
+HOMEPAGE=https://github.com/mgorny/squashdelta/
+IUSE=lz4 +lzo
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD public-domain
+RDEPEND=lz4? ( app-arch/lz4:0= ) lzo? ( dev-libs/lzo:2= ) dev-util/xdelta:3
+REQUIRED_USE=|| ( lz4 lzo )
+SLOT=0
+SRC_URI=https://www.github.com/mgorny/squashdelta/releases/download/v0.1.1/squashdelta-0.1.1.tar.bz2
+_md5_=69b9120a73488c8845df4a4ff1b354db
