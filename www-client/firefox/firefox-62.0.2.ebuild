@@ -542,6 +542,10 @@ PROFILE_EOF
 			|| die
 	fi
 
+	# Don't install llvm-symbolizer from sys-devel/llvm package
+	[[ -f "${ED%/}${MOZILLA_FIVE_HOME}/llvm-symbolizer" ]] && \
+		rm "${ED%/}${MOZILLA_FIVE_HOME}/llvm-symbolizer"
+
 	# firefox and firefox-bin are identical
 	rm "${ED%/}"${MOZILLA_FIVE_HOME}/firefox-bin || die
 	dosym firefox ${MOZILLA_FIVE_HOME}/firefox-bin
