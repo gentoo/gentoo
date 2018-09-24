@@ -131,8 +131,8 @@ pkg_preinst() {
 	# Here we need to see if the implementation switched client libraries
 	# We check if this is a new instance of the package and a client library already exists
 	local SHOW_ABI_MESSAGE libpath
-	if use client-libs && [[ -z ${REPLACING_VERSIONS} && -e "${EROOT}usr/$(get_libdir)/libmysqlclient.so" ]] ; then
-		libpath=$(readlink "${EROOT}usr/$(get_libdir)/libmysqlclient.so")
+	if use client-libs && [[ -z ${REPLACING_VERSIONS} && -e "${EROOT%/}/usr/$(get_libdir)/libmysqlclient.so" ]] ; then
+		libpath=$(readlink "${EROOT%/}/usr/$(get_libdir)/libmysqlclient.so")
 		elog "Due to ABI changes when switching between different client libraries,"
 		elog "revdep-rebuild must find and rebuild all packages linking to libmysqlclient."
 		elog "Please run: revdep-rebuild --library ${libpath}"
@@ -672,6 +672,12 @@ pkg_config() {
 	# see http://bugs.mysql.com/bug.php?id=31312
 	use prefix && options="${options} '--defaults-file=${MY_SYSCONFDIR}/my.cnf'"
 
+	local help_tables="${EROOT%/}${MY_SHAREDSTATEDIR}/fill_help_tables.sql"
+	[[ -r "${help_tables}" ]] \
+	&& cp "${help_tables}" "${TMPDIR}/fill_help_tables.sql" \
+	|| touch "${TMPDIR}/fill_help_tables.sql"
+	help_tables="${TMPDIR}/fill_help_tables.sql"
+
 	# Figure out which options we need to disable to do the setup
 	local helpfile="${TMPDIR%/}/mysqld-help"
 	"${EROOT%/}/usr/sbin/mysqld" --verbose --help >"${helpfile}" 2>/dev/null
@@ -699,13 +705,14 @@ pkg_config() {
 
 	# Filling timezones, see
 	# http://dev.mysql.com/doc/mysql/en/time-zone-support.html
-	echo "USE mysql;" >"${sqltmp}"
 	"${EROOT%/}/usr/bin/mysql_tzinfo_to_sql" "${EROOT%/}/usr/share/zoneinfo" >> "${sqltmp}" 2>/dev/null
 	chown mysql "${sqltmp}" || die
 
-	# --initialize-insecure will not set root password
-	# --initialize would set a random one in the log which we don't need as we set it ourselves
-	local cmd=( "${EROOT%/}/usr/sbin/mysqld" "--initialize-insecure" "--init-file='${sqltmp}'" )
+	local cmd=( "${EROOT%/}/usr/share/mysql/scripts/mysql_install_db" )
+	[[ -f "${cmd}" ]] || cmd=( "${EROOT%/}/usr/bin/mysql_install_db" )
+	if [[ -r "${help_tables}" ]] ; then
+		cat "${help_tables}" >> "${sqltmp}"
+	fi
 	cmd+=( "--basedir=${EPREFIX%/}/usr" ${options} "--datadir=${ROOT%/}${MY_DATADIR}" "--tmpdir=${ROOT%/}${MYSQL_TMPDIR}" )
 	einfo "Command: ${cmd[*]}"
 	su -s /bin/sh -c "${cmd[*]}" mysql \
@@ -758,6 +765,19 @@ pkg_config() {
 		-hlocalhost \
 		-e "${sql}"
 	eend $?
+
+	if [[ -n "${sqltmp}" ]] ; then
+		ebegin "Loading \"zoneinfo\", this step may require a few seconds"
+		"${EROOT%/}/usr/bin/mysql" \
+			--socket="${socket}" \
+			-hlocalhost \
+			-uroot \
+			--password="${MYSQL_ROOT_PASSWORD}" \
+			mysql < "${sqltmp}"
+		rc=$?
+		eend $?
+		[[ $rc -ne 0 ]] && ewarn "Failed to load zoneinfo!"
+	fi
 
 	# Stop the server and cleanup
 	einfo "Stopping the server ..."
