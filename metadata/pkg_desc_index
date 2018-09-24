@@ -10089,7 +10089,7 @@ sys-firmware/alsa-firmware 1.0.29: Advanced Linux Sound Architecture firmware
 sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs wlan drivers included in linux 2.6
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
 sys-firmware/edk2-ovmf 2017_pre20170505-r1 2017_p20180211: UEFI firmware for 64-bit x86 virtual machines
-sys-firmware/intel-microcode 20180807a_p20180916: Intel IA32/IA64 microcode update data
+sys-firmware/intel-microcode 20180807a_p20180922: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
 sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI
 sys-firmware/ipxe 1.0.0_p20130925 1.0.0_p20160620 1.0.0_p20180211: Open source network boot (PXE) firmware
