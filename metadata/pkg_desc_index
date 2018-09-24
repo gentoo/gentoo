@@ -5931,12 +5931,12 @@ dev-ruby/riel 1.2.0-r2: This library extends the core Ruby libraries
 dev-ruby/rmagick 2.16.0: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
 dev-ruby/rrdtool-bindings 1.6.0: Ruby bindings for rrdtool
-dev-ruby/rspec 2.99.0 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-core 2.99.2-r2 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-expectations 2.99.2 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec 2.99.0 3.6.0 3.7.0: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-core 2.99.2-r2 3.6.0 3.7.1: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-expectations 2.99.2 3.6.0 3.7.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-its 1.2.0-r1: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-mocks 2.99.2 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-support 3.6.0: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-mocks 2.99.2 3.6.0 3.7.0: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-support 3.6.0 3.7.1: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/ruby-atk 3.1.1: Ruby Atk bindings
 dev-ruby/ruby-augeas 0.5.0-r3: Ruby bindings for Augeas
 dev-ruby/ruby-beautify 0.97.4: a cli tool (and module) to beautify ruby code
