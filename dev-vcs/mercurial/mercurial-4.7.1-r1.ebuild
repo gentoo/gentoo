@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~hppa ~mips ~sparc ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~
 IUSE="bugzilla emacs gpg test tk"
 
 RDEPEND="app-misc/ca-certificates
-	dev-python/zstandard
+	dev-python/zstandard[${PYTHON_USEDEP}]
 	bugzilla? ( dev-python/mysql-python[${PYTHON_USEDEP}] )
 	gpg? ( app-crypt/gnupg )
 	tk? ( dev-lang/tk )"
