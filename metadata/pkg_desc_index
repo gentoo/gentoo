@@ -5071,7 +5071,7 @@ dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle,
 dev-python/minidb 2.0.2: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
 dev-python/miniupnpc 2.0.20180222 2.0.20180503: Python bindings for UPnP client library
-dev-python/mistune 0.7.2 0.7.4 0.8.3: The fastest markdown parser in pure Python
+dev-python/mistune 0.8.3: The fastest markdown parser in pure Python
 dev-python/mkdocs 0.15.3: Project documentation with Markdown.
 dev-python/mkdocs-bootstrap 0.1.1: Bootstrap theme for MkDocs
 dev-python/mkdocs-bootswatch 0.4.0: Bootswatch themes for MkDocs
