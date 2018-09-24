@@ -12,7 +12,8 @@ IUSE="unicode xpm"
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXmu
-	x11-libs/libXt"
+	x11-libs/libXt
+	xpm? ( x11-libs/libXpm )"
 DEPEND="${RDEPEND}
 	sys-devel/flex
 	virtual/yacc
