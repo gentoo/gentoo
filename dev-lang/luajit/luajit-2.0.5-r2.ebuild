@@ -38,10 +38,16 @@ _emake() {
 		PREFIX="${EPREFIX}/usr" \
 		MULTILIB="$(get_libdir)" \
 		DESTDIR="${D}" \
+		CFLAGS="" \
+		LDFLAGS="" \
 		HOST_CC="$(tc-getBUILD_CC)" \
+		HOST_CFLAGS="${BUILD_CPPFLAGS} ${BUILD_CFLAGS}" \
+		HOST_LDFLAGS="${BUILD_LDFLAGS}" \
 		STATIC_CC="$(tc-getCC)" \
 		DYNAMIC_CC="$(tc-getCC) -fPIC" \
 		TARGET_LD="$(tc-getCC)" \
+		TARGET_CFLAGS="${CPPFLAGS} ${CFLAGS}" \
+		TARGET_LDFLAGS="${LDFLAGS}" \
 		TARGET_AR="$(tc-getAR) rcus" \
 		BUILDMODE="$(usex static-libs mixed dynamic)" \
 		TARGET_STRIP="true" \
@@ -50,6 +56,7 @@ _emake() {
 }
 
 src_compile() {
+	tc-export_build_env
 	_emake XCFLAGS="$(usex lua52compat "-DLUAJIT_ENABLE_LUA52COMPAT" "")"
 }
 
