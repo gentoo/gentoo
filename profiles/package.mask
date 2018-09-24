@@ -86,11 +86,6 @@ dev-lang/solidity
 =dev-db/postgresql-11_beta2
 =dev-db/postgresql-11_beta3
 
-# Lars Wendler <polynomial-c@gentoo.org> (05 Sep 2018)
-# Broken "killall -SIG". Breaks many scripts.
-# See https://bugs.gentoo.org/664066
-=sys-process/psmisc-23.2
-
 # Joerg Bornkessel <hd_brummy@gentoo.org> (02/Sep/2018)
 # homepage dead
 # dead on upstream
