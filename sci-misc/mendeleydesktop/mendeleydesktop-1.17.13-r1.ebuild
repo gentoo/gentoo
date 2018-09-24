@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,7 +36,7 @@ RDEPEND="
 	=dev-qt/qtprintsupport-5.9*:5
 	=dev-qt/qtsvg-5.9*:5
 	=dev-qt/qtwebengine-5.9*:5[widgets]
-	=dev-qt/qtwebkit-5.9*:5
+	>=dev-qt/qtwebkit-5.9:5
 	=dev-qt/qtxml-5.9*:5
 	sys-libs/zlib
 	virtual/opengl
