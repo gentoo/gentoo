@@ -2,13 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools toolchain-funcs vcs-snapshot
+inherit autotools toolchain-funcs
 
 DESCRIPTION="An easy to use text-based based mail and news client"
 HOMEPAGE="http://www.washington.edu/alpine/ http://repo.or.cz/alpine.git/"
 GIT_COMMIT="843b2f16abfd949e09b1c5465387b1b0f724994a"
-SRC_URI="http://repo.or.cz/alpine.git/snapshot/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-RESTRICT="mirror"
+MY_P="${PN}-${GIT_COMMIT::7}"
+SRC_URI="http://repo.or.cz/alpine.git/snapshot/${GIT_COMMIT}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -82,8 +83,8 @@ src_install() {
 		dodoc doc/brochure.txt
 
 		dodoc doc/tech-notes/tech-notes.txt
-		newdoc ${S}/doc/mailcap.unx mailcap.unx.sample
-		newdoc ${S}/doc/mime.types mime.types.sample
+		newdoc "${S}/doc/mailcap.unx" mailcap.unx.sample
+		newdoc "${S}/doc/mime.types" mime.types.sample
 		docinto html/tech-notes
 		dohtml -r doc/tech-notes/
 		docompress -x /usr/share/doc/${PF}/mailcap.unx.sample /usr/share/doc/${PF}/mime.types.sample
