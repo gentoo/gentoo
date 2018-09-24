@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://download.augeas.net/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ~ppc64 sparc x86"
 IUSE="static-libs test"
 
 RDEPEND="
