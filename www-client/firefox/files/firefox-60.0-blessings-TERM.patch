@@ -54,3 +54,17 @@ index 3872b5f..fdceb09 100644
                  # There was an error setting up the terminal, either curses is
                  # not supported or TERM is incorrectly set. Fall back to dumb.
                  self._does_styling = False
+
+
+--- a/python/mach/mach/logging.py
++++ b/python/mach/mach/logging.py
+@@ -93,7 +93,7 @@
+ 
+     def set_terminal(self, terminal):
+         self.terminal = terminal
+-        self._sgr0 = blessings.tigetstr('sgr0') or '' if terminal and blessings else ''
++        self._sgr0 = terminal.normal if terminal and blessings else ''
+ 
+     def format(self, record):
+         f = record.msg.format(**record.params)
+ 
