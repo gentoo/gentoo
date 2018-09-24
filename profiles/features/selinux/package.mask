@@ -45,3 +45,4 @@ sys-apps/dbus-broker
 >=app-admin/abrt-2.10
 app-admin/gnome-abrt
 >=dev-libs/libreport-2.9
+games-util/gamemode
