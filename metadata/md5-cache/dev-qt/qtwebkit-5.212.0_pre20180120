@@ -4,11 +4,11 @@ DESCRIPTION=WebKit rendering library for the Qt5 framework (deprecated)
 EAPI=6
 HOMEPAGE=https://www.qt.io/
 IUSE=geolocation gles2 +gstreamer +hyphen +jit multimedia nsplugin opengl orientation +printsupport qml webp X
-KEYWORDS=amd64 ~arm ~arm64 ~ppc ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ppc64 x86
 LICENSE=BSD LGPL-2+
 RDEPEND=dev-db/sqlite:3 dev-libs/icu:= dev-libs/libxml2 dev-libs/libxslt >=dev-qt/qtcore-5.9.1:5 >=dev-qt/qtgui-5.9.1:5 >=dev-qt/qtnetwork-5.9.1:5 >=dev-qt/qtwidgets-5.9.1:5= media-libs/libpng:0= virtual/jpeg:0 geolocation? ( >=dev-qt/qtpositioning-5.9.1:5 ) gstreamer? ( dev-libs/glib:2 media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 media-libs/gst-plugins-bad:1.0 ) hyphen? ( dev-libs/hyphen ) multimedia? ( >=dev-qt/qtmultimedia-5.9.1:5[widgets] ) opengl? ( >=dev-qt/qtgui-5.9.1:5[gles2=] >=dev-qt/qtopengl-5.9.1:5[gles2=] ) orientation? ( >=dev-qt/qtsensors-5.9.1:5 ) printsupport? ( >=dev-qt/qtprintsupport-5.9.1:5 ) qml? ( >=dev-qt/qtdeclarative-5.9.1:5 >=dev-qt/qtwebchannel-5.9.1:5[qml] ) webp? ( media-libs/libwebp:= ) X? ( x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXrender )
 REQUIRED_USE=nsplugin? ( X ) qml? ( opengl ) ?? ( gstreamer multimedia )
 SLOT=5/5.212
 SRC_URI=mirror://gentoo/qtwebkit-5.212.0_pre20180120.tar.gz
 _eclasses_=check-reqs	2c6f909675083dce8430b648bf737cb0	cmake-utils	f0bc1c175684130a76ab6c17f575d820	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	a43d6cd7f05b4d013e7e40104ddfd3c7	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
-_md5_=042776343194366c0af4aaac71dd8a70
+_md5_=1c749ed8fbb2482dd24412d043302e9f
