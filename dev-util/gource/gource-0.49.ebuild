@@ -6,7 +6,7 @@ EAPI=6
 inherit flag-o-matic
 
 DESCRIPTION="A software version control visualization tool"
-HOMEPAGE="http://gource.io/"
+HOMEPAGE="https://gource.io/"
 SRC_URI="https://github.com/acaudwell/Gource/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="GPL-3"
