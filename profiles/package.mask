@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (24 Sep 2018)
+# Apparently breaks sys-devel/gcc.  Bug #666954.
+=dev-util/debugedit-4.14.2
+
 # Michał Górny <mgorny@gentoo.org> (17 Sep 2018)
 # Obsolete LogiLab packages that are full of issues and were never
 # maintained properly.  Recently dev-python/logilab-common started
