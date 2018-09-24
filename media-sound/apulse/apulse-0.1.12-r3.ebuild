@@ -48,13 +48,15 @@ multilib_src_test() {
 	emake check
 }
 
-multilib_src_install_all() {
+multilib_src_install() {
 	cmake-utils_src_install
 	if ! use sdk; then
-		dobin "${T}"/apulse
 		export MULTILIB_CHOST_TOOLS=( /usr/bin/apulse )
-		multilib_foreach_abi multilib_prepare_wrappers
-		multilib_install_wrappers
+		multilib_prepare_wrappers
 	fi
+}
+
+multilib_src_install_all() {
+	use sdk || dobin "${T}/apulse"
 	einstalldocs
 }

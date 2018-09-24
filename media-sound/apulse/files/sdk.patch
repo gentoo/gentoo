@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 072f3b1..74fc184 100644
+index 072f3b1..5fe6bcd 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1,5 +1,6 @@
@@ -18,17 +18,14 @@ index 072f3b1..74fc184 100644
  link_directories(${REQ_LIBRARY_DIRS})
  
  add_library(trace-helper STATIC
-@@ -72,12 +75,31 @@ target_link_libraries(pulse-simple ${SYMBOLMAP} trace-helper ${REQ_LIBRARIES})
+@@ -72,12 +75,30 @@ target_link_libraries(pulse-simple ${SYMBOLMAP} trace-helper ${REQ_LIBRARIES})
  
  add_subdirectory(tests)
  
 -set(APULSEPATH "${CMAKE_INSTALL_PREFIX}/lib/apulse" CACHE PATH "library installation directory")
- set(APULSE_SEARCH_PATHS "${APULSEPATH}" CACHE PATH "directory list for LD_LIBRARY_PATH")
+-set(APULSE_SEARCH_PATHS "${APULSEPATH}" CACHE PATH "directory list for LD_LIBRARY_PATH")
 -configure_file("${CMAKE_CURRENT_SOURCE_DIR}/src/apulse.template"
 -               "${CMAKE_CURRENT_BINARY_DIR}/apulse" @ONLY)
- 
--install(FILES "${CMAKE_CURRENT_BINARY_DIR}/apulse" DESTINATION bin
--        PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
 +if (${INSTALL_SDK})
 +    set(APULSEPATH "${CMAKE_INSTALL_LIBDIR}" CACHE PATH "library installation directory")
 +
@@ -40,13 +37,16 @@ index 072f3b1..74fc184 100644
 +                   "${CMAKE_CURRENT_BINARY_DIR}/pkgconfig/libpulse-mainloop-glib.pc" @ONLY)
 +else()
 +    set(APULSEPATH "${CMAKE_INSTALL_LIBDIR}/apulse" CACHE PATH "library installation directory")
++    set(APULSE_SEARCH_PATHS "${CMAKE_INSTALL_PREFIX}/${APULSEPATH}" CACHE PATH "directory list for LD_LIBRARY_PATH")
 +
 +    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/src/apulse.template"
 +                   "${CMAKE_CURRENT_BINARY_DIR}/apulse" @ONLY)
 +endif()
-+
+ 
+-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/apulse" DESTINATION bin
+-        PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
  install(TARGETS pulse-simple pulse pulse-mainloop-glib DESTINATION "${APULSEPATH}")
- install(FILES "${CMAKE_SOURCE_DIR}/man/apulse.1" DESTINATION share/man/man1)
+-install(FILES "${CMAKE_SOURCE_DIR}/man/apulse.1" DESTINATION share/man/man1)
 +
 +if (${INSTALL_SDK})
 +    install(DIRECTORY "${CMAKE_SOURCE_DIR}/3rdparty/pulseaudio-headers/pulse" DESTINATION include)
@@ -54,6 +54,7 @@ index 072f3b1..74fc184 100644
 +else()
 +    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/apulse" DESTINATION bin
 +            PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
++    install(FILES "${CMAKE_SOURCE_DIR}/man/apulse.1" DESTINATION share/man/man1)
 +endif()
 diff --git a/pkgconfig/libpulse-mainloop-glib.pc.in b/pkgconfig/libpulse-mainloop-glib.pc.in
 new file mode 100644
@@ -72,11 +73,11 @@ index 0000000..957e3b2
 +Requires: glib-2.0
 diff --git a/pkgconfig/libpulse-simple.pc.in b/pkgconfig/libpulse-simple.pc.in
 new file mode 100644
-index 0000000..3809d50
+index 0000000..57d917f
 --- /dev/null
 +++ b/pkgconfig/libpulse-simple.pc.in
 @@ -0,0 +1,9 @@
-+libdir=@CMAKE_INSTALL_FULL__LIBDIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
 +includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
 +
 +Name: libpulse-simple
