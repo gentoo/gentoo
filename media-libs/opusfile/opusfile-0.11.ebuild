@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="A high-level decoding and seeking API for .opus files"
 HOMEPAGE="https://www.opus-codec.org/"
@@ -28,10 +28,15 @@ src_configure() {
 	local myeconfargs=(
 		--docdir=/usr/share/doc/${PF}
 		$(use_enable doc)
-		$(use_enable fixed-point)
+		$(use_enable fixed-point)\
 		$(use_enable float)
 		$(use_enable http)
 		$(use_enable static-libs static)
 	)
 	econf "${myeconfargs[@]}"
+}
+
+src_install() {
+	default
+	find "${ED}" -name "*.la" -delete || die
 }
