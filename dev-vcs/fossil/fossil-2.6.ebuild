@@ -11,7 +11,7 @@ SRC_URI="http://www.fossil-scm.org/index.html/uv/fossil-src-${PV}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 ~x86"
+KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE="debug fusefs json -legacy-mv-rm -miniz system-sqlite +ssl static
 	  tcl tcl-stubs tcl-private-stubs th1-docs th1-hooks"
 
