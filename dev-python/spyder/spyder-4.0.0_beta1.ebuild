@@ -25,7 +25,7 @@ RDEPEND="
 	hdf5? ( dev-python/h5py[${PYTHON_USEDEP}] )
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
-	dev-python/jedi[${PYTHON_USEDEP}]
+	>=dev-python/jedi-0.11.0[${PYTHON_USEDEP}]
 	dev-python/nbconvert[${PYTHON_USEDEP}]
 	dev-python/pycodestyle[${PYTHON_USEDEP}]
 	dev-python/pickleshare[${PYTHON_USEDEP}]
