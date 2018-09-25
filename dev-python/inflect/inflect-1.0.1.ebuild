@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,11 @@ IUSE="test"
 
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	test? (
+		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]
+	)
 "
 
 python_test() {
