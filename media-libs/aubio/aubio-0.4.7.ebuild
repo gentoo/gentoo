@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -107,4 +107,6 @@ src_install() {
 		docinto html
 		dodoc -r doc/_build/dirhtml/.
 	fi
+
+	find "${ED}" -name "*.a" -delete || die
 }
