@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils gnome2-utils
 
 MY_P=CopyQ-${PV}
 
@@ -25,6 +25,7 @@ RDEPEND="
 	dev-qt/qtscript:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	x11-libs/libX11
 	x11-libs/libXfixes
 	x11-libs/libXtst
@@ -37,11 +38,21 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/$MY_P
 
 src_configure() {
+	# CMakeLists.txt concatenates INSTALL_PREFIX with INSTALL_MANDIR leading to /usr/usr
 	local mycmakeargs=(
 		-DPLUGIN_INSTALL_PREFIX="/usr/$(get_libdir)/${PN}/plugins"
 		-DWITH_QT5=ON
 		-DWITH_TESTS=$(usex test)
 		-DWITH_WEBKIT=$(usex webkit)
+		-DCMAKE_INSTALL_MANDIR="share/man"
 	)
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
