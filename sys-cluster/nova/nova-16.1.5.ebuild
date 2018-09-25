@@ -1,34 +1,26 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
 inherit distutils-r1 eutils linux-info multilib user
 
 DESCRIPTION="Cloud computing fabric controller (main part of an IaaS system) in Python"
 HOMEPAGE="https://launchpad.net/nova"
-
-if [[ ${PV} == *9999 ]];then
-	inherit git-r3
-	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/nova/rocky/nova.conf.sample -> nova.conf.sample-${PV}"
-	EGIT_REPO_URI="https://github.com/openstack/nova.git"
-	EGIT_BRANCH="stable/rocky"
-else
-	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/nova/rocky/nova.conf.sample -> nova.conf.sample-${PV}
+SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/nova/pike/nova.conf.sample -> nova.conf.sample-${PV}
 	https://tarballs.openstack.org/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
-fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+compute compute-only iscsi +memcached mysql +novncproxy openvswitch postgres +rabbitmq sqlite"
 REQUIRED_USE="
 	!compute-only? ( || ( mysql postgres sqlite ) )
 	compute-only? ( compute !rabbitmq !memcached !mysql !postgres !sqlite )"
 
 CDEPEND="
-	>=dev-python/setuptools-21.0.0[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-16.0[${PYTHON_USEDEP}]
 	!~dev-python/setuptools-24.0.0[${PYTHON_USEDEP}]
 	!~dev-python/setuptools-34.0.0[${PYTHON_USEDEP}]
 	!~dev-python/setuptools-34.0.1[${PYTHON_USEDEP}]
@@ -83,75 +75,79 @@ RDEPEND="
 	>=dev-python/decorator-3.4.0[${PYTHON_USEDEP}]
 	>=dev-python/eventlet-0.18.4[${PYTHON_USEDEP}]
 	!~dev-python/eventlet-0.20.1[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.10[${PYTHON_USEDEP}]
-	>=dev-python/keystonemiddleware-4.17.0[${PYTHON_USEDEP}]
-	>=dev-python/lxml-2.4.1[${PYTHON_USEDEP}]
+	<dev-python/eventlet-0.21.0[${PYTHON_USEDEP}]
+	>=dev-python/jinja-2.8[${PYTHON_USEDEP}]
+	!~dev-python/jinja-2.9.0[${PYTHON_USEDEP}]
+	!~dev-python/jinja-2.9.1[${PYTHON_USEDEP}]
+	!~dev-python/jinja-2.9.2[${PYTHON_USEDEP}]
+	!~dev-python/jinja-2.9.3[${PYTHON_USEDEP}]
+	!~dev-python/jinja-2.9.4[${PYTHON_USEDEP}]
+	>=dev-python/keystonemiddleware-4.12.0[${PYTHON_USEDEP}]
+	>=dev-python/lxml-2.3[${PYTHON_USEDEP}]
 	!~dev-python/lxml-3.7.0[${PYTHON_USEDEP}]
 	>=dev-python/routes-2.3.1[${PYTHON_USEDEP}]
-	>=dev-python/cryptography-1.2.1[${PYTHON_USEDEP}]
-	>=dev-python/webob-1.8.2[${PYTHON_USEDEP}]
-	>=dev-python/greenlet-0.4.10[${PYTHON_USEDEP}]
-	!~dev-python/greenlet-0.4.14[${PYTHON_USEDEP}]
+	>=dev-python/cryptography-1.6.0[${PYTHON_USEDEP}]
+	!~dev-python/cryptography-2.0.0[${PYTHON_USEDEP}]
+	>=dev-python/webob-1.7.1[${PYTHON_USEDEP}]
+	>=dev-python/greenlet-0.3.2[${PYTHON_USEDEP}]
 	>=dev-python/pastedeploy-1.5.0-r1[${PYTHON_USEDEP}]
-	>=dev-python/paste-2.0.2[${PYTHON_USEDEP}]
+	dev-python/paste[${PYTHON_USEDEP}]
 	>=dev-python/prettytable-0.7.1[${PYTHON_USEDEP}]
 	<dev-python/prettytable-0.8[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-migrate-0.11.0[${PYTHON_USEDEP}]
-	>=dev-python/netaddr-0.7.18[${PYTHON_USEDEP}]
+	>=dev-python/netaddr-0.7.13[${PYTHON_USEDEP}]
+	!~dev-python/netaddr-0.7.16[${PYTHON_USEDEP}]
 	>=dev-python/netifaces-0.10.4[${PYTHON_USEDEP}]
-	>=dev-python/paramiko-2.0.0[${PYTHON_USEDEP}]
+	>=dev-python/paramiko-2.0[${PYTHON_USEDEP}]
 	>=dev-python/Babel-2.3.4[${PYTHON_USEDEP}]
 	!~dev-python/Babel-2.4.0[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]
 	>=dev-python/iso8601-0.1.11[${PYTHON_USEDEP}]
-	>=dev-python/jsonschema-2.6.0[${PYTHON_USEDEP}]
+	>=dev-python/jsonschema-2.0.0[${PYTHON_USEDEP}]
+	!~dev-python/jsonschema-2.5.0[${PYTHON_USEDEP}]
 	<dev-python/jsonschema-3.0.0[${PYTHON_USEDEP}]
-	>=dev-python/python-cinderclient-3.3.0[${PYTHON_USEDEP}]
-	>=dev-python/keystoneauth-3.9.0[${PYTHON_USEDEP}]
-	>=dev-python/python-neutronclient-6.7.0[${PYTHON_USEDEP}]
+	>=dev-python/python-cinderclient-3.1.0[${PYTHON_USEDEP}]
+	>=dev-python/keystoneauth-3.1.0[${PYTHON_USEDEP}]
+	>=dev-python/python-neutronclient-6.3.0[${PYTHON_USEDEP}]
 	>=dev-python/python-glanceclient-2.8.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.14.2[${PYTHON_USEDEP}]
-	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
+	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.20.0[${PYTHON_USEDEP}]
 	>=dev-python/websockify-0.8.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-cache-1.26.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-concurrency-3.26.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-config-6.1.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-context-2.19.2[${PYTHON_USEDEP}]
-	>=dev-python/oslo-log-3.36.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-reports-1.18.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-serialization-1.18.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-cache-1.5.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-concurrency-3.8.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-config-4.0.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-config-4.3.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-config-4.4.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-context-2.14.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-log-3.22.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-reports-0.6.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-serialization-1.10.0[${PYTHON_USEDEP}]
 	!~dev-python/oslo-serialization-2.19.1[${PYTHON_USEDEP}]
-	>=dev-python/oslo-utils-3.33.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-db-4.27.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-rootwrap-5.8.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-messaging-6.3.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-policy-1.35.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-privsep-1.23.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-i18n-3.15.3[${PYTHON_USEDEP}]
-	>=dev-python/oslo-service-1.24.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-service-1.28.1[${PYTHON_USEDEP}]
+	>=dev-python/oslo-utils-3.20.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-db-4.24.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-rootwrap-5.0.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-messaging-5.24.2[${PYTHON_USEDEP}]
+	!~dev-python/oslo-messaging-5.25.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-policy-1.23.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-privsep-1.9.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-privsep-1.17.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-i18n-3.15.2[${PYTHON_USEDEP}]
+	>=dev-python/oslo-service-1.10.0[${PYTHON_USEDEP}]
 	>=dev-python/rfc3986-0.3.1[${PYTHON_USEDEP}]
-	>=dev-python/oslo-middleware-3.31.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-middleware-3.27.0[${PYTHON_USEDEP}]
 	>=dev-python/psutil-3.2.2[${PYTHON_USEDEP}]
-	>=dev-python/oslo-versionedobjects-1.31.2[${PYTHON_USEDEP}]
-	>=dev-python/os-brick-2.5.0[${PYTHON_USEDEP}]
-	>=dev-python/os-traits-0.4.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-versionedobjects-1.17.0[${PYTHON_USEDEP}]
+	>=dev-python/os-brick-1.15.2[${PYTHON_USEDEP}]
+	>=dev-python/os-traits-0.3.1[${PYTHON_USEDEP}]
 	>=dev-python/os-vif-1.7.0[${PYTHON_USEDEP}]
-	!~dev-python/os-vif-1.8.0[${PYTHON_USEDEP}]
-	>=dev-python/os-win-3.0.0[${PYTHON_USEDEP}]
-	>=dev-python/castellan-0.16.0[${PYTHON_USEDEP}]
-	>=dev-python/microversion-parse-0.2.1[${PYTHON_USEDEP}]
-	>=dev-python/os-xenapi-0.3.3[${PYTHON_USEDEP}]
-	>=dev-python/tooz-1.58.0[${PYTHON_USEDEP}]
-	>=dev-python/cursive-0.2.1[${PYTHON_USEDEP}]
-	>=dev-python/pypowervm-1.1.15[${PYTHON_USEDEP}]
-	>=dev-python/retrying-1.3.3[${PYTHON_USEDEP}]
-	>=dev-python/os-service-types-1.2.0[${PYTHON_USEDEP}]
-	>=dev-python/taskflow-2.16.0[${PYTHON_USEDEP}]
-	>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
-	>=dev-python/zVMCloudConnector-1.1.1[${PYTHON_USEDEP}]
-	>=dev-python/futures-3.0.0[$(python_gen_usedep 'python2_7')]
+	>=dev-python/os-win-2.0.0[${PYTHON_USEDEP}]
+	>=dev-python/castellan-0.7.0[${PYTHON_USEDEP}]
+	>=dev-python/microversion-parse-0.1.2[${PYTHON_USEDEP}]
+	>=dev-python/os-xenapi-0.2.0[${PYTHON_USEDEP}]
+	>=dev-python/tooz-1.47.0[${PYTHON_USEDEP}]
+	>=dev-python/cursive-0.1.2[${PYTHON_USEDEP}]
+	>=dev-python/pypowervm-1.1.6[${PYTHON_USEDEP}]
 	dev-python/libvirt-python[${PYTHON_USEDEP}]
 	app-emulation/libvirt[iscsi?]
 	novncproxy? ( www-apps/novnc )
@@ -244,6 +240,8 @@ python_install() {
 	# copy migration conf file (not coppied on install via setup.py script)
 	insinto "$(python_get_sitedir)/db/sqlalchemy/migrate_repo/"
 	doins "nova/db/sqlalchemy/migrate_repo/migrate.cfg"
+	# copy the CA cert dir (not coppied on install via setup.py script)
+	cp -R "${S}/nova/CA" "${D}/$(python_get_sitedir)/nova/" || die "installing CA files failed"
 }
 
 pkg_postinst() {
