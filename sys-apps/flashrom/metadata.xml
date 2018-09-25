@@ -17,6 +17,7 @@
 		<flag name="buspirate_spi">Enable Bus Pirate SPI programmer</flag>
 		<flag name="ch341a_spi">Enable WCH CH341A SPI programmer</flag>
 		<flag name="dediprog">Dediprog SF100 support</flag>
+		<flag name="developerbox_spi">Enable Devloperbox SPI recovery support</flag>
 		<flag name="digilent_spi">Enable support for Digilent iCEblink40 development board</flag>
 		<flag name="drkaiser">Enable Dr. Kaiser programmer</flag>
 		<flag name="dummy">Enable dummy tracing</flag>
