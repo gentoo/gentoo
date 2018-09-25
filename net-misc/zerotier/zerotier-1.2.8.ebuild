@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,8 @@ DOCS=( README.md AUTHORS.md )
 
 src_compile() {
 	append-ldflags -Wl,-z,noexecstack
-	emake CXX="$(tc-getCXX)" STRIP=: one
+	tc-export AS CC CXX
+	emake STRIP=: one
 }
 
 src_test() {
