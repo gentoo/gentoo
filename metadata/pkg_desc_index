@@ -6186,7 +6186,7 @@ dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
 dev-util/bbe 0.2.2: Sed-like editor for binary files
 dev-util/bcpp 20150811-r1: Indents C/C++ source code
 dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disassembler modes
-dev-util/bitcoin-tx 0.15.1: Command-line Bitcoin transaction tool
+dev-util/bitcoin-tx 0.15.1 0.16.3: Command-line Bitcoin transaction tool
 dev-util/boost-build 1.63.0 1.65.0: A system for large project software construction, simple to use and powerful
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/buildbot 0.8.12-r3: BuildBot build automation system
@@ -8643,7 +8643,7 @@ net-libs/ldns 1.7.0-r2: a library with the aim to simplify DNS programming in C
 net-libs/libaccounts-glib 1.23: Accounts SSO (Single Sign-On) management library for GLib applications
 net-libs/libasr 1.0.1: Async Resolver Library from OpenBSD/OpenSMTPD
 net-libs/libasyncns 0.8-r3: C library for executing name service queries asynchronously
-net-libs/libbitcoinconsensus 0.15.1: Bitcoin Core consensus library
+net-libs/libbitcoinconsensus 0.15.1 0.16.3: Bitcoin Core consensus library
 net-libs/libblkmaker 0.3.2: C implementation of getblocktemplate (BIP 22)
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libdmapsharing 2.9.39: A library that implements the DMAP family of protocols
@@ -9053,9 +9053,9 @@ net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
 net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
 net-nntp/xrn 9.02-r1: A small and fast news reader for X
 net-p2p/amule 2.3.2-r1 2.3.2-r2: aMule, the all-platform eMule p2p client
-net-p2p/bitcoin-cli 0.15.1: Command-line JSON-RPC client specifically for interfacing with bitcoind
-net-p2p/bitcoin-qt 0.15.1: An end-user Qt GUI for the Bitcoin crypto-currency
-net-p2p/bitcoind 0.15.1: Original Bitcoin crypto-currency wallet for automated services
+net-p2p/bitcoin-cli 0.15.1 0.16.3: Command-line JSON-RPC client specifically for interfacing with bitcoind
+net-p2p/bitcoin-qt 0.15.1 0.16.3: An end-user Qt GUI for the Bitcoin crypto-currency
+net-p2p/bitcoind 0.15.1 0.16.3: Original Bitcoin crypto-currency wallet for automated services
 net-p2p/bitflu 1.50: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.3.18-r4: TheShad0w's experimental BitTorrent client
 net-p2p/createtorrent 1.1.4: Create BitTorrent files easily
