@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,7 +37,7 @@ RDEPEND="
 	>=media-plugins/gst-plugins-ladspa-1.12.0:1.0
 	>=media-plugins/gst-plugins-lv2-1.12.0:1.0
 	>=media-plugins/gst-plugins-pulse-1.12.0:1.0
-	calf? (	>=media-plugins/calf-0.90.0[lv2] )
+	calf? ( >=media-plugins/calf-0.90.0[lv2] )
 	mda-lv2? ( media-plugins/mda-lv2 )
 	rubberband? ( media-libs/rubberband )
 	>=media-libs/zita-convolver-3.0.0
