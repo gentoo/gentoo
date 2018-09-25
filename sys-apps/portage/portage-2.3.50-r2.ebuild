@@ -98,6 +98,11 @@ python_prepare_all() {
 	# Apply fbc100e68802 for bug 667008
 	sed -i 's:\[\[ -z ${PORTAGE_COMPRESS} \]\] && exit 0:if [[ -z ${PORTAGE_COMPRESS} ]]; then\n\tfind "${ED}" -name '\''*.ecompress'\'' -delete\n\texit 0\nfi:' bin/ecompress || die
 
+	# Apply 8a1d36088aa5 for bug 667072
+	sed -e 's:^find "${ED}" -name '\''\*.ecompress'\'' -delete -print0 [|]:find "${ED}" -name '\''*.ecompress'\'' -delete \\:' \
+		-e 's:\t___parallel_xargs -0 "${PORTAGE_BIN_PATH}"/ecompress-file:\t-exec "${PORTAGE_BIN_PATH}"/ecompress-file {} +:' \
+		-i bin/ecompress || die
+
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
 		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
