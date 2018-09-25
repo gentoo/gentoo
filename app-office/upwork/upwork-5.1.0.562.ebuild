@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit rpm eutils pax-utils
 
@@ -11,39 +11,39 @@ QA_PREBUILT="*"
 DESCRIPTION="Project collaboration and tracking software for upwork.com"
 HOMEPAGE="https://www.upwork.com/"
 SRC_URI="
-	amd64? ( http://updates.team.odesk.com/binaries/v4_1_314_0_0bo6g5kfbj07y2x4/upwork_x86_64.rpm -> ${P}_x86_64.rpm )
-	x86? ( http://updates.team.odesk.com/binaries/v4_1_314_0_0bo6g5kfbj07y2x4/upwork_i386.rpm -> ${P}_i386.rpm )
+	amd64? ( https://updates-desktopapp.upwork.com/binaries/v5_1_0_562_f3wgs5ljinabm69t/upwork-5.1.0.562-1fc24.x86_64.rpm -> ${P}_x86_64.rpm )
+	x86? ( https://updates-desktopapp.upwork.com/binaries/v5_1_0_562_f3wgs5ljinabm69t/upwork-5.1.0.562-1fc24.i386.rpm -> ${P}_i386.rpm )
 "
 LICENSE="ODESK"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 S=${WORKDIR}
+PATCHES=( "${FILESDIR}/${PN}-desktop-r1.patch" )
 
+DEPEND="dev-util/patchelf"
 RDEPEND="
-	dev-libs/libgcrypt:11
+	dev-libs/expat
+	dev-libs/nspr
+	dev-libs/nss
 	gnome-base/gconf
 	media-libs/alsa-lib
+	media-libs/freetype
+	sys-apps/dbus
 	sys-libs/libcap
-	virtual/udev
-	x11-libs/gtk+:2
+	x11-libs/gtk+:2[cups]
 	x11-libs/gtkglext
 "
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-desktop.patch"
-}
-
 src_install() {
-	# Wrapper to the real executable
+	pax-mark m usr/share/upwork/upwork
+
 	dobin usr/bin/upwork
 
-	insinto /usr/share
-	pax-mark m usr/share/upwork/upwork
-	doins -r usr/share/upwork
-	dosym /usr/lib/libudev.so /usr/share/upwork/libudev.so.0
+	patchelf --set-rpath /usr/share/upwork usr/share/upwork/upwork
 
-	# Make this executable because it's the real executable
+	insinto /usr/share
+	doins -r usr/share/upwork
 	fperms 0755 /usr/share/upwork/upwork
 
 	domenu usr/share/applications/upwork.desktop
