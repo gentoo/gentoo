@@ -8460,7 +8460,7 @@ net-dialup/picocom 2.2: minimal dumb-terminal emulation program
 net-dialup/ppp 2.4.7-r3 2.4.7-r6: Point-to-Point Protocol (PPP)
 net-dialup/ppp-scripts 0: Common set of scripts for various PPP implementations
 net-dialup/pppconfig 2.3.21: A text menu based utility for configuring ppp
-net-dialup/pptpclient 1.7.2-r3 1.8.0: Linux client for PPTP
+net-dialup/pptpclient 1.8.0: Linux client for PPTP
 net-dialup/radiusclient-ng 0.5.6-r1: RadiusClient NextGeneration - library for RADIUS clients
 net-dialup/rp-l2tp 0.4-r4: User-space implementation of L2TP for Linux and other UNIX systems
 net-dialup/rp-pppoe 3.11-r3 3.12-r1: A user-mode PPPoE client and server suite for Linux
