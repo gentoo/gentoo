@@ -48,15 +48,16 @@ multilib_src_test() {
 	emake check
 }
 
-multilib_src_install() {
-	cmake-utils_src_install
-	if ! use sdk; then
-		export MULTILIB_CHOST_TOOLS=( /usr/bin/apulse )
-		multilib_prepare_wrappers
-	fi
-}
-
 multilib_src_install_all() {
-	use sdk || dobin "${T}/apulse"
+	cmake-utils_src_install
+	# The easiest way would be setting MULTILIB_CHOST_TOOLS at global scope, depending
+	# on USE=sdk, but this is no longer permitted, so workaround is required.
+	# See bug 666884 for details.
+	if ! use sdk; then
+		unset BUILD_DIR
+		_install_wrapper() { newbin "${BUILD_DIR}/apulse" "${CHOST}-apulse"; }
+		multilib_foreach_abi _install_wrapper
+		dobin "${T}/apulse"
+	fi
 	einstalldocs
 }
