@@ -173,11 +173,12 @@ multilib_src_configure() {
 	fi
 
 	if tc-is-cross-compiler; then
-		[[ -x "/usr/bin/clang-tblgen" ]] \
-			|| die "/usr/bin/clang-tblgen not found or usable"
+		local tblgen="${EPREFIX}/usr/lib/llvm/${SLOT}/bin/clang-tblgen"
+		[[ -x "${tblgen}" ]] \
+			|| die "${tblgen} not found or usable"
 		mycmakeargs+=(
 			-DCMAKE_CROSSCOMPILING=ON
-			-DCLANG_TABLEGEN=/usr/bin/clang-tblgen
+			-DLLVM_TABLEGEN="${tblgen}"
 		)
 	fi
 
