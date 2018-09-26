@@ -201,6 +201,7 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DCMAKE_CROSSCOMPILING=True
 			-DLLVM_TABLEGEN="${tblgen}"
+			-DLLVM_CONFIG="${EPREFIX}/usr/lib/llvm/${SLOT}/bin/llvm-config"
 		)
 	fi
 
