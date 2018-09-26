@@ -8484,7 +8484,7 @@ net-dns/libidn2 2.0.4: An implementation of the IDNA2008 specifications (RFCs 58
 net-dns/maradns 2.0.09-r2: A security-aware DNS server
 net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/nsd 4.1.23: An authoritative only, high performance, open source name server
+net-dns/nsd 4.1.24: An authoritative only, high performance, open source name server
 net-dns/openresolv 3.9.0: A framework for managing DNS information
 net-dns/pdns 4.0.5: The PowerDNS Daemon
 net-dns/pdns-recursor 4.0.8: The PowerDNS Recursor
