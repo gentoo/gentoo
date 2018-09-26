@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,10 +9,10 @@ inherit distutils-r1
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/diafygi/${PN}.git"
-	KEYWORDS=""
+	KEYWORDS="amd64"
 else
 	SRC_URI="https://github.com/diafygi/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 DESCRIPTION="A tiny, auditable script for Let's Encrypt's ACME Protocol"
