@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit user systemd
+inherit autotools user systemd
 
 # version voodoo needed only for non-release tarballs: 4.0.0_rc1 => 4.0.0rc1
 MY_PV="${PV/_beta/b}"
@@ -15,29 +15,36 @@ HOMEPAGE="http://www.nlnetlabs.nl/projects/nsd"
 SRC_URI="http://www.nlnetlabs.nl/downloads/${PN}/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="bind8-stats ipv6 libevent minimal-responses mmap munin +nsec3 ratelimit root-server runtime-checks ssl libressl"
+KEYWORDS="~amd64 ~x86"
+IUSE="bind8-stats ipv6 libevent minimal-responses mmap munin +nsec3 ratelimit root-server runtime-checks ssl systemd libressl"
 
 S="${WORKDIR}/${MY_P}"
 
 RDEPEND="
 	libevent? ( dev-libs/libevent )
+	munin? ( net-analyzer/munin )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
-	munin? ( net-analyzer/munin )
+	systemd? ( sys-apps/systemd )
 "
 DEPEND="
 	${RDEPEND}
 	sys-devel/flex
 	virtual/yacc
+	systemd? ( virtual/pkgconfig )
 "
 
 PATCHES=(
 	# Fix the paths in the munin plugin to match our install
 	"${FILESDIR}"/nsd_munin_.patch
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(
@@ -60,6 +67,7 @@ src_configure() {
 		$(use_enable ratelimit)
 		$(use_enable root-server)
 		$(use_enable runtime-checks checking)
+		$(use_enable systemd)
 		$(use_with libevent)
 		$(use_with ssl)
 	)
