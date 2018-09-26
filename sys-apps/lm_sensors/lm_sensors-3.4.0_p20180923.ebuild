@@ -1,18 +1,18 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit linux-info systemd toolchain-funcs multilib-minimal versionator
+inherit linux-info systemd toolchain-funcs multilib-minimal eapi7-ver
 
 DESCRIPTION="Hardware Monitoring user-space utilities"
-HOMEPAGE="https://hwmon.wiki.kernel.org/ https://github.com/groeck/lm-sensors"
+HOMEPAGE="https://hwmon.wiki.kernel.org/ https://github.com/lm-sensors/lm-sensors"
 
-COMMIT="6d970e5eb196061605c138c9dcbc833b052c4f3a"
+COMMIT="807f9b1529892c0ac89bca0c7ae781c59f9c8393"
 MY_PN="${PN/_/-}"
 
 #SRC_URI="http://dl.lm-sensors.org/lm-sensors/releases/${P}.tar.bz2"
-SRC_URI="https://github.com/groeck/${MY_PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lm-sensors/${MY_PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2.1"
 
@@ -172,7 +172,7 @@ pkg_postinst() {
 	local _new_loader='3.4.0_p20160725'
 	local _v
 	for _v in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least ${_new_loader} ${v}; then
+		if ! ver_test "${_v}" -gt "${_new_loader}"; then
 			# This is an upgrade which require migration
 
 			elog ""

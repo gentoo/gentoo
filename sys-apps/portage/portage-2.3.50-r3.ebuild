@@ -103,6 +103,12 @@ python_prepare_all() {
 		-e 's:\t___parallel_xargs -0 "${PORTAGE_BIN_PATH}"/ecompress-file:\t-exec "${PORTAGE_BIN_PATH}"/ecompress-file {} +:' \
 		-i bin/ecompress || die
 
+	# Apply 1fc311ce0afe for bug 667072
+	sed -e 's:local filtered_args=():local -A filtered_args:' \
+		-e 's:filtered_args+=( "$x" ):filtered_args[${x}]=:' \
+		-e 's:set -- "${filtered_args\[@\]}":set -- "${!filtered_args[@]}":' \
+		-i bin/ecompress-file || die
+
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
 		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
