@@ -7,6 +7,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Virgil Dupras <vdupras@gentoo.org> (26 Sep 2018)
+# Server feature in paramiko is patched out for security reasons. It can
+# be re-enabled with the 'server' USE flag, but this flag is hard
+# masked. bug #666619
+dev-python/paramiko server
+
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Sep 2018)
 # media-libs/celt is going away, superseded by opus, bug #664154
 media-sound/jack2 celt
