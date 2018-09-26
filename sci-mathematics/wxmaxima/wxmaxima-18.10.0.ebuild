@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,8 +7,8 @@ PLOCALES="ca cs da de el es fi fr gl hu it ja kab nb pl pt_BR ru tr uk zh_CN zh_
 inherit cmake-utils wxwidgets l10n xdg-utils gnome2-utils
 
 DESCRIPTION="Graphical frontend to Maxima, using the wxWidgets toolkit"
-HOMEPAGE="http://andrejv.github.io/wxmaxima/"
-SRC_URI="https://github.com/andrejv/wxmaxima/archive/Version-${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="http://wxmaxima-developers.github.io/wxmaxima/"
+SRC_URI="https://github.com/wxMaxima-developers/wxmaxima/archive/Version-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
