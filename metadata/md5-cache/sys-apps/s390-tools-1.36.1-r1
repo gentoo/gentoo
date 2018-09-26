@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=fuse? ( sys-fs/fuse ) ncurses? ( sys-libs/ncurses:0= ) pfm? ( app-misc/pfm ) snmp? ( net-analyzer/net-snmp ) zlib? ( sys-libs/zlib ) >=sys-apps/util-linux-2.30
 SLOT=0
 SRC_URI=https://download.boulder.ibm.com/ibmdl/pub/software/dw/linux390/ht_src/s390-tools-1.36.1.tar.bz2
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	udev	7af0412965eeadeee9e3b7ad98adabdf
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	udev	7752f306eec7b286d00bdb47b763e7ac
 _md5_=10f689e1b9457f98bf01b9b0e8536b5c

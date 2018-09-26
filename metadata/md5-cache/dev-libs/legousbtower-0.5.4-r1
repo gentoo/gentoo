@@ -7,5 +7,5 @@ KEYWORDS=amd64 ppc x86
 LICENSE=MPL-1.0
 SLOT=0
 SRC_URI=mirror://sourceforge/legousb/legousbtower-0.5.4.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	udev	7af0412965eeadeee9e3b7ad98adabdf
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	udev	7752f306eec7b286d00bdb47b763e7ac
 _md5_=e92a99341038a7857aace614775d1bae
