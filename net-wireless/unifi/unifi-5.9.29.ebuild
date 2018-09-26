@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # Used, when it's an unstable, beta or release candidate
-RC_SUFFIX="-64c9fed777"
+RC_SUFFIX="-04b5d20997"
 
 inherit systemd user
 
