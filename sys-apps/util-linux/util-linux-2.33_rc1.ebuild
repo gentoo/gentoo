@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -62,20 +62,12 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}/util-linux-2.32-python3-tests.patch"
-)
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	default
-
-	eapply "${FILESDIR}"/${P}-add-missing-lintl.patch
-	touch -r "${S}"/configure "${S}"/libsmartcols/src/Makemodule.am || die
-	touch -r "${S}"/configure "${S}"/libuuid/src/Makemodule.am || die
 
 	# Prevent uuidd test failure due to socket path limit. #593304
 	sed -i \
