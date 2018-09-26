@@ -316,6 +316,7 @@ app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD 
 app-cdr/xfburn 0.5.5: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 0.24.0 0.25.1: An implementation of the ACME protocol
+app-crypt/acme-tiny 4.0.4: A tiny, auditable script for Let's Encrypt's ACME Protocol
 app-crypt/aespipe 2.4e: Encrypts data from stdin to stdout
 app-crypt/argon2 20171227: Password hashing software that won the Password Hashing Competition (PHC)
 app-crypt/bcwipe 1.9.13: Secure file removal utility
