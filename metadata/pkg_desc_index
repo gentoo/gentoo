@@ -9971,7 +9971,7 @@ sys-block/qla-fc-firmware 20101015: QLogic Linux Fibre Channel HBA Firmware for 
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
 sys-block/scsiping 0.0.1: SCSIPing pings a host on the SCSI-chain
 sys-block/seekwatcher 0.12_p20091015-r1: generates graphs from blktrace to help visualize IO patterns and performance
-sys-block/storcli 1.19.04 1.20.15 1.21.06 1.23.02: MegaRAID StorCLI (successor of the MegaCLI)
+sys-block/storcli 1.19.04 1.20.15 1.21.06 1.23.02 7.0504 7.0606: MegaRAID StorCLI (successor of the MegaCLI)
 sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/tgt 1.0.72 1.0.73: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.4.1 0.7.0: A suite of tools for thin provisioning on Linux
