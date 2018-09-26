@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -65,6 +65,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	epatch_user
+
 	case ${ARCH} in
 		amd64)
 			mv usr/lib/x86_64-linux-gnu usr/$(get_libdir) || die
@@ -76,6 +78,7 @@ src_prepare() {
 
 	rm usr/share/doc/${PN}-stable/copyright || die
 	mv usr/share/doc/${PN}-stable usr/share/doc/${PF} || die
+	gunzip usr/share/doc/${PF}/changelog.gz || die
 
 	pushd "${OPERA_HOME}/localization" > /dev/null || die
 	chromium_remove_language_paks
