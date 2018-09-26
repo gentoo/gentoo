@@ -1,8 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils mercurial multilib toolchain-funcs
+EAPI=7
+
+inherit autotools desktop mercurial toolchain-funcs
 
 DESCRIPTION="Lean FLTK based web browser"
 HOMEPAGE="https://www.dillo.org/"
@@ -29,6 +30,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}2-inbuf.patch
 )
 
+DOCS="AUTHORS ChangeLog README NEWS doc/*.txt doc/README"
+
 src_prepare() {
 	default
 	eautoreconf
@@ -52,12 +55,12 @@ src_compile() {
 }
 
 src_install() {
-	dodir /etc
 	default
 
-	use doc && dohtml html/*
-	dodoc AUTHORS ChangeLog README NEWS
-	dodoc doc/*.txt doc/README
+	if use doc; then
+		docinto html
+		dodoc -r html/
+	fi
 
 	doicon "${DISTDIR}"/${PN}.png
 	make_desktop_entry ${PN} Dillo

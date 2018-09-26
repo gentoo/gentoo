@@ -6,15 +6,15 @@ EAPI="6"
 inherit pax-utils
 
 # Upstream is still using strange version numbers
-MY_PV="007.0606.0000.0000"
+MY_PV="007.0709.0000.0000"
 
 DESCRIPTION="MegaRAID StorCLI (successor of the MegaCLI)"
 HOMEPAGE="https://www.broadcom.com/support/download-search?dk=storcli"
 SRC_URI="https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${MY_PV}_Unified_StorCLI.zip -> ${P}.zip"
 
 LICENSE="Avago LSI BSD"
-SLOT="0/7.6"
-KEYWORDS="-* amd64 x86"
+SLOT="0/7.7"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""
@@ -38,10 +38,6 @@ src_unpack() {
 		fi
 	done
 
-	unpack "${WORKDIR}"/MR_SAS_Unified_StorCLI_*.zip
-	rm -r "${WORKDIR}"/MR_SAS_Unified* || die
-	mv "${WORKDIR}"/versionChangeSet/univ_viva_cli_rel/Unified*.zip "${WORKDIR}" || die "Failed to move Unified_storcli_all_os.zip"
-	rm -r "${WORKDIR}"/versionChangeSet || die
 	unpack "${WORKDIR}"/Unified_storcli_all_os.zip
 
 	mv Unified_storcli_all_os/Ubuntu/storcli_*.deb "${WORKDIR}" || die "Failed to move storcli_*.deb"
