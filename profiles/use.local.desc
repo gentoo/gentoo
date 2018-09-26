@@ -1833,6 +1833,7 @@ dev-python/networkx:yaml - Provides YAML format reading and writing
 dev-python/nltk:numpy - Use numpy for the saved word tokenizer
 dev-python/numexpr:mkl - Enable support for Intel Vector Math Library, part of sci-libs/mkl.
 dev-python/pandas:full-support - Pull all packages to give pandas full support
+dev-python/paramiko:server - Enable server feature
 dev-python/passlib:bcrypt - bcrpyt hash algoryptm support
 dev-python/passlib:scrypt - accelerated scrypt algoythm support
 dev-python/passlib:totp - time based one time password support
