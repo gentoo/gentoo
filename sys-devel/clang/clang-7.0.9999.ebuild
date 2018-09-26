@@ -64,6 +64,12 @@ S=${WORKDIR}/x/y/${P}
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+PATCHES=(
+	# add tblgen for cross compile
+	# https://bugs.gentoo.org/667094
+	"${FILESDIR}"/fix-tblgen.patch
+)
+
 # Multilib notes:
 # 1. ABI_* flags control ABIs libclang* is built for only.
 # 2. clang is always capable of compiling code for all ABIs for enabled

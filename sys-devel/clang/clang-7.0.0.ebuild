@@ -71,6 +71,10 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 PATCHES=(
 	# add Prefix include paths for Darwin
 	"${FILESDIR}"/6.0.1/darwin_prefix-include-paths.patch
+
+	# add tblgen for cross compile
+	# https://bugs.gentoo.org/667094
+	"${FILESDIR}"/fix-tblgen.patch
 )
 
 # Multilib notes:

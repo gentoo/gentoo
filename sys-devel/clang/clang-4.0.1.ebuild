@@ -98,6 +98,10 @@ src_prepare() {
 	# (backport, temporary reverted upstream because of FreeBSD issues)
 	eapply "${FILESDIR}"/4.0.1/0001-Frontend-Correct-values-of-ATOMIC_-_LOCK_FREE-to-mat.patch
 
+	# add tblgen for cross compile
+	# https://bugs.gentoo.org/667094
+	"${FILESDIR}"/fix-tblgen.patch
+
 	cd tools/extra || die
 	# fix stand-alone test build for extra tools
 	eapply "${FILESDIR}"/4.0.1/extra/0001-test-Fix-test-dependencies-when-using-installed-tool.patch

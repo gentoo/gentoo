@@ -113,6 +113,10 @@ src_prepare() {
 	# add Prefix include paths for Darwin
 	eapply "${FILESDIR}"/6.0.1/darwin_prefix-include-paths.patch
 
+	# add tblgen for cross compile
+	# https://bugs.gentoo.org/667094
+	"${FILESDIR}"/fix-tblgen.patch
+
 	cd tools/extra || die
 	# fix setting LD_LIBRARY_PATH for tests on *BSD (extra part)
 	eapply "${FILESDIR}"/5.0.2/extra/0001-Assume-the-shared-library-path-variable-is-LD_LIBRAR.patch

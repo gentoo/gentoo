@@ -1,0 +1,17 @@
+diff --git a/utils/TableGen/CMakeLists.txt b/utils/TableGen/CMakeLists.txt
+index dba0c94..5428683 100644
+--- a/utils/TableGen/CMakeLists.txt
++++ b/utils/TableGen/CMakeLists.txt
+@@ -13,4 +13,12 @@ add_tablegen(clang-tblgen CLANG
+   NeonEmitter.cpp
+   TableGen.cpp
+   )
++
++if (NOT LLVM_INSTALL_TOOLCHAIN_ONLY)
++    install(TARGETS clang-tblgen
++	    EXPORT ClangTargets
++            RUNTIME DESTINATION bin)
++endif()
++set_property(GLOBAL APPEND PROPERTY CLANG_EXPORTS clang-tblgen)
++
+ set_target_properties(clang-tblgen PROPERTIES FOLDER "Clang tablegenning")

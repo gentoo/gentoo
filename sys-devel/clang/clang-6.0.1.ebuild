@@ -75,6 +75,10 @@ PATCHES=(
 	# fix test failure with default-compiler-rt
 	# https://bugs.gentoo.org/650316
 	"${FILESDIR}"/6.0.1/0002-test-Fix-Cross-DSO-CFI-Android-sanitizer-test-for-rt.patch
+
+	# add tblgen for cross compile
+	# https://bugs.gentoo.org/667094
+	"${FILESDIR}"/fix-tblgen.patch
 )
 
 # Multilib notes:
