@@ -198,7 +198,7 @@ multilib_src_configure() {
 		[[ -x "${tblgen}" ]] \
 			|| die "${tblgen} not found or usable"
 		mycmakeargs+=(
-			-DCMAKE_CROSSCOMPILING=ON
+			-DCMAKE_CROSSCOMPILING=True
 			-DLLVM_TABLEGEN="${tblgen}"
 		)
 	fi
