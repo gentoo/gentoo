@@ -229,7 +229,11 @@ mozconfig_init() {
 	ppc64)
 		append-flags -fPIC -mminimal-toc
 		# Reduce the memory requirements for linking
+		if tc-ld-is-bfd
 		append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
+		else tc-ld-is-gold
+		append-ldflags -Wl,--no-keep-memory
+		fi
 		;;
 	esac
 
