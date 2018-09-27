@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>xmw@gentoo.org</email>
-<name>Michael Weber</name>
-</maintainer>
+	<maintainer type="person">
+		<email>xmw@gentoo.org</email>
+		<name>Michael Weber</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Utf8proc is a small, clean C library that provides Unicode normalization,
+		case-folding, and other operations for data in the UTF-8 encoding.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/JuliaStrings/utf8proc/issues</bugs-to>
+		<remote-id type="github">JuliaStrings/utf8proc</remote-id>
+	</upstream>	
 </pkgmetadata>

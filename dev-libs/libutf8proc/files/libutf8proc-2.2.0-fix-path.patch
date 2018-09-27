@@ -1,0 +1,13 @@
+--- a/Makefile	2018-07-24 19:35:48.000000000 +0200
++++ b/Makefile	2018-09-27 17:17:26.000000000 +0200
+@@ -33,8 +33,8 @@
+ endif
+ 
+ # installation directories (for 'make install')
+-prefix=/usr/local
+-libdir=$(prefix)/lib
++prefix=${PREFIX_GENTOO}/usr
++libdir=$(prefix)/${LIBDIR_GENTOO}
+ includedir=$(prefix)/include
+ 
+ # meta targets
