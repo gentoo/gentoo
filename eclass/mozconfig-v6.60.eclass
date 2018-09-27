@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 #
-# @ECLASS: mozconfig-v6.58.eclass
+# @ECLASS: mozconfig-v6.60.eclass
 # @MAINTAINER:
 # mozilla team <mozilla@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
@@ -74,18 +74,8 @@ inherit flag-o-matic toolchain-funcs mozcoreconf-v6
 # Set the variable to "enabled" if the use flag should be enabled by default.
 # Set the variable to any value if the use flag should exist but not be default-enabled.
 
-# @ECLASS-VARIABLE: MOZCONFIG_OPTIONAL_QT5
-# @DESCRIPTION:
-# Set this variable before the inherit line, when an ebuild can provide
-# optional qt5 support via IUSE="qt5".  Currently this would include
-# ebuilds for firefox, but thunderbird and seamonkey could follow in the future.
-#
-# Leave the variable UNSET if qt5 support should not be available.
-# Set the variable to "enabled" if the use flag should be enabled by default.
-# Set the variable to any value if the use flag should exist but not be default-enabled.
-
 # use-flags common among all mozilla ebuilds
-IUSE="${IUSE} dbus debug neon pulseaudio selinux startup-notification system-harfbuzz
+IUSE="${IUSE} clang dbus debug neon pulseaudio selinux startup-notification system-harfbuzz
  system-icu system-jpeg system-libevent system-sqlite system-libvpx"
 
 # some notes on deps:
@@ -163,17 +153,21 @@ fi
 
 DEPEND="app-arch/zip
 	app-arch/unzip
-	>=sys-devel/binutils-2.16.1
+	>=sys-devel/binutils-2.30
 	sys-apps/findutils
+	clang? (
+		>=sys-devel/llvm-4.0.1[gold]
+		>=sys-devel/lld-4.0.1
+	)
 	pulseaudio? ( media-sound/pulseaudio )
-	elibc_glibc? ( || (
-		( >=dev-lang/rust-1.24.0[-extended(-)] >=dev-util/cargo-0.25.0 )
-		>=dev-lang/rust-1.24.0[extended]
-		( >=dev-lang/rust-bin-1.24.0 >=dev-util/cargo-0.25.0 )
-	) )
-	elibc_musl? ( || ( >=dev-lang/rust-1.24.0
-		>=dev-util/cargo-0.25.0
-	) )
+	elibc_glibc? (
+		virtual/cargo
+		virtual/rust
+	)
+	elibc_musl? (
+		virtual/cargo
+		virtual/rust
+	)
 	${RDEPEND}"
 
 RDEPEND+="
@@ -199,6 +193,20 @@ RDEPEND+="
 # }
 
 mozconfig_config() {
+	if use clang && ! tc-is-clang ; then
+		# Force clang
+		einfo "Enforcing the use of clang due to USE=clang ..."
+		CC=${CHOST}-clang
+		CXX=${CHOST}-clang++
+		strip-unsupported-flags
+	elif ! use clang && ! tc-is-gcc ; then
+		# Force gcc
+		einfo "Enforcing the use of gcc due to USE=-clang ..."
+		CC=${CHOST}-gcc
+		CXX=${CHOST}-gcc++
+		strip-unsupported-flags
+	fi
+
 	# Migrated from mozcoreconf-2
 	mozconfig_annotate 'system_libs' \
 		--with-system-zlib \
@@ -207,14 +215,20 @@ mozconfig_config() {
 	# Stylo is only broken on x86 builds
 	use x86 && mozconfig_annotate 'Upstream bug 1341234' --disable-stylo
 
+	# Stylo is horribly broken on arm, renders GUI unusable
+	use arm && mozconfig_annotate 'breaks UI on arm' --disable-stylo
+
 	# Must pass release in order to properly select linker
 	mozconfig_annotate 'Enable by Gentoo' --enable-release
 
-	# Must pass --enable-gold if using ld.gold
-	if tc-ld-is-gold ; then
-		mozconfig_annotate 'tc-ld-is-gold=true' --enable-gold
+	# Avoid auto-magic on linker
+	if use clang ; then
+		# This is upstream's default
+		mozconfig_annotate "forcing ld=lld due to USE=clang" --enable-linker=lld
+	elif tc-ld-is-gold ; then
+		mozconfig_annotate "linker is set to gold" --enable-linker=gold
 	else
-		mozconfig_annotate 'tc-ld-is-gold=false' --disable-gold
+		mozconfig_annotate "linker is set to bfd" --enable-linker=bfd
 	fi
 
 	if has bindist ${IUSE}; then
@@ -295,21 +309,6 @@ mozconfig_config() {
 			toolkit_comment="gtk2 use flag"
 		fi
 	fi
-	if [[ -n ${MOZCONFIG_OPTIONAL_QT5} ]]; then
-		if use qt5; then
-			toolkit="cairo-qt"
-			toolkit_comment="qt5 use flag"
-			# need to specify these vars because the qt5 versions are not found otherwise,
-			# and setting --with-qtdir overrides the pkg-config include dirs
-			local i
-			for i in qmake moc rcc; do
-				echo "export HOST_${i^^}=\"$(qt5_get_bindir)/${i}\"" \
-					>> "${S}"/.mozconfig || die
-			done
-			echo 'unset QTDIR' >> "${S}"/.mozconfig || die
-			mozconfig_annotate '+qt5' --disable-gio
-		fi
-	fi
 	mozconfig_annotate "${toolkit_comment}" --enable-default-toolkit=${toolkit}
 
 	# Instead of the standard --build= and --host=, mozilla uses --host instead
@@ -332,11 +331,19 @@ mozconfig_config() {
 	mozconfig_use_with system-harfbuzz
 	mozconfig_use_with system-harfbuzz system-graphite2
 
+	if use arm ; then
+		mozconfig_annotate 'elf-hack is broken on arm' --disable-elf-hack
+	fi
+
 	# Modifications to better support ARM, bug 553364
 	if use neon ; then
 		mozconfig_annotate '' --with-fpu=neon
-		mozconfig_annotate '' --with-thumb=yes
-		mozconfig_annotate '' --with-thumb-interwork=no
+
+		if ! tc-is-clang ; then
+			# thumb options aren't supported when using clang, bug 666966
+			mozconfig_annotate '' --with-thumb=yes
+			mozconfig_annotate '' --with-thumb-interwork=no
+		fi
 	fi
 	if [[ ${CHOST} == armv* ]] ; then
 		mozconfig_annotate '' --with-float-abi=hard
