@@ -1,12 +1,13 @@
 DEFINED_PHASES=install nofetch postinst unpack
+DEPEND=app-eselect/eselect-opencl dev-libs/ocl-icd
 DESCRIPTION=Proprietary OpenCL implementation for AMD GPUs
 EAPI=7
 HOMEPAGE=https://support.amd.com/en-us/kb-articles/Pages/Radeon-Software-for-Linux-Release-Notes.aspx
 KEYWORDS=~amd64
 LICENSE=AMD-GPU-PRO-EULA
-RDEPEND=dev-libs/ocl-icd
+RDEPEND=app-eselect/eselect-opencl dev-libs/ocl-icd
 RESTRICT=mirror fetch strip
 SLOT=0
 SRC_URI=amdgpu-pro-18.20-606296.tar.xz
 _eclasses_=unpacker	ee2f5086cd7e7b747b061f58db14d89e
-_md5_=2d1f6eeec33c367a29ac72a6c39e6e7b
+_md5_=bc9eb9673bd8e23797d151b13a679760
