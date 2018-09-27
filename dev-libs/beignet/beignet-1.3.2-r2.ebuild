@@ -25,16 +25,16 @@ else
 	S=${WORKDIR}/Beignet-${PV}-Source
 fi
 
-COMMON="media-libs/mesa[${MULTILIB_USEDEP}]
+COMMON="app-eselect/eselect-opencl
+	media-libs/mesa[${MULTILIB_USEDEP}]
 	<sys-devel/clang-6.0.9999:=[${MULTILIB_USEDEP}]
 	>=x11-libs/libdrm-2.4.70[video_cards_intel,${MULTILIB_USEDEP}]
 	x11-libs/libXext[${MULTILIB_USEDEP}]
-	x11-libs/libXfixes[${MULTILIB_USEDEP}]"
-RDEPEND="${COMMON}
-	app-eselect/eselect-opencl"
+	x11-libs/libXfixes[${MULTILIB_USEDEP}]
+	ocl-icd? ( dev-libs/ocl-icd )"
+RDEPEND="${COMMON}"
 DEPEND="${COMMON}
 	${PYTHON_DEPS}
-	ocl-icd? ( dev-libs/ocl-icd )
 	virtual/pkgconfig"
 
 LLVM_MAX_SLOT=6
@@ -104,4 +104,12 @@ multilib_src_install() {
 	dosym "lib/${PN}/libcl.so" "${VENDOR_DIR}"/libOpenCL.so
 	dosym "lib/${PN}/libcl.so" "${VENDOR_DIR}"/libcl.so.1
 	dosym "lib/${PN}/libcl.so" "${VENDOR_DIR}"/libcl.so
+}
+
+pkg_postinst() {
+	if use ocl-icd; then
+		"${ROOT}"/usr/bin/eselect opencl set --use-old ocl-icd
+	else
+		"${ROOT}"/usr/bin/eselect opencl set --use-old beignet
+	fi
 }

@@ -18,8 +18,10 @@ KEYWORDS="~amd64"
 
 RESTRICT="mirror fetch strip"
 
-DEPEND=""
-RDEPEND="dev-libs/ocl-icd"
+COMMON="app-eselect/eselect-opencl
+	dev-libs/ocl-icd"
+DEPEND="${COMMON}"
+RDEPEND="${COMMON}"
 
 QA_PREBUILT="/opt/${SUPER_PN}/lib*/*"
 
@@ -59,8 +61,5 @@ pkg_postinst() {
 		ewarn "has become officially supported by Gentoo."
 	fi
 
-	elog "AMD OpenCL driver relies on dev-libs/ocl-icd to work. To enable it, please run"
-	elog ""
-	elog "    eselect opencl set ocl-icd"
-	elog ""
+	"${ROOT}"/usr/bin/eselect opencl set --use-old ocl-icd
 }
