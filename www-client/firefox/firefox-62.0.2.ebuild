@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -109,6 +109,7 @@ DEPEND="${CDEPEND}
 	>=sys-devel/llvm-4.0.1
 	>=sys-devel/clang-4.0.1
 	clang? (
+		>=sys-devel/llvm-4.0.1[gold]
 		>=sys-devel/lld-4.0.1
 	)
 	pulseaudio? ( media-sound/pulseaudio )
