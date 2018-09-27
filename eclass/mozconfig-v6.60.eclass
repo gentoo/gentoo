@@ -75,7 +75,7 @@ inherit flag-o-matic toolchain-funcs mozcoreconf-v6
 # Set the variable to any value if the use flag should exist but not be default-enabled.
 
 # use-flags common among all mozilla ebuilds
-IUSE="${IUSE} dbus debug neon pulseaudio selinux startup-notification system-harfbuzz
+IUSE="${IUSE} clang dbus debug neon pulseaudio selinux startup-notification system-harfbuzz
  system-icu system-jpeg system-libevent system-sqlite system-libvpx"
 
 # some notes on deps:
@@ -155,6 +155,10 @@ DEPEND="app-arch/zip
 	app-arch/unzip
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
+	clang? (
+		>=sys-devel/llvm-4.0.1[gold]
+		>=sys-devel/lld-4.0.1
+	)
 	pulseaudio? ( media-sound/pulseaudio )
 	elibc_glibc? (
 		virtual/cargo
@@ -189,6 +193,20 @@ RDEPEND+="
 # }
 
 mozconfig_config() {
+	if use clang && ! tc-is-clang ; then
+		# Force clang
+		einfo "Enforcing the use of clang due to USE=clang ..."
+		CC=${CHOST}-clang
+		CXX=${CHOST}-clang++
+		strip-unsupported-flags
+	elif ! use clang && ! tc-is-gcc ; then
+		# Force gcc
+		einfo "Enforcing the use of gcc due to USE=-clang ..."
+		CC=${CHOST}-gcc
+		CXX=${CHOST}-gcc++
+		strip-unsupported-flags
+	fi
+
 	# Migrated from mozcoreconf-2
 	mozconfig_annotate 'system_libs' \
 		--with-system-zlib \
@@ -200,11 +218,14 @@ mozconfig_config() {
 	# Must pass release in order to properly select linker
 	mozconfig_annotate 'Enable by Gentoo' --enable-release
 
-	# Must pass --enable-gold if using ld.gold
-	if tc-ld-is-gold ; then
-		mozconfig_annotate 'tc-ld-is-gold=true' --enable-gold
+	# Avoid auto-magic on linker
+	if use clang ; then
+		# This is upstream's default
+		mozconfig_annotate "forcing ld=lld due to USE=clang" --enable-linker=lld
+	elif tc-ld-is-gold ; then
+		mozconfig_annotate "linker is set to gold" --enable-linker=gold
 	else
-		mozconfig_annotate 'tc-ld-is-gold=false' --disable-gold
+		mozconfig_annotate "linker is set to bfd" --enable-linker=bfd
 	fi
 
 	if has bindist ${IUSE}; then
