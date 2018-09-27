@@ -8458,7 +8458,7 @@ net-dialup/minicom 2.7.1: Serial Communication Program
 net-dialup/moserial 3.0.11: A clean and friendly gtk-based serial terminal
 net-dialup/mwavem 2.0-r2: User level application for IBM Mwave modem
 net-dialup/picocom 2.2: minimal dumb-terminal emulation program
-net-dialup/ppp 2.4.7-r3 2.4.7-r6: Point-to-Point Protocol (PPP)
+net-dialup/ppp 2.4.7-r6: Point-to-Point Protocol (PPP)
 net-dialup/ppp-scripts 0: Common set of scripts for various PPP implementations
 net-dialup/pppconfig 2.3.21: A text menu based utility for configuring ppp
 net-dialup/pptpclient 1.8.0: Linux client for PPTP
