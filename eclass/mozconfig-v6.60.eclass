@@ -153,17 +153,17 @@ fi
 
 DEPEND="app-arch/zip
 	app-arch/unzip
-	>=sys-devel/binutils-2.16.1
+	>=sys-devel/binutils-2.30
 	sys-apps/findutils
 	pulseaudio? ( media-sound/pulseaudio )
-	elibc_glibc? ( || (
-		( >=dev-lang/rust-1.24.0[-extended(-)] >=dev-util/cargo-0.25.0 )
-		>=dev-lang/rust-1.24.0[extended]
-		( >=dev-lang/rust-bin-1.24.0 >=dev-util/cargo-0.25.0 )
-	) )
-	elibc_musl? ( || ( >=dev-lang/rust-1.24.0
-		>=dev-util/cargo-0.25.0
-	) )
+	elibc_glibc? (
+		virtual/cargo
+		virtual/rust
+	)
+	elibc_musl? (
+		virtual/cargo
+		virtual/rust
+	)
 	${RDEPEND}"
 
 RDEPEND+="
