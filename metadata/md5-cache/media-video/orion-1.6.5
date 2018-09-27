@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=>=dev-qt/qtquickcontrols2-5.8:5 >=dev-qt/qtsvg-5.8:5 >=dev-qt/qtwebengine-5.8:5 mpv? ( media-video/mpv[libmpv] ) qtav? ( media-libs/qtav ) qtmedia? ( >=dev-qt/qtmultimedia-5.8:5 )
+DESCRIPTION=Cross-platform Twitch client
+EAPI=7
+HOMEPAGE=https://alamminsalo.github.io/orion/
+IUSE=+mpv qtav qtmedia
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=dev-qt/qtquickcontrols2-5.8:5 >=dev-qt/qtsvg-5.8:5 >=dev-qt/qtwebengine-5.8:5 mpv? ( media-video/mpv[libmpv] ) qtav? ( media-libs/qtav ) qtmedia? ( >=dev-qt/qtmultimedia-5.8:5 ) !mpv? ( media-plugins/gst-plugins-hls )
+REQUIRED_USE=^^ ( mpv qtav qtmedia )
+SLOT=0
+SRC_URI=https://github.com/alamminsalo/orion/archive/1.6.5.tar.gz -> orion-1.6.5.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=44c67e2d44f9dd3f0d8be321f9f7f26f
