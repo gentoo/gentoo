@@ -27,8 +27,9 @@ DEPEND="${RDEPEND}
 
 DOCS=( README.md )
 PATCHES=(
+	"${FILESDIR}/0001-Make-the-install-target-work.patch"
 	"${FILESDIR}/0001-cmake-Fix-GOOGLE_CLOUD_CPP_GRPC_PROVIDER-pkg-config.patch"
-	"${FILESDIR}/0002-cmake-fix-library-issues.patch"
+	"${FILESDIR}/0002-cmake-set-library-soversions.patch"
 )
 
 src_prepare() {
