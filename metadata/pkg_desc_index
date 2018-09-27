@@ -11319,7 +11319,7 @@ xfce-base/garcon 0.5.0-r2 0.6.1: Xfce's freedesktop.org specification compatible
 xfce-base/libxfce4ui 4.13.4: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.13.1: A basic utility library for the Xfce desktop environment
 xfce-base/libxfcegui4 4.10.0-r2: A compability library for unported Xfce 4.6 plugins (DEPRECATED)
-xfce-base/thunar 1.6.13 1.6.14: File manager for the Xfce desktop environment
+xfce-base/thunar 1.6.14: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.12.0-r1: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.12-r1: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.12.2: Panel for the Xfce desktop environment
