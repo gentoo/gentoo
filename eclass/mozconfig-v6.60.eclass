@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 #
-# @ECLASS: mozconfig-v6.58.eclass
+# @ECLASS: mozconfig-v6.60.eclass
 # @MAINTAINER:
 # mozilla team <mozilla@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
@@ -71,16 +71,6 @@ inherit flag-o-matic toolchain-funcs mozcoreconf-v6
 # MOZCONFIG_OPTIONAL_GTK3 is set.
 #
 # Leave the variable UNSET if gtk2-only support should not be available.
-# Set the variable to "enabled" if the use flag should be enabled by default.
-# Set the variable to any value if the use flag should exist but not be default-enabled.
-
-# @ECLASS-VARIABLE: MOZCONFIG_OPTIONAL_QT5
-# @DESCRIPTION:
-# Set this variable before the inherit line, when an ebuild can provide
-# optional qt5 support via IUSE="qt5".  Currently this would include
-# ebuilds for firefox, but thunderbird and seamonkey could follow in the future.
-#
-# Leave the variable UNSET if qt5 support should not be available.
 # Set the variable to "enabled" if the use flag should be enabled by default.
 # Set the variable to any value if the use flag should exist but not be default-enabled.
 
@@ -293,21 +283,6 @@ mozconfig_config() {
 			toolkit="cairo-gtk2"
 		else
 			toolkit_comment="gtk2 use flag"
-		fi
-	fi
-	if [[ -n ${MOZCONFIG_OPTIONAL_QT5} ]]; then
-		if use qt5; then
-			toolkit="cairo-qt"
-			toolkit_comment="qt5 use flag"
-			# need to specify these vars because the qt5 versions are not found otherwise,
-			# and setting --with-qtdir overrides the pkg-config include dirs
-			local i
-			for i in qmake moc rcc; do
-				echo "export HOST_${i^^}=\"$(qt5_get_bindir)/${i}\"" \
-					>> "${S}"/.mozconfig || die
-			done
-			echo 'unset QTDIR' >> "${S}"/.mozconfig || die
-			mozconfig_annotate '+qt5' --disable-gio
 		fi
 	fi
 	mozconfig_annotate "${toolkit_comment}" --enable-default-toolkit=${toolkit}
