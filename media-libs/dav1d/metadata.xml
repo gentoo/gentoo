@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name="8bit">Add support for decoding 8-bit AV1.</flag>
+		<flag name="10bit">Add support for building 10-bit AV1.</flag>
+		<flag name="asm">Enable custom x86 assembly for faster decoding.</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://code.videolan.org/videolan/dav1d/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
