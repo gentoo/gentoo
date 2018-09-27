@@ -231,6 +231,10 @@ tc-detect-is-softfloat() {
 	[[ $(tc-getTARGET_CPP) == "gcc -E" ]] && return 1
 
 	case ${CTARGET:-${CHOST}} in
+		# Avoid autodetection for bare-metal targets. bug #666896
+		*-newlib|*-elf|*-eabi)
+			return 1 ;;
+
 		# arm-unknown-linux-gnueabi is ambiguous. We used to treat it as
 		# hardfloat but we now treat it as softfloat like most everyone
 		# else. Check existing toolchains to respect existing systems.
@@ -268,6 +272,9 @@ tc-tuple-is-softfloat() {
 		*-softfp-*)
 			echo "softfp" ;;
 		arm*-hardfloat-*|arm*eabihf)
+			echo "no" ;;
+		# bare-metal targets have their defaults. bug #666896
+		*-newlib|*-elf|*-eabi)
 			echo "no" ;;
 		arm*)
 			echo "yes" ;;

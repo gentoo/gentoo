@@ -1,0 +1,70 @@
+https://github.com/erikrose/blessings/pull/137
+
+Fixes: https://bugs.gentoo.org/654316
+
+From 5fefc65c306cf9ec492e7b422d6bb4842385afbc Mon Sep 17 00:00:00 2001
+From: Jay Kamat <jaygkamat@gmail.com>
+Date: Fri, 24 Aug 2018 11:11:57 -0700
+Subject: [PATCH 1/2] Fix error when TERM is unset or improperly set
+
+---
+ blessings/__init__.py | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/blessings/__init__.py b/blessings/__init__.py
+index 98b75c3..3872b5f 100644
+--- a/third_party/python/blessings/blessings/__init__.py
++++ b/third_party/python/blessings/blessings/__init__.py
+@@ -94,8 +94,13 @@ def __init__(self, kind=None, stream=None, force_styling=False):
+             # init sequences to the stream if it has a file descriptor, and
+             # send them to stdout as a fallback, since they have to go
+             # somewhere.
+-            setupterm(kind or environ.get('TERM', 'unknown'),
+-                      self._init_descriptor)
++            try:
++                setupterm(kind or environ.get('TERM', 'dumb') or 'dumb',
++                          self._init_descriptor)
++            except:
++                # There was an error setting up the terminal, either curses is
++                # not supported or TERM is incorrectly set. Fall back to dumb.
++                self._does_styling = False
+ 
+         self.stream = stream
+ 
+
+From d885df78c6f931abf3259343aaaa897e16c8cba1 Mon Sep 17 00:00:00 2001
+From: Jay Kamat <jaygkamat@gmail.com>
+Date: Sat, 1 Sep 2018 13:20:32 -0700
+Subject: [PATCH 2/2] Explicitly catch curses.error
+
+---
+ blessings/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/blessings/__init__.py b/blessings/__init__.py
+index 3872b5f..fdceb09 100644
+--- a/third_party/python/blessings/blessings/__init__.py
++++ b/third_party/python/blessings/blessings/__init__.py
+@@ -97,7 +97,7 @@ def __init__(self, kind=None, stream=None, force_styling=False):
+             try:
+                 setupterm(kind or environ.get('TERM', 'dumb'),
+                           self._init_descriptor)
+-            except:
++            except curses.error:
+                 # There was an error setting up the terminal, either curses is
+                 # not supported or TERM is incorrectly set. Fall back to dumb.
+                 self._does_styling = False
+
+
+--- a/python/mach/mach/logging.py
++++ b/python/mach/mach/logging.py
+@@ -93,7 +93,7 @@
+ 
+     def set_terminal(self, terminal):
+         self.terminal = terminal
+-        self._sgr0 = blessings.tigetstr('sgr0') or '' if terminal and blessings else ''
++        self._sgr0 = terminal.normal if terminal and blessings else ''
+ 
+     def format(self, record):
+         f = record.msg.format(**record.params)
+ 
