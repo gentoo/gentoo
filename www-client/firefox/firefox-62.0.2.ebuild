@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -109,6 +109,7 @@ DEPEND="${CDEPEND}
 	>=sys-devel/llvm-4.0.1
 	>=sys-devel/clang-4.0.1
 	clang? (
+		>=sys-devel/llvm-4.0.1[gold]
 		>=sys-devel/lld-4.0.1
 	)
 	pulseaudio? ( media-sound/pulseaudio )
@@ -322,8 +323,12 @@ src_configure() {
 	# Modifications to better support ARM, bug 553364
 	if use neon ; then
 		mozconfig_annotate '' --with-fpu=neon
-		mozconfig_annotate '' --with-thumb=yes
-		mozconfig_annotate '' --with-thumb-interwork=no
+
+		if ! tc-is-clang ; then
+			# thumb options aren't supported when using clang, bug 666966
+			mozconfig_annotate '' --with-thumb=yes
+			mozconfig_annotate '' --with-thumb-interwork=no
+		fi
 	fi
 	if [[ ${CHOST} == armv* ]] ; then
 		mozconfig_annotate '' --with-float-abi=hard
