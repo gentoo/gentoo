@@ -8,8 +8,9 @@ sys-devel/llvm exegesis
 
 # Virgil Dupras <vdupras@gentoo.org> (06 Sep 2018)
 # sci-electronics/ngspice not yet keyworded, bug #665416
+# sci-libs/opencascade not yet keyworded
 # sci-libs/oce not yet keyworded
-sci-electronics/kicad oce ngspice
+sci-electronics/kicad occ oce ngspice
 
 # Ulrich Müller <ulm@gentoo.org> (02 Sep 2018)
 # =media-gfx/imagemagick-6* not keyworded
