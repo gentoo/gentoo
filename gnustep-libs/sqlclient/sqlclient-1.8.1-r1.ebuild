@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SLOT="0"
 IUSE="java mysql postgres +sqlite"
 
 RDEPEND=">=gnustep-libs/performance-0.3.2
-	mysql? ( virtual/mysql:= )
+	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
 	sqlite? ( >=dev-db/sqlite-3 )"
 DEPEND="${RDEPEND}"
