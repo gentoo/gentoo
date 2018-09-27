@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,10 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
 	static? ( ${LIB_DEPEND} )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-enable_tiny_build_fix.patch"
+)
 
 src_prepare() {
 	default
