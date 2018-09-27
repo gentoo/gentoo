@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,7 +33,7 @@ inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils llvm \
 		mozconfig-v6.60 pax-utils xdg-utils autotools mozlinguas-v2
 
 DESCRIPTION="Firefox Web Browser"
-HOMEPAGE="http://www.mozilla.com/firefox"
+HOMEPAGE="https://www.mozilla.com/firefox"
 
 KEYWORDS="~amd64 ~x86"
 
@@ -42,7 +42,6 @@ LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="bindist eme-free geckodriver +gmp-autoupdate hardened hwaccel jack +screenshot selinux test"
 RESTRICT="!bindist? ( bindist )"
 
-SRCHASH=239e434d6d2b8e1e2b697c3416d1e96d48fe98e5
 SDIR="release"
 [[ ${PV} = *_beta* ]] && SDIR="beta"
 
@@ -222,9 +221,6 @@ src_configure() {
 		append-ldflags "-Wl,-z,relro,-z,now"
 		mozconfig_use_enable hardened hardening
 	fi
-
-	# Only available on mozilla-overlay for experimentation -- Removed in Gentoo repo per bug 571180
-	#use egl && mozconfig_annotate 'Enable EGL as GL provider' --with-gl-provider=EGL
 
 	# Disable built-in ccache support to avoid sandbox violation, #665420
 	# Use FEATURES=ccache instead!
