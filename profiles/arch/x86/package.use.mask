@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Bernard Cafarelli <voyageur@gentoo.org> (27 Sep 2018)
+# media-libs/qtav not keyworded
+media-video/orion qtav
+
 # Virgil Dupras <vdupras@gentoo.org> (06 Sep 2018)
 # sci-libs/oce not yet keyworded
 sci-electronics/kicad oce
