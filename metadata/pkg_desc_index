@@ -10259,7 +10259,7 @@ sys-power/apcupsd 3.14.13 3.14.14-r1: APC UPS daemon with integrated tcp/ip remo
 sys-power/bbswitch 0.8 0.8-r1: Toggle discrete NVIDIA Optimus graphics card
 sys-power/cpupower 3.18 4.9.0-r1: Shows and sets processor power related values
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
-sys-power/iasl 20140828 20160729: Intel ACPI Source Language (ASL) compiler
+sys-power/iasl 20160729: Intel ACPI Source Language (ASL) compiler
 sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
 sys-power/nut 2.6.5-r1 2.7.3 2.7.4-r1: Network-UPS Tools
 sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
