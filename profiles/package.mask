@@ -162,13 +162,6 @@ sys-boot/winusb
 # (bugs #321017, #581284, #588692, #602786, #649006, #654140)
 www-plugins/gnash
 
-# Virgil Dupras <vdupras@gentoo.org> (27 Aug 2018)
-# Unmaintained for a long time, outdated, no revdep. Removal in 30 days.
-# Bug #626550
-dev-python/scrapy
-dev-python/w3lib
-dev-python/queuelib
-
 # James Le Cuirot <chewi@gentoo.org> (26 Aug 2018)
 # Unused Java virtual from the days when the JDK was proprietary. Now
 # we assume that com.sun is always available. Removal in 30 days.
