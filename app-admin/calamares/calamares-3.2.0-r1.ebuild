@@ -53,6 +53,7 @@ RDEPEND="${DEPEND}
 	|| ( sys-boot/grub:2 sys-boot/systemd-boot )
 	sys-boot/os-prober
 	sys-fs/squashfs-tools
+	sys-libs/timezone-data
 	virtual/udev
 	networkmanager? ( net-misc/networkmanager )
 	upower? ( sys-power/upower )

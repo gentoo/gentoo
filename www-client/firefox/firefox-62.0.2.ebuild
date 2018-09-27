@@ -330,7 +330,7 @@ src_configure() {
 			mozconfig_annotate '' --with-thumb-interwork=no
 		fi
 	fi
-	if [[ ${CHOST} == armv* ]] ; then
+	if [[ ${CHOST} == armv*h* ]] ; then
 		mozconfig_annotate '' --with-float-abi=hard
 		if ! use system-libvpx ; then
 			sed -i -e "s|softfp|hard|" \
