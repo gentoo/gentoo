@@ -5613,7 +5613,7 @@ dev-python/testrepository 0.0.18-r1 0.0.20: A repository of test results
 dev-python/testresources 0.2.7-r2 2.0.1: A pyunit extension for managing expensive test resources
 dev-python/testscenarios 0.5.0: A pyunit extension for dependency injection
 dev-python/testtools 2.3.0: Extensions to the Python standard library unit testing framework
-dev-python/texttable 0.8.3 0.9.1: module for creating simple ASCII tables
+dev-python/texttable 0.9.1: module for creating simple ASCII tables
 dev-python/theano 0.7.0: Define and optimize multi-dimensional arrays mathematical expressions
 dev-python/thunarx-python 0.3.0-r2: Python bindings for the Thunar file manager
 dev-python/timelib 0.2.4-r1: parse english textual date descriptions
