@@ -212,15 +212,8 @@ src_prepare() {
 		-i "${S}"/comm/mail/installer/Makefile.in || die
 
 	# Apply our Thunderbird patchset
-	pushd "${S}"/comm &>/dev/null || doe
+	pushd "${S}"/comm &>/dev/null || die
 	eapply "${WORKDIR}"/thunderbird
-
-	# simulate old directory structure just in case it helps eapply_user
-	ln -s .. mozilla || die
-	# Allow user to apply any additional patches without modifing ebuild
-	eapply_user
-	# remove the symlink
-	rm -f mozilla
 
 	# Confirm the version of lightning being grabbed for langpacks is the same
 	# as that used in thunderbird
@@ -233,8 +226,15 @@ src_prepare() {
 
 	popd &>/dev/null || die
 
+	# Allow user to apply any additional patches without modifing ebuild
+	eapply_user
+
+	# Autotools configure is now called old-configure.in
+	# This works because there is still a configure.in that happens to be for the
+	# shell wrapper configure script
 	eautoreconf old-configure.in
-	# Ensure we run eautoreconf in spidermonkey to regenerate configure
+
+	# Must run autoconf in js/src
 	cd "${S}"/js/src || die
 	eautoconf old-configure.in
 }
