@@ -294,7 +294,7 @@ src_install() {
 
 	cd "${S}"
 	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX}/bin/bash}" MOZ_NOSPAM=1 \
-	DESTDIR="${D}" ./mach install
+	DESTDIR="${D}" ./mach install || die
 
 	if use geckodriver ; then
 		cp "${BUILD_OBJ_DIR}"/dist/bin/geckodriver "${ED%/}"${MOZILLA_FIVE_HOME} || die
