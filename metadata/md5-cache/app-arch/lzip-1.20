@@ -6,5 +6,5 @@ KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ppc ppc64 ~s390 ~sh sparc x86 ~a
 LICENSE=GPL-2+
 SLOT=0
 SRC_URI=https://download.savannah.gnu.org/releases-noredirect/lzip/lzip-1.20.tar.gz https://download.savannah.gnu.org/releases/lzip/lzip-1.20.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=868d29c0edd9245fbcda6e28137eec37

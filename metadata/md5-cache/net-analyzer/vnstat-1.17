@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=gd? ( media-libs/gd[png] ) selinux? ( sec-policy/selinux-vnstatd )
 SLOT=0
 SRC_URI=https://humdi.net/vnstat/vnstat-1.17.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	user	8bc2845510e2109af75e3eeac607ec81
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81
 _md5_=b9bb41669344d610129220c3d9bd7257

@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( php_targets_php5-6 )
 RESTRICT=test
 SLOT=0
 SRC_URI=http://xcache.lighttpd.net/pub/Releases/3.2.0/xcache-3.2.0.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	php-ext-source-r3	378dc4ea30db21411f4d1a32d21a6302	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	php-ext-source-r3	378dc4ea30db21411f4d1a32d21a6302	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=468831722348dd23d5c131e42a3b1418

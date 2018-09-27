@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=sys-devel/gcc:=[cxx] migration-tool? ( dev-db/sqlite:3 ) !libressl? ( dev-libs/openssl:=[bindist=] ) libressl? ( dev-libs/libressl ) !=dev-libs/softhsm-2.0.0:0
 SLOT=2
 SRC_URI=https://www.opendnssec.org/files/source/softhsm-2.4.0.tar.gz
-_eclasses_=ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=c34c0f70caad77e7084765bf5dc56758

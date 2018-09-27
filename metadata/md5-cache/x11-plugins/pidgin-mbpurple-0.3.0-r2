@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=net-im/pidgin twitgin? ( net-im/pidgin[gtk] )
 SLOT=0
 SRC_URI=https://microblog-purple.googlecode.com/files/mbpurple-0.3.0.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=abe405bfd9cbcb65c218c9a6ec780c8c

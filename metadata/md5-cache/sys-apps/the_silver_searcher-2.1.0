@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-libs/libpcre lzma? ( app-arch/xz-utils ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=https://github.com/ggreer/the_silver_searcher/archive/2.1.0.tar.gz -> the_silver_searcher-2.1.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=aa571dcd6a1b7875fe16ba30317f5424

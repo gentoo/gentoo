@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND==sci-libs/fftw-3* >=media-libs/libxtract-0.6.6 media-libs/vamp-plugin-sdk
 SLOT=0
 SRC_URI=http://code.soundsoftware.ac.uk/attachments/download/618/vamp-libxtract-plugins-0.6.6.20121204.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=9be4a9d9216f25fe9b0e28911c6781b4

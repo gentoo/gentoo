@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-libs/glib:2 sys-fs/fuse:0
 SLOT=0
 SRC_URI=https://github.com/lxc/lxcfs/archive/lxcfs-3.0.0.tar.gz -> lxcfs-3.0.0.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	vcs-snapshot	b77011b62e2053c646ad720defe6d921	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-snapshot	b77011b62e2053c646ad720defe6d921	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=0c53d5234d70af537fcbc1d8c1f25c2d

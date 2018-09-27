@@ -6,5 +6,5 @@ HOMEPAGE=https://github.com/XVilka/set_opacity
 LICENSE=GPL-2
 RDEPEND=x11-libs/libXdamage x11-libs/libXcomposite x11-libs/libXfixes x11-libs/libXrender
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=6058f146099735aeb6c3383a1b34a850

@@ -9,5 +9,5 @@ LICENSE=GPL-2+ LGPL-2.1
 RDEPEND=>=sci-libs/fftw-3.3.4:3.0= dev-qt/qtmultimedia:5 dev-qt/qtopengl:5 dev-qt/qtsvg:5 dev-qt/qtcore:5 dev-qt/qtgui:5[-gles2] alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) portaudio? ( media-libs/portaudio )
 SLOT=0
 SRC_URI=https://github.com/gillesdegottex/fmit/archive/v1.0.15.tar.gz -> fmit-1.0.15.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=afdbe864c6aa81e9055dfc4e5c01ac0b

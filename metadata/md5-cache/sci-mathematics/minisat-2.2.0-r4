@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=sys-libs/zlib
 SLOT=0
 SRC_URI=http://minisat.se/downloads/minisat-2.2.0.tar.gz doc? ( http://minisat.se/downloads/MiniSat.pdf )
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=19af9292a93ca9655fc444e6041a67bd

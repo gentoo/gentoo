@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 media-libs/libmpdclient
 SLOT=0
 SRC_URI=https://sourceforge.net/code-snapshots/git/b/be/be-mpc/code.git/be-mpc-code-783ea4e61cbfe54250e809498b1496d6cbd5afa1.zip -> bempc-0.11_p20160207.zip
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
 _md5_=90bfafadab45ec3dc72ee4c09dd504ea

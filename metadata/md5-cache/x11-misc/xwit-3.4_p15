@@ -8,5 +8,5 @@ LICENSE=public-domain HPND
 RDEPEND=x11-libs/libX11
 SLOT=0
 SRC_URI=mirror://debian/pool/main/x/xwit/xwit_3.4.orig.tar.gz mirror://debian/pool/main/x/xwit/xwit_3.4-15.debian.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=b1c64af7165fc086ddef0bea10c98501

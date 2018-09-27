@@ -8,5 +8,5 @@ LICENSE=ISC
 RDEPEND=dev-libs/libnl
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/software/network/iw/iw-3.17.tar.xz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=5e1725f485338475868a06a33a440901

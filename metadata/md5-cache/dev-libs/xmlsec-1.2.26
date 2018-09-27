@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/libxml2-2.7.4 >=dev-libs/libxslt-1.0.20 gcrypt? ( >=dev-libs/
 REQUIRED_USE=|| ( gcrypt gnutls nss openssl ) gnutls? ( gcrypt )
 SLOT=0
 SRC_URI=https://www.aleksey.com/xmlsec/download/xmlsec1-1.2.26.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=e15a5fbc2720a97ed13e122ecb0d614d

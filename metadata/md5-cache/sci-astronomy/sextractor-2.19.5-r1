@@ -10,5 +10,5 @@ RDEPEND=!games-misc/sex modelfit? ( sci-libs/atlas[lapack,threads=] sci-libs/fft
 REQUIRED_USE=test? ( modelfit )
 SLOT=0
 SRC_URI=http://www.astromatic.net/download/sextractor/sextractor-2.19.5.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=af6a4f8861cd7455d00e6afa9b17c3ab

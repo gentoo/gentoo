@@ -10,5 +10,5 @@ RDEPEND=bzip2? ( app-arch/bzip2 ) caps? ( sys-libs/libcap ) kerberos? ( virtual/
 REQUIRED_USE=ssl
 SLOT=0
 SRC_URI=https://dovecot.org/releases/2.2/dovecot-2.2.34.tar.gz sieve? ( https://pigeonhole.dovecot.org/releases/2.2/dovecot-2.2-pigeonhole-0.4.21.tar.gz ) managesieve? ( https://pigeonhole.dovecot.org/releases/2.2/dovecot-2.2-pigeonhole-0.4.21.tar.gz )
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	ssl-cert	a1a4daed6b2479901759d6fe367c4c29	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	user	8bc2845510e2109af75e3eeac607ec81	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	ssl-cert	a1a4daed6b2479901759d6fe367c4c29	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=085ee19de68a66d7d2ce30efe8c40c7b

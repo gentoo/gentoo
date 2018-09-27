@@ -7,5 +7,5 @@ LICENSE=mpeg2enc
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=http://www.mpeg.org/pub_ftp/mpeg/mssg/mpeg2vidcodec_v12.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=5cbc4d7ce862ea624c858b3385f0b784

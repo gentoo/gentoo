@@ -6,5 +6,5 @@ HOMEPAGE=https://github.com/seanpringle/simpleswitcher
 LICENSE=MIT
 RDEPEND=x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXres
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=157935c8f134930ee560d8060539a1e0

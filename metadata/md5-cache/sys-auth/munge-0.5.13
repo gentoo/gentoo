@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=app-arch/bzip2 sys-libs/zlib gcrypt? ( dev-libs/libgcrypt:0 ) !gcrypt? ( dev-libs/openssl:0 )
 SLOT=0
 SRC_URI=https://github.com/dun/munge/releases/download/munge-0.5.13/munge-0.5.13.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	user	8bc2845510e2109af75e3eeac607ec81
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81
 _md5_=57f737727cac5a8f0bcaabeb23c5b559

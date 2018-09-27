@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=gist? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 ) gmp? ( dev-libs/gmp:0 dev-libs/mpfr:0 )
 SLOT=0
 SRC_URI=http://www.gecode.org/download/gecode-4.4.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=79dc0e30d5baece9e85ed77553e4b236

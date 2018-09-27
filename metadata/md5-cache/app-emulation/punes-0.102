@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 cg? ( media-gfx/nvidia-cg-toolkit ) media-libs/alsa-lib media-libs/libsdl[opengl] virtual/opengl
 SLOT=0
 SRC_URI=https://github.com/punesemu/puNES/archive/v0.102.tar.gz -> punes-0.102.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
 _md5_=c388a6be3c9d2153f7eef6e10ba1db1f

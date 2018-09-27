@@ -10,5 +10,5 @@ RDEPEND=dev-libs/libpcre zlib? ( sys-libs/zlib ) extended-host-patterns? ( dev-l
 REQUIRED_USE=compression? ( zlib ) toggle? ( editor )
 SLOT=0
 SRC_URI=mirror://sourceforge/ijbswa/privoxy-3.0.26-stable-src.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	user	8bc2845510e2109af75e3eeac607ec81
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81
 _md5_=a2804386d054e6f72b52565b5bb6213f

@@ -8,5 +8,5 @@ LICENSE=GPL-2
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=http://www.jwhitham.org/20kly/lightyears-1.4.tar.bz2
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	97f470f374f2e94ccab04a2fb21d811e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=3a7ba127431dfbda4252b303d54a45f8

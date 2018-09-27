@@ -6,5 +6,5 @@ HOMEPAGE=https://github.com/libretro/libretro-fceumm
 IUSE=debug
 LICENSE=GPL-2+
 SLOT=0
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libretro-core	a24db3f198650e3d23b1fb9d8114df40	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libretro-core	a24db3f198650e3d23b1fb9d8114df40	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=ffc8e5e57460a2faf7fe37cb34de1fbc

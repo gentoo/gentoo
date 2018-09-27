@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-lang/tk:0 dev-tcltk/tcllib
 SLOT=0
 SRC_URI=http://core.tcl.tk/tklib/raw/tklib-0.6.tar.bz2?name=6a397dec6188148cf6a6fe290cf2bd92a9190c42 -> tklib-0.6.tar.bz2
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=9de2e5fe525296a6e368eda89335160e

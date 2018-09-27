@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-cpp/gtkglextmm-1.2 dev-cpp/gtkmm:2.4 dev-cpp/libxmlpp dev-libs/libzip virtual/opengl
 SLOT=0
 SRC_URI=https://github.com/timschmidt/repsnapper/archive/2.3.2a3.tar.gz -> repsnapper-2.3.2a3.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=80ed89472a95a4ed82c0638f350a57c8

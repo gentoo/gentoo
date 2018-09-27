@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/libgcrypt:0 dev-libs/libgpg-error nistbeacon? ( net-misc/curl[ssl] dev-libs/libxml2:2= dev-libs/openssl:0= ) sys-fs/sysfsutils selinux? ( sec-policy/selinux-rngd )
 SLOT=0
 SRC_URI=https://github.com/nhorman/rng-tools/archive/v6.1.tar.gz -> rng-tools-6.1.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=af3a4b6094f9026fc0e22aeabcbfb401

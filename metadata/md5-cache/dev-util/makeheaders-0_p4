@@ -6,5 +6,5 @@ KEYWORDS=amd64 ~ppc ~sparc x86
 LICENSE=BSD-2
 SLOT=0
 SRC_URI=http://www.hwaci.com/sw/mkhdr/makeheaders.c -> makeheaders-0_p4.c http://www.hwaci.com/sw/mkhdr/makeheaders.html -> makeheaders-0_p4.html
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=2f7cf0c64c8492ab06e2b6533c6b54ca

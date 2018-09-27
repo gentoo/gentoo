@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=!sys-cluster/dlm-headers !sys-cluster/dlm-kernel !sys-cluster/dlm-lib
 SLOT=0
 SRC_URI=https://fedorahosted.org/releases/c/l/cluster/cluster-3.2.0.tar.gz
-_eclasses_=epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=6e18a9e0bab9b0746131fa7cbad1e0ea

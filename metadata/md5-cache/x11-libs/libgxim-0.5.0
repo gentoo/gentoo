@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-libs/dbus-glib dev-libs/glib:2 sys-apps/dbus virtual/libintl x11-libs/gtk+:2
 SLOT=0
 SRC_URI=https://bitbucket.org/tagoh/libgxim/downloads/libgxim-0.5.0.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	a43d6cd7f05b4d013e7e40104ddfd3c7	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	a43d6cd7f05b4d013e7e40104ddfd3c7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=9e44789f61f03e4d4c93a6359a064f6e

@@ -10,5 +10,5 @@ RDEPEND=net-libs/libtirpc net-libs/libnsl:0=
 RESTRICT=test
 SLOT=0
 SRC_URI=http://www.linux-nis.org/download/yp-tools/yp-tools-4.2.2.tar.bz2
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=0e5db54b861a54ab3f713f31c40f9298

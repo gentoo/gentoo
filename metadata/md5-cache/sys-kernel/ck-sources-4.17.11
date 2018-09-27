@@ -10,5 +10,5 @@ RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-
 RESTRICT=binchecks strip
 SLOT=4.17.11
 SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.17.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.17-gnu/deblob-4.17 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.17-gnu/deblob-check -> deblob-check-4.17 ) mirror://gentoo/genpatches-4.17-12.base.tar.xz mirror://gentoo/genpatches-4.17-12.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.17-12.experimental.tar.xz ) http://ck.kolivas.org/patches/4.0/4.17/4.17-ck1/patch-4.17-ck1.xz
-_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	43ddf5aaffa7a8d0482df54d25a66a1f	kernel-2	bc2f2b5caeb6f89c673a8a4dced6511e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	43ddf5aaffa7a8d0482df54d25a66a1f	kernel-2	bc2f2b5caeb6f89c673a8a4dced6511e	multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=553ebc779b59b8d3ded2653ecb83d1f4

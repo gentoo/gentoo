@@ -8,5 +8,5 @@ LICENSE=GPL-2 LGPL-2
 RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXaw x11-libs/libXmu x11-libs/libXt
 SLOT=0
 SRC_URI=http://leb.net/offix/dnd.1.1.tgz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=df11effa65b104df87083a5c736b4cf7

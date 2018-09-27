@@ -7,5 +7,5 @@ KEYWORDS=~alpha ~amd64 ~hppa ~mips ~ppc ~sparc ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://huizen.dds.nl/~frodol/psiconv/psiconv-0.8.3.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=0b0b8c87768a003448617090a5345a6b

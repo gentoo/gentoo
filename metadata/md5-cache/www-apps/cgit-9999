@@ -7,5 +7,5 @@ IUSE=doc +highlight +lua +jit vhosts
 LICENSE=GPL-2
 RDEPEND=dev-vcs/git sys-libs/zlib dev-libs/openssl:0 virtual/httpd-cgi highlight? ( || ( dev-python/pygments app-text/highlight ) ) lua? ( jit? ( dev-lang/luajit ) !jit? ( dev-lang/lua ) ) >=app-admin/webapp-config-1.50.15
 SLOT=0
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	git-2	249c1a0962573f4ce2c28f0d5b6b35d4	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	webapp	6ae2395d7f341093c36057cb4f69101a
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	git-2	249c1a0962573f4ce2c28f0d5b6b35d4	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	webapp	6ae2395d7f341093c36057cb4f69101a
 _md5_=f886ce594672e9701ae2e4c5fae5c018

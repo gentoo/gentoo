@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=dev-libs/wayland
 SLOT=0
 SRC_URI=https://wayland.freedesktop.org/releases/wayland-protocols-1.14.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=45da5260d6700765c5f0b9da819d2f6c

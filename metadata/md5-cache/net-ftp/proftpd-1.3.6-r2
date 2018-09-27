@@ -11,5 +11,5 @@ REQUIRED_USE=ban? ( ctrls ) msg? ( ctrls ) sftp? ( ssl ) shaper? ( ctrls )
 RESTRICT=test
 SLOT=0
 SRC_URI=ftp://ftp.proftpd.org/distrib/source/proftpd-1.3.6.tar.gz case? ( http://www.castaglia.org/proftpd/modules/proftpd-mod-case-0.7.tar.gz ) clamav? ( https://secure.thrallingpenguin.com/redmine/attachments/download/1/mod_clamav-0.11rc.tar.gz ) diskuse? ( http://www.castaglia.org/proftpd/modules/proftpd-mod-diskuse-0.9.tar.gz ) kerberos? ( mirror://sourceforge/gssmod/mod_gss-1.3.6.tar.gz ) msg? ( http://www.castaglia.org/proftpd/modules/proftpd-mod-msg-0.4.1.tar.gz ) vroot? ( https://github.com/Castaglia/proftpd-mod_vroot/archive/v0.9.4.tar.gz -> mod_vroot-0.9.4.tar.gz )
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	tmpfiles	c8f9ea76ade103890e42d0f339afb64c	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	tmpfiles	c8f9ea76ade103890e42d0f339afb64c	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=4a6fba75cb6bd2a79203fe5e4b155bc6

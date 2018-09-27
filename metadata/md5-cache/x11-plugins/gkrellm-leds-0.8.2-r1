@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=app-admin/gkrellm:2[X] x11-libs/libXtst
 SLOT=2
 SRC_URI=http://heim.ifi.uio.no/~oyvinha/e107_files/downloads/gkleds-0.8.2.tar.gz
-_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=956dcb5def7681f3e1cc96c35923f151

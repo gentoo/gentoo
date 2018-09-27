@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/iniparser:0
 SLOT=0
 SRC_URI=mirror://gentoo/portage-utils-0.64.tar.xz https://dev.gentoo.org/~vapier/dist/portage-utils-0.64.tar.xz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=8258c0ecdb191eca2114a5b0b1cc4961

@@ -9,5 +9,5 @@ LICENSE=ZLIB
 RESTRICT=test
 SLOT=0
 SRC_URI=http://www.gentoo.com/di/di-4.47.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=42e4cce429c8b484cd67d3c9ad6bb9f8

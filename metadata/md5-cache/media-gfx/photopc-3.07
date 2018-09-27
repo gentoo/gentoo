@@ -6,5 +6,5 @@ KEYWORDS=amd64 ppc x86
 LICENSE=photopc
 SLOT=0
 SRC_URI=mirror://sourceforge/photopc/photopc-3.07.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=bbcb04d111da55c1def113e9d514d6c2

@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=media-libs/libpng media-libs/tiff media-libs/lcms:2 x11-libs/gtk+:3 media-gfx/ufraw[gtk] media-gfx/dcraw media-libs/exiftool x11-misc/xdg-utils
 SLOT=0
 SRC_URI=http://www.kornelix.com/uploads/1/3/0/3/13035936/fotoxx-15.05.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
 _md5_=ac1a1ba81af56e9c60b7fc57c7d57f89

@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libXdamage x11-libs/libXcomposite x11-libs/libXfixes x11-libs/libXrender
 SLOT=0
 SRC_URI=https://github.com/XVilka/set_opacity/archive-tarball/1.0 -> set_opacity-1.0.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=efb926ba924831b815f54731baf0b2bf

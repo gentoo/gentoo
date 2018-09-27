@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=public-domain
 SLOT=0
 SRC_URI=mirror://gentoo/rnaview-20040713.tar.bz2
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=788c156d45287bef4f6aa876055bde4c

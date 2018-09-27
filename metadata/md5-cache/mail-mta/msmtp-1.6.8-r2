@@ -11,5 +11,5 @@ RDEPEND=gnome-keyring? ( app-crypt/libsecret ) idn? ( net-dns/libidn:= ) nls? ( 
 REQUIRED_USE=gnutls? ( ssl )
 SLOT=0
 SRC_URI=https://marlam.de/msmtp/releases/msmtp-1.6.8.tar.xz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=b16bb0441ebb190d61eed36440fa2a9d

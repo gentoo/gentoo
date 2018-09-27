@@ -10,5 +10,5 @@ PDEPEND=!minimal? ( >=dev-perl/Net-DNS-SEC-1.10.0 )
 RDEPEND=>=dev-perl/Digest-HMAC-1.30.0 >=virtual/perl-Digest-MD5-2.130.0 >=virtual/perl-Digest-SHA-5.230.0 >=virtual/perl-File-Spec-0.860.0 >=virtual/perl-MIME-Base64-2.110.0 >=virtual/perl-Time-Local-1.190.0 ipv6? ( dev-perl/IO-Socket-INET6 ) !minimal? ( >=dev-perl/Digest-BubbleBabble-0.10.0 >=dev-perl/Digest-GOST-0.60.0 >=virtual/perl-IO-Socket-IP-0.320.0 >=dev-perl/IO-Socket-INET6-2.510.0 >=dev-perl/Net-LibIDN-0.120.0 >=virtual/perl-Scalar-List-Utils-1.250.0 ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NL/NLNETLABS/Net-DNS-1.07.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=caf1874afb0b9c1013ee38f4451ce09a

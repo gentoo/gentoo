@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=dev-libs/libnl:3 sys-libs/ncurses:0= caps? ( sys-libs/libcap )
 SLOT=0
 SRC_URI=https://github.com/uoaerg/wavemon/archive/v0.8.0.tar.gz -> wavemon-0.8.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=0e1c90bee31129e2d4814807418e46a1

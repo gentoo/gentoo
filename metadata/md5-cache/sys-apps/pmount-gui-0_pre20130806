@@ -8,5 +8,5 @@ LICENSE=BSD-2
 RDEPEND=x11-libs/gtk+:2 sys-apps/pmount virtual/udev
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ssuominen/pmount-gui-0_pre20130806.tar.xz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=87a6648e3c5de3361b31180dd132237f

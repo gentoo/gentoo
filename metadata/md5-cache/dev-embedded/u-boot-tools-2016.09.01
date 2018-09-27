@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=ftp://ftp.denx.de/pub/u-boot/u-boot-2016.09.01.tar.bz2
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=81b328f312eca7645ab5e0fc4431684b

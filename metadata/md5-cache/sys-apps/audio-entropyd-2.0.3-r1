@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/alsa-lib:= media-sound/alsa-utils selinux? ( sec-policy/selinux-entropyd )
 SLOT=0
 SRC_URI=http://www.vanheusden.com/aed/audio-entropyd-2.0.3.tgz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=46cd76d062b8e0d7469d7fcf7883eb8b

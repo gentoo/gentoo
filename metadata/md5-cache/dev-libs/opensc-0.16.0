@@ -10,5 +10,5 @@ RDEPEND=zlib? ( sys-libs/zlib ) readline? ( sys-libs/readline:0= ) ssl? ( !libre
 REQUIRED_USE=pcsc-lite? ( !openct !ctapi ) openct? ( !pcsc-lite !ctapi ) ctapi? ( !pcsc-lite !openct ) || ( pcsc-lite openct ctapi )
 SLOT=0
 SRC_URI=https://github.com/OpenSC/OpenSC/releases/download/0.16.0/opensc-0.16.0.tar.gz
-_eclasses_=ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=14baad26db4d9a978148da1d3b46693a

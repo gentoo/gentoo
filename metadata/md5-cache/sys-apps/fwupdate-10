@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-libs/popt >=sys-libs/efivar-32-r1 >=sys-libs/libsmbios-2.3.3
 SLOT=0
 SRC_URI=https://github.com/rhinstaller/fwupdate/archive/10.tar.gz -> fwupdate-10.tar.gz
-_eclasses_=mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=2b07c27fc0a06075679fcab4ee6bb668

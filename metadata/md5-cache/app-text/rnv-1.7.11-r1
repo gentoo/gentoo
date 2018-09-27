@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=dev-libs/expat dev-scheme/scm[libscm]
 SLOT=0
 SRC_URI=mirror://sourceforge/rnv/rnv-1.7.11.tar.xz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	unpacker	ee2f5086cd7e7b747b061f58db14d89e
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	unpacker	ee2f5086cd7e7b747b061f58db14d89e
 _md5_=7300efb2c06eb0abeecce9f659cad466

@@ -6,5 +6,5 @@ KEYWORDS=alpha amd64 arm ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos 
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/geekcode/geekcode-1.7.3.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=426db5587070bcd1bd36d0e90bcca6fb

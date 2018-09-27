@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=>=sys-apps/systemd-207 !sys-fs/eudev !sys-fs/udev
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~floppym/dist/gentoo-systemd-integration-7.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=2d6c47edb92d6d4972763e6649bd7560

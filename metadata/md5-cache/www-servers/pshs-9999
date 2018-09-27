@@ -7,5 +7,5 @@ IUSE=libressl +magic +netlink qrcode ssl upnp
 LICENSE=BSD
 RDEPEND=>=dev-libs/libevent-2:0= magic? ( sys-apps/file:0= ) qrcode? ( media-gfx/qrencode:0= ) ssl? ( >=dev-libs/libevent-2.1:0=[ssl] !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) upnp? ( net-libs/miniupnpc:0= )
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=bd8cb7823e9bbebe1f5ac6e751d5418a

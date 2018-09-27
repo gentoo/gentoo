@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND==sys-cluster/corosync-1.4.7 dev-libs/libxml2 !sys-cluster/ccs
 SLOT=0
 SRC_URI=https://fedorahosted.org/releases/c/l/cluster/cluster-3.2.0.tar.gz
-_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	43ddf5aaffa7a8d0482df54d25a66a1f	linux-info	915cae3d7d636732918d18827fb1c226	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	43ddf5aaffa7a8d0482df54d25a66a1f	linux-info	915cae3d7d636732918d18827fb1c226	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=6dc102d9dbedcef0378f92a20931df78

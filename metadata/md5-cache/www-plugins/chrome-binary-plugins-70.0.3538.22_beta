@@ -9,5 +9,5 @@ RDEPEND=widevine? ( dev-libs/glib:2 dev-libs/nspr dev-libs/nss !<www-client/chro
 RESTRICT=bindist mirror strip
 SLOT=beta
 SRC_URI=https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_70.0.3538.22-1_amd64.deb
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	unpacker	ee2f5086cd7e7b747b061f58db14d89e
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	unpacker	ee2f5086cd7e7b747b061f58db14d89e
 _md5_=af88fcb905f586fa4bf5adc077702ee1

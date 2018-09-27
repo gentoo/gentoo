@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 SLOT=0
 SRC_URI=https://github.com/libretro/libretro-fceumm/archive/67c072617b700560acbfea54f2779cb290dbf827.tar.gz -> libretro-fceumm-0.0.1_pre20180723.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libretro-core	a24db3f198650e3d23b1fb9d8114df40	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libretro-core	a24db3f198650e3d23b1fb9d8114df40	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=667a9b4787f67b3656ffb8b617de493c

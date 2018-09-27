@@ -9,5 +9,5 @@ LICENSE=|| ( LGPL-2.1 GPL-3 )
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtlockedfile[qt5(+)] dev-qt/qtnetwork:5 X? ( dev-qt/qtgui:5 dev-qt/qtwidgets:5 )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~pesa/distfiles/qt-solutions-20171024.tar.xz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=4883a3321f9434d56efcc718fea422c4

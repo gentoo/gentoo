@@ -7,5 +7,5 @@ KEYWORDS=alpha amd64 ppc ppc64 sparc x86
 LICENSE=freedist
 SLOT=0
 SRC_URI=http://hp.vector.co.jp/authors/VA000501/qkcc100.zip
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=9de08a665a33c16787f64b2cd03e808e

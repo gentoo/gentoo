@@ -10,5 +10,5 @@ PDEPEND=emacs? ( app-emacs/eselect-mode ) vim-syntax? ( app-vim/eselect-syntax )
 RDEPEND=sys-apps/sed || ( sys-apps/coreutils sys-freebsd/freebsd-bin app-misc/realpath ) sys-apps/file sys-libs/ncurses:0
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/eselect/eselect-1.4.13.tar.xz
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=0b6fc75f5e5afab1affca1677a279054

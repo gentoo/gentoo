@@ -10,5 +10,5 @@ RDEPEND=bzip2? ( app-arch/bzip2 ) fbcon? ( media-libs/libpng:0= ) gpm? ( sys-lib
 REQUIRED_USE=!livecd? ( fbcon? ( gpm ) ) svga? ( suid )
 SLOT=2
 SRC_URI=http://links.twibright.com/download/links-2.17.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512	xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
 _md5_=1554ec6e483e25d32dbeff477f96b49d

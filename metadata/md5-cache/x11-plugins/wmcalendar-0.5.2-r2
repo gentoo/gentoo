@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/libical x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
 SLOT=0
 SRC_URI=mirror://sourceforge/wmcalendar/wmcalendar-0.5.2.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=ca657e51ab9781eca03fd9782613f07a
