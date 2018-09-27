@@ -351,7 +351,7 @@ multilib_env() {
 				;;
 			esac
 		;;
-		mips64*)
+		mips64*|mipsisa64*)
 			export CFLAGS_o32=${CFLAGS_o32--mabi=32}
 			export CHOST_o32=${CTARGET/mips64/mips}
 			export CTARGET_o32=${CHOST_o32}
