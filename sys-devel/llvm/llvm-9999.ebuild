@@ -282,7 +282,7 @@ multilib_src_install_all() {
 
 pkg_postinst() {
 	elog "You can find additional opt-viewer utility scripts in:"
-	elog "  ${EROOT}/usr/lib/llvm/${SLOT}/share/opt-viewer"
+	elog "  ${EROOT%/}/usr/lib/llvm/${SLOT}/share/opt-viewer"
 	elog "To use these scripts, you will need Python 2.7 along with the following"
 	elog "packages:"
 	elog "  dev-python/pygments (for opt-viewer)"
