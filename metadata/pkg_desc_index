@@ -891,7 +891,7 @@ app-i18n/man-pages-it 2.80-r1: A somewhat comprehensive collection of Italian Li
 app-i18n/man-pages-ja 20171215: A collection of manual pages translated into Japanese
 app-i18n/man-pages-nl 0.13.3: A somewhat comprehensive collection of Dutch Linux man pages
 app-i18n/man-pages-pl 0_pre20070628-r2: A collection of Polish translations of Linux manual pages
-app-i18n/man-pages-ru 4.08.2329.2329.20170422: A collection of Russian translations of Linux manual pages
+app-i18n/man-pages-ru 4.16.2383.2383.20180422: A collection of Russian translations of Linux manual pages
 app-i18n/man-pages-zh_CN 1.5: A somewhat comprehensive collection of Chinese Linux man pages
 app-i18n/mozc 2.23.2815.102: Mozc - Japanese input method editor
 app-i18n/multiskkserv 20100128: SKK server that handles multiple dictionaries
