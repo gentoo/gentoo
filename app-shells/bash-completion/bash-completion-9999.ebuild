@@ -4,11 +4,12 @@
 EAPI=6
 
 BASHCOMP_P=bashcomp-2.0.2
-EGIT_REPO_URI="https://github.com/scop/bash-completion"
-inherit autotools eapi7-ver git-r3
+PYTHON_COMPAT=( python3_{5,6} )
+inherit autotools eapi7-ver git-r3 python-any-r1
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
+EGIT_REPO_URI="https://github.com/scop/bash-completion"
 SRC_URI="https://bitbucket.org/mgorny/bashcomp2/downloads/${BASHCOMP_P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -27,6 +28,10 @@ DEPEND="app-arch/xz-utils
 		app-misc/dtach
 		dev-util/dejagnu
 		dev-tcltk/tcllib
+		$(python_gen_any_dep '
+			dev-python/pexpect[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
+		')
 	)"
 PDEPEND=">=app-shells/gentoo-bashcomp-20140911"
 
@@ -51,6 +56,11 @@ STRIP_COMPLETIONS=(
 	# Deprecated in favor of sys-apps/util-linux-2.31
 	_rfkill
 )
+
+python_check_deps() {
+	has_version "dev-python/pexpect[${PYTHON_USEDEP}]" &&
+	has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+}
 
 src_unpack() {
 	git-r3_src_unpack
