@@ -8101,7 +8101,7 @@ media-sound/pavucontrol 2.0-r1 3.0: Pulseaudio Volume Control, GTK based mixer f
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
 media-sound/pianobar 2016.06.02 2018.06.22: A console-based replacement for Pandora's flash player
-media-sound/picard 2.0.0_beta3: A cross-platform music tagger
+media-sound/picard 2.0.0_beta3 2.0.3: A cross-platform music tagger
 media-sound/playerctl 0.5.0: A CLI utility to control media players over MPRIS
 media-sound/playmidi 2.5-r2: Command Line and GUI based MIDI Player
 media-sound/pnmixer 0.7.2: Volume mixer for the system tray
@@ -8565,7 +8565,7 @@ net-im/librvp 0.9.6: An RVP (Microsoft Exchange Instant Messaging) plugin for Pi
 net-im/mcabber 1.0.5: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openfire 4.1.0: Openfire (formerly wildfire) real time collaboration (RTC) server
-net-im/pidgin 2.12.0: GTK Instant Messenger client
+net-im/pidgin 2.12.0 2.13.0: GTK Instant Messenger client
 net-im/prosody 0.9.14: Prosody is a flexible communications server for Jabber/XMPP written in Lua
 net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
@@ -9080,8 +9080,8 @@ net-p2p/transmission 2.94: A Fast, Easy and Free BitTorrent client
 net-p2p/transmission-remote-gtk 1.3.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
 net-p2p/vuze 4.8.1.2-r1 5.7.2.0-r1: BitTorrent client in Java, formerly called Azureus
 net-p2p/vuze-coreplugins 4.8.1.2 5.7.2.0: Core plugins for Vuze that are included in upstream distribution
-net-print/cndrvcups-common-lb 3.40: Common files for Canon drivers
-net-print/cndrvcups-lb 3.40: Canon UFR II / LIPSLX Printer Driver for Linux
+net-print/cndrvcups-common-lb 3.40 3.50: Common files for Canon drivers
+net-print/cndrvcups-lb 3.40 3.50: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.2.7: The Common Unix Printing System
 net-print/cups-bjnp 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.17.9 1.20.4: Cups filters
