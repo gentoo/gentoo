@@ -162,7 +162,7 @@ if [[ ${EAPI:-0} == 5 ]]; then
 	[[ -z "${SRC_URI}" && -n "${MODULE_AUTHOR}" ]] && \
 		SRC_URI="mirror://cpan/authors/id/${MODULE_AUTHOR:0:1}/${MODULE_AUTHOR:0:2}/${MODULE_AUTHOR}/${MODULE_SECTION:+${MODULE_SECTION}/}${MODULE_A}"
 	[[ -z "${HOMEPAGE}" ]] && \
-		HOMEPAGE="http://search.cpan.org/dist/${MODULE_NAME}/"
+		HOMEPAGE="https://metacpan.org/release/${MODULE_NAME}"
 
 	SRC_TEST="skip"
 else
@@ -175,7 +175,7 @@ else
 	[[ -z "${SRC_URI}" && -n "${DIST_AUTHOR}" ]] && \
 		SRC_URI="mirror://cpan/authors/id/${DIST_AUTHOR:0:1}/${DIST_AUTHOR:0:2}/${DIST_AUTHOR}/${DIST_SECTION:+${DIST_SECTION}/}${DIST_A}"
 	[[ -z "${HOMEPAGE}" ]] && \
-		HOMEPAGE="http://search.cpan.org/dist/${DIST_NAME}/"
+		HOMEPAGE="http://metacpan.org/release/${DIST_NAME}"
 
 	[[ -z "${DIST_EXAMPLES}" ]] || IUSE+=" examples"
 fi
