@@ -27,6 +27,7 @@ SLOT="0"
 
 RDEPEND="
 	~sci-libs/votca-tools-${PV}[sqlite]
+	>=dev-cpp/eigen-3.3
 	~sci-chemistry/votca-csg-${PV}
 	~sci-chemistry/votca-ctp-${PV}"
 
@@ -40,11 +41,10 @@ DEPEND="${RDEPEND}
 	>=app-text/txt2tags-2.5
 	virtual/pkgconfig"
 
-DOCS=( README NOTICE CHANGELOG.md )
+DOCS=( README.md NOTICE CHANGELOG.md )
 
 src_configure() {
 	mycmakeargs=(
-		-DLIB=$(get_libdir)
 		-DBUILD_XTP_MANUAL=$(usex doc)
 	)
 	cmake-utils_src_configure
