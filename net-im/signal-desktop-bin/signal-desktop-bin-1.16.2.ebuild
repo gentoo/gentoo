@@ -36,11 +36,12 @@ src_prepare(){
 	default
 	sed -e 's|\("/opt/Signal/signal-desktop"\)|\1 --start-in-tray|g' \
 		-i usr/share/applications/signal-desktop.desktop || die
+	unpack usr/share/doc/signal-desktop/changelog.gz
 }
 
 src_install() {
 	insinto /
-	dodoc -r usr/share/doc/signal-desktop/.
+	dodoc changelog 
 	doins -r opt
 	insinto /usr/share
 	doins -r usr/share/applications
