@@ -1,5 +1,0 @@
-#!/bin/sh
-# this wrapper disables the auto-updater of telegram-desktop
-# This program is licensed under the same license as telegram-desktop
-
-exec /usr/lib/telegram-desktop-bin/bin/telegram-desktop-bin -externalupdater $@
