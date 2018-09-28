@@ -15,16 +15,16 @@ KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 RDEPEND="
+	app-text/gtkspell:2
+	app-text/poppler[cairo]
 	dev-libs/glib:2
 	dev-texlive/texlive-latex
 	dev-texlive/texlive-latexextra
-	x11-libs/gtk+:2"
-
-DEPEND="${RDEPEND}
-	app-text/gtkspell:2
-	app-text/poppler[cairo]
+	x11-libs/gtk+:2
 	x11-libs/gtksourceview:2.0
 	x11-libs/pango"
+
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
