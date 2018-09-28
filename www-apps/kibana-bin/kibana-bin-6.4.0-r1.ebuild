@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="x-pack"
 
-RDEPEND="net-libs/nodejs"
+RDEPEND=">=net-libs/nodejs-8.11.4"
 
 S="${WORKDIR}/${MY_P}-linux-x86_64"
 
@@ -36,6 +36,9 @@ src_prepare() {
 
 	# remove empty unused directory
 	rmdir data || die
+
+	# handle node.js version with RDEPEND
+	sed -i /node_version_validator/d src/setup_node_env/index.js || die
 }
 
 src_install() {
@@ -53,7 +56,7 @@ src_install() {
 	insinto /opt/${MY_PN}
 	doins -r .
 
-	chmod +x "${ED%/}"/opt/${MY_PN}/bin/* || die
+	fperms -R +x /opt/${MY_PN}/bin
 
 	diropts -m 0750 -o ${MY_PN} -g ${MY_PN}
 	keepdir /var/log/${MY_PN}
