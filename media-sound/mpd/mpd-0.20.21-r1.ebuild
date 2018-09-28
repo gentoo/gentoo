@@ -253,7 +253,7 @@ src_install() {
 	fi
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/${PN}-0.20.12.logrotate ${PN}
+	newins "${FILESDIR}"/${PN}-0.20.21.logrotate ${PN}
 
 	use prefix || diropts -m0755 -o mpd -g audio
 	dodir /var/lib/mpd
