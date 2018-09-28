@@ -187,6 +187,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-60.0-blessings-TERM.patch # 654316
 	eapply "${FILESDIR}"/${PN}-60.0-do-not-force-lld.patch
 	eapply "${FILESDIR}"/${PN}-60.0-sandbox-lto.patch # 666580
+	eapply "${FILESDIR}"/${PN}-60.0-rust-1.29-comp.patch
 
 	# Enable gnomebreakpad
 	if use debug ; then

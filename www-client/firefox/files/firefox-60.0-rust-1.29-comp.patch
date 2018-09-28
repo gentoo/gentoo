@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/666898
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=1479540
+--- a/build/moz.configure/init.configure
++++ b/build/moz.configure/init.configure
+@@ -572,17 +572,26 @@ option('--target', nargs=1,
+ @imports(_from='__builtin__', _import='KeyError')
+ @imports(_from='__builtin__', _import='ValueError')
+ def split_triplet(triplet, allow_unknown=False):
+     # The standard triplet is defined as
+     #   CPU_TYPE-MANUFACTURER-OPERATING_SYSTEM
+     # There is also a quartet form:
+     #   CPU_TYPE-MANUFACTURER-KERNEL-OPERATING_SYSTEM
+     # But we can consider the "KERNEL-OPERATING_SYSTEM" as one.
+-    cpu, manufacturer, os = triplet.split('-', 2)
++    # Additionally, some may omit "unknown" when the manufacturer
++    # is not specified and emit
++    #   CPU_TYPE-OPERATING_SYSTEM
++    parts = triplet.split('-', 2)
++    if len(parts) == 3:
++        cpu, _, os = parts
++    elif len(parts) == 2:
++        cpu, os = parts
++    else:
++        die("Unexpected triplet string: %s" % triplet)
+ 
+     # Autoconf uses config.sub to validate and canonicalize those triplets,
+     # but the granularity of its results has never been satisfying to our
+     # use, so we've had our own, different, canonicalization. We've also
+     # historically not been very consistent with how we use the canonicalized
+     # values. Hopefully, this will help us make things better.
+     # The tests are inherited from our decades-old autoconf-based configure,
+     # which can probably be improved/cleaned up because they are based on a
+
+
+
+
