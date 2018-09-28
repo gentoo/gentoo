@@ -36,6 +36,7 @@ DOCS=(README NEWS SUPPORT ChangeLog AUTHORS)
 PATCHES=(
 	"${FILESDIR}/${PN}-6.0.3-install_gcrypt.m4_file.patch"
 	"${FILESDIR}/${PN}-6.3.1-gcrypt_autotools.patch"
+	"${FILESDIR}/${PN}-6.5.7-gcc7.patch"
 )
 
 # Needed for doxygen, bug #526726

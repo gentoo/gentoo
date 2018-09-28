@@ -1,0 +1,53 @@
+Bug: https://bugs.gentoo.org/638252
+
+--- a/inc/ucommon/linked.h
++++ b/inc/ucommon/linked.h
+@@ -1992,7 +1992,7 @@
+      * @return pointer to index root.
+      */
+     inline NamedObject **root(void) {
+-        return static_cast<NamedObject**>(&head);
++        return reinterpret_cast<NamedObject**>(&head);
+     }
+
+     /**
+--- a/inc/ucommon/memory.h
++++ b/inc/ucommon/memory.h
+@@ -1228,7 +1228,7 @@
+      * inherit keyassoc privately.
+      * @return pager utilization, 0-100.
+      */
+-    inline unsigned utilization(void) const
++    inline unsigned utilization(void)
+         {return mempager::utilization();}
+ 
+     /**
+@@ -1322,7 +1322,7 @@
+      * inherit keyassoc privately.
+      * @return pager utilization, 0-100.
+      */
+-    inline unsigned utilization(void) const
++    inline unsigned utilization(void)
+         {return mempager::utilization();}
+ 
+     /**
+@@ -1396,7 +1396,7 @@
+      * @param name to search for.
+      * @return typed object if found through map or NULL.
+      */
+-    inline T *get(const char *name) const {
++    inline T *get(const char *name) {
+         T *node = (static_cast<T*>(NamedObject::map(idx, name, M)));
+         if(!node) {
+             node = init<T>(static_cast<T*>(mempager::_alloc(sizeof(T))));
+--- a/inc/ucommon/object.h
++++ b/inc/ucommon/object.h
+@@ -301,7 +301,7 @@
+         return reference_cast<T>(get(offset));
+     }
+ 
+-    inline const T* at(unsigned offset) const {
++    inline const T* at(unsigned offset) {
+         return immutable_cast<T*>(SparseObjects::get(offset));
+     }
+ 
