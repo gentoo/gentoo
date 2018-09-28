@@ -14,7 +14,7 @@ SRC_URI="http://gdlp01.c-wss.com/gds/0/0100009240/01/${SOURCES_NAME}.tar.gz"
 # GPL-2 License inside LICENSE-EN.txt files
 LICENSE="Canon-UFR-II GPL-2 MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 RDEPEND="
