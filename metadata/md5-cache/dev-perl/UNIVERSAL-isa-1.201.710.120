@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=virtual/perl-Scalar-List-Utils virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Spec virtual/perl-Test-Simple ) dev-lang/perl:=
 DESCRIPTION=Attempt to recover from people calling UNIVERSAL::isa as a function
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/UNIVERSAL-isa/
+HOMEPAGE=http://metacpan.org/release/UNIVERSAL-isa
 IUSE=test
 KEYWORDS=amd64 ~arm ppc sparc x86 ~ppc-aix
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Scalar-List-Utils dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/UNIVERSAL-isa-1.20171012.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=44e4e1183acf57d75ff008cc1b4198d7

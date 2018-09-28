@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=virtual/perl-Encode dev-lang/perl:=
 DESCRIPTION=Extra sets of Chinese encodings
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Encode-HanExtra/
+HOMEPAGE=http://metacpan.org/release/Encode-HanExtra
 KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-fbsd
 LICENSE=MIT
 RDEPEND=virtual/perl-Encode dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AU/AUDREYT/Encode-HanExtra-0.23.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=4fdb610930e0e13049ae161be10acfee

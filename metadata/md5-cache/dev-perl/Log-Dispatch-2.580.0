@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=virtual/perl-Carp dev-perl/Devel-GlobalDestruction >=dev-perl/Dist-CheckConflicts-0.20.0 virtual/perl-Encode virtual/perl-Exporter virtual/perl-IO dev-perl/Module-Runtime >=dev-perl/Params-Validate-1.30.0 virtual/perl-Scalar-List-Utils >=virtual/perl-Sys-Syslog-0.280.0 virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Data-Dumper virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-Getopt-Long dev-perl/IPC-Run3 dev-perl/Test-Fatal dev-perl/Test-Needs >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=
 DESCRIPTION=Dispatches messages to one or more outputs
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Log-Dispatch/
+HOMEPAGE=http://metacpan.org/release/Log-Dispatch
 IUSE=test
 KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~ppc-aix
 LICENSE=Artistic-2
 RDEPEND=virtual/perl-Carp dev-perl/Devel-GlobalDestruction >=dev-perl/Dist-CheckConflicts-0.20.0 virtual/perl-Encode virtual/perl-Exporter virtual/perl-IO dev-perl/Module-Runtime >=dev-perl/Params-Validate-1.30.0 virtual/perl-Scalar-List-Utils >=virtual/perl-Sys-Syslog-0.280.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/Log-Dispatch-2.58.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=d413a067001138d18a1ec1421fc11073

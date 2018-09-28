@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=virtual/perl-IO virtual/perl-IO-Socket-IP >=dev-perl/Test-SharedFork-0.290.0 virtual/perl-Test-Simple >=virtual/perl-IO-1.230.0 virtual/perl-Time-HiRes >=virtual/perl-ExtUtils-MakeMaker-6.640.0 test? ( >=virtual/perl-Test-Simple-0.980.0 virtual/perl-File-Temp virtual/perl-Socket ) dev-lang/perl:=
 DESCRIPTION=Testing TCP program
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Test-TCP/
+HOMEPAGE=http://metacpan.org/release/Test-TCP
 IUSE=test
 KEYWORDS=alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-IO virtual/perl-IO-Socket-IP >=dev-perl/Test-SharedFork-0.290.0 virtual/perl-Test-Simple >=virtual/perl-IO-1.230.0 virtual/perl-Time-HiRes dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TO/TOKUHIROM/Test-TCP-2.19.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=fe71a30b464770b0d1ea0d7cb56641e0

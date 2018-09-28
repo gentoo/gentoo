@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=virtual/perl-ExtUtils-CBuilder-0.230.0 virtual/perl-File-Spec virtual/perl-File-Temp >=dev-perl/Module-Build-0.420.0 test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
 DESCRIPTION=A tool to build C libraries
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/ExtUtils-LibBuilder/
+HOMEPAGE=http://metacpan.org/release/ExtUtils-LibBuilder
 IUSE=test
 KEYWORDS=amd64 ~arm ~arm64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-ExtUtils-CBuilder-0.230.0 virtual/perl-File-Spec virtual/perl-File-Temp dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AM/AMBS/ExtUtils-LibBuilder-0.08.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=f50755d30e5fd47d080fcf6a5bbac06a

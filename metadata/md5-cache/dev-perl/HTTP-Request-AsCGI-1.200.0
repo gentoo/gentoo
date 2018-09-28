@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=virtual/perl-Carp dev-perl/Class-Accessor >=dev-perl/HTTP-Message-1.530.0 virtual/perl-IO dev-perl/URI virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
 DESCRIPTION=Set up a CGI environment from an HTTP::Request
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/HTTP-Request-AsCGI/
+HOMEPAGE=http://metacpan.org/release/HTTP-Request-AsCGI
 IUSE=examples
 KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp dev-perl/Class-Accessor >=dev-perl/HTTP-Message-1.530.0 virtual/perl-IO dev-perl/URI dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/F/FL/FLORA/HTTP-Request-AsCGI-1.2.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=ef233052c73e14e3e60116a0cb5ac537

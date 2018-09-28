@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=sys-libs/zlib net-libs/libssh2 !gcrypt? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) gcrypt? ( dev-libs/libgcrypt:0 ) virtual/perl-ExtUtils-Constant >=virtual/perl-ExtUtils-MakeMaker-6.50 dev-lang/perl:=
 DESCRIPTION=Support for the SSH 2 protocol via libssh2
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Net-SSH2/
+HOMEPAGE=http://metacpan.org/release/Net-SSH2
 IUSE=gcrypt libressl examples
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=sys-libs/zlib net-libs/libssh2 !gcrypt? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) gcrypt? ( dev-libs/libgcrypt:0 ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SA/SALVA/Net-SSH2-0.67.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=7bd205e416c912613efc3d16afd640c3

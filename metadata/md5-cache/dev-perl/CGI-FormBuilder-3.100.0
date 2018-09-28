@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install postinst prepare test
 DEPEND=dev-perl/CGI virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
 DESCRIPTION=Extremely fast, reliable form generation and processing module
 EAPI=6
-HOMEPAGE=http://www.formbuilder.org/ http://search.cpan.org/dist/CGI-FormBuilder/
+HOMEPAGE=http://www.formbuilder.org/ http://metacpan.org/release/CGI-FormBuilder
 IUSE=test
 KEYWORDS=amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/CGI dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/B/BI/BIGPRESH/CGI-FormBuilder-3.10.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=800f862a1c4d458c0e5cde5dbb2a8cf0

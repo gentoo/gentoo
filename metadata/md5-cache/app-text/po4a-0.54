@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=app-text/opensp dev-libs/libxslt dev-perl/Locale-gettext dev-perl/SGMLSpm dev-perl/TermReadKey dev-perl/Text-WrapI18N dev-perl/Unicode-LineBreak dev-perl/YAML-Tiny sys-devel/gettext dev-lang/perl:=
 SLOT=0
 SRC_URI=https://github.com/mquinson/po4a/releases/download/v0.54/po4a-0.54.tar.gz
-_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=be86bb13deae8a244ded903a90bf26bb

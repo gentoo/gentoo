@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=x11-libs/libXrender x11-libs/libXext dev-lang/perl:= test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=Client-side interface to the X11 Protocol
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/X11-Protocol/
+HOMEPAGE=http://metacpan.org/release/X11-Protocol
 IUSE=examples test
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ ) MIT
 RDEPEND=x11-libs/libXrender x11-libs/libXext dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SM/SMCCAM/X11-Protocol-0.56.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce	virtualx	401b718cc14d43a5a7fbe062c4851ba5
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a	virtualx	401b718cc14d43a5a7fbe062c4851ba5
 _md5_=469f70b8e13c686c59e48dbdebb37ae3

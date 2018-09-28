@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-perl/libwww-perl dev-perl/URI dev-perl/Class-Data-Inheritable >=dev-perl/XML-LibXML-1.690.0 dev-perl/XML-XPath dev-perl/DateTime dev-perl/DateTime-TimeZone dev-perl/Digest-SHA1 dev-perl/HTML-Parser dev-perl/LWP-Authen-Wsse virtual/perl-MIME-Base64 >=dev-perl/Module-Build-Tiny-0.34.0 >=virtual/perl-ExtUtils-MakeMaker-6.590.0 dev-lang/perl:=
 DESCRIPTION=Atom feed and API implementation
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/XML-Atom/
+HOMEPAGE=http://metacpan.org/release/XML-Atom
 KEYWORDS=amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/libwww-perl dev-perl/URI dev-perl/Class-Data-Inheritable >=dev-perl/XML-LibXML-1.690.0 dev-perl/XML-XPath dev-perl/DateTime dev-perl/DateTime-TimeZone dev-perl/Digest-SHA1 dev-perl/HTML-Parser dev-perl/LWP-Authen-Wsse virtual/perl-MIME-Base64 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MI/MIYAGAWA/XML-Atom-0.42.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=bb008e0915d3f6d0df3a0ab0e50ce491

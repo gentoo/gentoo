@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-perl/Config-MVP-2.0.0 dev-perl/Config-MVP-Reader-INI dev-perl/DateTime virtual/perl-File-Spec dev-perl/List-MoreUtils >=virtual/perl-Scalar-List-Utils-1.330.0 >=dev-perl/Log-Dispatchouli-1.100.710 >=dev-perl/Mixin-Linewise-0.103.0 dev-perl/Module-Runtime dev-perl/Moose dev-perl/Params-Util >=dev-perl/Pod-Elemental-0.100.220 >=dev-perl/String-Flogger-1.0.0 >=dev-perl/String-Formatter-0.100.680 dev-perl/String-RewritePrefix virtual/perl-Text-Tabs+Wrap dev-perl/namespace-autoclean virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/PPI dev-perl/Software-License dev-perl/Test-Differences >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=
 DESCRIPTION=Weave together a Pod document from an outline
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Pod-Weaver/
+HOMEPAGE=http://metacpan.org/release/Pod-Weaver
 IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Config-MVP-2.0.0 dev-perl/Config-MVP-Reader-INI dev-perl/DateTime virtual/perl-File-Spec dev-perl/List-MoreUtils >=virtual/perl-Scalar-List-Utils-1.330.0 >=dev-perl/Log-Dispatchouli-1.100.710 >=dev-perl/Mixin-Linewise-0.103.0 dev-perl/Module-Runtime dev-perl/Moose dev-perl/Params-Util >=dev-perl/Pod-Elemental-0.100.220 >=dev-perl/String-Flogger-1.0.0 >=dev-perl/String-Formatter-0.100.680 dev-perl/String-RewritePrefix virtual/perl-Text-Tabs+Wrap dev-perl/namespace-autoclean dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Pod-Weaver-4.015.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=99b813ccbcef43fba2765705b4a44d67

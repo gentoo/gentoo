@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-perl/TimeDate-2.300.0 virtual/perl-Encode dev-perl/HTML-Parser dev-perl/Unicode-LineBreak test? ( >=virtual/perl-Test-Simple-0.860.0 ) dev-lang/perl:=
 DESCRIPTION=Extensions to printf
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/String-Print/
+HOMEPAGE=http://metacpan.org/release/String-Print
 IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/TimeDate-2.300.0 virtual/perl-Encode dev-perl/HTML-Parser dev-perl/Unicode-LineBreak dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MA/MARKOV/String-Print-0.92.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=6f43b0ae6e47c3f0f039f69e84f78944

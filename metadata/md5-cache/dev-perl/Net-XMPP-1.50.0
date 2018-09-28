@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-perl/Authen-SASL-2.120.0 virtual/perl-Digest-SHA virtual/perl-Scalar-List-Utils >=dev-perl/XML-Stream-1.240.0 >=dev-perl/Module-Build-0.360.300 test? ( >=dev-perl/LWP-Online-1.70.0 >=dev-perl/YAML-Tiny-1.410.0 >=virtual/perl-Test-Simple-0.920.0 ) dev-lang/perl:=
 DESCRIPTION=XMPP Perl Library
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Net-XMPP/
+HOMEPAGE=http://metacpan.org/release/Net-XMPP
 IUSE=test examples
 KEYWORDS=alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-perl/Authen-SASL-2.120.0 virtual/perl-Digest-SHA virtual/perl-Scalar-List-Utils >=dev-perl/XML-Stream-1.240.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DA/DAPATRICK/Net-XMPP-1.05.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=af287d84d6c5c6cc775ee672ddb2373f

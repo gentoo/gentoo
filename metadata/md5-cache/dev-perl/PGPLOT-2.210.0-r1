@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=sci-libs/pgplot >=dev-perl/ExtUtils-F77-1.13 dev-lang/perl:=
 DESCRIPTION=allow subroutines in the PGPLOT graphics library to be called from Perl
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/PGPLOT/
+HOMEPAGE=http://metacpan.org/release/PGPLOT
 KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~x86 ~amd64-linux ~x86-linux
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=sci-libs/pgplot >=dev-perl/ExtUtils-F77-1.13 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/K/KG/KGB/PGPLOT-2.21.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=c4a9a9bdbd08aa97829442e973584895

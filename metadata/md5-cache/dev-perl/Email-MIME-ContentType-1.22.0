@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=virtual/perl-Carp >=virtual/perl-Encode-2.870.0 >=virtual/perl-Exporter-5.570.0 virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-CPAN-Meta-2.120.900 virtual/perl-File-Spec >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=
 DESCRIPTION=Parse a MIME Content-Type Header or Content-Disposition Header
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Email-MIME-ContentType/
+HOMEPAGE=http://metacpan.org/release/Email-MIME-ContentType
 IUSE=test
 KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~x86 ~sparc-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp >=virtual/perl-Encode-2.870.0 >=virtual/perl-Exporter-5.570.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Email-MIME-ContentType-1.022.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=fec77d2304de857e91b81c4ac8ce5eda

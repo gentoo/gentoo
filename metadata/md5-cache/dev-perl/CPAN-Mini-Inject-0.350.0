@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-perl/CPAN-Checksums >=dev-perl/CPAN-Mini-0.320.0 virtual/perl-Carp >=dev-perl/Dist-Metadata-0.921.0 >=virtual/perl-File-Path-2.70.0 dev-perl/File-Slurp >=virtual/perl-File-Spec-2.70.0 virtual/perl-File-Temp virtual/perl-Getopt-Long virtual/perl-IO-Compress virtual/perl-IO-Zlib dev-perl/libwww-perl dev-perl/YAML >=dev-perl/Module-Build-0.400.0 test? ( >=dev-perl/HTTP-Server-Simple-0.70.0 dev-perl/Test-TCP virtual/perl-Test-Simple ) dev-lang/perl:=
 DESCRIPTION=Inject modules into a CPAN::Mini mirror
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/CPAN-Mini-Inject/
+HOMEPAGE=http://metacpan.org/release/CPAN-Mini-Inject
 IUSE=test
 KEYWORDS=~amd64 ~x86 ~ppc-aix
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/CPAN-Checksums >=dev-perl/CPAN-Mini-0.320.0 virtual/perl-Carp >=dev-perl/Dist-Metadata-0.921.0 >=virtual/perl-File-Path-2.70.0 dev-perl/File-Slurp >=virtual/perl-File-Spec-2.70.0 virtual/perl-File-Temp virtual/perl-Getopt-Long virtual/perl-IO-Compress virtual/perl-IO-Zlib dev-perl/libwww-perl dev-perl/YAML dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MI/MITHALDU/CPAN-Mini-Inject-0.35.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=fe27b20239fe59ffc9c3d82862ec29fb

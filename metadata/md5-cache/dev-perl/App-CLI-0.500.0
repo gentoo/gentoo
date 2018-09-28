@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-perl/Capture-Tiny virtual/perl-Carp dev-perl/Class-Load >=virtual/perl-Getopt-Long-2.350.0 virtual/perl-Locale-Maketext-Simple virtual/perl-Pod-Simple virtual/perl-Scalar-List-Utils virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
 DESCRIPTION=Dispatcher module for command line interface programs
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/App-CLI/
+HOMEPAGE=http://metacpan.org/release/App-CLI
 IUSE=test
 KEYWORDS=~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Capture-Tiny virtual/perl-Carp dev-perl/Class-Load >=virtual/perl-Getopt-Long-2.350.0 virtual/perl-Locale-Maketext-Simple virtual/perl-Pod-Simple virtual/perl-Scalar-List-Utils dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PT/PTC/App-CLI-0.50.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=bb39a10b55043c2151f41c976639488c

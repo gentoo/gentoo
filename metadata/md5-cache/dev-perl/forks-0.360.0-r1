@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-perl/Acme-Damn virtual/perl-Attribute-Handlers dev-perl/Devel-Symdump virtual/perl-File-Spec >=dev-perl/List-MoreUtils-0.150.0 >=virtual/perl-Scalar-List-Utils-1.110.0 virtual/perl-Storable >=dev-perl/Sys-SigAction-0.110.0 virtual/perl-Time-HiRes virtual/perl-if virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
 DESCRIPTION=Emulate threads with fork
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/forks/
+HOMEPAGE=http://metacpan.org/release/forks
 IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Acme-Damn virtual/perl-Attribute-Handlers dev-perl/Devel-Symdump virtual/perl-File-Spec >=dev-perl/List-MoreUtils-0.150.0 >=virtual/perl-Scalar-List-Utils-1.110.0 virtual/perl-Storable >=dev-perl/Sys-SigAction-0.110.0 virtual/perl-Time-HiRes virtual/perl-if dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RY/RYBSKEJ/forks-0.36.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=91a1cff6845f2bde244ed9fca59ba4c2

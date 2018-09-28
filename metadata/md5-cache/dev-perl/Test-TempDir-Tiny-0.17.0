@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=virtual/perl-Carp >=virtual/perl-Exporter-5.570.0 >=virtual/perl-File-Path-2.70.0 virtual/perl-File-Spec virtual/perl-File-Temp >=virtual/perl-ExtUtils-MakeMaker-6.170.0 test? ( >=virtual/perl-CPAN-Meta-2.120.900 >=dev-perl/Capture-Tiny-0.120.0 virtual/perl-Test-Simple ) dev-lang/perl:=
 DESCRIPTION=Temporary directories that stick around when tests fail
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Test-TempDir-Tiny/
+HOMEPAGE=http://metacpan.org/release/Test-TempDir-Tiny
 IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp >=virtual/perl-Exporter-5.570.0 >=virtual/perl-File-Path-2.70.0 virtual/perl-File-Spec virtual/perl-File-Temp dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DA/DAGOLDEN/Test-TempDir-Tiny-0.017.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=52f01bbd92a6e67b3cd9587c301ea2ad

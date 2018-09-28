@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=virtual/perl-Carp virtual/perl-Exporter dev-perl/File-Find-Rule dev-perl/File-Find-Rule-Perl virtual/perl-File-Spec virtual/perl-Getopt-Long >=dev-perl/PPI-1.215.0 >=dev-perl/PPIx-Regexp-0.33.0 >=dev-perl/Params-Util-0.250.0 >=dev-perl/Perl-Critic-1.104.0 >=virtual/perl-Scalar-List-Utils-1.200.0 >=virtual/perl-version-0.760.0 virtual/perl-ExtUtils-MakeMaker test? ( >=dev-perl/Test-Script-1.30.0 >=virtual/perl-Test-Simple-0.470.0 ) dev-lang/perl:=
 DESCRIPTION=Find a minimum required version of perl for Perl code
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Perl-MinimumVersion/
+HOMEPAGE=http://metacpan.org/release/Perl-MinimumVersion
 IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp virtual/perl-Exporter dev-perl/File-Find-Rule dev-perl/File-Find-Rule-Perl virtual/perl-File-Spec virtual/perl-Getopt-Long >=dev-perl/PPI-1.215.0 >=dev-perl/PPIx-Regexp-0.33.0 >=dev-perl/Params-Util-0.250.0 >=dev-perl/Perl-Critic-1.104.0 >=virtual/perl-Scalar-List-Utils-1.200.0 >=virtual/perl-version-0.760.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NE/NEILB/Perl-MinimumVersion-1.38.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=395b633ab8ce0ae3b55b3bee470489cd

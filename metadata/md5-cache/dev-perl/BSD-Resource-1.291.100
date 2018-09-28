@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
 DESCRIPTION=Perl module for BSD process resource limit and priority functions
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/BSD-Resource/
+HOMEPAGE=http://metacpan.org/release/BSD-Resource
 KEYWORDS=alpha amd64 ia64 ~ppc sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/J/JH/JHI/BSD-Resource-1.2911.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=b594762742a6769a7e295ec82886a536

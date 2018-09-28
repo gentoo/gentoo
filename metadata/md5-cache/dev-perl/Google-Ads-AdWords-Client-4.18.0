@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-perl/Class-Load >=dev-perl/Class-Std-Fast-0.0.5 dev-perl/Crypt-OpenSSL-RSA dev-perl/File-HomeDir virtual/perl-File-Spec dev-perl/IO-Socket-SSL dev-perl/JSON-Parse dev-perl/LWP-Protocol-https dev-perl/libwww-perl dev-perl/Log-Log4perl >=dev-perl/SOAP-WSDL-2.00.10 virtual/perl-Scalar-List-Utils dev-perl/Template-Toolkit dev-perl/URI dev-perl/XML-Simple dev-perl/XML-XPath examples? ( virtual/perl-Digest-SHA virtual/perl-File-Temp dev-perl/HTTP-Server-Simple ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SU/SUNDQUIST/Google-Ads-AdWords-Client-4.18.0.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=3d5f057fc64e2c5835cde5e750fd4b64

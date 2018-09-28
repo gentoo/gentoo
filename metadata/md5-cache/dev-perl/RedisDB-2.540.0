@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=virtual/perl-Encode-2.100.0 virtual/perl-IO-Socket-IP >=dev-perl/RedisDB-Parser-2.210.0 dev-perl/Try-Tiny dev-perl/URI dev-perl/URI-redis >=dev-perl/Test-TCP-1.170.0 virtual/perl-Digest-SHA >=virtual/perl-ExtUtils-MakeMaker-6.300.200 test? ( !minimal? ( dev-db/redis ) >=dev-perl/Test-Differences-0.610.0 dev-perl/Test-FailWarnings >=dev-perl/Test-Most-0.220.0 >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=
 DESCRIPTION=Perl extension to access redis database
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/RedisDB/
+HOMEPAGE=http://metacpan.org/release/RedisDB
 IUSE=test minimal examples
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-Encode-2.100.0 virtual/perl-IO-Socket-IP >=dev-perl/RedisDB-Parser-2.210.0 dev-perl/Try-Tiny dev-perl/URI dev-perl/URI-redis >=dev-perl/Test-TCP-1.170.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/Z/ZW/ZWON/RedisDB-2.54.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=3ae332bcd367db7ea770f6468ff538fd

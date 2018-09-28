@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-perl/libwww-perl-5.65 >=dev-perl/XML-Parser-2.34 >=dev-perl/XML-Twig-3.10 >=dev-perl/Date-Manip-5.42 >=dev-perl/XML-Writer-0.6 virtual/perl-Memoize virtual/perl-Storable >=dev-perl/Lingua-Preferred-0.2.4 >=dev-perl/Term-ProgressBar-2.03 virtual/perl-IO-Compress dev-perl/Unicode-String dev-perl/TermReadKey dev-perl/File-Slurp >=dev-lang/perl-5.6.1 dev-perl/XML-LibXML dev-perl/XML-TreePP dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://sourceforge/xmltv/xmltv-0.5.70.tar.bz2
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=8081e9b2afa521d91675b3cd351b780a

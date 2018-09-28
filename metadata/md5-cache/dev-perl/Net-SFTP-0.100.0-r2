@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-perl/Net-SSH-Perl-1.240.0 virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
 DESCRIPTION=Secure File Transfer Protocol client
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Net-SFTP/
+HOMEPAGE=http://metacpan.org/release/Net-SFTP
 IUSE=examples
 KEYWORDS=amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Net-SSH-Perl-1.240.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DB/DBROBINS/Net-SFTP-0.10.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=abaec002fa6253ab44464e1c3abb14f8

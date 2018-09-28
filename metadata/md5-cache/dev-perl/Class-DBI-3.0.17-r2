@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-perl/Class-Data-Inheritable-0.20.0 >=dev-perl/Class-Accessor-0.18.0 >=dev-perl/Class-Trigger-0.70.0 >=virtual/perl-File-Temp-0.120.0 virtual/perl-Storable >=virtual/perl-Scalar-List-Utils-1.80.0 dev-perl/Clone >=dev-perl/Ima-DBI-0.330.0 virtual/perl-version >=dev-perl/UNIVERSAL-moniker-0.60.0 test? ( >=virtual/perl-Test-Simple-0.470.0 ) dev-lang/perl:=
 DESCRIPTION=Simple Database Abstraction
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Class-DBI/
+HOMEPAGE=http://metacpan.org/release/Class-DBI
 IUSE=test
 KEYWORDS=amd64 ~ppc ppc64 x86 ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Class-Data-Inheritable-0.20.0 >=dev-perl/Class-Accessor-0.18.0 >=dev-perl/Class-Trigger-0.70.0 >=virtual/perl-File-Temp-0.120.0 virtual/perl-Storable >=virtual/perl-Scalar-List-Utils-1.80.0 dev-perl/Clone >=dev-perl/Ima-DBI-0.330.0 virtual/perl-version >=dev-perl/UNIVERSAL-moniker-0.60.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TM/TMTM/Class-DBI-v3.0.17.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=104394a026794464f69f5bc20603bfd9

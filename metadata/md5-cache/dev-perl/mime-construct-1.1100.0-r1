@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=virtual/perl-MIME-Base64 dev-perl/Email-Date-Format dev-perl/MIME-Types dev-perl/Proc-WaitStat dev-lang/perl:=
 DESCRIPTION=construct and optionally mail MIME messages
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/mime-construct/
+HOMEPAGE=http://metacpan.org/release/mime-construct
 KEYWORDS=amd64 ia64 ppc ~sparc x86
 LICENSE=GPL-2+
 RDEPEND=virtual/perl-MIME-Base64 dev-perl/Email-Date-Format dev-perl/MIME-Types dev-perl/Proc-WaitStat dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RO/ROSCH/mime-construct-1.11.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=6c33f26e6dd3ad0116eb3d97a8d8a920

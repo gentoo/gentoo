@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-perl/CGI-3.630.0 dev-perl/HTTP-Message virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.880.0 >=dev-perl/Test-Requires-0.80.0 ) dev-lang/perl:=
 DESCRIPTION=PSGI adapter for CGI
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/CGI-Emulate-PSGI/
+HOMEPAGE=http://metacpan.org/release/CGI-Emulate-PSGI
 IUSE=test
 KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/CGI-3.630.0 dev-perl/HTTP-Message dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TO/TOKUHIROM/CGI-Emulate-PSGI-0.23.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=f6ca4503176bf1e01f851291dc4bf520

@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=!<app-text/html-xml-utils-5.3 dev-lang/perl:=
 DESCRIPTION=Cleans up HTML code for web browsers, not humans
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/HTML-Clean/
+HOMEPAGE=http://metacpan.org/release/HTML-Clean
 KEYWORDS=alpha amd64 ia64 ppc ppc64 ~s390 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!<app-text/html-xml-utils-5.3 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/L/LI/LINDNER/HTML-Clean-0.8.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=ec749923a655f744f2ba4b524e52c999

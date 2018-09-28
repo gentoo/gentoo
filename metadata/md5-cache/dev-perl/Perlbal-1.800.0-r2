@@ -8,5 +8,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/libwww-perl dev-perl/HTTP-Date dev-perl/Sys-Syscall >=dev-perl/Danga-Socket-1.440.0 dev-perl/HTTP-Message dev-perl/BSD-Resource dev-perl/IO-AIO dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DO/DORMANDO/Perlbal-1.80.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=8b2927ceb69f86cc9531798bbd772206

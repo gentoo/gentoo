@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-perl/Class-Accessor-Lite-0.50.0 >=virtual/perl-Exporter-5.630.0 >=virtual/perl-ExtUtils-MakeMaker-6.590.0 >=dev-perl/Module-Build-0.380.0 test? ( dev-perl/File-Which dev-perl/Test-TCP dev-perl/Test-Requires dev-perl/Test-SharedFork >=virtual/perl-Test-Simple-0.940.0 ) dev-lang/perl:=
 DESCRIPTION=process runner with RAII pattern
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Proc-Guard/
+HOMEPAGE=http://metacpan.org/release/Proc-Guard
 IUSE=test
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Class-Accessor-Lite-0.50.0 >=virtual/perl-Exporter-5.630.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TO/TOKUHIROM/Proc-Guard-0.07.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=5f4abe89af25ba6c36413275217c1c8f

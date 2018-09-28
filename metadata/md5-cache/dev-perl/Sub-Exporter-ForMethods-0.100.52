@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=virtual/perl-Scalar-List-Utils >=dev-perl/Sub-Exporter-0.978.0 dev-perl/Sub-Name virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Carp virtual/perl-File-Spec >=virtual/perl-Test-Simple-0.960.0 dev-perl/namespace-autoclean ) dev-lang/perl:=
 DESCRIPTION=Helper routines for using Sub::Exporter to build methods
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Sub-Exporter-ForMethods/
+HOMEPAGE=http://metacpan.org/release/Sub-Exporter-ForMethods
 IUSE=test
 KEYWORDS=amd64 hppa ppc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Scalar-List-Utils >=dev-perl/Sub-Exporter-0.978.0 dev-perl/Sub-Name dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Sub-Exporter-ForMethods-0.100052.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=9d24ab07d97adaa4e1136b743fdb84e3

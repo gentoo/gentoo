@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=virtual/perl-Carp >=virtual/perl-Getopt-Long-2.370.0 >=dev-perl/Getopt-Long-Descriptive-0.88.0 >=dev-perl/Moose-0.560.0 >=dev-perl/MooseX-Role-Parameterized-1.10.0 virtual/perl-Scalar-List-Utils dev-perl/Try-Tiny dev-perl/namespace-autoclean >=dev-perl/Module-Build-Tiny-0.34.0 test? ( virtual/perl-File-Spec dev-perl/Module-Runtime virtual/perl-Module-Metadata >=dev-perl/Path-Tiny-0.9.0 dev-perl/Test-Deep >=dev-perl/Test-Fatal-0.3.0 virtual/perl-Test-Simple dev-perl/Test-Requires dev-perl/Test-Trap >=dev-perl/Test-Warnings-0.9.0 virtual/perl-if ) dev-lang/perl:=
 DESCRIPTION=A Moose role for processing command line options
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/MooseX-Getopt/
+HOMEPAGE=http://metacpan.org/release/MooseX-Getopt
 IUSE=test
 KEYWORDS=~amd64 ~arm ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp >=virtual/perl-Getopt-Long-2.370.0 >=dev-perl/Getopt-Long-Descriptive-0.88.0 >=dev-perl/Moose-0.560.0 >=dev-perl/MooseX-Role-Parameterized-1.10.0 virtual/perl-Scalar-List-Utils dev-perl/Try-Tiny dev-perl/namespace-autoclean dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/MooseX-Getopt-0.71.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=4c85dd33d79cba6b334d6ea80e538d07

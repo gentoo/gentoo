@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-perl/B-Hooks-EndOfScope-0.50.0 >=dev-perl/B-Hooks-OP-Check-0.190.0 >=virtual/perl-Scalar-List-Utils-1.110.0 dev-perl/Sub-Name >=dev-perl/ExtUtils-Depends-0.302.0 test? ( >=virtual/perl-Test-Simple-0.88 dev-perl/Test-Requires ) dev-lang/perl:=
 DESCRIPTION=Adding keywords to perl, in perl
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Devel-Declare/
+HOMEPAGE=http://metacpan.org/release/Devel-Declare
 IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/B-Hooks-EndOfScope-0.50.0 >=dev-perl/B-Hooks-OP-Check-0.190.0 >=virtual/perl-Scalar-List-Utils-1.110.0 dev-perl/Sub-Name dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/Devel-Declare-0.006019.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=c071683bad8411ebc68c9cc3b2eaea89

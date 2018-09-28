@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=virtual/ssh dev-perl/IO-Tty !minimal? ( dev-perl/Net-SSH-Any dev-perl/Net-SFTP-Foreign ) virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
 DESCRIPTION=Net::OpenSSH, Perl wrapper for OpenSSH secure shell client
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Net-OpenSSH/
+HOMEPAGE=http://metacpan.org/release/Net-OpenSSH
 IUSE=minimal
 KEYWORDS=amd64 ~hppa ~sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/ssh dev-perl/IO-Tty !minimal? ( dev-perl/Net-SSH-Any dev-perl/Net-SFTP-Foreign ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SA/SALVA/Net-OpenSSH-0.70.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=d7841ec9557efadee1b61ccf705bc198

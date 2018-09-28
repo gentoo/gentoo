@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-libs/gmp dev-perl/Math-BigInt-GMP >=virtual/perl-Math-BigInt-1.60 dev-perl/Crypt-Random dev-lang/perl:=
 DESCRIPTION=Diffie-Hellman key exchange system
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Crypt-DH/
+HOMEPAGE=http://metacpan.org/release/Crypt-DH
 KEYWORDS=amd64 hppa x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-libs/gmp dev-perl/Math-BigInt-GMP >=virtual/perl-Math-BigInt-1.60 dev-perl/Crypt-Random dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MI/MITHALDU/Crypt-DH-0.07.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=aad8291fbe34b6159e81ee457541029b

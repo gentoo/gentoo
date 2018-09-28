@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-perl/glib-perl-1.180.0 >=dev-perl/Gtk2-1.42.0 >=x11-libs/libwnck-2.20:1 >=dev-perl/ExtUtils-PkgConfig-1.03 >=dev-perl/ExtUtils-Depends-0.2 dev-lang/perl:= test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=Perl interface to the Window Navigator Construction Kit
 EAPI=6
-HOMEPAGE=http://gtk2-perl.sourceforge.net/ http://search.cpan.org/dist/Gnome2-Wnck/
+HOMEPAGE=http://gtk2-perl.sourceforge.net/ http://metacpan.org/release/Gnome2-Wnck
 IUSE=test
 KEYWORDS=amd64 ~ppc x86
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-perl/glib-perl-1.180.0 >=dev-perl/Gtk2-1.42.0 >=x11-libs/libwnck-2.20:1 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TS/TSCH/Gnome2-Wnck-0.16.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce	virtualx	401b718cc14d43a5a7fbe062c4851ba5
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a	virtualx	401b718cc14d43a5a7fbe062c4851ba5
 _md5_=a5e73a6cba5ca04c6d139cc6c528020c

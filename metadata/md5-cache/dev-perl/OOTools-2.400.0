@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-perl/Module-Build test? ( dev-perl/CGI ) dev-lang/perl:=
 DESCRIPTION=Pragma to implement lvalue accessors with options
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/OOTools/
+HOMEPAGE=http://metacpan.org/release/OOTools
 IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SK/SKNPP/OOTools-2.4.tar.gz https://dev.gentoo.org/~tove/distfiles/dev-perl/OOTools/OOTools-2.300.0-patch.tar.bz2
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=97d00ff8c36aa6f60f644d3ceebb496f

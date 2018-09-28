@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=x11-libs/gtk+:2 gnome-base/libglade:2.0 >=dev-perl/glib-perl-1.020 >=dev-perl/Gtk2-1.012 >=dev-perl/ExtUtils-Depends-0.300 dev-perl/ExtUtils-PkgConfig dev-lang/perl:= test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=Create user interfaces directly from Glade XML files
 EAPI=6
-HOMEPAGE=http://gtk2-perl.sf.net/ http://search.cpan.org/dist/Gtk2-GladeXML/
+HOMEPAGE=http://gtk2-perl.sf.net/ http://metacpan.org/release/Gtk2-GladeXML
 IUSE=examples test
 KEYWORDS=alpha amd64 ~ppc ppc64 x86
 LICENSE=LGPL-2
 RDEPEND=x11-libs/gtk+:2 gnome-base/libglade:2.0 >=dev-perl/glib-perl-1.020 >=dev-perl/Gtk2-1.012 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TS/TSCH/Gtk2-GladeXML-1.007.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce	virtualx	401b718cc14d43a5a7fbe062c4851ba5
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a	virtualx	401b718cc14d43a5a7fbe062c4851ba5
 _md5_=ee9fddbf0810d309ae78ed254adfd83f

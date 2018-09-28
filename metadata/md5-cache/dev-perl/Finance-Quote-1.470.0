@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-perl/CGI virtual/perl-Carp dev-perl/DateTime virtual/perl-Encode virtual/perl-Exporter dev-perl/HTML-Parser dev-perl/HTML-TableExtract dev-perl/HTML-Tree dev-perl/HTTP-Cookies dev-perl/HTTP-Message dev-perl/JSON dev-perl/LWP-Protocol-https dev-perl/libwww-perl dev-perl/Mozilla-CA virtual/perl-Time-Piece dev-perl/URI virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Data-Dumper virtual/perl-File-Spec virtual/perl-Test-Simple ) dev-lang/perl:=
 DESCRIPTION=Get stock and mutual fund quotes from various exchanges
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Finance-Quote/
+HOMEPAGE=http://metacpan.org/release/Finance-Quote
 IUSE=test examples
 KEYWORDS=alpha amd64 ppc ~ppc64 x86
 LICENSE=GPL-2
 RDEPEND=dev-perl/CGI virtual/perl-Carp dev-perl/DateTime virtual/perl-Encode virtual/perl-Exporter dev-perl/HTML-Parser dev-perl/HTML-TableExtract dev-perl/HTML-Tree dev-perl/HTTP-Cookies dev-perl/HTTP-Message dev-perl/JSON dev-perl/LWP-Protocol-https dev-perl/libwww-perl dev-perl/Mozilla-CA virtual/perl-Time-Piece dev-perl/URI dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/EC/ECOCODE/Finance-Quote-1.47.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=aab07470ba9270c1d3d67628351ddb00

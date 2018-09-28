@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=!minimal? ( dev-perl/Package-Stash-XS ) >=virtual/perl-Exporter-5.570.0 virtual/perl-File-Spec dev-perl/Module-Runtime >=dev-perl/Package-Stash-0.140.0 dev-perl/Sub-Identify virtual/perl-Test-Simple >=virtual/perl-CPAN-Meta-Requirements-2.120.620 virtual/perl-ExtUtils-MakeMaker !<dev-perl/Role-Tiny-1.3.0 test? ( !minimal? ( >=virtual/perl-CPAN-Meta-2.120.900 ) dev-perl/File-pushd virtual/perl-Scalar-List-Utils dev-perl/Sub-Exporter dev-perl/Test-Deep dev-perl/Test-Needs >=virtual/perl-Test-Simple-1.1.10 >=dev-perl/Test-Warnings-0.9.0 virtual/perl-if dev-perl/namespace-clean virtual/perl-parent ) dev-lang/perl:=
 DESCRIPTION=Check for uncleaned imports
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Test-CleanNamespaces/
+HOMEPAGE=http://metacpan.org/release/Test-CleanNamespaces
 IUSE=test minimal
 KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!minimal? ( dev-perl/Package-Stash-XS ) >=virtual/perl-Exporter-5.570.0 virtual/perl-File-Spec dev-perl/Module-Runtime >=dev-perl/Package-Stash-0.140.0 dev-perl/Sub-Identify virtual/perl-Test-Simple dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/Test-CleanNamespaces-0.22.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=1b8037afda50b749725878e01233d1d6

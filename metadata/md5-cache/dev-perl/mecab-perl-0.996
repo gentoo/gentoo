@@ -8,5 +8,5 @@ LICENSE=|| ( BSD LGPL-2.1 GPL-2 )
 RDEPEND=~app-text/mecab-0.996 dev-lang/perl:=
 SLOT=0
 SRC_URI=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mecab/mecab-perl-0.996.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=5796154c42c4e47dc9f7f001837275f9

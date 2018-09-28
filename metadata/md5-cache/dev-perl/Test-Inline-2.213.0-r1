@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-perl/Algorithm-Dependency-1.02 >=dev-perl/Config-Tiny-2.00 >=dev-perl/File-Find-Rule-0.26 >=dev-perl/File-Flat-1.00 dev-perl/File-Remove >=dev-perl/File-Slurp-9999.04 >=virtual/perl-File-Spec-0.80 dev-perl/File-chmod >=dev-perl/Params-Util-0.05 >=dev-perl/Pod-Tests-0.18 virtual/perl-Test-Simple test? ( dev-perl/Test-Script >=dev-perl/Test-ClassAPI-1.02 ) dev-lang/perl:=
 DESCRIPTION=Inline test suite support for Perl
 EAPI=6
-HOMEPAGE=http://search.cpan.org/dist/Test-Inline/
+HOMEPAGE=http://metacpan.org/release/Test-Inline
 IUSE=test
 KEYWORDS=amd64 hppa ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Algorithm-Dependency-1.02 >=dev-perl/Config-Tiny-2.00 >=dev-perl/File-Find-Rule-0.26 >=dev-perl/File-Flat-1.00 dev-perl/File-Remove >=dev-perl/File-Slurp-9999.04 >=virtual/perl-File-Spec-0.80 dev-perl/File-chmod >=dev-perl/Params-Util-0.05 >=dev-perl/Pod-Tests-0.18 virtual/perl-Test-Simple dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AD/ADAMK/Test-Inline-2.213.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	ee5593d6e2d067fafac171106655b5ce
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
 _md5_=c5d6ddd3e4e32249177ec5e2abfa2acc
