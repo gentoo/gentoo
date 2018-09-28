@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/667096
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=1480554
+--- a/security/sandbox/linux/SandboxOpenedFiles.cpp
++++ b/security/sandbox/linux/SandboxOpenedFiles.cpp
+@@ -4,16 +4,17 @@
+  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+  * You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
+ #include "SandboxOpenedFiles.h"
+ 
+ #include "mozilla/Move.h"
+ #include "SandboxLogging.h"
+ 
++#include <errno.h>
+ #include <fcntl.h>
+ #include <unistd.h>
+ 
+ namespace mozilla {
+ 
+ // The default move constructor almost works, but Atomic isn't
+ // move-constructable and the fd needs some special handling.
+ SandboxOpenedFile::SandboxOpenedFile(SandboxOpenedFile&& aMoved)
+
+
+
+
