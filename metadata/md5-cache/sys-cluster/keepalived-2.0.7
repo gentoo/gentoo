@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/libnl:= dev-libs/openssl:= dev-libs/popt net-libs/libnfnetlink sys-apps/iproute2 dbus? ( sys-apps/dbus ) json? ( dev-libs/json-c:= ) snmp? ( net-analyzer/net-snmp ) >=sys-kernel/linux-headers-4.4
+DESCRIPTION=A strong & robust keepalive facility to the Linux Virtual Server project
+EAPI=7
+HOMEPAGE=http://www.keepalived.org/
+IUSE=dbus debug ipv6 -json snmp
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libnl:= dev-libs/openssl:= dev-libs/popt net-libs/libnfnetlink sys-apps/iproute2 dbus? ( sys-apps/dbus ) json? ( dev-libs/json-c:= ) snmp? ( net-analyzer/net-snmp )
+SLOT=0
+SRC_URI=http://www.keepalived.org/software/keepalived-2.0.7.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=7851d5639acf6986d1675566b1d9a742

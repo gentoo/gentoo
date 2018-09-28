@@ -1866,7 +1866,7 @@ dev-db/m17n-db 1.7.0: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
 dev-db/mariadb 10.0.35-r2 10.1.34: An enhanced, drop-in replacement for MySQL
 dev-db/metakit 2.4.9.7-r2: Embedded database library
-dev-db/mongodb 3.0.14 3.2.17 3.4.10: A high-performance, open source, schema-free document-oriented database
+dev-db/mongodb 3.2.17 3.4.10: A high-performance, open source, schema-free document-oriented database
 dev-db/myodbc 5.3.10-r2: ODBC driver for MySQL
 dev-db/mysql 5.6.40-r2: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 3.2.1 3.2.3: C++ API interface to the MySQL database
@@ -6175,7 +6175,7 @@ dev-texlive/texlive-pstricks 2017: TeXLive PSTricks
 dev-texlive/texlive-publishers 2017: TeXLive Publisher styles, theses, etc.
 dev-texlive/texlive-xetex 2017: TeXLive XeTeX and packages
 dev-util/android-studio 3.1.2.0.173.4720617: A new Android development environment based on IntelliJ IDEA
-dev-util/android-tools 5.1.1_p13 6.0.1_p79: Android platform tools (adb, fastboot, and mkbootimg)
+dev-util/android-tools 5.1.1_p13 6.0.1_p79 8.1.0_p1: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.22.0: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
 dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descriptions for standards and style compliance
@@ -9821,7 +9821,7 @@ sys-apps/lm_sensors 3.4.0_p20170901: Hardware Monitoring user-space utilities
 sys-apps/lnxhc 1.2-r1: Linux Health Checker
 sys-apps/logwatch 7.4.3: Analyzes and Reports on system logs
 sys-apps/lomoco 1.0-r9: Lomoco can configure vendor-specific options on Logitech USB mice
-sys-apps/lsb-release 1.4: LSB version query program
+sys-apps/lsb-release 1.4 1.4-r3: LSB version query program
 sys-apps/lshw 02.18b: Hardware Lister
 sys-apps/makedev 3.23.1: program used for creating device files in /dev
 sys-apps/man 1.6g-r1: Standard commands to read man pages
@@ -10947,7 +10947,7 @@ x11-misc/rss-glx 0.9.1 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSav
 x11-misc/screengrab 1.97: Qt application for getting screenshots
 x11-misc/sct 0.4: Set color temperature of the screen
 x11-misc/sddm 0.15.0 0.17.0-r4 0.18.0: Simple Desktop Display Manager
-x11-misc/shared-mime-info 1.9: The Shared MIME-info Database specification
+x11-misc/shared-mime-info 1.9 1.10: The Shared MIME-info Database specification
 x11-misc/shutterbug 1.7.49: Screenshot utility based on the FOX Toolkit
 x11-misc/skippy 0.5.0-r1: A full-screen task-switcher providing Apple Expose-like functionality
 x11-misc/slim 1.3.6-r5: Simple Login Manager
