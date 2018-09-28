@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare setup test unpack
+DEPEND=dev-go/go-bindata >=dev-lang/go-1.9
+DESCRIPTION=Kubernetes Scheduler
+EAPI=6
+HOMEPAGE=https://github.com/kubernetes/kubernetes https://kubernetes.io
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/kubernetes/kubernetes/archive/v1.12.0.tar.gz -> kubernetes-1.12.0.tar.gz
+_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	1b46197451ce01766db03a9955597d7b	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=998f3f123c3c96dc42ce660ab74a03d3

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=dev-libs/glib-2.26:2 >=gnome-base/libgtop-2.28.3[introspection] >=app-eselect/eselect-gnome-shell-extensions-20111211 >=sys-devel/gettext-0.19.6 virtual/pkgconfig >=app-portage/elt-patches-20170815 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=JavaScript extensions for GNOME Shell
+EAPI=6
+HOMEPAGE=https://wiki.gnome.org/Projects/GnomeShell/Extensions
+IUSE=examples
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.26:2 >=gnome-base/libgtop-2.28.3[introspection] >=app-eselect/eselect-gnome-shell-extensions-20111211 >=dev-libs/gjs-1.29 dev-libs/gobject-introspection:= dev-libs/atk[introspection] gnome-base/gnome-menus:3[introspection] >=gnome-base/gnome-shell-3.14.2 media-libs/clutter:1.0[introspection] net-libs/telepathy-glib[introspection] x11-libs/gdk-pixbuf:2[introspection] x11-libs/gtk+:3[introspection] x11-libs/pango[introspection] x11-themes/adwaita-icon-theme x11-wm/mutter[introspection]
+SLOT=0
+SRC_URI=mirror://gnome/sources/gnome-shell-extensions/3.26/gnome-shell-extensions-3.26.2.tar.xz https://dev.gentoo.org/~leio/distfiles/gnome-shell-extensions-3.26.2-patchset.tar.xz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	acac536f2c3bbcd312ac3faaa3e55e40	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=3538aaf8c630572b66f92bbde42a5c5e
