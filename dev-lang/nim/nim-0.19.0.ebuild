@@ -39,6 +39,8 @@ nim_use_enable() {
 }
 
 src_compile() {
+	export XDG_CACHE_HOME=${T}/cache #667182
+
 	_run ./build.sh
 
 	_run ./bin/nim --parallelBuild:$(makeopts_jobs) c koch
@@ -48,7 +50,7 @@ src_compile() {
 	PATH="./bin:$PATH" _run ./koch --stable tools
 
 	if use doc; then
-		PATH="./bin:$PATH" _run ./koch web
+		PATH="./bin:$PATH" _run ./koch doc
 	fi
 }
 
@@ -72,7 +74,7 @@ src_install() {
 
 	if use doc; then
 		insinto /usr/share/doc/${PF}
-		dodoc doc/*.html
+		dodoc doc/html/*.html
 	fi
 
 	newbashcomp tools/nim.bash-completion ${PN}
