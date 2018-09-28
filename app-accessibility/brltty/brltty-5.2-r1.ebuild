@@ -169,7 +169,7 @@ src_install() {
 
 	libdir="$(get_libdir)"
 	mkdir -p "${D}"/usr/${libdir}/
-	mv "${D}"/${libdir}/*.a "${D}"/usr/${libdir}/ || die
+	mv "${D}"/${libdir}/*.a "${D}"/usr/${libdir}/
 	gen_usr_ldscript libbrlapi.so
 
 	cd Documents || die
