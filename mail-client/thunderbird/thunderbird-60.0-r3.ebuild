@@ -195,6 +195,7 @@ src_prepare() {
 		|| die
 	eapply "${WORKDIR}/firefox"
 	eapply "${FILESDIR}"/${PN}-60.0-blessings-TERM.patch # 654316
+	eapply "${FILESDIR}"/${PN}-60.0-rust-1.29-comp.patch
 
 	# Ensure that are plugins dir is enabled as default
 	sed -i -e "s:/usr/lib/mozilla/plugins:/usr/lib/nsbrowser/plugins:" \
