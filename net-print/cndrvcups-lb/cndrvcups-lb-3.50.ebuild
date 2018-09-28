@@ -13,7 +13,7 @@ SRC_URI="http://gdlp01.c-wss.com/gds/0/0100009240/01/${SOURCES_NAME}.tar.gz"
 
 LICENSE="Canon-UFR-II"
 SLOT="0"
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 RDEPEND="
