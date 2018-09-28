@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1:0 ) dev-libs/openssl:0[-bindist] !dev-lua/lua-openssl virtual/pkgconfig
+DESCRIPTION=Most comprehensive OpenSSL module in the Lua universe.
+EAPI=7
+HOMEPAGE=https://github.com/wahern/luaossl
+IUSE=luajit
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1:0 ) dev-libs/openssl:0[-bindist] !dev-lua/lua-openssl
+SLOT=0
+SRC_URI=https://github.com/wahern/luaossl/archive/rel-20180708.tar.gz -> luaossl-rel-20180708.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=1d43a1618e5e7e4fe0f1e7e38a6dbcd1
