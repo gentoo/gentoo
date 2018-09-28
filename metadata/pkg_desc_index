@@ -579,7 +579,7 @@ app-editors/nano 2.8.7 2.9.8: GNU GPL'd Pico clone with more functionality
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r7: Vi clone
-app-editors/okteta 0.25.1: Hex editor by KDE
+app-editors/okteta 0.25.1 0.25.3: Hex editor by KDE
 app-editors/pluma 1.12.2-r1 1.18.3: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qxmledit 0.9.7: Simple Qt-based XML editor
@@ -1323,7 +1323,7 @@ app-text/djview 4.10.6-r1: Portable DjVu viewer using Qt
 app-text/djvu 3.5.25.3 3.5.27: DjVu viewers, encoders and utilities
 app-text/docbook-dsssl-stylesheets 1.79-r2: DSSSL Stylesheets for DocBook
 app-text/docbook-sgml 1.0: A helper package for sgml docbook
-app-text/docbook-sgml-dtd 3.0-r3 3.1-r3 4.0-r3 4.1-r3 4.2-r2 4.3-r2 4.4: Docbook SGML DTD 4.4
+app-text/docbook-sgml-dtd 3.0-r3 3.1-r3 4.0-r3 4.1-r3 4.2-r2 4.3-r2 4.4 4.5: Docbook SGML DTD 4.5
 app-text/docbook-sgml-utils 0.6.14-r2: Shell scripts to manage DocBook documents
 app-text/docbook-xml-dtd 4.1.2-r6 4.2-r2 4.3-r1 4.4-r2 4.5-r1: Docbook DTD for XML
 app-text/docbook-xml-simple-dtd 1.0-r1 4.1.2.4-r2 4.1.2.5-r2: Simplified Docbook DTD for XML
