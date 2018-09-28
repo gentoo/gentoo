@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/scop/bash-completion"
 EGIT_REPO_URI="https://github.com/scop/bash-completion"
 SRC_URI="https://bitbucket.org/mgorny/bashcomp2/downloads/${BASHCOMP_P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
