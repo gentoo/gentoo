@@ -1393,7 +1393,7 @@ app-text/libmwaw 0.3.14: Library parsing many pre-OSX MAC text formats
 app-text/libodfgen 0.1.6: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24-r2: Library for handling paper characteristics
 app-text/libqxp 0.0.1: Library parsing QuarkXpress documents
-app-text/libspectre 0.2.7: A library for rendering Postscript documents
+app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
 app-text/libstaroffice 0.0.6: Import filter for old StarOffice documents
 app-text/libwpd 0.10.2: WordPerfect Document import/export library
 app-text/libwpg 0.3.2: C++ library to read and parse graphics in WPG
@@ -2230,7 +2230,7 @@ dev-haskell/monads-tf 0.1.0.2 0.1.0.3: Monad classes, using type families
 dev-haskell/mtl 2.1.3.1 2.2.1-r1: Monad classes, using functional dependencies
 dev-haskell/mtl-compat 0.2.1.3: Backported Control.Monad.Except module from mtl
 dev-haskell/multipart 0.1.2: HTTP multipart split out of the cgi package
-dev-haskell/nanospec 0.1.0 0.2.0: A lightweight implementation of a subset of Hspec's API
+dev-haskell/nanospec 0.1.0 0.2.0 0.2.1: A lightweight implementation of a subset of Hspec's API
 dev-haskell/nats 0.1.2 0.2 1: Natural numbers
 dev-haskell/network 2.4.1.2 2.6.2.1: Low-level networking interface
 dev-haskell/network-conduit 1.0.0-r1 1.1.0: Stream socket data using conduits. (deprecated)
@@ -3233,7 +3233,7 @@ dev-libs/qtkeychain 0.8.0: Qt API for storing passwords securely
 dev-libs/quazip 0.7.6: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
 dev-libs/rasqal 0.9.29 0.9.32: library that handles Resource Description Framework (RDF)
 dev-libs/re2 0.2016.05.01: An efficent, principled regular expression library
-dev-libs/redland 1.0.15 1.0.16: High-level interface for the Resource Description Framework
+dev-libs/redland 1.0.15 1.0.16 1.0.17-r1: High-level interface for the Resource Description Framework
 dev-libs/redland-bindings 1.0.14.1-r2: Language bindings for Redland
 dev-libs/rlog 1.4: A C++ logging library
 dev-libs/serd 0.28.0-r1: Library for RDF syntax which supports reading and writing Turtle and NTriples
@@ -8099,7 +8099,7 @@ media-sound/patchage 0.5.0-r1: Modular patch bay for audio and MIDI systems
 media-sound/pavucontrol 2.0-r1 3.0: Pulseaudio Volume Control, GTK based mixer for Pulseaudio
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
-media-sound/pianobar 2016.06.02: A console-based replacement for Pandora's flash player
+media-sound/pianobar 2016.06.02 2018.06.22: A console-based replacement for Pandora's flash player
 media-sound/picard 2.0.0_beta3: A cross-platform music tagger
 media-sound/playerctl 0.5.0: A CLI utility to control media players over MPRIS
 media-sound/playmidi 2.5-r2: Command Line and GUI based MIDI Player
@@ -8432,7 +8432,7 @@ net-analyzer/thcrut 1.2.5-r1: Network discovery and fingerprinting tool
 net-analyzer/thrulay 0.9-r1: Measure the capacity of a network by sending a bulk TCP stream over it
 net-analyzer/tleds 1.05_beta11-r2: Blinks keyboard LEDs indicating outgoing and incoming network packets on selected network interface
 net-analyzer/tptest 3.1.7-r2: Internet bandwidth tester
-net-analyzer/traceroute 2.0.20: Utility to trace the route of IP packets
+net-analyzer/traceroute 2.0.20 2.1.0: Utility to trace the route of IP packets
 net-analyzer/traceroute-nanog 6.4.2-r1: Traceroute with AS lookup, TOS support, MTU discovery and other features
 net-analyzer/trafshow 5.2.3: Full screen visualization of the network traffic
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
@@ -10140,7 +10140,7 @@ sys-fs/hfsutils 3.2.6-r5: HFS FS Access utils
 sys-fs/inotify-tools 3.14: a set of command-line programs providing a simple interface to inotify
 sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/lessfs 1.5.13 1.7.0: A high performance inline data deduplicating filesystem
-sys-fs/lsscsi 0.28: SCSI sysfs query tool
+sys-fs/lsscsi 0.28 0.29: SCSI sysfs query tool
 sys-fs/lvm2 2.02.116 2.02.116-r4 2.02.145-r2: User-land utilities for LVM2 (device-mapper) software
 sys-fs/mac-fdisk 0.1-r7: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 3.4: Tool for running RAID systems - replacement for the raidtools
