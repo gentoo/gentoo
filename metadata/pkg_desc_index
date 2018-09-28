@@ -3612,7 +3612,7 @@ dev-perl/DelimMatch 1.06-r1: A Perl 5 module for locating delimited substrings w
 dev-perl/Devel-CallChecker 0.8.0: Custom OP checking attached to subroutines
 dev-perl/Devel-Caller 2.60.0: Meatier versions of caller
 dev-perl/Devel-CheckBin 0.40.0: check that a command is available
-dev-perl/Devel-CheckCompiler 0.50.0 0.70.0: Check the compiler's availability
+dev-perl/Devel-CheckCompiler 0.70.0: Check the compiler's availability
 dev-perl/Devel-CheckLib 1.60.0 1.110.0: check that a library is available
 dev-perl/Devel-Cycle 1.120.0: Find memory cycles in objects
 dev-perl/Devel-GlobalDestruction 0.120.0 0.130.0 0.140.0: Returns the equivalent of ${^GLOBAL_PHASE} eq DESTRUCT for older perls
