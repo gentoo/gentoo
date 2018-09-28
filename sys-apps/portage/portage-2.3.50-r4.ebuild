@@ -109,6 +109,10 @@ python_prepare_all() {
 		-e 's:set -- "${filtered_args\[@\]}":set -- "${!filtered_args[@]}":' \
 		-i bin/ecompress-file || die
 
+	# Apply b587fc874ce9 for bug 666554
+	sed -e 's:yield self\._check_call(\['\''rsync'\'', '\''-a'\''.*:\0\n\t\t\t'\''--exclude=/distfiles'\'', '\''--exclude=/local'\'', '\''--exclude=/lost+found'\'', '\''--exclude=/packages'\'',:' \
+		-i lib/portage/repository/storage/hardlink_quarantine.py || die
+
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
 		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
