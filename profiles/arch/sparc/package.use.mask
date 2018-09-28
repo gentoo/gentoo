@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (28 Sep 2018)
+# mpir fails to build at least on sparc: bug #640424
+dev-python/gmpy mpir
+
 # Sergei Trofimovich <slyfox@gentoo.org> (30 Aug 2018)
 # dev-games/openscenegraph is a heavy unkeyworded dependency.
 # Skip keywording it for now.
