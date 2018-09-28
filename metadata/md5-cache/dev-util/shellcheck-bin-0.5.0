@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=!dev-util/shellcheck
+DESCRIPTION=Shell script analysis tool (binary package)
+EAPI=7
+HOMEPAGE=https://www.shellcheck.net/
+KEYWORDS=~amd64
+LICENSE=GPL-3+
+RDEPEND=!dev-util/shellcheck
+SLOT=0
+SRC_URI=https://storage.googleapis.com/shellcheck/shellcheck-v0.5.0.linux.x86_64.tar.xz
+_md5_=0a6cdf6539935e1b2ff9f6e7e3b055a4
