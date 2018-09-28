@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure
+DESCRIPTION=A NTP (RFC-1305 and RFC-4330) client for unix-alike systems
+EAPI=7
+HOMEPAGE=https://github.com/troglobit/ntpclient
+IUSE=debug embedded obsolete +syslog
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://github.com/troglobit/ntpclient/releases/download/2018_244/ntpclient-2018_244.tar.xz
+_md5_=5655bcd7cbe10ad5791644fab47e08c0

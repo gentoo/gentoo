@@ -4543,6 +4543,10 @@ net-misc/networkmanager:wifi - Enable support for wifi and 802.1x security
 net-misc/ntp:openntpd - Allow ntp to be installed alongside openntpd
 net-misc/ntp:parse-clocks - Add support for PARSE clocks
 net-misc/ntp:samba - Provide support for Samba's signing daemon (needed for Active Directory domain controllers)
+net-misc/ntpclient:debug - Enable analysis code path and debugging of NTP protocol.
+net-misc/ntpclient:embedded - Build a very small ntpclient, from OpenWRT project.
+net-misc/ntpclient:obsolete - Enable obsolete features, to use with kernel versions older than 3.0
+net-misc/ntpclient:syslog - Enable logging to syslog instead of logging to stderr.
 net-misc/ofono:atmodem - ETSI AT modem support.
 net-misc/ofono:bluetooth - Enable Bluetooth modem support using net-wireless/bluez.
 net-misc/ofono:cdmamodem - Enable CDMA modem support.
