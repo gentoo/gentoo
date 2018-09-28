@@ -51,6 +51,11 @@ pkg_preinst() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_icon_cache_update
+	einfo
+	einfo "Previous versions of ${PN} have created "
+	einfo "\"~/.local/share/applications/telegram.desktop\". These files"
+	einfo "conflict with the one shipped by portage and should be removed"
+	einfo "from all homedirs. (https://bugs.gentoo.org/618662)"
 }
 
 pkg_postrm() {
