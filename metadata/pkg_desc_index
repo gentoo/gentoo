@@ -6125,6 +6125,7 @@ dev-tex/pdfannotextractor 0.1l-r1: Extract annotations from pdf files
 dev-tex/pgf 3.0.1 3.0.1-r1: pgf -- The TeX Portable Graphic Format
 dev-tex/polytable 0.8.2: tabular-like environments with named columns
 dev-tex/prosper 1.5-r1: Prosper is a LaTeX class for writing transparencies
+dev-tex/pscyr 0.4d_beta9: Type1 cyrillic fonts collection
 dev-tex/revtex 4.1_p2-r1: LaTeX2e macros to prepare manuscripts for the journals of the APS and AIP
 dev-tex/rubber 1.4: A LaTeX wrapper for automatically building documents
 dev-tex/style-check 0.14: Parses LaTeX-formatted text in search of forbidden phrases
@@ -10271,7 +10272,7 @@ sys-power/powermgmt-base 1.31: Script to test whether computer is running on AC 
 sys-power/powernowd 1.00-r4: Daemon to control the speed and voltage of CPUs
 sys-power/powertop 2.8 2.9: tool that helps you find what software is using the most power
 sys-power/suspend 1.0_p20150810: Userspace Software Suspend and S2Ram
-sys-power/upower 0.99.5: D-Bus abstraction for enumerating power devices, querying history and statistics
+sys-power/upower 0.99.5 0.99.8: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-power/upower-pm-utils 0.9.23-r2: The upstream upower 0.9 git branch for use with sys-power/pm-utils
 sys-process/acct 6.6.4-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r2: a periodic command scheduler
