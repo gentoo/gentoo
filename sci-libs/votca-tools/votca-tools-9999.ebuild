@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,13 +22,13 @@ HOMEPAGE="http://www.votca.org"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="doc +fftw +gsl sqlite"
+IUSE="doc +fftw sqlite"
 
 RDEPEND="
 	dev-libs/boost:=
 	dev-libs/expat
+	>=dev-cpp/eigen-3.3
 	fftw? ( sci-libs/fftw:3.0 )
-	gsl? ( sci-libs/gsl )
 	sqlite? ( dev-db/sqlite:3 )"
 
 DEPEND="${RDEPEND}
@@ -40,7 +40,6 @@ DOCS=( NOTICE )
 
 src_configure() {
 	mycmakeargs=(
-		-DWITH_GSL=$(usex gsl)
 		-DWITH_FFTW=$(usex fftw)
 		-DWITH_SQLITE3=$(usex sqlite)
 		-DWITH_RC_FILES=OFF
