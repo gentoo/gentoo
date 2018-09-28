@@ -70,6 +70,8 @@ src_prepare() {
 	mv usr/share/doc/${PN} usr/share/doc/${PF} || die
 	chmod 0755 usr/share/doc/${PF} || die
 
+	gunzip usr/share/doc/${PF}/changelog.gz || die
+
 	rm \
 		_gpgbuilder \
 		etc/cron.daily/${PN} \

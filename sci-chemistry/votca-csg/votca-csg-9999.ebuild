@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ CMAKE_MAKEFILE_GENERATOR="ninja"
 inherit bash-completion-r1 cmake-utils multilib
 
 IUSE="doc examples extras +gromacs hdf5"
-PDEPEND="extras? ( =sci-chemistry/${PN}apps-${PV} )"
+PDEPEND="extras? ( ~sci-chemistry/${PN}apps-${PV} )"
 if [ "${PV}" != "9999" ]; then
 	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		doc? ( https://github.com/${PN/-//}-manual/releases/download/v${PV}/${PN}-manual-${PV}.pdf )
@@ -19,7 +19,7 @@ else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
 	KEYWORDS=""
-	PDEPEND="${PDEPEND} doc? ( =app-doc/${PN}-manual-${PV} )"
+	PDEPEND="${PDEPEND} doc? ( ~app-doc/${PN}-manual-${PV} )"
 fi
 
 DESCRIPTION="Votca coarse-graining engine"
@@ -29,7 +29,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 RDEPEND="
-	=sci-libs/votca-tools-${PV}
+	~sci-libs/votca-tools-${PV}
+	>=dev-cpp/eigen-3.3
 	gromacs? ( sci-chemistry/gromacs:= )
 	hdf5? ( sci-libs/hdf5 )
 	dev-lang/perl

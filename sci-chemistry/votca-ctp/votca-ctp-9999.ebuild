@@ -26,19 +26,14 @@ SLOT="0"
 
 RDEPEND="
 	~sci-libs/votca-tools-${PV}[sqlite]
+	>=dev-cpp/eigen-3.3
+	sci-libs/gsl
 	~sci-chemistry/votca-csg-${PV}"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-DOCS=( README NOTICE CHANGELOG.md )
-
-src_configure() {
-	mycmakeargs=(
-		-DLIB=$(get_libdir)
-	)
-	cmake-utils_src_configure
-}
+DOCS=( README.md NOTICE CHANGELOG.md )
 
 pkg_postinst() {
 	einfo
