@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PATCH_VERSION="5"
 
@@ -16,7 +16,6 @@ KEYWORDS="amd64 ppc x86"
 
 IUSE="vim-syntax"
 
-DEPEND=""
 RDEPEND="!<media-gfx/splashutils-1.5.2"
 
 DOCS=(
@@ -37,7 +36,7 @@ src_install() {
 		"${S}/install.sh" || die "Install failed"
 
 	# hibernate-ram will default to using ram.conf
-	dosym /usr/sbin/hibernate /usr/sbin/hibernate-ram
+	dosym hibernate /usr/sbin/hibernate-ram
 
 	newinitd init.d/hibernate-cleanup.sh hibernate-cleanup
 
