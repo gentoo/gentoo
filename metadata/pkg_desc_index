@@ -9755,7 +9755,7 @@ sys-apps/daemonize 1.7.4: Runs a command as a Unix daemon
 sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
 sys-apps/dbus 1.10.18 1.10.24: A message bus system, a simple way for applications to talk to each other
 sys-apps/dcfldd 1.3.4.1: enhanced dd with features for forensics and security
-sys-apps/debianutils 4.7 4.8.3: A selection of tools from Debian
+sys-apps/debianutils 4.8.3: A selection of tools from Debian
 sys-apps/diffutils 3.5 3.6-r1: Tools to make diffs and compare files
 sys-apps/dmapi 2.2.12-r1: XFS data management API library
 sys-apps/dmidecode 3.1: DMI (Desktop Management Interface) table related utilities
@@ -9785,7 +9785,7 @@ sys-apps/gentoo-systemd-integration 7: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.24.1: Disk Utility for GNOME using udisks
 sys-apps/gptfdisk 1.0.1 1.0.3: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312: Administrative interface for the grsecurity Role Based Access Control system
-sys-apps/grep 2.27-r1 3.0: GNU regular expression matcher
+sys-apps/grep 3.0: GNU regular expression matcher
 sys-apps/groff 1.22.2: Text formatter used for man pages
 sys-apps/gscanbus 0.8: Bus scanning, testing and topology visualizing tool for Linux IEEE1394 subsystem
 sys-apps/gsmartcontrol 1.0.2: Hard disk drive health inspection tool
