@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit multilib systemd udev
 
@@ -26,7 +26,6 @@ RDEPEND="sys-apps/iproute2
 	acpi? ( sys-power/acpid )
 	apm? ( sys-apps/apmd )
 	bluetooth? ( net-wireless/bluez:= )"
-DEPEND=""
 
 S="${WORKDIR}/${MY_P}"
 
