@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Tomáš Mózes <hydrapolic@gmail.com> (28 Sep 2018)
+# Requires dev-db/mongodb which has dropped x86 support
+dev-python/pymongo test
+
 # Bernard Cafarelli <voyageur@gentoo.org> (27 Sep 2018)
 # media-libs/qtav not keyworded
 media-video/orion qtav
