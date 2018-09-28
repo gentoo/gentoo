@@ -16,9 +16,6 @@
 
 if [[ ! ${_MOZCORECONF} ]]; then
 
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE='ncurses,sqlite,ssl,threads'
-
 inherit multilib toolchain-funcs flag-o-matic python-any-r1 versionator
 
 IUSE="${IUSE} custom-cflags custom-optimization"
