@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit multilib python-r1 toolchain-funcs
@@ -20,7 +20,9 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
-RDEPEND="bzip2? ( >=app-arch/bzip2-1.0.5 )
+DEPEND="python? ( ${PYTHON_DEPS} )"
+RDEPEND="${DEPEND}
+	bzip2? ( >=app-arch/bzip2-1.0.5 )
 	zlib? ( >=sys-libs/zlib-1.2.3 )
 	python? ( ${PYTHON_DEPS} >=dev-libs/boost-1.48[python,${PYTHON_USEDEP}] )
 	gmp? ( >=dev-libs/gmp-4.2.2:* )
@@ -28,7 +30,7 @@ RDEPEND="bzip2? ( >=app-arch/bzip2-1.0.5 )
 		!libressl? ( <dev-libs/openssl-1.1:0=[bindist=] )
 		libressl? ( dev-libs/libressl:0= )
 	)"
-DEPEND="${RDEPEND}
+BDEPEND="dev-lang/python:*
 	doc? ( dev-python/sphinx )"
 
 PATCHES=(

@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools flag-o-matic ltprune
+inherit autotools flag-o-matic
 
 DESCRIPTION="TrouSerS' support tools for the Trusted Platform Modules"
 HOMEPAGE="http://trousers.sourceforge.net"
@@ -14,16 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~m68k ~s390 ~sh x86"
 IUSE="libressl nls pkcs11 debug"
 
-COMMON_DEPEND="
-	>=app-crypt/trousers-0.3.0
+DEPEND=">=app-crypt/trousers-0.3.0
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	pkcs11? ( dev-libs/opencryptoki )
-	"
-RDEPEND="${COMMON_DEPEND}
-	nls? ( virtual/libintl )"
-DEPEND="${COMMON_DEPEND}
-	nls? ( sys-devel/gettext )"
+	pkcs11? ( dev-libs/opencryptoki )"
+RDEPEND="${DEPEND}"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 S="${WORKDIR}"
 
@@ -47,5 +43,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }

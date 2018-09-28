@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit autotools multilib ltprune flag-o-matic user
+inherit autotools multilib flag-o-matic user
 
 DESCRIPTION="PKCS#11 provider cryptographic hardware"
 HOMEPAGE="https://sourceforge.net/projects/opencryptoki"
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/opencryptoki/${PV}/${P}.tgz"
 # token sources are under CPL-1.0 already.
 LICENSE="CPL-0.5"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~s390 ~x86"
 IUSE="debug libressl +tpm"
 
 RDEPEND="tpm? ( app-crypt/trousers )
@@ -74,7 +74,7 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 
 	# Install libopencryptoki in the standard directory for libraries.
 	mv "${ED}"/usr/$(get_libdir)/opencryptoki/libopencryptoki.so* "${ED}"/usr/$(get_libdir) || die

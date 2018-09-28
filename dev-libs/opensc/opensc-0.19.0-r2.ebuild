@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit bash-completion-r1 ltprune
+inherit bash-completion-r1
 
 DESCRIPTION="Libraries and applications to access smartcards"
 HOMEPAGE="https://github.com/OpenSC/OpenSC/wiki"
@@ -24,10 +24,10 @@ RDEPEND="zlib? ( sys-libs/zlib )
 	pcsc-lite? ( >=sys-apps/pcsc-lite-1.3.0 )
 	notify? ( dev-libs/glib:2= )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	test? ( dev-util/cmocka )"
+BDEPEND="virtual/pkgconfig"
 
 REQUIRED_USE="
 	pcsc-lite? ( !openct !ctapi )
@@ -60,5 +60,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }

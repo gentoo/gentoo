@@ -1,9 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-
-inherit ltprune
+EAPI=7
 
 DESCRIPTION="Abstraction layer to simplify PKCS#11 API"
 HOMEPAGE="https://github.com/opensc/libp11/wiki"
@@ -30,5 +28,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }

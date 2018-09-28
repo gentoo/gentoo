@@ -1,11 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit autotools flag-o-matic
 
 DESCRIPTION="embed secure hashes (SHA1) and digital signatures (GNU Privacy Guard) into files"
-HOMEPAGE="http://packages.debian.org/sid/bsign"
+HOMEPAGE="https://packages.debian.org/jessie/bsign"
 SRC_URI="mirror://debian/pool/main/b/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"

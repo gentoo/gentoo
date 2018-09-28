@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit linux-mod toolchain-funcs versionator
+inherit linux-mod toolchain-funcs
 
 MY_PN="BestCrypt"
 DESCRIPTION="commercially licensed transparent filesystem encryption"
@@ -12,12 +12,10 @@ SRC_URI="http://www.jetico.com/linux/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="bestcrypt"
 SLOT="0"
-IUSE=""
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="virtual/linux-sources
 	app-shells/bash"
-RDEPEND=""
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 

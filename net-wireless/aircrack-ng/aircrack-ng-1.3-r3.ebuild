@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
@@ -47,8 +47,7 @@ PDEPEND="kernel_linux? (
 
 REQUIRED_USE="
 	airdrop-ng? ( ${PYTHON_REQUIRED_USE} )
-	airgraph-ng? ( ${PYTHON_REQUIRED_USE} )
-"
+	airgraph-ng? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-8812au.patch"

@@ -1,9 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit ltprune
+EAPI=7
 
 DESCRIPTION="A software PKCS#11 implementation"
 HOMEPAGE="https://www.opendnssec.org/"
@@ -14,17 +12,14 @@ IUSE="bindist libressl migration-tool test"
 SLOT="2"
 LICENSE="BSD"
 
-RDEPEND="
-	sys-devel/gcc:=[cxx]
-	migration-tool? ( dev-db/sqlite:3 )
+RDEPEND="migration-tool? ( dev-db/sqlite:3 )
 	!libressl? ( dev-libs/openssl:=[bindist=] )
 	libressl? ( dev-libs/libressl )
-	!=dev-libs/softhsm-2.0.0:0
-"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	test? ( dev-util/cppunit )
-"
+	!~dev-libs/softhsm-2.0.0:0"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
+	sys-devel/gcc:=[cxx]
+	test? ( dev-util/cppunit )"
 
 DOCS=(
 	NEWS
@@ -34,9 +29,9 @@ DOCS=(
 src_configure() {
 	econf \
 		--disable-static \
-		--localstatedir="${EROOT}var" \
 		--with-crypto-backend=openssl \
 		--disable-p11-kit \
+		--localstatedir="${EROOT}/var" \
 		$(use_enable !bindist ecc) \
 		$(use_enable !libressl gost) \
 		$(use_with migration-tool migrate)
@@ -44,6 +39,7 @@ src_configure() {
 
 src_install() {
 	default
+	find "${D}" -name '*.la' -delete || die
+
 	keepdir "${EROOT}/var/lib/softhsm/tokens"
-	prune_libtool_files --modules
 }

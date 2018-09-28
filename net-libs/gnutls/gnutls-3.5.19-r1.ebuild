@@ -11,11 +11,11 @@ SRC_URI="mirror://gnupg/gnutls/v$(ver_cut 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-3 LGPL-2.1"
 SLOT="0/30" # libgnutls.so number
-KEYWORDS=""
-IUSE="+cxx dane doc examples guile +idn nls +openssl pkcs11 seccomp sslv2 sslv3 static-libs test test-full +tls-heartbeat tools valgrind"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="+cxx dane doc examples guile +idn nls openpgp +openssl pkcs11 seccomp sslv2 sslv3 static-libs test test-full +tls-heartbeat tools valgrind zlib"
 
 REQUIRED_USE="
-	test-full? ( cxx dane doc examples guile idn nls openssl pkcs11 seccomp tls-heartbeat tools )"
+	test-full? ( guile pkcs11 openpgp openssl idn seccomp tools zlib )"
 
 # NOTICE: sys-devel/autogen is required at runtime as we
 # use system libopts
@@ -28,6 +28,7 @@ RDEPEND=">=dev-libs/libtasn1-4.9:=[${MULTILIB_USEDEP}]
 	guile? ( >=dev-scheme/guile-2:=[networking] )
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
 	pkcs11? ( >=app-crypt/p11-kit-0.23.1[${MULTILIB_USEDEP}] )
+	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	idn? ( >=net-dns/libidn2-0.16-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	test? (
@@ -39,7 +40,7 @@ BDEPEND=">=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	nls? ( sys-devel/gettext )
 	test-full? (
 		app-crypt/dieharder
-		>=app-misc/datefudge-1.22
+		app-misc/datefudge
 		dev-libs/softhsm:2[-bindist]
 		net-dialup/ppp
 		net-misc/socat
@@ -105,13 +106,16 @@ multilib_src_configure() {
 		$(use_enable cxx) \
 		$(use_enable dane libdane) \
 		$(use_enable nls) \
+		$(use_enable openpgp openpgp-authentication) \
 		$(use_enable openssl openssl-compatibility) \
 		$(use_enable sslv2 ssl2-support) \
 		$(use_enable sslv3 ssl3-support) \
 		$(use_enable static-libs static) \
 		$(use_enable tls-heartbeat heartbeat-support) \
+		$(use_with idn libidn2) \
 		$(use_with idn) \
 		$(use_with pkcs11 p11-kit) \
+		$(use_with zlib) \
 		--with-unbound-root-key-file="${EPREFIX}/etc/dnssec/root-anchors.txt" \
 		--without-included-libtasn1 \
 		"${libconf[@]}"

@@ -1,10 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit multilib python-r1 toolchain-funcs versionator
+inherit multilib python-r1 toolchain-funcs
 
 MY_PN="Botan"
 MY_P="${MY_PN}-${PV}"
@@ -13,13 +13,16 @@ HOMEPAGE="https://botan.randombit.net/"
 SRC_URI="https://botan.randombit.net/releases/${MY_P}.tgz"
 
 KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86 ~ppc-macos"
-SLOT="2/$(get_version_component_range 2)" # soname version
+SLOT="2/$(ver_cut 1-2)" # soname version
 LICENSE="BSD"
 IUSE="bindist doc boost python bzip2 libressl lzma sqlite ssl static-libs zlib"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
-RDEPEND="bzip2? ( >=app-arch/bzip2-1.0.5 )
+DEPEND="python? ( ${PYTHON_DEPS} )"
+RDEPEND="${DEPEND}
+	bzip2? ( >=app-arch/bzip2-1.0.5 )
 	zlib? ( >=sys-libs/zlib-1.2.3 )
 	boost? ( >=dev-libs/boost-1.48 )
 	lzma? ( app-arch/xz-utils )
@@ -28,8 +31,7 @@ RDEPEND="bzip2? ( >=app-arch/bzip2-1.0.5 )
 		!libressl? ( dev-libs/openssl:0=[bindist=] )
 		libressl? ( dev-libs/libressl:0= )
 	)"
-DEPEND="${RDEPEND}
-	dev-lang/python:*
+BDEPEND="dev-lang/python:*
 	doc? ( dev-python/sphinx )"
 
 src_configure() {
