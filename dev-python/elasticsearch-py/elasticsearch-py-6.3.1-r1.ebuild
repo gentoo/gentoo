@@ -23,8 +23,7 @@ IUSE="examples doc test"
 # https://github.com/elastic/elasticsearch/issues/12018
 RESTRICT="test"
 
-RDEPEND=">=dev-python/urllib3-1.21.1[${PYTHON_USEDEP}]
-	<dev-python/urllib3-1.23[${PYTHON_USEDEP}]"
+RDEPEND=">=dev-python/urllib3-1.21.1[${PYTHON_USEDEP}]"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-1.3.1-r1[${PYTHON_USEDEP}]
@@ -37,13 +36,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/pretty-yaml[${PYTHON_USEDEP}]
 		dev-python/nosexcover[${PYTHON_USEDEP}]
 		virtual/jre:1.8 )"
-
-python_prepare_all() {
-	# 643684
-	sed -i -e /urllib3/d setup.py || die
-
-	distutils-r1_python_prepare_all
-}
 
 python_compile_all() {
 	emake -C docs -j1 man $(usex doc html "")
