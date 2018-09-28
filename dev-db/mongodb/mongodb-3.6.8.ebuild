@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ CHECKREQS_DISK_BUILD="2400M"
 CHECKREQS_DISK_USR="512M"
 CHECKREQS_MEMORY="1024M"
 
-inherit check-reqs eapi7-ver flag-o-matic multilib multiprocessing pax-utils python-single-r1 scons-utils systemd toolchain-funcs user
+inherit check-reqs eapi7-ver flag-o-matic multiprocessing pax-utils python-single-r1 scons-utils systemd toolchain-funcs user
 
 MY_P=${PN}-src-r${PV/_rc/-rc}
 
@@ -41,7 +41,6 @@ DEPEND="${RDEPEND}
 	dev-python/cheetah[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	virtual/python-typing[${PYTHON_USEDEP}]
-	dev-util/scons
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
 	debug? ( dev-util/valgrind )
