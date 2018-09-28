@@ -545,7 +545,7 @@ app-editors/editra 0.7.20-r2: Multi-platform text editor supporting over 50 prog
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/efte 1.1-r1: A fast text editor supporting folding, syntax highlighting, etc.
 app-editors/elvis 2.2.0-r6: A vi/ex clone
-app-editors/emacs 18.59-r12 23.4-r18 24.5-r5 25.3-r4 26.1-r1: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r12 23.4-r18 24.5-r5 24.5-r7 25.3-r4 25.3-r6 26.1-r1 26.1-r3: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 1.9: A small and easy to use folding editor
@@ -3985,7 +3985,7 @@ dev-perl/Moose 2.160.500: A postmodern object system for Perl 5
 dev-perl/MooseX-FollowPBP 0.50.0 0.50.0-r1: Name your accessors get_foo() and set_foo(), whatever that may mean
 dev-perl/MooseX-Params-Validate 0.210.0: An extension of Params::Validate using Moose types
 dev-perl/MooseX-Types 0.460.0 0.500.0: Organise your Moose types in libraries
-dev-perl/Mouse 2.4.9 2.4.10: Moose minus the antlers
+dev-perl/Mouse 2.4.10: Moose minus the antlers
 dev-perl/MouseX-Types 0.60.0 0.60.0-r1: Organize your Mouse types in libraries
 dev-perl/Mozilla-CA 20999999: Mozilla's CA cert bundle in PEM format (Gentoo stub)
 dev-perl/MusicBrainz-DiscID 0.40.0: Perl interface for the MusicBrainz libdiscid library
