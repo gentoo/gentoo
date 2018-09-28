@@ -8,5 +8,5 @@ LICENSE=ISC
 RDEPEND=dev-libs/libressl dev-libs/libbsd
 SLOT=0
 SRC_URI=https://kristaps.bsd.lv/acme-client/snapshots/acme-client-portable-0.1.16.tgz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=930601e638d964e15d024c54d0f68e77

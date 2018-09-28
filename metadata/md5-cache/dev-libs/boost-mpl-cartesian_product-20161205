@@ -9,5 +9,5 @@ LICENSE=Boost-1.0
 RDEPEND=dev-libs/boost
 SLOT=0
 SRC_URI=https://github.com/quinoacomputing/BoostMPLCartesianProduct/archive/aeb0266b3a89f32c390dff51cb73a454d5d7a745.tar.gz -> boost-mpl-cartesian_product-20161205.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-snapshot	b77011b62e2053c646ad720defe6d921
 _md5_=c527e49ce1fd5ec3d58f8d1f58a52ca3

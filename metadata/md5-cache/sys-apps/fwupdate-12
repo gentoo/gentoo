@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-libs/popt >=sys-libs/efivar-32-r1 >=sys-libs/libsmbios-2.3.3
 SLOT=0
 SRC_URI=https://github.com/rhinstaller/fwupdate/archive/12.tar.gz -> fwupdate-12.tar.gz
-_eclasses_=mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=72d39e53513448478f080798bd1a9520

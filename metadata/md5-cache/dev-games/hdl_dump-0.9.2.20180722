@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://github.com/AKuHAK/hdl-dump/archive/67e66ca0e0a0000563f75c573a046cb8614745ad.tar.gz -> hdl_dump-0.9.2.20180722.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=f50135cec7d21ef816cf68b3fd9b0dcc

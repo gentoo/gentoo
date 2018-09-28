@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install
 DEPEND=app-crypt/gpgme
 DESCRIPTION=GPGstats calculates statistics on the keys in your key-ring
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.vanheusden.com/gpgstats/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=app-crypt/gpgme
 SLOT=0
 SRC_URI=http://www.vanheusden.com/gpgstats/gpgstats-0.5.tgz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=c96fbbf253336145c961ac7670f7f0ec
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=aeaf96ecf9068f02dcac288761b32ea7

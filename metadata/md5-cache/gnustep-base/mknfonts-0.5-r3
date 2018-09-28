@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=gnustep-base/gnustep-gui >=media-libs/freetype-2.1
 SLOT=0
 SRC_URI=mirror://debian/pool/main/m/mknfonts.tool/mknfonts.tool_0.5.orig.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	gnustep-base	49f1b9591be3a4bf8eeb1f3a07605a2a	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	gnustep-base	49f1b9591be3a4bf8eeb1f3a07605a2a	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=8ec6611ca86e07e9066235020f2bd86b

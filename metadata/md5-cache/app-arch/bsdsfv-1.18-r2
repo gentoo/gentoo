@@ -6,5 +6,5 @@ KEYWORDS=amd64 arm ~hppa ~m68k ppc ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x
 LICENSE=BSD
 SLOT=0
 SRC_URI=mirror://sourceforge/bsdsfv/bsdsfv-1.18.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=c7a10cd78e8fd6e33fb88c48dca93ba4

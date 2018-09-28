@@ -7,5 +7,5 @@ KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/duma/duma_2_5_15.tar.gz mirror://gentoo/duma-2.5.15-GNUmakefile.patch.bz2
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=6534ccc00b846f96600be69fc0b7d463

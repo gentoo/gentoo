@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/json-glib net-im/pidgin[gtk?,ncurses?] talkfilters? ( app-text/talkfilters ) spell? ( app-text/gtkspell:2 )
 SLOT=0
 SRC_URI=https://bitbucket.org/rekkanoryo/purple-plugin-pack/downloads/purple-plugin-pack-2.7.0.tar.bz2
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=f4d324f635c0920828305df66201e224

@@ -10,5 +10,5 @@ RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 python? ( dev-python/P
 REQUIRED_USE=python? ( || ( python_targets_python2_7 python_targets_python3_5 python_targets_python3_6 ) )
 SLOT=0
 SRC_URI=https://github.com/lancos/qhexedit2/archive/5f3ca79dbe8c765b685636a1751d242a6bfabb7d.tar.gz -> qhexedit2-0.8.4_p20170719.tar.gz
-_eclasses_=distutils-r1	8595c9c7530ac3963f3aa0d77aa7e2d8	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_eclasses_=distutils-r1	8595c9c7530ac3963f3aa0d77aa7e2d8	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
 _md5_=05c80a270cedfc60be25f4cc9f0b6365

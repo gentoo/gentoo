@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=app-admin/gkrellm:2[X]
 SLOT=0
 SRC_URI=mirror://sourceforge/gkrellm-imonc/gkrellm-imonc-src-0.2.tar.bz2
-_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=7b7850c10fb5846c8cf69a722faf5438

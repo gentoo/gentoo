@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=media-libs/libsdl image? ( media-libs/sdl-image ) truetype? ( >=media-libs/freetype-2 )
 SLOT=0
 SRC_URI=http://www.etek.chalmers.se/~e8cal1/sge/files/sge030809.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=9746bee564e6ea7205c2245576862481

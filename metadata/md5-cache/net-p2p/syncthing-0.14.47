@@ -9,5 +9,5 @@ LICENSE=MPL-2.0
 RDEPEND=selinux? ( sec-policy/selinux-syncthing )
 SLOT=0
 SRC_URI=https://github.com/syncthing/syncthing/archive/v0.14.47.tar.gz -> syncthing-0.14.47.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=543b4941b763914a1307a86e3e2c8722

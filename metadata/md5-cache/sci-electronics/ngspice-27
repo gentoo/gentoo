@@ -9,5 +9,5 @@ LICENSE=BSD GPL-2
 RDEPEND=X? ( x11-libs/libICE x11-libs/libXaw x11-libs/libXext x11-libs/libXmu ) fftw? ( sci-libs/fftw:3.0 ) X? ( sci-visualization/xgraph )
 SLOT=0
 SRC_URI=mirror://sourceforge/ngspice/ngspice-27.tar.gz doc? ( mirror://sourceforge/ngspice/ngspice-27-manual.pdf )
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=38337ec64c743853f395dfa8d6af8bde

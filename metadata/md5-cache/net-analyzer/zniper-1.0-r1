@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=net-libs/libpcap sys-libs/ncurses virtual/pkgconfig
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jer/zniper-1.0.tgz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=dc8ad9964da14a4aaf58ec8e758232c6

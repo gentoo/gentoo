@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-games/KXL media-fonts/font-adobe-100dpi
 SLOT=0
 SRC_URI=mirror://gentoo/geki2-KXL-2.0.3.tar.gz mirror://gentoo/geki2-KXL.png
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81
 _md5_=55eaddf80d3b90788f1bf3f0d7105974

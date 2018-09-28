@@ -10,5 +10,5 @@ RDEPEND=zlib? ( sys-libs/zlib ) bzip2? ( app-arch/bzip2 )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/mairix/mairix-0.24.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=be923e355dd7f7ea23c2140aa7c7db93

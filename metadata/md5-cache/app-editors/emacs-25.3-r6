@@ -11,5 +11,5 @@ RDEPEND=sys-libs/ncurses:0= >=app-eselect/eselect-emacs-1.16 >=app-emacs/emacs-c
 REQUIRED_USE=?? ( aqua X )
 SLOT=25
 SRC_URI=mirror://gnu/emacs/emacs-25.3.tar.xz https://dev.gentoo.org/~ulm/emacs/emacs-25.3-patches-2.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	elisp-common	23f47b2e1de7abf387105eddd1318738	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	elisp-common	23f47b2e1de7abf387105eddd1318738	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=cbcb3e665c502ad951b50e4cc1b295cb

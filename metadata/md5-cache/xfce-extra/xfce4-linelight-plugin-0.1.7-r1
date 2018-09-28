@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.18:2 >=x11-libs/gtk+-2.12:2 >=xfce-base/xfce4-panel-4.8 >=xfce-base/libxfcegui4-4.8 sys-apps/mlocate
 SLOT=0
 SRC_URI=mirror://debian/pool/main/x/xfce4-linelight-plugin/xfce4-linelight-plugin_0.1.7.orig.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=621509930aee3b81fa33348707762fbd

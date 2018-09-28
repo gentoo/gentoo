@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=app-admin/gkrellm:2[X]
 SLOT=2
 SRC_URI=http://nerv-un.net/~dragorn/code/vaiobright-2.5.tar.gz
-_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=2bf3973b2dfd419e4f538430569ccdf3

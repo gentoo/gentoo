@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11
 SLOT=0
 SRC_URI=https://github.com/nonpop/xkblayout-state/archive/45b752b130e077d5b1437d40b0a459e062aafa13.tar.gz -> xkblayout-state-0_p20180118.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=19457c8f647cc8a60b2912329970a807

@@ -9,5 +9,5 @@ LICENSE=abyss
 RDEPEND=dev-cpp/sparsehash dev-libs/boost:= misc-haskell? ( dev-libs/gmp:0= virtual/libffi:0= ) mpi? ( sys-cluster/openmpi )
 SLOT=0
 SRC_URI=https://github.com/bcgsc/abyss/archive/2.0.2.tar.gz -> abyss-2.0.2.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=3b173739bd4e2f9d61a49918b3b8bc05

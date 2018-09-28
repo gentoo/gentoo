@@ -7,5 +7,5 @@ IUSE=+curl debug nls static-libs test
 LICENSE=LGPL-3
 RDEPEND=app-crypt/gpgme dev-libs/expat dev-libs/libgcrypt:0= dev-libs/libxml2 curl? ( net-misc/curl[ssl] ) >=app-crypt/gnupg-2
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=91eaa617367050d9987ffd227e8c758e

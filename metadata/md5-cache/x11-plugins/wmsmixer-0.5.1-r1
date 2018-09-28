@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libXpm x11-libs/libXext x11-libs/libX11
 SLOT=0
 SRC_URI=https://www.dockapps.net/download/wmsmixer-0.5.1.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=e2e56908dd1bc58d5dfd30694b71c648

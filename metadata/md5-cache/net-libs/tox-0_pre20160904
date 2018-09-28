@@ -10,5 +10,5 @@ RDEPEND=av? ( media-libs/libvpx:= media-libs/opus ) daemon? ( dev-libs/libconfig
 REQUIRED_USE=^^ ( no-log log-trace log-debug log-info log-warn log-error )
 SLOT=0/0.0
 SRC_URI=https://github.com/irungentoo/toxcore/archive/755f084e8720b349026c85afbad58954cb7ff1d4.tar.gz -> tox-0_pre20160904.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	vcs-snapshot	b77011b62e2053c646ad720defe6d921
 _md5_=f1a698ba9cf8f4f7949722391feb0a68

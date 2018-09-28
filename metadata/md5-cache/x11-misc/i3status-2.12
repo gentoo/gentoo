@@ -10,5 +10,5 @@ LICENSE=BSD
 RDEPEND=dev-libs/confuse:= dev-libs/libnl:3 >=dev-libs/yajl-2.0.2 media-libs/alsa-lib pulseaudio? ( media-sound/pulseaudio )
 SLOT=0
 SRC_URI=https://i3wm.org/i3status/i3status-2.12.tar.bz2
-_eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=fa56d1fe6197b02958af2cafac4e90d1

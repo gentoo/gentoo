@@ -10,5 +10,5 @@ RDEPEND=>=dev-python/paramiko-1.10[python_targets_python2_7(-)?,-python_single_t
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=mirror://pypi/F/Fabric/Fabric-1.14.0.tar.gz https://raw.githubusercontent.com/kbakulin/fabric-completion/83d303e9fb352deaf4885b6db0781b3d9115e9c6/fabric-completion.bash -> fabric-1.14.0-completion.bash
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	distutils-r1	8595c9c7530ac3963f3aa0d77aa7e2d8	multibuild	40fe59465edacd730c644ec2bc197809	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	distutils-r1	8595c9c7530ac3963f3aa0d77aa7e2d8	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
 _md5_=9dee84e3db9ff431cd5bacd31b58859e

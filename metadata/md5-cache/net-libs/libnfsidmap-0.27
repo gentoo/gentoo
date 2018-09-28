@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=ldap? ( net-nds/openldap ) !<net-fs/nfs-utils-1.2.2 !net-fs/idmapd
 SLOT=0
 SRC_URI=https://fedorapeople.org/~steved/libnfsidmap/0.27/libnfsidmap-0.27.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=c20cf369efe26fed8966bb39b43ac17d

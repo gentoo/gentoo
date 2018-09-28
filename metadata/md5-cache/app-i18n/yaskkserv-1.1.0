@@ -10,5 +10,5 @@ RDEPEND=app-i18n/skk-jisyo gnutls? ( net-libs/gnutls ) !gnutls? ( !libressl? ( d
 REQUIRED_USE=?? ( gnutls libressl )
 SLOT=0
 SRC_URI=http://umiushi.org/~wac/yaskkserv/yaskkserv-1.1.0.tar.xz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=6a4a67361657412b268760d6fee109b0

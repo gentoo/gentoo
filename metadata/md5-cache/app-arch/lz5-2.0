@@ -7,5 +7,5 @@ KEYWORDS=~amd64
 LICENSE=GPL-2 BSD-2
 SLOT=0/2
 SRC_URI=https://github.com/inikep/lz5/archive/v2.0.tar.gz -> lz5-2.0.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=6f742b7cc1f509d3eeb38c65f674623a

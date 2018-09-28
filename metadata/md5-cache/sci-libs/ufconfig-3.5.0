@@ -7,5 +7,5 @@ KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=http://www.cise.ufl.edu/research/sparse/UFconfig/UFconfig-3.5.0.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=46df3fc93a2f82bebcd4d29cd3f3d384

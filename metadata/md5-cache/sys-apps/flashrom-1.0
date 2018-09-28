@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=!static? ( atahpt? ( sys-apps/pciutils ) atapromise? ( sys-apps/pciutils ) atavia? ( sys-apps/pciutils ) ch341a_spi? ( virtual/libusb:1 ) dediprog? ( virtual/libusb:1 ) drkaiser? ( sys-apps/pciutils ) ft2232_spi? ( dev-embedded/libftdi:= ) gfxnvidia? ( sys-apps/pciutils ) it8212? ( sys-apps/pciutils ) internal? ( sys-apps/pciutils ) nic3com? ( sys-apps/pciutils ) nicintel? ( sys-apps/pciutils ) nicintel_eeprom? ( sys-apps/pciutils ) nicintel_spi? ( sys-apps/pciutils ) nicnatsemi? ( sys-apps/pciutils ) nicrealtek? ( sys-apps/pciutils ) ogp_spi? ( sys-apps/pciutils ) pickit2_spi? ( virtual/libusb:0 ) rayer_spi? ( sys-apps/pciutils ) satamv? ( sys-apps/pciutils ) satasii? ( sys-apps/pciutils ) usbblaster_spi? ( dev-embedded/libftdi:= ) ) !internal_dmi? ( sys-apps/dmidecode )
 SLOT=0
 SRC_URI=https://download.flashrom.org/releases/flashrom-1.0.tar.bz2
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=90ae8123f36d3e48d14c599f5ec081bc

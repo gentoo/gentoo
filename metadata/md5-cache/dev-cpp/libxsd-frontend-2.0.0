@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/xerces-c-3.0.0 dev-libs/boost:=[threads] dev-cpp/libcutl
 SLOT=0
 SRC_URI=https://www.codesynthesis.com/download/libxsd-frontend/2.0/libxsd-frontend-2.0.0.tar.bz2
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=42486f1dbc9ca27b80eaa238745323c1

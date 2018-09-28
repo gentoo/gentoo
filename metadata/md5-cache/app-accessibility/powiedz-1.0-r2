@@ -6,5 +6,5 @@ KEYWORDS=amd64 ppc ~sparc x86
 LICENSE=GPL-1
 SLOT=0
 SRC_URI=http://kadu.net/download/additions/powiedz-1.0.tgz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=a5cb69eb98303d32177b47c7098368c1

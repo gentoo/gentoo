@@ -11,5 +11,5 @@ RDEPEND=sys-libs/ncurses:0= >=app-eselect/eselect-emacs-1.16 >=app-emacs/emacs-c
 REQUIRED_USE=?? ( aqua X )
 SLOT=26
 SRC_URI=mirror://gnu/emacs/emacs-26.1.tar.xz https://dev.gentoo.org/~ulm/emacs/emacs-26.1-patches-1.tar.xz
-_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	97f470f374f2e94ccab04a2fb21d811e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=b24a4adcf04b4d2324d8c2500597e614

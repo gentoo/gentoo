@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86 ~amd64-linux
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://dl.suckless.org/tools/ii-1.7.tar.gz
-_eclasses_=fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=62df0deb30b1751c9bd9df12eba5060c

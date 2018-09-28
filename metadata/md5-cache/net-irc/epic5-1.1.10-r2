@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=dev-libs/openssl-0.9.8e-r3:0 >=sys-libs/ncurses-5.6-r2:0 virtual/libiconv archive? ( app-arch/libarchive ) perl? ( >=dev-lang/perl-5.8.8-r2 ) tcl? ( dev-lang/tcl:0 ) socks5? ( net-proxy/dante ) ruby? ( || ( dev-lang/ruby:2.3 dev-lang/ruby:2.4 ) virtual/rubygems )
 SLOT=0
 SRC_URI=ftp://ftp.epicsol.org/pub/epic/EPIC5-PRODUCTION/epic5-1.1.10.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	a43d6cd7f05b4d013e7e40104ddfd3c7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	a43d6cd7f05b4d013e7e40104ddfd3c7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=6bd8741b067c74200721d983faf5b5c0

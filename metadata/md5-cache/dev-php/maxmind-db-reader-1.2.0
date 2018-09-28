@@ -10,5 +10,5 @@ RDEPEND=extension? ( dev-libs/libmaxminddb ) dev-php/fedora-autoloader extension
 REQUIRED_USE=extension? ( || ( php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 ) )
 SLOT=0
 SRC_URI=https://github.com/maxmind/MaxMind-DB-Reader-php/archive/v1.2.0.tar.gz -> MaxMind-DB-Reader-php-1.2.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	php-ext-source-r3	378dc4ea30db21411f4d1a32d21a6302	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	php-ext-source-r3	378dc4ea30db21411f4d1a32d21a6302	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=fe7eaa321a613266f23620ef9fc2c365

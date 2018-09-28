@@ -9,5 +9,5 @@ LICENSE=CC-BY-SA-3.0
 RDEPEND=dev-libs/hidapi virtual/libusb:1 virtual/libudev sys-apps/attr sys-libs/libcap
 SLOT=0
 SRC_URI=https://github.com/todbot/blink1/archive/v1.98.tar.gz -> blink1-1.98.tar.gz
-_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	linux-info	915cae3d7d636732918d18827fb1c226	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	linux-info	915cae3d7d636732918d18827fb1c226	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=0e05d4308b6ed358e6649515a2b7e163

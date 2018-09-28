@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/glib-2.16 >=sys-apps/dbus-1.2.24 iptables? ( >=net-firewall/i
 REQUIRED_USE=|| ( iptables nftables )
 SLOT=0
 SRC_URI=mirror://kernel/linux/network/connman/connman-1.34.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=6c3b8dd2bcf809006f7412fe9f055327

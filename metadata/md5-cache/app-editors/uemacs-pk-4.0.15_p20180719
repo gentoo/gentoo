@@ -8,5 +8,5 @@ LICENSE=free-noncomm
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/uemacs-4.0.15_p20180719.tar.xz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=2b295952d6af83ce5bfdc06a3cdc72d3

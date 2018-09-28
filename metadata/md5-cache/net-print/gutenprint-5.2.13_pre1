@@ -11,5 +11,5 @@ REQUIRED_USE=gimp? ( gtk )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/gimp-print/gutenprint-5.2.13-pre1.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=b4500053e942f57617bb0b9cb745ecc8

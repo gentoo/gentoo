@@ -10,5 +10,5 @@ RDEPEND=app-admin/gkrellm:2[X] net-misc/curl
 RESTRICT=test
 SLOT=0
 SRC_URI=http://mina.naguib.ca/dist/gkrellmpc-0.1_beta10.tar.gz
-_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=e80f12795aac7c93ea6399a4c7c7e3b6

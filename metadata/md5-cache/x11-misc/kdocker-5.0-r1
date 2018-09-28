@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsingleapplication[qt5(+),X] dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 x11-libs/libX11 x11-libs/libXmu x11-libs/libXpm
 SLOT=0
 SRC_URI=https://github.com/user-none/KDocker/archive/5.0.tar.gz -> kdocker-5.0.tar.gz
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	97f470f374f2e94ccab04a2fb21d811e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=f2de377756b12c885ef6926d5f3d1222

@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~hppa ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=public-domain
 SLOT=0
 SRC_URI=mirror://gentoo/ttcp-1.12.tar.bz2 https://dev.gentoo.org/~jer/ttcp-1.12.c
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=a7aa1b39377ff2b16519ffde5e98a1dd

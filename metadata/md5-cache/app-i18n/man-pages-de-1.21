@@ -8,5 +8,5 @@ LICENSE=GPL-3+ man-pages GPL-2+ GPL-2 BSD
 RDEPEND=virtual/man
 SLOT=0
 SRC_URI=https://manpages-de.alioth.debian.org/downloads/manpages-de-1.21.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=80e2de93ad5f3c19e072e216f20a6fac

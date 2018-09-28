@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=x11-libs/libXft x11-libs/libX11 x11-libs/libXinerama
 SLOT=0
 SRC_URI=https://github.com/seanpringle/goomwwm/archive/1.0.0.tar.gz -> goomwwm-1.0.0-github.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=056d763c97e4db07b1bf9c4ed1e2621d

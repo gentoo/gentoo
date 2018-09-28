@@ -8,5 +8,5 @@ LICENSE=public-domain
 RDEPEND=sci-biology/ncbi-tools[X,static-libs] x11-libs/libXmu
 SLOT=0
 SRC_URI=ftp://pbil.univ-lyon1.fr/pub/mol_phylogeny/njplot/archive/njplot-2.3.tar.gz
-_eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=c70b49c7f5e1a92f5169df372f9638c6

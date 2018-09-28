@@ -6,4 +6,4 @@ KEYWORDS=~amd64 ~x86
 LICENSE=BSD-2
 SLOT=0
 SRC_URI=http://www.tarsnap.com/scrypt/scrypt-1.2.0.tgz
-_md5_=3d67aae77bfae157a4f03b6710623c01
+_md5_=caeb36ccad7c981c1c8d5bb70f0fc356

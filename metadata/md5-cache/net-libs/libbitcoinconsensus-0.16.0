@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=>=dev-libs/libsecp256k1-0.0.0_pre20151118:=[recovery] !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= )
 SLOT=0
 SRC_URI=https://github.com/bitcoin/bitcoin/archive/4b4d7eb255ca8f9a94b92479e6061d129c91a991.tar.gz -> bitcoin-v0.16.0.tar.gz https://bitcoinknots.org/files/0.16.x/0.16.0.knots20180322/bitcoin-0.16.0.knots20180322.patches.txz -> bitcoin-0.16.0.knots20180322.patches.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=f642a6712ebb29476e406ab96b630f49

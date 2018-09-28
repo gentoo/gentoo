@@ -9,5 +9,5 @@ LICENSE=CeCILL-C
 RDEPEND=sci-libs/scotch:0=[int64?,mpi?] sys-apps/hwloc:0= virtual/blas mpi? ( virtual/mpi ) starpu? ( dev-libs/starpu:0= ) virtual/fortran
 SLOT=0
 SRC_URI=https://gforge.inria.fr/frs/download.php/35070/pastix_5.2.2.22.tar.bz2
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	fortran-2	68fcf50e02640de6eb5698ea038d9537	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	fortran-2	68fcf50e02640de6eb5698ea038d9537	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
 _md5_=06d394baf4ca3a0c063e5dde53133ecb
