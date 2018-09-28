@@ -16,11 +16,8 @@
 
 if [[ ! ${_MOZCORECONF} ]]; then
 
-# for compatibility with packages prior to v1
-if [[ -z ${PYTHON_COMPAT[@]} ]]; then
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='ncurses,sqlite,ssl,threads'
-fi
 
 inherit multilib toolchain-funcs flag-o-matic python-any-r1 versionator
 
