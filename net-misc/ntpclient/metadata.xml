@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>monsieurp@gentoo.org</email>
-</maintainer>
+	<maintainer type="person">
+		<email>monsieurp@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		NTPClient is an NTP client for UNIX-like systems, RFC 1305 and RFC 4330.
+		Its functionality is a small subset of ntpd, chrony, OpenNTPd, and xntpd.
+		Since it is much smaller, it is also more relevant for embedded systems in need of only a client.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/troglobit/ntpclient/issues</bugs-to>
+		<remote-id type="github">troglobit/ntpclient</remote-id>
+	</upstream>
+	<use>
+		<flag name="debug">Enable analysis code path and debugging of NTP protocol.</flag>
+		<flag name="embedded">Build a very small ntpclient, from OpenWRT project.</flag>
+		<flag name="obsolete">Enable obsolete features, to use with kernel versions older than 3.0</flag>
+		<flag name="syslog">Enable logging to syslog instead of logging to stderr.</flag>
+	</use>
 </pkgmetadata>
