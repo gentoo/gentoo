@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="An open source re-implementation of RollerCoaster Tycoon 2"
-HOMEPAGE="https://openrct2.website/"
+HOMEPAGE="https://openrct2.org/"
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/OpenRCT2/OpenRCT2.git"
 	EGIT_BRANCH="develop"
