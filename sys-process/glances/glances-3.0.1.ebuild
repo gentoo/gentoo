@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 RDEPEND="${DEPEND}
-	>=dev-python/psutil-2.0.0[${PYTHON_USEDEP}]"
+	>=dev-python/psutil-5.4.3[${PYTHON_USEDEP}]"
 
 CONFIG_CHECK="~TASK_IO_ACCOUNTING ~TASK_DELAY_ACCT ~TASKSTATS"
 
