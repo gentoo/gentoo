@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup
+DEPEND=>=app-eselect/eselect-rust-0.3_pre20150425 jemalloc? ( dev-libs/jemalloc ) cargo? ( sys-libs/zlib !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) net-libs/libssh2 net-libs/http-parser:= net-misc/curl[ssl] ) || ( dev-lang/python:3.6 dev-lang/python:3.5 >=dev-lang/python-2.7.5-r2:2.7 >=virtual/pypy-5:0 ) || ( >=sys-devel/gcc-4.7 >=sys-devel/clang-3.5 ) cargo? ( !dev-util/cargo ) rustfmt? ( !dev-util/rustfmt ) dev-util/cmake
+DESCRIPTION=Systems programming language from Mozilla
+EAPI=6
+HOMEPAGE=https://www.rust-lang.org/
+IUSE=cargo clippy debug doc +jemalloc libressl rls rustfmt wasm llvm_targets_AArch64 llvm_targets_AMDGPU llvm_targets_ARM llvm_targets_BPF llvm_targets_Hexagon llvm_targets_Lanai llvm_targets_Mips llvm_targets_MSP430 llvm_targets_NVPTX llvm_targets_PowerPC llvm_targets_Sparc llvm_targets_SystemZ llvm_targets_X86 llvm_targets_XCore abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA
+PDEPEND=!cargo? ( >=dev-util/cargo-0.30.0 )
+RDEPEND=>=app-eselect/eselect-rust-0.3_pre20150425 jemalloc? ( dev-libs/jemalloc ) cargo? ( sys-libs/zlib !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) net-libs/libssh2 net-libs/http-parser:= net-misc/curl[ssl] )
+REQUIRED_USE=|| ( llvm_targets_AArch64 llvm_targets_AMDGPU llvm_targets_ARM llvm_targets_BPF llvm_targets_Hexagon llvm_targets_Lanai llvm_targets_Mips llvm_targets_MSP430 llvm_targets_NVPTX llvm_targets_PowerPC llvm_targets_Sparc llvm_targets_SystemZ llvm_targets_X86 llvm_targets_XCore )
+SLOT=stable/1.29
+SRC_URI=https://static.rust-lang.org/dist/rustc-1.29.1-src.tar.xz -> rustc-1.29.1-src.tar.xz amd64? ( https://static.rust-lang.org/dist/rust-1.28.0-x86_64-unknown-linux-gnu.tar.xz ) x86? ( https://static.rust-lang.org/dist/rust-1.28.0-i686-unknown-linux-gnu.tar.xz ) arm64? ( https://static.rust-lang.org/dist/rust-1.28.0-aarch64-unknown-linux-gnu.tar.xz )
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	versionator	2352c3fc97241f6a02042773c8287748
+_md5_=e862c204abad955712552c62c1751318

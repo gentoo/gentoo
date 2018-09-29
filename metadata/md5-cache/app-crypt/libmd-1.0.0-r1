@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Message Digest functions from BSD systems
+EAPI=6
+HOMEPAGE=https://www.hadrons.org/software/libmd/
+IUSE=static-libs
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=|| ( BSD BSD-2 ISC BEER-WARE public-domain )
+SLOT=0
+SRC_URI=https://archive.hadrons.org/software/libmd/libmd-1.0.0.tar.xz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=3545f1abfcbe0546266c80a918497ab4

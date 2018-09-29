@@ -341,7 +341,7 @@ app-crypt/johntheripper 1.7.9-r6: fast password cracker
 app-crypt/keylookup 2.2: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1: Modified versions of kinit for refreshing kerberos tickets automatically
-app-crypt/libmd 0.0.0 1.0.0: Message Digest functions from BSD systems
+app-crypt/libmd 1.0.0: Message Digest functions from BSD systems
 app-crypt/libscrypt 1.21: Shared library to impliment the scrypt algorithm
 app-crypt/libsecret 0.18.6 0.18.6-r1: GObject library for accessing the freedesktop.org Secret Service API
 app-crypt/libu2f-host 1.1.3: Yubico Universal 2nd Factor (U2F) Host C Library
