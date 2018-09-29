@@ -156,71 +156,10 @@ media-plugins/vdr-autosort
 # a lot of unmanaged cruft on the filesystem.  Bug #664938.
 =media-gfx/gimp-2.10.6
 
-# Mikle Kolyada <zlogene@gentoo.org> (30 Aug 2018)
-# Dead upstream, does not work properly.
-# Unmaintained.
-# Use sys-boot/woeusb instead.
-sys-boot/winusb
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (29 Aug 2018)
 # Masked for removal in 30 days. Multiple build failures. Upstream inactive.
 # (bugs #321017, #581284, #588692, #602786, #649006, #654140)
 www-plugins/gnash
-
-# James Le Cuirot <chewi@gentoo.org> (26 Aug 2018)
-# Unused Java virtual from the days when the JDK was proprietary. Now
-# we assume that com.sun is always available. Removal in 30 days.
-java-virtuals/jdk-with-com-sun
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (26 Aug 2018)
-# masked for removal in ~30 Days
-# the plugin is written to manage the vdr2gentoo distribution,
-# useless in gentoo
-# bug 664670
-media-plugins/vdr-admin
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (26 Aug 2018)
-# masked for removal in ~30 Days
-# do not work anymore since paytv provider provider has changed to paytv provider sky
-# no converted to gettext handling
-# old makefile handling
-# dead on upstream since years..
-# bug 664672
-media-plugins/vdr-arghdirector
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (26 Aug 2018)
-# masked for removal in ~30 Days
-# full integrated in core vdr
-# dead on upstream thince years
-# useless
-#bug 664676
-media-plugins/vdr-rotor
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (26 Aug 2018)
-# masked for removal in ~30 Days
-# no converted to gettext handling
-# use old makefile handling
-# no upstream
-# dead since years
-# Bug 664678
-media-plugins/vdr-videosystem
-
-# Michał Górny <mgorny@gentoo.org> (26 Aug 2018)
-# Live ebuild only.  Dependencies can no longer be satisfied by ::gentoo
-# packages.  Bug #664658.  Removal in 30 days.
-net-im/hangups
-
-# Michał Górny <mgorny@gentoo.org> (26 Aug 2018)
-# mod_python removal caused it to be reduced to agent-only, which is
-# apparently redundant to net-analyzer/check_mk_agent.  The package
-# is unmaintained and potentially vulnerable.  Bug #632648.
-# Removal in 30 days.
-net-analyzer/check_mk
-
-# Michał Górny <mgorny@gentoo.org> (26 Aug 2018)
-# Live ebuild only.  Dependencies can no longer be satisfied by ::gentoo
-# packages.  Unmaintained.  Bug #659370.  Removal in 30 days.
-app-crypt/simp_le
 
 # Virgil Dupras <vdupras@gentoo.org> (23 Aug 2018)
 # Vulnerable and can't be removed yet because of alpha. Bug #664346
@@ -229,11 +168,6 @@ app-crypt/simp_le
 # Bernard Cafarelli <voyageur@gentoo.org> (20 Aug 2018)
 # Requires >=dev-libs/openssl-1.1.0
 >=net-misc/nextcloud-client-2.5.0_beta1
-
-# Michael Orlitzky <mjo@gentoo.org> (16 Aug 2018)
-# Obsolete! Use net-analyzer/nagios-icinga-openvpn instead.
-# Will be removed in 30 days (bug 663774).
-net-analyzer/nagios-check_openvpn-simple
 
 # Bernard Cafarelli <voyageur@gentoo.org> (13 Aug 2018)
 # Beta release with new features, masked for testing
@@ -416,13 +350,6 @@ sys-libs/uclibc
 virtual/jdk:9
 virtual/jre:9
 
-# Patrice Clement <monsieurp@gentoo.org> (12 Dec 2017)
-# Masked due to a hard dependency on an ancient versions of dev-libs/msgpack
-# (<0.6) that have been punted from the tree.
-# Michał Górny <mgorny@gentoo.org> (26 Aug 2018)
-# Removal in 30 days.  Bug #664662.
-net-misc/cocaine-core
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (22 Oct 2017)
 # Broken with recent Perl (5.26) and not used by anything
 # in the Gentoo repository. Please uninstall.
@@ -583,12 +510,6 @@ media-plugins/gst-plugins-ffmpeg
 # Alon Bar-Lev <alonbl@gentoo.org> (06 Feb 2017)
 # Needs openssl-1.1
 >=dev-libs/opencryptoki-3.6
-
-# Jeroen Roovers <jer@gentoo.org> (12 Jan 2017)
-# Use x11-drivers/nvidia-drivers[tools] instead.
-# Michał Górny <mgorny@gentoo.org> (26 Aug 2018)
-# Removal in 30 days.  Bug #664638.
-media-video/nvidia-settings
 
 # Michael Orlitzky <mjo@gentoo.org> (07 Jan 2017)
 # This package has some dangerous quality and security issues, but

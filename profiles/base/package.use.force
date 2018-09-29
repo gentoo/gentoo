@@ -19,11 +19,6 @@ sys-cluster/glusterfs libtirpc
 # to avoid automagic deps.
 >=x11-apps/intel-gpu-tools-9999 alsa chamelium doc glib gsl sound valgrind video_cards_amdgpu video_cards_intel video_cards_nouveau X xrandr xv
 
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# www-apache/mod_python is masked for removal, force agent-only builds.
-net-analyzer/check_mk agent-only
-
 # NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
 # Always force patch on appropriate variant to ensure
 # similar experience when using app-emulation/wine-any

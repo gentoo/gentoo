@@ -176,12 +176,6 @@ sys-boot/refind custom-cflags
 # Needs patch to even build, subs are broken and not supported anymore.
 media-video/mpv libav
 
-# Michał Górny <mgorny@gentoo.org> (05 Jun 2017)
-# (on behalf of Treecleaner project)
-# www-apache/mod_python is masked for removal, mask flags that
-# require it.
-net-analyzer/check_mk livestatus wato
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (29 May 2017)
 # Does not build
 sci-libs/linux-gpib php
