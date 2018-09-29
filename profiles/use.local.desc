@@ -39,7 +39,7 @@ app-admin/conky:math - Enable support for glibc's libm math library
 app-admin/conky:moc - Enable monitoring of music played by media-sound/moc
 app-admin/conky:mpd - Enable monitoring of music controlled by media-sound/mpd
 app-admin/conky:nano-syntax - Enable syntax highlighting for app-editors/nano
-app-admin/conky:nvidia - Enable reading of nvidia card temperature sensors via media-video/nvidia-settings
+app-admin/conky:nvidia - Enable reading of nvidia card temperature sensors via media-video/nvidia-drivers
 app-admin/conky:portmon - Enable support for tcp (ip4) port monitoring
 app-admin/conky:thinkpad - Enable support for IBM/Lenovo notebooks
 app-admin/conky:weather-metar - Enable support for metar weather service
@@ -3589,7 +3589,7 @@ media-video/vdr:permashift - permanent timeshift by recording live TV on hard di
 media-video/vdr:permashift_v1 - permanent timeshift by recording live TV on RAM, need plugin >=mediaplugins/vdr-permashift-1
 media-video/vdr:pinplugin - Support for media-plugins/vdr-pin
 media-video/vdr:resumereset - rreset resume of EOF
-media-video/vdr:rotor - Enable support for plugin media-plugins/vdr-rotor for dish-positioner.
+media-video/vdr:rotor - Enable support for plugin vdr-rotor for dish-positioner.
 media-video/vdr:ttxtsubs - support for media-plugins/vdr-ttxtsubs
 media-video/vdr:vasarajanauloja - replacement for the liemikuutio patch, adds some nice must haves features
 media-video/vdr:wareagleicon - Replace original icon set in menu
