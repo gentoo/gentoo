@@ -182,14 +182,6 @@ media-plugins/vdr-admin
 # bug 664672
 media-plugins/vdr-arghdirector
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> (26 Aug 2018)
-# masked for removal in ~30 Days
-# full integrated in core vdr
-# dead on upstream thince years
-# useless
-#bug 664676
-media-plugins/vdr-rotor
-
 # Virgil Dupras <vdupras@gentoo.org> (23 Aug 2018)
 # Vulnerable and can't be removed yet because of alpha. Bug #664346
 <dev-python/paramiko-2.4.1
