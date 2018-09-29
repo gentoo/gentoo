@@ -29,7 +29,7 @@
 		<flag name="moc">Enable monitoring of music played by <pkg>media-sound/moc</pkg></flag>
 		<flag name="mpd">Enable monitoring of music controlled by <pkg>media-sound/mpd</pkg></flag>
 		<flag name="nano-syntax">Enable syntax highlighting for <pkg>app-editors/nano</pkg></flag>
-		<flag name="nvidia">Enable reading of nvidia card temperature sensors via <pkg>media-video/nvidia-drivers</pkg></flag>
+		<flag name="nvidia">Enable reading of nvidia card temperature sensors via <pkg>x11-drivers/nvidia-drivers</pkg></flag>
 		<flag name="portmon">Enable support for tcp (ip4) port monitoring</flag>
 		<flag name="thinkpad">Enable support for IBM/Lenovo notebooks</flag>
 		<flag name="weather-metar">Enable support for metar weather service</flag>
