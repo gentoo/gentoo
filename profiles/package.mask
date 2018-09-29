@@ -190,15 +190,6 @@ media-plugins/vdr-arghdirector
 #bug 664676
 media-plugins/vdr-rotor
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> (26 Aug 2018)
-# masked for removal in ~30 Days
-# no converted to gettext handling
-# use old makefile handling
-# no upstream
-# dead since years
-# Bug 664678
-media-plugins/vdr-videosystem
-
 # Virgil Dupras <vdupras@gentoo.org> (23 Aug 2018)
 # Vulnerable and can't be removed yet because of alpha. Bug #664346
 <dev-python/paramiko-2.4.1
