@@ -205,11 +205,6 @@ media-plugins/vdr-rotor
 # Bug 664678
 media-plugins/vdr-videosystem
 
-# Michał Górny <mgorny@gentoo.org> (26 Aug 2018)
-# Live ebuild only.  Dependencies can no longer be satisfied by ::gentoo
-# packages.  Bug #664658.  Removal in 30 days.
-net-im/hangups
-
 # Virgil Dupras <vdupras@gentoo.org> (23 Aug 2018)
 # Vulnerable and can't be removed yet because of alpha. Bug #664346
 <dev-python/paramiko-2.4.1
