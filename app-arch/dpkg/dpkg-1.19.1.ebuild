@@ -18,6 +18,7 @@ RDEPEND="
 	bzip2? ( app-arch/bzip2 )
 	libmd? ( app-crypt/libmd )
 	lzma? ( app-arch/xz-utils )
+	nls? ( virtual/libintl )
 	selinux? ( sys-libs/libselinux )
 	zlib? ( >=sys-libs/zlib-1.1.4 )
 "
