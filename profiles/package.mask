@@ -156,12 +156,6 @@ media-plugins/vdr-autosort
 # a lot of unmanaged cruft on the filesystem.  Bug #664938.
 =media-gfx/gimp-2.10.6
 
-# Mikle Kolyada <zlogene@gentoo.org> (30 Aug 2018)
-# Dead upstream, does not work properly.
-# Unmaintained.
-# Use sys-boot/woeusb instead.
-sys-boot/winusb
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (29 Aug 2018)
 # Masked for removal in 30 days. Multiple build failures. Upstream inactive.
 # (bugs #321017, #581284, #588692, #602786, #649006, #654140)
