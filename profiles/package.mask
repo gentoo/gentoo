@@ -350,13 +350,6 @@ sys-libs/uclibc
 virtual/jdk:9
 virtual/jre:9
 
-# Patrice Clement <monsieurp@gentoo.org> (12 Dec 2017)
-# Masked due to a hard dependency on an ancient versions of dev-libs/msgpack
-# (<0.6) that have been punted from the tree.
-# Michał Górny <mgorny@gentoo.org> (26 Aug 2018)
-# Removal in 30 days.  Bug #664662.
-net-misc/cocaine-core
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (22 Oct 2017)
 # Broken with recent Perl (5.26) and not used by anything
 # in the Gentoo repository. Please uninstall.
