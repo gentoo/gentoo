@@ -511,12 +511,6 @@ media-plugins/gst-plugins-ffmpeg
 # Needs openssl-1.1
 >=dev-libs/opencryptoki-3.6
 
-# Jeroen Roovers <jer@gentoo.org> (12 Jan 2017)
-# Use x11-drivers/nvidia-drivers[tools] instead.
-# Michał Górny <mgorny@gentoo.org> (26 Aug 2018)
-# Removal in 30 days.  Bug #664638.
-media-video/nvidia-settings
-
 # Michael Orlitzky <mjo@gentoo.org> (07 Jan 2017)
 # This package has some dangerous quality and security issues, but
 # people may still find it useful. It is masked to prevent accidental
