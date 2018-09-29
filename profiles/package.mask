@@ -150,12 +150,6 @@ media-plugins/vdr-autosort
 ~dev-lang/julia-0.7.0
 ~dev-lang/julia-1.0.0
 
-# Michał Górny <mgorny@gentoo.org> (31 Aug 2018)
-# (on behalf of QA)
-# Major file→dir replacement that is both a PMS violation and leaves
-# a lot of unmanaged cruft on the filesystem.  Bug #664938.
-=media-gfx/gimp-2.10.6
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (29 Aug 2018)
 # Masked for removal in 30 days. Multiple build failures. Upstream inactive.
 # (bugs #321017, #581284, #588692, #602786, #649006, #654140)
