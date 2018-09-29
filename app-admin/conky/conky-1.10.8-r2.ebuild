@@ -29,7 +29,7 @@ DEPEND_COMMON="
 		lua-rsvg? (
 			>=dev-lua/toluapp-1.0.93
 			gnome-base/librsvg )
-		nvidia? ( || ( x11-drivers/nvidia-drivers[tools,static-libs] media-video/nvidia-settings ) )
+		nvidia? ( x11-drivers/nvidia-drivers[tools,static-libs] )
 		truetype? ( x11-libs/libXft >=media-libs/freetype-2 )
 		x11-libs/libX11
 		x11-libs/libXdamage

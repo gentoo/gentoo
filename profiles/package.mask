@@ -541,17 +541,6 @@ app-admin/amazon-ec2-init
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1*
 
-# James Le Cuirot <chewi@gentoo.org> (26 Aug 2018)
-# Although the Spring Framework is very much alive, our packages are
-# ancient and our infrastructure is not ready to update it any time
-# soon. If you want this then join the Java team and be prepared to do
-# a lot of work. Removal in 30 days.
-dev-java/spring-aop
-dev-java/spring-beans
-dev-java/spring-core
-dev-java/spring-expression
-dev-java/spring-instrument
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (03 Apr 2016)
 # Can exhaust all available memory depending on task
 # but is made available for experts who heed this warning

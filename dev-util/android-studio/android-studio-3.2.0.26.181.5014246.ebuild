@@ -7,6 +7,7 @@ inherit eutils java-pkg-2 eapi7-ver
 RESTRICT="strip"
 QA_PREBUILT="opt/${PN}/bin/libbreakgen*.so
 	opt/${PN}/bin/fsnotifier*
+	opt/${PN}/bin/lldb/*
 	opt/${PN}/lib/libpty/linux/x86*/libpty.so
 	opt/${PN}/plugins/android/lib/libwebp_jni*.so
 	opt/${PN}/plugins/android/resources/perfa/*/libperfa.so
@@ -96,15 +97,17 @@ src_install() {
 	local dir="/opt/${PN}"
 
 	insinto "${dir}"
-	# Replaced bundled jre with system vm/jdk
-	# This is really a bundled jdk not a jre
 	doins -r *
 
-	rm -rf "${D}${dir}/jre" || die
+	# Replaced bundled jre with system vm/jdk
+	# This is really a bundled jdk not a jre
+	rm -rf "${ED%/}${dir}/jre" || die
 	dosym "../../etc/java-config-2/current-system-vm" "${dir}/jre"
 
 	fperms 755 "${dir}/bin/studio.sh" "${dir}"/bin/fsnotifier{,64}
-	chmod 755 "${D}${dir}"/gradle/gradle-*/bin/gradle || die
+	fperms 755 "${dir}"/bin/*.py "${dir}"/bin/*.sh
+	chmod -R 755 "${ED%/}${dir}"/bin/lldb/{android,bin} || die
+	chmod 755 "${ED%/}${dir}"/gradle/gradle-*/bin/gradle || die
 
 	newicon "bin/studio.png" "${PN}.png"
 	make_wrapper ${PN} ${dir}/bin/studio.sh
