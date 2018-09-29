@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 <use>
-	<flag name="tools">Build extra tools useful for debugging (fiemap, feiwalk, beestop)</flag>
+	<flag name="tools">Build extra tools useful for debugging (fiemap, fiewalk)</flag>
 </use>
 <upstream>
 	<bugs-to>https://github.com/Zygo/bees/issues</bugs-to>
