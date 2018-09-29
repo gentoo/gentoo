@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -73,6 +73,7 @@ multilib_src_configure() {
 		-DWITH_SERVER="$(usex server)"
 		-DWITH_SFTP="$(usex sftp)"
 		-DWITH_STACK_PROTECTOR=OFF
+		-DWITH_STACK_PROTECTOR_STRONG=OFF
 		-DWITH_STATIC_LIB="$(usex static-libs)"
 		-DWITH_ZLIB="$(usex zlib)"
 	)
