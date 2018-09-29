@@ -9,6 +9,7 @@
     <flag name="extended">Build and install rls, rustfmt and cargo
     alongside the compiler and stdlib</flag>
     <flag name="cargo">Install cargo component</flag>
+    <flag name="clippy">Install clippy component</flag>
     <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> as the
     standard memory allocator</flag>
     <flag name="rls">Install rls component</flag>

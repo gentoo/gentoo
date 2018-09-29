@@ -39,7 +39,7 @@ cargo_crate_uris() {
 		local name version url pretag
 		name="${crate%-*}"
 		version="${crate##*-}"
-		pretag="[a-zA-Z]+"
+		pretag="^[a-zA-Z]+"
 		if [[ $version =~ $pretag ]]; then
 			version="${name##*-}-${version}"
 			name="${name%-*}"

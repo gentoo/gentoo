@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Dirkjan Ochtman <djc@gentoo.org> (29 Sep 2018)
+# Upstream doesn't build docs for tier 2 and lower architectures.
+# Bug #660512.
+dev-lang/rust doc
+
 # Michał Górny <mgorny@gentoo.org> (20 Sep 2018)
 # dev-libs/libpfm not keyworded here (and unclear if it supports ARM64).
 # Bug #666651.
