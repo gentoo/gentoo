@@ -10760,7 +10760,7 @@ x11-libs/libXScrnSaver 1.2.3: X.Org XScrnSaver library
 x11-libs/libXTrap 1.0.1-r1: X.Org XTrap library
 x11-libs/libXau 1.0.8-r1: X.Org X authorization library
 x11-libs/libXaw 1.0.13-r1: X.Org Xaw library
-x11-libs/libXaw3d 1.6.2 1.6.3: X.Org Xaw3d library
+x11-libs/libXaw3d 1.6.3: X.Org Xaw3d library
 x11-libs/libXaw3dXft 1.6.2c: Xaw3dXft library
 x11-libs/libXcomposite 0.4.4-r2: X.Org Xcomposite library
 x11-libs/libXcursor 1.1.15: X.Org Xcursor library
