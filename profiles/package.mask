@@ -161,11 +161,6 @@ media-plugins/vdr-autosort
 # (bugs #321017, #581284, #588692, #602786, #649006, #654140)
 www-plugins/gnash
 
-# James Le Cuirot <chewi@gentoo.org> (26 Aug 2018)
-# Unused Java virtual from the days when the JDK was proprietary. Now
-# we assume that com.sun is always available. Removal in 30 days.
-java-virtuals/jdk-with-com-sun
-
 # Virgil Dupras <vdupras@gentoo.org> (23 Aug 2018)
 # Vulnerable and can't be removed yet because of alpha. Bug #664346
 <dev-python/paramiko-2.4.1
