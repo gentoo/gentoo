@@ -173,15 +173,6 @@ java-virtuals/jdk-with-com-sun
 # bug 664670
 media-plugins/vdr-admin
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> (26 Aug 2018)
-# masked for removal in ~30 Days
-# do not work anymore since paytv provider provider has changed to paytv provider sky
-# no converted to gettext handling
-# old makefile handling
-# dead on upstream since years..
-# bug 664672
-media-plugins/vdr-arghdirector
-
 # Virgil Dupras <vdupras@gentoo.org> (23 Aug 2018)
 # Vulnerable and can't be removed yet because of alpha. Bug #664346
 <dev-python/paramiko-2.4.1
