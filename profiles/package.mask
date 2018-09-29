@@ -207,11 +207,6 @@ media-plugins/vdr-videosystem
 # Requires >=dev-libs/openssl-1.1.0
 >=net-misc/nextcloud-client-2.5.0_beta1
 
-# Michael Orlitzky <mjo@gentoo.org> (16 Aug 2018)
-# Obsolete! Use net-analyzer/nagios-icinga-openvpn instead.
-# Will be removed in 30 days (bug 663774).
-net-analyzer/nagios-check_openvpn-simple
-
 # Bernard Cafarelli <voyageur@gentoo.org> (13 Aug 2018)
 # Beta release with new features, masked for testing
 =app-text/tesseract-4.0.0_beta*
