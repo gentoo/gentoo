@@ -5,4 +5,5 @@
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
+	<longdescription lang="en">Polari is a simple IRC Client that is designed to integrate seamlessly with GNOME 3</longdescription>
 </pkgmetadata>
