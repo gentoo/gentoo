@@ -798,7 +798,6 @@ app-eselect/eselect-java 0.4.0: A set of eselect modules for Java
 app-eselect/eselect-lapack 0.1: LAPACK module for eselect
 app-eselect/eselect-lcdfilter 1: Eselect module to choose Freetype infinality-enhanced LCD filtering settings
 app-eselect/eselect-lib-bin-symlink 0.1.1: An eselect library to manage executable symlinks
-app-eselect/eselect-mesa 0.0.10-r1: Utility to change the Mesa OpenGL driver being used
 app-eselect/eselect-miniaudicle 1.0.1-r2: Manages the /usr/bin/miniAudicle symlink
 app-eselect/eselect-mpg123 0.1: Manage /usr/bin/mpg123 symlink
 app-eselect/eselect-mpost 0.3: mpost module for eselect
@@ -3061,7 +3060,7 @@ dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.1.1 1.5.0 1.6.0: Erasure Code API library written in C with pluggable Erasure Code backends.
 dev-libs/libestr 0.1.10: Library for some string essentials
 dev-libs/libev 4.23: A high-performance event loop/event model with lots of feature
-dev-libs/libevdev 1.5.9 1.5.9-r1: Handler library for evdev events
+dev-libs/libevdev 1.5.9-r1: Handler library for evdev events
 dev-libs/libevent 2.1.8: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libexplain 1.4: Library which may be used to explain Unix and Linux system call errors
@@ -3134,7 +3133,7 @@ dev-libs/libpipeline 1.4.0 1.4.2: a pipeline manipulation library
 dev-libs/libplatform 2.0.1: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpqxx 6.0.0: Standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
-dev-libs/libpthread-stubs 0.4 0.4-r1: Pthread functions stubs for platforms missing them
+dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.4.0: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 2.0.0: A Qt implementation of XDG standards
 dev-libs/librdkafka 0.11.4: Apache Kafka C/C++ client library
@@ -3268,7 +3267,7 @@ dev-libs/vala-common 0.36.13: Build infrastructure for packages that use Vala
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
 dev-libs/vc 0.7.4 1.3.0: SIMD Vector Class Library for C++
 dev-libs/volume_key 0.3.9: Library for manipulating and storing storage volume encryption keys
-dev-libs/wayland 1.14.0 1.15.0: Wayland protocol libraries
+dev-libs/wayland 1.15.0: Wayland protocol libraries
 dev-libs/wayland-protocols 1.13: Wayland protocol files
 dev-libs/weston 3.0.0: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
@@ -7668,7 +7667,7 @@ media-libs/lilv 0.24.2-r2: Library to make the use of LV2 plugins as simple as p
 media-libs/lv2 1.14.0-r1: A simple but extensible successor of LADSPA
 media-libs/mediastreamer 2.9.0-r2: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 17.3.9 18.1.6: OpenGL-like graphic library for Linux
+media-libs/mesa 18.1.9: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.8-r1: An Open Source library for Flash movie generation
 media-libs/mlt 6.10.0: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -10336,7 +10335,7 @@ virtual/fam 0-r1: A virtual package to choose between gamin and fam
 virtual/ffmpeg 9-r2: Virtual package for FFmpeg executable implementation
 virtual/fortran 0: Virtual for Fortran Compiler
 virtual/freedesktop-icon-theme 0-r3: A virtual to choose between different icon themes
-virtual/glu 9.0 9.0-r1 9.0-r2: Virtual for OpenGL utility library
+virtual/glu 9.0-r2: Virtual for OpenGL utility library
 virtual/gnustep-back 0.25.0: Virtual for back-end component for the GNUstep GUI Library
 virtual/gsasl 2: Virtual for the GNU SASL library
 virtual/httpd-basic 0-r2: Virtual for static HTML-enabled webservers
@@ -10376,7 +10375,7 @@ virtual/mysql 5.6-r12: Virtual for MySQL database server
 virtual/notification-daemon 0: Virtual for notification daemon dbus service
 virtual/ooo 0: Virtual for OpenOffice.org/LibreOffice
 virtual/opencl 0-r5: Virtual for OpenCL implementations
-virtual/opengl 7.0 7.0-r1 7.0-r2: Virtual for OpenGL implementation
+virtual/opengl 7.0-r2: Virtual for OpenGL implementation
 virtual/os-headers 0: Virtual for operating system headers
 virtual/package-manager 1: Virtual for the package manager
 virtual/pager 0: Virtual for command-line pagers
@@ -10658,7 +10657,7 @@ x11-apps/xhost 1.0.6 1.0.7: Controls host and/or user access to a running X serv
 x11-apps/xinit 1.4.0: X Window System initializer
 x11-apps/xinput 1.6.1 1.6.2: Utility to set XInput device parameters
 x11-apps/xinput_calibrator 0.7.5-r1: A generic touchscreen calibration program for X.Org
-x11-apps/xkbcomp 1.4.1 1.4.2: compile XKB keyboard description
+x11-apps/xkbcomp 1.4.2: compile XKB keyboard description
 x11-apps/xkbevd 1.1.4: XKB event daemon
 x11-apps/xkbprint 1.0.4: Print an XKB keyboard description
 x11-apps/xkbutils 1.0.4: X.Org xkbutils application
@@ -10701,10 +10700,10 @@ x11-drivers/xf86-input-evdev 2.10.5 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
 x11-drivers/xf86-input-keyboard 1.9.0: Keyboard input driver
 x11-drivers/xf86-input-libinput 0.27.1: X.org input driver based on libinput
-x11-drivers/xf86-input-mouse 1.9.2 1.9.3: X.Org driver for mouse input devices
+x11-drivers/xf86-input-mouse 1.9.3: X.Org driver for mouse input devices
 x11-drivers/xf86-input-mtrack 0.5.0: Xorg Driver for Multitouch Trackpads
 x11-drivers/xf86-input-synaptics 1.9.0 1.9.1: Driver for Synaptics touchpads
-x11-drivers/xf86-input-tslib 0.0.6-r3 1.2.0_rc1: X.org tslib input driver
+x11-drivers/xf86-input-tslib 1.2.0_rc1: X.org tslib input driver
 x11-drivers/xf86-input-vmmouse 13.1.0-r1: VMWare mouse input driver
 x11-drivers/xf86-input-void 1.4.1: null input driver
 x11-drivers/xf86-input-wacom 0.34.0 0.36.0 0.36.0-r2: Driver for Wacom tablets and drawing devices
@@ -10712,7 +10711,7 @@ x11-drivers/xf86-video-amdgpu 18.0.1: Accelerated Open Source driver for AMDGPU 
 x11-drivers/xf86-video-ast 0.97.0-r1 1.0.1 1.1.5: X.Org driver for ASpeedTech cards
 x11-drivers/xf86-video-ati 18.0.1 18.0.1-r1: ATI video driver
 x11-drivers/xf86-video-dummy 0.3.8: X.Org driver for dummy cards
-x11-drivers/xf86-video-fbdev 0.4.4 0.5.0: video driver for framebuffer device
+x11-drivers/xf86-video-fbdev 0.5.0: video driver for framebuffer device
 x11-drivers/xf86-video-glint 1.2.9: GLINT/Permedia video driver
 x11-drivers/xf86-video-intel 2.99.917_p20180214 2.99.917_p20180214-r1: X.Org driver for Intel cards
 x11-drivers/xf86-video-mga 1.6.5: Matrox video driver
@@ -10757,7 +10756,7 @@ x11-libs/libGLw 8.0.0: Mesa GLw library
 x11-libs/libICE 1.0.9-r2: X.Org Inter-Client Exchange library
 x11-libs/libSM 1.2.2-r2: X.Org Session Management library
 x11-libs/libX11 1.6.6: X.Org X11 library
-x11-libs/libXScrnSaver 1.2.2-r2 1.2.3: X.Org XScrnSaver library
+x11-libs/libXScrnSaver 1.2.3: X.Org XScrnSaver library
 x11-libs/libXTrap 1.0.1-r1: X.Org XTrap library
 x11-libs/libXau 1.0.8-r1: X.Org X authorization library
 x11-libs/libXaw 1.0.13-r1: X.Org Xaw library
@@ -10772,7 +10771,7 @@ x11-libs/libXfixes 5.0.3-r1: X.Org Xfixes library
 x11-libs/libXfont2 2.0.3-r1: X.Org Xfont library
 x11-libs/libXft 2.3.2-r1: X.Org Xft library
 x11-libs/libXi 1.7.9-r1: X.Org Xi library
-x11-libs/libXinerama 1.1.3-r1 1.1.4: X.Org Xinerama library
+x11-libs/libXinerama 1.1.4: X.Org Xinerama library
 x11-libs/libXmu 1.1.2-r1: X.Org Xmu library
 x11-libs/libXpm 3.5.12-r1: X.Org Xpm library
 x11-libs/libXpresent 1.0.0-r1: X Present Extension C Library
@@ -10784,15 +10783,15 @@ x11-libs/libXtst 1.2.3-r1: X.Org Xlib-based client API for the XTEST & RECORD ex
 x11-libs/libXv 1.0.11-r1: X.Org Xv library
 x11-libs/libXvMC 1.0.10-r1: X.Org XvMC library
 x11-libs/libXxf86dga 1.1.4-r1: X.Org Xxf86dga library
-x11-libs/libXxf86misc 1.0.3-r2 1.0.4: X.Org Xxf86misc library
+x11-libs/libXxf86misc 1.0.4: X.Org Xxf86misc library
 x11-libs/libXxf86vm 1.1.4-r1: X.Org Xxf86vm library
 x11-libs/libaosd 0.2.7: An advanced on screen display (OSD) library
 x11-libs/libast 0.7 0.7-r2: LIBrary of Assorted Spiffy Things
 x11-libs/libcryptui 3.12.2-r1: User interface components for OpenPGP
 x11-libs/libdlo 0.1.2: A fully open source driver which supports all DisplayLink devices
-x11-libs/libdmx 1.1.3-r1 1.1.4: X.Org dmx library
+x11-libs/libdmx 1.1.4: X.Org dmx library
 x11-libs/libdockapp 0.7.2: Window Maker Dock Applet Library
-x11-libs/libdrm 2.4.89 2.4.91 2.4.93: X.Org libdrm library
+x11-libs/libdrm 2.4.93: X.Org libdrm library
 x11-libs/libfakekey 0.1-r3: Helper library for the x11-misc/matchbox-keyboard package
 x11-libs/libfm 1.2.3-r1 1.2.4 1.2.5: A library for file management
 x11-libs/libfm-extra 1.2.3 1.2.4 1.2.5: A library for file management
