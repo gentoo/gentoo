@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (29 Sep 2018)
+# Removal in 30 days, bug #576334
+app-eselect/eselect-mesa
+
 # Virgil Dupras <vdupras@gentoo.org> (27 Sep 2018)
 # Outdated, unmaintained, no revdeps.
 # Removal in 30 days, bug #623292
