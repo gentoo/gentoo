@@ -166,13 +166,6 @@ www-plugins/gnash
 # we assume that com.sun is always available. Removal in 30 days.
 java-virtuals/jdk-with-com-sun
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> (26 Aug 2018)
-# masked for removal in ~30 Days
-# the plugin is written to manage the vdr2gentoo distribution,
-# useless in gentoo
-# bug 664670
-media-plugins/vdr-admin
-
 # Virgil Dupras <vdupras@gentoo.org> (23 Aug 2018)
 # Vulnerable and can't be removed yet because of alpha. Bug #664346
 <dev-python/paramiko-2.4.1
