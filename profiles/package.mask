@@ -210,13 +210,6 @@ media-plugins/vdr-videosystem
 # packages.  Bug #664658.  Removal in 30 days.
 net-im/hangups
 
-# Michał Górny <mgorny@gentoo.org> (26 Aug 2018)
-# mod_python removal caused it to be reduced to agent-only, which is
-# apparently redundant to net-analyzer/check_mk_agent.  The package
-# is unmaintained and potentially vulnerable.  Bug #632648.
-# Removal in 30 days.
-net-analyzer/check_mk
-
 # Virgil Dupras <vdupras@gentoo.org> (23 Aug 2018)
 # Vulnerable and can't be removed yet because of alpha. Bug #664346
 <dev-python/paramiko-2.4.1
