@@ -35,6 +35,7 @@ DEPEND="${RDEPEND}
 		seccomp? ( sys-libs/libseccomp )
 	)"
 BDEPEND=">=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	tools? ( sys-devel/autogen )
 	valgrind? ( dev-util/valgrind )
 	doc? ( dev-util/gtk-doc )
 	nls? ( sys-devel/gettext )
