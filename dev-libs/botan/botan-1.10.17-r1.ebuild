@@ -145,7 +145,7 @@ src_install() {
 			rm -fr build/python
 			ln -s "${BUILD_DIR}" build/python
 			emake -f Makefile.python \
-				PYTHON_SITE_PACKAGE_DIR="${ED}$(python_get_sitedir)" \
+				PYTHON_SITE_PACKAGE_DIR="${ED}/$(python_get_sitedir)" \
 				install
 		}
 		python_foreach_impl installation
