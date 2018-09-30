@@ -4141,7 +4141,7 @@ dev-perl/Scalar-Properties 1.100.860-r1: run-time properties on scalar variables
 dev-perl/Schedule-At 1.150.0-r1 1.150.0-r2: OS independent interface to the Unix 'at' command
 dev-perl/Scope-Guard 0.210.0: Lexically scoped resource management
 dev-perl/Scope-Upper 0.290.0-r1 0.300.0: Act on upper scopes
-dev-perl/Search-Xapian 1.2.23.0 1.2.25.0: Perl XS frontend to the Xapian C++ search library
+dev-perl/Search-Xapian 1.2.25.0: Perl XS frontend to the Xapian C++ search library
 dev-perl/Sereal 4.4.0: Fast, compact, powerful binary (de-)serialization
 dev-perl/Sereal-Decoder 4.4.0: Fast, compact, powerful binary deserialization
 dev-perl/Sereal-Encoder 4.4.0: Fast, compact, powerful binary serialization
@@ -4920,7 +4920,7 @@ dev-python/graph-tool 2.19 2.23: An efficient python module for manipulation and
 dev-python/graphcanvas 4.0.2-r1: Enthought Tool Suite: Interactive Graph (network) Visualization
 dev-python/graphy 1.0-r1: Simple Chart Library for Python
 dev-python/greenlet 0.4.12: Lightweight in-process concurrent programming
-dev-python/gst-python 0.10.22-r1 1.12.3 1.14.1-r1: A Python Interface to GStreamer
+dev-python/gst-python 0.10.22-r1 1.14.1-r1: A Python Interface to GStreamer
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
 dev-python/guessit 2.1.4: Python library for guessing information from video filenames
 dev-python/guppy 0.1.10-r1: Guppy-PE -- A Python Programming Environment
@@ -7830,7 +7830,7 @@ media-plugins/gst-plugins-libpng 0.10.31-r1 1.12.4 1.14.1: PNG image encoder/dec
 media-plugins/gst-plugins-libvisual 0.10.36-r1 1.12.4 1.14.1: Visualization elements for GStreamer
 media-plugins/gst-plugins-lv2 1.14.1: Lv2 elements for Gstreamer
 media-plugins/gst-plugins-mad 0.10.19-r1: plugin for gstreamer
-media-plugins/gst-plugins-meta 0.10-r11 1.12.4 1.14.1: Meta ebuild to pull in gst plugins for apps
+media-plugins/gst-plugins-meta 0.10-r11 1.14.1: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-modplug 0.10.23-r1 1.14.1: MOD audio decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2dec 0.10.19-r1 1.14.1: MPEG2 decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2enc 0.10.23-r1 1.14.1: MPEG-1/2 video encoding plugin for GStreamer
