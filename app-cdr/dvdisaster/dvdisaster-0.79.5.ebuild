@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils gnome2-utils toolchain-funcs
+EAPI=6
+inherit desktop gnome2-utils toolchain-funcs
 
 DESCRIPTION="Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)"
 HOMEPAGE="http://dvdisaster.net/"
@@ -19,14 +19,17 @@ for dvdi_lang in ${dvdi_langs}; do
 done
 unset dvdi_lang
 
-RDEPEND=">=dev-libs/glib-2.32
+RDEPEND="
+	>=dev-libs/glib-2.32:2
 	nls? ( virtual/libintl )
 	>=x11-libs/gtk+-2.6:2
-	x11-libs/gdk-pixbuf"
+	x11-libs/gdk-pixbuf
+"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	virtual/os-headers
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 src_configure() {
 	./configure \
@@ -46,8 +49,7 @@ src_compile() {
 }
 
 src_install() {
-	emake install
-	dodoc CHANGELOG CREDITS.en README* TODO *HOWTO
+	DOCS="CHANGELOG CREDITS.en README* TODO *HOWTO" default
 
 	newicon contrib/${PN}48.png ${PN}.png
 	make_desktop_entry ${PN} ${PN} ${PN} 'System;Utility'
@@ -64,12 +66,11 @@ src_install() {
 		use l10n_${dvdi_lang} || rm -rf \
 			${dest}/doc/${PF}/${dvdi_lang/-/_} \
 			${dest}/doc/${PF}/CREDITS.${dvdi_lang/-/_} \
-			${dest}/man/${dvdi_lang/-/_}
+			${dest}/man/${dvdi_lang/-/_} || die
 	done
 
-	rm -f "${D}"usr/bin/*-uninstall.sh
+	rm -f "${D}"usr/bin/*-uninstall.sh || die
 }
 
-pkg_preinst() { gnome2_icon_savelist; }
 pkg_postinst() { gnome2_icon_cache_update; }
 pkg_postrm() { gnome2_icon_cache_update; }
