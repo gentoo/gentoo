@@ -2934,7 +2934,7 @@ dev-libs/bglibs 1.041 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 7.2e 7.4.2 7.6.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.63.0 1.65.0: Boost Libraries for C++
-dev-libs/botan 1.10.17 2.7.0: A C++ crypto library
+dev-libs/botan 1.10.17-r1 2.7.0: A C++ crypto library
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
 dev-libs/cdk 5.0.20131107 5.0.20141106 5.0.20160131: A library of curses widgets
@@ -7335,7 +7335,7 @@ media-gfx/imagemagick 6.9.10.11 7.0.8.11: A collection of tools and libraries fo
 media-gfx/imageworsener 1.3.2: Utility for image scaling and processing
 media-gfx/inkscape 0.92.2: A SVG based generic vector-drawing program
 media-gfx/iscan 2.30.2.2: EPSON Image Scan! for Linux (including sane-epkowa backend)
-media-gfx/iscan-data 1.22.0.1 1.36.0.1: Image Scan! for Linux data files
+media-gfx/iscan-data 1.36.0.1: Image Scan! for Linux data files
 media-gfx/iscan-plugin-gt-f720 0.0.1.2: Epson Perfection V300 PHOTO scanner plugin for SANE 'epkowa' backend
 media-gfx/jhead 2.97: Exif Jpeg camera setting parser and thumbnail remover
 media-gfx/jigl 2.0.1: Jason's Image Gallery
