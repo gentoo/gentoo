@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm x11-libs/libXpm x11-base/xorg-proto x11-misc/imake
+DESCRIPTION=WindowManager that arranges the windows in a tree (not in a list)
+EAPI=7
+HOMEPAGE=http://treewm.sourceforge.net/
+KEYWORDS=~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm x11-libs/libXpm
+SLOT=0
+SRC_URI=mirror://sourceforge/treewm/treewm-0.4.5.tar.bz2
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=585367076dcff78b0f87e50b5c506776

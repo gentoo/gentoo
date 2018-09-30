@@ -8712,7 +8712,7 @@ net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
 net-libs/libwebsockets 2.1.1: canonical libwebsockets.org websocket library
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/loudmouth 1.5.3-r1: Lightweight C Jabber library
-net-libs/mbedtls 2.7.2 2.10.0: Cryptographic library for embedded systems
+net-libs/mbedtls 2.10.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 2.0.20180222 2.0.20180503: UPnP client library and a simple UPnP client
 net-libs/nativebiginteger 0.8.7: jbigi JNI library for net.i2p.util.NativeBigInteger java-class from I2P
