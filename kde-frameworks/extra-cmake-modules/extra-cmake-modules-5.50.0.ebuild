@@ -1,9 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
+ECM_KDEINSTALLDIRS="false"
 KDE_AUTODEPS="false"
 KDE_DEBUG="false"
 KDE_QTHELP="false"
@@ -43,13 +44,14 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_HTML_DOCS="$(usex doc)"
-		-DBUILD_MAN_DOCS="$(usex doc)"
-		-DDOC_INSTALL_DIR="/usr/share/doc/${PF}"
+		-DBUILD_QTHELP_DOCS=$(usex doc)
+		-DBUILD_HTML_DOCS=$(usex doc)
+		-DBUILD_MAN_DOCS=$(usex doc)
+		-DDOC_INSTALL_DIR=/usr/share/doc/"${PF}"
 	)
 	use test && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_PythonModuleGeneration=ON )
 
-	cmake-utils_src_configure
+	kde5_src_configure
 }
 
 src_test() {
