@@ -33,7 +33,7 @@ IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 LICENSE="HPND MIT BSD-2 BSD CC-BY-SA-4.0"
 SLOT="0"
 IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early gdb heat libressl nist ntpviz samba seccomp smear tests" #ionice
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE} nist? ( rclock_local )"
 
 # net-misc/pps-tools oncore,pps
 CDEPEND="${PYTHON_DEPS}
