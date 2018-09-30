@@ -331,7 +331,10 @@ mozconfig_config() {
 	mozconfig_use_with system-harfbuzz
 	mozconfig_use_with system-harfbuzz system-graphite2
 
-	if use arm ; then
+	if use clang ; then
+		# https://bugzilla.mozilla.org/show_bug.cgi?id=1423822
+		mozconfig_annotate 'elf-hack is broken when using Clang' --disable-elf-hack
+	elif use arm ; then
 		mozconfig_annotate 'elf-hack is broken on arm' --disable-elf-hack
 	fi
 

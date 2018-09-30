@@ -81,6 +81,9 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# Lots of patches from gnome-3-26 branch on top of 3.26.2
 	"${WORKDIR}"/patches/
+
+	# Fix non-wayland builds, bug #667244
+	"${FILESDIR}"/${PV}-non-wayland-build.patch
 )
 
 src_prepare() {

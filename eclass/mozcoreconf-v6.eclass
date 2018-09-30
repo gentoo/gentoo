@@ -204,7 +204,14 @@ mozconfig_init() {
 	case "${ARCH}" in
 	arm)
 		# Reduce the memory requirements for linking
-		append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
+		if use clang ; then
+			# Nothing to do
+			:;
+		elif tc-ld-is-gold ; then
+			append-ldflags -Wl,--no-keep-memory
+		else
+			append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
+		fi
 		;;
 	alpha)
 		# Historically we have needed to add -fPIC manually for 64-bit.
@@ -219,7 +226,14 @@ mozconfig_init() {
 	ppc64)
 		append-flags -fPIC -mminimal-toc
 		# Reduce the memory requirements for linking
-		append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
+		if use clang ; then
+			# Nothing to do
+			:;
+		elif tc-ld-is-gold ; then
+			append-ldflags -Wl,--no-keep-memory
+		else
+			append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
+		fi
 		;;
 	esac
 
