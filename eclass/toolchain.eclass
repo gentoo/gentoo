@@ -1350,7 +1350,7 @@ toolchain_src_configure() {
 	addwrite /dev/zero
 	echo "${S}"/configure "${confgcc[@]}"
 	# Older gcc versions did not detect bash and re-exec itself, so force the
-	# use of bash.  Newer ones will auto-detect, but this is not harmeful.
+	# use of bash.  Newer ones will auto-detect, but this is not harmful.
 	CONFIG_SHELL="${EPREFIX}/bin/bash" \
 	bash "${S}"/configure "${confgcc[@]}" || die "failed to run configure"
 
@@ -1625,6 +1625,11 @@ toolchain_src_compile() {
 	[[ ! -x /usr/bin/perl ]] \
 		&& find "${WORKDIR}"/build -name '*.[17]' -exec touch {} +
 
+	# Older gcc versions did not detect bash and re-exec itself, so force the
+	# use of bash.  Newer ones will auto-detect, but this is not harmful.
+	# This needs to be set for compile as well, as it's used in libtool
+	# generation, which will break install otherwise (at least in 3.3.6): #664486
+	CONFIG_SHELL="${EPREFIX}/bin/bash" \
 	gcc_do_make ${GCC_MAKE_TARGET}
 }
 
