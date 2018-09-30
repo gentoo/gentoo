@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -128,15 +128,15 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}usr" install
+	emake DESTDIR="${ED}/usr" install
 
 	if ! use static-libs; then
-		rm "${ED}usr/$(get_libdir)/libbotan"*.a || die 'remove of static libs failed'
+		rm "${ED}/usr/$(get_libdir)/libbotan"*.a || die 'remove of static libs failed'
 	fi
 
 	# Add compatibility symlinks.
-	[[ -e "${ED}usr/bin/botan-config" ]] && die "Compatibility code no longer needed"
-	[[ -e "${ED}usr/$(get_libdir)/pkgconfig/botan.pc" ]] && die "Compatibility code no longer needed"
+	[[ -e "${ED}/usr/bin/botan-config" ]] && die "Compatibility code no longer needed"
+	[[ -e "${ED}/usr/$(get_libdir)/pkgconfig/botan.pc" ]] && die "Compatibility code no longer needed"
 	dosym botan-config-1.10 /usr/bin/botan-config
 	dosym botan-1.10.pc /usr/$(get_libdir)/pkgconfig/botan.pc
 
