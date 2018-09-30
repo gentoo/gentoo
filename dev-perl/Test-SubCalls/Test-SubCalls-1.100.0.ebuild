@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Track the number of times subs are called"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="alpha amd64 ~arm ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 IUSE=""
 
 DEPEND="
