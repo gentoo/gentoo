@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
- <!-- maintainer-needed -->
- <use>
-    <flag name="hipe">HIgh Performance Erlang extension</flag>
-    <flag name="kpoll">Enable kernel polling support</flag>
-    <flag name="compat-ethread">Enable compatibility with pre-pentium 4 CPUs in the ethread library.</flag>
-    <flag name="dirty-schedulers">Enable dirty schedulers</flag>
-  </use>
-<longdescription>
-Erlang is a programming language designed at the Ericsson 
-Computer Science Laboratory. Open-source Erlang is being 
-released to help encourage the spread of Erlang outside 
-Ericsson.
-</longdescription>
+	<maintainer type="person">
+		<email>stefantalpalaru@yahoo.com</email>
+		<name>Ștefan Talpalaru</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="compat-ethread">Enable compatibility with pre-pentium 4 CPUs in the ethread library.</flag>
+		<flag name="dirty-schedulers">Enable dirty schedulers</flag>
+		<flag name="hipe">HIgh Performance Erlang extension</flag>
+		<flag name="kpoll">Enable kernel polling support</flag>
+		<flag name="pgo">Build erts with profile-guided optimizations</flag>
+	</use>
+	<longdescription>
+		Erlang is a programming language designed at the Ericsson
+		Computer Science Laboratory. Open-source Erlang is being
+		released to help encourage the spread of Erlang outside
+		Ericsson.
+	</longdescription>
 </pkgmetadata>
