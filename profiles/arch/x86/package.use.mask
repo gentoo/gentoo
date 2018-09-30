@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Thomas Deutschmann <whissi@gentoo.org> (30 Sep 2018)
+# Unmask libheif support where media-libs/libheif is keyworded
+media-gfx/imagemagick -heif
+
 # Tomáš Mózes <hydrapolic@gmail.com> (28 Sep 2018)
 # Requires dev-db/mongodb which has dropped x86 support
 dev-python/pymongo test

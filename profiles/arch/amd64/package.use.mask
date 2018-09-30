@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (30 Sep 2018)
+# Unmask libheif support where media-libs/libheif is keyworded
+media-gfx/imagemagick -heif
+
 # Ben Kohler <bkohler@gentoo.org> (23 Aug 2018)
 # Unmask iwd support where net-wireless/iwd is keyworded
 net-misc/connman -iwd

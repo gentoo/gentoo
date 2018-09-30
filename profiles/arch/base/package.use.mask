@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (30 Sep 2018)
+# Requires media-libs/libheif which is only keyworded for amd64 and x86
+media-gfx/imagemagick heif
+
 # Ben Kohler <bkohler@gentoo.org> (23 Aug 2018)
 # Mask iwd support until net-wireless/iwd is keyworded
 net-misc/connman iwd
