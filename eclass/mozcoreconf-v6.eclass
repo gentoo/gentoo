@@ -204,7 +204,9 @@ mozconfig_init() {
 	case "${ARCH}" in
 	arm)
 		# Reduce the memory requirements for linking
-		append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
+		if tc-ld-is-gold
+		append-ldflags -Wl,--no-keep-memory
+		fi
 		;;
 	alpha)
 		# Historically we have needed to add -fPIC manually for 64-bit.
