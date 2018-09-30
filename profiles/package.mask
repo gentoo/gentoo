@@ -29,6 +29,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (30 Sep 2018)
+# Poor quality NIH ebuilds with multiple issues and lack of test suites.
+# They do not support Python 3 (even if somebody claimed otherwise,
+# completely ignoring all the errors during install phase), depend
+# on old Twisted packages and have no reverse dependencies in ::gentoo.
+# Removal in 30 days.  Bug #667354.
+dev-python/python-application
+dev-python/python-cjson
+dev-python/python-eventlib
+dev-python/python-gnutls
+dev-python/python-msrplib
+dev-python/python-xcaplib
+
 # Matt Turner <mattst88@gentoo.org> (29 Sep 2018)
 # Removal in 30 days, bug #576334
 app-eselect/eselect-mesa
