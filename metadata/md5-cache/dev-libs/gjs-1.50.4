@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=dev-libs/glib-2.52.1 >=dev-libs/gobject-introspection-1.53.4:= sys-libs/readline:0= dev-lang/spidermonkey:52 virtual/libffi cairo? ( x11-libs/cairo[X] ) gtk? ( >=x11-libs/gtk+-3.20:3 ) gnome-base/gnome-common sys-devel/gettext virtual/pkgconfig test? ( sys-apps/dbus ) >=app-portage/elt-patches-20170815 app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Javascript bindings for GNOME
+EAPI=6
+HOMEPAGE=https://wiki.gnome.org/Projects/Gjs
+IUSE=+cairo examples gtk test test
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=MIT || ( MPL-1.1 LGPL-2+ GPL-2+ )
+RDEPEND=>=dev-libs/glib-2.52.1 >=dev-libs/gobject-introspection-1.53.4:= sys-libs/readline:0= dev-lang/spidermonkey:52 virtual/libffi cairo? ( x11-libs/cairo[X] ) gtk? ( >=x11-libs/gtk+-3.20:3 )
+SLOT=0
+SRC_URI=mirror://gnome/sources/gjs/1.50/gjs-1.50.4.tar.xz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome.org	5e4cc5af3f1b17bdee155bf02e8c2df4	gnome2	acac536f2c3bbcd312ac3faaa3e55e40	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	pax-utils	e85f015e815dd463b0c206d781ef45a5	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	virtualx	401b718cc14d43a5a7fbe062c4851ba5	xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=0fbcb4e146ccb437b9708b14b4cc3895
