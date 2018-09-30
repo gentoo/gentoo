@@ -3,20 +3,24 @@
 
 EAPI="6"
 
-inherit eapi7-ver eutils flag-o-matic libtool multilib toolchain-funcs
+inherit eapi7-ver eutils flag-o-matic libtool perl-functions toolchain-funcs multilib
 
-MY_P=ImageMagick-$(ver_rs 3 '-')
+if [[ ${PV} == "9999" ]] ; then
+	EGIT_REPO_URI="https://github.com/ImageMagick/ImageMagick.git"
+	inherit git-r3
+	MY_P="imagemagick-9999"
+else
+	MY_P=ImageMagick-$(ver_rs 3 '-')
+	SRC_URI="mirror://${PN}/${MY_P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+fi
 
 DESCRIPTION="A collection of tools and libraries for many image formats"
 HOMEPAGE="https://www.imagemagick.org/"
-SRC_URI="mirror://${PN}/${MY_P}.tar.xz"
 
 LICENSE="imagemagick"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="bzip2 corefonts cxx djvu fftw fontconfig fpx graphviz hdri jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
-
-RESTRICT="perl? ( userpriv )"
+IUSE="bzip2 corefonts cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
 
 RDEPEND="
 	dev-libs/libltdl:0
@@ -27,6 +31,7 @@ RDEPEND="
 	fontconfig? ( media-libs/fontconfig )
 	fpx? ( >=media-libs/libfpx-1.3.0-r1 )
 	graphviz? ( media-gfx/graphviz )
+	heif? ( media-libs/libheif:= )
 	jbig? ( >=media-libs/jbigkit-2:= )
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( >=media-libs/openjpeg-2.1.0:2 )
@@ -89,7 +94,7 @@ src_prepare() {
 	elibtoolize # for Darwin modules
 
 	# For testsuite, see https://bugs.gentoo.org/show_bug.cgi?id=500580#c3
-	local mesa_cards ati_cards nvidia_cards render_cards
+	local ati_cards mesa_cards nvidia_cards render_cards
 	shopt -s nullglob
 	ati_cards=$(echo -n /dev/ati/card* | sed 's/ /:/g')
 	if test -n "${ati_cards}"; then
@@ -99,7 +104,7 @@ src_prepare() {
 	if test -n "${mesa_cards}"; then
 		addpredict "${mesa_cards}"
 	fi
-	nvidia_cards=$(echo -n /dev/nvidia** | sed 's/ /:/g')
+	nvidia_cards=$(echo -n /dev/nvidia* | sed 's/ /:/g')
 	if test -n "${nvidia_cards}"; then
 		addpredict "${nvidia_cards}"
 	fi
@@ -118,6 +123,8 @@ src_configure() {
 
 	local openmp=disable
 	use openmp && { tc-has-openmp && openmp=enable; }
+
+	use perl && perl_check_env
 
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lnsl -lsocket
 
@@ -145,6 +152,7 @@ src_configure() {
 		$(use_with truetype freetype)
 		$(use_with postscript gslib)
 		$(use_with graphviz gvc)
+		$(use_with heif heic)
 		$(use_with jbig)
 		$(use_with jpeg)
 		$(use_with jpeg2k openjp2)
@@ -211,7 +219,7 @@ pkg_postinst() {
 	else
 		local v
 		for v in ${REPLACING_VERSIONS}; do
-			if ! ver_test "${v}" -gt "6.9.10.10-r2"; then
+			if ! ver_test "${v}" -gt "7.0.8.10-r2"; then
 				# This is an upgrade
 				_show_policy_xml_notice=yes
 
@@ -222,7 +230,7 @@ pkg_postinst() {
 	fi
 
 	if [[ -n "${_show_policy_xml_notice}" ]]; then
-		elog "For security reasons, a policy.xml file was installed in /etc/ImageMagick-6"
+		elog "For security reasons, a policy.xml file was installed in /etc/ImageMagick-7"
 		elog "which will prevent the usage of the following coders by default:"
 		elog ""
 		elog "  - PS"
