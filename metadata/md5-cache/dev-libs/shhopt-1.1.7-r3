@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=library for parsing command line options
+EAPI=7
+HOMEPAGE=http://shh.thathost.com/pub-unix/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=Artistic
+SLOT=0
+SRC_URI=http://shh.thathost.com/pub-unix/files/shhopt-1.1.7.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=cc6f886bd522e9feab573a07b4640361

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install
+DESCRIPTION=Chroot any dynamically linked application in a safe and sane manner
+EAPI=7
+HOMEPAGE=http://chrootsafe.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=mirror://sourceforge/chrootsafe/chroot_safe-1.4.tgz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=892ccffa35c3d8138a548a213356db1f
