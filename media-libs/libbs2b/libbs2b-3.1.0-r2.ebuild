@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="Bauer stereophonic-to-binaural DSP library"
 HOMEPAGE="http://bs2b.sourceforge.net/"
@@ -15,12 +15,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-f
 IUSE=""
 
 RDEPEND=">=media-libs/libsndfile-1.0.25-r1[${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 # for default_src_configure to work
 ECONF_SOURCE="${S}"
 
-src_prepare() {
-	epatch "${FILESDIR}/${PV}-format-security.patch"
-}
+PATCHES=( "${FILESDIR}/${PV}-format-security.patch" )
