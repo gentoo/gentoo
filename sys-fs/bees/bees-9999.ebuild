@@ -60,6 +60,11 @@ src_configure() {
 		LIBDIR=$(get_libdir)
 		DEFAULT_MAKE_TARGET=all
 	EOF
+	if [[ ${PV} != "9999" ]] ; then
+		cat >>localconf <<-EOF || die
+			BEES_VERSION=v${PV}
+		EOF
+	fi
 	if use tools; then
 		echo OPTIONAL_INSTALL_TARGETS=install_tools >>localconf || die
 	fi
