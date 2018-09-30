@@ -1,0 +1,9 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=small C library for reading LZW compressed files (.Z)
+EAPI=7
+HOMEPAGE=https://github.com/vapier/liblzw
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~m68k ~s390 ~sh ~x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=mirror://sourceforge/freestdf/liblzw-0.2.tar.lzma
+_md5_=b601558e8ce6af2182af8518dce40556

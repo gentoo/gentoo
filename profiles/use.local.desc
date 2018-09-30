@@ -5391,6 +5391,7 @@ sys-cluster/cinder:scheduler - Installs the initscripts for the cinder scheduler
 sys-cluster/cinder:tcp - Enables tcp support for the iscsi backend
 sys-cluster/cinder:tgt - Enable tgt storage backend support
 sys-cluster/cinder:volume - Installs the initscripts for the cinder volume service
+sys-cluster/cluster-glue:ipmilan - Install the ipmilan plugin (requires sys-libs/openipmi)
 sys-cluster/cluster-glue:libnet - Force use of net-libs/libnet
 sys-cluster/corosync:infiniband - Enable Infiniband RDMA transport support
 sys-cluster/drbd-utils:heartbeat - Enable Heartbeat integration
