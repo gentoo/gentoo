@@ -1,0 +1,38 @@
+From c4ad513294e8db25ebaf25127948cce37c13e1b2 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 29 Sep 2018 20:23:53 -0400
+Subject: [PATCH 1/1] startup/default-service.in: remove PIDFile and
+ ExecStopPost lines.
+
+The nrpe systemd service is a "simple" service, which means that it
+runs in the foreground and doesn't need any PID file tracking to begin
+with. The tmpfiles.d entry associated with the PID file is causing
+problems in Gentoo bug 648992, and so as a prerequisite for deleting
+it, this commit eliminates the PID file.
+
+Bug: https://bugs.gentoo.org/648992
+Bug: https://github.com/NagiosEnterprises/nrpe/issues/188
+---
+ startup/default-service.in | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/startup/default-service.in b/startup/default-service.in
+index b6c6063..110a0cd 100644
+--- a/startup/default-service.in
++++ b/startup/default-service.in
+@@ -11,12 +11,10 @@ WantedBy=multi-user.target
+ [Service]
+ Type=simple
+ Restart=on-abort
+-PIDFile=@piddir@/nrpe.pid
+ RuntimeDirectory=nrpe
+ RuntimeDirectoryMode=0755
+ ExecStart=@sbindir@/nrpe -c @pkgsysconfdir@/nrpe.cfg -f
+ ExecReload=/bin/kill -HUP $MAINPID
+-ExecStopPost=/bin/rm -f @piddir@/nrpe.pid
+ TimeoutStopSec=60
+ User=@nrpe_user@
+ Group=@nrpe_group@
+-- 
+2.16.4
+
