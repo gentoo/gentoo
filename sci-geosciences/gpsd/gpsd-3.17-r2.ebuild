@@ -36,6 +36,7 @@ REQUIRED_USE="X? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
+	>=net-misc/pps-tools-0.0.20120407
 	bluetooth? ( net-wireless/bluez )
 	dbus? (
 		sys-apps/dbus

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -37,6 +37,7 @@ REQUIRED_USE="X? ( python )
 	qt5? ( cxx )"
 
 RDEPEND="
+	>=net-misc/pps-tools-0.0.20120407
 	bluetooth? ( net-wireless/bluez )
 	dbus? (
 		sys-apps/dbus
