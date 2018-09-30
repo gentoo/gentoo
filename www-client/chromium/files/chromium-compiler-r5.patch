@@ -1,17 +1,17 @@
-From 4310db462fab74bf14066f2a6f7cf250ecba0cf1 Mon Sep 17 00:00:00 2001
+From 07fa6b9176dfd1acd4eb6706323ab4823f530432 Mon Sep 17 00:00:00 2001
 From: Mike Gilbert <floppym@gentoo.org>
 Date: Wed, 25 Apr 2018 13:22:49 -0400
 Subject: [PATCH] Disable various compiler configs
 
 ---
- build/config/compiler/BUILD.gn | 61 ++++++++++------------------------
- 1 file changed, 18 insertions(+), 43 deletions(-)
+ build/config/compiler/BUILD.gn | 60 ++++++++++------------------------
+ 1 file changed, 18 insertions(+), 42 deletions(-)
 
 diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
-index 83337d52e4b9..f2c192fc31ca 100644
+index 0e796978d479..fa77c2476e4e 100644
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
-@@ -228,8 +228,6 @@ config("compiler") {
+@@ -235,8 +235,6 @@ config("compiler") {
  
    configs += [
      # See the definitions below.
@@ -20,12 +20,11 @@ index 83337d52e4b9..f2c192fc31ca 100644
      ":compiler_codegen",
    ]
  
-@@ -488,18 +486,6 @@ config("compiler") {
+@@ -501,17 +499,6 @@ config("compiler") {
      }
    }
  
--  if (is_clang && !is_nacl && current_toolchain == host_toolchain &&
--      target_os != "chromeos") {
+-  if (is_clang && !is_nacl && !use_xcode_clang) {
 -    cflags += [
 -      # TODO(hans): Remove this once Clang generates better optimized debug info
 -      # by default. https://crbug.com/765793
@@ -39,18 +38,18 @@ index 83337d52e4b9..f2c192fc31ca 100644
    # Print absolute paths in diagnostics. There is no precedent for doing this
    # on Linux/Mac (GCC doesn't support it), but MSVC does this with /FC and
    # Windows developers rely on it (crbug.com/636109) so only do this on Windows.
-@@ -1415,10 +1401,6 @@ config("default_warnings") {
- 
-         # TODO(hans): https://crbug.com/766891
-         "-Wno-null-pointer-arithmetic",
+@@ -1510,10 +1497,6 @@ config("default_warnings") {
+         cflags += [
+           # TODO(thakis): https://crbug.com/753973
+           "-Wno-enum-compare-switch",
 -
--        # Ignore warnings about MSVC optimization pragmas.
--        # TODO(thakis): Only for no_chromium_code? http://crbug.com/505314
--        "-Wno-ignored-pragma-optimize",
-       ]
-     } else if (use_xcode_clang) {
-       cflags += [
-@@ -1462,22 +1444,6 @@ config("chromium_code") {
+-          # Ignore warnings about MSVC optimization pragmas.
+-          # TODO(thakis): Only for no_chromium_code? http://crbug.com/505314
+-          "-Wno-ignored-pragma-optimize",
+         ]
+       }
+     }
+@@ -1555,22 +1538,6 @@ config("chromium_code") {
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -70,10 +69,10 @@ index 83337d52e4b9..f2c192fc31ca 100644
 -      defines += [ "_FORTIFY_SOURCE=2" ]
 -    }
 -
-     if (is_mac || is_ios) {
+     if (is_mac) {
        cflags_objc = [ "-Wobjc-missing-property-synthesis" ]
        cflags_objcc = [ "-Wobjc-missing-property-synthesis" ]
-@@ -1807,7 +1773,8 @@ config("default_stack_frames") {
+@@ -1940,7 +1907,8 @@ config("default_stack_frames") {
  }
  
  # Default "optimization on" config.
@@ -83,7 +82,7 @@ index 83337d52e4b9..f2c192fc31ca 100644
    if (is_win) {
      # TODO(thakis): Remove is_clang here, https://crbug.com/598772
      if (is_official_build && full_wpo_on_official && !is_clang) {
-@@ -1841,7 +1808,8 @@ config("optimize") {
+@@ -1974,7 +1942,8 @@ config("optimize") {
  }
  
  # Same config as 'optimize' but without the WPO flag.
@@ -93,7 +92,7 @@ index 83337d52e4b9..f2c192fc31ca 100644
    if (is_win) {
      # Favor size over speed, /O1 must be before the common flags. The GYP
      # build also specifies /Os and /GF but these are implied by /O1.
-@@ -1864,7 +1832,8 @@ config("optimize_no_wpo") {
+@@ -1997,7 +1966,8 @@ config("optimize_no_wpo") {
  }
  
  # Turn off optimizations.
@@ -103,7 +102,7 @@ index 83337d52e4b9..f2c192fc31ca 100644
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -1888,7 +1857,8 @@ config("no_optimize") {
+@@ -2021,7 +1991,8 @@ config("no_optimize") {
  # Turns up the optimization level. On Windows, this implies whole program
  # optimization and link-time code generation which is very expensive and should
  # be used sparingly.
@@ -113,7 +112,7 @@ index 83337d52e4b9..f2c192fc31ca 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -1935,7 +1905,8 @@ config("optimize_max") {
+@@ -2068,7 +2039,8 @@ config("optimize_max") {
  #
  # TODO(crbug.com/621335) - rework how all of these configs are related
  # so that we don't need this disclaimer.
@@ -123,7 +122,7 @@ index 83337d52e4b9..f2c192fc31ca 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -1973,7 +1944,8 @@ config("optimize_speed") {
+@@ -2106,7 +2078,8 @@ config("optimize_speed") {
    }
  }
  
@@ -133,7 +132,7 @@ index 83337d52e4b9..f2c192fc31ca 100644
    cflags = [ "-O1" ] + common_optimize_on_cflags
    ldflags = common_optimize_on_ldflags
    visibility = [ ":default_optimization" ]
-@@ -2057,7 +2029,8 @@ config("afdo") {
+@@ -2192,7 +2165,8 @@ config("afdo") {
  #   configs += [ "//build/config/compiler:symbols" ]
  
  # Full symbols.
@@ -143,7 +142,7 @@ index 83337d52e4b9..f2c192fc31ca 100644
    if (is_win) {
      if (use_goma || is_clang) {
        # Note that with VC++ this requires is_win_fastlink, enforced elsewhere.
-@@ -2155,7 +2128,8 @@ config("symbols") {
+@@ -2290,7 +2264,8 @@ config("symbols") {
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -153,7 +152,7 @@ index 83337d52e4b9..f2c192fc31ca 100644
    if (is_win) {
      # Linker symbols for backtraces only.
      cflags = []
-@@ -2186,7 +2160,8 @@ config("minimal_symbols") {
+@@ -2330,7 +2305,8 @@ config("minimal_symbols") {
  }
  
  # No symbols.
@@ -164,5 +163,5 @@ index 83337d52e4b9..f2c192fc31ca 100644
      cflags = [ "-g0" ]
      asmflags = cflags
 -- 
-2.17.0
+2.19.0
 
