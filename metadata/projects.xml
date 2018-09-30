@@ -2478,6 +2478,11 @@ developers and volunteer mentors.</description>
       <name>Robin Johnson</name>
       <role>Member</role>
     </member>
+    <member>
+      <email>zlogene@gentoo.org</email>
+      <name>Mikle Kolyada</name>
+      <role>Member</role>
+    </member>
   </project>
   <project>
     <email>php-bugs@gentoo.org</email>

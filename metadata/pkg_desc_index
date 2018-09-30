@@ -7330,7 +7330,7 @@ media-gfx/hugin 2016.2.0 2018.0.0: GUI for the creation & processing of panorami
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.0 0.32.2: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
-media-gfx/imagemagick 7.0.8.11: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.10.11 7.0.8.11: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.2: Utility for image scaling and processing
 media-gfx/inkscape 0.92.2: A SVG based generic vector-drawing program
 media-gfx/iscan 2.30.2.2: EPSON Image Scan! for Linux (including sane-epkowa backend)
