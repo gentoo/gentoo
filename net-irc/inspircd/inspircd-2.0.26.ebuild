@@ -20,7 +20,7 @@ RDEPEND="
 	geoip? ( dev-libs/geoip )
 	gnutls? ( net-libs/gnutls:= dev-libs/libgcrypt:0 )
 	ldap? ( net-nds/openldap )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c )
 	postgres? ( dev-db/postgresql:= )
 	pcre? ( dev-libs/libpcre )
 	sqlite? ( >=dev-db/sqlite-3.0 )
@@ -89,8 +89,8 @@ src_install() {
 
 	einstalldocs
 
-	newinitd "${FILESDIR}/${PN}-r3.initd" "${PN}"
-	newconfd "${FILESDIR}/${PN}-r3.confd" "${PN}"
+	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
+	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 
 	keepdir "/var/log/${PN}"
 
