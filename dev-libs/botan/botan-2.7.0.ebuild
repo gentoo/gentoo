@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -49,8 +49,12 @@ src_configure() {
 
 	local myos=
 	case ${CHOST} in
-		*-darwin*)   myos=darwin ;;
-		*)           myos=linux  ;;
+		*-darwin*)	myos=darwin ;;
+		*)			myos=linux  ;;
+	esac
+
+	case ${CHOST} in
+		hppa*)		CHOSTARCH=parisc ;;
 	esac
 
 	local pythonvers=()
@@ -62,25 +66,26 @@ src_configure() {
 	fi
 
 	CXX="$(tc-getCXX)" AR="$(tc-getAR)" ./configure.py \
-		--prefix="${EPREFIX}/usr" \
-		--libdir=$(get_libdir) \
-		--docdir=share/doc \
-		--cc=gcc \
-		--os=${myos} \
-		--cpu=${CHOSTARCH} \
-		--with-endian="$(tc-endian)" \
-		--without-doxygen \
+		$(use_enable static-libs static-library) \
+		$(use_with boost) \
 		$(use_with bzip2) \
+		$(use_with doc documentation) \
+		$(use_with doc sphinx) \
 		$(use_with lzma) \
 		$(use_with sqlite sqlite3) \
 		$(use_with ssl openssl) \
 		$(use_with zlib) \
-		$(use_with boost) \
-		$(use_with doc sphinx) \
-		$(use_with doc documentation) \
-		$(use_enable static-libs static-library) \
-		--with-python-version=$(IFS=","; echo "${pythonvers[*]}" ) \
+		$(usex hppa --without-stack-protector '') \
+		--cc=gcc \
+		--cpu=${CHOSTARCH} \
 		--disable-modules=$(IFS=","; echo "${disable_modules[*]}" ) \
+		--docdir=share/doc \
+		--libdir=$(get_libdir) \
+		--os=${myos} \
+		--prefix="${EPREFIX}/usr" \
+		--with-endian="$(tc-endian)" \
+		--with-python-version=$(IFS=","; echo "${pythonvers[*]}" ) \
+		--without-doxygen \
 		|| die "configure.py failed"
 }
 
