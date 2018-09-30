@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Virgil Dupras <vdupras@gentoo.org> (30 Sep 2018)
+# Dead upstream, unmaintained, no revdeps.
+# Removal in 30 days, bug #611614
+dev-python/recaptcha-client
+
 # Michał Górny <mgorny@gentoo.org> (30 Sep 2018)
 # Poor quality NIH ebuilds with multiple issues and lack of test suites.
 # They do not support Python 3 (even if somebody claimed otherwise,
