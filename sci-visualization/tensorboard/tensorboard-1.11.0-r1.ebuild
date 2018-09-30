@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
+	dev-python/wheel[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]"
 BDEPEND="app-arch/unzip"
 PDEPEND="sci-libs/tensorflow[python,${PYTHON_USEDEP}]"
@@ -30,10 +31,15 @@ PDEPEND="sci-libs/tensorflow[python,${PYTHON_USEDEP}]"
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
-	rm -rf "${S}/_vendor" || die
-	find "${S}" -name '*.py' -exec sed -i -e \
-		's/^from tensorboard\._vendor import /import /;
-		s/^from tensorboard\._vendor\./from /' {} + || die "failed to unvendor"
+	rm -rf "${S}/_vendor/bleach" || die
+	rm -rf "${S}/_vendor/html5lib" || die
+
+	find "${S}" -name '*.py' -exec sed -i \
+		-e 's/^from tensorboard\._vendor import html5lib/import html5lib/' \
+		-e 's/^from tensorboard\._vendor import bleach/import bleach/' \
+		-e 's/^from tensorboard\._vendor\.html5lib/from html5lib/' \
+		-e 's/^from tensorboard\._vendor\.bleach/from bleach/' \
+		{} + || die "failed to unvendor"
 
 	eapply_user
 }
