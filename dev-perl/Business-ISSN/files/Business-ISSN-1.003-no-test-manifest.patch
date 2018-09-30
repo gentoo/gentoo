@@ -1,0 +1,28 @@
+From bcd302a30bb75d50d87eeaf84b90477f9df55e91 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 30 Sep 2018 15:47:29 +1300
+Subject: Defang Test::Manifest nonsense
+
+---
+ MANIFEST        | 1 -
+ Makefile.PL     | 2 --
+ t/test_manifest | 4 ----
+ 3 files changed, 7 deletions(-)
+ delete mode 100644 t/test_manifest
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 05b9beb..3dab4dc 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -101,8 +101,6 @@ sub do_it {
+ 			||
+ 		"$MM 6.64";
+ 	eval "use $MM_version; 1" or die "Could not load $MM_version: $@";
+-	eval "use Test::Manifest 1.21"
+-		if -e File::Spec->catfile( qw(t test_manifest) );
+ 
+ 	my $arguments = arguments();
+ 	my $minimum_perl = $arguments->{MIN_PERL_VERSION} || '5.008';
+-- 
+2.19.0
+
