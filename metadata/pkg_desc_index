@@ -5483,7 +5483,6 @@ dev-python/rarfile 3.0: Module for RAR archive reading
 dev-python/rdflib 4.2.1 4.2.2: RDF library containing a triple store and parser/serializer
 dev-python/readme 0.6.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/rebulk 0.9.0: Python library that performs advanced searches in strings
-dev-python/recaptcha-client 1.0.6-r1: A plugin for reCAPTCHA and reCAPTCHA Mailhide
 dev-python/recommonmark 0.4.0: Python docutils-compatibility bridge to CommonMark
 dev-python/redis-py 2.9.1 2.10.5: Python client for Redis key-value store
 dev-python/rednose 0.4.1: coloured output for nosetests
