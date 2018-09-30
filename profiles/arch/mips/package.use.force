@@ -5,7 +5,3 @@
 # Force the host target to avoid dependency hell
 sys-devel/clang llvm_targets_Mips
 sys-devel/llvm llvm_targets_Mips
-
-# Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
-# Needs dev-lang/luajit tested #499974
-dev-libs/efl oldlua
