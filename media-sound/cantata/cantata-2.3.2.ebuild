@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/CDrummond/cantata/releases/download/v${PV}/${P}.tar.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cdda cddb cdio http-server mtp musicbrainz replaygain streaming taglib udisks zeroconf"
+IUSE="cdda cddb cdio http-server libav mtp musicbrainz replaygain streaming taglib udisks zeroconf"
 REQUIRED_USE="
 	?? ( cdda cdio )
 	cdda? ( udisks || ( cddb musicbrainz ) )
@@ -44,7 +44,8 @@ COMMON_DEPEND="
 	replaygain? (
 		media-libs/libebur128
 		media-sound/mpg123
-		virtual/ffmpeg
+		libav? ( media-video/libav:= )
+		!libav? ( media-video/ffmpeg:0= )
 	)
 	streaming? ( dev-qt/qtmultimedia:5 )
 	taglib? (
