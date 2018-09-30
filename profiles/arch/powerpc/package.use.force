@@ -6,10 +6,6 @@
 sys-devel/clang llvm_targets_PowerPC
 sys-devel/llvm llvm_targets_PowerPC
 
-# Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
-# Needs dev-lang/luajit tested #499974
-dev-libs/efl oldlua
-
 # Kacper Kowalik <xarthisius@gentoo.org> (16 Jan 2011)
 # bug 303931
 # sci-chemistry/arp-warp-bin is not available for ppc
