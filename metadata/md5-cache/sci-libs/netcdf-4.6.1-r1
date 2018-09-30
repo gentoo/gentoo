@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install test
+DEPEND=dap? ( net-misc/curl:0= ) hdf? ( sci-libs/hdf:0= sci-libs/hdf5:0= ) hdf5? ( sci-libs/hdf5:0=[hl(+),mpi=,szip=,zlib] )
+DESCRIPTION=Scientific library and interface for array oriented data access
+EAPI=6
+HOMEPAGE=https://www.unidata.ucar.edu/software/netcdf/
+IUSE=+dap examples hdf +hdf5 mpi static-libs szip test tools
+KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=UCAR-Unidata
+RDEPEND=dap? ( net-misc/curl:0= ) hdf? ( sci-libs/hdf:0= sci-libs/hdf5:0= ) hdf5? ( sci-libs/hdf5:0=[hl(+),mpi=,szip=,zlib] )
+REQUIRED_USE=test? ( tools ) szip? ( hdf5 ) mpi? ( hdf5 )
+SLOT=0/13
+SRC_URI=https://github.com/Unidata/netcdf-c/archive/v4.6.1.tar.gz -> netcdf-4.6.1.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=5f7f1f72e63b8f305a21ff97b4ba527f
