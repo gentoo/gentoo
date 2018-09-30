@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools ltprune
+EAPI=7
+inherit autotools
 
 DESCRIPTION="High quality rendering engine library for C++"
 HOMEPAGE="http://antigrain.com/"
@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-autotools.patch
 	"${FILESDIR}"/${P}-sdl-m4.patch
 	"${FILESDIR}"/${P}-sdl-automagic.patch
+	"${FILESDIR}"/${P}-gcc8.patch
 	"${FILESDIR}"/${PVR}
 )
 
@@ -56,5 +57,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
