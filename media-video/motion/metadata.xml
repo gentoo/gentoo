@@ -13,6 +13,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="mariadb">Enable MariaDB support</flag>
 		<flag name="mmal">Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.</flag>
 	</use>
 	<upstream>
