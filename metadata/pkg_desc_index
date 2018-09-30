@@ -1169,7 +1169,7 @@ app-office/ledger 3.1.1 3.1.1-r2: A double-entry accounting system with a comman
 app-office/libalkimia 7.0.1: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 6.0.3.2 6.0.6.2: A full office productivity suite
 app-office/libreoffice-bin 6.0.6.2: A full office productivity suite. Binary package
-app-office/libreoffice-bin-debug 6.0.3.2 6.0.6.2: LibreOffice, a full office productivity suite. Binary package, debug info
+app-office/libreoffice-bin-debug 6.0.6.2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 6.0.6.2: Translations for the Libreoffice suite
 app-office/lyx 2.3.0: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
@@ -7473,7 +7473,7 @@ media-libs/freeimage 3.15.4-r1: Image library supporting many formats
 media-libs/freetype 2.8 2.9.1-r3: A high-quality and portable font engine
 media-libs/freeverb3 3.1.2_pre20151102-r1: Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
-media-libs/game-music-emu 0.6.1 0.6.2: Video game music file emulators
+media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/gavl 1.2.0 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.2.5 2.2.5-r1: Graphics library for fast image creation
 media-libs/gegl 0.2.0-r2 0.2.0-r5 0.3.0 0.3.8 0.3.26: A graph based image processing framework
@@ -7567,7 +7567,7 @@ media-libs/libggi 2.2.2: Fast and safe graphics and drivers for about any graphi
 media-libs/libggigcp 1.0.2: Library for General Graphics Interface
 media-libs/libggimisc 2.2.2: Library for General Graphics Interface
 media-libs/libggiwmh 0.3.2: Library for General Graphics Interface
-media-libs/libgig 3.3.0 4.1.0: C++ library for loading Gigasampler and DLS level 1/2 files
+media-libs/libgig 4.1.0: C++ library for loading Gigasampler and DLS level 1/2 files
 media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
 media-libs/libgphoto2 2.5.14 2.5.16: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3-r2: Shared library to access the contents of an iPod
