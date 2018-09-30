@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eapi7-ver eutils flag-o-matic libtool multilib toolchain-funcs
+inherit eapi7-ver eutils flag-o-matic libtool perl-functions toolchain-funcs multilib
 
 MY_P=ImageMagick-$(ver_rs 3 '-')
 
@@ -119,6 +119,8 @@ src_configure() {
 
 	local openmp=disable
 	use openmp && { tc-has-openmp && openmp=enable; }
+
+	use perl && perl_check_env
 
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lnsl -lsocket
 
