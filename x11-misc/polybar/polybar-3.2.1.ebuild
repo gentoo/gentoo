@@ -1,10 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-single-r1
+inherit python-single-r1
 
 XPP_VERSION="1.4.0"
 I3IPCPP_VERSION="0.7.1"
@@ -22,6 +22,9 @@ KEYWORDS="amd64 x86"
 
 IUSE="alsa curl i3wm ipc mpd network pulseaudio"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+BDEPEND="
+	dev-util/cmake"
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -42,7 +45,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	default
 
 	rmdir "${S}"/lib/xpp || die
 	mv "${WORKDIR}"/xpp-$XPP_VERSION "${S}"/lib/xpp || die
@@ -54,7 +57,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs=(
+	local cmakeargs=(
 		-DENABLE_ALSA="$(usex alsa)"
 		-DENABLE_CURL="$(usex curl)"
 		-DENABLE_I3="$(usex i3wm)"
@@ -63,5 +66,5 @@ src_configure() {
 		-DENABLE_NETWORK="$(usex network)"
 		-DENABLE_PULSEAUDIO="$(usex pulseaudio)"
 	)
-	cmake-utils_src_configure
+	cmake . "${cmakeargs[@]}"
 }

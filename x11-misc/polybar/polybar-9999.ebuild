@@ -1,10 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils git-r3 python-single-r1
+inherit git-r3 python-single-r1
 
 DESCRIPTION="A fast and easy-to-use tool for creating status bars"
 HOMEPAGE="https://github.com/jaagr/polybar"
@@ -34,10 +34,13 @@ DEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 "
 
+BDEPEND="
+	dev-util/cmake"
+
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	local mycmakeargs=(
+	local cmakeargs=(
 		-DENABLE_ALSA="$(usex alsa)"
 		-DENABLE_CURL="$(usex curl)"
 		-DENABLE_I3="$(usex i3wm)"
@@ -46,5 +49,5 @@ src_configure() {
 		-DENABLE_NETWORK="$(usex network)"
 		-DENABLE_PULSEAUDIO="$(usex pulseaudio)"
 	)
-	cmake-utils_src_configure
+	cmake . "${cmakeargs[@]}"
 }
