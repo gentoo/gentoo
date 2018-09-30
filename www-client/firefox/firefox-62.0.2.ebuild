@@ -268,7 +268,7 @@ src_configure() {
 		# Force gcc
 		einfo "Enforcing the use of gcc due to USE=-clang ..."
 		CC=${CHOST}-gcc
-		CXX=${CHOST}-gcc++
+		CXX=${CHOST}-g++
 		strip-unsupported-flags
 	fi
 
