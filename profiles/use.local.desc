@@ -1341,6 +1341,7 @@ dev-lang/erlang:compat-ethread - Enable compatibility with pre-pentium 4 CPUs in
 dev-lang/erlang:dirty-schedulers - Enable dirty schedulers
 dev-lang/erlang:hipe - HIgh Performance Erlang extension
 dev-lang/erlang:kpoll - Enable kernel polling support
+dev-lang/erlang:pgo - Build erts with profile-guided optimizations
 dev-lang/fpc:ide - Build and install the Free Pascal Compiler IDE
 dev-lang/ghc:binary - Install the binary version directly, rather than using it to build the source version.
 dev-lang/ghc:ghcbootstrap - Internal: Bootstrap GHC from an existing GHC installation.
