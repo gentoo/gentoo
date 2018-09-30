@@ -1,0 +1,25 @@
+Fixes configure from trying to unnecessarily link to libtermcap and from using
+its own build time logic to conditionally depend on readline
+
+--- a/lib/configure
++++ b/lib/configure
+@@ -26,15 +26,13 @@
+ #----------------------------------------------------------------
+ echo "CCFLAGS = -fPIC \\" >Make.ccflags
+ echo "LIBS = -ldl \\" >Make.libs
+-    
+-rm -f a.out
+-c++ test_readline.cc -lreadline -ltermcap
+-if [ -f a.out ] ; then
++
++if test "x$USE_READLINE" == "xyes"; then
+     echo "using readline"
+     echo "-DHAVE_LIBREADLINE \\" >>Make.ccflags
+-    echo "-lreadline -ltermcap \\" >>Make.libs
++    echo "-lreadline \\" >>Make.libs
+ else
+-    echo "warning: either libtermcap or libreadline is missing - building without readline"
++    echo "warning: building without readline"
+ fi
+ rm -f a.out
+ 
