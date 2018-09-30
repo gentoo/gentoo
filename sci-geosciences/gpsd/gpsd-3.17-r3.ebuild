@@ -37,6 +37,7 @@ REQUIRED_USE="X? ( python )
 	qt5? ( cxx )"
 
 RDEPEND="
+	>=net-misc/pps-tools-0.0.20120407
 	bluetooth? ( net-wireless/bluez )
 	dbus? (
 		sys-apps/dbus
