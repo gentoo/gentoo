@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Run commands simply, with detailed diagnostics"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc x86 ~amd64-fbsd"
 IUSE="test"
 
 RDEPEND="

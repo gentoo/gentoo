@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Sep 2018)
+# media-libs/game-music-emu is not stable.
+media-video/ffmpeg gme
+
 # Andreas Sturmlechner <asturm@gentoo.org> (20 May 2018)
 # media-libs/libraw is not stable
 media-gfx/imagemagick raw
