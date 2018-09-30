@@ -29,6 +29,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (30 Sep 2018)
+# TODO: write a nice message here.
+dev-python/python-application
+dev-python/python-cjson
+dev-python/python-eventlib
+dev-python/python-gnutls
+dev-python/python-msrplib
+dev-python/python-xcaplib
+
 # Matt Turner <mattst88@gentoo.org> (29 Sep 2018)
 # Removal in 30 days, bug #576334
 app-eselect/eselect-mesa
