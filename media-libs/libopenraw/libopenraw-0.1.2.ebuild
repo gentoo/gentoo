@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit gnome2-utils ltprune
+
+inherit gnome2-utils
 
 DESCRIPTION="A decoding library for RAW image formats"
 HOMEPAGE="https://libopenraw.freedesktop.org/wiki/"
@@ -38,7 +39,7 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_preinst() {
