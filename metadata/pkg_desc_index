@@ -8015,7 +8015,6 @@ media-sound/fmdrv 1.0.7: Console mode MIDI player with builtin userland OPL2 dri
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
 media-sound/freebirth 0.3.2-r1: Free software bass synthesizer step sequencer
 media-sound/gimmix 0.5.7.2 0.5.7.2-r1: a graphical music player daemon (MPD) client using GTK+2
-media-sound/glmix 0.3: A 3D widget for mixing up to eight JACK audio streams down to stereo
 media-sound/glurp 0.12.3: Glurp is a GTK2 based graphical client for the Music Player Daemon
 media-sound/gmorgan 0.79-r1: Opensource software rhythm station
 media-sound/gmpc 11.8.16-r1: A GTK+2 client for the Music Player Daemon
