@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools ltprune multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Cross-platform asychronous I/O"
 HOMEPAGE="https://github.com/libuv/libuv"
@@ -43,5 +43,5 @@ multilib_src_test() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
