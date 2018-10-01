@@ -579,7 +579,7 @@ app-editors/nano 2.8.7 2.9.8: GNU GPL'd Pico clone with more functionality
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r7: Vi clone
-app-editors/okteta 0.25.1 0.25.3: Hex editor by KDE
+app-editors/okteta 0.25.3: Hex editor by KDE
 app-editors/pluma 1.12.2-r1 1.18.3: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qxmledit 0.9.7: Simple Qt-based XML editor
@@ -1167,7 +1167,7 @@ app-office/kexi 3.1.0: Visual database applications creator
 app-office/kmymoney 5.0.1-r2: Personal finance manager based on KDE Frameworks
 app-office/ledger 3.1.1 3.1.1-r2: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.1: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 6.0.3.2 6.0.6.2: A full office productivity suite
+app-office/libreoffice 6.0.6.2: A full office productivity suite
 app-office/libreoffice-bin 6.0.6.2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.0.6.2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 6.0.6.2: Translations for the Libreoffice suite
@@ -8101,7 +8101,7 @@ media-sound/pavucontrol 2.0-r1 3.0: Pulseaudio Volume Control, GTK based mixer f
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
 media-sound/pianobar 2016.06.02 2018.06.22: A console-based replacement for Pandora's flash player
-media-sound/picard 2.0.0_beta3 2.0.3: A cross-platform music tagger
+media-sound/picard 2.0.3: A cross-platform music tagger
 media-sound/playerctl 0.5.0: A CLI utility to control media players over MPRIS
 media-sound/playmidi 2.5-r2: Command Line and GUI based MIDI Player
 media-sound/pnmixer 0.7.2: Volume mixer for the system tray
