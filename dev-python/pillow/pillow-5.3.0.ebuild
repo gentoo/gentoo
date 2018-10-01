@@ -68,15 +68,6 @@ python_configure_all() {
 	)
 }
 
-python_compile() {
-	# Pillow monkeypatches distutils to achieve parallel compilation. This
-	# conflicts with distutils' builtin parallel computation (since py35)
-	# and make builds hang. To avoid that, we set MAX_CONCURRENCY=1 to
-	# disable monkeypatching. Can be removed when/if
-	# https://github.com/python-pillow/Pillow/pull/3272 is merged.
-	MAX_CONCURRENCY=1 distutils-r1_python_compile
-}
-
 python_compile_all() {
 	use doc && emake -C docs html
 }
