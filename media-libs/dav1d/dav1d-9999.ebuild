@@ -36,9 +36,15 @@ multilib_src_configure() {
 	use 8bit  && bits+=( 8 )
 	use 10bit && bits+=( 10 )
 
+	if [[ ${MULTILIB_ABI_FLAG} == abi_x86_x32 ]]; then
+		build_asm=false
+	else
+		build_asm=$(usex asm true false)
+	fi
+
 	local emesonargs=(
 		-D bitdepths=$(IFS=,; echo "${bits[*]}")
-		-D build_asm=$(usex asm true false)
+		-D build_asm=$build_asm
 	)
 	meson_src_configure
 }
