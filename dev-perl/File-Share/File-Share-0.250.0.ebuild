@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Extend File::ShareDir to local libraries"
 SLOT="0"
-KEYWORDS="alpha amd64 ~ia64 ppc sparc x86"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 IUSE="test"
 
 RDEPEND=">=dev-perl/File-ShareDir-1.30.0"
