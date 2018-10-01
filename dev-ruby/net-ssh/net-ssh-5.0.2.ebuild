@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> net-ssh-git-${P
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="ed25519 test"
 
 ruby_add_rdepend "virtual/ruby-ssl ed25519? ( dev-ruby/ed25519 dev-ruby/bcrypt_pbkdf )"
