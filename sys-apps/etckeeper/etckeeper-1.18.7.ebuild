@@ -32,6 +32,11 @@ RESTRICT="!test? ( test )"
 
 PATCHES=( "${FILESDIR}"/${PN}-1.18.6-gentoo.patch )
 
+src_prepare() {
+	default
+	hprefixify *.d/* etckeeper
+}
+
 src_compile() {
 	:
 }
@@ -45,10 +50,7 @@ src_install(){
 	}
 	use bazaar && python_foreach_impl bzr_install
 
-	if use prefix; then
-		doenvd "${FILESDIR}"/99${PN}
-		eprefixify "${ED%/}"/etc/env.d/99${PN}
-	fi
+	doenvd "$(prefixify_ro "${FILESDIR}"/99${PN})"
 
 	newbashcomp bash_completion ${PN}
 	dodoc doc/README.mdwn
