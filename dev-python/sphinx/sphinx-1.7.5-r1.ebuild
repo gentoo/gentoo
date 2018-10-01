@@ -18,7 +18,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="doc latex net test"
 
 # Tests automagically use latex, bug 667414
-REQUIRED_USE="test? ( latex )"
+#REQUIRED_USE="test? ( latex )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -58,6 +58,9 @@ DEPEND="${RDEPEND}
 		>=dev-python/whoosh-2.0[${PYTHON_USEDEP}]
 		virtual/imagemagick-tools[jpeg,png,svg]
 		virtual/python-enum34[${PYTHON_USEDEP}]
+		dev-texlive/texlive-latexextra
+		dev-texlive/texlive-luatex
+		app-text/dvipng
 	)"
 
 S="${WORKDIR}/${P^}"
