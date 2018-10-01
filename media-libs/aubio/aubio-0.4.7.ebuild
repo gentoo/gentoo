@@ -37,7 +37,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	?? ( double-precision libsamplerate )
+"
 
 DOCS=( AUTHORS ChangeLog README.md )
 PYTHON_SRC_DIR="${S}"
@@ -49,16 +51,19 @@ src_prepare() {
 
 src_configure() {
 	python_setup
-	waf-utils_src_configure \
-		--enable-complex \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		$(use_enable double-precision double) \
-		$(use_enable fftw fftw3f) \
-		$(use_enable fftw fftw3) \
-		$(use_enable ffmpeg avcodec) \
-		$(use_enable jack) \
-		$(use_enable libsamplerate samplerate) \
+	local mywafconfargs=(
+		--enable-complex
+		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		$(use_enable double-precision double)
+		$(use_enable fftw fftw3)
+		$(use_enable ffmpeg avcodec)
+		$(use_enable jack)
+		$(use_enable libsamplerate samplerate)
 		$(use_enable sndfile)
+	)
+	use double-precision || mywafconfargs+=( $(use_enable fftw fftw3f) )
+
+	waf-utils_src_configure "${mywafconfargs[@]}"
 
 	if use python ; then
 		cd "${PYTHON_SRC_DIR}" || die
