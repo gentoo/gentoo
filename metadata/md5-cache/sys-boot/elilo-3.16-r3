@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=>=sys-boot/gnu-efi-3.0g dev-util/patchutils
+DESCRIPTION=Linux boot loader for EFI-based systems such as IA-64
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/elilo/
+KEYWORDS=~amd64 ~ia64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-boot/efibootmgr sys-fs/dosfstools[compat]
+SLOT=0
+SRC_URI=mirror://sourceforge/elilo/elilo-3.16-all.tar.gz mirror://debian/pool/main/e/elilo/elilo_3.14-3.debian.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=dbbcad32ce0cfb4196a7625a92731f7a

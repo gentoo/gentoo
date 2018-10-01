@@ -687,11 +687,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Containers</url>
     <description>Gentoo Containers provides minimal container images for a variety of container formats so that users can have a consistent experience when building application specific containers.</description>
     <member>
-      <email>mrueg@gentoo.org</email>
-      <name>Manuel Rüger</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>ultrabug@gentoo.org</email>
       <name>Ultrabug</name>
       <role>Member</role>
@@ -2911,11 +2906,6 @@ developers and volunteer mentors.</description>
       <role>Member</role>
     </member>
     <member>
-      <email>mrueg@gentoo.org</email>
-      <name>Manuel Rüger</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>perfinion@gentoo.org</email>
       <name>Jason Zaman</name>
       <role>Member</role>
@@ -3102,11 +3092,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>mrueg@gentoo.org</email>
-      <name>Manuel Rüger</name>
       <role>Developer</role>
     </member>
     <member>
@@ -3794,10 +3779,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
-    </member>
-    <member>
-      <email>mrueg@gentoo.org</email>
-      <name>Manuel Rüger</name>
     </member>
     <member>
       <email>nerdboy@gentoo.org</email>
