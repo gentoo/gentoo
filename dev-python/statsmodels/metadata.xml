@@ -9,6 +9,14 @@
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
   </maintainer>
+  <maintainer type="person">
+    <email>horea.christ@gmail.com</email>
+    <name>Horea Christian</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <longdescription lang="en">
     statsmodels is a Python module that allows users to explore data,
     estimate statistical models, and perform statistical tests. An
