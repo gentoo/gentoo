@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # For released versions, we precompile the man/html pages and store
@@ -15,6 +15,7 @@ MY_PV="${PV/_pre/}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20180629-musl.patch
+	"${FILESDIR}"/${P}-fix-ping-on-musl.patch
 )
 
 if [[ ${PV} == "99999999" ]] ; then
