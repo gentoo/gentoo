@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/kovidgoyal/kitty.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/kovidgoyal/kitty/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -19,12 +19,13 @@ HOMEPAGE="https://github.com/kovidgoyal/kitty"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="debug imagemagick wayland"
+IUSE="debug doc imagemagick wayland"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPS="
 	${PYTHON_DEPS}
 	>=media-libs/harfbuzz-1.5.0:=
+	sys-apps/dbus
 	sys-libs/zlib
 	media-libs/libpng:0=
 	media-libs/freetype:2
@@ -34,6 +35,7 @@ COMMON_DEPS="
 	x11-libs/libXi
 	x11-libs/libXinerama
 	x11-libs/libxkbcommon[X]
+	x11-libs/libxcb[xkb]
 	wayland? (
 		dev-libs/wayland
 		>=dev-libs/wayland-protocols-1.12
@@ -44,9 +46,10 @@ RDEPEND="
 	imagemagick? ( virtual/imagemagick-tools )
 "
 DEPEND="${RDEPEND}
+	sys-libs/ncurses
 	virtual/pkgconfig
-	>=dev-python/sphinx-1.7[${PYTHON_USEDEP}]
 "
+[[ ${PV} == *9999 ]] && DEPEND+=" >=dev-python/sphinx-1.7[${PYTHON_USEDEP}]"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.11.0-flags.patch
@@ -73,7 +76,10 @@ doecho() {
 }
 
 src_compile() {
-	doecho "${EPYTHON}" setup.py --verbose $(usex debug --debug "") --libdir-name $(get_libdir) linux-package
+	doecho "${EPYTHON}" setup.py \
+		--verbose $(usex debug --debug "") \
+		--libdir-name $(get_libdir) \
+		linux-package
 }
 
 src_test() {
@@ -85,6 +91,10 @@ src_install() {
 	mkdir -p "${ED}"usr || die
 	cp -r linux-package/* "${ED}usr" || die
 	python_fix_shebang "${ED}"
+
+	if ! use doc; then
+		rm -r "${ED}"/usr/share/doc || die
+	fi
 }
 
 pkg_postinst() {
