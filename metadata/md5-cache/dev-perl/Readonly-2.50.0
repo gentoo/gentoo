@@ -4,10 +4,10 @@ DESCRIPTION=Facility for creating read-only scalars, arrays, hashes
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/Readonly
 IUSE=test
-KEYWORDS=alpha amd64 ~arm hppa ~ia64 ppc ppc64 ~s390 ~sh sparc ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
+KEYWORDS=alpha amd64 ~arm hppa ~ia64 ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SA/SANKO/Readonly-2.05.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=07e7955fa40d3178f010b5130b5361b3
+_md5_=6e44f8112d2d25f7c9c418aae33e5153

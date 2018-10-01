@@ -4,10 +4,10 @@ DESCRIPTION=A Perl library for reading, parsing, and processing BibTeX files
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/Text-BibTeX
 IUSE=test examples
-KEYWORDS=~amd64 ~arm ~arm64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!dev-libs/btparse virtual/perl-Encode virtual/perl-Scalar-List-Utils virtual/perl-Unicode-Normalize dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AM/AMBS/Text-BibTeX-0.85.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=a333a7bdcbd71a2a5aab5d15ed78a6f4
+_md5_=381aae1cbf2dd3d43c9b08e540e060ff

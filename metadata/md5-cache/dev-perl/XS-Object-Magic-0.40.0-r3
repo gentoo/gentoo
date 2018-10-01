@@ -4,10 +4,10 @@ DESCRIPTION=Opaque, extensible XS pointer backed objects using sv_magic
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/XS-Object-Magic
 IUSE=test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-parent dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/F/FL/FLORA/XS-Object-Magic-0.04.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=01de6afa46b2d31b547d40113f72988a
+_md5_=a91f757f54f5eff8f0cbba0883717fe1

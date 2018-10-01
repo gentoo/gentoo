@@ -4,10 +4,10 @@ DESCRIPTION=Check for uncleaned imports
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/Test-CleanNamespaces
 IUSE=test minimal
-KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!minimal? ( dev-perl/Package-Stash-XS ) >=virtual/perl-Exporter-5.570.0 virtual/perl-File-Spec dev-perl/Module-Runtime >=dev-perl/Package-Stash-0.140.0 dev-perl/Sub-Identify virtual/perl-Test-Simple dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/Test-CleanNamespaces-0.22.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=1b8037afda50b749725878e01233d1d6
+_md5_=faa42c7b4c52b459201fe351cf8c5903

@@ -4,10 +4,10 @@ DESCRIPTION=Perl extension for replacing a link by a copy of the linked file
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/File-Copy-Link
 IUSE=test
-KEYWORDS=amd64 hppa ~ppc ~x86
+KEYWORDS=amd64 hppa ~ppc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-File-Spec dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RM/RMBARKER/File-Copy-Link-0.140.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=bcb83b9c81817cc9f31b5adcd4b6cd08
+_md5_=78cc8b05f42de143753e7fc055c3c6ff
