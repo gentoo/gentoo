@@ -10256,7 +10256,7 @@ sys-power/acpi 1.6: Displays information about ACPI devices
 sys-power/acpid 2.0.29-r1: Daemon for Advanced Configuration and Power Interface
 sys-power/acpilight 1.0 1.1: Replacement for xbacklight that uses the ACPI interface to set brightness
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
-sys-power/apcupsd 3.14.13 3.14.14-r1: APC UPS daemon with integrated tcp/ip remote shutdown
+sys-power/apcupsd 3.14.13 3.14.14-r2: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/bbswitch 0.8 0.8-r1: Toggle discrete NVIDIA Optimus graphics card
 sys-power/cpupower 3.18 4.9.0-r1: Shows and sets processor power related values
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
