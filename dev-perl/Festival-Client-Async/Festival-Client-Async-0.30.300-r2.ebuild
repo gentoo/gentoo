@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Non-blocking interface to a Festival server"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 sparc ~x86"
+KEYWORDS="~amd64 ~ia64 sparc x86"
 IUSE=""
 
 src_test() {

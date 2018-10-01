@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,13 +13,12 @@ if [[ ${PV} = *beta* ]]; then
 	MY_P="rustc-beta"
 	SLOT="beta/${PV}"
 	SRC="${BETA_SNAPSHOT}/rustc-beta-src.tar.xz"
-	KEYWORDS=""
 else
 	ABI_VER="$(get_version_component_range 1-2)"
 	SLOT="stable/${ABI_VER}"
 	MY_P="rustc-${PV}"
 	SRC="${MY_P}-src.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 x86"
 fi
 
 CHOST_amd64=x86_64-unknown-linux-gnu
