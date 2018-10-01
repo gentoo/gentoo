@@ -36,7 +36,6 @@ RDEPEND="${DEPEND}
 			!libressl? ( dev-libs/openssl:0= )
 			libressl? ( dev-libs/libressl:0= )
 			net-libs/libssh2
-			net-libs/http-parser:=
 			net-misc/curl[ssl]
 		)"
 PDEPEND="!cargo? ( >=dev-util/cargo-${CARGO_DEPEND_VERSION} )"
