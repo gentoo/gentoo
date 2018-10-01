@@ -133,6 +133,9 @@ src_configure() {
 	# Compile menuselect binary for optional components
 	emake menuselect.makeopts
 
+	# We'll decide our target CPU in make.conf
+	menuselect/menuselect --disable BUILD_NATIVE menuselect.makeopts
+
 	# Broken functionality is forcibly disabled (bug #360143)
 	menuselect/menuselect --disable chan_misdn menuselect.makeopts
 	menuselect/menuselect --disable chan_ooh323 menuselect.makeopts
