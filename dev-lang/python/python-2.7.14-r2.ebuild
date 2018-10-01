@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -26,7 +26,7 @@ IUSE="-berkdb bluetooth build doc elibc_uclibc examples gdbm hardened ipv6 libre
 
 RDEPEND="app-arch/bzip2:0=
 	>=sys-libs/zlib-1.1.3:0=
-	virtual/libffi
+	virtual/libffi:=
 	virtual/libintl
 	berkdb? ( || (
 		sys-libs/db:5.3
