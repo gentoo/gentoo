@@ -7479,7 +7479,7 @@ media-libs/gegl 0.2.0-r2 0.2.0-r5 0.3.0 0.3.8 0.3.26: A graph based image proces
 media-libs/gexiv2 0.10.8: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 4.1.6-r2 4.1.6-r3 5.1.4: Library to handle, display and manipulate GIF images
-media-libs/glew 1.10.0-r2 1.13.0 2.1.0: The OpenGL Extension Wrangler Library
+media-libs/glew 2.1.0: The OpenGL Extension Wrangler Library
 media-libs/glfw 3.2.1: The Portable OpenGL FrameWork
 media-libs/glm 0.9.8.5-r1: OpenGL Mathematics
 media-libs/glpng 1.46-r1: An OpenGL PNG image library
@@ -10785,7 +10785,7 @@ x11-libs/libXxf86dga 1.1.4-r1: X.Org Xxf86dga library
 x11-libs/libXxf86misc 1.0.4: X.Org Xxf86misc library
 x11-libs/libXxf86vm 1.1.4-r1: X.Org Xxf86vm library
 x11-libs/libaosd 0.2.7: An advanced on screen display (OSD) library
-x11-libs/libast 0.7 0.7-r2: LIBrary of Assorted Spiffy Things
+x11-libs/libast 0.7-r2: LIBrary of Assorted Spiffy Things
 x11-libs/libcryptui 3.12.2-r1: User interface components for OpenPGP
 x11-libs/libdlo 0.1.2: A fully open source driver which supports all DisplayLink devices
 x11-libs/libdmx 1.1.4: X.Org dmx library
