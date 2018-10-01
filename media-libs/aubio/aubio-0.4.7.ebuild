@@ -6,8 +6,7 @@ EAPI=6
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
-
-inherit distutils-r1 waf-utils multilib eutils
+inherit distutils-r1 waf-utils
 
 DESCRIPTION="Library for audio labelling"
 HOMEPAGE="https://aubio.org/"
@@ -16,48 +15,59 @@ SRC_URI="https://aubio.org/pub/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0/5"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc double-precision examples ffmpeg fftw jack libav libsamplerate sndfile python"
+IUSE="doc double-precision examples ffmpeg fftw jack libav libsamplerate sndfile python test"
 
 RDEPEND="
 	ffmpeg? (
 		!libav? ( >=media-video/ffmpeg-2.6:0= )
 		libav? ( >=media-video/libav-9:0= )
 	)
-	fftw? ( sci-libs/fftw:3.0 )
+	fftw? ( sci-libs/fftw:3.0= )
 	jack? ( virtual/jack )
 	libsamplerate? ( media-libs/libsamplerate )
-	python? ( dev-python/numpy[${PYTHON_USEDEP}] ${PYTHON_DEPS} )
+	python? (
+		${PYTHON_DEPS}
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)
 	sndfile? ( media-libs/libsndfile )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	app-text/txt2man
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	?? ( double-precision libsamplerate )
+"
 
 DOCS=( AUTHORS ChangeLog README.md )
 PYTHON_SRC_DIR="${S}"
 
 src_prepare() {
 	default
-	sed -i -e "s:doxygen:doxygen_disabled:" wscript || die
+	sed -e "s:doxygen:doxygen_disabled:" -i wscript || die
+
+	if ! use test; then
+		sed -e "/bld.*tests/d" -i wscript || die
+	fi
 }
 
 src_configure() {
 	python_setup
-	waf-utils_src_configure \
-		--enable-complex \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		$(use_enable double-precision double) \
-		$(use_enable fftw fftw3f) \
-		$(use_enable fftw fftw3) \
-		$(use_enable ffmpeg avcodec) \
-		$(use_enable jack) \
-		$(use_enable libsamplerate samplerate) \
+	local mywafconfargs=(
+		--enable-complex
+		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		$(use_enable double-precision double)
+		$(use_enable fftw fftw3)
+		$(use_enable ffmpeg avcodec)
+		$(use_enable jack)
+		$(use_enable libsamplerate samplerate)
 		$(use_enable sndfile)
+	)
+	use double-precision || mywafconfargs+=( $(use_enable fftw fftw3f) )
+
+	waf-utils_src_configure "${mywafconfargs[@]}"
 
 	if use python ; then
 		cd "${PYTHON_SRC_DIR}" || die
