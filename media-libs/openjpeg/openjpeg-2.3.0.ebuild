@@ -10,7 +10,7 @@ inherit cmake-multilib
 MY_TESTDATA_COMMIT="c07f38fae1e67adc288c2d6679df5d3652017fbe"
 
 DESCRIPTION="An open-source JPEG 2000 library"
-HOMEPAGE="http://www.openjpeg.org"
+HOMEPAGE="https://www.openjpeg.org"
 SRC_URI="https://github.com/uclouvain/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	test? ( https://github.com/uclouvain/openjpeg-data/archive/${MY_TESTDATA_COMMIT}.tar.gz -> ${PN}-data_20170814.tar.gz )"
 
