@@ -101,7 +101,7 @@ RDEPEND=">=app-text/hunspell-1.5.4:=
 	>=x11-libs/pixman-0.19.2
 	>=dev-libs/glib-2.26:2
 	>=sys-libs/zlib-1.2.3
-	>=virtual/libffi-3.0.10
+	>=virtual/libffi-3.0.10:=
 	virtual/ffmpeg
 	x11-libs/libX11
 	x11-libs/libXcomposite
