@@ -72,6 +72,10 @@ src_install() {
 
 	if use doc ; then
 		docinto examples
+		echo dodoc \
+			example/README \
+			$(printf 'example/%s ' $(expect_make_var _SCRIPTS)) \
+			$(printf 'example/%s.man ' $(expect_make_var _SCRIPTS_MANPAGES))
 		dodoc \
 			example/README \
 			$(printf 'example/%s ' $(expect_make_var _SCRIPTS)) \
