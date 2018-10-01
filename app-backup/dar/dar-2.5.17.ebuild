@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit flag-o-matic
 
 DESCRIPTION="A full featured backup tool, aimed for disks"
@@ -92,7 +92,8 @@ src_install() {
 	local DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 	einstalldocs
 
+	find "${ED}" -name '*.la' -delete || die
 	if ! use static-libs ; then
-		find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
+		find "${ED}" -name '*.a' -delete || die
 	fi
 }
