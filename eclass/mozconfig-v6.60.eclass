@@ -212,9 +212,6 @@ mozconfig_config() {
 		--with-system-zlib \
 		--with-system-bz2
 
-	# Stylo is only broken on x86 builds
-	use x86 && mozconfig_annotate 'Upstream bug 1341234' --disable-stylo
-
 	# Stylo is horribly broken on arm, renders GUI unusable
 	use arm && mozconfig_annotate 'breaks UI on arm' --disable-stylo
 
