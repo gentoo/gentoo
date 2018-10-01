@@ -45,6 +45,8 @@ S="${WORKDIR}/${P}/ImageLounge"
 
 DOCS=( src/changelog.txt )
 
+PATCHES=( "${FILESDIR}/${P}_fix_move_crop_area_tooltip.patch" )
+
 src_prepare() {
 	cmake-utils_src_prepare
 

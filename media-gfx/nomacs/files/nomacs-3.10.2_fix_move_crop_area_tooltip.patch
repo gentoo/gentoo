@@ -1,0 +1,40 @@
+From e963ab5870945b40055b8fc7eb2708ee11f8d4fd Mon Sep 17 00:00:00 2001
+From: Markus Diem <diemmarkus@gmail.com>
+Date: Fri, 7 Sep 2018 15:11:18 +0200
+Subject: [PATCH] show crop info when moving
+
+- fixes #253
+---
+ src/DkGui/DkWidgets.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/DkGui/DkWidgets.cpp b/src/DkGui/DkWidgets.cpp
+index 61c0c05e..b6a5eadb 100644
+--- a/src/DkGui/DkWidgets.cpp
++++ b/src/DkGui/DkWidgets.cpp
+@@ -1820,7 +1820,7 @@ void DkEditableRect::mouseMoveEvent(QMouseEvent *event) {
+ 		setAngle(angle, false);
+ 	}
+ 
+-	if (event->buttons() == Qt::LeftButton && mState != moving) {
++	if (event->buttons() == Qt::LeftButton) {
+ 
+ 		QPolygonF p = mRect.getPoly();
+ 
+@@ -1833,11 +1833,11 @@ void DkEditableRect::mouseMoveEvent(QMouseEvent *event) {
+ 		QPoint tl;
+ 
+ 		if (sAngle == 0.0f || fabs(sAngle) == 90.0f) {
+-			tl = mRect.getTopLeft().toPoint();
++			tl = mRtform.map(mRect.getTopLeft()).toPoint();
+ 			info += "x: ";
+ 		}
+ 		else {
+-			tl = mRect.getCenter().toPoint();
++			tl = mRtform.map(mRect.getCenter()).toPoint();
+ 			info += "center x: ";
+ 		}
+ 		info += QString::number(tl.x()) + ", y: ";
+-- 
+2.18.0
+
