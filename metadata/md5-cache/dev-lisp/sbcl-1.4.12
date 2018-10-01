@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-lisp/asdf-3.1:= doc? ( sys-apps/texinfo >=media-gfx/graphviz-2.26.0 ) pax_kernel? ( sys-apps/elfix )
+DESCRIPTION=Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
+EAPI=6
+HOMEPAGE=http://sbcl.sourceforge.net/
+IUSE=debug doc source +threads +unicode pax_kernel zlib
+KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris
+LICENSE=MIT
+RDEPEND=>=dev-lisp/asdf-3.1:= !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.6 ) )
+SLOT=0/1.4.12
+SRC_URI=mirror://sourceforge/sbcl/sbcl-1.4.12-source.tar.bz2 x86? ( mirror://sourceforge/sbcl/sbcl-1.4.3-x86-linux-binary.tar.bz2 ) amd64? ( mirror://sourceforge/sbcl/sbcl-1.4.12-x86-64-linux-binary.tar.bz2 ) ppc? ( mirror://sourceforge/sbcl/sbcl-1.2.7-powerpc-linux-binary.tar.bz2 ) sparc? ( mirror://sourceforge/sbcl/sbcl-1.0.28-sparc-linux-binary.tar.bz2 ) alpha? ( mirror://sourceforge/sbcl/sbcl-1.0.28-alpha-linux-binary.tar.bz2 ) arm? ( mirror://sourceforge/sbcl/sbcl-1.4.11-armhf-linux-binary.tar.bz2 ) arm64? ( mirror://sourceforge/sbcl/sbcl-1.4.2-arm64-linux-binary.tar.bz2 ) x86-macos? ( mirror://sourceforge/sbcl/sbcl-1.1.6-x86-darwin-binary.tar.bz2 ) x64-macos? ( mirror://sourceforge/sbcl/sbcl-1.2.11-x86-64-darwin-binary.tar.bz2 ) ppc-macos? ( mirror://sourceforge/sbcl/sbcl-1.0.47-powerpc-darwin-binary.tar.bz2 ) x86-solaris? ( mirror://sourceforge/sbcl/sbcl-1.2.7-x86-solaris-binary.tar.bz2 ) x64-solaris? ( mirror://sourceforge/sbcl/sbcl-1.2.7-x86-64-solaris-binary.tar.bz2 ) sparc-solaris? ( mirror://sourceforge/sbcl/sbcl-1.0.23-sparc-solaris-binary.tar.bz2 )
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	pax-utils	e85f015e815dd463b0c206d781ef45a5	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=127875a95d5cce1cb000b07107648e22
