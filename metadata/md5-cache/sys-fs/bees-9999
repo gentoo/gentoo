@@ -9,4 +9,4 @@ LICENSE=GPL-3
 RDEPEND=>=sys-apps/util-linux-2.30.2 >=sys-fs/btrfs-progs-4.1
 SLOT=0
 _eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	linux-info	915cae3d7d636732918d18827fb1c226	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=5ca50f308e54f208e2df519b990f62ed
+_md5_=0511de23578ccef0c91e7cc8286d7d5a
