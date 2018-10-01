@@ -14,7 +14,7 @@ HOMEPAGE="http://www.aircrack-ng.org"
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/aircrack-ng/aircrack-ng.git"
-	KEYWORDS=""
+	KEYWORDS="amd64 x86"
 else
 	MY_PV=${PV/_/-}
 	SRC_URI="https://download.aircrack-ng.org/${P}.tar.gz"
