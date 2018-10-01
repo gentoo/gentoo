@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,6 +34,8 @@ RDEPEND="${PHPUSEDEPEND} php_targets_php5-6? ( dev-php/pecl-mailparse:0[php_targ
 
 src_prepare() {
 	if use php_targets_php7-0 || use php_targets_php7-1 || use php_targets_php7-2 ; then
+		# Missing test source files in archive.  Fixed upstream in next release.
+		rm tests/011.phpt tests/bug001.phpt || die
 		php-ext-source-r3_src_prepare
 	else
 		default
