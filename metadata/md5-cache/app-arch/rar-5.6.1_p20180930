@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=all_sfx? ( app-arch/unrar )
+DESCRIPTION=RAR compressor/uncompressor
+EAPI=6
+HOMEPAGE=https://rarlab.com/
+IUSE=all_sfx
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=RAR BSD BSD-2
+RDEPEND=sys-libs/glibc
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=x86? ( https://mirror.whissi.de/distfiles/rar/rarlinux-5.6.1_p20180930.tar.gz ) amd64? ( https://mirror.whissi.de/distfiles/rar/rarlinux-x64-5.6.1_p20180930.tar.gz ) all_sfx? ( https://mirror.whissi.de/distfiles/rar/rarlinux-5.6.1_p20180930.tar.gz https://mirror.whissi.de/distfiles/rar/rarlinux-x64-5.6.1_p20180930.tar.gz https://mirror.whissi.de/distfiles/rar/winrar-x64-5.6.1_p20180930.exe )
+_md5_=c0491a73d2c71fb5c97f29f0dbc17cee
