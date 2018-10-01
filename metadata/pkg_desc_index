@@ -5370,7 +5370,7 @@ dev-python/pystache 0.5.4: Mustache for Python
 dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
 dev-python/pytables 3.3.0: Hierarchical datasets for Python
 dev-python/pyte 0.5.2-r1 0.5.2-r2: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 3.0.3 3.2.2: Simple powerful testing with Python
+dev-python/pytest 3.2.2: Simple powerful testing with Python
 dev-python/pytest-cache 1.0-r1: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
