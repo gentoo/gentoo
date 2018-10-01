@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/azureus/${PN}/${MY_SRC}/${MY_SRC}_source.zip"
 LICENSE="GPL-2 BSD"
 
 SLOT="0"
-KEYWORDS="amd64 ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 # bundles parts of http://www.programmers-friend.org/
 # bundles bcprov - 1.37 required but not in the tree
