@@ -64,7 +64,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="accessibility bluetooth +branding coinmp +cups dbus debug eds firebird
-googledrive gstreamer +gtk gtk2 kde mysql odk pdfimport postgres test vlc
+googledrive gstreamer +gtk gtk2 kde ldap mysql odk pdfimport postgres test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -134,7 +134,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/libzmf
 	net-libs/neon
 	net-misc/curl
-	net-nds/openldap
 	sci-mathematics/lpsolve
 	sys-libs/zlib:=
 	virtual/glu
@@ -183,6 +182,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		kde-frameworks/kio:5
 		kde-frameworks/kwindowsystem:5
 	)
+	ldap? ( net-nds/openldap )
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
 	mysql? ( dev-db/mysql-connector-c++ )
@@ -251,6 +251,9 @@ PATCHES=(
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
+
+	# upstream: https://gerrit.libreoffice.org/#/c/61223/1
+	"${FILESDIR}/${PN}-6.1.2.1-no-ldap.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
@@ -435,6 +438,7 @@ src_configure() {
 		$(use_enable gtk gtk3)
 		$(use_enable gtk2 gtk)
 		$(use_enable kde gtk3-kde5)
+		$(use_enable ldap)
 		$(use_enable mysql ext-mariadb-connector)
 		$(use_enable odk)
 		$(use_enable pdfimport)

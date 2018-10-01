@@ -1,0 +1,161 @@
+diff --git a/Repository.mk b/Repository.mk
+index b2c8c8c0d857..4b48c0a696d7 100644
+--- a/Repository.mk
++++ b/Repository.mk
+@@ -388,7 +388,7 @@ $(eval $(call gb_Helper_register_libraries_for_install,OOOLIBS,ooo, \
+ 	hyphen \
+     icg \
+ 	$(if $(ENABLE_JAVA),jdbc) \
+-	ldapbe2 \
++	$(if $(ENABLE_LDAP),ldapbe2) \
+ 	$(if $(filter WNT,$(OS)),WinUserInfoBe) \
+ 	localebe1 \
+ 	log \
+diff --git a/RepositoryExternal.mk b/RepositoryExternal.mk
+index 9312d0b7ab2a..1a2cedd16dba 100644
+--- a/RepositoryExternal.mk
++++ b/RepositoryExternal.mk
+@@ -2900,7 +2900,7 @@ endef
+ 
+ endif # SYSTEM_HSQLDB
+ 
+-
++ifeq ($(ENABLE_LDAP),TRUE)
+ ifneq ($(SYSTEM_OPENLDAP),)
+ 
+ define gb_LinkTarget__use_openldap
+@@ -2929,6 +2929,7 @@ $(call gb_LinkTarget_add_libs,$(1), \
+ )
+ 
+ endef
++endif
+ 
+ define gb_ExternalProject__use_openldap
+ $(call gb_ExternalProject_use_external_project,$(1),openldap)
+diff --git a/configure.ac b/configure.ac
+index 86eef4c0c32a..e6f42aed653d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1517,6 +1517,11 @@ libo_FUZZ_ARG_ENABLE(formula-logger,
+     )
+ )
+ 
++AC_ARG_ENABLE(ldap,
++    AS_HELP_STRING([--disable-ldap],
++        [Disable LDAP support.]),
++,enable_ldap=yes)
++
+ dnl ===================================================================
+ dnl Optional Packages (--with/without-)
+ dnl ===================================================================
+@@ -8999,12 +9004,29 @@ else
+ fi
+ AC_SUBST(SYSTEM_ODBC_HEADERS)
+ 
++dnl ===================================================================
++dnl Enable LDAP support in Base
++dnl ===================================================================
++
++if test "$_os" != "WINNT" -a "$_os" != "iOS" -a "$_os" != "Android"; then
++AC_MSG_CHECKING([whether to enable LDAP support])
++    if test "$enable_ldap" != "yes"; then
++        AC_MSG_RESULT([no])
++        ENABLE_LDAP=""
++        enable_ldap=no
++    else
++        AC_MSG_RESULT([yes])
++        ENABLE_LDAP="TRUE"
++        AC_DEFINE(HAVE_FEATURE_LDAP)
++    fi
++fi
++AC_SUBST(ENABLE_LDAP)
+ 
+ dnl ===================================================================
+ dnl Check for system openldap
+ dnl ===================================================================
+ 
+-if test "$_os" != "WINNT" -a "$_os" != "iOS" -a "$_os" != "Android"; then
++if test "$_os" != "WINNT" -a "$_os" != "iOS" -a "$_os" != "Android" -a "$ENABLE_LDAP" != ""; then
+ AC_MSG_CHECKING([which openldap library to use])
+ if test "$with_system_openldap" = "yes"; then
+     AC_MSG_RESULT([external])
+diff --git a/connectivity/Library_postgresql-sdbc-impl.mk b/connectivity/Library_postgresql-sdbc-impl.mk
+index 53cebd01a242..3d048f39c49c 100644
+--- a/connectivity/Library_postgresql-sdbc-impl.mk
++++ b/connectivity/Library_postgresql-sdbc-impl.mk
+@@ -47,7 +47,7 @@ $(eval $(call gb_Library_use_externals,postgresql-sdbc-impl,\
+ 	postgresql \
+ 	$(if $(filter-out MSC,$(COM)), \
+ 		openssl \
+-		openldap \
++		$(if $(ENABLE_LDAP),openldap) \
+ 		nss3 \
+ 		plc4 \
+ 		ssl3 \
+diff --git a/extensions/Module_extensions.mk b/extensions/Module_extensions.mk
+index d4f16af946f6..08da69f33f04 100644
+--- a/extensions/Module_extensions.mk
++++ b/extensions/Module_extensions.mk
+@@ -16,7 +16,6 @@ $(eval $(call gb_Module_add_l10n_targets,extensions,\
+ ifneq ($(filter-out IOS ANDROID,$(OS)),)
+ $(eval $(call gb_Module_add_targets,extensions,\
+ 	Library_abp \
+-	Library_ldapbe2 \
+ 	$(if $(filter WNT,$(OS)),Library_WinUserInfoBe) \
+ 	Library_log \
+ 	Library_scn \
+@@ -25,6 +24,12 @@ $(eval $(call gb_Module_add_targets,extensions,\
+ ))
+ endif
+ 
++ifeq ($(ENABLE_LDAP),TRUE)
++$(eval $(call gb_Module_add_targets,extensions,\
++	Library_ldapbe2 \
++))
++endif
++
+ ifneq (,$(filter DBCONNECTIVITY,$(BUILD_TYPE)))
+ $(eval $(call gb_Module_add_targets,extensions,\
+ 	Library_bib \
+diff --git a/external/postgresql/ExternalProject_postgresql.mk b/external/postgresql/ExternalProject_postgresql.mk
+index f6617e52fcd8..9494cf21b95f 100644
+--- a/external/postgresql/ExternalProject_postgresql.mk
++++ b/external/postgresql/ExternalProject_postgresql.mk
+@@ -10,7 +10,7 @@
+ $(eval $(call gb_ExternalProject_ExternalProject,postgresql))
+ 
+ $(eval $(call gb_ExternalProject_use_externals,postgresql,\
+-	openldap \
++	$(if $(ENABLE_LDAP),openldap) \
+ 	openssl \
+ 	zlib \
+ ))
+diff --git a/postprocess/Rdb_services.mk b/postprocess/Rdb_services.mk
+index 34a3dab0c6d3..236e7a9838a6 100644
+--- a/postprocess/Rdb_services.mk
++++ b/postprocess/Rdb_services.mk
+@@ -297,7 +297,7 @@ $(eval $(call gb_Rdb_add_components,services,\
+ 	desktop/source/offacc/offacc \
+ 	$(if $(DISABLE_GUI),,desktop/source/splash/spl) \
+ 	extensions/source/abpilot/abp \
+-	extensions/source/config/ldap/ldapbe2 \
++	$(if $(ENABLE_LDAP),extensions/source/config/ldap/ldapbe2) \
+ 	$(if $(filter WNT,$(OS)),\
+ 		extensions/source/config/WinUserInfo/WinUserInfoBe \
+ 	) \
+diff --git a/external/postgresql/ExternalProject_postgresql.mk b/external/postgresql/ExternalProject_postgresql.mk
+index 9494cf21b95f..fc4342c60f93 100644
+--- a/external/postgresql/ExternalProject_postgresql.mk
++++ b/external/postgresql/ExternalProject_postgresql.mk
+@@ -64,9 +64,10 @@ $(call gb_ExternalProject_get_state_target,postgresql,build) :
+ 			$(if $(DISABLE_OPENSSL),,--with-openssl \
+ 				$(if $(WITH_KRB5), --with-krb5) \
+ 				$(if $(WITH_GSSAPI),--with-gssapi)) \
++				$(if $(ENABLE_LDAP),,--with-ldap=no) \
+ 			CPPFLAGS="$(postgresql_CPPFLAGS)" \
+ 			LDFLAGS="$(postgresql_LDFLAGS)" \
+-			EXTRA_LDAP_LIBS="-llber -lssl3 -lsmime3 -lnss3 -lnssutil3 -lplds4 -lplc4 -lnspr4" \
++			$(if $(ENABLE_LDAP),EXTRA_LDAP_LIBS="-llber -lssl3 -lsmime3 -lnss3 -lnssutil3 -lplds4 -lplc4 -lnspr4") \
+ 		&& cd src/interfaces/libpq \
+ 		&& MAKEFLAGS= && $(MAKE) all-static-lib)
+ 
