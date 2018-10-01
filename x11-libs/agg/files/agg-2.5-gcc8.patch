@@ -1,24 +1,12 @@
-From ca818d4dcd428c5560fc3c341fbaf427a7485e32 Mon Sep 17 00:00:00 2001
-From: Tom Hughes <tom@compton.nu>
-Date: Sat, 22 Jun 2013 12:34:37 +0100
-Subject: [PATCH 15/15] Ensure first value in the gamma table is always zero
-
----
- include/agg_gamma_functions.h | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/include/agg_gamma_functions.h b/include/agg_gamma_functions.h
-index beb0c04..b8eda52 100644
---- a/include/agg_gamma_functions.h
-+++ b/include/agg_gamma_functions.h
-@@ -49,6 +49,7 @@ namespace agg
+diff -uprN agg-2.5/include/agg_renderer_outline_aa.h agg-2.5-fixed/include/agg_renderer_outline_aa.h
+--- agg-2.5/include/agg_renderer_outline_aa.h	2018-08-25 02:02:52.507254241 +0800
++++ agg-2.5-fixed/include/agg_renderer_outline_aa.h	2018-08-25 02:04:15.291175316 +0800
+@@ -1375,7 +1375,7 @@ namespace agg
+         //---------------------------------------------------------------------
+         void profile(const line_profile_aa& prof) { m_profile = &prof; }
+         const line_profile_aa& profile() const { return *m_profile; }
+-        line_profile_aa& profile() { return *m_profile; }
++        const line_profile_aa& profile() { return *m_profile; }
  
-         double operator() (double x) const
-         {
-+            if (x == 0.0) return 0.0;
-             return pow(x, m_gamma);
-         }
- 
--- 
-1.8.1.4
-
+         //---------------------------------------------------------------------
+         int subpixel_width() const { return m_profile->subpixel_width(); }
