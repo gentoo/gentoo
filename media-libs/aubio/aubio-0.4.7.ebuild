@@ -15,7 +15,7 @@ SRC_URI="https://aubio.org/pub/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0/5"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc double-precision examples ffmpeg fftw jack libav libsamplerate sndfile python"
+IUSE="doc double-precision examples ffmpeg fftw jack libav libsamplerate sndfile python test"
 
 RDEPEND="
 	ffmpeg? (
@@ -46,7 +46,11 @@ PYTHON_SRC_DIR="${S}"
 
 src_prepare() {
 	default
-	sed -i -e "s:doxygen:doxygen_disabled:" wscript || die
+	sed -e "s:doxygen:doxygen_disabled:" -i wscript || die
+
+	if ! use test; then
+		sed -e "/bld.*tests/d" -i wscript || die
+	fi
 }
 
 src_configure() {
