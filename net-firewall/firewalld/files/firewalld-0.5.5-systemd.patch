@@ -1,0 +1,25 @@
+From 7f52d4011165e43a0240cbbaa922a357f0b0b3f2 Mon Sep 17 00:00:00 2001
+From: Yuri Konotopov <ykonotopov@gnome.org>
+Date: Mon, 1 Oct 2018 20:02:26 +0400
+Subject: [PATCH] systemd.service: check Gentoo iptables services
+
+---
+ config/firewalld.service.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/firewalld.service.in b/config/firewalld.service.in
+index b757a08f..1b13da7d 100644
+--- a/config/firewalld.service.in
++++ b/config/firewalld.service.in
+@@ -4,7 +4,7 @@ Before=network-pre.target
+ Wants=network-pre.target
+ After=dbus.service
+ After=polkit.service
+-Conflicts=iptables.service ip6tables.service ebtables.service ipset.service
++Conflicts=iptables-store.service iptables-restore.service ip6tables-store.service ip6tables-restore.service ebtables.service ipset.service
+ Documentation=man:firewalld(1)
+ 
+ [Service]
+-- 
+2.16.4
+
