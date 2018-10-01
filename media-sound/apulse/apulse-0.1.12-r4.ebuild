@@ -49,10 +49,7 @@ multilib_src_test() {
 }
 
 multilib_src_install_all() {
-	cmake-utils_src_install
-	# The easiest way would be setting MULTILIB_CHOST_TOOLS at global scope, depending
-	# on USE=sdk, but this is no longer permitted, so workaround is required.
-	# See bug 666884 for details.
+	# Do not use deprecated MULTILIB_CHOST_TOOLS
 	if ! use sdk; then
 		unset BUILD_DIR
 		_install_wrapper() { newbin "${BUILD_DIR}/apulse" "${CHOST}-apulse"; }
