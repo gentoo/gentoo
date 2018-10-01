@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x
 IUSE="doc test"
 
 RDEPEND="
-	virtual/libffi
+	virtual/libffi:=
 	dev-python/pycparser[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

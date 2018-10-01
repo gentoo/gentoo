@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ RDEPEND="
 	!<dev-util/gdbus-codegen-${PV}
 	>=dev-libs/libpcre-8.13:3[${MULTILIB_USEDEP},static-libs?]
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
-	>=virtual/libffi-3.0.13-r1[${MULTILIB_USEDEP}]
+	>=virtual/libffi-3.0.13-r1:=[${MULTILIB_USEDEP}]
 	>=virtual/libintl-0-r2[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	kernel_linux? ( sys-apps/util-linux[${MULTILIB_USEDEP}] )

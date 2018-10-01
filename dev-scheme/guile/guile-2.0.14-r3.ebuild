@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ REQUIRED_USE="regex"
 RDEPEND="
 	>=dev-libs/boehm-gc-7.0:=[threads?]
 	dev-libs/gmp:=
-	virtual/libffi
+	virtual/libffi:=
 	dev-libs/libltdl:=
 	dev-libs/libunistring:0=
 	sys-devel/libtool

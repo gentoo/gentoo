@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -49,7 +49,7 @@ RDEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
 	readline?  ( sys-libs/readline:0= )
 	dev-libs/libyaml
-	virtual/libffi
+	virtual/libffi:=
 	sys-libs/zlib
 	>=app-eselect/eselect-ruby-20151229
 	!<dev-ruby/rdoc-3.9.4
