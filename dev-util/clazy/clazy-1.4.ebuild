@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,18 +18,22 @@ RDEPEND="
 	sys-devel/clang:=
 	>=sys-devel/llvm-3.8:=
 "
-DEPEND="${RDEPEND}
-	app-arch/unzip
-"
+DEPEND="${RDEPEND}"
 
 DOCS=( README.md )
 
 src_prepare() {
 	cmake-utils_src_prepare
 
-	sed -e '/install(FILES README.md COPYING-LGPL2.txt DESTINATION/d' \
+	sed -e '/install(FILES README.md COPYING-LGPL2.txt checks.json DESTINATION/d' \
 		-i CMakeLists.txt || die
 
 	sed -e 's|${MAN_INSTALL_DIR}|share/man/man1|' \
 		-i docs/man/CMakeLists.txt || die
+}
+
+src_install() {
+	cmake-utils_src_install
+	mv "${D}"/usr/share/doc/clazy/* "${D}"/usr/share/doc/${PF} || die
+	rmdir "${D}"/usr/share/doc/clazy || die
 }
