@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit multilib cmake-multilib
+
+inherit cmake-multilib
 
 # Make sure that test data are not newer than release;
 # otherwise we will see "Found-But-No-Test" test failures!
