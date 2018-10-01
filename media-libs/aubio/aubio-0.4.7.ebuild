@@ -6,8 +6,7 @@ EAPI=6
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
-
-inherit distutils-r1 waf-utils multilib eutils
+inherit distutils-r1 waf-utils
 
 DESCRIPTION="Library for audio labelling"
 HOMEPAGE="https://aubio.org/"
@@ -23,14 +22,16 @@ RDEPEND="
 		!libav? ( >=media-video/ffmpeg-2.6:0= )
 		libav? ( >=media-video/libav-9:0= )
 	)
-	fftw? ( sci-libs/fftw:3.0 )
+	fftw? ( sci-libs/fftw:3.0= )
 	jack? ( virtual/jack )
 	libsamplerate? ( media-libs/libsamplerate )
-	python? ( dev-python/numpy[${PYTHON_USEDEP}] ${PYTHON_DEPS} )
+	python? (
+		${PYTHON_DEPS}
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)
 	sndfile? ( media-libs/libsndfile )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	app-text/txt2man
 	virtual/pkgconfig
