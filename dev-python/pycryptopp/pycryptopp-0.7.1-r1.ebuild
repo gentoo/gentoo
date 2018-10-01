@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 vcs-snapshot
@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 DOCS="NEWS.rst"
+
+PATCHES=( "${FILESDIR}"/${PN}-0.7.1-abi-change.patch )
 
 S="${WORKDIR}/${MY_P}"
 
