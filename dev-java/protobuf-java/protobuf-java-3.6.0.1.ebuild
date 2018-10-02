@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -7,8 +7,8 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Google's Protocol Buffers - Java bindings"
-HOMEPAGE="https://developers.google.com/protocol-buffers/ https://github.com/google/protobuf"
-SRC_URI="https://github.com/google/protobuf/archive/v${PV}.tar.gz -> protobuf-${PV}.tar.gz"
+HOMEPAGE="https://developers.google.com/protocol-buffers/ https://github.com/protocolbuffers/protobuf"
+SRC_URI="https://github.com/protocolbuffers/protobuf/archive/v${PV}.tar.gz -> protobuf-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/16"
