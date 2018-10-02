@@ -1,6 +1,6 @@
-https://github.com/google/protobuf/issues/3937
-https://github.com/google/protobuf/pull/3955
-https://github.com/google/protobuf/commit/642e1ac635f2563b4a14c255374f02645ae85dac
+https://github.com/protocolbuffers/protobuf/issues/3937
+https://github.com/protocolbuffers/protobuf/pull/3955
+https://github.com/protocolbuffers/protobuf/commit/642e1ac635f2563b4a14c255374f02645ae85dac
 
 --- /src/google/protobuf/stubs/atomicops_internals_generic_gcc.h
 +++ /src/google/protobuf/stubs/atomicops_internals_generic_gcc.h
