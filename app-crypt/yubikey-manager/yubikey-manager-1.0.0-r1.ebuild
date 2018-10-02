@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7)
-	sys-auth/ykpers
+	>=sys-auth/ykpers-1.19.0
 "
 DEPEND="
 	test? (
