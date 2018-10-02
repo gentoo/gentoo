@@ -1,0 +1,63 @@
+ libjpeg/Makefile.in    |  2 +-
+ libjpeg/configure.in   | 19 -------------------
+ libjpeg/jpegtclDecls.h |  4 ++--
+ 4 files changed, 4 insertions(+), 39 deletions(-)
+
+diff --git a/libjpeg/Makefile.in b/libjpeg/Makefile.in
+index cf2aca8..2d937b1 100644
+--- a/libjpeg/Makefile.in
++++ b/libjpeg/Makefile.in
+@@ -107,7 +107,7 @@ RANLIB		= @RANLIB@
+ RANLIB_STUB	= @RANLIB_STUB@
+ SHLIB_CFLAGS	= @SHLIB_CFLAGS@
+ SHLIB_LD	= @SHLIB_LD@
+-SHLIB_LD_LIBS	= @SHLIB_LD_LIBS@
++SHLIB_LD_LIBS	= @SHLIB_LD_LIBS@ -ljpeg
+ STLIB_LD	= @STLIB_LD@
+ TCL_DEFS	= @TCL_DEFS@
+ TCL_BIN_DIR	= @TCL_BIN_DIR@
+diff --git a/libjpeg/configure.in b/libjpeg/configure.in
+index 378806d..327e2bd 100644
+--- a/libjpeg/configure.in
++++ b/libjpeg/configure.in
+@@ -54,25 +54,6 @@ JPEG_CC=$CC
+ 
+ TEA_ADD_SOURCES([jpegtcl.c jpegtclStubInit.c])
+ 
+-TEA_ADD_SOURCES([
+-	../compat/libjpeg/jcapimin.c	../compat/libjpeg/jcapistd.c	../compat/libjpeg/jccoefct.c
+-	../compat/libjpeg/jccolor.c	../compat/libjpeg/jcdctmgr.c	../compat/libjpeg/jchuff.c
+-	../compat/libjpeg/jcinit.c	../compat/libjpeg/jcmainct.c	../compat/libjpeg/jcmarker.c
+-	../compat/libjpeg/jcmaster.c	../compat/libjpeg/jcomapi.c	../compat/libjpeg/jcparam.c
+-	../compat/libjpeg/jcarith.c	../compat/libjpeg/jcprepct.c	../compat/libjpeg/jcsample.c
+-	../compat/libjpeg/jctrans.c	../compat/libjpeg/jdapimin.c	../compat/libjpeg/jdapistd.c
+-	../compat/libjpeg/jdatadst.c	../compat/libjpeg/jdatasrc.c	../compat/libjpeg/jdcoefct.c
+-	../compat/libjpeg/jdcolor.c	../compat/libjpeg/jddctmgr.c	../compat/libjpeg/jdhuff.c
+-	../compat/libjpeg/jdinput.c	../compat/libjpeg/jdmainct.c	../compat/libjpeg/jdmarker.c
+-	../compat/libjpeg/jdmaster.c	../compat/libjpeg/jdmerge.c	../compat/libjpeg/jdarith.c
+-	../compat/libjpeg/jdpostct.c	../compat/libjpeg/jdsample.c	../compat/libjpeg/jdtrans.c
+-	../compat/libjpeg/jerror.c	../compat/libjpeg/jfdctflt.c	../compat/libjpeg/jfdctfst.c
+-	../compat/libjpeg/jfdctint.c	../compat/libjpeg/jidctflt.c	../compat/libjpeg/jidctfst.c
+-	../compat/libjpeg/jidctint.c	../compat/libjpeg/jaricom.c	../compat/libjpeg/jquant1.c
+-	../compat/libjpeg/jquant2.c	../compat/libjpeg/jutils.c	../compat/libjpeg/jmemmgr.c
+-	../compat/libjpeg/jmemansi.c
+-])
+-
+ TEA_ADD_HEADERS([jpegtcl.h jpegtclDecls.h])
+ 
+ TEA_ADD_INCLUDES([-I\"`\${CYGPATH} \${srcdir}`\"])
+diff --git a/libjpeg/jpegtclDecls.h b/libjpeg/jpegtclDecls.h
+index fef99c2..f751b16 100644
+--- a/libjpeg/jpegtclDecls.h
++++ b/libjpeg/jpegtclDecls.h
+@@ -30,8 +30,8 @@ EXTERN int Jpegtcl_SafeInit(Tcl_Interp *interp);
+ 
+ /* undef Tcl macros that conflict with libjpeg stuff (sigh) */
+ #undef EXTERN
+-#include "../compat/libjpeg/jpeglib.h"
+-#include "../compat/libjpeg/jerror.h"
++#include "@GENTOO_PORTAGE_EPREFIX@/usr/include/jpeglib.h"
++#include "@GENTOO_PORTAGE_EPREFIX@/usr/include/jerror.h"
+ 
+ /* !BEGIN!: Do not edit below this line. */
+ 

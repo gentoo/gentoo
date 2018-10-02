@@ -1,0 +1,80 @@
+ libpng/Makefile.in      |   4 +-
+ libpng/configure        |   7 +-
+ libpng/configure.in     |   8 -
+ libpng/pngtcl.decls     | 215 +++++++++---------
+ libpng/pngtclDecls.h    | 565 ++++++++++++++++++++++++------------------------
+ libpng/pngtclStubInit.c |   2 +-
+ 6 files changed, 388 insertions(+), 413 deletions(-)
+
+diff --git a/libpng/Makefile.in b/libpng/Makefile.in
+index eb8b87e..008d331 100644
+--- a/libpng/Makefile.in
++++ b/libpng/Makefile.in
+@@ -111,7 +111,7 @@ RANLIB		= @RANLIB@
+ RANLIB_STUB	= @RANLIB_STUB@
+ SHLIB_CFLAGS	= @SHLIB_CFLAGS@
+ SHLIB_LD	= @SHLIB_LD@
+-SHLIB_LD_LIBS	= @SHLIB_LD_LIBS@
++SHLIB_LD_LIBS	= @SHLIB_LD_LIBS@ -lpng
+ STLIB_LD	= @STLIB_LD@
+ TCL_DEFS	= @TCL_DEFS@
+ TCL_BIN_DIR	= @TCL_BIN_DIR@
+@@ -154,7 +154,7 @@ CONFIG_CLEAN_FILES = Makefile
+ CPPFLAGS	= @CPPFLAGS@
+ LIBS		= @PKG_LIBS@ @LIBS@
+ AR		= @AR@
+-CFLAGS		= @CFLAGS@ -DPNG_IMPEXP=MODULE_SCOPE -DPNG_EXTERN=MODULE_SCOPE
++CFLAGS		= @CFLAGS@ -DPNG_IMPEXP= -DPNG_EXTERN=MODULE_SCOPE
+ COMPILE		= $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ 
+ #========================================================================
+@@ -179,7 +179,7 @@
+ # of the Makefile, in the "BINARIES" variable.
+ #========================================================================
+ 
+-binaries:	pnglibconf.h $(BINARIES) pkgIndex.tcl
++binaries:	$(BINARIES) pkgIndex.tcl
+ 
+ libraries:
+ 
+diff --git a/libpng/configure.in b/libpng/configure.in
+index c36befe..cd049c0 100644
+--- a/libpng/configure.in
++++ b/libpng/configure.in
+@@ -65,14 +65,6 @@ IMG_SRCPATH(zlibtcl)
+ 
+ TEA_ADD_SOURCES([pngtcl.c pngtclStubInit.c])
+ 
+-TEA_ADD_SOURCES([
+-	../compat/libpng/png.c	../compat/libpng/pngerror.c	../compat/libpng/pngmem.c
+-	../compat/libpng/pngpread.c	../compat/libpng/pngread.c	../compat/libpng/pngrio.c
+-	../compat/libpng/pngrtran.c	../compat/libpng/pngrutil.c	../compat/libpng/pngset.c
+-	../compat/libpng/pngtrans.c	../compat/libpng/pngwio.c	../compat/libpng/pngwrite.c
+-	../compat/libpng/pngwtran.c	../compat/libpng/pngwutil.c	../compat/libpng/pngget.c
+-])
+-
+ TEA_ADD_HEADERS([pngtcl.h pngtclDecls.h])
+ TEA_ADD_INCLUDES([-I\"`\${CYGPATH} \${zlibtcl_SRC_PATH}`\"])
+ TEA_ADD_INCLUDES([-I\"`\${CYGPATH} \${zlibtcl_BUILD_PATH}`\"])
+diff --git a/libpng/pngtclDecls.h b/libpng/pngtclDecls.h
+index adf987d..2b29fa3 100644
+--- a/libpng/pngtclDecls.h
++++ b/libpng/pngtclDecls.h
+@@ -20,7 +20,6 @@
+ #   undef TCL_STORAGE_CLASS
+ #   define TCL_STORAGE_CLASS DLLEXPORT
+ #else
+-#   define PNG_IMPEXP extern
+ #   undef USE_PNGTCL_STUBS
+ #   define USE_PNGTCL_STUBS 1
+ #endif
+@@ -28,7 +27,8 @@
+ EXTERN int Pngtcl_Init(Tcl_Interp *interp);
+ EXTERN int Pngtcl_SafeInit(Tcl_Interp *interp);
+ 
+-#include "../compat/libpng/png.h"
++#include <@GENTOO_PORTAGE_EPREFIX@/usr/include/png.h>
++#include <@GENTOO_PORTAGE_EPREFIX@/usr/include/zlib.h>
+ 
+ /* !BEGIN!: Do not edit below this line. */
+ 
