@@ -36,9 +36,9 @@ src_install() {
 	# create udev rules
 		local rulesdir=$(get_udevdir)/rules.d
 		dodir ${rulesdir}
-		"${D}usr/$(get_libdir)/iscan-data/make-policy-file" \
+		"${D}/usr/$(get_libdir)/iscan-data/make-policy-file" \
 			--force --mode udev \
-			-d "${D}usr/share/iscan-data/epkowa.desc" \
+			-d "${D}/usr/share/iscan-data/epkowa.desc" \
 			-o "${D}${rulesdir}/99-iscan.rules" || die
 	fi
 }
