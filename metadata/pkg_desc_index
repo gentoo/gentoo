@@ -1317,7 +1317,7 @@ app-text/delta 20060803: Heuristically minimizes interesting files
 app-text/dictd 1.12.1-r2: Dictionary Client/Server for the DICT protocol
 app-text/diction 1.13: Diction and style checkers for english and german texts
 app-text/ding 1.8.1: Tk based dictionary (German-English) (incl. dictionary itself)
-app-text/discount 2.1.8a-r1: An implementation of John Gruber's Markdown text to html language written in C
+app-text/discount 2.1.8a-r1 2.2.4: A Markdown-to HTML translator written in C
 app-text/djview 4.10.6-r1: Portable DjVu viewer using Qt
 app-text/djvu 3.5.25.3 3.5.27: DjVu viewers, encoders and utilities
 app-text/docbook-dsssl-stylesheets 1.79-r2: DSSSL Stylesheets for DocBook
