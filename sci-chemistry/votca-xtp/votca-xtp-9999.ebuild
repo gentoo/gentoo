@@ -29,7 +29,9 @@ RDEPEND="
 	~sci-libs/votca-tools-${PV}[sqlite]
 	>=dev-cpp/eigen-3.3
 	~sci-chemistry/votca-csg-${PV}
-	~sci-chemistry/votca-ctp-${PV}"
+	~sci-chemistry/votca-ctp-${PV}
+	sci-libs/ceres-solver
+	sci-libs/libxc"
 
 DEPEND="${RDEPEND}
 	doc? (
