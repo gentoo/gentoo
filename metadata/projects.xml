@@ -3710,6 +3710,11 @@ developers and volunteer mentors.</description>
     <name>Gentoo Tcltk Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Tcltk</url>
     <description>Gentoo tcltk packages.</description>
+    <member>
+      <email>tupone@gentoo.org</email>
+      <name>Alfredo Tupone</name>
+      <role>member</role>
+    </member>
   </project>
   <project>
     <email>tex@gentoo.org</email>
