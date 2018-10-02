@@ -4,10 +4,10 @@ DESCRIPTION=programmable DNS resolver class for offline emulation of DNS
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/Net-DNS-Resolver-Programmable
 IUSE=test
-KEYWORDS=alpha amd64 arm hppa ~ia64 ppc ppc64 s390 sparc x86 ~x86-fbsd
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 s390 sparc x86 ~x86-fbsd
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Net-DNS-0.690.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/B/BI/BIGPRESH/Net-DNS-Resolver-Programmable-0.009.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=f5ba3f5906419b0456e1160931448d28
+_md5_=7d502cb6d22649b4a199bdccb36b4a6a

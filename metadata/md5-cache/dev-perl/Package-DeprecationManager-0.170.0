@@ -4,10 +4,10 @@ DESCRIPTION=Manage deprecation warnings for your distribution
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/Package-DeprecationManager
 IUSE=test
-KEYWORDS=alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~x86-fbsd ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~x86-fbsd ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
 LICENSE=Artistic-2
 RDEPEND=virtual/perl-Carp >=virtual/perl-Scalar-List-Utils-1.330.0 dev-perl/Package-Stash dev-perl/Params-Util dev-perl/Sub-Install dev-perl/Sub-Name dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/Package-DeprecationManager-0.17.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=9fab0896065e594d1b239eee89458597
+_md5_=e671e3f2602b7f9df764bdd8b6f3cd59

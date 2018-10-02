@@ -4,10 +4,10 @@ DESCRIPTION=PerlIO layer for normalizing line endings
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/PerlIO-eol
 IUSE=test
-KEYWORDS=amd64 ~ia64 ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+KEYWORDS=amd64 ia64 ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Exporter virtual/perl-XSLoader dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SH/SHLOMIF/PerlIO-eol-0.16.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=34bb959fd449e670ad83a6d69076ce86
+_md5_=240a24153ede73a656720ba2f07be0ce

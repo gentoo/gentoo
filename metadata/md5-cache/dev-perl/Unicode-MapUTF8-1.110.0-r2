@@ -3,10 +3,10 @@ DEPEND=dev-perl/Unicode-Map dev-perl/Unicode-Map8 dev-perl/Unicode-String dev-pe
 DESCRIPTION=Conversions to and from arbitrary character sets and UTF8
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/Unicode-MapUTF8
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ia64 ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Unicode-Map dev-perl/Unicode-Map8 dev-perl/Unicode-String dev-perl/Jcode dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SN/SNOWHARE/Unicode-MapUTF8-1.11.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=815dce79fa6c54b20927ce00d9070d9c
+_md5_=2981d95607b26157bb36b13ad3d48854

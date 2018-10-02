@@ -4,10 +4,10 @@ DESCRIPTION=A XPath Perl Module
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/XML-XPath
 IUSE=test examples
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ia64 ~mips ~ppc ~ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/XML-Parser-2.230.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MA/MANWAR/XML-XPath-1.42.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=b17678755a55a3212df8d515000f2064
+_md5_=4c4e858ba04ec40abc00a205fb4f4101
