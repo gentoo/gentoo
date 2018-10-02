@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools epunt-cxx multilib-minimal
 
 DESCRIPTION="Free MPEG-4 audio codecs by AudioCoding.com"
-HOMEPAGE="http://www.audiocoding.com"
+HOMEPAGE="https://www.audiocoding.com"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 MPEG-4"
