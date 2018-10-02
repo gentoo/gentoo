@@ -977,6 +977,7 @@ app-misc/color 1.2-r2: Easily add ANSI colouring to shell scripts
 app-misc/colordiff 1.0.18: Colorizes output of diff
 app-misc/conmux 0.15.1-r3: A console multiplexor
 app-misc/countrycodes 1.0.5-r3: An ISO 3166 country code finder
+app-misc/cpipe 3.0.3: Counting pipe, measures data transfered over pipe
 app-misc/cstream 3.1.1: general-purpose stream-handling tool like UNIX dd
 app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common unix-based commands
 app-misc/dailystrips 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
