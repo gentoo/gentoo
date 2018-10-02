@@ -5086,7 +5086,7 @@ dev-python/moto 0.4.30 1.0.1-r1: Mock library for boto
 dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on EasyMock for Java
 dev-python/mox3 0.10.0 0.24.0: Mock object framework for Python
 dev-python/mpi4py 2.0.0: Message Passing Interface for Python
-dev-python/mpmath 0.19-r1 1.0.0: Python library for arbitrary-precision floating-point arithmetic
+dev-python/mpmath 1.0.0: Python library for arbitrary-precision floating-point arithmetic
 dev-python/msgpack 0.4.8 0.5.1: MessagePack (de)serializer for Python
 dev-python/multidict 4.1.0: multidict implementation
 dev-python/multipledispatch 0.4.9: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
