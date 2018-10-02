@@ -18,7 +18,7 @@ LICENSE="PHP-3.01
 	unicode? ( BSD-2 LGPL-2.1 )"
 
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 # We can build the following SAPIs in the given order
 SAPIS="embed cli cgi fpm apache2 phpdbg"
@@ -35,9 +35,9 @@ IUSE="${IUSE} acl bcmath berkdb bzip2 calendar cdb cjk
 	intl iodbc ipv6 +json kerberos ldap ldap-sasl libedit libressl
 	mhash mssql mysql mysqli nls
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
-	readline recode selinux +session sharedmem
+	readline recode selinux +session session-mm sharedmem
 	+simplexml snmp soap sockets spell sqlite ssl
-	sysvipc systemd tidy +tokenizer truetype unicode wddx webp
+	sysvipc systemd test tidy +tokenizer truetype unicode wddx webp
 	+xml xmlreader xmlwriter xmlrpc xpm xslt zip zlib"
 
 # The supported (that is, autodetected) versions of BDB are listed in
@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	fpm? ( acl? ( sys-apps/acl ) )
 	apache2? ( || ( >=www-servers/apache-2.4[apache2_modules_unixd,threads=]
 		<www-servers/apache-2.4[threads=] ) )
-	berkdb? ( || ( sys-libs/db:5.3
+	berkdb? ( || (	sys-libs/db:5.3
 					sys-libs/db:5.1
 					sys-libs/db:4.8
 					sys-libs/db:4.7
@@ -57,22 +57,12 @@ COMMON_DEPEND="
 					sys-libs/db:4.5 ) )
 	bzip2? ( app-arch/bzip2:0= )
 	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
-	cjk? ( !gd? (
-		virtual/jpeg:0
-		media-libs/libpng:0=
-		sys-libs/zlib:0=
-	) )
 	coverage? ( dev-util/lcov )
 	crypt? ( >=dev-libs/libmcrypt-2.4 )
 	curl? ( >=net-misc/curl-7.10.5 )
-	enchant? ( app-text/enchant )
-	exif? ( !gd? (
-		virtual/jpeg:0
-		media-libs/libpng:0=
-		sys-libs/zlib:0=
-	) )
+	enchant? ( <app-text/enchant-2 )
 	firebird? ( dev-db/firebird )
-	gd? ( virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib:0= )
+	gd? ( virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib )
 	gdbm? ( >=sys-libs/gdbm-1.8.0:0= )
 	gmp? ( dev-libs/gmp:0= )
 	iconv? ( virtual/libiconv )
@@ -91,7 +81,7 @@ COMMON_DEPEND="
 	qdbm? ( dev-db/qdbm )
 	readline? ( sys-libs/readline:0= )
 	recode? ( app-text/recode )
-	sharedmem? ( dev-libs/mm )
+	session-mm? ( dev-libs/mm )
 	simplexml? ( >=dev-libs/libxml2-2.6.8 )
 	snmp? ( >=net-analyzer/net-snmp-5.2 )
 	soap? ( >=dev-libs/libxml2-2.6.8 )
@@ -101,12 +91,8 @@ COMMON_DEPEND="
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	tidy? ( app-text/htmltidy )
-	truetype? (
-		=media-libs/freetype-2*
-		!gd? (
-			virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib:0= )
-	)
+	tidy? ( || ( app-text/tidy-html5 app-text/htmltidy ) )
+	truetype? ( =media-libs/freetype-2* )
 	unicode? ( dev-libs/oniguruma:= )
 	wddx? ( >=dev-libs/libxml2-2.6.8 )
 	webp? ( media-libs/libwebp:0= )
@@ -114,11 +100,7 @@ COMMON_DEPEND="
 	xmlrpc? ( >=dev-libs/libxml2-2.6.8 virtual/libiconv )
 	xmlreader? ( >=dev-libs/libxml2-2.6.8 )
 	xmlwriter? ( >=dev-libs/libxml2-2.6.8 )
-	xpm? (
-		x11-libs/libXpm
-		virtual/jpeg:0
-		media-libs/libpng:0= sys-libs/zlib:0=
-	)
+	xpm? ( x11-libs/libXpm )
 	xslt? ( dev-libs/libxslt >=dev-libs/libxml2-2.6.8 )
 	zip? ( sys-libs/zlib:0= )
 	zlib? ( sys-libs/zlib:0= )
@@ -130,12 +112,12 @@ RDEPEND="${COMMON_DEPEND}
 		selinux? ( sec-policy/selinux-phpfpm )
 		systemd? ( sys-apps/systemd ) )"
 
+# Bison isn't actually needed when building from a release tarball
+# However, the configure script will warn if it's absent or if you
+# have an incompatible version installed. See bug 593278.
 DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils
-	>=sys-devel/bison-3.0.1
-	sys-devel/flex
-	>=sys-devel/m4-1.4.3
-	>=sys-devel/libtool-1.5.18"
+	>=sys-devel/bison-3.0.1"
 
 # Without USE=readline or libedit, the interactive "php -a" CLI will hang.
 REQUIRED_USE="
@@ -159,15 +141,11 @@ REQUIRED_USE="
 	qdbm? ( !gdbm )
 	readline? ( !libedit )
 	recode? ( !imap !mysqli !mysql )
-	sharedmem? ( !threads )
-	mysql? ( || ( mysqli pdo ) )
+	session-mm? ( session !threads )
+	mysql? ( hash || ( mysqli pdo ) )
+	mysqli? ( hash )
 "
-
 PATCHES=(
-	"${FILESDIR}/mbstring-oniguruma-6.8.patch"
-	# hopefully upstream will include the same version check fixes in upcoming releases
-	# patch added 20180429
-	"${FILESDIR}/libressl-compatibility.patch"
 	"${FILESDIR}/php-freetype-2.9.1.patch"
 )
 
@@ -412,7 +390,7 @@ src_configure() {
 
 	# Session support
 	if use session ; then
-		our_conf+=( $(use_with sharedmem mm "${EPREFIX}/usr") )
+		our_conf+=( $(use_with session-mm mm "${EPREFIX}/usr") )
 	else
 		our_conf+=( $(use_enable session session) )
 	fi
