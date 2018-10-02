@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='xml,threads'
 
-inherit eutils flag-o-matic multilib python-single-r1 toolchain-funcs
+inherit flag-o-matic multilib python-single-r1 toolchain-funcs
 
 XEN_EXTFILES_URL="http://xenbits.xensource.com/xen-extfiles"
 LIBPCI_URL=ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci
@@ -14,7 +14,8 @@ GRUB_URL=mirror://gnu-alpha/grub
 
 UPSTREAM_VER=
 [[ -n ${UPSTREAM_VER} ]] && \
-	UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-tools/}-upstream-patches-${UPSTREAM_VER}.tar.xz"
+	UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-pvgrub/}-upstream-patches-${UPSTREAM_VER}.tar.xz
+		https://github.com/hydrapolic/gentoo-dist/raw/master/xen/${P/-pvgrub/}-upstream-patches-${UPSTREAM_VER}.tar.xz"
 
 SRC_URI="
 		https://downloads.xenproject.org/release/xen/${PV}/xen-${PV}.tar.gz
@@ -32,7 +33,7 @@ DESCRIPTION="allows to boot Xen domU kernels from a menu.lst laying inside guest
 HOMEPAGE="https://www.xenproject.org"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="custom-cflags"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -53,7 +54,7 @@ retar-externals() {
 	# Purely to unclutter src_prepare
 	local set="grub-0.97.tar.gz lwip-1.3.0.tar.gz newlib-1.16.0.tar.gz polarssl-1.1.4-gpl.tgz zlib-1.2.3.tar.gz"
 
-	# epatch can't patch in $WORKDIR, requires a sed; Bug #455194. Patchable, but sed informative
+	# eapply can't patch in $WORKDIR, requires a sed; Bug #455194. Patchable, but sed informative
 	sed -e s':AR=${AR-"ar rc"}:AR=${AR-"ar"}:' \
 		-i "${WORKDIR}"/zlib-1.2.3/configure
 	sed -e 's:^AR=ar rc:AR=ar:' \
@@ -78,7 +79,7 @@ src_prepare() {
 		EPATCH_SUFFIX="patch" \
 		EPATCH_FORCE="yes" \
 		EPATCH_OPTS="-p1" \
-			epatch "${WORKDIR}"/patches-upstream
+			eapply "${WORKDIR}"/patches-upstream
 	fi
 
 	# if the user *really* wants to use their own custom-cflags, let them
@@ -98,10 +99,10 @@ src_prepare() {
 	cp "${FILESDIR}"/newlib-implicits.patch stubdom || die
 
 	# Patch stubdom/Makefile to patch insource newlib & prevent internal downloading
-	epatch "${FILESDIR}"/${PN/-pvgrub/}-4.3-externals.patch
+	eapply "${FILESDIR}"/${PN/-pvgrub/}-4.10-externals.patch
 
 	# fix jobserver in Makefile
-	epatch "${FILESDIR}"/${PN}-4.8-jserver.patch
+	eapply "${FILESDIR}"/${PN}-4.8-jserver.patch
 
 	#Substitute for internal downloading. pciutils copied only due to the only .bz2
 	cp "${DISTDIR}"/pciutils-2.2.9.tar.bz2 ./stubdom/ || die "pciutils not copied to stubdom"
@@ -127,6 +128,7 @@ src_compile() {
 	fi
 
 	emake CC="$(tc-getCC)" LD="$(tc-getLD)" AR="$(tc-getAR)" -C tools/include
+	emake CC="$(tc-getCC)" LD="$(tc-getLD)" AR="$(tc-getAR)" -C tools/libs
 
 	if use x86; then
 		emake CC="$(tc-getCC)" LD="$(tc-getLD)" AR="$(tc-getAR)" \

@@ -1,23 +1,22 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils flag-o-matic mount-boot multilib python-any-r1 toolchain-funcs
+inherit flag-o-matic mount-boot multilib python-any-r1 toolchain-funcs
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
 
 if [[ $PV == *9999 ]]; then
 	inherit git-r3
-	KEYWORDS=""
 	EGIT_REPO_URI="git://xenbits.xen.org/xen.git"
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm -x86"
-	UPSTREAM_VER=1
+	UPSTREAM_VER=0
 	SECURITY_VER=
 	GENTOO_VER=
 
