@@ -26,8 +26,9 @@ media-video/ffmpeg gme
 media-gfx/imagemagick raw
 
 # Andreas Sturmlechner <asturm@gentoo.org> (20 May 2018)
+# media-video/faac is not stable.
 # media-libs/{libdc1394,x264} is not stable.
-media-video/libav ieee1394 x264
+media-video/libav faac ieee1394 x264
 media-video/ffmpeg ieee1394 x264
 
 # Andreas Sturmlechner <asturm@gentoo.org> (6 May 2018)
