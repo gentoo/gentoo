@@ -10122,7 +10122,7 @@ sys-fs/ddrescue 1.21-r1: Copy data from one file or block device to another with
 sys-fs/dfc 3.0.5-r1: A simple CLI tool that display file system usage, with colors
 sys-fs/diskdev_cmds 332.14_p1: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
 sys-fs/dmraid 1.0.0_rc16-r3: Device-mapper RAID tool and library
-sys-fs/dosfstools 4.0-r1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
+sys-fs/dosfstools 4.0-r1 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/e2fsprogs 1.43.6 1.43.9: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e4rat 0.2.4_pre20141201: Toolset to accelerate the boot process and application startup
 sys-fs/encfs 1.9.2 1.9.4: An implementation of encrypted filesystem in user-space using FUSE

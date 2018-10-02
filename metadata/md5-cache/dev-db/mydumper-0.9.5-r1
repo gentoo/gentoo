@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-db/mysql-connector-c:= dev-libs/glib:= dev-libs/libpcre:= dev-libs/openssl:= sys-libs/zlib:= virtual/pkgconfig doc? ( dev-python/sphinx ) sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=A high-performance multi-threaded backup (and restore) toolset for MySQL
+EAPI=6
+HOMEPAGE=https://github.com/maxbube/mydumper
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-db/mysql-connector-c:= dev-libs/glib:= dev-libs/libpcre:= dev-libs/openssl:= sys-libs/zlib:=
+SLOT=0
+SRC_URI=https://github.com/maxbube/mydumper/archive/v0.9.5.tar.gz -> mydumper-0.9.5.tar.gz
+_eclasses_=cmake-utils	f0bc1c175684130a76ab6c17f575d820	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=fe66201849d1f90b1fdec148768817ee
