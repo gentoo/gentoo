@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6})
+PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6,3_7})
 
 inherit distutils-r1
 
 DESCRIPTION="Google's Protocol Buffers - Python bindings"
-HOMEPAGE="https://developers.google.com/protocol-buffers/ https://github.com/google/protobuf"
-SRC_URI="https://github.com/google/protobuf/archive/v${PV}.tar.gz -> protobuf-${PV}.tar.gz"
+HOMEPAGE="https://developers.google.com/protocol-buffers/ https://github.com/protocolbuffers/protobuf"
+SRC_URI="https://github.com/protocolbuffers/protobuf/archive/v${PV}.tar.gz -> protobuf-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/17"
@@ -27,6 +27,7 @@ S="${WORKDIR}/protobuf-${PV}/python"
 
 python_prepare_all() {
 	eapply -p2 "${FILESDIR}/${PN}-3.5.2-google.protobuf.pyext._message.MessageMeta.patch"
+	eapply -p2 "${FILESDIR}/${PN}-3.6.1-python-3.7.patch"
 	distutils-r1_python_prepare_all
 }
 

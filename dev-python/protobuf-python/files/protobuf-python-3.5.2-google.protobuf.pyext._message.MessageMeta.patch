@@ -1,4 +1,4 @@
-https://github.com/google/protobuf/pull/4365
+https://github.com/protocolbuffers/protobuf/pull/4365
 
 --- /python/google/protobuf/pyext/message.cc
 +++ /python/google/protobuf/pyext/message.cc

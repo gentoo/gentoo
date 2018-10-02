@@ -17,6 +17,6 @@
 		<subslots>Soname version number of Protobuf</subslots>
 	</slots>
 	<upstream>
-		<remote-id type="github">google/protobuf</remote-id>
+		<remote-id type="github">protocolbuffers/protobuf</remote-id>
 	</upstream>
 </pkgmetadata>
