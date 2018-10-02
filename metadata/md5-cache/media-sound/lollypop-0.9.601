@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst test
+DEPEND=python_targets_python3_6? ( dev-lang/python:3.6[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-libs/appstream-glib[introspection] dev-libs/glib:2 dev-libs/gobject-introspection[cairo] dev-python/pycairo[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pygobject:3[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] gnome-base/gnome-common x11-libs/gtk+:3 dev-python/pkgconfig[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-util/desktop-file-utils dev-util/itstool dev-util/intltool >=sys-apps/sed-4 >=dev-util/meson-0.45.1 >=dev-util/ninja-1.7.2
+DESCRIPTION=Modern music player for GNOME
+EAPI=6
+HOMEPAGE=https://wiki.gnome.org/Apps/Lollypop
+IUSE=python_targets_python3_6
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=python_targets_python3_6? ( dev-lang/python:3.6[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-libs/appstream-glib[introspection] dev-libs/glib:2 dev-libs/gobject-introspection[cairo] dev-python/pycairo[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pygobject:3[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] gnome-base/gnome-common x11-libs/gtk+:3 app-crypt/libsecret dev-libs/totem-pl-parser dev-python/beautifulsoup:4[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/dbus-python >=dev-python/pylast-1.0.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+RESTRICT=test
+SLOT=0
+SRC_URI=https://gitlab.gnome.org/World/lollypop/uploads/93d895a6c74c64aaa9d4cdc4d58bd6e6/lollypop-0.9.601.tar.xz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	meson	29ef682942c6ff558de2f797a61790c2	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=27330c28e0ab7b209ed5cc4364404588
