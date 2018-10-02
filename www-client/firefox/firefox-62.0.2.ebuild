@@ -339,6 +339,8 @@ src_configure() {
 		fi
 	fi
 
+	use arm && mozconfig_annotate 'broken on arm' --disable-webrtc
+
 	mozconfig_use_enable !bindist official-branding
 	# Enable position independent executables
 	mozconfig_annotate 'enabled by Gentoo' --enable-pie
