@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -9,7 +9,7 @@ DESCRIPTION="FUSE file system to navigate, extract, create and modify ZIP archiv
 HOMEPAGE="https://bitbucket.org/agalanin/fuse-zip"
 SRC_URI="https://bitbucket.org/agalanin/${PN}/downloads/${P}.tar.gz"
 
-LICENSE="LGPL-3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -20,15 +20,15 @@ RDEPEND="${DEPEND}"
 
 RESTRICT="test"
 
-src_prepare() {
-	# Fix strip than installing fuse-zip
-	sed -i -e 's/install -m 755 -s/install -m 755/' Makefile || die "sed failed"
-	#enable parallel build
-	sed -i -e "s:make :\$\(MAKE\) :" Makefile || die "sed failed"
-	# Fix prefix
-	sed -i -e "s:^prefix=.*:prefix=/usr:" Makefile || die "sed failed"
-}
+DOCS=( changelog README.md )
+
+PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
 
 src_compile() {
 	emake CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} ${LDFLAGS}"
+}
+
+src_install() {
+	default
+	doman fuse-zip.1
 }

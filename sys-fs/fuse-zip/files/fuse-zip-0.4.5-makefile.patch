@@ -1,0 +1,29 @@
+--- A/Makefile.orig	2018-02-04 03:55:50.000000000 +0100
++++ B/Makefile	2018-10-02 12:14:42.209976366 +0200
+@@ -1,5 +1,5 @@
+ DEST=fuse-zip
+-prefix=/usr/local
++prefix=/usr
+ exec_prefix=$(prefix)
+ bindir=$(exec_prefix)/bin
+ datarootdir=$(prefix)/share
+@@ -62,18 +62,12 @@
+ install: all doc
+ 	mkdir -p "$(DESTDIR)$(bindir)/"
+ 	$(INSTALL_PROGRAM) "$(DEST)" "$(DESTDIR)$(bindir)/"
+-	mkdir -p "$(DESTDIR)$(docdir)/"
+-	$(INSTALL_DATA) $(DOCFILES) "$(DESTDIR)$(docdir)/"
+-	mkdir -p "$(DESTDIR)$(man1dir)/"
+-	$(INSTALL_DATA) $(MAN) "$(DESTDIR)$(man1dir)/"
+ 
+ install-strip:
+-	$(MAKE) INSTALL_PROGRAM='$(INSTALL_PROGRAM) -s' install
++	$(MAKE) INSTALL_PROGRAM='$(INSTALL_PROGRAM)' install
+ 
+ uninstall:
+ 	rm "$(DESTDIR)$(bindir)/$(DEST)"
+-	rm -r "$(DESTDIR)$(docdir)"
+-	rm "$(DESTDIR)$(man1dir)/$(MAN)"
+ 
+ dist:
+ 	./makeArchives.sh
