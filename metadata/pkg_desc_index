@@ -3985,6 +3985,7 @@ dev-perl/MooseX-FollowPBP 0.50.0 0.50.0-r1: Name your accessors get_foo() and se
 dev-perl/MooseX-Params-Validate 0.210.0: An extension of Params::Validate using Moose types
 dev-perl/MooseX-Types 0.460.0 0.500.0: Organise your Moose types in libraries
 dev-perl/Mouse 2.4.10: Moose minus the antlers
+dev-perl/MouseX-NativeTraits 1.90.0-r2: Extend your attribute interfaces for Mouse
 dev-perl/MouseX-Types 0.60.0 0.60.0-r1: Organize your Mouse types in libraries
 dev-perl/Mozilla-CA 20999999: Mozilla's CA cert bundle in PEM format (Gentoo stub)
 dev-perl/MusicBrainz-DiscID 0.40.0: Perl interface for the MusicBrainz libdiscid library
@@ -4355,6 +4356,7 @@ dev-perl/WebService-MusicBrainz 0.930.0-r1 1.0.4: Web service API to MusicBrainz
 dev-perl/Wx 0.993.200-r1: Perl bindings for wxGTK
 dev-perl/X11-FreeDesktop-DesktopEntry 0.40.0-r1: An interface to Freedesktop.org .desktop files
 dev-perl/X11-Protocol 0.560.0-r1: Client-side interface to the X11 Protocol
+dev-perl/X11-XCB 0.170.0-r1: Perl bindings for libxcb
 dev-perl/X500-DN 0.290.0-r1: handle X.500 DNs (Distinguished Names), parse and format them
 dev-perl/XML-Atom 0.420.0: Atom feed and API implementation
 dev-perl/XML-Catalog 1.30.0 1.30.0-r1: Resolve public identifiers and remap system identifiers
@@ -4362,6 +4364,7 @@ dev-perl/XML-DOM 1.450.0 1.460.0-r1: A Perl module for an DOM Level 1 compliant 
 dev-perl/XML-DOM-XPath 0.140.0-r2: Perl extension to add XPath support to XML::DOM, using XML::XPath engine
 dev-perl/XML-DT 0.680.0: A perl XML down translate module
 dev-perl/XML-DTDParser 2.10.0-r1: Quick and dirty DTD Parser
+dev-perl/XML-Descent 1.40.0: Recursive decent XML parsing
 dev-perl/XML-Dumper 0.810.0-r1: Perl module for dumping Perl objects from/to XML
 dev-perl/XML-Elemental 2.110.0-r1: XML::Parser style and generic classes for handling of XML data
 dev-perl/XML-Encoding 2.90.0: Perl Module that parses encoding map XML files
@@ -4394,6 +4397,7 @@ dev-perl/XML-SAX-Writer 0.560.0 0.570.0: SAX2 XML Writer
 dev-perl/XML-Simple 2.200.0-r1 2.220.0 2.250.0: An API for simple XML files
 dev-perl/XML-SimpleObject 0.530.0-r1: A Perl XML Simple package
 dev-perl/XML-Stream 1.240.0 1.240.0-r1: Creates and XML Stream connection and parses return data
+dev-perl/XML-TokeParser 0.50.0: Simplified interface to XML::Parser
 dev-perl/XML-TreePP 0.430.0-r1: Pure Perl implementation for parsing/writing XML documents
 dev-perl/XML-Twig 3.520.0: Process huge XML documents in tree mode
 dev-perl/XML-Writer 0.625.0: XML Writer Perl Module
@@ -4402,6 +4406,7 @@ dev-perl/XML-XPathEngine 0.140.0-r1: A re-usable XPath engine for DOM-like trees
 dev-perl/XML-XQL 0.680.0-r1: A Perl module that allows you to perform XQL queries on XML trees
 dev-perl/XML-XSLT 0.480.0-r1: A Perl module to parse XSL Transformational sheets
 dev-perl/XML-XUpdate-LibXML 0.6.0-r1: Process XUpdate commands over an XML document
+dev-perl/XS-Object-Magic 0.40.0-r3: Opaque, extensible XS pointer backed objects using sv_magic
 dev-perl/YAML 1.150.0: YAML Ain't Markup Language (tm)
 dev-perl/YAML-LibYAML 0.640.0 0.690.0: Perl YAML Serialization using XS and libyaml
 dev-perl/YAML-Syck 1.300.0: Fast, lightweight YAML loader and dumper
@@ -5575,7 +5580,7 @@ dev-python/sphinxcontrib-httpdomain 1.4.0: Extension providing a Sphinx domain f
 dev-python/sphinxcontrib-issuetracker 0.11-r1: Extension to sphinx to create links to issue trackers
 dev-python/sphinxcontrib-programoutput 0.8 0.11: Extension to sphinx to include program output
 dev-python/sphinxcontrib-spelling 2.1.2: Sphinx spelling extension
-dev-python/sphinxcontrib-websupport 1.0.1-r1: Sphinx websupport extension
+dev-python/sphinxcontrib-websupport 1.0.1-r1 1.1.0: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
 dev-python/sqlalchemy 0.7.10 0.9.8 1.0.17 1.1.12 1.2.4 1.2.7: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.7.2-r1 0.9.2 0.11.0: SQLAlchemy Schema Migration Tools
@@ -6394,7 +6399,7 @@ dev-vcs/cvsgraph 1.6.1 1.7.0: CVS/RCS repository grapher
 dev-vcs/cvsps 2.1-r1: Generates patchset information from a CVS repository
 dev-vcs/darcs 2.8.4-r6 2.12.0 2.12.5: a distributed, interactive, smart revision control system
 dev-vcs/fossil 2.4 2.6: Simple, high-reliability, source control management, and more
-dev-vcs/git 2.16.4: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.16.4 2.18.0: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-bzr-ng 0_pre20120822-r2: Git subcommand providing a bidirectional bridge to Bazaar repositories
 dev-vcs/git-cola 2.11: The highly caffeinated git GUI
 dev-vcs/git-flow 1.11.0: Git extensions to provide high-level repository operations
@@ -7345,7 +7350,7 @@ media-gfx/jpegoptim 1.4.3: Utility to optimize JPEG files
 media-gfx/jpegpixi 1.1.1: almost lossless JPEG pixel interpolator, for correcting digital camera defects
 media-gfx/kgraphviewer 2.4.2: Graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.3: Tool for indexing, searching, and viewing images
-media-gfx/krita 4.0.3: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 4.0.3 4.0.4: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/libimagequant 2.11.7: Palette quantization library that powers pngquant and other PNG optimizers
 media-gfx/librecad 2.1.3-r2 2.1.3-r4: Generic 2D CAD program
 media-gfx/llgal 0.13.17-r2: Command-line static web gallery generator
@@ -8036,7 +8041,7 @@ media-sound/hydrogen 1.0.0_pre20180301-r1: Advanced drum machine
 media-sound/icecream 1.3: Extracts and records individual MP3 tracks from shoutcast streams
 media-sound/id3 0.15-r1: changes the id3 tag in an mp3 file
 media-sound/id3ed 1.10.4: ID3 tag editor for mp3 files
-media-sound/id3ted 1.0_beta3: A Command-line ID3 Tag Editor
+media-sound/id3ted 1.0: A Command-line ID3 Tag Editor
 media-sound/id3tool 1.2a: A command line utility for easy manipulation of the ID3 tags present in MPEG Layer 3 audio files
 media-sound/id3v2 0.1.12-r1: A command line editor for id3v2 tags
 media-sound/jaaa 0.8.4: JACK and ALSA Audio Analyser is an audio signal generator and spectrum analyser
@@ -8117,7 +8122,7 @@ media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.2.3: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsynth 0.5.0: A Qt application to control FluidSynth
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
-media-sound/quimup 1.4.0: A Qt5 client for the music player daemon (MPD) written in C++
+media-sound/quimup 1.4.0 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
 media-sound/quodlibet 3.8.1-r1 3.9.1: audio library tagger, manager, and player for GTK+
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
@@ -11292,7 +11297,7 @@ x11-wm/evilwm 1.0.1-r1: A minimalist, no frills window manager for X
 x11-wm/fluxbox 1.3.7-r3: X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5-r2: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/herbstluftwm 0.7.0: A manual tiling window manager for X
-x11-wm/i3 4.13-r1: An improved dynamic tiling window manager
+x11-wm/i3 4.13-r1 4.15: An improved dynamic tiling window manager
 x11-wm/i3-gaps 4.15.0.1: i3 fork with gaps and some more features
 x11-wm/icewm 1.4.2: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2: Very fast and lightweight still powerful window manager for X
