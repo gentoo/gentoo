@@ -15,9 +15,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="audit berkdb +cracklib debug nis nls +pie selinux static-libs"
 
 DEPEND="app-text/docbook-xml-dtd:4.3
-		app-text/docbook-xml-dtd:4.4
-		app-text/docbook-xml-dtd:4.5
-		nls? ( sys-devel/gettext )"
+	app-text/docbook-xml-dtd:4.4
+	app-text/docbook-xml-dtd:4.5
+	nls? ( sys-devel/gettext )"
 
 RDEPEND="${DEPEND}
 	audit? ( >=sys-process/audit-2.2.2[${MULTILIB_USEDEP}] )
@@ -55,6 +55,7 @@ multilib_src_configure() {
 
 	local myconf=(
 		--with-db-uniquename=-$(db_findver sys-libs/db)
+		--enable-securedir="${EPREFIX}"/$(get_libdir)/security
 		--libdir=/usr/$(get_libdir)
 		--disable-prelude
 		$(use_enable audit)
