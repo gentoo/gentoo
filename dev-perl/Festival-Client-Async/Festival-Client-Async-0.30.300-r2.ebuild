@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Non-blocking interface to a Festival server"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 sparc x86"
+KEYWORDS="~amd64 ia64 sparc x86"
 IUSE=""
 
 src_test() {
