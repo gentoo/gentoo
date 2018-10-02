@@ -548,13 +548,22 @@ get_version() {
 		return 1
 	fi
 
+	[ -d "${OUTPUT_DIR}" ] && KV_OUT_DIR="${OUTPUT_DIR}"
+	if [ -n "${KV_OUT_DIR}" ];
+	then
+		qeinfo "Found kernel object directory:"
+		qeinfo "    ${KV_OUT_DIR}"
+	fi
+	# and if we STILL have not got it, then we better just set it to KV_DIR
+	KV_OUT_DIR="${KV_OUT_DIR:-${KV_DIR}}"
+
 	# Grab the kernel release from the output directory.
 	# TODO: we MUST detect kernel.release being out of date, and 'return 1' from
 	# this function.
-	if [ -s "${KV_DIR}"/include/config/kernel.release ]; then
-		KV_LOCAL=$(<"${KV_DIR}"/include/config/kernel.release)
-	elif [ -s "${KV_DIR}"/.kernelrelease ]; then
-		KV_LOCAL=$(<"${KV_DIR}"/.kernelrelease)
+	if [ -s "${KV_OUT_DIR}"/include/config/kernel.release ]; then
+		KV_LOCAL=$(<"${KV_OUT_DIR}"/include/config/kernel.release)
+	elif [ -s "${KV_OUT_DIR}"/.kernelrelease ]; then
+		KV_LOCAL=$(<"${KV_OUT_DIR}"/.kernelrelease)
 	else
 		KV_LOCAL=
 	fi
@@ -585,15 +594,6 @@ get_version() {
 			fi
 		done
 	fi
-
-	[ -d "${OUTPUT_DIR}" ] && KV_OUT_DIR="${OUTPUT_DIR}"
-	if [ -n "${KV_OUT_DIR}" ];
-	then
-		qeinfo "Found kernel object directory:"
-		qeinfo "    ${KV_OUT_DIR}"
-	fi
-	# and if we STILL have not got it, then we better just set it to KV_DIR
-	KV_OUT_DIR="${KV_OUT_DIR:-${KV_DIR}}"
 
 	# And we should set KV_FULL to the full expanded version
 	KV_FULL="${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}${KV_EXTRA}${KV_LOCAL}"
