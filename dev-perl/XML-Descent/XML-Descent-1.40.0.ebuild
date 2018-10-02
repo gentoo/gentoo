@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Recursive decent XML parsing"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="
