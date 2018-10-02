@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -18,6 +18,8 @@ transform_known_flags() {
 	replace-cpu-flags G3 750
 	replace-cpu-flags G4 7400
 	replace-cpu-flags G5 7400
+
+	filter-flags -fdiagnostics-show-option
 }
 
 is_arch_allowed() {
@@ -111,7 +113,7 @@ do_filter_flags() {
 	strip-flags
 }
 
-PATCH_VER="1.9"
+PATCH_VER="1.10"
 
 DESCRIPTION="Compatibility package for binaries linked against a pre gcc 3.4 libstdc++"
 HOMEPAGE="https://gcc.gnu.org/libstdc++/"
@@ -132,9 +134,6 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}"/patch
-
-	# bug 637608
-	has_version '>=sys-libs/glibc-2.26' && epatch "${FILESDIR}/${P}-glibc226.patch"
 
 	elibtoolize --portage --shallow
 	./contrib/gcc_update --touch
