@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-# eutils for einstalldocs
-inherit autotools epatch epunt-cxx eutils ltprune multilib-minimal
+
+inherit autotools epunt-cxx multilib-minimal
 
 DESCRIPTION="Free MPEG-4 audio codecs by AudioCoding.com"
 HOMEPAGE="http://www.audiocoding.com"
@@ -41,5 +41,5 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	emake DESTDIR="${D}" install
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
