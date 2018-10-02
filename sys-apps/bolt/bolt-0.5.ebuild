@@ -16,6 +16,7 @@ IUSE="doc systemd"
 
 DEPEND="
 	>=dev-libs/glib-2.50.0:2
+	dev-util/glib-utils
 	virtual/libudev
 	virtual/udev
 	dev-util/umockdev
