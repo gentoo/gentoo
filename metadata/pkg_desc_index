@@ -7593,7 +7593,7 @@ media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for gener
 media-libs/liblo 0.29: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
 media-libs/liblrdf 0.5.0: A library for the manipulation of RDF file in LADSPA plugins
-media-libs/liblscp 0.5.5: a C++ library for the Linux Sampler control protocol
+media-libs/liblscp 0.5.8-r1: C++ library for the Linux Sampler control protocol
 media-libs/libmad 0.15.1b-r8: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.12.1-r1 1.18.0: Mixer library for MATE Desktop
 media-libs/libmatroska 1.4.5 1.4.8: Extensible multimedia container format based on EBML
@@ -8122,7 +8122,7 @@ media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.2.3: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsynth 0.5.0: A Qt application to control FluidSynth
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
-media-sound/quimup 1.4.0 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
+media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
 media-sound/quodlibet 3.8.1-r1 3.9.1: audio library tagger, manager, and player for GTK+
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
@@ -8133,7 +8133,7 @@ media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them 
 media-sound/rosegarden 17.04: MIDI and audio sequencer and notation editor
 media-sound/rplay 3.3.2-r1: Play sounds on remote Unix systems, without sending audio data over the network
 media-sound/saydate 0.3.0: A Linux shell program that talks the date and system uptime
-media-sound/schismtracker 20120105: Free implementation of Impulse Tracker, a tool used to create high quality music
+media-sound/schismtracker 20180810: Free implementation of Impulse Tracker, a tool used to create high quality music
 media-sound/scmpc 0.4.1: a client for MPD which submits your tracks to last.fm
 media-sound/seq24 0.9.2-r1 0.9.3: Seq24 is a loop based MIDI sequencer with focus on live performances
 media-sound/setmixer 19941227_p1: A commandline mixer
@@ -8716,7 +8716,7 @@ net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
 net-libs/libwebsockets 2.1.1: canonical libwebsockets.org websocket library
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/loudmouth 1.5.3-r1: Lightweight C Jabber library
-net-libs/mbedtls 2.10.0: Cryptographic library for embedded systems
+net-libs/mbedtls 2.10.0 2.12.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 2.0.20180222 2.0.20180503: UPnP client library and a simple UPnP client
 net-libs/nativebiginteger 0.8.7: jbigi JNI library for net.i2p.util.NativeBigInteger java-class from I2P
@@ -8973,7 +8973,7 @@ net-misc/radvd 2.14 2.17-r1: Linux IPv6 Router Advertisement Daemon
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.3: A Remote Desktop Protocol Client
 net-misc/redir 3.2: Redir is a port redirector
-net-misc/remmina 1.2.0_rc24: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.2.0_rc24 1.2.31.3: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/rsync 3.1.3: File transfer program to keep remote files into sync
 net-misc/rygel 0.34.0: Rygel is an open source UPnP/DLNA MediaServer
@@ -9327,7 +9327,7 @@ sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap ti
 sci-geosciences/osm2pgsql 0.94.0: Converts OSM data to SQL and insert into PostgreSQL db
 sci-geosciences/qgis 3.0.3-r1: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.3 1.11.1-r1: GPS mapping utility
-sci-geosciences/routino 3.1.1: Routing application based on openstreetmap data
+sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1: Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB
 sci-geosciences/swmm 5.0.022: Storm Water Management Model-SWMM, hydrology, hydraulics, water quality model
 sci-geosciences/tcd-utils 20120115: Utilities for working with Tidal Constituent Databases
