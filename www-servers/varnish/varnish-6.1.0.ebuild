@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,7 +12,7 @@ HOMEPAGE="https://varnish-cache.org/"
 SRC_URI="http://varnish-cache.org/_downloads/${P}.tgz"
 
 LICENSE="BSD-2 GPL-2"
-SLOT="0"
+SLOT="0/2"
 KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="jemalloc jit static-libs"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -125,7 +125,7 @@ COMMON_DEPEND="
 	collectd_plugins_snmp?			( net-analyzer/net-snmp )
 	collectd_plugins_snmp_agent?		( net-analyzer/net-snmp )
 	collectd_plugins_tokyotyrant?		( net-misc/tokyotyrant )
-	collectd_plugins_varnish?		( www-servers/varnish )
+	collectd_plugins_varnish?		( www-servers/varnish:= )
 	collectd_plugins_virt?			( app-emulation/libvirt:= dev-libs/libxml2:2= )
 	collectd_plugins_write_http?		( net-misc/curl:0= dev-libs/yajl:= )
 	collectd_plugins_write_kafka?		( >=dev-libs/librdkafka-0.9.0.99:= dev-libs/yajl:= )
