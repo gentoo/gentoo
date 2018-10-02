@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=sys-devel/gettext sys-devel/bin86 sys-apps/texinfo x11-libs/pixman
+DESCRIPTION=allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
+EAPI=7
+HOMEPAGE=https://www.xenproject.org
+IUSE=custom-cflags python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml,threads] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] >=app-emulation/xen-tools-4.10.2
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=https://downloads.xenproject.org/release/xen/4.10.2/xen-4.10.2.tar.gz mirror://gnu-alpha/grub/grub-0.97.tar.gz http://xenbits.xensource.com/xen-extfiles/zlib-1.2.3.tar.gz ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/pciutils-2.2.9.tar.bz2 http://xenbits.xensource.com/xen-extfiles/lwip-1.3.0.tar.gz http://xenbits.xensource.com/xen-extfiles/newlib/newlib-1.16.0.tar.gz http://xenbits.xensource.com/xen-extfiles/polarssl-1.1.4-gpl.tgz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=5a8ab5b92dea976ccfd4e556898b75f6
