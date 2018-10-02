@@ -16,8 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-	>=app-crypt/yubikey-manager-0.7.0[${PYTHON_USEDEP}]
-	<app-crypt/yubikey-manager-0.8
+	>=app-crypt/yubikey-manager-1.0.0[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/pyotherside[${PYTHON_USEDEP}]
 	dev-qt/qtsingleapplication[qt5(+),X]
@@ -25,11 +24,11 @@ DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtsvg:5
-	dev-qt/qtquickcontrols:5[widgets]
+	dev-qt/qtquickcontrols2:5[widgets]
 	dev-qt/qtwidgets:5"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/"
+S="${WORKDIR}/${PN}-${P}"
 
 src_prepare() {
 	default
