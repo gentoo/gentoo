@@ -100,8 +100,6 @@ DEPEND="${COMMON_DEPEND}
 
 DOCS=( Changelog README.md )
 
-PATCHES=( "${FILESDIR}"/${PN}-fts3-tokenizer.patch )
-
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
 
