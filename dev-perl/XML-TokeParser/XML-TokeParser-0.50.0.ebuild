@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Simplified interface to XML::Parser"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="

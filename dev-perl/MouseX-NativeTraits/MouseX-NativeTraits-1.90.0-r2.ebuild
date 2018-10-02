@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Extend your attribute interfaces for Mouse"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="

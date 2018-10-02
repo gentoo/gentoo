@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Opaque, extensible XS pointer backed objects using sv_magic"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="
