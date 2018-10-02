@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,7 +9,7 @@ if [[ ${PV} == 99999999* ]]; then
 	SRC_URI=""
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/${PN}.git"
 else
-	GIT_COMMIT="44d4fca9922a252a0bd81f6307bcc072a78da54a"
+	GIT_COMMIT="7c81f23ad903f72e87e2102d8f52408305c0f7a2"
 	SRC_URI="https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
