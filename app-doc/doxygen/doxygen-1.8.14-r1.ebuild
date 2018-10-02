@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,7 @@ RDEPEND="app-text/ghostscript-gpl
 		media-gfx/graphviz
 		media-libs/freetype
 	)
-	doxysearch? ( dev-libs/xapian )
+	doxysearch? ( dev-libs/xapian:= )
 	latex? (
 		dev-texlive/texlive-bibtexextra
 		dev-texlive/texlive-fontsextra
@@ -59,6 +59,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.8.9.1-empty-line-sigsegv.patch" #454348
 	"${FILESDIR}/${PN}-1.8.12-link_with_pthread.patch"
+	"${FILESDIR}/${PN}-1.8.14-llvm7.patch" #666692
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )
