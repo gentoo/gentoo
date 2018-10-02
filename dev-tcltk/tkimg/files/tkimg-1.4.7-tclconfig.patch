@@ -1,0 +1,39 @@
+--- a/tclconfig/tcl.m4	2018-10-02 11:46:05.621138841 +0200
++++ b/tclconfig/tcl.m4	2018-10-02 11:46:56.041138841 +0200
+@@ -1076,7 +1076,7 @@
+ 	CFLAGS=$hold_cflags])
+     AS_IF([test $tcl_cv_cc_visibility_hidden = yes], [
+ 	AC_DEFINE(MODULE_SCOPE,
+-	    [extern __attribute__((__visibility__("hidden")))],
++	    [extern],
+ 	    [Compiler support for module scope symbols])
+ 	AC_DEFINE(HAVE_HIDDEN, [1], [Compiler support for module scope symbols])
+     ])
+@@ -1298,7 +1298,7 @@
+ 		# mingw gcc mode
+ 		AC_CHECK_TOOL(RC, windres)
+ 		CFLAGS_DEBUG="-g"
+-		CFLAGS_OPTIMIZE="-O2 -fomit-frame-pointer"
++		CFLAGS_OPTIMIZE=""
+ 		SHLIB_LD='${CC} -shared'
+ 		UNSHARED_LIB_SUFFIX='${TCL_TRIM_DOTS}.a'
+ 		LDFLAGS_CONSOLE="-wl,--subsystem,console ${lflags}"
+@@ -1557,7 +1557,7 @@
+ 	    SHLIB_SUFFIX=".so"
+ 
+ 	    # TEA specific:
+-	    CFLAGS_OPTIMIZE="-O2 -fomit-frame-pointer"
++	    CFLAGS_OPTIMIZE=""
+ 
+ 	    # TEA specific: use LDFLAGS_DEFAULT instead of LDFLAGS
+ 	    SHLIB_LD='${CC} -shared ${CFLAGS} ${LDFLAGS_DEFAULT}'
+@@ -3290,9 +3290,6 @@
+ 	    hold_cflags=$CFLAGS; CFLAGS="$CFLAGS -pipe"
+ 	    AC_TRY_COMPILE(,, tcl_cv_cc_pipe=yes, tcl_cv_cc_pipe=no)
+ 	    CFLAGS=$hold_cflags])
+-	if test $tcl_cv_cc_pipe = yes; then
+-	    CFLAGS="$CFLAGS -pipe"
+-	fi
+     fi
+ 
+     #--------------------------------------------------------------------
