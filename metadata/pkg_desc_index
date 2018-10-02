@@ -509,7 +509,7 @@ app-doc/blas-docs 3.1.1: Documentation reference and man pages for blas implemen
 app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
 app-doc/clsync-docs 0.4.2: Clsync and libclsync API documentation
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
-app-doc/doxygen 1.8.13-r1 1.8.14-r1: Documentation system for most programming languages
+app-doc/doxygen 1.8.14-r1: Documentation system for most programming languages
 app-doc/elisp-manual 18.1.03 21.2.8-r2 22.2.9 23.4 24.5 25.3: The GNU Emacs Lisp Reference Manual
 app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
 app-doc/halibut 1.2: yet another free document preparation system
