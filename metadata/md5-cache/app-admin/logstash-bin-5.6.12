@@ -9,6 +9,6 @@ LICENSE=Apache-2.0 MIT
 RDEPEND=virtual/jre:1.8 >=dev-java/java-config-2.2.0-r3
 RESTRICT=strip
 SLOT=0
-SRC_URI=https://artifacts.elastic.co/downloads/logstash/logstash-5.6.11.tar.gz
+SRC_URI=https://artifacts.elastic.co/downloads/logstash/logstash-5.6.12.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	0ee72667014428e01a01df2345244cf3	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=0ef73307c027ed39182b0967fdea6058
+_md5_=535f86d32c10fba105937f36d30d3279
