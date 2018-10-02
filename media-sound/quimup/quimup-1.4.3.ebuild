@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}_source.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
