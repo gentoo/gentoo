@@ -6,7 +6,7 @@ EAPI=6
 inherit gnome2-utils xdg-utils
 
 DESCRIPTION="Xine movie player"
-HOMEPAGE="http://xine.sourceforge.net/"
+HOMEPAGE="https://xine-project.org/home"
 SRC_URI="mirror://sourceforge/xine/${P}.tar.xz"
 
 LICENSE="GPL-2"
