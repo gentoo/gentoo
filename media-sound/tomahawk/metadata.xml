@@ -10,7 +10,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="hatchet">Enable support for the synchronisation through Hatchet</flag>
 		<flag name="telepathy">Enable support for the real-time communication framework telepathy</flag>
 	</use>
 </pkgmetadata>
