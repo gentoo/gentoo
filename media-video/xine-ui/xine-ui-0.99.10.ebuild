@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 inherit gnome2-utils xdg-utils
 
 DESCRIPTION="Xine movie player"
@@ -13,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="aalib curl debug libcaca lirc nls readline vdr X xinerama"
 
-RDEPEND="|| ( app-arch/tar app-arch/libarchive )
+RDEPEND="
+	|| ( app-arch/tar app-arch/libarchive )
 	media-libs/libpng:0=
 	>=media-libs/xine-lib-1.2:=[aalib?,libcaca?]
 	virtual/jpeg:0
@@ -35,17 +37,22 @@ RDEPEND="|| ( app-arch/tar app-arch/libarchive )
 		x11-libs/libXv:=
 		x11-libs/libXxf86vm:=
 		xinerama? ( x11-libs/libXinerama:= )
-		)"
+	)
+"
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 	nls? ( >=sys-devel/gettext-0.18.3 )
 	X? (
 		x11-base/xorg-proto
 		x11-libs/libXt
-		)
-	virtual/pkgconfig"
+	)
+"
+
+PATCHES=( "${FILESDIR}"/${P}-libcaca.patch )
 
 src_prepare() {
-	rm -f misc/xine-bugreport
+	default
+	rm misc/xine-bugreport || die
 }
 
 src_configure() {
@@ -70,11 +77,8 @@ src_install() {
 		docdir="/usr/share/doc/${PF}" \
 		docsdir="/usr/share/doc/${PF}" \
 		install
-	dodoc AUTHORS ChangeLog NEWS README
-}
 
-pkg_preinst() {
-	gnome2_icon_savelist
+	einstalldocs
 }
 
 pkg_postinst() {
