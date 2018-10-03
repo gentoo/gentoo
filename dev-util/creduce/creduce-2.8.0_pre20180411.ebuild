@@ -17,9 +17,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+LLVM_MAX_SLOT=6
+
 COMMON_DEPEND="
 	>=dev-lang/perl-5.10.0
-	>=sys-devel/clang-6:="
+	sys-devel/clang:${LLVM_MAX_SLOT}"
 RDEPEND="${COMMON_DEPEND}
 	dev-perl/Benchmark-Timer
 	dev-perl/Exporter-Lite
