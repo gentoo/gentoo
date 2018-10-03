@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=media-libs/libcddb-0.9.5 media-sound/cdparanoia x11-libs/gtk+:2 flac? ( media-libs/flac ) mac? ( media-sound/mac ) mp3? ( media-sound/lame ) musepack? ( media-sound/musepack-tools ) opus? ( media-sound/opus-tools ) vorbis? ( media-sound/vorbis-tools ) wavpack? ( media-sound/wavpack )
 SLOT=0
 SRC_URI=http://littlesvr.ca/asunder/releases/asunder-2.9.2.tar.bz2
-_eclasses_=xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_eclasses_=xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
 _md5_=3f63ded4fe6c1910a021e3518b19198b

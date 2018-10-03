@@ -10,5 +10,5 @@ RDEPEND=gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) virtual/libintl doc
 REQUIRED_USE=gpu-accel? ( gtk3 ) map? ( gpu-accel )
 SLOT=0
 SRC_URI=http://www.geeqie.org/geeqie-1.4.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
 _md5_=e199c48bd9d28baf37cda7187bcdd0a5

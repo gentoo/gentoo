@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/zziplib gnome-base/libglade media-libs/libsdl[joystick,opengl,video] sys-libs/zlib virtual/opengl x11-libs/agg >=x11-libs/gtk+-2.8.0:2 x11-libs/gtkglext
 SLOT=0
 SRC_URI=mirror://sourceforge/desmume/desmume-0.9.11.tar.gz
-_eclasses_=xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_eclasses_=xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
 _md5_=474801794fd8b6412f33f7d35632f164

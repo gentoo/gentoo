@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.16 >=x11-libs/gtk+-2.12:2
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/apps/gigolo/0.4/gigolo-0.4.2.tar.bz2
-_eclasses_=xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_eclasses_=xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
 _md5_=ca1b565bab72e3b772de533e1e00db2a

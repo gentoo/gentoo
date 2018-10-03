@@ -8,5 +8,5 @@ RDEPEND=>=media-gfx/sane-backends-1.0 >=dev-qt/qtsvg-5.4.1:5 >=dev-qt/qtnetwork-
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://code-industry.net/public/master-pdf-editor-5.1.42_qt5.amd64.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
 _md5_=e51835cfff34c18145da4e636d89db3c
