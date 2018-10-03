@@ -3,10 +3,10 @@
 
 EAPI=6
 
-inherit gnome2-utils xdg-utils
+inherit autotools gnome2-utils xdg-utils
 
 DESCRIPTION="Xine movie player"
-HOMEPAGE="http://xine.sourceforge.net/"
+HOMEPAGE="https://xine-project.org/home"
 SRC_URI="mirror://sourceforge/xine/${P}.tar.xz"
 
 LICENSE="GPL-2"
@@ -48,10 +48,14 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES=( "${FILESDIR}"/${P}-libcaca.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-desktop.patch
+	"${FILESDIR}"/${P}-libcaca.patch
+)
 
 src_prepare() {
 	default
+	eautoreconf
 	rm misc/xine-bugreport || die
 }
 
@@ -72,6 +76,9 @@ src_configure() {
 }
 
 src_install() {
+	# xine-list apparently may cause sandbox violation, bug 654394
+	addpredict /dev/dri
+
 	emake \
 		DESTDIR="${D}" \
 		docdir="/usr/share/doc/${PF}" \
