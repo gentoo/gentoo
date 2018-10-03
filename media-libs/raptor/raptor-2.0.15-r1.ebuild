@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit libtool
 
 MY_PN=${PN}2
@@ -16,20 +17,28 @@ SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+curl debug json static-libs unicode"
 
-RDEPEND="dev-libs/libxml2
+DEPEND="
+	dev-libs/libxml2
 	dev-libs/libxslt
 	curl? ( net-misc/curl )
 	json? ( dev-libs/yajl )
 	unicode? ( dev-libs/icu:= )
-	!media-libs/raptor:0"
-DEPEND="${RDEPEND}
+"
+RDEPEND="${DEPEND}
+	!media-libs/raptor:0
+"
+BDEPEND="
 	>=sys-devel/bison-3
 	>=sys-devel/flex-2.5.36
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}/${MY_P}"
 
-DOCS="AUTHORS ChangeLog NEWS NOTICE README"
+DOCS=( AUTHORS ChangeLog NEWS NOTICE README )
+HTML_DOCS=( {NEWS,README,RELEASE,UPGRADING}.html )
+
+PATCHES=( "${FILESDIR}/${P}-heap-overflow.patch" )
 
 src_prepare() {
 	default
@@ -39,16 +48,17 @@ src_prepare() {
 src_configure() {
 	# FIXME: It should be possible to use net-nntp/inn for libinn.h and -linn!
 
-	local myconf='--with-www=xml'
-	use curl && myconf='--with-www=curl'
+	local myeconfargs=(
+		--with-www=xml
+		--with-html-dir="${EPREFIX}"/usr/share/gtk-doc/html
+		$(use_enable debug)
+		$(use_with json yajl)
+		$(use_enable static-libs static)
+		$(usex unicode "--with-icu-config="${EPREFIX}"/usr/bin/icu-config" '')
+	)
+	use curl && myeconfargs+=( --with-www=curl )
 
-	econf \
-		$(use_enable static-libs static) \
-		$(use_enable debug) \
-		$(usex unicode "--with-icu-config=\"${EPREFIX}\"/usr/bin/icu-config" '') \
-		$(use_with json yajl) \
-		--with-html-dir="${EPREFIX}"/usr/share/doc/${PF}/html \
-		${myconf}
+	econf "${myeconfargs[@]}"
 }
 
 src_test() {
@@ -57,11 +67,5 @@ src_test() {
 
 src_install() {
 	default
-	docinto html
-	dodoc {NEWS,README,RELEASE,UPGRADING}.html
-	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
-
-	# https://bugs.gentoo.org/467768
-	local _rdocdir=/usr/share/doc/${PF}/html/${MY_PN}
-	[[ -d ${ED}/${_rdocdir} ]] && dosym ${_rdocdir} /usr/share/gtk-doc/html/${MY_PN}
+	find "${D}" -name '*.la' -delete || die
 }
