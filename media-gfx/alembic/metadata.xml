@@ -14,9 +14,25 @@
 	developed by Sony Pictures Imageworks Inc. and Lucasfilm Ltd.
 </longdescription>
 <use>
+	<flag name="arnold">
+		Add support for arnold renderer (experimental)
+	</flag>
 	<flag name="boost">Use <pkg>dev-libs/boost</pkg> library</flag>
+	<flag name="examples">Install alembic examples</flag>
 	<flag name="hdf5">Add support <pkg>sci-libs/hdf5</pkg></flag>
-	<flag name="pyalembic">Build pyalembic python bindings (needs <pkg>dev-python/pyilmbase</pkg>)</flag>
+	<flag name="maya">
+		Compile Alembic plugin for Maya (experimental)
+	</flag>
+	<flag name="prman">
+		Compile Alembic plugin for Renderman (experimental)
+	</flag>
+	<flag name="pyalembic">
+		<!-- renamed to python in 1.7.9 -->
+		Build pyalembic python bindings (needs <pkg>dev-python/pyilmbase</pkg>)
+	</flag>
+	<flag name="python">
+		Build pyalembic python bindings (needs <pkg>dev-python/pyilmbase</pkg>)
+	</flag>
 	<flag name="test">Build and run the test-suite</flag>
 	<flag name="zlib">Use <pkg>sys-libs/zlib</pkg> for compressions</flag>
 </use>
