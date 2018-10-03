@@ -19,7 +19,7 @@ DESCRIPTION="provide (streaming) protocol decoding functionality"
 HOMEPAGE="https://sigrok.org/wiki/Libsigrokdecode"
 
 LICENSE="GPL-3"
-SLOT="0/9999"
+SLOT="0/4"
 IUSE="static-libs"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
