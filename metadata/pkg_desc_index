@@ -1889,7 +1889,7 @@ dev-db/pgadmin3 1.22.2: wxWidgets GUI for PostgreSQL
 dev-db/pgadmin4 3.0: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 9.2: pgBadger is a PostgreSQL log analyzer.
-dev-db/pgbouncer 1.8.1 1.9.0: Lightweight connection pooler for PostgreSQL
+dev-db/pgbouncer 1.9.0: Lightweight connection pooler for PostgreSQL
 dev-db/pgpool2 3.7.0 3.7.5: Connection pool server for PostgreSQL
 dev-db/pgtap 0.98.0: Unit testing for PostgreSQL
 dev-db/phpmyadmin 4.7.0 4.7.8: Web-based administration for MySQL database in PHP
