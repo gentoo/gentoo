@@ -12,13 +12,14 @@ DESCRIPTION="GNUCap is the GNU Circuit Analysis Package"
 SRC_URI="http://git.savannah.gnu.org/cgit/${PN}.git/snapshot/${MY_P}.tar.gz"
 HOMEPAGE="http://www.gnucap.org/"
 
-IUSE="+readline"
+IUSE="+models +readline"
 SLOT="0"
 LICENSE="GPL-3+"
 KEYWORDS="~amd64 ~ppc ~x86"
 
 DEPEND="readline? ( sys-libs/readline:0= )"
 RDEPEND="${DEPEND}"
+PDEPEND="models? ( ~sci-electronics/gnucap-models-${PV} )"
 
 S="${WORKDIR}"/${MY_P}
 

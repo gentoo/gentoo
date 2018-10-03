@@ -13,4 +13,7 @@
   of the code is in place for future support of event driven analog simulation,
   and true multi-rate simulation.
   </longdescription>
+  <use>
+    <flag name="models">Install additional models for use with Gnucap.</flag>
+  </use>
 </pkgmetadata>
