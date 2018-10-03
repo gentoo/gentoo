@@ -6,7 +6,7 @@
 # gnome@gentoo.org
 # @AUTHOR:
 # Original author: Gilles Dartiguelongue <eva@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: Auxiliary functions commonly used by XDG compliant packages.
 # @DESCRIPTION:
 # This eclass provides a set of auxiliary functions needed by most XDG
@@ -16,7 +16,7 @@
 #  * XDG mime information database management
 
 case "${EAPI:-0}" in
-	0|1|2|3|4|5|6) ;;
+	0|1|2|3|4|5|6|7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
@@ -67,7 +67,7 @@ xdg_environment_reset() {
 # Updates the .desktop files database.
 # Generates a list of mimetypes linked to applications that can handle them
 xdg_desktop_database_update() {
-	local updater="${EROOT}${DESKTOP_DATABASE_UPDATE_BIN}"
+	local updater="${EROOT%/}${DESKTOP_DATABASE_UPDATE_BIN}"
 
 	if [[ ${EBUILD_PHASE} != post* ]] ; then
 		die "xdg_desktop_database_update must be used in pkg_post* phases."
@@ -79,7 +79,7 @@ xdg_desktop_database_update() {
 	fi
 
 	ebegin "Updating .desktop files database"
-	"${updater}" -q "${EROOT}${DESKTOP_DATABASE_DIR}"
+	"${updater}" -q "${EROOT%/}${DESKTOP_DATABASE_DIR}"
 	eend $?
 }
 
@@ -88,7 +88,7 @@ xdg_desktop_database_update() {
 # Update the mime database.
 # Creates a general list of mime types from several sources
 xdg_mimeinfo_database_update() {
-	local updater="${EROOT}${MIMEINFO_DATABASE_UPDATE_BIN}"
+	local updater="${EROOT%/}${MIMEINFO_DATABASE_UPDATE_BIN}"
 
 	if [[ ${EBUILD_PHASE} != post* ]] ; then
 		die "xdg_mimeinfo_database_update must be used in pkg_post* phases."
@@ -100,6 +100,6 @@ xdg_mimeinfo_database_update() {
 	fi
 
 	ebegin "Updating shared mime info database"
-	"${updater}" "${EROOT}${MIMEINFO_DATABASE_DIR}"
+	"${updater}" "${EROOT%/}${MIMEINFO_DATABASE_DIR}"
 	eend $?
 }
