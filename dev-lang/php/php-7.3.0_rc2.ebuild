@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -63,7 +63,7 @@ COMMON_DEPEND="
 	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
 	coverage? ( dev-util/lcov )
 	curl? ( >=net-misc/curl-7.10.5 )
-	enchant? ( app-text/enchant )
+	enchant? ( <app-text/enchant-2.0:0 )
 	firebird? ( dev-db/firebird )
 	gd? ( virtual/jpeg:0 media-libs/libpng:0= >=sys-libs/zlib-1.2.0.4 )
 	gdbm? ( >=sys-libs/gdbm-1.8.0:0= )
