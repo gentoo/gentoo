@@ -49,14 +49,13 @@ src_configure() {
 	# FIXME: It should be possible to use net-nntp/inn for libinn.h and -linn!
 
 	local myeconfargs=(
-		--with-www=xml
 		--with-html-dir="${EPREFIX}"/usr/share/gtk-doc/html
+		$(usex curl --with-www=curl --with-www=xml)
 		$(use_enable debug)
 		$(use_with json yajl)
 		$(use_enable static-libs static)
-		$(usex unicode "--with-icu-config="${EPREFIX}"/usr/bin/icu-config" '')
+		$(usex unicode --with-icu-config="${EPREFIX}"/usr/bin/icu-config '')
 	)
-	use curl && myeconfargs+=( --with-www=curl )
 
 	econf "${myeconfargs[@]}"
 }
