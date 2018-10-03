@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{5,6} pypy )
 
-inherit multiprocessing multilib-build python-any-r1 toolchain-funcs versionator
+inherit eapi7-ver multiprocessing multilib-build python-any-r1 toolchain-funcs
 
 if [[ ${PV} = *beta* ]]; then
 	betaver=${PV//*beta}
@@ -14,7 +14,7 @@ if [[ ${PV} = *beta* ]]; then
 	SLOT="beta/${PV}"
 	SRC="${BETA_SNAPSHOT}/rustc-beta-src.tar.xz"
 else
-	ABI_VER="$(get_version_component_range 1-2)"
+	ABI_VER="$(ver_cut 1-2)"
 	SLOT="stable/${ABI_VER}"
 	MY_P="rustc-${PV}"
 	SRC="${MY_P}-src.tar.xz"
@@ -25,12 +25,12 @@ CHOST_amd64=x86_64-unknown-linux-gnu
 CHOST_x86=i686-unknown-linux-gnu
 CHOST_arm64=aarch64-unknown-linux-gnu
 
-RUST_STAGE0_VERSION="1.$(($(get_version_component_range 2) - 1)).0"
+RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).0"
 RUST_STAGE0_amd64="rust-${RUST_STAGE0_VERSION}-${CHOST_amd64}"
 RUST_STAGE0_x86="rust-${RUST_STAGE0_VERSION}-${CHOST_x86}"
 RUST_STAGE0_arm64="rust-${RUST_STAGE0_VERSION}-${CHOST_arm64}"
 
-CARGO_DEPEND_VERSION="0.$(($(get_version_component_range 2) + 1)).0"
+CARGO_DEPEND_VERSION="0.$(($(ver_cut 2) + 1)).0"
 
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
