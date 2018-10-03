@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit gnome2-utils xdg-utils
+inherit autotools gnome2-utils xdg-utils
 
 DESCRIPTION="Xine movie player"
 HOMEPAGE="https://xine-project.org/home"
@@ -48,10 +48,14 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES=( "${FILESDIR}"/${P}-libcaca.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-desktop.patch
+	"${FILESDIR}"/${P}-libcaca.patch
+)
 
 src_prepare() {
 	default
+	eautoreconf
 	rm misc/xine-bugreport || die
 }
 
