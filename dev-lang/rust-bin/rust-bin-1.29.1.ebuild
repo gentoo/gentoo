@@ -21,7 +21,7 @@ SRC_URI="amd64? ( https://static.rust-lang.org/dist/${MY_P}-x86_64-unknown-linux
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable"
 KEYWORDS="~amd64 ~arm64 x86"
-IUSE="cargo clippy doc libressl rustfmt"
+IUSE="cargo clippy cpu_flags_x86_sse2 doc libressl rustfmt"
 
 CARGO_DEPEND_VERSION="0.$(($(get_version_component_range 2) + 1)).0"
 
@@ -39,6 +39,7 @@ RDEPEND="${DEPEND}
 			net-misc/curl[ssl]
 		)"
 PDEPEND="!cargo? ( >=dev-util/cargo-${CARGO_DEPEND_VERSION} )"
+REQUIRED_USE="x86? ( cpu_flags_x86_sse2 )"
 
 QA_PREBUILT="
 	opt/${P}/bin/*-${PV}
