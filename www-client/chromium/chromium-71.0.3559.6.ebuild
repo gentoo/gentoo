@@ -1,14 +1,14 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
 CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
 	sv sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit check-reqs chromium-2 eutils gnome2-utils flag-o-matic multilib ninja-utils pax-utils portability python-any-r1 readme.gentoo-r1 toolchain-funcs xdg-utils
+inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-utils portability python-any-r1 readme.gentoo-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
@@ -89,6 +89,8 @@ RDEPEND="${COMMON_DEPEND}
 # dev-vcs/git - https://bugs.gentoo.org/593476
 # sys-apps/sandbox - https://crbug.com/586444
 DEPEND="${COMMON_DEPEND}
+"
+BDEPEND="
 	>=app-arch/gzip-1.7
 	!arm? (
 		dev-lang/yasm
@@ -108,7 +110,7 @@ DEPEND="${COMMON_DEPEND}
 : ${CHROMIUM_FORCE_CLANG=yes}
 
 if [[ ${CHROMIUM_FORCE_CLANG} == yes ]]; then
-	DEPEND+=" >=sys-devel/clang-5"
+	BDEPEND+=" >=sys-devel/clang-5"
 fi
 
 if ! has chromium_pkg_die ${EBUILD_DEATH_HOOKS}; then
@@ -159,14 +161,12 @@ pre_build_checks() {
 	# Check build requirements, bug #541816 and bug #471810 .
 	CHECKREQS_MEMORY="3G"
 	CHECKREQS_DISK_BUILD="5G"
-	eshopts_push -s extglob
-	if is-flagq '-g?(gdb)?([1-9])'; then
+	if ( shopt -s extglob; is-flagq '-g?(gdb)?([1-9])' ); then
 		CHECKREQS_DISK_BUILD="25G"
 		if ! use component-build; then
 			CHECKREQS_MEMORY="16G"
 		fi
 	fi
-	eshopts_pop
 	check-reqs_pkg_setup
 }
 
@@ -682,17 +682,21 @@ src_install() {
 	readme.gentoo_create_doc
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postrm() {
-	gnome2_icon_cache_update
+	if type gtk-update-icon-cache &>/dev/null; then
+		ebegin "Updating GTK icon cache"
+		gtk-update-icon-cache "${EROOT}/usr/share/icons/hicolor"
+		eend $?
+	fi
 	xdg_desktop_database_update
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	if type gtk-update-icon-cache &>/dev/null; then
+		ebegin "Updating GTK icon cache"
+		gtk-update-icon-cache "${EROOT}/usr/share/icons/hicolor"
+		eend $?
+	fi
 	xdg_desktop_database_update
 	readme.gentoo_print_elog
 }
