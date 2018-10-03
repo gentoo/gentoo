@@ -9,7 +9,7 @@ DESCRIPTION="A simple Xfce4 media player using GStreamer"
 HOMEPAGE="https://docs.xfce.org/apps/parole/start"
 SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~mips ~x86"
 IUSE="libnotify taglib"
