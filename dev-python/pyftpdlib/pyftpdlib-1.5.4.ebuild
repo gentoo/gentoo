@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -64,9 +64,10 @@ python_test() {
 		test_nlst
 	)
 	skipped_tests=${skipped_tests[@]/%/ or}
-	# Don't load the relaxed plugin, see https://bugs.gentoo.org/661082
-	py.test --ignore ${PN}/test/test_misc.py -k "not (${skipped_tests% or})" \
-		-p no:relaxed || die "Tests failed with ${EPYTHON}"
+	# Tests fail with TZ=GMT, see https://bugs.gentoo.org/666623
+	TZ=UTC+1 pytest -vv \
+		--ignore ${PN}/test/test_misc.py -k "not (${skipped_tests% or})" \
+			|| die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
