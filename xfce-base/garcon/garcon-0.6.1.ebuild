@@ -18,6 +18,7 @@ RDEPEND=">=dev-libs/glib-2.30:=
 	>=xfce-base/libxfce4ui-4.11.1:=[gtk3(+)]
 	>=xfce-base/libxfce4util-4.11:="
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	dev-util/gtk-doc-am
 	dev-util/intltool
 	sys-devel/gettext
