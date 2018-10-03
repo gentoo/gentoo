@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Spectre & Meltdown vulnerability/mitigation checker for Linux
+EAPI=7
+HOMEPAGE=https://github.com/speed47/spectre-meltdown-checker
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3+
+SLOT=0
+SRC_URI=https://github.com/speed47/spectre-meltdown-checker/archive/v0.40.tar.gz -> spectre-meltdown-checker-0.40.tar.gz
+_md5_=5d0f4475112c4d49add828a4016c7ba2
