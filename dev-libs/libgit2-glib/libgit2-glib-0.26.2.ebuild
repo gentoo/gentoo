@@ -28,6 +28,7 @@ RDEPEND="
 		dev-python/pygobject:3[${PYTHON_USEDEP}] )
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.11
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
