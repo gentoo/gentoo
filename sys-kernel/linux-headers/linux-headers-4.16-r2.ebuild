@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,8 +9,11 @@ inherit kernel-2
 detect_version
 
 PATCH_VER="1"
-SRC_URI="mirror://gentoo/gentoo-headers-base-${PV}.tar.xz
-	${PATCH_VER:+mirror://gentoo/gentoo-headers-${PV}-${PATCH_VER}.tar.xz}"
+SRC_URI="mirror://gentoo/gentoo-headers-base-${PV}-r1.tar.xz
+	${PATCH_VER:+mirror://gentoo/gentoo-headers-${PV}-${PATCH_VER}.tar.xz}
+	https://dev.gentoo.org/~slyfox/distfiles/gentoo-headers-base-${PV}-r1.tar.xz
+	${PATCH_VER:+https://dev.gentoo.org/~slyfox/distfiles/gentoo-headers-${PV}-${PATCH_VER}.tar.xz}
+"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 
@@ -27,7 +30,7 @@ src_unpack() {
 src_prepare() {
 	default
 
-	[[ -n ${PATCH_VER} ]] && EPATCH_SUFFIX="patch" epatch "${WORKDIR}"/${PV}
+	[[ -n ${PATCH_VER} ]] && eapply "${WORKDIR}/${PV}"/*.patch
 }
 
 src_install() {

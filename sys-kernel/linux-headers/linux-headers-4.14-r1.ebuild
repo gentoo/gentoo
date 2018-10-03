@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ src_unpack() {
 src_prepare() {
 	default
 
-	[[ -n ${PATCH_VER} ]] && EPATCH_SUFFIX="patch" epatch "${WORKDIR}"/${PV}
+	[[ -n ${PATCH_VER} ]] && eapply "${WORKDIR}/${PV}"/*.patch
 }
 
 src_install() {
