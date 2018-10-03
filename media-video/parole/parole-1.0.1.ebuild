@@ -29,6 +29,7 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.100:=
 RDEPEND="${COMMON_DEPEND}
 	media-plugins/gst-plugins-meta:1.0"
 DEPEND="${COMMON_DEPEND}
+	dev-util/glib-utils
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
