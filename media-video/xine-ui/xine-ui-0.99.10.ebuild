@@ -76,6 +76,9 @@ src_configure() {
 }
 
 src_install() {
+	# xine-list apparently may cause sandbox violation, bug 654394
+	addpredict /dev/dri
+
 	emake \
 		DESTDIR="${D}" \
 		docdir="/usr/share/doc/${PF}" \
