@@ -293,11 +293,6 @@ virtual/httpd-php:7.3
 # x11-drivers/nvidia-drivers. Work in progress.
 media-libs/libglvnd
 
-# Maciej Mrozowski <reavertm@gentoo.org> (6 May 2018)
-# SoQt does not build yet
->=media-libs/coin-4.0.0
->=media-libs/simage-1.7.1
-
 # Aaron Bauman <bman@gentoo.org> (30 Apr 2018)
 # Masked for testing
 =dev-libs/libressl-2.7*
