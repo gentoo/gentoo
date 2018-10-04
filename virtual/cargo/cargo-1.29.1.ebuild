@@ -9,7 +9,7 @@ SRC_URI=""
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 CARGO_DEPEND_VERSION="0.$(($(ver_cut 2) + 1)).0"
 

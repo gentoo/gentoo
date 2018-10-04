@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="Easily rename files"
 HOMEPAGE="http://rename.sourceforge.net/"
@@ -27,7 +27,7 @@ src_prepare() {
 		-e '/^CFLAGS/s:-O3:@CFLAGS@:' \
 		-e '/strip /s:.*::' \
 		Makefile.in || die
-	epatch "${MY_PATCHES[@]}"
+	eapply "${MY_PATCHES[@]}"
 	tc-export CC
 }
 
