@@ -339,6 +339,7 @@ src_configure() {
 		fi
 	fi
 
+	# disable webrtc for now, moz stated in #1496027 they're not going to put any ressources into a possible fix
 	use arm && mozconfig_annotate 'broken on arm' --disable-webrtc
 
 	mozconfig_use_enable !bindist official-branding
