@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -74,7 +74,6 @@ COMMON_DEPEND="
 		$(add_qt_dep qtnetwork)
 	)
 	mediaplayer? ( media-libs/qtav[opengl] )
-	mysql? ( virtual/mysql[server] )
 	opengl? (
 		$(add_qt_dep qtopengl)
 		virtual/opengl
@@ -98,6 +97,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	media-plugins/kipi-plugins:5
+	mysql? ( virtual/mysql[server] )
 	panorama? ( media-gfx/hugin )
 	!media-gfx/digikam:4
 "
