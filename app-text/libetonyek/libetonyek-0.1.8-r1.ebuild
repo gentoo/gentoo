@@ -46,15 +46,19 @@ src_prepare() {
 }
 
 src_configure() {
-	# mdds installs versioned pkgconfig files
-	local p=$(best_version dev-util/mdds)
-	local pv=$(echo ${p/%-r[0-9]*/} | rev | cut -d - -f 1 | rev)
-	econf \
-		--disable-werror \
-		--with-mdds=$(ver_cut 1-2 ${pv}) \
-		$(use_with doc docs) \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		--disable-werror
+		$(use_with doc docs)
+		$(use_enable static-libs static)
 		$(use_enable test tests)
+	)
+	if has_version ">=dev-util/mdds-1.4"; then
+		myeconfargs+=( --with-mdds=1.4 )
+	else
+		myeconfargs+=( --with-mdds=1.2 )
+	fi
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
