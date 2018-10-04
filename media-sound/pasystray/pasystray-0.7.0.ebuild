@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit gnome2-utils autotools vcs-snapshot xdg
+
+inherit gnome2-utils autotools xdg
 
 DESCRIPTION="PulseAudio system tray"
 HOMEPAGE="https://github.com/christophgysin/pasystray"
@@ -16,13 +17,15 @@ IUSE="libnotify zeroconf"
 RDEPEND="
 	>=dev-libs/glib-2.48.2
 	>=media-sound/pulseaudio-5.0-r3[glib,zeroconf?]
-	zeroconf? ( >=net-dns/avahi-0.6 )
 	x11-libs/gtk+:3
 	x11-libs/libX11
+	zeroconf? ( >=net-dns/avahi-0.6 )
 	libnotify? ( >=x11-libs/libnotify-0.7 )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+S=${WORKDIR}/${PN}-${P}
 
 src_prepare() {
 	default
@@ -33,11 +36,6 @@ src_configure() {
 	econf \
 		$(use_enable libnotify notify) \
 		$(use_enable zeroconf avahi)
-}
-
-pkg_preinst() {
-	xdg_pkg_preinst
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
