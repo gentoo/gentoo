@@ -7775,7 +7775,7 @@ media-plugins/amb-plugins 0.8.1-r1: AMB-plugins ladspa plugin package. Filters b
 media-plugins/calf 0.90.0: A set of open source instruments and effects for digital audio workstations
 media-plugins/caps-plugins 0.4.5-r1 0.9.15 0.9.24: The CAPS Audio Plugin Suite - LADSPA plugin suite
 media-plugins/fil-plugins 0.3.0: FIL-plugins ladspa plugin package. Filters by Fons Adriaensen
-media-plugins/frei0r-plugins 1.5.0 1.6.1: A minimalistic plugin API for video effects
+media-plugins/frei0r-plugins 1.6.1: A minimalistic plugin API for video effects
 media-plugins/gimp-lqr 0.7.2: Content-aware resizing for the GIMP
 media-plugins/gkrellmpc 0.1_beta10: A gkrellm plugin to control the MPD (Music Player Daemon)
 media-plugins/gmpc-alarm 11.8.16: This plugin can start/stop/pause your music at a preset time
