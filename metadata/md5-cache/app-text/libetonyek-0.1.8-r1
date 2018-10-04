@@ -11,4 +11,4 @@ RDEPEND=app-text/liblangtag dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib
 SLOT=0
 SRC_URI=https://dev-www.libreoffice.org/src/libetonyek/libetonyek-0.1.8.tar.xz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=3cebb17952f5d53cbf06ece57992c687
+_md5_=25b7074da20abd94449cd2ff638ef4af
