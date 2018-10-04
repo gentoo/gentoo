@@ -1,0 +1,10 @@
+--- a/amavisd	2016-04-26 21:24:33.000000000 +0200
++++ b/amavisd	2018-10-04 13:52:10.859765068 +0200
+@@ -34338,6 +34338,7 @@
+     $sig_ind++;
+   }
+   Amavis::load_policy_bank($_,$msginfo) for @bank_names;
++  $msginfo->originating(c('originating'));
+   $msginfo->dkim_signatures_valid(\@signatures_valid)  if @signatures_valid;
+ # if (ll(5) && $sig_ind > 0) {
+ #   # show which header fields are covered by which signature
