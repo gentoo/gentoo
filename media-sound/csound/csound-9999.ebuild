@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 )
 
-inherit java-pkg-opt-2 toolchain-funcs python-single-r1 cmake-utils
+PYTHON_COMPAT=( python2_7 )
+inherit cmake-utils java-pkg-opt-2 python-single-r1 toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/csound/csound.git"
@@ -19,15 +19,15 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="A sound design and signal processing system for composition and performance"
+DESCRIPTION="Sound design and signal processing system for composition and performance"
 HOMEPAGE="https://csound.github.io/"
 
 LICENSE="LGPL-2.1 doc? ( FDL-1.2+ )"
 SLOT="0"
 IUSE="+alsa beats chua csoundac curl +cxx debug doc double-precision dssi examples
-fltk +fluidsynth +image jack java keyboard linear lua luajit nls osc openmp
-portaudio portmidi pulseaudio python samples score static-libs stk tcl test
-+threads +utils vim-syntax websocket"
+fltk +fluidsynth +image jack java keyboard linear lua luajit nls osc portaudio
+portaudio portmidi pulseaudio python samples static-libs stk test +threads +utils
+vim-syntax websocket"
 
 IUSE_LANGS=" de en_US es es_CO fr it ro ru"
 
@@ -70,10 +70,6 @@ RDEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	python? ( ${PYTHON_DEPS} )
 	stk? ( media-libs/stk )
-	tcl? (
-		>=dev-lang/tcl-8.5:0=
-		>=dev-lang/tk-8.5:0=
-	)
 	utils? ( !media-sound/snd )
 	websocket? ( net-libs/libwebsockets )
 "
@@ -96,13 +92,7 @@ fi
 # requires specific alsa settings
 RESTRICT="test"
 
-pkg_pretend() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-}
-
 pkg_setup() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-
 	if use python || use test ; then
 		python-single-r1_pkg_setup
 	fi
@@ -148,18 +138,15 @@ src_configure() {
 		-DBUILD_LUA_INTERFACE=$(usex lua)
 		-DUSE_GETTEXT=$(usex nls)
 		-DBUILD_OSC_OPCODES=$(usex osc)
-		-DUSE_OPEN_MP=$(usex openmp)
 		-DUSE_PORTAUDIO=$(usex portaudio)
 		-DUSE_PORTMIDI=$(usex portmidi)
 		-DUSE_PULSEAUDIO=$(usex pulseaudio)
 		-DBUILD_PYTHON_OPCODES=$(usex python)
 		-DBUILD_PYTHON_INTERFACE=$(usex python)
-		-DSCORE_PARSER=$(usex score)
 		-DBUILD_STATIC_LIBRARY=$(usex static-libs)
 		-DBUILD_STK_OPCODES=$(usex stk)
 		-DBUILD_TESTS=$(usex test)
 		-DBUILD_STATIC_LIBRARY=$(usex test)
-		-DBUILD_TCLCSOUND=$(usex tcl)
 		-DBUILD_MULTI_CORE=$(usex threads)
 		-DBUILD_UTILITIES=$(usex utils)
 		-DBUILD_WEBSOCKET_OPCODE=$(usex websocket)
