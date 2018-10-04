@@ -4532,7 +4532,7 @@ dev-php/doctrine-instantiator 1.0.5: Utility to instantiate objects in PHP witho
 dev-php/fedora-autoloader 0.2.1: Fedora's Static PSR-4, PSR-0, and classmap autoloader
 dev-php/igbinary 2.0.5: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 4.0.2: Object-oriented graphing library for PHP
-dev-php/ming-php 0.4.7: PHP extension for the ming Flash movie generation library
+dev-php/ming-php 0.4.7 0.4.8: PHP extension for the ming Flash movie generation library
 dev-php/myclabs-deepcopy 1.6.0: Create deep copies (clones) of your objects
 dev-php/pear 1.10.1-r1: PEAR - PHP Extension and Application Repository
 dev-php/pecl-apcu 4.0.11 5.1.8: Stripped down version of APC supporting only user cache
