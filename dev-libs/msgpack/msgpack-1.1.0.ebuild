@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-multilib
 
@@ -37,9 +37,9 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use cxx MSGPACK_ENABLE_CXX)
-		$(cmake-utils_use static-libs MSGPACK_STATIC)
-		$(cmake-utils_use test MSGPACK_BUILD_TESTS)
+		-DMSGPACK_ENABLE_CXX=$(usex cxx)
+		-DMSGPACK_STATIC=$(usex static-libs)
+		-DMSGPACK_BUILD_TESTS=$(usex test)
 	)
 
 	cmake-multilib_src_configure
