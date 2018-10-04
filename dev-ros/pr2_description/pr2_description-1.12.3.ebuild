@@ -19,4 +19,3 @@ DEPEND="${RDEPEND}
 	dev-ros/convex_decomposition
 	dev-ros/ivcon
 	test? ( dev-libs/urdfdom dev-cpp/gtest )"
-PATCHES=( "${FILESDIR}/tests.patch" )
