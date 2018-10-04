@@ -58,9 +58,10 @@ src_configure() {
 
 	use alsa && myconf+=" --enable-alsa"
 
-	use vorbis && \
+	if use vorbis; then
 		myconf+=" --with-ogg-include="${EPREFIX}"/usr/include"
 		myconf+=" --with-ogg-lib="${EPREFIX}"/usr/$(get_libdir)"
+	fi
 
 	econf \
 		--libdir="${EPREFIX}"/usr/$(get_libdir) \
