@@ -9,13 +9,14 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="Description (mechanical, kinematic, visual,  etc.) of the PR2 robot"
+DESCRIPTION="Aggregates all of the topics that a 'pr2_dashboard' app might be interested in"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-ros/xacro[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	dev-ros/convex_decomposition
-	dev-ros/ivcon
-	test? ( dev-libs/urdfdom dev-cpp/gtest )"
+RDEPEND="
+	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
+	dev-ros/pr2_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
+"
+DEPEND="${RDEPEND}"
