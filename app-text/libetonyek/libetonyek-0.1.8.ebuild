@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	>=dev-util/mdds-1.2.2:1
+	>=dev-util/mdds-1.2.2:1/1.2
 	media-libs/glm
 	sys-devel/libtool
 	virtual/pkgconfig
