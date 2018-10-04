@@ -1,0 +1,139 @@
+From a4c724173b5c6a59331587f2e5db746dffbabdc6 Mon Sep 17 00:00:00 2001
+From: Roman Gilg <subdiff@gmail.com>
+Date: Tue, 4 Sep 2018 00:15:18 +0200
+Subject: [Mouse KCM] Avoid changes to touchpads in libinput backend
+
+Summary:
+Similar to evdev backend we need to ignore touchpad devices explicitly in the
+libinput backend because these are also pointer devices.
+
+XInput2 can do this in theory via input classes, but my touchpad did not set
+the class correctly. So just switch to using XInput like in the evdev backend
+to query all pointer devices and then use the XI_TOUCHPAD atom to filter out
+touchpads.
+
+BUG: 395401
+BUG: 395722
+BUG: 396269
+
+Test Plan: Manually
+
+Reviewers: #plasma, hein
+
+Reviewed By: #plasma, hein
+
+Subscribers: acrouthamel, ngraham, plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D15256
+---
+ .../backends/x11/x11_libinput_dummydevice.cpp      | 32 ++++++++++++++--------
+ 1 file changed, 20 insertions(+), 12 deletions(-)
+
+diff --git a/kcms/mouse/backends/x11/x11_libinput_dummydevice.cpp b/kcms/mouse/backends/x11/x11_libinput_dummydevice.cpp
+index 6efca42..7ec314b 100644
+--- a/kcms/mouse/backends/x11/x11_libinput_dummydevice.cpp
++++ b/kcms/mouse/backends/x11/x11_libinput_dummydevice.cpp
+@@ -20,24 +20,28 @@
+ 
+ #include <libinput-properties.h>
+ 
+-#include <X11/Xlib.h>
+ #include <X11/Xatom.h>
+ #include <X11/extensions/XInput2.h>
++#include <X11/extensions/XInput.h>
++
++static Atom s_touchpadAtom;
+ 
+ template<typename Callback>
+-static void XI2ForallPointerDevices(Display* dpy, const Callback& callback)
++static void XIForallPointerDevices(Display* dpy, const Callback& callback)
+ {
+     int ndevices_return;
+-    XIDeviceInfo* info = XIQueryDevice(dpy, XIAllDevices, &ndevices_return);
++    XDeviceInfo *info = XListInputDevices(dpy, &ndevices_return);
+     if (!info) {
+         return;
+     }
+     for (int i = 0; i < ndevices_return; ++i) {
+-        if ((info + i)->use == XISlavePointer) {
+-            callback(info + i);
++        XDeviceInfo *dev = info + i;
++        if ((dev->use == IsXPointer || dev->use == IsXExtensionPointer) &&
++                dev->type != s_touchpadAtom) {
++            callback(dev);
+         }
+     }
+-    XIFreeDeviceInfo(info);
++    XFreeDeviceList(info);
+ }
+ 
+ struct ScopedXDeleter {
+@@ -61,7 +65,8 @@ void valueWriterPart(T val, Atom valAtom, Display *dpy)
+ template<>
+ void valueWriterPart<bool>(bool val, Atom valAtom, Display *dpy)
+ {
+-    XI2ForallPointerDevices(dpy, [&] (XIDeviceInfo *info) {
++    XIForallPointerDevices(dpy, [&] (XDeviceInfo *info) {
++        int deviceid = info->id;
+         Status status;
+         Atom type_return;
+         int format_return;
+@@ -70,7 +75,7 @@ void valueWriterPart<bool>(bool val, Atom valAtom, Display *dpy)
+ 
+         unsigned char *_data = nullptr;
+         //data returned is an 1 byte boolean
+-        status = XIGetProperty(dpy, info->deviceid, valAtom, 0, 1,
++        status = XIGetProperty(dpy, deviceid, valAtom, 0, 1,
+                                False, XA_INTEGER, &type_return, &format_return,
+                                &num_items_return, &bytes_after_return, &_data);
+         if (status != Success) {
+@@ -87,7 +92,7 @@ void valueWriterPart<bool>(bool val, Atom valAtom, Display *dpy)
+ 
+         unsigned char sendVal = val ? 1 : 0;
+ 
+-        XIChangeProperty(dpy, info->deviceid, valAtom, XA_INTEGER,
++        XIChangeProperty(dpy, deviceid, valAtom, XA_INTEGER,
+                          8, XIPropModeReplace, &sendVal, 1);
+ 
+     });
+@@ -96,7 +101,8 @@ void valueWriterPart<bool>(bool val, Atom valAtom, Display *dpy)
+ template<>
+ void valueWriterPart<qreal>(qreal val, Atom valAtom, Display *dpy)
+ {
+-    XI2ForallPointerDevices(dpy, [&] (XIDeviceInfo *info) {
++    XIForallPointerDevices(dpy, [&] (XDeviceInfo *info) {
++        int deviceid = info->id;
+         Status status;
+         Atom float_type = XInternAtom (dpy, "FLOAT", False);
+         Atom type_return;
+@@ -106,7 +112,7 @@ void valueWriterPart<qreal>(qreal val, Atom valAtom, Display *dpy)
+ 
+         unsigned char *_data = nullptr;
+         //data returned is an 1 byte boolean
+-        status = XIGetProperty(dpy, info->deviceid, valAtom, 0, 1,
++        status = XIGetProperty(dpy, deviceid, valAtom, 0, 1,
+                                False, float_type, &type_return, &format_return,
+                                &num_items_return, &bytes_after_return, &_data);
+         if (status != Success) {
+@@ -125,7 +131,7 @@ void valueWriterPart<qreal>(qreal val, Atom valAtom, Display *dpy)
+         float *sendPtr = (float*)buffer;
+         *sendPtr = val;
+ 
+-        XIChangeProperty(dpy, info->deviceid, valAtom, float_type,
++        XIChangeProperty(dpy, deviceid, valAtom, float_type,
+                          format_return, XIPropModeReplace, buffer, 1);
+ 
+     });
+@@ -161,6 +167,8 @@ X11LibinputDummyDevice::X11LibinputDummyDevice(QObject *parent, Display *dpy)
+ 
+     m_supportsNaturalScroll.val = true;
+     m_naturalScrollEnabledByDefault.val = false;
++
++    s_touchpadAtom = XInternAtom(m_dpy, XI_TOUCHPAD, True);
+ }
+ 
+ X11LibinputDummyDevice::~X11LibinputDummyDevice()
+-- 
+cgit v0.11.2
