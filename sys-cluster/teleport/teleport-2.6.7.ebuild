@@ -35,7 +35,7 @@ src_install() {
 	dobin src/${EGO_PN%/*}/build/{tsh,tctl,teleport}
 
 	insinto /etc/${PN}
-	newins "${FILESDIR}"/${PN}.yaml ${PN}.yaml
+	newins "${FILESDIR}"/${PN}-2.yaml ${PN}.yaml
 
 	newinitd "${FILESDIR}"/${PN}.init.d ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf.d ${PN}
