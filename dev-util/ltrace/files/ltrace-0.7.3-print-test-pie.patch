@@ -1,0 +1,15 @@
+--- a/testsuite/ltrace.minor/print-instruction-pointer.exp
++++ b/testsuite/ltrace.minor/print-instruction-pointer.exp
+@@ -32,6 +32,12 @@ catch "exec sh -c {objdump -d $objdir/$subdir/$binfile | sed -n '/^\[0-9a-fA-F\]
+ catch "exec sh -c {echo \"$output\" | sed -n '2p'| awk -F' ' '{print \$1}'|awk -F: '{print \$1}'}" addr1
+ catch "exec sh -c {echo \"$output\" | sed -n '5p'| awk -F' ' '{print \$1}'|awk -F: '{print \$1}'}" addr2
+ 
++# Pick at most last 3 digits:
++# PIE binaries randomize address on page level.
++# Let's assume page size is no bigger than 4096 (3 hex digits)
++set addr1 [string range $addr1 3 end]
++set addr2 [string range $addr2 3 end]
++
+ verbose "addr1 = $addr1"
+ verbose "addr2 = $addr2"
+ # Verify the output by checking numbers of print in main.ltrace.
