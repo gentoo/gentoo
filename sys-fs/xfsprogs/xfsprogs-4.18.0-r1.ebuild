@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.9.0-underlinking.patch
 	"${FILESDIR}"/${PN}-4.15.0-sharedlibs.patch
 	"${FILESDIR}"/${PN}-4.15.0-docdir.patch
+	"${FILESDIR}"/${PN}-4.18.0-BUILD_CC-fsmap.patch
 )
 
 pkg_setup() {

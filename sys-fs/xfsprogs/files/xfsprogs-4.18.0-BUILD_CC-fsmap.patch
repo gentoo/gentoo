@@ -1,0 +1,42 @@
+From: Brian Norris <briannorris@chromium.org>
+Date: Thu, 6 Sep 2018 11:28:13 -0700
+Subject: [PATCH] build: don't assume $BUILD_CC has fsmap.h just because $CC
+ does
+
+The $BUILD_CC toolchain might have an older set of Linux headers than
+the $CC toolchain. It's generally unsafe to try to build both with the
+same definitions, but in particular, this one can cause compilation
+failures in the local crc32selftest build:
+
+ In file included from crc32.c:37:
+ In file included from ../include/xfs.h:37:
+ ../include/xfs/linux.h:226:11: fatal error: 'linux/fsmap.h' file not found
+ # include <linux/fsmap.h>
+           ^~~~~~~~~~~~~~~
+
+It's safe to always assume that the headers don't have getfsmap, since
+the alternative just includes our local definitions anyway.
+
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+---
+Submitted upstream:
+  http://lkml.kernel.org/m/20180906183529.117251-1-briannorris@chromium.org
+
+ include/builddefs.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/include/builddefs.in b/include/builddefs.in
+index f7d39a4e4094..209abe1d84dd 100644
+--- a/include/builddefs.in
++++ b/include/builddefs.in
+@@ -156,8 +156,9 @@ endif
+ ifeq ($(NEED_INTERNAL_FSXATTR),yes)
+ PCFLAGS+= -DOVERRIDE_SYSTEM_FSXATTR
+ endif
++# Don't assume $BUILD_CC has getfsmap just because $CC does.
+ ifeq ($(HAVE_GETFSMAP),yes)
+-PCFLAGS+= -DHAVE_GETFSMAP
++CFLAGS+= -DHAVE_GETFSMAP
+ endif
+ 
+ LIBICU_LIBS = @libicu_LIBS@
