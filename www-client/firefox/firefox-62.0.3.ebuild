@@ -421,6 +421,9 @@ src_configure() {
 
 	mozconfig_annotate '' --enable-extensions="${MEXTENSIONS}"
 
+	# disable webrtc for now, bug 667642
+	use arm && mozconfig_annotate 'broken on arm' --disable-webrtc
+
 	if use clang ; then
 		# https://bugzilla.mozilla.org/show_bug.cgi?id=1423822
 		mozconfig_annotate 'elf-hack is broken when using Clang' --disable-elf-hack
