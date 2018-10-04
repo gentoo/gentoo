@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/tcl:0= dev-lang/tk:0= alsa? ( media-libs/alsa-lib ) python? ( python_targets_pypy? ( >=virtual/pypy-5:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)] ) vorbis? ( media-libs/libvorbis ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 python_targets_pypy? ( >=virtual/pypy-5:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)]
+DESCRIPTION=The Snack Sound Toolkit (Tcl)
+EAPI=6
+HOMEPAGE=http://www.speech.kth.se/snack/
+IUSE=alsa examples python vorbis python_targets_pypy python_targets_python2_7
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-2
+RDEPEND=dev-lang/tcl:0= dev-lang/tk:0= alsa? ( media-libs/alsa-lib ) python? ( python_targets_pypy? ( >=virtual/pypy-5:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)] ) vorbis? ( media-libs/libvorbis ) python_targets_pypy? ( >=virtual/pypy-5:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_pypy python_targets_python2_7 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.speech.kth.se/snack/dist/snack2.2.10.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	distutils-r1	8595c9c7530ac3963f3aa0d77aa7e2d8	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=9722223e7dd7f07497ea64a6ce03fb9b
