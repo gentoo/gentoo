@@ -446,7 +446,7 @@ app-dicts/myspell-cy 20130708: Welsh dictionaries for myspell/hunspell
 app-dicts/myspell-da 2.1: Danish dictionaries for myspell/hunspell
 app-dicts/myspell-de 2015.12.28: German dictionaries for myspell/hunspell
 app-dicts/myspell-de_1901 20120929: German (traditional orthography) dictionaries for myspell/hunspell
-app-dicts/myspell-el 0.8 0.9: Greek dictionaries for myspell/hunspell
+app-dicts/myspell-el 0.9: Greek dictionaries for myspell/hunspell
 app-dicts/myspell-en 20160901 20170101: English dictionaries for myspell/hunspell
 app-dicts/myspell-eo 1.0-r1: Esperanto dictionaries for myspell/hunspell
 app-dicts/myspell-es 0.7: Spanish dictionaries for myspell/hunspell

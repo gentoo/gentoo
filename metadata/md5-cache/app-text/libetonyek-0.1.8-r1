@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=app-text/liblangtag dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib dev-libs/boost >=dev-util/mdds-1.2.2:1= media-libs/glm sys-devel/libtool virtual/pkgconfig doc? ( app-doc/doxygen ) test? ( dev-util/cppunit )
+DESCRIPTION=Library parsing Apple Keynote presentations
+EAPI=7
+HOMEPAGE=https://wiki.documentfoundation.org/DLP/Libraries/libetonyek
+IUSE=doc static-libs test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+LICENSE=|| ( GPL-2+ LGPL-2.1 MPL-1.1 )
+RDEPEND=app-text/liblangtag dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib
+SLOT=0
+SRC_URI=https://dev-www.libreoffice.org/src/libetonyek/libetonyek-0.1.8.tar.xz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=3cebb17952f5d53cbf06ece57992c687
