@@ -1182,7 +1182,7 @@ app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r1: Spreadsheet Calculator
 app-office/scribus 1.5.3-r1 1.5.4: Desktop publishing (DTP) and layout program
-app-office/skrooge 2.13.0 2.14.0: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 2.14.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0-r1: A nice LaTeX-IDE
