@@ -1,0 +1,29 @@
+From 935cb58a61e45f441bdea143317a7d0d52c7f944 Mon Sep 17 00:00:00 2001
+From: David Tardon <dtardon@redhat.com>
+Date: Sat, 5 May 2018 14:01:43 +0200
+Subject: [PATCH] =?utf8?q?WaE:=20unnecessary=20parentheses=20in=20declarat?=
+ =?utf8?q?ion=20of=20=E2=80=98aligns=E2=80=99?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf8
+Content-Transfer-Encoding: 8bit
+
+Change-Id: Ic3cb38d071db8e3947c09a4b216b62d18e01b6aa
+---
+ src/lib/IWAParser.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lib/IWAParser.cpp b/src/lib/IWAParser.cpp
+index ab9c6c8..973610e 100644
+--- a/src/lib/IWAParser.cpp
++++ b/src/lib/IWAParser.cpp
+@@ -1676,7 +1676,7 @@ void IWAParser::parseCellStyle(const unsigned id, IWORKStylePtr_t &style)
+       auto align=get(properties.uint32(8));
+       if (align<=2)
+       {
+-        const IWORKVerticalAlignment(aligns[])=
++        const IWORKVerticalAlignment aligns[] =
+         {
+           IWORK_VERTICAL_ALIGNMENT_TOP, IWORK_VERTICAL_ALIGNMENT_MIDDLE, IWORK_VERTICAL_ALIGNMENT_BOTTOM
+         };
+-- 
+2.11.0
