@@ -2901,8 +2901,8 @@ dev-lang/python 2.7.14-r1 2.7.15 3.4.5-r1 3.4.8 3.5.4-r1 3.5.5 3.6.3-r1 3.6.5: A
 dev-lang/python-exec 2.4.6: Python script wrapper
 dev-lang/qu-prolog 10.0-r1 10.1: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/ruby 2.3.7: An object-oriented scripting language
-dev-lang/rust 1.25.0 1.28.0-r1: Systems programming language from Mozilla
-dev-lang/rust-bin 1.25.0 1.28.0-r1: Systems programming language from Mozilla
+dev-lang/rust 1.25.0 1.28.0-r1 1.29.1: Systems programming language from Mozilla
+dev-lang/rust-bin 1.25.0 1.28.0-r1 1.29.1: Systems programming language from Mozilla
 dev-lang/sassc 3.4.7: A libsass command line driver
 dev-lang/scala 2.11.4-r1 2.11.11 2.12.4: The Scala Programming Language
 dev-lang/scala-bin 2.11.8 2.12.4: The Scala Programming Language
@@ -6201,7 +6201,7 @@ dev-util/buildbot 0.8.12-r3: BuildBot build automation system
 dev-util/buildbot-slave 0.8.12: BuildBot Slave Daemon
 dev-util/bustle 0.4.2-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20170201: the best variant of the Yacc parser generator
-dev-util/cargo 0.26.0 0.29.0: The Rust's package manager
+dev-util/cargo 0.26.0 0.29.0 0.30.0: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 3.0.2 3.0.2-r1: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/ccache 3.2.4 3.3.4-r1: fast compiler cache
@@ -10042,7 +10042,7 @@ sys-devel/automake 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.
 sys-devel/automake-wrapper 10: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
-sys-devel/binutils 2.30-r2: Tools necessary to build programs
+sys-devel/binutils 2.30-r2 2.30-r4: Tools necessary to build programs
 sys-devel/binutils-config 5-r4: Utility to change the binutils version being used
 sys-devel/bison 2.7.1 3.0.4-r1 3.0.5-r1: A general-purpose (yacc-compatible) parser generator
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
@@ -10195,7 +10195,7 @@ sys-kernel/linux-firmware 20180825 20181001: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.13: Linux system headers
 sys-kernel/spl 0.6.5.11 0.7.8 0.7.9: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
-sys-libs/binutils-libs 2.30-r2: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
+sys-libs/binutils-libs 2.30-r2 2.30-r4: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/compiler-rt 4.0.1 5.0.2 6.0.1: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 4.0.1 5.0.2 6.0.1: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.6-r1: Password Checking Library
@@ -10325,7 +10325,7 @@ virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
 virtual/awk 0 1: Virtual for awk implementation
 virtual/bitcoin-leveldb 0-r2: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+
 virtual/blas 1.0: Virtual for FORTRAN 77 BLAS implementation
-virtual/cargo 1.25.0 1.28.0: Package manager for Rust
+virtual/cargo 1.25.0 1.28.0 1.29.1: Package manager for Rust
 virtual/cblas 1.0: Virtual for BLAS C implementation
 virtual/cdrtools 0: Virtual for command-line recorders cdrtools and cdrkit
 virtual/checkpassword 0: Virtual for checkpassword compatible applications
@@ -10496,7 +10496,7 @@ virtual/resolvconf 1: Virtual to select between different resolvconf providers
 virtual/ruby-ffi 4: Virtual ebuild for the Ruby ffi library
 virtual/ruby-ssl 10: Virtual ebuild for the Ruby OpenSSL bindings
 virtual/rubygems 11: Virtual ebuild for rubygems
-virtual/rust 1.25.0 1.28.0: Virtual for Rust language compiler
+virtual/rust 1.25.0 1.28.0 1.29.1: Virtual for Rust language compiler
 virtual/service-manager 0: Virtual for various service managers
 virtual/shadow 0: Virtual for user account management utilities
 virtual/skkserv 0: Virtual for SKK server
