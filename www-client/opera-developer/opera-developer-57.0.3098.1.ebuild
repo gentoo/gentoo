@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -78,6 +78,9 @@ src_prepare() {
 			mv usr/lib/i386-linux-gnu/${PN} usr/$(get_libdir)/ || die
 			;;
 	esac
+
+	mv usr/share/doc/${PN} usr/share/doc/${PF} || die
+	gunzip usr/share/doc/${PF}/changelog.gz || die
 
 	rm usr/bin/${PN} || die
 
