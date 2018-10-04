@@ -39,7 +39,7 @@ src_compile() {
 src_install() {
 	pushd src/${EGO_PN} || die
 	newbin out/minikube-linux-amd64 minikube
-	dobin $(usex libvirt "out/docker-machine-driver-kvm2" "")
+	use libvirt && dobin out/docker-machine-driver-kvm2
 	dodoc -r docs CHANGELOG.md README.md
 	popd || die
 }
