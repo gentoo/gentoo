@@ -130,6 +130,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/bug_1461221.patch
 	eapply "${FILESDIR}"/${PN}-60.0-blessings-TERM.patch # 654316
 	eapply "${FILESDIR}"/${PN}-60.0-missing-errno_h-in-SandboxOpenedFiles_cpp.patch
+	eapply "${FILESDIR}"/${PN}-60.0-update-cc-to-honor-CC.patch
 
 	# Enable gnomebreakpad
 	if use debug ; then
