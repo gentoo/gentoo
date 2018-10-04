@@ -78,7 +78,9 @@ test_compiler() {
 		<<<'int main() { return 0; }' &>/dev/null
 }
 
-multilib_src_configure() {
+src_configure() {
+	# note: we need to do this before multilib kicks in since it will
+	# alter the CHOST
 	local cxxabi cxxabi_incs
 	if use libcxxabi; then
 		cxxabi=libcxxabi
@@ -92,6 +94,10 @@ multilib_src_configure() {
 		cxxabi_incs="${gcc_inc};${gcc_inc}/${CHOST}"
 	fi
 
+	multilib-minimal_src_configure
+}
+
+multilib_src_configure() {
 	# we want -lgcc_s for unwinder, and for compiler runtime when using
 	# gcc, clang with gcc runtime (or any unknown compiler)
 	local extra_libs=() want_gcc_s=ON
