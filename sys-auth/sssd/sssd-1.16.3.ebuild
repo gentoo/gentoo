@@ -10,7 +10,7 @@ inherit autotools flag-o-matic linux-info multilib-minimal pam python-r1 systemd
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="https://pagure.io/SSSD/sssd"
 SRC_URI="http://releases.pagure.org/SSSD/${PN}/${P}.tar.gz"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
 
 LICENSE="GPL-3"
 SLOT="0"
