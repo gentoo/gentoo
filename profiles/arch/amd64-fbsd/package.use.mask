@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mikle Kolyada <zlogene@gentoo.org> (05 Oct 2018)
+# Not keyworded
+app-admin/sudo sssd
+
 # Ulrich Müller <ulm@gentoo.org> (01 May 2018)
 # Missing keyword on virtual/gsasl dependency, bug #635216.
 net-mail/mailutils sasl
