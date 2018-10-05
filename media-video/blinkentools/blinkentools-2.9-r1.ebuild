@@ -13,4 +13,5 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="media-libs/blib
 	media-libs/libmng"
+RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
