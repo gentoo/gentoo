@@ -26,6 +26,7 @@ COMMON_DEP="
 	>=sys-libs/tevent-0.9.16
 	>=sys-libs/ldb-1.1.17-r1:=
 	>=net-nds/openldap-2.4.30[sasl]
+	net-libs/http-parser
 	>=dev-libs/libpcre-8.30
 	>=app-crypt/mit-krb5-1.10.3
 	dev-libs/jansson
