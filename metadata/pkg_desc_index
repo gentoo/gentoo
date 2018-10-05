@@ -7605,7 +7605,7 @@ media-libs/libmikmod 3.3.8: A library to play a wide range of module formats
 media-libs/libmkv 0.6.5.1: Lightweight Matroska muxer written for HandBrake
 media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
 media-libs/libmng 2.0.2-r1 2.0.3: Multiple Image Networkgraphics lib (animated png's)
-media-libs/libmodplug 0.8.8.5 0.8.9.0: Library for playing MOD-like music files
+media-libs/libmodplug 0.8.9.0: Library for playing MOD-like music files
 media-libs/libmp3splt 0.9.1a 0.9.2 0.9.2-r1: a library for mp3splt to split mp3 and ogg files without decoding
 media-libs/libmp4v2 1.9.1-r1 2.0.0: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
 media-libs/libmpd 11.8.17-r1: A library handling connections to a MPD server
@@ -7677,7 +7677,7 @@ media-libs/ming 0.4.8-r1: An Open Source library for Flash movie generation
 media-libs/mlt 6.10.0: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.35.1 1.40.0: Audio metadata tag reader and writer implemented in pure Python
-media-libs/nas 1.9.4-r1 1.9.4-r2: Network Audio System
+media-libs/nas 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/openal 1.18.2-r1: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.58 1.6.62: Stream based read/write library for COLLADA files
@@ -7701,7 +7701,7 @@ media-libs/phonon-vlc 0.10.1: Phonon VLC backend
 media-libs/plib 1.8.5-r1: multimedia library used by many games
 media-libs/plotutils 2.6-r2: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
-media-libs/portaudio 19_pre20140130 19.06.00-r1: A free, cross-platform, open-source, audio I/O library
+media-libs/portaudio 19.06.00-r1: A free, cross-platform, open-source, audio I/O library
 media-libs/portmidi 217-r1: A library for real time MIDI input and output
 media-libs/ptex 2.1.28-r1: Per-Face Texture Mapping for Production Rendering
 media-libs/qhull 2015.2: Geometry library
