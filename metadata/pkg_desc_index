@@ -9913,7 +9913,7 @@ sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xinetd 2.3.15-r3 2.3.15.3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-auth/bioapi 1.2.4: Framework for biometric-based authentication
-sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0: Framework for defining and tracking users, login sessions and seats
+sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0 1.2.1: Framework for defining and tracking users, login sessions and seats
 sys-auth/elogind 238.1: The systemd project's logind, extracted to a standalone package
 sys-auth/fprintd 0.5.0: D-Bus service to access fingerprint readers
 sys-auth/keystone 12.0.1 13.0.1 14.0.0: The Openstack authentication, authorization, and service catalog
@@ -9985,6 +9985,7 @@ sys-block/thin-provisioning-tools 0.4.1 0.7.0: A suite of tools for thin provisi
 sys-block/tw_cli 10.2.2.1-r1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
 sys-block/vblade 20: vblade exports a block device using AoE
 sys-block/viaideinfo 0.5: Query VIA IDE controllers for various information
+sys-block/zram-init 7.1-r1: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/efibootmgr 14 15: User-space application to modify the EFI boot manager
 sys-boot/gnu-efi 3.0.3: Library for build EFI Applications
 sys-boot/grub 0.97-r16 0.97-r18 2.02-r1: GNU GRUB boot loader
@@ -10285,7 +10286,7 @@ sys-process/acct 6.6.4-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r2: a periodic command scheduler
 sys-process/at 3.1.18-r1: Queues jobs for later execution
 sys-process/atop 2.3.0-r1: Resource-specific view of processes
-sys-process/audit 2.6.4 2.7.1: Userspace utilities for storing and processing auditing records
+sys-process/audit 2.6.4 2.7.1 2.8.3: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 2.5-r1 3.6: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
