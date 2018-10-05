@@ -16,6 +16,7 @@
 		<flag name="offensive">Let sudo print insults when the user types the wrong password</flag>
 		<flag name="openssl">Use SHA2 from <pkg>dev-libs/openssl</pkg> instead of sudo's internal SHA2</flag>
 		<flag name="sendmail">Allow sudo to send emails with sendmail</flag>
+		<flag name="sssd">Add System Security Services Daemon support</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:todd_miller:sudo</remote-id>
