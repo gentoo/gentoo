@@ -7,7 +7,7 @@ inherit flag-o-matic git-r3 toolchain-funcs
 DESCRIPTION="Tool for creating compressed filesystem type squashfs"
 HOMEPAGE="
 	http://squashfs.sourceforge.net
-	https://github.com/plougher
+	https://github.com/plougher/squashfs-tools
 "
 EGIT_REPO_URI="https://github.com/plougher/${PN}"
 LICENSE="GPL-2"
