@@ -1,13 +1,13 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI="7"
 
 inherit pam eutils
 
 DESCRIPTION="The Console Display Manager"
-HOMEPAGE="https://wiki.archlinux.org/index.php/CDM"
-SRC_URI="https://dev.gentoo.org/~gienah/snapshots/${P}.tar.gz"
+HOMEPAGE="https://github.com/evertiro/cdm"
+SRC_URI="https://github.com/evertiro/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -15,8 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="pam consolekit"
 REQUIRED_USE="consolekit? ( pam )"
 
-DEPEND="app-shells/bash"
-
+DEPEND=""
 RDEPEND="${DEPEND}
 	dev-util/dialog
 	x11-apps/xdpyinfo
@@ -26,6 +25,7 @@ RDEPEND="${DEPEND}
 	pam? ( virtual/pam )"
 
 src_prepare() {
+	default
 	if ! use consolekit; then
 		sed -e 's@consolekit=yes@consolekit=no@' \
 			-i "${S}/src/cdmrc" || die "Could not turn off consolekit in cdmrc"
