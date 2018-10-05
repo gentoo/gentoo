@@ -73,7 +73,8 @@ src_configure() {
 		$(use_enable qt5 pinentry-qt) \
 		$(use_with caps libcap) \
 		--enable-pinentry-tty \
-		MOC="$(qt5_get_bindir)"/moc
+		MOC="$(qt5_get_bindir)"/moc \
+		$(./configure --help | grep -- --with-.*-prefix | sed -e 's/prefix.*/prefix/' -e "s#\$#=${EROOT}/usr#")
 }
 
 src_install() {
