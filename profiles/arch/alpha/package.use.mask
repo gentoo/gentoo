@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mikle Kolyada <zlogene@gentoo.org> (05 Oct 2018)
+# Not keyworded (see bug #540540c#8)
+app-admin/sudo sssd
+
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Sep 2018)
 # Optional dependency blocking security cleanup, bug #627316
 media-sound/mpd wildmidi
