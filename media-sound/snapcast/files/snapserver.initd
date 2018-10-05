@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name=snapserver
+command="/usr/bin/snapserver"
+command_args="$SNAPSERVER_USER $SNAPSERVER_OPTS"
+pidfile="/run/snapserver/pid"
+
+depend() {
+	use avahi-daemon
+}
+
+start_pre() {
+	checkpath --directory --owner snapserver:snapserver --mode 0775 \
+		/run/snapserver
+}
