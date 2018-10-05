@@ -7595,7 +7595,7 @@ media-libs/liblo 0.29: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
 media-libs/liblrdf 0.5.0: A library for the manipulation of RDF file in LADSPA plugins
 media-libs/liblscp 0.5.8-r1: C++ library for the Linux Sampler control protocol
-media-libs/libmad 0.15.1b-r8: "M"peg "A"udio "D"ecoder library
+media-libs/libmad 0.15.1b-r8 0.15.1b-r9: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.12.1-r1 1.18.0: Mixer library for MATE Desktop
 media-libs/libmatroska 1.4.5 1.4.8: Extensible multimedia container format based on EBML
 media-libs/libmediaart 1.9.4: Manages, extracts and handles media art caches
@@ -9732,7 +9732,7 @@ sec-policy/selinux-xprint 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux pol
 sec-policy/selinux-xscreensaver 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for xscreensaver
 sec-policy/selinux-xserver 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for xserver
 sec-policy/selinux-zabbix 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for zabbix
-sys-apps/accountsservice 0.6.45 0.6.50: D-Bus interfaces for querying and manipulating user account information
+sys-apps/accountsservice 0.6.45 0.6.50 0.6.50-r1: D-Bus interfaces for querying and manipulating user account information
 sys-apps/ack 2.18-r1: ack is a tool like grep, optimized for programmers
 sys-apps/acl 2.2.52-r1: access control list utilities, libraries and headers
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
