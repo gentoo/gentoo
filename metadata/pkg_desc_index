@@ -9903,7 +9903,7 @@ sys-apps/udevil 0.4.4-r1 0.4.4-r3: mount and unmount removable devices without a
 sys-apps/unscd 0.52-r2: simple & stable nscd replacement
 sys-apps/usb_modeswitch 2.2.6: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
 sys-apps/usbredir 0.7.1_p20170503: TCP daemon and set of libraries for usbredir protocol (redirecting USB traffic)
-sys-apps/usbutils 008-r1 009: USB enumeration utilities
+sys-apps/usbutils 009: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
 sys-apps/util-linux 2.32-r4: Various useful Linux utilities
