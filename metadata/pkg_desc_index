@@ -4403,7 +4403,7 @@ dev-perl/XML-TokeParser 0.50.0: Simplified interface to XML::Parser
 dev-perl/XML-TreePP 0.430.0-r1: Pure Perl implementation for parsing/writing XML documents
 dev-perl/XML-Twig 3.520.0: Process huge XML documents in tree mode
 dev-perl/XML-Writer 0.625.0: XML Writer Perl Module
-dev-perl/XML-XPath 1.130.0-r1: A XPath Perl Module
+dev-perl/XML-XPath 1.130.0-r1 1.420.0: A XPath Perl Module
 dev-perl/XML-XPathEngine 0.140.0-r1: A re-usable XPath engine for DOM-like trees
 dev-perl/XML-XQL 0.680.0-r1: A Perl module that allows you to perform XQL queries on XML trees
 dev-perl/XML-XSLT 0.480.0-r1: A Perl module to parse XSL Transformational sheets
@@ -8483,7 +8483,7 @@ net-dns/c-ares 1.13.0: C library that resolves names asynchronously
 net-dns/ddclient 3.8.1-r5: Perl updater client for dynamic DNS services
 net-dns/djbdns 1.05-r32: Collection of DNS client/server software
 net-dns/dnsmasq 2.79: Small forwarding DNS server
-net-dns/dnssec-root 20150403 20170203: The DNSSEC root key(s)
+net-dns/dnssec-root 20150403 20170203-r1: The DNSSEC root key(s)
 net-dns/dnstop 20140915: Displays various tables of DNS traffic on your network
 net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)

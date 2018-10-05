@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare unpack
-DEPEND=dev-perl/XML-XPath
+DEPEND=>=dev-perl/XML-XPath-1.420.0
 DESCRIPTION=The DNSSEC root key(s)
 EAPI=7
 HOMEPAGE=https://www.iana.org/dnssec/
@@ -7,4 +7,4 @@ KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh 
 LICENSE=public-domain
 SLOT=0
 SRC_URI=https://data.iana.org/root-anchors/root-anchors.xml -> root-anchors-20170203.xml https://data.iana.org/root-anchors/root-anchors.p7s -> root-anchors-20170203.p7s https://data.iana.org/root-anchors/icannbundle.pem -> icannbundle-20170203.pem
-_md5_=643e275c16c807aaf26c112d122a8b2a
+_md5_=6f2b00f96ce3aaf47fdb9faaad40958a
