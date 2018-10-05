@@ -34,11 +34,11 @@ DEPEND="${RDEPEND}
 	test? (
 		seccomp? ( sys-libs/libseccomp )
 	)"
-BDEPEND=">=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
-	tools? ( sys-devel/autogen )
-	valgrind? ( dev-util/valgrind )
+BDEPEND=">=virtual/pkgconfig-0-r1
 	doc? ( dev-util/gtk-doc )
 	nls? ( sys-devel/gettext )
+	tools? ( sys-devel/autogen )
+	valgrind? ( dev-util/valgrind )
 	test-full? (
 		app-crypt/dieharder
 		app-misc/datefudge
@@ -79,10 +79,6 @@ src_prepare() {
 multilib_src_configure() {
 	LINGUAS="${LINGUAS//en/en@boldquot en@quot}"
 
-	# remove magic of library detection
-	# bug#438222
-	local libconf=($("${S}/configure" --help | grep -- '--without-.*-prefix' | sed -e 's/^ *\([^ ]*\) .*/\1/g'))
-
 	# TPM needs to be tested before being enabled
 	libconf+=( --without-tpm )
 
@@ -117,9 +113,11 @@ multilib_src_configure() {
 		$(use_with idn) \
 		$(use_with pkcs11 p11-kit) \
 		$(use_with zlib) \
+		--disable-rpath \
 		--with-unbound-root-key-file="${EPREFIX}/etc/dnssec/root-anchors.txt" \
 		--without-included-libtasn1 \
-		"${libconf[@]}"
+		"${libconf[@]}" \
+		$("${S}/configure" --help | grep -- --with-.*-prefix | sed -e 's/prefix.*/prefix/' -e "s#\$#=${EROOT}/usr#")
 }
 
 multilib_src_install_all() {
