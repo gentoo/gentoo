@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -71,6 +71,8 @@ DEPEND="${CDEPEND}
 	)
 	nls? ( sys-devel/gettext )
 	unicode? ( app-i18n/unicode-data )"
+
+PATCHES=( "${FILESDIR}"/${P}-enable-gsettings-in-runtest.patch )
 
 src_prepare() {
 	vala_src_prepare --ignore-use
