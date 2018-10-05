@@ -1417,7 +1417,6 @@ dev-lang/ruby:readline - Use the sys-libs/readline library to provide the readli
 dev-lang/ruby:rubytests - Install ruby tests that can only be run after ruby is installed
 dev-lang/rust:cargo - Install cargo component
 dev-lang/rust:clippy - Install clippy component
-dev-lang/rust:extended - Build and install rls, rustfmt and cargo alongside the compiler and stdlib
 dev-lang/rust:jemalloc - Use dev-libs/jemalloc as the standard memory allocator
 dev-lang/rust:rls - Install rls component
 dev-lang/rust:rustfmt - Install rustfmt component
@@ -5307,7 +5306,6 @@ sys-auth/pambase:systemd - Use pam_systemd module to register user sessions in t
 sys-auth/polkit:elogind - Use sys-auth/elogind instead of sys-auth/consolekit for session tracking
 sys-auth/polkit:systemd - Use sys-apps/systemd instead of sys-auth/consolekit for session tracking
 sys-auth/sssd:acl - Build and use the cifsidmap plugin
-sys-auth/sssd:augeas - Build internal configuration library
 sys-auth/sssd:autofs - Build helper to let net-fs/autofs use sssd provided information
 sys-auth/sssd:locator - Install sssd's Kerberos plugin
 sys-auth/sssd:manpages - Build man pages with dev-libs/libxslt

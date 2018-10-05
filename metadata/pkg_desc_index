@@ -2901,8 +2901,8 @@ dev-lang/python 2.7.14-r1 2.7.15 3.4.5-r1 3.4.8 3.5.4-r1 3.5.5 3.6.3-r1 3.6.5: A
 dev-lang/python-exec 2.4.6: Python script wrapper
 dev-lang/qu-prolog 10.0-r1 10.1: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/ruby 2.3.7: An object-oriented scripting language
-dev-lang/rust 1.25.0 1.28.0-r1 1.29.1: Systems programming language from Mozilla
-dev-lang/rust-bin 1.25.0 1.28.0-r1 1.29.1: Systems programming language from Mozilla
+dev-lang/rust 1.29.1: Systems programming language from Mozilla
+dev-lang/rust-bin 1.29.1: Systems programming language from Mozilla
 dev-lang/sassc 3.4.7: A libsass command line driver
 dev-lang/scala 2.11.4-r1 2.11.11 2.12.4: The Scala Programming Language
 dev-lang/scala-bin 2.11.8 2.12.4: The Scala Programming Language
@@ -6201,7 +6201,7 @@ dev-util/buildbot 0.8.12-r3: BuildBot build automation system
 dev-util/buildbot-slave 0.8.12: BuildBot Slave Daemon
 dev-util/bustle 0.4.2-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20170201: the best variant of the Yacc parser generator
-dev-util/cargo 0.26.0 0.29.0 0.30.0: The Rust's package manager
+dev-util/cargo 0.30.0: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 3.0.2 3.0.2-r1: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/ccache 3.2.4 3.3.4-r1: fast compiler cache
@@ -9946,7 +9946,7 @@ sys-auth/polkit-qt 0.112.0_p20160416-r2: PolicyKit Qt API wrapper library
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.11-r2: Realtime Policy and Watchdog Daemon
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
-sys-auth/sssd 1.12.1: System Security Services Daemon provides access to identity and authentication
+sys-auth/sssd 1.16.3: System Security Services Daemon provides access to identity and authentication
 sys-auth/ykpers 1.18.0: Library and tool for personalization of Yubico's YubiKey
 sys-block/aoetools 36: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/blktrace 1.2.0: show detailed info about what is happening on a block device io queue
@@ -10326,7 +10326,7 @@ virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
 virtual/awk 0 1: Virtual for awk implementation
 virtual/bitcoin-leveldb 0-r2: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+
 virtual/blas 1.0: Virtual for FORTRAN 77 BLAS implementation
-virtual/cargo 1.25.0 1.28.0 1.29.1: Package manager for Rust
+virtual/cargo 1.29.1: Package manager for Rust
 virtual/cblas 1.0: Virtual for BLAS C implementation
 virtual/cdrtools 0: Virtual for command-line recorders cdrtools and cdrkit
 virtual/checkpassword 0: Virtual for checkpassword compatible applications
@@ -10497,7 +10497,7 @@ virtual/resolvconf 1: Virtual to select between different resolvconf providers
 virtual/ruby-ffi 4: Virtual ebuild for the Ruby ffi library
 virtual/ruby-ssl 10: Virtual ebuild for the Ruby OpenSSL bindings
 virtual/rubygems 11: Virtual ebuild for rubygems
-virtual/rust 1.25.0 1.28.0 1.29.1: Virtual for Rust language compiler
+virtual/rust 1.29.1: Virtual for Rust language compiler
 virtual/service-manager 0: Virtual for various service managers
 virtual/shadow 0: Virtual for user account management utilities
 virtual/skkserv 0: Virtual for SKK server
