@@ -22,7 +22,7 @@ PY_VER="1.5.0"
 
 # pathlib2 has been added to stdlib before py3.6, but pytest needs __fspath__
 # support, which only came in py3.6.
-COMMON_DEPEND="
+RDEPEND="
 	>=dev-python/atomicwrites-1.0[${PYTHON_USEDEP}]
 	>=dev-python/attrs-17.4.0[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
@@ -39,7 +39,7 @@ COMMON_DEPEND="
 #	)"
 
 # flake & pytest-capturelog cause a number of tests to fail
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
@@ -51,15 +51,7 @@ DEPEND="${COMMON_DEPEND}
 		!!dev-python/pytest-capturelog
 	)"
 
-RDEPEND="
-	${COMMON_DEPEND}
-	!<dev-python/logilab-common-1.3.0"
-
 python_prepare_all() {
-	local PATCHES=(
-		"${FILESDIR}"/pytest-3.6.3-pypy-syntaxerror-offset.patch
-	)
-
 	grep -qF "py>=${PY_VER}" setup.py || die "Incorrect dev-python/py dependency"
 
 	# Something in the ebuild environment causes this to hang/error.
