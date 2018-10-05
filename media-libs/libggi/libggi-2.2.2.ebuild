@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
 
-DESCRIPTION="Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)"
-HOMEPAGE="http://www.ggi-project.org"
+DESCRIPTION="Provides an opaque interface to the display's acceleration function"
+HOMEPAGE="https://ibiblio.org/ggicore/packages/libggi.html"
 SRC_URI="mirror://sourceforge/ggi/${P}.src.tar.bz2"
 
 LICENSE="MIT"
