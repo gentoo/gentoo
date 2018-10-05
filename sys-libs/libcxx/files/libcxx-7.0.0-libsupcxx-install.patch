@@ -1,0 +1,32 @@
+From 84f960980e5bbaf136bc130cb385379b8f610335 Mon Sep 17 00:00:00 2001
+From: Petr Hosek <phosek@chromium.org>
+Date: Thu, 4 Oct 2018 05:38:53 +0000
+Subject: [PATCH] [CMake] Use just basename when copying C++ ABI headers
+
+This avoids duplicate directories when the filename includes path.
+
+Fixes PR39145
+
+Differential Revision: https://reviews.llvm.org/D52762
+
+git-svn-id: https://llvm.org/svn/llvm-project/libcxx/trunk@343753 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ cmake/Modules/HandleLibCXXABI.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/Modules/HandleLibCXXABI.cmake b/cmake/Modules/HandleLibCXXABI.cmake
+index ef3b4f5dd..1c19d7e01 100644
+--- a/cmake/Modules/HandleLibCXXABI.cmake
++++ b/cmake/Modules/HandleLibCXXABI.cmake
+@@ -41,7 +41,7 @@ macro(setup_abi_lib abidefines abilib abifiles abidirs)
+         get_filename_component(ifile ${fpath} NAME)
+         set(src ${incpath}/${fpath})
+ 
+-        set(dst ${LIBCXX_BINARY_INCLUDE_DIR}/${dstdir}/${fpath})
++        set(dst ${LIBCXX_BINARY_INCLUDE_DIR}/${dstdir}/${ifile})
+         add_custom_command(OUTPUT ${dst}
+             DEPENDS ${src}
+             COMMAND ${CMAKE_COMMAND} -E copy_if_different ${src} ${dst}
+-- 
+2.19.0
+

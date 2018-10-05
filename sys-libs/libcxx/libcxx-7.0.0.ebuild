@@ -46,6 +46,10 @@ PATCHES=(
 	# Add link flag "-Wl,-z,defs" to avoid underlinking; this is needed in a
 	# out-of-tree build.
 	"${FILESDIR}/${PN}-3.9-cmake-link-flags.patch"
+
+	# Fix installing when using libsupc++ backend.
+	# https://bugs.gentoo.org/667174
+	"${FILESDIR}/${PN}-7.0.0-libsupcxx-install.patch"
 )
 
 # least intrusive of all
