@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=KDE PIM - merge this to pull in all kdepim-derived packages
+EAPI=6
+HOMEPAGE=https://www.kde.org/applications/development
+KEYWORDS=~amd64 ~x86
+LICENSE=metapackage
+RDEPEND=>=kde-apps/akonadi-18.04.3 >=kde-apps/akonadiconsole-18.04.3 >=kde-apps/akonadi-calendar-18.04.3 >=kde-apps/akonadi-contacts-18.04.3 >=kde-apps/akonadi-import-wizard-18.04.3 >=kde-apps/akonadi-mime-18.04.3 >=kde-apps/akonadi-notes-18.04.3 >=kde-apps/akonadi-search-18.04.3 >=kde-apps/akregator-18.04.3 >=kde-apps/calendarjanitor-18.04.3 >=kde-apps/calendarsupport-18.04.3 >=kde-apps/eventviews-18.04.3 >=kde-apps/grantlee-editor-18.04.3 >=kde-apps/grantleetheme-18.04.3 >=kde-apps/incidenceeditor-18.04.3 >=kde-apps/kaddressbook-18.04.3 >=kde-apps/kalarm-18.04.3 >=kde-apps/kalarmcal-18.04.3 >=kde-apps/kcalcore-18.04.3 >=kde-apps/kcalutils-18.04.3 >=kde-apps/kcontacts-18.04.3 >=kde-apps/kdepim-addons-18.04.3 >=kde-apps/kdepim-apps-libs-18.04.3 >=kde-apps/kdepim-runtime-18.04.3 >=kde-apps/kidentitymanagement-18.04.3 >=kde-apps/kimap-18.04.3 >=kde-apps/kldap-18.04.3 >=kde-apps/kleopatra-18.04.3 >=kde-apps/kmail-18.04.3 >=kde-apps/kmail-account-wizard-18.04.3 >=kde-apps/kmailtransport-18.04.3 >=kde-apps/kmbox-18.04.3 >=kde-apps/kmime-18.04.3 >=kde-apps/knotes-18.04.3 >=kde-apps/konsolekalendar-18.04.3 >=kde-apps/kontact-18.04.3 >=kde-apps/kontactinterface-18.04.3 >=kde-apps/korganizer-18.04.3 >=kde-apps/kpimtextedit-18.04.3 >=kde-apps/ksmtp-18.04.3 >=kde-apps/libgravatar-18.04.3 >=kde-apps/libkdepim-18.04.3 >=kde-apps/libkgapi-18.04.3 >=kde-apps/libkleo-18.04.3 >=kde-apps/libksieve-18.04.3 >=kde-apps/libktnef-18.04.3 >=kde-apps/mailcommon-18.04.3 >=kde-apps/mailimporter-18.04.3 >=kde-apps/mbox-importer-18.04.3 >=kde-apps/messagelib-18.04.3 >=kde-apps/pim-data-exporter-18.04.3 >=kde-apps/pim-sieve-editor-18.04.3 >=kde-apps/pimcommon-18.04.3 !kde-apps/kdepim-meta:4
+SLOT=5
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	kde5-functions	5976508bb4b803af7b28e66822122b26	kde5-meta-pkg	3d8c9f0bc2b2bececeb9a9bb63b82e8d	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=887d2cf16c4bbd2396fbb909760b4465
