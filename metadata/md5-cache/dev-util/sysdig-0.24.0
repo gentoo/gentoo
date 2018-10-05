@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare pretend setup test
+DEPEND=app-misc/jq:0= dev-cpp/tbb:0= dev-lang/luajit:2= >=dev-libs/jsoncpp-0.6_pre:0= dev-libs/libb64:0= sys-libs/ncurses:0= sys-libs/zlib:0= libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= ) net-misc/curl:0= app-arch/xz-utils virtual/os-headers modules? ( kernel_linux? ( virtual/modutils ) ) modules? ( sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf ) ) dev-util/ninja >=dev-util/cmake-3.9.6
+DESCRIPTION=A system exploration and troubleshooting tool
+EAPI=6
+HOMEPAGE=https://www.sysdig.org/
+IUSE=libressl +modules kernel_linux kernel_linux modules
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0 modules? ( || ( MIT GPL-2 ) )
+RDEPEND=app-misc/jq:0= dev-cpp/tbb:0= dev-lang/luajit:2= >=dev-libs/jsoncpp-0.6_pre:0= dev-libs/libb64:0= sys-libs/ncurses:0= sys-libs/zlib:0= libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0= ) net-misc/curl:0= modules? ( kernel_linux? ( virtual/modutils ) )
+SLOT=0
+SRC_URI=https://github.com/draios/sysdig/archive/0.24.0.tar.gz -> sysdig-0.24.0.tar.gz
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	cmake-utils	f0bc1c175684130a76ab6c17f575d820	desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	4b8528d500d6555ad20763a77b31766c	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=0f7945b6609aaa7b0c534c302fbcc027
