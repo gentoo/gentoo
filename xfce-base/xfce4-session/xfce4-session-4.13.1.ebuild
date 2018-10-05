@@ -44,6 +44,10 @@ PATCHES=(
 # TODO: this patch needs updating for the new version, and finding
 # upstream bug.
 #	"${FILESDIR}"/${PN}-4.12.1-light-locker_support_to_xflock4.patch
+
+	# fix building with no dbus dependency
+	# https://bugs.gentoo.org/667440
+	"${FILESDIR}"/xfce4-session-4.13.1-kill-dbus-includes.patch
 )
 
 src_configure() {
