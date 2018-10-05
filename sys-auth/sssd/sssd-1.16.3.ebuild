@@ -197,7 +197,7 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files --all
+	find "${ED}" -type f -name '*.la' -delete || die
 
 	insinto /etc/sssd
 	insopts -m600
