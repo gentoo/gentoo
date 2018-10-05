@@ -26,7 +26,7 @@ REQUIRED_USE="^^ ( fixed-point float )"
 
 src_configure() {
 	local myeconfargs=(
-		--docdir=/usr/share/doc/${PF}
+		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 		$(use_enable doc)
 		$(use_enable fixed-point)\
 		$(use_enable float)
