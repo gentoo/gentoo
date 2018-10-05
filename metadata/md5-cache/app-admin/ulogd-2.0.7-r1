@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst prepare setup
-DEPEND=|| ( net-firewall/iptables net-firewall/nftables ) >=net-libs/libnfnetlink-1.0.1 dbi? ( dev-db/libdbi ) json? ( dev-libs/jansson ) nfacct? ( >=net-libs/libmnl-1.0.3 >=net-libs/libnetfilter_acct-1.0.1 ) nfct? ( >=net-libs/libnetfilter_conntrack-1.0.2 ) nflog? ( >=net-libs/libnetfilter_log-1.0.0 ) mysql? ( virtual/mysql ) pcap? ( net-libs/libpcap ) postgres? ( dev-db/postgresql:= ) sqlite? ( dev-db/sqlite:3 ) doc? ( app-text/linuxdoc-tools app-text/texlive-core dev-texlive/texlive-fontsrecommended virtual/latex-base ) virtual/pkgconfig
+DEPEND=|| ( net-firewall/iptables net-firewall/nftables ) >=net-libs/libnfnetlink-1.0.1 dbi? ( dev-db/libdbi ) json? ( dev-libs/jansson ) nfacct? ( >=net-libs/libmnl-1.0.3 >=net-libs/libnetfilter_acct-1.0.1 ) nfct? ( >=net-libs/libnetfilter_conntrack-1.0.2 ) nflog? ( >=net-libs/libnetfilter_log-1.0.0 ) mysql? ( dev-db/mysql-connector-c:= ) pcap? ( net-libs/libpcap ) postgres? ( dev-db/postgresql:= ) sqlite? ( dev-db/sqlite:3 ) doc? ( app-text/linuxdoc-tools app-text/texlive-core dev-texlive/texlive-fontsrecommended virtual/latex-base ) virtual/pkgconfig
 DESCRIPTION=A userspace logging daemon for netfilter/iptables related logging
 EAPI=6
 HOMEPAGE=https://netfilter.org/projects/ulogd/index.html
 IUSE=dbi doc json mysql nfacct +nfct +nflog pcap postgres selinux sqlite ulog kernel_linux
 KEYWORDS=amd64 ~ia64 ppc x86
 LICENSE=GPL-2
-RDEPEND=|| ( net-firewall/iptables net-firewall/nftables ) >=net-libs/libnfnetlink-1.0.1 dbi? ( dev-db/libdbi ) json? ( dev-libs/jansson ) nfacct? ( >=net-libs/libmnl-1.0.3 >=net-libs/libnetfilter_acct-1.0.1 ) nfct? ( >=net-libs/libnetfilter_conntrack-1.0.2 ) nflog? ( >=net-libs/libnetfilter_log-1.0.0 ) mysql? ( virtual/mysql ) pcap? ( net-libs/libpcap ) postgres? ( dev-db/postgresql:= ) sqlite? ( dev-db/sqlite:3 ) selinux? ( sec-policy/selinux-ulogd )
+RDEPEND=|| ( net-firewall/iptables net-firewall/nftables ) >=net-libs/libnfnetlink-1.0.1 dbi? ( dev-db/libdbi ) json? ( dev-libs/jansson ) nfacct? ( >=net-libs/libmnl-1.0.3 >=net-libs/libnetfilter_acct-1.0.1 ) nfct? ( >=net-libs/libnetfilter_conntrack-1.0.2 ) nflog? ( >=net-libs/libnetfilter_log-1.0.0 ) mysql? ( dev-db/mysql-connector-c:= ) pcap? ( net-libs/libpcap ) postgres? ( dev-db/postgresql:= ) sqlite? ( dev-db/sqlite:3 ) selinux? ( sec-policy/selinux-ulogd )
 SLOT=0
 SRC_URI=https://www.netfilter.org/projects/ulogd/files/ulogd-2.0.7.tar.bz2
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	linux-info	953c3b1c472dcadbf62098a9301327f2	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=458ae896005eef4e2c25572f72833af1
+_md5_=b6472085a8bbada313add8d27367943b

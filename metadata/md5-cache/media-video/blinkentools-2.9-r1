@@ -1,0 +1,12 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=-
+DEPEND=media-libs/blib media-libs/libmng
+DESCRIPTION=Provides a set of commandline utilities related to Blinkenlights
+EAPI=7
+HOMEPAGE=http://blinkenlights.net/project/developer-tools
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/blib media-libs/libmng
+SLOT=0
+SRC_URI=http://blinkenlights.de/dist/blinkentools-2.9.tar.gz
+_md5_=fb949cfb71dc1df3cc86637031dd5e24

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=sys-libs/zlib:= gcrypt? ( dev-libs/libgcrypt:= ) ldap? ( >=net-nds/openldap-2.1.30-r1 dev-libs/cyrus-sasl ) openssl? ( dev-libs/openssl:0= ) pam? ( virtual/pam ) sasl? ( dev-libs/cyrus-sasl ) skey? ( >=sys-auth/skey-1.1.5-r1 ) sssd? ( sys-auth/sssd[sudo] ) sys-devel/bison >=app-portage/elt-patches-20170815
+DESCRIPTION=Allows users or groups to run commands as other users
+EAPI=6
+HOMEPAGE=https://www.sudo.ws/
+IUSE=gcrypt ldap nls offensive openssl pam sasl selinux +sendmail skey sssd
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~sparc-solaris
+LICENSE=ISC BSD
+RDEPEND=sys-libs/zlib:= gcrypt? ( dev-libs/libgcrypt:= ) ldap? ( >=net-nds/openldap-2.1.30-r1 dev-libs/cyrus-sasl ) openssl? ( dev-libs/openssl:0= ) pam? ( virtual/pam ) sasl? ( dev-libs/cyrus-sasl ) skey? ( >=sys-auth/skey-1.1.5-r1 ) sssd? ( sys-auth/sssd[sudo] ) >=app-misc/editor-wrapper-3 virtual/editor ldap? ( dev-lang/perl ) pam? ( sys-auth/pambase ) selinux? ( sec-policy/selinux-sudo ) sendmail? ( virtual/mta ) virtual/tmpfiles
+REQUIRED_USE=pam? ( !skey ) skey? ( !pam ) ?? ( gcrypt openssl )
+SLOT=0
+SRC_URI=https://www.sudo.ws/sudo/dist/sudo-1.8.25p1.tar.gz ftp://ftp.sudo.ws/pub/sudo/sudo-1.8.25p1.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	pam	3e788d86170dfcd5b06824d898315e18	preserve-libs	ef207dc62baddfddfd39a164d9797648	tmpfiles	c8f9ea76ade103890e42d0f339afb64c	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=c79a2e793352539bd030e3e0d9355605

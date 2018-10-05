@@ -142,7 +142,7 @@ app-admin/testdisk 7.1_pre20180322-r1: Checks and undeletes partitions + PhotoRe
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
 app-admin/tripwire 2.4.3.7: Open Source File Integrity Checker and IDS
-app-admin/ulogd 2.0.7: A userspace logging daemon for netfilter/iptables related logging
+app-admin/ulogd 2.0.7-r1: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/verynice 1.1-r2: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3-r1: watches directories and processes files

@@ -132,6 +132,7 @@ app-admin/sudo:gcrypt - Use SHA2 from dev-libs/libgcrypt instead of sudo's inter
 app-admin/sudo:offensive - Let sudo print insults when the user types the wrong password
 app-admin/sudo:openssl - Use SHA2 from dev-libs/openssl instead of sudo's internal SHA2
 app-admin/sudo:sendmail - Allow sudo to send emails with sendmail
+app-admin/sudo:sssd - Add System Security Services Daemon support
 app-admin/sysklogd:logrotate - use app-admin/logrotate for rotating logs rather than custom cron scripts
 app-admin/syslog-ng:amqp - Enable support for AMQP destinations
 app-admin/syslog-ng:geoip2 - Add support for geo lookup based on IPs via dev-libs/libmaxminddb
