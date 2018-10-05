@@ -17,29 +17,30 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="bzip2 doc ldap nls readline selinux +smartcard ssl tofu tools usb wks-server"
 
 # Existence of executables is checked during configuration.
-DEPEND=">=dev-libs/npth-1.2
+DEPEND="!app-crypt/dirmngr
 	>=dev-libs/libassuan-2.5.0
 	>=dev-libs/libgcrypt-1.7.3
 	>=dev-libs/libgpg-error-1.28
 	>=dev-libs/libksba-1.3.4
+	>=dev-libs/npth-1.2
 	>=net-misc/curl-7.10
-	ssl? ( >=net-libs/gnutls-3.0:0= )
-	sys-libs/zlib
-	ldap? ( net-nds/openldap )
 	bzip2? ( app-arch/bzip2 )
+	ldap? ( net-nds/openldap )
 	readline? ( sys-libs/readline:0= )
 	smartcard? ( usb? ( virtual/libusb:0 ) )
+	ssl? ( >=net-libs/gnutls-3.0:0= )
+	sys-libs/zlib
 	tofu? ( >=dev-db/sqlite-3.7 )
-	virtual/mta
-	app-crypt/pinentry
-	!app-crypt/dirmngr"
+	virtual/mta"
 
 RDEPEND="${DEPEND}
-	selinux? ( sec-policy/selinux-gpg )
-	nls? ( virtual/libintl )"
+	app-crypt/pinentry
+	nls? ( virtual/libintl )
+	selinux? ( sec-policy/selinux-gpg )"
 
-BDEPEND="nls? ( sys-devel/gettext )
-	doc? ( sys-apps/texinfo )"
+BDEPEND="virtual/pkgconfig
+	doc? ( sys-apps/texinfo )
+	nls? ( sys-devel/gettext )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -81,11 +82,13 @@ src_configure() {
 		$(use_enable wks-server wks-tools) \
 		$(use_with ldap) \
 		$(use_with readline) \
+		--disable-ntbtls \
 		--enable-all-tests \
 		--enable-gpg \
 		--enable-gpgsm \
 		--enable-large-secmem \
-		CC_FOR_BUILD="$(tc-getBUILD_CC)"
+		CC_FOR_BUILD="$(tc-getBUILD_CC)" \
+		$(./configure --help | grep -- --with-.*-prefix | sed -e 's/prefix.*/prefix/' -e "s#\$#=${EROOT}/usr#")
 }
 
 src_compile() {
