@@ -1,12 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit flag-o-matic git-r3 toolchain-funcs
 
 DESCRIPTION="Tool for creating compressed filesystem type squashfs"
-HOMEPAGE="http://squashfs.sourceforge.net"
-EGIT_REPO_URI="https://github.com/plougher/squashfs-tools"
+HOMEPAGE="
+	http://squashfs.sourceforge.net
+	https://github.com/plougher/squashfs-tools
+"
+EGIT_REPO_URI="https://github.com/plougher/${PN}"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug lz4 lzma lzo static xattr +xz zstd"
