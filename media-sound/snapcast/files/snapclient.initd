@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name=snapclient
+command="/usr/bin/snapclient"
+command_args="$SNAPCLIENT_USER $SNAPCLIENT_OPTS"
+pidfile="/run/snapclient/pid"
+
+depend() {
+	use avahi-daemon
+}
+
+start_pre() {
+	checkpath --directory --owner snapclient:audio --mode 0775 \
+		/run/snapclient
+}

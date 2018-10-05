@@ -1,0 +1,33 @@
+# conf.d file for snapclient
+
+# Options for running Snapclient as daemon
+#
+#	-s, --soundcard arg (=default)
+#  		Index or name of the soundcard
+#
+#	-h, --host arg
+#		Server hostname or ip address
+#
+#	-p, --port arg (=1704)
+#		Server port
+#
+#	-d, --daemon [=arg(=-3)]
+#		Daemonize, optional process priority [-20..19]
+#
+#	--user arg
+#		The user[:group] to run snapclient as when daemonized
+#
+#	--latency arg (=0)
+#		Latency of the soundcard
+#
+#	-i, --instance arg (=1)
+#		Instance id
+#
+#	--hostID arg
+#		Unique host id
+#
+# For all command line options, please see man snapclient
+
+SNAPCLIENT_USER="--user snapclient:audio"
+
+SNAPCLIENT_OPTS="-d"
