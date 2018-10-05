@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ SRC_URI="mirror://sourceforge/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v$
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="headers-only idl libraries tools"
 RESTRICT="strip"
 
@@ -52,6 +52,12 @@ pkg_setup() {
 
 src_configure() {
 	CHOST=${CTARGET} strip-unsupported-flags
+	# Normally mingw-64 does not use dynamic linker.
+	# But at configure time it uses $LDFLAGS.
+	# When default -Wl,--hash-style=gnu is passed
+	# __CTORS_LIST__ / __DTORS_LIST__ is mis-detected
+	# for target ld and binaries crash at shutdown.
+	filter-ldflags '-Wl,--hash-style=*'
 
 	if ! just_headers; then
 		mkdir "${WORKDIR}/headers"
