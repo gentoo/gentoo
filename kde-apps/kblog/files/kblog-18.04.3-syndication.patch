@@ -1,0 +1,219 @@
+From 85fc601b7c622a04c383331841733d681bfc50f3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Vr=C3=A1til?= <dvratil@kde.org>
+Date: Sun, 22 Apr 2018 15:37:01 +0200
+Subject: Fix build against Syndication
+
+---
+ src/CMakeLists.txt    |  1 +
+ src/feedretriever.cpp | 68 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ src/feedretriever.h   | 54 ++++++++++++++++++++++++++++++++++++++++
+ src/gdata.cpp         | 11 +++++----
+ 4 files changed, 129 insertions(+), 5 deletions(-)
+ create mode 100644 src/feedretriever.cpp
+ create mode 100644 src/feedretriever.h
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 03cef4e..1742abb 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -4,6 +4,7 @@ set(kblog_SRCS
+    blogcomment.cpp
+    blogmedia.cpp
+    blogger1.cpp
++   feedretriever.cpp
+    gdata.cpp
+    # livejournal.cpp
+    metaweblog.cpp
+diff --git a/src/feedretriever.cpp b/src/feedretriever.cpp
+new file mode 100644
+index 0000000..9d481c6
+--- /dev/null
++++ b/src/feedretriever.cpp
+@@ -0,0 +1,68 @@
++/*
++    This file is part of Akregator.
++
++    Copyright (C) 2018 Daniel Vrátil <dvratil@kde.org>
++
++    This program is free software; you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation; either version 2 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program; if not, write to the Free Software
++    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
++
++    As a special exception, permission is given to link this program
++    with any edition of Qt, and distribute the resulting executable,
++    without including the source code for Qt in the source distribution.
++*/
++
++#include "feedretriever.h"
++
++#include <KIO/StoredTransferJob>
++
++#include <QUrl>
++
++using namespace KBlog;
++
++FeedRetriever::FeedRetriever()
++    : Syndication::DataRetriever()
++{
++}
++
++void FeedRetriever::retrieveData(const QUrl &url)
++{
++    auto job = KIO::storedGet(url, KIO::NoReload, KIO::HideProgressInfo);
++    connect(job, &KJob::result, this, &FeedRetriever::getFinished);
++    mJob = job;
++    mJob->start();
++}
++
++int FeedRetriever::errorCode() const
++{
++    return mError;
++}
++
++void FeedRetriever::abort()
++{
++    if (mJob) {
++        mJob->kill();
++        mJob = nullptr;
++    }
++}
++
++void FeedRetriever::getFinished(KJob *job)
++{
++    if (job->error()) {
++        mError = job->error();
++        Q_EMIT dataRetrieved({}, false);
++        return;
++    }
++
++    Q_EMIT dataRetrieved(static_cast<KIO::StoredTransferJob*>(job)->data(), true);
++}
+diff --git a/src/feedretriever.h b/src/feedretriever.h
+new file mode 100644
+index 0000000..fb28020
+--- /dev/null
++++ b/src/feedretriever.h
+@@ -0,0 +1,54 @@
++/*
++    This file is part of Akregator.
++
++    Copyright (C) 2018 Daniel Vrátil <dvratil@kde.org>
++
++    This program is free software; you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation; either version 2 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program; if not, write to the Free Software
++    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
++
++    As a special exception, permission is given to link this program
++    with any edition of Qt, and distribute the resulting executable,
++    without including the source code for Qt in the source distribution.
++*/
++
++#ifndef FEEDRETRIEVER_H_
++#define FEEDRETRIEVER_H_
++
++#include <syndication/dataretriever.h>
++
++class KJob;
++
++namespace KBlog {
++
++class FeedRetriever : public Syndication::DataRetriever
++{
++    Q_OBJECT
++public:
++    explicit FeedRetriever();
++
++    void retrieveData(const QUrl &url) override;
++    void abort() override;
++    int errorCode() const override;
++
++private Q_SLOTS:
++    void getFinished(KJob *job);
++
++private:
++    KJob *mJob = nullptr;
++    int mError = 0;
++};
++
++}
++
++#endif
+diff --git a/src/gdata.cpp b/src/gdata.cpp
+index 9ca5b84..115e0a0 100644
+--- a/src/gdata.cpp
++++ b/src/gdata.cpp
+@@ -23,6 +23,7 @@
+ #include "gdata_p.h"
+ #include "blogpost.h"
+ #include "blogcomment.h"
++#include "feedretriever.h"
+ 
+ #include <syndication/loader.h>
+ #include <syndication/item.h>
+@@ -103,7 +104,7 @@ void GData::listBlogs()
+             SIGNAL(loadingComplete(Syndication::Loader*,Syndication::FeedPtr,Syndication::ErrorCode)),
+             this,
+             SLOT(slotListBlogs(Syndication::Loader*,Syndication::FeedPtr,Syndication::ErrorCode)));
+-    loader->loadFrom(QUrl(QStringLiteral("http://www.blogger.com/feeds/%1/blogs").arg(profileId())));
++    loader->loadFrom(QUrl(QStringLiteral("http://www.blogger.com/feeds/%1/blogs").arg(profileId())), new FeedRetriever);
+ }
+ 
+ void GData::listRecentPosts(const QStringList &labels, int number,
+@@ -145,7 +146,7 @@ void GData::listRecentPosts(const QStringList &labels, int number,
+             SIGNAL(loadingComplete(Syndication::Loader*,Syndication::FeedPtr,Syndication::ErrorCode)),
+             this,
+             SLOT(slotListRecentPosts(Syndication::Loader*,Syndication::FeedPtr,Syndication::ErrorCode)));
+-    loader->loadFrom(url);
++    loader->loadFrom(url, new FeedRetriever);
+ }
+ 
+ void GData::listRecentPosts(int number)
+@@ -165,7 +166,7 @@ void GData::listComments(KBlog::BlogPost *post)
+             this,
+             SLOT(slotListComments(Syndication::Loader*,Syndication::FeedPtr,Syndication::ErrorCode)));
+     loader->loadFrom(QUrl(QStringLiteral("http://www.blogger.com/feeds/") + blogId() + QLatin1Char('/') +
+-                                  post->postId() + QStringLiteral("/comments/default")));
++                                  post->postId() + QStringLiteral("/comments/default")), new FeedRetriever);
+ }
+ 
+ void GData::listAllComments()
+@@ -176,7 +177,7 @@ void GData::listAllComments()
+             SIGNAL(loadingComplete(Syndication::Loader*,Syndication::FeedPtr,Syndication::ErrorCode)),
+             this,
+             SLOT(slotListAllComments(Syndication::Loader*,Syndication::FeedPtr,Syndication::ErrorCode)));
+-    loader->loadFrom(QUrl(QStringLiteral("http://www.blogger.com/feeds/%1/comments/default").arg(blogId())));
++    loader->loadFrom(QUrl(QStringLiteral("http://www.blogger.com/feeds/%1/comments/default").arg(blogId())), new FeedRetriever);
+ }
+ 
+ void GData::fetchPost(KBlog::BlogPost *post)
+@@ -196,7 +197,7 @@ void GData::fetchPost(KBlog::BlogPost *post)
+             SIGNAL(loadingComplete(Syndication::Loader*,Syndication::FeedPtr,Syndication::ErrorCode)),
+             this,
+             SLOT(slotFetchPost(Syndication::Loader*,Syndication::FeedPtr,Syndication::ErrorCode)));
+-    loader->loadFrom(QUrl(QStringLiteral("http://www.blogger.com/feeds/%1/posts/default").arg(blogId())));
++    loader->loadFrom(QUrl(QStringLiteral("http://www.blogger.com/feeds/%1/posts/default").arg(blogId())), new FeedRetriever);
+ }
+ 
+ void GData::modifyPost(KBlog::BlogPost *post)
+-- 
+cgit v0.11.2
