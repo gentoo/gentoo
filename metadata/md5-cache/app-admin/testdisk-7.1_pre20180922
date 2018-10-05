@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure postinst postrm prepare
+DEPEND=static? ( sys-apps/util-linux[static-libs] sys-fs/e2fsprogs[static-libs] sys-libs/ncurses:0[static-libs] jpeg? ( virtual/jpeg:0[static-libs] ) ntfs? ( sys-fs/ntfs3g:=[static-libs] ) reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8[static-libs] ) zlib? ( sys-libs/zlib[static-libs] ) !arm? ( ewf? ( app-forensics/libewf:=[static-libs] ) ) ) !static? ( sys-apps/util-linux sys-fs/e2fsprogs sys-libs/ncurses:0= jpeg? ( virtual/jpeg:0 ) ntfs? ( sys-fs/ntfs3g ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8 ) zlib? ( sys-libs/zlib ) !arm? ( ewf? ( app-forensics/libewf:= ) ) ) qt5? ( dev-qt/linguist-tools:5 ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DESCRIPTION=Checks and undeletes partitions + PhotoRec, signature based recovery tool
+EAPI=6
+HOMEPAGE=https://www.cgsecurity.org/wiki/TestDisk
+IUSE=ewf jpeg ntfs qt5 reiserfs static zlib
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~x86
+LICENSE=GPL-2+
+RDEPEND=!static? ( static? ( sys-apps/util-linux[static-libs] sys-fs/e2fsprogs[static-libs] sys-libs/ncurses:0[static-libs] jpeg? ( virtual/jpeg:0[static-libs] ) ntfs? ( sys-fs/ntfs3g:=[static-libs] ) reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8[static-libs] ) zlib? ( sys-libs/zlib[static-libs] ) !arm? ( ewf? ( app-forensics/libewf:=[static-libs] ) ) ) !static? ( sys-apps/util-linux sys-fs/e2fsprogs sys-libs/ncurses:0= jpeg? ( virtual/jpeg:0 ) ntfs? ( sys-fs/ntfs3g ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8 ) zlib? ( sys-libs/zlib ) !arm? ( ewf? ( app-forensics/libewf:= ) ) ) )
+REQUIRED_USE=static? ( !qt5 )
+SLOT=0
+SRC_URI=https://git.cgsecurity.org/cgit/testdisk/snapshot/testdisk-6837474129968d7de13d91e5454bd824c9136e73.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=1e6a3e029dd5e141edfd37aa1c2f5db2
