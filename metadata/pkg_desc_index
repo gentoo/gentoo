@@ -8482,6 +8482,7 @@ net-dns/c-ares 1.13.0: C library that resolves names asynchronously
 net-dns/ddclient 3.8.1-r5: Perl updater client for dynamic DNS services
 net-dns/djbdns 1.05-r32: Collection of DNS client/server software
 net-dns/dnsmasq 2.79: Small forwarding DNS server
+net-dns/dnssec-root 20150403: The DNSSEC root key(s)
 net-dns/dnstop 20140915: Displays various tables of DNS traffic on your network
 net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
