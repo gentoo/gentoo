@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (06 Oct 2018)
+# Outdated and vulnerable snapshot; libav-12.3 is the better
+# version for now
+=media-video/libav-13_pre20171219
+
 # Virgil Dupras <vdupras@gentoo.org> (30 Sep 2018)
 # Dead upstream, unmaintained, no revdeps.
 # Removal in 30 days, bug #611614
