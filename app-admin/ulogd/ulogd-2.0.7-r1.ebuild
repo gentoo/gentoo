@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit flag-o-matic linux-info ltprune readme.gentoo-r1 systemd user
+inherit flag-o-matic linux-info readme.gentoo-r1 systemd user
 
 DESCRIPTION="A userspace logging daemon for netfilter/iptables related logging"
 HOMEPAGE="https://netfilter.org/projects/ulogd/index.html"
@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	)
 	nfct? ( >=net-libs/libnetfilter_conntrack-1.0.2 )
 	nflog? ( >=net-libs/libnetfilter_log-1.0.0 )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:= )
 	pcap? ( net-libs/libpcap )
 	postgres? ( dev-db/postgresql:= )
 	sqlite? ( dev-db/sqlite:3 )
@@ -107,9 +107,9 @@ src_install() {
 	use doc && HTML_DOCS=( doc/${PN}.html )
 
 	default_src_install
-	prune_libtool_files --modules
-	readme.gentoo_create_doc
+	find "${D}" -name '*.la' -delete || die
 
+	readme.gentoo_create_doc
 	doman ${PN}.8
 
 	use doc && dodoc doc/${PN}.{dvi,ps,txt}
