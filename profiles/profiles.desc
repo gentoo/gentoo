@@ -302,8 +302,8 @@ amd64		hardened/linux/amd64/selinux				stable
 amd64		hardened/linux/amd64/no-multilib			stable
 amd64		hardened/linux/amd64/no-multilib/selinux		stable
 amd64		hardened/linux/amd64/x32				dev
-arm		hardened/linux/arm/armv7a				dev
 arm		hardened/linux/arm/armv6j				dev
+arm		hardened/linux/arm/armv7a				dev
 ia64		hardened/linux/ia64					dev
 mips		hardened/linux/mips/mipsel/multilib/n32			exp
 mips		hardened/linux/mips/mipsel/multilib/n64			exp
@@ -353,6 +353,10 @@ amd64		default/linux/uclibc/amd64				exp
 amd64		hardened/linux/uclibc/amd64				exp
 arm		default/linux/uclibc/arm/armv7a				exp
 arm		hardened/linux/uclibc/arm/armv7a			exp
+arm		default/linux/arm/17.0/uclibc/armv6j			exp
+arm		default/linux/arm/17.0/uclibc/armv6j/hardened		exp
+arm		default/linux/arm/17.0/uclibc/armv7a			exp
+arm		default/linux/arm/17.0/uclibc/armv7a/hardened		exp
 mips		default/linux/uclibc/mips				exp
 mips		hardened/linux/uclibc/mips				exp
 mips		default/linux/uclibc/mips/mipsel			exp
