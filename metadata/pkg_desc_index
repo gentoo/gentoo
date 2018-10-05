@@ -4340,7 +4340,7 @@ dev-perl/Unix-Getrusage 0.030.0 0.30.0-r1: Perl interface to the Unix getrusage 
 dev-perl/Unix-Syslog 1.100.0-r1 1.100.0-r2: A Perl module which provides access to the system logger
 dev-perl/User-Identity 0.940.0 0.990.0: Maintains info about a physical person
 dev-perl/Validate-Net 0.600.0-r1: Format validation and more for Net:: related strings
-dev-perl/Variable-Magic 0.610.0 0.620.0: Associate user-defined magic to variables from Perl
+dev-perl/Variable-Magic 0.620.0: Associate user-defined magic to variables from Perl
 dev-perl/Video-Frequencies 0.03-r1 0.03-r2: Video Frequencies perl module, for use with ivtv-ptune
 dev-perl/Video-Info 0.993.0-r1 0.993.0-r2: Perl extension for getting video info
 dev-perl/Video-ivtv 0.13-r1 0.13-r2: Video::ivtv perl module, for use with ivtv-ptune
@@ -6360,7 +6360,7 @@ dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
 dev-util/source-highlight 3.1.7-r2 3.1.8: Generate highlighted source code as an (x)html document
 dev-util/splint 3.1.2-r1: Check C programs for vulnerabilities and programming mistakes
 dev-util/statifier 1.7.4: Statifier is a tool for creating portable, self-containing Linux executables
-dev-util/strace 4.20: A useful diagnostic, instructional, and debugging tool
+dev-util/strace 4.20 4.23-r1: A useful diagnostic, instructional, and debugging tool
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2015.11.05: Script to build SUSE Linux RPMs
 dev-util/sysprof 3.24.1: System-wide Linux Profiler
