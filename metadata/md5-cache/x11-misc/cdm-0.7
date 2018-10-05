@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=The Console Display Manager
+EAPI=7
+HOMEPAGE=https://github.com/evertiro/cdm
+IUSE=pam consolekit
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-util/dialog x11-apps/xdpyinfo x11-apps/xinit consolekit? ( sys-auth/consolekit sys-apps/dbus ) pam? ( virtual/pam )
+REQUIRED_USE=consolekit? ( pam )
+SLOT=0
+SRC_URI=https://github.com/evertiro/cdm/archive/0.7.tar.gz -> cdm-0.7.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	pam	3e788d86170dfcd5b06824d898315e18	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=3c7f69e3ddcce8ae588dfa2b44f80e0f
