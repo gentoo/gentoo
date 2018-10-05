@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
 
-DESCRIPTION="Library for General Graphics Interface"
-HOMEPAGE="http://www.ggi-project.org"
+DESCRIPTION="Adds support for some special graphical target features"
+HOMEPAGE="https://ibiblio.org/ggicore/packages/libggimisc.html"
 SRC_URI="mirror://sourceforge/ggi/${P}.src.tar.bz2"
 
 LICENSE="MIT"
