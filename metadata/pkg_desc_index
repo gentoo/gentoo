@@ -120,7 +120,7 @@ app-admin/radmind 1.14.1-r1: command-line tools and server to remotely administe
 app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.14.1: Tool to manage OpenRC services that need to be restarted
-app-admin/rsyslog 8.35.0-r1: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.35.0-r1 8.38.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617: Rules for Sagan log analyzer
 app-admin/setools 4.1.1: Policy Analysis Tools for SELinux
@@ -3137,8 +3137,8 @@ dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /pr
 dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.4.0: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 2.0.0: A Qt implementation of XDG standards
-dev-libs/librdkafka 0.11.4: Apache Kafka C/C++ client library
-dev-libs/librelp 1.2.16: An easy to use library for the RELP protocol
+dev-libs/librdkafka 0.11.4 0.11.5: Apache Kafka C/C++ client library
+dev-libs/librelp 1.2.16 1.2.18: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
 dev-libs/libressl 2.6.4 2.6.5: Free version of the SSL/TLS protocol forked from OpenSSL
@@ -3149,7 +3149,7 @@ dev-libs/libserialport 0.1.1: Cross platform serial port access library
 dev-libs/libsigc++ 1.2.7 2.10.0: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.11 2.12 2.12-r1: Library for handling page faults in user mode
 dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression library
-dev-libs/libsodium 1.0.11-r1 1.0.15-r1: A portable fork of NaCl, a higher-level cryptographic library
+dev-libs/libsodium 1.0.11-r1 1.0.15-r1 1.0.16-r2: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libspnav 0.2.2: libspnav is a replacement for the magellan library with a cleaner API
 dev-libs/libspt 1.1-r2: Library for handling root privilege
 dev-libs/libstrl 0.5.1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()
@@ -3279,6 +3279,7 @@ dev-libs/xmlrpc-c 1.32.05-r1 1.39.11-r1: A lightweigt RPC library based on XML a
 dev-libs/xmlrpc-epi 0.54.2: Epinions implementation of XML-RPC protocol in C
 dev-libs/xmlsec 1.2.26: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-libs/xplc 0.3.13-r1: cross platform lightweight components library for C++
+dev-libs/xxhash 0.6.5: Extremely fast non-cryptographic hash algorithm
 dev-libs/yajl 2.1.0-r1: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zthread 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
@@ -6913,7 +6914,7 @@ kde-misc/kdirstat 3.1.3: GUI equivalent to the du command based on KDE Framework
 kde-misc/kio-gdrive 1.2.4: KIO Slave for Google Drive service
 kde-misc/kmarkdownwebview 0.5.2: KPart for rendering Markdown content
 kde-misc/krename 5.0.0: Powerful batch file renamer
-kde-misc/krusader 2.7.0: Advanced twin-panel (commander-style) file-manager with many extras
+kde-misc/krusader 2.7.0 2.7.1: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 4.2: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/kwebkitpart 1.4.0_pre20180406: WebKit KPart for Konqueror
 kde-misc/latte-dock 0.7.5: Elegant dock, based on KDE Frameworks
@@ -8499,7 +8500,7 @@ net-dns/pdns-recursor 4.0.8: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.5: A wrapper for DNS name resolving or DNS faking
-net-dns/unbound 1.5.1-r2 1.5.10: A validating, recursive and caching DNS resolver
+net-dns/unbound 1.5.1-r2 1.5.10 1.8.0-r1: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-firewall/arno-iptables-firewall 2.0.1e 2.0.3: Arno's iptables firewall script
 net-firewall/arptables 0.0.4: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
@@ -10734,7 +10735,7 @@ x11-drivers/xf86-video-vesa 2.3.3 2.3.4 2.4.0: Generic VESA video driver
 x11-drivers/xf86-video-virtualbox 5.1.36: VirtualBox X11 video driver for Gentoo guest
 x11-drivers/xf86-video-vmware 13.3.0: VMware SVGA video driver
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
-x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++
+x11-libs/agg 2.5-r2 2.5-r3: High quality rendering engine library for C++
 x11-libs/c++-gtk-utils 2.0.27 2.2.10: A number of classes and functions for programming GTK+ programs using C++
 x11-libs/cairo 1.14.12: A vector graphics library with cross-device output support
 x11-libs/colord-gtk 0.1.25 0.1.26: GTK support library for colord
