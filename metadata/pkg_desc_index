@@ -10046,7 +10046,7 @@ sys-devel/bc 1.06.95-r2: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
 sys-devel/binutils 2.30-r2 2.30-r4: Tools necessary to build programs
 sys-devel/binutils-config 5-r4: Utility to change the binutils version being used
-sys-devel/bison 2.7.1 3.0.4-r1 3.0.5-r1: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 3.0.4-r1 3.0.5-r1: A general-purpose (yacc-compatible) parser generator
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 4.0.1 5.0.2 6.0.1: C language family frontend for LLVM
 sys-devel/clang-common 6.0.1: Common files shared between multiple slots of clang
