@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -11,6 +11,8 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="https://github.com/strukturag/${PN}/releases/download/v${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+
+	PATCHES=( "${FILESDIR}"/${P}-openjpeg-2.patch )
 fi
 
 DESCRIPTION="ISO/IEC 23008-12:2017 HEIF file format decoder and encoder"
@@ -20,14 +22,12 @@ LICENSE="GPL-3"
 SLOT="0/1.3"
 IUSE="static-libs +threads"
 
-# Doesn't yet support libjpeg-turbo-2, https://github.com/strukturag/libheif/issues/70
 DEPEND="
 	media-libs/libde265:=[${MULTILIB_USEDEP}]
 	media-libs/libpng:0=[${MULTILIB_USEDEP}]
 	media-libs/x265:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	virtual/jpeg:0=[${MULTILIB_USEDEP}]
-	!>=media-libs/libjpeg-turbo-2
 "
 RDEPEND="${DEPEND}"
 
