@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,8 +15,8 @@ KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh spar
 IUSE="+asn1 debug +libffi +trust"
 REQUIRED_USE="trust? ( asn1 )"
 
-RDEPEND="asn1? ( >=dev-libs/libtasn1-3.4[${MULTILIB_USEDEP}] )
-	libffi? ( >=dev-libs/libffi-3.0.0[${MULTILIB_USEDEP}] )
+RDEPEND="asn1? ( >=dev-libs/libtasn1-3.4:=[${MULTILIB_USEDEP}] )
+	libffi? ( >=virtual/libffi-3.0.0:=[${MULTILIB_USEDEP}] )
 	trust? ( app-misc/ca-certificates )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
