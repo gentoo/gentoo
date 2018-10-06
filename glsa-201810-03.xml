@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201810-03">
+  <title>OpenSSH: User enumeration vulnerability</title>
+  <synopsis>A vulnerability in OpenSSH might allow remote attackers to
+    determine valid usernames.
+  </synopsis>
+  <product type="ebuild">openssh</product>
+  <announced>2018-10-06</announced>
+  <revised count="1">2018-10-06</revised>
+  <bug>664264</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openssh" auto="yes" arch="*">
+      <unaffected range="ge">7.7_p1-r8</unaffected>
+      <vulnerable range="lt">7.7_p1-r8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSH is a complete SSH protocol implementation that includes SFTP
+      client and server support.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that OpenSSH was prone to a user enumeration
+      vulnerability.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote attacker could conduct user enumeration.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSH users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/openssh-7.7_p1-r8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15473">CVE-2018-15473</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-08-23T00:18:32Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-10-06T17:02:32Z">whissi</metadata>
+</glsa>
