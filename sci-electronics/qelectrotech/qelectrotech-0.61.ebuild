@@ -1,19 +1,19 @@
-# Copyright 2001-2018 Gentoo Authors
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit gnome2-utils qmake-utils subversion xdg-utils
+inherit gnome2-utils qmake-utils xdg-utils
 
 MY_P=${PN}-${PV%0}-src
 
 DESCRIPTION="Qt5 application to design electric diagrams"
 HOMEPAGE="https://qelectrotech.org/"
-ESVN_REPO_URI="svn://svn.tuxfamily.org/svnroot/qet/qet/trunk"
+SRC_URI="https://download.tuxfamily.org/qet/tags/20180823/${MY_P}.tar.gz"
 
 LICENSE="CC-BY-3.0 GPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="
