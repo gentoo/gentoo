@@ -285,8 +285,8 @@ app-cdr/brasero 3.12.2-r1: CD/DVD burning application for the GNOME desktop
 app-cdr/burn-cd 1.8.1: Smart console frontend for the cdrkit/cdrtools & dvd+rw-tools
 app-cdr/burncdda 1.8.3: Console app for copying burning audio cds
 app-cdr/ccd2iso 0.3: Convert CD images from ccd (CloneCD) to iso
-app-cdr/cdemu 3.1.0 3.2.0: Command-line tool for controlling cdemu-daemon
-app-cdr/cdemu-daemon 3.1.0 3.2.1: Daemon of the CDEmu optical media image mounting suite
+app-cdr/cdemu 3.2.0: Command-line tool for controlling cdemu-daemon
+app-cdr/cdemu-daemon 3.2.1: Daemon of the CDEmu optical media image mounting suite
 app-cdr/cdlabelgen 4.3.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.3-r4: Burn CDs in disk-at-once mode -- with optional GUI frontend
 app-cdr/cdrtools 3.02_alpha07-r1 3.02_alpha09: A set of tools for CD/DVD reading and recording, including cdrecord
@@ -298,7 +298,7 @@ app-cdr/dvd+rw-tools 7.1-r3: A set of tools for DVD+RW/-RW drives
 app-cdr/dvdisaster 0.72.4: Data-protection and recovery tool for DVDs
 app-cdr/extract-xiso 2.5: Tool for extracting and creating optimised Xbox ISO images
 app-cdr/gaffitter 0.6.0-r1: Genetic Algorithm File Fitter
-app-cdr/gcdemu 3.1.0 3.2.0: Gtk+ GUI for controlling cdemu-daemon
+app-cdr/gcdemu 3.2.0: Gtk+ GUI for controlling cdemu-daemon
 app-cdr/graveman 0.3.12_p5-r2: Graphical frontend for cdrecord, mkisofs, readcd and sox using GTK+2
 app-cdr/gtkcdlabel 1.15: A GUI for cdlabelgen that generates CD labels
 app-cdr/iat 0.1.7-r1: BIN, MDF, PDI, CDI, NRG, and B5I converters
@@ -3109,7 +3109,7 @@ dev-libs/libmba 0.9.1-r3: A library of generic C modules
 dev-libs/libmcal 0.7-r5: Modular Calendar Access Library
 dev-libs/libmcrypt 2.5.8-r4: libmcrypt provides uniform interface to access several encryption algorithms
 dev-libs/libmemcached 1.0.18-r3: a C client library to the memcached server
-dev-libs/libmirage 3.1.0 3.2.0: CD and DVD image access library
+dev-libs/libmirage 3.2.0: CD and DVD image access library
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.1.2: Modbus library which supports RTU communication over a serial line or a TCP link
 dev-libs/libmoe 1.5.8-r3: Multi octet character encoding handling library
