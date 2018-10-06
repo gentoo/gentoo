@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (06 Oct 2018)
+# Crashes on Youtube MSE videos, while older versions lack support
+# for higher resolution MSE videos. Pending further investigation.
+=www-client/epiphany-3.30.1
+
 # Thomas Deutschmann <whissi@gentoo.org> (06 Oct 2018)
 # Outdated and vulnerable snapshot; libav-12.3 is the better
 # version for now
