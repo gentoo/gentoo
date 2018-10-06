@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (06 Oct 2018)
+# address user visible breakage due to circular dependency #665008
+=media-fonts/encodings-1.0.4-r3 X
+
 # Dirkjan Ochtman <djc@gentoo.org> (29 Sep 2018)
 # Clippy is broken for now, can't find libraries (bug 667286)
 dev-lang/rust clippy
