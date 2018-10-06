@@ -21,12 +21,14 @@ IUSE="libressl luajit"
 RDEPEND="
 	luajit? ( dev-lang/luajit:2 )
 	!luajit? ( >=dev-lang/lua-5.1:0 )
-	libressl? ( dev-libs/libressl:0= )
+	libressl? ( <dev-libs/libressl-2.7.0:0= )
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
 	!dev-lua/luaossl
 	"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+PATCHES=("${FILESDIR}/0001-fix-libressl-compat.patch")
 
 src_unpack() {
 	unpack "${P}.tar.gz"
