@@ -3,16 +3,15 @@
 
 EAPI=6
 
-inherit mercurial qmake-utils gnome2-utils xdg-utils
+inherit qmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="Cloth patternmaking software"
 HOMEPAGE="https://valentinaproject.bitbucket.io/"
-EHG_REPO_URI="https://bitbucket.org/dismine/valentina"
-EHG_REVISION="develop"
+SRC_URI="https://bitbucket.org/dismine/${PN}/get/v${PV}.zip -> ${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="gnome"
 
 LANGS="cs de el en en es fi fr he id it nl pt-BR ro ru uk zh-CN"
@@ -34,10 +33,14 @@ CDEPEND="
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5"
 RDEPEND="${CDEPEND}"
-DEPEND="${CDEPEND}"
+DEPEND="${CDEPEND}
+	app-arch/unzip"
+
+S=${WORKDIR}/dismine-${PN}-dd3cff212db5
 
 src_configure() {
 	local locales=""
+	local locale
 
 	for LANG in ${LANGS}; do
 		if use l10n_${LANG}; then
@@ -96,7 +99,7 @@ src_configure() {
 		fi
 	done
 
-	eqmake5 LOCALES="${locales}" "CONFIG+=noStripDebugSymbols no_ccache noRunPath noTests" Valentina.pro -r
+	eqmake5 LOCALES="${locales}" "CONFIG+=noDebugSymbols no_ccache noRunPath noTests noWindowsInstaller" Valentina.pro -r
 }
 
 src_install() {
