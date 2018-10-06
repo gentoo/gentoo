@@ -1507,6 +1507,8 @@ gcc_do_filter_flags() {
 		filter-flags -f{no-,}unit-at-a-time -f{no-,}web -mno-tls-direct-seg-refs
 		filter-flags -f{no-,}stack-protector{,-all}
 		filter-flags -fvisibility-inlines-hidden -fvisibility=hidden
+		# and warning options
+		filter-flags -Wextra -Wstack-protector
 	fi
 	if ! tc_version_is_at_least 4.1 ; then
 		filter-flags -fdiagnostics-show-option
