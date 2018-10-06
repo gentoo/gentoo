@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201810-02">
+  <title>SoX: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in SoX, the worst of which
+    may lead to a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">sox</product>
+  <announced>2018-10-06</announced>
+  <revised count="1">2018-10-06</revised>
+  <bug>626702</bug>
+  <bug>627570</bug>
+  <bug>634450</bug>
+  <bug>634814</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-sound/sox" auto="yes" arch="*">
+      <unaffected range="ge">14.4.2-r1</unaffected>
+      <vulnerable range="lt">14.4.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>SoX is a command line utility that can convert various formats of
+      computer audio files in to other formats.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in SoX. Please review the
+      referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to process a crafted WAV, HCOM,
+      SND, or AIFF file, could cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All SoX users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-sound/sox-14.4.2-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11332">CVE-2017-11332</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11358">CVE-2017-11358</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11359">CVE-2017-11359</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-15370">CVE-2017-15370</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-15371">CVE-2017-15371</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-15372">CVE-2017-15372</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-15642">CVE-2017-15642</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-09-30T21:36:08Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2018-10-06T16:59:06Z">irishluck83</metadata>
+</glsa>
