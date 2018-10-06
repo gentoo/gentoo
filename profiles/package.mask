@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Mart Raudsepp <leio@gentoo.org> (06 Oct 2018)
+# Netspeed applet moved into mate-base/mate-applets since v1.14,
+# use that instead. Bug #667910
+net-analyzer/mate-netspeed
+
+# Mart Raudsepp <leio@gentoo.org> (06 Oct 2018)
 # Crashes on Youtube MSE videos, while older versions lack support
 # for higher resolution MSE videos. Pending further investigation.
 =www-client/epiphany-3.30.1
