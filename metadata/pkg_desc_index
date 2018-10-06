@@ -7440,7 +7440,7 @@ media-libs/alsa-lib 1.1.2: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.0.28: Advanced Linux Sound Architecture OSS compatibility layer
 media-libs/alure 1.2-r1: The OpenAL Utility Toolkit
 media-libs/assimp 4.0.1: Importer library to import assets from 3D files
-media-libs/aubio 0.4.1-r1 0.4.7: Library for audio labelling
+media-libs/aubio 0.4.7: Library for audio labelling
 media-libs/audiofile 0.3.6-r3: An elegant API for accessing audio files
 media-libs/babl 0.1.12 0.1.18 0.1.38: A dynamic, any to any, pixel format conversion library
 media-libs/bcg729 1.0.4: encoder and decoder of the ITU G729 Annex A/B speech codec
@@ -9189,7 +9189,7 @@ sci-astronomy/erfa 1.2.0 1.4.0: Essential Routines for Fundamental Astronomy
 sci-astronomy/kstars 2.9.5: Desktop Planetarium
 sci-astronomy/predict 2.2.3-r2: Satellite tracking and orbital prediction
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
-sci-astronomy/stellarium 0.14.3 0.16.0-r1: 3D photo-realistic skies in real time
+sci-astronomy/stellarium 0.16.0-r1: 3D photo-realistic skies in real time
 sci-astronomy/wcslib 5.15: Astronomical World Coordinate System transformations library
 sci-astronomy/xephem 3.7.7: Interactive tool for astronomical ephemeris and sky simulation
 sci-biology/augustus 2.5.5: Eukaryotic gene predictor
