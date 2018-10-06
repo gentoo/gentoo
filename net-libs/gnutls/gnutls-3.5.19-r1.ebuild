@@ -117,7 +117,7 @@ multilib_src_configure() {
 		--with-unbound-root-key-file="${EPREFIX}/etc/dnssec/root-anchors.txt" \
 		--without-included-libtasn1 \
 		"${libconf[@]}" \
-		$("${S}/configure" --help | grep -- --with-.*-prefix | sed -e 's/prefix.*/prefix/' -e "s#\$#=${EROOT}/usr#")
+		$("${S}/configure" --help | grep -- '--without-.*-prefix' | sed -e 's/^ *\([^ ]*\) .*/\1/g')
 }
 
 multilib_src_install_all() {
