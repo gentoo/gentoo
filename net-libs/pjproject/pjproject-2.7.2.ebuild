@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit autotools flag-o-matic
 DESCRIPTION="Open source SIP, Media, and NAT Traversal Library"
 HOMEPAGE="http://www.pjsip.org/"
 SRC_URI="http://www.pjsip.org/release/${PV}/${P}.tar.bz2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
