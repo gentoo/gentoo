@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Conversions to and from arbitrary character sets and UTF8"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ia64 ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE=""
 
 RDEPEND="dev-perl/Unicode-Map

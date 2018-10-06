@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Parse and format RFC 2822 email addresses and groups"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ppc ppc64 x86"
 IUSE="test"
 
 RDEPEND="
