@@ -1257,7 +1257,7 @@ app-shells/dsh 0.25.10-r1: Distributed Shell
 app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
 app-shells/fish 2.6.0 2.7.1: Friendly Interactive SHell
 app-shells/gentoo-bashcomp 20140911 20180302: Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)
-app-shells/gentoo-zsh-completions 20150103: Gentoo specific zsh completion support (includes emerge and ebuild commands)
+app-shells/gentoo-zsh-completions 20150103 20180228: Gentoo specific zsh completion support (includes emerge and ebuild commands)
 app-shells/hstr 1.23: Shell history suggest box
 app-shells/ksh 93.20140625: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
