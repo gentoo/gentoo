@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -23,6 +23,7 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.13
 	>=dev-util/intltool-0.40
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
