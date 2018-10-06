@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201810-04">
+  <title>ImageMagick: Security hardening</title>
+  <synopsis>Due to multiple vulnerabilities in various coders used by
+    ImageMagick, Gentoo Linux now installs a policy.xml file which will
+    restrict coder usage by default.
+  </synopsis>
+  <product type="ebuild">imagemagick</product>
+  <announced>2018-10-06</announced>
+  <revised count="1">2018-10-06</revised>
+  <bug>664236</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-gfx/imagemagick" auto="yes" arch="*">
+      <unaffected range="ge">6.9.10.10-r1</unaffected>
+      <unaffected range="ge">7.0.8.10-r1</unaffected>
+      <vulnerable range="lt">6.9.10.10-r1</vulnerable>
+      <vulnerable range="lt">7.0.8.10-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ImageMagick is a collection of tools and libraries for many image
+      formats.
+    </p>
+  </background>
+  <description>
+    <p>If you process an image with ImageMagick and don’t validate the file
+      before (e.g. check magic byte), ImageMagick will call any coders found in
+      the given file. So if ImageMagick will find Ghostscript for example, it
+      will call Ghostscript.
+    </p>
+    
+    <p>Due to multiple -dSAFER sandbox bypass vulnerabilities in Ghostscript,
+      this can lead to arbitrary code execution.
+    </p>
+    
+    <p>To mitigate this problem we install a policy.xml file by default which
+      will disable PS, EPS, PDF, and XPS coders.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to process a specially crafted
+      image file, could execute arbitrary code with the privileges of the
+      process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ImageMagick 6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-gfx/imagemagick-6.9.10.10-r1"
+    </code>
+    
+    <p>All ImageMagick 7 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-gfx/imagemagick-7.0.8.10-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://www.kb.cert.org/vuls/id/332928">Ghostscript contains
+      multiple -dSAFER sandbox bypass vulnerabilities (VU#332928)
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-08-22T17:43:38Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-10-06T17:09:35Z">whissi</metadata>
+</glsa>
