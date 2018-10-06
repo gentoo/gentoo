@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ if [[ ${PV} =~ 99999999$ ]]; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/neomutt-${P}"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 fi
 
 DESCRIPTION="A small but very powerful text-based mail client"
