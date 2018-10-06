@@ -1181,7 +1181,7 @@ app-office/pinpoint 0.1.8-r1: A tool for making hackers do excellent presentatio
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r1: Spreadsheet Calculator
-app-office/scribus 1.5.3-r1 1.5.4: Desktop publishing (DTP) and layout program
+app-office/scribus 1.5.4: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.14.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2: Wysiwyg text processor with high-quality maths
@@ -7460,7 +7460,7 @@ media-libs/dssi 1.1.1-r1: Plugin API for software instruments with user interfac
 media-libs/dumb 0.9.3-r3: IT/XM/S3M/MOD player library with click removal and IT filters
 media-libs/elles_icc_profiles 20160501.0932: Elle Stone's well-behaved RGB and grey ICC profiles
 media-libs/esdl 1.3.1: Erlang bindings for the SDL library
-media-libs/exempi 2.4.5 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
+media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
 media-libs/exiftool 11.03: Read and write meta information in image, audio and video files
 media-libs/faac 1.29.9.2: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.8.8: AAC audio decoding library
