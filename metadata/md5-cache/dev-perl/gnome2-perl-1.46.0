@@ -3,10 +3,10 @@ DEPEND=x11-libs/gtk+:2 dev-perl/Gtk2 gnome-base/libgnomeui gnome-base/libbonobou
 DESCRIPTION=Perl interface to the 2.x series of the Gnome libraries
 EAPI=6
 HOMEPAGE=http://gtk2-perl.sourceforge.net/ http://metacpan.org/release/Gnome2
-KEYWORDS=alpha amd64 ~ppc x86
+KEYWORDS=alpha amd64 x86
 LICENSE=LGPL-2.1
 RDEPEND=x11-libs/gtk+:2 dev-perl/Gtk2 gnome-base/libgnomeui gnome-base/libbonoboui dev-perl/gnome2-canvas >=dev-perl/glib-perl-1.40.0 dev-perl/gnome2-vfs-perl dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/X/XA/XAOC/Gnome2-1.046.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=fbe6cf8cdc55ea606f7d28f8b5a8b422
+_md5_=9ca3a82ba73e9afcde503f5f0c8db452
