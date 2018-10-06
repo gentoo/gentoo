@@ -34,7 +34,8 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable static-libs static)
+		$(use_enable static-libs static) \
+		$(./configure --help | grep -- --with-.*-prefix | sed -e 's/prefix.*/prefix/' -e "s#\$#=${EROOT}/usr#")
 }
 
 src_install() {
