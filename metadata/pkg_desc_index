@@ -9147,7 +9147,7 @@ net-vpn/isatapd 0.9.7-r2: creates and maintains an ISATAP tunnel (rfc5214)
 net-vpn/libreswan 3.22 3.25: IPsec implementation for Linux, fork of Openswan
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/openconnect 7.06-r1 7.07-r1 7.07-r2 7.08: Free client for Cisco AnyConnect SSL VPN software
-net-vpn/openfortivpn 1.6.0 1.7.1: A Fortinet compatible VPN client
+net-vpn/openfortivpn 1.7.1: A Fortinet compatible VPN client
 net-vpn/openvpn 2.4.4 2.4.6: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.5.3 5.6.0-r1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
