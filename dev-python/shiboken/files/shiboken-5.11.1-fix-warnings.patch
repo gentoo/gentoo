@@ -1,0 +1,22 @@
+--- a/libshiboken/pep384impl.cpp
++++ b/libshiboken/pep384impl.cpp
+@@ -130,7 +130,7 @@ check_PyTypeObject_valid(void)
+     long probe_tp_dictoffset = PyLong_AsLong(d);
+     PyObject *probe_tp_mro = PyObject_GetAttrString(obtype, "__mro__");
+     if (false
+-        || probe_tp_name            != check->tp_name
++        || (probe_tp_name - check->tp_name) != 0 // to avoid warning
+         || probe_tp_basicsize       != check->tp_basicsize
+         || probe_tp_call            != check->tp_call
+         || probe_tp_str             != check->tp_str
+--- a/generator/qtdoc/qtdocgenerator.cpp
++++ b/generator/qtdoc/qtdocgenerator.cpp
+@@ -267,6 +267,8 @@ static const char *linkKeyWord(QtXmlToSphinx::LinkContext::Type type)
+         return ":ref:";
+     case QtXmlToSphinx::LinkContext::External:
+         break;
++    case QtXmlToSphinx::LinkContext::FunctionMask:
++        break;
+      }
+     return "";
+ }
