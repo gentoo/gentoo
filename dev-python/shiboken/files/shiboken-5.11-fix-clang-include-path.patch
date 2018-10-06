@@ -1,0 +1,41 @@
+--- a/ApiExtractor/clangparser/compilersupport.cpp    2018-09-14 03:19:59.644585248 +0300
++++ b/ApiExtractor/clangparser/compilersupport.cpp    2018-09-14 03:25:20.743741541 +0300
+@@ -239,36 +239,14 @@
+ #endif
+ 
+ #if NEED_CLANG_BUILTIN_INCLUDES
+-static QString findClang()
+-{
+-    for (const char *envVar : {"LLVM_INSTALL_DIR", "CLANG_INSTALL_DIR"}) {
+-        if (qEnvironmentVariableIsSet(envVar)) {
+-            const QString path = QFile::decodeName(qgetenv(envVar));
+-            if (QFileInfo::exists(path))
+-                return path;
+-        }
+-    }
+-    const QString llvmConfig =
+-        QStandardPaths::findExecutable(QLatin1String("llvm-config"));
+-    if (!llvmConfig.isEmpty()) {
+-        QByteArray stdOut;
+-        if (runProcess(llvmConfig, QStringList{QLatin1String("--prefix")}, &stdOut)) {
+-            const QString path = QFile::decodeName(stdOut.trimmed());
+-            if (QFileInfo::exists(path))
+-                return path;
+-        }
+-    }
+-    return QString();
+-}
+-
+ static QString findClangBuiltInIncludesDir()
+ {
+     // Find the include directory of the highest version.
+-    const QString clangPath = findClang();
++    const QString clangPath = QLatin1String("/usr/lib/clang");
+     if (!clangPath.isEmpty()) {
+         QString candidate;
+         QVersionNumber lastVersionNumber(1, 0, 0);
+-        QDir clangDir(clangPath + QLatin1String("/lib/clang"));
++        QDir clangDir(clangPath);
+         const QFileInfoList versionDirs =
+             clangDir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
+         for (const QFileInfo &fi : versionDirs) {
