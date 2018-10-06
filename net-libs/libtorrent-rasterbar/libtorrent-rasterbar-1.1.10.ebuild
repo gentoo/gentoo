@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="threads"
 DISTUTILS_OPTIONAL=true
 DISTUTILS_IN_SOURCE_BUILD=true
 
-inherit distutils-r1 flag-o-matic versionator
+inherit distutils-r1 flag-o-matic
 
-MY_PV=$(replace_all_version_separators _)
+MY_PV=$(ver_rs 1-2 '_')
 
 DESCRIPTION="C++ BitTorrent implementation focusing on efficiency and scalability"
 HOMEPAGE="http://libtorrent.org"
@@ -60,7 +60,7 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable debug logging)
 		$(use_enable debug disk-stats)
-		$(use_enable dht dht $(usex debug logging yes))
+		$(use_enable dht dht $(usex debug logging $(usex ('yes' 'no'))))
 		$(use_enable examples)
 		$(use_enable ssl encryption)
 		$(use_enable static-libs static)
