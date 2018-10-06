@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,6 +27,7 @@ DEPEND="${DEPEND}
 	test? ( dev-util/valgrind )
 	vala? ( $(vala_depend) )
 	>=sys-devel/gettext-0.19.4
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.25
 	virtual/pkgconfig
 "
