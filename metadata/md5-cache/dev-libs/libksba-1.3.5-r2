@@ -9,4 +9,4 @@ LICENSE=LGPL-3+ GPL-2+ GPL-3
 RDEPEND=>=dev-libs/libgpg-error-1.8
 SLOT=0
 SRC_URI=mirror://gnupg/libksba/libksba-1.3.5.tar.bz2
-_md5_=b496e065e70f766e5ecf12b1a55c6a00
+_md5_=124557cf20384b6e0815d90fa1709578
