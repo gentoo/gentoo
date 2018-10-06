@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare setup
+DESCRIPTION=Tool to check TLS/SSL cipher support
+EAPI=7
+HOMEPAGE=https://testssl.sh/
+IUSE=bundled-openssl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 bundled-openssl? ( openssl )
+RDEPEND=app-shells/bash[net] net-dns/bind-tools sys-apps/util-linux sys-libs/ncurses:0 sys-process/procps !bundled-openssl? ( dev-libs/openssl:0 )
+SLOT=0
+SRC_URI=https://github.com/drwetter/testssl.sh/archive/v2.9.5-5.tar.gz -> testssl-2.9.5_p5.tar.gz
+_md5_=4493f8eac832f5dc5e5893bd5dea7757
