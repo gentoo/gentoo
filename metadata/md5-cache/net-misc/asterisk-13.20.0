@@ -4,7 +4,7 @@ DESCRIPTION=Asterisk: A Modular Open Source PBX System
 EAPI=6
 HOMEPAGE=http://www.asterisk.org/
 IUSE=+voicemail_storage_file voicemail_storage_odbc voicemail_storage_imap alsa bluetooth calendar +caps cluster curl dahdi debug doc freetds gtalk http iconv ilbc xmpp ldap libedit libressl lua mysql newt +samples odbc osplookup oss pjproject portaudio postgres radius selinux snmp span speex srtp static syslog vorbis kernel_linux
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 PDEPEND=net-misc/asterisk-core-sounds net-misc/asterisk-extra-sounds net-misc/asterisk-moh-opsound
 RDEPEND=dev-db/sqlite:3 dev-libs/popt dev-libs/jansson dev-libs/libxml2 !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) sys-libs/ncurses:* sys-libs/zlib alsa? ( media-libs/alsa-lib ) bluetooth? ( net-wireless/bluez ) calendar? ( net-libs/neon dev-libs/libical dev-libs/iksemel ) caps? ( sys-libs/libcap ) cluster? ( sys-cluster/corosync ) curl? ( net-misc/curl ) dahdi? ( >=net-libs/libpri-1.4.12_beta2 net-misc/dahdi-tools ) freetds? ( dev-db/freetds ) gtalk? ( dev-libs/iksemel ) http? ( dev-libs/gmime:2.6 ) iconv? ( virtual/libiconv ) ilbc? ( dev-libs/ilbc-rfc3951 ) xmpp? ( dev-libs/iksemel ) ldap? ( net-nds/openldap ) libedit? ( dev-libs/libedit ) lua? ( dev-lang/lua:* ) mysql? ( virtual/mysql ) newt? ( dev-libs/newt ) odbc? ( dev-db/unixODBC ) osplookup? ( net-libs/osptoolkit ) portaudio? ( media-libs/portaudio ) postgres? ( dev-db/postgresql:* ) radius? ( net-dialup/freeradius-client ) snmp? ( net-analyzer/net-snmp ) span? ( media-libs/spandsp ) speex? ( media-libs/speex ) srtp? ( net-libs/libsrtp:0 ) vorbis? ( media-libs/libvorbis ) selinux? ( sec-policy/selinux-asterisk ) syslog? ( virtual/logger )
@@ -12,4 +12,4 @@ REQUIRED_USE=gtalk? ( xmpp ) ^^ ( voicemail_storage_file voicemail_storage_odbc 
 SLOT=0
 SRC_URI=http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-13.20.0.tar.gz mirror://gentoo/gentoo-asterisk-patchset-4.07.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=ec5e06ce2154ad98c1a744179476ff7f
+_md5_=1e9ea2d3acf7c668f6e1152add2c67df
