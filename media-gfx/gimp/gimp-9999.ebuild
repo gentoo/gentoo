@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -169,7 +169,7 @@ _rename_plugins() {
 	einfo 'Renaming plug-ins to not collide with pre-2.10.6 file layout (bug #664938)...'
 	local prepend=gimp-org-
 	(
-		cd "${ED%/}"/usr/$(get_libdir)/gimp/2.0/plug-ins || exit 1
+		cd "${ED%/}"/usr/$(get_libdir)/gimp/2.99/plug-ins || exit 1
 		for plugin_slash in $(ls -d1 */); do
 		    plugin=${plugin_slash%/}
 		    if [[ -f ${plugin}/${plugin} ]]; then
