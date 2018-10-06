@@ -512,6 +512,7 @@ app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.14-r1: Documentation system for most programming languages
 app-doc/elisp-manual 18.1.03 21.2.8-r2 22.2.9 23.4 24.5 25.3: The GNU Emacs Lisp Reference Manual
 app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
+app-doc/gnucash-docs 3.2-r1: Documentation package for GnuCash
 app-doc/halibut 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
 app-doc/kicad-doc 4.0.7: Electronic Schematic and PCB design tools manuals
@@ -1158,7 +1159,7 @@ app-office/dia 0.97.3: Diagram/flowchart creation program
 app-office/dia2code 1.0.0: Convert UML diagrams produced with Dia to various source code flavours
 app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and drop support
 app-office/glabels 3.4.0: Program for creating labels and business cards
-app-office/gnucash 2.7.4-r1: A personal finance manager
+app-office/gnucash 2.7.4-r1 3.2-r2: A personal finance manager
 app-office/gnumeric 1.12.38: The GNOME Spreadsheet
 app-office/grisbi 1.0.2: Grisbi is a personal accounting application for Linux
 app-office/homebank 5.1.3: Free, easy, personal accounting for everyone
@@ -3076,7 +3077,7 @@ dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor A
 dev-libs/libgcrypt 1.8.1 1.8.3: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.8 0.17.9-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.1: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.26.6: A linkable library for Git
+dev-libs/libgit2 0.26.6 0.26.7: A linkable library for Git
 dev-libs/libgit2-glib 0.26.2: Git library for GLib
 dev-libs/libgnome-games-support 1.2.3: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1 1.29: Contains error handling functions used by GnuPG software
@@ -4953,7 +4954,7 @@ dev-python/httplib2 0.10.3-r1: A comprehensive HTTP client library
 dev-python/httpretty 0.8.0 0.8.10 0.8.14: HTTP client mock for Python
 dev-python/hyper-h2 2.5.1: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1: HTTP/2 framing layer for Python
-dev-python/hypothesis 3.6.0-r1: A library for property based testing
+dev-python/hypothesis 3.6.0-r1 3.59.1: A library for property based testing
 dev-python/icalendar 3.9.2: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.5: Internationalized Domain Names in Applications (IDNA)
@@ -5330,7 +5331,7 @@ dev-python/pympler 0.5: Memory profiling for Python applications
 dev-python/pymssql 1.0.2-r1: Simple MSSQL python extension module
 dev-python/pymtp 0.0.6: LibMTP bindings for Python
 dev-python/pymysql 0.7.11: Pure-Python MySQL Driver
-dev-python/pynacl 1.1.2: Python binding to the Networking and Cryptography (NaCl) library
+dev-python/pynacl 1.1.2 1.2.1: Python binding to the Networking and Cryptography (NaCl) library
 dev-python/pyndex 0.3.2a-r1: Simple and fast Python full-text indexer (aka search engine) using Metakit as its back-end
 dev-python/pynotifier 0.7.0-r3: pyNotifier provides an implementation of a notifier/event scheduler
 dev-python/pynzb 0.1.0-r1: Unified API for parsing NZB files

@@ -263,6 +263,7 @@ app-doc/clsync-docs:api - Install doxygen generated API docs.
 app-doc/doxygen:clang - support for sys-devel/clang assisted parsing
 app-doc/doxygen:dot - allow to create dot graphs using media-gfx/graphviz
 app-doc/doxygen:doxysearch - build doxyindexer and doxysearch.cgi
+app-doc/gnucash-docs:l10n_C - English
 app-doc/kicad-doc:html - Generate documentation in HTML format
 app-doc/kicad-doc:pdf - Generate documentation in PDF format
 app-doc/linuxfromscratch:htmlsingle - Install all-on-one-page HTML version.
