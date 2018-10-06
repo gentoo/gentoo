@@ -351,6 +351,8 @@ x86		default/linux/x86/17.0/musl/selinux			exp
 # @MAINTAINER: uclibc@gentoo.org
 amd64		default/linux/uclibc/amd64				exp
 amd64		hardened/linux/uclibc/amd64				exp
+amd64		default/linux/amd64/17.0/uclibc				exp
+amd64		default/linux/amd64/17.0/uclibc/hardened		exp
 arm		default/linux/uclibc/arm/armv7a				exp
 arm		hardened/linux/uclibc/arm/armv7a			exp
 arm		default/linux/arm/17.0/uclibc/armv6j			exp
@@ -365,6 +367,8 @@ ppc		default/linux/uclibc/ppc				exp
 ppc		hardened/linux/uclibc/ppc				exp
 x86		default/linux/uclibc/x86				exp
 x86		hardened/linux/uclibc/x86				exp
+x86		default/linux/x86/17.0/uclibc				exp
+x86		default/linux/x86/17.0/uclibc/hardened			exp
 
 # These are Gentoo Prefix profiles, maintained by the Prefix team
 # @MAINTAINER: prefix@gentoo.org
