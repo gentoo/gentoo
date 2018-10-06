@@ -20,7 +20,7 @@ SRC_URI="mirror://sourceforge/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v$
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="headers-only idl libraries tools"
+IUSE="headers-only idl +libraries tools"
 RESTRICT="strip"
 
 S="${WORKDIR}/mingw-w64-v${PV}"
