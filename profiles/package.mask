@@ -177,10 +177,10 @@ media-plugins/vdr-xvdr
 media-plugins/vdr-autosort
 
 # Matthias Maier <tamiko@gentoo.org> (1 Sep 2018)
-# Mask 0.7.0 and  1.0.0 for the time being until a compatible LLVM version
+# Mask 0.7.0 and  1.0.1 for the time being until a compatible LLVM version
 # made it into the tree, bug #665192
 ~dev-lang/julia-0.7.0
-~dev-lang/julia-1.0.0
+~dev-lang/julia-1.0.1
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (29 Aug 2018)
 # Masked for removal in 30 days. Multiple build failures. Upstream inactive.
