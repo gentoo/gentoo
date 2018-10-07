@@ -3077,7 +3077,7 @@ dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor A
 dev-libs/libgcrypt 1.8.1 1.8.3: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.8 0.17.9-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.1: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.26.6 0.26.7: A linkable library for Git
+dev-libs/libgit2 0.26.7: A linkable library for Git
 dev-libs/libgit2-glib 0.26.2: Git library for GLib
 dev-libs/libgnome-games-support 1.2.3: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1 1.29: Contains error handling functions used by GnuPG software
