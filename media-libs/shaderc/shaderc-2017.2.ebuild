@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 EGIT_COMMIT="7a23a01742b88329fb2260eda007172135ba25d4"
 MY_P="${PN}-${EGIT_COMMIT}"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 
 inherit cmake-multilib python-any-r1
 
