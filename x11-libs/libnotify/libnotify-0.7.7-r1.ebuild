@@ -48,7 +48,7 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 
 	mv "${ED}"/usr/bin/{,libnotify-}notify-send || die #379941
 }
