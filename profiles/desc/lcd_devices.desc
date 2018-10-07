@@ -6,6 +6,7 @@
 # Keep it sorted.
 acoolsdcm - Add support for Alphacool USB display modules
 astusb - Add support for ASTUSB LCD modules
+ax206dpf - Add support for AX206 DPF LCD modules
 bayrad - Add support for BayRAD LCD modules by EMAC
 beckmannegle - Add support for Beckmann+Egle "Mini Terminals" and "Compact Terminals"
 bwct - Add support for BWCT USB LCD displays
@@ -80,6 +81,7 @@ pertelian - Add support for the Pertelian X2040 displays
 phanderson - Add support for the PHAnderson serial-to-HD44780 controller
 picgraphic - Add support for PIC graphic displays
 picolcd - Add support for Mini-Box's picoLCD
+picolcd_256x64 - Add support for Mini-Box's picoLCD with a higher resolution
 picolcdgraphic - Add support for Mini-Box's graphical picoLCD
 png - Add support for PNG output
 ppm - Add support for PNG output
