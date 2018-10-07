@@ -5,7 +5,7 @@ EAPI=7
 
 inherit latex-package
 
-DESCRIPTION="LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX support for four URW Classico fonts"
+DESCRIPTION="TeX support for four URW Classico fonts"
 HOMEPAGE="https://www.ctan.org/tex-archive/fonts/urw/classico"
 SRC_URI="http://mirrors.ctan.org/install/fonts/urw/classico.tds.zip"
 
