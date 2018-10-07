@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig >=dev-util/meson-0.45.1 >=dev-util/ninja-1.7.2 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/glib:2 dev-libs/json-c >=x11-libs/gtk+-3.20:3 >=x11-libs/pango-1.14 libnotify? ( x11-libs/libnotify ) doc? ( app-doc/doxygen ) test? ( dev-libs/check )
+DESCRIPTION=UI library that focuses on simplicity and minimalism
+EAPI=7
+HOMEPAGE=https://pwmt.org/projects/girara/
+IUSE=doc libnotify test test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=ZLIB
+RDEPEND=dev-libs/glib:2 dev-libs/json-c >=x11-libs/gtk+-3.20:3 >=x11-libs/pango-1.14 libnotify? ( x11-libs/libnotify )
+SLOT=0
+SRC_URI=https://pwmt.org/projects/girara/download/girara-0.3.1.tar.xz
+_eclasses_=meson	29ef682942c6ff558de2f797a61790c2	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	virtualx	401b718cc14d43a5a7fbe062c4851ba5
+_md5_=9ff50cd6a11d762efd0f5d0709cfe11e
