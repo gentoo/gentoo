@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="utempter"
 
 RDEPEND="
-	dev-libs/glib[${PYTHON_USEDEP}]
+	dev-libs/glib
 	dev-libs/keybinder:3[introspection]
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/pbr[${PYTHON_USEDEP}]
