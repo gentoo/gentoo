@@ -1159,7 +1159,7 @@ app-office/dia 0.97.3: Diagram/flowchart creation program
 app-office/dia2code 1.0.0: Convert UML diagrams produced with Dia to various source code flavours
 app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and drop support
 app-office/glabels 3.4.0: Program for creating labels and business cards
-app-office/gnucash 2.7.4-r1 3.2-r2: A personal finance manager
+app-office/gnucash 3.2-r2: A personal finance manager
 app-office/gnumeric 1.12.38: The GNOME Spreadsheet
 app-office/grisbi 1.0.2: Grisbi is a personal accounting application for Linux
 app-office/homebank 5.1.3: Free, easy, personal accounting for everyone
@@ -6401,7 +6401,7 @@ dev-vcs/cvsd 1.0.17: CVS pserver daemon
 dev-vcs/cvsgraph 1.6.1 1.7.0: CVS/RCS repository grapher
 dev-vcs/cvsps 2.1-r1: Generates patchset information from a CVS repository
 dev-vcs/darcs 2.8.4-r6 2.12.0 2.12.5: a distributed, interactive, smart revision control system
-dev-vcs/fossil 2.4 2.6: Simple, high-reliability, source control management, and more
+dev-vcs/fossil 2.6: Simple, high-reliability, source control management, and more
 dev-vcs/git 2.16.4 2.18.0: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-bzr-ng 0_pre20120822-r2: Git subcommand providing a bidirectional bridge to Bazaar repositories
 dev-vcs/git-cola 2.11: The highly caffeinated git GUI
