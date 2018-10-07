@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=media-libs/libgii-1.0.2 aalib? ( >=media-libs/aalib-1.2-r1 ) svga? ( >=media-libs/svgalib-1.4.2 ) X? ( x11-libs/libXt x11-libs/libXxf86dga x11-libs/libXxf86vm ) X? ( x11-base/xorg-proto )
+DESCRIPTION=Provides an opaque interface to the display's acceleration function
+EAPI=7
+HOMEPAGE=https://ibiblio.org/ggicore/packages/libggi.html
+IUSE=3dfx aalib cpu_flags_x86_mmx debug fbcon svga vis X
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=MIT
+RDEPEND=>=media-libs/libgii-1.0.2 aalib? ( >=media-libs/aalib-1.2-r1 ) svga? ( >=media-libs/svgalib-1.4.2 ) X? ( x11-libs/libXt x11-libs/libXxf86dga x11-libs/libXxf86vm )
+SLOT=0
+SRC_URI=mirror://sourceforge/ggi/libggi-2.2.2.src.tar.bz2
+_md5_=47fe537218491142c33b8d8f20a99079

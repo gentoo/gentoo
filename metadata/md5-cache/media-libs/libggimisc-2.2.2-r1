@@ -1,12 +1,12 @@
-DEFINED_PHASES=compile install postinst
+DEFINED_PHASES=configure install postinst
 DEPEND=>=media-libs/libggi-2.2.2 svga? ( media-libs/svgalib )
 DESCRIPTION=Adds support for some special graphical target features
-EAPI=0
+EAPI=7
 HOMEPAGE=https://ibiblio.org/ggicore/packages/libggimisc.html
 IUSE=fbcon svga
-KEYWORDS=amd64 ~x86
+KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=>=media-libs/libggi-2.2.2 svga? ( media-libs/svgalib )
 SLOT=0
 SRC_URI=mirror://sourceforge/ggi/libggimisc-2.2.2.src.tar.bz2
-_md5_=820b28e5dd0ec0719179928a9904294e
+_md5_=120617dea6b727f7e0fef700e93678d6

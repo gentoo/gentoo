@@ -1,11 +1,11 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=configure install
 DEPEND=>=media-libs/libggi-2.2.2
 DESCRIPTION=Libggi extension for advanced color and palette handling
-EAPI=0
+EAPI=7
 HOMEPAGE=https://ibiblio.org/ggicore/packages/libggigcp.html
-KEYWORDS=amd64 ~x86
+KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=>=media-libs/libggi-2.2.2
 SLOT=0
 SRC_URI=mirror://sourceforge/ggi/libggigcp-1.0.2.src.tar.bz2
-_md5_=d9aa05c49c824d556b981d2a215d117a
+_md5_=a4495e89a027d3d06bda52d48ca97c1e

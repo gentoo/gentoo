@@ -7571,12 +7571,12 @@ media-libs/libfame 0.9.1-r1 0.9.1-r2: MPEG-1 and MPEG-4 video encoding library
 media-libs/libfishsound 1.0.0: Simple programming interface to decode and encode audio with vorbis or speex
 media-libs/libfpx 1.3.1_p6 1.3.1_p10: A library for manipulating FlashPIX images
 media-libs/libfreehand 0.1.2: Library for import of FreeHand drawings
-media-libs/libggi 2.2.2: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
-media-libs/libggigcp 1.0.2: Library for General Graphics Interface
-media-libs/libggimisc 2.2.2: Library for General Graphics Interface
-media-libs/libggiwmh 0.3.2: Library for General Graphics Interface
+media-libs/libggi 2.2.2: Provides an opaque interface to the display's acceleration function
+media-libs/libggigcp 1.0.2: Libggi extension for advanced color and palette handling
+media-libs/libggimisc 2.2.2: Adds support for some special graphical target features
+media-libs/libggiwmh 0.3.2: Window manager hints extensions for libggi
 media-libs/libgig 4.1.0: C++ library for loading Gigasampler and DLS level 1/2 files
-media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
+media-libs/libgii 1.0.2-r1: Easy to use, but yet powerful, API for all possible input sources
 media-libs/libgphoto2 2.5.14 2.5.16: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3-r2: Shared library to access the contents of an iPod
 media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
