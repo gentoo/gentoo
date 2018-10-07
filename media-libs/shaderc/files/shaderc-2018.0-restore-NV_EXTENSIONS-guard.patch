@@ -1,0 +1,32 @@
+shaderc-2018.0 includes this commit:
+https://github.com/google/shaderc/commit/7193d2e8fcd8fab52af3f45468e653eaf6610edc
+
+This shaderc commit relies on the following commits in glslang:
+https://github.com/KhronosGroup/glslang/commit/3c3669904c4e6816974293ae9301f24de22ea336
+https://github.com/KhronosGroup/glslang/commit/1f60c72c674d6a77043d03843563b4be63e80267
+
+These glslang commits didn't make it into glslang-7.9.2888 release.
+Thus in order to make shaderc-2018.0 build against current glslang,
+we need to restore the NV_EXTENSIONS guard removed in 7193d2e8fcd8
+and disable NV_EXTENSIONS support in the ebuild.
+
+diff --git a/libshaderc_util/src/resources.cc b/libshaderc_util/src/resources.cc
+index 458a63f..3cd9a66 100644
+--- a/libshaderc_util/src/resources.cc
++++ b/libshaderc_util/src/resources.cc
+@@ -116,6 +116,7 @@ const TBuiltInResource kDefaultTBuiltInResource = {
+     /*.maxCullDistances = */ 8,                 // ARB_cull_distance.
+     /*.maxCombinedClipAndCullDistances = */ 8,  // ARB_cull_distance.
+     /*.maxSamples = */ 4,
++#ifdef NV_EXTENSIONS
+     /* .maxMeshOutputVerticesNV = */ 256,
+     /* .maxMeshOutputPrimitivesNV = */ 512,
+     /* .maxMeshWorkGroupSizeX_NV = */ 32,
+@@ -125,6 +126,7 @@ const TBuiltInResource kDefaultTBuiltInResource = {
+     /* .maxTaskWorkGroupSizeY_NV = */ 1,
+     /* .maxTaskWorkGroupSizeZ_NV = */ 1,
+     /* .maxMeshViewCountNV = */ 4,
++#endif
+
+     // This is the glslang TLimits structure.
+     // It defines whether or not the following features are enabled.
