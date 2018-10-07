@@ -27,6 +27,7 @@ RDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}"/0.48.0-multilib.patch
+	"${FILESDIR}"/0.48.0-test-u.patch
 )
 
 python_test() {
