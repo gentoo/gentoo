@@ -99,7 +99,7 @@ app-admin/needrestart 3.3: Restart daemons after library updates
 app-admin/newsyslog 1.1-r1: a highly configurable program for managing and archiving log files
 app-admin/openrc-settingsd 1.0.1: System settings D-Bus service for OpenRC
 app-admin/packagekit-base 1.1.7-r2: Manage packages in a secure way using a cross-distro and cross-architecture API
-app-admin/packagekit-qt 1.0.0 1.0.1: Qt PackageKit backend library
+app-admin/packagekit-qt 1.0.1: Qt PackageKit backend library
 app-admin/pass 1.7.3: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
 app-admin/perl-cleaner 2.20 2.25: User land tool for cleaning up old perl installs
