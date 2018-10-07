@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ EGIT_BRANCH="5.2"
 KDEBASE="kdevelop"
 KDE_DOC_DIR="docs"
 KDE_HANDBOOK="forceoptional"
-KDE_TEST="forceoptional"
+KDE_TEST="true"
 KMNAME="kdev-php"
 VIRTUALX_REQUIRED="test"
 inherit kde5
@@ -38,3 +38,5 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!dev-util/kdevelop-php-docs
 "
+
+PATCHES=( "${FILESDIR}/${P}-tests-optional.patch" )
