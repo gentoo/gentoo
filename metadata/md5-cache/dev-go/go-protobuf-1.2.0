@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=Go support for Google's protocol buffers
+EAPI=6
+HOMEPAGE=https://github.com/golang/protobuf
+KEYWORDS=~amd64
+LICENSE=BSD
+SLOT=0/1.2.0
+SRC_URI=https://github.com/golang/protobuf/archive/v1.2.0.tar.gz -> go-protobuf-1.2.0.tar.gz https://github.com/google/go-genproto/archive/af9cb2a35e7f169ec875002c1829c9b315cddc04.tar.gz -> github.com-google-go-genproto-af9cb2a35e7f169ec875002c1829c9b315cddc04.tar.gz https://github.com/golang/net/archive/aaf60122140d3fcf75376d319f0554393160eb50.tar.gz -> github.com-golang-net-aaf60122140d3fcf75376d319f0554393160eb50.tar.gz https://github.com/golang/sync/archive/1d60e4601c6fd243af51cc01ddf169918a5407ca.tar.gz -> github.com-golang-sync-1d60e4601c6fd243af51cc01ddf169918a5407ca.tar.gz
+_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	1b46197451ce01766db03a9955597d7b	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
+_md5_=ce300bcad70c14debe31ef11f5cbe465

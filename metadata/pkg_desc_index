@@ -5269,7 +5269,6 @@ dev-python/pybluez 0.18-r1: Python bindings for Bluez Bluetooth Stack
 dev-python/pycadf 2.6.0 2.7.0: python implementation of DMTF Cloud Audit (CADF) data model
 dev-python/pycairo 1.16.3-r1: Python bindings for the cairo library
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
-dev-python/pychart 1.39-r1: Python library for creating charts
 dev-python/pychecker 0.8.19-r1: Python source code checking tool
 dev-python/pychm 0.8.4-r1: Python bindings for the chmlib library
 dev-python/pyclamav 0.4.1-r2: Python binding for libclamav
