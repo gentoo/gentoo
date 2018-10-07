@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-apps/sed cpu_flags_x86_mmx? ( dev-lang/yasm )
+DESCRIPTION=Monkey's Audio Codecs
+EAPI=7
+HOMEPAGE=http://etree.org/shnutils/shntool/ http://www.deb-multimedia.org/dists/testing/main/binary-amd64/package/monkeys-audio.php
+IUSE=cpu_flags_x86_mmx static-libs
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~x86
+LICENSE=mac
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://www.deb-multimedia.org/pool/main/m/monkeys-audio/monkeys-audio_4.11-u4-b5-s7.orig.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=428a62d7ac72f81bd1e01e2ed5d962ba
