@@ -15,14 +15,14 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc libnotify test"
 
 RDEPEND="dev-libs/glib:2
-		dev-libs/json-c
-		>=x11-libs/gtk+-3.20:3
-		>=x11-libs/pango-1.14
-		libnotify? ( x11-libs/libnotify )"
+	 dev-libs/json-c
+	 >=x11-libs/gtk+-3.20:3
+	 >=x11-libs/pango-1.14
+	 libnotify? ( x11-libs/libnotify )"
 
 DEPEND="${RDEPEND}
-		doc? ( app-doc/doxygen )
-		test? ( dev-libs/check )"
+	 doc? ( app-doc/doxygen )
+	 test? ( dev-libs/check )"
 
 BDEPEND="virtual/pkgconfig"
 
