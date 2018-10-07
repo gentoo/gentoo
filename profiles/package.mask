@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (07 Oct 2018)
+# Masked for more testing especially of reverse-deps.
+>=dev-games/ogre-1.11.2
+
 # Mart Raudsepp <leio@gentoo.org> (06 Oct 2018)
 # Netspeed applet moved into mate-base/mate-applets since v1.14,
 # use that instead. Bug #667910
