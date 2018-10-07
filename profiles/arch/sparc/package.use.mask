@@ -138,10 +138,6 @@ media-video/ffmpeg snappy
 # scrollview requires Java, which is unsupported on SPARC.
 app-text/tesseract scrollview
 
-# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
-# no sparc support in media-libs/glfw
-app-text/mupdf opengl
-
 # Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
 # Needs keywording. #569254
 net-firewall/iptables nftables

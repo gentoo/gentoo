@@ -148,10 +148,6 @@ dev-cpp/eigen test
 # Missing keywords, bug #560382
 media-video/ffmpeg snappy
 
-# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
-# no ia64 support in media-libs/glfw
-app-text/mupdf opengl
-
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires
 # dev-python/socketpool which requires dev-python/gevent which requires

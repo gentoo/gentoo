@@ -222,10 +222,6 @@ dev-cpp/eigen test
 # scrollview requires SWT, which is currently unsupported on ARM.
 app-text/tesseract scrollview
 
-# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
-# no arm support in media-libs/glfw
-app-text/mupdf opengl
-
 # Brian Evans <grknight@gentoo.org> (23 Nov 2015)
 # unmask galera for dev-db/mariadb
 >=dev-db/mariadb-10.1.0 -galera
