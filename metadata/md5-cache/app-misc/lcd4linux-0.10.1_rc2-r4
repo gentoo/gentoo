@@ -4,11 +4,11 @@ DESCRIPTION=Shows system and ISDN information on an external display or in a X11
 EAPI=5
 HOMEPAGE=https://lcd4linux.bulix.org/
 IUSE=mysql python iconv mpd lcd_devices_beckmannegle lcd_devices_bwct lcd_devices_cfontz lcd_devices_ncurses lcd_devices_cwlinux lcd_devices_ea232 lcd_devices_g15 lcd_devices_hd44780 lcd_devices_hd44780i2c lcd_devices_lcd2usb lcd_devices_lcdlinux lcd_devices_lcdterm lcd_devices_ledmatrix lcd_devices_lph7508 lcd_devices_m50530 lcd_devices_mtxorb lcd_devices_milfordbpk lcd_devices_noritake lcd_devices_null lcd_devices_picolcd lcd_devices_png lcd_devices_ppm lcd_devices_routerboard lcd_devices_serdisplib lcd_devices_simplelcd lcd_devices_t6963 lcd_devices_trefon lcd_devices_usbhub lcd_devices_usblcd lcd_devices_wincor lcd_devices_X lcd_devices_luise python_targets_python2_7
-KEYWORDS=amd64 ppc x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=mysql? ( virtual/mysql ) iconv? ( virtual/libiconv ) mpd? ( media-libs/libmpd ) lcd_devices_bwct? ( =virtual/libusb-0* ) lcd_devices_g15? ( =virtual/libusb-0* ) lcd_devices_lcd2usb? ( =virtual/libusb-0* ) lcd_devices_picolcd? ( =virtual/libusb-0* ) lcd_devices_trefon? ( =virtual/libusb-0* ) lcd_devices_usbhub? ( =virtual/libusb-0* ) lcd_devices_usblcd? ( =virtual/libusb-0* ) lcd_devices_luise? ( dev-libs/luise-bin ) lcd_devices_ncurses? ( sys-libs/ncurses:0= ) lcd_devices_noritake? ( media-libs/gd ) lcd_devices_t6963? ( media-libs/gd ) lcd_devices_png? ( media-libs/libpng:0= media-libs/gd ) lcd_devices_X? ( x11-libs/libX11 media-libs/gd ) lcd_devices_serdisplib? ( dev-libs/serdisplib media-libs/gd ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] )
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://gentoo/lcd4linux-0.10.1-RC2.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=f6f5180ece959cb236dec3751d73f4dd
+_md5_=88f7522310b3b7372efe868d866fa491
