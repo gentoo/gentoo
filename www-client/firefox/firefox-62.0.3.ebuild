@@ -299,7 +299,7 @@ src_configure() {
 			mozconfig_annotate "forcing ld=gold due to USE=lto" --enable-linker=gold
 		fi
 
-		mozconfig_annotate '+lto' --enable-lto=full
+		mozconfig_annotate '+lto' --enable-lto=thin
 	else
 		# Avoid auto-magic on linker
 		if use clang ; then
