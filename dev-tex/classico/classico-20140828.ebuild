@@ -23,15 +23,15 @@ S=${WORKDIR}
 
 src_install() {
 	insinto ${TEXMF}
-	doins -r tex || die
-	doins -r fonts || die
+	doins -r tex
+	doins -r fonts
 
-	cd "${S}/doc/fonts/classico"
+	cd "${S}/doc/fonts/classico" || die
 	dodoc README
 	if use doc; then
 		insinto /usr/share/doc/${PF}/texdoc
-		doins classico-samples.pdf || die
-		dosym /usr/share/doc/${PF}/texdoc ${TEXMF}/doc/latex/${PN} || die
+		doins classico-samples.pdf
+		dosym /usr/share/doc/${PF}/texdoc ${TEXMF}/doc/latex/${PN}
 	fi
 }
 
