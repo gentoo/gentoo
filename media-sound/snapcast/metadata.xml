@@ -15,7 +15,6 @@
 		<flag name="flac">Build with FLAC compression support</flag>
 		<flag name="server">Build and install Snapcast server component</flag>
 		<flag name="static-libs">Build static libs</flag>
-		<flag name="test">Build and run tests</flag>
 		<flag name="tremor">Build with TREMOR version of vorbis</flag>
 		<flag name="vorbis">Build with libvorbis support</flag>
 	</use>
