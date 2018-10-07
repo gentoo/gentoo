@@ -10807,7 +10807,7 @@ x11-libs/libfm-extra 1.2.3 1.2.4 1.2.5: A library for file management
 x11-libs/libfm-qt 0.11.1: Qt port of libfm, a library providing components to build desktop file managers
 x11-libs/libfontenc 1.1.3-r1: X.Org fontenc library
 x11-libs/libgksu 2.0.12-r3 2.0.12-r4: A library for integration of su into applications
-x11-libs/libnotify 0.7.6-r3 0.7.7: A library for sending desktop notifications
+x11-libs/libnotify 0.7.6-r3 0.7.7-r1: A library for sending desktop notifications
 x11-libs/liboglappth 1.0.0: Libary for OpenGL applications with easy-to-code scene setup and selection
 x11-libs/libpciaccess 0.14: Library providing generic access to the PCI bus and devices
 x11-libs/libproplist 0.10.1-r4: An library to mimic property list functionality from the GNUstep environment
