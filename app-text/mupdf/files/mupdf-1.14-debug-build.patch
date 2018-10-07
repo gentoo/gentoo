@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 37fc48e6..bd8c6049 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,7 +3,7 @@
+ -include user.make
+ 
+ ifndef build
+-  build := release
++  build := debug
+ endif
+ 
+ ifndef OUT
