@@ -752,7 +752,7 @@ app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library em
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libvirt 4.3.0 4.5.0-r1: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
-app-emulation/lxc 2.1.1-r1 3.0.1-r1 3.0.2: LinuX Containers userspace utilities
+app-emulation/lxc 2.1.1-r1 3.0.2: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.1: Old style template scripts for LXC
 app-emulation/lxd 3.3: Fast, dense and secure container management
 app-emulation/nemu 1.4.0: ncurses interface for QEMU
