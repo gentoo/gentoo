@@ -9246,7 +9246,7 @@ sci-calculators/hexcalc 1.11-r3: A simple hex calculator for X
 sci-calculators/pcalc 3-r1: the programmers calculator
 sci-calculators/qalculate-gtk 0.9.9: Modern multi-purpose calculator
 sci-calculators/speedcrunch 0.12.0: Fast and usable calculator for power users
-sci-calculators/units 2.16: Unit conversion program
+sci-calculators/units 2.16 2.17: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
 sci-chemistry/apbs 1.4.1-r2: Evaluation of electrostatic properties of nanoscale biomolecular systems
 sci-chemistry/autodock_vina 1.1.2: Program for drug discovery, molecular docking and virtual screening
