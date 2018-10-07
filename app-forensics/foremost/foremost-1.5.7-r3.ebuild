@@ -11,7 +11,7 @@ HOMEPAGE="http://foremost.sourceforge.net/"
 # starting to hate sf.net ...
 SRC_URI="http://foremost.sourceforge.net/pkg/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 LICENSE="public-domain"
 SLOT="0"
