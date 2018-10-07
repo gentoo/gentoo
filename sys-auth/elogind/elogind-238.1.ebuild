@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,7 +41,10 @@ PDEPEND="
 
 DOCS=( src/libelogind/sd-bus/GVARIANT-SERIALIZATION )
 
-PATCHES=( "${FILESDIR}/${P}-docs.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-docs.patch"
+	"${FILESDIR}/${P}-meson-0.48.patch"
+)
 
 pkg_setup() {
 	local CONFIG_CHECK="~CGROUPS ~EPOLL ~INOTIFY_USER ~SIGNALFD ~TIMERFD"
