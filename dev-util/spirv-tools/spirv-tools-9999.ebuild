@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,6 +22,7 @@ DEPEND=">=dev-util/spirv-headers-1.3.4_pre20180917"
 multilib_src_configure() {
 	local mycmakeargs=(
 		"-DSPIRV-Headers_SOURCE_DIR=/usr/"
+		"-DSPIRV_WERROR=OFF"
 	)
 
 	cmake-utils_src_configure
