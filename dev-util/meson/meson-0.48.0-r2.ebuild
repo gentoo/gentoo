@@ -20,18 +20,26 @@ HOMEPAGE="http://mesonbuild.com/"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
-RESTRICT="test"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=""
 
 PATCHES=(
+	"${FILESDIR}"/test-llvm.patch
 	"${FILESDIR}"/0.48.0-multilib.patch
 	"${FILESDIR}"/0.48.0-test-u.patch
 )
 
 python_test() {
-	${EPYTHON} run_tests.py || die
+	(
+		# test_meson_installed
+		unset PYTHONDONTWRITEBYTECODE
+
+		# test_cross_file_system_paths
+		unset XDG_DATA_HOME
+
+		${EPYTHON} -u run_tests.py
+	) || die "Testing failed with ${EPYTHON}"
 }
 
 python_install_all() {
