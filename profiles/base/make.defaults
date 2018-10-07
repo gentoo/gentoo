@@ -92,11 +92,6 @@ LCD_DEVICES="bayrad cfontz cfontz633 glk hd44780 lb216 lcdm001 mtxorb ncurses te
 # Netbeans modules/clusters
 NETBEANS="apisupport cnd groovy gsf harness ide identity j2ee java mobility nb php profiler soa visualweb webcommon websvccommon xml"
 
-# 2009/09/21 Robin H. Johnson <robbat2@gentoo.org>
-# https://archives.gentoo.org/gentoo-dev/msg_dc705dc2c1a45e18a85aa62e8fb17009.xml
-# Build kernel modules from linux-mod by default:
-USE="${USE} modules"
-
 # Manuel Rüger <mrueg@gentoo.org> (09 Sep 2015)
 # Default Ruby build target
 # Updated to include ruby23 on 21 Jan 2018

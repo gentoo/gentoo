@@ -13,16 +13,16 @@ ICEDTEA_BRANCH=$(get_version_component_range 1-2)
 ICEDTEA_PKG=icedtea-${ICEDTEA_VER}
 ICEDTEA_PRE=$(get_version_component_range _)
 
-CORBA_TARBALL="75fd375dd38a.tar.xz"
-JAXP_TARBALL="2b279bb3475b.tar.xz"
-JAXWS_TARBALL="c54a27559acb.tar.xz"
-JDK_TARBALL="9c9ff65b03b6.tar.xz"
-LANGTOOLS_TARBALL="21524ad5b914.tar.xz"
-OPENJDK_TARBALL="499b993b345a.tar.xz"
-NASHORN_TARBALL="bb3e3345d3ec.tar.xz"
-HOTSPOT_TARBALL="cb5711bf53d9.tar.xz"
-SHENANDOAH_TARBALL="c44a9eef4985.tar.xz"
-AARCH32_TARBALL="bd08b7f27e11.tar.xz"
+CORBA_TARBALL="c120c4fb7b31.tar.xz"
+JAXP_TARBALL="55420c5cc9f3.tar.xz"
+JAXWS_TARBALL="f824de94c42e.tar.xz"
+JDK_TARBALL="7b289a33ab97.tar.xz"
+LANGTOOLS_TARBALL="8496472630c5.tar.xz"
+OPENJDK_TARBALL="3b2d372838b9.tar.xz"
+NASHORN_TARBALL="79a2c8e2babc.tar.xz"
+HOTSPOT_TARBALL="d78088224b98.tar.xz"
+SHENANDOAH_TARBALL="b8b742251e42.tar.xz"
+AARCH32_TARBALL="891d70e93fb0.tar.xz"
 
 CACAO_TARBALL="cacao-c182f119eaad.tar.xz"
 JAMVM_TARBALL="jamvm-ec18fb9e49e62dce16c5094ef1527eed619463aa.tar.gz"
@@ -154,23 +154,6 @@ PDEPEND="webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
 
 S="${WORKDIR}"/${ICEDTEA_PKG}
 
-# @FUNCTION: get_systemtap_arch
-# @DESCRIPTION:
-# Get arch name used in /usr/share/systemtap/tapset so we can
-# install OpenJDK tapsets.
-
-get_systemtap_arch() {
-	local abi=${1-${ABI}}
-
-	case ${abi} in
-		*_fbsd) get_systemtap_arch ${abi%_fbsd} ;;
-		amd64*) echo x86_64 ;;
-		ppc*) echo powerpc ;;
-		x86*) echo i386 ;;
-		*) echo ${abi} ;;
-	esac
-}
-
 icedtea_check_requirements() {
 	local CHECKREQS_DISK_BUILD
 
@@ -254,7 +237,7 @@ src_configure() {
 			hs_config="--with-hotspot-build=shenandoah"
 			hs_config+=" --with-hotspot-src-zip="${DISTDIR}/${SHENANDOAH_GENTOO_TARBALL}""
 		else
-			eerror "Shenandoah can only be built on arm64 and x86_64. Please re-build with USE="-shenandoah""
+			eerror "Shenandoah is only supported on arm64 and x86_64. Please re-build with USE="-shenandoah""
 		fi
 	else
 		if use arm ; then
@@ -349,7 +332,6 @@ src_install() {
 
 	local dest="/usr/$(get_libdir)/icedtea${SLOT}"
 	local ddest="${ED}${dest#/}"
-	local stapdest="/usr/share/systemtap/tapset/$(get_systemtap_arch)"
 
 	if ! use alsa; then
 		rm -v "${ddest}"/jre/lib/$(get_system_arch)/libjsoundalsa.* || die
@@ -364,14 +346,6 @@ src_install() {
 	fi
 
 	dosym /usr/share/doc/${PF} /usr/share/doc/${PN}${SLOT}
-
-	# Link SystemTap tapsets into SystemTap installation directory
-	mkdir -p "${ED}/${stapdest}"
-	for tapsets in "${ddest}"/tapset/*.stp; do
-		tapname=$(basename ${tapsets})
-		destname=${tapname/./-${SLOT}.}
-		dosym "${dest}"/tapset/${tapname} ${stapdest}/${destname}
-	done
 
 	# Fix the permissions.
 	find "${ddest}" \! -type l \( -perm /111 -exec chmod 755 {} \; -o -exec chmod 644 {} \; \) || die
