@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-perl/JSON-XS dev-perl/Text-CSV_XS dev-lang/perl:=
 DESCRIPTION=pgBadger is a PostgreSQL log analyzer.
 EAPI=6
-HOMEPAGE=http://dalibo.github.io/pgbadger/
+HOMEPAGE=https://pgbadger.darold.net/
 KEYWORDS=~amd64
 LICENSE=BSD
 RDEPEND=dev-perl/JSON-XS dev-perl/Text-CSV_XS dev-lang/perl:=
 SLOT=0
 SRC_URI=https://github.com/darold/pgbadger/archive/v10.0.tar.gz -> pgbadger-10.0.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=2b3c2d9697f583682f1d49ca9efb534a
+_md5_=70316f3563e70902400ae5b1b7e6b73c
