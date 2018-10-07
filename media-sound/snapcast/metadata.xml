@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>cb-gentoo@guya.de</email>
+		<name>Christian Buchinger</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="avahi">Build with avahi support</flag>
+		<flag name="client">Build and install Snapcast client component</flag>
+		<flag name="flac">Build with FLAC compression support</flag>
+		<flag name="server">Build and install Snapcast server component</flag>
+		<flag name="static-libs">Build static libs</flag>
+		<flag name="test">Build and run tests</flag>
+		<flag name="tremor">Build with TREMOR version of vorbis</flag>
+		<flag name="vorbis">Build with libvorbis support</flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<name>Johannes Pohl</name>
+			<email>github@badaix.de</email>
+		</maintainer>
+		<bugs-to>https://github.com/badaix/snapcast/issues</bugs-to>
+		<remote-id type="github">badaix/snapcast</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		Snapcast plays audio streams time sychronized on multiple devices over 
+		network using a server and a client component. The server picks up an 
+		audio stream from a fifo pipe, thus it can be combined with any audio 
+		source that is able to write to a pipe.
+	</longdescription>
+</pkgmetadata>

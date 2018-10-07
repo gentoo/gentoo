@@ -1,0 +1,45 @@
+# conf.d file for snapserver
+
+# Options for running Snapserver as daemon
+#
+#	-p, --port arg (=1704)
+#		Server port
+#
+#	--controlPort arg (=1705)
+#		Remote control port
+#
+#	-s, --stream arg (=pipe:///tmp/snapfifo?name=default)
+#		URI of the PCM input stream.
+#		Format: TYPE://host/path?name=NAME
+#		[&codec=CODEC]
+#		[&sampleformat=SAMPLEFORMAT]
+#
+#	--sampleformat arg (=48000:16:2)
+#		Default sample format
+#
+#	-c, --codec arg (=flac)
+#		Default transport codec
+#		(flac|ogg|pcm)[:options]
+#		Type codec:? to get codec specific options
+#
+#	--streamBuffer arg (=20)
+#		Default stream read buffer [ms]
+#
+#	-b, --buffer arg (=1000)
+#		Buffer [ms]
+#
+#	--sendToMuted
+#		Send audio to muted clients
+#
+#	-d, --daemon [=arg(=0)]
+#		Daemonize
+#		Optional process priority [-20..19]
+#
+#	--user arg
+#		The user[:group] to run snapserver as when daemonized
+#
+# For all command line options, please see man snapserver
+
+SNAPSERVER_USER="--user snapserver:snapserver"
+
+SNAPSERVER_OPTS="-d -s pipe:///tmp/snapfifo?name=default"
