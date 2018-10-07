@@ -833,7 +833,7 @@ app-forensics/air 2.0.0-r2: A GUI front-end to dd/dc3dd
 app-forensics/chkrootkit 0.51 0.52: Tool to locally check for signs of a rootkit
 app-forensics/cmospwd 5.1-r1: CmosPwd decrypts password stored in cmos used to access BIOS SETUP
 app-forensics/examiner 0.5-r2: Utilizes the objdump command to disassemble and comment foreign binaries
-app-forensics/foremost 1.5.7-r2: A console program to recover files based on their headers and footers
+app-forensics/foremost 1.5.7-r2 1.5.7-r3: A console program to recover files based on their headers and footers
 app-forensics/libewf 20130416 20171104: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/magicrescue 1.1.9: Find deleted files in block devices
 app-forensics/memdump 1.01: Simple memory dumper for UNIX-Like systems
@@ -7014,7 +7014,7 @@ mail-client/mailx 8.1.2.20160123: The $ mail program, which is used to send mail
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.7.2 1.9.4-r1 1.10.1: A small but very powerful text-based mail client
 mail-client/nail 12.4-r3: an enhanced mailx-compatible mail client
-mail-client/neomutt 20180512: A small but very powerful text-based mail client
+mail-client/neomutt 20180512 20180716: A small but very powerful text-based mail client
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.3.6 1.3.7: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
