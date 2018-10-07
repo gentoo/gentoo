@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,6 +27,7 @@ COMMON_DEPEND="
 	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
 "
 DEPEND="${COMMON_DEPEND}
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.20
 	>=sys-devel/gettext-0.19
 	virtual/pkgconfig
