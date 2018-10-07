@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -29,7 +29,7 @@ RDEPEND="
 	!bundled-libs? (
 		dev-lang/luajit:2[lua52compat]
 		>=dev-libs/yajl-2.0.2
-		net-libs/http-parser
+		net-libs/http-parser:=
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
