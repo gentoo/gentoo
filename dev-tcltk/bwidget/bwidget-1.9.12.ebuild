@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils multilib virtualx
 
@@ -10,7 +10,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="High-level widget set for Tcl/Tk"
 HOMEPAGE="http://tcllib.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/tcllib/${MY_PN}/${PV}/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/tcllib/${MY_PN}/${PV}/${P}.tar.gz"
 
 LICENSE="tcltk"
 SLOT="0"
@@ -20,13 +20,10 @@ IUSE="doc"
 DEPEND="dev-lang/tk:0"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.9.8-test.patch
-}
+PATCHES=( "${FILESDIR}"/${PN}-1.9.8-test.patch )
 
 src_test() {
-	VIRTUALX_COMMAND=tclsh
-	TCLLIBPATH="${S}" virtualmake tests/entry.test
+	TCLLIBPATH=${S} virtx tclsh tests/entry.test
 }
 
 src_install() {
@@ -38,5 +35,6 @@ src_install() {
 	doins -r demo
 	dodoc ChangeLog README.txt
 
-	use doc && dohtml BWman/*
+	docinto html
+	use doc && dodoc -r BWman/*
 }
