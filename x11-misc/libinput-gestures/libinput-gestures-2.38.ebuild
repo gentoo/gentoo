@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python3_{4..7} )
 
 inherit gnome2-utils python-single-r1
 
@@ -17,9 +17,9 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
-IUSE="test"
+IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
@@ -27,8 +27,7 @@ RDEPEND="${PYTHON_DEPS}
 	x11-misc/xdotool
 	x11-misc/wmctrl"
 DEPEND=">=dev-libs/libinput-1.8.0
-	dev-util/desktop-file-utils
-	test? ( dev-python/flake8[${PYTHON_USEDEP}] )"
+	dev-util/desktop-file-utils"
 
 src_prepare() {
 	default
