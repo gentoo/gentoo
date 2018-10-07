@@ -69,6 +69,10 @@ src_prepare() {
 
 src_configure() {
 	configuration() {
+		if ! python_is_python3; then
+			local CFLAGS="${CFLAGS} -fno-strict-aliasing"
+		fi
+
 		local myconf=(
 			"${PYTHON}"
 			"${S}"/configure.py
