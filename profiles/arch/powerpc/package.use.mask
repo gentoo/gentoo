@@ -368,8 +368,3 @@ media-tv/mythtv vdpau
 # Brent Baude <ranger@gentoo.org>
 # masking zephyr USE on pidgin
 net-im/pidgin zephyr
-
-# Joseph Jezak <josejx@gentoo.org> (28 Jun 2007)
-# Masked Parallel LCD devices for bug #180683
-# app-misc/lcd4linux
-app-misc/lcd4linux lcd_devices_hd44780
