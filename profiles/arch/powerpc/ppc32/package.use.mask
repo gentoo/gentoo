@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (07 Oct 2018)
+# media-libs/x265[power8] fails to build on 32-bit ppc.
+media-libs/x265 power8
+
 # Mikle Kolyada <zlogene@gentoo.org> (01 Sep 2018)
 # The dependency is not keyworded
 net-analyzer/wireshark bcg729
