@@ -64,10 +64,6 @@ dev-lang/logtalk fop
 gnome-extra/libgda reports
 net-analyzer/wireshark doc-pdf
 
-# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
-# no ppc support in media-libs/glfw
-app-text/mupdf opengl
-
 # Anthony G. Basile <blueness@gentoo.org> (26 Oct 2015)
 # Mask x265 on vlc for bug #564138
 media-video/vlc x265

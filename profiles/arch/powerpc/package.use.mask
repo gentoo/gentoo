@@ -92,10 +92,6 @@ net-misc/bfgminer adl lm_sensors
 # media-libs/libcdr, app-text/libwpd and app-text/libwpg
 media-gfx/inkscape cdr visio wpg
 
-# Michael Weber <xmw@gentoo.org> (14 Mar 2017)
-# mask unkeyworded dependency media-libs/glfw
-app-text/mupdf opengl
-
 # Jason Zaman <perfinion@gentoo.org> (09 May 2017)
 # x11-libs/libXpresent is not keyworded on ppc
 xfce-base/xfwm4 xpresent

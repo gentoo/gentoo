@@ -175,10 +175,6 @@ net-analyzer/rrdtool rados
 # scrollview requires Java, which is unsupported on Alpha.
 app-text/tesseract scrollview
 
-# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
-# no alpha support in media-libs/glfw
-app-text/mupdf opengl
-
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires
 # dev-python/socketpool which requires dev-python/gevent which requires

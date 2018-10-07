@@ -25,10 +25,6 @@ media-video/vlc libav
 # Non-stable dependency.  Used to be masked completely.
 media-sound/abcde replaygain
 
-# Virgil Dupras <vdupras@gentoo.org> (18 Aug 2018)
-# app-text/mupdf stable ppc/ppc64 keywords were dropped in bug #658618
-net-print/cups-filters pdf
-
 # Ulrich Müller <ulm@gentoo.org> (09 Aug 2018)
 # Needs net-mail/mailutils and net-libs/webkit-gtk which are not
 # stable (yet?), bug #663248
