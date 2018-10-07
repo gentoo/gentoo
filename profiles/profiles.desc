@@ -342,6 +342,10 @@ mips		default/linux/musl/mips/mipsel				exp
 mips		hardened/linux/musl/mips/mipsel				exp
 ppc		default/linux/musl/ppc					exp
 ppc		hardened/linux/musl/ppc					exp
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/musl			exp
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/musl/little-endian	exp
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/musl/hardened		exp
+ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/musl/hardened/little-endian	exp
 x86		default/linux/musl/x86					exp
 x86		hardened/linux/musl/x86					exp
 x86		default/linux/x86/17.0/musl				exp
