@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -66,7 +66,7 @@ if [[ ${MY_PV} = *-Beta* ]] || [[ ${MY_PV} = *-RC* ]]; then
 	unset _tmp_last_index
 	unset _tmp_suffix
 else
-	KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86"
+	KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 SRC_URI="
@@ -168,6 +168,10 @@ src_prepare() {
 	ln -s ../shorewallrc.gentoo ${MY_PN_CORE}/shorewallrc.gentoo || die "Failed to symlink shorewallrc.gentoo"
 	eend 0
 
+	pushd "${S}"/${MY_PN_CORE} &>/dev/null || die
+	eapply "${FILESDIR}"/shorewall-core-5.2.1-no-gzipped-manpages.patch
+	popd &>/dev/null || die
+
 	# shorewall
 	if use ipv4; then
 		mv "${S}"/${MY_P_IPV4} "${S}"/${MY_PN_IPV4} || die "Failed to move '${S}/${MY_P_IPV4}' to '${S}/${MY_PN_IPV4}'"
@@ -177,6 +181,10 @@ src_prepare() {
 		cp "${FILESDIR}"/shorewall.initd-r3 "${S}"/${MY_PN_IPV4}/init.gentoo.sh || die "Copying shorewall.initd-r2 failed"
 		cp "${FILESDIR}"/shorewall.systemd "${S}"/${MY_PN_IPV4}/gentoo.service || die "Copying shorewall.systemd failed"
 		eend 0
+
+		pushd "${S}"/${MY_PN_IPV4} &>/dev/null || die
+		eapply "${FILESDIR}"/shorewall-5.2.1-no-gzipped-manpages.patch
+		popd &>/dev/null || die
 	fi
 
 	# shorewall6
@@ -188,6 +196,10 @@ src_prepare() {
 		cp "${FILESDIR}"/shorewall.initd-r3 "${S}"/${MY_PN_IPV6}/init.gentoo.sh || die "Copying shorewall.initd-r2 failed"
 		cp "${FILESDIR}"/shorewall6.systemd "${S}"/${MY_PN_IPV6}/gentoo.service || die "Copying shorewall6.systemd failed"
 		eend 0
+
+		pushd "${S}"/${MY_PN_IPV6} &>/dev/null || die
+		eapply "${FILESDIR}"/shorewall-5.2.1-no-gzipped-manpages.patch
+		popd &>/dev/null || die
 	fi
 
 	# shorewall-lite
@@ -199,6 +211,10 @@ src_prepare() {
 		cp "${FILESDIR}"/shorewall-lite.initd-r3 "${S}"/${MY_PN_LITE4}/init.gentoo.sh || die "Copying shorewall-lite.initd-r2 failed"
 		cp "${FILESDIR}"/shorewall-lite.systemd "${S}"/${MY_PN_LITE4}/gentoo.service || die "Copying shorewall-lite.systemd failed"
 		eend 0
+
+		pushd "${S}"/${MY_PN_LITE4} &>/dev/null || die
+		eapply "${FILESDIR}"/shorewall-lite-5.2.1-no-gzipped-manpages.patch
+		popd &>/dev/null || die
 	fi
 
 	# shorewall6-lite
@@ -210,6 +226,10 @@ src_prepare() {
 		cp "${FILESDIR}"/shorewall-lite.initd-r3 "${S}"/${MY_PN_LITE6}/init.gentoo.sh || die "Copying shorewall-lite.initd-r2 failed"
 		cp "${FILESDIR}"/shorewall6-lite.systemd "${S}"/${MY_PN_LITE6}/gentoo.service || die "Copying shorewall6-lite.systemd failed"
 		eend 0
+
+		pushd "${S}"/${MY_PN_LITE6} &>/dev/null || die
+		eapply "${FILESDIR}"/shorewall-lite-5.2.1-no-gzipped-manpages.patch
+		popd &>/dev/null || die
 	fi
 
 	# shorewall-init
@@ -225,9 +245,9 @@ src_prepare() {
 
 		eprefixify "${S}"/${MY_PN_INIT}/init.gentoo.sh
 
-		cd "${S}"/${MY_PN_INIT} || die
+		pushd "${S}"/${MY_PN_INIT} &>/dev/null || die
 		eapply -p2 "${FILESDIR}"/shorewall-init-01_remove-ipset-functionality-r1.patch
-		cd "${S}" || die
+		popd &>/dev/null || die
 	fi
 
 	# shorewall-docs-html
