@@ -8276,7 +8276,7 @@ media-video/pitivi 0.97.1: A non-linear video editor using the GStreamer multime
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
 media-video/projectx 0.91.0.10: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/pymp 1.1-r1: a lean, flexible frontend to mplayer written in python
-media-video/recordmydesktop 0.3.8.1-r4 0.3.8.1-r5: A desktop session recorder producing Ogg video/audio files
+media-video/recordmydesktop 0.3.8.1-r6: A desktop session recorder producing Ogg video/audio files
 media-video/rovclock 0.6e-r1: Overclocking utility for ATI Radeon cards
 media-video/rtmpdump 2.4_p20161210: RTMP client intended to stream audio or video flash content
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
