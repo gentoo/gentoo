@@ -7,11 +7,18 @@ inherit meson virtualx
 
 DESCRIPTION="UI library that focuses on simplicity and minimalism"
 HOMEPAGE="https://pwmt.org/projects/girara/"
-SRC_URI="https://pwmt.org/projects/girara/download/${P}.tar.xz"
+
+if [[ ${PV} == *999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
+	EGIT_BRANCH="develop"
+else
+	SRC_URI="https://pwmt.org/projects/girara/download/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~x86"
+fi
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc libnotify test"
 
 RDEPEND="dev-libs/glib:2
