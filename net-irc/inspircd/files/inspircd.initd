@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 : ${INSPIRCD_USER:="inspircd"}
@@ -38,6 +38,11 @@ start_pre() {
 rehash() {
 	ebegin "Rehashing InspIRCd"
 	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+
+	# SIGHUP does not reload SSL certificates
+	# They need to be rehashed separately with USR1
+	# https://github.com/inspircd/inspircd/issues/1143
+	start-stop-daemon --signal USR1 --pidfile "${pidfile}"
 	eend $?
 }
 
