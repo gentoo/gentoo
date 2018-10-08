@@ -10736,7 +10736,7 @@ x11-drivers/xf86-video-vesa 2.3.3 2.3.4 2.4.0: Generic VESA video driver
 x11-drivers/xf86-video-virtualbox 5.1.36: VirtualBox X11 video driver for Gentoo guest
 x11-drivers/xf86-video-vmware 13.3.0: VMware SVGA video driver
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
-x11-libs/agg 2.5-r2 2.5-r3: High quality rendering engine library for C++
+x11-libs/agg 2.5-r3: High quality rendering engine library for C++
 x11-libs/c++-gtk-utils 2.0.27 2.2.10: A number of classes and functions for programming GTK+ programs using C++
 x11-libs/cairo 1.14.12: A vector graphics library with cross-device output support
 x11-libs/colord-gtk 0.1.25 0.1.26: GTK support library for colord
