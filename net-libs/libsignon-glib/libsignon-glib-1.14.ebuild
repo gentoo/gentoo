@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -72,8 +72,6 @@ src_configure() {
 }
 
 src_compile() {
-	# fails to compile with more than one thread
-	MAKEOPTS="${MAKEOPTS} -j1"
 	default
 	if use python; then
 		python_foreach_impl run_in_build_dir default
