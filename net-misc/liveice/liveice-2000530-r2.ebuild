@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -12,7 +12,6 @@ SRC_URI="http://star.arm.ac.uk/~spm/software/liveice.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 x86"
-IUSE=""
 
 RDEPEND="media-sound/lame
 	media-sound/mpg123"
@@ -21,6 +20,7 @@ DEPEND=""
 S=${WORKDIR}/${PN}
 
 src_prepare() {
+	default
 	# cannot use LDFLAGS directly as the Makefile uses it for LIBS
 	sed -i Makefile.in \
 		-e 's|-o liveice|$(LLFLAGS) &|' \
@@ -29,9 +29,9 @@ src_prepare() {
 }
 
 src_compile() {
-	emake LLFLAGS="${LDFLAGS}" || die
+	emake LLFLAGS="${LDFLAGS}"
 }
 src_install() {
-	dobin liveice || die
+	dobin liveice
 	dodoc liveice.cfg README.liveice README.quickstart README_new_mixer.txt Changes.txt
 }
