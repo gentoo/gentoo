@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Virgil Dupras <vdupras@gentoo.org> (08 Oct 2018)
+# app-text/mupdf sparc keyword was dropped in bug #631970
+net-print/cups-filters pdf
+
 # Sergei Trofimovich <slyfox@gentoo.org> (28 Sep 2018)
 # mpir fails to build at least on sparc: bug #640424
 dev-python/gmpy mpir
