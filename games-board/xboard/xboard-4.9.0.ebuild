@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils fdo-mime gnome2-utils
+
+inherit autotools xdg-utils gnome2-utils
 
 DESCRIPTION="GUI for gnuchess and for internet chess servers"
 HOMEPAGE="https://www.gnu.org/software/xboard/"
@@ -11,7 +12,7 @@ SRC_URI="mirror://gnu/xboard/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="Xaw3d +default-font gtk nls zippy"
+IUSE="+default-font gtk nls Xaw3d zippy"
 RESTRICT="test" #124112
 
 RDEPEND="
@@ -42,6 +43,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.0-gnuchess-default.patch
 )
 
+DOCS=( AUTHORS COPYRIGHT ChangeLog FAQ.html NEWS README TODO ics-parsing.txt )
+
 src_prepare() {
 	default
 	eautoreconf
@@ -62,17 +65,12 @@ src_configure() {
 
 src_install() {
 	default
-	dodoc AUTHORS COPYRIGHT ChangeLog FAQ.html NEWS README TODO ics-parsing.txt
 	use zippy && dodoc zippy.README
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	fdo-mime_mime_database_update
-	fdo-mime_desktop_database_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 	elog "No chess engines are emerged by default! If you want a chess engine"
 	elog "to play with, you can emerge gnuchess or crafty."
@@ -83,7 +81,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	fdo-mime_mime_database_update
-	fdo-mime_desktop_database_update
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
