@@ -1,5 +1,5 @@
---- trunk/recordmydesktop/configure.ac	2008/12/13 17:46:41	584
-+++ trunk/recordmydesktop/configure.ac	2009/01/10 11:35:06	587
+--- recordmydesktop/configure.ac	2008/12/13 17:46:41	584
++++ recordmydesktop/configure.ac	2009/01/10 11:35:06	587
 @@ -95,7 +95,10 @@
               AC_MSG_ERROR([Can't find libpthread]))
  
