@@ -110,6 +110,7 @@ src_install() {
 	doins "${FILESDIR}"/default/useradd
 
 	# move passwd to / to help recover broke systems #64441
+	dodir /bin
 	mv "${ED%/}"/usr/bin/passwd "${ED%/}"/bin/ || die
 	dosym ../../bin/passwd /usr/bin/passwd
 
