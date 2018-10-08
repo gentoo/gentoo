@@ -49,5 +49,5 @@ src_configure() {
 }
 
 src_test() {
-	virtx default
+	virtx meson_src_test
 }
