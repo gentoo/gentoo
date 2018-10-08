@@ -5053,6 +5053,7 @@ dev-python/logbook 0.9.1 1.1.0: A logging replacement for Python
 dev-python/logutils 0.3.3: The logutils package provides a set of handlers for the Python standard
 dev-python/louie 1.1-r1: Signal dispatching mechanism for Python
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
+dev-python/lxc-python2 0.1: Python bindings for LXC
 dev-python/lxml 4.1.1: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.24.0: M2Crypto: A Python crypto and SSL toolkit
