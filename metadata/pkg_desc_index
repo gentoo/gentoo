@@ -969,7 +969,7 @@ app-misc/cdargs 1.35-r2: Bookmarks and browser for the shell builtin cd command
 app-misc/cdcat 0.3-r1: Simple yet effective CD indexing program
 app-misc/cdctl 0.15: Utility to control your cd/dvd drive
 app-misc/cdircmp 0.3-r2: Compare directories and select files to copy
-app-misc/cdspeed 0.4-r1: Change the speed of your CD drive
+app-misc/cdspeed 0.4-r2: Change the speed of your CD drive
 app-misc/chkcrontab 1.6 1.7: A tool to detect crontab errors
 app-misc/ckermit 8.0.211-r4: combined serial and network communication software package
 app-misc/clockywock 0.3.1a: ncurses based analog clock
@@ -10177,7 +10177,7 @@ sys-fs/squashfs-tools 3.2_p2 3.4 4.3-r2: Tool for creating compressed filesystem
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon for UDisks
-sys-fs/treesize 0.54.1: A disk consumption analyzing tool
+sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
 sys-fs/udev 236-r1 238: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 27 32: udev startup scripts for openrc
 sys-fs/udftools 1.1-r1: Ben Fennema's tools for packet writing and the UDF filesystem
