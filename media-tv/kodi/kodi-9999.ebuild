@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,6 +33,7 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gles opengl )
 	^^ ( gbm wayland X )
+	^^ ( mariadb mysql )
 	udev? ( !libusb )
 	udisks? ( dbus )
 	upower? ( dbus )
@@ -240,6 +241,8 @@ src_configure() {
 		-DENABLE_CAP=$(usex caps)
 		-DENABLE_LCMS2=$(usex lcms)
 		-DENABLE_LIRCCLIENT=$(usex lirc)
+		-DENABLE_MARIADBCLIENT=$(usex mariadb)
+		-DENABLE_MYSQLCLIENT=$(usex mysql)
 		-DENABLE_MICROHTTPD=$(usex webserver)
 		-DENABLE_MYSQLCLIENT=$(usex mysql)
 		-DENABLE_NFS=$(usex nfs)
