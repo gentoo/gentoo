@@ -1506,7 +1506,7 @@ app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edi
 app-text/xmlto 0.0.26-r1: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/yelp-tools 3.18.0: Collection of tools for building and converting documentation
-app-text/zathura 0.3.7 0.3.8: A highly customizable and functional document viewer
+app-text/zathura 0.3.8: A highly customizable and functional document viewer
 app-text/zathura-cb 0.1.6 0.1.7: Comic book plug-in for zathura with 7zip, rar, tar and zip support
 app-text/zathura-djvu 0.2.6 0.2.7: DjVu plug-in for zathura
 app-text/zathura-meta 0: Meta package for app-text/zathura plugins
