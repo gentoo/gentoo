@@ -78,7 +78,7 @@ multilib_src_install() {
 		docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		install
 
-	if use examples && [[] "${ABI}" = "${DEFAULT_ABI}" ]]; then
+	if use examples && [[ "${ABI}" = "${DEFAULT_ABI}" ]]; then
 		dobin examples/.libs/png2theora
 		for bin in dump_{psnr,video} {encoder,player}_example; do
 			newbin examples/.libs/${bin} theora_${bin}
