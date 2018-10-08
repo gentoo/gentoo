@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ninja-build/ninja.git"
 else
-	KITWARE_VERSION="1.8.2.g3bbbe.kitware.dyndep-1.jobserver-1"
+	KITWARE_VERSION="1.8.2.g81279.kitware.dyndep-1.jobserver-1"
 	MY_P="ninja-${KITWARE_VERSION}"
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://github.com/Kitware/ninja/archive/v${KITWARE_VERSION}.tar.gz -> ${MY_P}.tar.gz"
