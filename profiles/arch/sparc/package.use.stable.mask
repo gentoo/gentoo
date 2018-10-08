@@ -21,10 +21,6 @@
 # media-libs/libraw is not stable
 media-gfx/imagemagick raw
 
-# Virgil Dupras <vdupras@gentoo.org> (18 Aug 2018)
-# app-text/mupdf stable sparc keyword was dropped in bug #658618
-net-print/cups-filters pdf
-
 # Andreas Sturmlechner <asturm@gentoo.org> (7 May 2018)
 # sci-visualization/gnuplot is not stable.
 app-admin/sysstat isag
