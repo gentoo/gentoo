@@ -59,7 +59,7 @@ src_install() {
 	keepdir /var/log/${PN}
 
 	newinitd "${FILESDIR}"/${PN}-1.10.0.initd tinyproxy
-	systemd_dounit "${FILESDIR}"/${PN}-1.10.0.service
+	systemd_newunit "${FILESDIR}"/${PN}-1.10.0.service tinyproxy.service
 	systemd_dotmpfilesd "${FILESDIR}"/${PN}.tmpfiles.conf
 }
 
