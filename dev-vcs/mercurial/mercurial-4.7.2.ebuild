@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,13 +14,15 @@ SRC_URI="https://www.mercurial-scm.org/release/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~hppa ~mips ~sparc ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="bugzilla emacs gpg test tk"
 
-RDEPEND="bugzilla? ( dev-python/mysql-python[${PYTHON_USEDEP}] )
+RDEPEND="app-misc/ca-certificates
+	dev-python/zstandard[${PYTHON_USEDEP}]
+	bugzilla? ( dev-python/mysql-python[${PYTHON_USEDEP}] )
 	gpg? ( app-crypt/gnupg )
-	tk? ( dev-lang/tk )
-	app-misc/ca-certificates"
+	tk? ( dev-lang/tk )"
+
 DEPEND="emacs? ( virtual/emacs )
 	test? ( app-arch/unzip
 		dev-python/pygments[${PYTHON_USEDEP}] )"
@@ -33,6 +35,10 @@ python_prepare_all() {
 	# fix up logic that won't work in Gentoo Prefix (also won't outside in
 	# certain cases), bug #362891
 	sed -i -e 's:xcodebuild:nocodebuild:' setup.py || die
+
+	# Don't use bundled zstandard (#666972)
+	rm -r contrib/python-zstandard || die
+	sed '/contrib\/python-zstandard/d;/setup_zstd/d' -i setup.py || die
 
 	distutils-r1_python_prepare_all
 }
@@ -85,6 +91,9 @@ python_install_all() {
 
 	insinto /etc/mercurial/hgrc.d
 	doins "${FILESDIR}/cacerts.rc"
+
+	# symlink to system zstd
+	dosym ../zstd.so $(python_get_sitedir)/${PN}/zstd.so
 }
 
 src_test() {
