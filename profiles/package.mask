@@ -157,13 +157,6 @@ dev-lang/solidity
 # masked for removal on End Sep 2018
 media-plugins/vdr-prefermenu
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> (02/Sep/2018)
-# fails on latest imagemagick
-# not converted to gettext
-# bug 665126
-# masked for removal on End Sep 2018
-media-plugins/vdr-text2skin
-
 # Matthias Maier <tamiko@gentoo.org> (1 Sep 2018)
 # Mask 0.7.0 and  1.0.1 for the time being until a compatible LLVM version
 # made it into the tree, bug #665192
