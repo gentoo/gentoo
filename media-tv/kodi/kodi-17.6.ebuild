@@ -224,7 +224,7 @@ src_configure() {
 		-DENABLE_LCMS2=$(usex lcms)
 		-DENABLE_LIRC=$(usex lirc)
 		-DENABLE_MICROHTTPD=$(usex webserver)
-		-DENABLE_MYSQLCLIENT=$(usex mysql)
+		-DENABLE_MYSQLCLIENT=$(usex mysql "yes" $(usex mariadb))
 		-DENABLE_NFS=$(usex nfs)
 		-DENABLE_NONFREE=$(usex nonfree)
 		-DENABLE_OPENGLES=$(usex gles)
