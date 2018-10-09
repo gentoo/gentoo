@@ -148,54 +148,6 @@ dev-lang/solidity
 =dev-db/postgresql-11_beta2
 =dev-db/postgresql-11_beta3
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> (02/Sep/2018)
-# homepage dead
-# dead on upstream
-# not converted to gettext
-# a lot of compile warnings
-# bug 665124
-# masked for removal on End Sep 2018
-media-plugins/vdr-prefermenu
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (02/Sep/2018)
-# fails on latest imagemagick
-# not converted to gettext
-# bug 665126
-# masked for removal on End Sep 2018
-media-plugins/vdr-text2skin
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (02/Sep/2018)
-# quit old
-# unmanged on upstream since ~ 10 years
-# bug 665128
-# masked for removal on End Sep 2018
-media-plugins/vdr-vodcatcher
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (02/Sep/2018)
-# homepage dead
-# not addapted to latest xine
-# fails on compile
-# quit old
-# bug 665132
-# masked for removal on End Sep 2018
-media-plugins/vdr-xine
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (02/Sep/2018)
-# dead on upstream since 2014
-# not git-r3 eclass adaption
-# only pmasked -9999.ebuild in the tree
-# bug 665134
-# masked for removal on End Sep 2018
-media-plugins/vdr-xvdr
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (02/Sep/2018)
-# homepage dead
-# dead on upstream
-# depends on vdr-1.3 (quit old)
-# bug 665136
-# masked for removal on End Sep 2018
-media-plugins/vdr-autosort
-
 # Matthias Maier <tamiko@gentoo.org> (1 Sep 2018)
 # Mask 0.7.0 and  1.0.1 for the time being until a compatible LLVM version
 # made it into the tree, bug #665192

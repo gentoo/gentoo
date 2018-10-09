@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,10 +29,10 @@ src_configure() {
 }
 
 src_test() {
-	# bugs: 619656, 632398, 647414
+	# bugs: 619656, 632398, 647414, 665682
 	local myctestargs=(
 		-j1
-		-E "(kautosavefiletest|kdirwatch_qfswatch_unittest)"
+		-E "(kautosavefiletest|kdirwatch_qfswatch_unittest|kformattest)"
 	)
 
 	kde5_src_test

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,3 +23,12 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-perl/URI
 "
+
+src_test() {
+	# bug 665622
+	local myctestargs=(
+		-E "(kdoctools_install)"
+	)
+
+	kde5_src_test
+}
