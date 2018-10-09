@@ -33,7 +33,7 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gles opengl )
 	^^ ( gbm wayland X )
-	^^ ( mariadb mysql )
+	?? ( mariadb mysql )
 	udev? ( !libusb )
 	udisks? ( dbus )
 	upower? ( dbus )
