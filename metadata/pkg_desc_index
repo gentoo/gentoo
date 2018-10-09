@@ -8461,7 +8461,7 @@ net-dialup/globespan-adsl 0.11-r1: Driver for various ADSL modems. Also known as
 net-dialup/isdn-firmware 2005.8.15.2: ISDN firmware for active ISDN cards (AVM, Eicon, etc.)
 net-dialup/kpnadsl4linux 1.11: ADSL4Linux, a PPTP start/stop/etc. program especially for Dutch users
 net-dialup/linux-atm 2.5.0: Tools for ATM
-net-dialup/lrzsz 0.12.20-r3: Communication package providing the X, Y, and ZMODEM file transfer protocols
+net-dialup/lrzsz 0.12.20-r4: Communication package providing the X, Y, and ZMODEM file transfer protocols
 net-dialup/mgetty 1.1.37-r1: fax and voice modem programs
 net-dialup/mingetty 1.08-r1: A compact getty program for virtual consoles only
 net-dialup/minicom 2.7.1: Serial Communication Program
@@ -9827,7 +9827,7 @@ sys-apps/kexec-tools 2.0.14 2.0.17-r1: Load another kernel from the currently ex
 sys-apps/keyutils 1.5.9-r4: Linux Key Management Utilities
 sys-apps/kmod 24: library and tools for managing linux kernel modules
 sys-apps/less 531: Excellent text file viewer
-sys-apps/lm_sensors 3.4.0_p20170901: Hardware Monitoring user-space utilities
+sys-apps/lm_sensors 3.4.0_p20170901 3.4.0_p20180923: Hardware Monitoring user-space utilities
 sys-apps/lnxhc 1.2-r1: Linux Health Checker
 sys-apps/logwatch 7.4.3: Analyzes and Reports on system logs
 sys-apps/lomoco 1.0-r9: Lomoco can configure vendor-specific options on Logitech USB mice
