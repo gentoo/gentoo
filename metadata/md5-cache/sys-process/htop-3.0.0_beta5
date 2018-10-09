@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure prepare setup
+DEPEND=sys-libs/ncurses:0=[unicode?] || ( dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 dev-lang/python:3.4 >=dev-lang/python-2.7.5-r2:2.7 )
+DESCRIPTION=interactive process viewer
+EAPI=7
+HOMEPAGE=https://hisham.hm/htop/
+IUSE=kernel_FreeBSD kernel_linux openvz unicode vserver kernel_linux
+LICENSE=BSD GPL-2
+RDEPEND=sys-libs/ncurses:0=[unicode?]
+SLOT=0
+SRC_URI=https://github.com/hishamhm/htop/archive/3.0.0beta5.tar.gz -> htop-3.0.0_beta5.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=53ff86a01989cd4808d5f6ae7c7bf756
