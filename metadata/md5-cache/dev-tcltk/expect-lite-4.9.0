@@ -8,4 +8,4 @@ LICENSE=BSD
 RDEPEND=dev-tcltk/expect debug? ( dev-tcltk/tclx )
 SLOT=0
 SRC_URI=mirror://sourceforge/expect-lite/expect-lite_4.9.0.tar.gz
-_md5_=0a365c6d852a827a259b6c38265c031d
+_md5_=d0e2962cd23fa82d9ee42014400dc55f
