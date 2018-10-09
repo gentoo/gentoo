@@ -13,12 +13,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 
-IUSE="test debug +filter-proxy minimal reverse-proxy
-	transparent-proxy +upstream-proxy +xtinyproxy-header"
+IUSE="test debug +filter-proxy reverse-proxy transparent-proxy
++upstream-proxy +xtinyproxy-header"
 
 REQUIRED_USE="test? ( xtinyproxy-header )"
-
-DEPEND="!minimal? ( app-text/asciidoc )"
 
 pkg_setup() {
 	enewgroup ${PN}
@@ -26,8 +24,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	use minimal && PATCHES+=( "${FILESDIR}/${PN}-1.8.1-minimal.patch" )
-
 	default
 
 	sed -i \
@@ -38,11 +34,6 @@ src_prepare() {
 }
 
 src_configure() {
-	if use minimal; then
-		ln -s /bin/true "${T}"/a2x
-		export PATH="${T}:${PATH}"
-	fi
-
 	econf \
 		$(use_enable debug) \
 		$(use_enable filter-proxy filter) \
