@@ -1,0 +1,12 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure install postinst prepare unpack
+DEPEND=selinux? ( sys-libs/libselinux[static-libs(+)] ) !dev-libs/libelf sys-libs/binutils-libs >=sys-libs/glibc-2.8
+DESCRIPTION=Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
+EAPI=7
+HOMEPAGE=https://git.yoctoproject.org/cgit/cgit.cgi/prelink-cross/ https://people.redhat.com/jakub/prelink
+IUSE=doc selinux
+LICENSE=GPL-2
+RDEPEND=selinux? ( sys-libs/libselinux[static-libs(+)] ) !dev-libs/libelf sys-libs/binutils-libs >=sys-libs/glibc-2.8 >=sys-devel/binutils-2.18 >=dev-libs/elfutils-0.100[static-libs(+)]
+SLOT=0
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=47f6480e95b7e275b8171417267c69a2
