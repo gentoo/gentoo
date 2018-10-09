@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ S="${WORKDIR}/${MY_P}/scripts"
 src_prepare() {
 	default
 
-	eapply -p2 "${FILESDIR}"/${PN}-2.15.9-command-vV.patch
+	eapply -p2 "${FILESDIR}"/${PN}-2.18.6-command-vV.patch
 
 	sed "s@###VERSION###@${PV}@" -i checkbashisms.pl || die
 }
