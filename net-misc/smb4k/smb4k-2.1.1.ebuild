@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ HOMEPAGE="https://sourceforge.net/p/smb4k/home/Home/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 fi
 
 LICENSE="GPL-2"
