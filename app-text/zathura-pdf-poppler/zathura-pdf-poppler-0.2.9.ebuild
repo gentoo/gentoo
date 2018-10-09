@@ -16,7 +16,6 @@ fi
 
 DESCRIPTION="PDF plug-in for zathura"
 HOMEPAGE="https://pwmt.org/projects/zathura-pdf-poppler"
-SRC_URI="https://pwmt.org/projects/zathura-pdf-poppler/download/${P}.tar.xz"
 
 LICENSE="ZLIB"
 SLOT="0"
