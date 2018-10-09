@@ -32,12 +32,7 @@ src_prepare() {
 
 	sed -i \
 		-e "s|nobody|${PN}|g" \
-		-e 's|/var/run/|/run/|g' \
 		etc/${PN}.conf.in || die "sed failed"
-
-	sed -i \
-		-e 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g' \
-		configure.ac || die
 
 	eautoreconf
 }
