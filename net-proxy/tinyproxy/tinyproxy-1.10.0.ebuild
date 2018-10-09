@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 
-IUSE="test debug +filter-proxy reverse-proxy transparent-proxy 
+IUSE="test debug +filter-proxy reverse-proxy transparent-proxy
 +upstream-proxy +xtinyproxy-header"
 
 REQUIRED_USE="test? ( xtinyproxy-header )"
