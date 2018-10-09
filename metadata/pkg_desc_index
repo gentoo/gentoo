@@ -7658,7 +7658,7 @@ media-libs/libtaginfo 0.2.1: a library for reading media metadata
 media-libs/libtheora 1.1.1-r1 1.1.1-r2: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
 media-libs/libtimidity 0.1.0-r2: MIDI to WAVE converter library
-media-libs/libtxc_dxtn 1.0.1-r1: Helper library for S3TC texture (de)compression
+media-libs/libtxc_dxtn 1.0.1-r4: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231-r1: Library of unicode annotation data
 media-libs/libv4l 1.6.2 1.10.1: Separate libraries ebuild from upstream v4l-utils package
 media-libs/libvisio 0.1.6: Library parsing the visio documents
