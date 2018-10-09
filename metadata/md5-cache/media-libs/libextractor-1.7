@@ -1,0 +1,14 @@
+BDEPEND=sys-devel/gettext virtual/pkgconfig
+DEFINED_PHASES=configure install prepare
+DEPEND=app-text/iso-codes dev-libs/glib:2 media-gfx/exiv2:= sys-devel/libtool virtual/libiconv virtual/libintl apparmor? ( sys-libs/libapparmor ) archive? ( app-arch/libarchive:= ) bzip2? ( app-arch/bzip2 ) ffmpeg? ( virtual/ffmpeg ) flac? ( media-libs/flac media-libs/libogg ) gif? ( media-libs/giflib:= ) gsf? ( gnome-extra/libgsf:= ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) gtk? ( x11-libs/gtk+:3 ) jpeg? ( virtual/jpeg:0 ) magic? ( sys-apps/file ) midi? ( media-libs/libsmf ) mp4? ( media-libs/libmp4v2:0 ) mpeg? ( media-libs/libmpeg2 ) tidy? ( app-text/htmltidy ) tiff? ( media-libs/tiff:0 ) vorbis? ( media-libs/libogg media-libs/libvorbis ) zlib? ( sys-libs/zlib )
+DESCRIPTION=Library to extract metadata from files of arbitrary type
+EAPI=7
+HOMEPAGE=https://www.gnu.org/software/libextractor/
+IUSE=apparmor +archive +bzip2 ffmpeg flac gif gsf gstreamer gtk jpeg +magic midi mp4 mpeg tidy tiff vorbis +zlib
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-text/iso-codes dev-libs/glib:2 media-gfx/exiv2:= sys-devel/libtool virtual/libiconv virtual/libintl apparmor? ( sys-libs/libapparmor ) archive? ( app-arch/libarchive:= ) bzip2? ( app-arch/bzip2 ) ffmpeg? ( virtual/ffmpeg ) flac? ( media-libs/flac media-libs/libogg ) gif? ( media-libs/giflib:= ) gsf? ( gnome-extra/libgsf:= ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) gtk? ( x11-libs/gtk+:3 ) jpeg? ( virtual/jpeg:0 ) magic? ( sys-apps/file ) midi? ( media-libs/libsmf ) mp4? ( media-libs/libmp4v2:0 ) mpeg? ( media-libs/libmpeg2 ) tidy? ( app-text/htmltidy ) tiff? ( media-libs/tiff:0 ) vorbis? ( media-libs/libogg media-libs/libvorbis ) zlib? ( sys-libs/zlib ) !sci-biology/glimmer
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gnu/libextractor/libextractor-1.7.tar.gz
+_md5_=85cb0c2add0acf48115ff81247822296
