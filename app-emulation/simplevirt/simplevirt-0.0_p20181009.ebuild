@@ -14,8 +14,8 @@ EGO_VENDOR=(
 inherit linux-info golang-vcs-snapshot user
 
 EGO_PN="github.com/rafaelmartins/simplevirt"
-GIT_COMMIT="49d0d512f044a20adcabc1b3a0a56a69e5f1f9c7"
-GIT_VERSION="0.0.19-49d0"
+GIT_COMMIT="a1569d8a63fbed7ad200039d3b45fcad41f23f36"
+GIT_VERSION="0.0.20-a156"
 ARCHIVE_URI="https://${EGO_PN}/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 DESCRIPTION="Simple virtual machine manager for Linux (QEMU/KVM)"
