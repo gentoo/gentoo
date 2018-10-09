@@ -161,4 +161,4 @@ POSTGRES_TARGETS="postgres9_5 postgres10"
 # Moreover, it should only contain targets that have a stable version
 # of PHP, to avoid pulling in an unstable PHP on stable systems.
 #
-PHP_TARGETS="php5-6 php7-0"
+PHP_TARGETS="php5-6 php7-1"
