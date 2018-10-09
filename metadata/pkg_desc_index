@@ -576,7 +576,7 @@ app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20171014 20180408: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.6 1.9: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0-r1: GTK+-based editor for the Xfce Desktop Environment
-app-editors/nano 2.8.7 2.9.8: GNU GPL'd Pico clone with more functionality
+app-editors/nano 2.9.8: GNU GPL'd Pico clone with more functionality
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r7: Vi clone
@@ -9801,7 +9801,7 @@ sys-apps/gsmartcontrol 1.0.2 1.1.3: Hard disk drive health inspection tool
 sys-apps/haveged 1.9.2-r1: A simple entropy daemon using the HAVEGE algorithm
 sys-apps/hd-idle 1.05: Utility for spinning down hard disks after a period of idle time
 sys-apps/hdparm 9.51 9.52: Utility to change hard drive performance parameters
-sys-apps/help2man 1.47.4 1.47.6: GNU utility to convert program --help output to a man page
+sys-apps/help2man 1.47.6: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hponcfg 4.6.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
