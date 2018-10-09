@@ -164,13 +164,6 @@ media-plugins/vdr-prefermenu
 # masked for removal on End Sep 2018
 media-plugins/vdr-text2skin
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> (02/Sep/2018)
-# quit old
-# unmanged on upstream since ~ 10 years
-# bug 665128
-# masked for removal on End Sep 2018
-media-plugins/vdr-vodcatcher
-
 # Matthias Maier <tamiko@gentoo.org> (1 Sep 2018)
 # Mask 0.7.0 and  1.0.1 for the time being until a compatible LLVM version
 # made it into the tree, bug #665192
