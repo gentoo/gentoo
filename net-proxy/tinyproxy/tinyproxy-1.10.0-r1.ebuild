@@ -58,8 +58,8 @@ src_install() {
 	diropts -m0775 -o ${PN} -g ${PN}
 	keepdir /var/log/${PN}
 
-	newinitd "${FILESDIR}"/${PN}-1.8.3-r2.initd tinyproxy
-	systemd_dounit "${FILESDIR}"/${PN}.service
+	newinitd "${FILESDIR}"/${PN}-1.10.0.initd tinyproxy
+	systemd_dounit "${FILESDIR}"/${PN}-1.10.0.service
 	systemd_dotmpfilesd "${FILESDIR}"/${PN}.tmpfiles.conf
 }
 
