@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst setup test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=Simple virtual machine manager for Linux (QEMU/KVM)
+EAPI=6
+HOMEPAGE=https://github.com/rafaelmartins/simplevirt
+IUSE=kernel_linux
+LICENSE=BSD
+RDEPEND=virtual/logger app-emulation/qemu
+SLOT=0
+SRC_URI=https://github.com/rafaelmartins/simplevirt/archive/a1569d8a63fbed7ad200039d3b45fcad41f23f36.tar.gz -> simplevirt-0.0_p20181009.tar.gz https://github.com/inconshreveable/mousetrap/archive/v1.0.0.tar.gz -> github.com-inconshreveable-mousetrap-v1.0.0.tar.gz https://github.com/spf13/cobra/archive/v0.0.3.tar.gz -> github.com-spf13-cobra-v0.0.3.tar.gz https://github.com/spf13/pflag/archive/v1.0.2.tar.gz -> github.com-spf13-pflag-v1.0.2.tar.gz https://github.com/go-check/check/archive/20d25e2804050c1cd24a7eea1e7a6447dd0e74ec.tar.gz -> github.com-go-check-check-20d25e2804050c1cd24a7eea1e7a6447dd0e74ec.tar.gz https://github.com/go-yaml/yaml/archive/v2.2.1.tar.gz -> github.com-go-yaml-yaml-v2.2.1.tar.gz
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=e4a482dc8b3a4701c2045c04313e177f
