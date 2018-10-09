@@ -21,12 +21,12 @@ DOCS=(
 	bashrc ChangeLog README
 )
 
-HTML_DOCS=(
-	"Docs/*"
-)
-
 src_install() {
 	default
+
+	docinto html
+	dodoc -r Docs/*
+
 	dobin ${PN}
 	doman man/*
 
