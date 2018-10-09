@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=dev-libs/skalibs-2.7.0.0[static-libs?]
+DESCRIPTION=suite of DNS client programs and libraries for Unix systems
+EAPI=7
+HOMEPAGE=https://www.skarnet.org/software/s6-dns/
+IUSE=static static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=!static? ( >=dev-libs/skalibs-2.7.0.0:= )
+REQUIRED_USE=static? ( static-libs )
+SLOT=0/2.3
+SRC_URI=https://www.skarnet.org/software/s6-dns/s6-dns-2.3.0.1.tar.gz
+_md5_=2e925e525b4278677f2aed753677d719

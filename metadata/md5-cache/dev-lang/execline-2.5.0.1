@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=dev-libs/skalibs-2.7.0.0[static-libs?]
+DESCRIPTION=a non-interactive scripting language
+EAPI=7
+HOMEPAGE=https://www.skarnet.org/software/execline/
+IUSE=static static-libs
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=ISC
+RDEPEND=!static? ( >=dev-libs/skalibs-2.7.0.0:= )
+REQUIRED_USE=static? ( static-libs )
+SLOT=0/2.5
+SRC_URI=https://www.skarnet.org/software/execline/execline-2.5.0.1.tar.gz
+_md5_=1f31d8adc44e537744fced9bba822065
