@@ -336,6 +336,8 @@ arm		default/linux/arm/17.0/musl/armv7a			exp
 arm		default/linux/arm/17.0/musl/armv7a/hardened		exp
 arm64		default/linux/musl/arm64 				exp
 arm64		hardened/linux/musl/arm64 				exp
+arm64		default/linux/arm64/17.0/musl 				exp
+arm64		default/linux/arm64/17.0/musl/hardened			exp
 mips		default/linux/musl/mips					exp
 mips		hardened/linux/musl/mips				exp
 mips		default/linux/musl/mips/mipsel				exp
@@ -359,6 +361,8 @@ arm		default/linux/arm/17.0/uclibc/armv6j			exp
 arm		default/linux/arm/17.0/uclibc/armv6j/hardened		exp
 arm		default/linux/arm/17.0/uclibc/armv7a			exp
 arm		default/linux/arm/17.0/uclibc/armv7a/hardened		exp
+arm64		default/linux/arm64/17.0/uclibc				exp
+arm64		default/linux/arm64/17.0/uclibc/hardened		exp
 mips		default/linux/uclibc/mips				exp
 mips		hardened/linux/uclibc/mips				exp
 mips		default/linux/uclibc/mips/mipsel			exp

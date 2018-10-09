@@ -1,0 +1,14 @@
+# Copyright 1999-2018 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="aarch64-gentoo-linux-uclibc"
+
+# Anthony G. Basile <blueness@gentoo.org> (25 Oct 2015)
+# Multilib-related setup, bug #515130
+MULTILIB_ABIS="arm64"
+CHOST_arm64="${CHOST}"
+LIBDIR_arm64="lib"
+
+# Michał Górny <mgorny@gentoo.org> (14 Mar 2017)
+# Unhide the ARM-specific USE_EXPANDs.
+USE_EXPAND_HIDDEN="-CPU_FLAGS_ARM"
