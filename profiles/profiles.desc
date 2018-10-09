@@ -342,6 +342,8 @@ mips		default/linux/musl/mips/mipsel				exp
 mips		hardened/linux/musl/mips/mipsel				exp
 ppc		default/linux/musl/ppc					exp
 ppc		hardened/linux/musl/ppc					exp
+ppc		default/linux/powerpc/ppc32/17.0/musl			exp
+ppc		default/linux/powerpc/ppc32/17.0/musl/hardened		exp
 x86		default/linux/musl/x86					exp
 x86		hardened/linux/musl/x86					exp
 x86		default/linux/x86/17.0/musl				exp
@@ -365,6 +367,8 @@ mips		default/linux/uclibc/mips/mipsel			exp
 mips		hardened/linux/uclibc/mips/mipsel			exp
 ppc		default/linux/uclibc/ppc				exp
 ppc		hardened/linux/uclibc/ppc				exp
+ppc		default/linux/powerpc/ppc32/17.0/uclibc			exp
+ppc		default/linux/powerpc/ppc32/17.0/uclibc/hardened	exp
 x86		default/linux/uclibc/x86				exp
 x86		hardened/linux/uclibc/x86				exp
 x86		default/linux/x86/17.0/uclibc				exp
