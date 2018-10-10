@@ -4869,7 +4869,6 @@ dev-python/flask-peewee 0.6.5: Flask integration layer for the Peewee ORM
 dev-python/flask-principal 0.4.0-r1: Identity management for flask
 dev-python/flask-pymongo 0.3.0 0.4.1: PyMongo support for Flask
 dev-python/flask-restful 0.3.5-r1: Simple framework for creating REST APIs
-dev-python/flask-restless 0.17.0: Flask extension for easy ReSTful API generation
 dev-python/flask-script 2.0.5-r1 2.0.6: Flask support for writing external scripts
 dev-python/flask-security 1.7.5-r1 3.0.0: Simple security for Flask apps
 dev-python/flask-sphinx-themes 1.0.1: Sphinx Themes for Flask related projects and Flask itself
