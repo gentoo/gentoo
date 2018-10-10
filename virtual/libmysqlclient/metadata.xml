@@ -5,4 +5,12 @@
     <email>mysql-bugs@gentoo.org</email>
     <name>MySQL</name>
   </maintainer>
+  <use>
+    <flag name="mariadb">Prefer dev-db/mariadb-connector-c to prevent blocks on other packages</flag>
+  </use>
+  <longdescription>
+    Originally, this package was meant to have providers be switched easily.
+    However, the dependency resolution and rebuilding does not work through a virtual.
+    This package is deprecated and will be removed in the future.
+  </longdescription>
 </pkgmetadata>
