@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}/${PN}-options-for-use-flags.patch" )
 
-pkg_preinst() {
+pkg_setup() {
 	if use server ; then
 		enewgroup "snapserver"
 		enewuser "snapserver" -1 -1 /var/lib/snapserver snapserver
@@ -76,12 +76,14 @@ src_install() {
 	done
 
 	if use client ; then
-		diropts -m 0770 -o snapclient audio
 		keepdir /var/lib/snapclient
+		fowners snapclient:audio /var/lib/snapclient
+		fperms 0770 /var/lib/snapclient
 	fi
 
 	if use server ; then
-		diropts -m 0770 -o snapserver snapserver
 		keepdir /var/lib/snapserver
+		fowners snapserver:snapserver /var/lib/snapserver
+		fperms 0770 /var/lib/snapserver
 	fi
 }
