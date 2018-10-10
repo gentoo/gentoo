@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,12 +36,16 @@ DOCS=( AUTHORS ChangeLog NEWS README )
 PATCHES=( "$FILESDIR"/$PN-c++11.patch )
 
 src_configure() {
-	econf --with-sndfile \
+	local myconf=""
+
+	use cpu_flags_x86_sse && myconf="${myconf} --enable-optimizations=sse"
+	use cpu_flags_x86_sse2 && myconf="${myconf} --enable-optimizations=sse2"
+	use cpu_flags_x86_sse3 && myconf="${myconf} --enable-optimizations=sse3"
+
+	econf ${myconf} \
+		--with-sndfile \
 		$(use_with hamlib) \
 		$(use_enable nls) \
 		$(use_with pulseaudio) \
-		$(use_enable cpu_flags_x86_sse optimizations sse) \
-		$(use_enable cpu_flags_x86_sse2 optimizations sse2) \
-		$(use_enable cpu_flags_x86_sse3 optimizations sse3) \
 		--without-asciidoc
 }
