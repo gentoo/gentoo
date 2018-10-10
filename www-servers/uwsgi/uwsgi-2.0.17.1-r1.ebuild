@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 PHP_EXT_INI="no"
 PHP_EXT_NAME="dummy"
@@ -16,7 +16,7 @@ USE_PHP="php5-6 php7-0 php7-1 php7-2" # deps must be registered separately below
 
 MY_P="${P/_/-}"
 
-inherit apache-module eutils flag-o-matic multilib pax-utils php-ext-source-r3 python-r1 ruby-ng versionator
+inherit eutils flag-o-matic multilib pax-utils php-ext-source-r3 python-r1 ruby-ng versionator
 
 DESCRIPTION="uWSGI server for Python web applications"
 HOMEPAGE="http://projects.unbit.it/uwsgi/"
@@ -69,7 +69,7 @@ REQUIRED_USE="|| ( ${LANG_SUPPORT_SIMPLE[@]} ${LANG_SUPPORT_EXTENDED[@]} )
 	uwsgi_plugins_router_xmldir? ( xml !expat )
 	pypy? ( python_targets_python2_7 )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	python_asyncio? ( || ( python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 ) python_gevent )
+	python_asyncio? ( || ( python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 ) )
 	python_gevent? ( python )
 	expat? ( xml )"
 
@@ -108,7 +108,7 @@ CDEPEND="sys-libs/zlib
 	uwsgi_plugins_xslt? ( dev-libs/libxslt )
 	go? ( dev-lang/go:=[gccgo] )
 	lua? ( dev-lang/lua:= )
-	mono? ( =dev-lang/mono-4* )
+	mono? ( dev-lang/mono:= )
 	perl? ( dev-lang/perl:= )
 	php? (
 		php_targets_php5-6? ( dev-lang/php:5.6[embed] )
@@ -118,6 +118,7 @@ CDEPEND="sys-libs/zlib
 	)
 	pypy? ( virtual/pypy )
 	python? ( ${PYTHON_DEPS} )
+	python_asyncio? ( virtual/python-greenlet[${PYTHON_USEDEP}] )
 	python_gevent? ( >=dev-python/gevent-1.3.5[${PYTHON_USEDEP}] )
 	ruby? ( $(ruby_implementations_depend) )"
 DEPEND="${CDEPEND}
@@ -126,20 +127,16 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-uwsgi )
 	uwsgi_plugins_rrdtool? ( net-analyzer/rrdtool )"
 
-want_apache2
-
 S="${WORKDIR}/${MY_P}"
-APXS2_S="${S}/apache2"
-APACHE2_MOD_CONF="42_mod_uwsgi-r2 42_mod_uwsgi"
 
 src_unpack() {
+	echo ${PYTHON_USEDEP}
 	default
 }
 
 pkg_setup() {
 	python_setup
 	use ruby && ruby-ng_pkg_setup
-	depend.apache_pkg_setup
 }
 
 src_prepare() {
@@ -251,13 +248,17 @@ python_compile_plugins() {
 	${PYTHON} uwsgiconfig.py --plugin plugins/python gentoo ${EPYV} || die "building plugin for ${EPYTHON} failed"
 
 	if use python_asyncio ; then
-		if [[ "${PYV}" == "34" || "${PYV}" == "35" ]] ; then
+		if [[ "${PYV}" != "27" ]] ; then
 			${PYTHON} uwsgiconfig.py --plugin plugins/asyncio gentoo asyncio${PYV} || die "building plugin for asyncio-support in ${EPYTHON} failed"
 		fi
 	fi
 
 	if use python_gevent ; then
 		${PYTHON} uwsgiconfig.py --plugin plugins/gevent gentoo gevent${PYV} || die "building plugin for gevent-support in ${EPYTHON} failed"
+	fi
+
+	if use python_gevent || use python_asyncio; then
+			${PYTHON} uwsgiconfig.py --plugin plugins/greenlet gentoo greenlet${PYV} || die "building plugin for greenlet-support in ${EPYTHON} failed"
 	fi
 
 	if use pypy ; then
@@ -302,13 +303,6 @@ src_compile() {
 	if use ruby ; then
 		ruby-ng_src_compile
 	fi
-
-	if use apache2 ; then
-		for m in proxy_uwsgi Ruwsgi uwsgi ; do
-			APXS2_ARGS="-c mod_${m}.c"
-			apache-module_src_compile
-		done
-	fi
 }
 
 src_install() {
@@ -335,13 +329,6 @@ src_install() {
 		python_foreach_impl python_domodule uwsgidecorators.py
 	fi
 
-	if use apache2; then
-		for m in proxy_uwsgi Ruwsgi uwsgi ; do
-			APACHE2_MOD_FILE="${APXS2_S}/.libs/mod_${m}.so"
-			apache-module_src_install
-		done
-	fi
-
 	newinitd "${FILESDIR}"/uwsgi.initd-r7 uwsgi
 	newconfd "${FILESDIR}"/uwsgi.confd-r4 uwsgi
 	keepdir /etc/"${PN}".d
@@ -350,13 +337,11 @@ src_install() {
 
 pkg_postinst() {
 	if use apache2 ; then
-		elog "Three Apache modules have been installed: mod_proxy_uwsgi, mod_uwsgi and mod_Ruwsgi."
-		elog "You can enable them with -D PROXY_UWSGI, -DUWSGI or -DRUWSGI in /etc/conf.d/apache2."
-		elog "mod_uwsgi and mod_Ruwsgi have the same configuration interface and define the same symbols."
-		elog "Therefore you can enable only one of them at a time."
-		elog "mod_uwsgi is commercially supported by Unbit and stable but a bit hacky."
-		elog "mod_Ruwsgi is newer and more Apache-API friendly but not commercially supported."
-		elog "mod_proxy_uwsgi is a proxy module, considered stable and is now the recommended module."
+		ewarn "As reported on bug #650776 [1], Apache module mod_proxy_uwsgi"
+		ewarn "is being transferred to upstream Apache since 2.4.30, see [2]."
+		ewarn "We therefore do not build them any more."
+		ewarn "    [1] https://bugs.gentoo.org/650776"
+		ewarn "    [2] https://github.com/unbit/uwsgi/issues/1636"
 	fi
 
 	elog "Append the following options to the uwsgi call to load the respective language plugin:"
