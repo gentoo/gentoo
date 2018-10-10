@@ -1123,6 +1123,7 @@ app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
 app-misc/tracker 1.12.4: A tagging metadata database, search tool and indexer
 app-misc/trash-cli 0.12.9.14-r2: Python scripts to manipulate trash cans via the command line
+app-misc/ttyload 0.5.3: color-coded graph of load averages over time
 app-misc/ttyrec 1.0.8-r2: ttyrec provides tools to record and replay a terminal session
 app-misc/unfoo 1.0.8: A simple bash driven frontend to simplify decompression of files
 app-misc/uptimed 0.4.0-r1: System uptime record daemon that keeps track of your highest uptimes
@@ -5534,7 +5535,7 @@ dev-python/s3fs 0.1.2: Pythonic file interface to S3
 dev-python/s3transfer 0.1.11: An Amazon S3 Transfer Manager
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4-r1: Sancho is a unit testing framework
-dev-python/scandir 1.6 1.7: A better directory iterator and faster os.walk()
+dev-python/scandir 1.7: A better directory iterator and faster os.walk()
 dev-python/scimath 4.1.2-r1: Enthought Tool Suite: Scientific and mathematical tools
 dev-python/scripttest 1.2-r1: A very small text templating language
 dev-python/scrypt 0.8.0: Bindings for the scrypt key derivation function library
