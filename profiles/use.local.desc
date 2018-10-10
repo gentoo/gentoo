@@ -5737,6 +5737,7 @@ sys-process/systemd-cron:setgid - Compile setgid C helper for crontab. Needs GCC
 sys-process/systemd-cron:yearly - Support /etc/cron.yearly
 sys-process/tini:args - Enable argument parsing.
 virtual/ffmpeg:opus - Use the external opus library for encoding and decoding.
+virtual/libmysqlclient:mariadb - Prefer dev-db/mariadb-connector-c to prevent blocks on other packages
 virtual/linux-sources:firmware - Install linux kernel firmware
 virtual/mpi:romio - Enable romio, a high-performance portable MPI-IO
 virtual/mysql:embedded - Build embedded server (libmysqld)
