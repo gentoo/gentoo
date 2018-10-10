@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Virgil Dupras <vdupras@gentoo.org> (10 Oct 2018)
+# Unmaintained, no revdep. Removal in 30 days.
+# Bug #643536
+dev-python/stormpath
+
+# Virgil Dupras <vdupras@gentoo.org> (10 Oct 2018)
 # Dead upstream, depends on broken package. Removal in 30 days.
 # Bug #620098
 dev-python/flask-restless
