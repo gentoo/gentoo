@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_BRANCH="develop"
 else
 	KEYWORDS="~amd64 ~arm ~x86"
-	SRC_URI="http://pwmt.org/projects/zathura/plugins/download/${P}.tar.gz"
+	SRC_URI="http://pwmt.org/projects/zathura/plugins/download/${P}.tar.xz"
 fi
 
 DESCRIPTION="PDF plug-in for zathura"
