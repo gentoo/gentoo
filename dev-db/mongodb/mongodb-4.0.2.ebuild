@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,7 @@ KEYWORDS="~amd64"
 IUSE="debug kerberos libressl mms-agent ssl test +tools"
 
 RDEPEND=">=app-arch/snappy-1.1.3
-	>=dev-cpp/yaml-cpp-0.5.3
+	>=dev-cpp/yaml-cpp-0.5.3:=
 	>=dev-libs/boost-1.60:=[threads(+)]
 	>=dev-libs/libpcre-8.41[cxx]
 	dev-libs/snowball-stemmer
