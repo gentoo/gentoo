@@ -13,7 +13,6 @@ SRC_URI="https://github.com/dvv/base64url/archive/v${PV}.tar.gz
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND=">=dev-lang/erlang-17.1"
 RDEPEND="${DEPEND}"
