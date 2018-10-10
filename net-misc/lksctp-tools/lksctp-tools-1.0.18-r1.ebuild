@@ -25,6 +25,8 @@ WARNING_IP_SCTP="CONFIG_IP_SCTP:\tis not set when it should be."
 
 DOCS=( AUTHORS ChangeLog INSTALL NEWS README ROADMAP )
 
+PATCHES=( "${FILESDIR}"/${P}-install-sctp.h.patch )
+
 src_prepare() {
 	default
 
