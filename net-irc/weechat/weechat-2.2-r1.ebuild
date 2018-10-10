@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/weechat/weechat.git"
 else
 	SRC_URI="https://weechat.org/files/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86 ~x64-macos"
+	KEYWORDS="amd64 ~x86 ~x64-macos"
 fi
 
 DESCRIPTION="Portable and multi-interface IRC client"
