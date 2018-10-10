@@ -21,6 +21,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.10-shared.patch
 	"${FILESDIR}"/${PN}-1.8-static.patch
 	"${FILESDIR}"/${PN}-1.8-include.patch
+
+	# upstream patches (can usually be removed with next version bump)
+	"${FILESDIR}"/${PN}-1.10-openssl.patch
 )
 
 src_prepare() {
