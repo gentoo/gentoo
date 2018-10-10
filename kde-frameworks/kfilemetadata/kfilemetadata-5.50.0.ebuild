@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 inherit kde5 python-any-r1
 
 DESCRIPTION="Library for extracting file metadata"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 x86"
 IUSE="epub exif ffmpeg kernel_linux libav office pdf taglib"
 
 RDEPEND="
