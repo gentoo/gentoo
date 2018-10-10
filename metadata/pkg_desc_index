@@ -11031,7 +11031,7 @@ x11-misc/xpad 4.2: a sticky note application for jotting down things to remember
 x11-misc/xplanet 1.3.1-r1: Render images of the earth into the X root window
 x11-misc/xrestop 0.4: 'Top' like statistics of X11 client's server side resource usage
 x11-misc/xrootconsole 0.6-r1: A utility that displays its input in a text box on your root window
-x11-misc/xscreensaver 5.38: A modular screen saver and locker for the X Window System
+x11-misc/xscreensaver 5.38 5.40: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r3: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0-r1: Command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.70-r1: A hardware health information viewer, interface to lm-sensors
