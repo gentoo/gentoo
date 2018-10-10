@@ -6608,7 +6608,7 @@ kde-apps/akonadi-mime 18.04.3: Library for akonadi mime types
 kde-apps/akonadi-notes 18.04.3: Library for akonadi notes integration
 kde-apps/akonadi-search 18.04.3: Libraries and daemons to implement searching in Akonadi
 kde-apps/akonadiconsole 18.04.3: Application for debugging Akonadi Resources
-kde-apps/akregator 18.04.3: News feed aggregator
+kde-apps/akregator 18.04.3 18.04.3-r1: News feed aggregator
 kde-apps/analitza 18.04.3: KDE library for mathematical features
 kde-apps/ark 18.04.3: KDE Archiving tool
 kde-apps/artikulate 18.04.3: Language learning application that helps improving pronunciation skills
@@ -6652,7 +6652,7 @@ kde-apps/katomic 18.04.3: KDE Atomic Entertainment Game
 kde-apps/kbackup 18.04.3: Program that lets you back up any directories or files
 kde-apps/kblackbox 18.04.3: KDE Blackbox Game
 kde-apps/kblocks 18.04.3: A single-player Tetris-like KDE game
-kde-apps/kblog 18.04.3: Library providing client-side support for web application remote blogging APIs
+kde-apps/kblog 18.04.3 18.04.3-r1: Library providing client-side support for web application remote blogging APIs
 kde-apps/kbounce 18.04.3: KDE Bounce Ball Game
 kde-apps/kbreakout 18.04.3: Breakout-like game by KDE
 kde-apps/kbruch 18.04.3: Educational application to learn calculating with fractions
@@ -6685,7 +6685,7 @@ kde-apps/kdenetwork-meta 18.04.3: kdenetwork - merge this to pull in all kdenetw
 kde-apps/kdenlive 18.04.3-r1: Non-linear video editing suite by KDE
 kde-apps/kdepim-addons 18.04.3: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 18.04.3: Libraries for KDE PIM applications
-kde-apps/kdepim-meta 18.04.3: KDE PIM - merge this to pull in all kdepim-derived packages
+kde-apps/kdepim-meta 18.04.3 18.04.3-r1: KDE PIM - merge this to pull in all kdepim-derived packages
 kde-apps/kdepim-runtime 18.04.3: Runtime plugin collection to extend the functionality of KDE PIM
 kde-apps/kdesdk-kioslaves 18.04.3: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 18.04.3: KDE SDK - merge this to pull in all kdesdk-derived packages
@@ -6889,7 +6889,7 @@ kde-frameworks/kpty 5.46.0 5.50.0: Framework for pseudo terminal devices and run
 kde-frameworks/kross 5.46.0 5.50.0: Framework for embedding scripting into applications
 kde-frameworks/krunner 5.46.0 5.50.0: Framework for providing different actions given a string query
 kde-frameworks/kservice 5.46.0 5.50.0: Advanced plugin and service introspection
-kde-frameworks/ktexteditor 5.46.0-r1: Framework providing a full text editor component
+kde-frameworks/ktexteditor 5.46.0-r1 5.50.0: Framework providing a full text editor component
 kde-frameworks/ktextwidgets 5.46.0 5.50.0: Framework providing an assortment of widgets for displaying and editing text
 kde-frameworks/kunitconversion 5.46.0 5.50.0: Framework for converting units
 kde-frameworks/kwallet 5.46.0 5.50.0: Framework providing desktop-wide storage for passwords
@@ -6898,9 +6898,9 @@ kde-frameworks/kwidgetsaddons 5.46.0 5.50.0: An assortment of high-level widgets
 kde-frameworks/kwindowsystem 5.46.0 5.50.0: Framework providing access to properties and features of the window manager
 kde-frameworks/kxmlgui 5.46.0 5.50.0: Framework for managing menu and toolbar actions in an abstract way
 kde-frameworks/kxmlrpcclient 5.46.0 5.50.0: Framework providing client-side support for the XML-RPC protocol
-kde-frameworks/modemmanager-qt 5.46.0: ModemManager bindings for Qt
-kde-frameworks/networkmanager-qt 5.46.0: NetworkManager bindings for Qt
-kde-frameworks/oxygen-icons 5.46.0: Oxygen SVG icon theme
+kde-frameworks/modemmanager-qt 5.46.0 5.50.0: ModemManager bindings for Qt
+kde-frameworks/networkmanager-qt 5.46.0 5.50.0: NetworkManager bindings for Qt
+kde-frameworks/oxygen-icons 5.46.0 5.50.0: Oxygen SVG icon theme
 kde-frameworks/plasma 5.46.0 5.50.0: Plasma framework
 kde-frameworks/prison 5.46.0 5.50.0: QRCode and data matrix barcode library
 kde-frameworks/purpose 5.46.0 5.50.0: Library for providing abstractions to get the developer's purposes fulfilled
@@ -9078,7 +9078,7 @@ net-p2p/deluge 1.3.15-r2: BitTorrent client with a client/server model
 net-p2p/ed2k_hash 0.4.0-r1: Tool for generating eDonkey2000 links
 net-p2p/gtk-gnutella 1.1.13: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
-net-p2p/ktorrent 5.1.0: Powerful BitTorrent client based on KDE Frameworks
+net-p2p/ktorrent 5.1.0 5.1.1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mldonkey 3.1.5-r1: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
 net-p2p/ncdc 1.19.1: ncurses directconnect client
