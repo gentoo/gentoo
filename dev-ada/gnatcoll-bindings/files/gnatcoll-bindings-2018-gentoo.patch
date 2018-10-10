@@ -9,3 +9,24 @@
     end Compiler;
  
     package Binder is
+--- a/iconv/gnatcoll_iconv.gpr	2018-10-10 08:24:48.654714484 +0200
++++ b/iconv/gnatcoll_iconv.gpr	2018-10-10 08:24:16.926237733 +0200
+@@ -70,7 +70,7 @@
+             for Switches ("Ada") use ("-O2", "-gnatn", "-gnatwaCJ");
+             for Switches ("C") use ("-O2", "-Wunreachable-code");
+       end case;
+-
++      for Driver ("C") use External ("GCC", "gcc");
+    end Compiler;
+ 
+    package Binder is
+--- a/python/gnatcoll_python.gpr	2018-10-10 08:28:04.700481915 +0200
++++ b/python/gnatcoll_python.gpr	2018-10-10 08:27:33.880990030 +0200
+@@ -75,6 +75,7 @@
+             for Switches ("Ada") use ("-O2", "-gnatn", "-gnatwaCJ");
+             for Switches ("C") use ("-O2", "-Wunreachable-code") & Split(Python_CFLAGS, " ");
+       end case;
++      for Driver ("C") use External ("GCC", "gcc");
+    end Compiler;
+ 
+    package Binder is
