@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic multilib-minimal
+USE_RUBY="ruby23 ruby24 ruby25"
+inherit autotools flag-o-matic multilib-minimal ruby-single
 
 DESCRIPTION="Alternative to vendor specific OpenCL ICD loaders"
 HOMEPAGE="https://github.com/OCL-dev/ocl-icd"
@@ -12,10 +13,9 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE=""
+IUSE="+khronos-headers"
 
-DEPEND="dev-lang/ruby
-	dev-ruby/rubygems"
+DEPEND="${RUBY_DEPS}"
 RDEPEND="app-eselect/eselect-opencl"
 
 src_prepare() {
@@ -30,16 +30,23 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
+	default
+
+	# Drop .la files
 	find "${D}" -name '*.la' -delete || die
 
-	echo "/usr/$(get_libdir)/OpenCL/vendors/ocl-icd/libOpenCL.so" > "${PN}-${ABI}.icd"
-	insinto /etc/OpenCL/vendors/
-	doins "${PN}-${ABI}.icd"
+	OCL_DIR="/usr/$(get_libdir)/OpenCL/vendors/ocl-icd"
+	dodir ${OCL_DIR}/{,include}
 
-	emake DESTDIR="${D}" install
+	# Install vendor library
+	mv -f "${D}/usr/$(get_libdir)"/libOpenCL* "${ED}${OCL_DIR}" || die "Can't install vendor library"
 
-	OCL_DIR="${D}"/usr/"$(get_libdir)"/OpenCL/vendors/ocl-icd/
-	mkdir -p ${OCL_DIR} || die "mkdir failed"
+	# Install vendor headers
+	if use khronos-headers; then
+		cp -r "${S}/khronos-headers/CL" "${ED}${OCL_DIR}/include" || die "Can't install vendor headers"
+	fi
+}
 
-	mv "${D}/usr/$(get_libdir)"/libOpenCL* "${OCL_DIR}"
+pkg_postinst() {
+	eselect opencl set --use-old ${PN}
 }
