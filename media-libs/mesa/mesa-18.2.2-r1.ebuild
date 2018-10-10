@@ -95,7 +95,7 @@ RDEPEND="
 		)
 		lm_sensors? ( sys-apps/lm_sensors:=[${MULTILIB_USEDEP}] )
 		opencl? (
-					dev-libs/ocl-icd
+					dev-libs/ocl-icd[khronos-headers]
 					dev-libs/libclc
 					virtual/libelf:0=[${MULTILIB_USEDEP}]
 				)
