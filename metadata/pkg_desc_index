@@ -8669,7 +8669,7 @@ net-libs/libgsasl 1.8.0-r1: The GNU SASL library
 net-libs/libgssglue 0.4: exports a gssapi interface which calls other random gssapi libraries
 net-libs/libhubbub 0.3.3: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32-r1: A small library to interface to the Ident protocol server
-net-libs/libircclient 1.6-r2 1.8: Small but powerful library implementing the client-server IRC protocol
+net-libs/libircclient 1.8: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.18.0: iscsi client library and utilities
 net-libs/libisds 0.10.8: Client library for accessing ISDS Soap services
 net-libs/libktorrent 2.1-r1: BitTorrent library based on KDE Frameworks
