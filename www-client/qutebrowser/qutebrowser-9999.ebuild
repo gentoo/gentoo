@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-python/jinja-2.8[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.1.3[${PYTHON_USEDEP}]
 	>=dev-python/pypeg2-2.15.2[${PYTHON_USEDEP}]
-	>=dev-python/PyQt5-5.7.1[${PYTHON_USEDEP},declarative,gui,network,opengl,printsupport,sql,webengine,widgets]
+	>=dev-python/PyQt5-5.7.1[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,webengine,widgets]
 	>=dev-python/pyyaml-3.12[${PYTHON_USEDEP}]
 "
 
