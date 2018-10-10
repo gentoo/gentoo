@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ KDE_QTHELP="false"
 inherit kde5
 
 DESCRIPTION="Style for QtQuickControls 2 that uses QWidget's QStyle for painting"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm x86"
 LICENSE="|| ( GPL-2+ LGPL-3+ )"
 IUSE=""
 
