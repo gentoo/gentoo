@@ -25,6 +25,10 @@ RDEPEND="
 	png? ( dev-perl/GD[png] )
 "
 
+PATCHES=(
+	"${FILESDIR}/lcov-1.13-gcc-8.patch"
+)
+
 src_prepare() {
 	default
 	if use prefix; then
