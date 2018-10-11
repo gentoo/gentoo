@@ -18,13 +18,16 @@ IUSE="bridge examples +persistence +srv ssl tcpd test websockets"
 REQUIRED_USE="test? ( bridge )"
 
 RDEPEND="tcpd? ( sys-apps/tcp-wrappers )
+	srv? ( net-dns/c-ares )
 	ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	srv? ( net-dns/c-ares )
 	websockets? ( net-libs/libwebsockets )"
 
-PATCHES=( "${FILESDIR}/${P}-conditional-tests.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-fix-conditional-tests.patch"
+	"${FILESDIR}/${P}-fix-socket_get_address.patch"
+)
 
 _emake() {
 	LIBDIR=$(get_libdir)
@@ -60,6 +63,7 @@ src_prepare() {
 		client/Makefile lib/cpp/Makefile src/Makefile lib/Makefile || die
 
 	python_setup
+	rm test/{broker,lib}/ptest.py || die
 	python_fix_shebang test
 }
 
