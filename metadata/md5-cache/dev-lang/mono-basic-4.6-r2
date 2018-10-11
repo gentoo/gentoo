@@ -1,0 +1,13 @@
+DEFINED_PHASES=setup
+DEPEND=dev-lang/mono
+DESCRIPTION=Visual Basic Compiler and Runtime
+EAPI=7
+HOMEPAGE=https://www.mono-project.com/docs/about-mono/languages/visualbasic/
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2 MIT
+RDEPEND=dev-lang/mono
+RESTRICT=test
+SLOT=0
+SRC_URI=http://download.mono-project.com/sources/mono-basic/mono-basic-4.6.tar.bz2
+_eclasses_=mono-env	1f24c032c78290b0d9a07d5b343051a7
+_md5_=5fe595373970fa960aa07093921ef780
