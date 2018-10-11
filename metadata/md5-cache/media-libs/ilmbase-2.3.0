@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install test
+DEPEND=virtual/pkgconfig[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
+DESCRIPTION=OpenEXR ILM Base libraries
+EAPI=6
+HOMEPAGE=http://openexr.com/
+IUSE=static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 -arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris
+LICENSE=BSD
+SLOT=0/24
+SRC_URI=https://github.com/openexr/openexr/releases/download/v2.3.0/ilmbase-2.3.0.tar.gz
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=64fed41d663f60cd5274a56b65ceb137
