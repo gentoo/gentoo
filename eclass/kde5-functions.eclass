@@ -43,6 +43,7 @@ case ${CATEGORY} in
 		fi
 		if [[ ${PV} = 5.12* || ${PV} = 5.13.5 ]]; then
 			: ${FRAMEWORKS_MINIMAL:=5.46.0}
+			: ${KDE_APPS_MINIMAL:=17.12.3}
 			: ${QT_MINIMAL:=5.9.4}
 		fi
 		if [[ ${KDE_BUILD_TYPE} = live && ${PV} != 5.??.49* ]]; then
@@ -73,7 +74,7 @@ esac
 # @ECLASS-VARIABLE: KDE_APPS_MINIMAL
 # @DESCRIPTION:
 # Minimum version of KDE Applications to require. This affects add_kdeapps_dep.
-: ${KDE_APPS_MINIMAL:=17.12.3}
+: ${KDE_APPS_MINIMAL:=18.04.3}
 
 # @ECLASS-VARIABLE: KDE_GCC_MINIMAL
 # @DEFAULT_UNSET
