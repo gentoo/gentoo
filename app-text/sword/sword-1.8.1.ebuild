@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,6 +40,7 @@ src_prepare() {
 	DataPath=${EPREFIX}/usr/share/${PN}/
 	EOF
 	eapply "${FILESDIR}/${PN}-1.7.4-configure.patch"
+	eapply "${FILESDIR}/${PN}-1.8.1-icu61.diff"
 	eapply_user
 }
 
