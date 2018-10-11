@@ -10,8 +10,7 @@ SLOT="0"
 
 IUSE="nls minimal pax_kernel xen doc"
 
-#TODO: multilib-minimal support
-inherit autotools eutils linux-info mono-env flag-o-matic pax-utils
+inherit autotools eutils linux-info mono-env flag-o-matic pax-utils multilib-minimal
 
 DESCRIPTION="Mono runtime and class libraries, a C# compiler/interpreter"
 HOMEPAGE="http://www.mono-project.com/Main_Page"
@@ -72,12 +71,17 @@ src_prepare() {
 	# mono build system can fail otherwise
 	strip-flags
 
+	# prebuilt files were left in tarball by accident:
+	rm -rv external/corefx/src/Native/Unix/System.Native/.libs || die
+	rm -rv external/corefx/src/Native/Unix/System.Native/*.{o,lo} || die
+
 	default
 	# PATCHES contains configure.ac patch
 	eautoreconf
+	multilib_copy_sources
 }
 
-src_configure() {
+multilib_src_configure() {
 	local myeconfargs=(
 		--disable-silent-rules
 		$(use_with xen xen_opt)
@@ -90,12 +94,12 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
-src_test() {
+multilib_src_test() {
 	cd mcs/tests || die
 	emake check
 }
 
-src_install() {
+multilib_src_install() {
 	default_src_install
 
 	# Remove files not respecting LDFLAGS and that we are not supposed to provide, see Fedora
