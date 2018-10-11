@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ RDEPEND="
 	$(add_qt_dep qtwidgets)
 	>=app-crypt/gpgme-1.7.1:=[cxx,qt5]
 	dev-libs/kasync
-	>=dev-libs/sink-0.5.0
+	>=dev-libs/sink-0.7.0
 "
 DEPEND="${RDEPEND}
 	test? ( $(add_qt_dep qttest) )

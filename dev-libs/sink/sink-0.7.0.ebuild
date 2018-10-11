@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,7 @@ IUSE=""
 # uses it as a public dependency but doesn't search for it properly
 RDEPEND="
 	$(add_frameworks_dep kcoreaddons)
+	$(add_kdeapps_dep kcalcore)
 	$(add_kdeapps_dep kcontacts)
 	$(add_kdeapps_dep kmime)
 	$(add_qt_dep qtgui)
@@ -24,6 +25,7 @@ RDEPEND="
 	dev-db/lmdb:=
 	dev-libs/flatbuffers
 	dev-libs/kasync
+	>=dev-libs/xapian-1.4.4:0=
 	net-libs/kdav2
 	net-libs/kimap2
 	net-misc/curl
