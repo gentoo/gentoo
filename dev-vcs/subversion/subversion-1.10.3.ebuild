@@ -1,15 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby23 ruby22 ruby21"
+USE_RUBY="ruby25 ruby24 ruby23"
 DISTUTILS_OPTIONAL=1
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
 
-inherit autotools bash-completion-r1 db-use depend.apache distutils-r1 elisp-common flag-o-matic java-pkg-opt-2 libtool ltprune multilib perl-module ruby-single xdg-utils
+inherit autotools bash-completion-r1 db-use depend.apache distutils-r1 elisp-common flag-o-matic java-pkg-opt-2 libtool multilib perl-module ruby-single xdg-utils
 
 MY_P="${P/_/-}"
 DESCRIPTION="Advanced version control system"
@@ -73,6 +73,9 @@ DEPEND="${COMMON_DEPEND}
 		virtual/pkgconfig
 	)
 	nls? ( sys-devel/gettext )
+	perl? ( dev-lang/swig )
+	python? ( dev-lang/swig )
+	ruby? ( dev-lang/swig )
 	test? ( ${PYTHON_DEPS} )"
 
 REQUIRED_USE="
