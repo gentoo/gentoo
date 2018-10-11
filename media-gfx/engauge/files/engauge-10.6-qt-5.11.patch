@@ -1,0 +1,26 @@
+Bug: https://bugs.gentoo.org/662476
+
+From 5eab86bf84dd1e52fc52b427a8f3508780811976 Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Thu, 11 Oct 2018 23:51:15 +1100
+Subject: [PATCH] Add missing include.
+
+---
+ src/Load/LoadImageFromUrl.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/Load/LoadImageFromUrl.cpp b/src/Load/LoadImageFromUrl.cpp
+index 684629bd..1150dad0 100644
+--- a/src/Load/LoadImageFromUrl.cpp
++++ b/src/Load/LoadImageFromUrl.cpp
+@@ -10,6 +10,7 @@
+ #include <QFileInfo>
+ #include <QMessageBox>
+ #include <QtNetwork/QNetworkReply>
++#include <QTextStream>
+ #include <QUrl>
+ #include "Version.h"
+ 
+-- 
+2.18.1
+
