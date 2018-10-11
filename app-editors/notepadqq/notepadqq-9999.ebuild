@@ -33,8 +33,6 @@ DEPEND="
 	dev-qt/qtsvg:5
 "
 
-PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
-
 src_prepare() {
 	default
 
