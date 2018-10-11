@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Virgil Dupras <vdupras@gentoo.org> (11 Oct 2018)
+# Dead upstream, unmaintained, no revdep. Removal in 30 days.
+# Bug #659532
+net-libs/libgcal
+
+# Virgil Dupras <vdupras@gentoo.org> (11 Oct 2018)
 # Unmaintained, no revdep. Removal in 30 days.
 # Bug #661554 Bug #661552
 dev-libs/MicroJSON
