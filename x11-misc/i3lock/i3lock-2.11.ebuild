@@ -34,7 +34,7 @@ src_prepare() {
 
 	echo ${PV} > I3LOCK_VERSION
 
-	sed -i -e 's:login:system-auth:' ${PN}.pam || die
+	sed -i -e 's:login:system-auth:' pam/${PN} || die
 
 	eautoreconf
 
