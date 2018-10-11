@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=argon2? ( dev-libs/libsodium ) bzip2? ( app-arch/bzip2 ) caps? ( sys-libs/libcap ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) lua? ( dev-lang/lua:* ) lucene? ( >=dev-cpp/clucene-2.3 ) lzma? ( app-arch/xz-utils ) lz4? ( app-arch/lz4 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:* !dev-db/postgresql[ldap,threads] ) selinux? ( sec-policy/selinux-dovecot ) solr? ( net-misc/curl dev-libs/expat ) sqlite? ( dev-db/sqlite:* ) !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) tcpd? ( sys-apps/tcp-wrappers ) textcat? ( app-text/libexttextcat ) vpopmail? ( net-mail/vpopmail ) zlib? ( sys-libs/zlib ) virtual/libiconv dev-libs/icu:= >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=An IMAP and POP3 server written with security primarily in mind
+EAPI=6
+HOMEPAGE=https://www.dovecot.org/
+IUSE=kerberos ldap lua mysql pam postgres sqlite vpopmail bzip2 lzma lz4 zlib argon2 caps doc ipv6 libressl lucene managesieve selinux sieve solr static-libs suid tcpd textcat
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=LGPL-2.1 MIT
+RDEPEND=argon2? ( dev-libs/libsodium ) bzip2? ( app-arch/bzip2 ) caps? ( sys-libs/libcap ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) lua? ( dev-lang/lua:* ) lucene? ( >=dev-cpp/clucene-2.3 ) lzma? ( app-arch/xz-utils ) lz4? ( app-arch/lz4 ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:* !dev-db/postgresql[ldap,threads] ) selinux? ( sec-policy/selinux-dovecot ) solr? ( net-misc/curl dev-libs/expat ) sqlite? ( dev-db/sqlite:* ) !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) tcpd? ( sys-apps/tcp-wrappers ) textcat? ( app-text/libexttextcat ) vpopmail? ( net-mail/vpopmail ) zlib? ( sys-libs/zlib ) virtual/libiconv dev-libs/icu:= net-mail/mailbase
+SLOT=0
+SRC_URI=https://dovecot.org/releases/2.3/dovecot-2.3.3.tar.gz sieve? ( https://pigeonhole.dovecot.org/releases/2.3/dovecot-2.3-pigeonhole-0.5.3.tar.gz ) managesieve? ( https://pigeonhole.dovecot.org/releases/2.3/dovecot-2.3-pigeonhole-0.5.3.tar.gz )
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	ssl-cert	a1a4daed6b2479901759d6fe367c4c29	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	versionator	2352c3fc97241f6a02042773c8287748
+_md5_=7e360031a98a8d08127e89dc013b3045
