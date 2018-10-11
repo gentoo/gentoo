@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( AUTHORS COPYING NEWS.md README.md )
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
