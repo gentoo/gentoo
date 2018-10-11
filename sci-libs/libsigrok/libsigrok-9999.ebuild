@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
-inherit eutils python-single-r1 java-pkg-opt-2
+inherit eutils gnome2-utils python-single-r1 java-pkg-opt-2 xdg-utils
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
@@ -79,4 +79,14 @@ src_test() {
 src_install() {
 	default
 	prune_libtool_files
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
