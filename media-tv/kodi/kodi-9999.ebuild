@@ -41,7 +41,7 @@ REQUIRED_USE="
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	airplay? (
-		>=app-pda/libplist-2.0.0[python,${PYTHON_USEDEP}]
+		>=app-pda/libplist-2.0.0
 		net-libs/shairplay
 	)
 	alsa? ( >=media-libs/alsa-lib-1.1.4.1 )
@@ -122,9 +122,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	zeroconf? ( net-dns/avahi[dbus] )
 "
 RDEPEND="${COMMON_DEPEND}
-	lirc? (
-		|| ( app-misc/lirc app-misc/inputlircd )
-	)
+	lirc? ( app-misc/lirc )
 	!media-tv/xbmc
 	udisks? ( sys-fs/udisks:2 )
 	upower? (
