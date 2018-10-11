@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst postrm prepare test
+DEPEND=dev-libs/libxml2:2 >=dev-scheme/guile-2:12= gnome-base/librsvg:2 media-libs/fontconfig:1.0 >=media-libs/libsmf-1.3 >=media-libs/libsndfile-1.0.28-r1 >=media-sound/lilypond-2.19.54[guile2] alsa? ( >=media-libs/alsa-lib-1.1.2 ) aubio? ( >=media-libs/aubio-0.4.1-r1 ) evince? ( >=app-text/evince-3.22.1-r1:= ) fluidsynth? ( >=media-sound/fluidsynth-1.1.6-r1 ) gtk3? ( x11-libs/gtk+:3 x11-libs/gtksourceview:3.0= ) !gtk3? ( x11-libs/gtk+:2 x11-libs/gtksourceview:2.0 ) jack? ( virtual/jack ) portaudio? ( >=media-libs/portaudio-19_pre20140130 sci-libs/fftw:3.0= ) portmidi? ( >=media-libs/portmidi-217-r1 ) rubberband? ( >=media-libs/rubberband-1.8.1-r1 ) >=dev-util/intltool-0.51.0-r1 >=sys-devel/flex-2.6.1 virtual/pkgconfig virtual/yacc doc? ( >=dev-util/gtk-doc-1.25-r1 ) nls? ( >=sys-devel/gettext-0.19.8.1 ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A music notation editor
+EAPI=6
+HOMEPAGE=http://www.denemo.org/
+IUSE=alsa +aubio debug +evince doc jack +fluidsynth +gtk3 nls +portaudio +portmidi +rubberband static test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+ OFL-1.1
+RDEPEND=dev-libs/libxml2:2 >=dev-scheme/guile-2:12= gnome-base/librsvg:2 media-libs/fontconfig:1.0 >=media-libs/libsmf-1.3 >=media-libs/libsndfile-1.0.28-r1 >=media-sound/lilypond-2.19.54[guile2] alsa? ( >=media-libs/alsa-lib-1.1.2 ) aubio? ( >=media-libs/aubio-0.4.1-r1 ) evince? ( >=app-text/evince-3.22.1-r1:= ) fluidsynth? ( >=media-sound/fluidsynth-1.1.6-r1 ) gtk3? ( x11-libs/gtk+:3 x11-libs/gtksourceview:3.0= ) !gtk3? ( x11-libs/gtk+:2 x11-libs/gtksourceview:2.0 ) jack? ( virtual/jack ) portaudio? ( >=media-libs/portaudio-19_pre20140130 sci-libs/fftw:3.0= ) portmidi? ( >=media-libs/portmidi-217-r1 ) rubberband? ( >=media-libs/rubberband-1.8.1-r1 )
+REQUIRED_USE=evince? ( gtk3 )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://gnu/denemo/denemo-2.2.0.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=260158fbecdc8c7b7f785ae9a562bc47
