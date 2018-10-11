@@ -10154,7 +10154,7 @@ sys-fs/inotify-tools 3.14: a set of command-line programs providing a simple int
 sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/lessfs 1.5.13 1.7.0: A high performance inline data deduplicating filesystem
 sys-fs/lsscsi 0.28 0.29: SCSI sysfs query tool
-sys-fs/lvm2 2.02.116 2.02.116-r4 2.02.145-r2: User-land utilities for LVM2 (device-mapper) software
+sys-fs/lvm2 2.02.116 2.02.145-r2: User-land utilities for LVM2 (device-mapper) software
 sys-fs/mac-fdisk 0.1-r7: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 3.4: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mhddfs 0.1.39: Fuse multi harddrive filesystem
