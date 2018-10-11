@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (12 Oct 2018)
+# Unmask arch-specific USE flags available on amd64
+net-analyzer/testssl -bundled-openssl -kerberos
+
 # Thomas Deutschmann <whissi@gentoo.org> (30 Sep 2018)
 # Unmask libheif support where media-libs/libheif is keyworded
 media-gfx/imagemagick -heif

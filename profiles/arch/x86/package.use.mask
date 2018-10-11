@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Michael Palimaka <kensington@gentoo.org> (12 Oct 2018)
+# Unmask arch-specific USE flag available on x86
+net-analyzer/testssl -bundled-openssl
+
 # Thomas Deutschmann <whissi@gentoo.org> (30 Sep 2018)
 # Unmask libheif support where media-libs/libheif is keyworded
 media-gfx/imagemagick -heif
