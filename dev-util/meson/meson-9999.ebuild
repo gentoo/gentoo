@@ -24,10 +24,6 @@ IUSE=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=""
 
-PATCHES=(
-	"${FILESDIR}"/test-llvm.patch
-)
-
 python_test() {
 	(
 		# test_meson_installed
