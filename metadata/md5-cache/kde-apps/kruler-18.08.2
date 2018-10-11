@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup test unpack
+DEPEND=>=kde-frameworks/kconfig-5.50.0:5 >=kde-frameworks/kconfigwidgets-5.50.0:5 >=kde-frameworks/kcoreaddons-5.50.0:5 >=kde-frameworks/ki18n-5.50.0:5 >=kde-frameworks/knotifications-5.50.0:5 >=kde-frameworks/kwidgetsaddons-5.50.0:5 >=kde-frameworks/kwindowsystem-5.50.0:5 >=kde-frameworks/kxmlgui-5.50.0:5 >=dev-qt/qtgui-5.9.4:5 >=dev-qt/qtwidgets-5.9.4:5 X? ( >=dev-qt/qtx11extras-5.9.4:5 x11-libs/libxcb ) sys-devel/make >=dev-util/cmake-3.9.6 >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info >=kde-frameworks/extra-cmake-modules-5.50.0:5 handbook? ( >=kde-frameworks/kdoctools-5.50.0:5 ) >=dev-qt/qtcore-5.9.4:5 dev-util/desktop-file-utils app-arch/xz-utils
+DESCRIPTION=Screen ruler for Plasma
+EAPI=6
+HOMEPAGE=https://www.kde.org/applications/graphics/kruler/
+IUSE=X debug +handbook
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+ handbook? ( FDL-1.2 )
+RDEPEND=>=kde-frameworks/kconfig-5.50.0:5 >=kde-frameworks/kconfigwidgets-5.50.0:5 >=kde-frameworks/kcoreaddons-5.50.0:5 >=kde-frameworks/ki18n-5.50.0:5 >=kde-frameworks/knotifications-5.50.0:5 >=kde-frameworks/kwidgetsaddons-5.50.0:5 >=kde-frameworks/kwindowsystem-5.50.0:5 >=kde-frameworks/kxmlgui-5.50.0:5 >=dev-qt/qtgui-5.9.4:5 >=dev-qt/qtwidgets-5.9.4:5 X? ( >=dev-qt/qtx11extras-5.9.4:5 x11-libs/libxcb ) >=kde-frameworks/kf-env-4 || ( >=kde-frameworks/breeze-icons-5.50.0:5 kde-frameworks/oxygen-icons:* ) !kde-apps/kruler:4 !kde-apps/kde-l10n !<kde-apps/kde4-l10n-16.12.0:4 !kde-apps/kdepim-l10n:5 >=dev-qt/qtcore-5.9.4:5
+SLOT=5
+SRC_URI=mirror://kde/stable/applications/18.08.2/src/kruler-18.08.2.tar.xz
+_eclasses_=cmake-utils	f0bc1c175684130a76ab6c17f575d820	desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	kde5	13d3b96a32511c767537abe037b05d16	kde5-functions	14a4f2f8d941650deb9c4c06269578b5	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	virtualx	401b718cc14d43a5a7fbe062c4851ba5	xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=4c15bd5ed60297294f714b08f2366a19

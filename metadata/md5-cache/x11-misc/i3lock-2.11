@@ -1,0 +1,13 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=install prepare
+DEPEND=>=x11-libs/libxkbcommon-0.5.0[X] dev-libs/libev virtual/pam x11-libs/cairo[xcb] x11-libs/libxcb[xkb] x11-libs/xcb-util virtual/pkgconfig
+DESCRIPTION=Simple screen locker
+EAPI=7
+HOMEPAGE=https://i3wm.org/i3lock/
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=BSD
+RDEPEND=>=x11-libs/libxkbcommon-0.5.0[X] dev-libs/libev virtual/pam x11-libs/cairo[xcb] x11-libs/libxcb[xkb] x11-libs/xcb-util
+SLOT=0
+SRC_URI=https://i3wm.org/i3lock/i3lock-2.11.tar.bz2
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=5b6e4b1503414b70b166b293fc06a370
