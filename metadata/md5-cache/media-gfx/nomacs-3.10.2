@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5[jpeg?] dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 >=media-gfx/exiv2-0.25:= opencv? ( media-libs/opencv:=[-qt4(-)] ) raw? ( >=media-libs/libraw-0.14:= ) tiff? ( dev-qt/qtimageformats:5 media-libs/tiff:0 ) zip? ( >=dev-libs/quazip-0.7.2[qt5(+)] ) dev-qt/linguist-tools:5 virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=Qt-based image viewer
+EAPI=6
+HOMEPAGE=https://nomacs.org/
+IUSE=+jpeg +opencv raw tiff zip
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+LICENSE=GPL-3+
+RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5[jpeg?] dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 >=media-gfx/exiv2-0.25:= opencv? ( media-libs/opencv:=[-qt4(-)] ) raw? ( >=media-libs/libraw-0.14:= ) tiff? ( dev-qt/qtimageformats:5 media-libs/tiff:0 ) zip? ( >=dev-libs/quazip-0.7.2[qt5(+)] )
+REQUIRED_USE=raw? ( opencv ) tiff? ( opencv )
+SLOT=0
+SRC_URI=https://github.com/nomacs/nomacs/archive/3.10.2.tar.gz -> nomacs-3.10.2.tar.gz
+_eclasses_=cmake-utils	f0bc1c175684130a76ab6c17f575d820	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=a7c7b67afe068b3942799d4912b74b19

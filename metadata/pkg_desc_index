@@ -2922,8 +2922,6 @@ dev-lang/yap 6.3.3: YAP is a high-performance Prolog compiler
 dev-lang/yasm 1.2.0-r1 1.3.0: An assembler for x86 and x86_64 instruction sets
 dev-libs/9libs 1.0-r3: A package of Plan 9 compatibility libraries
 dev-libs/Ice 3.6.3-r1: ICE middleware C++ library and generator tools
-dev-libs/MicroJSON 0.3.1: Small and simple to use JSON generation and parsing library
-dev-libs/UTF8Strings 1.14.2: C++ library providing ability to work natively with UTF8 string
 dev-libs/ace 5.7.2: The Adaptive Communications Environment
 dev-libs/appstream 0.10.6-r1: Cross-distro effort for providing metadata for software in the Linux ecosystem
 dev-libs/appstream-glib 0.6.13: Provides GObjects and helper methods to read and write AppStream metadata
