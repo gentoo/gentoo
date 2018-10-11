@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-multilib
 
 DESCRIPTION="An open-source JPEG 2000 library"
-HOMEPAGE="http://www.openjpeg.org"
+HOMEPAGE="https://www.openjpeg.org"
 SRC_URI="mirror://sourceforge/${PN}.mirror/${P}.tar.gz"
 
 LICENSE="BSD-2"

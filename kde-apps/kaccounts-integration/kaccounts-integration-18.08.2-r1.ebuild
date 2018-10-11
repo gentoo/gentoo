@@ -14,7 +14,7 @@ LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
-RDEPEND="
+COMMON_DEPEND="
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kdbusaddons)
@@ -29,10 +29,13 @@ RDEPEND="
 	>=net-libs/libaccounts-glib-1.21
 	net-libs/signond
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kcmutils)
 	$(add_plasma_dep kde-cli-tools)
 	sys-devel/gettext
+"
+RDEPEND="${COMMON_DEPEND}
+	dev-util/intltool
 "
 
 # bug #549444
