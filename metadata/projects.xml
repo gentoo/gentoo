@@ -3835,6 +3835,11 @@ developers and volunteer mentors.</description>
       <name>Pacho Ramos</name>
       <role>Member</role>
     </member>
+    <member>
+      <email>vdupras@gentoo.org</email>
+      <name>Virgil Dupras</name>
+      <role>Member</role>
+    </member>
   </project>
   <project>
     <email>udev-bugs@gentoo.org</email>
