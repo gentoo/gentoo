@@ -1,20 +1,23 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils linux-info mono-env flag-o-matic pax-utils versionator multilib-minimal
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
 
-DESCRIPTION="Mono runtime and class libraries, a C# compiler/interpreter"
-HOMEPAGE="https://www.mono-project.com/Main_Page"
-SRC_URI="https://download.mono-project.com/sources/${PN}/${P}.tar.bz2"
-
-LICENSE="MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDPL"
+RESTRICT="mirror"
 SLOT="0"
 
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~arm64"
-
 IUSE="nls minimal pax_kernel xen doc"
+
+#TODO: multilib-minimal support
+inherit autotools eutils linux-info mono-env flag-o-matic pax-utils
+
+DESCRIPTION="Mono runtime and class libraries, a C# compiler/interpreter"
+HOMEPAGE="http://www.mono-project.com/Main_Page"
+LICENSE="MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDPL"
+
+SRC_URI="http://download.mono-project.com/sources/mono/${P}.tar.bz2"
 
 COMMONDEPEND="
 	!minimal? ( >=dev-dotnet/libgdiplus-2.10 )
@@ -33,9 +36,8 @@ DEPEND="${COMMONDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.0.1.1-x86_32.patch
+	"${FILESDIR}"/mono-5.12-try-catch.patch
 )
-
-#S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
 
 pkg_pretend() {
 	linux-info_pkg_setup
@@ -70,17 +72,12 @@ src_prepare() {
 	# mono build system can fail otherwise
 	strip-flags
 
-	#TODO: resolve problem with newer binutils
-	#bug: https://bugs.gentoo.org/show_bug.cgi?id=600664
-	#append-flags -fPIC
-
 	default
 	# PATCHES contains configure.ac patch
 	eautoreconf
-	multilib_copy_sources
 }
 
-multilib_src_configure() {
+src_configure() {
 	local myeconfargs=(
 		--disable-silent-rules
 		$(use_with xen xen_opt)
@@ -93,12 +90,12 @@ multilib_src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
-multilib_src_test() {
+src_test() {
 	cd mcs/tests || die
 	emake check
 }
 
-multilib_src_install() {
+src_install() {
 	default_src_install
 
 	# Remove files not respecting LDFLAGS and that we are not supposed to provide, see Fedora
