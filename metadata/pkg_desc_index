@@ -748,7 +748,7 @@ app-emulation/ganeti-instance-debootstrap 0.11: Scripts to build Ganeti VMs with
 app-emulation/ganeti-instance-image 0.6: Scripts to build out CD or image based VMs using Ganeti
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
 app-emulation/hercules 3.10: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
-app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library emulator
+app-emulation/libcacard 0.1.2 2.5.1 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libvirt 4.3.0 4.5.0-r1: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
@@ -2894,7 +2894,7 @@ dev-lang/mercury-extras 13.05.2 14.01.1: Additional libraries and tools that are
 dev-lang/mmix 20131017 20160804: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/mono 4.4.1.0 4.8.0.524: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 4.6-r1: Visual Basic Compiler and Runtime
-dev-lang/mujs 0_p20161202: lightweight Javascript interpreter
+dev-lang/mujs 0_p20161202 1.0.4: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01 2.13.01: groovy little assembler
 dev-lang/ocaml 4.04.2-r1: Type-inferring functional programming language descended from the ML family
 dev-lang/orc 0.4.28-r1: The Oil Runtime Compiler, a just-in-time compiler for array operations
