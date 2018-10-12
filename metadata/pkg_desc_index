@@ -4874,7 +4874,7 @@ dev-python/flask-sqlalchemy 2.1 2.3.2: SQLAlchemy support for Flask applications
 dev-python/flask-testing 0.4.2 0.6.2: Unit testing for Flask
 dev-python/flask-themes 0.1.3-r1: Infrastructure for theming support in Flask applications
 dev-python/flask-uploads 0.2.0-r1: Flexible and efficient upload handling for Flask
-dev-python/flask-wtf 0.14.2 0.14.2-r1: Simple integration of Flask and WTForms
+dev-python/flask-wtf 0.14.2-r1: Simple integration of Flask and WTForms
 dev-python/flask-xml-rpc 0.1.2-r1: XML-RPC support for Flask applications
 dev-python/flexx 0.3.1 0.4.1: Pure Python toolkit for creating GUI's using web technology
 dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
