@@ -3086,7 +3086,7 @@ dev-libs/libgusb 0.2.11: GObject wrapper for libusb
 dev-libs/libgweather 3.24.1: Library to access weather information from online services
 dev-libs/libical 2.0.0-r3: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.14 1.14-r1: GNU charset conversion library for libc which doesn't implement it
-dev-libs/libindicate 12.10.1-r2 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
+dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
 dev-libs/libinput 1.10.7: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.7: the GNU international library (split out of gettext)
