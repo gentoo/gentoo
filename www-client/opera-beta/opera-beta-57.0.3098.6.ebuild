@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 CHROMIUM_LANGS="
-	be bg bn ca cs da de el en-GB es-419 es fil fi fr-CA fr hi hr hu id it
+	be bg bn ca cs da de el en-GB es es-419 fi fil fr fr-CA hi hr hu id it
 	ja ko lt lv ms nb nl pl pt-BR pt-PT ro ru sk sr sv sw ta te th tr uk vi
 	zh-CN zh-TW
 "
@@ -67,6 +67,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	epatch_user
+
 	case ${ARCH} in
 		amd64)
 			mv usr/lib/x86_64-linux-gnu usr/$(get_libdir) || die
@@ -77,10 +79,10 @@ src_prepare() {
 			;;
 	esac
 
-	rm usr/bin/${PN} || die
-
-	rm usr/share/doc/${PN}/copyright || die
 	mv usr/share/doc/${PN} usr/share/doc/${PF} || die
+	gunzip usr/share/doc/${PF}/changelog.gz || die
+
+	rm usr/bin/${PN} || die
 
 	pushd "${OPERA_HOME}/localization" > /dev/null || die
 	chromium_remove_language_paks
