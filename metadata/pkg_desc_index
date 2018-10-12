@@ -4810,7 +4810,7 @@ dev-python/ecdsa 0.13: ECDSA cryptographic signature library in pure Python
 dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python object
 dev-python/egenix-mx-base 3.2.5: eGenix utils for Python
 dev-python/egg-python 2.25.3-r1: EggTrayIcon bindings for Python
-dev-python/elasticsearch-curator 5.1.2 5.4.1: Tending time-series indices in Elasticsearch
+dev-python/elasticsearch-curator 5.4.1: Tending time-series indices in Elasticsearch
 dev-python/elasticsearch-py 5.5.2: official Python low-level client for Elasticsearch
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications

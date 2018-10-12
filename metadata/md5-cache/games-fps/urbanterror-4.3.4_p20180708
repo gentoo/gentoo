@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile configure install postinst postrm pretend
 DEPEND=client? ( media-libs/libsdl2:=[X,sound,joystick,opengl,video] mumble? ( media-sound/mumble:= ) openal? ( media-libs/openal:= ) opus? ( media-libs/opusfile:= ) vorbis? ( media-libs/libvorbis:= ) ) curl? ( net-misc/curl ) ~games-fps/urbanterror-data-4.3.4 sys-libs/zlib:=[minizip] virtual/jpeg:0
 DESCRIPTION=Hollywood tactical shooter based on the ioquake3 engine
-EAPI=6
+EAPI=7
 HOMEPAGE=https://urbanterror.info https://github.com/mickael9/ioq3
 IUSE=+altgamma +client +curl debug mumble openal +opus server +skeetshootmod voip vorbis
 KEYWORDS=~amd64 ~x86
@@ -9,6 +9,6 @@ LICENSE=GPL-2
 RDEPEND=client? ( media-libs/libsdl2:=[X,sound,joystick,opengl,video] mumble? ( media-sound/mumble:= ) openal? ( media-libs/openal:= ) opus? ( media-libs/opusfile:= ) vorbis? ( media-libs/libvorbis:= ) ) curl? ( net-misc/curl ) ~games-fps/urbanterror-data-4.3.4 sys-libs/zlib:=[minizip] virtual/jpeg:0
 REQUIRED_USE=|| ( client server ) voip? ( opus )
 SLOT=0
-SRC_URI=https://github.com/mickael9/ioq3/archive/e8c941ec8b753b9ecb4f8c4fcec07e4fe3babc64.tar.gz -> urbanterror-4.3.4_p20180627.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=79e7cf19aff009c8eb61bec007ad93e8
+SRC_URI=https://github.com/mickael9/ioq3/archive/167cb6b611ad27f30787a2fe204a7c65ec1fa18e.tar.gz -> urbanterror-4.3.4_p20180708.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=0c47d665b85040bbf4328f6ac8d3da16
