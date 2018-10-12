@@ -157,12 +157,6 @@ media-libs/celt
 # Slot to be removed in 30 days
 dev-db/myodbc:5.2
 
-# Michał Górny <mgorny@gentoo.org> (13 Sep 2018)
-# Depends on old version of dev-libs/jsoncpp, blocking its pruning.
-# Downstream maintainer is inactive to bump it.  Removal in 30 days.
-# Bug #656678.
-dev-lang/solidity
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 Sep 2018)
 # Mask transition ebuilds that were needed only for <glibc-2.26
 # We will keep them in the tree as long as we have masked
