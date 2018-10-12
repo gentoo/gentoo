@@ -8898,7 +8898,7 @@ net-misc/iprange 1.0.4: iprange utility
 net-misc/ipsc 0.4.3.2-r2: IP Subnet Calculator
 net-misc/ipsorcery 2.0.9-r2: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
 net-misc/iputils 20171016_pre: Network monitoring tools including ping and ping6
-net-misc/ipv6calc 0.97.4 0.99.2: IPv6 address calculator
+net-misc/ipv6calc 0.97.4 0.99.2 1.0.0: IPv6 address calculator
 net-misc/ipx-utils 1.1-r4: The IPX Utilities
 net-misc/java-wakeonlan 1.0.0-r2: A wakeonlan commandline tool and Java library
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing and/or controlling a distance PC
