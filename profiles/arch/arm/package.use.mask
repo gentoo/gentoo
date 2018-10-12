@@ -1,5 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
+# Requires www-client/firefox which isn't available on ARM yet
+# due to dev-lang/rust requirement
+dev-ruby/capybara test
 
 # Michał Górny <mgorny@gentoo.org> (20 Sep 2018)
 # dev-libs/libpfm not keyworded here (and unclear if it supports ARM).
