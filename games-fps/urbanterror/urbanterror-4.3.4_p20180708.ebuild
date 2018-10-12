@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit desktop eapi7-ver flag-o-matic toolchain-funcs xdg-utils
+inherit desktop flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="Hollywood tactical shooter based on the ioquake3 engine"
 HOMEPAGE="https://urbanterror.info https://github.com/mickael9/ioq3"
@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mickael9/ioq3.git"
 	EGIT_BRANCH="urt"
 else
-	COMMIT_ID="e8c941ec8b753b9ecb4f8c4fcec07e4fe3babc64"
+	COMMIT_ID="167cb6b611ad27f30787a2fe204a7c65ec1fa18e"
 	SRC_URI="https://github.com/mickael9/ioq3/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/ioq3-${COMMIT_ID}"
 	KEYWORDS="~amd64 ~x86"
@@ -28,8 +28,7 @@ REQUIRED_USE="|| ( client server )
 DOCS=( ChangeLog README.md README.ioq3.md md4-readme.txt )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.3-fix-build_system.patch
-	"${FILESDIR}"/${PN}-4.3.3_p20180218-fix-loop.patch
+	"${FILESDIR}"/${PN}-4.3.4_p20180708-fix-build_system.patch
 )
 
 RDEPEND="

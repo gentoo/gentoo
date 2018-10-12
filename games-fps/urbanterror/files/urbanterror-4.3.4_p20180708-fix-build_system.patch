@@ -5,19 +5,11 @@ Respect CFLAGS, CPPFLAGS etc. This patch is inspired
 by hasufell’s patch.
 
 Edit 2018-03-19: Now with server support!
+Edit 2018-09-01: Update to take Makefile changes into account.
 
---- a/Makefile	2018-03-19 11:00:00.000000000 +0100
-+++ b/Makefile	2018-03-19 11:00:00.000000001 +0100
-@@ -223,7 +223,7 @@
- ifndef USE_ALTGAMMA
-   # Clearskies - X11-based gamma for Linux
-   USE_ALTGAMMA=1
--endif
-+  endif
- 
- ifndef USE_SKEETMOD
-   USE_SKEETMOD=0
-@@ -306,34 +306,33 @@
+--- a/Makefile	2018-07-08 11:00:00.000000000 +0200
++++ b/Makefile	2018-09-01 11:00:00.000000001 +0200
+@@ -308,34 +308,33 @@
  CLIENT_EXTRA_FILES=
  
  ifneq (,$(findstring "$(PLATFORM)", "linux" "gnu_kfreebsd" "kfreebsd-gnu" "gnu"))
@@ -46,13 +38,13 @@ Edit 2018-03-19: Now with server support!
      HAVE_VM_COMPILED=true
    else
    ifeq ($(ARCH),ppc)
--    BASE_CFLAGS += -maltivec
-+    BASE_CFLAGS +=
+-    ALTIVEC_CFLAGS = -maltivec
++    ALTIVEC_CFLAGS =
      HAVE_VM_COMPILED=true
    endif
    ifeq ($(ARCH),ppc64)
--    BASE_CFLAGS += -maltivec
-+    BASE_CFLAGS +=
+-    ALTIVEC_CFLAGS = -maltivec
++    ALTIVEC_CFLAGS =
      HAVE_VM_COMPILED=true
    endif
    ifeq ($(ARCH),sparc)
@@ -63,7 +55,7 @@ Edit 2018-03-19: Now with server support!
      HAVE_VM_COMPILED=true
    endif
    ifeq ($(ARCH),armv7l)
-@@ -1130,12 +1129,12 @@
+@@ -1143,7 +1142,7 @@
  
  define DO_CC
  $(echo_cmd) "CC $<"
@@ -71,14 +63,17 @@ Edit 2018-03-19: Now with server support!
 +$(Q)$(CC) $(NOTSHLIBCFLAGS) $(CFLAGS) $(CPPFLAGS) $(CLIENT_CFLAGS) $(OPTIMIZE) -o $@ -c $<
  endef
  
+ define DO_CC_ALTIVEC
+@@ -1153,7 +1152,7 @@
+ 
  define DO_REF_CC
  $(echo_cmd) "REF_CC $<"
 -$(Q)$(CC) $(SHLIBCFLAGS) $(CFLAGS) $(CLIENT_CFLAGS) $(OPTIMIZE) -o $@ -c $<
 +$(Q)$(CC) $(SHLIBCFLAGS) $(CFLAGS) $(CPPFLAGS) $(CLIENT_CFLAGS) $(OPTIMIZE) -o $@ -c $<
  endef
  
- define DO_REF_STR
-@@ -1148,7 +1147,7 @@
+ define DO_REF_CC_ALTIVEC
+@@ -1171,7 +1170,7 @@
  
  define DO_BOT_CC
  $(echo_cmd) "BOT_CC $<"
@@ -87,7 +82,7 @@ Edit 2018-03-19: Now with server support!
  endef
  
  ifeq ($(GENERATE_DEPENDENCIES),1)
-@@ -1162,7 +1161,7 @@
+@@ -1185,7 +1184,7 @@
  
  define DO_DED_CC
  $(echo_cmd) "DED_CC $<"
