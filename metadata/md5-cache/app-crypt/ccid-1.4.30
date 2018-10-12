@@ -1,0 +1,14 @@
+BDEPEND=kernel_linux? ( virtual/pkgconfig ) virtual/pkgconfig
+DEFINED_PHASES=compile configure install
+DEPEND=>=sys-apps/pcsc-lite-1.8.3 usb? ( virtual/libusb:1 )
+DESCRIPTION=CCID free software driver
+EAPI=7
+HOMEPAGE=https://ccid.apdu.fr/
+IUSE=twinserial kobil-midentity +usb
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/pcsc-lite-1.8.3 usb? ( virtual/libusb:1 )
+SLOT=0
+SRC_URI=https://ccid.apdu.fr/files/ccid-1.4.30.tar.bz2
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	udev	7752f306eec7b286d00bdb47b763e7ac
+_md5_=319693d76f03ea2b6489d971b1c0b306
