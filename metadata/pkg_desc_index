@@ -6202,7 +6202,7 @@ dev-util/buildbot-slave 0.8.12: BuildBot Slave Daemon
 dev-util/bustle 0.4.2-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20170201: the best variant of the Yacc parser generator
 dev-util/cargo 0.30.0: The Rust's package manager
-dev-util/catalyst 2.0.18-r1 2.0.18-r4 3.0.2 3.0.2-r1: Release metatool used for creating releases based on Gentoo Linux
+dev-util/catalyst 2.0.18-r1 2.0.18-r4 3.0.2 3.0.2-r1 3.0.3: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/ccache 3.2.4 3.3.4-r1: fast compiler cache
 dev-util/cdiff 0.9.8: Colored, side-by-side diff terminal viewer
