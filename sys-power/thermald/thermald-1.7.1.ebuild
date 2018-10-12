@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,8 @@ RDEPEND="
 	dev-libs/glib:=
 	dev-libs/libxml2:=
 	sys-apps/dbus:="
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-util/glib-utils"
 
 S=${WORKDIR}/thermal_daemon-${PV}
 DOCS=( thermal_daemon_usage.txt README.txt )
