@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 MY_PN="curator"
-ES_VERSION="6.3.1"
+ES_VERSION="6.3.2"
 
 inherit distutils-r1
 
@@ -23,10 +23,16 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 IUSE="doc test"
 
+# require >=elasticsearch-py-6.1.0 because starting with version 5.5.2, the package
+# was renamed to elasticsearch5 so elasticsearch-curator cannot find it #667526
+#
+# require <click-7.0
+# https://github.com/elastic/curator/issues/1279
 RDEPEND="
-	>=dev-python/elasticsearch-py-5.5.2[${PYTHON_USEDEP}]
+	>=dev-python/elasticsearch-py-6.1.0[${PYTHON_USEDEP}]
 	<dev-python/elasticsearch-py-7.0.0[${PYTHON_USEDEP}]
 	>=dev-python/click-6.7[${PYTHON_USEDEP}]
+	<dev-python/click-7.0[${PYTHON_USEDEP}]
 	>=dev-python/certifi-2018.04.16[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.20[${PYTHON_USEDEP}]
 	>=dev-python/voluptuous-0.9.3[${PYTHON_USEDEP}]"
