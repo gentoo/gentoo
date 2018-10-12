@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Virgil Dupras <vdupras@gentoo.org> (12 Oct 2018)
+# Dead upstream, unmaintained, no revdep. Removal in 30 days.
+# Bug #285169
+dev-python/twill
+dev-python/flask-testing
+
 # Virgil Dupras <vdupras@gentoo.org> (11 Oct 2018)
 # Dead upstream, unmaintained, no revdep. Removal in 30 days.
 # Bug #659532
