@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install postinst prepare prerm
+DESCRIPTION=Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
+EAPI=7
+HOMEPAGE=https://github.com/kdave/btrfsmaintenance
+IUSE=systemd
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-fs/btrfs-progs virtual/cron systemd? ( sys-apps/systemd )
+SLOT=0
+SRC_URI=https://github.com/kdave/btrfsmaintenance/archive/v0.4.2.tar.gz -> btrfsmaintenance-0.4.2.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=05223c0eca76704bc6dc05ac57bcada8
