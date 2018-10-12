@@ -209,6 +209,10 @@ app-backup/deja-dup:nautilus - Build gnome-base/nautilus extension
 app-backup/duplicity:s3 - Support for backing up to the Amazon S3 system
 app-backup/fsarchiver:lz4 - Enable lz4 compression support
 app-backup/fsarchiver:zstd - Enable zstd compression support
+app-backup/snapper:btrfs - Include Btrfs support sys-fs/btrfs-progs
+app-backup/snapper:ext4 - Include Ext4 support sys-fs/e2fsprogs
+app-backup/snapper:lvm - Enable LVM thinprovisioned snapshots support sys-fs/lvm2
+app-backup/snapper:xattr - Add support for getting and setting POSIX extended attributes, through sys-apps/attr.
 app-benchmarks/httperf:idleconn - Build with the idleconn program
 app-benchmarks/ramspeed:pic - Force shared libraries to be built as PIC (this is slower)
 app-benchmarks/sysbench:aio - Enable libaio support

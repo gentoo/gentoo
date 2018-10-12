@@ -3,10 +3,10 @@ DEPEND=dev-perl/JSON-XS dev-perl/Text-CSV_XS dev-lang/perl:=
 DESCRIPTION=pgBadger is a PostgreSQL log analyzer.
 EAPI=6
 HOMEPAGE=https://pgbadger.darold.net/
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=BSD
 RDEPEND=dev-perl/JSON-XS dev-perl/Text-CSV_XS dev-lang/perl:=
 SLOT=0
 SRC_URI=https://github.com/darold/pgbadger/archive/v10.0.tar.gz -> pgbadger-10.0.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=70316f3563e70902400ae5b1b7e6b73c
+_md5_=e02e0a5594595ccb9d46b954933d7d4e

@@ -257,6 +257,7 @@ app-backup/rdiff-backup 1.3.3-r3: Local/remote mirroring+incremental backup
 app-backup/reoback 1.0_p3-r1: Reoback Backup Solution
 app-backup/rsnapshot 1.3.1-r2 1.4.1 1.4.2: A filesystem backup utility based on rsync
 app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling system based on DAR
+app-backup/snapper 0.5.6: Command-line program for btrfs and lvm snapshot management
 app-benchmarks/acovea 5.1.1 5.1.1-r2: Analysis of Compiler Options via Evolutionary Algorithm
 app-benchmarks/bashmark 0.6.2: Geno's cross platform benchmarking suite
 app-benchmarks/bonnie 2.0.6-r2: Performance Test of Filesystem I/O using standard C library calls
@@ -1891,7 +1892,7 @@ dev-db/pg_top 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin3 1.22.2: wxWidgets GUI for PostgreSQL
 dev-db/pgadmin4 3.0: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
-dev-db/pgbadger 9.2: pgBadger is a PostgreSQL log analyzer.
+dev-db/pgbadger 9.2 10.0: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.9.0: Lightweight connection pooler for PostgreSQL
 dev-db/pgpool2 3.7.0 3.7.5: Connection pool server for PostgreSQL
 dev-db/pgtap 0.98.0: Unit testing for PostgreSQL
