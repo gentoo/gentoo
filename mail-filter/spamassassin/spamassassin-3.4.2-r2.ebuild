@@ -77,6 +77,8 @@ DEPEND="${REQDEPEND}
 	)"
 RDEPEND="${REQDEPEND} ${OPTDEPEND}"
 
+PATCHES=( "${FILESDIR}/spamassassin-3.4.2-bug_7632.patch" )
+
 src_prepare() {
 	default
 
