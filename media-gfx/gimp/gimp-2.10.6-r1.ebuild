@@ -47,7 +47,7 @@ RDEPEND=">=dev-libs/glib-2.56.0:2
 	jpeg2k? ( >=media-libs/openjpeg-2.1.0:2= )
 	>=media-libs/lcms-2.8:2
 	mng? ( media-libs/libmng )
-	openexr? ( >=media-libs/openexr-1.6.1 )
+	openexr? ( >=media-libs/openexr-1.6.1:= )
 	>=app-text/poppler-0.44[cairo]
 	>=app-text/poppler-data-0.4.7
 	>=media-libs/libpng-1.6.25:0=

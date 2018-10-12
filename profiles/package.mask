@@ -157,12 +157,6 @@ media-libs/celt
 # Slot to be removed in 30 days
 dev-db/myodbc:5.2
 
-# Michał Górny <mgorny@gentoo.org> (13 Sep 2018)
-# Depends on old version of dev-libs/jsoncpp, blocking its pruning.
-# Downstream maintainer is inactive to bump it.  Removal in 30 days.
-# Bug #656678.
-dev-lang/solidity
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 Sep 2018)
 # Mask transition ebuilds that were needed only for <glibc-2.26
 # We will keep them in the tree as long as we have masked
@@ -189,11 +183,6 @@ dev-lang/solidity
 # made it into the tree, bug #665192
 ~dev-lang/julia-0.7.0
 ~dev-lang/julia-1.0.1
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (29 Aug 2018)
-# Masked for removal in 30 days. Multiple build failures. Upstream inactive.
-# (bugs #321017, #581284, #588692, #602786, #649006, #654140)
-www-plugins/gnash
 
 # Virgil Dupras <vdupras@gentoo.org> (23 Aug 2018)
 # Vulnerable and can't be removed yet because of alpha. Bug #664346
@@ -583,15 +572,6 @@ dev-java/jcs
 # Andrey Grozin <grozin@gentoo.org> (04 Jan 2016)
 # Needs a bump and substantial ebuild rewrite
 =sci-mathematics/reduce-20110414-r1
-
-# Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
-# Uses unsafe ioctls that could result in data corruption. Upstream
-# is working on replacing them in the wip/dedup-syscall branch.
-# Keep it masked until they are done. sys-fs/duperemove is
-# the suggested replacement for the meantime.
-# Michał Górny <mgorny@gentoo.org> (13 Sep 2018)
-# No upstream commits since 2016.  Removal in 30 days.  Bug #546144.
-sys-fs/bedup
 
 # Robin H. Johnson <robbat2@gentoo.org> (04 Aug 2014)
 # Masked for testing, presently fails upstream testsuite:
