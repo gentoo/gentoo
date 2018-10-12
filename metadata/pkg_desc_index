@@ -7023,7 +7023,7 @@ mail-filter/amavisd-milter 1.5.0 1.5.0-r1: sendmail milter for amavisd-new
 mail-filter/amavisd-new 2.7.2 2.8.1-r1 2.11.0-r3: High-performance interface between the MTA and content checkers
 mail-filter/assp 1.8.5.9: Anti-Spam SMTP Proxy written in Perl
 mail-filter/bmf 0.9.4-r2: A fast and small Bayesian spam filter
-mail-filter/bogofilter 1.2.4-r1: Bayesian spam filter designed with fast algorithms, and tuned for speed
+mail-filter/bogofilter 1.2.4-r1 1.2.4-r2: Bayesian spam filter designed with fast algorithms, and tuned for speed
 mail-filter/clamassassin 1.2.4: Simple spamassassin-like script for virus scanning and filtering e-mail messages
 mail-filter/clamsmtp 1.10: An SMTP filter to check for viruses using the ClamAV anti-virus software
 mail-filter/couriersrs 0.1.2: SRS (Sender Rewriting Scheme) wrapper for the courier MTA
