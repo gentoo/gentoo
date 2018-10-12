@@ -4871,7 +4871,6 @@ dev-python/flask-script 2.0.5-r1 2.0.6: Flask support for writing external scrip
 dev-python/flask-security 1.7.5-r1 3.0.0: Simple security for Flask apps
 dev-python/flask-sphinx-themes 1.0.1: Sphinx Themes for Flask related projects and Flask itself
 dev-python/flask-sqlalchemy 2.1 2.3.2: SQLAlchemy support for Flask applications
-dev-python/flask-testing 0.4.2 0.6.2: Unit testing for Flask
 dev-python/flask-themes 0.1.3-r1: Infrastructure for theming support in Flask applications
 dev-python/flask-uploads 0.2.0-r1: Flexible and efficient upload handling for Flask
 dev-python/flask-wtf 0.14.2-r1: Simple integration of Flask and WTForms
@@ -5643,7 +5642,6 @@ dev-python/trollius 2.1: A port of the Tulip project (asyncio module, PEP3156)
 dev-python/ttfquery 1.0.5-r1: Font metadata and glyph outline extraction utility library
 dev-python/ttystatus 0.23 0.35: Terminal progress bar and status output for command line
 dev-python/tvdb_api 1.9 1.10_pre20150406-r1: Python interface to thetvdb.com API
-dev-python/twill 0.9-r1: Simple scripting language for web browsing with Python API
 dev-python/twisted 16.6.0-r3: An asynchronous networking framework written in Python
 dev-python/twisted-conch 13.2.0: Twisted SSHv2 implementation
 dev-python/twisted-core 13.2.0: An asynchronous networking framework written in Python
