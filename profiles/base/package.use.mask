@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
+# Requires www-client/firefox which isn't available on all architectures
+# yet, unmask per arch
+app-misc/tracker firefox-bookmarks
+
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (06 Oct 2018)
 # address user visible breakage due to circular dependency #665008
 =media-fonts/encodings-1.0.4-r3 X
