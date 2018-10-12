@@ -19,6 +19,7 @@ RDEPEND="
 	x11-libs/cairo[xcb]
 	x11-libs/libxcb[xkb]
 	x11-libs/xcb-util
+	x11-libs/xcb-util-xrm
 "
 DEPEND="
 	${RDEPEND}
