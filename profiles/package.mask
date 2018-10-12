@@ -30,6 +30,10 @@
 #--- END OF EXAMPLES ---
 
 # Virgil Dupras <vdupras@gentoo.org> (12 Oct 2018)
+# Unmaintained, no revdep. Removal in 30 days. Bug #645384
+dev-python/jenkinsapi
+
+# Virgil Dupras <vdupras@gentoo.org> (12 Oct 2018)
 # Dead upstream, unmaintained, no revdep. Removal in 30 days.
 # Bug #285169
 dev-python/twill
