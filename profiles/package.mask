@@ -190,11 +190,6 @@ dev-lang/solidity
 ~dev-lang/julia-0.7.0
 ~dev-lang/julia-1.0.1
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (29 Aug 2018)
-# Masked for removal in 30 days. Multiple build failures. Upstream inactive.
-# (bugs #321017, #581284, #588692, #602786, #649006, #654140)
-www-plugins/gnash
-
 # Virgil Dupras <vdupras@gentoo.org> (23 Aug 2018)
 # Vulnerable and can't be removed yet because of alpha. Bug #664346
 <dev-python/paramiko-2.4.1
