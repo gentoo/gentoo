@@ -19,7 +19,8 @@ RDEPEND="
 	dev-libs/glib:=
 	dev-libs/libxml2:=
 	sys-apps/dbus:="
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-util/glib-utils"
 
 S=${WORKDIR}/thermal_daemon-${PV}
 DOCS=( thermal_daemon_usage.txt README.txt )
