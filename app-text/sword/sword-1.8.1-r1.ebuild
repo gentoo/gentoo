@@ -1,8 +1,8 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit flag-o-matic
+EAPI=6
+inherit flag-o-matic cmake-utils
 
 DESCRIPTION="Library for Bible reading software"
 HOMEPAGE="http://www.crosswire.org/sword/"
@@ -27,38 +27,29 @@ DOCS="AUTHORS CODINGSTYLE ChangeLog README"
 RESTRICT="test"	#Restricting for now, see bug 313207
 
 src_prepare() {
-	sed -i \
-		-e '/FLAGS/s:-g3::' -e '/FLAGS/s:-O0::' \
-		-e '/FLAGS/s:-O2::' -e '/FLAGS/s:-O3::' \
-		configure || die
-
-	sed -i -e '/FLAGS/s:-Werror::' configure || die #408289
 	sed -i -e '/^#inc.*curl.*types/d' src/mgr/curl*.cpp || die #378055
-
-	cat <<-EOF > "${T}"/${PN}.conf
-	[Install]
-	DataPath=${EPREFIX}/usr/share/${PN}/
-	EOF
 	eapply "${FILESDIR}/${PN}-1.7.4-configure.patch"
 	eapply "${FILESDIR}/${PN}-1.8.1-icu61.diff"
 	eapply_user
+
+	cmake-utils_src_prepare
 }
 
 src_configure() {
-	# TODO: Why is this here and can we remove it?
-	strip-flags
-
 	# bug 618776
 	append-cxxflags -std=c++14
 
-	econf \
-		$(use_enable static-libs static) \
-		$(use_enable debug) \
-		--with-zlib \
-		$(use_with icu) \
-		--with-conf \
-		$(use_with curl) \
-		$(use_with clucene)
+	local mycmakeargs=(
+		-DSYSCONF_INSTALL_DIR="${EPREFIX}/etc"
+		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
+		-DWITH_CLUCENE=$(usex clucene)
+		-DWITH_CURL=$(usex curl)
+		-DWITH_ICU=$(usex icu)
+		-DWITH_ZLIB=1
+	)
+	use static-libs && mycmakeargs+=( -DLIBSWORD_LIBRARY_TYPE=Static )
+
+	cmake-utils_src_configure
 }
 
 src_install() {
@@ -74,7 +65,7 @@ src_install() {
 	fi
 
 	insinto /etc
-	doins "${T}"/${PN}.conf
+	cmake-utils_src_install
 }
 
 pkg_postinst() {
