@@ -1,12 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit ltprune systemd xdg-utils
+inherit systemd xdg-utils
 
 DESCRIPTION="D-Bus abstraction for enumerating power devices, querying history and statistics"
 HOMEPAGE="https://upower.freedesktop.org/"
-SRC_URI="https://${PN}.freedesktop.org/releases/${P}.tar.xz"
+
+# No tarball released, use the same commit as Fedora
+#SRC_URI="https://${PN}.freedesktop.org/releases/${P}.tar.xz"
+COMMIT="9125ab7ee96fdc4ecc68cfefb50c1cab"
+SRC_URI="https://gitlab.freedesktop.org/upower/upower/uploads/${COMMIT}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/3" # based on SONAME of libupower-glib.so
@@ -47,8 +51,17 @@ QA_MULTILIB_PATHS="usr/lib/${PN}/.*"
 
 DOCS=( AUTHORS HACKING NEWS README )
 
+PATCHES=(
+	# daemon: Fix upower not having access to udev events
+	"${FILESDIR}"/${P}-udev-events.patch
+
+	# daemon: Fix upower's keyboard backlight support
+	"${FILESDIR}"/${P}-keyboard-backlight.patch
+)
+
 src_prepare() {
 	default
+	xdg_environment_reset
 	sed -i -e '/DISABLE_DEPRECATED/d' configure || die
 }
 
@@ -76,12 +89,11 @@ src_configure() {
 		$(use_enable introspection)
 		$(use_with ios idevice)
 	)
-	xdg_environment_reset
 	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
+	find "${D}" -name '*.la' -delete || die
 	keepdir /var/lib/upower #383091
-	prune_libtool_files
 }
