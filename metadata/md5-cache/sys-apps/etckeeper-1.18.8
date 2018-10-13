@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=bazaar? ( dev-vcs/bzr[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) test? ( dev-util/bats )
+DESCRIPTION=A collection of tools to let /etc be stored in a repository
+EAPI=6
+HOMEPAGE=https://etckeeper.branchable.com/
+IUSE=bazaar cron test python_targets_python2_7
+KEYWORDS=~amd64 ~arm ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=bazaar? ( dev-vcs/bzr[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) app-portage/portage-utils cron? ( virtual/cron ) bazaar? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) !bazaar? ( || ( dev-vcs/git dev-vcs/mercurial dev-vcs/darcs ) )
+REQUIRED_USE=bazaar? ( || ( python_targets_python2_7 ) )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://git.joeyh.name/index.cgi/etckeeper.git/snapshot/etckeeper-1.18.8.tar.gz
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	prefix	e51c7882b7b721e54e684f7eb143cbfe	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=fc79107540c5e19d944759e78b76752c
