@@ -6409,7 +6409,7 @@ dev-vcs/gitolite 2.3.1-r1 3.6 3.6.3 3.6.6: Highly flexible server for git direct
 dev-vcs/gitolite-gentoo 2.3.1-r1: Highly flexible server for git directory version tracker, Gentoo fork
 dev-vcs/guilt 0.36: A series of bash scripts which add a quilt-like interface to git
 dev-vcs/hg-git 0.8.8: push to and pull from a Git repository using Mercurial
-dev-vcs/hgsubversion 1.8.5 1.8.6: hgsubversion is a Mercurial extension for working with Subversion repositories
+dev-vcs/hgsubversion 1.8.6: hgsubversion is a Mercurial extension for working with Subversion repositories
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
 dev-vcs/mercurial 4.5.2 4.6.2: Scalable distributed SCM
 dev-vcs/mr 1.20170129 1.20171231: Multiple Repository management tool
