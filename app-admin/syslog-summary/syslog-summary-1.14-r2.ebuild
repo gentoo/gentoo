@@ -11,7 +11,7 @@ DESCRIPTION="Summarizes the contents of a syslog log file"
 HOMEPAGE="https://github.com/dpaleino/syslog-summary"
 SRC_URI="mirror://github/dpaleino/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
 IUSE=""
