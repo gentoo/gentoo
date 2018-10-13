@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ RDEPEND="
 	libav? ( >=media-video/libav-0.7:0= )
 	!libav? ( >=media-video/ffmpeg-0.7:0= )
 	lirc? ( app-misc/lirc )
-	video_cards_nvidia? ( || ( x11-drivers/nvidia-drivers[tools,static-libs] media-video/nvidia-settings ) )
+	video_cards_nvidia? ( x11-drivers/nvidia-drivers[tools,static-libs] )
 	virtual/libintl
 "
 DEPEND="${RDEPEND}
