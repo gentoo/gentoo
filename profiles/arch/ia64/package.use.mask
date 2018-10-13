@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (13 Oct 2018)
+# USE=debug needs support for target-specific _FPU_MASK_IM. ia64
+# does not define those.
+media-sound/lame debug
+
 # Sergei Trofimovich <slyfox@gentoo.org> (25 Jul 2018)
 # USE=server does not compile and needs upstream fix: bug #662040
 >=sys-devel/gdb-8.1 server
