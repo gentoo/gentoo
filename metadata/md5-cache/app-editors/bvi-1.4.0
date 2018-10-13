@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=sys-libs/ncurses:0=
+DESCRIPTION=Display-oriented editor for binary files, based on the vi texteditor
+EAPI=7
+HOMEPAGE=http://bvi.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris
+LICENSE=GPL-2+
+RDEPEND=sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=mirror://sourceforge/bvi/bvi-1.4.0.src.tar.gz
+_md5_=00bd8450ef0c00ffa2428b6a1d33135b
