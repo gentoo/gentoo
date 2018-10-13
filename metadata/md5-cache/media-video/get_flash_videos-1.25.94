@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-perl/HTML-TokeParser-Simple dev-perl/Module-Find dev-perl/Term-ProgressBar dev-perl/WWW-Mechanize virtual/perl-Module-CoreList dev-perl/UNIVERSAL-require test? ( media-video/rtmpdump dev-perl/Tie-IxHash dev-perl/XML-Simple dev-perl/Crypt-Rijndael dev-perl/Data-AMF virtual/perl-IO-Compress ) dev-lang/perl:=
+DESCRIPTION=Downloads videos from various Flash-based video hosting sites
+EAPI=6
+HOMEPAGE=https://github.com/monsieurvideo/get-flash-videos
+IUSE=test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=Apache-2.0
+RDEPEND=dev-perl/HTML-TokeParser-Simple dev-perl/Module-Find dev-perl/Term-ProgressBar dev-perl/WWW-Mechanize virtual/perl-Module-CoreList dev-lang/perl:=
+SLOT=0
+SRC_URI=https://github.com/monsieurvideo/get-flash-videos/archive/1.25.94.tar.gz -> get_flash_videos-1.25.94.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_md5_=3e68c7cf6a2a61b905e9449e839440d9
