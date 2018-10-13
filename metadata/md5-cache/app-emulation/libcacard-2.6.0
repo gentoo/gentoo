@@ -4,9 +4,9 @@ DESCRIPTION=virtual Common Access Card (CAC) library emulator
 EAPI=6
 HOMEPAGE=https://www.spice-space.org/
 IUSE=+passthrough static-libs
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-3
 RDEPEND=>=dev-libs/nss-3.13 >=dev-libs/glib-2.22 passthrough? ( >=sys-apps/pcsc-lite-1.8 )
 SLOT=0
 SRC_URI=https://www.spice-space.org/download/libcacard/libcacard-2.6.0.tar.xz
-_md5_=3964c8558a5139e5caccc44920501f90
+_md5_=34ea417204513a4703d9faf6b6553d14
