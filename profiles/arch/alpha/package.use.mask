@@ -13,10 +13,6 @@ media-sound/mpd wildmidi
 # Optional dependency blocking updates.
 media-plugins/imlib2_loaders eet
 
-# Virgil Dupras <vdupras@gentoo.org> (23 Aug 2018)
-# Depends on vulnerable version of paramiko. Bug #664346
-dev-vcs/bzr sftp
-
 # Joonas Niilola <juippis@gmail.com> (17 Jun 2018)
 # Optional dependency not available for this arch
 dev-libs/efl vlc
