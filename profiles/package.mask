@@ -184,10 +184,6 @@ dev-db/myodbc:5.2
 ~dev-lang/julia-0.7.0
 ~dev-lang/julia-1.0.1
 
-# Virgil Dupras <vdupras@gentoo.org> (23 Aug 2018)
-# Vulnerable and can't be removed yet because of alpha. Bug #664346
-<dev-python/paramiko-2.4.1
-
 # Bernard Cafarelli <voyageur@gentoo.org> (20 Aug 2018)
 # Requires >=dev-libs/openssl-1.1.0
 >=net-misc/nextcloud-client-2.5.0_beta1
