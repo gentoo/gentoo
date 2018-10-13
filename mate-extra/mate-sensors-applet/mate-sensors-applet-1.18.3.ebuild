@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,10 +30,7 @@ COMMON_DEPEND=">=dev-libs/glib-2.36:2
 		!dbus? ( >=app-admin/hddtemp-0.3_beta13:0 ) )
 	libnotify? ( >=x11-libs/libnotify-0.7:0 )
 	lm_sensors? ( sys-apps/lm_sensors:0 )
-	video_cards_nvidia? ( || (
-		>=x11-drivers/nvidia-drivers-100.14.09:0[static-libs,tools]
-		media-video/nvidia-settings:0
-	) )"
+	video_cards_nvidia? ( >=x11-drivers/nvidia-drivers-100.14.09:0[static-libs,tools] )"
 
 RDEPEND="${COMMON_DEPEND}"
 
