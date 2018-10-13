@@ -781,7 +781,7 @@ app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Expl
 app-emulation/wine-mono 4.6.4 4.7.1: A replacement for the .NET runtime and class libraries in Wine
 app-emulation/wine-vanilla 3.0.2: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170823: Easy way to install DLLs needed to work around problems in Wine
-app-emulation/x48 0.6.4 0.6.4-r1: HP48 Calculator Emulator
+app-emulation/x48 0.6.4-r1: HP48 Calculator Emulator
 app-emulation/xen 4.10.1-r2: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.10.1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
 app-emulation/xen-tools 4.10.1-r2: Xen tools including QEMU and xl
