@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare setup
+DESCRIPTION=Summarizes the contents of a syslog log file
+EAPI=6
+HOMEPAGE=https://github.com/dpaleino/syslog-summary
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=GPL-3+
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)]
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=mirror://github/dpaleino/syslog-summary/syslog-summary-1.14.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=2d9a07834669bd1a9d74ac9c09885acf
