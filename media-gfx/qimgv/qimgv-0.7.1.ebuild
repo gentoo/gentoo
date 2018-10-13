@@ -15,10 +15,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="kde video"
 
 RDEPEND="
-	>=dev-qt/qtconcurrent-5.10.0
-	>=dev-qt/qtcore-5.10.0
-	>=dev-qt/qtgui-5.10.0
-	>=dev-qt/qtwidgets-5.10.0
+	dev-qt/qtconcurrent:5
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
 	kde? ( kde-frameworks/kwindowsystem:5 )
 	video? ( media-video/mpv[libmpv] )
 "
@@ -26,6 +26,13 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	eapply_user
+	# respect make.conf CXXFLAGS
+	sed -i -e '/set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3")/d' CMakeLists.txt || die
+	cmake-utils_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
