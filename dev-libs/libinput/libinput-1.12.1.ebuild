@@ -26,6 +26,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? (
+		dev-python/sphinx
 		>=app-doc/doxygen-1.8.3
 		>=media-gfx/graphviz-2.38.0
 	)
