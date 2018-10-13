@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit cmake-utils python-single-r1 toolchain-funcs versionator
@@ -25,8 +24,8 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5[widgets]
-	media-libs/libopenshot-audio
-	imagemagick? ( <media-gfx/imagemagick-7:0=[cxx] )
+	>=media-libs/libopenshot-audio-0.1.4
+	imagemagick? ( >=media-gfx/imagemagick-7:0=[cxx] )
 	libav? ( media-video/libav:=[encode,x264,xvid,vpx,mp3,theora] )
 	!libav? ( media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora] )
 	python? ( ${PYTHON_DEPS} )
@@ -37,10 +36,11 @@ DEPEND="
 	test? ( dev-libs/unittest++ )
 "
 
-# https://github.com/OpenShot/libopenshot/pull/45
-PATCHES=( ${FILESDIR}/${PN}-0.1.3-fix-tests.patch )
+# From Mageia
+# https://github.com/OpenShot/libopenshot/issues/60
+PATCHES=( ${FILESDIR}/${PN}-0.2.2-imagemagick7.patch )
 
-pkg_pretend() {
+check_compiler() {
 	if [[ ${MERGE_TYPE} != binary ]] && ! tc-has-openmp; then
 		eerror "${P} requires a compiler with OpenMP support. Your current"
 		eerror "compiler does not support it. If you use gcc, you can"
@@ -49,21 +49,26 @@ pkg_pretend() {
 	fi
 }
 
+pkg_pretend() {
+	check_compiler
+}
+
 pkg_setup() {
+	check_compiler
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
+	cmake-utils_src_prepare
 	# https://github.com/OpenShot/libopenshot/issues/17
 	use test || cmake_comment_add_subdirectory tests
-	cmake-utils_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_RUBY=OFF # TODO: add ruby support
 		-DENABLE_PYTHON=$(usex python)
-		-DCMAKE_DISABLE_FIND_PACKAGE_ImageMagick=$(usex !imagemagick)
+		$(cmake-utils_use_find_package imagemagick ImageMagick)
 	)
 	use python && mycmakeargs+=(
 		-DPYTHON_EXECUTABLE="${PYTHON}"
