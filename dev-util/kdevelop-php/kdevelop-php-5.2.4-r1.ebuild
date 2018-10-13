@@ -43,8 +43,11 @@ DEPEND="${COMMON_DEPEND}
 
 PATCHES=( "${FILESDIR}/${P}-tests-optional.patch" )
 
+# remaining tests fail for some, bug 668530
+RESTRICT+=" test"
+
 src_test() {
-	# tests hang
+	# tests hang, bug 667922
 	local myctestargs=(
 		-E "(completionbenchmark|duchain_multiplefiles)"
 	)
