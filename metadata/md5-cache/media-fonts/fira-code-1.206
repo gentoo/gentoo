@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare setup
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Monospaced font with programming ligatures
+EAPI=6
+HOMEPAGE=https://github.com/tonsky/FiraCode
+IUSE=X
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=OFL-1.1
+SLOT=0
+SRC_URI=https://github.com/tonsky/FiraCode/archive/1.206.tar.gz -> fira-code-1.206.tar.gz https://github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	font	773ed921fdd08bed71cb1103c45748a0	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=9331d9be6f53241dbc30276291795fb4
