@@ -41,7 +41,7 @@ src_prepare() {
 	# 627796
 	sed \
 		"s/default PREEMPT_NONE/default PREEMPT_RT_FULL/g" \
-		-i "${S}/kernel/Kconfig.preempt"
+		-i "${S}/kernel/Kconfig.preempt" || die "sed failed"
 }
 
 pkg_postinst() {
