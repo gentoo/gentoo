@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm
+DEPEND=app-arch/bzip2 >=dev-tcltk/expect-5.45.4 dev-libs/expat dev-libs/glib:2 net-misc/curl sys-libs/zlib x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 gps? ( >=sci-geosciences/gpsd-2.96 ) exif? ( libexif? ( media-libs/libexif ) !libexif? ( media-libs/gexiv2 ) ) magic? ( sys-apps/file ) mapnik? ( sci-geosciences/mapnik ) sqlite? ( dev-db/sqlite:3 ) app-text/gnome-doc-utils dev-util/intltool dev-util/gtk-doc-am app-text/rarian dev-libs/libxslt virtual/pkgconfig sys-devel/gettext >=sys-apps/sed-4
+DESCRIPTION=GPS data editor and analyzer
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/viking/
+IUSE=doc +exif libexif gps +magic mapnik nls sqlite
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-arch/bzip2 >=dev-tcltk/expect-5.45.4 dev-libs/expat dev-libs/glib:2 net-misc/curl sys-libs/zlib x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 gps? ( >=sci-geosciences/gpsd-2.96 ) exif? ( libexif? ( media-libs/libexif ) !libexif? ( media-libs/gexiv2 ) ) magic? ( sys-apps/file ) mapnik? ( sci-geosciences/mapnik ) sqlite? ( dev-db/sqlite:3 ) sci-geosciences/gpsbabel
+SLOT=0
+SRC_URI=mirror://sourceforge/viking/viking-1.6.2.tar.bz2 doc? ( mirror://sourceforge/viking/viking.pdf )
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=c306f842008f25874bd48ab798bc49b7
