@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -18,18 +18,19 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	app-text/asciidoc"
 
-RESTRICT=test # upstream does not ship them in tarball
+RESTRICT=test # upstream does not ship some tests in tarball
 
 src_prepare() {
+	default
+
 	tc-export CC
 	export prefix=/usr
 
-	# respect CC, CFLAGS and LDFLAGS. don't install cvssync
+	# respect CC, CFLAGS and LDFLAGS
 	sed \
 		-e 's/cc /$(CC) $(LDFLAGS) /' \
 		-e 's/^CFLAGS += -O/#&/' \
 		-e 's/CFLAGS=/CFLAGS+=/' \
-		-e 's/$(INSTALL).*cvssync/#&/g' \
 		-i Makefile || die
 }
 
