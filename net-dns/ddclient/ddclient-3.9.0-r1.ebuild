@@ -9,7 +9,7 @@ DESCRIPTION="Perl client used to update dynamic DNS entries"
 HOMEPAGE="https://sourceforge.net/projects/ddclient/"
 SRC_URI="mirror://sourceforge/ddclient/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~mips x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ia64 ~mips x86 ~x86-fbsd"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="examples iproute2"
