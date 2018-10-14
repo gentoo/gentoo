@@ -1,11 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
-
 inherit cmake-utils distutils-r1 eutils multilib java-pkg-opt-2
 
 DESCRIPTION="A library for real time MIDI input and output"
@@ -17,21 +16,23 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ~sparc x86"
 IUSE="debug doc java python static-libs test-programs"
 
-CDEPEND="media-libs/alsa-lib
+COMMON_DEPEND="
+	media-libs/alsa-lib
 	python? ( ${PYTHON_DEPS} )"
-RDEPEND="${CDEPEND}
+RDEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.6 )"
-DEPEND="${CDEPEND}
+DEPEND="${COMMON_DEPEND}
 	app-arch/unzip
-	java? ( >=virtual/jdk-1.6 )
-	python? ( >=dev-python/cython-0.12.1[${PYTHON_USEDEP}] )
 	doc? (
 		app-doc/doxygen
+		dev-tex/xcolor
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-latexextra
-		dev-tex/xcolor
 		virtual/latex-base
-	)"
+	)
+	java? ( >=virtual/jdk-1.6 )
+	python? ( >=dev-python/cython-0.12.1[${PYTHON_USEDEP}] )
+"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
