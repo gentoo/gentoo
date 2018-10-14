@@ -1,19 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 WX_GTK_VER="3.0"
-inherit cmake-utils eutils gnome2-utils readme.gentoo-r1 wxwidgets
+inherit cmake-utils desktop gnome2-utils readme.gentoo-r1 wxwidgets
 
 MY_P=${PN}-src-${PV}
-DESCRIPTION="An online multiplayer, free software engine for Doom and Doom II"
-HOMEPAGE="http://odamex.net/"
+DESCRIPTION="Online multiplayer, free software engine for Doom and Doom II"
+HOMEPAGE="https://odamex.net/"
 SRC_URI="mirror://sourceforge/${PN}/Odamex/${PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dedicated +odalaunch master portmidi server"
+IUSE="dedicated master +odalaunch portmidi server"
 
 RDEPEND="
 	dedicated? ( >=net-libs/miniupnpc-1.8:0= )
@@ -35,23 +36,19 @@ DOC_CONTENTS="
 
 S="${WORKDIR}/src-${PV:2:3}"
 
-pkg_pretend() {
-	if ! test-flag-CXX -std=c++11; then
-		die "You need at least GCC 4.7.x or Clang >= 3.0 for C++11-specific compiler flags"
-	fi
-}
+PATCHES=(
+	"${FILESDIR}"/1-${P}-install-rules.patch
+	"${FILESDIR}"/2-${P}-cmake-options.patch
+	"${FILESDIR}"/3-${P}-wad-search-path.patch
+	"${FILESDIR}"/4-${P}-odalauncher-bin-path.patch
+	"${FILESDIR}"/${P}-miniupnpc.patch
+	"${FILESDIR}"/${P}-miniupnpc20.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/1-${P}-install-rules.patch \
-		"${FILESDIR}"/2-${P}-cmake-options.patch \
-		"${FILESDIR}"/3-${P}-wad-search-path.patch \
-		"${FILESDIR}"/4-${P}-odalauncher-bin-path.patch \
-		"${FILESDIR}"/${P}-miniupnpc.patch \
-		"${FILESDIR}"/${P}-miniupnpc20.patch \
-		"${FILESDIR}"/${P}-gcc6.patch
-
-	rm -r libraries/libminiupnpc || die
 	cmake-utils_src_prepare
+	rm -r libraries/libminiupnpc || die
 }
 
 src_configure() {
@@ -59,22 +56,22 @@ src_configure() {
 		-DUSE_INTREE_PORTMIDI=OFF
 		-DCMAKE_INSTALL_BINDIR="/usr/bin"
 		-DCMAKE_INSTALL_DATADIR="/usr/share"
-		$(cmake-utils_use_build master MASTER)
+		-DBUILD_MASTER=$(usex master)
 	)
 
 	if use dedicated ; then
 		mycmakeargs+=(
 			-DBUILD_CLIENT=OFF
 			-DBUILD_ODALAUNCH=OFF
-			-DBUILD_SERVER=ON
 			-DENABLE_PORTMIDI=OFF
+			-DBUILD_SERVER=ON
 		)
 	else
 		mycmakeargs+=(
 			-DBUILD_CLIENT=ON
-			$(cmake-utils_use_build odalaunch ODALAUNCH)
-			$(cmake-utils_use_build server SERVER)
-			$(cmake-utils_use_enable portmidi PORTMIDI)
+			-DBUILD_ODALAUNCH=$(usex odalaunch)
+			-DENABLE_PORTMIDI=$(usex portmidi)
+			-DBUILD_SERVER=$(usex server)
 		)
 	fi
 
@@ -100,10 +97,6 @@ src_install() {
 			make_desktop_entry odalaunch "Odamex Launcher" odalaunch
 		fi
 	fi
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
