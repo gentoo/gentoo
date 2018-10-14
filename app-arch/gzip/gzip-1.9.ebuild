@@ -18,6 +18,7 @@ IUSE="pic static"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.8-install-symlinks.patch"
+	"${FILESDIR}/${PN}-1.9-gnulib-glibc-2.28.patch"
 )
 
 src_configure() {
