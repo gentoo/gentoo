@@ -6287,10 +6287,10 @@ dev-util/intltool 0.51.0-r2: Internationalization Tool Collection
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
 dev-util/jconfig 2.8.5: Utility that provides a simple API for the management of properties
 dev-util/kbuild 0.1.9998_pre20131130-r1 0.1.9998.3127: A makefile framework for writing simple makefiles for complex tasks
-dev-util/kdevelop 5.2.3 5.2.4: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.2.4: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.1.0: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.2.3 5.2.4-r1: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.2.3 5.2.4: Python plugin for KDevelop
+dev-util/kdevelop-php 5.2.4-r1: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.2.4: Python plugin for KDevelop
 dev-util/kyua 0.13-r2: Testing framework for infrastructure software
 dev-util/lcov 1.9-r1 1.11: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
