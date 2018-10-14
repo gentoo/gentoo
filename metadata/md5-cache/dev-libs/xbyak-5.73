@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=JIT assembler for x86(IA-32)/x64(AMD64, x86-64)
+EAPI=7
+HOMEPAGE=https://github.com/herumi/xbyak
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/herumi/xbyak/archive/v5.73.tar.gz -> xbyak-5.73.tar.gz
+_md5_=249e2610e33ba7242f817586eb468927

@@ -9268,9 +9268,9 @@ sci-chemistry/molmol 2k_p2-r2 2k_p2-r5: Publication-quality molecular visualizat
 sci-chemistry/molscript 2.1.2-r2: Display 3D molecules (e.g., proteins) in schematic and detailed representations
 sci-chemistry/mopac7 1.15: Autotooled, updated version of a powerful, fast semi-empirical package
 sci-chemistry/mustang 3.2.1: MUltiple STructural AligNment AlGorithm
-sci-chemistry/openbabel 2.3.2-r1 2.4.1: Interconverts file formats used in molecular modeling
-sci-chemistry/openbabel-perl 2.3.2 2.4.1: Perl bindings for OpenBabel
-sci-chemistry/openbabel-python 2.3.2 2.4.1-r1: Python bindings for OpenBabel (including Pybel)
+sci-chemistry/openbabel 2.4.1: Interconverts file formats used in molecular modeling
+sci-chemistry/openbabel-perl 2.4.1: Perl bindings for OpenBabel
+sci-chemistry/openbabel-python 2.4.1-r1: Python bindings for OpenBabel (including Pybel)
 sci-chemistry/pdb2pqr 1.9.0-r1: Automated pipeline for performing Poisson-Boltzmann electrostatics calculations
 sci-chemistry/probe 2.13.110909: Evaluates atomic packing within or between molecules
 sci-chemistry/procheck 3.5.4-r3: Checks the stereochemical quality of a protein structure

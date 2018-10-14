@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare setup
+DEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7 ) app-arch/zopfli dev-python/fonttools dev-python/nototools media-gfx/pngquant x11-libs/cairo X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Google Noto Emoji fonts
+EAPI=6
+HOMEPAGE=https://www.google.com/get/noto/ https://github.com/googlei18n/noto-emoji
+IUSE=X
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=https://github.com/googlei18n/noto-emoji/archive/3ffd20ec7504657aa17c84f9aa475ad09b20c362.tar.gz -> noto-emoji-20180814.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	font	773ed921fdd08bed71cb1103c45748a0	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=3416b26dc6e13f411920af9965246e1a
