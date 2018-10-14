@@ -28,18 +28,18 @@ REQUIRED_USE="
 RDEPEND="
 	dev-cpp/eigen:3
 	dev-libs/maloc[mpi=]
-	virtual/blas
 	sys-libs/readline
+	virtual/blas
 	fetk? (
-		sci-libs/fetk
 		sci-libs/amd
-		sci-libs/umfpack
+		sci-libs/fetk
 		sci-libs/superlu
+		sci-libs/umfpack
 	)
 	mpi? ( virtual/mpi )
 	python? ( ${PYTHON_DEPS} )
 "
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
