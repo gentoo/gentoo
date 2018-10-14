@@ -9339,7 +9339,7 @@ sci-libs/Shapely 1.5.17-r1: Geometric objects, predicates, and operations
 sci-libs/adolc 2.4.1: Automatic differentiation system for C/C++
 sci-libs/alglib 3.10.0-r1: Numerical analysis and data processing library
 sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
-sci-libs/armadillo 6.200.3 8.300.2: Streamlined C++ linear algebra library
+sci-libs/armadillo 8.300.2: Streamlined C++ linear algebra library
 sci-libs/arpack 3.1.5: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
 sci-libs/blas-reference 20070226-r4: Basic Linear Algebra Subprograms F77 reference implementations
