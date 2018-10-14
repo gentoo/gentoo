@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,13 +7,13 @@ CMAKE_WARN_UNUSED_CLI=yes
 inherit eutils cmake-utils gnome2-utils games
 
 DESCRIPTION="Cross-platform port of Arx Fatalis, a first-person role-playing game"
-HOMEPAGE="http://arx-libertatis.org/"
+HOMEPAGE="https://arx-libertatis.org/"
 SRC_URI="mirror://sourceforge/arx/${P}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="c++0x debug +unity-build crash-reporter static tools"
+IUSE="c++0x crash-reporter debug static tools +unity-build"
 
 COMMON_DEPEND="
 	media-libs/freetype
