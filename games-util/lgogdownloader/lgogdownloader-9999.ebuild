@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,6 @@ HOMEPAGE="https://sites.google.com/site/gogdownloader/"
 EGIT_REPO_URI="https://github.com/Sude-/lgogdownloader.git"
 LICENSE="WTFPL-2"
 SLOT="0"
-IUSE="+debug"
 
 RDEPEND=">=app-crypt/rhash-1.3.3-r2:0=
 	dev-cpp/htmlcxx:0=
