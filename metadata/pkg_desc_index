@@ -6286,10 +6286,10 @@ dev-util/intltool 0.51.0-r2: Internationalization Tool Collection
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
 dev-util/jconfig 2.8.5: Utility that provides a simple API for the management of properties
 dev-util/kbuild 0.1.9998_pre20131130-r1 0.1.9998.3127: A makefile framework for writing simple makefiles for complex tasks
-dev-util/kdevelop 5.2.3: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.2.3 5.2.4: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 2.1.0: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.2.3: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.2.3: Python plugin for KDevelop
+dev-util/kdevelop-php 5.2.3 5.2.4-r1: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.2.3 5.2.4: Python plugin for KDevelop
 dev-util/kyua 0.13-r2: Testing framework for infrastructure software
 dev-util/lcov 1.9-r1 1.11: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
@@ -8751,7 +8751,7 @@ net-libs/telepathy-logger-qt 17.08.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.7-r1: Qt bindings for the Telepathy D-Bus protocol
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.0 0.5.1: HTTP web service mocking library
-net-libs/webkit-gtk 2.20.4: Open source web browser engine
+net-libs/webkit-gtk 2.20.4 2.22.2: Open source web browser engine
 net-libs/wvstreams 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 4.4.0: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.1 4.2.2-r2: A brokerless kernel
@@ -10282,7 +10282,7 @@ sys-power/powermgmt-base 1.31: Script to test whether computer is running on AC 
 sys-power/powernowd 1.00-r4: Daemon to control the speed and voltage of CPUs
 sys-power/powertop 2.8 2.9: tool that helps you find what software is using the most power
 sys-power/suspend 1.0_p20150810: Userspace Software Suspend and S2Ram
-sys-power/upower 0.99.5 0.99.8: D-Bus abstraction for enumerating power devices, querying history and statistics
+sys-power/upower 0.99.5 0.99.8 0.99.8-r1: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-power/upower-pm-utils 0.9.23-r2: The upstream upower 0.9 git branch for use with sys-power/pm-utils
 sys-process/acct 6.6.4-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r2: a periodic command scheduler
