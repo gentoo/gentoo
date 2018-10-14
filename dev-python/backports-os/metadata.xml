@@ -5,7 +5,4 @@
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="sourceforge">blobwars</remote-id>
-	</upstream>
 </pkgmetadata>
