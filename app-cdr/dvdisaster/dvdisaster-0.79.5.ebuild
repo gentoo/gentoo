@@ -10,7 +10,7 @@ SRC_URI="http://dvdisaster.net/downloads/${PN}-${PV}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~amd64 ppc x86"
 IUSE="debug nls"
 
 dvdi_langs="cs de it pt-BR ru sv"
