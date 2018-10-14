@@ -7,7 +7,7 @@ inherit latex-package
 
 DESCRIPTION="TeX support for four URW Classico fonts"
 HOMEPAGE="https://www.ctan.org/tex-archive/fonts/urw/classico"
-SRC_URI="http://mirrors.ctan.org/install/fonts/urw/classico.tds.zip"
+SRC_URI="http://mirrors.ctan.org/install/fonts/urw/classico.tds.zip -> ${P}.tds.zip"
 
 LICENSE="free-noncomm"
 SLOT="0"
