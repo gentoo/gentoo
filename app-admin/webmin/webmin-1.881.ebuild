@@ -1,9 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-
-inherit eutils pam ssl-cert systemd
+EAPI=6
+inherit pam ssl-cert systemd
 
 DESCRIPTION="A web-based Unix systems administration interface"
 HOMEPAGE="http://www.webmin.com/"
@@ -44,10 +43,13 @@ DEPEND="virtual/perl-MIME-Base64
 		ldap? ( dev-perl/perl-ldap )
 		dev-perl/XML-Generator
 		dev-perl/XML-Parser
-	)"
+	)
+"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
+
 	local perl="$( which perl )"
 
 	# Remove the unnecessary and incompatible files
@@ -93,7 +95,7 @@ src_install() {
 
 	# Copy our own setup script to installation folder
 	insinto /usr/libexec/webmin
-	newins "${FILESDIR}"/gentoo-setup-${PV} gentoo-setup.sh
+	newins "${FILESDIR}"/gentoo-setup gentoo-setup.sh
 	fperms 0744 /usr/libexec/webmin/gentoo-setup.sh
 
 	# This is here if we ever want in future ebuilds to add some specific
@@ -153,10 +155,10 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	# Run pkg_config phase first - non interactively
+	# Run webmin_config first - non interactively
 	export INTERACTIVE="no"
-	pkg_config
-	# Every next time pkg_config should be interactive
+	webmin_config
+	# Every next time webmin_config should be interactive
 	INTERACTIVE="yes"
 
 	ewarn
@@ -199,6 +201,10 @@ pkg_postrm() {
 }
 
 pkg_config(){
+	webmin_config
+}
+
+webmin_config(){
 	# First stop service if running
 	ebegin "Stopping any running Webmin instance"
 	if systemd_is_booted ; then
