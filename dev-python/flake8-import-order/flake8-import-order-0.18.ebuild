@@ -25,6 +25,7 @@ DEPEND="${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/flake8[${PYTHON_USEDEP}]
 		dev-python/pycodestyle[${PYTHON_USEDEP}]
+		dev-python/pylama[${PYTHON_USEDEP}]
 	)"
 
 python_test() {
