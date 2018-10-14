@@ -1026,6 +1026,7 @@ dev-db/mysql:extraengine - Add support for alternative storage engines (Archive,
 dev-db/mysql:jemalloc - Use dev-libs/jemalloc for allocations.
 dev-db/mysql:latin1 - Use LATIN1 encoding instead of UTF8
 dev-db/mysql:libressl - Enable SSL connections and crypto functions using dev-libs/libressl
+dev-db/mysql:mecab - Build MeCab full-text parser plugin using app-text/mecab
 dev-db/mysql:numa - Enable NUMA support using sys-process/numactl (NUMA kernel support is also required)
 dev-db/mysql:profiling - Add support for statement profiling (requires USE=community).
 dev-db/mysql:server - Build the server program
