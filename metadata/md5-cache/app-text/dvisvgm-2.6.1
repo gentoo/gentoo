@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure
+DEPEND=virtual/tex-base >=app-arch/brotli-1.0.5 app-text/ghostscript-gpl dev-libs/kpathsea:= >=dev-libs/xxhash-0.6.5 >=media-gfx/potrace-1.10-r1 media-libs/freetype:2 >=media-libs/woff2-1.0.2 dev-libs/kpathsea sys-libs/zlib app-text/xmlto app-text/asciidoc dev-libs/libxslt virtual/pkgconfig test? ( dev-cpp/gtest )
+DESCRIPTION=Converts DVI files to SVG
+EAPI=6
+HOMEPAGE=http://dvisvgm.bplaced.net/
+IUSE=test
+KEYWORDS=~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=GPL-3
+RDEPEND=virtual/tex-base >=app-arch/brotli-1.0.5 app-text/ghostscript-gpl dev-libs/kpathsea:= >=dev-libs/xxhash-0.6.5 >=media-gfx/potrace-1.10-r1 media-libs/freetype:2 >=media-libs/woff2-1.0.2 dev-libs/kpathsea sys-libs/zlib
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/mgieseki/dvisvgm/releases/download/2.6.1/dvisvgm-2.6.1.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=979933d2c88342ac83ebab6e68ef9d3a
