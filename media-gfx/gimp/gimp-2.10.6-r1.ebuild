@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ SLOT="2"
 KEYWORDS="~amd64 ~x86"
 
 LANGS="am ar ast az be bg br ca ca@valencia cs csb da de dz el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km kn ko lt lv mk ml ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
-IUSE="alsa aalib altivec aqua debug doc openexr gnome postscript jpeg2k cpu_flags_x86_mmx mng python smp cpu_flags_x86_sse udev vector-icons webp wmf xpm"
+IUSE="alsa aalib altivec aqua debug doc openexr gnome heif postscript jpeg2k cpu_flags_x86_mmx mng python smp cpu_flags_x86_sse udev vector-icons webp wmf xpm"
 
 RDEPEND=">=dev-libs/glib-2.56.0:2
 	>=dev-libs/atk-2.2.0
@@ -66,7 +66,8 @@ RDEPEND=">=dev-libs/glib-2.56.0:2
 	app-arch/bzip2
 	>=app-arch/xz-utils-5.0.0
 	postscript? ( app-text/ghostscript-gpl )
-	udev? ( virtual/libgudev:= )"
+	udev? ( virtual/libgudev:= )
+	heif? ( >=media-libs/libheif-1.1.0:= )"
 DEPEND="${RDEPEND}
 	>=dev-lang/perl-5.10.0
 	dev-libs/appstream-glib
@@ -123,7 +124,7 @@ src_configure() {
 		$(use_with mng libmng)
 		$(use_with openexr)
 		$(use_with webp)
-		--without-libheif
+		$(use_with heif libheif)
 		$(use_enable python)
 		$(use_enable smp mp)
 		$(use_enable cpu_flags_x86_sse sse)
