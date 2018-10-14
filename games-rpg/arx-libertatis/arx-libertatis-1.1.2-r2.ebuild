@@ -1,10 +1,10 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 CMAKE_WARN_UNUSED_CLI=yes
-inherit eutils cmake-utils gnome2-utils games
+inherit cmake-utils gnome2-utils
 
 DESCRIPTION="Cross-platform port of Arx Fatalis, a first-person role-playing game"
 HOMEPAGE="https://arx-libertatis.org/"
@@ -27,7 +27,7 @@ COMMON_DEPEND="
 		dev-qt/qtnetwork:5[ssl]
 		dev-qt/qtwidgets:5
 	)
-	!static? ( media-libs/glew )"
+	!static? ( media-libs/glew:= )"
 RDEPEND="${COMMON_DEPEND}
 	crash-reporter? ( sys-devel/gdb )"
 DEPEND="${COMMON_DEPEND}
@@ -39,49 +39,28 @@ DOCS=( README.md AUTHORS CHANGELOG )
 
 PATCHES=( "${FILESDIR}"/${P}-cmake-3.5.patch )
 
-src_prepare() {
-	cmake-utils_src_prepare
-}
-
 src_configure() {
 	# editor does not build
 	local mycmakeargs=(
-		$(cmake-utils_use_build crash-reporter CRASHREPORTER)
 		-DBUILD_EDITOR=OFF
-		$(cmake-utils_use_build tools TOOLS)
-		-DCMAKE_INSTALL_DATAROOTDIR="${GAMES_DATADIR_BASE}"
-		-DCMAKE_INSTALL_PREFIX="${GAMES_PREFIX}"
-		$(cmake-utils_use debug DEBUG)
-		-DGAMESBINDIR="${GAMES_BINDIR}"
+		-DBUILD_TOOLS=$(usex tools)
+		-DDEBUG=$(usex debug)
 		-DICONDIR=/usr/share/icons/hicolor/128x128/apps
 		-DINSTALL_SCRIPTS=ON
 		-DSET_OPTIMIZATION_FLAGS=OFF
 		-DSTRICT_USE=ON
-		$(cmake-utils_use unity-build UNITY_BUILD)
-		$(cmake-utils_use_use c++0x CXX11)
+		-DUNITY_BUILD=$(usex unity-build)
+		-DUSE_CXX11=$(usex c++0x)
 		-DUSE_NATIVE_FS=ON
 		-DUSE_OPENAL=ON
 		-DUSE_OPENGL=ON
 		-DUSE_SDL=ON
+		-DBUILD_CRASHREPORTER=$(usex crash-reporter)
 		$(usex crash-reporter "-DUSE_QT5=ON" "")
-		$(cmake-utils_use_use static STATIC_LIBS)
+		-DUSE_STATIC_LIBS=$(usex static)
 	)
 
 	cmake-utils_src_configure
-}
-
-src_compile() {
-	cmake-utils_src_compile
-}
-
-src_install() {
-	cmake-utils_src_install
-	prepgamesdirs
-}
-
-pkg_preinst() {
-	games_pkg_preinst
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
@@ -94,9 +73,8 @@ pkg_postinst() {
 	elog "http://wiki.arx-libertatis.org/Getting_the_game_data"
 	elog
 	elog "If you have already installed the game or use the STEAM version,"
-	elog "run \"${GAMES_BINDIR}/arx-install-data\""
+	elog "run \"/usr/bin/arx-install-data\""
 
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils games
+inherit desktop
 
 DESCRIPTION="Arx Fatalis demo"
 HOMEPAGE="https://www.arkane-studios.com/uk/arx.php"
@@ -16,10 +16,12 @@ IUSE=""
 RESTRICT="fetch"
 
 RDEPEND="games-rpg/arx-libertatis"
-DEPEND="app-arch/cabextract
-	app-arch/unzip"
+DEPEND="
+	app-arch/cabextract
+	app-arch/unzip
+"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 pkg_nofetch() {
 	einfo "Please find and download ${SRC_URI} and put it into ${DISTDIR}."
@@ -35,9 +37,9 @@ src_unpack() {
 }
 
 src_install() {
-	insinto "${GAMES_DATADIR}/${PN}"
+	insinto /usr/share/${PN}
 	doins -r *.pak bin/*.pak
-	insinto "${GAMES_DATADIR}/${PN}/misc"
+	insinto /usr/share/${PN}/misc
 	doins bin/Logo.bmp bin/Arx.ttf
 
 	# convert to lowercase
@@ -46,8 +48,6 @@ src_install() {
 	lower="`echo "${1}" | tr [:upper:] [:lower:]`"
 	[ "${1}" = "${lower}" ] || mv "${1}" "${lower}"' - {} \;
 
-	make_desktop_entry "arx --data-dir=${GAMES_DATADIR}/arx-fatalis-demo" \
+	make_desktop_entry "arx --data-dir=/usr/share/arx-fatalis-demo" \
 		"Arx Fatalis Demo" arx-libertatis
-
-	prepgamesdirs
 }
