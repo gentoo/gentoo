@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils
 
@@ -89,6 +89,7 @@ src_compile() {
 }
 
 src_install() {
+	use doc && HTML_DOCS=( doc/html/. )
+	use doc && dodoc doc/*.pdf
 	cmake-utils_src_install
-	use doc && dodoc doc/*.pdf && dohtml -r doc/html/*
 }
