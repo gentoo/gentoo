@@ -1,13 +1,13 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
-inherit cmake-utils distutils-r1 eutils multilib java-pkg-opt-2
+inherit cmake-utils desktop distutils-r1 java-pkg-opt-2
 
-DESCRIPTION="A library for real time MIDI input and output"
+DESCRIPTION="Library for real time MIDI input and output"
 HOMEPAGE="http://portmedia.sourceforge.net/"
 SRC_URI="mirror://sourceforge/portmedia/${PN}-src-${PV}.zip"
 
@@ -15,6 +15,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ~sparc x86"
 IUSE="debug doc java python static-libs test-programs"
+
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMON_DEPEND="
 	media-libs/alsa-lib
@@ -34,9 +36,7 @@ DEPEND="${COMMON_DEPEND}
 	python? ( >=dev-python/cython-0.12.1[${PYTHON_USEDEP}] )
 "
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
 
 PATCHES=(
 	# fix parallel make failures, fix java support, and allow optional
@@ -73,9 +73,9 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
-		$(cmake-utils_use java PORTMIDI_ENABLE_JAVA)
-		$(cmake-utils_use static-libs PORTMIDI_ENABLE_STATIC)
-		$(cmake-utils_use test-programs PORTMIDI_ENABLE_TEST)
+		-DPORTMIDI_ENABLE_JAVA=$(usex java)
+		-DPORTMIDI_ENABLE_STATIC=$(usex static-libs)
+		-DPORTMIDI_ENABLE_TEST=$(usex test-programs)
 	)
 
 	if use java ; then
