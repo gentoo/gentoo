@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ RDEPEND="
 	sys-fs/dosfstools
 	sys-fs/ntfs3g
 	sys-boot/grub:2[grub_platforms_pc]
-	!minimal? ( x11-libs/wxGTK:${WX_GTK_VER} )
+	!minimal? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
 "
 DEPEND="${RDEPEND}"
 
