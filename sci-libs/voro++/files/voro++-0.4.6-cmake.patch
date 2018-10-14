@@ -1,7 +1,7 @@
 Index: CMakeLists.txt
 ===================================================================
---- CMakeLists.txt	(revision 0)
-+++ CMakeLists.txt	(working copy)
+--- a/CMakeLists.txt	(revision 0)
++++ b/CMakeLists.txt	(working copy)
 @@ -0,0 +1,109 @@
 +cmake_minimum_required(VERSION 2.6)
 +
@@ -114,8 +114,8 @@ Index: CMakeLists.txt
 +add_custom_target(uninstall COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
 Index: CMakeModules/cmake_uninstall.cmake.in
 ===================================================================
---- CMakeModules/cmake_uninstall.cmake.in	(revision 0)
-+++ CMakeModules/cmake_uninstall.cmake.in	(working copy)
+--- a/CMakeModules/cmake_uninstall.cmake.in	(revision 0)
++++ b/CMakeModules/cmake_uninstall.cmake.in	(working copy)
 @@ -0,0 +1,22 @@
 +IF(NOT EXISTS "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt")
 +  MESSAGE(FATAL_ERROR "Cannot find install manifest: \"@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt\"")
