@@ -40,7 +40,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	default 
+	default
 	# Use system pngquant
 	rm -rf third_party/pngquant
 }
