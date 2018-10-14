@@ -79,7 +79,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		!libressl? ( media-video/ffmpeg[-libressl,openssl] )
 	)
 	mysql? ( dev-db/mysql-connector-c:= )
-	mariadb? ( dev-db/mariadb-connector-c:=[mysqlcompat] )
+	mariadb? ( dev-db/mariadb-connector-c:= )
 	>=net-misc/curl-7.56.1
 	nfs? ( >=net-fs/libnfs-2.0.0:= )
 	opengl? ( media-libs/glu )
