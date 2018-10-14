@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) gnat_2018? ( dev-lang/gnat-gpl:7.3.1 )
+DESCRIPTION=Multi-Language Management
+EAPI=6
+HOMEPAGE=http://libre.adacore.com/
+IUSE=gnat_2016 gnat_2017 +gnat_2018
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) gnat_2018? ( dev-lang/gnat-gpl:7.3.1 )
+REQUIRED_USE=!gnat_2016 ^^ ( gnat_2017 gnat_2018 )
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a68 -> gprbuild-gpl-2018-src.tar.gz http://mirrors.cdn.adacore.com/art/5b0819dec7a447df26c27a40 -> xmlada-gpl-2018-src.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=baf82e622a4453f7bede0d84743e3ff4
