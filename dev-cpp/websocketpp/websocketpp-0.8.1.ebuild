@@ -9,7 +9,7 @@ DESCRIPTION="C++/Boost Asio based websocket client/server library"
 HOMEPAGE="https://www.zaphoyd.com/websocketpp"
 SRC_URI="https://github.com/zaphoyd/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 LICENSE="BSD"
 SLOT="0"
 IUSE="boost examples test"

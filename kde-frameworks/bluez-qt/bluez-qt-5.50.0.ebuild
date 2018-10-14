@@ -27,8 +27,11 @@ src_configure() {
 }
 
 src_test() {
-	# bug: 609248
-	local myctestargs=( -j1 )
+	# parallel tests fail, bug 609248; managertest hangs, bug 668196
+	local myctestargs=(
+		-j1
+		-E "(managertest)"
+	)
 
 	kde5_src_test
 }

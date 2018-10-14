@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,7 +37,7 @@ src_prepare() {
 	else
 		GCC_PV=7.3.1
 	fi
-	sed -e "s:@VER@:${GCC_PV}:g" "${FILESDIR}"/${P}.xml > gnat-${GCC_PV}.xml
+	sed -e "s:@VER@:${GCC_PV}:g" "${FILESDIR}"/${PN}-2017.xml > gnat-${GCC_PV}.xml
 	default
 	sed -i \
 		-e "s:@GNATBIND@:gnatbind-${GCC_PV}:g" \

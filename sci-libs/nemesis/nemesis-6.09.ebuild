@@ -1,21 +1,21 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils multilib
+inherit cmake-utils
 
 MY_PN="exodus"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Enhancement to the EXODUSII finite element database model"
-HOMEPAGE="https://sourceforge.net/projects/exodusii/"
-SRC_URI="mirror://sourceforge/project/${MY_PN}ii/${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/certik/exodus"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="static-libs test"
+IUSE="static-libs"
 
 DEPEND="
 	sci-libs/exodusii
@@ -32,13 +32,11 @@ src_prepare() {
 }
 
 src_configure() {
-	mycmakeargs=(
-		-DLIB_INSTALL_DIR=$(get_libdir)
-		-DNETCDF_DIR="${EPREFIX}/usr/"
-		-DEXODUS_DIR="${EPREFIX}/usr/"
-		$(cmake-utils_use !static-libs BUILD_SHARED_LIBS)
-		$(cmake-utils_use test BUILD_TESTING)
+	local mycmakeargs=(
+		-DBUILD_SHARED_LIBS=$(usex !static-libs)
 	)
+	export NETCDF_DIR="${EPREFIX}/usr/"
+	export EXODUS_DIR="${EPREFIX}/usr/"
 	cmake-utils_src_configure
 }
 

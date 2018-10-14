@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,8 +42,6 @@ CDEPEND="
 		dev-qt/qtmultimedia:5
 		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5
-		>=media-libs/speex-1.2.0
-		media-libs/speexdsp
 		x11-misc/xdg-utils
 	)
 	sbc? ( media-libs/sbc )

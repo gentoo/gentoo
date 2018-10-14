@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java implementation of the JavaScript Object Notation"
-HOMEPAGE="http://www.json.org/java/"
+HOMEPAGE="https://github.com/douglascrockford/JSON-java"
 SRC_URI="https://github.com/douglascrockford/JSON-java/archive/${PV}.zip -> ${P}.zip"
 LICENSE="BSD"
 SLOT="0"

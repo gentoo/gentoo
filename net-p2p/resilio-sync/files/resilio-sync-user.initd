@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 USER="${RC_SVCNAME##*.}"
@@ -8,7 +8,7 @@ name="Resilio Sync for $USER"
 description="Resilio Sync"
 command_user="${USER:-rslsync}:${GROUP:-rslsync}"
 pidfile="${PIDFILE:-/home/$USER/.config/resilio-sync/resilio-sync.pid}"
-config=${CONFIG:-/home/$USER/.config/resilio-sync/config.json}
+config="${CONFIG:-/home/$USER/.config/resilio-sync/config.json}"
 command_args="--config $config ${OPTS}"
 start_stop_daemon_args="-q"
 retry="10"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,6 +30,7 @@ REQUIRED_USE="
 	vnc? ( X fbcon )
 	wayland? ( egl gles !opengl )
 	xim? ( X )
+	xpresent? ( X )
 "
 
 RDEPEND="
@@ -123,11 +124,11 @@ RDEPEND="
 			x11-libs/libX11
 			x11-libs/libXrender
 			virtual/opengl
-			xpresent? ( x11-libs/libXpresent )
 		)
 	)
 	xine? ( media-libs/xine-lib )
 	xpm? ( x11-libs/libXpm )
+	xpresent? ( x11-libs/libXpresent )
 "
 
 DEPEND="
@@ -215,6 +216,7 @@ src_configure() {
 		$(use_enable xim)
 		$(use_enable xine)
 		$(use_enable xpm image-loader-xpm)
+		$(use_enable xpresent)
 
 		--with-crypto=$(usex gnutls gnutls $(usex ssl openssl none))
 		--with-glib=$(usex glib)
@@ -227,7 +229,6 @@ src_configure() {
 	)
 
 	use drm && use wayland && myconf+=( --enable-gl-drm )
-	use X && use xpresent && myconf+=( --enable-xpresent )
 
 	if use opengl ; then
 		myconf+=( --with-opengl=full )

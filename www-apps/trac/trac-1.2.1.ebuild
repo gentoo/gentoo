@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,7 +20,7 @@ SRC_URI="http://ftp.edgewall.com/pub/trac/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
-IUSE="cgi fastcgi i18n +highlight +restructuredtext mysql postgres +sqlite subversion test"
+IUSE="cgi fastcgi i18n +highlight +restructuredtext mysql postgres +sqlite subversion"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 RDEPEND="
@@ -42,14 +42,12 @@ RDEPEND="
 	sqlite? ( >=dev-db/sqlite-3.3.4:3 )
 	subversion? ( dev-vcs/subversion[python,${PYTHON_USEDEP}] )
 	"
-DEPEND="${RDEPEND}
-	test? (
-		dev-python/twill[${PYTHON_USEDEP}]
-		dev-python/lxml[${PYTHON_USEDEP}]
-		dev-python/configobj[${PYTHON_USEDEP}]
-	)"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
+
+# Tests depend on twill, a broken package
+RESTRICT="test"
 
 WEBAPP_MANUAL_SLOT="yes"
 

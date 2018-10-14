@@ -1,18 +1,17 @@
 #!/sbin/openrc-run
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 command="/usr/bin/rslsync"
 name="Resilio Sync"
 description="Resilio Sync"
-command_user="${USER:-rslsync}:${GROUP:-rslsync}"
+command_user="${RSLSYNC_USER:-rslsync}:${RSLSYNC_GROUP:-rslsync}"
 pidfile="/run/resilio-sync/resilio-sync.pid"
-config=${CONFIG:-/etc/resilio-sync/config.json}
+config="${CONFIG:-/etc/resilio-sync/config.json}"
 command_args="--config $config ${OPTS}"
 start_stop_daemon_args="-q"
 retry="10"
 
 depend() {
 	need net
-	provide resilio-sync
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Virgil Dupras <vdupras@gentoo.org> (08 Oct 2018)
@@ -266,10 +266,6 @@ net-im/telepathy-connection-managers sipe
 # Mark Wright <gienah@gentoo.org> (26 Oct 2013)
 # template-haskell not yet available
 dev-haskell/dataenc test
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
-# dev-libs/jemalloc is not keyworded
-www-plugins/gnash jemalloc
 
 # Pacho Ramos <pacho@gentoo.org> (20 Jul 2013)
 # Keywords pending, bug #476710

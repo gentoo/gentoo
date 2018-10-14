@@ -238,7 +238,7 @@ pkg_postinst() {
 	elog "Please backup any changes you made to /etc/mysql/my.cnf"
 	elog "and add them as a new file under /etc/mysql/${PN}.d with a .cnf extension."
 	elog "You may have as many files as needed and they are read alphabetically."
-	elog "Be sure the options have the appropitate section headers, i.e. [mysqld]."
+	elog "Be sure the options have the appropriate section headers, i.e. [mysqld]."
 	einfo
 }
 

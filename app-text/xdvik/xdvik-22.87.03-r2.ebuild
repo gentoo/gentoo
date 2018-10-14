@@ -19,6 +19,7 @@ CDEPEND=">=media-libs/freetype-2.9.1-r2:2
 	x11-libs/libXmu
 	x11-libs/libXpm
 	x11-libs/libXt
+	emacs? ( virtual/emacs )
 	motif? ( >=x11-libs/motif-2.3:0 )
 	!motif? (
 		neXt? ( x11-libs/neXtaw )

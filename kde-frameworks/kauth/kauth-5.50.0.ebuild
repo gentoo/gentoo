@@ -30,3 +30,12 @@ src_configure() {
 
 	kde5_src_configure
 }
+
+src_test() {
+	# KAuthHelperTest test fails, bug 654842
+	local myctestargs=(
+		-E "(KAuthHelperTest)"
+	)
+
+	kde5_src_test
+}

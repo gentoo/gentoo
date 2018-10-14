@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,8 +14,14 @@ SRC_URI="https://github.com/go-gitea/gitea/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 
-DEPEND="dev-go/go-bindata"
-RDEPEND="dev-vcs/git"
+DEPEND="
+	dev-go/go-bindata
+	sys-libs/pam
+"
+RDEPEND="
+	dev-vcs/git
+	sys-libs/pam
+"
 
 pkg_setup() {
 	enewgroup git

@@ -41,7 +41,7 @@ REQUIRED_USE="
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	airplay? (
-		>=app-pda/libplist-2.0.0[python,${PYTHON_USEDEP}]
+		>=app-pda/libplist-2.0.0
 		net-libs/shairplay
 	)
 	alsa? ( >=media-libs/alsa-lib-1.1.4.1 )
@@ -78,10 +78,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		libressl? ( media-video/ffmpeg[libressl,-openssl] )
 		!libressl? ( media-video/ffmpeg[-libressl,openssl] )
 	)
-	mysql? (
-		!mariadb? ( dev-db/mysql-connector-c:= )
-		mariadb? ( dev-db/mariadb-connector-c:= )
-	)
+	mysql? ( dev-db/mysql-connector-c:= )
+	mariadb? ( dev-db/mariadb-connector-c:=[mysqlcompat] )
 	>=net-misc/curl-7.56.1
 	nfs? ( >=net-fs/libnfs-2.0.0:= )
 	opengl? ( media-libs/glu )
@@ -122,9 +120,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	zeroconf? ( net-dns/avahi[dbus] )
 "
 RDEPEND="${COMMON_DEPEND}
-	lirc? (
-		|| ( app-misc/lirc app-misc/inputlircd )
-	)
+	lirc? ( app-misc/lirc )
 	!media-tv/xbmc
 	udisks? ( sys-fs/udisks:2 )
 	upower? (

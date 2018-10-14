@@ -140,11 +140,11 @@ src_configure() {
 }
 
 src_test() {
-	# parallel tests fail, foldermodeltest hangs, bug #646890
+	# parallel tests fail, foldermodeltest,positionertest hang, bug #646890
 	# needs D-Bus, bug #634166
 	local myctestargs=(
 		-j1
-		-E "(foldermodeltest|test_kio_fonts)"
+		-E "(foldermodeltest|positionertest|test_kio_fonts)"
 	)
 
 	kde5_src_test

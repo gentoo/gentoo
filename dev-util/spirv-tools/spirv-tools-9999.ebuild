@@ -29,7 +29,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
-	default
+	cmake-utils_src_install
 
 	# create a header file with the commit hash of the current revision
 	# vulkan-tools needs this to build

@@ -30,7 +30,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	media-gfx/qrencode:=
-	media-libs/libexif
+	media-libs/libexif:=
 	media-libs/openal
 	>=media-video/ffmpeg-2.6.3:=[webp,v4l]
 	net-libs/tox:0/0.2[av]

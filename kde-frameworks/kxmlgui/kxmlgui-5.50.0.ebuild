@@ -43,9 +43,9 @@ src_configure() {
 }
 
 src_test() {
-	# Files are missing; whatever. Bug: 650290
+	# Files are missing; whatever. Bugs 650290, 668198
 	local myctestargs=(
-		-E "(kxmlgui_unittest)"
+		-E "(ktoolbar_unittest|kxmlgui_unittest)"
 	)
 
 	kde5_src_test

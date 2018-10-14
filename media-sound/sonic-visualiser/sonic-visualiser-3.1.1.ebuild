@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -53,7 +53,10 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="|| ( jack pulseaudio portaudio )"
 
-PATCHES=( "${FILESDIR}/notest.patch" )
+PATCHES=(
+	"${FILESDIR}/notest.patch"
+	"${FILESDIR}/${P}-qt-5.11.patch"
+)
 
 sv_disable_opt() {
 	einfo "Disabling $1"

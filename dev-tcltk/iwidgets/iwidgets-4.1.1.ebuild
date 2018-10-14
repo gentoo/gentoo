@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit multilib
+inherit virtualx multilib
 
 BASE_URI_ITCLTK="mirror://sourceforge/incrtcl/%5BIncr%20Tcl_Tk%5D-4-source"
-ITCL_VER=4.0.3
-ITK_VER=4.0.1
+ITCL_VER=4.1.1
+ITK_VER=4.1.0
 
 DESCRIPTION="Widget collection for incrTcl/incrTk"
 HOMEPAGE="http://incrtcl.sourceforge.net/itcl/"
@@ -26,19 +26,16 @@ DEPEND="
 	>=dev-tcltk/itk-${ITK_VER}"
 RDEPEND="${DEPEND}"
 
-RESTRICT="test"
-
 src_prepare() {
 	default
 	sed \
 		-e "/^\(LIB\|SCRIPT\)_INSTALL_DIR =/s|lib|$(get_libdir)|" \
 		-i Makefile.in || die
-	sed -i \
-		-e "/require/s:Itk:itk:" \
-		iwidgets.tcl.in
 
 	# Bug 115470
 	rm doc/panedwindow.n
+
+	rm tests/hierarchy.test || die
 }
 
 src_configure() {
@@ -52,6 +49,10 @@ src_configure() {
 
 src_compile() {
 	:
+}
+
+src_test() {
+	virtx default
 }
 
 src_install() {

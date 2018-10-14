@@ -31,7 +31,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
-	default
+	cmake-utils_src_install
 	echo "${EGIT_COMMIT}" > "${PN}-commit.h" || die
 	insinto /usr/include/"${PN}"
 	doins  "${PN}-commit.h"

@@ -16,7 +16,7 @@ IUSE=""
 REQUIRED_USE="test? ( examples )"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 fi
 

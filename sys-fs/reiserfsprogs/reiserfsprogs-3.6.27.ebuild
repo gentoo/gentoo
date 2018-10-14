@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,7 @@ IUSE="static-libs"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.6.25-no_acl.patch"
+	"${FILESDIR}/${PN}-3.6.27-loff_t.patch"
 )
 
 src_prepare() {

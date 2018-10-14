@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils linux-info multilib systemd toolchain-funcs udev flag-o-matic
+inherit autotools linux-info multilib systemd toolchain-funcs udev flag-o-matic
 
 DESCRIPTION="User-land utilities for LVM2 (device-mapper) software"
 HOMEPAGE="https://sourceware.org/lvm2/"
@@ -12,8 +12,8 @@ SRC_URI="ftp://sourceware.org/pub/lvm2/${PN/lvm/LVM}.${PV}.tgz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="readline static static-libs systemd clvm cman corosync lvm1 lvm2create_initrd openais sanlock selinux +udev +thin device-mapper-only"
-REQUIRED_USE="device-mapper-only? ( !clvm !cman !corosync !lvm1 !lvm2create_initrd !openais !sanlock !thin )
+IUSE="readline static static-libs systemd clvm cman corosync lvm2create_initrd openais sanlock selinux +udev +thin device-mapper-only"
+REQUIRED_USE="device-mapper-only? ( !clvm !cman !corosync !lvm2create_initrd !openais !sanlock !thin )
 	systemd? ( udev )
 	clvm? ( !systemd )"
 
@@ -120,61 +120,53 @@ src_prepare() {
 	sed -i -e "s:/usr/bin/true:$(type -P true):" scripts/blk_availability_systemd_red_hat.service.in || die #517514
 
 	# Without thin-privision-tools, there is nothing to install for target install_man7:
-	use thin || { sed -i -e '/^install_lvm2/s:install_man7::' man/Makefile.in || die; }
+	if ! use thin ; then
+		sed -i -e '/^install_lvm2/s:install_man7::' man/Makefile.in || die
+	fi
 
 	eautoreconf
 }
 
 src_configure() {
 	filter-flags -flto
-	local myconf=()
-	local buildmode
-
-	myconf+=( $(use_enable !device-mapper-only dmeventd) )
-	myconf+=( $(use_enable !device-mapper-only cmdlib) )
-	myconf+=( $(use_enable !device-mapper-only applib) )
-	myconf+=( $(use_enable !device-mapper-only fsadm) )
-	myconf+=( $(use_enable !device-mapper-only lvmetad) )
-	use device-mapper-only && myconf+=( --disable-udev-systemd-background-jobs )
+	local myeconfargs=()
 
 	# Most of this package does weird stuff.
 	# The build options are tristate, and --without is NOT supported
 	# options: 'none', 'internal', 'shared'
-	if use static; then
-		buildmode="internal"
-		# This only causes the .static versions to become available
-		myconf+=( --enable-static_link )
-	else
-		buildmode="shared"
-	fi
-	dmbuildmode=$(use !device-mapper-only && echo internal || echo none)
+	myeconfargs+=(
+		$(use_enable !device-mapper-only dmeventd)
+		$(use_enable !device-mapper-only cmdlib)
+		$(use_enable !device-mapper-only applib)
+		$(use_enable !device-mapper-only fsadm)
+		$(use_enable !device-mapper-only lvmetad)
+		$(usex device-mapper-only --disable-udev-systemd-background-jobs '')
 
-	# dmeventd requires mirrors to be internal, and snapshot available
-	# so we cannot disable them
-	myconf+=( --with-mirrors=${dmbuildmode} )
-	myconf+=( --with-snapshots=${dmbuildmode} )
+		# This only causes the .static versions to become available
+		$(usex static --enable-static_link '')
+
+		# dmeventd requires mirrors to be internal, and snapshot available
+		# so we cannot disable them
+		--with-mirrors="$(usex device-mapper-only none internal)"
+		--with-snapshots="$(usex device-mapper-only none internal)"
+
+		# disable O_DIRECT support on hppa, breaks pv detection (#99532)
+		$(usex hppa --disable-o_direct '')
+	)
+
 	if use thin; then
-		myconf+=( --with-thin=internal --with-cache=internal )
+		myeconfargs+=( --with-thin=internal --with-cache=internal )
 		local texec
 		for texec in check dump repair restore; do
-			myconf+=( --with-thin-${texec}="${EPREFIX}"/sbin/thin_${texec} )
-			myconf+=( --with-cache-${texec}="${EPREFIX}"/sbin/cache_${texec} )
+			myeconfargs+=( --with-thin-${texec}="${EPREFIX}"/sbin/thin_${texec} )
+			myeconfargs+=( --with-cache-${texec}="${EPREFIX}"/sbin/cache_${texec} )
 		done
 	else
-		myconf+=( --with-thin=none --with-cache=none )
+		myeconfargs+=( --with-thin=none --with-cache=none )
 	fi
-
-	if use lvm1; then
-		myconf+=( --with-lvm1=${buildmode} )
-	else
-		myconf+=( --with-lvm1=none )
-	fi
-
-	# disable O_DIRECT support on hppa, breaks pv detection (#99532)
-	use hppa && myconf+=( --disable-o_direct )
 
 	if use clvm; then
-		myconf+=( --with-cluster=${buildmode} )
+		myeconfargs+=( --with-cluster="$(usex static internal shared)" )
 		# 4-state! Make sure we get it right, per bug 210879
 		# Valid options are: none, cman, gulm, all
 		#
@@ -191,35 +183,35 @@ src_configure() {
 		use corosync && clvmd="${clvmd:+$clvmd,}corosync"
 		use openais && clvmd="${clvmd:+$clvmd,}openais"
 		[ -z "${clvmd}" ] && clvmd="none"
-		myconf+=( --with-clvmd=${clvmd} )
-		myconf+=( --with-pool=${buildmode} )
-		myconf+=( --enable-lvmlockd-dlm )
+		myeconfargs+=( --with-clvmd=${clvmd} )
+		myeconfargs+=( --enable-lvmlockd-dlm )
 	else
-		myconf+=( --with-clvmd=none --with-cluster=none )
+		myeconfargs+=( --with-clvmd=none --with-cluster=none )
 	fi
 
-	econf \
-		$(use_enable readline) \
-		$(use_enable selinux) \
-		--enable-pkgconfig \
-		--with-confdir="${EPREFIX}"/etc \
-		--exec-prefix="${EPREFIX}" \
-		--sbindir="${EPREFIX}/sbin" \
-		--with-staticdir="${EPREFIX}"/sbin \
-		--libdir="${EPREFIX}/$(get_libdir)" \
-		--with-usrlibdir="${EPREFIX}/usr/$(get_libdir)" \
-		--with-default-dm-run-dir=/run \
-		--with-default-run-dir=/run/lvm \
-		--with-default-locking-dir=/run/lock/lvm \
-		--with-default-pid-dir=/run \
-		$(use_enable udev udev_rules) \
-		$(use_enable udev udev_sync) \
-		$(use_with udev udevdir "$(get_udevdir)"/rules.d) \
-		$(use_enable sanlock lvmlockd-sanlock) \
-		$(use_enable systemd udev-systemd-background-jobs) \
-		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
-		${myconf[@]} \
+	myeconfargs+=(
+		$(use_enable readline)
+		$(use_enable selinux)
+		--enable-pkgconfig
+		--with-confdir="${EPREFIX}"/etc
+		--exec-prefix="${EPREFIX}"
+		--sbindir="${EPREFIX}/sbin"
+		--with-staticdir="${EPREFIX}"/sbin
+		--libdir="${EPREFIX}/$(get_libdir)"
+		--with-usrlibdir="${EPREFIX}/usr/$(get_libdir)"
+		--with-default-dm-run-dir=/run
+		--with-default-run-dir=/run/lvm
+		--with-default-locking-dir=/run/lock/lvm
+		--with-default-pid-dir=/run
+		$(use_enable udev udev_rules)
+		$(use_enable udev udev_sync)
+		$(use_with udev udevdir "$(get_udevdir)"/rules.d)
+		$(use_enable sanlock lvmlockd-sanlock)
+		$(use_enable systemd udev-systemd-background-jobs)
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		CLDFLAGS="${LDFLAGS}"
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -273,7 +265,7 @@ src_install() {
 		dolib.a daemons/dmeventd/libdevmapper-event.a
 		#gen_usr_ldscript libdevmapper-event.so
 	else
-		rm -f "${ED}"usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a
+		rm -f "${ED%/}"/usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a
 	fi
 
 	if use lvm2create_initrd; then

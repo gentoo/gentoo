@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -39,6 +39,8 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${P}-gnulib-mb.patch #576818
 	epatch "${FILESDIR}"/${P}-gnulib-S_MAGIC_NFS.patch #580032
+	epatch "${FILESDIR}"/${P}-glibc228.patch #663242
+	epatch_user
 }
 
 src_configure() {

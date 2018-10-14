@@ -26,6 +26,7 @@ IUSE=""
 
 RDEPEND="
 	>=sys-apps/systemd-236[${MULTILIB_USEDEP}]
+	sys-auth/polkit
 "
 DEPEND="${RDEPEND}"
 
@@ -79,10 +80,12 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	DESTDIR="${D}" eninja install
-	insinto /etc/security/limits.d
-	newins - 45-gamemode.conf <<-EOF
-		@gamemode - nice -10
-	EOF
+	if multilib_is_native_abi; then
+		insinto /etc/security/limits.d
+		newins - 45-gamemode.conf <<-EOF
+			@gamemode - nice -10
+		EOF
+	fi
 }
 
 pkg_postinst() {

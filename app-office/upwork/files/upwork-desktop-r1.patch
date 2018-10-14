@@ -1,0 +1,14 @@
+diff -ur a/usr/share/applications/upwork.desktop b/usr/share/applications/upwork.desktop
+--- a/usr/share/applications/upwork.desktop	2018-07-04 16:38:55.000000000 +0200
++++ b/usr/share/applications/upwork.desktop	2018-09-25 15:06:27.021679329 +0200
+@@ -2,8 +2,8 @@
+ Encoding=UTF-8
+ Name=Upwork
+ Exec=upwork
+-Icon=upwork.png
++Icon=upwork
+ Terminal=false
+ Type=Application
+-Categories=GTK;Network;Project Management
++Categories=GTK;Network;X-Project Management
+ StartupNotify=false

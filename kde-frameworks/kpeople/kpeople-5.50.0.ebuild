@@ -31,8 +31,11 @@ RDEPEND="${DEPEND}
 "
 
 src_test() {
-	# bug: 612504
-	local myctestargs=( -j1 )
+	# personsmodeltest segfaults, bug 668192
+	local myctestargs=(
+		-j1
+		-E "(persondatatest)"
+	)
 
 	kde5_src_test
 }

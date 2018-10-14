@@ -1,6 +1,6 @@
 [Unit]
 Description=Resilio Sync service
-Documentation=http://help.getsync.com/
+Documentation=https://help.resilio.com
 After=network.target network-online.target
 
 [Service]

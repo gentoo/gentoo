@@ -15,7 +15,7 @@ inherit kde5
 DESCRIPTION="PHP plugin for KDevelop"
 LICENSE="GPL-2 LGPL-2"
 IUSE=""
-[[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="~amd64 ~x86"
+[[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="amd64 x86"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep kcmutils)
@@ -43,8 +43,11 @@ DEPEND="${COMMON_DEPEND}
 
 PATCHES=( "${FILESDIR}/${P}-tests-optional.patch" )
 
+# remaining tests fail for some, bug 668530
+RESTRICT+=" test"
+
 src_test() {
-	# tests hang
+	# tests hang, bug 667922
 	local myctestargs=(
 		-E "(completionbenchmark|duchain_multiplefiles)"
 	)

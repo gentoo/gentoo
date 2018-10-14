@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,12 +22,8 @@ RDEPEND=">=x11-libs/gtk+-3.20:3=
 	hddtemp? ( app-admin/hddtemp net-analyzer/gnu-netcat )
 	libnotify? ( >=x11-libs/libnotify-0.7:= )
 	lm_sensors? ( >=sys-apps/lm_sensors-3.1.0:= )
-	video_cards_nvidia? (
-		|| (
-			x11-drivers/nvidia-drivers[tools,static-libs]
-			media-video/nvidia-settings
-			)
-	)"
+	video_cards_nvidia? ( x11-drivers/nvidia-drivers[tools,static-libs] )"
+
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig"
