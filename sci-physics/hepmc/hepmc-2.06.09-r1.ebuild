@@ -72,13 +72,9 @@ src_prepare() {
 
 src_configure() {
 	# use MeV over GeV and mm over cm
-	local length_conf="MM"
-	use cm && length_conf="CM"
-	local momentum_conf="MEV"
-	use gev && momentum_conf="GEV"
-	mycmakeargs+=(
-		-Dlength=${length_conf}
-		-Dmomentum=${momentum_conf}
+	local mycmakeargs=(
+		-Dlength=$(usex cm CM MM)
+		-Dmomentum=$(usex gev GEV MEV)
 	)
 	cmake-utils_src_configure
 }
