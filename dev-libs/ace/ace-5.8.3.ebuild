@@ -5,7 +5,7 @@ EAPI=5
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="The Adaptive Communications Environment"
-HOMEPAGE="http://www.cs.wustl.edu/~schmidt/ACE.html"
+HOMEPAGE="http://www.dre.vanderbilt.edu/~schmidt/ACE.html"
 SRC_URI="!tao? ( http://download.dre.vanderbilt.edu/previous_versions/ACE-${PV}.tar.bz2 )
 	tao? (
 		!ciao? ( http://download.dre.vanderbilt.edu/previous_versions/ACE+TAO-${PV}.tar.bz2 )
