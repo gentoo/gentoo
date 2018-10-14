@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ inherit cmake-utils distutils-r1 flag-o-matic multilib toolchain-funcs
 GITHUB_REV="74fcb8676de69ed04ddab8976a8b05a6caaf4d65"
 
 DESCRIPTION="Evaluation of electrostatic properties of nanoscale biomolecular systems"
-HOMEPAGE="http://www.poissonboltzmann.org/apbs/"
+HOMEPAGE="https://www.poissonboltzmann.org/apbs/"
 #SRC_URI="mirror://sourceforge/${PN}/${P}-source.tar.gz"
 SRC_URI="https://github.com/Electrostatics/apbs-pdb2pqr/archive/${GITHUB_REV}.zip -> ${P}.zip"
 
@@ -28,18 +28,18 @@ REQUIRED_USE="
 RDEPEND="
 	dev-cpp/eigen:3
 	dev-libs/maloc[mpi=]
-	virtual/blas
 	sys-libs/readline
+	virtual/blas
 	fetk? (
-		sci-libs/fetk
 		sci-libs/amd
-		sci-libs/umfpack
+		sci-libs/fetk
 		sci-libs/superlu
+		sci-libs/umfpack
 	)
 	mpi? ( virtual/mpi )
 	python? ( ${PYTHON_DEPS} )
 "
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
@@ -63,7 +63,8 @@ src_prepare() {
 	use doc && MAKEOPTS+=" -j1"
 	if use python; then
 		unset PATCHES || die
-		cd tools/python && distutils-r1_src_prepare
+		cd tools/python || die
+		distutils-r1_src_prepare
 	fi
 }
 
@@ -92,7 +93,8 @@ src_configure() {
 	)
 	cmake-utils_src_configure
 	if use python; then
-		cd tools/python && distutils-r1_src_configure
+		cd tools/python || die
+		distutils-r1_src_configure
 	fi
 }
 
@@ -100,7 +102,8 @@ src_compile(){
 	cmake-utils_src_compile
 	if use python; then
 		append-ldflags -L"${S}"/lib
-		cd tools/python && distutils-r1_src_compile
+		cd tools/python || die
+		distutils-r1_src_compile
 	fi
 }
 
@@ -121,7 +124,8 @@ src_install() {
 		fi
 	done
 	if use python; then
-		cd tools/python && distutils-r1_src_install
+		cd tools/python || die
+		distutils-r1_src_install
 		rm -rf "${ED}"/usr/share/apbs/tools/python || die
 	fi
 }
