@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 MY_P="gperftools-${PV}"
-inherit toolchain-funcs flag-o-matic vcs-snapshot autotools multilib-minimal
+
+inherit toolchain-funcs flag-o-matic autotools vcs-snapshot multilib-minimal
 
 DESCRIPTION="Fast, multi-threaded malloc() and nifty performance analysis tools"
 HOMEPAGE="https://github.com/gperftools/gperftools"
@@ -18,14 +18,13 @@ SLOT="0/4"
 # OSX ppc/amd64
 # AIX ppc/ppc64
 KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+
 IUSE="largepages +debug minimal optimisememory test static-libs"
 
 DEPEND="sys-libs/libunwind"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
-
-HTML_DOCS="docs"
 
 pkg_setup() {
 	# set up the make options in here so that we can actually make use
@@ -51,7 +50,6 @@ multilib_src_configure() {
 	append-flags -fno-strict-aliasing -fno-omit-frame-pointer
 
 	econf \
-		--htmldir=${EPREFIX}/usr/share/doc/${PF}/html \
 		--docdir=${EPREFIX}/usr/share/doc/${PF} \
 		--enable-shared \
 		$(use_enable static-libs static) \
@@ -82,4 +80,9 @@ src_install() {
 	fi
 
 	multilib-minimal_src_install
+}
+
+multilib_src_install_all() {
+	einstalldocs
+	use static-libs || find "${D}" -name '*.la' -delete || die
 }

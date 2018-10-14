@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,7 @@ src_configure() {
 	use static && append-flags -static
 	# avoid text relocation in gzip
 	use pic && export DEFS="NO_ASM"
-	econf
+	econf --disable-gcc-warnings #663928
 }
 
 src_install() {
