@@ -33,7 +33,7 @@ DOCS=( ChangeLog AUTHORS )
 src_prepare() {
 	cmake-utils_src_prepare
 
-	sed -i -e '/add_subdirectory(doc)/d' CMakeLists.txt
+	sed -i -e '/add_subdirectory(doc)/d' CMakeLists.txt || die
 	# CMake doc building broken
 	# gentoo doc directory
 	#sed -i \
@@ -56,8 +56,12 @@ src_prepare() {
 		{src,fio}/CMakeLists.txt || die
 
 	# remove targets if use flags not set
-	use examples || sed -i -e '/add_subdirectory(examples)/d' CMakeLists.txt
-	use test || sed -i -e '/add_subdirectory(test)/d' CMakeLists.txt
+	if ! use examples; then
+		sed -i -e '/add_subdirectory(examples)/d' CMakeLists.txt || die
+	fi
+	if ! use test; then
+		sed -i -e '/add_subdirectory(test)/d' CMakeLists.txt || die
+	fi
 	if ! use static-libs; then
 		sed -i \
 			-e '/(HepMC\(fio\|\)S/d' \
