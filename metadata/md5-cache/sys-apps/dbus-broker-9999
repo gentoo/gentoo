@@ -1,11 +1,12 @@
+BDEPEND=>=dev-util/meson-0.45.1 >=dev-util/ninja-1.7.2 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=audit? ( >=sys-process/audit-2.7 >=sys-libs/libcap-ng-0.6 ) doc? ( dev-python/docutils ) launcher? ( >=sys-apps/dbus-1.10 >=dev-libs/expat-2.2 >=dev-libs/glib-2.50:2 >=sys-apps/systemd-230 ) selinux? ( sys-libs/libselinux ) dev-python/docutils virtual/pkgconfig >=dev-util/meson-0.45.1 >=dev-util/ninja-1.7.2 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=audit? ( >=sys-process/audit-2.7 >=sys-libs/libcap-ng-0.6 ) doc? ( dev-python/docutils ) launcher? ( >=sys-apps/dbus-1.10 >=dev-libs/expat-2.2 >=dev-libs/glib-2.50:2 >=sys-apps/systemd-230 ) selinux? ( sys-libs/libselinux ) dev-python/docutils virtual/pkgconfig
 DESCRIPTION=Linux D-Bus Message Broker
-EAPI=6
+EAPI=7
 HOMEPAGE=https://github.com/bus1/dbus-broker/wiki
 IUSE=audit doc +launcher selinux
 LICENSE=Apache-2.0
 RDEPEND=audit? ( >=sys-process/audit-2.7 >=sys-libs/libcap-ng-0.6 ) doc? ( dev-python/docutils ) launcher? ( >=sys-apps/dbus-1.10 >=dev-libs/expat-2.2 >=dev-libs/glib-2.50:2 >=sys-apps/systemd-230 ) selinux? ( sys-libs/libselinux )
 SLOT=0
 _eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	meson	29ef682942c6ff558de2f797a61790c2	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=0c40f1f312a00486ef1ec0cdf9d8d35b
+_md5_=bfd4eacb2aad9b51dc6f05b09cd1d63a

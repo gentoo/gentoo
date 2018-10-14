@@ -1,0 +1,14 @@
+BDEPEND=>=dev-util/meson-0.45.1 >=dev-util/ninja-1.7.2
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=audit? ( >=sys-process/audit-2.7 >=sys-libs/libcap-ng-0.6 ) doc? ( dev-python/docutils ) launcher? ( >=sys-apps/dbus-1.10 >=dev-libs/expat-2.2 >=dev-libs/glib-2.50:2 >=sys-apps/systemd-230 ) selinux? ( sys-libs/libselinux ) dev-python/docutils virtual/pkgconfig
+DESCRIPTION=Linux D-Bus Message Broker
+EAPI=7
+HOMEPAGE=https://github.com/bus1/dbus-broker/wiki
+IUSE=audit doc +launcher selinux
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=audit? ( >=sys-process/audit-2.7 >=sys-libs/libcap-ng-0.6 ) doc? ( dev-python/docutils ) launcher? ( >=sys-apps/dbus-1.10 >=dev-libs/expat-2.2 >=dev-libs/glib-2.50:2 >=sys-apps/systemd-230 ) selinux? ( sys-libs/libselinux )
+SLOT=0
+SRC_URI=https://github.com/bus1/dbus-broker/archive/v16/dbus-broker-16.tar.gz https://github.com/c-util/c-dvar/archive/9fcd89593f8b7fb5c9f1c32f0b82f518eda4be46/c-dvar-9fcd89593f8b7fb5c9f1c32f0b82f518eda4be46.tar.gz https://github.com/c-util/c-list/archive/dda36d30c7d655b4d61358519168fa7ce0e9dae9/c-list-dda36d30c7d655b4d61358519168fa7ce0e9dae9.tar.gz https://github.com/c-util/c-rbtree/archive/bf627e0c32241915108f66ad9738444e4d045b45/c-rbtree-bf627e0c32241915108f66ad9738444e4d045b45.tar.gz https://github.com/c-util/c-sundry/archive/50c8ccf01b39b3f11e59c69d1cafea5bef5a9769/c-sundry-50c8ccf01b39b3f11e59c69d1cafea5bef5a9769.tar.gz https://github.com/c-util/c-utf8/archive/b245df543717ee19ad398f8139447e3807c11c96/c-utf8-b245df543717ee19ad398f8139447e3807c11c96.tar.gz
+_eclasses_=meson	29ef682942c6ff558de2f797a61790c2	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=bfd4eacb2aad9b51dc6f05b09cd1d63a
