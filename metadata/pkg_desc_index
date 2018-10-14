@@ -152,7 +152,7 @@ app-admin/whowatch 1.8.5: Displays information about users currently logged on i
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r1: Yet Another Log Analyzer
-app-antivirus/clamav 0.99.4-r1 0.100.1: Clam Anti-Virus Scanner
+app-antivirus/clamav 0.99.4-r1 0.99.4-r2 0.100.1 0.100.1-r1: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 3.7.2: Downloads and installs third-party clamav signatures
 app-arch/advancecomp 2.0: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r1: Afio creates cpio-format archives.
