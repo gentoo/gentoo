@@ -5385,6 +5385,7 @@ dev-python/pytest-cov 2.3.1: py.test plugin for coverage reporting
 dev-python/pytest-expect 1.1.0: py.test plugin that stores test expectations by saving the set of failing tests
 dev-python/pytest-fixture-config 1.2.11: Virtualenv fixture for py.test
 dev-python/pytest-flake8 0.9.1: py.test plugin for flake8
+dev-python/pytest-forked 0.2: run tests in isolated forked subprocesses
 dev-python/pytest-httpbin 0.2.3: Easily test your HTTP library against a local copy of httpbin
 dev-python/pytest-localserver 0.3.7: Py.test plugin to test server connections locally
 dev-python/pytest-mock 1.6.0: Thin-wrapper around the mock package for easier use with py.test
@@ -5396,7 +5397,7 @@ dev-python/pytest-runner 2.6.2: Adds support for tests during installation of se
 dev-python/pytest-shutil 1.2.11: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-timeout 1.2.0: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.2.11: Virtualenv fixture for py.test
-dev-python/pytest-xdist 1.15.0: Distributed testing and loop-on-failing modes
+dev-python/pytest-xdist 1.15.0 1.23.2: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.12.1: Manage external processes across test runs
 dev-python/python-augeas 0.5.0: Python bindings for Augeas
 dev-python/python-barbicanclient 4.5.2 4.6.0: Client library for Barbican API.
