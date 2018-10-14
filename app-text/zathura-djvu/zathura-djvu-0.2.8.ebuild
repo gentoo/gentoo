@@ -20,15 +20,14 @@ HOMEPAGE="https://pwmt.org/projects/zathura-djvu/"
 LICENSE="ZLIB"
 SLOT="0"
 
-DEPEND="app-text/djvu
+RDEPEND="app-text/djvu
 	>=app-text/zathura-0.3.9
 	dev-libs/girara
 	dev-libs/glib:2
 	x11-libs/cairo"
 
-RDEPEND="${DEPEND}"
-
-BDEPEND="virtual/pkgconfig"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 pkg_postinst() {
 	gnome2_icon_cache_update
