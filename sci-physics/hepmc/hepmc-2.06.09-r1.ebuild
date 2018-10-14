@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit cmake-utils
 MYP=HepMC-${PV}
 
 DESCRIPTION="Event Record for Monte Carlo Generators"
-HOMEPAGE="http://lcgapp.cern.ch/project/simu/HepMC/"
+HOMEPAGE="https://hepmc.web.cern.ch/hepmc/"
 SRC_URI="http://lcgapp.cern.ch/project/simu/HepMC/download/${MYP}.tar.gz"
 
 LICENSE="GPL-2"
