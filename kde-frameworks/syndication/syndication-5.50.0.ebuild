@@ -3,6 +3,7 @@
 
 EAPI=6
 
+KDE_QTHELP="false"
 KDE_TEST="true"
 inherit kde5
 
