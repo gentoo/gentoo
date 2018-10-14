@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -63,7 +63,8 @@ src_prepare() {
 	use doc && MAKEOPTS+=" -j1"
 	if use python; then
 		unset PATCHES || die
-		cd tools/python && distutils-r1_src_prepare
+		cd tools/python || die
+		distutils-r1_src_prepare
 	fi
 }
 
@@ -92,7 +93,8 @@ src_configure() {
 	)
 	cmake-utils_src_configure
 	if use python; then
-		cd tools/python && distutils-r1_src_configure
+		cd tools/python || die
+		distutils-r1_src_configure
 	fi
 }
 
@@ -100,7 +102,8 @@ src_compile(){
 	cmake-utils_src_compile
 	if use python; then
 		append-ldflags -L"${S}"/lib
-		cd tools/python && distutils-r1_src_compile
+		cd tools/python || die
+		distutils-r1_src_compile
 	fi
 }
 
@@ -121,7 +124,8 @@ src_install() {
 		fi
 	done
 	if use python; then
-		cd tools/python && distutils-r1_src_install
+		cd tools/python || die
+		distutils-r1_src_install
 		rm -rf "${ED}"/usr/share/apbs/tools/python || die
 	fi
 }
