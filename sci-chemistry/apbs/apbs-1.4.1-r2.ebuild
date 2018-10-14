@@ -11,7 +11,7 @@ inherit cmake-utils distutils-r1 flag-o-matic multilib toolchain-funcs
 GITHUB_REV="74fcb8676de69ed04ddab8976a8b05a6caaf4d65"
 
 DESCRIPTION="Evaluation of electrostatic properties of nanoscale biomolecular systems"
-HOMEPAGE="http://www.poissonboltzmann.org/apbs/"
+HOMEPAGE="https://www.poissonboltzmann.org/apbs/"
 #SRC_URI="mirror://sourceforge/${PN}/${P}-source.tar.gz"
 SRC_URI="https://github.com/Electrostatics/apbs-pdb2pqr/archive/${GITHUB_REV}.zip -> ${P}.zip"
 
