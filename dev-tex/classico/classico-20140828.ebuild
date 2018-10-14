@@ -36,6 +36,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	mktexlsr
 	updmap-sys --enable Map ${PN}.map
 }
 
