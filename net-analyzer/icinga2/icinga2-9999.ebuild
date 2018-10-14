@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -109,7 +109,7 @@ src_install() {
 
 	einstalldocs
 
-	newinitd "${FILESDIR}"/icinga2.initd-2 icinga2
+	newinitd "${FILESDIR}"/icinga2.initd-3 icinga2
 
 	if use mysql ; then
 		docinto schema
