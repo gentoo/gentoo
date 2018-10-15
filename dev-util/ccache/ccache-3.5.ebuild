@@ -22,6 +22,7 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4-size-on-disk.patch #456178
+	"${FILESDIR}"/${PN}-3.5-nvcc-test.patch
 )
 
 src_prepare() {
