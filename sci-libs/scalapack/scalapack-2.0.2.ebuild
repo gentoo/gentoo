@@ -23,7 +23,9 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	cmake-utils_src_prepare
 
-	use static-libs && mkdir "${WORKDIR}/${PN}_static"
+	if use static-libs; then
+		mkdir "${WORKDIR}/${PN}_static" || die
+	fi
 	# mpi does not have a pc file
 	sed -i -e 's/mpi//' scalapack.pc.in || die
 }
