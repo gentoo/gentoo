@@ -4,10 +4,10 @@ DESCRIPTION=Write a CHECKSUMS file for a directory as on CPAN
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/CPAN-Checksums
 IUSE=test
-KEYWORDS=amd64 x86
+KEYWORDS=amd64 x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Compress-Bzip2 dev-perl/Data-Compare virtual/perl-Data-Dumper >=virtual/perl-Digest-MD5-2.360.0 virtual/perl-Digest-SHA virtual/perl-Exporter virtual/perl-File-Spec virtual/perl-IO virtual/perl-IO-Compress virtual/perl-Safe dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AN/ANDK/CPAN-Checksums-2.12.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=e7bf5a00b59dddd6def1bd3355168460
+_md5_=7127f64d75ba2ad683cc4b1da6f45fbb
