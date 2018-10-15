@@ -41,7 +41,7 @@ S=${WORKDIR}/${P}-source
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.14-CFLAGS.patch
-	"${FILESDIR}"/${PN}-1.14-debug-build.patch
+	"${FILESDIR}"/${PN}-1.14-Makefile.patch
 	"${FILESDIR}"/${PN}-1.10a-add-desktop-pc-xpm-files.patch
 	# See bug #662352
 	"${FILESDIR}"/${PN}-1.14-openssl-curl-x11.patch
@@ -68,15 +68,12 @@ src_prepare() {
 		-e "1ilibdir = ${ED}usr/$(get_libdir)" \
 		-e "1idocdir = ${ED}usr/share/doc/${PF}" \
 		-i Makerules || die
-
-	if use static-libs; then
-		cp -a "${S}" "${S}"-static || die
-	fi
 }
 
 _emake() {
 	# When HAVE_OBJCOPY is yes, we end up with a lot of QA warnings.
 	emake \
+		GENTOO_PV=${PV} \
 		HAVE_GLUT=$(usex opengl yes no) \
 		WANT_CURL=$(usex curl) \
 		WANT_OPENSSL=$(usex openssl) \
@@ -93,7 +90,7 @@ src_compile() {
 	use curl && _emake extra-apps
 
 	use static-libs && \
-		_emake -C "${S}"-static build/debug/lib${PN}{,-js-none}.a
+		_emake build/debug/lib${PN}.a
 }
 
 src_install() {
@@ -107,7 +104,7 @@ src_install() {
 	_emake install
 
 	use static-libs && \
-		dolib.a "${S}"-static/build/debug/lib${PN}{,-js-none}.a
+		dolib.a build/debug/lib${PN}.a
 	if use opengl ; then
 		einfo "mupdf symlink points to mupdf-gl (bug 616654)"
 		dosym ${PN}-gl /usr/bin/${PN}
