@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils
 
@@ -12,7 +12,9 @@ SRC_URI="https://lemon.cs.elte.hu/pub/sources/${P}.tar.gz"
 LICENSE="Boost-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+coin doc glpk static-libs test tools"
+IUSE="+coin doc glpk static-libs test"
+
+REQUIRED_USE="|| ( coin glpk )"
 
 RDEPEND="
 	coin? (
@@ -29,29 +31,17 @@ DEPEND="${RDEPEND}
 	)
 "
 
-REQUIRED_USE="|| ( coin glpk )"
-
 PATCHES=(
 	"${FILESDIR}"/${P}-multilib.patch
-	"${FILESDIR}"/${P}-as-needed.patch
+	"${FILESDIR}"/${PN}-1.3-as-needed.patch
 )
 
 src_prepare() {
-	sed -i \
-		-e '/ADD_SUBDIRECTORY(demo)/d' \
-		CMakeLists.txt || die
+	cmake-utils_src_prepare
+	cmake_comment_add_subdirectory demo
 
-	use doc || sed -i \
-		-e '/ADD_SUBDIRECTORY(doc)/d' \
-		CMakeLists.txt || die
-
-	use tools || sed -i \
-		-e '/ADD_SUBDIRECTORY(tools)/d' \
-		CMakeLists.txt || die
-
-	use test || sed -i \
-		-e '/ADD_SUBDIRECTORY(test)/d' \
-		CMakeLists.txt || die
+	use doc || cmake_comment_add_subdirectory doc
+	use test || cmake_comment_add_subdirectory test
 
 	for t in \
 		max_clique \
@@ -66,20 +56,32 @@ src_prepare() {
 		-e '/ADD_TEST(lp_test lp_test)/d' \
 		-e '/ADD_DEPENDENCIES(check lp_test)/d' \
 		test/CMakeLists.txt || die
-	cmake-utils_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=TRUE
-		-DCOIN_ROOT_DIR="${EPREFIX}/usr"
-		-DLEMON_DOC_MATHJAX_RELPATH="${EPREFIX}/usr/share/mathjax"
-		$(cmake-utils_use doc LEMON_DOC_SOURCE_BROWSER)
-		$(cmake-utils_use doc LEMON_DOC_USE_MATHJAX)
-		$(cmake-utils_use coin LEMON_ENABLE_COIN)
-		$(cmake-utils_use glpk LEMON_ENABLE_GLPK)
+		-DLEMON_ENABLE_COIN=$(usex coin)
+		-DLEMON_ENABLE_GLPK=$(usex glpk)
 	)
+	use coin && mycmakeargs+=( -DCOIN_ROOT_DIR="${EPREFIX}/usr" )
+	if use doc; then
+		mycmakeargs+=(
+			-DLEMON_DOC_MATHJAX_RELPATH="${EPREFIX}/usr/share/mathjax"
+			-DLEMON_DOC_SOURCE_BROWSER=$(usex doc)
+			-DLEMON_DOC_USE_MATHJAX=$(usex doc)
+		)
+	fi
 	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-utils_src_install
+	# TODO: Upstream needs to see the light of GNUInstallDirs
+	if use doc; then
+		mv "${D}"/usr/share/doc/lemon/html "${D}"/usr/share/doc/${PF} || die
+		rmdir "${D}"/usr/share/doc/lemon || die
+	fi
 }
 
 src_test() {
