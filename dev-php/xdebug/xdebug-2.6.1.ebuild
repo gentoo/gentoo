@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -7,7 +7,7 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="yes"
 PHP_EXT_INIFILE="2.6.0-xdebug.ini"
 
-USE_PHP="php7-0 php7-1 php7-2 php7-3"
+USE_PHP="php7-0 php7-1 php7-2"
 
 MY_PV="${PV/_/}"
 MY_PV="${MY_PV/rc/RC}"
