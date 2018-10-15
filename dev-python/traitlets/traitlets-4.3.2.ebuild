@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,7 @@ DEPEND="
 	)
 	test? (
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 		)
 	"
 
@@ -50,5 +50,5 @@ python_compile_all() {
 }
 
 python_test() {
-	py.test --cov traitlets -v traitlets || die
+	pytest -vv traitlets || die
 }
