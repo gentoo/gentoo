@@ -31,6 +31,7 @@ RDEPEND="
 DEPEND="
 	${CDEPEND}
 	dev-python/docutils
+	dev-python/sphinx
 	virtual/pkgconfig"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
