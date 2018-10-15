@@ -84,7 +84,10 @@ RDEPEND="${COMMON_DEPEND}
 # bug 630508
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${PN}-4.0.3-tests-optional.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-4.0.3-tests-optional.patch"
+	"${FILESDIR}/${P}-desktopfile.patch"
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
