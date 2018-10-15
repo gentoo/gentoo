@@ -103,6 +103,8 @@ src_install() {
 
 	_emake install
 
+	dosym libmupdf.so.${PV} /usr/$(get_libdir)/lib${PN}.so
+
 	use static-libs && \
 		dolib.a build/debug/lib${PN}.a
 	if use opengl ; then
