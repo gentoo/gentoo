@@ -2,32 +2,41 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20181013-2117Z"
+MY_EXTRAS_VER="20181014-2320Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
+# Python2 required for innodb_stress.innodb_stress{,_blob,_crash} test
+PYTHON_COMPAT=( python2_7 )
+
 # Keeping eutils in EAPI=6 for emktemp in pkg_config
 
-inherit eutils flag-o-matic prefix toolchain-funcs \
-	user cmake-utils multilib-minimal
+inherit eapi7-ver cmake-utils eutils flag-o-matic linux-info \
+	prefix python-any-r1 toolchain-funcs user multilib-minimal
 
-SRC_URI="https://cdn.mysql.com/Downloads/MySQL-5.7/${PN}-boost-${PV}.tar.gz
-	https://cdn.mysql.com/archives/mysql-5.7/mysql-boost-${PV}.tar.gz
-	http://downloads.mysql.com/archives/MySQL-5.7/${PN}-boost-${PV}.tar.gz"
+MY_PV=$(ver_rs 3 '-')
+MY_PN="Percona-Server"
+MY_P="${PN}-${MY_PV}"
+MY_MAJOR_PV=$(ver_cut 1-2)
+MY_RELEASE_NOTES_URI="https://www.percona.com/doc/percona-server/5.7/release-notes/release-notes_index.html"
+
+SRC_URI="https://www.percona.com/downloads/${MY_PN}-${MY_MAJOR_PV}/${MY_PN}-${MY_PV}/source/tarball/${PN}-${MY_PV}.tar.gz
+	mirror://sourceforge/boost/boost_1_59_0.tar.gz
+"
 
 # Gentoo patches to MySQL
-if [[ "${MY_EXTRAS_VER}" != "live" && "${MY_EXTRAS_VER}" != "none" ]]; then
+if [[ "${MY_EXTRAS_VER}" != "live" && "${MY_EXTRAS_VER}" != "none" ]] ; then
 	SRC_URI="${SRC_URI}
 		mirror://gentoo/mysql-extras-${MY_EXTRAS_VER}.tar.bz2
 		https://gitweb.gentoo.org/proj/mysql-extras.git/snapshot/mysql-extras-${MY_EXTRAS_VER}.tar.bz2"
 fi
 
-HOMEPAGE="https://www.mysql.com/"
+HOMEPAGE="https://www.percona.com/software/mysql-database/percona-server"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 LICENSE="GPL-2"
 SLOT="0/18"
-IUSE="cjk client-libs cracklib debug jemalloc latin1 libressl numa +perl profiling selinux
-	+server static static-libs systemtap tcmalloc test yassl"
+IUSE="cjk client-libs cracklib debug experimental jemalloc latin1 libressl numa pam +perl profiling rocksdb
+	selinux +server static static-libs systemtap tcmalloc test tokudb tokudb-backup-plugin yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
 RESTRICT="libressl? ( test )"
@@ -54,18 +63,19 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20001_all_fix-minimal-build-cmake-mysql-5.7.patch
 	"${MY_PATCH_DIR}"/20007_all_cmake-debug-werror-5.7.patch
 	"${MY_PATCH_DIR}"/20009_all_mysql_myodbc_symbol_fix-5.7.10.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.21-without-clientlibs-tools.patch
+	"${MY_PATCH_DIR}"/20018_all_percona-server-5.7.23-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-fix-libressl-support.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-add-missing-gcc-8-fix.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-fix-grant_user_lock-a-root.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-round-off-test-values-for-same-output-on-all-architectures.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-fix-mips-ASM.patch
+	"${MY_PATCH_DIR}"/20018_all_percona-server-5.7.23-rocksdb-use-system-libs.patch
 )
 
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
 # MULTILIB_USEDEP only set for libraries used by the client library
-COMMON_DEPEND="net-misc/curl
+COMMON_DEPEND="net-misc/curl:=
 	>=sys-apps/sed-4
 	>=sys-apps/texinfo-4.7-r1
 	sys-libs/ncurses:0=
@@ -83,6 +93,18 @@ COMMON_DEPEND="net-misc/curl
 		>=app-arch/lz4-0_p131:=
 		cjk? ( app-text/mecab:= )
 		numa? ( sys-process/numactl )
+		pam? ( virtual/pam:0= )
+		experimental? (
+			dev-libs/libevent:=
+			dev-libs/protobuf:=
+			net-libs/libtirpc:=
+		)
+		rocksdb? ( app-arch/zstd:= )
+		tokudb? (
+			app-arch/snappy:=
+			app-arch/xz-utils:=
+		)
+		tokudb-backup-plugin? ( dev-util/valgrind )
 	)
 	systemtap? ( >=dev-util/systemtap-1.3:0= )
 	tcmalloc? ( dev-util/google-perftools:0= )
@@ -98,14 +120,19 @@ COMMON_DEPEND="net-misc/curl
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	dev-libs/protobuf
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
 	virtual/yacc
-	server? ( dev-libs/libevent )
+	server? (
+		experimental? ( net-libs/rpcsvc-proto )
+	)
 	static? ( sys-libs/ncurses[static-libs] )
+	test? (
+		$(python_gen_any_dep 'dev-python/mysql-python[${PYTHON_USEDEP}]')
+		dev-perl/JSON
+	)
 "
 RDEPEND="${COMMON_DEPEND}
-	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
+	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/mysql !dev-db/mysql-cluster
 	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c dev-libs/protobuf:= )
 	selinux? ( sec-policy/selinux-mysql )
 	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
@@ -113,6 +140,10 @@ RDEPEND="${COMMON_DEPEND}
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )"
+
+python_check_deps() {
+	has_version "dev-python/mysql-python[${PYTHON_USEDEP}]"
+}
 
 mysql_init_vars() {
 	MY_SHAREDSTATEDIR=${MY_SHAREDSTATEDIR="${EPREFIX%/}/usr/share/mysql"}
@@ -150,13 +181,13 @@ mysql_init_vars() {
 			export PREVIOUS_DATADIR
 		fi
 	else
-		if [[ ${EBUILD_PHASE} == "config" ]]; then
+		if [[ ${EBUILD_PHASE} == "config" ]] ; then
 			local new_MY_DATADIR
 			new_MY_DATADIR=`"my_print_defaults" mysqld 2>/dev/null \
 				| sed -ne '/datadir/s|^--datadir=||p' \
 				| tail -n1`
 
-			if [[ ( -n "${new_MY_DATADIR}" ) && ( "${new_MY_DATADIR}" != "${MY_DATADIR}" ) ]]; then
+			if [[ ( -n "${new_MY_DATADIR}" ) && ( "${new_MY_DATADIR}" != "${MY_DATADIR}" ) ]] ; then
 				ewarn "MySQL MY_DATADIR has changed"
 				ewarn "from ${MY_DATADIR}"
 				ewarn "to ${new_MY_DATADIR}"
@@ -168,6 +199,17 @@ mysql_init_vars() {
 	export MY_SHAREDSTATEDIR MY_SYSCONFDIR
 	export MY_LOCALSTATEDIR MY_LOGDIR
 	export MY_DATADIR
+}
+
+pkg_pretend() {
+	if use numa ; then
+		local CONFIG_CHECK="~NUMA"
+
+		local WARNING_NUMA="This package expects NUMA support in kernel which this system does not have at the moment;"
+		WARNING_NUMA+=" Either expect runtime errors, enable NUMA support in kernel or rebuild the package without NUMA support"
+
+		check_extra_config
+	fi
 }
 
 pkg_setup() {
@@ -182,7 +224,10 @@ pkg_setup() {
 			eerror "Please use gcc-config to switch to gcc-4.7 or later version."
 			die
 		fi
+
+		use test && python-any-r1_pkg_setup
 	fi
+
 	if has test ${FEATURES} && \
 		use server && ! has userpriv ${FEATURES} ; then
 			eerror "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
@@ -197,10 +242,10 @@ pkg_preinst() {
 	# Here we need to see if the implementation switched client libraries
 	# We check if this is a new instance of the package and a client library already exists
 	local SHOW_ABI_MESSAGE libpath
-	if use client-libs && [[ -z ${REPLACING_VERSIONS} && -e "${EROOT}usr/$(get_libdir)/libmysqlclient.so" ]] ; then
-		libpath=$(readlink "${EROOT}usr/$(get_libdir)/libmysqlclient.so")
+	if use client-libs && [[ -z ${REPLACING_VERSIONS} && -e "${EROOT%/}/usr/$(get_libdir)/libperconaserverclient.so" ]] ; then
+		libpath=$(readlink "${EROOT%/}/usr/$(get_libdir)/libperconaserverclient.so")
 		elog "Due to ABI changes when switching between different client libraries,"
-		elog "revdep-rebuild must find and rebuild all packages linking to libmysqlclient."
+		elog "revdep-rebuild must find and rebuild all packages linking to libperconaserverclient."
 		elog "Please run: revdep-rebuild --library ${libpath}"
 		ewarn "Failure to run revdep-rebuild may cause issues with other programs or libraries"
 	fi
@@ -233,7 +278,7 @@ pkg_postinst() {
 
 	# Note about configuration change
 	einfo
-	elog "This version of mysql reorganizes the configuration from a single my.cnf"
+	elog "This version of ${PN} reorganizes the configuration from a single my.cnf"
 	elog "to several files in /etc/mysql/${PN}.d."
 	elog "Please backup any changes you made to /etc/mysql/my.cnf"
 	elog "and add them as a new file under /etc/mysql/${PN}.d with a .cnf extension."
@@ -247,16 +292,44 @@ src_unpack() {
 	# Grab the patches
 	[[ "${MY_EXTRAS_VER}" == "live" ]] && S="${WORKDIR}/mysql-extras" git-r3_src_unpack
 
-	mv -f "${WORKDIR}/${P}" "${S}" || die
+	mv -f "${WORKDIR}/${MY_P}" "${S}" || die
 }
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	if use jemalloc ; then
 		echo "TARGET_LINK_LIBRARIES(mysqld jemalloc)" >> "${S}/sql/CMakeLists.txt" || die
 	fi
-	if use tcmalloc; then
+
+	if use tcmalloc ; then
 		echo "TARGET_LINK_LIBRARIES(mysqld tcmalloc)" >> "${S}/sql/CMakeLists.txt" || die
 	fi
+
+	# Don't build bundled xz-utils
+	if [[ -d "${S}/storage/tokudb/ft-index" ]] ; then
+		echo > "${S}/storage/tokudb/ft-index/cmake_modules/TokuThirdParty.cmake" || die
+		sed -i 's/ build_lzma//' "${S}/storage/tokudb/ft-index/ft/CMakeLists.txt" || die
+	elif [[ -d "${S}/storage/tokudb/PerconaFT" ]] ; then
+		echo > "${S}/storage/tokudb/PerconaFT/cmake_modules/TokuThirdParty.cmake" || die
+		sed -i -e 's/ build_lzma//' -e 's/ build_snappy//' "${S}/storage/tokudb/PerconaFT/ft/CMakeLists.txt" || die
+		sed -i -e 's/add_dependencies\(tokuportability_static_conv build_jemalloc\)//' "${S}/storage/tokudb/PerconaFT/portability/CMakeLists.txt" || die
+	fi
+
+	if [[ -d "${S}/plugin/tokudb-backup-plugin" ]] && ! use tokudb-backup-plugin ; then
+		 rm -r "${S}/plugin/tokudb-backup-plugin/Percona-TokuBackup" || die
+	fi
+
+	# Remove bundled libs so we cannot accidentally use them
+	# We keep extra/lz4 directory because we use extra/lz4/xxhash.c via sql/CMakeLists.txt:394
+	rm -rv \
+		"${S}"/libevent \
+		"${S}"/zlib \
+		"${S}"/extra/protobuf \
+		"${S}"/storage/rocksdb/third_party \
+		"${S}"/storage/tokudb/PerconaFT/third_party \
+		|| die
+
 	# Remove the centos and rhel selinux policies to support mysqld_safe under SELinux
 	if [[ -d "${S}/support-files/SELinux" ]] ; then
 		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
@@ -268,13 +341,9 @@ src_prepare() {
 	fi
 
 	sed -i 's~ADD_SUBDIRECTORY(storage/ndb)~~' CMakeLists.txt || die
-
-	cmake-utils_src_prepare
 }
 
 src_configure(){
-	# bug 508724 mariadb cannot use ld.gold
-	tc-ld-disable-gold
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
 
@@ -282,6 +351,11 @@ src_configure(){
 
 	# bug #283926, with GCC4.4, this is required to get correct behavior.
 	append-flags -fno-strict-aliasing
+
+	if use tokudb ; then
+		# https://jira.percona.com/browse/PS-4399
+		append-cxxflags -Wno-error=shadow
+	fi
 
 	if use client-libs ; then
 		multilib-minimal_src_configure
@@ -332,11 +406,11 @@ multilib_src_configure() {
 		# The build forces this to be defined when cross-compiling. We pass it
 		# all the time for simplicity and to make sure it is actually correct.
 		-DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1)
-		-DWITH_RAPID=OFF
 		-DWITH_CURL=system
-		-DWITH_BOOST="${S}/boost"
+		-DWITH_BOOST="${WORKDIR}/boost_1_59_0"
 		-DWITH_PROTOBUF=system
 	)
+
 	if use test ; then
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test )
 	else
@@ -355,7 +429,7 @@ multilib_src_configure() {
 
 	# bfd.h is only used starting with 10.1 and can be controlled by NOT_FOR_DISTRIBUTION
 	# systemtap only works on native ABI, bug 530132
-	if multilib_is_native_abi; then
+	if multilib_is_native_abi ; then
 		mycmakeargs+=(
 			-DENABLE_DTRACE=$(usex systemtap)
 		)
@@ -368,15 +442,15 @@ multilib_src_configure() {
 	fi
 
 	if multilib_is_native_abi && use server ; then
-
 		mycmakeargs+=(
 			-DWITH_LIBEVENT=system
 			-DWITH_LZ4=system
 			-DWITH_MECAB=$(usex cjk system OFF)
 			-DWITH_NUMA=$(usex numa ON OFF)
+			-DWITH_RAPID=$(usex experimental ON OFF)
 		)
 
-		if [[ ( -n ${MYSQL_DEFAULT_CHARSET} ) && ( -n ${MYSQL_DEFAULT_COLLATION} ) ]]; then
+		if [[ ( -n ${MYSQL_DEFAULT_CHARSET} ) && ( -n ${MYSQL_DEFAULT_COLLATION} ) ]] ; then
 			ewarn "You are using a custom charset of ${MYSQL_DEFAULT_CHARSET}"
 			ewarn "and a collation of ${MYSQL_DEFAULT_COLLATION}."
 			ewarn "You MUST file bugs without these variables set."
@@ -411,7 +485,7 @@ multilib_src_configure() {
 			mycmakeargs+=( -DENABLED_PROFILING=ON )
 		fi
 
-		if use static; then
+		if use static ; then
 			mycmakeargs+=( -DWITH_PIC=1 )
 		fi
 
@@ -424,11 +498,20 @@ multilib_src_configure() {
 			-DWITH_FEDERATED_STORAGE_ENGINE=1
 			-DWITH_HEAP_STORAGE_ENGINE=1
 			-DWITH_INNOBASE_STORAGE_ENGINE=1
+			-DWITH_INNODB_MEMCACHED=0
 			-DWITH_MYISAMMRG_STORAGE_ENGINE=1
 			-DWITH_MYISAM_STORAGE_ENGINE=1
 			-DWITH_PARTITION_STORAGE_ENGINE=1
-			-DWITH_INNODB_MEMCACHED=0
+			-DWITH_ROCKSDB=$(usex rocksdb 1 0)
+			$(usex tokudb '' -DWITHOUT_TOKUDB=1)
 		)
+
+		if use tokudb ; then
+			# TokuDB Backup plugin requires valgrind unconditionally
+			mycmakeargs+=(
+				$(usex tokudb-backup-plugin '' -DTOKUDB_BACKUP_DISABLED=1)
+			)
+		fi
 
 	else
 		mycmakeargs+=(
@@ -457,7 +540,7 @@ multilib_src_compile() {
 # ulimit -n 16500 && \
 # USE='latin1 perl server' \
 # FEATURES='test userpriv -usersandbox' \
-# ebuild mysql-X.X.XX.ebuild \
+# ebuild percona-server-X.X.XX.ebuild \
 # digest clean package
 src_test() {
 	_disable_test() {
@@ -481,7 +564,7 @@ src_test() {
 	# localhost. Also causes weird failures.
 	[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
 
-	if [[ $UID -eq 0 ]]; then
+	if [[ $UID -eq 0 ]] ; then
 		die "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
 	fi
 	has usersandbox $FEATURES && ewarn "Some tests may fail with FEATURES=usersandbox"
@@ -506,14 +589,58 @@ src_test() {
 	pushd "${TESTDIR}" &>/dev/null || die
 
 	touch "${T}/disabled.def"
-	# These are failing in MySQL 5.7 for now and are believed to be
-	# false positives:
+	# These are failing in Percona-Server 5.7 for now and are believed to be
+	# false positives or are known to fail:
+	#
+	# group_replication.gr_communication_configuration: requires a valid local network address
+	#                                                   which clashes with FEATURES=network-sandbox
+	# main.percona_bug1289599:                          https://jira.percona.com/browse/PS-2072
+	# main.percona_log_slow_innodb:                     https://jira.percona.com/browse/PS-4930
+	# keyring_vault.keyring_vault_timeout:              requires network access to vault.public-ci.percona.com
+	#                                                   which clashes with FEATURES=network-sandbox
 	#
 	local t
 
-	for t in auth_sec.keyring_udf ; do
-			_disable_test "$t" "False positives in Gentoo"
+	for t in \
+		group_replication.gr_communication_configuration \
+		main.percona_bug1289599 \
+		main.percona_log_slow_innodb \
+		keyring_vault.keyring_vault_timeout \
+	; do
+			_disable_test "$t" "False positives in Gentoo / Known bug"
 	done
+
+	if use numa && use kernel_linux ; then
+		# bug 584880
+		if ! linux_config_exists || ! linux_chkconfig_present NUMA ; then
+			for t in sys_vars.innodb_numa_interleave_basic ; do
+				_disable_test "$t" "Test $t requires system with NUMA support"
+			done
+		fi
+	fi
+
+	if use tokudb ; then
+		if [[ -f "/sys/kernel/mm/transparent_hugepage/enabled" ]] ; then
+			if grep -q -E "\[always\]" /sys/kernel/mm/transparent_hugepage/enabled &>/dev/null ; then
+				# TokuDB refuses to start when transparent hugepages are enabled
+				for t in \
+					tokudb.rows-32m-rand-insert \
+					tokudb.savepoint-2 \
+					tokudb.savepoint-3 \
+					tokudb.savepoint-4 \
+					tokudb.savepoint-1078 \
+					tokudb.savepoint-1078-2 \
+					tokudb.savepoint-1078-3 \
+					tokudb.savepoint-1078-4 \
+				; do
+						_disable_test "$t" "TokuDB will not work with transparent hugepages enabled"
+				done
+			fi
+		else
+			einfo "Cannot determine transparent hugepage status."
+			einfo "Please note that TokuDB refuses to start when transparent hugepages are enabled!"
+		fi
+	fi
 
 	if ! use latin1 ; then
 		# The following tests will fail if DEFAULT_CHARSET
@@ -671,6 +798,22 @@ multilib_src_install_all() {
 		for script in "${S}"/scripts/mysql* ; do
 			[[ ( -f "$script" ) && ( "${script%.sh}" == "${script}" ) ]] && dodoc "${script}"
 		done
+
+		if use tokudb ; then
+			# Remove some unwanted files
+			rm -fv \
+				"${ED%/}"/usr/COPYING.AGPLv3 \
+				"${ED%/}"/usr/COPYING.GPLv2 \
+				"${ED%/}"/usr/PATENTS \
+				"${ED%/}"/usr/README.md \
+				|| die
+		fi
+	fi
+
+	if ! use client-libs ; then
+		rm -rv \
+			"${ED%/}"/usr/$(get_libdir)/pkgconfig \
+			|| die
 	fi
 
 	#Remove mytop if perl is not selected
@@ -698,14 +841,14 @@ pkg_config() {
 		die "Minimal builds do NOT include the MySQL server"
 	fi
 
-	if [[ ( -n "${MY_DATADIR}" ) && ( "${MY_DATADIR}" != "${old_MY_DATADIR}" ) ]]; then
+	if [[ ( -n "${MY_DATADIR}" ) && ( "${MY_DATADIR}" != "${old_MY_DATADIR}" ) ]] ; then
 		local MY_DATADIR_s="${ROOT%/}/${MY_DATADIR}"
 		MY_DATADIR_s="${MY_DATADIR_s%%/}"
 		local old_MY_DATADIR_s="${ROOT%/}/${old_MY_DATADIR}"
 		old_MY_DATADIR_s="${old_MY_DATADIR_s%%/}"
 
-		if [[ ( -d "${old_MY_DATADIR_s}" ) && ( "${old_MY_DATADIR_s}" != / ) ]]; then
-			if [[ -d "${MY_DATADIR_s}" ]]; then
+		if [[ ( -d "${old_MY_DATADIR_s}" ) && ( "${old_MY_DATADIR_s}" != / ) ]] ; then
+			if [[ -d "${MY_DATADIR_s}" ]] ; then
 				ewarn "Both ${old_MY_DATADIR_s} and ${MY_DATADIR_s} exist"
 				ewarn "Attempting to use ${MY_DATADIR_s} and preserving ${old_MY_DATADIR_s}"
 			else
@@ -715,7 +858,7 @@ pkg_config() {
 			fi
 		else
 			ewarn "Previous MY_DATADIR (${old_MY_DATADIR_s}) does not exist"
-			if [[ -d "${MY_DATADIR_s}" ]]; then
+			if [[ -d "${MY_DATADIR_s}" ]] ; then
 				ewarn "Attempting to use ${MY_DATADIR_s}"
 			else
 				eerror "New MY_DATADIR (${MY_DATADIR_s}) does not exist"
@@ -728,14 +871,14 @@ pkg_config() {
 	local pwd2="b"
 	local maxtry=15
 
-	if [ -z "${MYSQL_ROOT_PASSWORD}" ]; then
+	if [[ -z "${MYSQL_ROOT_PASSWORD}" ]] ; then
 		local tmp_mysqld_password_source=
 
-		for tmp_mysqld_password_source in mysql client; do
+		for tmp_mysqld_password_source in mysql client ; do
 			einfo "Trying to get password for mysql 'root' user from '${tmp_mysqld_password_source}' section ..."
 			MYSQL_ROOT_PASSWORD="$(_getoptval "${tmp_mysqld_password_source}" password)"
-			if [[ -n "${MYSQL_ROOT_PASSWORD}" ]]; then
-				if [[ ${MYSQL_ROOT_PASSWORD} == *$'\n'* ]]; then
+			if [[ -n "${MYSQL_ROOT_PASSWORD}" ]] ; then
+				if [[ ${MYSQL_ROOT_PASSWORD} == *$'\n'* ]] ; then
 					ewarn "Ignoring password from '${tmp_mysqld_password_source}' section due to newline character (do you have multiple password options set?)!"
 					MYSQL_ROOT_PASSWORD=
 					continue
@@ -747,7 +890,7 @@ pkg_config() {
 		done
 
 		# Sometimes --show is required to display passwords in some implementations of my_print_defaults
-		if [[ "${MYSQL_ROOT_PASSWORD}" == '*****' ]]; then
+		if [[ "${MYSQL_ROOT_PASSWORD}" == '*****' ]] ; then
 			MYSQL_ROOT_PASSWORD="$(_getoptval "${tmp_mysqld_password_source}" password --show)"
 		fi
 
@@ -760,15 +903,17 @@ pkg_config() {
 	MYSQL_LOG_BIN="$(_getoptval mysqld log-bin)"
 	MYSQL_LOG_BIN=${MYSQL_LOG_BIN%/*}
 
-	if [[ ! -d "${EROOT%/}/$MYSQL_TMPDIR" ]]; then
+	if [[ ! -d "${EROOT%/}/$MYSQL_TMPDIR" ]] ; then
 		einfo "Creating MySQL tmpdir $MYSQL_TMPDIR"
 		install -d -m 770 -o mysql -g mysql "${EROOT%/}/$MYSQL_TMPDIR"
 	fi
-	if [[ ! -d "${EROOT%/}/$MYSQL_LOG_BIN" ]]; then
+
+	if [[ ! -d "${EROOT%/}/$MYSQL_LOG_BIN" ]] ; then
 		einfo "Creating MySQL log-bin directory $MYSQL_LOG_BIN"
 		install -d -m 770 -o mysql -g mysql "${EROOT%/}/$MYSQL_LOG_BIN"
 	fi
-	if [[ ! -d "${EROOT%/}/$MYSQL_RELAY_LOG" ]]; then
+
+	if [[ ! -d "${EROOT%/}/$MYSQL_RELAY_LOG" ]] ; then
 		einfo "Creating MySQL relay-log directory $MYSQL_RELAY_LOG"
 		install -d -m 770 -o mysql -g mysql "${EROOT%/}/$MYSQL_RELAY_LOG"
 	fi
@@ -784,7 +929,7 @@ pkg_config() {
 	# localhost. Also causes weird failures.
 	[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
 
-	if [ -z "${MYSQL_ROOT_PASSWORD}" ]; then
+	if [[ -z "${MYSQL_ROOT_PASSWORD}" ]] ; then
 
 		einfo "Please provide a password for the mysql 'root' user now"
 		einfo "or through the ${HOME}/.my.cnf file."
@@ -823,11 +968,11 @@ pkg_config() {
 
 	# Now that /var/run is a tmpfs mount point, we need to ensure it exists before using it
 	PID_DIR="${EROOT%/}/var/run/mysqld"
-	if [[ ! -d "${PID_DIR}" ]]; then
+	if [[ ! -d "${PID_DIR}" ]] ; then
 		install -d -m 755 -o mysql -g mysql "${PID_DIR}" || die "Could not create pid directory"
 	fi
 
-	if [[ ! -d "${MY_DATADIR}" ]]; then
+	if [[ ! -d "${MY_DATADIR}" ]] ; then
 		install -d -m 750 -o mysql -g mysql "${MY_DATADIR}" || die "Could not create data directory"
 	fi
 
@@ -846,7 +991,7 @@ pkg_config() {
 	einfo "Command: ${cmd[*]}"
 	su -s /bin/sh -c "${cmd[*]}" mysql \
 		>"${TMPDIR%/}"/mysql_install_db.log 2>&1
-	if [ $? -ne 0 ]; then
+	if [[ $? -ne 0 ]] ; then
 		grep -B5 -A999 -i "ERROR" "${TMPDIR%/}"/mysql_install_db.log 1>&2
 		die "Failed to initialize mysqld. Please review ${EPREFIX%/}/var/log/mysql/mysqld.err AND ${TMPDIR%/}/mysql_install_db.log"
 	fi
@@ -881,7 +1026,7 @@ pkg_config() {
 	done
 	eend $rc
 
-	if ! [[ -S "${socket}" ]]; then
+	if ! [[ -S "${socket}" ]] ; then
 		die "Completely failed to start up mysqld with: ${mysqld}"
 	fi
 

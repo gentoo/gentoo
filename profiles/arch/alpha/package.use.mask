@@ -1,5 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Thomas Deutschmann <whissi@gentoo.org> (15 Oct 2018)
+# Requires app-text/mecab which isn't yet keyworded
+# on alpha, bug 668674
+dev-db/mysql cjk
+dev-db/percona-server cjk
 
 # Mikle Kolyada <zlogene@gentoo.org> (05 Oct 2018)
 # Not keyworded (see bug #540540c#8)
