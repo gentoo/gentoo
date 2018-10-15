@@ -26,7 +26,7 @@ HOMEPAGE="https://www.mysql.com/"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 LICENSE="GPL-2"
 SLOT="0/18"
-IUSE="client-libs cracklib debug jemalloc latin1 libressl mecab numa +perl profiling selinux
+IUSE="cjk client-libs cracklib debug jemalloc latin1 libressl numa +perl profiling selinux
 	+server static static-libs systemtap tcmalloc test yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
@@ -81,7 +81,7 @@ COMMON_DEPEND="net-misc/curl
 	)
 	server? (
 		>=app-arch/lz4-0_p131:=
-		mecab? ( app-text/mecab:= )
+		cjk? ( app-text/mecab:= )
 		numa? ( sys-process/numactl )
 	)
 	systemtap? ( >=dev-util/systemtap-1.3:0= )
@@ -372,7 +372,7 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DWITH_LIBEVENT=system
 			-DWITH_LZ4=system
-			-DWITH_MECAB=$(usex mecab system OFF)
+			-DWITH_MECAB=$(usex cjk system OFF)
 			-DWITH_NUMA=$(usex numa ON OFF)
 		)
 
