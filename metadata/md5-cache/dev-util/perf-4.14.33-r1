@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare setup test unpack
+DEPEND=audit? ( sys-process/audit ) demangle? ( sys-libs/binutils-libs:= ) gtk? ( x11-libs/gtk+:2 ) numa? ( sys-process/numactl ) perl? ( dev-lang/perl ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] ) slang? ( dev-libs/newt ) unwind? ( sys-libs/libunwind ) dev-libs/elfutils >=sys-kernel/linux-headers-4.9 dev-util/patchutils sys-devel/bison sys-devel/flex doc? ( app-text/asciidoc app-text/sgml-common app-text/xmlto sys-process/time )
+DESCRIPTION=Userland tools for Linux Performance Counters
+EAPI=7
+HOMEPAGE=https://perf.wiki.kernel.org/
+IUSE=audit debug +demangle +doc gtk numa perl python slang unwind python_targets_python2_7 kernel_linux
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=audit? ( sys-process/audit ) demangle? ( sys-libs/binutils-libs:= ) gtk? ( x11-libs/gtk+:2 ) numa? ( sys-process/numactl ) perl? ( dev-lang/perl ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] ) slang? ( dev-libs/newt ) unwind? ( sys-libs/libunwind ) dev-libs/elfutils
+REQUIRED_USE=python? ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://kernel/linux/kernel/v4.x/patch-4.14.33.xz mirror://kernel/linux/kernel/v4.x/linux-4.14.tar.xz
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=83674039c57afaff56908c952fd33c4b
