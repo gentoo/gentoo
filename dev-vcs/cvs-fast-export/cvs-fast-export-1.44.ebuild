@@ -34,6 +34,14 @@ src_prepare() {
 		-i Makefile || die
 }
 
+src_compile() {
+	# '.adoc.html' rules can't be executed in parallel
+	# as they reuse the same 'docbook-xsl.css' file name.
+	emake -j1 html
+	# Allow full parallelism for the rest
+	emake
+}
+
 src_install() {
 	default
 	dodoc README
