@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,13 +6,13 @@ EAPI=6
 VCS_INHERIT=""
 if [[ "${PV}" == 9999 ]] ; then
 	VCS_INHERIT="git-r3"
-	EGIT_REPO_URI="https://github.com/MariaDB/connector-c.git"
-	KEYWORDS="~arm ~arm64 ~hppa ~ia64 ~ppc64 ~s390 ~sparc"
+	EGIT_REPO_URI="https://github.com/MariaDB/mariadb-connector-c.git"
+	KEYWORDS=""
 else
 	MY_PN=${PN#mariadb-}
 	MY_PV=${PV/_b/-b}
 	SRC_URI="https://downloads.mariadb.org/f/${MY_PN}-${PV%_beta}/${PN}-${MY_PV}-src.tar.gz?serve -> ${P}-src.tar.gz"
-	S="${WORKDIR}/${PN}-${MY_PV}-src"
+	S="${WORKDIR%/}/${PN}-${MY_PV}-src"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~s390 ~sparc ~x86"
 fi
 
@@ -29,7 +29,7 @@ HOMEPAGE="https://mariadb.org/"
 LICENSE="LGPL-2.1"
 
 SLOT="0/3"
-IUSE="+curl gnutls kerberos libressl mysqlcompat +ssl static-libs"
+IUSE="+curl gnutls kerberos libressl mysqlcompat +ssl static-libs test"
 
 DEPEND="sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	virtual/libiconv:=[${MULTILIB_USEDEP}]
@@ -55,22 +55,9 @@ RDEPEND="${DEPEND}
 	!>=dev-db/mariadb-10.2.0[client-libs(+)]
 	"
 PATCHES=(
-	"${FILESDIR}/gentoo-layout-3.0.patch" )
-
-src_prepare() {
-	local gpluginconf="${T}/gentoo-plugins.cmake"
-	touch "${gpluginconf}" || die
-	# Plugins cannot be disabled by a build switch, redefine them in our own file to be included
-	if ! use kerberos ; then
-		echo 'REGISTER_PLUGIN("AUTH_GSSAPI" "" "auth_gssapi_plugin" "OFF" "auth_gssapi_client" 1)' \
-			>> "${gpluginconf}" || die
-	fi
-	if ! use curl ; then
-		echo 'REGISTER_PLUGIN("REMOTEIO" "" "remote_io_plugin" "OFF" "remote_io" 1)' \
-			>> "${gpluginconf}" || die
-	fi
-	cmake-utils_src_prepare
-}
+	"${FILESDIR}"/gentoo-layout-3.0.patch
+	"${FILESDIR}"/${PN}-3.0.6-provide-pkconfig-file.patch
+)
 
 src_configure() {
 	# bug 508724 mariadb cannot use ld.gold
@@ -83,12 +70,12 @@ multilib_src_configure() {
 		-DWITH_EXTERNAL_ZLIB=ON
 		-DWITH_SSL:STRING=$(usex ssl $(usex gnutls GNUTLS OPENSSL) OFF)
 		-DWITH_CURL=$(usex curl ON OFF)
-		-DAUTH_GSSAPI_PLUGIN_TYPE:STRING=$(usex kerberos ON OFF)
+		-DCLIENT_PLUGIN_AUTH_GSSAPI_CLIENT:STRING=$(usex kerberos DYNAMIC OFF)
 		-DMARIADB_UNIX_ADDR="${EPREFIX%/}/var/run/mysqld/mysqld.sock"
 		-DINSTALL_LIBDIR="$(get_libdir)"
 		-DINSTALL_PLUGINDIR="$(get_libdir)/mariadb/plugin"
 		-DINSTALL_BINDIR=bin
-		-DPLUGIN_CONF_FILE:STRING="${T}/gentoo-plugins.cmake"
+		-DWITH_UNIT_TESTS=$(usex test ON OFF)
 	)
 	cmake-utils_src_configure
 }
