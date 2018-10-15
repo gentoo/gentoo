@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils eutils fortran-2
+inherit cmake-utils fortran-2
 
 DESCRIPTION="Subset of LAPACK routines redesigned for heterogenous (MPI) computing"
-HOMEPAGE="http://www.netlib.org/scalapack/"
+HOMEPAGE="https://www.netlib.org/scalapack/"
 SRC_URI="${HOMEPAGE}/${P}.tgz"
 
 LICENSE="BSD"
@@ -20,10 +20,14 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${P}-libdir.patch" )
+
 src_prepare() {
 	cmake-utils_src_prepare
 
-	use static-libs && mkdir "${WORKDIR}/${PN}_static"
+	if use static-libs; then
+		mkdir "${WORKDIR}/${PN}_static" || die
+	fi
 	# mpi does not have a pc file
 	sed -i -e 's/mpi//' scalapack.pc.in || die
 }
@@ -34,7 +38,7 @@ src_configure() {
 			-DUSE_OPTIMIZED_LAPACK_BLAS=ON
 			-DBLAS_LIBRARIES="$($(tc-getPKG_CONFIG) --libs blas)"
 			-DLAPACK_LIBRARIES="$($(tc-getPKG_CONFIG) --libs lapack)"
-			$(cmake-utils_use_build test TESTING)
+			-DBUILD_TESTING=$(usex test)
 			$@
 		)
 		cmake-utils_src_configure
