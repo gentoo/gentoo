@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # Package requires newer meson than eclass provides
 MESON_AUTO_DEPEND="no"
-PYTHON_COMPAT=( python3_4 python3_5 python3_6 )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit meson python-single-r1 vala xdg-utils
 
@@ -17,7 +17,7 @@ LICENSE="GPL-2+"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="colorhug dell doc +gpg +man pkcs7 redfish systemd test thunderbolt uefi"
+IUSE="colorhug dell doc +gpg +man nvme pkcs7 redfish systemd test thunderbolt uefi"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	dell? ( uefi )
@@ -47,6 +47,7 @@ RDEPEND="
 		app-crypt/gpgme
 		dev-libs/libgpg-error
 	)
+	nvme? ( sys-libs/efivar )
 	pkcs7? ( >=net-libs/gnutls-3.4.4.1:= )
 	redfish? (
 		dev-libs/json-glib
@@ -73,6 +74,7 @@ DEPEND="
 	$(vala_depend)
 	doc? ( dev-util/gtk-doc )
 	man? ( app-text/docbook-sgml-utils )
+	nvme? (	>=sys-kernel/linux-headers-4.4 )
 	test? ( net-libs/gnutls[tools] )
 "
 
@@ -92,12 +94,14 @@ src_prepare() {
 src_configure() {
 	xdg_environment_reset
 	local emesonargs=(
+		--localstatedir "${EPREFIX}"/var
 		-Dconsolekit="$(usex systemd false true)"
 		-Dgpg="$(usex gpg true false)"
 		-Dgtkdoc="$(usex doc true false)"
 		-Dman="$(usex man true false)"
 		-Dpkcs7="$(usex pkcs7 true false)"
 		-Dplugin_dell="$(usex dell true false)"
+		-Dplugin_nvme="$(usex nvme true false)"
 		-Dplugin_redfish="$(usex redfish true false)"
 		-Dplugin_synaptics="$(usex dell true false)"
 		-Dplugin_thunderbolt="$(usex thunderbolt true false)"
