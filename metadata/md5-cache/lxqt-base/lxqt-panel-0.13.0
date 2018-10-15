@@ -7,8 +7,8 @@ IUSE=+alsa clock colorpicker cpuload +desktopswitch +directorymenu dom +kbindica
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=LGPL-2.1+
 RDEPEND=>=dev-libs/libqtxdg-3.0.0 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 kde-frameworks/kwindowsystem:5[X] >=lxde-base/lxmenu-data-0.1.5 >=lxde-base/menu-cache-1.1.0 =lxqt-base/liblxqt-0.13* =lxqt-base/lxqt-globalkeys-0.13* x11-libs/libX11 cpuload? ( sys-libs/libstatgrab ) kbindicator? ( x11-libs/libxkbcommon ) mount? ( kde-frameworks/solid:5 ) networkmonitor? ( sys-libs/libstatgrab ) sensors? ( sys-apps/lm_sensors ) statusnotifier? ( dev-libs/libdbusmenu-qt[qt5(+)] ) sysstat? ( >=lxqt-base/libsysstat-0.4.1 ) tray? ( x11-libs/libxcb:= x11-libs/libXcomposite x11-libs/libXdamage x11-libs/libXrender x11-libs/xcb-util ) volume? ( alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pavucontrol-qt media-sound/pulseaudio ) ) !lxqt-base/lxqt-common
-REQUIRED_USE=volume? ( || ( alsa pulseaudio ) )
+REQUIRED_USE=|| ( desktopswitch mainmenu showdesktop taskbar ) volume? ( || ( alsa pulseaudio ) )
 SLOT=0
 SRC_URI=https://downloads.lxqt.org/downloads/lxqt-panel/0.13.0/lxqt-panel-0.13.0.tar.xz
 _eclasses_=cmake-utils	f0bc1c175684130a76ab6c17f575d820	desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=3104393f3a49779f62f14cdb92579fe3
+_md5_=7d37b124c3acef7b82b3875e1d202763
