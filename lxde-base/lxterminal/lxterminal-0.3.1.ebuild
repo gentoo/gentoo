@@ -45,3 +45,10 @@ src_prepare() {
 src_configure() {
 	econf --enable-man $(use_enable gtk3)
 }
+
+pkg_postinst() {
+
+	elog "If you happen to get broken output of"
+	elog "ncurses based apps, such as htop, try"
+	elog "to set TERM=vte via your .bashrc"
+}
