@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -48,6 +48,6 @@ python_test() {
 }
 
 python_install_all() {
-	use doc && HTML_DOCS=( doc/_build/html/. )
+	use doc && HTML_DOCS=( docs/_build/html/. )
 	distutils-r1_python_install_all
 }
