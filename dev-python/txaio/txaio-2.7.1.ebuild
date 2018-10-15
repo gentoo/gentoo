@@ -29,10 +29,7 @@ DEPEND="app-arch/unzip
 		dev-python/alabaster[${PYTHON_USEDEP}]
 	)
 	test? ( >=dev-python/pytest-2.6.4[${PYTHON_USEDEP}]
-		>=dev-python/pytest-cov-1.8.1[${PYTHON_USEDEP}]
 		~dev-python/mock-1.3.0[${PYTHON_USEDEP}]
-		>=dev-python/tox-2.1.1[${PYTHON_USEDEP}]
-		>=dev-python/pep8-1.6.2[${PYTHON_USEDEP}]
 		>=dev-python/pyenchant-1.6.6[${PYTHON_USEDEP}]
 	)
 "
