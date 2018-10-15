@@ -15,6 +15,5 @@
     <flag name="pango">Enable Pango support using <pkg>x11-libs/pango</pkg></flag>
     <flag name="q32">Set quantum depth value to 32</flag>
     <flag name="q8">Set quantum depth value to 8</flag>
-    <flag name="webp">Enable webp image format support using <pkg>media-libs/libwebp</pkg></flag>
   </use>
 </pkgmetadata>
