@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure postinst prepare setup
+DEPEND=dev-libs/libxslt sys-libs/libseccomp sys-libs/libcap selinux? ( >=sys-libs/libselinux-2.1.9 )
+DESCRIPTION=Unprivileged sandboxing tool, namespaces-powered chroot-like solution
+EAPI=7
+HOMEPAGE=https://github.com/projectatomic/bubblewrap
+IUSE=selinux kernel_linux
+KEYWORDS=~amd64
+LICENSE=LGPL-2+
+RDEPEND=dev-libs/libxslt sys-libs/libseccomp sys-libs/libcap selinux? ( >=sys-libs/libselinux-2.1.9 )
+SLOT=0
+SRC_URI=https://github.com/projectatomic/bubblewrap/archive/v0.3.1.tar.gz -> bubblewrap-0.3.1.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=b79bfe5e2263d6e173b845264030ea40
