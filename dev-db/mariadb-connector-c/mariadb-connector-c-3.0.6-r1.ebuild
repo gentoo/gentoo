@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -55,7 +55,9 @@ RDEPEND="${DEPEND}
 	!>=dev-db/mariadb-10.2.0[client-libs(+)]
 	"
 PATCHES=(
-	"${FILESDIR%/}/gentoo-layout-3.0.patch" )
+	"${FILESDIR}"/gentoo-layout-3.0.patch
+	"${FILESDIR}"/${PN}-3.0.6-provide-pkconfig-file.patch
+)
 
 src_configure() {
 	# bug 508724 mariadb cannot use ld.gold
