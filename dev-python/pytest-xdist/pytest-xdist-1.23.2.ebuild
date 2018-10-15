@@ -20,8 +20,10 @@ RDEPEND="
 	>=dev-python/execnet-1.1[${PYTHON_USEDEP}]
 	dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/pytest-forked[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
+	!!dev-python/pytest-capturelog
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 "
