@@ -31,7 +31,6 @@ Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Under
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="tesseract">Use Google's OCR Engine</flag>
 		<flag name="testprograms">Build and install programs for testing OpenCV (performance)</flag>
 		<flag name="vtk">Build new 3D visualization module viz based on sci-libs/vtk</flag>
-		<flag name="webp">Enable support for webp image format</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">opencvlibrary</remote-id>
