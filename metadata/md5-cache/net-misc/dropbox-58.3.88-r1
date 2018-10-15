@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst postrm preinst prepare setup unpack
+DEPEND=librsync-bundled? ( dev-util/patchelf ) >=sys-apps/sed-4 virtual/pkgconfig
+DESCRIPTION=Dropbox daemon (pretends to be GUI-less)
+EAPI=6
+HOMEPAGE=https://www.dropbox.com/
+IUSE=+librsync-bundled selinux X python_targets_python2_7 python_targets_python3_5 python_targets_python3_6 python_single_target_python2_7 python_single_target_python3_5 python_single_target_python3_6
+KEYWORDS=~amd64 ~x86 ~x86-linux
+LICENSE=CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox
+RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)?,python_single_target_python3_5(+)?,python_single_target_python3_6(+)?] X? ( dev-libs/glib:2 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5[-gles2,xcb] dev-qt/qtopengl:5[-gles2] dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5[-gles2] dev-qt/qtwebkit:5 dev-qt/qtwidgets:5[-gles2] media-libs/fontconfig media-libs/freetype virtual/jpeg x11-libs/libSM x11-libs/libX11 x11-libs/libXinerama x11-libs/libXxf86vm x11-libs/pango[X] x11-misc/wmctrl x11-themes/hicolor-icon-theme ) !librsync-bundled? ( <net-libs/librsync-2 ) selinux? ( sec-policy/selinux-dropbox ) app-arch/bzip2 dev-libs/popt net-misc/wget >=sys-devel/gcc-4.2.0 sys-libs/zlib sys-libs/ncurses:5/5
+REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_5 python_single_target_python3_6 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 )
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=x86? ( https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-58.3.88.tar.gz ) amd64? ( https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-58.3.88.tar.gz )
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	pax-utils	e85f015e815dd463b0c206d781ef45a5	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=884cf8079645fe84ea1c1e7b9f0be56a
