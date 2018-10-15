@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare pretend setup test unpack
+DEPEND=>=dev-libs/libinput-1.5.0:0= >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) virtual/pkgconfig x11-base/xorg-proto x11-base/xorg-server[xorg]
+DESCRIPTION=X.org input driver based on libinput
+EAPI=5
+HOMEPAGE=https://www.x.org/wiki/ https://cgit.freedesktop.org/
+IUSE=kernel_linux
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=MIT
+RDEPEND=>=dev-libs/libinput-1.5.0:0= x11-base/xorg-server:= x11-base/xorg-server[xorg]
+SLOT=0
+SRC_URI=https://www.x.org/releases/individual/driver/xf86-input-libinput-0.28.1.tar.bz2
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	autotools-utils	696393cddf6200db17a31641f597b403	desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xorg-2	3177e7a1a6d7ed77cd228f01de48336b
+_md5_=60d760d62e85785a670b92bef89c31c2
