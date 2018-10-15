@@ -20,6 +20,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${P}-libdir.patch" )
+
 src_prepare() {
 	cmake-utils_src_prepare
 
