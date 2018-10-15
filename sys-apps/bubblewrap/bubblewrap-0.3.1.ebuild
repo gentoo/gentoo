@@ -43,8 +43,3 @@ src_configure() {
 		"--with-bash-completion-dir=${get_bashcompdir}" \
 		"--with-priv-mode=none"
 }
-
-pkg_postinst() {
-	einfo "bashcomp can be used with >=app-shells/bash-completion-2.0"
-	einfo "probably needs namespaces"
-}
