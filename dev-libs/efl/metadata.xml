@@ -35,7 +35,6 @@
 		<flag name="unwind">Enable debug support via <pkg>sys-libs/libunwind</pkg></flag>
 		<flag name="valgrind">Enable usage of <pkg>dev-util/valgrind</pkg> in debug</flag>
 		<flag name="vlc">Enable <pkg>media-video/vlc</pkg> support</flag>
-		<flag name="webp">Enable WebP image loader</flag>
 		<flag name="xcf">Enable XCF image loader</flag>
 		<flag name="xim">Enable X Input Method</flag>
 		<flag name="xpresent">Enable <pkg>x11-libs/libXpresent</pkg> support</flag>
