@@ -14,7 +14,6 @@
 		<flag name="orientation">Enable device orientation detection via <pkg>dev-qt/qtsensors</pkg></flag>
 		<flag name="printsupport">Enable printing via <pkg>dev-qt/qtprintsupport</pkg></flag>
 		<flag name="qml">Build QML/QtQuick bindings</flag>
-		<flag name="webp">Add support for WebP image format</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
