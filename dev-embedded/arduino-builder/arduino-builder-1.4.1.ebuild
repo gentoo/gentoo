@@ -36,7 +36,10 @@ DEPEND=">=dev-lang/go-1.9.2
 	dev-go/go-net
 	dev-go/go-text"
 
-PATCHES=("${FILESDIR}/arduino-builder-1.4.1-platform-paths.patch")
+PATCHES=(
+	"${FILESDIR}/arduino-builder-1.4.1-platform-paths.patch"
+	"${FILESDIR}/arduino-builder-1.4.1-skip-tests.patch"
+)
 
 src_unpack() {
 	golang-vcs-snapshot_src_unpack

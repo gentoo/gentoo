@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -48,6 +48,7 @@ src_prepare() {
 
 	# path paths so that they point to system ctags and avrdude
 	eapply "${FILESDIR}/arduino-builder-1.3.25-platform-paths.patch"
+	eapply "${FILESDIR}/arduino-builder-1.3.25-skip-tests.patch"
 
 	default
 }
