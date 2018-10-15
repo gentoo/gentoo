@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,11 +20,11 @@ RDEPEND="dev-ada/xmlada[shared?,static-libs?,static-pic?]
 	dev-ada/xmlada[gnat_2016=,gnat_2017=,gnat_2018=]
 	!net-libs/grpc"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]"
+	>=dev-ada/gprbuild-2018[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]"
 
 S="${WORKDIR}"/${MYP}-src
 
-PATCHES=( "${FILESDIR}"/${PN}-2017-gentoo.patch )
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_configure() {
 	emake prefix="${D}"usr setup
@@ -36,14 +36,6 @@ src_compile() {
 			-XLIBRARY_TYPE=$1 -XXMLADA_BUILD=$1 \
 			gpr/gpr.gpr -cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} || die
 	}
-	if use gnat_2016; then
-		GCC_PV=4.9.4
-	elif use gnat_2017; then
-		GCC_PV=6.3.0
-	else
-		GCC_PV=7.3.1
-	fi
-	GCC=${CHOST}-gcc-${GCC_PV}
 	if use shared; then
 		build relocatable
 	fi
