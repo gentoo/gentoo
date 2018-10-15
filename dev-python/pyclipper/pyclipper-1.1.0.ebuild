@@ -19,6 +19,7 @@ DEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools-git[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
 "
 RDEPEND=""
 
