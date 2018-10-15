@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils eutils fortran-2
 
 DESCRIPTION="Subset of LAPACK routines redesigned for heterogenous (MPI) computing"
-HOMEPAGE="http://www.netlib.org/scalapack/"
+HOMEPAGE="https://www.netlib.org/scalapack/"
 SRC_URI="${HOMEPAGE}/${P}.tgz"
 
 LICENSE="BSD"
