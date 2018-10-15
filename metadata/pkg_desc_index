@@ -8096,7 +8096,7 @@ media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big 
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
 media-sound/musique 1.5-r1: Qt music player
 media-sound/ncmpc 0.31: A ncurses client for the Music Player Daemon (MPD)
-media-sound/ncmpcpp 0.7.7: featureful ncurses based MPD client inspired by ncmpc
+media-sound/ncmpcpp 0.7.7 0.8.2: featureful ncurses based MPD client inspired by ncmpc
 media-sound/normalize 0.7.7-r1: Audio file volume normalizer
 media-sound/ogg2mp3 0.6.1: A perl script to convert Ogg Vorbis files to MP3 files
 media-sound/oggtst 0.0: A tool for calculating ogg-vorbis playing time
