@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,8 +26,8 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-sysstat )
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-10.0.4-flags.patch
 	"${FILESDIR}"/${PN}-11.0.4-cron.patch
+	"${FILESDIR}"/${PN}-11.7.3-flags.patch
 )
 
 SYSSTAT_FAKE_RC_DIR=Gentoo-does-not-use-rc.d
@@ -63,10 +63,6 @@ src_configure() {
 			--enable-documentation \
 			--enable-install-cron \
 			--with-systemdsystemunitdir=$(systemd_get_systemunitdir)
-}
-
-src_compile() {
-	emake LFLAGS="${LDFLAGS}"
 }
 
 src_install() {
