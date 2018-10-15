@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,10 +20,7 @@ IUSE="test"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/pytest-runner[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
-	)
-	"
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 RDEPEND="
 	dev-python/regex[${PYTHON_USEDEP}]
 	"
@@ -33,6 +30,8 @@ S="${WORKDIR}/${MY_P}"
 python_prepare_all() {
 	# This resolves a nasty race condition, courtesy of Arfrever
 	sed -e 's:with-id = 1::' -i setup.cfg || die
+	# remove useless --cov arg injection
+	rm pytest.ini || die
 	distutils-r1_python_prepare_all
 }
 
