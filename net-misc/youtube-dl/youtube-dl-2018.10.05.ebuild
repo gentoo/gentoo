@@ -106,10 +106,12 @@ pkg_postinst() {
 	elog "videos can be retrieved in a higher quality format without sound."
 	elog "${PN} will detect whether avconv/ffmpeg is present and"
 	elog "automatically pick the best option."
-
 	elog
 	elog "Videos or video formats streamed via RTMP protocol can only be"
 	elog "downloaded when rtmpdump (media-video/rtmpdump) is installed."
 	elog "Downloading MMS and RTSP videos requires either mplayer"
 	elog "(media-video/mplayer) or mpv (media-video/mpv) to be installed."
+	elog
+	elog "If you want ${PN} to embed thumbnails from the metadata into the"
+	elog "resulting MP4 files, consider installing media-video/atomicparsley"
 }
