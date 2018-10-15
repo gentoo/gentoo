@@ -23,7 +23,9 @@ src_prepare() {
 	default
 
 	# Respect FLAGS
-	sed -i -e '/CXXFLAGS/s/= -O3/+=/' \
+	sed -i \
+		-e '/CXXFLAGS/s/= -O3/+=/' \
+		-e 's/ -Werror//' \
 		-e '/LDFLAGS/s/=/+=/' Makefile || die "sed failed for Makefile"
 
 	if ! use test ; then
