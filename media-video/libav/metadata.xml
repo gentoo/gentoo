@@ -32,7 +32,6 @@
 	<flag name="twolame">Enable MP2 encoding via <pkg>media-sound/twolame</pkg> as an alternative to the internal encoder</flag>
 	<flag name="vis"> Adds support for SIMD optimizations for UltraSPARC processors.</flag>
 	<flag name="vpx">Enable vp8 encoding support using <pkg>media-libs/libvpx</pkg>.</flag>
-	<flag name="webp">Enable WebP encoding with <pkg>media-libs/libwebp</pkg>.</flag>
 	<flag name="x265">Enable HEVC encoding with <pkg>media-libs/x265</pkg>.</flag>
 </use>
 </pkgmetadata>
