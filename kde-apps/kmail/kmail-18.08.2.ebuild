@@ -83,7 +83,7 @@ RDEPEND="${COMMON_DEPEND}
 RESTRICT+=" test" # bug 616878
 
 src_prepare() {
-	cmake-utils_src_prepare
+	kde5_src_prepare
 
 	if ! use handbook; then
 		sed -i ktnef/CMakeLists.txt -e "/add_subdirectory(doc)/ s/^/#DONT/" || die
