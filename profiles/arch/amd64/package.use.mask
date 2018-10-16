@@ -172,10 +172,6 @@ sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer_spi -satamv
 # It's only supported on amd64
 dev-db/mariadb -tokudb
 
-# Matt Turner <mattst88@gentoo.org> (07 Mar 2014)
-# media-libs/libomxil-bellagio keyworded on amd64/x86
-media-libs/mesa -openmax
-
 # Samuli Suominen <ssuominen@gentoo.org> (16 Feb 2014)
 # Still considered experimental by upstream:
 # https://sourceforge.net/p/mikmod/bugs/16/#17ea
