@@ -6952,7 +6952,7 @@ kde-plasma/libkscreen 5.12.5: Plasma screen management library
 kde-plasma/libksysguard 5.12.5: Task management and system monitoring library
 kde-plasma/milou 5.12.5: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.12.5: Oxygen visual style for the Plasma desktop
-kde-plasma/plasma-desktop 5.12.5-r1: KDE Plasma desktop
+kde-plasma/plasma-desktop 5.12.5: KDE Plasma desktop
 kde-plasma/plasma-integration 5.12.5: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-meta 5.12.5: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 5.12.5: KDE Plasma applet for NetworkManager
