@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit eutils multilib-minimal
+inherit autotools multilib-minimal
 
 MY_PV="${PV/_alpha/alpha}"
 MY_P="${PN}-${MY_PV}"
@@ -22,18 +22,19 @@ RDEPEND="
 	utils? ( !app-arch/mscompress )
 "
 
+PATCHES=( "${FILESDIR}"/${P}-fix-parallel-build.patch )
+
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
 
+	eautoreconf
+
 	multilib_copy_sources
 }
 
 multilib_src_configure() {
-	# https://github.com/kyz/libmspack/issues/19
-	export MAKEOPTS=-j1
-
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable debug) \
 		$(use_enable static-libs static)
