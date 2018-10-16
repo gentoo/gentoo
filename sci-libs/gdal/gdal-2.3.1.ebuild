@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -276,6 +276,7 @@ src_compile() {
 src_install() {
 	if use perl ; then
 		pushd "${S}"/swig/perl > /dev/null || die
+		myinst=( DESTDIR="${D}" )
 		perl-module_src_install
 		popd > /dev/null || die
 		sed -e 's:BINDINGS        =       \(.*\) perl:BINDINGS        =       \1:g' \
