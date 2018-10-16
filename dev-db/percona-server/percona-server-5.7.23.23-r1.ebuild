@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20181014-2320Z"
+MY_EXTRAS_VER="20181016-1606Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
@@ -92,14 +92,17 @@ COMMON_DEPEND="net-misc/curl:=
 	server? (
 		>=app-arch/lz4-0_p131:=
 		cjk? ( app-text/mecab:= )
-		numa? ( sys-process/numactl )
-		pam? ( virtual/pam:0= )
 		experimental? (
 			dev-libs/libevent:=
 			dev-libs/protobuf:=
 			net-libs/libtirpc:=
 		)
-		rocksdb? ( app-arch/zstd:= )
+		numa? ( sys-process/numactl )
+		pam? ( virtual/pam:0= )
+		rocksdb? (
+			app-arch/zstd:=
+			dev-libs/protobuf:=
+		)
 		tokudb? (
 			app-arch/snappy:=
 			app-arch/xz-utils:=
@@ -121,8 +124,10 @@ COMMON_DEPEND="net-misc/curl:=
 "
 DEPEND="${COMMON_DEPEND}
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
+	dev-libs/protobuf
 	virtual/yacc
 	server? (
+		dev-libs/libevent
 		experimental? ( net-libs/rpcsvc-proto )
 	)
 	static? ( sys-libs/ncurses[static-libs] )
@@ -279,9 +284,9 @@ pkg_postinst() {
 	# Note about configuration change
 	einfo
 	elog "This version of ${PN} reorganizes the configuration from a single my.cnf"
-	elog "to several files in /etc/mysql/${PN}.d."
+	elog "to several files in /etc/mysql/mysql.d."
 	elog "Please backup any changes you made to /etc/mysql/my.cnf"
-	elog "and add them as a new file under /etc/mysql/${PN}.d with a .cnf extension."
+	elog "and add them as a new file under /etc/mysql/mysql.d with a .cnf extension."
 	elog "You may have as many files as needed and they are read alphabetically."
 	elog "Be sure the options have the appropriate section headers, i.e. [mysqld]."
 	einfo
@@ -323,11 +328,11 @@ src_prepare() {
 	# Remove bundled libs so we cannot accidentally use them
 	# We keep extra/lz4 directory because we use extra/lz4/xxhash.c via sql/CMakeLists.txt:394
 	rm -rv \
-		"${S}"/libevent \
-		"${S}"/zlib \
 		"${S}"/extra/protobuf \
+		"${S}"/libevent \
 		"${S}"/storage/rocksdb/third_party \
 		"${S}"/storage/tokudb/PerconaFT/third_party \
+		"${S}"/zlib \
 		|| die
 
 	# Remove the centos and rhel selinux policies to support mysqld_safe under SELinux
@@ -773,31 +778,21 @@ multilib_src_install_all() {
 		sed -e "s!@DATADIR@!${MY_DATADIR}!g" \
 			"${FILESDIR}/${mycnf_src}" \
 			> "${TMPDIR}/my.cnf.ok" || die
+
 		if use prefix ; then
 			sed -i -r -e '/^user[[:space:]]*=[[:space:]]*mysql$/d' \
 				"${TMPDIR}/my.cnf.ok" || die
 		fi
+
 		if use latin1 ; then
 			sed -i \
 				-e "/character-set/s|utf8|latin1|g" \
 				"${TMPDIR}/my.cnf.ok" || die
 		fi
+
 		eprefixify "${TMPDIR}/my.cnf.ok"
+
 		newins "${TMPDIR}/my.cnf.ok" 50-distro-server.cnf
-
-		einfo "Including support files and sample configurations"
-		docinto "support-files"
-		local script
-		for script in \
-			"${S}"/support-files/magic
-		do
-			[[ -f "$script" ]] && dodoc "${script}"
-		done
-
-		docinto "scripts"
-		for script in "${S}"/scripts/mysql* ; do
-			[[ ( -f "$script" ) && ( "${script%.sh}" == "${script}" ) ]] && dodoc "${script}"
-		done
 
 		if use tokudb ; then
 			# Remove some unwanted files
@@ -808,12 +803,6 @@ multilib_src_install_all() {
 				"${ED%/}"/usr/README.md \
 				|| die
 		fi
-	fi
-
-	if ! use client-libs ; then
-		rm -rv \
-			"${ED%/}"/usr/$(get_libdir)/pkgconfig \
-			|| die
 	fi
 
 	#Remove mytop if perl is not selected
