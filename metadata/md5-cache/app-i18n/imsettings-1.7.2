@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=dev-libs/glib:2 sys-apps/dbus virtual/libintl x11-libs/libX11 x11-libs/libgxim x11-libs/libnotify gconf? ( gnome-base/gconf ) gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) introspection? ( dev-libs/gobject-introspection ) xfconf? ( xfce-base/xfconf ) dev-util/intltool sys-devel/autoconf-archive sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/glib:2 sys-apps/dbus virtual/libintl x11-libs/libX11 x11-libs/libgxim x11-libs/libnotify gconf? ( gnome-base/gconf ) gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) introspection? ( dev-libs/gobject-introspection ) xfconf? ( xfce-base/xfconf ) dev-util/glib-utils dev-util/intltool sys-devel/autoconf-archive sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Delivery framework for general Input Method configuration
 EAPI=6
 HOMEPAGE=https://tagoh.bitbucket.io/imsettings
@@ -10,5 +10,5 @@ RDEPEND=dev-libs/glib:2 sys-apps/dbus virtual/libintl x11-libs/libX11 x11-libs/l
 RESTRICT=test
 SLOT=0
 SRC_URI=https://bitbucket.org/tagoh/imsettings/downloads/imsettings-1.7.2.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=118ca0587cc40d0c02576ae25d099e81
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=91825db3251d29d20dea416e6d7f8371
