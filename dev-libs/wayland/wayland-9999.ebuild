@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-inherit autotools libtool ltprune multilib-minimal toolchain-funcs $GIT_ECLASS
+inherit autotools libtool multilib-minimal toolchain-funcs $GIT_ECLASS
 
 DESCRIPTION="Wayland protocol libraries"
 HOMEPAGE="https://wayland.freedesktop.org/"
@@ -57,7 +57,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 	einstalldocs
 }
 
