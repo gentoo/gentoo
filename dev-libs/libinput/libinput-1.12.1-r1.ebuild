@@ -48,6 +48,10 @@ python_check_deps() {
 	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
 }
 
+pkg_setup() {
+	use doc && python-any-r1_pkg_setup
+}
+
 src_configure() {
 	# gui can be built but will not be installed
 	local emesonargs=(
