@@ -1443,7 +1443,7 @@ app-text/pspresent 1.3-r1: A tool to display full-screen PostScript presentation
 app-text/pstotext 1.9-r4: Extract ASCII text from a PostScript or PDF file
 app-text/psutils 1.17-r3: PostScript Utilities
 app-text/pylize 1.3b-r1: Python HTML Slideshow Generator using HTML and CSS
-app-text/pytextile 2.1.8 2.3.3: A Python port of Textile, A humane web text generator
+app-text/pytextile 2.3.3: A Python port of Textile, A humane web text generator
 app-text/qpdf 7.0.0: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.16: A tabbed document viewer
 app-text/rarian 0.8.1-r3: A documentation metadata library
