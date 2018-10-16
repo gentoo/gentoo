@@ -27,6 +27,7 @@ RDEPEND=">=dev-libs/glib-2.16:=
 	>=xfce-base/libxfce4util-4.10:=
 	>=xfce-base/libxfce4ui-4.12:="
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	dev-util/intltool
 	virtual/pkgconfig"
 
