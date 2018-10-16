@@ -7625,7 +7625,6 @@ media-libs/libnut 661: Library and tools to create NUT multimedia files
 media-libs/libofa 0.9.3-r1: Open Fingerprint Architecture
 media-libs/libogg 1.3.3: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
-media-libs/libomxil-bellagio 0.9.3: Open Source implementation of the OpenMAX Integration Layer
 media-libs/libopendaap 0.4.0: A library to connect to iTunes(R) music shares
 media-libs/libopenraw 0.0.9 0.1.2: A decoding library for RAW image formats
 media-libs/libopenshot 0.1.8: Video editing library used by OpenShot

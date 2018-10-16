@@ -2894,9 +2894,6 @@ media-libs/libgphoto2:serial - Enable serial port support
 media-libs/libgpod:gtk - Enable ArtworkDB support
 media-libs/liblastfm:fingerprint - Build the lastfm-fingerprint library
 media-libs/libmp4v2:utils - Install command-line utilities
-media-libs/libomxil-bellagio:audioeffects - enable audio volume/mixer effects components
-media-libs/libomxil-bellagio:clocksrc - enable clock component
-media-libs/libomxil-bellagio:videoscheduler - enable xvideosink video scheduler
 media-libs/libpagemaker:tools - Build command line file format conversion tools
 media-libs/libpng:apng - support unofficial APNG (Animated PNG) spec
 media-libs/libpostproc:pic - Force shared libraries to be built as PIC (this is slower).
