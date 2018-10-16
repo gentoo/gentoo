@@ -36,10 +36,33 @@ pkg_preinst() {
 	if has_version "<${CATEGORY}/${PN}-0.26.0" ; then
 		upgrade_0_26_0_warning="1"
 	fi
+	if has_version "<${CATEGORY}/${PN}-0.27.0" ; then
+		upgrade_0_27_0_warning="1"
+	fi
 }
 pkg_postinst() {
 	if [[ "${upgrade_0_26_0_warning}" == "1" ]]; then
 		ewarn "If you are using raw targets, make sure to run the"
 		ewarn "\"raw_suffix2sidecar\" utility in each target directory."
+	fi
+	if [[ "${upgrade_0_27_0_warning}" == "1" ]]; then
+		ewarn 'Due to a bugfix in the scheduler [1] [2], previously preserved'
+		ewarn 'monthly/yearly backups could get deleted when upgrading to'
+		ewarn 'btrbk-0.27.0.'
+		ewarn ''
+		ewarn 'Before upgrading to btrbk-0.27.0, make sure to stop all cron jobs'
+		ewarn 'or systemd timers calling btrbk.'
+		ewarn ''
+		ewarn 'After upgrading, run "btrbk prune --dry-run --print-schedule" and'
+		ewarn 'check if any snapshots/backups would get deleted. If you want to'
+		ewarn 'forcibly preserve a snapshot/backup forever, rename it:'
+		ewarn ''
+		ewarn '    mv mysubvol.YYYYMMDD mysubvol.YYYYMMDD.keep_forever'
+		ewarn ''
+		ewarn 'Note that btrbk ignores subvolumes with unknown naming scheme, e.g.'
+		ewarn '(".keep_forever" suffix in the example above).'
+		ewarn ''
+		ewarn '  [1] https://github.com/digint/btrbk/issues/217'
+		ewarn '  [2] https://github.com/digint/btrbk/commit/719fb5f'
 	fi
 }
