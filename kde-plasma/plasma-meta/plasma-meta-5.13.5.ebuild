@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="https://www.kde.org/workspaces/plasmadesktop/"
 
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="bluetooth +browser-integration crypt +display-manager grub gtk +handbook
 legacy-systray networkmanager pam plymouth pulseaudio +sddm sdk +wallpapers"
 
