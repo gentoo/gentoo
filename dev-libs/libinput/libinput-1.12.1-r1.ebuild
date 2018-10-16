@@ -26,6 +26,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? (
+		dev-python/CommonMark
 		dev-python/recommonmark
 		dev-python/sphinx
 		>=app-doc/doxygen-1.8.3
