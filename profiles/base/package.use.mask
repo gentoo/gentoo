@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (16 Oct 2018)
+# media-libs/libomxil-bellagio is masked for removal.
+media-libs/mesa openmax
+
 # Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
 # Requires www-client/firefox which isn't available on all architectures
 # yet, unmask per arch
