@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,4 +24,6 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	>=dev-libs/libpwquality-1.3.0
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	sys-apps/accountsservice
+"
