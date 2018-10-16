@@ -4,10 +4,10 @@ DESCRIPTION=Keep imports and functions out of your namespace
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/namespace-clean
 IUSE=test
-KEYWORDS=~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~ppc-aix ~x86-fbsd ~x64-macos
+KEYWORDS=~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/B-Hooks-EndOfScope-0.120.0 >=dev-perl/Package-Stash-0.230.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RI/RIBASUSHI/namespace-clean-0.27.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=a18c53bf2a688cda3e5de787c46c23a8
+_md5_=871d99d785edc79df7d6eaa040cf686b
