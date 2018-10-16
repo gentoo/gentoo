@@ -1,12 +1,14 @@
-BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=install postinst preinst unpack
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install postinst preinst
 DEPEND=>=app-text/asciidoc-8.6.0 app-text/xmlto
 DESCRIPTION=Tool for creating snapshots and remote backups of btrfs subvolumes
 EAPI=7
 HOMEPAGE=https://digint.ch/btrbk/
 IUSE=+pv
+KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-3+
 RDEPEND=dev-lang/perl net-misc/openssh pv? ( sys-apps/pv ) >=sys-fs/btrfs-progs-3.18.2
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+SRC_URI=https://digint.ch/download/btrbk/releases/btrbk-0.27.0.tar.xz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=3e29ea1be0813ec5033521fe2ae1596a

@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DESCRIPTION=Merge this to pull in all Plasma 5 packages
+EAPI=6
+HOMEPAGE=https://www.kde.org/plasma-desktop
+IUSE=bluetooth +browser-integration crypt +display-manager grub gtk +handbook legacy-systray networkmanager pam plymouth pulseaudio +sddm sdk +wallpapers
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=metapackage
+RDEPEND=>=kde-plasma/breeze-5.14.1:5 >=kde-plasma/drkonqi-5.14.1:5 >=kde-plasma/kactivitymanagerd-5.14.1:5 >=kde-plasma/kde-cli-tools-5.14.1:5 >=kde-plasma/kdecoration-5.14.1:5 >=kde-plasma/kdeplasma-addons-5.14.1:5 >=kde-plasma/kgamma-5.14.1:5 >=kde-plasma/khotkeys-5.14.1:5 >=kde-plasma/kinfocenter-5.14.1:5 >=kde-plasma/kmenuedit-5.14.1:5 >=kde-plasma/kscreen-5.14.1:5 >=kde-plasma/kscreenlocker-5.14.1:5 >=kde-plasma/ksshaskpass-5.14.1:5 >=kde-plasma/ksysguard-5.14.1:5 >=kde-plasma/kwayland-integration-5.14.1:5 >=kde-plasma/kwin-5.14.1:5 >=kde-plasma/kwrited-5.14.1:5 >=kde-plasma/libkscreen-5.14.1:5 >=kde-plasma/libksysguard-5.14.1:5 >=kde-plasma/milou-5.14.1:5 >=kde-plasma/oxygen-5.14.1:5 >=kde-plasma/plasma-desktop-5.14.1:5 >=kde-plasma/plasma-integration-5.14.1:5 >=kde-plasma/plasma-workspace-5.14.1:5 >=kde-plasma/polkit-kde-agent-5.14.1:5 >=kde-plasma/powerdevil-5.14.1:5 >=kde-plasma/systemsettings-5.14.1:5 >=kde-plasma/user-manager-5.14.1:5 bluetooth? ( >=kde-plasma/bluedevil-5.14.1:5 ) browser-integration? ( >=kde-plasma/plasma-browser-integration-5.14.1:5 ) crypt? ( >=kde-plasma/plasma-vault-5.14.1:5 ) display-manager? ( sddm? ( >=kde-plasma/sddm-kcm-5.14.1:5 x11-misc/sddm ) !sddm? ( x11-misc/lightdm ) ) grub? ( >=kde-plasma/breeze-grub-5.14.1:5 ) gtk? ( >=kde-plasma/breeze-gtk-5.14.1:5 >=kde-plasma/kde-gtk-config-5.14.1:5 legacy-systray? ( dev-libs/libappindicator:3 dev-libs/libappindicator:2 ) ) handbook? ( >=kde-apps/khelpcenter-18.04.3:5 ) networkmanager? ( >=kde-plasma/plasma-nm-5.14.1:5 ) pam? ( >=kde-plasma/kwallet-pam-5.14.1:5 ) plymouth? ( >=kde-plasma/breeze-plymouth-5.14.1:5 >=kde-plasma/plymouth-kcm-5.14.1:5 ) pulseaudio? ( >=kde-plasma/plasma-pa-5.14.1:5 ) sdk? ( >=kde-plasma/plasma-sdk-5.14.1:5 ) wallpapers? ( >=kde-plasma/plasma-workspace-wallpapers-5.14.1:5 )
+REQUIRED_USE=legacy-systray? ( gtk )
+SLOT=5
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	kde5-functions	7da5e42e642c6786e172419da9d13417	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=e5cc2520aae6b020f9b66a8ec6fb5596
