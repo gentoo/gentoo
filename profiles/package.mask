@@ -162,11 +162,6 @@ media-libs/celt
 # experimental features and accept a more unstable release.
 >=www-client/chromium-71
 
-# Brian Evans <grknight@gentoo.org> (16 Sep 2018)
-# Broken build on modern clients. Please update to latest slot.
-# Slot to be removed in 30 days
-dev-db/myodbc:5.2
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 Sep 2018)
 # Mask transition ebuilds that were needed only for <glibc-2.26
 # We will keep them in the tree as long as we have masked
