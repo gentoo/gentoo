@@ -9,6 +9,7 @@
 		<email>prometheanfire@gentoo.org</email>
 	</maintainer>
 	<use>
+		<flag name="gui">Install NUT-Monitor python gui</flag>
 		<flag name="ipmi">Support IPMI-based UPSes.</flag>
 		<flag name="ups_drivers_al175">Driver for Eltek UPS models with AL175 alarm module</flag>
 		<flag name="ups_drivers_bcmxcp">Driver for UPSes supporting the serial BCM/XCP protocol</flag>
