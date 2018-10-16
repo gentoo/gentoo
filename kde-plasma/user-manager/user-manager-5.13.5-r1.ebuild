@@ -24,4 +24,6 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	>=dev-libs/libpwquality-1.3.0
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	sys-apps/accountsservice
+"
