@@ -6,7 +6,7 @@ EAPI="6"
 inherit flag-o-matic multilib multilib-minimal toolchain-funcs
 
 if [[ ${PV} == *9999 ]] ; then
-	: ${EGIT_REPO_URI:="git://git.libav.org/libav.git"}
+	: ${EGIT_REPO_URI:="https://git.libav.org/libav.git"}
 	if [[ ${PV%9999} != "" ]] ; then
 		: ${EGIT_BRANCH:="release/${PV%.9999}"}
 	fi
@@ -345,5 +345,5 @@ multilib_src_install_all() {
 multilib_src_test() {
 	local _libs="$(for i in lib*/;do echo -n "${BUILD_DIR}/${i%/}:";done)"
 	einfo "LD_LIBRARY_PATH is set to \"${_libs}\""
-	LD_LIBRARY_PATH="${_libs}" make -j1 fate V=1
+	LD_LIBRARY_PATH="${_libs}" emake -j1 fate V=1
 }
