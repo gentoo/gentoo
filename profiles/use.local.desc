@@ -1929,6 +1929,8 @@ dev-qt/qt-docs:sensors - Install documentation for dev-qt/qtsensors
 dev-qt/qt-docs:speech - Install documentation for dev-qt/qtspeech
 dev-qt/qt-docs:virtualkeyboard - Install documentation for dev-qt/qtvirtualkeyboard
 dev-qt/qt-docs:webengine - Install documentation for dev-qt/qtwebengine
+dev-qt/qt3d:gles2 - Use GLES 2.0 or later instead of full OpenGL
+dev-qt/qt3d:qml - Build QML/QtQuick bindings
 dev-qt/qtbluetooth:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtcore:systemd - Enable native journald logging support
 dev-qt/qtdeclarative:gles2 - Use GLES 2.0 or later instead of full OpenGL
