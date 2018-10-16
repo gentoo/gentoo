@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2018)
+# app-misc/ddcutil is not yet stable.
+kde-plasma/powerdevil brightness-control
+
 # Andreas Sturmlechner <asturm@gentoo.org> (11 Sep 2018)
 # Sometimes crashes Plasma with Appstream versions pre-0.12.
 # Newer versions of dev-libs/appstream are not stable yet. See also:
