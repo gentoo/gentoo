@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Virgil Dupras <vdupras@gentoo.org> (15 Oct 2018)
+# Unmaintained, no revdep. Removal in 30 days. Bug #650048
+dev-python/django-extensions
+dev-python/shortuuid
+dev-python/fexpect
+
 # Sobhan Mohammadpour <sobhan@gentoo.org> (15 Oct 2018)
 # Masked for testing.
 sys-apps/bubblewrap
