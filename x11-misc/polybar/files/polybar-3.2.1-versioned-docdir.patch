@@ -1,0 +1,13 @@
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index 3ed6c45..775c0af 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -88,7 +88,7 @@ configure_file(
+   ESCAPE_QUOTES @ONLY)
+ 
+ install(FILES config
+-  DESTINATION share/doc/polybar
++  DESTINATION ${CMAKE_INSTALL_DOCDIR}
+   COMPONENT config)
+ 
+ # }}}

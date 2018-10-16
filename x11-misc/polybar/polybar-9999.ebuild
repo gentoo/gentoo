@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,9 @@ KEYWORDS=""
 
 IUSE="alsa curl i3wm ipc mpd network pulseaudio"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+PATCHES=(
+    "${FILESDIR}/${PN}-3.2.1-versioned-docdir.patch"
+)
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -45,6 +48,7 @@ src_configure() {
 		-DENABLE_MPD="$(usex mpd)"
 		-DENABLE_NETWORK="$(usex network)"
 		-DENABLE_PULSEAUDIO="$(usex pulseaudio)"
+		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 	)
 	cmake-utils_src_configure
 }
