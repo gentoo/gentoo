@@ -4844,7 +4844,6 @@ dev-python/faulthandler 3.0: functions to dump Python tracebacks explicitly (on 
 dev-python/fdsend 0.1: flexible file descriptor passing
 dev-python/feedgenerator 1.9: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.2.1: Parse RSS and Atom feeds in Python
-dev-python/fexpect 0.2: Extension for fabric to handle prompts through pexpect
 dev-python/figleaf 0.6.1-r1: Code coverage tool
 dev-python/fixtures 1.4.0 3.0.0: Fixtures, reusable state for writing clean tests and more
 dev-python/flake8 2.1.0 2.2.5 2.5.4 3.5.0: A wrapper around PyFlakes, pep8 & mccabe
@@ -5549,7 +5548,6 @@ dev-python/setuptools 34.0.2-r1 36.7.2: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.15.6-r1: package to manage versions by scm tags via setuptools
-dev-python/shortuuid 0.4.3: A generator library for concise, unambiguous and URL-safe UUIDs
 dev-python/simplegeneric 0.8.1-r1: Simple generic functions for Python
 dev-python/simplejson 3.13.2: Simple, fast, extensible JSON encoder/decoder for Python
 dev-python/simplekv 0.9.2: A key-value storage for binary data, support many backends.
