@@ -4,10 +4,10 @@ DESCRIPTION=Locate per-dist and per-module shared files
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/File-ShareDir
 IUSE=test
-KEYWORDS=alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~ppc-aix ~x86-solaris
+KEYWORDS=alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp >=dev-perl/Class-Inspector-1.120.0 >=virtual/perl-File-Spec-0.800.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RE/REHSACK/File-ShareDir-1.104.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=1108cd4a5d817077fb53ba1436d0d438
+_md5_=63b457a19b8a9311cd3940aab4ec1fd3
