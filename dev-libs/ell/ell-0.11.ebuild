@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://mirrors.edge.kernel.org/pub/linux/libs/${PN}/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="glib pie"
 
 RDEPEND="
@@ -28,5 +28,8 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
+	local DOCS=( ChangeLog README )
+	einstalldocs
+
 	find "${ED}" -name "*.la" -delete || die
 }
