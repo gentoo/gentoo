@@ -2,21 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20181013-2117Z"
+MY_EXTRAS_VER="20181016-1606Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
 # Keeping eutils in EAPI=6 for emktemp in pkg_config
 
-inherit eutils flag-o-matic prefix toolchain-funcs \
-	user cmake-utils multilib-minimal
+inherit cmake-utils eutils flag-o-matic linux-info \
+	prefix toolchain-funcs user multilib-minimal
 
 SRC_URI="https://cdn.mysql.com/Downloads/MySQL-5.7/${PN}-boost-${PV}.tar.gz
 	https://cdn.mysql.com/archives/mysql-5.7/mysql-boost-${PV}.tar.gz
 	http://downloads.mysql.com/archives/MySQL-5.7/${PN}-boost-${PV}.tar.gz"
 
 # Gentoo patches to MySQL
-if [[ "${MY_EXTRAS_VER}" != "live" && "${MY_EXTRAS_VER}" != "none" ]]; then
+if [[ "${MY_EXTRAS_VER}" != "live" && "${MY_EXTRAS_VER}" != "none" ]] ; then
 	SRC_URI="${SRC_URI}
 		mirror://gentoo/mysql-extras-${MY_EXTRAS_VER}.tar.bz2
 		https://gitweb.gentoo.org/proj/mysql-extras.git/snapshot/mysql-extras-${MY_EXTRAS_VER}.tar.bz2"
@@ -26,8 +26,8 @@ HOMEPAGE="https://www.mysql.com/"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 LICENSE="GPL-2"
 SLOT="0/18"
-IUSE="cjk client-libs cracklib debug jemalloc latin1 libressl numa +perl profiling selinux
-	+server static static-libs systemtap tcmalloc test yassl"
+IUSE="cjk client-libs cracklib debug experimental jemalloc latin1 libressl numa +perl profiling
+	selinux +server static static-libs systemtap tcmalloc test yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
 RESTRICT="libressl? ( test )"
@@ -65,7 +65,7 @@ PATCHES=(
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
 # MULTILIB_USEDEP only set for libraries used by the client library
-COMMON_DEPEND="net-misc/curl
+COMMON_DEPEND="net-misc/curl:=
 	>=sys-apps/sed-4
 	>=sys-apps/texinfo-4.7-r1
 	sys-libs/ncurses:0=
@@ -82,6 +82,11 @@ COMMON_DEPEND="net-misc/curl
 	server? (
 		>=app-arch/lz4-0_p131:=
 		cjk? ( app-text/mecab:= )
+		experimental? (
+			dev-libs/libevent:=
+			dev-libs/protobuf:=
+			net-libs/libtirpc:=
+		)
 		numa? ( sys-process/numactl )
 	)
 	systemtap? ( >=dev-util/systemtap-1.3:0= )
@@ -98,10 +103,13 @@ COMMON_DEPEND="net-misc/curl
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	dev-libs/protobuf
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
+	dev-libs/protobuf
 	virtual/yacc
-	server? ( dev-libs/libevent )
+	server? (
+		dev-libs/libevent
+		experimental? ( net-libs/rpcsvc-proto )
+	)
 	static? ( sys-libs/ncurses[static-libs] )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -150,13 +158,13 @@ mysql_init_vars() {
 			export PREVIOUS_DATADIR
 		fi
 	else
-		if [[ ${EBUILD_PHASE} == "config" ]]; then
+		if [[ ${EBUILD_PHASE} == "config" ]] ; then
 			local new_MY_DATADIR
 			new_MY_DATADIR=`"my_print_defaults" mysqld 2>/dev/null \
 				| sed -ne '/datadir/s|^--datadir=||p' \
 				| tail -n1`
 
-			if [[ ( -n "${new_MY_DATADIR}" ) && ( "${new_MY_DATADIR}" != "${MY_DATADIR}" ) ]]; then
+			if [[ ( -n "${new_MY_DATADIR}" ) && ( "${new_MY_DATADIR}" != "${MY_DATADIR}" ) ]] ; then
 				ewarn "MySQL MY_DATADIR has changed"
 				ewarn "from ${MY_DATADIR}"
 				ewarn "to ${new_MY_DATADIR}"
@@ -168,6 +176,17 @@ mysql_init_vars() {
 	export MY_SHAREDSTATEDIR MY_SYSCONFDIR
 	export MY_LOCALSTATEDIR MY_LOGDIR
 	export MY_DATADIR
+}
+
+pkg_pretend() {
+	if use numa ; then
+		local CONFIG_CHECK="~NUMA"
+
+		local WARNING_NUMA="This package expects NUMA support in kernel which this system does not have at the moment;"
+		WARNING_NUMA+=" Either expect runtime errors, enable NUMA support in kernel or rebuild the package without NUMA support"
+
+		check_extra_config
+	fi
 }
 
 pkg_setup() {
@@ -183,6 +202,7 @@ pkg_setup() {
 			die
 		fi
 	fi
+
 	if has test ${FEATURES} && \
 		use server && ! has userpriv ${FEATURES} ; then
 			eerror "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
@@ -233,10 +253,10 @@ pkg_postinst() {
 
 	# Note about configuration change
 	einfo
-	elog "This version of mysql reorganizes the configuration from a single my.cnf"
-	elog "to several files in /etc/mysql/${PN}.d."
+	elog "This version of ${PN} reorganizes the configuration from a single my.cnf"
+	elog "to several files in /etc/mysql/mysql.d."
 	elog "Please backup any changes you made to /etc/mysql/my.cnf"
-	elog "and add them as a new file under /etc/mysql/${PN}.d with a .cnf extension."
+	elog "and add them as a new file under /etc/mysql/mysql.d with a .cnf extension."
 	elog "You may have as many files as needed and they are read alphabetically."
 	elog "Be sure the options have the appropriate section headers, i.e. [mysqld]."
 	einfo
@@ -251,16 +271,28 @@ src_unpack() {
 }
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	if use jemalloc ; then
 		echo "TARGET_LINK_LIBRARIES(mysqld jemalloc)" >> "${S}/sql/CMakeLists.txt" || die
 	fi
-	if use tcmalloc; then
+
+	if use tcmalloc ; then
 		echo "TARGET_LINK_LIBRARIES(mysqld tcmalloc)" >> "${S}/sql/CMakeLists.txt" || die
 	fi
+
 	# Remove the centos and rhel selinux policies to support mysqld_safe under SELinux
 	if [[ -d "${S}/support-files/SELinux" ]] ; then
 		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
 	fi
+
+	# Remove bundled libs so we cannot accidentally use them
+	# We keep extra/lz4 directory because we use extra/lz4/xxhash.c via sql/CMakeLists.txt:394
+	rm -rv \
+		"${S}"/extra/protobuf \
+		"${S}"/libevent \
+		"${S}"/zlib \
+		|| die
 
 	if use libressl ; then
 		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
@@ -268,13 +300,9 @@ src_prepare() {
 	fi
 
 	sed -i 's~ADD_SUBDIRECTORY(storage/ndb)~~' CMakeLists.txt || die
-
-	cmake-utils_src_prepare
 }
 
 src_configure(){
-	# bug 508724 mariadb cannot use ld.gold
-	tc-ld-disable-gold
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
 
@@ -332,7 +360,6 @@ multilib_src_configure() {
 		# The build forces this to be defined when cross-compiling. We pass it
 		# all the time for simplicity and to make sure it is actually correct.
 		-DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1)
-		-DWITH_RAPID=OFF
 		-DWITH_CURL=system
 		-DWITH_BOOST="${S}/boost"
 		-DWITH_PROTOBUF=system
@@ -355,7 +382,7 @@ multilib_src_configure() {
 
 	# bfd.h is only used starting with 10.1 and can be controlled by NOT_FOR_DISTRIBUTION
 	# systemtap only works on native ABI, bug 530132
-	if multilib_is_native_abi; then
+	if multilib_is_native_abi ; then
 		mycmakeargs+=(
 			-DENABLE_DTRACE=$(usex systemtap)
 		)
@@ -368,15 +395,15 @@ multilib_src_configure() {
 	fi
 
 	if multilib_is_native_abi && use server ; then
-
 		mycmakeargs+=(
 			-DWITH_LIBEVENT=system
 			-DWITH_LZ4=system
 			-DWITH_MECAB=$(usex cjk system OFF)
 			-DWITH_NUMA=$(usex numa ON OFF)
+			-DWITH_RAPID=$(usex experimental ON OFF)
 		)
 
-		if [[ ( -n ${MYSQL_DEFAULT_CHARSET} ) && ( -n ${MYSQL_DEFAULT_COLLATION} ) ]]; then
+		if [[ ( -n ${MYSQL_DEFAULT_CHARSET} ) && ( -n ${MYSQL_DEFAULT_COLLATION} ) ]] ; then
 			ewarn "You are using a custom charset of ${MYSQL_DEFAULT_CHARSET}"
 			ewarn "and a collation of ${MYSQL_DEFAULT_COLLATION}."
 			ewarn "You MUST file bugs without these variables set."
@@ -411,7 +438,7 @@ multilib_src_configure() {
 			mycmakeargs+=( -DENABLED_PROFILING=ON )
 		fi
 
-		if use static; then
+		if use static ; then
 			mycmakeargs+=( -DWITH_PIC=1 )
 		fi
 
@@ -424,10 +451,10 @@ multilib_src_configure() {
 			-DWITH_FEDERATED_STORAGE_ENGINE=1
 			-DWITH_HEAP_STORAGE_ENGINE=1
 			-DWITH_INNOBASE_STORAGE_ENGINE=1
+			-DWITH_INNODB_MEMCACHED=0
 			-DWITH_MYISAMMRG_STORAGE_ENGINE=1
 			-DWITH_MYISAM_STORAGE_ENGINE=1
 			-DWITH_PARTITION_STORAGE_ENGINE=1
-			-DWITH_INNODB_MEMCACHED=0
 		)
 
 	else
@@ -481,7 +508,7 @@ src_test() {
 	# localhost. Also causes weird failures.
 	[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
 
-	if [[ $UID -eq 0 ]]; then
+	if [[ $UID -eq 0 ]] ; then
 		die "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
 	fi
 	has usersandbox $FEATURES && ewarn "Some tests may fail with FEATURES=usersandbox"
@@ -514,6 +541,15 @@ src_test() {
 	for t in auth_sec.keyring_udf ; do
 			_disable_test "$t" "False positives in Gentoo"
 	done
+
+	if use numa && use kernel_linux ; then
+		# bug 584880
+		if ! linux_config_exists || ! linux_chkconfig_present NUMA ; then
+			for t in sys_vars.innodb_numa_interleave_basic ; do
+				_disable_test "$t" "Test $t requires system with NUMA support"
+			done
+		fi
+	fi
 
 	if ! use latin1 ; then
 		# The following tests will fail if DEFAULT_CHARSET
@@ -646,31 +682,21 @@ multilib_src_install_all() {
 		sed -e "s!@DATADIR@!${MY_DATADIR}!g" \
 			"${FILESDIR}/${mycnf_src}" \
 			> "${TMPDIR}/my.cnf.ok" || die
+
 		if use prefix ; then
 			sed -i -r -e '/^user[[:space:]]*=[[:space:]]*mysql$/d' \
 				"${TMPDIR}/my.cnf.ok" || die
 		fi
+
 		if use latin1 ; then
 			sed -i \
 				-e "/character-set/s|utf8|latin1|g" \
 				"${TMPDIR}/my.cnf.ok" || die
 		fi
+
 		eprefixify "${TMPDIR}/my.cnf.ok"
+
 		newins "${TMPDIR}/my.cnf.ok" 50-distro-server.cnf
-
-		einfo "Including support files and sample configurations"
-		docinto "support-files"
-		local script
-		for script in \
-			"${S}"/support-files/magic
-		do
-			[[ -f "$script" ]] && dodoc "${script}"
-		done
-
-		docinto "scripts"
-		for script in "${S}"/scripts/mysql* ; do
-			[[ ( -f "$script" ) && ( "${script%.sh}" == "${script}" ) ]] && dodoc "${script}"
-		done
 	fi
 
 	#Remove mytop if perl is not selected
@@ -698,14 +724,14 @@ pkg_config() {
 		die "Minimal builds do NOT include the MySQL server"
 	fi
 
-	if [[ ( -n "${MY_DATADIR}" ) && ( "${MY_DATADIR}" != "${old_MY_DATADIR}" ) ]]; then
+	if [[ ( -n "${MY_DATADIR}" ) && ( "${MY_DATADIR}" != "${old_MY_DATADIR}" ) ]] ; then
 		local MY_DATADIR_s="${ROOT%/}/${MY_DATADIR}"
 		MY_DATADIR_s="${MY_DATADIR_s%%/}"
 		local old_MY_DATADIR_s="${ROOT%/}/${old_MY_DATADIR}"
 		old_MY_DATADIR_s="${old_MY_DATADIR_s%%/}"
 
-		if [[ ( -d "${old_MY_DATADIR_s}" ) && ( "${old_MY_DATADIR_s}" != / ) ]]; then
-			if [[ -d "${MY_DATADIR_s}" ]]; then
+		if [[ ( -d "${old_MY_DATADIR_s}" ) && ( "${old_MY_DATADIR_s}" != / ) ]] ; then
+			if [[ -d "${MY_DATADIR_s}" ]] ; then
 				ewarn "Both ${old_MY_DATADIR_s} and ${MY_DATADIR_s} exist"
 				ewarn "Attempting to use ${MY_DATADIR_s} and preserving ${old_MY_DATADIR_s}"
 			else
@@ -715,7 +741,7 @@ pkg_config() {
 			fi
 		else
 			ewarn "Previous MY_DATADIR (${old_MY_DATADIR_s}) does not exist"
-			if [[ -d "${MY_DATADIR_s}" ]]; then
+			if [[ -d "${MY_DATADIR_s}" ]] ; then
 				ewarn "Attempting to use ${MY_DATADIR_s}"
 			else
 				eerror "New MY_DATADIR (${MY_DATADIR_s}) does not exist"
@@ -728,14 +754,14 @@ pkg_config() {
 	local pwd2="b"
 	local maxtry=15
 
-	if [ -z "${MYSQL_ROOT_PASSWORD}" ]; then
+	if [[ -z "${MYSQL_ROOT_PASSWORD}" ]] ; then
 		local tmp_mysqld_password_source=
 
-		for tmp_mysqld_password_source in mysql client; do
+		for tmp_mysqld_password_source in mysql client ; do
 			einfo "Trying to get password for mysql 'root' user from '${tmp_mysqld_password_source}' section ..."
 			MYSQL_ROOT_PASSWORD="$(_getoptval "${tmp_mysqld_password_source}" password)"
-			if [[ -n "${MYSQL_ROOT_PASSWORD}" ]]; then
-				if [[ ${MYSQL_ROOT_PASSWORD} == *$'\n'* ]]; then
+			if [[ -n "${MYSQL_ROOT_PASSWORD}" ]] ; then
+				if [[ ${MYSQL_ROOT_PASSWORD} == *$'\n'* ]] ; then
 					ewarn "Ignoring password from '${tmp_mysqld_password_source}' section due to newline character (do you have multiple password options set?)!"
 					MYSQL_ROOT_PASSWORD=
 					continue
@@ -747,7 +773,7 @@ pkg_config() {
 		done
 
 		# Sometimes --show is required to display passwords in some implementations of my_print_defaults
-		if [[ "${MYSQL_ROOT_PASSWORD}" == '*****' ]]; then
+		if [[ "${MYSQL_ROOT_PASSWORD}" == '*****' ]] ; then
 			MYSQL_ROOT_PASSWORD="$(_getoptval "${tmp_mysqld_password_source}" password --show)"
 		fi
 
@@ -760,15 +786,17 @@ pkg_config() {
 	MYSQL_LOG_BIN="$(_getoptval mysqld log-bin)"
 	MYSQL_LOG_BIN=${MYSQL_LOG_BIN%/*}
 
-	if [[ ! -d "${EROOT%/}/$MYSQL_TMPDIR" ]]; then
+	if [[ ! -d "${EROOT%/}/$MYSQL_TMPDIR" ]] ; then
 		einfo "Creating MySQL tmpdir $MYSQL_TMPDIR"
 		install -d -m 770 -o mysql -g mysql "${EROOT%/}/$MYSQL_TMPDIR"
 	fi
-	if [[ ! -d "${EROOT%/}/$MYSQL_LOG_BIN" ]]; then
+
+	if [[ ! -d "${EROOT%/}/$MYSQL_LOG_BIN" ]] ; then
 		einfo "Creating MySQL log-bin directory $MYSQL_LOG_BIN"
 		install -d -m 770 -o mysql -g mysql "${EROOT%/}/$MYSQL_LOG_BIN"
 	fi
-	if [[ ! -d "${EROOT%/}/$MYSQL_RELAY_LOG" ]]; then
+
+	if [[ ! -d "${EROOT%/}/$MYSQL_RELAY_LOG" ]] ; then
 		einfo "Creating MySQL relay-log directory $MYSQL_RELAY_LOG"
 		install -d -m 770 -o mysql -g mysql "${EROOT%/}/$MYSQL_RELAY_LOG"
 	fi
@@ -784,7 +812,7 @@ pkg_config() {
 	# localhost. Also causes weird failures.
 	[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
 
-	if [ -z "${MYSQL_ROOT_PASSWORD}" ]; then
+	if [[ -z "${MYSQL_ROOT_PASSWORD}" ]] ; then
 
 		einfo "Please provide a password for the mysql 'root' user now"
 		einfo "or through the ${HOME}/.my.cnf file."
@@ -823,11 +851,11 @@ pkg_config() {
 
 	# Now that /var/run is a tmpfs mount point, we need to ensure it exists before using it
 	PID_DIR="${EROOT%/}/var/run/mysqld"
-	if [[ ! -d "${PID_DIR}" ]]; then
+	if [[ ! -d "${PID_DIR}" ]] ; then
 		install -d -m 755 -o mysql -g mysql "${PID_DIR}" || die "Could not create pid directory"
 	fi
 
-	if [[ ! -d "${MY_DATADIR}" ]]; then
+	if [[ ! -d "${MY_DATADIR}" ]] ; then
 		install -d -m 750 -o mysql -g mysql "${MY_DATADIR}" || die "Could not create data directory"
 	fi
 
@@ -846,7 +874,7 @@ pkg_config() {
 	einfo "Command: ${cmd[*]}"
 	su -s /bin/sh -c "${cmd[*]}" mysql \
 		>"${TMPDIR%/}"/mysql_install_db.log 2>&1
-	if [ $? -ne 0 ]; then
+	if [[ $? -ne 0 ]] ; then
 		grep -B5 -A999 -i "ERROR" "${TMPDIR%/}"/mysql_install_db.log 1>&2
 		die "Failed to initialize mysqld. Please review ${EPREFIX%/}/var/log/mysql/mysqld.err AND ${TMPDIR%/}/mysql_install_db.log"
 	fi
@@ -881,7 +909,7 @@ pkg_config() {
 	done
 	eend $rc
 
-	if ! [[ -S "${socket}" ]]; then
+	if ! [[ -S "${socket}" ]] ; then
 		die "Completely failed to start up mysqld with: ${mysqld}"
 	fi
 
