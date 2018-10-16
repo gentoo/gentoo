@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -110,6 +110,7 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_plasma_dep kde-cli-tools)
 	$(add_plasma_dep oxygen)
 	$(add_qt_dep qtgraphicaleffects)
+	sys-apps/accountsservice
 	sys-apps/util-linux
 	x11-apps/setxkbmap
 	pulseaudio? ( $(add_plasma_dep plasma-pa ) )
