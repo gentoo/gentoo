@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit meson udev
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
+
+inherit meson python-any-r1 udev
 
 DESCRIPTION="Library to handle input devices in Wayland"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/libinput/"
@@ -26,9 +28,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? (
-		dev-python/CommonMark
-		dev-python/recommonmark
-		dev-python/sphinx
+		$(python_gen_any_dep '
+			dev-python/CommonMark[${PYTHON_USEDEP}]
+			dev-python/recommonmark[${PYTHON_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
+		')
 		>=app-doc/doxygen-1.8.3
 		>=media-gfx/graphviz-2.38.0
 	)
@@ -37,6 +41,12 @@ DEPEND="${RDEPEND}
 #		>=dev-libs/check-0.9.10
 #		dev-util/valgrind
 #		sys-libs/libunwind )
+
+python_check_deps() {
+	has_version "dev-python/CommonMark[${PYTHON_USEDEP}]" && \
+	has_version "dev-python/recommonmark[${PYTHON_USEDEP}]" && \
+	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+}
 
 src_configure() {
 	# gui can be built but will not be installed
