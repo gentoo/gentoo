@@ -42,9 +42,9 @@ inherit flag-o-matic toolchain-funcs
 : ${CUDA_VERBOSE:=true}
 
 if [[ ${PN} != "nvidia-cuda-toolkit" ]]; then
-DEPEND="dev-util/nvidia-cuda-toolkit"
+DEPEND="cuda? ( dev-util/nvidia-cuda-toolkit )"
 if [[ ${EAPI} != [56] ]]; then
-	BDEPEND="dev-util/nvidia-cuda-toolkit"
+	BDEPEND="cuda? ( dev-util/nvidia-cuda-toolkit )"
 fi
 fi
 
