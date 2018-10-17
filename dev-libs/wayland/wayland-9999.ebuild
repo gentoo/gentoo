@@ -28,7 +28,7 @@ IUSE="doc static-libs"
 RDEPEND=">=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
 	>=virtual/libffi-3.0.13-r1:=[${MULTILIB_USEDEP}]
 	dev-libs/libxml2:=
-	!!<media-libs/mesa-18.1.1-r1"
+	!<media-libs/mesa-18.1.1-r1"
 DEPEND="${RDEPEND}
 	doc? (
 		>=app-doc/doxygen-1.6[dot]
