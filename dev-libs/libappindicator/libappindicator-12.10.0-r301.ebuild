@@ -12,7 +12,7 @@ SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="3"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 x86"
 IUSE="+introspection"
 
 RDEPEND="
