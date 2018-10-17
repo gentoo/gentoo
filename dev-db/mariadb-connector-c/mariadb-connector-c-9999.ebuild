@@ -7,7 +7,6 @@ VCS_INHERIT=""
 if [[ "${PV}" == 9999 ]] ; then
 	VCS_INHERIT="git-r3"
 	EGIT_REPO_URI="https://github.com/MariaDB/mariadb-connector-c.git"
-	KEYWORDS=""
 else
 	MY_PN=${PN#mariadb-}
 	MY_PV=${PV/_b/-b}
