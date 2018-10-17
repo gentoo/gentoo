@@ -30,8 +30,6 @@ RDEPEND="
 		x11-libs/libSM
 		x11-libs/libICE )
 	sys-apps/dbus
-	!!x11-drivers/xf86-input-virtualbox
-	!x11-drivers/xf86-video-virtualbox
 "
 DEPEND="
 	${RDEPEND}
