@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm
-DEPEND=>=sys-apps/texinfo-5.0 >=dev-scheme/guile-1.8.8:= gambit? ( dev-scheme/gambit ) scm? ( dev-scheme/scm )
+DEPEND=>=sys-apps/texinfo-5.0 >=dev-scheme/guile-1.8.8:= gambit? ( dev-scheme/gambit ) scm? ( dev-scheme/scm ) app-arch/unzip
 DESCRIPTION=Portable Scheme library for all standard Scheme implementations
 EAPI=6
 HOMEPAGE=http://people.csail.mit.edu/jaffer/SLIB
@@ -9,6 +9,6 @@ LICENSE=public-domain BSD
 RDEPEND=>=sys-apps/texinfo-5.0 >=dev-scheme/guile-1.8.8:= gambit? ( dev-scheme/gambit ) scm? ( dev-scheme/scm )
 RESTRICT=mirror
 SLOT=0
-SRC_URI=http://swiss.csail.mit.edu/ftpdir/scm/slib-3b5.tar.gz
+SRC_URI=http://groups.csail.mit.edu/mac/ftpdir/scm/slib-3b5.zip
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=4896158dbe6060f0133a972dfdee7bc1
+_md5_=136316968f8357f0c5813783eb99ed72
