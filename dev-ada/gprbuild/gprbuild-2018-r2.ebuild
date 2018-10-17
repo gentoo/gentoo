@@ -37,17 +37,22 @@ src_prepare() {
 	else
 		GCC_PV=7.3.1
 	fi
-	sed -e "s:@VER@:${GCC_PV}:g" "${FILESDIR}"/${P}.xml > gnat-${GCC_PV}.xml
-	rm share/gprconfig/c.xml || die
 	default
+	sed -i \
+		-e "s:@VER@:${GCC_PV}:g" \
+		share/gprconfig/compilers.xml \
+		share/gprconfig/gnat.xml \
+		share/gprconfig/c.xml \
+		share/gprconfig/linker.xml \
+		|| die
 	sed -i \
 		-e "s:@GNATBIND@:gnatbind-${GCC_PV}:g" \
 		src/gprlib.adb \
 		|| die
-	sed -i \
-		-e "s:\"-Wl,-r\":\"-r\":g" \
-		share/gprconfig/linker.xml \
-		|| die
+#	sed -i \
+#		-e "s:\"-Wl,-r\":\"-r\":g" \
+#		share/gprconfig/linker.xml \
+#		|| die
 }
 
 src_configure() {
@@ -84,6 +89,5 @@ src_install() {
 	insinto /usr/share/gpr
 	doins share/_default.gpr
 	insinto /usr/share/gprconfig
-	doins gnat-${GCC_PV}.xml
 	einstalldocs
 }
