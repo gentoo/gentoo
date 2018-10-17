@@ -2422,12 +2422,10 @@ lxde-base/lxterminal:gtk3 - Use GTK+3 instead of GTK+2
 lxqt-base/lxqt-config:monitor - Build monitor settings tool
 lxqt-base/lxqt-meta:about - Install lxqt-base/lxqt-about
 lxqt-base/lxqt-meta:admin - Install lxqt-base/lxqt-admin
-lxqt-base/lxqt-meta:filemanager - Install x11-misc/pcmanfm-qt file manager
-lxqt-base/lxqt-meta:icons - Install an icon theme
-lxqt-base/lxqt-meta:lightdm - Install x11-misc/lightdm display manager
-lxqt-base/lxqt-meta:lximage - Install media-gfx/lximage-qt image viewer
-lxqt-base/lxqt-meta:minimal - Do not install x11-wm/openbox window manager
-lxqt-base/lxqt-meta:oxygen - Prefer kde-frameworks/oxygen-icons (default)
+lxqt-base/lxqt-meta:filemanager - Install x11-misc/pcmanfm-qtfile manager
+lxqt-base/lxqt-meta:lightdm - Install x11-misc/lightdmdisplay manager
+lxqt-base/lxqt-meta:lximage - Install media-gfx/lximage-qtimage viewer
+lxqt-base/lxqt-meta:minimal - Do not install x11-wm/openboxwindow manager
 lxqt-base/lxqt-meta:powermanagement - Install lxqt-base/lxqt-powermanagement package
 lxqt-base/lxqt-meta:processviewer - Install x11-misc/qps package
 lxqt-base/lxqt-meta:screenshot - Install x11-misc/screengrab package
