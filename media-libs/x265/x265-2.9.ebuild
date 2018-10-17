@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}/arm.patch"
 	"${FILESDIR}/neon.patch"
 	"${FILESDIR}/ppc64.patch"
+	"${FILESDIR}"/${PN}-2.9-detect512.patch
 )
 
 src_unpack() {
