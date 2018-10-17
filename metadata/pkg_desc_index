@@ -9153,7 +9153,7 @@ net-vpn/openconnect 7.06-r1 7.07-r1 7.07-r2 7.08: Free client for Cisco AnyConne
 net-vpn/openfortivpn 1.7.1: A Fortinet compatible VPN client
 net-vpn/openvpn 2.4.4 2.4.6: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
-net-vpn/strongswan 5.5.3 5.6.0-r1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
+net-vpn/strongswan 5.6.0-r1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tor 0.3.1.10 0.3.4.7_rc: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
