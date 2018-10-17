@@ -8,28 +8,16 @@
 	<use>
 		<flag name="about">Install <pkg>lxqt-base/lxqt-about</pkg></flag>
 		<flag name="admin">Install <pkg>lxqt-base/lxqt-admin</pkg></flag>
-		<flag name="filemanager">Install <pkg>x11-misc/pcmanfm-qt</pkg>
-			file manager</flag>
-		<flag name="icons">Install an icon theme</flag>
-		<flag name="lightdm">Install <pkg>x11-misc/lightdm</pkg>
-			display manager</flag>
-		<flag name="lximage">Install <pkg>media-gfx/lximage-qt</pkg>
-			image viewer</flag>
-		<flag name="minimal">Do not install <pkg>x11-wm/openbox</pkg>
-			window manager</flag>
-		<flag name="oxygen">Prefer <pkg>kde-frameworks/oxygen-icons</pkg> (default)</flag>
-		<flag name="powermanagement" restrict="&gt;=lxqt-base/lxqt-meta-0.13.0">Install
-			<pkg>lxqt-base/lxqt-powermanagement</pkg> package</flag>
-		<flag name="processviewer">Install
-			<pkg>x11-misc/qps</pkg> package</flag>
-		<flag name="screenshot" restrict="&gt;=lxqt-base/lxqt-meta-0.13.0">Install
-			<pkg>x11-misc/screengrab</pkg> package</flag>
-		<flag name="sddm">Install <pkg>x11-misc/sddm</pkg>
-			display manager</flag>
-		<flag name="ssh-askpass">Install <pkg>lxqt-base/lxqt-openssh-askpass</pkg>
-			user password prompt tool</flag>
+		<flag name="filemanager">Install <pkg>x11-misc/pcmanfm-qt</pkg>file manager</flag>
+		<flag name="lightdm">Install <pkg>x11-misc/lightdm</pkg>display manager</flag>
+		<flag name="lximage">Install <pkg>media-gfx/lximage-qt</pkg>image viewer</flag>
+		<flag name="minimal">Do not install <pkg>x11-wm/openbox</pkg>window manager</flag>
+		<flag name="powermanagement">Install <pkg>lxqt-base/lxqt-powermanagement</pkg> package</flag>
+		<flag name="processviewer">Install <pkg>x11-misc/qps</pkg> package</flag>
+		<flag name="screenshot">Install <pkg>x11-misc/screengrab</pkg> package</flag>
+		<flag name="sddm">Install <pkg>x11-misc/sddm</pkg> display manager</flag>
+		<flag name="ssh-askpass">Install <pkg>lxqt-base/lxqt-openssh-askpass</pkg> user password prompt tool</flag>
 		<flag name="sudo">Install <pkg>lxqt-base/lxqt-sudo</pkg></flag>
-		<flag name="terminal" restrict="&gt;=lxqt-base/lxqt-meta-0.13.0">Install
-			<pkg>x11-terms/qterminal</pkg> package</flag>
+		<flag name="terminal">Install <pkg>x11-terms/qterminal</pkg> package</flag>
 	</use>
 </pkgmetadata>
