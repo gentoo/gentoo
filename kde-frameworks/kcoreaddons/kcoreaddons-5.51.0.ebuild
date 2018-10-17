@@ -29,10 +29,10 @@ src_configure() {
 }
 
 src_test() {
-	# bugs: 619656, 632398, 647414
+	# bugs: 619656, 632398, 647414, 665682
 	local myctestargs=(
 		-j1
-		-E "(kautosavefiletest|kdirwatch_qfswatch_unittest)"
+		-E "(kautosavefiletest|kdirwatch_qfswatch_unittest|kformattest)"
 	)
 
 	kde5_src_test
