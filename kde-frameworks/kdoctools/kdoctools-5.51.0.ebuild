@@ -23,3 +23,12 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-perl/URI
 "
+
+src_test() {
+	# bug 665622
+	local myctestargs=(
+		-E "(kdoctools_install)"
+	)
+
+	kde5_src_test
+}
