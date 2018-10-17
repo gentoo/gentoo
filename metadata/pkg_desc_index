@@ -1514,7 +1514,7 @@ app-text/zathura-djvu 0.2.7: DjVu plug-in for zathura
 app-text/zathura-meta 0: Meta package for app-text/zathura plugins
 app-text/zathura-pdf-mupdf 0.3.2: PDF plug-in for zathura
 app-text/zathura-pdf-poppler 0.2.8: PDF plug-in for zathura
-app-text/zathura-ps 0.2.4 0.2.5: PostScript plug-in for zathura
+app-text/zathura-ps 0.2.5: PostScript plug-in for zathura
 app-vim/ackvim 1.0.9-r1: vim plugin: run ack from vim
 app-vim/airline 0.9: vim plugin: lean & mean statusline for vim that's light as air
 app-vim/align 43: vim plugin: commands and maps to help produce aligned text
