@@ -7978,7 +7978,7 @@ media-sound/alsamixergui 0.9.0.1.2-r4: FLTK based amixer Frontend
 media-sound/alsaplayer 0.99.81: A heavily multi-threaded pluggable audio player
 media-sound/amsynth 1.3.2-r1 1.5.1-r1: Virtual analogue synthesizer
 media-sound/apetag 1.12-r2: Command-line ape 2.0 tagger
-media-sound/apulse 0.1.10: PulseAudio emulation for ALSA
+media-sound/apulse 0.1.10 0.1.12-r4: PulseAudio emulation for ALSA
 media-sound/aqualung 1.0-r2: Music player for a wide range of formats designed for gapless playback
 media-sound/ario 1.5.1-r1: a GTK2 MPD (Music Player Daemon) client inspired by Rythmbox
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
@@ -8710,7 +8710,7 @@ net-libs/libsignon-glib 1.14: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1: A Library to Access SMI MIB Information
 net-libs/libsoup 2.56.1 2.58.2: An HTTP library implementation in C
 net-libs/libsrtp 1.6.0 2.2.0: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
-net-libs/libssh 0.7.4: Access a working SSH implementation by means of a library
+net-libs/libssh 0.7.4 0.8.4: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.8.0-r1: Library implementing the SSH2 protocol
 net-libs/libtirpc 1.0.2-r1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7-r1: BitTorrent library written in C++ for *nix
@@ -8836,7 +8836,7 @@ net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/aria2 1.34.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
-net-misc/asterisk 11.25.3 13.19.0-r1: Asterisk: A Modular Open Source PBX System
+net-misc/asterisk 11.25.3 13.19.0-r1 13.23.1: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.4.11: Extra sounds for asterisk
 net-misc/asterisk-moh-opsound 2.03: asterisk moh music
@@ -9152,7 +9152,7 @@ net-vpn/openconnect 7.06-r1 7.07-r1 7.07-r2 7.08: Free client for Cisco AnyConne
 net-vpn/openfortivpn 1.7.1: A Fortinet compatible VPN client
 net-vpn/openvpn 2.4.4 2.4.6: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
-net-vpn/strongswan 5.6.0-r1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
+net-vpn/strongswan 5.6.0-r1 5.7.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tor 0.3.1.10 0.3.4.7_rc: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
@@ -9799,7 +9799,7 @@ sys-apps/gscanbus 0.8: Bus scanning, testing and topology visualizing tool for L
 sys-apps/gsmartcontrol 1.0.2 1.1.3: Hard disk drive health inspection tool
 sys-apps/haveged 1.9.2-r1: A simple entropy daemon using the HAVEGE algorithm
 sys-apps/hd-idle 1.05: Utility for spinning down hard disks after a period of idle time
-sys-apps/hdparm 9.52: Utility to change hard drive performance parameters
+sys-apps/hdparm 9.52 9.56: Utility to change hard drive performance parameters
 sys-apps/help2man 1.47.6: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
@@ -11358,7 +11358,7 @@ xfce-extra/xfce4-cpufreq-plugin 1.1.3 1.1.90: A panel plugin for showing informa
 xfce-extra/xfce4-cpugraph-plugin 1.0.5: A system load plug-in for the Xfce panel
 xfce-extra/xfce4-datetime-plugin 0.7.0: A panel plug-in with date, time and embedded calender
 xfce-extra/xfce4-dict 0.8.0: A dict.org querying application and panel plug-in for the Xfce desktop
-xfce-extra/xfce4-diskperf-plugin 2.6.1: A panel plug-in for disk usage and performance statistics
+xfce-extra/xfce4-diskperf-plugin 2.6.1 2.6.1-r1: A panel plug-in for disk usage and performance statistics
 xfce-extra/xfce4-embed-plugin 1.6.0: A plug-in for embedding arbitrary application windows into the Xfce panel
 xfce-extra/xfce4-equake-plugin 1.3.8.1: Panel plug-in that displays information about earthquakes at regular intervals
 xfce-extra/xfce4-eyes-plugin 4.4.5: A panel plug-in which adds classic eyes to your every step
