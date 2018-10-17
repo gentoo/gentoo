@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils multilib versionator
+inherit multilib
 
-MAIN_PV="$(get_version_component_range 1-3)"
+MAIN_PV="$(ver_cut 1-3)"
 if [[ ${PV} = *_beta* ]] || [[ ${PV} = *_rc* ]] ; then
-	MY_PV="${MAIN_PV}_$(get_version_component_range 5)"
+	MY_PV="${MAIN_PV}_$(ver_cut 5)"
 	DEP_PV="${MY_PV}"
 	MY_PV="${MY_PV/beta/BETA}"
 	MY_PV="${MY_PV/rc/RC}"
@@ -15,7 +15,7 @@ else
 	MY_PV="${MAIN_PV}"
 	DEP_PV="${MAIN_PV}"
 fi
-VBOX_BUILD_ID="$(get_version_component_range 4)"
+VBOX_BUILD_ID="$(ver_cut 4)"
 MY_PN="Oracle_VM_VirtualBox_Extension_Pack"
 MY_P="${MY_PN}-${MY_PV}-${VBOX_BUILD_ID}"
 

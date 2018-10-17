@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,12 +13,12 @@ MY_P=VirtualBox-${MY_PV}
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.1.32-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.2.16-patches-02.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa debug doc headless java libressl lvm pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
+IUSE="alsa debug doc headless java libressl lvm +opus pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
 RDEPEND="!app-emulation/virtualbox-bin
 	~app-emulation/virtualbox-modules-${PV}
@@ -50,10 +50,11 @@ RDEPEND="!app-emulation/virtualbox-bin
 	libressl? ( dev-libs/libressl:= )
 	!libressl? ( dev-libs/openssl:0= )
 	lvm? ( sys-fs/lvm2 )
+	opus? ( media-libs/opus )
 	udev? ( >=virtual/udev-171 )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )"
 DEPEND="${RDEPEND}
-	>=dev-util/kbuild-0.1.9998_pre20131130-r1
+	>=dev-util/kbuild-0.1.9998.3127
 	>=dev-lang/yasm-0.6.2
 	sys-devel/bin86
 	sys-libs/libcap
@@ -186,12 +187,12 @@ src_prepare() {
 
 	# Only add nopie patch when we're on hardened
 	if  gcc-specs-pie ; then
-		eapply "${FILESDIR}/050_virtualbox-5.1.24-nopie.patch"
+		eapply "${FILESDIR}/050_virtualbox-5.2.8-nopie.patch"
 	fi
 
 	# Only add paxmark patch when we're on pax_kernel
 	if use pax_kernel ; then
-		eapply "${FILESDIR}"/virtualbox-5.1.4-paxmark-bldprogs.patch
+		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
 	fi
 
 	eapply "${WORKDIR}/patches"
@@ -210,6 +211,7 @@ src_configure() {
 		$(usex doc '' --disable-docs)
 		$(usex java '' --disable-java)
 		$(usex lvm '' --disable-devmapper)
+		$(usex opus --build-libopus '')
 		$(usex pulseaudio '' --disable-pulse)
 		$(usex python '' --disable-python)
 		$(usex vboxwebsrv --enable-webservice '')
@@ -279,7 +281,7 @@ src_install() {
 	# Set the correct libdir
 	sed \
 		-e "s@MY_LIBDIR@$(get_libdir)@" \
-		-i "${D}"/etc/vbox/vbox.cfg || die "vbox.cfg sed failed"
+		-i "${ED%/}"/etc/vbox/vbox.cfg || die "vbox.cfg sed failed"
 
 	# Install the wrapper script
 	exeinto ${vbox_inst_path}
@@ -315,7 +317,7 @@ src_install() {
 	# VBoxSVC and VBoxManage need to be pax-marked (bug #403453)
 	# VBoxXPCOMIPCD (bug #524202)
 	for each in VBox{Headless,Manage,SVC,XPCOMIPCD} ; do
-		pax-mark -m "${D}"${vbox_inst_path}/${each}
+		pax-mark -m "${ED%/}"${vbox_inst_path}/${each}
 	done
 
 	# Symlink binaries to the shipped wrapper
@@ -335,7 +337,7 @@ src_install() {
 
 	if ! use headless ; then
 		vbox_inst VBoxSDL 4750
-		pax-mark -m "${D}"${vbox_inst_path}/VBoxSDL
+		pax-mark -m "${ED%/}"${vbox_inst_path}/VBoxSDL
 
 		for each in vboxsdl VBoxSDL ; do
 			dosym ${vbox_inst_path}/VBox /usr/bin/${each}
@@ -343,11 +345,11 @@ src_install() {
 
 		if use qt5 ; then
 			vbox_inst VirtualBox 4750
-			pax-mark -m "${D}"${vbox_inst_path}/VirtualBox
+			pax-mark -m "${ED%/}"${vbox_inst_path}/VirtualBox
 
 			if use opengl ; then
 				vbox_inst VBoxTestOGL
-				pax-mark -m "${D}"${vbox_inst_path}/VBoxTestOGL
+				pax-mark -m "${ED%/}"${vbox_inst_path}/VBoxTestOGL
 			fi
 
 			for each in virtualbox VirtualBox ; do
@@ -356,6 +358,7 @@ src_install() {
 
 			insinto /usr/share/${PN}
 			doins -r nls
+			doins -r UnattendedTemplates
 
 			newmenu "${FILESDIR}"/${PN}-ose.desktop-2 ${PN}.desktop
 		fi
@@ -389,8 +392,8 @@ src_install() {
 		doins -r sdk
 
 		if use java ; then
-			java-pkg_regjar "${D}${vbox_inst_path}/sdk/bindings/xpcom/java/vboxjxpcom.jar"
-			java-pkg_regso "${D}${vbox_inst_path}/libvboxjxpcom.so"
+			java-pkg_regjar "${ED%/}/${vbox_inst_path}/sdk/bindings/xpcom/java/vboxjxpcom.jar"
+			java-pkg_regso "${ED%/}/${vbox_inst_path}/libvboxjxpcom.so"
 		fi
 	fi
 
