@@ -41,9 +41,11 @@ inherit flag-o-matic toolchain-funcs
 # Being verbose during compilation to see underlying commands
 : ${CUDA_VERBOSE:=true}
 
+if [[ ${PN} != "nvidia-cuda-toolkit" ]]; then
 DEPEND="dev-util/nvidia-cuda-toolkit"
 if [[ ${EAPI} != [56] ]]; then
 	BDEPEND="dev-util/nvidia-cuda-toolkit"
+fi
 fi
 
 # @FUNCTION: cuda_gccdir
