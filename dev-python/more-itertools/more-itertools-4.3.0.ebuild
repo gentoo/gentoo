@@ -23,10 +23,8 @@ DEPEND="
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
-	test? (
-		${RDEPEND}
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)"
+	test? (	${RDEPEND} )
+"
 
 python_compile_all() {
 	if use doc; then
@@ -36,7 +34,5 @@ python_compile_all() {
 }
 
 python_test() {
-	# Avoid ImportMismatchError, see https://bugs.gentoo.org/661412
-	pytest -vv --doctest-modules "${BUILD_DIR}"/lib/more_itertools \
-		|| die "tests fail with ${EPYTHON}"
+	"${EPYTHON}" -m unittest discover -v || die "tests fail with ${EPYTHON}"
 }
