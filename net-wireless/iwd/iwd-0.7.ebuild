@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://www.kernel.org/pub/linux/network/wireless/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~x86"
 fi
 
 DESCRIPTION="Wireless daemon for linux"
