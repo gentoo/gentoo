@@ -1,20 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils linux-info systemd user
+EAPI="7"
+inherit linux-info systemd user
 
-DESCRIPTION="IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE"
-HOMEPAGE="http://www.strongswan.org/"
-SRC_URI="http://download.strongswan.org/${P}.tar.bz2"
+DESCRIPTION="IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE"
+HOMEPAGE="https://www.strongswan.org/"
+SRC_URI="https://download.strongswan.org/${P}.tar.bz2"
 
 LICENSE="GPL-2 RSA DES"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ~ppc64 x86"
-IUSE="+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite pam pkcs11"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+IUSE="+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite systemd pam pkcs11"
 
 STRONGSWAN_PLUGINS_STD="led lookip systime-fix unity vici"
-STRONGSWAN_PLUGINS_OPT="blowfish ccm ctr gcm ha ipseckey ntru padlock rdrand unbound whitelist"
+STRONGSWAN_PLUGINS_OPT="aesni blowfish ccm chapoly ctr forecast gcm ha ipseckey newhope ntru padlock rdrand save-keys unbound whitelist"
 for mod in $STRONGSWAN_PLUGINS_STD; do
 	IUSE="${IUSE} +strongswan_plugins_${mod}"
 done
@@ -30,8 +30,9 @@ COMMON_DEPEND="!net-misc/openswan
 	curl? ( net-misc/curl )
 	ldap? ( net-nds/openldap )
 	openssl? ( >=dev-libs/openssl-0.9.8:=[-bindist] )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:= )
 	sqlite? ( >=dev-db/sqlite-3.3.1 )
+	systemd? ( sys-apps/systemd )
 	networkmanager? ( net-misc/networkmanager )
 	pam? ( sys-libs/pam )
 	strongswan_plugins_unbound? ( net-dns/unbound:= net-libs/ldns )"
@@ -48,6 +49,7 @@ UGID="ipsec"
 
 pkg_setup() {
 	linux-info_pkg_setup
+
 	elog "Linux kernel version: ${KV_FULL}"
 
 	if ! kernel_is -ge 2 6 16; then
@@ -95,10 +97,6 @@ pkg_setup() {
 	fi
 }
 
-src_prepare() {
-	epatch_user
-}
-
 src_configure() {
 	local myconf=""
 
@@ -140,7 +138,6 @@ src_configure() {
 		--enable-ikev2 \
 		--enable-swanctl \
 		--enable-socket-dynamic \
-		$(use_with caps capabilities libcap) \
 		$(use_enable curl) \
 		$(use_enable constraints) \
 		$(use_enable ldap) \
@@ -159,7 +156,9 @@ src_configure() {
 		$(use_enable eap eap-mschapv2) \
 		$(use_enable eap eap-radius) \
 		$(use_enable eap eap-tls) \
+		$(use_enable eap eap-ttls) \
 		$(use_enable eap xauth-eap) \
+		$(use_enable eap eap-dynamic) \
 		$(use_enable farp) \
 		$(use_enable gmp) \
 		$(use_enable gcrypt) \
@@ -169,7 +168,9 @@ src_configure() {
 		$(use_enable pam xauth-pam) \
 		$(use_enable pkcs11) \
 		$(use_enable sqlite) \
-		"$(systemd_with_unitdir)" \
+		$(use_enable systemd) \
+		$(use_with caps capabilities libcap) \
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
 		${myconf}
 }
 
