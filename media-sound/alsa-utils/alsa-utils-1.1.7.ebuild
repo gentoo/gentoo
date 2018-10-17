@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils systemd udev
+EAPI=7
+inherit systemd udev
 
 DESCRIPTION="Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)"
 HOMEPAGE="https://alsa-project.org/"
@@ -18,27 +18,26 @@ CDEPEND=">=media-libs/alsa-lib-${PV}
 	ncurses? ( >=sys-libs/ncurses-5.7-r7:0= )
 	bat? ( sci-libs/fftw:= )"
 DEPEND="${CDEPEND}
-	virtual/pkgconfig
 	doc? ( app-text/xmlto )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-alsa )"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
-	local myconf
-	use doc || myconf='--disable-xmlto'
-
-	# --disable-alsaconf because it doesn't work with sys-apps/kmod wrt #456214
-	econf \
-		--disable-maintainer-mode \
-		$(use_enable bat) \
-		$(use_enable libsamplerate alsaloop) \
-		$(use_enable nls) \
-		$(use_enable ncurses alsamixer) \
-		--disable-alsaconf \
-		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
-		--with-udev-rules-dir="${EPREFIX}/$(get_udevdir)"/rules.d \
-		--with-asound-state-dir="${EPREFIX}"/var/lib/alsa \
-		${myconf}
+	local myeconfargs=(
+		# --disable-alsaconf because it doesn't work with sys-apps/kmod wrt #456214
+		--disable-alsaconf
+		--disable-maintainer-mode
+		--with-asound-state-dir="${EPREFIX}"/var/lib/alsa
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
+		--with-udev-rules-dir="${EPREFIX}/$(get_udevdir)"/rules.d
+		$(use_enable bat)
+		$(use_enable libsamplerate alsaloop)
+		$(use_enable ncurses alsamixer)
+		$(use_enable nls)
+		$(usex doc '' --disable-xmlto)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {

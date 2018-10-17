@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools flag-o-matic ltprune multilib multilib-minimal
+EAPI=7
+inherit autotools flag-o-matic multilib multilib-minimal
 
 DESCRIPTION="ALSA extra plugins"
 HOMEPAGE="http://www.alsa-project.org/"
@@ -27,12 +27,8 @@ RDEPEND="
 		media-libs/speexdsp[${MULTILIB_USEDEP}]
 	)
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.1.5-optional_plugins.patch"
-)
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
@@ -53,7 +49,7 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--with-speex="$(usex speex lib no)"
 		$(use_enable arcam_av arcamav)
-		$(use_enable ffmpeg avcodec)
+		$(use_enable ffmpeg libav)
 		$(use_enable jack)
 		$(use_enable libsamplerate samplerate)
 		$(use_enable mix)
@@ -72,7 +68,7 @@ multilib_src_install_all() {
 	dodoc upmix.txt vdownmix.txt README-pcm-oss
 	use jack && dodoc README-jack
 	use libsamplerate && dodoc samplerate.txt
-	use ffmpeg && dodoc lavcrate.txt a52.txt
+	use ffmpeg && dodoc lavrate.txt a52.txt
 
 	if use pulseaudio; then
 		dodoc README-pulse
@@ -89,7 +85,7 @@ multilib_src_install_all() {
 			"${ED%/}"/usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf || die #410261
 	fi
 
-	prune_libtool_files --all
+	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
 }
 
 pkg_postinst() {
