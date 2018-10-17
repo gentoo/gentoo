@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,6 +34,13 @@ pkg_nofetch() {
 	einfo "the upstream release changed without renaming. Try downloading the file"
 	einfo "again (or a newer revision if available). Otherwise report this to"
 	einfo "https://bugs.gentoo.org/67266 and we will make a new revision."
+}
+
+src_prepare() {
+	default
+
+	# Don't need both .Z and .bz2 archives.
+	find -name "*.Z" -delete || die
 }
 
 src_install() {
