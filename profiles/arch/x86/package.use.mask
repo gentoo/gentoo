@@ -60,7 +60,7 @@ app-emulation/fuse -backend-svga
 
 # Thomas Deutschmann <whissi@gentoo.org> (10 Feb 2018)
 # Requires dev-db/mongodb which has dropped x86 support
->=dev-libs/mongo-c-driver-1.8.2 test
+dev-libs/mongo-c-driver test
 
 # Thomas Deutschmann <whissi@gentoo.org> (05 Jan 2018)
 # Requires dev-python/neovim-remote, which is not keyworded on x86.
