@@ -4,10 +4,10 @@ DESCRIPTION=A date and time object
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/DateTime
 IUSE=test
-KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=Artistic-2
 RDEPEND=!<=dev-perl/DateTime-Format-Mail-0.402.0 virtual/perl-Carp >=dev-perl/DateTime-Locale-1.60.0 >=dev-perl/DateTime-TimeZone-2.20.0 >=dev-perl/Dist-CheckConflicts-0.20.0 >=dev-perl/Params-ValidationCompiler-0.130.0 virtual/perl-Scalar-List-Utils >=dev-perl/Specio-0.180.0 dev-perl/Try-Tiny virtual/perl-XSLoader >=dev-perl/namespace-autoclean-0.190.0 virtual/perl-parent dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/DateTime-1.44.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=4e4f7029470d39e5b18b1ada473b2636
+_md5_=67ddbf395afc2898523e9e1e36ad133d
