@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Internationalizing Domain Names in Applications (IDNA)"
 
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 ~sparc x86"
 IUSE="test"
 
 RDEPEND="
