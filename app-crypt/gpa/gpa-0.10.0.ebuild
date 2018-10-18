@@ -14,10 +14,10 @@ IUSE="nls"
 
 RDEPEND="
 	>=app-crypt/gnupg-2:=
-	>=app-crypt/gpgme-1.5.0:=
-	>=dev-libs/libassuan-1.1.0
-	>=dev-libs/libgpg-error-1.4
-	>=x11-libs/gtk+-2.10.0:2
+	>=app-crypt/gpgme-1.11.1:=
+	>=dev-libs/libassuan-1.1.0:=
+	>=dev-libs/libgpg-error-1.4:=
+	>=x11-libs/gtk+-2.10.0:2=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
