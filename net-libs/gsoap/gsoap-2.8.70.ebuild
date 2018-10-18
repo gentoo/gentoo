@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils
+inherit autotools
 
 MY_P="${PN}-2.8"
 
@@ -35,7 +35,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.7.10-fedora-install_soapcpp2_wsdl2h_aux.patch"
 
 	# enable shared libs https://bugs.gentoo.org/583398
-	"${FILESDIR}/${PN}-2.8.52-shared_libs.patch"
+	"${FILESDIR}/${PN}-2.8.70-shared_libs.patch"
+
+	# Fix --enable-xlocale configure switch
+	"${FILESDIR}/${PN}-2.8.70-xlocale_h.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
@@ -46,14 +49,16 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=()
-	use ssl || myconf+=( --disable-ssl )
-	use gnutls && myconf+=( --enable-gnutls )
-	use ipv6 && myconf+=( --enable-ipv6 )
-	econf \
-		${myconf[@]} \
-		$(use_enable debug) \
+	local myeconfargs=(
+		# Don't include xlocale.h as it got removed in >=glibc-2.26
+		--disable-xlocale
+		$(use_enable debug)
 		$(use_enable examples samples)
+		$(usex gnutls --enable-gnutls '')
+		$(usex ipv6 --enable-ipv6 '')
+		$(usex ssl '' --disable-ssl)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -67,17 +72,19 @@ src_install() {
 	# it contains info about how to apply the licenses
 	dodoc *.txt
 
-	dohtml changelog.md
+	docinto html
+	dodoc changelog.md
 
-	prune_libtool_files --all
+	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 
 	if use examples; then
-		rm -rf gsoap/samples/Makefile* gsoap/samples/*/Makefile* gsoap/samples/*/*.o || die
+		rm -r gsoap/samples/Makefile* gsoap/samples/*/Makefile* gsoap/samples/*/*.o || die
 		insinto /usr/share/doc/${PF}/examples
 		doins -r gsoap/samples/*
 	fi
 
 	if use doc; then
-		dohtml -r gsoap/doc/*
+		docinto html
+		dodoc -r gsoap/doc/*
 	fi
 }

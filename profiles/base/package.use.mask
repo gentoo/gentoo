@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Lars Wendler <polynomial-c@gentoo.org> (18 Oct 2018)
+# gnutls is broken in older releases
+<net-libs/gsoap-2.8.64 gnutls
+
 # Matt Turner <mattst88@gentoo.org> (16 Oct 2018)
 # media-libs/libomxil-bellagio is masked for removal.
 media-libs/mesa openmax
@@ -280,10 +284,6 @@ app-editors/emacs-vcs cairo
 # Gilles Dartiguelongue <eva@gentoo.org> (21 Aug 2016)
 # Needs a Gstreamer plugin from gst-plugins-bad that is not packaged to date
 media-plugins/grilo-plugins chromaprint
-
-# Lars Wendler <polynomial-c@gentoo.org> (19 Aug 2016)
-# gnutls is broken for years
->=net-libs/gsoap-2.8.0 gnutls
 
 # Michał Górny <mgorny@gentoo.org> (05 Jul 2016)
 # Mask system-clang support as it requires llvm-3.4 that is subject
