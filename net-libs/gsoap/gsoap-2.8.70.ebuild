@@ -39,6 +39,9 @@ PATCHES=(
 
 	# Fix --enable-xlocale configure switch
 	"${FILESDIR}/${PN}-2.8.70-xlocale_h.patch"
+
+	# Fix parallel make
+	"${FILESDIR}/${PN}-2.8.70-parallel.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
@@ -59,10 +62,6 @@ src_configure() {
 		$(usex ssl '' --disable-ssl)
 	)
 	econf "${myeconfargs[@]}"
-}
-
-src_compile() {
-	emake -j1
 }
 
 src_install() {
