@@ -1,4 +1,4 @@
-DEFINED_PHASES=install nofetch
+DEFINED_PHASES=install nofetch prepare
 DEPEND=app-arch/unzip
 DESCRIPTION=Oracle's documentation bundle (including API) for Java SE
 EAPI=7
@@ -7,5 +7,5 @@ KEYWORDS=amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=oracle-java-documentation-8
 RESTRICT=fetch
 SLOT=1.8
-SRC_URI=jdk-8u181-docs-all.zip
-_md5_=245a6668966e0aae0bf629cb49d89a96
+SRC_URI=jdk-8u192-docs-all.zip
+_md5_=c8c855ccd3e922a9d6cea52c4c7e7b82
