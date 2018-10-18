@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=dev-libs/glib:2 ~dev-qt/qtcore-5.11.2 media-libs/fontconfig >=media-libs/freetype-2.6.1:2 >=media-libs/harfbuzz-1.6.0:= >=sys-libs/zlib-1.2.5 virtual/opengl dbus? ( ~dev-qt/qtdbus-5.11.2 ) egl? ( media-libs/mesa[egl] ) eglfs? ( media-libs/mesa[gbm] x11-libs/libdrm ) evdev? ( sys-libs/mtdev ) gles2? ( media-libs/mesa[gles2] ) jpeg? ( virtual/jpeg:0 ) libinput? ( dev-libs/libinput:= x11-libs/libxkbcommon ) png? ( media-libs/libpng:0= ) tslib? ( x11-libs/tslib ) tuio? ( ~dev-qt/qtnetwork-5.11.2 ) udev? ( virtual/libudev:= ) vnc? ( ~dev-qt/qtnetwork-5.11.2 ) xcb? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=x11-libs/libXi-1.7.5 >=x11-libs/libxcb-1.10:=[xkb] >=x11-libs/libxkbcommon-0.4.1[X] x11-libs/xcb-util-image x11-libs/xcb-util-keysyms x11-libs/xcb-util-renderutil x11-libs/xcb-util-wm ) evdev? ( sys-kernel/linux-headers ) udev? ( sys-kernel/linux-headers ) dev-lang/perl virtual/pkgconfig test? ( ~dev-qt/qttest-5.11.2 )
+DESCRIPTION=The GUI module and platform plugins for the Qt5 framework
+EAPI=6
+HOMEPAGE=https://www.qt.io/
+IUSE=accessibility dbus egl eglfs evdev +gif gles2 ibus jpeg +libinput +png tslib tuio +udev vnc +xcb debug test
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd
+LICENSE=|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3
+PDEPEND=ibus? ( app-i18n/ibus )
+RDEPEND=dev-libs/glib:2 ~dev-qt/qtcore-5.11.2 media-libs/fontconfig >=media-libs/freetype-2.6.1:2 >=media-libs/harfbuzz-1.6.0:= >=sys-libs/zlib-1.2.5 virtual/opengl dbus? ( ~dev-qt/qtdbus-5.11.2 ) egl? ( media-libs/mesa[egl] ) eglfs? ( media-libs/mesa[gbm] x11-libs/libdrm ) evdev? ( sys-libs/mtdev ) gles2? ( media-libs/mesa[gles2] ) jpeg? ( virtual/jpeg:0 ) libinput? ( dev-libs/libinput:= x11-libs/libxkbcommon ) png? ( media-libs/libpng:0= ) tslib? ( x11-libs/tslib ) tuio? ( ~dev-qt/qtnetwork-5.11.2 ) udev? ( virtual/libudev:= ) vnc? ( ~dev-qt/qtnetwork-5.11.2 ) xcb? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=x11-libs/libXi-1.7.5 >=x11-libs/libxcb-1.10:=[xkb] >=x11-libs/libxkbcommon-0.4.1[X] x11-libs/xcb-util-image x11-libs/xcb-util-keysyms x11-libs/xcb-util-renderutil x11-libs/xcb-util-wm ) dev-qt/qtchooser
+REQUIRED_USE=|| ( eglfs xcb ) accessibility? ( dbus xcb ) eglfs? ( egl ) ibus? ( dbus ) libinput? ( udev ) xcb? ( gles2? ( egl ) )
+RESTRICT=test
+SLOT=5/5.11
+SRC_URI=https://download.qt.io/official_releases/qt/5.11/5.11.2/submodules/qtbase-everywhere-src-5.11.2.tar.xz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	qt5-build	e171eb59bd29fd84761d8ee631c901d2	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	virtualx	401b718cc14d43a5a7fbe062c4851ba5
+_md5_=487c91f7e00119808b2fc56882b00733

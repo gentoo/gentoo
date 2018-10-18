@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=~dev-qt/qtcore-5.11.2 ~dev-qt/qtdeclarative-5.11.2 ~dev-qt/qtgui-5.11.2 ~dev-qt/qtnetwork-5.11.2 ~dev-qt/qtpositioning-5.11.2 ~dev-qt/qtsql-5.11.2 sys-libs/zlib ~dev-qt/qtconcurrent-5.11.2 dev-lang/perl virtual/pkgconfig test? ( ~dev-qt/qttest-5.11.2 )
+DESCRIPTION=The Location module for the Qt5 framework
+EAPI=6
+HOMEPAGE=https://www.qt.io/
+IUSE=debug test
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3
+RDEPEND=~dev-qt/qtcore-5.11.2 ~dev-qt/qtdeclarative-5.11.2 ~dev-qt/qtgui-5.11.2 ~dev-qt/qtnetwork-5.11.2 ~dev-qt/qtpositioning-5.11.2 ~dev-qt/qtsql-5.11.2 sys-libs/zlib dev-qt/qtchooser
+RESTRICT=test
+SLOT=5/5.11
+SRC_URI=https://download.qt.io/official_releases/qt/5.11/5.11.2/submodules/qtlocation-everywhere-src-5.11.2.tar.xz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	qt5-build	e171eb59bd29fd84761d8ee631c901d2	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	virtualx	401b718cc14d43a5a7fbe062c4851ba5
+_md5_=ba9b8fc65ed14bf407d382247e970c28
