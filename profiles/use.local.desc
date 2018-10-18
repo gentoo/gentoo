@@ -3844,6 +3844,7 @@ net-dns/dnsmasq:conntrack - Add support for Linux conntrack connection marking.
 net-dns/dnsmasq:dhcp - Enable support for acting as a DHCP server.
 net-dns/dnsmasq:dhcp-tools - Install extra command line tools for manually managing DHCP leases.
 net-dns/dnsmasq:dnssec - Enable support DNSSEC validation and caching.
+net-dns/dnsmasq:dumpfile - Include code to dump packets to a libpcap-format file for debugging
 net-dns/dnsmasq:id - Whether report *.bind CHAOS info to clients, otherwise forward such requests upstream instead
 net-dns/dnsmasq:libidn2 - Enable support for Internationalized Domain Names, via net-dns/libidn2 rather than net-dns/libidn
 net-dns/dnsmasq:script - Enable support for calling scripts when leases change.
