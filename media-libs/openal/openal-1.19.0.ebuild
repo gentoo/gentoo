@@ -30,7 +30,7 @@ RDEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 	)
-	sdl? ( media-libs/libsdl2 )
+	sdl? ( media-libs/libsdl2[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
 	oss? ( virtual/os-headers )"
