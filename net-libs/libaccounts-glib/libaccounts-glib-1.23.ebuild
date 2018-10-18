@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils vcs-snapshot xdg-utils
+inherit autotools vcs-snapshot xdg-utils
 
 DESCRIPTION="Accounts SSO (Single Sign-On) management library for GLib applications"
 HOMEPAGE="https://01.org/gsso/"
@@ -20,6 +20,7 @@ RDEPEND="
 	dev-libs/libxml2
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	dev-util/gtk-doc
 "
 
@@ -43,5 +44,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }

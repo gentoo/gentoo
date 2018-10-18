@@ -10,6 +10,7 @@
 			<pkg>dev-qt/designer</pkg> forms that display web pages.</flag>
 		<flag name="geolocation">Enable physical position determination
 			via <pkg>dev-qt/qtpositioning</pkg></flag>
+		<flag name="jumbo-build">Combine source files to speed up build process.</flag>
 		<flag name="pax_kernel">Enable building under a PaX enabled kernel</flag>
 		<flag name="system-ffmpeg">Use the system-wide <pkg>media-video/ffmpeg</pkg>
 			instead of bundled.</flag>
