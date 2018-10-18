@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? (
 		$(python_gen_any_dep '
-			dev-python/CommonMark[${PYTHON_USEDEP}]
+			dev-python/commonmark[${PYTHON_USEDEP}]
 			dev-python/recommonmark[${PYTHON_USEDEP}]
 			dev-python/sphinx[${PYTHON_USEDEP}]
 		')
@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}
 #		sys-libs/libunwind )
 
 python_check_deps() {
-	has_version "dev-python/CommonMark[${PYTHON_USEDEP}]" && \
+	has_version "dev-python/commonmark[${PYTHON_USEDEP}]" && \
 	has_version "dev-python/recommonmark[${PYTHON_USEDEP}]" && \
 	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
 }

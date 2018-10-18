@@ -19,7 +19,8 @@ IUSE=""
 RDEPEND="
 	dev-python/anyqt[${PYTHON_USEDEP}]
 	>=dev-python/bottleneck-1.0.0[${PYTHON_USEDEP}]
-	>=dev-python/CommonMark-0.5.5[${PYTHON_USEDEP}]
+	<dev-python/commonmark-0.8[${PYTHON_USEDEP}]
+	>=dev-python/commonmark-0.5.5[${PYTHON_USEDEP}]
 	dev-python/dill[${PYTHON_USEDEP}]
 	>=dev-python/chardet-2.3.0[${PYTHON_USEDEP}]
 	>=dev-python/joblib-0.9.4[${PYTHON_USEDEP}]

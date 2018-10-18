@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 RDEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
-	<=dev-python/CommonMark-0.5.4[${PYTHON_USEDEP}]
+	<=dev-python/commonmark-0.5.4[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 

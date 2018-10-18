@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 
 inherit distutils-r1
 
-EGIT_COMMIT=33b5c2a4ec50d18d3f659aa119d3bd11452327da
+EGIT_COMMIT=fdeeda5f6fe3ed8905deb7a067cc5951a477d091
 MY_P=${PN}-${EGIT_COMMIT}
 DESCRIPTION="Python docutils-compatibility bridge to CommonMark"
 HOMEPAGE="https://recommonmark.readthedocs.io/"
@@ -19,8 +19,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	<dev-python/commonmark-0.8[${PYTHON_USEDEP}]
-	>=dev-python/commonmark-0.7.3[${PYTHON_USEDEP}]
+	>=dev-python/commonmark-0.8[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-1.3.1[${PYTHON_USEDEP}]

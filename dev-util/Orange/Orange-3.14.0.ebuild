@@ -19,7 +19,8 @@ IUSE="doc postgres"
 RDEPEND="
 	>=dev-python/anyqt-0.0.8[${PYTHON_USEDEP}]
 	>=dev-python/bottleneck-1.0.0[${PYTHON_USEDEP}]
-	>=dev-python/CommonMark-0.5.5[${PYTHON_USEDEP}]
+	<dev-python/commonmark-0.8[${PYTHON_USEDEP}]
+	>=dev-python/commonmark-0.5.5[${PYTHON_USEDEP}]
 	>=dev-python/chardet-3.0.2[${PYTHON_USEDEP}]
 	>=dev-python/joblib-0.9.4[${PYTHON_USEDEP}]
 	dev-python/keyring[${PYTHON_USEDEP}]

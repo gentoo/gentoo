@@ -21,7 +21,7 @@ LICENSE="AFL-3.0"
 IUSE="test"
 
 RDEPEND="
-	<=dev-python/CommonMark-0.5.4[${PYTHON_USEDEP}]
+	<=dev-python/commonmark-0.5.4[${PYTHON_USEDEP}]
 	>=dev-python/joblib-0.9[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.11[${PYTHON_USEDEP},lapack]
 	>=dev-python/matplotlib-1.5[${PYTHON_USEDEP}]
