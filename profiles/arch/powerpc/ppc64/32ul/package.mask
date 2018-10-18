@@ -1,2 +1,6 @@
-# Copyright 2012-2012 Gentoo Foundation
+# Copyright 2012-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (19 Oct 2018)
+# AdoptOpenJDK's ppc64 build is little-endian only.
+dev-java/openjdk-bin
