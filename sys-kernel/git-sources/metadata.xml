@@ -12,6 +12,9 @@
   <longdescription>
     -git sources sources, for people who like to have the absolute latest kernel available
   </longdescription>
+  <use>
+    <flag name="build-deps">Pull in required dependencies to build kernel.</flag>
+  </use>
   <upstream>
     <remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
   </upstream>

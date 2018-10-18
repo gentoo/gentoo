@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<use>
+		<flag name="build-deps">Pull in required dependencies to build kernel.</flag>
+	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
 	</upstream>

@@ -5,6 +5,9 @@
 		<email>xmw@gentoo.org</email>
 		<name>Michael Weber</name>
 	</maintainer>
+	<use>
+		<flag name="build-deps">Pull in required dependencies to build kernel.</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">raspberrypi/linux</remote-id>
 	</upstream>

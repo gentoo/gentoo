@@ -10,6 +10,7 @@
 		mips-sources are git snapshots from the linux-mips.org git server for MIPS-Based machines
 	</longdescription>
 	<use>
+		<flag name="build-deps">Pull in required dependencies to build kernel.</flag>
 		<flag name="ip27">Enables additional support for SGI Origin (IP27)</flag>
 		<flag name="ip28">Enables additional support for SGI Indigo2 Impact R10000 (IP28)</flag>
 		<flag name="ip30">Enables support for SGI Octane (IP30, 'Speedracer')</flag>

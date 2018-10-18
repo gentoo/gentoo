@@ -600,18 +600,12 @@ if [[ ${ETYPE} == sources ]]; then
 		>=sys-devel/binutils-2.11.90.0.31
 	)"
 	RDEPEND="!build? (
-		dev-lang/perl
-		sys-devel/bc
-		sys-devel/bison
-		sys-devel/flex
-		sys-devel/make
-		>=sys-libs/ncurses-5.2
-		virtual/libelf
+		build-deps? ( virtual/linux-sources-build-deps )
 	)"
 
 	SLOT="${PVR}"
 	DESCRIPTION="Sources based on the Linux Kernel."
-	IUSE="symlink build"
+	IUSE="symlink build +build-deps"
 
 	# Bug #266157, deblob for libre support
 	if [[ -z ${K_PREDEBLOBBED} ]] ; then

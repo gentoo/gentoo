@@ -18,6 +18,7 @@
 		patch from https://www.grsecurity.net, which also includes PaX.
 	</longdescription>
 	<use>
+		<flag name="build-deps">Pull in required dependencies to build kernel.</flag>
 		<flag name="deblob">Remove binary blobs from kernel sources to provide libre license compliance.</flag>
 	</use>
 </pkgmetadata>

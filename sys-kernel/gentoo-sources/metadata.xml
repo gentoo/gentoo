@@ -6,6 +6,7 @@
   <name>Gentoo Kernel Project</name>
 </maintainer>
 <use>
+  <flag name="build-deps">Pull in required dependencies to build kernel.</flag>
   <flag name="experimental">Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".</flag>
 </use>
 <upstream>
