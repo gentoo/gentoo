@@ -19,6 +19,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	<dev-python/commonmark-0.8[${PYTHON_USEDEP}]
 	>=dev-python/commonmark-0.7.3[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
