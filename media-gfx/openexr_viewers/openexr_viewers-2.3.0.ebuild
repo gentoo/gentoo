@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ DOCS=( ChangeLog README.md )
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-configure.patch"
-	"${FILESDIR}/${P}-fix-cg-libdir.patch"
+	"${FILESDIR}/${P}--with-cg-libdir.patch"
 )
 
 src_prepare() {
@@ -50,6 +50,7 @@ src_configure() {
 		myeconfargs+=(
 			--enable-cg
 			--with-cg-prefix="/opt/nvidia-cg-toolkit"
+			--with-cg-libdir="/opt/nvidia-cg-toolkit/$(get_libdir)"
 		)
 		append-ldflags "$(no-as-needed)" # binary-only libCg is not properly linked
 	fi
