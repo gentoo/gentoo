@@ -17,8 +17,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-
-
 RDEPEND=">=dev-python/pyparsing-1.5.5[${PYTHON_USEDEP}]
 	>=dev-python/cached-property-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/configargparse-0.11.0[${PYTHON_USEDEP}]
