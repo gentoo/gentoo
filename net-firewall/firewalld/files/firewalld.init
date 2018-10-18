@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 description="FirewallD"
@@ -8,5 +8,5 @@ pidfile=/var/run/firewalld.pid
 
 depend() {
 	need dbus
-	provide iptables ip6tables ebtables
+	provide firewall
 }
