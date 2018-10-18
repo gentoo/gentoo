@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>m.seifert@digitalernachschub.de</email>
+    <name>Michael Seifert</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>CFFI bindings for the Argon2 password hashing library.</longdescription>
+  <upstream>
+    <remote-id type="pypi">argon2_cffi</remote-id>
+    <remote-id type="github">hynek/argon2_cffi</remote-id>
+  </upstream>
+</pkgmetadata>
