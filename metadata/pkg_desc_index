@@ -8837,7 +8837,7 @@ net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/aria2 1.34.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
-net-misc/asterisk 11.25.3 13.19.0-r1 13.23.1: Asterisk: A Modular Open Source PBX System
+net-misc/asterisk 11.25.3 13.23.1: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.4.11: Extra sounds for asterisk
 net-misc/asterisk-moh-opsound 2.03: asterisk moh music
