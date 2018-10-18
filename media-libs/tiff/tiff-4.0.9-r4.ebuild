@@ -49,7 +49,7 @@ src_prepare() {
 multilib_src_configure() {
 	local myeconfargs=(
 		--without-x
-		--with-docdir=/usr/share/doc/${PF}
+		--with-docdir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable cxx)
 		$(use_enable jbig)
 		$(use_enable jpeg)

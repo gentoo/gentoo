@@ -1,21 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DOWNLOAD_URL="http://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html"
+DOWNLOAD_URL="https://www.oracle.com/technetwork/java/javase/documentation/jdk11-doc-downloads-5097203.html"
 
-[[ "$(ver_cut 4)" == 0 ]] \
-	|| MY_PV_EXT="u$(ver_cut 4)"
-
-MY_PV="$(ver_cut 2)${MY_PV_EXT}"
-
+SLOT="${PV%%.*}"
 DESCRIPTION="Oracle's documentation bundle (including API) for Java SE"
-HOMEPAGE="http://download.oracle.com/javase/8/docs/"
-SRC_URI="jdk-${MY_PV}-docs-all.zip"
-LICENSE="oracle-java-documentation-8"
-SLOT="1.8"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
+HOMEPAGE="https://docs.oracle.com/javase/${SLOT}"
+SRC_URI="jdk-${PV}_doc-all.zip"
+LICENSE="oracle-java-documentation-${SLOT}"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 RESTRICT="fetch"
 
 DEPEND="app-arch/unzip"
