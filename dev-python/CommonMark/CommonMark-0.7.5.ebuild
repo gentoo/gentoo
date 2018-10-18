@@ -6,9 +6,11 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 
 inherit distutils-r1
 
+MY_PN=CommonMark
+MY_P=${MY_PN}-${PV}
 DESCRIPTION="Python parser for the CommonMark Markdown spec"
 HOMEPAGE="https://github.com/rtfd/CommonMark-py"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -24,6 +26,8 @@ DEPEND="${RDEPEND}
 	)
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
+
+S=${WORKDIR}/${MY_P}
 
 python_test() {
 	PYTHONIOENCODING='utf8' \
