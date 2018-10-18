@@ -8,14 +8,13 @@ inherit distutils-r1
 
 DESCRIPTION="Python parser for the CommonMark Markdown spec"
 HOMEPAGE="https://github.com/rtfd/CommonMark-py"
-LICENSE="BSD"
-
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
-
 IUSE=""
+
 RDEPEND="
 	dev-python/future[${PYTHON_USEDEP}]
 "
@@ -29,5 +28,5 @@ RESTRICT=test
 
 python_test() {
 	LC_ALL='en_US.utf8' LC_CTYPE='en_US.utf8' LANG=en_US.utf8 PYTHONIOENCODING=UTF-8 \
-		  esetup.py test
+	esetup.py test
 }
