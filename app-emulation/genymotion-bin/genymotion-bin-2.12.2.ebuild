@@ -19,20 +19,11 @@ KEYWORDS="-* ~amd64"
 
 DEPEND=""
 RDEPEND="|| ( >=app-emulation/virtualbox-5.0.28 >=app-emulation/virtualbox-bin-5.0.28 )
+	app-arch/snappy
 	virtual/opengl
 	dev-libs/openssl
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtopengl:5
-	dev-qt/qtsql:5[sqlite]
-	dev-qt/qtwebkit:5
-	dev-qt/qtwebsockets:5
-	dev-qt/qtsvg:5
-	dev-qt/qtx11extras:5
-	dev-qt/qtdeclarative:5[widgets]
-	dev-qt/qtquickcontrols:5
-	dev-qt/qtconcurrent:5
-	dev-qt/qtgraphicaleffects:5
+	dev-libs/hiredis
+	media-gfx/graphite2
 	sys-apps/util-linux
 	media-libs/gst-plugins-base:0.10
 "
@@ -82,11 +73,14 @@ src_install() {
 	insinto /opt/"${MY_PN}"
 	doins -r "${MY_PN}"/{plugins,translations,icons}
 
+	doins -r "${MY_PN}"/{QtGraphicalEffects,QtQuick,QtQuick.2,platforms,sqldrivers,imageformats}
+	doins "${MY_PN}"/libQt*
+	doins "${MY_PN}"/qt.conf
+	doins "${MY_PN}"/libicu*
+
 	doins "${MY_PN}"/{libcom,librendering}.so*
-	# library that differ from system version
-	doins "${MY_PN}"/libprotobuf.so*
 	# android library
-	doins "${MY_PN}"/{libEGL_translator,libGLES_CM_translator,libGLES_V2_translator,libOpenglRender,libemugl_logger}.so*
+	doins "${MY_PN}"/{libEGL_translator,libGLES_CM_translator,libGLES_V2_translator,libOpenglRender}.so*
 
 	insopts -m0755
 	doins "${MY_PN}"/{device-upgrade,genymotion,genyshell,player,genymotionadbtunneld,gmtool}
@@ -97,10 +91,6 @@ src_install() {
 	dosym "${ED%/}"/opt/"${MY_PN}"/genyshell /opt/bin/genyshell
 	dosym "${ED%/}"/opt/"${MY_PN}"/"${MY_PN}" /opt/bin/"${MY_PN}"
 	dosym "${ED%/}"/opt/"${MY_PN}"/gmtool /opt/bin/gmtool
-
-	# Workaround
-	dosym "${ED%/}/"usr/$(get_libdir)/qt5/plugins/imageformats/libqsvg.so /opt/"${MY_PN}"/imageformats/libqsvg.so
-	dosym "${ED%/}/"usr/$(get_libdir)/qt5/plugins/sqldrivers/libqsqlite.so /opt/"${MY_PN}"/sqldrivers/libqsqlite.so
 
 	newbashcomp "${MY_PN}/completion/bash/gmtool.bash" gmtool
 

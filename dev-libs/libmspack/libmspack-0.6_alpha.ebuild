@@ -14,7 +14,7 @@ SRC_URI="https://www.cabextract.org.uk/libmspack/libmspack-${MY_PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ia64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ~ppc ppc64 ~sparc x86"
 IUSE="debug doc static-libs utils"
 
 DEPEND=""
