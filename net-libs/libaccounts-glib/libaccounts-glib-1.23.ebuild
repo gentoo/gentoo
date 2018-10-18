@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils vcs-snapshot xdg-utils
+inherit autotools vcs-snapshot xdg-utils
 
 DESCRIPTION="Accounts SSO (Single Sign-On) management library for GLib applications"
 HOMEPAGE="https://01.org/gsso/"
@@ -44,5 +44,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
