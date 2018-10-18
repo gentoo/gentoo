@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Lexically scoped resource management"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~mips ppc ~ppc64 ~s390 ~sparc x86 ~ppc-aix ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~mips ppc ~ppc64 ~s390 ~sparc x86 ~ppc-aix ~x86-solaris"
 IUSE="test"
 
 RDEPEND=""
