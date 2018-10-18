@@ -34,7 +34,7 @@ S=${WORKDIR}/${P}/bindings/python
 PATCHES=(
 	# update completion test results due to completion changes
 	# https://reviews.llvm.org/D50171
-	"${FILESDIR}"/9999/0001-python-tests-Update-test_code_completion.patch
+	"${FILESDIR}"/7.0.0/0001-python-tests-Update-test_code_completion.patch
 )
 
 src_unpack() {
