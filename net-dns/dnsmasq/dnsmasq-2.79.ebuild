@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ DM_LINGUAS=(de es fi fr id it no pl pt_BR ro)
 
 CDEPEND="dbus? ( sys-apps/dbus )
 	idn? (
-		!libidn2? ( net-dns/libidn )
+		!libidn2? ( net-dns/libidn:0 )
 		libidn2? ( >=net-dns/libidn2-2.0 )
 	)
 	lua? ( dev-lang/lua:* )
