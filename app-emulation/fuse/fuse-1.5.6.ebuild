@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ DESCRIPTION="Free Unix Spectrum Emulator by Philip Kendall"
 HOMEPAGE="http://fuse-emulator.sourceforge.net"
 SRC_URI="mirror://sourceforge/fuse-emulator/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="alsa ao backend-fbcon backend-sdl backend-svga backend-X gpm joystick memlimit png xml"
@@ -16,7 +16,7 @@ IUSE="alsa ao backend-fbcon backend-sdl backend-svga backend-X gpm joystick meml
 REQUIRED_USE="?? ( backend-fbcon backend-sdl backend-svga backend-X )"
 
 RDEPEND="
-	>=app-emulation/libspectrum-1.4.2
+	>=app-emulation/libspectrum-1.4.4
 	dev-libs/glib:2
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
