@@ -18,23 +18,21 @@ src_prepare() {
 
 	sed -e 's/-Werror//' \
 		-e 's/CFLAGS=/CFLAGS+=/' \
-		-e '/^PREFIX/s@=.*$@=/usr@' \
 		-i Makefile || die 'Failed to patch Makefile'
 }
 
 src_compile() {
-	MY_HS="./scdoc"
+	local MY_HS="./scdoc"
 	if tc-is-cross-compiler; then
 		tc-export_build_env
 		MY_HS="./hostscdoc"
-		MAKEOPTS+=" HOST_SCDOC=./hostscdoc"
-		emake scdoc OUTDIR="${S}/.build.host" CC=$(tc-getBUILD_CC) \
-			CFLAGS="${BUILD_CFLAGS}" LDFLAGS="${BUILD_LDFLAGS}"
+		emake scdoc HOST_SCDOC="./hostscdoc" OUTDIR="${S}/.build.host" CC="$(tc-getBUILD_CC)" \
+			CFLAGS="${BUILD_CFLAGS} -DVERSION='\"${PV}\"'" LDFLAGS="${BUILD_LDFLAGS}"
 		mv scdoc hostscdoc || die 'Failed to rename host scdoc'
 	fi
-	emake LDFLAGS="${LDFLAGS}" HOST_SCDOC="${MY_HS}"
+	emake LDFLAGS="${LDFLAGS}" PREFIX="${EPREFIX}/usr" HOST_SCDOC="${MY_HS}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" HOST_SCDOC="${MY_HS}" install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" HOST_SCDOC="${MY_HS}" install
 }
