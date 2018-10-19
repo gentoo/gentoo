@@ -53,7 +53,7 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${D}" -name '*.la' -delete || die
-	mv "${D}"/usr/share/doc/${PN}/* "${D}"/usr/share/doc/${PF}/ || die
-	rm -r "${D}"/usr/share/doc/${PN}/ || die
+	find "${ED}" -name '*.la' -delete || die
+	mv "${ED}"/usr/share/doc/${PN}/* "${ED}"/usr/share/doc/${PF}/ || die
+	rm -r "${ED}"/usr/share/doc/${PN}/ || die
 }
