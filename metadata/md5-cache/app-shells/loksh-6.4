@@ -1,11 +1,12 @@
 DEFINED_PHASES=install prepare
+DEPEND=sys-libs/ncurses:0=
 DESCRIPTION=Linux port of OpenBSD's ksh
 EAPI=7
 HOMEPAGE=https://github.com/dimkr/loksh
 KEYWORDS=~amd64 ~x86
 LICENSE=public-domain
-RDEPEND=!app-shells/ksh
+RDEPEND=sys-libs/ncurses:0= !app-shells/ksh
 SLOT=0
 SRC_URI=https://github.com/dimkr/loksh/archive/6.4.tar.gz -> loksh-6.4.tar.gz
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=5053b5e9bbdebae5b4d4dc460778382e
+_md5_=2e6f3277cebf3d5207d1d96999f049cb
