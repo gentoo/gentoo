@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst postrm pretend unpack
+DEPEND=>=app-eselect/eselect-rust-0.3_pre20150425 !dev-lang/rust:0 cargo? ( !dev-util/cargo ) rustfmt? ( !dev-util/rustfmt )
+DESCRIPTION=Systems programming language from Mozilla
+EAPI=6
+HOMEPAGE=https://www.rust-lang.org/
+IUSE=cargo clippy cpu_flags_x86_sse2 doc libressl rustfmt abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA
+PDEPEND=!cargo? ( >=dev-util/cargo-0.30.0 )
+RDEPEND=>=app-eselect/eselect-rust-0.3_pre20150425 !dev-lang/rust:0 cargo? ( !dev-util/cargo ) rustfmt? ( !dev-util/rustfmt ) cargo? ( sys-libs/zlib !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) net-libs/libssh2 net-misc/curl[ssl] )
+REQUIRED_USE=x86? ( cpu_flags_x86_sse2 )
+SLOT=stable
+SRC_URI=amd64? ( https://static.rust-lang.org/dist/rust-1.29.2-x86_64-unknown-linux-gnu.tar.gz ) arm? ( https://static.rust-lang.org/dist/rust-1.29.2-arm-unknown-linux-gnueabi.tar.gz https://static.rust-lang.org/dist/rust-1.29.2-arm-unknown-linux-gnueabihf.tar.gz https://static.rust-lang.org/dist/rust-1.29.2-armv7-unknown-linux-gnueabihf.tar.gz ) arm64? ( https://static.rust-lang.org/dist/rust-1.29.2-aarch64-unknown-linux-gnu.tar.gz ) mips? ( https://static.rust-lang.org/dist/rust-1.29.2-mips-unknown-linux-gnu.tar.gz https://static.rust-lang.org/dist/rust-1.29.2-mipsel-unknown-linux-gnu.tar.gz https://static.rust-lang.org/dist/rust-1.29.2-mips64-unknown-linux-gnuabi64.tar.gz ) ppc? ( https://static.rust-lang.org/dist/rust-1.29.2-powerpc-unknown-linux-gnu.tar.gz ) ppc64? ( https://static.rust-lang.org/dist/rust-1.29.2-powerpc64-unknown-linux-gnu.tar.gz https://static.rust-lang.org/dist/rust-1.29.2-powerpc64le-unknown-linux-gnu.tar.gz ) s390? ( https://static.rust-lang.org/dist/rust-1.29.2-s390x-unknown-linux-gnu.tar.gz ) x86? ( https://static.rust-lang.org/dist/rust-1.29.2-i686-unknown-linux-gnu.tar.gz )
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	preserve-libs	ef207dc62baddfddfd39a164d9797648	rust-toolchain	a55e7db53cfb3f2bb0a0def6e45549cc	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
+_md5_=8653d8e4874a6d9273527445fee16ccb
