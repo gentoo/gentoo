@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2012-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit autotools
 
@@ -27,10 +27,10 @@ SLOT="0/13"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND="dev-libs/glib:2
+BDEPEND="virtual/pkgconfig"
+DEPEND="dev-libs/glib:2
 	sys-libs/db:="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	if [[ "${PV}" == "9999" ]]; then
