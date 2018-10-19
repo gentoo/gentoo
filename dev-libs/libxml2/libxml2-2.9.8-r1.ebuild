@@ -88,6 +88,10 @@ src_prepare() {
 	# https://bugzilla.gnome.org/show_bug.cgi?id=775200
 	eapply "${FILESDIR}"/${PN}-2.9.8-CVE-2017-8872.patch
 
+	# CVE-2018-14567
+	# https://bugzilla.gnome.org/show_bug.cgi?id=794914
+	eapply "${FILESDIR}"/${PN}-2.9.8-CVE-2018-14567.patch
+
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# Avoid final linking arguments for python modules
 		sed -i -e '/PYTHON_LIBS/s/ldflags/libs/' configure.ac || die
