@@ -19,7 +19,6 @@
 	<flag name="screen-sharing">Enable screen-sharing through RDP</flag>
 	<flag name="unwind">Enable libunwind usage for backtraces</flag>
 	<flag name="wayland-compositor">Enable Wayland compositor support</flag>
-	<flag name="webp">Add support for the WebP image format</flag>
 	<flag name="xwayland">Enable ability support native X11 applications</flag>
 </use>
 </pkgmetadata>

@@ -20,7 +20,6 @@
 	<flag name="pillow">Enable pillow support</flag>
 	<flag name="server">Build server-side code</flag>
 	<flag name="vpx">Enable vpx image format support</flag>
-	<flag name="webp">Enable webp image format support</flag>
 	<flag name="webcam">Enable webcam support via opencv</flag>
 </use>
 </pkgmetadata>

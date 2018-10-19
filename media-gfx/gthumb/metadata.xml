@@ -10,6 +10,5 @@
 		<flag name="http">Enable webservice integration through <pkg>net-libs/libsoup</pkg></flag>
 		<flag name="json">Compile code that uses the libjson-glib library</flag>
 		<flag name="slideshow">Enable slideshow plugin</flag>
-		<flag name="webp">Enable support for webp image format</flag>
 	</use>
 </pkgmetadata>

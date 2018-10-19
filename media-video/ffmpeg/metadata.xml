@@ -57,7 +57,6 @@
 	<flag name="ssh">Enable SSH/sftp support via <pkg>net-libs/libssh</pkg>.</flag>
 	<flag name="twolame">Enables MP2 encoding via <pkg>media-sound/twolame</pkg> as an alternative to the internal encoder.</flag>
 	<flag name="vpx">Enables vp8 codec support using libvpx: Decoding vp8 does not require this to be enabled but libvpx can also be used for decoding; encoding vp8 requires this useflag to be enabled though.</flag>
-	<flag name="webp">Enables WebP encoding with <pkg>media-libs/libwebp</pkg>.</flag>
 	<flag name="x265">Enables HEVC encoding with <pkg>media-libs/x265</pkg>.</flag>
 	<flag name="zeromq">Enables <pkg>net-libs/zeromq</pkg> support with the zmq/azmq filters.</flag>
 	<flag name="zimg">Enables <pkg>media-libs/zimg</pkg> based scale filter.</flag>

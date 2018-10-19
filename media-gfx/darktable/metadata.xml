@@ -12,7 +12,6 @@
 		<flag name="kwallet">Enable encrypted storage of passwords with <pkg>kde-frameworks/kwallet</pkg></flag>
 		<flag name="opencl">Enable opencl support</flag>
 		<flag name="pax_kernel">Triggers paxmarking of main darktable binary</flag>
-		<flag name="webp">Enable WebP export support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">darktable-org/darktable</remote-id>
