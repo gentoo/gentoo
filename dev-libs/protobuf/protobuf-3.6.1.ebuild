@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.6.0-disable_no-warning-test.patch"
 	"${FILESDIR}/${PN}-3.6.0-system_libraries.patch"
 	"${FILESDIR}/${PN}-3.6.0-protoc_input_output_files.patch"
+	"${FILESDIR}/${PN}-3.6.1-libatomic_linking.patch"
 )
 
 DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)
