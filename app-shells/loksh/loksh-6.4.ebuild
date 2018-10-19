@@ -13,7 +13,9 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="!app-shells/ksh"
+DEPEND="sys-libs/ncurses:0="
+RDEPEND="${DEPEND}
+	!app-shells/ksh"
 
 src_prepare() {
 	default
