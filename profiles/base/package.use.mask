@@ -134,12 +134,16 @@ sys-libs/glibc compile-locales
 media-video/ffmpeg appkit
 
 # James Le Cuirot <chewi@gentoo.org> (17 Dec 2017)
-# Java 9 is not yet fully supported on Gentoo. Having a masked
+# Java 9+ is not yet fully supported on Gentoo. Having a masked
 # gentoo-vm flag allows us to provide it without it breaking Gentoo
 # packages. Those who wish to experiment with it as a fully recognised
 # Gentoo JVM can unmask the flag.
 dev-java/oracle-jdk-bin:9 gentoo-vm
 dev-java/oracle-jre-bin:9 gentoo-vm
+dev-java/oracle-jdk-bin:11 gentoo-vm
+dev-java/oracle-jre-bin:11 gentoo-vm
+dev-java/openjdk-bin:11 gentoo-vm
+dev-java/openjdk:11 gentoo-vm
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (04 Nov 2017)
 # Requires audacious, which is masked. Bug 632513

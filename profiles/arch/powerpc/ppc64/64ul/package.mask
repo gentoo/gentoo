@@ -1,5 +1,9 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (19 Oct 2018)
+# AdoptOpenJDK's ppc64 build is little-endian only.
+dev-java/openjdk-bin
 
 # <gcc-4 does not compile with >=gcc-4 on ppc64
 sys-libs/libstdc++-v3
