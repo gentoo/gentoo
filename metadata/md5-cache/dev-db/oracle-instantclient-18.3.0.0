@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install nofetch postinst preinst prepare test unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Oracle 18c Instant Client with SDK
+EAPI=7
+HOMEPAGE=https://www.oracle.com/technetwork/database/database-technologies/instant-client/overview/index.html
+IUSE=jdbc odbc precomp +sdk +sqlplus tools abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~x86
+LICENSE=OTN
+RDEPEND=>=dev-libs/libaio-0.3.109-r5[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] !<dev-db/oracle-instantclient-basic-12 !<dev-db/oracle-instantclient-odbc-12 !<dev-db/oracle-instantclient-jdbc-12 !<dev-db/oracle-instantclient-sqlplus-12
+REQUIRED_USE=precomp? ( sdk )
+RESTRICT=fetch splitdebug
+SLOT=0/18.1
+SRC_URI=abi_x86_32? ( instantclient-basic-linux-18.3.0.0.0dbru.zip jdbc? ( instantclient-jdbc-linux-18.3.0.0.0dbru.zip ) odbc? ( instantclient-odbc-linux-18.3.0.0.0dbru.zip ) precomp? ( instantclient-precomp-linux-18.3.0.0.0dbru.zip ) !abi_x86_64? ( sdk? ( instantclient-sdk-linux-18.3.0.0.0dbru.zip ) sqlplus? ( instantclient-sqlplus-linux-18.3.0.0.0dbru.zip ) tools? ( instantclient-tools-linux-18.3.0.0.0dbru.zip ) ) ) abi_x86_64? ( instantclient-basic-linux.x64-18.3.0.0.0dbru.zip jdbc? ( instantclient-jdbc-linux.x64-18.3.0.0.0dbru.zip ) odbc? ( instantclient-odbc-linux.x64-18.3.0.0.0dbru.zip ) precomp? ( instantclient-precomp-linux.x64-18.3.0.0.0dbru.zip ) sdk? ( instantclient-sdk-linux.x64-18.3.0.0.0dbru.zip ) sqlplus? ( instantclient-sqlplus-linux.x64-18.3.0.0.0dbru.zip ) tools? ( instantclient-tools-linux.x64-18.3.0.0.0dbru.zip ) )
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	pax-utils	e85f015e815dd463b0c206d781ef45a5	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=51770523fa1dc710903f6e4d0a3e6fa6
