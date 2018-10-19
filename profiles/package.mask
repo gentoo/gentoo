@@ -96,9 +96,7 @@ app-text/fbpdf
 # Masked for removal, along with orphans, because it's unmaintained
 # and vulnerable. Bug #629270
 app-office/openerp
-dev-python/pychart
 dev-python/pywebdav
-dev-python/vatnumber
 
 # Andreas Sturmlechner <asturm@gentoo.org> (07 Oct 2018)
 # Masked for more testing especially of reverse-deps.
