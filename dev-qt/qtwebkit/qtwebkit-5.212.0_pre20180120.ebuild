@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -109,6 +109,7 @@ src_configure() {
 		-DENABLE_TOOLS=OFF
 		-DENABLE_GEOLOCATION=$(usex geolocation)
 		-DUSE_GSTREAMER=$(usex gstreamer)
+		-DUSE_LIBHYPHEN=$(usex hyphen)
 		-DENABLE_JIT=$(usex jit)
 		-DUSE_QT_MULTIMEDIA=$(usex multimedia)
 		-DENABLE_NETSCAPE_PLUGIN_API=$(usex nsplugin)

@@ -43,6 +43,10 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 	!:xml
 )
 
+PATCHES=(
+	"${FILESDIR}/${P}-export-qt_open64.patch" # bug 669010
+)
+
 src_configure() {
 	local myconf=(
 		$(qt_use icu)
