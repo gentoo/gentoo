@@ -84,9 +84,9 @@ rust_all_abis() {
 #
 rust_arch_uri() {
   if [ -n "$3" ]; then
-    echo "${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.gz -> ${3}-${1}.tar.gz"
+    echo "${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.xz -> ${3}-${1}.tar.xz"
   else
-    echo "${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.gz"
+    echo "${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.xz"
   fi
 }
 
