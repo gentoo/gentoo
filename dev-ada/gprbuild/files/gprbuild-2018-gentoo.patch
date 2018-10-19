@@ -241,6 +241,16 @@
        for Language_Kind            ("Ada") use "unit_based";
        for Dependency_Kind          ("Ada") use "ALI_File";
        for Leading_Required_Switches        ("Ada") use
+@@ -77,6 +77,9 @@
+       for Objects_Path_File     ("Ada") use "ADA_PRJ_OBJECTS_FILE";
+       for Driver         ("Ada") use
+           "${GPRCONFIG_PREFIX}libexec/gprbuild/gprbind";
++      for Switches ("Ada") use ("--gnatbind_path=gnatbind-@VER@");
++      for Required_Switches ("Ada") use
++        Binder'Required_Switches ("Ada") &amp; ("--RTS=${RUNTIME_DIR(ada)}");
+    end Binder;
+ 
+    for Toolchain_Version ("Ada") use "GNAT ${VERSION(ada)}";
 --- a/share/gprconfig/c.xml	2018-10-17 21:31:44.442501471 +0200
 +++ b/share/gprconfig/c.xml	2018-10-17 21:33:06.562088044 +0200
 @@ -14,7 +14,7 @@
