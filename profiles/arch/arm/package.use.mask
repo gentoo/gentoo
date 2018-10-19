@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Aaron W. Swenson <titanofold@gentoo.org> (19 Oct 2018)
+# Requires sys-devel/clang which isn’t keyworded for ARM.
+dev-db/postgresql llvm
+
 # Michał Górny <mgorny@gentoo.org> (18 Oct 2018)
 # Requires unported sys-libs/netbsd-csu.
 sys-devel/clang-runtime crt
