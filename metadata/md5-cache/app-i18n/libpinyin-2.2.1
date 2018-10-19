@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=dev-libs/glib:2 sys-libs/db:=
+DESCRIPTION=Libraries for handling of Hanyu Pinyin and Zhuyin Fuhao
+EAPI=7
+HOMEPAGE=https://github.com/libpinyin/libpinyin https://sourceforge.net/projects/libpinyin/
+KEYWORDS=~amd64 ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-3+
+RDEPEND=dev-libs/glib:2 sys-libs/db:=
+SLOT=0/13
+SRC_URI=https://github.com/libpinyin/libpinyin/archive/2.2.1.tar.gz -> libpinyin-2.2.1.tar.gz mirror://sourceforge/libpinyin/models/model15.text.tar.gz -> libpinyin-model15.text.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=9b6d7024dd4a1ed620cf5f50325cb46c
