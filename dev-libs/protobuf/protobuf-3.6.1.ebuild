@@ -11,7 +11,7 @@ SRC_URI="https://github.com/protocolbuffers/${PN}/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="BSD"
 SLOT="0/17"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="emacs examples static-libs test zlib"
 
 RDEPEND="emacs? ( virtual/emacs )
@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.6.0-disable_no-warning-test.patch"
 	"${FILESDIR}/${PN}-3.6.0-system_libraries.patch"
 	"${FILESDIR}/${PN}-3.6.0-protoc_input_output_files.patch"
+	"${FILESDIR}/${PN}-3.6.1-libatomic_linking.patch"
 )
 
 DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)

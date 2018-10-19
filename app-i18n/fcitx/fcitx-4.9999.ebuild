@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2003-2018 Arfrever Frehtes Taifersar Arahesis and others
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -63,6 +63,7 @@ RDEPEND="dev-libs/glib:2
 		dev-libs/libxml2
 	)"
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	kde-frameworks/extra-cmake-modules:5
 	virtual/pkgconfig"
 
