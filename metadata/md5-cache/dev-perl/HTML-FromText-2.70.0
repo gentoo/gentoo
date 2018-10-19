@@ -4,10 +4,10 @@ DESCRIPTION=Convert plain text to HTML
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/HTML-FromText
 IUSE=test
-KEYWORDS=amd64 ~arm hppa ~mips ppc x86
+KEYWORDS=amd64 ~arm hppa ~mips ppc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp >=dev-perl/Email-Find-0.90.0 >=virtual/perl-Exporter-5.58 >=dev-perl/HTML-Parser-1.260.0 >=virtual/perl-Scalar-List-Utils-1.120.0 >=virtual/perl-Text-Tabs+Wrap-98.112.800 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/HTML-FromText-2.07.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=fa6f07c267534599d277434d27ae9577
+_md5_=5707ad61531a550a423b310d2684dd6c
