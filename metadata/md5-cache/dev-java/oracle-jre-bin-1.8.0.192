@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch postinst postrm preinst prepare prerm setup
+DEPEND=app-arch/zip >=sys-apps/sed-4 >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
+DESCRIPTION=Oracle's Java SE Runtime Environment
+EAPI=6
+HOMEPAGE=http://www.oracle.com/technetwork/java/javase/
+IUSE=alsa commercial cups +fontconfig headless-awt javafx jce nsplugin selinux
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=Oracle-BCLA-JavaSE
+RDEPEND=!x64-macos? ( !headless-awt? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXi x11-libs/libXrender x11-libs/libXtst ) javafx? ( dev-libs/glib:2 dev-libs/libxml2:2 dev-libs/libxslt media-libs/freetype:2 x11-libs/cairo x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXtst x11-libs/libXxf86vm x11-libs/pango virtual/opengl ) ) alsa? ( media-libs/alsa-lib ) cups? ( net-print/cups ) fontconfig? ( media-libs/fontconfig:1.0 ) !prefix? ( sys-libs/glibc:* ) selinux? ( sec-policy/selinux-java ) >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
+RESTRICT=fetch preserve-libs strip
+SLOT=1.8
+SRC_URI=amd64? ( jre-8u192-linux-x64.tar.gz ) x86? ( jre-8u192-linux-i586.tar.gz )
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	java-vm-2	8e35974e63a8fdd757a751760871e3db	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	pax-utils	e85f015e815dd463b0c206d781ef45a5	prefix	e51c7882b7b721e54e684f7eb143cbfe	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=96c90dac87df20f79f0724e4c7ab14e8
