@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Standalone tool for generating man pages with a simple syntax"
 HOMEPAGE="https://git.sr.ht/~sircmpwn/scdoc"
-SRC_URI="https://git.sr.ht/~sircmpwn/scdoc/snapshot/${P}.tar.xz"
+SRC_URI="https://git.sr.ht/~sircmpwn/scdoc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
