@@ -23,10 +23,6 @@ dev-python/pymongo test
 # media-libs/qtav not keyworded
 media-video/orion qtav
 
-# Virgil Dupras <vdupras@gentoo.org> (06 Sep 2018)
-# sci-libs/oce not yet keyworded
-sci-electronics/kicad oce
-
 # Andreas Sturmlechner <asturm@gentoo.org> (01 Sep 2018)
 # media-libs/libaom not yet keyworded
 media-video/vlc aom
