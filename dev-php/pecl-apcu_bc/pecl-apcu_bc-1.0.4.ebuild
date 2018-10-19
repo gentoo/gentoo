@@ -14,7 +14,7 @@ USE_PHP="php7-0 php7-1 php7-2"
 
 inherit php-ext-pecl-r3 multilib
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 DESCRIPTION="Provides APC backwards compatibility functions via APCu"
 LICENSE="PHP-3.01"

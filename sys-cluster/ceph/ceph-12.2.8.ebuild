@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 fi
 
 DESCRIPTION="Ceph distributed filesystem"

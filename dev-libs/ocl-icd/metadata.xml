@@ -5,4 +5,9 @@
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
   </maintainer>
+  <use>
+    <flag name="khronos-headers" restrict="&gt;dev-libs/ocl-icd-2.2.11-r1">
+      Install Khronos OpenCL headers.
+    </flag>
+  </use>
 </pkgmetadata>
