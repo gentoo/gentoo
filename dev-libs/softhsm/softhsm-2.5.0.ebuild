@@ -26,6 +26,10 @@ DOCS=(
 	README.md
 )
 
+PATCHES=(
+	"${FILESDIR}/${P}-libressl.patch"
+)
+
 src_configure() {
 	econf \
 		--disable-static \
