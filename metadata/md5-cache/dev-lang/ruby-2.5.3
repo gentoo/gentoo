@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=berkdb? ( sys-libs/db:= ) gdbm? ( sys-libs/gdbm:= ) jemalloc? ( dev-libs/jemalloc ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl ) ) socks5? ( >=net-proxy/dante-1.1.13 ) tk? ( dev-lang/tcl:0=[threads] dev-lang/tk:0=[threads] ) dev-libs/libyaml virtual/libffi:= sys-libs/zlib >=app-eselect/eselect-ruby-20171225
+DESCRIPTION=An object-oriented scripting language
+EAPI=7
+HOMEPAGE=https://www.ruby-lang.org/
+IUSE=berkdb debug doc examples gdbm ipv6 jemalloc libressl +rdoc rubytests socks5 ssl static-libs tk xemacs
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=|| ( Ruby-BSD BSD-2 )
+PDEPEND=>=dev-ruby/did_you_mean-1.2.0:2.5[ruby_targets_ruby25] >=dev-ruby/minitest-5.10.3[ruby_targets_ruby25] >=dev-ruby/net-telnet-0.1.1[ruby_targets_ruby25] >=dev-ruby/power_assert-1.1.1[ruby_targets_ruby25] >=dev-ruby/rake-12.3.0[ruby_targets_ruby25] >=dev-ruby/test-unit-3.2.7[ruby_targets_ruby25] >=dev-ruby/xmlrpc-0.3.0[ruby_targets_ruby25] virtual/rubygems[ruby_targets_ruby25] >=dev-ruby/json-2.0.2[ruby_targets_ruby25] rdoc? ( >=dev-ruby/rdoc-5.1.0[ruby_targets_ruby25] ) xemacs? ( app-xemacs/ruby-modes )
+RDEPEND=berkdb? ( sys-libs/db:= ) gdbm? ( sys-libs/gdbm:= ) jemalloc? ( dev-libs/jemalloc ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl ) ) socks5? ( >=net-proxy/dante-1.1.13 ) tk? ( dev-lang/tcl:0=[threads] dev-lang/tk:0=[threads] ) dev-libs/libyaml virtual/libffi:= sys-libs/zlib >=app-eselect/eselect-ruby-20171225
+SLOT=2.5
+SRC_URI=mirror://ruby/2.5/ruby-2.5.3.tar.xz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=b1755770f9e13bfb5742994c398de50c
