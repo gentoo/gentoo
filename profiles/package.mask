@@ -176,20 +176,6 @@ media-libs/celt
 ~net-libs/libnsl-0
 ~net-libs/rpcsvc-proto-0
 
-# Aaron W. Swenson <titanofold@gentoo.org> (09 Sep 2018)
-# PostgreSQL beta and release candidate releases are pre-release testing
-# versions, not meant for production use. They are feature-frozen, and are
-# released to the public for testing before final release
-#
-# NOTE: Successive beta or candidate releases may not be backwards compatible,
-# so it is important that you review the release notes before upgrading.
-#
-# For more information about beta and release candidate versions, see:
-#     https://www.postgresql.org/developer/beta/
-=dev-db/postgresql-11_beta1
-=dev-db/postgresql-11_beta2
-=dev-db/postgresql-11_beta3
-
 # Matthias Maier <tamiko@gentoo.org> (1 Sep 2018)
 # Mask 0.7.0 and  1.0.1 for the time being until a compatible LLVM version
 # made it into the tree, bug #665192
@@ -328,12 +314,6 @@ media-libs/libglvnd
 # to troubleshoot a purported memory leak in the 11.25.3 release.
 # Bug 629682.
 =net-misc/asterisk-11.25.1
-
-# Aaron W. Swenson <titanofold@gentoo.org> (22 Mar 2018)
-# EOL. No longer receives bug or security fixes. Recommended to update
-# to latest available.
-# Removal in 30 days (21 Apr 2018). Bug 634028.
-<dev-db/postgresql-9.3
 
 # Michał Górny <mgorny@gentoo.org> (20 Mar 2018)
 # Poorly tested version bump followed by a series of quick hacks
