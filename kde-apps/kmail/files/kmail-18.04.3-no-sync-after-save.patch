@@ -1,0 +1,90 @@
+From fcd21f9712143afb956dca2f67fb930fffc074fd Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Tue, 31 Jul 2018 11:59:24 +0200
+Subject: KMail: don't sync after save, don't reload after last sync
+
+Summary:
+* save() takes care of sync() already, if anything changed.
+* When quitting there's no reason to reload the configuration.
+
+Test Plan: None yet
+
+Reviewers: mlaurent
+
+Reviewed By: mlaurent
+
+Subscribers: kde-pim
+
+Tags: #kde_pim
+
+Differential Revision: https://phabricator.kde.org/D14509
+---
+ src/kmkernel.cpp | 26 +++++++++++++++-----------
+ src/kmkernel.h   |  1 +
+ 2 files changed, 16 insertions(+), 11 deletions(-)
+
+diff --git a/src/kmkernel.cpp b/src/kmkernel.cpp
+index aafb9ee..7af593d 100644
+--- a/src/kmkernel.cpp
++++ b/src/kmkernel.cpp
+@@ -231,7 +231,7 @@ KMKernel::~KMKernel()
+     mMailService = nullptr;
+ 
+     stopAgentInstance();
+-    slotSyncConfig();
++    saveConfig();
+ 
+     delete mAutoCorrection;
+     delete mMailCommonSettings;
+@@ -1172,16 +1172,7 @@ void KMKernel::slotRequestConfigSync()
+ 
+ void KMKernel::slotSyncConfig()
+ {
+-    PimCommon::PimCommonSettings::self()->save();
+-    MessageCore::MessageCoreSettings::self()->save();
+-    MessageViewer::MessageViewerSettings::self()->save();
+-    MessageComposer::MessageComposerSettings::self()->save();
+-    TemplateParser::TemplateParserSettings::self()->save();
+-    MessageList::MessageListSettings::self()->save();
+-    mMailCommonSettings->save();
+-    Gravatar::GravatarSettings::self()->save();
+-    KMailSettings::self()->save();
+-    KMKernel::config()->sync();
++    saveConfig();
+     //Laurent investigate why we need to reload them.
+     PimCommon::PimCommonSettings::self()->load();
+     MessageCore::MessageCoreSettings::self()->load();
+@@ -1195,6 +1186,19 @@ void KMKernel::slotSyncConfig()
+     KMKernel::config()->reparseConfiguration();
+ }
+ 
++void KMKernel::saveConfig()
++{
++    PimCommon::PimCommonSettings::self()->save();
++    MessageCore::MessageCoreSettings::self()->save();
++    MessageViewer::MessageViewerSettings::self()->save();
++    MessageComposer::MessageComposerSettings::self()->save();
++    TemplateParser::TemplateParserSettings::self()->save();
++    MessageList::MessageListSettings::self()->save();
++    mMailCommonSettings->save();
++    Gravatar::GravatarSettings::self()->save();
++    KMailSettings::self()->save();
++}
++
+ void KMKernel::updateConfig()
+ {
+     slotConfigChanged();
+diff --git a/src/kmkernel.h b/src/kmkernel.h
+index e7fc071..f5da22d 100644
+--- a/src/kmkernel.h
++++ b/src/kmkernel.h
+@@ -487,6 +487,7 @@ private:
+     void resourceGoOnLine();
+     void openReader(bool onlyCheck);
+     QSharedPointer<MailCommon::FolderSettings> currentFolderCollection();
++    void saveConfig();
+ 
+     KMail::UndoStack *the_undoStack = nullptr;
+     MessageComposer::AkonadiSender *the_msgSender = nullptr;
+-- 
+cgit v0.11.2

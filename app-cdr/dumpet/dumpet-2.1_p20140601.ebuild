@@ -3,11 +3,13 @@
 
 EAPI=6
 
-inherit rpm
+inherit rpm vcs-snapshot
+
+COMMIT="8f47670dd582c96ad1b6dd3c9b9da0acebded5d8"
 
 DESCRIPTION="A tool to dump and debug bootable CD-like images"
 HOMEPAGE="https://github.com/rhboot/dumpet"
-SRC_URI="http://dl.fedoraproject.org/pub/fedora/linux/releases/27/Everything/source/tree/Packages/d/dumpet-${PV}-15.fc27.src.rpm"
+SRC_URI="https://github.com/rhboot/dumpet/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,11 +21,18 @@ RDEPEND="dev-libs/libxml2
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-pkg_setup(){
-	tc-export CC
+src_prepare() {
+	sed -i Makefile \
+		-e "s/^CFLAGS:/#CFLAGS:/" \
+		-e "s/^install : all$/install :/" \
+		|| die
+	default
 }
 
-src_prepare() {
-	use amd64 && eapply "${WORKDIR}"/0001-Manually-tell-it-we-ve-got-64-bit-files-because-32-b.patch
-	default
+src_compile() {
+	emake dumpet
+}
+
+pkg_setup(){
+	tc-export CC
 }
