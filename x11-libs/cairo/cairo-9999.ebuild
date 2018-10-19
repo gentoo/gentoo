@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -87,11 +87,6 @@ multilib_src_configure() {
 	[[ ${CHOST} == *-interix* ]] && append-flags -D_REENTRANT
 
 	use elibc_FreeBSD && myopts+=" --disable-symbol-lookup"
-
-	# TODO: remove this (and add USE-dep) when qtgui is converted, bug #498010
-	if ! multilib_is_native_abi; then
-		myopts+=" --disable-qt"
-	fi
 
 	# [[ ${PV} == *9999* ]] && myopts+=" $(use_enable doc gtk-doc)"
 
