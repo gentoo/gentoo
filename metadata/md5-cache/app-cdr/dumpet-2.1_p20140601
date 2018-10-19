@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile prepare setup unpack
+DEPEND=dev-libs/libxml2 dev-libs/popt virtual/pkgconfig >=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=A tool to dump and debug bootable CD-like images
+EAPI=6
+HOMEPAGE=https://github.com/rhboot/dumpet
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libxml2 dev-libs/popt
+SLOT=0
+SRC_URI=https://github.com/rhboot/dumpet/archive/8f47670dd582c96ad1b6dd3c9b9da0acebded5d8.tar.gz -> dumpet-2.1_p20140601.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_md5_=23a1a0cdd5775164bf41d37a4e73d868
