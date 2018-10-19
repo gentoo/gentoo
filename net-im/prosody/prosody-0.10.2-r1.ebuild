@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -49,6 +49,7 @@ src_configure() {
 	# the configure script is handcrafted (and yells at unknown options)
 	# hence do not use 'econf'
 	append-cflags -D_GNU_SOURCE
+	use elibc_musl && append-cflags -DWITHOUT_MALLINFO
 	./configure \
 		--ostype=linux \
 		--prefix="${EPREFIX}/usr" \
