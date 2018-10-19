@@ -7,12 +7,12 @@ inherit java-vm-2
 
 abi_uri() {
 	echo "${2-$1}? (
-			https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk-${MY_PV}/OpenJDK${SLOT}-jdk_${1}_linux_hotspot_${PV//./_}.tar.gz
+			https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk-${MY_PV}/OpenJDK${SLOT}-jdk_${1}_linux_hotspot_${MY_PV//[.+]/_}.tar.gz
 		)"
 }
 
-SLOT=${PV%%.*}
-MY_PV=${PV/./+}
+MY_PV=${PV/_p/+}
+SLOT=${MY_PV%%[.+]*}
 
 SRC_URI="
 	$(abi_uri x64 amd64)
