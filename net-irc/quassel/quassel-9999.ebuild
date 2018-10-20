@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -106,7 +106,6 @@ src_configure() {
 		-DEMBED_DATA=OFF
 		-DWITH_WEBKIT=OFF
 		-DWITH_BUNDLED_ICONS=$(usex bundled-icons)
-		$(cmake-utils_use_find_package crypt QCA2-QT5)
 		$(cmake-utils_use_find_package dbus dbusmenu-qt5)
 		$(cmake-utils_use_find_package dbus Qt5DBus)
 		-DWITH_KDE=$(usex kde)
@@ -118,6 +117,10 @@ src_configure() {
 		-DWITH_WEBENGINE=$(usex urlpreview)
 		-DWANT_QTCLIENT=$(usex X)
 	)
+
+	if use server || use monolithic; then
+		mycmakeargs+=(  $(cmake-utils_use_find_package crypt QCA2-QT5) )
+	fi
 
 	cmake-utils_src_configure
 }
