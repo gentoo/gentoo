@@ -2942,7 +2942,7 @@ dev-libs/apr-util 1.5.4 1.6.1-r3: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13-r1: An ANSI C library for parsing GNU-style command-line options with minimal fuss
 dev-libs/atf 0.21-r2: Libraries to write tests in C, C++ and shell
 dev-libs/atk 2.22.0 2.24.0: GTK+ & GNOME Accessibility Toolkit
-dev-libs/beecrypt 4.2.1-r4: General-purpose cryptography library
+dev-libs/beecrypt 4.2.1-r4 4.2.1-r5: General-purpose cryptography library
 dev-libs/beignet 1.3.2: OpenCL implementation for Intel GPUs
 dev-libs/bglibs 1.041 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
@@ -6068,7 +6068,6 @@ dev-scheme/tinyscheme 1.41: Lightweight scheme interpreter
 dev-tcltk/anigif 1.3-r1: Image rotation package
 dev-tcltk/blt 2.4z-r13: Extension to Tk, adding new widgets, geometry managers, and misc commands
 dev-tcltk/bwidget 1.9.8: High-level widget set for Tcl/Tk
-dev-tcltk/ck 8.0-r4: A curses based toolkit for tcl
 dev-tcltk/combobox 2.3-r1: A combobox megawidget
 dev-tcltk/expect 5.45: tool for automating interactive applications
 dev-tcltk/expect-lite 4.6.1: quick and easy command line automation tool built on top of expect
@@ -11308,7 +11307,7 @@ x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm
 x11-wm/afterstep 2.2.12: A feature rich NeXTish window manager
 x11-wm/awesome 3.5.9-r2 4.2-r2: A dynamic floating and tiling window manager
 x11-wm/blackbox 0.70.1-r1: A small, fast, full-featured window manager for X
-x11-wm/ctwm 4.0.1-r1: A clean, light window manager
+x11-wm/ctwm 4.0.1-r1 4.0.2: A clean, light window manager
 x11-wm/cwm 5.6: OpenBSD fork of calmwm, a clean and lightweight window manager
 x11-wm/dwm 6.1-r1: a dynamic window manager for X11
 x11-wm/enlightenment 0.22.3: Enlightenment window manager
