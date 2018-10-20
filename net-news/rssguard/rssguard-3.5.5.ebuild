@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,7 @@ RDEPEND="
 	>=dev-qt/qtcore-${MINQT}
 	>=dev-qt/qtgui-${MINQT}
 	>=dev-qt/qtnetwork-${MINQT}
+	>=dev-qt/qtconcurrent-${MINQT}
 	>=dev-qt/qtsql-${MINQT}
 	>=dev-qt/qtwidgets-${MINQT}
 	>=dev-qt/qtxml-${MINQT}

@@ -1,11 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-r1 systemd
+inherit python-r1 readme.gentoo-r1 systemd
 
 MY_P="${PN}_${PV/_/}"
 
@@ -16,9 +15,12 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
+IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}"
+RDEPEND="${PYTHON_DEPS}
+	sys-apps/portage[${PYTHON_USEDEP}]
+"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
@@ -26,9 +28,24 @@ S="${WORKDIR}/${MY_P}"
 # Tests downloads files as well as breaks, should be turned into local tests.
 RESTRICT="test"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-4.0_alpha2-r3-pid.patch
-}
+DISABLE_AUTOFORMATTING="yes"
+DOC_CONTENTS="
+Before starting ${PN}, please follow the next few steps:
+
+- Modify /etc/conf.d/${PN} if required.
+- Run \`repcacheman\` to set up the cache.
+- Add HTTP_PROXY=\"http://serveraddress:8080\" to make.conf on
+the server as well as on the client machines.
+- Make sure GENTOO_MIRRORS in /etc/portage/make.conf
+starts with several good HTTP mirrors.
+
+For more information please refer to the following forum thread:
+https://forums.gentoo.org/viewtopic-t-173226.html
+
+Starting with 4.x releases, the conf.d parameters have changed.
+"
+
+PATCHES=( "${FILESDIR}"/${PN}-4.0_alpha2-r3-pid.patch )
 
 src_test() {
 	./unit-test && die
@@ -50,23 +67,9 @@ src_install() {
 	systemd_install_serviced "${FILESDIR}"/http-replicator.service.conf
 
 	dodoc README.user README.devel RELNOTES
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	echo
-	einfo "Before starting ${PN}, please follow the next few steps:"
-	einfo
-	einfo "- Modify /etc/conf.d/${PN} if required."
-	einfo "- Run \`repcacheman\` to set up the cache."
-	einfo "- Add HTTP_PROXY=\"http://serveraddress:8080\" to make.conf on"
-	einfo "  the server as well as on the client machines."
-	einfo "- Make sure GENTOO_MIRRORS in /etc/portage/make.conf"
-	einfo "  starts with several good HTTP mirrors."
-	einfo
-	einfo "For more information please refer to the following forum thread:"
-	einfo
-	einfo "  https://forums.gentoo.org/viewtopic-t-173226.html"
-	einfo
-	einfo "Starting with 4.x releases, the conf.d parameters have changed."
-	echo
+	readme.gentoo_print_elog
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/acoustid/${PN}/releases/download/v${PV}/${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0/1"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~ppc ppc64 sparc x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd"
 IUSE="libav test tools"
 
 # note: use ffmpeg or libav instead of fftw because it's recommended and required for tools
