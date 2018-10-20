@@ -7204,7 +7204,7 @@ media-fonts/ja-ipafonts 003.02-r1: TrueType fonts developed by Japanese Informat
 media-fonts/jisx0213-fonts 20040425-r2: Japanese fixed fonts that cover JIS0213 charset
 media-fonts/jsmath 1.0: Raster fonts for jsmath
 media-fonts/kacst-fonts 1.6.2 2.0: KACST Arabic TrueType Fonts
-media-fonts/kanjistrokeorders 2.012: font to view stroke order diagrams for Kanji, Kana and etc
+media-fonts/kanjistrokeorders 2.012 2.016: Font to view stroke order diagrams for Kanji, Kana and etc
 media-fonts/khmer 5.0-r1: Fonts for the Khmer language of Cambodia
 media-fonts/kochi-substitute 20030809-r3: Kochi Japanese TrueType fonts with Wadalab Fonts
 media-fonts/konfont 0.1: Fontset for KON2

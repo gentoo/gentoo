@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Afio creates cpio-format archives.
+EAPI=7
+HOMEPAGE=http://members.chello.nl/k.holtman/afio.html https://github.com/kholtman/afio
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~sparc ~x86
+LICENSE=Artistic LGPL-2
+SLOT=0
+SRC_URI=http://members.chello.nl/k.holtman/afio-2.5.1.tgz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=1ab6610c0e7aab35c639801dca791e10
