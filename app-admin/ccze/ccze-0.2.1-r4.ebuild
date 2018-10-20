@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit fixheadtails autotools eutils toolchain-funcs
 
 DESCRIPTION="A flexible and fast logfile colorizer"
-HOMEPAGE="https://dev.gentoo.org/~joker/ccze/ccze.txt"
+HOMEPAGE="https://github.com/madhouse/ccze/releases"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 RESTRICT="test"
