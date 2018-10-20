@@ -15,7 +15,7 @@ SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs test"
 
 RDEPEND="sci-libs/netcdf[hdf5]"
