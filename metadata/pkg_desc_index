@@ -204,7 +204,7 @@ app-arch/pigz 2.3.4 2.4: A parallel implementation of gzip
 app-arch/pixz 1.0.6: Parallel Indexed XZ compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20151029: Parallel implementation of the XZ compression utility
-app-arch/rpm 4.11.0.1 4.14.1: Red Hat Package Management Utils
+app-arch/rpm 4.14.1: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
 app-arch/sharutils 4.14-r1: Tools to deal with shar archives
@@ -1707,7 +1707,7 @@ app-xemacs/edebug 1.22 1.24: An Emacs Lisp debugger
 app-xemacs/edict 1.16 1.17 1.19: MULE: Lisp Interface to EDICT, Kanji Dictionary
 app-xemacs/ediff 1.68 1.81 1.84: Interface over GNU patch
 app-xemacs/edit-utils 2.39 2.43 2.58: Miscellaneous editor extensions, you probably need this
-app-xemacs/edt 1.13 1.14: DEC EDIT/EDT emulation
+app-xemacs/edt 1.13 1.14 1.16: DEC EDIT/EDT emulation
 app-xemacs/efs 1.33 1.34 1.37: Treat files on remote systems the same as local files
 app-xemacs/egg-its 1.27 1.29: MULE: Wnn (4.2 and 6) support. SJ3 support
 app-xemacs/eieio 1.05 1.07 1.10: Enhanced Implementation of Emacs Interpreted Objects
@@ -1759,50 +1759,51 @@ app-xemacs/pcomplete 1.04 1.06 1.08: Provides programmatic completion
 app-xemacs/perl-modes 1.09 1.14 1.16: Perl support
 app-xemacs/pgg 1.06 1.07 1.10: Emacs interface to various PGP implementations
 app-xemacs/prog-modes 2.10 2.20 2.33: Support for various programming languages
-app-xemacs/ps-print 1.11 1.12: Printing functions and utilities
-app-xemacs/psgml 1.44 1.45: Validated HTML/SGML editing
+app-xemacs/ps-print 1.11 1.12 1.14: Printing functions and utilities
+app-xemacs/psgml 1.44 1.45 1.50: Validated HTML/SGML editing
 app-xemacs/psgml-dtds 1.03 1.05: Deprecated collection of DTDs for psgml
-app-xemacs/python-modes 1.08 1.14: Python support
-app-xemacs/re-builder 1.05: Interactive development tool for regular expressions
-app-xemacs/reftex 1.34: Emacs support for LaTeX cross-references, citations..
-app-xemacs/riece 1.23: IRC client for Emacs
-app-xemacs/rmail 1.14: An obsolete Emacs mailer
-app-xemacs/ruby-modes 1.02 1.04: Ruby support
-app-xemacs/sasl 1.16: Simple Authentication and Security Layer (SASL) library
-app-xemacs/scheme 1.15 1.18: Front-end support for Inferior Scheme
+app-xemacs/python-modes 1.08 1.14 1.16: Python support
+app-xemacs/re-builder 1.05 1.07: Interactive development tool for regular expressions
+app-xemacs/reftex 1.34 1.36: Emacs support for LaTeX cross-references, citations..
+app-xemacs/riece 1.23 1.26: IRC client for Emacs
+app-xemacs/rmail 1.14 1.16: An obsolete Emacs mailer
+app-xemacs/ruby-modes 1.02 1.04 1.07: Ruby support
+app-xemacs/sasl 1.16 1.18: Simple Authentication and Security Layer (SASL) library
+app-xemacs/scheme 1.15 1.18 1.22: Front-end support for Inferior Scheme
 app-xemacs/semantic 1.23: Semantic bovinator (Yacc/Lex for XEmacs). Includes Senator
-app-xemacs/sgml 1.11: SGML/Linuxdoc-SGML editing
-app-xemacs/sh-script 1.22 1.24: Support for editing shell scripts
-app-xemacs/sieve 1.18: Manage Sieve email filtering scripts
-app-xemacs/skk 1.23 1.24: MULE: Japanese Language Input Method
-app-xemacs/slider 1.15 1.16: User interface tool
-app-xemacs/sml-mode 0.12: SML editing support
-app-xemacs/sounds-au 1.12: XEmacs Sun sound files
-app-xemacs/sounds-wav 1.12: XEmacs Microsoft sound files
-app-xemacs/speedbar 1.28 1.29: Provides a separate frame with convenient references
-app-xemacs/strokes 1.10: Mouse enhancement utility
-app-xemacs/sun 1.16: Support for Sparcworks..
-app-xemacs/supercite 1.21: An Emacs citation tool for News & Mail messages
-app-xemacs/texinfo 1.30: XEmacs TeXinfo support
-app-xemacs/text-modes 1.92 1.98: Miscellaneous support for editing text files
-app-xemacs/textools 1.15: Miscellaneous TeX support
-app-xemacs/time 1.14: Display time & date on the modeline
-app-xemacs/tm 1.38 1.39: Emacs MIME support. Not needed for gnus >= 5.8.0
-app-xemacs/tooltalk 1.15: Support for building with Tooltalk
-app-xemacs/tpu 1.14: DEC EDIT/TPU support
-app-xemacs/tramp 1.52: Remote shell-based file editing
-app-xemacs/vc 1.41 1.48: Version Control for Free systems
-app-xemacs/vc-cc 1.22: Version Control for ClearCase (UnFree) systems
-app-xemacs/vhdl 1.22: Support for VHDL
-app-xemacs/view-process 1.13: A Unix process browsing tool
-app-xemacs/viper 1.55 1.67: VI emulation support
-app-xemacs/vm 7.22 8.08: An Emacs mailer
-app-xemacs/w3 1.33 1.35: A Web browser
+app-xemacs/sgml 1.11 1.13: SGML/Linuxdoc-SGML editing
+app-xemacs/sh-script 1.22 1.24 1.26: Support for editing shell scripts
+app-xemacs/sieve 1.18 1.20: Manage Sieve email filtering scripts
+app-xemacs/skk 1.23 1.24 1.27: MULE: Japanese Language Input Method
+app-xemacs/slider 1.15 1.16 1.18: User interface tool
+app-xemacs/sml-mode 0.12 0.14: SML editing support
+app-xemacs/sounds-au 1.12 1.14: XEmacs Sun sound files
+app-xemacs/sounds-wav 1.12 1.14: XEmacs Microsoft sound files
+app-xemacs/speedbar 1.28 1.29 1.32: Provides a separate frame with convenient references
+app-xemacs/strokes 1.10 1.12: Mouse enhancement utility
+app-xemacs/sun 1.16 1.19: Support for Sparcworks..
+app-xemacs/supercite 1.21 1.23: An Emacs citation tool for News & Mail messages
+app-xemacs/texinfo 1.30 1.32: XEmacs TeXinfo support
+app-xemacs/text-modes 1.92 1.98 2.06: Miscellaneous support for editing text files
+app-xemacs/textools 1.15 1.17: Miscellaneous TeX support
+app-xemacs/time 1.14 1.17: Display time & date on the modeline
+app-xemacs/tm 1.38 1.39 1.42: Emacs MIME support. Not needed for gnus >= 5.8.0
+app-xemacs/tooltalk 1.15 1.17: Support for building with Tooltalk
+app-xemacs/tpu 1.14 1.16: DEC EDIT/TPU support
+app-xemacs/tramp 1.52 1.57: Remote shell-based file editing
+app-xemacs/vc 1.41 1.48 1.50: Version Control for Free systems
+app-xemacs/vc-cc 1.22 1.24: Version Control for ClearCase (UnFree) systems
+app-xemacs/vhdl 1.22 1.24: Support for VHDL
+app-xemacs/view-process 1.13 1.15: A Unix process browsing tool
+app-xemacs/viper 1.55 1.67 1.69: VI emulation support
+app-xemacs/vm 7.22 8.08 8.11: An Emacs mailer
+app-xemacs/w3 1.33 1.35 1.41: A Web browser
 app-xemacs/x-symbol 1.10 1.11 1.16: Semi WYSIWYG for LaTeX, HTML, etc, using additional fonts
-app-xemacs/xemacs-base 2.08 2.10-r1 2.27: Fundamental XEmacs support, you almost certainly need this
-app-xemacs/xemacs-devel 1.75 1.80: Emacs Lisp developer support
-app-xemacs/xemacs-eterm 1.17 1.18-r1: Terminal emulation
-app-xemacs/xemacs-ispell 1.32: Spell-checking with GNU ispell
+app-xemacs/xemacs-base 2.08 2.10-r1 2.27 2.46: Fundamental XEmacs support, you almost certainly need this
+app-xemacs/xemacs-devel 1.75 1.80 1.84: Emacs Lisp developer support
+app-xemacs/xemacs-eterm 1.17 1.18-r1 1.20: Terminal emulation
+app-xemacs/xemacs-ispell 1.32 1.37: Spell-checking with GNU ispell
+app-xemacs/xemacs-packages-all 2018.08.11: Meta package for XEmacs elisp packages, similar to the sumo archives
 app-xemacs/xetla 1.04: Arch (tla) interface for XEmacs
 app-xemacs/xlib 1.14 1.16: Emacs interface to X server
 app-xemacs/xslide 1.09 1.11: XSL editing support
