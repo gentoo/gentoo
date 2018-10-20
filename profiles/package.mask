@@ -161,7 +161,6 @@ dev-python/tinydb
 # the dep looks completely mistaken.  Bug #666152.
 app-vim/python-mode
 dev-python/astng
-dev-python/logilab-constraint
 
 # Mike Gilbert <floppym@gentoo.org> (16 Sep 2018)
 # Dev channel releases are only for people who are developers or want more
