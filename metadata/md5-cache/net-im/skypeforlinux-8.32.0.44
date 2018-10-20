@@ -10,6 +10,6 @@ RDEPEND=dev-libs/atk[abi_x86_64(-)?] dev-libs/expat[abi_x86_64(-)?] dev-libs/gli
 REQUIRED_USE=|| ( abi_x86_64 )
 RESTRICT=mirror bindist strip
 SLOT=0
-SRC_URI=https://repo.skype.com/rpm/stable/skypeforlinux_8.31.0.92-1.x86_64.rpm
+SRC_URI=https://repo.skype.com/rpm/stable/skypeforlinux_8.32.0.44-1.x86_64.rpm
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	pax-utils	e85f015e815dd463b0c206d781ef45a5	preserve-libs	ef207dc62baddfddfd39a164d9797648	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
 _md5_=713e7e29f95f88176fbb9805620b1644
