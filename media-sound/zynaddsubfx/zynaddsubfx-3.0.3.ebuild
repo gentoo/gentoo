@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="alsa +fltk jack lash"
 
-RDEPEND=">=dev-libs/mini-xml-2.2.1
+RDEPEND=">=dev-libs/mxml-2.2.1
 	sci-libs/fftw:3.0
 	media-libs/liblo
 	alsa? ( media-libs/alsa-lib )

@@ -25,7 +25,7 @@ RDEPEND="
 	dev-libs/libevent
 	dev-libs/libgcrypt:0
 	dev-libs/libunistring
-	dev-libs/mini-xml[threads]
+	dev-libs/mxml[threads]
 	media-libs/alsa-lib
 	net-dns/avahi[dbus]
 	virtual/ffmpeg
