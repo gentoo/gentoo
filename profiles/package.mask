@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (20 Oct 2018)
+# Fails to build with glibc-2.27, bug 648620. No reverse
+# dependencies. Removal in 30 days.
+dev-tcltk/ck
+
 # Matt Turner <mattst88@gentoo.org> (17 Oct 2018)
 # Multiple regressions causing pain for users and developers alike: Bug
 # Bugs #666892, #667686
