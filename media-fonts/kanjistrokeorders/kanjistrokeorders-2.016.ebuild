@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -19,7 +19,7 @@ IUSE=""
 RESTRICT="strip binchecks"
 
 DEPEND="app-arch/unzip"
-RDEPEND=""
+RDEPEND="!<kde-apps/kiten-18.08.2-r1"
 
 S="${WORKDIR}"
 FONT_S="${S}"
