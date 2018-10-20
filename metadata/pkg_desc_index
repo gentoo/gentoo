@@ -1726,17 +1726,17 @@ app-xemacs/fsf-compat 1.15 1.19 1.24: FSF Emacs compatibility files
 app-xemacs/games 1.20 1.23: Tetris, Sokoban, and Snake
 app-xemacs/general-docs 1.04 1.06 1.10: General XEmacs documentation
 app-xemacs/gnats 1.17 1.19: XEmacs bug reports
-app-xemacs/gnus 1.99: The Gnus Newsreader and Mailreader
-app-xemacs/haskell-mode 1.11: Haskell editing support
-app-xemacs/hm-html-menus 1.23 1.24: HTML editing
-app-xemacs/hyperbole 1.16 1.17: Hyperbole: The Everyday Info Manager
-app-xemacs/ibuffer 1.09 1.10: Advanced replacement for buffer-menu
-app-xemacs/idlwave 1.32: Editing and Shell mode for the Interactive Data Language
-app-xemacs/igrep 1.14 1.16: Enhanced front-end for Grep
-app-xemacs/ilisp 1.34 1.36: Front-end for Inferior Lisp
+app-xemacs/gnus 1.99 2.04: The Gnus Newsreader and Mailreader
+app-xemacs/haskell-mode 1.11 1.14: Haskell editing support
+app-xemacs/hm-html-menus 1.23 1.24 1.26: HTML editing
+app-xemacs/hyperbole 1.16 1.17 1.22: Hyperbole: The Everyday Info Manager
+app-xemacs/ibuffer 1.09 1.10 1.12: Advanced replacement for buffer-menu
+app-xemacs/idlwave 1.32 1.34: Editing and Shell mode for the Interactive Data Language
+app-xemacs/igrep 1.14 1.16 1.18: Enhanced front-end for Grep
+app-xemacs/ilisp 1.34 1.36 1.38: Front-end for Inferior Lisp
 app-xemacs/jde 1.54: Integrated Development Environment for Java
-app-xemacs/latin-euro-standards 1.07 1.09: MULE: Support for the Latin{7,8,9,10} character sets & coding systems
-app-xemacs/latin-unity 1.20: MULE: find single ISO 8859 character set to encode a buffer
+app-xemacs/latin-euro-standards 1.07 1.09 1.11: MULE: Support for the Latin{7,8,9,10} character sets & coding systems
+app-xemacs/latin-unity 1.20 1.23: MULE: find single ISO 8859 character set to encode a buffer
 app-xemacs/leim 1.24 1.31: MULE: Quail. All non-English and non-Japanese language support
 app-xemacs/locale 1.24 1.28: MULE: Localized menubars and localized splash screens
 app-xemacs/lookup 1.15: MULE: Dictionary support
@@ -1803,8 +1803,9 @@ app-xemacs/xemacs-base 2.08 2.10-r1 2.27: Fundamental XEmacs support, you almost
 app-xemacs/xemacs-devel 1.75 1.80: Emacs Lisp developer support
 app-xemacs/xemacs-eterm 1.17 1.18-r1: Terminal emulation
 app-xemacs/xemacs-ispell 1.32: Spell-checking with GNU ispell
-app-xemacs/xlib 1.14: Emacs interface to X server
-app-xemacs/xslide 1.09: XSL editing support
+app-xemacs/xetla 1.04: Arch (tla) interface for XEmacs
+app-xemacs/xlib 1.14 1.16: Emacs interface to X server
+app-xemacs/xslide 1.09 1.11: XSL editing support
 app-xemacs/xslt-process 1.14: XSLT processing support
 app-xemacs/xwem 1.22 1.23 1.26: X Emacs Window Manager
 app-xemacs/zenirc 1.16 1.18: ZENIRC IRC Client
