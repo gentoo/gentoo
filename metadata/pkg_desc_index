@@ -7989,7 +7989,7 @@ media-sound/alsamixergui 0.9.0.1.2-r4: FLTK based amixer Frontend
 media-sound/alsaplayer 0.99.81: A heavily multi-threaded pluggable audio player
 media-sound/amsynth 1.3.2-r1 1.5.1-r1: Virtual analogue synthesizer
 media-sound/apetag 1.12-r2: Command-line ape 2.0 tagger
-media-sound/apulse 0.1.10 0.1.12-r4: PulseAudio emulation for ALSA
+media-sound/apulse 0.1.12-r4: PulseAudio emulation for ALSA
 media-sound/aqualung 1.0-r2: Music player for a wide range of formats designed for gapless playback
 media-sound/ario 1.5.1-r1: a GTK2 MPD (Music Player Daemon) client inspired by Rythmbox
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
