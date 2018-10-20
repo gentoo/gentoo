@@ -136,7 +136,7 @@ app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/sysstat 11.4.0: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
-app-admin/systemrescuecd-x86 5.1.2 5.2.1 5.2.2: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 5.1.2 5.2.1 5.2.2 5.3.1: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.17: Log parsing and notification program
 app-admin/testdisk 7.1_pre20180322-r1 7.1_pre20180922: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
@@ -9341,7 +9341,7 @@ sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mtkbabel 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0: Converts OSM data to SQL and insert into PostgreSQL db
-sci-geosciences/qgis 3.0.3-r1: User friendly Geographic Information System
+sci-geosciences/qgis 3.0.3-r1 3.2.3: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.3 1.11.1-r1: GPS mapping utility
 sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1: Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB
@@ -10545,12 +10545,12 @@ www-apache/mod_macro 1.1.10: An Apache2 module providing macros for the Apache c
 www-apache/mod_perl 2.0.10: An embedded Perl interpreter for Apache2
 www-apache/mod_rpaf 0.6-r1: Reverse proxy add forward module
 www-apache/mod_scgi 1.14-r1: Apache module for a replacement of the CGI protocol, similar to FastCGI
-www-apache/mod_security 2.7.7: Web application firewall and Intrusion Detection System for Apache
+www-apache/mod_security 2.7.7 2.9.1-r1: Application firewall and intrusion detection for Apache
 www-apache/mod_umask 0.1.0: Sets the Unix umask of the Apache2 webserver process after it has started
 www-apache/mod_wsgi 4.5.13: An Apache2 module for running Python WSGI applications
 www-apache/mod_xml2enc 1.0.3: An Apache2 module to provide libxml2 encoding
 www-apache/mod_xsendfile 1.0_beta1: Apache module that processes X-SENDFILE headers registered by the output handler
-www-apache/modsecurity-crs 2.2.7: Core Rule Set for ModSecurity
+www-apache/modsecurity-crs 2.2.7 3.0.2: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
 www-apache/passenger 5.3.2: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
