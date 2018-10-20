@@ -25,6 +25,7 @@ RDEPEND="
 	asyncns? ( >=net-libs/libasyncns-0.3 )
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	test? ( dev-libs/check )
 	virtual/pkgconfig
 "
