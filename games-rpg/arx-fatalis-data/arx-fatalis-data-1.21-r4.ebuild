@@ -8,7 +8,7 @@ inherit eutils cdrom check-reqs
 
 DESCRIPTION="Arx Fatalis data files"
 HOMEPAGE="https://www.arkane-studios.com/uk/arx.php"
-SRC_URI="cdinstall? ( http://download.zenimax.com/arxfatalis/patches/1.21/ArxFatalis_1.21_MULTILANG.exe )
+SRC_URI="cdinstall? ( https://cdn.bethsoft.com/arxfatalis/patches/1.21/ArxFatalis_1.21_MULTILANG.exe )
 	gog? ( setup_arx_fatalis_2.0.0.7.exe )"
 
 LICENSE="cdinstall? ( ArxFatalis-EULA-JoWooD ) gog? ( GOG-EULA )"
