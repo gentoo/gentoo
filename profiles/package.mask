@@ -164,11 +164,6 @@ dev-python/astng
 dev-python/logilab-common
 dev-python/logilab-constraint
 
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Sep 2018)
-# was merged into the IETF Opus codec and is now obsolete
-# Removal in 30 days, bug #664154
-media-libs/celt
-
 # Mike Gilbert <floppym@gentoo.org> (16 Sep 2018)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
