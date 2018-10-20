@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,9 +29,10 @@ RDEPEND="${COMMON_DEPEND}
 	!minimal? ( x11-themes/notify-osd-icons )
 "
 DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
+	dev-util/glib-utils
 	gnome-base/gnome-common
 	x11-base/xorg-proto
+	virtual/pkgconfig
 "
 
 RESTRICT="test" # virtualx.eclass: 1 of 1: FAIL: test-modules
