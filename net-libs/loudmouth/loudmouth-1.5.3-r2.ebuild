@@ -17,7 +17,7 @@ IUSE="asyncns ssl openssl static-libs test"
 # Automagic libidn dependency
 RDEPEND="
 	>=dev-libs/glib-2.16:2
-	net-dns/libidn
+	net-dns/libidn:=
 	ssl? (
 		!openssl? ( >=net-libs/gnutls-1.4.0:0= )
 		openssl? ( dev-libs/openssl:0= )
