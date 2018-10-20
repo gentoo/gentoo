@@ -1,4 +1,5 @@
 DEFINED_PHASES=compile install prepare
+DEPEND=>=sys-libs/ncurses-5.4:0= virtual/pkgconfig
 DESCRIPTION=Compare directories and select files to copy
 EAPI=7
 HOMEPAGE=http://home.hccnet.nl/paul.schuurmans/
@@ -8,4 +9,4 @@ RDEPEND=>=sys-libs/ncurses-5.4:0=
 SLOT=0
 SRC_URI=http://home.hccnet.nl/paul.schuurmans/linux/download/cdircmp-0.3.tar.gz
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=236cefe818d544498177ebc7ddc79694
+_md5_=c221bebbd9b665b21459aec1d59afa2e
