@@ -160,7 +160,6 @@ dev-python/tinydb
 # installable.  The only revdep left is app-vim/python-mode where
 # the dep looks completely mistaken.  Bug #666152.
 app-vim/python-mode
-dev-python/astng
 
 # Mike Gilbert <floppym@gentoo.org> (16 Sep 2018)
 # Dev channel releases are only for people who are developers or want more
