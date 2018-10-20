@@ -10,7 +10,7 @@ SRC_URI="http://homepage3.nifty.com/slokar/fb/${P}.tar.gz"
 
 LICENSE="w3m BSD"
 SLOT="0"
-KEYWORDS="~amd64 x86 ppc"
+KEYWORDS="~amd64 ppc x86"
 IUSE=""
 
 DEPEND="media-libs/stimg"
