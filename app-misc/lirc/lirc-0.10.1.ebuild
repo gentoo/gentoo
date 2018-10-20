@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
 IUSE="audio +devinput doc ftdi gtk inputlirc static-libs systemd +uinput usb X"
 
 REQUIRED_USE="
