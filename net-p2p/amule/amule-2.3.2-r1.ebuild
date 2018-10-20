@@ -19,7 +19,7 @@ KEYWORDS="alpha amd64 ~arm ppc ppc64 ~sparc x86"
 IUSE="daemon debug geoip nls remote stats unicode upnp +X"
 
 COMMON_DEPEND="
-	dev-libs/crypto++
+	dev-libs/crypto++[asm]
 	sys-libs/binutils-libs:0=
 	sys-libs/zlib
 	x11-libs/wxGTK:${WX_GTK_VER}[X?]

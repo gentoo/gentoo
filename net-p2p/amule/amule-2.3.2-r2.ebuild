@@ -20,7 +20,7 @@ IUSE="daemon debug geoip nls remote stats upnp +X"
 
 COMMON_DEPEND="
 	dev-libs/boost:=
-	dev-libs/crypto++:=
+	dev-libs/crypto++:=[asm]
 	sys-libs/binutils-libs:0=
 	sys-libs/zlib
 	x11-libs/wxGTK:${WX_GTK_VER}[X?]
