@@ -5,13 +5,10 @@ EAPI="7"
 
 inherit autotools
 
-MY_PN="mxml"
-MY_P="${MY_PN}-${PV}"
-
 DESCRIPTION="A small XML parsing library that you can use to read XML data files or strings"
 HOMEPAGE="https://github.com/michaelrsweet/mxml
 	https://www.msweet.org/mxml/"
-SRC_URI="https://github.com/michaelrsweet/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/michaelrsweet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 LICENSE="Mini-XML"
@@ -19,8 +16,6 @@ SLOT="0"
 IUSE="static-libs threads"
 
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default

@@ -5,12 +5,10 @@ EAPI=6
 
 inherit autotools
 
-MY_P="${P/mini-xml/mxml}"
-
 DESCRIPTION="A small XML parsing library that you can use to read XML data files or strings"
 HOMEPAGE="https://github.com/michaelrsweet/mxml
 	https://www.msweet.org/mxml/"
-SRC_URI="https://github.com/michaelrsweet/mxml/releases/download/v${PV}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/michaelrsweet/mxml/releases/download/v${PV}/${P}.tar.gz"
 
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 LICENSE="Mini-XML"
