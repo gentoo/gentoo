@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc"
 
+PATCHES="${FILESDIR}/${PV}-makefile-removesymlink.patch"
+
 RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
@@ -31,11 +33,6 @@ RDEPEND="dev-qt/qtcore:5
 	media-libs/hamlib
 	doc? ( dev-ruby/asciidoctor )"
 DEPEND="${RDEPEND}"
-
-src_prepare() {
-	eapply "${FILESDIR}/${PV}-makefile-removesymlink.patch"
-	eapply_user
-}
 
 src_configure() {
 	local mycmakeargs=(
