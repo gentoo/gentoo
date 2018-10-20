@@ -14,7 +14,7 @@ SRC_URI="https://dbus.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
 IUSE="doc examples test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
