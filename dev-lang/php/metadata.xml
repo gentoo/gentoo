@@ -51,7 +51,6 @@
     <flag name="xslt">Enable the XSL extension</flag>
     <flag name="vpx">Enable webp support for GD in php-5.x</flag>
     <flag name="webp">Enable webp support for GD in php-7.x</flag>
-    <flag name="zip">Enable ZIP file support</flag>
     <flag name="zip-encryption">Enable ZIP file encryption from <pkg>dev-libs/libzip</pkg></flag>
   </use>
 </pkgmetadata>

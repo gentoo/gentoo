@@ -116,7 +116,6 @@ Exporters
     </flag>
     <flag name="tbb">When USE=threads, use tbb for threading</flag>
     <flag name="tools">Build and install helper tools</flag>
-    <flag name="zip">Support zip archives</flag>
   </use>
   <upstream>
     <remote-id type="bitbucket">sinbad/ogre</remote-id>

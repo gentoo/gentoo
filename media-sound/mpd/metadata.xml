@@ -36,7 +36,6 @@
     <flag name="twolame">Support twolame MPEG-2 encoding</flag>
     <flag name="webdav">Enable using music from a WebDAV share</flag>
     <flag name="wildmidi">Enable MIDI support via wildmidi</flag>
-    <flag name="zip">Support for ZIP files</flag>
   </use>
   <upstream>
     <remote-id type="github">MusicPlayerDaemon/MPD</remote-id>
