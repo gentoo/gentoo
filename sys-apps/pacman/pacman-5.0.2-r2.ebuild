@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
 inherit autotools
@@ -27,20 +26,26 @@ fi
 LICENSE="GPL-2"
 SLOT="0/10"
 
-IUSE="curl debug doc +gpg test"
-COMMON_DEPEND="app-arch/libarchive:=[lzma]
+IUSE="curl debug doc +gpg libressl test"
+COMMON_DEPEND="
+	app-arch/libarchive:=[lzma]
 	gpg? ( >=app-crypt/gpgme-1.4.0:= )
-	dev-libs/openssl:0=
 	curl? ( net-misc/curl )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	virtual/libiconv
-	virtual/libintl"
+	virtual/libintl
+"
 RDEPEND="${COMMON_DEPEND}"
 
 DEPEND="${COMMON_DEPEND}
 	app-text/asciidoc
 	doc? ( app-doc/doxygen )
-	test? ( sys-apps/fakeroot
-	sys-apps/fakechroot )"
+	test? (
+		sys-apps/fakeroot
+		sys-apps/fakechroot
+	)
+"
 
 # workaround until tests are fixed/sorted out
 RESTRICT="test"
@@ -56,6 +61,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-static
 		--localstatedir=/var
 		--disable-git-version
 		--with-openssl
@@ -86,11 +92,15 @@ src_install() {
 	# create /var/chroot/archlinux
 	# see bug #631754
 	dodir /var/chroot/archlinux
+	keepdir /var/chroot/archlinux /var/lib/pacman
 
 	default
+	find "${D}" -name '*.la' -delete || die
+
 	# avoid creating stuff inside /var/cache/
 	# see bug #633742 for more information
 	rm -r "${D}"/var/cache/pacman
+	rmdir "${D}"/var/cache
 }
 
 pkg_postinst() {
@@ -103,10 +113,5 @@ pkg_postinst() {
 	einfo "You will need to setup at least one mirror in /etc/pacman.d/mirrorlist."
 	einfo "Please generate it manually according to the Archlinux documentation:"
 	einfo "https://wiki.archlinux.org/index.php/Mirror"
-	einfo ""
-	ewarn "Archlinux is dropping support for x86 (i686 called there) entirely"
-	ewarn "in Nov 2017. Please keep this in mind when setting up new systems."
-	ewarn "For more details see"
-	ewarn "https://www.archlinux.org/news/phasing-out-i686-support"
 	einfo ""
 }

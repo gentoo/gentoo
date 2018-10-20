@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,7 +8,7 @@ USE_RUBY="ruby23 ruby24 ruby25"
 inherit ruby-single versionator
 
 DESCRIPTION="Command-line tools that serve as client interface to the Amazon EC2 web service"
-HOMEPAGE="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=368&categoryID=88"
+HOMEPAGE="https://aws.amazon.com/en/tools/"
 SRC_URI="http://s3.amazonaws.com/ec2-downloads/${P}.zip"
 
 LICENSE="Amazon

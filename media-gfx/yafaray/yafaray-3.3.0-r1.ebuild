@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+PYTHON_COMPAT=( python3_{5,6,7} )
 
-PYTHON_COMPAT=( python3_{5,6} )
 inherit cmake-utils python-single-r1
 
 DESCRIPTION="A free open-source montecarlo raytracing engine"
@@ -15,22 +15,30 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+blender +fastmath +fasttrig jpeg opencv openexr png +python tiff truetype"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="dev-libs/boost:=
-	dev-libs/libxml2
+RDEPEND="
+	dev-libs/boost:=
+	dev-libs/libxml2:2
 	sys-libs/zlib
 	blender? ( media-gfx/blender )
 	jpeg? ( virtual/jpeg:0 )
 	opencv? ( >=media-libs/opencv-3.1.0:=[openexr?] )
 	openexr? ( >=media-libs/openexr-2.2.0:= )
-	png? ( media-libs/libpng:= )
+	png? ( media-libs/libpng:0= )
 	python? ( ${PYTHON_DEPS} )
 	tiff? ( media-libs/tiff:0 )
-	truetype? ( media-libs/freetype )"
+	truetype? ( media-libs/freetype:2 )
+"
 DEPEND="${RDEPEND}
-	dev-lang/swig"
+	dev-lang/swig
+"
 
 S="${WORKDIR}/Core-${PV}"
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -49,6 +57,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DYAF_LIB_DIR=$(get_libdir)
 		-DWITH_YAF_PY_BINDINGS=$(usex python)
+		-DYAF_PY_VERSION=${EPYTHON#python}
 		-DWITH_YAF_RUBY_BINDINGS=OFF
 		-DBLENDER_ADDON=OFF # addon is a separate package called blender-exporter
 		-DCMAKE_SKIP_RPATH=ON # NULL DT_RUNPATH security problem
@@ -88,10 +97,10 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "To confirm your installation is working as expected, run"
-	elog "yafaray-xml with /usr/share/yafaray/tests/test01/test01.xml"
-	elog "as an input file, then compare the result to"
-	elog "'/usr/share/yafaray/tests/test01/test01 - expected render result.png'"
+	einfo "To confirm your installation is working as expected, run"
+	einfo "yafaray-xml with /usr/share/yafaray/tests/test01/test01.xml"
+	einfo "as an input file, then compare the result to"
+	einfo "'/usr/share/yafaray/tests/test01/test01 - expected render result.png'"
 	if use blender; then
 		elog
 		elog "To use within Blender, navigate to File -> User Preferences -> Add-ons (tab)"

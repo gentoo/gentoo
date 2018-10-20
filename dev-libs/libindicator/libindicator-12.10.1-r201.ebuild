@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,6 +16,7 @@ IUSE="test"
 RDEPEND=">=dev-libs/glib-2.22[${MULTILIB_USEDEP}]
 	>=x11-libs/gtk+-2.18:2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	test? ( dev-util/dbus-test-runner )"
 

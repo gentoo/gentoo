@@ -1,9 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit cmake-utils versionator
+inherit cmake-utils eapi7-ver
 
 MY_P="SFML-${PV}"
 
@@ -12,7 +11,7 @@ HOMEPAGE="http://www.sfml-dev.org/ https://github.com/SFML/SFML"
 SRC_URI="https://github.com/SFML/SFML/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
-SLOT="0/$(get_version_component_range 1-2)"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug doc examples"
 
@@ -25,9 +24,7 @@ RDEPEND="
 	media-libs/openal
 	sys-libs/zlib
 	virtual/jpeg:0
-	kernel_linux? (
-		virtual/libudev:0
-	)
+	kernel_linux? ( virtual/libudev:0 )
 	virtual/opengl
 	!kernel_Winnt? (
 		x11-libs/libX11
@@ -41,12 +38,7 @@ DEPEND="
 	doc? ( app-doc/doxygen )
 "
 
-DOCS=( changelog.txt readme.txt )
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.2-no-docs.patch
-	"${FILESDIR}"/${PN}-2.4.2-no-install-extlibs-mingw.patch
-)
+DOCS=( changelog.md readme.md )
 
 S="${WORKDIR}/${MY_P}"
 
@@ -74,7 +66,8 @@ src_install() {
 	cmake-utils_src_install
 
 	insinto /usr/share/cmake/Modules
-	doins cmake/Modules/FindSFML.cmake
+	doins cmake/SFMLConfig.cmake.in
+	doins cmake/SFMLConfigDependencies.cmake.in
 
 	if use examples ; then
 		docompress -x /usr/share/doc/${PF}/examples

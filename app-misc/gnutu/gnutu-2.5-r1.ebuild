@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="GNU Student's Timetable for polish users"
-HOMEPAGE="http://gnutu.devnull.pl/"
-SRC_URI="http://gnutu.devnull.pl/download/sources/${P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,4 +17,5 @@ RDEPEND="
 	>=dev-dotnet/gtk-sharp-2.12.21
 "
 DEPEND="${RDEPEND}
-	sys-devel/gettext"
+	sys-devel/gettext
+"

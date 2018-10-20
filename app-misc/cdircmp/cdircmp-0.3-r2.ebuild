@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,6 +15,9 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND=">=sys-libs/ncurses-5.4:0="
+DEPEND="${RDEPEND}
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	sed -i Makefile \
@@ -26,7 +29,7 @@ src_prepare() {
 src_compile() {
 	emake CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
-		LDFLAGS="${LDFLAGS}"
+		LDFLAGS="$(pkg-config --libs ncurses) ${LDFLAGS}"
 }
 
 src_install() {
