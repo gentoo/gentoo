@@ -13,5 +13,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">basho/lager</remote-id>
+		<remote-id type="github">erlang-lager/lager</remote-id>
 	</upstream>
 </pkgmetadata>
