@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure postinst postrm
+DEPEND=virtual/libintl x11-libs/gtk+:2 dev-util/intltool sys-devel/gettext virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=A simple GTK2 text editor
+EAPI=6
+HOMEPAGE=http://tarot.freeshell.org/leafpad/
+IUSE=emacs
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=virtual/libintl x11-libs/gtk+:2
+SLOT=0
+SRC_URI=mirror://nongnu/leafpad/leafpad-0.8.18.1.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=500470335603847c7a243d8d4f7579dd
