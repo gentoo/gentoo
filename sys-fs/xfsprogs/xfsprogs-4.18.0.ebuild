@@ -61,12 +61,8 @@ src_configure() {
 		$(use_enable nls gettext)
 		$(use_enable readline)
 		$(usex readline --disable-editline $(use_enable libedit editline))
+		$(use_enable static-libs static)
 	)
-	if use static-libs ; then
-		myconf+=( --enable-static )
-	else
-		myconf+=( --disable-static )
-	fi
 
 	econf "${myconf[@]}"
 
