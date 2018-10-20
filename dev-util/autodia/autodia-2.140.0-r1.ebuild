@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ inherit perl-app multilib
 
 DESCRIPTION="Parses source code, XML or data and produces an XML document in Dia format"
 HOMEPAGE="http://www.aarontrevena.co.uk/opensource/autodia/ ${HOMEPAGE}"
-SRC_URI+=" https://dev.gentoo.org/~tove/distfiles/${CATEGORY}/${MY_PN}-2.14-dbi.patch.gz"
+SRC_URI+=" mirror://gentoo/${MY_PN}-2.14-dbi.patch.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
