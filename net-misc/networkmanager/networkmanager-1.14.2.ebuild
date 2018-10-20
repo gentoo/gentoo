@@ -1,18 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME_ORG_MODULE="NetworkManager"
 GNOME2_LA_PUNT="yes"
 VALA_USE_DEPEND="vapigen"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 
 inherit bash-completion-r1 gnome2 linux-info multilib python-any-r1 systemd \
 	user readme.gentoo-r1 vala virtualx udev multilib-minimal
 
 DESCRIPTION="A set of co-operative tools that make networking simple and straightforward"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
-SRC_URI="${SRC_URI} https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0" # add subslot if libnm-util.so.2 or libnm-glib.so.4 bumps soname version
@@ -101,8 +100,6 @@ DEPEND="${COMMON_DEPEND}
 			dev-python/pygobject:3[${PYTHON_USEDEP}]')
 	)
 "
-
-PATCHES=( "${WORKDIR}"/patches/ ) # Selective patches from nm-1-12 branch, most importantly fix for NM_AVAILABLE_IN_1_12_2 macro, otherwise nm-applet and co fail to compile
 
 python_check_deps() {
 	if use introspection; then

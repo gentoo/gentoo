@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ IUSE="nls"
 
 DEPEND="
 	net-libs/libtirpc
-	net-libs/libnsl:0=
+	>=net-libs/libnsl-1.2.0:0=
 "
 RDEPEND=${DEPEND}
 # uses always libtirpc if present
