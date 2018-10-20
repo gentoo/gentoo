@@ -398,5 +398,6 @@ xvid - Add support for xvid.org's open-source mpeg-4 codec
 yahoo - Enable Yahoo Messenger IM protocol support
 yaz - Add in optional support for the Z39.50 Protocol for Information Retrieval (YAZ)
 zeroconf - Support for DNS Service Discovery (DNS-SD)
+zip - Enable support for ZIP archives
 zlib - Add support for zlib (de)compression
 zsh-completion - Enable zsh completion support
