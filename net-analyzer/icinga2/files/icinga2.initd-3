@@ -32,20 +32,10 @@ checkconfig() {
        eend 1
     fi
 
-    ICINGA2_USER=$($DAEMON variable get RunAsUser)
-    if [ $? != 0 ]; then
-        eerror "Could not fetch RunAsUser variable: '$ICINGA2_USER'."
-        return 1
-    fi
-    ICINGA2_GROUP=$($DAEMON variable get RunAsGroup)
-    if [ $? != 0 ]; then
-        eerror "Could not fetch RunAsGroup variable: '$ICINGA2_GROUP'."
-        return 1
-    fi
-
     checkpath -d -m 0750 -o $ICINGA2_USER:$ICINGA2_GROUP $ICINGA2_RUN_DIR
     checkpath -d -m 0750 -o $ICINGA2_USER:$ICINGA2_GROUP $ICINGA2_STATE_DIR
     checkpath -d -m 2750 -o $ICINGA2_USER:$ICINGA2_GROUP $ICINGA2_CMD_DIR
+    checkpath -d -m 0750 -o $ICINGA2_USER:$ICINGA2_GROUP $ICINGA2_CACHE_DIR
 
     if ! $DAEMON daemon -c $ICINGA2_CONFIG_FILE -C > $ICINGA2_STARTUP_LOG 2>&1; then
         eerror "Icinga2 detected configuration errors. Check '$ICINGA2_STARTUP_LOG' for details."
