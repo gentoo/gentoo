@@ -779,7 +779,7 @@ app-emulation/virtualbox-modules 5.2.14: Kernel Modules for Virtualbox
 app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.1: A replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-vanilla 3.0.2: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-vanilla 3.0.2 3.0.3: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170823: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r1: HP48 Calculator Emulator
 app-emulation/xen 4.10.1-r2: The Xen virtual machine monitor
@@ -10013,7 +10013,7 @@ sys-boot/syslinux 3.86 4.07 5.10 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLIN
 sys-boot/unetbootin 661: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/woeusb 3.1.5: Creates windows installer on usb media from an iso image
 sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster config file
-sys-cluster/ceph 10.2.3-r2 12.2.7: Ceph distributed filesystem
+sys-cluster/ceph 10.2.3-r2 12.2.7 12.2.8: Ceph distributed filesystem
 sys-cluster/cinder 11.1.1 12.0.3 13.0.0: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/cluster-glue 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman-lib 2.03.09-r1: A library for cluster management common to the various pieces of Cluster Suite
