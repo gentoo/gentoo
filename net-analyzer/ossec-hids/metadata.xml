@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gentoo@seichter.de</email>
+		<name>Ralph Seichter</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		OSSEC is a full platform to monitor and control your systems. It mixes
+		together all the aspects of HIDS (host-based intrusion detection), log
+		monitoring and SIM/SIEM together in a simple, powerful and open source
+		solution.
+		To determine which build target (agent, server, hybrid or local) best
+		suits your needs, please visit https://www.ossec.net/ and review the
+		documentation provided there.
+	</longdescription>
+	<use>
+		<flag name="agent">Build "agent" installation target (see package description)</flag>
+		<flag name="hybrid">Build "hybrid" installation target</flag>
+		<flag name="local">Build "local" installation target</flag>
+		<flag name="server">Build "server" installation target</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ossec/ossec-hids</remote-id>
+	</upstream>
+</pkgmetadata>
