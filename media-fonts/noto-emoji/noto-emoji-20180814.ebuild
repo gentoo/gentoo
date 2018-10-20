@@ -23,6 +23,7 @@ DEPEND="${PYTHON_DEPS}
 	dev-python/nototools
 	media-gfx/pngquant
 	x11-libs/cairo
+	|| ( media-gfx/imagemagick media-gfx/graphicsmagick )
 "
 RDEPEND=""
 
@@ -43,4 +44,9 @@ src_prepare() {
 	default
 	# Use system pngquant
 	rm -rf third_party/pngquant
+
+	# Fedora patch to allow graphicsmagick usage
+	if has_version media-gfx/graphicsmagick; then
+		eapply "${FILESDIR}/${PN}-use-gm.patch"
+	fi
 }
