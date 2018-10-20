@@ -1700,31 +1700,32 @@ app-xemacs/dired 1.17 1.20 1.22: Manage file systems
 app-xemacs/docbookide 0.08 0.10: DocBook editing support
 app-xemacs/easypg 1.03-r1 1.05: GnuPG interface for Emacs
 app-xemacs/ebuild-mode 1.44 1.45: Emacs modes for editing ebuilds and other Gentoo specific files
-app-xemacs/ecrypto 0.20 0.21: Crypto functionality in Emacs Lisp
+app-xemacs/ecb 1.25: Emacs source code browser
+app-xemacs/ecrypto 0.20 0.21 0.23: Crypto functionality in Emacs Lisp
 app-xemacs/ede 1.07: Emacs Development Environment
-app-xemacs/edebug 1.22: An Emacs Lisp debugger
-app-xemacs/edict 1.16 1.17: MULE: Lisp Interface to EDICT, Kanji Dictionary
-app-xemacs/ediff 1.68 1.81: Interface over GNU patch
-app-xemacs/edit-utils 2.39 2.43: Miscellaneous editor extensions, you probably need this
+app-xemacs/edebug 1.22 1.24: An Emacs Lisp debugger
+app-xemacs/edict 1.16 1.17 1.19: MULE: Lisp Interface to EDICT, Kanji Dictionary
+app-xemacs/ediff 1.68 1.81 1.84: Interface over GNU patch
+app-xemacs/edit-utils 2.39 2.43 2.58: Miscellaneous editor extensions, you probably need this
 app-xemacs/edt 1.13 1.14: DEC EDIT/EDT emulation
-app-xemacs/efs 1.33 1.34: Treat files on remote systems the same as local files
-app-xemacs/egg-its 1.27: MULE: Wnn (4.2 and 6) support. SJ3 support
-app-xemacs/eieio 1.05 1.07: Enhanced Implementation of Emacs Interpreted Objects
-app-xemacs/elib 1.11 1.13: Portable Emacs Lisp utilities library
-app-xemacs/emerge 1.11: Another interface over GNU patch
-app-xemacs/erc 0.21 0.23: ERC - The Emacs IRC Client
-app-xemacs/escreen 1.01: Multiple editing sessions withing a single frame (like screen)..
-app-xemacs/eshell 1.10 1.18: Command shell implemented entirely in Emacs Lisp
+app-xemacs/efs 1.33 1.34 1.37: Treat files on remote systems the same as local files
+app-xemacs/egg-its 1.27 1.29: MULE: Wnn (4.2 and 6) support. SJ3 support
+app-xemacs/eieio 1.05 1.07 1.10: Enhanced Implementation of Emacs Interpreted Objects
+app-xemacs/elib 1.11 1.13 1.15: Portable Emacs Lisp utilities library
+app-xemacs/emerge 1.11 1.13: Another interface over GNU patch
+app-xemacs/erc 0.21 0.23 0.26: ERC - The Emacs IRC Client
+app-xemacs/escreen 1.01 1.03: Multiple editing sessions withing a single frame (like screen)..
+app-xemacs/eshell 1.10 1.18 1.21: Command shell implemented entirely in Emacs Lisp
 app-xemacs/ess 1.03: ESS: Emacs Speaks Statistics
-app-xemacs/eudc 1.39 1.40: Emacs Unified Directory Client (LDAP, PH)
-app-xemacs/footnote 1.16: Footnoting in mail message editing modes
-app-xemacs/forms 1.15: Forms editing support (obsolete, use Widget instead)
-app-xemacs/fortran-modes 1.05: Fortran support
-app-xemacs/frame-icon 1.11: Set up mode-specific icons for each frame under XEmacs
-app-xemacs/fsf-compat 1.15 1.19: FSF Emacs compatibility files
-app-xemacs/games 1.20: Tetris, Sokoban, and Snake
-app-xemacs/general-docs 1.04 1.06: General XEmacs documentation
-app-xemacs/gnats 1.17: XEmacs bug reports
+app-xemacs/eudc 1.39 1.40 1.43: Emacs Unified Directory Client (LDAP, PH)
+app-xemacs/footnote 1.16 1.18: Footnoting in mail message editing modes
+app-xemacs/forms 1.15 1.17: Forms editing support (obsolete, use Widget instead)
+app-xemacs/fortran-modes 1.05 1.07: Fortran support
+app-xemacs/frame-icon 1.11 1.13: Set up mode-specific icons for each frame under XEmacs
+app-xemacs/fsf-compat 1.15 1.19 1.24: FSF Emacs compatibility files
+app-xemacs/games 1.20 1.23: Tetris, Sokoban, and Snake
+app-xemacs/general-docs 1.04 1.06 1.10: General XEmacs documentation
+app-xemacs/gnats 1.17 1.19: XEmacs bug reports
 app-xemacs/gnus 1.99: The Gnus Newsreader and Mailreader
 app-xemacs/haskell-mode 1.11: Haskell editing support
 app-xemacs/hm-html-menus 1.23 1.24: HTML editing
