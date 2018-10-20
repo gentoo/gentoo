@@ -1737,31 +1737,31 @@ app-xemacs/ilisp 1.34 1.36 1.38: Front-end for Inferior Lisp
 app-xemacs/jde 1.54: Integrated Development Environment for Java
 app-xemacs/latin-euro-standards 1.07 1.09 1.11: MULE: Support for the Latin{7,8,9,10} character sets & coding systems
 app-xemacs/latin-unity 1.20 1.23: MULE: find single ISO 8859 character set to encode a buffer
-app-xemacs/leim 1.24 1.31: MULE: Quail. All non-English and non-Japanese language support
-app-xemacs/locale 1.24 1.28: MULE: Localized menubars and localized splash screens
-app-xemacs/lookup 1.15: MULE: Dictionary support
-app-xemacs/mail-lib 1.83: Fundamental lisp files for providing email support
-app-xemacs/mailcrypt 2.14: Support for messaging encryption with PGP
-app-xemacs/mew 1.19: Messaging in an Emacs World
-app-xemacs/mh-e 1.29 1.32: Front end support for MH
-app-xemacs/mine 1.16: Minehunt Game
-app-xemacs/misc-games 1.19 1.22: Other amusements and diversions
-app-xemacs/mmm-mode 1.02 1.05: Multiple major modes in a single buffer
-app-xemacs/mule-base 1.49-r1 1.56: MULE: Basic Mule support, required for building with Mule
-app-xemacs/mule-ucs 1.14 1.18: MULE: Extended coding systems (including Unicode) for XEmacs
-app-xemacs/net-utils 1.52 1.56: Miscellaneous Networking Utilities
-app-xemacs/ocaml 0.06: Objective Caml editing support
-app-xemacs/oo-browser 1.04 1.05: The Multi-Language Object-Oriented Code Browser
-app-xemacs/os-utils 1.39 1.41: Miscellaneous O/S utilities
-app-xemacs/pc 1.28: PC style interface emulation
-app-xemacs/pcl-cvs 1.67 1.70: CVS frontend
-app-xemacs/pcomplete 1.04 1.06: Provides programmatic completion
-app-xemacs/perl-modes 1.09 1.14: Perl support
-app-xemacs/pgg 1.06 1.07: Emacs interface to various PGP implementations
-app-xemacs/prog-modes 2.10 2.20: Support for various programming languages
+app-xemacs/leim 1.24 1.31 1.39: MULE: Quail. All non-English and non-Japanese language support
+app-xemacs/locale 1.24 1.28 1.30: MULE: Localized menubars and localized splash screens
+app-xemacs/lookup 1.15 1.17: MULE: Dictionary support
+app-xemacs/mail-lib 1.83 1.84: Fundamental lisp files for providing email support
+app-xemacs/mailcrypt 2.14 2.16: Support for messaging encryption with PGP
+app-xemacs/mew 1.19 1.22: Messaging in an Emacs World
+app-xemacs/mh-e 1.29 1.32 1.35: Front end support for MH
+app-xemacs/mine 1.16 1.18: Minehunt Game
+app-xemacs/misc-games 1.19 1.22 1.25: Other amusements and diversions
+app-xemacs/mmm-mode 1.02 1.05 1.08: Multiple major modes in a single buffer
+app-xemacs/mule-base 1.49-r1 1.56 1.60: MULE: Basic Mule support, required for building with Mule
+app-xemacs/mule-ucs 1.14 1.18 1.21: MULE: Extended coding systems (including Unicode) for XEmacs
+app-xemacs/net-utils 1.52 1.56 1.61: Miscellaneous Networking Utilities
+app-xemacs/ocaml 0.06 0.10: Objective Caml editing support
+app-xemacs/oo-browser 1.04 1.05 1.07: The Multi-Language Object-Oriented Code Browser
+app-xemacs/os-utils 1.39 1.41 1.44: Miscellaneous O/S utilities
+app-xemacs/pc 1.28 1.30: PC style interface emulation
+app-xemacs/pcl-cvs 1.67 1.70 1.73: CVS frontend
+app-xemacs/pcomplete 1.04 1.06 1.08: Provides programmatic completion
+app-xemacs/perl-modes 1.09 1.14 1.16: Perl support
+app-xemacs/pgg 1.06 1.07 1.10: Emacs interface to various PGP implementations
+app-xemacs/prog-modes 2.10 2.20 2.33: Support for various programming languages
 app-xemacs/ps-print 1.11 1.12: Printing functions and utilities
 app-xemacs/psgml 1.44 1.45: Validated HTML/SGML editing
-app-xemacs/psgml-dtds 1.03: Deprecated collection of DTDs for psgml
+app-xemacs/psgml-dtds 1.03 1.05: Deprecated collection of DTDs for psgml
 app-xemacs/python-modes 1.08 1.14: Python support
 app-xemacs/re-builder 1.05: Interactive development tool for regular expressions
 app-xemacs/reftex 1.34: Emacs support for LaTeX cross-references, citations..
