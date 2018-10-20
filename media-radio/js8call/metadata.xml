@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>rich0@gentoo.org</email>
+	<name>Rich Freeman</name>
+</maintainer>
+<upstream>
+	<remote-id type="bitbucket">wsjtx</remote-id>
+</upstream>
+</pkgmetadata>

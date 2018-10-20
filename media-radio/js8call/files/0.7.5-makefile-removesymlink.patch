@@ -1,0 +1,20 @@
+--- a/CMakeLists.txt	2018-10-08 10:25:35.183735723 -0400
++++ a/CMakeLists.txt	2018-10-08 10:26:27.626449814 -0400
+@@ -1272,12 +1272,12 @@
+     #COMPONENT runtime
+     )
+ 
+-    execute_process(COMMAND ln -s /opt/js8call/bin/js8call ljs8call)
++#    execute_process(COMMAND ln -s /opt/js8call/bin/js8call ljs8call)
+ 
+-    install(FILES
+-        ${CMAKE_BINARY_DIR}/ljs8call DESTINATION /usr/bin/ RENAME js8call
+-        #COMPONENT runtime
+-    )
++#    install(FILES
++#        ${CMAKE_BINARY_DIR}/ljs8call DESTINATION /usr/bin/ RENAME js8call
++#        #COMPONENT runtime
++#    )
+ endif (NOT WIN32 AND NOT APPLE)
+ 
+ 
