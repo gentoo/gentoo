@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,6 +39,7 @@ src_prepare() {
 	default
 
 	xdg_environment_reset
+	export MAKEOPTS+=" -j1" #638782
 
 	# Don't use -Werror
 	sed -i -e 's/ -Werror//' {src,tests}/Makefile.{am,in} || die
