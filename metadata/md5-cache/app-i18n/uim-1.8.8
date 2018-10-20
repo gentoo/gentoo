@@ -4,7 +4,7 @@ DESCRIPTION=A multilingual input method framework
 EAPI=6
 HOMEPAGE=https://github.com/uim/uim
 IUSE=X +anthy canna curl eb emacs expat libffi gtk gtk2 l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW libedit libnotify libressl m17n-lib ncurses nls qt5 skk sqlite ssl static-libs xft
-KEYWORDS=amd64 ~arm hppa ~ppc ppc64 x86
+KEYWORDS=amd64 ~arm hppa ppc ppc64 x86
 LICENSE=BSD GPL-2 LGPL-2.1
 RDEPEND=!dev-scheme/sigscheme X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXext x11-libs/libXft x11-libs/libXrender x11-libs/libXt ) anthy? ( app-i18n/anthy ) canna? ( app-i18n/canna ) curl? ( net-misc/curl ) eb? ( dev-libs/eb ) emacs? ( virtual/emacs ) expat? ( dev-libs/expat ) libffi? ( virtual/libffi ) gtk? ( x11-libs/gtk+:3 ) gtk2? ( x11-libs/gtk+:2 ) libedit? ( dev-libs/libedit ) libnotify? ( x11-libs/libnotify ) m17n-lib? ( dev-libs/m17n-lib ) ncurses? ( sys-libs/ncurses:0= ) nls? ( virtual/libintl ) qt5? ( dev-qt/qtx11extras:5 ) skk? ( app-i18n/skk-jisyo ) sqlite? ( dev-db/sqlite:3 ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) X? ( media-fonts/font-sony-misc l10n_ja? ( || ( media-fonts/font-jis-misc media-fonts/intlfonts ) ) l10n_ko? ( || ( media-fonts/font-daewoo-misc media-fonts/intlfonts ) ) l10n_zh-CN? ( || ( media-fonts/font-isas-misc media-fonts/intlfonts ) ) l10n_zh-TW? ( media-fonts/intlfonts ) )
 REQUIRED_USE=gtk? ( X ) gtk2? ( X ) qt5? ( X ) xft? ( X )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/uim/uim/releases/download/1.8.8/uim-1.8.8.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=60d364ae6ca892d639795545d82844f1
+_md5_=51e3e4731f6b62562722301f161e2ace
