@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-
+EAPI=6
 WX_GTK_VER="3.0"
 
 inherit autotools wxwidgets
@@ -23,14 +22,18 @@ RDEPEND="
 	dev-libs/xerces-c[icu]
 	dev-libs/libpcre
 	!aqua? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
-	aqua? ( x11-libs/wxGTK:${WX_GTK_VER}[aqua] )"
+	aqua? ( x11-libs/wxGTK:${WX_GTK_VER}[aqua] )
+"
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	dev-util/intltool"
+	dev-util/intltool
+"
 
-DOCS=( AUTHORS ChangeLog README NEWS )
+PATCHES=( "${FILESDIR}"/${P}-no-automagic-enchant.patch )
 
 src_prepare() {
+	default
+
 	# bug #440744
 	sed -i  -e 's/ -Wall -g -fexceptions//g' configure.ac || die
 	eautoreconf
