@@ -1877,6 +1877,7 @@ dev-db/lmdb 0.9.18: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/m17n-db 1.7.0: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
 dev-db/mariadb 10.0.35-r2 10.1.34: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb-connector-c 3.0.6-r1: C client library for MariaDB/MySQL
 dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 3.2.17 3.4.10: A high-performance, open source, schema-free document-oriented database
 dev-db/myodbc 5.3.10-r2: ODBC driver for MySQL
@@ -7763,7 +7764,7 @@ media-libs/stops 0.3.0: Organ stops for aeolus by Fons Adriaensen <fons.adriaens
 media-libs/t1lib 5.1.2-r2: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.11.1-r1: A library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
-media-libs/tiff 3.9.7-r1 4.0.9-r3 4.0.9-r4: Tag Image File Format (TIFF) library
+media-libs/tiff 3.9.7-r1 4.0.9-r4: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with raster images
@@ -10966,7 +10967,7 @@ x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 5.3.16.3-r1: A fast, small and powerful file manager and graphical shell
 x11-misc/rofi 1.5.1: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
-x11-misc/screengrab 1.97: Qt application for getting screenshots
+x11-misc/screengrab 1.97 1.99: Qt application for getting screenshots
 x11-misc/sct 0.4: Set color temperature of the screen
 x11-misc/sddm 0.15.0 0.17.0-r4 0.18.0: Simple Desktop Display Manager
 x11-misc/shared-mime-info 1.9 1.10: The Shared MIME-info Database specification
@@ -11275,7 +11276,7 @@ x11-themes/obsidian-xcursors 1.0: A shiny and clean xcursor theme
 x11-themes/oxygen-gtk 1.4.1-r1 1.4.6-r1: Official GTK+:2 port of KDE's Oxygen widget style
 x11-themes/oxygen-molecule 3.2: Unified KDE and GTK+ theme
 x11-themes/pearlgrey-xcursors 1.0: A simple crispy white-grey xcursor theme
-x11-themes/qtcurve 1.9.0_rc1-r2: Widget styles for Qt and GTK2
+x11-themes/qtcurve 1.9.0_rc1-r2 1.9.0: Widget styles for Qt and GTK2
 x11-themes/redhat-artwork 5.0.8-r4: RedHat's Bluecurve theme for GTK2, KDE, GDM, Metacity and Nautilus
 x11-themes/shiki-colors 4.6: Mixes the elegance of a dark theme with the usability of a light theme
 x11-themes/silver-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors

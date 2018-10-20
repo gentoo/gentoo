@@ -3,10 +3,10 @@ DEPEND=>=dev-libs/libqtxdg-3.0.0 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 
 DESCRIPTION=Qt application for getting screenshots
 EAPI=6
 HOMEPAGE=https://lxqt.org/
-KEYWORDS=~amd64 ~arm ~arm64 x86
+KEYWORDS=amd64 ~arm ~arm64 x86
 LICENSE=GPL-2+ LGPL-2.1+
 RDEPEND=>=dev-libs/libqtxdg-3.0.0 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtnetwork:5 kde-frameworks/kwindowsystem:5[X] x11-libs/libxcb x11-libs/libX11
 SLOT=0
 SRC_URI=https://downloads.lxqt.org/downloads/screengrab/1.99/screengrab-1.99.tar.xz
 _eclasses_=cmake-utils	f0bc1c175684130a76ab6c17f575d820	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=385873cc37e82186746a4ad84476fdc3
+_md5_=3eb5795bcae2b9ebd3fdaf8a02fad401
