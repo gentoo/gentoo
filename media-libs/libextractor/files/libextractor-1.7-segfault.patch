@@ -1,0 +1,19 @@
+*** a/src/plugins/ole2_extractor.c~	2018-06-20 15:02:55.000000000 -0500
+--- b/src/plugins/ole2_extractor.c	2018-07-18 15:21:13.411495048 -0500
+***************
+*** 336,342 ****
+  	 (buf[1] != 0x0) ||
+  	 (0 != strncmp (&buf[2],
+  			"SfxDocumentInfo",
+! 			strlen ("SfxDocumentInfo"))) ||
+  	 (buf[0x11] != 0x0B) ||
+  	 (buf[0x13] != 0x00) || /* pw protected! */
+  	 (buf[0x12] != 0x00) )
+--- 336,342 ----
+  	 (buf[1] != 0x0) ||
+  	 (0 != strncmp (&buf[2],
+  			"SfxDocumentInfo",
+! 			strlen ("SfxDocumentInfo") + 1)) ||
+  	 (buf[0x11] != 0x0B) ||
+  	 (buf[0x13] != 0x00) || /* pw protected! */
+  	 (buf[0x12] != 0x00) )
