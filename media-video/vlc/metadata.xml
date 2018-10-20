@@ -37,7 +37,6 @@
 		<flag name="omxil">Enable OpenMAX Integration Layer codec module</flag>
 		<flag name="opencv">Enable OpenCV (computer vision) filter module</flag>
 		<flag name="optimisememory">Enable optimisation for memory rather than performance</flag>
-		<flag name="opus">Support opus decoding via libopus</flag>
 		<flag name="postproc">Enable image post-processing via libpostproc (part of FFmpeg)</flag>
 		<flag name="projectm">Enable the projectM visualization plugin</flag>
 		<flag name="rtsp">Enable real audio and RTSP modules</flag>

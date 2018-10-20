@@ -15,7 +15,6 @@
 		<flag name="hdhomerun">Enable support for the HDHomeRun device</flag>
 		<flag name="imagecache">Enable support for image caching</flag>
 		<flag name="iptv">Enable support for Internet Protocol TV</flag>
-		<flag name="opus">Enable transcoding with the Opus audio codec</flag>
 		<flag name="satip">Enable support for IP-based Satellite TV</flag>
 		<flag name="timeshift">Enable TimeShift support</flag>
 		<flag name="uriparser">Use <pkg>dev-libs/uriparser</pkg></flag>

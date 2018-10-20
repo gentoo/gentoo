@@ -159,6 +159,7 @@ jack - Add support for the JACK Audio Connection Kit
 java - Add support for Java
 javascript - Enable javascript support
 jbig - Enable jbig-kit support for tiff, Hylafax, ImageMagick, etc
+jemalloc - Use dev-libs/jemalloc for memory management
 jingle - Enable voice calls for jabber
 jit - Enable just-in-time compilation for improved performance. May prevent use of some PaX memory protection features in Gentoo Hardened.
 joystick - Add support for joysticks in all packages
@@ -249,6 +250,7 @@ openal - Add support for the Open Audio Library
 openexr - Support for the OpenEXR graphics file format
 opengl - Add support for OpenGL (3D graphics)
 openmp - Build support for the OpenMP (support parallel computing), requires >=sys-devel/gcc-4.2 built with USE="openmp"
+opus - Enable Opus audio codec support
 oracle - Enable Oracle Database support
 orc - Use dev-lang/orc for just-in-time optimization of array operations
 osc - Enable support for Open Sound Control
@@ -398,5 +400,6 @@ xvid - Add support for xvid.org's open-source mpeg-4 codec
 yahoo - Enable Yahoo Messenger IM protocol support
 yaz - Add in optional support for the Z39.50 Protocol for Information Retrieval (YAZ)
 zeroconf - Support for DNS Service Discovery (DNS-SD)
+zip - Enable support for ZIP archives
 zlib - Add support for zlib (de)compression
 zsh-completion - Enable zsh completion support

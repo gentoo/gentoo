@@ -56,9 +56,6 @@
 		<flag name="headless" restrict="&gt;=media-gfx/blender-2.77">
 			Build without graphical support (renderfarm, server mode only).
 		</flag>
-		<flag name="jemalloc" restrict="&gt;=media-gfx/blender-2.77">
-			Use <pkg>dev-libs/jemalloc</pkg> for memory allocation.
-		</flag>
 		<flag name="llvm" restrict="&gt;=media-gfx/blender-2.77">
 			Enable features depending on llvm.
 		</flag>

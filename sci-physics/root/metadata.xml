@@ -27,7 +27,6 @@
     <flag name="fortran">Compile included Fortran programs</flag>
     <flag name="gdml">Enable GDML writer and reader</flag>
     <flag name="http">Enable http server support including but not limited to fastcgi support</flag>
-    <flag name="jemalloc">Enable support for <pkg>dev-libs/jemalloc</pkg></flag>
     <flag name="libcxx">Build ROOT against <pkg>sys-libs/libcxx</pkg></flag>
     <flag name="memstat">Build memory statistics library, helps to detect memory leaks</flag>
     <flag name="minuit">Build ROOT's internal versions of minuit (fortran) and minuit2 (C++)</flag>

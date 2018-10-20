@@ -38,7 +38,6 @@
 		<flag name="ices">Icecast source output plugin</flag>
 		<flag name="mac">Support for Monkey's Audio (APE) format with help of <pkg>media-sound/mac</pkg></flag>
 		<flag name="ofa">Support for Open Fingerprint Architecture (OFA)</flag>
-		<flag name="opus">Enable Opus audio codec support</flag>
 		<flag name="phonehome">This client sends anonymous usage-statistics to the xmms2</flag>
 		<flag name="server">Build xmms2 player daemon (otherwise only clients are built)</flag>
 		<flag name="sid">Support for C64 SID</flag>

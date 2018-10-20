@@ -32,6 +32,5 @@ etc.
 <flag name="vdf">Enable Gothic/Gothic II VDF archive support</flag>
 <flag name="wad">Enable Doom WAD archive support</flag>
 <flag name="qpak">Enable Quake I/II QPAK archive support</flag>
-<flag name="zip">Enable ZIP archive support</flag>
 </use>
 </pkgmetadata>
