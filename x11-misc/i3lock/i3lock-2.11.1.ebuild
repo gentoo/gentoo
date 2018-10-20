@@ -33,6 +33,8 @@ PATCHES=(
 src_prepare() {
 	default
 
+	echo ${PV} > I3LOCK_VERSION
+
 	sed -i -e 's:login:system-auth:' pam/${PN} || die
 
 	eautoreconf
