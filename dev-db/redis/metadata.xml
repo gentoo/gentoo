@@ -8,9 +8,6 @@
     <email>robbat2@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name="jemalloc">
-      Use <pkg>dev-libs/jemalloc</pkg> for allocations.
-    </flag>
     <flag name="tcmalloc">
       Use tcmalloc from <pkg>dev-util/google-perftools</pkg> for allocations.
     </flag>

@@ -5,9 +5,6 @@
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
-	<use>
-		<flag name="jemalloc">Use dev-libs/jemalloc for allocations</flag>
-	</use>
 	<longdescription lang="en">
 	Varnish is an HTTP accelerator. An HTTP accelerator (often called Reverse Proxy)
 	is an application that stores (caches) documents that have been requested over

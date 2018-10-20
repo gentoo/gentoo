@@ -8,8 +8,6 @@
   <use>
     <flag name="cargo">Install cargo component</flag>
     <flag name="clippy">Install clippy component</flag>
-    <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> as the
-    standard memory allocator</flag>
     <flag name="rls">Install rls component</flag>
     <flag name="rustfmt">Install rustfmt component</flag>
     <flag name="wasm">Build support for the wasm32-unknown-unknown

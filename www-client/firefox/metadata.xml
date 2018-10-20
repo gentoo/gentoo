@@ -17,7 +17,6 @@
 	<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically
 		downloaded and kept up-to-date in user profiles</flag>
 	<flag name="hwaccel">Force-enable hardware-accelerated rendering (Mozilla bug 594876)</flag>
-	<flag name="jemalloc">Enable or disable jemalloc</flag>
 	<flag name="lto">Enable Link Time Optimization (LTO). Requires Gold linker when using GCC
 		or LDD linker when using Clang</flag>
 	<flag name="pgo">Add support for profile-guided optimization using gcc-4.5,

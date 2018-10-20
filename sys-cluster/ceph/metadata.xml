@@ -22,7 +22,6 @@
     <flag name="cephfs">Build support for cephfs, a POSIX compatible filesystem built on top of ceph</flag>
     <flag name="dpdk">Enable DPDK messaging</flag>
     <flag name="fuse">Build fuse client</flag>
-    <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations</flag>
     <flag name="libatomic">Use libatomic instead of builtin atomic operations</flag>
     <flag name="libaio">Use libaio as asynchronous input/output library</flag>
     <flag name="lttng">Add support for LTTng</flag>
