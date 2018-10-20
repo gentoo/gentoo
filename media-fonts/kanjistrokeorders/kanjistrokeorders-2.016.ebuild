@@ -12,7 +12,7 @@ SRC_URI="https://sites.google.com/site/nihilistorguk/Home/${MY_P}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 # Only installs fonts
