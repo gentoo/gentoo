@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,10 +22,15 @@ RDEPEND="dev-libs/glib:2
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/$P-ldadd.patch )
+
+MAKEOPTS+=" -j1"
+
 src_prepare() {
 	eapply_user
+	eapply -p0 ${PATCHES}
 	sed -i -e "s/docsdir/#docsdir/g" \
-		   -e "s/docs_/#docs_/g" Makefile.am || die
+		-e "s/docs_/#docs_/g" Makefile.am || die
 	eautoreconf
 }
 

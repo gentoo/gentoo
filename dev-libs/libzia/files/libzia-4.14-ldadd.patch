@@ -1,0 +1,16 @@
+# add local .libs directory to library search path during build of zsdltest
+--- src/Makefile.am.orig	2018-10-19 18:19:54.067784664 +0200
++++ src/Makefile.am	2018-10-19 18:20:26.419265774 +0200
+@@ -71,9 +71,10 @@
+ 
+ zsdltest_SOURCES = zsdltest.c
+ zsdltest_LDFLAGS = -lzia 
++zsdltest_LDADD = -L.libs
+ 
+-gpiotest_SOURCES = gpiotest.c
+-gpiotest_LDFLAGS = -lzia 
++#gpiotest_SOURCES = gpiotest.c
++#gpiotest_LDFLAGS = -lzia 
+ 
+ EXTRA_DIST = regcomp.c regex_internal.c regexec.c 
+ 
