@@ -138,7 +138,7 @@ app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer ad
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemrescuecd-x86 5.1.2 5.2.1 5.2.2: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.17: Log parsing and notification program
-app-admin/testdisk 7.1_pre20180322-r1: Checks and undeletes partitions + PhotoRec, signature based recovery tool
+app-admin/testdisk 7.1_pre20180322-r1 7.1_pre20180922: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13-r1: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
 app-admin/tripwire 2.4.3.7: Open Source File Integrity Checker and IDS
@@ -296,7 +296,7 @@ app-cdr/cuetools 1.4.1: Utilities to manipulate and convert cue and toc files
 app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO
 app-cdr/disc-cover 1.5.6-r1: Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
 app-cdr/dvd+rw-tools 7.1-r3: A set of tools for DVD+RW/-RW drives
-app-cdr/dvdisaster 0.72.4: Data-protection and recovery tool for DVDs
+app-cdr/dvdisaster 0.72.4 0.79.5: Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)
 app-cdr/extract-xiso 2.5: Tool for extracting and creating optimised Xbox ISO images
 app-cdr/gaffitter 0.6.0-r1: Genetic Algorithm File Fitter
 app-cdr/gcdemu 3.2.0: Gtk+ GUI for controlling cdemu-daemon
@@ -370,6 +370,7 @@ app-crypt/seahorse-sharing 3.8.0_p20151117: Daemon for PGP public key sharing us
 app-crypt/shash 0.2.6-r2: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signing-party 2.7: A collection of several tools related to OpenPGP
+app-crypt/ssdeep 2.14.1: Computes context triggered piecewise hashes (fuzzy hashes)
 app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
 app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.92: Software Token for Linux/UNIX
@@ -551,7 +552,7 @@ app-editors/emacs 18.59-r12 23.4-r18 24.5-r5 24.5-r7 25.3-r4 25.3-r6 26.1-r1 26.
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 1.9: A small and easy to use folding editor
-app-editors/focuswriter 1.6.10: A fullscreen and distraction-free word processor
+app-editors/focuswriter 1.6.10 1.6.13: A fullscreen and distraction-free word processor
 app-editors/fte 20051115-r3: Lightweight text-mode editor
 app-editors/gedit 3.22.1: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.22.0: Official plugins for gedit
@@ -1464,7 +1465,7 @@ app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
 app-text/stardict 3.0.6-r3: A international dictionary supporting fuzzy and glob style matching
-app-text/sword 1.7.4-r1: Library for Bible reading software
+app-text/sword 1.7.4-r1 1.8.1-r1: Library for Bible reading software
 app-text/t1utils 1.39: Type 1 Font utilities
 app-text/tabler 2-r1: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect
@@ -2924,8 +2925,8 @@ dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4 
 dev-lang/squirrel 3.1: A interpreted language mainly used for games
 dev-lang/swi-prolog 7.4.2: free, small, and standard compliant Prolog compiler
 dev-lang/swig 2.0.9 3.0.12: Simplified Wrapper and Interface Generator
-dev-lang/tcl 8.5.17 8.6.8: Tool Command Language
-dev-lang/tk 8.5.17 8.6.8: Tk Widget Set
+dev-lang/tcl 8.5.17 8.5.17-r1 8.6.8: Tool Command Language
+dev-lang/tk 8.5.17 8.5.17-r1 8.6.8: Tk Widget Set
 dev-lang/tuprolog 2.9.2: tuProlog is a light-weight Prolog for Internet applications and infrastructures
 dev-lang/vala 0.32.1 0.34.9 0.34.16 0.36.13: Compiler for the GObject type system
 dev-lang/xsb 3.6.0: XSB is a logic programming and deductive database system
@@ -6306,7 +6307,7 @@ dev-util/kyua 0.13-r2: Testing framework for infrastructure software
 dev-util/lcov 1.9-r1 1.11: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
 dev-util/lockrun 20120508-r1: Lockrun - runs cronjobs with overrun protection
-dev-util/ltrace 0.7.2: trace library calls made at runtime
+dev-util/ltrace 0.7.2 0.7.3_p4: trace library calls made at runtime
 dev-util/lttng-modules 2.7.1: LTTng Kernel Tracer Modules
 dev-util/lttng-tools 2.7.1: Linux Trace Toolkit - next generation
 dev-util/lttng-ust 2.7.1: Linux Trace Toolkit - UST library
@@ -9375,7 +9376,7 @@ sci-libs/colpack 1.0.6 1.0.10: C++ algorithms for specialized vertex coloring pr
 sci-libs/cqrlib 1.1.3: Utility library for quaternion arithmetic / rotation math (ANSI C implemented)
 sci-libs/cxsparse 3.1.2-r1: Extended sparse matrix package
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
-sci-libs/exodusii 6.02: Model developed to store and retrieve transient data for finite element analyses
+sci-libs/exodusii 6.02 6.09: Model developed to store and retrieve transient data for finite element analyses
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
 sci-libs/fftw 2.1.5-r9 3.3.6_p2: Fast C library for the Discrete Fourier Transform
 sci-libs/flann 1.9.1: Fast approximate nearest neighbor searches in high dimensional spaces
