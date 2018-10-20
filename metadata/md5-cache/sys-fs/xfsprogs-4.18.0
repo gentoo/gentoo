@@ -10,4 +10,4 @@ RDEPEND=>=sys-apps/util-linux-2.17.2 icu? ( dev-libs/icu:= ) readline? ( sys-lib
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-4.18.0.tar.xz
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=b93ba72c18ac127cec44f3d254f58c00
+_md5_=f29199c2005e6a81891edf39e5451a18
