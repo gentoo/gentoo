@@ -17,7 +17,9 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="isa pcmcia debug"
 
 COMMONDEPEND=""
-RDEPEND="${COMMONDEPEND}"
+RDEPEND="${COMMONDEPEND}
+	!<sci-libs/linux-gpib-4.2.0_rc1
+"
 DEPEND="${COMMONDEPEND}
 	virtual/pkgconfig"
 
