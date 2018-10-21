@@ -7287,7 +7287,6 @@ media-gfx/asymptote 2.41-r1: A vector graphics language that provides a framewor
 media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation in C
 media-gfx/aview 1.3.0_rc1-r1: An ASCII Image Viewer
 media-gfx/blender 2.72b-r4 2.79-r1: 3D Creation/Animation/Publishing System
-media-gfx/bootsplash-themes 20060913: A collection of Bootsplash themes
 media-gfx/cairosvg 1.0.22 2.0.3: CLI and library to export SVG to PDF, PostScript, and PNG
 media-gfx/cellwriter 1.3.5: Grid-entry natural handwriting input panel
 media-gfx/clockphoto 1.1: Adjusts photo timestamps based on clock photos.
@@ -7421,9 +7420,6 @@ media-gfx/scrot 0.8_p13: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
 media-gfx/shotwell 0.26.4 0.28.2: Open source photo manager for GNOME
 media-gfx/simple-scan 3.24.1: Simple document scanning utility
-media-gfx/splash-themes-gentoo 20101212-r1: A collection of Gentoo themes for splashutils
-media-gfx/splash-themes-livecd 2004.3 2005.0 2005.1 2006.0 2006.1 2007.0-r3: Gentoo theme for gensplash consoles
-media-gfx/splashutils 1.5.4.4-r8: Framebuffer splash utilities
 media-gfx/springgraph 88: Generate spring graphs from graphviz input files
 media-gfx/svg2rlg 0.3: python tool to convert SVG files to reportlab graphics
 media-gfx/sxiv 24: Simple (or small or suckless) X Image Viewer
@@ -8656,7 +8652,7 @@ net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.24.4: GNOME framework for accessing online accounts
 net-libs/gnutls 3.5.19: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
-net-libs/gsoap 2.8.51 2.8.63: A cross-platform open source C and C++ SDK for SOAP/XML Web services
+net-libs/gsoap 2.8.63: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.2: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.7.2: VNC viewer widget for GTK
 net-libs/gupnp 1.0.2: An object-oriented framework for creating UPnP devs and control points
@@ -10925,8 +10921,8 @@ x11-misc/imwheel 1.0.0_pre12: mouse tool for advanced features such as wheels an
 x11-misc/kdocker 5.0-r1: Helper to dock any application into the system tray
 x11-misc/kronometer 2.2.1: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
-x11-misc/lightdm 1.18.3-r1 1.26.0-r1: A lightweight display manager
-x11-misc/lightdm-gtk-greeter 2.0.1-r1 2.0.5-r1: LightDM GTK+ Greeter
+x11-misc/lightdm 1.26.0-r1: A lightweight display manager
+x11-misc/lightdm-gtk-greeter 2.0.1-r1: LightDM GTK+ Greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1: Mute/unmute and other macros for LINEAK
 x11-misc/lineak-xosdplugin 0.9.0-r1: Xosd plugin for LINEAK
 x11-misc/lineakd 0.9.0-r1 0.9.0-r2: Linux support for Easy Access and Internet Keyboards
