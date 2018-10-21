@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,8 +30,10 @@ COMMON_DEPEND="
 	$(add_frameworks_dep syntax-highlighting)
 	$(add_qt_dep qtconcurrent)
 	$(add_qt_dep qtgui)
+	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtprintsupport)
 	$(add_qt_dep qtserialport)
+	$(add_qt_dep qtsql)
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	>=sci-libs/gsl-1.15:=
