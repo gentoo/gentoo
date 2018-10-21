@@ -18,7 +18,7 @@ else
 	SRC_URI="https://sources.archlinux.org/other/pacman/${P}.tar.gz"
 	# Do *not* re-add ~x86!
 	# https://www.archlinux.org/news/phasing-out-i686-support/
-	KEYWORDS="~amd64"
+	KEYWORDS="-* ~amd64"
 
 	PATCHES+=( "${FILESDIR}"/${PN}-5.0.2-CVE-2016-5434.patch )
 fi
