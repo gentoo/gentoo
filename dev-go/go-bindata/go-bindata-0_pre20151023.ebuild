@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,6 +17,7 @@ SLOT="0/${PVR}"
 IUSE=""
 
 src_install() {
-	golang-build_src_install
+	GOBIN=${S}/bin \
+		golang-build_src_install
 	dobin bin/*
 }
