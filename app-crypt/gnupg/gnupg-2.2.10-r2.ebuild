@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="mirror://gnupg/gnupg/${MY_P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="bzip2 doc ldap nls readline selinux +smartcard ssl tofu tools usb wks-server"
+IUSE="bzip2 doc ldap nls readline selinux +smartcard ssl tofu tools usb user-socket wks-server"
 
 # Existence of executables is checked during configuration.
 DEPEND="!app-crypt/dirmngr
@@ -65,6 +65,11 @@ src_configure() {
 		myconf+=( --disable-symcryptrun )
 	else
 		myconf+=( --enable-symcryptrun )
+	fi
+
+	#bug 663142
+	if use user-socket; then
+		myconf+=( --enable-run-gnupg-user-socket )
 	fi
 
 	# glib fails and picks up clang's internal stdint.h causing weird errors
