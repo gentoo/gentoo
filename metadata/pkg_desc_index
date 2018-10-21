@@ -9372,7 +9372,7 @@ sci-libs/colpack 1.0.6 1.0.10: C++ algorithms for specialized vertex coloring pr
 sci-libs/cqrlib 1.1.3: Utility library for quaternion arithmetic / rotation math (ANSI C implemented)
 sci-libs/cxsparse 3.1.2-r1: Extended sparse matrix package
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
-sci-libs/exodusii 6.02 6.09: Model developed to store and retrieve transient data for finite element analyses
+sci-libs/exodusii 6.09: Model developed to store and retrieve transient data for finite element analyses
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
 sci-libs/fftw 2.1.5-r9 3.3.6_p2: Fast C library for the Discrete Fourier Transform
 sci-libs/flann 1.9.1: Fast approximate nearest neighbor searches in high dimensional spaces
