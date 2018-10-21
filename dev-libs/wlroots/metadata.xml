@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>speedjack95@gmail.com</email>
+		<name>Niccolò Scatena</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Pluggable, composable, unopinionated modules for building a Wayland
+		compositor; or about 40,000 lines of code you were going to write anyway.
+
+		wlroots implements a huge variety of Wayland compositor features and
+		implements them right, so you can focus on the features that make your
+		compositor unique. By using wlroots, you get high performance, excellent
+		hardware compatibility, broad support for many wayland interfaces, and
+		comfortable development tools - or any subset of these features you like,
+		because all of them work independently of one another and freely compose
+		with anything you want to implement yourself.
+
+		wlroots is developed under the direction of the <pkg>dev-libs/sway</pkg> project.
+	</longdescription>
+	<use>
+		<flag name="png">Enable examples that use libpng (PNG images)</flag>
+		<flag name="elogind">Enable support for rootless session via elogind</flag>
+		<flag name="xcb-icccm">Use xcb-icccm (from <pkg>x11-libs/xcb-util-wm</pkg>) util library for improved Xwayland introspection</flag>
+		<flag name="xcb-xkb">Use xcb-xkb (from <pkg>x11-libs/libxcb</pkg>) util library for improved keyboard handling on the X11 backend</flag>
+		<flag name="xwayland">Enable support for X11 applications</flag>
+		<flag name="x11-backend">Enable X11 backend</flag>
+		<flag name="rootston">Build the rootston example compositor</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">swaywm/wlroots</remote-id>
+		<maintainer status="active">
+			<email>sir@cmpwn.com</email>
+			<name>Drew DeVault</name>
+		</maintainer>
+		<bugs-to>https://github.com/swaywm/wlroots/issues</bugs-to>
+		<doc>https://github.com/swaywm/wlroots/wiki</doc>
+		<changelog>https://github.com/swaywm/wlroots/releases</changelog>
+	</upstream>
+</pkgmetadata>
