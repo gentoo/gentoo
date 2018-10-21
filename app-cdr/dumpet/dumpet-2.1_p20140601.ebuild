@@ -23,14 +23,13 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	sed -i Makefile \
-		-e "s/^CFLAGS:/#CFLAGS:/" \
 		-e "s/^install : all$/install :/" \
 		|| die
 	default
 }
 
 src_compile() {
-	emake dumpet
+	emake CFLAGS="${CFLAGS}" dumpet
 }
 
 pkg_setup(){
