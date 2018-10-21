@@ -34,7 +34,7 @@ RDEPEND="!net-dialup/cistronradius
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
 	pcap? ( net-libs/libpcap )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
 	firebird? ( dev-db/firebird )
 	pam? ( virtual/pam )

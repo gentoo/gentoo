@@ -25,6 +25,9 @@ IUSE="
 "
 RESTRICT="test firebird? ( bindist )"
 
+# NOTE: Temporary freeradius doesn't support linking with mariadb client
+#       libs also if code is compliant, will be available in the next release.
+#       (http://lists.freeradius.org/pipermail/freeradius-devel/2018-October/013228.html)
 RDEPEND="!net-dialup/cistronradius
 	!net-dialup/gnuradius
 	sys-devel/libtool
@@ -35,7 +38,7 @@ RDEPEND="!net-dialup/cistronradius
 	readline? ( sys-libs/readline:0= )
 	pcap? ( net-libs/libpcap )
 	memcached? ( dev-libs/libmemcached )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c )
 	postgres? ( dev-db/postgresql:= )
 	firebird? ( dev-db/firebird )
 	pam? ( virtual/pam )
