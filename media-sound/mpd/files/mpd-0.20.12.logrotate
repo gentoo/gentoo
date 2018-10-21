@@ -1,6 +1,0 @@
-/var/lib/mpd/log {
-	missingok
-	postrotate
-		/etc/init.d/mpd --quiet reload
-	endscript
-}
