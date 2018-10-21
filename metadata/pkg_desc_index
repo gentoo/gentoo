@@ -5834,7 +5834,7 @@ dev-ruby/crack 0.4.3-r1: Really simple JSON and XML parsing, ripped from Merb an
 dev-ruby/crass 1.0.3: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.2.6: Wrap existing ruby scripts to be run as a daemon
-dev-ruby/dalli 2.7.6: A high performance pure Ruby client for accessing memcached servers
+dev-ruby/dalli 2.7.6 2.7.8-r1: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/dbf 3.1.1: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/deep_merge 1.2.1: A simple set of utility functions for Hash
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
@@ -6539,6 +6539,7 @@ gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.24.2: Log messages and event viewer
 gnome-extra/gnome-power-manager 3.24.0: GNOME power management service
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
+gnome-extra/gnome-shell-extension-gsconnect 12: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.24.3: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 21: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.24.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
