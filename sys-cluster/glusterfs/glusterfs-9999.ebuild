@@ -20,7 +20,28 @@ HOMEPAGE="https://www.gluster.org/"
 
 LICENSE="|| ( GPL-2 LGPL-3+ )"
 SLOT="0"
-IUSE="bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband ipv6 +libtirpc qemu-block rsyslog static-libs +syslog systemtap test +tiering vim-syntax +xml"
+IUSE="
+	bd-xlator
+	crypt-xlator
+	debug
+	emacs
+	+fuse
+	+georeplication
+	glupy
+	infiniband
+	ipv6
+	libressl
+	+libtirpc
+	qemu-block
+	rsyslog
+	static-libs
+	+syslog
+	systemtap
+	test
+	+tiering
+	vim-syntax
+	+xml
+"
 
 REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} )
 	glupy? ( ${PYTHON_REQUIRED_USE} )
@@ -44,7 +65,8 @@ RDEPEND="bd-xlator? ( sys-fs/lvm2 )
 	xml? ( dev-libs/libxml2 )
 	sys-libs/readline:=
 	dev-libs/libaio
-	dev-libs/openssl:=[-bindist]
+	!libressl? ( dev-libs/openssl:=[-bindist] )
+	libressl? ( dev-libs/libressl:= )
 	dev-libs/userspace-rcu:=
 	net-libs/rpcsvc-proto
 	sys-apps/util-linux"
