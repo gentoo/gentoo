@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite"
-HASH="93d895a6c74c64aaa9d4cdc4d58bd6e6"
+HASH="7e56defb7152c6cd7140e9ea98df4ce7"
 inherit python-r1 gnome2-utils meson xdg-utils
 
 DESCRIPTION="Modern music player for GNOME"
@@ -32,11 +32,12 @@ DEPEND="${CDEPEND}
 	dev-util/intltool
 "
 RDEPEND="${CDEPEND}
-	app-crypt/libsecret
+	app-crypt/libsecret[introspection]
 	dev-libs/totem-pl-parser
 	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	dev-python/dbus-python
 	>=dev-python/pylast-1.0.0[${PYTHON_USEDEP}]
+	media-libs/gst-plugins-base:1.0[introspection]
 "
 
 RESTRICT="test"

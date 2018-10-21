@@ -40,6 +40,8 @@ all_ruby_prepare() {
 
 	# Avoid spec that is too fragile in relation to ENV
 	sed -i -e '/outputs to $stdout when OAUTH_DEBUG=true/a skip "fragile ENV stubbing"' spec/oauth2/client_spec.rb || die
+
+	sed -i -e 's/git ls-files -z/find . -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
 each_ruby_test() {
