@@ -12,8 +12,8 @@ HOMEPAGE="https://www.kde.org/applications/education/labplot/"
 [[ ${KDE_BUILD_TYPE} != live ]] && SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS=""
-IUSE="cantor fftw fits hdf5 libcerf netcdf root"
+KEYWORDS="~amd64 ~x86"
+IUSE="cantor fftw fits hdf5 libcerf netcdf"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep karchive)
@@ -21,8 +21,10 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
+	$(add_frameworks_dep kdelibs4support)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
+	$(add_frameworks_dep kio)
 	$(add_frameworks_dep knewstuff)
 	$(add_frameworks_dep ktextwidgets)
 	$(add_frameworks_dep kwidgetsaddons)
@@ -37,20 +39,12 @@ COMMON_DEPEND="
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	>=sci-libs/gsl-1.15:=
-	cantor? (
-		$(add_frameworks_dep kparts)
-		$(add_frameworks_dep kservice)
-		$(add_kdeapps_dep cantor)
-	)
+	cantor? ( $(add_kdeapps_dep cantor) )
 	fftw? ( sci-libs/fftw:3.0= )
 	fits? ( sci-libs/cfitsio:= )
 	hdf5? ( sci-libs/hdf5:= )
 	libcerf? ( sci-libs/libcerf )
 	netcdf? ( sci-libs/netcdf:= )
-	root? (
-		app-arch/lz4
-		sys-libs/zlib
-	)
 "
 DEPEND="${COMMON_DEPEND}
 	sys-devel/bison
@@ -69,8 +63,7 @@ src_configure() {
 		-DENABLE_HDF5=$(usex hdf5)
 		-DENABLE_LIBCERF=$(usex libcerf)
 		-DENABLE_NETCDF=$(usex netcdf)
-		-DENABLE_ROOT=$(usex root)
-		-DENABLE_TEST=$(usex test)
+		-DENABLE_TESTS=$(usex test)
 	)
 
 	kde5_src_configure
