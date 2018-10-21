@@ -31,7 +31,7 @@ CDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	spice? ( net-misc/spice-gtk[gtk3] )
-	ssh? ( net-libs/libssh[sftp]
+	ssh? ( net-libs/libssh:0=[sftp]
 		x11-libs/vte:2.91 )
 	telepathy? ( net-libs/telepathy-glib )
 	vnc? ( net-libs/libvncserver )
