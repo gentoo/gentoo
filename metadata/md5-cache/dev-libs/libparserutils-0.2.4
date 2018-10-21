@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=test? ( dev-lang/perl ) virtual/pkgconfig
+DESCRIPTION=library for building efficient parsers, written in C
+EAPI=6
+HOMEPAGE=http://www.netsurf-browser.org/projects/libparserutils/
+IUSE=iconv test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64 debug static-libs
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~m68k-mint
+LICENSE=MIT
+SLOT=0/0.2.4
+SRC_URI=http://download.netsurf-browser.org/libs/releases/libparserutils-0.2.4-src.tar.gz http://download.netsurf-browser.org/libs/releases/buildsystem-1.7.tar.gz -> netsurf-buildsystem-1.7.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	netsurf	f98e0347dc6382dca0027e44bdb21876	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=18f5860b9145f95da47c6a61963e8aac
