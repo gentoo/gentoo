@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Build written by Andrew John Hughes (gnu_andrew@member.fsf.org)
@@ -6,7 +6,7 @@
 EAPI="6"
 SLOT="8"
 
-inherit check-reqs gnome2-utils java-pkg-2 java-vm-2 multiprocessing pax-utils prefix versionator
+inherit check-reqs flag-o-matic gnome2-utils java-pkg-2 java-vm-2 multiprocessing pax-utils prefix versionator
 
 ICEDTEA_VER=$(get_version_component_range 1-3)
 ICEDTEA_BRANCH=$(get_version_component_range 1-2)
@@ -224,6 +224,9 @@ src_configure() {
 	# In-tree JIT ports are available for amd64, arm, arm64, ppc64 (be&le), SPARC and x86.
 	if { use amd64 || use arm || use arm64 || use ppc64 || use sparc || use x86; }; then
 		hotspot_port="yes"
+
+		# Work around stack alignment issue, bug #647954.
+		use x86 && append-flags -mincoming-stack-boundary=2
 	fi
 
 	# Always use HotSpot as the primary VM if available. #389521 #368669 #357633 ...
