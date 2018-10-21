@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-NETSURF_BUILDSYSTEM=buildsystem-1.5
+NETSURF_BUILDSYSTEM=buildsystem-1.7
 inherit netsurf
 
 DESCRIPTION="implementation of the W3C DOM, written in C"
@@ -28,6 +28,12 @@ DEPEND="${RDEPEND}
 		dev-perl/Switch )"
 
 REQUIRED_USE="test? ( xml )"
+
+src_prepare() {
+	# working around broken netsurf eclass
+	default
+	multilib_copy_sources
+}
 
 src_configure() {
 	netsurf_src_configure

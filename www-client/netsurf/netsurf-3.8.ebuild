@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 NETSURF_COMPONENT_TYPE=binary
-NETSURF_BUILDSYSTEM=buildsystem-1.5
+NETSURF_BUILDSYSTEM=buildsystem-1.7
 inherit netsurf
 
 DESCRIPTION="a free, open source web browser"
@@ -16,7 +16,7 @@ SRC_URI="http://download.netsurf-browser.org/netsurf/releases/source/${P}-src.ta
 LICENSE="GPL-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc"
-IUSE="+bmp +duktape fbcon truetype +gif gstreamer gtk gtk2 gtk3 +javascript +jpeg +mng
+IUSE="+bmp +duktape fbcon truetype +gif gtk gtk2 gtk3 +javascript +jpeg +mng
 	pdf-writer +png +psl +rosprite +svg +svgtiny +webp fbcon_frontend_able
 	fbcon_frontend_linux fbcon_frontend_sdl fbcon_frontend_vnc fbcon_frontend_x"
 
@@ -26,26 +26,25 @@ REQUIRED_USE="|| ( fbcon gtk gtk2 gtk3 )
 		fbcon_frontend_vnc fbcon_frontend_x ) )
 	duktape? ( javascript )"
 
-RDEPEND=">=dev-libs/libnsutils-0.0.2[${MULTILIB_USEDEP}]
-	>=dev-libs/libutf8proc-1.1.6-r1[${MULTILIB_USEDEP}]
+RDEPEND=">=dev-libs/libnsutils-0.0.5[${MULTILIB_USEDEP}]
+	>=dev-libs/libutf8proc-2.2[${MULTILIB_USEDEP}]
 	dev-libs/libxml2:2[${MULTILIB_USEDEP}]
 	net-misc/curl[${MULTILIB_USEDEP}]
-	>=dev-libs/libcss-0.6.0[${MULTILIB_USEDEP}]
-	>=net-libs/libhubbub-0.3.1-r1[${MULTILIB_USEDEP}]
-	>=net-libs/libdom-0.3.0[${MULTILIB_USEDEP}]
-	bmp? ( >=media-libs/libnsbmp-0.1.2-r1[${MULTILIB_USEDEP}] )
-	fbcon? ( >=dev-libs/libnsfb-0.1.3-r1[${MULTILIB_USEDEP}]
+	>=dev-libs/libcss-0.8[${MULTILIB_USEDEP}]
+	>=net-libs/libhubbub-0.3[${MULTILIB_USEDEP}]
+	>=net-libs/libdom-0.3[${MULTILIB_USEDEP}]
+	bmp? ( >=media-libs/libnsbmp-0.1[${MULTILIB_USEDEP}] )
+	fbcon? ( >=dev-libs/libnsfb-0.2[${MULTILIB_USEDEP}]
 		truetype? ( media-fonts/dejavu
 			>=media-libs/freetype-2.5.0.1[${MULTILIB_USEDEP}] )
 	)
-	gif? ( >=media-libs/libnsgif-0.1.2-r1[${MULTILIB_USEDEP}] )
+	gif? ( >=media-libs/libnsgif-0.1[${MULTILIB_USEDEP}] )
 	gtk2? ( dev-libs/glib:2[${MULTILIB_USEDEP}]
 		x11-libs/gtk+:2[${MULTILIB_USEDEP}] )
 	gtk3? ( dev-libs/glib:2[${MULTILIB_USEDEP}]
 		x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
 	gtk? ( dev-libs/glib:2[${MULTILIB_USEDEP}]
 		x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
-	gstreamer? ( media-libs/gstreamer:0.10[${MULTILIB_USEDEP}] )
 	javascript? ( >=dev-libs/nsgenbind-0.3[${MULTILIB_USEDEP}]
 		!duktape? ( dev-lang/spidermonkey:0= ) )
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
@@ -61,19 +60,23 @@ DEPEND="${RDEPEND}
 	dev-libs/check[${MULTILIB_USEDEP}]
 	dev-perl/HTML-Parser"
 
-PATCHES=( "${FILESDIR}"/${PN}-3.6-CFLAGS.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.8-CFLAGS.patch
 	"${FILESDIR}"/${PN}-3.6-conditionally-include-image-headers.patch
-	"${FILESDIR}"/${PN}-3.6-pdf-writer.patch
-	"${FILESDIR}"/${PN}-3.6-gstreamer.patch )
-DOCS=( fb.modes README Docs/USING-Framebuffer
-	Docs/ideas/{cache,css-engine,render-library}.txt )
+	"${FILESDIR}"/${PN}-3.8-pdf-writer.patch
+)
+
+DOCS=( fb.modes README docs/using-framebuffer.md
+	docs/ideas/{cache,css-engine,render-library}.txt )
 
 src_prepare() {
-	rm -r frontends/{amiga,atari,beos,cocoa,monkey,riscos,windows} || die
+	# working around broken netsurf eclass
+	default
+	rm -r frontends/{amiga,atari,beos,monkey,riscos,windows} || die
 
 	mv "${WORKDIR}"/netsurf-fb.modes-example fb.modes
 
-	netsurf_src_prepare
+	multilib_copy_sources
 }
 
 src_configure() {
@@ -115,12 +118,12 @@ src_compile() {
 	fi
 	if use gtk2 ; then
 		netsurf_makeconf=( "${netsurf_makeconf[@]/TARGET=*/TARGET=gtk}" )
-		netsurf_makeconf=( "${netsurf_makeconf[@]/NETSURF_USE_VIDEO=*/NETSURF_USE_VIDEO=$(usex gstreamer YES NO)}" )
+		netsurf_makeconf=( "${netsurf_makeconf[@]/NETSURF_USE_VIDEO=*/NETSURF_USE_VIDEO=NO}" )
 		netsurf_src_compile
 	fi
 	if use gtk3 || use gtk ; then
 		netsurf_makeconf=( "${netsurf_makeconf[@]/TARGET=*/TARGET=gtk3}" )
-		netsurf_makeconf=( "${netsurf_makeconf[@]/NETSURF_USE_VIDEO=*/NETSURF_USE_VIDEO=$(usex gstreamer YES NO)}" )
+		netsurf_makeconf=( "${netsurf_makeconf[@]/NETSURF_USE_VIDEO=*/NETSURF_USE_VIDEO=NO}" )
 		netsurf_src_compile
 	fi
 }
@@ -134,7 +137,7 @@ src_install() {
 		netsurf_makeconf=( "${netsurf_makeconf[@]/NETSURF_USE_VIDEO=*/NETSURF_USE_VIDEO=NO}" )
 		netsurf_src_install
 		elog "framebuffer binary has been installed as netsurf-fb"
-		make_desktop_entry "${EROOT}"usr/bin/netsurf-fb NetSurf-framebuffer netsurf "Network;WebBrowser"
+		make_desktop_entry "${EROOT}"/usr/bin/netsurf-fb NetSurf-framebuffer netsurf "Network;WebBrowser"
 		elog "In order to setup the framebuffer console, netsurf needs an /etc/fb.modes"
 		elog "You can use an example from /usr/share/doc/${PF}/fb.modes.* (bug 427092)."
 		elog "Please make /dev/input/mice readable to the account using netsurf-fb."
@@ -142,17 +145,17 @@ src_install() {
 	fi
 	if use gtk2 ; then
 		netsurf_makeconf=( "${netsurf_makeconf[@]/TARGET=*/TARGET=gtk}" )
-		netsurf_makeconf=( "${netsurf_makeconf[@]/NETSURF_USE_VIDEO=*/NETSURF_USE_VIDEO=$(usex gstreamer YES NO)}" )
+		netsurf_makeconf=( "${netsurf_makeconf[@]/NETSURF_USE_VIDEO=*/NETSURF_USE_VIDEO=NO}" )
 		netsurf_src_install
 		elog "netsurf gtk2 version has been installed as netsurf-gtk"
-		make_desktop_entry "${EROOT}"usr/bin/netsurf-gtk NetSurf-gtk netsurf "Network;WebBrowser"
+		make_desktop_entry "${EROOT}"/usr/bin/netsurf-gtk NetSurf-gtk netsurf "Network;WebBrowser"
 	fi
 	if use gtk3 || use gtk ; then
 		netsurf_makeconf=( "${netsurf_makeconf[@]/TARGET=*/TARGET=gtk3}" )
-		netsurf_makeconf=( "${netsurf_makeconf[@]/NETSURF_USE_VIDEO=*/NETSURF_USE_VIDEO=$(usex gstreamer YES NO)}" )
+		netsurf_makeconf=( "${netsurf_makeconf[@]/NETSURF_USE_VIDEO=*/NETSURF_USE_VIDEO=NO}" )
 		netsurf_src_install
 		elog "netsurf gtk3 version has been installed as netsurf-gtk3"
-		make_desktop_entry "${EROOT}"usr/bin/netsurf-gtk3 NetSurf-gtk3 netsurf "Network;WebBrowser"
+		make_desktop_entry "${EROOT}"/usr/bin/netsurf-gtk3 NetSurf-gtk3 netsurf "Network;WebBrowser"
 	fi
 
 	insinto /usr/share/pixmaps

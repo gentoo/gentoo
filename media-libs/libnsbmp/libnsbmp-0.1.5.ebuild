@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-NETSURF_BUILDSYSTEM=buildsystem-1.5
+NETSURF_BUILDSYSTEM=buildsystem-1.7
 inherit netsurf
 
 DESCRIPTION="decoding library for BMP and ICO image file formats, written in C"
@@ -16,3 +16,9 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="virtual/pkgconfig"
+
+src_prepare() {
+	# working around broken netsurf eclass
+	default
+	multilib_copy_sources
+}

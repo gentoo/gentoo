@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-NETSURF_BUILDSYSTEM=buildsystem-1.6
+NETSURF_BUILDSYSTEM=buildsystem-1.7
 inherit netsurf
 
 DESCRIPTION="decoding library for the GIF image file format, written in C"
@@ -18,8 +18,10 @@ RDEPEND=""
 DEPEND="virtual/pkgconfig"
 
 src_prepare() {
+	# working around broken netsurf eclass
+	default
 	sed -e '1i#pragma GCC diagnostic ignored "-Wimplicit-fallthrough"' \
 		-i src/lzw.c || die
 
-	netsurf_src_prepare
+	multilib_copy_sources
 }

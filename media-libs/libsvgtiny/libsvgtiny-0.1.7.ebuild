@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-NETSURF_BUILDSYSTEM=buildsystem-1.6
+NETSURF_BUILDSYSTEM=buildsystem-1.7
 inherit netsurf
 
 DESCRIPTION="framebuffer abstraction library, written in C"
@@ -21,3 +21,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.1.3-parallel-build.patch )
+
+src_prepare() {
+	# working around broken netsurf eclass
+	default
+	multilib_copy_sources
+}

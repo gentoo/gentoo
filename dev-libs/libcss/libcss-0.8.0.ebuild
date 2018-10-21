@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-NETSURF_BUILDSYSTEM=buildsystem-1.5
+NETSURF_BUILDSYSTEM=buildsystem-1.7
 inherit netsurf
 
 DESCRIPTION="CSS parser and selection engine, written in C"
@@ -21,10 +21,12 @@ DEPEND="${RDEPEND}
 	test? ( dev-lang/perl )"
 
 src_prepare() {
+	# working around broken netsurf eclass
+	default
 	sed -e '1i#pragma GCC diagnostic ignored "-Wimplicit-fallthrough"' \
-		-i src/parse/parse.c || die
+		-i src/parse/parse.c src/select/arena_hash.h || die
 	sed -e '1i#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"' \
 		-i src/parse/parse.c src/select/computed.c || die
 
-	netsurf_src_prepare
+	multilib_copy_sources
 }
