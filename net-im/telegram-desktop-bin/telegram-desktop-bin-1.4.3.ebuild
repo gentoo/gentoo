@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,7 +44,7 @@ src_install() {
 
 	dodir /etc/${PN}
 	insinto /etc/${PN}/
-	doins ${FILESDIR}/fonts.conf
+	doins "${FILESDIR}"/fonts.conf
 
 	domenu "${WORKDIR}/tdesktop-${PV}"/lib/xdg/telegramdesktop.desktop
 }
