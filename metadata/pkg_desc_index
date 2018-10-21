@@ -8506,8 +8506,8 @@ net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/Postgr
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 4.1.24: An authoritative only, high performance, open source name server
 net-dns/openresolv 3.9.0: A framework for managing DNS information
-net-dns/pdns 4.0.5: The PowerDNS Daemon
-net-dns/pdns-recursor 4.0.8: The PowerDNS Recursor
+net-dns/pdns 4.0.5 4.1.4: The PowerDNS Daemon
+net-dns/pdns-recursor 4.0.8 4.1.4: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.5: A wrapper for DNS name resolving or DNS faking
@@ -8675,6 +8675,7 @@ net-libs/libgfbgraph 0.2.3-r1: A GObject library for Facebook Graph API
 net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS/Atom/Pie feeds
 net-libs/libgsasl 1.8.0-r1: The GNU SASL library
 net-libs/libgssglue 0.4: exports a gssapi interface which calls other random gssapi libraries
+net-libs/libhubbub 0.3.3: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32-r1: A small library to interface to the Ident protocol server
 net-libs/libircclient 1.8: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.18.0: iscsi client library and utilities
