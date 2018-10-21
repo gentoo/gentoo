@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,9 +28,9 @@ RELEASE_VER=${PV}
 GCC_BOOTSTRAP_VER=20180511
 
 # Gentoo patchset
-PATCH_VER=7
+PATCH_VER=8
 
-SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
+SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
 IUSE="audit caps cet compile-locales doc gd hardened headers-only +multiarch multilib nscd profile selinux suid systemtap test vanilla"
@@ -752,7 +752,7 @@ src_unpack() {
 	touch locale/C-translit.h || die #185476 #218003
 
 	cd "${WORKDIR}" || die
-	unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.bz2
+	unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.xz
 }
 
 src_prepare() {
