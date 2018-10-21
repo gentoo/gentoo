@@ -19,5 +19,8 @@
     <flag name="rest">
       Include support for sending and receiving HTTP requests
     </flag>
+    <flag name="redis">
+      Include support for Redis database
+    </flag>
   </use>
 </pkgmetadata>
