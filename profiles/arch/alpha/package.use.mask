@@ -1,11 +1,6 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Tobias Klausmann <klausman@gentoo.org> (15 Oct 2018)
-# Mask USE=test for jq since it would require valgrind, which likely never get
-# support on Alpha. Also see bug 583422.
-app-misc/jq test
-
 # Thomas Deutschmann <whissi@gentoo.org> (15 Oct 2018)
 # Requires app-text/mecab which isn't yet keyworded
 # on alpha, bug 668674
