@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare pretend test unpack
+DEPEND=nscd? ( selinux? ( audit? ( sys-process/audit ) caps? ( sys-libs/libcap ) ) ) suid? ( caps? ( sys-libs/libcap ) ) selinux? ( sys-libs/libselinux ) systemtap? ( dev-util/systemtap ) >=app-misc/pax-utils-0.1.10 sys-devel/bison !<sys-apps/sandbox-1.6 !<sys-apps/portage-2.1.2 !<sys-devel/bison-2.7 !<sys-devel/make-4 doc? ( sys-apps/texinfo ) test? ( >=net-dns/libidn2-2.0.5 ) >=sys-devel/binutils-2.24 >=sys-devel/gcc-4.9 virtual/os-headers sys-devel/gnuconfig virtual/pkgconfig
+DESCRIPTION=GNU libc C library
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/libc/
+IUSE=audit caps cet compile-locales doc gd hardened headers-only +multiarch multilib nscd profile selinux suid systemtap test vanilla
+LICENSE=LGPL-2.1+ BSD HPND ISC inner-net rc PCRE
+PDEPEND=!vanilla? ( sys-libs/timezone-data )
+RDEPEND=nscd? ( selinux? ( audit? ( sys-process/audit ) caps? ( sys-libs/libcap ) ) ) suid? ( caps? ( sys-libs/libcap ) ) selinux? ( sys-libs/libselinux ) systemtap? ( dev-util/systemtap ) >=net-dns/libidn2-2.0.5 sys-apps/gentoo-functions !sys-kernel/ps3-sources !sys-libs/nss-db vanilla? ( !sys-libs/timezone-data )
+RESTRICT=strip
+SLOT=2.2
+SRC_URI=mirror://gnu/glibc/glibc-2.28.tar.xz https://dev.gentoo.org/~dilfridge/distfiles/glibc-2.28-patches-2.tar.xz multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-20180511.tar.xz )
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	e51c7882b7b721e54e684f7eb143cbfe	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
+_md5_=230c8a628b5659759d095dac38d133bb
