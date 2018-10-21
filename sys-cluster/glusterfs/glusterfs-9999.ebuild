@@ -122,10 +122,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# --without-ipv6-default and --with-libtirpc don't do what you they
-	# do. Chewi has given up fighting with upstream about this.
-	# https://bugzilla.redhat.com/show_bug.cgi?id=1553926
-
 	econf \
 		--disable-dependency-tracking \
 		--disable-silent-rules \
