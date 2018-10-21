@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,6 +29,9 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# https://github.com/systemd/systemd/pull/2838 , bug #604614
 	"${FILESDIR}/${P}-sysmacros.patch"
+
+	# https://github.com/systemd/systemd/issues/8099, bug #650314
+	"${FILESDIR}"/${P}-glibc-2.27.patch
 )
 
 src_prepare() {
