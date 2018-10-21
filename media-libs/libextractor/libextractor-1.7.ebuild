@@ -58,11 +58,6 @@ RDEPEND="${DEPEND}
 	!sci-biology/glimmer
 "
 
-PATCHES=(
-	# From Fedora
-	"${FILESDIR}"/${P}-segfault.patch
-)
-
 src_prepare() {
 	default
 
