@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,7 +32,7 @@ IUSE="lm_sensors networkmanager +pcre selinux +suid"
 
 CDEPEND="
 	${PYTHON_DEPS}
-	net-misc/networkmanager:=
+	networkmanager? ( net-misc/networkmanager:= )
 	dev-libs/glib:=
 	dev-libs/elfutils:=
 	sys-libs/zlib:=
