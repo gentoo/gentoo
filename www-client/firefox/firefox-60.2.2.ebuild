@@ -27,7 +27,7 @@ if [[ ${MOZ_ESR} == 1 ]]; then
 fi
 
 # Patch version
-PATCH="${PN}-60.0-patches-03"
+PATCH="${PN}-60.0-patches-04"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
 MOZCONFIG_OPTIONAL_WIFI=1
@@ -126,11 +126,6 @@ src_unpack() {
 src_prepare() {
 	rm "${WORKDIR}/firefox/2005_ffmpeg4.patch"
 	eapply "${WORKDIR}/firefox"
-
-	eapply "${FILESDIR}"/bug_1461221.patch
-	eapply "${FILESDIR}"/${PN}-60.0-blessings-TERM.patch # 654316
-	eapply "${FILESDIR}"/${PN}-60.0-missing-errno_h-in-SandboxOpenedFiles_cpp.patch
-	eapply "${FILESDIR}"/${PN}-60.0-update-cc-to-honor-CC.patch
 
 	# Enable gnomebreakpad
 	if use debug ; then
