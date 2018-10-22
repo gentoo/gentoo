@@ -1,3 +1,4 @@
 slotmove dev-libs/girara 3 0
 move dev-python/CommonMark dev-python/commonmark
 move dev-libs/mini-xml dev-libs/mxml
+move x11-misc/xembedsniproxy kde-plasma/xembed-sni-proxy
