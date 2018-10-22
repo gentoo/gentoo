@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=av? ( media-libs/libvpx:= media-libs/opus ) daemon? ( dev-libs/libconfig ) >=dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal] virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.9.6 virtual/pkgconfig
+DESCRIPTION=Encrypted P2P, messaging, and audio/video calling platform
+EAPI=6
+HOMEPAGE=https://tox.chat
+IUSE=+av daemon ipv6 no-log log-trace log-debug log-info log-warn +log-error static-libs test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3+
+RDEPEND=av? ( media-libs/libvpx:= media-libs/opus ) daemon? ( dev-libs/libconfig ) >=dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal]
+REQUIRED_USE=^^ ( no-log log-trace log-debug log-info log-warn log-error )
+SLOT=0/0.2
+SRC_URI=https://github.com/TokTok/c-toxcore/archive/v0.2.8.tar.gz -> c-toxcore-0.2.8.tar.gz
+_eclasses_=cmake-utils	f0bc1c175684130a76ab6c17f575d820	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=807914875bb79f672255f9aba1322be4
