@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	>=media-libs/alsa-lib-1.0.19:=
 	media-libs/fontconfig:=
 	media-libs/freetype:=
-	>=media-libs/harfbuzz-1.8.8:=[icu(-)]
+	>=media-libs/harfbuzz-2.0.0:0=[icu(-)]
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	system-libvpx? ( media-libs/libvpx:=[postproc,svc] )
@@ -137,12 +137,13 @@ GTK+ icon theme.
 "
 
 PATCHES=(
-	"${FILESDIR}/chromium-compiler-r5.patch"
-	"${FILESDIR}/chromium-widevine-r2.patch"
+	"${FILESDIR}/chromium-compiler-r6.patch"
+	"${FILESDIR}/chromium-widevine-r3.patch"
 	"${FILESDIR}/chromium-webrtc-r0.patch"
 	"${FILESDIR}/chromium-memcpy-r0.patch"
 	"${FILESDIR}/chromium-math.h-r0.patch"
 	"${FILESDIR}/chromium-stdint.patch"
+	"${FILESDIR}/chromium-harfbuzz-r0.patch"
 )
 
 pre_build_checks() {
@@ -267,6 +268,7 @@ src_prepare() {
 		third_party/iccjpeg
 		third_party/inspector_protocol
 		third_party/jinja2
+		third_party/jsoncpp
 		third_party/jstemplate
 		third_party/khronos
 		third_party/leveldatabase
@@ -322,6 +324,7 @@ src_prepare() {
 		third_party/skia/third_party/vulkan
 		third_party/smhasher
 		third_party/spirv-headers
+		third_party/SPIRV-Tools
 		third_party/spirv-tools-angle
 		third_party/sqlite
 		third_party/swiftshader
