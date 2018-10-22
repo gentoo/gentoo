@@ -11136,8 +11136,8 @@ x11-plugins/wmcpuload 1.1.0_pre5: a dockapp for monitoring CPU usage with a LCD 
 x11-plugins/wmcube 1.0.2: a dockapp cpu monitor with spinning 3d objects
 x11-plugins/wmdots 0.2_beta-r1: multishape 3d rotating dots
 x11-plugins/wmdrawer 0.10.5-r2 0.10.5-r3: dockapp which provides a drawer (retractable button bar) to launch applications
-x11-plugins/wmfire 1.2.4-r2: Load monitoring dockapp displaying dancing flame
-x11-plugins/wmfishtime 1.24-r1 1.24-r2: A fun clock applet for your desktop featuring swimming fish
+x11-plugins/wmfire 1.2.4-r3: Load monitoring dockapp displaying dancing flame
+x11-plugins/wmfishtime 1.24-r1 1.24-r2 1.24-r3: A fun clock applet for your desktop featuring swimming fish
 x11-plugins/wmfortune 0.241-r1: a dockapp showing fortune-mod messages
 x11-plugins/wmfrog 0.2.0-r1: a weather application, it shows the weather in a graphical way
 x11-plugins/wmfsm 0.36: dockapp for monitoring filesystem usage
