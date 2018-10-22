@@ -8147,6 +8147,7 @@ media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them 
 media-sound/rosegarden 17.04: MIDI and audio sequencer and notation editor
 media-sound/rplay 3.3.2-r1: Play sounds on remote Unix systems, without sending audio data over the network
 media-sound/saydate 0.3.0: A Linux shell program that talks the date and system uptime
+media-sound/sc2mpd 1.1.5: Implements the SongCast protocol for use by upmpdcli and mpd
 media-sound/schismtracker 20180810: Free implementation of Impulse Tracker, a tool used to create high quality music
 media-sound/scmpc 0.4.1: a client for MPD which submits your tracks to last.fm
 media-sound/seq24 0.9.2-r1 0.9.3: Seq24 is a loop based MIDI sequencer with focus on live performances
@@ -8182,6 +8183,7 @@ media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnost
 media-sound/twolame 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.16a-r1: Minimalistic Murmur (Mumble server)
+media-sound/upmpdcli 1.2.16: UPnP Media Renderer front-end for MPD, the Music Player Daemon
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
 media-sound/ventrilo-server-bin 3.0.3: The Ventrilo Voice Communication Server
 media-sound/vimpc 0.09.1: An ncurses based mpd client with vi like key bindings
@@ -8725,6 +8727,7 @@ net-libs/libtirpc 1.0.2-r1: Transport Independent RPC library (SunRPC replacemen
 net-libs/libtorrent 0.13.7-r1: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.1.5-r1 1.1.9: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libupnp 1.6.21: An Portable Open Source UPnP Development Kit
+net-libs/libupnpp 0.16.1: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
 net-libs/libwebsockets 2.1.1: canonical libwebsockets.org websocket library
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
