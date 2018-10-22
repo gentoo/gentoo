@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -157,6 +157,6 @@ pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog
 		elog "You may want to consider installing the following optional packages."
-		optfeature "resolvconf support" net-dns/openresolv
+		optfeature "resolvconf support" virtual/resolvconf
 	fi
 }
