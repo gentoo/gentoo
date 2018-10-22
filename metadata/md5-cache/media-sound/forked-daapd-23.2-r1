@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install prepare setup
-DEPEND=dev-java/antlr:3.5 dev-db/sqlite:3 dev-libs/antlr-c:0 dev-libs/confuse dev-libs/libevent dev-libs/libgcrypt:0 dev-libs/libunistring dev-libs/mini-xml[threads] media-libs/alsa-lib net-dns/avahi[dbus] virtual/ffmpeg flac? ( media-libs/flac ) itunes? ( app-pda/libplist ) lastfm? ( net-misc/curl ) musepack? ( media-libs/taglib ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-java/antlr:3.5 dev-db/sqlite:3 dev-libs/antlr-c:0 dev-libs/confuse dev-libs/libevent dev-libs/libgcrypt:0 dev-libs/libunistring dev-libs/mxml[threads] media-libs/alsa-lib net-dns/avahi[dbus] virtual/ffmpeg flac? ( media-libs/flac ) itunes? ( app-pda/libplist ) lastfm? ( net-misc/curl ) musepack? ( media-libs/taglib ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A DAAP (iTunes) media server
 EAPI=5
 HOMEPAGE=https://github.com/ejurgensen/forked-daapd
 IUSE=alsa flac itunes lastfm mpd musepack
 KEYWORDS=~amd64
 LICENSE=GPL-2
-RDEPEND=dev-db/sqlite:3 dev-libs/antlr-c:0 dev-libs/confuse dev-libs/libevent dev-libs/libgcrypt:0 dev-libs/libunistring dev-libs/mini-xml[threads] media-libs/alsa-lib net-dns/avahi[dbus] virtual/ffmpeg flac? ( media-libs/flac ) itunes? ( app-pda/libplist ) lastfm? ( net-misc/curl ) musepack? ( media-libs/taglib )
+RDEPEND=dev-db/sqlite:3 dev-libs/antlr-c:0 dev-libs/confuse dev-libs/libevent dev-libs/libgcrypt:0 dev-libs/libunistring dev-libs/mxml[threads] media-libs/alsa-lib net-dns/avahi[dbus] virtual/ffmpeg flac? ( media-libs/flac ) itunes? ( app-pda/libplist ) lastfm? ( net-misc/curl ) musepack? ( media-libs/taglib )
 SLOT=0
 SRC_URI=https://github.com/ejurgensen/forked-daapd/archive/23.2.tar.gz -> forked-daapd-23.2.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=90ede060637e5308cde522059e1b738f
+_md5_=c118b729128c194f2077613be870dcd7
