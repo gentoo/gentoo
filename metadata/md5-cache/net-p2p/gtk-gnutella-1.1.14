@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile configure install prepare
+DEPEND=sys-libs/binutils-libs:= dev-libs/glib:2 sys-libs/zlib gtk? ( >=x11-libs/gtk+-2.2.1:2 ) dbus? ( >=sys-apps/dbus-0.35.2 ) ssl? ( >=net-libs/gnutls-2.2.5 ) nls? ( >=sys-devel/gettext-0.11.5 )
+DESCRIPTION=A GTK+ Gnutella client
+EAPI=7
+HOMEPAGE=http://gtk-gnutella.sourceforge.net/
+IUSE=nls dbus ssl +gtk
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=sys-libs/binutils-libs:= dev-libs/glib:2 sys-libs/zlib gtk? ( >=x11-libs/gtk+-2.2.1:2 ) dbus? ( >=sys-apps/dbus-0.35.2 ) ssl? ( >=net-libs/gnutls-2.2.5 ) nls? ( >=sys-devel/gettext-0.11.5 )
+SLOT=0
+SRC_URI=mirror://sourceforge/gtk-gnutella/gtk-gnutella-1.1.14.tar.xz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8
+_md5_=dc3c4883638872dbd958d9baef14da84
