@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/swaywm/sway/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~arm64 ~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+gdk-pixbuf +swaybar +swaybg swaygrab swaylock +swaymsg systemd +tray wallpapers zsh-completion"
 
 REQUIRED_USE="tray? ( swaybar )"
@@ -76,8 +76,7 @@ pkg_postinst() {
 	fi
 	if use tray
 	then
-		optfeature "experimental xembed tray icons support" \
-			x11-misc/xembedsniproxy
+		optfeature "experimental xembed tray icons support" kde-plasma/xembed-sni-proxy
 	fi
 
 	optfeature "X11 applications support" dev-libs/wlc[xwayland] x11-base/xorg-server[wayland]
