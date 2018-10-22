@@ -157,6 +157,6 @@ pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog
 		elog "You may want to consider installing the following optional packages."
-		optfeature "resolvconf support" net-dns/openresolv
+		optfeature "resolvconf support" virtual/resolvconf
 	fi
 }
