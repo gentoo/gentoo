@@ -14,7 +14,7 @@ This provides absolute paths for headers and libraries.
 +else
 +LIBDIR=lib
 +endif
-+ICINCHOME=$(ORACLE_HOME)/sdk/include
++ICINCHOME=$(ORACLE_HOME)/include
 +ICLIBHOME=$(ORACLE_HOME)/$(LIBDIR)
  ICLIBPATH=-L$(ICLIBHOME)
  THREADLIBS=-lthread
