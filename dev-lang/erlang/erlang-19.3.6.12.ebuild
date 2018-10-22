@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,7 +39,8 @@ DEPEND="${RDEPEND}
 	sctp? ( net-misc/lksctp-tools )
 	sys-libs/zlib
 	tk? ( dev-lang/tk )
-	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]	virtual/glu )
+	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
+		virtual/glu )
 "
 
 S="${WORKDIR}/otp-OTP-${PV}"
@@ -170,7 +171,7 @@ src_install() {
 	[[ -z "${ERL_ERTS_VER}" ]] && die "Couldn't determine erts version"
 	[[ -z "${ERL_INTERFACE_VER}" ]] && die "Couldn't determine interface version"
 
-	emake INSTALL_PREFIX="${ED}" install
+	emake INSTALL_PREFIX="${D}" install
 
 	if use doc ; then
 		local DOCS=( "AUTHORS" "HOWTO"/* "README.md" "CONTRIBUTING.md" "${WORKDIR}"/doc/. "${WORKDIR}"/lib/. "${WORKDIR}"/erts-* )
