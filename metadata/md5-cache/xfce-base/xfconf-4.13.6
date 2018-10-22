@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install test
-DEPEND=>=dev-libs/glib-2.30:= >=xfce-base/libxfce4util-4.10:= perl? ( dev-lang/perl:=[-build(-)] dev-perl/glib-perl ) !<xfce-base/xfce4-panel-4.13.1 !<xfce-base/xfce4-settings-4.13.1 dev-util/gdbus-codegen dev-util/intltool virtual/pkgconfig sys-devel/gettext perl? ( dev-perl/ExtUtils-Depends dev-perl/ExtUtils-PkgConfig ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEPEND=>=dev-libs/glib-2.30:= >=xfce-base/libxfce4util-4.10:= perl? ( dev-lang/perl:=[-build(-)] dev-perl/glib-perl ) !<xfce-base/xfce4-panel-4.13.1 !<xfce-base/xfce4-settings-4.13.1 dev-util/gdbus-codegen dev-util/glib-utils dev-util/intltool virtual/pkgconfig sys-devel/gettext perl? ( dev-perl/ExtUtils-Depends dev-perl/ExtUtils-PkgConfig ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=A configuration management system for Xfce
 EAPI=6
 HOMEPAGE=https://www.xfce.org/projects/
@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/glib-2.30:= >=xfce-base/libxfce4util-4.10:= perl? ( dev-lang/
 SLOT=0/3
 SRC_URI=https://archive.xfce.org/src/xfce/xfconf/4.13/xfconf-4.13.6.tar.bz2
 _eclasses_=virtualx	401b718cc14d43a5a7fbe062c4851ba5	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=31fa095b32676c98a10fe02bde43a1dc
+_md5_=3ee6636cf8f7263914b2a394de2c2e8b

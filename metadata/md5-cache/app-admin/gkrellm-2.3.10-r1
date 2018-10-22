@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install prepare setup
+DEFINED_PHASES=compile install prepare pretend setup
 DEPEND=dev-libs/glib:2 hddtemp? ( app-admin/hddtemp ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) lm_sensors? ( sys-apps/lm_sensors ) nls? ( virtual/libintl ) ntlm? ( net-libs/libntlm ) X? ( x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/pango ) virtual/pkgconfig nls? ( sys-devel/gettext ) virtual/pkgconfig
 DESCRIPTION=Single process stack of various system monitors
 EAPI=6
@@ -10,4 +10,4 @@ RDEPEND=dev-libs/glib:2 hddtemp? ( app-admin/hddtemp ) ssl? ( gnutls? ( net-libs
 SLOT=2
 SRC_URI=http://gkrellm.srcbox.net/gkrellm-2.3.10.tar.bz2
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=88836a8c84c477c11ab903dcb6872702
+_md5_=8b023c82e94eafe4a410aab5370b37b5
