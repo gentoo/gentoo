@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -43,7 +43,7 @@ CDEPEND="
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
 	opencl? ( virtual/opencl )
 	fftw? ( sci-libs/fftw:3.0 )
-	hwloc? ( sys-apps/hwloc )
+	hwloc? ( <sys-apps/hwloc-2 )
 	lapack? ( virtual/lapack )
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )
