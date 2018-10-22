@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,5 +32,6 @@ RDEPEND="
 	${CDEPEND}
 "
 
-S="${WORKDIR}/plasma-workspace-${PV}/xembed-sni-proxy"
+S="${WORKDIR}/plasma-workspace-${PV}/${PN}"
+
 PATCHES=( "${FILESDIR}/${PN}-5.10.3-Standalone-build.patch" )
