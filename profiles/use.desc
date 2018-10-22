@@ -204,7 +204,6 @@ modplug - Add libmodplug support for playing SoundTracker-style music files
 modules - Build the kernel modules
 mono - Build Mono bindings to support dotnet type stuff
 motif - Add support for the Motif toolkit
-mozilla - Add support for the Mozilla web-browser
 mp3 - Add support for reading mp3 files
 mp4 - Support for MP4 container format
 mpeg - Add libmpeg3 support to various packages
