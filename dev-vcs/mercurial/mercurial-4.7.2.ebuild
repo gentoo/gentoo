@@ -93,7 +93,8 @@ python_install_all() {
 	doins "${FILESDIR}/cacerts.rc"
 
 	# symlink to system zstd
-	dosym ../zstd.so $(python_get_sitedir)/${PN}/zstd.so
+	local sitedir=$(python_get_sitedir)
+	dosym ../zstd.so "${sitedir#${EPREFIX}}"/${PN}/zstd.so
 }
 
 src_test() {
