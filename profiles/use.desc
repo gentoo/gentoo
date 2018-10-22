@@ -35,7 +35,6 @@ bluetooth - Enable Bluetooth Support
 bootstrap - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during original system bootstrapping [make stage2]
 boundschecking - Add the bounds checking patch by Haj Ten Brugge, this will DISABLE the hardened PIE+SSP patches
 branding - Enable Gentoo specific branding
-bsf - Enable support for Apache Bean Scripting Framework (dev-java/bsf)
 build - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used for creating build images and the first half of bootstrapping [make stage1]
 bzip2 - Use the bzlib compression library
 cairo - Enable support for the cairo graphics library
