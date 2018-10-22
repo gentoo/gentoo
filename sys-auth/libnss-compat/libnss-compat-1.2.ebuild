@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,7 @@ RDEPEND="
 	>net-libs/libnsl-0:0=[${MULTILIB_USEDEP}]
 	net-libs/libtirpc:0=[${MULTILIB_USEDEP}]
 	!<sys-libs/glibc-2.26
+	!>=sys-libs/glibc-2.27
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
