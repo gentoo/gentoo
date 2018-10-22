@@ -30,7 +30,7 @@ SLOT="0"
 IUSE="accessibility +aio alsa bluetooth bzip2 capstone +caps +curl debug
 	+fdt glusterfs gnutls gtk infiniband iscsi +jpeg kernel_linux
 	kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs +png
-	pulseaudio python rbd sasl +seccomp sdl sdl2 selinux smartcard snappy
+	pulseaudio python rbd sasl +seccomp sdl selinux smartcard snappy
 	spice ssh static static-user systemtap tci test usb usbredir vde
 	+vhost-net virgl virtfs +vnc vte xattr xen xfs"
 
@@ -55,7 +55,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	qemu_softmmu_targets_mips64el? ( fdt )
 	qemu_softmmu_targets_ppc? ( fdt )
 	qemu_softmmu_targets_ppc64? ( fdt )
-	sdl2? ( sdl )
 	static? ( static-user !alsa !bluetooth !gtk !opengl !pulseaudio !snappy )
 	virtfs? ( xattr )
 	vte? ( gtk )"
@@ -127,14 +126,8 @@ SOFTMMU_TOOLS_DEPEND="
 	rbd? ( sys-cluster/ceph[static-libs(+)] )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)] )
 	sdl? (
-		!sdl2? (
-			media-libs/libsdl[X]
-			>=media-libs/libsdl-1.2.11[static-libs(+)]
-		)
-		sdl2? (
-			media-libs/libsdl2[X]
-			media-libs/libsdl2[static-libs(+)]
-		)
+		media-libs/libsdl2[X]
+		media-libs/libsdl2[static-libs(+)]
 	)
 	seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
 	smartcard? ( >=app-emulation/libcacard-2.5.0[static-libs(+)] )
@@ -488,7 +481,7 @@ qemu_src_configure() {
 		conf_opts+=(
 			--audio-drv-list="${audio_opts}"
 		)
-		use sdl && conf_opts+=( --with-sdlabi=$(usex sdl2 2.0 1.2) )
+		use sdl && conf_opts+=( --with-sdlabi=2.0 )
 	fi
 
 	case ${buildtype} in
