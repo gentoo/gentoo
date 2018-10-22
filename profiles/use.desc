@@ -26,7 +26,6 @@ audit - Enable support for Linux audit subsystem using sys-process/audit
 avahi - Add avahi/Zeroconf support
 ayatana - Build in support for Ayatana notification using the libindicate or libappindicator plugin
 bash-completion - Enable bash-completion support
-bcmath - Add support for libbcmath
 berkdb - Add support for sys-libs/db (Berkeley DB for MySQL)
 bidi - Enable bidirectional language support
 big-endian - Big-endian toolchain support
@@ -58,7 +57,6 @@ cracklib - Support for cracklib strong password checking
 crypt - Add support for encryption -- using mcrypt or gpg where applicable
 cscope - Enable cscope interface -- in vim for example
 css - Enable reading of encrypted DVDs
-ctype - Enable ctype functions
 cups - Add support for CUPS (Common Unix Printing System)
 curl - Add support for client-side URL transfer library
 custom-cflags - Build with user-specified CFLAGS (unsupported)
@@ -96,7 +94,6 @@ fftw - Use FFTW library for computing Fourier transforms
 filecaps - Use Linux file capabilities to control privilege rather than set*id (this is orthogonal to USE=caps which uses capabilities at runtime e.g. libcap)
 firebird - Add support for the Firebird relational database
 flac - Add support for FLAC: Free Lossless Audio Codec
-flatfile - Add dbm support for flat files
 fltk - Add support for the Fast Light Toolkit gui interface
 fontconfig - Support for configuring and customizing font access via media-libs/fontconfig
 foomaticdb - Add support for the foomatic printing driver database
@@ -147,7 +144,6 @@ imagemagick - Enable optional support for the ImageMagick or GraphicsMagick imag
 imap - Add support for IMAP (Internet Mail Application Protocol)
 imlib - Add support for imlib, an image loading and rendering library
 infiniband - Enable Infiniband RDMA transport support
-inifile - Add dbm support for .ini files
 inotify - Enable inotify filesystem monitoring support
 introspection - Add support for GObject based introspection
 iodbc - Add support for iODBC library
@@ -259,7 +255,6 @@ oss - Add support for OSS (Open Sound System)
 pam - Add support for PAM (Pluggable Authentication Modules) - DANGEROUS to arbitrarily flip
 pch - Enable precompiled header support for faster compilation at the expense of disk space and memory (>=sys-devel/gcc-3.4 only)
 pcmcia - Add support for PCMCIA slots/devices found on laptop computers
-pcntl - Add support for process creation functions
 pcre - Add support for Perl Compatible Regular Expressions
 pda - Add support for portable devices
 pdf - Add general support for PDF (Portable Document Format), this replaces the pdflib and cpdflib flags
@@ -303,9 +298,7 @@ seccomp - Enable seccomp (secure computing mode) to perform system call filterin
 selinux - !!internal use only!! Security Enhanced Linux support, this must be set by the selinux profile or breakage will occur
 semantic-desktop - Cross-KDE support for semantic search and information retrieval
 session - Add persistent session support
-sharedmem - Add support for shared memory use
 shorten - Add support for the shorten audio compressor
-simplexml - Support for SimpleXML
 skey - Enable S/Key (Single use password) authentication support
 slang - Add support for the slang text display library (it's like ncurses, but different)
 slp - Add Service Locator Protocol support
@@ -331,11 +324,9 @@ suid - Enable setuid root program, with potential security risks
 svg - Add support for SVG (Scalable Vector Graphics)
 svga - Add support for SVGAlib (graphics library)
 sybase - Add support for the Sybase SQL Database Server
-sybase-ct - Add support for Sybase-CT
 symlink - Force kernel ebuilds to automatically update the /usr/src/linux symlink
 syslog - Enable support for syslog
 systemd - Enable use of systemd-specific libraries and features like socket activation or session tracking
-sysvipc - Support for System V-compatible inter-process communication
 szip - Use the szip compression library
 taglib - Enable tagging support with taglib
 tcl - Add support the Tcl language
@@ -348,7 +339,6 @@ tidy - Add support for HTML Tidy
 tiff - Add support for the TIFF image format
 timidity - Build with Timidity++ (MIDI sequencer) support
 tk - Add support for Tk GUI toolkit
-tokenizer - Add support for the PHP file parser
 truetype - Add support for FreeType and/or FreeType2 fonts
 uclibc - Enable uclibc specific patches and build or link uclibc
 udev - Enable virtual/udev integration (device discovery, power and storage device support, etc)
@@ -372,7 +362,6 @@ vnc - Enable VNC (remote desktop viewer) support
 vorbis - Add support for the OggVorbis audio codec
 wavpack - Add support for wavpack audio compression tools
 wayland - Enable dev-libs/wayland backend
-wddx - Add support for Web Distributed Data eXchange
 webkit - Add support for the WebKit HTML rendering/layout engine
 webp - Add support for the WebP image format
 wifi - Enable wireless network functions
