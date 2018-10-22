@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (22 Oct 2018)
+# Breaks dev-libs/gobject-introspection and its consumers
+# See #669278
+=xfce-base/xfconf-4.13.6
+
 # Pacho Ramos <pacho@gentoo.org> (21 Oct 2018)
 # Lots of pending bugs for years, this needs a dedicated maintainer that
 # fixes them: bug #354157, #354639, #398075, #398077, #417375, #499654,
