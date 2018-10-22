@@ -227,10 +227,10 @@ src_compile() {
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
 			cmake-utils_src_compile
 		# not 100% necessary for rel ebuilds as available from website
-		if use doc; then
-			BUILD_DIR="${WORKDIR}/${P}_${x}"\
-				cmake-utils_src_compile manual
-		fi
+		#if use doc; then
+		#	BUILD_DIR="${WORKDIR}/${P}_${x}"\
+		#		cmake-utils_src_compile manual
+		#fi
 		use mpi || continue
 		einfo "Compiling for ${x} precision with mpi"
 		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi"\
@@ -249,9 +249,9 @@ src_install() {
 	for x in ${GMX_DIRS}; do
 		BUILD_DIR="${WORKDIR}/${P}_${x}" \
 			cmake-utils_src_install
-		if use doc; then
-			newdoc "${WORKDIR}/${P}_${x}"/docs/manual/gromacs.pdf "${PN}-manual-${PV}.pdf"
-		fi
+		#if use doc; then
+		#	newdoc "${WORKDIR}/${P}_${x}"/docs/manual/gromacs.pdf "${PN}-manual-${PV}.pdf"
+		#fi
 		use mpi || continue
 		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi" \
 			cmake-utils_src_install

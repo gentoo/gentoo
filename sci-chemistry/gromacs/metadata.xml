@@ -22,6 +22,8 @@
 		<flag name="hwloc">Enable HWLoc lib support</flag>
 		<flag name="tng">Enable new trajectory format - tng</flag>
 		<flag name="make-symlinks">Create symbolic links for pre-5.0 binary names</flag>
+		<flag name="lmfit">Use external <pkg>sci-libs/lmfit</pkg></flag>
+		<flag name="gmxapi">Add support for gmxapi library</flag>
 		<!-- acceleration optimization flags -->
 		<flag name="offensive">Enable gromacs partly offensive quotes</flag>
 		<flag name="mkl">Use <pkg>sci-libs/mkl</pkg> for fft, blas, lapack routines</flag>
