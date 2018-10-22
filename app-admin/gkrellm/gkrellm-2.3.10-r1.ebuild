@@ -53,6 +53,13 @@ S="${WORKDIR}/${MY_P}"
 
 DOCS=( Changelog CREDITS README )
 
+pkg_pretend() {
+	if use gnutls && ! use ssl ; then
+		ewarn "You have enabled the \"gnutls\" USE flag but not the \"ssl\" USE flag."
+		ewarn "No ssl backend will be built!"
+	fi
+}
+
 pkg_setup() {
 	enewgroup gkrellmd
 	enewuser gkrellmd -1 -1 -1 gkrellmd
