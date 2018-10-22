@@ -8,6 +8,8 @@
   <use>
     <flag name="antlr">Enable ANTLR Ant tasks</flag>
     <flag name="bcel">Enable bcel (bytecode manipulation) Ant tasks</flag>
+    <flag name="bsf">Enable support for Apache Bean Scripting Framework
+      (<pkg>dev-java/bsf</pkg>)</flag>
     <flag name="commonslogging">Enable commons-logging Ant tasks</flag>
     <flag name="commonsnet">Enable commons-net Ant tasks</flag>
     <flag name="jai">Enable JAI (Java Imaging) Ant task</flag>
