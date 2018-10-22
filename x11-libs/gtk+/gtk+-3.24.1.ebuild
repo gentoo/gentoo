@@ -1,10 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
+GNOME2_EAUTORECONF="yes"
 
-inherit autotools flag-o-matic gnome2 multilib virtualx multilib-minimal
+inherit flag-o-matic gnome2 multilib virtualx multilib-minimal
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
@@ -125,7 +126,6 @@ src_prepare() {
 	# Fix broken autotools logic
 	eapply "${FILESDIR}"/${PN}-3.22.20-libcloudproviders-automagic.patch
 
-	eautoreconf
 	gnome2_src_prepare
 }
 
