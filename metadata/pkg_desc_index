@@ -1851,7 +1851,7 @@ dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
 dev-cpp/libmcpp 2.7.2-r2: A portable C++ preprocessor
 dev-cpp/libxmlpp 2.40.1 3.0.1: C++ wrapper for the libxml2 XML parser library
-dev-cpp/lucene++ 3.0.7: C++ port of Lucene library, a high-performance, full-featured text search engine
+dev-cpp/lucene++ 3.0.7 3.0.7-r1: C++ port of Lucene library, a high-performance, full-featured text search engine
 dev-cpp/mm-common 0.9.12: Build infrastructure and utilities for GNOME C++ bindings
 dev-cpp/muParser 2.2.3 2.2.5: Library for parsing mathematical expressions
 dev-cpp/pangomm 2.40.1: C++ interface for pango
@@ -8360,7 +8360,7 @@ net-analyzer/hping 3_pre20051105-r6: A ping-like TCP/IP packet assembler/analyze
 net-analyzer/httping 2.5: http protocol ping-like program
 net-analyzer/hydra 8.1: Advanced parallized login hacker
 net-analyzer/icinga 1.14.2: Nagios Fork - Check daemon, CGIs, docs, IDOutils
-net-analyzer/icinga2 2.8.4 2.9.1: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.8.4 2.9.1 2.10.1-r1: Distributed, general purpose, network monitoring engine
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r1 1.1.0-r2: A simple CLI program for displaying network statistics in real time
 net-analyzer/iftop 1.0_pre4-r2: display bandwidth usage on an interface
