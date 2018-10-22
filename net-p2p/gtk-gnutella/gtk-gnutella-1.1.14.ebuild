@@ -27,7 +27,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-
 src_prepare() {
 	strip-linguas -i po
 
