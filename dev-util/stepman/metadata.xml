@@ -9,7 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-        <longdescription>Step collection manager for Bitrise CLI. Part of the Bitrise Continuous Integration, Delivery and Automations Stack, with envman and bitrise. For a nice &amp; quick intro you 
+	<longdescription>Step collection manager for Bitrise CLI. Part of the Bitrise Continuous Integration, Delivery and Automations Stack, with envman and bitrise. For a nice &amp; quick intro you 
 should check: https://www.bitrise.io/cli</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/bitrise-io/stepman/issues</bugs-to>

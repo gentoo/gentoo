@@ -5,11 +5,9 @@ EAPI=6
 
 inherit autotools
 
-MY_P="${P/mini-xml/mxml}"
-
 DESCRIPTION="Small XML parsing library to read XML and XML-like data files"
 HOMEPAGE="http://www.minixml.org/"
-SRC_URI="http://www.msweet.org/files/project3/${MY_P}.tar.gz"
+SRC_URI="http://www.msweet.org/files/project3/${P}.tar.gz"
 
 LICENSE="Mini-XML"
 SLOT="0"
@@ -18,8 +16,6 @@ IUSE="threads static-libs"
 
 DEPEND="virtual/pkgconfig"
 RDEPEND=""
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
