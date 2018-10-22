@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,7 +33,7 @@ REQUIRED_USE="
 COMMON_DEPEND="
 	app-crypt/qca:2[qt5(+)]
 	dev-db/sqlite:=
-	dev-libs/crypto++
+	dev-libs/crypto++[asm]
 	dev-libs/glib:2
 	dev-libs/libxml2
 	dev-libs/protobuf:=
