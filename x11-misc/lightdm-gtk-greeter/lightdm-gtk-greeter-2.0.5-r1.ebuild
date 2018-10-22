@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit versionator eutils
+inherit autotools gnome2-utils versionator
 
 DESCRIPTION="LightDM GTK+ Greeter"
 HOMEPAGE="https://launchpad.net/lightdm-gtk-greeter"
-SRC_URI="https://launchpad.net/lightdm-gtk-greeter/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz branding? (
-https://dev.gentoo.org/~hwoarang/distfiles/lightdm-gentoo-patch-2.tar.gz )"
+SRC_URI="https://launchpad.net/lightdm-gtk-greeter/$(get_version_component_range 1-2)/${PV}/+download/${P}.tar.gz
+	branding? ( https://dev.gentoo.org/~hwoarang/distfiles/lightdm-gentoo-patch-2.tar.gz )"
 
 LICENSE="GPL-3 LGPL-3
 	branding? ( CC-BY-3.0 )"
@@ -22,7 +22,8 @@ COMMON_DEPEND="ayatana? ( dev-libs/libindicator:3 )
 
 DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
-	sys-devel/gettext"
+	sys-devel/gettext
+	xfce-base/exo"
 
 RDEPEND="${COMMON_DEPEND}
 	x11-themes/gnome-themes-standard
@@ -31,24 +32,33 @@ RDEPEND="${COMMON_DEPEND}
 GENTOO_BG="gentoo-bg_65.jpg"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc6.patch
-	if has_version '>=x11-misc/lightdm-1.19.2'; then
-		epatch "${FILESDIR}"/${P}-lightdm-1.19.2.patch
-	fi
-
 	# Ok, this has to be fixed in the tarball but I am too lazy to do it.
 	# I will fix this once I decide to update the tarball with a new gentoo
 	# background
 	# Bug #404467
 	if use branding; then
-		sed -i -e "/xft-hintstyle/s:slight:hintslight:" \
-			"${WORKDIR}"/${PN}.conf || die
+		sed \
+			-e "/xft-hintstyle/s:slight:hintslight:" \
+			-e "/background/s:=.*:=/usr/share/lightdm/backgrounds/${GENTOO_BG}:" \
+			-i "${WORKDIR}"/${PN}.conf || die
+		# Add back the reboot/shutdown buttons
+		echo 'indicators=~host;~spacer;~clock;~spacer;~session;~language;~a11y;~power;~' \
+			>> "${WORKDIR}"/${PN}.conf || die
 	fi
+	default
+
+	# Fix docdir
+	sed "/^docdir/s@${PN}@${PF}@" -i data/Makefile.am || die
+	eautoreconf
 }
 
 src_configure() {
-	econf --enable-kill-on-sigterm \
+	local myeconfargs=(
+		--enable-kill-on-sigterm
+		--enable-at-spi-command="${EPREFIX}/usr/libexec/at-spi-bus-launcher --launch-immediately"
 		$(use_enable ayatana libindicator)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -59,9 +69,14 @@ src_install() {
 		doins "${WORKDIR}"/${PN}.conf
 		insinto /usr/share/lightdm/backgrounds/
 		doins "${WORKDIR}"/${GENTOO_BG}
-		sed -i -e \
-			"/background/s:=.*:=/usr/share/lightdm/backgrounds/${GENTOO_BG}:" \
-			"${D}"/etc/lightdm/${PN}.conf || die
 		newdoc "${WORKDIR}"/README.txt README-background.txt
 	fi
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
