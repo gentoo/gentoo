@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,8 +37,9 @@ DEPEND="${RDEPEND}
 	dev-util/itstool
 	>=dev-util/meson-0.42.0
 	>=sys-devel/gettext-0.19.8
-	test? (
-		qt5? ( dev-qt/qttest:5 )
+	qt5? (
+		dev-qt/linguist-tools:5
+		test? ( dev-qt/qttest:5 )
 	)
 "
 

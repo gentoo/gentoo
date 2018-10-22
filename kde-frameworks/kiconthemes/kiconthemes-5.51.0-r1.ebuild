@@ -27,3 +27,5 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 RESTRICT+=" test" # bug 574770
+
+PATCHES=( "${FILESDIR}/${P}-crashfix.patch" )
