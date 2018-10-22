@@ -31,7 +31,7 @@ COMMON_DEPEND="
 	>=dev-libs/apr-1.3:1
 	>=dev-libs/apr-util-1.3:1
 	dev-libs/expat
-	dev-libs/libutf8proc
+	dev-libs/libutf8proc:=
 	sys-apps/file
 	sys-libs/zlib
 	berkdb? ( >=sys-libs/db-4.0.14:= )
