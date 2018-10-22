@@ -24,7 +24,7 @@ DEPEND="
 S="${WORKDIR}"
 
 pkg_nofetch() {
-	einfo "Please find and download ${SRC_URI} and put it into ${DISTDIR}."
+	einfo "Please find and download ${SRC_URI} and put it into your distfiles directory."
 	einfo "There is a list of possible download locations at"
 	einfo "http://wiki.arx-libertatis.org/Getting_the_game_data#Demo"
 }
