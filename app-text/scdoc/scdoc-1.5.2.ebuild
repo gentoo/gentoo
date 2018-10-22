@@ -1,23 +1,28 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
 DESCRIPTION="Standalone tool for generating man pages with a simple syntax"
 HOMEPAGE="https://git.sr.ht/~sircmpwn/scdoc"
-SRC_URI="https://git.sr.ht/~sircmpwn/scdoc/archive/${PV}.tar.gz -> ${P}.tar.gz"
+
+if [[ ${PV} == 9999 ]]; then
+	EGIT_REPO_URI="https://git.sr.ht/~sircmpwn/scdoc"
+	inherit git-r3
+else
+	SRC_URI="https://git.sr.ht/~sircmpwn/scdoc/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 
 src_prepare() {
 	default
 
 	sed -e 's/-Werror//' \
-		-e 's/CFLAGS=/CFLAGS+=/' \
 		-i Makefile || die 'Failed to patch Makefile'
 }
 
