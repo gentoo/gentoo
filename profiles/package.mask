@@ -73,6 +73,7 @@ sys-apps/bubblewrap
 # EOL and has known vulnerabilities. Please move to
 # Firefox 60 or newer if you can.
 <www-client/firefox-60
+<www-client/firefox-bin-60
 
 # Virgil Dupras <vdupras@gentoo.org> (12 Oct 2018)
 # Unmaintained, no revdep. Removal in 30 days. Bug #645384
