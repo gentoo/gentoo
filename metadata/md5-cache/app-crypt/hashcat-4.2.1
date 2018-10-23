@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile prepare test
+DEPEND=virtual/opencl video_cards_nvidia? ( >x11-drivers/nvidia-drivers-367.0 )
+DESCRIPTION=World's fastest and most advanced password recovery utility
+EAPI=6
+HOMEPAGE=https://github.com/hashcat/hashcat
+IUSE=video_cards_nvidia
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=virtual/opencl video_cards_nvidia? ( >x11-drivers/nvidia-drivers-367.0 )
+SLOT=0
+SRC_URI=https://github.com/hashcat/hashcat/archive/v4.2.1.tar.gz -> hashcat-4.2.1.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	pax-utils	e85f015e815dd463b0c206d781ef45a5	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=1012bd76f0cfab9e03e6e144020b5e13

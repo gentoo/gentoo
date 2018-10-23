@@ -1,0 +1,13 @@
+DEFINED_PHASES=install test
+DEPEND=dev-lang/tcl:0= dev-tcltk/tdom test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Tcl Standard Library
+EAPI=6
+HOMEPAGE=http://www.tcl.tk/software/tcllib/
+IUSE=examples test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=BSD
+RDEPEND=dev-lang/tcl:0= dev-tcltk/tdom
+SLOT=0
+SRC_URI=mirror://sourceforge/tcllib/tcllib/1.19/tcllib-1.19.tar.xz
+_eclasses_=virtualx	401b718cc14d43a5a7fbe062c4851ba5
+_md5_=a76e3417734382dfe0911376368fe462
