@@ -45,7 +45,7 @@ IUSE="bindist clang dbus debug hardened jack lightning mozdom neon pulseaudio
 	system-libevent system-libvpx system-sqlite wifi"
 RESTRICT="!bindist? ( bindist )"
 
-PATCH_URIS=( https://dev.gentoo.org/~whissi/dist/firefox/${PATCHFF}.tar.xz https://dev.gentoo.org/~{anarchy,axs,polynomial-c}/mozilla/patchsets/{${PATCHTB},${PATCHFF}}.tar.xz )
+PATCH_URIS=( https://dev.gentoo.org/~{anarchy,axs,polynomial-c,whissi}/mozilla/patchsets/{${PATCHTB},${PATCHFF}}.tar.xz )
 SRC_URI="${SRC_URI}
 	${MOZ_HTTP_URI}/${MOZ_PV}/source/${MOZ_P}.source.tar.xz
 	https://dev.gentoo.org/~axs/distfiles/lightning-${MOZ_LIGHTNING_VER}.tar.xz
