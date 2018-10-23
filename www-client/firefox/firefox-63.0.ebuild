@@ -316,7 +316,6 @@ src_configure() {
 			sleep 5
 		fi
 
-
 		mozconfig_annotate '+lto' --enable-lto=thin
 	else
 		# Avoid auto-magic on linker
