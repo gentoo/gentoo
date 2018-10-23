@@ -10607,7 +10607,7 @@ www-misc/monitorix 3.9.0 3.10.0-r1: A lightweight system monitoring tool
 www-misc/profile-sync-daemon 5.45.1: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r1: Export command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1-r1: URL shortening command line application that supports various sites
-www-misc/urlwatch 2.5 2.13: A tool for monitoring webpages for updates
+www-misc/urlwatch 2.13: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
