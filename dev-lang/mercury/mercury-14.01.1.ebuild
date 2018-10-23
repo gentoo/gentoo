@@ -17,7 +17,7 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-IUSE="debug emacs erlang examples java mono profile readline threads trail"
+IUSE="debug doc emacs erlang examples java mono profile readline threads trail"
 
 DEPEND="!dev-libs/mpatrol
 	!dev-util/mono-debugger
@@ -25,7 +25,8 @@ DEPEND="!dev-libs/mpatrol
 	readline? ( sys-libs/readline:= )
 	erlang? ( dev-lang/erlang )
 	java? ( >=virtual/jdk-1.6:= )
-	mono? ( dev-lang/mono )"
+	mono? ( dev-lang/mono )
+	doc? ( sys-apps/texinfo )"
 
 RDEPEND="${DEPEND}
 	emacs? ( virtual/emacs )"
@@ -87,6 +88,7 @@ src_compile() {
 	# Build Mercury using bootstrap grade
 	emake \
 		PARALLEL="'${MAKEOPTS}'" \
+		TEXI2DVI="" PDFTEX="" \
 		|| die "emake failed"
 
 	# We can now patch .m Mercury compiler files since we
@@ -106,6 +108,7 @@ src_compile() {
 	emake \
 		PARALLEL="'${MAKEOPTS}'" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
+		TEXI2DVI="" PDFTEX="" \
 		compiler || die "emake compiler failed"
 
 	# The default Mercury grade may not be the same as the bootstrap
@@ -114,6 +117,7 @@ src_compile() {
 	emake \
 		PARALLEL="'${MAKEOPTS}'" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
+		TEXI2DVI="" PDFTEX="" \
 		default_grade || die "emake default_grade failed"
 }
 
@@ -158,6 +162,7 @@ src_install() {
 	emake \
 		PARALLEL="'${MAKEOPTS}'" \
 		MERCURY_COMPILER="${S}"/compiler/mercury_compile \
+		TEXI2DVI="" PDFTEX="" \
 		DESTDIR="${D}" \
 		INSTALL_PREFIX="${D}"/usr \
 		INSTALL_MAN_DIR="${D}"/usr/share/man \
