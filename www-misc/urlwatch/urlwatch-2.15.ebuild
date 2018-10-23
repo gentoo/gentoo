@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5} )
+EAPI=7
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 inherit distutils-r1
 
@@ -14,16 +14,16 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="test"
 
 RDEPEND="
+	dev-python/appdirs[${PYTHON_USEDEP}]
 	dev-python/keyring[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/minidb[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	|| ( www-client/lynx app-text/html2text )
 "
-DEPEND="
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
@@ -32,8 +32,10 @@ DEPEND="
 	)
 "
 
+DOCS=( CHANGELOG.md README.md )
+
 python_test() {
-	nosetests test || die "tests failed with ${EPYTHON}"
+	nosetests -v test || die "tests failed with ${EPYTHON}"
 }
 
 pkg_postinst() {
@@ -46,5 +48,11 @@ pkg_postinst() {
 			elog "Install 'dev-python/pushbullet-py' to enable" \
 				"Pushbullet notifications support"
 		fi
+		elog "HTML parsing can be improved by installing one of the following packages"
+		elog "and changing the html2text subfilter parameter:"
+		elog "dev-python/beautifulsoup:4"
+		elog "app-text/html2text"
+		elog "dev-python/html2text"
+		elog "www-client/lynx"
 	fi
 }
