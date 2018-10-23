@@ -49,7 +49,16 @@ MODULES=(
 	transcribe transfer translate waf waf-regional
 	workdocs workmail workspaces xray )
 
-IUSE="static-libs test ${MODULES[*]}"
+IUSE="asan http ssl static-libs rtti test ${MODULES[*]}"
+REQUIRED_USE="test? ( http )"
+
+DEPEND="
+	dev-lang/python
+	>=dev-util/cmake-3.0.0
+	http? ( net-misc/curl )
+	ssl? (
+		dev-libs/openssl
+		sys-libs/zlib ) "
 
 src_configure() {
 	local mybuildtargets="core"
@@ -64,6 +73,9 @@ src_configure() {
 		-DCPP_STANDARD=17
 		-DENABLE_TESTING=$(usex test)
 		-DBUILD_SHARED_LIBS=$(usex !static-libs)
+		-DENABLE_ADDRESS_SANITIZER=$(usex asan)
+		-DNO_ENCRYPTION=$(usex !ssl)
+		-DNO_HTTP_CLIENT=$(usex !http)
 		-DBUILD_ONLY="${mybuildtargets}"
 	)
 	cmake-utils_src_configure

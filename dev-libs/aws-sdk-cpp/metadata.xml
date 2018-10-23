@@ -17,6 +17,7 @@
 		<flag name="application-autoscaling">SDK Support for AWS application-autoscaling</flag>
 		<flag name="appstream">SDK Support for AWS appstream</flag>
 		<flag name="appsync">SDK Support for AWS appsync</flag>
+		<flag name="asan">Enable Address Sanitizer functionality. Expect longer compile time.</flag>
 		<flag name="athena">SDK Support for AWS athena</flag>
 		<flag name="autoscaling">SDK Support for AWS autoscaling</flag>
 		<flag name="autoscaling-plans">SDK Support for AWS autoscaling-plans</flag>
@@ -76,6 +77,7 @@
 		<flag name="greengrass">SDK Support for AWS greengrass</flag>
 		<flag name="guardduty">SDK Support for AWS guardduty</flag>
 		<flag name="health">SDK Support for AWS health</flag>
+		<flag name="http">Enable http support via curl</flag>
 		<flag name="iam">SDK Support for AWS iam</flag>
 		<flag name="identity-management">SDK Support for AWS identity-management</flag>
 		<flag name="importexport">SDK Support for AWS importexport</flag>
@@ -129,6 +131,7 @@
 		<flag name="resourcegroupstaggingapi">SDK Support for AWS resourcegroupstaggingapi</flag>
 		<flag name="route53">SDK Support for AWS route53</flag>
 		<flag name="route53domains">SDK Support for AWS route53domains</flag>
+		<flag name="rtti">Enable Runtime Type Identification within the library</flag>
 		<flag name="s3">SDK Support for AWS s3</flag>
 		<flag name="s3-encryption">SDK Support for AWS s3-encryption</flag>
 		<flag name="sagemaker">SDK Support for AWS sagemaker</flag>
@@ -143,6 +146,7 @@
 		<flag name="snowball">SDK Support for AWS snowball</flag>
 		<flag name="sns">SDK Support for AWS sns</flag>
 		<flag name="sqs">SDK Support for AWS sqs</flag>
+		<flag name="ssl">Adds support for Secure Socket Layer connections</flag>
 		<flag name="ssm">SDK Support for AWS ssm</flag>
 		<flag name="states">SDK Support for AWS states</flag>
 		<flag name="storagegateway">SDK Support for AWS storagegateway</flag>
