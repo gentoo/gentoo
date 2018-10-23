@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 
 inherit distutils-r1
 
@@ -23,9 +23,7 @@ RDEPEND="
 	dev-python/humanize[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	ctags? (
-		dev-python/python-ctags[${PYTHON_USEDEP}]
-	)
+	ctags? ( dev-python/python-ctags[${PYTHON_USEDEP}] )
 "
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
