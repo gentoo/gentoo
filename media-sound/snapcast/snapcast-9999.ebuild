@@ -35,8 +35,6 @@ DEPEND="${RDEPEND}
 	>=dev-cpp/asio-1.12.1
 	>=dev-cpp/popl-1.2.0"
 
-PATCHES=( "${FILESDIR}/${PN}-options-for-use-flags.patch" )
-
 pkg_setup() {
 	if use server ; then
 		enewgroup "snapserver"

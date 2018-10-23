@@ -42,4 +42,4 @@
 
 SNAPSERVER_USER="--user snapserver:snapserver"
 
-SNAPSERVER_OPTS="-d -s pipe:///tmp/snapfifo?name=default"
+SNAPSERVER_OPTS="-s pipe:///tmp/snapfifo?name=default"

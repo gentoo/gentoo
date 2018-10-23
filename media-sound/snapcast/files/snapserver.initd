@@ -4,7 +4,7 @@
 
 name=snapserver
 command="/usr/bin/snapserver"
-command_args="$SNAPSERVER_USER $SNAPSERVER_OPTS"
+command_args="-d $SNAPSERVER_USER $SNAPSERVER_OPTS"
 pidfile="/run/snapserver/pid"
 
 depend() {
