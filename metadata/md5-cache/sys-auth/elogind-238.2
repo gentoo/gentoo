@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=sys-apps/util-linux sys-libs/libcap virtual/libudev:= acl? ( sys-apps/acl ) pam? ( virtual/pam ) selinux? ( sys-libs/libselinux ) app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-util/gperf dev-util/intltool sys-devel/libtool virtual/pkgconfig >=dev-util/meson-0.45.1 >=dev-util/ninja-1.7.2 virtual/pkgconfig
+DESCRIPTION=The systemd project's logind, extracted to a standalone package
+EAPI=6
+HOMEPAGE=https://github.com/elogind/elogind
+IUSE=+acl debug doc +pam +policykit selinux kernel_linux
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=CC0-1.0 LGPL-2.1+ public-domain
+PDEPEND=sys-apps/dbus policykit? ( sys-auth/polkit )
+RDEPEND=sys-apps/util-linux sys-libs/libcap virtual/libudev:= acl? ( sys-apps/acl ) pam? ( virtual/pam ) selinux? ( sys-libs/libselinux ) !sys-apps/systemd
+SLOT=0
+SRC_URI=https://github.com/elogind/elogind/archive/v238.2.tar.gz -> elogind-238.2.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	linux-info	953c3b1c472dcadbf62098a9301327f2	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	meson	29ef682942c6ff558de2f797a61790c2	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	pam	3e788d86170dfcd5b06824d898315e18	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	udev	7752f306eec7b286d00bdb47b763e7ac	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=ed023c376010b0a1fe79f2c546238a0b
