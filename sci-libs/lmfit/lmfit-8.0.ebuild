@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="library for Levenberg-Marquardt least-squares minimization and curve fitting"
 HOMEPAGE="http://apps.jcns.fz-juelich.de/doku/sc/lmfit"
-SRC_URI="http://apps.jcns.fz-juelich.de/src/lmfit/old/${P}.tgz"
+SRC_URI="http://apps.jcns.fz-juelich.de/src/lmfit/${P}.tgz"
 
 LICENSE="BSD-2"
 SLOT="0"

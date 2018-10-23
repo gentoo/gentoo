@@ -1,0 +1,59 @@
+from: christoph junghans <junghans@votca.org>
+date: mon, 22 oct 2018 21:00:00 -0600
+subject: [patch] cmake: minor distribution tweaks
+
+- use gnuinstalldirs to allow to configure install dirs
+- allow to disable injecting c flags
+
+signed-off-by: christoph junghans <junghans@votca.org>
+---
+ cmakelists.txt     | 7 +++++--
+ lib/cmakelists.txt | 4 ++--
+ man/cmakelists.txt | 2 +-
+ 3 files changed, 8 insertions(+), 5 deletions(-)
+
+diff -Naur lmfit-8.0.orig/CMakeLists.txt lmfit-8.0/CMakeLists.txt
+--- lmfit-8.0.orig/CMakeLists.txt	2018-10-22 20:54:43.452888191 -0600
++++ lmfit-8.0/CMakeLists.txt	2018-10-22 20:56:00.573905982 -0600
+@@ -13,9 +13,12 @@
+ # --- Declare project-wide user flags, and set default values ---
+ option(FITTEST "Build with FitTest" OFF)
+ 
+-set(destination ${CMAKE_INSTALL_PREFIX})
++include(GNUInstallDirs)
+ 
+-set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -g -O2 -pedantic -Wall -Wno-sign-compare -Wno-unused-result -Wno-parentheses  -Wno-unknown-pragmas")
++option(INJECT_C_FLAGS "Inject a bunch of useful c flags" ON)
++if (INJECT_C_FLAGS)
++    set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -g -O2 -pedantic -Wall -Wno-sign-compare -Wno-unused-result -Wno-parentheses  -Wno-unknown-pragmas")
++endif()
+ 
+ add_subdirectory(lib)
+ add_subdirectory(demo)
+diff -Naur lmfit-8.0.orig/lib/CMakeLists.txt lmfit-8.0/lib/CMakeLists.txt
+--- lmfit-8.0.orig/lib/CMakeLists.txt	2018-10-22 20:54:43.452888191 -0600
++++ lmfit-8.0/lib/CMakeLists.txt	2018-10-22 20:55:08.073213116 -0600
+@@ -17,9 +17,9 @@
+ 
+ install(
+     TARGETS ${library_name} LIBRARY
+-    DESTINATION ${destination}/lib
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     COMPONENT Libraries)
+ install(
+     FILES ${inc_files}
+-    DESTINATION ${destination}/include
++    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+     COMPONENT Headers)
+diff -Naur lmfit-8.0.orig/man/CMakeLists.txt lmfit-8.0/man/CMakeLists.txt
+--- lmfit-8.0.orig/man/CMakeLists.txt	2018-10-22 20:54:43.452888191 -0600
++++ lmfit-8.0/man/CMakeLists.txt	2018-10-22 20:55:08.073213116 -0600
+@@ -15,7 +15,7 @@
+     )
+     install(
+         FILES ${CMAKE_CURRENT_BINARY_DIR}/${pname}.${section}
+-        DESTINATION "${CMAKE_INSTALL_PREFIX}/man/man${section}"
++        DESTINATION "${CMAKE_INSTALL_MANDIR}/man${section}"
+     )
+ endfunction()
+ 
