@@ -1815,12 +1815,17 @@ toolchain_src_install() {
 			ln -sf ${CTARGET}-${x} ${CTARGET}-${x}-${GCC_CONFIG_VER}
 		fi
 	done
-	# Rename the main go binaries as we don't want to clobber dev-lang/go
-	# when gcc-config runs. #567806
-	if tc_version_is_at_least 5 && is_go ; then
-		for x in go gofmt; do
-			mv ${x} ${x}-${GCCMAJOR} || die
-		done
+
+	# When gcc builds a crosscompiler it does not install unprefixed tools.
+	# When cross-building gcc does install native tools.
+	if ! is_crosscompile; then
+		# Rename the main go binaries as we don't want to clobber dev-lang/go
+		# when gcc-config runs. #567806
+		if tc_version_is_at_least 5 && is_go ; then
+			for x in go gofmt; do
+				mv ${x} ${x}-${GCCMAJOR} || die
+			done
+		fi
 	fi
 
 	# Now do the fun stripping stuff
