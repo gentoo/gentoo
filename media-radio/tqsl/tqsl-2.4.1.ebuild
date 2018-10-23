@@ -3,13 +3,11 @@
 
 EAPI=6
 
-inherit eutils cmake-utils wxwidgets
+inherit eutils cmake-utils wxwidgets vcs-snapshot
 
 DESCRIPTION="ARRL Logbook of the World"
 HOMEPAGE="http://www.arrl.org/tqsl-download"
-SRC_URI="https://sourceforge.net/code-snapshots/git/t/tr/trustedqsl/tqsl.git/trustedqsl-tqsl-fa49d1a6a2a9c06181f72558f732e7960cb3f430.zip -> ${P}.zip"
-
-S=${WORKDIR}/trustedqsl-tqsl-fa49d1a6a2a9c06181f72558f732e7960cb3f430/
+SRC_URI="https://github.com/rich0/trustedqsl-tqsl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LOTW"
 SLOT="0"

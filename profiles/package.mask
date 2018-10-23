@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (23 Oct 2018)
+# Depends on <www-client/firefox-57 which is package masked.
+# Use www-client/surf or www-client/qutebrowser as replacement.
+# Masked for removal in 30 days, bug #667528.
+www-client/conkeror
+
 # Lars Wendler <polynomial-c@gentoo.org> (22 Oct 2018)
 # Breaks dev-libs/gobject-introspection and its consumers
 # See #669278
