@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20181017-2201Z"
+MY_EXTRAS_VER="20181023-0012Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
@@ -51,7 +51,7 @@ else
 fi
 
 PATCHES=(
-	"${MY_PATCH_DIR}"/20001_all_fix-minimal-build-cmake-mysql-5.7.patch
+	"${MY_PATCH_DIR}"/20001_all_fix-minimal-build-cmake-mysql-5.7.23.patch
 	"${MY_PATCH_DIR}"/20007_all_cmake-debug-werror-5.7.patch
 	"${MY_PATCH_DIR}"/20009_all_mysql_myodbc_symbol_fix-5.7.10.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.21-without-clientlibs-tools.patch
@@ -362,7 +362,6 @@ multilib_src_configure() {
 		-DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1)
 		-DWITH_CURL=system
 		-DWITH_BOOST="${S}/boost"
-		-DWITH_PROTOBUF=system
 	)
 	if use test ; then
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test )
@@ -398,6 +397,7 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DWITH_LIBEVENT=system
 			-DWITH_LZ4=system
+			-DWITH_PROTOBUF=system
 			-DWITH_MECAB=$(usex cjk system OFF)
 			-DWITH_NUMA=$(usex numa ON OFF)
 			-DWITH_RAPID=$(usex experimental ON OFF)
