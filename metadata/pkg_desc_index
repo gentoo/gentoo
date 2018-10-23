@@ -2961,7 +2961,7 @@ dev-libs/cloog 0.18.1 0.18.4: A loop generator for scanning polyhedra
 dev-libs/concurrencykit 0.5.2 0.6.0: A library with concurrency related algorithms and data structures in C
 dev-libs/confuse 3.0: a configuration file parser library
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
-dev-libs/crypto++ 5.6.5-r1 7.0.0-r2: C++ class library of cryptographic schemes
+dev-libs/crypto++ 5.6.5-r1 7.0.0-r3: C++ class library of cryptographic schemes
 dev-libs/cvector 1.0.3-r1: An ANSI C implementation of dynamic arrays (Approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p03-r1 3.99.5_p11: REINER SCT cyberJack pinpad/e-com USB user space driver library
@@ -5886,7 +5886,7 @@ dev-ruby/libxml 2.9.0: Ruby libxml with a user friendly API, akin to REXML
 dev-ruby/listen 0.7.3-r2 1.3.1-r4 3.1.5-r1: Listens to file modifications and notifies you about the changes
 dev-ruby/locale 2.1.2-r1: A pure ruby library which provides basic APIs for localization
 dev-ruby/log4r 1.1.10-r2: A comprehensive and flexible logging library written in Ruby
-dev-ruby/logue 1.0.11 1.0.13-r1: A module that adds logging/trace functionality
+dev-ruby/logue 1.0.13-r1: A module that adds logging/trace functionality
 dev-ruby/loofah 2.2.1: Library for manipulating and transforming HTML/XML documents and fragments.
 dev-ruby/maruku 0.7.3: A Markdown-superset interpreter written in Ruby
 dev-ruby/maxitest 2.8.0: Minitest + all the features you always wanted
