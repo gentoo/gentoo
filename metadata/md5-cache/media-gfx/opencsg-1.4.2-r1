@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=media-libs/glew:0= dev-qt/qtcore:5 media-libs/mesa[gles2]
+DESCRIPTION=The Constructive Solid Geometry rendering library
+EAPI=6
+HOMEPAGE=http://www.opencsg.org
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/glew:0=
+SLOT=0
+SRC_URI=http://www.opencsg.org/OpenCSG-1.4.2.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=fb3ba61fa84fa58515a6b9eb79c7e291
