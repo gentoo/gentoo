@@ -18,19 +18,26 @@ BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
+config_uncomment() {
+	sed -i -e "s://\s*\(#define\s*$1\):\1:" config.h || die
+}
+
 pkg_setup() {
 	export CXX="$(tc-getCXX)"
 	export LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 	export PREFIX="${EPREFIX}/usr"
 }
 
-src_compile() {
+src_prepare() {
+	default
 
-	use asm || append-cxxflags -DCRYPTOPP_DISABLE_ASM
+	use asm || config_uncomment CRYPTOPP_DISABLE_ASM
 
 	# ASM isn't Darwin/Mach-O ready, #479554, buildsys doesn't grok CPPFLAGS
-	[[ ${CHOST} == *-darwin* ]] && append-cxxflags -DCRYPTOPP_DISABLE_ASM
+	[[ ${CHOST} == *-darwin* ]] && config_uncomment CRYPTOPP_DISABLE_ASM
+}
 
+src_compile() {
 	emake -f GNUmakefile all shared libcryptopp.pc
 }
 
