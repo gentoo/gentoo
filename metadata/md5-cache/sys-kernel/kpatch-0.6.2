@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare pretend setup
+DEPEND=app-crypt/pesign dev-libs/openssl:0= sys-libs/zlib sys-apps/pciutils dev-libs/elfutils sys-devel/bison kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
+DESCRIPTION=Dynamic kernel patching for Linux
+EAPI=6
+HOMEPAGE=https://github.com/dynup/kpatch
+IUSE=examples +modules test kernel_linux kernel_linux kernel_linux
+KEYWORDS=~amd64
+LICENSE=GPL-2+
+RDEPEND=app-crypt/pesign dev-libs/openssl:0= sys-libs/zlib sys-apps/pciutils kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=https://github.com/dynup/kpatch/archive/v0.6.2.tar.gz -> kpatch-0.6.2.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	4b8528d500d6555ad20763a77b31766c	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=8b37b9232ba8ed070be0669e863d12d7

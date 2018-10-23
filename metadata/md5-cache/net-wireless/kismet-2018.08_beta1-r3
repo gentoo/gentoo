@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install preinst prepare setup
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] networkmanager? ( net-misc/networkmanager:= ) dev-libs/glib:= dev-libs/elfutils:= sys-libs/zlib:= dev-db/sqlite:= net-libs/libmicrohttpd kernel_linux? ( sys-libs/libcap dev-libs/libnl:3 net-libs/libpcap ) dev-libs/protobuf-c:= dev-libs/protobuf:= sys-libs/ncurses:= lm_sensors? ( sys-apps/lm_sensors ) pcre? ( dev-libs/libpcre ) suid? ( sys-libs/libcap ) virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=IEEE 802.11 wireless LAN sniffer
+EAPI=6
+HOMEPAGE=https://www.kismetwireless.net
+IUSE=lm_sensors networkmanager +pcre selinux +suid python_targets_python2_7
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] networkmanager? ( net-misc/networkmanager:= ) dev-libs/glib:= dev-libs/elfutils:= sys-libs/zlib:= dev-db/sqlite:= net-libs/libmicrohttpd kernel_linux? ( sys-libs/libcap dev-libs/libnl:3 net-libs/libpcap ) dev-libs/protobuf-c:= dev-libs/protobuf:= sys-libs/ncurses:= lm_sensors? ( sys-apps/lm_sensors ) pcre? ( dev-libs/libpcre ) suid? ( sys-libs/libcap ) selinux? ( sec-policy/selinux-kismet )
+SLOT=0/2018.08_beta1
+SRC_URI=https://www.kismetwireless.net/code/kismet-2018-08-BETA1.tar.xz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=6c8d351cb3cce0f9ccbb2cd644d7a318
