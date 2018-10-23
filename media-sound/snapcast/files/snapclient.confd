@@ -30,4 +30,4 @@
 
 SNAPCLIENT_USER="--user snapclient:audio"
 
-SNAPCLIENT_OPTS="-d"
+SNAPCLIENT_OPTS=""
