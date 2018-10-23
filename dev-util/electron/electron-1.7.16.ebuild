@@ -8,9 +8,9 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
 	sv sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit check-reqs chromium-2 gnome2-utils flag-o-matic multilib \
+inherit check-reqs chromium-2 eapi7-ver gnome2-utils flag-o-matic multilib \
 	multiprocessing pax-utils portability python-any-r1 toolchain-funcs \
-	versionator virtualx xdg-utils
+	virtualx xdg-utils
 
 # Keep this in sync with vendor/libchromiumcontent/VERSION
 CHROMIUM_VERSION="58.0.3029.110"
@@ -28,13 +28,14 @@ PDF_VIEWER_COMMIT="beb36874a6b61d7a18b92bf7dcd1f0661e4c59cf"
 # Keep this in sync with vendor/pdf_viewer/vendor/grit
 GRIT_COMMIT="9536fb6429147d27ef1563088341825db0a893cd"
 # Keep this in sync with vendor/libchromiumcontent
-LIBCHROMIUMCONTENT_COMMIT="2f7b83669315f9492380334d1a8b1cd9bc758efd"
+LIBCHROMIUMCONTENT_COMMIT="4a4acde5522c21fe2f0a21f5ca29f99e90b03adc"
 # Keep this in sync with package.json#devDependencies
 ASAR_VERSION="0.13.0"
 BROWSERIFY_VERSION="14.0.0"
 NINJA_VERSION="1.8.2"
+GENTOO_PATCHES_VERSION="f0fb7725cfe73704dce84ec51bdccc024dc7ceff"
 
-PATCHES_P="gentoo-electron-patches-${P}"
+PATCHES_P="gentoo-electron-patches-${GENTOO_PATCHES_VERSION}"
 CHROMIUM_P="chromium-${CHROMIUM_VERSION}"
 BREAKPAD_P="chromium-breakpad-${BREAKPAD_COMMIT}"
 BREAKPAD_SRC_P="breakpad-${BREAKPAD_SRC_COMMIT}"
@@ -60,7 +61,7 @@ SRC_URI="
 	https://github.com/electron/libchromiumcontent/archive/${LIBCHROMIUMCONTENT_COMMIT}.tar.gz -> electron-${LIBCHROMIUMCONTENT_P}.tar.gz
 	https://github.com/elprans/asar/releases/download/v${ASAR_VERSION}-gentoo/asar-build.tar.gz -> ${ASAR_P}.tar.gz
 	https://github.com/elprans/node-browserify/releases/download/${BROWSERIFY_VERSION}-gentoo/browserify-build.tar.gz -> ${BROWSERIFY_P}.tar.gz
-	https://github.com/elprans/gentoo-electron-patches/archive/${P}.tar.gz -> electron-patches-${PV}.tar.gz
+	https://github.com/elprans/gentoo-electron-patches/archive/${GENTOO_PATCHES_VERSION}.tar.gz -> electron-patches-${GENTOO_PATCHES_VERSION}.tar.gz
 	https://github.com/ninja-build/ninja/archive/v${NINJA_VERSION}.tar.gz -> ninja-${NINJA_VERSION}.tar.gz
 "
 
@@ -75,7 +76,7 @@ GRIT_S="${PDF_VIEWER_S}/vendor/grit"
 LIBCC_S="${S}/vendor/libchromiumcontent"
 
 LICENSE="BSD"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 IUSE="cups custom-cflags gconf gnome-keyring gtk3 kerberos lto neon pic
 	  +proprietary-codecs pulseaudio selinux +system-ffmpeg +tcmalloc"
@@ -194,11 +195,11 @@ fi
 pre_build_checks() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		local -x CPP="$(tc-getCXX) -E"
-		if tc-is-clang && ! version_is_at_least "3.9.1" "$(clang-fullversion)"; then
+		if tc-is-clang && ! ver_test "$(clang-fullversion)" -ge 3.9.1; then
 			# bugs: #601654
 			die "At least clang 3.9.1 is required"
 		fi
-		if tc-is-gcc && ! version_is_at_least 4.9 "$(gcc-version)"; then
+		if tc-is-gcc && ! ver_test "$(gcc-version)" -ge 4.9; then
 			# bugs: #535730, #525374, #518668, #600288
 			die "At least gcc 4.9 is required"
 		fi
@@ -349,7 +350,7 @@ src_prepare() {
 
 	# Fix broken patch
 	cd "${LIBCC_S}" || die
-	eapply "${FILESDIR}/${P}-v8-crankshaft-rce-fix.patch"
+	eapply "${FILESDIR}/${PN}-1.7.15-v8-crankshaft-rce-fix.patch"
 
 	# Apply libcc Chromium patches.
 	cd "${CHROMIUM_S}" || die
