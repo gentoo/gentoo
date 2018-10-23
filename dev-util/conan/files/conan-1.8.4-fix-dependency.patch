@@ -1,0 +1,12 @@
+diff --git a/conans/requirements.txt b/conans/requirements.txt
+index 5b4a32db..fe60aca4 100644
+--- a/conans/requirements.txt
++++ b/conans/requirements.txt
+@@ -11,5 +11,5 @@ pylint>=1.9.3
+ future==0.16.0
+ pygments>=2.0, <3.0
+ astroid>=1.6.5
+-deprecation>=2.0, <2.1
+-tqdm-conan==4.27.0
++deprecation>=2.0
++tqdm>=4.27.0
