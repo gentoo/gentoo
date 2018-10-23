@@ -1,5 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Thomas Deutschmann <whissi@gentoo.org> (23 Oct 2018)
+# requires net-libs/nodejs
+>=www-client/firefox-63.0
 
 # Patrick McLean <chutzpah@gentoo.org> (12 Jul 2018)
 # requires nodejs
