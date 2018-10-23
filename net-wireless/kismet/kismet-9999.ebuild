@@ -43,6 +43,7 @@ CDEPEND="
 			net-libs/libpcap
 			)
 	dev-libs/protobuf-c:=
+	dev-libs/protobuf:=
 	sys-libs/ncurses:=
 	lm_sensors? ( sys-apps/lm_sensors )
 	pcre? ( dev-libs/libpcre )
