@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ else
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 if [[ ${PV} == "3.7.9999" ]]; then
-	EGIT_BRANCH="maint"
+	EGIT_BRANCH="maint-3.7"
 elif [[ ${PV} == "3.8.9999" ]]; then
 	EGIT_BRANCH="next"
 fi
@@ -72,7 +72,8 @@ RDEPEND="${PYTHON_DEPS}
 	sdl? ( >=media-libs/libsdl-1.2.0 )
 	uhd? ( >=net-wireless/uhd-3.9.6:=[${PYTHON_USEDEP}] )
 	utils? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
-	vocoder? ( media-sound/gsm )
+	vocoder? ( media-sound/gsm
+		>=media-libs/codec2-0.8.1 )
 	wavelet? (
 		>=sci-libs/gsl-1.10
 	)
@@ -109,6 +110,11 @@ src_prepare() {
 	fi
 	# Useless UI element would require qt3support, bug #365019
 	sed -i '/qPixmapFromMimeSource/d' "${S}"/gr-qtgui/lib/spectrumdisplayform.ui || die
+
+	use !alsa && sed -i 's#version.h#version-nonexistant.h#' cmake/Modules/FindALSA.cmake
+	use !jack && sed -i 's#jack.h#jack-nonexistant.h#' cmake/Modules/FindJack.cmake
+	use !portaudio && sed -i 's#portaudio.h#portaudio-nonexistant.h#' cmake/Modules/FindPortaudio.cmake
+
 	cmake-utils_src_prepare
 }
 
@@ -214,7 +220,7 @@ pkg_postinst()
 
 	if use grc ; then
 		xdg_desktop_database_update
-		xdg_mime_database_update
+		xdg_mimeinfo_database_update
 		for size in ${GRC_ICON_SIZES} ; do
 			xdg-icon-resource install --noupdate --context mimetypes --size ${size} \
 				"${EROOT}/usr/share/pixmaps/grc-icon-${size}.png" application-gnuradio-grc \
@@ -233,7 +239,7 @@ pkg_postrm()
 
 	if use grc ; then
 		xdg_desktop_database_update
-		xdg_mime_database_update
+		xdg_mimeinfo_database_update
 		for size in ${GRC_ICON_SIZES} ; do
 			xdg-icon-resource uninstall --noupdate --context mimetypes --size ${size} \
 				application-gnuradio-grc || ewarn "icon uninstall failed"
