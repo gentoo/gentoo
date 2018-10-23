@@ -4,7 +4,7 @@
 
 name=snapclient
 command="/usr/bin/snapclient"
-command_args="$SNAPCLIENT_USER $SNAPCLIENT_OPTS"
+command_args="-d $SNAPCLIENT_USER $SNAPCLIENT_OPTS"
 pidfile="/run/snapclient/pid"
 
 depend() {
