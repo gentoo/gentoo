@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,6 @@ else
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/gstreamer/qt-gstreamer.git"
 	inherit git-r3
 fi
-
 inherit cmake-utils
 
 DESCRIPTION="C++ bindings for GStreamer with a Qt-style API"
@@ -21,8 +20,8 @@ SLOT="0"
 IUSE="test"
 
 RDEPEND="
-	dev-libs/glib:2
 	dev-libs/boost:=
+	dev-libs/glib:2
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
@@ -32,6 +31,7 @@ RDEPEND="
 	media-libs/gst-plugins-base:1.0
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	test? ( dev-qt/qttest:5 )
 "
 
