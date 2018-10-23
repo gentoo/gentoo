@@ -1,11 +1,11 @@
---- a/openssh-7.9p1+x509-11.5.diff	2018-10-19 11:41:13.791285390 -0700
-+++ b/openssh-7.9p1+x509-11.5.diff	2018-10-19 11:45:42.584694215 -0700
+--- a/openssh-7.9p1+x509-11.5.diff	2018-10-23 16:21:22.580154353 -0700
++++ b/openssh-7.9p1+x509-11.5.diff	2018-10-23 16:22:39.600652048 -0700
 @@ -44045,7 +44045,7 @@
   	ENGINE_register_all_complete();
  +#endif
   
 --#if OPENSSL_VERSION_NUMBER < 0x10001000L
-+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++-#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
  +	/* OPENSSL_config will load buildin engines and engines
  +	 * specified in configuration file, i.e. method call
  +	 * ENGINE_load_builtin_engines. Latter is only for
