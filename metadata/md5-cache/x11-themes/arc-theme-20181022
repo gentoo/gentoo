@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure prepare
+DEPEND=cinnamon? ( dev-lang/sassc ) gnome-shell? ( dev-lang/sassc ) gtk2? ( !pre-rendered? ( media-gfx/inkscape media-gfx/optipng ) ) gtk3? ( dev-lang/sassc !pre-rendered? ( media-gfx/inkscape media-gfx/optipng ) virtual/pkgconfig >=x11-libs/gtk+-3.18:3 ) xfce? ( !pre-rendered? ( media-gfx/inkscape media-gfx/optipng ) )
+DESCRIPTION=A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
+EAPI=7
+HOMEPAGE=https://github.com/NicoHood/arc-theme
+IUSE=cinnamon gnome-shell +gtk2 +gtk3 mate +pre-rendered xfce
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3
+RDEPEND=gtk2? ( x11-themes/gnome-themes-standard x11-themes/gtk-engines-murrine )
+SLOT=0
+SRC_URI=https://github.com/NicoHood/arc-theme/releases/download/20181022/arc-theme-20181022.tar.xz pre-rendered? ( https://dev.gentoo.org/~chewi/distfiles/arc-theme-20181022-pngs.tar.xz )
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=ff0587413d095a003f437c50f21f076d
