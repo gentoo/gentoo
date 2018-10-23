@@ -52,7 +52,7 @@ SRC_URI="${SRC_URI}
 	${PATCH_URIS[@]}"
 
 CDEPEND="
-	>=dev-libs/nss-3.38
+	>=dev-libs/nss-3.39
 	>=dev-libs/nspr-4.19
 	>=app-text/hunspell-1.5.4:=
 	dev-libs/atk
@@ -115,14 +115,8 @@ DEPEND="${CDEPEND}
 		>=sys-devel/lld-4.0.1
 	)
 	pulseaudio? ( media-sound/pulseaudio )
-	elibc_glibc? (
-		virtual/cargo
-		virtual/rust
-	)
-	elibc_musl? (
-		virtual/cargo
-		virtual/rust
-	)
+	>=virtual/cargo-1.28.0
+	>=virtual/rust-1.28.0
 	amd64? ( >=dev-lang/yasm-1.1 virtual/opengl )
 	x86? ( >=dev-lang/yasm-1.1 virtual/opengl )"
 
@@ -288,13 +282,40 @@ src_configure() {
 	filter-flags -flto*
 
 	if use lto ; then
+		local show_old_compiler_warning=
+
 		if use clang ; then
+			# At this stage CC is adjusted and the following check will
+			# will work
+			if [[ $(clang-major-version) -lt 7 ]]; then
+				show_old_compiler_warning=1
+			fi
+
 			# Upstream only supports lld when using clang
 			mozconfig_annotate "forcing ld=lld due to USE=clang and USE=lto" --enable-linker=lld
 		else
+			if [[ $(gcc-major-version) -lt 8 ]]; then
+				show_old_compiler_warning=1
+			fi
+
 			# Linking only works when using ld.gold when LTO is enabled
 			mozconfig_annotate "forcing ld=gold due to USE=lto" --enable-linker=gold
 		fi
+
+		if [[ -n "${show_old_compiler_warning}" ]]; then
+			# Checking compiler's major version uses CC variable. Because we allow
+			# user to control used compiler via USE=clang flag, we cannot use
+			# initial value. So this is the earliest stage where we can do this check
+			# because pkg_pretend is not called in the main phase function sequence
+			# environment saving is not guaranteed so we don't know if we will have
+			# correct compiler until now.
+			ewarn ""
+			ewarn "USE=lto requires up-to-date compiler (>=gcc-8 or >=clang-7)."
+			ewarn "You are on your own -- expect build failures. Don't file bugs using that unsupported configuration!"
+			ewarn ""
+			sleep 5
+		fi
+
 
 		mozconfig_annotate '+lto' --enable-lto=thin
 	else
@@ -420,6 +441,12 @@ src_configure() {
 
 	# disable webrtc for now, bug 667642
 	use arm && mozconfig_annotate 'broken on arm' --disable-webrtc
+
+	if use clang ; then
+		# https://bugzilla.mozilla.org/show_bug.cgi?id=1423822
+		# bug #669382
+		mozconfig_annotate 'elf-hack is broken when using Clang' --disable-elf-hack
+	fi
 
 	echo "mk_add_options MOZ_OBJDIR=${BUILD_OBJ_DIR}" >> "${S}"/.mozconfig
 	echo "mk_add_options XARGS=/usr/bin/xargs" >> "${S}"/.mozconfig
