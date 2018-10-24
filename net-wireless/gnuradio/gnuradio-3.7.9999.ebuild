@@ -22,8 +22,6 @@ else
 fi
 if [[ ${PV} == "3.7.9999" ]]; then
 	EGIT_BRANCH="maint-3.7"
-elif [[ ${PV} == "3.8.9999" ]]; then
-	EGIT_BRANCH="next"
 fi
 
 IUSE="+audio +alsa atsc +analog +digital channels doc dtv examples fcd fec +filter grc jack log noaa oss pager performance-counters portaudio sdl test trellis uhd vocoder +utils wavelet wxwidgets zeromq"
@@ -103,7 +101,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	gnome2_environment_reset #534582
 
-	if [[ ${PV} == "3.8.9999" ]]; then
+	if [[ ${PV} == "9999" ]]; then
 		true
 	else
 		epatch "${FILESDIR}"/gnuradio-wxpy3.0-compat.patch
