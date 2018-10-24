@@ -5,7 +5,7 @@ EAPI=6
 
 EGIT_REPO_URI="https://github.com/qxmpp-project/qxmpp"
 
-inherit git-r3 qmake-utils
+inherit git-r3 cmake-utils
 
 DESCRIPTION="A cross-platform C++ XMPP client library based on the Qt framework"
 HOMEPAGE="https://github.com/qxmpp-project/qxmpp/"
@@ -25,50 +25,38 @@ RDEPEND="
 	vpx? ( media-libs/libvpx:= )
 "
 DEPEND="${RDEPEND}
+	dev-util/cmake
 	test? ( dev-qt/qttest:5 )
+	doc? ( app-doc/doxygen )
 "
 
 src_prepare() {
 	default
 
-	if ! use doc; then
-		sed -e '/SUBDIRS/s/doc//' \
-			-e '/INSTALLS/d' \
-			-i qxmpp.pro || die "failed to remove docs"
-	fi
-	if ! use test; then
-		sed -e '/SUBDIRS/s/tests//' \
-			-i qxmpp.pro || die "failed to remove tests"
-	else
-		# requires network connection, bug #623708
-		sed -e "/qxmppiceconnection/d" \
-			-i tests/tests.pro || die "failed to drop single test"
-	fi
-	# There is no point in building examples. Also, they require dev-qt/qtgui
-	sed -e '/SUBDIRS/s/examples//' \
-		-i qxmpp.pro || die "sed for removing examples failed"
+	# requires network connection, bug #623708
+	sed -e "/qxmppiceconnection/d" \
+		-i tests/CMakeLists.txt || die "failed to drop single test"
 }
 
 src_configure() {
-	eqmake5 "${S}"/qxmpp.pro \
-		PREFIX="${EPREFIX}/usr" \
-		LIBDIR="$(get_libdir)" \
-		QXMPP_USE_OPUS=$(usex opus 1 '') \
-		QXMPP_USE_SPEEX=$(usex speex 1 '') \
-		QXMPP_USE_THEORA=$(usex theora 1 '') \
-		QXMPP_USE_VPX=$(usex vpx 1 '')
+	local mycmakeargs=(
+		-DBUILD_DOCUMENTATION=$(usex doc)
+		-DBUILD_EXAMPLES=OFF
+		-DBUILD_TESTS=$(usex test)
+		-DWITH_OPUS=$(usex opus)
+		-DWITH_SPEEX=$(usex speex)
+		-DWITH_THEORA=$(usex theora)
+		-DWITH_VPX=$(usex vpx)
+	)
+
+	cmake-utils_src_configure
 }
 
 src_install() {
-	emake INSTALL_ROOT="${D}" install
-	einstalldocs
+	cmake-utils_src_install
+
 	if use doc; then
 		# Use proper path for documentation
 		mv "${ED}"/usr/share/doc/${PN} "${ED}"/usr/share/doc/${PF} || die "doc mv failed"
 	fi
-}
-
-src_test() {
-	MAKEOPTS="-j1" # random tests fail otherwise
-	default_src_test
 }
