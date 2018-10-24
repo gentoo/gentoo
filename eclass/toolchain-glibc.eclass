@@ -557,9 +557,6 @@ toolchain-glibc_pkg_pretend() {
 		ewarn "hypervisor, which is probably not what you want."
 	fi
 
-	use hardened && ! tc-enables-pie && \
-		ewarn "PIE hardening not applied, as your compiler doesn't default to PIE"
-
 	# Make sure host system is up to date #394453
 	if has_version '<sys-libs/glibc-2.13' && \
 	   [[ -n $(scanelf -qys__guard -F'#s%F' "${EROOT}"/lib*/l*-*.so) ]]
