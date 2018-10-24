@@ -1,19 +1,21 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
+
+inherit linux-info systemd
 
 DESCRIPTION="Modify realtime scheduling policy and priority of IRQ handlers"
 HOMEPAGE="http://www.rncbc.org/archive/#rtirq"
-
 SRC_URI="http://www.rncbc.org/archive/${P}.tar.gz"
-LICENSE="GPL-2"
+
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND=">=sys-apps/util-linux-2.13"
-
 src_prepare() {
+	get_version
+
 	# Correct config file path.
 	sed -i -e "s:^\(RTIRQ_CONFIG\=\)\(.*\):\1/etc/conf.d/rtirq:" ${PN}.sh || die
 	sed -i -e "s:/etc/sysconfig/rtirq:/etc/conf.d/rtirq:" ${PN}.conf || die
@@ -21,21 +23,16 @@ src_prepare() {
 	default
 }
 
-src_install(){
-	dosbin ${PN}.sh
-	doinitd "${FILESDIR}"/${PN}
-	newconfd ${PN}.conf ${PN}
+src_install() {
+	dosbin rtirq.sh
+	doinitd "${FILESDIR}"/rtirq
+	newconfd rtirq.conf rtirq
+	systemd_dounit rtirq.service
 }
 
-pkg_postinst(){
-	if [[ "$(rc-config list default | grep rtirq)" = "" ]] ; then
-		elog "You probably want to add rtirq to the default runlevel, i.e."
-		elog "  rc-update add rtirq default"
-	fi
-	if [[ "$(uname -r | grep rt)" = "" ]] ; then
+pkg_postinst() {
+	if [[ ${KV_LOCAL} != *rt* ]] ; then
 		elog "To use rtirq you need a realtime kernel."
 		elog "Realtime kernel sources are supplied in sys-kernel/rt-sources."
 	fi
-	elog "To display the rtirq status issue:"
-	elog "  /etc/init.d/rtirq status"
 }
