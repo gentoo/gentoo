@@ -638,9 +638,6 @@ sanity_prechecks() {
 		ewarn "hypervisor, which is probably not what you want."
 	fi
 
-	use hardened && ! tc-enables-pie && \
-		ewarn "PIE hardening not applied, as your compiler doesn't default to PIE"
-
 	# Check for sanity of /etc/nsswitch.conf
 	if [[ -e ${EROOT}/etc/nsswitch.conf ]] ; then
 		local entry
