@@ -40,7 +40,6 @@ CDEPEND="${PYTHON_DEPS}
 		>=dev-cpp/ctemplate-0.95
 		>=dev-libs/libxml2-2.6.2:2
 		dev-libs/libzip
-		>=virtual/mysql-5.6
 		dev-libs/libpcre[cxx]
 		>=sci-libs/gdal-1.11.1-r1[-mdb]
 		virtual/opengl
