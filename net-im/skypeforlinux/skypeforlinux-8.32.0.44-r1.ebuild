@@ -21,6 +21,10 @@ QA_PREBUILT="*"
 RESTRICT="mirror bindist strip" #299368
 
 RDEPEND="
+	|| (
+		sys-auth/elogind
+		sys-apps/systemd
+	)
 	dev-libs/atk[${MULTILIB_USEDEP}]
 	dev-libs/expat[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
