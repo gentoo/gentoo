@@ -1,0 +1,25 @@
+From e894c6f57b88305cdf6e4e2b1543475b2e02f436 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Tue, 23 Oct 2018 18:59:58 +0200
+Subject: [PATCH 1/2] Fix Gentoo package installation command
+
+---
+ cloudinit/distros/gentoo.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cloudinit/distros/gentoo.py b/cloudinit/distros/gentoo.py
+index dc57717d..98ac41ca 100644
+--- a/cloudinit/distros/gentoo.py
++++ b/cloudinit/distros/gentoo.py
+@@ -192,7 +192,7 @@ class Distro(distros.Distro):
+         if pkgs is None:
+             pkgs = []
+ 
+-        cmd = list('emerge')
++        cmd = ['emerge']
+         # Redirect output
+         cmd.append("--quiet")
+ 
+-- 
+2.19.0
+
