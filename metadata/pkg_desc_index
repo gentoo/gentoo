@@ -1506,7 +1506,7 @@ app-text/xlhtml 0.5.1_p6: Convert MS Excel and Powerpoint files to HTML
 app-text/xml2doc 20030510-r1: Tool to convert simple XML to a variety of formats (pdf, html, txt, manpage)
 app-text/xmldiff 0.6.10-r2: A tool that figures out the differences between two similar XML files
 app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edit XML documents
-app-text/xmlto 0.0.26-r1: script for converting XML and DocBook documents to a variety of output formats
+app-text/xmlto 0.0.26-r1 0.0.28-r1: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/yelp-tools 3.18.0: Collection of tools for building and converting documentation
 app-text/zathura 0.3.8: A highly customizable and functional document viewer
@@ -7506,7 +7506,7 @@ media-libs/glfw 3.2.1: The Portable OpenGL FrameWork
 media-libs/glm 0.9.8.5-r1: OpenGL Mathematics
 media-libs/glpng 1.46-r1: An OpenGL PNG image library
 media-libs/glu 9.0.0-r1: The OpenGL Utility Library
-media-libs/glyr 1.0.5: A music related metadata searchengine, both with commandline interface and C API
+media-libs/glyr 1.0.5 1.0.10: Music related metadata searchengine, both with commandline interface and C API
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 0.10.17 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.15 0.3.4: A framework for easy media discovery and browsing
