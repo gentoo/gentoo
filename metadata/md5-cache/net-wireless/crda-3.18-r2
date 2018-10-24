@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup test
+DEPEND=!gcrypt? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) gcrypt? ( dev-libs/libgcrypt:0 ) dev-libs/libnl:3 net-wireless/wireless-regdb || ( >=dev-lang/python-2.7.5-r2:2.7 ) || ( ( >=dev-lang/python-2.7.5-r2:2.7 dev-python/m2crypto[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Central Regulatory Domain Agent for wireless networks
+EAPI=6
+HOMEPAGE=https://wireless.wiki.kernel.org/en/developers/regulatory/crda
+IUSE=gcrypt libressl
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=ISC
+RDEPEND=!gcrypt? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) gcrypt? ( dev-libs/libgcrypt:0 ) dev-libs/libnl:3 net-wireless/wireless-regdb
+SLOT=0
+SRC_URI=http://linuxwireless.org/download/crda/crda-3.18.tar.xz mirror://kernel/software/network/crda/crda-3.18.tar.xz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	udev	7752f306eec7b286d00bdb47b763e7ac
+_md5_=f5bf09a965568123937ad40426d8dcb6
