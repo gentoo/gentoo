@@ -14,7 +14,7 @@ DESCRIPTION="Workspace library to interact with the Plasma session manager"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
-DEPEND="
+COMMON_DEPEND="
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kwindowsystem)
@@ -26,7 +26,10 @@ DEPEND="
 	x11-libs/libX11
 	x11-libs/libXau
 "
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	$(add_plasma_dep kwin)
+"
+RDEPEND="${COMMON_DEPEND}
 	!kde-plasma/libkworkspace:4
 	!<kde-plasma/plasma-workspace-5.14.2:5
 "
