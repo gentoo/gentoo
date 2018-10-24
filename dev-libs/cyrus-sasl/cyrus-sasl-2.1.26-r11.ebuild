@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils flag-o-matic multilib multilib-minimal autotools pam java-pkg-opt-2 db-use systemd
+inherit flag-o-matic multilib multilib-minimal autotools pam java-pkg-opt-2 db-use systemd
 
 SASLAUTHD_CONF_VER="2.1.26"
 
@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.1.26-send-imap-logout.patch"
 	"${FILESDIR}/${PN}-2.1.26-canonuser-ldapdb-garbage-in-out-buffer.patch"
 	"${FILESDIR}/${PN}-2.1.26-fix_dovecot_authentication.patch"
+	"${FILESDIR}/${PN}-2.1.26-openssl-1.1.patch" #592528
 )
 
 pkg_setup() {
@@ -65,7 +66,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
 
 	# Get rid of the -R switch (runpath_switch for Sun)
 	# >=gcc-4.6 errors out with unknown option
@@ -103,73 +104,66 @@ multilib_src_configure() {
 	# Java support.
 	multilib_is_native_abi && use java && export JAVAC="${JAVAC} ${JAVACFLAGS}"
 
-	local myconf=()
+	local myeconfargs=(
+		--enable-login
+		--enable-ntlm
+		--enable-auth-sasldb
+		--disable-cmulocal
+		--disable-krb4
+		--disable-macos-framework
+		--enable-otp
+		--without-sqlite
+		--with-saslauthd="${EPREFIX}"/run/saslauthd
+		--with-pwcheck="${EPREFIX}"/run/saslauthd
+		--with-configdir="${EPREFIX}"/etc/sasl2
+		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/sasl2
+		--with-dbpath="${EPREFIX}"/etc/sasl2/sasldb2
+		$(use_with ssl openssl)
+		$(use_with pam)
+		$(use_with openldap ldap)
+		$(use_enable ldapdb)
+		$(multilib_native_use_enable sample)
+		$(use_enable kerberos gssapi)
+		$(multilib_native_use_enable java)
+		$(multilib_native_use_with java javahome ${JAVA_HOME})
+		$(multilib_native_use_with mysql mysql "${EPREFIX}"/usr)
+		$(multilib_native_use_with postgres pgsql)
+		$(use_with sqlite sqlite3 "${EPREFIX}"/usr/$(get_libdir))
+		$(use_enable srp)
+		$(use_enable static-libs static)
 
-	# Add authdaemond support (bug #56523).
-	if use authdaemond ; then
-		myconf+=( --with-authdaemond="${EPREFIX}"/var/lib/courier/authdaemon/socket )
-	fi
+		# Add authdaemond support (bug #56523).
+		$(usex authdaemond --with-authdaemond="${EPREFIX}"/var/lib/courier/authdaemon/socket '')
 
-	# Fix for bug #59634.
-	if ! use ssl ; then
-		myconf+=( --without-des )
-	fi
+		# Fix for bug #59634.
+		$(usex ssl '' --without-des)
+
+		# Use /dev/urandom instead of /dev/random (bug #46038).
+		$(usex urandom --with-devrandom=/dev/urandom '')
+	)
 
 	if use sqlite || { multilib_is_native_abi && { use mysql || use postgres; }; } ; then
-		myconf+=( --enable-sql )
+		myeconfargs+=( --enable-sql )
 	else
-		myconf+=( --disable-sql )
+		myeconfargs+=( --disable-sql )
 	fi
 
 	# Default to GDBM if both 'gdbm' and 'berkdb' are present.
 	if use gdbm ; then
 		einfo "Building with GNU DB as database backend for your SASLdb"
-		myconf+=( --with-dblib=gdbm )
+		myeconfargs+=( --with-dblib=gdbm )
 	elif use berkdb ; then
 		einfo "Building with BerkeleyDB as database backend for your SASLdb"
-		myconf+=(
+		myeconfargs+=(
 			--with-dblib=berkeley
 			--with-bdb-incdir="$(db_includedir)"
 		)
 	else
 		einfo "Building without SASLdb support"
-		myconf+=( --with-dblib=none )
+		myeconfargs+=( --with-dblib=none )
 	fi
 
-	# Use /dev/urandom instead of /dev/random (bug #46038).
-	if use urandom ; then
-		myconf+=( --with-devrandom=/dev/urandom )
-	fi
-
-	ECONF_SOURCE=${S} \
-	econf \
-		--enable-login \
-		--enable-ntlm \
-		--enable-auth-sasldb \
-		--disable-cmulocal \
-		--disable-krb4 \
-		--disable-macos-framework \
-		--enable-otp \
-		--without-sqlite \
-		--with-saslauthd="${EPREFIX}"/run/saslauthd \
-		--with-pwcheck="${EPREFIX}"/run/saslauthd \
-		--with-configdir="${EPREFIX}"/etc/sasl2 \
-		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/sasl2 \
-		--with-dbpath="${EPREFIX}"/etc/sasl2/sasldb2 \
-		$(use_with ssl openssl) \
-		$(use_with pam) \
-		$(use_with openldap ldap) \
-		$(use_enable ldapdb) \
-		$(multilib_native_use_enable sample) \
-		$(use_enable kerberos gssapi) \
-		$(multilib_native_use_enable java) \
-		$(multilib_native_use_with java javahome ${JAVA_HOME}) \
-		$(multilib_native_use_with mysql mysql "${EPREFIX}"/usr) \
-		$(multilib_native_use_with postgres pgsql) \
-		$(use_with sqlite sqlite3 "${EPREFIX}"/usr/$(get_libdir)) \
-		$(use_enable srp) \
-		$(use_enable static-libs static) \
-		"${myconf[@]}"
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
@@ -215,7 +209,9 @@ multilib_src_install_all() {
 
 	dodoc AUTHORS ChangeLog NEWS README doc/TODO doc/*.txt
 	newdoc pwcheck/README README.pwcheck
-	dohtml doc/*.html
+
+	docinto html
+	dodoc doc/*.html
 
 	docinto "saslauthd"
 	dodoc saslauthd/{AUTHORS,ChangeLog,LDAP_SASLAUTHD,NEWS,README}
@@ -233,8 +229,9 @@ multilib_src_install_all() {
 	# The get_modname bit is important: do not remove the .la files on
 	# platforms where the lib isn't called .so for cyrus searches the .la to
 	# figure out what the name is supposed to be instead
-	use static-libs || [[ $(get_modname) != .so ]] || \
-		prune_libtool_files --modules
+	if ! use static-libs && [[ $(get_modname) == .so ]] ; then
+		find "${ED}" -name "*.la" -delete || die
+	fi
 }
 
 pkg_postinst () {
