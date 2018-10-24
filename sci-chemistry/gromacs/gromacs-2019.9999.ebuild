@@ -5,7 +5,9 @@ EAPI=6
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit bash-completion-r1 cmake-utils cuda eutils multilib readme.gentoo-r1 toolchain-funcs xdg-utils
+PYTHON_COMPAT=( python2_7 )
+
+inherit bash-completion-r1 cmake-utils cuda eutils multilib python-any-r1 readme.gentoo-r1 toolchain-funcs xdg-utils
 
 if [[ $PV = *9999* ]]; then
 	EGIT_REPO_URI="git://git.gromacs.org/gromacs.git
@@ -53,7 +55,8 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
-		dev-python/sphinx
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]')
 		media-gfx/mscgen
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
@@ -165,6 +168,7 @@ src_configure() {
 		-DGMX_COOL_QUOTES=$(usex offensive)
 		-DGMX_USE_TNG=$(usex tng)
 		-DGMX_BUILD_MANUAL=$(usex doc)
+		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DGMX_HWLOC=$(usex hwloc)
 		-DGMX_DEFAULT_SUFFIX=off
 		-DGMX_SIMD="$acce"
