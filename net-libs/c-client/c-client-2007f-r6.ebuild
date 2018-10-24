@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit flag-o-matic eutils libtool toolchain-funcs multilib
+inherit flag-o-matic libtool toolchain-funcs multilib
 
 MY_PN=imap
 MY_P="${MY_PN}-${PV}"
