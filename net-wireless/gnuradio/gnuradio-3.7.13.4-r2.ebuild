@@ -23,9 +23,7 @@ else
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 if [[ ${PV} == "3.7.9999" ]]; then
-	EGIT_BRANCH="maint"
-elif [[ ${PV} == "3.8.9999" ]]; then
-	EGIT_BRANCH="next"
+	EGIT_BRANCH="maint-3.7"
 fi
 
 IUSE="+audio +alsa atsc +analog +digital channels doc dtv examples fcd fec +filter grc jack log noaa oss pager performance-counters portaudio +qt5 sdl test trellis uhd vocoder +utils wavelet wxwidgets zeromq"
@@ -53,7 +51,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-lang/orc-0.4.12
 	dev-libs/boost:0=[${PYTHON_USEDEP}]
 	!<=dev-libs/boost-1.52.0-r6:0/1.52
-	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/mako[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	sci-libs/fftw:3.0=
 	alsa? (
@@ -62,9 +60,10 @@ RDEPEND="${PYTHON_DEPS}
 	fcd? ( virtual/libusb:1 )
 	filter? ( sci-libs/scipy )
 	grc? (
-		dev-python/pygobject:*[cairo(+),${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-		dev-python/mako[${PYTHON_USEDEP}]
+		dev-python/cheetah[${PYTHON_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
+		>=dev-python/pygtk-2.10:2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 	)
 	jack? (
 		media-sound/jack-audio-connection-kit
@@ -90,6 +89,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	wxwidgets? (
 		dev-python/wxpython:3.0[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 	)
 	zeromq? ( >=net-libs/zeromq-2.1.11 )
 	"
@@ -111,7 +111,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	gnome2_environment_reset #534582
 
-	if [[ ${PV} == "3.8.9999" ]]; then
+	if [[ ${PV} == "9999" ]]; then
 		true
 	else
 		epatch "${FILESDIR}"/gnuradio-wxpy3.0-compat.patch
@@ -129,6 +129,7 @@ src_prepare() {
 }
 
 src_configure() {
+	#zeromq missing deps isn't fatal
 	python_export PYTHON_SITEDIR
 	mycmakeargs=(
 		-DENABLE_DEFAULT=OFF
