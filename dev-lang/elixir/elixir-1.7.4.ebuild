@@ -1,9 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit multilib
+EAPI=7
 
 DESCRIPTION="Elixir programming language"
 HOMEPAGE="https://elixir-lang.org"
@@ -19,8 +17,6 @@ DEPEND=">=dev-lang/erlang-18[ssl]"
 RDEPEND="${DEPEND}
 	!!sci-biology/phylip
 "
-
-RESTRICT=test # needs debug symbols
 
 src_compile() {
 	emake Q=""
