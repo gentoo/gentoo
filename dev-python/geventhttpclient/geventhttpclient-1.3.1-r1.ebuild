@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,7 +36,9 @@ python_prepare_all() {
 
 python_test() {
 	# Ignore tests which require network access
-	py.test src/geventhttpclient/tests --ignore \
+	# Append to sys.path to avoid ImportError
+	# https://bugs.gentoo.org/667758
+	pytest --import-mode=append -vv src/geventhttpclient/tests --ignore \
 		src/geventhttpclient/tests/test_client.py || \
 		die "Tests failed with ${EPYTHON}"
 }
