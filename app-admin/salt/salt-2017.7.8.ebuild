@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ if [[ ${PV} == 9999* ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~x86 ~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="Apache-2.0"
@@ -94,7 +94,7 @@ RESTRICT="x86? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2017.7.0-dont-realpath-tmpdir.patch"
-	"${FILESDIR}/${PN}-2017.7.3-tests.patch"
+	"${FILESDIR}/${PN}-2017.7.8-tests.patch"
 )
 
 python_prepare() {
