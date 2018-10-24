@@ -42,6 +42,8 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
+	eapply "${FILESDIR}/${P}-build_limit_without_libnftnl_fix.patch" #669486
+
 	# use the saner headers from the kernel
 	rm -f include/linux/{kernel,types}.h
 

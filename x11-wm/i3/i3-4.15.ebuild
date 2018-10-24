@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,8 +31,6 @@ CDEPEND="dev-libs/libev
 	>=x11-libs/cairo-1.14.4[X,xcb]
 	>=x11-libs/pango-1.30.0[X]"
 DEPEND="${CDEPEND}
-	app-text/asciidoc
-	doc? ( app-text/xmlto dev-lang/perl )
 	test? (
 		dev-perl/AnyEvent
 		>=dev-perl/X11-XCB-0.120.0
