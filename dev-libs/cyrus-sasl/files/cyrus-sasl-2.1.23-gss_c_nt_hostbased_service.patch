@@ -1,6 +1,6 @@
 Gentoo bug #389349
---- cmulocal/sasl2.m4	2009-04-28 17:09:13.000000000 +0200
-+++ cmulocal/sasl2.m4	2011-11-02 17:55:24.000000000 +0100
+--- a/cmulocal/sasl2.m4
++++ b/cmulocal/sasl2.m4
 @@ -217,7 +217,11 @@
                   [AC_WARN([Cybersafe define not found])])
  

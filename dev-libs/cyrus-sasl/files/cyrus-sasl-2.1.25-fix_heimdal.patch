@@ -1,7 +1,7 @@
 Fix compiling against heimdal
 
---- sample/server.c	2010-12-01 14:52:55.000000000 +0000
-+++ sample/server.c	2011-11-30 14:54:42.000000000 +0000
+--- a/sample/server.c
++++ b/sample/server.c
 @@ -85,8 +85,10 @@
  
  #ifdef HAVE_GSS_GET_NAME_ATTRIBUTE
@@ -13,8 +13,8 @@ Fix compiling against heimdal
  
  #include "common.h"
  
---- plugins/gssapi.c	2011-05-11 19:25:55.000000000 +0000
-+++ plugins/gssapi.c	2011-11-30 14:54:33.000000000 +0000
+--- a/plugins/gssapi.c
++++ b/plugins/gssapi.c
 @@ -50,6 +50,9 @@
  #else
  #include <gssapi/gssapi.h>
