@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,10 +28,11 @@ RDEPEND="
 	$(add_qt_dep qtwidgets)
 	net-libs/libmnl
 "
-
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 "
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
 
 src_configure() {
 	local mycmakeargs=(
