@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare test
-DEPEND=dev-libs/libev dev-libs/libpcre >=dev-libs/yajl-2.0.3 x11-libs/libxcb[xkb] x11-libs/libxkbcommon[X] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-cursor x11-libs/xcb-util-keysyms x11-libs/xcb-util-wm x11-libs/xcb-util-xrm x11-misc/xkeyboard-config >=x11-libs/cairo-1.14.4[X,xcb] >=x11-libs/pango-1.30.0[X] app-text/asciidoc doc? ( app-text/xmlto dev-lang/perl ) test? ( dev-perl/AnyEvent >=dev-perl/X11-XCB-0.120.0 dev-perl/Inline dev-perl/Inline-C dev-perl/IPC-Run dev-perl/ExtUtils-PkgConfig dev-perl/local-lib >=virtual/perl-Test-Simple-0.940.0 x11-base/xorg-server[xephyr] ) virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEPEND=dev-libs/libev dev-libs/libpcre >=dev-libs/yajl-2.0.3 x11-libs/libxcb[xkb] x11-libs/libxkbcommon[X] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-cursor x11-libs/xcb-util-keysyms x11-libs/xcb-util-wm x11-libs/xcb-util-xrm x11-misc/xkeyboard-config >=x11-libs/cairo-1.14.4[X,xcb] >=x11-libs/pango-1.30.0[X] test? ( dev-perl/AnyEvent >=dev-perl/X11-XCB-0.120.0 dev-perl/Inline dev-perl/Inline-C dev-perl/IPC-Run dev-perl/ExtUtils-PkgConfig dev-perl/local-lib >=virtual/perl-Test-Simple-0.940.0 x11-base/xorg-server[xephyr] ) virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=An improved dynamic tiling window manager
 EAPI=6
 HOMEPAGE=https://i3wm.org/
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://i3wm.org/downloads/i3-4.15.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	out-of-source	15edba2977da53bbf4d1e5a60abc0e34	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	virtualx	401b718cc14d43a5a7fbe062c4851ba5
-_md5_=0de6775c505c2d92a6f0a68f746e5b9c
+_md5_=7a320b3d4208fa06ee4d7c1cb64cf9e2
