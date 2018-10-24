@@ -28,7 +28,7 @@ RDEPEND="
 	>=net-libs/libsoup-2.38:2.4
 	>=x11-libs/libnotify-0.7
 	>=x11-libs/gtk+-3.10.0:3
-	>=net-libs/webkit-gtk-2.3.91:4[jit=]
+	>=net-libs/webkit-gtk-2.3.91:4[jit=,opengl]
 	granite? ( >=dev-libs/granite-0.2 )
 	xscreensaver? (
 		x11-libs/libX11
