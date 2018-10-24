@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=!net-misc/arpd !minimal? ( net-libs/libmnl ) elf? ( virtual/libelf ) iptables? ( >=net-firewall/iptables-1.4.20:= ) berkdb? ( sys-libs/db:= ) atm? ( net-dialup/linux-atm ) selinux? ( sys-libs/libselinux ) app-arch/xz-utils iptables? ( virtual/pkgconfig ) >=sys-devel/bison-2.4 sys-devel/flex >=sys-kernel/linux-headers-3.16 elibc_glibc? ( >=sys-libs/glibc-2.7 )
+DESCRIPTION=kernel routing and traffic control utilities
+EAPI=6
+HOMEPAGE=https://wiki.linuxfoundation.org/networking/iproute2
+IUSE=atm berkdb elf +iptables ipv6 minimal selinux
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=!net-misc/arpd !minimal? ( net-libs/libmnl ) elf? ( virtual/libelf ) iptables? ( >=net-firewall/iptables-1.4.20:= ) berkdb? ( sys-libs/db:= ) atm? ( net-dialup/linux-atm ) selinux? ( sys-libs/libselinux )
+SLOT=0
+SRC_URI=mirror://kernel/linux/utils/net/iproute2/iproute2-4.19.0.tar.xz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=eb9a87b4c709827fc195a52226036783
