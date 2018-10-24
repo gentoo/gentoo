@@ -2,12 +2,12 @@ DEFINED_PHASES=configure install prepare
 DEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) >=app-portage/elt-patches-20170815
 DESCRIPTION=lib that implements the client side of the SMTP protocol
 EAPI=5
-HOMEPAGE=http://www.stafford.uklinux.net/libesmtp/
+HOMEPAGE=http://brianstafford.info/libesmtp/
 IUSE=debug libressl ntlm ssl static-libs threads
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=LGPL-2.1 GPL-2
 RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) )
 SLOT=0
-SRC_URI=http://www.stafford.uklinux.net/libesmtp/libesmtp-1.0.6.tar.bz2
+SRC_URI=http://brianstafford.info/libesmtp/libesmtp-1.0.6.tar.bz2
 _eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=eb5c1b04a82365568726424c1e5acb93
+_md5_=8fbbac850ec261e58f547f151f204c2c
