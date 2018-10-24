@@ -1,17 +1,17 @@
 certificate version 0.1
-pusher 0x6D144E3C 1540374351 +0200
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1540374351-89ff884f228c0eae33d5ebe6d1ea6cc6221e90ba
+pusher Virgil Dupras <vdupras@gentoo.org> 1540381770 -0400
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1540381770-35a2b0202a791c2215e32421e7011c696c88ad6d
 
-6c76f6521560c1b8f14eb034b2f4e3ab9611ff6b 35edd05a5530db10454d9347720e36ae954a20eb refs/heads/master
+35edd05a5530db10454d9347720e36ae954a20eb 80d731cd86741c9e87fe3db4fb117b977d1c866b refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCAAdFiEEQwXByBBw8WdBpeHBoxriUZNShEoFAlvQP08ACgkQoxriUZNS
-hEqnqwgA0gV58AoNylJ/ak1EWca/JrYFtFwTbddxDVdI2A48Rt+la81kQd9b1Nfv
-KR/WatfDsbEb7Bg0ynohb57aXfE4PJpV6svSmQCd5PjpL5DlS5ntQ508DGFPxnNY
-/bfTsMPn0qo7iOPtKgY1/Xe8EV9HerpHL9+sY3gc0TcjbM6/G1UNDXj7Q0cE/LTZ
-OmQoQDm+ZIYfecYeNfY1kb+CBZ3UEe8sx993lqZ6YB50lSoytl52VNmErSF/m9JH
-49j/589fhDvoVRWwPX18V6cmtuNwJSQOSzyIvSW4b/S/UO1rxwlaAHvN6DjZ/zwV
-nJM//H1j7ex0iHu8ovnGiEayAgAWfw==
-=Vdc5
+iQFHBAABCAAxFiEEzxAa2B+saKTW8nfCbgMDJWya24wFAlvQXEoTHHZkdXByYXNA
+Z2VudG9vLm9yZwAKCRBuAwMlbJrbjIwwB/9iQPPZ7tbBAY8DOQ9dDoCfokcBgO+p
+fh+VASEep862pIbWP5vat3iZLdav42+LysomGlTCAZu6oYDlKxy/xxiXMO2ST3ny
+VMj7gcc1vjq46uaklQq3U9f74JEqDzuuxrxo44Gng4vJamqXcJFBA/DQpoaTWXJm
+oqQg4wUtaQv2J2zyznrgu7/wy9603yqyHaoqK0bVSLhyg02/C9ZKW5hHenEq8msZ
+FDyh1T4NIXzogAkKnQD4ejhlMzrEstMH5YxFFVaNA3a+d57D5a7WqiLia2WcjYSZ
+3yswzSYYSdhRftct8OfzsEBwrWJsJY3jCKSmA9pLWgKlXhuo/d+S8Mid
+=d+yK
 -----END PGP SIGNATURE-----
