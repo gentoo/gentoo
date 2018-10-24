@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 CMAKE_BUILD_TYPE="None"
-inherit cmake-utils eutils gnome2-utils python-single-r1 xdg-utils
+inherit cmake-utils eutils gnome2-utils python-single-r1 python-utils-r1 xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
 HOMEPAGE="https://www.gnuradio.org/"
@@ -48,7 +48,8 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-lang/orc-0.4.12
 	dev-libs/boost:0=[${PYTHON_USEDEP}]
 	!<=dev-libs/boost-1.52.0-r6:0/1.52
-	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/mako[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	sci-libs/fftw:3.0=
 	alsa? (
 		media-libs/alsa-lib:=
@@ -59,6 +60,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-python/cheetah[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		>=dev-python/pygtk-2.10:2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 	)
 	jack? (
 		media-sound/jack-audio-connection-kit
@@ -76,9 +78,8 @@ RDEPEND="${PYTHON_DEPS}
 		>=sci-libs/gsl-1.10
 	)
 	wxwidgets? (
-		dev-python/lxml[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/wxpython:3.0[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 	)
 	zeromq? ( >=net-libs/zeromq-2.1.11 )
 	"
@@ -86,7 +87,6 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.2
 	>=dev-lang/swig-3.0.5
-	dev-python/cheetah[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? (
 		>=app-doc/doxygen-1.5.7.1
@@ -117,16 +117,8 @@ src_prepare() {
 }
 
 src_configure() {
-	# SYSCONFDIR/GR_PREFSDIR default to install below CMAKE_INSTALL_PREFIX
-	#audio provider is still automagic
 	#zeromq missing deps isn't fatal
-	#remaining QA issues, these appear broken:
-	#ENABLE_ENABLE_PERFORMANCE_COUNTERS
-	#ENABLE_GR_AUDIO_ALSA
-	#ENABLE_GR_AUDIO_JACK
-	#ENABLE_GR_AUDIO_OSS
-	#ENABLE_GR_AUDIO_PORTAUDIO
-	#ENABLE_GR_CORE
+	python_export PYTHON_SITEDIR
 	mycmakeargs=(
 		-DENABLE_DEFAULT=OFF
 		-DENABLE_GNURADIO_RUNTIME=ON
@@ -167,6 +159,7 @@ src_configure() {
 		-DENABLE_GR_CORE=ON
 		-DSYSCONFDIR="${EPREFIX}"/etc
 		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DGR_PYTHON_DIR="${PYTHON_SITEDIR}"
 		-DGR_PKG_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 	)
 	use vocoder && mycmakeargs+=( -DGR_USE_SYSTEM_LIBGSM=TRUE )
