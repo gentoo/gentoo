@@ -43,7 +43,7 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	default
 	if has_version '>=dev-libs/libressl-2.7.3'; then
-	eapply ${FILESDIR}/libressl.patch
+	eapply "${FILESDIR}"/libressl.patch
 	fi
 }
 
