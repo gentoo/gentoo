@@ -23,7 +23,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.23.1:=
+	>=dev-libs/libuv-1.23.2:=
 	>=net-libs/http-parser-2.8.0:=
 	>=net-libs/nghttp2-1.34.0
 	sys-libs/zlib
