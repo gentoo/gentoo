@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron W. Swenson <titanofold@gentoo.org> (25 Oct 2018)
+# Fails to build against up to date OpenSSL library (Bug 663966). No longer
+# supported upstream. Use dev-db/pgadmin4.
+# Masked for removal on 2018-11-24, bug #669650.
+dev-db/pgadmin3
+
 # Ulrich Müller <ulm@gentoo.org> (23 Oct 2018)
 # Depends on <www-client/firefox-57 which is package masked.
 # Use www-client/surf or www-client/qutebrowser as replacement.
