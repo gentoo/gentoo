@@ -1,17 +1,21 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools elisp-common python-single-r1 systemd user versionator
+inherit autotools
+inherit elisp-common
+inherit python-single-r1
+inherit systemd
+inherit user
 
 if [[ ${PV#9999} != ${PV} ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/gluster/glusterfs.git"
 else
-	SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(get_version_component_range '1-2')/${PV}/${P}.tar.gz"
+	SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(ver_cut '1-2')/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
@@ -237,7 +241,7 @@ pkg_postinst() {
 	ewarn "run GlusterFS."
 	echo
 	elog "If you are upgrading from a previous version of ${PN}, please read:"
-	elog "  http://docs.gluster.org/en/latest/Upgrade-Guide/upgrade_to_$(get_version_component_range '1-2')/"
+	elog "  http://docs.gluster.org/en/latest/Upgrade-Guide/upgrade_to_$(ver_cut '1-2')/"
 
 	use emacs && elisp-site-regen
 }
