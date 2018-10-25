@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=>=dev-libs/openssl-1.0.2:0=[-bindist] dev-libs/protobuf:= dev-util/google-perftools net-dns/c-ares:= sys-libs/zlib:= systemtap? ( dev-util/systemtap ) virtual/pkgconfig
+DESCRIPTION=Modern open source high performance RPC framework
+EAPI=7
+HOMEPAGE=http://www.grpc.io
+IUSE=examples doc systemtap static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=dev-libs/openssl-1.0.2:0=[-bindist] dev-libs/protobuf:= dev-util/google-perftools net-dns/c-ares:= sys-libs/zlib:= systemtap? ( dev-util/systemtap )
+SLOT=0
+SRC_URI=https://github.com/grpc/grpc/archive/v1.16.0.tar.gz -> grpc-1.16.0.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=79c289209b76161a8aea79f0133020cf
