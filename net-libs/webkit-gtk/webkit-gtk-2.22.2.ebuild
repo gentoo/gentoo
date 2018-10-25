@@ -39,6 +39,7 @@ RESTRICT="test"
 # Dependencies found at Source/cmake/OptionsGTK.cmake
 # Various compile-time optionals for gtk+-3.22.0 - ensure it
 # Missing OpenWebRTC checks and conditionals, but ENABLE_MEDIA_STREAM/ENABLE_WEB_RTC is experimental upstream (PRIVATE OFF)
+# TODO: Raise gst-plugins-opus dep to 1.14.4-r1 once we can, and eventually drop the blocker from epiphany; or remove the dep when older than -opus-1.14.4-r1 is not available anymore
 RDEPEND="
 	>=x11-libs/cairo-1.10.2:=[X?]
 	>=media-libs/fontconfig-2.8.0:1.0
@@ -69,6 +70,7 @@ RDEPEND="
 	gstreamer? (
 		>=media-libs/gstreamer-1.8.3:1.0
 		>=media-libs/gst-plugins-base-1.8.3:1.0
+		>=media-plugins/gst-plugins-opus-1.8.3:1.0
 		>=media-libs/gst-plugins-bad-1.10:1.0[egl?,gles2?,opengl?] )
 
 	X? (
