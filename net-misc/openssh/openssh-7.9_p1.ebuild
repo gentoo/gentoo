@@ -169,6 +169,7 @@ src_prepare() {
 		popd
 
 		eapply "${hpn_patchdir}"
+		eapply "${FILESDIR}/openssh-7.9_p1-hpn-openssl-1.1.patch"
 
 		einfo "Patching Makefile.in for HPN patch set ..."
 		sed -i \
