@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-util/intltool virtual/pkgconfig dev-libs/gmime:2.6 dev-libs/libxml2 openssl? ( dev-libs/openssl:= ) !openssl? ( dev-libs/nss ) kerberos? ( virtual/krb5 ) voice? ( >=dev-libs/glib-2.28.0 >=net-libs/libnice-0.1.0 media-libs/gstreamer:1.0 net-libs/farstream:0.2 ) !voice? ( >=dev-libs/glib-2.12.0:2 ) net-im/pidgin[dbus?] telepathy? ( >=sys-apps/dbus-1.1.0 >=dev-libs/dbus-glib-0.61 >=dev-libs/glib-2.28:2 >=net-libs/telepathy-glib-0.18.0 ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Pidgin Plug-in SIPE (Sip Exchange Protocol)
+EAPI=6
+HOMEPAGE=http://sipe.sourceforge.net/
+IUSE=dbus debug kerberos ocs2005-message-hack openssl telepathy voice
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/gmime:2.6 dev-libs/libxml2 openssl? ( dev-libs/openssl:= ) !openssl? ( dev-libs/nss ) kerberos? ( virtual/krb5 ) voice? ( >=dev-libs/glib-2.28.0 >=net-libs/libnice-0.1.0 media-libs/gstreamer:1.0 net-libs/farstream:0.2 ) !voice? ( >=dev-libs/glib-2.12.0:2 ) net-im/pidgin[dbus?] telepathy? ( >=sys-apps/dbus-1.1.0 >=dev-libs/dbus-glib-0.61 >=dev-libs/glib-2.28:2 >=net-libs/telepathy-glib-0.18.0 )
+SLOT=0
+SRC_URI=mirror://sourceforge/sipe/pidgin-sipe-1.23.3.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=7d8947161e84c9cae0a7e8db007a7791

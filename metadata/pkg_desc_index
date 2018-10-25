@@ -8219,7 +8219,7 @@ media-tv/kodi 17.3-r1: A free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20100223-r1: Small utils for DVB to scan, zap, view signal strength, ...
 media-tv/plex-media-server 1.11.3 1.12.3: A free media library that is intended for use with a plex client.
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
-media-tv/tvnamer 2.3 2.4: Automatic TV episode file renamer, data from thetvdb.com
+media-tv/tvnamer 2.4: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20170225: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
 media-tv/v4l-utils 1.10.1: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20141122: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
@@ -9296,7 +9296,7 @@ sci-chemistry/rasmol 2.7.5.2-r2: Molecular Graphics Visualisation Tool
 sci-chemistry/raster3d 3.0.2: Generation high quality raster images of proteins or other molecules
 sci-chemistry/reduce 3.16.111118: Adds hydrogens to a Protein Data Bank (PDB) molecule structure file
 sci-chemistry/shelx 20141228: Crystal structure determination from single-crystal diffraction data
-sci-chemistry/tm-align 20140601: Quick & Accurate Structural Alignment
+sci-chemistry/tm-align 20140601 20150914: Quick & Accurate Structural Alignment
 sci-chemistry/votca-csg 1.4: Votca coarse-graining engine
 sci-chemistry/votca-csgapps 1.4: Extra applications for votca-csg
 sci-chemistry/votca-xtp 1.4: Votca excitation and charge properties module
