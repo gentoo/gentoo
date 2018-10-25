@@ -36,7 +36,8 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	x11-themes/adwaita-icon-theme
-"
+	!<media-plugins/gst-plugins-opus-1.14.4-r1
+" # Ensure opusparse is present, if gstreamer support is included in webkit
 # paxctl needed for bug #407085
 # appstream-glib needed for appdata.xml gettext translation
 DEPEND="${COMMON_DEPEND}
