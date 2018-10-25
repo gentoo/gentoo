@@ -180,6 +180,9 @@ src_unpack() {
 src_prepare() {
 	eapply "${WORKDIR}/firefox"
 
+	# Allow user to apply any additional patches without modifing ebuild
+	eapply_user
+
 	# Enable gnomebreakpad
 	if use debug ; then
 		sed -i -e "s:GNOME_DISABLE_CRASH_DIALOG=1:GNOME_DISABLE_CRASH_DIALOG=0:g" \
@@ -221,8 +224,10 @@ src_prepare() {
 	sed '/^MOZ_DEV_EDITION=1/d' \
 		-i "${S}"/browser/branding/aurora/configure.sh || die
 
-	# Allow user to apply any additional patches without modifing ebuild
-	eapply_user
+	# rustfmt, a tool to format Rust code, is optional and not required to build Firefox.
+	# However, when available, an unsupported version can cause problems, bug #669548
+	sed -i -e "s@check_prog('RUSTFMT', add_rustup_path('rustfmt')@check_prog('RUSTFMT', add_rustup_path('rustfmt_do_not_use')@" \
+		"${S}"/build/moz.configure/rust.configure || die
 
 	# Autotools configure is now called old-configure.in
 	# This works because there is still a configure.in that happens to be for the
