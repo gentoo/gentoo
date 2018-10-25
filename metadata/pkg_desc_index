@@ -628,7 +628,7 @@ app-emacs/dircolors 1.0-r2: Provide the same facility of ls --color inside Emacs
 app-emacs/dired-sort-menu 1.26: Sort entries in Dired mode
 app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
-app-emacs/ebuild-mode 1.44 1.45: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.44 1.45 1.46: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
 app-emacs/elib 1.0-r1: The Emacs Lisp Library
 app-emacs/elscreen 1.4.6-r1: Frame configuration management for GNU Emacs modelled after GNU Screen
@@ -10714,16 +10714,16 @@ x11-apps/xwd 1.0.6 1.0.7: dump an image of an X window
 x11-apps/xwininfo 1.1.3 1.1.4: window information utility for X
 x11-apps/xwud 1.0.5: image displayer for X
 x11-base/xcb-proto 1.13: X C-language Bindings protocol headers
-x11-base/xorg-drivers 1.19: Meta package containing deps on all xorg drivers
+x11-base/xorg-drivers 1.19 1.20: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2018.4: X.Org combined protocol headers
-x11-base/xorg-server 1.19.5-r2: X.Org X servers
+x11-base/xorg-server 1.19.5-r2 1.20.3: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/nvidia-drivers 304.137 340.107 375.82 378.13-r1 381.22-r1 384.130 387.34 390.87 396.54: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.5 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
 x11-drivers/xf86-input-keyboard 1.9.0: Keyboard input driver
-x11-drivers/xf86-input-libinput 0.27.1: X.org input driver based on libinput
+x11-drivers/xf86-input-libinput 0.27.1 0.28.1: X.org input driver based on libinput
 x11-drivers/xf86-input-mouse 1.9.3: X.Org driver for mouse input devices
 x11-drivers/xf86-input-mtrack 0.5.0: Xorg Driver for Multitouch Trackpads
 x11-drivers/xf86-input-synaptics 1.9.0 1.9.1: Driver for Synaptics touchpads
@@ -10731,9 +10731,9 @@ x11-drivers/xf86-input-tslib 1.2.0_rc1: X.org tslib input driver
 x11-drivers/xf86-input-vmmouse 13.1.0-r1: VMWare mouse input driver
 x11-drivers/xf86-input-void 1.4.1: null input driver
 x11-drivers/xf86-input-wacom 0.34.0 0.36.0 0.36.0-r2: Driver for Wacom tablets and drawing devices
-x11-drivers/xf86-video-amdgpu 18.0.1: Accelerated Open Source driver for AMDGPU cards
+x11-drivers/xf86-video-amdgpu 18.0.1 18.1.0: Accelerated Open Source driver for AMDGPU cards
 x11-drivers/xf86-video-ast 0.97.0-r1 1.0.1 1.1.5: X.Org driver for ASpeedTech cards
-x11-drivers/xf86-video-ati 18.0.1 18.0.1-r1: ATI video driver
+x11-drivers/xf86-video-ati 18.0.1 18.0.1-r1 18.1.0: ATI video driver
 x11-drivers/xf86-video-dummy 0.3.8: X.Org driver for dummy cards
 x11-drivers/xf86-video-fbdev 0.5.0: video driver for framebuffer device
 x11-drivers/xf86-video-glint 1.2.9: GLINT/Permedia video driver
@@ -10743,7 +10743,7 @@ x11-drivers/xf86-video-nouveau 1.0.15 1.0.15-r1: Accelerated Open Source driver 
 x11-drivers/xf86-video-nv 2.1.21: Nvidia 2D only video driver
 x11-drivers/xf86-video-openchrome 0.5.0 0.6.0: X.Org driver for VIA/S3G cards
 x11-drivers/xf86-video-qxl 0.1.5: QEMU QXL paravirt video driver
-x11-drivers/xf86-video-r128 6.10.2: ATI Rage128 video driver
+x11-drivers/xf86-video-r128 6.10.2 6.12.0: ATI Rage128 video driver
 x11-drivers/xf86-video-siliconmotion 1.7.9: Silicon Motion video driver
 x11-drivers/xf86-video-tdfx 1.4.7: 3Dfx video driver
 x11-drivers/xf86-video-vboxvideo 1.0.0: VirtualBox guest video driver
