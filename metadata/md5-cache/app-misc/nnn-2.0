@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=sys-libs/ncurses:0= sys-libs/readline:0=
+DESCRIPTION=The missing terminal file browser for X
+EAPI=6
+HOMEPAGE=https://github.com/jarun/nnn
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=sys-libs/ncurses:0= sys-libs/readline:0=
+SLOT=0
+SRC_URI=https://github.com/jarun/nnn/archive/v2.0.tar.gz -> nnn-2.0.tar.gz
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=83137f648942ab677594675fc8f9a77f

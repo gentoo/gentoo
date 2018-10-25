@@ -551,7 +551,7 @@ app-editors/elvis 2.2.0-r6: A vi/ex clone
 app-editors/emacs 18.59-r12 23.4-r18 24.5-r5 24.5-r7 25.3-r4 25.3-r6 26.1-r1 26.1-r3: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
-app-editors/fe 1.9: A small and easy to use folding editor
+app-editors/fe 1.9 2.0: A small and easy to use folding editor
 app-editors/focuswriter 1.6.10 1.6.13: A fullscreen and distraction-free word processor
 app-editors/fte 20051115-r3: Lightweight text-mode editor
 app-editors/gedit 3.22.1: A text editor for the GNOME desktop
@@ -11271,7 +11271,7 @@ x11-themes/neutral-xcursors 20150106: A family of smoothed and shadowed cursors 
 x11-themes/nimbus 0.1.7-r1: The default OpenSolaris theme (GTK+ 2.x engine, icon- and metacity theme)
 x11-themes/noia 1.0-r1: The Noia icon theme
 x11-themes/numix-icon-theme 18.07.17: An official icon theme from the Numix Project
-x11-themes/numix-icon-theme-circle 18.08.29: An icon theme for Linux from the Numix project
+x11-themes/numix-icon-theme-circle 18.08.29 18.09.19 18.10.03: An icon theme for Linux from the Numix project
 x11-themes/nuvola 1.0-r1: Nuvola SVG icon theme
 x11-themes/nuvox 07.1-r1: NuvoX SVG icon theme
 x11-themes/obsidian-xcursors 1.0: A shiny and clean xcursor theme
