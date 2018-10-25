@@ -8603,7 +8603,7 @@ net-irc/bip 0.8.9: Multiuser IRC proxy with SSL support
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
 net-irc/dccserver 0.5-r1: linux implementation of the mirc dccserver command
 net-irc/dircproxy 1.2.0_rc1: an IRC proxy server
-net-irc/eggdrop 1.6.21-r1: An IRC bot extensible with C or TCL
+net-irc/eggdrop 1.6.21-r1 1.8.3: An IRC bot extensible with C or TCL
 net-irc/eiwic 1.1.4: A modular IRC bot written in C
 net-irc/emech 3.0.3-r1: UNIX compatible IRC bot programmed in the C language
 net-irc/epic4 2.10.1: Epic4 IRC Client
