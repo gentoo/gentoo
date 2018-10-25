@@ -57,10 +57,6 @@ RDEPEND="
 	gtk? (
 		$(add_plasma_dep breeze-gtk)
 		$(add_plasma_dep kde-gtk-config)
-		legacy-systray? (
-			dev-libs/libappindicator:3
-			dev-libs/libappindicator:2
-		)
 	)
 	handbook? ( $(add_kdeapps_dep khelpcenter) )
 	legacy-systray? ( $(add_plasma_dep xembed-sni-proxy) )
