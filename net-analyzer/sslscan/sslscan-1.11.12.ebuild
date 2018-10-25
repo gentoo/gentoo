@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-# Upstream now builds against the 1.0.2-chacha branch of PeterMosmans
-MOSMANS_OPENSSL_COMMIT=e90b60086e4ed9649cb3aab08f2b4c6529e7a95a
+# Upstream now builds against the openssl 1.0.x fork by PeterMosmans
+MOSMANS_OPENSSL_COMMIT=c9ba19c8b7fd131137373dbd1fccd6a8bb0628be
 
 inherit eutils toolchain-funcs
 
@@ -16,12 +16,10 @@ SRC_URI="https://github.com/${MY_FORK}/${PN}/archive/${PV}-${MY_FORK}.tar.gz -> 
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="libressl +static"
 
-# Depend on -bindist since sslscan unconditionally requires elliptic
-# curve support, bug 491102
-DEPEND="!libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libressl )"
+DEPEND="libressl? ( dev-libs/libressl )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${P}-${MY_FORK}"
