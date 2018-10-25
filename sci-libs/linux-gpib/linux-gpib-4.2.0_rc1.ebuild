@@ -70,7 +70,7 @@ src_compile() {
 		INSTALL_MOD_PATH="${D}" \
 		HOTPLUG_USB_CONF_DIR=/etc/hotplug/usb \
 		UDEV_RULES_DIR="$(get_udevdir)"/rules.d \
-		USB_FIRMWARE_DIR="${D}"${FIRM_DIR} \
+		USB_FIRMWARE_DIR=${FIRM_DIR} \
 		docdir=/usr/share/doc/${PF}/html
 }
 
@@ -81,7 +81,7 @@ src_install() {
 		INSTALL_MOD_PATH="${D}" \
 		HOTPLUG_USB_CONF_DIR=/etc/hotplug/usb \
 		UDEV_RULES_DIR="$(get_udevdir)"/rules.d \
-		USB_FIRMWARE_DIR="${D}"${FIRM_DIR} \
+		USB_FIRMWARE_DIR=${FIRM_DIR} \
 		docdir=/usr/share/doc/${PF}/html install
 
 	if use perl; then
