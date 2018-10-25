@@ -29,3 +29,8 @@ DEPEND="app-text/mupdf
 RDEPEND="${DEPEND}"
 
 BDEPEND="virtual/pkgconfig"
+
+src_prepare() {
+	sed -i -e '/mupdfthird/d' meson.build || die "sed failed"
+	default
+}
