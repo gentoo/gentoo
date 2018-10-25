@@ -1874,7 +1874,7 @@ dev-db/libdbi 0.9.0: A database-independent abstraction layer in C
 dev-db/libdbi-drivers 0.9.0: The libdbi-drivers project maintains drivers for libdbi
 dev-db/libiodbc 3.52.8-r2: ODBC Interface for Linux
 dev-db/libzdb 2.11.1 2.12 3.1: A thread safe high level multi-database connection pool library
-dev-db/lmdb 0.9.18: An ultra-fast, ultra-compact key-value embedded data store
+dev-db/lmdb 0.9.18 0.9.22: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/m17n-db 1.7.0: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
 dev-db/mariadb 10.0.35-r2 10.1.34: An enhanced, drop-in replacement for MySQL
@@ -8549,7 +8549,7 @@ net-fs/netatalk 3.1.8 3.1.10: Open Source AFP server
 net-fs/nfs-utils 2.3.1-r3: NFS client and server daemons
 net-fs/openafs 1.6.22.1: The OpenAFS distributed file system
 net-fs/s3fs 1.80: Amazon S3 mounting via fuse
-net-fs/samba 4.5.16: Samba Suite Version 4
+net-fs/samba 4.5.16 4.8.6: Samba Suite Version 4
 net-fs/sshfs 2.8: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7-r3 0.7-r5: Advanced TFTP implementation client/server
@@ -10228,7 +10228,7 @@ sys-libs/glibc 2.26-r7 2.27-r6: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.20.0: A multi-platform helper library for other libraries
 sys-libs/kpmcore 3.3.0: Library for managing partitions
-sys-libs/ldb 1.1.26 1.1.29-r1: An LDAP-like embedded database
+sys-libs/ldb 1.1.26 1.1.29-r1 1.5.1: An LDAP-like embedded database
 sys-libs/libaal 1.0.6: library required by reiser4progs
 sys-libs/libapparmor 2.12.0: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r1: library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
@@ -10271,9 +10271,9 @@ sys-libs/pam 1.2.1-r2 1.3.0-r2: Linux-PAM (Pluggable Authentication Modules)
 sys-libs/pwdb 0.62-r1: Password database
 sys-libs/readline 4.3_p5 5.2_p14 6.3_p8-r3 7.0_p3: Another cute console display library
 sys-libs/slang 2.3.2: Multi-platform library designed to allow a developer to create robust software
-sys-libs/talloc 2.1.5 2.1.9: Samba talloc library
-sys-libs/tdb 1.3.8 1.3.13: A simple database API
-sys-libs/tevent 0.9.28 0.9.31-r1: Samba tevent library
+sys-libs/talloc 2.1.5 2.1.9 2.1.14: Samba talloc library
+sys-libs/tdb 1.3.8 1.3.13 1.3.16: A simple database API
+sys-libs/tevent 0.9.28 0.9.31-r1 0.9.37: Samba tevent library
 sys-libs/timezone-data 2017c 2018d 2018e: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc-ng 1.0.26 1.0.30-r1: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.1: A wrapper to fake privilege separation
@@ -10586,7 +10586,7 @@ www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web brow
 www-client/epiphany 3.26.7: GNOME webbrowser based on Webkit
 www-client/falkon 3.0.1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 60.2.2: Firefox Web Browser
+www-client/firefox 60.2.2 60.3.0: Firefox Web Browser
 www-client/firefox-bin 60.3.0 63.0: Firefox Web Browser
 www-client/httrack 3.48.21-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/links 2.14-r1: A fast and lightweight web browser running in both graphics and text mode
