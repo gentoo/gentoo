@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic eapi7-ver systemd
+inherit flag-o-matic eapi7-ver systemd autotools
 
 MY_PV=${PV/_rc/RC}
 DESCRIPTION="The PHP language runtime engine"
@@ -226,6 +226,11 @@ src_prepare() {
 	sed -i "s~^include=.*$~include=${PHP_INI_DIR}/fpm.d/*.conf~" \
 		sapi/fpm/php-fpm.conf.in \
 		|| die 'failed to move the include directory in php-fpm.conf'
+
+	# Bug 669566 - necessary so that build tools are updated for commands like pecl
+	# Force rebuilding aclocal.m4
+	rm -f aclocal.m4 || die "failed to remove aclocal.m4 in src_prepare"
+	eautoreconf
 }
 
 src_configure() {
