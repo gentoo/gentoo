@@ -10228,7 +10228,7 @@ sys-libs/glibc 2.26-r7 2.27-r6: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.20.0: A multi-platform helper library for other libraries
 sys-libs/kpmcore 3.3.0: Library for managing partitions
-sys-libs/ldb 1.1.26 1.1.29-r1 1.5.1: An LDAP-like embedded database
+sys-libs/ldb 1.1.26 1.1.29-r1 1.3.6: An LDAP-like embedded database
 sys-libs/libaal 1.0.6: library required by reiser4progs
 sys-libs/libapparmor 2.12.0: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r1: library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
