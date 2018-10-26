@@ -542,6 +542,12 @@ src_test() {
 			_disable_test "$t" "False positives in Gentoo"
 	done
 
+	# Unstable tests
+	# - main.xa_prepared_binlog_off: https://bugs.mysql.com/bug.php?id=83340
+	for t in main.xa_prepared_binlog_off ; do
+			_disable_test "$t" "Unstable test"
+	done
+
 	if use numa && use kernel_linux ; then
 		# bug 584880
 		if ! linux_config_exists || ! linux_chkconfig_present NUMA ; then
