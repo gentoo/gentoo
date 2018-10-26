@@ -16,6 +16,11 @@ IUSE="test"
 
 DEPEND="test? ( >=dev-libs/check-0.9.11[${MULTILIB_USEDEP}] )"
 
+PATCHES=(
+	# bug 664288
+	"${FILESDIR}/${PN}-0.4.1-makefile.patch"
+)
+
 src_prepare() {
 	# working around broken netsurf eclass
 	default
