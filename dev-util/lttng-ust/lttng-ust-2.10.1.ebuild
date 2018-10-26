@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ SLOT="0/${MY_SLOT}"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="examples"
 
-DEPEND="dev-libs/userspace-rcu"
+DEPEND="dev-libs/userspace-rcu:="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MY_P}
