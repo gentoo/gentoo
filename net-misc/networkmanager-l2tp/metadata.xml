@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>VPN plugin for NetworkManager 1.8 and later which provides support for L2TP and L2TP/IPsec (i.e. L2TP over IPsec) connections.</longdescription>
+	<upstream>
+		<remote-id type="github">nm-l2tp/network-manager-l2tp</remote-id>
+		<bugs-to>https://github.com/nm-l2tp/network-manager-l2tp/issues</bugs-to>
+		<doc>https://github.com/nm-l2tp/network-manager-l2tp/wiki</doc>
+		<changelog>https://github.com/nm-l2tp/network-manager-l2tp/releases</changelog>
+	</upstream>
+</pkgmetadata>
