@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -84,10 +84,10 @@ src_prepare() {
 	DOC_CONTENTS='Gnuplot no longer links against pdflib, see the ChangeLog
 		for details. You can use the "pdfcairo" terminal for PDF output.'
 	use cairo || DOC_CONTENTS+=' It is available with USE="cairo".'
-	use gd && DOC_CONTENTS+='\n\nFor font support in png/jpeg/gif output,
+	use gd && DOC_CONTENTS+="\n\nFor font support in png/jpeg/gif output,
 		you may have to set the GDFONTPATH and GNUPLOT_DEFAULT_GDFONT
 		environment variables. See the FAQ file in /usr/share/doc/${PF}/
-		for more information.'
+		for more information."
 
 	eautoreconf
 
