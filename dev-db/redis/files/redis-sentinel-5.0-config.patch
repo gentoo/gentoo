@@ -1,10 +1,19 @@
 diff --git a/sentinel.conf b/sentinel.conf
-index 3703c73..964ffa3 100644
+index bc9a705..05e58d3 100644
 --- a/sentinel.conf
 +++ b/sentinel.conf
-@@ -222,3 +222,5 @@ sentinel deny-scripts-reconfig yes
- # case, so writing "config guessme" is the same in the example above.
- #
- # SENTINEL SET can also be used in order to perform this configuration at runtime.
-+
+@@ -28,12 +28,12 @@ daemonize no
+ # When running daemonized, Redis Sentinel writes a pid file in
+ # /var/run/redis-sentinel.pid by default. You can specify a custom pid file
+ # location here.
+-pidfile /var/run/redis-sentinel.pid
++pidfile /run/redis-sentinel.pid
+ 
+ # Specify the log file name. Also the empty string can be used to force
+ # Sentinel to log on the standard output. Note that if you use standard
+ # output for logging but daemonize, logs will be sent to /dev/null
+-logfile ""
 +logfile "/var/log/redis/sentinel.log"
+ 
+ # sentinel announce-ip <ip>
+ # sentinel announce-port <port>

@@ -1,16 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic systemd toolchain-funcs user
-
-MY_PV="${PV/_/-}"
-MY_P="${PN}-${MY_PV}"
+inherit autotools eapi7-ver flag-o-matic systemd toolchain-funcs user
 
 DESCRIPTION="A persistent caching system, key-value and data structures database"
 HOMEPAGE="https://redis.io"
-SRC_URI="https://github.com/antirez/redis/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="http://download.redis.io/releases/${P}.tar.gz"
 
 LICENSE="BSD"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
@@ -24,17 +21,14 @@ RDEPEND="
 	luajit? ( dev-lang/luajit:2 )
 	!luajit? ( || ( dev-lang/lua:5.1 =dev-lang/lua-5.1*:0 ) )
 	tcmalloc? ( dev-util/google-perftools )
-	jemalloc? ( >=dev-libs/jemalloc-3.2 )"
+	jemalloc? ( >=dev-libs/jemalloc-5.1:= )"
 
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
-	>=sys-devel/autoconf-2.63
 	test? ( dev-lang/tcl:0= )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )"
-
-S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	enewgroup redis 75
