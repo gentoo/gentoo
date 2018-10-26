@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,8 @@ SLOT="3"
 KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint"
 IUSE="sctp static-libs"
 
-DEPEND="sctp? ( net-misc/lksctp-tools )"
+DEPEND="dev-libs/openssl:0=
+	sctp? ( net-misc/lksctp-tools )"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${P/_/}
