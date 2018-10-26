@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ IUSE=""
 RDEPEND="dev-libs/geoip
 	dev-libs/libcli
 	dev-libs/libnl:3
-	dev-libs/userspace-rcu
+	dev-libs/userspace-rcu:=
 	net-libs/libnet:1.1
 	net-libs/libnetfilter_conntrack
 	net-libs/libpcap
