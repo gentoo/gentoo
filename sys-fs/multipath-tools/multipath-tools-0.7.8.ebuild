@@ -17,7 +17,7 @@ IUSE="systemd rbd"
 RDEPEND="
 	dev-libs/json-c:=
 	dev-libs/libaio
-	dev-libs/userspace-rcu
+	dev-libs/userspace-rcu:=
 	>=sys-fs/lvm2-2.02.45
 	>=virtual/udev-171
 	sys-libs/readline:0=

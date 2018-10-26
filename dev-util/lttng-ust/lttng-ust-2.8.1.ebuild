@@ -17,7 +17,7 @@ SLOT="0/${MY_SLOT}"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="examples"
 
-DEPEND="dev-libs/userspace-rcu"
+DEPEND="dev-libs/userspace-rcu:="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MY_P}
