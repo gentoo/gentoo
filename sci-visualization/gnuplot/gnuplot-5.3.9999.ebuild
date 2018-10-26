@@ -86,8 +86,8 @@ src_prepare() {
 	use cairo || DOC_CONTENTS+=' It is available with USE="cairo".'
 	use gd && DOC_CONTENTS+='\n\nFor font support in png/jpeg/gif output,
 		you may have to set the GDFONTPATH and GNUPLOT_DEFAULT_GDFONT
-		environment variables. See the FAQ file in /usr/share/doc/${PF}/
-		for more information.'
+		environment variables. See the FAQ file in /usr/share/doc/' &&
+		DOC_CONTENTS+="${PF}/ for more information."
 
 	eautoreconf
 

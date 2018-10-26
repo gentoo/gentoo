@@ -9,15 +9,17 @@ DESCRIPTION="Command-line driven interactive plotting program"
 HOMEPAGE="http://www.gnuplot.info/"
 
 if [[ -z ${PV%%*9999} ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://git.code.sf.net/p/gnuplot/gnuplot-main"
-	EGIT_BRANCH="branch-5-2-stable"
+	inherit cvs
+	ECVS_SERVER="gnuplot.cvs.sourceforge.net:/cvsroot/gnuplot"
+	ECVS_MODULE="gnuplot"
+	ECVS_BRANCH="HEAD"
+	ECVS_USER="anonymous"
+	ECVS_CVS_OPTIONS="-dP"
 	MY_P="${PN}"
-	EGIT_CHECKOUT_DIR="${WORKDIR}/${MY_P}"
 else
 	MY_P="${P/_/.}"
 	SRC_URI="mirror://sourceforge/gnuplot/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 ~s390 ~sparc x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="gnuplot bitmap? ( free-noncomm )"
@@ -92,8 +94,8 @@ src_prepare() {
 		As root, manually "chmod u+s /usr/bin/gnuplot".'
 	use gd && DOC_CONTENTS+='\n\nFor font support in png/jpeg/gif output,
 		you may have to set the GDFONTPATH and GNUPLOT_DEFAULT_GDFONT
-		environment variables. See the FAQ file in /usr/share/doc/${PF}/
-		for more information.'
+		environment variables. See the FAQ file in /usr/share/doc/' &&
+		DOC_CONTENTS+="${PF}/ for more information."
 
 	eautoreconf
 
