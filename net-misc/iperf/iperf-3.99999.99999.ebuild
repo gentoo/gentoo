@@ -11,9 +11,11 @@ EGIT_REPO_URI="${HOMEPAGE}"
 LICENSE="BSD"
 SLOT="3"
 KEYWORDS=""
-IUSE="profiling sctp static-libs"
+IUSE="libressl profiling sctp static-libs"
 
-DEPEND="dev-libs/openssl:0=
+DEPEND="
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	sctp? ( net-misc/lksctp-tools )"
 RDEPEND="${DEPEND}"
 
