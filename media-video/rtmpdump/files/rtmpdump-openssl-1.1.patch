@@ -5,7 +5,7 @@ https://github.com/xbmc/inputstream.rtmp/blob/dc9353823f9cfd2943f97b586230fe387c
    if (!dh)
      goto failed;
  
-+#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L
++#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
    MP_new(dh->g);
  
    if (!dh->g)
@@ -19,7 +19,7 @@ https://github.com/xbmc/inputstream.rtmp/blob/dc9353823f9cfd2943f97b586230fe387c
 +  DH_set0_pqg(dh, NULL, g, NULL);
 +#endif
  
-+#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L
++#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
    MP_gethex(dh->p, P1024, res);	/* prime P1024, see dhgroups.h */
 +#else
 +  BIGNUM* p = NULL;
@@ -31,14 +31,14 @@ https://github.com/xbmc/inputstream.rtmp/blob/dc9353823f9cfd2943f97b586230fe387c
        goto failed;
      }
  
-+#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L
++#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
    MP_set_w(dh->g, 2);	/* base 2 */
 +#else
 +  MP_set_w(g, 2);   /* base 2 */
 +  DH_set0_pqg(dh, NULL, g, NULL);
 +#endif
  
-+#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L
++#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
    dh->length = nKeyBits;
 +#else
 +  DH_set_length(dh, nKeyBits);
@@ -50,7 +50,7 @@ https://github.com/xbmc/inputstream.rtmp/blob/dc9353823f9cfd2943f97b586230fe387c
        MP_gethex(q1, Q1024, res);
        assert(res);
  
-+#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L
++#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
        res = isValidPublicKey(dh->pub_key, dh->p, q1);
 +#else
 +      BIGNUM const* pub_key = NULL;
@@ -61,7 +61,7 @@ https://github.com/xbmc/inputstream.rtmp/blob/dc9353823f9cfd2943f97b586230fe387c
 +#endif
        if (!res)
  	{
-+#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L
++#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
  	  MP_free(dh->pub_key);
  	  MP_free(dh->priv_key);
  	  dh->pub_key = dh->priv_key = 0;
@@ -75,7 +75,7 @@ https://github.com/xbmc/inputstream.rtmp/blob/dc9353823f9cfd2943f97b586230fe387c
  DHGetPublicKey(MDH *dh, uint8_t *pubkey, size_t nPubkeyLen)
  {
    int len;
-+#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L
++#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
    if (!dh || !dh->pub_key)
 +#else
 +  BIGNUM const* pub_key = NULL;
@@ -84,7 +84,7 @@ https://github.com/xbmc/inputstream.rtmp/blob/dc9353823f9cfd2943f97b586230fe387c
 +#endif
      return 0;
  
-+#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L
++#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
    len = MP_bytes(dh->pub_key);
 +#else
 +  len = MP_bytes(pub_key);
@@ -93,7 +93,7 @@ https://github.com/xbmc/inputstream.rtmp/blob/dc9353823f9cfd2943f97b586230fe387c
      return 0;
  
    memset(pubkey, 0, nPubkeyLen);
-+#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L
++#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
    MP_setbin(dh->pub_key, pubkey + (nPubkeyLen - len), len);
 +#else
 +  MP_setbin(pub_key, pubkey + (nPubkeyLen - len), len);
@@ -105,7 +105,7 @@ https://github.com/xbmc/inputstream.rtmp/blob/dc9353823f9cfd2943f97b586230fe387c
    MP_gethex(q1, Q1024, len);
    assert(len);
  
-+#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L
++#if !defined(USE_OPENSSL) || !defined(OPENSSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
    if (isValidPublicKey(pubkeyBn, dh->p, q1))
 +#else
 +  BIGNUM const* p = NULL;
