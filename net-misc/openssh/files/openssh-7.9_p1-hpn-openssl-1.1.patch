@@ -27,22 +27,6 @@
  #ifdef __linux__
  	cipher_threads = sysconf(_SC_NPROCESSORS_ONLN) / 2;
  #endif /*__linux__*/
-@@ -505,11 +503,12 @@
- 	if (cipher_threads < 2)
- 		cipher_threads = 2;
-
--        /* assure that we aren't trying to create more threads than we have in the struct */
--	/* cipher_threads is half the total of allowable threads hence the odd looking math here */
-+	/* assure that we aren't trying to create more threads */
-+	/* than we have in the struct. cipher_threads is half the */
-+	/* total of allowable threads hence the odd looking math here */
- 	if (cipher_threads * 2 > MAX_THREADS)
- 		cipher_threads = MAX_THREADS / 2;
--
-+
- 	/* set the number of keystream queues */
- 	numkq = cipher_threads * 2;
-
 @@ -551,16 +550,16 @@
  	}
 
