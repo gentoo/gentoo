@@ -30,11 +30,6 @@ RDEPEND="
 
 S="${WORKDIR}/Telegram"
 
-src_prepare() {
-	sed -i -e 's/^Icon=telegram$/Icon=telegram-desktop/' "${WORKDIR}/tdesktop-${PV}"/lib/xdg/telegramdesktop.desktop || die
-	eapply_user
-}
-
 src_install() {
 	exeinto /usr/lib/${PN}
 	doexe "Telegram"
@@ -44,7 +39,7 @@ src_install() {
 	for icon_size in 16 32 48 64 128 256 512; do
 		newicon -s "${icon_size}" \
 			"${WORKDIR}/tdesktop-${PV}/Telegram/Resources/art/icon${icon_size}.png" \
-			telegram-desktop.png
+			telegram.png
 	done
 
 	dodir /etc/${PN}

@@ -23,6 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # glibc: deprecated mutex functions, removed in 2.36.0
 CDEPEND="${PYTHON_DEPS}
+		app-crypt/libsecret
 		dev-libs/glib:2
 		dev-cpp/antlr-cpp:4
 		dev-cpp/atkmm
