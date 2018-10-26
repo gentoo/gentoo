@@ -28,6 +28,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+maps"
 
 DEPEND="app-arch/bzip2
+	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
 	media-libs/libpng:*
 	sci-libs/libnova
