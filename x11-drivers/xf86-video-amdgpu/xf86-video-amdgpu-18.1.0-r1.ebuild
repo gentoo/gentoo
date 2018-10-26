@@ -13,11 +13,17 @@ fi
 
 DESCRIPTION="Accelerated Open Source driver for AMDGPU cards"
 
+IUSE="udev"
+
 RDEPEND=">=x11-libs/libdrm-2.4.78[video_cards_amdgpu]
-	x11-base/xorg-server[glamor(-)]"
+	x11-base/xorg-server[glamor(-)]
+	udev? ( virtual/libudev:= )"
 DEPEND="${RDEPEND}"
 
 src_configure() {
-	XORG_CONFIGURE_OPTIONS="--enable-glamor"
+	XORG_CONFIGURE_OPTIONS=(
+		--enable-glamor
+		$(use_enable udev)
+	)
 	xorg-2_src_configure
 }
