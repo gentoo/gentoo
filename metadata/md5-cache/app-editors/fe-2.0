@@ -4,9 +4,9 @@ DESCRIPTION=A small and easy to use folding editor
 EAPI=7
 HOMEPAGE=http://www.moria.de/~michael/fe/
 IUSE=sendmail
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0= sendmail? ( virtual/mta )
 SLOT=0
 SRC_URI=http://www.moria.de/~michael/fe/fe-2.0.tar.gz
-_md5_=aed35a7ad9d4d02dc8744b6eb582635d
+_md5_=7b13e44b3f66c7cb52273e64faa96453
