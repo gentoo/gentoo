@@ -75,7 +75,7 @@ app-admin/hddtemp 0.3_beta15-r26: A simple utility to read the temperature of SM
 app-admin/ide-smart 1.4-r1: A tool to read SMART information from harddiscs
 app-admin/installer 0.1.1_beta: A software for Gentoo installation
 app-admin/keepass 2.38: A free, open source, light-weight and easy-to-use password manager
-app-admin/keepassxc 2.2.4 2.3.3: KeePassXC - KeePass Cross-platform Community Edition
+app-admin/keepassxc 2.3.3: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/lastpass-cli 1.3.1-r1: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.11-r1: Check for mapped libs and open files that are marked as deleted
