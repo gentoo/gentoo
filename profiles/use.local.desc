@@ -5569,7 +5569,7 @@ sys-libs/glibc:cet - Enable Intel Control-flow Enforcement Technology (needs bin
 sys-libs/glibc:compile-locales - build *all* locales in src_install; this is generally meant for stage building only as it ignores /etc/locale.gen file and can be pretty slow
 sys-libs/glibc:debug - When USE=hardened, allow fortify/stack violations to dump core (SIGABRT) and not kill self (SIGKILL)
 sys-libs/glibc:gd - build memusage and memusagestat tools
-sys-libs/glibc:multiarch - enable single DSO with optimizations for multiple architectures
+sys-libs/glibc:multiarch - enable optimizations for multiple CPU architectures (detected at runtime)
 sys-libs/glibc:nscd - Build, and enable support for, the Name Service Cache Daemon
 sys-libs/glibc:rpc - Enable obsolete RPC/NIS layers
 sys-libs/glibc:suid - Make internal pt_chown helper setuid -- not needed if using Linux and have /dev/pts mounted with gid=5
