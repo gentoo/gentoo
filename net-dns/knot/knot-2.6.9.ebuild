@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,7 @@ IUSE="doc caps +fastparser idn libidn2 systemd +utils ${KNOT_MODULES[@]}"
 RDEPEND="
 	dev-db/lmdb
 	dev-libs/libedit
-	dev-libs/userspace-rcu
+	dev-libs/userspace-rcu:=
 	dev-python/lmdb
 	net-libs/gnutls
 	caps? ( sys-libs/libcap-ng )
