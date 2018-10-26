@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -52,7 +52,7 @@ python_prepare_all() {
 
 	# this will be a noop, as we are working with a tarball,
 	# but throws git errors --> just get rid of it
-	sed -i -e 's/version\.write_builtin_version()//' setup.py || die
+	echo "version=\"${PV}\"" > "${S}"/stgit/builtin_version.py
 
 	distutils-r1_python_prepare_all
 }
