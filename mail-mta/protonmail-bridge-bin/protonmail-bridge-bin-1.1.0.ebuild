@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit rpm
 
 DESCRIPTION="Serves ProtonMail to IMAP/SMTP clients"
 HOMEPAGE="https://protonmail.com/bridge/"
-SRC_URI="https://protonmail.com/download/${P/-bin/}-2.x86_64.rpm"
+SRC_URI="https://protonmail.com/download/${P/-bin/}-1.x86_64.rpm"
 
 RESTRICT="bindist mirror"
 

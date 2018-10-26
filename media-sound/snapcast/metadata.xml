@@ -10,12 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="avahi">Build with avahi support</flag>
 		<flag name="client">Build and install Snapcast client component</flag>
-		<flag name="flac">Build with FLAC compression support</flag>
 		<flag name="server">Build and install Snapcast server component</flag>
 		<flag name="tremor">Build with TREMOR version of vorbis</flag>
-		<flag name="vorbis">Build with libvorbis support</flag>
 	</use>
 	<upstream>
 		<maintainer status="active">
