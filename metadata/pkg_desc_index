@@ -9295,7 +9295,7 @@ sci-chemistry/rasmol 2.7.5.2-r2: Molecular Graphics Visualisation Tool
 sci-chemistry/raster3d 3.0.2: Generation high quality raster images of proteins or other molecules
 sci-chemistry/reduce 3.16.111118: Adds hydrogens to a Protein Data Bank (PDB) molecule structure file
 sci-chemistry/shelx 20141228: Crystal structure determination from single-crystal diffraction data
-sci-chemistry/tm-align 20140601 20150914: Quick & Accurate Structural Alignment
+sci-chemistry/tm-align 20150914: Quick & Accurate Structural Alignment
 sci-chemistry/votca-csg 1.4: Votca coarse-graining engine
 sci-chemistry/votca-csgapps 1.4: Extra applications for votca-csg
 sci-chemistry/votca-xtp 1.4: Votca excitation and charge properties module
