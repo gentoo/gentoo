@@ -4,10 +4,10 @@ DESCRIPTION=Creates and XML Stream connection and parses return data
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/XML-Stream
 IUSE=ssl
-KEYWORDS=alpha amd64 arm ~hppa ia64 ppc ppc64 sparc x86
+KEYWORDS=alpha amd64 arm ~hppa ia64 ppc ppc64 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=LGPL-2
 RDEPEND=dev-perl/Authen-SASL dev-perl/Net-DNS ssl? ( dev-perl/IO-Socket-SSL ) virtual/perl-MIME-Base64 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DA/DAPATRICK/XML-Stream-1.24.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=e36cb9eb21e9844867cd2859dbe53567
+_md5_=b7e5011178d26626a8e286740774457b

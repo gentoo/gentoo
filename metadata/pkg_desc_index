@@ -11389,7 +11389,7 @@ xfce-extra/xfce4-mpc-plugin 0.5.0: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.3.1: A network load plug-in for the Xfce panel
 xfce-extra/xfce4-netspeed-plugin 0.3.1: A network transfer rate monitor for the panel
 xfce-extra/xfce4-notes-plugin 1.8.1: Xfce4 panel sticky notes plugin
-xfce-extra/xfce4-notifyd 0.4.1 0.4.2: Notification daemon for the Xfce desktop environment
+xfce-extra/xfce4-notifyd 0.4.2: Notification daemon for the Xfce desktop environment
 xfce-extra/xfce4-places-plugin 1.7.0: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-playercontrol-plugin 0.3.0: Audacious and MPD panel plugins
 xfce-extra/xfce4-power-manager 1.6.1: Power manager for the Xfce desktop environment
