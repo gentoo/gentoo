@@ -1,0 +1,113 @@
+--- a/share/gprconfig/compilers.xml	2018-10-27 09:04:53.830077299 +0200
++++ b/share/gprconfig/compilers.xml	2018-10-27 09:05:14.883724079 +0200
+@@ -20,15 +20,15 @@
+   <!--    GCC 3.x & 4.x (not for GNAT Pro)-->
+   <compiler_description>
+     <name>GCC</name>
+-    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-generic-linux-gnu-|.*-pc-mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|aarch64-linux-gnu-)?gcc</executable>
++    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-generic-linux-gnu-|.*-pc-mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|aarch64-linux-gnu-)?gcc-@VER@</executable>
+     <version>
+-      <external>${PREFIX}gcc -v</external>
++      <external>${PREFIX}gcc-@VER@ -v</external>
+       <nogrep regexp="for GNAT Pro"></nogrep>
+       <grep regexp="^gcc \S+ (\S+)" group="1"></grep>
+     </version>
+     <languages>C</languages>
+     <target>
+-      <external>${PREFIX}gcc -dumpmachine</external>
++      <external>${PREFIX}gcc-@VER@ -dumpmachine</external>
+       <grep regexp="[^\r\n]+"></grep>
+     </target>
+   </compiler_description>
+@@ -325,14 +325,14 @@
+    -->
+   <compiler_description>
+     <name>GNAT</name>
+-    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-generic-linux-gnu-|.*-pc-mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|aarch64-linux-gnu-)?gnatls</executable>
++    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-generic-linux-gnu-|.*-pc-mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|aarch64-linux-gnu-)?gnatls-@VER@</executable>
+     <version>
+-      <external>${PREFIX}gnatls -v --version</external>
++      <external>${PREFIX}gnatls-@VER@ -v --version</external>
+       <grep regexp="^GNATLS.+?(\d+(\.\d+)?)" group="1"></grep>
+     </version>
+     <languages>Ada</languages>
+     <variable name="gcc_version">
+-      <external>${PREFIX}gcc -v</external>
++      <external>${PREFIX}gcc-@VER@ -v</external>
+       <grep regexp="^[-\w]*gcc \S+ (\S+)" group="1"></grep>
+     </variable>
+     <runtimes default="default,kernel,native">
+@@ -342,7 +342,7 @@
+        <directory group="1" >\.\./$TARGET/lib/gnat/(.*)/adalib/</directory>
+     </runtimes>
+     <target>
+-      <external>${PREFIX}gcc -dumpmachine</external>
++      <external>${PREFIX}gcc-@VER@ -dumpmachine</external>
+       <grep regexp="[^\r\n]+"></grep>
+     </target>
+   </compiler_description>
+@@ -509,21 +509,6 @@
+     </target>
+   </compiler_description>
+ 
+-  <!-- LLVM Compiler -->
+-  <compiler_description>
+-    <name>LLVM</name>
+-    <executable>clang</executable>
+-    <version>
+-      <external>clang -v</external>
+-      <grep regexp=".*(LLVM|clang) version ([0-9.]*)" group="2"></grep>
+-    </version>
+-    <languages>C</languages>
+-    <target>
+-      <external>clang -dumpmachine</external>
+-      <grep regexp="[^\r\n]+"></grep>
+-    </target>
+-  </compiler_description>
+-
+   <!--  Windres compiler -->
+   <compiler_description>
+     <name>WINDRES</name>
+--- a/share/gprconfig/gnat.xml	2018-10-27 09:38:31.615357671 +0200
++++ b/share/gprconfig/gnat.xml	2018-10-27 09:40:54.603044560 +0200
+@@ -60,7 +60,7 @@
+    &filter_gnat;
+    <config>
+    package Compiler is
+-      for Driver                   ("Ada") use "${PATH(ada)}${PREFIX(ada)}gcc";
++      for Driver                   ("Ada") use "${PATH(ada)}${PREFIX(ada)}gcc-@VER@";
+       for Language_Kind            ("Ada") use "unit_based";
+       for Dependency_Kind          ("Ada") use "ALI_File";
+       for Leading_Required_Switches        ("Ada") use
+@@ -77,6 +77,9 @@
+       for Objects_Path_File     ("Ada") use "ADA_PRJ_OBJECTS_FILE";
+       for Driver         ("Ada") use
+           "${GPRCONFIG_PREFIX}libexec/gprbuild/gprbind";
++      for Switches ("Ada") use ("--gnatbind_path=gnatbind-@VER@");
++      for Required_Switches ("Ada") use
++          Binder'Required_Switches ("Ada") &amp; ("--RTS=${RUNTIME_DIR(ada)}");
+    end Binder;
+ 
+    for Toolchain_Version ("Ada") use "GNAT ${VERSION(ada)}";
+--- a/share/gprconfig/c.xml	2018-10-27 09:42:01.327035277 +0200
++++ b/share/gprconfig/c.xml	2018-10-27 09:42:16.529803718 +0200
+@@ -14,7 +14,7 @@
+      </compilers>
+      <config>
+    package Compiler is
+-      for Driver              ("C") use "${PATH(c)}${PREFIX(c)}gcc";
++      for Driver              ("C") use "${PATH(c)}${PREFIX(c)}gcc-@VER@";
+    end Compiler;
+      </config>
+    </configuration>
+--- a/share/gprconfig/linker.xml	2018-10-27 09:43:17.934862859 +0200
++++ b/share/gprconfig/linker.xml	2018-10-27 09:43:54.127304471 +0200
+@@ -742,7 +742,7 @@
+    for Shared_Library_Suffix use ".sl";
+    for Library_Auto_Init_Supported use "true";
+    for Run_Path_Option  use ("-Wl,+b,");
+-   for Library_Partial_Linker use ("gcc", "-nostdlib", "-Wl,-r", "-o");
++   for Library_Partial_Linker use ("gcc-@VER@", "-nostdlib", "-Wl,-r", "-o");
+ 
+    package Linker is
+       for Max_Command_Line_Length use "5000";
