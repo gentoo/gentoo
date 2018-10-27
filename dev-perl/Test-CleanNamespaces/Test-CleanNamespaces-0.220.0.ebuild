@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Check for uncleaned imports"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ppc ppc64 ~sparc x86"
+KEYWORDS="~amd64 ~arm ~hppa ppc ppc64 ~sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="test minimal"
 
 # r:Test::Builder -> Test-Simple
