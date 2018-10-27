@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/libxml2 )
 	dev-util/gtk-doc-am"
 
-PATCHES=( "${FILESDIR}"/${P}-gcc7.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc7.patch
+	"${FILESDIR}"/${P}-glibc228.patch
+)
 
 src_prepare() {
 	default
