@@ -24,7 +24,6 @@ DEPEND="ssl? (
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-openssl-1.1.patch"
 	"${FILESDIR}/${PN}-swf_vertification_type_2.patch"
 	"${FILESDIR}/${PN}-swf_vertification_type_2_part_2.patch"
 )
@@ -66,6 +65,7 @@ src_prepare() {
 		-e 's:OPT:OPTS:' \
 		-e 's:CFLAGS=.*:& $(OPT):' librtmp/Makefile \
 		|| die "failed to fix Makefile"
+	use ssl && use !gnutls && use !libressl && eapply "${FILESDIR}/${PN}-openssl-1.1.patch"
 	default
 	multilib_copy_sources
 }
