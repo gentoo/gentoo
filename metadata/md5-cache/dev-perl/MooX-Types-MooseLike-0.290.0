@@ -4,10 +4,10 @@ DESCRIPTION=Some Moosish types and a type builder
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/MooX-Types-MooseLike
 IUSE=test
-KEYWORDS=amd64 hppa ppc x86
+KEYWORDS=amd64 hppa ppc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/strictures-2 >=dev-perl/Module-Runtime-0.14.0 >=dev-perl/Moo-1.4.2 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MA/MATEU/MooX-Types-MooseLike-0.29.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=9c5ef529557ba1e4c6f751efa631ea28
+_md5_=edacdcd6a8188c4dbfab4c788c97affa

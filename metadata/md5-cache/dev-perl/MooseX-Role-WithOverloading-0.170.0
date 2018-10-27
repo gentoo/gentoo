@@ -4,10 +4,10 @@ DESCRIPTION=Roles which support overloading (DEPRECATED)
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/MooseX-Role-WithOverloading
 IUSE=test
-KEYWORDS=~amd64 ~arm ~ppc ~x86 ~x64-macos
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Moose-0.940.0 dev-perl/aliased >=dev-perl/namespace-autoclean-0.160.0 >=dev-perl/namespace-clean-0.190.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/MooseX-Role-WithOverloading-0.17.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=1c40c6196cc7adf309f149fe393a3ea9
+_md5_=3b7e4f88e65389fb023a56ec3b63bc8d
