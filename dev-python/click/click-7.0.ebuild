@@ -13,7 +13,7 @@ HOMEPAGE="http://click.pocoo.org/ https://pypi.org/project/click/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~x86"
 IUSE="doc examples test"
 
 DEPEND="
