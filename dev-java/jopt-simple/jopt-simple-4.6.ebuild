@@ -12,7 +12,7 @@ HOMEPAGE="https://pholser.github.com/jopt-simple/"
 SRC_URI="https://github.com/pholser/${PN}/tarball/${P} -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="4.6"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 RDEPEND=">=virtual/jre-1.6"
 DEPEND=">=virtual/jdk-1.6"
