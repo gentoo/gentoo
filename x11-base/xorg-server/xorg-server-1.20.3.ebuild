@@ -107,6 +107,7 @@ PDEPEND="
 REQUIRED_USE="!minimal? (
 		|| ( ${IUSE_SERVERS} )
 	)
+	minimal? ( !glamor !wayland )
 	xephyr? ( kdrive )"
 
 UPSTREAMED_PATCHES=(
