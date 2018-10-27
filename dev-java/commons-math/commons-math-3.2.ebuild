@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Lightweight, self-contained mathematics and statistics components"
 HOMEPAGE="https://commons.apache.org/math/"
-SRC_URI="mirror://apache/commons/math/source/${MY_P}-src.tar.gz"
+SRC_URI="https://archive.apache.org/dist/commons/math/source/${MY_P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="3"
