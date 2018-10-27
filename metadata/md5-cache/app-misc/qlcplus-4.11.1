@@ -1,8 +1,8 @@
 DEFINED_PHASES=configure postinst postrm preinst prepare test unpack
 DEPEND=|| ( dev-embedded/libftdi:1 dev-embedded/libftdi:0 ) dev-libs/glib:2 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5[widgets] dev-qt/qtnetwork:5 dev-qt/qtscript:5 dev-qt/qttest:5 dev-qt/qtwidgets:5 media-libs/alsa-lib media-libs/libmad media-libs/libsndfile sci-libs/fftw:3.0 virtual/libusb:0 virtual/libusb:1 virtual/udev virtual/pkgconfig test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost ) dev-util/desktop-file-utils x11-misc/shared-mime-info
-DESCRIPTION=QLC+ - Q Light Controller Plus to control DMX interfaces
+DESCRIPTION=A software to control DMX or analog lighting systems
 EAPI=6
-HOMEPAGE=http://www.qlcplus.org/
+HOMEPAGE=https://www.qlcplus.org/
 IUSE=test
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
@@ -10,4 +10,4 @@ RDEPEND=|| ( dev-embedded/libftdi:1 dev-embedded/libftdi:0 ) dev-libs/glib:2 dev
 SLOT=0
 SRC_URI=https://github.com/mcallegari/qlcplus/archive/QLC+_4.11.1.tar.gz -> qlcplus-4.11.1.tar.gz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	udev	7752f306eec7b286d00bdb47b763e7ac	vcs-snapshot	b77011b62e2053c646ad720defe6d921	virtualx	401b718cc14d43a5a7fbe062c4851ba5	xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=f0dccac9acc84a70a4b726e313e2cab5
+_md5_=5f738cf23c76c84fe4a5ef2db842c8ea

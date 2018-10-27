@@ -7395,7 +7395,7 @@ media-gfx/photopc 3.07: Utility to control digital cameras based on Sierra Imagi
 media-gfx/photoqt 1.5.1-r1: Simple but powerful Qt-based image viewer
 media-gfx/pinta 1.6-r2: Simple Painting for Gtk
 media-gfx/pixie 2.2.6-r1: RenderMan like photorealistic renderer
-media-gfx/pngcheck 2.3.0: verifies the integrity of PNG, JNG and MNG files with internal checksums
+media-gfx/pngcheck 2.3.0: Verifies the integrity of PNG, JNG and MNG files with internal checksums
 media-gfx/pngcrush 1.8.13: Portable Network Graphics (PNG) optimizing utility
 media-gfx/pngnq 1.1: Pngnq is a tool for quantizing PNG images in RGBA format
 media-gfx/pngrewrite 1.3.0: A utility which reduces large palettes in PNG images
@@ -9342,7 +9342,7 @@ sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mtkbabel 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0: Converts OSM data to SQL and insert into PostgreSQL db
-sci-geosciences/qgis 3.0.3-r1 3.2.3: User friendly Geographic Information System
+sci-geosciences/qgis 3.2.3: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.3 1.11.1-r1: GPS mapping utility
 sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1: Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB
