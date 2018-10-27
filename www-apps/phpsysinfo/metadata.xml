@@ -31,6 +31,7 @@
 		<flag name="uptime">Install <pkg>app-misc/uptimed</pkg> to display those stats.</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/phpsysinfo/phpsysinfo/issues</bugs-to>
 		<remote-id type="github">rk4an/phpsysinfo</remote-id>
 	</upstream>
 </pkgmetadata>
