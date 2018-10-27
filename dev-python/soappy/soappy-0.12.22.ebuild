@@ -25,6 +25,7 @@ RDEPEND="dev-python/wstools[${PYTHON_USEDEP}]
 	dev-python/defusedxml[${PYTHON_USEDEP}]
 	ssl? ( dev-python/m2crypto[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
+	app-arch/unzip
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/${MY_P}"

@@ -191,12 +191,9 @@ src_install() {
 	doins \
 		etc/bluegene.conf.example \
 		etc/cgroup.conf.example \
-		etc/cgroup_allowed_devices_file.conf.example \
 		etc/slurm.conf.example \
 		etc/slurmdbd.conf.example
 	exeinto /etc/slurm
-	doexe \
-		etc/slurm.epilog.clean
 	keepdir /etc/slurm/layouts.d
 	insinto /etc/slurm/layouts.d
 	newins etc/layouts.d.power.conf.example power.conf.example
