@@ -603,7 +603,7 @@ app-editors/zile 2.3.24-r2 2.4.11: Zile is a small Emacs clone
 app-emacs/analog 1.9.99: Monitor lists of files or command output
 app-emacs/apache-mode 1.1: Major mode for editing Apache configuration files
 app-emacs/apel 10.8-r1: A Portable Emacs Library is a library for making portable Emacs Lisp programs
-app-emacs/auctex 11.89 11.92: Extensible package for writing and formatting TeX files in Emacs
+app-emacs/auctex 11.89 11.92 12.1: Extensible package for writing and formatting TeX files in Emacs
 app-emacs/autoconf-mode 2.69: Emacs major modes for editing autoconf and autotest input
 app-emacs/bbdb 2.35-r1: The Insidious Big Brother Database
 app-emacs/binclock 1.7-r1: Display the current time using a binary clock
@@ -1402,7 +1402,7 @@ app-text/libstaroffice 0.0.6: Import filter for old StarOffice documents
 app-text/libwpd 0.10.2: WordPerfect Document import/export library
 app-text/libwpg 0.3.2: C++ library to read and parse graphics in WPG
 app-text/libwps 0.4.10: Microsoft Works file word processor format import filter library
-app-text/linuxdoc-tools 0.9.72: A toolset for processing LinuxDoc DTD SGML files
+app-text/linuxdoc-tools 0.9.72 0.9.73: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 26b_p20180114: graphical PDF viewer which aims to superficially resemble less(1)
 app-text/lout 3.40: High-level language for document formatting
 app-text/lv 4.51-r3 4.51-r4: Powerful Multilingual File Viewer
@@ -3091,7 +3091,7 @@ dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor A
 dev-libs/libgcrypt 1.8.1 1.8.3: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.8 0.17.9-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.1: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.26.7: A linkable library for Git
+dev-libs/libgit2 0.26.7 0.26.8: A linkable library for Git
 dev-libs/libgit2-glib 0.26.2: Git library for GLib
 dev-libs/libgnome-games-support 1.2.3: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1 1.29: Contains error handling functions used by GnuPG software
@@ -7410,7 +7410,7 @@ media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vec
 media-gfx/qrencode 4.0.2: C library for encoding data in a QR Code symbol
 media-gfx/quat 1.20-r1: A 3D quaternionic fractal generator
 media-gfx/raw-thumbnailer 0.2.1-r1: A lightweight and fast raw image thumbnailer
-media-gfx/rawtherapee 5.2: A powerful cross-platform raw image processing program
+media-gfx/rawtherapee 5.2 5.4: A powerful cross-platform raw image processing program
 media-gfx/recoverjpeg 2.0-r2 2.2.1-r1 2.2.3-r1: Recover JPEG pictures from a possibly corrupted disk image
 media-gfx/ristretto 0.8.2_p20170821 0.8.3: A fast and lightweight picture viewer for Xfce
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
@@ -8961,7 +8961,7 @@ net-misc/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
 net-misc/npapi-sdk 0.27.2: NPAPI headers bundle
 net-misc/ntp 4.2.8_p11: Network Time Protocol suite/programs
 net-misc/ntpclient 2010.365: A NTP (RFC-1305) client for unix-alike computers
-net-misc/nx 3.5.0.33: NX compression technology core libraries
+net-misc/nx 3.5.0.33 3.5.99.16: NX compression technology core libraries
 net-misc/ofono 1.16: Open Source mobile telephony (GSM/UMTS) daemon
 net-misc/oidentd 2.0.8-r5 2.0.8-r6: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.9.6.1: An implementation of the Optimized Link State Routing protocol
@@ -9045,8 +9045,8 @@ net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Lin
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
-net-misc/x2goclient 4.1.1.0: The X2Go Qt client
-net-misc/x2goserver 4.0.1.22: The X2Go server
+net-misc/x2goclient 4.1.1.0 4.1.2.1: The X2Go Qt client
+net-misc/x2goserver 4.0.1.22 4.1.0.2: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
 net-misc/youtube-dl 2017.11.15 2018.08.22: Download videos from YouTube.com (and more sites...)
