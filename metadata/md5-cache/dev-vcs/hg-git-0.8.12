@@ -1,0 +1,15 @@
+BDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-vcs/mercurial-2.8.2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/dulwich-0.9.7[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=push to and pull from a Git repository using Mercurial
+EAPI=7
+HOMEPAGE=http://hg-git.github.io https://pypi.org/project/hg-git/
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=>=dev-vcs/mercurial-2.8.2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/dulwich-0.9.7[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://pypi/h/hg-git/hg-git-0.8.12.tar.gz
+_eclasses_=distutils-r1	8595c9c7530ac3963f3aa0d77aa7e2d8	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=fcecd2dafb468f273ddbd3aed3b8a115
