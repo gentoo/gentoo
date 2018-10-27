@@ -4,10 +4,10 @@ DESCRIPTION=XS Implementation for Ref::Util
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/Ref-Util-XS
 IUSE=test
-KEYWORDS=~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sparc x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=MIT
 RDEPEND=>=virtual/perl-Exporter-5.570.0 virtual/perl-XSLoader dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/X/XS/XSAWYERX/Ref-Util-XS-0.116.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=94bb2775e1e66cae182c5b5f3c2e4e14
+_md5_=604831eb3f4a44414c1e74c1c6ad7321

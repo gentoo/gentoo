@@ -4,10 +4,10 @@ DESCRIPTION=Implementation of the soundex algorithm
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/Text-Soundex
 IUSE=test minimal
-KEYWORDS=amd64 ~arm ppc ppc64 x86 ~x86-fbsd
+KEYWORDS=amd64 ~arm ppc ppc64 x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!minimal? ( dev-perl/Text-Unidecode ) virtual/perl-if dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Text-Soundex-3.05.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=0ed9ebe4b75b1f7a922b5f4a7c5e1cc8
+_md5_=c8ad74e6946f3027ad78fa73d5b981b7
