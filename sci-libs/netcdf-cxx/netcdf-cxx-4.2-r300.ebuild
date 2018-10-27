@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SLOT="3"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="examples static-libs"
 
-RDEPEND=">=sci-libs/netcdf-4.2"
+RDEPEND=">=sci-libs/netcdf-4.2:0="
 DEPEND="${RDEPEND}"
 
 src_install() {
