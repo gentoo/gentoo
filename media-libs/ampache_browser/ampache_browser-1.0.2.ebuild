@@ -1,9 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-CMAKE_MIN_VERSION=3.0
 
 inherit cmake-utils
 
@@ -14,7 +12,7 @@ SRC_URI="https://github.com/ampache-browser/ampache_browser/archive/v${PV}.tar.g
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="nls debug"
+IUSE="debug nls"
 
 RDEPEND="dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
