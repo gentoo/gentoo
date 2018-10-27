@@ -1,10 +1,9 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-
 inherit autotools bash-completion-r1 desktop fixheadtails flag-o-matic python-single-r1 systemd toolchain-funcs user
 
 MY_P=${P/_/-}
@@ -19,7 +18,8 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="cgi gui ipmi snmp +usb selinux ssl tcpd xml zeroconf"
 REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
 
-COMMON_DEPEND="dev-libs/libltdl:*
+DEPEND="
+	dev-libs/libltdl:*
 	virtual/udev
 	cgi? ( >=media-libs/gd-2[png] )
 	gui? ( dev-python/pygtk[${PYTHON_USEDEP}] )
@@ -31,11 +31,11 @@ COMMON_DEPEND="dev-libs/libltdl:*
 	xml? ( >=net-libs/neon-0.25.0 )
 	zeroconf? ( net-dns/avahi )"
 
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	virtual/pkgconfig
 	>=sys-apps/sed-4"
 
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-nut )"
 
 S="${WORKDIR}/${MY_P}"
@@ -78,7 +78,7 @@ NUT_PRIVATE_FILES="/etc/nut/{upsd.conf,upsd.users,upsmon.conf}"
 NUT_CGI_FILES="/etc/nut/{{hosts,upsset}.conf,upsstats{,-single}.html}"
 
 PATCHES=(
-	"${FILESDIR}/nut-2.7.2/nut-2.7.2-no-libdummy.patch"
+	"${FILESDIR}/nut-2.7.2/${PN}-2.7.2-no-libdummy.patch"
 	"${FILESDIR}/${PN}-2.7.1-snmpusb-order.patch"
 	"${FILESDIR}/${PN}-2.6.2-lowspeed-buffer-size.patch"
 )
@@ -105,11 +105,10 @@ src_prepare() {
 	sed -e "s:52.nut-usbups.rules:70-nut-usbups.rules:" \
 		-i scripts/udev/Makefile.am || die
 
-	rm -f ltmain.sh m4/lt* m4/libtool.m4 || die
+	rm ltmain.sh m4/lt* m4/libtool.m4 || die
 
-	sed -i \
-		-e 's:@LIBSSL_LDFLAGS@:@LIBSSL_LIBS@:' \
-		lib/libupsclient{.pc,-config}.in || die #361685
+	sed -e 's:@LIBSSL_LDFLAGS@:@LIBSSL_LIBS@:' \
+		-i lib/libupsclient{.pc,-config}.in || die #361685
 
 	use gui && eapply "${FILESDIR}"/NUT-Monitor-1.3-paths.patch
 
@@ -162,12 +161,12 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	find "${D}" -name '*.la' -delete || die
 
 	dodir /sbin
-	dosym /usr/sbin/upsdrvctl /sbin/upsdrvctl
+	dosym ../usr/sbin/upsdrvctl /sbin/upsdrvctl
 
 	if use cgi; then
 		elog "CGI monitoring scripts are installed in /usr/share/nut/cgi."
