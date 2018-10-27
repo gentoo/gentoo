@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -56,7 +56,8 @@ src_prepare() {
 }
 
 src_install() {
-	dodoc usr/share/doc/spotify-client/changelog.gz
+	uncompress usr/share/doc/spotify-client/changelog.gz
+	dodoc usr/share/doc/spotify-client/changelog
 
 	SPOTIFY_PKG_HOME=usr/share/spotify
 	insinto /usr/share/pixmaps
