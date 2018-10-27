@@ -12,6 +12,7 @@
 	<longdescription>xl2tpd is a fork of l2tpd Layer 2 Tunneling Protocol (L2TP) daemon that can be used to transfer frames of OSI layer 2 protocols through an IP tunnel. While it provides authentication via CHAP or PAP it does not provide encryption itself and should therefore be externally secured (via IPSEC).</longdescription>
 	<use>
 		<flag name="dnsretry">Patch for host lookup retries, activated by redial feature</flag>
+		<flag name="kernel">Enable kernel interface for PPPoL2TP</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">xelerance/xl2tpd</remote-id>
