@@ -16,6 +16,6 @@
 		And it's also possible to configure X and standard X applications to run on udlfb.
 	</longdescription>
 	<use>
-		<flag name="test-program">Build the program for testing Displaylink devices</flag>
+		<flag name="test-program">Build the program for testing Displaylink devices.</flag>
 	</use>
 </pkgmetadata>
