@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -86,7 +86,7 @@ pkg_setup() {
 src_prepare() {
 	#ht_fix_file configure.in
 
-	epatch "${FILESDIR}/nut-2.7.2/nut-2.7.2-no-libdummy.patch"
+	epatch "${FILESDIR}"/nut-2.7.2-no-libdummy.patch
 	epatch "${FILESDIR}"/${PN}-2.6.2-lowspeed-buffer-size.patch
 	#epatch "${FILESDIR}"/${PN}-2.6.3-CVE-2012-2944.patch
 	#epatch "${FILESDIR}"/${PN}-2.6.5-freeipmi_fru.patch

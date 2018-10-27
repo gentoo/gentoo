@@ -78,7 +78,7 @@ NUT_PRIVATE_FILES="/etc/nut/{upsd.conf,upsd.users,upsmon.conf}"
 NUT_CGI_FILES="/etc/nut/{{hosts,upsset}.conf,upsstats{,-single}.html}"
 
 PATCHES=(
-	"${FILESDIR}/nut-2.7.2/${PN}-2.7.2-no-libdummy.patch"
+	"${FILESDIR}/${PN}-2.7.2-no-libdummy.patch"
 	"${FILESDIR}/${PN}-2.7.1-snmpusb-order.patch"
 	"${FILESDIR}/${PN}-2.6.2-lowspeed-buffer-size.patch"
 )
