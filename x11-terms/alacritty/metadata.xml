@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		Alacritty is the fastest terminal emulator in existence.
+		Using the GPU for rendering enables optimizations that simply aren't possible in other emulators.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jwilm/alacritty</remote-id>
+	</upstream>
+</pkgmetadata>
