@@ -23,7 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/poppler-0.26.0:=[cairo]
-	>=dev-cpp/glibmm-2.48
+	>=dev-cpp/glibmm-2.54.1
 	>=dev-cpp/gtkmm-2.18.0:2.4
 	>=dev-cpp/cairomm-1.9.8
 	>=dev-libs/boehm-gc-7.1:=
@@ -58,9 +58,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		app-text/gtkspell:2
 	)
 	visio? (
-		media-libs/libvisio
 		app-text/libwpg:0.3
 		dev-libs/librevenge
+		media-libs/libvisio
 	)
 	wpg? (
 		app-text/libwpg:0.3
