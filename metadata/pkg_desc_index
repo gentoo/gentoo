@@ -4551,8 +4551,8 @@ dev-php/jpgraph 4.0.2: Object-oriented graphing library for PHP
 dev-php/ming-php 0.4.7 0.4.8: PHP extension for the ming Flash movie generation library
 dev-php/myclabs-deepcopy 1.6.0: Create deep copies (clones) of your objects
 dev-php/pear 1.10.1-r1: PEAR - PHP Extension and Application Repository
-dev-php/pecl-apcu 4.0.11 5.1.8: Stripped down version of APC supporting only user cache
-dev-php/pecl-apcu_bc 1.0.3-r1: Provides APC backwards compatibility functions via APCu
+dev-php/pecl-apcu 4.0.11 5.1.8 5.1.12: Stripped down version of APC supporting only user cache
+dev-php/pecl-apcu_bc 1.0.3-r1 1.0.4: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-crack 0.4-r6 0.4-r7: PHP interface to the cracklib libraries
 dev-php/pecl-event 2.2.1: PHP wrapper for libevent2
 dev-php/pecl-geoip 1.1.1-r4: PHP extension to map IP address to geographic places
@@ -9276,7 +9276,7 @@ sci-chemistry/elem 1.0.3-r2: periodic table of the elements
 sci-chemistry/gabedit 2.4.6: GUI for computational chemistry packages
 sci-chemistry/gelemental 1.2.0-r1: Periodic table viewer with detailed information on the chemical elements
 sci-chemistry/gperiodic 2.0.10-r2: Periodic table application for Linux
-sci-chemistry/gromacs 5.0.4 2016.2: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 5.0.4 2016.2 2016.5 2018.3: The ultimate molecular dynamics simulation package
 sci-chemistry/molden 4.8-r2: Display molecular density from GAMESS-UK, GAMESS-US, GAUSSIAN and Mopac/Ampac
 sci-chemistry/moldy 2.16e-r2: Molecular dynamics simulations platform
 sci-chemistry/molmol 2k_p2-r2 2k_p2-r5: Publication-quality molecular visualization package
@@ -9384,7 +9384,7 @@ sci-libs/flann 1.9.1: Fast approximate nearest neighbor searches in high dimensi
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gdal 2.3.0-r2: Translator library for raster geospatial data formats (includes OGR support)
-sci-libs/geos 3.6.2: Geometry engine library for Geographic Information Systems
+sci-libs/geos 3.6.2 3.7.0: Geometry engine library for Geographic Information Systems
 sci-libs/gsl 1.16: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/hdf 4.2.8 4.2.13-r1: General purpose library and format for storing scientific data
@@ -11132,7 +11132,7 @@ x11-plugins/wmcliphist 2.1: Dockable clipboard history application for Window Ma
 x11-plugins/wmclock 1.0.16: a dockapp that displays time and date (same style as NEXTSTEP(tm) OS)
 x11-plugins/wmclockmon 0.8.1: a nice digital clock with 7 different styles either in LCD or LED style
 x11-plugins/wmcoincoin 2.6.2_p20140602: a dockapp for browsing dacode news and board sites
-x11-plugins/wmcp 1.2.8: A pager dockapp
+x11-plugins/wmcp 1.2.8-r1: A pager dockapp
 x11-plugins/wmcpuload 1.1.0_pre5: a dockapp for monitoring CPU usage with a LCD display
 x11-plugins/wmcube 1.0.2: a dockapp cpu monitor with spinning 3d objects
 x11-plugins/wmdots 0.2_beta-r1: multishape 3d rotating dots
