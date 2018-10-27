@@ -90,9 +90,6 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/nut-2.7.2-no-libdummy.patch
 	epatch "${FILESDIR}"/${PN}-2.6.2-lowspeed-buffer-size.patch
-	#epatch "${FILESDIR}"/${PN}-2.6.3-CVE-2012-2944.patch
-	#epatch "${FILESDIR}"/${PN}-2.6.5-freeipmi_fru.patch
-	#epatch "${FILESDIR}"/${PN}-2.7.1-fix-scanning.patch
 	epatch "${FILESDIR}"/${PN}-2.7.1-snmpusb-order.patch
 
 	sed -e "s:GD_LIBS.*=.*-L/usr/X11R6/lib \(.*\) -lXpm -lX11:GD_LIBS=\"\1:" \
