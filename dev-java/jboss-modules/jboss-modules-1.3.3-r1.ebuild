@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 JAVA_PKG_IUSE="source" # doc (needs APIviz)
 
@@ -14,7 +14,6 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.Final.tar.gz -> ${P}.tar.g
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND=">=virtual/jre-1.7"
 DEPEND=">=virtual/jdk-1.7"
@@ -23,7 +22,8 @@ S="${WORKDIR}/${P}.Final/"
 
 JAVA_SRC_DIR="src/main/java"
 
-java_prepare() {
+src_prepare() {
+	default
 	rm pom.xml || die
 	mkdir -p target/classes || die
 	cp -vr "${S}"/src/main/resources/* target/classes/ || die

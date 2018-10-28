@@ -1,21 +1,18 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit java-pkg-2
 
-DESCRIPTION="sbt, a build tool for Scala."
+DESCRIPTION="sbt, a build tool for Scala"
 HOMEPAGE="https://scala-sbt.org"
-SRC_URI="https://dl.bintray.com/sbt/native-packages/sbt/${PV}/${PN/-bin}-${PV}.tgz"
+SRC_URI="https://github.com/sbt/sbt/releases/download/v${PV}/${PN/-bin}-${PV}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE=""
-
-DEPEND=""
 RDEPEND="
 	>=virtual/jre-1.7
 	!dev-java/sbt"
@@ -25,14 +22,19 @@ src_unpack() {
 	mv "${WORKDIR}/sbt" "${S}" || die
 }
 
-java_prepare() {
+src_prepare() {
+	default
 	java-pkg_init_paths_
+}
+
+src_compile() {
+	:;
 }
 
 src_install() {
 	local dest="${JAVA_PKG_SHAREPATH}"
 
-	rm -f bin/sbt.bat || die
+	rm -v bin/sbt.bat || die
 	sed -i -e 's#bin/sbt-launch.jar#lib/sbt-launch.jar#g;' \
 		bin/sbt-launch-lib.bash || die
 
