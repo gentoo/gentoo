@@ -21,14 +21,7 @@ else
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
-CHOST_amd64=x86_64-unknown-linux-gnu
-CHOST_x86=i686-unknown-linux-gnu
-CHOST_arm64=aarch64-unknown-linux-gnu
-
 RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).0"
-RUST_STAGE0_amd64="rust-${RUST_STAGE0_VERSION}-${CHOST_amd64}"
-RUST_STAGE0_x86="rust-${RUST_STAGE0_VERSION}-${CHOST_x86}"
-RUST_STAGE0_arm64="rust-${RUST_STAGE0_VERSION}-${CHOST_arm64}"
 
 CARGO_DEPEND_VERSION="0.$(($(ver_cut 2) + 1)).0"
 
@@ -83,8 +76,7 @@ toml_usex() {
 src_prepare() {
 	local rust_stage0_root="${WORKDIR}"/rust-stage0
 
-	local rust_stage0_name="RUST_STAGE0_${ARCH}"
-	local rust_stage0="${!rust_stage0_name}"
+	local rust_stage0="rust-${RUST_STAGE0_VERSION}-$(rust_abi)"
 
 	"${WORKDIR}/${rust_stage0}"/install.sh --disable-ldconfig --destdir="${rust_stage0_root}" --prefix=/ || die
 
@@ -96,8 +88,7 @@ src_configure() {
 
 	# Collect rust target names to compile standard libs for all ABIs.
 	for v in $(multilib_get_enabled_abi_pairs); do
-		rust_target_name="CHOST_${v##*.}"
-		rust_targets="${rust_targets},\"${!rust_target_name}\""
+		rust_targets="${rust_targets},\"$(rust_abi $(get_abi_CHOST ${v##*.}))\""
 	done
 	if use wasm; then
 		rust_targets="${rust_targets},\"wasm32-unknown-unknown\""
@@ -124,7 +115,6 @@ src_configure() {
 
 	local rust_stage0_root="${WORKDIR}"/rust-stage0
 
-	rust_target_name="CHOST_${ARCH}"
 	rust_target="$(rust_abi)"
 
 	cat <<- EOF > "${S}"/config.toml
