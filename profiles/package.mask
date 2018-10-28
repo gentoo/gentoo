@@ -163,11 +163,6 @@ dev-python/python-xcaplib
 # Removal in 30 days, bug #576334
 app-eselect/eselect-mesa
 
-# Virgil Dupras <vdupras@gentoo.org> (27 Sep 2018)
-# Outdated, unmaintained, no revdeps.
-# Removal in 30 days, bug #623292
-dev-python/tinydb
-
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2018)
 # Apparently breaks sys-devel/gcc.  Bug #666954.
 =dev-util/debugedit-4.14.2
