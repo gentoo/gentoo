@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst prepare test
 DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) X? ( x11-base/xorg-proto )
 DESCRIPTION=The Adaptive Communications Environment
 EAPI=5
-HOMEPAGE=http://www.cs.wustl.edu/~schmidt/ACE.html
+HOMEPAGE=http://www.dre.vanderbilt.edu/~schmidt/ACE.html
 IUSE=X ciao ipv6 libressl static-libs tao
 KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=ACE BSD BSD-4 BSD-2 tao? ( sun-iiop RSA )
@@ -10,4 +10,4 @@ RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) X?
 SLOT=0/5.8.3
 SRC_URI=!tao? ( http://download.dre.vanderbilt.edu/previous_versions/ACE-5.8.3.tar.bz2 ) tao? ( !ciao? ( http://download.dre.vanderbilt.edu/previous_versions/ACE+TAO-5.8.3.tar.bz2 ) ciao? ( http://download.dre.vanderbilt.edu/previous_versions/ACE+TAO+CIAO-5.8.3.tar.bz2 ) )
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=2f1875a8df3c4bfe90d8ad8d09858f80
+_md5_=7e1fe525a85634a777bde769aa441dbf
