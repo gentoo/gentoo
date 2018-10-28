@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}/0005-grpc-1.11.0-pkgconfig-libdir.patch"
 	"${FILESDIR}/grpc-1.15.0-fix-cpp-so-version.patch"
 	"${FILESDIR}/grpc-1.16.0-gcc8-fixes.patch"
+	"${FILESDIR}/grpc-1.16.0-Prevent-shell-calls-longer-than-ARG_MAX.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
