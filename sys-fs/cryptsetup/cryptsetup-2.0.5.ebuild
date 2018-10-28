@@ -1,15 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 
-inherit autotools python-single-r1 linux-info libtool ltprune versionator
+inherit autotools python-single-r1 linux-info libtool eapi7-ver
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
-SRC_URI="mirror://kernel/linux/utils/${PN}/v$(get_version_component_range 1-2)/${P/_/-}.tar.xz"
+SRC_URI="mirror://kernel/linux/utils/${PN}/v$(ver_cut 1-2)/${P/_/-}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0/12" # libcryptsetup.so version
@@ -49,6 +49,8 @@ DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 
 S="${WORKDIR}/${P/_/-}"
+
+PATCHES=( "${FILESDIR}"/${PN}-2.0.4-fix-static-pwquality-build.patch )
 
 pkg_setup() {
 	local CONFIG_CHECK="~DM_CRYPT ~CRYPTO ~CRYPTO_CBC ~CRYPTO_SHA256"
@@ -119,7 +121,7 @@ src_install() {
 		mv "${ED%}"/sbin/veritysetup{.static,} || die
 		use reencrypt && { mv "${ED%}"/sbin/cryptsetup-reencrypt{.static,} || die ; }
 	fi
-	prune_libtool_files --modules
+	find "${ED}" -name "*.la" -delete || die
 
 	dodoc docs/v*ReleaseNotes
 
