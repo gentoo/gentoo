@@ -603,7 +603,7 @@ app-editors/zile 2.3.24-r2 2.4.11: Zile is a small Emacs clone
 app-emacs/analog 1.9.99: Monitor lists of files or command output
 app-emacs/apache-mode 1.1: Major mode for editing Apache configuration files
 app-emacs/apel 10.8-r1: A Portable Emacs Library is a library for making portable Emacs Lisp programs
-app-emacs/auctex 11.89 11.92 12.1: Extensible package for writing and formatting TeX files in Emacs
+app-emacs/auctex 11.92 12.1: Extensible package for writing and formatting TeX files in Emacs
 app-emacs/autoconf-mode 2.69: Emacs major modes for editing autoconf and autotest input
 app-emacs/bbdb 2.35-r1: The Insidious Big Brother Database
 app-emacs/binclock 1.7-r1: Display the current time using a binary clock
