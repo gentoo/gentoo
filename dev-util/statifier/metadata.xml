@@ -9,4 +9,12 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<longdescription>
+		Statifier is a tool for creating portable, self-containing Linux executables.
+		It creates from dynamically linked executables and all it's libraries one file. 
+		This file can be copied and run on another machine without need to drag all it's libraries.
+		Dynamically linked executables are smaller then statically linked.
+		From the other side dynamically linked executables use shared libraries compiled
+		in PIC (position independend code) which is slower than "normal" one.
+	</longdescription>
 </pkgmetadata>
