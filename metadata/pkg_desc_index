@@ -6935,6 +6935,7 @@ kde-misc/kshutdown 4.2: Shutdown manager for desktop environments like KDE Plasm
 kde-misc/kwebkitpart 1.4.0_pre20180406: WebKit KPart for Konqueror
 kde-misc/latte-dock 0.7.5: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
+kde-misc/plasma-redshift-control 1.0.18: Plasma 5 applet for controlling redshift
 kde-misc/rsibreak 0.12.8: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
