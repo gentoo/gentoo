@@ -5,11 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools
-inherit elisp-common
-inherit python-single-r1
-inherit systemd
-inherit user
+inherit autotools elisp-common python-single-r1 systemd user
 
 if [[ ${PV#9999} != ${PV} ]]; then
 	inherit git-r3
@@ -24,28 +20,7 @@ HOMEPAGE="https://www.gluster.org/"
 
 LICENSE="|| ( GPL-2 LGPL-3+ )"
 SLOT="0"
-IUSE="
-	bd-xlator
-	crypt-xlator
-	debug
-	emacs
-	+fuse
-	+georeplication
-	glupy
-	infiniband
-	ipv6
-	libressl
-	+libtirpc
-	qemu-block
-	rsyslog
-	static-libs
-	+syslog
-	systemtap
-	test
-	+tiering
-	vim-syntax
-	+xml
-"
+IUSE="bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband ipv6 libressl +libtirpc qemu-block rsyslog static-libs +syslog systemtap test +tiering vim-syntax +xml"
 
 REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} )
 	glupy? ( ${PYTHON_REQUIRED_USE} )
