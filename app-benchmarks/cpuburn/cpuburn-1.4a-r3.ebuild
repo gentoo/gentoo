@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="7"
 
 MY_PV="${PV/./_}"
 
@@ -15,12 +15,14 @@ SLOT="0"
 
 PATCHES=( "${FILESDIR}/${P}-variables.patch" )
 
-QA_FLAGS_IGNORED="usr/bin/burnBX
+QA_FLAGS_IGNORED="
+	usr/bin/burnBX
 	usr/bin/burnK6
 	usr/bin/burnK7
 	usr/bin/burnMMX
 	usr/bin/burnP5
-	usr/bin/burnP6"
+	usr/bin/burnP6
+"
 
 QA_TEXTRELS="${QA_FLAGS_IGNORED}"
 
@@ -32,7 +34,7 @@ src_prepare() {
 	# See https://bugs.gentoo.org/65719
 	sed -i -e 's/gcc -s/$(CC) $(CFLAGS) -m32 $(LDFLAGS)/' Makefile || die
 
-	# Respect users compiler and users CFLAGS and LDFLAGS on arm
+	# Respect users compiler, CFLAGS and LDFLAGS on arm
 	sed -i -e '/CC :=/d' -e 's/^.*-mfloat-abi=softfp/	$(CC) $(CFLAGS) -nostdlib $(LDFLAGS)/' ARM/Makefile || die
 }
 
