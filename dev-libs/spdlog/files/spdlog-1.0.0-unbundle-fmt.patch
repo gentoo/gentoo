@@ -1,18 +1,18 @@
 diff --git a/include/spdlog/fmt/fmt.h b/include/spdlog/fmt/fmt.h
 --- a/include/spdlog/fmt/fmt.h
 +++ b/include/spdlog/fmt/fmt.h
-@@ -16,10 +16,7 @@
- #endif
+@@ -17,9 +17,7 @@
  #ifndef FMT_USE_WINDOWS_H
  #define FMT_USE_WINDOWS_H 0
--#endif
+ #endif
 -#include "bundled/core.h"
 -#include "bundled/format.h"
 -#else // external fmtlib
 +#endif // external fmtlib
++
  #include <fmt/core.h>
  #include <fmt/format.h>
- #endif
+-#endif
 diff --git a/include/spdlog/fmt/ostr.h b/include/spdlog/fmt/ostr.h
 --- a/include/spdlog/fmt/ostr.h
 +++ b/include/spdlog/fmt/ostr.h
