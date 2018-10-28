@@ -66,13 +66,13 @@ ccache now supports sys-devel/clang and dev-lang/icc, too!"
 }
 
 pkg_prerm() {
-	if [[ -z ${REPLACED_BY_VERSION} && ${ROOT} == / ]] ; then
+	if [[ -z ${REPLACED_BY_VERSION} && ${ROOT:-/} == / ]] ; then
 		eselect compiler-shadow remove ccache
 	fi
 }
 
 pkg_postinst() {
-	if [[ ${ROOT} == / ]]; then
+	if [[ ${ROOT:-/} == / ]]; then
 		eselect compiler-shadow update ccache
 	fi
 
