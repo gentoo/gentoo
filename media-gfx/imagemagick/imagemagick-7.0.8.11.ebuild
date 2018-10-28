@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -85,13 +85,6 @@ src_prepare() {
 		die "Failed to apply hardening of policy.xml"
 	einfo "policy.xml hardened"
 
-	# Install default (unrestricted) policy in $HOME for test suite #664238
-	local _im_local_config_home="${HOME}/.config/ImageMagick"
-	mkdir -p "${_im_local_config_home}" || \
-		die "Failed to create IM config dir in '${_im_local_config_home}'"
-	cp "${FILESDIR}"/policy.test.xml "${_im_local_config_home}/policy.xml" || \
-		die "Failed to install default blank policy.xml in '${_im_local_config_home}'"
-
 	elibtoolize # for Darwin modules
 
 	# For testsuite, see https://bugs.gentoo.org/show_bug.cgi?id=500580#c3
@@ -174,6 +167,17 @@ src_configure() {
 }
 
 src_test() {
+	# Install default (unrestricted) policy in $HOME for test suite #664238
+	local _im_local_config_home="${HOME}/.config/ImageMagick"
+	mkdir -p "${_im_local_config_home}" || \
+		die "Failed to create IM config dir in '${_im_local_config_home}'"
+	cp "${FILESDIR}"/policy.test.xml "${_im_local_config_home}/policy.xml" || \
+		die "Failed to install default blank policy.xml in '${_im_local_config_home}'"
+
+	# Check that your policy.xml file is taken into account
+	LD_LIBRARY_PATH="${S}/coders/.libs:${S}/filters/.libs:${S}/Magick++/lib/.libs:${S}/magick/.libs:${S}/wand/.libs" \
+	"${S}"/utilities/.libs/magick -list policy || die
+
 	LD_LIBRARY_PATH="${S}/coders/.libs:${S}/filters/.libs:${S}/Magick++/lib/.libs:${S}/magick/.libs:${S}/wand/.libs" \
 	emake check
 }
