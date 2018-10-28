@@ -139,7 +139,7 @@ winapi-x86_64-pc-windows-gnu-0.4.0
 wincolor-1.0.1
 "
 
-inherit cargo bash-completion-r1 multiprocessing versionator
+inherit cargo bash-completion-r1 multiprocessing versionator rust-toolchain
 
 BOOTSTRAP_VERSION="0.$(($(get_version_component_range 2) - 1)).0"
 
@@ -147,20 +147,7 @@ DESCRIPTION="The Rust's package manager"
 HOMEPAGE="http://crates.io"
 SRC_URI="https://github.com/rust-lang/cargo/archive/${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})
-	x86?   (
-		https://static.rust-lang.org/dist/cargo-${BOOTSTRAP_VERSION}-i686-unknown-linux-gnu.tar.xz
-	)
-	amd64? (
-		https://static.rust-lang.org/dist/cargo-${BOOTSTRAP_VERSION}-x86_64-unknown-linux-gnu.tar.xz
-	)
-	arm? (
-		https://static.rust-lang.org/dist/cargo-${BOOTSTRAP_VERSION}-arm-unknown-linux-gnueabi.tar.xz
-		https://static.rust-lang.org/dist/cargo-${BOOTSTRAP_VERSION}-arm-unknown-linux-gnueabihf.tar.xz
-		https://static.rust-lang.org/dist/cargo-${BOOTSTRAP_VERSION}-armv7-unknown-linux-gnueabihf.tar.xz
-	)
-	arm64? (
-		https://static.rust-lang.org/dist/cargo-${BOOTSTRAP_VERSION}-aarch64-unknown-linux-gnu.tar.xz
-	)"
+	$(rust_all_arch_uris cargo-${BOOTSTRAP_VERSION})"
 
 RESTRICT="mirror"
 LICENSE="|| ( MIT Apache-2.0 )"
@@ -168,20 +155,6 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 
 IUSE="doc libressl"
-
-if [[ ${ARCH} = "amd64" ]]; then
-	TRIPLE="x86_64-unknown-linux-gnu"
-elif [[ ${ARCH} = "x86" ]]; then
-	TRIPLE="i686-unknown-linux-gnu"
-elif [[ ${ARCH} = "arm64" ]]; then
-	TRIPLE="aarch64-unknown-linux-gnu"
-elif [[ "$(tc-is-softfloat)" != "no" ]] && [[ ${CHOST} == armv6* ]]; then
-	TRIPLE="arm-unknown-linux-gnueabi"
-elif [[ ${CHOST} == armv6*h* ]]; then
-	TRIPLE="arm-unknown-linux-gnueabihf"
-elif [[ ${CHOST} == armv7*h* ]]; then
-	TRIPLE="armv7-unknown-linux-gnueabihf"
-fi
 
 COMMON_DEPEND="sys-libs/zlib
 	!libressl? ( dev-libs/openssl:0= )
@@ -208,7 +181,7 @@ src_configure() {
 
 src_compile() {
 	export CARGO_HOME="${ECARGO_HOME}"
-	local cargo="${WORKDIR}/cargo-${BOOTSTRAP_VERSION}-${TRIPLE}/cargo/bin/cargo"
+	local cargo="${WORKDIR}/cargo-${BOOTSTRAP_VERSION}-$(rust_abi)/cargo/bin/cargo"
 	${cargo} build -j$(makeopts_jobs) --release || die
 
 	# Building HTML documentation
