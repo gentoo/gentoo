@@ -10,7 +10,7 @@ SRC_URI="http://projects.gw-computing.net/attachments/download/615/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm x86"
 IUSE="nls"
 
 DEPEND="nls? (
