@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="Utility to detect other OSs on a set of drives"
