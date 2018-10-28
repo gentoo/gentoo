@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit golang-build golang-vcs-snapshot bash-completion-r1
 
 EGO_PN="k8s.io/kubernetes"
 ARCHIVE_URI="https://github.com/kubernetes/kubernetes/archive/v${PV}.tar.gz -> kubernetes-${PV}.tar.gz"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="CLI to run commands against Kubernetes clusters"
 HOMEPAGE="https://github.com/kubernetes/kubernetes https://kubernetes.io"
