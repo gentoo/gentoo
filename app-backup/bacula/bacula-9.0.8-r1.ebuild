@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -21,7 +21,7 @@ DEPEND="
 	dev-libs/gmp:0
 	!bacula-clientonly? (
 		postgres? ( dev-db/postgresql:=[threads] )
-		mysql? ( virtual/mysql )
+		mysql? ( dev-db/mysql-connector-c:= )
 		sqlite? ( dev-db/sqlite:3 )
 		!bacula-nodir? ( virtual/mta )
 	)
