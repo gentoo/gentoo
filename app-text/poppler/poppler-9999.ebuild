@@ -47,6 +47,7 @@ COMMON_DEPEND="
 	tiff? ( media-libs/tiff:0 )
 "
 DEPEND="${COMMON_DEPEND}
+	dev-util/glib-utils
 	virtual/pkgconfig
 "
 RDEPEND="${COMMON_DEPEND}
