@@ -1,0 +1,61 @@
+This upstream doc changes addresses 3.4.2 adding new rows to awl SQL
+tables.
+
+Upstream's UPGRADE diff is slightly different.  Their version is 
+applied to the 3.4.3 release notes (not yet released), ours applies
+to 3.4.2.
+
+Bug: https://bz.apache.org/SpamAssassin/show_bug.cgi?id=7631
+Bug: https://bugs.gentoo.org/666576
+
+--- a/UPGRADE	2018-10-28 15:43:45.744850026 -0400
++++ b/UPGRADE	2018-10-28 15:47:52.805028626 -0400
+@@ -8,6 +8,13 @@
+ 
+ See https://bz.apache.org/SpamAssassin/show_bug.cgi?id=7614
+ 
++- Added last_hit timestamp to Awl SQL schema.
++  You should upgrade your sql database running the following command:
++  MySQL:
++  "ALTER TABLE `awl` ADD last_hit timestamp NOT NULL default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;"
++  PostgreSQL:
++  "ALTER TABLE awl ADD last_hit timestamp NOT NULL default CURRENT_TIMESTAMP;"
++
+ New plugins
+ -----------
+ 
+--- a/sql/awl_mysql.sql	2018/10/21 12:10:09	1844484
++++ b/sql/awl_mysql.sql	2018/10/21 12:10:40	1844485
+@@ -5,5 +5,6 @@
+   msgcount int(11) NOT NULL default '0',
+   totscore float NOT NULL default '0',
+   signedby varchar(255) NOT NULL default '',
++  last_hit timestamp NOT NULL default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+   PRIMARY KEY (username,email,signedby,ip)
+ ) ENGINE=InnoDB;
+--- a/sql/awl_pg.sql	2018/10/21 12:10:09	1844484
++++ b/sql/awl_pg.sql	2018/10/21 12:10:40	1844485
+@@ -5,8 +5,22 @@
+   msgcount bigint NOT NULL default '0',
+   totscore float NOT NULL default '0',
+   signedby varchar(255) NOT NULL default '',
++  last_hit timestamp NOT NULL default CURRENT_TIMESTAMP,
+   PRIMARY KEY (username,email,signedby,ip)
+ );
+ 
+-ALTER TABLE awl SET (fillfactor=95);
++create index awl_last_hit on awl (last_hit);
++
++create OR REPLACE function update_awl_last_hit()
++RETURNS TRIGGER AS $$
++BEGIN
++  NEW.last_hit = CURRENT_TIMESTAMP;
++  RETURN NEW;
++END;
++$$ language 'plpgsql';
+ 
++create TRIGGER update_awl_update_last_hit BEFORE UPDATE
++ON awl FOR EACH ROW EXECUTE PROCEDURE
++update_awl_last_hit();
++
++ALTER TABLE awl SET (fillfactor=95);
