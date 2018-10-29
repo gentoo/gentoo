@@ -84,6 +84,8 @@ src_prepare() {
 		"${FILESDIR}/236-uucp-group.patch"
 		"${FILESDIR}/239-basic-add-missing-comma-in-raw_clone-assembly-for-sp.patch"
 		"${FILESDIR}/239-debug-extra.patch"
+		"${FILESDIR}/239-stat-0.patch"
+		"${FILESDIR}/239-stat-1.patch"
 	)
 
 	default
