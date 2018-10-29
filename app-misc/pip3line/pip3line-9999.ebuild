@@ -1,0 +1,1 @@
+/home/jack/dev/pip3line/extras/gentoo_package/pip3line-TEMPLATE.ebuild
