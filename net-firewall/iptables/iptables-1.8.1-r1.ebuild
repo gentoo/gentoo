@@ -114,6 +114,9 @@ src_install() {
 
 		# Bug 660886
 		rm "${ED%/}"/sbin/{arptables,ebtables} || die
+
+		# Bug 669894
+		rm "${ED%/}"/sbin/ebtables-{save,restore} || die
 	fi
 
 	systemd_dounit "${FILESDIR}"/systemd/iptables-{re,}store.service
