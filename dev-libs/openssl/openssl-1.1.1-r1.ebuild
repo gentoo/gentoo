@@ -34,6 +34,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	usr/include/openssl/opensslconf.h
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-CVE-2018-0735.patch
+)
+
 src_prepare() {
 	# keep this in sync with app-misc/c_rehash
 	SSL_CNF_DIR="/etc/ssl"
