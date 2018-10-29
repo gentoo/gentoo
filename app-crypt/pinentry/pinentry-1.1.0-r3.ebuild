@@ -75,7 +75,9 @@ src_configure() {
 		--enable-pinentry-tty \
 		FLTK_CONFIG="${EROOT}/usr/bin/fltk-config" \
 		MOC="$(qt5_get_bindir)"/moc \
-		$(./configure --help | grep -- --with-.*-prefix | sed -e 's/prefix.*/prefix/' -e "s#\$#=${EROOT}/usr#")
+		GPG_ERROR_CONFIG="${EROOT}/usr/bin/${CHOST}-gpg-error-config" \
+		LIBASSUAN_CONFIG="${EROOT}/usr/bin/libassuan-config" \
+		$("${S}/configure" --help | grep -- '--without-.*-prefix' | sed -e 's/^ *\([^ ]*\) .*/\1/g')
 }
 
 src_install() {
