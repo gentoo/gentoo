@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>gabriel.caudrelier@gmail.com</email>
+  <name>Gabriel Caudrelier</name>
+</maintainer>
+<use>
+  <flag name='openssl'>Compile the OpenSSL plugin</flag>
+  <flag name='distorm'>Compile the distorm plugin</flag>
+  <flag name='python2_7'>Compile the Python 2.7 plugin</flag>
+  <flag name='python3'>Compile the Python 3 plugin</flag>
+  <flag name='qscintilla'>Use QScintilla for advanced text display</flag>
+</use>
+</pkgmetadata>
