@@ -38,6 +38,8 @@ S="${WORKDIR}/systemd-${PV}"
 PATCHES=(
 	"${FILESDIR}/237-libshared-static.patch"
 	"${FILESDIR}/239-debug-extra.patch"
+	"${FILESDIR}/239-stat-0.patch"
+	"${FILESDIR}/239-stat-1.patch"
 )
 
 src_configure() {
