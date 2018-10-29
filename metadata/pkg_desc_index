@@ -1905,7 +1905,7 @@ dev-db/pgbadger 10.0: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.9.0: Lightweight connection pooler for PostgreSQL
 dev-db/pgpool2 3.7.0 3.7.5: Connection pool server for PostgreSQL
 dev-db/pgtap 0.98.0: Unit testing for PostgreSQL
-dev-db/phpmyadmin 4.7.0 4.7.8: Web-based administration for MySQL database in PHP
+dev-db/phpmyadmin 4.7.0 4.7.8 4.8.3-r1: Web-based administration for MySQL database in PHP
 dev-db/postgis 2.4.2: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.3.24 9.4.19 9.5.14 9.6.10 10.5: PostgreSQL RDBMS
 dev-db/pspg 1.3.0: A better pager for psql and mysql
@@ -9904,7 +9904,7 @@ sys-apps/shadow 4.6: Utilities to deal with user accounts
 sys-apps/smartmontools 6.4 6.6: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 236-r5 238-r7: System and service manager for Linux
+sys-apps/systemd 236-r5 238-r7 239-r2: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.88-r9: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
