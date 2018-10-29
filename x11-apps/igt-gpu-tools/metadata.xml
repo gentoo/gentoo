@@ -8,7 +8,6 @@
 <use>
  <flag name="chamelium">Enables support for building Chamelium tests</flag>
  <flag name="glib">Support reading config files via glib helpers</flag>
- <flag name="test-programs">Install test programs for DRM driver development</flag>
  <flag name="valgrind">Support valgrind annotations</flag>
  <flag name="xrandr">Enable support for the X RandR extension</flag>
 </use>
