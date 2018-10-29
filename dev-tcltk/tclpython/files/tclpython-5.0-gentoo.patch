@@ -1,0 +1,12 @@
+--- a/Makefile	2018-10-28 17:21:20.274137396 +0100
++++ b/Makefile	2018-10-28 17:21:47.696694473 +0100
+@@ -62,7 +62,8 @@
+ $(OUTPUT_DIR)/pkgIndex.tcl:pkg/pkgIndex.tcl
+ 	cp -t $(dir $@) $^
+ 	
+-package: $(OUTPUT_DIR)/$(LIBRARY) $(OUTPUT_DIR)/pkgIndex.tcl
++package: $(OUTPUT_DIR)/$(LIBRARY)
++	${MAKE} $(OUTPUT_DIR)/pkgIndex.tcl
+ 
+ ifneq ($(MAKECMDGOALS), clean)
+   -include $(DEPEND)
