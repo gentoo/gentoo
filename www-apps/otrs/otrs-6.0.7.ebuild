@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -18,7 +18,7 @@ REQUIRED_USE="|| ( mysql postgres )"
 
 DEPEND="media-libs/libpng:0"
 
-RDEPEND="dev-perl/Apache-Reload
+RDEPEND="
 	dev-perl/Archive-Zip
 	dev-perl/DBI
 	dev-perl/IO-Socket-SSL
@@ -36,6 +36,7 @@ RDEPEND="dev-perl/Apache-Reload
 	dev-perl/YAML-LibYAML
 	apache2? (
 		mod_perl? (
+			dev-perl/Apache-Reload
 			www-servers/apache:2
 			=www-apache/libapreq2-2* www-apache/mod_perl
 		)
