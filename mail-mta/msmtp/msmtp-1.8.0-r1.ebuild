@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -92,8 +92,7 @@ src_install() {
 	fi
 
 	if use doc ; then
-		dohtml doc/msmtp.html
-		dodoc doc/msmtp.pdf
+		dodoc doc/msmtp.{html,pdf}
 	fi
 
 	if use mta ; then
