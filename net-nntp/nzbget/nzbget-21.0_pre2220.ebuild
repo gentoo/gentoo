@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils flag-o-matic user
+inherit autotools eutils flag-o-matic user systemd
 
 MY_PV=${PV/_pre/-r}
 MY_P=${PN}-${PV/_pre/-testing-r}
@@ -72,14 +72,16 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable debug) \
-		$(use_enable ncurses curses) \
-		$(use_enable parcheck) \
-		$(use_enable ssl tls) \
-		$(use_enable zlib gzip) \
-		$(use_enable test tests) \
+	local myconf=(
+		$(use_enable debug)
+		$(use_enable ncurses curses)
+		$(use_enable parcheck)
+		$(use_enable ssl tls)
+		$(use_enable zlib gzip)
+		$(use_enable test tests)
 		--with-tlslib=$(usex gnutls GnuTLS OpenSSL)
+	)
+	econf "${myconf[@]}"
 }
 
 src_test() {
@@ -98,6 +100,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/nzbget.initd-r1 nzbget
 	newconfd "${FILESDIR}"/nzbget.confd nzbget
+	systemd_dounit "${FILESDIR}"/nzbget.service
 }
 
 pkg_preinst() {
@@ -119,7 +122,7 @@ pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]] ; then
 		elog
 		elog "Please add users that you want to be able to use the system-wide"
-		elog "nzbget daemon to the nzbget group. To access the daemon run nzbget"
+		elog "nzbget daemon to the nzbget group. To access the daemon, run nzbget"
 		elog "with the --configfile /etc/nzbgetd.conf option."
 		elog
 	fi

@@ -9,16 +9,17 @@ are only passed when correctly needed.
 
 Prior Gentoo testcase for reproduction:
 USE=minimal ebuild ... compile.
-- Linking with libelf & libmnl based only on presence.
+- Linking with libelf, libmnl & libcap based only on presence.
 - Links based on libselinux based only on presence.
 
 Closes: https://bugs.gentoo.org/643722
 Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
 
 Forward-ported from v4.14.1 to v4.16.0 by Lars Wendler <polynomial-c@gentoo.org>
+Added libcap to v4.17.0 by Lars Wendler <polynomial-c@gentoo.org>
 
---- iproute2-4.16.0/bridge/Makefile
-+++ iproute2-4.16.0/bridge/Makefile
+--- iproute2-4.17.0/bridge/Makefile
++++ iproute2-4.17.0/bridge/Makefile
 @@ -2,6 +2,7 @@
  BROBJ = bridge.o fdb.o monitor.o link.o mdb.o vlan.o
  
@@ -27,9 +28,9 @@ Forward-ported from v4.14.1 to v4.16.0 by Lars Wendler <polynomial-c@gentoo.org>
  
  all: bridge
  
---- iproute2-4.16.0/config.include
-+++ iproute2-4.16.0/config.include
-@@ -0,0 +1,22 @@
+--- iproute2-4.17.0/config.include
++++ iproute2-4.17.0/config.include
+@@ -0,0 +1,26 @@
 +# We can only modify CFLAGS/LDLIBS after all the config options are known.
 +ifeq ($(IP_CONFIG_SETNS),y)
 +	CFLAGS += $(IP_CONFIG_SETNS_CFLAGS)
@@ -46,14 +47,18 @@ Forward-ported from v4.14.1 to v4.16.0 by Lars Wendler <polynomial-c@gentoo.org>
 +	CFLAGS += $(HAVE_MNL_CFLAGS)
 +	LDLIBS += $(HAVE_MNL_LDLIBS)
 +endif
++ifeq ($(HAVE_CAP),y)
++	CFLAGS += $(HAVE_CAP_CFLAGS)
++	LDLIBS += $(HAVE_CAP_LDLIBS)
++endif
 +
 +# Rules can only be declared after all variables in them are known.
 +%.o: %.c
 +	$(QUIET_CC)$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -c -o $@ $<
 +
 +# vim: ft=make:
---- iproute2-4.16.0/configure
-+++ iproute2-4.16.0/configure
+--- iproute2-4.17.0/configure
++++ iproute2-4.17.0/configure
 @@ -212,7 +212,7 @@
      then
  	echo "IP_CONFIG_SETNS:=y" >>$CONFIG
@@ -96,6 +101,17 @@ Forward-ported from v4.14.1 to v4.16.0 by Lars Wendler <polynomial-c@gentoo.org>
  	else
  		echo "no"
  	fi
+@@ -343,8 +343,8 @@
+ 		echo "HAVE_CAP:=y" >>$CONFIG
+ 		echo "yes"
+ 
+-		echo 'CFLAGS += -DHAVE_LIBCAP' `${PKG_CONFIG} libcap --cflags` >>$CONFIG
+-		echo 'LDLIBS +=' `${PKG_CONFIG} libcap --libs` >> $CONFIG
++		echo 'HAVE_CAP_CFLAGS += -DHAVE_LIBCAP' `${PKG_CONFIG} libcap --cflags` >>$CONFIG
++		echo 'HAVE_CAP_LDLIBS +=' `${PKG_CONFIG} libcap --libs` >> $CONFIG
+ 	else
+ 		echo "no"
+ 	fi
 @@ -426,7 +426,3 @@
  
  echo -n "libcap support: "
@@ -104,8 +120,8 @@ Forward-ported from v4.14.1 to v4.16.0 by Lars Wendler <polynomial-c@gentoo.org>
 -echo >> $CONFIG
 -echo "%.o: %.c" >> $CONFIG
 -echo '	$(QUIET_CC)$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -c -o $@ $<' >> $CONFIG
---- iproute2-4.16.0/devlink/Makefile
-+++ iproute2-4.16.0/devlink/Makefile
+--- iproute2-4.17.0/devlink/Makefile
++++ iproute2-4.17.0/devlink/Makefile
 @@ -1,5 +1,6 @@
  # SPDX-License-Identifier: GPL-2.0
  include ../config.mk
@@ -113,8 +129,8 @@ Forward-ported from v4.14.1 to v4.16.0 by Lars Wendler <polynomial-c@gentoo.org>
  
  TARGETS :=
  
---- iproute2-4.16.0/genl/Makefile
-+++ iproute2-4.16.0/genl/Makefile
+--- iproute2-4.17.0/genl/Makefile
++++ iproute2-4.17.0/genl/Makefile
 @@ -2,6 +2,7 @@
  GENLOBJ=genl.o
  
@@ -123,8 +139,8 @@ Forward-ported from v4.14.1 to v4.16.0 by Lars Wendler <polynomial-c@gentoo.org>
  SHARED_LIBS ?= y
  
  CFLAGS += -fno-strict-aliasing
---- iproute2-4.16.0/ip/Makefile
-+++ iproute2-4.16.0/ip/Makefile
+--- iproute2-4.17.0/ip/Makefile
++++ iproute2-4.17.0/ip/Makefile
 @@ -15,6 +15,7 @@
  RTMONOBJ=rtmon.o
  
@@ -133,8 +149,8 @@ Forward-ported from v4.14.1 to v4.16.0 by Lars Wendler <polynomial-c@gentoo.org>
  
  ALLOBJ=$(IPOBJ) $(RTMONOBJ)
  SCRIPTS=ifcfg rtpr routel routef
---- iproute2-4.16.0/lib/Makefile
-+++ iproute2-4.16.0/lib/Makefile
+--- iproute2-4.17.0/lib/Makefile
++++ iproute2-4.17.0/lib/Makefile
 @@ -1,5 +1,6 @@
  # SPDX-License-Identifier: GPL-2.0
  include ../config.mk
@@ -142,8 +158,8 @@ Forward-ported from v4.14.1 to v4.16.0 by Lars Wendler <polynomial-c@gentoo.org>
  
  CFLAGS += -fPIC
  
---- iproute2-4.16.0/misc/Makefile
-+++ iproute2-4.16.0/misc/Makefile
+--- iproute2-4.17.0/misc/Makefile
++++ iproute2-4.17.0/misc/Makefile
 @@ -5,6 +5,7 @@
  TARGETS=ss nstat ifstat rtacct lnstat
  
@@ -152,8 +168,8 @@ Forward-ported from v4.14.1 to v4.16.0 by Lars Wendler <polynomial-c@gentoo.org>
  
  ifeq ($(HAVE_BERKELEY_DB),y)
  	TARGETS += arpd
---- iproute2-4.16.0/netem/Makefile
-+++ iproute2-4.16.0/netem/Makefile
+--- iproute2-4.17.0/netem/Makefile
++++ iproute2-4.17.0/netem/Makefile
 @@ -1,5 +1,6 @@
  # SPDX-License-Identifier: GPL-2.0
  include ../config.mk
@@ -161,8 +177,8 @@ Forward-ported from v4.14.1 to v4.16.0 by Lars Wendler <polynomial-c@gentoo.org>
  
  DISTGEN = maketable normal pareto paretonormal
  DISTDATA = normal.dist pareto.dist paretonormal.dist experimental.dist
---- iproute2-4.16.0/rdma/Makefile
-+++ iproute2-4.16.0/rdma/Makefile
+--- iproute2-4.17.0/rdma/Makefile
++++ iproute2-4.17.0/rdma/Makefile
 @@ -1,5 +1,6 @@
  # SPDX-License-Identifier: GPL-2.0
  include ../config.mk
@@ -170,8 +186,8 @@ Forward-ported from v4.14.1 to v4.16.0 by Lars Wendler <polynomial-c@gentoo.org>
  
  TARGETS :=
  
---- iproute2-4.16.0/tc/Makefile
-+++ iproute2-4.16.0/tc/Makefile
+--- iproute2-4.17.0/tc/Makefile
++++ iproute2-4.17.0/tc/Makefile
 @@ -4,6 +4,7 @@
         emp_ematch.yacc.o emp_ematch.lex.o
  
@@ -180,8 +196,8 @@ Forward-ported from v4.14.1 to v4.16.0 by Lars Wendler <polynomial-c@gentoo.org>
  
  SHARED_LIBS ?= y
  
---- iproute2-4.16.0/tipc/Makefile
-+++ iproute2-4.16.0/tipc/Makefile
+--- iproute2-4.17.0/tipc/Makefile
++++ iproute2-4.17.0/tipc/Makefile
 @@ -1,5 +1,6 @@
  # SPDX-License-Identifier: GPL-2.0
  include ../config.mk

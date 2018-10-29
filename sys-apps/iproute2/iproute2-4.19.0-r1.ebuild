@@ -18,12 +18,13 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iproute2"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="atm berkdb elf +iptables ipv6 minimal selinux"
+IUSE="atm berkdb caps elf +iptables ipv6 minimal selinux"
 
 # We could make libmnl optional, but it's tiny, so eh
 RDEPEND="
 	!net-misc/arpd
 	!minimal? ( net-libs/libmnl )
+	caps? ( sys-libs/libcap )
 	elf? ( virtual/libelf )
 	iptables? ( >=net-firewall/iptables-1.4.20:= )
 	berkdb? ( sys-libs/db:= )
@@ -43,7 +44,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-mtu.patch #291907
-	"${FILESDIR}"/${PN}-4.16.0-configure-nomagic.patch # bug 643722
+	"${FILESDIR}"/${PN}-4.17.0-configure-nomagic.patch # bug 643722
 )
 
 src_prepare() {
@@ -100,6 +101,7 @@ src_configure() {
 	# We've locked in recent enough kernel headers #549948
 	TC_CONFIG_IPSET := y
 	HAVE_BERKELEY_DB := $(usex berkdb y n)
+	HAVE_CAP      := $(usex caps y n)
 	HAVE_MNL      := $(usex minimal n y)
 	HAVE_ELF      := $(usex elf y n)
 	HAVE_SELINUX  := $(usex selinux y n)
