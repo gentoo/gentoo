@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="7"
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 
 inherit distutils-r1
 
@@ -15,9 +15,11 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~arm ~arm64"
 
-RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/rtimulib[${PYTHON_USEDEP}]"
+	dev-python/rtimulib[${PYTHON_USEDEP}]
+"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	${RDEPEND}"
+DEPEND="${RDEPEND}"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"

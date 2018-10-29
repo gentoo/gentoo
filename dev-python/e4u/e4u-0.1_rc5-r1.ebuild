@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="7"
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -16,12 +16,10 @@ SRC_URI="https://github.com/lambdalisue/e4u/archive/${MY_PV}.tar.gz -> ${PN}-${M
 KEYWORDS="~amd64 ~x86"
 LICENSE="BSD"
 SLOT="0"
-IUSE="test"
 
-RDEPEND="dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]"
-
-DEPEND="${DEPEND}"
+RDEPEND="dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 

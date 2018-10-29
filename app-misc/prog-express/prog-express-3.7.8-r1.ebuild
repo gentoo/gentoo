@@ -1,35 +1,41 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="7"
 
 inherit desktop udev unpacker
 
 DESCRIPTION="A modern and intuitive control software for the Batronix USB programming devices"
 HOMEPAGE="https://www.batronix.com"
-SRC_URI="amd64? ( https://www.batronix.com/exe/Batronix/Prog-Express/deb/${P}-1.amd64.deb )
-	x86? ( https://www.batronix.com/exe/Batronix/Prog-Express/deb/${P}-1.i386.deb )"
+SRC_URI="
+	amd64? ( https://www.batronix.com/exe/Batronix/Prog-Express/deb/${P}-1.amd64.deb )
+	x86? ( https://www.batronix.com/exe/Batronix/Prog-Express/deb/${P}-1.i386.deb )
+"
 
 KEYWORDS="-* ~amd64 ~x86"
 LICENSE="prog-express"
 SLOT="0"
 
-RDEPEND="dev-db/sqlite:3
+RDEPEND="
+	dev-db/sqlite:3
 	dev-dotnet/gtk-sharp:2
 	dev-dotnet/libgdiplus
 	dev-lang/mono
 	dev-lang/mono-basic
 	virtual/libusb:1
-	virtual/udev"
+	virtual/udev
+"
 
 S="${WORKDIR}"
 
 DOCS=( "usr/share/doc/prog-express/changelog" "usr/share/doc/prog-express/manuals" )
 
-QA_PREBUILT="usr/bin/bxusb
+QA_PREBUILT="
+	usr/bin/bxusb
 	usr/bin/bxusb-gui
 	usr/bin/prog-express
-	usr/sbin/bxfxload"
+	usr/sbin/bxfxload
+"
 
 src_unpack() {
 	unpack_deb ${A}
@@ -42,7 +48,7 @@ src_prepare() {
 }
 
 src_install() {
-	dobin usr/bin/bxusb usr/bin/bxusb-gui usr/bin/prog-express
+	dobin usr/bin/{bxusb,bxusb-gui,prog-express}
 
 	dosbin usr/sbin/bxfxload
 
@@ -58,7 +64,7 @@ src_install() {
 
 	doicon usr/share/pixmaps/prog-express.png
 
-	doman usr/share/man/man1/bxfxload.1 usr/share/man/man1/bxusb.1 usr/share/man/man1/bxusb-gui.1 usr/share/man/man1/prog-express.1
+	doman usr/share/man/man1/{bxfxload,bxusb,bxusb-gui,prog-express}.1
 }
 
 pkg_postinst() {
