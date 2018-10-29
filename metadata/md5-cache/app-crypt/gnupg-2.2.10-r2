@@ -11,4 +11,4 @@ RDEPEND=!app-crypt/dirmngr >=dev-libs/libassuan-2.5.0 >=dev-libs/libgcrypt-1.7.3
 SLOT=0
 SRC_URI=mirror://gnupg/gnupg/gnupg-2.2.10.tar.bz2
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=3c57f44dd9f6fd2b5f1b97d07c9d0a92
+_md5_=e035c0917373d04ddafc91307c0075d9
