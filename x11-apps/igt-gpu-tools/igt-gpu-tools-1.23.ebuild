@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/app/${PN}.git"
+EGIT_REPO_URI="https://gitlab.freedesktop.org/drm/${PN}.git"
 if [[ ${PV} = *9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
@@ -11,7 +11,7 @@ inherit ${GIT_ECLASS} meson
 
 DESCRIPTION="Intel GPU userland tools"
 
-HOMEPAGE="https://01.org/linuxgraphics https://cgit.freedesktop.org/xorg/app/intel-gpu-tools/"
+HOMEPAGE="https://01.org/linuxgraphics https://gitlab.freedesktop.org/drm/igt-gpu-tools"
 if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 else
