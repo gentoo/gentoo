@@ -105,7 +105,6 @@ armvfp
 armv5te
 armv6
 armv6t2
-iwmmxt
 neon
 
 # nVidia XvMC requires nvidia-drivers/nvidia-legacy-drivers

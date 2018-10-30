@@ -148,7 +148,6 @@ iodbc - Add support for iODBC library
 ios - Enable support for Apple's iDevice with iOS operating system (iPad, iPhone, iPod, etc)
 ipod - Enable support for iPod device access
 ipv6 - Add support for IP version 6
-iwmmxt - Add support for optimizations for ARM iwMMXt instructions
 jack - Add support for the JACK Audio Connection Kit
 java - Add support for Java
 javascript - Enable javascript support
