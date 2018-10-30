@@ -3,7 +3,6 @@
 
 # Unmask arm arch specific flags
 -cpu_flags_arm_iwmmxt
--iwmmxt
 
 # Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
 # Python 3.7 support requires fresh versions of packages which are stuck
