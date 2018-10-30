@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,7 +33,7 @@ IUSE="a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromeca
 	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
 	fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass
 	libav libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua
-	macosx-notifications macosx-qtkit matroska modplug mp3 mpeg mtp musepack ncurses
+	macosx-notifications macosx-qtkit mad matroska modplug mp3 mpeg mtp musepack ncurses
 	neon nfs ogg omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5
 	rdp run-as-root samba schroedinger sdl-image sftp shout sid skins soxr speex srt ssl
 	svg taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx
@@ -130,13 +130,14 @@ RDEPEND="
 	lirc? ( app-misc/lirc:0 )
 	live? ( media-plugins/live:0 )
 	lua? ( >=dev-lang/lua-5.1:0 )
+	mad? ( media-libs/libmad )
 	matroska? (
 		dev-libs/libebml:0=
 		media-libs/libmatroska:0=
 	)
-	modplug? ( media-libs/libmodplug:0 )
-	mp3? ( media-libs/libmad:0 )
-	mpeg? ( media-libs/libmpeg2:0 )
+	modplug? ( media-libs/libmodplug )
+	mp3? ( media-sound/mpg123 )
+	mpeg? ( media-libs/libmpeg2 )
 	mtp? ( media-libs/libmtp:0= )
 	musepack? ( media-sound/musepack-tools:0 )
 	ncurses? ( sys-libs/ncurses:0=[unicode] )
@@ -333,9 +334,10 @@ src_configure() {
 		$(use_enable lua)
 		$(use_enable macosx-notifications osx-notifications)
 		$(use_enable macosx-qtkit)
+		$(use_enable mad)
 		$(use_enable matroska)
 		$(use_enable modplug mod)
-		$(use_enable mp3 mad)
+		$(use_enable mp3 mpg123)
 		$(use_enable mpeg libmpeg2)
 		$(use_enable mtp)
 		$(use_enable musepack mpc)
