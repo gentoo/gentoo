@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201810-09">
+  <title>X.Org X Server: Privilege escalation</title>
+  <synopsis>A vulnerability in X.Org X Server allows local users to escalate
+    privileges.
+  </synopsis>
+  <product type="ebuild">xorg x server</product>
+  <announced>2018-10-30</announced>
+  <revised count="1">2018-10-30</revised>
+  <bug>669588</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-base/xorg-server" auto="yes" arch="*">
+      <unaffected range="ge">1.20.3</unaffected>
+      <vulnerable range="lt">1.20.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The X Window System is a graphical windowing system based on a
+      client/server model.
+    </p>
+  </background>
+  <description>
+    <p>An incorrect permission check for -modulepath and -logfile options when
+      starting Xorg. X server allows unprivileged users with the ability to log
+      in to the system via physical console to escalate their privileges and
+      run arbitrary code under root privileges.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker can escalate privileges to root by passing crafted
+      parameters to the X.org X server.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All X.Org X Server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-base/xorg-server-1.20.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14665">CVE-2018-14665</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-10-30T15:53:55Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-10-30T20:42:13Z">whissi</metadata>
+</glsa>

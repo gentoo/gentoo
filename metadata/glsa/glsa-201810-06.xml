@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201810-06">
+  <title>Xen: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Xen, the worst of which
+    could cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>2018-10-30</announced>
+  <revised count="2">2018-10-30</revised>
+  <bug>643350</bug>
+  <bug>655188</bug>
+  <bug>655544</bug>
+  <bug>659442</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/xen" auto="yes" arch="*">
+      <unaffected range="ge">4.10.1-r2</unaffected>
+      <vulnerable range="lt">4.10.1-r2</vulnerable>
+    </package>
+    <package name="app-emulation/xen-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.10.1-r2</unaffected>
+      <vulnerable range="lt">4.10.1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+    
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xen. Please review the
+      referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could cause a Denial of Service condition or disclose
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.10.1-r2"
+    </code>
+    
+    <p>All Xen tools users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/xen-tools-4.10.1-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5715">CVE-2017-5715</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5753">CVE-2017-5753</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5754">CVE-2017-5754</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10471">CVE-2018-10471</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10472">CVE-2018-10472</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10981">CVE-2018-10981</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10982">CVE-2018-10982</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12891">CVE-2018-12891</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12892">CVE-2018-12892</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12893">CVE-2018-12893</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15468">CVE-2018-15468</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15469">CVE-2018-15469</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15470">CVE-2018-15470</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3620">CVE-2018-3620</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3646">CVE-2018-3646</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5244">CVE-2018-5244</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7540">CVE-2018-7540</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7541">CVE-2018-7541</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7542">CVE-2018-7542</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-09-10T09:38:20Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-10-30T20:59:58Z">irishluck83</metadata>
+</glsa>
