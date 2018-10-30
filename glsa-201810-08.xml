@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201810-08">
+  <title>PostgreSQL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PostgreSQL, the worst
+    which could lead to privilege escalation.
+  </synopsis>
+  <product type="ebuild">postgresql</product>
+  <announced>2018-10-30</announced>
+  <revised count="1">2018-10-30</revised>
+  <bug>603716</bug>
+  <bug>603720</bug>
+  <bug>664332</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-db/postgresql" auto="yes" arch="*">
+      <unaffected range="ge" slot="9.3">9.3.24</unaffected>
+      <unaffected range="ge" slot="9.4">9.4.19</unaffected>
+      <unaffected range="ge" slot="9.5">9.5.14</unaffected>
+      <unaffected range="ge" slot="9.6">9.6.10</unaffected>
+      <unaffected range="ge" slot="10">10.5</unaffected>
+      <vulnerable range="lt">10.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PostgreSQL is an open source object-relational database management
+      system.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PostgreSQL. Please
+      review the referenced CVE identifiers for details.
+    </p>
+    
+    <p>In addition it was discovered that Gentoo’s PostgreSQL installation
+      suffered from a privilege escalation vulnerability due to a runscript
+      which called OpenRC’s checkpath() on a user controlled path and allowed
+      user running PostgreSQL to kill arbitrary processes via PID file
+      manipulation.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could bypass certain client-side connection security
+      features, read arbitrary server memory or alter certain data.
+    </p>
+    
+    <p>In addition, a local attacker could gain privileges or cause a Denial of
+      Service condition by  killing arbitrary processes.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PostgreSQL users up to 9.3 should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.3.24:9.3"
+    </code>
+    
+    <p>All PostgreSQL 9.4 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.4.19:9.4"
+    </code>
+    
+    <p>All PostgreSQL 9.5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.5.14:9.5"
+    </code>
+    
+    <p>All PostgreSQL 9.6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.6.10:9.6"
+    </code>
+    
+    <p>All PostgreSQL 10 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-10.5:10"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10915">CVE-2018-10915</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10925">CVE-2018-10925</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1115">CVE-2018-1115</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-09-20T23:00:55Z">irishluck83</metadata>
+  <metadata tag="submitter" timestamp="2018-10-30T20:41:59Z">irishluck83</metadata>
+</glsa>
