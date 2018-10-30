@@ -25,13 +25,16 @@ RDEPEND="${DEPEND}"
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
-	local PKG_NAME
 	if python_is_python3; then
 		PKG_NAME=tclpython3
 	else
 		PKG_NAME=tclpython
 	fi
 	emake PKG_NAME=${PKG_NAME} CC=$(tc-getCC)
+}
+
+src_test() {
+	emake PKG_NAME=${PKG_NAME} CC=$(tc-getCC) test
 }
 
 src_install() {
