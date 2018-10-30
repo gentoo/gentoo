@@ -7,11 +7,17 @@ inherit cmake-utils
 
 DESCRIPTION="A reference implementation of the Russian GOST crypto algorithms for OpenSSL"
 HOMEPAGE="https://github.com/gost-engine/engine"
-
+IUSE="test"
+RESTRICT="!test? ( test )"
 SLOT="0/${PV}"
 
-DEPEND=">=dev-libs/openssl-1.1:0="
-RDEPEND="${DEPEND}"
+COMMON_DEPEND=">=dev-libs/openssl-1.1:0="
+DEPEND="${COMMON_DEPEND}
+	virtual/pkgconfig
+	test? (
+		dev-lang/perl
+	)"
+RDEPEND="${COMMON_DEPEND}"
 
 LICENSE="openssl"
 
