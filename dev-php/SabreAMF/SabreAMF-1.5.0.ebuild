@@ -1,25 +1,25 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-
-inherit vcs-snapshot
+EAPI="7"
 
 KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="SabreAMF is a Flash Remoting server and client for PHP"
-HOMEPAGE="https://github.com/evert/${PN}"
-SRC_URI="https://github.com/evert/${PN}/archive/e5521c27e9309404d7505e1e16db843fcb2202ec.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/evert/SabreAMF"
+SRC_URI="https://github.com/evert/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 IUSE="examples"
 
-DOCS=( README ChangeLog )
+RDEPEND="dev-php/fedora-autoloader"
+
+DOCS=( README.md ChangeLog )
 
 src_install() {
 	insinto /usr/share/php/${PN}
-	doins -r ${PN}/*
+	doins -r lib/${PN}/* "${FILESDIR}/autoload.php"
 	einstalldocs
 	if use examples ; then
 		insinto /usr/share/doc/${P}/examples
