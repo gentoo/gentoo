@@ -71,6 +71,8 @@ PDEPEND="
 	ibus? ( app-i18n/ibus )
 "
 
+PATCHES=( "${FILESDIR}"/${P}-qapplication-block.patch ) # bug 668994
+
 QT5_TARGET_SUBDIRS=(
 	src/tools/qvkgen
 	src/gui

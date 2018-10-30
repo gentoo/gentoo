@@ -1,0 +1,53 @@
+From d4e937a6280f34bc1cce8c8cea3806a741312fbc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?B=C5=82a=C5=BCej=20Szczygie=C5=82?= <spaz16@wp.pl>
+Date: Tue, 25 Sep 2018 18:45:10 +0200
+Subject: xcb: Don't get initial screen rotation
+
+"xcb_randr_get_screen_info" can be slow and in some configurations can
+cause short mouse cursor freezes (which will happen on Qt application
+startup).
+
+Initial screen rotation was used only to not handle possible redundant
+screen change event.
+
+Fixes: QTBUG-70760
+Change-Id: I9f01325a045d2c82c4dd2fce91a18a34e54a4bcd
+Reviewed-by: Gatis Paeglis <gatis.paeglis@qt.io>
+---
+ src/plugins/platforms/xcb/qxcbscreen.cpp | 7 -------
+ src/plugins/platforms/xcb/qxcbscreen.h   | 2 +-
+ 2 files changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/src/plugins/platforms/xcb/qxcbscreen.cpp b/src/plugins/platforms/xcb/qxcbscreen.cpp
+index 7f2793b2b7..a696e2a311 100644
+--- a/src/plugins/platforms/xcb/qxcbscreen.cpp
++++ b/src/plugins/platforms/xcb/qxcbscreen.cpp
+@@ -118,13 +118,6 @@ QXcbVirtualDesktop::QXcbVirtualDesktop(QXcbConnection *connection, xcb_screen_t
+ 
+         xcb_depth_next(&depth_iterator);
+     }
+-
+-    if (connection->hasXRandr()) {
+-        xcb_connection_t *conn = connection->xcb_connection();
+-        auto screen_info = Q_XCB_REPLY(xcb_randr_get_screen_info, conn, screen->root);
+-        if (screen_info)
+-            m_rotation = screen_info->rotation;
+-    }
+ }
+ 
+ QXcbVirtualDesktop::~QXcbVirtualDesktop()
+diff --git a/src/plugins/platforms/xcb/qxcbscreen.h b/src/plugins/platforms/xcb/qxcbscreen.h
+index 6438669e7a..792aca4b06 100644
+--- a/src/plugins/platforms/xcb/qxcbscreen.h
++++ b/src/plugins/platforms/xcb/qxcbscreen.h
+@@ -220,7 +220,7 @@ private:
+     xcb_randr_crtc_t m_crtc;
+     xcb_randr_mode_t m_mode = XCB_NONE;
+     bool m_primary = false;
+-    uint8_t m_rotation = XCB_RANDR_ROTATION_ROTATE_0;
++    uint8_t m_rotation = 0;
+ 
+     QString m_outputName;
+     QSizeF m_outputSizeMillimeters;
+-- 
+cgit v1.2.1
