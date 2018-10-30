@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201810-05">
+  <title>xkbcommon: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in xkbcommon, the worst of
+    which may lead to a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libxkbcommon</product>
+  <announced>2018-10-30</announced>
+  <revised count="1">2018-10-30</revised>
+  <bug>665702</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-libs/libxkbcommon" auto="yes" arch="*">
+      <unaffected range="ge">0.8.2</unaffected>
+      <vulnerable range="lt">0.8.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>xkbcommon is a library to handle keyboard descriptions, including
+      loading them from disk, parsing them and handling their state.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libxkbcommon. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could supply a specially crafted keymap file possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libxkbcommon users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libxkbcommon-0.8.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15853">CVE-2018-15853</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15854">CVE-2018-15854</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15855">CVE-2018-15855</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15856">CVE-2018-15856</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15857">CVE-2018-15857</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15858">CVE-2018-15858</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15859">CVE-2018-15859</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15861">CVE-2018-15861</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15862">CVE-2018-15862</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15863">CVE-2018-15863</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15864">CVE-2018-15864</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-10-14T16:59:09Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-10-30T20:41:12Z">whissi</metadata>
+</glsa>
