@@ -9042,7 +9042,7 @@ net-misc/vino 3.22.0: An integrated VNC server for GNOME
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.19.5: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
-net-misc/whois 5.2.20: improved Whois Client
+net-misc/whois 5.2.20 5.3.2: improved Whois Client
 net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
@@ -10150,7 +10150,7 @@ sys-fs/diskdev_cmds 332.14_p1: HFS and HFS+ utils ported from OSX, supplies mkfs
 sys-fs/dmraid 1.0.0_rc16-r3: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.0-r1 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/e2fsprogs 1.43.6 1.43.9: Standard EXT2/EXT3/EXT4 filesystem utilities
-sys-fs/e4rat 0.2.4_pre20141201: Toolset to accelerate the boot process and application startup
+sys-fs/e4rat 0.2.4_pre20141201 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
 sys-fs/encfs 1.9.2 1.9.4: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/eudev 3.2.5: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/exfat-utils 1.2.8: exFAT filesystem utilities
