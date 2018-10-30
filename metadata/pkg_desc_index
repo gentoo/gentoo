@@ -6376,7 +6376,7 @@ dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
 dev-util/source-highlight 3.1.7-r2 3.1.8: Generate highlighted source code as an (x)html document
 dev-util/splint 3.1.2-r1: Check C programs for vulnerabilities and programming mistakes
 dev-util/statifier 1.7.4: Statifier is a tool for creating portable, self-containing Linux executables
-dev-util/strace 4.20 4.23-r1: A useful diagnostic, instructional, and debugging tool
+dev-util/strace 4.23-r1: A useful diagnostic, instructional, and debugging tool
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2015.11.05: Script to build SUSE Linux RPMs
 dev-util/sysprof 3.24.1: System-wide Linux Profiler
