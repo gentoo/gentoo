@@ -392,6 +392,7 @@ src_configure() {
 		$(use_enable zeroconf avahi)
 		$(use_enable zvbi)
 		$(use_enable !zvbi telx)
+		--with-kde-solid=/usr/share/solid/actions
 		--disable-asdcp
 		--disable-coverage
 		--disable-cprof
