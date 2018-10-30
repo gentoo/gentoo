@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 fi
 
-inherit eutils flag-o-matic multilib toolchain-funcs ${SCM}
+inherit flag-o-matic toolchain-funcs ${SCM}
 
 DESCRIPTION="Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C"
 HOMEPAGE="https://gpac.wp.imt.fr/"
