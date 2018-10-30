@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 inherit autotools pam python-single-r1 systemd user
 
 MY_P="${PN}-server-${PV}"
@@ -21,10 +21,13 @@ SLOT="0"
 
 IUSE="
 	debug firebird iodbc kerberos ldap libressl memcached mysql odbc oracle pam
-	pcap postgres python readline rest samba sqlite ssl
+	pcap postgres python readline rest samba sqlite ssl redis
 "
 RESTRICT="test firebird? ( bindist )"
 
+# NOTE: Temporary freeradius doesn't support linking with mariadb client
+#       libs also if code is compliant, will be available in the next release.
+#       (http://lists.freeradius.org/pipermail/freeradius-devel/2018-October/013228.html)
 RDEPEND="!net-dialup/cistronradius
 	!net-dialup/gnuradius
 	sys-devel/libtool
@@ -35,12 +38,13 @@ RDEPEND="!net-dialup/cistronradius
 	readline? ( sys-libs/readline:0= )
 	pcap? ( net-libs/libpcap )
 	memcached? ( dev-libs/libmemcached )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c )
 	postgres? ( dev-db/postgresql:= )
 	firebird? ( dev-db/firebird )
 	pam? ( virtual/pam )
 	rest? ( dev-libs/json-c:= )
 	samba? ( net-fs/samba )
+	redis? ( dev-libs/hiredis:= )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0=[-bindist] )
 		libressl? ( dev-libs/libressl:0= )
@@ -61,8 +65,10 @@ pkg_setup() {
 	enewgroup radius
 	enewuser radius -1 -1 /var/log/radius radius
 
-	python-single-r1_pkg_setup
-	export PYTHONBIN="${EPYTHON}"
+	if use python ; then
+		python-single-r1_pkg_setup
+		export PYTHONBIN="${EPYTHON}"
+	fi
 }
 
 src_prepare() {
@@ -80,6 +86,7 @@ src_prepare() {
 	use pam || { rm -r src/modules/rlm_pam || die ; }
 	use python || { rm -r src/modules/rlm_python || die ; }
 	use rest || { rm -r src/modules/rlm_rest || die ; }
+	use redis || { rm -r src/modules/rlm_redis{,who} || die ; }
 	# can't just nuke rlm_mschap because many modules rely on smbdes.h
 	use samba || { rm -r src/modules/rlm_mschap/{configure,*.mk} || die ; }
 	# Do not install ruby rlm module, bug #483108
@@ -90,7 +97,6 @@ src_prepare() {
 	rm -r src/modules/rlm_eap/types/rlm_eap_tnc || die # requires TNCS library
 	rm -r src/modules/rlm_eap/types/rlm_eap_ikev2 || die # requires libeap-ikev2
 	rm -r src/modules/rlm_opendirectory || die # requires some membership.h
-	rm -r src/modules/rlm_redis{,who} || die # requires redis
 	rm -r src/modules/rlm_sql/drivers/rlm_sql_{db2,freetds} || die
 
 	# sql drivers that are not part of experimental are loaded from a
@@ -201,6 +207,7 @@ src_install() {
 		install
 
 	fowners -R root:radius /etc/raddb
+	fowners -R radius:radius /var/log/radius
 
 	pamd_mimic_system radiusd auth account password session
 
