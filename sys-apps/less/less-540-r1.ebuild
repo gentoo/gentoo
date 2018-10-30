@@ -14,14 +14,14 @@ IUSE="pcre unicode"
 
 DEPEND=">=app-misc/editor-wrapper-3
 	>=sys-libs/ncurses-5.2:0=
-	pcre? ( dev-libs/libpcre )"
+	pcre? ( dev-libs/libpcre2 )"
 RDEPEND="${DEPEND}"
 
 src_configure() {
 	export ac_cv_lib_ncursesw_initscr=$(usex unicode)
 	export ac_cv_lib_ncurses_initscr=$(usex !unicode)
 	local myeconfargs=(
-		--with-regex=$(usex pcre pcre posix)
+		--with-regex=$(usex pcre pcre2 posix)
 		--with-editor="${EPREFIX}"/usr/libexec/editor
 	)
 	econf "${myeconfargs[@]}"
