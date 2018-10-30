@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit desktop unpacker
 
 DESCRIPTION="Top-down roguelike space ship simulator"
 HOMEPAGE="https://www.gog.com/game/faster_than_light"
-SRC_URI="ftl_advanced_edition_en_${PV//./_}.sh"
+SRC_URI="ftl_advanced_edition_${PV//./_}.sh"
 RESTRICT="bindist fetch mirror strip test"
 
 LICENSE="GOG-EULA"
