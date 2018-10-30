@@ -154,10 +154,6 @@ dev-python/python-gnutls
 dev-python/python-msrplib
 dev-python/python-xcaplib
 
-# Matt Turner <mattst88@gentoo.org> (29 Sep 2018)
-# Removal in 30 days, bug #576334
-app-eselect/eselect-mesa
-
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2018)
 # Apparently breaks sys-devel/gcc.  Bug #666954.
 =dev-util/debugedit-4.14.2
