@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201810-10">
+  <title>systemd: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in systemd, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">systemd</product>
+  <announced>2018-10-30</announced>
+  <revised count="1">2018-10-30</revised>
+  <bug>669664</bug>
+  <bug>669716</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-apps/systemd" auto="yes" arch="*">
+      <unaffected range="ge">239-r2</unaffected>
+      <vulnerable range="lt">239-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A system and service manager.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in systemd. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>An attacker could possibly execute arbitrary code, cause a Denial of
+      Service condition, or gain escalated privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All systemd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/systemd-239-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15686">CVE-2018-15686</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15687">CVE-2018-15687</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15688">CVE-2018-15688</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-10-30T15:33:52Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-10-30T20:42:27Z">whissi</metadata>
+</glsa>
