@@ -9,4 +9,4 @@ RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz -> steamcmd-1.0.tar.gz
 _eclasses_=readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	user	8bc2845510e2109af75e3eeac607ec81
-_md5_=b2c556de4f161091396c813a25c7c651
+_md5_=5d17529ceb4264a0d666ad3c9c323d72

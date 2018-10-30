@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite:3 ) postgres? ( dev-db/postgresql:= ) sys-libs/zlib:=
+DESCRIPTION=Open Source Host-based Intrusion Detection System
+EAPI=7
+HOMEPAGE=https://www.ossec.net/
+IUSE=agent hybrid local mysql postgres server sqlite
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite:3 ) postgres? ( dev-db/postgresql:= ) sys-libs/zlib:=
+REQUIRED_USE=^^ ( agent hybrid local server ) ?? ( mysql postgres )
+SLOT=0
+SRC_URI=https://github.com/ossec/ossec-hids/archive/3.1.0.tar.gz -> ossec-hids-3.1.0.tar.gz
+_eclasses_=user	8bc2845510e2109af75e3eeac607ec81
+_md5_=3ba86b7b5295f24419e8454ac5fa9216
