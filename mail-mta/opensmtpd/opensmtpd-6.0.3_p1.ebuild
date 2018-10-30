@@ -1,24 +1,22 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit multilib user flag-o-matic eutils pam toolchain-funcs autotools systemd versionator
+inherit multilib user flag-o-matic eutils pam toolchain-funcs autotools systemd
 
 DESCRIPTION="Lightweight but featured SMTP daemon from OpenBSD"
 HOMEPAGE="https://www.opensmtpd.org"
-MY_P="${P}"
-if [ $(get_last_version_component_index) -eq 4 ]; then
-	MY_P="${PN}-$(get_version_component_range 4-)"
-fi
-SRC_URI="https://www.opensmtpd.org/archives/${MY_P/_}.tar.gz"
+SRC_URI="https://www.opensmtpd.org/archives/${P/_}.tar.gz"
 
 LICENSE="ISC BSD BSD-1 BSD-2 BSD-4"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="pam +mta"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+IUSE="libressl pam +mta"
 
-DEPEND="dev-libs/openssl:0
+DEPEND="!libressl? ( dev-libs/openssl:0 )
+		libressl? ( dev-libs/libressl )
+		elibc_musl? ( sys-libs/fts-standalone )
 		sys-libs/zlib
 		pam? ( virtual/pam )
 		sys-libs/db:=
@@ -40,14 +38,7 @@ DEPEND="dev-libs/openssl:0
 "
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${MY_P/_}
-
-src_prepare() {
-	# Use /run instead of /var/run
-	sed -i -e '/pidfile_path/s:_PATH_VARRUN:"/run/":' openbsd-compat/pidfile.c || die
-	epatch_user
-	eautoreconf
-}
+S=${WORKDIR}/${P/_}
 
 src_configure() {
 	tc-export AR
