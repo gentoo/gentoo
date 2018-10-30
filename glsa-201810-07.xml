@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201810-07">
+  <title>Mutt, NeoMutt: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mutt and NeoMutt, the
+    worst of which allows for arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">mutt, neomutt</product>
+  <announced>2018-10-30</announced>
+  <revised count="1">2018-10-30</revised>
+  <bug>661436</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-client/mutt" auto="yes" arch="*">
+      <unaffected range="ge">1.10-1</unaffected>
+      <vulnerable range="lt">1.10-1</vulnerable>
+    </package>
+    <package name="mail-client/neomutt" auto="yes" arch="*">
+      <unaffected range="ge">20180716</unaffected>
+      <vulnerable range="lt">20180716</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mutt is a small but very powerful text-based mail client.</p>
+    
+    <p>NeoMutt is a command line mail reader (or MUA). It’s a fork of Mutt
+      with added features.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mutt, and NeoMutt.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted mail
+      message or connect to malicious mail server using Mutt or NeoMutt,
+      possibly resulting in execution of arbitrary code or directory traversal
+      with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mutt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-client/mutt-1.10-1"
+    </code>
+    
+    <p>All NeoMuutt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/neomutt-20180716"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14349">CVE-2018-14349</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14350">CVE-2018-14350</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14351">CVE-2018-14351</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14352">CVE-2018-14352</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14353">CVE-2018-14353</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14354">CVE-2018-14354</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14355">CVE-2018-14355</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14356">CVE-2018-14356</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14357">CVE-2018-14357</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14358">CVE-2018-14358</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14359">CVE-2018-14359</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14362">CVE-2018-14362</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-08-22T23:01:20Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-10-30T20:41:42Z">irishluck83</metadata>
+</glsa>
