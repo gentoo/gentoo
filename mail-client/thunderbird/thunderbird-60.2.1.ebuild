@@ -40,7 +40,7 @@ HOMEPAGE="https://www.mozilla.org/thunderbird"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist clang dbus debug hardened jack lightning mozdom neon pulseaudio
+IUSE="bindist clang dbus debug hardened jack lightning neon pulseaudio
 	selinux startup-notification system-harfbuzz system-icu system-jpeg
 	system-libevent system-libvpx system-sqlite wifi"
 RESTRICT="!bindist? ( bindist )"
@@ -243,8 +243,6 @@ src_prepare() {
 }
 
 src_configure() {
-	MEXTENSIONS="default"
-
 	# Add information about TERM to output (build.log) to aid debugging
 	# blessings problems
 	if [[ -n "${TERM}" ]] ; then
@@ -388,14 +386,6 @@ src_configure() {
 	mozconfig_annotate '' --with-user-appdir=.thunderbird
 
 	mozconfig_annotate '' --enable-ldap
-
-	# Bug #72667
-	if use mozdom; then
-		MEXTENSIONS="${MEXTENSIONS},inspector"
-	fi
-
-	mozconfig_annotate '' --enable-extensions="${MEXTENSIONS}"
-
 	mozconfig_annotate '' --enable-calendar
 
 	# Disable built-in ccache support to avoid sandbox violation, #665420
