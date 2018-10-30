@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils udev user
+EAPI=7
+inherit udev user
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/code"
@@ -21,7 +21,8 @@ IUSE="+crypt doc examples static-libs"
 
 RDEPEND="virtual/libusb:1
 	crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
@@ -50,18 +51,20 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable static-libs static) \
-		$(use_enable doc doxygen) \
-		$(use_enable crypt mtpz) \
-		--with-udev="$(get_udevdir)" \
-		--with-udev-group=plugdev \
+	local myeconfargs=(
+		$(use_enable static-libs static)
+		$(use_enable doc doxygen)
+		$(use_enable crypt mtpz)
+		--with-udev="$(get_udevdir)"
+		--with-udev-group=plugdev
 		--with-udev-mode=0660
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${ED}" -name "*.la" -delete || die
 
 	if use examples; then
 		docinto examples
