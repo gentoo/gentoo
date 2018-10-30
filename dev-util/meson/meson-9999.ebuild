@@ -22,7 +22,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND=""
+RDEPEND="${DEPEND}"
 
 python_test() {
 	(

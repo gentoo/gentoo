@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit bash-completion-r1 linux-info meson ninja-utils multilib-minimal toolchain-funcs udev user versionator
+inherit bash-completion-r1 linux-info meson ninja-utils multilib-minimal toolchain-funcs udev user
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
@@ -84,6 +84,8 @@ src_prepare() {
 		"${FILESDIR}/236-uucp-group.patch"
 		"${FILESDIR}/239-basic-add-missing-comma-in-raw_clone-assembly-for-sp.patch"
 		"${FILESDIR}/239-debug-extra.patch"
+		"${FILESDIR}/239-stat-0.patch"
+		"${FILESDIR}/239-stat-1.patch"
 	)
 
 	default
