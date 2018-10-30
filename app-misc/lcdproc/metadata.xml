@@ -5,25 +5,38 @@
 		<email>xmw@gentoo.org</email>
 		<name>Michael Weber</name>
 	</maintainer>
-	<longdescription lang="en">
-		LCDproc is a piece of software that displays real-time system information
-		from your Linux/*BSD box on a LCD. The server supports several serial
-		devices: Matrix Orbital, CrystalFontz, Bayrad, LB216, LCDM001
-		(kernelconcepts.de), Wirz-SLI, Cwlinux(.com) and PIC-an-LCD; and some
-		devices connected to the LPT port: HD44780, STV5730, T6963, SED1520 and
-		SED1330. Various clients are available that display things like CPU load,
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		LCDproc is a piece of open source software that displays real-time system information
+		from your Linux/*BSD box on a LCD. The server supports several serial and USB devices
+		from Matrix Orbital and CrystalFontz as well as
+		some devices connected to the LPT port:	HD44780, T6963, SED1520 and SED1330.
+		Various clients are available that display things like CPU load,
 		system load, memory usage, uptime, and a lot more.
 	</longdescription>
 	<use>
-		<flag name="hid">Enable HID support using libhid</flag>
-		<flag name="irman">Enable support for IRMan (<pkg>media-libs/libirman</pkg>)</flag>
-		<flag name="nfs">Adds support for NFS file system</flag>
-		<flag name="seamless-hbars">Try to avoid gaps in horizontal bars</flag>
-		<flag name="ftdi">Enable support for FTDI connections in some selected LCD_DEVICES (currently hd44780)</flag>
-		<flag name="lcd_devices_sdeclcd">Enable support for VLSYS M428 display</flag>
-		<flag name="lcd_devices_vlsys_m428">Enable support for VLSYS M428 display</flag>
+		<flag name="ethlcd">Enable support for ethlcd in the hd44780 driver.</flag>
+		<flag name="extra-charmaps">Enable extra language specific charmaps.</flag>
+		<flag name="freetype">Enable support for <pkg>media-libs/freetype</pkg> in the glcd driver.</flag>
+		<flag name="ftdi">Enable support for <pkg>dev-embedded/libftdi</pkg> in the glcd,hd44780,i2500vfd,lis and ula200 driver.</flag>
+		<flag name="hid">Enable support for <pkg>dev-libs/libhid</pkg> in the cfontz,cfontzpacket,cwlnx,glcd,lb216,mdm166a,mtc_s16209x and noritakevfd driver.</flag>
+		<flag name="irman">Enable support for <pkg>media-libs/libirman</pkg> in the irman driver.</flag>
+		<flag name="menu">Enable menu support in the lcdproc client.</flag>
+		<flag name="nfs">Display NFS filesystem stats in the lcdproc client.</flag>
+		<flag name="png">Enable support for <pkg>media-libs/libpng</pkg> in the glcd driver.</flag>
+		<flag name="samba">Display SMBFS filesystem stats in the lcdproc client.</flag>
+		<flag name="seamless-hbars">Don't produce any gaps in horizontal bar graphs, if hardware supports it.</flag>
+		<flag name="test-menu">Enable test menu support for the lcdproc server.</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">lcdproc</remote-id>
+		<bugs-to>https://www.github.com/lcdproc/lcdproc/issues</bugs-to>
+		<remote-id type="github">lcdproc/lcdproc</remote-id>
 	</upstream>
 </pkgmetadata>
