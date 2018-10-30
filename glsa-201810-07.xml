@@ -7,13 +7,13 @@
   </synopsis>
   <product type="ebuild">mutt, neomutt</product>
   <announced>2018-10-30</announced>
-  <revised count="1">2018-10-30</revised>
+  <revised count="2">2018-10-30</revised>
   <bug>661436</bug>
   <access>remote</access>
   <affected>
     <package name="net-client/mutt" auto="yes" arch="*">
-      <unaffected range="ge">1.10-1</unaffected>
-      <vulnerable range="lt">1.10-1</vulnerable>
+      <unaffected range="ge">1.10.1</unaffected>
+      <vulnerable range="lt">1.10.1</vulnerable>
     </package>
     <package name="mail-client/neomutt" auto="yes" arch="*">
       <unaffected range="ge">20180716</unaffected>
@@ -47,7 +47,7 @@
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=net-client/mutt-1.10-1"
+      # emerge --ask --oneshot --verbose "&gt;=net-client/mutt-1.10.1"
     </code>
     
     <p>All NeoMuutt users should upgrade to the latest version:</p>
@@ -73,5 +73,5 @@
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14362">CVE-2018-14362</uri>
   </references>
   <metadata tag="requester" timestamp="2018-08-22T23:01:20Z">whissi</metadata>
-  <metadata tag="submitter" timestamp="2018-10-30T20:41:42Z">irishluck83</metadata>
+  <metadata tag="submitter" timestamp="2018-10-30T22:34:46Z">irishluck83</metadata>
 </glsa>
