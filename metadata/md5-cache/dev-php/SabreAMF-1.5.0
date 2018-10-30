@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=SabreAMF is a Flash Remoting server and client for PHP
+EAPI=7
+HOMEPAGE=https://github.com/evert/SabreAMF
+IUSE=examples
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-php/fedora-autoloader
+SLOT=0
+SRC_URI=https://github.com/evert/SabreAMF/archive/1.5.0.tar.gz -> SabreAMF-1.5.0.tar.gz
+_md5_=f138b030d91409ab1df5fbf459da4c2c
