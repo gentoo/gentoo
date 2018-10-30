@@ -1,17 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils multilib versionator
 
-DEB_P="${PN}_$(replace_version_separator 2 '-')"
 DIA_P="${PN}-$(replace_version_separator 2 '-')"
 DESCRIPTION="tool to display dialog boxes from a shell"
-HOMEPAGE="https://invisible-island.net/dialog/dialog.html"
-SRC_URI="mirror://debian/pool/main/d/${PN}/${DEB_P}.orig.tar.gz"
+HOMEPAGE="https://invisible-island.net/dialog/"
+SRC_URI="https://dev.gentoo.org/~jer/${DIA_P}.tgz"
 
 LICENSE="GPL-2"
-SLOT="0/14"
+SLOT="0/15"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="examples minimal nls static-libs unicode"
 
