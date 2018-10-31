@@ -50,8 +50,8 @@ RDEPEND="
 	vala? ( $(vala_depend) )
 "
 DEPEND="${RDEPEND}
-	app-text/yelp-tools
-	>=dev-util/intltool-0.40.0
+	>=dev-util/intltool-0.50.2
+	dev-util/itstool
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 "

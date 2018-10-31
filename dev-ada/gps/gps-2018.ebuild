@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ HOMEPAGE="http://libre.adacore.com/tools/gps/"
 SRC_URI="http://mirrors.cdn.adacore.com/art/5b0cf627c7a4475261f97ceb
 	-> ${MYP}.tar.gz
 	http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a59 ->
-	    libadalang-tools-gpl-2018-src.tar.gz"
+		libadalang-tools-gpl-2018-src.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -20,15 +20,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="${PYTHON_DEPS}
-	|| (
-		>=dev-ada/gnatcoll-2017[gtk,iconv,pygobject,sqlite,static-libs,tools]
-		(
-			dev-ada/gnatcoll-db[gnatcoll_db2ada,gnatinspect,xref]
-			dev-ada/gnatcoll-bindings[python]
-		)
+	(
+		dev-ada/gnatcoll-db[gnatcoll_db2ada,gnatinspect,xref]
+		dev-ada/gnatcoll-bindings[python]
 	)
-	>=dev-ada/gtkada-2017
-	dev-ada/libadalang
+	>=dev-ada/gtkada-2017[gnat_2018]
+	dev-ada/libadalang[gnat_2018]
 	dev-libs/gobject-introspection
 	dev-libs/libffi
 	sys-devel/clang:=
