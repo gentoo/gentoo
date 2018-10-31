@@ -1,27 +1,30 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
 DESCRIPTION="Lua bindings for libmpack"
 HOMEPAGE="https://github.com/tarruda/libmpack/"
 SRC_URI="https://github.com/tarruda/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/libmpack-${PV}/binding/lua"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="luajit test"
 
+S="${WORKDIR}/libmpack-${PV}/binding/lua"
+
+BDEPEND="
+	virtual/pkgconfig
+"
 RDEPEND="
 	!luajit? ( >=dev-lang/lua-5.1:= )
 	luajit? ( dev-lang/luajit:2= )"
 
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	test? ( dev-lua/busted )"
 
 src_compile() {
