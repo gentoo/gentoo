@@ -9,7 +9,7 @@ inherit gnome2-utils xdg distutils-r1
 MY_PV=65fc4043a6ee4c1087f40a8e7b480645776c7b4e
 DESCRIPTION="Linux alternative to EyeLeo"
 HOMEPAGE="https://github.com/slgobinath/SafeEyes"
-SRC_URI="https://github.com/slgobinath/SafeEyes/archive/${MY_PV}.tar.gz"
+SRC_URI="https://github.com/slgobinath/SafeEyes/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
