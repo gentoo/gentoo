@@ -7,5 +7,5 @@ LICENSE=PHP-2.02
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Cache-1.5.6.tgz
-_eclasses_=php-pear-r2	b6753d24e4b080c2bec51eb2d844699f
+_eclasses_=php-pear-r2	6e0c1ae812b698690819c7e31b3d1895
 _md5_=3638fde2877424bf9a1c6fd0b147c378

@@ -9,5 +9,5 @@ LICENSE=PHP-3.01
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Net_IPv6-1.3.0b3.tgz
-_eclasses_=php-pear-r2	b6753d24e4b080c2bec51eb2d844699f
+_eclasses_=php-pear-r2	6e0c1ae812b698690819c7e31b3d1895
 _md5_=6f7c92ac8d5787cfb8c4dc38ba894080

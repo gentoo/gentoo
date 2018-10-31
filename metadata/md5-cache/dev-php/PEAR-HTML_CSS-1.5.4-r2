@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=dev-php/PEAR-HTML_Common-1.2.4 !minimal? ( >=dev-php/PEAR-Services_W3C_CSSValidator-0.1.0 ) >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTML_CSS-1.5.4.tgz
-_eclasses_=php-pear-r2	b6753d24e4b080c2bec51eb2d844699f
+_eclasses_=php-pear-r2	6e0c1ae812b698690819c7e31b3d1895
 _md5_=32d44e23a7b41290d6a8071d1cbaf602
