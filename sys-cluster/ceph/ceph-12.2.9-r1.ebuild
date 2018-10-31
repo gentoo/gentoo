@@ -261,7 +261,7 @@ src_install() {
 	newexe "${CMAKE_BUILD_DIR}/bin/init-ceph" ceph_init.sh
 
 	insinto /etc/logrotate.d/
-	newins "${FILESDIR}"/ceph.logrotate ${PN}
+	newins "${FILESDIR}"/ceph.logrotate-r1 ${PN}
 
 	keepdir /var/lib/${PN}{,/tmp} /var/log/${PN}/stat
 
