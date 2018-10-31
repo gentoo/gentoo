@@ -105,7 +105,6 @@ multilib_src_configure() {
 		$(use_enable opengl gl) \
 		$(use_enable static-libs static) \
 		$(use_enable svg) \
-		$(use_enable utils interpreter) \
 		$(use_enable utils trace) \
 		$(use_enable valgrind) \
 		$(use_enable xcb) \
@@ -114,6 +113,8 @@ multilib_src_configure() {
 		--enable-pdf \
 		--enable-png \
 		--enable-ps \
+		--enable-script \
+		--enable-interpreter \
 		--disable-drm \
 		--disable-directfb \
 		--disable-gallium \
