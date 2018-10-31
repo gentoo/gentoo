@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit bash-completion-r1 python-single-r1
 
@@ -72,10 +72,6 @@ fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-static-linkage.patch
-)
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
@@ -99,6 +95,7 @@ src_configure() {
 		$(use_enable convert)
 		$(use_enable elibc_glibc backtrace)
 		$(use_enable python)
+		$(use_enable static-libs static)
 		$(use_enable zstd)
 		--with-convert=ext2$(usex reiserfs ',reiserfs' '')
 	)
@@ -112,7 +109,6 @@ src_compile() {
 src_install() {
 	local makeargs=(
 		$(usex python install_python '')
-		$(usex static-libs '' 'libs_static=')
 		$(usex static install-static '')
 	)
 	emake V=1 DESTDIR="${D}" install "${makeargs[@]}"
