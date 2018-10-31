@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,14 +23,15 @@ QA_PREBUILT="opt/${PN}/${PN}*"
 DEPEND="app-arch/unzip"
 
 # SDL 1.3 is bundled but the game appears to be statically linked
-# against SDL 2.0.3. This is unfortunate as there are bugs. For example,
-# it doesn't respect the DISPLAY variable under Zaphod mode.
+# against SDL 2.0.3. We can bypass this and use our own SDL 2 by setting
+# the SDL_DYNAMIC_API environment variable.
 
 RDEPEND="
 	media-gfx/nvidia-cg-toolkit[abi_x86_32]
 	media-libs/alsa-lib[abi_x86_32]
 	media-libs/freetype:2[abi_x86_32]
 	media-libs/libogg[abi_x86_32]
+	>=media-libs/libsdl2-2.0.3[abi_x86_32,joystick,opengl,sound,threads,video]
 	>=media-libs/libvorbis-1.3[abi_x86_32]
 	>=media-libs/openal-1.15[abi_x86_32]
 	>=sys-devel/gcc-4.6[cxx]
@@ -56,7 +57,7 @@ pkg_nofetch() {
 }
 
 src_install() {
-	local dir=/opt/${PN}
+	local dir=/opt/${PN} SDL=${EPREFIX}/usr/$(ABI=x86 get_libdir)/libSDL2-2.0.so.0
 
 	insinto "${dir}"
 	doins -r *.fbq data
@@ -64,14 +65,14 @@ src_install() {
 	exeinto "${dir}"
 	newexe bin/trine1_linux_32bit ${PN}
 
-	make_wrapper ${PN} ./${PN} "${dir}"
+	make_wrapper ${PN} "env SDL_DYNAMIC_API=\"${SDL}\" ./${PN}" "${dir}"
 	make_desktop_entry ${PN} "${MY_PN}"
 
 	if use launcher ; then
 		exeinto "${dir}"
 		newexe bin/trine1_linux_launcher_32bit ${PN}-launcher
 
-		make_wrapper ${PN}-launcher ./${PN}-launcher "${dir}"
+		make_wrapper ${PN}-launcher "env SDL_DYNAMIC_API=\"${SDL}\" ./${PN}-launcher" "${dir}"
 		make_desktop_entry ${PN}-launcher "${MY_PN} (launcher)"
 
 		# Launcher binary has hardcoded the game path.
@@ -82,6 +83,5 @@ src_install() {
 	dodoc readme_changelog.txt
 }
 
-pkg_preinst() { gnome2_icon_savelist; }
 pkg_postinst() { gnome2_icon_cache_update; }
 pkg_postrm() { gnome2_icon_cache_update; }

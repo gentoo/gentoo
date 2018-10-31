@@ -1,4 +1,5 @@
 # Copyright 1999-2018 Gentoo Authors
+# Copyright 2018 Sony Interactive Entertainment Inc.
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 
 inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 \
-	pam python-single-r1 multilib-minimal multiprocessing systemd
+	pam python-r1 multilib-minimal multiprocessing systemd
 
 MY_PV="${PV/_/-}"
 MY_P="${PN}-${MY_PV}"
@@ -62,12 +63,16 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
-pkg_setup() {
-	use python && python-single-r1_pkg_setup
-}
+PATCHES=(
+	"${FILESDIR}/util-linux-2.32-python3-tests.patch"
+)
 
 src_prepare() {
 	default
+
+	eapply "${FILESDIR}"/${PN}-2.32-add-missing-lintl.patch
+	touch -r "${S}"/configure "${S}"/libsmartcols/src/Makemodule.am || die
+	touch -r "${S}"/configure "${S}"/libuuid/src/Makemodule.am || die
 
 	# Prevent uuidd test failure due to socket path limit. #593304
 	sed -i \
@@ -108,6 +113,26 @@ lfs_fallocate_test() {
 	rm -f "${T}"/fallocate.${ABI}.c
 }
 
+python_configure() {
+	local myeconfargs=(
+		--disable-all-programs
+		--disable-bash-completion
+		--without-systemdsystemunitdir
+		--with-python
+	)
+	if use userland_GNU; then
+		myeconfargs+=(
+			--enable-libblkid
+			--enable-libmount
+			--enable-pylibmount
+		)
+	fi
+	mkdir "${BUILD_DIR}" || die
+	pushd "${BUILD_DIR}" >/dev/null || die
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	popd >/dev/null || die
+}
+
 multilib_src_configure() {
 	lfs_fallocate_test
 	# The scanf test in a run-time test which fails while cross-compiling.
@@ -120,9 +145,9 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin"
 		--with-bashcompletiondir="$(get_bashcompdir)"
+		--without-python
 		$(multilib_native_use_enable suid makeinstall-chown)
 		$(multilib_native_use_enable suid makeinstall-setuid)
-		$(multilib_native_use_with python)
 		$(multilib_native_use_with readline)
 		$(multilib_native_use_with slang)
 		$(multilib_native_use_with systemd)
@@ -142,6 +167,7 @@ multilib_src_configure() {
 			--disable-chfn-chsh
 			--disable-login
 			--disable-nologin
+			--disable-pylibmount
 			--disable-su
 			--enable-agetty
 			--enable-bash-completion
@@ -179,10 +205,44 @@ multilib_src_configure() {
 		fi
 	fi
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+
+	if multilib_is_native_abi && use python; then
+		python_foreach_impl python_configure
+	fi
+}
+
+python_compile() {
+	pushd "${BUILD_DIR}" >/dev/null || die
+	emake all
+	popd >/dev/null || die
+}
+
+multilib_src_compile() {
+	emake all
+
+	if multilib_is_native_abi && use python; then
+		python_foreach_impl python_compile
+	fi
+}
+
+python_test() {
+	pushd "${BUILD_DIR}" >/dev/null || die
+	emake check TS_OPTS="--parallel=$(makeopts_jobs) --nonroot"
+	popd >/dev/null || die
 }
 
 multilib_src_test() {
 	emake check TS_OPTS="--parallel=$(makeopts_jobs) --nonroot"
+	if multilib_is_native_abi && use python; then
+		python_foreach_impl python_test
+	fi
+}
+
+python_install() {
+	pushd "${BUILD_DIR}" >/dev/null || die
+	emake DESTDIR="${D}" install
+	python_optimize
+	popd >/dev/null || die
 }
 
 multilib_src_install() {
@@ -191,8 +251,10 @@ multilib_src_install() {
 	if multilib_is_native_abi && use userland_GNU; then
 		# need the libs in /
 		gen_usr_ldscript -a blkid fdisk mount smartcols uuid
+	fi
 
-		use python && python_optimize
+	if multilib_is_native_abi && use python; then
+		python_foreach_impl python_install
 	fi
 }
 
