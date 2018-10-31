@@ -10,7 +10,7 @@ SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="3"
-KEYWORDS="~alpha amd64 ~arm ~arm64 x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 x86"
 IUSE="test"
 
 RDEPEND=">=dev-libs/glib-2.22[${MULTILIB_USEDEP}]
