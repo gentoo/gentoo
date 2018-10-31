@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -57,7 +57,7 @@ RDEPEND="
 	)
 	ffmpeg? ( virtual/ffmpeg )
 	mpi? ( virtual/mpi[cxx,romio] )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c )
 	python? (
 		${PYTHON_DEPS}
 		dev-python/constantly[${PYTHON_USEDEP}]
@@ -108,6 +108,10 @@ pkg_setup() {
 }
 
 src_prepare() {
+
+	# Bug #661812
+	mkdir -p Plugins/StreamLinesRepresentation/doc || die
+
 	cmake-utils_src_prepare
 
 	# lib64 fixes
