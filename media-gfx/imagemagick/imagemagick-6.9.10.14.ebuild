@@ -13,7 +13,7 @@ SRC_URI="mirror://${PN}/${MY_P}.tar.xz"
 
 LICENSE="imagemagick"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="bzip2 corefonts cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
 
 RESTRICT="perl? ( userpriv )"
@@ -172,12 +172,15 @@ src_test() {
 	cp "${FILESDIR}"/policy.test.xml "${_im_local_config_home}/policy.xml" || \
 		die "Failed to install default blank policy.xml in '${_im_local_config_home}'"
 
-	# Check that your policy.xml file is taken into account
-	LD_LIBRARY_PATH="${S}/coders/.libs:${S}/filters/.libs:${S}/Magick++/lib/.libs:${S}/magick/.libs:${S}/wand/.libs" \
-	"${S}"/utilities/.libs/identify -list policy || die
+	local im_command= IM_COMMANDS=()
+	IM_COMMANDS+=( "magick -version" ) # Verify that we are using version we just built
+	IM_COMMANDS+=( "magick -list policy" ) # Verify that policy.xml is used
+	IM_COMMANDS+=( "emake check" ) # Run tests
 
-	LD_LIBRARY_PATH="${S}/coders/.libs:${S}/filters/.libs:${S}/Magick++/lib/.libs:${S}/magick/.libs:${S}/wand/.libs" \
-	emake check
+	for im_command in "${IM_COMMANDS[@]}"; do
+		"${S}"/magick.sh \
+		${im_command} || die
+	done
 }
 
 src_install() {

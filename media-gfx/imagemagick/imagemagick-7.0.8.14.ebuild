@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_P=ImageMagick-$(ver_rs 3 '-')
 	SRC_URI="mirror://${PN}/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A collection of tools and libraries for many image formats"
@@ -176,12 +176,15 @@ src_test() {
 	cp "${FILESDIR}"/policy.test.xml "${_im_local_config_home}/policy.xml" || \
 		die "Failed to install default blank policy.xml in '${_im_local_config_home}'"
 
-	# Check that your policy.xml file is taken into account
-	LD_LIBRARY_PATH="${S}/coders/.libs:${S}/filters/.libs:${S}/Magick++/lib/.libs:${S}/magick/.libs:${S}/wand/.libs" \
-	"${S}"/utilities/.libs/magick -list policy || die
+	local im_command= IM_COMMANDS=()
+	IM_COMMANDS+=( "magick -version" ) # Verify that we are using version we just built
+	IM_COMMANDS+=( "magick -list policy" ) # Verify that policy.xml is used
+	IM_COMMANDS+=( "emake check" ) # Run tests
 
-	LD_LIBRARY_PATH="${S}/coders/.libs:${S}/filters/.libs:${S}/Magick++/lib/.libs:${S}/magick/.libs:${S}/wand/.libs" \
-	emake check
+	for im_command in "${IM_COMMANDS[@]}"; do
+		"${S}"/magick.sh \
+		${im_command} || die
+	done
 }
 
 src_install() {
