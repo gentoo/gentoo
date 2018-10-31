@@ -17,7 +17,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/capsimg_source_linux_macosx/CAPSImg"
 
-DOCS=( "${WORKDIR}/{DONATIONS,HISTORY,RELEASE}.txt" )
+DOCS=( "${WORKDIR}"/{DONATIONS,HISTORY,RELEASE}.txt )
 
 PATCHES=( "${FILESDIR}"/add_symlink.patch )
 
