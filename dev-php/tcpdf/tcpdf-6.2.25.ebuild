@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="TCPDF is a FLOSS PHP class for generating PDF documents"
 HOMEPAGE="http://www.tcpdf.org/"
@@ -30,7 +30,8 @@ src_install() {
 	insinto "/usr/share/php/${PN}"
 	doins tcpdf*.php
 	doins -r include fonts
-	dodoc CHANGELOG.TXT README.md
+	DOCS=( CHANGELOG.TXT README.md )
 
-	use examples && dodoc -r examples
+	use examples && HTML_DOCS=( examples )
+	einstalldocs
 }
