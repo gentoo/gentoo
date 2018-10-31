@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy pypy3 )
 
-inherit distutils-r1 bash-completion-r1 vcs-snapshot
+inherit distutils-r1 bash-completion-r1
 
 MY_PN="Pygments"
 MY_P="${MY_PN}-${PV}"
@@ -16,7 +16,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc test"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
@@ -25,12 +25,15 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		virtual/ttf-fonts )"
-#		dev-texlive/texlive-latexrecommended
-# Removing / commenting out this dep. I can find no mention of it in tests other than
-# importing pygment's own tex module.  If it's there and I missed it just uncomment and re-add
-# Tests pass without it
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	# fix generators for python3.7+
+	"${FILESDIR}"/pygments-2.2.0-pep479.patch
+	# Fixing USE="doc" with sphinx1.7+. bug #662640
+	"${FILESDIR}"/pygments-2.2.0-sphinx17.patch
+)
 
 python_compile_all() {
 	use doc && emake -C doc html
