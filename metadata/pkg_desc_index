@@ -5311,7 +5311,7 @@ dev-python/pygame 1.9.2_pre20120101-r2 1.9.3: Python bindings for SDL multimedia
 dev-python/pygame_sdl2 6.99.12.4: Reimplementation of portions of the pygame API using SDL2
 dev-python/pygit2 0.26.4: Python bindings for libgit2
 dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
-dev-python/pygments 2.1.1 2.2.0: Pygments is a syntax highlighting package written in Python
+dev-python/pygments 2.2.0: Pygments is a syntax highlighting package written in Python
 dev-python/pygobject 2.28.6-r55 3.22.0 3.24.1: GLib's GObject library bindings for Python
 dev-python/pygoocanvas 0.14.1-r1: GooCanvas python bindings
 dev-python/pygpgme 0.3-r1: A Python wrapper for the GPGME library
