@@ -10732,9 +10732,9 @@ x11-drivers/xf86-input-tslib 1.2.0_rc1: X.org tslib input driver
 x11-drivers/xf86-input-vmmouse 13.1.0-r1: VMWare mouse input driver
 x11-drivers/xf86-input-void 1.4.1: null input driver
 x11-drivers/xf86-input-wacom 0.34.0 0.36.0 0.36.0-r2: Driver for Wacom tablets and drawing devices
-x11-drivers/xf86-video-amdgpu 18.0.1 18.1.0: Accelerated Open Source driver for AMDGPU cards
+x11-drivers/xf86-video-amdgpu 18.1.0: Accelerated Open Source driver for AMDGPU cards
 x11-drivers/xf86-video-ast 0.97.0-r1 1.0.1 1.1.5: X.Org driver for ASpeedTech cards
-x11-drivers/xf86-video-ati 18.0.1 18.0.1-r1 18.1.0: ATI video driver
+x11-drivers/xf86-video-ati 18.1.0: ATI video driver
 x11-drivers/xf86-video-dummy 0.3.8: X.Org driver for dummy cards
 x11-drivers/xf86-video-fbdev 0.5.0: video driver for framebuffer device
 x11-drivers/xf86-video-glint 1.2.9: GLINT/Permedia video driver
@@ -10744,7 +10744,7 @@ x11-drivers/xf86-video-nouveau 1.0.15 1.0.15-r1: Accelerated Open Source driver 
 x11-drivers/xf86-video-nv 2.1.21: Nvidia 2D only video driver
 x11-drivers/xf86-video-openchrome 0.5.0 0.6.0: X.Org driver for VIA/S3G cards
 x11-drivers/xf86-video-qxl 0.1.5: QEMU QXL paravirt video driver
-x11-drivers/xf86-video-r128 6.10.2 6.12.0: ATI Rage128 video driver
+x11-drivers/xf86-video-r128 6.12.0: ATI Rage128 video driver
 x11-drivers/xf86-video-siliconmotion 1.7.9: Silicon Motion video driver
 x11-drivers/xf86-video-tdfx 1.4.7: 3Dfx video driver
 x11-drivers/xf86-video-vboxvideo 1.0.0: VirtualBox guest video driver
