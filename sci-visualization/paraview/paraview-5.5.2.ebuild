@@ -57,7 +57,7 @@ RDEPEND="
 	)
 	ffmpeg? ( virtual/ffmpeg )
 	mpi? ( virtual/mpi[cxx,romio] )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c )
 	python? (
 		${PYTHON_DEPS}
 		dev-python/constantly[${PYTHON_USEDEP}]
