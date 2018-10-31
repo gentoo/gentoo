@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit flag-o-matic
 
 DESCRIPTION="Library for easy processing of keyboard entry from terminal-based programs"
@@ -10,14 +11,20 @@ SRC_URI="http://www.leonerd.org.uk/code/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="demos static-libs"
 
+BDEPDEND="
+	virtual/pkgconfig
+"
 RDEPEND="dev-libs/unibilium:="
 DEPEND="${RDEPEND}
 	sys-devel/libtool
-	virtual/pkgconfig
 	demos? ( dev-libs/glib:2 )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.20-no-compress-man.patch
+)
 
 src_prepare() {
 	default
@@ -34,6 +41,9 @@ src_compile() {
 
 src_install() {
 	emake PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)" DESTDIR="${D}" install
-	use static-libs || rm "${ED}"/usr/$(get_libdir)/${PN}.a || die
-	rm "${ED}"/usr/$(get_libdir)/${PN}.la || die
+
+	find "${D}" -name '*.la' -delete || die
+	if ! use static-libs; then
+		find "${ED}" -name '*.a' ! -name '*.dll.a' -delete || die
+	fi
 }

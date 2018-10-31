@@ -1,0 +1,18 @@
+--- a/Makefile
++++ b/Makefile
+@@ -120,12 +120,12 @@ install-man:
+ 	install -d $(DESTDIR)$(MAN3DIR)
+ 	install -d $(DESTDIR)$(MAN7DIR)
+ 	for F in man/*.3; do \
+-	  gzip <$$F >$(DESTDIR)$(MAN3DIR)/$${F#man/}.gz; \
++	  install -m644 $$F $(DESTDIR)$(MAN3DIR)/$${F#man/}; \
+ 	done
+ 	for F in man/*.7; do \
+-	  gzip <$$F >$(DESTDIR)$(MAN7DIR)/$${F#man/}.gz; \
++	  install -m644 $$F $(DESTDIR)$(MAN7DIR)/$${F#man/}; \
+ 	done
+ 	while read FROM EQ TO; do \
+-	  echo ln -sf $$TO.gz $(DESTDIR)$(MAN3DIR)/$$FROM.gz; \
++	  echo ln -sf $$TO $(DESTDIR)$(MAN3DIR)/$$FROM; \
+ 	done < man/also
+ 
