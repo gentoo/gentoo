@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,9 +30,9 @@ DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]"
 
 REQUIRED_USE="!gnat_2016
-	sqlite? ( sql )
-	xref? ( sqlite )
 	gnatinspect? ( xref )
+	xref? ( sqlite )
+	sqlite? ( sql )
 	gnatcoll_db2ada? ( sql )"
 
 S="${WORKDIR}"/${MYP}-src
