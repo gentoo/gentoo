@@ -7030,7 +7030,7 @@ mail-client/geary 0.12.0: A lightweight, easy-to-use, feature-rich email client
 mail-client/mail-notification 5.4-r10: Status icon informing about new mail
 mail-client/mailx 8.1.2.20160123: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
-mail-client/mutt 1.7.2 1.9.4-r1 1.10.1: A small but very powerful text-based mail client
+mail-client/mutt 1.10.1: A small but very powerful text-based mail client
 mail-client/nail 12.4-r3: an enhanced mailx-compatible mail client
 mail-client/neomutt 20180512 20180716: A small but very powerful text-based mail client
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
