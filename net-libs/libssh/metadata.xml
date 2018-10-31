@@ -11,7 +11,6 @@
   <flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as TLS provider</flag>
   <flag name="pcap">Build with PCAP output support</flag>
   <flag name="sftp">Build with SFTP support</flag>
-  <flag name="ssh1">Build with SSH1 support</flag>
   <flag name="server">Build with SSH server support</flag>
 </use>
 </pkgmetadata>
