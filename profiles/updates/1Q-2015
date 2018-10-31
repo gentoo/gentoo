@@ -31,7 +31,6 @@ move app-admin/eselect-lapack app-eselect/eselect-lapack
 move app-admin/eselect-lcdfilter app-eselect/eselect-lcdfilter
 move app-admin/eselect-lib-bin-symlink app-eselect/eselect-lib-bin-symlink
 move app-admin/eselect-lua app-eselect/eselect-lua
-move app-admin/eselect-mesa app-eselect/eselect-mesa
 move app-admin/eselect-metasploit app-eselect/eselect-metasploit
 move app-admin/eselect-miniaudicle app-eselect/eselect-miniaudicle
 move app-admin/eselect-mpg123 app-eselect/eselect-mpg123
