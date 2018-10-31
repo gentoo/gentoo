@@ -176,12 +176,15 @@ src_test() {
 	cp "${FILESDIR}"/policy.test.xml "${_im_local_config_home}/policy.xml" || \
 		die "Failed to install default blank policy.xml in '${_im_local_config_home}'"
 
-	# Check that your policy.xml file is taken into account
-	LD_LIBRARY_PATH="${S}/coders/.libs:${S}/filters/.libs:${S}/Magick++/lib/.libs:${S}/magick/.libs:${S}/wand/.libs" \
-	"${S}"/utilities/.libs/magick -list policy || die
+	local im_command= IM_COMMANDS=()
+	IM_COMMANDS+=( "magick -version" ) # Verify that we are using version we just built
+	IM_COMMANDS+=( "magick -list policy" ) # Verify that policy.xml is used
+	IM_COMMANDS+=( "emake check" ) # Run tests
 
-	LD_LIBRARY_PATH="${S}/coders/.libs:${S}/filters/.libs:${S}/Magick++/lib/.libs:${S}/magick/.libs:${S}/wand/.libs" \
-	emake check
+	for im_command in "${IM_COMMANDS[@]}"; do
+		"${S}"/magick.sh \
+		${im_command} || die
+	done
 }
 
 src_install() {
