@@ -9,9 +9,9 @@ PYTHON_REQ_USE="sqlite"
 
 inherit autotools cmake-utils eutils linux-info pax-utils python-single-r1
 
-LIBDVDCSS_VERSION="1.4.1-Leia-Alpha-1"
-LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-1"
-LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-1"
+LIBDVDCSS_VERSION="1.4.2-Leia-Beta-5"
+LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-3"
+LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-3"
 FFMPEG_VERSION="4.0.1"
 CODENAME="Leia"
 FFMPEG_KODI_VERSION="Alpha3-1"
