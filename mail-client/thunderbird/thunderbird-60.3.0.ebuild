@@ -5,7 +5,7 @@ EAPI=6
 VIRTUALX_REQUIRED="pgo"
 WANT_AUTOCONF="2.1"
 MOZ_ESR=""
-MOZ_LIGHTNING_VER="6.2"
+MOZ_LIGHTNING_VER="6.2.2.1"
 MOZ_LIGHTNING_GDATA_VER="4.4.1"
 
 PYTHON_COMPAT=( python3_{5,6,7} )
@@ -22,7 +22,7 @@ MOZ_PV="${PV/_beta/b}"
 
 # Patches
 PATCHTB="thunderbird-60.0-patches-0"
-PATCHFF="firefox-60.0-patches-02"
+PATCHFF="firefox-60.0-patches-04"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
@@ -40,12 +40,12 @@ HOMEPAGE="https://www.mozilla.org/thunderbird"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist clang dbus debug hardened jack lightning mozdom neon pulseaudio
+IUSE="bindist clang dbus debug hardened jack lightning neon pulseaudio
 	selinux startup-notification system-harfbuzz system-icu system-jpeg
 	system-libevent system-libvpx system-sqlite wifi"
 RESTRICT="!bindist? ( bindist )"
 
-PATCH_URIS=( https://dev.gentoo.org/~{anarchy,axs,polynomial-c}/mozilla/patchsets/{${PATCHTB},${PATCHFF}}.tar.xz )
+PATCH_URIS=( https://dev.gentoo.org/~{anarchy,axs,polynomial-c,whissi}/mozilla/patchsets/{${PATCHTB},${PATCHFF}}.tar.xz )
 SRC_URI="${SRC_URI}
 	${MOZ_HTTP_URI}/${MOZ_PV}/source/${MOZ_P}.source.tar.xz
 	https://dev.gentoo.org/~axs/distfiles/lightning-${MOZ_LIGHTNING_VER}.tar.xz
@@ -195,10 +195,9 @@ src_prepare() {
 	# Apply our patchset from firefox to thunderbird as well
 	rm -f   "${WORKDIR}"/firefox/2007_fix_nvidia_latest.patch \
 		"${WORKDIR}"/firefox/2005_ffmpeg4.patch \
+		"${WORKDIR}"/firefox/2012_update-cc-to-honor-CC.patch \
 		|| die
 	eapply "${WORKDIR}/firefox"
-	eapply "${FILESDIR}"/${PN}-60.0-blessings-TERM.patch # 654316
-	eapply "${FILESDIR}"/${PN}-60.0-rust-1.29-comp.patch
 
 	# Ensure that are plugins dir is enabled as default
 	sed -i -e "s:/usr/lib/mozilla/plugins:/usr/lib/nsbrowser/plugins:" \
@@ -219,14 +218,17 @@ src_prepare() {
 	pushd "${S}"/comm &>/dev/null || die
 	eapply "${WORKDIR}"/thunderbird
 
+	# NOT TRIGGERED starting with 60.3, as script just maps ${PV} without any actual
+	# check on lightning version or changes:
+	#
 	# Confirm the version of lightning being grabbed for langpacks is the same
 	# as that used in thunderbird
-	local THIS_MOZ_LIGHTNING_VER=$(${PYTHON} calendar/lightning/build/makeversion.py ${PV})
-	if [[ ${MOZ_LIGHTNING_VER} != ${THIS_MOZ_LIGHTNING_VER} ]]; then
-		eqawarn "The version of lightning used for localization differs from the version"
-		eqawarn "in thunderbird.  Please update MOZ_LIGHTNING_VER in the ebuild from ${MOZ_LIGHTNING_VER}"
-		eqawarn "to ${THIS_MOZ_LIGHTNING_VER}"
-	fi
+	#local THIS_MOZ_LIGHTNING_VER=$(${PYTHON} calendar/lightning/build/makeversion.py ${PV})
+	#if [[ ${MOZ_LIGHTNING_VER} != ${THIS_MOZ_LIGHTNING_VER} ]]; then
+	#	eqawarn "The version of lightning used for localization differs from the version"
+	#	eqawarn "in thunderbird.  Please update MOZ_LIGHTNING_VER in the ebuild from ${MOZ_LIGHTNING_VER}"
+	#	eqawarn "to ${THIS_MOZ_LIGHTNING_VER}"
+	#fi
 
 	popd &>/dev/null || die
 
@@ -244,8 +246,6 @@ src_prepare() {
 }
 
 src_configure() {
-	MEXTENSIONS="default"
-
 	# Add information about TERM to output (build.log) to aid debugging
 	# blessings problems
 	if [[ -n "${TERM}" ]] ; then
@@ -387,16 +387,7 @@ src_configure() {
 
 	# Other tb-specific settings
 	mozconfig_annotate '' --with-user-appdir=.thunderbird
-
 	mozconfig_annotate '' --enable-ldap
-
-	# Bug #72667
-	if use mozdom; then
-		MEXTENSIONS="${MEXTENSIONS},inspector"
-	fi
-
-	mozconfig_annotate '' --enable-extensions="${MEXTENSIONS}"
-
 	mozconfig_annotate '' --enable-calendar
 
 	# Disable built-in ccache support to avoid sandbox violation, #665420
@@ -422,6 +413,8 @@ src_configure() {
 	# Use an objdir to keep things organized.
 	echo "mk_add_options MOZ_OBJDIR=${BUILD_OBJ_DIR}" >> "${S}"/.mozconfig
 	echo "mk_add_options XARGS=/usr/bin/xargs" >> "${S}"/.mozconfig
+
+	mozlinguas_mozconfig
 
 	# Finalize and report settings
 	mozconfig_final
@@ -520,11 +513,11 @@ src_install() {
 
 	local emid
 	# stage extra locales for lightning and install over existing
+	emid='{e2fda1a4-762b-4020-b5ad-a41df1933103}'
 	rm -f "${ED}"/${MOZILLA_FIVE_HOME}/distribution/extensions/${emid}.xpi || die
 	mozlinguas_xpistage_langpacks "${BUILD_OBJ_DIR}"/dist/bin/distribution/extensions/${emid} \
 		"${WORKDIR}"/lightning-${MOZ_LIGHTNING_VER} lightning calendar
 
-	emid='{e2fda1a4-762b-4020-b5ad-a41df1933103}'
 	mkdir -p "${T}/${emid}" || die
 	cp -RLp -t "${T}/${emid}" "${BUILD_OBJ_DIR}"/dist/bin/distribution/extensions/${emid}/* || die
 	insinto ${MOZILLA_FIVE_HOME}/distribution/extensions
