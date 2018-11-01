@@ -49,7 +49,7 @@ DEPEND="
 RDEPEND="${CDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-setup-py.patch
+	"${FILESDIR}"/${PN}-1.23.0-setup-py.patch
 )
 
 src_prepare() {
