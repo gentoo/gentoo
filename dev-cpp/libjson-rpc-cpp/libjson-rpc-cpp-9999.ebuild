@@ -25,7 +25,7 @@ RDEPEND="
 	stubgen? ( dev-libs/argtable:= )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
-	test? ( dev-cpp/catch )"
+	test? ( <dev-cpp/catch-2 )"
 
 RESTRICT="!test? ( test )"
 
