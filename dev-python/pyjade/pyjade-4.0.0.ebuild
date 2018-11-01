@@ -27,4 +27,3 @@ DEPEND="${RDEPEND}"
 #		dev-python/pyramid[${PYTHON_USEDEP}]
 #		dev-python/mako[${PYTHON_USEDEP}]
 #	)
-
