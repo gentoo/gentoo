@@ -16,13 +16,15 @@ RDEPEND="media-libs/libogg
 	media-libs/opus
 	http? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		libressl? ( dev-libs/libressl:0= )
 	)"
 
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
 REQUIRED_USE="^^ ( fixed-point float )"
+
+PATCHES=( "${FILESDIR}/opusfile-0.11-libressl.patch" )
 
 src_configure() {
 	local myeconfargs=(
