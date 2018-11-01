@@ -198,6 +198,8 @@ src_install() {
 	# install the @x11-module-rebuild set for Portage
 	insinto /usr/share/portage/config/sets
 	newins "${FILESDIR}"/xorg-sets.conf xorg.conf
+
+	[ -d "${ED}"/var/log ] && rmdir "${ED}"/var/log || die
 }
 
 pkg_postinst() {
