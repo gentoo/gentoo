@@ -60,7 +60,7 @@ src_prepare() {
 }
 
 src_install() {
-	uncompress usr/share/doc/spotify-client/changelog.gz
+	gunzip usr/share/doc/spotify-client/changelog.gz || die
 	dodoc usr/share/doc/spotify-client/changelog
 
 	SPOTIFY_PKG_HOME=usr/share/spotify
