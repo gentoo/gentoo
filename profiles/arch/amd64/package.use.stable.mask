@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (01 Nov 2018)
+# net-wireless/iwd not stable yet
+net-misc/networkmanager iwd
+
 # Mikle Kolyada <zlogene@gentoo.org> (15 Sep 2018)
 # the dependency is unstable
 media-video/libav nvidia
