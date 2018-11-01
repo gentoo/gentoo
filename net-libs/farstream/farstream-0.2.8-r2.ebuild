@@ -36,6 +36,7 @@ RDEPEND="${COMMONDEPEND}
 "
 DEPEND="${COMMONDEPEND}
 	${PYTHON_DEPS}
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.18
 	virtual/pkgconfig
 	test? (
