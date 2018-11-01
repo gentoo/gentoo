@@ -7,6 +7,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Pacho Ramos <pacho@gento.org> (01 Nov 2018)
+# cman and co. are going to be removed (#650738)
+sys-fs/lvm2 cman clvm
+
+# Pacho Ramos <pacho@gento.org> (01 Nov 2018)
+# gksu is going to be removed (#594214)
+mate-extra/caja-extensions gksu
+
 # Alfredo Tupone <tupone@gentoo.org> (24 Oct 2018)
 # jit brokes build of gnat-gpl
 dev-lang/gnat-gpl jit
