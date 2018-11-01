@@ -6,7 +6,7 @@ EAPI=7
 inherit udev user
 
 if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/code"
+	EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/code"
 	inherit autotools git-r3
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
