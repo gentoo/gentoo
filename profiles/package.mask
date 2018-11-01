@@ -29,6 +29,54 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
+# Outdated, security issues (#629442), dead since 2014 (#405527).
+# Removal in a month.
+mail-filter/assp
+
+# Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
+# Outdated, needs to be bumped to latest release to fix multiple security
+# bugs (#444368). Removal in a month.
+www-apps/lxr
+
+# Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
+# Needs to be bumped (#475330), build issues (#521094), install files in
+# /dev (#452248), ignores CFLAGS (#452244). Removal in a month.
+app-misc/iguanaIR
+
+# Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
+# Needs a major version bump to a version that is security audited
+# (#477742). Removal in a month.
+net-analyzer/nagvis
+
+# Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
+# Buggy (#499298), upstream is dead for a long time, maybe a switch to one
+# of the existing forks would be needed, abi_x86_32 doesn't work (#524498).
+# Removal in a month.
+media-plugins/alsaequal
+
+# Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
+# Unmaintained, installs files in runtime dirs (#520626), requires old
+# libosip. Removal in a month.
+net-misc/siproxd
+
+# Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
+# Needs a major version bump to work with recent db versions (#529966).
+# Removal in a month.
+net-proxy/c-icap-modules
+
+# Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
+# 2.90 slot of VTE is deprecated for a long time in favor of 2.91, no
+# reverse deps (#538140). Removal in a month.
+=x11-libs/vte-0.36.5
+
+# Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
+# All this packages are broken and need major version bumps to fix them. See
+# bug #504114, #486510, #510550, #511096, #517260, #551784, #616490, #
+net-voip/linphone
+net-libs/libeXosip
+net-libs/libosip
+
 # Aaron W. Swenson <titanofold@gentoo.org> (25 Oct 2018)
 # Fails to build against up to date OpenSSL library (Bug 663966). No longer
 # supported upstream. Use dev-db/pgadmin4.
