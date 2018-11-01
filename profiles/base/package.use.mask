@@ -8,6 +8,10 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Pacho Ramos <pacho@gento.org> (01 Nov 2018)
+# cman and co. are going to be removed (#650738)
+sys-fs/lvm2 cman
+
+# Pacho Ramos <pacho@gento.org> (01 Nov 2018)
 # gksu is going to be removed (#594214)
 mate-extra/caja-extensions gksu
 
