@@ -24,6 +24,7 @@ RDEPEND="virtual/libusb:1
 	crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
+	>sys-devel/gettext-0.18.3
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
@@ -40,12 +41,10 @@ src_prepare() {
 	rm ChangeLog || die
 
 	if [[ ${PV} == 9999* ]]; then
-		local crpthf=config.rpath
-		local crpthd=/usr/share/gettext/${crpthf}
-		if has_version '>sys-devel/gettext-0.18.3' && [[ -e ${crpthd} ]]; then
-			cp "${crpthd}" . || die
+		if [[ -e /usr/share/gettext/config.rpath ]]; then
+			cp /usr/share/gettext/config.rpath . || die
 		else
-			touch ${crpthf} || die # This is from upstream autogen.sh
+			touch config.rpath || die # This is from upstream autogen.sh
 		fi
 		eautoreconf
 	fi
