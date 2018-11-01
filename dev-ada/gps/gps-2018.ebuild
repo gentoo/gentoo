@@ -20,10 +20,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="${PYTHON_DEPS}
-	(
-		dev-ada/gnatcoll-db[gnatcoll_db2ada,gnatinspect,xref]
-		dev-ada/gnatcoll-bindings[python]
-	)
+	dev-ada/gnatcoll-db[gnatcoll_db2ada,gnatinspect,xref]
+	dev-ada/gnatcoll-bindings[python]
 	>=dev-ada/gtkada-2017[gnat_2018]
 	dev-ada/libadalang[gnat_2018]
 	dev-libs/gobject-introspection
