@@ -63,8 +63,7 @@ src_compile() {
 }
 
 src_test() {
-	cp lib/tdom.tcl .
-	tclsh tests/all.tcl
+	cd unix && default
 }
 
 src_install() {
