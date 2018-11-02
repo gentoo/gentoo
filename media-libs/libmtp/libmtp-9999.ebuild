@@ -41,8 +41,8 @@ src_prepare() {
 	rm ChangeLog || die
 
 	if [[ ${PV} == 9999* ]]; then
-		if [[ -e crpthd=/usr/share/gettext/config.rpath ]]; then
-			cp crpthd=/usr/share/gettext/config.rpath . || die
+		if [[ -e /usr/share/gettext/config.rpath ]]; then
+			cp /usr/share/gettext/config.rpath . || die
 		else
 			touch config.rpath || die # This is from upstream autogen.sh
 		fi
