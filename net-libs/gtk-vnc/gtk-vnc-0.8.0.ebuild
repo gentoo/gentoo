@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,6 +37,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=dev-lang/perl-5
+	dev-util/glib-utils
 	>=dev-util/intltool-0.40
 	sys-devel/gettext
 	virtual/pkgconfig
