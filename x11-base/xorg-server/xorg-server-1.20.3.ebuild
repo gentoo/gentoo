@@ -3,7 +3,6 @@
 
 EAPI=5
 
-XORG_EAUTORECONF=yes
 XORG_DOC=doc
 inherit xorg-2 multilib versionator flag-o-matic
 EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/xserver.git"
@@ -199,7 +198,7 @@ src_install() {
 	insinto /usr/share/portage/config/sets
 	newins "${FILESDIR}"/xorg-sets.conf xorg.conf
 
-	[ -d "${ED}"/var/log ] && rmdir "${ED}"/var/log || die
+	find "${ED}"/var -type d -empty -delete || die
 }
 
 pkg_postinst() {
