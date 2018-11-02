@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,6 +26,7 @@ RDEPEND="
 # eautoreconf requires gnome-base/gnome-common
 DEPEND="${RDEPEND}
 	app-text/yelp-tools
+	dev-util/glib-utils
 	>=dev-util/intltool-0.41.0
 	virtual/pkgconfig
 "

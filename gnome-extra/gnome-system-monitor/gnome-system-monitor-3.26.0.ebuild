@@ -25,6 +25,7 @@ RDEPEND="
 "
 # eautoreconf requires gnome-base/gnome-common
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	>=dev-util/intltool-0.41.0
 	dev-util/itstool
 	virtual/pkgconfig
