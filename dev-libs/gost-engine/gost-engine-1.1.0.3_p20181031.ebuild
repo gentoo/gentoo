@@ -29,6 +29,6 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/gost-engine/engine/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/engine-${PV}"
+	SRC_URI="https://github.com/gost-engine/engine/archive/e5cc3684f3b3ad40e186e23b00b253d234df92ab.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/engine-e5cc3684f3b3ad40e186e23b00b253d234df92ab"
 fi
