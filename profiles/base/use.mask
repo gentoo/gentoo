@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (02 Nov 2018)
+# xf86-input-tslib is dead and is masked for removal. Bug #664096
+input_devices_tslib
+
 # Aaron W. Swenson <titanofold@gentoo.org> (09 Sep 2018)
 # Mask PostgreSQL 12 while in (pre-)alpha.
 postgres_targets_postgres12

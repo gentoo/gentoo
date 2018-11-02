@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (02 Nov 2018)
+# Dead and unusable with latest xserver. Masked for removal in 30 days.
+# Bug #664096
+x11-drivers/xf86-input-tslib
+
 # Mart Raudsepp <leio@gentoo.org> (02 Nov 2018)
 # Old x11-libs/goocanvas:0 SLOT python bindings, not used by anything.
 # New x11-libs/goocanvas:2.0 with introspection should be used instead.
