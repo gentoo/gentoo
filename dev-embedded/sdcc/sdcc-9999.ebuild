@@ -2,17 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	ESVN_REPO_URI="https://svn.code.sf.net/p/sdcc/code/trunk/sdcc"
 	inherit subversion
-	docs_compile() { return 0; }
 else
-	SRC_URI="mirror://sourceforge/sdcc/${PN}-src-${PV}.tar.bz2
-		doc? ( mirror://sourceforge/sdcc/${PN}-doc-${PV}.tar.bz2 )"
+	SRC_URI="
+		mirror://sourceforge/sdcc/${PN}-src-${PV}.tar.bz2
+		doc? ( mirror://sourceforge/sdcc/${PN}-doc-${PV}.tar.bz2 )
+	"
 	KEYWORDS="~amd64 ~x86"
-	docs_compile() { return 1; }
 fi
 
 DESCRIPTION="Small device C compiler (for various microprocessors)"
@@ -56,14 +56,9 @@ DEPEND="
 	${RDEPEND}
 	dev-util/gperf
 "
-if docs_compile ; then
-DEPEND+="
-	doc? (
-		>=app-office/lyx-1.3.4
-		dev-tex/latex2html
-	)
-"
-fi
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.8.0-override-override.patch
+)
 
 src_prepare() {
 	# Fix conflicting variable names between Gentoo and sdcc
@@ -83,16 +78,16 @@ src_prepare() {
 	[[ ${PV} == "9999" ]] && find "${S}" -type f -exec touch -r . {} +
 
 	default
+	eautoreconf
 }
 
 src_configure() {
 	# sdbinutils subdir doesn't pass down --docdir properly, so need to
 	# expand $(datarootdir) ourselves.
 	econf \
-		ac_cv_prog_STRIP=true \
-		ac_cv_prog_AS="$(tc-getAS)" \
 		ac_cv_prog_AR="$(tc-getAR)" \
-		$(docs_compile && use_enable doc || echo --disable-doc) \
+		ac_cv_prog_AS="$(tc-getAS)" \
+		ac_cv_prog_STRIP=true \
 		$(use_enable avr avr-port) \
 		$(use_enable boehm-gc libgc) \
 		$(use_enable device-lib) \
@@ -116,6 +111,7 @@ src_configure() {
 		$(use_enable ucsim) \
 		$(use_enable z180 z180-port) \
 		$(use_enable z80 z80-port) \
+		--disable-doc \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--without-ccache
 }
@@ -125,10 +121,9 @@ src_install() {
 	dodoc doc/*.txt
 	find "${D}" -name .deps -exec rm -rf {} + || die
 
-	if use doc ; then
-		docs_compile || cd "${WORKDIR}"/doc
-		docinto html
-		doins -r *
+	if use doc && [[ ${PV} != "9999" ]]; then
+		cd "${WORKDIR}"/doc
+		dodoc -r *
 	fi
 
 	# a bunch of archives (*.a) are built & installed by gputils
