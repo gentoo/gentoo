@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install setup
+DEPEND=app-text/asciidoc dev-libs/libevent[ssl] sys-libs/zlib caps? ( sys-libs/libcap ) !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) lzma? ( app-arch/xz-utils ) scrypt? ( app-crypt/libscrypt ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd ) zstd? ( app-arch/zstd )
+DESCRIPTION=Anonymizing overlay network for TCP
+EAPI=7
+HOMEPAGE=http://www.torproject.org/
+IUSE=caps libressl lzma scrypt seccomp selinux systemd tor-hardening test web zstd
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~ppc-macos
+LICENSE=BSD GPL-2
+RDEPEND=app-text/asciidoc dev-libs/libevent[ssl] sys-libs/zlib caps? ( sys-libs/libcap ) !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) lzma? ( app-arch/xz-utils ) scrypt? ( app-crypt/libscrypt ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd ) zstd? ( app-arch/zstd ) selinux? ( sec-policy/selinux-tor )
+SLOT=0
+SRC_URI=https://www.torproject.org/dist/tor-0.3.4.9.tar.gz https://archive.torproject.org/tor-package-archive/tor-0.3.4.9.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=cb3285c551e140e53fce5331091d532a
