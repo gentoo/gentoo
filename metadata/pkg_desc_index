@@ -6551,7 +6551,7 @@ gnome-extra/gnome-user-share 3.18.3: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
 gnome-extra/gnome-weather 3.24.0: A weather application for GNOME
 gnome-extra/gtkhtml 4.10.0: Lightweight HTML rendering/printing/editing engine
-gnome-extra/gucharmap 3.0.1-r200 9.0.2 9.0.4 10.0.3: Unicode character map viewer and library
+gnome-extra/gucharmap 3.0.1-r200 10.0.3: Unicode character map viewer and library
 gnome-extra/libgda 5.2.4-r2: GNOME database access library
 gnome-extra/libgsf 1.14.41-r1 1.14.43: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME desktop
