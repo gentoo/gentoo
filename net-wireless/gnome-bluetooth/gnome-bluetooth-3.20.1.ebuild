@@ -31,7 +31,6 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.9
 	>=dev-util/intltool-0.40.0
-	dev-util/itstool
 	virtual/libudev
 	virtual/pkgconfig
 	x11-base/xorg-proto
