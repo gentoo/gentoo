@@ -12,7 +12,7 @@
         <flag name="nodejs">Enable use of nodejs (which some plugins use)</flag>
     </use>
     <upstream>
-        <remote-id type="github">firehol/netdata</remote-id>
+        <remote-id type="github">netdata/netdata</remote-id>
     </upstream>
     <longdescription lang="en">
         Linux real time system monitoring web interface
