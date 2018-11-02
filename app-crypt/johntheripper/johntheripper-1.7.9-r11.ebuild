@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,10 +11,10 @@ MY_P="${MY_PN}-${PV}"
 JUMBO="jumbo-7"
 
 DESCRIPTION="fast password cracker"
-HOMEPAGE="http://www.openwall.com/john/"
+HOMEPAGE="https://www.openwall.com/john/"
 
-SRC_URI="http://www.openwall.com/john/g/${MY_P}.tar.bz2
-	!minimal? ( http://www.openwall.com/john/g/${MY_P}-${JUMBO}.diff.gz )"
+SRC_URI="https://www.openwall.com/john/g/${MY_P}.tar.bz2
+	!minimal? ( https://www.openwall.com/john/g/${MY_P}-${JUMBO}.diff.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"
