@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=dev-libs/boost:= sys-libs/ncurses:= sys-libs/readline:0= >=dev-embedded/gputils-0.13.7 boehm-gc? ( dev-libs/boehm-gc:= ) !dev-embedded/sdcc-svn dev-util/gperf
+DEPEND=dev-libs/boost:= sys-libs/ncurses:= sys-libs/readline:0= >=dev-embedded/gputils-0.13.7 boehm-gc? ( dev-libs/boehm-gc:= ) !dev-embedded/sdcc-svn dev-util/gperf >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Small device C compiler (for various microprocessors)
 EAPI=6
 HOMEPAGE=http://sdcc.sourceforge.net/
@@ -11,5 +11,5 @@ REQUIRED_USE=ds390? ( sdbinutils ) ds400? ( sdbinutils ) hc08? ( sdbinutils ) mc
 RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://sourceforge/sdcc/sdcc-src-3.8.0.tar.bz2 doc? ( mirror://sourceforge/sdcc/sdcc-doc-3.8.0.tar.bz2 )
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=07bfa522c49c5353bc3f2bf98df38218
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=56e28697c94a0ea76256fe97a49667f3
