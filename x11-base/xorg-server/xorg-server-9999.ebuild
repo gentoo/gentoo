@@ -199,7 +199,7 @@ src_install() {
 	insinto /usr/share/portage/config/sets
 	newins "${FILESDIR}"/xorg-sets.conf xorg.conf
 
-	[ -d "${ED}"/var/log ] && rmdir "${ED}"/var/log || die
+	find "${ED}"/var -type d -empty -delete || die
 }
 
 pkg_postinst() {
