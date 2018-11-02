@@ -10722,7 +10722,6 @@ x11-drivers/xf86-input-libinput 0.27.1 0.28.1: X.org input driver based on libin
 x11-drivers/xf86-input-mouse 1.9.3: X.Org driver for mouse input devices
 x11-drivers/xf86-input-mtrack 0.5.0: Xorg Driver for Multitouch Trackpads
 x11-drivers/xf86-input-synaptics 1.9.0 1.9.1: Driver for Synaptics touchpads
-x11-drivers/xf86-input-tslib 1.2.0_rc1: X.org tslib input driver
 x11-drivers/xf86-input-vmmouse 13.1.0-r1: VMWare mouse input driver
 x11-drivers/xf86-input-void 1.4.1: null input driver
 x11-drivers/xf86-input-wacom 0.34.0 0.36.0 0.36.0-r2: Driver for Wacom tablets and drawing devices
