@@ -231,6 +231,10 @@ x86? (
 	)
 )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-meson-link-gallium-nine-with-pthreads.patch
+)
+
 llvm_check_deps() {
 	local flags=${MULTILIB_USEDEP}
 	if use video_cards_r600 || use video_cards_radeon || use video_cards_radeonsi
