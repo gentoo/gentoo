@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=dev-lang/lua-5.1:0[deprecated] dev-lua/luasocket !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) virtual/pkgconfig
+DESCRIPTION=Lua binding for OpenSSL library to provide TLS/SSL communication
+EAPI=7
+HOMEPAGE=https://github.com/brunoos/luasec
+IUSE=libressl
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/lua-5.1:0[deprecated] dev-lua/luasocket !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= )
+SLOT=0
+SRC_URI=https://github.com/brunoos/luasec/archive/luasec-0.7.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=8fbad171cce7f1631a40fb3896b36523
