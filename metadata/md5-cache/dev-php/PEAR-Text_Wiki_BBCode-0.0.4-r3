@@ -7,5 +7,5 @@ LICENSE=LGPL-2.1 PHP-3
 RDEPEND=>=dev-php/PEAR-Text_Wiki-1.0.3 >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Text_Wiki_BBCode-0.0.4.tgz
-_eclasses_=php-pear-r2	6e0c1ae812b698690819c7e31b3d1895
+_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
 _md5_=70a1a552df74496d4570cfbb6beb9859

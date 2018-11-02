@@ -8,5 +8,5 @@ LICENSE=PHP-3.01
 RDEPEND=|| ( dev-php/PEAR-MDB2 dev-php/PEAR-DB ) dev-php/PEAR-Date !minimal? ( dev-php/PEAR-Validate ) >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/DB_DataObject-1.11.5.tgz
-_eclasses_=php-pear-r2	6e0c1ae812b698690819c7e31b3d1895
+_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
 _md5_=0f3e045142f15d9da1aa58c70c961c23

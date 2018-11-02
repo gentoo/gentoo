@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-lang/php:*[crypt,hash] >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Crypt_CHAP-1.5.0.tgz
-_eclasses_=php-pear-r2	6e0c1ae812b698690819c7e31b3d1895
+_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
 _md5_=dcc89d76174eec940e67fc76c1979874

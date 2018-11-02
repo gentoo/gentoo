@@ -7,5 +7,5 @@ LICENSE=PHP-3.01
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Net_Traceroute-0.21.3.tgz
-_eclasses_=php-pear-r2	6e0c1ae812b698690819c7e31b3d1895
+_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
 _md5_=5d0ed792541d0c435a190aa5aa04432a
