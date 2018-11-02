@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}
 	virtual/perl-Getopt-Long
 	virtual/perl-IO-Compress
 	virtual/perl-Compress-Raw-Zlib
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.12
 	>=dev-util/intltool-0.35
 	virtual/pkgconfig
