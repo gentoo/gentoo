@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">pamsshagentauth</remote-id>
+		<remote-id type="github">jbeverly/pam_ssh_agent_auth</remote-id>
 	</upstream>
 </pkgmetadata>
