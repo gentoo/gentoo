@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,6 +35,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-libs/gobject-introspection-common
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.10
 	>=dev-util/intltool-0.40.0
 	virtual/pkgconfig
