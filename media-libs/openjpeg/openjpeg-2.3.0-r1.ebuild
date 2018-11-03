@@ -31,6 +31,7 @@ DOCS=( AUTHORS.md CHANGELOG.md NEWS.md README.md THANKS.md )
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-disable-static-libs.patch" # bug 650322
+	"${FILESDIR}/${P}-gnuinstalldirs.patch" # bug 667150
 )
 
 src_prepare() {
@@ -40,18 +41,11 @@ src_prepare() {
 	fi
 
 	cmake-utils_src_prepare
-
-	# Stop installing LICENSE file, and install CHANGES from DOCS instead:
-	sed -i -e '/install.*FILES.*DESTINATION.*OPENJPEG_INSTALL_DOC_DIR/d' CMakeLists.txt || die
-
-	# Install doxygen docs to the right directory:
-	sed -i -e "s:DESTINATION\s*share/doc:\0/${PF}:" doc/CMakeLists.txt || die
 }
 
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_PKGCONFIG_FILES=ON	# always build pkgconfig files, bug #539834
-		-DOPENJPEG_INSTALL_LIB_DIR="$(get_libdir)"
 		-DBUILD_TESTING="$(multilib_native_usex test)"
 		-DBUILD_DOC=$(multilib_native_usex doc ON OFF)
 		-DBUILD_CODEC=$(multilib_is_native_abi && echo ON || echo OFF)
