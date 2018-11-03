@@ -50,6 +50,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DBUILD_PKGCONFIG_FILES=ON	# always build pkgconfig files, bug #539834
 		-DOPENJPEG_INSTALL_LIB_DIR="$(get_libdir)"
 		-DBUILD_TESTING="$(multilib_native_usex test)"
 		-DBUILD_DOC=$(multilib_native_usex doc ON OFF)
