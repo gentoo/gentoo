@@ -1,39 +1,41 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="7"
+
+MY_PV="d3e388de9a146faad3277b46e480b0f1415f9a24"
 
 inherit qmake-utils
 
 DESCRIPTION="A cross-platform IRC framework written with Qt"
 HOMEPAGE="http://communi.github.io/"
-SRC_URI="https://github.com/communi/libcommuni/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/communi/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="qml test +uchardet"
 
-# Compiling with USE="test" is currently broken with dev-libs/icu
-# See: https://github.com/communi/libcommuni/issues/60
-REQUIRED_USE="test? ( uchardet )"
-
-RDEPEND="dev-qt/qtcore:5
+RDEPEND="
+	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
 	uchardet? ( app-i18n/uchardet )
-	!uchardet? ( dev-libs/icu:= )"
+	!uchardet? ( dev-libs/icu:= )
+	"
 
-DEPEND="test? ( dev-qt/qttest:5 )
-	${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	test? ( dev-qt/qttest:5 )
+"
 
-RESTRICT="!test? ( test )"
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_prepare() {
 	default
 
-	# Don't use bundled uchardet, use instead app-i18n/uchardet
-	rm -rf src/3rdparty/uchardet-0.0.1/* || die
-	cp "${FILESDIR}"/uchardet.pri src/3rdparty/uchardet-0.0.1/uchardet.pri || die
+	# Currently the test tst_IrcLagTimer fails, so disabling
+	# See: https://github.com/communi/libcommuni/issues/63
+	sed -e '/irclagtimer/d' -i tests/auto/auto.pro || die
 }
 
 src_configure() {

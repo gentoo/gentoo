@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
+# Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
+# See tracker: https://bugs.gentoo.org/670222
+>=app-text/poppler-0.71.0
+
 # Matt Turner <mattst88@gentoo.org> (02 Nov 2018)
 # Dead and unusable with latest xserver. Masked for removal in 30 days.
 # Bug #664096
