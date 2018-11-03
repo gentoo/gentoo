@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/AnyEvent-4.0.0 >=dev-perl/Compress-LZF-3.110.0 >=dev-perl/JSON-XS-2.10.0 dev-perl/common-sense virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Deliantra suppport module to read/write archetypes, maps etc
+EAPI=6
+HOMEPAGE=http://metacpan.org/release/Deliantra
+IUSE=examples
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/AnyEvent-4.0.0 >=dev-perl/Compress-LZF-3.110.0 >=dev-perl/JSON-XS-2.10.0 dev-perl/common-sense dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/ML/MLEHMANN/Deliantra-1.30.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
+_md5_=7b34458f2a2523512ab9b2214ebfee73
