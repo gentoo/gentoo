@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (02 Nov 2018)
+# Vulkan is only available on amd64 at present.
+media-libs/libsdl2 -vulkan
+
 # Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
 # www-client/firefox is available on amd64
 app-misc/tracker -firefox-bookmarks
