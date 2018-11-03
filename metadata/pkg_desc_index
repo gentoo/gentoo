@@ -8582,7 +8582,7 @@ net-im/jabber-base 0.01: Jabber servers and transports layout package
 net-im/kadu 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/librvp 0.9.6: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
-net-im/mcabber 1.0.5: A small Jabber console client with various features, like MUC, SSL, PGP
+net-im/mcabber 1.0.5 1.1.0-r1: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openfire 4.1.0: Openfire (formerly wildfire) real time collaboration (RTC) server
 net-im/pidgin 2.12.0 2.13.0: GTK Instant Messenger client
@@ -9827,7 +9827,7 @@ sys-apps/iotools 1.5: Simple commands to access hardware device registers
 sys-apps/ipmitool 1.8.17-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6: IPMI Management Utilities
 sys-apps/iproute2 4.4.0 4.14.1-r2 4.17.0-r1: kernel routing and traffic control utilities
-sys-apps/irqbalance 1.3.0: Distribute hardware interrupts across processors on a multiprocessor system
+sys-apps/irqbalance 1.3.0 1.4.0-r1: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 2.1.1 2.3.1: tool to manipulate Intel X86 and X86-64 processor microcode update collections
 sys-apps/kbd 2.0.4: Keyboard and console utilities
