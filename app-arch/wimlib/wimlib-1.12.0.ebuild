@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,6 +23,8 @@ LICENSE="|| ( GPL-3+ LGPL-3+ ) CC0-1.0"
 SLOT="0"
 IUSE="cpu_flags_x86_ssse3 fuse iso ntfs openssl threads yasm"
 REQUIRED_USE="cpu_flags_x86_ssse3? ( !openssl )"
+
+PATCHES=( "${FILESDIR}/syslinux-path.patch" )
 
 RDEPEND="
 	dev-libs/libxml2:2
