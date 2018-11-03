@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm ~mips ~x86"
 IUSE="+jit"
 
 RDEPEND="
-	>=app-crypt/gcr-3:=[gtk]
+	>=app-crypt/gcr-3:=[gtk,vala]
 	>=dev-db/sqlite-3.6.19:3
 	>=dev-libs/glib-2.48.0:2
 	dev-libs/libpeas[gtk]
