@@ -28,12 +28,21 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/pycairo-1.17.0-pkgconfigdir.patch
+)
+
 python_compile_all() {
 	use doc && emake -C docs
 }
 
 python_test() {
 	esetup.py test
+}
+
+python_install() {
+	distutils-r1_python_install \
+		install_pkgconfig --pkgconfigdir="/usr/$(get_libdir)/pkgconfig"
 }
 
 python_install_all() {
