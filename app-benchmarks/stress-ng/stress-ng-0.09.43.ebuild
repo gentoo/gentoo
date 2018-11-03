@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -11,7 +11,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-libs/libaio
+DEPEND="
+	dev-libs/libaio
 	dev-libs/libbsd
 	dev-libs/libgcrypt:0=
 	net-misc/lksctp-tools
@@ -19,10 +20,11 @@ DEPEND="dev-libs/libaio
 	sys-apps/keyutils
 	sys-libs/libapparmor
 	sys-libs/libcap
-	sys-libs/zlib:="
+	sys-libs/zlib:=
+"
 
 RDEPEND="${DEPEND}"
 
 DOCS=( "README" "README.Android" "TODO" "syscalls.txt" )
 
-PATCHES=( "${FILESDIR}/${PN}-0.09.40-makefile.patch" )
+PATCHES=( "${FILESDIR}/${PN}-0.09.42-makefile.patch" )

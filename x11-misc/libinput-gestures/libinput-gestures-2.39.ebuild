@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python3_{4..7} )
 
 inherit gnome2-utils python-single-r1
 
@@ -19,17 +19,15 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="test"
+IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RESTRICT="!test? ( test )"
 
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/libinput-1.8.0
 	x11-misc/xdotool
 	x11-misc/wmctrl"
 DEPEND=">=dev-libs/libinput-1.8.0
-	dev-util/desktop-file-utils
-	test? ( dev-python/flake8[${PYTHON_USEDEP}] )"
+	dev-util/desktop-file-utils"
 
 src_prepare() {
 	default
@@ -37,6 +35,8 @@ src_prepare() {
 	# Fix docdir installation path
 	sed '/^DOCDIR/s@$NAME@${PF}@' -i libinput-gestures-setup || die
 }
+
+src_test() { :; }
 
 pkg_postinst() {
 	gnome2_icon_cache_update
