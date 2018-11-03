@@ -3158,6 +3158,8 @@ media-sound/mp3blaster:sid - Build with SID (Commodore 64 Audio) support
 media-sound/mp3splt-gtk:audacious - Include media-sound/audacious support
 media-sound/mpd:adplug - Enable the AdPlug decoder plugin
 media-sound/mpd:cdio - Use libcdio for ISO9660 parsing support
+media-sound/mpd:chromaprint - Enable ChromaPrint / AcoustID support
+media-sound/mpd:cue - Enable CUE sheet support
 media-sound/mpd:curl - Support for web stream listening
 media-sound/mpd:eventfd - Use the eventfd function in MPD's event loop
 media-sound/mpd:faad - Use external faad library for AAC decoding
@@ -3173,11 +3175,13 @@ media-sound/mpd:mpg123 - Enable support for mp3 decoding over media-sound/mpg123
 media-sound/mpd:network - Enables network streaming support
 media-sound/mpd:nfs - Enable support for the Network File System
 media-sound/mpd:pipe - Support writing audio to a pipe
+media-sound/mpd:qobuz - Build plugin to access qobuz
 media-sound/mpd:recorder - Enables output plugin for recording radio streams
 media-sound/mpd:sid - Build with SID (Commodore 64 Audio) support
 media-sound/mpd:signalfd - Use the signalfd function in MPD's event loop
 media-sound/mpd:soundcloud - Build plugin to access soundcloud
 media-sound/mpd:systemd - Enable support for systemd socket activation
+media-sound/mpd:tidal - Build plugin to access tidal
 media-sound/mpd:twolame - Support twolame MPEG-2 encoding
 media-sound/mpd:webdav - Enable using music from a WebDAV share
 media-sound/mpd:wildmidi - Enable MIDI support via wildmidi
