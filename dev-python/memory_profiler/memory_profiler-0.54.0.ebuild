@@ -15,8 +15,11 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
+# dev-lang/mercury: collision on 'mprof'
+# https://bugs.gentoo.org/571176
 RDEPEND="
 	dev-python/psutil[${PYTHON_USEDEP}]
+	!dev-lang/mercury
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
