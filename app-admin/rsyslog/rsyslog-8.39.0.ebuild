@@ -208,7 +208,6 @@ src_configure() {
 		# Debug
 		$(use_enable debug)
 		$(use_enable debug diagtools)
-		$(use_enable debug memcheck)
 		$(use_enable debug valgrind)
 		# Misc
 		$(use_enable curl fmhttp)
