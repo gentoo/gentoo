@@ -22,6 +22,8 @@ else
 		https://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
 		doc? ( https://www.rsyslog.com/files/download/${PN}/${PN}-doc-${PV}.tar.gz )
 	"
+
+	PATCHES=( "${FILESDIR}"/${P}-fix-liblogging_stdlog-linking.patch )
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
@@ -80,6 +82,7 @@ DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-archive-2015.02.24
 	virtual/pkgconfig
 	test? (
+		>=dev-libs/liblogging-1.0.1[stdlog]
 		jemalloc? ( <sys-libs/libfaketime-0.9.7 )
 		!jemalloc? ( sys-libs/libfaketime )
 		${PYTHON_DEPS}

@@ -36,6 +36,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/libfastjson-0.99.8:=
 	>=dev-libs/libestr-0.1.9
+	>=dev-libs/liblogging-1.0.1:=[stdlog]
 	>=sys-libs/zlib-1.2.5
 	curl? ( >=net-misc/curl-7.35.0 )
 	dbi? ( >=dev-db/libdbi-0.8.3 )
