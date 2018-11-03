@@ -1,15 +1,13 @@
 DEFINED_PHASES=configure install prepare test
-DEPEND=test? ( dev-qt/qttest:5 ) dev-qt/qtcore:5 dev-qt/qtdeclarative:5 uchardet? ( app-i18n/uchardet ) !uchardet? ( dev-libs/icu:= )
+DEPEND=dev-qt/qtcore:5 dev-qt/qtdeclarative:5 uchardet? ( app-i18n/uchardet ) !uchardet? ( dev-libs/icu:= ) test? ( dev-qt/qttest:5 )
 DESCRIPTION=A cross-platform IRC framework written with Qt
-EAPI=6
+EAPI=7
 HOMEPAGE=http://communi.github.io/
 IUSE=qml test +uchardet
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtdeclarative:5 uchardet? ( app-i18n/uchardet ) !uchardet? ( dev-libs/icu:= )
-REQUIRED_USE=test? ( uchardet )
-RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://github.com/communi/libcommuni/archive/v3.5.0.tar.gz -> libcommuni-3.5.0.tar.gz
+SRC_URI=https://github.com/communi/libcommuni/archive/d3e388de9a146faad3277b46e480b0f1415f9a24.tar.gz -> libcommuni-3.5.0_p20180116.tar.gz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=97ad18a335885c7493d2301bab880086
+_md5_=f1c758348dd9742b8bc63a886aca4b86
