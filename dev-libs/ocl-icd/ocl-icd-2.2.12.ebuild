@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/OCL-dev/ocl-icd"
 SRC_URI="https://github.com/OCL-dev/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 IUSE="+khronos-headers"
 
