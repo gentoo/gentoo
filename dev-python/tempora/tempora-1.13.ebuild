@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
-# The calc-prorate binary used to be part of jaraco.utils
 RDEPEND="
 	>=dev-python/jaraco-functools-1.20[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
