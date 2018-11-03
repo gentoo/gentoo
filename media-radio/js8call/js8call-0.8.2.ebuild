@@ -34,21 +34,8 @@ RDEPEND="dev-qt/qtcore:5
 	doc? ( dev-ruby/asciidoctor )"
 DEPEND="${RDEPEND}"
 
-src_configure() {
-	local mycmakeargs=(
-		-DWSJT_GENERATE_DOCS="$(usex doc)"
-		-DWSJT_DOC_DESTINATION="/doc/${PF}"
-	)
-	cmake-utils_src_configure
-}
-
-src_compile() {
-	cmake-utils_src_compile
-}
-
 src_install() {
 	cmake-utils_src_install
 	rm "${D}"/usr/bin/rigctl{,d}-local || die
 	rm "${D}"/usr/share/doc/JS8Call -R || die
-
 }
