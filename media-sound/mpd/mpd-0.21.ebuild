@@ -80,6 +80,7 @@ RDEPEND="
 	modplug? ( media-libs/libmodplug )
 	mpg123? ( media-sound/mpg123 )
 	musepack? ( media-sound/musepack-tools )
+	network? ( media-libs/libshout )
 	nfs? ( net-fs/libnfs )
 	openal? ( media-libs/openal )
 	opus? ( media-libs/opus )
