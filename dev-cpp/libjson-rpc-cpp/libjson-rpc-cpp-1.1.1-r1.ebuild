@@ -3,17 +3,15 @@
 
 EAPI=6
 
-EGIT_REPO_URI="https://github.com/cinemast/${PN}.git"
-EGIT_BRANCH=develop
-inherit cmake-utils git-r3
+inherit cmake-utils
 
 DESCRIPTION="JSON-RPC (1.0 & 2.0) framework for C++"
 HOMEPAGE="https://github.com/cinemast/libjson-rpc-cpp"
-SRC_URI=""
+SRC_URI="https://github.com/cinemast/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/1"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="doc +http-client +http-server redis-client redis-server +stubgen test"
 
 RDEPEND="
