@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,8 @@ MYP=Img-Source-$PV
 
 DESCRIPTION="Adds a lot of image formats to Tcl/Tk"
 HOMEPAGE="http://tkimg.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/1.4/${PN}%20${PV}/${MYP}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${PN}/1.4/${PN}%20${PV}/${MYP}.tar.gz
+	https://dev.gentoo.org/~tupone/distfiles/${P}-patchset-1.tar.xz"
 
 SLOT="0"
 LICENSE="BSD"
@@ -36,12 +37,12 @@ RESTRICT="test"
 S="${WORKDIR}/${MYP}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-tclconfig.patch
-	"${FILESDIR}"/${P}-jpeg.patch
-	"${FILESDIR}"/${P}-zlib.patch
-	"${FILESDIR}"/${P}-png.patch
-	"${FILESDIR}"/${P}-tiff.patch
-	"${FILESDIR}"/${P}-jpeg-9.patch
+	"${WORKDIR}"/${P}-tclconfig.patch
+	"${WORKDIR}"/${P}-jpeg.patch
+	"${WORKDIR}"/${P}-zlib.patch
+	"${WORKDIR}"/${P}-png.patch
+	"${WORKDIR}"/${P}-tiff.patch
+	"${FILESDIR}"/${PN}-1.4-jpeg-9.patch
 )
 
 src_prepare() {
