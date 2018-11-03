@@ -1,0 +1,12 @@
+DEFINED_PHASES=install setup
+DEPEND=dev-python/beautifulsoup[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] dev-python/markdown[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)]
+DESCRIPTION=Smaller, easier, more powerful, and more reliable than make
+EAPI=7
+HOMEPAGE=https://github.com/apenwarr/redo
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~hppa ~x86
+LICENSE=LGPL-2
+SLOT=0
+SRC_URI=https://github.com/apenwarr/redo/archive/redo-0.21.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=75bea1e2e349d43e672d7788e7fba51a
