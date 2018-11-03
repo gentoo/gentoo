@@ -1,22 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-MY_PV="fe123682e9cb30031eae351764f653500b7396c9"
+MY_PV="3737db93722a9e39eeada7c27e7aca28b144ffa7"
 
 inherit readme.gentoo-r1 java-pkg-2 user
 
 DESCRIPTION="The official server for the sandbox video game"
 HOMEPAGE="https://www.minecraft.net/"
-SRC_URI="https://launcher.mojang.com/mc/game/${PV}/server/${MY_PV}/server.jar -> ${P}.jar"
+SRC_URI="https://launcher.mojang.com/v1/objects/${MY_PV}/server.jar -> ${P}.jar"
 
 LICENSE="Mojang"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="app-misc/screen
-	>=virtual/jre-1.8"
+RDEPEND="
+	app-misc/screen
+	>=virtual/jre-1.8
+"
 
 RESTRICT="bindist mirror strip"
 
@@ -33,7 +35,7 @@ src_unpack() {
 }
 
 src_compile() {
-	:
+	:;
 }
 
 src_install() {

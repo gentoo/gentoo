@@ -1,28 +1,32 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="7"
 
 inherit systemd user
 
 DESCRIPTION="A server software for hosting quality voice communication via the internet"
 HOMEPAGE="https://www.teamspeak.com/"
-SRC_URI="amd64? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/teamspeak3-server_linux_amd64-${PV}.tar.bz2 )
-	x86? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/teamspeak3-server_linux_x86-${PV}.tar.bz2 )"
+SRC_URI="
+	amd64? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/teamspeak3-server_linux_amd64-${PV}.tar.bz2 )
+	x86? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/teamspeak3-server_linux_x86-${PV}.tar.bz2 )
+"
 
-LICENSE="LGPL-2.1 teamspeak3"
+LICENSE="Apache-2.0 Boost-1.0 BSD LGPL-2.1 LGPL-3 MIT teamspeak3"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="doc mysql tsdns"
 
-RESTRICT="mirror strip"
+RESTRICT="mirror"
 
-QA_PREBUILT="opt/teamspeak3-server/libmariadb.so.2
+QA_PREBUILT="
+	opt/teamspeak3-server/libmariadb.so.2
 	opt/teamspeak3-server/libts3db_mariadb.so
 	opt/teamspeak3-server/libts3db_sqlite3.so
 	opt/teamspeak3-server/libts3_ssh.so
 	opt/teamspeak3-server/ts3server
-	opt/teamspeak3-server/tsdnsserver"
+	opt/teamspeak3-server/tsdnsserver
+"
 
 pkg_setup() {
 	enewgroup teamspeak
@@ -32,7 +36,7 @@ pkg_setup() {
 src_unpack() {
 	default
 
-	mv teamspeak3-server_linux_$(usex amd64 amd64 x86) ${P} || die
+	mv teamspeak3-server_linux_$(usex amd64 amd64 x86) "${P}" || die
 }
 
 src_install() {
@@ -42,7 +46,7 @@ src_install() {
 	diropts
 	keepdir /etc/teamspeak3-server
 
-	touch ${D%/}/opt/teamspeak3-server/.ts3server_license_accepted || die
+	touch "${D%/}"/opt/teamspeak3-server/.ts3server_license_accepted || die
 
 	exeinto /opt/teamspeak3-server
 	doexe ts3server
