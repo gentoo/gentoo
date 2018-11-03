@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	LIVE_DEPEND=">=x11-misc/util-macros-1.18"
 else
 	SRC_URI="mirror://xorg/util/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 LICENSE="MIT"
