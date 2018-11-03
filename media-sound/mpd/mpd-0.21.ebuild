@@ -41,16 +41,16 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	adplug? ( media-libs/adplug:= )
 	alsa? (
-			media-libs/alsa-lib
-			media-sound/alsa-utils
+		media-libs/alsa-lib
+		media-sound/alsa-utils
 	)
 
 	ao? ( media-libs/libao[alsa?,pulseaudio?] )
 	audiofile? ( media-libs/audiofile:= )
 
 	cdio? (
-			dev-libs/libcdio:=
-			dev-libs/libcdio-paranoia
+		dev-libs/libcdio:=
+		dev-libs/libcdio-paranoia
 	)
 
 	chromaprint? ( media-libs/chromaprint )
@@ -111,7 +111,7 @@ DEPEND="${RDEPEND}
 		test? ( dev-cpp/gtest )"
 
 BDEPEND=">=dev-util/meson-0.47
-		virtual/pkgconfig"
+	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.18.conf.patch
@@ -204,14 +204,14 @@ src_configure() {
 
 	if use network; then
 
-		emesonargs+=(
-			-Dshine=disabled
-			-Dshout=enabled
-			-Dvorbisenc=$(usex vorbis enabled disabled)
-			-Dhttpd=true
-			-Dlame=$(usex lame enabled disabled)
-			-Dtwolame=$(usex twolame enabled disabled)
-			-Dwave_encoder=$(usex audiofile true false)		)
+	emesonargs+=(
+		-Dshine=disabled
+		-Dshout=enabled
+		-Dvorbisenc=$(usex vorbis enabled disabled)
+		-Dhttpd=true
+		-Dlame=$(usex lame enabled disabled)
+		-Dtwolame=$(usex twolame enabled disabled)
+		-Dwave_encoder=$(usex audiofile true false)		)
 	fi
 
 	emesonargs+=(
