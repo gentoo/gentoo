@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Web interface for airdcpp-webclient
+EAPI=7
+HOMEPAGE=https://airdcpp-web.github.io/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND==net-p2p/airdcpp-webclient-2.4*
+SLOT=0
+SRC_URI=https://registry.npmjs.org/airdcpp-webui/-/airdcpp-webui-2.4.0.tgz
+_md5_=975619bdf7f1e70a45e6ba405bfb2673
