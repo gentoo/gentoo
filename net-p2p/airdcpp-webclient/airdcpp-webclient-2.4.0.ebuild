@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy{,3} )
+PYTHON_COMPAT=( pypy{,3} python{2_7,3_{4,5,6,7}} )
 
 inherit cmake-utils python-any-r1 user
 
@@ -19,8 +19,8 @@ RDEPEND="
 	app-arch/bzip2
 	dev-cpp/websocketpp
 	dev-libs/boost:=
-	dev-libs/geoip
 	dev-libs/leveldb:=
+	dev-libs/libmaxminddb:=
 	dev-libs/openssl:0=[-bindist]
 	net-libs/miniupnpc:=
 	sys-libs/zlib:=
