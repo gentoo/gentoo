@@ -22,14 +22,12 @@ else
 		https://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
 		doc? ( https://www.rsyslog.com/files/download/${PN}/${PN}-doc-${PV}.tar.gz )
 	"
-
-	PATCHES=()
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
 SLOT="0"
 IUSE="curl dbi debug doc elasticsearch +gcrypt grok gnutls jemalloc kafka kerberos kubernetes libressl mdblookup"
-IUSE+=" mongodb mysql normalize omhttpfs omudpspoof openssl postgres rabbitmq redis relp rfc3195 rfc5424hmac"
+IUSE+=" mongodb mysql normalize omhttp omhttpfs omudpspoof openssl postgres rabbitmq redis relp rfc3195 rfc5424hmac"
 IUSE+=" snmp ssl systemd test usertools +uuid xxhash zeromq"
 RESTRICT="!test? ( test )"
 
@@ -58,7 +56,7 @@ RDEPEND="
 	postgres? ( >=dev-db/postgresql-8.4.20:= )
 	rabbitmq? ( >=net-libs/rabbitmq-c-0.3.0:= )
 	redis? ( >=dev-libs/hiredis-0.11.0:= )
-	relp? ( >=dev-libs/librelp-1.2.14:= )
+	relp? ( >=dev-libs/librelp-1.2.17:= )
 	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )
 	rfc5424hmac? (
 		!libressl? ( >=dev-libs/openssl-0.9.8y:0= )
@@ -197,6 +195,9 @@ src_configure() {
 		--enable-pmciscoios
 		--enable-pmcisconames
 		--enable-pmlastmsg
+		--enable-pmnormalize
+		--enable-pmnull
+		--enable-pmpanngfw
 		--enable-pmsnare
 		# DB
 		$(use_enable dbi libdbi)
@@ -221,6 +222,7 @@ src_configure() {
 		$(use_enable normalize mmnormalize)
 		$(use_enable mdblookup mmdblookup)
 		$(use_enable grok mmgrok)
+		$(use_enable omhttp)
 		$(use_enable omhttpfs)
 		$(use_enable omudpspoof)
 		$(use_enable rabbitmq omrabbitmq)
