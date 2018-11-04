@@ -13,10 +13,12 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~ppc ~ppc64 sparc x86"
 
-IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus gles2 haptic jack +joystick kms libsamplerate nas opengl oss pulseaudio +sound static-libs +threads tslib udev +video video_cards_vc4 vulkan wayland X xinerama xscreensaver"
+IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus fcitx4 gles2 haptic ibus jack +joystick kms libsamplerate nas opengl oss pulseaudio +sound static-libs +threads tslib udev +video video_cards_vc4 vulkan wayland X xinerama xscreensaver"
 REQUIRED_USE="
 	alsa? ( sound )
+	fcitx4? ( dbus )
 	gles2? ( video )
+	ibus? ( dbus )
 	jack? ( sound )
 	nas? ( sound )
 	opengl? ( video )
@@ -29,7 +31,9 @@ REQUIRED_USE="
 CDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
+	fcitx4? ( app-i18n/fcitx:4 )
 	gles2? ( >=media-libs/mesa-9.1.6[${MULTILIB_USEDEP},gles2] )
+	ibus? ( app-i18n/ibus )
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	kms? (
 		>=x11-libs/libdrm-2.4.46[${MULTILIB_USEDEP}]
@@ -65,6 +69,7 @@ CDEPEND="
 RDEPEND="${CDEPEND}
 	vulkan? ( media-libs/vulkan-loader )"
 DEPEND="${CDEPEND}
+	ibus? ( dev-libs/glib:2[${MULTILIB_USEDEP}] )
 	vulkan? ( dev-util/vulkan-headers )
 	X? ( x11-base/xorg-proto )
 "
@@ -92,13 +97,17 @@ src_prepare() {
 
 	# Unbundle some headers.
 	rm -r src/video/khronos || die
-	ln -s "${SYSROOT}${EPREFIX}"/usr/include src/video/khronos || die
+	ln -s "${ESYSROOT}/usr/include" src/video/khronos || die
 
 	AT_M4DIR="/usr/share/aclocal acinclude" eautoreconf
 }
 
 multilib_src_configure() {
 	use custom-cflags || strip-flags
+
+	if use ibus; then
+		local -x IBUS_CFLAGS="-I${ESYSROOT}/usr/include/ibus-1.0 -I${ESYSROOT}/usr/include/glib-2.0 -I${ESYSROOT}/usr/$(get_libdir)/glib-2.0/include"
+	fi
 
 	# sorted by `./configure --help`
 	local myeconfargs=(
@@ -166,7 +175,8 @@ multilib_src_configure() {
 		$(use_enable vulkan video-vulkan)
 		$(use_enable udev libudev)
 		$(use_enable dbus)
-		--disable-ibus
+		$(use_enable fcitx4 fcitx)
+		$(use_enable ibus)
 		$(use_enable tslib input-tslib)
 		--disable-directx
 		--disable-rpath
