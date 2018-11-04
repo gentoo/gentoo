@@ -27,6 +27,12 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+src_configure() {
+	# DBUS_BINDING_TOOL is not used anymore
+	# https://bugzilla.xfce.org/show_bug.cgi?id=14835
+	econf DBUS_BINDING_TOOL=$(type -P false)
+}
+
 pkg_postinst() {
 	gnome2_icon_cache_update
 }
