@@ -15,9 +15,11 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="static-libs test utils"
 
-BDEPEND="sys-apps/sed
+BDEPEND="
+	sys-apps/sed
+	test? ( dev-util/dejagnu )
 	utils? ( sys-apps/help2man )
-	test? ( dev-util/dejagnu )"
+"
 
 DOCS=( doc/{Authors,BuildSource,Documentation,ReleaseNotes,ToolGuide}.txt README )
 
@@ -26,6 +28,7 @@ S=${WORKDIR}/${MY_P}
 PATCHES=(
 	"${FILESDIR}/${P}-gcc7.patch"
 	"${FILESDIR}/${P}-mp4tags-corruption.patch"
+	"${FILESDIR}/${P}-clang.patch"
 )
 
 src_prepare() {
