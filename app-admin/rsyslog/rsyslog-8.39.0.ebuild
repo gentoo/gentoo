@@ -198,7 +198,7 @@ src_configure() {
 		--enable-pmciscoios
 		--enable-pmcisconames
 		--enable-pmlastmsg
-		--enable-pmnormalize
+		$(use_enable normalize pmnormalize)
 		--enable-pmnull
 		--enable-pmpanngfw
 		--enable-pmsnare
