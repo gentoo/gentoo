@@ -7623,7 +7623,7 @@ media-libs/libmpdclient 2.13: A library for interfacing Music Player Daemon (med
 media-libs/libmpeg2 0.5.1-r2: library for decoding mpeg-2 and mpeg-1 video
 media-libs/libmpeg3 1.8 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0-r1: A library to control MPRIS2 compatible players
-media-libs/libmtp 1.1.14 1.1.15: An implementation of Microsoft's Media Transfer Protocol (MTP)
+media-libs/libmtp 1.1.15: An implementation of Microsoft's Media Transfer Protocol (MTP)
 media-libs/libmygpo-qt 1.1.0: Qt/C++ library wrapping the gpodder.net webservice
 media-libs/libnjb 2.2.7: Library for communicating with the Creative Nomad JukeBox digital audio player
 media-libs/libnut 661: Library and tools to create NUT multimedia files
@@ -7986,7 +7986,7 @@ media-sound/aqualung 1.0-r2: Music player for a wide range of formats designed f
 media-sound/ario 1.5.1-r1: a GTK2 MPD (Music Player Daemon) client inspired by Rythmbox
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.9.2-r2: A graphical Audio CD ripper and encoder with support for many output formats
-media-sound/audacity 2.1.3-r1 2.2.2: Free crossplatform audio editor
+media-sound/audacity 2.2.2: Free crossplatform audio editor
 media-sound/audiotag 0.19: A command-line tool for mass tagging/renaming of audio files
 media-sound/aumix 2.9.1: Aumix volume/mixer control program
 media-sound/awesfx 0.5.1d: AWE32 Sound Driver Utility Programs
