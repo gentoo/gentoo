@@ -13,7 +13,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 #keywords are blocked by boost-1.66
 #KEYWORDS="~amd64 ~x86"
-IUSE="+etc_profile +gc doc sodium"
+IUSE="+etc_profile +gc doc s3 sodium"
 
 RDEPEND="
 	app-arch/brotli
@@ -30,6 +30,7 @@ RDEPEND="
 		dev-libs/libxslt
 		app-text/docbook-xsl-stylesheets
 	)
+	s3? ( dev-libs/aws-sdk-cpp )
 	sodium? ( dev-libs/libsodium:0= )
 "
 DEPEND="${RDEPEND}
@@ -81,9 +82,16 @@ src_prepare() {
 }
 
 src_configure() {
+	local econf_args=()
+
+	if ! use s3; then
+		# Disable automagic depend: bug #670256
+		export ac_cv_header_aws_s3_S3Client_h=no
+	fi
 	econf \
 		--localstatedir="${EPREFIX}"/nix/var \
-		$(use_enable gc)
+		$(use_enable gc) \
+		"${args[@]}"
 }
 
 src_compile() {
