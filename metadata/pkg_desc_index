@@ -3163,6 +3163,7 @@ dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression lib
 dev-libs/libsodium 1.0.11-r1 1.0.15-r1 1.0.16-r2: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libspnav 0.2.2: libspnav is a replacement for the magellan library with a cleaner API
 dev-libs/libspt 1.1-r2: Library for handling root privilege
+dev-libs/libstrl 0.5.1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()
 dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
 dev-libs/libtar 1.2.20-r4: C library for manipulating tar archives
 dev-libs/libtasn1 4.13: ASN.1 library
@@ -6250,6 +6251,7 @@ dev-util/desktop-file-utils 0.23: Command line utilities to work with desktop me
 dev-util/devhelp 3.24.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1: Delta compression suite for using/generating binary patches
+dev-util/difffilter 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffstat 1.60: Display a histogram of diff changes
 dev-util/diffuse 0.4.8: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r2: A tool for differing and merging directories
