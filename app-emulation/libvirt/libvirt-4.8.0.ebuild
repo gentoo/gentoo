@@ -90,8 +90,8 @@ RDEPEND="
 	pcap? ( >=net-libs/libpcap-1.0.0 )
 	policykit? ( >=sys-auth/polkit-0.9 )
 	qemu? (
-		>=app-emulation/qemu-0.13.0
-		dev-libs/jansson
+		>=app-emulation/qemu-1.5.0
+		dev-libs/yajl
 	)
 	rbd? ( sys-cluster/ceph )
 	sasl? ( dev-libs/cyrus-sasl )
@@ -106,7 +106,7 @@ RDEPEND="
 	virtualbox? ( || ( app-emulation/virtualbox >=app-emulation/virtualbox-bin-2.2.0 ) )
 	wireshark-plugins? ( net-analyzer/wireshark:= )
 	xen? (
-		app-emulation/xen
+		>=app-emulation/xen-4.6.0
 		app-emulation/xen-tools:=
 	)
 	udev? (
@@ -191,6 +191,7 @@ pkg_setup() {
 	# Bandwidth Limiting Support
 	use virt-network && CONFIG_CHECK+="
 		~BRIDGE_EBT_T_NAT
+		~IP_NF_TARGET_REJECT
 		~NET_ACT_POLICE
 		~NET_CLS_FW
 		~NET_CLS_U32
@@ -266,7 +267,7 @@ src_configure() {
 		$(use_with phyp)
 		$(use_with policykit polkit)
 		$(use_with qemu)
-		$(use_with qemu jansson)
+		$(use_with qemu yajl)
 		$(use_with rbd storage-rbd)
 		$(use_with sasl)
 		$(use_with selinux)
@@ -282,7 +283,6 @@ src_configure() {
 		--without-hal
 		--without-netcf
 		--without-sanlock
-		--without-xenapi
 
 		--with-esx
 		--with-init-script=systemd
