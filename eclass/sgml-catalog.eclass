@@ -8,7 +8,10 @@
 # Author Matthew Turk <satai@gentoo.org>
 # @BLURB: Functions for installing SGML catalogs
 
-inherit base
+case ${EAPI:-0} in
+	0|1|2|3|4|5) inherit base ;;
+	*) ;;
+esac
 
 DEPEND=">=app-text/sgml-common-0.6.3-r2"
 
