@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. /etc/init.d/functions.sh
+. /lib/gentoo/functions.sh
 
 svnrev() { svn info "$1" | awk '$1 == "Revision:" { print $NF }'; }
 
