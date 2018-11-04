@@ -30,11 +30,6 @@
 #--- END OF EXAMPLES ---
 
 # Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Both are part of ant-core for years (#466558). Removal in a month.
-dev-java/ant-nodeps
-dev-java/ant-trax
-
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
 # Unmaintained, needs someone to take care of bumping and maintaining it
 # (#509518). Removal in a month.
 dev-python/pyramid
