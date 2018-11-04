@@ -104,7 +104,7 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	app-arch/zip
 	app-arch/unzip
-	<dev-util/cbindgen-0.6.7
+	dev-util/cbindgen
 	>=net-libs/nodejs-8.11.0
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
@@ -179,6 +179,8 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}/firefox"
+
+	eapply "${FILESDIR}"/${P}-support-latest-cbindgen.patch
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
