@@ -1,7 +1,7 @@
 This fixes Cygwin, where wchar_t is ushort.
 
---- grove/Node.h
-+++ grove/Node.h
+--- a/grove/Node.h
++++ b/grove/Node.h
 @@ -8,6 +8,7 @@
  #endif
  

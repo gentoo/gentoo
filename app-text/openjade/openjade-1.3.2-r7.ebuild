@@ -1,9 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5  # sgml-catalog inherits base, banned in 6
-
-inherit autotools sgml-catalog eutils flag-o-matic multilib toolchain-funcs
+EAPI=7
+inherit autotools sgml-catalog flag-o-matic toolchain-funcs
 
 DESCRIPTION="Jade is an implementation of DSSSL for formatting SGML and XML documents"
 HOMEPAGE="http://openjade.sourceforge.net"
@@ -14,20 +13,26 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="static-libs"
 
-RDEPEND="app-text/sgml-common
-	>=app-text/opensp-1.5.1"
-DEPEND="dev-lang/perl
-	${RDEPEND}"
+RDEPEND="
+	app-text/sgml-common
+	>=app-text/opensp-1.5.1
+"
+DEPEND="${RDEPEND}
+	dev-lang/perl
+"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-deplibs.patch
-	epatch "${FILESDIR}"/${P}-ldflags.patch
-	epatch "${FILESDIR}"/${P}-msggen.pl.patch
-	epatch "${FILESDIR}"/${P}-respect-ldflags.patch
-	epatch "${FILESDIR}"/${P}-libosp-la.patch
-	epatch "${FILESDIR}"/${P}-gcc46.patch
-	epatch "${FILESDIR}"/${P}-no-undefined.patch
-	epatch "${FILESDIR}"/${P}-wchar_t-uint.patch
+	default
+
+	eapply "${FILESDIR}"/${P}-deplibs.patch
+	eapply "${FILESDIR}"/${P}-ldflags.patch
+	eapply "${FILESDIR}"/${P}-msggen.pl.patch
+	eapply "${FILESDIR}"/${P}-respect-ldflags.patch
+	eapply "${FILESDIR}"/${P}-libosp-la.patch
+	eapply "${FILESDIR}"/${P}-gcc46.patch
+	eapply "${FILESDIR}"/${P}-no-undefined.patch
+	eapply "${FILESDIR}"/${P}-wchar_t-uint.patch
+	eapply "${FILESDIR}"/${P}-chmod.patch #487218
 
 	# Please note!  Opts are disabled.  If you know what you're doing
 	# feel free to remove this line.  It may cause problems with
@@ -68,9 +73,7 @@ src_configure() {
 }
 
 src_compile() {
-	# Bug 412725.
-	unset INCLUDE
-
+	unset INCLUDE #412725
 	emake -j1 SHELL="${BASH}"
 }
 
@@ -82,7 +85,7 @@ src_install() {
 		libdir="${EPREFIX}"/usr/$(get_libdir) \
 		install install-man
 
-	prune_libtool_files
+	use static-libs || find "${D}" -name '*.la' -delete || die
 
 	dosym openjade  /usr/bin/jade
 	dosym onsgmls   /usr/bin/nsgmls
@@ -98,14 +101,14 @@ src_install() {
 	insinto /usr/share/sgml/${P}/dsssl
 	doins dsssl/{dsssl.dtd,style-sheet.dtd,fot.dtd}
 	newins "${FILESDIR}"/${P}.dsssl-catalog catalog
-# Breaks sgml2xml among other things
-#	insinto /usr/share/sgml/${P}/unicode
-#	doins unicode/{catalog,unicode.sd,unicode.syn,gensyntax.pl}
+
+	# Breaks sgml2xml among other things
+	#insinto /usr/share/sgml/${P}/unicode
+	#doins unicode/{catalog,unicode.sd,unicode.syn,gensyntax.pl}
 	insinto /usr/share/sgml/${P}/pubtext
 	doins pubtext/*
 
-	dodoc NEWS README VERSION
-	dohtml doc/*.htm
+	HTML_DOCS="doc/*.htm" einstalldocs
 
 	insinto /usr/share/doc/${PF}/jadedoc
 	doins jadedoc/*.htm

@@ -1,9 +1,8 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5  # sgml-catalog inherits base, banned in 6
-
-inherit autotools sgml-catalog epatch flag-o-matic multilib toolchain-funcs
+EAPI=7
+inherit autotools sgml-catalog flag-o-matic toolchain-funcs
 
 DESCRIPTION="Jade is an implementation of DSSSL for formatting SGML and XML documents"
 HOMEPAGE="http://openjade.sourceforge.net"
@@ -18,20 +17,22 @@ RDEPEND="
 	app-text/sgml-common
 	>=app-text/opensp-1.5.1
 "
-DEPEND="dev-lang/perl
-	${RDEPEND}
+DEPEND="${RDEPEND}
+	dev-lang/perl
 "
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-deplibs.patch
-	epatch "${FILESDIR}"/${P}-ldflags.patch
-	epatch "${FILESDIR}"/${P}-msggen.pl.patch
-	epatch "${FILESDIR}"/${P}-respect-ldflags.patch
-	epatch "${FILESDIR}"/${P}-libosp-la.patch
-	epatch "${FILESDIR}"/${P}-gcc46.patch
-	epatch "${FILESDIR}"/${P}-no-undefined.patch
-	epatch "${FILESDIR}"/${P}-wchar_t-uint.patch
-	epatch "${FILESDIR}"/${P}-chmod.patch #487218
+	default
+
+	eapply "${FILESDIR}"/${P}-deplibs.patch
+	eapply "${FILESDIR}"/${P}-ldflags.patch
+	eapply "${FILESDIR}"/${P}-msggen.pl.patch
+	eapply "${FILESDIR}"/${P}-respect-ldflags.patch
+	eapply "${FILESDIR}"/${P}-libosp-la.patch
+	eapply "${FILESDIR}"/${P}-gcc46.patch
+	eapply "${FILESDIR}"/${P}-no-undefined.patch
+	eapply "${FILESDIR}"/${P}-wchar_t-uint.patch
+	eapply "${FILESDIR}"/${P}-chmod.patch #487218
 
 	# Please note!  Opts are disabled.  If you know what you're doing
 	# feel free to remove this line.  It may cause problems with
@@ -107,8 +108,7 @@ src_install() {
 	insinto /usr/share/sgml/${P}/pubtext
 	doins pubtext/*
 
-	dodoc NEWS README VERSION
-	dohtml doc/*.htm
+	HTML_DOCS="doc/*.htm" einstalldocs
 
 	insinto /usr/share/doc/${PF}/jadedoc
 	doins jadedoc/*.htm
