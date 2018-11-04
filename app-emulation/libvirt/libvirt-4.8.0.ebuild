@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ else
 	else
 		SRC_URI="https://libvirt.org/sources/${P}.tar.xz"
 	fi
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	SLOT="0/${PV}"
 fi
 
@@ -90,7 +90,7 @@ RDEPEND="
 	pcap? ( >=net-libs/libpcap-1.0.0 )
 	policykit? ( >=sys-auth/polkit-0.9 )
 	qemu? (
-		>=app-emulation/qemu-0.13.0
+		>=app-emulation/qemu-1.5.0
 		dev-libs/yajl
 	)
 	rbd? ( sys-cluster/ceph )
@@ -106,7 +106,7 @@ RDEPEND="
 	virtualbox? ( || ( app-emulation/virtualbox >=app-emulation/virtualbox-bin-2.2.0 ) )
 	wireshark-plugins? ( net-analyzer/wireshark:= )
 	xen? (
-		app-emulation/xen
+		>=app-emulation/xen-4.6.0
 		app-emulation/xen-tools:=
 	)
 	udev? (
@@ -125,10 +125,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.2.0-do_not_use_sysconf.patch
+	"${FILESDIR}"/${PN}-4.5.0-do_not_use_sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-3.10.0-r2-fix_paths_for_apparmor.patch
-	"${FILESDIR}"/${PN}-3.1.0-musl-fix-includes.patch # bug #609488
 )
 
 pkg_setup() {
@@ -192,6 +191,7 @@ pkg_setup() {
 	# Bandwidth Limiting Support
 	use virt-network && CONFIG_CHECK+="
 		~BRIDGE_EBT_T_NAT
+		~IP_NF_TARGET_REJECT
 		~NET_ACT_POLICE
 		~NET_CLS_FW
 		~NET_CLS_U32
@@ -276,8 +276,6 @@ src_configure() {
 		$(use_with vepa virtualport)
 		$(use_with virt-network network)
 		$(use_with wireshark-plugins wireshark-dissector)
-		$(use_with xen)
-		$(use_with xen xen-inotify)
 		$(use_with xen libxl)
 		$(use_with zeroconf avahi)
 		$(use_with zfs storage-zfs)
@@ -285,7 +283,6 @@ src_configure() {
 		--without-hal
 		--without-netcf
 		--without-sanlock
-		--without-xenapi
 
 		--with-esx
 		--with-init-script=systemd
@@ -351,7 +348,7 @@ src_install() {
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
 	newinitd "${S}/libvirtd.init" libvirtd || die
-	newinitd "${FILESDIR}/libvirt-guests.init-r2" libvirt-guests || die
+	newinitd "${FILESDIR}/libvirt-guests.init-r3" libvirt-guests || die
 	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd || die
 	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd || die
 
