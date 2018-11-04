@@ -1,9 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 JAVA_PKG_IUSE="test doc source"
-WANT_ANT_TASKS="ant-nodeps"
 
 inherit java-pkg-2 java-ant-2 toolchain-funcs flag-o-matic vcs-snapshot
 
