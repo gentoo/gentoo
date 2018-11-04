@@ -7614,7 +7614,7 @@ media-libs/libmetalink 0.1.0-r1 0.1.1 0.1.1-r1: Library for handling Metalink fi
 media-libs/libmikmod 3.3.8: A library to play a wide range of module formats
 media-libs/libmkv 0.6.5.1: Lightweight Matroska muxer written for HandBrake
 media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
-media-libs/libmng 2.0.2-r1 2.0.3: Multiple Image Networkgraphics lib (animated png's)
+media-libs/libmng 2.0.3: Multiple Image Networkgraphics lib (animated png's)
 media-libs/libmodplug 0.8.9.0: Library for playing MOD-like music files
 media-libs/libmp3splt 0.9.1a 0.9.2 0.9.2-r1: a library for mp3splt to split mp3 and ogg files without decoding
 media-libs/libmp4v2 1.9.1-r1 2.0.0: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
