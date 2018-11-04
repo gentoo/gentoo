@@ -5,7 +5,7 @@ EAPI=6
 
 VALA_MIN_API_VERSION=0.36
 
-inherit cmake-utils eapi7-ver gnome2-utils vala xdg-utils
+inherit cmake-utils eapi7-ver eutils gnome2-utils vala xdg-utils
 
 MY_P=${PN}-v${PV}
 DESCRIPTION="A lightweight web browser based on WebKitGTK+"
@@ -44,6 +44,7 @@ src_prepare() {
 }
 
 src_configure() {
+	strip-linguas -i po/
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DVALA_EXECUTABLE="${VALAC}"
