@@ -6,7 +6,7 @@ EAPI=6
 PLOCALES="be bg ca cs de en eo es et fa fi fr he hu it ja kk mk nl pl pt pt_BR ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit l10n qmake-utils xdg-utils
+inherit l10n qmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="Qt XMPP client"
 HOMEPAGE="https://psi-im.org"
@@ -16,10 +16,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="aspell crypt dbus debug doc enchant +hunspell ssl webengine webkit whiteboarding xscreensaver"
-
-# qconf generates not quite compatible configure scripts
-QA_CONFIGURE_OPTIONS=".*"
+IUSE="aspell crypt dbus debug doc enchant +hunspell webengine webkit whiteboarding xscreensaver"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
@@ -27,7 +24,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	app-crypt/qca:2[qt5(+)]
+	app-crypt/qca:2[ssl]
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -36,7 +33,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
-	net-dns/libidn
+	net-dns/libidn:0
 	sys-libs/zlib[minizip]
 	x11-libs/libX11
 	x11-libs/libxcb
@@ -45,8 +42,8 @@ RDEPEND="
 	enchant? ( >=app-text/enchant-1.3.0 )
 	hunspell? ( app-text/hunspell:= )
 	webengine? (
-		>=dev-qt/qtwebchannel-5.7:5
-		>=dev-qt/qtwebengine-5.7:5[widgets]
+		dev-qt/qtwebchannel:5
+		dev-qt/qtwebengine:5[widgets]
 	)
 	webkit? ( dev-qt/qtwebkit:5 )
 	whiteboarding? ( dev-qt/qtsvg:5 )
@@ -57,15 +54,13 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
-PDEPEND="
-	crypt? ( app-crypt/qca[gpg] )
-	ssl? ( app-crypt/qca:2[ssl] )
-"
 
 RESTRICT="test"
 
 src_configure() {
 	CONF=(
+		--prefix="${EPREFIX}"/usr
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
 		--no-separate-debug-info
 		--qtdir="$(qt5_get_bindir)/.."
 		$(use_enable aspell)
@@ -80,7 +75,10 @@ src_configure() {
 	use webengine && CONF+=("--enable-webkit" "--with-webkit=qtwebengine")
 	use webkit && CONF+=("--enable-webkit" "--with-webkit=qtwebkit")
 
-	econf "${CONF[@]}"
+	# This may generate warnings if passed option already matches with default.
+	# Just ignore them. It's how qconf-based configure works and will be fixed in
+	# future qconf versions.
+	./configure "${CONF[@]}" || die "configure failed"
 
 	eqmake5 psi.pro
 }
@@ -115,11 +113,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_mimeinfo_database_update
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	einfo "For GPG support make sure app-crypt/qca is compiled with gpg USE flag."
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
 }

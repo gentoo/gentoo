@@ -20,7 +20,7 @@ EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets sql ssl webengine webkit whiteboarding xscreensaver"
+IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets sql webengine webkit whiteboarding xscreensaver"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
@@ -30,29 +30,28 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	app-crypt/qca:2[qt5(+)]
+	app-crypt/qca:2[ssl]
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
+	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
-	net-dns/libidn
+	net-dns/libidn:0
 	sys-libs/zlib[minizip]
 	x11-libs/libX11
 	x11-libs/libxcb
 	aspell? ( app-text/aspell )
 	dbus? ( dev-qt/qtdbus:5 )
 	enchant? ( >=app-text/enchant-1.3.0 )
-	extras? (
-		sql? ( dev-qt/qtsql:5 )
-	)
 	hunspell? ( app-text/hunspell:= )
 	webengine? (
 		dev-qt/qtwebchannel:5
 		dev-qt/qtwebengine:5[widgets]
+		net-libs/http-parser
 	)
 	webkit? ( dev-qt/qtwebkit:5 )
 	whiteboarding? ( dev-qt/qtsvg:5 )
@@ -65,8 +64,7 @@ DEPEND="${RDEPEND}
 	extras? ( >=sys-devel/qconf-2.4 )
 "
 PDEPEND="
-	crypt? ( app-crypt/qca[gpg] )
-	ssl? ( app-crypt/qca:2[ssl] )
+	dev-qt/qtimageformats
 "
 
 RESTRICT="test iconsets? ( bindist )"
@@ -170,11 +168,11 @@ src_install() {
 	emake INSTALL_ROOT="${D}" install
 
 	# this way the docs will be installed in the standard gentoo dir
-	rm "${ED}"/usr/share/${MY_PN}/{COPYING,README} || die "Installed file set seems to be changed by upstream"
+	rm "${ED}"/usr/share/${MY_PN}/{COPYING,README.html} || die "Installed file set seems to be changed by upstream"
 	newdoc iconsets/roster/README README.roster
 	newdoc iconsets/system/README README.system
 	newdoc certs/README README.certs
-	dodoc README
+	dodoc README.html
 
 	use doc && HTML_DOCS=( doc/api/. )
 	einstalldocs
@@ -193,6 +191,7 @@ src_install() {
 pkg_postinst() {
 	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	einfo "For GPG support make sure app-crypt/qca is compiled with gpg USE flag."
 }
 
 pkg_postrm() {
