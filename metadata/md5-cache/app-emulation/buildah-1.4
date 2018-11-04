@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=app-crypt/gpgme:= app-emulation/skopeo dev-libs/libgpg-error:= dev-libs/libassuan:= sys-fs/lvm2:= sys-libs/libseccomp:= selinux? ( sys-libs/libselinux:= ) >=dev-lang/go-1.9
+DESCRIPTION=A tool that facilitates building OCI images
+EAPI=6
+HOMEPAGE=https://github.com/containers/buildah
+IUSE=ostree selinux
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=app-crypt/gpgme:= app-emulation/skopeo dev-libs/libgpg-error:= dev-libs/libassuan:= sys-fs/lvm2:= sys-libs/libseccomp:= selinux? ( sys-libs/libselinux:= )
+REQUIRED_USE=!selinux? ( !ostree )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/containers/buildah/archive/v1.4.tar.gz -> buildah-1.4.tar.gz
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=1bb067d68b6654dd040745d4675d8eb0
