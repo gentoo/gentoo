@@ -58,7 +58,14 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-no-gtk3.patch" # bug 668160
+)
+
 src_prepare() {
+	# apply various patches, many borrowed from Fedora
+	# http://pkgs.fedoraproject.org/cgit/ghostscript.git
+	eapply "${WORKDIR}/patches/"*.patch
 	default
 
 	# remove internal copies of various libraries
@@ -73,10 +80,6 @@ src_prepare() {
 	rm -r openjpeg || die
 	# remove internal CMaps (CMaps from poppler-data are used instead)
 	rm -r Resource/CMap || die
-
-	# apply various patches, many borrowed from Fedora
-	# http://pkgs.fedoraproject.org/cgit/ghostscript.git
-	eapply "${WORKDIR}/patches/"*.patch
 
 	if ! use gtk ; then
 		sed -e "s:\$(GSSOX)::" \
