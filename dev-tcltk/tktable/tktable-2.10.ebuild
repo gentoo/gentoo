@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ KEYWORDS="amd64 ppc x86"
 SLOT="0"
 IUSE=""
 
-DEPEND=">=dev-lang/tk-8.0"
+DEPEND=">=dev-lang/tk-8.0:="
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
