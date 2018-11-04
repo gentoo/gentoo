@@ -1,4 +1,4 @@
-// Ensure preference cann't be changed by users
+// Ensure preference can't be changed by users
 lockPref("app.update.auto", false);
 lockPref("app.update.enabled", false);
 lockPref("intl.locale.matchOS",                true);
