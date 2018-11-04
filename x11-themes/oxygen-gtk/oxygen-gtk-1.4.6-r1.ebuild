@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="mirror://kde/stable/${MY_PN}/${PV}/src/${MY_P}.tar.bz2"
 LICENSE="LGPL-2.1"
 KEYWORDS="amd64 ~ppc x86"
 SLOT="2"
-IUSE="debug doc"
+IUSE="debug"
 
 COMMON_DEPEND="
 	dev-libs/dbus-glib[${MULTILIB_USEDEP}]
@@ -28,7 +28,6 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
 "
 RDEPEND="${COMMON_DEPEND}
 	!x11-themes/oxygen-gtk:0
@@ -55,11 +54,6 @@ multilib_src_configure() {
 }
 
 src_install() {
-	if use doc; then
-		doxygen Doxyfile || die "Generating documentation failed"
-		HTML_DOCS=( doc/html/. )
-	fi
-
 	cmake-multilib_src_install
 
 	cat <<-EOF > 99oxygen-gtk2
