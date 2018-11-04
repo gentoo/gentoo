@@ -40,11 +40,6 @@ dev-java/ant-trax
 dev-python/pyramid
 
 # Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Fails to build (#538174), upstream dead for ages. Removal in a month.
-dev-libs/libstrl
-dev-util/difffilter
-
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
 # Upstream dead, multiple unresolved bugs (#540622). Removal in a month.
 app-crypt/tinyca
 
