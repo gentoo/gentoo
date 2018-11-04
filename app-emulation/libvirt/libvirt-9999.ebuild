@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -90,7 +90,7 @@ RDEPEND="
 	pcap? ( >=net-libs/libpcap-1.0.0 )
 	policykit? ( >=sys-auth/polkit-0.9 )
 	qemu? (
-		>=app-emulation/qemu-0.13.0
+		>=app-emulation/qemu-1.5.0
 		dev-libs/yajl
 	)
 	rbd? ( sys-cluster/ceph )
@@ -106,8 +106,8 @@ RDEPEND="
 	virtualbox? ( || ( app-emulation/virtualbox >=app-emulation/virtualbox-bin-2.2.0 ) )
 	wireshark-plugins? ( net-analyzer/wireshark:= )
 	xen? (
-		app-emulation/xen
-		app-emulation/xen-tools
+		>=app-emulation/xen-4.6.0
+		app-emulation/xen-tools:=
 	)
 	udev? (
 		virtual/udev
@@ -191,6 +191,7 @@ pkg_setup() {
 	# Bandwidth Limiting Support
 	use virt-network && CONFIG_CHECK+="
 		~BRIDGE_EBT_T_NAT
+		~IP_NF_TARGET_REJECT
 		~NET_ACT_POLICE
 		~NET_CLS_FW
 		~NET_CLS_U32
@@ -275,7 +276,6 @@ src_configure() {
 		$(use_with vepa virtualport)
 		$(use_with virt-network network)
 		$(use_with wireshark-plugins wireshark-dissector)
-		$(use_with xen xenapi)
 		$(use_with xen libxl)
 		$(use_with zeroconf avahi)
 		$(use_with zfs storage-zfs)
