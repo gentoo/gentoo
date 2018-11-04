@@ -18,7 +18,6 @@ app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenatio
 app-accessibility/nfbtrans 7.74-r2: braille translator from the National Federation of the Blind
 app-accessibility/orca 3.24.0: Extensible screen reader that provides access to the desktop
 app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring your desktop under your command
-app-accessibility/pocketsphinx 0.8: Speaker-independent large vocabulary with continuous speech recognizer
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
 app-accessibility/speech-dispatcher 0.8.1 0.8.7: Speech synthesis interface
 app-accessibility/speech-tools 2.1-r4: Speech tools for Festival Text to Speech engine
@@ -374,7 +373,6 @@ app-crypt/ssdeep 2.14.1: Computes context triggered piecewise hashes (fuzzy hash
 app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
 app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.92: Software Token for Linux/UNIX
-app-crypt/tinyca 2.0.7.5-r3: Simple Perl/Tk GUI to manage a small certification authority
 app-crypt/tpm-tools 1.3.9.1: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/trousers 0.3.14-r1: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/veracrypt 1.22: Disk encryption with strong security based on TrueCrypt
@@ -2433,11 +2431,9 @@ dev-java/ant-jmf 1.9.2: Apache Ant's optional tasks for the Java Media Framework
 dev-java/ant-jsch 1.9.2: Apache Ant's optional tasks depending on jsch
 dev-java/ant-junit 1.9.2: Apache Ant's optional tasks depending on junit
 dev-java/ant-junit4 1.9.2: Apache Ant's optional tasks depending on junit-4
-dev-java/ant-nodeps 1.9.2: Formerly Ant's optional tasks w/o external deps, now compat empty jar
 dev-java/ant-owanttask 1.3.2: ObjectWeb's Ant tasks
 dev-java/ant-swing 1.9.2: Apache Ant's optional tasks for Swing
 dev-java/ant-testutil 1.9.2: Apache Ant's optional test utility classes
-dev-java/ant-trax 1.9.2: Apache Ant .jar with optional tasks depending on XML transformer (Deprecated!)
 dev-java/antlr 2.7.7-r7 3.2 3.5.2 4.5.1: A parser generator for many languages
 dev-java/aopalliance 1.0-r2: Aspect-Oriented Programming (AOP) Alliance classes
 dev-java/appframework 1.03-r5: Set of Java classes to build desktop applications easily
@@ -2714,7 +2710,7 @@ dev-java/libmso 0.1: Java library to detect printers
 dev-java/libreadline-java 0.8.0-r3: A JNI-wrapper to GNU Readline
 dev-java/log4j 1.2.17-r3: A low-overhead robust logging package for Java
 dev-java/logback 1.0.13-r1: A generic, reliable, fast & flexible logging framework for Java
-dev-java/lucene 1.4.3-r4 2.4.1-r2 3.5.0-r1 3.5.0-r2 3.6.2-r1 3.6.2-r2: High-performance, full-featured text search engine written entirely in Java
+dev-java/lucene 1.4.3-r4 2.4.1-r2 3.5.0-r2 3.6.2-r2: High-performance, full-featured text search engine written entirely in Java
 dev-java/lucene-analyzers 1.9.1-r1 2.3.2: Lucene Analyzers additions
 dev-java/lzma 9.18: Java code for LZMA compression and decompression
 dev-java/lzmajio 0.95-r1: LzmaInputStream/LzmaOutputStream interacting with underlying LZMA en-/decoders
@@ -3167,7 +3163,6 @@ dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression lib
 dev-libs/libsodium 1.0.11-r1 1.0.15-r1 1.0.16-r2: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libspnav 0.2.2: libspnav is a replacement for the magellan library with a cleaner API
 dev-libs/libspt 1.1-r2: Library for handling root privilege
-dev-libs/libstrl 0.5.1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()
 dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
 dev-libs/libtar 1.2.20-r4: C library for manipulating tar archives
 dev-libs/libtasn1 4.13: ASN.1 library
@@ -5370,7 +5365,6 @@ dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqtgraph 0.10.0-r1: A pure-python graphics and GUI library built on PyQt and numpy
 dev-python/pyquery 1.2.13: A jQuery-like library for python
-dev-python/pyramid 1.5.8: A small open source Python web framework
 dev-python/pyrex 0.9.9-r1: A language for writing Python extension modules
 dev-python/pyrfc3339 1.0: Generates and parses RFC 3339 timestamps
 dev-python/pyro 3.16-r1 4.41 4.56: Distributed object middleware for Python (RPC)
@@ -6256,7 +6250,6 @@ dev-util/desktop-file-utils 0.23: Command line utilities to work with desktop me
 dev-util/devhelp 3.24.0: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1: Delta compression suite for using/generating binary patches
-dev-util/difffilter 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffstat 1.60: Display a histogram of diff changes
 dev-util/diffuse 0.4.8: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r2: A tool for differing and merging directories
@@ -7325,7 +7318,6 @@ media-gfx/geeqie 1.3-r1 1.4-r1: A lightweight GTK image viewer forked from GQvie
 media-gfx/gif2png 2.5.8 2.5.9: Converts images from gif format to png format
 media-gfx/gifsicle 1.86 1.90 1.91: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
-media-gfx/gimmage 0.2.3-r1: A slim GTK-based image browser
 media-gfx/gimp 2.8.22-r1: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.7: An image viewer that uses OpenGL
@@ -7730,7 +7722,6 @@ media-libs/rtaudio 4.1.2: A set of cross-platform C++ classes for realtime audio
 media-libs/rubberband 1.8.1-r1 1.8.1-r2: An audio time-stretching and pitch-shifting library and utility program
 media-libs/sampleicc 1.6.6: C++ library for reading, writing, manipulating, and applying ICC profiles
 media-libs/sbc 1.3: Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers
-media-libs/schroedinger 1.0.11-r1: C-based libraries for the Dirac video codec
 media-libs/sdif 3.8.6: The Sound Description Interchange Format Library deals with audio and wave processing
 media-libs/sdl-gfx 2.0.25: Graphics drawing primitives library for SDL
 media-libs/sdl-image 1.2.12-r2: image file loading library
@@ -7901,7 +7892,6 @@ media-plugins/mcp-plugins 0.4.0: MCP ladspa plugins package. Includes moogvcf, p
 media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band support
 media-plugins/mediastreamer-bcg729 1.0.0: Backported G729 implementation for Linphone
 media-plugins/mediastreamer-ilbc 2.0.3: mediastreamer plugin: add iLBC support
-media-plugins/mediastreamer-silk 0.0.1: SILK (skype codec) implementation for Linphone
 media-plugins/mediastreamer-x264 1.4.1: mediastreamer plugin: add H264 support
 media-plugins/qmmp-plugin-pack 1.2.2: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
@@ -8458,7 +8448,6 @@ net-analyzer/traceroute-nanog 6.4.2-r1: Traceroute with AS lookup, TOS support, 
 net-analyzer/trafshow 5.2.3: Full screen visualization of the network traffic
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17: Console-based network traffic monitor that keeps statistics of network usage
-net-analyzer/w3af 1.1-r1: Web Application Attack and Audit Framework
 net-analyzer/wireshark 2.6.3 2.6.4-r1: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
@@ -9021,7 +9010,6 @@ net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tigervnc 1.8.0-r3: Remote desktop viewer display system
-net-misc/tlsdate 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4-r1: Telnet client for the IBM AS/400 that emulates 5250 terminals and printers
 net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
@@ -9064,7 +9052,6 @@ net-news/rsstail 1.8: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
 net-news/snownews 1.5.12-r1: Snownews, a text-mode RSS/RDF newsreader
 net-news/yydecode 0.2.10-r1: A decoder for yENC format, popular on Usenet
-net-nntp/inn 2.5.3-r1: The Internet News daemon, fully featured NNTP server
 net-nntp/leafnode 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzbget 20.0: A command-line based binary newsgrabber supporting .nzb files
@@ -9126,7 +9113,6 @@ net-print/splix 2.0.0_p20130826: A set of CUPS printer drivers for SPL (Samsung 
 net-proxy/3proxy 0.8.9: A really tiny cross-platform proxy servers set
 net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, page counters and web bugs
 net-proxy/bfilter 1.1.4-r4: Ad-filtering web proxy featuring an effective heuristic ad-detection algorithm
-net-proxy/c-icap 0.2.6: C Implementation of an ICAP server
 net-proxy/dante 1.4.1-r1: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.16-r2: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.5.14 1.6.11-r2 1.7.10 1.8.9 1.8.13: A TCP/HTTP reverse proxy for high availability environments
@@ -9136,7 +9122,6 @@ net-proxy/nylon 1.21-r2: A lightweight SOCKS proxy server
 net-proxy/polipo 1.1.1-r4: A caching web proxy
 net-proxy/privoxy 3.0.26: A web proxy with advanced filtering capabilities for enhancing privacy
 net-proxy/squid 3.5.27-r1: A full-featured web proxy cache
-net-proxy/squidclamav 6.8: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.5_beta-r2: Combined filter, redirector and access controller plugin for Squid
 net-proxy/sshuttle 0.78.3-r2: Transparent proxy server that works as a poor man's VPN using ssh
 net-proxy/tayga 0.9.2-r1: out-of-kernel stateless NAT64 implementation based on TUN
@@ -9923,7 +9908,6 @@ sys-apps/which 2.21: Prints out location of specified executables that are in yo
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xinetd 2.3.15-r3 2.3.15.3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
-sys-auth/bioapi 1.2.4: Framework for biometric-based authentication
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0 1.2.1: Framework for defining and tracking users, login sessions and seats
 sys-auth/elogind 238.1: The systemd project's logind, extracted to a standalone package
 sys-auth/fprintd 0.5.0: D-Bus service to access fingerprint readers
@@ -10291,7 +10275,6 @@ sys-power/powernowd 1.00-r4: Daemon to control the speed and voltage of CPUs
 sys-power/powertop 2.8 2.9: tool that helps you find what software is using the most power
 sys-power/suspend 1.0_p20150810: Userspace Software Suspend and S2Ram
 sys-power/upower 0.99.5 0.99.8 0.99.8-r1: D-Bus abstraction for enumerating power devices, querying history and statistics
-sys-power/upower-pm-utils 0.9.23-r2: The upstream upower 0.9 git branch for use with sys-power/pm-utils
 sys-process/acct 6.6.4-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r2: a periodic command scheduler
 sys-process/at 3.1.18-r1: Queues jobs for later execution
@@ -10381,7 +10364,7 @@ virtual/libudev 215-r1 232: Virtual for libudev providers
 virtual/libusb 0-r2 1-r1 1-r2: Virtual for libusb
 virtual/linux-sources 3: Virtual for Linux kernel sources
 virtual/linuxtv-dvb-headers 5.3 5.8: Virtual Package installing the Header files for DVB
-virtual/logger 0: Virtual for system loggers
+virtual/logger 0-r1: Virtual for system loggers
 virtual/mailx 0 1: Virtual for mail implementations
 virtual/man 0-r1: Virtual for man
 virtual/mda 0: Virtual for Message Delivery Agents
@@ -10559,7 +10542,6 @@ www-apps/icingaweb2-module-graphite 1.0.1-r1: Icinga Web 2 plugin for Graphite
 www-apps/icingaweb2-module-pnp4nagios 1.0.1: Icinga Web 2 plugin for pnp4nagios
 www-apps/ikiwiki 3.20170111: A wiki compiler
 www-apps/mediawiki 1.27.3: The MediaWiki wiki web application (as used on wikipedia.org)
-www-apps/moinmoin 1.9.7-r1: Python WikiClone
 www-apps/nanoblogger 3.2.3: Small and simple weblog engine written in Bash for the command-line
 www-apps/nikola 7.8.8 7.8.15: A static website and blog generator
 www-apps/novnc 0.6.2: noVNC is a VNC client implemented using HTML5 technologies
