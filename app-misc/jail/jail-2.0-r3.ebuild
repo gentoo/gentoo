@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,6 +26,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.9-ldflags.patch
 	"${FILESDIR}"/${PN}-2.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.0-symlinks.patch #659094
+	"${FILESDIR}"/${PN}-2.0-fix-paths.patch #646116
+	# https://github.com/spiculator/jail/issues/2
+	"${FILESDIR}"/${PN}-2.0-openat-syscall.patch
+	# https://github.com/spiculator/jail/issues/3
+	"${FILESDIR}"/${PN}-2.0-ldd-call.patch
+	"${FILESDIR}"/${PN}-2.0-duplicate-jail.patch #668898
 )
 
 src_compile() {

@@ -9,6 +9,10 @@
 
 # Pacho Ramos <pacho@gento.org> (01 Nov 2018)
 # cman and co. are going to be removed (#650738)
+sys-cluster/pacemaker cman
+
+# Pacho Ramos <pacho@gento.org> (01 Nov 2018)
+# cman and co. are going to be removed (#650738)
 sys-fs/lvm2 cman clvm
 
 # Pacho Ramos <pacho@gento.org> (01 Nov 2018)

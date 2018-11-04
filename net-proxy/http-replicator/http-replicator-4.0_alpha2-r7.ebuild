@@ -45,7 +45,10 @@ https://forums.gentoo.org/viewtopic-t-173226.html
 Starting with 4.x releases, the conf.d parameters have changed.
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-4.0_alpha2-r3-pid.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.0_alpha2-r3-pid.patch
+	"${FILESDIR}"/${PN}-4.0_alpha2-ipv6.patch #669078
+)
 
 src_test() {
 	./unit-test && die
