@@ -116,7 +116,7 @@ RDEPEND="${DEPEND}"
 	#	--mandir=/usr/share/man || die
 	# Note the use of --infodir and --mandir, above. This is to make
 	# this package FHS 2.2-compliant.  For more information, see
-	#   https://www.pathname.com/fhs/
+	#   https://wiki.linuxfoundation.org/lsb/fhs
 #}
 
 # The following src_compile function is implemented as default by portage, so
