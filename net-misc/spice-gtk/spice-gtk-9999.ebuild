@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -63,7 +63,7 @@ RDEPEND="
 		>=net-libs/libsoup-2.49.91 )
 "
 DEPEND="${RDEPEND}
-	=app-emulation/spice-protocol-9999
+	~app-emulation/spice-protocol-9999
 	dev-perl/Text-CSV
 	>=dev-util/gtk-doc-am-1.14
 	>=dev-util/intltool-0.40.0
