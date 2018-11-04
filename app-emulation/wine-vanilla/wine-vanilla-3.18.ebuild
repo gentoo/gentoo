@@ -6,7 +6,7 @@ EAPI=6
 PLOCALES="ar bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru sk sl sr_RS@cyrillic sr_RS@latin sv te th tr uk wa zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit autotools estack eutils flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx versionator xdg-utils
+inherit autotools eapi7-ver estack eutils flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx xdg-utils
 
 MY_PN="${PN%%-*}"
 MY_P="${MY_PN}-${PV}"
@@ -18,7 +18,7 @@ if [[ ${PV} == "9999" ]] ; then
 	SRC_URI=""
 	#KEYWORDS=""
 else
-	MAJOR_V=$(get_version_component_range 1)
+	MAJOR_V=$(ver_cut 1)
 	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.x/${MY_P}.tar.xz"
 	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 fi
@@ -241,7 +241,7 @@ wine_env_vcs_vars() {
 	eval pn_live_val='$'${pn_live_val}
 	if [[ ! -z ${EGIT_COMMIT} ]]; then
 		eerror "Commits must now be specified using the environmental variables"
-		eerror "WINE_COMMIT"
+		eerror "EGIT_OVERRIDE_COMMIT_WINE"
 		eerror
 		return 1
 	fi
@@ -280,7 +280,7 @@ pkg_setup() {
 
 src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
-		EGIT_CHECKOUT_DIR="${S}" EGIT_COMMIT="${WINE_COMMIT}" git-r3_src_unpack
+		EGIT_CHECKOUT_DIR="${S}" git-r3_src_unpack
 	fi
 
 	default
