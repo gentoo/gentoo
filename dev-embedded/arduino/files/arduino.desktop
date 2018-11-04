@@ -1,6 +1,6 @@
 [Desktop Entry]
 Version=1.0
-Name=arduino
+Name=Arduino
 Comment=Open-source electronics prototyping platform
 Exec=arduino
 Icon=arduino
