@@ -1,26 +1,20 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit eutils
 
-MYPN=${PN/P/p}
-MYP=${MYPN}_v${PV//./_}
-
 DESCRIPTION="Library for parsing mathematical expressions"
 HOMEPAGE="http://muparser.beltoforion.de/"
-SRC_URI="mirror://sourceforge/${MYPN}/${MYP}.zip"
+SRC_URI="https://github.com/beltoforion/muparser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="doc test"
 
-RDEPEND=""
-DEPEND="app-arch/unzip"
-
-S="${WORKDIR}/${MYP}"
+S=${WORKDIR}/muparser-${PV}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.32-parallel-build.patch
@@ -35,7 +29,7 @@ src_configure() {
 
 src_test() {
 	cat > test.sh <<- EOFTEST
-	LD_LIBRARY_PATH=${S}/lib samples/example1/example1 <<- EOF
+	LD_LIBRARY_PATH="${S}/lib" samples/example1/example1 <<- EOF
 	quit
 	EOF
 	EOFTEST
@@ -45,5 +39,4 @@ src_test() {
 src_install() {
 	default
 	dodoc Changes.txt
-	use doc && dohtml -r docs/html/*
 }

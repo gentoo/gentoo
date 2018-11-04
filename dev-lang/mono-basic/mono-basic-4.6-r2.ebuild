@@ -8,7 +8,7 @@ inherit mono-env
 DESCRIPTION="Visual Basic Compiler and Runtime"
 HOMEPAGE="https://www.mono-project.com/docs/about-mono/languages/visualbasic/"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 LICENSE="LGPL-2 MIT"
 SLOT="0"
 
