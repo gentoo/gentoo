@@ -7031,7 +7031,7 @@ mail-client/neomutt 20180512 20180716: A small but very powerful text-based mail
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.3.6 1.3.7 1.3.8: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
-mail-client/thunderbird 52.9.1: Thunderbird Mail Client
+mail-client/thunderbird 52.9.1 60.2.1 60.3.0: Thunderbird Mail Client
 mail-client/thunderbird-bin 52.9.1-r1: Thunderbird Mail Client
 mail-client/trojita 0.7-r2: A Qt IMAP e-mail client
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1: sendmail milter for amavisd-new
@@ -11099,16 +11099,16 @@ x11-plugins/wmSun 1.05 1.05-r1: dockapp which displays the rise/set time of the 
 x11-plugins/wmacpi 2.3-r1: DockApp ACPI status monitor for laptops
 x11-plugins/wmapm 3.1-r2: WindowMaker DockApp: Battery/Power status monitor for laptops
 x11-plugins/wmapmload 0.3.4-r1: dockapp that monitors your apm battery status
-x11-plugins/wmappl 0.71: Simple application launcher for the Window Maker dock
+x11-plugins/wmappl 0.71-r1: Simple application launcher for the Window Maker dock
 x11-plugins/wmbattery 2.50: A dockable app to report APM, ACPI, or SPIC battery status
 x11-plugins/wmbiff 0.4.28: WMBiff is a dock applet for WindowMaker which can monitor up to 5 mailboxes
-x11-plugins/wmbinclock 0.5: a nifty little binary clock dockapp
+x11-plugins/wmbinclock 0.5-r1: a nifty little binary clock dockapp
 x11-plugins/wmblob 1.0.3: a fancy but useless dockapp with moving blobs
 x11-plugins/wmbutton 0.7.0: a dockapp application that displays nine configurable buttons
 x11-plugins/wmcalc 0.6: A WindowMaker DockApp calculator
-x11-plugins/wmcliphist 2.1: Dockable clipboard history application for Window Maker
-x11-plugins/wmclock 1.0.16: a dockapp that displays time and date (same style as NEXTSTEP(tm) OS)
-x11-plugins/wmclockmon 0.8.1: a nice digital clock with 7 different styles either in LCD or LED style
+x11-plugins/wmcliphist 2.1 2.1-r2: Dockable clipboard history application for Window Maker
+x11-plugins/wmclock 1.0.16 1.0.16-r1: a dockapp that displays time and date (same style as NEXTSTEP(tm) OS)
+x11-plugins/wmclockmon 0.8.1 0.8.1-r1: a nice digital clock with 7 different styles either in LCD or LED style
 x11-plugins/wmcoincoin 2.6.2_p20140602: a dockapp for browsing dacode news and board sites
 x11-plugins/wmcp 1.2.8-r1: A pager dockapp
 x11-plugins/wmcpuload 1.1.0_pre5: a dockapp for monitoring CPU usage with a LCD display
