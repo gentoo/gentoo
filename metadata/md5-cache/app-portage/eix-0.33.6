@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare setup
+DEPEND=nls? ( virtual/libintl ) sqlite? ( >=dev-db/sqlite-3:= ) app-arch/xz-utils nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Search and query ebuilds
+EAPI=6
+HOMEPAGE=https://github.com/vaeth/eix/
+IUSE=debug doc nls sqlite
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=nls? ( virtual/libintl ) sqlite? ( >=dev-db/sqlite-3:= ) >=app-shells/push-2.0-r1 >=app-shells/quoter-3.0_p2-r1 virtual/tmpfiles
+SLOT=0
+SRC_URI=https://github.com/vaeth/eix/releases/download/v0.33.6/eix-0.33.6.tar.xz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	tmpfiles	c8f9ea76ade103890e42d0f339afb64c	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=a079427fe27b7ca1291296647425a61a
