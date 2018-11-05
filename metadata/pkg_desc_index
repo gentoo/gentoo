@@ -6059,7 +6059,7 @@ dev-scheme/guile-gnome-platform 2.16.2: Guile Scheme code that wraps the GNOME d
 dev-scheme/guile-lib 0.2.5.1: An accumulation place for pure-scheme Guile modules
 dev-scheme/guile-www 2.34 2.35: Guile Scheme modules to facilitate HTTP, URL and CGI programming
 dev-scheme/net-http 0.3.1-r1: Library for doing HTTP client-side programming in Guile
-dev-scheme/racket 6.7 7.0: General purpose, multi-paradigm Lisp-Scheme programming language
+dev-scheme/racket 7.0: General purpose, multi-paradigm Lisp-Scheme programming language
 dev-scheme/scm 5.5.6-r3: SCM is a Scheme implementation from the author of slib
 dev-scheme/slib 3.2.5-r1: Portable Scheme library for all standard Scheme implementations
 dev-scheme/tinyscheme 1.41: Lightweight scheme interpreter
