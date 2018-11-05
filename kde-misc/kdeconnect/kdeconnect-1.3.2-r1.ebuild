@@ -50,7 +50,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	net-fs/sshfs
 	app? ( $(add_frameworks_dep kirigami) )
-	wayland? ( $(add_plasma_dep kwin) )
 	!kde-misc/kdeconnect:4
 "
 
