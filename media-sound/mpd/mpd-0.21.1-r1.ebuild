@@ -89,8 +89,8 @@ RDEPEND="
 	samba? ( net-fs/samba )
 	selinux? ( sec-policy/selinux-mpd )
 	sid? ( || (
-				media-libs/libsidplay:2
-				media-libs/libsidplayfp
+		media-libs/libsidplay:2
+		media-libs/libsidplayfp
 	) )
 	sndfile? ( media-libs/libsndfile )
 	soundcloud? ( >=dev-libs/yajl-2:= )
@@ -108,11 +108,11 @@ RDEPEND="
 	zlib? ( sys-libs/zlib:= )"
 
 DEPEND="${RDEPEND}
-		>=dev-libs/boost-1.58:=
-		test? ( dev-cpp/gtest )"
+	>=dev-libs/boost-1.58:=
+	test? ( dev-cpp/gtest )"
 
 BDEPEND=">=dev-util/meson-0.47
-	virtual/pkgconfig"
+	 virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.18.conf.patch
@@ -212,7 +212,8 @@ src_configure() {
 		-Dhttpd=true
 		-Dlame=$(usex lame enabled disabled)
 		-Dtwolame=$(usex twolame enabled disabled)
-		-Dwave_encoder=$(usex audiofile true false)		)
+		-Dwave_encoder=$(usex audiofile true false)
+	)
 	fi
 
 	emesonargs+=(
@@ -251,12 +252,17 @@ src_configure() {
 
 		-Ddatabase=true
 		-Ddsd=true
-		-Diconv=enabled
 		-Dtcp=true
 
 		-Dsystemd_system_unit_dir="$(systemd_get_systemunitdir)"
 		-Dsystemd_user_unit_dir="$(systemd_get_userunitdir)"
 		)
+
+	if use icu; then
+		emesonargs+=( -Diconv=enabled )
+	else
+		emesonargs+=( -Diconv=disabled )
+	fi
 
 	meson_src_configure
 }
@@ -268,7 +274,7 @@ src_install() {
 	newins doc/mpdconf.dist mpd.conf
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/${PN}-0.20.21.logrotate ${PN}
+	newins "${FILESDIR}"/${PN}-0.21.1.logrotate ${PN}
 
 	newinitd "${FILESDIR}"/${PN}-0.20.4.init ${PN}
 
