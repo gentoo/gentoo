@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Alexys Jacob <ultrabug@gentoo.org> (05 Nov 2018)
+# Requires dev-db/mongodb which has dropped x86 support
+net-analyzer/zmap mongo
+
 # Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
 # www-client/firefox is available on x86
 app-misc/tracker -firefox-bookmarks
