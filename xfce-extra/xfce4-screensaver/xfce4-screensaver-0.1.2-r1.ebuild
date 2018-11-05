@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -58,6 +58,12 @@ src_configure() {
 		$(use_with consolekit console-kit)
 		$(use_with systemd)
 	)
+
+	if use pam; then
+
+	myconf+=( --with-pam-auth-type=system )
+
+	fi
 
 	econf "${myconf[@]}"
 }
