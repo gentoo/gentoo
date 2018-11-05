@@ -89,8 +89,8 @@ RDEPEND="
 	samba? ( net-fs/samba )
 	selinux? ( sec-policy/selinux-mpd )
 	sid? ( || (
-			media-libs/libsidplay:2
-			media-libs/libsidplayfp
+		media-libs/libsidplay:2
+		media-libs/libsidplayfp
 	) )
 	sndfile? ( media-libs/libsndfile )
 	soundcloud? ( >=dev-libs/yajl-2:= )
@@ -108,11 +108,11 @@ RDEPEND="
 	zlib? ( sys-libs/zlib:= )"
 
 DEPEND="${RDEPEND}
-		>=dev-libs/boost-1.58:=
-		test? ( dev-cpp/gtest )"
+	>=dev-libs/boost-1.58:=
+	test? ( dev-cpp/gtest )"
 
 BDEPEND=">=dev-util/meson-0.47
-		virtual/pkgconfig"
+	 virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.18.conf.patch
