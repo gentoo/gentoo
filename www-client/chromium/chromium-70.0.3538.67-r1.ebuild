@@ -105,7 +105,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-vcs/git
 "
 
-: ${CHROMIUM_FORCE_CLANG=yes}
+: ${CHROMIUM_FORCE_CLANG=no}
 
 if [[ ${CHROMIUM_FORCE_CLANG} == yes ]]; then
 	DEPEND+=" >=sys-devel/clang-5"
@@ -143,6 +143,9 @@ PATCHES=(
 	"${FILESDIR}/chromium-stdint.patch"
 	"${FILESDIR}/chromium-pdfium-stdlib-r0.patch"
 	"${FILESDIR}/chromium-harfbuzz-r0.patch"
+	"${FILESDIR}/chromium-70-gcc-0.patch"
+	"${FILESDIR}/chromium-70-gcc-1.patch"
+	"${FILESDIR}/chromium-70-gcc-2.patch"
 )
 
 pre_build_checks() {
@@ -577,6 +580,9 @@ src_configure() {
 }
 
 src_compile() {
+	# Final link uses lots of file descriptors.
+	ulimit -n 2048 || die
+
 	# Calling this here supports resumption via FEATURES=keepwork
 	python_setup
 

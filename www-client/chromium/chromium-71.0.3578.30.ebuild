@@ -21,10 +21,10 @@ IUSE="component-build cups gnome-keyring +hangouts jumbo-build kerberos neon pic
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 COMMON_DEPEND="
-	app-accessibility/at-spi2-atk:2
+	>=app-accessibility/at-spi2-atk-2.26:2
 	app-arch/bzip2:=
 	cups? ( >=net-print/cups-1.3.11:= )
-	dev-libs/atk
+	>=dev-libs/atk-2.26
 	dev-libs/expat:=
 	dev-libs/glib:2
 	system-icu? ( >=dev-libs/icu-59:= )
@@ -32,12 +32,12 @@ COMMON_DEPEND="
 	dev-libs/libxslt:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.26:=
-	>=dev-libs/re2-0.2016.05.01:=
+	>=dev-libs/re2-0.2016.11.01:=
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3.12:= )
 	>=media-libs/alsa-lib-1.0.19:=
 	media-libs/fontconfig:=
 	media-libs/freetype:=
-	>=media-libs/harfbuzz-1.8.8:=[icu(-)]
+	>=media-libs/harfbuzz-2.0.0:0=[icu(-)]
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	system-libvpx? ( media-libs/libvpx:=[postproc,svc] )
@@ -107,7 +107,7 @@ BDEPEND="
 	dev-vcs/git
 "
 
-: ${CHROMIUM_FORCE_CLANG=yes}
+: ${CHROMIUM_FORCE_CLANG=no}
 
 if [[ ${CHROMIUM_FORCE_CLANG} == yes ]]; then
 	BDEPEND+=" >=sys-devel/clang-5"
@@ -143,7 +143,8 @@ PATCHES=(
 	"${FILESDIR}/chromium-memcpy-r0.patch"
 	"${FILESDIR}/chromium-math.h-r0.patch"
 	"${FILESDIR}/chromium-stdint.patch"
-	"${FILESDIR}/chromium-ceil-r0.patch"
+	"${FILESDIR}/chromium-harfbuzz-r0.patch"
+	"${FILESDIR}/chromium-71-gcc-0.patch"
 )
 
 pre_build_checks() {
@@ -268,6 +269,7 @@ src_prepare() {
 		third_party/iccjpeg
 		third_party/inspector_protocol
 		third_party/jinja2
+		third_party/jsoncpp
 		third_party/jstemplate
 		third_party/khronos
 		third_party/leveldatabase
@@ -577,6 +579,9 @@ src_configure() {
 }
 
 src_compile() {
+	# Final link uses lots of file descriptors.
+	ulimit -n 2048
+
 	# Calling this here supports resumption via FEATURES=keepwork
 	python_setup
 
