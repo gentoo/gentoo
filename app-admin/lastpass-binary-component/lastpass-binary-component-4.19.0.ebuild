@@ -1,21 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Binary component required by the LastPass Password Manager browser extension"
 HOMEPAGE="https://helpdesk.lastpass.com/downloading-and-installing/#h5"
 # sadly, upstream has no versioned distfiles
-SRC_URI="https://lastpass.com/lplinux.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://download.cloud.lastpass.com/linux/lplinux.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="LastPass"
 SLOT="0"
-KEYWORDS="-* ~x86 ~amd64"
+KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="strip mirror" # We can't mirror it, but we can fetch it
-
-RDEPEND="
-	!!app-admin/lastpass
-"
 
 LASTPASS_EXEDIR=/opt/lastpass/
 
