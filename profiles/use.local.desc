@@ -2871,6 +2871,7 @@ media-libs/libmp4v2:utils - Install command-line utilities
 media-libs/libpagemaker:tools - Build command line file format conversion tools
 media-libs/libpng:apng - support unofficial APNG (Animated PNG) spec
 media-libs/libpostproc:pic - Force shared libraries to be built as PIC (this is slower).
+media-libs/libprojectm:gles2 - Provide support for OpenGL ES 2 and 3
 media-libs/libquicktime:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec)
 media-libs/libraw:demosaic - Enable support for external interpolation algorithms
 media-libs/libsdl:joystick - Control joystick support (disable at your own risk)
