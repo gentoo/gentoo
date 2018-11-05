@@ -143,35 +143,22 @@ DEPEND="${COMMON_DEPEND}
 	>=media-libs/libpng-1.6.26:0=
 	test? ( dev-cpp/gtest )
 	virtual/pkgconfig
+	virtual/jre
 	x86? ( dev-lang/nasm )
 "
-case ${PV} in
-9999)
+if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
 	inherit git-r3
-	# Force java for latest git version to avoid having to hand maintain the
-	# generated addons package.  #488118
-	DEPEND+="
-		virtual/jre
-		"
-	;;
-*)
+else
 	MY_PV=${PV/_p/_r}
 	MY_PV=${MY_PV/_alpha/a}
 	MY_PV=${MY_PV/_beta/b}
 	MY_PV=${MY_PV/_rc/rc}
 	MY_P="${PN}-${MY_PV}"
-	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz
-		 !java? ( https://github.com/candrews/gentoo-kodi/raw/master/${MY_P}-generated-addons.tar.xz )"
+	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	IUSE+=" java"
-	DEPEND+="
-		java? ( virtual/jre )
-		"
-
 	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
-	;;
-esac
+fi
 
 CONFIG_CHECK="~IP_MULTICAST"
 ERROR_IP_MULTICAST="
@@ -185,9 +172,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if in_iuse java && use !java; then
-		eapply "${FILESDIR}"/${PN}-cmake-no-java.patch
-	fi
 	cmake-utils_src_prepare
 
 	# avoid long delays when powerkit isn't running #348580
