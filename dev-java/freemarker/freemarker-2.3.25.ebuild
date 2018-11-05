@@ -13,7 +13,7 @@ HOMEPAGE="http://freemarker.org/"
 SRC_URI="https://github.com/apache/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="2.3"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 CP_DEPEND="dev-java/avalon-logkit:2.0
 	dev-java/commons-logging:0
