@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (05 Nov 2018)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-72
+
 # Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
 # Unmaintained, needs someone to take care of bumping and maintaining it
 # (#509518). Removal in a month.
@@ -331,11 +336,6 @@ dev-python/python-xcaplib
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2018)
 # Apparently breaks sys-devel/gcc.  Bug #666954.
 =dev-util/debugedit-4.14.2
-
-# Mike Gilbert <floppym@gentoo.org> (16 Sep 2018)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-71
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 Sep 2018)
 # Mask transition ebuilds that were needed only for <glibc-2.26
