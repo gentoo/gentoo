@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (05 Nov 2018)
+# Causes a dependency loop in the OpenRC script. Bug #651998
+=sys-fs/cryptsetup-2.0.5-r1
+
 # Mike Gilbert <floppym@gentoo.org> (05 Nov 2018)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
