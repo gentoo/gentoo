@@ -1,0 +1,90 @@
+From ff3a8f6627811c95c51acf7a07c62b78bb02d0a0 Mon Sep 17 00:00:00 2001
+From: Mathieu Duponchelle <mathieu@centricular.com>
+Date: Tue, 31 Jul 2018 18:35:22 +0200
+Subject: [PATCH] decoders: fix draining
+
+https://bugzilla.gnome.org/show_bug.cgi?id=796900
+---
+ ext/libav/gstavauddec.c | 11 ++++++++---
+ ext/libav/gstavviddec.c | 14 +++++++++++---
+ 2 files changed, 19 insertions(+), 6 deletions(-)
+
+diff --git a/ext/libav/gstavauddec.c b/ext/libav/gstavauddec.c
+index dbec03c..fa2786c 100644
+--- a/ext/libav/gstavauddec.c
++++ b/ext/libav/gstavauddec.c
+@@ -539,10 +539,9 @@ gst_ffmpegauddec_audio_frame (GstFFMpegAudDec * ffmpegdec,
+       GST_BUFFER_FLAG_SET (*outbuf, GST_BUFFER_FLAG_CORRUPTED);
+   } else if (res == AVERROR (EAGAIN)) {
+     *outbuf = NULL;
+-  } else if (res == AVERROR_EOF) {      /* Should not happen */
++  } else if (res == AVERROR_EOF) {
+     *ret = GST_FLOW_EOS;
+-    GST_WARNING_OBJECT (ffmpegdec,
+-        "Tried to receive frame on a flushed context");
++    GST_DEBUG_OBJECT (ffmpegdec, "Context was entirely flushed");
+   } else if (res < 0) {
+     *ret = GST_FLOW_OK;
+     GST_WARNING_OBJECT (ffmpegdec, "Legitimate decoding error");
+@@ -611,6 +610,9 @@ gst_ffmpegauddec_drain (GstFFMpegAudDec * ffmpegdec)
+     GST_LOG_OBJECT (ffmpegdec,
+         "codec has delay capabilities, calling until libav has drained everything");
+ 
++    if (avcodec_send_packet (ffmpegdec->context, NULL))
++      goto send_packet_failed;
++
+     do {
+       GstFlowReturn ret;
+ 
+@@ -623,6 +625,9 @@ gst_ffmpegauddec_drain (GstFFMpegAudDec * ffmpegdec)
+     gst_audio_decoder_finish_frame (GST_AUDIO_DECODER (ffmpegdec),
+         ffmpegdec->outbuf, 1);
+   ffmpegdec->outbuf = NULL;
++
++send_packet_failed:
++  GST_WARNING_OBJECT (ffmpegdec, "send packet failed, could not drain decoder");
+ }
+ 
+ static void
+diff --git a/ext/libav/gstavviddec.c b/ext/libav/gstavviddec.c
+index 40ad991..de23954 100644
+--- a/ext/libav/gstavviddec.c
++++ b/ext/libav/gstavviddec.c
+@@ -1488,10 +1488,9 @@ gst_ffmpegviddec_video_frame (GstFFMpegVidDec * ffmpegdec,
+   /* No frames available at this time */
+   if (res == AVERROR (EAGAIN))
+     goto beach;
+-  else if (res == AVERROR_EOF) {        /* Should not happen */
++  else if (res == AVERROR_EOF) {
+     *ret = GST_FLOW_EOS;
+-    GST_WARNING_OBJECT (ffmpegdec,
+-        "Tried to receive frame on a flushed context");
++    GST_DEBUG_OBJECT (ffmpegdec, "Context was entirely flushed");
+     goto beach;
+   } else if (res < 0) {
+     *ret = GST_FLOW_OK;
+@@ -1721,12 +1720,21 @@ gst_ffmpegviddec_drain (GstVideoDecoder * decoder)
+     GST_LOG_OBJECT (ffmpegdec,
+         "codec has delay capabilities, calling until ffmpeg has drained everything");
+ 
++    if (avcodec_send_packet (ffmpegdec->context, NULL))
++      goto send_packet_failed;
++
+     do {
+       got_frame = gst_ffmpegviddec_frame (ffmpegdec, NULL, &ret);
+     } while (got_frame && ret == GST_FLOW_OK);
++    avcodec_flush_buffers (ffmpegdec->context);
+   }
+ 
++done:
+   return GST_FLOW_OK;
++
++send_packet_failed:
++  GST_WARNING_OBJECT (ffmpegdec, "send packet failed, could not drain decoder");
++  goto done;
+ }
+ 
+ static GstFlowReturn
+-- 
+2.19.0.rc2
+

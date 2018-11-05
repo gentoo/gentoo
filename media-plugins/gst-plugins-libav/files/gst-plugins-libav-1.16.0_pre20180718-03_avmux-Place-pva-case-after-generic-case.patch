@@ -1,0 +1,63 @@
+From 962d2a78fe28bb1fee6cd9259170d9f2ac2ce884 Mon Sep 17 00:00:00 2001
+From: Georg Ottinger <g.ottinger@gmx.at>
+Date: Tue, 3 Jul 2018 13:15:54 +0200
+Subject: [PATCH] avmux: Place pva case after generic case
+
+In the function gst_ffmpeg_formatid_get_codecids() in the if / else if
+construct the special case !strcmp (format_name, "pva") should be
+handled before the generic case (plugin->audio_codec !=
+AV_CODEC_ID_NONE) || (plugin->video_codec != AV_CODEC_ID_NONE)
+This patch fixes the ordering.
+
+I stumbled accorss this issue while adding a new format to
+gst_ffmpeg_formatid_get_codecids()
+
+https://bugzilla.gnome.org/show_bug.cgi?id=796738
+---
+ ext/libav/gstavcodecmap.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/ext/libav/gstavcodecmap.c b/ext/libav/gstavcodecmap.c
+index 19fef71..be95828 100644
+--- a/ext/libav/gstavcodecmap.c
++++ b/ext/libav/gstavcodecmap.c
+@@ -3770,25 +3770,25 @@ gst_ffmpeg_formatid_get_codecids (const gchar * format_name,
+     };
+     *video_codec_list = gif_image_list;
+     *audio_codec_list = NULL;
+-  } else if ((plugin->audio_codec != AV_CODEC_ID_NONE) ||
+-      (plugin->video_codec != AV_CODEC_ID_NONE)) {
+-    tmp_vlist[0] = plugin->video_codec;
+-    tmp_alist[0] = plugin->audio_codec;
+-
+-    *video_codec_list = tmp_vlist;
+-    *audio_codec_list = tmp_alist;
+   } else if ((!strcmp (format_name, "pva"))) {
+-    static enum AVCodecID tgp_video_list[] = {
++    static enum AVCodecID pga_video_list[] = {
+       AV_CODEC_ID_MPEG2VIDEO,
+       AV_CODEC_ID_NONE
+     };
+-    static enum AVCodecID tgp_audio_list[] = {
++    static enum AVCodecID pga_audio_list[] = {
+       AV_CODEC_ID_MP2,
+       AV_CODEC_ID_NONE
+     };
+ 
+-    *video_codec_list = tgp_video_list;
+-    *audio_codec_list = tgp_audio_list;
++    *video_codec_list = pga_video_list;
++    *audio_codec_list = pga_audio_list;
++  } else if ((plugin->audio_codec != AV_CODEC_ID_NONE) ||
++      (plugin->video_codec != AV_CODEC_ID_NONE)) {
++    tmp_vlist[0] = plugin->video_codec;
++    tmp_alist[0] = plugin->audio_codec;
++
++    *video_codec_list = tmp_vlist;
++    *audio_codec_list = tmp_alist;
+   } else {
+     GST_LOG ("Format %s not found", format_name);
+     return FALSE;
+-- 
+2.19.0.rc2
+

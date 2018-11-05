@@ -1,0 +1,16 @@
+https://salsa.debian.org/gstreamer-team/gst-libav1.0/blob/27d3b80ab3107030cf7d4597495593d7e1a87cc1/debian/patches/02_drop-1.15-dependency.patch
+Index: gst-libav1.0/configure.ac
+===================================================================
+--- gst-libav1.0.orig/configure.ac
++++ gst-libav1.0/configure.ac
+@@ -45,8 +45,8 @@ AG_GST_LIBTOOL_PREPARE
+ AS_LIBTOOL(GST, 1500, 0, 1500)
+ 
+ dnl *** required versions of GStreamer stuff ***
+-GST_REQ=1.15.0.1
+-GST_PBREQ=1.15.0.1
++GST_REQ=1.14.2
++GST_PBREQ=1.14.2
+ 
+ ORC_REQ=0.4.16
+ ORC_CHECK([$ORC_REQ])
