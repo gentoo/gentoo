@@ -145,8 +145,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	x86? ( dev-lang/nasm )
 "
-case ${PV} in
-9999)
+if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
 	inherit git-r3
 	# Force java for latest git version to avoid having to hand maintain the
@@ -154,8 +153,7 @@ case ${PV} in
 	DEPEND+="
 		virtual/jre
 		"
-	;;
-*)
+else
 	MY_PV=${PV/_p/_r}
 	MY_PV=${MY_PV/_alpha/a}
 	MY_PV=${MY_PV/_beta/b}
@@ -170,8 +168,7 @@ case ${PV} in
 		"
 
 	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
-	;;
-esac
+fi
 
 CONFIG_CHECK="~IP_MULTICAST"
 ERROR_IP_MULTICAST="
