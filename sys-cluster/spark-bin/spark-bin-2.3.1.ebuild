@@ -57,4 +57,5 @@ src_install() {
 	dosym "${ED%/}"/usr/lib/spark/bin/spark-submit /usr/bin/spark-submit
 
 	doenvd "${FILESDIR}"/99spark
+	einstalldocs
 }
