@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (06 Nov 2018)
+# This was already outdated by the arrival of kde-apps/kdeartwork-iconthemes,
+# which itself was removed more than two years ago.
+# Masked for removal by end of the month, bug #670424
+x11-themes/nuvola
+
 # Brian Evans <grknight@gentoo.org> (05 Nov 2018)
 # Causes a dependency loop in the OpenRC script. Bug #651998
 =sys-fs/cryptsetup-2.0.5-r1
