@@ -1196,7 +1196,7 @@ app-officeext/languagetool 3.4: Style and Grammar Checker for libreoffice
 app-officeext/ooo2gd 3.0.0-r1: Extension for export to Google docs, zoho and WebDAV
 app-officeext/ooofbtools 2.52 2.53: OpenOffice extension for the FictionBook2 format with validation
 app-officeext/sun-templates 1.0.0-r1: Collection of sun templates for various countries
-app-officeext/texmaths 0.37-r1 0.41: LaTeX Equation Editor for LibreOffice
+app-officeext/texmaths 0.37-r1 0.41 0.46.1: LaTeX Equation Editor for LibreOffice
 app-pda/gnupod 0.99.8-r1: A collection of Perl-scripts for iPod
 app-pda/gtkpod 2.1.5: A graphical user interface to the Apple productline
 app-pda/ideviceinstaller 1.0.1: A tool to interact with the installation_proxy of an Apple's iDevice
@@ -5922,7 +5922,7 @@ dev-ruby/power_assert 1.1.1: Shows each value of variables and method calls in t
 dev-ruby/public_suffix 3.0.2: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/puppetdb-termini 5.2.2 5.2.4 6.0.0: Library needed to connect puppet to puppetdb
 dev-ruby/racc 1.4.14: A LALR(1) parser generator for Ruby
-dev-ruby/rack 1.6.7 2.0.3: A modular Ruby webserver interface
+dev-ruby/rack 1.6.7 2.0.3 2.0.5: A modular Ruby webserver interface
 dev-ruby/rack-cache 1.7.1: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-protection 1.5.5: This gem protects against typical web attacks
 dev-ruby/rack-test 0.6.3: Rack::Test is a small, simple testing API for Rack apps
@@ -8540,7 +8540,7 @@ net-fs/nfs-utils 2.3.1-r3 2.3.3: NFS client and server daemons
 net-fs/openafs 1.6.22.1: The OpenAFS distributed file system
 net-fs/s3fs 1.80: Amazon S3 mounting via fuse
 net-fs/samba 4.5.16 4.8.6: Samba Suite Version 4
-net-fs/sshfs 2.8: Fuse-filesystem utilizing the sftp service
+net-fs/sshfs 2.8 2.10-r1: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7-r3 0.7-r5: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
