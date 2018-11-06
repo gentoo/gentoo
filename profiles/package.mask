@@ -492,11 +492,6 @@ media-libs/libglvnd
 =dev-libs/libressl-2.7*
 =dev-libs/libressl-2.8*
 
-# Alexis Ballier <aballier@gentoo.org> (21 Apr 2018)
-# Needs porting of revdeps
-# See: https://bugs.gentoo.org/653678
->=media-video/ffmpeg-4.0
-
 # Brian Evans <grknight@gentoo.org> (20 Apr 2018)
 # Likely to break a lot of software
 # Masked for initial testing
