@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils kodi-addon
 
 DESCRIPTION="Steam controller driver for Kodi"
-HOMEPAGE="https://github.com/xbmc/peripheral.steamcontroller"
+HOMEPAGE="https://github.com/kodi-game/peripheral.steamcontroller"
 SRC_URI=""
 
 case ${PV} in
