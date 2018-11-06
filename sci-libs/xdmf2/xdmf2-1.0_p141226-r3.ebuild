@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="VTK"
-KEYWORDS="~amd64 ~arm x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="doc python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
