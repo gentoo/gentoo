@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit flag-o-matic gnome2-utils linux-info xdg-utils
+inherit flag-o-matic gnome2-utils linux-info
 
 MY_P=makemkv-oss-${PV}
 MY_PB=makemkv-bin-${PV}
@@ -74,13 +74,8 @@ src_install() {
 	doins src/share/*
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	gnome2_icon_cache_update
-	xdg_desktop_database_update
 
 	elog "While MakeMKV is in beta mode, upstream has provided a license"
 	elog "to use if you do not want to purchase one."
@@ -104,5 +99,4 @@ pkg_postinst() {
 
 pkg_postrm() {
 	gnome2_icon_cache_update
-	xdg_desktop_database_update
 }
