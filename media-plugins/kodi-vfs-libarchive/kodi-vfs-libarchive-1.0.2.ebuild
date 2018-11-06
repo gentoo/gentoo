@@ -39,5 +39,5 @@ DEPEND="
 		dev-libs/libressl:0=
 		app-arch/libarchive[libressl]
 	)
-	~media-tv/kodi-9999
+	=media-tv/kodi-18*
 	"
