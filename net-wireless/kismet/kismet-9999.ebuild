@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit autotools eutils multilib user python-single-r1
 
@@ -66,7 +66,7 @@ src_prepare() {
 	sed -i -e 's| -s||g' \
 		-e 's|@mangrp@|root|g' Makefile.in
 
-	epatch "${FILESDIR}"/fix-setuptools.patch
+	epatch "${FILESDIR}"/fix-setuptools2.patch
 	eapply_user
 
 	if [[ ${PV} == "9999" ]] ; then

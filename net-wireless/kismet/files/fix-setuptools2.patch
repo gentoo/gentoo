@@ -1,0 +1,65 @@
+diff --git a/capture_freaklabs_zigbee/Makefile.in b/capture_freaklabs_zigbee/Makefile.in
+index 97fb50b7..492f6a90 100644
+--- a/capture_freaklabs_zigbee/Makefile.in
++++ b/capture_freaklabs_zigbee/Makefile.in
+@@ -6,7 +6,7 @@ all:
+ 	$(PYTHON3) ./setup.py build
+ 
+ install:
+-	$(PYTHON3) ./setup.py install
++	$(PYTHON3) ./setup.py install --root=$(DESTDIR)
+ 	# $(INSTALL) -o $(INSTUSR) -g $(INSTGRP) $(MONITOR_BIN) $(BIN)/$(MONITOR_BIN)
+ 
+ clean:
+diff --git a/capture_sdr_rtl433/Makefile.in b/capture_sdr_rtl433/Makefile.in
+index 2e82ac5f..fa4314b2 100644
+--- a/capture_sdr_rtl433/Makefile.in
++++ b/capture_sdr_rtl433/Makefile.in
+@@ -7,7 +7,7 @@ all:
+ 	$(PYTHON3) ./setup.py build
+ 
+ install:
+-	$(PYTHON3) ./setup.py install
++	$(PYTHON3) ./setup.py install --root=$(DESTDIR)
+ 	# These are now part of the setup.py install
+ 	# $(INSTALL) -o $(INSTUSR) -g $(INSTGRP) $(MONITOR_BIN) $(BIN)/$(MONITOR_BIN)
+ 	# $(INSTALL) -o $(INSTUSR) -g $(INSTGRP) $(MQTTMONITOR_BIN) $(BIN)/$(MQTTMONITOR_BIN)
+diff --git a/python_modules/KismetExternal/Makefile b/python_modules/KismetExternal/Makefile
+index 4dc83d11..4bf912b3 100644
+--- a/python_modules/KismetExternal/Makefile
++++ b/python_modules/KismetExternal/Makefile
+@@ -4,7 +4,7 @@ all:
+ 	$(PYTHON3) ./setup.py build
+ 	
+ install:
+-	$(PYTHON3) ./setup.py install
++	$(PYTHON3) ./setup.py install --root=$(DESTDIR)
+ 
+ protobuf:
+ 	$(PROTOCBIN) -I ../../protobuf_definitions --python_out=./KismetExternal ../../protobuf_definitions/*.proto
+diff --git a/python_modules/KismetLog/Makefile b/python_modules/KismetLog/Makefile
+index 910ca9d9..cafd3902 100644
+--- a/python_modules/KismetLog/Makefile
++++ b/python_modules/KismetLog/Makefile
+@@ -4,7 +4,7 @@ all:
+ 	$(PYTHON3) ./setup.py build
+ 	
+ install:
+-	$(PYTHON3) ./setup.py install
++	$(PYTHON3) ./setup.py install --root=$(DESTDIR)
+ 
+ clean:
+ 	@-$(PYTHON3) ./setup.py clean
+diff --git a/python_modules/KismetRest/Makefile b/python_modules/KismetRest/Makefile
+index 910ca9d9..cafd3902 100644
+--- a/python_modules/KismetRest/Makefile
++++ b/python_modules/KismetRest/Makefile
+@@ -4,7 +4,7 @@ all:
+ 	$(PYTHON3) ./setup.py build
+ 	
+ install:
+-	$(PYTHON3) ./setup.py install
++	$(PYTHON3) ./setup.py install --root=$(DESTDIR)
+ 
+ clean:
+ 	@-$(PYTHON3) ./setup.py clean
