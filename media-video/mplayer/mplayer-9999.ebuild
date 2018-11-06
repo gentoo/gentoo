@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -71,7 +71,6 @@ RDEPEND+="
 	dga? ( x11-libs/libXxf86dga )
 	dts? ( media-libs/libdca )
 	dv? ( media-libs/libdv )
-	dvb? ( virtual/linuxtv-dvb-headers )
 	dvd? ( >=media-libs/libdvdread-4.1.3 )
 	dvdnav? ( >=media-libs/libdvdnav-4.1.3 )
 	encode? (
@@ -132,6 +131,7 @@ ASM_DEP="dev-lang/yasm"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dga? ( x11-base/xorg-proto )
+	dvb? ( virtual/linuxtv-dvb-headers )
 	X? ( x11-base/xorg-proto )
 	xinerama? ( x11-base/xorg-proto )
 	xscreensaver? ( x11-base/xorg-proto )
