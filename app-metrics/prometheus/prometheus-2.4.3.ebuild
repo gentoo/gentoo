@@ -9,7 +9,7 @@ MY_PV=${PV/_rc/-rc.}
 EGIT_COMMIT="v${MY_PV}"
 PROMETHEUS_COMMIT="167a4b4"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="Prometheus monitoring system and time series database"
 HOMEPAGE="https://github.com/prometheus/prometheus"
