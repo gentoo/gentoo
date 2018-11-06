@@ -8898,7 +8898,7 @@ net-misc/icaclient 13.8.0.10299729-r1: ICA Client for Citrix Presentation server
 net-misc/icecast 2.4.3 2.4.4: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
 net-misc/ices 2.0.1-r1: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
-net-misc/igmpproxy 0.1-r2: Multicast Routing Daemon using only IGMP signalling
+net-misc/igmpproxy 0.1-r2 0.2.1: A multicast routing daemon which uses IGMP forwarding
 net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
 net-misc/iperf 2.0.9 3.1.3: A TCP, UDP, and SCTP network bandwidth measurement tool
 net-misc/iprange 1.0.4: iprange utility
@@ -8950,7 +8950,7 @@ net-misc/networkmanager-pptp 1.2.4: NetworkManager PPTP plugin
 net-misc/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
 net-misc/npapi-sdk 0.27.2: NPAPI headers bundle
 net-misc/ntp 4.2.8_p11: Network Time Protocol suite/programs
-net-misc/ntpclient 2010.365: A NTP (RFC-1305) client for unix-alike computers
+net-misc/ntpclient 2010.365 2018.244: A NTP (RFC-1305 and RFC-4330) client for unix-alike systems
 net-misc/nx 3.5.0.33 3.5.99.16: NX compression technology core libraries
 net-misc/ofono 1.16: Open Source mobile telephony (GSM/UMTS) daemon
 net-misc/oidentd 2.0.8-r5 2.0.8-r6: Another (RFC1413 compliant) ident daemon
@@ -9425,7 +9425,7 @@ sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4: Votca tools library
 sci-libs/vtk 7.1.0: The Visualization Toolkit
 sci-libs/vtkdata 6.1.0: Example data file for VTK
-sci-libs/xdmf2 1.0_p141226-r1: eXtensible Data Model and Format
+sci-libs/xdmf2 1.0_p141226-r1 1.0_p141226-r3: eXtensible Data Model and Format
 sci-libs/xkaapi 2.2: Kernel for Adaptative, Asynchronous Parallel and Interactive programming
 sci-mathematics/4ti2 1.6.2 1.6.6: Software package for algebraic, geometric and combinatorial problems
 sci-mathematics/calc 2.12.5.4: Arbitrary precision C-like arithmetic system
@@ -10919,6 +10919,7 @@ x11-misc/menulibre 2.1.3: Advanced freedesktop.org compliant menu editor
 x11-misc/menumaker 0.99.10: Utility that scans through the system and generates a menu of installed programs
 x11-misc/mixer_app 1.8.0: mixer_app has volume controllers that can be configured to handle sound sources
 x11-misc/mozo 1.18.0: Mozo menu editor for MATE
+x11-misc/mugshot 0.4.1: A lightweight user-configuration application
 x11-misc/netwmpager 2.05: Pager that works with Openbox and other EWMH compliant window managers
 x11-misc/nitrogen 1.6.1: A background browser and setter for X
 x11-misc/notification-daemon 3.14.1: Notification daemon

@@ -5975,6 +5975,9 @@ x11-misc/gtkdialog:vte - Enable support for x11-libs/vte
 x11-misc/i3status:filecaps - Linux capabilities library is required for i3status to be able to read net bandwith
 x11-misc/ktsuss:sudo - Use the sudo backend instead the su one
 x11-misc/lightdm:gtk - Pull in the gtk+ greeter
+x11-misc/mugshot:gnome - Add support for gnome-base/gnome-control-center
+x11-misc/mugshot:libreoffice - Add support for app-office/libreoffice and app-office/libreoffice-bin
+x11-misc/mugshot:webcam - Add support for setting a profile photo in media-video/cheese
 x11-misc/openbox-menu:icons - Enable support for icons in menus
 x11-misc/openbox-menu:svg - Support SVG icons
 x11-misc/polybar:i3wm - Add support for i3 window manager
