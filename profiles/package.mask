@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Craig Andrews <candrews@gentoo.org> (06 Nov 2018)
+# Requires >=dev-libs/openssl-1.1.0
+dev-libs/gost-engine
+
 # Michał Górny <mgorny@gentoo.org> (06 Nov 2018)
 # LLVM 7.0.1 prereleases, masked for testing.
 =dev-ml/llvm-ocaml-7.0.1_rc*
