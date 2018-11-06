@@ -4,6 +4,10 @@
 	delaycompress
 	compress
 	postrotate
-	/etc/init.d/mpd --quiet reload
+		if type -p systemctl 2>&1 1>/dev/null && systemctl is-system-running 2>&1 1>/dev/null; then
+			systemctl kill -s HUP mpd.service
+		else
+			/etc/init.d/mpd --quiet reload
+		fi
 	endscript
 }
