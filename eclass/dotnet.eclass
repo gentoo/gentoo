@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dotnet.eclass
-# @MAINTAINER: cynede@gentoo.org
+# @MAINTAINER: dotnet@gentoo.org
 # @SUPPORTED_EAPIS: 1 2 3 4 5 6 7
 # @BLURB: common settings and functions for mono and dotnet related packages
 # @DESCRIPTION:
