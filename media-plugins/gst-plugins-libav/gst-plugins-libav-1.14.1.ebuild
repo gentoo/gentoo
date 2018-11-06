@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,9 @@ RDEPEND="
 	>=dev-libs/glib-2.40.0:2[${MULTILIB_USEDEP}]
 	>=media-libs/gstreamer-${PV}:1.0[${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-base-${PV}:1.0[${MULTILIB_USEDEP}]
-	!libav? ( >=media-video/ffmpeg-3.2.6:0=[${MULTILIB_USEDEP}] )
+	!libav? (
+		>=media-video/ffmpeg-3.2.6:0=[${MULTILIB_USEDEP}]
+		<media-video/ffmpeg-4 )
 	libav? (
 		app-arch/bzip2[${MULTILIB_USEDEP}]
 		app-arch/xz-utils[${MULTILIB_USEDEP}]
