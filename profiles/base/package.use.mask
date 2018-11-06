@@ -402,11 +402,6 @@ sys-auth/consolekit cgroups
 sys-devel/gcc awt
 dev-java/gcj-jdk awt
 
-# Heather Cynede <cynede@gentoo.org> (13 Aug 2015)
-# mono currently fails with doc most likely because of xattr
-# Gentoo bug: 554484
->=dev-lang/mono-3.12.1 doc
-
 # Mike Gilbert <floppym@gentoo.org> (16 May 2015)
 # dev-lang/python[berkdb] fails with recent multilib sys-libs/db (bug 519584).
 dev-lang/python berkdb
