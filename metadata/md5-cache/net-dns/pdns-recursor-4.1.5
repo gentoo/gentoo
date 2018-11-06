@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install postinst setup
+DEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:= ) protobuf? ( dev-libs/protobuf >=dev-libs/boost-1.42:= ) systemd? ( sys-apps/systemd:0= ) snmp? ( net-analyzer/net-snmp ) sodium? ( dev-libs/libsodium:= ) libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:= ) >=dev-libs/boost-1.35:=
+DESCRIPTION=The PowerDNS Recursor
+EAPI=7
+HOMEPAGE=https://www.powerdns.com/
+IUSE=libressl luajit protobuf snmp sodium systemd
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:= ) protobuf? ( dev-libs/protobuf >=dev-libs/boost-1.42:= ) systemd? ( sys-apps/systemd:0= ) snmp? ( net-analyzer/net-snmp ) sodium? ( dev-libs/libsodium:= ) libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:= ) >=dev-libs/boost-1.35:= !<net-dns/pdns-2.9.20-r1
+SLOT=0
+SRC_URI=https://downloads.powerdns.com/releases/pdns-recursor-4.1.5.tar.bz2
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=c78cfa3a982635fcbb883c1606f08017
