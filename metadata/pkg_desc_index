@@ -8677,7 +8677,7 @@ net-libs/libiscsi 1.18.0: iscsi client library and utilities
 net-libs/libisds 0.10.8: Client library for accessing ISDS Soap services
 net-libs/libktorrent 2.1-r1: BitTorrent library based on KDE Frameworks
 net-libs/liblockfile 1.09: Implements functions designed to lock the standard mailboxes
-net-libs/libmbim 1.6.0 1.10.0 1.14.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
+net-libs/libmbim 1.6.0 1.10.0 1.14.0 1.16.2: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmicrodns 0.0.9: Minimal mDNS resolver (and announcer) library
 net-libs/libmicrohttpd 0.9.52 0.9.55: Small C library to run an HTTP server as part of another application
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
@@ -8706,7 +8706,7 @@ net-libs/libpcap 1.8.1: A system-independent library for user-level network pack
 net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.4.12-r2: Primary Rate ISDN (PRI) library
 net-libs/libproxy 0.4.13-r2: Library for automatic proxy configuration management
-net-libs/libqmi 1.12.6 1.16.2: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol helper library
+net-libs/libqmi 1.12.6 1.16.2 1.20.2: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol helper library
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librsync 0.9.7-r3 2.0.1-r1: Remote delta-compression library
 net-libs/libsignon-glib 1.14: GLib binding for the D-Bus API provided by signond
