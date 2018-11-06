@@ -1,10 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-# eutils inherit required for make_wrapper call
-inherit desktop eutils multilib versionator xdg-utils
+inherit multilib eutils versionator
 
 DESCRIPTION="ICA Client for Citrix Presentation servers"
 HOMEPAGE="https://www.citrix.com/"
@@ -13,7 +12,7 @@ SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )
 
 LICENSE="icaclient"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="nsplugin l10n_de l10n_es l10n_fr l10n_ja l10n_zh_CN"
 RESTRICT="mirror strip userpriv fetch"
 
@@ -182,9 +181,6 @@ src_install() {
 	dodir /etc/revdep-rebuild/
 	echo "SEARCH_DIRS_MASK=\"${ICAROOT}\"" \
 		> "${ED%/}"/etc/revdep-rebuild/70icaclient
-
-	# 651926
-	domenu "${FILESDIR}"/wfica.desktop
 }
 
 pkg_preinst() {
@@ -196,12 +192,4 @@ pkg_preinst() {
 			${wrapper} -r ${old_plugin}
 		fi
 	fi
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }
