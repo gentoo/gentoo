@@ -30,6 +30,6 @@ IUSE=""
 DEPEND="
 	=dev-libs/libplatform-2*
 	net-libs/libssh[sftp]
-	~media-libs/kodi-platform-9999
-	~media-tv/kodi-9999
+	=media-libs/kodi-platform-18*
+	=media-tv/kodi-18*
 	"

@@ -7,6 +7,6 @@
     </maintainer>
     <longdescription>SFTP VFS addon for Kodi</longdescription>
     <upstream>
-        <remote-id type="github">notspiff/vfs.sftp</remote-id>
+        <remote-id type="github">xbmc/vfs.sftp</remote-id>
     </upstream>
 </pkgmetadata>
