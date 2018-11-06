@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	GIT_COMMIT="c8188d8"
+	GIT_COMMIT="e8574b8"
 	SRC_URI="https://github.com/xbmc/${PN}/tarball/${GIT_COMMIT} -> ${P}.tar.gz"
 	S="${WORKDIR}/xbmc-kodi-platform-${GIT_COMMIT}"
 fi
@@ -24,7 +24,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	~media-tv/kodi-9999
+	=media-tv/kodi-18*
 	=dev-libs/libplatform-2*
 	dev-libs/tinyxml
 	"
