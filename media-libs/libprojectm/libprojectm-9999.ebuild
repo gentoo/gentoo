@@ -22,6 +22,7 @@ SLOT="0"
 IUSE="gles2 qt5 sdl"
 
 RDEPEND="gles2? ( media-libs/mesa[gles2] )
+	media-libs/glm
 	media-libs/mesa
 	qt5? (
 		dev-qt/qtcore:5
@@ -35,10 +36,6 @@ RDEPEND="gles2? ( media-libs/mesa[gles2] )
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}/${P}-datadir.patch"
-)
 
 src_prepare() {
 	default
