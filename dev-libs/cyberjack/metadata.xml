@@ -15,7 +15,6 @@
 		contactless (RFID) and contact USB chipcard reader.
 	</longdescription>
 	<use>
-		<flag name="fox">Enable installation of <pkg>x11-libs/fox</pkg> based fxcyberjack program.</flag>
 		<flag name="tools">Build and install optional management tools.</flag>
 		<flag name="usb">Enable support for usb based chipcard reader.</flag>
 	</use>
