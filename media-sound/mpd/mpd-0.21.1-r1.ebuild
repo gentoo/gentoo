@@ -111,7 +111,7 @@ DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.58:=
 	test? ( dev-cpp/gtest )"
 
-BDEPEND=">=dev-util/meson-0.47
+BDEPEND=">dev-util/meson-0.47
 	 virtual/pkgconfig"
 
 PATCHES=(
