@@ -1821,7 +1821,7 @@ dev-ada/gtkada 2017: A complete Ada graphical toolkit
 dev-ada/langkit 2017: A Python framework to generate language parsers
 dev-ada/libadalang 2017: high performance semantic engine for the Ada programming language
 dev-ada/libgpr 2016 2017: Ada library to handle GPRbuild project files
-dev-ada/xmlada 2017: Set of modules that provide a simple manipulation of XML streams
+dev-ada/xmlada 2018: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/antlr-cpp 2.7.7: The ANTLR 2 C++ Runtime
 dev-cpp/asio 1.10.8: Asynchronous Network Library
 dev-cpp/atkmm 2.24.2: C++ interface for the ATK library
