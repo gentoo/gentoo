@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -250,6 +250,10 @@ EOF
 
 	has_version ">=sys-apps/openrc-0.35" || add_boot_init cgroups sysinit
 
+	if ! has_version ">=sys-apps/openrc-0.40"; then
+		add_boot_init save-keymaps
+		add_boot_init save-termencoding
+	fi
 }
 
 # >=OpenRC-0.11.3 requires udev-mount to be in the sysinit runlevel with udev.
