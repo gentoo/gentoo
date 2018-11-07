@@ -383,10 +383,6 @@ media-libs/libglvnd
 # Please migrate to cyrus-imapd-3.0 releases
 =net-mail/cyrus-imapd-2.5*
 
-# Patrice Clement <monsieurp@gentoo.org> (18 Jan 2018)
-# mpv >= 0.28.0 requires currently masked ffmpeg >= 4.0.
->=media-video/mpv-0.28.0
-
 # Thomas Beierlein <tomjbe@gentoo.org> (23 Dec 2017)
 # To adapt to changed version naming by upstream
 # (pcb-yyyymmdd to pcb-x.y.z) we move the ebuild to
