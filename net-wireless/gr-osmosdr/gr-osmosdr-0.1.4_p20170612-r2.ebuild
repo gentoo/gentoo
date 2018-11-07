@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,6 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="git://git.osmocom.org/${PN}.git"
-	KEYWORDS=""
 else
 	#SRC_URI="http://cgit.osmocom.org/gr-osmosdr/snapshot/gr-osmosdr-${PV}.tar.xz"
 	#git clone git://git.osmocom.org/gr-osmosdr.git
@@ -25,18 +24,17 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-IUSE="bladerf fcd hackrf iqbalance mirisdr python rtlsdr sdrplay soapy uhd"
+IUSE="bladerf fcd hackrf iqbalance mirisdr python rtlsdr soapy uhd"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
 	>=net-wireless/gnuradio-3.7_rc:0=[fcd?,${PYTHON_USEDEP}]
-	bladerf? ( >=net-wireless/bladerf-2018.08_rc1:= )
+	bladerf? ( <net-wireless/bladerf-2018.08_rc1:= )
 	hackrf? ( net-libs/libhackrf:= )
 	iqbalance? ( net-wireless/gr-iqbal:=[${PYTHON_USEDEP}] )
 	mirisdr? ( net-libs/libmirisdr:= )
 	rtlsdr? ( >=net-wireless/rtl-sdr-0.5.3:= )
-	sdrplay? ( net-wireless/sdrplay )
-	soapy? ( net-wireless/soapysdr )
+	soapy? ( net-wireless/soapysdr:= )
 	uhd? ( net-wireless/uhd:=[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
 	dev-python/cheetah"
@@ -58,8 +56,6 @@ src_configure() {
 		-DENABLE_RTL_TCP="$(usex rtlsdr)"
 		-DENABLE_SOAPY="$(usex soapy)"
 		-DENABLE_UHD="$(usex uhd)"
-		-DENABLE_SDRPLAY="$(usex sdrplay)"
-		-DENABLE_NONFREE="$(usex sdrplay)"
 	)
 
 	cmake-utils_src_configure
