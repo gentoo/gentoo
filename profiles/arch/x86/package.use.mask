@@ -8,8 +8,9 @@
 net-analyzer/zmap mongo
 
 # Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
-# www-client/firefox is available on x86
-app-misc/tracker -firefox-bookmarks
+# www-client/firefox and mail-client/thunderbird is
+# available on x86
+app-misc/tracker -firefox-bookmarks -thunderbird
 
 # Michael Palimaka <kensington@gentoo.org> (12 Oct 2018)
 # Unmask arch-specific USE flag available on x86

@@ -51,9 +51,10 @@ sys-power/suspend fbsplash
 media-libs/mesa openmax
 
 # Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
-# Requires www-client/firefox which isn't available on all architectures
+# Requires www-client/firefox and mail-client/thunderbird
+# which are not available on all architectures
 # yet, unmask per arch
-app-misc/tracker firefox-bookmarks
+app-misc/tracker firefox-bookmarks thunderbird
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (06 Oct 2018)
 # address user visible breakage due to circular dependency #665008

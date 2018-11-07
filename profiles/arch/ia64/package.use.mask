@@ -285,10 +285,6 @@ net-misc/modemmanager qmi
 x11-misc/colord argyllcms extra-print-profiles
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
-# remove mask if/when mail-client/thunderbird is keyworded here
-app-misc/tracker thunderbird
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
 # requires app-office/unoconv, which requires virtual/ooo, which is not
 # keyworded here. Remove mask if this situation changes.
 gnome-extra/sushi office

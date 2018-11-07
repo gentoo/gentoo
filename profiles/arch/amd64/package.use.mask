@@ -22,8 +22,9 @@
 media-libs/libsdl2 -vulkan
 
 # Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
-# www-client/firefox is available on amd64
-app-misc/tracker -firefox-bookmarks
+# www-client/firefox and mail-client/thunderbird are
+# available on amd64
+app-misc/tracker -firefox-bookmarks -thunderbird
 
 # Michael Palimaka <kensington@gentoo.org> (12 Oct 2018)
 # Unmask arch-specific USE flags available on amd64
