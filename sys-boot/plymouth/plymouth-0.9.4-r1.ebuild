@@ -21,7 +21,7 @@ HOMEPAGE="https://cgit.freedesktop.org/plymouth/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug gdm +gtk +libkms +pango static-libs"
+IUSE="debug gdm +gtk +libkms +pango +split-usr static-libs"
 
 CDEPEND="
 	>=media-libs/libpng-1.2.16:=
@@ -85,10 +85,12 @@ src_install() {
 	insinto /usr/share/plymouth
 	newins "${DISTDIR}"/gentoo-logo.png bizcom.png
 
-	# Install compatibility symlinks as some rdeps hardcode the paths
-	dosym ../usr/bin/plymouth /bin/plymouth
-	dosym ..../usr/sbin/plymouth-set-default-theme /sbin/plymouth-set-default-theme
-	dosym ../usr/sbin/plymouthd /sbin/plymouthd
+	if use split-usr ; then
+		# Install compatibility symlinks as some rdeps hardcode the paths
+		dosym ../usr/bin/plymouth /bin/plymouth
+		dosym ../usr/sbin/plymouth-set-default-theme /sbin/plymouth-set-default-theme
+		dosym ../usr/sbin/plymouthd /sbin/plymouthd
+	fi
 
 	readme.gentoo_create_doc
 
