@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 EGO_PN="github.com/${PN}/${PN}"
 
-inherit golang-vcs-snapshot systemd user versionator
+inherit golang-vcs-snapshot systemd user eapi7-ver
 
 DESCRIPTION="Open Source Continuous File Synchronization"
 HOMEPAGE="https://syncthing.net"
@@ -94,12 +94,12 @@ src_install() {
 pkg_postinst() {
 	local v
 	for v in ${REPLACING_VERSIONS}; do
-		if [[ $(get_version_component_range 2) -gt \
-				$(get_version_component_range 2 ${v}) ]]; then
+		if [[ $(ver_cut 2) -gt \
+				$(ver_cut 2 ${v}) ]]; then
 			ewarn "Version ${PV} is not protocol-compatible with version" \
-				"0.$(($(get_version_component_range 2) - 1)).x or lower."
+				"0.$(($(ver_cut 2) - 1)).x or lower."
 			ewarn "Make sure all your devices are running at least version" \
-				"0.$(get_version_component_range 2).0."
+				"0.$(ver_cut 2).0."
 		fi
 		ewarn "Syncthing OpenRC init script now uses the upstream default of"
 		ewarn ""
