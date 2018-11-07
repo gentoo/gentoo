@@ -26,6 +26,7 @@ S=${WORKDIR}/thermal_daemon-${PV}
 DOCS=( thermal_daemon_usage.txt README.txt )
 
 src_prepare() {
+	epatch "${FILESDIR}"/"${P}"-x86-fix.patch
 	default
 	eautoreconf
 }
