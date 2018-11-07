@@ -9,10 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>pinkbyte@gentoo.org</email>
-		<name>Sergey Popov</name>
-	</maintainer>
 	<longdescription lang="en">
 		RetroShare is a Free and Open Source cross-platform, Friend-2-Friend
 		secure decentralised communication platform.
