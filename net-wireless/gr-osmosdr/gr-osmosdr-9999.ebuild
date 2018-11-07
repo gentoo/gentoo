@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,7 +36,7 @@ RDEPEND="${PYTHON_DEPS}
 	mirisdr? ( net-libs/libmirisdr:= )
 	rtlsdr? ( >=net-wireless/rtl-sdr-0.5.3:= )
 	sdrplay? ( net-wireless/sdrplay )
-	soapy? ( net-wireless/soapysdr )
+	soapy? ( net-wireless/soapysdr:= )
 	uhd? ( net-wireless/uhd:=[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
 	dev-python/cheetah"
