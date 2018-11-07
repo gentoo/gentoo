@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~blueness/${PN}/${ISO}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 DESCRIPTION="Suite to build Gentoo Reference Systems"
