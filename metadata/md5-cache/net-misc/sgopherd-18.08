@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=Small Gopher Server written in GNU Bash
+EAPI=7
+HOMEPAGE=https://www.uninformativ.de/git/sgopherd
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=app-shells/bash sys-apps/sed sys-apps/xinetd
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~pinkbyte/distfiles/snapshots/sgopherd-18.08.tar.bz2
+_md5_=300bb4438bf6a1d5dac3bf725ca51165
