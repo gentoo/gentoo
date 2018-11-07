@@ -1,3 +1,0 @@
-USER="openerp"
-CONFIGFILE="/etc/openerp/openerp.cfg"
-PIDFILE="/var/run/openerp/openerp.pid"
