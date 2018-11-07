@@ -16,7 +16,7 @@ SRC_URI="
 		-> xmlada-gpl-${PV}-src.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018"
 
 DEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
