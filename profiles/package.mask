@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ian Stakenvicius <axs@gentoo.org> (07 Nov 2018)
+# on behalf of Mozilla Project <mozilla@gentoo.org>
+# Mask old/vuln thunderbird for removal by 2019,
+# see security bug 670102
+<mail-client/thunderbird-60.0
+<mail-client/thunderbird-bin-60.0
+
 # Craig Andrews <candrews@gentoo.org> (06 Nov 2018)
 # Requires >=dev-libs/openssl-1.1.0
 dev-libs/gost-engine
