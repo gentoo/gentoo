@@ -19,6 +19,7 @@ KEYWORDS="amd64 ~x86"
 IUSE="cairo camera doc examples garden gstreamer +sdl spell test"
 
 RDEPEND="
+	media-libs/mesa[gles2]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	cairo? ( dev-python/pycairo[${PYTHON_USEDEP}] )
 	camera? ( media-libs/opencv:0/2.4[$(python_gen_usedep 'python2_7')] )
