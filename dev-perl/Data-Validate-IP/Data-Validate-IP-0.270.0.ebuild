@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Lightweight IPv4 and IPv6 validation module"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ~ia64 ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~ppc ~ppc64 sparc x86"
 IUSE="test"
 
 RDEPEND="
