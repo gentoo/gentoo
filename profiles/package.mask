@@ -333,12 +333,6 @@ app-text/fbpdf
 # Ebuild is not ready, major packaging changes required. Bug 668014.
 >=dev-python/PyQt5-5.11
 
-# Virgil Dupras <vdupras@gentoo.org> (07 Oct 2018)
-# Masked for removal, along with orphans, because it's unmaintained
-# and vulnerable. Bug #629270
-app-office/openerp
-dev-python/pywebdav
-
 # Andreas Sturmlechner <asturm@gentoo.org> (07 Oct 2018)
 # Masked for more testing especially of reverse-deps.
 >=dev-games/ogre-1.11.2
