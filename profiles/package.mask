@@ -29,6 +29,36 @@
 
 #--- END OF EXAMPLES ---
 
+# Ian Stakenvicius <axs@gentoo.org> (07 Nov 2018)
+# on behalf of Mozilla Project <mozilla@gentoo.org>
+# Mask old/vuln thunderbird for removal by 2019,
+# see security bug 670102
+<mail-client/thunderbird-60.0
+<mail-client/thunderbird-bin-60.0
+
+# Craig Andrews <candrews@gentoo.org> (06 Nov 2018)
+# Requires >=dev-libs/openssl-1.1.0
+dev-libs/gost-engine
+
+# Michał Górny <mgorny@gentoo.org> (06 Nov 2018)
+# LLVM 7.0.1 prereleases, masked for testing.
+=dev-ml/llvm-ocaml-7.0.1_rc*
+=dev-python/clang-python-7.0.1_rc*
+=dev-python/lit-7.0.1_rc*
+=dev-util/lldb-7.0.1_rc*
+=sys-devel/clang-7.0.1_rc*
+=sys-devel/clang-common-7.0.1_rc*
+=sys-devel/clang-runtime-7.0.1_rc*
+=sys-devel/lld-7.0.1_rc*
+=sys-devel/llvm-7.0.1_rc*
+=sys-devel/llvm-common-7.0.1_rc*
+=sys-libs/compiler-rt-7.0.1_rc*
+=sys-libs/compiler-rt-sanitizers-7.0.1_rc*
+=sys-libs/libcxx-7.0.1_rc*
+=sys-libs/libcxxabi-7.0.1_rc*
+=sys-libs/libomp-7.0.1_rc*
+=sys-libs/llvm-libunwind-7.0.1_rc*
+
 # Andreas Sturmlechner <asturm@gentoo.org> (06 Nov 2018)
 # This was already outdated by the arrival of kde-apps/kdeartwork-iconthemes,
 # which itself was removed more than two years ago.
@@ -310,12 +340,6 @@ app-text/fbpdf
 # Ebuild is not ready, major packaging changes required. Bug 668014.
 >=dev-python/PyQt5-5.11
 
-# Virgil Dupras <vdupras@gentoo.org> (07 Oct 2018)
-# Masked for removal, along with orphans, because it's unmaintained
-# and vulnerable. Bug #629270
-app-office/openerp
-dev-python/pywebdav
-
 # Andreas Sturmlechner <asturm@gentoo.org> (07 Oct 2018)
 # Masked for more testing especially of reverse-deps.
 >=dev-games/ogre-1.11.2
@@ -472,11 +496,6 @@ media-libs/libglvnd
 # Masked for testing
 =dev-libs/libressl-2.7*
 =dev-libs/libressl-2.8*
-
-# Alexis Ballier <aballier@gentoo.org> (21 Apr 2018)
-# Needs porting of revdeps
-# See: https://bugs.gentoo.org/653678
->=media-video/ffmpeg-4.0
 
 # Brian Evans <grknight@gentoo.org> (20 Apr 2018)
 # Likely to break a lot of software

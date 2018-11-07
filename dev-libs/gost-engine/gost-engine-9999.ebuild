@@ -28,7 +28,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/gost-engine/engine.git"
 	inherit git-r3
 else
-	KEYWORDS="amd64"
+	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/gost-engine/engine/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/engine-${PV}"
 fi

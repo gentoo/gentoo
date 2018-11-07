@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ ftp gif ggi gsm +iconv ipv6 jack joystick jpeg kernel_linux ladspa
 +network nut openal opengl +osdmenu oss png pnm pulseaudio pvr
 radio rar rtc rtmp samba selinux +shm sdl speex cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_ssse3
 tga theora tremor +truetype toolame twolame +unicode v4l vcd vdpau vidix
-vorbis +X x264 xinerama +xscreensaver +xv xvid xvmc yuv4mpeg zoran"
+vorbis +X x264 xinerama +xscreensaver +xv xvid yuv4mpeg zoran"
 
 VIDEO_CARDS="mga tdfx"
 for x in ${VIDEO_CARDS}; do
@@ -71,7 +71,6 @@ RDEPEND+="
 	dga? ( x11-libs/libXxf86dga )
 	dts? ( media-libs/libdca )
 	dv? ( media-libs/libdv )
-	dvb? ( virtual/linuxtv-dvb-headers )
 	dvd? ( >=media-libs/libdvdread-4.1.3 )
 	dvdnav? ( >=media-libs/libdvdnav-4.1.3 )
 	encode? (
@@ -126,13 +125,13 @@ RDEPEND+="
 	xinerama? ( x11-libs/libXinerama )
 	xscreensaver? ( x11-libs/libXScrnSaver )
 	xv? ( x11-libs/libXv )
-	xvmc? ( x11-libs/libXvMC )
 "
 
 ASM_DEP="dev-lang/yasm"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dga? ( x11-base/xorg-proto )
+	dvb? ( virtual/linuxtv-dvb-headers )
 	X? ( x11-base/xorg-proto )
 	xinerama? ( x11-base/xorg-proto )
 	xscreensaver? ( x11-base/xorg-proto )
@@ -160,7 +159,6 @@ fi
 # ass and freetype font require iconv and ass requires freetype fonts
 # unicode transformations are usefull only with iconv
 # radio requires oss or alsa backend
-# xvmc requires xvideo support
 REQUIRED_USE="
 	dga? ( X )
 	dvdnav? ( dvd )
@@ -174,8 +172,7 @@ REQUIRED_USE="
 	vidix? ( X )
 	xinerama? ( X )
 	xscreensaver? ( X )
-	xv? ( X )
-	xvmc? ( xv )"
+	xv? ( X )"
 RESTRICT="faac? ( bindist )"
 
 PATCHES=( "${FILESDIR}/${PN}-1.3-vdpau-x11.patch" )
@@ -243,7 +240,7 @@ src_prepare() {
 	else
 		eapply "${FILESDIR}"/${PN}-1.3.0-freetype_pkgconfig.patch #655240
 		eapply "${FILESDIR}"/${PN}-1.3-CVE-2016-4352.patch
-		has_version '>media-video/ffmpeg-3.5' && eapply "${FILESDIR}"/${PN}-1.3-ffmpeg4.patch
+		has_version '>media-video/ffmpeg-3.5' && eapply "${FILESDIR}"/${PN}-1.3-ffmpeg4.patch "${FILESDIR}"/${PN}-1.3-ffmpeg4+mencoder.patch
 	fi
 	if [ ! -f VERSION ] ; then
 		[ -f "$svf" ] || die "Missing ${svf}. Did you generate your snapshot with prepare_mplayer.sh?"
@@ -287,6 +284,7 @@ src_configure() {
 		--disable-kai
 		--disable-libopus
 		--disable-libilbc
+		--disable-xvmc
 		$(use_enable network networking)
 		$(use_enable joystick)
 	"
@@ -494,11 +492,6 @@ src_configure() {
 	use vidix        || myconf+=" --disable-vidix --disable-vidix-pcidb"
 	use xscreensaver || myconf+=" --disable-xss"
 	use X            || myconf+=" --disable-x11"
-	if use xvmc; then
-		myconf+=" --enable-xvmc --with-xvmclib=XvMCW"
-	else
-		myconf+=" --disable-xvmc"
-	fi
 
 	############################
 	# OSX (aqua) configuration #

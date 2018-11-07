@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic
 SRC_URI="https://dev.gentoo.org/~aidecoe/distfiles/${CATEGORY}/${PN}/gentoo-logo.png"
@@ -86,9 +86,9 @@ src_install() {
 	newins "${DISTDIR}"/gentoo-logo.png bizcom.png
 
 	# Install compatibility symlinks as some rdeps hardcode the paths
-	dosym /usr/bin/plymouth /bin/plymouth
-	dosym /usr/sbin/plymouth-set-default-theme /sbin/plymouth-set-default-theme
-	dosym /usr/sbin/plymouthd /sbin/plymouthd
+	dosym ../usr/bin/plymouth /bin/plymouth
+	dosym ..../usr/sbin/plymouth-set-default-theme /sbin/plymouth-set-default-theme
+	dosym ../usr/sbin/plymouthd /sbin/plymouthd
 
 	readme.gentoo_create_doc
 

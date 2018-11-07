@@ -101,6 +101,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.92.3-poppler-0.64.patch"
 	"${FILESDIR}/${PN}-0.92.3-poppler-0.65.patch"
 	"${FILESDIR}/${PN}-0.92.3-poppler-0.64-2.patch"
+	"${FILESDIR}/${PN}-0.92.3-poppler-0.69.patch"
+	"${FILESDIR}/${PN}-0.92.3-poppler-0.71.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
