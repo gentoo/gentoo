@@ -123,6 +123,7 @@ app-admin/rsyslog 8.35.0-r1 8.38.0-r1: An enhanced multi-threaded syslogd with d
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617: Rules for Sagan log analyzer
 app-admin/setools 4.1.1: Policy Analysis Tools for SELinux
+app-admin/spectre-meltdown-checker 0.40: Spectre & Meltdown vulnerability/mitigation checker for Linux
 app-admin/sshguard 2.1.0-r1: protects hosts from brute force attacks against ssh
 app-admin/sudo 1.8.23-r2: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9: Interactive adduser script from Slackware
@@ -9426,7 +9427,7 @@ sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4: Votca tools library
 sci-libs/vtk 7.1.0: The Visualization Toolkit
 sci-libs/vtkdata 6.1.0: Example data file for VTK
-sci-libs/xdmf2 1.0_p141226-r1 1.0_p141226-r3: eXtensible Data Model and Format
+sci-libs/xdmf2 1.0_p141226-r3: eXtensible Data Model and Format
 sci-libs/xkaapi 2.2: Kernel for Adaptative, Asynchronous Parallel and Interactive programming
 sci-mathematics/4ti2 1.6.2 1.6.6: Software package for algebraic, geometric and combinatorial problems
 sci-mathematics/calc 2.12.5.4: Arbitrary precision C-like arithmetic system
