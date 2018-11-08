@@ -7783,7 +7783,7 @@ media-libs/zvbi 0.2.35-r1: VBI Decoding Library for Zapping
 media-plugins/alsa-plugins 1.1.1-r1 1.1.6: ALSA extra plugins
 media-plugins/amb-plugins 0.8.1-r1: AMB-plugins ladspa plugin package. Filters by Fons Adriaensen
 media-plugins/calf 0.90.0: A set of open source instruments and effects for digital audio workstations
-media-plugins/caps-plugins 0.4.5-r1 0.9.15 0.9.24: The CAPS Audio Plugin Suite - LADSPA plugin suite
+media-plugins/caps-plugins 0.9.24: The CAPS Audio Plugin Suite - LADSPA plugin suite
 media-plugins/fil-plugins 0.3.0: FIL-plugins ladspa plugin package. Filters by Fons Adriaensen
 media-plugins/frei0r-plugins 1.6.1: A minimalistic plugin API for video effects
 media-plugins/gimp-lqr 0.7.2: Content-aware resizing for the GIMP
