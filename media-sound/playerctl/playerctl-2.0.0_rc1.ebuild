@@ -21,6 +21,7 @@ RDEPEND="
 # The eclass depends on '>=dev-util/meson-0.40.0' as of writing this
 DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
+	dev-util/glib-utils
 	>=dev-util/meson-0.46.0
 	doc? ( dev-util/gtk-doc )
 	virtual/pkgconfig
