@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils autotools flag-o-matic toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 MY_PN=${PN//-tools}
 MY_PV=${PV/_p/-P}
@@ -24,7 +24,7 @@ REQUIRED_USE="gost? ( !libressl ssl )
 	idn? ( !libidn2 )
 	libidn2? ( !idn )"
 
-CDEPEND="
+COMMON_DEPEND="
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
@@ -47,9 +47,9 @@ CDEPEND="
 		readline? ( sys-libs/readline:0= )
 	)
 	seccomp? ( sys-libs/libseccomp )"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
-RDEPEND="${CDEPEND}
+DEPEND="${COMMON_DEPEND}"
+BDEPEND="virtual/pkgconfig"
+RDEPEND="${COMMON_DEPEND}
 	!<net-dns/bind-9.10.2"
 
 S="${WORKDIR}/${MY_P}"
@@ -64,8 +64,8 @@ src_prepare() {
 	sed -i '/^SUBDIRS/s:tests::' bin/Makefile.in lib/Makefile.in || die
 
 	# bug #220361
-	rm aclocal.m4
-	rm -rf libtool.m4/
+	rm aclocal.m4 || die
+	rm -r libtool.m4/ || die
 
 	mv configure.in configure.ac || die # configure.in is deprecated
 	eautoreconf
@@ -113,7 +113,7 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 
 	# bug #151839
-	echo '#undef SO_BSDCOMPAT' >> config.h
+	echo '#undef SO_BSDCOMPAT' >> config.h || die
 }
 
 src_compile() {
@@ -147,7 +147,7 @@ src_install() {
 
 	cd "${S}"/bin/dnssec || die
 	for tool in dsfromkey importkey keyfromlabel keygen \
-	  revoke settime signzone verify; do
+	revoke settime signzone verify; do
 		dobin dnssec-"${tool}"
 		doman dnssec-"${tool}".8
 		if use doc; then
