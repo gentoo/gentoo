@@ -1,0 +1,42 @@
+From: Aurelien Jarno <aurel32@debian.org>
+Date: Tue, 20 Mar 2018 18:29:34 -0300
+Subject: Use standard exp10f instead of pow10f
+
+Starting with glibc 2.27, the latter is no longer supported
+
+Bug-Debian: https://bugs.debian.org/890633
+---
+ dsp/v4f_IIR2.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/dsp/v4f_IIR2.h b/dsp/v4f_IIR2.h
+index a68ecf5..9682f7b 100644
+--- a/dsp/v4f_IIR2.h
++++ b/dsp/v4f_IIR2.h
+@@ -33,7 +33,7 @@
+ namespace DSP {
+ 
+ #ifdef __APPLE__
+-inline float pow10f(float f) {return pow(10,f);}
++inline float exp10f(float f) {return pow(10,f);}
+ #endif
+ 
+ class RBJv4
+@@ -142,7 +142,7 @@ class IIR2v4
+ 				/* A = pow (10, gain / 40) */
+ 				v4f_t A = (v4f_t) {.025,.025,.025,.025};
+ 				A *= gain;
+-				A = v4f_map<pow10f> (A);
++				A = v4f_map<exp10f> (A);
+ 
+ 				RBJv4 p (f, Q);
+ 
+@@ -429,7 +429,7 @@ class IIR2v4Bank
+ 					/* A = pow (10, gain / 40) */
+ 					v4f_t A = (v4f_t) {.025,.025,.025,.025};
+ 					A *= gain[i];
+-					A = v4f_map<pow10f> (A);
++					A = v4f_map<exp10f> (A);
+ 
+ 					RBJv4 p (f[i], Q[i]);
+ 
