@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib-minimal
 
 MY_P="${P/_/-}"
+inherit multilib-minimal
 
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
