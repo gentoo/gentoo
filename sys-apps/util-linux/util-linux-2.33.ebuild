@@ -151,7 +151,7 @@ multilib_src_configure() {
 		$(use_enable unicode widechar)
 		$(use_enable static-libs static)
 		$(use_with selinux)
-		$(usex ncurses '' '--without-tinfo')
+		$(use_with ncurses tinfo)
 	)
 	# build programs only on GNU, on *BSD we want libraries only
 	if multilib_is_native_abi && use userland_GNU; then
