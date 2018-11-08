@@ -1,24 +1,25 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit linux-info systemd
 
-DESCRIPTION="Multicast Routing Daemon using only IGMP signalling"
+DESCRIPTION="A multicast routing daemon which uses IGMP forwarding"
 HOMEPAGE="https://github.com/pali/igmpproxy"
 SRC_URI="https://github.com/pali/igmpproxy/releases/download/${PV}/${P}.tar.gz"
 
-LICENSE="GPL-2 Stanford"
-SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+LICENSE="GPL-2+"
+SLOT="0"
 
 CONFIG_CHECK="~IP_MULTICAST ~IP_MROUTE"
 
 src_install() {
-	emake DESTDIR="${D}" install
-	newinitd "${FILESDIR}/${PN}-init.d" ${PN}
-	newconfd "${FILESDIR}/${PN}-conf.d" ${PN}
+	default
+
+	newinitd "${FILESDIR}/igmpproxy.initd" igmpproxy
 	systemd_dounit "${FILESDIR}/${PN}.service"
+
+	newconfd "${FILESDIR}/igmpproxy.confd" igmpproxy
 }

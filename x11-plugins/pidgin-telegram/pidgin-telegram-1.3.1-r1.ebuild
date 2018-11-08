@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="7"
 
 DESCRIPTION="A libpurple protocol plugin that adds support for the Telegram messenger"
 HOMEPAGE="https://github.com/majn/telegram-purple"
@@ -12,7 +12,8 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="gcrypt libressl +nls +webp"
 
-RDEPEND="net-im/pidgin
+RDEPEND="
+	net-im/pidgin
 	sys-libs/zlib:=
 	gcrypt? ( dev-libs/libgcrypt:0= )
 	!gcrypt? (
@@ -20,10 +21,13 @@ RDEPEND="net-im/pidgin
 		libressl? ( dev-libs/libressl:0= )
 	)
 	nls? ( sys-devel/gettext )
-	webp? ( media-libs/libwebp:= )"
+	webp? ( media-libs/libwebp:= )
+"
 
-DEPEND="virtual/pkgconfig
-	${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}/telegram-purple"
 

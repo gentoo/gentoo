@@ -1,27 +1,29 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="7"
 
 inherit webapp
 
 MY_PN="${PN^^}"
+MY_PV="1920ca24a067ac157a6bd8f3c017f4c6244ae245"
 
 DESCRIPTION="A graphical web-based front-end for visualizing RRD collected by collectd"
-HOMEPAGE="https://github.com/pommi/CGP
-	https://pommi.nethuis.nl/category/cgp/"
-SRC_URI="https://github.com/pommi/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/pommi/CGP"
+SRC_URI="https://github.com/pommi/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC-BY-2.0 GPL-2+ GPL-3 MIT"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-lang/php[json]
+RDEPEND="
+	dev-lang/php[json]
 	net-analyzer/rrdtool[graph]
-	virtual/httpd-php"
+	virtual/httpd-php
+"
 
 need_httpd_cgi
 
-S="${WORKDIR}/${MY_PN}-${PV}"
+S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
 DOCS=( "README.md" "doc/CHANGELOG" "doc/nginx.conf" )
 

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit linux-info qmake-utils systemd
 
@@ -14,8 +14,10 @@ LICENSE="GPL-2+"
 SLOT="0"
 IUSE="doc"
 
-DEPEND="dev-qt/qtcore:5
-	doc? ( app-doc/doxygen )"
+DEPEND="
+	dev-qt/qtcore:5
+	doc? ( app-doc/doxygen )
+"
 
 S="${WORKDIR}/${P}/${PN}"
 
