@@ -6427,7 +6427,7 @@ dev-vcs/hgsubversion 1.8.6: hgsubversion is a Mercurial extension for working wi
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
 dev-vcs/mercurial 4.5.2 4.6.2: Scalable distributed SCM
 dev-vcs/mr 1.20170129 1.20171231: Multiple Repository management tool
-dev-vcs/qgit 2.7 2.8: Qt GUI for git repositories
+dev-vcs/qgit 2.8: Qt GUI for git repositories
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
 dev-vcs/rcs 5.8.2 5.9.3: Revision Control System
 dev-vcs/stgit 0.16-r2: Manage a stack of patches using GIT as a backend
@@ -10950,7 +10950,7 @@ x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 5.3.16.3-r1: A fast, small and powerful file manager and graphical shell
 x11-misc/rofi 1.5.1: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
-x11-misc/screengrab 1.97 1.99: Qt application for getting screenshots
+x11-misc/screengrab 1.99: Qt application for getting screenshots
 x11-misc/sct 0.4: Set color temperature of the screen
 x11-misc/sddm 0.15.0 0.17.0-r4 0.18.0: Simple Desktop Display Manager
 x11-misc/shared-mime-info 1.9 1.10: The Shared MIME-info Database specification
@@ -11263,7 +11263,7 @@ x11-themes/redhat-artwork 5.0.8-r4: RedHat's Bluecurve theme for GTK2, KDE, GDM,
 x11-themes/shiki-colors 4.6: Mixes the elegance of a dark theme with the usability of a light theme
 x11-themes/silver-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/slim-themes 1.2.3a-r7: SLiM (Simple Login Manager) themes pack
-x11-themes/smplayer-themes 17.3.0 18.6.0: Icon themes for smplayer
+x11-themes/smplayer-themes 18.6.0: Icon themes for smplayer
 x11-themes/solar-backgrounds 0.92.0.5-r1: Fedora 10 official background artwork
 x11-themes/sound-theme-freedesktop 0.8: Default freedesktop.org sound theme following the XDG theming specification
 x11-themes/tactile3 3.1: The third evolution of Tactile theme series
