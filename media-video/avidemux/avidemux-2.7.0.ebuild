@@ -47,6 +47,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	eapply "${FILESDIR}/${P}-glibc-2.27.patch"
+	eapply "${FILESDIR}/${P}-qt-5.11.patch"
 
 	processes="buildCli:avidemux/cli"
 	if use qt5 ; then
