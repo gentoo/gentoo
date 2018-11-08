@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib-minimal
 
 MY_P="${P/_/-}"
+inherit multilib-minimal
 
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
@@ -19,7 +19,7 @@ fi
 DESCRIPTION="Open codec designed for internet transmission of interactive speech and audio"
 HOMEPAGE="https://opus-codec.org/"
 
-LICENSE="BSD-2"
+LICENSE="BSD"
 SLOT="0"
 INTRINSIC_FLAGS="cpu_flags_x86_sse cpu_flags_arm_neon"
 IUSE="custom-modes doc static-libs ${INTRINSIC_FLAGS}"
