@@ -35,7 +35,7 @@ IUSE="a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromeca
 	libav libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua
 	macosx-notifications macosx-qtkit mad matroska modplug mp3 mpeg mtp musepack ncurses
 	neon nfs ogg omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5
-	rdp run-as-root samba schroedinger sdl-image sftp shout sid skins soxr speex srt ssl
+	rdp run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl
 	svg taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx
 	wayland wma-fixed +X x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
 "
@@ -164,7 +164,6 @@ RDEPEND="
 	)
 	rdp? ( >=net-misc/freerdp-2.0.0_rc0:0=[client] )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
-	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
 	sdl-image? ( media-libs/sdl-image:0 )
 	sftp? ( net-libs/libssh2:0 )
 	shout? ( media-libs/libshout:0 )
@@ -358,7 +357,6 @@ src_configure() {
 		$(use_enable rdp freerdp)
 		$(use_enable run-as-root)
 		$(use_enable samba smbclient)
-		$(use_enable schroedinger)
 		$(use_enable sdl-image)
 		$(use_enable sftp)
 		$(use_enable shout)
@@ -411,6 +409,7 @@ src_configure() {
 		--disable-opensles
 		--disable-oss
 		--disable-rpi-omxil
+		--disable-schroedinger
 		--disable-shine
 		--disable-sndio
 		--disable-spatialaudio
