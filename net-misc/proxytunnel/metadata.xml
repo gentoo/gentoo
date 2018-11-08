@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!--maintainer-needed-->
+	<maintainer type="person">
+		<email>candrews@gentoo.org</email>
+		<name>Craig Andrews</name>
+	</maintainer>
 	<longdescription lang="en">
 		ProxyTunnel is a program that connects stdin and stdout to a server
 		somewhere on the network, through a standard HTTPS proxy. We mostly use
