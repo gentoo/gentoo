@@ -55,6 +55,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/fribidi-0.19.7
 	cec? ( >=dev-libs/libcec-4.0 )
 	dev-libs/libpcre[cxx]
+	>=dev-libs/libinput-1.10.5
 	>=dev-libs/libxml2-2.9.4
 	>=dev-libs/lzo-2.04
 	dev-libs/tinyxml[stl]
