@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>vikraman@gentoo.org</email>
-		<name>Vikraman Choudhury (vikraman)</name>
-	</maintainer>
+	<!--maintainer-needed-->
 	<longdescription lang="en">
 		wrk is a modern HTTP benchmarking tool capable of generating
 		significant load when run on a single multi-core CPU. It combines a
