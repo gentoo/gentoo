@@ -1,18 +1,18 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk"
 
-inherit distutils-r1 eutils fdo-mime flag-o-matic versionator
+inherit distutils-r1 eutils xdg-utils flag-o-matic
 
 DESCRIPTION="A Python-extensible molecular graphics system"
 HOMEPAGE="http://www.pymol.org/"
 SRC_URI="
 	https://dev.gentoo.org/~jlec/distfiles/${PN}-1.8.4.0.png.xz
-	mirror://sourceforge/project/${PN}/${PN}/$(get_version_component_range 1-2)/${PN}-v${PV}.tar.bz2
+	https://github.com/schrodinger/pymol-open-source/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
 # git archive -v --prefix=${P}/ master -o ${P}.tar.xz
 RESTRICT="mirror"
@@ -36,7 +36,7 @@ DEPEND="
 	web? ( !dev-python/webpy[${PYTHON_USEDEP}] )"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}"/${PN}
+S="${WORKDIR}"/${PN}-open-source-${PV}
 
 python_prepare_all() {
 	sed \
@@ -49,6 +49,9 @@ python_prepare_all() {
 		-e "s:/opt/local:${EPREFIX}/usr:g" \
 		-e '/ext_comp_args/s:\[.*\]:[]:g' \
 		-i setup.py || die
+	sed \
+		-e "s:\['msgpackc'\]:\['msgpack'\]:g" \
+		-i setup.py || die
 
 	append-cxxflags -std=c++0x
 
@@ -56,7 +59,8 @@ python_prepare_all() {
 }
 
 python_install() {
-	distutils-r1_python_install --pymol-path="${EPREFIX}/usr/share/pymol"
+	distutils-r1_python_install \
+		--pymol-path="${EPREFIX}/usr/share/pymol"
 
 	sed \
 		-e '1d' \
@@ -98,12 +102,12 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	optfeature "Electrostatic calculations" sci-chemistry/apbs sci-chemistry/pdb2pqr
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
