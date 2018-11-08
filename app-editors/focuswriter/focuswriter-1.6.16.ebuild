@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,18 +11,17 @@ SRC_URI="https://gottcode.org/${PN}/${P}-src.tar.bz2"
 
 LICENSE="LGPL-3 GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-# drop qtcore subslot when minimal Qt is 5.10
 RDEPEND="
 	app-text/hunspell:=
-	dev-qt/qtcore:5=
-	dev-qt/qtgui:5
-	dev-qt/qtmultimedia:5
-	dev-qt/qtprintsupport:5
+	>=dev-qt/qtcore-5.11:5
+	>=dev-qt/qtgui-5.11:5
+	>=dev-qt/qtmultimedia-5.11:5
+	>=dev-qt/qtprintsupport-5.11:5
 	dev-qt/qtsingleapplication[qt5(+),X]
-	dev-qt/qtwidgets:5
+	>=dev-qt/qtwidgets-5.11:5
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
@@ -31,7 +30,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-DOCS=( ChangeLog CREDITS NEWS README )
+DOCS=( ChangeLog CREDITS README )
 
 PATCHES=( "${FILESDIR}/${PN}-1.6.0-unbundle-qtsingleapplication.patch" )
 
