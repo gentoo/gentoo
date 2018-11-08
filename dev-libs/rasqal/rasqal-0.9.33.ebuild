@@ -55,7 +55,7 @@ src_configure() {
 	)
 
 	if use crypt; then
-		myeconfargs+=( $(usex mhash mhash gcrypt) )
+		myeconfargs+=( --with-digest-library=$(usex mhash mhash gcrypt) )
 	else
 		myeconfargs+=( --with-digest-library=internal )
 	fi
