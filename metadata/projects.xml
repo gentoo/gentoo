@@ -4064,6 +4064,11 @@ developers and volunteer mentors.</description>
       <name>Chris Reffett</name>
       <role>Administrator</role>
     </member>
+    <member>
+      <email>grknight@gentoo.org</email>
+      <name>Brian Evans</name>
+      <role>Administrator / Contributor</role>
+    </member>
     <member is-lead="1">
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
