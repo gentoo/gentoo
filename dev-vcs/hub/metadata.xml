@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>vikraman@gentoo.org</email>
-    <name>Vikraman Choudhury</name>
-  </maintainer>
-  <maintainer type="person">
     <email>junghans@gentoo.org</email>
     <name>Christoph Junghans</name>
   </maintainer>
