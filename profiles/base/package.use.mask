@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Alon Bar-Lev <alonbl@gentoo.org> (08 Nov 2018)
+# Waiting for >=dev-libs/libressl-2.7 to be unmasked.
+>=app-crypt/xca-2.1.0 libressl
+
 # Pacho Ramos <pacho@gento.org> (04 Nov 2018)
 # upower-pm-utils will be removed (#596988)
 mate-extra/mate-power-manager pm-utils
