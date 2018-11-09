@@ -23,7 +23,7 @@ DESCRIPTION="The core functions you need to create Docker images and run Docker 
 HOMEPAGE="https://dockerproject.org"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="apparmor aufs btrfs +container-init +device-mapper hardened +overlay pkcs11 seccomp"
+IUSE="apparmor aufs btrfs +container-init device-mapper hardened +overlay pkcs11 seccomp"
 
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#build-dependencies
 CDEPEND="
@@ -295,4 +295,7 @@ pkg_postinst() {
 	elog "To use Docker as a non-root user, add yourself to the 'docker' group:"
 	elog "  usermod -aG docker youruser"
 	elog
+
+	elog " Devicemapper storage driver has been deprecated"
+	elog " It will be removed in a future release"
 }
