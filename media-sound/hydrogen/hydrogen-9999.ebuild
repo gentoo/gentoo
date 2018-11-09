@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,12 +12,11 @@ EGIT_REPO_URI="https://github.com/${PN}-music/${PN}"
 LICENSE="GPL-2 ZLIB"
 SLOT="0"
 KEYWORDS=""
-IUSE="alsa +archive jack ladspa lash osc oss portaudio portmidi pulseaudio"
+IUSE="alsa +archive doc jack ladspa lash osc oss portaudio portmidi pulseaudio"
 
 REQUIRED_USE="lash? ( alsa )"
 
 RDEPEND="
-	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
@@ -37,11 +36,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
 "
 
 DOCS=( AUTHORS ChangeLog DEVELOPERS README.txt )
 
-PATCHES=( "${FILESDIR}/${PN}-1.0.0_pre20180301-gnuinstalldirs.patch" )
+PATCHES=( "${FILESDIR}/${P}-gnuinstalldirs.patch" )
 
 src_configure() {
 	local mycmakeargs=(
@@ -65,9 +65,14 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+src_compile() {
+	cmake-utils_src_compile
+	use doc && cmake-utils_src_compile doc
+}
+
 src_install() {
+	use doc && local HTML_DOCS=( ${BUILD_DIR}/docs/html/. )
 	cmake-utils_src_install
-	dosym ../../${PN}/data/doc /usr/share/doc/${PF}/html
 }
 
 pkg_postinst() {
