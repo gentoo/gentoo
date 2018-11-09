@@ -25,9 +25,11 @@ REQUIRED_USE="
 
 RDEPEND="
 	${PYTHON_DEPS}
+	app-arch/gcab
 	app-arch/libarchive:=
 	dev-db/sqlite
 	>=dev-libs/glib-2.45.8:2
+	dev-libs/json-glib
 	dev-libs/libgpg-error
 	dev-libs/libgudev:=
 	>=dev-libs/libgusb-0.2.9[introspection]
@@ -50,7 +52,6 @@ RDEPEND="
 	nvme? ( sys-libs/efivar )
 	pkcs7? ( >=net-libs/gnutls-3.4.4.1:= )
 	redfish? (
-		dev-libs/json-glib
 		sys-libs/efivar
 	)
 	systemd? ( >=sys-apps/systemd-211 )
@@ -66,8 +67,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	app-arch/gcab
-	app-arch/libarchive
 	$(vala_depend)
 	doc? ( dev-util/gtk-doc )
 	man? ( app-text/docbook-sgml-utils )
