@@ -10048,7 +10048,7 @@ sys-devel/bc 1.06.95-r2: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
 sys-devel/binutils 2.30-r2 2.30-r4: Tools necessary to build programs
 sys-devel/binutils-config 5-r4: Utility to change the binutils version being used
-sys-devel/bison 3.0.5-r1: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 3.0.5-r1 3.1: A general-purpose (yacc-compatible) parser generator
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 4.0.1 5.0.2 6.0.1: C language family frontend for LLVM
 sys-devel/clang-common 6.0.1: Common files shared between multiple slots of clang
@@ -11098,7 +11098,7 @@ x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions
 x11-plugins/purple-libnotify-plus 2.99.1: Provide libnotify interface to Pidgin and Finch
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
 x11-plugins/vicious 2.1.3 2.3.1: Modular widget library for x11-wm/awesome
-x11-plugins/wmCalClock 1.25-r2: WMaker DockApp: A Calendar clock with antialiased text
+x11-plugins/wmCalClock 1.25-r3: WMaker DockApp: A Calendar clock with antialiased text
 x11-plugins/wmMatrix 0.2-r2: WMaker DockApp: Slightly modified version of Jamie Zawinski's xmatrix screenhack
 x11-plugins/wmSMPmon 3.1-r2: SMP system monitor dockapp
 x11-plugins/wmSpaceWeather 1.04_p19-r1: dockapp showing weather at geosynchronous orbit
@@ -11112,7 +11112,7 @@ x11-plugins/wmbiff 0.4.28: WMBiff is a dock applet for WindowMaker which can mon
 x11-plugins/wmbinclock 0.5-r1: a nifty little binary clock dockapp
 x11-plugins/wmblob 1.0.3: a fancy but useless dockapp with moving blobs
 x11-plugins/wmbutton 0.7.0: a dockapp application that displays nine configurable buttons
-x11-plugins/wmcalc 0.6: A WindowMaker DockApp calculator
+x11-plugins/wmcalc 0.6 0.6-r1: A WindowMaker DockApp calculator
 x11-plugins/wmcliphist 2.1 2.1-r2: Dockable clipboard history application for Window Maker
 x11-plugins/wmclock 1.0.16 1.0.16-r1: a dockapp that displays time and date (same style as NEXTSTEP(tm) OS)
 x11-plugins/wmclockmon 0.8.1 0.8.1-r1: a nice digital clock with 7 different styles either in LCD or LED style
