@@ -76,10 +76,12 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	mv "${D}"usr/share/doc/cr3/changelog.gz "${D}"usr/share/doc/${PF}/ || die "mv changelog.gz failed"
-	rmdir "${D}"usr/share/doc/cr3 || die "rmdir doc/cr3 failed"
-	gunzip "${D}"usr/share/doc/${PF}/changelog.gz || die "gunzip changelog.gz failed"
-	gunzip "${D}"usr/share/man/man1/cr3.1.gz || die "gunzip cr3.1.gz failed"
+	if ! use wxwidgets; then
+		mv "${D}"usr/share/doc/cr3/changelog.gz "${D}"usr/share/doc/${PF}/ || die "mv changelog.gz failed"
+		rmdir "${D}"usr/share/doc/cr3 || die "rmdir doc/cr3 failed"
+		gunzip "${D}"usr/share/doc/${PF}/changelog.gz || die "gunzip changelog.gz failed"
+		gunzip "${D}"usr/share/man/man1/cr3.1.gz || die "gunzip cr3.1.gz failed"
+	fi
 }
 
 pkg_postinst() {
