@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils flag-o-matic multilib systemd toolchain-funcs udev
 
 DESCRIPTION="Tool for running RAID systems - replacement for the raidtools"
-HOMEPAGE="http://neil.brown.name/blog/mdadm"
+HOMEPAGE="https://git.kernel.org/pub/scm/utils/mdadm/mdadm.git/"
 DEB_PR=1.1
 SRC_URI="mirror://kernel/linux/utils/raid/mdadm/${P}.tar.xz
 		mirror://debian/pool/main/m/mdadm/${PN}_3.3.4-${DEB_PR}.debian.tar.xz"
