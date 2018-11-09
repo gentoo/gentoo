@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -49,8 +49,8 @@ pkg_setup() {
 
 	if use cube; then
 		MULTILIB_CHOST_TOOLS+=(
-			/usr/bin/vulkancube
-			/usr/bin/vulkancubecpp
+			/usr/bin/vkcube
+			/usr/bin/vkcubepp
 		)
 	fi
 
@@ -93,14 +93,4 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	cmake-utils_src_install
-
-	if use cube; then
-		mv "${ED%/}"/usr/bin/cube "${ED%/}"/usr/bin/vulkancube || die
-		mv "${ED%/}"/usr/bin/cubepp "${ED%/}"/usr/bin/vulkancubecpp || die
-	fi
-}
-
-pkg_postinst() {
-	einfo "The cube and cubepp demos have been renamed to"
-	einfo "vulkancube and vulkancubecpp to prevent collisions"
 }
