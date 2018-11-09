@@ -24,16 +24,16 @@ JVM_VARIANTS="
 	zero
 "
 
-IUSE=+$(printf "jvm_variant_%s " ${JVM_VARIANTS})
-IUSE+="alsa debug doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source +webstart"
+IUSE=$(printf "jvm_variant_%s " ${JVM_VARIANTS})
 
 REQUIRED_USE="
-	^^ (
-		|| ( jvm_variant_server jvm_variant_client jvm_variant_minimal )
-		jvm_variant_core
-		jvm_variant_zero
-	)
+	|| ( ${IUSE} )
+	?? ( jvm_variant_core jvm_variant_zero )
+	jvm_variant_core? ( !jvm_variant_server !jvm_variant_client !jvm_variant_minimal )
+	jvm_variant_zero? ( !jvm_variant_server !jvm_variant_client !jvm_variant_minimal )
 "
+
+IUSE="+${IUSE} alsa debug doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source +webstart"
 
 CDEPEND="
 	media-libs/freetype:2=
