@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-01">
+  <title>X.Org X11 library: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in X.Org X11 library, the
+    worst of which could allow for remote code execution.
+  </synopsis>
+  <product type="ebuild">libX11</product>
+  <announced>2018-11-09</announced>
+  <revised count="1">2018-11-09</revised>
+  <bug>664184</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/libX11" auto="yes" arch="*">
+      <unaffected range="ge">1.6.6</unaffected>
+      <vulnerable range="lt">1.6.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>X.Org is an implementation of the X Window System. The X.Org X11 library
+      provides the X11 protocol library files.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in X.Org X11 library.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to connect to a malicious server,
+      could cause the execution of arbitrary code with the privileges of the
+      process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All X.Org X11 library users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libX11-1.6.6"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14598">CVE-2018-14598</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14599">CVE-2018-14599</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14600">CVE-2018-14600</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-09-24T03:54:14Z">irishluck83</metadata>
+  <metadata tag="submitter" timestamp="2018-11-09T00:23:32Z">whissi</metadata>
+</glsa>
