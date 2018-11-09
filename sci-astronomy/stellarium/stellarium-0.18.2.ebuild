@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils desktop flag-o-matic gnome2-utils virtualx
 
 DESCRIPTION="3D photo-realistic skies in real time"
-HOMEPAGE="http://www.stellarium.org/"
+HOMEPAGE="https://www.stellarium.org/"
 SRC_URI="
 	https://github.com/Stellarium/stellarium/releases/download/v${PV}/${P}.tar.gz
 	stars? (
@@ -16,8 +16,6 @@ SRC_URI="
 		https://github.com/Stellarium/stellarium-data/releases/download/stars-2.0/stars_7_2v0_1.cat
 		https://github.com/Stellarium/stellarium-data/releases/download/stars-2.0/stars_8_2v0_1.cat
 	)"
-
-PATCHES=( "${FILESDIR}"/${P}.patch )
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -45,34 +43,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
 
-LANGS=(
-	af am ar as ast az be bg bn bo br bs ca cs
-	cy da de el en en-GB en-US eo es et eu fa fi fil fr
-	ga gd gl gu he hi hr hu hy ia id is it ja ka kk kn ko ky
-	la lb lo lt lv mk ml mn mr ms nb nl nn oc pa pl pt pt-BR ro
-	ru se si sk sl sq sr sv sw ta te tg th tl tr tt uk uz vi
-	zh-CN zh-HK zh-TW zu
-	)
-
-for X in "${LANGS[@]}" ; do
-	IUSE+=" l10n_${X}"
-done
-unset X
+PATCHES=( "${FILESDIR}"/${P}.patch )
 
 src_prepare() {
 	cmake-utils_src_prepare
-	if [[ -n ${L10N} ]] ; then
-		local d
-		for d in po/* ; do
-			[[ -e ${d}/CMakeLists.txt ]] || continue
-			local l loc=""
-			for l in ${L10N//-/_}; do
-				[[ -e ${d}/${l}.po ]] && loc="${loc} ${l}"
-			done
-			sed -e 's/STRING(REGEX REPLACE ".po" "" \([a-z]*\).*$/SET(\1 '"${loc})/" \
-				-i ${d}/CMakeLists.txt || die
-		done
-	fi
 	use debug || append-cppflags -DQT_NO_DEBUG #415769
 }
 
