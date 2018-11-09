@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit linux-mod systemd user toolchain-funcs
 
@@ -11,7 +11,7 @@ MY_P="VirtualBox-${MY_PV}"
 DESCRIPTION="VirtualBox kernel modules and user-space tools for Gentoo guests"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-5.2.16-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-5.2.16-patches-02.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -54,16 +54,11 @@ pkg_setup() {
 	use X && MODULE_NAMES+=" vboxvideo(misc:${WORKDIR}/vboxvideo::${WORKDIR}/vboxvideo)"
 
 	linux-mod_pkg_setup
-	BUILD_PARAMS="KERN_DIR=${KV_OUT_DIR} KERNOUT=${KV_OUT_DIR}"
+	BUILD_PARAMS="KERN_DIR=/lib/modules/${KV_FULL}/build KERNOUT=${KV_OUT_DIR}"
 }
 
 src_unpack() {
 	unpack ${A}
-
-	# Apply before we create archive with Linux guest kernel modules
-	pushd "${S}" &>/dev/null || die
-	eapply "${FILESDIR}"/virtualbox-guest-additions-5.2.18-linux-4.18.patch # 663488
-	popd &>/dev/null || die
 
 	# Create and unpack a tarball with the sources of the Linux guest
 	# kernel modules, to include all the needed files
