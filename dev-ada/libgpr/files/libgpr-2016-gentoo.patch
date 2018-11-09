@@ -20,15 +20,15 @@
  
  libgpr.build.shared:
 -	${BUILDER} -XLIBRARY_TYPE=relocatable -P$(srcdir)/gpr/gpr.gpr
-+	${BUILDER} -XLIBRARY_TYPE=relocatable -P$(srcdir)/gpr/gpr.gpr -cargs:Ada $(ADAFLAGS)
++	${BUILDER} -v -XLIBRARY_TYPE=relocatable -P$(srcdir)/gpr/gpr.gpr -cargs:Ada $(ADAFLAGS)
  
  libgpr.build.static:
 -	${BUILDER} -XLIBRARY_TYPE=static -P$(srcdir)/gpr/gpr.gpr
-+	${BUILDER} -XLIBRARY_TYPE=static -P$(srcdir)/gpr/gpr.gpr -cargs:Ada $(ADAFLAGS)
++	${BUILDER} -v -XLIBRARY_TYPE=static -P$(srcdir)/gpr/gpr.gpr -cargs:Ada $(ADAFLAGS)
  
  libgpr.build.static-pic:
 -	${BUILDER} -XLIBRARY_TYPE=static-pic -P$(srcdir)/gpr/gpr.gpr
-+	${BUILDER} -XLIBRARY_TYPE=static-pic -P$(srcdir)/gpr/gpr.gpr -cargs:Ada $(ADAFLAGS)
++	${BUILDER} -v -XLIBRARY_TYPE=static-pic -P$(srcdir)/gpr/gpr.gpr -cargs:Ada $(ADAFLAGS)
  
  libgpr.install: $(foreach t, $(LIBGPR_TYPES), libgpr.install.$(t))
  
