@@ -10004,7 +10004,7 @@ sys-boot/shim 15.5-r1: Fedora's signed UEFI shim
 sys-boot/syslinux 3.86 4.07 5.10 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/unetbootin 661: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/woeusb 3.1.5: Creates windows installer on usb media from an iso image
-sys-cluster/ceph 10.2.3-r2 12.2.7 12.2.8: Ceph distributed filesystem
+sys-cluster/ceph 10.2.3-r2 12.2.7 12.2.8-r1: Ceph distributed filesystem
 sys-cluster/cinder 11.1.1 12.0.4 13.0.1: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/cluster-glue 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman-lib 2.03.09-r1: A library for cluster management common to the various pieces of Cluster Suite
