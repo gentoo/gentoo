@@ -5,7 +5,7 @@ EAPI=7
 inherit golang-build golang-vcs-snapshot systemd user
 
 EGO_PN="code.gitea.io/gitea"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 
 DESCRIPTION="A painless self-hosted Git service, written in Go"
 HOMEPAGE="https://github.com/go-gitea/gitea"
