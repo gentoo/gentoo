@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # Package requires newer meson than eclass provides
 MESON_AUTO_DEPEND="no"
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit meson python-single-r1 vala xdg-utils
 
@@ -27,11 +27,11 @@ RDEPEND="
 	${PYTHON_DEPS}
 	app-arch/libarchive:=
 	dev-db/sqlite
-	>=dev-libs/appstream-glib-0.7.4:=[introspection]
 	>=dev-libs/glib-2.45.8:2
 	dev-libs/libgpg-error
 	dev-libs/libgudev:=
 	>=dev-libs/libgusb-0.2.9[introspection]
+	>=dev-libs/libxmlb-0.1.3
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
@@ -68,14 +68,17 @@ DEPEND="
 	${RDEPEND}
 	app-arch/gcab
 	app-arch/libarchive
-	>=dev-util/meson-0.41.0
-	>=dev-util/ninja-1.7.2
-	virtual/pkgconfig
 	$(vala_depend)
 	doc? ( dev-util/gtk-doc )
 	man? ( app-text/docbook-sgml-utils )
 	nvme? (	>=sys-kernel/linux-headers-4.4 )
 	test? ( net-libs/gnutls[tools] )
+"
+
+BDEPEND="
+	>=dev-util/meson-0.46.0
+	>=dev-util/ninja-1.7.2
+	virtual/pkgconfig
 "
 
 # required for fwupd daemon to run.
