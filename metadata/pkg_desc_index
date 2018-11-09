@@ -57,7 +57,7 @@ app-admin/eselect 1.4.12 1.4.13: Gentoo's multi-purpose configuration and manage
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/fam 2.7.0-r7 2.7.0_p17_p2: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
-app-admin/filebeat 5.5.2 6.1.1: Lightweight log shipper for Logstash and Elasticsearch
+app-admin/filebeat 5.5.2 6.1.1 6.3.2: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/gam-server 0.1.10-r2: Library providing the FAM File Alteration Monitor API
 app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor API & Server
 app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesystems
@@ -125,7 +125,7 @@ app-admin/sagan-rules 20130430 20140617: Rules for Sagan log analyzer
 app-admin/setools 4.1.1: Policy Analysis Tools for SELinux
 app-admin/spectre-meltdown-checker 0.40: Spectre & Meltdown vulnerability/mitigation checker for Linux
 app-admin/sshguard 2.1.0-r1: protects hosts from brute force attacks against ssh
-app-admin/sudo 1.8.23-r2: Allows users or groups to run commands as other users
+app-admin/sudo 1.8.23-r2 1.8.25_p1-r1: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9: Interactive adduser script from Slackware
 app-admin/supervisor 3.1.4: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
@@ -7577,7 +7577,7 @@ media-libs/libeot 0.01: Library for parsing Embedded OpenType files (Microsoft e
 media-libs/libepoxy 1.4.2 1.5.1 1.5.3: Epoxy is a library for handling OpenGL function pointer management for you
 media-libs/libexif 0.6.21-r2: Library for parsing, editing, and saving EXIF data
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
-media-libs/libextractor 1.6: Library to extract metadata from files of arbitrary type
+media-libs/libextractor 1.6 1.7: Library to extract metadata from files of arbitrary type
 media-libs/libfame 0.9.1-r1 0.9.1-r2: MPEG-1 and MPEG-4 video encoding library
 media-libs/libfishsound 1.0.0: Simple programming interface to decode and encode audio with vorbis or speex
 media-libs/libfpx 1.3.1_p6 1.3.1_p10: A library for manipulating FlashPIX images
@@ -7728,7 +7728,7 @@ media-libs/raptor 2.0.15-r1: The RDF Parser Toolkit
 media-libs/raul 0.8.0-r1: C++ utility library primarily aimed at audio/musical applications
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
 media-libs/rtaudio 4.1.2: A set of cross-platform C++ classes for realtime audio I/O
-media-libs/rubberband 1.8.1-r1 1.8.1-r2: An audio time-stretching and pitch-shifting library and utility program
+media-libs/rubberband 1.8.1-r1 1.8.1-r2 1.8.2: An audio time-stretching and pitch-shifting library and utility program
 media-libs/sampleicc 1.6.6: C++ library for reading, writing, manipulating, and applying ICC profiles
 media-libs/sbc 1.3: Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers
 media-libs/sdif 3.8.6: The Sound Description Interchange Format Library deals with audio and wave processing
@@ -8921,7 +8921,7 @@ net-misc/l7-protocols 2009.05.28: Protocol definitions of l7-filter kernel modul
 net-misc/libteam 1.22: Library and tools set for controlling team network device
 net-misc/lksctp-tools 1.0.13 1.0.16 1.0.17: Tools for Linux Kernel Stream Control Transmission Protocol implementation
 net-misc/lldpd 0.9.3-r1: Implementation of IEEE 802.1ab (LLDP)
-net-misc/memcached 1.4.39 1.5.2 1.5.10: High-performance, distributed memory object caching system
+net-misc/memcached 1.4.39 1.5.2 1.5.10 1.5.12: High-performance, distributed memory object caching system
 net-misc/mindterm 3.4: A Java SSH Client
 net-misc/minidlna 1.1.5-r1: DLNA/UPnP-AV compliant media server
 net-misc/mobile-broadband-provider-info 20170310: Database of mobile broadband service providers
@@ -9797,7 +9797,7 @@ sys-apps/gnome-disk-utility 3.24.1: Disk Utility for GNOME using udisks
 sys-apps/gptfdisk 1.0.1 1.0.3: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312: Administrative interface for the grsecurity Role Based Access Control system
 sys-apps/grep 3.0 3.1: GNU regular expression matcher
-sys-apps/groff 1.22.2: Text formatter used for man pages
+sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
 sys-apps/gscanbus 0.8: Bus scanning, testing and topology visualizing tool for Linux IEEE1394 subsystem
 sys-apps/gsmartcontrol 1.0.2 1.1.3: Hard disk drive health inspection tool
 sys-apps/haveged 1.9.2-r1: A simple entropy daemon using the HAVEGE algorithm
