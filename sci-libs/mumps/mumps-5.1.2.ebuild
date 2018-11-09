@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils toolchain-funcs flag-o-matic versionator fortran-2 multilib
+inherit eapi7-ver flag-o-matic fortran-2 toolchain-funcs multilib
 
 MYP=MUMPS_${PV}
 
@@ -20,7 +20,7 @@ RDEPEND="
 	virtual/blas
 	metis? ( || ( sci-libs/metis <sci-libs/parmetis-4 )
 		mpi? ( <sci-libs/parmetis-4 ) )
-	scotch? ( <sci-libs/scotch-6[mpi=] )
+	scotch? ( >=sci-libs/scotch-6.0.1[mpi=] )
 	mpi? ( sci-libs/scalapack )"
 
 DEPEND="${RDEPEND}
@@ -28,10 +28,15 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MYP}"
 
+get_version_component_count() {
+	local cnt=( $(ver_rs 1- ' ') )
+	echo ${#cnt[@]}
+}
+
 static_to_shared() {
 	local libstatic=${1}; shift
 	local libname=$(basename ${libstatic%.a})
-	local soname=${libname}$(get_libname $(get_version_component_range 1-2))
+	local soname=${libname}$(get_libname $(ver_cut 1-2))
 	local libdir=$(dirname ${libstatic})
 
 	einfo "Making ${soname} from ${libstatic}"
@@ -46,7 +51,7 @@ static_to_shared() {
 			-Wl,--whole-archive ${libstatic} -Wl,--no-whole-archive \
 			"$@" -o ${libdir}/${soname} || die "${soname} failed"
 		[[ $(get_version_component_count) -gt 1 ]] && \
-			ln -s ${soname} ${libdir}/${libname}$(get_libname $(get_major_version))
+			ln -s ${soname} ${libdir}/${libname}$(get_libname $(ver_cut 1))
 		ln -s ${soname} ${libdir}/${libname}$(get_libname)
 	fi
 }
