@@ -327,11 +327,6 @@ dev-libs/UTF8Strings
 # Bug #643536
 dev-python/stormpath
 
-# Virgil Dupras <vdupras@gentoo.org> (10 Oct 2018)
-# Dead upstream, depends on broken package. Removal in 30 days.
-# Bug #620098
-dev-python/flask-restless
-
 # Sergei Trofimovich <slyfox@gentoo.org> (09 Oct 2018)
 # Upstream is not actively maintained. Needs a port to mupdf-1.14.
 app-text/fbpdf
