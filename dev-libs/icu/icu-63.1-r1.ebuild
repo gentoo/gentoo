@@ -35,17 +35,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-CVE-2018-18928.patch"
 )
 
-pkg_pretend() {
-	if tc-is-gcc ; then
-		if [[ $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 9 \
-			|| $(gcc-major-version) -lt 4 ]] ; then
-				die "You need at least sys-devel/gcc-4.9"
-		fi
-	fi
-}
-
 src_prepare() {
-	# apply patches
 	default
 
 	local variable
@@ -69,15 +59,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# Use C++14
 	append-cxxflags -std=c++14
-
-	if tc-is-gcc ; then
-		if [[ $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 9 \
-			|| $(gcc-major-version) -lt 4 ]] ; then
-				die "You need at least sys-devel/gcc-4.9"
-		fi
-	fi
 
 	if tc-is-cross-compiler; then
 		mkdir "${WORKDIR}"/host || die
