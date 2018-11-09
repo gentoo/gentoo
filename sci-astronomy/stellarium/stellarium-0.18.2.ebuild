@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils desktop flag-o-matic gnome2-utils
+inherit cmake-utils desktop flag-o-matic gnome2-utils virtualx
 
 DESCRIPTION="3D photo-realistic skies in real time"
 HOMEPAGE="http://www.stellarium.org/"
@@ -22,9 +22,7 @@ PATCHES=( "${FILESDIR}"/${P}.patch )
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="debug gps media nls stars"
-
-RESTRICT="test" # There are no tests
+IUSE="debug gps media nls stars test"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -43,8 +41,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-qt/qtconcurrent:5
-	dev-qt/qttest:5
-	nls? ( dev-qt/linguist-tools:5 )"
+	nls? ( dev-qt/linguist-tools:5 )
+	test? ( dev-qt/qttest:5 )
+"
 
 LANGS=(
 	af am ar as ast az be bg bn bo br bs ca cs
@@ -82,8 +81,13 @@ src_configure() {
 		-DENABLE_GPS="$(usex gps)"
 		-DENABLE_NLS="$(usex nls)"
 		-DENABLE_MEDIA="$(usex media)"
+		-DENABLE_TESTING="$(usex test)"
 	)
 	cmake-utils_src_configure
+}
+
+src_test() {
+	virtx cmake-utils_src_test
 }
 
 src_install() {
