@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 MY_P="hiredis-rb-${PV}"
 
@@ -21,12 +21,12 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND+=" =dev-libs/hiredis-0.13*:="
+RDEPEND+=" >=dev-libs/hiredis-0.14:="
 DEPEND+=" dev-libs/hiredis test? ( dev-ruby/test-unit:2 )"
 
 RUBY_S="${MY_P}"
 
-PATCHES=( "${FILESDIR}/${P}-unvendor-hiredis.patch" )
+PATCHES=( "${FILESDIR}/${PN}-0.6.1-unvendor-hiredis.patch" )
 
 all_ruby_prepare() {
 	sed -i -e 's:/tmp/:'${T}'/:' test/connection_test.rb || die
