@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}"/${MYP}-src
 
 REQUIRED_USE="|| ( shared static-libs static-pic )"
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2018-gentoo.patch )
 
 src_configure() {
 	emake prefix="${D}"usr setup
@@ -35,12 +35,6 @@ src_compile() {
 			-XLIBRARY_TYPE=$1 -XXMLADA_BUILD=$1 \
 			gpr/gpr.gpr -cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} || die
 	}
-	if use gnat_2016; then
-		GCC_PV=4.9.4
-	else
-		GCC_PV=6.3.0
-	fi
-	GCC=${CHOST}-gcc-${GCC_PV}
 	if use shared; then
 		build relocatable
 	fi

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,12 +26,6 @@ REQUIRED_USE="|| ( shared static-libs static-pic )"
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
-	if use gnat_2016; then
-		GCC_PV=4.9.4
-	else
-		GCC_PV=6.3.0
-	fi
-	GCC=${CHOST}-gcc-${GCC_PV}
 	if use static-libs; then
 		emake PROCESSORS=$(makeopts_jobs) libgpr.build.static
 	fi
