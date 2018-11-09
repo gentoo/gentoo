@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit toolchain-funcs flag-o-matic
+
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Strongly-timed, concurrent, and on-the-fly audio programming language"
 HOMEPAGE="http://chuck.cs.princeton.edu/"
@@ -17,7 +18,7 @@ REQUIRED_USE="|| ( alsa jack )"
 RDEPEND="app-eselect/eselect-chuck
 	media-libs/libsndfile
 	alsa? ( media-libs/alsa-lib )
-	jack? ( media-sound/jack-audio-connection-kit )"
+	jack? ( virtual/jack )"
 DEPEND="${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex"
