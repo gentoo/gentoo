@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-03">
+  <title>OpenSSL: Denial of Service</title>
+  <synopsis>A vulnerability in OpenSSL might allow remote attackers to cause a
+    Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>2018-11-09</announced>
+  <revised count="1">2018-11-09</revised>
+  <bug>663654</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2o-r6</unaffected>
+      <vulnerable range="lt">1.0.2o-r6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+      purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that OpenSSL allow malicious servers to send very
+      large primes to a client during DH(E) based TLS handshakes.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by sending large prime to client during DH(E) TLS
+      handshake, could possibly cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.2o-r6"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-0732">CVE-2018-0732</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-08T02:56:32Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2018-11-09T00:24:28Z">whissi</metadata>
+</glsa>
