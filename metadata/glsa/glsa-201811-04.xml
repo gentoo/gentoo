@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-04">
+  <title>Mozilla Firefox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Firefox, the
+    worst of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">firefox</product>
+  <announced>2018-11-09</announced>
+  <revised count="1">2018-11-09</revised>
+  <bug>669430</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/firefox" auto="yes" arch="*">
+      <unaffected range="ge">60.3.0</unaffected>
+      <vulnerable range="lt">60.3.0</vulnerable>
+    </package>
+    <package name="www-client/firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">60.3.0</unaffected>
+      <vulnerable range="lt">60.3.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Firefox is a popular open-source web browser from the Mozilla
+      Project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Firefox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to view a specially crafted web
+      page, possibly resulting in the execution of arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, bypass
+      access restriction, access otherwise protected information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Firefox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-60.3.0"
+    </code>
+    
+    <p>All Mozilla Firefox binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-bin-60.3.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12389">CVE-2018-12389</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12390">CVE-2018-12390</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12392">CVE-2018-12392</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12393">CVE-2018-12393</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12395">CVE-2018-12395</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12396">CVE-2018-12396</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12397">CVE-2018-12397</uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2018-27/">
+      Mozilla Foundation Security Advisory 2018-27
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-10-31T21:42:48Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-11-09T00:25:06Z">whissi</metadata>
+</glsa>
