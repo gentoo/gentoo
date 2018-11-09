@@ -7,7 +7,7 @@ inherit golang-build golang-vcs-snapshot
 EGO_PN="github.com/jteeuwen/go-bindata/..."
 EGIT_COMMIT="a0ff2567cfb70903282db057e799fd826784d41d"
 ARCHIVE_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="amd64 ~arm"
+KEYWORDS="amd64 ~arm ~arm64"
 
 DESCRIPTION="A small utility which generates Go code from any file"
 HOMEPAGE="https://github.com/jteeuwen/go-bindata"
