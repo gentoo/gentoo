@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-02">
+  <title>Python: Buffer overflow</title>
+  <synopsis>A buffer overflow in Python might allow remote attackers to cause a
+    Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">Python</product>
+  <announced>2018-11-09</announced>
+  <revised count="1">2018-11-09</revised>
+  <bug>647862</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/python" auto="yes" arch="*">
+      <unaffected range="ge">2.7.15</unaffected>
+      <vulnerable range="lt">2.7.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Python is an interpreted, interactive, object-oriented programming
+      language.
+    </p>
+  </background>
+  <description>
+    <p>A buffer overflow vulnerability have been discovered in Python. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, in special situations such as function as a service,
+      could violate a trust boundary and cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Python users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-2.7.15"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000030">
+      CVE-2018-1000030
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-10-16T02:38:25Z">irishluck83</metadata>
+  <metadata tag="submitter" timestamp="2018-11-09T00:24:00Z">whissi</metadata>
+</glsa>
