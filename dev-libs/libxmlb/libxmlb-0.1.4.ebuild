@@ -23,12 +23,13 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	>=dev-util/meson-0.47.0
 	doc? ( dev-util/gtk-doc )
 	introspection? ( dev-libs/gobject-introspection )
 "
 
 BDEPEND="
+	>=dev-util/meson-0.47.0
+	dev-util/ninja
 	virtual/pkgconfig
 "
 
