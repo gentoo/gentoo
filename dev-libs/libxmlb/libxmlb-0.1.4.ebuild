@@ -3,6 +3,7 @@
 
 EAPI=7
 
+MESON_AUTO_DEPEND="no"
 inherit meson
 
 DESCRIPTION="Library to help create and query binary XML blobs"
