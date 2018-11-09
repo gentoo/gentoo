@@ -233,6 +233,7 @@ x86? (
 
 PATCHES=(
 	"${FILESDIR}"/${P}-meson-link-gallium-nine-with-pthreads.patch
+	"${FILESDIR}"/${P}-meson-fix-libatomic-tests.patch
 )
 
 llvm_check_deps() {
