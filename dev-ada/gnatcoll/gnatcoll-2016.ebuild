@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,7 +35,7 @@ RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
 	postgres? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite )
 	projects? (
-		=dev-ada/libgpr-2016[gnat_2016=,gnat_2017=,shared?,static-libs?]
+		~dev-ada/libgpr-2016[gnat_2016=,gnat_2017=,shared?,static-libs?]
 		dev-ada/xmlada[shared?,static-libs?]
 	)"
 DEPEND="${RDEPEND}
@@ -62,7 +62,6 @@ src_configure() {
 	else
 		GCC_PV=6.3.0
 	fi
-	GCC=${CHOST}-gcc-${GCC_PV}
 	GNATMAKE=${CHOST}-gnatmake-${GCC_PV}
 	GNATCHOP=${CHOST}-gnatchop-${GCC_PV}
 	if use sqlite; then
@@ -90,17 +89,16 @@ src_configure() {
 		--with-python-exec=${EPYTHON} \
 		--enable-shared-python \
 		--disable-pygtk \
-		CC=${GCC} \
 		$myConf
 }
 
 src_compile() {
 	if use shared; then
-		emake PROCESSORS=$(makeopts_jobs) GPRBUILD_OPTIONS=-v GCC=${GCC} \
+		emake PROCESSORS=$(makeopts_jobs) GPRBUILD_OPTIONS=-v \
 			build_library_type/relocatable
 	fi
 	if use static-libs; then
-		emake PROCESSORS=$(makeopts_jobs) GPRBUILD_OPTIONS=-v GCC=${GCC} \
+		emake PROCESSORS=$(makeopts_jobs) GPRBUILD_OPTIONS=-v \
 			build_library_type/static
 	fi
 	python_fix_shebang .
