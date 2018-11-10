@@ -24,6 +24,9 @@ DEPEND="app-text/mupdf
 	>=app-text/zathura-0.3.9
 	dev-libs/girara
 	dev-libs/glib:2
+	media-libs/jbig2dec:=
+	media-libs/openjpeg:2=
+	virtual/jpeg:0
 	x11-libs/cairo"
 
 RDEPEND="${DEPEND}"
