@@ -9919,7 +9919,7 @@ sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xinetd 2.3.15-r3 2.3.15.3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0 1.2.1: Framework for defining and tracking users, login sessions and seats
-sys-auth/elogind 238.1: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 238.1 238.2: The systemd project's logind, extracted to a standalone package
 sys-auth/fprintd 0.5.0: D-Bus service to access fingerprint readers
 sys-auth/keystone 12.0.1 13.0.1 14.0.0: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.6.0-r2: library to add support for consumer fingerprint readers
