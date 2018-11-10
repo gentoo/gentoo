@@ -1,17 +1,17 @@
---- gnatcoll-gpl-2016-src/Makefile.old	2017-01-20 19:39:07.131398270 +0100
-+++ gnatcoll-gpl-2016-src/Makefile	2017-01-20 19:42:30.088728844 +0100
+--- a/Makefile	2017-01-20 19:39:07.131398270 +0100
++++ b/Makefile	2017-01-20 19:42:30.088728844 +0100
 @@ -34,19 +36,19 @@
  	@${RM} src/gnatcoll-atomic.adb
  
  	@echo "====== Building $(@F) libraries ======"
 -	${GPRBUILD} ${GPRBLD_OPTS} -Pgnatcoll_full
-+	${GPRBUILD} ${GPRBLD_OPTS} -Pgnatcoll_full -cargs ${ADAFLAGS}
++	${GPRBUILD} ${GPRBLD_OPTS} -Pgnatcoll_full -v -cargs ${ADAFLAGS}
  
  	@# Need to build libgnatcoll_gtk separately, because its project files
  	@# requires gtkada.gpr, which might not exist on the machine.
  ifeq (${WITH_GTK},yes)
 -	${GPRBUILD} ${GPRBLD_OPTS} -Psrc/gnatcoll_gtk
-+	${GPRBUILD} ${GPRBLD_OPTS} -Psrc/gnatcoll_gtk -cargs ${ADAFLAGS}
++	${GPRBUILD} ${GPRBLD_OPTS} -Psrc/gnatcoll_gtk -v -cargs ${ADAFLAGS}
  endif
  
  	@# Build the tools (the list is the project\'s Main attribute)
@@ -19,12 +19,12 @@
  	@# gnatcoll_full.gpr are build. We could use aggregate projects to
  	@# speed things up.
 -	${GPRBUILD} ${GPRBLD_OPTS} -q -Psrc/gnatcoll_tools
-+	${GPRBUILD} ${GPRBLD_OPTS} -q -Psrc/gnatcoll_tools -cargs ${ADAFLAGS}
++	${GPRBUILD} ${GPRBLD_OPTS} -q -Psrc/gnatcoll_tools -v -cargs ${ADAFLAGS}
  
  #######################################################################
  #  install
---- gnatcoll-gpl-2015-src/src/gnatcoll_sqlite.gpr.old	2017-01-07 09:00:17.146448202 +0100
-+++ gnatcoll-gpl-2015-src/src/gnatcoll_sqlite.gpr	2017-01-07 09:00:44.884885281 +0100
+--- a/src/gnatcoll_sqlite.gpr	2017-01-07 09:00:17.146448202 +0100
++++ b/src/gnatcoll_sqlite.gpr	2017-01-07 09:00:44.884885281 +0100
 @@ -60,7 +60,7 @@
  
                    --  force full optimization for sqlite, we do not debug it
@@ -34,8 +34,8 @@
        end case;
     end Compiler;
  
---- gnatcoll-gpl-2015-src/src/gnatcoll_python.gpr.in.old	2017-01-07 09:12:30.490399897 +0100
-+++ gnatcoll-gpl-2015-src/src/gnatcoll_python.gpr.in	2017-01-07 09:12:53.111976591 +0100
+--- a/src/gnatcoll_python.gpr.in	2017-01-07 09:12:30.490399897 +0100
++++ b/src/gnatcoll_python.gpr.in	2017-01-07 09:12:53.111976591 +0100
 @@ -30,7 +30,7 @@
          GnatColl_Shared.Compiler'Switches ("Ada");
  
@@ -45,8 +45,8 @@
     end Compiler;
  
     package Linker is
---- gnatcoll-gpl-2016-src/gnatcoll_shared.gpr.in.old	2017-01-20 19:50:03.222808656 +0100
-+++ gnatcoll-gpl-2016-src/gnatcoll_shared.gpr.in	2017-01-20 19:50:28.200399274 +0100
+--- a/gnatcoll_shared.gpr.in	2017-01-20 19:50:03.222808656 +0100
++++ b/gnatcoll_shared.gpr.in	2017-01-20 19:50:28.200399274 +0100
 @@ -13,7 +13,7 @@
  
     type Yes_No is ("yes", "no");
@@ -65,8 +65,8 @@
        end case;
  
        case Syslog is
---- gnatcoll-gpl-2016-src/src/gnatcoll_gtk.gpr.in.old	2017-01-20 19:53:16.647607400 +0100
-+++ gnatcoll-gpl-2016-src/src/gnatcoll_gtk.gpr.in	2017-01-20 19:53:57.302925708 +0100
+--- a/src/gnatcoll_gtk.gpr.in	2017-01-20 19:53:16.647607400 +0100
++++ b/src/gnatcoll_gtk.gpr.in	2017-01-20 19:53:57.302925708 +0100
 @@ -63,7 +63,7 @@
        for Switches ("Ada") use GnatColl_Shared.Compiler'Switches ("Ada");
  
@@ -76,8 +76,8 @@
          & GnatColl_Shared.Python_Cflags
          & GnatColl_Shared.Pygtk_Include
          & GnatColl_Shared.PyGobject_Include
---- gnatcoll-gpl-2016-src/aclocal.m4.old	2017-04-06 08:25:14.796699365 +0200
-+++ gnatcoll-gpl-2016-src/aclocal.m4	2017-04-06 08:25:36.622318016 +0200
+--- a/aclocal.m4	2017-04-06 08:25:14.796699365 +0200
++++ b/aclocal.m4	2017-04-06 08:25:36.622318016 +0200
 @@ -45,7 +45,7 @@
     cat > conftest.ada <<EOF
  [$3]
@@ -96,8 +96,8 @@
  [
  with Interfaces; use Interfaces;
  procedure Check is
---- gnatcoll-gpl-2016-src/testsuite/json/__init__.py.old	2017-04-24 17:52:34.158513249 +0200
-+++ gnatcoll-gpl-2016-src/testsuite/json/__init__.py	2017-04-24 17:52:52.636207017 +0200
+--- a/testsuite/json/__init__.py	2017-04-24 17:52:34.158513249 +0200
++++ b/testsuite/json/__init__.py	2017-04-24 17:52:52.636207017 +0200
 @@ -21,7 +21,7 @@
      @requires_not_aix    # Storage_Error on that machine
      @chdir("MB28-001")
@@ -107,8 +107,8 @@
          self.gprbuild()
          self.runexec("json_stack_test", "test.out")
  
---- gnatcoll-gpl-2016-src/testsuite/projects/__init__.py.old	2017-04-24 19:10:30.465246199 +0200
-+++ gnatcoll-gpl-2016-src/testsuite/projects/__init__.py	2017-04-24 19:10:42.768035080 +0200
+--- a/testsuite/projects/__init__.py	2017-04-24 19:10:30.465246199 +0200
++++ b/testsuite/projects/__init__.py	2017-04-24 19:10:42.768035080 +0200
 @@ -105,25 +105,6 @@
          self.gprbuild("default.gpr")
          self.runexec("main", "")
@@ -135,8 +135,8 @@
      @chdir("NB12-045")
      def test_NB12_045(self):
          # Test registering attribute in unknown package
---- gnatcoll-gpl-2016-src/src/tools/gnatcoll_db2ada.adb.old	2017-04-24 21:36:09.193973179 +0200
-+++ gnatcoll-gpl-2016-src/src/tools/gnatcoll_db2ada.adb	2017-04-24 21:36:16.029858932 +0200
+--- a/src/tools/gnatcoll_db2ada.adb	2017-04-24 21:36:09.193973179 +0200
++++ b/src/tools/gnatcoll_db2ada.adb	2017-04-24 21:36:16.029858932 +0200
 @@ -211,7 +211,7 @@
  
        declare
