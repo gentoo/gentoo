@@ -37,11 +37,6 @@ case ${CATEGORY} in
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
 		;;
 	kde-plasma)
-		if [[ ${PV} = 5.12* ]]; then
-			: ${FRAMEWORKS_MINIMAL:=5.46.0}
-			: ${KDE_APPS_MINIMAL:=17.12.3}
-			: ${QT_MINIMAL:=5.9.4}
-		fi
 		if [[ ${PV} = 5.13.5 ]]; then
 			: ${FRAMEWORKS_MINIMAL:=5.46.0}
 			: ${KDE_APPS_MINIMAL:=17.12.3}
