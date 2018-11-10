@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -35,7 +35,7 @@ CDEPEND="
 	x11-libs/libXi
 	${PYTHON_DEPS}
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1:= )
-	gromacs? ( >=sci-chemistry/gromacs-5.0.4-r1[tng] )
+	gromacs? ( >=sci-chemistry/gromacs-5.0.4-r1:0=[tng] )
 	sqlite? ( dev-db/sqlite:3= )
 	tachyon? ( >=media-gfx/tachyon-0.99_beta6 )
 	xinerama? ( x11-libs/libXinerama )"
