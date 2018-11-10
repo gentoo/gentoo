@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-06">
+  <title>libde265: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libde265, the worst of
+    which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">libde265</product>
+  <announced>2018-11-10</announced>
+  <revised count="1">2018-11-10</revised>
+  <bug>665520</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libde265" auto="yes" arch="*">
+      <unaffected range="ge">1.0.3</unaffected>
+      <vulnerable range="lt">1.0.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Open h.265 video codec implementation.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libde265. Please review
+      libde265 changelog referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted media
+      file using libde265 or linked applications, possibly resulting in
+      execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libde265 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libde265-1.0.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://github.com/strukturag/libde265/compare/v1.0.2...v1.0.3">
+      libde265 v1.03 Changelog
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-09-21T12:42:46Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-11-10T00:11:04Z">whissi</metadata>
+</glsa>

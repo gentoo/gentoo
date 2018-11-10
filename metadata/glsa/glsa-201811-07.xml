@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-07">
+  <title>Pango: Denial of Service</title>
+  <synopsis>A vulnerability in Pango could result in a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">pango</product>
+  <announced>2018-11-10</announced>
+  <revised count="1">2018-11-10</revised>
+  <bug>664108</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/pango" auto="yes" arch="*">
+      <unaffected range="ge">1.42.4</unaffected>
+      <vulnerable range="lt">1.42.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Library for layout and rendering of internationalized text.</p>
+  </background>
+  <description>
+    <p>Processing certain invalid Emoji sequences in a GTK+ application can
+      trigger a reachable assertion resulting in an application crash.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could provide a specially crafted Emoji sequences,
+      possibly resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Pango users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/pango-1.42.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15120">CVE-2018-15120</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-08-30T12:31:14Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-11-10T00:11:22Z">whissi</metadata>
+</glsa>
