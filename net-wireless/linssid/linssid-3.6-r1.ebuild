@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit qmake-utils xdg-utils
 
@@ -12,39 +12,32 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.orig.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="policykit"
 
-DEPEND="dev-libs/boost:=
+DEPEND="
+	dev-libs/boost:=
 	dev-qt/qtcore:5
 	dev-qt/qtopengl:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	x11-libs/qwt:6[opengl,qt5(+),svg]"
+	x11-libs/qwt:6[opengl,qt5(+),svg]
+"
 
-RDEPEND="net-wireless/iw
+RDEPEND="
+	${DEPEND}
+	net-wireless/iw
+	sys-auth/polkit
 	x11-libs/libxkbcommon[X]
-	policykit? ( sys-auth/polkit )
-	!policykit? ( app-admin/sudo
-		x11-libs/gksu )
-	${DEPEND}"
+"
 
 S="${WORKDIR}/${P}/${PN}-app"
 
 DOCS=( README_${PV} )
 
 src_prepare() {
-	# Use system qwt for compiling
-	sed -i -e 's/CONFIG += release/CONFIG += release qwt/' linssid-app.pro || die
-
-	# Fix lib path for x11-libs/qwt
-	sed -i -e '/libqwt-qt5.so.6/c\LIBS += -lqwt6-qt5' linssid-app.pro || die
-
-	# Enable 'gksu' when a user don't want policykit
-	if ! use policykit; then
-		sed -i -e 's/Exec=.*/Exec=gksu linssid/' linssid.desktop || die
-	fi
-
 	default
+
+	# Fix lib path for x11-libs/qwt and use system qwt for compiling
+	sed -e '/libqwt-qt5.so.6/c\LIBS += -lqwt6-qt5' -e 's/CONFIG += release/& qwt/' -i linssid-app.pro || die
 }
 
 src_configure() {
