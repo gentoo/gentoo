@@ -1,10 +1,11 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
-DEPEND=>=app-text/zathura-0.3.8 dev-libs/glib:2= app-arch/libarchive:= x11-libs/cairo:= x11-libs/gdk-pixbuf:= virtual/pkgconfig dev-util/desktop-file-utils x11-misc/shared-mime-info >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=virtual/pkgconfig >=dev-util/meson-0.45.1 >=dev-util/ninja-1.7.2 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install test unpack
+DEPEND=>=app-text/zathura-0.3.9 dev-libs/girara dev-libs/glib:2 x11-libs/cairo
 DESCRIPTION=Comic book plug-in for zathura with 7zip, rar, tar and zip support
-EAPI=6
-HOMEPAGE=https://pwmt.org/projects/zathura/
+EAPI=7
+HOMEPAGE=https://pwmt.org/projects/zathura-cb/
 LICENSE=ZLIB
-RDEPEND=>=app-text/zathura-0.3.8 dev-libs/glib:2= app-arch/libarchive:= x11-libs/cairo:= x11-libs/gdk-pixbuf:=
+RDEPEND=>=app-text/zathura-0.3.9 dev-libs/girara dev-libs/glib:2 x11-libs/cairo
 SLOT=0
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	git-r3	0d4635eeb5a96cd5315597a47eba25c9	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=06aa9a66efe49585aec7a0790da2cef0
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	meson	29ef682942c6ff558de2f797a61790c2	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=e198d1472d4f71941f3c4eced3a5a37b
