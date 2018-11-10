@@ -324,9 +324,8 @@ net-libs/libgcal
 
 # Virgil Dupras <vdupras@gentoo.org> (11 Oct 2018)
 # Unmaintained, no revdep. Removal in 30 days.
-# Bug #661554 Bug #661552
+# Bug #661554
 dev-libs/MicroJSON
-dev-libs/UTF8Strings
 
 # Sergei Trofimovich <slyfox@gentoo.org> (09 Oct 2018)
 # Upstream is not actively maintained. Needs a port to mupdf-1.14.
