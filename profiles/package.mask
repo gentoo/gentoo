@@ -317,11 +317,6 @@ dev-python/jenkinsapi
 dev-python/twill
 dev-python/flask-testing
 
-# Virgil Dupras <vdupras@gentoo.org> (11 Oct 2018)
-# Dead upstream, unmaintained, no revdep. Removal in 30 days.
-# Bug #659532
-net-libs/libgcal
-
 # Sergei Trofimovich <slyfox@gentoo.org> (09 Oct 2018)
 # Upstream is not actively maintained. Needs a port to mupdf-1.14.
 app-text/fbpdf
