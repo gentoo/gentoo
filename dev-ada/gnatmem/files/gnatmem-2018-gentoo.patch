@@ -1,5 +1,5 @@
---- 1/configure.in.old	2016-12-08 20:57:53.942004080 +0100
-+++ 1/configure.in	2016-12-08 21:00:10.393677257 +0100
+--- a/configure.in	2016-12-08 20:57:53.942004080 +0100
++++ b/configure.in	2016-12-08 21:00:10.393677257 +0100
 @@ -2,23 +2,14 @@
  AC_INIT(gnatmem.gpr.in)
  AC_CANONICAL_SYSTEM
@@ -48,13 +48,12 @@
  
  AC_SUBST(BINUTILS_OBJDIR)
  AC_SUBST(BINUTILS_SRCDIR)
---- gnatmem-gpl-2016-src/gnatmem.gpr.in.old	2017-02-02 22:15:30.247906007 +0100
-+++ gnatmem-gpl-2016-src/gnatmem.gpr.in	2017-02-02 22:17:22.604974363 +0100
-@@ -10,8 +10,10 @@
+--- a/gnatmem.gpr.in	2017-02-02 22:15:30.247906007 +0100
++++ b/gnatmem.gpr.in	2017-02-02 22:17:22.604974363 +0100
+@@ -10,8 +10,9 @@
     for Languages use ("ada", "c");
  
     package Compiler is
-+      for Driver ("C") use External ("CC", "gcc");
        for Default_Switches ("ada") use ("-O2", "-W", "-Wall", "-gnatpg");
        for Default_Switches ("c")   use ("-O2",
 +                                        "-I..",
@@ -72,8 +71,8 @@
            "@LIBDL@",
            "@LIBZ@");
     end Linker;
---- gnatmem-gpl-2015-src/src/libaddr2line.c.old	2017-01-04 21:03:36.185233702 +0100
-+++ gnatmem-gpl-2015-src/src/libaddr2line.c	2017-01-04 21:04:17.680455390 +0100
+--- a/src/libaddr2line.c	2017-01-04 21:03:36.185233702 +0100
++++ b/src/libaddr2line.c	2017-01-04 21:04:17.680455390 +0100
 @@ -23,9 +23,9 @@
  #include <string.h>
  #include <stdlib.h>
