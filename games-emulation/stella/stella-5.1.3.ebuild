@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit desktop gnome2-utils
+inherit desktop flag-o-matic gnome2-utils
 
 DESCRIPTION="Multi-platform Atari 2600 VCS Emulator"
 HOMEPAGE="https://stella-emu.github.io"
@@ -38,6 +38,7 @@ src_prepare() {
 
 src_configure() {
 	# not an autoconf script
+	CXX=$(tc-getCXX) \
 	./configure \
 		--prefix="/usr" \
 		--bindir="/usr/bin" \
