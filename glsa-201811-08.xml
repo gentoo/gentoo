@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-08">
+  <title>Okular: Directory traversal</title>
+  <synopsis>Okular is vulnerable to a directory traversal attack.</synopsis>
+  <product type="ebuild">Okular</product>
+  <announced>2018-11-10</announced>
+  <revised count="1">2018-11-10</revised>
+  <bug>665662</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-apps/okular" auto="yes" arch="*">
+      <unaffected range="ge">18.04.3-r1</unaffected>
+      <vulnerable range="lt">18.04.3-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Okular is a universal document viewer based on KPDF for KDE 4.</p>
+  </background>
+  <description>
+    <p>It was discovered that Okular contains a Directory Traversal
+      vulnerability in function unpackDocumentArchive() in core/document.cpp.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted Okular
+      archive, possibly allowing the writing of arbitrary files with the
+      privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Okular users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=kde-apps/okular-18.04.3-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000801">
+      CVE-2018-1000801
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-10-09T10:06:04Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2018-11-10T00:11:36Z">whissi</metadata>
+</glsa>
