@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.25.0-verbose.patch
 	"${FILESDIR}"/${PN}-0.26.1-gentoo-tests-sandbox.patch
 	"${FILESDIR}"/${PN}-0.26.1-gentoo-tests-network-sandbox-3.patch
+	"${FILESDIR}"/${PN}-0.27.0-extra-spec-flags.patch
 )
 
 src_prepare() {
@@ -77,6 +78,9 @@ src_compile() {
 }
 
 src_test() {
+	# EXTRA_SPEC_FLAGS is useful to debug individual tests
+	# as part of full build:
+	#    USE=debug EXTRA_SPEC_FLAGS='-e parse_set_cookie' emerge -1 crystal
 	emake spec \
 		$(usex debug "" release=1) \
 		progress=true \
@@ -89,7 +93,9 @@ src_test() {
 		AR=$(tc-getAR) \
 		\
 		CRYSTAL_PATH=src \
-		CRYSTAL_CONFIG_VERSION=${PV}
+		CRYSTAL_CONFIG_VERSION=${PV} \
+		\
+		"EXTRA_SPEC_FLAGS=${EXTRA_SPEC_FLAGS}"
 }
 
 src_install() {
