@@ -359,7 +359,6 @@ net-analyzer/mate-netspeed
 dev-python/python-application
 dev-python/python-cjson
 dev-python/python-eventlib
-dev-python/python-gnutls
 
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2018)
 # Apparently breaks sys-devel/gcc.  Bug #666954.
