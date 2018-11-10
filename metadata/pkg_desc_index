@@ -1818,7 +1818,7 @@ dev-ada/gnatcoll 2016 2017: GNAT Component Collection
 dev-ada/gnatmem 2018: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2018: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r1 2018-r3: Multi-Language Management
-dev-ada/gtkada 2017: A complete Ada graphical toolkit
+dev-ada/gtkada 2017 2018: A complete Ada graphical toolkit
 dev-ada/langkit 2017: A Python framework to generate language parsers
 dev-ada/libadalang 2017: high performance semantic engine for the Ada programming language
 dev-ada/libgpr 2016 2017 2018: Ada library to handle GPRbuild project files
@@ -7366,7 +7366,7 @@ media-gfx/jpeg2ps 1.9-r1: Converts JPEG images to Postscript using a wrapper
 media-gfx/jpeginfo 1.6.1: Prints information and tests integrity of JPEG/JFIF files
 media-gfx/jpegoptim 1.4.3: Utility to optimize JPEG files
 media-gfx/jpegpixi 1.1.1: almost lossless JPEG pixel interpolator, for correcting digital camera defects
-media-gfx/kgraphviewer 2.4.2: Graphviz dot graph file viewer
+media-gfx/kgraphviewer 2.4.3: Graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.3 5.4: Tool for indexing, searching, and viewing images
 media-gfx/krita 4.1.5: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/libimagequant 2.11.7: Palette quantization library that powers pngquant and other PNG optimizers
@@ -8932,7 +8932,6 @@ net-misc/mrouted 3.9.5-r1: IP multicast routing daemon
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
 net-misc/ndisc6 0.9.9: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
 net-misc/nemesis 1.4: A commandline-based, portable human IP stack for UNIX/Linux
-net-misc/netctl 1.9: Profile based network connection tool from Arch Linux
 net-misc/netdate 1.2: A Utility to synchronize the time with ntp-servers
 net-misc/netifrc 0.2.2 0.5.1: Gentoo Network Interface Management Scripts
 net-misc/netkit-bootparamd 0.17-r4: Netkit - bootparamd
