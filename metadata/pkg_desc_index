@@ -7596,7 +7596,7 @@ media-libs/libheif 1.3.2-r1: ISO/IEC 23008-12:2017 HEIF file format decoder and 
 media-libs/libicns 0.8.1: A library for manipulating MacOS X .icns icon format
 media-libs/libid3tag 0.15.1b-r4: The MAD id3tag library
 media-libs/libiec61883 1.2.0-r1: Library for capturing video (dv or mpeg2) over the IEEE 1394 bus
-media-libs/libifp 1.0.0.2: A general-purpose library for iRiver's iFP portable audio players
+media-libs/libifp 1.0.0.2-r1: A general-purpose library for iRiver's iFP portable audio players
 media-libs/libilbc 2.0.2: Packaged version of iLBC codec from the WebRTC project
 media-libs/libipod 0.1: lightweight and fast library written in C for managing Apple iPods
 media-libs/libiptcdata 1.0.4-r1: library for manipulating the International Press Telecommunications Council (IPTC) metadata
