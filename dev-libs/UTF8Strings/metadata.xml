@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-<!-- maintainer-needed -->
-	<longdescription>
-	C++ library that provides ability to work natively with UTF8 strings in a very simple way.
-	</longdescription>
-</pkgmetadata>
