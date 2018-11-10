@@ -1815,7 +1815,8 @@ dev-ada/aunit 2018: Ada unit testing framework
 dev-ada/aws 2017: A complete Web development framework
 dev-ada/gnat_util 2016 2017: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll 2016 2017: GNAT Component Collection
-dev-ada/gnatmem 2017: Monitors dynamic allocation and deallocation activity in a program
+dev-ada/gnatmem 2018: Monitors dynamic allocation and deallocation activity in a program
+dev-ada/gnatsymbolize 2018: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r1 2018-r3: Multi-Language Management
 dev-ada/gtkada 2017: A complete Ada graphical toolkit
 dev-ada/langkit 2017: A Python framework to generate language parsers

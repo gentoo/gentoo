@@ -531,10 +531,6 @@
       <name>Mike Gilbert</name>
     </member>
     <member>
-      <email>phajdan.jr@gentoo.org</email>
-      <name>Paweł Hajdan, Jr.</name>
-    </member>
-    <member>
       <email>rich0@gentoo.org</email>
       <name>Richard Freeman</name>
       <role>stable amd64 liaison</role>
@@ -1626,10 +1622,6 @@
     <member is-lead="1">
       <email>slyfox@gentoo.org</email>
       <name>Sergei Trofimovich</name>
-    </member>
-    <member>
-      <email>vikraman@gentoo.org</email>
-      <name>Vikraman Choudhury</name>
     </member>
   </project>
   <project>
