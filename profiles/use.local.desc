@@ -636,13 +636,18 @@ app-misc/lcd4linux:uname - Enable the uname plugin, to get the output of uname.
 app-misc/lcd4linux:uptime - Enable the uptime plugin.
 app-misc/lcd4linux:w1retap - Enable the w1retap plugin.
 app-misc/lcd4linux:wireless - Enable the wireless plugin, to get wireless statistics.
-app-misc/lcdproc:ftdi - Enable support for FTDI connections in some selected LCD_DEVICES (currently hd44780)
-app-misc/lcdproc:hid - Enable HID support using libhid
-app-misc/lcdproc:irman - Enable support for IRMan (media-libs/libirman)
-app-misc/lcdproc:lcd_devices_sdeclcd - Enable support for VLSYS M428 display
-app-misc/lcdproc:lcd_devices_vlsys_m428 - Enable support for VLSYS M428 display
-app-misc/lcdproc:nfs - Adds support for NFS file system
-app-misc/lcdproc:seamless-hbars - Try to avoid gaps in horizontal bars
+app-misc/lcdproc:ethlcd - Enable support for ethlcd in the hd44780 driver.
+app-misc/lcdproc:extra-charmaps - Enable extra language specific charmaps.
+app-misc/lcdproc:freetype - Enable support for media-libs/freetype in the glcd driver.
+app-misc/lcdproc:ftdi - Enable support for dev-embedded/libftdi in the glcd,hd44780,i2500vfd,lis and ula200 driver.
+app-misc/lcdproc:hid - Enable support for dev-libs/libhid in the cfontz,cfontzpacket,cwlnx,glcd,lb216,mdm166a,mtc_s16209x and noritakevfd driver.
+app-misc/lcdproc:irman - Enable support for media-libs/libirman in the irman driver.
+app-misc/lcdproc:menu - Enable menu support in the lcdproc client.
+app-misc/lcdproc:nfs - Display NFS filesystem stats in the lcdproc client.
+app-misc/lcdproc:png - Enable support for media-libs/libpng in the glcd driver.
+app-misc/lcdproc:samba - Display SMBFS filesystem stats in the lcdproc client.
+app-misc/lcdproc:seamless-hbars - Don't produce any gaps in horizontal bar graphs, if hardware supports it.
+app-misc/lcdproc:test-menu - Enable test menu support for the lcdproc server.
 app-misc/lirc:audio - Support using an audio device connected to an IR receiver
 app-misc/lirc:devinput - Support the devinput input device
 app-misc/lirc:ftdi - Support FTDI devices
