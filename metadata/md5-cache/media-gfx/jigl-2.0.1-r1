@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Jason's Image Gallery
+EAPI=7
+HOMEPAGE=http://xome.net/projects/jigl/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl media-gfx/jhead virtual/imagemagick-tools
+SLOT=0
+SRC_URI=http://xome.net/projects/jigl/jigl-2.0.1.tar.gz
+_md5_=e5945d8128151db48f19b7f1e9aed290
