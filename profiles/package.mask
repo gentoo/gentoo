@@ -357,7 +357,6 @@ net-analyzer/mate-netspeed
 # on old Twisted packages and have no reverse dependencies in ::gentoo.
 # Removal in 30 days.  Bug #667354.
 dev-python/python-application
-dev-python/python-cjson
 
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2018)
 # Apparently breaks sys-devel/gcc.  Bug #666954.
