@@ -19,7 +19,6 @@ HOMEPAGE="https://pwmt.org/projects/zathura-ps/download/"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 
 DEPEND="app-text/libspectre
 	>=app-text/zathura-0.3.9
