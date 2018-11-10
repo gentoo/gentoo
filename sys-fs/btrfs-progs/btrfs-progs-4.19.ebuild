@@ -72,6 +72,10 @@ fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-be-bswap.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
