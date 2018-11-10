@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5b0cf840c7a4475261f97ced
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 +shared static-libs"
 
 RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
@@ -51,7 +51,6 @@ src_configure() {
 	else
 		GCC_PV=4.9.4
 	fi
-	GCC=${CHOST}-gcc-${GCC_PV}
 	econf \
 		--prefix="${D}/usr" \
 		$(use_enable static-libs static) \
@@ -61,7 +60,7 @@ src_configure() {
 
 src_compile() {
 	GNATPREP=${CHOST}-gnatprep-${GCC_PV}
-	GCC=${GCC} emake -j1 GNATPREP=${GNATPREP} PROCESSORS=$(makeopts_jobs)
+	emake -j1 GNATPREP=${GNATPREP} PROCESSORS=$(makeopts_jobs)
 }
 
 src_install() {
