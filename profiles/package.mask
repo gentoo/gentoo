@@ -350,14 +350,6 @@ net-analyzer/mate-netspeed
 # version for now
 =media-video/libav-13_pre20171219
 
-# Michał Górny <mgorny@gentoo.org> (30 Sep 2018)
-# Poor quality NIH ebuilds with multiple issues and lack of test suites.
-# They do not support Python 3 (even if somebody claimed otherwise,
-# completely ignoring all the errors during install phase), depend
-# on old Twisted packages and have no reverse dependencies in ::gentoo.
-# Removal in 30 days.  Bug #667354.
-dev-python/python-application
-
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2018)
 # Apparently breaks sys-devel/gcc.  Bug #666954.
 =dev-util/debugedit-4.14.2
