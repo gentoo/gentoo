@@ -1,22 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit toolchain-funcs
+inherit toolchain-funcs mercurial
 
 DESCRIPTION="Hangouts Plugin for libpurple"
 HOMEPAGE="https://bitbucket.org/EionRobb/purple-hangouts"
-
-if [[ ${PV} == 9999 ]]; then
-	inherit mercurial
-	EHG_REPO_URI="https://bitbucket.org/EionRobb/purple-hangouts"
-else
-	COMMIT_ID="b7c56354ba8e"
-	SRC_URI="https://bitbucket.org/EionRobb/purple-hangouts/get/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
-	S="${WORKDIR}/EionRobb-${PN}-${COMMIT_ID}"
-fi
+EHG_REPO_URI="https://bitbucket.org/EionRobb/purple-hangouts"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -32,7 +23,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	eapply_user
+	default
 
 	# Does not respect CFLAGS
 	sed -i Makefile -e 's/-g -ggdb//g' || die
