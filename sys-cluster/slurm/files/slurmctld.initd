@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 extra_commands="reload"
@@ -25,7 +25,7 @@ create_folder_and_set_permission() {
         eerror "SLURM: folder == ${folder} == /var/tmp"
         exit
     fi
-    checkpath -d -o slurm:slurm ${folder}
+    checkpath -d -o slurm:slurm "${folder}"
 }
 
 checkconfig() {
@@ -35,12 +35,20 @@ checkconfig() {
 		eerror "in slurm doc directory"
 		return 1
 	fi
-	
+
 	# Make sure folders exists
 	. /etc/slurm/slurm.conf
-	folders=(${SlurmdSpoolDir} `dirname ${SlurmctldLogFile}` `dirname ${SlurmctldPidFile}` `dirname ${SlurmdLogFile}` `dirname ${SlurmdPidFile}` ${SlurmdSpoolDir} ${StateSaveLocation})
-	for folder in ${folders[*]}; do
-		create_folder_and_set_permission ${folder}
+	folders=(
+		${SlurmdSpoolDir}
+		$(dirname ${SlurmctldLogFile})
+		$(dirname ${SlurmctldPidFile})
+		$(dirname ${SlurmdLogFile})
+		$(dirname ${SlurmdPidFile})
+		${SlurmdSpoolDir}
+		${StateSaveLocation}
+	)
+	for folder in ${folders[@]}; do
+		create_folder_and_set_permission "${folder}"
 	done
 }
 
@@ -48,7 +56,7 @@ start() {
 	ebegin "Starting slurm control daemon"
 	checkconfig
 	start-stop-daemon --start --quiet --background \
-		--pidfile /var/run/slurm/slurmctld.pid \
+		--pidfile /run/slurm/slurmctld.pid \
 		--user slurm \
 		--group slurm \
 		--exec /usr/sbin/slurmctld -- ${SLURMCTLD_OPTS}
@@ -57,12 +65,12 @@ start() {
 
 stop() {
 	ebegin "Stopping slurm control daemon"
-	start-stop-daemon --stop --pidfile /var/run/slurm/slurmctld.pid
+	start-stop-daemon --stop --pidfile /run/slurm/slurmctld.pid
 	eend $?
 }
 
 reload() {
 	ebegin "Reloading slurm daemon configuration"
-	start-stop-daemon --signal HUP --pidfile /var/run/slurm/slurmctld.pid
+	start-stop-daemon --signal HUP --pidfile /run/slurm/slurmctld.pid
 	eend $?
 }

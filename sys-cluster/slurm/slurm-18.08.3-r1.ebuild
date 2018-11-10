@@ -88,27 +88,24 @@ src_prepare() {
 	default
 
 	# pids should go to /var/run/slurm
-	sed -e "s:/var/run/slurmctld.pid:${EPREFIX}/run/slurm/slurmctld.pid:g" \
+	sed \
+		-e 's:/tmp:/var/tmp:g' \
+		-e "s:/var/run/slurmctld.pid:${EPREFIX}/run/slurm/slurmctld.pid:g" \
 		-e "s:/var/run/slurmd.pid:${EPREFIX}/run/slurm/slurmd.pid:g" \
+		-e "s:StateSaveLocation=.*:StateSaveLocation=${EPREFIX}/var/spool/slurm:g" \
+		-e "s:SlurmdSpoolDir=.*:SlurmdSpoolDir=${EPREFIX}/var/spool/slurm/slurmd:g" \
 		-i "${S}/etc/slurm.conf.example" \
-			|| die "Can't sed for /var/run/slurmctld.pid"
-	sed -i "s:/var/run/slurmdbd.pid:${EPREFIX}/run/slurm/slurmdbd.pid:g" \
+		|| die "Can't sed for /var/run/slurmctld.pid"
+	sed \
+		-e "s:/var/run/slurmdbd.pid:${EPREFIX}/run/slurm/slurmdbd.pid:g" \
 		-i "${S}/etc/slurmdbd.conf.example" \
-			|| die "Can't sed for /var/run/slurmdbd.pid"
-	# also state dirs are in /var/spool/slurm
-	sed -e "s:StateSaveLocation=*.:StateSaveLocation=${EPREFIX}/var/spool/slurm:g" \
-		-e "s:SlurmdSpoolDir=*.:SlurmdSpoolDir=${EPREFIX}/var/spool/slurm/slurmd:g" \
-		-i "${S}/etc/slurm.conf.example" \
-			|| die "Can't sed ${S}/etc/slurm.conf.example for StateSaveLocation=*. or SlurmdSpoolDir=*"
-	# and tmp should go to /var/tmp/slurm
-	sed -e 's:/tmp:/var/tmp:g' \
-		-i "${S}/etc/slurm.conf.example" \
-			|| die "Can't sed for StateSaveLocation=*./tmp"
+		|| die "Can't sed for /var/run/slurmdbd.pid"
 	# gentooify systemd services
-	sed -e 's:sysconfig/.*:conf.d/slurm:g' \
+	sed \
+		-e 's:sysconfig/.*:conf.d/slurm:g' \
 		-e 's:var/run/:run/slurm/:g' \
 		-i "${S}/etc"/*.service.in \
-			|| die "Can't sed systemd services for sysconfig or var/run/"
+		|| die "Can't sed systemd services for sysconfig or var/run/"
 
 	hprefixify auxdir/{ax_check_zlib,x_ac_{lz4,ofed,munge}}.m4
 	eautoreconf
