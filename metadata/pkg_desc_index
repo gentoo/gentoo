@@ -5927,7 +5927,7 @@ dev-ruby/power_assert 1.1.1: Shows each value of variables and method calls in t
 dev-ruby/public_suffix 3.0.2: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/puppetdb-termini 5.2.2 5.2.4 6.0.0: Library needed to connect puppet to puppetdb
 dev-ruby/racc 1.4.14: A LALR(1) parser generator for Ruby
-dev-ruby/rack 1.6.7 2.0.3 2.0.5: A modular Ruby webserver interface
+dev-ruby/rack 1.6.7 2.0.3 2.0.5 2.0.6: A modular Ruby webserver interface
 dev-ruby/rack-cache 1.7.1: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-protection 1.5.5: This gem protects against typical web attacks
 dev-ruby/rack-test 0.6.3: Rack::Test is a small, simple testing API for Rack apps
