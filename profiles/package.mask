@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
+# Open bugs and no Gentoo maintainer.
+# Removal in 30 days.
+net-misc/netctl
+
 # Ian Stakenvicius <axs@gentoo.org> (07 Nov 2018)
 # on behalf of Mozilla Project <mozilla@gentoo.org>
 # Mask old/vuln thunderbird for removal by 2019,
