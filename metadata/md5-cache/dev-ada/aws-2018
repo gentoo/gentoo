@@ -10,4 +10,4 @@ RDEPEND=dev-ada/xmlada[gnat_2016=,gnat_2017=,gnat_2018(-)=] dev-ada/xmlada[share
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/5b0819e0c7a447df26c27abd -> aws-gpl-2018-src.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045
-_md5_=b80638b0f4e99eeca26a359aee37180b
+_md5_=f96e86dad3fde8bbfb524a3508e132c2

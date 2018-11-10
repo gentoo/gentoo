@@ -1811,7 +1811,7 @@ app-xemacs/xslt-process 1.14: XSLT processing support
 app-xemacs/xwem 1.22 1.23 1.26: X Emacs Window Manager
 app-xemacs/zenirc 1.16 1.18: ZENIRC IRC Client
 dev-ada/asis 2016 2017: To develop tools for Ada software
-dev-ada/aunit 2017: Ada unit testing framework
+dev-ada/aunit 2018: Ada unit testing framework
 dev-ada/aws 2017: A complete Web development framework
 dev-ada/gnat_util 2016 2017: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll 2016 2017: GNAT Component Collection
@@ -9373,7 +9373,7 @@ sci-libs/flann 1.9.1: Fast approximate nearest neighbor searches in high dimensi
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gdal 2.3.0-r2: Translator library for raster geospatial data formats (includes OGR support)
-sci-libs/geos 3.6.2 3.7.0: Geometry engine library for Geographic Information Systems
+sci-libs/geos 3.7.0: Geometry engine library for Geographic Information Systems
 sci-libs/gsl 1.16: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/hdf 4.2.8 4.2.13-r1: General purpose library and format for storing scientific data
