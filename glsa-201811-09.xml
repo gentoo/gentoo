@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-09">
+  <title>Icecast: Arbitrary code execution</title>
+  <synopsis>A vulnerability in Icecast might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">Icecast</product>
+  <announced>2018-11-10</announced>
+  <revised count="1">2018-11-10</revised>
+  <bug>670148</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/icecast" auto="yes" arch="*">
+      <unaffected range="ge">2.4.4</unaffected>
+      <vulnerable range="lt">2.4.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Icecast is an open source alternative to SHOUTcast that supports MP3,
+      OGG (Vorbis/Theora) and AAC streaming.
+    </p>
+  </background>
+  <description>
+    <p>Multiple buffer overflows have been discovered in Icecast. Please review
+      the CVE identifier referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker, by sending a specially crafted request using
+      authentication type “url”, could possibly execute arbitrary code with
+      the privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Icecast users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/icecast-2.4.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18820">CVE-2018-18820</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-08T14:07:15Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-11-10T00:11:51Z">whissi</metadata>
+</glsa>
