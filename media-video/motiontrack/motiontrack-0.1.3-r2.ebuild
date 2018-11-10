@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
+EAPI=7
 inherit flag-o-matic
 
 DESCRIPTION="A set of tools that detect motion between two images"
@@ -11,13 +10,17 @@ HOMEPAGE="http://motiontrack.sourceforge.net"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~ppc64 ~sparc ~mips ~alpha ~hppa ~amd64"
+KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 
-IUSE="debug imagemagick multiprocess"
+IUSE="debug graphicsmagick imagemagick multiprocess"
 
 RDEPEND="
-	imagemagick? ( media-gfx/imagemagick )
-	!imagemagick? ( media-libs/gd )"
+	imagemagick? (
+		!graphicsmagick? ( media-gfx/imagemagick:0= )
+		graphicsmagick? ( media-gfx/graphicsmagick:0=[imagemagick] )
+	)
+	!imagemagick? ( media-libs/gd )
+"
 DEPEND="${RDEPEND}"
 
 src_configure() {
