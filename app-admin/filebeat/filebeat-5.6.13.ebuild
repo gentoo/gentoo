@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
-DEPEND=">=dev-lang/go-1.10.3"
+DEPEND=">=dev-lang/go-1.9.2"
 RDEPEND="!app-admin/filebeat-bin"
 
 # Do not complain about CFLAGS etc since go projects do not use them.
@@ -26,16 +26,6 @@ src_unpack() {
 	mv beats-${PV} "${S}" || die
 }
 
-src_prepare() {
-	default
-
-	# avoid Elastic license
-	rm -r x-pack || die
-
-	# use ${PV} instead of git commit id
-	sed -i "s/\(COMMIT_ID=\).*/\1${PV}/g" "${S}/libbeat/scripts/Makefile" || die
-}
-
 src_compile() {
 	GOPATH="${WORKDIR}" emake -C "${S}/filebeat"
 }
@@ -46,10 +36,16 @@ src_install() {
 	fperms 0750 /var/{lib,log}/${PN}
 
 	newconfd "${FILESDIR}/${PN}.confd" ${PN}
-	newinitd "${FILESDIR}/${PN}.initd.1" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd" ${PN}
 
 	docinto examples
-	dodoc ${PN}/{filebeat.yml,filebeat.reference.yml}
+	dodoc ${PN}/{filebeat.yml,filebeat.full.yml}
+
+	insinto "/etc/${PN}"
+	doins ${PN}/{filebeat.template.json,filebeat.template-es2x.json,filebeat.template-es6x.json}
+
+	exeinto "/usr/share/${PN}"
+	doexe libbeat/scripts/migrate_beat_config_1_x_to_5_0.py
 
 	dobin filebeat/filebeat
 }
@@ -58,6 +54,9 @@ pkg_postinst() {
 	if [[ -n "${REPLACING_VERSIONS}" ]]; then
 		elog "Please read the migration guide at:"
 		elog "https://www.elastic.co/guide/en/beats/libbeat/$(ver_cut 1-2)/upgrading.html"
+		elog ""
+		elog "The migration script:"
+		elog "${EROOT%/}/usr/share/filebeat/migrate_beat_config_1_x_to_5_0.py"
 		elog ""
 	fi
 

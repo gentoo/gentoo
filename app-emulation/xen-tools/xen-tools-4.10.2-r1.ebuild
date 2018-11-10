@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,10 +6,9 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='ncurses,xml,threads'
 
-inherit bash-completion-r1 eutils flag-o-matic multilib python-single-r1 toolchain-funcs
+inherit bash-completion-r1 flag-o-matic multilib python-single-r1 toolchain-funcs
 
 MY_PV=${PV/_/-}
-MAJOR_V="$(ver_cut 1-2)"
 
 if [[ $PV == *9999 ]]; then
 	inherit git-r3
@@ -59,7 +58,7 @@ HOMEPAGE="https://www.xenproject.org"
 DOCS=( README docs/README.xen-bugtool )
 
 LICENSE="GPL-2"
-SLOT="0/${MAJOR_V}"
+SLOT="0/$(ver_cut 1-2)"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
@@ -109,7 +108,8 @@ DEPEND="${COMMON_DEPEND}
 		dev-texlive/texlive-latexextra
 		media-gfx/transfig
 	)
-	hvm? ( x11-base/xorg-proto )
+	hvm? ( x11-base/xorg-proto
+		!net-libs/libiscsi )
 	qemu? (
 		app-arch/snappy:=
 		x11-libs/pixman
@@ -140,9 +140,7 @@ QA_PREBUILT="
 	usr/libexec/xen/bin/ivshmem-server
 	usr/libexec/xen/bin/qemu-img
 	usr/libexec/xen/bin/qemu-io
-	usr/libexec/xen/bin/qemu-keymap
 	usr/libexec/xen/bin/qemu-nbd
-	usr/libexec/xen/bin/qemu-pr-helper
 	usr/libexec/xen/bin/qemu-system-i386
 	usr/libexec/xen/bin/virtfs-proxy-helper
 	usr/libexec/xen/libexec/xen-bridge-helper
@@ -250,7 +248,7 @@ src_prepare() {
 
 	use api   || sed -e "/SUBDIRS-\$(LIBXENAPI_BINDINGS) += libxen/d" -i tools/Makefile || die
 	sed -e 's:$(MAKE) PYTHON=$(PYTHON) subdirs-$@:LC_ALL=C "$(MAKE)" PYTHON=$(PYTHON) subdirs-$@:' \
-		 -i tools/firmware/Makefile || die
+		-i tools/firmware/Makefile || die
 
 	# Drop .config, fixes to gcc-4.6
 	sed -e '/-include $(XEN_ROOT)\/.config/d' -i Config.mk || die "Couldn't	drop"
@@ -357,6 +355,7 @@ src_configure() {
 	use system-seabios && myconf+=" --with-system-seabios=/usr/share/seabios/bios.bin"
 	use system-qemu && myconf+=" --with-system-qemu=/usr/bin/qemu-system-x86_64"
 	use amd64 && myconf+=" $(use_enable qemu-traditional)"
+	tc-ld-disable-gold # Bug 669570
 	econf ${myconf}
 }
 

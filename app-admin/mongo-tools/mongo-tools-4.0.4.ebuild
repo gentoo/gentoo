@@ -1,20 +1,18 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit eutils
+EAPI=7
 
 MY_PV=${PV/_rc/-rc}
 MY_P=${PN}-r${MY_PV}
 
 DESCRIPTION="A high-performance, open source, schema-free document-oriented database"
-HOMEPAGE="https://www.mongodb.org"
+HOMEPAGE="https://www.mongodb.com"
 SRC_URI="https://github.com/mongodb/mongo-tools/archive/r${MY_PV}.tar.gz -> mongo-tools-${MY_PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="sasl ssl"
 
 RDEPEND="!<dev-db/mongodb-3.0.0"
@@ -24,37 +22,41 @@ DEPEND="${RDEPEND}
 	sasl? ( dev-libs/cyrus-sasl )
 	ssl? ( dev-libs/openssl:0= )"
 
+# Do not complain about CFLAGS etc since go projects do not use them.
+QA_FLAGS_IGNORED='.*'
+
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	# do not substitute version because it uses git
-	sed -i '/^sed/,+3d' build.sh || die
-	sed -i '/^mv/d' build.sh || die
+	default
+
+	# 1) ensure we use bash wrt #582906
+	# 2) do not substitute version because it uses git
+	sed -e 's@/bin/sh@/bin/bash@g' \
+		-e '/^sed/,+3d' \
+		-e '/^stty/d' \
+		-e '/^mv/d' \
+		-i build.sh || die
 
 	# build pie to avoid text relocations wrt #582854
 	# skip on ppc64 wrt #610984
 	if ! use ppc64; then
 		sed -i 's/\(go build\)/\1 -buildmode=pie/g' build.sh || die
 	fi
-
-	# ensure we use bash wrt #582906
-	sed -i 's@/bin/sh@/bin/bash@g' build.sh || die
-
-	default
 }
 
 src_compile() {
 	local myconf=()
 
 	if use sasl; then
-	  myconf+=(sasl)
+		myconf+=(sasl)
 	fi
 
 	if use ssl; then
-	  myconf+=(ssl)
+		myconf+=(ssl)
 	fi
 
-	./build.sh ${myconf[@]} || die "build failed"
+	./build.sh "${myconf[@]}" || die "build failed"
 }
 
 src_install() {

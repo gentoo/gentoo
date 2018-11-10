@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Lightweight log shipper for Logstash and Elasticsearch"
 HOMEPAGE="https://www.elastic.co/products/beats"
@@ -12,8 +12,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
-DEPEND=">=dev-lang/go-1.9.2"
+DEPEND=">=dev-lang/go-1.10.3"
 RDEPEND="!app-admin/filebeat-bin"
+
+# Do not complain about CFLAGS etc since go projects do not use them.
+QA_FLAGS_IGNORED='.*'
 
 S="${WORKDIR}/src/github.com/elastic/beats"
 
@@ -21,6 +24,16 @@ src_unpack() {
 	mkdir -p "${S%/*}" || die
 	default
 	mv beats-${PV} "${S}" || die
+}
+
+src_prepare() {
+	default
+
+	# avoid Elastic license
+	rm -r x-pack || die
+
+	# use ${PV} instead of git commit id
+	sed -i "s/\(COMMIT_ID=\).*/\1${PV}/g" "${S}/libbeat/scripts/Makefile" || die
 }
 
 src_compile() {
@@ -33,16 +46,10 @@ src_install() {
 	fperms 0750 /var/{lib,log}/${PN}
 
 	newconfd "${FILESDIR}/${PN}.confd" ${PN}
-	newinitd "${FILESDIR}/${PN}.initd" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd.1" ${PN}
 
 	docinto examples
-	dodoc ${PN}/{filebeat.yml,filebeat.full.yml}
-
-	insinto "/etc/${PN}"
-	doins ${PN}/{filebeat.template.json,filebeat.template-es2x.json,filebeat.template-es6x.json}
-
-	exeinto "/usr/share/${PN}"
-	doexe libbeat/scripts/migrate_beat_config_1_x_to_5_0.py
+	dodoc ${PN}/{filebeat.yml,filebeat.reference.yml}
 
 	dobin filebeat/filebeat
 }
@@ -50,13 +57,10 @@ src_install() {
 pkg_postinst() {
 	if [[ -n "${REPLACING_VERSIONS}" ]]; then
 		elog "Please read the migration guide at:"
-		elog "https://www.elastic.co/guide/en/beats/libbeat/5.0/upgrading.html"
-		elog ""
-		elog "The migration script:"
-		elog "${EROOT%/}/usr/share/filebeat/migrate_beat_config_1_x_to_5_0.py"
+		elog "https://www.elastic.co/guide/en/beats/libbeat/$(ver_cut 1-2)/upgrading.html"
 		elog ""
 	fi
 
 	elog "Example configurations:"
-	elog "${EROOT%/}/usr/share/doc/${PF}/examples"
+	elog "${EROOT}/usr/share/doc/${PF}/examples"
 }

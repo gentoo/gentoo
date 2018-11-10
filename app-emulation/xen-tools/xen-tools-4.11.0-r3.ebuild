@@ -17,7 +17,7 @@ if [[ $PV == *9999 ]]; then
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	UPSTREAM_VER=
+	UPSTREAM_VER=2
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
 	GENTOO_VER=14
@@ -108,8 +108,7 @@ DEPEND="${COMMON_DEPEND}
 		dev-texlive/texlive-latexextra
 		media-gfx/transfig
 	)
-	hvm? ( x11-base/xorg-proto
-		!net-libs/libiscsi )
+	hvm? ( x11-base/xorg-proto )
 	qemu? (
 		app-arch/snappy:=
 		x11-libs/pixman
@@ -140,7 +139,9 @@ QA_PREBUILT="
 	usr/libexec/xen/bin/ivshmem-server
 	usr/libexec/xen/bin/qemu-img
 	usr/libexec/xen/bin/qemu-io
+	usr/libexec/xen/bin/qemu-keymap
 	usr/libexec/xen/bin/qemu-nbd
+	usr/libexec/xen/bin/qemu-pr-helper
 	usr/libexec/xen/bin/qemu-system-i386
 	usr/libexec/xen/bin/virtfs-proxy-helper
 	usr/libexec/xen/libexec/xen-bridge-helper
@@ -355,6 +356,7 @@ src_configure() {
 	use system-seabios && myconf+=" --with-system-seabios=/usr/share/seabios/bios.bin"
 	use system-qemu && myconf+=" --with-system-qemu=/usr/bin/qemu-system-x86_64"
 	use amd64 && myconf+=" $(use_enable qemu-traditional)"
+	tc-ld-disable-gold # Bug 669570
 	econf ${myconf}
 }
 
