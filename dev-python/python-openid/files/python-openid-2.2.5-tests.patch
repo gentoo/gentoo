@@ -1,0 +1,10 @@
+--- admin/runtests.orig	2016-01-01 03:32:55.835000000 +0000
++++ admin/runtests	2016-01-01 03:32:59.163000000 +0000
+@@ -93,7 +93,6 @@
+         'test_htmldiscover',
+         'test_nonce',
+         'test_openidyadis',
+-        'test_parsehtml',
+         'test_urinorm',
+         'test_yadis_discover',
+         'trustroot',

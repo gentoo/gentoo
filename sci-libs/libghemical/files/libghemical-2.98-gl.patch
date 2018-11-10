@@ -1,0 +1,13 @@
+diff --git a/src/typedef.h b/src/typedef.h
+index 8d2efcc..1e304e8 100644
+--- a/src/typedef.h
++++ b/src/typedef.h
+@@ -27,7 +27,7 @@
+ 
+ // comment this out if you have no GL/gl.h available...
+ 
+-#define HAVE_GL_H	// 2008-07-31 ; also with mingw comment this out???
++// #define HAVE_GL_H	// 2008-07-31 ; also with mingw comment this out??? 
+ 
+ // added by Robert Williams for Compaq cxx, alpha 11/28/01
+ 

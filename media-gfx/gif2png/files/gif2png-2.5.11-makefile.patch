@@ -1,0 +1,39 @@
+Respect CFLAGS/LDFLAGS/DESTDIR and don't try to run missing tests.
+
+--- gif2png-2.5.11/Makefile
++++ gif2png-2.5.11/Makefile
+@@ -2,8 +2,7 @@
+ 
+ VERSION = 2.5.11
+ 
+-CFLAGS = -DVERSION=\"$(VERSION)\" -O2
+-LDFLAGS = -s
++CFLAGS += -DVERSION=\"$(VERSION)\"
+ 
+ SOURCES = 437_l1.c gif2png.c gifread.c memory.c version.c
+ OBJECTS = $(SOURCES:.c=.o)
+@@ -28,19 +27,16 @@
+ web2png.1: web2png.xml
+ 	xmlto man web2png.xml
+ 
+-check:
+-	cd test; make --quiet test
+-
+ clean:
+ 	rm -f gif2png *.o gif2png.1 web2png.1
+ 
+-prefix?=/usr
++prefix ?= /usr
+ 
+ install: gif2png gif2png.1 web2png.1
+-	mkdir -p $(prefix)/bin
+-	mkdir -p $(prefix)/share/man/man1
+-	cp gif2png web2png $(prefix)/bin/
+-	cp gif2png.1 web2png.1 $(prefix)/share/man/man1/
++	mkdir -p $(DESTDIR)$(prefix)/bin
++	mkdir -p $(DESTDIR)$(prefix)/share/man/man1
++	cp gif2png web2png $(DESTDIR)$(prefix)/bin/
++	cp gif2png.1 web2png.1 $(DESTDIR)$(prefix)/share/man/man1/
+ 
+ uninstall:
+ 	rm $(prefix)/bin/gif2png $(prefix)/bin/web2png

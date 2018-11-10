@@ -1,0 +1,18 @@
+You will need access to postgresql database to use davical.
+
+Read /usr/share/doc/www-apps/davical-${PVR}/INSTALL.gz for installation
+instructions.
+Release notes are available at
+http://wiki.davical.org/w/Release_Notes/${PVR}.
+Full documentation and wiki on http://davical.org
+
+If you are upgrading from a previous version of davical, don't forget to
+upgrade the database structure with
+	cd /usr/share/webapps/davical/${PVR}/sqlscripts/
+	./update-davical-database -dbuser xxxxxxx -appuser xxxxxx
+
+You can safely ignore any message about missing time_zone table.
+
+If you are upgrading from a version <= 0.9.8.4 please note inc/ and locale/
+have been moved away from the htdocs directory and placed into hostroot for
+safety reasons.

@@ -1,0 +1,14 @@
+--- vhdl-mode-3.33.21-orig/vhdl-mode.info	2007-08-10 12:07:23.000000000 +0200
++++ vhdl-mode-3.33.21/vhdl-mode.info	2007-09-23 17:37:09.000000000 +0200
+@@ -1,6 +1,11 @@
+ This is vhdl-mode.info, produced by makeinfo version 4.0 from
+ vhdl-mode.texi.
+ 
++INFO-DIR-SECTION Emacs
++START-INFO-DIR-ENTRY
++* VHDL Mode: (vhdl-mode).   Emacs mode for editing VHDL files.
++END-INFO-DIR-ENTRY
++
+    Copyright (C) 1997 - 2002 Reto Zimmermann <reto@gnu.org> Copyright
+ (C) 1995 - 1997 Rodney J. Whitby <software.vhdl-mode@rwhitby.net>
+ 

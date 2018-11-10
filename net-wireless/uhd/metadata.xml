@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>zx2c4@gentoo.org</email>
+		<name>Jason A. Donenfeld</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">EttusResearch/uhd</remote-id>
+	</upstream>
+	<use>
+		<flag name="b100">support B100 hardware</flag>
+		<flag name="b200">support B200, B210, B200mini, B205mini hardware</flag>
+		<flag name="e300">support E300, E310 hardware</flag>
+		<flag name="mpmd">support N300, N310 hardware</flag>
+		<flag name="octoclock">Octoclock Network Support</flag>
+		<flag name="n230">support N230 harware</flag>
+		<flag name="usrp1">support USRP1 hardware</flag>
+		<flag name="usrp2">support USRP2, N200, N210 hardware</flag>
+		<flag name="utils">utilities needed to list, query, calibrate, or update FPGA/Firmware</flag>
+		<flag name="x300">support X300, X310 hardware</flag>
+	</use>
+</pkgmetadata>

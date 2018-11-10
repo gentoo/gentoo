@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Pegex</remote-id>
+    <remote-id type="cpan-module">Pegex</remote-id>
+    <remote-id type="cpan-module">Pegex::Base</remote-id>
+    <remote-id type="cpan-module">Pegex::Bootstrap</remote-id>
+    <remote-id type="cpan-module">Pegex::Compiler</remote-id>
+    <remote-id type="cpan-module">Pegex::Constant</remote-id>
+    <remote-id type="cpan-module">Pegex::Grammar</remote-id>
+    <remote-id type="cpan-module">Pegex::Grammar::Atoms</remote-id>
+    <remote-id type="cpan-module">Pegex::Input</remote-id>
+    <remote-id type="cpan-module">Pegex::Module</remote-id>
+    <remote-id type="cpan-module">Pegex::Optimizer</remote-id>
+    <remote-id type="cpan-module">Pegex::Parser</remote-id>
+    <remote-id type="cpan-module">Pegex::Parser::Indent</remote-id>
+    <remote-id type="cpan-module">Pegex::Pegex::AST</remote-id>
+    <remote-id type="cpan-module">Pegex::Pegex::Grammar</remote-id>
+    <remote-id type="cpan-module">Pegex::Receiver</remote-id>
+    <remote-id type="cpan-module">Pegex::Regex</remote-id>
+    <remote-id type="cpan-module">Pegex::Tree</remote-id>
+    <remote-id type="cpan-module">Pegex::Tree::Wrap</remote-id>
+  </upstream>
+</pkgmetadata>

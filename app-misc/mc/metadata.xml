@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>slyfox@gentoo.org</email>
+    <name>Sergei Trofimovich</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>polynomial-c@gentoo.org</email>
+    <name>Lars Wendler</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>desktop-misc@gentoo.org</email>
+    <name>Gentoo Desktop Miscellaneous Project</name>
+  </maintainer>
+  <use>
+    <flag name="edit">Compile and install the mcedit application</flag>
+    <flag name="mclib">Compile and install the libmc.so shared library</flag>
+    <flag name="sftp">Add support for sftp (uses <pkg>net-libs/libssh2</pkg> for it).</flag>
+    <flag name="slang">Use <pkg>sys-libs/slang</pkg> instead of <pkg>sys-libs/ncurses</pkg>.</flag>
+    <flag name="xdg">Toggles mc's config dir location. Enable for $XDG_CONFIG_HOME/mc, disable for $HOME/.mc</flag>
+  </use>
+</pkgmetadata>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This library provides a number of common functions and types useful
+		in statistics.  We focus on high performance, numerical robustness,
+		and use of good algorithms.  Where possible, we provide
+		references to the statistical literature.
+		
+		The library's facilities can be divided into four broad categories:
+		
+		* Working with widely used discrete and continuous probability
+		distributions.  (There are dozens of exotic distributions in use;
+		we focus on the most common.)
+		
+		* Computing with sample data: quantile estimation, kernel density
+		estimation, histograms, bootstrap methods, significance testing,
+		and autocorrelation analysis.
+		
+		* Random variate generation under several different distributions.
+		
+		* Common statistical tests for significant differences between
+		samples.
+		
+		Changes in 0.10.0.0:
+		
+		* The type classes @Mean@ and @Variance@ are split in two. This is
+		required for distributions which do not have finite variance or
+		mean.
+		
+		* The @S.Sample.KernelDensity@ module has been renamed, and
+		completely rewritten to be much more robust.  The older module
+		oversmoothed multi-modal data.  (The older module is still
+		available under the name @S.Sample.KernelDensity.Simple@).
+		
+		* Histogram computation is added, in @S.Sample.Histogram@.
+		
+		* Forward and inverse discrete Fourier and cosine transforms are
+		added, in @S.Transform@.
+		
+		* Root finding is added, in @S.Math.RootFinding@.
+		
+		* The @complCumulative@ function is added to the @Distribution@
+		class in order to accurately assess probalities P(X&gt;x) which are
+		used in one-tailed tests.
+		
+		* A @stdDev@ function is added to the @Variance@ class for
+		distributions.
+		
+		* The constructor @S.Distribution.normalDistr@ now takes standard
+		deviation instead of variance as its parameter.
+		
+		* A bug in @S.Quantile.weightedAvg@ is fixed. It produced a wrong
+		answer if a sample contained only one element.
+		
+		* Bugs in quantile estimations for chi-square and gamma distribution
+		are fixed.
+		
+		* Integer overlow in @mannWhitneyUCriticalValue@ is fixed. It
+		produced incorrect critical values for moderately large
+		samples. Something around 20 for 32-bit machines and 40 for 64-bit
+		ones.
+		
+		* A bug in @mannWhitneyUSignificant@ is fixed. If either sample was
+		larger than 20, it produced a completely incorrect answer.
+		
+		* One- and two-tailed tests in @S.Tests.NonParametric@ are selected
+		with sum types instead of @Bool@.
+		
+		* Test results returned as enumeration instead of @Bool@.
+		
+		* Performance improvements for Mann-Whitney U and Wilcoxon tests.
+		
+		* Module @S.Tests.NonParamtric@ is split into @S.Tests.MannWhitneyU@
+		and @S.Tests.WilcoxonT@
+		
+		* @sortBy@ is added to @S.Function@.
+		
+		* Mean and variance for gamma distribution are fixed.
+		
+		* Much faster cumulative probablity functions for Poisson and
+		hypergeometric distributions.
+		
+		* Better density functions for gamma and Poisson distributions.
+		
+		* Student-T, Fisher-Snedecor F-distributions and Cauchy-Lorentz
+		distrbution are added.
+		
+		* The function @S.Function.create@ is removed. Use @generateM@ from
+		the @vector@ package instead.
+		
+		* Function to perform approximate comparion of doubles is added to
+		@S.Function.Comparison@
+		
+		* Regularized incomplete beta function and its inverse are added to
+		@S.Function@.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">bos/statistics</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+    use net
+}
+
+start() {
+    ebegin "Starting nagircbot"
+    start-stop-daemon --start -x /usr/bin/nagircbot -- $BOTCONF
+    eend $? "Failed to start nagircbot"
+}
+
+stop() {
+    ebegin "Stopping nagircbot"
+    start-stop-daemon --stop -x /usr/bin/nagircbot
+    eend $? "Failed to stop nagircbot"
+}

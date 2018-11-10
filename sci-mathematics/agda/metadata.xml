@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+  <email>sci-mathematics@gentoo.org</email>
+  <name>Gentoo Mathematics Project</name>
+  </maintainer>
+<maintainer type="project">
+  <email>haskell@gentoo.org</email>
+  <name>Gentoo Haskell</name>
+  </maintainer>
+<longdescription lang="en">
+  Agda is an interactive proof editor, or proof assistant. Its input language,
+  called Agda language (or simply Agda), is based on a constructive type
+  theory á la Martin-Löf, extended with dependent record types,
+  inductive definitions, module structures and a class hierarchy mechanism.
+</longdescription>
+<use>
+  <flag name="cpphs">Use cpphs instead of cpp.</flag>
+  <flag name="stdlib">Install the standard library.</flag>
+  <flag name="uhc">Add support for the uhc backend.</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,20 @@
+ configure.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/configure.in b/configure.in
+index a21d664..263929e 100644
+--- a/configure.in
++++ b/configure.in
+@@ -8,10 +8,11 @@ dnl if test "$has_curses" = "false" ; then
+ dnl  AC_MSG_ERROR([Fatal error: couldn't find ncurses/curses.])
+ dnl fi
+ 
++PKG_CHECK_MODULES([NCURSES], [ncurses],[CURSES_LIB=${NCURSES_LIBS}],[
+ MP_WITH_CURSES
+ if test "x$CURSES_LIB" = "x" ; then
+   AC_MSG_ERROR([Fatal error: couldn't find ncurses/curses.])
+-fi
++fi])
+ AC_SUBST(CURSES_LIB)
+ 
+ AC_OUTPUT(Makefile contrib/Makefile doc/Makefile src/Makefile m4/Makefile cdargs.spec)

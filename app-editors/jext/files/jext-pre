@@ -1,0 +1,91 @@
+# This script launches Jext, the Java text editor.
+# It checks for a $HOME/.jext directory and eventually creates it.
+# Next it checks for a /etc/jextrc and $JEXT_CONFFILE (~/.jext/variables) files which define the JEXT_HOME JAVA_CMD JAVA_OPT CLASSPATH and ToShow variables. The first is system wide(used in RPM install mainly), the second is per user.
+# If this file doesn't exist the script creates it by asking the options to the user.
+
+# Sharpshooter 23/02/2002
+# Blaisorblade 18/11/2002
+
+#For special cases about different config files(for developers with working
+#copy and an unstable one to be tested).
+if [ "$JEXT_CONFFILE" = "" ]
+then
+	JEXT_CONFFILE=~/.jext/variables
+fi
+
+# Help
+if  [ "$1" = "--help" -o "$1" = "-h" ]
+then
+	echo "This script launch Jext the Java text editor."
+	echo "Usage : $0 [--reconf] [files]"
+	echo "--reconf 		doesn't start jext but clears the"
+	echo "			$JEXT_CONFFILE file with the settings to start jext"
+	echo "			(jext & java location and jext options)."
+	exit 0
+fi
+
+if [ "$1" = "--reconf" ]
+then
+	echo "Clearing $JEXT_CONFFILE, you'll have to reenter jext & java \
+interpreter location"
+	rm -f "$JEXT_CONFFILE"
+	exit 0
+fi
+
+
+# Check for the user's ~/.jext directory.
+if ! [ -d ~/.jext ]
+then
+	echo "It seems you don't have a .jext directory in your home dir."
+	echo "I create it."
+	echo
+	mkdir -p ~/.jext/xinsert
+fi
+
+
+
+# Check for the $HOME/.jext/variables file.
+if ! [ -f $JEXT_CONFFILE -o -f /etc/jextrc ]
+then
+	#Let's add some explaination in the config file.
+	cat >$JEXT_CONFFILE <<EOM
+#This is included when launching Jext. It is a normal shell script \
+used to define env vars
+#Meanings of settings:
+#JEXT_HOME The home dir of jext(under which it finds the lib and so on dirs)
+#JAVA_CMD The complete path for the java command
+#JAVA_OPT The options to be passed to the java command(not to Jext itself!)
+#CLASSPATH The extra classpath to be specified(for cases such as AntWork plugin)
+#ToShow If this is set to y the output is not redirected to /dev/null;
+# Mainly for developers who want to trace Jext output(you could also use
+# the DickTracy plugin).
+EOM
+#----
+	JEXT_HOME="/usr/share/jext/lib"
+	echo "JEXT_HOME="$JEXT_HOME >> $JEXT_CONFFILE
+#----
+	ToShow=
+	echo "ToShow="$ToShow>>$JEXT_CONFFILE
+fi
+
+# Extract the contents of the $JEXT_CONFFILE file.
+[ -f /etc/jextrc ] && source /etc/jextrc
+[ -f $JEXT_CONFFILE ] && source $JEXT_CONFFILE
+
+#Needed to make Jext find his plugins(it searches them in `pwd`/plugins)
+for i in $@
+do
+  if [ "${i:0:1}" != "/" -a "${i:0:1}" != "-" ]; then #If the first char of $i is not a / then
+    files="$files `pwd`/$i"      #it is a relative path so we must make it absolute.
+  elif [ "$i" != "-" ]; then
+    files="$files $i"
+  else
+    case "$i" in
+      --reconf|--help|-h)
+      ;;
+      *)
+        files="$files $i"
+      ;;
+    esac
+  fi
+done

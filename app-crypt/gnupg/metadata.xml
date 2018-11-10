@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>k_f@gentoo.org</email>
+		<name>Kristian Fiskerstrand</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>crypto@gentoo.org</email>
+		<name>Crypto</name>
+	</maintainer>
+	<longdescription>
+	GnuPG is a complete and free implementation of the OpenPGP standard as
+	defined by RFC4880.
+	</longdescription>
+	<use>
+		<flag name="smartcard">
+		Build scdaemon software. Enables usage of OpenPGP cards. For
+		other type of smartcards, try <pkg>app-crypt/gnupg-pkcs11-scd</pkg>.
+		Bring in <pkg>dev-libs/libusb</pkg> as a dependency; enable scdaemon.
+		</flag>
+		<flag name="usb">
+		Build direct CCID access for scdaemon; requires <pkg>dev-libs/libusb</pkg>.
+		</flag>
+		<flag name="user-socket">
+		try a socket directory which is not removed by init manager at session end
+		</flag>
+		<flag name="mta">
+		Build mta support using <pkg>virtual/mta</pkg>.
+		</flag>
+		<flag name="tofu">
+		Enable support for Trust on First use trust model; requires <pkg>dev-db/sqlite</pkg>.
+		</flag>
+		<flag name="tools">
+		Install extra tools (including gpgsplit and gpg-zip).
+		</flag>
+		<flag name="wks-server">
+		Install the wks-server
+		</flag>
+	</use>
+</pkgmetadata>

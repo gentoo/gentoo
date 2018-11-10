@@ -1,0 +1,14 @@
+# /etc/conf.d/amavisd-milter
+# Check amavisd-milter man page for more options.
+
+# Unix domain socket locations
+SOCKET="/var/amavis/amavisd-milter.sock"
+AM_SOCKET="/var/amavis/amavisd.sock"
+
+# Working directory
+AM_TMP="/var/amavis/tmp"
+
+# Pid file location
+PIDFILE="/var/amavis/amavisd-milter.pid"
+
+DOPTIONS="-s $SOCKET -p $PIDFILE -S $AM_SOCKET -w $AM_TMP"

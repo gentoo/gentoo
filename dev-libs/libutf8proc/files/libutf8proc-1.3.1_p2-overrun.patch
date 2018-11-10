@@ -1,0 +1,33 @@
+--- libutf8proc-1.3.1-2/test/iterate.c
++++ libutf8proc-1.3.1-2/test/iterate.c
+@@ -13,11 +13,17 @@ static void testbytes(unsigned char *buf, int len, utf8proc_ssize_t retval, int
+     utf8proc_int32_t out[16];
+     utf8proc_ssize_t ret;
+ 
++    /* Make a copy to ensure that memory is left uninitialized after "len"
++     * bytes. This way, Valgrind can detect overreads.
++     */
++    unsigned char tmp[16];
++    memcpy(tmp, buf, len);
++
+     tests++;
+-    if ((ret = utf8proc_iterate(buf, len, out)) != retval) {
++    if ((ret = utf8proc_iterate(tmp, len, out)) != retval) {
+         fprintf(stderr, "Failed (%d):", line);
+         for (int i = 0; i < len ; i++) {
+-            fprintf(stderr, " 0x%02x", buf[i]);
++            fprintf(stderr, " 0x%02x", tmp[i]);
+         }
+         fprintf(stderr, " -> %zd\n", ret);
+         error++;
+--- libutf8proc-1.3.1-2/src/utf8proc.c
++++ libutf8proc-1.3.1-2/src/utf8proc.c
+@@ -128,7 +128,7 @@ UTF8PROC_DLLEXPORT utf8proc_ssize_t utf8proc_iterate(
+   if ((uc - 0xc2) > (0xf4-0xc2)) return UTF8PROC_ERROR_INVALIDUTF8;
+   if (uc < 0xe0) {         // 2-byte sequence
+      // Must have valid continuation character
+-     if (!utf_cont(*str)) return UTF8PROC_ERROR_INVALIDUTF8;
++     if (str >= end || !utf_cont(*str)) return UTF8PROC_ERROR_INVALIDUTF8;
+      *dst = ((uc & 0x1f)<<6) | (*str & 0x3f);
+      return 2;
+   }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>0xd34df00d@gmail.com</email>
+		<name>Georg Rudoy</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="autosearch">Provide automatic search suggestions for Poshuku.</flag>
+		<flag name="cleanweb">Build CleanWeb for ad blocking compatible with Firefox's AdBlock+.</flag>
+		<flag name="dcac">Build color inverter module providing a night mode.</flag>
+		<flag name="fatape">Build FatApe, GreaseMonkey userscripts support layer.</flag>
+		<flag name="filescheme">Build FileScheme for accessing local URLs.</flag>
+		<flag name="foc">Build FOC for Flash-on-Click functionality.</flag>
+		<flag name="fua">Build FUA for faking user agents for different hosts.</flag>
+		<flag name="keywords">Build Keywords for adjusting search shortcuts.</flag>
+		<flag name="onlinebookmarks">Build OnlineBookmarks for syncing bookmarks with social bookmarking services like Read It Later.</flag>
+		<flag name="qrd">Build module for displaying the QR code of a web page.</flag>
+		<flag name="speeddial">Build SpeedDial module.</flag>
+		<flag name="webengine">Build WebEngine- (that is, Chromium-)based rendering backend.</flag>
+	</use>
+</pkgmetadata>

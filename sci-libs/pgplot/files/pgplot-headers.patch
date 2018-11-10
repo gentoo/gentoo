@@ -1,0 +1,109 @@
+--- a/sys/grtermio.c	2008-10-29 17:42:48.000000000 +0000
++++ b/sys/grtermio.c	2008-10-29 19:54:43.000000000 +0000
+@@ -7,6 +7,10 @@
+ 
+ #include <stdio.h>
+ #include <termios.h>
++#include <stdlib.h>
++#include <unistd.h>
++#include <string.h>
++#include <fcntl.h>
+ 
+ #ifdef PG_PPU
+ #define GROTER groter_
+--- a/sys/grfileio.c	2008-10-29 15:10:02.000000000 +0000
++++ b/sys/grfileio.c	2008-10-29 17:56:50.000000000 +0000
+@@ -17,7 +17,9 @@
+  */
+ 
+ #include <stdlib.h>
++#include <unistd.h>
+ #include <stdio.h>
++#include <string.h>
+ #include <sys/types.h>
+ #include <fcntl.h>
+ 
+--- a/drivers/figdisp_comm.c	2008-10-29 15:09:15.000000000 +0000
++++ b/drivers/figdisp_comm.c	2008-10-29 17:54:08.000000000 +0000
+@@ -17,6 +17,8 @@
+ 
+ /* The system include files */
+ #include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
+ 
+ /* Get ntohs prototype or macro */
+ 
+--- a/pgdispd/resdb.c	2008-10-29 18:22:41.000000000 +0000
++++ b/pgdispd/resdb.c	2008-10-29 20:10:22.000000000 +0000
+@@ -47,6 +47,8 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
++
+ #ifndef VMS
+ #include <pwd.h>
+ #endif
+@@ -1042,7 +1044,6 @@
+ 	int uid;
+ 
+ 	extern char *getenv();
+-	extern int getuid();
+ 	extern struct passwd *getpwuid();
+ 	struct passwd *pw;
+ 	register char *ptr;
+--- a/pgdispd/proccom.c	2008-10-29 15:03:34.000000000 +0000
++++ b/pgdispd/proccom.c	2008-10-29 18:15:48.000000000 +0000
+@@ -90,6 +90,7 @@
+ 
+ /* The system include files */
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include <netinet/in.h>
+ 
+@@ -163,7 +164,6 @@
+ 	void drawline();	/* draw a line in the bitmap window */
+ 	Pixmap XCreatePixmap();
+ 
+-	char *malloc();
+ 
+ 	if (!len & savedshorts)
+ 	{ /* an incomplete command was sent! */
+--- a/pgdispd/getvisuals.c	2008-10-29 17:59:37.000000000 +0000
++++ b/pgdispd/getvisuals.c	2008-10-29 18:00:18.000000000 +0000
+@@ -30,6 +30,7 @@
+ #include "messages.h"
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ #define MAX_DEPTH	24	/* the maximum visual depth to use */
+ 
+--- a/pgdispd/figcurs.c	2008-10-29 17:58:22.000000000 +0000
++++ b/pgdispd/figcurs.c	2008-10-29 18:14:02.000000000 +0000
+@@ -19,6 +19,7 @@
+ 
+ /* The standard include files */
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include <netinet/in.h>
+ 
+@@ -113,7 +114,6 @@
+ 	void getbuttonval();
+ 	int getkeyval();
+ 
+-	char *malloc();
+ 
+ 	if (event.type == ButtonPress) getbuttonval(event.xbutton.button, &val);
+ 	else if (!getkeyval(event, &val)) return(1);
+@@ -167,7 +167,6 @@
+ 	void getbuttonval();
+ 	int getkeyval();
+ 
+-	char *malloc();
+ 
+ 	if (event.type == ButtonPress) getbuttonval(event.xbutton.button, &val);
+ 	else if (!getkeyval(event, &val)) return(1);

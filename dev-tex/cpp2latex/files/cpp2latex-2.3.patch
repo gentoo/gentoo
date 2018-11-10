@@ -1,0 +1,44 @@
+--- a/cpp2latex/main.cpp	Thu Mar  6 08:15:36 2003
++++ a/cpp2latex/main.cpp	Tue Jan 24 21:47:17 2006
+@@ -27,12 +27,14 @@
+ #include <stdio.h>
+ #include <getopt.h>
+ 
++using namespace std;
++
+ struct replace{
+ 	std::string voraus;
+ 	std::string ersetzt;
+ };
+ 
+-std::vector <replace> rules;
++std::vector<struct replace> rules;
+ std::string syntax( std::ifstream *src, char *c );
+ void initReplace();
+ bool satzzeichen( char c );
+@@ -162,9 +164,13 @@
+ 				if( comment && !comment1 )
+ 				{
+ 					file.get(c);
+-					if(c=='/') { out+="/}"; comment=false; }
+-						else { if(c=='\n') out+="\\\\"; }
+-					if( !( (c=='*')||(c=='/') )) out+=c;
++					if(c=='/') { 
++						out+="/}"; 
++						comment=false; 
++					} else if (c=='\n') out+="\\\\"; 
++					/* .alex. 1 line substitution*/
++					else file.seekg(-1,ios::cur);
++					//if( !( (c=='*')||(c=='/') )) out+=c;
+ 				}
+ 				break;
+ 
+@@ -323,7 +329,7 @@
+ /** initialize the replacementrules  */
+ void initReplace()
+ {
+-replace dummy;
++	struct replace dummy;
+ 	dummy.voraus = "and"; dummy.ersetzt = "\\textbf{and}"; rules.push_back(dummy);
+ 	dummy.voraus = "and_eq"; dummy.ersetzt = "\\textbf{and\\underline\\ eq}"; rules.push_back(dummy);
+ 	dummy.voraus = "asm"; dummy.ersetzt = "\\textbf{asm}"; rules.push_back(dummy);

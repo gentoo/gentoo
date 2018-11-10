@@ -1,0 +1,9 @@
+prefix=@GENTOO_PORTAGE_EPREFIX@/opt/nvidia-cg-toolkit
+libdir=${prefix}/GENTOO_LIBDIR
+includedir=${prefix}/include
+Name: nvidia-cg-toolkit
+Description: DESCRIPTION
+Version: VERSION
+URL: HOMEPAGE
+Libs: -L${libdir} -lCg
+Cflags: -I${includedir}/

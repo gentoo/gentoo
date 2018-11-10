@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>amynka@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>3dprint@gentoo.org</email>
+		<name>Gentoo 3D print</name>
+	</maintainer>
+	<longdescription lang="en">
+		levmar is a native ANSI C implementation of the Levenberg-Marquardt
+		optimization algorithm.  Both unconstrained and constrained (under
+		linear equations, inequality and box constraints)
+		Levenberg-Marquardt variants are included. The LM algorithm is an
+		iterative technique that finds a local minimum of a function that is
+		expressed as the sum of squares of nonlinear functions.
+	</longdescription>
+</pkgmetadata>

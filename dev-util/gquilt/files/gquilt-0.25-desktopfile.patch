@@ -1,0 +1,17 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Dec  2 13:22:44 UTC 2012
+Subject: match fd.o spec
+
+--- gquilt.desktop
++++ gquilt.desktop
+@@ -1,9 +1,8 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=gquilt Patch Manager
+ GenericName=Quilt Patch Manager
+ Exec=gquilt
+ Terminal=false
+ Type=Application
+ Icon=gquilt
+-Categories=GNOME;Application;Development;X-Fedora;
++Categories=GNOME;Development;X-Fedora;

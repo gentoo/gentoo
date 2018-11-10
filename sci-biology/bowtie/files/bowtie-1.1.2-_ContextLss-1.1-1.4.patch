@@ -1,0 +1,17 @@
+Description: Change class name of _Context_LSS
+ New version 1.4 of SeQan uses a different name of the class. 
+Forwarded: no
+Author: Gert Wollny <gw.fossdev@gmail.com>
+Last-Update: 2014-100-06
+
+--- a/diff_sample.h
++++ b/diff_sample.h
+@@ -856,7 +856,7 @@ void DifferenceCoverSample<TStr>::build(
+ 	{
+ 		Timer timer(cout, "  Invoking Larsson-Sadakane on ranks time: ", this->verbose());
+ 		VMSG_NL("  Invoking Larsson-Sadakane on ranks");
+-		_Context_LSS<TIndexOff> c;
++		ContextLss_<TIndexOff> c;
+ 		c.suffixsort(
+ 			(TIndexOff*)begin(_isaPrime, Standard()),
+ 			(TIndexOff*)begin(sPrime, Standard()),

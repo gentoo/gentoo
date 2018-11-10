@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="client/server system that allows its users to monitor and control a number of processes on UNIX-like operating systems"
+
+command="/usr/bin/supervisord"
+pidfile="/var/run/supervisord.pid"
+command_args="--nodaemon --pidfile ${pidfile} ${SUPD_OPTS}"
+command_background="yes"
+
+required_files="/etc/supervisord.conf"

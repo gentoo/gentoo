@@ -1,0 +1,100 @@
+--- configure.in	2011-08-19 01:11:06.000000000 -0400
++++ configure.in	2011-08-19 02:06:50.000000000 -0400
+@@ -320,6 +320,8 @@
+ AC_PROG_LN_S
+ AC_PROG_MAKE_SET
+ 
++AM_WITH_DMALLOC([cons_with_dmalloc="YES"],[cons_with_dmalloc="NO"])
++
+ dnl ### Compiler characteristics. ##################################
+ AC_AIX
+ AC_C_CONST
+@@ -578,51 +580,6 @@
+     fi]
+ )
+ 
+-cons_with_dmalloc="NO"
+-AC_ARG_WITH(dmalloc,
+-    AS_HELP_STRING([--with-dmalloc@<:@=PATH@:>@],
+-	[Compile in dmalloc support]),
+-    [if test "$withval" != "no"; then
+-	if test "$withval" != "yes"; then
+-	    DMALLOCCPPFLAGS="-I$withval/include"
+-	    if test "$use_dash_r" != "yes"; then
+-		DMALLOCLDFLAGS="-L$withval/lib"
+-	    else
+-		DMALLOCLDFLAGS="-L$withval/lib -R$withval/lib"
+-	    fi
+-	else
+-	    DMALLOCCPPFLAGS=""
+-	    DMALLOCLDFLAGS=""
+-	fi
+-
+-	oCPPFLAGS="$CPPFLAGS"
+-	oLDFLAGS="$LDFLAGS"
+-	oLIBS="$LIBS"
+-	have_dmalloc=no
+-
+-	CPPFLAGS="$CPPFLAGS $DMALLOCCPPFLAGS"
+-	LDFLAGS="$LDFLAGS $DMALLOCLDFLAGS"
+-
+-	AC_CHECK_HEADER([dmalloc.h],
+-	    [LIBS="$LIBS -ldmalloc"
+-	    AC_MSG_CHECKING(for dmalloc libraries -ldmalloc)
+-	    AC_TRY_LINK([#include <dmalloc.h>
+-		],[dmalloc_debug(0)],
+-		[AC_MSG_RESULT(yes)
+-		cons_with_dmalloc="YES"
+-		AC_DEFINE(HAVE_DMALLOC)
+-		have_dmalloc=yes],
+-		[AC_MSG_RESULT(no)])],)
+-
+-	if test $have_dmalloc = no; then
+-	    LIBS="$oLIBS"
+-	    CPPFLAGS="$oCPPFLAGS"
+-	    LDFLAGS="$oLDFLAGS"
+-	fi
+-    fi]
+-)
+-
+-
+ dnl ### Check for needed functions. ################################
+ 
+ dnl dnl The following basically stollen from the less-358 distribution, but
+--- /dev/null		2011-08-07 13:18:05.535976733 -0400
++++ m4/dmalloc.m4	2011-08-19 03:49:03.755073497 -0400
+@@ -0,0 +1,34 @@
++## ----------------------------------- ##                   -*- Autoconf -*-
++## Check if --with-dmalloc was given.  ##
++## From Franc,ois Pinard               ##
++## ----------------------------------- ##
++
++# Copyright (C) 1996, 1998, 1999, 2000, 2001, 2002, 2003, 2005, 2010,
++# 2011 Free Software Foundation, Inc.
++#
++# This file is free software; the Free Software Foundation
++# gives unlimited permission to copy and/or distribute it,
++# with or without modifications, as long as this notice is preserved.
++
++# serial 7
++
++dnl AM_WITH_DMALLOC([ACTION-IF-FOUND],[ACTION-IF-NOT])
++AC_DEFUN([AM_WITH_DMALLOC],
++[AC_MSG_CHECKING([if malloc debugging is wanted])
++AC_ARG_WITH([dmalloc],
++[AS_HELP_STRING([--with-dmalloc],
++                [use dmalloc, as in http://www.dmalloc.com])],
++[if test "$withval" = yes; then
++  AC_MSG_RESULT([yes])
++  AC_DEFINE([WITH_DMALLOC], [1],
++	    [Define if using the dmalloc debugging malloc package])
++  LIBS="$LIBS -ldmalloc"
++  LDFLAGS="$LDFLAGS -g"
++  [$1]
++else
++  AC_MSG_RESULT([no])
++  [$2]
++fi], [AC_MSG_RESULT([no])])
++])
++
++AU_DEFUN([fp_WITH_DMALLOC], [AM_WITH_DMALLOC])

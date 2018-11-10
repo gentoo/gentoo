@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <longdescription>
+    Silo is a library for reading and writing a wide variety of
+    scientific data to binary, disk files. The files Silo produces and
+    the data within them can be easily shared and exchanged between
+    wholly independently developed applications running on disparate
+    computing platforms.
+  </longdescription>
+  <use>
+    <flag name="silex">Build silex data browser</flag>
+  </use>
+  <maintainer type="person">
+    <email>slis@gentoo.org</email>
+  </maintainer>
+<maintainer type="project">
+    <email>cluster@gentoo.org</email>
+    <name>Gentoo Cluster Project</name>
+  </maintainer>
+</pkgmetadata>

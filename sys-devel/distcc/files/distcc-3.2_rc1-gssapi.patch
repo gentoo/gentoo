@@ -1,0 +1,36 @@
+diff -Naur distcc-3.2rc1.orig/configure.ac distcc-3.2rc1/configure.ac
+--- distcc-3.2rc1.orig/configure.ac	2011-10-21 13:40:55.000000000 +0900
++++ distcc-3.2rc1/configure.ac	2011-10-27 18:06:58.938922585 +0900
+@@ -15,6 +15,8 @@
+ AC_CONFIG_HEADERS(src/config.h)
+ AC_CANONICAL_HOST
+ 
++PKG_PROG_PKG_CONFIG
++
+ # FreeBSD installs its version of libpopt into /usr/local/, but does
+ # not put that on the default library and header path.
+ # Solaris doesn't even ship libpopt.  We used to add that path if
+@@ -502,16 +504,17 @@
+ 	    [provide mutual authentication services via the GSS-API])])
+ 
+ if test x"$with_auth" = xyes; then
+-        AC_SEARCH_LIBS([gss_init_sec_context],
+-                        [gssapi gssapi_krb5],
+-	                AC_DEFINE(HAVE_GSSAPI, 1, [Define if the GSS_API is available])
++        PKG_CHECK_MODULES(GSSAPI, libgssglue,
++	                [AC_DEFINE(HAVE_GSSAPI, 1, [Define if the GSS_API is available])
++	                CFLAGS="$CFLAGS $GSSAPI_CFLAGS"
++	                LIBS="$LIBS $GSSAPI_LIBS"
+ 	                AUTH_COMMON_OBJS="src/auth_common.o"
+ 	                AUTH_DISTCC_OBJS="src/auth_distcc.o"
+-	                AUTH_DISTCCD_OBJS="src/auth_distccd.o",
+-	                AC_MSG_FAILURE([--with-auth was given but no GSS-API library found])
++	                AUTH_DISTCCD_OBJS="src/auth_distccd.o"],
++	                [AC_MSG_FAILURE([--with-auth was given but no GSS-API library found])
+ 	                AUTH_COMMON_OBJS=""
+                         AUTH_DISTCC_OBJS=""
+-                        AUTH_DISTCCD_OBJS="")
++                        AUTH_DISTCCD_OBJS=""])
+ fi
+ 
+ AC_SUBST(AUTH_COMMON_OBJS)

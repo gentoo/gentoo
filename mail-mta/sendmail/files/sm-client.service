@@ -1,0 +1,14 @@
+[Unit]
+Description=Sendmail Mail Transport Client
+After=syslog.target network.target sendmail.service
+BindTo=sendmail.service
+
+[Service]
+Type=forking
+PIDFile=/var/spool/clientmqueue/sm-client.pid
+ExecStartPre=/bin/touch /var/spool/clientmqueue/sm-client.pid
+ExecStartPre=/bin/chown smmsp:smmsp /var/spool/clientmqueue/sm-client.pid
+ExecStart=/usr/sbin/sendmail -Ac -q30m -L sm-cm
+
+[Install]
+WantedBy=multi-user.target

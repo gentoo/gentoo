@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command=/opt/tivoli/tsm/client/ba/bin/dsmcad
+
+depend() {
+        use net
+        after dns dsmc
+}
+
+start() {
+        ebegin "Starting dsmcad"
+        start-stop-daemon --start --nicelevel 15 \
+                --exec ${command}
+        eend $?
+}
+
+stop() {
+        ebegin "Stopping dsmcad"
+        start-stop-daemon --stop \
+                --signal 1 \
+                --exec ${command}
+        eend $?
+}

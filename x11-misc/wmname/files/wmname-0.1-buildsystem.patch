@@ -1,0 +1,26 @@
+--- wmname-0.1/config.mk
++++ wmname-0.1/config.mk
+@@ -16,9 +16,9 @@
+ 
+ # flags
+ CPPFLAGS = -DVERSION=\"${VERSION}\"
+-CFLAGS = -std=c99 -pedantic -Wall -Os ${INCS} ${CPPFLAGS}
+-LDFLAGS = -s ${LIBS}
++CFLAGS += -std=c99 -pedantic ${INCS} ${CPPFLAGS}
++LDFLAGS += ${LIBS}
+ 
+ # compiler and linker
+-CC = cc
+-LD = ${CC}
++CC ?= cc
++LD ?= ${CC}
+--- wmname-0.1/Makefile
++++ wmname-0.1/Makefile
+@@ -23,7 +23,6 @@
+ wmname: ${OBJ}
+ 	@echo LD $@
+ 	@${LD} -o $@ ${OBJ} ${LDFLAGS}
+-	@strip $@
+ 
+ clean:
+ 	@echo cleaning

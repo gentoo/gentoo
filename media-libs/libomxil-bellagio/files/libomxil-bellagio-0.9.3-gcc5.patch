@@ -1,0 +1,19 @@
+Description: Fix FTBFS for GCC-5
+ With -Werror=logical-not-parentheses enabled, a line such as the
+ following causes the build to fail:
+ if(!omx_video_scheduler_component_Private->eState==OMX_TIME_ClockStateRunning)
+Author: Linn Crosetto <linn@hp.com>
+Bug-Debian: https://bugs.debian.org/777961
+Forwarded: no
+
+--- libomxil-bellagio-0.9.3.orig/src/components/videoscheduler/omx_video_scheduler_component.c
++++ libomxil-bellagio-0.9.3/src/components/videoscheduler/omx_video_scheduler_component.c
+@@ -313,7 +313,7 @@ OMX_BOOL omx_video_scheduler_component_C
+   }
+ 
+   /* do not send the data to sink and return back, if the clock is not running*/
+-  if(!omx_video_scheduler_component_Private->eState==OMX_TIME_ClockStateRunning){
++  if(omx_video_scheduler_component_Private->eState!=OMX_TIME_ClockStateRunning){
+     pInputBuffer->nFilledLen=0;
+     SendFrame = OMX_FALSE;
+     return SendFrame;

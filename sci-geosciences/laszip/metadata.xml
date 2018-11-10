@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-geosciences@gentoo.org</email>
+		<name>Gentoo Geosciences Project</name>
+	</maintainer>
+	<longdescription lang="en">
+An open-source utility for compressing LAS-stored LiDAR information in a
+lossless format.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">LASzip/LASzip</remote-id>
+	</upstream>
+</pkgmetadata>

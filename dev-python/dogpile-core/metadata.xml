@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription lang="en">
+		A "dogpile" lock, one which allows a single thread to generate an
+		expensive resource while other threads use the "old" value,
+		until the "new" value is ready.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">dogpile.core</remote-id>
+		<remote-id type="bitbucket">zzzeek/dogpile.core</remote-id>
+	</upstream>
+</pkgmetadata>

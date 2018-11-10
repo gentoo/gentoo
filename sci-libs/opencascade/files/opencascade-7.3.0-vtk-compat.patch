@@ -1,0 +1,13 @@
+--- a/src/IVtkVTK/IVtkVTK_ShapeData.cxx   2018-09-15 01:57:25.086783255 +0300
++++ b/src/IVtkVTK/IVtkVTK_ShapeData.cxx   2018-09-15 01:58:20.877779839 +0300
+@@ -29,6 +29,10 @@
+ #pragma warning(pop)
+ #endif
+ 
++#ifdef vtkGenericDataArray_h
++#define InsertNextTupleValue InsertNextTypedTuple
++#endif
++
+ IMPLEMENT_STANDARD_RTTIEXT(IVtkVTK_ShapeData,IVtk_IShapeData)
+ 
+ //================================================================

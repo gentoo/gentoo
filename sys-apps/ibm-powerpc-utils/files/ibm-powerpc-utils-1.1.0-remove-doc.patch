@@ -1,0 +1,23 @@
+--- a/Makefile
++++ b/Makefile
+@@ -12,19 +12,12 @@
+ TARBALL_FILES += $(FILES) Changelog
+ 
+ all:
+-	@echo "Building cmds files..."
+-	@$(MAKE) -C cmds
+-	@echo "Building scripts files..."
+-	@$(MAKE) -C scripts
+-	@echo "Building doc files..."
+-	@$(MAKE) -C doc
++	@$(foreach d,$(SUBDIRS), $(MAKE) -C $d;)
+ 
+ install: all
+-	@$(call install_doc,$(FILES),$(DESTDIR))
+ 	@$(foreach d,$(SUBDIRS), $(MAKE) -C $d install;)
+ 
+ uninstall: 
+-	@$(call uninstall_doc,$(FILES),$(DESTDIR))
+ 	@$(foreach d,$(SUBDIRS), $(MAKE) -C $d uninstall;)
+ 
+ rpm: all

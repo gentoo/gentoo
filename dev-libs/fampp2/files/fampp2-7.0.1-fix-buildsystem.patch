@@ -1,0 +1,78 @@
+Fix buildsystem, to avoid ugly and extremely brittle patching
+of the configure script and Makefile.in in the main ebuild.
+
+--- a/configure.in
++++ b/configure.in
+@@ -1,8 +1,8 @@
++AC_PREREQ([2.69])
++AC_INIT([fampp2],[7.0.1])
+ 
+-# require autoconf 2.13
+-AC_PREREQ(2.13)
+-
+-AC_INIT(src/Fampp2.hh)
++AC_CONFIG_MACRO_DIR([macros])
++AC_CONFIG_SRCDIR([src/Fampp2.hh])
+ 
+ FAMPPTWO_MAJOR=7
+ FAMPPTWO_MINOR=0
+@@ -22,9 +22,8 @@
+ VERSION=$FAMPP_VERSION
+ PACKAGE=fampp2
+ 
+-AM_CONFIG_HEADER(config.h)
+-AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
+-AM_MAINTAINER_MODE
++AC_CONFIG_HEADERS([config.h])
++AM_INIT_AUTOMAKE
+ 
+ AC_CANONICAL_HOST
+ AC_ISC_POSIX
+@@ -33,11 +32,7 @@
+ AC_PROG_CPP
+ AC_PROG_CXX
+ 
+-AC_STDC_HEADERS
+-#AC_ARG_PROGRAM
+-AC_DISABLE_FAST_INSTALL
+-AC_DISABLE_STATIC
+-AM_PROG_LIBTOOL
++LT_INIT
+ 
+ 
+ dnl Checks for libraries.
+@@ -58,15 +53,12 @@
+ ###############################################################################
+ 
+ 
+-CFLAGS=" $STLPORT_CFLAGS $LOKI_CFLAGS $SIGC_CFLAGS $CFLAGS -O0 -g  "
+-CXXFLAGS=" $STLPORT_CFLAGS  $CXXFLAGS -O0 -g $LOKI_LIBS $SIGC_CFLAGS  "
+-LDFLAGS=" $STLPORT_LIBS $SIGC_LIBS $LDFLAGS  -Wl,-O1 -Wl,--hash-style=both"
+-AC_SUBST(CFLAGS)
+-AC_SUBST(CPPFLAGS)
+-AC_SUBST(LDFLAGS)
+-AC_SUBST(CXXFLAGS)
+-AC_SUBST(CXXCPPFLAGS)
++CFLAGS="${CFLAGS} ${STLPORT_CFLAGS} ${LOKI_CFLAGS} ${SIGC_CFLAGS}"
++CXXFLAGS="${CXXFLAGS} ${STLPORT_CFLAGS} ${LOKI_CFLAGS} ${SIGC_CFLAGS}"
++LIBS="${LIBS} ${STLPORT_LIBS} ${LOKI_LIBS} ${SIGC_LIBS}"
+ 
++AC_ARG_WITH([examples], [install examples])
++AM_CONDITIONAL([EXAMPLES], [test "x$with_examples" = "xyes"])
+ 
+ dnl if test "x${prefix}" = 'xNONE'; then
+ dnl         prefix=${ac_default_prefix};
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,7 +1,10 @@
+ AUTOMAKE_OPTIONS = dist-bzip2 subdir-objects
+ 
+ NULL=
+-SUBDIRS = src examples
++SUBDIRS = src
++if EXAMPLES
++SUBDIRS += examples
++endif
+ 
+ EXTRA_DIST = fampp.spec fampp.spec.in fampp2.pc.in fampp2.pc
+ 

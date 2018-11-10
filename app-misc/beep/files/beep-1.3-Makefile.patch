@@ -1,0 +1,26 @@
+--- a/Makefile	2002-03-29 09:37:22.000000000 -0800
++++ b/Makefile	2009-03-27 22:19:18.000000000 -0700
+@@ -1,17 +1,18 @@
+-CC=gcc
+-FLAGS=-Wall
++CC ?= gcc
++LDFLAGS ?=
++CFLAGS ?= -Wall
+ EXEC_NAME=beep
+ INSTALL_DIR=/usr/bin
+ MAN_FILE=beep.1.gz
+-MAN_DIR=/usr/man/man1
++MAN_DIR=/usr/share/man/man1
+ 
+ default : beep
+ 
+ clean : 
+-	rm ${EXEC_NAME}
++	rm -f ${EXEC_NAME}
+ 
+ beep : beep.c
+-	${CC} ${FLAGS} -o ${EXEC_NAME} beep.c
++	${CC} ${CFLAGS} ${LDFLAGS} -o ${EXEC_NAME} beep.c
+ 
+ install : 
+ 	cp ${EXEC_NAME} ${INSTALL_DIR}

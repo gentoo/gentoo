@@ -1,0 +1,11 @@
+--- orpie-1.5.1.orig/orpierc
++++ orpie-1.5.1/orpierc
+@@ -4,7 +4,7 @@
+ # directory for storing Orpie data
+ set datadir="~/.orpie/"
+ # editor used for fullscreen viewing of stack elements
+-set editor="vi"
++set editor="${EDITOR}"
+ # whether or not to hide the help panel
+ set hide_help="false"
+ # whether or not to conserve memory in favor of faster rendering

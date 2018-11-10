@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		FreeON is an experimental, open source (GPL) suite of programs for linear scaling quantum chemistry.
+	</longdescription>
+	<maintainer type="person">
+		<email>nicolasbock@gentoo.org</email>
+		<name>Nicolas Bock</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+</pkgmetadata>

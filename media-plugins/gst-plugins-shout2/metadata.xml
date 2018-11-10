@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gstreamer@gentoo.org</email>
+	<name>GStreamer package maintainers</name>
+</maintainer>
+<longdescription lang="en">
+	GStreamer plugin for sending data to an icecast server using libshout2
+
+	Includes the following element:
+	* shout2send: Sends data to an icecast server using libshout2
+</longdescription>
+</pkgmetadata>

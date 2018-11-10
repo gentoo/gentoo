@@ -1,0 +1,15 @@
+--- a/testing/mozbase/mozinfo/mozinfo/mozinfo.py	2018-01-12 12:21:16.764318254 -0500
++++ b/testing/mozbase/mozinfo/mozinfo/mozinfo.py	2018-01-12 12:22:23.392069398 -0500
+@@ -93,10 +93,11 @@
+ 
+ if info['os'] == 'linux':
+     import ctypes
++    import ctypes.util
+     import errno
+     PR_SET_SECCOMP = 22
+     SECCOMP_MODE_FILTER = 2
+-    ctypes.CDLL("libc.so.6", use_errno=True).prctl(PR_SET_SECCOMP, SECCOMP_MODE_FILTER, 0)
++    ctypes.CDLL(ctypes.util.find_library('c'), use_errno=True).prctl(PR_SET_SECCOMP, SECCOMP_MODE_FILTER, 0)
+     info['has_sandbox'] = ctypes.get_errno() == errno.EFAULT
+ else:
+     info['has_sandbox'] = True

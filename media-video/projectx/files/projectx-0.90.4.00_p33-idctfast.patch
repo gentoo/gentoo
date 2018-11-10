@@ -1,0 +1,37 @@
+--- src/net/sourceforge/dvb/projectx/video/MpvDecoder.java	2009-12-31 15:24:13.000000000 +0100
++++ src/net/sourceforge/dvb/projectx/video/MpvDecoder.java	2010-07-31 14:32:19.945223425 +0200
+@@ -72,7 +72,7 @@
+ 
+ public class MpvDecoder extends Object {
+ 
+-	private IDCTRefNative idct;
++	private IDCTFast idct;
+ 	private IDCTSseNative idctsse;
+ 
+ 	private int preview_horizontal_size = 512;
+@@ -134,13 +134,13 @@
+ 	{
+ 		Arrays.fill(pixels2, 0xFF505050);
+ 
+-		idct = new IDCTRefNative();
++		idct = new IDCTFast();
+ 		idctsse = new IDCTSseNative();
+ 
+-		if (IDCTRefNative.isLibraryLoaded())
++		if (IDCTFast.isLibraryLoaded())
+ 			idct.init();
+ 
+-		if (IDCTRefNative.isLibraryLoaded() || IDCTSseNative.isLibraryLoaded())
++		if (IDCTFast.isLibraryLoaded() || IDCTSseNative.isLibraryLoaded())
+ 			acceleration = true;
+ 	}
+ 
+@@ -2399,7 +2399,7 @@
+ 			}
+ 		}
+ 
+-		else if (IDCTRefNative.isLibraryLoaded() && isAccelerated())
++		else if (IDCTFast.isLibraryLoaded() && isAccelerated())
+ 		{
+ 			/* copy or add block data into picture */
+ 			for (comp=0; comp<block_count; comp++)

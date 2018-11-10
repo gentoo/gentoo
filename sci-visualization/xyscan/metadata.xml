@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		xyscan is a tool for scientist in the need to extract data points,
+		i.e. numeric values, from a plot. It allows to scan the plots and
+		extract data points including the size of the error bars (both in x
+		and y). It can handle plots with linear and logarithmic scales.
+	</longdescription>
+</pkgmetadata>

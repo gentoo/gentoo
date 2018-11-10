@@ -1,0 +1,15 @@
+diff -ur vkeybd.orig/vkeybd.desktop vkeybd/vkeybd.desktop
+--- vkeybd.orig/vkeybd.desktop	2008-04-17 14:00:15.000000000 +0300
++++ vkeybd/vkeybd.desktop	2009-07-16 19:22:41.000000000 +0300
+@@ -1,5 +1,4 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=vkeybd
+ Name[xh]=i-vkeybd
+ Name[ta]=பெயர்(vkeybd.டெஸ்க்டாப்): vkeybd
+@@ -42,4 +41,4 @@
+ Icon=vkeybd_48x48
+ Terminal=false
+ StartupWMClass=vkeybd.tcl
+-Categories=Application;AudioVideo;Audio;Music
++Categories=AudioVideo;Audio;

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>amynka@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<longdescription lang="en">
+		Name service switch module for multicast dns.
+	</longdescription>
+	<longdescription lang="ja">
+		マルチキャスト DNS 向けネーム・サービス・スイッチのモジュールです。
+	</longdescription>
+	<upstream>
+		<remote-id type="github">lathiat/nss-mdns</remote-id>
+	</upstream>
+</pkgmetadata>

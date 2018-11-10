@@ -1,0 +1,8 @@
+# Copyright 2004-2008 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+
+# SECTION: Unmask
+
+# 2008/02/13 - Chris Gianelloni <wolf31o2@gentoo.org>
+# Unmask multilib, since we need to use it.
+-multilib

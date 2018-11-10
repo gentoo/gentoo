@@ -1,0 +1,13 @@
+dont clobber ebx as that is the pic register and it doesnt work in many cases
+
+--- libgii-1.0.2/m4/swar.m4
++++ libgii-1.0.2/m4/swar.m4
+@@ -8069,7 +8069,7 @@
+ 	#ifdef _MSC_VER
+ 	__asm cpuid
+ 	#else
+-	asm("cpuid": "=a" (a), "=b" (b), "=c" (c), "=d" (d) : "a" (in));
++	asm("pushl %%ebx; cpuid; movl %%ebx,%2; popl %%ebx": "=a" (a), "=r" (b), "=c" (c), "=d" (d) : "a" (in));
+ 	#endif
+ 	return d;],
+ 	ggi_cv_cc_can_cpuid="yes", ggi_cv_cc_can_cpuid="no")])

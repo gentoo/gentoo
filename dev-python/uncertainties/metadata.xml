@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+ uncertainties is a Python module, which allows calculations such as
+ .
+   (0.2 +/- 0.01) * 2 = 0.4 +/- 0.02
+ .
+ to be performed transparently; much more complex mathematical expressions
+ involving numbers with uncertainties can also be evaluated transparently.
+ Correlations between expressions are correctly taken into account; x-x is
+ thus exactly zero, for instance. The uncertainties produced by this module
+ are what is predicted by error propagation theory.    
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">uncertainties</remote-id>
+  </upstream>
+</pkgmetadata>

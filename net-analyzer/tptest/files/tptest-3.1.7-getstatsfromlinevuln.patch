@@ -1,0 +1,150 @@
+--- a/engine/tpcommon.c
++++ b/engine/tpcommon.c
+@@ -37,6 +37,8 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
++#include <stddef.h>
+ 
+ #ifdef UNIX
+ #include <sys/time.h>
+@@ -194,68 +196,76 @@ done:
+ 
+ 
+ // Fill a tpStats structure with the contents from a STATS line
+-int GetStatsFromLine(char *line, TPStats *s)
++int GetStatsFromLine(const char *line, TPStats *s)
+ {
+ 	char valBuf[30];
++	char * stats_ptr = NULL;
+ 
+ 	if (strncmp(line, "STATS ", 6) != 0)
+ 		return -1;
+-	memset(valBuf, 0, 30);
++	memset(valBuf, 0, sizeof(valBuf));
++	stats_ptr = ((char *)line)+6;
+ 
+-	if (CopyTagField(valBuf, 29, line+6, "majorv"))
+-		s->MajorVersion = atoi(valBuf);
+-	if (CopyTagField(valBuf, 29, line+6, "minorv"))
+-		s->MinorVersion = atoi(valBuf);
+-	if (CopyTagField(valBuf, 29, line+6, "pktssent"))
+-		s->PktsSent = atoi(valBuf);
+-	if (CopyTagField(valBuf, 29, line+6, "pktsunsent"))
+-		s->PktsUnSent = atoi(valBuf);
+-	if (CopyTagField(valBuf, 29, line+6, "pktsrcvd"))
+-		s->PktsRecvd = atoi(valBuf);
+-	if (CopyTagField(valBuf, 29, line+6, "bytessent"))
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "majorv"))
++		s->MajorVersion = (USHORT) strtoul(valBuf,NULL,10);
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "minorv"))
++		s->MinorVersion = (USHORT) strtoul(valBuf,NULL,10);
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "pktssent"))
++		s->PktsSent = (UINT32) strtoul(valBuf,NULL,10);
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "pktsunsent"))
++		s->PktsUnSent = (UINT32) strtoul(valBuf,NULL,10);
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "pktsrcvd"))
++		s->PktsRecvd = (UINT32) strtoul(valBuf,NULL,10);
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "bytessent"))
+ 		sscanf(valBuf, "%" LONG_LONG_PREFIX "d", &(s->BytesSent));
+-	if (CopyTagField(valBuf, 29, line+6, "bytesrcvd"))
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "bytesrcvd"))
+ 		sscanf(valBuf, "%" LONG_LONG_PREFIX "d", &(s->BytesRecvd));
+-	if (CopyTagField(valBuf, 29, line+6, "maxrtt"))
+-		s->MaxRoundtrip = atoi(valBuf);
+-	if (CopyTagField(valBuf, 29, line+6, "minrtt"))
+-		s->MinRoundtrip = atoi(valBuf);
+-	if (CopyTagField(valBuf, 29, line+6, "oocount"))
+-		s->ooCount = atoi(valBuf);
+-
+-	if (CopyTagField(valBuf, 29, line+6, "txstart_s"))
+-		s->StartSend.tv_sec = atoi(valBuf);
+-	if (CopyTagField(valBuf, 29, line+6, "txstart_us"))
+-		s->StartSend.tv_usec = atoi(valBuf);
+-
+-	if (CopyTagField(valBuf, 29, line+6, "txstop_s"))
+-		s->StopSend.tv_sec = atoi(valBuf);
+-	if (CopyTagField(valBuf, 29, line+6, "txstop_us"))
+-		s->StopSend.tv_usec = atoi(valBuf);
+-
+-	if (CopyTagField(valBuf, 29, line+6, "rxstart_s"))
+-		s->StartRecv.tv_sec = atoi(valBuf);
+-	if (CopyTagField(valBuf, 29, line+6, "rxstart_us"))
+-		s->StartRecv.tv_usec = atoi(valBuf);
+-
+-	if (CopyTagField(valBuf, 29, line+6, "rxstop_s"))
+-		s->StopRecv.tv_sec = atoi(valBuf);
+-	if (CopyTagField(valBuf, 29, line+6, "rxstop_us"))
+-		s->StopRecv.tv_usec = atoi(valBuf);
+-
+-	if (CopyTagField(valBuf, 29, line+6, "totrtt"))
+-		s->TotalRoundtrip = atoi(valBuf);
+-	if (CopyTagField(valBuf, 29, line+6, "nortt"))
+-		s->nRoundtrips = atoi(valBuf);
+-
+-	if (CopyTagField(valBuf, 101, line + 6, "email"))
+-		strcpy(s->email, valBuf);
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "maxrtt"))
++		s->MaxRoundtrip = (UINT32) strtoul(valBuf,NULL,10);
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "minrtt"))
++		s->MinRoundtrip = (UINT32) strtoul(valBuf,NULL,10);
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "oocount"))
++		s->ooCount = (UINT32) strtoul(valBuf,NULL,10);
++
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "txstart_s"))
++		s->StartSend.tv_sec = strtol(valBuf,NULL,10);
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "txstart_us"))
++		s->StartSend.tv_usec = strtol(valBuf,NULL,10);
++
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "txstop_s"))
++		s->StopSend.tv_sec = strtol(valBuf,NULL,10);
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "txstop_us"))
++		s->StopSend.tv_usec = strtol(valBuf,NULL,10);
++
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "rxstart_s"))
++		s->StartRecv.tv_sec = strtol(valBuf,NULL,10);
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "rxstart_us"))
++		s->StartRecv.tv_usec = strtol(valBuf,NULL,10);
++
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "rxstop_s"))
++		s->StopRecv.tv_sec = strtol(valBuf,NULL,10);
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "rxstop_us"))
++		s->StopRecv.tv_usec = strtol(valBuf,NULL,10);
++
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "totrtt"))
++		s->TotalRoundtrip = (UINT32) strtoul(valBuf,NULL,10);
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "nortt"))
++		s->nRoundtrips = (UINT32) strtoul(valBuf,NULL,10);
++
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "email"))
++	{
++		strncpy(s->email, valBuf, sizeof(s->email));
++		s->email[sizeof(s->email)-1] = '\0';
++	}
+ 
+-	if (CopyTagField(valBuf, 101, line + 6, "pwd"))
+-		strcpy(s->pwd, valBuf);
++	if (CopyTagField(valBuf, sizeof(valBuf)-1, stats_ptr, "pwd"))
++	{
++		strncpy(s->pwd, valBuf, sizeof(s->pwd));
++		s->pwd[sizeof(s->pwd)-1] = '\0';
++	}
+ 
++	stats_ptr = NULL;
+ 	return 0;
+-
+ }
+ 
+ 
+--- a/engine/tpcommon.h
++++ b/engine/tpcommon.h
+@@ -43,7 +43,7 @@ int SameTag(char *s1, char *s2);
+ int CopyTagField(char *destp, int destSize, char *srcp, char *pname);
+ int GetSessionFromLine(char *, TPEngine *);
+ char * CreateSessionLine(TPEngine *, char *);
+-int GetStatsFromLine(char *, TPStats *);
++int GetStatsFromLine(const char *, TPStats *);
+ char * CreateLineFromStats(TPStats *, char *);
+ int ReplyCode(char *);
+ void TVAddUSec(struct timeval *, int);

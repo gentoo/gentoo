@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+customize_ini=/etc/bayescustomize.ini
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting SpamBayes POP3 Proxy daemon"
+	export BAYESCUSTOMIZE="${customize_ini}"
+	start-stop-daemon --start --quiet --background --pidfile /var/run/spambayes.pid --make-pidfile --exec /usr/bin/sb_server.py
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping SpamBayes POP3 Proxy daemon"
+	start-stop-daemon --stop --quiet --pidfile /var/run/spambayes.pid --name sb_server.py
+	eend $?
+}

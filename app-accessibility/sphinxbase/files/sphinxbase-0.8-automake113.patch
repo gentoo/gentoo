@@ -1,0 +1,25 @@
+diff -Naur sphinxbase-0.8/test/regression/Makefile.am sphinxbase-0.8.new/test/regression/Makefile.am
+--- sphinxbase-0.8/test/regression/Makefile.am	2012-12-05 06:05:39.000000000 -0800
++++ sphinxbase-0.8.new/test/regression/Makefile.am	2013-10-08 13:05:15.498853962 -0700
+@@ -33,9 +33,19 @@
+ 
+ # Disable sphinx_fe tests for now if fixed-point due to imprecision
+ if FIXED_POINT
+-TESTS = $(srcdir)/test-cepview.sh $(srcdir)/test-sphinx_pitch.sh
++TESTS = test-cepview.sh test-sphinx_pitch.sh
+ else
+-TESTS = $(srcdir)/test-*.sh
++TESTS = \
++	test-cepview.sh \
++	test-sphinx_fe-ctl.sh \
++	test-sphinx_fe-dct.sh \
++	test-sphinx_fe-dither-seed.sh \
++	test-sphinx_fe-logspec2cep.sh \
++	test-sphinx_fe-logspec.sh \
++	test-sphinx_fe.sh \
++	test-sphinx_fe-smoothspec.sh \
++	test-sphinx_jsgf2fsg.sh \
++	test-sphinx_pitch.sh
+ endif
+ 
+ EXTRA_DIST += $(TESTS)

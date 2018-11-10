@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  Org-mode is a mode for keeping notes, maintaining ToDo lists, and doing
+  project planning with a fast and effective plain-text system.
+
+  Org-mode develops organizational tasks around NOTES files that contain
+  information about projects as plain text. Org-mode is implemented on top of
+  outline-mode, which makes it possible to keep the content of large files
+  well structured. Visibility cycling and structure editing help to work with
+  the tree. Tables are easily created with a built-in table editor. Org-mode
+  supports ToDo items, deadlines, time stamps, and scheduling. It dynamically
+  compiles entries into an agenda. Plain text URL-like links connect to
+  websites, emails, Usenet messages, BBDB entries, and any files related to
+  the projects. For printing and sharing of notes, an Org-mode file can be
+  exported as a structured ASCII file, HTML, and LaTeX.
+</longdescription>
+<stabilize-allarches/>
+<use>
+  <flag name="contrib">Install user-contributed files</flag>
+  <flag name="odt-schema">Install non-free schema files
+    for OpenDocument Text exporter</flag>
+</use>
+</pkgmetadata>

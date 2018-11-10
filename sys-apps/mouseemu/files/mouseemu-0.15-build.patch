@@ -1,0 +1,9 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+ all:
+-	gcc -Wall -g -o mouseemu mouseemu.c
++	gcc -Wall $(CFLAGS) $(LDFLAGS) -o mouseemu mouseemu.c
+ clean:
+ 	rm -f *.o core* mouseemu
+ install:

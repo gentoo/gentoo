@@ -1,0 +1,96 @@
+Fix QA warnings due to implicit declarations:
+* filebuffer.c:123:34: warning: implicit declaration of function ‘toupper’ [-Wimplicit-function-declaration]
+*      temp[i] = (strchr (alphabet, toupper ((char) i)) != 0) ?
+
+--- a/src/filebuffer.c
++++ b/src/filebuffer.c
+@@ -3,6 +3,7 @@
+ #include <string.h>
+ #include <stdio.h>
+ #include <assert.h>
++#include <ctype.h>
+ 
+ #ifdef CHAOS__FLAG
+ char* alphabet = "ATCGNPCMHDEKRQSILVFYWX*";
+--- a/src/mlagan.c
++++ b/src/mlagan.c
+@@ -934,6 +934,7 @@
+   return k;
+ }
+ 
++int printXMFAAlign(FILE* outfile, align* myalign);
+ 
+ int main(int argc, char** argv) {
+   FileBuffer seqfile;
+--- a/src/order.c
++++ b/src/order.c
+@@ -398,6 +398,9 @@
+   free(ends);
+ }
+ 
++int printMFAAlign(char* seq1, char* seq2, align* myalign, char* n1, char* n2);
++int printXMFAAlign(char* seq1, char* seq2, align* myalign, char* n1, char* n2);
++
+ void doAlign(dmat* mydm, seq* seq1, seq* seq2) {
+   align *a = (align*) makeAlign(mydm, seq1->lets, seq2->lets);
+   //  printf("into printing\n");
+--- a/src/prolagan.c
++++ b/src/prolagan.c
+@@ -949,6 +949,7 @@
+   return k;
+ }
+ 
++int printXMFAAlign(FILE* outfile, align* myalign);
+ 
+ int main(int argc, char** argv) {
+   FileBuffer seqfile;
+--- a/src/utils/contigorder.c
++++ b/src/utils/contigorder.c
+@@ -12,7 +12,7 @@
+   int dummy, i;
+   
+   if (!(file = fopen (filename, "r"))){
+-    fprintf (stderr, "contigorder: Error opening file: %s\n");
++    fprintf (stderr, "contigorder: Error opening file: %s\n", filename);
+     exit (1);
+   }
+   
+@@ -49,7 +49,7 @@
+   }
+ 
+   if (!(file = fopen (filename, "r"))){
+-    fprintf (stderr, "contigorder: Error opening file: %s\n");
++    fprintf (stderr, "contigorder: Error opening file: %s\n", filename);
+     exit (1);
+   }
+   
+--- a/src/utils/cstat.c
++++ b/src/utils/cstat.c
+@@ -3,6 +3,7 @@
+ #include <string.h>
+ #include <math.h>
+ #include <assert.h>
++#include <ctype.h>
+ 
+ #define MAX_SEQ 31
+ #define MAX(a,b) ((a)>(b)?(a):(b))
+--- a/src/utils/overlay.c
++++ b/src/utils/overlay.c
+@@ -2,6 +2,7 @@
+ #include <stdio.h>
+ #include <assert.h>
+ #include <string.h>
++#include <ctype.h>
+ 
+ #define MAX_SEQS 63
+ #define MIN2(y,z)        ((y)<(z))?(y):(z)
+--- a/src/utils/scorecontigs.c
++++ b/src/utils/scorecontigs.c
+@@ -3,6 +3,7 @@
+ #include <string.h>
+ #include <math.h>
+ #include <assert.h>
++#include <ctype.h>
+ 
+ #define MAX_SEQ 1024
+ #define MAX(a,b) ((a)>(b)?(a):(b))

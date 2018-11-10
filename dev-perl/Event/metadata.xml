@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Event</remote-id>
+    <remote-id type="cpan-module">Event</remote-id>
+    <remote-id type="cpan-module">Event::Event::Dataful</remote-id>
+    <remote-id type="cpan-module">Event::Event::Io</remote-id>
+    <remote-id type="cpan-module">Event::MakeMaker</remote-id>
+    <remote-id type="cpan-module">Event::Watcher</remote-id>
+    <remote-id type="cpan-module">Event::Watcher::Tied</remote-id>
+    <remote-id type="cpan-module">Event::generic</remote-id>
+    <remote-id type="cpan-module">Event::generic::Source</remote-id>
+    <remote-id type="cpan-module">Event::group</remote-id>
+    <remote-id type="cpan-module">Event::idle</remote-id>
+    <remote-id type="cpan-module">Event::io</remote-id>
+    <remote-id type="cpan-module">Event::msg</remote-id>
+    <remote-id type="cpan-module">Event::process</remote-id>
+    <remote-id type="cpan-module">Event::semaphore</remote-id>
+    <remote-id type="cpan-module">Event::signal</remote-id>
+    <remote-id type="cpan-module">Event::timer</remote-id>
+    <remote-id type="cpan-module">Event::type</remote-id>
+    <remote-id type="cpan-module">Event::var</remote-id>
+  </upstream>
+</pkgmetadata>

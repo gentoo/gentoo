@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>rafaelmartins@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="curl">Uses <pkg>net-misc/curl</pkg> for fetching lua
+      packages instead of <pkg>net-misc/wget</pkg>.</flag>
+    <flag name="openssl">Uses <pkg>dev-libs/openssl</pkg> for verifying lua
+      packages instead of md5sum.</flag>
+  </use>
+</pkgmetadata>

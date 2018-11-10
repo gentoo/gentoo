@@ -1,0 +1,29 @@
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 13 Sep 2016 15:22:27 -0400
+Subject: fix test_default_key_passphrase when passphrase comes from agent
+
+In the modern GnuPG suite, where the passphrase is always managed by
+the agent, gpg itself doesn't emit the GOOD_PASSPHRASE status.
+Instead, if signing is successful it emits plain old SIG_CREATED.
+
+There are probably even better ways to test whether a given key is
+unlocked in this case, but this is a straightforward baseline fix that
+should get this part of the test suite to pass with all available
+versions of GnuPG.
+---
+ lib/GnuPG/Interface.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/GnuPG/Interface.pm b/lib/GnuPG/Interface.pm
+index 83a4b1a..1f1e6d5 100644
+--- a/lib/GnuPG/Interface.pm
++++ b/lib/GnuPG/Interface.pm
+@@ -808,7 +808,7 @@ sub test_default_key_passphrase() {
+ 
+     # all we realy want to check is the status fh
+     while (<$status>) {
+-        if (/^\[GNUPG:\]\s*GOOD_PASSPHRASE/) {
++        if (/^\[GNUPG:\]\s*(GOOD_PASSPHRASE|SIG_CREATED)/) {
+             waitpid $pid, 0;
+             return 1;
+         }

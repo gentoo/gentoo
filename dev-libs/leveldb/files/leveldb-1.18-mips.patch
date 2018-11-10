@@ -1,0 +1,48 @@
+https://github.com/google/leveldb/pull/272
+
+From f216400e702a51c900f2ce0285fdd6a21d3dd87b Mon Sep 17 00:00:00 2001
+From: Ben Chan <benchan@chromium.org>
+Date: Thu, 11 Sep 2014 21:38:48 -0700
+Subject: [PATCH] CHROMIUMOS: Add memory barrier implementation for MIPS.
+
+This CL is based on the patch authored by David Turner <digit@google.com>,
+see https://code.google.com/p/leveldb/issues/detail?id=109
+
+BUG=chromium:413517
+TEST=`emerge-{x86,amd64,arm,mipsel-o32}-generic leveldb`
+
+Reviewed-on: https://chromium-review.googlesource.com/217834
+---
+ port/atomic_pointer.h | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/port/atomic_pointer.h b/port/atomic_pointer.h
+index 35ae550..341909e 100644
+--- a/port/atomic_pointer.h
++++ b/port/atomic_pointer.h
+@@ -36,6 +36,8 @@
+ #define ARCH_CPU_X86_FAMILY 1
+ #elif defined(__ARMEL__)
+ #define ARCH_CPU_ARM_FAMILY 1
++#elif defined(__mips__)
++#define ARCH_CPU_MIPS_FAMILY 1
+ #elif defined(__ppc__) || defined(__powerpc__) || defined(__powerpc64__)
+ #define ARCH_CPU_PPC_FAMILY 1
+ #endif
+@@ -83,6 +85,13 @@ inline void MemoryBarrier() {
+ }
+ #define LEVELDB_HAVE_MEMORY_BARRIER
+ 
++// MIPS
++#elif defined(ARCH_CPU_MIPS_FAMILY) && defined(__GNUC__)
++inline void MemoryBarrier() {
++  __asm__ __volatile__("sync" : : : "memory");
++}
++#define LEVELDB_HAVE_MEMORY_BARRIER
++
+ #endif
+ 
+ // AtomicPointer built using platform-specific MemoryBarrier()
+-- 
+2.3.0
+

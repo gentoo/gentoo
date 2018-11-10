@@ -1,0 +1,19 @@
+--- oftpd-0.3.7/src/daemon_assert.c
++++ oftpd-0.3.7/src/daemon_assert.c
+@@ -3,6 +3,7 @@
+ #include <pthread.h>
+ #include <syslog.h>
+ #include <stdio.h>
++#include <unistd.h>
+ 
+ #ifndef NDEBUG
+ void daemon_assert_fail(const char *assertion,
+@@ -13,7 +13,7 @@
+ {
+     syslog(LOG_CRIT, "%s:%d: %s: %s", file, line, function, assertion);
+     fprintf(stderr, "%s:%d: %s: %s\n", file, line, function, assertion);
+-    exit(1);
++    _exit(1);
+ }
+ #endif
+ 

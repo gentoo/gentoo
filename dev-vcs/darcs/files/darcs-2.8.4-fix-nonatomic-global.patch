@@ -1,0 +1,20 @@
+There is a bug in speculateFileOrUrl.
+It puts downloaded file nonatomically.
+
+There is a window when copyFileOrUrl can (and does)
+copy partially downloaded file.
+
+Darcs-bug: http://bugs.darcs.net/issue2364
+diff --git a/src/Darcs/External.hs b/src/Darcs/External.hs
+index 2e0e791..d5a0b9f 100644
+--- a/src/Darcs/External.hs
++++ b/src/Darcs/External.hs
+@@ -184,7 +184,7 @@ copyFileOrUrl rd   fou out _     | isSshUrl  fou = copySSH rd (splitSshUrl fou)
+ copyFileOrUrl _    fou _   _     = fail $ "unknown transport protocol: " ++ fou
+ 
+ speculateFileOrUrl :: String -> FilePath -> IO ()
+-speculateFileOrUrl fou out | isHttpUrl fou = speculateRemote fou out
++speculateFileOrUrl fou out | isHttpUrl fou = speculateRemote fou out >> waitUrl fou
+                            | otherwise = return ()
+ 
+ copyLocal  :: String -> FilePath -> IO ()

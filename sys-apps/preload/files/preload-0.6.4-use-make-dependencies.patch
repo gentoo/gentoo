@@ -1,0 +1,21 @@
+--- src/Makefile.am~	2010-04-09 12:56:45.000000000 +0200
++++ src/Makefile.am	2010-04-09 12:58:36.000000000 +0200
+@@ -8,8 +8,6 @@
+ 		-DLOGDIR='"${logdir}"'	\
+ 		-DPKGLOCALSTATEDIR='"${pkglocalstatedir}"'
+ 
+-preload.o cmdline.o preload.8: Makefile
+-
+ sbin_PROGRAMS = preload
+ 
+ preload_SOURCES =	\
+@@ -64,8 +62,7 @@
+ 
+ MAINTAINERCLEANFILES += preload.conf.debug
+ 
+-preload.conf.debug:
+-	$(MAKE) $(AM_MAKEFLAGS) preload.conf
++preload.conf.debug: preload.conf
+ 	cp preload.conf preload.conf.debug
+ 
+ RUNPREQ = preload preload.conf.debug

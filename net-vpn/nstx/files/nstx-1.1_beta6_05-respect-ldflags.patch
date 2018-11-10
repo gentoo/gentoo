@@ -1,0 +1,19 @@
+Respects LDFLAGS
+
+http://bugs.gentoo.org/show_bug.cgi?id=323919
+
+--- nstx-1.1-beta6/Makefile
++++ nstx-1.1-beta6/Makefile
+@@ -11,10 +11,10 @@
+ all: $(PROGS)
+ 
+ nstxd: $(NSTXD_OBJS)
+-	$(CC) $(CFLAGS) -o nstxd $(NSTXD_OBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o nstxd $(NSTXD_OBJS)
+ 
+ nstxcd: $(NSTXCD_OBJS)
+-	$(CC) $(CFLAGS) -o nstxcd $(NSTXCD_OBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o nstxcd $(NSTXCD_OBJS)
+ 
+ clean:
+ 	rm -f *.o $(PROGS) Makefile.bak *~ core

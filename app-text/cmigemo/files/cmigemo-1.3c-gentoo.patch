@@ -1,0 +1,55 @@
+diff -Naur cmigemo-1.3c-MIT.orig/compile/Make_gcc.mak cmigemo-1.3c-MIT/compile/Make_gcc.mak
+--- cmigemo-1.3c-MIT.orig/compile/Make_gcc.mak	2003-10-19 16:00:59.000000000 +0900
++++ cmigemo-1.3c-MIT/compile/Make_gcc.mak	2009-11-08 16:45:32.485952233 +0900
+@@ -14,7 +14,7 @@
+ libmigemo	= libmigemo.so
+ EXEEXT		=
+ CFLAGS_MIGEMO	= -fPIC
+-LDFLAGS_MIGEMO	= -Wl,-rpath,.,-rpath,/usr/local/lib,-rpath,/usr/lib
++LDFLAGS_MIGEMO	=
+ 
+ include config.mk
+ include compile/unix.mak
+diff -Naur cmigemo-1.3c-MIT.orig/configure cmigemo-1.3c-MIT/configure
+--- cmigemo-1.3c-MIT.orig/configure	2004-06-19 12:50:27.000000000 +0900
++++ cmigemo-1.3c-MIT/configure	2009-11-08 16:40:42.688962262 +0900
+@@ -31,12 +31,12 @@
+ fi
+ 
+ # Check encoding filter
+-if CHECK_COMMAND qkc ; then
+-  PROGRAM_ENCODEFILTER="qkc -q -u"
+-elif CHECK_COMMAND nkf ; then
++if CHECK_COMMAND nkf ; then
+   PROGRAM_ENCODEFILTER="nkf -x"
++elif CHECK_COMMAND qkc ; then
++  PROGRAM_ENCODEFILTER="qkc -q -u"
+ else
+-  echo "ERROR: Require qkc or nkf installed for encode filter."
++  echo "ERROR: Require nkf or qkc installed for encode filter."
+   exit 1
+ fi
+ 
+diff -Naur cmigemo-1.3c-MIT.orig/tools/migemo.vim cmigemo-1.3c-MIT/tools/migemo.vim
+--- cmigemo-1.3c-MIT.orig/tools/migemo.vim	2004-02-23 16:32:53.000000000 +0900
++++ cmigemo-1.3c-MIT/tools/migemo.vim	2009-11-08 16:42:19.572951008 +0900
+@@ -20,7 +20,7 @@
+     let dict = globpath(path, "migemo-dict")
+   endif
+   if dict == ''
+-    let dict = '/usr/local/share/migemo/'.&encoding.'/migemo-dict'
++    let dict = '/usr/share/migemo/migemo-dict'
+     if !filereadable(dict)
+       let dict = ''
+     endif
+@@ -43,7 +43,9 @@
+   nnoremap <Leader>f :call <SID>SearchChar(0)<CR>
+ else
+   " non-builtin version
+-  let g:migemodict = s:SearchDict()
++  if !exists('g:migemodict')
++    let g:migemodict = s:SearchDict()
++  endif
+   command! -nargs=* Migemo :call <SID>MigemoSearch(<q-args>)
+   nnoremap <silent> <leader>mi :call <SID>MigemoSearch('')<cr>
+ 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>vdr@gentoo.org</email>
+		<name>Gentoo VDR Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
+	<use>
+		<flag name="libmpeg2">Build support for mpeg2 over media-libs/libmpeg2 rather than using ffmpeg</flag>
+	</use>
+	<longdescription lang="en">
+		Mark commercial Breaks in VDR records. 
+	</longdescription>
+</pkgmetadata>

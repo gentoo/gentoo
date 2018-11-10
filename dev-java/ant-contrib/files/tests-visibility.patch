@@ -1,0 +1,12 @@
+diff -ur ant-contrib.old/test/src/net/sf/antcontrib/BuildFileTestBase.java ant-contrib/test/src/net/sf/antcontrib/BuildFileTestBase.java
+--- ant-contrib.old/test/src/net/sf/antcontrib/BuildFileTestBase.java   2008-03-05 23:56:16.000000000 +0200
++++ ant-contrib/test/src/net/sf/antcontrib/BuildFileTestBase.java       2008-03-05 23:56:55.000000000 +0200
+@@ -76,7 +76,7 @@
+     * @param filename            name of project file to run
+     * @exception BuildException  Description of the Exception
+     */
+-   protected void configureProject( String filename ) throws BuildException {
++   public void configureProject( String filename ) throws BuildException {
+       // find the build file
+       File f = new File( filename );
+       if ( !f.exists() ) {

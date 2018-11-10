@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>jer@gentoo.org</email>
+</maintainer>
+<maintainer type="project">
+	<email>desktop-misc@gentoo.org</email>
+	<name>Gentoo Desktop Miscellaneous Project</name>
+</maintainer>
+<use>
+	<flag name="windowmode">Enable normal window mode</flag>
+</use>
+<upstream>
+	<remote-id type="github">DaveDavenport/rofi</remote-id>
+</upstream>
+</pkgmetadata>

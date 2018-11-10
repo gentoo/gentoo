@@ -1,0 +1,27 @@
+diff -up gst-plugins-bad-0.10.23/ext/vp8/gstvp8utils.h.drop-compat-defines gst-plugins-bad-0.10.23/ext/vp8/gstvp8utils.h
+--- gst-plugins-bad-0.10.23/ext/vp8/gstvp8utils.h.drop-compat-defines	2015-04-07 09:28:01.637679239 -0400
++++ gst-plugins-bad-0.10.23/ext/vp8/gstvp8utils.h	2015-04-07 09:28:10.397622550 -0400
+@@ -25,23 +25,6 @@
+ 
+ G_BEGIN_DECLS
+ 
+-/* Some compatibility defines for older libvpx versions */
+-#ifndef VPX_IMG_FMT_I420
+-#define VPX_IMG_FMT_I420 IMG_FMT_I420
+-#endif
+-
+-#ifndef VPX_PLANE_Y
+-#define VPX_PLANE_Y PLANE_Y
+-#endif
+-
+-#ifndef VPX_PLANE_U
+-#define VPX_PLANE_U PLANE_U
+-#endif
+-
+-#ifndef VPX_PLANE_V
+-#define VPX_PLANE_V PLANE_V
+-#endif
+-
+ const char * gst_vpx_error_name (vpx_codec_err_t status);
+ 
+ G_END_DECLS

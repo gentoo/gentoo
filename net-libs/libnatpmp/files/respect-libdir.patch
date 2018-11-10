@@ -1,0 +1,19 @@
+--- libnatpmp-20110808/Makefile
++++ libnatpmp-20110808/Makefile
+@@ -6,6 +6,7 @@
+ # (c) 2007-2011 Thomas Bernard
+ # http://miniupnp.free.fr/libnatpmp.html
+ 
++GENTOO_LIBDIR ?= lib
+ OS = $(shell uname -s)
+ CC ?= gcc
+ INSTALL = install
+@@ -36,7 +37,7 @@
+ 
+ INSTALLPREFIX ?= $(PREFIX)/usr
+ INSTALLDIRINC = $(INSTALLPREFIX)/include
+-INSTALLDIRLIB = $(INSTALLPREFIX)/lib
++INSTALLDIRLIB = $(INSTALLPREFIX)/$(GENTOO_LIBDIR)
+ INSTALLDIRBIN = $(INSTALLPREFIX)/bin
+ 
+ .PHONY:	all clean depend install cleaninstall installpythonmodule

@@ -1,0 +1,33 @@
+--- impl/src/test/java/org/apache/taglibs/standard/tag/common/core/SetSupportTest.java.orig	2015-06-01 22:59:35.208000000 +0000
++++ impl/src/test/java/org/apache/taglibs/standard/tag/common/core/SetSupportTest.java	2015-06-01 22:59:54.191000000 +0000
+@@ -334,30 +334,12 @@
+     }
+ 
+     @Test
+-    public void testResultFromBodyContent() throws JspException {
+-        tag = new MockSetSupport();
+-        BodyContent bodyContent = createMock(BodyContent.class);
+-        expect(bodyContent.getString()).andStubReturn("  Hello  ");
+-        replay(bodyContent);
+-        tag.setBodyContent(bodyContent);
+-        Assert.assertEquals(VALUE, tag.getResult());
+-    }
+-
+-    @Test
+     public void testResultFromNullBodyContent() throws JspException {
+         tag = new MockSetSupport();
+         tag.setBodyContent(null);
+         Assert.assertEquals(tag.getResult(), "");
+     }
+ 
+-    @Test
+-    public void testResultFromEmptyBodyContent() throws JspException {
+-        tag = new MockSetSupport();
+-        BodyContent bodyContent = createMock(BodyContent.class);
+-        expect(bodyContent.getString()).andStubReturn(null);
+-        Assert.assertEquals("", tag.getResult());
+-    }
+-
+     public static class MockSetSupport extends SetSupport {
+         private final boolean valueSpecified;
+         private final Object value;

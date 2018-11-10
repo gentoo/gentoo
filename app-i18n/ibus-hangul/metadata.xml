@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<longdescription lang="en">
+		The Hangul engine for IBus. It provides Korean input method from
+		<pkg>app-i18n/libhangul</pkg>.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">libhangul/ibus-hangul</remote-id>
+	</upstream>
+</pkgmetadata>

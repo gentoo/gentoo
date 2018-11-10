@@ -1,0 +1,56 @@
+diff --git a/BLAS/blas.pc.in b/BLAS/blas.pc.in
+index 7fd6f1e..e52f3ad 100644
+--- a/BLAS/blas.pc.in
++++ b/BLAS/blas.pc.in
+@@ -1,5 +1,7 @@
+-prefix=@prefix@
+-libdir=@libdir@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/include
+ 
+ Name: BLAS
+ Description: FORTRAN reference implementation of BLAS Basic Linear Algebra Subprograms
+diff --git a/CBLAS/cblas.pc.in b/CBLAS/cblas.pc.in
+index 4a938fe..311aed9 100644
+--- a/CBLAS/cblas.pc.in
++++ b/CBLAS/cblas.pc.in
+@@ -1,5 +1,7 @@
+-prefix=@prefix@
+-libdir=@libdir@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/include
+ 
+ Name: CBLAS
+ Description: C Standard Interface to BLAS Basic Linear Algebra Subprograms
+diff --git a/LAPACKE/lapacke.pc.in b/LAPACKE/lapacke.pc.in
+index 028f8da..dc092b1 100644
+--- a/LAPACKE/lapacke.pc.in
++++ b/LAPACKE/lapacke.pc.in
+@@ -1,5 +1,7 @@
+-prefix=@prefix@
+-libdir=@libdir@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/include
+ 
+ Name: LAPACKE
+ Description: C Standard Interface to LAPACK Linear Algebra PACKage
+diff --git a/lapack.pc.in b/lapack.pc.in
+index 878efc2..2cca4c2 100644
+--- a/lapack.pc.in
++++ b/lapack.pc.in
+@@ -1,5 +1,7 @@
+-prefix=@prefix@
+-libdir=@libdir@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/include
+ 
+ Name: LAPACK
+ Description: FORTRAN reference implementation of LAPACK Linear Algebra PACKage

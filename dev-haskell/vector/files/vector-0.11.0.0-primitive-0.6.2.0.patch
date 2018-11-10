@@ -1,0 +1,21 @@
+diff --git a/Data/Vector.hs b/Data/Vector.hs
+index db6dfb7..f074bf0 100644
+--- a/Data/Vector.hs
++++ b/Data/Vector.hs
+@@ -152,3 +152,3 @@ module Data.Vector (
+   -- ** Lists
+-  toList, fromList, fromListN,
++  toList, Data.Vector.fromList, Data.Vector.fromListN,
+ 
+@@ -222,4 +222,4 @@ instance Exts.IsList (Vector a) where
+   type Item (Vector a) = a
+-  fromList = fromList
+-  fromListN = fromListN
++  fromList = Data.Vector.fromList
++  fromListN = Data.Vector.fromListN
+   toList = toList
+@@ -343,3 +343,3 @@ instance Traversable.Traversable Vector where
+   {-# INLINE traverse #-}
+-  traverse f xs = fromList Applicative.<$> Traversable.traverse f (toList xs)
++  traverse f xs = Data.Vector.fromList Applicative.<$> Traversable.traverse f (toList xs)
+ 

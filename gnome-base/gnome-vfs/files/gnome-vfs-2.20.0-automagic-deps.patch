@@ -1,0 +1,68 @@
+Index: configure.in
+===================================================================
+--- configure.in	(révision 5413)
++++ configure.in	(copie de travail)
+@@ -448,9 +448,13 @@
+ dnl GSSAPI
+ dnl Check for Kerberos installation
+ have_gssapi=no
++
++AC_ARG_ENABLE(krb5,
++	      AS_HELP_STRING([--enable-krb5],[Enable Kerberos 5 support]),
++	      [],[enable_krb5=yes])
+ AC_PATH_PROG([KRB5_CONFIG], krb5-config, none, $PATH:/usr/kerberos/bin)
+-					   
+-if test "x$KRB5_CONFIG" != "xnone"; then
++
++if test "x$KRB5_CONFIG" != "xnone" -a "x$enable_krb5" = "xyes"; then
+    GSSAPI_LIBS="`${KRB5_CONFIG} --libs gssapi`"
+    GSSAPI_CFLAGS="`${KRB5_CONFIG} --cflags gssapi`"
+    
+@@ -481,8 +485,12 @@
+      break
+    ])
+    LIBS="$saved_LIBS" 
+-   CPPFLAGS="$saved_CPPFLAGS" 
+-fi   
++   CPPFLAGS="$saved_CPPFLAGS"
++fi
++
++if test "x$KRB5_CONFIG" = "xnone" -a "x$enable_krb5" = "xyes"; then
++	AC_MSG_ERROR([*** kerberos 5 support enabled but krb5-config not found ***])
++fi
+ AC_SUBST(GSSAPI_LIBS)
+ AC_SUBST(GSSAPI_CFLAGS)
+ 	   
+@@ -1077,9 +1085,13 @@
+ dnl =====================
+ dnl ACL checks
+ dnl =====================
+-acl_backends=""
++acl_backends="none"
+ ACL_LIBS=""
+ 
++AC_ARG_ENABLE(acl,
++	    AS_HELP_STRING([--disable-acl],[Don't use libacl support]),
++	    [],[enable_acl=yes])
++
+ AC_CHECK_LIB(attr,getxattr,[ACL_LIBS="$ACL_LIBS -lattr"])
+ AC_CHECK_LIB(acl,acl_get_file,[ACL_LIBS="$ACL_LIBS -lacl"])
+ AC_CHECK_LIB(sec,acl,[ACL_LIBS="$ACL_LIBS -lsec"])
+@@ -1102,7 +1114,7 @@
+ gvfs_cv_HAVE_POSIX_ACLS=yes, gvfs_cv_HAVE_POSIX_ACLS=no)
+ 		LIBS=$acl_LIBS])
+ 
+-if test x"$gvfs_cv_HAVE_SOLARIS_ACLS" = x"yes" ; then
++if test x"$gvfs_cv_HAVE_SOLARIS_ACLS" = x"yes" -a x"$enable_acl" = x"yes"; then
+     have_solaris_acl_support=yes
+     acl_backends="solaris"
+ 
+@@ -1110,7 +1122,7 @@
+     AC_CHECK_HEADERS([pwd.h grp.h])
+ fi
+ 
+-if test x"$gvfs_cv_HAVE_POSIX_ACLS" = x"yes" ; then
++if test x"$gvfs_cv_HAVE_POSIX_ACLS" = x"yes" -a x"$enable_acl" = x"yes"; then
+     have_posix_acl_support=yes
+     acl_backends="posix"
+ 

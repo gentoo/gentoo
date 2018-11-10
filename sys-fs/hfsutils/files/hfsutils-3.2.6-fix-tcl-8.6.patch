@@ -1,0 +1,8 @@
+--- hfsutils-3.2.6/config.h.in
++++ hfsutils-3.2.6/config.h.in
+@@ -91,3 +91,5 @@
+ # ifndef HAVE_STRTOL
+ long strtol(const char *, char **, int);
+ # endif
++
++#define USE_INTERP_RESULT 1

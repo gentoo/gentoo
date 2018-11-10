@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<longdescription>
+		A utility to maintain a package.unmask file consisting of entries
+		copied from package.mask files. It can (try to) automatically find
+		entries unmasking specific packages, update existing package.unmask
+		entries (e.g. unmasking additional packages as they are appended to
+		the mask entries) and remove old unmasks.
+	</longdescription>
+	<upstream>
+		<maintainer status="active">
+			<email>mgorny@gentoo.org</email>
+			<name>Michał Górny</name>
+		</maintainer>
+		<bugs-to>https://github.com/mgorny/diffmask/issues/</bugs-to>
+		<remote-id type="github">mgorny/diffmask</remote-id>
+	</upstream>
+</pkgmetadata>

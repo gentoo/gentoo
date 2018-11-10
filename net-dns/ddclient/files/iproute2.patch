@@ -1,0 +1,30 @@
+diff -u a/ddclient b/ddclient
+--- a/ddclient	2011-07-11 17:04:21.000000000 -0400
++++ b/ddclient	2011-08-12 20:13:15.980466303 -0400
+@@ -588,7 +588,7 @@
+     [ "ip",          "=s", "-ip address           : set the IP address to 'address'" ],
+     "",			     
+     [ "if",          "=s", "-if interface         : obtain IP address from 'interface'" ],
+-    [ "if-skip",     "=s", "-if-skip pattern      : skip any IP addresses before 'pattern' in the output of ifconfig {if}" ],
++    [ "if-skip",     "=s", "-if-skip pattern      : skip any IP addresses before 'pattern' in the output of ip addr show {if}" ],
+     "",
+     [ "web",         "=s", "-web provider|url     : obtain IP address from provider's IP checking page" ],
+     [ "web-skip",    "=s", "-web-skip pattern     : skip any IP addresses before 'pattern' on the web provider|url" ],
+@@ -1316,7 +1316,7 @@
+ 
+     {
+ 	local $opt{'use'} = 'if';
+-	foreach my $if (grep {/^[a-zA-Z]/} `ifconfig -a`) {
++	foreach my $if (grep {/^[a-zA-Z]/} `ip addr show`) {
+ 	    $if =~ s/:?\s.*//is;
+ 	    local $opt{'if'} = $if;
+ 	    printf "use=if, if=%s address is %s\n", opt('if'), define(get_ip('if'), 'NOT FOUND');
+@@ -1937,7 +1937,7 @@
+ 
+     } elsif ($use eq 'if') {
+ 	$skip  = opt('if-skip', $h)  || '';
+-	$reply = `ifconfig $arg 2> /dev/null`;
++	$reply = `ip addr show $arg 2> /dev/null`;
+ 	$reply = '' if $?;
+ 
+     } elsif ($use eq 'cmd') {

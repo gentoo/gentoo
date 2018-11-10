@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-Grove</remote-id>
+    <remote-id type="cpan-module">XML::Grove</remote-id>
+    <remote-id type="cpan-module">XML::Grove::AsCanonXML</remote-id>
+    <remote-id type="cpan-module">XML::Grove::AsString</remote-id>
+    <remote-id type="cpan-module">XML::Grove::AttListDecl</remote-id>
+    <remote-id type="cpan-module">XML::Grove::Builder</remote-id>
+    <remote-id type="cpan-module">XML::Grove::CData</remote-id>
+    <remote-id type="cpan-module">XML::Grove::Characters</remote-id>
+    <remote-id type="cpan-module">XML::Grove::Comment</remote-id>
+    <remote-id type="cpan-module">XML::Grove::Document</remote-id>
+    <remote-id type="cpan-module">XML::Grove::Element</remote-id>
+    <remote-id type="cpan-module">XML::Grove::ElementDecl</remote-id>
+    <remote-id type="cpan-module">XML::Grove::Entity</remote-id>
+    <remote-id type="cpan-module">XML::Grove::Entity::External</remote-id>
+    <remote-id type="cpan-module">XML::Grove::Entity::SGML</remote-id>
+    <remote-id type="cpan-module">XML::Grove::Entity::SubDoc</remote-id>
+    <remote-id type="cpan-module">XML::Grove::Factory</remote-id>
+    <remote-id type="cpan-module">XML::Grove::Factory_</remote-id>
+    <remote-id type="cpan-module">XML::Grove::IDs</remote-id>
+    <remote-id type="cpan-module">XML::Grove::Notation</remote-id>
+    <remote-id type="cpan-module">XML::Grove::PI</remote-id>
+    <remote-id type="cpan-module">XML::Grove::Path</remote-id>
+    <remote-id type="cpan-module">XML::Grove::PerlSAX</remote-id>
+    <remote-id type="cpan-module">XML::Grove::Sub</remote-id>
+    <remote-id type="cpan-module">XML::Grove::SubDoc</remote-id>
+    <remote-id type="cpan-module">XML::Grove::Subst</remote-id>
+    <remote-id type="cpan-module">XML::Grove::XPointer</remote-id>
+  </upstream>
+</pkgmetadata>

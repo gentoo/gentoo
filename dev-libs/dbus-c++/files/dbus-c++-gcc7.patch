@@ -1,0 +1,25 @@
+--- ./include/dbus-c++/dispatcher.h.old	2017-06-27 07:03:52.159413535 +0900
++++ ./include/dbus-c++/dispatcher.h	2017-06-27 07:04:04.974399195 +0900
+@@ -229,13 +229,8 @@
+ typedef Mutex *(*MutexNewFn)();
+ typedef void (*MutexUnlockFn)(Mutex *mx);
+ 
+-#ifndef DBUS_HAS_RECURSIVE_MUTEX
+-typedef bool (*MutexFreeFn)(Mutex *mx);
+-typedef bool (*MutexLockFn)(Mutex *mx);
+-#else
+ typedef void (*MutexFreeFn)(Mutex *mx);
+ typedef void (*MutexLockFn)(Mutex *mx);
+-#endif//DBUS_HAS_RECURSIVE_MUTEX
+ 
+ typedef CondVar *(*CondVarNewFn)();
+ typedef void (*CondVarFreeFn)(CondVar *cv);
+--- ./src/pipe.cpp.old	2017-06-27 07:00:17.275653653 +0900
++++ ./src/pipe.cpp	2017-06-27 07:00:23.537646665 +0900
+@@ -83,5 +83,5 @@
+ void Pipe::signal()
+ {
+   // TODO: ignoring return of read/write generates warning; maybe relevant for eventloop work...
+-  ::write(_fd_write, '\0', 1);
++  ::write(_fd_write, "\0", 1);
+ }

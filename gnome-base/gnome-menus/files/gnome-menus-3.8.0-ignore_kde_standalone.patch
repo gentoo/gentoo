@@ -1,0 +1,37 @@
+From bf91222f05076f32c0a21aa22f8629dc6ce19eb4 Mon Sep 17 00:00:00 2001
+From: Sobhan Mohammadpour <sobhanmohammadpour1@yahoo.fr>
+Date: Mon, 25 Feb 2013 16:36:44 +0330
+Subject: [PATCH] gnome-menus-3.7.90-ignore_kde_standalone
+
+---
+ layout/gnome-applications.menu | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/layout/gnome-applications.menu b/layout/gnome-applications.menu
+index 9242eff..94ea6d4 100644
+--- a/layout/gnome-applications.menu
++++ b/layout/gnome-applications.menu
+@@ -277,7 +277,19 @@
+       <And>
+         <Not><Category>Core</Category></Not>
+         <Not><Category>Screensaver</Category></Not>
+-
++        <Not><Category>X-KDE-settings-accessibility</Category></Not>
++        <Not><Category>X-KDE-settings-components</Category></Not>
++        <Not><Category>X-KDE-settings-desktop</Category></Not>
++        <Not><Category>X-KDE-settings-looknfeel</Category></Not>
++        <Not><Category>X-KDE-settings-network</Category></Not>
++        <Not><Category>X-KDE-settings-webbrowsing</Category></Not>
++        <Not><Category>X-KDE-settings-peripherals</Category></Not>
++        <Not><Category>X-KDE-settings-hardware</Category></Not>
++        <Not><Category>X-KDE-settings-power</Category></Not>
++        <Not><Category>X-KDE-settings-security</Category></Not>
++        <Not><Category>X-KDE-settings-sound</Category></Not>
++        <Not><Category>X-KDE-settings-system</Category></Not>
++        <Not><Category>X-KDE-information</Category></Not>
+         <!-- Really Fedora ??? -->
+         <Not><Filename>gnome-eog.desktop</Filename></Not>
+         <Not><Filename>gnome-file-roller.desktop</Filename></Not>
+-- 
+1.8.1.2
+

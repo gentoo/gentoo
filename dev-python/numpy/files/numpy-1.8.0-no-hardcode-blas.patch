@@ -1,0 +1,25 @@
+patch to allow any blas (c or f77) to simulate the
+special treatment atlas libs have in numpy.
+2013: numpy.distutils still horrendous code
+
+--- numpy/distutils/system_info.py.orig	2013-11-25 19:54:45.760217851 -0800
++++ numpy/distutils/system_info.py	2013-11-25 20:00:26.575310888 -0800
+@@ -293,17 +293,7 @@
+       1 - display warning message
+       2 - raise error
+     """
+-    cl = {'atlas': atlas_info,  # use lapack_opt or blas_opt instead
+-          'atlas_threads': atlas_threads_info,                # ditto
+-          'atlas_blas': atlas_blas_info,
+-          'atlas_blas_threads': atlas_blas_threads_info,
+-          'lapack_atlas': lapack_atlas_info,  # use lapack_opt instead
+-          'lapack_atlas_threads': lapack_atlas_threads_info,  # ditto
+-          'mkl': mkl_info,
+-          'openblas': openblas_info,          # use blas_opt instead
+-          'lapack_mkl': lapack_mkl_info,      # use lapack_opt instead
+-          'blas_mkl': blas_mkl_info,          # use blas_opt instead
+-          'x11': x11_info,
++    cl = {'x11': x11_info,
+           'fft_opt': fft_opt_info,
+           'fftw': fftw_info,
+           'fftw2': fftw2_info,

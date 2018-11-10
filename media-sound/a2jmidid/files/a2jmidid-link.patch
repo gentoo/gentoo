@@ -1,0 +1,33 @@
+From 7f82da7eb2f540a94db23331be98d42a58ddc269 Mon Sep 17 00:00:00 2001
+From: Nedko Arnaudov <nedko@arnaudov.name>
+Date: Tue, 10 Jul 2012 07:25:12 +0300
+Subject: [PATCH] properly fix pthread linking. Patch by Orcan. sr#2934
+
+---
+ wscript | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/wscript b/wscript
+index 36710e2..66a532a 100644
+--- a/wscript
++++ b/wscript
+@@ -66,7 +66,8 @@ def configure(conf):
+     else:
+         conf.env['DBUS_ENABLED'] = False
+ 
+     conf.env['LIB_DL'] = ['dl']
++    conf.env['LIB_PTHREAD'] = ['pthread']
+ 
+     #conf.check_header('expat.h', mandatory=True)
+     #conf.env['LIB_EXPAT'] = ['expat']
+@@ -152,7 +153,7 @@ def build(bld):
+ 
+     prog.includes = '.' # make waf dependency tracking work
+     prog.target = 'a2jmidid'
+-    prog.uselib = 'ALSA JACK DL'
++    prog.uselib = 'ALSA JACK DL PTHREAD'
+     if bld.env()['DBUS_ENABLED']:
+         prog.uselib += " DBUS-1"
+     prog = bld.create_obj('cc', 'program')
+-- 
+2.3.3.GIT

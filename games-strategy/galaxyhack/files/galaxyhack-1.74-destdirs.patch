@@ -1,0 +1,11 @@
+--- a/Main.cpp.old	2006-07-28 00:04:46.000000000 +0200
++++ b/Main.cpp	2006-07-28 00:08:28.000000000 +0200
+@@ -184,7 +184,7 @@
+ #ifndef WIN32
+ 	string settingsPath = userHomePath + "settings.dat";
+ 	if (!DoesFileExist(settingsPath))
+-		settingsPath = "settings.dat";
++		settingsPath = "@GAMES_DATADIR@/galaxyhack/settings.dat";
+ #else
+ 	string settingsPath = "settings.dat";
+ #endif

@@ -1,0 +1,30 @@
+location /mythweb/ {
+    root VHOST_HTDOCS;
+    auth_basic  "MythWeb";
+    auth_basic_user_file /var/www/htpasswd;
+    index       VHOST_APPDIR/mythweb.php;
+    try_files   $uri     @handler;
+}
+
+location ~ /mythweb/.+\.php {
+    root VHOST_HTDOCS;
+    include         fastcgi_params;
+    fastcgi_index   mythweb.php;
+    fastcgi_split_path_info ^(.+\.php)(/?.+)$;
+    fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    fastcgi_param   PATH_INFO $fastcgi_path_info;
+    fastcgi_param   db_server   localhost;
+    fastcgi_param   db_name     mythconverg;
+    fastcgi_param   db_login    mythtv;
+    fastcgi_param   db_password mythtv;
+    fastcgi_param   hostname    mythtv.cardoe.com;
+    fastcgi_pass    127.0.0.1:9000;
+}
+
+location @handler {
+    root VHOST_HTDOCS;
+    rewrite VHOST_APPDIR/(.+\.(php|pl))/.*  VHOST_APPDIR/$1 last;
+    rewrite VHOST_APPDIR/(pl(/.*)?)$        VHOST_APPDIR/mythweb.pl/$1 last;
+    rewrite VHOST_APPDIR/(.+)$              VHOST_APPDIR/mythweb.php/$1 last;
+    rewrite VHOST_APPDIR/(.*)$              VHOST_APPDIR/mythweb.php last;
+}

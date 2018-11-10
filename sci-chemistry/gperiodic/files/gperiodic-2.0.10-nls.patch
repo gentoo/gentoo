@@ -1,0 +1,20 @@
+ po/Makefile |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/po/Makefile b/po/Makefile
+index d7d7d78..179dad6 100644
+--- a/po/Makefile
++++ b/po/Makefile
+@@ -26,10 +26,12 @@ endif
+ 
+ install: 
+ 	$(MAKE) all
++ifeq ($(enable_nls),1)
+ 	for f in $(FILES_MO) ; do \
+ 		mkdir -p $(DESTDIR)$(LOCALEDIR)/`basename $$f .mo`/LC_MESSAGES ; \
+ 		install -m 644 $$f $(DESTDIR)$(LOCALEDIR)/`basename $$f .mo`/LC_MESSAGES/$(PACKAGE).mo ; \
+ 	done
++endif
+ 
+ uninstall:
+ 	for f in $(FILES_MO) ; do \

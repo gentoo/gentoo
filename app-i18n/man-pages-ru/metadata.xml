@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pinkbyte@gentoo.org</email>
+		<name>Sergey Popov</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">man-pages-ru</remote-id>
+		<maintainer>
+			<email>azamat.hackimov@gmail.com</email>
+			<name>Azamat Hackimov</name>
+		</maintainer>
+	</upstream>
+</pkgmetadata>

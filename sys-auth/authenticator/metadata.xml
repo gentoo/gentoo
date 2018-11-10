@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>oleksandr.trotsenko@gmail.com</email>
+		<name>Oleksandr Trotsenko</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">bilelmoussaoui/Authenticator</remote-id>
+		<maintainer>
+			<name>Bilal Elmoussaoui</name>
+		</maintainer>
+		<bugs-to>https://github.com/bilelmoussaoui/Authenticator/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

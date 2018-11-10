@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting HTTP Replicator"
+	start-stop-daemon --start --pidfile /var/run/http-replicator.pid \
+		--name http-replicator --exec /usr/bin/http-replicator -- --static \
+		--flat --daemon $LOG_FILE $DAEMON_OPTS --pid /var/run/http-replicator.pid
+	eend $? "Failed to start HTTP Replicator"
+}
+
+stop() {
+	ebegin "Stopping HTTP Replicator"
+	start-stop-daemon --stop --pidfile /var/run/http-replicator.pid --name http-replicator --signal 2
+	eend $? "Failed to stop HTTP Replicator"
+}

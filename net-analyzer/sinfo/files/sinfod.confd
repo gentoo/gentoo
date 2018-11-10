@@ -1,0 +1,4 @@
+# /etc/conf.d/sinfod: config file for /etc/init.d/sinfod
+
+# Various sinfod options
+SINFOD_OPTS="--quiet"

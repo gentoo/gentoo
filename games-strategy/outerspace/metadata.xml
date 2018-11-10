@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+Outer Space is an on-line strategy game which takes place in the dangerous
+universe. You will become powerful commander of many stars, planets, and great
+fleets and will struggle for survival with other commanders.
+
+Outer Space communicates with the server in the same way as your browser, but
+you will need a special client to play it. Using this client you can create an
+account on the server and you can start to explore the world of the Outer Space.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">ospace</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,96 @@
+Per debian 473204: http://bugs.debian.org/473204, mhash exports #defines that
+are customarily autotools-private. This results in warnings when other packages
+attempt to use mhash's headers.
+
+Gentoo-Bug: 221093
+Gentoo-Bug-URL: http://bugs.gentoo.org/show_bug.cgi?id=221093
+Patch-URL: http://bugs.gentoo.org/attachment.cgi?id=152625&action=view
+Signed-off-by: Peter Alfredson <loki_val@gentoo.org>
+
+diff -NrU5 mhash-0.9.9.orig/configure.in mhash-0.9.9/configure.in
+--- mhash-0.9.9.orig/configure.in	2008-05-09 16:17:52.000000000 +0200
++++ mhash-0.9.9/configure.in	2008-05-09 16:18:20.000000000 +0200
+@@ -4,10 +4,11 @@
+ AC_CANONICAL_TARGET
+ AC_CONFIG_SRCDIR([lib/mhash.c])
+ AM_INIT_AUTOMAKE
+ 
+ AC_DEFINE([MHASH_VERSION], PROGRAM_VERSION, "MHash Version")
++AC_CONFIG_HEADER([include/mutils/config.h])
+ AC_CONFIG_HEADER([include/mutils/mhash_config.h])
+ 
+ 
+ dnl Check system.
+ 
+diff -NrU5 mhash-0.9.9.orig/include/mutils/config.h.in mhash-0.9.9/include/mutils/config.h.in
+--- mhash-0.9.9.orig/include/mutils/config.h.in	1970-01-01 01:00:00.000000000 +0100
++++ mhash-0.9.9/include/mutils/config.h.in	2008-05-09 16:18:20.000000000 +0200
+@@ -0,0 +1,22 @@
++/* Name of package */
++#undef PACKAGE
++
++/* Define to the address where bug reports for this package should be sent. */
++#undef PACKAGE_BUGREPORT
++
++/* Define to the full name of this package. */
++#undef PACKAGE_NAME
++
++/* Define to the full name and version of this package. */
++#undef PACKAGE_STRING
++
++/* Define to the one symbol short name of this package. */
++#undef PACKAGE_TARNAME
++
++/* Define to the version of this package. */
++#undef PACKAGE_VERSION
++
++/* Version number of package */
++#undef VERSION
++
++
+diff -NrU5 mhash-0.9.9.orig/include/mutils/mhash_config.h.in mhash-0.9.9/include/mutils/mhash_config.h.in
+--- mhash-0.9.9.orig/include/mutils/mhash_config.h.in	2008-05-09 16:17:52.000000000 +0200
++++ mhash-0.9.9/include/mutils/mhash_config.h.in	2008-05-09 16:19:17.000000000 +0200
+@@ -179,28 +179,10 @@
+ #undef MHASH_VERSION
+ 
+ /* Define to 1 if your C compiler doesn't accept -c and -o together. */
+ #undef NO_MINUS_C_MINUS_O
+ 
+-/* Name of package */
+-#undef PACKAGE
+-
+-/* Define to the address where bug reports for this package should be sent. */
+-#undef PACKAGE_BUGREPORT
+-
+-/* Define to the full name of this package. */
+-#undef PACKAGE_NAME
+-
+-/* Define to the full name and version of this package. */
+-#undef PACKAGE_STRING
+-
+-/* Define to the one symbol short name of this package. */
+-#undef PACKAGE_TARNAME
+-
+-/* Define to the version of this package. */
+-#undef PACKAGE_VERSION
+-
+ /* Define to 1 if the C compiler supports function prototypes. */
+ #undef PROTOTYPES
+ 
+ /* The size of `unsigned char', as computed by sizeof. */
+ #undef SIZEOF_UNSIGNED_CHAR
+@@ -221,13 +203,10 @@
+ #undef STDC_HEADERS
+ 
+ /* dmalloc */
+ #undef USE_DMALLOC
+ 
+-/* Version number of package */
+-#undef VERSION
+-
+ /* Define if using the dmalloc debugging malloc package */
+ #undef WITH_DMALLOC
+ 
+ /* Define to 1 if your processor stores words with the most significant byte
+    first (like Motorola and SPARC, unlike Intel and VAX). */

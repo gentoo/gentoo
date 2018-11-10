@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<use>
+		<flag name="argyllcms">Enable ArgyllCMS sensor</flag>
+		<flag name="extra-print-profiles">Generate extra print profiles.
+			Warning: significant build time and memory requirements.</flag>
+		<flag name="gusb">Enable <pkg>dev-libs/libgusb</pkg> support, needed for
+			colorimeter drivers</flag>
+	</use>
+</pkgmetadata>

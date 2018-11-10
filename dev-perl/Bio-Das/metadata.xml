@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Bio-Das</remote-id>
+    <remote-id type="cpan-module">Bio::Das</remote-id>
+    <remote-id type="cpan-module">Bio::Das::AGPServer::Config</remote-id>
+    <remote-id type="cpan-module">Bio::Das::AGPServer::Daemon</remote-id>
+    <remote-id type="cpan-module">Bio::Das::AGPServer::Parser</remote-id>
+    <remote-id type="cpan-module">Bio::Das::AGPServer::SQLStorage</remote-id>
+    <remote-id type="cpan-module">Bio::Das::AGPServer::SQLStorage::CSV::DB</remote-id>
+    <remote-id type="cpan-module">Bio::Das::AGPServer::SQLStorage::MySQL::DB</remote-id>
+    <remote-id type="cpan-module">Bio::Das::DSN</remote-id>
+    <remote-id type="cpan-module">Bio::Das::Feature</remote-id>
+    <remote-id type="cpan-module">Bio::Das::FeatureIterator</remote-id>
+    <remote-id type="cpan-module">Bio::Das::HTTP::Fetch</remote-id>
+    <remote-id type="cpan-module">Bio::Das::Map</remote-id>
+    <remote-id type="cpan-module">Bio::Das::Request</remote-id>
+    <remote-id type="cpan-module">Bio::Das::Request::Dnas</remote-id>
+    <remote-id type="cpan-module">Bio::Das::Request::Dsn</remote-id>
+    <remote-id type="cpan-module">Bio::Das::Request::Entry_points</remote-id>
+    <remote-id type="cpan-module">Bio::Das::Request::Feature2Segments</remote-id>
+    <remote-id type="cpan-module">Bio::Das::Request::Features</remote-id>
+    <remote-id type="cpan-module">Bio::Das::Request::Sequences</remote-id>
+    <remote-id type="cpan-module">Bio::Das::Request::Stylesheet</remote-id>
+    <remote-id type="cpan-module">Bio::Das::Request::Types</remote-id>
+    <remote-id type="cpan-module">Bio::Das::Segment</remote-id>
+    <remote-id type="cpan-module">Bio::Das::Stylesheet</remote-id>
+    <remote-id type="cpan-module">Bio::Das::Type</remote-id>
+    <remote-id type="cpan-module">Bio::Das::TypeHandler</remote-id>
+    <remote-id type="cpan-module">Bio::Das::Util</remote-id>
+  </upstream>
+</pkgmetadata>

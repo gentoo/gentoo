@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-antivirus category contains antivirus software.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-antivirus contiene software anti-virus.
+	</longdescription>
+	<longdescription lang="de">    
+		Die Kategorie app-antivirus enthält Antiviren-Software.
+	</longdescription>
+	<longdescription lang="ja">
+		app-antivirusカテゴリにはアンチウィルスソフトが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De categorie app-antivirus bevat anti-virus applicaties.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória app-antivirus obsahuje antivírusové programy.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-antivirus chứa các ứng dụng chống/diệt virus.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-antivirus contiene software anti-virus.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-antivirus contém software anti-vírus.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-antivirus zawiera oprogramowanie antywirusowe.
+	</longdescription>
+</catmetadata>
+

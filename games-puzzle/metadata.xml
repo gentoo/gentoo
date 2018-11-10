@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The games-puzzle category contains puzzle games.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie games-puzzle enthält Knobelspiele.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-puzzle contiene juegos puzzle.
+	</longdescription>
+	<longdescription lang="ja">
+		games-puzzle カテゴリーにはパズル・ゲームが
+		含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De games-puzzle categorie bevat puzzelspellen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-puzzle chứa các trò chơi dạng đánh đố (puzzle).
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-puzzle contiene giochi tipo puzzle.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria games-puzzle contém jogos de puzzle.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria games-puzzle zawiera układanki.
+	</longdescription>
+</catmetadata>
+

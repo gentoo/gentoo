@@ -1,0 +1,86 @@
+diff -Naur amyeditbroken/src/AmyEdit.cc amyedit-1.0/src/AmyEdit.cc
+--- amyeditbroken/src/AmyEdit.cc	2006-03-13 22:13:08.000000000 +0100
++++ amyedit-1.0/src/AmyEdit.cc	2008-07-12 05:07:43.965608312 +0200
+@@ -65,9 +65,9 @@
+ 
+ /* My Signals */
+ // signals when there is a file available
+-SigC::Signal1<void,bool> signal_file_open;
++sigc::signal1<void,bool> signal_file_open;
+ // signals an update to preferences
+-SigC::Signal0<void> signal_preferences_update;
++sigc::signal0<void> signal_preferences_update;
+ /**************/
+ 
+ AmyEdit* AmyEdit::smInstance=NULL;
+diff -Naur amyeditbroken/src/EditTabs.cc amyedit-1.0/src/EditTabs.cc
+--- amyeditbroken/src/EditTabs.cc	2006-03-13 22:25:53.000000000 +0100
++++ amyedit-1.0/src/EditTabs.cc	2008-07-12 05:08:41.022094749 +0200
+@@ -76,7 +76,7 @@
+ 	set_tab_pos(Gtk::POS_TOP);
+ 	set_scrollable(true);
+ 
+-	extern SigC::Signal0<void> signal_preferences_update;
++	extern sigc::signal0<void> signal_preferences_update;
+ 
+ 	signal_switch_page().connect(sigc::mem_fun(*this, &EditTabs::on_switching_page));
+ 	signal_preferences_update.connect(sigc::mem_fun(*this, &EditTabs::on_preferences_update));
+@@ -414,7 +414,7 @@
+ 
+ bool EditTabs::CloseTab(int tab)
+ {
+-	extern SigC::Signal1<void,bool> signal_file_open;
++	extern sigc::signal1<void,bool> signal_file_open;
+ 
+ 	if (tab<0)
+ 		tab=get_current_page();
+@@ -686,8 +686,8 @@
+ 
+ void EditTabs::on_switching_page(GtkNotebookPage *page, guint number)
+ {
+-	extern SigC::Signal1<void, int> signal_line_set;
+-	extern SigC::Signal1<void, bool> signal_file_open;
++	extern sigc::signal1<void, int> signal_line_set;
++	extern sigc::signal1<void, bool> signal_file_open;
+ 	Page *curtab = get_current_tab();
+ 
+ 	if (curtab)
+@@ -735,7 +735,7 @@
+ 
+ 	on_preferences_update();
+ 
+-	extern SigC::Signal0<void> signal_preferences_update;
++	extern sigc::signal0<void> signal_preferences_update;
+ 	get_buffer()->signal_modified_changed().connect(sigc::mem_fun(*this, &EditTabs::Page::on_modified_changed));
+ 	get_buffer()->signal_changed().connect(sigc::mem_fun(*this, &EditTabs::Page::on_changed));
+ 	get_buffer()->signal_mark_set().connect(sigc::mem_fun(*this, &EditTabs::Page::on_mark_changed));
+@@ -815,7 +815,7 @@
+ 
+ void EditTabs::Page::on_changed()
+ {
+-	extern SigC::Signal1<void, int> signal_line_set;
++	extern sigc::signal1<void, int> signal_line_set;
+ 	signal_line_set(get_buffer()->get_insert()->get_iter().get_line());
+ 
+ }
+@@ -823,7 +823,7 @@
+ void EditTabs::Page::on_mark_changed(Gtk::SourceBuffer::iterator iter, Glib::RefPtr<Gtk::SourceBuffer::Mark> mark){
+ 	if (mark->get_name()=="insert")
+ 	{
+-		extern SigC::Signal1<void, int> signal_line_set;
++		extern sigc::signal1<void, int> signal_line_set;
+ 
+ 		signal_line_set(get_buffer()->get_insert()->get_iter().get_line());
+ 
+diff -Naur amyeditbroken/src/StatusBar.cc amyedit-1.0/src/StatusBar.cc
+--- amyeditbroken/src/StatusBar.cc	2005-12-17 15:56:47.000000000 +0100
++++ amyedit-1.0/src/StatusBar.cc	2008-07-12 05:09:14.020602906 +0200
+@@ -50,7 +50,7 @@
+ #include "StatusBar.hh"
+ #include "Utils.hh"
+ 
+-SigC::Signal1<void, int> signal_line_set;
++sigc::signal1<void, int> signal_line_set;
+ 
+ StatusBar::StatusBar()
+ {

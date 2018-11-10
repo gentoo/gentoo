@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-electronics@gentoo.org</email>
+		<name>Gentoo Electronics Project</name>
+	</maintainer>
+	<longdescription>
+		Gerbv is a viewer for Gerber RS-274X files, Excellon drill files, and CSV
+		pick-and-place files.  (Note:  RS-274D files are not supported.)
+		The core functionality of gerbv is located in a separate library
+		(libgerbv), allowing developers to include Gerber
+		parsing/editing/exporting/rendering into other programs.
+	</longdescription>
+	<use>
+		<flag name="unit-mm">Set default unit for coordinates in status bar to mm</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">gerbv</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,106 @@
+Index: rafkill-1.2.2/src/guns/gun_findgun.cpp
+===================================================================
+--- rafkill-1.2.2.orig/src/guns/gun_findgun.cpp	2006-05-07 15:50:04.000000000 +0100
++++ rafkill-1.2.2/src/guns/gun_findgun.cpp	2008-04-09 22:54:54.000000000 +0100
+@@ -5,6 +5,7 @@
+ #include "weaponobj.h"
+ #include "hulls/hull_weapon_machine.h"
+ #include "spaceobj.h"
++#include <cstdlib>
+ #include <vector>
+ #include <math.h>
+ 
+Index: rafkill-1.2.2/src/guns/gun_machine_circle.cpp
+===================================================================
+--- rafkill-1.2.2.orig/src/guns/gun_machine_circle.cpp	2006-05-02 02:50:40.000000000 +0100
++++ rafkill-1.2.2/src/guns/gun_machine_circle.cpp	2008-04-09 22:54:54.000000000 +0100
+@@ -3,6 +3,7 @@
+ #include "weaponobj.h"
+ #include "hulls/hull_weapon_machine.h"
+ #include "trigtable.h"
++#include <cstdlib>
+ 
+ // #define d_circle_move (2.9*8)
+ 
+Index: rafkill-1.2.2/src/guns/gun_saber.cpp
+===================================================================
+--- rafkill-1.2.2.orig/src/guns/gun_saber.cpp	2006-05-02 02:52:23.000000000 +0100
++++ rafkill-1.2.2/src/guns/gun_saber.cpp	2008-04-09 22:54:54.000000000 +0100
+@@ -5,6 +5,7 @@
+ #include "weapons/weapon_beam.h"
+ #include "spaceobj.h"
+ #include "ebox.h"
++#include <cstdlib>
+ #include <vector>
+ 
+ using namespace std;
+Index: rafkill-1.2.2/src/menu.cpp
+===================================================================
+--- rafkill-1.2.2.orig/src/menu.cpp	2008-04-09 22:53:35.000000000 +0100
++++ rafkill-1.2.2/src/menu.cpp	2008-04-09 22:54:54.000000000 +0100
+@@ -1,4 +1,5 @@
+ #include <stdio.h>
++#include <cstdlib>
+ #include "defs.h"
+ #include "menu.h"
+ #include "loadsave.h"
+Index: rafkill-1.2.2/src/weapons/weapon_follow.cpp
+===================================================================
+--- rafkill-1.2.2.orig/src/weapons/weapon_follow.cpp	2006-03-25 23:29:05.000000000 +0000
++++ rafkill-1.2.2/src/weapons/weapon_follow.cpp	2008-04-09 22:54:54.000000000 +0100
+@@ -3,6 +3,7 @@
+ #include "weapon_follow.h"
+ #include "hulls/hull_weapon_follow.h"
+ #include "spaceobj.h"
++#include <cstdlib>
+ #include <vector>
+ 
+ using namespace std;
+Index: rafkill-1.2.2/src/hulls/hull_weapon_beam.cpp
+===================================================================
+--- rafkill-1.2.2.orig/src/hulls/hull_weapon_beam.cpp	2006-05-02 03:12:50.000000000 +0100
++++ rafkill-1.2.2/src/hulls/hull_weapon_beam.cpp	2008-04-09 22:54:54.000000000 +0100
+@@ -4,6 +4,7 @@
+ #include "hull_weapon_beam.h"
+ #include "trigtable.h"
+ #include "ebox.h"
++#include <cstdlib>
+ 
+ #ifndef debug
+ #include <iostream>
+Index: rafkill-1.2.2/src/drawer.cpp
+===================================================================
+--- rafkill-1.2.2.orig/src/drawer.cpp	2008-04-09 22:55:06.000000000 +0100
++++ rafkill-1.2.2/src/drawer.cpp	2008-04-09 22:55:55.000000000 +0100
+@@ -11,6 +11,7 @@
+ #include "trigtable.h"
+ #include "pck.h"
+ #include <iostream>
++#include <cstring>
+ 
+ /* TODO:
+  * Add weapon icons to HUD
+Index: rafkill-1.2.2/src/loadsave.cpp
+===================================================================
+--- rafkill-1.2.2.orig/src/loadsave.cpp	2008-04-09 22:55:19.000000000 +0100
++++ rafkill-1.2.2/src/loadsave.cpp	2008-04-09 22:55:55.000000000 +0100
+@@ -7,6 +7,7 @@
+ #include "spaceobj.h"
+ #include "strings.h"
+ #include <string>
++#include <cstring>
+ #include <vector>
+ #include "gunobj.h"
+ #include "hull.h"
+Index: rafkill-1.2.2/src/system.cpp
+===================================================================
+--- rafkill-1.2.2.orig/src/system.cpp	2008-04-09 22:55:29.000000000 +0100
++++ rafkill-1.2.2/src/system.cpp	2008-04-09 22:55:55.000000000 +0100
+@@ -1,6 +1,7 @@
+ #include "system.h"
+ #include <strings.h>
+ #include <string>
++#include <cstring>
+ 
+ #ifdef WINDOWS
+ static const char * type(){

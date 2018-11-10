@@ -1,0 +1,13 @@
+--- ipx-1.1/ipx_interface.c.orig	2004-10-16 13:14:40.677964152 -0400
++++ ipx-1.1/ipx_interface.c	2004-10-16 13:15:18.464219768 -0400
+@@ -191,7 +191,9 @@
+ 		exit(-1);
+ 	}
+ 
+-	fp = fopen("/proc/net/ipx_interface", "r");
++	fp = fopen("/proc/net/ipx/interface", "r");
++	if (fp == NULL)
++		fp = fopen("/proc/net/ipx_interface", "r");
+ 	if (fp == NULL) {
+ 		fprintf(stderr, 
+ 			"%s: Unable to open \"/proc/net/ipx_interface.\"\n",

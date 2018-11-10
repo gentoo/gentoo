@@ -1,0 +1,14 @@
+diff --git a/Sound/Wav/Binary.hs b/Sound/Wav/Binary.hs
+index d2c539c..11883a3 100644
+--- a/Sound/Wav/Binary.hs
++++ b/Sound/Wav/Binary.hs
+@@ -1 +1,2 @@
++{-# LANGUAGE CPP #-}
+ -- | This module provides helper binary functions to get integer values from binary streams and put
+@@ -8,2 +9,3 @@ import Data.Int
+ 
++#if ! MIN_VERSION_binary(0,8,0)
+ getInt8 :: Get Int8
+@@ -31 +33,2 @@ putInt64le :: Int64 -> Put
+ putInt64le = putWord64le . fromIntegral
++#endif

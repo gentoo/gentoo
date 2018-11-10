@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		Distribution Cstools contains well-known character set conversion
+		program cstocs, and module Cz::Cstocs that makes it easy to do charset
+		conversions directly in Perl scripts, without spawning external process.
+		Also included is Cz::Sort module that provides functions for Czech
+		collation in Perl scripts without a need of locale settings. It is based
+		on conversion table from csr program by Petr Olsak.
+	</longdescription>
+</pkgmetadata>

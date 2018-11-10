@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bircoph@gentoo.org</email>
+		<name>Andrew Savchenko</name>
+	</maintainer>
+	<longdescription>
+		StarDict is an international dictionary Software. It has powerful features
+		such as "Glob-style pattern matching", "Scan selection word," "Fuzzy
+		query," etc. Stardict Version3.0 has developed a lot of new functions, such
+		as Full-text translation, Net Dict.
+	</longdescription>
+	<use>
+		<flag name="advertisement">Enable stardict advertisements plugin</flag>
+		<flag name="cal">Enable calendar support using cal program</flag>
+		<flag name="dictdotcn">Enable dict.cn network plugin (for Chinese language)</flag>
+		<flag name="espeak">Enable text to speech synthesizer plugin using <pkg>app-accessibility/espeak</pkg> engine</flag>
+		<flag name="flite">Enable text to speech synthesizer plugin using <pkg>app-accessibility/flite</pkg> engine</flag>
+		<flag name="fortune">Enable plugin to read fortune messages using <pkg>games-misc/fortune-mod</pkg>. You may consider installing <pkg>games-misc/fortune-mod-all</pkg> to get all fortune messages.</flag>
+		<flag name="gucharmap">Enable plugin for unicode symbols description using <pkg>gnome-extra/gucharmap</pkg></flag>
+		<flag name="htmlparse">Enable plugin to parse dictionaries with html content</flag>
+		<flag name="info">Enable plugin to read info pages</flag>
+		<flag name="man">Enable plugin to read manual pages</flag>
+		<flag name="powerwordparse">Enable plugin to parse powerword dictionaries</flag>
+		<flag name="pronounce">Install WyabdcRealPeopleTTS package (it is just many .wav files) to make StarDict pronounce English words</flag>
+		<flag name="qqwry">Enable QQWry plugin, which provides information (in Chinese language) about geographical positions, owner, etc. for IP addresses</flag>
+		<flag name="tools">Build and install dictionary management tools and converters from various dictionary formats</flag>
+		<flag name="updateinfo">Enable plugin to check for stardict updates</flag>
+		<flag name="wikiparse">Enable plugin to parse dictionaries in wikimedia format</flag>
+		<flag name="wordnet">Enable wordnet plugin to find similar English words using lexical database</flag>
+		<flag name="xdxfparse">Enable plugin to parse dictionaries in xdxf (XML Dictionary eXchange Format)</flag>
+		<flag name="youdaodict">Enable youdao.com network plugin (for Chinese language)</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">stardict-4</remote-id>
+		<remote-id type="github">huzheng001/stardict-3</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,34 @@
+From b8540c4c71e917623290f3ca8d4091228fab8903 Mon Sep 17 00:00:00 2001
+From: Justin Bronder <jsbronder@gmail.com>
+Date: Mon, 13 Feb 2017 18:21:28 -0500
+Subject: [PATCH 2/3] use system feedparser
+
+---
+ sabnzbd/rss.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sabnzbd/rss.py b/sabnzbd/rss.py
+index 0315fca..18ac828 100644
+--- a/sabnzbd/rss.py
++++ b/sabnzbd/rss.py
+@@ -25,6 +25,8 @@ import time
+ import datetime
+ import threading
+ 
++import feedparser
++
+ import sabnzbd
+ from sabnzbd.constants import RSS_FILE_NAME, DEFAULT_PRIORITY, NORMAL_PRIORITY, DUP_PRIORITY
+ from sabnzbd.decorators import synchronized
+@@ -35,8 +37,6 @@ from sabnzbd.misc import cat_convert, wildcard_to_re, cat_to_opts, \
+ import sabnzbd.emailer as emailer
+ from sabnzbd.encoding import unicoder, xml_name
+ 
+-import sabnzbd.utils.feedparser as feedparser
+-
+ __RSS = None  # Global pointer to RSS-scanner instance
+ 
+ 
+-- 
+2.13.0
+

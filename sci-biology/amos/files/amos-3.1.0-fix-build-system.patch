@@ -1,0 +1,116 @@
+* Use proper AR and not just 'ar'
+* Fix build system to build in parallel
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -34,6 +34,7 @@
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_RANLIB
++AM_PROG_AR
+ AC_PROG_CPP
+ AC_PATH_PROG(PERL, [perl], [:])
+ AC_PATH_PROG(PYTHON, [python], [:])
+--- a/src/Align/Makefile.am
++++ b/src/Align/Makefile.am
+@@ -133,7 +133,7 @@
+ 
+ ##-- hash-overlap
+ hash_overlap_LDADD = \
+-	$(top_builddir)/src/Align/libAlign.a \
++	libAlign.a \
+ 	$(top_builddir)/src/CelMsg/libCelMsg.a \
+ 	$(top_builddir)/src/Slice/libSlice.a \
+ 	$(top_builddir)/src/Common/libCommon.a \
+@@ -172,7 +172,7 @@
+ 
+ ##-- make-consensus
+ make_consensus_LDADD = \
+-	$(top_builddir)/src/Align/libAlign.a \
++	libAlign.a \
+ 	$(top_builddir)/src/CelMsg/libCelMsg.a \
+ 	$(top_builddir)/src/Slice/libSlice.a \
+ 	$(top_builddir)/src/Common/libCommon.a \
+@@ -182,7 +182,7 @@
+ 
+ ##-- make-consensus_poly
+ make_consensus_poly_LDADD = \
+-	$(top_builddir)/src/Align/libAlign_poly.a \
++	libAlign_poly.a \
+ 	$(top_builddir)/src/CelMsg/libCelMsg.a \
+ 	$(top_builddir)/src/Slice/libSlice.a \
+ 	$(top_builddir)/src/Common/libCommon.a \
+@@ -192,7 +192,7 @@
+ 
+ ##-- maligntest
+ maligntest_LDADD = \
+-	$(top_builddir)/src/Align/libAlign.a \
++	libAlign.a \
+ 	$(top_builddir)/src/CelMsg/libCelMsg.a \
+ 	$(top_builddir)/src/Slice/libSlice.a \
+ 	$(top_builddir)/src/Common/libCommon.a \
+@@ -202,7 +202,7 @@
+ 
+ ##-- merge-contigs
+ merge_contigs_LDADD = \
+-	$(top_builddir)/src/Align/libAlign.a \
++	libAlign.a \
+ 	$(top_builddir)/src/CelMsg/libCelMsg.a \
+ 	$(top_builddir)/src/Slice/libSlice.a \
+ 	$(top_builddir)/src/Common/libCommon.a \
+@@ -235,7 +235,7 @@
+ 
+ ##-- show-ma-asm
+ show_ma_asm_LDADD = \
+-	$(top_builddir)/src/Align/libAlign.a \
++	libAlign.a \
+ 	$(top_builddir)/src/Common/libCommon.a \
+ 	$(top_builddir)/src/AMOS/libAMOS.a
+ show_ma_asm_SOURCES = \
+@@ -261,7 +261,7 @@
+ 
+ ##-- simple-overlap
+ simple_overlap_LDADD = \
+-	$(top_builddir)/src/Align/libAlign.a \
++	libAlign.a \
+ 	$(top_builddir)/src/CelMsg/libCelMsg.a \
+ 	$(top_builddir)/src/Slice/libSlice.a \
+ 	$(top_builddir)/src/Common/libCommon.a \
+@@ -272,7 +272,7 @@
+ 
+ ##-- test-align
+ test_align_LDADD = \
+-	$(top_builddir)/src/Align/libAlign.a \
++	libAlign.a \
+ 	$(top_builddir)/src/CelMsg/libCelMsg.a \
+ 	$(top_builddir)/src/Slice/libSlice.a \
+ 	$(top_builddir)/src/Common/libCommon.a \
+--- a/src/Bambus/Bundler/Makefile.am
++++ b/src/Bambus/Bundler/Makefile.am
+@@ -47,7 +47,7 @@
+ 	clk.cc
+ 
+ MarkRepeats_LDADD = \
+-	$(top_builddir)/src/Bambus/Bundler/libBundler.a \
++	libBundler.a \
+ 	$(top_builddir)/src/Common/libCommon.a \
+ 	$(top_builddir)/src/AMOS/libAMOS.a \
+ 	$(top_builddir)/src/GNU/libGNU.a
+@@ -55,7 +55,7 @@
+ 	MarkRepeats.cc
+ 
+ OrientContigs_LDADD = \
+-	$(top_builddir)/src/Bambus/Bundler/libBundler.a \
++	libBundler.a \
+ 	$(top_builddir)/src/Common/libCommon.a \
+ 	$(top_builddir)/src/AMOS/libAMOS.a \
+ 	$(top_builddir)/src/GNU/libGNU.a
+@@ -63,7 +63,7 @@
+ 	OrientContigs.cc
+ 
+ FilterEdgesByCluster_LDADD = \
+-	$(top_builddir)/src/Bambus/Bundler/libBundler.a \
++	libBundler.a \
+ 	$(top_builddir)/src/Common/libCommon.a \
+ 	$(top_builddir)/src/AMOS/libAMOS.a \
+ 	$(top_builddir)/src/GNU/libGNU.a

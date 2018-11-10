@@ -1,0 +1,30 @@
+diff -ur pympd-0.08.1.orig/pympd.desktop pympd-0.08.1/pympd.desktop
+--- pympd-0.08.1.orig/pympd.desktop	2007-05-10 16:11:16.000000000 +0300
++++ pympd-0.08.1/pympd.desktop	2009-05-22 05:20:43.000000000 +0300
+@@ -1,11 +1,10 @@
+ [Desktop Entry]
+-Version=0.06.2
++Version=1.0
+ Type=Application
+-Encoding=UTF-8
+ Name=pympd
+ Comment=pyGTK+ Frontend for MPD
+ TryExec=pympd
+ Exec=pympd
+-Icon=pympd.svg
+-Categories=Application;AudioVideo;Audio;Player;
++Icon=pympd
++Categories=AudioVideo;Audio;Player;
+ Terminal=false
+diff -ur pympd-0.08.1.orig/setup.py pympd-0.08.1/setup.py
+--- pympd-0.08.1.orig/setup.py	2007-05-10 16:11:16.000000000 +0300
++++ pympd-0.08.1/setup.py	2009-05-22 05:24:56.000000000 +0300
+@@ -23,7 +23,7 @@
+         package_dir= {'pympd':'src'},
+         packages=['pympd', 'pympd.modules'],
+         package_data={'pympd.modules': ['trayicon.so']},
+-        data_files=[('share/pympd/glade', glades + ['pympd.svg']), ('share/pympd/plugins', plugins), ('share/pixmaps', ['pympd.svg']), ('share/pympd/', ['pympd.svg']), ('share/applications', ['pympd.desktop']), ('share/pympd/pixmaps',icons) ],
++        data_files=[('share/pympd/glade', glades + ['pympd.svg']), ('share/pympd/plugins', plugins), ('share/icons/hicolor/scalable/apps', ['pympd.svg']), ('share/pympd/', ['pympd.svg']), ('share/applications', ['pympd.desktop']), ('share/pympd/pixmaps',icons) ],
+         
+         scripts = ['pympd']
+      )

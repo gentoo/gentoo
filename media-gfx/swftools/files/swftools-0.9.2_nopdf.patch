@@ -1,0 +1,40 @@
+diff -urB swftools-0.9.2.old/lib/Makefile.in swftools-0.9.2.jo/lib/Makefile.in
+--- swftools-0.9.2.old/lib/Makefile.in	2011-10-07 05:35:18.000000000 +0200
++++ swftools-0.9.2.jo/lib/Makefile.in	2012-04-11 23:33:53.299308801 +0200
+@@ -3,7 +3,8 @@
+ top_srcdir = @top_srcdir@
+ include ../Makefile.common
+ 
+-all: librfxswf$(A) libgfxpdf$(A) libbase$(A) libgfx$(A) libgfxswf$(A) libocr$(A)
++#all: librfxswf$(A) libgfxpdf$(A) libbase$(A) libgfx$(A) libgfxswf$(A) libocr$(A)
++all: librfxswf$(A) libbase$(A) libgfx$(A) libgfxswf$(A) libocr$(A)
+ 
+ lame_objects = lame/psymodel.$(O) lame/fft.$(O) lame/newmdct.$(O) lame/quantize.$(O) lame/takehiro.$(O) lame/reservoir.$(O) lame/quantize_pvt.$(O) lame/vbrquantize.$(O) lame/encoder.$(O) lame/id3tag.$(O) lame/version.$(O) lame/tables.$(O) lame/util.$(O) lame/bitstream.$(O) lame/set_get.$(O) lame/VbrTag.$(O) lame/lame.$(O)
+ lame_in_source = @lame_in_source@
+diff -urB swftools-0.9.2.old/Makefile.in swftools-0.9.2.jo/Makefile.in
+--- swftools-0.9.2.old/Makefile.in	2012-04-08 19:25:26.000000000 +0200
++++ swftools-0.9.2.jo/Makefile.in	2012-04-11 23:33:53.299308801 +0200
+@@ -8,8 +8,8 @@
+ 	cd m4;$(MAKE) $@
+ 	@echo making $@ in lib...
+ 	cd lib;$(MAKE) $@
+-	@echo making $@ in lib/pdf...
+-	cd lib/pdf;$(MAKE) $@
++#	@echo making $@ in lib/pdf...
++#	cd lib/pdf;$(MAKE) $@
+ 	@echo making $@ in lib...
+ 	cd lib;$(MAKE) $@
+ 	@echo making $@ in lib/python...
+diff -urB swftools-0.9.2.old/src/Makefile.in swftools-0.9.2.jo/src/Makefile.in
+--- swftools-0.9.2.old/src/Makefile.in	2011-10-07 05:20:17.000000000 +0200
++++ swftools-0.9.2.jo/src/Makefile.in	2012-04-11 23:33:53.299308801 +0200
+@@ -3,7 +3,8 @@
+ top_srcdir = @top_srcdir@
+ include ../Makefile.common
+ 
+-install_programs = wav2swf$(E) @PNG2SWF@ swfcombine$(E) swfstrings$(E) swfextract$(E) swfdump$(E) swfc$(E) @JPEG2SWF@ @GIF2SWF@ swfbbox$(E) font2swf$(E) swfrender$(E) as3compile$(E) @PDF2SWF@ @PDF2PDF@
++#install_programs = wav2swf$(E) @PNG2SWF@ swfcombine$(E) swfstrings$(E) swfextract$(E) swfdump$(E) swfc$(E) @JPEG2SWF@ @GIF2SWF@ swfbbox$(E) font2swf$(E) swfrender$(E) as3compile$(E) @PDF2SWF@ @PDF2PDF@
++install_programs = wav2swf$(E) @PNG2SWF@ swfcombine$(E) swfstrings$(E) swfextract$(E) swfdump$(E) swfc$(E) @JPEG2SWF@ @GIF2SWF@ swfbbox$(E) font2swf$(E) swfrender$(E) as3compile$(E) @PDF2PDF@
+ programs = $(install_programs) swfbytes$(E) ttftool$(E)
+ 
+ all: $(programs)

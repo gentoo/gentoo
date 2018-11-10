@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		SeaView is a graphical multiple sequence alignment editor developped by
+		Manolo Gouy. SeaView is able to read and write various alignment
+		formats (NEXUS, MSF, CLUSTAL, FASTA, PHYLIP, MASE). It allows to
+		manually edit the alignment, and also to run DOT-PLOT or CLUSTALW
+		programs to locally improve the alignment.
+	</longdescription>
+</pkgmetadata>

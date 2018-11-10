@@ -1,0 +1,40 @@
+From 2f66191a82e60a2b46ead8aa2195346084817e91 Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Sun, 27 Nov 2016 20:00:37 +1100
+Subject: [PATCH] Improve KF5 dependencies.
+
+This list was compiled from a cusory include and NEEDED inspection.
+---
+ src/app/CMakeLists.txt     | 2 +-
+ src/app/kde/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/app/CMakeLists.txt b/src/app/CMakeLists.txt
+index 516e3f9..7790fde 100644
+--- a/src/app/CMakeLists.txt
++++ b/src/app/CMakeLists.txt
+@@ -33,7 +33,7 @@ if (BUILD_KDE_APP)
+     include(KDECMakeSettings)
+     include(FeatureSummary)
+ 
+-    find_package(KF5 REQUIRED COMPONENTS KIO)
++    find_package(KF5 REQUIRED COMPONENTS Config ConfigWidgets CoreAddons WidgetsAddons XmlGui)
+ 
+     if (BUILD_SHARED_LIBS)
+       # KDECMakeSettings.cmake will overwrite our RPATH if LIB_INSTALL_DIR is
+diff --git a/src/app/kde/CMakeLists.txt b/src/app/kde/CMakeLists.txt
+index 2f2867a..8a25b43 100644
+--- a/src/app/kde/CMakeLists.txt
++++ b/src/app/kde/CMakeLists.txt
+@@ -13,7 +13,7 @@ if (HAVE_QT5)
+ 
+   add_executable(kid3 ${kde_SRCS})
+ 
+-  target_link_libraries(kid3 kid3-gui KF5::KIOFileWidgets -lstdc++)
++  target_link_libraries(kid3 kid3-gui KF5::ConfigCore KF5::ConfigGui KF5::ConfigWidgets KF5::CoreAddons KF5::WidgetsAddons KF5::XmlGui -lstdc++)
+ 
+   install(TARGETS kid3 DESTINATION ${BIN_INSTALL_DIR})
+   install(FILES ../kid3.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+-- 
+2.10.2
+

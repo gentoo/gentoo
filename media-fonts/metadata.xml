@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The media-fonts category contains fonts.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie media-fonts enthält verschiedene Font-Pakete.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría media-fonts contiene fuentes.
+	</longdescription>
+	<longdescription lang="ja">
+		media-fontsカテゴリーにはフォントが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De media-fonts categorie bevat lettertypes.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm media-fonts chứa các phông chữ.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria media-fonts contiene fonti tipografiche.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria media-fonts contém fontes.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria media-fonts zawiera czcionki.
+	</longdescription>
+</catmetadata>

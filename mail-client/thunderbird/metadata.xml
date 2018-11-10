@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>mozilla@gentoo.org</email>
+	<name>Gentoo Mozilla Team</name>
+</maintainer>
+<use>
+	<flag name="bindist">Disable official Thunderbird branding (icons, name) which 
+		are not binary-redistributable according to upstream.</flag>
+	<flag name="clang">Use Clang compiler instead of GCC</flag>
+	<flag name="crypt"> Enable encryption support with enigmail</flag>
+	<flag name="mozdom">Enable Mozilla's DOM inspector</flag>
+	<flag name="lightning">Enable app-global calendar support
+		(note 38.0 and above bundles calendar support when this flag is off)</flag>
+	<flag name="custom-optimization">Build with user-specified compiler optimizations
+		(-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)</flag>
+	<flag name="gtk2">Use the cairo-gtk2 rendering engine instead of the default cairo-gtk3</flag>
+	<flag name="rust">Enable support for using rust compiler  (experimental)</flag>
+	<flag name="system-cairo">Use the system-wide <pkg>x11-libs/cairo</pkg>
+		instead of bundled.</flag>
+	<flag name="system-harfbuzz">Use the system-wide <pkg>media-libs/harfbuzz</pkg>
+		and <pkg>media-gfx/graphite2</pkg> instead of bundled.</flag>
+	<flag name="system-icu">Use the system-wide <pkg>dev-libs/icu</pkg>
+		instead of bundled.</flag>
+	<flag name="system-jpeg">Use the system-wide <pkg>media-libs/libjpeg-turbo</pkg>
+		instead of bundled.</flag>
+	<flag name="system-libevent">Use the system-wide <pkg>dev-libs/libevent</pkg>
+		instead of bundled.</flag>
+	<flag name="system-libvpx">Use the system-wide <pkg>media-libs/libvpx</pkg>
+		instead of bundled.</flag>
+	<flag name="system-sqlite">Use the system-wide <pkg>dev-db/sqlite</pkg>
+		installation with secure-delete enabled</flag>
+	<flag name="minimal">Remove the software development kit and headers</flag>
+</use>
+</pkgmetadata>

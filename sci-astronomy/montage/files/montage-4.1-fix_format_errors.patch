@@ -1,0 +1,23 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Fix format security error for (s|f)printf
+--- a/grid/Pegasus/hashtable.c
++++ b/grid/Pegasus/hashtable.c
+@@ -4,8 +4,6 @@
+ 
+ #include <hashtable.h>
+ 
+-char *strdup(const char *s1);
+-
+ int HT_debug = 0;
+ 
+ /********************************************************/
+--- a/lib/src/coord/ccalc.c
++++ b/lib/src/coord/ccalc.c
+@@ -25,7 +25,6 @@
+ static int ConvertfromDD(char *fmt, char *clongprec, char *clatprec, 
+ 			 char *clon, char *clat, double *lon, double *lat);
+ static char *downcase(char *s);
+-char *strdup(const char *s1);
+ int ParseUnits(char *cunit, int *chflag, CoordUnit *unit);
+ int ParsePrec(CoordUnit units, char *cprec, int longflag);
+ 

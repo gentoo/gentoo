@@ -1,0 +1,11 @@
+--- cluster-2.03.09/ccs/ccs_tool/upgrade.c.orig	2008-11-13 01:31:14.000000000 +0100
++++ cluster-2.03.09/ccs/ccs_tool/upgrade.c	2008-11-13 01:31:34.000000000 +0100
+@@ -223,7 +223,7 @@
+   memset(tmp_file, 0, 128);
+   sprintf(tmp_file, "/tmp/ccs_tool_tmp_XXXXXX");
+ 
+-  tmp_fd = mkostemp(tmp_file, O_RDWR | O_CREAT |O_TRUNC);
++  tmp_fd = mkstemp(tmp_file);
+   if(tmp_fd < 0){
+     fprintf(stderr, "Unable to create temporary archive: %s\n", strerror(errno));
+     error = -errno;

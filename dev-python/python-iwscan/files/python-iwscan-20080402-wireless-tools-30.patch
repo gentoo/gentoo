@@ -1,0 +1,14 @@
+--- pyiwscan.c
++++ pyiwscan.c
+@@ -13,6 +13,11 @@
+ #include <structmember.h>
+ #include <iwlib.h>
+ 
++/* PROC_NET_WIRELESS is defined in iwlib-private.h since wireless-tools-30_pre9 */
++#ifndef PROC_NET_WIRELESS
++#define PROC_NET_WIRELESS "/proc/net/wireless"
++#endif
++
+ #define IWSCAN_VERSION_MAJOR  0
+ #define IWSCAN_VERSION_MINOR  7
+ #define IWSCAN_VERSION_MICRO  0

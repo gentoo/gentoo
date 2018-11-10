@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>fonts@gentoo.org</email>
+    <name>Fonts</name>
+  </maintainer>
+  <longdescription lang="en">
+    Galatia SIL is the second release of a Biblical Greek font package
+    from SIL International. The typeface is almost identical to the
+    original SIL Galatia font, but is now encoded according to Unicode
+    3.1.
+
+    The Galatia SIL fonts contain most of the symbols defined in
+    Unicode 3.1 for Latin-1, Greek (excluding Coptic), Macintosh
+    Character Set (US Roman), and 850WE/Latin-1 and are supplied in
+    Regular and Bold weights.
+  </longdescription>
+</pkgmetadata>

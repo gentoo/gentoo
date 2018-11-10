@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-Feed</remote-id>
+    <remote-id type="cpan-module">XML::Feed</remote-id>
+    <remote-id type="cpan-module">XML::Feed::Content</remote-id>
+    <remote-id type="cpan-module">XML::Feed::Enclosure</remote-id>
+    <remote-id type="cpan-module">XML::Feed::Entry</remote-id>
+    <remote-id type="cpan-module">XML::Feed::Entry::Format::Atom</remote-id>
+    <remote-id type="cpan-module">XML::Feed::Entry::Format::RSS</remote-id>
+    <remote-id type="cpan-module">XML::Feed::Format::Atom</remote-id>
+    <remote-id type="cpan-module">XML::Feed::Format::RSS</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package contains the &quot;Control.Monad.Fail&quot; module providing the
+		&lt;https://prime.haskell.org/wiki/Libraries/Proposals/MonadFail MonadFail&gt;
+		class that became available in
+		&lt;https://hackage.haskell.org/package/base-4.9.0.0 base-4.9.0.0&gt;
+		for older @base@ package versions.
+		
+		This package turns into an empty package when used with GHC versions
+		which already provide the &quot;Control.Monad.Fail&quot; module to make way for
+		GHC&#39;s own &quot;Control.Monad.Fail&quot; module.
+	</longdescription>
+</pkgmetadata>

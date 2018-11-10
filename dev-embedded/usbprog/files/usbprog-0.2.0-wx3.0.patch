@@ -1,0 +1,25 @@
+Description: Fix to build with wxWidgets 3.0
+ This patch should also work with wxWidgets 2.8.
+Author: Olly Betts <olly@survex.com>
+Last-Update: 2014-03-12
+
+--- usbprog-0.2.0.orig/gui/usbprogFrm.cc
++++ usbprog-0.2.0/gui/usbprogFrm.cc
+@@ -296,7 +296,7 @@ void usbprogFrm::CreateGUIControls()
+ 
+     // file dialog
+ 	m_fileDialog = new wxFileDialog(m_panel, wxT("Choose a file"),
+-            wxT(""), wxT(""), wxT("*.bin"), wxOPEN);
++            wxT(""), wxT(""), wxT("*.bin"), wxFD_OPEN);
+ 
+     m_topBox->Add(topSizer, wxEXPAND, wxALL, 10);
+ 
+@@ -670,7 +670,7 @@ void usbprogFrm::enableDisableDebug(wxCo
+         dbg->setFileHandle(NULL);
+     } else {
+         wxFileDialog fdg(m_panel, wxT("Choose a file"),
+-            wxT(""), wxT(""), wxT("*.log"), wxSAVE);
++            wxT(""), wxT(""), wxT("*.log"), wxFD_SAVE);
+         if (fdg.ShowModal() != wxID_OK)
+             dbg->setFileHandle(stderr);
+         else {

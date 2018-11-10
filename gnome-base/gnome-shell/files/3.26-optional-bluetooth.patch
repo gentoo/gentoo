@@ -1,0 +1,73 @@
+From 7ca3e1a9d18e6f6154b4479bcd94d420bc69798c Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Mon, 10 Sep 2018 13:17:39 +0200
+Subject: [PATCH] Make bluetooth support optional
+
+https://bugs.gentoo.org/show_bug.cgi?id=398145
+leio: Fixed enable_bluetooth get_option string
+---
+ js/misc/meson.build |  2 +-
+ meson.build         | 15 ++++++++++++++-
+ meson_options.txt   |  7 +++++++
+ 3 files changed, 22 insertions(+), 2 deletions(-)
+
+diff --git a/js/misc/meson.build b/js/misc/meson.build
+index 20489496c..3071f9dfb 100644
+--- a/js/misc/meson.build
++++ b/js/misc/meson.build
+@@ -3,7 +3,7 @@ jsconf.set('PACKAGE_NAME', meson.project_name())
+ jsconf.set('PACKAGE_VERSION', meson.project_version())
+ jsconf.set('GETTEXT_PACKAGE', meson.project_name())
+ jsconf.set('LIBMUTTER_API_VERSION', mutter_api_version)
+-jsconf.set10('HAVE_BLUETOOTH', bt_dep.found())
++jsconf.set10('HAVE_BLUETOOTH', have_bluetooth)
+ jsconf.set10('HAVE_NETWORKMANAGER', have_networkmanager)
+ jsconf.set('datadir', datadir)
+ jsconf.set('libexecdir', libexecdir)
+diff --git a/meson.build b/meson.build
+index b82c41398..7d342ff61 100644
+--- a/meson.build
++++ b/meson.build
+@@ -91,7 +91,20 @@ startup_dep = dependency('libstartup-notification-1.0', version: startup_req)
+ x11_dep = dependency('x11')
+ schemas_dep = dependency('gsettings-desktop-schemas', version: schemas_req)
+ 
+-bt_dep = dependency('gnome-bluetooth-1.0', version: bt_req, required: false)
++bt_dep = []
++enable_bluetooth = get_option('enable-bluetooth')
++if enable_bluetooth != 'no'
++  want_bluetooth = enable_bluetooth == 'yes'
++  bt_dep = dependency('gnome-bluetooth-1.0', version: bt_req, required: want_bluetooth)
++  have_bluetooth = bt_dep.found()
++
++  if not have_bluetooth
++    bt_dep = []
++  endif
++else
++  have_bluetooth = false
++endif
++
+ gst_dep = dependency('gstreamer-1.0', version: gst_req, required: false)
+ gst_base_dep = dependency('gstreamer-base-1.0', required: false)
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+index 18899ffdb..9191f8c0e 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -16,6 +16,13 @@ option('enable-man',
+   description: 'Generate man pages'
+ )
+ 
++option('enable-bluetooth',
++  type: 'combo',
++  choices: ['yes', 'no', 'auto'],
++  value: 'auto',
++  description: 'Enable bluetooth support'
++)
++
+ option('enable-networkmanager',
+   type: 'combo',
+   choices: ['yes', 'no', 'auto'],
+-- 
+2.18.0
+

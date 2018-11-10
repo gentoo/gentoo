@@ -1,0 +1,95 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Remote Modem Utility (${RC_SVCNAME#*.})"
+command="/usr/sbin/ttyd"
+name="${RC_SVCNAME}"
+
+start_stop_daemon_args="--quiet --exec ${command} --name ${name}"
+
+depend() {
+	use logger
+	need net
+}
+
+config_check() {
+	# sanitize PTY/TTY names
+	DEV_PTY="/dev/${PTY/\/dev\/}"
+	DEV_TTY="${DEV_PTY/\/pty//tty}"
+
+	# create command args
+	command_args="-d ${DEV_PTY}"
+	[ -n "${BAUDRATE}" ] && command_args="${command_args} -b ${BAUDRATE}"
+	[ -n "${PORT_SETTINGS}" ] && command_args="${command_args} -p ${PORT_SETTINGS}"
+	command_args="${command_args} ${HOST} ${PORT}"
+}
+
+device_check() {
+	if [ ! -e "${DEV_PTY}" ]; then
+		eerror "PTY doesn't exist: ${DEV_PTY}"
+		return 1
+	fi
+	if [ ! -e "${DEV_TTY}" ]; then
+		eerror "TTY doesn't exist: ${DEV_TTY}"
+		return 1
+	fi
+	return 0
+}
+
+linkrel() {  # <from> <to>
+	local LINK="${1%/*}/${2/\/dev\/}"
+	echo "${LINK/\/dev\/}" | sed "s:[^/]\+/:../:g"
+}
+
+setup_links() {
+	local LINK NODE
+	for LINK in ${SYMLINK}; do
+		NODE="/dev/${LINK/\/dev\/}"
+		mkdir -p -- "${NODE%/*}" && ln -snf -- $(linkrel "${NODE}" "${DEV_TTY}") "${NODE}"
+	done
+	for LINK in ${HARDLINK}; do
+		NODE="/dev/${LINK/\/dev\/}"
+		mkdir -p -- "${NODE%/*}" && ln -nf -- "${DEV_TTY}" "${NODE}"
+	done
+}
+
+unset_links() {
+	local LINK LIST=""
+	for LINK in ${SYMLINK} ${HARDLINK}; do
+		LIST="${LIST} /dev/${LINK/\/dev\/}"
+	done
+	[ -n "${LIST}" ] && rm -f -- ${LIST}
+}
+
+setup_perms() {
+	[ -n "${MODE}" ] && chmod "${MODE}" -- "${DEV_TTY}"
+	[ -n "${USER}" ] && chown "${USER}" -- "${DEV_TTY}"
+}
+
+unset_perms() {
+	[ -n "${USER}" ] && chown --reference "${DEV_PTY}" -- "${DEV_TTY}"
+	[ -n "${MODE}" ] && chmod --reference "${DEV_PTY}" -- "${DEV_TTY}"
+}
+
+start() {
+	config_check || return ${?}
+	device_check || return ${?}
+	ebegin "Starting ${description}"
+	start-stop-daemon --start ${start_stop_daemon_args} -- ${command_args}
+	if eend ${?}; then
+		setup_perms
+		setup_links
+		return 0  # from here we never fail
+	fi
+}
+
+stop() {
+	config_check || return ${?}
+	ebegin "Stopping ${description}"
+	start-stop-daemon --stop ${start_stop_daemon_args}
+	eend ${?}
+	unset_links
+	unset_perms
+	return 0  # never fail
+}

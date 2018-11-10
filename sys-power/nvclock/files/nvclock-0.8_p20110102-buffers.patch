@@ -1,0 +1,202 @@
+https://bugs.gentoo.org/364667
+
+clean up random buffer overflows in the code
+
+--- a/src/backend/back_linux.c
++++ b/src/backend/back_linux.c
+@@ -42,7 +42,9 @@ static int probe_devices();
+ static int check_driver()
+ {
+ 	FILE *proc;
+-	char buffer[80];
++	char *buffer = NULL;
++	size_t len;
++	int ret = 0;
+ 
+ 	proc = fopen("/proc/modules", "r");
+ 
+@@ -50,9 +52,9 @@ static int check_driver()
+ 	if(proc == NULL)
+ 		return 0;
+ 
+-	while(fgets(buffer, 80, proc) != NULL)
++	while(getline(&buffer, &len, proc) != -1)
+ 	{
+-		char name[80];
++		char name[100];
+ 		int size;
+ 		int used;
+ 
+@@ -64,26 +66,23 @@ static int check_driver()
+ 		{
+ 			if(strcmp(name, "NVdriver") == 0)
+ 			{
+-				fclose(proc);
+ 				if(used)
+-					return 1;
+-
+-					return 0;
++					ret = 1;
++				break;
+ 			}
+ 
+ 			if(strcmp(name, "nvidia") == 0)
+ 			{
+-				fclose(proc);
+ 				if(used)
+-					return 2;
+-
+-				return 0;
++					ret = 2;
++				break;
+ 			}
+ 		}
+ 	}
++	free(buffer);
+ 	fclose(proc);
+ 
+-	return 0;
++	return ret;
+ }
+ 
+ int init_nvclock()
+@@ -114,7 +113,8 @@ static int probe_devices()
+ {
+ 	int dev, irq, reg_addr, i=0;
+ 	unsigned short devbusfn;
+-	char buf[256];
++	char *buf = NULL;
++	size_t len;
+ 	FILE *proc;
+ 
+ 	proc = fopen("/proc/bus/pci/devices", "r");
+@@ -124,7 +124,7 @@ static int probe_devices()
+ 		return 0;
+ 	}
+ 
+-	while(fgets(buf, sizeof(buf)-1, proc)) 
++	while(getline(&buf, &len, proc) != -1)
+ 	{
+ 		if(sscanf(buf,"%hx %x %x %x",&devbusfn, &dev, &irq, &reg_addr) != 4) continue;
+ 
+@@ -181,6 +181,7 @@ static int probe_devices()
+ 			i++;
+ 		}
+ 	}
++	free(buf);
+ 	fclose(proc);
+     
+ 	if(i==0)
+--- a/src/backend/config.c
++++ b/src/backend/config.c
+@@ -286,8 +286,9 @@ int open_config()
+ 	{
+ 		if(mkdir(nvclock.path, 0755))
+ 		{
+-			char buf[80];
+-			sprintf(buf, "Can't create '%s'. Do you have sufficient permissions?\n", nvclock.path);
++			char buf[1024];
++			snprintf(buf, sizeof(buf), "Can't create path (do you have sufficient permissions?): %s", nvclock.path);
++			buf[sizeof(buf) - 1] = '\0';
+ 			set_error_str(buf);
+ 			return 0;
+ 		}
+@@ -297,8 +298,9 @@ int open_config()
+ 	/* Check if .nvclock really is a directory. For some users it was a file and this led to a segfault. */
+ 	if(!S_ISDIR(stat_buf.st_mode))
+ 	{
+-		char buf[80];
+-		sprintf(buf, "Can't open '%s'. Is it really a directory?\n", nvclock.path);
++		char buf[1024];
++		snprintf(buf, sizeof(buf), "Can't open path (Is it really a directory?): %s", nvclock.path);
++		buf[sizeof(buf) - 1] = '\0';
+ 		set_error_str(buf);
+ 		return 0;
+ 	}
+--- a/src/backend/error.c
++++ b/src/backend/error.c
+@@ -41,23 +41,19 @@ void set_error_str(const char *str)
+ }
+ 
+ 
+-char *get_error(char *buf, int size)
++const char *get_error(void)
+ {
+ 	switch(nvclock.nv_errno)
+ 	{
+ 		case NV_ERR_NO_DEVICES_FOUND:
+-			strcpy(buf, "No nvidia cards found in your system!");
+-			break;
++			return "No nvidia cards found in your system!";
+ 		case NV_ERR_NO_DRIVERS_FOUND:
+-			strcpy(buf, "You don't have enough permissions to run NVClock! Retry as root or install the Nvidia drivers.");
+-			break;
++			return "You don't have enough permissions to run NVClock! Retry as root or install the Nvidia drivers.";
+ 		case NV_ERR_NOT_ENOUGH_PERMISSIONS:
+-			strcpy(buf, "You don't have enough permissions to run NVClock! Retry as root.");
+-			break;
++			return "You don't have enough permissions to run NVClock! Retry as root.";
+ 		case NV_ERR_OTHER:
+-			strcpy(buf, nvclock.nv_err_str);
+-			break;
++			return nvclock.nv_err_str;
+ 	}
+ 
+-	return buf;
++	return "unknown";
+ }
+--- a/src/backend/nvclock.h
++++ b/src/backend/nvclock.h
+@@ -335,7 +335,7 @@ cfg_entry* lookup_entry(cfg_entry **cfg, char *section, char *name);
+ void destroy(cfg_entry **cfg);
+ 
+ /* error handling */
+-char *get_error(char *buf, int size);
++const char *get_error(void);
+ void set_error(int code);
+ void set_error_str(const char *err);
+ 
+--- a/src/gtk/main.c
++++ b/src/gtk/main.c
+@@ -264,8 +264,7 @@ int main (int argc, char *argv[])
+ 	*/
+ 	if(!init_nvclock())
+ 	{
+-		char buf[80];
+-		GtkWidget *dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, "%s", get_error(buf, 80));
++		GtkWidget *dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, "%s", get_error());
+ 		gtk_dialog_run(GTK_DIALOG(dialog));
+ 		g_signal_connect_swapped(GTK_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), GTK_OBJECT(dialog));
+ 		gtk_widget_destroy(dialog);
+--- a/src/nvclock.c
++++ b/src/nvclock.c
+@@ -604,8 +604,7 @@ int main(int argc, char *argv[])
+ 
+ 	if(!init_nvclock())
+ 	{
+-		char buf[80];
+-		fprintf(stderr, "Error: %s\n", get_error(buf, 80));
++		fprintf(stderr, "Error: %s\n", get_error());
+ 		return 0;
+ 	}
+ 
+@@ -851,8 +850,7 @@ int main(int argc, char *argv[])
+ 		{
+ 			if(!set_card(i))
+ 			{
+-				char buf[80];
+-				fprintf(stderr, "Error: %s\n", get_error(buf, 80));
++				fprintf(stderr, "Error: %s\n", get_error());
+ 				return 0;
+ 			}
+ 
+@@ -887,8 +885,7 @@ int main(int argc, char *argv[])
+ 	/* set the card object to the requested card */
+ 	if(!set_card(card_number))
+ 	{
+-		char buf[80];
+-		fprintf(stderr, "Error: %s\n", get_error(buf, 80));
++		fprintf(stderr, "Error: %s\n", get_error());
+ 		return 0;
+ 	}
+ 

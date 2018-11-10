@@ -1,0 +1,63 @@
+diff --git a/Makefile b/Makefile
+index d4ce8ac..26271fd 100644
+--- a/Makefile
++++ b/Makefile
+@@ -54,12 +54,16 @@ ifeq ($(USE_ASM),1)
+ 	$(MAKE) -C $(ASMALLOC) jem SRCDIR=src
+ endif
+ ifeq ($(USE_JEM),1)
++ifeq ($(USE_SYSTEM_JEM),0)
+ 	$(MAKE) -C $(JEMALLOC)
+ endif
++endif
+ ifeq ($(USE_LUAJIT),1)
+ 	$(MAKE) -C $(LUAJIT) Q= TARGET_SONAME=libluajit.so CCDEBUG=-g
+ endif
++ifeq ($(USE_SYSTEM_JANSSON),0)
+ 	$(MAKE) -C $(JANSSON)
++endif
+ 	$(MAKE) -C $(COMMON) CF=$(CF) EXT_CFLAGS="$(EXT_CFLAGS)"
+ 	$(MAKE) -C $(CF)
+ 	$(MAKE) -C $(MOD_LUA) CF=$(CF) COMMON=$(COMMON) LUA_CORE=$(LUA_CORE) EXT_CFLAGS="$(EXT_CFLAGS)" USE_LUAJIT=$(USE_LUAJIT) LUAJIT=$(LUAJIT)
+@@ -174,16 +178,24 @@ mexp2: mexp1
+ 	$(MAKE) MEXP_PHASE=2 SRCDIR=$(realpath $(MEXP_DIR))/
+ 
+ $(JANSSON)/configure:
++ifeq ($(USE_SYSTEM_JANSSON),0)
+ 	cd $(JANSSON) && autoreconf -i
++endif
+ 
+ $(JANSSON)/Makefile: $(JANSSON)/configure
++ifeq ($(USE_SYSTEM_JANSSON),0)
+ 	cd $(JANSSON) && ./configure $(JANSSON_CONFIG_OPT)
++endif
+ 
+ $(JEMALLOC)/configure:
++ifeq ($(USE_SYSTEM_JEM),0)
+ 	cd $(JEMALLOC) && autoconf
++endif
+ 
+ $(JEMALLOC)/Makefile: $(JEMALLOC)/configure
++ifeq ($(USE_SYSTEM_JEM),0)
+ 	cd $(JEMALLOC) && ./configure $(JEM_CONFIG_OPT)
++endif
+ 
+ $(LUAJIT)/src/luaconf.h: $(LUAJIT)/src/luaconf.h.orig
+ 	ln -s $(notdir $<) $@
+diff --git a/make_in/Makefile.vars b/make_in/Makefile.vars
+index efe3226..0b54701 100644
+--- a/make_in/Makefile.vars
++++ b/make_in/Makefile.vars
+@@ -31,6 +31,12 @@ ifeq ($(USE_ASM),1)
+   EXT_CFLAGS += -DUSE_ASM
+ endif
+ 
++# Use the system provided JEMalloc memory allocator? [By default, no.]
++USE_SYSTEM_JEM = 0
++
++# Use the system provided Jansson JSON API Library? [By default, no.]
++USE_SYSTEM_JANSSON = 0
++
+ # Use the JEMalloc memory allocator?  [By default, yes.]
+ USE_JEM = 1
+ 

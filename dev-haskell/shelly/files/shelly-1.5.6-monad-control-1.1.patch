@@ -1,0 +1,95 @@
+commit 33b32439e7ef1ba60cc8d72ae0f0c53b6d01ae90
+Merge: d3aec33 b70a308
+Author: Greg Weber <greg@gregweber.info>
+Date:   Mon Dec 22 10:32:40 2014 -0800
+
+    Merge pull request #84 from yesodweb/monad-control-1.0
+    
+    monad-control 1.0
+
+commit d3aec338e23a03027c404aaf5a7b5790b3300ec5
+Author: Luite Stegeman <stegeman@gmail.com>
+Date:   Mon Dec 22 16:21:01 2014 +0100
+
+    bump time upper bound
+
+diff --git a/shelly.cabal b/shelly.cabal
+index ed0d086..3d3c46d 100644
+--- a/shelly.cabal
++++ b/shelly.cabal
+@@ -39,7 +39,7 @@ Library
+ 
+   Build-depends:
+     containers                >= 0.4.2.0,
+-    time                      >= 1.3 && < 1.5,
++    time                      >= 1.3 && < 1.6,
+     directory                 >= 1.1.0.0 && < 1.3.0.0,
+     mtl                       >= 2,
+     process                   >= 1.0,
+
+commit c1da49fb0d59a56c9e4140a5cbf0700c9fc1ca5f
+Author: Luite Stegeman <stegeman@gmail.com>
+Date:   Mon Dec 22 16:20:18 2014 +0100
+
+    Add Alternative instance for Sh, since it's now a superclass of
+    MonadPlus.
+
+diff --git a/src/Shelly/Pipe.hs b/src/Shelly/Pipe.hs
+index a8d0182..f0a64ec 100644
+--- a/src/Shelly/Pipe.hs
++++ b/src/Shelly/Pipe.hs
+@@ -138,6 +138,10 @@ instance Applicative Sh where
+     pure = return
+     (<*>) = ap
+ 
++instance Alternative Sh where
++    empty = mzero
++    (<|>) = mplus
++
+ instance MonadPlus Sh where
+     mzero = Sh $ return []
+     mplus a b = Sh $ liftA2 (++) (unSh a) (unSh b)
+
+commit b70a308ad14af0b57bbdd9cf8441bdc30ff65c36
+Author: Michael Snoyman <michael@snoyman.com>
+Date:   Mon Dec 22 13:49:54 2014 +0200
+
+    monad-control 1.0
+
+diff --git a/shelly.cabal b/shelly.cabal
+index ed0d086..99a85d3 100644
+--- a/shelly.cabal
++++ b/shelly.cabal
+@@ -46,7 +46,7 @@ Library
+     unix-compat               < 0.5,
+     system-filepath           >= 0.4.7 && < 0.5,
+     system-fileio             < 0.4,
+-    monad-control             >= 0.3.2 && < 0.4,
++    monad-control             >= 0.3.2 && < 1.1,
+     lifted-base,
+     lifted-async,
+     exceptions                == 0.6.*,
+diff --git a/src/Shelly/Base.hs b/src/Shelly/Base.hs
+index e05ad43..3d6fe00 100644
+--- a/src/Shelly/Base.hs
++++ b/src/Shelly/Base.hs
+@@ -71,11 +71,19 @@ instance MonadBase IO Sh where
+     liftBase = Sh . ReaderT . const
+ 
+ instance MonadBaseControl IO Sh where
++#if MIN_VERSION_monad_control(1,0,0)
++    type StM Sh a = StM (ReaderT (IORef State) IO) a
++    liftBaseWith f =
++        Sh $ liftBaseWith $ \runInBase -> f $ \k ->
++            runInBase $ unSh k
++    restoreM = Sh . restoreM
++#else
+     newtype StM Sh a = StMSh (StM (ReaderT (IORef State) IO) a)
+     liftBaseWith f =
+         Sh $ liftBaseWith $ \runInBase -> f $ \k ->
+             liftM StMSh $ runInBase $ unSh k
+     restoreM (StMSh m) = Sh . restoreM $ m
++#endif
+ 
+ instance Catch.MonadThrow Sh where
+   throwM = liftIO . Catch.throwM

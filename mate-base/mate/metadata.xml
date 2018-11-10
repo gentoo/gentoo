@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>mate@gentoo.org</email>
+		<name>Gentoo MATE Desktop</name>
+	</maintainer>
+	<use>
+		<flag name="base">Install base MATE Desktop applications that are
+			recommended for the most common usage; for example, this installs
+			the file manager. Disable this and other USE flags if you want a
+			more minimal MATE Desktop.</flag>
+		<flag name="notification">Force notification daemon to default to MATE's
+			notification daemon. Enabled by default. Disable if it causes conflicts
+			with other installed desktop environments.</flag>
+		<flag name="themes">Install MATE Desktop's themes; if you use other
+			themes, you can disable this to spare some space and time.</flag>
+		<flag name="extras">Install additional MATE Desktop applications that
+			are recommended for extended usage of the MATE Desktop as upstream
+			sees it; for example, this installs MATE Desktop's office related
+			applications. Disable this if you plan to use your own non-MATE
+			Desktop alternatives or a custom mixture of MATE and non-MATE
+			packages.</flag>
+		<flag name="help">Install <pkg>gnome-extra/yelp</pkg> to handle in application
+			help menus and documentation browsing</flag>
+	</use>
+</pkgmetadata>

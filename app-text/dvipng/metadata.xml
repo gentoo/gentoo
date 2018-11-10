@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>tex@gentoo.org</email>
+  <name>Gentoo TeX Project</name>
+</maintainer>
+<maintainer type="project">
+  <email>emacs@gentoo.org</email>
+  <name>Gentoo Emacs project</name>
+</maintainer>
+<longdescription>
+  This program makes PNG and/or GIF graphics from DVI files as obtained
+  from TeX and its relatives.
+
+  If GIF support is enabled, GIF output is chosen by using the ‘dvigif’
+  binary or with the ‘--gif’ option.
+
+  It is intended to produce anti-aliased screen-resolution images as fast
+  as is possible. The target audience is people who need to generate and
+  regenerate many images again and again. The primary target is the
+  preview-latex (X)Emacs package, a package to preview formulas from within
+  (X)Emacs. Yes, you get to see your formulas in the (X)Emacs buffer, see
+  &lt;https://www.gnu.org/software/auctex/preview-latex.html&gt;.
+</longdescription>
+<upstream>
+  <remote-id type="sourceforge">dvipng</remote-id>
+</upstream>
+</pkgmetadata>

@@ -1,0 +1,16 @@
+ plugins/molfile_plugin/src/maeffplugin.cxx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/molfile_plugin/src/maeffplugin.cxx b/plugins/molfile_plugin/src/maeffplugin.cxx
+index cfe1223..41d92bb 100644
+--- a/plugins/molfile_plugin/src/maeffplugin.cxx
++++ b/plugins/molfile_plugin/src/maeffplugin.cxx
+@@ -1979,7 +1979,7 @@ namespace {
+       }
+     }
+     catch (std::exception &e) {
+-      fprintf(stderr, e.what());
++      fprintf(stderr, "%s", e.what());
+       return MOLFILE_ERROR;
+     }
+     return MOLFILE_SUCCESS;

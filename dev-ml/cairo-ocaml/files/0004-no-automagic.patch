@@ -1,0 +1,25 @@
+--- cairo-ocaml-1.2.0/configure.ac.orig	2012-06-17 20:58:38.000000000 +0100
++++ cairo-ocaml-1.2.0/configure.ac	2012-06-17 21:05:49.000000000 +0100
+@@ -27,10 +27,20 @@
+ fi
+ 
+ # Optional libsvg-cairo support
+-PKG_CHECK_MODULES(LIBSVG_CAIRO, libsvg-cairo, use_libsvg_cairo=yes, use_libsvg_cairo=no)
++AC_ARG_WITH(svg-cairo, 
++	    AS_HELP_STRING([--with-svg-cairo],[libsvg-cairo support]),
++	    use_libsvg_cairo=$withval, use_libsvg_cairo=no)
++if test x$use_libsvg_cairo != xno; then
++   PKG_CHECK_MODULES(LIBSVG_CAIRO, libsvg-cairo, use_libsvg_cairo=yes, use_libsvg_cairo=no)
++fi
+ 
+ # Optional pango-cairo support
+-PKG_CHECK_MODULES(LIBPANGOCAIRO, pangocairo, use_libpangocairo=yes, use_libpangocairo=no)
++AC_ARG_WITH(pango-cairo, 
++	    AS_HELP_STRING([--with-pango-cairo],[pangocairo support]),
++	    use_libpangocairo=$withval, use_libpangocairo=no)
++if test x$use_libpangocairo != xno; then
++   PKG_CHECK_MODULES(LIBPANGOCAIRO, pangocairo, use_libpangocairo=yes, use_libpangocairo=no)
++ fi
+ 
+ echo
+ echo "  GTK+         support: $use_gtk"

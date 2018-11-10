@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+	<longdescription lang="en">
+Megatools is a collection of programs for accessing Mega service from 
+a command line of your desktop or server.
+
+Mega website can be found at http://mega.co.nz.
+</longdescription>
+	<upstream>
+		<remote-id type="github">megous/megatools</remote-id>
+	</upstream>
+</pkgmetadata>

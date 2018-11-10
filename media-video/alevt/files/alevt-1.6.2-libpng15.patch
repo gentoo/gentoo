@@ -1,0 +1,11 @@
+--- exp-gfx.c
++++ exp-gfx.c
+@@ -4,6 +4,8 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
++#include <zlib.h> /* Z_DEFAULT_COMPRESSION */
++
+ #include "lang.h"
+ #include "export.h"
+ 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">URI</remote-id>
+    <remote-id type="cpan-module">URI</remote-id>
+    <remote-id type="cpan-module">URI::Escape</remote-id>
+    <remote-id type="cpan-module">URI::Heuristic</remote-id>
+    <remote-id type="cpan-module">URI::IRI</remote-id>
+    <remote-id type="cpan-module">URI::QueryParam</remote-id>
+    <remote-id type="cpan-module">URI::Split</remote-id>
+    <remote-id type="cpan-module">URI::URL</remote-id>
+    <remote-id type="cpan-module">URI::WithBase</remote-id>
+    <remote-id type="cpan-module">URI::_foreign</remote-id>
+    <remote-id type="cpan-module">URI::_generic</remote-id>
+    <remote-id type="cpan-module">URI::_idna</remote-id>
+    <remote-id type="cpan-module">URI::_ldap</remote-id>
+    <remote-id type="cpan-module">URI::_login</remote-id>
+    <remote-id type="cpan-module">URI::_punycode</remote-id>
+    <remote-id type="cpan-module">URI::_query</remote-id>
+    <remote-id type="cpan-module">URI::_segment</remote-id>
+    <remote-id type="cpan-module">URI::_server</remote-id>
+    <remote-id type="cpan-module">URI::_userpass</remote-id>
+    <remote-id type="cpan-module">URI::data</remote-id>
+    <remote-id type="cpan-module">URI::file</remote-id>
+    <remote-id type="cpan-module">URI::file::Base</remote-id>
+    <remote-id type="cpan-module">URI::file::FAT</remote-id>
+    <remote-id type="cpan-module">URI::file::Mac</remote-id>
+    <remote-id type="cpan-module">URI::file::OS2</remote-id>
+    <remote-id type="cpan-module">URI::file::QNX</remote-id>
+    <remote-id type="cpan-module">URI::file::Unix</remote-id>
+    <remote-id type="cpan-module">URI::file::Win32</remote-id>
+    <remote-id type="cpan-module">URI::ftp</remote-id>
+    <remote-id type="cpan-module">URI::gopher</remote-id>
+    <remote-id type="cpan-module">URI::http</remote-id>
+    <remote-id type="cpan-module">URI::https</remote-id>
+    <remote-id type="cpan-module">URI::ldap</remote-id>
+    <remote-id type="cpan-module">URI::ldapi</remote-id>
+    <remote-id type="cpan-module">URI::ldaps</remote-id>
+    <remote-id type="cpan-module">URI::mailto</remote-id>
+    <remote-id type="cpan-module">URI::mms</remote-id>
+    <remote-id type="cpan-module">URI::news</remote-id>
+    <remote-id type="cpan-module">URI::nntp</remote-id>
+    <remote-id type="cpan-module">URI::pop</remote-id>
+    <remote-id type="cpan-module">URI::rlogin</remote-id>
+    <remote-id type="cpan-module">URI::rsync</remote-id>
+    <remote-id type="cpan-module">URI::rtsp</remote-id>
+    <remote-id type="cpan-module">URI::rtspu</remote-id>
+    <remote-id type="cpan-module">URI::sftp</remote-id>
+    <remote-id type="cpan-module">URI::sip</remote-id>
+    <remote-id type="cpan-module">URI::sips</remote-id>
+    <remote-id type="cpan-module">URI::snews</remote-id>
+    <remote-id type="cpan-module">URI::ssh</remote-id>
+    <remote-id type="cpan-module">URI::telnet</remote-id>
+    <remote-id type="cpan-module">URI::tn3270</remote-id>
+    <remote-id type="cpan-module">URI::urn</remote-id>
+    <remote-id type="cpan-module">URI::urn::isbn</remote-id>
+    <remote-id type="cpan-module">URI::urn::oid</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<longdescription>
+		The program relax is a software package designed for the study of molecular
+		dynamics through the analysis of experimental NMR data. Organic molecules,
+		proteins, RNA, DNA, sugars, and other biomolecules are all supported. It
+		was originally written for the model-free analysis of protein dynamics,
+		though its scope has been significantly expanded.
+
+		relax is a community driven project created by NMR spectroscopists for
+		NMR spectroscopists. It supports a diverse range of analyses:
+
+		Model-free analysis - the Lipari and Szabo model-free analysis of NMR
+			relaxation data.
+		R1 and R2 - the exponential curve fitting for the calculation of the
+			Rx NMR relaxation rates.
+		NOE - the calculation of the steady-state NOE NMR relaxation data.
+		Consistency testing of multiple field NMR relaxation data.
+		RSDM - Reduced Spectral Density Mapping.
+		Frame order and N-state model - study of domain motions via the N-state
+			model and frame order dynamics theories using anisotropic
+			NMR parameters such as RDCs and PCSs.
+		Stereochemistry investigations.
+	</longdescription>
+</pkgmetadata>

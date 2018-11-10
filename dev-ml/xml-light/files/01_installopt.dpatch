@@ -1,0 +1,24 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 01_installopt.dpatch by Sylvain Le Gall <gildor@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad xml-light-2.2~/Makefile xml-light-2.2/Makefile
+--- xml-light-2.2~/Makefile	2005-10-11 23:26:41.000000000 +0200
++++ xml-light-2.2/Makefile	2005-10-11 23:28:00.000000000 +0200
+@@ -11,8 +11,11 @@
+ 
+ opt: xml-light.cmxa test_opt.exe
+ 
+-install: all opt
+-	cp xml-light.cmxa xml-light.a xml-light.cma xml.mli xmlParser.mli dtd.mli xml.cmi xmlParser.cmi dtd.cmi xml.cmx dtd.cmx xmlParser.cmx $(INSTALLDIR)
++install: all 
++	cp xml-light.cma xml.mli xmlParser.mli dtd.mli xml.cmi xmlParser.cmi dtd.cmi  $(INSTALLDIR)
++
++installopt: opt all 
++	cp xml-light.a xml-light.cmxa xml.cmx dtd.cmx xmlParser.cmx $(INSTALLDIR)
+ 
+ doc:
+ 	mkdir doc

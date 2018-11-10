@@ -1,0 +1,9 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# we don't want binutils everywhere, only in linux and solaris
+-*sys-devel/binutils
+
+# linux only
+-*sys-process/procps
+-*sys-process/psmisc

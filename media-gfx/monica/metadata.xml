@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Monica is a Monitor Calibration Tool.
+		An easy way to get respectable color rendetion on your screen. Especially
+		important to get a reasonable overall gamma setting, to make sure the basic
+		"brightness" of your screen jibes with what others see... (the Internet sRGB
+		standard gamma of 2.2) 
+	</longdescription>
+	<upstream>
+		<remote-id type="freecode">monica</remote-id>
+	</upstream>
+</pkgmetadata>

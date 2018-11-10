@@ -1,0 +1,46 @@
+diff -ru gnono-1.9.1.orig/pixmaps/Makefile.am gnono-1.9.1/pixmaps/Makefile.am
+--- gnono-1.9.1.orig/pixmaps/Makefile.am	2006-12-15 01:18:18.000000000 -0500
++++ gnono-1.9.1/pixmaps/Makefile.am	2009-11-03 00:21:57.186128499 -0500
+@@ -1,9 +1,9 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-pixmapdir = $(datadir)/pixmaps
++pixmapdir = $(pkgdatadir)/pixmaps
+ pixmap_DATA = gnono-about.png 
+ 
+-hicolordir = $(datadir)/icons/hicolor
++hicolordir = /usr/share/icons/hicolor
+ 
+ install-data-local:
+ 	@for depth in 16x16 22x22 24x24 32x32 48x48 ; do \
+diff -ru gnono-1.9.1.orig/po/Makefile.in.in gnono-1.9.1/po/Makefile.in.in
+--- gnono-1.9.1.orig/po/Makefile.in.in	2007-02-18 00:58:11.000000000 -0500
++++ gnono-1.9.1/po/Makefile.in.in	2009-11-03 00:21:57.187135081 -0500
+@@ -34,7 +34,7 @@
+ datarootdir = @datarootdir@
+ libdir = @libdir@
+ DATADIRNAME = @DATADIRNAME@
+-itlocaledir = $(prefix)/$(DATADIRNAME)/locale
++itlocaledir = /usr/share/locale
+ subdir = po
+ install_sh = @install_sh@
+ # Automake >= 1.8 provides @mkdir_p@.
+diff -ru gnono-1.9.1.orig/src/Makefile.am gnono-1.9.1/src/Makefile.am
+--- gnono-1.9.1.orig/src/Makefile.am	2007-01-02 00:42:42.000000000 -0500
++++ gnono-1.9.1/src/Makefile.am	2009-11-03 00:22:15.086296528 -0500
+@@ -3,12 +3,10 @@
+ SUBDIRS = xpm
+ 
+ INCLUDES = \
+-	-Wall -Werror \
++	-Wall \
+ 	-DG_LOG_DOMAIN=\"$(PACKAGE)\" \
+-	-DG_DISABLE_DEPRECATED \
+-	-DGTK_DISABLE_DEPRECATED \
+-	-DLOCALEDIR="\"$(datadir)/locale\"" \
+-	-DPIXMAPDIR="\"$(datadir)/pixmaps\"" \
++	-DLOCALEDIR="\"/usr/share/locale\"" \
++	-DPIXMAPDIR="\"$(pkgdatadir)/pixmaps\"" \
+ 	$(LIBGNOMEUI_CFLAGS)
+ 
+ bin_PROGRAMS = gnono

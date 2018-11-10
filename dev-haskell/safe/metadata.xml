@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Partial functions from the base library, such as @head@ and @!!@, modified
+		to return more descriptive error messages, programmer defined error messages,
+		@Maybe@ wrapped results and default values.
+		These functions can be used to reduce the number of unsafe pattern matches in
+		your code.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ndmitchell/safe#readme</remote-id>
+	</upstream>
+</pkgmetadata>

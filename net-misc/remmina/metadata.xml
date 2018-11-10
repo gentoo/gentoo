@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sir.suriv@gmail.com</email>
+		<name>Diogo Pereira</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Remmina is a remote desktop client written in GTK+, aiming to be
+		useful for system administrators and travellers, who need to work
+		with lots of remote computers in front of either large monitors or
+		tiny netbooks. Remmina supports multiple network protocols in an
+		integrated and consistant user interface.
+		Currently RDP, VNC, SPICE, NX, XDMCP and SSH are supported.
+	</longdescription>
+	<use>
+		<flag name="spice">Support connecting to SPICE-enabled virtual machines</flag>
+		<flag name="ssh">Enable support for SSH/SFTP protocol</flag>
+		<flag name="telepathy">Enable telepathy support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">FreeRDP/Remmina</remote-id>
+		<bugs-to>https://github.com/FreeRDP/Remmina/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

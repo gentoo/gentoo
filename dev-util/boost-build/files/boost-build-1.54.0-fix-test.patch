@@ -1,0 +1,11 @@
+--- a/test/startup_v2.py
++++ b/test/startup_v2.py
+@@ -50,7 +50,7 @@
+     return re.match(expected, actual, re.DOTALL) != None
+ 
+ 
+-t = BoostBuild.Tester(match=match_re, boost_build_path="", pass_toolset=0)
++t = BoostBuild.Tester(match=match_re, boost_build_path="/invalid/location", pass_toolset=0)
+ t.set_tree("startup")
+ check_for_existing_boost_build_jam(t)
+ 

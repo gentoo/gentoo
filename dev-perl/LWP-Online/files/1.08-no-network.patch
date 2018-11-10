@@ -1,0 +1,30 @@
+diff -Naur LWP-Online-1.08/lib/LWP/Online.pm LWP-Online-1.08b/lib/LWP/Online.pm
+--- LWP-Online-1.08/lib/LWP/Online.pm	2011-07-08 07:02:25.000000000 +0000
++++ LWP-Online-1.08b/lib/LWP/Online.pm	2016-03-06 06:20:12.351333667 +0000
+@@ -167,6 +167,9 @@
+ 	my @functions = grep { $_ ne ':skip_all' } @_;
+ 	if ( @functions != @_ ) {
+ 		require Test::More;
++		if ( $ENV{NO_NETWORK_TESTING} ) {
++			Test::More->import( skip_all => 'NO_NETWORK_TESTING set' );
++		}
+ 		unless ( online() ) {
+ 			Test::More->import( skip_all => 'Test requires a working internet connection' );
+ 		}
+diff -Naur LWP-Online-1.08/t/02_main.t LWP-Online-1.08b/t/02_main.t
+--- LWP-Online-1.08/t/02_main.t	2011-07-08 07:02:25.000000000 +0000
++++ LWP-Online-1.08b/t/02_main.t	2016-03-06 06:14:41.521243616 +0000
+@@ -7,7 +7,12 @@
+ 	$|  = 1;
+ 	$^W = 1;
+ }
+-
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    require Test::More;
++    Test::More->import('skip_all', "NO_NETWORK_TESTING set");
++  }
++}
+ use Test::More tests => 6;
+ use LWP::Online 'online', 'offline';
+ 

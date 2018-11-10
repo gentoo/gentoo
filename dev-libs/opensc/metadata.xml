@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>crypto@gentoo.org</email>
+		<name>Crypto</name>
+	</maintainer>
+	<longdescription>
+		OpenSC is a library for accessing SmartCard devices. It is also
+		the core library of the OpenSC project.
+
+		Basic functionality (e.g. SELECT FILE, READ BINARY) should work on
+		any ISO 7816-4 compatible SmartCard.  Encryption and decryption
+		using private keys on the SmartCard is possible with PKCS #15
+		compatible cards, such as the FINEID (Finnish Electronic IDentity)
+		card.
+	</longdescription>
+	<use>
+		<flag name="ctapi">Use CT-API for accessing Smartcard hardware</flag>
+		<flag name="notify">Enable notifications</flag>
+		<flag name="openct">Use <pkg>dev-libs/openct</pkg> (and CT-API) for accessing Smartcard hardware</flag>
+		<flag name="pcsc-lite">Use <pkg>sys-apps/pcsc-lite</pkg> (and PC/SC API) for accessing Smartcard hardware</flag>
+		<flag name="secure-messaging">Enable secure messaging</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">OpenSC/OpenSC</remote-id>
+		<remote-id type="sourceforge">opensc</remote-id>
+	</upstream>
+</pkgmetadata>

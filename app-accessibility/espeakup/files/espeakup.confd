@@ -1,0 +1,9 @@
+# conf.d file for espeakup
+#
+# Please check man 8 espeakup for more information about the options
+# espeakup accepts.
+#
+# Currently, the only meaningful option is:
+#   --default-voice=voicename -- set the espeak voice espeakup will use.
+#
+ESPEAKUP_OPTS=""

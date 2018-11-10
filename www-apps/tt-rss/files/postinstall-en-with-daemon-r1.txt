@@ -1,0 +1,14 @@
+Please read https://tt-rss.org/wiki/InstallationNotes.
+
+Once you have configured TT-RSS, tweak /etc/conf.d/ttrssd to your
+needs if you have not already done so. If ACLs are unavailable on the
+filesystem you have just installed to then you will need to set
+TTRSSD_USER to your PHP user. When everything is ready, (re)start the
+update daemon like so:
+
+  /etc/init.d/ttrssd restart
+
+This will periodically update your feeds in the background. Add the
+daemon to your default runlevel to start it on every boot:
+
+  rc-update add ttrssd default

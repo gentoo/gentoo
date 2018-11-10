@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/573794
+
+--- xindy-2.4-orig/make-rules/inputenc/Makefile.am
++++ xindy-2.4/make-rules/inputenc/Makefile.am
+@@ -43,7 +43,7 @@
+ latin.xdy : latin1.xdy latin2.xdy latin3.xdy
+ 	echo ';; Generated from latin?.xdy' >latin.xdy
+ 	echo >>latin.xdy
+-	sort -u latin?.xdy | grep -v '^;' >>latin.xdy
++	sort -u latin?.xdy | sed '/^;/d' >>latin.xdy
+ 
+ %.xdy %.idx :
+ 	$(PERL) $(srcdir)/make-testidx.pl TS1,T2A,T1 $* >$*.tex

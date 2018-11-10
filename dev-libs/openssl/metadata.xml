@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+ <email>base-system@gentoo.org</email>
+ <name>Gentoo Base System</name>
+</maintainer>
+<use>
+ <flag name="asm">Support assembly hand optimized crypto functions (i.e. faster run time)</flag>
+ <flag name="bindist">Disable/Restrict EC algorithms (as they seem to be patented) -- note: changes the ABI</flag>
+ <flag name="rfc3779">Enable support for RFC 3779 (X.509 Extensions for IP Addresses and AS Identifiers)</flag>
+ <flag name="sslv2">Support for the old/insecure SSLv2 protocol -- note: not required for TLS/https</flag>
+ <flag name="sslv3">Support for the old/insecure SSLv3 protocol -- note: not required for TLS/https</flag>
+ <flag name="tls-heartbeat">Enable the Heartbeat Extension in TLS and DTLS</flag>
+</use>
+<upstream>
+ <remote-id type="cpe">cpe:/a:openssl:openssl</remote-id>
+</upstream>
+<slots>
+ <slot name="0">For building against. This is the only slot
+  that provides headers and command line tools.</slot>
+ <slot name="0.9.8">For binary compatibility, provides libcrypto.so.0.9.8
+  and libssl.so.0.9.8 only.</slot>
+ <subslots>Reflect ABI of libcrypto.so and libssl.so.</subslots>
+</slots>
+</pkgmetadata>

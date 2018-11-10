@@ -1,0 +1,11 @@
+--- inkscape-0.48.4/src/extension/implementation/script.cpp
++++ inkscape-0.48.4/src/extension/implementation/script.cpp
+@@ -89,7 +89,7 @@
+ #ifdef WIN32
+         {"python", "python-interpreter", "pythonw" },
+ #else
+-        {"python", "python-interpreter", "python" },
++        {"python", "python-interpreter", "@EPYTHON@" },
+ #endif
+         {"ruby",   "ruby-interpreter",   "ruby"   },
+         {"shell",  "shell-interpreter",  "sh"     },

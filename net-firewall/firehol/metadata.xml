@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>alonbl@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">firehol</remote-id>
+		<remote-id type="github">firehol/firehol</remote-id>
+	</upstream>
+	<use>
+		<flag name="ipset">
+			Use <pkg>net-firewall/ipset</pkg>.
+		</flag>
+	</use>
+</pkgmetadata>

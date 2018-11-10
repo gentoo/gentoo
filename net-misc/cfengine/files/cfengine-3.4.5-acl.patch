@@ -1,0 +1,30 @@
+From a12b5b3b8cd4397545104923d1de3297fd971f9e Mon Sep 17 00:00:00 2001
+From: Christian Ruppert <idl0r@gentoo.org>
+Date: Fri, 29 Mar 2013 00:23:21 +0100
+Subject: [PATCH] Fix acl header detection
+
+
+Signed-off-by: Christian Ruppert <idl0r@gentoo.org>
+---
+ configure.ac | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 542d115..f3f0c04 100755
+--- a/configure.ac
++++ b/configure.ac
+@@ -335,7 +335,10 @@ AC_ARG_WITH([libacl],
+ if test "x$with_libacl" != xno; then
+   CF3_WITH_LIBRARY(libacl, [
+     AC_CHECK_LIB(acl, acl_init, [], [if test "x$with_libacl" != xcheck; then AC_MSG_ERROR(Cannot find libacl library); fi])
+-    AC_CHECK_HEADERS([acl.h sys/acl.h acl/libacl.h], [], [if test "x$with_libacl" != xcheck; then AC_MSG_ERROR(Cannot find libacl library headers); fi])
++    AC_CHECK_HEADERS([acl.h sys/acl.h acl/libacl.h], [found_acl_h=yes], [])
++	if test "x$found_acl_h" != xyes; then
++		AC_MSG_ERROR(Cannot find libacl library headers)
++	fi
+   ])
+  fi
+ 
+-- 
+1.8.1.5
+

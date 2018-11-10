@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<longdescription>
+GTetrinet is a client program for the popular Tetrinet game, a 
+multiplayer tetris game that is played over the internet.
+
+Gee, Tetris?  Whats that?  Yeah, yeah, so it's been
+done 2 billion times before (give or take a few bil),
+but this is different!  Yes, all you tetris addicts
+out there be prepared for even MORE excitement..
+internet tetris!  Now you can play your five best
+buddies in one of the most well known games in
+existence!
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">gtetrinet</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Here is a simple example of an applicative option parser:
+		
+		@
+		data Sample = Sample
+		&amp;#x20; &amp;#x7b; hello :: String
+		&amp;#x20; , quiet :: Bool &amp;#x7d;
+		
+		sample :: Parser Sample
+		sample = Sample
+		&amp;#x20; \&lt;$\&gt; strOption
+		&amp;#x20;     ( long \"hello\"
+		&amp;#x20;     &amp; metavar \"TARGET\"
+		&amp;#x20;     &amp; help \"Target for the greeting\" )
+		&amp;#x20; \&lt;*\&gt; switch
+		&amp;#x20;     ( long \"quiet\"
+		&amp;#x20;     &amp; help \"Whether to be quiet\" )
+		@
+		
+		The parser is built using applicative style starting from a set of basic
+		combinators. In this example, @hello@ is defined as an 'option' with a
+		@String@ argument, while @quiet@ is a boolean 'flag' (called 'switch').
+		
+		A parser can be used like this:
+		
+		@
+		greet :: Sample -&gt; IO ()
+		greet (Sample h False) = putStrLn $ \"Hello, \" ++ h
+		greet _ = return ()
+		
+		main :: IO ()
+		main = execParser opts \&gt;\&gt;= greet
+		&amp;#x20; where
+		&amp;#x20;   opts = info (helper \&lt;*\&gt; sample)
+		&amp;#x20;     ( fullDesc
+		&amp;#x20;     &amp; progDesc \"Print a greeting for TARGET\"
+		&amp;#x20;     &amp; header \"hello - a test for optparse-applicative\" )
+		@
+		
+		The @greet@ function is the entry point of the program, while @opts@ is a
+		complete description of the program, used when generating a help text. The
+		'helper' combinator takes any parser, and adds a @help@ option to it (which
+		always fails).
+		
+		The @hello@ option in this example is mandatory (since it doesn't have a
+		default value), so running the program without any argument will display a
+		help text:
+		
+		&gt;hello - a test for optparse-applicative
+		&gt;
+		&gt;Usage: hello --hello TARGET [--quiet]
+		&gt;  Print a greeting for TARGET
+		&gt;
+		&gt;Available options:
+		&gt;  -h,--help                Show this help text
+		&gt;  --hello TARGET           Target for the greeting
+		&gt;  --quiet                  Whether to be quiet
+		
+		containing a short usage summary, and a detailed list of options with
+		descriptions.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">pcapriotti/optparse-applicative</remote-id>
+	</upstream>
+</pkgmetadata>

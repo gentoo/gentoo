@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/sensors"
+
+depend() {
+	need localmount
+	after modules-load
+}
+
+start() {
+	ebegin "Initializing sensors"
+	${command} --set >/dev/null 2>&1
+	eend $?
+}
+
+stop() {
+	# Nothing to stop
+	return 0;
+}

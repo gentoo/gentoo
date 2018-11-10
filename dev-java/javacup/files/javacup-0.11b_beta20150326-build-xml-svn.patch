@@ -1,0 +1,44 @@
+From 1a908a86fa6c253332b673ecc98e4ec8dffcdca2 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 8 Aug 2015 14:49:02 +0200
+Subject: [PATCH] No longer query subversion revision
+
+There is not .svn folder shipped anyway
+---
+ build.xml | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
+
+diff --git a/build.xml b/build.xml
+index 33f0c60..860bbb5 100644
+--- a/build.xml
++++ b/build.xml
+@@ -18,17 +18,6 @@
+     <mkdir dir="${classes}" />
+     <mkdir dir="${dist}" />
+     <loadfile property="cupversion" srcFile="version.txt"/>
+-    <exec executable="svn" outputproperty="svnversion">
+-      <arg value="info"/>
+-      <redirector>
+-	<outputfilterchain>
+-	  <linecontains>
+-	    <contains value="Revision"/>
+-	  </linecontains>
+-	  <deletecharacters chars="Revision: "/>
+-        </outputfilterchain>
+-      </redirector>
+-    </exec>
+   </target>
+ 
+   <property environment="env" />
+@@ -67,7 +56,7 @@
+     <copy todir="${java}"><fileset dir="${src}"></fileset></copy>
+     <replace file="${java}/java_cup/version.java"
+        token="+ version_str"
+-       value='+ "v0.11b ${cupversion} (SVN rev ${svnversion})"'>
++       value='+ "v0.11b ${cupversion}"'>
+     </replace>
+     <javac srcdir="${java}" destdir="${classes}" verbose="off" listfiles="off" debug="on" source="1.5" target="1.5">
+       <classpath refid="libraries"/>
+-- 
+2.5.0
+

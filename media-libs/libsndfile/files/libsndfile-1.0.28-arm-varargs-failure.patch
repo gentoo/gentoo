@@ -1,0 +1,32 @@
+From 9d470ee5577d3ccedb1c28c7e0a7295ba17feaf5 Mon Sep 17 00:00:00 2001
+From: Erik de Castro Lopo <erikd@mega-nerd.com>
+Date: Sun, 16 Apr 2017 17:54:17 +1000
+Subject: [PATCH] src/rf64.c: Fix varargs related bug
+
+C's <stargs.h> functionality isn't type checked so that passing an
+`sf_count_t` (64 bits) by mistake in place of a `unit32_t` can cause
+errors. This would be fine if it was an error on every architecture
+and platform, but its not. This particular problem only manifested
+on armhf and some other Arm architectures. It was not an issue on
+32 bit x86.
+
+I have now fixed variants of this same bug several times.
+
+Closes: https://github.com/erikd/libsndfile/issues/229
+---
+ src/rf64.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rf64.c b/src/rf64.c
+index b3d637fa..02dd9046 100644
+--- a/src/rf64.c
++++ b/src/rf64.c
+@@ -742,7 +742,7 @@ rf64_write_header (SF_PRIVATE *psf, int calc_length)
+ 
+ 	pad_size = psf->dataoffset - 16 - psf->header.indx ;
+ 	if (pad_size >= 0)
+-		psf_binheader_writef (psf, "m4z", PAD_MARKER, pad_size, make_size_t (pad_size)) ;
++		psf_binheader_writef (psf, "m4z", PAD_MARKER, (unsigned int) pad_size, make_size_t (pad_size)) ;
+ 
+ 	if (wpriv->rf64_downgrade && (psf->filelength < RIFF_DOWNGRADE_BYTES))
+ 		psf_binheader_writef (psf, "tm8", data_MARKER, psf->datalength) ;

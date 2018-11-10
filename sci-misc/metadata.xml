@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sci-misc category contains various miscellaneous science
+		applications which do not fit any other sci-* category.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sci-misc enthält verschiedene wissenschaftliche
+		Anwendungen, welche in keine der anderen sci-* Kategorien
+		hineinpassen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sci-misc contiene varias aplicaciones relacionadas con la
+		ciencia que no encajan en las otras categorías sci-*.
+	</longdescription>
+	<longdescription lang="ja">
+		sci-miscカテゴリーには他のsci-カテゴリーに分類されない
+		多種多様なサイエンス・アプリケーションが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De sci-misc categorie bevat pakketten die niet in een andere
+		sci-* categorie passen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sci-misc chứa các phần mềm khoa học không thích hợp
+		trong các nhóm sci- khác.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sci-misc contiene varie applicazioni scientifiche
+		che non sono classificabili nelle altre categorie sci-.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sci-misc contém várias aplicações científicas mistas
+		que não se encaixam nas outras categorias sci-*.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sci-misc zawiera różne dodatkowe pakiety, które nie pasowały
+		do innych kategorii sci-*.
+	</longdescription>
+</catmetadata>
+

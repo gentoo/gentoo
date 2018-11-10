@@ -1,0 +1,195 @@
+Gentoo Bug#334647:
+Respect CC, CFLAGS, LDFLAGS (with gcc).
+Support verbose building via 'make V=1'.
+--- configure.orig	2012-10-02 14:01:48.735669564 +0200
++++ configure	2012-10-02 14:23:01.224271511 +0200
+@@ -10,7 +10,7 @@
+ # This can be disabled if neccessary.
+ #
+ 
+-CCS="xlc_r gcc"
++CCS=${CC-"xlc_r gcc"}
+ 
+ #
+ # Look for supported compilers
+@@ -31,15 +31,21 @@
+ else
+ 	echo "Using $CCPATH to compile Cntlm"
+ 	[ -h Makefile ] && rm -f Makefile 2>/dev/null
+-	case "$CC" in
+-		gcc)
++	if $CC -v >/dev/null 2>&1; then
+ 			# default Makefile is for GCC; just revert back to
+ 			# GCC if Makefile is linked to other compiler version
+ 			if [ ! -f Makefile ]; then
+ 				mv Makefile.gcc Makefile
+ 			fi
+-			;;
+-		*)
++			: ${CFLAGS=-O3}
++			: ${LDFLAGS=}
++			CFLAGS="$CFLAGS -std=c99 -Wall -Wno-unused-but-set-variable -pedantic -pthread"
++			LDFLAGS="$LDFLAGS -pthread"
++			sed -e "s~^CFLAGS[ 	:]*=~CFLAGS=$CFLAGS ~" \
++				-e "s~^LDFLAGS[ 	:]*=.*~LDFLAGS=$LDFLAGS~" \
++				-e "s~^CC[ 	:]*=.*~CC=$CC~" \
++				-i Makefile
++	else
+ 			# backup default GCC Makefile and create a link to other
+ 			if [ -f Makefile ]; then
+ 				mv Makefile Makefile.gcc
+@@ -47,8 +53,7 @@
+ 
+ 			EXT=`echo "$CC" | sed 's/_.*//'`
+ 			ln -s Makefile.$EXT Makefile
+-			;;
+-	esac
++	fi
+ fi
+ 
+ STAMP=configure-stamp
+@@ -62,7 +67,7 @@
+ for i in $TESTS; do
+ 	printf "Checking $i... "
+ 	printf "#define config_$i " >> $CONFIG
+-	OUT=`$CC -D_POSIX_C_SOURCE=199506L -D_ISOC99_SOURCE -D_REENTRANT -o config/$i config/$i.c 2>&1`
++	OUT=`$CC $CFLAGS $LDFLAGS -D_POSIX_C_SOURCE=199506L -D_ISOC99_SOURCE -D_REENTRANT -o config/$i config/$i.c 2>&1`
+ 	rc=$?
+ 
+ 	if [ $rc -ne 0 ]; then # -o -n "$OUT" ]; then
+--- Makefile.orig	2012-10-02 15:31:03.986270993 +0200
++++ Makefile	2012-10-02 15:40:10.277689068 +0200
+@@ -16,14 +16,13 @@
+ CC		:= gcc
+ VER		:= $(shell cat VERSION)
+ OS		:= $(shell uname -s)
+-OSLDFLAGS	:= $(shell [ $(OS) = "SunOS" ] && echo "-lrt -lsocket -lnsl")
+-LDFLAGS		:= -lpthread $(OSLDFLAGS)
++LIBS		:= $(shell [ $(OS) = "SunOS" ] && echo "-lrt -lsocket -lnsl")
++LDFLAGS		:= -pthread
+ CYGWIN_REQS	:= cygwin1.dll cyggcc_s-1.dll cygstdc++-6.dll cygrunsrv.exe 
+ 
++CFLAGS=-D__BSD_VISIBLE -D_ALL_SOURCE -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=200112 -D_ISOC99_SOURCE -D_REENTRANT -D_BSD_SOURCE -DVERSION=\"'$(VER)'\"
+ ifeq ($(DEBUG),1)
+-	CFLAGS	+= -g  -std=c99 -Wall -pedantic -D__BSD_VISIBLE -D_ALL_SOURCE -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=200112 -D_ISOC99_SOURCE -D_REENTRANT -D_BSD_SOURCE -DVERSION=\"'$(VER)'\"
+-else
+-	CFLAGS	+= -O3 -std=c99 -D__BSD_VISIBLE -D_ALL_SOURCE -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=200112 -D_ISOC99_SOURCE -D_REENTRANT -D_BSD_SOURCE -DVERSION=\"'$(VER)'\"
++	CFLAGS	+= -g -O0
+ endif
+ 
+ ifneq ($(findstring CYGWIN,$(OS)),)
+@@ -32,28 +31,35 @@
+ 	OBJS=utils.o ntlm.o xcrypt.o config.o socket.o acl.o auth.o http.o forward.o direct.o scanner.o pages.o main.o
+ endif
+ 
++VE_=@echo
++VE_1=@:
++VE=$(VE_$(V))
++VV_=@
++VV_1=
++VV=$(VV_$(V))
++
+ $(NAME): configure-stamp $(OBJS)
+-	@echo "Linking $@"
+-	@$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS)
++	$(VE) "Linking $@"
++	$(VV) $(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS) $(LIBS)
+ 
+ main.o: main.c
+-	@echo "Compiling $<"
+-	@if [ -z "$(SYSCONFDIR)" ]; then \
++	$(VE) "Compiling $<"
++	$(VV) if [ -z "$(SYSCONFDIR)" ]; then \
+ 		$(CC) $(CFLAGS) -c main.c -o $@; \
+ 	else \
+ 		$(CC) $(CFLAGS) -DSYSCONFDIR=\"$(SYSCONFDIR)\" -c main.c -o $@; \
+ 	fi
+ 
+ %.o: %.c
+-	@echo "Compiling $<"
+-	@$(CC) $(CFLAGS) -c -o $@ $<
++	$(VE) "Compiling $<"
++	$(VV) $(CC) $(CFLAGS) -c -o $@ $<
+ 
+ configure-stamp:
+ 	./configure
+ 
+ win/resources.o: win/resources.rc
+-	@echo Adding EXE resources
+-	@windres $^ -o $@
++	$(VE) Adding EXE resources
++	$(VV) windres $^ -o $@
+ 
+ install: $(NAME)
+ 	# Special handling for install(1)
+@@ -115,31 +121,31 @@
+ 
+ $(NAME)-$(VER)-win32.exe:
+ 	@echo - preparing binaries for GUI installer
+-	@cp $(patsubst %, /bin/%, $(CYGWIN_REQS)) win/
++	$(VV) cp $(patsubst %, /bin/%, $(CYGWIN_REQS)) win/
+ ifeq ($(DEBUG),1)
+-	@cp -p cntlm.exe win/
++	$(VV) cp -p cntlm.exe win/
+ else
+-	@strip -o win/cntlm.exe cntlm.exe
++	$(VV) strip -o win/cntlm.exe cntlm.exe
+ endif
+ 	@echo - generating GUI installer
+-	@win/Inno5/ISCC.exe /Q win/setup.iss #/Q win/setup.iss
++	$(VV) win/Inno5/ISCC.exe /Q win/setup.iss #/Q win/setup.iss
+ 
+ $(NAME)-$(VER)-win32.zip: 
+ 	@echo - creating ZIP release for manual installs
+-	@ln -s win $(NAME)-$(VER)
++	$(VV) ln -s win $(NAME)-$(VER)
+ 	zip -9 $(NAME)-$(VER)-win32.zip $(patsubst %, $(NAME)-$(VER)/%, $(CYGWIN_REQS) cntlm.ini LICENSE.txt cntlm_manual.pdf) 
+-	@rm -f $(NAME)-$(VER)
++	$(VV) rm -f $(NAME)-$(VER)
+ 
+ win/cntlm.ini: doc/cntlm.conf 
+-	@cat doc/cntlm.conf | unix2dos > win/cntlm.ini
++	$(VV) cat doc/cntlm.conf | unix2dos > win/cntlm.ini
+ 
+ win/LICENSE.txt: COPYRIGHT LICENSE
+-	@cat COPYRIGHT LICENSE | unix2dos > win/LICENSE.txt
++	$(VV) cat COPYRIGHT LICENSE | unix2dos > win/LICENSE.txt
+ 
+ win/cntlm_manual.pdf: doc/cntlm.1 
+ 	@echo - generating PDF manual
+-	@rm -f win/cntlm_manual.pdf
+-	@groff -t -e -mandoc -Tps doc/cntlm.1 | ps2pdf - win/cntlm_manual.pdf
++	$(VV) rm -f win/cntlm_manual.pdf
++	$(VV) groff -t -e -mandoc -Tps doc/cntlm.1 | ps2pdf - win/cntlm_manual.pdf
+ 
+ win/setup.iss: win/setup.iss.in
+ ifeq ($(findstring CYGWIN,$(OS)),)
+@@ -148,16 +154,16 @@
+ 	@echo
+ 	@exit 1
+ endif
+-	@sed "s/\$$VERSION/$(VER)/g" $^ > $@
++	$(VV) sed "s/\$$VERSION/$(VER)/g" $^ > $@
+ 
+ uninstall:
+ 	rm -f $(BINDIR)/$(NAME) $(MANDIR)/man1/$(NAME).1 2>/dev/null || true
+ 
+ clean:
+-	@rm -f config/endian config/gethostname config/strdup config/socklen_t config/*.exe
+-	@rm -f *.o cntlm cntlm.exe configure-stamp build-stamp config/config.h
++	$(VV) rm -f config/endian config/gethostname config/strdup config/socklen_t config/*.exe
++	$(VV) rm -f *.o cntlm cntlm.exe configure-stamp build-stamp config/config.h
+ 	rm -f $(patsubst %, win/%, $(CYGWIN_REQS) cntlm.exe cntlm.ini LICENSE.txt setup.iss cntlm_manual.pdf)
+-	@if [ -h Makefile ]; then rm -f Makefile; mv Makefile.gcc Makefile; fi
++	$(VV) if [ -h Makefile ]; then rm -f Makefile; mv Makefile.gcc Makefile; fi
+ 
+ distclean: clean
+ ifeq ($(findstring CYGWIN,$(OS)),)
+@@ -169,6 +175,6 @@
+ 		fakeroot rpm/rules clean; \
+ 	fi
+ endif
+-	@rm -f *.exe *.deb *.rpm *.tgz *.tar.gz *.tar.bz2 *.zip *.exe tags ctags pid 2>/dev/null
++	$(VV) rm -f *.exe *.deb *.rpm *.tgz *.tar.gz *.tar.bz2 *.zip *.exe tags ctags pid 2>/dev/null
+ 
+ .PHONY: all install tgz tbz2 deb rpm win uninstall clean distclean

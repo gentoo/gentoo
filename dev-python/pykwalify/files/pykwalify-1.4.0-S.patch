@@ -1,0 +1,24 @@
+ tests/test_core.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_core.py b/tests/test_core.py
+index 2fae7bc..0773f88 100644
+--- a/tests/test_core.py
++++ b/tests/test_core.py
+@@ -397,12 +397,12 @@ class TestCore(object):
+         ]
+ 
+         # Add override magic to make it easier to test a specific file
+-        if "S" in os.environ:
+-            pass_tests = [os.environ["S"]]
++        if "_S" in os.environ:
++            pass_tests = [os.environ["_S"]]
+             _fail_tests = []
+-        elif "F" in os.environ:
++        elif "_F" in os.environ:
+             pass_tests = []
+-            _fail_tests = [(os.environ["F"], SchemaError)]
++            _fail_tests = [(os.environ["_F"], SchemaError)]
+ 
+         for passing_test_file in pass_tests:
+             f = self.f(os.path.join("success", passing_test_file))

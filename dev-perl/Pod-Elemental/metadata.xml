@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Pod-Elemental</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Autoblank</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Autochomp</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Command</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Document</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Element::Generic::Blank</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Element::Generic::Command</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Element::Generic::Nonpod</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Element::Generic::Text</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Element::Nested</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Element::Pod5::Command</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Element::Pod5::Data</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Element::Pod5::Nonpod</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Element::Pod5::Ordinary</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Element::Pod5::Region</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Element::Pod5::Verbatim</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Flat</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Node</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Objectifier</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Paragraph</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Selectors</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Transformer</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Transformer::Gatherer</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Transformer::Nester</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Transformer::Pod5</remote-id>
+    <remote-id type="cpan-module">Pod::Elemental::Types</remote-id>
+  </upstream>
+</pkgmetadata>

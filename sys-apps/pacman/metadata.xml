@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<bugs-to>mailto:pacman-dev@archlinux.org</bugs-to>
+		<changelog>https://git.archlinux.org/pacman.git/tree/NEWS</changelog>
+		<doc>https://www.archlinux.org/pacman/</doc>
+	</upstream>
+	<!-- maintainer-needed -->
+	<slots>
+		<subslots>Reflect major ABI of libalpm.so.</subslots>
+	</slots>
+	<use>
+		<flag name="doc">Install extended documentation using <pkg>app-doc/doxygen</pkg>. (Man pages are included by default.)</flag>
+		<flag name="gpg">Enable GPG signature verification using <pkg>app-crypt/gpgme</pkg></flag>
+	</use>
+</pkgmetadata>

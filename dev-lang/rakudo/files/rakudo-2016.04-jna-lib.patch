@@ -1,0 +1,21 @@
+Upstream uses -Xbootclasspath, which prevents us from using
+LD_LIBRARY_PATH, thefore we need to set jna.boot.library.path.
+See http://bugs.java.com/bugdatabase/view_bug.do?bug_id=4285197.
+
+Chewi
+2016/05/15
+
+diff -Naur rakudo-2016.04.orig/tools/build/create-jvm-runner.pl rakudo-2016.04/tools/build/create-jvm-runner.pl
+--- rakudo-2016.04.orig/tools/build/create-jvm-runner.pl	2015-12-25 19:23:19.000000000 +0000
++++ rakudo-2016.04/tools/build/create-jvm-runner.pl	2016-05-15 11:30:37.488085661 +0100
+@@ -60,7 +60,10 @@
+ }
+ 
+ my $classpath = join($cpsep, ($jardir, $libdir, $nqplibdir));
++my $jna_lib = `java-config --query LIBRARY_PATH --package jna-4`;
++chomp $jna_lib;
+ my $jopts = '-noverify -Xms100m -Xbootclasspath/a:' . $perl6jars 
++          . ' -Djna.boot.library.path=' . $jna_lib
+           . ' -cp ' . ($^O eq 'MSWin32' ? '"%CLASSPATH%";' : '$CLASSPATH:') . $classpath
+           . ' -Dperl6.prefix=' . $prefix
+           . ' -Djna.library.path=' . $sharedir

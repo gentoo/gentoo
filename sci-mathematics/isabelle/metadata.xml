@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>gienah@gentoo.org</email>
+</maintainer>
+<maintainer type="project">
+  <email>sci-mathematics@gentoo.org</email>
+  <name>Gentoo Mathematics Project</name>
+</maintainer>
+<longdescription lang="en">
+Isabelle is a generic proof assistant. It allows mathematical
+formulas to be expressed in a formal language and provides tools
+for proving those formulas in a logical calculus. The main
+application is the formalization of mathematical proofs and in
+particular formal verification, which includes proving the
+correctness of computer hardware or software and proving
+properties of computer languages and protocols.
+</longdescription>
+<use>
+  <flag name="graphbrowsing">Generate theory browsing information,
+  including HTML documents that show a theory's definition, the
+  theorems proved in its ML file and the relationship with its
+  ancestors and descendants.</flag>
+  <flag name="ledit">Use ledit for the isabelle tty line editor</flag> 
+  <flag name="readline">Use readline (rlwrap) for the isabelle tty line
+  editor</flag> 
+</use>
+</pkgmetadata>

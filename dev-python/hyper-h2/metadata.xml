@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>cory@lukasa.co.uk</email>
+			<name>Cory Benfield</name>
+		</maintainer>
+		<remote-id type="pypi">h2</remote-id>
+	</upstream>
+	<longdescription>A pure-Python implementation of a HTTP/2 protocol stack.
+		It’s written from the ground up to be embeddable in whatever program
+		you choose to use, ensuring that you can speak HTTP/2 regardless of
+		your programming paradigm.
+	</longdescription>
+</pkgmetadata>

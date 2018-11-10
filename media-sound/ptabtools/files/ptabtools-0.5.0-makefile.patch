@@ -1,0 +1,27 @@
+--- ptabtools-0.5.0/Makefile.orig
++++ ptabtools-0.5.0/Makefile
+@@ -8,13 +8,13 @@
+ all: $(TARGETS)
+ 
+ tests/check: tests/check.o tests/ptb.o tests/gp.o ptb.o
+-	$(CC) $(FLAGS) $^ -o $@ $(CHECK_LIBS) 
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(CHECK_LIBS) 
+ 
+ ptb2xml.o: ptb2xml.c
+ 	$(CC) $(CFLAGS) -c $< $(LIBXSLT_CFLAGS) $(LIBXML_CFLAGS) $(XSLT_DEFINE)
+ 
+ %.o: %.c
+-	$(CC) $(CFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) -I. -c $< -o $@
+ 
+ %.po: %.c
+ 	$(CC) $(CFLAGS) -fPIC -c $< -o $@
+@@ -23,7 +23,7 @@
+ 	$(CC) $(SHFLAGS) $(CFLAGS) -Wl,--out-implib=ptb.dll.a -o $@ $^
+ 
+ libptb.so.$(VERSION): $(PTBLIB_OBJS:.o=.po)
+-	$(CC) $(SHFLAGS) -Wl,-soname,libptb.so.$(SOVERSION) -Wl,$@ $(CFLAGS) -o $@ $^
++	$(CC) $(SHFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ libptb.a: $(PTBLIB_OBJS)
+ 	$(AR) rs $@ $^

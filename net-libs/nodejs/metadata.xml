@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jer@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="inspector">Enable V8 inspector</flag>
+		<flag name="npm">Enable NPM package manager</flag>
+		<flag name="snapshot">Enable snapshot creation for faster startup</flag>
+		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
+	</use>
+</pkgmetadata>

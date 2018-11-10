@@ -1,0 +1,9 @@
+diff --git a/Shellish.hs b/Shellish.hs
+index 0ac20c2..7de0e11 100644
+--- a/Shellish.hs
++++ b/Shellish.hs
+@@ -180,3 +180,3 @@ test_s = path >=> liftIO . \f -> do
+   stat <- getSymbolicLinkStatus f
+-  return $ isSymbolicLink stat
++  return $ System.PosixCompat.Files.isSymbolicLink stat
+ 

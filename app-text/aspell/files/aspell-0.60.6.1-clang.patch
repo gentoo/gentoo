@@ -1,0 +1,47 @@
+From https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=180565
+--- a/interfaces/cc/aspell.h
++++ b/interfaces/cc/aspell.h
+@@ -237,6 +237,7 @@
+ /******************************** errors ********************************/
+ 
+ 
++#ifndef ASPELL_ERRORS__HPP
+ extern const struct AspellErrorInfo * const aerror_other;
+ extern const struct AspellErrorInfo * const aerror_operation_not_supported;
+ extern const struct AspellErrorInfo * const   aerror_cant_copy;
+@@ -322,6 +323,7 @@
+ extern const struct AspellErrorInfo * const   aerror_bad_magic;
+ extern const struct AspellErrorInfo * const aerror_expression;
+ extern const struct AspellErrorInfo * const   aerror_invalid_expression;
++#endif
+ 
+ 
+ /******************************* speller *******************************/
+--- a/prog/aspell.cpp
++++ b/prog/aspell.cpp
+@@ -25,6 +25,7 @@
+ # include <langinfo.h>
+ #endif
+ 
++#include "errors.hpp"
+ #include "aspell.h"
+ 
+ #ifdef USE_FILE_INO
+@@ -40,7 +41,6 @@
+ #include "convert.hpp"
+ #include "document_checker.hpp"
+ #include "enumeration.hpp"
+-#include "errors.hpp"
+ #include "file_util.hpp"
+ #include "fstream.hpp"
+ #include "info.hpp"
+--- a/prog/checker_string.hpp
++++ b/prog/checker_string.hpp
+@@ -6,6 +6,7 @@
+ 
+ #include <stdio.h>
+ 
++#include "errors.hpp"
+ #include "aspell.h"
+ 
+ #include "vector.hpp"

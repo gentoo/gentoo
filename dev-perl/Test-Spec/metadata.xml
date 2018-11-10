@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+        <maintainer type="project">
+                <email>perl@gentoo.org</email>
+                <name>Gentoo Perl Project</name>
+        </maintainer>
+        <upstream>
+                <remote-id type="cpan">Test-Spec</remote-id>
+                <remote-id type="cpan-module">Test::Spec</remote-id>
+                <remote-id type="cpan-module">Test::Spec::Context</remote-id>
+                <remote-id type="cpan-module">Test::Spec::Example</remote-id>
+                <remote-id type="cpan-module">Test::Spec::ExportProxy</remote-id>
+                <remote-id type="cpan-module">Test::Spec::Mocks</remote-id>
+                <remote-id type="cpan-module">Test::Spec::Mocks::Expectation</remote-id>
+                <remote-id type="cpan-module">Test::Spec::Mocks::MockObject</remote-id>
+                <remote-id type="cpan-module">Test::Spec::Mocks::Stub</remote-id>
+                <remote-id type="cpan-module">Test::Spec::SharedHash</remote-id>
+                <remote-id type="cpan-module">Test::Spec::TodoExample</remote-id>
+        </upstream>
+</pkgmetadata>

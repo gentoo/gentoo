@@ -1,0 +1,41 @@
+--- e4rat-0.2.4_pre20141201/src/e4rat-collect.cc.orig	2014-11-24 12:12:12.000000000 +0300
++++ e4rat-0.2.4_pre20141201/src/e4rat-collect.cc	2017-02-12 02:16:25.151757182 +0300
+@@ -32,6 +32,7 @@
+ #include <fcntl.h>
+ #include <fstream>
+ #include <signal.h>
++#include <cstring>
+ 
+ /* EXT2_SUPER_MAGIC */
+ #include <ext2fs/ext2_fs.h>
+@@ -361,7 +362,9 @@
+     {
+         create_pid_late = true;
+ 
+-        outPath = Config::get<std::string>("startup_log_file").c_str();
++        // It is unsafe to use Config::get<T>(arg)c_str() pointer
++        // directly, since it may be overwritten by later get calls.
++        outPath = strdup(Config::get<std::string>("startup_log_file").c_str());
+         verbose = 0;
+     }
+     else
+--- e4rat-0.2.4_pre20141201/src/e4rat-preload.cc.orig	2014-11-24 12:12:12.000000000 +0300
++++ e4rat-0.2.4_pre20141201/src/e4rat-preload.cc	2017-02-12 02:16:38.425552630 +0300
+@@ -25,6 +25,7 @@
+ 
+ #include <iostream>
+ #include <fstream>
++#include <cstring>
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -227,7 +228,8 @@
+     try {
+     if(getpid() == 1)
+     {
+-        const char* logfile = Config::get<std::string>("startup_log_file").c_str();
++        // pointer may change, string must be copied
++        const char* logfile = strdup(Config::get<std::string>("startup_log_file").c_str());
+         notice("Open %s ... ", logfile);
+         FILE* infile = fopen(logfile, "r");
+         if(!infile)

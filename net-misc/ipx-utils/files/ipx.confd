@@ -1,0 +1,26 @@
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Config file for /etc/init.d/ipx
+
+# Automatically selecting a primary interface.
+IPX_AUTO_PRIMARY=on
+
+# Automatically creating interfaces.
+IPX_AUTO_INTERFACE=on
+
+# Interface to which IPX sockets are bound.
+IPX_DEVICE=eth0
+
+# The IPX frame type to use
+IPX_FRAME=802.2
+
+# Create a special kind of IPX interface that does not
+# have a physical device or frame type.
+IPX_INTERNAL_NET=no
+
+# Network number
+IPX_NETNUM=1
+
+# Node number
+IPX_NODENUM=1

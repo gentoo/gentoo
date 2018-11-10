@@ -1,0 +1,24 @@
+QA Notice: Missing soname symlink(s):
+usr/lib64/libofdt.so.1 -> libofdt.so.1.3.6
+usr/lib64/librtas.so.1 -> librtas.so.1.3.6
+
+--- libofdt_src/Makefile
++++ libofdt_src/Makefile
+@@ -27,6 +27,7 @@
+ 	@$(call install_lib,$(LIBOFDT),$(DESTDIR))
+ 	@$(call install_inc,$(LIBOFDT_SHIP_HDR),$(DESTDIR))
+ 	@ln -sf $(LIBOFDT) $(DESTDIR)/$(LIB_DIR)$(call is_lib64,$(LIBOFDT))/$(LIBOFDT_SONAME)
++	@ln -sf $(LIBOFDT) $(DESTDIR)/$(LIB_DIR)$(call is_lib64,$(LIBOFDT))/$(LIBOFDT_SONAME).1
+ 
+ uninstall:
+ 	@$(call uninstall_lib,$(LIBOFDT),$(DESTDIR))
+--- librtas_src/Makefile
++++ librtas_src/Makefile
+@@ -33,6 +33,7 @@
+ 	@$(call install_lib,$(LIBRTAS),$(DESTDIR))
+ 	@$(call install_inc,$(HEADERS),$(DESTDIR))
+ 	@ln -sf $(LIBRTAS) $(DESTDIR)/$(LIB_DIR)$(call is_lib64,$(LIBRTAS))/$(LIBRTAS_SONAME)
++	@ln -sf $(LIBRTAS) $(DESTDIR)/$(LIB_DIR)$(call is_lib64,$(LIBRTAS))/$(LIBRTAS_SONAME).1
+ 
+ uninstall:
+ 	@$(call uninstall_lib,$(LIBRTAS),$(DESTDIR))

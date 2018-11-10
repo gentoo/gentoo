@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="gconf">Build the gconf independant probes</flag>
+		<flag name="nss">Prefer NSS over libgcrypt as the crypto engine</flag>
+		<flag name="rpm">Compiles the RPM probes</flag>
+		<flag name="sce">Enables Script Check Engine (SCE) support</flag>
+		<flag name="sql">Build the sql independant probes</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">OpenSCAP/openscap</remote-id>
+	</upstream>
+</pkgmetadata>
+

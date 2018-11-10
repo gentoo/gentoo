@@ -1,0 +1,31 @@
+--- configure.in
++++ configure.in
+@@ -121,13 +121,22 @@
+ dnl -----------------------------------------------------------
+ dnl Check for SVGALIB
+ dnl -----------------------------------------------------------
+-AC_CHECK_LIB(vga, vga_setmode, no_vga="", no_vga=yes)
+-if test "$no_vga" != yes; then
+-   progs="$progs vgaspect"
+-   vgalib=-lvga
+ 
+-   LIBS="$vgalib $olibs"
+-   AC_CHECK_FUNC(vga_runinbackground_version, AC_DEFINE(RUN_IN_BACKGROUND))
++svgalibs=""
++withsvga=no
++AC_ARG_WITH(svga,
++[  --with-svga         Compile with svga library],
++[if test "$withval" = no; then withsvga=no; fi])
++
++if test "$withsvga" = yes; then
++  AC_CHECK_LIB(vga, vga_setmode, no_vga="", no_vga=yes)
++  if test "$no_vga" != yes; then
++     progs="$progs vgaspect"
++     vgalib=-lvga
++
++     LIBS="$vgalib $olibs"
++     AC_CHECK_FUNC(vga_runinbackground_version, AC_DEFINE(RUN_IN_BACKGROUND))
++  fi
+ fi
+ 
+ LIBS="$olibs"

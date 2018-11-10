@@ -1,0 +1,24 @@
+--- a/src/org/jdesktop/application/Task.java	2017-03-28 11:24:05.988108949 +0000
++++ b/src/org/jdesktop/application/Task.java	2017-03-28 11:24:09.433122008 +0000
+@@ -15,8 +15,8 @@
+ import java.util.concurrent.TimeUnit;
+ import java.util.logging.Level;
+ import java.util.logging.Logger;
+-import org.jdesktop.swingworker.SwingWorker;
+-import org.jdesktop.swingworker.SwingWorker.StateValue;
++import javax.swing.SwingWorker;
++import javax.swing.SwingWorker.StateValue;
+ 
+ 
+ /**
+--- a/src/org/jdesktop/application/TaskMonitor.java	2017-03-28 11:24:18.988158228 +0000
++++ b/src/org/jdesktop/application/TaskMonitor.java	2017-03-28 11:24:31.895207149 +0000
+@@ -9,7 +9,7 @@
+ import java.util.Iterator;
+ import java.util.LinkedList;
+ import java.util.List;
+-import org.jdesktop.swingworker.SwingWorker.StateValue;
++import javax.swing.SwingWorker.StateValue;
+ 
+ 
+ /**

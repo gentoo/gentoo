@@ -1,0 +1,11 @@
+--- qmailadmin-1.2.9/qmailadmin.h
++++ qmailadmin-1.2.9/qmailadmin.h
+@@ -24,7 +24,7 @@
+  * it below.
+  */
+ #ifndef MAILDIR
+-#define MAILDIR "Maildir"
++#define MAILDIR ".maildir"
+ #endif
+ 
+ /* max # of forwards a user can set on the Modify User screen */

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Params-Validate</remote-id>
+    <remote-id type="cpan-module">Params::Validate</remote-id>
+    <remote-id type="cpan-module">Params::Validate::Constants</remote-id>
+    <remote-id type="cpan-module">Params::Validate::PP</remote-id>
+    <remote-id type="cpan-module">Params::Validate::XS</remote-id>
+  </upstream>
+</pkgmetadata>

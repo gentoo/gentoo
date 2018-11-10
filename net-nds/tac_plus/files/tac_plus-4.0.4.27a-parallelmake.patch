@@ -1,0 +1,12 @@
+diff -uNr tacacs+-F4.0.4.27a.ORIG/Makefile.am tacacs+-F4.0.4.27a/Makefile.am
+--- tacacs+-F4.0.4.27a.ORIG/Makefile.am	2015-03-25 11:10:26.821016226 +0000
++++ tacacs+-F4.0.4.27a/Makefile.am	2015-03-25 11:11:04.954018126 +0000
+@@ -19,7 +19,7 @@
+ tac_plus_SOURCES += aceclnt_fn.c
+ endif
+ tac_plus_LDFLAGS = -L$(top_srcdir)
+-tac_plus_LDADD = $(WRAPLIBS) -ltacacs
++tac_plus_LDADD = $(WRAPLIBS) libtacacs.la
+ 
+ lib_LTLIBRARIES = libtacacs.la
+ libtacacs_la_SOURCES = fdes.c maxsess.c md4.c md5.c packet.c

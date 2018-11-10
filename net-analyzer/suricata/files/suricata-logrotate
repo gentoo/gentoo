@@ -1,0 +1,10 @@
+/var/log/suricata/*.log /var/log/suricata/*.json {
+	rotate 3
+	missingok
+	nocompress
+	create
+	sharedscripts
+	postrotate
+		/etc/init.d/suricata relog
+	endscript
+}

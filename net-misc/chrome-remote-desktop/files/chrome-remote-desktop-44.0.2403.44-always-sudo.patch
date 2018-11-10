@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/541708
+
+just use `sudo` for everything
+
+--- a/opt/google/chrome-remote-desktop/chrome-remote-desktop
++++ b/opt/google/chrome-remote-desktop/chrome-remote-desktop
+@@ -1092,12 +1092,7 @@
+       logging.info("Group '%s' not found." % CHROME_REMOTING_GROUP_NAME)
+ 
+     command = [SCRIPT_PATH, '--add-user-as-root', user]
+-    if os.getenv("DISPLAY"):
+-      # TODO(rickyz): Add a Polkit policy that includes a more friendly message
+-      # about what this command does.
+-      command = ["/usr/bin/pkexec"] + command
+-    else:
+-      command = ["/usr/bin/sudo", "-k", "--"] + command
++    command = ["/usr/bin/sudo", "-k", "--"] + command
+ 
+     # Run with an empty environment out of paranoia, though if an attacker
+     # controls the environment this script is run under, we're already screwed

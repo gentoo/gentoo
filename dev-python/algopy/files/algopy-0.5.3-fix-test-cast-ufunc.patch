@@ -1,0 +1,29 @@
+From f563d86e72b32caa296ac77b0836ce0e36a5f6ab Mon Sep 17 00:00:00 2001
+From: Sebastian Walter <sebastian.walter@iwr.uni-heidelberg.de>
+Date: Thu, 30 Jun 2016 15:11:19 +0200
+Subject: [PATCH] Problem: numpy raised TypeError: Cannot cast ufunc add output
+ from dtype('complex128') to dtype('float64') with casting rule 'same_kind'
+ Solution: use numpy.add(x,y,out=x, casting='unsafe') to cast from complex to
+ float if necessary
+
+---
+ algopy/utpm/algorithms.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/algopy/utpm/algorithms.py b/algopy/utpm/algorithms.py
+index ccf7ca4..5f2651e 100644
+--- a/algopy/utpm/algorithms.py
++++ b/algopy/utpm/algorithms.py
+@@ -1190,9 +1190,9 @@ def _dot(cls, x_data, y_data, out = None):
+         for d in range(D):
+             for p in range(P):
+                 for c in range(d+1):
+-                    z_data[d,p,...] += numpy.dot(
+-                            x_data[c,p,...],
+-                            y_data[d-c,p,...])
++                    tmp = numpy.dot(x_data[c,p,...],
++                                    y_data[d-c,p,...])
++                    numpy.add(z_data[d,p,...], tmp, out=z_data[d,p, ...], casting='unsafe') 
+ 
+         return out
+ 

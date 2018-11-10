@@ -1,0 +1,4 @@
+#!/bin/sh 
+exec 2>&1
+exec < /proc/kmsg 
+exec /usr/bin/multilog t n64 /var/log/klogd

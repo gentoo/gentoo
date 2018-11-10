@@ -1,0 +1,39 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/smw-server"
+command_background="true"
+pidfile="/var/run/${RC_SVCNAME}.pid"
+name="Super Mario War server"
+description="The Super Mario War server process is in charge of hosting Super Mario War games"
+smw_serverdir="@SMW_SERVERDIR@"
+
+depend() {
+    use net
+    before logger
+}
+
+start() {
+    if [[ ! -d "${smw_serverdir}" ]]; then
+        eerror "Cannot cd into ${smw_serverdir}"
+        return 1
+    fi
+    cd "${smw_serverdir}" || return 1
+    ebegin "Starting ${name}"
+    start-stop-daemon \
+        --start \
+        --background \
+        --pidfile ${pidfile} \
+        --make-pidfile \
+        --exec ${command}
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping ${name}"
+    start-stop-daemon \
+        --stop \
+        --pidfile ${pidfile}
+    eend $?
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>accessibility@gentoo.org</email>
+		<name>Gentoo Accessibility Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<longdescription lang="en">
+	SphinxTrain is CMU Sphinx's training package.
+</longdescription>
+	<longdescription lang="ja">
+	SphinxTrainはCMU Sphinxの調教パッケージです。
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">cmusphinx</remote-id>
+	</upstream>
+</pkgmetadata>

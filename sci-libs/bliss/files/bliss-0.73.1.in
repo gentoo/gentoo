@@ -1,0 +1,55 @@
+.TH "BLISS" "1" "@VERSION@" "Tommi Junttila & Petteri Kaski" "User Commands"
+.SH "NAME"
+bliss \- Compute automorphism groups and canonical labelings of graphs
+.SH "SYNOPSIS"
+.B bliss
+[\fIOPTIONS\fR] [<\fIGRAPH FILE\fR>]
+.SH "DESCRIPTION"
+.PP
+Bliss is an open source tool for computing automorphism groups and
+canonical forms of graphs.  The graphs are specified in DIMACS format.
+.TP
+\fB\-directed\fR
+the input graph is directed
+.TP
+\fB\-can\fR
+compute canonical form
+.TP
+\fB\-ocan\fR=\fIf\fR
+compute canonical form and output it in file \fIf\fR
+.TP
+\fB\-v\fR=\fIN\fR
+set verbosity level to N [N >= 0, default: 1]
+.TP
+\fB\-sh\fR=\fIX\fR
+select splitting heuristics, where X is:
+.TS
+tab(;);
+R L.
+f;first non-singleton cell
+fl;first largest non-singleton cell
+fs;first smallest non-singleton cell
+fm;first maximally non-trivially connected non-singleton cell
+flm;first largest maximally non-trivially connected
+;non-singleton cell
+fsm;first smallest maximally non-trivially connected
+;non-singleton cell (default)
+.TE
+.TP
+\fB\-fr\fR=\fIX\fR
+use failure recording? [X=y/n, default: y]
+.TP
+\fB\-cr\fR=\fIX\fR
+use component recursion? [X=y/n, default: y]
+.TP
+\fB\-version\fR
+print the version number and exit
+.TP
+\fB\-help\fR
+print this help and exit
+.SH "AUTHORS"
+Bliss was written by Tommi Junttila <Tommi.Junttila@tkk.fi> and
+Petteri Kaski <petteri.kaski@aalto.fi>.
+.PP
+This man page was written by Jerry James <loganjerry@gmail.com>.
+It is distributed under the same terms as bliss.

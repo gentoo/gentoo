@@ -1,0 +1,15 @@
+Make sure the files using version.h depend on it being generated first.
+
+Gentoo-bug: 594586
+
+--- a/Makefile
++++ b/Makefile
+@@ -59,7 +59,7 @@
+ 
+ all: sslh $(MAN) echosrv
+ 
+-.c.o: *.h
++%.o: %.c *.h version.h
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+ 
+ version.h:

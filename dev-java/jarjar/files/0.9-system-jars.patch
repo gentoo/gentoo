@@ -1,0 +1,20 @@
+Index: build.xml
+===================================================================
+--- build.xml	(revision 90)
++++ build.xml	(working copy)
+@@ -93,6 +93,15 @@
+         </jarjar>
+     </target>
+ 
++    <target name="jar-nojarjar" depends="compile" description="Create Jar Without running JarJar task on it">
++        <mkdir dir="dist"/>
++        <jar jarfile="${jarfile}" basedir="build/main/">
++            <manifest>
++                <attribute name="Main-Class" value="com.tonicsystems.jarjar.Main"/>
++                <attribute name="Implementation-Version" value="${version}"/>
++            </manifest>
++        </jar>
++    </target>
+     <target name="jar-util" depends="compile" description="Create utility Jar">
+         <mkdir dir="dist"/>
+         <jar jarfile="${jarfile.util}">

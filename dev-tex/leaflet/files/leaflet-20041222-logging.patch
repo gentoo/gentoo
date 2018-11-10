@@ -1,0 +1,14 @@
+\loggingall confuses texi2dvi and it starts an endless loop...
+
+Index: leaflet/leaflet.dtx
+===================================================================
+--- leaflet.orig/leaflet.dtx
++++ leaflet/leaflet.dtx
+@@ -1318,7 +1318,6 @@ this document class.
+   CTAN: \url{macros/latex/contrib/ms/everyshi.dtx}
+ \end{thebibliography}
+ 
+-\loggingall
+ \end{document}
+ %</manual>
+ \endinput

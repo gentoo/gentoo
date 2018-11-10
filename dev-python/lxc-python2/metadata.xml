@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>virtualization@gentoo.org</email>
+    <name>Gentoo Virtualization Project</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
+  </maintainer>
+  <longdescription lang="en">
+    Python 2.7 binding for liblxc
+  </longdescription>
+  <upstream>
+    <remote-id type="github">lxc/python2-lxc</remote-id>
+  </upstream>
+</pkgmetadata>

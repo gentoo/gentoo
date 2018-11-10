@@ -1,0 +1,10 @@
+# Copyright 1999-2017 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+#
+# See bug #544756.
+>=sys-devel/gcc-4.9
+
+#
+# Broken packages
+app-cdr/cdrtools

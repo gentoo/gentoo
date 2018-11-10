@@ -1,0 +1,16 @@
+Author: Stelian Ionescu <sionescu@cddr.org>
+Date: 2010-05-14
+Status: Gentoo-only
+Description: Dont' call SWANK-LOADER:INIT on startup since we don't use
+ the upstream swank-loader.lisp
+
+--- a/slime.el
++++ b/slime.el
+@@ -1323,7 +1323,6 @@ See `slime-start'."
+             `(progn
+                (load ,(slime-to-lisp-filename (expand-file-name loader)) 
+                      :verbose t)
+-               (funcall (read-from-string "swank-loader:init"))
+                (funcall (read-from-string "swank:start-server")
+                         ,(slime-to-lisp-filename port-filename)
+                         :coding-system ,encoding)))))

@@ -1,0 +1,36 @@
+From 882b51fb718c2eed98ef3e8f3be0c5b7320024e1 Mon Sep 17 00:00:00 2001
+From: Justin Lecher <jlec@gentoo.org>
+Date: Mon, 2 Jan 2017 07:56:11 +0000
+Subject: [PATCH] Add missing blank after STOP
+
+The STOP statement requires preceding blank. Newer gcc
+will fail with
+
+     CASE DEFAULT; STOP'Err:WghtMtrx'
+                      1
+Error: Blank required in STOP statement near (1)
+
+See:
+https://bugs.gentoo.org/show_bug.cgi?id=604138
+
+Signed-off-by: Justin Lecher <jlec@gentoo.org>
+---
+ FreeON/Optimizer.F90 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/FreeON/Optimizer.F90 b/FreeON/Optimizer.F90
+index 0ef22269..0bbd9008 100644
+--- a/FreeON/Optimizer.F90
++++ b/FreeON/Optimizer.F90
+@@ -3055,7 +3055,7 @@ CONTAINS
+     SELECT CASE(FromTo)
+     CASE('CToWC');IFromTo=0
+     CASE('WCToC');IFromTo=1
+-    CASE DEFAULT; STOP'Err:WghtMtrx'
++    CASE DEFAULT; STOP 'Err:WghtMtrx'
+     END SELECT
+     DO AtB=1,NAtoms
+        IF(IFromTo.EQ.0) THEN
+-- 
+2.11.0
+

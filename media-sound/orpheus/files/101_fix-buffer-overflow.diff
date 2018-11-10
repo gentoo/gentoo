@@ -1,0 +1,15 @@
+Fix a stack-based buffer overflow in kkstrtext.h in ktools library.
+(CVE-2005-3863) (Closes: #368402)
+Index: orpheus-1.5/kkstrtext-0.1/kkstrtext.h
+===================================================================
+--- orpheus-1.5.orig/kkstrtext-0.1/kkstrtext.h	2003-12-14 11:51:38.000000000 +0100
++++ orpheus-1.5/kkstrtext-0.1/kkstrtext.h	2006-08-01 21:57:14.000000000 +0200
+@@ -87,7 +87,7 @@
+     { \
+ 	va_list vgs__ap; char vgs__buf[1024]; \
+ 	va_start(vgs__ap, fmt); \
+-	vsprintf(vgs__buf, fmt, vgs__ap); c = vgs__buf; \
++	vsnprintf(vgs__buf, 1024, fmt, vgs__ap); c = vgs__buf; \
+ 	va_end(vgs__ap); \
+     }
+ 

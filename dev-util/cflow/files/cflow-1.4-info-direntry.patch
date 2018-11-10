@@ -1,0 +1,13 @@
+diff --git a/doc/cflow.texi b/doc/cflow.texi
+index dfb1fdf..5dc1d48 100644
+--- a/doc/cflow.texi
++++ b/doc/cflow.texi
+@@ -21,7 +21,7 @@
+ @end direntry
+ @dircategory Emacs
+ @direntry
+-* cflow mode: (cflow)cflow mode.  Major mode for visiting cflow charts.
++* cflow mode: (cflow)Emacs.      Major mode for visiting cflow charts.
+ @end direntry
+ @end ifinfo
+ 

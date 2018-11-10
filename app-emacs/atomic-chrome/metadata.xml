@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  This is the Emacs version of Atomic Chrome which is an extension
+  for the Google Chrome browser that allows you to edit text areas
+  of the browser in Emacs. The input on Emacs is reflected to the
+  browser instantly and continuously. You can use both the browser
+  and Emacs at the same time. They are updated to the same content
+  bi-directionally.
+
+  Atomic Chrome for Emacs is also compatible with Firefox via the
+  GhostText browser extension.
+</longdescription>
+<stabilize-allarches/>
+</pkgmetadata>

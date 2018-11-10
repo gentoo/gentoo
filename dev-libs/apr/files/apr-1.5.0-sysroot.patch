@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/385775
+
+utilize $SYSROOT to find the right includedir tree
+
+drop the -L/-R paths since we know our libdir is the standard path which
+the compiler already knows how to locate
+
+--- a/apr-config.in
++++ b/apr-config.in
+@@ -28,7 +28,7 @@ libdir="@libdir@"
+ datarootdir="@datadir@"
+ datadir="@datadir@"
+-installbuilddir="@installbuilddir@"
+-includedir="@includedir@"
++installbuilddir="${SYSROOT}@installbuilddir@"
++includedir="${SYSROOT}@includedir@"
+ 
+ CC="@CC@"
+ CPP="@CPP@"
+@@ -183,7 +183,7 @@ while test $# -gt 0; do
+     --link-ld)
+     if test "$location" = "installed"; then
+         ### avoid using -L if libdir is a "standard" location like /usr/lib
+-        flags="$flags -L$libdir -l${APR_LIBNAME}"
++        flags="$flags -l${APR_LIBNAME}"
+     else
+         ### this surely can't work since the library is in .libs?
+         flags="$flags -L$APR_BUILD_DIR -l${APR_LIBNAME}"
+@@ -200,7 +200,7 @@ while test $# -gt 0; do
+         ### avoid using -L if libdir is a "standard" location like /usr/lib
+         # Since the user is specifying they are linking with libtool, we
+         # *know* that -R will be recognized by libtool.
+-        flags="$flags -L$libdir -R$libdir -l${APR_LIBNAME}"
++        flags="$flags -l${APR_LIBNAME}"
+     else
+         flags="$flags $LA_FILE"
+     fi

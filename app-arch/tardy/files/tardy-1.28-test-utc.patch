@@ -1,0 +1,10 @@
+--- tardy-1.28/test/00/t0075a.sh
++++ tardy-1.28/test/00/t0075a.sh
+@@ -19,6 +19,7 @@
+ 
+ TEST_SUBJECT="tarballs >2GB"
+ . test_prelude
++export TZ=UTC
+ 
+ #                                         |||||
+ #    beware potential timezone mismatch:  vvvvv

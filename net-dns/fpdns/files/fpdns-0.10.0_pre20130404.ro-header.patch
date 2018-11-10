@@ -1,0 +1,33 @@
+From ca0391377ad7150e61ff300cb5195c97a154233b Mon Sep 17 00:00:00 2001
+From: Jakob Schlyter <jakob@kirei.se>
+Date: Wed, 28 Aug 2013 10:24:11 +0200
+Subject: [PATCH] do not set header counters unless changed
+
+---
+ lib/Net/DNS/Fingerprint.pm | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/lib/Net/DNS/Fingerprint.pm b/lib/Net/DNS/Fingerprint.pm
+index d4a2e5a..e096d42 100644
+--- a/lib/Net/DNS/Fingerprint.pm
++++ b/lib/Net/DNS/Fingerprint.pm
+@@ -2171,10 +2171,12 @@ sub fp2header {
+     $header->ad(shift @list);
+     $header->cd(shift @list);
+     $header->rcode(shift @list);
+-    $header->qdcount(shift @list);
+-    $header->ancount(shift @list);
+-    $header->nscount(shift @list);
+-    $header->arcount(shift @list);
++
++    my ($qdcount, $ancount, $nscount, $arcount) = @list;
++    $header->qdcount($qdcount) unless $qdcount == $header->qdcount;
++    $header->qdcount($ancount) unless $ancount == $header->ancount;
++    $header->qdcount($nscount) unless $nscount == $header->nscount;
++    $header->qdcount($arcount) unless $arcount == $header->arcount;
+ }
+ 
+ sub probe {
+-- 
+1.9.1
+

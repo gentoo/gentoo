@@ -1,0 +1,22 @@
+diff -Naurp adonthell-0.3.4-orig/src/dialog.cc adonthell-0.3.4/src/dialog.cc
+--- adonthell-0.3.4-orig/src/dialog.cc	2005-03-10 12:39:41.000000000 -0600
++++ adonthell-0.3.4/src/dialog.cc	2009-07-26 15:57:01.410882131 -0600
+@@ -265,7 +265,8 @@ string dialog::scan_string (const char *
+ {
+     u_int32 begin, end, len;
+     PyObject *result;
+-    char *tmp, *start, *mid, *str = NULL;
++    const char *start;
++    char *tmp, *mid, *str = NULL;
+     character *the_player = data::the_player;
+     string newstr (s); 
+ 
+@@ -318,7 +319,7 @@ string dialog::scan_string (const char *
+ 
+         // Error!
+         cout << "\n*** Error, unknown macro " << start << flush;
+-        start[0] = ' ';
++        newstr[newstr.length () - strlen (start)] = ' ';
+     }
+     
+     // execute python functions

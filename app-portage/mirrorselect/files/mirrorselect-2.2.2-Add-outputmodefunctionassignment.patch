@@ -1,0 +1,24 @@
+From e9dea3a98aa5031fecf1c7115de77e948e8d07ca Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Tue, 27 Jan 2015 10:19:05 -0800
+Subject: [PATCH] Add missed output mode function assignment.
+
+---
+ mirrorselect/extractor.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/mirrorselect/extractor.py b/mirrorselect/extractor.py
+index 59efad1..06dce6c 100644
+--- a/mirrorselect/extractor.py
++++ b/mirrorselect/extractor.py
+@@ -107,6 +107,7 @@ class Extractor(object):
+ 		# setup the ssl-fetch ouptut map
+ 		connector_output = {
+ 			'info':self.output.write,
++			'debug': self.output.write,
+ 			'error': self.output.print_err,
+ 			'kwargs-info': {'level': 2},
+ 			'kwargs-debug': {'level':2},
+-- 
+2.2.2
+

@@ -1,0 +1,17 @@
+--- lib/BackupPC/CGI/Browse.pm	2016-11-22 20:52:03.622509160 +0100
++++ lib/BackupPC/CGI/Browse.pm	2016-11-22 20:50:35.871018400 +0100
+@@ -62,13 +62,13 @@ fix bug https://bugzilla.redhat.com/attachment.cgi?id=1104083
+     #
+     my @Backups = $bpc->BackupInfoRead($host);
+ 
+     #
+     # default to the newest backup
+     #
+-    if ( !defined($In{num}) && defined(@Backups) && @Backups > 0 ) {
++    if ( !defined($In{num}) && @Backups > 0 ) {
+         $i = @Backups - 1;
+         $num = $Backups[$i]{num};
+     }
+ 
+     for ( $i = 0 ; $i < @Backups ; $i++ ) {
+         last if ( $Backups[$i]{num} == $num );

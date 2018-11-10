@@ -1,0 +1,11 @@
+--- tob.old	2005-02-13 17:46:00.000000000 -0500
++++ tob	2005-02-13 17:35:43.000000000 -0500
+@@ -314,7 +314,7 @@
+     fi
+ 
+     if [ "$NICEFIND" = "yes" ] ; then
+-	nicefindcmd="nice -19"
++	nicefindcmd="nice -n 19"
+     else
+ 	nicefindcmd=""
+     fi

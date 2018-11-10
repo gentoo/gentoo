@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+
+NAME="gearmand"
+BINARY="/usr/bin/gearmand"
+
+depend() {
+	use net
+}
+
+start() {
+	# start-stop-daemon does not work properly in certain cases
+	# this hack should go away when bug #178274 is resolved.
+	ebegin "Starting $NAME"
+	start-stop-daemon --start --pidfile="${PIDFILE}" \
+		--exec ${BINARY} -- ${GEARMAND_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping $NAME"
+	start-stop-daemon --stop --pidfile="${PIDFILE}"
+	eend $?
+}
+
+# vim: ft=gentoo-init-d:

@@ -1,0 +1,30 @@
+# !! IMPORTANT !!
+#
+# This file uses the YAML format as described in the documentation:
+#   http://docs.mongodb.org/manual/reference/configuration-options/
+
+systemLog:
+    destination: file
+    path: "/var/log/mongodb/mongos.log"
+    quiet: true
+    logAppend: true
+
+net:
+    port: 27017
+    bindIp: 127.0.0.1
+    ssl:
+        mode: disabled
+
+#security:
+    #keyFile:
+    #clusterAuthMode:
+
+#sharding:
+    #configDB:
+
+# Specifies one of the MongoDB parameters described here:
+#   http://docs.mongodb.org/manual/reference/parameters/
+#
+# You can specify multiple setParameter fields such as:
+#   setParameter: {enableTestCommands: 1}
+#setParameter:

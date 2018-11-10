@@ -1,0 +1,11 @@
+--- libmodbus-3.1.4/Makefile.in
++++ libmodbus-3.1.4/Makefile.in
+@@ -379,7 +379,7 @@
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = libmodbus.pc
+ EXTRA_DIST = libmodbus.pc.in
+-dist_doc_DATA = MIGRATION README.md
++dist_doc_DATA = MIGRATION README.md AUTHORS NEWS
+ SUBDIRS = src doc $(am__append_1)
+ all: config.h
+ 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

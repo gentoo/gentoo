@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gnustep@gentoo.org</email>
+	<name>Gentoo GNUstep Project</name>
+</maintainer>
+<longdescription>
+A clock!
+	
+Advantages of GNUstep dockapps over non GNUstep dockapps
++ scalable
++ independant of X11
+
+Thanks
+Alexander Malmberg for the initial version
+Banlu Kemiyatorn for the eye candy
+
+Contact
+Gürkan Sengün 
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,17 @@
+diff -Nru vmoconv-1.0.orig/configure.in vmoconv-1.0/configure.in
+--- vmoconv-1.0.orig/configure.in	2004-09-26 15:17:48.000000000 +0000
++++ vmoconv-1.0/configure.in	2009-03-03 21:32:40.000000000 +0000
+@@ -26,10 +26,10 @@
+     [printf(__func__)],,
+     [AC_DEFINE(__func__, "", [non-C99 fake support for __func__])])
+ 
+-dnl Turn on debugging and all warnings when using gcc
++dnl Turn on all warnings when using gcc
+ if test "$ac_cv_prog_gcc" = "yes"; then
+-	CFLAGS="$CFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
+-	LDFLAGS="$LDFLAGS -g -Wall"
++	CFLAGS="$CFLAGS -Wall -Wmissing-declarations -Wmissing-prototypes"
++	LDFLAGS="$LDFLAGS -Wall"
+ fi
+        
+ AC_SUBST(CFLAGS)

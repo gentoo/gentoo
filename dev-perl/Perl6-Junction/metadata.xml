@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Perl6-Junction</remote-id>
+    <remote-id type="cpan-module">Perl6::Junction</remote-id>
+    <remote-id type="cpan-module">Perl6::Junction::All</remote-id>
+    <remote-id type="cpan-module">Perl6::Junction::Any</remote-id>
+    <remote-id type="cpan-module">Perl6::Junction::Base</remote-id>
+    <remote-id type="cpan-module">Perl6::Junction::None</remote-id>
+    <remote-id type="cpan-module">Perl6::Junction::One</remote-id>
+  </upstream>
+</pkgmetadata>

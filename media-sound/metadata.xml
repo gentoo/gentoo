@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The media-sound category contains sound, music and audio applications.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie media-sound enthält verschiedenste Audio-Applikationen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría media-sound contiene aplicaciones de sonido, música y
+		audio.
+	</longdescription>
+	<longdescription lang="fr">
+		La catégorie media-sound contient des applications de son, de musique et d'audio.
+	</longdescription>
+	<longdescription lang="ja">
+		media-soundカテゴリーにはサウンドやミュージックやオーデイオの
+		アプリケーションが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De categorie media-sound bevat applicaties voor geluid en muziek.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm media-sound chứa các ứng dụng liên quan đến âm thanh, nhạc, tiếng nói.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória media-sound obsahuje aplikácie pre prácu so zvukom a hudbou.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria media-sound contiene applicazioni per suono, musica e
+		audio.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria media-sound contém aplicações de som, música e áudio.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria media-sound zawiera programy dźwiękowe i muzyczne.
+	</longdescription>
+</catmetadata>
+

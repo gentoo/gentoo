@@ -1,0 +1,50 @@
+--- gspeakers-0.11-orig/src/filterlinkframe.cc
++++ gspeakers-0.11/src/filterlinkframe.cc
+@@ -22,6 +22,7 @@
+ #include <stdio.h>
+ #include <fstream>
+ #include <sstream>
++#include <cstring>
+ #include "filterlinkframe.h"
+ #include "gspeakersplot.h"
+ #include "common.h"
+--- gspeakers-0.11-orig/src/freqrespeditor.cc
++++ gspeakers-0.11/src/freqrespeditor.cc
+@@ -20,6 +20,7 @@
+ #include "freqrespeditor.h"
+ #include <fstream>
+ #include <stdio.h>
++#include <cstring>
+ #include <gtkmm/stock.h>
+ #include <gtkmm/frame.h>
+ #include <gtkmm/messagedialog.h>
+--- gspeakers-0.11-orig/src/popupentry.cc
++++ gspeakers-0.11/src/popupentry.cc
+@@ -26,6 +26,7 @@
+ #include <gtkmm.h>
+ #include <gtk/gtkentry.h> /* see XXX below */
+ #include <iostream>
++#include <cstring>
+ 
+ using namespace std;
+ 
+--- gspeakers-0.11-orig/src/speakereditor.cc
++++ gspeakers-0.11/src/speakereditor.cc
+@@ -18,6 +18,7 @@
+ */
+ 
+ #include <fstream>
++#include <cstring>
+ #include <math.h>
+ #include "speakereditor.h"
+ #include "common.h"
+--- gspeakers-0.11-orig/src/summedfreqrespplot.cc
++++ gspeakers-0.11/src/summedfreqrespplot.cc
+@@ -20,6 +20,7 @@
+  */
+ 
+ #include <fstream>
++#include <cstring>
+ #include <math.h>
+ #include "summedfreqrespplot.h"
+ #include "net.h"

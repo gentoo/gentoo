@@ -1,0 +1,46 @@
+From: Uli Schlachter <psychon@znc.in>
+Date: Sat, 12 Apr 2014 14:15:11 +0000 (+0200)
+Subject: Merge git://github.com/Teknocrat/awesome
+X-Git-Url: http://git.naquadah.org/?p=awesome.git;a=commitdiff_plain;h=d76d3e0b6a00b8b289b3801ba197e0dae732a92d;hp=1090719d677c86e90a1394a34f0effb418728493
+
+Merge git://github.com/Teknocrat/awesome
+---
+
+diff --git a/lib/awful/util.lua.in b/lib/awful/util.lua.in
+index 1d35f2f..123c4a6 100644
+--- a/lib/awful/util.lua.in
++++ b/lib/awful/util.lua.in
+@@ -185,21 +185,24 @@ end
+ --             of the dirs are searched first
+ function util.geticonpath(iconname, exts, dirs, size)
+     exts = exts or { 'png', 'gif' }
+-    dirs = dirs or { '/usr/share/pixmaps/' }
++    dirs = dirs or { '/usr/share/pixmaps/', '/usr/share/icons/hicolor/' }
++    icontypes = { 'apps', 'actions',  'categories',  'emblems',
++    'mimetypes',  'status', 'devices', 'extras', 'places', 'stock' }
+     for _, d in pairs(dirs) do
++        local icon
+         for _, e in pairs(exts) do
+-            local icon
+-            if size then
+-                icon = string.format("%s%ux%u/%s.%s",
+-                       d, size, size, iconname, e)
+-                if util.file_readable(icon) then
+-                    return icon
+-                end
+-            end
+             icon = d .. iconname .. '.' .. e
+             if util.file_readable(icon) then
+                 return icon
+             end
++            if size then
++                for _, t in pairs(icontypes) do
++                    icon = string.format("%s%ux%u/%s/%s.%s", d, size, size, t, iconname, e)
++                    if util.file_readable(icon) then
++                        return icon
++                    end
++                end
++            end
+         end
+     end
+ end

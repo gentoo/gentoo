@@ -1,0 +1,20 @@
+--- a/perl_api/perlsfio.c
++++ b/perl_api/perlsfio.c
+@@ -32,6 +32,7 @@
+ /* perl redefines them
+  * avoid warnings
+  */
++#undef re_compile
+ #undef USE_DYNAMIC_LOADING
+ #undef DEBUG
+ #undef PACKAGE
+--- a/perl_api/perl.xs
++++ b/perl_api/perl.xs
+@@ -38,6 +38,7 @@
+ /* perl redefines them
+  * avoid warnings
+  */
++#undef re_compile
+ #undef USE_DYNAMIC_LOADING
+ #undef DEBUG
+ #undef PACKAGE

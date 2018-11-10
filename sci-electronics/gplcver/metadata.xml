@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-electronics@gentoo.org</email>
+    <name>Gentoo Electronics Project</name>
+  </maintainer>
+  <longdescription>
+  GPL Cver is a Verilog HDL simulator that is released under the GNU General
+  Public License. GPL Cver is a full 1995 P1364 Verilog standard HDL simulator.
+  It also implements some of the 2001 P1364 standard features including all
+  three PLI interfaces (tf_, acc_ and vpi_) as defined in the 2001 Language
+  Reference Manual (LRM).
+  </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">gplcver</remote-id>
+  </upstream>
+</pkgmetadata>

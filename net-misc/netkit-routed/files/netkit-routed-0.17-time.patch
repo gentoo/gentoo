@@ -1,0 +1,20 @@
+--- a/routed/main.c	2000-01-06 00:16:12.000000000 +0100
++++ b/routed/main.c	2010-08-26 23:04:56.000000000 +0200
+@@ -57,6 +57,7 @@
+ #include <syslog.h>
+ #include <assert.h>
+ #include <sys/utsname.h>
++#include <time.h>
+ 
+ #define BUFSPACE (127*1024)	/* max. input buffer size to request */
+ 
+--- a/routed/trace.c	2000-07-23 01:25:11.000000000 +0200
++++ b/routed/trace.c	2010-08-26 23:05:17.000000000 +0200
+@@ -50,6 +50,7 @@
+ #include <syslog.h>
+ #include <errno.h>
+ #include "pathnames.h"
++#include <time.h>
+ 
+ #define	NRECORDS	50		/* size of circular trace buffer */
+ 

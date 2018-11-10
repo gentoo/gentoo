@@ -1,0 +1,64 @@
+From 7fbc87986baa09c342abb21e34613e8bbdc3c9c7 Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@hasufell.de>
+Date: Mon, 2 Nov 2015 16:24:43 +0100
+Subject: [PATCH 1/4] makefile: fix DESTDIR usage
+
+DESTDIR is not supposed to be set inside other variables. It is
+standard to have this variable in install/uninstall rules, so it
+can be reliably set separately no matter what other variables are set
+to.
+This also avoids potential bugs with setting SONAME or seds on
+installed files (like pkgconfig) which then might include the
+temporary DESTDIR directory.
+
+DESTDIR is really just for installing into a temporary directory or
+a chroot, mostly used by package managers.
+---
+ Makefile | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 33c8ba0..76153a0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -55,7 +55,7 @@ CFLAGS_LIB = $(CFLAGS_FAST) -fPIC
+ LDFLAGS_LIB = $(LDFLAGS) -shared
+ 
+ INSTALL ?= install
+-PREFIX ?= $(DESTDIR)/usr/local
++PREFIX ?= /usr/local
+ LIBDIR = $(PREFIX)/lib
+ INCLUDEDIR = $(PREFIX)/include
+ 
+@@ -123,19 +123,19 @@ tags: http_parser.c http_parser.h test.c
+ 	ctags $^
+ 
+ install: library
+-	$(INSTALL) -D  http_parser.h $(INCLUDEDIR)/http_parser.h
+-	$(INSTALL) -D $(SONAME) $(LIBDIR)/$(SONAME)
+-	ln -s $(LIBDIR)/$(SONAME) $(LIBDIR)/libhttp_parser.$(SOEXT)
++	$(INSTALL) -D  http_parser.h $(DESTDIR)$(INCLUDEDIR)/http_parser.h
++	$(INSTALL) -D $(SONAME) $(DESTDIR)$(LIBDIR)/$(SONAME)
++	ln -s $(LIBDIR)/$(SONAME) $(DESTDIR)$(LIBDIR)/libhttp_parser.$(SOEXT)
+ 
+ install-strip: library
+-	$(INSTALL) -D  http_parser.h $(INCLUDEDIR)/http_parser.h
+-	$(INSTALL) -D -s $(SONAME) $(LIBDIR)/$(SONAME)
+-	ln -s $(LIBDIR)/$(SONAME) $(LIBDIR)/libhttp_parser.$(SOEXT)
++	$(INSTALL) -D  http_parser.h $(DESTDIR)$(INCLUDEDIR)/http_parser.h
++	$(INSTALL) -D -s $(SONAME) $(DESTDIR)$(LIBDIR)/$(SONAME)
++	ln -s $(LIBDIR)/$(SONAME) $(DESTDIR)$(LIBDIR)/libhttp_parser.$(SOEXT)
+ 
+ uninstall:
+-	rm $(INCLUDEDIR)/http_parser.h
+-	rm $(LIBDIR)/$(SONAME)
+-	rm $(LIBDIR)/libhttp_parser.so
++	rm $(DESTDIR)$(INCLUDEDIR)/http_parser.h
++	rm $(DESTDIR)$(LIBDIR)/$(SONAME)
++	rm $(DESTDIR)$(LIBDIR)/libhttp_parser.so
+ 
+ clean:
+ 	rm -f *.o *.a tags test test_fast test_g \
+-- 
+2.6.1
+

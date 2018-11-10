@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pesa@gentoo.org</email>
+		<name>Davide Pesavento</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<use>
+		<flag name="android">Build plugin for Android devices</flag>
+		<flag name="autotools">Enable autotools project manager plugin</flag>
+		<flag name="baremetal">Build plugin for bare metal devices</flag>
+		<flag name="bazaar">Add support for <pkg>dev-vcs/bzr</pkg> version control system</flag>
+		<flag name="clangcodemodel">Build clang-based code model and refactoring plugins</flag>
+		<flag name="clangstaticanalyzer">Build clang-based static analyzer plugin</flag>
+		<flag name="clearcase">Add support for IBM ClearCase version control system (requires manual installation of ClearCase client)</flag>
+		<flag name="cmake">Enable cmake project manager plugin</flag>
+		<flag name="designer">Build widget designer plugin</flag>
+		<flag name="glsl">Enable GLSL source code editor</flag>
+		<flag name="ios">Build plugin for Apple iOS devices</flag>
+		<flag name="mercurial">Add support for <pkg>dev-vcs/mercurial</pkg> version control system</flag>
+		<flag name="modeling">Enable graphical model editor</flag>
+		<flag name="nim">Enable Nim source code editor</flag>
+		<flag name="perforce">Add support for Perforce version control system (requires manual installation of Perforce client)</flag>
+		<flag name="python">Enable Python source code editor</flag>
+		<flag name="qbs">Enable QBS project manager plugin</flag>
+		<flag name="qnx">Build plugin for QNX devices</flag>
+		<flag name="scxml">Enable graphical SCXML editor</flag>
+		<flag name="systemd">Add support for retrieving application output from journald</flag>
+		<flag name="valgrind">Add support for memory debugging using <pkg>dev-util/valgrind</pkg></flag>
+		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> to view documentation</flag>
+		<flag name="winrt">Build plugin for WinRT devices</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<doc>https://doc.qt.io/qtcreator/</doc>
+	</upstream>
+</pkgmetadata>

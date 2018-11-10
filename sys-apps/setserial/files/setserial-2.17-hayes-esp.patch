@@ -1,0 +1,15 @@
+recent versions of linux have dropped the hayes esp driver
+
+http://bugs.gentoo.org/309883
+
+--- a/setserial.c
++++ b/setserial.c
+@@ -21,6 +21,8 @@
+ #endif
+ #ifdef HAVE_LINUX_HAYESESP_H
+ #include <linux/hayesesp.h>
++#else
++#undef TIOCGHAYESESP
+ #endif
+ #include <linux/serial.h>
+ 

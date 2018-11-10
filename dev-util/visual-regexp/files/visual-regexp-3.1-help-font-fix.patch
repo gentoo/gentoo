@@ -1,0 +1,32 @@
+diff -ur a/visual_regexp.tcl b/visual_regexp.tcl
+--- a/visual_regexp.tcl	2013-11-10 01:49:14.987065220 +0100
++++ b/visual_regexp.tcl	2013-11-10 01:49:04.177341077 +0100
+@@ -740,10 +740,13 @@
+ 	frame .help.text;
+ 
+ 	if {$tcl_platform(platform) == "windows"} {
+-		text .help.text.t -borderwidth 2 -relief groove -font {Courier 10} -yscrollcommand [list .help.text.sy set];
++        set hfont {Courier 10}
++        set hbfont {Courier 10 bold}
+ 	} else {
+-		text .help.text.t -borderwidth 2 -relief groove -yscrollcommand [list .help.text.sy set];
++        set hfont {9x15}
++        set hbfont {9x15bold}
+ 	}
++    text .help.text.t -borderwidth 2 -relief groove -font $hfont -yscrollcommand [list .help.text.sy set];
+ 
+ 	scrollbar	.help.text.sy \
+ 		-command			".help.text.t yview" \
+@@ -755,10 +758,10 @@
+ 
+ 	pack .help.text -side top -fill both -expand 1 -padx 20
+ 
+-	.help.text.t tag configure bold -font "[.help.text.t cget -font] bold"
++	.help.text.t tag configure bold -font $hbfont
+ 	.help.text.t insert 1.0 "Version:" bold " $::version
+ 
+-" normal "Usage:" bold " tkregexp <sampleFile>
++" normal "Usage:" bold " [file tail $::argv0] <sampleFile>
+ 
+ " normal "Key bindings:" bold " Alt-q               exit
+               Alt-a               toggle 'all' flag

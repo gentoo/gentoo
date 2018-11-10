@@ -1,0 +1,20 @@
+--- dhcp_probe-1.3.0/doc/dhcp_probe.8.orig	2009-11-19 18:27:47.000000000 +0100
++++ dhcp_probe-1.3.0/doc/dhcp_probe.8	2009-11-19 18:28:50.000000000 +0100
+@@ -141,7 +141,7 @@
+ libraries.
+ .SH OPTIONS
+ .TP
+-.IB \-c \ config_file
++.BI \-c \ config_file
+ Specifies the configuration file.
+ If not specified, this defaults to
+ .BR /etc/dhcp_probe.cf .
+@@ -253,7 +253,7 @@
+ .B \-v
+ Display the program's version number, then exit.
+ .TP
+-.IB \-w \ cwd
++.BI \-w \ cwd
+ Specifies the working directory; shortly after starting the
+ program changes its current working directory to this.
+ If not specified, this defaults to

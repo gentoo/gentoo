@@ -1,0 +1,11 @@
+Index: meterbridge-0.9.3/src/Makefile.am
+===================================================================
+--- meterbridge-0.9.3.orig/src/Makefile.am
++++ meterbridge-0.9.3/src/Makefile.am
+@@ -1,5 +1,5 @@
+ #CFLAGS = -Wall -O3 $(SDL_CFLAGS) $(JACK_CFLAGS) -DPKG_DATA_DIR=\"$(pkgdatadir)\"
+-CFLAGS = -Wall -g $(SDL_CFLAGS) $(JACK_CFLAGS) -DPKG_DATA_DIR=\"$(pkgdatadir)\"
++AM_CFLAGS = -Wall $(SDL_CFLAGS) $(JACK_CFLAGS) -DPKG_DATA_DIR=\"$(pkgdatadir)\"
+ 
+ bin_PROGRAMS = meterbridge
+ 

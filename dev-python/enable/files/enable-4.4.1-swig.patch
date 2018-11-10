@@ -1,0 +1,93 @@
+From f0e399174c5f55eb3a72860c620fdd5193ad57da Mon Sep 17 00:00:00 2001
+From: Jonathan Stickel <jjstickel@gmail.com>
+Date: Wed, 25 Mar 2015 14:05:01 -0600
+Subject: [PATCH] fixes for recent swig
+
+---
+ kiva/agg/src/affine_matrix.i | 4 ++--
+ kiva/agg/src/constants.i     | 4 ++--
+ kiva/agg/src/hit_test.i      | 4 ++--
+ kiva/agg/src/rgba.i          | 4 ++--
+ 4 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/kiva/agg/src/affine_matrix.i b/kiva/agg/src/affine_matrix.i
+index 2f30e51..7c05a6a 100644
+--- a/kiva/agg/src/affine_matrix.i
++++ b/kiva/agg/src/affine_matrix.i
+@@ -157,7 +157,7 @@ namespace agg24
+     };
+ };
+ 
+-%pythoncode {
++%pythoncode %{
+ def is_sequence(arg):
+     try:
+         len(arg)
+@@ -184,7 +184,7 @@ class AffineMatrix(_AffineMatrix):
+         """
+         self.multiply(other)
+         return self
+-}
++%}
+ 
+ %extend agg24::trans_affine
+ {
+diff --git a/kiva/agg/src/constants.i b/kiva/agg/src/constants.i
+index b680cae..78f9d0c 100644
+--- a/kiva/agg/src/constants.i
++++ b/kiva/agg/src/constants.i
+@@ -44,7 +44,7 @@
+ unsigned path_cmd(unsigned c);
+ unsigned path_flags(unsigned c);
+ 
+-%pythoncode {
++%pythoncode %{
+ 
+ #----------------------------------------------------------------------------
+ #
+@@ -141,4 +141,4 @@ interp_enum_map = {}
+ for key,value in interp_string_map.items():
+     interp_enum_map[value] = key
+ 
+-}
++%}
+diff --git a/kiva/agg/src/hit_test.i b/kiva/agg/src/hit_test.i
+index 76de0c9..2cfb1cf 100644
+--- a/kiva/agg/src/hit_test.i
++++ b/kiva/agg/src/hit_test.i
+@@ -22,7 +22,7 @@ namespace kiva
+ }
+ 
+ %pythoncode
+-{
++%{
+ from numpy import shape, transpose, zeros, rank, reshape, int32
+ 
+ def points_in_polygon(pts, poly_pts, use_winding=False):
+@@ -92,4 +92,4 @@ def points_in_polygon(pts, poly_pts, use_winding=False):
+     else:
+         _agg.points_in_polygon(pts, poly_pts, results)
+     return results    
+-}
++%}
+diff --git a/kiva/agg/src/rgba.i b/kiva/agg/src/rgba.i
+index f7624b8..183014f 100644
+--- a/kiva/agg/src/rgba.i
++++ b/kiva/agg/src/rgba.i
+@@ -74,7 +74,7 @@ namespace agg24
+ }
+ 
+ 
+-%pythoncode {
++%pythoncode %{
+ def is_sequence(arg):
+     try:
+         len(arg)
+@@ -90,6 +90,6 @@ class Rgba(_Rgba):
+             if len(args) not in [3,4]:
+                 raise ValueError, "array argument must be 1x3 or 1x4"
+         _Rgba.__init__(self,*args)
+-}
++%}
+ 
+ %clear double r, double g, double b, double a;

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zoltan@sinustrom.info</email>
+		<name>Zoltan Puskas</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The KiCad symbol libraries are the individual .lib files, with the
+		corresponding .dcm files containing symbol metadata. These symbols are
+		best used in combination with the official footprint libs.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">kicad/kicad-symbols</remote-id>
+	</upstream>
+</pkgmetadata>

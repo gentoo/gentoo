@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
+<use>
+	<flag name="boot">Also install to /boot instead of just /usr/share/memtest86+/</flag>
+	<flag name="floppy">Install a script to create floppy disks containing memtest86+ binaries.</flag>
+	<flag name="iso">Compile an ISO image</flag>
+	<flag name="serial">Compile with serial console support</flag>
+</use>
+</pkgmetadata>

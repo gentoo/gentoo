@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription>
+	The Blowfish implementation in Java, provides very fast ECB and CBC encryption.
+	Comes with the BlowfishEasy class for simple string encryption, plus a solution
+	for streaming, both are binary compatible to Blowfish.NET. Additionally this
+	package includes its own SHA-1 class, all sources, JUnit test cases, demos and
+	JavaDocs.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">blowfishj</remote-id>
+	</upstream>
+</pkgmetadata>

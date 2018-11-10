@@ -1,0 +1,30 @@
+Please do not disable this patch.
+All commands will be non-executable.
+Abort trap: 6 (core dumped) is displayed...
+
+Details see Gentoo Bug #511698.
+https://bugs.gentoo.org/show_bug.cgi?id=511698
+
+diff --git a/lib/libc/Makefile b/lib/libc/Makefile
+index 1cc23b7..7dd458e 100644
+--- a/lib/libc/Makefile
++++ b/lib/libc/Makefile
+@@ -149,6 +149,6 @@ CWARNFLAGS:=	${.IMPSRC:Ngdtoa_*.c:C/^.+$/${CWARNFLAGS}/:C/^$/-w/}
+ # in the future to circumvent this.
+ SSP_CFLAGS:=	${SSP_CFLAGS:S/^-fstack-protector-all$/-fstack-protector/}
+ # Disable stack protection for SSP symbols.
+-SSP_CFLAGS:=	${.IMPSRC:N*/stack_protector.c:C/^.+$/${SSP_CFLAGS}/}
++SSP_CFLAGS:=	${.IMPSRC:N*/stack_protector.c:C/^.+$/${SSP_CFLAGS}/:C/^$/-fno-stack-protector/}
+ # Generate stack unwinding tables for cancellation points
+ CANCELPOINTS_CFLAGS:=	${.IMPSRC:Mcancelpoints_*:C/^.+$/${CANCELPOINTS_CFLAGS}/:C/^$//}
+diff --git a/lib/csu/Makefile.inc b/lib/csu/Makefile.inc
+index f92d87d..7a3a2f3 100644
+--- a/lib/csu/Makefile.inc
++++ b/lib/csu/Makefile.inc
+@@ -1,5 +1,5 @@
+ # $FreeBSD: release/9.1.0/lib/csu/Makefile.inc 204757 2010-03-05 13:29:05Z uqs $
+ 
+-SSP_CFLAGS=
++SSP_CFLAGS= -fno-stack-protector
+
+ .include "../Makefile.inc"

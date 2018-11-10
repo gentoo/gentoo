@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Shelly provides convenient systems programming in Haskell,
+		similar in spirit to POSIX shells. Shelly:
+		
+		* is aimed at convenience and getting things done rather than
+		being a demonstration of elegance.
+		
+		* has detailed and useful error messages
+		
+		* maintains its own environment, making it thread-safe.
+		
+		* is modern, using Text and system-filepath/system-fileio
+		
+		Shelly is originally forked from the Shellish package.
+		
+		See the shelly-extra package for additional functionality.
+		
+		An overview is available in the README: &lt;https://github.com/yesodweb/Shelly.hs/blob/master/README.md&gt;
+	</longdescription>
+	<upstream>
+		<remote-id type="github">yesodweb/Shelly.hs</remote-id>
+	</upstream>
+	<use>
+		<flag name="lifted">run the tests against Shelly.Lifted</flag>
+	</use>
+</pkgmetadata>

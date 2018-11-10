@@ -1,0 +1,13 @@
+diff --git a/apache/mod_mapserver.c b/apache/mod_mapserver.c
+index 7949ddf..c8dbde6 100644
+--- a/apache/mod_mapserver.c
++++ b/apache/mod_mapserver.c
+@@ -40,7 +40,7 @@ static int
+ msIO_apacheError (void *cbData, void *data, int byteCount)
+ {
+   /* error reporting is done through the log file... */
+-  ap_log_error (APLOG_MARK, APLOG_ERR, 0, NULL, (char*) data);
++  ap_log_error (APLOG_MARK, APLOG_ERR, 0, NULL, "%s", (char*) data);
+   return strlen ((char*) data);
+ }
+ 

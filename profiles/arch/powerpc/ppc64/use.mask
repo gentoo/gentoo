@@ -1,0 +1,31 @@
+### THIS FILE IS ONLY FOR PACKAGES MASKED ON BOTH 64-BIT AND 32-BIT USERLAND!!!
+
+# Michał Górny <mgorny@gentoo.org> (27 Jun 2014)
+# Unmask multilib flag for the ABI.
+-abi_ppc_64
+
+# Samuli Suominen <ssuominen@gentoo.org> (24 Nov 2012)
+# TODO: Keyword and stabilize media-gfx/opencolorio and media-libs/opencv
+colorio
+opencv
+
+# Brent Baude <ranger@gentoo.org> (3 Oct 2008)
+# Masking xindy use flag for ppc64
+xindy
+
+# 01 Oct 2008   Brent Baude <ranger@gentoo.org>
+# # Masking battery USE for bug 238770
+battery
+
+# Unmask the flag which corresponds to ARCH.
+-ppc64
+
+# Unmask the flag for Playstation 3
+-ps3
+
+# mask custom-cpuopts and cpudetection on ppc64 for mplayer - bug #234629
+cpudetection
+
+# Michał Górny <mgorny@gentoo.org> (4 May 2013)
+# Unmask systemd since it is keyworded here.
+-systemd

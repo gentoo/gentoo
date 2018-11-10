@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+  - Build file for the JUnit-addons Project.
+  -
+  - This script should be started with the following command line :
+  -
+  -     ant <target>
+  -
+  - Run "ant -projecthelp" to get a list of available targets.
+  -
+  - Take from upstream CVS and modified a little for Gentoo:
+  - Version: Revision: 1.15 Date: 2003/04/09 04:41:10 
+  - Author: Vladimir R. Bossicard (vbossica@users.sourceforge.net)
+  -->
+
+<project name="junit-addons" default="build" basedir=".">
+
+    <property file="build.properties" />
+    <property file="common.properties" />
+
+    <!-- directories settings -->
+
+    <property name="src" value="src" />
+    <property name="main.src" value="src/main" />
+    <property name="test.src" value="src/test" />
+    <property name="example.src" value="src/example" />
+
+    <property name="build.dest" value="build" />
+    <property name="api.dest" value="${build.dest}/api" />
+    <property name="classes.dest" value="${build.dest}/classes" />
+    <property name="test.classes.dest" value="${build.dest}/classes-test" />
+    <property name="example.classes.dest" value="${build.dest}/classes-example" />
+    <property name="dist.dest" value="dist" />
+
+    <!-- miscellaneous settings -->
+
+    <property name="compilation.debug" value="on" />
+    <property name="compilation.deprecation" value="off" />
+    <property name="compilation.verbose" value="off" />
+
+    <!--
+      - Initializes the build and check if all libraries are available.
+      -->
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${build.dest}" />
+        <mkdir dir="${classes.dest}" />
+        <mkdir dir="${test.classes.dest}" />
+        <mkdir dir="${example.classes.dest}" />
+        <mkdir dir="${api.dest}" />
+        <mkdir dir="${dist.dest}" />
+    </target>
+
+    <path id="libraries">
+        <pathelement location="${jdom.jar}" />
+        <pathelement location="${jaxen.jar}" />
+        <pathelement location="${saxpath.jar}" />
+        <pathelement location="${ant.jar}" />
+        <pathelement location="${junit.jar}" />
+        <pathelement location="${xerces.jar}" />
+        <pathelement location="${xml-apis.jar}" />
+        <pathelement location="${commons-logging.jar}" />
+    </path>
+
+    <!--
+      - Compiles the source code to the build dir
+      - Copy all other resources to the build dir
+      - which are needed to run the application alone
+      -->
+    <target name="build"
+            depends="init"
+            description="compiles the junit-addons classes">
+        <javac srcdir="${main.src}"
+               destdir="${classes.dest}"
+               debug="${compilation.debug}"
+               verbose="${compilation.verbose}"
+               deprecation="${compilation.deprecation}">
+            <classpath>
+                <path refid="libraries"/>
+            </classpath>
+        </javac>
+
+        <javac srcdir="${example.src}"
+               destdir="${example.classes.dest}"
+               debug="${compilation.debug}"
+               verbose="${compilation.verbose}"
+               deprecation="${compilation.deprecation}">
+            <classpath>
+                <pathelement location="${classes.dest}" />
+                <path refid="libraries"/>
+            </classpath>
+        </javac>
+
+        <javac srcdir="${test.src}"
+               destdir="${test.classes.dest}"
+               debug="${compilation.debug}"
+               verbose="${compilation.verbose}"
+               deprecation="${compilation.deprecation}">
+            <classpath>
+                <pathelement location="${classes.dest}" />
+                <pathelement location="${example.classes.dest}" />
+                <path refid="libraries"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="test"
+            depends="build"
+            description="tests the junit-addons classes">
+        <java classname="junitx.runner.TestRunner" fork="yes">
+            <jvmarg value="-DPropertyManager.file=${test.src}/tests.properties" />
+            <jvmarg value="-DXMLPropertyManager.file=${test.src}/tests.xml" />
+            <arg line="-verbose" />
+            <arg line="-runner.properties /home/vladimir/projects/junit-addons-runner/src/main/conf/runner.properties" />
+            <arg line="-test.properties ${test.src}/tests.properties" />
+            <arg line="-class AllTests" />
+            <classpath>
+                <pathelement location="${classes.dest}" />
+                <pathelement location="${test.classes.dest}" />
+                <pathelement location="${example.classes.dest}" />
+                <pathelement location="${example.src}" />
+                <pathelement location="${junit-addons-runner.jar}" />
+                <path refid="libraries"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="test-old"
+            depends="build">
+        <java classname="junit.textui.TestRunner" fork="yes">
+            <arg line="-class AllTests" />
+            <jvmarg value="-DPropertyManager.file=${test.src}/tests.properties" />
+            <jvmarg value="-DXMLPropertyManager.file=${test.src}/tests.xml" />
+            <classpath>
+                <pathelement location="${classes.dest}" />
+                <pathelement location="${test.classes.dest}" />
+                <pathelement location="${example.classes.dest}" />
+                <pathelement location="${example.src}" />
+                <path refid="libraries"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="example"
+            depends="build"
+            description="compiles and runs the examples">
+        <javac srcdir="${example.src}"
+               destdir="${test.classes.dest}"
+               debug="${compilation.debug}"
+               verbose="${compilation.verbose}"
+               deprecation="${compilation.deprecation}">
+            <classpath>
+                <pathelement location="${classes.dest}" />
+                <path refid="libraries"/>
+            </classpath>
+        </javac>
+        <java classname="junitx.tool.TestClassValidator" fork="yes">
+            <arg line="junitx.example.ValidationExample" />
+            <classpath>
+                <pathelement location="${classes.dest}" />
+                <pathelement location="${test.classes.dest}" />
+                <path refid="libraries"/>
+            </classpath>
+        </java>
+    </target>
+
+    <!--
+      - Generates the junit-addons API
+      -->
+    <target name="api"
+            depends="build"
+            description="generates the API">
+        <javadoc
+            packagenames="junitx.*"
+            sourcepath="${main.src}"
+            destdir="${api.dest}"
+            overview="${main.src}/overview.html"
+            author="true"
+            version="true"
+            protected="true"
+            use="false"
+            windowtitle="${project.title} v${project.version}"
+            doctitle="${project.title}, version ${project.version}&lt;br>API specification"
+            header="&lt;b>${project.title}&lt;br>version ${project.version}&lt;/b>"
+            bottom="Copyright &amp;#169; ${project.year} ${project.holder}. All Rights Reserved.">
+            <classpath>
+                <path refid="libraries"/>
+            </classpath>
+        </javadoc>
+    </target>
+
+    <!--
+      - Generates a jar archive with the content of the build directory
+      -->
+    <target name="release"
+            depends="clean, build"
+            description="Generate the junit-addons jar archive" >
+        <delete quiet="true">
+            <fileset dir="${dist.dest}/" includes="${project.name}-${project.version}.jar" />
+        </delete>
+        <jar jarfile="${dist.dest}/${project.name}-${project.version}.jar"
+            basedir="${classes.dest}" >
+            <manifest>
+                <attribute name="Implementation-Vendor"
+                           value="${project.holder}" />
+                <attribute name="Implementation-Version"
+                           value="${project.version}" />
+                <attribute name="Implementation-Title"
+                           value="${project.title}" />
+            </manifest>
+        </jar>
+        <zip zipfile="${dist.dest}/${project.name}-${project.version}.jar"
+             update="yes">
+            <zipfileset dir="." includes="LICENSE" prefix="META-INF" />
+        </zip>
+        <zip zipfile="${dist.dest}/src.jar">
+        	<zipfileset dir="${src}" excludes="**/sflogo.png" prefix="src" />
+       	</zip>
+    </target>
+
+    <!--
+      - Delete all generate directories and their content
+      -->
+    <target name="clean">
+        <delete dir="${build.dest}" quiet="true" />
+        <delete dir="${dist.dest}" quiet="true" />
+    </target>
+
+</project>

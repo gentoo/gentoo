@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <longdescription>
+    Driver for ivtv based tv tuner cards, currently supports Hauppauge 
+    PVR-[23]50 cards
+    </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">ivtv</remote-id>
+  </upstream>
+</pkgmetadata>

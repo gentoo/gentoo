@@ -1,0 +1,17 @@
+# Patch from Teemu Likonen <tlikonen@iki.fi>
+# to change the default sequence to use utf8 instead of iso8859-1
+--- detox-1.2.0/detoxrc~	2006-07-03 19:45:54.000000000 +0300
++++ detox-1.2.0/detoxrc	2009-05-28 15:34:26.497832449 +0300
+@@ -32,10 +32,10 @@
+ #
+ 
+ #
+-# Basically just ISO8859_1
++# Basically just utf_8
+ #
+ sequence default {
+-	iso8859_1;
++	utf_8;
+ 	safe;
+ 	wipeup;
+ };

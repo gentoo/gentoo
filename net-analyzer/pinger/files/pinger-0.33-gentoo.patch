@@ -1,0 +1,73 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -2,7 +2,12 @@
+ 
+ bin_PROGRAMS = pinger
+ man_MANS = pinger.1
++if HAVE_GTK_2
+ bin_SCRIPTS = gtkpinger
++endif
++if HAVE_GTK_3
++bin_SCRIPTS = gtkpinger
++endif
+ 
+   P_SOURCES = timefunc.c parse.c ping.c pinger.c dns.c log.c timefunc.h parse.h ping.h globals.h fake_gtk.h dns.h log.h
+ if HAVE_CURSES
+--- a/configure.in
++++ b/configure.in
+@@ -54,34 +54,46 @@
+ AC_HEADER_TIME
+ AM_INADDRT
+ 
++PKG_PROG_PKG_CONFIG()
++
+ dnl GTK3/GTK2 tests
+ dnl Note: PKG_CHECK_MODULES cannot be used conditionaly due to sharing the tests and depending on it
+ AC_ARG_ENABLE([gtk], AS_HELP_STRING([--enable-gtk[[[=version]]]], [Build with GTK+ interface. Supported versions are gtk2 and gtk3. Default is gtk2.]))
+-PKG_CHECK_MODULES(GTK, [ gtk+-2.0 >= 2.4 ], HAVE_GTK_2=1; )
+-AC_SUBST(GTK_CFLAGS)
+-AC_SUBST(GTK_LIBS)
+-PKG_CHECK_MODULES(GTK3, [ gtk+-3.0 >= 3.12 ], HAVE_GTK_3=1)
+-AC_SUBST(GTK3_CFLAGS)
+-AC_SUBST(GTK3_LIBS)
+ 
+ if test "x$enableval" = "x" || test "x$enableval" = "xgtk2"; then
++PKG_CHECK_MODULES(GTK, [ gtk+-2.0 >= 2.4 ], HAVE_GTK_2=1,[])
++AC_SUBST(GTK_CFLAGS)
++AC_SUBST(GTK_LIBS)
+ CFLAGS="$CFLAGS $GTK_CFLAGS"
+ LIBS="$LIBS $GTK_LIBS"
+ HAVE_GTK_3=0
+ AC_DEFINE(HAVE_GTK_2, 1, Found GTK+ 2.x support)
+ elif test "x$enableval" = "xgtk3"; then
++PKG_CHECK_MODULES(GTK3, [ gtk+-3.0 >= 3.12 ], HAVE_GTK_3=1,[])
++AC_SUBST(GTK3_CFLAGS)
++AC_SUBST(GTK3_LIBS)
+ CFLAGS="$CFLAGS $GTK3_CFLAGS"
+ LIBS="$LIBS $GTK3_LIBS"
+ HAVE_GTK_2=0
+ AC_DEFINE(HAVE_GTK_3, 1, Found GTK+ 3.x support)
+ else
+-echo "Sorry, the value $enableval is not supported as argument of --enable-gtk."
+-exit 1
++HAVE_GTK_2=0
++HAVE_GTK_3=0
+ fi
+ 
+-dnl Check for additional external libraries etc..
++AC_ARG_ENABLE(ncurses, [  --enable-ncurses        enable ncurses support],
++	[if test "$enableval" = no; then no_ncurses=yes; fi])
++if test x$no_ncurses != xyes; then
++PKG_CHECK_MODULES(ncurses, ncurses,[
++	AC_DEFINE([HAVE_LIBNCURSES], [1], found ncurses library)
++	HAVE_CURSES=1
++	LIBS="$LIBS $ncurses_LIBS"
++	CFLAGS="$CFLAGS $ncurses_CFLAGS"],
+ AC_CHECK_LIB(ncurses, initscr, HAVE_CURSES=1; LIBS="$LIBS -lncurses";
+ 	AC_DEFINE([HAVE_LIBNCURSES], [1], found ncurses library))
++	)
++fi
++dnl Check for additional external libraries etc..
+ AC_CHECK_LIB(intl, libintl_gettext, LIBS="$LIBS -lintl")
+ AC_CHECK_LIB(pthread, pthread_create, LIBS="$LIBS -lpthread", AC_MSG_ERROR(Pthread required and not found. Please check if you have libpthread in your system and specify using CFLAGS and LDFLAGS when configure))
+ 

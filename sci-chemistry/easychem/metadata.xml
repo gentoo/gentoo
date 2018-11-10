@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<longdescription>
+		EasyChem is a program designed to draw chemical molecules, written under
+		Linux using Gtk+ 2.4. It is implemented with a strong focus on producing
+		press quality molecules. Easychem can be a little more difficult to learn to
+		use, but when mastered it can be very fast and powerful. It can draw
+		ornaments easily, and exports to EPS with LaTeX fonts among other things.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">easychem</remote-id>
+	</upstream>
+</pkgmetadata>

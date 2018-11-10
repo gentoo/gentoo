@@ -1,0 +1,55 @@
+Author: Justin Pryzby <justinpryzby@users.sf.net>
+Description: (guess) Use mmap only if it exists.
+--- a/src/fits/fitsbody.c
++++ b/src/fits/fitsbody.c
+@@ -64,9 +64,12 @@
+  ***/
+ PIXTYPE	*alloc_body(tabstruct *tab, void (*func)(PIXTYPE *ptr, int npix))
+   {
++#ifdef	HAVE_MMAP
+    FILE		*file;
+    PIXTYPE	*buffer;
+-   size_t	npix, size, sizeleft, spoonful;
++   size_t	sizeleft, spoonful;
++#endif
++   size_t	npix, size;
+ 
+   if (!body_ramflag)
+     {
+@@ -87,7 +90,9 @@
+ /* Decide if the data will go in physical memory or on swap-space */
+   npix = tab->tabsize/tab->bytepix;
+   size = npix*sizeof(PIXTYPE);
++#if !HAVE_MMAP
+   if (size < body_ramleft)
++#endif
+     {
+ /*-- There should be enough RAM left: try to do a malloc() */
+     if ((tab->bodybuf = malloc(size)))
+@@ -105,6 +110,7 @@
+       tab->bodybuf = NULL;
+     }
+ 
++#if HAVE_MMAP
+   if (size < body_vramleft)
+     {
+ /*-- Convert and copy the data to a swap file, and mmap() it */
+@@ -144,6 +150,7 @@
+       return NULL;
+     return (PIXTYPE *)tab->bodybuf;
+     }
++#endif
+ 
+ /* If no memory left at all: forget it! */
+   return NULL;
+@@ -270,8 +277,10 @@
+     size = (tab->tabsize/tab->bytepix)*sizeof(PIXTYPE);
+     if (tab->swapflag)
+       {
++#if HAVE_MMAP
+       if (munmap(tab->bodybuf, size))
+         warning("Can't unmap ", tab->cat->filename);
++#endif
+       tab->swapflag = 0;
+       tab->bodybuf = NULL;
+       body_vramleft += size;

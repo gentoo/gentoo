@@ -1,0 +1,128 @@
+diff --git a/src/Crypt/SHA256.hs b/src/Crypt/SHA256.hs
+index 69a8a4c..606f2ad 100644
+--- a/src/Crypt/SHA256.hs
++++ b/src/Crypt/SHA256.hs
+@@ -20,9 +20,10 @@ import Numeric (showHex)
+ import Foreign.C.String ( withCString )
+ import Data.ByteString.Unsafe (unsafeUseAsCStringLen)
+ import qualified Data.ByteString as B
++import qualified System.IO.Unsafe as U
+ 
+ sha256sum :: B.ByteString -> String
+-sha256sum p = unsafePerformIO $
++sha256sum p = U.unsafePerformIO $
+               withCString (take 64 $ repeat 'x') $ \digestCString ->
+               unsafeUseAsCStringLen p $ \(ptr,n) ->
+               do let digest = castPtr digestCString :: Ptr Word8
+diff --git a/src/Darcs/Commands/Get.hs b/src/Darcs/Commands/Get.hs
+index e450d28..6b51915 100644
+--- a/src/Darcs/Commands/Get.hs
++++ b/src/Darcs/Commands/Get.hs
+@@ -157,7 +157,8 @@ copyRepoAndGoToChosenVersion opts repodir rfsource = do
+   copyRepo
+   withRepository opts ((RepoJob $ \repository -> goToChosenVersion repository opts) :: RepoJob ())
+   putInfo opts $ text "Finished getting."
+-      where copyRepo =
++      where copyRepo :: IO ()
++            copyRepo =
+                 withRepository opts $ RepoJob $ \repository ->
+                   if formatHas HashedInventory rfsource
+                    then do
+diff --git a/src/Darcs/Global.hs b/src/Darcs/Global.hs
+index 9792bf0..e17f071 100644
+--- a/src/Darcs/Global.hs
++++ b/src/Darcs/Global.hs
+@@ -60,8 +60,9 @@ module Darcs.Global
+ import Control.Applicative ( (<$>), (<*>) )
+ import Control.Monad ( when )
+ import Control.Concurrent.MVar
+-import Control.Exception.Extensible ( bracket_, catch, catchJust, SomeException
+-                                    , block, unblock
++import Control.Exception.Extensible as E
++                                    ( bracket_, catch, catchJust, SomeException
++                                    , mask
+                                     )
+ import Data.IORef ( IORef, newIORef, readIORef, writeIORef )
+ import Data.IORef ( modifyIORef )
+@@ -106,12 +107,12 @@ withAtexit prog =
+         exit
+         prog
+   where
+-    exit = block $ do
++    exit = E.mask $ \restore -> do
+         Just actions <- swapMVar atexitActions Nothing
+         -- from now on atexit will not register new actions
+-        mapM_ runAction actions
+-    runAction action =
+-        catch (unblock action) $ \(exn :: SomeException) -> do
++        mapM_ (runAction restore) actions
++    runAction restore action =
++        catch (restore action) $ \(exn :: SomeException) -> do
+             hPutStrLn stderr $ "Exception thrown by an atexit registered action:"
+             hPutStrLn stderr $ show exn
+ 
+diff --git a/src/Darcs/SignalHandler.hs b/src/Darcs/SignalHandler.hs
+index ac0f526..d0ef162 100644
+--- a/src/Darcs/SignalHandler.hs
++++ b/src/Darcs/SignalHandler.hs
+@@ -26,8 +26,8 @@ import Prelude hiding ( catch )
+ import System.IO.Error ( isUserError, ioeGetErrorString, ioeGetFileName )
+ import System.Exit ( exitWith, ExitCode ( ExitFailure ) )
+ import Control.Concurrent ( ThreadId, myThreadId )
+-import Control.Exception.Extensible
+-            ( catch, throw, throwTo, block, unblock,
++import Control.Exception.Extensible as E
++            ( catch, throw, throwTo, mask,
+               Exception(..), SomeException(..), IOException )
+ import System.Posix.Files ( getFdStatus, isNamedPipe )
+ import System.Posix.IO ( stdOutput )
+@@ -128,8 +128,8 @@ catchUserErrors comp handler = catch comp handler'
+          | otherwise                             = throw ioe
+ 
+ withSignalsBlocked :: IO a -> IO a
+-withSignalsBlocked job = block (job >>= \r ->
+-                           unblock(return r) `catchSignal` couldnt_do r)
++withSignalsBlocked job = E.mask $ \restore -> (job >>= \r ->
++                           restore (return r) `catchSignal` couldnt_do r)
+     where couldnt_do r s | s == sigINT = oops "interrupt" r
+                          | s ==  sigHUP = oops "HUP" r
+                          | s ==  sigABRT = oops "ABRT" r
+diff --git a/src/Darcs/Test/Patch/Info.hs b/src/Darcs/Test/Patch/Info.hs
+index fd27fb3..b35cfef 100644
+--- a/src/Darcs/Test/Patch/Info.hs
++++ b/src/Darcs/Test/Patch/Info.hs
+@@ -28,7 +28,6 @@ import Data.Maybe ( isNothing )
+ import Data.Text as T ( find, any )
+ import Data.Text.Encoding ( decodeUtf8With )
+ import Data.Text.Encoding.Error ( lenientDecode )
+-import Foreign ( unsafePerformIO )
+ import Test.QuickCheck ( Arbitrary(arbitrary), oneof, listOf, choose, shrink
+                        , Gen )
+ import Test.Framework.Providers.QuickCheck2 ( testProperty )
+@@ -39,6 +38,8 @@ import Darcs.Patch.Info ( PatchInfo(..), patchinfo,
+                           piLog, piAuthor, piName )
+ import ByteStringUtils ( decodeLocale, packStringToUTF8, unpackPSFromUTF8 )
+ 
++import qualified System.IO.Unsafe as U
++
+ testSuite :: Test
+ testSuite = testGroup "Darcs.Patch.Info"
+   [ metadataDecodingTest
+@@ -86,7 +87,7 @@ instance Arbitrary UTF8PatchInfo where
+         sa <- shrink (piAuthor pi)
+         sl <- shrink (filter (not . isPrefixOf "Ignore-this:") (piLog pi))
+         return (UTF8PatchInfo
+-                   (unsafePerformIO $ patchinfo sn
++                   (U.unsafePerformIO $ patchinfo sn
+                                           (BC.unpack (_piDate pi)) sa sl))
+ 
+ instance Arbitrary UTF8OrNotPatchInfo where
+@@ -101,7 +102,7 @@ arbitraryUTF8Patch =
+        d <- arbitrary
+        a <- asString `fmap` arbitrary
+        l <- (lines . asString) `fmap` arbitrary
+-       return $ unsafePerformIO $ patchinfo n d a l
++       return $ U.unsafePerformIO $ patchinfo n d a l
+ 
+ -- | Generate arbitrary patch metadata that has totally arbitrary byte strings
+ --   as its name, date, author and log.

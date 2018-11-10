@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Chordii is a fork of Chord, a program very popular several years
+		ago and most famous for its trendsetting 'ChordPro' music file format.
+
+		Chordii's purpose is to provide guitar players with a tool to produce
+		good looking, self-descriptive music sheets from text files.
+
+		Chordii reads a text file containing the lyrics of a song, the chords
+		to be played, their description and some other optional data to
+		produce a PostScript document that includes:
+
+			* Centered titles
+			* Chord names above the words
+			* Graphical representation of the chords at the end of the songs
+			* Transposition
+			* Multiple columns on a page
+			* Index of a songbook
+			* Multiple logical pages per physical pages (1, 2 or 4)
+			* Configurable fonts for the lyrics and the chord names
+			* Multiple songs inside one file
+			* The complete ISO 8859-1 character set
+			* Chorus marking
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">chordii</remote-id>
+	</upstream>
+</pkgmetadata>

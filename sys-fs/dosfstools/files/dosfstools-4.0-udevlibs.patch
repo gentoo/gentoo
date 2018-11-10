@@ -1,0 +1,36 @@
+From 7538785afd751de509cd00740adf57fc6d730e33 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 10 May 2016 09:47:57 +0200
+Subject: [PATCH] Don't link to udev via LDFLAGS. There's LDADD for such a
+ task.
+
+See also:
+https://www.gnu.org/software/automake/manual/html_node/Linking.html
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ src/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 3d22ba7..a15e6e7 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -34,12 +34,12 @@ mkfs_common_sources = device_info.c device_info.h \
+ mkfs_fat_SOURCES  = mkfs.fat.c msdos_fs.h $(mkfs_common_sources)
+ mkfs_fat_CPPFLAGS = -I$(srcdir)/blkdev
+ mkfs_fat_CFLAGS   = $(AM_CFLAGS) $(UDEV_CFLAGS)
+-mkfs_fat_LDFLAGS  = $(UDEV_LIBS)
++mkfs_fat_LDADD    = $(UDEV_LIBS)
+ 
+ testdevinfo_SOURCES  = testdevinfo.c $(mkfs_common_sources)
+ testdevinfo_CPPFLAGS = -I$(srcdir)/blkdev
+ testdevinfo_CFLAGS   = $(AM_CFLAGS) $(UDEV_CFLAGS)
+-testdevinfo_LDFLAGS  = $(UDEV_LIBS)
++testdevinfo_LDADD    = $(UDEV_LIBS)
+ 
+ 
+ if COMPAT_SYMLINKS
+-- 
+2.8.2
+

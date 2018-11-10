@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+Common Data Format (CDF) is a conceptual data abstraction for storing
+multi-dimensional data sets. The basic component of CDF is a software
+programming interface that is a device independent view of the CDF data
+model. The application developer is insulated from the actual physical
+file format for reasons of conceptual simplicity, device independence,
+and future expandability. CDF files created on any given platform can
+be transported to any other platform on to which CDF is ported and used
+with any CDF tools or layered applications. A more detailed introduction
+to CDF can be found in the CDF User's Guide.
+A comparison between CDF, netCDF, HDF and HDF5 is available at
+http://cdf.gsfc.nasa.gov/html/FAQ.html.
+</longdescription>
+</pkgmetadata>

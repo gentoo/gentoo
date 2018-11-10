@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		git-annex allows managing files with git, without checking the file
+		contents into git. While that may seem paradoxical, it is useful when
+		dealing with files larger than git can currently easily handle, whether due
+		to limitations in memory, checksumming time, or disk space.
+		
+		Even without file content tracking, being able to manage files with git,
+		move files around and delete files with versioned directory trees, and use
+		branches and distributed clones, are all very handy reasons to use git. And
+		annexed files can co-exist in the same git repository with regularly
+		versioned files, which is convenient for maintaining documents, Makefiles,
+		etc that are associated with annexed files but that benefit from full
+		revision control.
+	</longdescription>
+	<use>
+		<flag name="assistant">Enable git-annex assistant and watch command</flag>
+		<flag name="benchmark">Enable benchmarking</flag>
+		<flag name="concurrentoutput">Use concurrent-output library (experimental)</flag>
+		<flag name="magicmime">Use libmagic to determine file MIME types</flag>
+		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
+		<flag name="pairing">Enable pairing of git annex repositories</flag>
+		<flag name="s3">Enable Amazon S3 remote</flag>
+		<flag name="torrentparser">Use haskell torrent library to parse torrent files</flag>
+		<flag name="webapp">Enable git-annex webapp</flag>
+		<flag name="webdav">Enable webdav remote</flag>
+	</use>
+</pkgmetadata>

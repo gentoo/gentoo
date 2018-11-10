@@ -1,0 +1,40 @@
+diff -urN libxcrypt-3.0.2/src/crypt_util.c libxcrypt-3.0.2.new/src/crypt_util.c
+--- libxcrypt-3.0.2/src/crypt_util.c	2007-10-25 15:17:46.000000000 +0200
++++ libxcrypt-3.0.2.new/src/crypt_util.c	2013-02-04 12:45:20.560191479 +0100
+@@ -30,8 +30,7 @@
+ #endif
+ #include <string.h>
+ 
+-#include <bits/libc-lock.h>
+-#define __libc_lock_t pthread_mutex_t
++#include <pthread.h>
+ 
+ #ifndef STATIC
+ #define STATIC static
+@@ -265,7 +264,7 @@
+  */
+ struct crypt_data _ufc_foobar;
+ 
+-__libc_lock_define_initialized (static, _ufc_tables_lock)
++static pthread_mutex_t _ufc_tables_lock = PTHREAD_MUTEX_INITIALIZER;
+ 
+ #ifdef DEBUG
+ 
+@@ -362,7 +361,7 @@
+ #endif
+ 
+   if(small_tables_initialized == 0) {
+-    __libc_lock_lock (_ufc_tables_lock);
++    pthread_mutex_lock (&_ufc_tables_lock);
+     if(small_tables_initialized)
+       goto small_tables_done;
+ 
+@@ -471,7 +470,7 @@
+     }
+     small_tables_initialized = 1;
+ small_tables_done:
+-    __libc_lock_unlock(_ufc_tables_lock);
++    pthread_mutex_unlock (&_ufc_tables_lock);
+   }
+ 
+   /*

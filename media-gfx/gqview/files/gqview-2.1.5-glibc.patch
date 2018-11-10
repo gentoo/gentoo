@@ -1,0 +1,39 @@
+diff --git a/Makefile.in b/Makefile.in
+index 38f6b25..4d7ad2c 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -123,6 +123,7 @@ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+ INSTOBJEXT = @INSTOBJEXT@
+ INTLLIBS = @INTLLIBS@
+ LCMS_LIBS = @LCMS_LIBS@
++LIBM = @LIBM@
+ LDFLAGS = @LDFLAGS@
+ LIBOBJS = @LIBOBJS@
+ LIBS = @LIBS@
+diff --git a/configure.in b/configure.in
+index 9335493..2299b4a 100644
+--- a/configure.in
++++ b/configure.in
+@@ -52,6 +52,9 @@ fi
+ AC_SUBST(LCMS_LIBS)
+ AM_CONDITIONAL(HAVE_LCMS, test "$have_lcms" = "yes")
+ 
++AC_CHECK_LIB(m, ceil, LIBM="-lm")
++AC_SUBST(LIBM)
++
+ ALL_LINGUAS="ar be bg ca cs da de eo es et eu fi fr hu id it ja ko nl no pl pt_BR ro ru sk sl sv th tr uk vi zh_CN.GB2312 zh_TW"
+ GETTEXT_PACKAGE=$PACKAGE
+ AC_SUBST(GETTEXT_PACKAGE)
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 7ce4702..5005877 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -166,7 +166,7 @@ gqview_SOURCES = \
+ 	view_file_icon.c	\
+ 	view_file_icon.h
+ 
+-gqview_LDADD = $(GTK_LIBS) $(INTLLIBS) $(LCMS_LIBS)
++gqview_LDADD = $(GTK_LIBS) $(INTLLIBS) $(LCMS_LIBS) $(LIBM)
+ 
+ EXTRA_DIST = \
+ 	$(extra_SLIK)

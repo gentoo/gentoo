@@ -1,0 +1,132 @@
+--- a/astrotcl/Makefile.in
++++ b/astrotcl/Makefile.in
+@@ -114,7 +114,7 @@
+ RANLIB		= @RANLIB@
+ RANLIB_STUB	= @RANLIB_STUB@
+ SHLIB_CFLAGS	= @SHLIB_CFLAGS@
+-SHLIB_LD	= @SHLIB_LD@
++SHLIB_LD	= @SHLIB_LD@ $(LDFLAGS_DEFAULT)
+ SHLIB_LD_LIBS	= @SHLIB_LD_LIBS@
+ STLIB_LD	= @STLIB_LD@
+ #TCL_DEFS	= @TCL_DEFS@
+--- a/rtd/Makefile.in
++++ b/rtd/Makefile.in
+@@ -123,7 +123,7 @@
+ CLEANFILES	= @CLEANFILES@ $(TEST_APPS) *.o tests/*.o
+ EXEEXT		= @EXEEXT@
+ LDFLAGS_DEFAULT	= @LDFLAGS_DEFAULT@
+-MAKE_LIB	= @MAKE_LIB@ $(MERGE_OBJECTS)
++MAKE_LIB	= @MAKE_LIB@ $(MERGE_OBJECTS) $(SHLIB_LD_LIBS)
+ MAKE_SHARED_LIB	= @MAKE_SHARED_LIB@
+ MAKE_STATIC_LIB	= @MAKE_STATIC_LIB@
+ MAKE_STUB_LIB	= @MAKE_STUB_LIB@
+@@ -131,7 +131,7 @@
+ RANLIB		= @RANLIB@
+ RANLIB_STUB	= @RANLIB_STUB@
+ SHLIB_CFLAGS	= @SHLIB_CFLAGS@
+-SHLIB_LD	= @SHLIB_LD@
++SHLIB_LD	= @SHLIB_LD@ $(LDFLAGS_DEFAULT)
+ SHLIB_LD_LIBS	= @SHLIB_LD_LIBS@
+ STLIB_LD	= @STLIB_LD@
+ #TCL_DEFS	= @TCL_DEFS@
+@@ -442,14 +442,14 @@
+ 	$(AR) r $@ $(RTDEVT_OBJ)
+ 	$(RANLIB) $@
+ 
+-$(RTD_SERVER): $(RTD_SERVER_OBJS)
+-	$(CXXCOMPILE) -o $@ $(RTD_SERVER_OBJS) $(RTDEVT_LIB) @LIBS@
++$(RTD_SERVER): $(RTD_SERVER_OBJS) $(RTDEVT_LIB)
++	$(CXXCOMPILE) $(LDFLAGS_DEFAULT) -o $@ $(RTD_SERVER_OBJS) $(RTDEVT_LIB) @LIBS@
+ 
+-rtdClient: rtdClient.o
+-	$(CXXCOMPILE) -o $@ $? $(RTDEVT_LIB) @LIBS@
++rtdClient: rtdClient.o $(RTDEVT_LIB)
++	$(CXXCOMPILE) $(LDFLAGS_DEFAULT) -o $@ $? $(RTDEVT_LIB) @LIBS@
+ 
+-rtdCubeDisplay: rtdCubeDisplay.o
+-	$(CXXCOMPILE) -o $@ $? $(RTDEVT_LIB) @LIBS@
++rtdCubeDisplay: rtdCubeDisplay.o $(RTDEVT_LIB)
++	$(CXXCOMPILE) $(LDFLAGS_DEFAULT) -o $@ $? $(RTDEVT_LIB) @LIBS@
+ 
+ #========================================================================
+ # RTD Remote access C library
+@@ -464,14 +464,14 @@
+ #========================================================================
+ test: binaries libraries $(TEST_APPS)
+ 
+-tImageEvent: tImageEvent.o
+-	$(CXXCOMPILE) -o $@ $@.o $(RTDEVT_LIB) @LIBS@
++tImageEvent: tImageEvent.o $(RTDEVT_LIB)
++	$(CXXCOMPILE) $(LDFLAGS_DEFAULT) -o $@ $@.o $(RTDEVT_LIB) @LIBS@
+ 
+ trtdRemote: trtdRemote.o
+-	$(COMPILE) -o $@ $@.o $(RTD_REMOTE_LIB) @LIBS@
++	$(COMPILE) $(LDFLAGS_DEFAULT) -o $@ $@.o $(RTD_REMOTE_LIB) @LIBS@
+ 
+-tRtd: tRtd.o tRtdEvt.o tRtdEvtData.o
+-	$(CXXCOMPILE) -o $@ $@.o tRtdEvt.o tRtdEvtData.o \
++tRtd: tRtd.o tRtdEvt.o tRtdEvtData.o $(PKG_LIB_FILE)
++	$(CXXCOMPILE) $(LDFLAGS_DEFAULT) -o $@ $@.o tRtdEvt.o tRtdEvtData.o \
+ 	@rtd_BUILD_LIB_SPEC@ @TK_LIB_SPEC@ @TCL_LIB_SPEC@ ${LIBS}
+ 
+ #========================================================================
+--- a/tclutil/Makefile.in
++++ b/tclutil/Makefile.in
+@@ -116,7 +116,7 @@
+ RANLIB		= @RANLIB@
+ RANLIB_STUB	= @RANLIB_STUB@
+ SHLIB_CFLAGS	= @SHLIB_CFLAGS@
+-SHLIB_LD	= @SHLIB_LD@
++SHLIB_LD	= @SHLIB_LD@ $(LDFLAGS_DEFAULT)
+ SHLIB_LD_LIBS	= @SHLIB_LD_LIBS@
+ STLIB_LD	= @STLIB_LD@
+ #TCL_DEFS	= @TCL_DEFS@
+--- a/skycat/Makefile.in
++++ b/skycat/Makefile.in
+@@ -112,7 +112,7 @@
+ CLEANFILES	= @CLEANFILES@ $(TEST_APPS) *.o tests/*.o
+ EXEEXT		= @EXEEXT@
+ LDFLAGS_DEFAULT	= @LDFLAGS_DEFAULT@
+-MAKE_LIB	= @MAKE_LIB@ $(MERGE_OBJECTS)
++MAKE_LIB	= @MAKE_LIB@ $(MERGE_OBJECTS) $(SHLIB_LD_LIBS)
+ MAKE_SHARED_LIB	= @MAKE_SHARED_LIB@
+ MAKE_STATIC_LIB	= @MAKE_STATIC_LIB@
+ MAKE_STUB_LIB	= @MAKE_STUB_LIB@
+@@ -120,7 +120,7 @@
+ RANLIB		= @RANLIB@
+ RANLIB_STUB	= @RANLIB_STUB@
+ SHLIB_CFLAGS	= @SHLIB_CFLAGS@
+-SHLIB_LD	= @SHLIB_LD@
++SHLIB_LD	= @SHLIB_LD@ $(LDFLAGS_DEFAULT)
+ SHLIB_LD_LIBS	= @SHLIB_LD_LIBS@
+ STLIB_LD	= @STLIB_LD@
+ #TCL_DEFS	= @TCL_DEFS@
+--- a/cat/Makefile.in
++++ b/cat/Makefile.in
+@@ -116,7 +116,7 @@
+ CLEANFILES	= @CLEANFILES@ $(TEST_APPS)  *.result *.tmp *.o tests/*.o
+ EXEEXT		= @EXEEXT@
+ LDFLAGS_DEFAULT	= @LDFLAGS_DEFAULT@
+-MAKE_LIB	= @MAKE_LIB@ $(MERGE_OBJECTS)
++MAKE_LIB	= @MAKE_LIB@ $(MERGE_OBJECTS) $(SHLIB_LD_LIBS)
+ MAKE_SHARED_LIB	= @MAKE_SHARED_LIB@
+ MAKE_STATIC_LIB	= @MAKE_STATIC_LIB@
+ MAKE_STUB_LIB	= @MAKE_STUB_LIB@
+@@ -124,7 +124,7 @@
+ RANLIB		= @RANLIB@
+ RANLIB_STUB	= @RANLIB_STUB@
+ SHLIB_CFLAGS	= @SHLIB_CFLAGS@
+-SHLIB_LD	= @SHLIB_LD@
++SHLIB_LD	= @SHLIB_LD@ $(LDFLAGS_DEFAULT)
+ SHLIB_LD_LIBS	= @SHLIB_LD_LIBS@
+ STLIB_LD	= @STLIB_LD@
+ #TCL_DEFS	= @TCL_DEFS@
+@@ -436,7 +436,7 @@
+ cxxtests: $(CXX_TEST_APPS)
+ 
+ $(CXX_TEST_APPS): FORCE
+-	$(CXXCOMPILE) -o $@ $(srcdir)/tests/$@.C $(TEST_LIBS) $(LIBS)
++	$(CXXCOMPILE) $(LDFLAGS_DEFAULT) -o $@ $(srcdir)/tests/$@.C $(TEST_LIBS) $(LIBS)
+ 	cp $(srcdir)/tests/test.table .
+ 	-@@LD_LIBRARY_PATH_VAR@=@exec_prefix@/lib; export @LD_LIBRARY_PATH_VAR@ ;\
+ 	$@ > $@.result 2>&1 ;\

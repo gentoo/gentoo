@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Mail-ListDetector</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::AutoShare</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::Base</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::CommuniGate</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::CommuniGatePro</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::Ecartis</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::Ezmlm</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::Fml</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::GoogleGroups</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::LetterRip</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::ListSTAR</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::Listar</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::Listbox</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::Listserv</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::Lyris</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::Mailman</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::Majordomo</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::Onelist</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::RFC2369</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::RFC2919</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::Smartlist</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::Detector::Yahoogroups</remote-id>
+    <remote-id type="cpan-module">Mail::ListDetector::List</remote-id>
+  </upstream>
+</pkgmetadata>

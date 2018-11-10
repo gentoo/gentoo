@@ -1,0 +1,99 @@
+ Source/setup_configure.py | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/Source/setup_configure.py b/Source/setup_configure.py
+index afeee2d..47f2717 100644
+--- a/Source/setup_configure.py
++++ b/Source/setup_configure.py
+@@ -849,8 +849,8 @@ class CompilerGCC(Compiler):
+     def __init__( self, setup ):
+         Compiler.__init__( self, setup )
+ 
+-        self._addVar( 'CCC',            'g++' )
+-        self._addVar( 'CC',             'gcc' )
++        self._addVar( 'CCC',            '$(CXX)' )
++        self._addVar( 'CC',             '$(CC)' )
+ 
+     def getPythonExtensionFileExt( self ):
+         return '.so'
+@@ -976,8 +976,8 @@ class MacOsxCompilerGCC(CompilerGCC):
+         else:
+             arch_options = ''
+ 
+-        self._addVar( 'CCC',            'g++ %s' % (arch_options,) )
+-        self._addVar( 'CC',             'gcc %s' % (arch_options,) )
++        self._addVar( 'CCC',            '$(CXX) %s' % (arch_options,) )
++        self._addVar( 'CC',             '$(CC) %s' % (arch_options,) )
+ 
+         self._find_paths_pycxx_dir = [
+                         '../Import/pycxx-%d.%d.%d' % pycxx_version,
+@@ -1032,11 +1032,11 @@ class MacOsxCompilerGCC(CompilerGCC):
+ 
+     def setupUtilities( self ):
+         self._addVar( 'CCCFLAGS',
+-                                        '-g  '
++                                        '$(CXXFLAGS) '
+                                         '-Wall -fPIC -fexceptions -frtti '
+                                         '-I. -I%(APR_INC)s -I%(APU_INC)s -I%(SVN_INC)s '
+                                         '-D%(DEBUG)s' )
+-        self._addVar( 'LDEXE',          '%(CCC)s -g' )
++        self._addVar( 'LDEXE',          '$(CXX) $(LDFLAGS)' )
+ 
+     def setupPySvn( self ):
+         self._pysvnModuleSetup()
+@@ -1048,7 +1048,7 @@ class MacOsxCompilerGCC(CompilerGCC):
+         self._addVar( 'PYTHON_INC',         distutils.sysconfig.get_python_inc() )
+ 
+         py_cflags_list = [
+-                    '-g',
++                    '$(CXXFLAGS) ',
+                     '-Wall -fPIC -fexceptions -frtti',
+                     '-I. -I%(APR_INC)s -I%(APU_INC)s -I%(SVN_INC)s',
+                     '-DPYCXX_PYTHON_2TO3 -I%(PYCXX)s -I%(PYCXX_SRC)s -I%(PYTHON_INC)s',
+@@ -1074,13 +1074,12 @@ class MacOsxCompilerGCC(CompilerGCC):
+ 
+         self._addVar( 'CCCFLAGS', ' '.join( py_cflags_list ) )
+         self._addVar( 'LDLIBS', ' '.join( py_ld_libs ) )
+-        self._addVar( 'LDSHARED',       '%(CCC)s -bundle -g '
++        self._addVar( 'LDSHARED',       '$(CXX) $(LDFLAGS) -bundle '
+                                         '-framework System '
+                                         '%(PYTHON_FRAMEWORK)s '
+                                         '-framework CoreFoundation '
+                                         '-framework Kerberos '
+-                                        '-framework Security '
+-                                        '%(LDLIBS)s' )
++                                        '-framework Security' )
+ 
+ class UnixCompilerGCC(CompilerGCC):
+     def __init__( self, setup ):
+@@ -1140,11 +1139,11 @@ class UnixCompilerGCC(CompilerGCC):
+ 
+     def setupUtilities( self ):
+         self._addVar( 'CCCFLAGS',
+-                                        '-g  '
++                                        '$(CXXFLAGS) '
+                                         '-Wall -fPIC -fexceptions -frtti '
+                                         '-I. -I%(APR_INC)s -I%(APU_INC)s -I%(SVN_INC)s '
+                                         '-D%(DEBUG)s' )
+-        self._addVar( 'LDEXE',          '%(CCC)s -g' )
++        self._addVar( 'LDEXE',          '$(CXX) $(LDFLAGS)' )
+ 
+     def setupPySvn( self ):
+         self._pysvnModuleSetup()
+@@ -1155,6 +1154,7 @@ class UnixCompilerGCC(CompilerGCC):
+         self._addVar( 'PYTHON_ARCH_SPECIFIC_INC',     distutils.sysconfig.get_python_inc( True ) )
+ 
+         py_cflags_list = [
++                    '$(CXXFLAGS)',
+                     '-Wall -fPIC -fexceptions -frtti',
+                     '-I. -I%(APR_INC)s -I%(APU_INC)s -I%(SVN_INC)s',
+                     '-DPYCXX_PYTHON_2TO3 -I%(PYCXX)s -I%(PYCXX_SRC)s -I%(PYTHON_INC)s',
+@@ -1176,7 +1176,7 @@ class UnixCompilerGCC(CompilerGCC):
+ 
+         self._addVar( 'CCCFLAGS',   ' '.join( py_cflags_list ) )
+         self._addVar( 'LDLIBS',     ' '.join( self._getLdLibs() ) )
+-        self._addVar( 'LDSHARED',   '%(CCC)s -shared -g' )
++        self._addVar( 'LDSHARED',   '$(CXX) $(LDFLAGS) -shared' )
+ 
+ #--------------------------------------------------------------------------------
+ class LinuxCompilerGCC(UnixCompilerGCC):

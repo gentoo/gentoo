@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting ipband"
+	start-stop-daemon --start --exec /usr/bin/ipband -- -F > /dev/null
+	if [ $? -ne 0 ]; then
+		ewarn "Check settings in /etc/ipband.conf"
+		eend 1
+	else
+		eend 0
+	fi
+}
+
+stop() {
+	ebegin "Stopping ipband"
+	start-stop-daemon --stop --exec /usr/bin/ipband
+	eend $?
+}

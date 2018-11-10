@@ -1,0 +1,31 @@
+--- Makefile.orig	2012-11-20 12:16:39.747881769 +0400
++++ Makefile	2012-11-20 12:17:39.248881307 +0400
+@@ -1,7 +1,3 @@
+-ifndef CFLAGS
+-CFLAGS = -O2 -Wall
+-endif
+-
+ # Include directory for CVS version
+ CFLAGS += -I../driver/modules
+ 
+@@ -14,17 +10,17 @@
+ hostap_crypt_conf: hostap_crypt_conf.c
+ 
+ hostap_diag: hostap_diag.o util.o
+-	$(CC) -o hostap_diag $(CFLAGS) hostap_diag.o util.o
++	$(CC) -o hostap_diag $(CFLAGS) $(LDFLAGS) hostap_diag.o util.o
+ 
+ hostap_diag.o: hostap_diag.c util.h
+ 
+ util.o: util.c util.h
+ 
+ hostap_io_debug: hostap_io_debug.c
+-	$(CC) -o hostap_io_debug $(CFLAGS) hostap_io_debug.c
++	$(CC) -o hostap_io_debug $(CFLAGS) $(LDFLAGS) hostap_io_debug.c
+ 
+ hostap_rid: hostap_rid.o util.o
+-	$(CC) -o hostap_rid $(CFLAGS) hostap_rid.o util.o
++	$(CC) -o hostap_rid $(CFLAGS) $(LDFLAGS) hostap_rid.o util.o
+ 
+ hostap_rid.o: hostap_rid.c util.h
+ 

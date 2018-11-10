@@ -1,0 +1,11 @@
+--- a/console.h
++++ b/console.h
+@@ -6,6 +6,8 @@
+ #include <winbase.h>
+ #endif /* __MINGW32__ */
+ 
++#include <sys/select.h>
++
+ #define prepareConsole udpc_prepareConsole
+ #define getConsoleFd udpc_getConsoleFd
+ #define restoreConsole udpc_restoreConsole

@@ -1,0 +1,21 @@
+diff -ruN OpenCV-2.4.2.orig/cmake/OpenCVCompilerOptions.cmake OpenCV-2.4.2/cmake/OpenCVCompilerOptions.cmake
+--- OpenCV-2.4.2.orig/cmake/OpenCVCompilerOptions.cmake	2012-06-29 00:55:15.000000000 +0200
++++ OpenCV-2.4.2/cmake/OpenCVCompilerOptions.cmake	2012-07-16 23:51:24.244907235 +0200
+@@ -110,17 +110,6 @@
+   endif()
+ 
+   # Other optimizations
+-  if(ENABLE_OMIT_FRAME_POINTER)
+-    add_extra_compiler_option(-fomit-frame-pointer)
+-  else()
+-    add_extra_compiler_option(-fno-omit-frame-pointer)
+-  endif()
+-  if(ENABLE_FAST_MATH)
+-    add_extra_compiler_option(-ffast-math)
+-  endif()
+-  if(ENABLE_POWERPC)
+-    add_extra_compiler_option("-mcpu=G3 -mtune=G5")
+-  endif()
+   if(ENABLE_SSE)
+     add_extra_compiler_option(-msse)
+   endif()

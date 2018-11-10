@@ -1,0 +1,12 @@
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+#
+# This file contains the auditctl rules that are loaded immediately after the
+# audit deamon is stopped via the initscripts.
+# The rules are simply the parameters that would be passed
+# to auditctl.
+
+# Not used for the default Gentoo configuration as of v1.2.3
+# Paranoid security types might wish to reconfigure kauditd here.
+
+# vim:ft=conf:

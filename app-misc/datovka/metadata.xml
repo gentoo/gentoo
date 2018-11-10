@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>amynka@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		A GUI for accessing ISDS (Informační systém datových schránek
+		/ Data Box Information System) SOAP services as defined in Czech ISDS Act
+		(300/2008 Coll.) and implied documents.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- Makefile.orig	2012-12-28 11:40:09.524686698 +0100
++++ Makefile	2012-12-28 11:41:20.646157275 +0100
+@@ -61,7 +61,7 @@
+ 	-$(RM) $(objects) $(binaries) 
+ 
+ getopt: $(objects)
+-	$(CC) $(LDFLAGS) -o $@ $(objects)
++	$(CC) $(LDFLAGS) -o $@ $(objects) $(LIBINTL)
+ 
+ install: getopt install_po
+ 	$(INSTALL) -m 755 -d $(DESTDIR)$(bindir) $(DESTDIR)$(man1dir)

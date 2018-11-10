@@ -1,0 +1,61 @@
+diff --git a/c++/Makefile b/c++/Makefile
+index aeb4daa..5cab356 100644
+--- a/c++/Makefile
++++ b/c++/Makefile
+@@ -131,28 +131,28 @@ $(SPARKY_INSTALL)/python/sparky $(SPARKY_INSTALL)/python/lib-tk:
+ 	chmod 755 $@
+ 
+ sparky-no-python$(EXE_SUFFIX): main.o $(SPARKY_OBJS)
+-	$(CXX) -o $@ main.o $(SPARKY_OBJS) $(LDFLAGS) $(LDLIBS)
++	$(CXX) $(LDFLAGS) -o $@ main.o $(SPARKY_OBJS) $(LDLIBS)
+ 
+ ucsfdata$(EXE_SUFFIX): ucsfdata.o $(NMR_OBJS)
+-	$(CXX) -o $@ ucsfdata.o $(NMR_OBJS) $(LDFLAGS) $(SYSLIBS) $(EXTRALIBS)
++	$(CXX) $(LDFLAGS) -o $@ ucsfdata.o $(NMR_OBJS) $(SYSLIBS) $(EXTRALIBS)
+ 
+ pipe2ucsf$(EXE_SUFFIX): pipe2ucsf.o $(NMR_OBJS)
+-	$(CXX) -o $@ pipe2ucsf.o $(NMR_OBJS) $(LDFLAGS) $(SYSLIBS) $(EXTRALIBS)
++	$(CXX) $(LDFLAGS) -o $@ pipe2ucsf.o $(NMR_OBJS) $(SYSLIBS) $(EXTRALIBS)
+ 
+ vnmr2ucsf$(EXE_SUFFIX): vnmr2ucsf.o $(NMR_OBJS)
+-	$(CXX) -o $@ vnmr2ucsf.o $(NMR_OBJS) $(LDFLAGS) $(SYSLIBS) $(EXTRALIBS)
++	$(CXX) $(LDFLAGS) -o $@ vnmr2ucsf.o $(NMR_OBJS) $(SYSLIBS) $(EXTRALIBS)
+ 
+ bruk2ucsf$(EXE_SUFFIX): bruk2ucsf.o $(NMR_OBJS)
+-	$(CXX) -o $@ bruk2ucsf.o $(NMR_OBJS) $(LDFLAGS) $(SYSLIBS) $(EXTRALIBS)
++	$(CXX) $(LDFLAGS) -o $@ bruk2ucsf.o $(NMR_OBJS) $(SYSLIBS) $(EXTRALIBS)
+ 
+ peaks2ucsf$(EXE_SUFFIX): peaks2ucsf.o $(NMR_OBJS)
+-	$(CXX) -o $@ peaks2ucsf.o $(NMR_OBJS) $(LDFLAGS) $(SYSLIBS) $(EXTRALIBS)
++	$(CXX) $(LDFLAGS) -o $@ peaks2ucsf.o $(NMR_OBJS) $(SYSLIBS) $(EXTRALIBS)
+ 
+ matrix2ucsf$(EXE_SUFFIX): matrix2ucsf.o $(NMR_OBJS)
+-	$(CXX) -o $@ matrix2ucsf.o $(NMR_OBJS) $(LDFLAGS) $(SYSLIBS) $(EXTRALIBS)
++	$(CXX) $(LDFLAGS) -o $@ matrix2ucsf.o $(NMR_OBJS) $(SYSLIBS) $(EXTRALIBS)
+ 
+ spy.so: python.o $(SPARKY_OBJS)
+-	$(CXX) $(LDSHARED) -o $@ python.o $(SPARKY_OBJS) $(LDFLAGS) $(LDLIBS)
++	$(CXX) $(LDSHARED) $(LDFLAGS) -o $@ python.o $(SPARKY_OBJS) $(LDLIBS)
+ 
+ winsystem-$(PLATFORM).o: winsystem-$(PLATFORM).cc
+ 	$(CXX) $(CXXFLAGS) $(TKFLAGS) -c $(SPARKY_SRC)/winsystem-$(PLATFORM).cc
+@@ -161,7 +161,7 @@ python.o: python.cc
+ 	$(CXX) $(CXXFLAGS) $(PYFLAGS) $(TKFLAGS) -c $(SPARKY_SRC)/python.cc
+ 
+ _tkinter.so: _tkinter.o
+-	$(CXX) $(LDSHARED) -o $@ _tkinter.o $(LDFLAGS) $(TKLIBS)
++	$(CXX) $(LDSHARED) $(LDFLAGS) -o $@ _tkinter.o $(TKLIBS)
+ 
+ _tkinter.o: _tkinter.c
+ 	$(CC) $(CFLAGS) $(TKFLAGS) $(PYFLAGS) -c $(SPARKY_SRC)/_tkinter.c
+@@ -188,8 +188,8 @@ PYLDFLAGS	= -L$(PYTHON_LIB)/config -lpython$(PYTHON_VERSION)
+ PYIFLAGS	= -I$(PYTHON_INC)
+ 
+ debug-sparky: main-debug.o python.o _tkinter.o $(SPARKY_OBJS)
+-	$(CXX) -o $@ main-debug.o python.o _tkinter.o $(SPARKY_OBJS) \
+-		$(LDFLAGS) $(PYLDFLAGS) $(LDLIBS)
++	$(CXX) $(LDFLAGS) -o $@ main-debug.o python.o _tkinter.o $(SPARKY_OBJS) \
++		$(PYLDFLAGS) $(LDLIBS)
+ 
+ main-debug.o: main-debug.cc
+ 	$(CXX) $(CXXFLAGS) $(PYIFLAGS) -c $(SPARKY_SRC)/main-debug.cc

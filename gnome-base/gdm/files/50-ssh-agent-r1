@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# add ssh-agent if found
+
+sshagent="`which ssh-agent 2>/dev/null`"
+if [ -n "$sshagent" ] && [ -x "$sshagent" ] && [ -z "$SSH_AUTH_SOCK" ]; then
+	command="$sshagent -- $command"
+elif [ -z "$sshagent" ] ; then
+	echo "$0: ssh-agent not found!"
+fi

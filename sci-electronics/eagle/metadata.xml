@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-electronics@gentoo.org</email>
+		<name>Gentoo Electronics Project</name>
+	</maintainer>
+	<longdescription>EAGLE (Easily Applicable Graphical Layout Editor)
+		is a powerful tool for creating printed circuit boards (PCBs).
+		It requires a 586 (or higher), kernel 2.x (or higher), and
+		X11 in at least 8bpp mode with 1024x768 min. resolution.
+		The freeware edition limits the useable board area to
+		100x80 mm, two signal layers, and one sheet in the
+		schematic editor.
+	</longdescription>
+</pkgmetadata>

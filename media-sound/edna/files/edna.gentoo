@@ -1,0 +1,31 @@
+#!/sbin/openrc-run
+#
+# Startup script for the edna mp3 mini server 
+#
+# description: edna is a mini mp3 webserver
+# processname: python
+# pidfile: /var/run/ednad.pid
+# config:
+
+PYTHONPATH=/usr/lib/edna
+EDNA=/usr/bin/edna
+EDNACONF=/etc/edna/edna.conf
+PIDFILE=/var/run/edna.pid
+USER=edna
+
+depend() {
+	need local
+}
+
+start() {
+	ebegin "Starting edna mp3 server"
+	start-stop-daemon --env PYTHONPATH=$PYTHONPATH \
+		--start --exec $EDNA -- --daemon --user=$USER --pidfile=$PIDFILE $EDNACONF
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ednad"
+	start-stop-daemon --quiet --stop --pidfile $PIDFILE
+	eend $?
+}

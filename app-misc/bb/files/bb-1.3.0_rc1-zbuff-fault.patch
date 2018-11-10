@@ -1,0 +1,35 @@
+tex.c: Fix out-of-bounds zbuff clearing
+
+> zbuff = (int *) malloc(X_s * Y_s * sizeof(int));
+> memset(zbuff, 0x55, (X_s * Y_s * sizeof(long)));
+
+Ouch! amd64: sizeof(long) == 8; sizeof (int) == 4
+
+Valgrind says:
+==4525== Invalid write of size 4
+==4525==    at 0x4C2C3AF: memset (mc_replace_strmem.c:967)
+==4525==    by 0x4122E0: clear_zbuff (tex.c:95)
+==4525==    by 0x4144D8: disp3d (tex.c:292)
+==4525==    by 0x40F3C6: scene5 (scene5.c:206)
+==4525==    by 0x4031BC: bb (bb.c:325)
+==4525==    by 0x407C56: main (main.c:202)
+==4525==  Address 0xac9ef00 is 0 bytes after a block of size 34,992 alloc'd
+==4525==    at 0x4C2996D: malloc (vg_replace_malloc.c:263)
+==4525==    by 0x412283: set_zbuff (tex.c:85)
+==4525==    by 0x40F347: scene5 (scene5.c:196)
+==4525==    by 0x4031BC: bb (bb.c:325)
+==4525==    by 0x407C56: main (main.c:202)
+
+diff --git a/tex.c b/tex.c
+index 9f2f99d..b390510 100644
+--- a/tex.c
++++ b/tex.c
+@@ -92,7 +92,7 @@ void unset_zbuff()
+ 
+ static inline void clear_zbuff()
+ {
+-    memset(zbuff, 0x55, (X_s * Y_s * sizeof(long)));
++    memset(zbuff, 0x55, (X_s * Y_s * sizeof(int)));
+ }
+ 
+ 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-electronics@gentoo.org</email>
+		<name>Gentoo Electronics Project</name>
+	</maintainer>
+	<longdescription>
+		Alliance is a complete set of free CAD tools and portable libraries for VLSI
+		design. It includes a VHDL compiler and simulator, logic synthesis tools, and
+		automatic place and route tools. A complete set of portable CMOS libraries is
+		provided. Alliance is the result of a twelve year effort spent at ASIM
+		department of LIP6 laboratory of the Pierre et Marie Curie University (Paris
+		VI, France). Alliance has been used for research projects such as the 875 000
+		transistors StaCS superscalar microprocessor and 400 000 transistors IEEE
+		Gigabit HSL Router.
+	</longdescription>
+</pkgmetadata>

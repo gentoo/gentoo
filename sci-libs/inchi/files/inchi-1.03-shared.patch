@@ -1,0 +1,20 @@
+ INCHI_API/gcc_so_makefile/makefile |    4 +++-
+ 1 files changed, 3 insertions(+), 1 deletions(-)
+
+diff --git a/INCHI_API/gcc_so_makefile/makefile b/INCHI_API/gcc_so_makefile/makefile
+index dd8e53c..cd617ad 100644
+--- a/INCHI_API/gcc_so_makefile/makefile
++++ b/INCHI_API/gcc_so_makefile/makefile
+@@ -213,9 +213,11 @@ $(INCHI_LIB_PATHNAME).so$(VERSION): $(INCHI_LIB_OBJS)
+ 	$(SHARED_LINK) $(SHARED_LINK_PARM) -o \
+   $(INCHI_LIB_PATHNAME).so$(VERSION) \
+   $(INCHI_LIB_OBJS) \
+-  -Wl$(LINUX_MAP)$(LINUX_Z_RELRO),-soname,$(INCHI_LIB_NAME).so$(MAIN_VERSION)
++  -Wl$(LINUX_MAP)$(LINUX_Z_RELRO),-soname,$(INCHI_LIB_NAME).so$(MAIN_VERSION) -lm
+ 	ln -fs $(INCHI_LIB_NAME).so$(VERSION) \
+   $(INCHI_LIB_PATHNAME).so$(MAIN_VERSION)
++	ln -fs $(INCHI_LIB_NAME).so$(VERSION) \
++  $(INCHI_LIB_PATHNAME).so
+ 
+ endif
+ 

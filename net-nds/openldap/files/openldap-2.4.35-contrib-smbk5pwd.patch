@@ -1,0 +1,48 @@
+diff -Nuar openldap-2.4.35.orig/contrib/slapd-modules/smbk5pwd/Makefile openldap-2.4.35/contrib/slapd-modules/smbk5pwd/Makefile
+--- openldap-2.4.35.orig/contrib/slapd-modules/smbk5pwd/Makefile	2013-03-28 15:41:51.000000000 +0000
++++ openldap-2.4.35/contrib/slapd-modules/smbk5pwd/Makefile	2013-04-16 02:13:38.939913119 +0000
+@@ -21,16 +21,23 @@
+ SSL_INC = 
+ SSL_LIB = -lcrypto
+ 
+-HEIMDAL_INC = -I/usr/heimdal/include
+-HEIMDAL_LIB = -L/usr/heimdal/lib -lkrb5 -lkadm5srv
++#HEIMDAL_INC = -I/usr/heimdal/include
++#HEIMDAL_LIB = -L/usr/heimdal/lib -lkrb5 -lkadm5srv
++KRB5_INC = $(HEIMDAL_INC)
++KRB5_LIB = $(HEIMDAL_LIB) -lkrb5 -lkadm5srv
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2 -Wall
++#OPT = -g -O2 -Wall
++OPT = -Wall
+ # Omit DO_KRB5, DO_SAMBA or DO_SHADOW if you don't want to support it.
+-DEFS = -DDO_KRB5 -DDO_SAMBA -DDO_SHADOW
+-INCS = $(LDAP_INC) $(HEIMDAL_INC) $(SSL_INC)
+-LIBS = $(LDAP_LIB) $(HEIMDAL_LIB) $(SSL_LIB)
++#DEFS = -DDO_KRB5 -DDO_SAMBA -DDO_SHADOW
++INCS = $(LDAP_INC) $(KRB5_INC) $(SSL_INC)
++ifneq (DDO_KRB5,$(findstring DDO_KRB5,$(DEFS)))
++	LIBS=$(LDAP_LIB) $(SSL_LIB)
++else
++	LIBS=$(LDAP_LIB) $(KRB5_LIB) $(SSL_LIB)
++endif
+ 
+ PROGRAMS = smbk5pwd.la
+ LTVER = 0:0:0
+@@ -46,12 +53,12 @@
+ .SUFFIXES: .c .o .lo
+ 
+ .c.lo:
+-	$(LIBTOOL) --mode=compile $(CC) $(OPT) $(DEFS) $(INCS) -c $<
++	$(LIBTOOL) --mode=compile $(CC) $(OPT) $(CFLAGS) $(DEFS) $(INCS) -c $<
+ 
+ all: $(PROGRAMS)
+ 
+ smbk5pwd.la:	smbk5pwd.lo
+-	$(LIBTOOL) --mode=link $(CC) $(OPT) -version-info $(LTVER) \
++	$(LIBTOOL) --mode=link $(CC) $(OPT) $(CFLAGS) -version-info $(LTVER) \
+ 	-rpath $(moduledir) -module -o $@ $? $(LIBS)
+ 
+ clean:

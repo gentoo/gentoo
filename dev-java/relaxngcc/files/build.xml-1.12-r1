@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<project name="relaxngcc" default="jar" basedir=".">
+  <target name="compile">
+    <mkdir dir="build"/>
+    <javac srcdir="src" destdir="build">
+      <classpath>
+        <fileset dir="lib" includes="**/*.jar"/>
+      </classpath>
+    </javac>
+  </target>
+  <target name="jar" depends="compile">
+    <jar destfile="relaxngcc.jar">
+      <manifest>
+        <attribute name="Main-Class" value="relaxngcc.RelaxNGCC"/>
+      </manifest>
+      <fileset dir="build">
+        <include name="**/*.class"/>
+      </fileset>
+      <!--
+        For a list of resources to include, see the project.xml from the
+        upstream relaxngcc.jar contained in the base directory of the zip.
+      -->
+      <fileset dir="src">
+        <include name="plugin.jelly"/>
+        <include name="relaxngcc/runtime/*.java"/>
+        <include name="**/*.properties"/>
+        <include name="**/*.xsl"/>
+      </fileset>
+      <zipfileset src="relaxngcc.orig.zip">
+        <include name="project.xml"/>
+      </zipfileset>
+    </jar>
+  </target>
+</project>

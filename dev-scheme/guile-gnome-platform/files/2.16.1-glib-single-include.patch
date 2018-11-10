@@ -1,0 +1,26 @@
+Index: guile-gnome-platform-2.16.1/corba/gnome/corba/guile-gnome-corba-generic.c
+===================================================================
+--- guile-gnome-platform-2.16.1.orig/corba/gnome/corba/guile-gnome-corba-generic.c
++++ guile-gnome-platform-2.16.1/corba/gnome/corba/guile-gnome-corba-generic.c
+@@ -24,7 +24,7 @@
+ 
+ #include <guile-gnome-corba-generic.h>
+ #include <guile-gnome-gobject.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include <string.h>
+ 
+ static GQuark quark_corba_typecode = 0;
+Index: guile-gnome-platform-2.16.1/glib/gnome/gobject/guile-support.h
+===================================================================
+--- guile-gnome-platform-2.16.1.orig/glib/gnome/gobject/guile-support.h
++++ guile-gnome-platform-2.16.1/glib/gnome/gobject/guile-support.h
+@@ -24,7 +24,7 @@
+ #ifndef __GUILE_SUPPORT_H__
+ #define __GUILE_SUPPORT_H__
+ 
+-#include <glib/gmacros.h>
++#include <glib.h>
+ 
+ #include <libguile.h>
+ 

@@ -1,0 +1,4 @@
+# Config file for tftp server
+
+TFTPD_ROOT="/tftproot"
+TFTPD_OPTS="--daemon --user nobody --group nobody"

@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/show_bug.cgi?id=503452
+patch provided by E.Seifert
+
+--- vcd-0.9/player.c	2008-01-16 13:26:38.000000000 +0100
++++ vcd-0.9/player.c	2014-03-04 22:07:39.374281971 +0100
+@@ -161,7 +161,11 @@
+      int sp = (Speeds[nts] > 0) ? Mult / Speeds[nts] : -Speeds[nts] * Mult;
+      if (sp > MAX_VIDEO_SLOWMOTION)
+         sp = MAX_VIDEO_SLOWMOTION;
++#if VDRVERSNUM >= 20103
++     DeviceTrickSpeed(sp,true);
++#else
+      DeviceTrickSpeed(sp);
++#endif
+   }
+ }
+

@@ -1,0 +1,10 @@
+--- a/mbmon.c
++++ b/mbmon.c
+@@ -640,6 +640,7 @@
+ 		else if (fanspeed == 7)
+ 			fprintf(out, "%4d\n%4d\n%4d\n", rot1, rot2, rot3);
+ 	}
++	fflush(out);
+ 	if (port) {
+ #ifdef LOGGING
+ 		if (nfd)

@@ -1,0 +1,14 @@
+diff -Naur wmhdplop-0.9.10.orig/configure.ac wmhdplop-0.9.10/configure.ac
+--- wmhdplop-0.9.10.orig/configure.ac	2016-11-24 16:18:21.000000000 +0100
++++ wmhdplop-0.9.10/configure.ac	2016-12-02 11:58:28.276017676 +0100
+@@ -19,10 +19,6 @@
+ AC_DEFINE(_GNU_SOURCE,[],[uses GNU extensions])
+ 
+ 
+-if test x$GCC = xyes; then
+-  CFLAGS="-O3 -fomit-frame-pointer -ffast-math -Wall -W";
+-fi
+-
+ dnl check for X
+ AC_PATH_X
+ AC_PATH_XTRA

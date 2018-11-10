@@ -1,0 +1,73 @@
+Bug: https://bugs.gentoo.org/602436
+Upstream PR: https://github.com/GNOME/nemiver/pull/3
+
+--- a/src/common/nmv-api-macros.h
++++ b/src/common/nmv-api-macros.h
+@@ -52,5 +52,12 @@
+ #  define NEMIVER_PURE_IFACE
+ #  define NEMIVER_API
+ # endif //HAS_GCC_VISIBILITY_SUPPORT
++
++# if __cplusplus >= 201103L
++#  define DTOR_NOEXCEPT noexcept(false)
++# else
++#  define DTOR_NOEXCEPT
++# endif //__cplusplus >= 201103L
++
+ #endif
+ 
+--- a/src/common/nmv-log-stream.cc
++++ b/src/common/nmv-log-stream.cc
+@@ -393,7 +393,7 @@
+     }
+ }
+ 
+-LogStream::~LogStream ()
++LogStream::~LogStream () DTOR_NOEXCEPT
+ {
+     LOG_D ("delete", "destructor-domain");
+     if (!m_priv) throw runtime_error ("double free in LogStrea::~LogStream");
+--- a/src/common/nmv-log-stream.h
++++ b/src/common/nmv-log-stream.h
+@@ -151,7 +151,7 @@
+                const string &a_default_domain=NMV_GENERAL_DOMAIN);
+ 
+     /// \brief destructor of the log stream class
+-    virtual ~LogStream ();
++    virtual ~LogStream () DTOR_NOEXCEPT;
+ 
+     /// \brief enable or disable logging for a domain
+     /// \param a_domain the domain to enable logging for
+--- a/src/common/nmv-object.cc
++++ b/src/common/nmv-object.cc
+@@ -68,7 +68,7 @@
+     return *this;
+ }
+ 
+-Object::~Object ()
++Object::~Object () DTOR_NOEXCEPT
+ {
+ }
+ 
+--- a/src/common/nmv-object.h
++++ b/src/common/nmv-object.h
+@@ -54,7 +54,7 @@
+ 
+     Object& operator= (Object const&);
+ 
+-    virtual ~Object ();
++    virtual ~Object () DTOR_NOEXCEPT;
+ 
+     void ref ();
+ 
+--- a/src/common/nmv-transaction.h
++++ b/src/common/nmv-transaction.h
+@@ -116,7 +116,7 @@
+         return m_trans;
+     }
+ 
+-    ~TransactionAutoHelper ()
++    ~TransactionAutoHelper () DTOR_NOEXCEPT
+     {
+         if (m_ignore) {
+             return;

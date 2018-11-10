@@ -1,0 +1,152 @@
+--- jboss-logging-3.1.4.GA/src/main/java/org/jboss/logging/AbstractMdcLoggerProvider.java.orig	2015-05-17 20:55:35.000000000 +0000
++++ jboss-logging-3.1.4.GA/src/main/java/org/jboss/logging/AbstractMdcLoggerProvider.java	2015-05-17 20:58:00.000000000 +0000
+@@ -23,27 +23,27 @@
+ 
+ abstract class AbstractMdcLoggerProvider extends AbstractLoggerProvider {
+ 
+-    private final ThreadLocal<Map<String, Object>> mdcMap = new ThreadLocal<Map<String, Object>>();
++    private final ThreadLocal<Map<String, String>> mdcMap = new ThreadLocal<Map<String, String>>();
+ 
+     public Object getMdc(String key) {
+         return mdcMap.get() == null ? null : mdcMap.get().get(key);
+     }
+ 
+-    public Map<String, Object> getMdcMap() {
++    public Map<String, String> getMdcMap() {
+         return mdcMap.get();
+     }
+ 
+-    public Object putMdc(String key, Object value) {
+-        Map<String, Object> map = mdcMap.get();
++    public Object putMdc(String key, String value) {
++        Map<String, String> map = mdcMap.get();
+         if (map == null) {
+-            map = new HashMap<String, Object>();
++            map = new HashMap<String, String>();
+             mdcMap.set(map);
+         }
+         return map.put(key, value);
+     }
+ 
+     public void removeMdc(String key) {
+-        Map<String, Object> map = mdcMap.get();
++        Map<String, String> map = mdcMap.get();
+         if (map == null)
+             return;
+         map.remove(key);
+--- jboss-logging-3.1.4.GA/src/main/java/org/jboss/logging/Log4jLoggerProvider.java.orig	2015-05-17 20:16:57.000000000 +0000
++++ jboss-logging-3.1.4.GA/src/main/java/org/jboss/logging/Log4jLoggerProvider.java	2015-05-17 21:21:25.157000000 +0000
+@@ -34,11 +34,11 @@
+     }
+ 
+     @SuppressWarnings("unchecked")
+-    public Map<String, Object> getMdcMap() {
++    public Map<String, String> getMdcMap() {
+         return MDC.getContext();
+     }
+ 
+-    public Object putMdc(String key, Object val) {
++    public Object putMdc(String key, String val) {
+         try {
+             return MDC.get(key);
+         } finally {
+--- jboss-logging-3.1.4.GA/src/main/java/org/jboss/logging/Slf4jLoggerProvider.java.orig	2015-05-17 20:44:24.000000000 +0000
++++ jboss-logging-3.1.4.GA/src/main/java/org/jboss/logging/Slf4jLoggerProvider.java	2015-05-17 21:22:05.205000000 +0000
+@@ -33,14 +33,14 @@
+         return new Slf4jLogger(name, l);
+     }
+ 
+-    public Object putMdc(final String key, final Object value) {
++    public Object putMdc(final String key, final String value) {
+         try {
+             return MDC.get(key);
+         } finally {
+             if (value == null) {
+                 MDC.remove(key);
+             } else {
+-                MDC.put(key, String.valueOf(value));
++                MDC.put(key, value);
+             }
+         }
+     }
+@@ -54,7 +54,7 @@
+     }
+ 
+     @SuppressWarnings({ "unchecked" })
+-    public Map<String, Object> getMdcMap() {
++    public Map<String, String> getMdcMap() {
+         return MDC.getCopyOfContextMap();
+     }
+ }
+--- jboss-logging-3.1.4.GA/src/main/java/org/jboss/logging/JDKLoggerProvider.java.orig	2015-05-17 21:19:12.964000000 +0000
++++ jboss-logging-3.1.4.GA/src/main/java/org/jboss/logging/JDKLoggerProvider.java	2015-05-17 21:22:41.639000000 +0000
+@@ -23,4 +23,9 @@
+     public Logger getLogger(final String name) {
+         return new JDKLogger(name);
+     }
++
++    @Override
++    public Object putMdc(String key, String value) {
++        return null;
++    }
+ }
+--- jboss-logging-3.1.4.GA/src/main/java/org/jboss/logging/JBossLogManagerProvider.java.orig	2015-05-17 20:15:41.000000000 +0000
++++ jboss-logging-3.1.4.GA/src/main/java/org/jboss/logging/JBossLogManagerProvider.java	2015-05-17 21:20:42.844000000 +0000
+@@ -59,8 +59,8 @@
+         }
+     }
+ 
+-    public Object putMdc(final String key, final Object value) {
+-        return MDC.put(key, String.valueOf(value));
++    public Object putMdc(final String key, final String value) {
++        return MDC.put(key, value);
+     }
+ 
+     public Object getMdc(final String key) {
+@@ -72,7 +72,7 @@
+     }
+ 
+     @SuppressWarnings({ "unchecked" })
+-    public Map<String, Object> getMdcMap() {
++    public Map<String, String> getMdcMap() {
+         // we can re-define the erasure of this map because MDC does not make further use of the copy
+         return (Map)MDC.copy();
+     }
+--- jboss-logging-3.1.4.GA/src/main/java/org/jboss/logging/MDC.java.orig	2015-05-17 19:12:40.000000000 +0000
++++ jboss-logging-3.1.4.GA/src/main/java/org/jboss/logging/MDC.java	2015-05-17 21:22:27.689000000 +0000
+@@ -25,7 +25,7 @@
+     private MDC() {
+     }
+ 
+-    public static Object put(String key, Object val) {
++    public static Object put(String key, String val) {
+         return LoggerProviders.PROVIDER.putMdc(key, val);
+     }
+ 
+@@ -37,7 +37,7 @@
+         LoggerProviders.PROVIDER.removeMdc(key);
+     }
+ 
+-    public static Map<String, Object> getMap() {
++    public static Map<String, String> getMap() {
+         return LoggerProviders.PROVIDER.getMdcMap();
+     }
+ }
+--- jboss-logging-3.1.4.GA/src/main/java/org/jboss/logging/LoggerProvider.java.orig	2015-05-17 19:06:30.000000000 +0000
++++ jboss-logging-3.1.4.GA/src/main/java/org/jboss/logging/LoggerProvider.java	2015-05-17 21:21:43.083000000 +0000
+@@ -23,13 +23,13 @@
+ public interface LoggerProvider {
+     Logger getLogger(String name);
+ 
+-    Object putMdc(String key, Object value);
++    Object putMdc(String key, String value);
+ 
+     Object getMdc(String key);
+ 
+     void removeMdc(String key);
+ 
+-    Map<String, Object> getMdcMap();
++    Map<String, String> getMdcMap();
+ 
+     void clearNdc();
+ 

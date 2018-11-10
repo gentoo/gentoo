@@ -1,0 +1,16 @@
+[Unit]
+Description=RabbitMQ daemon
+
+[Service]
+Type=simple
+ExecStart=/usr/libexec/rabbitmq/rabbitmq-server
+ExecStop=/usr/libexec/rabbitmq/rabbitmqctl stop
+WorkingDirectory=/var/lib/rabbitmq
+User=rabbitmq
+Group=rabbitmq
+StandardOutput=syslog
+StandardError=syslog
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

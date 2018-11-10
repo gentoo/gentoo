@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Dist-Zilla-Plugin-Git</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Git</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Git::Check</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Git::Commit</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Git::CommitBuild</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Git::GatherDir</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Git::Init</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Git::NextVersion</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Git::Push</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Plugin::Git::Tag</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::PluginBundle::Git</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Role::Git::DirtyFiles</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Role::Git::Repo</remote-id>
+    <remote-id type="cpan-module">Dist::Zilla::Role::Git::StringFormatter</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		mpl_toolkits.natgrid is an python interface to natgrid C library for
+		gridding irregularly spaced data.
+		The original natgrid is a natural neighbor gridding package.
+		(See http://www.ncarg.ucar.edu//ngmath/natgrid/nnhome.html).
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">matplotlib</remote-id>
+	</upstream>
+</pkgmetadata>

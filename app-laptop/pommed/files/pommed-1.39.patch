@@ -1,0 +1,89 @@
+diff --git a/gpomme/Makefile b/gpomme/Makefile
+index 0874b48..a3ab64a 100644
+--- a/gpomme/Makefile
++++ b/gpomme/Makefile
+@@ -1,5 +1,3 @@
+-CC = gcc
+-
+ GTK_CFLAGS = $(shell pkg-config --cflags gtk+-2.0)
+ GTK_LIBS = $(shell pkg-config --libs gtk+-2.0)
+ 
+@@ -14,7 +12,7 @@ CONFUSE_LIBS = $(shell pkg-config libconfuse --libs)
+ 
+ INOTIFY_CFLAGS = $(shell test -e /usr/include/sys/inotify.h || echo -DNO_SYS_INOTIFY_H)
+ 
+-CFLAGS = -g -O2 -Wall $(DBUS_CFLAGS) $(DBUSGLIB_CFLAGS) $(GTK_CFLAGS) $(CONFUSE_CFLAGS) $(INOTIFY_CFLAGS)
++CFLAGS += -Wall $(DBUS_CFLAGS) $(DBUSGLIB_CFLAGS) $(GTK_CFLAGS) $(CONFUSE_CFLAGS) $(INOTIFY_CFLAGS)
+ LDLIBS = -lpthread -lX11 $(DBUS_LIBS) $(DBUSGLIB_LIBS) $(GTK_LIBS) $(CONFUSE_LIBS)
+ 
+ SOURCES = gpomme.c theme.c conffile.c \
+@@ -30,6 +28,7 @@ all: gpomme mo
+ mo: $(MOFILES)
+ 
+ gpomme: $(OBJS)
++	${CC} -o $@ ${OBJS} ${LDLIBS} ${LDFLAGS}
+ 
+ gpomme.o: gpomme.c gpomme.h theme.h ../client-common/dbus-client.h ../client-common/video-client.h
+ 
+diff --git a/pommed/Makefile b/pommed/Makefile
+index 5f3cbf9..3425a2a 100644
+--- a/pommed/Makefile
++++ b/pommed/Makefile
+@@ -1,7 +1,5 @@
+ ARCH ?= $(shell uname -m)
+ 
+-CC = gcc
+-
+ DBUS_CFLAGS = $(shell pkg-config dbus-1 --cflags) -DDBUS_API_SUBJECT_TO_CHANGE
+ DBUS_LIBS = $(shell pkg-config dbus-1 --libs)
+ 
+@@ -18,7 +16,7 @@ INOTIFY_CFLAGS = $(shell test -e /usr/include/sys/inotify.h || echo -DNO_SYS_INO
+ 
+ TIMERFD_CFLAGS = $(shell test -e /usr/include/sys/timerfd.h || echo -DNO_SYS_TIMERFD_H)
+ 
+-CFLAGS = -g -O2 -Wall $(DBUS_CFLAGS) $(ALSA_CFLAGS) $(AUDIOFILE_CFLAGS) $(CONFUSE_CFLAGS) $(INOTIFY_CFLAGS) $(TIMERFD_CFLAGS)
++CFLAGS += -Wall $(DBUS_CFLAGS) $(ALSA_CFLAGS) $(AUDIOFILE_CFLAGS) $(CONFUSE_CFLAGS) $(INOTIFY_CFLAGS) $(TIMERFD_CFLAGS)
+ 
+ LDLIBS = -pthread -lrt $(DBUS_LIBS) $(ALSA_LIBS) $(AUDIOFILE_LIBS) $(CONFUSE_LIBS)
+ 
+@@ -54,6 +52,7 @@ ifeq ($(LIBPCI_SHARED), true)
+ 
+ 	CFLAGS += $(LIBPCI_CFLAGS)
+ 	LDLIBS += $(LIBPCI_LIBS)
++	LIBS = $(LIBPCI_LIBS)
+ else
+ 	LIB_OBJS += /usr/lib/libpci.a
+ 	LDLIBS += -lz
+@@ -73,6 +72,7 @@ OBJS = $(SOURCES:%.c=%.o)
+ 
+ 
+ pommed: $(OBJS) $(LIB_OBJS)
++	${CC} -o $@ ${OBJS} ${LDLIBS} ${LDFLAGS}
+ 
+ pommed.o: pommed.c pommed.h evloop.h kbd_backlight.h lcd_backlight.h cd_eject.h evdev.h conffile.h audio.h dbus.h beep.h
+ 
+diff --git a/wmpomme/Makefile b/wmpomme/Makefile
+index cc7a438..6c4bee1 100644
+--- a/wmpomme/Makefile
++++ b/wmpomme/Makefile
+@@ -1,11 +1,9 @@
+-CC = gcc
+-
+ DBUS_CFLAGS = $(shell pkg-config dbus-1 --cflags) -DDBUS_API_SUBJECT_TO_CHANGE
+ DBUS_LIBS = $(shell pkg-config dbus-1 --libs)
+ 
+ TIMERFD_CFLAGS = $(shell test -e /usr/include/sys/timerfd.h || echo -DNO_SYS_TIMERFD_H)
+ 
+-CFLAGS = -g -O2 -Wall $(DBUS_CFLAGS) $(TIMERFD_CFLAGS)
++CFLAGS += -Wall $(DBUS_CFLAGS) $(TIMERFD_CFLAGS)
+ LDLIBS = -lrt -lXpm -lXext -lX11 $(DBUS_LIBS)
+ 
+ SOURCES = wmgeneral.c wmpomme.c \
+@@ -15,6 +13,7 @@ SOURCES = wmgeneral.c wmpomme.c \
+ OBJS = $(SOURCES:%.c=%.o)
+ 
+ wmpomme: $(OBJS)
++	${CC} -o $@ ${OBJS} ${LDLIBS} ${LDFLAGS}
+ 
+ wmpomme.o: wmpomme.c wmgeneral.h wmpomme-master.xpm ../client-common/dbus-client.h
+ 

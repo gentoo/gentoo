@@ -1,0 +1,64 @@
+From 1e9e770f4bc7f3d80e09ecd1df58575fad064163 Mon Sep 17 00:00:00 2001
+From: Mike Fleetwood <mike.fleetwood@googlemail.com>
+Date: Sun, 28 Sep 2014 15:15:48 +0000
+Subject: lib-fs-resize: Prevent crash resizing FAT16 file systems
+
+Resizing FAT16 file system crashes in libparted/fs/r/fat/resize.c
+create_resize_context() because it was dereferencing NULL pointer
+fs_info->info_sector to copy the info_sector.
+
+Only FAT32 file systems have info_sector populated by fat_open() ->
+fat_info_sector_read().  FAT12 and FAT16 file systems don't have an
+info_sector so pointer fs_info->info_sector remains assigned NULL from
+fat_alloc().  When resizing a FAT file system create_resize_context()
+was always dereferencing fs_info->info_sector to memory copy the
+info_sector, hence it crashed for FAT12 and FAT16.
+
+Make create_resize_context() only copy the info_sector for FAT32 file
+systems.
+
+Reported by Christian Hesse in
+https://bugzilla.gnome.org/show_bug.cgi?id=735669
+---
+diff --git a/NEWS b/NEWS
+index 297b0a5..da7db50 100644
+--- a/NEWS
++++ b/NEWS
+@@ -2,6 +2,10 @@ GNU parted NEWS                                    -*- outline -*-
+ 
+ * Noteworthy changes in release ?.? (????-??-??) [?]
+ 
++** Bug Fixes
++
++  libparted-fs-resize: Prevent crash resizing FAT16 file systems.
++
+ 
+ * Noteworthy changes in release 3.2 (2014-07-28) [stable]
+ 
+diff --git a/libparted/fs/r/fat/resize.c b/libparted/fs/r/fat/resize.c
+index 919acf0..bfe60a0 100644
+--- a/libparted/fs/r/fat/resize.c
++++ b/libparted/fs/r/fat/resize.c
+@@ -668,11 +668,17 @@ create_resize_context (PedFileSystem* fs, const PedGeometry* new_geom)
+ 
+ /* preserve boot code, etc. */
+ 	new_fs_info->boot_sector = ped_malloc (new_geom->dev->sector_size);
+-	new_fs_info->info_sector = ped_malloc (new_geom->dev->sector_size);
+ 	memcpy (new_fs_info->boot_sector, fs_info->boot_sector,
+ 		new_geom->dev->sector_size);
+-	memcpy (new_fs_info->info_sector, fs_info->info_sector,
+-		new_geom->dev->sector_size);
++	new_fs_info->info_sector = NULL;
++	if (fs_info->fat_type == FAT_TYPE_FAT32)
++	{
++		PED_ASSERT (fs_info->info_sector != NULL);
++		new_fs_info->info_sector =
++			ped_malloc (new_geom->dev->sector_size);
++		memcpy (new_fs_info->info_sector, fs_info->info_sector,
++			new_geom->dev->sector_size);
++	}
+ 
+ 	new_fs_info->logical_sector_size = fs_info->logical_sector_size;
+ 	new_fs_info->sector_count = new_geom->length;
+--
+cgit v0.9.0.2

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>andrey_utkin@gentoo.org</email>
+		<name>Andrey Utkin</name>
+	</maintainer>
+	<longdescription lang="en">
+		MCabber is a small Jabber console client that features
+		such as GPG encryption, SSL support, MUC (Multi-User Chat) support,
+		history logging, commands completion, and external actions triggers.
+	</longdescription>
+	<use>
+		<flag name="aspell">Adds support for app-text/aspell spell
+			checker.</flag>
+		<flag name="otr">Enable encrypted conversations using Off-The-Records
+			messaging
+		</flag>
+	</use>
+</pkgmetadata>
+

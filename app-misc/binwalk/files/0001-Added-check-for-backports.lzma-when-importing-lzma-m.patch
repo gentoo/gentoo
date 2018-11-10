@@ -1,0 +1,67 @@
+From 95bce4edcc6e92c9517b80ccb1fb956f591e0738 Mon Sep 17 00:00:00 2001
+From: Craig Heffner <heffnercj@gmail.com>
+Date: Tue, 5 Jan 2016 13:28:24 -0500
+Subject: [PATCH] Added check for backports.lzma when importing lzma module
+
+---
+ src/binwalk/modules/compression.py | 5 ++++-
+ src/binwalk/plugins/lzmaextract.py | 6 +++++-
+ src/binwalk/plugins/lzmavalid.py   | 5 ++++-
+ 3 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/src/binwalk/modules/compression.py b/src/binwalk/modules/compression.py
+index 97ca68d..e919f7e 100644
+--- a/src/binwalk/modules/compression.py
++++ b/src/binwalk/modules/compression.py
+@@ -2,11 +2,14 @@
+ 
+ import os
+ import zlib
+-import lzma
+ import struct
+ import binwalk.core.compat
+ import binwalk.core.common
+ from binwalk.core.module import Option, Kwarg, Module
++try:
++    import lzma
++except ImportError:
++    from backports import lzma
+ 
+ class LZMAHeader(object):
+     def __init__(self, **kwargs):
+diff --git a/src/binwalk/plugins/lzmaextract.py b/src/binwalk/plugins/lzmaextract.py
+index 137b4cc..93f6240 100755
+--- a/src/binwalk/plugins/lzmaextract.py
++++ b/src/binwalk/plugins/lzmaextract.py
+@@ -12,7 +12,11 @@ class LZMAExtractPlugin(binwalk.core.plugin.Plugin):
+             # lzma package in Python 2.0 decompress() does not handle multiple
+             # compressed streams, only first stream is extracted.
+             # backports.lzma package could be used to keep consistent behaviour.
+-            import lzma
++            try:
++                import lzma
++            except ImportError:
++                from backports import lzma
++
+             self.decompressor = lzma.decompress
+ 
+             # If the extractor is enabled for the module we're currently loaded
+diff --git a/src/binwalk/plugins/lzmavalid.py b/src/binwalk/plugins/lzmavalid.py
+index a343656..62e15b9 100644
+--- a/src/binwalk/plugins/lzmavalid.py
++++ b/src/binwalk/plugins/lzmavalid.py
+@@ -17,7 +17,10 @@ class LZMAPlugin(binwalk.core.plugin.Plugin):
+ 
+     def init(self):
+         try:
+-            import lzma
++            try:
++                import lzma
++            except ImportError:
++                from backports import lzma
+             self.decompressor = lzma.decompress
+         except ImportError as e:
+             self.decompressor = None
+-- 
+2.12.2
+

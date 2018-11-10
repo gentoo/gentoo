@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ldap-bugs@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="experimental">Enable experimental backend options</flag>
+		<flag name="kinit">Enable support for kerberos init</flag>
+		<flag name="odbc">Enable ODBC and SQL backend options</flag>
+		<flag name="overlays">Enable contributed OpenLDAP overlays</flag>
+		<flag name="smbkrb5passwd">Enable overlay for syncing ldap, unix and lanman passwords</flag>
+		<flag name="minimal">Build libraries &amp; userspace tools only. Does not install any server code</flag>
+		<flag name="pbkdf2">Enable support for pbkdf2 passwords</flag>
+		<flag name="sha2">Enable support for pw-sha2 password hashes</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:openldap:openldap</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,15 @@
+diff --git a/version.sh b/version.sh
+index 40e8d05..e06443f 100755
+--- a/version.sh
++++ b/version.sh
+@@ -17,8 +17,8 @@
+ # Note that the RELEASE-VERSION file should *not* be checked into git;
+ # please add it to your top-level .gitignore file.
+ 
+-version=$(git describe)
+-if [ -n ${version} ]; then
++[ -d .git ] && version=$(git describe)
++if [ -n "${version}" ]; then
+     # If we got something from git-describe, write the version to the
+     # output file.
+     echo ${version} > RELEASE-VERSION

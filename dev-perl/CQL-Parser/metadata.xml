@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">CQL-Parser</remote-id>
+    <remote-id type="cpan-module">CQL::AndNode</remote-id>
+    <remote-id type="cpan-module">CQL::BooleanNode</remote-id>
+    <remote-id type="cpan-module">CQL::Lexer</remote-id>
+    <remote-id type="cpan-module">CQL::ModifierSet</remote-id>
+    <remote-id type="cpan-module">CQL::Node</remote-id>
+    <remote-id type="cpan-module">CQL::NotNode</remote-id>
+    <remote-id type="cpan-module">CQL::OrNode</remote-id>
+    <remote-id type="cpan-module">CQL::Parser</remote-id>
+    <remote-id type="cpan-module">CQL::Prefix</remote-id>
+    <remote-id type="cpan-module">CQL::PrefixNode</remote-id>
+    <remote-id type="cpan-module">CQL::ProxModifierSet</remote-id>
+    <remote-id type="cpan-module">CQL::ProxNode</remote-id>
+    <remote-id type="cpan-module">CQL::Relation</remote-id>
+    <remote-id type="cpan-module">CQL::TermNode</remote-id>
+    <remote-id type="cpan-module">CQL::Token</remote-id>
+    <remote-id type="cpan-module">CQL::Utils</remote-id>
+    <remote-id type="cpan-module">CQL::Visitor</remote-id>
+  </upstream>
+</pkgmetadata>

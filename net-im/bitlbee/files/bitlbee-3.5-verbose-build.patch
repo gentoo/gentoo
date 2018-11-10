@@ -1,0 +1,200 @@
+Add a --verbose configure flag to enable verbose build output.
+
+--- bitlbee-3.5/configure
++++ bitlbee-3.5/configure
+@@ -38,6 +38,7 @@
+ twitter=1
+ purple=0
+ 
++verbose=0
+ doc=1
+ debug=0
+ strip=0
+@@ -125,6 +126,8 @@
+ --pidfile=...						$pidfile
+ --config=...						$config
+ 
++--verbose=0/1	Disable/enable verbose build	$verbose
++
+ --msn=0/1	Disable/enable MSN part			$msn
+ --jabber=0/1	Disable/enable Jabber part		$jabber
+ --oscar=0/1	Disable/enable Oscar part (ICQ, AIM)	$oscar
+@@ -282,6 +285,12 @@
+ 	debug=1
+ fi
+ 
++if [ "$verbose" = "0" ]; then
++	echo 'VERBOSE=@' >> Makefile.settings
++else
++	echo 'VERBOSE=' >> Makefile.settings
++fi
++
+ if [ "$debug" = "1" ]; then
+ 	echo 'DEBUG=1' >> Makefile.settings
+ 	CFLAGS="$CFLAGS -g3 -DDEBUG -O0"
+--- bitlbee-3.5/lib/Makefile
++++ bitlbee-3.5/lib/Makefile
+@@ -35,12 +35,12 @@
+ 
+ lib.o: $(objects) $(subdirs)
+ 	@echo '*' Linking lib.o
+-	@$(LD) $(LFLAGS) $(objects) -o lib.o
++	$(VERBOSE) $(LD) $(LFLAGS) $(objects) -o lib.o
+ 
+ $(objects): ../Makefile.settings Makefile
+ 
+ $(objects): %.o: $(_SRCDIR_)%.c
+ 	@echo '*' Compiling $<
+-	@$(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
++	$(VERBOSE) $(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
+ 
+ -include .depend/*.d
+--- bitlbee-3.5/Makefile
++++ bitlbee-3.5/Makefile
+@@ -162,28 +162,28 @@
+ 	tar czf $$x.tar.gz --exclude=debian --exclude=.git* --exclude=.depend $$x
+ 
+ $(subdirs):
+-	@$(MAKE) -C $@ $(MAKECMDGOALS)
++	$(MAKE) -C $@ $(MAKECMDGOALS)
+ 
+ $(OTR_PI): %.so: $(_SRCDIR_)%.c
+ 	@echo '*' Building plugin $@
+-	@$(CC) $(CFLAGS) -fPIC -shared $(LDFLAGS) $< -o $@ $(OTRFLAGS)
++	$(VERBOSE) $(CC) $(CFLAGS) -fPIC -shared $(LDFLAGS) $< -o $@ $(OTRFLAGS)
+ 
+ $(SKYPE_PI): $(_SRCDIR_)protocols/skype/skype.c
+ 	@echo '*' Building plugin skype
+-	@$(CC) $(CFLAGS) $(LDFLAGS) $(SKYPEFLAGS) $< -o $@
++	$(VERBOSE) $(CC) $(CFLAGS) $(LDFLAGS) $(SKYPEFLAGS) $< -o $@
+ 
+ $(objects): %.o: $(_SRCDIR_)%.c
+ 	@echo '*' Compiling $<
+-	@$(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
++	$(VERBOSE) $(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
+ 
+ $(objects): Makefile Makefile.settings config.h
+ 
+ $(OUTFILE): $(objects) $(subdirs)
+ 	@echo '*' Linking $(OUTFILE)
+-	@$(CC) $(objects) $(subdirobjs) -o $(OUTFILE) $(LDFLAGS_BITLBEE) $(LDFLAGS) $(EFLAGS)
++	$(VERBOSE) $(CC) $(objects) $(subdirobjs) -o $(OUTFILE) $(LDFLAGS_BITLBEE) $(LDFLAGS) $(EFLAGS)
+ ifneq ($(firstword $(STRIP)), \#)
+ 	@echo '*' Stripping $(OUTFILE)
+-	@-$(STRIP) $(OUTFILE)
++	$(VERBOSE) -$(STRIP) $(OUTFILE)
+ endif
+ 
+ ctags: 
+--- bitlbee-3.5/protocols/jabber/Makefile
++++ bitlbee-3.5/protocols/jabber/Makefile
+@@ -37,10 +37,10 @@
+ 
+ $(objects): %.o: $(_SRCDIR_)%.c
+ 	@echo '*' Compiling $<
+-	@$(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
++	$(VERBOSE) $(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
+ 
+ jabber_mod.o: $(objects)
+ 	@echo '*' Linking jabber_mod.o
+-	@$(LD) $(LFLAGS) $(objects) -o jabber_mod.o
++	$(VERBOSE) $(LD) $(LFLAGS) $(objects) -o jabber_mod.o
+ 
+ -include .depend/*.d
+--- bitlbee-3.5/protocols/Makefile
++++ bitlbee-3.5/protocols/Makefile
+@@ -42,18 +42,18 @@
+ 	rm -rf .depend
+ 
+ $(subdirs):
+-	@$(MAKE) -C $@ $(MAKECMDGOALS)
++	$(MAKE) -C $@ $(MAKECMDGOALS)
+ 
+ ### MAIN PROGRAM
+ 
+ protocols.o: $(objects) $(subdirs)
+ 	@echo '*' Linking protocols.o
+-	@$(LD) $(LFLAGS) $(objects) $(subdirobjs) -o protocols.o
++	$(VERBOSE) $(LD) $(LFLAGS) $(objects) $(subdirobjs) -o protocols.o
+ 
+ $(objects): ../Makefile.settings Makefile
+ 
+ $(objects): %.o: $(_SRCDIR_)%.c
+ 	@echo '*' Compiling $<
+-	@$(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
++	$(VERBOSE) $(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
+ 
+ -include .depend/*.d
+--- bitlbee-3.5/protocols/msn/Makefile
++++ bitlbee-3.5/protocols/msn/Makefile
+@@ -37,10 +37,10 @@
+ 
+ $(objects): %.o: $(_SRCDIR_)%.c
+ 	@echo '*' Compiling $<
+-	@$(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
++	$(VERBOSE) $(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
+ 
+ msn_mod.o: $(objects)
+ 	@echo '*' Linking msn_mod.o
+-	@$(LD) $(LFLAGS) $(objects) -o msn_mod.o
++	$(VERBOSE) $(LD) $(LFLAGS) $(objects) -o msn_mod.o
+ 
+ -include .depend/*.d
+--- bitlbee-3.5/protocols/oscar/Makefile
++++ bitlbee-3.5/protocols/oscar/Makefile
+@@ -38,10 +38,10 @@
+ 
+ $(objects): %.o: $(_SRCDIR_)%.c
+ 	@echo '*' Compiling $<
+-	@$(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
++	$(VERBOSE) $(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
+ 
+ oscar_mod.o: $(objects)
+ 	@echo '*' Linking oscar_mod.o
+-	@$(LD) $(LFLAGS) $(objects) -o oscar_mod.o
++	$(VERBOSE) $(LD) $(LFLAGS) $(objects) -o oscar_mod.o
+ 
+ -include .depend/*.d
+--- bitlbee-3.5/protocols/purple/Makefile
++++ bitlbee-3.5/protocols/purple/Makefile
+@@ -38,10 +38,10 @@
+ 
+ $(objects): %.o: $(_SRCDIR_)%.c
+ 	@echo '*' Compiling $<
+-	@$(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
++	$(VERBOSE) $(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
+ 
+ purple_mod.o: $(objects)
+ 	@echo '*' Linking purple_mod.o
+-	@$(LD) $(LFLAGS) $(objects) -o purple_mod.o
++	$(VERBOSE) $(LD) $(LFLAGS) $(objects) -o purple_mod.o
+ 
+ -include .depend/*.d
+--- bitlbee-3.5/protocols/twitter/Makefile
++++ bitlbee-3.5/protocols/twitter/Makefile
+@@ -37,10 +37,10 @@
+ 
+ $(objects): %.o: $(_SRCDIR_)%.c
+ 	@echo '*' Compiling $<
+-	@$(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
++	$(VERBOSE) $(CC) -c $(CFLAGS) $(CFLAGS_BITLBEE) $< -o $@
+ 
+ twitter_mod.o: $(objects)
+ 	@echo '*' Linking twitter_mod.o
+-	@$(LD) $(LFLAGS) $(objects) -o twitter_mod.o
++	$(VERBOSE) $(LD) $(LFLAGS) $(objects) -o twitter_mod.o
+ 	
+ -include .depend/*.d
+--- bitlbee-3.5/tests/Makefile
++++ bitlbee-3.5/tests/Makefile
+@@ -20,8 +20,8 @@
+ 
+ check: $(test_objs) $(addprefix ../, $(main_objs)) ../protocols/protocols.o ../lib/lib.o
+ 	@echo '*' Linking $@
+-	@$(CC) $(CFLAGS) -o $@ $^ $(LFLAGS) $(EFLAGS)
++	$(VERBOSE) $(CC) $(CFLAGS) -o $@ $^ $(LFLAGS) $(EFLAGS)
+ 
+ %.o: $(_SRCDIR_)%.c
+ 	@echo '*' Compiling $<
+-	@$(CC) -c $(CFLAGS) $< -o $@
++	$(VERBOSE) $(CC) -c $(CFLAGS) $< -o $@

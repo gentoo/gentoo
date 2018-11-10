@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>scheme@gentoo.org</email>
+		<name>Gentoo Scheme Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		STklos is a free Scheme system supporting most of the languages 
+		features defined in R5RS. The aim of this implementation is to 
+		be fast as well as light. The implementation is based on an ad-hoc 
+		Virtual Machine. STklos can also be compiled as a library and 
+		embedded in an application.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,65 @@
+.TH "ESELECT" "5" "June 2006" "Gentoo Linux" "eselect"
+.SH "NAME"
+blas.eselect \- The BLAS management module for Gentoo's eselect
+.SH "SYNOPSIS"
+\fBeselect blas\fR [\fBhelp\fR|\fBusage\fR]
+.br 
+\fBeselect blas\fR \fBlist\fR [\fIoptions\fR]
+.br 
+\fBeselect blas\fR \fBadd\fR
+.br 
+\fBeselect blas\fR \fBset\fR \fIimplementation\fR [\fIoptions\fR]
+.br 
+\fBeselect blas\fR \fBshow\fR [\fIoptions\fR]
+
+.SH "DESCRIPTION"
+\fBeselect\fR is Gentoo's configuration and management tool. It features
+modules that care for the individual administrative tasks.
+.SH "ACTION: LIST"
+\fBeselect blas list\fR [\fIoptions\fR]
+.br 
+Displays an ordered list of installed BLAS implementations. It distinguishes between versions with different
+Application Binary Interfaces (e.g. x86/AMD64). Furthermore, it also distinguishes
+between interfaces to high-level programming languages. Each line holds
+a number and the implementation's name. An asterisk next to one of the list
+elements denotes an active implementation.
+
+phi / # eselect blas list
+.br 
+Installed BLAS for libdir \fBlib\fR
+.br 
+  [1]   atlas *
+  [2]   reference
+
+Possible \fIoptions\fR to the \fBlist\fR action are restrictions to
+handle only certain ABI\-specific library directories. For example,
+ 
+\fBeselect blas list lib64\fR
+
+lists only BLAS implementations found in \fB/usr/lib64\fR.
+
+.SH "ACTION: SHOW"
+\fBeselect blas show\fR [\fIoptions\fR]
+.br 
+Shows your system's currently active BLAS implementations.
+
+phi / # eselect blas show
+.br 
+lib: atlas
+.br
+lib64: reference
+
+The same \fIoptions\fR that apply to the \fBlist\fR action can be used
+with the \fBshow\fR action to restrict it to given ABIs.
+.SH "ACTION: SET"
+\fBeselect blas set\fR \fIimplementation\fR [\fIoptions\fR]
+.br 
+Sets your system's currently active BLAS implementations to \fIimplementation\fR. 
+The same \fIoptions\fR that apply to the \fBlist\fR action can be used
+with the \fBset\fR action to restrict it to given ABIs.
+
+phi / # eselect blas set atlas
+.SH "AUTHOR"
+Danny van Dyk <kugelfang@gentoo.org>
+.br
+Donnie Berkholz <spyderous@gentoo.org>

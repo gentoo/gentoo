@@ -1,0 +1,13 @@
+--- dcpomatic-2.10.2/wscript
++++ dcpomatic-2.10.2/wscript
+@@ -89,9 +89,7 @@
+     have_c11 = int(gcc[0]) >= 4 and int(gcc[1]) >= 8 and int(gcc[2]) >= 1
+ 
+     if conf.options.enable_debug:
+-        conf.env.append_value('CXXFLAGS', ['-g', '-DDCPOMATIC_DEBUG', '-fno-omit-frame-pointer'])
+-    else:
+-        conf.env.append_value('CXXFLAGS', '-O2')
++        conf.env.append_value('CXXFLAGS', ['-DDCPOMATIC_DEBUG', '-fno-omit-frame-pointer'])
+ 
+     #
+     # Windows/Linux/OS X specific

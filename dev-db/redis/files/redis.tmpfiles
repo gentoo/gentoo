@@ -1,0 +1,2 @@
+# redis runtime directory
+d /var/run/redis 0755 redis root -

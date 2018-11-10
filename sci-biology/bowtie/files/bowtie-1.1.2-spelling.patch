@@ -1,0 +1,48 @@
+Author: Andreas Tille <tille@debian.org>
+Last-Update: Thu, 01 Oct 2015 09:47:23 +0200
+Description: Fix spelling
+
+--- a/MANUAL
++++ b/MANUAL
+@@ -544,7 +544,7 @@ The `bowtie`, `bowtie-build` and `bowtie
+ actually wrapper scripts that call binary programs as appropriate. The
+ wrappers shield users from having to distinguish between "small" and
+ "large" index formats, discussed briefly in the following section. The
+-appropiate index type is selected based on the input size.
++appropriate index type is selected based on the input size.
+ 
+ It is recommended that you always run the bowtie wrappers and not run
+ the binaries directly.
+--- a/MANUAL.markdown
++++ b/MANUAL.markdown
+@@ -559,7 +559,7 @@ The `bowtie`, `bowtie-build` and `bowtie
+ actually wrapper scripts that call binary programs as appropriate. The
+ wrappers shield users from having to distinguish between "small" and
+ "large" index formats, discussed briefly in the following section. The
+-appropiate index type is selected based on the input size.
++appropriate index type is selected based on the input size.
+ 
+ It is recommended that you always run the bowtie wrappers and not run
+ the binaries directly.
+--- a/doc/manual.html
++++ b/doc/manual.html
+@@ -201,7 +201,7 @@ T2302111203131231130300111123220
+ <p>Like other platforms, SOLiD supports generation of paired-end reads. When colorspace alignment is enabled, the default paired-end orientation setting is <a href="#bowtie-options-fr"><code>--ff</code></a>. This is because most SOLiD datasets have that orientation.</p>
+ <p>Note that SOLiD-generated read files can have &quot;orphaned&quot; mates; i.e. mates without a correpsondingly-named mate in the other file. To avoid problems due to orphaned mates, SOLiD paired-end output should first be converted to <code>.csfastq</code> files with unpaired mates omitted. This can be accomplished using, for example, [Galaxy]'s conversion tool (click &quot;NGS: QC and manipulation&quot;, then &quot;SOLiD-to-FASTQ&quot; in the left-hand sidebar).</p>
+ <h2 id="wrapper-scripts">Wrapper scripts</h2>
+-<p>The <code>bowtie</code>, <code>bowtie-build</code> and <code>bowtie-inspect</code> executables are actually wrapper scripts that call binary programs as appropriate. The wrappers shield users from having to distinguish between &quot;small&quot; and &quot;large&quot; index formats, discussed briefly in the following section. The appropiate index type is selected based on the input size.</p>
++<p>The <code>bowtie</code>, <code>bowtie-build</code> and <code>bowtie-inspect</code> executables are actually wrapper scripts that call binary programs as appropriate. The wrappers shield users from having to distinguish between &quot;small&quot; and &quot;large&quot; index formats, discussed briefly in the following section. The appropriate index type is selected based on the input size.</p>
+ <p>It is recommended that you always run the bowtie wrappers and not run the binaries directly.</p>
+ <h2 id="small-and-large-indexes">Small and large indexes</h2>
+ <p><code>bowtie-build</code> can index reference genomes of any size. For genomes less than about 4 billion nucleotides in length, <code>bowtie-build</code> builds a &quot;small&quot; index using 32-bit numbers in various parts of the index. When the genome is longer, <code>bowtie-build</code> builds a &quot;large&quot; index using 64-bit numbers. Small indexes are stored in files with the <code>.ebwt</code> extension, and large indexes are stored in files with the <code>.ebwtl</code> extension. The user need not worry about whether a particular index is small or large; the wrapper scripts will automatically build and use the appropriate index.</p>
+--- a/ref_read.cpp
++++ b/ref_read.cpp
+@@ -263,7 +263,7 @@ fastaRefReadSizes(vector<FileBuf*>& in,
+ 				     << "reference into smaller chunks and index each independently." << endl;
+ #else
+ 				cerr << "Error: Reference sequence has more than 2^32-1 characters!  Please try to" << endl
+-				     << "build a large index instead using the appropiate options." << endl;
++				     << "build a large index instead using the appropriate options." << endl;
+ #endif
+ 				throw 1;
+ 			}

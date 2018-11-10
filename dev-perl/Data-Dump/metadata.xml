@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Data-Dump</remote-id>
+    <remote-id type="cpan-module">Data::Dump</remote-id>
+    <remote-id type="cpan-module">Data::Dump::FilterContext</remote-id>
+    <remote-id type="cpan-module">Data::Dump::Filtered</remote-id>
+    <remote-id type="cpan-module">Data::Dump::Trace</remote-id>
+    <remote-id type="cpan-module">Data::Dump::Trace::Call</remote-id>
+    <remote-id type="cpan-module">Data::Dump::Trace::Wrapper</remote-id>
+  </upstream>
+</pkgmetadata>

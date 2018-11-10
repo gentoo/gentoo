@@ -1,0 +1,63 @@
+From c262cb09fa9f4dad056ba5b25a8627408bcf909a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 14 Apr 2013 20:41:41 +0200
+Subject: [PATCH] Fix handling absolute paths in single file key output.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+Fixes: https://bugs.gentoo.org/show_bug.cgi?id=464954
+---
+ intltool-merge.in | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/intltool-merge.in b/intltool-merge.in
+index 1afa2a4..47dbbdf 100644
+--- a/intltool-merge.in
++++ b/intltool-merge.in
+@@ -1108,13 +1108,20 @@ sub keys_merge_translation
+ {
+     my ($lang) = @_;
+ 
+-    if ( ! -d $lang && $MULTIPLE_OUTPUT)
++    my $outpath = "$OUTFILE";
++
++    if ($MULTIPLE_OUTPUT)
+     {
+-        mkdir $lang or -d $lang or die "Cannot create subdirectory $lang: $!\n";
++        $outpath = "$lang/$outpath";
++
++        if ( ! -d $lang )
++        {
++            mkdir $lang or -d $lang or die "Cannot create subdirectory $lang: $!\n";
++        }
+     }
+ 
+     open INPUT, "<${FILE}" or die "Cannot open ${FILE}: $!\n";
+-    open OUTPUT, ">$lang/$OUTFILE" or die "Cannot open $lang/$OUTFILE: $!\n";
++    open OUTPUT, ">$outpath" or die "Cannot open $outpath: $!\n";
+     binmode (OUTPUT) if $^O eq 'MSWin32';
+ 
+     while (<INPUT>)
+@@ -1159,7 +1166,7 @@ sub keys_merge_translation
+     close OUTPUT;
+     close INPUT;
+ 
+-    print "CREATED $lang/$OUTFILE\n" unless $QUIET_ARG;
++    print "CREATED $outpath\n" unless $QUIET_ARG;
+ }
+ 
+ sub keys_merge_translations
+@@ -1174,7 +1181,7 @@ sub keys_merge_translations
+     }
+     else
+     {
+-        keys_merge_translation (".");
++        keys_merge_translation ();
+     }
+ }
+ 
+-- 
+1.8.1.5
+

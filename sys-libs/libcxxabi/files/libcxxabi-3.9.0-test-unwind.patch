@@ -1,0 +1,37 @@
+From fff85c801ae564a09479e1e8e4cf81977536c550 Mon Sep 17 00:00:00 2001
+From: Petr Hosek <phosek@chromium.org>
+Date: Mon, 8 Aug 2016 22:09:54 +0000
+Subject: [PATCH] Do not depend on unwind when building standalone
+
+When libcxxabi is being built standalone, unwind dependency is not
+available, so do not use it even when LLVM unwinder is being
+requested.
+
+Differential Revision: https://reviews.llvm.org/D23228
+
+git-svn-id: https://llvm.org/svn/llvm-project/libcxxabi/trunk@278058 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ test/CMakeLists.txt | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 31b5d1d..3a489bf 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -36,10 +36,9 @@ endif()
+ 
+ if (NOT LIBCXXABI_BUILT_STANDALONE)
+   list(APPEND LIBCXXABI_TEST_DEPS cxx)
+-endif()
+-
+-if (LIBCXXABI_USE_LLVM_UNWINDER)
+-  list(APPEND LIBCXXABI_TEST_DEPS unwind)
++  if (LIBCXXABI_USE_LLVM_UNWINDER)
++    list(APPEND LIBCXXABI_TEST_DEPS unwind)
++  endif()
+ endif()
+ 
+ add_lit_testsuite(check-libcxxabi "Running libcxxabi tests"
+-- 
+2.10.1
+

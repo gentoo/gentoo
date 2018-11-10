@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <use>
+    <flag name="all-modules">Build all modules</flag>
+    <flag name="boost">Add support for boost</flag>
+    <flag name="cg">Use nvidia's cg shaders</flag>
+    <flag name="gdal">Support for gdal formated data</flag>
+    <flag name="imaging">Building Imaging modules</flag>
+    <flag name="json">Support for json formated data</flag>
+    <flag name="kaapi">Use <pkg>sci-libs/xkaapi</pkg> to handle smp support</flag>
+    <flag name="offscreen">Offscreen rendering through OSMesa</flag>
+    <flag name="rendering">Building Redering modules</flag>
+    <flag name="tbb">Use <pkg>dev-cpp/tbb</pkg> to handle smp support</flag>
+    <flag name="views">Building Views modules</flag>
+    <flag name="web">Install web component</flag>
+    <flag name="xdmf2">Support for xdmf2 formated data</flag>
+    <flag name="R">Enable support for dev-lang/R</flag>
+  </use>
+</pkgmetadata>

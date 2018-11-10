@@ -1,0 +1,6 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+PMS_USER=
+PMS_GROUP=
+PMS_PIDFILE=/var/run/ps3mediaserver.pid

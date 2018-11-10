@@ -1,0 +1,57 @@
+--- /usr/bin/colorgcc	2009-10-29 20:24:46.717190000 +0100
++++ colorgcc	2009-10-29 20:27:42.614162888 +0100
+@@ -102,7 +102,8 @@
+    $nocolor{"dumb"} = "true";
+ 
+    $colors{"srcColor"} = color("cyan");
+-   $colors{"introColor"} = color("blue");
++   $colors{"introFileNameColor"} = color("blue");
++   $colors{"introMessageColor"} = color("blue");
+ 
+    $colors{"warningFileNameColor"} = color("yellow");
+    $colors{"warningNumberColor"}   = color("yellow");
+@@ -111,6 +112,10 @@
+    $colors{"errorFileNameColor"} = color("bold red");
+    $colors{"errorNumberColor"}   = color("bold red");
+    $colors{"errorMessageColor"}  = color("bold red");
++
++   $colors{"noteFileNameColor"} = color("green");
++   $colors{"noteNumberColor"}   = color("green");
++   $colors{"noteMessageColor"}  = color("green");
+ }
+ 
+ sub loadPreferences
+@@ -290,12 +295,18 @@
+ 	 print($colors{"warningNumberColor"}, "$field2:", color("reset"));
+ 	 srcscan($field3, $colors{"warningMessageColor"});
+       }
+-      else 
+-      {
++      elsif ($field3 =~ m/\s+error:.*/)
++	{
+ 	 # Error
+ 	 print($colors{"errorFileNameColor"}, "$field1:", color("reset"));
+ 	 print($colors{"errorNumberColor"}, "$field2:", color("reset"));
+ 	 srcscan($field3, $colors{"errorMessageColor"});
++      } else
++      {
++	 # Note
++	 print($colors{"noteFileNameColor"}, "$field1:", color("reset"));
++	 print($colors{"noteNumberColor"}, "$field2:", color("reset"));
++	 srcscan($field3, $colors{"noteMessageColor"});
+       }
+       print("\n");
+    }
+@@ -305,8 +316,11 @@
+    }
+    elsif (m/^(.*?):(.+):$/) # filename:message:
+    {
++      my $field1 = $1 || "";
++      my $field2 = $2 || "";
+       # No line number, treat as an "introductory" line of text.
+-      srcscan($_, $colors{"introColor"});
++	 print($colors{"introFileNameColor"}, "$field1:", color("reset"));
++	 print($colors{"introMessageColor"}, "$field2:\n", color("reset"));
+    }
+    else # Anything else.
+    {

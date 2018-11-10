@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sbraz@gentoo.org</email>
+		<name>Louis Sautier</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">jaraco.text</remote-id>
+		<remote-id type="github">jaraco/jaraco.text</remote-id>
+		<bugs-to>https://github.com/jaraco/jaraco.text/issues</bugs-to>
+		<changelog>https://github.com/jaraco/jaraco.text/blob/master/CHANGES.rst</changelog>
+	</upstream>
+</pkgmetadata>

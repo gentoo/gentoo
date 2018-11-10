@@ -1,0 +1,31 @@
+--- src/cern/colt/matrix/impl/BenchmarkMatrix2D.java	2005-12-13 00:57:28.000000000 -0600
++++ src/cern/colt/matrix/impl/BenchmarkMatrix2D.java	2005-12-13 01:20:09.000000000 -0600
+@@ -331,6 +331,8 @@
+ 	cern.colt.Timer timer1 = new cern.colt.Timer();
+ 	cern.colt.Timer timer2 = new cern.colt.Timer();
+ 
++   cern.jet.math.Functions F = cern.jet.math.Functions.functions;
++
+ 	long size = (((long)rows)*columns)*runs;
+ 
+ 	DoubleMatrix2D  matrix = null;
+@@ -344,7 +346,8 @@
+ 	//if (kind.equals("sparse")) ((SparseDoubleMatrix2D)matrix).elements.hashCollisions = 0;
+ 	for (int i=0; i<runs; i++) {
+ 		timer1.start();
+-		cern.colt.matrix.doublealgo.Transform.mult(matrix, 3);
++		//cern.colt.matrix.doublealgo.Transform.mult(matrix, 3);
++      matrix.assign(F.mult(3));
+ 		timer1.stop();
+ 	}
+ 	timer1.display();
+@@ -366,7 +369,8 @@
+ 	//if (kind.equals("sparse")) ((SparseDoubleMatrix2D)matrix).elements.hashCollisions = 0;
+ 	for (int i=0; i<runs; i++) {
+ 		timer2.start();
+-		cern.colt.matrix.doublealgo.Transform.mult(matrix,3);
++		// cern.colt.matrix.doublealgo.Transform.mult(matrix,3);
++      matrix.assign(F.mult(3));
+ 		timer2.stop();
+ 	}
+ 	timer2.display();

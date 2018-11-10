@@ -1,0 +1,71 @@
+From 44851d9e90d9847fbfeaaea7b0ed1e7c3d093dcb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Esser?= <me@besser82.io>
+Date: Wed, 24 Feb 2016 23:26:20 +0100
+Subject: [PATCH] fix semantic errors in error-msgs
+
+---
+ Utilities/extra.cpp | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/Utilities/extra.cpp b/Utilities/extra.cpp
+index 21862e6..9f59263 100644
+--- a/Utilities/extra.cpp
++++ b/Utilities/extra.cpp
+@@ -49,7 +49,7 @@ int WriteMatrixMarket_ADOLCInput(string s_postfix, int i_mode, ...) {
+ 
+     ofstream out_Matrix (s_MatrixName.c_str());
+     if(!out_Matrix) {
+-	    cout<<"Error creating file: \""<<out_Matrix<<"\""<<endl;
++	    cout<<"Error creating file: \""<<s_MatrixName<<"\""<<endl;
+ 	    exit(1);
+     }
+     
+@@ -84,7 +84,7 @@ int WriteMatrixMarket_ADOLCInput(string s_postfix, int i_mode, ...) {
+     string s_MatrixName = "pattern"+s_postfix+s_BaseName;
+     ofstream out_Matrix (s_MatrixName.c_str());
+     if(!out_Matrix) {
+-	    cout<<"Error creating file: \""<<out_Matrix<<"\""<<endl;
++	    cout<<"Error creating file: \""<<s_MatrixName<<"\""<<endl;
+ 	    exit(1);
+     }
+ 
+@@ -111,7 +111,7 @@ int WriteMatrixMarket_ADOLCInput(string s_postfix, int i_mode, ...) {
+     string s_CompressedMatrixName = "CompressedMatrix"+s_postfix+s_BaseName;
+     ofstream out_CompressedMatrix (s_CompressedMatrixName.c_str());
+     if(!out_CompressedMatrix) {
+-	    cout<<"Error creating file: \""<<out_CompressedMatrix<<"\""<<endl;
++	    cout<<"Error creating file: \""<<s_CompressedMatrixName<<"\""<<endl;
+ 	    exit(1);
+     }
+     
+@@ -140,7 +140,7 @@ int WriteMatrixMarket_ADOLCInput(string s_postfix, int i_mode, ...) {
+     string s_MatrixName = "pattern_value"+s_postfix+s_BaseName;
+     ofstream out_Matrix (s_MatrixName.c_str());
+     if(!out_Matrix) {
+-	    cout<<"Error creating file: \""<<out_Matrix<<"\""<<endl;
++	    cout<<"Error creating file: \""<<s_MatrixName<<"\""<<endl;
+ 	    exit(1);
+     }
+ 
+@@ -167,7 +167,7 @@ int WriteMatrixMarket_ADOLCInput(string s_postfix, int i_mode, ...) {
+     string s_CompressedMatrixName = "CompressedMatrix"+s_postfix+s_BaseName;
+     ofstream out_CompressedMatrix (s_CompressedMatrixName.c_str());
+     if(!out_CompressedMatrix) {
+-	    cout<<"Error creating file: \""<<out_CompressedMatrix<<"\""<<endl;
++	    cout<<"Error creating file: \""<<s_CompressedMatrixName<<"\""<<endl;
+ 	    exit(1);
+     }
+     
+@@ -671,7 +671,6 @@ int buildDotWithColor(ColPack::GraphColoringInterface &g, vector<string> &ListOf
+ 	    }
+ 	  }
+ 	}
+-	
+       }
+     }
+   }
+@@ -1483,4 +1482,3 @@ int DisplayADICFormat_Value(std::list<std::vector<double> > &lvd_Value) {
+ }
+ 
+ #endif
+-

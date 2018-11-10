@@ -1,0 +1,19 @@
+--- configure.in
++++ configure.in
+@@ -30,6 +30,16 @@
+ AC_DEFINE_UNQUOTED(GQRADIO_SKINDIR, "$prefix/share/gqradio/skins", [Location of skins])
+ AC_DEFINE_UNQUOTED(GQRADIO_HELPDIR, "$prefix/share/doc/gqradio-$VERSION", [Location of documentation files])
+ 
++dnl Check for XInternAtom() in libX11 in order to prevent underlinking #492764
++AC_SEARCH_LIBS([XInternAtom], [X11], [], [
++	AC_MSG_ERROR([unable to find the XInternAtom() function])
++])
++
++dnl Check for rintf() in libm
++AC_SEARCH_LIBS([rintf], [m], [], [
++	AC_MSG_ERROR([unable to find the rintf() function])
++])
++
+ ALL_LINGUAS="fr"
+ GETTEXT_PACKAGE=$PACKAGE
+ AC_SUBST(GETTEXT_PACKAGE)

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-mathematics@gentoo.org</email>
+		<name>Gentoo Mathematics Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		GiNaC is an iterated and recursive acronym for GiNaC is Not a CAS,
+		where CAS stands for Computer Algebra System. It is designed to allow
+		the creation of integrated systems that embed symbolic manipulations
+		together with more established areas of computer science (like
+		computation-intense numeric applications, graphical interfaces, etc.)
+		under one roof.
+	</longdescription>
+</pkgmetadata>

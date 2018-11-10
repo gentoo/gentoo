@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+#
+# Author: Cor Cornelisse <corcornelisse@gmail.com>
+
+pidfile="/var/run/${SVCNAME}.pid"
+command="/usr/bin/nova-novncproxy"
+command_args="--flagfile=${FLAG_FILE} --cert=${CERT_FILE} --web ${WEB_ROOT}"
+command_background="yes"
+start_stop_daemon_args="--stdout ${LOG_PATH}/${SVCNAME}.log --stderr ${LOG_PATH}/${SVCNAME}.err"
+
+
+depend() {
+	need net
+}
+
+checkconfig() {
+  checkpath -d -m 0750 /var/log/noVNC
+	if [ ! -r /etc/conf.d/${SVCNAME} ]; then
+		eerror "No config file found: /etc/conf.d/${SVCNAME}"
+		return 1
+	fi
+	return 0
+}
+
+
+start_pre() {
+	checkconfig || return $?
+}

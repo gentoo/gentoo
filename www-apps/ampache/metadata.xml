@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>k_f@gentoo.org</email>
+		<name>Kristian Fiskerstrand</name>
+	</maintainer>
+	<use>
+		<flag name="transcode">Install optional dependencies for transcoding support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ampache/ampache</remote-id>
+	</upstream>
+</pkgmetadata>

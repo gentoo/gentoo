@@ -1,0 +1,36 @@
+--- a/Makefile
++++ b/Makefile
+@@ -14,13 +14,13 @@
+ SRCS = athcool.c scanpci.c
+ OBJS = $(SRCS:.c=.o)
+ 
+-CC	= gcc
++CC	?= gcc
+ RM	= rm -f
+-CFLAGS	= -O2 -Wall
+-DEFS    = -I. -I$(includedir) -DPACKAGE=\"$(PACKAGE)\" -DVERSION=\"$(VERSION)\"
++CFLAGS	+= -Wall
++DEFS    = -I. -DPACKAGE=\"$(PACKAGE)\" -DVERSION=\"$(VERSION)\"
+ #DEFS   += -DENABLE_FORCEID=1
+ #DEFS   += -DDISABLE_WRITE_REG=1
+-LIBS	= -lpci
++LIBS	= -lpci -lz
+ 
+ ### rules ###
+ 
+@@ -30,13 +30,13 @@
+ all: $(PACKAGE)
+ 
+ $(PACKAGE): $(OBJS)
+-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $@
++	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $@ $(LDFLAGS)
+ 
+ install: install-program install-man # install-script
+ 
+ install-program:
+ 	[ -d $(sbindir) ] || install -m 755 -d $(sbindir)
+-	install -s $(PACKAGE) $(sbindir)
++	install $(PACKAGE) $(sbindir)
+ 
+ install-man:
+ 	[ -d $(mandir)/man8 ] || install -m 755 -d $(mandir)/man8

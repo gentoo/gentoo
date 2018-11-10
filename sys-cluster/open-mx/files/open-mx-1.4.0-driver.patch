@@ -1,0 +1,14 @@
+--- Makefile.am	2011-07-15 02:42:53.000000000 +0400
++++ Makefile.am	2011-07-15 02:43:02.000000000 +0400
+@@ -20,11 +20,6 @@
+ 
+ SUBDIRS =
+ 
+-# Driver
+-if OMX_BUILD_DRIVER
+-  SUBDIRS += driver/linux
+-endif
+-
+ # Library
+ if OMX_BUILD_LIBRARY
+   SUBDIRS += libopen-mx tools tests tests/mx

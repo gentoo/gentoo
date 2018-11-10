@@ -1,0 +1,22 @@
+in 32-bits mode this goes /just/ right, in 64-bits mode Portage aborts
+because objc_demangle is implicitly turned into a pointer
+
+--- src/gdb/maint.c.orig	2009-06-23 11:12:15 +0200
++++ src/gdb/maint.c	2009-06-23 11:19:58 +0200
+@@ -31,6 +31,7 @@
+ #include "symtab.h"
+ #include "gdbtypes.h"
+ #include "demangle.h"
++#include "objc-lang.h"
+ #include "gdbcore.h"
+ #include "expression.h"		/* For language.h */
+ #include "language.h"
+@@ -167,7 +168,7 @@
+       switch (current_language->la_language)
+         {
+         case language_objc:
+-          demangled = objc_demangle (args);
++          demangled = objc_demangle (args, 0);
+           break;
+         case language_objcplus:
+         case language_cplus:

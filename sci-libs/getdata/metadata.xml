@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  The GetData Project is the reference implementation of the Dirfile
+  Standards, a filesystem-based, column-oriented database format for
+  time-ordered binary data. The Dirfile database format is designed to
+  provide a fast, simple format for storing and reading data.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">getdata</remote-id>
+  </upstream>
+</pkgmetadata>

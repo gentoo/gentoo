@@ -1,0 +1,20 @@
+--- a/decode_http.c	2000-12-19 07:38:05.000000000 +0800
++++ b/decode_http.c	2006-03-05 22:32:14.000000000 +0800
+@@ -139,14 +139,14 @@
+ 				host = p;
+ 			}
+ 			else if (req[0] == 'P') {
+-				if (strncmp(p, "Content-type: ", 14) == 0) {
+-					if (strncmp(p + 14, "application/"
++				if (strncasecmp(p, "Content-type: ", 14) == 0) {
++					if (strncasecmp(p + 14, "application/"
+ 						    "x-www-form-urlencoded",
+ 						    33) != 0) {
+ 						query = NULL;
+ 					}
+ 				}
+-				else if (strncmp(p, "Content-length: ", 16) == 0) {
++				else if (strncasecmp(p, "Content-length: ", 16) == 0) {
+ 					p += 16;
+ 					i = atoi(p);
+ 					if ((msg = buf_tok(&inbuf, NULL, i)) == NULL)

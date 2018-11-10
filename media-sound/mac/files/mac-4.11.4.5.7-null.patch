@@ -1,0 +1,12 @@
+diff -Naur monkeys-audio-4.11-u4-b5-s7_old/src/Console/Console.cpp monkeys-audio-4.11-u4-b5-s7/src/Console/Console.cpp
+--- monkeys-audio-4.11-u4-b5-s7_old/src/Console/Console.cpp	2017-03-04 17:52:24.154352673 +0100
++++ monkeys-audio-4.11-u4-b5-s7/src/Console/Console.cpp	2017-03-04 17:52:31.400352385 +0100
+@@ -51,7 +51,7 @@
+ 
+ _ErrorDesc ErrorList[][2] = {
+   ERROR_EXPLANATION
+-  NULL
++  0
+ };
+ #endif
+ 

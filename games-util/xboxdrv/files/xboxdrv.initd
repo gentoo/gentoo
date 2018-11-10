@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+PIDFILE="/var/run/${SVCNAME}.pid"
+
+start() {
+	ebegin "Starting xboxdrv"
+	start-stop-daemon --start --pidfile "${PIDFILE}" --exec /usr/bin/xboxdrv -- \
+		--daemon --detach --pid-file "${PIDFILE}" ${XBOXDRV_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping xboxdrv"
+	start-stop-daemon --stop --pidfile "${PIDFILE}"
+	eend $?
+}

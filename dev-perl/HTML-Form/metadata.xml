@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">HTML-Form</remote-id>
+		<remote-id type="cpan-module">HTML::Form</remote-id>
+		<remote-id type="cpan-module">HTML::Form::FileInput</remote-id>
+		<remote-id type="cpan-module">HTML::Form::IgnoreInput</remote-id>
+		<remote-id type="cpan-module">HTML::Form::ImageInput</remote-id>
+		<remote-id type="cpan-module">HTML::Form::Input</remote-id>
+		<remote-id type="cpan-module">HTML::Form::KeygenInput</remote-id>
+		<remote-id type="cpan-module">HTML::Form::ListInput</remote-id>
+		<remote-id type="cpan-module">HTML::Form::SubmitInput</remote-id>
+		<remote-id type="cpan-module">HTML::Form::TextInput</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,45 @@
+Fix build system to respect correct paths
+and install files in correct paths.
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -4,13 +4,11 @@
+ 
+ 
+ bin_PROGRAMS = xye
+-xye_LDFLAGS = 
+ 
++doc_DATA = NEWS ChangeLog AUTHORS
++html_DATA = ReadMe.html
+ 
+-docedir = $(datadir)/@PACKAGE@
+-doce_DATA = ReadMe.html NEWS ChangeLog AUTHORS
+-
+-levelsdir= $(datadir)/@PACKAGE@/levels
++levelsdir= $(datadir)/$(PACKAGE)/levels
+ levels_DATA = levels/5levels.xye \
+ levels/levels.xye \
+ levels/logo.xye \
+@@ -25,12 +23,10 @@
+ levels/xyester.xye \
+ levels/SuperJustin.xye
+ 
+-resdir= $(datadir)/@PACKAGE@/res
++resdir= $(datadir)/$(PACKAGE)/res
+ res_DATA = res/default.xml \
+ res/xye.png \
+ res/xye_luminosity.png \
+-res/DejaVuSans.ttf \
+-res/DejaVuSans-Bold.ttf \
+ res/fon.bmp \
+ res/fon_bold.bmp \
+ res/clean40.xml \
+@@ -103,7 +99,7 @@
+ src/skins.cpp \
+ src/skins.h
+ 
+-EXTRA_DIST = ${EXTRA_DIST1} ${xye_SOURCES} ${res_DATA} ${levels_DATA} ${doce_DATA}
++EXTRA_DIST = ${EXTRA_DIST1} ${xye_SOURCES} ${res_DATA} ${levels_DATA}
+ 
+ DEFS=@data_path_flag@
+ 

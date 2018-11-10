@@ -1,0 +1,19 @@
+--- states/hl/enscript.st.orig	2006-12-17 02:10:37.000000000 +0100
++++ states/hl/enscript.st	2006-12-17 02:10:13.000000000 +0100
+@@ -489,6 +489,7 @@
+   /\.idl$/					idl;
+   /\.(hs|lhs|gs|lgs)$/				haskell;
+   /\.(pm|pl)$/					perl;
++  /\.(rb|rbw)$/					ruby;
+   /\.(eps|EPS|ps|PS)$/				postscript;
+   /\.py$/					python;
+   /\.pyx$/					pyrex;
+@@ -531,6 +532,8 @@
+   /-\*- [Ii][Dd][Ll] -\*-/				idl;
+   /-\*- [Pp][Ee][Rr][Ll] -\*-/				perl;
+   /^#![ \t]*\/.*\/perl/					perl;
++  /-\*- [Rr][Uu][Bb][Yy] -\*-/				ruby;
++  /^#![ \t]*\/.*\/ruby/					ruby;
+   /^From:/						mail;
+   /^#![ \t]*(\/usr)?\/bin\/[ngmt]?awk/			awk;
+   /^#![ \t]*(\/usr)?\/bin\/sh/				sh;

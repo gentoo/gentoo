@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>hawkowl@twistedmatrix.com</email>
+			<name>Amber Brown</name>
+		</maintainer>
+		<remote-id type="pypi">incremental</remote-id>
+		<remote-id type="github">hawkowl/incremental</remote-id>
+	</upstream>
+</pkgmetadata>

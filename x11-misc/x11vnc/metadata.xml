@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>alex_y_xu@yahoo.ca</email>
+		<name>Alex Xu</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The primary goal of this program is to create a portable and
+		simple command-line server utility that allows a VNC viewer
+		to connect to an actual X display.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">libvncserver</remote-id>
+		<remote-id type="github">LibVNC/x11vnc</remote-id>
+	</upstream>
+</pkgmetadata>

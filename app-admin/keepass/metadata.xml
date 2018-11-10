@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ale@clearmind.me</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>kensington@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="aot">Generate native code at build time, rather than runtime.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">keepass</remote-id>
+		<bugs-to>https://sourceforge.net/p/keepass/bugs/</bugs-to>
+	</upstream>
+</pkgmetadata>

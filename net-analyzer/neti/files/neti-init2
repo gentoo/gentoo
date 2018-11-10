@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+    need net
+}
+
+start() {
+	ebegin "Starting netiathome"
+	start-stop-daemon --start --quiet --exec /usr/sbin/neti -- -D
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping netiathome"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/neti
+	eend $?
+}

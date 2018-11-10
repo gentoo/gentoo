@@ -1,0 +1,24 @@
+From 1798492a27a1ac3819cb366e1a3e789d663f55a0 Mon Sep 17 00:00:00 2001
+From: Bertrand Jacquin <bertrand@jacquin.bzh>
+Date: Wed, 21 Aug 2013 23:00:21 +0200
+Subject: [PATCH 1/2] MEDIUM: Drop default strip
+
+See: https://bugs.gentoo.org/show_bug.cgi?id=482026
+
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index deab289..126b503 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -55,7 +55,7 @@ livestatus_so_CFLAGS   = -fPIC
+ 
+ livestatus.o: $(livestatus_so_OBJECTS) $(livestatus_so_DEPENDENCIES)
+ 	-rm -f plugin.so
+-	$(CXX) $(LDFLAGS) -s -fPIC -shared $(livestatus_so_OBJECTS) -o $@ -lpthread -static-libstdc++
++	$(CXX) $(LDFLAGS) -fPIC -shared $(livestatus_so_OBJECTS) -o $@ -lpthread -static-libstdc++
+ 
+ all-local: livestatus.o
+ 

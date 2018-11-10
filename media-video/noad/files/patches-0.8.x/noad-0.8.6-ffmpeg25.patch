@@ -1,0 +1,16 @@
+Index: noad-0.8.6/ffmpeg_decoder.cpp
+===================================================================
+--- noad-0.8.6.orig/ffmpeg_decoder.cpp
++++ noad-0.8.6/ffmpeg_decoder.cpp
+@@ -253,7 +253,11 @@ int FFMPegDecoder::decoder_exit()
+ 	// close the file
+ 	if( pFormatCtx )
+ 	{
++#if LIBAVFORMAT_VERSION_MAJOR < 54
+ 		av_close_input_file(pFormatCtx);
++#else
++		avformat_close_input(&pFormatCtx);
++#endif
+ 		pFormatCtx = NULL;
+ 	}
+ 	// Close the codec

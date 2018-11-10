@@ -1,0 +1,26 @@
+Bug: https://bugs.gentoo.org/621172
+Upstream commit: https://github.com/lu-zero/postproc/pull/1/commits/d0c9ca711ef69889ebd0e44da90dccc722fe663e
+
+From d0c9ca711ef69889ebd0e44da90dccc722fe663e Mon Sep 17 00:00:00 2001
+From: Peter-Levine <plevine457@gmail.com>
+Date: Tue, 24 Oct 2017 19:24:10 -0400
+Subject: [PATCH] Use AV_CPU_FLAG_MMXEXT
+
+Use AV_CPU_FLAG_MMXEXT instead of AV_CPU_FLAG_MMX2.
+---
+ libpostproc/postprocess.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libpostproc/postprocess.c b/libpostproc/postprocess.c
+index 63b6822..951d1f0 100644
+--- a/libpostproc/postprocess.c
++++ b/libpostproc/postprocess.c
+@@ -961,7 +961,7 @@ static int get_cpu_caps(int cpuCaps)
+ 
+         if (caps & AV_CPU_FLAG_MMX)
+             cpuCaps |= PP_CPU_CAPS_MMX;
+-        if (caps & AV_CPU_FLAG_MMX2)
++        if (caps & AV_CPU_FLAG_MMXEXT)
+             cpuCaps |= PP_CPU_CAPS_MMX2;
+         if (caps & AV_CPU_FLAG_3DNOW)
+             cpuCaps |= PP_CPU_CAPS_3DNOW;

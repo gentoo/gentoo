@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>games@gentoo.org</email>
+  <name>Gentoo Games Project</name>
+ </maintainer>
+ <longdescription>
+A Design System for Interactive Fiction
+
+Just as film might be called a form of literature which needs technology to be 
+read (a cinema projector or a television set) and to be written (a camera), 
+interactive fiction is read with the aid of a computer. On this analogy, Inform 
+is a piece of software enabling any modern computer to be used as the camera, or 
+the film studio, to create works of interactive fiction. To read the resulting 
+works, you and your audience need only a simpler piece of software called an 
+interpreter.
+
+In this genre of fiction, the computer describes a world and the player types 
+instructions like touch the mirror for the protagonist character to follow; the 
+computer responds by describing the result, and so on until a story is told.
+
+Interactive fiction emerged from the old-style "adventure game" (c.1975) and 
+tends to be a playful genre, which must sometimes be teased out as though it were 
+a cryptic crossword puzzle. But this doesn't prevent it from being an artistic 
+medium, which has attracted (for instance) the former U.S. Poet Laureate, Robert 
+Pinsky, and the novelists Thomas M. Disch and Michael Crichton. An interactive 
+fiction is not a child's puzzle-book, with a maze on one page and a rebus on the 
+next, but nor is it a novel. Neither pure interaction nor pure fiction, it lies 
+in a strange and still largely unexplored land in between.
+
+Since its invention (by Graham Nelson in 1993), Inform has been used to design 
+some hundreds of works of interactive fiction, in eight languages, reviewed in 
+periodicals ranging in specialisation from XYZZYnews to The New York Times. It 
+accounts for around ten thousand postings per year to Internet newsgroups. 
+Commercially, Inform has been used as a multimedia games prototyping tool. 
+Academically, it has turned up in syllabuses and seminars from computer science 
+to theoretical architecture, and appears in books such as Cybertext: Perspectives 
+on Ergodic Literature (E. J. Aarseth, Johns Hopkins Press, 1997). Having started 
+as a revival of the then-disused Infocom adventure game format, the Z-Machine, 
+Inform came full circle when it produced Infocom's only text game of the 1990s: 
+Zork: The Undiscovered Underground, by Mike Berlyn and Marc Blank.
+ </longdescription>
+</pkgmetadata>

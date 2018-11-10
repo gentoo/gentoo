@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<longdescription>
+		Bmrblib is an API abstracting the BioMagResBank (BMRB) NMR-STAR format
+		(http://www.bmrb.wisc.edu/). It allows the writing of NMR-STAR files
+		for BMRB data deposition and the reading and easy extraction of data
+		from files residing in the BMRB data bank, all without knowledge of
+		the Self-Defining Text Archive and Retrieval (STAR) format. The API
+		has currently only python bindings.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>radhermit@gentoo.org</email>
+		<name>Tim Harder</name>
+	</maintainer>
+	<longdescription lang="en">
+	Ranger is a console file manager that gives you greater flexibility and a
+	good overview of your files without having to leave your console. It
+	visualizes the directory tree in two dimensions: the directory hierarchy on
+	one, lists of files on the other, with a preview to the right so you know
+	where you'll be going.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ranger/ranger</remote-id>
+	</upstream>
+</pkgmetadata>

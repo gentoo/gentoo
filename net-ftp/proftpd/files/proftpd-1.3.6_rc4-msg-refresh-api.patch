@@ -1,0 +1,29 @@
+diff --git a/mod_msg.c b/mod_msg.c
+index 70bce69..4ce6bd7 100644
+--- a/mod_msg.c
++++ b/mod_msg.c
+@@ -52,10 +52,14 @@ extern pid_t mpid;
+ 
+ module msg_module;
+ 
+-#ifndef USE_CTRLS
++#ifndef PR_USE_CTRLS
+ # error "mod_msg requires Controls support (--enable-ctrls)"
+ #endif /* USE_CTRLS */
+ 
++#define pr_scoreboard_read_entry pr_scoreboard_entry_read
++#define DECLINED PR_DECLINED
++#define HANDLED PR_HANDLED
++
+ static ctrls_acttab_t msg_acttab[];
+ 
+ static int msg_engine = FALSE;
+@@ -709,7 +713,7 @@ static int msg_handle_msg(pr_ctrls_t *ctrl, int reqargc, char **reqargv) {
+       if (msg_send_msg(score->sce_pid, msgstr) < 0) {
+         msg_errno = errno;
+         (void) pr_log_writefile(msg_logfd, MOD_MSG_VERSION,
+-          "error sending message to all (pid %u): %s", reqargv[1],
++          "error sending message to all (pid %u): %s",
+           score->sce_pid, strerror(errno));
+ 
+       } else

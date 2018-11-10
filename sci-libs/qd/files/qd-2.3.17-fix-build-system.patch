@@ -1,0 +1,179 @@
+Fix build system
+* --enable options were misspecified
+* Targets were missing dependencies
+* Disable setting CXXFLAGS
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -18,14 +18,14 @@
+ 
+ AC_CONFIG_AUX_DIR(config)
+ AM_INIT_AUTOMAKE([nostdinc])
+-AM_CONFIG_HEADER([config.h])
+-AM_CONFIG_HEADER([include/qd/qd_config.h])
++AC_CONFIG_HEADERS([config.h])
++AC_CONFIG_HEADERS([include/qd/qd_config.h])
+ 
+ AC_CANONICAL_HOST
+ 
+ # Checks for arguments
+ # --enable-inline
+-AC_ARG_ENABLE(enable_inline, AC_HELP_STRING(--enable-inline, [inline commonly used functions.  [[default=yes]]]))
++AC_ARG_ENABLE([inline], AS_HELP_STRING(--enable-inline, [inline commonly used functions.  [[default=yes]]]))
+ AC_MSG_CHECKING([if commonly used function is to be inlined])
+ if test "$enable_inline" != "no"; then
+   enable_inline="yes"
+@@ -34,7 +34,7 @@
+ AC_MSG_RESULT($enable_inline)
+ 
+ # --enable-ieee-add
+-AC_ARG_ENABLE(enable_ieee_add, AC_HELP_STRING(--enable-ieee-add, [use addition that satisfies IEEE-style error bound instead of Cray-style error bound.  [[default=no]]]))
++AC_ARG_ENABLE([ieee-add], AS_HELP_STRING(--enable-ieee-add, [use addition that satisfies IEEE-style error bound instead of Cray-style error bound.  [[default=no]]]))
+ AC_MSG_CHECKING([if addition with IEEE-style error bound is to be used])
+ if test "$enable_ieee_add" = "yes"; then
+   AC_DEFINE([QD_IEEE_ADD], [1], [Define to 1 to use additions with IEEE-style error bounds.])
+@@ -44,7 +44,7 @@
+ AC_MSG_RESULT($enable_ieee_add)
+ 
+ # --enable-sloppy-mul
+-AC_ARG_ENABLE(enable_sloppy_mul, AC_HELP_STRING(--enable-sloppy-mul, [use fast but slightly inaccurate multiplication.  [[default=yes]]]))
++AC_ARG_ENABLE([sloppy-mul], AS_HELP_STRING(--enable-sloppy-mul, [use fast but slightly inaccurate multiplication.  [[default=yes]]]))
+ AC_MSG_CHECKING([if sloppy multiplication is to be used])
+ if test "$enable_sloppy_mul" != "no"; then
+   enable_sloppy_mul="yes"
+@@ -53,7 +53,7 @@
+ AC_MSG_RESULT($enable_sloppy_mul)
+ 
+ # --enable-sloppy-div
+-AC_ARG_ENABLE(enable_sloppy_div, AC_HELP_STRING(--enable-sloppy-div, [use fast but slightly inaccurate division.  [[default=yes]]]))
++AC_ARG_ENABLE([sloppy-div], AS_HELP_STRING(--enable-sloppy-div, [use fast but slightly inaccurate division.  [[default=yes]]]))
+ AC_MSG_CHECKING([if sloppy division is to be used])
+ if test "$enable_sloppy_div" != "no"; then
+   enable_sloppy_div="yes"
+@@ -63,7 +63,7 @@
+ 
+ 
+ # --enable-debug
+-AC_ARG_ENABLE(enable_debug, AC_HELP_STRING(--enable-debug, [enable debugging code. [[default=no]]]))
++AC_ARG_ENABLE([debug], AS_HELP_STRING(--enable-debug, [enable debugging code. [[default=no]]]))
+ AC_MSG_CHECKING([if debugging code is to be enabled])
+ if test "$enable_debug" = "yes"; then
+   AC_DEFINE([QD_DEBUG], [1], [Define to 1 to enable debugging code.])
+@@ -73,7 +73,7 @@
+ AC_MSG_RESULT($enable_debug)
+ 
+ # --enable-warnings
+-AC_ARG_ENABLE(enable_warnings, AC_HELP_STRING(--enable-warnings, [enable compiler warnings. [[default=no]]]))
++AC_ARG_ENABLE([warnings], AS_HELP_STRING(--enable-warnings, [enable compiler warnings. [[default=no]]]))
+ AC_MSG_CHECKING([if compiler warnings is to be enabled])
+ if test "$enable_warnings" != "yes"; then
+   enable_warnings="no"
+@@ -83,13 +83,6 @@
+ 
+ # Checks for programs.
+ AC_LANG(C++)
+-if test "$CXXFLAGS" = ""; then
+-  if test "$enable_debug" = "yes"; then
+-    CXXFLAGS="-O"
+-  else
+-    CXXFLAGS="-O2"
+-  fi
+-fi
+ 
+ # Set up compiler search list.  DUe to possible case insensitive filesystems, 
+ # Cygwin and Apple systems sometimes gets confused between cc and CC.
+@@ -106,50 +99,10 @@
+ fi
+ AC_PROG_CC
+ 
+-
+-CXX_PROG_NAME=`basename $CXX`
+-case $host in
+-  powerpc*-*-*)
+-    case "$CXX_PROG_NAME" in
+-      xlC*) 
+-        REQ_CXXFLAGS="$REQ_CXXFLAGS -qstrict"
+-      ;;
+-    esac
+-  ;;
+-  i?86-*-* | k?*-*-* | athlon-*-* | ia64-*-* | x86_64-*-*)
+-    case "$CXX_PROG_NAME" in
+-      icc|icpc|ecc)
+-        REQ_CXXFLAGS="$REQ_CXXFLAGS -mp"
+-        if test "$enable_warnings" = "yes"; then
+-          CXXFLAGS="$CXXFLAGS -wd1572 -wd981 -wd1418 -wd1419"
+-        fi
+-      ;;
+-    esac
+-  ;;
+-  alpha*-*-*)
+-    case "$CXX_PROG_NAME" in
+-      cxx) 
+-        CXXFLAGS="$CXXFLAGS -std strict_ansi -tweak"
+-      ;;
+-    esac
+-  ;;
+-esac
+-
+-AC_SUBST(REQ_CXXFLAGS)
+-CXXFLAGS="$CXXFLAGS $REQ_CXXFLAGS"
+-
+-if test "$enable_warnings" = "yes"; then
+-  if test "$GCC" = "yes"; then
+-    CXXFLAGS="$CXXFLAGS -Wall"
+-  fi
+-fi
+-
+-if test "$enable_debug" = "yes"; then
+-  CXXFLAGS="$CXXFLAGS -g"
+-fi
++CXXFLAGS="${CXXFLAGS} -Wall"
+ 
+ # --enable-fma
+-AC_ARG_ENABLE(enable_fma, AC_HELP_STRING(--enable-fma, [use fused multiply-add/subtract (auto,gnu,ia64,c99,ibm,compiler).  Use this option with care.  [[default=auto]]]))
++AC_ARG_ENABLE([fma], AS_HELP_STRING(--enable-fma, [use fused multiply-add/subtract (auto,gnu,ia64,c99,ibm,compiler).  Use this option with care.  [[default=auto]]]))
+ if test "x$enable_fma" = "x"; then
+   enable_fma="auto"
+ fi
+@@ -248,7 +201,7 @@
+     FCFLAGS="-O2"
+   fi
+ fi
+-AC_ARG_ENABLE(enable_fortran, AC_HELP_STRING(--enable-fortran, [build Fortran 77/90 interfaces [[default=auto]]]))
++AC_ARG_ENABLE([fortran], AS_HELP_STRING(--enable-fortran, [build Fortran 77/90 interfaces [[default=auto]]]))
+ if test "$enable_fortran" != "no"; then
+   AC_LANG_PUSH(Fortran)
+   AC_PROG_FC([xlf95 ifort pathf95 f95 gfortran g95 pgf95 lf95 fort ifc efc pathf90 xlf90 pgf90 epcf90 xlf f90])
+@@ -312,8 +265,7 @@
+ AC_CHECK_LIB(m,sqrt)
+ 
+ # libtool stuff
+-AC_DISABLE_SHARED
+-AC_PROG_LIBTOOL
++LT_INIT
+ 
+ # Output
+ AC_CONFIG_FILES([Makefile config/Makefile src/Makefile include/Makefile 
+--- a/fortran/Makefile.am
++++ b/fortran/Makefile.am
+@@ -16,7 +16,9 @@
+ 
+ lib_LTLIBRARIES = libqdmod.la libqd_f_main.la
+ libqdmod_la_SOURCES = ddext.f ddmod.f qdext.f qdmod.f f_dd.cpp f_qd.cpp
++libqdmod_la_LIBADD = $(top_builddir)/src/libqd.la $(FCLIBS)
+ libqd_f_main_la_SOURCES = main.cpp
++libqd_f_main_la_LIBADD = $(top_builddir)/src/libqd.la libqdmod.la $(FCLIBS)
+ ddmod.lo: $(DDEXT) ddext.lo
+ qdmod.lo: ddmod.lo $(DDMOD) qdext.lo
+ $(QDMOD): qdmod.lo $(DDMOD)
+--- a/qd-config.in
++++ b/qd-config.in
+@@ -14,7 +14,7 @@
+ build_CXXFLAGS="@CXXFLAGS@"
+ build_LDFLAGS="@LDFLAGS@"
+ CXX="@CXX@"
+-CXXFLAGS="-I$includedir @REQ_CXXFLAGS@"
++CXXFLAGS="-I$includedir"
+ FC="@FC@"
+ 
+ LDFLAGS="-L$libdir -lqd @LIBS@"

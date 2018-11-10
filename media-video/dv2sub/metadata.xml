@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Utility dv2sub reads raw DV stream from file argument dv-file or
+		standard input if absent. It can generate a parameter log about
+		every input DV frame or create MicroDVD subtitles with the
+		recording date and time.
+	</longdescription>
+	<use>
+		<flag name="kino">install kino plugin</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">dv2sub</remote-id>
+	</upstream>
+</pkgmetadata>

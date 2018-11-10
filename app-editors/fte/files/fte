@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# simple wrapper shell script which selects appropriate fte executable
+#
+
+if [ -n "$DISPLAY" ]; then
+	if which xfte >/dev/null; then
+		exec xfte "$@"
+	elif which sfte >/dev/null; then
+		exec sfte "$@"
+	elif which vfte >/dev/null; then
+		echo "Only Console version installed!"
+	fi
+else
+	if [ "$TERM" = linux ] && which vfte >/dev/null; then
+		exec vfte "$@"
+	elif which sfte >/dev/null; then
+		exec sfte "$@"
+	elif which xfte >/dev/null; then
+		echo "Only X-Window version installed!"
+	fi
+
+fi
+
+echo "No binary executable from the FTE family has been found!"
+echo "Please install one of them."

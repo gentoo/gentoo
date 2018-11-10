@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-accessibility category contains packages which help with
+		accessibility (for example, screen readers).
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-accessibility contiene paquetes para ayudar con 
+		accesibilidad (por ejemplo, lectores de pantallas).
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-accessibility enthält Programme für barrierefreies
+		Arbeiten (Accessibility), wie beispielsweise Screenreader.
+	</longdescription>
+	<longdescription lang="nl">
+		De app-accessibility categorie bevat applicaties die de
+		toegankelijkheid bevorderen, bijvoorbeeld een schermlezer.
+	</longdescription>
+	<longdescription lang="ja">
+		app-accessibilityカテゴリィにはアクセシビリティと
+		手伝うパッケージが含まれます。
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-accessibility chứa các gói trợ giúp về truy nhập (ví dụ, trình đọc màn hình)
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-accessibility contiene strumenti per l'accessibilità del software (ad esempio lettori di schermo per ipovedenti).
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-accessibility contém pacotes que ajudam com
+		acessibilidade (por exemplo, leitores de tela).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-accessibility zawiera pakiety ułatwiające dostęp do
+		komputera osobom niepełnosprawnym.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,43 @@
+--- a/configure.ac	2016-10-17 23:01:04.000000000 +0200
++++ b/configure.ac	2016-12-28 02:42:37.936610002 +0100
+@@ -400,6 +379,7 @@
+   fi
+ 
+   LIBS="${LIBS} ${SQLITE_LIBADD}"
++  AC_SUBST(SQLITE_LIBADD)
+   CPPFLAGS="${SQLITE_INCADD} ${CPPFLAGS}"
+ 
+   AC_DEFINE(HAVE_SQLITE,[],[Build in SQLite support?])
+@@ -437,7 +416,9 @@
+ 	fi
+ 
+ 	if test "$cyrus_cv_pcre_utf8" = "yes"; then
+-		LIBS="$LIBS -lpcre -lpcreposix";
++		PCRE_LIBS="-lpcre -lpcreposix"
++		AC_SUBST(PCRE_LIBS)
++		LIBS="$LIBS $PCRE_LIBS"
+ 		AC_DEFINE(ENABLE_REGEX, [], [Do we have a regex library?])
+ 		AC_DEFINE(HAVE_PCREPOSIX_H, [], [Do we have usable pcre library?])
+ 	else
+--- a/perl/imap/Makefile.PL.in	2016-10-17 23:01:04.000000000 +0200
++++ b/perl/imap/Makefile.PL.in	2016-12-28 02:42:04.559449967 +0100
+@@ -69,7 +69,7 @@
+     'clean'	=> {'FILES' => 'libcyrperl.a cyradm'},
+     'OBJECT'    => 'IMAP.o',
+     'MYEXTLIB'  => '@top_builddir@/perl/.libs/libcyrus.a @top_builddir@/perl/.libs/libcyrus_min.a',
+-    'LIBS'	=> [ "@BDB_LIB@ $LIB_SASL @SSL_LIBS@ @LIB_RT@ @LIB_UUID@ @ZLIB@"],
++    'LIBS'	=> [ "@BDB_LIB@ $LIB_SASL @SSL_LIBS@ @LIB_RT@ @LIB_UUID@ @ZLIB@ @PCRE_LIBS@ @SQLITE_LIBADD@"],
+     'DEFINE'	=> '-DPERL_POLLUTE',    # e.g., '-DHAVE_SOMETHING' 
+     'INC'	=> "@BDB_INC@ -I@top_srcdir@ -I@top_srcdir@/com_err/et @SASLFLAGS@ @SSL_CPPFLAGS@ -I@top_srcdir@/perl/imap", 
+     'EXE_FILES' => [cyradm],
+--- a/perl/sieve/managesieve/Makefile.PL.in	2016-10-17 23:01:04.000000000 +0200
++++ b/perl/sieve/managesieve/Makefile.PL.in	2016-12-28 02:42:34.496490437 +0100
+@@ -52,7 +52,7 @@
+     'ABSTRACT'  => 'Cyrus Sieve management interface',
+     'VERSION_FROM' => "@top_srcdir@/perl/sieve/managesieve/managesieve.pm", # finds $VERSION
+     'MYEXTLIB'  => '../lib/libisieve.a @top_builddir@/perl/.libs/libcyrus.a @top_builddir@/perl/.libs/libcyrus_min.a',
+-    'LIBS'	=> ["@BDB_LIB@ $LIB_SASL @SSL_LIBS@ @LIB_RT@ @LIB_UUID@ @ZLIB@"],
++    'LIBS'	=> ["@BDB_LIB@ $LIB_SASL @SSL_LIBS@ @LIB_RT@ @LIB_UUID@ @ZLIB@ @PCRE_LIBS@ @SQLITE_LIBADD@"],
+     'CCFLAGS'	=> '@COV_CFLAGS@',
+     'DEFINE'	=> '-DPERL_POLLUTE',     # e.g., '-DHAVE_SOMETHING' 
+     'INC'	=> "@BDB_INC@ -I@top_srcdir@/lib -I@top_srcdir@/perl/sieve/lib @SASLFLAGS@ @SSL_CPPFLAGS@",

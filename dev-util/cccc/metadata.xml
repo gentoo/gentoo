@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nerdboy@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		cccc provides source code metrics (line counts, complexity,
+		object-oriented, and structural metrics) for Java and C++
+	</longdescription>
+	<upstream>
+		<remote-id type="github">sarnold/cccc</remote-id>
+		<bugs-to>https://github.com/sarnold/cccc/issues</bugs-to>
+	</upstream>
+	<use>
+		<flag name="apidoc">Build software docs with doxygen/graphviz and metrics with cccc</flag>
+		<flag name="mfc">Add patch for MFC dialect options</flag>
+	</use>
+</pkgmetadata>

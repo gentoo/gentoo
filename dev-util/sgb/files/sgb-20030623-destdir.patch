@@ -1,0 +1,76 @@
+diff -Nuar -Nuar work.orig/Makefile work/Makefile
+--- work.orig/Makefile	2009-09-22 01:59:32.521217030 +0000
++++ work/Makefile	2009-09-22 01:58:42.494972535 +0000
+@@ -93,50 +93,48 @@
+ 	$(CC) $(CFLAGS) -DDATA_DIRECTORY=\"$(DATADIR)/\" -c gb_io.c
+ 
+ test_io: gb_io.o
+-	$(CC) $(CFLAGS) test_io.c gb_io.o -o test_io
++	$(CC) $(CFLAGS) $(LDFLAGS) test_io.c gb_io.o -o test_io
+ 
+ test_graph: gb_graph.o
+-	$(CC) $(CFLAGS) test_graph.c gb_graph.o -o test_graph
++	$(CC) $(CFLAGS) $(LDFLAGS) test_graph.c gb_graph.o -o test_graph
+ 
+ test_flip: gb_flip.o
+-	$(CC) $(CFLAGS) test_flip.c gb_flip.o -o test_flip
++	$(CC) $(CFLAGS) $(LDFLAGS) test_flip.c gb_flip.o -o test_flip
+ 
+-tests: test_io test_graph test_flip
++tests: certified
++
++tests_phase1: test_io test_graph test_flip
+ 	./test_io
+ 	./test_graph
+ 	./test_flip
+-	make gb_sort.o
+-	make lib
+-	make test_sample
++
++certified tests_phase2: tests_phase1 gb_sort.o lib test_sample
+ 	- ./test_sample > sample.out
+ 	diff test.gb test.correct
+ 	diff sample.out sample.correct
+-	rm test.gb sample.out test_io test_graph test_flip test_sample
++	echo rm test.gb sample.out test_io test_graph test_flip test_sample
+ 	echo "Congratulations --- the tests have all been passed."
+ 	touch certified
+ 
+-install: lib
+-	if test ! -r certified; then echo "Please run 'make tests' first!"; fi
+-	test -r certified
+-	make installdata
+-	- mkdir $(LIBDIR)
+-	- cp libgb.a $(LIBDIR)
+-	- mkdir $(CWEBINPUTS)
+-	- cp -p boilerplate.w gb_types.w $(CWEBINPUTS)
+-	- mkdir $(INCLUDEDIR)
+-	- cp -p $(HEADERS) Makefile $(INCLUDEDIR)
++install: lib certified installdata
++	- mkdir -p $(DESTDIR)$(LIBDIR)
++	- cp libgb.a $(DESTDIR)$(LIBDIR)
++	- mkdir -p $(DESTDIR)$(CWEBINPUTS)
++	- cp -p boilerplate.w gb_types.w $(DESTDIR)$(CWEBINPUTS)
++	- mkdir -p $(DESTDIR)$(INCLUDEDIR)
++	- cp -p $(HEADERS) Makefile $(DESTDIR)$(INCLUDEDIR)
+ 
+ installdata: $(DATAFILES)
+-	- mkdir $(SGBDIR)
+-	- mkdir $(DATADIR)
+-	- cp -p $(DATAFILES) $(DATADIR)
++	- mkdir -p $(DESTDIR)$(SGBDIR)
++	- mkdir -p $(DESTDIR)$(DATADIR)
++	- cp -p $(DATAFILES) $(DESTDIR)$(DATADIR)
+ 
+ installdemos: lib $(DEMOS)
+-	- mkdir $(BINDIR)
+-	- mv $(DEMOS) $(BINDIR)
++	- mkdir -p $(DESTDIR)$(BINDIR)
++	- mv $(DEMOS) $(DESTDIR)$(BINDIR)
+ 
+ uninstalldemos:
+-	- cd $(BINDIR); rm -f $(DEMOS)
++	- cd $(DESTDIR)$(BINDIR); rm -f $(DEMOS)
+ 
+ doc:
+ 	tex abstract.plaintex

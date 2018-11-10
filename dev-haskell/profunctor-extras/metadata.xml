@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package provides a number of utilities and constructions that arise
+		when working with profunctors that require minor extensions to Haskell 98.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ekmett/profunctor-extras</remote-id>
+	</upstream>
+</pkgmetadata>

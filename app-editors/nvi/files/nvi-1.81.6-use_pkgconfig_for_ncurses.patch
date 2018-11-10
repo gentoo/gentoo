@@ -1,0 +1,30 @@
+diff -uNr nvi-1.81.6.orig/dist/configure.in nvi-1.81.6/dist/configure.in
+--- nvi-1.81.6.orig/dist/configure.in	2013-07-09 17:17:35.000000000 -0400
++++ nvi-1.81.6/dist/configure.in	2013-07-09 17:18:48.000000000 -0400
+@@ -263,11 +263,13 @@
+ 	[  --enable-gtk            Build a Gtk front-end for vi.],
+ 	[vi_cv_gtk=$enableval], [vi_cv_gtk="no"])
+ AC_MSG_RESULT($vi_cv_gtk)
++
++#
++# Find pkg-config
++#
++AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
++
+ if test "$vi_cv_gtk" = "yes"; then
+-	#
+-	# Find pkg-config
+-	#
+-	AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
+ 	if test x$PKG_CONFIG = xno ; then
+ 	    if test "$vi_cv_widechar" = "yes"; then
+ 	        AC_MSG_ERROR(
+@@ -531,7 +533,7 @@
+ 			[CURSHEADER=ncursesw/ncurses.h])
+ 	    fi
+ 	    vi_programs="vi $vi_programs"
+-	    CURSLIBS="-l$vi_cv_curses"
++	    CURSLIBS=`$PKG_CONFIG --libs $vi_cv_curses`
+ 	else
+ 	    AC_MSG_WARN([*** No suitable curses library found.])
+ 	    if test "$vi_programs"X = X; then

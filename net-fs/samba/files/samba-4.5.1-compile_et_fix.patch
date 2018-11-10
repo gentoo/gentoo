@@ -1,0 +1,16 @@
+--- samba-4.5.1/source4/heimdal_build/wscript_configure
++++ samba-4.5.1/source4/heimdal_build/wscript_configure
+@@ -258,7 +258,11 @@
+ 
+ # With the proper checks in place we should be able to build against the system libtommath.
+ #if conf.CHECK_BUNDLED_SYSTEM('tommath', checkfunctions='mp_init', headers='tommath.h'):
+ #    conf.define('USING_SYSTEM_TOMMATH', 1)
+ 
+-check_system_heimdal_binary("compile_et")
+-check_system_heimdal_binary("asn1_compile")
++# comment out next line to stop Gentoo Samba build from using the compile_et in e2fsprogs-libs
++# to compile the error tables. This produces a compile error later on.
++#check_system_heimdal_binary("compile_et")
++#
++# As a precaution do the same for asn1_compile
++#check_system_heimdal_binary("asn1_compile")

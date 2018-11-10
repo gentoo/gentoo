@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<use>
+		<flag name="kate">Add karaoke and text encapsulation support for Ogg files</flag>
+		<flag name="logrotate">Install support files for <pkg>app-admin/logrotate</pkg>?</flag>
+		<flag name="yp">Build support for yp public directory listings</flag>
+	</use>
+</pkgmetadata>

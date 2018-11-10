@@ -1,0 +1,18 @@
+--- ./duhdraw-2.8.13/Makefile.orig	2005-03-02 09:22:46.000000000 +0100
++++ ./duhdraw-2.8.13/Makefile	2006-11-16 09:58:29.000000000 +0100
+@@ -12,15 +12,12 @@
+ 
+ ansi:	cleanansi
+ 	$(CC) -o ansi ansi.c ansi-esc.c $(LIBS)
+-	$(STRIP) ansi
+ 
+ duhdraw:	cleandd	
+ 	$(CC) -o duhdraw duhdraw.c ansi-esc.c $(LIBS) 
+-	$(STRIP) duhdraw
+ 
+ ansitoc:	cleanansitoc	
+ 	$(CC) -o ansitoc ansitoc.c
+-	$(STRIP) ansitoc
+ 
+ cleanansi:	
+ 	rm -f ansi

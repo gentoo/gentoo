@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		User space daemon for the hostap-driver.
+		Extended IEEE 802.11 management, IEEE 802.1X Authenticator,
+		RADIUS Authentication client, RADIUS Accounting client
+	</longdescription>
+	<use>
+		<flag name="crda">Add CRDA support</flag>
+		<flag name="internal-tls">Use internal TLSv1 implementation instead of depending on OpenSSL, LibreSSL or GnuTLS</flag>
+		<flag name="logwatch">Install support files for 
+			<pkg>sys-apps/logwatch</pkg></flag>
+		<flag name="netlink">Adding support for using netlink to create VLANs</flag>
+		<flag name="sqlite">Adding sqlite support</flag>
+		<flag name="wps">Add support for Wi-Fi Protected Setup</flag>
+	</use>
+	<maintainer type="person">
+		<email>andrey_utkin@gentoo.org</email>
+		<name>Andrey Utkin</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
+</pkgmetadata>

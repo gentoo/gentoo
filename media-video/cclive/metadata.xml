@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Command line tool for extracting videos from Youtube, Google Video,
+		Dailymotion, Guba (free) and Stage6  websites
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">cclive</remote-id>
+	</upstream>
+</pkgmetadata>

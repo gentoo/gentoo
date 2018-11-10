@@ -1,0 +1,72 @@
+ build/linux/debug/Makefile   |    2 +-
+ build/linux/release/Makefile |    2 +-
+ build/makefile_common        |   14 +++++++-------
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/build/linux/debug/Makefile b/build/linux/debug/Makefile
+index 6a41cfc..8097fb9 100644
+--- a/build/linux/debug/Makefile
++++ b/build/linux/debug/Makefile
+@@ -1,7 +1,7 @@
+ BASE=/usr/local
+ BOOST_VERSION=1_41
+ BOOST_INCLUDE = $(BASE)/include
+-C_PLATFORM=-static -pthread
++C_PLATFORM=-pthread
+ GPP=/usr/local/bin/g++
+ C_OPTIONS= -g
+ BOOST_LIB_VERSION=
+diff --git a/build/linux/release/Makefile b/build/linux/release/Makefile
+index 1de1063..ded8133 100644
+--- a/build/linux/release/Makefile
++++ b/build/linux/release/Makefile
+@@ -1,7 +1,7 @@
+ BASE=/usr/local
+ BOOST_VERSION=1_41
+ BOOST_INCLUDE = $(BASE)/include
+-C_PLATFORM=-static -pthread
++C_PLATFORM=-pthread
+ GPP=/usr/local/bin/g++
+ C_OPTIONS= -O3 -DNDEBUG
+ BOOST_LIB_VERSION=
+diff --git a/build/makefile_common b/build/makefile_common
+index a940329..96336e8 100644
+--- a/build/makefile_common
++++ b/build/makefile_common
+@@ -2,29 +2,29 @@ LIBOBJ = cache.o coords.o current_weights.o everything.o grid.o szv_grid.o manif
+ MAINOBJ = main.o
+ SPLITOBJ = split.o
+ 
+-INCFLAGS = -I $(BOOST_INCLUDE)
++INCFLAGS = -I$(BOOST_INCLUDE)
+ 
+ # -pedantic fails on Mac with Boost 1.41 (syntax problems in their headers)
+ #CC = ${GPP} ${C_PLATFORM} -ansi -pedantic -Wno-long-long ${C_OPTIONS} $(INCFLAGS)
+ CC = ${GPP} ${C_PLATFORM} -ansi -Wno-long-long ${C_OPTIONS} $(INCFLAGS)
+ 
+-LDFLAGS = -L$(BASE)/lib -L.
++LDFLAGS += -L.
+ 
+-LIBS = -l boost_system${BOOST_LIB_VERSION} -l boost_thread${BOOST_LIB_VERSION} -l boost_serialization${BOOST_LIB_VERSION} -l boost_filesystem${BOOST_LIB_VERSION} -l boost_program_options${BOOST_LIB_VERSION}#-l pthread
++LIBS = -lboost_system -lboost_thread -lboost_serialization -lboost_filesystem -lboost_program_options -lpthread
+ 
+ .SUFFIXES: .cpp .o
+ 
+ %.o : ../../../src/lib/%.cpp 
+-	$(CC) $(CFLAGS) -o $@ -c $< 
++	$(CC) $(CXXFLAGS) -o $@ -c $< 
+ 
+ %.o : ../../../src/design/%.cpp 
+-	$(CC) $(CFLAGS) -I ../../../src/lib -o $@ -c $< 
++	$(CC) $(CXXFLAGS) -I ../../../src/lib -o $@ -c $< 
+ 	
+ %.o : ../../../src/main/%.cpp 
+-	$(CC) $(CFLAGS) -I ../../../src/lib -o $@ -c $< 
++	$(CC) $(CXXFLAGS) -I ../../../src/lib -o $@ -c $< 
+ 
+ %.o : ../../../src/split/%.cpp 
+-	$(CC) $(CFLAGS) -I ../../../src/lib -o $@ -c $< 
++	$(CC) $(CXXFLAGS) -I ../../../src/lib -o $@ -c $< 
+ 
+ all: vina vina_split
+ 

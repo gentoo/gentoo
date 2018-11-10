@@ -1,0 +1,177 @@
+Author: Jaromír Mikeš <mira.mikes@seznam.cz>, Olly Betts <olly@survex.com>
+Description: build against wx 3.0.
+Forwarded: yes
+
+Index: sooperlooper/src/gui/main_panel.cpp
+===================================================================
+--- sooperlooper.orig/src/gui/main_panel.cpp
++++ sooperlooper/src/gui/main_panel.cpp
+@@ -448,7 +448,7 @@ MainPanel::init_loopers (int count)
+ 		while (count < (int)_looper_panels.size()) {
+ 			looperpan = _looper_panels.back();
+ 			_looper_panels.pop_back();
+-			_main_sizer->Remove(looperpan);
++			_main_sizer->Detach(looperpan);
+ 			looperpan->Destroy();
+ 		}
+ 	}
+@@ -1277,7 +1277,7 @@ void MainPanel::misc_action (bool releas
+ 		}
+ 
+ 
+-		wxString filename = do_file_selector (wxT("Choose file to save loop"), wxT("wav"), wxT("WAVE files (*.wav)|*.wav;*.WAV;*.Wav"),  wxSAVE|wxCHANGE_DIR|wxOVERWRITE_PROMPT);
++		wxString filename = do_file_selector (wxT("Choose file to save loop"), wxT("wav"), wxT("WAVE files (*.wav)|*.wav;*.WAV;*.Wav"),  wxFD_SAVE|wxFD_CHANGE_DIR|wxFD_OVERWRITE_PROMPT);
+ 		
+ 		if ( !filename.empty() )
+ 		{
+@@ -1296,7 +1296,7 @@ void MainPanel::misc_action (bool releas
+ 			index = 0;
+ 		}
+ 
+-		wxString filename = do_file_selector (wxT("Choose file to open"), wxT(""), wxT("*.slsess"), wxOPEN|wxCHANGE_DIR);
++		wxString filename = do_file_selector (wxT("Choose file to open"), wxT(""), wxT("*.slsess"), wxFD_OPEN|wxFD_CHANGE_DIR);
+ 		
+ 		if ( !filename.empty() )
+ 		{
+@@ -1408,7 +1408,7 @@ void MainPanel::set_curr_loop (int index
+ 
+ void MainPanel::do_load_session ()
+ {
+-	wxString filename = do_file_selector (wxT("Choose session to load"), wxT("*.slsess"), wxT("*.slsess"), wxOPEN|wxCHANGE_DIR);
++	wxString filename = do_file_selector (wxT("Choose session to load"), wxT("*.slsess"), wxT("*.slsess"), wxFD_OPEN|wxFD_CHANGE_DIR);
+ 	
+ 	if ( !filename.empty() )
+ 	{
+@@ -1419,7 +1419,7 @@ void MainPanel::do_load_session ()
+ 
+ void MainPanel::do_save_session (bool write_audio)
+ {
+-	wxString filename = do_file_selector (wxT("Choose file to save session"), wxT("slsess"), wxT("*.slsess"), wxSAVE|wxCHANGE_DIR|wxOVERWRITE_PROMPT);
++	wxString filename = do_file_selector (wxT("Choose file to save session"), wxT("slsess"), wxT("*.slsess"), wxFD_SAVE|wxFD_CHANGE_DIR|wxFD_OVERWRITE_PROMPT);
+ 	
+ 	if ( !filename.empty() )
+ 	{
+Index: sooperlooper/src/gui/pix_button.cpp
+===================================================================
+--- sooperlooper.orig/src/gui/pix_button.cpp
++++ sooperlooper/src/gui/pix_button.cpp
+@@ -250,7 +250,7 @@ PixButton::OnMouseEvents (wxMouseEvent &
+ 		pt.x += bounds.x;
+ 		pt.y += bounds.y;
+ 
+-		if (bounds.Inside(pt)) {
++		if (bounds.Contains(pt)) {
+ 			clicked (get_mouse_button(ev)); // emit
+ 
+ 			if (ev.MiddleUp() && ev.ControlDown()) {
+Index: sooperlooper/src/gui/looper_panel.cpp
+===================================================================
+--- sooperlooper.orig/src/gui/looper_panel.cpp
++++ sooperlooper/src/gui/looper_panel.cpp
+@@ -1428,7 +1428,7 @@ LooperPanel::clicked_events (int button,
+ 	if (cmd == wxT("save"))
+ 	{
+ 		wxString filename = _mainpanel->do_file_selector (wxT("Choose file to save loop"),
+-											      wxT("wav"), wxT("WAVE files (*.wav)|*.wav;*.WAV;*.Wav"),  wxSAVE|wxCHANGE_DIR|wxOVERWRITE_PROMPT);
++											      wxT("wav"), wxT("WAVE files (*.wav)|*.wav;*.WAV;*.Wav"),  wxFD_SAVE|wxFD_CHANGE_DIR|wxFD_OVERWRITE_PROMPT);
+ 		
+ 		if ( !filename.empty() )
+ 		{
+@@ -1442,7 +1442,7 @@ LooperPanel::clicked_events (int button,
+ 	}
+ 	else if (cmd == wxT("load"))
+ 	{
+-		wxString filename = _mainpanel->do_file_selector(wxT("Choose file to open"), wxT(""), wxT("Audio files (*.wav,*.aif)|*.wav;*.WAV;*.Wav;*.aif;*.aiff;*.AIF;*.AIFF|All files (*.*)|*.*"), wxOPEN|wxCHANGE_DIR);
++		wxString filename = _mainpanel->do_file_selector(wxT("Choose file to open"), wxT(""), wxT("Audio files (*.wav,*.aif)|*.wav;*.WAV;*.Wav;*.aif;*.aiff;*.AIF;*.AIFF|All files (*.*)|*.*"), wxFD_OPEN|wxFD_CHANGE_DIR);
+ 		
+ 		if ( !filename.empty() )
+ 		{
+Index: sooperlooper/src/gui/keyboard_target.cpp
+===================================================================
+--- sooperlooper.orig/src/gui/keyboard_target.cpp
++++ sooperlooper/src/gui/keyboard_target.cpp
+@@ -553,10 +553,10 @@ KeyboardTarget::keycode_from_name (const
+                         keycode = WXK_RETURN;
+                     }
+                     else if ( keyname == wxT("PGUP") ) {
+-                        keycode = WXK_PRIOR;
++                        keycode = WXK_PAGEUP;
+                     }
+                     else if ( keyname == wxT("PGDN") ) {
+-                        keycode = WXK_NEXT;
++                        keycode = WXK_PAGEDOWN;
+                     }
+                     else if ( keyname == wxT("LEFT") ) {
+                         keycode = WXK_LEFT;
+@@ -630,10 +630,10 @@ wxString KeyboardTarget::name_from_keyco
+ 	case WXK_RETURN:
+ 		text += wxT("return");
+ 		break;
+-	case WXK_PRIOR:
++	case WXK_PAGEUP:
+ 		text += wxT("pageup");
+ 		break;
+-	case WXK_NEXT:
++	case WXK_PAGEDOWN:
+ 		text += wxT("pagedown");
+ 		break;
+ 	case WXK_LEFT:
+Index: sooperlooper/src/gui/check_box.cpp
+===================================================================
+--- sooperlooper.orig/src/gui/check_box.cpp
++++ sooperlooper/src/gui/check_box.cpp
+@@ -237,7 +237,7 @@ CheckBox::OnMouseEvents (wxMouseEvent &e
+ 	}
+ 	else if (ev.LeftUp())
+ 	{
+-		if (bounds.Inside(ev.GetPosition())) {
++		if (bounds.Contains(ev.GetPosition())) {
+ 			// toggle value
+ 			_value = !_value;
+ 		
+Index: sooperlooper/src/gui/midi_bind_panel.cpp
+===================================================================
+--- sooperlooper.orig/src/gui/midi_bind_panel.cpp
++++ sooperlooper/src/gui/midi_bind_panel.cpp
+@@ -880,7 +880,7 @@ void MidiBindPanel::on_button (wxCommand
+ 	}
+ 	else if (ev.GetId() == ID_LoadButton)
+ 	{
+-		wxString filename = _parent->do_file_selector(wxT("Choose midi binding file to open"), wxT(""), wxT("*.slb"), wxOPEN|wxCHANGE_DIR);
++		wxString filename = _parent->do_file_selector(wxT("Choose midi binding file to open"), wxT(""), wxT("*.slb"), wxFD_OPEN|wxFD_CHANGE_DIR);
+ 		if ( !filename.empty() )
+ 		{
+ 			_parent->get_loop_control().load_midi_bindings(filename,  _append_check->GetValue());
+@@ -888,7 +888,7 @@ void MidiBindPanel::on_button (wxCommand
+ 	}
+ 	else if (ev.GetId() == ID_SaveButton)
+ 	{
+-		wxString filename = _parent->do_file_selector(wxT("Choose midi binding file to save"), wxT(""), wxT("*.slb"), wxSAVE|wxCHANGE_DIR|wxOVERWRITE_PROMPT);
++		wxString filename = _parent->do_file_selector(wxT("Choose midi binding file to save"), wxT(""), wxT("*.slb"), wxFD_SAVE|wxFD_CHANGE_DIR|wxFD_OVERWRITE_PROMPT);
+ 
+ 		if ( !filename.empty() )
+ 		{
+Index: sooperlooper/src/gui/config_panel.cpp
+===================================================================
+--- sooperlooper.orig/src/gui/config_panel.cpp
++++ sooperlooper/src/gui/config_panel.cpp
+@@ -378,7 +378,7 @@ void ConfigPanel::on_button (wxCommandEv
+ 	else if (ev.GetId() == ID_MidiBrowseButton) {
+ 		
+ 		_parent->get_keyboard().set_enabled(false);
+-		wxString filename = _parent->do_file_selector(wxT("Choose midi binding file to use"), wxT(""), wxT("*.slb"), wxOPEN|wxCHANGE_DIR);
++		wxString filename = _parent->do_file_selector(wxT("Choose midi binding file to use"), wxT(""), wxT("*.slb"), wxFD_OPEN|wxFD_CHANGE_DIR);
+ 		_parent->get_keyboard().set_enabled(true);
+ 		
+ 		if ( !filename.empty() )
+@@ -389,8 +389,8 @@ void ConfigPanel::on_button (wxCommandEv
+ 	else if (ev.GetId() == ID_SessionBrowseButton) {
+ 		
+ 		_parent->get_keyboard().set_enabled(false);
+-		wxString filename = _parent->do_file_selector(wxT("Choose session file to use"), wxT(""), wxT("*.slsess"), wxOPEN|wxCHANGE_DIR);
+-		//wxString filename = wxFileSelector(wxT("Choose session file to use"), wxT(""), wxT(""), wxT(""), wxT("*.slsess"), wxOPEN|wxCHANGE_DIR);
++		wxString filename = _parent->do_file_selector(wxT("Choose session file to use"), wxT(""), wxT("*.slsess"), wxFD_OPEN|wxFD_CHANGE_DIR);
++		//wxString filename = wxFileSelector(wxT("Choose session file to use"), wxT(""), wxT(""), wxT(""), wxT("*.slsess"), wxFD_OPEN|wxFD_CHANGE_DIR);
+ 		_parent->get_keyboard().set_enabled(true);
+ 		
+ 		if ( !filename.empty() )

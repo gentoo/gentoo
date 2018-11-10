@@ -1,0 +1,11 @@
+diff -Naur mysql++-2.3.2-orig/lib/const_string.h mysql++-2.3.2/lib/const_string.h
+--- mysql++-2.3.2-orig/lib/const_string.h	2008-03-22 16:16:39.000000000 -0600
++++ mysql++-2.3.2/lib/const_string.h	2008-03-22 16:18:47.000000000 -0600
+@@ -35,6 +35,7 @@
+ #include <iostream>
+ #include <stdexcept>
+ #include <string>
++#include <cstring>
+ 
+ namespace mysqlpp {
+ 

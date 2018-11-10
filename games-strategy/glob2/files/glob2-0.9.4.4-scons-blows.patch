@@ -1,0 +1,26 @@
+--- a/SConstruct.orig
++++ b/SConstruct
+@@ -1,6 +1,7 @@
+ EnsureSConsVersion(0, 96, 92)
+ import sys
+ import os
++import SCons.Util
+ import glob
+ sys.path.append( os.path.abspath("scons") )
+ import bundle
+@@ -268,6 +269,15 @@
+     env["TARFILE"] = env.Dir("#").abspath + "/glob2-" + env["VERSION"] + ".tar.gz"
+     env["TARFLAGS"] = "-c -z"
+     env.Alias("dist", env["TARFILE"])
++    # Using suggestions for https://dev.gentoo.org/~vapier/scons-blows.txt
++    if os.environ.has_key('CC'):
++           env['CC'] = os.environ['CC']
++    if os.environ.has_key('CXX'):
++           env['CXX'] = os.environ['CXX']
++    if os.environ.has_key('CXXFLAGS'):
++           env['CXXFLAGS'] += SCons.Util.CLVar(os.environ['CXXFLAGS'])
++    if os.environ.has_key('LDFLAGS'):
++           env['LINKFLAGS'] += SCons.Util.CLVar(os.environ['LDFLAGS'])
+ 
+     def PackTar(target, source):
+         if "dist" in COMMAND_LINE_TARGETS:

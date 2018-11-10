@@ -1,0 +1,9 @@
+[Unit]
+Description=Advanced TFTP implementation client/server
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/sbin/atftpd --daemon --no-fork --user nobody --group nobody $TFTPD_ROOT
+
+[Install]
+WantedBy=multi-user.target

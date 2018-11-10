@@ -1,0 +1,12 @@
+--- libasdcp-cth-0.1.1/wscript
++++ libasdcp-cth-0.1.1/wscript
+@@ -84,8 +84,7 @@
+     bld.add_post_fun(post)
+ 
+ def post(ctx):
+-    if ctx.cmd == 'install':
+-        ctx.exec_command('/sbin/ldconfig')
++    pass
+ 
+ def tags(bld):
+     os.system('etags src/*.cc src/*.h')

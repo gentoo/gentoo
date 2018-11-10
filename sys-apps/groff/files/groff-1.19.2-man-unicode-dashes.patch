@@ -1,0 +1,24 @@
+format dashes as dashes so as to not confuse people
+
+http://bugs.gentoo.org/16108
+http://bugs.gentoo.org/17580
+http://bugs.gentoo.org/121502
+
+--- a/tmac/man.local
++++ b/tmac/man.local
+@@ -1,2 +1,6 @@
+ .\" This file is loaded after an-old.tmac.
+ .\" Put any local modifications to an-old.tmac here.
++.if '\*[.T]'utf8' \{\
++.  char \- \N'45'
++.  char  - \N'45'
++.\}
+--- a/tmac/mdoc.local
++++ b/tmac/mdoc.local
+@@ -1,2 +1,6 @@
+ .\" This file is loaded after doc.tmac.
+ .\" Put any local modifications to doc.tmac here.
++.if '\*[.T]'utf8' \{\
++.  char \- \N'45'
++.  char  - \N'45'
++.\}

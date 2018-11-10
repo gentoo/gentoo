@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    This package can load and use a Jet Propulsion Laboratory (JPL)
+    ephemeris for predicting the position and velocity of a planet or
+    other Solar System body.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">jplephem</remote-id>
+    <remote-id type="github">brandon-rhodes/python-jplephem</remote-id>
+  </upstream>
+</pkgmetadata>

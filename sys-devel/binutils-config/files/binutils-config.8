@@ -1,0 +1,73 @@
+.TH "BINUTILS-CONFIG" "8" "Jan 2005" "Gentoo" "Gentoo"
+.SH "NAME"
+binutils-config \- manage active versions of the binutils programs
+.SH "DESCRIPTION"
+The \fBbinutils-config\fR script allows you to switch between different 
+versions of binutils when you have installed multiple copies (see
+USE=multislot).  It also allows you to manage multiple cross-compiling
+targets simultaneously.
+
+Remember, you may have one version of binutils active per \fICTARGET\fR,
+and changing the version for one target has no bearing on any other.  So
+changing an active cross-compiler will not break your native compiler
+(i.e. \fICHOST\fR).
+.SH "SYNOPSIS"
+\fBbinutils-config\fR [\fIcrufty options\fR] \fIPROFILE\fR
+
+\fBbinutils-config\fR \fB--get-current-profile\fR \fI[TARGET]\fR
+
+\fBbinutils-config\fR \fB--list-profiles\fR
+
+\fBbinutils-config\fR \fB--uninstall\fR \fITARGET\fR
+.SH "GENERIC OPTIONS"
+.TP
+\fBPROFILE\fR
+Change the system to use the specified binutils version.  This may take the
+form of the list index number (the number shown on the left in the
+\fB\-\-list\-profiles\fR output), a full \fITARGET-VERSION\fR (useful when
+working with cross-compilers), just a \fITARGET\fR where the \fIVERSION\fR
+is picked from the active, or just a binutils \fIVERSION\fR where the
+\fITARGET\fR is assumed to be the native \fIHOST\fR value.
+.TP
+\fBTARGET\fR
+Similiar to \fBPROFILE\fR, but this is only the target and no version info
+(i.e. \fICTARGET\fR or \fICHOST\fR).
+.TP
+\fB\-c\fR, \fB\-\-get\-current\-profile\fR \fI[TARGET]\fR
+Display the active profile for \fITARGET\fR.  If none is specified, the 
+host system's \fITARGET\fR will be shown (i.e. \fICHOST\fR).
+.TP
+\fB\-l\fR, \fB\-\-list\-profiles\fR
+Show all the profiles that your system currently has installed and what
+versions are active.  The active native version is noted with a bright green
+asterisk while the active cross-compiler versions are noted with a light blue
+asterisk.
+.TP
+\fB-u\fR, \fB\-\-uninstall\fR \fITARGET\fR
+This is really for internal use only.  Used to remove all traces of the 
+\fITARGET\fR binutils from your system.
+.SH "CRUFTY OPTIONS"
+.TP
+\fB\-\-linker\fR \fB<linker>\fR
+Change the default linker for the specified \fIPROFILE\fR to the \fB<linker>\fR.
+Common names are \fBld.gold\fR for the newer gold linker and \fBld.bfd\fR for
+the classic linker.  Note that not all targets support the gold linker.
+.SH "REPORTING BUGS"
+Please report bugs via https://bugs.gentoo.org/
+.SH "SEE ALSO"
+.BR ar (1),
+.BR as (1),
+.BR ld (1),
+.BR nm (1),
+.BR objcopy (1),
+.BR ranlib (1),
+.BR readelf (1),
+.BR strings (1),
+.BR strip (1)
+.SH "FILES"
+.nf
+.BR /usr/bin/binutils-config
+.BR /etc/env.d/binutils/*
+.fi
+.SH "AUTHORS"
+Mike Frysinger <vapier@gentoo.org>

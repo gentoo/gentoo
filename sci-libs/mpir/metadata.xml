@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription> 
+MPIR is an open source multiprecision integer (bignum) library forked
+from the GMP (GNU Multi Precision) project. It consists of much code
+from past GMP releases, in combination with much original contributed
+code.
+
+MPIR is constructed by a developer and vendor friendly community of
+professional and amateur mathematicians, computer scientists and
+hobbyists.
+</longdescription>
+  <use>
+    <flag name="cpudetection">Enables runtime cpudetection (useful for bindist, compatability on other CPUs)</flag>
+  </use>
+</pkgmetadata>

@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/572428
+https://lists.gnu.org/archive/html/bug-cpio/2016-01/msg00002.html
+http://seclists.org/oss-sec/2016/q1/136
+
+--- a/src/copyin.c
++++ b/src/copyin.c
+@@ -1385,6 +1385,8 @@
+ 	  break;
+ 	}
+ 
++      if (file_hdr.c_namesize <= 1)
++	file_hdr.c_name = xrealloc (file_hdr.c_name, 2);
+       cpio_safer_name_suffix (file_hdr.c_name, false, !no_abs_paths_flag,
+ 			      false);
+       

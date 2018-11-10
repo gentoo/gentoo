@@ -1,0 +1,22 @@
+--- scorched.old/src/common/common/main.h
++++ scorched/src/common/common/main.h
+@@ -40,7 +40,7 @@
+ void _no_storage()
+ {
+ 	printf("Failed to allocate memory!!");
+-	std::exit(1);
++	exit(1);
+ }
+ 
+ void run_main(int argc, char *argv[], OptionsParameters &params)
+--- scorched.old/src/common/porting/windows.h
++++ scorched/src/common/porting/windows.h
+@@ -20,7 +20,7 @@
+ typedef unsigned short  WORD;
+ typedef unsigned char   BYTE;
+ 
+-typedef int 	HWND;
++// typedef int 	HWND;
+ typedef void * 	HINSTANCE;
+ typedef int 	WPARAM;
+ typedef int 	LPARAM;

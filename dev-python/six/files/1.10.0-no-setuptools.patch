@@ -1,0 +1,22 @@
+Force distutils to avoid depending on setuptools
+
+distutils and setuptools have differing behavior in regard to egg-info
+directories versus files, so we need to ensure that no automagic behavior
+occurs here.
+
+We cannot hard-depend on setuptools due to a circular dependency.
+
+diff --git a/setup.py b/setup.py
+--- a/setup.py
++++ b/setup.py
+@@ -1,9 +1,6 @@
+ from __future__ import with_statement
+ 
+-try:
+-    from setuptools import setup
+-except ImportError:
+-    from distutils.core import setup
++from distutils.core import setup
+ 
+ import six
+ 

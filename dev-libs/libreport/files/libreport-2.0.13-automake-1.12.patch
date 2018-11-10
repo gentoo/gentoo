@@ -1,0 +1,80 @@
+From cb7d7fe5b2daf4dac3b8a1616461a0c840e18b73 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Sat, 22 Sep 2012 03:06:03 -0400
+Subject: [PATCH] Fix automake-1.12 autoreconf issues.
+
+Need -Wno-portablity for '%'-style pattern rules in doc/Makefile.am
+
+Need AM_PROG_CC_C_O for src/cli/cli.c
+
+gettext-0.18.1.1's AM_GNU_GETTEXT requires AM_PROG_MKDIR_P, causing
+problems for automake-1.12.
+---
+ configure.ac            | 8 +++-----
+ src/lib/Makefile.am     | 2 +-
+ src/plugins/Makefile.am | 2 +-
+ 3 files changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index dd50bcf..3955689 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@ AC_INIT([libreport],
+ 	[crash-catcher@fedorahosted.org])
+ 
+ AC_CONFIG_MACRO_DIR([m4])
+-AM_INIT_AUTOMAKE([-Wall -Werror foreign])
++AM_INIT_AUTOMAKE([-Wall -Wno-portability -Werror foreign])
+ # Support silent build rules. Disable by either passing --disable-silent-rules
+ # to ./configure or passing V=1 to make
+ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
+@@ -11,8 +11,9 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES])
+ AM_SILENT_RULES([yes])
+ 
+ AC_DISABLE_STATIC
++AM_PROG_AR
+ AC_PROG_LIBTOOL
+-AC_PROG_CC
++AM_PROG_CC_C_O
+ AC_PROG_LN_S
+ 
+ AC_SYS_LARGEFILE
+@@ -33,9 +34,6 @@ GETTEXT_PACKAGE=libreport
+ AC_SUBST(GETTEXT_PACKAGE)
+ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Package name for gettext])
+ 
+-AM_GNU_GETTEXT([external])
+-AM_GNU_GETTEXT_VERSION([0.17])
+-
+ IT_PROG_INTLTOOL([0.35.0])
+ 
+ dnl ****** END ****************************************
+diff --git a/src/lib/Makefile.am b/src/lib/Makefile.am
+index 5befe7d..2c51931 100644
+--- a/src/lib/Makefile.am
++++ b/src/lib/Makefile.am
+@@ -121,7 +121,7 @@ libreport_web_la_LIBADD = \
+     libreport.la
+ 
+ $(DESTDIR)/$(DEBUG_DUMPS_DIR):
+-	$(mkdir_p) '$@'
++	$(MKDIR_P) '$@'
+ # no need to chmod it here
+ #chmod 1777 '$@'
+ install-data-local: $(DESTDIR)/$(DEBUG_DUMPS_DIR)
+diff --git a/src/plugins/Makefile.am b/src/plugins/Makefile.am
+index 3f9dfd7..795d198 100644
+--- a/src/plugins/Makefile.am
++++ b/src/plugins/Makefile.am
+@@ -40,7 +40,7 @@ EXTRA_DIST = \
+     report_Uploader.xml.in
+ 
+ $(DESTDIR)/$(DEBUG_INFO_DIR):
+-	$(mkdir_p) '$@'
++	$(MKDIR_P) '$@'
+ 
+ reporter_upload_SOURCES = \
+     reporter-upload.c
+-- 
+1.7.12
+

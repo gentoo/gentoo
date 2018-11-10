@@ -1,0 +1,121 @@
+this has been sent upstream, but they don't have a mailing list or project site
+to link to.  oh well.
+
+From e641584767c3c7cc1ff544805acc2562fc56cda9 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Mon, 17 Sep 2018 18:57:57 -0400
+Subject: [PATCH 1/2] dc: add a --sandbox option
+
+Other GNU projects (like sed & gawk) have a --sandbox flag whereby
+access to files and system() are disabled.  This allows people to
+run arbitrary scripts without worrying about them "escaping" and
+executing arbitrary commands on the system.
+---
+ dc/dc.c     | 9 ++++++++-
+ dc/dc.h     | 3 +++
+ dc/misc.c   | 6 ++++++
+ doc/dc.1    | 5 +++++
+ doc/dc.texi | 4 ++++
+ 5 files changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/dc/dc.c b/dc/dc.c
+index 6a2bb2639235..592a76be71da 100644
+--- a/dc/dc.c
++++ b/dc/dc.c
+@@ -54,6 +54,7 @@
+ #endif
+ 
+ const char *progname;	/* basename of program invocation */
++int dc_sandbox_enabled;	/* whether sandbox mode is enabled */
+ 
+ static void
+ bug_report_info DC_DECLVOID()
+@@ -80,6 +81,7 @@ usage DC_DECLARG((f))
+ Usage: %s [OPTION] [file ...]\n\
+   -e, --expression=EXPR    evaluate expression\n\
+   -f, --file=FILE          evaluate contents of file\n\
++  -S, --sandbox            disable the ! (system) command\n\
+   -h, --help               display this help and exit\n\
+   -V, --version            output version information and exit\n\
+ \n\
+@@ -252,6 +254,7 @@ main DC_DECLARG((argc, argv))
+ 	static struct option const long_opts[] = {
+ 		{"expression", required_argument, NULL, 'e'},
+ 		{"file", required_argument, NULL, 'f'},
++		{"sandbox", no_argument, NULL, 'S'},
+ 		{"help", no_argument, NULL, 'h'},
+ 		{"version", no_argument, NULL, 'V'},
+ 		{NULL, 0, NULL, 0}
+@@ -260,12 +263,13 @@ main DC_DECLARG((argc, argv))
+ 	int c;
+ 
+ 	progname = r1bindex(*argv, '/');
++	dc_sandbox_enabled = 0;
+ 	dc_math_init();
+ 	dc_string_init();
+ 	dc_register_init();
+ 	dc_array_init();
+ 
+-	while ((c = getopt_long(argc, argv, "hVe:f:", long_opts, (int *)0)) != EOF) {
++	while ((c = getopt_long(argc, argv, "hVe:f:S", long_opts, (int *)0)) != EOF) {
+ 		switch (c) {
+ 		case 'e':
+ 			{	dc_data string = dc_makestring(optarg, strlen(optarg));
+@@ -279,6 +283,9 @@ main DC_DECLARG((argc, argv))
+ 			try_file(optarg);
+ 			did_eval = 1;
+ 			break;
++		case 'S':
++			dc_sandbox_enabled = 1;
++			break;
+ 		case 'h':
+ 			usage(stdout);
+ 			return flush_okay();
+diff --git a/dc/dc.h b/dc/dc.h
+index 6a871ad612a5..a148df467a92 100644
+--- a/dc/dc.h
++++ b/dc/dc.h
+@@ -76,4 +76,7 @@ typedef struct {
+ /* This is dc's only global variable: */
+ extern const char *progname;	/* basename of program invocation */
+ 
++/* Whether to run in sandbox mode. */
++extern int dc_sandbox_enabled;
++
+ #endif /* not DC_DEFS_H */
+diff --git a/dc/misc.c b/dc/misc.c
+index cd23602fce32..115be90b03bf 100644
+--- a/dc/misc.c
++++ b/dc/misc.c
+@@ -131,6 +131,12 @@ dc_system DC_DECLARG((s))
+ 	char *tmpstr;
+ 	size_t len;
+ 
++	if (dc_sandbox_enabled) {
++		fprintf(stderr, "%s: ! command disabled in sandbox mode\n",
++				progname);
++		exit(EXIT_FAILURE);
++	}
++
+ 	p = strchr(s, '\n');
+ 	if (p != NULL) {
+ 		len = (size_t) (p - s);
+diff --git a/doc/dc.1 b/doc/dc.1
+index 1c666493e00a..7c4b6fffd616 100644
+--- a/doc/dc.1
++++ b/doc/dc.1
+@@ -84,6 +84,11 @@ to the set of commands to be run while processing the input.
+ Add the commands contained in the file
+ .I script-file
+ to the set of commands to be run while processing the input.
++.TP
++.B -S
++.TP
++.B --sandbox
++Run in sandbox mode where access to \fB!\fR for the system function.
+ .PP
+ If any command-line parameters remain after processing the above,
+ these parameters are interpreted as the names of input files to
+-- 
+2.17.1
+

@@ -1,0 +1,45 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -88,8 +87,8 @@
+ if test "${ac_cv_enable_swig}" = "no" ; then
+   AM_CONDITIONAL(HAVE_SWIG, false)
+ else
+-  AC_PROG_SWIG(1.3)
+-  AM_CONDITIONAL(HAVE_SWIG, "$SWIG" -version)
++  AC_CHECK_PROG(SWIG,swig,swig,false)
++  AM_CONDITIONAL(HAVE_SWIG, "$ac_cv_prog_SWIG" -version)
+   if test -z "${HAVE_SWIG_TRUE}" ; then
+     AM_PATH_PYTHON
+     SWIG_PYTHON
+--- a/swig/Makefile.am
++++ b/swig/Makefile.am
+@@ -1,7 +1,7 @@
+ # AM_MAKEFLAGS = @MAKEFLAGS@
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-AM_CPPFLAGS = $(SWIG_PYTHON_CPPFLAGS) -I$(top_srcdir)/include -I$(top_srcdir)/hidparser -DHID_INTERNAL -DSWIG
++AM_CPPFLAGS = $(SWIG_PYTHON_CPPFLAGS) -iquote$(top_srcdir)/include -I$(top_srcdir)/hidparser -DHID_INTERNAL -DSWIG
+ AM_CFLAGS = -fPIC -fno-strict-aliasing
+ AM_LDFLAGS = -shared ../src/libhid.la -lusb
+ 
+@@ -29,7 +29,7 @@ __init__.py: hid.py
+ 
+ %_wrap.c %.py: %.i $(top_srcdir)/include/hid.h
+ 	$(SWIG) $(SWIG_PYTHON_OPT) $(SWIG_INC) -o $@ $<
+-	echo '#include <compiler.h>' > tmp.c
++	echo '#include "compiler.h"' > tmp.c
+ 	sed -e 's/PyObject \*self/& UNUSED/' \
+ 	    -e 's/int flags)/int flags UNUSED)/' < $@ >> tmp.c \
+ 	&& mv tmp.c $@
+--- a/swig/hid.i
++++ b/swig/hid.i
+@@ -1,7 +1,7 @@
+ %module(docstring="libhid is a user-space USB HID access library built on libusb.", "threads"=1) hid 
+ %{
+-#include <compiler.h>
+-#include <hid.h>
++#include "compiler.h"
++#include "hid.h"
+ %}
+ 
+ %feature("autodoc","0");

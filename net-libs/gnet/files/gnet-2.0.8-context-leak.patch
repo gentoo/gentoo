@@ -1,0 +1,32 @@
+From d6997987ce7f3e84d1125715b17502452d085073 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tim-Philipp=20M=C3=BCller?= <tpm@src.gnome.org>
+Date: Tue, 13 May 2008 07:10:28 +0000
+Subject: [PATCH] Don't leak main context ref when one was set. Spotted by Kuang-Chun Cheng.
+
+	* src/conn.c: (gnet_conn_unref):
+	  Don't leak main context ref when one was set.
+	  Spotted by Kuang-Chun Cheng.
+
+
+svn path=/trunk/; revision=495
+---
+ src/conn.c |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/src/conn.c b/src/conn.c
+index f4de415..9d41fa6 100644
+--- a/src/conn.c
++++ b/src/conn.c
+@@ -305,6 +305,9 @@ gnet_conn_unref (GConn* conn)
+   if (conn->inetaddr)
+     gnet_inetaddr_delete (conn->inetaddr);
+ 
++  if (conn->context)
++    g_main_context_unref (conn->context);
++
+   g_free (conn->buffer);
+ 
+   g_free (conn);
+-- 
+1.7.3.1
+

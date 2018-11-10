@@ -1,0 +1,281 @@
+compile fix >=vdr-2.3.1
+http://www.vdr-portal.de/board1-news/board2-vdr-news/p1254875-announce-vdr-developer-version-2-3-1/#post1254875
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> (25 Okt 2015)
+
+diff -rupN b/zappilotosd.c a/zappilotosd.c
+--- b/zappilotosd.c	2015-06-24 14:32:15.000000000 +0200
++++ a/zappilotosd.c	2015-10-22 18:39:36.000000000 +0200
+@@ -69,7 +69,7 @@ cZappilotOsd::~cZappilotOsd(void)
+ 
+ void cZappilotOsd::DisplayChannel(const cChannel *Channel)
+ {
+-   int BufSize = 255;
++   int BufSize = 1020;
+    if (Channel)
+    {
+       if (Channel->GroupSep())
+@@ -172,11 +172,11 @@ void cZappilotOsd::UpdateEPGInfo(int Now
+    titleFollowingInfo = NULL;
+    subtitlePresentInfo = NULL;
+    subtitleFollowingInfo = NULL;
+-   cSchedulesLock SchedulesLock;
+-   const cSchedules *Schedules = cSchedules::Schedules(SchedulesLock);
++   LOCK_SCHEDULES_READ;
++   LOCK_CHANNELS_READ;
+    if (Schedules)
+    {
+-      const cSchedule *Schedule = Schedules->GetSchedule(Channels.GetByNumber(PilotChannelNumber)->GetChannelID());
++      const cSchedule *Schedule = Schedules->GetSchedule(Channels->GetByNumber(PilotChannelNumber)->GetChannelID());
+       if (Schedule)
+       {
+          // Get Present event
+@@ -267,9 +267,9 @@ void cZappilotOsd::UpdateEPGInfo(int Now
+ void cZappilotOsd::Show()
+ {
+    // find the actual current
+-   cChannel *Channel =  Channels.GetByNumber(cDevice::PrimaryDevice()->CurrentChannel());
+-   currentChannel = Channels.GetByNumber(cDevice::PrimaryDevice()->CurrentChannel());
+-
++   LOCK_CHANNELS_READ;
++   const cChannel *Channel =  Channels->GetByNumber(cDevice::PrimaryDevice()->CurrentChannel());
++   currentChannel = Channel;
+    if (Channel)
+    {
+       PilotChannelNumber = Channel->Number();
+@@ -333,13 +333,14 @@ eOSState cZappilotOsd::ProcessKey(eKeys
+          case k1 ... k9:
+             if (number >= 0)
+             {
+-               if (number > Channels.MaxNumber())
++               LOCK_CHANNELS_READ;
++               if (number > Channels->MaxNumber())
+                   number = Key - k0;
+                else
+                   number = number * 10 + Key - k0;
+                if (number > 0)
+                {
+-                  cChannel *channel = Channels.GetByNumber(number);
++                  const cChannel *channel = Channels->GetByNumber(number);
+                   if (channel)
+                   {
+                      PilotChannelNumber = channel->Number();
+@@ -363,7 +364,8 @@ eOSState cZappilotOsd::ProcessKey(eKeys
+             if (config.fastbrowse)
+             {
+                CursorDown();
+-               cChannel *channel = Channels.GetByNumber(PilotChannelNumber);
++               LOCK_CHANNELS_READ;
++               const cChannel *channel = Channels->GetByNumber(PilotChannelNumber);
+                if (channel)
+                   group = channel->Index()-1;
+                break;
+@@ -380,7 +382,8 @@ eOSState cZappilotOsd::ProcessKey(eKeys
+             if (config.fastbrowse)
+             {
+                CursorUp();
+-               cChannel *channel = Channels.GetByNumber(PilotChannelNumber);
++               LOCK_CHANNELS_READ;
++               const cChannel *channel = Channels->GetByNumber(PilotChannelNumber);
+                if (channel)
+                   group = channel->Index()-1;
+                break;
+@@ -396,7 +399,8 @@ eOSState cZappilotOsd::ProcessKey(eKeys
+             {
+                if (group < 0)
+                {
+-                  cChannel *channel = Channels.GetByNumber(PilotChannelNumber);
++                  LOCK_CHANNELS_READ;
++                  const cChannel *channel = Channels->GetByNumber(PilotChannelNumber);
+                   if (channel)
+                      group = channel->Index();
+                }
+@@ -405,15 +409,18 @@ eOSState cZappilotOsd::ProcessKey(eKeys
+                   int SaveGroup = group;
+                   if (NORMALKEY(Key) == kRight)
+                   {
+-                     group = Channels.GetNextGroup(group);
++                     LOCK_CHANNELS_READ;
++                     group = Channels->GetNextGroup(group);
+                   }
+                   else
+                   {
+-                     group = Channels.GetPrevGroup(group < 1 ? 1 : group);
++                   LOCK_CHANNELS_READ;
++                   group = Channels->GetPrevGroup(group < 1 ? 1 : group);
+                   }
+                   if (group < 0)
+                      group = SaveGroup;
+-                  cChannel *channel = Channels.Get(group);
++                  LOCK_CHANNELS_READ;
++                  const cChannel *channel = Channels->Get(group);
+                   if (channel)
+                   {
+                      //DisplayChannel(channel);
+@@ -449,7 +456,8 @@ eOSState cZappilotOsd::ProcessKey(eKeys
+             else
+             {
+                CursorUp();
+-               cChannel *channel = Channels.GetByNumber(PilotChannelNumber);
++               LOCK_CHANNELS_READ;
++               const cChannel *channel = Channels->GetByNumber(PilotChannelNumber);
+                if (channel)
+                   group = channel->Index()-1;
+                break;
+@@ -466,20 +474,22 @@ eOSState cZappilotOsd::ProcessKey(eKeys
+             else
+             {
+                CursorDown();
+-               cChannel *channel = Channels.GetByNumber(PilotChannelNumber);
++               LOCK_CHANNELS_READ;
++               const cChannel *channel = Channels->GetByNumber(PilotChannelNumber);
+                if (channel)
+-                  group = channel->Index()-1;
++                 group = channel->Index()-1;
+                break;
+             }
+          case kNone:
+             if (number && (int)cTimeMs::Now() - lastTime > 1000)
+             {
+-               if (Channels.GetByNumber(number))
++               LOCK_CHANNELS_READ;
++               if (Channels->GetByNumber(number))
+                {
+                   PilotChannelNumber = number;
+                   lastTime = cTimeMs::Now();
+                   number = 0;
+-                  cChannel *channel = Channels.GetByNumber(PilotChannelNumber);
++                  const cChannel *channel = Channels->GetByNumber(PilotChannelNumber);
+                   if (channel)
+                      group = channel->Index()-1;
+                }
+@@ -553,7 +563,8 @@ eOSState cZappilotOsd::ProcessKey(eKeys
+             {
+                if (group < 0)
+                {
+-                  cChannel *channel = Channels.GetByNumber(PilotChannelNumber);
++                  LOCK_CHANNELS_READ;
++                  const cChannel *channel = Channels->GetByNumber(PilotChannelNumber);
+                   if (channel)
+                      group = channel->Index();
+                }
+@@ -562,15 +573,18 @@ eOSState cZappilotOsd::ProcessKey(eKeys
+                   int SaveGroup = group;
+                   if (NORMALKEY(Key) == kBlue)
+                   {
+-                     group = Channels.GetNextGroup(group);
++                     LOCK_CHANNELS_READ;
++                     group = Channels->GetNextGroup(group);
+                   }
+                   else
+                   {
+-                     group = Channels.GetPrevGroup(group < 1 ? 1 : group);
++                     LOCK_CHANNELS_READ;                  
++                     group = Channels->GetPrevGroup(group < 1 ? 1 : group);
+                   }
+                   if (group < 0)
+                      group = SaveGroup;
+-                  cChannel *channel = Channels.Get(group);
++                  LOCK_CHANNELS_READ;                                       
++                  const cChannel *channel = Channels->Get(group);
+                   if (channel)
+                   {
+                      //DisplayChannel(channel);
+@@ -663,8 +677,8 @@ eOSState cZappilotOsd::ProcessKey(eKeys
+ void cZappilotOsd::CursorUp()
+ {
+    int n = PilotChannelNumber + 1;
+-   cChannel *channel;
+-   channel = Channels.GetByNumber(n, 1);
++   LOCK_CHANNELS_READ;
++   const cChannel *channel = Channels->GetByNumber(n, 1);
+    if (channel)
+    {
+       n = channel->Number();
+@@ -678,8 +692,8 @@ void cZappilotOsd::CursorUp()
+ void cZappilotOsd::CursorDown()
+ {
+    int n = PilotChannelNumber - 1;
+-   cChannel *channel;
+-   channel = Channels.GetByNumber(n, -1);
++   LOCK_CHANNELS_READ;
++   const cChannel *channel = Channels->GetByNumber(n, -1);
+    if (channel)
+    {
+       n = channel->Number();
+@@ -693,9 +707,13 @@ void cZappilotOsd::CursorDown()
+ void cZappilotOsd::CursorOK()
+ {
+    DrawMenu(0,2);
+-   if (currentChannel != Channels.GetByNumber(PilotChannelNumber))
++   LOCK_CHANNELS_READ;
++   const cChannel* chan = Channels->GetByNumber(PilotChannelNumber);
++
++   if (currentChannel != chan)
+    {
+-     cChannel *Channel =  Channels.GetByNumber(PilotChannelNumber);
++     LOCK_CHANNELS_READ;
++     const cChannel *Channel =  Channels->GetByNumber(PilotChannelNumber);
+      if (Channel)
+      {
+         cDevice::PrimaryDevice()->SwitchChannel(Channel, true);
+@@ -750,7 +768,8 @@ void cZappilotOsd::DisplayInfo(int delta
+       displayTimer = NULL;
+       displayChannel = Skins.Current()->DisplayChannel(true);
+    }
+-   cChannel *channel = Channels.GetByNumber(PilotChannelNumber);
++   LOCK_CHANNELS_READ;
++   const cChannel *channel = Channels->GetByNumber(PilotChannelNumber);
+ 
+    if (!isempty(titlePresentInfo))
+    {
+@@ -778,14 +797,17 @@ void cZappilotOsd::DisplayExtraInfo()
+       displayEvent = NULL;
+    }
+ 
+-   displayEvent = new cMenuEvent(Present,false,true);
++
++   LOCK_TIMERS_READ;
++   LOCK_CHANNELS_READ;
++   displayEvent = new cMenuEvent(Timers, Channels, Present,false,true);
+    displayEvent->Display();
+ }
+ 
+ 
+ void cZappilotOsd::DisplayTimer()
+ {
+-
++ 
+    if (displayChannel)
+    {
+       delete displayChannel;
+@@ -797,13 +819,17 @@ void cZappilotOsd::DisplayTimer()
+       displayEvent = NULL;
+    }
+ 
++   LOCK_TIMERS_WRITE;
++
+    cTimer *timer = new cTimer(Present);
+-   cTimer *t = Timers.GetTimer(timer);
++   cTimer *t = Timers->GetMatch(Present);
++
+    if (t)
+    {
+       delete timer;
+       timer = t;
+    }
++
+    displayTimer=new cMenuEditTimer(timer, !t);
+    displayTimer->Display();
+ }
+diff -rupN b/zappilotosd.h a/zappilotosd.h
+--- b/zappilotosd.h	2015-06-24 14:32:15.000000000 +0200
++++ a/zappilotosd.h	2015-10-22 18:40:02.000000000 +0200
+@@ -39,7 +39,7 @@ class cZappilotOsd : public cOsdObject
+       int offset;
+       int lines;
+       int type;
+-      cChannel* currentChannel;
++      const cChannel* currentChannel;
+ 
+    public:
+       cZappilotOsd(void);

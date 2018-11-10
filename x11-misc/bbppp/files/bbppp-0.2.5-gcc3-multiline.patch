@@ -1,0 +1,44 @@
+--- main.cc
++++ main.cc
+@@ -24,25 +24,24 @@
+ 
+ void Usage()
+ {
+-	char* usageOptions = {"Options:\n\
+-	                      -display <display name>     X server to connect to\n\
+-	                      -c[onfig] <filename>        Alternate config file\n\
+-	                      -n[obb]                     Fall back on default configuration\n\
+-	                      -v[ersion]                  Display version number\n\
+-	                      -h[elp]                     Display this help\n\
+-	                      -geom[etry] <geometry>      Set geometry of window\n\
+-	                      -d[ecorated]                Show 'normal' decorated window\n\
+-	                      -w[ithdrawn]                Place bbtool in the Slit\n\
+-	                      -s[hape]                    Don't display groundplate\n\
+-	                      -thru[put]                  Display throughput rate\n\
+-	                      -o[rient] <v|h>             Display window widgets horizontally or vertically\n\
+-	                      -com[pact]                  Display buttons in compact style\n\
+-	                      -notime                     Dont display time window\n\
+-	                      -nosecs                     Show uptime in old-style hh:mm format\n\n"};
++	char* usageOptions = {"Options:\n"
++	                     "-display <display name>     X server to connect to\n"
++	                     "-c[onfig] <filename>        Alternate config file\n"
++	                     "-n[obb]                     Fall back on default configuration\n"
++	                     "-v[ersion]                  Display version number\n"
++	                     "-h[elp]                     Display this help\n"
++	                     "-geom[etry] <geometry>      Set geometry of window\n"
++	                     "-d[ecorated]                Show 'normal' decorated window\n"
++	                     "-w[ithdrawn]                Place bbtool in the Slit\n"
++	                     "-s[hape]                    Don't display groundplate\n"
++	                     "-thru[put]                  Display throughput rate\n"
++	                     "-o[rient] <v|h>             Display window widgets horizontally or vertically\n"
++	                     "-com[pact]                  Display buttons in compact style\n"
++	                     "-notime                     Dont display time window\n"
++	                     "-nosecs                     Show uptime in old-style hh:mm format\n\n"};
+ 
+ 	fprintf(stdout,"\n%s version %s \n",BBTOOL,BBTOOL_VERSION);
+-	fprintf(stdout,"Usage:\n\
+-	        %s [options]\n",BBTOOL);
++	fprintf(stdout,"Usage:\n%s [options]\n",BBTOOL);
+ 	fprintf(stdout, "%s", usageOptions);
+ 	/*
+ 	fprintf(stdout,"-t[ype] <0|1|2|3>           0: 

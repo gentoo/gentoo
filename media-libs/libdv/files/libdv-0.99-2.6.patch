@@ -1,0 +1,17 @@
+--- libdv-0.99/libdv/enc_input.c	2002-12-31 23:04:02.000000000 +0000
++++ libdv-0.99/libdv/enc_input.c.plasmaroo	2003-12-30 16:42:19.000000000 +0000
+@@ -48,13 +48,13 @@
+ 
+ #if HAVE_DEV_VIDEO
+ #include <sys/types.h>
+-#include <linux/videodev.h>
+ #include <sys/time.h>
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+ #include <sys/mman.h>
++#include <linux/videodev.h>
+ #endif
+ 
+ // #define ARCH_X86 0

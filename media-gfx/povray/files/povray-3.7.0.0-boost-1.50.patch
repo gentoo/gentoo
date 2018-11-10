@@ -1,0 +1,72 @@
+ configure.ac         | 26 ++++++--------------------
+ vfe/unix/platformbase.cpp |  2 +-
+ 2 files changed, 7 insertions(+), 21 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 51596f8..900c150 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -57,8 +57,6 @@ AC_CONFIG_SRCDIR([unix/disp_text.cpp])
+ m4_include([unix/config/acx_pthread.m4])
+ m4_include([unix/config/ax_arg_enable.m4])
+ m4_include([unix/config/ax_arg_with.m4])
+-m4_include([unix/config/ax_boost_base.m4])
+-m4_include([unix/config/ax_boost_thread.m4])
+ m4_include([unix/config/ax_test_compiler_flags.m4])
+ m4_include([unix/config/ax_check_lib.m4])
+ m4_include([unix/config/ax_check_libjpeg.m4])
+@@ -168,6 +166,7 @@ AC_CANONICAL_HOST
+ 
+ AM_INIT_AUTOMAKE([1.9 dist-bzip2])
+ AM_MAINTAINER_MODE
++LT_INIT
+ 
+ AX_FIX_INCORRECT_PATH(C_INCLUDE_PATH, ".", [pov_warn_path="$pov_warn_path C_INCLUDE_PATH"])
+ AX_FIX_INCORRECT_PATH(CPLUS_INCLUDE_PATH, ".", [pov_warn_path="$pov_warn_path CPLUS_INCLUDE_PATH"])
+@@ -298,28 +297,15 @@ LIBS="$LIBS $PTHREAD_CFLAGS $PTHREAD_LIBS"  # append
+ 
+ # Boost; required library
+ # the following macro stops with error when boost is not found
+-AX_BOOST_BASE([$required_libboost_version])
+-AX_BOOST_THREAD
+-if test x"$ax_cv_boost_thread" != x"yes"; then
++BOOST_REQUIRE([$required_libboost_version])
++BOOST_THREADS
++if test x"$boost_cv_lib_thread" != x"yes"; then
+   AC_MSG_ERROR([cannot find a suitable boost thread library])
+ else
+   CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"  # append
+-  LDFLAGS="$LDFLAGS $BOOST_LDFLAGS"     # append
+-  LIBS="$BOOST_THREAD_LIB $LIBS"
++  LDFLAGS="$LDFLAGS -L$BOOST_LDPATH"     # append
++  LIBS="$BOOST_THREAD_LIBS $LIBS"
+ fi
+-AC_MSG_CHECKING([whether the boost thread library is usable])
+-AC_RUN_IFELSE(
+-  [AC_LANG_PROGRAM([[
+-#include <boost/thread/thread.hpp>
+-    ]],
+-    [[boost::defer_lock_t(); return 0;]])],
+-  [AC_MSG_RESULT([yes])],
+-  [
+-    AC_MSG_RESULT([no])
+-    AC_MSG_FAILURE([cannot link with the boost thread library])
+-  ],
+-  [AC_MSG_RESULT([cross-compiling])]  # FIXME
+-)
+ AC_DEFINE([USE_OFFICIAL_BOOST], [], [Use the official Boost libraries.])
+ 
+ # Intel Math Kernel library
+diff --git a/vfe/unix/platformbase.cpp b/vfe/unix/platformbase.cpp
+index 8669d19..83c0191 100644
+--- a/vfe/unix/platformbase.cpp
++++ b/vfe/unix/platformbase.cpp
+@@ -68,7 +68,7 @@ namespace pov_base
+ #else
+ 		// taken from source/base/timer.cpp
+ 		boost::xtime t;
+-		boost::xtime_get(&t, boost::TIME_UTC);
++		boost::xtime_get(&t, POV_TIME_UTC);
+ 		POV_ULONG ns = (POV_ULONG)(t.sec) * (POV_ULONG)(1000000000) + (POV_ULONG)(t.nsec) + (POV_ULONG)(msec) * (POV_ULONG)(1000000);
+ 		t.sec = (boost::xtime::xtime_sec_t)(ns / (POV_ULONG)(1000000000));
+ 		t.nsec = (boost::xtime::xtime_nsec_t)(ns % (POV_ULONG)(1000000000));

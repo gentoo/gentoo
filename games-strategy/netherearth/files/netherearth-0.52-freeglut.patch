@@ -1,0 +1,18 @@
+--- a/main.cpp
++++ b/main.cpp
+@@ -8,6 +8,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <GL/glut.h>
+ #include "SDL/SDL.h"
+ #include "SDL/SDL_mixer.h"
+ 
+@@ -144,6 +145,7 @@
+     bool quit = false;
+ 
+ 	load_configuration();
++	glutInit(&argc, argv);
+ 
+ 	screen_sfc = initialization((fullscreen ? SDL_FULLSCREEN : 0));
+ 	if (screen_sfc==0) return 0;

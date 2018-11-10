@@ -1,0 +1,20 @@
+--- testscript.orig	2012-07-06 19:42:51.000000000 +0100
++++ testscript	2012-07-06 19:43:17.000000000 +0100
+@@ -12,17 +12,6 @@
+ ulimit -s >> testscript.log
+ echo '==============' >> testscript.log
+ echo =============== >> testscript.log
+-echo = test_cilk_snmf = >> testscript.log
+-. ./configure in=progs/test_cilk_snmf.c $*
+-echo last conf is $TAUCS_LASTCONF >> testscript.log
+-make -f build/${TAUCS_LASTCONF}/makefile
+-if bin/${TAUCS_LASTCONF}/test_cilk_snmf >> testscript.log ; then
+-echo = TEST PASSED test_cilk_snmf >> testscript.log
+-else
+-echo = TEST FAILED test_cilk_snmf >> testscript.log
+-fi
+-echo =============== >> testscript.log
+-echo =============== >> testscript.log
+ echo = test_complex = >> testscript.log
+ . ./configure in=progs/test_complex.c $*
+ echo last conf is $TAUCS_LASTCONF >> testscript.log

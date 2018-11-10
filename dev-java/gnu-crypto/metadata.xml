@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
+
+<longdescription>
+GNU Crypto, part of the GNU project, released under the aegis of GNU,
+aims at providing free, versatile, high-quality, and provably correct
+implementations of cryptographic primitives and tools in the Java
+programming language for use by programmers and end-users.
+</longdescription>
+</pkgmetadata>

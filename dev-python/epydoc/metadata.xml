@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription>
+		Epydoc is a python documentation system without output similar to javadoc.
+		Epydoc uses python doc-strings, importing modules, and introsepction in
+		order to do its thing -- if your modules are not safe to import, you
+		should look for another tool. Documentation mark-up is done with restructed
+		text (reST).
+	</longdescription>
+	<longdescription lang="ja">
+		Epydocは、Javadocに似た出力をする以外はPython言語のための
+		ドキュメンテーションシステムです。Epydocはdoc-stringsを使い、
+		モジュールをインポートし、それらが自己分析したものを使います。
+		-- もしあなたが指定したモジュールがインポートするには安
+		全でないのだとしたら、他のツールを使うべきです。ドキュメンテーション
+		の書式は再構造的文章(reST)です。
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">epydoc</remote-id>
+	</upstream>
+</pkgmetadata>

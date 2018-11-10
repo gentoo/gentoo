@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Haskell 98 comonads
+	</longdescription>
+	<use>
+		<flag name="test-doctests">
+			Run the doctests test suite
+		</flag>
+		<flag name="containers">
+			You can disable the use of the `containers` package
+			using `-f-containers`. Disabing this is an unsupported configuration, but it
+			may be useful for accelerating builds in sandboxes for expert users.
+		</flag>
+		<flag name="contravariant">
+			You can disable the use of the `contravariant`
+			package using `-f-contravariant`. Disabling this is an unsupported
+			configuration, but it may be useful for accelerating builds in sandboxes for
+			expert users. If disabled we will not supply instances of `Contravariant`
+		</flag>
+		<flag name="distributive">
+			You can disable the use of the `distributive`
+			package using `-f-distributive`. Disabling this is an unsupported
+			configuration, but it may be useful for accelerating builds in sandboxes for
+			expert users. If disabled we will not supply instances of `Distributive`
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ekmett/comonad</remote-id>
+	</upstream>
+</pkgmetadata>

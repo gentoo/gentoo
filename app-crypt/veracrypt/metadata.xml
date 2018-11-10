@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<longdescription>
+	Platform independent filesystem or container encryptor
+	derived from truecrypt
+</longdescription>
+<use>
+	<flag name="asm">Enable assembly for optimization</flag>
+</use>
+<maintainer type="person">
+	<email>gokturk@gentoo.org</email>
+	<name>Göktürk Yüksek</name>
+</maintainer>
+<upstream>
+	<remote-id type="github">veracrypt/VeraCrypt</remote-id>
+</upstream>
+</pkgmetadata>

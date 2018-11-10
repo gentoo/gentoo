@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <longdescription>Provides dbish, a command line tool for interacting with
+  any installed DBD module directly.</longdescription>
+  <upstream>
+    <remote-id type="cpan">DBI-Shell</remote-id>
+    <remote-id type="cpan-module">DBI::Format</remote-id>
+    <remote-id type="cpan-module">DBI::Format::Base</remote-id>
+    <remote-id type="cpan-module">DBI::Format::Box</remote-id>
+    <remote-id type="cpan-module">DBI::Format::CSV</remote-id>
+    <remote-id type="cpan-module">DBI::Format::HTML</remote-id>
+    <remote-id type="cpan-module">DBI::Format::Neat</remote-id>
+    <remote-id type="cpan-module">DBI::Format::PartBox</remote-id>
+    <remote-id type="cpan-module">DBI::Format::Raw</remote-id>
+    <remote-id type="cpan-module">DBI::Format::SQLMinus</remote-id>
+    <remote-id type="cpan-module">DBI::Format::String</remote-id>
+    <remote-id type="cpan-module">DBI::Shell</remote-id>
+    <remote-id type="cpan-module">DBI::Shell::Completion</remote-id>
+    <remote-id type="cpan-module">DBI::Shell::FindSqlFile</remote-id>
+    <remote-id type="cpan-module">DBI::Shell::SQLMinus</remote-id>
+    <remote-id type="cpan-module">DBI::Shell::Spool</remote-id>
+    <remote-id type="cpan-module">DBI::Shell::Timing</remote-id>
+  </upstream>
+</pkgmetadata>

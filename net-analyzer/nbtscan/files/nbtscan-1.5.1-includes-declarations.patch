@@ -1,0 +1,42 @@
+--- a/list.h
++++ b/list.h
+@@ -19,3 +19,5 @@
+ int compare(struct list_item* item1, struct list_item* item2);
+ 
+ int insert(struct list* lst, unsigned long content);
++
++int in_list(struct list* lst, unsigned long content);
+--- a/nbtscan.c
++++ b/nbtscan.c
+@@ -5,6 +5,8 @@
+ #include <stdlib.h>
+ #include <sys/time.h>
+ #include <string.h>
++#include <ctype.h>
++#include <unistd.h>
+ #if HAVE_STDINT_H
+ #include <stdint.h>
+ #endif
+--- a/statusq.h
++++ b/statusq.h
+@@ -103,4 +103,10 @@
+ 	char* service_name;
+ } nb_service_t ;
+ 
++char* getnbservicename(my_uint8_t service, int unique, char* name);
++
++struct nb_host_info* parse_response(char* buff, int buffsize);
++
++int send_query(int sock, struct in_addr dest_addr, my_uint32_t rtt_base);
++
+ #endif /* STATUSQ_H */
+--- a/statusq.c
++++ b/statusq.c
+@@ -29,6 +29,7 @@
+ #include <sys/time.h>
+ #include "statusq.h"
+ #include <string.h>
++#include <ctype.h>
+ #include <stdio.h>
+ #include <stddef.h>
+ #include "errors.h"

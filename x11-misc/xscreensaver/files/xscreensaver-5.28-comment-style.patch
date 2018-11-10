@@ -1,0 +1,21 @@
+--- a/hacks/tessellimage.c
++++ b/hacks/tessellimage.c
+@@ -507,15 +507,15 @@
+       out[i].p = (n > 0
+                   ? (XPoint *) calloc (out[i].npoints + 1, sizeof (*out[i].p))
+                   : 0);
+-//printf("%d: ", i);
++/*printf("%d: ", i);*/
+       for (j = 0; j < out[i].npoints; j++)
+         {
+           ITRIANGLE *tt = &v[t->tri[j]];
+           out[i].p[j].x = (p[tt->p1].x + p[tt->p2].x + p[tt->p3].x) / 3;
+           out[i].p[j].y = (p[tt->p1].y + p[tt->p2].y + p[tt->p3].y) / 3;
+-//printf(" [%d: %d %d]", j, out[i].p[j].x, out[i].p[j].y);
++/*printf(" [%d: %d %d]", j, out[i].p[j].x, out[i].p[j].y);*/
+         }
+-//printf("\n");
++/*printf("\n");*/
+     }
+ 
+   free (vert_to_tri);

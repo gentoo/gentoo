@@ -1,0 +1,10 @@
+--- bitlbee-3.5/init/bitlbee.service.in
++++ bitlbee-3.5/init/bitlbee.service.in
+@@ -3,6 +3,7 @@
+ 
+ [Service]
+ ExecStart=@sbindir@bitlbee -F -n
++User=bitlbee
+ KillMode=process
+ 
+ [Install]

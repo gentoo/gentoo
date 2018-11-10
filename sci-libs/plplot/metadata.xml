@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">PLplot is a library of functions that are useful for making scientific plots. It can be used from within compiled languages such as C, C++, FORTRAN and Java, as well as interactively from interpreted languages such as Octave, Python, Perl and Tcl. It is capable of producing standard x-y plots, semilog plots, log-log plots, contour plots, 3D surface plots, mesh plots, bar charts and pie charts. Multiple graphs may be composited, and it also supports a large variety of output file devices such as Postscript, PNG, JPEG, LaTeX and others. It is also possible to to use interactive devices such as xwin, tk and xterm as output devices. PLplot also offers support for extended characters inculding the Greek alphabet and a host of mathematical symbols.</longdescription>
+	<use>
+		<flag name="dynamic">Build with dynamic drivers</flag>
+		<flag name="octave">Add bindings for <pkg>sci-mathematics/octave</pkg></flag>
+		<flag name="pdl">Add bindings for <pkg>dev-perl/PDL</pkg></flag>
+		<flag name="qhull">Add bindings for <pkg>media-libs/qhull</pkg></flag>
+		<flag name="shapefile">Enable support for ESRI shapefiles</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">plplot</remote-id>
+	</upstream>
+</pkgmetadata>

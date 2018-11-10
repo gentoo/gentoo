@@ -1,0 +1,72 @@
+#! /bin/bash
+
+m4file=""
+fontsize=10
+
+usage() {
+  echo "Usage:"
+  echo "${0##*/} --help"
+  echo "${0##*/} [options] path/to/file.m4"
+  echo
+  echo "--help"
+  echo "  Show this help message."
+  echo
+  echo "-f, --fontsize"
+  echo "  Set size of base font, in points."
+  echo "  Supported font sizes are 8, 9, 10, 11, 12, 14, 17 and 20."
+  exit
+}
+
+if [[ "$#" == 0 ]]; then usage; fi
+
+while [[ "$#" != 0 ]]; do
+  case "${1}" in
+    -h|--help)
+      usage;;
+    -f|--fontsize)
+      case "${2}" in
+        8)
+          fontsize=8;;
+        9)
+          fontsize=9;;
+        10)
+          fontsize=10;;
+        11)
+          fontsize=11;;
+        12)
+          fontsize=12;;
+        14)
+          fontsize=14;;
+        17)
+          fontsize=17;;
+        20)
+          fontsize=20;;
+        *)
+          echo "Unsupported font size: ${2}"
+          exit;;
+      esac
+      shift; shift;;
+    *.m4)
+      m4file="${1}"
+      shift;;
+    *)
+      echo "Unknown option: ${1}"
+      exit
+  esac
+done
+
+if [[ "${m4file}" == "" ]]; then
+  echo "No m4 input file"
+  exit
+fi
+
+tempdir=$(mktemp -d)
+cp -f "${m4file}" "${tempdir}/source.m4"
+pushd "${tempdir}" > /dev/null
+
+m4 -I /usr/share/circuit_macros pgf.m4 source.m4 | dpic -g > source.tex
+pdflatex "\documentclass[preview=true]{standalone}\usepackage{tikz,boxdims}\usepackage[${fontsize}pt]{extsizes}\begin{document}\input source.tex\end{document}"
+
+popd > /dev/null
+cp "${tempdir}/standalone.pdf" "${m4file%.m4}.pdf"
+rm -rf "${tempdir}"

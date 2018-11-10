@@ -1,0 +1,122 @@
+diff -Nru imlib-1.9.15.old/gdk_imlib/io-gif.c imlib-1.9.15/gdk_imlib/io-gif.c
+--- imlib-1.9.15.old/gdk_imlib/io-gif.c	2014-05-28 13:54:48.860293627 +0100
++++ imlib-1.9.15/gdk_imlib/io-gif.c	2014-05-28 13:58:29.992185729 +0100
+@@ -1,8 +1,10 @@
+ #include <config.h>
+ #include "gdk_imlib.h"
+ #include "gdk_imlib_private.h"
++#include <gifutil.h>
+ 
+ #ifndef HAVE_LIBGIF
++/*------------------------*/
+ unsigned char loader_gif (FILE *f, int *w, int *h, int *t)
+ {
+ 	return NULL;
+@@ -43,14 +45,14 @@
+     {
+       if (DGifGetRecordType(gif, &rec) == GIF_ERROR)
+ 	{
+-	  PrintGifError();
++	  _PrintGifError(gif);
+ 	  rec = TERMINATE_RECORD_TYPE;
+ 	}
+       if ((rec == IMAGE_DESC_RECORD_TYPE) && (!done))
+ 	{
+ 	  if (DGifGetImageDesc(gif) == GIF_ERROR)
+ 	    {
+-	      PrintGifError();
++	      _PrintGifError(gif);
+ 	      rec = TERMINATE_RECORD_TYPE;
+ 	    }
+ 	  *w = gif->Image.Width;
+diff -Nru imlib-1.9.15.old/gifutil.h imlib-1.9.15/gifutil.h
+--- imlib-1.9.15.old/gifutil.h	1970-01-01 01:00:00.000000000 +0100
++++ imlib-1.9.15/gifutil.h	2014-05-28 13:57:45.019424755 +0100
+@@ -0,0 +1,26 @@
++#ifndef __GIFUTIL_H__
++#define __GIFUTIL_H__
++
++static void
++_PrintGifError(GifFileType *gif)
++{
++  /* GIFLIB_MAJOR is only defined in libgif >= 4.2.0 */
++  /* libgif 4.2.0 has retired PrintGifError() and added GifErrorString() */
++#if defined(GIFLIB_MAJOR) && defined(GIFLIB_MINOR) && \
++           ((GIFLIB_MAJOR == 4 && GIFLIB_MINOR >= 2) || GIFLIB_MAJOR > 4)
++  /* Static string actually, hence the const char* cast */
++  
++#if GIFLIB_MAJOR >= 5
++  const char* gifliberr = (const char*) GifErrorString(gif->Error);
++#else
++  const char* gifliberr = (const char*) GifErrorString();
++#endif
++  if (gifliberr == NULL)
++      gifliberr = "Unknown error";
++  fprintf(stderr, "%s\n", gifliberr);
++#else
++  PrintGifError();
++#endif
++}
++
++#endif
+diff -Nru imlib-1.9.15.old/Imlib/load.c imlib-1.9.15/Imlib/load.c
+--- imlib-1.9.15.old/Imlib/load.c	2014-05-28 13:54:49.008295568 +0100
++++ imlib-1.9.15/Imlib/load.c	2014-05-28 14:00:21.321983945 +0100
+@@ -3,6 +3,7 @@
+ #include "Imlib.h"
+ #include "Imlib_private.h"
+ #include <setjmp.h>
++#include <gifutil.h>
+ 
+ #define G_MAXINT ((int) 0x7fffffff)
+ 
+@@ -431,6 +432,8 @@
+ #endif /* HAVE_LIBTIFF */
+ 
+ #ifdef HAVE_LIBGIF
++/*------------------------*/
++/*------------------------*/
+ unsigned char      *
+ _LoadGIF(ImlibData * id, FILE *f, int *w, int *h, int *t)
+ {
+@@ -454,22 +457,38 @@
+   fd = fileno(f);
+   /* Apparently rewind(f) isn't sufficient */
+   lseek(fd, (long) 0, 0);
++
++#if GIFLIB_MAJOR >= 5
++  int errCode = 0;
++
++  gif = DGifOpenFileHandle(fd, &errCode);
++  if (!gif)
++  {
++    const char* gifliberr = (const char*) GifErrorString(errCode);
++    if (gifliberr == NULL)
++      gifliberr = "Unknown error";
++    fprintf(stderr, "%s\n", gifliberr);
++    return NULL;
++  }
++#else
+   gif = DGifOpenFileHandle(fd);
+ 
+   if (!gif)
+     return NULL;
++#endif
++
+   do
+     {
+       if (DGifGetRecordType(gif, &rec) == GIF_ERROR)
+ 	{
+-	  PrintGifError();
++	  _PrintGifError(gif);
+ 	  rec = TERMINATE_RECORD_TYPE;
+ 	}
+       if ((rec == IMAGE_DESC_RECORD_TYPE) && (!done))
+ 	{
+ 	  if (DGifGetImageDesc(gif) == GIF_ERROR)
+ 	    {
+-	      PrintGifError();
++	      _PrintGifError(gif);
+ 	      rec = TERMINATE_RECORD_TYPE;
+ 	    }
+ 	  *w = gif->Image.Width;

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>glyph@twistedmatrix.com</email>
+			<name>Glyph</name>
+		</maintainer>
+		<remote-id type="pypi">Automat</remote-id>
+		<remote-id type="github">glyph/automat</remote-id>
+	</upstream>
+	<longdescription>
+		Automat is a library for concise, idiomatic Python expression of
+		finite-state automata (particularly deterministic finite-state
+		transducers).
+	</longdescription>
+</pkgmetadata>

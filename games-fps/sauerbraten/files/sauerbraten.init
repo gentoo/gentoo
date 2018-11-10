@@ -1,0 +1,74 @@
+#!/sbin/openrc-run
+
+depend() {
+	use net
+}
+
+start() {
+	[ $(echo ${RUNMASTER} | tr '[:upper:]' '[:lower:]') = "yes" ] && start_master
+	[ $(echo ${RUNSERVER} | tr '[:upper:]' '[:lower:]') = "yes" ] && start_server
+	true
+}
+
+start_server() {
+	ebegin "Starting Sauerbraten dedicated server"
+
+	# Make sure necessary parameters are set
+	SERVERCONFIG="${SERVERCONFIG:-%SYSCONFDIR%}"
+
+	if [ ! -d ${SERVERCONFIG} ]; then
+		einfo "No ${SERVERCONFIG} around. Creating new..."
+		mkdir ${SERVERCONFIG}
+		chown ${USER}:${GROUP} ${SERVERCONFIG}
+	fi
+
+	start-stop-daemon \
+		--quiet --start --user ${USER}:${GROUP} --chdir ${SERVERCONFIG} \
+		--make-pidfile --pidfile %GAMES_STATEDIR%/run/sauerbraten/server.pid \
+		--background --exec %LIBEXECDIR%/sauer_server -- ${SERVERARGS}
+	eend $?
+}
+
+start_master() {
+	ebegin "Starting Sauerbraten master server"
+
+	# Make sure necessary parameters are set
+	MASTERCONFIG="${MASTERCONFIG:-%SYSCONFDIR%}"
+	[ -n "${MASTERIP}" ] && MASTERPORT="${MASTERPORT:-28787}"
+	MASTERARGS="${MASTERCONFIG}/ ${MASTERPORT} ${MASTERIP}"
+
+	if [ ! -d ${MASTERCONFIG} ]; then
+		einfo "No ${MASTERCONFIG} around. Creating new..."
+		mkdir ${MASTERCONFIG}
+		chown ${USER}:${GROUP} ${MASTERCONFIG}
+	fi
+
+	start-stop-daemon \
+		--quiet --start --user ${USER}:${GROUP} \
+		--make-pidfile --pidfile %GAMES_STATEDIR%/run/sauerbraten/master.pid \
+		--background --exec %LIBEXECDIR%/sauer_master -- ${MASTERARGS}
+	eend $?
+}
+
+stop() {
+	[ $(echo ${RUNSERVER} | tr '[:upper:]' '[:lower:]') = "yes" ] && stop_server
+	[ $(echo ${RUNMASTER} | tr '[:upper:]' '[:lower:]') = "yes" ] && stop_master
+	true
+}
+
+stop_server() {
+	ebegin "Stopping Sauerbraten dedicated server"
+	start-stop-daemon --stop --retry 3 --pidfile %GAMES_STATEDIR%/run/sauerbraten/server.pid
+	eend $?
+}
+
+stop_master() {
+	ebegin "Stopping Sauerbraten master server"
+	start-stop-daemon --stop --retry 3 --pidfile %GAMES_STATEDIR%/run/sauerbraten/master.pid
+	eend $?
+}
+
+restart() {
+	svc_stop
+	svc_start
+}

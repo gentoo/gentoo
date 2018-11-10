@@ -1,0 +1,14 @@
+http://bugs.gentoo.org/show_bug.cgi?id=366073
+http://celestia.svn.sourceforge.net/viewvc/celestia?view=revision&revision=5178
+
+Patch written by Nils Larsson <ni1s@nerdshack.com>
+--- a/src/celengine/frametree.h
++++ b/src/celengine/frametree.h
+@@ -14,6 +14,7 @@
+ #define _CELENGINE_FRAMETREE_H_
+ 
+ #include <vector>
++#include <cstddef>
+ 
+ class Star;
+ class Body;

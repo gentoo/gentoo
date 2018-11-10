@@ -1,0 +1,19 @@
+diff -urN rman-3.2.orig/Makefile rman-3.2/Makefile
+--- rman-3.2.orig/Makefile	2003-07-26 12:15:00.000000000 -0700
++++ rman-3.2/Makefile	2005-07-12 01:01:37.000000000 -0700
+@@ -15,13 +15,8 @@
+ #    this must be a directory that's in your bin PATH.
+ # MANDIR holds the man page.
+ 
+-BINDIR = /opt/local/bin
+-#BINDIR = /usr/local/bin
+-#BINDIR = //C/bin
+-MANDIR = /usr/local/man/man1
+-# popular alternative
+-#BINDIR = /opt/local/bin
+-#MANDIR = /opt/local/man/man1
++BINDIR = /usr/bin
++MANDIR = /usr/share/man/man1
+ 
+ 
+ ### if you have GNU gcc, use these definitions

@@ -1,0 +1,22 @@
+--- Makefile.unx.old	2010-11-25 11:24:48.000000000 +0100
++++ Makefile.unx	2010-11-25 11:25:10.000000000 +0100
+@@ -79,8 +79,7 @@
+ 	$(CC) $(CMD_FLAGS) -c $^ -o $@
+ 
+ $(CMD_NAME): $(LIB_NAME) $(CMD_OBJS)
+-	$(CC) $(CMD_FLAGS) $(CMD_OBJS) -o $@ $(LIB_NAME) $(CMD_LIBS)
+-	$(STRIP) $@
++	$(CC) $(CMD_FLAGS) $(LDFLAGS) $(CMD_OBJS) -o $@ $(LIB_NAME) $(CMD_LIBS)
+ 
+ install: $(CMD_NAME)
+ 	cp $(CMD_NAME) $(INSTALL_PREFIX)/bin/
+--- Makefile.unx.old	2010-11-25 11:31:27.000000000 +0100
++++ Makefile.unx	2010-11-25 11:31:31.000000000 +0100
+@@ -125,7 +125,6 @@
+ 
+ $(GUI_NAME): $(LIB_NAME) $(GUI_OBJS)
+ 	$(CXX) $(GUI_FLAGS) $(GUI_OBJS) -o $@ $(LIB_NAME) $(GUI_LIBS)
+-	$(STRIP) $@
+ 
+ 
+ # ----- DOCUMENTATION ---------------------------------------------

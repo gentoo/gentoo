@@ -1,0 +1,13 @@
+diff --git a/libnfc/log.h b/libnfc/log.h
+index 90cb747..3438511 100644
+--- a/libnfc/log.h
++++ b/libnfc/log.h
+@@ -18,6 +18,8 @@
+ #ifndef __LOG_H__
+ #define __LOG_H__
+ 
++#include <stdint.h>
++
+ #if defined(HAS_LOG4C) && HAS_LOG4C
+ 
+ #define LOGGING 1

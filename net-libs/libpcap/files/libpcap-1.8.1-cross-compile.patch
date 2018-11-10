@@ -1,0 +1,16 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -291,7 +291,12 @@
+ dnl XXX This could be done for cross-compiling, but for now it's not.
+ dnl
+ if test -z "$with_pcap" && test "$cross_compiling" = yes; then
+-	AC_MSG_ERROR(pcap type not determined when cross-compiling; use --with-pcap=...)
++	if test -z "$with_pcap" ; then
++		case $host in
++			*-linux*) with_pcap="linux";;
++			*) AC_MSG_ERROR(pcap type not determined when cross-compiling; use --with-pcap=...);;
++		esac
++	fi
+ fi
+ AC_ARG_WITH(pcap,
+ AC_HELP_STRING([--with-pcap=TYPE],[use packet capture TYPE]))

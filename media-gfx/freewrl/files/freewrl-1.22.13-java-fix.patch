@@ -1,0 +1,54 @@
+--- a/src/java/Makefile.sources
++++ b/src/java/Makefile.sources
+@@ -1,4 +1,4 @@
+-dist_noinst_JAVA = \
++noinst_JAVA = \
+ 	org/web3d/x3d/sai/Browser.java \
+ 	org/web3d/x3d/sai/BrowserEvent.java \
+ 	org/web3d/x3d/sai/BrowserFactoryImpl.java \
+@@ -309,6 +309,7 @@ noinst_JAVA = \
+ 	vrml/InvalidFieldException.java \
+ 	vrml/InvalidRouteException.java \
+ 	vrml/InvalidVRMLSyntaxException.java \
++	vrml/InvalidX3DSyntaxException.java \
+ 	vrml/MField.java \
+ 	vrml/field/ConstMFColor.java \
+ 	vrml/field/ConstMFFloat.java \
+--- /dev/null
++++ b/src/java/vrml/InvalidX3DSyntaxException.java
+@@ -0,0 +1,6 @@
++package vrml;
++
++public class InvalidX3DSyntaxException extends Exception {
++    public InvalidX3DSyntaxException() { super(); }
++    public InvalidX3DSyntaxException(String s) { super(s); }
++}
+--- a/src/java/Makefile.am	2014-03-10 10:37:09.000000000 -0400
++++ b/src/java/Makefile.am	2014-03-12 12:29:42.000000000 -0400
+@@ -1,5 +1,10 @@
+ # Java Classes for EAI/SAI/etc.
+ 
++# NOTE - automake-1.11.6 changed how class*.stamp is generated, now need
++# to use noinst_JAVA and EXTRA_DIST instead of dist_noinst_JAVA to
++# keep behaviour consistent and compatible with both automake-1.11.6 and
++# older automake
++
+ # Get global variables for Makefile defined by toplevel Makefile.globals
+ include $(top_srcdir)/Makefile.globals
+ 
+@@ -9,11 +14,12 @@
+ jarfile = vrml.jar
+ jardir = $(JAVA_DIR)
+ 
+-$(jarfile): $(dist_noinst_JAVA) classdist_noinst.stamp
+-	$(JAR) cmf $(JAVAROOT)/manifest.extras $@ -C $(JAVAROOT) $$(echo $(dist_noinst_JAVA:.java=.class))
++$(jarfile): $(noinst_JAVA) manifest.extras classnoinst.stamp
++	$(JAR) cmf $(JAVAROOT)/manifest.extras $@ -C $(JAVAROOT) $$(echo $(noinst_JAVA:.java=.class))
+ 
+ jar_DATA = $(jarfile)	
+ 
+-CLEANFILES = $(jarfile) $$(echo $(dist_noinst_JAVA:.java=.class))
++CLEANFILES = $(jarfile) $$(echo $(noinst_JAVA:.java=.class))
++EXTRA_DIST = $(noinst_JAVA) java.policy manifest.extras
+ 
+ include Makefile.sources

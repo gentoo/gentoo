@@ -1,0 +1,27 @@
+From 313871922aefef489115967d634f991edfaad39c Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Fri, 12 Oct 2012 17:10:02 -0400
+Subject: [PATCH] Explicitly link to libX11 for XUngrabServer()
+
+Prevents underlinking failure when using recent ld.gold and recent
+versions of gtk+; see https://bugs.gentoo.org/show_bug.cgi?id=370019
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8f46279..01e36dd 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -8,7 +8,7 @@ AC_PROG_CC
+ AC_CHECK_HEADERS([stdio.h stdlib.h string.h unistd.h])
+ AC_CHECK_FUNCS([memset])
+ 
+-PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.10.0],,
++PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.10.0 x11],,
+ 		  AC_MSG_ERROR([>=GTK+-2.10 is required to compile ${PACKAGE_NAME}]
+ ))
+ 
+-- 
+1.7.12.3
+

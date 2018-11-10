@@ -1,0 +1,20 @@
+--- wmmon/Makefile.orig	2012-03-29 13:17:39.380764054 +0200
++++ wmmon/Makefile	2012-03-29 13:18:06.623931767 +0200
+@@ -6,14 +6,14 @@
+ 		../wmgeneral/list.o
+ 
+ CFLAGS = -O2
+-CC = cc $(CFLAGS)
++CC = cc
+ 
+ 
+ .c.o:
+-	$(CC) -c -Wall $< -o $*.o
++	$(CC) $(CFLAGS) -c -Wall $< -o $*.o
+ 
+ wmmon: $(OBJS)
+-	$(CC) -o wmmon $^ $(LIBDIR) $(LIBS)
++	$(CC) $(LDFLAGS) -o wmmon $^ $(LIBDIR) $(LIBS)
+ 
+ debug: CFLAGS = -g3 
+ debug: wmmon

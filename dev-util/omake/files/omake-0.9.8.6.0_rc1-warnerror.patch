@@ -1,0 +1,11 @@
+--- a/lib/build/OCaml.om
++++ b/lib/build/OCaml.om
+@@ -176,7 +176,7 @@ public.PREFIXED_OCAMLPACKS =\
+ #
+ declare OCAMLDEPFLAGS
+ public.OCAMLPPFLAGS  =
+-public.OCAMLFLAGS    = -warn-error A
++public.OCAMLFLAGS    =
+ public.OCAMLCFLAGS   = -g
+ public.OCAMLOPTFLAGS =
+ public.OCAMLCPPFLAGS =

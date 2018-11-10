@@ -1,0 +1,20 @@
+
+# Host and port to listen on
+SUBSONIC_HOST=0.0.0.0
+SUBSONIC_PORT=4040
+
+# To disable https, set to 0
+SUBSONIC_HTTPS_PORT=0
+
+SUBSONIC_CONTEXT_PATH=/
+SUBSONIC_MAX_MEMORY=100
+
+# Music directories
+SUBSONIC_DEFAULT_MUSIC_FOLDER=/var/music
+SUBSONIC_DEFAULT_PODCAST_FOLDER=/var/music/Podcast
+SUBSONIC_DEFAULT_PLAYLIST_FOLDER=/var/playlists
+
+NICELEVEL=0
+
+# Further subsonic start script options, if ever needed
+SUBSONIC_OPTS=""

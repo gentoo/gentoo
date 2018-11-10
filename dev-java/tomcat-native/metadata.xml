@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription>
+		Native library for Tomcat to use the Apache Portable Runtime to
+		provide superior scalability, performance, and better integration with
+		native server technologies. The Apache Portable Runtime is a highly
+		portable library that is at the heart of Apache HTTP Server 2.x. APR
+		has many uses, including access to advanced IO functionality (such as
+		sendfile, epoll and OpenSSL), OS level functionality (random number
+		generation, system status, etc), and native process handling (shared
+		memory, NT pipes and Unix sockets).
+	</longdescription>
+</pkgmetadata>

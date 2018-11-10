@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>alpha@gentoo.org</email>
+		<name>Gentoo Linux Alpha Development</name>
+	</maintainer>
+	<longdescription lang="en">
+		On Intel based PC systems, the BIOS firmware sets up the system and
+		then loads the image to be run from the boot block of a DOS file
+		system. This is more or less what MILO does on an Alpha based system,
+		however there are several interesting differences between BIOS firmware
+		and MILO, not least of which is that MILO includes and uses standard
+		Linux device drivers unmodified. MILO is firmware, unlike LILO, which
+		relies on the BIOS firmware to get itself loaded.
+	</longdescription>
+</pkgmetadata>

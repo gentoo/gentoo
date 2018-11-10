@@ -1,0 +1,13 @@
+make sure all lib entries get into libs.private in the .pc file
+
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -61,7 +61,7 @@ $(PCILIBPC): libpci.pc.in
+ 		-e 's,@LIBDIR@,$(LIBDIR),' \
+ 		-e 's,@IDSDIR@,$(IDSDIR),' \
+ 		-e 's,@VERSION@,$(VERSION),' \
+-		-e 's,@LDLIBS@,$(LDLIBS),'
++		-e 's,@LDLIBS@,$(LDLIBS) $(LIB_LDLIBS),'
+ 
+ init.o: init.c $(INCL)
+ access.o: access.c $(INCL)

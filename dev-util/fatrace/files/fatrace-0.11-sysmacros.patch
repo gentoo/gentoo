@@ -1,0 +1,13 @@
+https://bugs.launchpad.net/fatrace/+bug/1572396
+https://bugs.gentoo.org/580082
+
+--- a/fatrace.c
++++ b/fatrace.c
+@@ -33,6 +33,7 @@
+ #include <signal.h>
+ #include <time.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <sys/fanotify.h>
+ #include <sys/time.h>
+ #include <sys/types.h>

@@ -1,0 +1,42 @@
+Bug: https://bugs.gentoo.org/582606
+
+--- a/ragel/common.cpp
++++ b/ragel/common.cpp
+@@ -34,7 +34,7 @@
+ 	{ "int",      0,       "int",     true,   true,  false,  INT_MIN,   INT_MAX,    sizeof(int) },
+ 	{ "unsigned", "int",   "uint",    false,  true,  false,  0,         UINT_MAX,   sizeof(unsigned int) },
+ 	{ "long",     0,       "long",    true,   true,  false,  LONG_MIN,  LONG_MAX,   sizeof(long) },
+-	{ "unsigned", "long",  "ulong",   false,  true,  false,  0,         ULONG_MAX,  sizeof(unsigned long) }
++	{ "unsigned", "long",  "ulong",   false,  true,  false,  0,         (long long) ULONG_MAX,  sizeof(unsigned long) }
+ };
+ 
+ #define S8BIT_MIN  -128
+@@ -87,7 +87,7 @@
+ 	{ "int32",   0,  "int32",   true,   true,  false,  S32BIT_MIN, S32BIT_MAX,  4 },
+ 	{ "uint32",  0,  "uint32",  false,  true,  false,  U32BIT_MIN, U32BIT_MAX,  4 },
+ 	{ "int64",   0,  "int64",   true,   true,  false,  S64BIT_MIN, S64BIT_MAX,  8 },
+-	{ "uint64",  0,  "uint64",  false,  true,  false,  U64BIT_MIN, U64BIT_MAX,  8 },
++	{ "uint64",  0,  "uint64",  false,  true,  false,  U64BIT_MIN, (long long) U64BIT_MAX,  8 },
+ 	{ "rune",    0,  "int32",   true,   true,  true,   S32BIT_MIN, S32BIT_MAX,  4 }
+ };
+ 
+@@ -116,7 +116,7 @@
+ 	{ "int",     0,  "int",     true,   true,  false,  INT_MIN,   INT_MAX,     4 },
+ 	{ "uint",    0,  "uint",    false,  true,  false,  0,         UINT_MAX,    4 },
+ 	{ "long",    0,  "long",    true,   true,  false,  LONG_MIN,  LONG_MAX,    8 },
+-	{ "ulong",   0,  "ulong",   false,  true,  false,  0,         ULONG_MAX,   8 }
++	{ "ulong",   0,  "ulong",   false,  true,  false,  0,         (long long) ULONG_MAX,   8 }
+ };
+ 
+ HostType hostTypesOCaml[] =
+--- a/ragel/rbxgoto.cpp
++++ b/ragel/rbxgoto.cpp
+@@ -658,7 +658,7 @@
+ 	out <<
+ 		"	begin\n"
+ 		"		" << P() << " += 1\n"
+-		"		" << rbxGoto(ret, "_out") << "\n" 
++		"		" << static_cast<bool>(rbxGoto(ret, "_out")) << "\n"
+ 		"	end\n";
+ }
+ 

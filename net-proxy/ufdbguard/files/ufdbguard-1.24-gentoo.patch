@@ -1,0 +1,13 @@
+Index: ufdbGuard-1.24/src/ufdbUpdate.in
+===================================================================
+--- ufdbGuard-1.24.orig/src/ufdbUpdate.in
++++ ufdbGuard-1.24/src/ufdbUpdate.in
+@@ -39,6 +39,8 @@ WGET_COMMAND="@WGET@"
+ NOTIFY_UFDBGUARDD="yes"                 # send HUP signal to ufdbguardd
+ SYSLOG_FACILITY="local6"                # errors/warnings in system log have this facility name
+ 
++source /etc/conf.d/ufdb
++
+ # end of user settings.
+ # DO NOT EDIT ANYTHING BELOW THIS LINE.  ########################################
+ 

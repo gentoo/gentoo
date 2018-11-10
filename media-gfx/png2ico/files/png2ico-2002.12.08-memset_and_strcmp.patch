@@ -1,0 +1,13 @@
+png2ico.cpp:133:31: error: ‘memset’ was not declared in this scope
+png2ico.cpp:443:34: error: ‘strcmp’ was not declared in this scope
+
+--- png2ico.cpp
++++ png2ico.cpp
+@@ -33,6 +33,7 @@
+ 
+ 
+ #include <cstdio>
++#include <cstring>
+ #include <vector>
+ #include <climits>
+ 

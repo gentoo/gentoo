@@ -1,0 +1,33 @@
+http://lists.gnu.org/archive/html/bug-bash/2009-02/msg00158.html
+
+make `return` accept negative values again
+
+hack by me (vapier@gentoo.org) ... i'm not familiar with bash source code, so
+i imagine this isn't the best way to do it ...
+
+--- bash/builtins/return.def
++++ bash/builtins/return.def
+@@ -60,9 +60,23 @@
+ return_builtin (list)
+      WORD_LIST *list;
+ {
++	int neg = 0;
++	if (list && list->word && list->word->word) {
++		char *word = list->word->word;
++		if (*word == '-') {
++			while (*word++)
++				if (!isdigit(*word))
++					break;
++			if (!*word)
++				neg = 1;
++		}
++	}
++
++	if (!neg) {
+   if (no_options (list))
+     return (EX_USAGE);
+   list = loptend;	/* skip over possible `--' */
++	}
+ 
+   return_catch_value = get_exitstat (list);
+ 

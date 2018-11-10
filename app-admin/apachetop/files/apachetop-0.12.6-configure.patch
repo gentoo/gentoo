@@ -1,0 +1,101 @@
+Index: apachetop-0.12.6/configure.ac
+===================================================================
+--- apachetop-0.12.6.orig/configure.ac
++++ apachetop-0.12.6/configure.ac
+@@ -52,48 +52,60 @@ AC_FUNC_VPRINTF
+ AC_CHECK_FUNCS([inet_aton memset strchr strdup kqueue strerror strstr])
+ 
+ # pcre {{{
+-AC_ARG_WITH(pcre,
+-	[  --with-pcre=<path>      prefix of pcre installation (eg /usr/local)],
+-	[
+-		CPPFLAGS="$CPPFLAGS -I $withval/include"
+-		LDFLAGS="$LDFLAGS -L $withval/lib"
+-	]
+-)
+-
+-AC_CHECK_HEADERS(pcre.h,
+-	AC_SEARCH_LIBS([pcre_compile], [pcre]) ,
+-	AC_MSG_WARN([*** pcre.h not found -- consider using --with-pcre])
+-)
++AC_ARG_WITH([pcre],
++			[  --with-pcre=<path>      prefix of pcre installation (eg /usr/local)],
++			[case "${withval}" in
++			  yes) with_pcre="/usr";;
++			  no)  with_pcre="no";;
++			  *)   with_pcre="/usr";;
++			 esac],
++			 [with_pcre="/usr"])
++
++if test x$with_pcre != xno; then
++	CPPFLAGS="$CPPFLAGS -I $withval/include"
++	LDFLAGS="$LDFLAGS -L $withval/lib"
++	AC_CHECK_HEADERS(pcre.h,
++					 AC_SEARCH_LIBS([pcre_compile], [pcre]),
++					 AC_MSG_WARN([*** pcre.h not found -- consider using --with-pcre]))
++fi
+ # }}}
+ 
+ # fam {{{
+-AC_ARG_WITH(fam,
+-	[  --with-fam=<path>      prefix of fam installation (eg /usr/local)],
+-	[
+-		CPPFLAGS="$CPPFLAGS -I $withval/include"
+-		LDFLAGS="$LDFLAGS -L $withval/lib"
+-	]
+-)
+-
+-AC_CHECK_HEADERS(fam.h,
+-	AC_SEARCH_LIBS([FAMOpen], [fam]) ,
+-	AC_MSG_WARN([*** fam.h not found -- consider using --with-fam])
+-)
++AC_ARG_WITH([fam],
++			[  --with-fam=<path>      prefix of fam installation (eg /usr/local)],
++			[case "${withval}" in
++			  yes) with_fam="/usr";;
++			  no)  with_fam="no";;
++			  *)   with_fam="/usr";;
++			 esac],
++			 [with_fam="/usr"])
++
++if test x$with_fam != xno; then
++	CPPFLAGS="$CPPFLAGS -I $with_fam/include"
++	LDFLAGS="$LDFLAGS -L $with_fam/lib"
++	AC_CHECK_HEADERS(fam.h,
++					 AC_SEARCH_LIBS([FAMOpen], [fam]),
++					 AC_MSG_WARN([*** fam.h not found -- consider using --with-fam]))
++fi
+ # }}}
+ 
+ # adns {{{
+-AC_ARG_WITH(adns,
+-	[  --with-adns=<path>     prefix of adns installation (eg /usr/local)],
+-	[
+-		CPPFLAGS="$CPPFLAGS -I $withval/include"
+-		LDFLAGS="$LDFLAGS -L $withval/lib"
+-	]
+-)
+-
+-AC_CHECK_HEADERS(adns.h,
+-	AC_SEARCH_LIBS([adns_submit], [adns]) ,
+-	AC_MSG_WARN([*** adns.h not found -- consider using --with-adns])
+-)
++AC_ARG_WITH([adns],
++			[  --with-adns=<path>     prefix of adns installation (eg /usr/local)],
++			[case "${withval}" in
++			  yes) with_adns="/usr";;
++			  no)  with_adns="no";;
++			  *)   with_adns="/usr";;
++			 esac],
++			 [with_adns="/usr"])
++
++if test x$with_adns != xno; then
++	CPPFLAGS="$CPPFLAGS -I $with_adns/include"
++	LDFLAGS="$LDFLAGS -L $with_adns/lib"
++	AC_CHECK_HEADERS(adns.h,
++					 AC_SEARCH_LIBS([adns_submit], [adns]),
++					 AC_MSG_WARN([*** adns.h not found -- consider using --with-adns]))
++fi
+ # }}}
+ 
+ # --with-logfile {{{

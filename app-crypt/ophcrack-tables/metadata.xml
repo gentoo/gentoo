@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ikelos@gentoo.org</email>
+		<name>Mike Auty</name>
+	</maintainer>
+	<use>
+		<flag name="vistafree">Installs the free Vista ophcrack tables</flag>
+		<flag name="xpfast">Installs the fast XP ophcrack tables</flag>
+		<flag name="xpsmall">Installs the small free XP ophcrack tables</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">ophcrack</remote-id>
+	</upstream>
+</pkgmetadata>

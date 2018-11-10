@@ -1,0 +1,19 @@
+Patch to find libstdc++.
+
+https://bugs.funtoo.org/browse/FL-3519
+--- a/bin/mendeleydesktop
++++ b/bin/mendeleydesktop
+@@ -29,6 +29,13 @@ def library_paths():
+     paths.append("/usr/lib/x86_64-linux-gnu")
+     paths.append("/usr/lib/i386-linux-gnu")
+ 
++    gcc_libpath = subprocess.Popen(
++        '/usr/bin/gcc-config -L', shell=True, stdout=subprocess.PIPE,
++    ).stdout.read().decode('utf-8').replace('\n', '').split(':')
++    for path in gcc_libpath:
++        if len(path) > 0:
++            paths.append(path)
++
+     return paths
+ 
+ def library_version_from_path(lib_path):

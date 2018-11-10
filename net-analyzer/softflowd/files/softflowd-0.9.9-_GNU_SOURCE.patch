@@ -1,0 +1,13 @@
+setresuid and setresgid need _GNU_SOURCE which clashes with _BSD_SOURCE
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -87,7 +87,7 @@
+ AC_SEARCH_LIBS(socket, socket)
+ AC_CHECK_LIB(pcap, pcap_open_live)
+ 
+-AC_CHECK_FUNCS(closefrom daemon setresuid setreuid setresgid setgid strlcpy strlcat)
++AC_CHECK_FUNCS(closefrom daemon setreuid setgid strlcpy strlcat)
+ 
+ AC_CHECK_TYPES([u_int64_t, int64_t, uint64_t, u_int32_t, int32_t, uint32_t])
+ AC_CHECK_TYPES([u_int16_t, int16_t, uint16_t, u_int8_t, int8_t, uint8_t])

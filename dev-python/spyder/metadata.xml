@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription lang="en">
+    Spyder is a powerful scientific environment written in Python,
+    for Python,and designed by and for scientists, engineers and data analysts.
+    It features a unique combination of the advanced editing, analysis, debugging and profiling functionality
+    of a comprehensive development tool
+    with the data exploration, interactive execution, deep inspection and beautiful visualization capabilities
+    of an analysis package.
+    Furthermore, Spyder offers built-in integration with many popular scientific libraries,
+    including NumPy, SciPy, Pandas, IPython, QtConsole, Matplotlib, SymPy, and more,
+    and can be extended further with full plugin support.
+  </longdescription>
+  <use>
+    <flag name="webengine">Build bindings for the QtWebEngine module</flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">spyder</remote-id>
+    <remote-id type="bitbucket">spyder-ide/spyderlib</remote-id>
+    <remote-id type="github">spyder-ide/spyder</remote-id>
+  </upstream>
+</pkgmetadata>

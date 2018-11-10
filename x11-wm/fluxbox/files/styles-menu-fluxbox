@@ -1,0 +1,5 @@
+[begin] (Fluxbox Core Styles)
+[submenu] (Fluxbox Core Styles)
+   [stylesdir] (/usr/share/fluxbox/styles)
+[end]
+[end]

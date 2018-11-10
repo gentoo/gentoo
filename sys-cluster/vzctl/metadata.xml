@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="ploop">Add support for ploop devices via <pkg>sys-cluster/ploop</pkg></flag>
+		<flag name="vzmigrate">Add support for container migration</flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<email>kir@openvz.org</email>
+			<name>Kir Kolyshkin</name>
+		</maintainer>
+	</upstream>
+</pkgmetadata>

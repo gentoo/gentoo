@@ -1,0 +1,122 @@
+--- xc-4.3.2/Makefile
++++ xc-4.3.2/Makefile
+@@ -5,21 +5,24 @@
+ 
+ SHELL	= /bin/sh
+ 
++DESTDIR =
++
+ #WARN 	= -Wall -ansi -pedantic -Wshadow -Wmissing-prototypes
+ 
+ #machine = -m486
+-CC	= gcc 
+-GCCOPT	= -pipe -O2 -fno-strength-reduce -fomit-frame-pointer $(machine) 
++#CC	= gcc 
++GCCOPT	= -fno-strength-reduce 
+ #GCCOPT	= -O -g
+-CDEFS	= -D_POSIX_SOURCE=1
++CDEFS	= -D_XOPEN_SOURCE
+-CFLAGS	= $(WARN) $(CDEFS) $(GCCOPT)
++CFLAGS	+= $(WARN) $(CDEFS) $(GCCOPT)
+ 
+-prefix	= /usr/local
++prefix	= /usr
+ bindir	= $(prefix)/bin
+ libdir	= $(prefix)/lib/xc 
+-mandir	= /usr/man/man1
++mandir	= /usr/share/man
++man1dir = $(mandir)/man1
+ catdir	= /var/catman/cat1
+-manown	= -o root -g man
++manown	= -o root -g root
+ binown	= -o root -g root 
+ 
+ export CC CFLAGS manown binown
+@@ -37,7 +39,7 @@
+ # 	gs -sDEVICE=ljet4 -dNOPAUSE -sOutputFile=$@ $<
+ 
+ INSTALL	= install
+-LDFLAGS	= -ltermcap editline/libedit.a
++LIBS	+= -lncurses editline/libedit.a
+ NROFF 	= groff -mandoc
+ 
+ # defines for use with cextract under Linux
+@@ -56,7 +58,7 @@
+ 	@echo "Now you may execute 'make install'"
+ 
+ xc:	$(OBJS) eline
+-	$(CC) $(CFLAGS) $(OBJS) -o xc $(LDFLAGS) 
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o xc $(LIBS) 
+ 
+ uninstall:
+ 	rm -f $(bindir)/xc $(mandir)/xc.1 $(catdir)/xc.1.*
+@@ -64,10 +66,9 @@
+ 
+ install: ./bin/xc ./bin/crc xc.1 crc.1
+ 	@echo " "
+-	$(INSTALL) $(binown) -m 755 -s ./bin/xc $(bindir) 
+-	$(INSTALL) $(binown) -m 755 -s ./bin/crc $(bindir) 
+-	$(INSTALL) $(manown) -m 644 xc.1 $(mandir)
+-	$(INSTALL) $(manown) -m 644 crc.1 $(mandir)
++	$(INSTALL) -d -m755 $(DESTDIR)$(bindir) $(DESTDIR)$(man1dir)
++	$(INSTALL) $(binown) -m 755 xc crc $(DESTDIR)$(bindir)
++	$(INSTALL) $(manown) -m 644 xc.1 crc.1 $(DESTDIR)$(man1dir)
+ 	@echo " "
+ 	@echo " "
+ 	@echo "You will want to manually install 'phonelist' and"
+--- xc-4.3.2/xcsubs.c
++++ xc-4.3.2/xcsubs.c
+@@ -23,7 +23,6 @@
+ 	 *tgetstr(), *tgoto();
+ int	LI,	/* One less than screen length in termcap entry */
+ 	CO;	/* Screen width */
+-speed_t ospeed; /* Used by termcap lib */
+ static char tc[LG_BUFF];	/* termcap buffer */
+ static char tbuf[LG_BUFF], *CD, *CF, *CL, *CM, *CN, *AE, *SE, *SO, *ME;
+ char *CE, PC; /* used by termcap -- padding character */
+
+limit the 32bit crc to 32bits
+
+add simple usage
+
+--- xc-4.3.2/crc.c
++++ xc-4.3.2/crc.c
+@@ -152,7 +152,7 @@ char *name;
+ 		}
+ 		crc32 = oldcrc32;  oldcrc = oldcrc32 = ~oldcrc32;
+ 
+-		printf("%08lx %7ld ", oldcrc, charcnt);
++		printf("%08lx %7ld ", oldcrc & 0xffffffff, charcnt);
+ 		if (Block == 128)
+ 			printf("%5ld+%3ld ", charcnt/Block, charcnt%Block);
+ 		if (Block == 1024)
+@@ -170,6 +170,10 @@ char **argv;
+ {
+     register errors = 0;
+ 
++    if (argc == 1) {
++	puts("Usage: crc [-x|-k] <files>\n  -x  pad to 128 bytes\n  -k  pad to 1024 bytes");
++	exit(0);
++    }
+     if (argc > 1) {
+ 	if (!strcmp(argv[1], "-x")) {
+ 	    Block = 128;
+--- xc-4.3.2/editline/Makefile.orig	2013-03-02 21:15:29.667344872 +0400
++++ xc-4.3.2/editline/Makefile	2013-03-02 21:15:38.434344313 +0400
+@@ -34,7 +34,7 @@
+ LDFLAGS = -ltermcap
+ 
+ ##  Set ranlib as appropriate:
+-RANLIB	= ranlib
++RANLIB	?= ranlib
+ #RANLIB	= echo
+ 
+ ##  End of configuration.
+@@ -70,6 +70,6 @@
+ 
+ libedit.a:	$(OBJECTS)
+ 	@rm -f $@
+-	ar r $@ $(OBJECTS)
++	$(AR) r $@ $(OBJECTS)
+ 	$(RANLIB) $@
+ 

@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+name="PC/SC Daemon"
+
+pidfile=/run/pcscd/pcscd.pid
+
+command=/usr/sbin/pcscd
+command_args="${EXTRA_OPTS}"
+
+start_stop_daemon_args="--user pcscd:pcscd"
+
+depend() {
+	need localmount
+	after udev openct dbus
+	use logger
+}
+
+start_pre() {
+	checkpath -d -m 0755 -o pcscd:pcscd /run/pcscd
+}

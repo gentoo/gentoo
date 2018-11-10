@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<longdescription lang="en">
+		A client for the Music Player Daemon that sends information to
+		Audioscrobbler -- a website (www.last.fm) displaying what various people
+		listen to.  This information is then used to show friends, generate
+		recommended listening information, listen to a radio station with a
+		playlist tailored to the user's taste, and to show interesting
+		statistics about your listening habits.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">MusicPlayerDaemon/mpdscribble</remote-id>
+	</upstream>
+</pkgmetadata>

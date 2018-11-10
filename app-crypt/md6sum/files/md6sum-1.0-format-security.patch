@@ -1,0 +1,26 @@
+From 95833e409336bd0a4a656b7e2d0a9598dfe3f546 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sat, 30 Aug 2014 21:25:23 +0300
+Subject: [PATCH] build: fix warning of format-security
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ md6sum.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/md6sum.c b/md6sum.c
+index 2401a5a..0338d30 100644
+--- a/md6sum.c
++++ b/md6sum.c
+@@ -428,7 +428,7 @@ void optd(char *optstr)
+ 
+ void opth()
+ { /* print md6sum help string */
+-  printf(help_string);
++  printf("%s", help_string);
+ }
+ 
+ void optK(char *optstr)
+-- 
+1.8.5.5
+

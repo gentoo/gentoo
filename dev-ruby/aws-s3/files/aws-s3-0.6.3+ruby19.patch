@@ -1,0 +1,29 @@
+diff --git a/Rakefile b/Rakefile
+index 4d097df..a38bdbc 100644
+--- a/Rakefile
++++ b/Rakefile
+@@ -290,6 +290,7 @@ namespace :todo do
+   end
+ end if File.exists?(File.join(library_root, 'TODO'))
+ 
++begin
+ namespace :site do
+   require 'erb'
+   require 'rdoc/markup/simple_markup'
+@@ -330,5 +331,7 @@ namespace :site do
+     sh %(scp #{site_files.join ' '} marcel@rubyforge.org:/var/www/gforge-projects/amazon/)
+   end
+ end 
++rescue LoadError
++end
+ 
+ task :clean => ['dist:clobber_package', 'doc:clobber_rdoc', 'test:clobber_coverage']
+diff --git a/test/extensions_test.rb b/test/extensions_test.rb
+index 1c868ee..921e6b5 100644
+--- a/test/extensions_test.rb
++++ b/test/extensions_test.rb
+@@ -1,3 +1,4 @@
++# -*- coding: utf-8 -*-
+ require File.dirname(__FILE__) + '/test_helper'
+ 
+ class HashExtensionsTest < Test::Unit::TestCase

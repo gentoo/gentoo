@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Apache-Session</remote-id>
+    <remote-id type="cpan-module">Apache::Session</remote-id>
+    <remote-id type="cpan-module">Apache::Session::DB_File</remote-id>
+    <remote-id type="cpan-module">Apache::Session::File</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Flex</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Generate::MD5</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Generate::ModUniqueId</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Generate::ModUsertrack</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Informix</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Lock::File</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Lock::MySQL</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Lock::Null</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Lock::Semaphore</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Lock::Sybase</remote-id>
+    <remote-id type="cpan-module">Apache::Session::MySQL</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Oracle</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Postgres</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Serialize::Base64</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Serialize::Storable</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Serialize::Sybase</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Serialize::UUEncode</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Store::DBI</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Store::DB_File</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Store::File</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Store::Informix</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Store::MySQL</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Store::Oracle</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Store::Postgres</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Store::Sybase</remote-id>
+    <remote-id type="cpan-module">Apache::Session::Sybase</remote-id>
+  </upstream>
+</pkgmetadata>

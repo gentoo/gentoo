@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gstreamer@gentoo.org</email>
+	<name>GStreamer package maintainers</name>
+</maintainer>
+<longdescription lang="en">
+	GStreamer plugin for capturing video source via firewire (IEEE1394 interface).
+
+	Includes the following elements:
+	* hdv1394src - Source for MPEG-TS video data from firewire port
+	* dv1394src - Source for DV video data from firewire port
+</longdescription>
+</pkgmetadata>

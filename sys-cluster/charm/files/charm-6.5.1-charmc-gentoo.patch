@@ -1,0 +1,39 @@
+From 664eb097d1c5d1a158b1f41badc79d369a06aab6 Mon Sep 17 00:00:00 2001
+From: Nicolas Bock <nicolasbock@gmail.com>
+Date: Fri, 27 Sep 2013 10:53:31 -0600
+Subject: [PATCH 4/4] Fix paths for gentoo.
+
+---
+ src/scripts/charmc | 16 +++-------------
+ 1 file changed, 3 insertions(+), 13 deletions(-)
+
+diff --git a/src/scripts/charmc b/src/scripts/charmc
+index 4d37a6b..8ec2f70 100755
+--- a/src/scripts/charmc
++++ b/src/scripts/charmc
+@@ -361,19 +361,9 @@ then
+ 	PROG_EXT=".exe"
+ fi
+ 
+-CHARMLIB="$CHARMBIN/../lib"
+-CHARMINC="$CHARMBIN/../include"
+-CHARMLIBSO=
+-if test -d "$CHARMBIN/../lib_so" 
+-then
+-  CHARMLIBSO=`cd $CHARMBIN/../lib_so 2>/dev/null && pwd`
+-  #getting absolute path is harder than thought because of symbolic links and ..
+-  #ksh needs cd -P to resolve werid symbolic links, however -P is not portable
+-  #csh is ok too if it exists 
+-  test -z "$CHARMLIBSO" && CHARMLIBSO=`cd -P $CHARMBIN/../lib_so 2>/dev/null && pwd`
+-  test -z "$CHARMLIBSO" && CHARMLIBSO=`csh -c "cd $CHARMBIN/../lib_so >& /dev/null && pwd"`
+-  test -z "$CHARMLIBSO" && echo "$CHARMBIN/../lib_so: not found" && exit 1
+-fi
++CHARMLIB="/usr/gentoo-libdir"
++CHARMINC="/usr/include/gentoo-include"
++CHARMLIBSO="/usr/gentoo-libdir"
+ 
+ ##############################################################################
+ #
+-- 
+1.8.1.5
+

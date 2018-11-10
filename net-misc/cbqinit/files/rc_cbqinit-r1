@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -d /etc/cbqinit ] ; then
+		eerror "You need to create some config files in /etc/cbqinit first"
+		eerror "Please read the README file"
+		return 1
+	fi
+
+	return 0
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting cbqinit"
+	/usr/sbin/cbqinit start
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping cbqinit"
+	/usr/sbin/cbqinit stop
+	eend
+}

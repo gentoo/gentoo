@@ -1,0 +1,12 @@
+diff --exclude-from=/home/dang/.diffrc -u -ruN gnome-vfs-2.16.0.orig/libgnomevfs/gnome-vfs-volume-monitor-client.c gnome-vfs-2.16.0/libgnomevfs/gnome-vfs-volume-monitor-client.c
+--- gnome-vfs-2.16.0.orig/libgnomevfs/gnome-vfs-volume-monitor-client.c	2006-07-07 04:46:39.000000000 -0400
++++ gnome-vfs-2.16.0/libgnomevfs/gnome-vfs-volume-monitor-client.c	2006-09-21 11:22:49.000000000 -0400
+@@ -236,6 +236,8 @@
+ gnome_vfs_volume_monitor_client_init (GnomeVFSVolumeMonitorClient *volume_monitor_client)
+ {
+ 	setup_dbus_connection (volume_monitor_client);
++	if (!volume_monitor_client->dbus_conn)
++		return;
+ 	read_drives_from_daemon (volume_monitor_client);
+ 	read_volumes_from_daemon (volume_monitor_client);
+ }

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=TkVoice
+Type=Application
+Comment=Phone/Fax Utility
+Exec=tkvoice
+Icon=tkvoice
+Categories=Utility;

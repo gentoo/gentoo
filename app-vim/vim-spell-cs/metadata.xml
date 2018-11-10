@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jkt@kde.org</email>
+		<name>Jan Kundrát</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>vim@gentoo.org</email>
+		<name>Gentoo Vim Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Vim spell files for Czech (cs). Supported character sets are cp1250,
+		iso-8859-2, and UTF-8.
+	</longdescription>
+	<longdescription lang="cs">
+		Kontrola českého pravopisu pro Vim. Podporuje kódování cp1250,
+		iso-8859-2 a UTF-8.
+	</longdescription>
+</pkgmetadata>

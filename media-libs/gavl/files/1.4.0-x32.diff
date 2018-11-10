@@ -1,0 +1,29 @@
+------------------------------------------------------------------------
+r4209 | gmerlin | 2014-06-02 16:38:33 +0200 (Mon, 02 Jun 2014) | 2 lines
+
+* Compilation fix
+
+
+Index: gavl/cputest.c
+===================================================================
+--- gavl/cputest.c	(revision 4208)
++++ gavl/cputest.c	(revision 4209)
+@@ -69,6 +69,8 @@
+      int rval = 0;
+     int eax, ebx, ecx, edx;
+     int max_std_level, max_ext_level, std_caps=0, ext_caps=0;
++
++#ifndef ARCH_X86_64
+     long a, c;
+ 
+     __asm__ __volatile__ (
+@@ -94,6 +96,7 @@
+ 
+     if (a == c)
+         return 0; /* CPUID not supported */
++#endif // !ARCH_X86_64
+ 
+     cpuid(0, max_std_level, ebx, ecx, edx);
+ 
+
+------------------------------------------------------------------------

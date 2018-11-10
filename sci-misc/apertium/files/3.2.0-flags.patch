@@ -1,0 +1,72 @@
+diff -Nur apertium-3.2.0.orig/configure.ac apertium-3.2.0/configure.ac
+--- apertium-3.2.0.orig/configure.ac	2011-07-29 06:43:38.000000000 +0100
++++ apertium-3.2.0/configure.ac	2011-07-29 06:46:26.000000000 +0100
+@@ -54,68 +54,6 @@
+ 
+ # Checks for programs.
+ 
+-AC_MSG_CHECKING([Compilation architecture: PPC, i686, x86_64, Other])
+-if test x$(which arch) = x
+-then ARCH=$($(which uname) -m)
+-else ARCH=$($(which arch))
+-fi
+-
+-case "${target_os}" in
+-  mingw*)
+-    MinGW=yes
+-  ;;
+-  cygwin*)
+-    Cygwin=yes
+-  ;;
+-esac
+-
+-if test x$ARCH = xppc
+-then
+-  AC_MSG_RESULT([PowerPC])
+-  CFLAGS="$CFLAGS -Wall -ansi -fomit-frame-pointer"
+-  CXXFLAGS="$CXXFLAGS -Wall -ansi -fomit-frame-pointer"
+-else
+-  if test x$MinGW = xyes
+-  then 
+-    AC_MSG_RESULT([MinGW])
+-    CFLAGS="$CFLAGS -Wall -march=i686 -O3 -DMINGW -fomit-frame-pointer \
+-	        -funroll-loops -I/include -L/lib"
+-    CXXFLAGS="$CXXFLAGS -Wall -march=i686 -O3 \
+-            -fomit-frame-pointer -funroll-loops -I/include -L/lib"
+-    CPPFLAGS="$CPPFLAGS -I/include"
+-  else
+-    if test x$Cygwin = xyes
+-    then 
+-      AC_MSG_RESULT([Cygwin])
+-      CFLAGS="$CFLAGS -Wall -march=i686 -O3 -fomit-frame-pointer \
+-           -funroll-loops"
+-      CXXFLAGS="$CXXFLAGS -Wall -march=i686 -O3 \
+-              -fomit-frame-pointer -funroll-loops"
+-      CPPFLAGS="$CPPFLAGS"
+-    else
+-      if test x$ARCH = xi686
+-      then
+-        AC_MSG_RESULT([i686])
+-        CFLAGS="$CFLAGS -Wall -ansi -march=i686 -O3 -fomit-frame-pointer -funroll-loops"
+-        CXXFLAGS="$CXXFLAGS -Wall -ansi -march=i686 -O3 \
+-                -fomit-frame-pointer -funroll-loops"
+-      else
+-        if test x$ARCH = xx86_64
+-        then
+-          AC_MSG_RESULT([x86_64])
+-          CFLAGS="-Wall -ansi -O3 -mtune=nocona -fomit-frame-pointer -funroll-loops $CFLAGS"
+-          CXXFLAGS="-Wall -ansi -O3 -mtune=nocona \
+-                  -fomit-frame-pointer -funroll-loops $CXXFLAGS"
+-        else
+-          AC_MSG_RESULT([Other])
+-          CFLAGS="-Wall -ansi -O3 $CFLAGS"
+-          CXXFLAGS="-Wall -ansi -O3 $CXXFLAGS"
+-        fi
+-      fi
+-    fi    
+-  fi
+-fi
+-
+ AC_PROG_CXX
+ AC_PROG_LIBTOOL
+ AM_SANITY_CHECK

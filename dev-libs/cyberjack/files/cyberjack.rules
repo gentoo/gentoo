@@ -1,0 +1,10 @@
+# If not adding the device, go away
+ACTION!="add", GOTO="cyberjack_rules_end"
+SUBSYSTEM!="usb", GOTO="cyberjack_rules_end"
+ENV{DEVTYPE}!="usb_device", GOTO="cyberjack_rules_end"
+
+# Tested on cyberJack RFID standard
+ATTRS{idVendor}=="0c4b", ATTRS{idProduct}=="0500", ENV{PCSCD}="1"
+
+# All done
+LABEL="cyberjack_rules_end"

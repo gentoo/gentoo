@@ -1,0 +1,20 @@
+# Copyright 2008 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of NETBEANS_MODULES USE_EXPAND flags.
+
+apisupport - enables apisupport module
+cnd - enables C/C++ development support
+dlight - enables framework for creation of Observability Tools using DTrace
+enterprise - enables enterprise development support
+ergonomics - enables ergonomics features
+extide - enables extide module
+groovy - enables Groovy and Grails development support
+java - enables Java development support
+javacard - enables cluster for JavaCard development
+javafx - enables JavaFX development support
+mobility - enables support for development of mobile applications
+php - enables PHP development support
+profiler - enables Java profiler
+webcommon - enables javascript libraries and web client tools
+websvccommon - enables common support for web services development

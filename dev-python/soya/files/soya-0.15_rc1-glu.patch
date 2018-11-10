@@ -1,0 +1,12 @@
+diff -rupN a/setup.py b/setup.py
+--- a/setup.py	2010-01-18 15:39:57.000000000 -0600
++++ b/setup.py	2012-07-19 21:19:48.054609136 -0500
+@@ -109,7 +109,7 @@ if endian == "big":
+ if sys.platform[:3] == "win":
+ 	LIBS = ["m", "glew32", "SDL", "SDL_mixer", "freetype", "cal3d", "stdc++", "ode"]
+ else:
+-	LIBS = ["m", "GLEW", "SDL", "freetype", "cal3d", "stdc++","ode"]
++	LIBS = ["m", "GLEW", "GLU", "SDL", "freetype", "cal3d", "stdc++","ode"]
+ 	FRAMEWORKS=[]
+ 
+ SOYA_PYREX_SOURCES  = ["_soya.pyx", "matrix.c", "chunk.c"]

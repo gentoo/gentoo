@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription lang="en">
+  IPython provides a replacement for the interactive Python interpreter with
+  extra functionality. Main features:
+  * Comprehensive object introspection.
+  * Input history, persistent across sessions.
+  * Caching of output results during a session with automatically generated
+    references.
+  * Readline based name completion.
+  * Extensible system of 'magic' commands for controlling the environment and
+    performing many tasks related either to IPython or the operating system.
+  * Configuration system with easy switching between different setups (simpler
+    than changing $PYTHONSTARTUP environment variables every time).
+  * Session logging and reloading.
+  * Extensible syntax processing for special purpose situations.
+  * Access to the system shell with user-extensible alias system.
+  * Easily embeddable in other Python programs.
+  * Integrated access to the pdb debugger and the Python profiler.
+</longdescription>
+  <longdescription lang="ja">
+対話的に利用する場合にPythonインタープリタから、より機能が豊富なIPythonへ置き換える事ができます。
+
+主機能：
+* 内包的オブジェクトの分析。
+* 入力ヒストリーはセッションを越えて記憶し続けます。
+* 出力は自動作成されるリファレンスのセッション間はキャッシュします。
+* Readlineを利用した名前補完。
+* 環境管理とIPythonまたはOSのどちらかに関係するタスク実行のためのmagic
+  コマンドを拡張可能なシステム。
+* 異なるセットアップを簡単に交換できるコンフィグレーション・システム。
+  (毎回起動時に、$PYTHONSTARTUP環境変数を指定するよりも簡単です。)
+* セッション・ロギングとセッション・リローディング。
+* 特別な状況時のための拡張可能な構文解析。
+* ユーザー定義できるエイリアス・システムでシステム・シェルにアクセス。
+* 他のPython言語プログラムを組み込むのが簡単。
+* pdbデバッガとprofilerへの統合アクセス。
+</longdescription>
+  <use>
+    <flag name="matplotlib">Add support for <pkg>dev-python/matplotlib</pkg></flag>
+    <flag name="notebook">Install requirements for the web notebook based on <pkg>www-servers/tornado</pkg></flag>
+    <flag name="nbconvert">Enable support for converting notebooks to various formats using <pkg>app-text/pandoc</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">ipython</remote-id>
+    <remote-id type="github">ipython/ipython</remote-id>
+  </upstream>
+</pkgmetadata>

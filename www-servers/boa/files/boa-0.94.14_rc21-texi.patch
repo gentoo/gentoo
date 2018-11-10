@@ -1,0 +1,14 @@
+--- docs/boa.texi.org	2003-02-02 06:02:22.000000000 +0100
++++ docs/boa.texi	2007-05-21 01:22:27.997819260 +0200
+@@ -33,10 +33,10 @@
+ @direntry
+ * Boa: (boa).           The Boa Webserver
+ @end direntry
+-@end ifinfo
+ 
+ @comment node-name,     next,           previous, up
+ @node Top, Introduction, , (dir)
++@end ifinfo
+ 
+ Welcome to the documentation for Boa, a high performance
+ HTTP Server for UN*X-alike computers, covered by the

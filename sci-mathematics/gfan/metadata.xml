@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci-mathematics@gentoo.org</email>
+  <name>Gentoo Mathematics Project</name>
+ </maintainer>
+<longdescription lang="en">
+  gfan is a computer algebra tool to compute Groebner fans and tropical varieties.
+</longdescription>
+</pkgmetadata>

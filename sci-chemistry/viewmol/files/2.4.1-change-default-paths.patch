@@ -1,0 +1,68 @@
+diff --git a/source/getrc.c b/source/getrc.c
+index a39b436..c130096 100644
+--- a/getrc.c
++++ b/getrc.c
+@@ -87,7 +87,7 @@ extern XtAppContext app;
+ 
+ static char viewmolpath[MAXLENLINE];
+ 
+-#define DEFAULTPATH "/usr/local/lib/viewmol"
++#define DEFAULTPATH "@GENTOO_PORTAGE_EPREFIX@/usr/GENTOOLIBDIR/viewmol"
+ 
+ int getrc(void)
+ {
+diff --git a/source/install b/source/install
+index 580865b..f136af3 100755
+--- a/install
++++ b/install
+@@ -54,24 +54,27 @@ fi
+ cp $dirorig/viewmol $ROOT/bin
+ chmod 711 $ROOT/bin/viewmol
+ 
+-# install other files needed in $ROOT/lib/viewmol
+-if [ ! -d $ROOT/lib/viewmol/$dir ]
++# install other files needed in $ROOT/GENTOOLIBDIR/viewmol
++if [ ! -d $ROOT/GENTOOLIBDIR/viewmol/$dir ]
+ then
+-  mkdir -p $ROOT/lib/viewmol/$dir
+-  chmod 755 $ROOT/lib/viewmol/$dir
++  mkdir -p $ROOT/GENTOOLIBDIR/viewmol/$dir
++  chmod 755 $ROOT/GENTOOLIBDIR/viewmol/$dir
+ fi
+ cd $dirorig
+-cp tm bio readgamess readgauss readmopac readpdb $ROOT/lib/viewmol/$dir
+-chmod 711 $ROOT/lib/viewmol/$dir/*
++cp tm bio readgamess readgauss readmopac readpdb $ROOT/GENTOOLIBDIR/viewmol/$dir
++chmod 711 $ROOT/GENTOOLIBDIR/viewmol/$dir/*
+ cd ../..
+-cp readdmol readdmol.awk readgulp readpqs writecar writegauss.py writemol writetm $ROOT/lib/viewmol
+-chmod 755 $ROOT/lib/viewmol/*
+-cp -r doc examples locale scripts tests $ROOT/lib/viewmol
+-find $ROOT/lib/viewmol -type f -exec chmod a+r {} \;
+-find $ROOT/lib/viewmol -type d -exec chmod a+rx {} \;
+-sed 's/\/source//g' viewmolrc > $ROOT/lib/viewmol/viewmolrc
+-chmod -R 644 $ROOT/lib/viewmol/viewmolrc
+-if [ -d /usr/X11R6/lib/X11/app-defaults ]
++cp readdmol readdmol.awk readgulp readpqs writecar writegauss.py writemol writetm $ROOT/GENTOOLIBDIR/viewmol
++chmod 755 $ROOT/GENTOOLIBDIR/viewmol/*
++mkdir -p $ROOT/usr/share/viewmol $ROOT/usr/share/doc/GENTOODOCDIR/ $ROOT/GENTOOLIBDIR/viewmol/
++cp -r examples scripts tests $ROOT/usr/share/viewmol
++cp -r locale $ROOT/GENTOOLIBDIR/viewmol/
++cp -r doc/* examples scripts tests $ROOT/usr/share/doc/GENTOODOCDIR/
++find $ROOT/GENTOOLIBDIR/viewmol -type f -exec chmod a+r {} \;
++find $ROOT/GENTOOLIBDIR/viewmol -type d -exec chmod a+rx {} \;
++sed 's/\/source//g' viewmolrc > $ROOT/GENTOOLIBDIR/viewmol/viewmolrc
++chmod -R 644 $ROOT/GENTOOLIBDIR/viewmol/viewmolrc
++if [ -d $ROOT/X11R6/GENTOOLIBDIR/X11/app-defaults ]
+ then
+   locale=`echo $LANG | cut -c1-2`
+   if [ "$locale" = "en" ]
+@@ -82,6 +85,6 @@ then
+     # The C locale is defined by default for rpm builds, overwrite it
+     locale="en_US"
+   fi
+-  cp locale/${locale}/Viewmol /usr/X11R6/lib/X11/app-defaults
+-  chmod a+r /usr/X11R6/lib/X11/app-defaults/Viewmol
++  cp locale/${locale}/Viewmol ${ROOT}/X11R6/GENTOOLIBDIR/X11/app-defaults
++  chmod a+r ${ROOT}/X11R6/GENTOOLIBDIR/X11/app-defaults/Viewmol
+ fi

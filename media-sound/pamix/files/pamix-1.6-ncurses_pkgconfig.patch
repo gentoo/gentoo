@@ -1,0 +1,34 @@
+From 90bd2ead3d88b5b24093cb76f9500b69bb0221dd Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 2 Jan 2018 21:24:05 +0100
+Subject: [PATCH] Use pkg-config to reliably find ncurses lib.
+
+Otherwise linking might fail when ncurses was built with separate tinfo lib.
+---
+ CMakeLists.txt | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 38605f2..c7da94e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,11 +17,14 @@ file(GLOB_RECURSE pamix_SRC
+ include_directories("include")
+ link_libraries("pulse" "pthread")
+ 
++find_package(PkgConfig REQUIRED QUIET)
+ IF (WITH_UNICODE)
+-    link_libraries("ncursesw")
++    pkg_search_module(NCURSESW REQUIRED ncursesw)
++    link_libraries(${NCURSESW_LDFLAGS})
+     add_definitions(-DFEAT_UNICODE)
+ ELSE ()
+-    link_libraries("ncurses")
++    pkg_search_module(NCURSES REQUIRED ncurses)
++    link_libraries(${NCURSES_LDFLAGS})
+ ENDIF ()
+ 
+ add_executable(pamix ${pamix_SRC})
+-- 
+2.16.0.rc0
+

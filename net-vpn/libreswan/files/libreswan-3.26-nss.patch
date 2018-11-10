@@ -1,0 +1,27 @@
+From 910f69119b491c6d7abcc85cf8911d2fa012a135 Mon Sep 17 00:00:00 2001
+From: Andrew Cagney <cagney@gnu.org>
+Date: Mon, 17 Sep 2018 11:56:56 -0400
+Subject: [PATCH] ecdsa: don't include NSS's "blapi.h", no longer needed and
+ not on debian
+
+(not to be confused with "lbapit.h", which also looks suspect)
+
+Follow-up b3199806cc66de4888917ddc85b511b433e43d63 and
+2d093c9fb83c8104604e4b40defa4e41129577ea.  The latter
+relaced the call to ECDSA_VerifyDigest() with PK11_Verify().
+---
+ programs/pluto/keys.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/programs/pluto/keys.c b/programs/pluto/keys.c
+index b3df5802cf..bd9d8d8c6c 100644
+--- a/programs/pluto/keys.c
++++ b/programs/pluto/keys.c
+@@ -72,7 +72,6 @@
+ #include <secerr.h>
+ #include <secport.h>
+ #include <time.h>
+-#include <blapi.h>
+ #include "lswconf.h"
+ #include "lswnss.h"
+ #include "secrets.h"

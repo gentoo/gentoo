@@ -1,0 +1,38 @@
+# /etc/conf.d/nfs
+
+# If you wish to set the port numbers for lockd,
+# please see /etc/sysctl.conf
+
+# Optional services to include in default `/etc/init.d/nfs start`
+# For NFSv4 users, you'll want to add "rpc.idmapd" here.
+NFS_NEEDED_SERVICES=""
+
+# Options to pass to rpc.nfsd
+OPTS_RPC_NFSD="8"
+
+# Options to pass to rpc.mountd
+# ex. OPTS_RPC_MOUNTD="-p 32767"
+OPTS_RPC_MOUNTD=""
+
+# Options to pass to rpc.statd
+# ex. OPTS_RPC_STATD="-p 32765 -o 32766"
+OPTS_RPC_STATD=""
+
+# Options to pass to rpc.idmapd
+OPTS_RPC_IDMAPD=""
+
+# Options to pass to rpc.gssd
+OPTS_RPC_GSSD=""
+
+# Options to pass to rpc.svcgssd
+OPTS_RPC_SVCGSSD=""
+
+# Options to pass to rpc.rquotad (requires sys-fs/quota)
+OPTS_RPC_RQUOTAD=""
+
+# Timeout (in seconds) for exportfs
+EXPORTFS_TIMEOUT=30
+
+# Options to set in the nfsd filesystem (/proc/fs/nfsd/).
+# Format is <option>=<value>.  Multiple options are allowed.
+#OPTS_NFSD="nfsv4leasetime=30 max_block_size=4096"

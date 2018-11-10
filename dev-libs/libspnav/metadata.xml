@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sping@gentoo.org</email>
+		<name>Sebastian Pipping</name>
+	</maintainer>
+	<longdescription>
+		The libspnav library is provided as a replacement of the magellan
+		library. It provides a cleaner, and more orthogonal interface. libspnav
+		supports both the original X11 protocol for communicating with the
+		driver, and the new alternative non-X protocol. Programs that choose to
+		use the X11 protocol, are automatically compatible with either the free
+		spacenavd driver or the official 3dxserv, as if they were using the
+		magellan SDK.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">spacenav</remote-id>
+	</upstream>
+</pkgmetadata>

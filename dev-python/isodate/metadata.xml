@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription>
+    This module implements ISO 8601 date, time and duration
+    parsing. The implementation follows ISO8601:2004 standard, and
+    implements only date/time representations mentioned in the standard. If
+    something is not mentioned there, then it is treated as non existent,
+    and not as an allowed option.
+    As this module maps ISO 8601 dates/times to standard Python data types,
+    like date, time, datetime and timedelta, it is not possible to convert
+    all possible ISO 8601 dates/times. For instance, dates before 0001-01-01
+    are not allowed by the Python date and datetime classes. Additionally
+    fractional seconds are limited to microseconds. That means if the parser
+    finds for instance nanoseconds it will round it to microseconds.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">isodate</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,26 @@
+Index: work/ui/linux/makefile
+===================================================================
+--- work.orig/ui/linux/makefile
++++ work/ui/linux/makefile
+@@ -79,10 +79,10 @@ clean:
+ 	rm  -f $(LINUXOBJ) $(COREOBJ) $(TARGET) ${LIBOBJSTATIC} ${LIBOBJSHARED} $(COREOBJSTATIC)
+ 
+ %.o: %.cpp
+-	$(CC) $(INCLUDES) $(CPPFLAGS) -fPIC -c $< -o $@
++	$(CC) $(CXXFLAGS) $(INCLUDES) $(CPPFLAGS) -fPIC -c $< -o $@
+ 
+ %.a: %.cpp
+-	$(CC) $(INCLUDES) $(CPPFLAGS) -c $< -o $@
++	$(CC) $(CXXFLAGS) $(INCLUDES) $(CPPFLAGS) -c $< -o $@
+ 
+ DEPENDFILE = makedepend
+ 
+@@ -92,7 +92,7 @@ depend: 
+ 	$(CC) $(INCLUDES) $(CPPFLAGS) -MD $(CORESOURCE) $(LINUXSOURCE) >> $(DEPENDFILE)
+ 
+ peercast-so: $(COREOBJSTATIC) $(COREOBJ) $(LINUXOBJ)
+-	$(LD) $(LDSOFLAGS),$(LIBSONAME) -o ${LIBOBJSHARED} $(COREOBJ) -lc
++	$(LD) $(LDFLAGS) $(LDSOFLAGS),$(LIBSONAME) -o ${LIBOBJSHARED} $(COREOBJ) -lc
+ 	$(LD) $(LDFLAGS) -o $@ $(LINUXOBJ) $(LIBOBJSHARED) -ldl
+ 	${AR} rcs $(LIBOBJSTATIC) $(COREOBJSTATIC)
+ 

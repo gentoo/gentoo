@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-mathematics@gentoo.org</email>
+		<name>Gentoo Mathematics Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		The extra data for PARI consists of:
+		* elldata is PARI/GP version of J. E. Cremona Elliptic Curve Data,
+		needed by ellsearch and ellidentify.
+		* galdata is needed by polgalois to compute Galois group in degrees
+		8 through 11.
+		* seadata is needed by ellap for large primes.
+		* nftables is a repackaging of the historical megrez number field
+		tables (errors fixed, 1/10th the size, easier to use).
+	</longdescription>
+</pkgmetadata>

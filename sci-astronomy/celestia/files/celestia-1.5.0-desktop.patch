@@ -1,0 +1,55 @@
+--- a/src/celestia/kde/data/celestia.desktop
++++ b/src/celestia/kde/data/celestia.desktop
+@@ -1,8 +1,12 @@
+ [Desktop Entry]
++Encoding=UTF-8
++Version=1.0
+ Name=Celestia
+-Comment=Celestia
++Comment=3D space simulator to explore the universe
+ Exec=celestia %f
+ Terminal=false
+ Icon=celestia.png
+ MimeType=application/x-celestia-script
+ Type=Application
++Categories=Education;Science;Astronomy;Qt
++GenericName=Space Simulator
+--- a/src/celestia/gtk/data/celestia.desktop
++++ b/src/celestia/gtk/data/celestia.desktop
+@@ -1,12 +1,12 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+-Version=1.4.0
+-Type=Application
+-Exec=celestia
+-Icon=celestia
+-X-GNOME-DocPath=
+-Terminal=false
++Version=1.0
+ Name=Celestia
+-Comment=Space Simulator
+-StartupNotify=true
+-Categories=Astronomy;Science;Application;
++Comment=3D space simulator to explore the universe
++Exec=celestia %f
++Terminal=false
++Icon=celestia
++MimeType=application/x-celestia-script
++Type=Application
++Categories=Education;Science;Astronomy;GTK
++GenericName=Space Simulator
+--- a/celestia.desktop
++++ b/celestia.desktop
+@@ -0,0 +1,12 @@
++[Desktop Entry]
++Encoding=UTF-8
++Version=1.0
++Name=Celestia
++GenericName=Space Simulator
++Comment=Explore the Universe in this detailed space simulation
++Type=Application
++Categories=Education;Science;Astronomy
++Exec=celestia %f
++Terminal=false
++Icon=celestia
++MimeType=application/x-celestia-script

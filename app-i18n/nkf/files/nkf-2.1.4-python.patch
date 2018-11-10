@@ -1,0 +1,13 @@
+--- a/NKF.python/nkf.c
++++ b/NKF.python/nkf.c
+@@ -78,8 +78,8 @@
+ }
+ 
+ #define PERL_XS 1
+-#include "nkf-dist/utf8tbl.c"
+-#include "nkf-dist/nkf.c"
++#include "../utf8tbl.c"
++#include "../nkf.c"
+ 
+ static PyObject *
+ pynkf_convert(unsigned char* str, int strlen, char* opts, int optslen)

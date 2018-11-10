@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package contains everything that you need to use a
+		cryptographic package that supports the @crypto-api@ package
+		using conduits from the @conduit@ package.
+	</longdescription>
+	<use>
+		<flag name="conduit11">Use conduit &gt;= 1.1.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">prowdsponsor/crypto-conduit</remote-id>
+	</upstream>
+</pkgmetadata>

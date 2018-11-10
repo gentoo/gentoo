@@ -1,0 +1,12 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -30,8 +30,7 @@
+ 
+ # For additional warnings & checks, add -Wstrict-prototypes -Wshadow to the
+ # following:
+-CFLAGS +=-Wall -DBB_FEATURE_UDPCAST_FEC -D_FILE_OFFSET_BITS=64 -DUSE_SYSLOG -DUSE_ASSEMBLER -O6
+-LDFLAGS +=-s
++CFLAGS +=-Wall -DBB_FEATURE_UDPCAST_FEC -D_FILE_OFFSET_BITS=64 -DUSE_SYSLOG
+ LIBS +=@LIBS@
+ 
+ BUSYBOX=../udp-busybox/busybox

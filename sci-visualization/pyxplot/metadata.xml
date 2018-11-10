@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  PyXPlot is a command-line graphing package with a simple interface
+  that produces publication-quality output. Its command line interface is very
+  gnuplot oriented and has actually some compatibility. The output
+  is based on LaTeX typesetting environment.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">pyxplot</remote-id>
+  </upstream>
+</pkgmetadata>

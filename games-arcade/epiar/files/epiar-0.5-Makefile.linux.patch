@@ -1,0 +1,20 @@
+--- Makefile.linux.old	2007-04-05 16:42:30 +0000
++++ Makefile.linux	2007-04-05 16:42:47 +0000
+@@ -24,7 +24,7 @@
+ 	@echo Building Epiar 0.5.0 ...
+ 	@$(CC) $(CFLAGS) -I/usr/X11R6/lib/ $(OBJS) -o epiar $(LIBS)
+ 	@echo Building plugins ...
+-	@make -f Makefile.linux plugin
++	@$(MAKE) -f Makefile.linux plugin
+ 	@echo Epiar 0.5.0 build complete.
+ 	@echo
+ 	@echo Type './epiar' to play.
+@@ -33,7 +33,7 @@
+ 	@echo Building Epiar 0.5.0 and linking statically ...
+ 	@$(CC) $(CFLAGS) -L/usr/X11R6/lib -L/opt/gnome-2.1/lib $(OBJS) -o epiar $(STATIC_LIBS)
+ 	@echo Building plugins ...
+-	@make plugin
++	@$(MAKE) plugin
+ 	@echo Epiar 0.5.0 build complete.
+ 	@echo
+ 	@echo Type './epiar' to play.

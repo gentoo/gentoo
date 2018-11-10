@@ -1,0 +1,52 @@
+Fix building with C++14, which errors out due changed noexcept()
+semantics for dtors caught by -Werror=terminate.
+
+See also: https://bugs.gentoo.org/show_bug.cgi?id=595422
+
+--- a/src/nat.cpp
++++ b/src/nat.cpp
+@@ -145,11 +145,11 @@
+     "nat lookup successful",
+     "nat address not in table",
+     "nat not supported/implemented",
+-    "unable to open device "NAT_DEVICE,
++    "unable to open device " NAT_DEVICE,
+     "unable to get socket name",
+     "unable to get peer name",
+     "unable to get socket type",
+-    "unable to lookup, nat "NAT_SYSCALL" failed",
++    "unable to lookup, nat " NAT_SYSCALL " failed",
+     "unkown nat error code"
+ };
+ 
+--- a/src/socket.cpp
++++ b/src/socket.cpp
+@@ -2971,12 +2971,7 @@
+ 
+ TCPStream::~TCPStream()
+ {
+-#ifdef  CCXX_EXCEPTIONS
+-        try { endStream(); }
+-        catch( ... ) { if ( ! std::uncaught_exception()) throw;};
+-#else
+-        endStream();
+-#endif
++    endStream();
+ }
+ 
+ #ifdef  HAVE_GETADDRINFO
+--- a/src/ssl.cpp
++++ b/src/ssl.cpp
+@@ -441,12 +441,7 @@
+ 
+ SSLStream::~SSLStream()
+ {
+-#ifdef  CCXX_EXCEPTIONS
+-    try { endStream(); }
+-    catch( ...) { if ( ! std::uncaught_exception()) throw;};
+-#else
+     endStream();
+-#endif
+ }
+ 
+ #ifdef  CCXX_NAMESPACES

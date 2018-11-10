@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="client">Install client utilities</flag>
+	</use>
+	<longdescription lang="en">
+	mcollective is a framework to build server orchestration or parallel job
+	execution systems.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">puppetlabs/marionette-collective</remote-id>
+	</upstream>
+</pkgmetadata>

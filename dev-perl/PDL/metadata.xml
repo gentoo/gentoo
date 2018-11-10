@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <longdescription lang="en">
+ The Perl Data Language  gives standard perl the ability to compactly
+ store and speedily manipulate the large N-dimensional data arrays 
+ which are the bread and butter of scientific computing.  The idea 
+ is to turn perl in to a free, array-oriented, numerical language 
+ in the same sense as commercial packages like IDL and MatLab. One
+ can write simple perl expressions to manipulate entire numerical
+ arrays all at once.
+</longdescription>
+  <use>
+    <flag name="badval">Enable bad values support</flag>
+    <flag name="hdf">Enable HDF (version 4) format support</flag>
+    <flag name="netpbm">Enable NETPBM and MPEG support</flag>
+    <flag name="pdl2">Build pdf2 shell (requires Devel-REPL)</flag>
+    <flag name="pgplot">Enable PGPLOT plotting capabilities</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpan">PDL</remote-id>
+    <remote-id type="cpan-module">C::StructObj</remote-id>
+    <remote-id type="cpan-module">C::StructType</remote-id>
+    <remote-id type="cpan-module">C::Type</remote-id>
+    <remote-id type="cpan-module">C::Var</remote-id>
+    <remote-id type="cpan-module">Inline::MakePdlppInstallable</remote-id>
+    <remote-id type="cpan-module">Inline::Pdlpp</remote-id>
+    <remote-id type="cpan-module">NullHandle</remote-id>
+    <remote-id type="cpan-module">PDL</remote-id>
+    <remote-id type="cpan-module">PDL::Basic</remote-id>
+    <remote-id type="cpan-module">PDL::Bench</remote-id>
+    <remote-id type="cpan-module">PDL::CallExt</remote-id>
+    <remote-id type="cpan-module">PDL::Char</remote-id>
+    <remote-id type="cpan-module">PDL::Constants</remote-id>
+    <remote-id type="cpan-module">PDL::Core::Dev</remote-id>
+    <remote-id type="cpan-module">PDL::Dbg</remote-id>
+    <remote-id type="cpan-module">PDL::Demos::Cartography_demo</remote-id>
+    <remote-id type="cpan-module">PDL::Demos::General</remote-id>
+    <remote-id type="cpan-module">PDL::Demos::PGPLOT_OO_demo</remote-id>
+    <remote-id type="cpan-module">PDL::Demos::PGPLOT_demo</remote-id>
+    <remote-id type="cpan-module">PDL::Demos::Routines</remote-id>
+    <remote-id type="cpan-module">PDL::Demos::Transform_demo</remote-id>
+    <remote-id type="cpan-module">PDL::Demos::TriD1</remote-id>
+    <remote-id type="cpan-module">PDL::Demos::TriD2</remote-id>
+    <remote-id type="cpan-module">PDL::Demos::TriDGallery</remote-id>
+    <remote-id type="cpan-module">PDL::DiskCache</remote-id>
+    <remote-id type="cpan-module">PDL::Doc</remote-id>
+    <remote-id type="cpan-module">PDL::Doc::Perldl</remote-id>
+    <remote-id type="cpan-module">PDL::Exporter</remote-id>
+    <remote-id type="cpan-module">PDL::Filter::Gaussian</remote-id>
+    <remote-id type="cpan-module">PDL::Filter::LinPred</remote-id>
+    <remote-id type="cpan-module">PDL::Filter::LinSmooth</remote-id>
+    <remote-id type="cpan-module">PDL::Filter::Linear</remote-id>
+    <remote-id type="cpan-module">PDL::Filter::SavGol</remote-id>
+    <remote-id type="cpan-module">PDL::Fit::LM</remote-id>
+    <remote-id type="cpan-module">PDL::Fit::Linfit</remote-id>
+    <remote-id type="cpan-module">PDL::Fit::Polynomial</remote-id>
+    <remote-id type="cpan-module">PDL::Func</remote-id>
+    <remote-id type="cpan-module">PDL::GraphEvolver</remote-id>
+    <remote-id type="cpan-module">PDL::GraphEvolverOLD</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics2D</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::LUT</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::Limits</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::Limits::DSet</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::OpenGL::OO</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::OpenGL::Perl::OpenGL</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::PGPLOT</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::PGPLOT::Window</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::PGPLOTOptions</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::State</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::ArcBall</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::ArcBowl</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::ArcCone</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Basic</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::BoundingBox</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::ButtonControl</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::ContourPolygonize</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Contours</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Control3D</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::CylindricalEquidistantAxes</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Description</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::EuclidAxes</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::EventHandler</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::GL::Window</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::GObject</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::GObject_Lattice</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::GPObject</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::GoBoard</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Graph</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Image</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Labels</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Lattice</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::LineStrip</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Lines</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::LinesFOOOLD</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Logo</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Material</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::MathGraph</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Mesh</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::OOGL</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Object</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::OneTransformation</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Points</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::PolarStereoAxes</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Polygonize</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::QuaterController</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Quaternion</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::SCLattice</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::SLattice</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::SLattice_S</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::STrigrid</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::STrigrid_S</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Scale</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::ScaleController</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::SimpleController</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::SimpleScaler</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Spheres</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::StupidPolygonize</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Surface</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Transformation</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Translation</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::VRML</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::VRML::Parameter</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::VRML::URL</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::VRMLObject</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::ViewPort</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::TriD::Window</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::VRML</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::VRML::Protos</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::VRMLNode</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::VRMLPdlNode</remote-id>
+    <remote-id type="cpan-module">PDL::Graphics::VRMLProto</remote-id>
+    <remote-id type="cpan-module">PDL::IO::Dicom</remote-id>
+    <remote-id type="cpan-module">PDL::IO::Dumper</remote-id>
+    <remote-id type="cpan-module">PDL::IO::FITS</remote-id>
+    <remote-id type="cpan-module">PDL::IO::FastRaw</remote-id>
+    <remote-id type="cpan-module">PDL::IO::FlexRaw</remote-id>
+    <remote-id type="cpan-module">PDL::IO::HDF</remote-id>
+    <remote-id type="cpan-module">PDL::IO::Pic</remote-id>
+    <remote-id type="cpan-module">PDL::Interpolate</remote-id>
+    <remote-id type="cpan-module">PDL::Interpolate::Slatec</remote-id>
+    <remote-id type="cpan-module">PDL::Lite</remote-id>
+    <remote-id type="cpan-module">PDL::LiteF</remote-id>
+    <remote-id type="cpan-module">PDL::Lvalue</remote-id>
+    <remote-id type="cpan-module">PDL::Matrix</remote-id>
+    <remote-id type="cpan-module">PDL::MyInlineMod</remote-id>
+    <remote-id type="cpan-module">PDL::NiceSlice</remote-id>
+    <remote-id type="cpan-module">PDL::Opt::Simplex</remote-id>
+    <remote-id type="cpan-module">PDL::Options</remote-id>
+    <remote-id type="cpan-module">PDL::PP</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Access</remote-id>
+    <remote-id type="cpan-module">PDL::PP::BackCodeThreadLoop</remote-id>
+    <remote-id type="cpan-module">PDL::PP::BadAccess</remote-id>
+    <remote-id type="cpan-module">PDL::PP::BadSwitch</remote-id>
+    <remote-id type="cpan-module">PDL::PP::BadVarAccess</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Block</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Code</remote-id>
+    <remote-id type="cpan-module">PDL::PP::ComplexThreadLoop</remote-id>
+    <remote-id type="cpan-module">PDL::PP::GenericLoop</remote-id>
+    <remote-id type="cpan-module">PDL::PP::GentypeAccess</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Ind</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Loop</remote-id>
+    <remote-id type="cpan-module">PDL::PP::MacroAccess</remote-id>
+    <remote-id type="cpan-module">PDL::PP::NaNSupport</remote-id>
+    <remote-id type="cpan-module">PDL::PP::OtherAccess</remote-id>
+    <remote-id type="cpan-module">PDL::PP::PDLStateBadAccess</remote-id>
+    <remote-id type="cpan-module">PDL::PP::PPBadAccess</remote-id>
+    <remote-id type="cpan-module">PDL::PP::PdlAccess</remote-id>
+    <remote-id type="cpan-module">PDL::PP::PdlDimsObj</remote-id>
+    <remote-id type="cpan-module">PDL::PP::PdlParObj</remote-id>
+    <remote-id type="cpan-module">PDL::PP::PhysPointerAccess</remote-id>
+    <remote-id type="cpan-module">PDL::PP::PointerAccess</remote-id>
+    <remote-id type="cpan-module">PDL::PP::ReSizeAccess</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Rule</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Rule::InsertName</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Rule::MakeComp</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Rule::Returns</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Rule::Returns::EmptyString</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Rule::Returns::NULL</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Rule::Returns::One</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Rule::Returns::Zero</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Rule::Substitute</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Rule::Substitute::Usual</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Signature</remote-id>
+    <remote-id type="cpan-module">PDL::PP::SimpleThreadLoop</remote-id>
+    <remote-id type="cpan-module">PDL::PP::SizeAccess</remote-id>
+    <remote-id type="cpan-module">PDL::PP::ThreadLoop</remote-id>
+    <remote-id type="cpan-module">PDL::PP::TypeConv</remote-id>
+    <remote-id type="cpan-module">PDL::PP::Types</remote-id>
+    <remote-id type="cpan-module">PDL::Perldl2::Plugin::CleanErrors</remote-id>
+    <remote-id type="cpan-module">PDL::Perldl2::Plugin::NiceSlice</remote-id>
+    <remote-id type="cpan-module">PDL::Perldl2::Plugin::PDLCommands</remote-id>
+    <remote-id type="cpan-module">PDL::Perldl2::Plugin::PrintControl</remote-id>
+    <remote-id type="cpan-module">PDL::Perldl2::Profile::Perldl2</remote-id>
+    <remote-id type="cpan-module">PDL::Perldl2::Script</remote-id>
+    <remote-id type="cpan-module">PDL::Pod::Parser</remote-id>
+    <remote-id type="cpan-module">PDL::Pod::Select</remote-id>
+    <remote-id type="cpan-module">PDL::Pod::Usage</remote-id>
+    <remote-id type="cpan-module">PDL::PodParser</remote-id>
+    <remote-id type="cpan-module">PDL::Reduce</remote-id>
+    <remote-id type="cpan-module">PDL::Transform::Cartography</remote-id>
+    <remote-id type="cpan-module">StrHandle</remote-id>
+    <remote-id type="cpan-module">SymTab</remote-id>
+    <remote-id type="cpan-module">Win32::DDE::Netscape</remote-id>
+    <remote-id type="cpan-module">XS</remote-id>
+  </upstream>
+</pkgmetadata>

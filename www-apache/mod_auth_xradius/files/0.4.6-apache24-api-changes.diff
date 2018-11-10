@@ -1,0 +1,14 @@
+--- src/xradius_cache.c.orig	2013-06-10 10:02:53.263071428 +0100
++++ src/xradius_cache.c	2013-06-10 10:03:45.789072216 +0100
+@@ -143,9 +143,9 @@
+     /* Running as Root */
+     if (geteuid() == 0)  {
+         /* Allow the configured Apache use to read/write to the DBM */
+-        chown(path1, unixd_config.user_id, -1);
++        chown(path1, ap_unixd_config.user_id, -1);
+         if (path2 != NULL) { 
+-            chown(path2, unixd_config.user_id, -1);
++            chown(path2, ap_unixd_config.user_id, -1);
+         }
+     }
+ #endif

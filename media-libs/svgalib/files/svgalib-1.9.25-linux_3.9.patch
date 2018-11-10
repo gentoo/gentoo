@@ -1,0 +1,27 @@
+--- svgalib-1.9.25/kernel/svgalib_helper/main.c.orig	2016-02-22 11:10:25.000000000 +0300
++++ svgalib-1.9.25/kernel/svgalib_helper/main.c	2016-02-22 11:17:16.223529679 +0300
+@@ -170,8 +170,12 @@
+ #else
+ static int svgalib_helper_ioctl(struct file *filp, 
+                           unsigned int cmd, unsigned long arg) {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,9,0) 
++    struct inode *inode=file_inode(filp);
++#else
+     struct inode *inode=filp->f_dentry->d_inode;
+ #endif
++#endif
+ 
+     io_t iov, *user_iov=(io_t *)arg;
+     pcic_t pciv, *user_pciv=(pcic_t *)arg;
+@@ -586,7 +590,11 @@
+ static int svgalib_helper_mmap(struct file *filp, struct vm_area_struct *vma) {
+    unsigned long start=vma->vm_start;
+    unsigned long end=vma->vm_end;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,9,0) 
++   unsigned long minor = my_minor(file_inode(filp)->i_rdev);
++#else
+    unsigned long minor = my_minor(filp->f_dentry->d_inode->i_rdev);
++#endif
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,3,0)
+    unsigned long ofs=vma->vm_pgoff*PAGE_SIZE;
+ #else

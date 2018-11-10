@@ -1,0 +1,28 @@
+ source/fbyteswap.c |    1 +
+ source/util.c      |    1 +
+ 2 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/source/fbyteswap.c b/source/fbyteswap.c
+index 83015b9..c9033c3 100644
+--- a/source/fbyteswap.c
++++ b/source/fbyteswap.c
+@@ -39,6 +39,7 @@ and shall not be used for advertising or product endorsement purposes.
+ 
+ #include <stdio.h>
+ #include <fcntl.h>
++#include <unistd.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ void byteswap();
+diff --git a/source/util.c b/source/util.c
+index 6fff179..ca7a957 100644
+--- a/source/util.c
++++ b/source/util.c
+@@ -89,6 +89,7 @@ and shall not be used for advertising or product endorsement purposes.
+ 
+ *******************************************************************************/
+ #include  <sys/time.h>	/* ... for picking up date & time	*/
++#include <time.h>
+ #include  <signal.h>	/* ... for capturing kill		*/
+ #include  "util.h"
+ 

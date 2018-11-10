@@ -1,0 +1,16 @@
+https://bugzilla.cyrusimap.org/show_bug.cgi?id=3590
+https://bugs.gentoo.org/show_bug.cgi?id=392761
+
+--- cyrus-sasl-2.1.25/lib/auxprop.c~	2011-10-20 17:33:46.423015318 +0200
++++ cyrus-sasl-2.1.25/lib/auxprop.c	2011-10-20 17:48:49.336348654 +0200
+@@ -971,6 +971,10 @@
+     }
+ 
+     if(!found) {
++	/* compatibility with <= 2.1.23, ignore the lack of auxrop plugin */
++	if (!plist)
++	    result = SASL_OK;
++	else
+ 	_sasl_log(sparams->utils->conn, SASL_LOG_DEBUG,
+ 		  "could not find auxprop plugin, was searching for '%s'",
+ 		  plist ? plist : "[all]");

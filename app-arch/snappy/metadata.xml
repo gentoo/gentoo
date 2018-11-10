@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type='person'>
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<longdescription lang="en">Snappy is a compression/decompression library. It does not aim for
+		maximum compression, or compatibility with any other compression
+		library; instead, it aims for very high speeds and reasonable
+		compression.</longdescription>
+	<upstream>
+		<remote-id type="github">google/snappy</remote-id>
+	</upstream>
+</pkgmetadata>

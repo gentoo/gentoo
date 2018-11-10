@@ -1,0 +1,100 @@
+https://bugs.gentoo.org/show_bug.cgi?id=405761
+
+https://github.com/richcollins/get-flash-videos/commit/27e0f1d214e291debfd567b1652908d0ef6b79d1#lib/FlashVideo/Site
+
+--- lib/FlashVideo/Site/Youtube.pm~	2010-11-30 14:34:17.000000000 +0000
++++ lib/FlashVideo/Site/Youtube.pm	2012-02-20 23:56:35.000000000 +0000
+@@ -26,6 +26,7 @@
+   if($embed_url !~ m!youtube\.com/watch!) {
+     $browser->get($embed_url);
+     if ($browser->response->header('Location') =~ m!/swf/.*video_id=([^&]+)!
++        || $browser->content =~ m!\<iframe[^\>]*src="http://www.youtube.com/embed/([^"]+)"!i
+         || $embed_url =~ m!/v/([-_a-z0-9]+)!i
+         || $browser->uri =~ m!v%3D([-_a-z0-9]+)!i) {
+       # We ended up on a embedded SWF or other redirect page
+@@ -48,12 +49,19 @@
+   # If the page contains fmt_url_map, then process this. With this, we
+   # don't require the 't' parameter.
+   if ($browser->content =~ /["']fmt_url_map["']:\s{0,3}(["'][^"']+["'])/) {
+-    debug "Using fmt_url_map method from page ($1)";
+-    return $self->download_fmt_map($prefs, $browser, $title, {}, @{from_json $1});
++    my $fmt_map = $1;
++    if ($fmt_map !~ /\|/) {
++      # $fmt_map is double escaped. We should unescape it here just
++      # once.  Be careful not to unescape ',' in the URL.
++      $fmt_map = uri_unescape($fmt_map);
++    }
++    debug "Using fmt_url_map method from page ($fmt_map)";
++    return $self->download_fmt_map($prefs, $browser, $title, {}, @{from_json $fmt_map});
+   }
+ 
+   my $video_id;
+   if ($browser->content =~ /(?:var pageVideoId =|(?:CFG_)?VIDEO_ID'?\s*:)\s*'(.+?)'/
++      || $browser->content =~ /"video_id": "([^"]+)"/
+       || $embed_url =~ /v=([^&]+)/) {
+     $video_id = $1;
+   } else {
+@@ -125,6 +133,9 @@
+     } elsif($info{fmt_url_map}) {
+       debug "Using fmt_url_map method from info";
+       return $self->download_fmt_map($prefs, $browser, $title, \%info, $info{fmt_url_map});
++    } elsif($info{url_encoded_fmt_stream_map}) {
++      debug "Using url_encoded_fmt_stream_map method from info";
++      return $self->download_url_encoded_fmt_stream_map($prefs, $browser, $title, \%info, $info{url_encoded_fmt_stream_map});
+     }
+   }
+ 
+@@ -132,6 +143,53 @@
+   return download_get_video($browser, $prefs, $video_id, $title, $t);
+ }
+ 
++sub download_url_encoded_fmt_stream_map {
++  my($self, $prefs, $browser, $title, $info, $fmt_map) = @_;
++
++  my $fmt_url_map = parse_youtube_url_encoded_fmt_stream_map($fmt_map);
++
++  if (!$title and $browser->uri->as_string =~ m'/user/.*?#') {
++    my $video_id = (split /\//, $browser->uri->fragment)[-1];
++
++    my %info = get_youtube_video_info($browser->clone, $video_id);
++
++    $title = $info->{title};
++  }
++
++  my $preferred_quality = $prefs->quality->choose(map { $fmt_url_map->{$_->{id}}
++      ? { resolution => $_->{resolution}, url => $fmt_url_map->{$_->{id}} }
++      : () } @formats);
++
++  $browser->allow_redirects;
++
++  return $preferred_quality->{url}, title_to_filename($title, "mp4");
++}
++
++sub parse_youtube_url_encoded_fmt_stream_map {
++  my($raw_map) = @_;;
++
++  my $map = {};
++
++  foreach my $params (split /,/, $raw_map) {
++    
++    my $format = "";
++    my $url = "";
++    
++    foreach my $pair (split /&/, $params) {
++      my ($name, $value) = split /=/, $pair;
++      if ($name eq "itag"){
++        $format = $value;
++      } elsif ($name eq "url") {
++        $url = uri_unescape($value);
++      }
++    }
++    
++    $map->{$format} = $url;
++  }
++  
++  return $map;
++}
++
+ sub download_fmt_map {
+   my($self, $prefs, $browser, $title, $info, $fmt_map) = @_;
+ 

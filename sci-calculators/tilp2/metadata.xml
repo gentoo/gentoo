@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		TiLP is a linking program for Texas Instruments' graphing
+		calculators. It can handle any TI calculator (from TI73 to V200) with
+		any link cable. TiLP has all the functions of a linking program and
+		more.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">tilp</remote-id>
+	</upstream>
+</pkgmetadata>

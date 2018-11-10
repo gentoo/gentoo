@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+    <email>tomek@lutel.pl</email>
+    <name>Tomek Lutelmowski</name>
+</maintainer>
+<maintainer type="project">
+    <email>netmon@gentoo.org</email>
+    <name>Gentoo network monitoring and analysis project</name>
+</maintainer>
+<maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+</maintainer>
+<longdescription>
+LutelWall is high-level firewall configuration tool. It uses human-readable and easy 
+to understand configuration to set up Netfilter in most secure way. Its flexibility 
+allows firewall admins build from very simple, single-homed firewalls, to most complex 
+ones - with multiple subnets, DMZ's and traffic redirections.
+</longdescription>
+</pkgmetadata>

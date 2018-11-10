@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>stefan.strogin@gmail.com</email>
+		<name>Stefan Strogin</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="fixed-point">Enable fixed-point arithmetic operations</flag>
+		<flag name="float">Enable floating point arithmetic operations</flag>
+		<flag name="http">Enable http connections</flag>
+	</use>
+</pkgmetadata>

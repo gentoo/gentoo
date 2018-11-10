@@ -1,0 +1,9 @@
+diff --git a/Common.hs b/Common.hs
+index 5213863..74b054e 100644
+--- a/Common.hs
++++ b/Common.hs
+@@ -27,3 +27,3 @@ import Utility.Process as X
+ import Utility.Path as X
+-import Utility.Directory as X
++import Utility.Directory as X hiding (getFileSize)
+ import Utility.Monad as X

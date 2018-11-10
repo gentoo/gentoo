@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -x /usr/bin/firefox ] ; then
+        /usr/bin/firefox --app "/usr/share/evoluspencil/application.ini"
+elif [ -x /usr/bin/firefox-bin ] ; then
+        /usr/bin/firefox-bin --app "/usr/share/evoluspencil/application.ini"
+else
+        echo Could not execute required /usr/bin/firefox or /usr/bin/firefox-bin
+fi

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<use>
+		<flag name="gnat_2016">Compile with dev-lang/gnat-gpl-2016</flag>
+		<flag name="gnat_2017">Compile with dev-lang/gnat-gpl-2017</flag>
+		<flag name="projects">Adds support for projects</flag>
+		<flag name="pygobject">Adds support for pygobject</flag>
+		<flag name="shared">Build shared library</flag>
+		<flag name="tools">Build associated tools</flag>
+	</use>
+	<longdescription lang="en">
+		The reusable library known as the GNAT Component Collection (GNATColl)
+		is based on one main principle: general-purpose packages that are part
+		of the GNAT technology should also be available to GNAT user
+		application code. The compiler front end, the GNAT Programming Studio
+		(GPS) Interactive Development Environment, and the GNAT Tracker
+		web-based interface all served as sources for the components.
+
+		The GNATColl components complement the predefined Ada and GNAT
+		libraries and deal with a range of common programming issues including
+		string and text processing, memory management, and file handling.
+		Several of the components are especially useful in enterprise
+		applications.
+	</longdescription>
+</pkgmetadata>

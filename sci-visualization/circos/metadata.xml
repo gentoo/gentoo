@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		Circos visualizes data in a circular layout — this makes Circos
+		ideal for exploring relationships between objects or
+		positions. Circos is ideal for creating publication-quality
+		infographics and illustrations with a high data-to-ink ratio, richly
+		layered data and pleasant symmetries. You have fine control each element
+		in the figure to tailor its focus points and detail to your audience.
+	</longdescription>
+</pkgmetadata>

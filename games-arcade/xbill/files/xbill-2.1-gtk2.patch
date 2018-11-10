@@ -1,0 +1,18 @@
+--- configure.in.old	2007-12-05 22:37:57.000000000 +0100
++++ configure.in	2007-12-05 22:54:57.000000000 +0100
+@@ -88,12 +88,11 @@
+ 	[  --enable-gtk            build with the GTK widget set])
+ 
+ if test "$enable_gtk" != "no"; then
+-	AC_CHECK_PROG(GTKCONFIG, gtk-config, yes, no)
++	PKG_CHECK_MODULES(GTK, gtk+-2.0)
+ 
+-	if test "X$GTKCONFIG" = X"yes"; then
++	if test $pkg_failed = no; then
+ 		AC_DEFINE(USE_GTK)
+-		GTK_CFLAGS="`gtk-config --cflags`"
+-		WIDGET_LIBS="$WIDGET_LIBS `gtk-config --libs`"
++		WIDGET_LIBS="$WIDGET_LIBS $GTK_LIBS"
+ 		WIDGET_OBJS="$WIDGET_OBJS gtk.o"
+ 	fi
+ fi

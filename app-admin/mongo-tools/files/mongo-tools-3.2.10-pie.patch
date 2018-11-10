@@ -1,0 +1,12 @@
+diff -uNr mongo-tools-r3.2.10.ORIG/build.sh mongo-tools-r3.2.10/build.sh
+--- mongo-tools-r3.2.10.ORIG/build.sh	2016-11-15 16:15:09.487441283 +0000
++++ mongo-tools-r3.2.10/build.sh	2016-11-15 16:15:23.127235064 +0000
+@@ -22,7 +22,7 @@
+ 
+ for i in bsondump mongostat mongofiles mongoexport mongoimport mongorestore mongodump mongotop mongooplog; do
+         echo "Building ${i}..."
+-        go build -o "bin/$i" -tags "$tags" "$i/main/$i.go"
++        go build -buildmode=pie -o "bin/$i" -tags "$tags" "$i/main/$i.go"
+         ./bin/$i --version
+ done
+ 

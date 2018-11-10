@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-XPath</remote-id>
+    <remote-id type="cpan-module">XML::XPath</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Boolean</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Builder</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Expr</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Function</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Literal</remote-id>
+    <remote-id type="cpan-module">XML::XPath::LocationPath</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Node</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Node::Attribute</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Node::AttributeImpl</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Node::Comment</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Node::CommentImpl</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Node::Element</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Node::ElementImpl</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Node::Namespace</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Node::NamespaceImpl</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Node::PI</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Node::PIImpl</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Node::Text</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Node::TextImpl</remote-id>
+    <remote-id type="cpan-module">XML::XPath::NodeImpl</remote-id>
+    <remote-id type="cpan-module">XML::XPath::NodeSet</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Number</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Parser</remote-id>
+    <remote-id type="cpan-module">XML::XPath::PerlSAX</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Root</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Step</remote-id>
+    <remote-id type="cpan-module">XML::XPath::Variable</remote-id>
+    <remote-id type="cpan-module">XML::XPath::XMLParser</remote-id>
+  </upstream>
+</pkgmetadata>

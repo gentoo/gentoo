@@ -1,0 +1,7 @@
+CHOST="armv6j-unknown-linux-gnueabihf"
+CHOST_arm="${CHOST}"
+
+CFLAGS="-O2 -pipe -march=armv6j"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"

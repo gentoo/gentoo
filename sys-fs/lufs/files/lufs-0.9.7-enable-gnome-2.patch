@@ -1,0 +1,72 @@
+diff -upr -x aclocal.m4 -x Makefile.in -x configure -x '.*' -x autom4te.cache -x kernel lufs-0.9.7.orig/config.h.in lufs-0.9.7/config.h.in
+--- lufs-0.9.7.orig/config.h.in	2003-10-29 22:48:48.000000000 +0000
++++ lufs-0.9.7/config.h.in	2004-01-13 22:51:00.000000000 +0000
+@@ -9,6 +9,9 @@
+ /* Define if libchipcard is present. */
+ #undef HAS_LIBCHIPCARD
+ 
++/* Define if using libgnome-2 rather than 1. */
++#undef HAS_LIBGNOME_2
++
+ /* Define if ssh is found. */
+ #undef HAS_SSH
+ 
+diff -upr -x aclocal.m4 -x Makefile.in -x configure -x '.*' -x autom4te.cache -x kernel lufs-0.9.7.orig/configure.in lufs-0.9.7/configure.in
+--- lufs-0.9.7.orig/configure.in	2003-10-29 22:40:28.000000000 +0000
++++ lufs-0.9.7/configure.in	2004-01-13 22:50:20.802647656 +0000
+@@ -164,7 +164,9 @@ AC_SUBST(SSHPROG)
+ dnl Checking gnome
+ AC_CHECK_PROG(GCONF, gnome-config, gnome-config)
+ AC_CHECK_PROG(GVFSCONF, gnome-vfs-config, gnome-vfs-config)
++AC_CHECK_PROG(PKGCONF, pkg-config, pkg-config)
+ AC_CHECK_LIB(gnomevfs, gnome_vfs_init, HAS_GNOMEVFS=1,)
++AC_CHECK_LIB(gnomevfs-2, gnome_vfs_init, HAS_GNOMEVFS2=1,`$PKGCONF --libs-only-l gnome-vfs-2.0`)
+ if test "$GCONF" -a "$GVFSCONF" -a "$HAS_GNOMEVFS"
+ then
+     AC_DEFINE([HAS_GVFS], 1, [Define if gvfs is to be built.])
+@@ -172,6 +174,16 @@ then
+     GVFS_LDADD="`$GCONF --libs gnome` `$GVFSCONF --libs`"
+     GVFS_CFLAGS="`$GCONF --cflags gnome` `$GVFSCONF --cflags`"
+     opt_fs="$opt_fs gvfs"
++elif test "$PKGCONF" -a "$HAS_GNOMEVFS2"
++then
++    AC_DEFINE([HAS_GVFS], 1, [Define if gvfs is to be built.])
++    AC_DEFINE([HAS_LIBGNOME_2], 1, [Define if using libgnome-2 rather than 1.])
++    define_has_libgnome_2="#define HAS_LIBGNOME_2"
++    AC_SUBST(define_has_libgnome_2)
++
++    GVFS_LDADD="`$PKGCONF --libs libgnome-2.0` `$PKGCONF --libs gnome-vfs-2.0`"
++    GVFS_CFLAGS="`$PKGCONF --cflags libgnome-2.0` `$PKGCONF --cflags gnome-vfs-2.0`"
++    opt_fs="$opt_fs gvfs"
+ fi
+ AC_SUBST(GVFS_LDADD)
+ AC_SUBST(GVFS_CFLAGS)
+diff -upr -x aclocal.m4 -x Makefile.in -x configure -x '.*' -x autom4te.cache -x kernel lufs-0.9.7.orig/filesystems/gvfs/gvfs.cpp lufs-0.9.7/filesystems/gvfs/gvfs.cpp
+--- lufs-0.9.7.orig/filesystems/gvfs/gvfs.cpp	2003-03-08 21:45:29.000000000 +0000
++++ lufs-0.9.7/filesystems/gvfs/gvfs.cpp	2004-01-13 22:55:44.906376400 +0000
+@@ -36,8 +36,13 @@
+ #include <lufs/fs.h>
+ 
+ #include "gvfs.h"
++#include "config.h"
+ 
++#ifdef HAS_LIBGNOME_2
++#include <libgnome/libgnome.h>
++#else
+ #include <gnome.h>
++#endif
+ #include <libgnomevfs/gnome-vfs.h>
+ 
+ extern "C" { 
+@@ -275,7 +280,11 @@ GVFS::do_readdir(char* d, struct directo
+ 	goto out_uri;
+     }
+ 
++#ifdef HAS_LIBGNOME_2
++    if(gnome_vfs_directory_open_from_uri(&dir, uri, GNOME_VFS_FILE_INFO_DEFAULT) != GNOME_VFS_OK){
++#else
+     if(gnome_vfs_directory_open_from_uri(&dir, uri, GNOME_VFS_FILE_INFO_DEFAULT, NULL) != GNOME_VFS_OK){
++#endif
+ 	WARN("could not open directory!");
+ 	goto out_info;
+     }

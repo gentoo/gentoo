@@ -1,0 +1,18 @@
+<IfDefine MAILMAN>
+	ScriptAlias /mailman/ "/usr/local/mailman/cgi-bin/"
+	<Directory "/usr/local/mailman/cgi-bin/">
+		AllowOverride None
+		Options None
+	</Directory>
+
+	Alias /pipermail/ "/usr/local/mailman/archives/public/"
+	<Directory "/usr/local/mailman/archives/public/">
+		AllowOverride None
+		Options ExecCGI FollowSymLinks
+	</Directory>
+
+	Alias /mailman-icons/ "/usr/local/mailman/icons/"
+	<Directory "/usr/local/mailman/icons/">
+		AllowOverride None
+	</Directory>
+</IfDefine>

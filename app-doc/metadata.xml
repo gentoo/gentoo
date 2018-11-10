@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-doc category contains various miscellaneous documentation
+		collections.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-docs enhält verschiedenste Dokumentationen und Anleitungen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-doc contiene colección de documentación mixta.
+	</longdescription>
+	<longdescription lang="ja">
+		app-docカテゴリには様々な番外ドキュメンテーションが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De app-doc categorie bevat allerlei documentatie applicaties.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-doc chứa các tài liệu.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-doc contiene collezioni di documentazione per varie applicazioni.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-doc contém várias coleções de documentação mista.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-doc zawiera pakiety z rozmaitą dodatkową dokumentacją.
+	</longdescription>
+</catmetadata>
+

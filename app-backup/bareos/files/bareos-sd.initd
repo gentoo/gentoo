@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use dns
+}
+
+start() {
+	ebegin "Starting bareos storage daemon"
+	checkpath -d -m 0750 -o bareos:bareos /run/bareos
+	start-stop-daemon --start --quiet --exec /usr/sbin/bareos-sd \
+		-- ${SD_OPTIONS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping bareos storage daemon"
+	start-stop-daemon --stop --quiet --pidfile /run/bareos/bareos-sd.*.pid 
+	eend $?
+}

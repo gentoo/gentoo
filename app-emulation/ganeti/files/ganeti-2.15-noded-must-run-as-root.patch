@@ -1,0 +1,50 @@
+diff --git a/configure.ac b/configure.ac
+index 9b5d06f..d099bd2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -343,8 +343,8 @@ AC_ARG_WITH([user-prefix],
+    user_wconfd="${withval}masterd";
+    user_kvmd="$user_default";
+    user_luxid="${withval}masterd";
+-   user_noded="$user_default";
+-   user_mond="$user_default"],
++   user_noded="root";
++   user_mond="root"],
+   [user_masterd="$user_default";
+    user_metad="$user_default";
+    user_rapi="$user_default";
+@@ -352,8 +352,8 @@ AC_ARG_WITH([user-prefix],
+    user_wconfd="$user_default";
+    user_kvmd="$user_default";
+    user_luxid="$user_default";
+-   user_noded="$user_default";
+-   user_mond="$user_default"])
++   user_noded="root";
++   user_mond="root"])
+ AC_SUBST(MASTERD_USER, $user_masterd)
+ AC_SUBST(METAD_USER, $user_metad)
+ AC_SUBST(RAPI_USER, $user_rapi)
+@@ -379,9 +379,9 @@ AC_ARG_WITH([group-prefix],
+    group_luxid="${withval}luxid";
+    group_masterd="${withval}masterd";
+    group_metad="$group_default";
+-   group_noded="$group_default";
++   group_noded="root";
+    group_daemons="${withval}daemons";
+-   group_mond="$group_default"],
++   group_mond="root"],
+   [group_rapi="$group_default";
+    group_admin="$group_default";
+    group_confd="$group_default";
+@@ -390,9 +390,9 @@ AC_ARG_WITH([group-prefix],
+    group_luxid="$group_default";
+    group_masterd="$group_default";
+    group_metad="$group_default";
+-   group_noded="$group_default";
++   group_noded="root";
+    group_daemons="$group_default";
+-   group_mond="$group_default"])
++   group_mond="root"])
+ AC_SUBST(RAPI_GROUP, $group_rapi)
+ AC_SUBST(ADMIN_GROUP, $group_admin)
+ AC_SUBST(CONFD_GROUP, $group_confd)

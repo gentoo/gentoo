@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    ColPack is a package comprising of implementations of algorithms for
+    the specialized vertex coloring problems as well as algorithms for a
+    variety of related supporting tasks in derivative computation.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">CSCsw/ColPack</remote-id>
+  </upstream>
+</pkgmetadata>

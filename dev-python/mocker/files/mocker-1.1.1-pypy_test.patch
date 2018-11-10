@@ -1,0 +1,29 @@
+Upstream maintainer assures us "The "assertRaises" line should be skipped IMO. The next call actually succeeds,
+but of course there is no point to test for unsupported functions."
+Re the 2nd patch;
+PyPy actually behaves as if __slots__ was added to the class
+see http://morepypy.blogspot.ch/2010/11/efficiently-implementing-python-objects.html
+diff -ur mocker-1.1.1.orig/test.py mocker-1.1.1/test.py
+--- test.py	2012-05-19 19:27:02.000000000 +0800
++++ test.py	2012-07-11 14:43:57.848953730 +0800
+@@ -3880,7 +3881,7 @@
+         from zlib import adler32
+         # If that fails, this test has to change because either adler32 has
+         # changed, or the implementation of getargspec has changed.
+-        self.assertRaises(TypeError, inspect.getargspec, adler32)
++       # self.assertRaises(TypeError, inspect.getargspec, adler32)
+         try:
+             task = SpecChecker(adler32)
+             task.run(self.path("asd"))
+@@ -4060,7 +4060,8 @@
+                 self.calendar = calendar
+         obj = C()
+         self.task.replay()
+-        self.assertEquals(type(obj.calendar), Mock)
+-        self.assertTrue(obj.calendar is self.mock)
++        if not hasattr(sys, 'pypy_version_info'):
++            self.assertEquals(type(obj.calendar), Mock)
++            self.assertTrue(obj.calendar is self.mock)
+ 
+     def test_install_on_submodule(self):
+        from os import path

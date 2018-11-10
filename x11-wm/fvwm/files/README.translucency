@@ -1,0 +1,94 @@
+From owner-fvwm@hpc.uh.edu  Sun Aug 31 22:52:59 2003
+Received: from sina.hpc.uh.edu ([129.7.128.10] ident=lists)
+	by malifon.math.uh.edu with esmtp (Exim 3.20 #1)
+	id 19tb0F-0006NY-00; Sun, 31 Aug 2003 17:48:59 -0500
+Received: by sina.hpc.uh.edu (TLB v0.09a (1.20 tibbs 1996/10/09 22:03:07)); Sun, 31 Aug 2003 17:50:31 -0500 (CDT)
+Received: from epithumia.math.uh.edu (epithumia.math.uh.edu [129.7.128.2])
+	by sina.hpc.uh.edu (8.9.3/8.9.3) with ESMTP id RAA16575
+	for <fvwm@hpc.uh.edu>; Sun, 31 Aug 2003 17:50:24 -0500 (CDT)
+Received: from epithumia.math.uh.edu (epithumia.math.uh.edu [127.0.0.1])
+	by epithumia.math.uh.edu (8.12.8/8.12.5) with ESMTP id h7VMml6M025095
+	for <fvwm@hpc.uh.edu>; Sun, 31 Aug 2003 17:48:47 -0500
+Received: (from tibbs@localhost)
+	by epithumia.math.uh.edu (8.12.8/8.12.8/Submit) id h7VMmlVC025093
+	for fvwm@hpc.uh.edu; Sun, 31 Aug 2003 17:48:47 -0500
+Received: from util2.math.uh.edu (util2.math.uh.edu [129.7.128.23])
+	by sina.hpc.uh.edu (8.9.3/8.9.3) with ESMTP id QAA16418
+	for <fvwm@hpc.uh.edu>; Sun, 31 Aug 2003 16:02:07 -0500 (CDT)
+Received: from postfix4-2.free.fr ([213.228.0.176])
+	by util2.math.uh.edu with esmtp (Exim 4.20)
+	id 19tZIm-00079F-6t
+	for fvwm@fvwm.org; Sun, 31 Aug 2003 16:00:00 -0500
+Received: from snoopy.folie (nas-p19-3-62-147-221-172.dial.proxad.net [62.147.221.172])
+	by postfix4-2.free.fr (Postfix) with ESMTP id 59DE6C386
+	for <fvwm@fvwm.org>; Sun, 31 Aug 2003 22:59:34 +0200 (CEST)
+Received: by snoopy.folie (Postfix, from userid 501)
+	id A4D1D48784; Sun, 31 Aug 2003 22:39:19 +0200 (CEST)
+Date: Sun, 31 Aug 2003 22:39:19 +0200
+From: Olivier Chapuis <olivier.chapuis@free.fr>
+To: fvwm@fvwm.org
+Subject: Re: FVWM: Transparency/Translucency revisited...
+Message-ID: <20030831203919.GA6205@snoopy.folie>
+Mail-Followup-To: fvwm@fvwm.org
+References: <Pine.LNX.4.44.0308251817370.1980-100000@atlantis.ssw.krakow.pl>
+Mime-Version: 1.0
+Content-Type: multipart/mixed; boundary="Nq2Wo0NMKNjxTN9z"
+Content-Disposition: inline
+In-Reply-To: <Pine.LNX.4.44.0308251817370.1980-100000@atlantis.ssw.krakow.pl>
+User-Agent: Mutt/1.4i
+X-Spam-Score: -9.3 (---------)
+Sender: owner-fvwm@hpc.uh.edu
+Precedence: list
+X-Majordomo: 1.94.jlt7
+Status: RO
+Content-Length: 6519
+Lines: 122
+
+
+--Nq2Wo0NMKNjxTN9z
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Mon, Aug 25, 2003 at 09:00:32PM +0200, Dawid Kuroczko wrote:
+> Hello. :-)
+> 
+> I did manage to make pseudo-transparent menus, but now I'd like
+> to make something more "real".  What I'd like to do is to have
+> something like there is in KDE.
+> 
+> It should work like this:
+>  1. user clicks thus calling a Menu.
+>  2. current screen dump is taken (with all the windows, but
+>     without a menu just as yet).
+>  3. this screen dump is made available to Menu as
+>     root background pixmap.
+>  4. Menu is displayed with tinted real background.
+> 
+> This way it's pretty easy to make an illusion of real
+> transparency (and looks "l33t", as some may say).
+>
+
+Here a new version of the patch for current cvs/snapshot.
+This patch add a new options to Colorset: Translucent/NoTranslucent.
+These options has effects only with (non tear-off) menu.
+Also menu animation is "handled".
+
+For example with:
+
+  Colorset 5 fg yellow, bg blue, HGradient 200 lightblue darkblue, \
+	  Translucent blue 60
+  Style * MenuColorset 5, PopupOffset 0 100, AnimationOff
+
+you get translucent menus (with a 60% blue tint) and if you tear-off
+a menu the menu use the gradient.
+
+Regards, Olivier
+
+<snip patch>
+
+--
+Visit the official FVWM web page at <URL: http://www.fvwm.org/>.
+To unsubscribe from the list, send "unsubscribe fvwm" in the body of a
+message to majordomo@fvwm.org.
+To report problems, send mail to fvwm-owner@fvwm.org.
+

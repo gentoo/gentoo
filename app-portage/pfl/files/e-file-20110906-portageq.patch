@@ -1,0 +1,44 @@
+--- bin/e-file
++++ bin/e-file
+@@ -16,11 +16,11 @@
+ 	exit 1
+ fi
+ 
+-if type emerge >/dev/null 2>&1; then
++if type portageq >/dev/null 2>&1; then
+ 	isgentoo=1
+ else
+ 	isgentoo=0
+-	echo 'WARNING: "emerge" no found. If your system is not gentoo, a part of function will not available!' >&2
++	echo 'WARNING: "portageq" no found. If your system is not gentoo, a part of function will not available!' >&2
+ fi
+ 
+ URL="http://www.portagefilelist.de/index.php/Special:PFLQuery2?file=$1&searchfile=lookup&lookup=file&txt"
+@@ -29,8 +29,7 @@
+ BEGIN{
+ 	FOUND=0
+ 	if(isgentoo){
+-		"emerge --info | grep PORTDIR" | getline
+-		split($0,PORTDIR,/\"/)
++		"portageq get_repo_path $(portageq envvar EROOT) gentoo" | getline PORTDIR
+ 	}
+ }
+ {
+@@ -75,7 +74,7 @@
+ 				}
+ 			
+ 				NF=0
+-				cmd="(grep -h HOMEPAGE\\= " PORTDIR[2] "/" pkg "/*.ebuild | tail -n 1)2>/dev/null"
++				cmd="(grep -h HOMEPAGE\\= " PORTDIR "/" pkg "/*.ebuild | tail -n 1)2>/dev/null"
+ 				cmd | getline
+ 				if(NF==0){
+ 					HOMEPAGE=""
+@@ -85,7 +84,7 @@
+ 				}
+ 				
+ 				NF=0
+-				cmd="(grep -h DESCRIPTION " PORTDIR[2] "/" pkg "/*.ebuild | tail -n 1)2>/dev/null"
++				cmd="(grep -h DESCRIPTION " PORTDIR "/" pkg "/*.ebuild | tail -n 1)2>/dev/null"
+ 				cmd | getline
+ 				if(NF==0){
+ 					DESCRIPTION=""

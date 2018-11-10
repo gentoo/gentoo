@@ -1,0 +1,11 @@
+--- Makefile.in.orig	Fri Sep 20 10:34:40 2002
++++ Makefile.in	Fri Sep 20 10:34:56 2002
+@@ -19,7 +19,7 @@
+ AR		=  @AR@
+ RANLIB		=  @RANLIB@
+ CC		=  @CC@
+-CFLAGS		=  @CFLAGS@ @DEFS@ @EXTRA_CFLAGS@
++CFLAGS		=  @CFLAGS@ @DEFS@ @EXTRA_CFLAGS@ -I.
+ CPPFLAGS	=  @CPPFLAGS@
+ LIBS		=  @LIBS@  @EXTRA_LIBS@ 
+ LDFLAGS 	=  @LDFLAGS@

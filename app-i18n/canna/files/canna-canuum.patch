@@ -1,0 +1,34 @@
+--- a/canuum/configure.in
++++ b/canuum/configure.in
+@@ -401,7 +401,7 @@
+ dnl
+ olibs="$LIBS"
+ AC_MSG_CHECKING(--with-term-libs argument)
+-AC_ARG_WITH(tlib,
++AC_ARG_WITH(term-libs,
+ [  --with-term-libs=-lLIB    terminal library to be used ],)
+ if test -n "$with_term_libs"; then
+   AC_MSG_RESULT($with_term_libs)
+--- a/canuum/wnn_config.h
++++ b/canuum/wnn_config.h
+@@ -149,8 +149,8 @@
+ #define TTY_KCODE J_EUJIS
+ #define PTY_KCODE J_EUJIS
+ # else /* !DGUX */
+-#define TTY_KCODE J_JIS
+-#define PTY_KCODE J_JIS
++#define TTY_KCODE J_EUJIS
++#define PTY_KCODE J_EUJIS
+ # endif
+ #endif
+ 
+--- a/canuum/wnn_os.h
++++ b/canuum/wnn_os.h
+@@ -41,6 +41,7 @@
+ #include <signal.h>
+ #if STDC_HEADERS
+ #  include <stdlib.h>
++#  include <string.h>
+ #  include <limits.h>
+ #endif /* STDC_HEADERS */
+ 

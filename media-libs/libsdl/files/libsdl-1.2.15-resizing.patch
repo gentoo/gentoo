@@ -1,0 +1,60 @@
+Description: Revert change that breaks window corner resizing
+ http://bugzilla.libsdl.org/show_bug.cgi?id=1430
+Author: Andrew Caudwell <acaudwell@gmail.com>
+Last-Update: 2012-04-10
+Bug-Debian: http://bugs.debian.org/665779
+
+--- a/src/video/x11/SDL_x11events.c
++++ b/src/video/x11/SDL_x11events.c
+@@ -57,12 +57,6 @@
+ static SDLKey MISC_keymap[256];
+ SDLKey X11_TranslateKeycode(Display *display, KeyCode kc);
+ 
+-/*
+- Pending resize target for ConfigureNotify (so outdated events don't
+- cause inappropriate resize events)
+-*/
+-int X11_PendingConfigureNotifyWidth = -1;
+-int X11_PendingConfigureNotifyHeight = -1;
+ 
+ #ifdef X_HAVE_UTF8_STRING
+ Uint32 Utf8ToUcs4(const Uint8 *utf8)
+@@ -825,16 +819,6 @@
+ #ifdef DEBUG_XEVENTS
+ printf("ConfigureNotify! (resize: %dx%d)\n", xevent.xconfigure.width, xevent.xconfigure.height);
+ #endif
+-		if ((X11_PendingConfigureNotifyWidth != -1) &&
+-		    (X11_PendingConfigureNotifyHeight != -1)) {
+-		    if ((xevent.xconfigure.width != X11_PendingConfigureNotifyWidth) &&
+-			(xevent.xconfigure.height != X11_PendingConfigureNotifyHeight)) {
+-			    /* Event is from before the resize, so ignore. */
+-			    break;
+-		    }
+-		    X11_PendingConfigureNotifyWidth = -1;
+-		    X11_PendingConfigureNotifyHeight = -1;
+-		}
+ 		if ( SDL_VideoSurface ) {
+ 		    if ((xevent.xconfigure.width != SDL_VideoSurface->w) ||
+ 		        (xevent.xconfigure.height != SDL_VideoSurface->h)) {
+--- a/src/video/x11/SDL_x11events_c.h
++++ b/src/video/x11/SDL_x11events_c.h
+@@ -27,8 +27,3 @@
+ extern void X11_InitOSKeymap(_THIS);
+ extern void X11_PumpEvents(_THIS);
+ extern void X11_SetKeyboardState(Display *display, const char *key_vec);
+-
+-/* Variables to be exported */
+-extern int X11_PendingConfigureNotifyWidth;
+-extern int X11_PendingConfigureNotifyHeight;
+-
+--- a/src/video/x11/SDL_x11video.c
++++ b/src/video/x11/SDL_x11video.c
+@@ -1182,8 +1182,6 @@
+ 			current = NULL;
+ 			goto done;
+ 		}
+-		X11_PendingConfigureNotifyWidth = width;
+-		X11_PendingConfigureNotifyHeight = height;
+ 	} else {
+ 		if (X11_CreateWindow(this,current,width,height,bpp,flags) < 0) {
+ 			current = NULL;

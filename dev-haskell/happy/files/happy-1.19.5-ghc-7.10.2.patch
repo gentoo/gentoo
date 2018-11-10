@@ -1,0 +1,27 @@
+I'm not sure if it's a ghc feature or a bug.
+Should happy emable that extension for -g option?
+
+The build error is Kind mismatch:
+
+  monad002.g.hs:296:26:
+    Couldn't match kind ‘*’ with ‘#’
+    When matching types
+      t0 :: *
+      Happy_GHC_Exts.Int# :: #
+    Relevant bindings include
+      cont :: t0 -> [Char] -> Int -> ParseResult a
+        (bound at monad002.g.hs:293:13)
+    In the first argument of ‘cont’, namely ‘8#’
+    In the expression: cont 8#
+    In a case alternative: TokenLet -> cont 8#
+
+Slightly related bug: https://ghc.haskell.org/trac/ghc/ticket/8739
+
+diff --git a/tests/monad002.ly b/tests/monad002.ly
+index 35cc5b0..4c526ca 100644
+--- a/tests/monad002.ly
++++ b/tests/monad002.ly
+@@ -5,2 +5,3 @@ Test for monadic Happy Parsers, Simon Marlow 1996.
+ > {-# OPTIONS_GHC -fglasgow-exts #-}
++> {-# LANGUAGE MonoLocalBinds #-}
+ > -- -fglasgow-exts required because P is a type synonym, and Happy uses it

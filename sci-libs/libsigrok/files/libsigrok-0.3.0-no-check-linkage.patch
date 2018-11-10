@@ -1,0 +1,30 @@
+https://sourceforge.net/p/sigrok/mailman/message/32459488/
+
+From 5326833697a73826babb6a43c74112da7368d2d6 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 13 Jun 2014 21:17:23 -0400
+Subject: [PATCH] do not add check to common cflags/libs
+
+Only the unittests use these flags, so don't go linking them in for
+the main library too.
+---
+ configure.ac | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index f23e630..d0654f1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -420,8 +420,7 @@ fi
+ 
+ # The Check unit testing framework is optional. Disable if not found.
+ PKG_CHECK_MODULES([check], [check >= 0.9.4],
+-	[have_check="yes"; LIB_CFLAGS="$LIB_CFLAGS $check_CFLAGS";
+-	LIBS="$LIBS $check_LIBS"], [have_check="no"])
++	[have_check="yes"], [have_check="no"])
+ AM_CONDITIONAL(HAVE_CHECK, test x"$have_check" = "xyes")
+ 
+ # The OLS driver uses serial port file descriptors directly, and therefore
+-- 
+2.0.0
+

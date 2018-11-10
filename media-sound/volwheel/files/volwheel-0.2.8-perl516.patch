@@ -1,0 +1,36 @@
+http://code.google.com/p/olwtools/issues/detail?id=8
+
+--- install.pl
++++ install.pl
+@@ -2,7 +2,6 @@
+ 
+ use strict;
+ use warnings;
+-use Shell qw(install cp);
+ 
+ my $package = "volwheel";
+ 
+@@ -33,17 +32,17 @@
+ 	system("sed -i 's|/usr/local|$prefix|g\' volwheel");
+ }
+ 
+-my $output = install ("-v -d {$bindir,$libdir,$datadir,$hicolor,$desktop}");
++my $output = qx|install -v -d {$bindir,$libdir,$datadir,$hicolor,$desktop}|;
+ print $output;
+-$output = install ("-v -m755 volwheel $bindir");
++$output = qx|install -v -m755 volwheel $bindir|;
+ print $output;
+-$output = install ("-v -m644 lib/* $libdir");
++$output = qx|install -v -m644 lib/* $libdir|;
+ print $output;
+-$output = cp      ("-v -r icons $datadir/");
++$output = qx|cp -v -r icons $datadir/|;
+ print $output;
+-$output = install ("-v -m644 icons/volwheel.svg $hicolor");
++$output = qx|install -v -m644 icons/volwheel.svg $hicolor|;
+ print $output;
+-$output = install ("-v -m644 volwheel.desktop $desktop");
++$output = qx|install -v -m644 volwheel.desktop $desktop|;
+ 
+ print "\nVolWheel has been succesfully installed.\n\n";
+ 

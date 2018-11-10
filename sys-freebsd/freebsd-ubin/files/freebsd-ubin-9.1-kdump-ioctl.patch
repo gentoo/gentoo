@@ -1,0 +1,24 @@
+diff -Nur work.orig/usr.bin/kdump/Makefile work/usr.bin/kdump/Makefile
+--- work.orig/usr.bin/kdump/Makefile	2012-07-12 13:24:01.000000000 +0900
++++ work/usr.bin/kdump/Makefile	2012-07-16 03:54:14.000000000 +0900
+@@ -21,7 +21,7 @@
+ 
+ ioctl.c: mkioctls
+ 	env CPP="${CPP}" \
+-	   sh ${.CURDIR}/mkioctls ${DESTDIR}/usr/include > ${.TARGET}
++	   sh ${.CURDIR}/mkioctls ${.CURDIR}/../../include > ${.TARGET}
+ 
+ kdump_subr.c: mksubr
+ 	sh ${.CURDIR}/mksubr ${DESTDIR}/usr/include > ${.TARGET}
+diff -Nur work.orig/usr.bin/truss/Makefile work/usr.bin/truss/Makefile
+--- work.orig/usr.bin/truss/Makefile	2012-07-12 13:24:03.000000000 +0900
++++ work/usr.bin/truss/Makefile	2012-07-16 03:54:40.000000000 +0900
+@@ -24,7 +24,7 @@
+ 
+ ioctl.c: ${.CURDIR}/../kdump/mkioctls
+ 	env CPP="${CPP}" \
+-	    sh ${.CURDIR}/../kdump/mkioctls ${DESTDIR}/usr/include > ${.TARGET}
++	    sh ${.CURDIR}/../kdump/mkioctls ${.CURDIR}/../../include > ${.TARGET}
+ 
+ .if ${MACHINE_CPUARCH} == "i386"
+ SRCS+=	i386-linux.c linux_syscalls.h

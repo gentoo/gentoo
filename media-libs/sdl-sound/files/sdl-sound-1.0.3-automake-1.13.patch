@@ -1,0 +1,11 @@
+--- SDL_sound-1.0.3/configure.in
++++ SDL_sound-1.0.3/configure.in
+@@ -43,7 +43,7 @@
+ AC_CANONICAL_TARGET
+ 
+ dnl Setup for automake
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_INIT_AUTOMAKE(SDL_sound, $VERSION)
+ 
+ 

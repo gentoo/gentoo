@@ -1,0 +1,19 @@
+2014-06-08  Israel G. Lugo <israel.lugo@lugosys.com>
+
+	Compatibility fix for mpd 0.18.
+
+	* sonata/main.py (Base.update_status): Properly handle missing xfade
+	property.
+
+diff -durNp sonata-1.6.2.1/sonata/main.py sonata-1.6.2.1-mpd0.18/sonata/main.py
+--- sonata-1.6.2.1/sonata/main.py	2009-09-21 22:02:16.000000000 +0100
++++ sonata-1.6.2.1-mpd0.18/sonata/main.py	2014-06-08 15:10:08.586659487 +0100
+@@ -989,7 +989,7 @@ class Base(object):
+ 						self.repeatmenu.set_active(self.status['repeat'] == '1')
+ 					if not self.last_random or self.last_random != self.status['random']:
+ 						self.randommenu.set_active(self.status['random'] == '1')
+-					if self.status['xfade'] == '0':
++					if self.status.get('xfade', '0') == '0':
+ 						self.config.xfade_enabled = False
+ 					else:
+ 						self.config.xfade_enabled = True

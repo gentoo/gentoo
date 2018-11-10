@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<longdescription>This plugin fetches cover art, artist art,album and artist information from the file system.</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">musicpd</remote-id>
+	</upstream>
+</pkgmetadata>

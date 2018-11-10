@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  This library provides functions to use Texas Instruments link cables
+  for TI calculators. It currently supports all cables on i386,
+  including the USB one. Supported cables may vary depending on your
+  architecture.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">tilp</remote-id>
+  </upstream>
+</pkgmetadata>

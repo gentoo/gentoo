@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>dotnet@gentoo.org</email>
+		<name>Gentoo Dotnet Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		XSP is a standalone web server written in C# that can be used to run
+		your ASP.NET applications.
+	</longdescription>
+	<use>
+		<flag name="developer">creates .mdb files for either Release and Debug</flag>
+		<flag name="net35">use .NET 3.5 Framework</flag>
+		<flag name="net40">use .NET 4.0 Framework</flag>
+		<flag name="net45">use .NET 4.5 Framework</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mono/xsp</remote-id>
+	</upstream>
+</pkgmetadata>

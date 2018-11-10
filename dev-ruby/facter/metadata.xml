@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>sysadmin@gentoo.org</email>
+		<name>Gentoo Sysadmin Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>ruby@gentoo.org</email>
+		<name>Gentoo Ruby Project</name>
+	</maintainer>
+	<use>
+		<flag name="dmi">Use <pkg>sys-apps/dmidecode</pkg> to determine hardware system properties</flag>
+		<flag name="virt">Use <pkg>app-emulation/virt-what</pkg> for virtual machine detection</flag>
+		<flag name="pciutils">Use <pkg>sys-apps/pciutils</pkg> to determine hardware system properties</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">puppetlabs/facter</remote-id>
+	</upstream>
+</pkgmetadata>

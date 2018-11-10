@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="designer">Install plugin for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="tools">Install tools for developers and testing</flag>
+	</use>
+</pkgmetadata>

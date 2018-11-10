@@ -1,0 +1,31 @@
+--- Makefile.am 2014-07-29 14:44:37.851568232 +0800
++++ Makefile.am.new     2014-07-29 14:44:54.687855718 +0800
+@@ -196,7 +196,7 @@
+ TESTS = $(check_PROGRAMS)
+ 
+ benchmark_SOURCES = benchmark.cc
+-benchmark_LDADD = libhyperleveldb.la -lpthread -le -lpopt -lygor
++benchmark_LDADD = libhyperleveldb.la -lpthread -le -lpopt -lygor -lsnappy
+ benchmark_LDFLAGS = -no-install
+ 
+ db_bench_SOURCES = db/db_bench.cc $(TESTUTIL)
+
+@@ -200,7 +200,7 @@
+ benchmark_LDFLAGS = -no-install
+ 
+ db_bench_SOURCES = db/db_bench.cc $(TESTUTIL)
+-db_bench_LDADD = libhyperleveldb.la -lpthread
++db_bench_LDADD = libhyperleveldb.la -lpthread -lsnappy
+ 
+ db_bench_sqlite3_SOURCES = doc/bench/db_bench_sqlite3.cc $(TESTUTIL)
+ db_bench_sqlite3_LDADD = -lsqlite3
+@@ -215,7 +215,7 @@
+ leveldb_dump_all_LDADD = libhyperleveldb.la -lpthread
+ 
+ leveldb_verify_SOURCES = leveldb-verify.cc
+-leveldb_verify_LDADD = libhyperleveldb.la -lpthread
++leveldb_verify_LDADD = libhyperleveldb.la -lpthread -lsnappy
+ 
+ autocompact_test_SOURCES = db/autocompact_test.cc $(TESTHARNESS)
+ autocompact_test_LDADD = libhyperleveldb.la -lpthread
+

@@ -1,0 +1,21 @@
+--- xindy-2.4/configure.ac.orig	2010-05-10 16:12:10.000000000 -0700
++++ xindy-2.4/configure.ac	2010-09-28 23:43:39.591495118 -0700
+@@ -42,12 +42,16 @@
+ 
+ # Test for building make-rules
+ AC_ARG_ENABLE(make-rules, AS_HELP_STRING([--enable-make-rules ],[build and install make-rules package (default is YES)]),[BUILDRULES=$enableval],[BUILDRULES=yes])
+-test "$BUILDRULES" = "yes"  &&  AC_PROG_LATEX
++if test "x$BUILDRULES" = "xyes"; then
++	AC_PROG_LATEX
++fi
+ AM_CONDITIONAL(BUILDRULES, test "$BUILDRULES" = "yes")
+ 
+ # Test for building Documentation
+ AC_ARG_ENABLE(docs, AS_HELP_STRING([--enable-docs ],[build and install documentation (default is YES)]),[BUILDDOCS=$enableval],[BUILDDOCS=yes])
+-test "$BUILDDOCS" = "yes"  &&  AC_PROG_PDFLATEX
++if test "x$BUILDDOCS" = "xyes"; then 
++	AC_PROG_PDFLATEX
++fi
+ AM_CONDITIONAL(BUILDDOCS, test "$BUILDDOCS" = "yes")
+ 
+ # Checks for programs:

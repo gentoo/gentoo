@@ -1,0 +1,29 @@
+ src/graphics-info-modelling.cc | 1 +
+ src/graphics-info.cc           | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/src/graphics-info-modelling.cc b/src/graphics-info-modelling.cc
+index 05a63ad..4b7d129 100644
+--- a/src/graphics-info-modelling.cc
++++ b/src/graphics-info-modelling.cc
+@@ -102,6 +102,7 @@
+ 
+ #include "utils/coot-utils.hh"
+ 
++#include <libguile.h>
+ 
+ // Idealize the geometry without considering the map.
+ //
+diff --git a/src/graphics-info.cc b/src/graphics-info.cc
+index e2f9d52..76b6769 100644
+--- a/src/graphics-info.cc
++++ b/src/graphics-info.cc
+@@ -92,6 +92,8 @@
+ #include "cc-interface-scripting.hh"
+ #endif
+ 
++#include <libguile.h>
++
+ // A few non-class members - should be somewhere else, I guess.
+ // 
+ void initialize_graphics_molecules() { 

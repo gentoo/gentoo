@@ -1,0 +1,22 @@
+From 48dcaa87ff91369eb41998abd72e226fe138b528 Mon Sep 17 00:00:00 2001
+From: Adam Nielsen <malvineous@shikadi.net>
+Date: Sun, 22 May 2016 08:49:47 +1000
+Subject: [PATCH] Cast -1 to unsigned int to prevent compiler error
+
+---
+ src/adplay.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/adplay.cc b/src/adplay.cc
+index d73ec25..da00730 100644
+--- a/src/adplay.cc
++++ b/src/adplay.cc
+@@ -90,7 +90,7 @@ static struct {
+   1, 16, 0,  // Else default to mono (until stereo w/ single OPL is fixed)
+ #endif
+   MSG_NOTE,
+-  -1,
++  (unsigned int)-1,
+   NULL,
+   NULL,
+   true, false, false, false,

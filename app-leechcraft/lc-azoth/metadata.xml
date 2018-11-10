@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>0xd34df00d@gmail.com</email>
+		<name>Georg Rudoy</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="acetamide">Build Acetamide, the IRC protocol support</flag>
+		<flag name="adiumstyles">Build support for Adium styles</flag>
+		<flag name="astrality">Build Astrality, support for protocols provided by Telepathy</flag>
+		<flag name="autoidler">Build support for automatic status changing according to user idle time</flag>
+		<flag name="autopaste">Build Autopaste for pasting long texts to pastebins</flag>
+		<flag name="birthdaynotifier">Build Birthday Notifier for you to not forget about birthdays of your contacts.</flag>
+		<flag name="chathistory">Build ChatHistory which stories chat history</flag>
+		<flag name="depester">Build Depester which enables to ignore MUC participants</flag>
+		<flag name="embedmedia">Build EmbedMedia for embedding flash videos and images directly into chat windows</flag>
+		<flag name="herbicide">Build Herbicide, a basic antispam plugin</flag>
+		<flag name="hili">Build HiLi which allows to customize highlight settings in MUCs</flag>
+		<flag name="isterique">Build Isterique plugin for neutralizing excessive caps lock usage</flag>
+		<flag name="juick">Build plugin for the Juick.com microblogging service</flag>
+		<flag name="keeso">Build plugin for changing text into SoMEtHInG lIKe THiS</flag>
+		<flag name="lastseen">Build plugin for client-side recording of the last online/available time</flag>
+		<flag name="media">Enable media calls</flag>
+		<flag name="metacontacts">Build plugin for metacontacts support</flag>
+		<flag name="murm">Build Murm, the VKontakte messaging support via their native API (instead of XMPP)</flag>
+		<flag name="nativeemoticons">Build support for native Azoth's emoticons packs</flag>
+		<flag name="otroid">Build OTRoid, plugin for the Off-the-Record deniable encryption system</flag>
+		<flag name="sarin">Build Sarin, Tox protocol support module. Please add mva overlay to use <pkg>net-libs/tox</pkg></flag>
+		<flag name="shx">Build shell command executor plugin</flag>
+		<flag name="standardstyles">Build support for standard Azoth styles engine</flag>
+		<flag name="vader">Bulid Vader, the MRIM (Mail.Ru Agent) protocol support plugin</flag>
+		<flag name="velvetbird">Build support for protocols provided by libpurple</flag>
+		<flag name="woodpecker">Build Woodpecker, the Twitter client plugin</flag>
+		<flag name="xtazy">Build Xtazy for publishing currently playing tune</flag>
+	</use>
+</pkgmetadata>

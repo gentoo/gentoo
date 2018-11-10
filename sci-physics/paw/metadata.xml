@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-physics@gentoo.org</email>
+		<name>Gentoo Physics Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		PAW is an interactive program providing interactive graphical
+		presentation and statistical and mathematical analysis tools. It is
+		designed to work on objects familiar to physicists such as histograms,
+		event files (Ntuples), vectors, etc.
+		The program is linked statically against the CERN libraries on 64-bit
+		architectures in order to function properly, as its design is not very
+		64-bit clean. Even so, AMD64 is the only 64-bit platform where it
+		functions well.
+	</longdescription>
+</pkgmetadata>

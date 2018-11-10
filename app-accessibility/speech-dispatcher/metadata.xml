@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>williamh@gentoo.org</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>accessibility@gentoo.org</email>
+    <name>Gentoo Accessibility Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sound@gentoo.org</email>
+    <name>Gentoo Sound project</name>
+  </maintainer>
+  <use>
+    <flag name="espeak">Adds support for espeak speech engine</flag>
+    <flag name="flite">Adds support for flite speech engine</flag>
+  </use>
+</pkgmetadata>

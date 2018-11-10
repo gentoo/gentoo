@@ -1,0 +1,14 @@
+Index: libiodbc2-3.52.7/include/sqltypes.h
+===================================================================
+--- libiodbc2-3.52.7.orig/include/sqltypes.h	2010-06-26 21:15:00.000000000 +0200
++++ libiodbc2-3.52.7/include/sqltypes.h	2010-06-26 21:15:36.000000000 +0200
+@@ -96,6 +96,9 @@
+ extern "C" {
+ #endif
+ 
++#ifndef _IODBCUNIX_H
++#include <iodbcunix.h>
++#endif
+ 
+ /*
+  *  Environment specific definitions

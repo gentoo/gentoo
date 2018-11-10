@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>rafaelmartins@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		LuaFileSystem is a Lua library developed to complement the set of functions
+		related to file systems offered by the standard Lua distribution.
+
+		LuaFileSystem offers a portable way to access the underlying directory
+		structure and file attributes.
+	</longdescription>
+</pkgmetadata>

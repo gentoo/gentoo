@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+    <email>bircoph@gentoo.org</email>
+</maintainer>
+<longdescription>Ptunnel is an application that allows you to reliably tunnel TCP connections to a remote host 
+using ICMP echo request and reply packets, commonly known as ping requests and replies.</longdescription>
+</pkgmetadata>

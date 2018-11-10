@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
+<longdescription lang="en">
+  This is unofficial implementation(java source code) of the
+  javax.vecmath package specified in the Java(TM) 3D API 1.2
+  The package includes classes for 3-space vector/point, 4-space vector,
+  4x4, 3x3 matrix, quaternion, axis-angle combination and etc. which are
+  often utilized for computer graphics mathematics. Most of the classes
+  have single and double precision versions. Generic matrices' LU and SV
+  decomposition are also there.
+</longdescription>
+</pkgmetadata>

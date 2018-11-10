@@ -1,0 +1,12 @@
+/var/log/thttpd.log {
+	daily
+	rotate 5
+	compress
+	delaycompress
+	missingok
+	notifempty
+	sharedscripts
+	postrotate
+		kill -HUP `cat /var/run/thttpd.pid 2>/dev/null` 2>/dev/null || true
+	endscript
+}

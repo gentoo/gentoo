@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci-astronomy@gentoo.org</email>
+  <name>Gentoo Astronomy Project</name>
+</maintainer>
+<longdescription lang="en">
+  asciitable is a Python module that can read a wide range of ASCII
+  table formats used in astronomy, via a built-in extension reader
+  class.
+</longdescription>
+<upstream>
+  <remote-id type="pypi">asciitable</remote-id>
+</upstream>
+</pkgmetadata>

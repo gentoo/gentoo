@@ -1,0 +1,13 @@
+/var/log/c-icap/access.log {
+	missingok
+	postrotate
+		/etc/init.d/c-icap restart
+	endscript
+}
+
+/var/log/cicap-server.log {
+	missingok
+	postrotate
+		/etc/init.d/c-icap restart
+	endscript
+}

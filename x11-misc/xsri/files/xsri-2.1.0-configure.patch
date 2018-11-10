@@ -1,0 +1,26 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,8 +1,5 @@
+ INCLUDES =					\
+	$(GTK_CFLAGS)				\
+-	-DG_DISABLE_DEPRECATED			\
+-	-DGDK_DISABLE_DEPRECATED		\
+-	-DGTK_DISABLE_DEPRECATED		\
+	-DSYSCONFDIR=\"$(sysconfdir)\"
+ 
+ bin_PROGRAMS = xsri
+--- a/configure.in
++++ b/configure.in
+@@ -26,9 +26,11 @@
+ 
+ dnl library checks (not using macros/ directory)
+ 
+-PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 1.3.13,,
++PKG_CHECK_MODULES(GTK, x11  gtk+-2.0 >= 1.3.13,,
+     AC_MSG_ERROR([*** GTK+-2.0 must be installed to compile xsri]))
+ 
++AC_CHECK_LIB(m, sqrt)
++
+ AC_SUBST(GTK_CFLAGS)
+ AC_SUBST(GTK_LIBS)
+ 

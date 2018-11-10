@@ -1,0 +1,26 @@
+Bug: https://bugs.gentoo.org/666998
+
+From 97fdca06dc7f82c92e5bb71e05f4fd7e74bbc616 Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Thu, 11 Oct 2018 23:09:51 +1100
+Subject: [PATCH] Add missing include.
+
+---
+ lib/albertcore/src/core/telemetry.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/albertcore/src/core/telemetry.cpp b/lib/albertcore/src/core/telemetry.cpp
+index 1fd6b06..09b7713 100644
+--- a/lib/albertcore/src/core/telemetry.cpp
++++ b/lib/albertcore/src/core/telemetry.cpp
+@@ -2,6 +2,7 @@
+ 
+ #include <QApplication>
+ #include <QDateTime>
++#include <QDebug>
+ #include <QJsonDocument>
+ #include <QMessageBox>
+ #include <QNetworkAccessManager>
+-- 
+2.18.1
+

@@ -1,0 +1,56 @@
+diff -ur a/visual_regexp.tcl b/visual_regexp.tcl
+--- a/visual_regexp.tcl	2013-11-12 23:23:59.730171882 +0100
++++ b/visual_regexp.tcl	2013-11-12 23:24:42.134085257 +0100
+@@ -1062,27 +1060,38 @@
+ #==============================================================================================
+ 
+ # try to get customization from 'visual_regexp.ini'
+-puts "[file exists visual_regexp.ini]"
+-set filename [file dirname [info nameofexecutable]]/visual_regexp.ini
+-if {[file exists $filename]} {
+-	source $filename
+-} elseif {[file exists visual_regexp.ini]} {
+-	source visual_regexp.ini
++set localfilename visual_regexp.ini
++set homefilename ""
++if {[info exists ::env(HOME)]} {
++	set homefilename [file join $::env(HOME) .visual_regexp visual_regexp.ini]
+ }
+-
+-# try to auto user patterns
+-set filename [file dirname [info nameofexecutable]]/regexp.txt
+-if {[file exists $filename]} {
+-	regexp::pattern:load $filename
+-} elseif {[file exists regexp.txt]} {
+-	regexp::pattern:load regexp.txt
++set binfilename [file join [file dirname [info nameofexecutable]] visual_regexp.ini]
++foreach filename [list $localfilename $homefilename $binfilename] {
++	if {[file exists $filename]} {
++		source $filename
++		break
++	}
+ }
+ 
+-# buld the GUI
++# build the GUI
+ regexp::history:init
+ regexp::gui
+ regexp::go
+ 
++# try to auto user patterns
++set localfilename regexp.txt
++set homefilename ""
++if {[info exists ::env(HOME)]} {
++	set homefilename [file join $::env(HOME) .visual_regexp regexp.txt]
++}
++set binfilename [file join [file dirname [info nameofexecutable]] regexp.txt]
++foreach filename [list $localfilename $homefilename $binfilename] {
++	if {[file exists $filename]} {
++		regexp::pattern:load $filename
++		break
++	}
++}
++
+ if {$argc > 1} {
+ 	puts "Usage: $argv0 <sampleFile>"
+ } elseif {$argc == 1} {

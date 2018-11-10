@@ -1,0 +1,38 @@
+*** vmpsd/vqp.c.orig	Tue Aug  3 05:54:04 2004
+--- vmpsd/vqp.c	Tue Mar 20 06:48:33 2007
+***************
+*** 127,134 ****
+  	VQP_HEADER	h;
+  	u_char		buf[MAX_PACKET_SIZE];
+  	u_char		*p;
+! 	unsigned long int	data_type;
+! 	unsigned short int	data_len;
+  	unsigned int		n = 0;
+  
+  	h.unkn1		= 0x01;
+--- 127,134 ----
+  	VQP_HEADER	h;
+  	u_char		buf[MAX_PACKET_SIZE];
+  	u_char		*p;
+! 	uint32_t	 data_type;
+! 	uint16_t	data_len;
+  	unsigned int		n = 0;
+  
+  	h.unkn1		= 0x01;
+***************
+*** 310,316 ****
+  				MAC_ENTRY *m;
+  
+  				m = find_mac(r->mac);
+! 				if ( (m->speed != 0) || (m->duplex != 0) ) 
+  					set_port_speed( inet_ntoa(r->client_ip),
+  							community,
+  							r->port,
+--- 310,316 ----
+  				MAC_ENTRY *m;
+  
+  				m = find_mac(r->mac);
+! 				if ( m != NULL && ((m->speed != 0) || (m->duplex != 0)) ) 
+  					set_port_speed( inet_ntoa(r->client_ip),
+  							community,
+  							r->port,

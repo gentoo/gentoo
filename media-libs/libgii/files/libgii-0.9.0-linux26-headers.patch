@@ -1,0 +1,12 @@
+--- a/input/linux_kbd/linkey.c	2002-02-23 06:51:05.000000000 +0900
++++ b/input/linux_kbd/linkey.c	2005-03-28 12:05:43.000000000 +0900
+@@ -25,8 +25,8 @@
+ ******************************************************************************
+ */
+ #include "config.h"
+-#include "linkey.h"
+ #include <ctype.h>
++#include "linkey.h"
+ 
+ static uint32 basic_trans(int sym, int islabel, uint32 *modifiers,
+ 			  uint32 label, int keycode)

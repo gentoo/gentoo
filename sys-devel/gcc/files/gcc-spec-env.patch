@@ -1,0 +1,42 @@
+    Add support for external spec file via the GCC_SPECS env var.  This
+    allows us to easily control pie/ssp defaults with gcc-config profiles.
+
+    Original patch by Rob Holland
+    Extended to support multiple entries separated by ':' by Kevin F. Quinn
+    Modified to use getenv instead of poisoned GET_ENVIRONMENT by Ryan Hill
+
+--- gcc-4/gcc/gcc.c
++++ gcc-4/gcc/gcc.c
+@@ -6482,6 +6482,32 @@
+ 
+   /* Process any user specified specs in the order given on the command
+      line.  */
++#if !(defined (__MSDOS__) || defined (OS2) || defined (VMS) || defined (WIN32))
++  /* Add specs listed in GCC_SPECS.  Note; in the process of separating
++   * each spec listed, the string is overwritten at token boundaries
++   * (':') with '\0', an effect of strtok_r().
++   */
++  specs_file = getenv ("GCC_SPECS");
++  if (specs_file && (strlen(specs_file) > 0))
++    {
++      char *spec, *saveptr;
++      for (spec=strtok_r(specs_file,":",&saveptr);
++           spec!=NULL;
++           spec=strtok_r(NULL,":",&saveptr))
++        {
++          struct user_specs *user = (struct user_specs *)
++            xmalloc (sizeof (struct user_specs));
++
++          user->next = (struct user_specs *) 0;
++          user->filename = spec;
++          if (user_specs_tail)
++            user_specs_tail->next = user;
++          else
++            user_specs_head = user;
++          user_specs_tail = user;
++        }
++    }
++#endif
+   for (uptr = user_specs_head; uptr; uptr = uptr->next)
+     {
+       char *filename = find_a_file (&startfile_prefixes, uptr->filename,

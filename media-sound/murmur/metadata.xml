@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<longdescription lang="en">
+Mumble is an open source, low-latency, high quality voice chat software primarily intended for use while gaming.
+	</longdescription>
+	<use>
+		<flag name="ice">Use <pkg>dev-libs/Ice</pkg> to enable remote control capabilities.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">mumble</remote-id>
+	</upstream>
+</pkgmetadata>

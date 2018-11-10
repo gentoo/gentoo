@@ -1,0 +1,101 @@
+Use system wcslib
+
+Patch written by Kacper Kowalik <xarthisius@gentoo.org>
+
+--- a/setup.py
++++ b/setup.py
+@@ -3,7 +3,8 @@
+ from kapteyn import __version__ as version
+ from glob import glob
+ import sys, os
+-
++from subprocess import Popen, PIPE
++from re import match
+ try:
+    import numpy
+ except:
+@@ -14,21 +15,27 @@
+ '''
+    sys.exit(1)
+ 
+-try:
+-   wcslib_dir = glob('src/wcslib*/C/')[0]
+-except:
+-   print '''
+--- Error.
+-Unable to find WCSLIB source distribution.
+-'''
+-   sys.exit(1)
++def pkgconfig(*packages, **kw):
++    flag_map = {'-I': 'include_dirs', '-L': 'library_dirs', '-l': 'libraries'}
++    arg = "--libs --cflags --modversion %s" % ' '.join(packages) 
++    for tok in Popen(["pkg-config "+ arg],stdout=PIPE, shell=True).communicate()[0].split():
++       token = tok.decode("utf-8")
++       if(match("[0-9]",token)):
++          kw.setdefault("version",[]).append(token)
++       else:
++          kw.setdefault(flag_map.get(token[:2]), []).append(token[2:])
++    return kw
+ 
+ include_dirs = []
+ numdir = os.path.dirname(numpy.__file__)
+ ipath = os.path.join(numdir, numpy.get_include())
+ include_dirs.append(ipath)
+ include_dirs.append('src')
+-include_dirs.append(wcslib_dir)
++
++WCSLIB = pkgconfig('wcslib')
++WCSVERSION = Popen(["pkg-config --modversion"],stdout=PIPE, shell=True).communicate()[0].split()
++
++include_dirs += WCSLIB['include_dirs']
+ 
+ short_descr = "Kapteyn Package: Python modules for astronomical applications"
+ 
+@@ -94,27 +101,6 @@
+    "xyz.c"
+ ]
+ 
+-wcslib_src = [
+-   "cel.c",
+-   "lin.c",
+-   "log.c",
+-   "prj.c",
+-   "spc.c",
+-   "sph.c",
+-   "spx.c",
+-   "tab.c",
+-   "wcs.c",
+-   "wcsfix.c",
+-   "wcshdr.c",
+-   "wcsprintf.c",
+-   "wcstrig.c",
+-   "wcsunits.c",
+-   "wcsutil.c",
+-   "wcserr.c",
+-   "flexed/wcsulex.c",
+-   "flexed/wcsutrn.c"
+-]
+-
+ ndimg_src = [
+    "nd_image.c",
+    "ni_filters.c",
+@@ -125,8 +111,7 @@
+    "ni_support.c",
+ ]
+ 
+-wcs_src       = (   ['src/'        + source for source in wcsmod_src]
+-                  + [wcslib_dir    + source for source in wcslib_src]  )
++wcs_src       = ( ['src/'        + source for source in wcsmod_src] )
+ 
+ _nd_image_src = ['src/ndimg/'  + source for source in ndimg_src]
+ 
+@@ -168,7 +153,8 @@
+       Extension(
+          "wcs", wcs_src,
+           include_dirs=include_dirs,
+-          define_macros=define_macros
++          define_macros=define_macros,
++          libraries=WCSLIB['libraries']
+       ),
+       Extension(
+          "ascarray",

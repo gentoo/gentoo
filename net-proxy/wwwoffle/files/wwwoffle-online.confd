@@ -1,0 +1,9 @@
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Enter the interface that connects you to the outside world
+# This will correspond to /etc/wwwoffle/init.d/net.${IFACE}
+
+# IMPORTANT: Be sure to run depscan.sh after modifiying IFACE
+
+#IFACE=ppp0

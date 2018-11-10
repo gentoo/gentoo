@@ -1,0 +1,35 @@
+--- a/src/quazip/ioapi.h
++++ b/src/quazip/ioapi.h
+@@ -1,3 +1,4 @@
++#define OF(x) x
+ /* ioapi.h -- IO base function header for compress/uncompress .zip
+    files using zlib + zip or unzip API
+ 
+--- a/src/quazip/unzip.c
++++ b/src/quazip/unzip.c
+@@ -1,3 +1,4 @@
++#define OF(x) x
+ /* unzip.c -- IO for uncompress .zip files using zlib
+    Version 1.01e, February 12th, 2005
+ 
+--- a/src/quazip/unzip.h
++++ b/src/quazip/unzip.h
+@@ -1,3 +1,4 @@
++#define OF(x) x
+ /* unzip.h -- IO for uncompress .zip files using zlib
+    Version 1.01e, February 12th, 2005
+ 
+--- a/src/quazip/zip.c
++++ b/src/quazip/zip.c
+@@ -1,3 +1,4 @@
++#define OF(x) x
+ /* zip.c -- IO on .zip files using zlib
+    Version 1.01e, February 12th, 2005
+ 
+--- a/src/quazip/zip.h
++++ b/src/quazip/zip.h
+@@ -1,3 +1,4 @@
++#define OF(x) x
+ /* zip.h -- IO for compress .zip files using zlib
+    Version 1.01e, February 12th, 2005
+ 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  JAGS is Just Another Gibbs Sampler. It is a program for analysis of
+  Bayesian hierarchical models using Markov Chain Monte Carlo (MCMC)
+  simulation not wholly unlike BUGS.
+  JAGS was written with three aims in mind:
+  * To have an engine for the BUGS language that runs on Unix
+  * To be extensible, allowing users to write their own functions,
+    distributions and samplers.
+  * To be a plaftorm for experimentation with ideas in Bayesian modelling
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">mcmc-jags</remote-id>
+  </upstream>
+</pkgmetadata>

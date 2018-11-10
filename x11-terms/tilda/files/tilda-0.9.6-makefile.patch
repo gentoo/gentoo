@@ -1,0 +1,24 @@
+From 6ee8cb9e2d19b7b1e7b80f5f26557aaac1a91151 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Tue, 14 Mar 2017 01:40:28 +0100
+Subject: [PATCH] Make .desktop file use actual icon location
+
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 0378052..074837b 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -27,6 +27,6 @@ EXTRA_DIST = tilda.desktop.in tilda.png tilda.glade
+ 
+ tilda.desktop: tilda.desktop.in
+ 	sed -e 's|\@BINDIR\@|$(bindir)|' \
+-	    -e 's|\@PIXMAPSDIR\@|$(datadir)/applications|' $< > $@
++	    -e 's|\@PIXMAPSDIR\@|$(Pixmapsdir)|' $< > $@
+ 
+ ACLOCAL_AMFLAGS = -I m4
+-- 
+2.12.0
+

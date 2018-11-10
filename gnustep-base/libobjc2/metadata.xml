@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gnustep@gentoo.org</email>
+		<name>Gentoo GNUstep Project</name>
+	</maintainer>
+	<longdescription>
+		The GNUstep Objective-C runtime is designed as a drop-in replacement for the
+		GCC runtime.  It supports both a legacy and a modern ABI, allowing code
+		compiled with old versions of GCC to be supported without requiring
+		recompilation.  The modern ABI adds the following features:
+		- Non-fragile instance variables.
+		- Protocol uniquing.
+		- Object planes support.
+		- Declared property introspection.
+
+		Both ABIs support the following feature above and beyond the GCC runtime:
+		- The modern Objective-C runtime APIs, introduced with OS X 10.5.
+		- Blocks (closures).
+		- Low memory profile for platforms where memory usage is more important than speed.
+		- Synthesised property accessors.
+		- Efficient support for @synchronized()
+		- Type-dependent dispatch, eliminating stack corruption from mismatched selectors.
+	</longdescription>
+	<use>
+		<flag name="boehm-gc">Enable Hans Boehm's garbage collector
+		(<pkg>dev-libs/boehm-gc</pkg>). Not recommended by upstream</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">gnustep/libobjc2</remote-id>
+	</upstream>
+</pkgmetadata>

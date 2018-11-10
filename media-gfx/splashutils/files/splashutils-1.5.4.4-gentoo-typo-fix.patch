@@ -1,0 +1,19 @@
+commit 74dda8291efae78f00bb781148c8fd4fccaeb764
+Author: Michał Januszewski <spock@gentoo.org>
+Date:   Tue Jun 14 23:23:33 2011 +0200
+
+    Fix typo in the Gentoo initscript.
+
+diff --git a/gentoo/init-fbcondecor b/gentoo/init-fbcondecor
+index b66f40a..ce921b6 100755
+--- a/gentoo/init-fbcondecor
++++ b/gentoo/init-fbcondecor
+@@ -12,7 +12,7 @@ start() {
+ 	splash_setup
+ 
+ 	if [ -z "${FBCONDECOR_TTYS}" ]; then
+-		FBCONDECOR_TTYS=$(seq 1 "${rc_tty_number:-${RC_TTY_NUMBER}:-12}")
++		FBCONDECOR_TTYS=$(seq 1 "${rc_tty_number:-${RC_TTY_NUMBER:-12}}")
+ 	fi
+ 
+ 	local err=0

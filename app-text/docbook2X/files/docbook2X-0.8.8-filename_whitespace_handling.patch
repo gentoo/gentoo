@@ -1,0 +1,43 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 03_fix_420153_filename_whitespace_handling.dpatch by
+##     Daniel Leidert (dale) <daniel.leidert@wgdd.de>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Peter Eisentraut reported a regression in the whitespace handling of
+## DP: refentrytitle content during filename creation:
+## DP: http://bugs.debian.org/420153. The problem is, that upstream first
+## DP: replaces all spaces (but not linebreaks btw) with underlines and then
+## DP: it tries to normalize the result. This means, that a linebreak with
+## DP: additional whitespaces results in manpage names like 'foo_ ____bar.9'.
+## DP: So what we basically do in this patch is, that we first normalize the
+## DP: refentrytitle and then replace any spaces left with underlines.
+
+@DPATCH@
+diff -urNad docbook2x-0.8.8~/xslt/man/manpage.xsl docbook2x-0.8.8/xslt/man/manpage.xsl
+--- docbook2x-0.8.8~/xslt/man/manpage.xsl	2006-04-20 15:45:55.000000000 +0200
++++ docbook2x-0.8.8/xslt/man/manpage.xsl	2007-04-20 16:19:28.000000000 +0200
+@@ -30,7 +30,7 @@
+ 
+ <xsl:template name="manpage-filename">
+   <xsl:param name="filename" />
+-  <xsl:value-of select="normalize-space(translate($filename, &quot; /&quot;, &quot;__&quot;))" />
++  <xsl:value-of select="translate(normalize-space($filename), ' /', '__')" />
+ </xsl:template>
+ 
+ 
+diff -urNad docbook2x-0.8.8~/xslt/man/refentry.xsl docbook2x-0.8.8/xslt/man/refentry.xsl
+--- docbook2x-0.8.8~/xslt/man/refentry.xsl	2006-04-21 04:39:55.000000000 +0200
++++ docbook2x-0.8.8/xslt/man/refentry.xsl	2007-04-20 16:21:53.000000000 +0200
+@@ -38,7 +38,11 @@
+ <xsl:template name="refentry-filename">
+   <xsl:param name="title" />
+ 
+-  <xsl:variable name="title2" select="translate($title, &quot; /&quot;, &quot;__&quot;)" />
++  <xsl:variable name="title2">
++    <xsl:call-template name="manpage-filename">
++      <xsl:with-param name="filename" select="$title" />
++    </xsl:call-template>
++  </xsl:variable>
+ 
+   <!-- not using gentext here since man page names tend not to have
+        accented chars / non-Latin chars ...

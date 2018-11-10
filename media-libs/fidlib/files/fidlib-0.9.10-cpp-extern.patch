@@ -1,0 +1,21 @@
+--- fidlib-0.9.10/fidlib.h
++++ fidlib-0.9.10/fidlib.h
+@@ -2,6 +2,10 @@
+ //	fidlib include file
+ //
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ typedef struct FidFilter FidFilter;
+ struct FidFilter {
+    short typ;		// Type of filter element 'I' IIR, 'F' FIR, or 0 for end of list
+@@ -66,3 +70,7 @@
+ extern void fid_run_zapbuf(void *buf);
+ extern void fid_run_freebuf(void *runbuf);
+ extern void fid_run_free(void *run);
++
++#ifdef __cplusplus
++}
++#endif

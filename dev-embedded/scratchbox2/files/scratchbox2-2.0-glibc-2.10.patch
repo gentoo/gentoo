@@ -1,0 +1,39 @@
+diff --git a/preload/interface.master b/preload/interface.master
+index 55a9481..4ba22b2 100644
+--- a/preload/interface.master
++++ b/preload/interface.master
+@@ -406,20 +406,34 @@ WRAP: int rmdir(const char *pathname) : \
+ 
+ #ifdef HAVE_SCANDIR
+ #ifdef HAVE_LINUX_SCANDIR
++#if _POSIX_C_SOURCE == 200809L
++WRAP: int scandir(const char *dir, struct dirent ***namelist, \
++	SCANDIR_TYPE_ARG3, \
++	int(*compar)(const struct dirent **, const struct dirent **)) : \
++	map(dir) hardcode_param(3,filter)
++#else
+ WRAP: int scandir(const char *dir, struct dirent ***namelist, \
+ 	SCANDIR_TYPE_ARG3, int(*compar)(const void *, const void *)) : \
+ 	map(dir) hardcode_param(3,filter)
+ #endif
++#endif
+ #ifdef HAVE_OSX_SCANDIR
+ WRAP: int scandir(const char *dirname, struct dirent ***namelist, int (*select)(struct dirent *), int (*compar)(const void *, const void *)): map(dirname)
+ #endif
+ #endif
+ #ifdef HAVE_SCANDIR64
++#if _POSIX_C_SOURCE == 200809L
++WRAP: int scandir64(const char *dir, struct dirent64 ***namelist, \
++	int(*filter)(const struct dirent64 *), \
++	int(*compar)(const struct dirent64 **, const struct dirent64 **)) : \
++	map(dir)
++#else
+ WRAP: int scandir64(const char *dir, struct dirent64 ***namelist, \
+ 	int(*filter)(const struct dirent64 *), \
+ 	int(*compar)(const void *, const void *)) : \
+ 	map(dir)
+ #endif
++#endif
+ #ifdef HAVE_SETXATTR
+ #ifdef HAVE_LINUX_XATTRS
+ WRAP: int setxattr(const char *path, const char *name, const void *value, \

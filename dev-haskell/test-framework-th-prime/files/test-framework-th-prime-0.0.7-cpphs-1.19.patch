@@ -1,0 +1,11 @@
+--- test-framework-th-prime-0.0.7-orig/Test/Framework/TH/Prime/Parser.hs	2014-10-08 12:01:25.000000000 +1100
++++ test-framework-th-prime-0.0.7/Test/Framework/TH/Prime/Parser.hs	2015-04-04 23:46:56.120211323 +1100
+@@ -10,7 +10,7 @@
+ import Language.Haskell.Exts.Parser
+ import Language.Haskell.Exts.Syntax hiding (VarName, Exp)
+ import Language.Haskell.TH hiding (Match)
+-import Language.Preprocessor.Cpphs
++import Language.Preprocessor.Cpphs (cppIfdef, defaultBoolOptions)
+ 
+ ----------------------------------------------------------------
+ 

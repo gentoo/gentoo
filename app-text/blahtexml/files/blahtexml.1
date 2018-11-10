@@ -1,0 +1,90 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH BLAHTEXML 1 "March 17, 2010"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+blahtexml \- Converts TeX equations into MathML
+.SH SYNOPSIS
+.B blahtexml
+.RI [ options ] " files" ...
+.SH DESCRIPTION
+This manual page documents briefly the
+.B blahtexml
+command.
+.PP
+.\" TeX users may be more comfortable with the \fB<whatever>\fP and
+.\" \fI<whatever>\fP escape sequences to invode bold face and italics,
+.\" respectively.
+\fBblahtexml\fP converts an equation given in a syntax close to TeX into
+MathML. Blahtexml is a simple extension of blahtex. In addition to
+the functionality of blahtex, blahtexml has XML processing in mind
+and is able to process a whole XML document into another XML
+document. Instead of converting only one formula at a time, blahtexml
+can convert all the formulas of the given XML file into MathML.
+.SH OPTIONS
+These programs follow the usual GNU command line syntax, with long
+options starting with two dashes (`-').
+A summary of options is included below.
+For a complete description, see the online documentation.
+.TP
+.B \-\-help
+Show summary of options.
+.TP
+.B \-\-texvc-compatible-commands
+Enables use of commands that are specific to texvc, but that are not
+standard TeX/LaTeX/AMS-LaTeX commands.
+.TP
+.B \-\-print-error-messages
+This will print out a list of all error IDs and corresponding messages
+that blahtex can possibly emit inside an <error> block.
+.SH MATHML OPTIONS
+These options control the MathML output of the blahtexml program.
+
+.TP
+.B \-\-mathml
+Enables MathML output.
+.TP
+.B \-\-xmlin
+This allows one to embed TeX equations in an existing MathML code, using
+a special notation. The equations are given as attributes (inline or block)
+in the http://gva.noekeon.org/blahtexml namespace. Whenever blahtexml meets
+such an equation, it expands it into the equivalent MathML code.
+
+For more information check
+.RS
+http://gva.noekeon.org/blahtexml/how_to_use.html
+.RE
+.RS
+or the blahtexml manual.
+.RE
+.TP
+.B \-\-annotate-TeX
+Produces TeX annotations in the MathML output.
+.TP
+.B \-\-annotate-PNG
+Produces PNG files and annotates the MathML output with the PNG file name.
+.SH SEE ALSO
+The program is documented fully by the
+online manual available at:
+http://gva.noekeon.org/blahtexml
+.SH AUTHOR
+blahtexml was written by Gilles Van Assche.
+.br
+blahtex (whose superset is blahtexml) was written by David Harvey.
+.PP
+This manual page was written by Abhishek Dasgupta <abhidg@gmail.com>,
+for the Debian project (but may be used by others).
+

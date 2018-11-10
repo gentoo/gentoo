@@ -1,0 +1,11 @@
+[Unit]
+Description=MiniDLNA server
+After=network.target
+
+[Service]
+User=minidlna
+Group=minidlna
+ExecStart=/usr/sbin/minidlnad -f /etc/minidlna.conf -P /run/minidlna/minidlna.pid -S
+
+[Install]
+WantedBy=multi-user.target

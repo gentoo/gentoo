@@ -1,0 +1,36 @@
+Description: Add support for in-kernel suspend to both
+Author: Bojan Smojver <bojan@rexursive.com>
+Author: Jaroslav Škarvada <jskarvad@redhat.com>
+Bug: https://bugs.freedesktop.org/show_bug.cgi?id=52572
+Bug-Ubuntu: https://launchpad.net/bugs/1172692
+
+--- pm/pm-functions.in
++++ pm/pm-functions.in
+@@ -336,8 +336,28 @@
+ 	{
+ 		[ -n "${HIBERNATE_MODE}" ] && \
+ 		grep -qw "${HIBERNATE_MODE}" /sys/power/disk && \
++		HIBERNATE_MODE_SAVE=$(cat /sys/power/disk) && \
++		HIBERNATE_MODE_SAVE="${HIBERNATE_MODE_SAVE##*[}" && \
++		HIBERNATE_MODE_SAVE="${HIBERNATE_MODE_SAVE%%]*}" && \
+ 		echo -n "${HIBERNATE_MODE}" > /sys/power/disk
+ 		echo -n "disk" > /sys/power/state
++		RET=$?
++		echo -n "$HIBERNATE_MODE_SAVE" > /sys/power/disk
++		return "$RET"
++	}
++fi
++
++# for kernels that support suspend to both (i.e. hybrid suspend)
++# since kernel 3.6
++if [ -z "$SUSPEND_HYBRID_MODULE" ] && \
++	[ -f /sys/power/disk ] && \
++	grep -q disk /sys/power/state && \
++	grep -q suspend /sys/power/disk; then
++	SUSPEND_HYBRID_MODULE="kernel"
++	do_suspend_hybrid()
++	{
++		HIBERNATE_MODE="suspend"
++		do_hibernate
+ 	}
+ fi

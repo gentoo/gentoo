@@ -1,0 +1,11 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -25,7 +25,7 @@ iftop_SOURCES = addr_hash.c edline.c hash.c iftop.c ns_hash.c \
+ #		 addrs_ioctl.c addrs_dlpi.c dlcommon.c \
+ #		 stringmap.c cfgfile.c 
+ 
+-
++iftop_LDADD = $(ncurses_LIBS)
+ 
+ noinst_HEADERS = addr_hash.h ether.h ethertype.h extract.h hash.h iftop.h \
+                  integers.h ip.h llc.h ns_hash.h options.h resolver.h \

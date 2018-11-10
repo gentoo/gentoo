@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  A set of libraries for the the Common Astronomy Software
+  Applications for radioastronomy. This project contains C++ libraries
+  which were the code of the discontinued AIPS++ package.
+</longdescription>
+  <upstream>
+    <remote-id type="github">casacore/casacore</remote-id>
+  </upstream>
+  <use>
+    <flag name="data">Installs measures and data (pulls <pkg>sci-astronomy/casa-data</pkg>)</flag>
+    <flag name="c++11">Build casacore using the C++11 standard</flag>
+  </use>
+</pkgmetadata>

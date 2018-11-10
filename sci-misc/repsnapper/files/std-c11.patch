@@ -1,0 +1,31 @@
+--- src/slicer/poly.cpp.orig	2015-12-28 07:54:32.774722105 +0100
++++ src/slicer/poly.cpp	2015-12-28 07:54:41.188055896 +0100
+@@ -225,7 +225,7 @@
+   // Start with first vertex as closest
+   uint nindex = 0;
+   mindist = (vertices[0]-p).squared_length();
+-  if (isnan(mindist)) { // for infinity point p return point 0 and distance 0
++  if (std::isnan(mindist)) { // for infinity point p return point 0 and distance 0
+     mindist = 0.;
+     return 0;
+   }
+--- src/slicer/printlines.cpp.orig	2015-12-28 07:54:05.814720635 +0100
++++ src/slicer/printlines.cpp	2015-12-28 07:54:19.821388065 +0100
+@@ -240,7 +240,7 @@
+   if (abs(absolute_extrusion) < 0.00001)
+     travel_speed = max(minspeed, speed); // in case speed is too low
+ 
+-  if (!isnan(absolute_extrusion))
++  if (!std::isnan(absolute_extrusion))
+     // allowed to push/pull at arbitrary speed
+     extrudedMaterial += absolute_extrusion;
+   else
+@@ -335,7 +335,7 @@
+     else
+       factor = 1./newlines.size();
+     newlines[i].absolute_extrusion *= factor;
+-    assert(!isnan(newlines[i].absolute_extrusion));
++    assert(!std::isnan(newlines[i].absolute_extrusion));
+ 
+   }
+   return newlines;

@@ -1,0 +1,41 @@
+#!/sbin/openrc-run
+
+depend() {
+	need localmount
+	after net netmount
+}
+
+start() {
+	local msg param
+	case "${SESSIONS_RECOVER}" in
+		end)
+			msg="Ending"
+			param="--end-session"
+			;;
+		recover|"")
+			msg="Recovering"
+			param="--recover-session"
+			;;
+		*)
+			ewarn "Invalid value \"$SESSIONS_RECOVER\" for \$SESSIONS_RECOVER, using \"recover\""
+			msg="Recovering"
+			param="--recover-session"
+			;;
+	esac
+
+	einfo "$msg schroot sessions"
+	eindent
+	local chroot
+	local chroots="$(schroot --all-sessions --list --quiet)"
+	if [ -n "$chroots" ]; then
+		for chroot in $chroots; do
+			ebegin "$chroot"
+			schroot --chroot=$chroot $param
+			eend $?
+		done
+	else
+		einfo "(none)"
+	fi
+	eoutdent
+	einfo "...done"
+}

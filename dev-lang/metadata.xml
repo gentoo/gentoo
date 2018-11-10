@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-lang category contains various programming language
+		implementations and related tools.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-lang enthält verschiedene Programmiersprachen
+		und die damit verbundenen Werkzeuge.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-lang contiene varias implementaciones de lenguajes de
+		programación y sus respectivas herramientas.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-langカテゴリーには様々なプログラミング言語の実行環境とそれに関連した
+		ツールが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-lang categorie bevat implementaties van verschillende programmeertalen
+		en gerelateerde hulpmiddelen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-lang chứa các phiên bản cài đặt các ngôn ngữ
+		lập trình khác nhau và các công cụ liên quan.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-lang contiene varie implementazioni di linguaggi di programmazione e utilità correlate.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-lang contém várias implementações de linguagens
+		de programação e ferramentas relacionadas.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-lang zawiera różne implementacje języków programowania i
+		związane z nimi narzędzia.
+	</longdescription>
+</catmetadata>
+

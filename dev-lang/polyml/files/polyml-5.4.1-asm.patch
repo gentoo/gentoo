@@ -1,0 +1,28 @@
+--- polyml.5.4.1-orig/libpolyml/x86asm.asm	2011-07-13 00:06:49.000000000 +1000
++++ polyml.5.4.1/libpolyml/x86asm.asm	2012-01-08 16:00:09.740684843 +1100
+@@ -2714,4 +2714,7 @@
+ 
+ 
+ ENDIF
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+ END
+--- polyml.5.4.1-orig/libpolyml/power_assembly.S	2010-04-09 01:49:20.000000000 +1000
++++ polyml.5.4.1/libpolyml/power_assembly.S	2012-01-08 15:46:35.006200143 +1100
+@@ -1735,3 +1735,6 @@
+     dd  Mask_assign_byte         /* 254 */
+     dd  Mask_assign_word         /* 255 */
+ 
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+--- polyml.5.4.1-orig/libpolyml/sparc_assembly.S	2010-08-13 01:01:36.000000000 +1000
++++ polyml.5.4.1/libpolyml/sparc_assembly.S	2012-01-08 15:46:12.516642791 +1100
+@@ -1498,3 +1498,6 @@
+     .long   Mask_assign_byte         /* 254 */
+     .long   Mask_assign_word         /* 255 */
+ 
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif

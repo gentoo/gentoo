@@ -1,0 +1,22 @@
+--- a/getmachine
++++ b/getmachine
+@@ -269,19 +269,11 @@
+            makedir
+            cat ../.config.$os > makefile
+            use_icc=`type icc 2> /dev/null`
+-           if [ "$use_icc" = "" ]
+-           then
+ 	     findProcessor
+ 	     echo 'COMPILER=gcc' >> makefile
+              echo "OPT=-O6 -mcpu=$processor -fomit-frame-pointer -ffast-math -malign-double" >> makefile
+              echo 'CFLAGS=-Wall -I/usr/X11R6/include -DLINUX -Wno-strict-aliasing' >> makefile
+              echo "LDFLAGS=$LINKFORSHARED" >> makefile
+-           else
+-	     echo 'COMPILER=icc' >> makefile
+-             echo 'OPT=-O2 -ipo' >> makefile
+-             echo 'CFLAGS=-I/opt/intel/compiler50/ia32/include -I/usr/X11R6/include -DLINUX' >> makefile
+-             echo "LDFLAGS=$LINKFORSHARED -ipo" >> makefile
+-           fi
+            echo 'SCANDIR=' >> makefile
+            echo 'INCLUDE=$(TIFFINCLUDE) -I$(PNGINCLUDE) -I$(PYTHONINCLUDE)' >> makefile
+            echo 'LIBRARY=$(LIBTIFF) $(LIBPNG) -L$(LIBPYTHON)' >> makefile

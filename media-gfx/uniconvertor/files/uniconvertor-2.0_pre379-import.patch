@@ -1,0 +1,30 @@
+ src/uc2/formats/sk1/model.py          | 2 +-
+ src/unittests/image_tests/__init__.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/uc2/formats/sk1/model.py b/src/uc2/formats/sk1/model.py
+index 33e2b55..59aecf2 100644
+--- a/src/uc2/formats/sk1/model.py
++++ b/src/uc2/formats/sk1/model.py
+@@ -16,7 +16,7 @@
+ #	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ from copy import deepcopy
+-import Image
++from PIL import Image
+ 
+ from uc2 import _, uc2const
+ from uc2.formats.pdxf import const
+diff --git a/src/unittests/image_tests/__init__.py b/src/unittests/image_tests/__init__.py
+index 031cd9f..6165129 100644
+--- a/src/unittests/image_tests/__init__.py
++++ b/src/unittests/image_tests/__init__.py
+@@ -16,7 +16,7 @@
+ #	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ import unittest, os, shutil
+-import Image
++from PIL import Image
+ 
+ 
+ _pkgdir = __path__[0]

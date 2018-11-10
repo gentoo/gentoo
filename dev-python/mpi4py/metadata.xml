@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription lang="en">MPI for Python (mpi4py) provides bindings of the Message Passing
+  Interface (MPI) standard for the Python programming language,
+  allowing any Python program to exploit multiple processors.
+  This package is constructed on top of the MPI-1/MPI-2 specification
+  and provides an object oriented interface which closely follows
+  MPI-2 C++ bindings. It supports point-to-point (sends, receives) and
+  collective (broadcasts, scatters, gathers) communications of any
+  picklable Python object as well as optimized communications of
+  Python object exposing the single-segment buffer interface (NumPy
+  arrays, builtin bytes/string/array objects).
+  </longdescription>
+  <upstream>
+    <remote-id type="google-code">mpi4py</remote-id>
+    <remote-id type="bitbucket">mpi4py</remote-id>
+    <remote-id type="pypi">mpi4py</remote-id>
+  </upstream>
+</pkgmetadata>

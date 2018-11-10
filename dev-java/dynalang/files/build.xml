@@ -1,0 +1,179 @@
+<project name="org.dynalang.mop" basedir=".">
+<!--
+   Copyright 2007 Attila Szegedi
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+	<property name="project.name" value="JVM Dynamic Languages Metaobject Protocol"/>
+	<property name="artifact.name" value="dynalang-mop"/>
+	<property name="revision" value="0.4"/>
+	<property name="build.dir" location="build"/>
+
+	<target name="clean">
+		<mkdir dir="${build.dir}"/>
+		<delete dir="${build.dir}"/>
+	</target>
+
+        <target name="resolve">
+        </target>
+
+	<path id="compile.classpath">
+                <fileset dir="build/lib/default"/>
+	</path>
+
+	<target name="compile" depends="resolve">
+	        <mkdir dir="build/lib/default"/>
+		<property name="classes.dir" location="${build.dir}/classes"/>
+		<mkdir dir="${classes.dir}"/>
+		<javac srcdir="src" destdir="${classes.dir}" deprecation="off" 
+	               debug="on" optimize="off" target="1.5" source="1.5"
+	               classpathref="compile.classpath"/>
+		<copy toDir="${classes.dir}">
+			<fileset dir="src"
+	            excludes="**/CVS/**,**/*.bak,**/*.java,**/*.jj,**/package.html,overview.html"/>
+		</copy>
+	</target>
+	
+	<target name="jar" depends="compile">
+		<property name="jarfile" location="build/${artifact.name}-${revision}.jar"/>
+		<jar destfile="${jarfile}" basedir="${classes.dir}">
+	        	<manifest>
+	        		<attribute name="Implementation-Vendor" value="Attila Szegedi"/>
+	        		<attribute name="Implementation-Version" value="${revision}"/>
+	        		<attribute name="Implementation-Title" value="${project.name}"/>
+	        		<attribute name="Implementation-URL" value="http://sourceforge.net/projects/dynalang"/>
+	            </manifest>
+		</jar>
+	</target>
+
+	<target depends="" name="doc">
+		<mkdir dir="${build.dir}/doc/javadoc"/>
+		<delete includeEmptyDirs="yes">
+			<fileset dir="${build.dir}/doc/javadoc" includes="**/*" />
+		</delete>
+		<javadoc author="true"
+	                destdir="${build.dir}/doc/javadoc"
+	                doctitle="${project.name} ${revision}"
+	                packagenames="org.dynalang.*"
+	                sourcepath="src"
+	                version="true"
+	                windowtitle="${project.name} ${revision} API"
+			overview="src/overview.html"
+	                use="true">
+		</javadoc>
+		<copy todir="${build.dir}/doc">
+			<fileset dir="src/doc" includes="**/*"/>
+		</copy>
+	</target>
+
+	<target name="coverage-instrument" depends="compile">
+		<property name="coverage.dir" location="${build.dir}/coverage"/>
+		<property name="coverage.classes.dir" location="${build.dir}/coverage/classes"/>
+		<mkdir dir="${coverage.classes.dir}"/>
+		<path id="emma.lib">
+			<pathelement location="build/lib/test/emma.jar" />
+			<pathelement location="build/lib/test/emma_ant.jar" />
+		</path>
+		<taskdef resource="emma_ant.properties" classpathref="emma.lib" />
+		<property name="coverage.instrumentationfile" location="${coverage.dir}/instrumentation"/>
+		<emma enabled="true">
+			<instr 
+	        instrpath="${classes.dir}" outdir="${coverage.classes.dir}" 
+	        outfile="${coverage.instrumentationfile}" mode="copy"/>
+		</emma>
+		<copy todir="${coverage.classes.dir}">
+			<fileset dir="src" excludes="**/*.java"/>
+		</copy>
+		<copy todir="${coverage.classes.dir}">
+			<fileset dir="${classes.dir}"/>
+		</copy>
+		<property name="coverage.outfile" location="${coverage.dir}/coverage"/>
+	</target>
+
+	<target name="test-compile" depends="compile">
+		<property name="test.classes.dir" location="${build.dir}/test/classes"/>
+		<mkdir dir="${test.classes.dir}"/>
+		<javac srcdir="testsrc" destdir="${test.classes.dir}" deprecation="off" 
+	               debug="on" optimize="off" target="1.5" source="1.5">
+			<classpath>
+				<pathelement path="${classes.dir}" />
+				<pathelement path="build/lib/test/junit.jar" />
+			</classpath>
+		</javac>
+		<copy toDir="${test.classes.dir}">
+			<fileset dir="testsrc"
+	            excludes="**/CVS/**,**/*.bak,**/*.java,**/*.jj,**/package.html"/>
+		</copy>
+	</target>
+
+	<target name="test-run" depends="test-compile, coverage-instrument">
+		<junit printsummary="on" fork="true" forkmode="once" 
+			showoutput="true" haltonerror="true" haltonfailure="true">
+			<sysproperty key="emma.coverage.out.file" value="${coverage.outfile}"/>
+			<classpath>
+				<pathelement path="${coverage.classes.dir}" />
+				<pathelement path="${test.classes.dir}" />
+				<pathelement path="build/lib/test/emma.jar"/>
+				<pathelement path="build/lib/test/junit.jar"/>
+			</classpath>
+			<batchtest todir="build/test">
+				<fileset dir="${test.classes.dir}" includes="**/Test*.class"/>
+			</batchtest>
+			<formatter type="plain" usefile="false" />
+			<formatter type="xml"/>
+		</junit>
+		<mkdir dir="build/test/report"/>
+		<junitreport todir="build/test">
+			<fileset dir="build/test" includes="TEST-*.xml"/>
+			<report todir="build/test/report"/>
+		</junitreport>
+	</target>
+
+	<target name="test" depends="test-run">
+		<property name="coverage.report.dir" location="${build.dir}/coverage/report"/>
+		<mkdir dir="${coverage.report.dir}"/>
+		<delete dir="${coverage.report.dir}"/>
+		<mkdir dir="${coverage.report.dir}"/>
+		<emma enabled="true">
+			<report>
+				<fileset dir="${basedir}">
+					<include name="build/coverage/instrumentation"/>
+					<include name="build/coverage/coverage"/>
+				</fileset>
+				<sourcepath>
+					<dirset dir="${basedir}">
+						<include name="src"/>
+					</dirset>
+				</sourcepath>
+				<html outfile="${coverage.report.dir}/index.html"/>
+			</report>
+		</emma>
+	</target>
+	
+	<target name="dist" depends="clean,test-run,jar,doc">
+		<mkdir dir="build/${artifact.name}-${revision}"/>
+		<copy todir="build/${artifact.name}-${revision}">
+			<fileset dir="." excludes="build/**/*"/>
+		</copy>
+		<copy todir="build/${artifact.name}-${revision}">
+			<fileset dir="." 
+				includes="
+					build/doc/**/* 
+					build/${artifact.name}-${revision}.jar"
+			/>
+		</copy>
+		<tar destfile="build/${artifact.name}-${revision}.tgz" 
+			compression="gzip" basedir="build" 
+			includes="${artifact.name}-${revision}/**/*"/>
+	</target>
+</project>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-lisp category contains libraries and utilities relevant to the
+		Lisp programming language.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-lisp enthält Bibliotheken und Werkzeuge für die 
+		Programmiersprache Lisp.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-lisp contiene librerias y utilidades referentes al
+		lenguaje de programación Lisp.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-lisp カテゴリーにはLispプログラミング言語に関連したライブラリーと
+		ユーティリティが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-lisp categorie bevat bibliotheken en hulpmiddelen voor het gebruik
+		van de programmeertaal Lisp.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-lisp chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình Lisp.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-lisp contiene librerie ed utilità per il linguaggio di programmazione Lisp.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-lisp contém bibliotecas e utilitários referentes
+		à linguagem de programação Lisp.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-lisp zawiera biblioteki i narzędzia związane z
+		językiem programowania Lisp.
+	</longdescription>
+</catmetadata>
+

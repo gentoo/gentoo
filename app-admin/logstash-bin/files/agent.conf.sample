@@ -1,0 +1,29 @@
+input {
+    beats {
+      port => 5044
+    }
+
+    # may need root privileges
+    file {
+        type => "syslog"
+        path => [ "/var/log/*.log", "/var/log/debug", "/var/log/messages", "/var/log/syslog" ]
+    }
+
+    redis {
+      key => logstash
+      data_type => list
+    }
+
+    stdin {
+        type => "stdin"
+    }
+}
+
+output {
+    stdout {
+        codec => rubydebug
+    }
+
+    elasticsearch {
+    }
+}

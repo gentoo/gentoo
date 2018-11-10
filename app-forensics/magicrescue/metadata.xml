@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+<longdescription>
+Magic Rescue scans a block device for file types it knows how to recover and calls an external program to extract them. It looks
+at "magic bytes" in file contents, so it can be used both as an undelete utility and for recovering a corrupted drive or
+partition. As long as the file data is there, it will find it.
+
+It works on any file system, but on very fragmented file systems it can only recover the first chunk of each file. Practical
+experience (this program was not written for fun) shows, however, that chunks of 30-50MB are not uncommon.
+</longdescription>
+</pkgmetadata>

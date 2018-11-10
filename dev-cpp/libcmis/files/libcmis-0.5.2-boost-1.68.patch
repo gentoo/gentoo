@@ -1,0 +1,25 @@
+From 3ef3569c4ae1c5319aff0664d52cbd8a8d42c909 Mon Sep 17 00:00:00 2001
+From: rezso <rezso@rezso.net>
+Date: Tue, 4 Sep 2018 01:18:10 +0200
+Subject: tdf#119344 fix libcmis build with boost 1.68
+
+Change-Id: I80d6ea8ecd001dc02b941c1eb8974c9244316045
+Reviewed-on: https://gerrit.libreoffice.org/59958
+Tested-by: Jenkins
+Reviewed-by: Michael Stahl <Michael.Stahl@cib.de>
+
+--- a/src/libcmis/xml-utils.cxx
++++ b/src/libcmis/xml-utils.cxx
+@@ -31,7 +31,12 @@
+ #include <sstream>
+ #include <stdlib.h>
+ 
++#include <boost/version.hpp>
++#if (BOOST_VERSION >= 106800)
++#include <boost/uuid/detail/sha1.hpp>
++#else
+ #include <boost/uuid/sha1.hpp>
++#endif
+ #include <curl/curl.h>
+ 
+ #include "xml-utils.hxx"

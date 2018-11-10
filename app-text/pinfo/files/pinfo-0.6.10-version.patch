@@ -1,0 +1,11 @@
+--- a/doc/pinfo.texi	2006-03-16 16:40:41.000000000 +0100
++++ b/doc/pinfo.texi	2010-06-18 16:20:24.000000000 +0200
+@@ -5,7 +5,7 @@
+ @c %**end of header
+ 
+ @set EDITION 0.2.1
+-@set VERSION 0.6.4
++@set VERSION 0.6.10
+ @set DATE 1 Dec 2001
+ @set DATEMAN 21 Mar 1999
+ 

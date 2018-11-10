@@ -1,0 +1,16 @@
+Build system does not respect DESTDIR by default.
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -203,9 +203,9 @@
+ # "make install" installs the programs in BINDIR
+ #
+ install:
+-	mkdir -p ${BINDIR}
++	mkdir -p $(DESTDIR)${BINDIR}
+ 	for file in $(PROGS); do\
+-		cp src/$$file $(BINDIR)/;\
++		cp src/$$file $(DESTDIR)$(BINDIR)/;\
+ 	done
+ #	if test -d $(RIGFILTERS); then\
+ #	   for file in $(RFPROGS); do\

@@ -1,0 +1,11 @@
+--- a/Makefile.comm.in.orig	2017-07-11 20:14:20.459014115 +0700
++++ b/Makefile.comm.in	2017-07-11 20:14:31.724715876 +0700
+@@ -53,7 +53,7 @@
+ .m4.cxx:
+ 	rm -f $@
+ 	$(PERL) $(srcdir)/../instmac.pl $< >$@
+-	chmod -w $@
++	chmod a-w $@
+ 
+ %.h %.cxx %.rc: %.msg
+ 	$(PERL) -w $(srcdir)/../msggen.pl $(MSGGENFLAGS) $<

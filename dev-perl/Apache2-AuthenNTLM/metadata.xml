@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <longdescription lang="en">
+The purpose of this module is to perform a user authentication via Microsoft's
+NTLM protocol. This protocol is supported by all versions of the Internet
+Explorer and is mainly useful for intranets. Depending on your preferences
+setting IE will supply your windows logon credentials to the web server when the
+server asks for NTLM authentication. This saves the user to type in his/her
+password again.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">Apache2-AuthenNTLM</remote-id>
+    <remote-id type="cpan-module">Apache2::AuthenNTLM</remote-id>
+    <remote-id type="cpan-module">Apache2::AuthenNTLM::Lock</remote-id>
+  </upstream>
+</pkgmetadata>

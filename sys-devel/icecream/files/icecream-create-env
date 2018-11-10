@@ -1,0 +1,82 @@
+#!/bin/sh
+#
+# icecream-create-env - helper script to create icecc environments(mostly for cross-compiling)
+#
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+#
+# Please note, this script has been designed to work with Gentoo's crossdev, it may or may
+# not work with cross-toolchains that were build differently.
+#
+#
+# Usage: "./icecream-create-env" creates a native environment(similar to icecc --build-native)
+#		 "./icecream-create-env prefix" creates a cross-compile environment using the cross-toolchain created by crossdev
+# Example:
+#        "emerge crossdev && crossdev -t sparc-unknown-linux-gnu && icecream-create-env sparc-unknown-linux"
+
+if [ `id -u` -ne 0 ]
+then
+	echo "Only the superuser can execute this script."
+	exit 1
+fi
+
+# param 1 = CHOST
+prefix="${1}"
+
+if [ -z "${prefix}" ]
+then
+	prefix="`gcc -dumpmachine`"
+fi
+
+gccbin=`which ${prefix}-gcc 2>/dev/null`
+if [ ! -e "${gccbin}" ]
+then
+	echo "Can't find ${prefix}-gcc!"
+	exit 1
+fi
+
+gxxbin=`which ${prefix}-g++ 2>/dev/null`
+if [ ! -e "${gxxbin}" ]
+then
+	echo "Can't find ${prefix}-g++!"
+	exit 2
+fi
+
+version="`${prefix}-gcc -dumpversion`"
+
+tmpdir=`mktemp -d`
+tmpfile=`mktemp`
+
+target=`gcc -dumpmachine`
+if [ "x${target}" = "x${prefix}" ]
+then
+	/usr/libexec/icecc/icecc-create-env \
+		/usr/${prefix}/gcc-bin/${version}/gcc \
+		/usr/${prefix}/gcc-bin/${version}/g++ \
+		| tee ${tmpfile}
+else
+	/usr/libexec/icecc/icecc-create-env \
+		/usr/${target}/${prefix}/gcc-bin/${version}/${prefix}-gcc \
+		/usr/${target}/${prefix}/gcc-bin/${version}/${prefix}-g++ \
+		| tee ${tmpfile}
+fi
+
+# figure out the name of the archive
+icecc_envname=`grep "creating" ${tmpfile} | awk '{print $2}'`
+
+echo "Testing icecc environment..."
+tar -x -z -f ${icecc_envname} -C ${tmpdir}
+touch ${tmpdir}/empty.c
+chroot ${tmpdir}/ /usr/bin/gcc -c /empty.c
+tested=${?}
+rm ${tmpdir}/empty.c
+
+if [ "${tested}" -ne 0 ]
+then
+	echo ""
+	echo  "Creating icecc environment failed. Please see error message(s) above! The temporary directory is: ${tmpdir}/"
+else
+	echo ""
+	echo "Icecc environment has been created. It has been saved as ${icecc_envname}!"
+fi
+

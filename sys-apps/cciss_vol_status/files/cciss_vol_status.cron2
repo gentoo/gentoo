@@ -1,0 +1,52 @@
+#!/bin/sh
+
+test -x /usr/bin/cciss_vol_status || exit 0
+
+# WARNING: For the hpsa driver, we only support /dev/sda through
+# /dev/sdz and /dev/sg0 through /dev/sg9.
+DEVICES=$(find /dev -type b \( -path '/dev/cciss/c*d0' \
+                               -or \
+                               -path '/dev/sd[a-z]' \
+                               -or \
+                               -path '/dev/sg[0-9]' \))
+
+if [ -n "${DEVICES}" ]; then
+    #
+    # Unsupported devices will generate an error (to stderr) of the form,
+    #
+    #   cciss_vol_status: /dev/sda: Unknown SCSI device.
+    #
+    # We want to ignore these, and fortunately, an exit code of zero
+    # is returned in this case. So we need only hide the output by
+    # redirecting stderr elsewhere. But, that also hides errors of the
+    # form,
+    #
+    #   cciss_vol_status: open /dev/sda: Permission denied
+    #
+    # which we DO want to present to the user. So instead of sending
+    # stderr to stdout, we redirect it to a temporary file. We then
+    # show the content of the temporary file to the user if it
+    # contains errors other than "Unknown SCSI device."
+    #
+    TMPFILE=$( mktemp )
+    if [ $? -ne 0 ] || [ ! -f "${TMPFILE}" ];  then
+	echo "${0}: error creating temporary file." >&2
+	exit 2
+    fi
+
+    OUTPUT=$( /usr/bin/cciss_vol_status ${DEVICES} 2> "${TMPFILE}" )
+    if [ $? -ne 0 ];  then
+	printf "%s\n" "$OUTPUT"
+	rm -f "${TMPFILE}"
+	exit 1
+    fi
+
+    ERRORS=$( GREP_OPTIONS="" grep -v "Unknown SCSI device" "${TMPFILE}" )
+    rm -f "${TMPFILE}"
+    if [ -n "${ERRORS}" ]; then
+	echo "${ERRORS}" >&2
+	exit 3
+    fi
+fi
+
+exit 0

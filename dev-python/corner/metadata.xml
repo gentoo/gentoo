@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    This Python module uses matplotlib to visualize multidimensional
+    samples using a scatterplot matrix. In these visualizations, each
+    one- and two-dimensional projection of the sample is plotted to
+    reveal covariances. corner was originally conceived to display the
+    results of Markov Chain Monte Carlo simulations and the defaults
+    are chosen with this application in mind but it can be used for
+    displaying many qualitatively different samples.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">corner</remote-id>
+    <remote-id type="github">dfm/corner.py</remote-id>
+  </upstream>
+</pkgmetadata>

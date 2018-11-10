@@ -1,0 +1,46 @@
+From 31236105deaa4b50a70aa256819bfc4790f705d8 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Sun, 3 Mar 2013 13:29:24 -0500
+Subject: [PATCH] Add an option to build libname-server-2.a's objects as PIC
+
+Needed for Gentoo hardened, see https://bugs.gentoo.org/show_bug.cgi?id=312161
+---
+ configure.in                  | 9 +++++++++
+ src/services/name/Makefile.am | 1 +
+ 2 files changed, 10 insertions(+)
+
+diff --git a/configure.in b/configure.in
+index 0879051..38b7b8b 100644
+--- a/configure.in
++++ b/configure.in
+@@ -118,6 +118,15 @@ if test z$enable_purify = zyes; then
+ 	AC_DEFINE(ORBIT_PURIFY, 1, [defined if purify is enabled])
+ fi
+ 
++AC_ARG_ENABLE([libname-server-pic],
++	[AS_HELP_STRING([--enable-libname-server-pic], [force libname-server-2.a to be built as PIC])])
++if test x$enable_libname_server_pic = xyes; then
++	LIBNAME_SERVER_PIC=$lt_prog_compiler_pic
++else
++	LIBNAME_SERVER_PIC=
++fi
++AC_SUBST(LIBNAME_SERVER_PIC)
++
+ AC_MSG_CHECKING(which idl compiler to use)
+ IDL_COMPILER="\$(top_builddir)/src/idl-compiler/orbit-idl-2\$(EXEEXT)"
+ AC_ARG_WITH(idl-compiler,
+diff --git a/src/services/name/Makefile.am b/src/services/name/Makefile.am
+index 7212557..21b7365 100644
+--- a/src/services/name/Makefile.am
++++ b/src/services/name/Makefile.am
+@@ -65,6 +65,7 @@ name_client_2_LDADD = $(LDADDS)
+ libname_server_2_a_SOURCES = orbit-name-server.c CosNaming-skels.c \
+ 			   name-support.c name-support.h
+ libname_server_2_a_DEPENDENCIES = $(DEPS) CosNaming.h
++libname_server_2_a_CFLAGS = $(INCLUDES) $(LIBNAME_SERVER_PIC)
+ 
+ orbit_name_server_2_SOURCES = boot.c
+ orbit_name_server_2_LDFLAGS = $(FLAGS)
+-- 
+1.8.1.5
+

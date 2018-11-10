@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-Server</remote-id>
+    <remote-id type="cpan-module">Net::Server</remote-id>
+    <remote-id type="cpan-module">Net::Server::Daemonize</remote-id>
+    <remote-id type="cpan-module">Net::Server::Fork</remote-id>
+    <remote-id type="cpan-module">Net::Server::HTTP</remote-id>
+    <remote-id type="cpan-module">Net::Server::INET</remote-id>
+    <remote-id type="cpan-module">Net::Server::INET::Handle</remote-id>
+    <remote-id type="cpan-module">Net::Server::Log::Log::Log4perl</remote-id>
+    <remote-id type="cpan-module">Net::Server::Log::Sys::Syslog</remote-id>
+    <remote-id type="cpan-module">Net::Server::MultiType</remote-id>
+    <remote-id type="cpan-module">Net::Server::Multiplex</remote-id>
+    <remote-id type="cpan-module">Net::Server::Multiplex::MUX</remote-id>
+    <remote-id type="cpan-module">Net::Server::PSGI</remote-id>
+    <remote-id type="cpan-module">Net::Server::PreFork</remote-id>
+    <remote-id type="cpan-module">Net::Server::PreForkSimple</remote-id>
+    <remote-id type="cpan-module">Net::Server::Proto</remote-id>
+    <remote-id type="cpan-module">Net::Server::Proto::SSL</remote-id>
+    <remote-id type="cpan-module">Net::Server::Proto::SSLEAY</remote-id>
+    <remote-id type="cpan-module">Net::Server::Proto::TCP</remote-id>
+    <remote-id type="cpan-module">Net::Server::Proto::UDP</remote-id>
+    <remote-id type="cpan-module">Net::Server::Proto::UNIX</remote-id>
+    <remote-id type="cpan-module">Net::Server::Proto::UNIXDGRAM</remote-id>
+    <remote-id type="cpan-module">Net::Server::SIG</remote-id>
+    <remote-id type="cpan-module">Net::Server::Single</remote-id>
+    <remote-id type="cpan-module">Net::Server::TiedHandle</remote-id>
+  </upstream>
+</pkgmetadata>

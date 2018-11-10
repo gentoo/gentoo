@@ -1,0 +1,212 @@
+diff -Nuar -X exclude audit-2.1.3.orig/configure.ac audit-2.1.3/configure.ac
+--- audit-2.1.3.orig/configure.ac	2011-08-15 17:30:58.000000000 +0000
++++ audit-2.1.3/configure.ac	2012-12-18 20:03:22.000000000 +0000
+@@ -79,6 +79,9 @@
+     esac
+ fi
+ 
++AC_CHECK_HEADER([asm/ptrace.h], [AC_DEFINE([HAVE_ASM_PTRACE_H],[],[Define to 1 if you have asm/ptrace.h])], [])
++AC_CHECK_HEADER([linux/ptrace.h], [AC_DEFINE([HAVE_LINUX_PTRACE_H],[],[Define to 1 if you have linux/ptrace.h])], [])
++
+ #gssapi
+ AC_ARG_ENABLE(gssapi_krb5,
+ 	[AS_HELP_STRING([--enable-gssapi-krb5],[Enable GSSAPI Kerberos 5 support @<:@default=no@:>@])],
+diff -Nuar -X exclude audit-2.1.3.orig/src/auditctl.c audit-2.1.3/src/auditctl.c
+--- audit-2.1.3.orig/src/auditctl.c	2011-08-15 17:31:00.000000000 +0000
++++ audit-2.1.3/src/auditctl.c	2012-12-18 20:21:21.000000000 +0000
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>	/* strdup needs xopen define */
+diff -Nuar -X exclude audit-2.1.3.orig/src/auditd-config.c audit-2.1.3/src/auditd-config.c
+--- audit-2.1.3.orig/src/auditd-config.c	2011-08-15 17:31:00.000000000 +0000
++++ audit-2.1.3/src/auditd-config.c	2012-12-18 20:21:23.000000000 +0000
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <sys/stat.h>
+diff -Nuar -X exclude audit-2.1.3.orig/src/auditd-dispatch.c audit-2.1.3/src/auditd-dispatch.c
+--- audit-2.1.3.orig/src/auditd-dispatch.c	2011-08-15 17:31:00.000000000 +0000
++++ audit-2.1.3/src/auditd-dispatch.c	2012-12-18 20:21:27.000000000 +0000
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <unistd.h>
+ #include <sys/uio.h>
+ #include <fcntl.h>
+diff -Nuar -X exclude audit-2.1.3.orig/src/auditd-event.c audit-2.1.3/src/auditd-event.c
+--- audit-2.1.3.orig/src/auditd-event.c	2011-08-15 17:31:00.000000000 +0000
++++ audit-2.1.3/src/auditd-event.c	2012-12-18 20:21:29.000000000 +0000
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+diff -Nuar -X exclude audit-2.1.3.orig/src/auditd-listen.c audit-2.1.3/src/auditd-listen.c
+--- audit-2.1.3.orig/src/auditd-listen.c	2011-08-15 17:31:00.000000000 +0000
++++ audit-2.1.3/src/auditd-listen.c	2012-12-18 20:21:31.000000000 +0000
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <sys/stat.h>
+diff -Nuar -X exclude audit-2.1.3.orig/src/auditd-reconfig.c audit-2.1.3/src/auditd-reconfig.c
+--- audit-2.1.3.orig/src/auditd-reconfig.c	2011-08-15 17:31:00.000000000 +0000
++++ audit-2.1.3/src/auditd-reconfig.c	2012-12-18 20:21:33.000000000 +0000
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <pthread.h>
+ #include <signal.h>
+ #include <stdlib.h>
+diff -Nuar -X exclude audit-2.1.3.orig/src/auditd-sendmail.c audit-2.1.3/src/auditd-sendmail.c
+--- audit-2.1.3.orig/src/auditd-sendmail.c	2011-08-15 17:31:00.000000000 +0000
++++ audit-2.1.3/src/auditd-sendmail.c	2012-12-18 20:21:34.000000000 +0000
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <unistd.h>		// for access()
+ #include <string.h>
+diff -Nuar -X exclude audit-2.1.3.orig/src/auditd.c audit-2.1.3/src/auditd.c
+--- audit-2.1.3.orig/src/auditd.c	2011-08-15 17:31:00.000000000 +0000
++++ audit-2.1.3/src/auditd.c	2012-12-18 20:21:38.000000000 +0000
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <sys/types.h>
+ #include <unistd.h>
+diff -Nuar -X exclude audit-2.1.3.orig/src/autrace.c audit-2.1.3/src/autrace.c
+--- audit-2.1.3.orig/src/autrace.c	2011-08-15 17:31:00.000000000 +0000
++++ audit-2.1.3/src/autrace.c	2012-12-18 20:21:43.000000000 +0000
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <string.h>
+ #include <sys/wait.h>
+diff -Nuar -X exclude audit-2.1.3.orig/src/delete_all.c audit-2.1.3/src/delete_all.c
+--- audit-2.1.3.orig/src/delete_all.c	2011-08-15 17:31:00.000000000 +0000
++++ audit-2.1.3/src/delete_all.c	2012-12-18 20:21:48.000000000 +0000
+@@ -20,6 +20,7 @@
+  *      Steve Grubb <sgrubb@redhat.com>
+  */
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <string.h>
+ #include <errno.h>
+diff -Nuar -X exclude audit-2.1.3.orig/lib/fixup.h audit-2.1.3/lib/fixup.h
+--- audit-2.1.3.orig/lib/fixup.h	1970-01-01 00:00:00.000000000 +0000
++++ audit-2.1.3/lib/fixup.h	2012-12-18 20:21:02.000000000 +0000
+@@ -0,0 +1,17 @@
++#ifndef _AUDIT_IA64_FIXUP_H_
++#define _AUDIT_IA64_FIXUP_H_
++
++#ifdef __ia64__ /* what a pos */
++# include <linux/types.h>
++# define _ASM_IA64_FPU_H
++#endif
++#include <signal.h>
++/*
++#ifdef HAVE_ASM_PTRACE_H
++# include <asm/ptrace.h>
++#endif
++#ifdef HAVE_LINUX_PTRACE_H
++# include <linux/ptrace.h>
++#endif
++*/
++#endif
+--- audit-2.1.3/src/ausearch.c	2012-12-22 03:09:54.000000000 +0000
++++ audit-2.1.3/src/ausearch.c	2012-12-22 03:10:02.000000000 +0000
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <stdio_ext.h>
+ #include <string.h>
+diff -Nuar audit-2.1.3.orig/audisp/audispd.c audit-2.1.3/audisp/audispd.c
+--- audit-2.1.3.orig/audisp/audispd.c	2011-08-15 17:30:59.000000000 +0000
++++ audit-2.1.3/audisp/audispd.c	2012-12-22 03:25:15.000000000 +0000
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+diff -Nuar audit-2.1.3.orig/audisp/plugins/prelude/audisp-prelude.c audit-2.1.3/audisp/plugins/prelude/audisp-prelude.c
+--- audit-2.1.3.orig/audisp/plugins/prelude/audisp-prelude.c	2011-08-15 17:30:59.000000000 +0000
++++ audit-2.1.3/audisp/plugins/prelude/audisp-prelude.c	2012-12-22 03:25:20.000000000 +0000
+@@ -21,6 +21,8 @@
+  *
+  */
+ 
++#include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <signal.h>
+diff -Nuar audit-2.1.3.orig/audisp/plugins/remote/audisp-remote.c audit-2.1.3/audisp/plugins/remote/audisp-remote.c
+--- audit-2.1.3.orig/audisp/plugins/remote/audisp-remote.c	2011-08-15 17:30:59.000000000 +0000
++++ audit-2.1.3/audisp/plugins/remote/audisp-remote.c	2012-12-22 03:25:22.000000000 +0000
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <signal.h>
+ #include <syslog.h>
+diff -Nuar audit-2.1.3.orig/contrib/plugin/audisp-example.c audit-2.1.3/contrib/plugin/audisp-example.c
+--- audit-2.1.3.orig/contrib/plugin/audisp-example.c	2011-08-15 17:31:02.000000000 +0000
++++ audit-2.1.3/contrib/plugin/audisp-example.c	2012-12-22 03:25:27.000000000 +0000
+@@ -37,6 +37,8 @@
+  */
+ 
+ #define _GNU_SOURCE
++#include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <signal.h>
+ #include <string.h>
+diff -Nuar audit-2.1.3.orig/contrib/skeleton.c audit-2.1.3/contrib/skeleton.c
+--- audit-2.1.3.orig/contrib/skeleton.c	2011-08-15 17:31:02.000000000 +0000
++++ audit-2.1.3/contrib/skeleton.c	2012-12-22 03:25:40.000000000 +0000
+@@ -7,6 +7,8 @@
+  * gcc skeleton.c -o skeleton -laudit
+  */
+ 
++#include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <sys/types.h>
+ #include <sys/uio.h>

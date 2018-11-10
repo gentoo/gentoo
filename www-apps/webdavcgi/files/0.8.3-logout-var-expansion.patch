@@ -1,0 +1,21 @@
+diff -ru cgi-bin.orig/logout-dist cgi-bin/logout-dist
+--- cgi-bin.orig/logout-dist	2011-03-22 17:25:52.000000000 +0100
++++ cgi-bin/logout-dist	2012-10-03 21:44:35.057437306 +0200
+@@ -34,13 +34,13 @@
+ # -----
+ ### REALM: the basic authentication realm 
+ ### (must be equal to your AuthName value for Apache)
+-REALM="Change Me"
++REALM="${REALM:=Change Me}"
+ 
+ ### HOMEURL: the home URL
+-HOMEURL="/changemyhomeurl"
++HOMEURL="${HOMEURL:=/changemyhomeurl}"
+ 
+-### TIMEOUT: the refresh timeout for the logut page
+-TIMEOUT=0
++### TIMEOUT: the refresh timeout for the logout page
++TIMEOUT=${TIMEOUT:=0}
+ 
+ # SETUP END
+ 

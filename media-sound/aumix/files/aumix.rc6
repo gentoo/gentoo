@@ -1,0 +1,41 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use modules hotplug coldplug alsasound
+}
+
+checkconfig() {
+	if ! grep -q -E 'sound|OSS|sparcaudio' /proc/devices && [ ! -d /proc/asound ] ; then
+		eerror "Sound support has not been compiled into the kernel,"
+		eerror "or is disabled.  Please check that the correct modules"
+		eerror "is loaded."
+		return 1
+	fi
+	# /dev/mixer can be a symlink
+	if [ ! -e /dev/mixer ] ; then
+		eerror "/dev/mixer does not exist, please create it, or load the"
+		eerror "correct modules to enable your card's mixer"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	if [ -f /etc/aumixrc ] ; then
+		ebegin "Loading Mixer settings"
+		/usr/bin/aumix -f /etc/aumixrc -L >/dev/null 2>&1
+	else
+		ebegin "Setting Mixer settings"
+		/usr/bin/aumix -v75 -c75 -w75 >/dev/null 2>&1
+	fi
+	eend $?
+}
+
+stop() {
+	checkconfig || return 1
+	ebegin "Saving Mixer settings"
+	/usr/bin/aumix -f /etc/aumixrc -S >/dev/null 2>&1
+	eend $?
+}

@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+start() {
+	local pidfile=/run/poolmon.pid
+	ebegin "Starting poolmon"
+	start-stop-daemon --pidfile "${pidfile}" --exec /usr/bin/poolmon -- ${OPTIONS}
+	eend $?
+}
+
+stop() {
+	local pidfile=/run/poolmon.pid
+	ebegin "Stopping poolmon"
+	start-stop-daemon --stop --pidfile "${pidfile}"
+	eend $?
+}

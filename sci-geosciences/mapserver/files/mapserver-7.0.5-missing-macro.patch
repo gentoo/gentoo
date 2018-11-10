@@ -1,0 +1,21 @@
+commit 7e4be3d354053bca65838c2c481a61d4d5c24a3b
+Author: Ettore Di Giacinto <mudler@gentoo.org>
+Date:   Tue May 23 20:12:20 2017 +0200
+
+    Fix mapserver to build when TRUE macro is not defined
+
+diff --git a/mapserver.h b/mapserver.h
+index 32182fa0..19b1075c 100644
+--- a/mapserver.h
++++ b/mapserver.h
+@@ -78,6 +78,10 @@
+ #include <stdint.h>
+ #endif
+ 
++#ifndef TRUE
++#define TRUE 1
++#endif
++
+ #ifdef _WIN32
+ #ifndef SIZE_MAX
+ #ifdef _WIN64

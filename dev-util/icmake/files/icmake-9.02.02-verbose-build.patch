@@ -1,0 +1,11 @@
+--- icmake/bootstrap/functions
++++ icmake/bootstrap/functions
+@@ -2,7 +2,7 @@
+ 
+ try()
+ {
+-    # echo $*
++    echo $*
+     $* || exit 1
+ }
+ 

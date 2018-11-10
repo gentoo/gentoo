@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<longdescription>
+		Blue Obelisk Data Repository (BODR) is a shared data repository. It lists
+		many important chemoinformatics data such as elemental properties, atomic
+		radii, etc. including references to original literature. Software developers
+		can use this repository on online webpages or in chemistry software for
+		free.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">bodr</remote-id>
+	</upstream>
+</pkgmetadata>

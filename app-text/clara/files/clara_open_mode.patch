@@ -1,0 +1,20 @@
+--- pgmblock.c	2002-04-29 14:26:13.000000000 +0000
++++ pgmblock.c	2009-03-05 02:51:43.000000000 +0000
+@@ -161,7 +161,7 @@
+ 
+         printf("%d rare pixels (%1.4f)\n",t,((float)t)/(w*h));
+ 
+-        F = open("map",O_WRONLY|O_CREAT);
++        F = open("map",O_WRONLY|O_CREAT, 0644);
+         write(F,m,h*bpl);
+         write(F,map,256);
+         close(F);
+@@ -197,7 +197,7 @@
+     {
+         int i,j,F;
+ 
+-        F = open("map",O_RDONLY|O_CREAT);
++        F = open("map",O_RDONLY|O_CREAT, 0644);
+         read(F,m,h*bpl);
+         read(F,map,256);
+         close(F);

@@ -1,0 +1,41 @@
+From 8d1eb5c74413e4c9a21f689fc106949b121c0117 Mon Sep 17 00:00:00 2001
+From: mancha <mancha1@hush.com>
+Date: Wed, 22 May 2013 14:20:26 +0000
+Subject: Handle NULL returns from glibc 2.17+ crypt().
+
+Starting with glibc 2.17 (eglibc 2.17), crypt() fails with EINVAL
+(w/ NULL return) if the salt violates specifications. Additionally,
+on FIPS-140 enabled Linux systems, DES/MD5-encrypted passwords
+passed to crypt() fail with EPERM (w/ NULL return).
+
+If using glibc's crypt(), check return value to avoid a possible
+NULL pointer dereference.
+
+Reviewed-by: Matthieu Herrb <matthieu@herrb.eu>
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+diff --git a/greeter/verify.c b/greeter/verify.c
+index db3cb7d..b009e2b 100644
+--- a/greeter/verify.c
++++ b/greeter/verify.c
+@@ -329,6 +329,7 @@ Verify (struct display *d, struct greet_info *greet, struct verify_info *verify)
+ 	struct spwd	*sp;
+ #  endif
+ 	char		*user_pass = NULL;
++	char		*crypted_pass = NULL;
+ # endif
+ # ifdef __OpenBSD__
+ 	char            *s;
+@@ -464,7 +465,9 @@ Verify (struct display *d, struct greet_info *greet, struct verify_info *verify)
+ #  if defined(ultrix) || defined(__ultrix__)
+ 	if (authenticate_user(p, greet->password, NULL) < 0)
+ #  else
+-	if (strcmp (crypt (greet->password, user_pass), user_pass))
++	crypted_pass = crypt (greet->password, user_pass);
++	if ((crypted_pass == NULL)
++	    || (strcmp (crypted_pass, user_pass)))
+ #  endif
+ 	{
+ 		if(!greet->allow_null_passwd || strlen(p->pw_passwd) > 0) {
+--
+cgit v0.9.0.2-2-gbebe

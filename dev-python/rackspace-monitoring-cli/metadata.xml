@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
+  </maintainer>
+  <longdescription lang="en">
+    Command Line Utility for Rackspace Cloud Monitoring (MaaS)
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">rackspace-monitoring-cli</remote-id>
+    <remote-id type="github">racker/rackspace-monitoring-cli</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+--- a/hunt.h
++++ b/hunt.h
+@@ -401,7 +401,7 @@
+ void set_tty_color_bg(enum TTY_COLOR fg, enum TTY_COLOR bg);
+ 
+ int is_power2(unsigned int i);
+-int log2(unsigned int i);
++int _hunt_log2(unsigned int i);
+ int count_mask(unsigned int mask);
+ 
+ 
+--- a/util.c
++++ b/util.c
+@@ -70,7 +70,7 @@
+ 	return i ? 0 : 1;
+ }
+ 
+-int log2(unsigned int i)
++int _hunt_log2(unsigned int i)
+ {
+ 	int l = 0;
+ 

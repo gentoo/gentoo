@@ -1,0 +1,21 @@
+# Here you can set custom bootoptions for the SystemRescueCD
+#
+# You can add for example in a space separated list:
+#  setkmap=xx: which defines the keymap to load (example: setkmap=de)
+#  dostartx: load the X.Org graphical environment and launch Xfce
+#  docache: causes the iso file to be fully loaded into memory
+#           this requires 400MB of memory to cache everything
+#  doload=xxx: loads needed kernel modules (example: doload=3c59x,e1000)
+#  noload=xxx: prevents loading kernel modules
+#  nomodeset: do not load the Kernel-Mode-Setting video driver
+#
+# Example:
+#  SRCD_BOOTOPTIONS="setkmap=de docache dostartx"
+#
+# For all available bootoptions see:
+#  http://www.sysresccd.org/Sysresccd-manual-en_Booting_the_CD-ROM
+#
+# Note:
+#  After changing this, you must update your grub configuration file, to take effect
+
+SRCD_BOOTOPTIONS=""

@@ -1,0 +1,27 @@
+// $Id: pdnsd.conf.in,v 1.4 2000/11/11 20:32:58 thomas Exp $
+
+global {
+	perm_cache=512;
+	cache_dir=;
+	max_ttl=604800;
+	paranoid=on;
+	server_port=33455;
+	server_ip=127.0.0.1;
+	status_ctl=on;
+}
+
+server {
+	ip=
+	timeout=30;
+	interval=30;
+	uptest=ping;
+	ping_timeout=50;
+	purge_cache=off;
+}
+
+source {
+	ttl=86400;
+	owner="localhost.";
+	serve_aliases=on;
+	file="/etc/hosts";
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The media-tv category contains television-related applications.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie media-tc enthält TV-Applikationen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría media-tv contiene aplicaciones relacionadas con la
+		televisión.
+	</longdescription>
+	<longdescription lang="ja">
+		media-tvカテゴリーにはテレビジョン関連のアプリケーションが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De media-tv categorie bevat TV-applicaties.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm media-tv chứa các ứng dụng liên quan đến truyền hình - TV.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria media-tv contiene applicazioni per la TV.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria media-tv contém aplicações relacionadas com
+		televisão.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria media-tv zawiera programy związane z telewizją.
+	</longdescription>
+</catmetadata>
+

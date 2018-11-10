@@ -1,0 +1,24 @@
+clear the size of the storage, not the size of the pointer
+
+--- a/usr/md5.c
++++ b/usr/md5.c
+@@ -127,7 +127,7 @@ MD5Final(md5byte digest[16], struct MD5Context *ctx)
+ 
+ 	byteSwap(ctx->buf, 4);
+ 	memcpy(digest, ctx->buf, 16);
+-	memset(ctx, 0, sizeof(ctx));	/* In case it's sensitive */
++	memset(ctx, 0, sizeof(*ctx));	/* In case it's sensitive */
+ }
+ 
+ #ifndef ASM_MD5
+--- a/utils/md5.c
++++ b/utils/md5.c
+@@ -133,7 +133,7 @@ MD5Final(md5byte digest[16], struct MD5Context *ctx)
+ 
+ 	byteSwap(ctx->buf, 4);
+ 	memcpy(digest, ctx->buf, 16);
+-	memset(ctx, 0, sizeof (ctx));	/* In case it's sensitive */
++	memset(ctx, 0, sizeof (*ctx));	/* In case it's sensitive */
+ }
+ 
+ #ifndef ASM_MD5

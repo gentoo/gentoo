@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# This is mostly as a fix for bug #537996, to avoid breaking existing users
+# with nfsmount in their runlevels.
+# If neither nfsclient nor netmount are in your runlevels, and you manually
+# start netmount before nfsclient, then this will break. A real solution is
+# forthcoming, but requires feature development, see bug #406021 for soft
+# dependencies
+depend() {
+	need nfsclient netmount
+}
+
+msg() {
+	ewarn "nfsmount is deprecated, please migrate as described in the news item: 2015-02-02-nfs-service-changes"
+	ewarn "This migration script will be removed after 01 Aug 2015."
+}
+
+start() {
+	msg
+}
+
+stop() {
+	msg
+}

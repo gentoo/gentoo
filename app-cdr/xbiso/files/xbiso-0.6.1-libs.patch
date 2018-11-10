@@ -1,0 +1,21 @@
+--- configure.in.orig	2014-12-02 18:56:23.000000000 +0300
++++ configure.in	2014-12-02 19:09:46.724190436 +0300
+@@ -6,13 +6,13 @@
+ 
+ dnl Checks for libraries.
+ dnl Replace `main' with a function in -lftp:
+-AC_CHECK_LIB(ftp, main,[LIBS="-DUSE_FTP -lftp"],AC_MSG_WARN([Warning libftp not found ftp features disabled]))
+ AC_CHECK_LIB(m, ceil,[LIBS="$LIBS -lm"],AC_MSG_ERROR([Error mlib is required]))
+-AC_ARG_ENABLE(ftp,
+-[
++AC_ARG_ENABLE([ftp],
++    AS_HELP_STRING([--disable-ftp],[Disables all ftp features and libftp dependencies]))
+ 
+-  --disable-ftp			Disables all ftp features and libftp dependencies
+-],[LIBS=""])
++AS_IF([test "x$enable_ftp" != "xno"], [
++    AC_SEARCH_LIBS([FtpInit],[ftp],[CPPFLAGS+="-DUSE_FTP"],AC_MSG_ERROR([libftp not found]))
++])
+ 
+ dnl Checks for header files.
+ AC_CONFIG_HEADERS([config.h:config.h.in])

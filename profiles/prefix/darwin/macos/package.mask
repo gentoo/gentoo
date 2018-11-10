@@ -1,0 +1,8 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (29 Jul 2015)
+# Recent Oracle releases only support recent Mac OS releases. We can't
+# keep old versions due to vulnerabilities.
+dev-java/oracle-jdk-bin
+dev-java/oracle-jre-bin

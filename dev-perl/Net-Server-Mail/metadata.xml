@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">Net-Server-Mail</remote-id>
+		<remote-id type="cpan-module">Net::Server::Mail</remote-id>
+		<remote-id type="cpan-module">Net::Server::Mail::ESMTP</remote-id>
+		<remote-id type="cpan-module">Net::Server::Mail::ESMTP::8BITMIME</remote-id>
+		<remote-id type="cpan-module">Net::Server::Mail::ESMTP::Extension</remote-id>
+		<remote-id type="cpan-module">Net::Server::Mail::ESMTP::PIPELINING</remote-id>
+		<remote-id type="cpan-module">Net::Server::Mail::ESMTP::XFORWARD</remote-id>
+		<remote-id type="cpan-module">Net::Server::Mail::LMTP</remote-id>
+		<remote-id type="cpan-module">Net::Server::Mail::SMTP</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+service git-daemon
+{
+	disable		= yes
+	socket_type	= stream
+	wait		= no
+	user		= nobody
+	type		= UNLISTED
+	protocol	= tcp
+	log_on_failure	+= USERID
+	port		= 9418
+	server		= /usr/bin/git
+	server_args	= daemon --inetd --syslog --export-all --base-path=/var/git
+}

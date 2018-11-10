@@ -1,0 +1,51 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 03_cflags.dpatch by Sylvain Le Gall <gildor@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad xml-light-2.2~/Makefile xml-light-2.2/Makefile
+--- xml-light-2.2~/Makefile	2006-10-26 00:22:41.000000000 +0200
++++ xml-light-2.2/Makefile	2006-10-26 00:24:45.000000000 +0200
+@@ -3,8 +3,8 @@
+ .SUFFIXES : .ml .mli .cmo .cmx .cmi .mll .mly
+ 
+ INSTALLDIR=`ocamlc -where`
+-CFLAGS=
+-LFLAGS= -a
++XML_LIGHT_OCAML_CFLAGS= $(OCAML_CFLAGS)
++XML_LIGHT_OCAML_LFLAGS= $(OCAML_LFLAGS) -a
+ LIBS=
+ 
+ all: xml-light.cma test.exe doc
+@@ -28,10 +28,10 @@
+ 	ocamlopt xml-light.cmxa test.ml -o test_opt.exe
+ 
+ xml-light.cma: xml_parser.cmo xml_lexer.cmo dtd.cmo xmlParser.cmo xml.cmo 
+-	ocamlc -o xml-light.cma $(LFLAGS) $(LIBS) xml_parser.cmo xml_lexer.cmo dtd.cmo xmlParser.cmo xml.cmo
++	ocamlc -o xml-light.cma $(XML_LIGHT_OCAML_LFLAGS) $(LIBS) xml_parser.cmo xml_lexer.cmo dtd.cmo xmlParser.cmo xml.cmo
+ 
+ xml-light.cmxa: xml_parser.cmx xml_lexer.cmx dtd.cmx xmlParser.cmx xml.cmx 
+-	ocamlopt -o xml-light.cmxa $(LFLAGS) $(LIBS) xml_parser.cmx xml_lexer.cmx dtd.cmx xmlParser.cmx xml.cmx
++	ocamlopt -o xml-light.cmxa $(XML_LIGHT_OCAML_LFLAGS) $(LIBS) xml_parser.cmx xml_lexer.cmx dtd.cmx xmlParser.cmx xml.cmx
+ 
+ dtd.cmo: xml.cmi xml_lexer.cmi dtd.cmi
+ 
+@@ -71,13 +71,13 @@
+ 
+ # SUFFIXES
+ .ml.cmo:
+-	ocamlc $(CFLAGS) -c $<
++	ocamlc $(XML_LIGHT_OCAML_CFLAGS) -c $<
+ 
+ .ml.cmx:
+-	ocamlopt $(CFLAGS) -c $<
++	ocamlopt $(XML_LIGHT_OCAML_CFLAGS) -c $<
+ 
+ .mli.cmi:
+-	ocamlc $(CFLAGS) $<
++	ocamlc $(XML_LIGHT_OCAML_CFLAGS) $<
+ 
+ .mll.ml:
+ 	ocamllex $<

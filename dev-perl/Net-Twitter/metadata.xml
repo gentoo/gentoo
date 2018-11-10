@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-Twitter</remote-id>
+    <remote-id type="cpan-module">Net::Identica</remote-id>
+    <remote-id type="cpan-module">Net::Twitter</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::API</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Core</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Error</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Meta::Method</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::OAuth</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::API::Lists</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::API::REST</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::API::RESTv1_1</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::API::Search</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::API::Search::Trends</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::API::TwitterVision</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::API::Upload</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::API::UploadMedia</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::AppAuth</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::AutoCursor</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::InflateObjects</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::Legacy</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::OAuth</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::RateLimit</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::RetryOnError</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::SimulateCursors</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::WrapError</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::WrapResult</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Search</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Types</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::WrappedResult</remote-id>
+  </upstream>
+</pkgmetadata>

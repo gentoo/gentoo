@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<longdescription>
+		A smart replacement for various live package rebuilding
+		solutions. smart-live-rebuild tries to update the source
+		checkouts of live packages and calls emerge to rebuild those
+		which are out-of-date.
+	</longdescription>
+	<upstream>
+		<maintainer status="active">
+			<email>mgorny@gentoo.org</email>
+			<name>Michał Górny</name>
+		</maintainer>
+		<bugs-to>https://github.com/mgorny/smart-live-rebuild/issues/</bugs-to>
+		<remote-id type="github">mgorny/smart-live-rebuild</remote-id>
+	</upstream>
+</pkgmetadata>

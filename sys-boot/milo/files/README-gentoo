@@ -1,0 +1,98 @@
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+#
+##############################################
+# Gentoo Linux MILO images.
+####################################################
+#
+# What is MILO?
+# 
+###
+
+MILO is an AlphaLinux bootloader, which is usually used to load the Linux
+Operating System on Alpha machines that dont have SRM. 
+
+There are two families of firmware on Alpha, ARC and SRM. ARC was developed
+for use with Windows NT, and cannot support Linux. Some Alpha's were 
+distributed with only ARC firmware, for use specifically with Windows NT, 
+these machines would not be able to run any OS except for Windows NT without 
+MILO.
+
+If you do have SRM, or the option of using SRM, you should be using the aboot
+bootloader, unless you really know what you are doing.
+
+NOTE:	if you have srm, but would like to dual boot with Windows NT, or use ARC
+		firmware, you might find MILO more useful than aboot. There are other 
+		reasons also, booting a kernel from a reiserfs partition, for example.
+
+NOTE:	The Gentoo MILO images are slightly different to the standard 
+		MILO images, they have been patched to compile with gcc3 and 
+		work with the latest linux-2.2 kernel and drivers. You can 
+		also optimise your MILO image, to maximise the performance of the 
+		MILO pager! woooo!
+		
+FIXME:	will there be a boot speed improvement from optimising MILO?
+FIXME:	what about performance of the call_pal routines (or at least the
+		overhead of calling them, as they are hand coded asm), will 
+		that improve system performance?
+		
+#####################################################
+#
+# How do i use these images to boot?
+#
+####
+
+NOTE:	Read the MILO-HOWTO in this directory now!
+		There is an explanation and description of all the ways you can 
+		start MILO, including SRM, Floppy, Flash and Debug Monitor.
+
+In this directory you will find the MILO images, you can use these to
+make MILO boot floppies, or install them to a FAT partition.
+
+There are instructions below for making a MILO boot floppy.
+
+
+1.	insert the disk you would like to make a MILO floppy.
+
+2.	fdformat /dev/fd0
+	
+	Obviously, if the disk is already formatted you can skip 
+	this step.
+
+3.	mformat a:
+	
+	this will create a MSDOS file system (FAT) on the floppy.
+	
+4. mcopy milo-2.4.18-gentoo-<your alpha> a:\milo
+
+	install the milo image for your machine onto the new floppy.
+	
+5.	mcopy linload.exe a:\linload.exe
+		_OR_ if you have a Ruffian machine:
+	mcopy ldmilo.exe a:\ldmilo.exe
+
+	install the milo loader, note that ruffians dont use ldlinux.exe
+	by default, if your system expects ldlinux.exe, just copy that file 
+	instead. the ldmilo included in this ebuild contains the fixes by Jay
+	Eastabrook, sometimes called "Jay's Hacked Version".
+	
+6. echo -ne '\125\252' | dd of=/dev/fd0 bs=1 seek=510 count=2 conv=notrunc
+
+	this might not be nescessary on all machines, but some ARCs expect the
+	floppy to be marked bootable, this fakes the magic.
+	
+7. reboot, and set ARCs to boot your shiny new MILO floppy!
+
+#####################################################
+#
+# BUGS
+#
+####
+
+These MILO images are not extensively tested, if you use one
+PLEASE, PLEASE, PLEASE tell me! i need to know which systems 
+it works on and which ones it doesnt.
+
+if you dont want to enter a bug in http://bugs.gentoo.org/
+
+you can just email me a quick note to taviso@gentoo.org

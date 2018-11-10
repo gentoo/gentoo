@@ -1,0 +1,20 @@
+From 16a92623e2005718af58d7ed0628fb2d4c7b2d51 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Mon, 19 Mar 2018 05:06:23 +1300
+Subject: Stop installing mk_methods.pl to the host
+
+---
+ INSTALL.SKIP | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 INSTALL.SKIP
+
+diff --git a/INSTALL.SKIP b/INSTALL.SKIP
+new file mode 100644
+index 0000000..1699662
+--- /dev/null
++++ b/INSTALL.SKIP
+@@ -0,0 +1 @@
++mk_methods\.pl$
+-- 
+2.16.2
+

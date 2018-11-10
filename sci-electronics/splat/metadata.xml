@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-electronics@gentoo.org</email>
+		<name>Gentoo Electronics Project</name>
+	</maintainer>
+	<longdescription>
+		SPLAT! is an RF Signal Propagation, Loss, And Terrain analysis tool for the
+		spectrum between 20 MHz and 20 GHz. Applications of SPLAT! include site
+		engineering, wireless network design, amateur radio communications, frequency
+		coordination, communication system design, and terrestrial television and radio
+		broadcasting.
+	</longdescription>
+	<use>
+		<flag name="hires">Builds additional high resolution application 'rfsplat-hd'</flag>
+	</use>
+</pkgmetadata>

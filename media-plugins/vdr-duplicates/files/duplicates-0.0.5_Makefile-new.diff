@@ -1,0 +1,217 @@
+New Makefile handling up from vdr-1.7.34
+completed german translation
+minor fixes in .po files
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> 2015/Jan/03
+diff -Naur duplicates-0.0.5.orig/Makefile duplicates-0.0.5/Makefile
+--- duplicates-0.0.5.orig/Makefile	2015-02-03 10:40:33.661259290 +0100
++++ duplicates-0.0.5/Makefile	2015-02-03 10:53:20.542203193 +0100
+@@ -6,48 +6,50 @@
+ # The official name of this plugin.
+ # This name will be used in the '-P...' option of VDR to load the plugin.
+ # By default the main source file also carries this name.
+-# IMPORTANT: the presence of this macro is important for the Make.config
+-# file. So it must be defined, even if it is not used here!
+-#
++
+ PLUGIN = duplicates
+ 
+ ### The version number of this plugin (taken from the main source file):
+ 
+ VERSION = $(shell grep 'static const char \*VERSION *=' $(PLUGIN).c | awk '{ print $$6 }' | sed -e 's/[";]//g')
+ 
+-### The C++ compiler and options:
+-
+-CXX      ?= g++
+-CXXFLAGS ?= -g -O3 -Wall -Woverloaded-virtual -Wno-parentheses
+-
+ ### The directory environment:
+ 
+-VDRDIR = ../../..
+-LIBDIR = ../../lib
+-TMPDIR = /tmp
++# Use package data if installed...otherwise assume we're under the VDR source directory:
++PKGCFG = $(if $(VDRDIR),$(shell pkg-config --variable=$(1) $(VDRDIR)/vdr.pc),$(shell pkg-config --variable=$(1) vdr || pkg-config --variable=$(1) ../../../vdr.pc))
++LIBDIR = $(call PKGCFG,libdir)
++LOCDIR = $(call PKGCFG,locdir)
++PLGCFG = $(call PKGCFG,plgcfg)
++#
++TMPDIR ?= /tmp
+ 
+-### Make sure that necessary options are included:
++### The compiler options:
+ 
+--include $(VDRDIR)/Make.global
++export CFLAGS   = $(call PKGCFG,cflags)
++export CXXFLAGS = $(call PKGCFG,cxxflags)
+ 
+-### Allow user defined options to overwrite defaults:
++### The version number of VDR's plugin API:
+ 
+--include $(VDRDIR)/Make.config
++APIVERSION = $(call PKGCFG,apiversion)
+ 
+-### The version number of VDR's plugin API (taken from VDR's "config.h"):
++### Allow user defined options to overwrite defaults:
+ 
+-APIVERSION = $(shell sed -ne '/define APIVERSION/s/^.*"\(.*\)".*$$/\1/p' $(VDRDIR)/config.h)
++-include $(PLGCFG)
+ 
+ ### The name of the distribution archive:
+ 
+ ARCHIVE = $(PLUGIN)-$(VERSION)
+ PACKAGE = vdr-$(ARCHIVE)
+ 
++### The name of the shared object file:
++
++SOFILE = libvdr-$(PLUGIN).so
++
+ ### Includes and Defines (add further entries here):
+ 
+-INCLUDES += -I$(VDRDIR)/include
++INCLUDES +=
+ 
+-DEFINES += -D_GNU_SOURCE -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
++DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
+ 
+ ### The object files (add further files here):
+ 
+@@ -55,52 +57,57 @@
+ 
+ ### The main target:
+ 
+-all: libvdr-$(PLUGIN).so i18n
++all: $(SOFILE) i18n
+ 
+ ### Implicit rules:
+ 
+ %.o: %.c
+-	$(CXX) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) $<
++	$(CXX) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) -o $@ $<
+ 
+ ### Dependencies:
+ 
+ MAKEDEP = $(CXX) -MM -MG
+ DEPFILE = .dependencies
+ $(DEPFILE): Makefile
+-	@$(MAKEDEP) $(DEFINES) $(INCLUDES) $(OBJS:%.o=%.c) > $@
++	@$(MAKEDEP) $(CXXFLAGS) $(DEFINES) $(INCLUDES) $(OBJS:%.o=%.c) > $@
+ 
+ -include $(DEPFILE)
+ 
+ ### Internationalization (I18N):
+ 
+ PODIR     = po
+-LOCALEDIR = $(VDRDIR)/locale
+ I18Npo    = $(wildcard $(PODIR)/*.po)
+-I18Nmsgs  = $(addprefix $(LOCALEDIR)/, $(addsuffix /LC_MESSAGES/vdr-$(PLUGIN).mo, $(notdir $(foreach file, $(I18Npo), $(basename $(file))))))
++I18Nmo    = $(addsuffix .mo, $(foreach file, $(I18Npo), $(basename $(file))))
++I18Nmsgs  = $(addprefix $(DESTDIR)$(LOCDIR)/, $(addsuffix /LC_MESSAGES/vdr-$(PLUGIN).mo, $(notdir $(foreach file, $(I18Npo), $(basename $(file))))))
+ I18Npot   = $(PODIR)/$(PLUGIN).pot
+ 
+ %.mo: %.po
+ 	msgfmt -c -o $@ $<
+ 
+ $(I18Npot): $(wildcard *.c)
+-	xgettext -C -cTRANSLATORS --no-wrap --no-location -k -ktr -ktrNOOP --package-name=vdr-$(PLUGIN) --package-version=$(VERSION) --msgid-bugs-address='<see README>' -o $@ $^
++	xgettext -C -cTRANSLATORS --no-wrap --no-location -k -ktr -ktrNOOP --package-name=vdr-$(PLUGIN) --package-version=$(VERSION) --msgid-bugs-address='<see README>' -o $@ `ls $^`
+ 
+ %.po: $(I18Npot)
+-	msgmerge -U --no-wrap --no-location --backup=none -q $@ $<
++	msgmerge -U --no-wrap --no-location --backup=none -q -N $@ $<
+ 	@touch $@
+ 
+-$(I18Nmsgs): $(LOCALEDIR)/%/LC_MESSAGES/vdr-$(PLUGIN).mo: $(PODIR)/%.mo
+-	@mkdir -p $(dir $@)
+-	cp $< $@
++$(I18Nmsgs): $(DESTDIR)$(LOCDIR)/%/LC_MESSAGES/vdr-$(PLUGIN).mo: $(PODIR)/%.mo
++	install -D -m644 $< $@
+ 
+ .PHONY: i18n
+-i18n: $(I18Nmsgs) $(I18Npot)
++i18n: $(I18Nmo) $(I18Npot)
++
++install-i18n: $(I18Nmsgs)
+ 
+ ### Targets:
+ 
+-libvdr-$(PLUGIN).so: $(OBJS)
++$(SOFILE): $(OBJS)
+ 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared $(OBJS) -o $@
+-	@cp --remove-destination $@ $(LIBDIR)/$@.$(APIVERSION)
++
++install-lib: $(SOFILE)
++	install -D $^ $(DESTDIR)$(LIBDIR)/$^.$(APIVERSION)
++
++install: install-lib install-i18n
+ 
+ dist: $(I18Npo) clean
+ 	@-rm -rf $(TMPDIR)/$(ARCHIVE)
+@@ -111,4 +118,5 @@
+ 	@echo Distribution package created as $(PACKAGE).tgz
+ 
+ clean:
+-	@-rm -f $(OBJS) $(DEPFILE) *.so *.tgz core* *~ $(PODIR)/*.mo $(PODIR)/*.pot
++	@-rm -f $(PODIR)/*.mo $(PODIR)/*.pot
++	@-rm -f $(OBJS) $(DEPFILE) *.so *.tgz core* *~
+diff -Naur duplicates-0.0.5.orig/Makefile-vdr-1.7.33 duplicates-0.0.5/Makefile-vdr-1.7.33
+diff -Naur duplicates-0.0.5.orig/po/de_DE.po duplicates-0.0.5/po/de_DE.po
+--- duplicates-0.0.5.orig/po/de_DE.po	2012-12-13 09:32:52.000000000 +0100
++++ duplicates-0.0.5/po/de_DE.po	2015-02-03 11:12:44.879118021 +0100
+@@ -5,20 +5,19 @@
+ #
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: vdr-duplicates 0.0.1\n"
++"Project-Id-Version: vdr-duplicates 0.0.6\n"
+ "Report-Msgid-Bugs-To: <see README>\n"
+ "POT-Creation-Date: 2011-12-20 18:14+0200\n"
+-"PO-Revision-Date: 2011-06-05 23:37+0100\n"
+-"Last-Translator: Reiner Paulus <flex0r@gmx.net>\n"
++"PO-Revision-Date: 2015-02-03 11:12+0100\n"
++"Last-Translator: Joerg Bornkessel <hd_brummy@gentoo.org>\n"
+ "Language-Team: \n"
+-"Language: \n"
++"Language: de\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=utf-8\n"
++"Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+ "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+-"X-Poedit-Language: German\n"
+-"X-Poedit-Country: GERMANY\n"
+-"X-Poedit-SourceCharset: utf-8\n"
++"X-Poedit-SourceCharset: UTF-8\n"
++"X-Generator: Poedit 1.5.5\n"
+ 
+ msgid "Shows duplicate recordings"
+ msgstr "Zeigt doppelte Aufnahmen an"
+@@ -35,4 +34,4 @@
+ msgstr "%d Aufnahmen ohne Beschreibung"
+ 
+ msgid "Compare title"
+-msgstr ""
++msgstr "Vergleiche Titel"
+diff -Naur duplicates-0.0.5.orig/po/fi_FI.po duplicates-0.0.5/po/fi_FI.po
+--- duplicates-0.0.5.orig/po/fi_FI.po	2015-02-03 10:40:33.661259290 +0100
++++ duplicates-0.0.5/po/fi_FI.po	2015-02-03 11:13:00.607116870 +0100
+@@ -12,7 +12,7 @@
+ "PO-Revision-Date: 2011-12-12 19:57+0300\n"
+ "Last-Translator: Timo Eskola <timo@tolleri.net>\n"
+ "Language-Team: Finnish\n"
+-"Language: \n"
++"Language: fi\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+diff -Naur duplicates-0.0.5.orig/po/it_IT.po duplicates-0.0.5/po/it_IT.po
+--- duplicates-0.0.5.orig/po/it_IT.po	2015-02-03 10:40:33.661259290 +0100
++++ duplicates-0.0.5/po/it_IT.po	2015-02-03 11:13:17.167115659 +0100
+@@ -12,7 +12,7 @@
+ "PO-Revision-Date: 2011-06-05 23:37+0100\n"
+ "Last-Translator: Diego Pierotto <vdr-italian@tiscali.it>\n"
+ "Language-Team: \n"
+-"Language: \n"
++"Language: it\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=utf-8\n"
+ "Content-Transfer-Encoding: 8bit\n"

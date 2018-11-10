@@ -1,0 +1,80 @@
+diff --git a/instlib/source/Makefile.proto b/instlib/source/Makefile.proto
+index 0d0dd3e..dd4b680 100644
+--- a/instlib/source/Makefile.proto
++++ b/instlib/source/Makefile.proto
+@@ -11,6 +11,8 @@
+ 
+ SHELL=/bin/sh
+ 
++cns_string=`date "+%y%m%d%H%M"`
++
+ # commands
+ RM = /bin/rm
+ 
+@@ -19,32 +21,26 @@ DEPENDS = $(OBJS) dmemory.o machine_c.o
+ 
+ # the default is to make the cns executable
+ cns_solve:
+-	@ make -k printflags       F77BUG="$(debug)" DEBUG="$(debug)"
+-	@ make -k ../bin/cns_solve F77BUG="$(debug)" DEBUG="$(debug)"
+-	@ make -k exepurge
++	@ make printflags       F77BUG="$(debug)" DEBUG="$(debug)"
++	@ make ${MAKEOPTS} ../bin/cns_solve F77BUG="$(debug)" DEBUG="$(debug)"
++	@ make exepurge
+ 
+ # rule for the fortran routines
+ $(OBJS): 
+-	@ echo "compiling: $(@:.o=.f)"; \
+-	  $(F77) -c $(F77FLAGS) $(@:.o=.f)
++	$(F77) -c $(F77FLAGS) $(@:.o=.f)
+ 
+ # rule for the dynamic memory allocation C routines
+ dmemory.o: dmemory.c
+-	@ echo ; echo "compiling: $?"
+-	@ $(CC) -c $(CCFLAGS) $?
++	$(CC) -c $(CCFLAGS) $?
+ 
+ # rule for the machine specific C routines
+ machine_c.o: machine_c.c
+-	@ echo ; echo "compiling: $?"
+-	@ $(CC) -c $(CCFLAGS) $?
++	$(CC) -c $(CCFLAGS) $?
+ 
+ # rule for the executable itself
+ ../bin/cns_solve: $(DEPENDS) 
+-	@ echo ; echo "linking: cns_solve"; echo
+-	@ cns_string=`date "+%y%m%d%H%M"`; \
+-	  $(LD) -o cns_solve-$$cns_string.exe $(OBJS) dmemory.o machine_c.o \
+-	                                      $(LDFLAGS) \
+-	                                      $(CNS_FFTDIR) $(CNS_FFTLIB); \
++	$(LD) $(LDFLAGS) -o cns_solve-$$cns_string.exe $(OBJS) dmemory.o machine_c.o \
++	                                      $(CNS_FFTDIR) $(CNS_FFTLIB); \
+ 	  if [ -x cns_solve-$$cns_string.exe ]; \
+ 	    then echo "created executable file cns_solve-$$cns_string.exe"; \
+ 	         echo ""; cd ../bin; $(RM) -f cns_solve; $(RM) -f cns; \
+diff --git a/instlib/utils/Makefile b/instlib/utils/Makefile
+index 98de84f..4f32b34 100644
+--- a/instlib/utils/Makefile
++++ b/instlib/utils/Makefile
+@@ -22,17 +22,17 @@ utils:
+ 	make clean
+ 
+ .f:
+-	$(F77) -o $@ $(F77FLAGS) $(@).f $(F77LINK)
++	$(F77) $(LDFLAGS) -o $@ $(F77FLAGS) $(@).f $(F77LINK)
+ 
+ .c:
+-	$(CC) -o $@ $(CCFLAGS) $(@).c $(CCLINK)
++	$(CC) $(LDFLAGS) -o $@ $(CCFLAGS) $(@).c $(CCLINK)
+ 
+ .cpp:
+-	$(CPP) -o $@ $(CCFLAGS) $(@).cpp $(CCLINK)
++	$(CXX) $(LDFLAGS) -o $@ $(CXXFLAGS) $(@).cpp $(CCLINK)
+ 
+ .l:
+ 	lex $(@).l
+-	$(CC) $(CCFLAGS) -o $@ lex.yy.c $(CCLINK) -l$(LEXLIB)
++	$(CC) $(LDFLAGS) $(CCFLAGS) -o $@ lex.yy.c $(CCLINK) -l$(LEXLIB)
+ 
+ relink:
+ 	@ cd $(CNS_INST)/utils; touch x; rm -f x `ls * | grep -v Makefile`

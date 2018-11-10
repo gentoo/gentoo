@@ -1,0 +1,17 @@
+diff --git a/texmath.cabal b/texmath.cabal
+index 16f4410..ba61859 100644
+--- a/texmath.cabal
++++ b/texmath.cabal
+@@ -135,8 +135,8 @@ Executable texmath
+                          split, aeson, bytestring, text
++      if flag(network-uri)
++        Build-Depends:     network-uri >= 2.6
++      else
++        Build-Depends:     network < 2.6
+     else
+       Buildable:         False
+-    if flag(network-uri)
+-      Build-Depends:     network-uri >= 2.6
+-    else
+-      Build-Depends:     network < 2.6
+ 

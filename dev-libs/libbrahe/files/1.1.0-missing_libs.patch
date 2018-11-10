@@ -1,0 +1,7 @@
+--- src/Makefile.am.orig	2008-05-01 02:21:34.000000000 +0200
++++ src/Makefile.am	2008-05-01 02:21:47.000000000 +0200
+@@ -14,3 +14,4 @@
+ 
+ AM_CFLAGS = -std=gnu99 -pedantic -Wall -Wno-format
+ DEFS = -I. -I$(srcdir)
++LIBS = -lm

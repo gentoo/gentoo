@@ -1,0 +1,13 @@
+--- a/src/Makefile.linux
++++ b/src/Makefile.linux
+@@ -17,8 +17,8 @@
+ #XLIBS		= -ltcl -ltk -lX11
+ #
+ # or you may need something like:
+-XINCLUDES	= -I/usr/include/tcl8.5
+-XLIBS		= -ltcl8.5 -ltk8.5 -lX11
++#XINCLUDES	= -I/usr/include/tcl8.5
++XLIBS		= -ltcl -ltk -lX11
+ #
+ C99		= $(CC) -std=c99 -Wall -pedantic
+ CFLAGS		+= -fPIC $(INCLUDES) $(XINCLUDES)

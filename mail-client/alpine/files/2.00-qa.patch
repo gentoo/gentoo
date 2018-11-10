@@ -1,0 +1,19 @@
+--- pith/charconv/utf8.c	2012-10-11 07:57:38.022062458 +0000
++++ pith/charconv/utf8.c	2012-10-11 08:59:56.205068504 +0000
+@@ -16,6 +16,8 @@
+  */
+ 
+ 
++#define _XOPEN_SOURCE
++
+ /* includable WITHOUT dependency on c-client */
+ #include <imap/mail.h>
+ #include <imap/utf8.h>
+@@ -38,6 +40,7 @@
+ #include "utf8.h"
+ 
+ #include <stdarg.h>
++#include <wchar.h>
+ 
+ 
+ unsigned single_width_chars_a_to_b(UCS *, int, int);

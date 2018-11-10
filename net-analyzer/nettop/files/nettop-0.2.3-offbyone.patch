@@ -1,0 +1,29 @@
+--- a/nettop.c
++++ b/nettop.c
+@@ -384,7 +385,7 @@
+ void
+ screen_update()
+ {
+-	struct node *sorted[24] = {0};
++	struct node *sorted[25] = {0};
+ 	unsigned long long sump, sums, valp, vals;
+ 	unsigned long long xfrrate = 0;
+ 	int i, do_ipprint, last[3] = {0};
+@@ -512,7 +513,7 @@
+ void
+ ipprint(int last[])
+ {
+-	struct node *sorted[24] = {0};
++	struct node *sorted[25] = {0};
+ 	struct ent *proto;
+ 	unsigned long long valp, vals, sump, sums;
+ 	unsigned long long xfrrate = 0;
+@@ -575,7 +576,7 @@
+ void
+ servprint(int last[], struct node *tree, int type)
+ {
+-	struct node *sorted[24] = {0};
++	struct node *sorted[25] = {0};
+ 	struct ent *e;
+ 	struct ent *service;
+ 	unsigned long long vals, valp, sums, sump;

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">SRU</remote-id>
+    <remote-id type="cpan-module">Catalyst::Controller::SRU</remote-id>
+    <remote-id type="cpan-module">SRU</remote-id>
+    <remote-id type="cpan-module">SRU::Request</remote-id>
+    <remote-id type="cpan-module">SRU::Request::Explain</remote-id>
+    <remote-id type="cpan-module">SRU::Request::Scan</remote-id>
+    <remote-id type="cpan-module">SRU::Request::SearchRetrieve</remote-id>
+    <remote-id type="cpan-module">SRU::Response</remote-id>
+    <remote-id type="cpan-module">SRU::Response::Diagnostic</remote-id>
+    <remote-id type="cpan-module">SRU::Response::Explain</remote-id>
+    <remote-id type="cpan-module">SRU::Response::Record</remote-id>
+    <remote-id type="cpan-module">SRU::Response::Scan</remote-id>
+    <remote-id type="cpan-module">SRU::Response::SearchRetrieve</remote-id>
+    <remote-id type="cpan-module">SRU::Response::Term</remote-id>
+    <remote-id type="cpan-module">SRU::Server</remote-id>
+    <remote-id type="cpan-module">SRU::Utils</remote-id>
+    <remote-id type="cpan-module">SRU::Utils::XML</remote-id>
+    <remote-id type="cpan-module">SRU::Utils::XMLTest</remote-id>
+  </upstream>
+</pkgmetadata>

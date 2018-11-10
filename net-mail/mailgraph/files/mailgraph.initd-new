@@ -1,0 +1,35 @@
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+start() {
+	ebegin "Starting mailgraph"
+
+	# read mail log messages somewhere other than /var/log/syslog?
+	[[ -n "${MG_LOGFILE}" ]] && MG_DAEMON_OPTS="${MG_DAEMON_OPTS} -l ${MG_LOGFILE}"
+
+	# create /var/run/mailgraph if necessary
+	if [ ! -d  /var/run/mailgraph ] ; then
+		checkpath -q -d -o mgraph:adm -m 0775 /var/run/mailgraph || return 1
+	fi
+
+	UMASK=$(umask)
+	umask ${MG_DAEMON_UMASK:-0077}
+	start-stop-daemon --start \
+		--name mailgraph \
+		--user "${MG_DAEMON_UID}:${MG_DAEMON_GID}" \
+		--name mailgraph \
+		--pidfile ${MG_DAEMON_PID} \
+		--exec /usr/bin/mailgraph -- -v --daemon \
+		--daemon-log="${MG_DAEMON_LOG}" \
+		--daemon-pid="${MG_DAEMON_PID}" \
+		--daemon-rrd=/var/lib/mailgraph ${MG_DAEMON_OPTS}
+	eend $?
+	umask "${UMASK}"
+}
+
+stop() {
+	ebegin "Shutting down mailgraph"
+	start-stop-daemon --stop --quiet --pidfile "${MG_DAEMON_PID}"
+	eend $?
+}

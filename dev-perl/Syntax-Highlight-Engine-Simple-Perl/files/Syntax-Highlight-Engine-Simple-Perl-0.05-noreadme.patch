@@ -1,0 +1,34 @@
+From 029a20d2800c96528adfcd5053cf3298a58cd886 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 10 Jan 2018 12:31:22 +1300
+Subject: Add INSTALL.SKIP to avoid installing README.pod
+
+As currently, it installs as:
+
+  Syntax/Highlight/Engine/Simple/README.pod
+---
+ INSTALL.SKIP | 1 +
+ MANIFEST     | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 INSTALL.SKIP
+
+diff --git a/INSTALL.SKIP b/INSTALL.SKIP
+new file mode 100644
+index 0000000..4fd94be
+--- /dev/null
++++ b/INSTALL.SKIP
+@@ -0,0 +1 @@
++README\.pod$
+diff --git a/MANIFEST b/MANIFEST
+index abb2ea0..382c93f 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -1,4 +1,5 @@
+ Changes
++INSTALL.SKIP
+ lib/Syntax/Highlight/Engine/Simple/Perl.pm
+ Makefile.PL
+ MANIFEST
+-- 
+2.15.1
+

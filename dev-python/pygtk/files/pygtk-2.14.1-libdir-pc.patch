@@ -1,0 +1,12 @@
+https://bugzilla.gnome.org/show_bug.cgi?id=663421
+
+--- a/pygtk-2.0.pc.in
++++ b/pygtk-2.0.pc.in
+@@ -12,6 +12,7 @@
+ includedir=@includedir@
+ datarootdir=@datarootdir@
+ datadir=@datadir@
++libdir=@libdir@
+ pyexecdir=@pyexecdir@
+ 
+ # you can use the --variable=pygtkincludedir argument to

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Mail-SPF</remote-id>
+    <remote-id type="cpan-module">Mail::SPF</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Base</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EAbstractClass</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EClassMethod</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EDNSError</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EDNSTimeout</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EDuplicateGlobalMod</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EInstanceMethod</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EInvalidMacro</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EInvalidMacroString</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EInvalidMech</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EInvalidMechQualifier</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EInvalidMod</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EInvalidOptionValue</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EInvalidRecordVersion</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EInvalidScope</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EInvalidTerm</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EJunkInRecord</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EJunkInTerm</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EMacroExpansionCtxRequired</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::ENoAcceptableRecord</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::ENoUnparsedText</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::ENothingToParse</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EOptionRequired</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EProcessingLimitExceeded</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EReadOnlyValue</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::ERecordSelectionError</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::ERedundantAcceptableRecords</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::ESyntaxError</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::ETermDomainSpecExpected</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::ETermIPv4AddressExpected</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::ETermIPv4PrefixLengthExpected</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::ETermIPv6AddressExpected</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::ETermIPv6PrefixLengthExpected</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::EUnexpectedTermObject</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Exception</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::GlobalMod</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::MacroString</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Mech</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Mech::A</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Mech::All</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Mech::Exists</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Mech::IP4</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Mech::IP6</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Mech::Include</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Mech::MX</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Mech::PTR</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Mod</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Mod::Exp</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Mod::Redirect</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::PositionalMod</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Record</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Request</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Result</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Result::Error</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Result::Fail</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Result::Neutral</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Result::NeutralByDefault</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Result::None</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Result::Pass</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Result::PermError</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Result::SoftFail</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Result::TempError</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::SenderIPAddrMech</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Server</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Term</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::UnknownMod</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::Util</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::v1::Record</remote-id>
+    <remote-id type="cpan-module">Mail::SPF::v2::Record</remote-id>
+  </upstream>
+</pkgmetadata>

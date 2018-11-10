@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>NP-Hardass@gentoo.org</email>
+		<name>NP-Hardass</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>gentoo@mva.name</email>
+		<name>Vadim A. Misbakh-Soloviov</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>rei4dan@gmail.com</email>
+		<name>My Th</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+	Kernel module which automatically detects the required ACPI calls for two
+	kinds of Optimus laptops for safe disabling/enabling the discrete graphics card.
+</longdescription>
+	<upstream>
+		<remote-id type="github">Bumblebee-Project/bbswitch</remote-id>
+	</upstream>
+</pkgmetadata>

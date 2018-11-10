@@ -1,0 +1,78 @@
+clean up missing prototypes and broken printfs
+
+--- a/ckcmai.c
++++ b/ckcmai.c
+@@ -623,6 +623,8 @@ ACKNOWLEDGMENTS:
+ #include "ckntap.h"
+ #endif /* NT */
+ 
++#include <time.h>
++
+ #ifndef NOSERVER
+ /* Text message definitions.. each should be 256 chars long, or less. */
+ #ifdef MINIX
+--- a/ckufio.c
++++ b/ckufio.c
+@@ -40,6 +40,7 @@ char *ckzv = "UNIX File support, 8.0.200, 4 Mar 2004";
+ #include "ckcsym.h"
+ #include "ckcdeb.h"
+ #include "ckcasc.h"
++#include "ckuusr.h"
+ 
+ #ifndef NOCSETS
+ #include "ckcxla.h"
+@@ -1803,6 +1804,8 @@ zxin(n,s,x) int n, x; char *s; {
+     return(fread(s, sizeof (char), x, fp[n]));
+ }
+ 
++extern int ttwait(int fd, int secs);
++
+ /*
+   Z I N F I L L  --  Buffered file input.
+ 
+--- a/ckutio.c
++++ b/ckutio.c
+@@ -1808,6 +1808,11 @@ ttgwsiz() {
+ #endif /* NONAWS */
+ }
+ 
++#ifdef CK_NAWS                          /* Negotiate About Window Size */
++#ifdef RLOGCODE
++_PROTOTYP( int rlog_naws, (void) );
++#endif /* RLOGCODE */
++#endif /* CK_NAWS */
+ 
+ #ifndef NOSIGWINCH
+ #ifdef SIGWINCH
+--- a/ckuus5.c
++++ b/ckuus5.c
+@@ -7747,7 +7747,7 @@ doshow(x) int x; {
+           printf(" --bannerfile=%s\n",bannerfile ? bannerfile : "(null)");
+           printf(" --cdfile:%s\n",cdmsgstr ? cdmsgstr : "(null)");
+           printf(" --cdmessage:%d\n",srvcdmsg);
+-          printf(" --helpfile:%d\n",helpfile);
++          printf(" --helpfile:%s\n",helpfile ? helpfile : "(null)");
+           if (inserver) {
+               printf("\n");
+               break;
+--- a/ckuus7.c
++++ b/ckuus7.c
+@@ -2981,7 +2981,7 @@ dopurge() {                             /* Do the PURGE command */
+     if (n < tokeep) {                   /* Not deleting any */
+         count = 0;
+         if (listing)
+-          printf(" Matches = %d: Not enough to purge.\n");
++          printf(" Matches = %d: Not enough to purge.\n", n);
+         goto xpurge;
+     }
+ 
+--- a/ckuusx.c
++++ b/ckuusx.c
+@@ -56,7 +56,6 @@
+ #include <termcap.h>
+ #endif /* NOHTERMCAP */
+ #endif /* BSD44 */
+-#else  /* !BSD44 */
+ #ifdef linux
+ #include <term.h>
+ #endif /* linux */

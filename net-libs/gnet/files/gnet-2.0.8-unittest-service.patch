@@ -1,0 +1,31 @@
+Disable unittests requiring a running HTTP server on port 80.
+
+--- a/tests/check/gnet/gnetinetaddr.c.old	2014-09-27 17:56:51.130350306 +0200
++++ b/tests/check/gnet/gnetinetaddr.c	2014-09-27 17:57:23.396114568 +0200
+@@ -443,7 +443,7 @@
+ 
+ GNET_START_TEST (test_inetaddr_list_async)
+ {
+-  do_test_inetaddr_list_async ("localhost");
++/*  do_test_inetaddr_list_async ("localhost"); */
+ /* FIXME: these might not work right yet because of the timings in the test
+ #ifdef GNET_ENABLE_NETWORK_TESTS
+   do_test_inetaddr_list_async ("www.google.com");
+@@ -573,7 +573,7 @@
+ 
+ GNET_START_TEST (test_inetaddr_name_async)
+ {
+-  do_test_inetaddr_name_async ("localhost");
++/*  do_test_inetaddr_name_async ("localhost"); */
+ 
+ /* FIXME: these might not work right yet because of the timings in the test
+ #ifdef GNET_ENABLE_NETWORK_TESTS
+@@ -798,7 +798,7 @@
+ 
+ GNET_START_TEST (test_inetaddr_reverse_async)
+ {
+-  do_test_inetaddr_reverse_async ("localhost");
++/*  do_test_inetaddr_reverse_async ("localhost"); */
+ 
+ #ifdef GNET_ENABLE_NETWORK_TESTS
+   do_test_inetaddr_reverse_async ("gabe.freedesktop.org");

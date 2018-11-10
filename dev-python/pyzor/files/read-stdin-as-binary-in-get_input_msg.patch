@@ -1,0 +1,85 @@
+From 66225b32d2774cf37fa7f702f7eb26cd94094482 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 4 Mar 2018 17:27:01 -0500
+Subject: [PATCH 1/1] scripts/pyzor: replace the client with the git (+ issue
+ 64 fix) version.
+
+---
+ scripts/pyzor | 33 +++++++++++++++++++++++++++------
+ 1 file changed, 27 insertions(+), 6 deletions(-)
+
+diff --git a/scripts/pyzor b/scripts/pyzor
+index 19b1d21..86c6f7d 100755
+--- a/scripts/pyzor
++++ b/scripts/pyzor
+@@ -17,9 +17,9 @@ import tempfile
+ import threading
+ 
+ try:
+-    import ConfigParser
+-except ImportError:
+     import configparser as ConfigParser
++except ImportError:
++    import ConfigParser
+ 
+ import pyzor.digest
+ import pyzor.client
+@@ -110,7 +110,7 @@ def load_configuration():
+     config = ConfigParser.ConfigParser()
+     # Set the defaults.
+     config.add_section("client")
+-    for key, value in defaults.iteritems():
++    for key, value in defaults.items():
+         config.set("client", key, value)
+     # Override with the configuration.
+     config.read(os.path.join(options.homedir, "config"))
+@@ -171,14 +171,35 @@ def _get_input_digests(dummy):
+ 
+ 
+ def _get_input_msg(digester):
+-    msg = email.message_from_file(sys.stdin)
++    msg = email.message_from_bytes(get_binary_stdin().read())
+     digested = digester(msg).value
+     yield digested
+ 
+ 
++def _is_binary_reader(stream, default=False):
++    try:
++        return isinstance(stream.read(0), bytes)
++    except Exception:
++        return default
++
++
++def get_binary_stdin():
++    # sys.stdin might or might not be binary in some extra cases.  By
++    # default it's obviously non binary which is the core of the
++    # problem but the docs recommend changing it to binary for such
++    # cases so we need to deal with it.
++    is_binary = _is_binary_reader(sys.stdin, False)
++    if is_binary:
++        return sys.stdin
++    buf = getattr(sys.stdin, 'buffer', None)
++    if buf is not None and _is_binary_reader(buf, True):
++        return buf
++    raise RuntimeError('Did not manage to get binary stdin')
++
++
+ def _get_input_mbox(digester):
+     tfile = tempfile.NamedTemporaryFile()
+-    tfile.write(sys.stdin.read().encode("utf8"))
++    tfile.write(get_binary_stdin().read())
+     tfile.seek(0)
+     mbox = mailbox.mbox(tfile.name)
+     for msg in mbox:
+@@ -372,7 +393,7 @@ def genkey(client, servers, config, hash_func=hashlib.sha1):
+         return False
+     # pylint: disable-msg=W0612
+     salt = "".join([chr(random.randint(0, 255))
+-                    for unused in xrange(hash_func(b"").digest_size)])
++                    for unused in range(hash_func(b"").digest_size)])
+     if sys.version_info >= (3, 0):
+         salt = salt.encode("utf8")
+     salt_digest = hash_func(salt)
+-- 
+2.13.6
+

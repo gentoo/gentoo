@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">User-Identity</remote-id>
+    <remote-id type="cpan-module">Mail::Identity</remote-id>
+    <remote-id type="cpan-module">User::Identity</remote-id>
+    <remote-id type="cpan-module">User::Identity::Archive</remote-id>
+    <remote-id type="cpan-module">User::Identity::Archive::Plain</remote-id>
+    <remote-id type="cpan-module">User::Identity::Collection</remote-id>
+    <remote-id type="cpan-module">User::Identity::Collection::Emails</remote-id>
+    <remote-id type="cpan-module">User::Identity::Collection::Locations</remote-id>
+    <remote-id type="cpan-module">User::Identity::Collection::Systems</remote-id>
+    <remote-id type="cpan-module">User::Identity::Collection::Users</remote-id>
+    <remote-id type="cpan-module">User::Identity::Item</remote-id>
+    <remote-id type="cpan-module">User::Identity::Location</remote-id>
+    <remote-id type="cpan-module">User::Identity::System</remote-id>
+  </upstream>
+</pkgmetadata>

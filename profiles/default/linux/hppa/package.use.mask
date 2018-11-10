@@ -1,0 +1,14 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
+
+# Jeroen Roovers <jer@gentoo.org> (1 Sep 2011)
+# No hardware support for NUMA (bug #381313)
+sys-apps/hwloc numa
+
+# Jeroen Roovers <jer@gentoo.org> (15 Aug 2008)
+# HPPA still isn't supported with anything but -O0.
+www-client/firefox custom-optimization
+
+# DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.

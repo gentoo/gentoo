@@ -1,0 +1,18 @@
+--- init.d/src/gentoo-backuppc.orig	2009-10-18 00:14:44.125346723 +0300
++++ init.d/src/gentoo-backuppc	2009-10-18 00:15:37.101346981 +0300
+@@ -21,7 +21,7 @@
+ start() {
+ 	checkconfig || return 1
+ 	ebegin "Starting BackupPC"
+-	start-stop-daemon --start --chuid ${USER} --user ${USER} --pidfile ${PID_FILE} --exec ${EXEC} -- ${EXEC_OPTIONS}
++	start-stop-daemon --start --chuid ${USER} --user ${USER} --nicelevel ${NICELEVEL} --pidfile ${PID_FILE} --exec ${EXEC} -- ${EXEC_OPTIONS}
+ 	eend $?
+ }
+ 
+--- init.d/src/gentoo-backuppc.conf.orig	2009-10-18 00:14:52.513347638 +0300
++++ init.d/src/gentoo-backuppc.conf	2009-10-18 00:16:03.457346630 +0300
+@@ -3,3 +3,4 @@
+ PID_FILE=__LOGDIR__/BackupPC.pid
+ EXEC=__INSTALLDIR__/bin/BackupPC
+ EXEC_OPTIONS=-d
++NICELEVEL=0

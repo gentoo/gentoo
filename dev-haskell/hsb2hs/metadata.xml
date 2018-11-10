@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		hsb2hs is a preprocessor that allows you to include the contents of
+		files as string literals in your Haskell programs and libraries.
+		It is an alternative to file-embed for those who do not want to rely
+		on Template Haskell.  See @README.markdown@ for instructions.
+	</longdescription>
+</pkgmetadata>

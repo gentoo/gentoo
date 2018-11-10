@@ -1,0 +1,57 @@
+move prototypes around so they show up when needed
+
+--- a/jobs.h
++++ b/jobs.h
+@@ -182,6 +182,7 @@
+ 
+ extern int count_all_jobs __P((void));
+ 
++extern void close_pgrp_pipe __P((void));
+ extern void terminate_current_pipeline __P((void));
+ extern void terminate_stopped_jobs __P((void));
+ extern void hangup_all_jobs __P((void));
+--- a/lib/glob/strmatch.c
++++ b/lib/glob/strmatch.c
+@@ -25,9 +25,6 @@
+ #include "strmatch.h"
+ 
+ extern int xstrmatch __P((char *, char *, int));
+-#if defined (HAVE_MULTIBYTE)
+-extern int internal_wstrmatch __P((wchar_t *, wchar_t *, int));
+-#endif
+ 
+ int
+ strmatch (pattern, string, flags)
+--- a/lib/glob/strmatch.h
++++ b/lib/glob/strmatch.h
+@@ -57,6 +57,7 @@
+ 
+ #if HANDLE_MULTIBYTE
+ extern int wcsmatch __P((wchar_t *, wchar_t *, int));
++extern int internal_wstrmatch __P((wchar_t *, wchar_t *, int));
+ #endif
+ 
+ #endif /* _STRMATCH_H */
+--- a/quit.h
++++ b/quit.h
+@@ -21,6 +21,8 @@
+ #if !defined (_QUIT_H_)
+ #define _QUIT_H_
+ 
++#include "sig.h"
++
+ /* Non-zero means SIGINT has already ocurred. */
+ extern volatile int interrupt_state;
+ extern volatile int terminating_signal;
+--- a/support/bashversion.c
++++ b/support/bashversion.c
+@@ -47,6 +47,9 @@
+ extern char *dist_version;
+ extern int patch_level;
+ 
++extern char *shell_version_string __P((void));
++extern void show_shell_version __P((int));
++
+ char *shell_name = "bash";
+ char *progname;
+ 

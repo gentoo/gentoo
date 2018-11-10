@@ -1,0 +1,62 @@
+From ab74ea544739ab044af1e9b398770d31add3b435 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sat, 2 Feb 2013 01:16:03 +0200
+Subject: [PATCH 1/2] build: respect CFLAGS, DESTDIR and permissions
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ Makefile | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index ac661a8..abcdcc4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -17,7 +17,8 @@ CC=gcc
+ 
+ #The below line is for debugging
+ #CFLAGS=-I. -ggdb -Wall -D_FILE_OFFSET_BITS=64
+-CFLAGS=-Wall -D_FILE_OFFSET_BITS=64
++CFLAGS=-Wall
++EXTRA_CFLAGS=-D_FILE_OFFSET_BITS=64
+ 
+ LIBS=
+ 
+@@ -27,10 +28,10 @@ LIBS=
+ all: aescrypt aescrypt_keygen
+ 
+ aescrypt: aescrypt.o aes.o sha256.o password.o keyfile.o
+-	$(CC) $(CFLAGS) $(LIBS) -o $@ $^
++	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(LIBS) $(LDFLAGS) -o $@ $^
+ 
+ aescrypt_keygen: aescrypt_keygen.o password.o
+-	$(CC) $(CFLAGS) $(LIBS) -o $@ $^
++	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(LIBS) $(LDFLAGS) -o $@ $^
+ 
+ test:
+ 	@$(CC) -DTEST -o sha.test sha256.c
+@@ -48,15 +49,16 @@ testfile: aescrypt
+ 	cmp test.orig.txt test.txt
+ 
+ %.o: %.c %.h
+-	$(CC) $(CFLAGS) -c $*.c
++	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -c $*.c
+ 
+ install: aescrypt
+-	install -o root -g root -m 755 aescrypt /usr/bin
+-	install -o root -g root -m 755 aescrypt_keygen /usr/bin
++	install -m 755 -d $(DESTDIR)/usr/bin
++	install -m 755 aescrypt $(DESTDIR)/usr/bin
++	install -m 755 aescrypt_keygen $(DESTDIR)/usr/bin
+ 
+ uninstall:
+-	rm -f /usr/bin/aescrypt
+-	rm -f /usr/bin/aescrypt_keygen
++	rm -f $(DESTDIR)/usr/bin/aescrypt
++	rm -f $(DESTDIR)/usr/bin/aescrypt_keygen
+ 
+ clean:
+ 	rm -f *.o aescrypt aescrypt_keygen test* *test
+-- 
+1.7.12.4
+

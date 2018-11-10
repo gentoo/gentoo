@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the Erlang Public License 1.1
+
+ZT_ADDRESS=""
+pidfile="/var/run/epmd.pid"
+command_args="-daemon -relaxed_command_check -address 127.0.0.1"
+
+depend() {
+	need loopback
+	before sshd
+}
+
+start() {
+	ebegin "Starting Erlang Port Mapper Daemon"
+	start-stop-daemon --start --quiet \
+		--pidfile $pidfile \
+		--exec /usr/bin/epmd -- $command_args
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Erlang Port Mapper Daemon"
+	/usr/bin/epmd -kill >/dev/null
+	eend $?
+}

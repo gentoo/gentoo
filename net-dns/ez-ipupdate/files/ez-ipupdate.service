@@ -1,0 +1,12 @@
+[Unit]
+Description=ez-ipupdate: Check and update your IP to dynamic DNS Server
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/sbin/ez-ipupdate -f -R ez-ipupd -c /etc/ez-ipupdate/defaults.conf -b /var/cache/ez-ipupdate/defaults.cache
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGQUIT
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,29 @@
+--- xoscope-2.0/proscope.c
++++ xoscope-2.0/proscope.c
+@@ -11,6 +11,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <unistd.h>
+ #include "proscope.h"
+ #include "oscope.h"
+--- xoscope-2.0/oscope.c
++++ xoscope-2.0/oscope.c
+@@ -408,7 +408,15 @@
+    */
+ 
+   displayed_samples = p->signal ? samples(p->signal->rate) : 0;
+-  max_samples = p->signal ? max(samples(p->signal->rate), p->signal->num) : 0;
++  if ( p->signal ) {
++    if ( samples(p->signal->rate) > p->signal->num ) {
++      max_samples = samples(p->signal->rate);
++    } else {
++      max_samples = p->signal->num;
++    }
++  } else {
++    max_samples = 0;
++  }
+ 
+   if (c >= 'A' && c <= 'Z') {
+     if (p->signal) {

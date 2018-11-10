@@ -1,0 +1,41 @@
+#!/sbin/openrc-run
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use dns logger net
+}
+
+check_cfg() {
+	if [ -z "${USER}" ] ; then
+		eerror "USER is unset"
+		return 1
+	fi
+
+	if [ ! -s "${CONFIG}" ]; then
+		eerror "configuration file ${CONFIG} doesn't seem to be valid"
+		return 1
+	fi
+}
+
+start() {
+	check_cfg || return 1
+
+	# Remove stalled Unix socket if no other process is using it
+	if [ -S "${SOCKET}" ] && ! fuser -s "${SOCKET}"; then
+		rm "${SOCKET}"
+	fi
+	
+	ebegin "Starting milter-regex"
+	start-stop-daemon --start --exec /usr/bin/milter-regex -- \
+		-u "${USER}" -p "${SOCKET}" -c "${CONFIG}"
+	EXIT=$?
+	[ $? == 0 ] && chmod a+rw "${SOCKET}"
+	eend ${EXIT}
+}
+
+stop() {
+	ebegin "Stopping milter-regex"
+	start-stop-daemon --stop --exec /usr/bin/milter-regex
+	eend $?
+}

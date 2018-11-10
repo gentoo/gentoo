@@ -1,0 +1,61 @@
+--- wmSpaceWeather/Makefile.orig	2008-01-28 02:45:07.000000000 +0100
++++ wmSpaceWeather/Makefile	2008-01-28 02:46:04.000000000 +0100
+@@ -1,8 +1,8 @@
+-CC     = gcc
+-CFLAGS = -O2 -Wall
+-INCDIR = -I/usr/X11R6/include/X11
+-DESTDIR= /usr/X11R6
+-LIBDIR = -L/usr/X11R6/lib
++CC     ?= gcc
++CFLAGS += -Wall
++INCDIR = -I/usr/include/X11
++PREFIX = /usr
++LIBDIR ?= /usr/lib
+ # for linux
+ LIBS   = -lXpm -lX11 -lXext
+ # for Solaris
+@@ -12,14 +12,14 @@
+ 
+ 
+ .c.o:
+-	$(CC) $(COPTS) -D$(shell echo `uname -s`) -c $< -o $*.o $(INCDIR)
++	$(CC) $(CFLAGS) -D$(shell echo `uname -s`) -c $< -o $*.o $(INCDIR)
+ 
+ 
+ all:	wmSpaceWeather.o wmSpaceWeather
+ 
+ wmSpaceWeather.o: wmSpaceWeather_master.xpm wmSpaceWeather_mask.xbm
+ wmSpaceWeather:	$(OBJS) 
+-	$(CC) $(COPTS) $(SYSTEM) -o wmSpaceWeather $^ $(INCDIR) $(LIBDIR) $(LIBS)
++	$(CC) $(CFLAGS) -o wmSpaceWeather $^ $(INCDIR) -L$(LIBDIR) $(LDFLAGS) $(LIBS)
+ 
+ clean:
+ 	for i in $(OBJS) ; do \
+@@ -28,10 +28,10 @@
+ 	rm -f wmSpaceWeather
+ 
+ install:: wmSpaceWeather
+-	install -d $(DESTDIR)/usr/bin
+-	install -d $(DESTDIR)/usr/share/wmspaceweather
+-	install -d $(DESTDIR)/usr/share/man/man1 
+-	install -m 0755 wmSpaceWeather $(DESTDIR)/usr/bin
+-	install -m 0755 GetKp $(DESTDIR)/usr/share/wmspaceweather
+-	install -m 0644 wmSpaceWeather.1 $(DESTDIR)/usr/share/man/man1 
++	install -d $(DESTDIR)$(PREFIX)/bin
++	install -d $(DESTDIR)$(PREFIX)/share/wmspaceweather
++	install -d $(DESTDIR)$(PREFIX)/share/man/man1 
++	install -m 0755 wmSpaceWeather $(DESTDIR)$(PREFIX)/bin
++	install -m 0755 GetKp $(DESTDIR)$(PREFIX)/share/wmspaceweather
++	install -m 0644 wmSpaceWeather.1 $(DESTDIR)$(PREFIX)/share/man/man1
+ 
+--- wmSpaceWeather/wmSpaceWeather.c.orig	2008-01-28 03:16:36.000000000 +0100
++++ wmSpaceWeather/wmSpaceWeather.c	2008-01-28 03:22:12.000000000 +0100
+@@ -663,7 +663,7 @@
+     if (GotDoubleClick1) {
+         GotFirstClick1 = 0;
+         GotDoubleClick1 = 0;
+-        sprintf(Command, "sensible-browser '%s' &", URL);
++	sprintf(Command, "firefox -remote 'openURL(%s)'", URL);
+         system(Command);
+     }
+ 

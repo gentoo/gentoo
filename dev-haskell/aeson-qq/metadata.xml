@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		@aeson-qq@ provides a JSON quasiquoter for Haskell.
+		
+		This package exposes the function `aesonQQ` that compile-time
+		converts a string representation of a JSON value into a
+		`Data.Aeson.Value`.  `aesonQQ` has the signature
+		
+		&gt;aesonQQ :: QuasiQuoter
+		
+		Consult the @README@ for documentation:
+		&lt;https://github.com/zalora/aeson-qq#readme&gt;
+	</longdescription>
+	<upstream>
+		<remote-id type="github">zalora/aeson-qq</remote-id>
+	</upstream>
+</pkgmetadata>

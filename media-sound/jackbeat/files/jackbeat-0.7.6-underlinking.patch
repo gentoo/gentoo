@@ -1,0 +1,17 @@
+http://bugs.gentoo.org/508988
+
+jackbeat-builder.o:builder.c:function gui_builder_connect_func: error: undefined reference to 'g_module_symbol'
+jackbeat-builder.o:builder.c:function gui_builder_connect_func: error: undefined reference to 'g_module_supported'
+jackbeat-builder.o:builder.c:function gui_builder_connect_func: error: undefined reference to 'g_module_open'
+
+--- configure.ac
++++ configure.ac
+@@ -86,7 +86,7 @@
+ AC_SUBST(PULSE_LIBS)
+ AM_CONDITIONAL(HAVE_PULSE, [test "$have_pulse" = "1"])
+ 
+-PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.12, [have_pkg_gtk=true], true)
++PKG_CHECK_MODULES(GTK, gmodule-2.0 gtk+-2.0 >= 2.12, [have_pkg_gtk=true], true)
+ 
+ if test x$have_pkg_gtk = xtrue
+ then

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <longdescription lang="en">
+    A collection of tools to download books from
+    google books' "book preview",
+    amazon's "look inside the book",
+    barnes and noble's "book viewer",
+    optionally using tesseract to produce OCRed pdf or djvu.
+  </longdescription>
+  <use>
+    <flag name="ocr">Use <pkg>app-text/tesseract</pkg> for optical character recognition</flag>
+  </use>
+</pkgmetadata>

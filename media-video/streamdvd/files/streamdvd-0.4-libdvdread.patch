@@ -1,0 +1,36 @@
+diff -N -r -u StreamDVD-0.4/contrib/lsdvd/lsdvd.c new/contrib/lsdvd/lsdvd.c
+--- StreamDVD-0.4/contrib/lsdvd/lsdvd.c	2004-03-08 23:10:53.000000000 +0100
++++ new/contrib/lsdvd/lsdvd.c	2006-03-31 12:57:43.000000000 +0200
+@@ -14,6 +14,8 @@
+  *              output info structures in form of a Perl module, by Henk Vergonet.
+  *  2004-02-25  now prints the stream-id's for audio and subpicture streams, by Reinhardt Wolf
+  */
++#define __STDC_LIMIT_MACROS
++#include <stdint.h>
+ #include <dvdread/ifo_read.h>
+ #include <string.h>
+ #include <sys/stat.h>
+diff -N -r -u StreamDVD-0.4/contrib/StreamAnalyze/streamanalyze.c new/contrib/StreamAnalyze/streamanalyze.c
+--- StreamDVD-0.4/contrib/StreamAnalyze/streamanalyze.c	2004-03-08 23:10:53.000000000 +0100
++++ new/contrib/StreamAnalyze/streamanalyze.c	2006-03-31 12:57:27.000000000 +0200
+@@ -19,6 +19,8 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <getopt.h>
++#define __STDC_LIMIT_MACROS
++#include <stdint.h>
+ #include <dvdread/ifo_read.h>
+ #include <dvdread/ifo_types.h>
+ #include <dvdread/dvd_reader.h>
+diff -N -r -u StreamDVD-0.4/streamdvd.c new/streamdvd.c
+--- StreamDVD-0.4/streamdvd.c	2004-03-08 23:10:53.000000000 +0100
++++ new/streamdvd.c	2006-03-31 12:50:45.000000000 +0200
+@@ -19,6 +19,8 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <getopt.h>
++#define __STDC_LIMIT_MACROS
++#include <stdint.h>
+ #include <dvdread/ifo_read.h>
+ #include <dvdread/ifo_types.h>
+ #include <dvdread/dvd_reader.h>

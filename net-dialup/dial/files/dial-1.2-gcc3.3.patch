@@ -1,0 +1,13 @@
+diff -ur dial-1.2.orig/src/dial.c dial-1.2/src/dial.c
+--- dial-1.2.orig/src/dial.c	2003-11-28 13:24:13.000000000 +1300
++++ dial-1.2/src/dial.c	2003-11-28 13:25:12.000000000 +1300
+@@ -162,8 +162,7 @@
+ 		snprintf(rcfile, MAXPATHLEN, "%s/.dialrc", home);
+ #else
+ 		if (strlen(home) + strlen("/.dialrc") + 1 > MAXPATHLEN) {
+-			fprintf(stderr, "$HOME environment variable too 
+-					long\n");
++			fprintf(stderr, "$HOME environment variable too long\n");
+ 					return 1;
+ 		}
+ 		sprintf(rcfile, "%s/.dialrc", home);

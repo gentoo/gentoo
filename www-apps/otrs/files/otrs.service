@@ -1,0 +1,13 @@
+[Unit]
+Description=OTRS daemon
+
+[Service]
+Type=forking
+WorkingDirectory=/var/lib/otrs
+User=otrs
+ExecStart=/var/lib/otrs/bin/otrs.Daemon.pl start
+ExecStop=/var/lib/otrs/bin/otrs.Daemon.pl stop
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

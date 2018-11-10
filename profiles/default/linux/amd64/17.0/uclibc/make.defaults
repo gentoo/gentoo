@@ -1,0 +1,10 @@
+# Copyright 1999-2018 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="x86_64-gentoo-linux-uclibc"
+
+# Anthony G. Basile <blueness@gentoo.org> (01 Jul 2014)
+# Multilib-related setup, bug #515130
+MULTILIB_ABIS="amd64"
+CHOST_amd64="${CHOST}"
+LIBDIR_amd64="lib"

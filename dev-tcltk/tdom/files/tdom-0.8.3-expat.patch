@@ -1,0 +1,84 @@
+diff --git a/configure.in b/configure.in
+index 8e634f2..d9999cf 100644
+--- a/configure.in
++++ b/configure.in
+@@ -72,6 +72,7 @@ AC_CHECK_FUNCS(memmove bcopy)
+ #--------------------------------------------------------------------
+ 
+ TDOM_PATH_AOLSERVER
++TDOM_PATH_EXPAT
+ 
+ #-----------------------------------------------------------------------
+ # __CHANGE__
+@@ -83,10 +84,7 @@ TDOM_PATH_AOLSERVER
+ # and PKG_TCL_SOURCES.
+ #-----------------------------------------------------------------------
+ 
+-TEA_ADD_SOURCES([expat/xmlrole.c     \
+-                 expat/xmltok.c      \
+-                 expat/xmlparse.c    \
+-                 generic/xmlsimple.c \
++TEA_ADD_SOURCES([generic/xmlsimple.c \
+                  generic/utf8conv.c  \
+                  generic/dom.c       \
+                  generic/domhtml.c   \
+@@ -99,7 +97,7 @@ TEA_ADD_SOURCES([expat/xmlrole.c     \
+                  generic/tclexpat.c  \
+                  generic/tdomStubInit.c])
+ TEA_ADD_HEADERS([generic/tdom.h])
+-TEA_ADD_INCLUDES([-I${srcdir}/generic -I${srcdir}/expat ${AOL_INCLUDES}])
++TEA_ADD_INCLUDES([-I${srcdir}/generic ${AOL_INCLUDES}])
+ TEA_ADD_LIBS([${AOL_LIBS}])
+ TEA_ADD_CFLAGS([])
+ TEA_ADD_STUB_SOURCES([generic/tdomStubLib.c])
+diff --git a/tdom.m4 b/tdom.m4
+index f5ecd98..fcab883 100644
+--- a/tdom.m4
++++ b/tdom.m4
+@@ -216,6 +216,46 @@ AC_DEFUN(TDOM_PATH_AOLSERVER, [
+     fi
+ ])
+ 
++
++AC_DEFUN(TDOM_PATH_EXPAT, [
++    AC_MSG_CHECKING([for expat])
++    AC_ARG_WITH(expat, 
++        AC_HELP_STRING([--with-expat],
++            [directory with expat installation]), , [with_expat=no])
++
++    AC_CACHE_VAL(ac_cv_c_expat,[
++    case $with_expat in
++	no) ;;
++	yes)
++	    for f in /usr/local /usr; do
++	        if test -f "$f/include/expat.h" ; then
++		    ac_cv_c_expat=`(cd $f; pwd)`
++		    break
++		fi
++	    done
++	    ;;
++	*)
++	    if test -f "$with_expat/include/expat.h"; then
++		ac_cv_c_expat=`(cd $with_expat; pwd)`
++	    else
++        	AC_MSG_ERROR([${with_expat} directory doesn't contain expat.h])
++	    fi
++    esac
++    ])
++    if test x"${ac_cv_c_expat}" = x ; then
++        AC_MSG_RESULT([using local copy])
++	TEA_ADD_SOURCES([expat/xmlrole.c     \
++                 	 expat/xmltok.c      \
++	                 expat/xmlparse.c])
++	TEA_ADD_INCLUDES([-I${srcdir}/expat])
++    else
++        AC_MSG_RESULT([${ac_cv_c_expat}])
++	TEA_ADD_INCLUDES(${ac_cv_c_expat}/include)
++	TEA_ADD_LIBS([-lexpat])
++    fi
++])
++
++
+ #------------------------------------------------------------------------
+ # TDOM_PATH_CONFIG --
+ #

@@ -1,0 +1,20 @@
+--- pythia8209/examples/Makefile.orig	2015-06-04 22:21:53.000000000 +0300
++++ pythia8209/examples/Makefile	2015-06-05 05:35:25.324262331 +0300
+@@ -139,3 +139,17 @@
+ 	rm -f test[0-9][0-9][0-9]; rm -f out[0-9][0-9][0-9];\
+ 	rm -f weakbosons.lhe; rm -f Pythia8.promc; rm -f hist.root;\
+ 	rm -f *~; rm -f \#*; rm -f core*; rm -f *Dct.*
++	rm -f main*out *.dat
++
++# Run tests, inject test-specific arguments when needed
++main%.out: main%
++	./$< \
++	    $(if $(findstring $*,16 42 43 $(shell seq 81 89)), main$*.cmnd) \
++	    $(if $(findstring $*,         $(shell seq 81 83)), w+_production_lhc_0.lhe) \
++	    $(if $(findstring $*,                         84), hepmcout84.dat 2 w+_production_lhc) \
++	    $(if $(findstring $*,         $(shell seq 85 88)), w_production) \
++	    $(if $(findstring $*,   42 43 $(shell seq 81 89)), histout$*.dat) \
++	    > $@
++
++main89.out: main89
++	$(foreach cmd, $(wildcard main89*.cmnd), ./$< $(cmd) histout-$(cmd).dat >> $@ || exit;)

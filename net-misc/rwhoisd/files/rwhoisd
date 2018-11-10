@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+
+depend() {
+	use logger
+}
+
+start() {
+	ebegin "Starting rwhoisd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/rwhoisd -- ${RWHOISD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping rwhoisd"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/rwhoisd
+	eend $?
+}

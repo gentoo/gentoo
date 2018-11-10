@@ -1,0 +1,17 @@
+make the code work on x86/PIC.  this code is only used in the demo,
+and the overhead of always running this is system noise, so don't
+bother bracketing with __i386__/__PIC__ defines.
+
+http://bugs.gentoo.org/456238
+
+--- a/clearcache.c
++++ b/clearcache.c
+@@ -57,7 +57,7 @@ void clearcache(unsigned char *mem, unsigned size)
+ #if defined(__i386__) || defined(__x86_64__)
+ 	unsigned i, cl, eax, feat;
+ 	/* get clflush unit and feature */
+-	asm("cpuid" : "=a" (eax), "=b" (cl), "=d" (feat) : "0" (1) : "cx");
++	asm("xchg %%ebx, %%esi; cpuid; xchg %%esi, %%ebx;" : "=a" (eax), "=S" (cl), "=d" (feat) : "0" (1) : "cx");
+ 	if (!(feat & (1 << 19)))
+ 		fallback_clearcache();
+ 	cl = ((cl >> 8) & 0xff) * 8;

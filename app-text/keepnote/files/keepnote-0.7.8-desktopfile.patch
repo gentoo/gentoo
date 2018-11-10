@@ -1,0 +1,30 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Tue Aug 14 07:08:05 UTC 2012
+Subject: desktop file
+
+respect fd.o desktop entry spec
+
+# desktop-file-validate keepnote.desktop
+keepnote.desktop: warning: key "Encoding" in group "Desktop Entry" is deprecated
+keepnote.desktop: warning: value "Note-taking Application" for key "Comment" in group "Desktop Entry" looks redundant with value "Note-taking Application" of key "GenericName"
+keepnote.desktop: warning: value "Program na spr?vu pozn?mok" for key "Comment[sk]" in group "Desktop Entry" looks redundant with value "Program na spr?vu pozn?mok" of key "GenericName[sk]"
+keepnote.desktop: error: value "Office" for string list key "Categories" in group "Desktop Entry" does not have a semicolon (';') as trailing character
+
+--- desktop/keepnote.desktop
++++ desktop/keepnote.desktop
+@@ -1,14 +1,11 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Type=Application
+ Name=KeepNote
+ GenericName=Note-taking Application
+ GenericName[sk]=Program na správu poznámok
+-Comment=Note-taking Application
+-Comment[sk]=Program na správu poznámok
+ Icon=keepnote
+ Exec=keepnote %f
+-Categories=Office
++Categories=Office;
+ #MimeType=
+ Terminal=false
+ StartupNotify=false

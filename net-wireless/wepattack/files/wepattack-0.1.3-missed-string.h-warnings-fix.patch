@@ -1,0 +1,30 @@
+--- a/src/modes.c
++++ b/src/modes.c
+@@ -20,6 +20,7 @@
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <string.h>
+ #include "modes.h"
+ #include "rc4.h"
+ #include "wlan/wlan_compat.h"
+--- a/src/wepattack.c
++++ b/src/wepattack.c
+@@ -32,6 +32,7 @@
+ #include <zlib.h>
+ #include <math.h>
+ #include <signal.h>
++#include <string.h>
+ #include "wepattack.h"
+ #include "wepfilter.h"
+ #include "log.h"
+--- a/src/verify.c
++++ b/src/verify.c
+@@ -19,6 +19,7 @@
+ 
+ #include <stdio.h>
+ #include <zlib.h>
++#include <string.h> /* memcmp() */
+ 
+ int verify_crc32(unsigned char *data, int length, unsigned long* crc) {
+ 

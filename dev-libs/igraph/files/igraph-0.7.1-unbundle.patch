@@ -1,0 +1,269 @@
+diff --git a/configure.ac b/configure.ac
+index acf76cd..a9db7bd 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -167,7 +167,8 @@ if test "x$enable_gmp" != "xno"; then
+     AC_CHECK_HEADER([gmp.h], [
+       AC_DEFINE([HAVE_GMP], [1], [Define to 1 if you have the GMP library])
+       gmp_support=yes
+-      LDFLAGS="${LDFLAGS} -lgmp"
++      GMP_LIBS="-lgmp"
++      AC_SUBST(GMP_LIBS)
+       PKGCONFIG_LIBS_PRIVATE="${PKGCONFIG_LIBS_PRIVATE} -lgmp"
+     ])
+   ])
+@@ -231,24 +232,16 @@ else
+ fi
+ 
+ if test "$internal_blas" = "no"; then
+-  AC_CHECK_LIB([blas], [daxpy_], [],
+-     AC_CHECK_LIB([blas], [daxpy], [],
+-        AC_CHECK_LIB([blas], [DAXPY_], [],
+-           AC_CHECK_LIB([blas], [DAXPY], [],
+-	      [AC_MSG_RESULT(not found, trying to use -lblas anyway.)]))))
+-  LDFLAGS="${LDFLAGS} -lblas"
++  PKG_CHECK_MODULES([BLAS],[blas])
++  CPPFLAGS="${CPPFLAGS} ${BLAS_CFLAGS}"
+   PKGCONFIG_LIBS_PRIVATE="${PKGCONFIG_LIBS_PRIVATE} -lblas"
+ else
+   AC_DEFINE([INTERNAL_BLAS], [1], [Define to 1 if you use the internal BLAS library])
+ fi
+ 
+ if test "$internal_lapack" = "no"; then
+-  AC_CHECK_LIB([lapack], [dlarnv_], [],
+-     AC_CHECK_LIB([lapack], [dlarnv], [],
+-        AC_CHECK_LIB([lapack], [DLARNV_], [],
+-           AC_CHECK_LIB([lapack], [DLARNV], [],
+-	      [AC_MSG_RESULT(not found, trying to use -llapack anyway.)]))))
+-  LDFLAGS="${LDFLAGS} -llapack"
++  PKG_CHECK_MODULES([LAPACK],[lapack])
++  CPPFLAGS="${CPPFLAGS} ${LAPACK_CFLAGS}"
+   PKGCONFIG_LIBS_PRIVATE="${PKGCONFIG_LIBS_PRIVATE} -llapack"
+ else
+   AC_DEFINE([INTERNAL_LAPACK], [1], [Define to 1 if you use the internal LAPACK library])
+@@ -258,17 +251,15 @@ if test "$internal_arpack" = "no"; then
+   if test "$tls_support" = "yes"; then
+     AC_MSG_ERROR([Thread-local storage only supported with internal ARPACK library])
+   fi
+-  AC_CHECK_LIB([arpack], [dsaupd_], [],
+-     AC_CHECK_LIB([arpack], [dsaupd], [],
+-        AC_CHECK_LIB([arpack], [DSAUPD_], [],
+-           AC_CHECK_LIB([arpack], [DSAUPD], [],
+-	      [AC_MSG_RESULT(not found, trying to use -larpack anyway.)]))))
+-  LDFLAGS="${LDFLAGS} -larpack"
++  PKG_CHECK_MODULES([ARPACK],[arpack])
++  CPPFLAGS="${CPPFLAGS} ${ARPACK_CFLAGS}"
+   PKGCONFIG_LIBS_PRIVATE="${PKGCONFIG_LIBS_PRIVATE} -larpack"
+ else
+   AC_DEFINE([INTERNAL_ARPACK], [1], [Define to 1 if you use the internal ARPACK library])
+ fi
+ 
++PKG_CHECK_MODULES([CS],[cxsparse])
++
+ glpk_support=no
+ AC_ARG_ENABLE(glpk, AC_HELP_STRING([--disable-glpk], [Compile without the GLPK library]))
+ if test "x$enable_glpk" != "xno"; then
+@@ -283,7 +274,8 @@ if test "x$enable_glpk" != "xno"; then
+         ], [
+           AC_DEFINE([HAVE_GLPK], [1], [Define to 1 if you have the GLPK library])
+           glpk_support=yes
+-          LDFLAGS="${LDFLAGS} -lglpk"
++          GLPK_LIBS="-lglpk"
++          AC_SUBST(GLPK_LIBS)
+           PKGCONFIG_LIBS_PRIVATE="${PKGCONFIG_LIBS_PRIVATE} -lglpk"
+         ])
+       ])
+diff --git a/examples/simple/igraph_arpack_rnsolve.out b/examples/simple/igraph_arpack_rnsolve.out
+index ec38497..6603034 100644
+--- a/examples/simple/igraph_arpack_rnsolve.out
++++ b/examples/simple/igraph_arpack_rnsolve.out
+@@ -16,7 +16,7 @@
+ ---
+ 22.0483 0
+ -21.3281 0
+--3.00735 -19.2957
++-3.00735 19.2957
+ ---
+ 0.373224 0.226696 0.204213 0.0473383
+ -0.289145 -0.296079 -0.0479785 0.156365
+@@ -31,7 +31,7 @@
+ ---
+ -21.3281 0
+ -12.4527 0
+--3.00735 -19.2957
++-3.00735 19.2957
+ ---
+ -0.226696 0.695866 -0.204213 -0.0473383
+ 0.296079 0.120213 0.0479785 -0.156365
+@@ -46,7 +46,7 @@
+ ---
+ -3.00735 19.2957
+ -3.00735 -19.2957
+-12.1099 6.27293
++12.1099 -6.27293
+ ---
+ 0.0768616 -0.195028 -0.152389 0.21912
+ 0.147607 0.0704569 0.346547 0.125122
+diff --git a/examples/simple/igraph_layout_merge2.out b/examples/simple/igraph_layout_merge2.out
+index dfe2c22..9fe81bf 100644
+--- a/examples/simple/igraph_layout_merge2.out
++++ b/examples/simple/igraph_layout_merge2.out
+@@ -1,13 +1,13 @@
+--2.73912 -2.95429
+--0.479512 -4.00008
+-1.96326 -3.51798
+-3.65613 -1.69214
+-3.95248 0.780051
+-2.73912 2.95429
+-0.479512 4.00008
+--1.96326 3.51798
+--3.65613 1.69214
+--3.95248 -0.780051
++-2.55311 -3.13964
++-0.22007 -4.0407
++2.19703 -3.39835
++3.77493 -1.45795
++3.91094 1.03935
++2.55311 3.13964
++0.22007 4.0407
++-2.19703 3.39835
++-3.77493 1.45795
++-3.91094 -1.03935
+ -1.6061 6.30088
+ -4.92661 5.80435
+ -3.69637 8.92826
+diff --git a/examples/simple/igraph_sparsemat2.c b/examples/simple/igraph_sparsemat2.c
+index c39d0e5..fdfd264 100644
+--- a/examples/simple/igraph_sparsemat2.c
++++ b/examples/simple/igraph_sparsemat2.c
+@@ -21,7 +21,7 @@
+ 
+ */
+ 
+-#include <cs/cs.h>
++#include <cs.h>
+ #include <igraph.h>
+ #include <igraph_sparsemat.h>
+ #include <igraph_blas_internal.h>
+diff --git a/examples/simple/igraph_sparsemat3.c b/examples/simple/igraph_sparsemat3.c
+index 630bf1a..b23cbe1 100644
+--- a/examples/simple/igraph_sparsemat3.c
++++ b/examples/simple/igraph_sparsemat3.c
+@@ -21,7 +21,7 @@
+ 
+ */
+ 
+-#include <cs/cs.h>
++#include <cs.h>
+ #include <igraph.h>
+ #include <igraph_sparsemat.h>
+ 
+diff --git a/examples/simple/igraph_sparsemat4.c b/examples/simple/igraph_sparsemat4.c
+index 4d85bde..7497faf 100644
+--- a/examples/simple/igraph_sparsemat4.c
++++ b/examples/simple/igraph_sparsemat4.c
+@@ -21,7 +21,7 @@
+ 
+ */
+ 
+-#include <cs/cs.h>
++#include <cs.h>
+ #include <igraph.h>
+ #include <igraph_sparsemat.h>
+ 
+diff --git a/src/Makefile.am b/src/Makefile.am
+index e7085c5..194f4a0 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -9,9 +9,6 @@ AM_YFLAGS = -d
+ 
+ lib_LTLIBRARIES         = libigraph.la
+ 
+-include lapack/blas.inc
+-include lapack/lapack.inc
+-include lapack/arpack.inc
+ include plfit/plfit.inc
+ 
+ F2C =	f2c/abort_.c	  f2c/dolio.c	    f2c/r_sin.c\
+@@ -99,8 +96,6 @@ if INTERNAL_ARPACK
+   ARPACK_LIB = libarpack.la
+ endif
+ 
+-include ../optional/glpk/glpk.inc
+-
+ if INTERNAL_GLPK
+   libglpk_la_SOURCES = 	$(GLPK)
+   libglpk_la_CFLAGS = -I$(top_srcdir)/optional/glpk
+@@ -255,7 +250,7 @@ SOURCES = 		     basic_query.c games.c cocitation.c iterators.c \
+ 			     drl_layout_3d.cpp drl_graph_3d.cpp \
+ 			     DensityGrid_3d.cpp \
+ 			     foreign-dl-parser.y foreign-dl-lexer.l \
+-			     $(CS) sparsemat.c mixing.c bigint.c bignum.c \
++			     sparsemat.c mixing.c bigint.c bignum.c \
+ 			     version.c optimal_modularity.c \
+ 			     igraph_fixed_vectorlist.c separators.c \
+ 			     igraph_marked_queue.c igraph_estack.c st-cuts.c \
+@@ -274,8 +269,8 @@ libigraph_la_SOURCES       = $(SOURCES) $(HEADERS_PRIVATE)
+ libigraph_la_CFLAGS        = -I$(top_srcdir)/include -I$(top_builddir)/include $(WARNING_CFLAGS)
+ libigraph_la_CXXFLAGS	   = -I$(top_srcdir)/include -I$(top_builddir)/include $(WARNING_CFLAGS)
+ libigraph_la_LDFLAGS       = -no-undefined
+-libigraph_la_LIBADD        = -lm $(XML2_LIBS) $(F2C_LIB) $(BLAS_LIB) \
+-				 $(LAPACK_LIB) $(ARPACK_LIB) $(GLPK_LIB) $(PRPACK_LIB) \
++libigraph_la_LIBADD        = -lm $(XML2_LIBS) $(F2C_LIB) $(BLAS_LIBS) $(GMP_LIBS) \
++				 $(LAPACK_LIBS) $(ARPACK_LIBS) $(GLPK_LIBS) $(PRPACK_LIB) $(CS_LIBS) \
+ 				 $(PLFIT_LIB)
+ 
+ if INTERNAL_GLPK
+diff --git a/src/sparsemat.c b/src/sparsemat.c
+index f96d022..6990c91 100644
+--- a/src/sparsemat.c
++++ b/src/sparsemat.c
+@@ -23,7 +23,7 @@
+ 
+ #include "config.h"
+ 
+-#include "cs/cs.h"
++#include "cs.h"
+ 
+ #include "igraph_sparsemat.h"
+ #include "igraph_error.h"
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 6da83b2..c0b82d6 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -13,7 +13,7 @@ $(srcdir)/package.m4: $(top_srcdir)/configure.ac
+ 	  echo 'm4_define([AT_PACKAGE_BUGREPORT], [@PACKAGE_BUGREPORT@])'; \
+ 	} >$(srcdir)/package.m4
+ 
+-EXTRA_DIST += package.m4
++#EXTRA_DIST += package.m4
+ 
+ TESTSUITE_AT = \
+ 	testsuite.at \
+diff --git a/tests/mt.at b/tests/mt.at
+index 050974a..9558d6f 100644
+--- a/tests/mt.at
++++ b/tests/mt.at
+@@ -29,5 +29,5 @@ AT_CLEANUP
+ AT_SETUP([Thread-safe ARPACK:])
+ AT_KEYWORDS([thread-safe ARPACK])
+ AT_COMPILE_CHECK([simple/tls2.c], [simple/tls2.out], [], [internal], 
+-                 [-lpthread])
++                 [-lpthread $(${PKG_CONFIG} --libs arpack)])
+ AT_CLEANUP
+diff --git a/tests/types.at b/tests/types.at
+index f80a6a2..29ac739 100644
+--- a/tests/types.at
++++ b/tests/types.at
+@@ -133,7 +133,7 @@ AT_CLEANUP
+ AT_SETUP([Sparse matrix, multiplications (igraph_sparsemat_t): ])
+ AT_KEYWORDS([sparse matrix igraph_sparsemat_t])
+ AT_COMPILE_CHECK([simple/igraph_sparsemat2.c], [simple/igraph_sparsemat2.out],
+-                 [], [INTERNAL], [-lblas])
++                 [], [INTERNAL], [$(${PKG_CONFIG} --libs blas)])
+ AT_CLEANUP
+ 
+ AT_SETUP([Sparse matrix, indexing (igraph_sparsemat_t): ])
+-- 
+2.0.0
+

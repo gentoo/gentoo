@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arfrever.fta@gmail.com</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Neon is an HTTP and WebDAV client library for Unix systems, with a C
+		language API. It provides high-level interfaces to HTTP/1.1 and WebDAV
+		methods, and a low-level interface to HTTP request/response handling,
+		allowing new methods to be easily implemented.
+	</longdescription>
+	<longdescription lang="ja">
+		neon は Unix システムにおける HTTP 及び WebDAV クライアント・ライブラリ
+		であり、C言語 API です。HTTP/1.1 及び WebDAV のメソッドという高い視点
+		でのインターフェイス、HTTP リクエスト/レスポンス のハンドリングという
+		低い視点でのインターフェイス、簡単に実装できるようにした新しいメソッド
+		といったものを提供します。
+	</longdescription>
+	<use>
+		<flag name="libproxy">Add support for <pkg>net-libs/libproxy</pkg></flag>
+		<flag name="pkcs11">Add support for PKCS#11 using <pkg>dev-libs/pakchois</pkg></flag>
+	</use>
+</pkgmetadata>

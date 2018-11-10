@@ -1,0 +1,34 @@
+From 0f8700f022c9917336919b35a93883a660144516 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Mon, 17 Oct 2016 00:07:59 +0200
+Subject: [PATCH] Fix compilation with --disable-nls
+
+---
+ src/i18n.h | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/src/i18n.h b/src/i18n.h
+index c8134a7..efce469 100644
+--- a/src/i18n.h
++++ b/src/i18n.h
+@@ -31,6 +31,17 @@
+ 	#include <libintl.h>
+ 	#include <glib/gi18n.h>
+ #else /* NLS is disabled */
++	// In certain environments, some standard headers like <iomanip>
++	// and <locale> include libintl.h. If libintl.h is included after
++	// gettext macros below are defined, it causes a syntax error
++	// at the declaration of the gettext function in libintl.h.
++	//
++	// Fix this by including such a header before defining the macro.
++	//
++	// Note that libintl.h cannot be included directly since in the
++	// ENABLE_NLS=0 case it cannot be assumed that gettext is installed.
++	#include <locale>
++
+ 	#define _(String) (String)
+ 	#define N_(String) (String)
+ 	#define textdomain(String) (String)
+-- 
+2.10.0
+

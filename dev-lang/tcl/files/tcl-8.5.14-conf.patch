@@ -1,0 +1,11 @@
+--- a/unix/tcl.m4
++++ b/unix/tcl.m4
+@@ -1427,7 +1427,7 @@ dnl AC_CHECK_TOOL(AR, ar)
+ 	    # get rid of the warnings.
+ 	    #CFLAGS_OPTIMIZE="${CFLAGS_OPTIMIZE} -D__NO_STRING_INLINES -D__NO_MATH_INLINES"
+ 
+-	    SHLIB_LD='${CC} -shared ${CFLAGS} ${LDFLAGS}'
++	    SHLIB_LD='${CC} -shared ${CFLAGS} ${LDFLAGS} -fPIC -Wl,-soname,${@}'
+ 	    DL_OBJS="tclLoadDl.o"
+ 	    DL_LIBS="-ldl"
+ 	    LDFLAGS="$LDFLAGS -Wl,--export-dynamic"

@@ -1,0 +1,20 @@
+# Copyright 1999-2015 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of GRUB_PLATFORMS USE_EXPAND flags.
+
+# Keep it sorted.
+
+coreboot - Coreboot platform support
+efi-32 - EFI 32 bit platform support (Old MACs)
+efi-64 - EFI 64 bit platform support
+emu - Emulation platform support
+ieee1275 - IEEE1275 platform support
+loongson - MIPS loongson platform support
+multiboot - Multiboot platform support
+pc - PC platform support
+qemu - QEMU platform support
+qemu-mips - QEMU MIPS platform support
+uboot - U-Boot platform support
+xen - XEN (pvgrub2) platform support
+xen-32 - Build 32-bit XEN (pvgrub2) platform support on amd64

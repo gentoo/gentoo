@@ -1,0 +1,11 @@
+--- test/test_tfits.c	2006-04-27 14:08:43.000000000 +0100
++++ test/test_tfits.c.new	2007-02-23 00:29:41.000000000 +0000
+@@ -322,7 +322,7 @@
+      *    Test on BINARY tables
+      */
+     say("Test the BINARY table") ;
+-    strcat(filename, srcdir) ;
++    strcpy(filename, srcdir) ;
+     strcat(filename, BIN_TABLE_NAME) ;
+     err += qfits_test_table(filename, 1) ;    
+     

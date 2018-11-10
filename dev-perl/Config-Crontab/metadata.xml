@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Config-Crontab</remote-id>
+    <remote-id type="cpan-module">Config::Crontab</remote-id>
+    <remote-id type="cpan-module">Config::Crontab::Base</remote-id>
+    <remote-id type="cpan-module">Config::Crontab::Block</remote-id>
+    <remote-id type="cpan-module">Config::Crontab::Comment</remote-id>
+    <remote-id type="cpan-module">Config::Crontab::Container</remote-id>
+    <remote-id type="cpan-module">Config::Crontab::Env</remote-id>
+    <remote-id type="cpan-module">Config::Crontab::Event</remote-id>
+  </upstream>
+</pkgmetadata>

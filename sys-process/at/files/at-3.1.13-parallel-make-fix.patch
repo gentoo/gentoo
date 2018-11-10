@@ -1,0 +1,11 @@
+--- at-3.1.13_orig/Makefile.in	2011-06-25 14:43:14.000000000 +0200
++++ at-3.1.13/Makefile.in	2012-03-16 17:23:26.210267660 +0100
+@@ -73,7 +73,7 @@
+ atd: $(RUNOBJECTS)
+ 	$(CC) $(CFLAGS) -o atd $(RUNOBJECTS) $(LIBS) $(PAMLIB)
+ 
+-y.tab.c y.tab.h: parsetime.y
++%.tab.c %.tab.h: parsetime.y
+ 	$(YACC) -d parsetime.y
+ 
+ lex.yy.c: parsetime.l

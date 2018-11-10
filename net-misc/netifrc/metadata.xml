@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>netifrc@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		This package contains the Gentoo network interface management
+		scripts, which were separated from OpenRC.
+	</longdescription>
+</pkgmetadata>

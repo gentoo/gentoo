@@ -1,0 +1,64 @@
+.TH stargazer 8 "December 31, 2012" "" "stargazer"
+
+.SH NAME
+stargazer \- a powerfull billing system daemon
+
+.SH SYNOPSIS
+.B stargazer
+.RI [ config-directory ]
+.br
+
+.SH DESCRIPTION
+This manual page explains the
+.B stargazer
+daemon. This daemon address ISP user accounting and billing problems.
+.PP
+.B Stargazer
+is capable of:
+.PP
+- manage user accounts using several kinds of stores (plain files, MySQL, Firebird, 
+PostgreSQL)
+.br
+- gather traffic flow information using several methods (Netflow protocol, rawsocket
+ethernet packets capture, netfilter IPQ capture)
+.br
+- bill user accounts according to rate rules and traffic classification
+.br
+- authentificate and authorize users to get access to the internet
+
+.SH OPTIONS
+.TP
+.I config-directory
+Path to directory containing stargazer configuration files. Default is 
+.B
+/etc/stargazer
+
+.SH FILES
+.B
+/usr/sbin/stargazer
+.br
+.B
+/etc/stargazer/
+.br
+.B
+/var/lib/stargazer/
+.br
+.B
+/var/log/stargazer/stargazer.log
+.br
+.B
+/var/log/stargazer/xmlrpc.log
+
+.SH SEE ALSO
+.BR sgconf (1),
+.BR sgconf_xml (1),
+.BR sgconv (1),
+.BR sgauth (8),
+.BR rscriptd (8).
+
+.SH AUTHOR
+stargazer was initially written by Boris Mikhailenko <stg34@stargazer.dp.ua>.
+.PP
+This manual page was written by Alexey Osipov <simba@lerlan.ru>,
+for the Debian project (and may be used by others), and was modified by
+Vladimir Pavljuchenkov <spiderx@spiderx.dp.ua> for Gentoo Linux

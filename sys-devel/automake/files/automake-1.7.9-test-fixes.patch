@@ -1,0 +1,46 @@
+Fix the tests so they don't fail :)
+
+exdir2 man2 transform: #159557 #162565
+grab updates from newer automake
+
+mkdir-tests.m4:
+when mixing newer gettext with this automake, the tests bomb out
+as AM_PROG_MKDIR_P is not provided properly
+
+--- automake-1.7.9/tests/man2.test
++++ automake-1.7.9/tests/man2.test
+@@ -41,7 +41,7 @@
+ $AUTOMAKE
+ 
+ # Let's play with $DESTDIR too, it shouldn't hurt.
+-./configure --prefix=''
++./configure --prefix='' --mandir=/man
+ DESTDIR="`pwd`/_inst" $MAKE -e install
+ 
+ test -f ./_inst/man/man2/foo.2
+--- automake-1.7.9/tests/transform.test
++++ automake-1.7.9/tests/transform.test
+@@ -56,7 +56,7 @@
+ $AUTOCONF
+ $AUTOMAKE
+ 
+-./configure --program-prefix=gnu- --prefix `pwd`/inst
++./configure --program-prefix=gnu- --prefix `pwd`/inst --mandir `pwd`/inst/man
+ $MAKE
+ $MAKE test-install
+ $MAKE uninstall
+--- automake-1.7.9/tests/exdir2.test
++++ automake-1.7.9/tests/exdir2.test
+@@ -23,7 +23,7 @@
+ . ./defs || exit 1
+ 
+ cat > Makefile.am << 'EOF'
+-html_DATA = zot.html
++quuz_DATA = zot.html
+ pkgdata_DATA = qbert
+ EOF
+ 
+--- automake-1.7.9/m4/mkdir-tests.m4
++++ automake-1.7.9/m4/mkdir-tests.m4
+@@ -0,0 +1 @@
++AC_DEFUN([AM_PROG_MKDIR_P])

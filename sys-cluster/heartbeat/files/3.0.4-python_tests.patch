@@ -1,0 +1,29 @@
+--- a/cts/Makefile.am
++++ b/cts/Makefile.am
+@@ -21,7 +21,7 @@
+ 
+ ctsdir		= @HA_NOARCHDATAHBDIR@/cts
+ 
+-cts_PYTHON	=				\
++cts_SCRIPTS	=				\
+ 			CM_fs.py		\
+ 			CM_hb.py		\
+ 			CM_LinuxHAv2.py		\
+@@ -32,14 +32,12 @@
+ 			extracttests.py		\
+ 			getpeinputs.sh		\
+ 			OCFIPraTest.py		\
+-			CIB.py
++			CIB.py			\
++			CTSproxy.py		\
++			LSBDummy
+ 
+ cts_DATA	=	README
+ 
+-cts_SCRIPTS	=				\
+-			CTSproxy.py		\
+-			getpeinputs.sh		\
+-			LSBDummy
+ 
+ all-local: $(cts_PYTHON)
+ 

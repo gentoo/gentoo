@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<name>Oz Tiram</name>
+	<email>oz.tiram@gmail.com</email>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<longdescription lang="en">
+	Python compiler with full language support and CPython compatibility
+	This Python compiler achieves full language compatibility and compiles Python
+	code into compiled objects that are not second class at all. Instead they can
+	be used in the same way as pure Python objects.
+</longdescription>
+<upstream>
+	<remote-id type="github">pwman3/pwman3</remote-id>
+</upstream>
+</pkgmetadata>

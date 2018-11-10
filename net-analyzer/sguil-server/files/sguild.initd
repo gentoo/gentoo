@@ -1,0 +1,44 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+[ -z "${CONF}" ] && CONF="/etc/sguil/sguild.conf"
+[ -z "${AUTOCAT}" ] && AUTOCAT="/etc/sguil/autocat.conf"
+[ -z "${QUERIES}" ] && QUERIES="/etc/sguil/sguild.queries"
+[ -z "${USERS}" ] && USERS="/etc/sguil/sguild.users"
+[ -z "${ACCESS}" ] && AUTOCAT="/etc/sguil/sguild.access"
+
+SGUILD_OPTS="-D -c ${CONF} -u ${USERS} -A ${ACCESS}"
+
+[ -n "${OPENSSLPATH}" ] && SGUILD_OPTS="${SGUILD_OPTS} -o -C ${OPENSSLPATH}"
+
+depend() {
+	need net
+	use mysql
+}
+
+checkconfig() {
+	[ -f "${CONF}" ] || return 1	
+	[ -f "${AUTOCAT}" ] || return 1	
+	[ -f "${QUERIES}" ] || return 1
+	[ -f "${USERS}" ] || return 1
+	[ -f "${ACCESS}" ] || return 1
+	if [ -n "${OPENSSLPATH}" ]; then
+		[ -f "${OPENSSLPATH}/sguild.key" ] || return 1
+		[ -f "${OPENSSLPATH}/sguild.pem" ] || return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting sguild"
+	start-stop-daemon --start --quiet -c sguil --exec /usr/bin/sguild \
+		-- ${SGUILD_OPTS} ${EXTRA_SGUILD_OPTS} -D -P /run/sguild.pid
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping sguild"
+	start-stop-daemon --stop --quiet --pidfile /run/sguild.pid
+	eend $?
+}

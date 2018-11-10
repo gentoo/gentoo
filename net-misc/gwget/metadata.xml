@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription>Gwget2 is a gtk2 front-end for the wget program. Wget is commonly used for retrieving files from the internet, and with an easy to use gtk2 interface, gwget2 brings the utility of wget to the GNOME desktop. Gwget2 supports drag and drop from most gtk2 compatible browsers, as well as the ability to pause and continue downloads over sessions.</longdescription>
+  <longdescription lang="ja">
+Gwget2 は wget プログラムの GTK2 フロントエンドです。wget とはインターネットからファイルを回収するのに一般的に
+使われているもので、gwget2 はGNOME デスクトップへ wget ユーティリティを統合し、GTK2 インターフェイスで使い易くします。
+Gwget2 は GTK2 互換のブラウザからのドラッグ・アンド・ドロップ及びセッションを越えた停止と再開をサポートします。
+</longdescription>
+  <use>
+    <flag name="epiphany">Build epiphany extensions</flag>
+  </use>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+diff --git a/src/full/Agda/Utils/HashMap.hs b/src/full/Agda/Utils/HashMap.hs
+index 5e1da8b..7c34548 100644
+--- a/src/full/Agda/Utils/HashMap.hs
++++ b/src/full/Agda/Utils/HashMap.hs
+@@ -5,7 +5,7 @@ module Agda.Utils.HashMap
+   ) where
+ 
+ import Data.Hashable
+-import Data.HashMap.Strict as HashMap
++import Data.HashMap.Strict as HashMap (HashMap, filter, lookup, insert, delete, empty, insertWith, toList, adjust, union, unionWith, elems, fromList, (!), keys, map, unions, foldr)
+ import qualified Data.Maybe as Maybe
+ 
+ -- | Like 'Data.Map.Strict.mapMaybe'.

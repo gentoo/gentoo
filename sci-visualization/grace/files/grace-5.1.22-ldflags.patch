@@ -1,0 +1,41 @@
+Respect LDFLAGS
+
+http://bugs.gentoo.org/show_bug.cgi?id=336984
+
+--- grace-5.1.22/src/Makefile
++++ grace-5.1.22/src/Makefile
+@@ -37,10 +37,10 @@
+ include Make.dep
+ 
+ xmgrace$(EXE) : $(GROBJS) $(PARS_C) $(GUIOBJS) $(CEPHES_LIB)
+-	$(CC) $(CFLAGS) $(GROBJS) $(GUIOBJS) -o $@ $(LDFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(GROBJS) $(GUIOBJS) -o $@ $(LIBS)
+ 
+ grace$(EXE) : $(GROBJS) $(PARS_C) $(CEPHES_LIB)
+-	$(CC) $(CFLAGS) $(GROBJS) -o $@ $(LDFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(GROBJS) -o $@ $(LIBS)
+ 
+ 
+ buildinfo$(EXE) : buildinfo$(O)
+--- grace-5.1.22/auxiliary/Makefile
++++ grace-5.1.22/auxiliary/Makefile
+@@ -22,7 +22,7 @@
+ devclean : distclean
+ 
+ convcal$(EXE) : convcal.c
+-	$(CC) $(CFLAGS0) $(CPPFLAGS) -o $@ convcal.c $(NOGUI_LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS0) $(CPPFLAGS) -o $@ convcal.c $(NOGUI_LIBS)
+ 
+ install : $(AUXILIARIES) $(PROGRAMS) $(SCRIPTS)
+ 	$(MKINSTALLDIRS) $(DESTDIR)$(GRACE_HOME)/auxiliary
+--- grace-5.1.22/grconvert/Makefile
++++ grace-5.1.22/grconvert/Makefile
+@@ -23,7 +23,7 @@
+ all : $(PROG)
+ 
+ $(PROG) : $(OBJS)
+-	$(CC) -o $@ $(OBJS) $(LDFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ $(OBJS) : grconvert.h
+ 

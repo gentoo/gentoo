@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="project">
+        <email>net-mail@gentoo.org</email>
+        <name>Net-Mail</name>
+    </maintainer>
+    <use>
+        <flag name="postfix">create user with permissions for proper postfix interaction</flag>
+    </use>
+    <upstream>
+        <remote-id type="github">smtpd/qpsmtpd</remote-id>
+    </upstream>
+</pkgmetadata>

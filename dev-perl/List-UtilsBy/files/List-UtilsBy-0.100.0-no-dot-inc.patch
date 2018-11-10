@@ -1,0 +1,27 @@
+From a7ce31efae156a93136b07136aead3e44b7d4b6c Mon Sep 17 00:00:00 2001
+From: Paul Evans <leonerd-cpan@leonerd.org.uk>
+Date: Mon, 27 Feb 2017 11:05:41 +0000
+Subject: Fix test failures without '.' in @INC
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=120418
+Bug: https://bugs.gentoo.org/615096
+---
+ t/11weighted_shuffle_by.t | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/t/11weighted_shuffle_by.t b/t/11weighted_shuffle_by.t
+index 68da739..0d41639 100644
+--- a/t/11weighted_shuffle_by.t
++++ b/t/11weighted_shuffle_by.t
+@@ -4,6 +4,8 @@ use strict;
+ use warnings;
+ 
+ use Test::More;
++
++use lib ".";
+ use t::Unrandom;
+ 
+ use List::UtilsBy qw( weighted_shuffle_by );
+-- 
+2.14.3
+

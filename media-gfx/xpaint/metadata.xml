@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		XPaint is an X Window System color image bitmap editing program.
+		It also supports advanced features, such as image processing
+		algorithms, scripting and batch jobs. XPaint allows the edition
+		of multiple images simultaneously and supports a wide variety of
+		image formats, including: GIF, JPG, PNG, PPM, TIFF, XBM, XPM,
+		etc.
+
+		xpaint is now fully UTF8 compliant, and is capable of using
+		antialiased truetype fonts in its operations and in the menus
+		(in particular, translating to oriental languages should now be
+		quite easy - also the X core font protocol is no longer used
+		anywhere.)
+
+		xpaint also offers optional editing features based on
+		programmable filters and user defined procedures written as
+		scripts in plain C. The package includes a substantial list of
+		examples and some support for batch processing.
+	</longdescription>
+	<use>
+		<flag name="pgf">Support for loading PGF images</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">sf-xpaint</remote-id>
+	</upstream>
+</pkgmetadata>

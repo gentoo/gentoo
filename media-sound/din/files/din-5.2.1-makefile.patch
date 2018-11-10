@@ -1,0 +1,10 @@
+--- din-5.2.1/src/Makefile.am
++++ din-5.2.1/src/Makefile.am
+@@ -1,5 +1,5 @@
+-AM_CXXFLAGS = $(liblo_CFLAGS) $(jack_CFLAGS) $(fftw3f_CFLAGS) -I /usr/include -I /usr/local/include -I /opt/include -I/usr/include/tcl8.5 -I/usr/local/include/tcl8.5 -I /opt/include/tcl8.5 -I ../include  -Wall -O3
+-LIBS += $(liblo_LIBS) $(jack_LIBS) $(fftw3f_LIBS) -L/usr/lib/tcl8.5 -L/usr/local/lib/tcl8.5 -L /opt/lib/tcl8.5 -L /usr/lib -L /opt/lib -L /usr/local/lib -ltcl8.5 -lGL -lircclient -lrt -lX11
++AM_CXXFLAGS = $(liblo_CFLAGS) $(jack_CFLAGS) $(fftw3f_CFLAGS) -I /usr/include -I ../include  -Wall
++LIBS += $(liblo_LIBS) $(jack_LIBS) $(fftw3f_LIBS) -ltcl -lGL -lircclient -lrt -lX11
+ 
+ bin_PROGRAMS = din
+ 

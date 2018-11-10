@@ -1,0 +1,46 @@
+From 11ab3027fda015798b92fd7e44cb5e3289f41542 Mon Sep 17 00:00:00 2001
+From: Rinat <ibragimovrinat@mail.ru>
+Date: Thu, 18 Jul 2013 12:03:30 +0400
+Subject: [PATCH] fix linking with "-Wl,--as-needed"
+
+https://github.com/i-rinat/fragview/issues/2
+
+
+https://github.com/i-rinat/fragview/commit/11ab3027fda015798b92fd7e44cb5e3289f41542
+
+
+---
+ CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d7003e4..fbd7cbb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -43,13 +43,13 @@ add_executable (fileseverity
+ )
+ 
+ target_link_libraries (fragview
+-	${GTKMM_LIBRARIES}
+ 	clusters
++	${GTKMM_LIBRARIES}
+ )
+ 
+ target_link_libraries (fileseverity
+-	${GLIBMM_LIBRARIES}
+ 	clusters
++	${GLIBMM_LIBRARIES}
+ )
+ 
+ add_executable (fragdb
+@@ -57,9 +57,9 @@ add_executable (fragdb
+ )
+ 
+ target_link_libraries (fragdb
++	clusters
+ 	${GLIBMM_LIBRARIES}
+ 	${SQLITE3_LIBRARIES}
+-	clusters
+ )
+ 
+ install (TARGETS fileseverity fragdb fragview

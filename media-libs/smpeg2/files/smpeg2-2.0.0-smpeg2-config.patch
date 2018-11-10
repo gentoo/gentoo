@@ -1,0 +1,33 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Mon Oct  7 15:10:46 UTC 2013
+Subject: fix smpeg2-config.in
+
+SDL_CONFIG is now SDL2_CONFIG in the new sdl2.m4
+
+--------------------------------------CUT---------------------------------------
+also
+
+Only dump -L/-rpath if libdir is non-standard; cribbed from smpeg patches
+
+--- smpeg-2.0.0.orig/smpeg2-config.in
++++ smpeg-2.0.0/smpeg2-config.in
+@@ -42,15 +42,17 @@
+       if test @includedir@ != /usr/include ; then
+         includes=-I@includedir@
+       fi
+-      echo $includes -I@includedir@/smpeg2 `@SDL_CONFIG@ --cflags`
++      echo $includes -I@includedir@/smpeg2 `@SDL2_CONFIG@ --cflags`
+       ;;
+     --libs)
++      if [ "@libdir@" != "/usr/lib" ]; then
+       if [ "`uname`" = "SunOS" ]; then
+         libdirs="-L@libdir@ -R@libdir@"
+       else
+         libdirs="-L@libdir@ @SMPEG_RLD_FLAGS@"
+       fi
+-      echo $libdirs -lsmpeg2 `@SDL_CONFIG@ --libs`
++      fi
++      echo $libdirs -lsmpeg2 `@SDL2_CONFIG@ --libs`
+       ;;
+     *)
+       echo "${usage}" 1>&2

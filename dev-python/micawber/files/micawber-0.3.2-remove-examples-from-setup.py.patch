@@ -1,0 +1,20 @@
+--- micawber-0.3.2.orig/setup.py	2015-03-30 02:08:40.000000000 +0800
++++ micawber-0.3.2/setup.py	2015-07-20 14:53:42.776972042 +0800
+@@ -13,16 +13,11 @@
+     author='Charles Leifer',
+     author_email='coleifer@gmail.com',
+     url='http://github.com/coleifer/micawber/',
+-    packages=find_packages(),
++    packages=['micawber'],
+     package_data = {
+         'micawber': [
+             'contrib/mcdjango/templates/micawber/*.html',
+         ],
+-        'examples': [
+-            #'requirements.txt',
+-            '*/static/*.css',
+-            '*/templates/*.html',
+-        ],
+     },
+     classifiers=[
+         'Development Status :: 4 - Beta',

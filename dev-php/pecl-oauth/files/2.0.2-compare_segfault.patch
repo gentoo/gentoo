@@ -1,0 +1,48 @@
+From f1a5b6dea1982dab03c810edd321ca57907d41fe Mon Sep 17 00:00:00 2001
+From: Adam Saponara <as@php.net>
+Date: Fri, 24 Feb 2017 17:20:51 -0500
+Subject: [PATCH] Fix bug #74163: Segfault in oauth_compare_value
+
+Credit to @russpos for finding this bug
+---
+ oauth.c              | 4 ++--
+ tests/oauth_sbs.phpt | 4 ++++
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/oauth.c b/oauth.c
+index 62522bd..198e2cb 100644
+--- a/oauth.c
++++ b/oauth.c
+@@ -374,8 +374,8 @@ static int oauth_strcmp(zval *first, zval *second)
+ static int oauth_compare_value(const void *a, const void *b)
+ {
+ 	Bucket *f, *s;
+-	f = *(Bucket **)a;
+-	s = *(Bucket **)b;
++	f = (Bucket *)a;
++	s = (Bucket *)b;
+ 
+ 	return oauth_strcmp(&f->val, &s->val);
+ }
+diff --git a/tests/oauth_sbs.phpt b/tests/oauth_sbs.phpt
+index a49d2b4..4e9269e 100644
+--- a/tests/oauth_sbs.phpt
++++ b/tests/oauth_sbs.phpt
+@@ -21,6 +21,8 @@ echo "-- putting oauth_signature inside by mistake --\n";
+ echo oauth_get_sbs('GET', 'http://127.0.0.1:12342/',array('oauth_signature'=>'hello world')),"\n";
+ echo "-- merging url query and extra params --\n";
+ echo oauth_get_sbs('GET', 'http://127.0.0.1:12342/script?arg1=1',array('arg2' => '2')),"\n";
++echo "-- with array value --\n";
++echo oauth_get_sbs('GET', 'http://127.0.0.1:12342/script',array('arg2' => [1, 2, 3])),"\n";
+ 
+ ?>
+ --EXPECTF--
+@@ -44,3 +46,5 @@ GET&http%3A%2F%2F127.0.0.1%3A12342%2F&test%3D
+ GET&http%3A%2F%2F127.0.0.1%3A12342%2F&
+ -- merging url query and extra params --
+ GET&http%3A%2F%2F127.0.0.1%3A12342%2Fscript&arg1%3D1%26arg2%3D2
++-- with array value --
++GET&http%3A%2F%2F127.0.0.1%3A12342%2Fscript&arg2%3D1%26arg2%3D2%26arg2%3D3
+-- 
+2.1.4
+

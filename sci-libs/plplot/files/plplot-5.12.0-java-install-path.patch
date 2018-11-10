@@ -1,0 +1,13 @@
+Java libs are installed into an already prefixed path.
+
+--- a/bindings/java/CMakeLists.txt
++++ b/bindings/java/CMakeLists.txt
+@@ -189,7 +189,7 @@
+       )
+   endif(APPLE)
+ 
+-  install(TARGETS plplotjavac_wrap LIBRARY DESTINATION ${JAVAWRAPPER_HARDDIR})
++  install(TARGETS plplotjavac_wrap LIBRARY DESTINATION ${JAVAWRAPPER_DIR})
+ 
+   set(JAVA_CLASSES)
+   foreach( srcfile ${JAVA_FILES_FULL} )

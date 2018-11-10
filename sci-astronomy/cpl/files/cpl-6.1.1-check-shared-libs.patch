@@ -1,0 +1,35 @@
+Check shared library instead of static ones.
+bicatali@gentoo.org
+
+diff -Nur cpl-6.1.1.orig/m4/cpl.m4 cpl-6.1.1/m4/cpl.m4
+--- cpl-6.1.1.orig/m4/cpl.m4	2012-06-04 18:38:01.000000000 +0100
++++ cpl-6.1.1/m4/cpl.m4	2012-06-04 18:46:37.000000000 +0100
+@@ -8,7 +8,7 @@
+         
+     cpl_cfitsio_check_version="$1"
+     cpl_cfitsio_check_header="fitsio.h"
+-    cpl_cfitsio_check_lib="libcfitsio.a"
++    cpl_cfitsio_check_lib="libcfitsio.so"
+ 
+     cpl_cfitsio_incdirs=""
+     cpl_cfitsio_libdirs=""
+@@ -668,7 +668,7 @@
+ 
+     cpl_wcs_check_version="$1"
+     cpl_wcs_check_header="wcslib/wcslib.h"
+-    cpl_wcs_check_lib="libwcs.a"
++    cpl_wcs_check_lib="libwcs.so"
+ 
+     cpl_wcs_includes=""
+     cpl_wcs_libraries=""
+@@ -900,8 +900,8 @@
+ 
+ 	cpl_fftw_check_version="$1"
+     cpl_fftw_check_header="fftw3.h"
+-    cpl_fftw_check_lib="libfftw3.a"
+-    cpl_fftwf_check_lib="libfftw3f.a"
++    cpl_fftw_check_lib="libfftw3.so"
++    cpl_fftwf_check_lib="libfftw3f.so"
+ 
+     cpl_fftw_includes=""
+     cpl_fftw_libraries=""

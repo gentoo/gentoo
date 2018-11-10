@@ -1,0 +1,40 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net courier-authlib
+	use famd
+}
+
+. /etc/courier-imap/pop3d-ssl
+
+checkconfig() {
+	if [ ! -e /etc/courier-imap/pop3d-ssl ] ; then
+		eerror "You need an /etc/courier-imap/pop3d-ssl file to run courier-pop3d-ssl"
+		return 1
+	fi
+	. /etc/courier-imap/pop3d-ssl || {
+		eerror "There are syntax errors in /etc/courier-imap/pop3d-ssl"
+		eerror "Please correct them before trying to start courier-pop3d-ssl"
+		return 3
+	}
+	if [ ! -e "${TLS_CERTFILE}" ] ; then
+		eerror "You need to create a SSL certificate to use POP3 over SSL"
+		eerror "Edit /etc/courier-imap/pop3d.cnf, then run: mkpop3dcert"
+		return 2
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting courier-pop3d over SSL"
+	/usr/bin/env - /usr/GENTOO_LIBDIR/courier-imap/gentoo-pop3d-ssl.rc --pidfile ${SSLPIDFILE}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping courier-pop3d over SSL"
+	start-stop-daemon --quiet --stop --pidfile ${SSLPIDFILE}
+	eend $?
+}

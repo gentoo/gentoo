@@ -1,0 +1,39 @@
+Without this patch, you can't build nrpe without SSL support. It was
+originally submitted on the Nagios forums by user Matthew L. Daniel:
+
+  https://support.nagios.com/forum/viewtopic.php?t=27027
+
+It was merged into the upstream github repo (NagiosEnterprises/nrpe)
+in commit 3736fdeeac11a.
+
+
+diff --git a/src/nrpe.c b/src/nrpe.c
+index 4bc849b..1e55ab4 100644
+--- a/src/nrpe.c
++++ b/src/nrpe.c
+@@ -102,7 +102,9 @@ int     use_src=FALSE; /* Define parameter for SRC option */
+ int		listen_queue_size=DEFAULT_LISTEN_QUEUE_SIZE;
+ 
+ 
++#ifdef HAVE_SSL
+ void complete_SSL_shutdown( SSL *);
++#endif
+ 
+ 
+ int main(int argc, char **argv){
+@@ -1815,6 +1817,7 @@ int remove_pid_file(void){
+ 	return OK;
+         }
+ 
++#ifdef HAVE_SSL
+ void complete_SSL_shutdown( SSL *ssl) {
+ 
+ 	/*  
+@@ -1835,6 +1838,7 @@ void complete_SSL_shutdown( SSL *ssl) {
+ 		if( SSL_shutdown( ssl)) break;
+ 	}
+ }
++#endif/*HAVE_SSL*/
+ 
+ /* bail if daemon is running as root */
+ int check_privileges(void){

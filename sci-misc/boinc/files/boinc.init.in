@@ -1,0 +1,254 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="attach resume suspend"
+
+depend() {
+	# we can use dns and net, but we can also in most cases live without them
+	use dns net ntp-client ntpd
+}
+
+create_work_directory() {
+	local sslcrt="/etc/ssl/certs/ca-certificates.crt"
+
+	if [ ! -d "${RUNTIMEDIR}" ]; then
+		einfo "Directory ${RUNTIMEDIR} does not exist, creating now."
+		if ! mkdir -p "${RUNTIMEDIR}"; then
+			eerror "Directory ${RUNTIMEDIR} could not be created!"
+			return 1
+		fi
+
+		# ensure proper ownership
+		if ! chown "${USER}:${GROUP}" "${RUNTIMEDIR}"; then
+			eerror "Changing ownership of '${RUNTIMEDIR}' to '${USER}:${GROUP}' failed!"
+			return 1
+		fi
+	fi
+
+	if [ ! -e "${RUNTIMEDIR}"/ca-bundle.crt ]; then
+		if [ ! -f "${sslcrt}" ]; then
+			eerror "'${sslcrt}' does not exist!"
+			return 1
+		fi
+
+		if ! ln -s "${sslcrt}" "${RUNTIMEDIR}"/ca-bundle.crt; then
+			eerror "Symlinking '${sslcrt}' failed!"
+			return 1
+		fi
+	fi
+
+	return 0
+}
+
+fix_lib_symlinks() {
+	local src="$1"
+	local tgt="$2"
+
+	# If the source does not exist, we can not do anything
+	if [ ! -f "${src}" ] ; then
+		return 1
+	fi
+
+	# Check whether the symlink is already there and in order
+	if [ -L "${tgt}" ] ; then
+		if [ -f "${tgt}" ] ; then
+			return 0
+		fi
+
+		# Remove broken symlink
+		if ! rm -f "${tgt}"; then
+			eerror "Removing '${tgt}' failed!"
+			return 1
+		fi
+	fi
+
+	# symlink the correct path
+	if ! ln -snf "${src}" "${tgt}"; then
+		eerror "Symlinking '${src}' to '${tgt}' failed!"
+		return 1
+	fi
+
+	return 0
+}
+
+cuda_check() {
+	local libsource="/opt/cuda/@libdir@/libcudart.so"
+	local libtarget="${RUNTIMEDIR}/libcudart.so"
+
+	fix_lib_symlinks "${libsource}" "${libtarget}" || return 1
+	return 0
+}
+
+opencl_check() {
+	local libsource="/usr/@libdir@/libOpenCL.so"
+	local libtarget="${RUNTIMEDIR}/libOpenCL.so"
+
+	fix_lib_symlinks "${libsource}" "${libtarget}" || return 1
+	return 0
+}
+
+env_check() {
+	# Make sure the configuration is sane
+	: ${USER:="boinc"}
+	: ${GROUP:="boinc"}
+	: ${RUNTIMEDIR:="/var/lib/boinc"}
+	: ${BOINCBIN:="$(which boinc_client)"}
+	: ${BOINC_PIDFILE:="/var/run/boinc_client.pid"}
+	: ${BOINCCMD:="$(which /usr/bin/boinccmd)"}
+	: ${ALLOW_REMOTE_RPC:="yes"}
+	: ${NICELEVEL:="19"}
+	# ARGS is not checked, it could have been explicitly set
+	# to be empty by the user.
+
+	# If the client was not found (how?) something is seriously wrong
+	if [ ! -x "${BOINCBIN}" ]; then
+		eerror "No boinc_client found!"
+		return 1
+	fi
+
+	# The boinccmd is crucial, or we can not attach, suspend or resume
+	# the boinc client
+	if [ ! -x "${BOINCCMD}" ]; then
+		eerror "No boinccmd program found!"
+		return 1
+	fi
+
+	return 0
+}
+
+need_passwd_arg() {
+	local vers=$(${BOINCBIN} --version | tr -d .)
+	[ -z "${vers}" ] && vers="00"
+	[ $(expr substr "${vers}" 1 2) -lt 74 ] && return 0
+
+	# From version 7.4 on, the default is to read
+	# gui_rpc_auth.cfg for the password.
+
+	return 1
+}
+
+start_pre() {
+	env_check || return 1
+	create_work_directory || return 1
+	cuda_check || einfo "CUDA not supported"
+	opencl_check || einfo "OpenCL not supported"
+
+	if [ ! -f "${RUNTIMEDIR}/lockfile" ]; then
+		einfo "File \"${RUNTIMEDIR}/lockfile\" does not exist, assuming first run."
+		einfo "You need to setup an account on the BOINC project homepage beforehand!"
+		einfo "Go to http://boinc.berkeley.edu/ and locate your project."
+		einfo "Then either run ${RC_SERVICE} attach or connect with a gui client"
+		einfo "and attach to a project with that."
+		einfo ""
+		ewarn "Note that for attaching to some project you need your network up and running."
+		ewarn "network is needed only for jobs fetching afterwards"
+	fi
+
+	return 0
+}
+
+start() {
+	if [ "${ALLOW_REMOTE_RPC}" = "yes" ]; then
+		ARGS="${ARGS} --allow_remote_gui_rpc"
+	fi
+
+	ARGS="${ARGS} --dir "${RUNTIMEDIR}" --redirectio"
+
+	ebegin "Starting ${RC_SVCNAME}"
+	start-stop-daemon --start --nicelevel ${NICELEVEL} \
+		--user "${USER}:${GROUP}" --quiet --make-pidfile \
+		--pidfile "${BOINC_PIDFILE}" --background \
+		--exec "${BOINCBIN}" -- ${ARGS}
+	eend $?
+}
+
+attach() {
+	local password=""
+	local url=""
+	local key=""
+
+	env_check || return 1
+
+	einfo "If you can't find your account key just try to obtain it by using:"
+	einfo "    boinccmd --passwd PASSWORD_FROM_GUI_RPC_AUTH --lookup_account URL EMAIL PASSWORD"
+
+	printf "    Enter the Project URL: "
+	read url
+	printf "    Enter your Account Key: "
+	read key
+
+	if ! service_started; then
+		"${RC_SERVICE}" start
+	fi
+
+	if need_passwd_arg; then
+		password="--passwd \"$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")\""
+	fi
+
+	ebegin "${RC_SVCNAME}: Attaching to project"
+	start-stop-daemon --user "${USER}:${GROUP}" --quiet \
+		--chdir "${RUNTIMEDIR}" --exec "${BOINCCMD}" \
+		-- ${password} --project_attach ${url} ${key}
+	eend $?
+
+	sleep 10
+	tail "${RUNTIMEDIR}/stdoutdae.txt"
+}
+
+stop() {
+	local password=""
+	local stop_timeout="SIGTERM/60/SIGTERM/30/SIGKILL/30"
+
+	env_check || return 1
+
+	if need_passwd_arg; then
+		password="--passwd \"$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")\""
+	fi
+
+	ebegin "Stopping ${RC_SVCNAME}"
+	start-stop-daemon --stop --quiet --progress \
+		--retry ${stop_timeout} \
+		--pidfile "${BOINC_PIDFILE}"
+	eend $?
+}
+
+resume() {
+	env_check || return 1
+
+	local password=""
+
+	if need_passwd_arg; then
+		password="--passwd \"$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")\""
+	fi
+
+	for url in $(cd "${RUNTIMEDIR}" ; \
+		  "${BOINCCMD}" ${password} --get_project_status | \
+		  sed -n 's/\s*master URL: //p'); do
+		ebegin "Resuming ${url}"
+		start-stop-daemon --user "${USER}:${GROUP}" --quiet \
+			--chdir "${RUNTIMEDIR}" --exec "${BOINCCMD}" \
+			-- ${password} --project ${url} resume
+		eend $?
+	done
+}
+
+suspend() {
+	env_check || return 1
+
+	local password=""
+
+	if need_passwd_arg; then
+		password="--passwd \"$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")\""
+	fi
+
+	for url in $(cd "${RUNTIMEDIR}" ; \
+		  "${BOINCCMD}" ${password} --get_project_status | \
+		  sed -n 's/\s*master URL: //p'); do
+		ebegin "Suspending ${url}"
+		start-stop-daemon --user "${USER}:${GROUP}" --quiet \
+			--chdir "${RUNTIMEDIR}" --exec "${BOINCCMD}" \
+			-- ${password} --project ${url} suspend
+		eend $?
+	done
+}

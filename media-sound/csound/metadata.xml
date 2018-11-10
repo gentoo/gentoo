@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>proaudio@gentoo.org</email>
+		<name>Gentoo ProAudio Project</name>
+	</maintainer>
+	<use>
+		<flag name="beats">Build the beats score frontend</flag>
+		<flag name="chua">Build the chua opcodes</flag>
+		<flag name="csoundac">Build the CsoundAC extension module</flag>
+		<flag name="double-precision">Use double-precision floating point for audio samples</flag>
+		<flag name="dssi">Build the DSSI opcodes</flag>
+		<flag name="fluidsynth">Build the fluidsynth opcodes</flag>
+		<flag name="image">Build the image opcodes</flag>
+		<flag name="keyboard">Build Virtual MIDI keyboard</flag>
+		<flag name="linear">Build the linear algebra Opcodes</flag>
+		<flag name="portmidi">Build the PortMIDI I/O module</flag>
+		<flag name="samples">Install the HRTF datafiles for use with hrtfmove, hrtfmove2, hrtfstat, hrtfearly, and hrtfreverb</flag>
+		<flag name="score">Build the alternative score parser</flag>
+		<flag name="stk">Build the stk opcodes</flag>
+		<flag name="tcl">Build the tcl interface and clients</flag>
+		<flag name="utils">Build stand-alone executables for utilities that can also be used via `csound -U`</flag>
+		<flag name="websocket">Build the websocket opcode</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">csound</remote-id>
+		<remote-id type="github">csound/csound</remote-id>
+	</upstream>
+</pkgmetadata>

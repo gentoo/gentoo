@@ -1,0 +1,106 @@
+compile fix noad-0.8.6
+testet with libav-9 ffmpeg-2.2.9
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.o> (22 Oct 2014)
+diff -Naur noad-0.8.6.orig/audiotools.cpp noad-0.8.6/audiotools.cpp
+--- noad-0.8.6.orig/audiotools.cpp	2014-10-22 14:26:57.809249955 +0200
++++ noad-0.8.6/audiotools.cpp	2014-10-22 14:28:06.830249955 +0200
+@@ -50,9 +50,9 @@
+ uint8_t *outbuf=NULL;
+ AVCodec *codec=NULL;
+ AVCodecContext *codecContext= NULL;
+-#if LIBAVCODEC_VERSION_MAJOR > 54
++//#if LIBAVCODEC_VERSION_MAJOR > 54
+ AVDictionary *avDictionary = NULL;                // "create" an empty dictionary
+-#endif
++//#endif
+ int64_t basepts=0;
+ int64_t audiobasepts=0;
+ //int64_t audiopts=0;
+@@ -108,13 +108,13 @@
+   codecContext = avcodec_alloc_context3(codec);
+ #endif
+ 
+-#if LIBAVCODEC_VERSION_MAJOR > 54
++//#if LIBAVCODEC_VERSION_MAJOR > 54
+    /* open it */
+    if (avcodec_open2(codecContext, codec, &avDictionary) < 0)
+-#else
++//#else
+   /* open it */
+-  if (avcodec_open(codecContext, codec) < 0)
+-#endif
++//  if (avcodec_open(codecContext, codec) < 0)
++//#endif
+   {
+     fprintf(stderr, "could not open codec\n");
+   }
+@@ -129,9 +129,9 @@
+ {
+   free(outbuf);
+   avcodec_close(codecContext);
+-#if LIBAVCODEC_VERSION_MAJOR > 54
++//#if LIBAVCODEC_VERSION_MAJOR > 54
+   av_dict_free(&avDictionary);
+-#endif
++//#endif
+   av_free(codecContext);
+   av_codec_initialised = false;
+ }
+diff -Naur noad-0.8.6.orig/ffmpeg_decoder.cpp noad-0.8.6/ffmpeg_decoder.cpp
+--- noad-0.8.6.orig/ffmpeg_decoder.cpp	2014-10-22 14:26:57.808249955 +0200
++++ noad-0.8.6/ffmpeg_decoder.cpp	2014-10-22 14:38:26.366249955 +0200
+@@ -184,7 +184,7 @@
+ 
+ 	// Retrieve stream information
+ 	resetDecoder();
+-   int openCode2 = av_find_stream_info(pFormatCtx);
++   int openCode2 = avformat_find_stream_info(pFormatCtx, NULL);
+ 	if(openCode2<0)
+ 		return -1; // Couldn't find stream information
+ 
+@@ -222,13 +222,13 @@
+ 	if(pCodec->capabilities & CODEC_CAP_TRUNCATED)
+ 		pCodecCtx->flags|=CODEC_FLAG_TRUNCATED;
+ 
+-#if LIBAVCODEC_VERSION_MAJOR > 54
++//#if LIBAVCODEC_VERSION_MAJOR > 54
+ 	// Open codec
+ 	if(avcodec_open2(pCodecCtx, pCodec,&avDictionary) < 0)
+-#else
++//#else
+ 	// Open codec
+-	if(avcodec_open(pCodecCtx, pCodec)<0)
+-#endif
++//	if(avcodec_open(pCodecCtx, pCodec)<0)
++//#endif
+ 		return -1; // Could not open codec
+ 
+ 
+@@ -270,10 +270,10 @@
+       pIOContext = NULL;
+ 	}
+ #endif
+-#if LIBAVCODEC_VERSION_MAJOR > 54
++//#if LIBAVCODEC_VERSION_MAJOR > 54
+    av_dict_free(&avDictionary);
+    avDictionary = NULL;
+-#endif
++//#endif
+ 	return 0;
+ }
+ 
+diff -Naur noad-0.8.6.orig/ffmpeg_decoder.h noad-0.8.6/ffmpeg_decoder.h
+--- noad-0.8.6.orig/ffmpeg_decoder.h	2014-10-22 14:26:57.807249955 +0200
++++ noad-0.8.6/ffmpeg_decoder.h	2014-10-22 14:36:27.213249955 +0200
+@@ -22,9 +22,9 @@
+ 	int             i, videoStream;
+ 	AVCodecContext  *pCodecCtx;
+ 	AVCodec         *pCodec;
+-#if LIBAVCODEC_VERSION_MAJOR > 54
++//#if LIBAVCODEC_VERSION_MAJOR > 54
+    AVDictionary    *avDictionary;
+-#endif
++//#endif
+ 	AVFrame         *pFrame;
+ 
+ public:

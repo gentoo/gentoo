@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="start a daemon to continuously set time via a helper"
+
+command="tlsdated"
+command_args="${TLSDATED_OPTS} -- ${TLSDATED_CMD}"
+command_background="true"
+pidfile="/var/run/${SVCNAME}.pid"
+
+depend() {
+	use net
+}
+
+start_pre() {
+	checkpath -d -m 0700 -o tlsdate:tlsdate "${TLSDATED_CACHE_DIR}"
+}

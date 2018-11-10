@@ -1,0 +1,22 @@
+--- a/src/pplot.f
++++ b/src/pplot.f
+@@ -36,7 +36,7 @@
+       PROGRAM PPLOT
+       INCLUDE 'PPLOT.INC'
+ C
+-      LOGICAL ERROR, LGETFN
++      LOGICAL ERROR, LGETFN, LERR
+       REAL RINP(10)
+       REAL CPOLO(NAX,IPTOT,NPX), VPOLO(NAX,2,NPX)
+ C
+--- a/src/xoper.f
++++ b/src/xoper.f
+@@ -114,7 +114,7 @@
+ C---- don't try to read integers, since might get integer overflow
+       DO I=1, NINPUT
+         IF(ABS(RINPUT(I)) .GT. 2.1E9) THEN
+-         IINPUT(I) = 2**31
++         IINPUT(I) = HUGE(0)
+         ELSE
+          IINPUT(I) = INT(RINPUT(I))
+         ENDIF

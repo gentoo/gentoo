@@ -1,0 +1,33 @@
+commit 4115e196bde073d5deaa3759807a8647f3f3c6fa
+Author: Herbert Valerio Riedel <hvr@gnu.org>
+Date:   Mon Nov 17 09:53:24 2014 +0100
+
+    Add support for `deepseq-1.4.0.0` (addresses #100)
+    
+    The default method implementation has changed in `deepseq-1.4.0.0`.
+    (see haskell/deepseq#1 for details). This simply sets the `rnf`
+    implementation explicitly to avoid relying on the default method's
+    semantics.
+
+diff --git a/Data/Text.hs b/Data/Text.hs
+index 3bd34a7..b826acd 100644
+--- a/Data/Text.hs
++++ b/Data/Text.hs
+@@ -199,7 +199,7 @@ import Prelude (Char, Bool(..), Int, Maybe(..), String,
+                 (&&), (||), (+), (-), (.), ($), ($!), (>>),
+                 not, return, otherwise, quot)
+ #if defined(HAVE_DEEPSEQ)
+-import Control.DeepSeq (NFData)
++import Control.DeepSeq (NFData(rnf))
+ #endif
+ #if defined(ASSERTS)
+ import Control.Exception (assert)
+@@ -346,7 +346,7 @@ instance Exts.IsList Text where
+ #endif
+ 
+ #if defined(HAVE_DEEPSEQ)
+-instance NFData Text
++instance NFData Text where rnf !_ = ()
+ #endif
+ 
+ -- | This instance preserves data abstraction at the cost of inefficiency.

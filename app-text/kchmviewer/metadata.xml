@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		KchmViewer is a chm (MS HTML help file format) viewer It uses Trolltech Qt
+		widget library with optional KDE libraries. It does not require KDE, but may
+		be compiled with full KDE support, including KDE widgets and KIO/KHTML. The
+		main advantage of KchmViewer is extra support for non-English languages.
+		Unlike other viewers, KchmViewer in most cases is able to detect help file
+		encoding, correctly shows tables of context of Russian, Korean, Chinese and
+		Japanese help files, and does correct search in non-English help files
+		(search for MBCS languages - ja/ko/ch is still in progress). 
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">kchmviewer</remote-id>
+	</upstream>
+</pkgmetadata>

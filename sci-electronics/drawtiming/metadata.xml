@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-electronics@gentoo.org</email>
+		<name>Gentoo Electronics Project</name>
+	</maintainer>
+	<longdescription>
+	This package provides a command line tool for documenting hardware
+	and software designs through timing diagrams.  It reads signal descriptions
+	from a text file with an intuitive syntax, and outputs a timing diagram to
+	an image file.  Notation typical of timing diagrams found in the Electrical
+	Engineering discipline is used, including arrows indicating causal
+	relationships between signal transitions. 
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">drawtiming</remote-id>
+	</upstream>
+</pkgmetadata>

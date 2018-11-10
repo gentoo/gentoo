@@ -1,0 +1,9 @@
+--- tests/runtests.py
++++ tests/runtests.py
+@@ -41,4 +41,5 @@
+     suite.addTest(loader.loadTestsFromName(name))
+ 
+ testRunner = unittest.TextTestRunner()
+-testRunner.run(suite)
++result = testRunner.run(suite)
++sys.exit(not result.wasSuccessful())

@@ -1,0 +1,96 @@
+--- atftp-0.7/tftp.c~	2010-06-03 08:51:14.000000000 -0500
++++ atftp-0.7/tftp.c	2010-06-03 09:40:56.000000000 -0500
+@@ -18,16 +18,17 @@
+ #include "config.h"
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
+ #include <getopt.h>
+ #include <string.h>
++#include <stdarg.h>
+ 
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+ #include <netdb.h>
+ 
+ #include <signal.h> 
+@@ -344,16 +345,41 @@
+      
+      /* If no names matched, then return NULL. */
+      return NULL;
+ }
+ # endif
+ #endif
+ 
+ /*
++ * set argc/argv from variadic string arguments
++*/
++void make_arg_vector(int *argc, char***argv, ...)
++{
++  char **p;
++  char *s;
++  va_list argp;
++  
++  // how many args?
++  *argc = 0;
++  va_start(argp, argv);
++  while ( (s=va_arg(argp, char*)) )
++    ++*argc;
++
++  // allocate storage
++  *argv = malloc(*argc * sizeof (char*));
++
++  // store args
++  p = *argv;
++  va_start(argp, argv);
++  while ( (s=va_arg(argp, char*)) )
++    *p++ = s;
++}
++
++/*
+  * Split a string into args.
+  */
+ void make_arg(char *string, int *argc, char ***argv)
+ {
+      static char *tmp = NULL;
+      size_t argz_len;
+ 
+      /* split the string to an argz vector */
+@@ -1142,30 +1168,26 @@
+                                        argv[optind+1]);
+           make_arg(string, &ac, &av);
+           process_cmd(ac, av);
+      }
+      
+      if (!interactive)
+      {
+           if (action == PUT)
+-               snprintf(string, sizeof(string), "put %s %s", local_file,
+-                        remote_file);
++               make_arg_vector(&ac,&av,"put",local_file,remote_file,NULL);
+           else if (action == GET)
+-               snprintf(string, sizeof(string), "get %s %s", remote_file,
+-                        local_file);
++               make_arg_vector(&ac,&av,"get",remote_file,local_file,NULL);
+           else if (action == MGET)
+-               snprintf(string, sizeof(string), "mget %s %s", remote_file,
+-                        local_file);
++               make_arg_vector(&ac,&av,"mget",remote_file,local_file,NULL);
+           else
+           {
+                fprintf(stderr, "No action specified in batch mode!\n");
+                exit(ERR);
+           }
+-          make_arg(string, &ac, &av);
+           if (process_cmd(ac, av) == ERR)
+                exit(ERR);
+      }
+      return OK;
+ }
+ 
+ void tftp_usage(void)
+ {

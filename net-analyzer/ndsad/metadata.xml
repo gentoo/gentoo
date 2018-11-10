@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<longdescription lang="en">
+		The NetUP ndsad (NetUp Data Stream Accounting Daemon) utility captures
+		IP-traffic from network interfaces and export NetFlow v.5. Data is
+		gathered from libpcap library on Unix and from winpcap on Windows. Also
+		you are able to use tee/divert sockets on FreeBSD and ULOG on Linux for
+		data source.
+	</longdescription>
+	<longdescription lang="ru">
+		Демон ndsad (NetUp Data Stream Accounting Daemon) компании Нетап
+		захватывает сетевой трафик с сетевых интерфейсов и экспортирует его в
+		NetFlow v.5. Трафик собирается при помощи библиотеки libpcap в Unix или
+		winpcap в Windows. В качестве источника данных вы также можете
+		использовать tee/divert сокеты в FreeBSD и ULOG в Linux.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">ndsad</remote-id>
+	</upstream>
+</pkgmetadata>

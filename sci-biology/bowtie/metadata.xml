@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-biology@gentoo.org</email>
+    <name>Gentoo Biology Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="sourceforge">bowtie-bio</remote-id>
+  </upstream>
+  <use>
+    <flag name="tbb">Enables building bowtie with the Intel
+      Threading Building Blocks from <pkg>dev-cpp/tbb</pkg>. This
+      flag is recommended.</flag>
+  </use>
+</pkgmetadata>

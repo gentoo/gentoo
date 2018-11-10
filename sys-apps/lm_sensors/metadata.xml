@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+	</maintainer>
+	<slots>
+		<subslots>Reflect ABI of libsensors.so.</subslots>
+	</slots>
+	<use>
+		<flag name="contrib">
+			Installs user contributed configuration files so you don't need
+			to find settings on your own for your system if somebody else
+			has already created such a configuration for sensors/mainboards
+			you are using.
+		</flag>
+		<flag name="sensord">
+			Enable sensord - a daemon that can be used to
+			periodically log sensor readings from hardware health-monitoring
+			chips
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">groeck/lm-sensors</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,49 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+	use amuled
+}
+
+start() {
+	if ! test -f "${AMULEHOME}/.aMule/amule.conf"; then
+		eerror "You must start and configure amuleweb before launch it. Sorry."
+		return 1
+	fi
+
+	if pgrep -u ${AMULEUSER} amuleweb >/dev/null; then
+		eerror "An instance of aMule webserver is already running"
+		return 1
+	fi
+
+	if [ -e /var/run/amuleweb.pid ]; then
+		rm /var/run/amuleweb.pid
+	fi
+
+	OPTIONS="-h ${AMULEHOST} -p ${AMULEPORT} -P ${AMULEPWD} -A ${WEBPWD} -t ${TEMPLATE} -q"
+
+	ebegin "Starting aMule WebServer"
+	start-stop-daemon --start \
+		--quiet --background \
+		--make-pidfile --pidfile /var/run/amuleweb.pid \
+		--env HOME="${AMULEHOME}" \
+		--user ${AMULEUSER} \
+		--exec /usr/bin/amuleweb -- ${OPTIONS} 2>&1 >${LOG}
+
+	sleep 1
+	if ! pgrep -u ${AMULEUSER} amuleweb > /dev/null; then
+		eerror "aMule daemon can't be started! Check logfile: ${LOG}"
+		eend 1
+		return 1
+	fi
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping aMule WebServer"
+	start-stop-daemon --stop --pidfile /var/run/amuleweb.pid 2>&1 >/dev/null
+	eend $?
+}
+

@@ -1,0 +1,30 @@
+--- configure
++++ configure
+@@ -40,7 +40,7 @@
+ SOUND_OPT=
+ 
+ MYCC=gcc
+-MYCFLAGS='-s -O2 -Wall `sdl-config --cflags`'" $SOUND_OPT -DSYSCONFDIR=\\\"\${sysconfdir}/\${progname}\\\""
++MYCFLAGS='-Wall `sdl-config --cflags`'" $SOUND_OPT -DSYSCONFDIR=\\\"\${sysconfdir}/\${progname}\\\""
+ 
+ if test -z "$CC" ; then
+   CC="$MYCC";
+@@ -75,7 +75,6 @@
+     --build=*) build_alias="$cfg_optarg";;
+     --host=*) if test ."$build_alias" != ."$cfg_optarg" ; then
+         printf "configure: cross-compiling not supported\n" >&2
+-	exit 1
+       fi;;
+     
+     --bindir=*) bindir="$cfg_optarg";;
+--- src/Makefile.in
++++ src/Makefile.in
+@@ -1,7 +1,7 @@
+ OBJS    = main.o gfxout.o gfxlib.o menus.o keyboard.o bg.o sound.o global.o timer.o
+ 
+ $(progname)$(XSUF): $(OBJS)
+-	gcc -s -o $(progname)$(XSUF) $(OBJS) $(LIBS)
++	$(CC) $(CFLAGS) -o $(progname)$(XSUF) $(OBJS) $(LIBS) $(LDFLAGS)
+ 
+ bg.o: bg.c bg.h global.h main.h
+ gfxlib.o: gfxlib.c gfxlib.h global.h gfxout.h

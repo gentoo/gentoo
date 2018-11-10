@@ -1,0 +1,39 @@
+From: Stephane Glondu <steph@glondu.net>
+Date: Tue, 2 Aug 2011 21:35:59 +0200
+Subject: Fix FTBFS on bytecode architectures
+
+The new ocaml.m4 defines OCAMLOPT to "no" (instead of not defining
+it); adapt src/Makefile accordingly.
+
+Signed-off-by: Stephane Glondu <steph@glondu.net>
+---
+ src/Makefile |    8 ++++++--
+ 1 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index c9c64b7..bc223c7 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -14,7 +14,11 @@ ifdef LIBPANGOCAIRO_CFLAGS
+ TARGETS += pangocairo
+ endif
+ 
+-all : $(TARGETS) $(if $(OCAMLOPT),opt)
++ifneq ($(OCAMLOPT),no)
++OPT_TARGET = opt
++endif
++
++all : $(TARGETS) $(OPT_TARGET)
+ opt : $(addsuffix .opt,$(TARGETS))
+ 
+ cairo     : cairo.cma  libmlcairo.a
+@@ -89,7 +93,7 @@ $(call mloptobjs,$(pangocairo_SRC))  : INCFLAGS=-I $(LABLGTKDIR)
+ install: all
+ 	mkdir -p $(DESTDIR)$(INSTALLDIR) $(DESTDIR)$(OCAMLLIB)/stublibs
+ 	install -m 644 *.mli *.cmi *.cma lib*.a $(DESTDIR)$(INSTALLDIR)
+-ifdef OCAMLOPT
++ifneq ($(OCAMLOPT),no)
+ 	install -m644 *.cmxa *.a *.cmx $(DESTDIR)$(INSTALLDIR)
+ endif
+ 	install -m 755 dll*.so $(DESTDIR)$(INSTALLDIR)
+-- 

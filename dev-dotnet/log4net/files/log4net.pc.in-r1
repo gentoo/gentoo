@@ -1,0 +1,8 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/@LIBDIR@
+
+Name: Log4net
+Description: Log4net - Logging library for C# and VB.NET
+Version: @VERSION@
+Libs: -r:${libdir}/mono/log4net/log4net.dll

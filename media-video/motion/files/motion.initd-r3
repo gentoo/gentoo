@@ -1,0 +1,42 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+
+depend() {
+	need modules
+	after mysql
+}
+
+checkconfig() {
+	export MOTION_RUN_DIR="${MOTION_RUN_DIR:-/var/run/motion}"
+	checkpath -d -m 750 -o "${MOTION_USER:-motion}:${MOTION_GROUP:-video}" "${MOTION_RUN_DIR}"
+	export MOTION_LIB_DIR="${MOTION_LIB_DIR:-/var/lib/motion}"
+	checkpath -d -m 750 -o "${MOTION_USER:-motion}:${MOTION_GROUP:-video}" "${MOTION_LIB_DIR}"
+	return 0
+}
+
+start() {
+	checkconfig || return 1
+
+	ebegin "Starting motion detection"
+	start-stop-daemon --start -u "${MOTION_USER}" -g "${MOTION_GROUP}" -d "${MOTION_LIB_DIR}" --quiet --exec /usr/bin/motion -- -b -p "${MOTION_RUN_DIR}/motion.pid"
+	eend $?
+}
+
+stop() {
+	checkconfig || return 1
+
+	ebegin "Stopping motion detection"
+	start-stop-daemon --stop --quiet --exec /usr/bin/motion --pidfile "${MOTION_RUN_DIR}/motion.pid"
+	eend $?
+}
+
+reload() {
+	checkconfig || return 1
+
+	ebegin "Reloading motion detection configuration"
+	start-stop-daemon --stop --signal HUP --exec /usr/bin/motion --pidfile "${MOTION_RUN_DIR}/motion.pid"
+	eend $?
+}

@@ -1,0 +1,134 @@
+From: Nathan Phillip Brink <binki@gentoo.org>
+Subject: Fix up linking against libruby when using
+	LDFLAGS=-Wl,--as-needed. Also allow ruby to be a non-automagic
+	dependency.
+
+--- a/configure.in	Tue Mar 25 07:39:34 2014 +0000
++++ b/configure.in	Tue Mar 25 07:55:14 2014 +0000
+@@ -1168,34 +1168,28 @@
+ dnl
+ dnl Ruby support?
+ dnl
+-AC_ARG_WITH(ruby,
+-[  --with-ruby[=PATH_TO_RUBY_EXE]       Compile with ruby support.],
+-[ 
+-	rubyexe=$withval
+-],
+-	rubyexe=yes
+-)
+-
+-if test "x$rubyexe" = "xyes"; then
+-	for i in ruby ruby20 ruby19 ruby18 ruby2.0 ruby1.9.1 ruby1.9 ruby1.8; do
+-		$i -h 2>&1 >/dev/null && rubyexe=$i && break
+-	done
+-	if test "x$rubyexe" = "xyes"; then
+-		rubyexe=no
+-	fi
+-fi
++AC_ARG_WITH([ruby],
++       [AS_HELP_STRING([--with-ruby[=PATH_TO_RUBY_EXE]], [Compile with ruby support.])],
++       [], [with_ruby=maybe])
+ 
+-if test "x$rubyexe" = "xno"; then
++with_ruby_errormsg="--with-ruby was specified but I could not locate ruby. Please try specifying --with-ruby=/path/to/ruby or --without-ruby."
++AC_MSG_CHECKING([whether to support Ruby])
++if test "x$with_ruby" = "xno" ; then
+ 	AC_MSG_CHECKING(whether to support Ruby)
+ 	AC_MSG_RESULT(no)
+ else
+-	AC_CHECK_PROG(RUBYPROG, $rubyexe, "yes", "no")
+-	AC_MSG_CHECKING(whether to support Ruby)
+-	if test $RUBYPROG != "yes" ; then 
+-	    AC_MSG_RESULT(no)
++	AC_MSG_RESULT(yes)
++	AS_IF([test "x$with_ruby" = "xyes" -o "x$with_ruby" = "xmaybe"],
++		[rubyexe=ruby],
++		[rubyexe="$with_ruby"])
++	dnl Support --with-ruby being passed a full path instead of just an executable name.
++	AS_IF([test -x "$rubyexe"],
++		[RUBYPROG=yes],
++		[AC_CHECK_PROG([RUBYPROG], [$rubyexe], [yes], [no])])
++	if test "x$RUBYPROG" = xno ; then
++		AS_IF([test "x$with_ruby" != "xmaybe"],
++			[AC_MSG_ERROR([$with_ruby_errormsg])])
+ 	else
+-	    AC_MSG_RESULT(yes)
+-
+ 	    dnl ---- 
+ 	    dnl Look first for Ruby 1.9
+ 	    incdir=`$rubyexe -rrbconfig -e 'puts RbConfig::CONFIG[["rubyhdrdir"]]'`
+@@ -1208,15 +1205,15 @@
+ 
+ 	    rubylibs=`$rubyexe -rrbconfig -e 'puts RbConfig::CONFIG[["LIBRUBYARG"]]'`
+ 	    extralibs=`$rubyexe -rrbconfig -e 'puts RbConfig::CONFIG[["LIBS"]]'`
+-	    RUBYLDFLAGS="$rubylibs $extralibs"
++	    RUBYLIBS="$rubylibs $extralibs"
+ 	    RUBYDOTOH="ruby.o"
+ 
+ 	    AC_MSG_CHECKING(whether embedded ruby works the way I expect)
+ 	    have_embedded_ruby="no"
+ 	    old_CFLAGS="$CFLAGS"
+-	    old_LDFLAGS="$LDFLAGS"
++	    old_LIBS="$LIBS"
+ 	    CFLAGS="$CFLAGS $RUBYCFLAGS"
+-	    LDFLAGS="$LDFLAGS $RUBYLDFLAGS"
++	    LIBS="$LIBS $RUBYLIBS"
+ 	    AC_TRY_LINK([
+ #include <ruby.h>
+     VALUE epic_echo (VALUE module, VALUE string)
+@@ -1241,9 +1238,9 @@
+ 		AC_MSG_RESULT(no)
+ 		AC_MSG_CHECKING(whether ruby requires -pthread to link)
+ 		RUBYCFLAGS="$RUBYCFLAGS -pthread"
+-		RUBYLDFLAGS="$RUBYLDFLAGS -pthread"
+-		CFLAGS="$CFLAGS $RUBYCFLAGS"
+-		LDFLAGS="$LDFLAGS $RUBYLDFLAGS"
++		RUBYLIBS="$RUBYLIBS -pthread"
++		CFLAGS="$old_CFLAGS $RUBYCFLAGS"
++		LIBS="$old_LIBS $RUBYLIBS"
+ 
+ 	        AC_TRY_LINK([
+ #include <ruby.h>
+@@ -1268,17 +1265,19 @@
+ 	    fi
+ 
+ 	    CFLAGS="$old_CFLAGS"
+-	    LDFLAGS="$old_LDFLAGS"
++	    LIBS="$old_LIBS"
+ 	    if test $have_embedded_ruby = "yes" ; then
+ 		AC_MSG_RESULT(yes)
+ 		AC_DEFINE(HAVE_RUBY)
+ 		AC_DEFINE(RUBYCFLAGS)
+-		AC_DEFINE(RUBYLDFLAGS)
++		AC_DEFINE(RUBYLIBS)
+ 	    else
++		AS_IF([test "x$with_ruby" != "xmaybe"],
++			[AC_MSG_ERROR([$with_ruby_errormsg])])
+ 	        RUBYDOTOH=""
+ 		HAVE_RUBY=""
+ 		RUBYCFLAGS=""
+-		RUBYLDFLAGS=""
++		RUBYLIBS=""
+ 		AC_MSG_RESULT(no, sorry)
+ 	    fi
+ 	fi
+@@ -1376,7 +1375,7 @@
+ AC_SUBST(LDFLAGS)
+ AC_SUBST(RUBYDOTOH)
+ AC_SUBST(RUBYCFLAGS)
+-AC_SUBST(RUBYLDFLAGS)
++AC_SUBST(RUBYLIBS)
+ AC_SUBST(TCLDOTOH)
+ AC_SUBST(TCLCFLAGS)
+ AC_SUBST(TCLLDFLAGS)
+--- a/source/Makefile.in	Tue Mar 25 07:39:34 2014 +0000
++++ b/source/Makefile.in	Tue Mar 25 07:55:14 2014 +0000
+@@ -38,7 +38,7 @@
+ epic5: $(OBJECTS)
+ 	sh info.c.sh
+ 	$(CC) $(CFLAGS) $(INCLUDES) -c info.c
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o epic5 $(OBJECTS) info.o @PERLLDFLAGS@ @TCLLDFLAGS@ @RUBYLDFLAGS@ $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o epic5 $(OBJECTS) info.o @PERLLDFLAGS@ @TCLLDFLAGS@ @RUBYLIBS@ $(LIBS)
+ 	$(RM) info.c info.o
+ clean::
+ 	$(RM) epic5 $(OBJECTS)

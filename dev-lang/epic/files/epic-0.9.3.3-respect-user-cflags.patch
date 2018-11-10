@@ -1,0 +1,13 @@
+diff --git a/evm/Makefile b/evm/Makefile
+index 7e6c5ff..f40f1a4 100644
+--- a/evm/Makefile
++++ b/evm/Makefile
+@@ -1,6 +1,7 @@
+ CC = gcc
+ #CFLAGS = -Wall -g -DUSE_BOEHM
+-CFLAGS = -Wall -O3 -DUSE_BOEHM
++CFLAGS ?= -Wall -O3
++CFLAGS += -DUSE_BOEHM
+ OBJS = closure.o stdfuns.o emalloc.o sparks.o
+ INSTALLDIR = ${PREFIX}/lib/evm
+ 

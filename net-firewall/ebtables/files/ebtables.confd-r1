@@ -1,0 +1,11 @@
+# /etc/conf.d/ebtables
+
+# Location in which ebtables initscript will save set rules on 
+# service shutdown
+EBTABLES_SAVE="/var/lib/ebtables/rules-save"
+
+# Options to pass to ebtables-save and ebtables-restore 
+SAVE_RESTORE_OPTIONS=""
+
+# Save state on stopping ebtables
+SAVE_ON_STOP="yes"

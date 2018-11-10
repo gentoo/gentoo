@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A package for convenient access to high-resolution
+		clock and timer functions of different operating
+		systems.
+		
+		It is planned to consist of two layers. The lower
+		layer will provide direct access to OS-specific
+		clock and timer functions like clock_gettime of
+		Posix or GetTickCount of Windows and its upper
+		layer shall then provide a common API for all
+		supported systems. Currently only the lower level
+		is being developed.
+		
+		
+		POSIX reference: IEEE Std 1003.1-2008
+		&lt;http://www.opengroup.org/onlinepubs/9699919799/&gt;,
+		&lt;http://www.opengroup.org/onlinepubs/9699919799/functions/clock_getres.html#&gt;
+		
+		WINDOWS reference: ...
+		
+		For more information, see:
+		&lt;http://corsis.sourceforge.net/index.php/Haskell/Clock&gt;
+	</longdescription>
+	<upstream>
+		<remote-id type="github">corsis/clock</remote-id>
+	</upstream>
+</pkgmetadata>

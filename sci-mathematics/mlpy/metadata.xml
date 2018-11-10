@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  mlpy provides a wide range of state-of-the-art machine learning
+  methods for supervised and unsupervised problems and it is aimed at
+  finding a reasonable compromise among modularity, maintainability,
+  reproducibility, usability and efficiency.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">mlpy</remote-id>
+  </upstream>
+</pkgmetadata>

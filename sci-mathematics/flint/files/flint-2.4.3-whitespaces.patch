@@ -1,0 +1,54 @@
+From 3506d617ef9dfc5184aa99be05a25e4f73d6c3f6 Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@hasufell.de>
+Date: Sun, 18 May 2014 18:47:27 +0200
+Subject: [PATCH] Quote variables that could contain whitespaces
+
+Make does NOT take care of this in this context. It's
+not a variable assignment and installation would fail
+if DESTDIR contains any whitespace.
+---
+ Makefile.in | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index b6ea4c9..a522ac1 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -171,23 +171,23 @@ else
+ endif
+ 
+ install: library
+-	mkdir -p $(DESTDIR)$(PREFIX)/$(LIBDIR)
+-	mkdir -p $(DESTDIR)$(PREFIX)/include/flint
++	mkdir -p "$(DESTDIR)$(PREFIX)/$(LIBDIR)"
++	mkdir -p "$(DESTDIR)$(PREFIX)/include/flint"
+ 	$(AT)if [ "$(FLINT_SHARED)" -eq "1" ]; then \
+-		cp $(FLINT_LIB) $(DESTDIR)$(PREFIX)/$(LIBDIR); \
++		cp $(FLINT_LIB) "$(DESTDIR)$(PREFIX)/$(LIBDIR)"; \
+ 	fi
+ 	$(AT)if [ "$(FLINT_STATIC)" -eq "1" ]; then \
+-		cp libflint.a $(DESTDIR)$(PREFIX)/$(LIBDIR); \
++		cp libflint.a "$(DESTDIR)$(PREFIX)/$(LIBDIR)"; \
+ 	fi
+-	cp $(HEADERS) $(DESTDIR)$(PREFIX)/include/flint
++	cp $(HEADERS) "$(DESTDIR)$(PREFIX)/include/flint"
+ 	$(AT)if [ ! -z $(EXT_HEADERS) ]; then \
+-		cp $(EXT_HEADERS) $(DESTDIR)$(PREFIX)/include/flint; \
++		cp $(EXT_HEADERS) "$(DESTDIR)$(PREFIX)/include/flint"; \
+ 	fi
+-	mkdir -p $(DESTDIR)$(FLINT_CPIMPORT_DIR)
+-	cp qadic/CPimport.txt $(DESTDIR)$(FLINT_CPIMPORT_DIR)
+-	mkdir -p $(DESTDIR)$(PREFIX)/include/flint/flintxx
+-	cp flintxx/*.h $(DESTDIR)$(PREFIX)/include/flint/flintxx
+-	cp *xx.h $(DESTDIR)$(PREFIX)/include/flint
++	mkdir -p "$(DESTDIR)$(FLINT_CPIMPORT_DIR)"
++	cp qadic/CPimport.txt "$(DESTDIR)$(FLINT_CPIMPORT_DIR)"
++	mkdir -p "$(DESTDIR)$(PREFIX)/include/flint/flintxx"
++	cp flintxx/*.h "$(DESTDIR)$(PREFIX)/include/flint/flintxx"
++	cp *xx.h "$(DESTDIR)$(PREFIX)/include/flint"
+ 
+ build:
+ 	mkdir -p build
+-- 
+1.9.3
+

@@ -1,0 +1,97 @@
+--- quake2-r0.16.1.orig/Makefile
++++ quake2-r0.16.1/Makefile
+@@ -54,24 +54,26 @@ endif
+ 
+ 
+ # this nice line comes from the linux kernel makefile
+ ARCH := $(shell uname -m | sed -e s/i.86/i386/ -e s/sun4u/sparc/ -e s/sparc64/sparc/ -e s/arm.*/arm/ -e s/sa110/arm/ -e s/alpha/axp/)
+ 
+ ifneq ($(ARCH),x86_64)
+ ifneq ($(ARCH),i386)
+ ifneq ($(ARCH),axp)
++ifneq ($(ARCH),ia64)
+ ifneq ($(ARCH),ppc)
+ ifneq ($(ARCH),sparc)
+ $(error arch $(ARCH) is currently not supported)
+ endif
+ endif
+ endif
+ endif
+ endif
++endif
+ 
+ CC=gcc
+ 
+ ifndef OPT_CFLAGS
+ ifeq ($(ARCH),axp)
+ OPT_CFLAGS=-ffast-math -funroll-loops \
+ 	-fomit-frame-pointer -fexpensive-optimizations
+ endif
+@@ -283,16 +285,46 @@ ifeq ($(ARCH),axp)
+   $(warning Warning: SDL support not supported for $(ARCH))
+  endif
+ 
+  ifeq ($(strip $(BUILD_SDLGL)),YES)
+   $(warning Warning: SDLGL support not supported for $(ARCH))
+  endif
+ endif # ARCH axp
+ 
++ifeq ($(ARCH),ia64)
++ ifeq ($(strip $(BUILD_SDLQUAKE2)),YES)
++  TARGETS += $(BUILDDIR)/sdlquake2
++ endif
++
++ ifeq ($(strip $(BUILD_SVGA)),YES)
++  TARGETS += $(BUILDDIR)/ref_soft.$(SHLIBEXT)
++ endif
++
++ ifeq ($(strip $(BUILD_X11)),YES)
++  TARGETS += $(BUILDDIR)/ref_softx.$(SHLIBEXT)
++ endif
++
++ ifeq ($(strip $(BUILD_GLX)),YES)
++  TARGETS += $(BUILDDIR)/ref_glx.$(SHLIBEXT)
++ endif
++
++ ifeq ($(strip $(BUILD_FXGL)),YES)
++  TARGETS += $(BUILDDIR)/ref_gl.$(SHLIBEXT)
++ endif
++
++ ifeq ($(strip $(BUILD_SDL)),YES)
++  TARGETS += $(BUILDDIR)/ref_softsdl.$(SHLIBEXT)
++ endif
++
++ ifeq ($(strip $(BUILD_SDLGL)),YES)
++  TARGETS += $(BUILDDIR)/ref_sdlgl.$(SHLIBEXT)
++ endif
++endif # ARCH ia64
++
+ ifeq ($(ARCH),ppc)
+  ifeq ($(strip $(BUILD_SDLQUAKE2)),YES)
+   TARGETS += $(BUILDDIR)/sdlquake2
+  endif
+  
+  ifeq ($(strip $(BUILD_SVGA)),YES)
+   $(warning Warning: SVGAlib support not supported for $(ARCH))
+  endif
+--- quake2-r0.16.1.orig/src/linux/sys_linux.c
++++ quake2-r0.16.1/src/linux/sys_linux.c
+@@ -216,16 +216,18 @@ void *Sys_GetGameAPI (void *parms)
+ 	char	*path;
+ 	char	*str_p;
+ #if defined __i386__
+ 	const char *gamename = "gamei386.so";
+ #elif defined __x86_64__
+ 	const char *gamename = "gamex86_64.so";
+ #elif defined __alpha__
+ 	const char *gamename = "gameaxp.so";
++#elif defined __ia64__
++	const char *gamename = "gameia64.so";
+ #elif defined __powerpc__
+ 	const char *gamename = "gameppc.so";
+ #elif defined __sparc__
+ 	const char *gamename = "gamesparc.so";
+ #else
+ #error Unknown arch
+ #endif
+ 

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>php-bugs@gentoo.org</email>
+    <name>PHP</name>
+  </maintainer>
+  <use>
+    <flag name="argon2">Enable password hashing algorithm from <pkg>app-crypt/argon2</pkg></flag>
+    <flag name="bcmath">Add support for libbcmath</flag>
+    <flag name="cli">Enable CLI SAPI</flag>
+    <flag name="coverage">
+      Include gcov symbols for test coverage and lcov reports. Only
+      useful for extension developers, and requires GCC.
+    </flag>
+    <flag name="ctype">Enable ctype functions</flag>
+    <flag name="embed">Enable embed SAPI </flag>
+    <flag name="enchant">Add supports Enchant spelling library. </flag>
+    <flag name="fileinfo"> Add fileinfo extension support</flag>
+    <flag name="filter">Add filter extension support</flag>
+    <flag name="flatfile">Add dbm support for flat files</flag>
+    <flag name="fpm">Enable the FastCGI Process Manager SAPI</flag>
+    <flag name="gd">Adds support for gd (bundled with PHP)</flag>
+    <flag name="hash">Enable the hash extension</flag>
+    <flag name="inifile">Add dbm support for .ini files</flag>
+    <flag name="json">Enable JSON support</flag>
+    <flag name="ldap-sasl">Add SASL support for the PHP LDAP extension</flag>
+    <flag name="libmysqlclient">
+      Use libmyslclient driver for mysql, mysqli, PDO_Mysql (not recommended)
+    </flag>
+    <flag name="lmdb">Enable support for <pkg>dev-db/lmdb</pkg> db backend</flag>
+    <flag name="intl">
+      Enables the intl extension for extended internalization support
+    </flag>
+    <flag name="opcache">
+      Enables built-in opcode cache, replacing pecl-apc et al.
+    </flag>
+    <flag name="pcntl">Add support for process creation functions</flag>
+    <flag name="pdo">Enable the bundled PDO extensions</flag>
+    <flag name="phar">
+      Enables the phar extension to provide phar archive support
+    </flag>
+    <flag name="phpdbg">
+      Enable the PHP Debug Command Line SAPI (like gdb for php)
+    </flag>
+    <flag name="session-mm">
+      Include <pkg>dev-libs/mm</pkg> support for session storage
+    </flag>
+    <flag name="sharedmem">Add support for shared memory use</flag>
+    <flag name="simplexml">Support for SimpleXML</flag>
+    <flag name="sodium">
+      Enable support for crypto through <pkg>dev-libs/libsodium</pkg>
+    </flag>
+    <flag name="sybase-ct">Add support for Sybase-CT</flag>
+    <flag name="sysvipc">
+      Support for System V-compatible inter-process communication
+    </flag>
+    <flag name="tokenizer">Add support for the PHP file parser</flag>
+    <flag name="tokyocabinet">
+      Enable support for <pkg>dev-db/tokyocabinet</pkg> db backend</flag>
+    <flag name="xmlreader">Enable XMLReader support</flag>
+    <flag name="xmlwriter">Enable XMLWriter support</flag>
+    <flag name="xslt">Enable the XSL extension</flag>
+    <flag name="vpx">Enable webp support for GD in php-5.x</flag>
+    <flag name="wddx">Add support for Web Distributed Data eXchange</flag>
+    <flag name="webp">Enable webp support for GD in php-7.x</flag>
+    <flag name="zip-encryption">Enable ZIP file encryption from <pkg>dev-libs/libzip</pkg></flag>
+  </use>
+</pkgmetadata>

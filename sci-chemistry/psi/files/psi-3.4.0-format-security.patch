@@ -1,0 +1,33 @@
+ src/lib/libmints/matrix.cc | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/src/lib/libmints/matrix.cc b/src/lib/libmints/matrix.cc
+index 2ce5ede..2c7b5de 100644
+--- a/src/lib/libmints/matrix.cc
++++ b/src/lib/libmints/matrix.cc
+@@ -549,10 +549,9 @@ void Matrix::save(const char *filename, bool append, bool saveLowerTriangle, boo
+     } else {
+         out = fopen(filename, "w");
+     }
+-    
+-    fprintf(out, name_.c_str());
+-    fprintf(out, "\n");
+-    
++
++    fprintf(out, "%s\n", name_.c_str());
++
+     if (saveSubBlocks == false) {
+         // Convert the matrix to a full matrix
+         double **fullblock = to_block_matrix();
+@@ -1083,9 +1082,8 @@ void SimpleMatrix::save(const char *filename, bool append, bool saveLowerTriangl
+     } else {
+         out = fopen(filename, "w");
+     }
+-    
+-    fprintf(out, name_.c_str());
+-    fprintf(out, "\n");
++
++    fprintf(out, "%s\n", name_.c_str());
+ 
+     if (saveLowerTriangle) {
+         // Count the number of non-zero element

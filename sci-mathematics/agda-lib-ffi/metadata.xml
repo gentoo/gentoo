@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Auxiliary Haskell code used by Agda's standard library.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">agda/agda-stdlib</remote-id>
+	</upstream>
+</pkgmetadata>

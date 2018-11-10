@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Mouse</remote-id>
+    <remote-id type="cpan-module">Mouse</remote-id>
+    <remote-id type="cpan-module">Mouse::Exporter</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Attribute</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Class</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Method</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Method::Accessor</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Method::Constructor</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Method::Delegation</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Method::Destructor</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Module</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Role</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Role::Application</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Role::Application::RoleSummation</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Role::Composite</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::Role::Method</remote-id>
+    <remote-id type="cpan-module">Mouse::Meta::TypeConstraint</remote-id>
+    <remote-id type="cpan-module">Mouse::Object</remote-id>
+    <remote-id type="cpan-module">Mouse::PurePerl</remote-id>
+    <remote-id type="cpan-module">Mouse::Role</remote-id>
+    <remote-id type="cpan-module">Mouse::Spec</remote-id>
+    <remote-id type="cpan-module">Mouse::Tiny</remote-id>
+    <remote-id type="cpan-module">Mouse::TypeRegistry</remote-id>
+    <remote-id type="cpan-module">Mouse::Util</remote-id>
+    <remote-id type="cpan-module">Mouse::Util::MetaRole</remote-id>
+    <remote-id type="cpan-module">Mouse::Util::TypeConstraints</remote-id>
+    <remote-id type="cpan-module">Squirrel</remote-id>
+    <remote-id type="cpan-module">Squirrel::Role</remote-id>
+    <remote-id type="cpan-module">Test::Mouse</remote-id>
+    <remote-id type="cpan-module">ouse</remote-id>
+  </upstream>
+</pkgmetadata>

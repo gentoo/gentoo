@@ -1,0 +1,12 @@
+diff -ru umoria.orig/unix/unix.c umoria/unix/unix.c
+--- umoria.orig/unix/unix.c	2014-11-01 02:45:07.375535783 -0400
++++ umoria/unix/unix.c	2014-11-01 02:45:58.575820065 -0400
+@@ -315,7 +315,7 @@
+ 
+ 	  user[0] = '\0';
+ 	  file++;
+-	  while (*file != '/' && i < sizeof(user))
++	  while (*file != '/' && i < sizeof(user) - 1)
+ 	    user[i++] = *file++;
+ 	  user[i] = '\0';
+ 	  if (i == 0)

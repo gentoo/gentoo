@@ -1,0 +1,16 @@
+Description: Don't install utils as suid root
+Author: Bastian Blank <waldi@debian.org>
+Bug-Debian: http://bugs.debian.org/692929
+
+--- ncpfs-2.2.6.orig/sutil/Makefile.in
++++ ncpfs-2.2.6/sutil/Makefile.in
+@@ -51,7 +51,7 @@ all: $(UTILS)
+ install: all
+ 	${INSTALL} -d $(DESTDIR)$(bindir)
+ 	${INSTALL} -d $(DESTDIR)/sbin
+-	${INSTALL} -m 4755 $(UTILS) $(DESTDIR)$(bindir)
++	${INSTALL} $(UTILS) $(DESTDIR)$(bindir)
+ ifeq ($(USE_KERNEL),1)
+ 	ln -sf $(bindir)/ncpmount $(DESTDIR)/sbin/mount.ncp
+ 	ln -sf $(bindir)/ncpmount $(DESTDIR)/sbin/mount.ncpfs
+

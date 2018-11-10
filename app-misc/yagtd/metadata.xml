@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+<longdescription lang="en">
+yaGTD incorporates major features from Allen's 'Getting Things Done' philosophy and 
+notion of urgency and importance preached by Stephen Covey 
+(cf Seven Habits of Highly Effective People book).
+To resume, if you are comfortable at the command line a simple plain text is an
+age-old but perfect method for tracking your stuff, and yaGTD can help you to
+manage efficiently this file. 
+</longdescription>
+</pkgmetadata>

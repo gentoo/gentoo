@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  Ever wonder what makes Lisp so powerful? Now you can find out for yourself -
+  And you can do it right inside your GNU Emacs text editor! If you've spent
+  any time working with Emacs, you'll find out that in order to get the full
+  power out of this uber text editor, you'll want to learn a little about
+  programming in Emacs Lisp. Anyone who has ever learned to program in Lisp
+  will tell you it is very different from any other programming language.
+  It is different in lots of surprising ways - This comic book will let you
+  find out how Lisp's unique design makes it so powerful!
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,34 @@
+http://bugs.gentoo.org/412323
+
+--- src/console_output.h
++++ src/console_output.h
+@@ -21,7 +21,7 @@
+ #ifndef GXINE_CONSOLE_OUTPUT_H
+ #define GXINE_CONSOLE_OUTPUT_H
+ 
+-#include <glib/gmessages.h>
++#include <glib.h>
+ 
+ void console_output_init (void);
+ 
+--- src/engine.c
++++ src/engine.c
+@@ -30,7 +30,7 @@
+ #include <errno.h>
+ #include <unistd.h>
+ 
+-#include <glib/gthread.h>
++#include <glib.h>
+ 
+ #include "engine.h"
+ #include "ui.h"
+--- src/main.c
++++ src/main.c
+@@ -46,7 +46,6 @@
+ #include <gdk/gdk.h>
+ #include <gdk/gdkkeysyms.h>
+ #include <glib.h>
+-#include <glib/gmessages.h>
+ 
+ #include "desktop_integration.h"
+ #include "engine.h"

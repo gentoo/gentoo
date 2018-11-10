@@ -1,0 +1,31 @@
+From 1f9ccb2b586c3a7e29db3c99a23ac1cee6907cf2 Mon Sep 17 00:00:00 2001
+From: Pierre Chapuis <catwell@archlinux.us>
+Date: Fri, 5 Jul 2013 18:00:29 +0200
+Subject: [PATCH] http: look for PROXY in _M, not as a global
+
+---
+ src/http.lua | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/http.lua b/src/http.lua
+index 5f70a374..f83dcc55 100644
+--- a/src/http.lua
++++ b/src/http.lua
+@@ -186,7 +186,7 @@ end
+ local function adjusturi(reqt)
+     local u = reqt
+     -- if there is a proxy, we need the full url. otherwise, just a part.
+-    if not reqt.proxy and not PROXY then
++    if not reqt.proxy and not _M.PROXY then
+         u = {
+            path = socket.try(reqt.path, "invalid path 'nil'"),
+            params = reqt.params,
+@@ -198,7 +198,7 @@ local function adjusturi(reqt)
+ end
+ 
+ local function adjustproxy(reqt)
+-    local proxy = reqt.proxy or PROXY
++    local proxy = reqt.proxy or _M.PROXY
+     if proxy then
+         proxy = url.parse(proxy)
+         return proxy.host, proxy.port or 3128

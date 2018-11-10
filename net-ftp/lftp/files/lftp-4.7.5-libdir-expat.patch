@@ -1,0 +1,11 @@
+--- a/m4/ax_lib_expat.m4
++++ b/m4/ax_lib_expat.m4
+@@ -109,7 +109,7 @@
+ 
+     if test -n "$expat_prefix"; then
+         expat_include_dir="$expat_prefix/include"
+-        expat_ld_flags="-L$expat_prefix/lib"
++        expat_ld_flags="-L$libdir"
+         expat_lib_flags="-lexpat"
+         run_expat_test="yes"
+     elif test "$expat_requested" = "yes"; then

@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting inetd"
+	(
+	# workaround for #25754
+	unset -f `declare -F | sed 's:declare -f::g'`
+	start-stop-daemon --start --quiet --pidfile /var/run/inetd.pid --exec /usr/sbin/inetd
+	)
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping inetd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/inetd.pid
+	eend $?
+}

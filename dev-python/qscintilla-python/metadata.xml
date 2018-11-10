@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>phil@riverbankcomputing.com</email>
+			<name>Phil Thompson</name>
+		</maintainer>
+		<bugs-to>mailto:qscintilla@riverbankcomputing.com</bugs-to>
+		<doc>http://pyqt.sourceforge.net/Docs/QScintilla2/</doc>
+		<remote-id type="sourceforge">pyqt</remote-id>
+	</upstream>
+</pkgmetadata>

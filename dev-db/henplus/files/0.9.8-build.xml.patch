@@ -1,0 +1,23 @@
+diff -ur henplus-0.9.8.old/build.xml henplus-0.9.8/build.xml
+--- henplus-0.9.8.old/build.xml	2009-05-01 23:51:41.000000000 +0300
++++ henplus-0.9.8/build.xml	2009-05-01 23:52:31.000000000 +0300
+@@ -33,13 +33,13 @@
+         <pathelement path="${classes}" />
+      </path>
+ 
+-     <taskdef name="ant-server" classname="net.sweetohm.ant.server.ServerTask">
+-        <classpath>
+-           <pathelement location="${lib}/build/sat-0.7.jar" />
+-        </classpath>
+-     </taskdef>
+-
+      <target name="server">
++        <taskdef name="ant-server" classname="net.sweetohm.ant.server.ServerTask">
++           <classpath>
++              <pathelement location="${lib}/build/sat-0.7.jar" />
++           </classpath>
++        </taskdef>
++
+         <ant-server/>
+      </target>
+ 

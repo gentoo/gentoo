@@ -1,0 +1,11 @@
+--- ipkungfu    2003-10-03 13:05:59.000000000 -0400
++++ ipkungfu    2004-02-09 16:34:37.000000000 -0500
+@@ -138,7 +138,7 @@
+    if [ $INIT != 1 ] ; then
+     echo "Loading FTP NAT module..."
+    fi
+-   $MODPROBE ip_nat_irc
++   $MODPROBE ip_nat_ftp
+   fi
+  fi
+ }

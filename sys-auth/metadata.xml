@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sys-auth category contains applications and libraries to support
+		authentication and authorization facilities.
+		Here belongs PAM modules, NSS modules and login apps.
+	</longdescription>
+	<longdescription lang="ja">
+		sys-authカテゴリには確認を採用するアプリケーションとライブラリが
+		含まれます。これはPAMとNSSモジュールとログインアプリケーションの場所です。
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sys-auth chứa các ứng dụng và thư viện hỗ trợ xác thực và phân quyền.
+		Ở đây bao gồm các module PAM, NSS và các ứng dụng đăng nhập.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sys-auth enthält Programme und Bibliotheken die Funktionen
+		zur Authentifizierung und Authorisierung zur Verfügung stellen. Module für PAM 
+		und NSS sowie Loginapplikationen finden sich hier.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sys-auth contiene applicazioni e librerie di supporto per
+		gli strumenti di autenticazione e autorizzazione. Appartengono a questa categoria
+		i moduli PAM, i moduli NSS e le applicazioni di login.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sys-auth contém aplicações e bibliotecas para
+		suportar instrumentos de autenticação e autorização.
+		Nesta categoria pertencem módulos de PAM, módulos de NSS e
+		aplicações de login.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sys-auth zawiera biblioteki oraz programy związane z
+		autoryzacją i uwierzytelnianiem. Znajdują się tu moduły PAM, NSS oraz
+		aplikacje służące do logowania.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sys-auth contiene aplicaciones y librerías para dar
+		soporte a los servicios de autenticación y autorización.
+		A esta categoría pertenecen los módulos PAM, NSS y las aplicaciones
+		para ingresar en el sistema.
+	</longdescription>
+</catmetadata>

@@ -1,0 +1,12 @@
+diff -ur lcd4linux-0.10.1-RC2.orig/lcd4linux.c  lcd4linux-0.10.1-RC2/lcdinux-0.10.1-RC2/lcd4linux.c
+--- lcd4linux.c	2007-03-22 15:10:41.000000000 +0900
++++ lcd4linux.c	2011-11-23 12:12:03.782869315 +0800
+@@ -26,7 +26,7 @@
+  */
+ 
+ #include "config.h"
+-
++#include <sys/stat.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>

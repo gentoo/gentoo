@@ -1,0 +1,12 @@
+[Unit]
+Description=Exim Mail Transport Agent
+After=network.target
+
+[Service]
+Environment=QUEUE=15m
+ExecStart=/usr/sbin/exim -bdf -q${QUEUE}
+ExecReload=/bin/kill -HUP $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

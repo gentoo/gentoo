@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>sci-geosciences@gentoo.org</email>
+	<name>Gentoo Geosciences Project</name>
+</maintainer>
+<longdescription>
+	libdap is a C++ implementation of OPeNDAP which allows access to
+	data over the internet, from programs that weren't originally
+	designed for that purpose, as well as some that were.  While OPeNDAP
+	s the original developer of the Data Access Protocol (DAP) which
+	it's software uses, many other groups have adopted DAP and provide
+	compatible clients, servers and software development kits. DAP is a
+	NASA community standard: http://www.esdswg.org/spg/rfc/ese-rfc-004
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,38 @@
+pop_common.c:5:3: warning: incompatible implicit declaration of built-in function ‘exit’
+pop_common.c:10:3: warning: incompatible implicit declaration of built-in function ‘exit’
+pop_client.c:61:3: warning: incompatible implicit declaration of built-in function ‘exit’
+pop_gui_client.c:58:4: warning: incompatible implicit declaration of built-in function ‘memset’
+pop_gui_client.c:72:27: warning: incompatible implicit declaration of built-in function ‘strlen’
+pop_gui_client.c:128:3: warning: incompatible implicit declaration of built-in function ‘exit’
+
+--- pop_client.c
++++ pop_client.c
+@@ -1,11 +1,11 @@
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+ #include <errno.h>
+ #include <glib.h>
+-#include <stdio.h>
+ #include <netdb.h>
+ #include "pop_common.h"
+ #include "pop_client.h"
+--- pop_common.c
++++ pop_common.c
+@@ -1,4 +1,5 @@
+ #include <stdio.h>
++#include <stdlib.h>
+ void errquit(char *message)
+ {
+   perror(message);
+--- pop_gui_client.c
++++ pop_gui_client.c
+@@ -1,3 +1,5 @@
++#include <stdlib.h>
++#include <string.h>
+ #include <netdb.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>

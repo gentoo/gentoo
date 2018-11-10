@@ -1,0 +1,34 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# bash command-line completion for tree
+# Author: Aaron Walker <ka0ttic@gentoo.org>
+
+_tree() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="-a -d -l -f -i -q -N -p -u -g -s -D -F -r -t -x -L -A
+    -S -n -C -P -I -H -T -R -o --inodes --device --noreport --nolinks
+    --dirsfirst --charset --help"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+        return 0
+    fi
+
+    case "${prev}" in
+        -L|-P|-I|-H|-T|--charset|--help)
+            ;;
+        -o)
+	    _filedir
+            ;;
+        *)
+	    _filedir -d
+            ;;
+    esac
+}
+complete -o filenames -F _tree tree
+
+# vim: set ft=sh tw=80 sw=4 et :

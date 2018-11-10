@@ -1,0 +1,29 @@
+Index: src/py/javatoolkit/xml/DomRewriter.py
+===================================================================
+--- src/py/javatoolkit/xml/DomRewriter.py	(revision 8310)
++++ src/py/javatoolkit/xml/DomRewriter.py	(working copy)
+@@ -78,7 +78,6 @@
+ 
+ 
+     def write(self,stream):
+-        from xml.dom.ext import PrettyPrint
+-        PrettyPrint(self.document,stream)
++        stream.write(self.document.toxml("utf-8"))
+ 
+ # vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4 nowrap:
+Index: src/py/javatoolkit/maven/MavenPom.py
+===================================================================
+--- src/py/javatoolkit/maven/MavenPom.py	(revision 8310)
++++ src/py/javatoolkit/maven/MavenPom.py	(working copy)
+@@ -185,10 +185,7 @@
+                     for build_node in build_nodes:
+                         build_node.appendChild(plugins_node.cloneNode(deep=True))
+ 
+-        from xml.dom.ext import PrettyPrint
+-        self.write = self.__write
+-        PrettyPrint(xmldoc,self)
+-        self.write = None
++        self.__write(xmldoc.toxml("utf-8"))
+ 
+ 
+     def create_element(self,xmldoc,element_name,text_value=None):

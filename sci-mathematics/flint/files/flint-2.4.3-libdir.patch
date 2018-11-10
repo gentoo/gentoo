@@ -1,0 +1,44 @@
+From 27eb23c1844029ee64907500bd8aa87097ffcd32 Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@hasufell.de>
+Date: Sun, 18 May 2014 18:46:24 +0200
+Subject: [PATCH] Allow to control LIBDIR
+
+Some distributions have lib32/lib64 and need to control
+the destination properly.
+---
+ Makefile.in | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index c16f838..b6ea4c9 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -4,6 +4,8 @@ else
+   $(DLPATH):=$(DLPATH_ADD)
+ endif
+ 
++LIBDIR=lib
++
+ QUIET_CC  = @echo '   ' CC  ' ' $@;
+ QUIET_CXX = @echo '   ' CXX ' ' $@;
+ QUIET_AR  = @echo '   ' AR  ' ' $@;
+@@ -169,13 +171,13 @@ else
+ endif
+ 
+ install: library
+-	mkdir -p $(DESTDIR)$(PREFIX)/lib
++	mkdir -p $(DESTDIR)$(PREFIX)/$(LIBDIR)
+ 	mkdir -p $(DESTDIR)$(PREFIX)/include/flint
+ 	$(AT)if [ "$(FLINT_SHARED)" -eq "1" ]; then \
+-		cp $(FLINT_LIB) $(DESTDIR)$(PREFIX)/lib; \
++		cp $(FLINT_LIB) $(DESTDIR)$(PREFIX)/$(LIBDIR); \
+ 	fi
+ 	$(AT)if [ "$(FLINT_STATIC)" -eq "1" ]; then \
+-		cp libflint.a $(DESTDIR)$(PREFIX)/lib; \
++		cp libflint.a $(DESTDIR)$(PREFIX)/$(LIBDIR); \
+ 	fi
+ 	cp $(HEADERS) $(DESTDIR)$(PREFIX)/include/flint
+ 	$(AT)if [ ! -z $(EXT_HEADERS) ]; then \
+-- 
+1.9.3
+

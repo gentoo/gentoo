@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <use>
+    <flag name="animgif">Enable animated gif support</flag>
+    <flag name="fcgi">Build for FastCGI compatibility via <pkg>dev-libs/fcgi</pkg> instead of using PerlIO</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpan">GD</remote-id>
+    <remote-id type="cpan-module">GD</remote-id>
+    <remote-id type="cpan-module">GD::Group</remote-id>
+    <remote-id type="cpan-module">GD::Image</remote-id>
+    <remote-id type="cpan-module">GD::Polygon</remote-id>
+    <remote-id type="cpan-module">GD::Polyline</remote-id>
+    <remote-id type="cpan-module">GD::Simple</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- a/src/Makefile.in	2009-02-11 14:31:56.000000000 +0100
++++ b/src/Makefile.in	2009-02-11 14:32:29.000000000 +0100
+@@ -109,7 +109,7 @@
+ INCLUDES =  	-I$(top_srcdir) 	@X_CFLAGS@ 	@GL_CFLAGS@ 	@GLUT_CFLAGS@ 	@TCL_CFLAGS@ 	@GIF_CFLAGS@ 	@JPEG_CFLAGS@ 	@PNG_CFLAGS@ 	@PLIB_CFLAGS@
+ 
+ 
+-gracer_LDADD =  	@PLIB_LDFLAGS@ 	@GIF_LDFLAGS@ 	@JPEG_LDFLAGS@ 	@PNG_LDFLAGS@ 	@GL_LDFLAGS@ 	@GLUT_LDFLAGS@ 	@X_LDFLAGS@ 	@TCL_LDFLAGS@ 	@TCL_LIBS@ 	@X_LIBS@ 	@GL_LIBS@ 	@GLUT_LIBS@ 	@GIF_LIBS@ 	@JPEG_LIBS@ 	@PNG_LIBS@ 	@SOUND_LIBS@ 	$(top_builddir)/common/libcommon.a
++gracer_LDADD = $(top_builddir)/common/libcommon.a 	@PLIB_LDFLAGS@ 	@GIF_LDFLAGS@ 	@JPEG_LDFLAGS@ 	@PNG_LDFLAGS@ 	@GL_LDFLAGS@ 	@GLUT_LDFLAGS@ 	@X_LDFLAGS@ 	@TCL_LDFLAGS@ 	@TCL_LIBS@ 	@X_LIBS@ 	@GL_LIBS@ 	@GLUT_LIBS@ 	@GIF_LIBS@ 	@JPEG_LIBS@ 	@PNG_LIBS@ 	@SOUND_LIBS@
+ 
+ 
+ gracer_SOURCES =  		control.h 		glbind.c 		glbind.h 		glutwidgets.c 		glutwidgets.h 		gluttclwidgets.c 		gluttclwidgets.h 		glutgame.c 		glutgame.h 		gr_world.c 		gr_world.h 		glhash.h 		gluthash.h 		vehicle.c 		vehicle.h 		lap.c 		lap.h 		joystick.c 		joystick.h 		tcldefs.h 		sound.h 		sound.cxx 		main.cxx

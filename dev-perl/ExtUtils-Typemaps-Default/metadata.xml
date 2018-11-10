@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">ExtUtils-Typemaps-Default</remote-id>
+		<remote-id type="cpan-module">ExtUtils::Typemaps::Basic</remote-id>
+		<remote-id type="cpan-module">ExtUtils::Typemaps::Default</remote-id>
+		<remote-id type="cpan-module">ExtUtils::Typemaps::ObjectMap</remote-id>
+		<remote-id type="cpan-module">ExtUtils::Typemaps::STL</remote-id>
+		<remote-id type="cpan-module">ExtUtils::Typemaps::STL::List</remote-id>
+		<remote-id type="cpan-module">ExtUtils::Typemaps::STL::String</remote-id>
+		<remote-id type="cpan-module">ExtUtils::Typemaps::STL::Vector</remote-id>
+	</upstream>
+</pkgmetadata>

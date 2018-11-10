@@ -1,0 +1,16 @@
+--- a/src/makefile
++++ b/src/makefile
+@@ -38,11 +38,11 @@
+ 
+ ../plugins/filter.so:	plugins/filter.c ladspa.h
+ 	$(CC) $(CFLAGS) $(INCLUDES) -fPIC -o plugins/filter.o -c plugins/filter.c
+-	$(LD) $(RAW_LDFLAGS) -o ../plugins/filter.so plugins/filter.o -shared -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) -o ../plugins/filter.so plugins/filter.o -nostartfiles -shared -lm
+ 
+ ../plugins/%.so:	plugins/%.c ladspa.h
+ 	$(CC) $(CFLAGS) $(INCLUDES) -fPIC -o plugins/$*.o -c plugins/$*.c
+-	$(LD) $(RAW_LDFLAGS) -o ../plugins/$*.so plugins/$*.o -shared
++	$(CC) $(CFLAGS) $(LDFLAGS) -o ../plugins/$*.so plugins/$*.o -nostartfiles -shared
+ 
+ ../plugins/%.so:	plugins/%.cpp ladspa.h
+ 	$(CXX) $(CXXFLAGS) $(INCLUDES) -fPIC -o plugins/$*.o -c plugins/$*.cpp

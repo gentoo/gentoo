@@ -1,0 +1,108 @@
+diff -Naur xml-xalan.orig/c/src/xalanc/Makefile.in xml-xalan/c/src/xalanc/Makefile.in
+--- xml-xalan.orig/c/src/xalanc/Makefile.in	2009-07-27 00:23:08.411122528 +0200
++++ xml-xalan/c/src/xalanc/Makefile.in	2009-07-27 00:45:09.514777553 +0200
+@@ -174,7 +174,7 @@
+ 
+ "//'$(LOADSAMP)(${BATCH_XALAN_UTIL_NAME})'": ${XSL_OBJ_DIR}/XalanExe.o
+ 	${LINK} $(XSL_BUILD_OPTIONS) ${PLATFORM_LIB_LINK_OPTIONS}  \
+-	${EXTRA_LINK_OPTIONS}  $(XALAN_LIB) $(ALLLIBS) $^ -o $@	
++	${EXTRA_LINK_OPTIONS} $^ -o $@	$(XALAN_LIB) $(ALLLIBS)
+ ${XSL_OBJ_DIR}/XalanExe.o: $(XALANEXE_DIR)/XalanExe.cpp                       
+ 	$(CC1) $(XSL_BUILD_OPTIONS) -c $(XSL_INCL) $(EXTRA_COMPILE_OPTIONS) -o $@ $<
+ 
+@@ -182,7 +182,7 @@
+ 
+ "//'$(LOADSAMP)(${BATCH_TEST_UTIL_NAME})'": ${XSL_OBJ_DIR}/process.o
+ 	${LINK} $(XSL_BUILD_OPTIONS) ${PLATFORM_LIB_LINK_OPTIONS}  \
+-	${EXTRA_LINK_OPTIONS} $(XALAN_LIB) $(ALLLIBS) $^ -o $@	
++	${EXTRA_LINK_OPTIONS} $^ -o $@ $(XALAN_LIB) $(ALLLIBS)
+ ${XSL_OBJ_DIR}/process.o: $(TESTXSLT_DIR)/process.cpp                       
+ 	$(CC1) $(XSL_BUILD_OPTIONS) -c $(XSL_INCL) $(EXTRA_COMPILE_OPTIONS) -o $@ $<
+ 
+@@ -192,7 +192,7 @@
+ 
+ $(XSL_BIN_DIR)/Xalan: ${XSL_OBJ_DIR}/XalanExe.o
+ 	${LINK} $(XSL_BUILD_OPTIONS) ${PLATFORM_LIB_LINK_OPTIONS}  \
+-	${EXTRA_LINK_OPTIONS} $(XALAN_LIB) $(ALLLIBS) $^ -o $@	$(OTHER_LINK_PARAMETERS)
++	${EXTRA_LINK_OPTIONS} $^ -o $@	$(OTHER_LINK_PARAMETERS) $(XALAN_LIB) $(ALLLIBS)
+ ${XSL_OBJ_DIR}/XalanExe.o: $(XALANEXE_DIR)/XalanExe.cpp
+ 	$(CC1) $(XSL_BUILD_OPTIONS) -c $(XSL_INCL) $(EXTRA_COMPILE_OPTIONS) -o $@ $<
+ endif
+@@ -201,7 +201,7 @@
+ 
+ $(XSL_BIN_DIR)/testXSLT: ${XSL_OBJ_DIR}/process.o
+ 	${LINK} $(XSL_BUILD_OPTIONS) ${PLATFORM_LIB_LINK_OPTIONS}  \
+-	${EXTRA_LINK_OPTIONS} $(XALAN_LIB) $(ALLLIBS) $^ -o $@	$(OTHER_LINK_PARAMETERS)
++	${EXTRA_LINK_OPTIONS} $^ -o $@	$(OTHER_LINK_PARAMETERS) $(XALAN_LIB) $(ALLLIBS)
+ ${XSL_OBJ_DIR}/process.o: $(TESTXSLT_DIR)/process.cpp
+ 	$(CC1) $(XSL_BUILD_OPTIONS) -c $(XSL_INCL) $(EXTRA_COMPILE_OPTIONS) -o $@ $<
+ 
+@@ -209,7 +209,7 @@
+ 
+ $(XSL_BIN_DIR)/testXPath: ${XSL_OBJ_DIR}/TestXPath.o ${XSL_OBJ_DIR}/NodeNameTreeWalker.o
+ 	${LINK} $(XSL_BUILD_OPTIONS) ${PLATFORM_LIB_LINK_OPTIONS}  \
+-	${EXTRA_LINK_OPTIONS} $(XALAN_LIB) $(ALLLIBS) $(CXXFLAGS) $^ -o $@	$(OTHER_LINK_PARAMETERS)
++	${EXTRA_LINK_OPTIONS} $(CXXFLAGS) $^ -o $@	$(OTHER_LINK_PARAMETERS) $(XALAN_LIB) $(ALLLIBS)
+ ${XSL_OBJ_DIR}/%.o:$(TESTXPATH_DIR)/%.cpp
+ 	$(CC1) $(XSL_BUILD_OPTIONS) -c $(XSL_INCL) $(EXTRA_COMPILE_OPTIONS) -o $@ $<
+ 
+@@ -222,7 +222,7 @@
+ 
+ ${BATCH_TARGET}: $(ALL_OBJECTS)
+ 	@echo Building ${BATCH_TARGET}
+-	$(MAKE_SHARED) $(ALLLIBS) $^ -o $@
++	$(MAKE_SHARED) $^ -o $@ $(ALLLIBS)
+ 
+ else
+ 
+@@ -232,7 +232,7 @@
+ 	$(MAKE) -C Utils $@
+ 
+ $(XSL_LIB_DIR)/$(LIB): $(ALL_OBJECTS)
+-	$(MAKE_SHARED) $(PLATFORM_LIBRARIES) $(EXTRA_LINK_OPTIONS) $(LINK_SONAME) $(ALLLIBS) $^ -o $@ $(OTHER_LINK_LIB_PARAMETERS)
++	$(MAKE_SHARED) $(PLATFORM_LIBRARIES) $(EXTRA_LINK_OPTIONS) $(LINK_SONAME) $^ -o $@ $(OTHER_LINK_LIB_PARAMETERS) $(ALLLIBS)
+ ifeq ($(PLATFORM), OS390)
+ 	mv *.x  ${XSL_LIB_DIR}        
+ else
+diff -Naur xml-xalan.orig/c/src/xalanc/Utils/MsgCreator/Makefile.in xml-xalan/c/src/xalanc/Utils/MsgCreator/Makefile.in
+--- xml-xalan.orig/c/src/xalanc/Utils/MsgCreator/Makefile.in	2009-07-27 00:23:08.431122558 +0200
++++ xml-xalan/c/src/xalanc/Utils/MsgCreator/Makefile.in	2009-07-27 00:43:47.674693543 +0200
+@@ -29,7 +29,7 @@
+ 
+ $(XSL_BIN_DIR)/MsgCreator : $(MSG_CREATOR_OBJECTS)
+ 	${LINK} $(XSL_BUILD_OPTIONS) ${PLATFORM_LIB_LINK_OPTIONS} ${LIBRARY_SEARCH_PATHS} \
+-	${EXTRA_LINK_OPTIONS} $(LIBS) $(XERCES_LIB) $^ -o $@ $(LOC_OTHER_LINK_PARAMETERS)
++	${EXTRA_LINK_OPTIONS} $^ -o $@ $(LIBS) $(XERCES_LIB) $(LOC_OTHER_LINK_PARAMETERS)
+ 	
+ $(XSL_OBJ_DIR)/%.o : $(MSG_CREATOR_SRC)/%.cpp    
+ 	$(CC1) $(XSL_BUILD_OPTIONS) -c $(XSL_INCL) $(EXTRA_COMPILE_OPTIONS) -o $@ $<
+diff -Naur xml-xalan.orig/c/Tests/Makefile.in xml-xalan/c/Tests/Makefile.in
+--- xml-xalan.orig/c/Tests/Makefile.in	2009-07-27 00:23:08.514445103 +0200
++++ xml-xalan/c/Tests/Makefile.in	2009-07-27 00:45:50.541094978 +0200
+@@ -62,7 +62,7 @@
+ 
+ $(XSL_BIN_DIR)/ThreadTest: ${XSL_OBJ_DIR}/ThreadTest.o 
+ 	${LINK} $(XSL_BUILD_OPTIONS) ${PLATFORM_LIB_LINK_OPTIONS}  \
+-	${EXTRA_LINK_OPTIONS}  $(XALAN_LIB) $(ALLLIBS) $(CXXFLAGS) $^ -o $@	 $(OTHER_LINK_PARAMETERS)
++	${EXTRA_LINK_OPTIONS}  $(CXXFLAGS) $^ -o $@	 $(OTHER_LINK_PARAMETERS) $(XALAN_LIB) $(ALLLIBS)
+ ${XSL_OBJ_DIR}/%.o:$(TESTS_DIR)/Threads/%.cpp
+ 	$(CC1) $(XSL_BUILD_OPTIONS) -c $(XSL_INCL) $(EXTRA_COMPILE_OPTIONS) -o $@ $<
+ 
+@@ -70,7 +70,7 @@
+ 
+ $(XSL_BIN_DIR)/Conf: ${XSL_OBJ_DIR}/conf.o
+ 	${LINK} $(XSL_BUILD_OPTIONS) ${PLATFORM_LIB_LINK_OPTIONS}  \
+-	${EXTRA_LINK_OPTIONS}  $(XALAN_LIB) $(ALLLIBS) $(CXXFLAGS) $^ -o $@	 $(OTHER_LINK_PARAMETERS)
++	${EXTRA_LINK_OPTIONS} $(CXXFLAGS) $^ -o $@	 $(OTHER_LINK_PARAMETERS) $(XALAN_LIB) $(ALLLIBS)
+ ${XSL_OBJ_DIR}/%.o:$(TESTS_DIR)/Conf/%.cpp
+ 	$(CC1) $(XSL_BUILD_OPTIONS) -c $(XSL_INCL) $(EXTRA_COMPILE_OPTIONS) -o $@ $<
+ 
+@@ -92,7 +92,7 @@
+ 
+ $(XSL_BIN_DIR)/Perf: $(PERF_OBJECTS)
+ 	${LINK} $(XSL_BUILD_OPTIONS) ${PLATFORM_LIB_LINK_OPTIONS}  \
+-	${EXTRA_LINK_OPTIONS}  $(XALAN_LIB) $(ALLLIBS) $(CXXFLAGS) $^ -o $@	 $(OTHER_LINK_PARAMETERS)
++	${EXTRA_LINK_OPTIONS} $(CXXFLAGS) $^ -o $@	 $(OTHER_LINK_PARAMETERS) $(XALAN_LIB) $(ALLLIBS)
+ 	
+ ${XSL_OBJ_DIR}/%.o:$(TESTS_DIR)/Performance/%.cpp
+ 	$(CC1) $(XSL_BUILD_OPTIONS) -c $(XSL_INCL) $(EXTRA_COMPILE_OPTIONS) -o $@ $<

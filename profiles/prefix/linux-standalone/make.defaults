@@ -1,0 +1,13 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# 'Sane' defaults
+ELIBC="glibc"
+KERNEL="linux"
+
+# 2006/10/28 - Luca Barbato <lu_zero@gentoo.org>
+# on glibc system you cannot turn it off
+USE="iconv"
+
+# build gcc with parallelization support
+USE="${USE} openmp"

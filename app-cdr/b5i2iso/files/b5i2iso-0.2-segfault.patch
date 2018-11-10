@@ -1,0 +1,18 @@
+--- b5i2iso/src/b5i2iso.c
++++ b5i2iso/src/b5i2iso.c
+@@ -1,3 +1,4 @@
++#include <errno.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -45,6 +46,10 @@
+    }
+ 
+ fsource = fopen(argv[1],"rb");
++if (fsource == NULL) {
++  printf("can't open %s: %s\n", argv[1], strerror(errno));
++  exit(EXIT_FAILURE);
++}
+ fdest = fopen(destfilename,"wb");
+ 
+ fseek(fsource, 2352, SEEK_CUR);

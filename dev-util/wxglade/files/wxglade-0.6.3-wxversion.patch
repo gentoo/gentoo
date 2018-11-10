@@ -1,0 +1,12 @@
+diff -Naur wxGlade-0.6.1-orig/main.py wxGlade-0.6.1/main.py
+--- wxGlade-0.6.1/main.py	2007-10-25 01:03:22.000000000 -0600
++++ wxGlade-0.6.1/main.py	2007-12-04 09:36:20.000000000 -0600
+@@ -7,7 +7,7 @@
+ # THIS PROGRAM COMES WITH NO WARRANTY
+ 
+ import wxversion
+-wxversion.ensureMinimal("2.6")
++wxversion.select("2.8")
+ 
+ #from wxPython.wx import *
+ import wx

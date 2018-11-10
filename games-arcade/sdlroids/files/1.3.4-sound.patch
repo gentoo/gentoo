@@ -1,0 +1,15 @@
+--- a/sdlsound.c.orig	2004-07-02 23:03:03.000000000 -0700
++++ b/sdlsound.c	2004-07-02 23:05:37.000000000 -0700
+@@ -205,9 +205,9 @@
+ int load_sample(int num) {
+   
+   if((samples[num] = Mix_LoadWAV(samplename[num])) ||
+-     Mix_LoadWAV(datafilename(NULL, samplename[num])) || 
+-     Mix_LoadWAV(datafilename(DATADIR, samplename[num])) || 
+-     Mix_LoadWAV(datafilename(bindir, samplename[num])))
++     (samples[num] = Mix_LoadWAV(datafilename(NULL, samplename[num]))) || 
++     (samples[num] = Mix_LoadWAV(datafilename(DATADIR, samplename[num]))) || 
++     (samples[num] = Mix_LoadWAV(datafilename(bindir, samplename[num]))))
+     return 1;
+   return 0;
+ }

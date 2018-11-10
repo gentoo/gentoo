@@ -1,0 +1,50 @@
+Description: use packaged six instead of stripped module
+Author: Daniel Stender <debian@danielstender.com>
+Forwarded: not-needed
+Last-Update: 2016-21-06
+
+--- a/llvmlite/binding/ffi.py
++++ b/llvmlite/binding/ffi.py
+@@ -3,7 +3,7 @@ import os
+ 
+ from .common import _decode_string, _is_shutting_down
+ from ..utils import get_library_name
+-from ..six import PY2
++from six import PY2
+ 
+ 
+ def _make_opaque_ref(name):
+--- a/llvmlite/ir/values.py
++++ b/llvmlite/ir/values.py
+@@ -7,7 +7,7 @@ from __future__ import print_function, absolute_import
+ 
+ import string
+ 
+-from .. import six
++import six
+ from . import types, _utils
+ from ._utils import _StrCaching, _StringReferenceCaching, _HasMetadata
+ 
+--- a/llvmlite/tests/customize.py
++++ b/llvmlite/tests/customize.py
+@@ -12,7 +12,7 @@ import unittest
+ import warnings
+ from unittest import result, runner, signals
+ 
+-from ..six import StringIO
++from six import StringIO
+ 
+ 
+ # "unittest.main" is really the TestProgram class!
+--- a/llvmlite/tests/test_binding.py
++++ b/llvmlite/tests/test_binding.py
+@@ -12,7 +12,8 @@ import subprocess
+ import sys
+ import unittest
+ 
+-from llvmlite import six, ir
++from llvmlite import ir
++import six
+ from llvmlite import binding as llvm
+ from llvmlite.binding import ffi
+ from . import TestCase

@@ -1,0 +1,93 @@
+From 03dd55beb878b5e15d891535a3c8b7ffa6133c92 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 17 Apr 2018 11:31:22 +0200
+Subject: [PATCH] Fix build with Qt 5.11_beta3 (dropping qt5_use_modules)
+
+---
+ avogadro/molequeue/CMakeLists.txt | 3 +--
+ avogadro/qtgui/CMakeLists.txt     | 3 +--
+ avogadro/qtopengl/CMakeLists.txt  | 3 +--
+ avogadro/vtk/CMakeLists.txt       | 3 +--
+ tests/qtgui/CMakeLists.txt        | 3 +--
+ tests/qtopengl/CMakeLists.txt     | 2 --
+ 6 files changed, 5 insertions(+), 12 deletions(-)
+
+diff --git a/avogadro/molequeue/CMakeLists.txt b/avogadro/molequeue/CMakeLists.txt
+index 43a9195..37431cd 100644
+--- a/avogadro/molequeue/CMakeLists.txt
++++ b/avogadro/molequeue/CMakeLists.txt
+@@ -41,6 +41,5 @@ qt5_wrap_ui(UI_SOURCES ${UIS})
+ list(APPEND SOURCES ${UI_SOURCES})
+ 
+ avogadro_add_library(AvogadroMoleQueue ${HEADERS} ${SOURCES})
+-qt5_use_modules(AvogadroMoleQueue Widgets Network)
+ set_target_properties(AvogadroMoleQueue PROPERTIES AUTOMOC TRUE)
+-target_link_libraries(AvogadroMoleQueue AvogadroQtGui MoleQueueClient)
++target_link_libraries(AvogadroMoleQueue AvogadroQtGui MoleQueueClient Qt5::Widgets Qt5::Network)
+diff --git a/avogadro/qtgui/CMakeLists.txt b/avogadro/qtgui/CMakeLists.txt
+index e6cf8d3..3365261 100644
+--- a/avogadro/qtgui/CMakeLists.txt
++++ b/avogadro/qtgui/CMakeLists.txt
+@@ -99,5 +99,4 @@ qt5_add_resources(RC_SOURCES ${RCS})
+ list(APPEND SOURCES ${RC_SOURCES})
+ 
+ avogadro_add_library(AvogadroQtGui ${HEADERS} ${SOURCES})
+-qt5_use_modules(AvogadroQtGui Widgets)
+-target_link_libraries(AvogadroQtGui AvogadroIO)
++target_link_libraries(AvogadroQtGui AvogadroIO Qt5::Widgets)
+diff --git a/avogadro/qtopengl/CMakeLists.txt b/avogadro/qtopengl/CMakeLists.txt
+index 354638c..28a473e 100644
+--- a/avogadro/qtopengl/CMakeLists.txt
++++ b/avogadro/qtopengl/CMakeLists.txt
+@@ -16,5 +16,4 @@ set(SOURCES
+ )
+ 
+ avogadro_add_library(AvogadroQtOpenGL ${HEADERS} ${SOURCES})
+-qt5_use_modules(AvogadroQtOpenGL Widgets)
+-target_link_libraries(AvogadroQtOpenGL AvogadroRendering AvogadroQtGui)
++target_link_libraries(AvogadroQtOpenGL AvogadroRendering AvogadroQtGui Qt5::Widgets)
+diff --git a/avogadro/vtk/CMakeLists.txt b/avogadro/vtk/CMakeLists.txt
+index abac5a1..498529c 100644
+--- a/avogadro/vtk/CMakeLists.txt
++++ b/avogadro/vtk/CMakeLists.txt
+@@ -30,8 +30,7 @@ set(SOURCES
+ )
+ 
+ avogadro_add_library(AvogadroVtk ${HEADERS} ${SOURCES})
+-qt5_use_modules(AvogadroVtk Widgets)
+ set_target_properties(AvogadroVtk PROPERTIES AUTOMOC TRUE)
+ target_link_libraries(AvogadroVtk AvogadroRendering AvogadroQtGui
+   vtkRenderingOpenGL2 vtkGUISupportQt vtkRenderingVolumeOpenGL2
+-  vtkRenderingFreeType vtkInteractionStyle)
++  vtkRenderingFreeType vtkInteractionStyle Qt5::Widgets)
+diff --git a/tests/qtgui/CMakeLists.txt b/tests/qtgui/CMakeLists.txt
+index 1cfd51a..da08078 100644
+--- a/tests/qtgui/CMakeLists.txt
++++ b/tests/qtgui/CMakeLists.txt
+@@ -49,9 +49,8 @@ endforeach()
+ 
+ # Add a single executable for all of our tests.
+ add_executable(AvogadroQtGuiTests ${testSrcs})
+-qt5_use_modules(AvogadroQtGuiTests Widgets Test)
+ target_link_libraries(AvogadroQtGuiTests AvogadroQtGui AvogadroMoleQueue
+-  MoleQueueClient ${GTEST_BOTH_LIBRARIES} ${EXTRA_LINK_LIB})
++  MoleQueueClient ${GTEST_BOTH_LIBRARIES} ${EXTRA_LINK_LIB} Qt5::Widgets Qt5::Test)
+ 
+ # Now add all of the tests, using the gtest_filter argument so that only those
+ # cases are run in each test invocation.
+diff --git a/tests/qtopengl/CMakeLists.txt b/tests/qtopengl/CMakeLists.txt
+index 370f28f..60fc5ae 100644
+--- a/tests/qtopengl/CMakeLists.txt
++++ b/tests/qtopengl/CMakeLists.txt
+@@ -44,8 +44,6 @@ create_test_sourcelist(testDriver qtopengltests.cpp ${testSrcs})
+ 
+ add_executable(AvogadroQtOpenGLTests ${testDriver})
+ 
+-qt5_use_modules(AvogadroQtOpenGLTests OpenGL)
+-
+ target_link_libraries(AvogadroQtOpenGLTests
+   AvogadroQtOpenGL
+   vtkImagingCore
+-- 
+2.17.0
+

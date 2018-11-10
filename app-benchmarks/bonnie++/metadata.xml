@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gokturk@gentoo.org</email>
+		<name>Göktürk Yüksek</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>bircoph@gentoo.org</email>
+		<name>Andrew Savchenko</name>
+	</maintainer>
+	<longdescription>
+		Bonnie++ is based on the Bonnie hard drive benchmark by Tim Bray. This
+		program is used by ReiserFS developers, but can be useful for anyone
+		who wants to know how fast their hard drive or file system is.
+	</longdescription>
+</pkgmetadata>

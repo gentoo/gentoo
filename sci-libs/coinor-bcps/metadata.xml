@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		CHiPPS is the COIN-OR High-Performance Parallel Search Framework, a
+		framework for implementing parallel algorithms based on tree
+		search. The current CHiPPS architecture consists of three
+		layers. The Branch, Constrain, and Price Software (BiCePS) is a data
+		management layer built on top of ALPS for implementing
+		relaxation-based branch and bound algorithms.
+	</longdescription>
+</pkgmetadata>

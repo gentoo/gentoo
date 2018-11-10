@@ -1,0 +1,100 @@
+--- a/src/AudioOpenAL.cpp
++++ b/src/AudioOpenAL.cpp
+@@ -711,7 +711,7 @@
+ 	if(!file)
+ 	{
+ 		char	configOldFilename[256];
+-		sprintf(configOldFilename, "%s/.chromium-music"CONFIG_EXT, homeDir);
++		sprintf(configOldFilename, "%s/.chromium-music" CONFIG_EXT, homeDir);
+ 		alterPathForPlatform(configOldFilename);
+ 		rename(configOldFilename,configFilename);
+ 		file = fopen(configFilename, "r");
+--- a/src/Config.cpp
++++ b/src/Config.cpp
+@@ -161,7 +161,7 @@
+ 	if(!homeDir)
+ 		homeDir = "./";
+ 
+-	sprintf(configFilename, "%s/.chromium"CONFIG_EXT, homeDir);
++	sprintf(configFilename, "%s/.chromium" CONFIG_EXT, homeDir);
+ 	alterPathForPlatform(configFilename);
+ 	return configFilename;
+ }
+--- a/src/define.h
++++ b/src/define.h
+@@ -34,14 +34,14 @@
+ 
+ #ifdef macintosh
+ #define CONFIG_EXT			".cfg"
+-#define CONFIG_FILE			PACKAGE".cfg"
+-#define CONFIG_SCORE_FILE	PACKAGE"-score.cfg"
+-#define CONFIG_MUSIC_FILE	PACKAGE"-music.cfg"
++#define CONFIG_FILE			PACKAGE ".cfg"
++#define CONFIG_SCORE_FILE	PACKAGE "-score.cfg"
++#define CONFIG_MUSIC_FILE	PACKAGE "-music.cfg"
+ #else
+ #define CONFIG_EXT
+-#define CONFIG_FILE			"."PACKAGE
+-#define CONFIG_SCORE_FILE	"."PACKAGE"-score"
+-#define CONFIG_MUSIC_FILE	"."PACKAGE"-music"
++#define CONFIG_FILE			"." PACKAGE
++#define CONFIG_SCORE_FILE	"." PACKAGE "-score"
++#define CONFIG_MUSIC_FILE	"." PACKAGE "-music"
+ #endif //macintosh
+ 
+ #define HI_SCORE_HIST 5
+--- a/src/HiScore.cpp
++++ b/src/HiScore.cpp
+@@ -187,7 +187,7 @@
+ 	const char *homeDir = getenv("HOME");
+ 	if(!homeDir)
+ 		homeDir = "./";
+-	sprintf(configFilename, "%s/.chromium-score"CONFIG_EXT, homeDir);
++	sprintf(configFilename, "%s/.chromium-score" CONFIG_EXT, homeDir);
+ 	alterPathForPlatform(configFilename);
+ 	return configFilename;
+ }
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -198,7 +198,7 @@
+ 
+ 	if(getenv("HOME") != NULL && ((strlen(getenv("HOME"))+strlen(filename)) < 239) )
+ 	{
+-		sprintf(buffer, "%s/."PACKAGE"-data/%s", getenv("HOME"), filename);
++		sprintf(buffer, "%s/." PACKAGE "-data/%s", getenv("HOME"), filename);
+ 		if(stat(buffer, &sbuf) == 0) return buffer;
+ 	}
+ 
+--- a/src/MainSDL_Event.cpp
++++ b/src/MainSDL_Event.cpp
+@@ -19,6 +19,7 @@
+ #include <cstdlib>
+ #include <cstdio>
+ #include <cstring>
++#include <cmath>
+ 
+ #include "Config.h"
+ 
+@@ -417,14 +418,14 @@
+ #else
+ 		Uint8 *keystate = SDL_GetKeyState(NULL);
+ #endif
+-		if( keystate[SDLK_LEFT]  || keystate[SDLK_KP4] ) key_speed_x -= 2.0 + abs(key_speed_x)*0.4;
+-		if( keystate[SDLK_RIGHT] || keystate[SDLK_KP6] ) key_speed_x += 2.0 + abs(key_speed_x)*0.4;
+-		if( keystate[SDLK_UP]    || keystate[SDLK_KP8] ) key_speed_y -= 2.0 + abs(key_speed_y)*0.4;
+-		if( keystate[SDLK_DOWN]  || keystate[SDLK_KP2] ) key_speed_y += 2.0 + abs(key_speed_y)*0.4;
+-		if( keystate[SDLK_KP7] ){ key_speed_x -= 2.0 + abs(key_speed_x)*0.4; key_speed_y -= 2.0 + abs(key_speed_y)*0.4; }
+-		if( keystate[SDLK_KP9] ){ key_speed_x += 2.0 + abs(key_speed_x)*0.4; key_speed_y -= 2.0 + abs(key_speed_y)*0.4; }
+-		if( keystate[SDLK_KP3] ){ key_speed_x += 2.0 + abs(key_speed_x)*0.4; key_speed_y += 2.0 + abs(key_speed_y)*0.4; }
+-		if( keystate[SDLK_KP1] ){ key_speed_x -= 2.0 + abs(key_speed_x)*0.4; key_speed_y += 2.0 + abs(key_speed_y)*0.4; }
++		if( keystate[SDLK_LEFT]  || keystate[SDLK_KP4] ) key_speed_x -= 2.0 + abs((int)key_speed_x)*0.4;
++		if( keystate[SDLK_RIGHT] || keystate[SDLK_KP6] ) key_speed_x += 2.0 + abs((int)key_speed_x)*0.4;
++		if( keystate[SDLK_UP]    || keystate[SDLK_KP8] ) key_speed_y -= 2.0 + abs((int)key_speed_y)*0.4;
++		if( keystate[SDLK_DOWN]  || keystate[SDLK_KP2] ) key_speed_y += 2.0 + abs((int)key_speed_y)*0.4;
++		if( keystate[SDLK_KP7] ){ key_speed_x -= 2.0 + abs((int)key_speed_x)*0.4; key_speed_y -= 2.0 + abs((int)key_speed_y)*0.4; }
++		if( keystate[SDLK_KP9] ){ key_speed_x += 2.0 + abs((int)key_speed_x)*0.4; key_speed_y -= 2.0 + abs((int)key_speed_y)*0.4; }
++		if( keystate[SDLK_KP3] ){ key_speed_x += 2.0 + abs((int)key_speed_x)*0.4; key_speed_y += 2.0 + abs((int)key_speed_y)*0.4; }
++		if( keystate[SDLK_KP1] ){ key_speed_x -= 2.0 + abs((int)key_speed_x)*0.4; key_speed_y += 2.0 + abs((int)key_speed_y)*0.4; }
+ 		//float s = (1.0-game->speedAdj)+(game->speedAdj*0.7);
+ 		float s = 0.7;
+ 		key_speed_x *= s;

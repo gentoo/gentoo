@@ -1,0 +1,11 @@
+--- a/src/Makefile.am	2011-01-02 11:33:09.675000001 -0600
++++ b/src/Makefile.am	2011-01-02 11:34:05.205000001 -0600
+@@ -4,7 +4,7 @@
+ 	   -I$(top_builddir)/pixmaps $(LIRC_INCLUDE)
+ 
+ AM_CFLAGS = $(GNU99) $(XINE_CFLAGS) $(X_CFLAGS) \
+-	    $(GTK2_CFLAGS) $(GTHREAD2_CFLAGS) \
++	    $(GTK2_CFLAGS) $(GTHREAD2_CFLAGS) $(NSPR_CFLAGS) \
+ 	    $(HAL_CFLAGS) $(UDEV_CFLAGS) $(DBUS_CFLAGS) $(JS_CFLAGS) \
+ 	    -DLOCALEDIR=\"$(localedir)\"
+ 

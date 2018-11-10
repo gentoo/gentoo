@@ -1,0 +1,45 @@
+--- Documentation/Reference/Makefile.am.old	2012-09-25 10:39:25.973544935 +0200
++++ Documentation/Reference/Makefile.am	2012-09-25 10:39:42.560554053 +0200
+@@ -10,7 +10,7 @@
+ 	mkdir doxyoutput;
+ 	mkdir reftest
+ 	doxygen ./clanlib.doxygen
+-	make -C ../Utilities/ReferenceDocs
++	$(MAKE) -C ../Utilities/ReferenceDocs
+ 	../Utilities/ReferenceDocs/ReferenceDocs
+ 
+ install-html:
+--- configure.ac.old	2012-09-25 11:07:38.412537590 +0200
++++ configure.ac	2012-09-25 11:09:41.133939131 +0200
+@@ -337,11 +337,9 @@
+ 
+ 	dnl  Optional linux/joystick.h
+ 	AC_CHECK_HEADERS(linux/joystick.h, linux_joystick=yes)
+-	AM_CONDITIONAL(LINUX_JOYSTICK, test x$linux_joystick = xyes)
+ 
+ 	dnl Optional linux/input.h
+ 	AC_CHECK_HEADERS(linux/input.h, linux_input=yes)
+-	AM_CONDITIONAL(LINUX_INPUT, test x$linux_input = xyes)
+ 
+ 	if test "$WIN32" = "no" && test "$enable_clanDisplay" != "no"; then
+ 	CLANLIB_CHECK_LIB(fontconfig,  [`cat $srcdir/Setup/Tests/fontconfig.cpp`],  clanDisplay, [ *** Cannot find fontconfig (See http://fontconfig.org/ ) (Try libfontconfig1-dev or better) ], [-lfontconfig])
+@@ -358,6 +356,8 @@
+ 			clanDisplay, [ *** Cannot find version 8 of DirectInput], [-ldxguid -lole32 -ldinput8])
+ 	fi
+ fi
++AM_CONDITIONAL(LINUX_JOYSTICK, test x$linux_joystick = xyes)
++AM_CONDITIONAL(LINUX_INPUT, test x$linux_input = xyes)
+ 
+ have_xrender=no
+ 
+@@ -515,9 +515,9 @@
+ 	fi
+ 
+ 	if test "$enable_clanSound" = "auto"; then enable_clanSound=yes; fi
+-	AM_CONDITIONAL(ALSA, test x$have_alsa = xyes)
+ 
+ fi
++AM_CONDITIONAL(ALSA, test x$have_alsa = xyes)
+ 
+ if test "$enable_clanSound" != "no"; then
+ 	enable_clanSound=yes

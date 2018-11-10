@@ -1,0 +1,15 @@
+diff --git a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -482,6 +482,11 @@
+         DISTRO=UBUNTU
+     fi
+ fi
++
++if test -f /etc/gentoo-release; then
++    DISTRO=GENTOO
++fi
++
+ if test -f /etc/arch-release; then
+     DISTRO=ARCHLINUX
+ fi

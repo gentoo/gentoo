@@ -1,0 +1,11 @@
+--- src/Makefile.am.old	2011-04-26 10:46:05.102070461 +0200
++++ src/Makefile.am	2011-04-26 10:46:16.872813136 +0200
+@@ -9,7 +9,7 @@
+ 
+ INCLUDES = -I../base -I../addon
+ 
+-pinball_LDADD = ../src/libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a -lltdl
++pinball_LDADD = libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a -lltdl
+ pinball_LDFLAGS = -export-dynamic
+ 
+ pinball_SOURCES = Pinball.cpp

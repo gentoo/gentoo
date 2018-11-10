@@ -1,0 +1,11 @@
+--- gtkpod-2.1.5/configure.ac.orig	2016-01-29 00:40:08.559840172 +0000
++++ gtkpod-2.1.5/configure.ac	2016-01-29 00:51:53.901127707 +0000
+@@ -341,7 +341,7 @@ fi
+ dnl Set up variables for M4A plugin
+ dnl -------------------------------------------------------------
+ 
+-if test "x$have_mp4" = "xyes" -a "x$have_faad" = "xyes"; then
++if test "x$have_mp4" = "xyes"; then
+ 	have_m4a="yes"
+ else
+ 	have_m4a="no"

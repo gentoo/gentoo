@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
+<maintainer type="project">
+	<email>wine@gentoo.org</email>
+	<name>Gentoo Wine Project</name>
+	<description>Should be cc'ed for issues with dosbox-0.74-_p* snapshot versions</description>
+</maintainer>
+<upstream>
+	<remote-id type="sourceforge">dosbox</remote-id>
+</upstream>
+<use>
+	<flag name="glide">Enable unofficial Glide emulation via media-libs/openglide</flag>
+</use>
+</pkgmetadata>

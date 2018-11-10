@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+	<longdescription lang="en">
+		Assembler for Atmel AVR microprocessors
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">avra</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,23 @@
+diff -ur wehjit-0.2.2.orig/wehjit/collection.py wehjit-0.2.2/wehjit/collection.py
+--- wehjit/collection.py	2010-02-11 16:26:14.000000000 +0800
++++ wehjit/collection.py	2012-11-08 14:24:40.326482713 +0800
+@@ -22,6 +22,11 @@
+ Collect widget plugins together in a `Collection`.
+ """
+ 
++import sys
++if sys.version_info[:2] == (2, 7):
++    import unittest
++else:
++    import unittest2 as unittest
+ import inspect
+ import os
+ from os import path
+@@ -130,6 +135,7 @@
+         """
+         return name in self.__plugins
+ 
++    @unittest.skip("Plugin not in gentoo")
+     def __getitem__(self, name):
+         """
+         Return the plugin named ``name``.

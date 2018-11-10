@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jaco@uls.co.za</email>
+		<name>Jaco Kroon</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+	A minimalist window manager for the X Window System. It maximises screen 
+	real estate and provides good keyboard control. It is currently based on 
+	aewm.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">evilwm</remote-id>
+	</upstream>
+</pkgmetadata>

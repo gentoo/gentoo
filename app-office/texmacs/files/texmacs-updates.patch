@@ -1,0 +1,29 @@
+diff -r -U1 TeXmacs-1.0.7.16-src.orig/Makefile.in TeXmacs-1.0.7.16-src/Makefile.in
+--- TeXmacs-1.0.7.16-src.orig/Makefile.in	2012-07-09 21:33:36.000000000 +0700
++++ TeXmacs-1.0.7.16-src/Makefile.in	2012-09-16 11:20:06.000000000 +0700
+@@ -171,3 +171,2 @@
+ 	$(DESTDIR)$(datadir)/applications
+-	@update-desktop-database 2>/dev/null || :
+ 	$(MKDIR) $(DESTDIR)$(datadir)/application-registry
+@@ -181,3 +180,2 @@
+ 	$(CP) $(tmdir)/misc/mime/texmacs.xml $(DESTDIR)$(datadir)/mime/packages
+-	@update-mime-database $(DESTDIR)$(datadir)/mime/ 2>/dev/null || :
+ 	$(MKDIR) $(DESTDIR)$(datadir)/pixmaps
+@@ -193,4 +191,2 @@
+ 	$(DESTDIR)$(datadir)/icons/gnome/scalable/mimetypes
+-	@gtk-update-icon-cache -t --force \
+-		$(DESTDIR)$(datadir)/icons/gnome 2>/dev/null || :
+ 	@echo installed TeXmacs mime info in $(DESTDIR)$(datadir)
+@@ -223,3 +219,2 @@
+ 	$(RM) $(datadir)/applications/texmacs.desktop
+-	@update-desktop-database 2>/dev/null || :
+ 	$(RM) $(datadir)/application-registry/texmacs.applications
+@@ -228,3 +223,2 @@
+ 	$(RM) $(datadir)/mime/packages/texmacs.xml
+-	@update-mime-database $(DESTDIR)$(datadir)/mime/ 2>/dev/null || :
+ 	$(RM) $(datadir)/pixmaps/TeXmacs.xpm
+@@ -232,4 +226,2 @@
+ 	$(RM) $(datadir)/icons/gnome/scalable/mimetypes/text-texmacs.svg
+-	@gtk-update-icon-cache -t --force \
+-		$(DESTDIR)$(datadir)/icons/gnome 2>/dev/null || :
+ 	@echo removed TeXmacs mime info from $(datadir)

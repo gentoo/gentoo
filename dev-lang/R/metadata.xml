@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  R is GNU S, a system for statistical computation and graphics. It
+  consists of a language plus a run-time environment with graphics, a
+  debugger, access to certain system functions, and the ability to run
+  programs stored in script files.
+
+  The core of R is an interpreted computer language which allows
+  branching and looping as well as modular programming using functions.
+  The R distribution contains functionality for a large number of
+  statistical procedures such as: linear and generalized linear
+  models, nonlinear regression models, time series analysis, classical
+  parametric and nonparametric tests, clustering, smoothing and
+  graphical data representations. Additional modules ("add-on
+  packages") are available for a variety of specific purposes but are
+  not distributed with this package.
+</longdescription>
+</pkgmetadata>

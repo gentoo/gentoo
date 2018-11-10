@@ -1,0 +1,29 @@
+--- flexbackup.~1~	2010-10-09 13:19:27.633694860 +0200
++++ flexbackup	2010-10-09 13:21:52.396818511 +0200
+@@ -133,6 +133,9 @@
+ # tar has a limit of this many chars in its volume label
+ $::tar_max_label = 99;
+ 
++# Define the prune hash to avoid warnings with perl 5.12
++use vars qw( %prune );
++
+ # Get commandline flags
+ %::opt = ();
+ if (! &::GetOptions(\%::opt,
+@@ -1050,6 +1053,6 @@
+     } else {
+ 	$prunekey = $dir;
+     }
+-    if (defined(%{$::prune{$prunekey}})) {
++    if (defined($prune{$prunekey})) {
+ 	&log("| NOTE: \$prune is ignored for type=dump");
+     }
+@@ -4885,7 +4885,7 @@
+ 	$prunekey = $dir;
+     }
+ 
+-    if (defined(%{$::prune{$prunekey}})) {
++    if (defined($prune{$prunekey})) {
+ 		my $rex;
+ 	# FreeBSD needs -E (above) and no backslashes around the (|) chars
+ 	if ($::uname =~ /FreeBSD/) {

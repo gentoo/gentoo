@@ -1,0 +1,95 @@
+From b857da37ec211e4472070c9e870aa5a0b827563b Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Thu, 8 Dec 2011 00:09:03 +0100
+Subject: [PATCH] Use /var/tmp rather than /usr/tmp
+
+---
+ README.unix  |    2 +-
+ mkreadme.pl  |    2 +-
+ unixos.c     |    2 +-
+ unixpk.c     |    2 +-
+ unixpk.man   |    2 +-
+ unixunpk.man |    2 +-
+ 8 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/README.unix b/README.unix
+index d7a762c..c26b7c8 100644
+--- a/README.unix
++++ b/README.unix
+@@ -188,7 +188,7 @@ The environment variables which control munpack's behavior are:
+ 
+      TMPDIR
+           Root of directory to store partial messages awaiting 
+-          reassembly.  Default is "/usr/tmp".   Partial messages
++          reassembly.  Default is "/var/tmp".   Partial messages
+ 	  are stored in subdirectories of $TMPDIR/m-prts-$USER/
+ 
+ 
+diff --git a/mkreadme.pl b/mkreadme.pl
+index a45117b..22e4e81 100755
+--- a/mkreadme.pl
++++ b/mkreadme.pl
+@@ -413,7 +413,7 @@ The environment variables which control munpack's behavior are:
+ =unix
+      TMPDIR
+           Root of directory to store partial messages awaiting 
+-          reassembly.  Default is "/usr/tmp".   Partial messages
++          reassembly.  Default is "/var/tmp".   Partial messages
+ 	  are stored in subdirectories of $TMPDIR/m-prts-$USER/
+ 
+ =pc os2
+diff --git a/unixos.c b/unixos.c
+index 2243d12..fa6d0a7 100644
+--- a/unixos.c
++++ b/unixos.c
+@@ -87,7 +87,7 @@ char *os_idtodir(char *id)
+ 	strcpy(buf, getenv("TMPDIR"));
+     }
+     else {
+-	strcpy(buf, "/usr/tmp");
++	strcpy(buf, "/var/tmp");
+     }
+     strcat(buf, "/m-prts-");
+     p = getenv("USER");
+diff --git a/unixpk.c b/unixpk.c
+index 3605dd1..0bae849 100644
+--- a/unixpk.c
++++ b/unixpk.c
+@@ -166,7 +166,7 @@ int main(int argc, char **argv)
+ 	    strcpy(fnamebuf, getenv("TMPDIR"));
+ 	}
+ 	else {
+-	    strcpy(fnamebuf, "/usr/tmp");
++	    strcpy(fnamebuf, "/var/tmp");
+ 	}
+ 	strcat(fnamebuf, "/mpackXXXXXX");
+ 	mktemp(fnamebuf);
+diff --git a/unixpk.man b/unixpk.man
+index de251ee..c4c9313 100644
+--- a/unixpk.man
++++ b/unixpk.man
+@@ -136,7 +136,7 @@ Mail the generated messages to the specified addresses.
+ .SH ENVIRONMENT
+ .TP
+ .B TMPDIR
+-Directory to store temporary files.  Default is /usr/tmp.
++Directory to store temporary files.  Default is /var/tmp.
+ .TP
+ .B SPLITSIZE
+ Default value of the -m switch.
+diff --git a/unixunpk.man b/unixunpk.man
+index da384b1..8c9ab7e 100644
+--- a/unixunpk.man
++++ b/unixunpk.man
+@@ -107,7 +107,7 @@ see the section "OPTIONS" above.
+ .SH ENVIRONMENT
+ .TP
+ .B TMPDIR
+-Directory to store temporary files.  Default is /usr/tmp.
++Directory to store temporary files.  Default is /var/tmp.
+ .SH FILES
+ .TP
+ .B $TMPDIR/m-prts-$USER/
+-- 
+1.7.8
+

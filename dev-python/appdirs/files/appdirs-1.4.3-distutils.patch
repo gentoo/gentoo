@@ -1,0 +1,25 @@
+Force setup.py to use distutils in order to break setuptools cyclic dependency.
+
+--- a/setup.py
++++ b/setup.py
+@@ -3,10 +3,7 @@
+ import os
+ import os.path
+ # appdirs is a dependency of setuptools, so allow installing without it.
+-try:
+-    from setuptools import setup
+-except ImportError:
+-    from distutils.core import setup
++from distutils.core import setup
+ import appdirs
+ 
+ tests_require = []
+@@ -45,8 +42,6 @@
+         Programming Language :: Python :: Implementation :: CPython
+         Topic :: Software Development :: Libraries :: Python Modules
+         """.split('\n') if c.strip()],
+-    test_suite='test.test_api',
+-    tests_require=tests_require,
+     keywords='application directory log cache user',
+     author='Trent Mick',
+     author_email='trentm@gmail.com',

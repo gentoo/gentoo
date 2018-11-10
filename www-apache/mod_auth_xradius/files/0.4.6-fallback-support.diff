@@ -1,0 +1,31 @@
+diff -uNr mod_auth_xradius-0.4.6.ORIG/src/mod_auth_xradius.c mod_auth_xradius-0.4.6/src/mod_auth_xradius.c
+--- mod_auth_xradius-0.4.6.ORIG/src/mod_auth_xradius.c	2014-09-24 13:41:22.990073508 +0100
++++ mod_auth_xradius-0.4.6/src/mod_auth_xradius.c	2014-09-24 13:50:17.204100114 +0100
+@@ -125,15 +125,15 @@
+     rctx = xrad_auth_open();
+ 
+     /* Loop through the array of RADIUS Servers, adding them to the rctx object */
+-    sr = (xrad_server_info *) dc->servers->elts;
+     for (i = 0; i < dc->servers->nelts; ++i) {        
+-        rc = xrad_add_server(rctx, sr[i].hostname, sr[i].port, sr[i].secret,
++        sr = &(((xrad_server_info*)dc->servers->elts)[i]);
++        rc = xrad_add_server(rctx, sr->hostname, sr->port, sr->secret,
+                              dc->timeout, dc->maxtries);
+         
+         if (rc != 0) {
+             ap_log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
+                           "xradius: Failed to add server '%s:%d': (%d) %s",
+-                          sr[i].hostname, sr[i].port, rc, xrad_strerror(rctx));
++                          sr->hostname, sr->port, rc, xrad_strerror(rctx));
+             goto run_cleanup;
+         }        
+     }
+@@ -294,7 +294,7 @@
+     /* To properly use the Pools, this array is allocated from the here, instead of
+         inside the directory configuration creation function. */
+     if (dc->servers == NULL) {
+-        dc->servers = apr_array_make(parms->pool, 4, sizeof(xrad_server_info*));
++        dc->servers = apr_array_make(parms->pool, 4, sizeof(xrad_server_info));
+     }
+     
+     sr = apr_array_push(dc->servers);

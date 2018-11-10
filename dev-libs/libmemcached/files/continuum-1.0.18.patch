@@ -1,0 +1,56 @@
+diff --git libmemcached/memcached.cc libmemcached/memcached.cc
+index 337f918..6e88c25 100644
+--- libmemcached/memcached.cc
++++ libmemcached/memcached.cc
+@@ -285,6 +285,8 @@ void memcached_servers_reset(memcached_st *shell)
+   {
+     libmemcached_free(self, self->ketama.continuum);
+     self->ketama.continuum= NULL;
++    self->ketama.continuum_count= 0;
++    self->ketama.continuum_points_counter= 0;
+ 
+     memcached_instance_list_free(memcached_instance_list(self), self->number_of_hosts);
+     memcached_instance_set(self, NULL, 0);
+diff --git tests/libmemcached-1.0/all_tests.h tests/libmemcached-1.0/all_tests.h
+index b4abe9d..f89f007 100644
+--- tests/libmemcached-1.0/all_tests.h
++++ tests/libmemcached-1.0/all_tests.h
+@@ -452,6 +452,7 @@ collection_st collection[] ={
+   {"hsieh_availability", 0, 0, hsieh_availability},
+   {"murmur_availability", 0, 0, murmur_availability},
+   {"memcached_server_add", (test_callback_fn*)memcached_servers_reset_SETUP, 0, memcached_server_add_TESTS},
++  {"memcached_server_add(continuum)", (test_callback_fn*)memcached_servers_reset_CONTINUUM, 0, memcached_server_add_TESTS},
+   {"memcached_server_add(MEMCACHED_DISTRIBUTION_CONSISTENT)", (test_callback_fn*)memcached_servers_reset_MEMCACHED_DISTRIBUTION_CONSISTENT_SETUP, 0, memcached_server_add_TESTS},
+   {"memcached_server_add(MEMCACHED_DISTRIBUTION_CONSISTENT_WEIGHTED)", (test_callback_fn*)memcached_servers_reset_MEMCACHED_DISTRIBUTION_CONSISTENT_WEIGHTED_SETUP, 0, memcached_server_add_TESTS},
+   {"block", 0, 0, tests},
+diff --git tests/libmemcached-1.0/setup_and_teardowns.cc tests/libmemcached-1.0/setup_and_teardowns.cc
+index 4191c38..eb29128 100644
+--- tests/libmemcached-1.0/setup_and_teardowns.cc
++++ tests/libmemcached-1.0/setup_and_teardowns.cc
+@@ -177,6 +177,16 @@ test_return_t memcached_servers_reset_SETUP(memcached_st *memc)
+   return TEST_SUCCESS;
+ }
+ 
++test_return_t memcached_servers_reset_CONTINUUM(memcached_st *memc)
++{
++  memcached_behavior_set(memc, MEMCACHED_BEHAVIOR_DISTRIBUTION, MEMCACHED_DISTRIBUTION_CONSISTENT);
++  memcached_servers_reset(memc);
++  test_compare(0, memc->ketama.continuum_count);
++  // If memc->ketama.continuum_count is non-zero at this point, any call to
++  // memcached_server_add will cause a segfault.
++  return TEST_SUCCESS;
++}
++
+ test_return_t memcached_servers_reset_MEMCACHED_DISTRIBUTION_CONSISTENT_SETUP(memcached_st *memc)
+ {
+   test_compare(TEST_SUCCESS, memcached_servers_reset_SETUP(memc));
+diff --git tests/libmemcached-1.0/setup_and_teardowns.h tests/libmemcached-1.0/setup_and_teardowns.h
+index 7610c5a..59b56f6 100644
+--- tests/libmemcached-1.0/setup_and_teardowns.h
++++ tests/libmemcached-1.0/setup_and_teardowns.h
+@@ -64,3 +64,4 @@ test_return_t pre_buffer(memcached_st*);
+ test_return_t memcached_servers_reset_MEMCACHED_DISTRIBUTION_CONSISTENT_SETUP(memcached_st *memc);
+ test_return_t memcached_servers_reset_MEMCACHED_DISTRIBUTION_CONSISTENT_WEIGHTED_SETUP(memcached_st *memc);
+ test_return_t memcached_servers_reset_SETUP(memcached_st *memc);
++test_return_t memcached_servers_reset_CONTINUUM(memcached_st *memc);
+

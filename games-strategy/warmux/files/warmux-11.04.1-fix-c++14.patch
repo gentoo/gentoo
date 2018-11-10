@@ -1,0 +1,14 @@
+In C++14, bool -> T* implicit conversions are not allowed anymore.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=598639
+
+--- a/src/interface/weapon_menu.cpp
++++ b/src/interface/weapon_menu.cpp
+@@ -391,7 +391,7 @@
+ Weapon * WeaponsMenu::UpdateCurrentOverflyItem(const Polygon * poly)
+ {
+   if (!show)
+-    return false;
++    return NULL;
+   const std::vector<PolygonItem *>& items = poly->GetItem();
+   WeaponMenuItem * tmp;
+   Interface::GetInstance()->SetCurrentOverflyWeapon(NULL);

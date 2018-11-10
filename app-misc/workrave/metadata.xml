@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<use>
+		<flag name="mate">Add support for MATE panel</flag>
+		<flag name="xfce">Add support for XFCE panel</flag>
+	</use>
+	<longdescription>
+		Workrave is a program that assists in the recovery and prevention
+		of Repetitive Strain Injury (RSI). The program frequently alerts
+		you to take micro-pauses, rest breaks and restricts you to your
+		daily limit.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">rcaelers/workrave</remote-id>
+		<remote-id type="sourceforge">workrave</remote-id>
+	</upstream>
+</pkgmetadata>

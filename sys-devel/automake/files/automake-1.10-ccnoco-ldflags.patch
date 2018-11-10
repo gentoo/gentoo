@@ -1,0 +1,35 @@
+http://bugs.gentoo.org/203914
+
+From 6e86514729c6dccb6213fdde8d93d7061c8108a5 Mon Sep 17 00:00:00 2001
+From: Ralf Wildenhues <Ralf.Wildenhues@gmx.de>
+Date: Mon, 7 Jan 2008 21:53:38 +0100
+Subject: [PATCH] Fix ccnoco.test for uncommon LDFLAGS settings.
+
+* tests/ccnoco.test (Mycomp): Use a tighter match for -c -o,
+to avoid matching for example `LDFLAGS=-Wl,--sort-common'.
+* THANKS: Update.
+Report and analysis by Carsten Lohrke and Mike Frysinger.
+---
+ ChangeLog         |    7 +++++++
+ THANKS            |    1 +
+ tests/ccnoco.test |    6 +++---
+ 3 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/tests/ccnoco.test b/tests/ccnoco.test
+index 8b37fe8..ca75922 100755
+--- a/tests/ccnoco.test
++++ b/tests/ccnoco.test
+@@ -57,8 +57,8 @@ END
+ cat > Mycomp << 'END'
+ #!/bin/sh
+ 
+-case "$@" in
+- *-c*-o* | *-o*-c*)
++case " "$* in
++ *\ -c*\ -o* | *\ -o*\ -c*)
+     exit 1
+     ;;
+ esac
+-- 
+1.6.3
+

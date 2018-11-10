@@ -1,0 +1,35 @@
+--- aterm-1.0.1~/src/command.c	2006-06-26 20:01:20.000000000 +0200
++++ aterm-1.0.1/src/command.c	2007-09-26 15:03:19.000000000 +0200
+@@ -1486,19 +1486,21 @@
+  	numlock_state = (ev->xkey.state & ModNumLockMask);	/* numlock toggle */
+ 	PrivMode((!numlock_state), PrivMode_aplKP);
+     }
+-#ifdef USE_XIM
++#if defined(USE_XIM) || !defined(NO_XLOCALE)
+     len = 0;
+-    if (Input_Context != NULL) {
+-      Status          status_return;
++    if (!XFilterEvent(ev, *(&ev->xkey.window))) {
++        if (Input_Context != NULL) {
++            Status          status_return;
+ 
+-      kbuf[0] = '\0';
+-      len = XmbLookupString(Input_Context, &ev->xkey, kbuf,
+-                          sizeof(kbuf), &keysym,
+-                          &status_return);
+-    } else {
+-      len = XLookupString(&ev->xkey, kbuf,
+-                        sizeof(kbuf), &keysym,
+-                        &compose);
++            kbuf[0] = '\0';
++            len = XmbLookupString(Input_Context, &ev->xkey, kbuf,
++                    sizeof(kbuf), &keysym,
++                    &status_return);
++        } else {
++            len = XLookupString(&ev->xkey, kbuf,
++                    sizeof(kbuf), &keysym,
++                    &compose);
++        }
+     }
+ #else                         /* USE_XIM */
+     len = XLookupString(&ev->xkey, (char *) kbuf, sizeof(kbuf), &keysym, &compose);

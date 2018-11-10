@@ -1,0 +1,36 @@
+--- gtk-recordmydesktop-0.3.8.orig/src/rmdPrefsWidget.py	2009-10-12 12:40:32.470028483 +0100
++++ gtk-recordmydesktop-0.3.8/src/rmdPrefsWidget.py	2009-10-12 12:41:08.086044353 +0100
+@@ -323,11 +323,33 @@
+         for i in range(4):
+             self.labelbox[i].show()
+         self.notebook.show()
++
++    def which(self,program):
++        import os
++        def is_exe(fpath):
++            return os.path.exists(fpath) and os.access(fpath, os.X_OK)
++
++        fpath, fname = os.path.split(program)
++        if fpath:
++            if is_exe(program):
++                return program
++        else:
++            for path in os.environ["PATH"].split(os.pathsep):
++                exe_file = os.path.join(path, program)
++                if is_exe(exe_file):
++                    return exe_file
++
++        return None
++
++
+     def __runJackLSP__(self,button=None):
+         if button!=None:
+             self.__getSelectedPorts__()
+         self.ports=[]
+         failed=0
++        if self.which('jack_lsp') == None:
++            self.jack_button.set_sensitive(False)
++            return
+         (stdin,stdout,stderr)=os.popen3(['jack_lsp'],'t')
+         ports=stdout.readlines()
+         stdin.close()

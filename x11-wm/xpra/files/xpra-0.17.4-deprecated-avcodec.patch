@@ -1,0 +1,11 @@
+--- xpra-0.17.4/setup.py
++++ xpra-0.17.4/setup.py
+@@ -660,7 +660,7 @@
+                         "-Wno-unused-function",
+                         "-Wno-sometimes-uninitialized"]
+             elif get_gcc_version()>=[4, 4]:
+-                eifd = ["-Werror",
++                eifd = ["-Werror", "-Wno-error=deprecated-declarations",
+                         #CentOS 6.x gives us some invalid warnings in nvenc, ignore those:
+                         #"-Wno-error=uninitialized",
+                         #needed on Debian and Ubuntu to avoid this error:

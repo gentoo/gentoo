@@ -1,0 +1,36 @@
+From c7fa612023a163e8b2352e1170c6df3fceb19b27 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Thu, 19 Jul 2018 13:14:09 -0400
+Subject: lib: don't set loaded state until seat is fetched
+
+At the moment we set is-loaded on the user-manager
+object as soon as we start fetching the seat, but
+we should waiting until the seat is fetched, so
+that can_switch() will return the correct value
+if the caller waited until the loaded signal
+to use it.
+
+This commit changes the >= to > which I believe
+was the original intention anyway.
+
+https://bugs.freedesktop.org/show_bug.cgi?id=107298
+---
+ src/libaccountsservice/act-user-manager.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libaccountsservice/act-user-manager.c b/src/libaccountsservice/act-user-manager.c
+index 325421b..e7e26b1 100644
+--- a/src/libaccountsservice/act-user-manager.c
++++ b/src/libaccountsservice/act-user-manager.c
+@@ -2382,7 +2382,7 @@ maybe_set_is_loaded (ActUserManager *manager)
+         /* Don't set is_loaded yet unless the seat is already loaded enough
+          * or failed to load.
+          */
+-        if (manager->priv->seat.state >= ACT_USER_MANAGER_SEAT_STATE_GET_ID) {
++        if (manager->priv->seat.state > ACT_USER_MANAGER_SEAT_STATE_GET_ID) {
+                 g_debug ("ActUserManager: Seat loaded, so now setting loaded property");
+         } else if (manager->priv->seat.state == ACT_USER_MANAGER_SEAT_STATE_UNLOADED) {
+                 g_debug ("ActUserManager: Seat wouldn't load, so giving up on it and setting loaded property");
+-- 
+cgit v1.1
+

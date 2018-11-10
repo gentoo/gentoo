@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-chemistry@gentoo.org</email>
+    <name>Gentoo Chemistry Project</name>
+  </maintainer>
+  <longdescription>
+MM-align is an algorithm for structurally aligning multiple-chain 
+protein-protein complexes. The algorithm is built on a heuristic 
+iteration of a modified Needleman-Wunsch dynamic programming (DP) 
+algorithm, with the alignment score specified by the inter-complex residue 
+distances. The multiple chains in each complex are first joined, in every 
+possible order, and then simultaneously aligned with cross-chain alignments 
+prevented. The alignments of interface residues are enhanced by an 
+interface-specific weighting factor. An optimal alignment between two complexes,
+as well as the overall TM-score, will be reported for each comparison.
+What is the difference between TM-align and MM-align? TM-align is for aligning 
+monomer protein structures while MM-align is designed for aligning 
+multiple-chain protein complex structures. Although one can still use TM-align 
+to align protein complexes after manually joining the chains, this will lead 
+to suboptimal alignments with unphysical cross alignments. Therefore, the 
+best result will be obtained if one uses TM-align to monomer structures and 
+MM-align for multimer structures.
+</longdescription>
+</pkgmetadata>

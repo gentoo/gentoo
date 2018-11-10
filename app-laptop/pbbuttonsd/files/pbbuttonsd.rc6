@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use alsasound
+}
+
+start() {
+	ebegin "Starting pbbuttonsd"
+	/usr/bin/pbbuttonsd -d > /dev/null
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping pbbuttonsd"
+	start-stop-daemon --stop --quiet --exec /usr/bin/pbbuttonsd
+	eend $?
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription>
+    A set of locking and synchronizing primitives analogous to those in Python’s
+    threading module or Gevent’s coros, for use with Tornado’s gen.engine.
+  </longdescription>    
+  <upstream>
+    <remote-id type="pypi">toro</remote-id>
+  </upstream>
+</pkgmetadata>

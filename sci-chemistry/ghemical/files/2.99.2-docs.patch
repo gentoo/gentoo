@@ -1,0 +1,22 @@
+diff --git a/docs/user-docs/Makefile.am b/docs/user-docs/Makefile.am
+index 030f67c..dcb207b 100644
+--- a/docs/user-docs/Makefile.am
++++ b/docs/user-docs/Makefile.am
+@@ -1,6 +1,6 @@
+ SUBDIRS = images
+ 
+-helpfilesdir = $(datadir)/ghemical/@APPVERSION@/user-docs
++helpfilesdir = $(datadir)/doc/ghemical-@APPVERSION@/html
+ helpfiles_DATA = *.css *.html
+ 
+ EXTRA_DIST = $(helpfiles_DATA)
+diff --git a/docs/user-docs/images/Makefile.am b/docs/user-docs/images/Makefile.am
+index fae0ffd..a569151 100644
+--- a/docs/user-docs/images/Makefile.am
++++ b/docs/user-docs/images/Makefile.am
+@@ -1,4 +1,4 @@
+-helpimagesdir = $(datadir)/ghemical/@APPVERSION@/user-docs/images
++helpimagesdir = $(datadir)/doc/ghemical-@APPVERSION@/html/images
+ helpimages_DATA = *.png
+ 
+ EXTRA_DIST = $(helpimages_DATA)

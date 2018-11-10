@@ -1,0 +1,73 @@
+--- poppler.defs
++++ poppler.defs
+@@ -1642,6 +1642,7 @@
+   (of-object "PopplerPage")
+   (c-name "poppler_page_render_to_pixbuf")
+   (return-type "none")
++  (unblock-threads #t)
+   (parameters
+     '("int" "src_x")
+     '("int" "src_y")
+@@ -1657,6 +1658,7 @@
+   (of-object "PopplerPage")
+   (c-name "poppler_page_render_to_pixbuf_for_printing")
+   (return-type "none")
++  (unblock-threads #t)
+   (parameters
+     '("int" "src_x")
+     '("int" "src_y")
+@@ -1672,12 +1674,14 @@
+   (of-object "PopplerPage")
+   (c-name "poppler_page_get_thumbnail_pixbuf")
+   (return-type "GdkPixbuf*")
++  (unblock-threads #t)
+ )
+ 
+ (define-method render_selection_to_pixbuf
+   (of-object "PopplerPage")
+   (c-name "poppler_page_render_selection_to_pixbuf")
+   (return-type "none")
++  (unblock-threads #t)
+   (parameters
+     '("gdouble" "scale")
+     '("int" "rotation")
+@@ -1694,6 +1698,7 @@
+   (of-object "PopplerPage")
+   (c-name "poppler_page_render")
+   (return-type "none")
++  (unblock-threads #t)
+   (parameters
+     '("cairo_t*" "cairo")
+   )
+@@ -1703,6 +1708,7 @@
+   (of-object "PopplerPage")
+   (c-name "poppler_page_render_for_printing")
+   (return-type "none")
++  (unblock-threads #t)
+   (parameters
+     '("cairo_t*" "cairo")
+   )
+@@ -1712,12 +1718,14 @@
+   (of-object "PopplerPage")
+   (c-name "poppler_page_get_thumbnail")
+   (return-type "cairo_surface_t*")
++  (unblock-threads #t)
+ )
+ 
+ (define-method render_selection
+   (of-object "PopplerPage")
+   (c-name "poppler_page_render_selection")
+   (return-type "none")
++  (unblock-threads #t)
+   (parameters
+     '("cairo_t*" "cairo")
+     '("PopplerRectangle*" "selection")
+@@ -1779,6 +1787,7 @@
+   (of-object "PopplerPage")
+   (c-name "poppler_page_render_to_ps")
+   (return-type "none")
++  (unblock-threads #t)
+   (parameters
+     '("PopplerPSFile*" "ps_file")
+   )
+

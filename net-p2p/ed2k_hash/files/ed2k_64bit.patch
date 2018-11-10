@@ -1,0 +1,12 @@
+--- a/ed2k_hash/md4.h	2002-09-04 18:24:37.000000000 +0100
++++ b/ed2k_hash/md4.h	2004-09-02 21:13:49.900613616 +0100
+@@ -66,7 +66,8 @@
+ typedef unsigned short int UINT2;
+ 
+ /* UINT4 defines a four byte word */
+-typedef unsigned long int UINT4;
++/* unsigned long int on 64bit is 8 bits */
++typedef unsigned int UINT4;
+ 
+ /* PROTO_LIST is defined depending on how PROTOTYPES is defined above.
+    If using PROTOTYPES, then PROTO_LIST returns the list, otherwise it

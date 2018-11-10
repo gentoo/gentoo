@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Haskell 98 natural numbers
+	</longdescription>
+	<use>
+		<flag name="hashable">
+			You can disable the use of the `hashable` package using
+			USE=-hashable. Disabling this is an unsupported configuration, but it may be
+			useful for accelerating builds in sandboxes for expert users. If set we will
+			not supply an instance of `Hashable`.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ekmett/nats</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,14 @@
+Fix QA violations in desktop file
+
+--- a/sirius.desktop.in
++++ b/sirius.desktop.in
+@@ -3,7 +3,7 @@
+ _Name=Sirius
+ _Comment=Sirius, a othello playing program
+ Exec=sirius
+-Icon=sirius.png
++Icon=sirius
+ Terminal=false
+ Type=Application
+-Categories=GNOME;Application;Game;
++Categories=GNOME;Game;

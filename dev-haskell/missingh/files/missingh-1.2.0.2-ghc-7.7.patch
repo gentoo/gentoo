@@ -1,0 +1,47 @@
+--- MissingH-1.2.0.2-orig/src/System/Cmd/Utils.hs	2013-08-22 00:35:27.000000000 +1000
++++ MissingH-1.2.0.2/src/System/Cmd/Utils.hs	2013-09-28 01:17:29.697333968 +1000
+@@ -325,7 +325,11 @@
+                 Just (Exited (ExitSuccess)) -> return ()
+                 Just (Exited (ExitFailure fc)) ->
+                     cmdfailed funcname fp args fc
++#if (__GLASGOW_HASKELL__ >= 707)
++                Just (Terminated sig _) ->
++#else
+                 Just (Terminated sig) ->
++#endif
+                     warnfail fp args $ "Terminated by signal " ++ show sig
+                 Just (Stopped sig) ->
+                     warnfail fp args $ "Stopped by signal " ++ show sig
+@@ -351,7 +355,11 @@
+        case ec of
+             Exited ExitSuccess -> return ()
+             Exited (ExitFailure fc) -> cmdfailed "safeSystem" command args fc
++#if (__GLASGOW_HASKELL__ >= 707)
++            Terminated s _ -> cmdsignalled "safeSystem" command args s
++#else
+             Terminated s -> cmdsignalled "safeSystem" command args s
++#endif
+             Stopped s -> cmdsignalled "safeSystem" command args s
+ #endif
+ 
+--- MissingH-1.2.0.2-orig/testsrc/Eithertest.hs	2013-08-22 00:35:27.000000000 +1000
++++ MissingH-1.2.0.2/testsrc/Eithertest.hs	2013-09-28 01:19:32.177332800 +1000
+@@ -6,6 +6,7 @@
+ For license and copyright information, see the file LICENSE
+ 
+ -}
++{-# LANGUAGE CPP #-}
+ 
+ module Eithertest(tests) where
+ import Test.HUnit
+@@ -13,8 +14,10 @@
+ import Test.HUnit.Tools
+ import Control.Exception
+ 
++#if (__GLASGOW_HASKELL__ < 707)
+ instance Eq ErrorCall where
+     (ErrorCall x) == (ErrorCall y) = x == y
++#endif
+ 
+ test_maybeToEither =
+     let f msg inp exp = TestLabel msg $ TestCase $ assertEqual "" exp inp in

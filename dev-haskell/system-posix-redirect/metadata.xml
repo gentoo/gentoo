@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Due to the design of POSIX, it is possible to temporarily overload the
+		file descriptors corresponding to stdout and stderr to point to an
+		arbitrary pipe. It is, however, tricky to get right. This module gets
+		it right, as far as such a terrible hack can be made right. It can be
+		used to make misbehaving third-party C libraries stop spewing to
+		standard output. Warning: the module author has concluded that due to
+		lack of portability, this module should not be used in any serious
+		sytem. But, for those who like living dangerously...
+	</longdescription>
+</pkgmetadata>

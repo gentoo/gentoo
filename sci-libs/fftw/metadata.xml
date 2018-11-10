@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  The Fastest Fourier Transform in the West is a C subroutine library
+  for computing the Discrete Fourier Transform (DFT) in one or more
+  dimensions, of both real and complex data, and of arbitrary input
+  size. It is becoming the FFT library of choice for most
+  applications. Benchmarks, performed on a variety of platforms, show
+  that FFTW's performance is typically superior to that of other
+  publicly available FFT software.
+</longdescription>
+  <use>
+    <flag name="float">Link default library to single precision instead of
+    double (symlinks only and fftw-2.1)</flag>
+    <flag name="quad">Build quadruple precision lib</flag>
+    <flag name="zbus">Adds support for ZBus cycle-counter of mips</flag>
+  </use>
+  <upstream>
+    <remote-id type="freecode">fftw</remote-id>
+  </upstream>
+</pkgmetadata>

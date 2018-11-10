@@ -1,0 +1,99 @@
+From 55bf7628e299ef2c143e9ac97e87817b5eda3239 Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <stefan.strogin@gmail.com>
+Date: Wed, 19 Sep 2018 23:52:10 +0300
+Subject: [PATCH] Fix #6854: Compilation with ICU 62
+
+---
+ src/gfx_layout.cpp | 18 +++++++++---------
+ src/gfx_layout.h   |  2 +-
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/src/gfx_layout.cpp b/src/gfx_layout.cpp
+index f5463d401..e13ece0e7 100644
+--- a/src/gfx_layout.cpp
++++ b/src/gfx_layout.cpp
+@@ -126,7 +126,7 @@ static size_t AppendToBuffer(UChar *buff, const UChar *buffer_last, WChar c)
+  * Wrapper for doing layouts with ICU.
+  */
+ class ICUParagraphLayout : public AutoDeleteSmallVector<ParagraphLayouter::Line *, 4>, public ParagraphLayouter {
+-	ParagraphLayout *p; ///< The actual ICU paragraph layout.
++	icu::ParagraphLayout *p; ///< The actual ICU paragraph layout.
+ public:
+ 	/** Helper for GetLayouter, to get the right type. */
+ 	typedef UChar CharType;
+@@ -135,10 +135,10 @@ public:
+ 
+ 	/** Visual run contains data about the bit of text with the same font. */
+ 	class ICUVisualRun : public ParagraphLayouter::VisualRun {
+-		const ParagraphLayout::VisualRun *vr; ///< The actual ICU vr.
++		const icu::ParagraphLayout::VisualRun *vr; ///< The actual ICU vr.
+ 
+ 	public:
+-		ICUVisualRun(const ParagraphLayout::VisualRun *vr) : vr(vr) { }
++		ICUVisualRun(const icu::ParagraphLayout::VisualRun *vr) : vr(vr) { }
+ 
+ 		const Font *GetFont() const          { return (const Font*)vr->getFont(); }
+ 		int GetGlyphCount() const            { return vr->getGlyphCount(); }
+@@ -150,10 +150,10 @@ public:
+ 
+ 	/** A single line worth of VisualRuns. */
+ 	class ICULine : public AutoDeleteSmallVector<ICUVisualRun *, 4>, public ParagraphLayouter::Line {
+-		ParagraphLayout::Line *l; ///< The actual ICU line.
++		icu::ParagraphLayout::Line *l; ///< The actual ICU line.
+ 
+ 	public:
+-		ICULine(ParagraphLayout::Line *l) : l(l)
++		ICULine(icu::ParagraphLayout::Line *l) : l(l)
+ 		{
+ 			for (int i = 0; i < l->countRuns(); i++) {
+ 				*this->Append() = new ICUVisualRun(l->getVisualRun(i));
+@@ -173,13 +173,13 @@ public:
+ 		}
+ 	};
+ 
+-	ICUParagraphLayout(ParagraphLayout *p) : p(p) { }
++	ICUParagraphLayout(icu::ParagraphLayout *p) : p(p) { }
+ 	~ICUParagraphLayout() { delete p; }
+ 	void Reflow() { p->reflow(); }
+ 
+ 	ParagraphLayouter::Line *NextLine(int max_width)
+ 	{
+-		ParagraphLayout::Line *l = p->nextLine(max_width);
++		icu::ParagraphLayout::Line *l = p->nextLine(max_width);
+ 		return l == NULL ? NULL : new ICULine(l);
+ 	}
+ };
+@@ -196,7 +196,7 @@ static ParagraphLayouter *GetParagraphLayout(UChar *buff, UChar *buff_end, FontM
+ 	}
+ 
+ 	/* Fill ICU's FontRuns with the right data. */
+-	FontRuns runs(fontMapping.Length());
++	icu::FontRuns runs(fontMapping.Length());
+ 	for (FontMap::iterator iter = fontMapping.Begin(); iter != fontMapping.End(); iter++) {
+ 		runs.add(iter->second, iter->first);
+ 	}
+@@ -204,7 +204,7 @@ static ParagraphLayouter *GetParagraphLayout(UChar *buff, UChar *buff_end, FontM
+ 	LEErrorCode status = LE_NO_ERROR;
+ 	/* ParagraphLayout does not copy "buff", so it must stay valid.
+ 	 * "runs" is copied according to the ICU source, but the documentation does not specify anything, so this might break somewhen. */
+-	ParagraphLayout *p = new ParagraphLayout(buff, length, &runs, NULL, NULL, NULL, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, false, status);
++	icu::ParagraphLayout *p = new icu::ParagraphLayout(buff, length, &runs, NULL, NULL, NULL, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, false, status);
+ 	if (status != LE_NO_ERROR) {
+ 		delete p;
+ 		return NULL;
+diff --git a/src/gfx_layout.h b/src/gfx_layout.h
+index 0a21d9b0c..028f5be63 100644
+--- a/src/gfx_layout.h
++++ b/src/gfx_layout.h
+@@ -21,7 +21,7 @@
+ 
+ #ifdef WITH_ICU_LAYOUT
+ #include "layout/ParagraphLayout.h"
+-#define ICU_FONTINSTANCE : public LEFontInstance
++#define ICU_FONTINSTANCE : public icu::LEFontInstance
+ #else /* WITH_ICU_LAYOUT */
+ #define ICU_FONTINSTANCE
+ #endif /* WITH_ICU_LAYOUT */
+-- 
+2.19.0
+

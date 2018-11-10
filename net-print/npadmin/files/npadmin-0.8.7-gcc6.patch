@@ -1,0 +1,138 @@
+--- npadmin-0.8.7/npadmin.C.old	2016-09-19 20:08:16.932034393 -0400
++++ npadmin-0.8.7/npadmin.C	2016-09-19 20:10:41.742717941 -0400
+@@ -72,74 +72,74 @@
+ 
+   // don't change the order of these without changing the order in npaconsts.h
+   static const struct option options[]= { 
+-    {"version",     no_argument,&retval,VERSION_FLAG},
+-    {"all",         no_argument,&retval,ALL_FLAG}, 
+-    {"debugsnmp",   no_argument,&retval,DEBUGSNMP_FLAG},
+-    {"name",        no_argument,&retval,NAME_FLAG},
+-
+-    {"vendor",      no_argument,&retval,VENDOR_FLAG},
+-    {"model",       no_argument,&retval,MODEL_FLAG},
+-    {"contact",     no_argument,&retval,CONTACT_FLAG},
+-    {"netconfig",   no_argument,&retval,NETCONFIG_FLAG},
+-    {"printmib",    no_argument,&retval,PRINTMIB_FLAG},
+-    {"hostmib",     no_argument,&retval,HOSTMIB_FLAG},
+-
+-    {"memory",      no_argument,&retval,MEMORY_FLAG},
+-    {"storage",     no_argument,&retval,STORAGE_FLAG},
+-    {"status",      no_argument,&retval,STATUS_FLAG},
+-
+-    {"mediapath",   no_argument,&retval,MEDIAPATH_FLAG},
+-    {"maxpapersize",no_argument,&retval,MAXPAPERSIZE_FLAG},
+-    {"enginespeed", no_argument,&retval,ENGINESPEED_FLAG},
+-    {"duplex",      no_argument,&retval,DUPLEX_FLAG},
+-    {"minpapersize",no_argument,&retval,MINPAPERSIZE_FLAG}, 
+-
+-    {"inputtray",   no_argument,&retval,INPUTTRAY_FLAG},
+-    {"tabloid",     no_argument,&retval,TABLOID_FLAG},
+-    {"a4",          no_argument,&retval,A4_FLAG},
+-    {"b4",          no_argument,&retval,B4_FLAG},
+-    {"executive",   no_argument,&retval,EXECUTIVE_FLAG}, 
+-    {"a3",          no_argument,&retval,A3_FLAG},
+-    {"b5",          no_argument,&retval,B5_FLAG},
+-    {"letter",      no_argument,&retval,LETTER_FLAG},
+-    {"legal",       no_argument,&retval,LEGAL_FLAG},
++    {"version",     no_argument,&retval,(int)VERSION_FLAG},
++    {"all",         no_argument,&retval,(int)ALL_FLAG}, 
++    {"debugsnmp",   no_argument,&retval,(int)DEBUGSNMP_FLAG},
++    {"name",        no_argument,&retval,(int)NAME_FLAG},
++
++    {"vendor",      no_argument,&retval,(int)VENDOR_FLAG},
++    {"model",       no_argument,&retval,(int)MODEL_FLAG},
++    {"contact",     no_argument,&retval,(int)CONTACT_FLAG},
++    {"netconfig",   no_argument,&retval,(int)NETCONFIG_FLAG},
++    {"printmib",    no_argument,&retval,(int)PRINTMIB_FLAG},
++    {"hostmib",     no_argument,&retval,(int)HOSTMIB_FLAG},
++
++    {"memory",      no_argument,&retval,(int)MEMORY_FLAG},
++    {"storage",     no_argument,&retval,(int)STORAGE_FLAG},
++    {"status",      no_argument,&retval,(int)STATUS_FLAG},
++
++    {"mediapath",   no_argument,&retval,(int)MEDIAPATH_FLAG},
++    {"maxpapersize",no_argument,&retval,(int)MAXPAPERSIZE_FLAG},
++    {"enginespeed", no_argument,&retval,(int)ENGINESPEED_FLAG},
++    {"duplex",      no_argument,&retval,(int)DUPLEX_FLAG},
++    {"minpapersize",no_argument,&retval,(int)MINPAPERSIZE_FLAG}, 
++
++    {"inputtray",   no_argument,&retval,(int)INPUTTRAY_FLAG},
++    {"tabloid",     no_argument,&retval,(int)TABLOID_FLAG},
++    {"a4",          no_argument,&retval,(int)A4_FLAG},
++    {"b4",          no_argument,&retval,(int)B4_FLAG},
++    {"executive",   no_argument,&retval,(int)EXECUTIVE_FLAG}, 
++    {"a3",          no_argument,&retval,(int)A3_FLAG},
++    {"b5",          no_argument,&retval,(int)B5_FLAG},
++    {"letter",      no_argument,&retval,(int)LETTER_FLAG},
++    {"legal",       no_argument,&retval,(int)LEGAL_FLAG},
+ 
+-    {"display",     no_argument,&retval,DISPLAY_FLAG}, 
+-    {"covers",      no_argument,&retval,COVER_FLAG},
++    {"display",     no_argument,&retval,(int)DISPLAY_FLAG}, 
++    {"covers",      no_argument,&retval,(int)COVER_FLAG},
+ 
+     // From here down These all get an extra bit to indicate that they belong
+     // to argval[1] rather than argval[0]
+-    {"languages",   no_argument,&retval,LANGUAGES_FLAG+1},
+-    {"pjl",         no_argument,&retval,PJL_FLAG+1},
+-    {"hpgl",        no_argument,&retval,HPGL_FLAG+1},
+-    {"psprinter",   no_argument,&retval,PSPRINTER_FLAG+1},
+-    {"autolang",    no_argument,&retval,AUTOLANG_FLAG+1},
+-    {"pcl",         no_argument,&retval,PCL_FLAG+1},
+-    {"postscript",  no_argument,&retval,POSTSCRIPT_FLAG+1},
+-
+-    {"marker",      no_argument,&retval,MARKER_FLAG+1},
+-    {"pagecount",   no_argument,&retval,PAGECOUNT_FLAG+1},
+-    {"colors",      no_argument,&retval,COLORS_FLAG+1},
+-    {"resolution",  no_argument,&retval,RESOLUTION_FLAG+1},
+-    {"minmargin",   no_argument,&retval,MINMARGIN_FLAG+1},
+-
+-    {"protocol",    no_argument,&retval,PROTOCOL_FLAG+1},
+-    {"appletalk",   no_argument,&retval,APPLETALK_FLAG+1}, 
+-    {"lpd",         no_argument,&retval,LPD_FLAG+1},
+-    {"netware",     no_argument,&retval,NETWARE_FLAG+1}, 
+-    {"port9100",    no_argument,&retval,PORT9100_FLAG+1},
+-
+-    {"supplies",    no_argument,&retval,SUPPLIES_FLAG+1},
+-    {"cfgsrc",      no_argument,&retval,CFGSRC_FLAG+1},
+-    {"alerts",      no_argument,&retval,ALERTS_FLAG+1},
+-    {"reboot",      no_argument,&retval,REBOOT_FLAG+1},
++    {"languages",   no_argument,&retval,(int)LANGUAGES_FLAG+1},
++    {"pjl",         no_argument,&retval,(int)PJL_FLAG+1},
++    {"hpgl",        no_argument,&retval,(int)HPGL_FLAG+1},
++    {"psprinter",   no_argument,&retval,(int)PSPRINTER_FLAG+1},
++    {"autolang",    no_argument,&retval,(int)AUTOLANG_FLAG+1},
++    {"pcl",         no_argument,&retval,(int)PCL_FLAG+1},
++    {"postscript",  no_argument,&retval,(int)POSTSCRIPT_FLAG+1},
++
++    {"marker",      no_argument,&retval,(int)MARKER_FLAG+1},
++    {"pagecount",   no_argument,&retval,(int)PAGECOUNT_FLAG+1},
++    {"colors",      no_argument,&retval,(int)COLORS_FLAG+1},
++    {"resolution",  no_argument,&retval,(int)RESOLUTION_FLAG+1},
++    {"minmargin",   no_argument,&retval,(int)MINMARGIN_FLAG+1},
++
++    {"protocol",    no_argument,&retval,(int)PROTOCOL_FLAG+1},
++    {"appletalk",   no_argument,&retval,(int)APPLETALK_FLAG+1}, 
++    {"lpd",         no_argument,&retval,(int)LPD_FLAG+1},
++    {"netware",     no_argument,&retval,(int)NETWARE_FLAG+1}, 
++    {"port9100",    no_argument,&retval,(int)PORT9100_FLAG+1},
++
++    {"supplies",    no_argument,&retval,(int)SUPPLIES_FLAG+1},
++    {"cfgsrc",      no_argument,&retval,(int)CFGSRC_FLAG+1},
++    {"alerts",      no_argument,&retval,(int)ALERTS_FLAG+1},
++    {"reboot",      no_argument,&retval,(int)REBOOT_FLAG+1},
+ 
+     // From here down These all get an extra bit 2 to indicate that they belong
+     // to argval[2] rather than argval[0] or argval[1]
+-    {"maxproc",required_argument,&retval,MAXPROC_FLAG+2},
+-    {"setcontact",required_argument,&retval,SETCONTACT_FLAG+2},
+-    {"setlocation",required_argument,&retval,SETLOCATION_FLAG+2},
+-    {"updatefirmware",required_argument,&retval,UPDATEFIRM_FLAG+2},
++    {"maxproc",required_argument,&retval,(int)MAXPROC_FLAG+2},
++    {"setcontact",required_argument,&retval,(int)SETCONTACT_FLAG+2},
++    {"setlocation",required_argument,&retval,(int)SETLOCATION_FLAG+2},
++    {"updatefirmware",required_argument,&retval,(int)UPDATEFIRM_FLAG+2},
+ 
+     {"community",required_argument,NULL,    'c'},
+     {"timeout",required_argument,NULL,      't'},

@@ -1,0 +1,203 @@
+From 88f5739d3f0d34c51f318fc460b843253b4242e0 Mon Sep 17 00:00:00 2001
+From: Nicolas Bock <nicolasbock@gmail.com>
+Date: Fri, 8 Nov 2013 09:58:55 -0700
+Subject: [PATCH 2/2] Make markupSanitizer.py support python 3.1 and 3.2
+
+The script only supports <python-3 because of how uni-code literals are
+treated in python-3.{1,2}. In python-2, a unicode string had to be prefixed
+with 'u', while this notation was dropped in python-3.{1,2}. I have added a
+check to the script so that it runs now with python-2.7 and python-3.{1,2,3}.
+---
+ doc/markupSanitizer.py | 179 ++++++++++++++++++++++++++-----------------------
+ 1 file changed, 95 insertions(+), 84 deletions(-)
+
+diff --git a/doc/markupSanitizer.py b/doc/markupSanitizer.py
+index f206cab..6fe247d 100755
+--- a/doc/markupSanitizer.py
++++ b/doc/markupSanitizer.py
+@@ -4,87 +4,98 @@ from bs4 import BeautifulSoup
+ import sys
+ import os
+ 
+-# Accept filename as user input
+-argc = len( sys.argv )
+-if (argc < 2): raise Exception
+-fileName = sys.argv[1];
+-
+-# Construct a DOM object
+-soup = BeautifulSoup(open(fileName), "lxml")
+-
+-# Assuming, tt tags are not spewed recklessly by latex2html,
+-# replace them with code tags
+-for t in soup('tt'):
+-    t.wrap( soup.new_tag('code') )
+-    t.unwrap()
+-
+-# Rewrap all div class=alltt blocks in pre tags
+-for d in soup('div','alltt'):
+-    d.wrap( soup.new_tag('pre') )
+-    d.unwrap()
+-
+-# Remove br and span tags from within pre sections
+-for p in soup('pre'):
+-    for b in p('br'):
+-        b.extract()
+-    for s in p('span'):
+-        s.unwrap()
+-
+-# Remove all useless class 'arabic' spans
+-for s in soup('span','arabic'):
+-    s.unwrap()
+-
+-# Extract the navigation bar
+-navmenu = soup.find('div', 'navigation')
+-if navmenu:
+-    navmenu.extract()
+-
+-# Wrap the remaining contents within a div
+-if not soup.find('div', id='maincontainer'):
+-    soup.body['id'] = 'maincontainer'
+-    soup.body.name = 'div'
+-    soup.find('div', id='maincontainer').wrap( soup.new_tag('body') )
+-
+-if navmenu:
+-    # If this navmenu doesn't already have a TOC, insert one
+-    if not navmenu.find('ul','manual-toc'):
+-        # Add a toc within the navmenu
+-        navmenuTOC = BeautifulSoup(open("tmp-navmenu.html"), "lxml")
+-        navmenuTOC = navmenuTOC.find('ul','manual-toc').extract()
+-        navmenuTOC.append( BeautifulSoup("".join([
+-        '<li><a href="http://charm.cs.illinois.edu">PPL Homepage</a></li>',
+-        '<li><a href="http://charm.cs.illinois.edu/help">Other Manuals</a></li>'])
+-        ) )
+-        navmenu.append(navmenuTOC)
+-
+-    # Insert navigation symbols to prev and next links
+-    prevsymbol = soup.new_tag('span')
+-    prevsymbol['class'] = 'navsymbol'
+-    prevsymbol.string = u'\xab'
+-    prv = navmenu.find('li',id='nav-prev')
+-    if prv:
+-        prv.find('a').insert(0, prevsymbol)
+-
+-    nextsymbol = soup.new_tag('span')
+-    nextsymbol['class'] = 'navsymbol'
+-    nextsymbol.string = u'\xbb'
+-    nxt = navmenu.find('li',id='nav-next')
+-    if nxt:
+-        nxt.find('a').append(nextsymbol)
+-
+-    # Reinsert the navigation bar at the end
+-    soup.body.append(navmenu)
+-
+-# Extract the title
+-titl = soup.find('title')
+-
+-# Replace the head section with the user-supplied head markup
+-soup.find('head').extract()
+-newhead = BeautifulSoup(open("../assets/head.html"), "lxml")
+-newhead = newhead.find('head').extract()
+-newhead.append(titl)
+-soup.html.body.insert_before(newhead)
+-
+-# Print cleaned up markup to stdout
+-print( soup.prettify(formatter="html") )
+-
++def main ():
++  # Accept filename as user input
++  argc = len( sys.argv )
++  if (argc < 2): raise Exception
++  fileName = sys.argv[1];
++
++  # Construct a DOM object
++  soup = BeautifulSoup(open(fileName), "lxml")
++
++  # Assuming, tt tags are not spewed recklessly by latex2html,
++  # replace them with code tags
++  for t in soup('tt'):
++      t.wrap( soup.new_tag('code') )
++      t.unwrap()
++
++  # Rewrap all div class=alltt blocks in pre tags
++  for d in soup('div','alltt'):
++      d.wrap( soup.new_tag('pre') )
++      d.unwrap()
++
++  # Remove br and span tags from within pre sections
++  for p in soup('pre'):
++      for b in p('br'):
++          b.extract()
++      for s in p('span'):
++          s.unwrap()
++
++  # Remove all useless class 'arabic' spans
++  for s in soup('span','arabic'):
++      s.unwrap()
++
++  # Extract the navigation bar
++  navmenu = soup.find('div', 'navigation')
++  if navmenu:
++      navmenu.extract()
++
++  # Wrap the remaining contents within a div
++  if not soup.find('div', id='maincontainer'):
++      soup.body['id'] = 'maincontainer'
++      soup.body.name = 'div'
++      soup.find('div', id='maincontainer').wrap( soup.new_tag('body') )
++
++  if navmenu:
++      # If this navmenu doesn't already have a TOC, insert one
++      if not navmenu.find('ul','manual-toc'):
++          # Add a toc within the navmenu
++          navmenuTOC = BeautifulSoup(open("tmp-navmenu.html"), "lxml")
++          navmenuTOC = navmenuTOC.find('ul','manual-toc').extract()
++          navmenuTOC.append( BeautifulSoup("".join([
++          '<li><a href="http://charm.cs.illinois.edu">PPL Homepage</a></li>',
++          '<li><a href="http://charm.cs.illinois.edu/help">Other Manuals</a></li>'])
++          ) )
++          navmenu.append(navmenuTOC)
++
++      # Insert navigation symbols to prev and next links
++      prevsymbol = soup.new_tag('span')
++      prevsymbol['class'] = 'navsymbol'
++      prevsymbol.string = u('\xab')
++      prv = navmenu.find('li',id='nav-prev')
++      if prv:
++          prv.find('a').insert(0, prevsymbol)
++
++      nextsymbol = soup.new_tag('span')
++      nextsymbol['class'] = 'navsymbol'
++      nextsymbol.string = u('\xbb')
++      nxt = navmenu.find('li',id='nav-next')
++      if nxt:
++          nxt.find('a').append(nextsymbol)
++
++      # Reinsert the navigation bar at the end
++      soup.body.append(navmenu)
++
++  # Extract the title
++  titl = soup.find('title')
++
++  # Replace the head section with the user-supplied head markup
++  soup.find('head').extract()
++  newhead = BeautifulSoup(open("../assets/head.html"), "lxml")
++  newhead = newhead.find('head').extract()
++  newhead.append(titl)
++  soup.html.body.insert_before(newhead)
++
++  # Print cleaned up markup to stdout
++  print( soup.prettify(formatter="html") )
++
++if sys.version < '3':
++  import codecs
++  def u (x):
++    return codecs.unicode_escape_decode(x)[0]
++else:
++  def u (x):
++    return x
++
++if __name__ == "__main__":
++  main()
+-- 
+1.8.1.5
+

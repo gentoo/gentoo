@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Devel-NYTProf</remote-id>
+    <remote-id type="cpan-module">Devel::NYTProf</remote-id>
+    <remote-id type="cpan-module">Devel::NYTProf::Apache</remote-id>
+    <remote-id type="cpan-module">Devel::NYTProf::Constants</remote-id>
+    <remote-id type="cpan-module">Devel::NYTProf::Core</remote-id>
+    <remote-id type="cpan-module">Devel::NYTProf::Data</remote-id>
+    <remote-id type="cpan-module">Devel::NYTProf::FileHandle</remote-id>
+    <remote-id type="cpan-module">Devel::NYTProf::FileInfo</remote-id>
+    <remote-id type="cpan-module">Devel::NYTProf::ReadStream</remote-id>
+    <remote-id type="cpan-module">Devel::NYTProf::Reader</remote-id>
+    <remote-id type="cpan-module">Devel::NYTProf::Run</remote-id>
+    <remote-id type="cpan-module">Devel::NYTProf::SubCallInfo</remote-id>
+    <remote-id type="cpan-module">Devel::NYTProf::SubInfo</remote-id>
+    <remote-id type="cpan-module">Devel::NYTProf::Util</remote-id>
+  </upstream>
+</pkgmetadata>

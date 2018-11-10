@@ -1,0 +1,15 @@
+Patch to find qt5 plugins.
+
+Patch by Marius Brehler <marbre@linux.sungazer.de>
+--- a/bin/mendeleydesktop
++++ b/bin/mendeleydesktop
+@@ -75,7 +83,7 @@ def get_paths():
+         else:
+             results['MENDELEY_BIN'] = results['MENDELEY_BASE'] + "/lib/mendeleydesktop/libexec/mendeleydesktop.i486"
+ 
+-        results['MENDELEY_BUNDLED_QT_PLUGIN'] = results['MENDELEY_BASE'] + "/lib/mendeleydesktop/plugins/"
++        results['MENDELEY_BUNDLED_QT_PLUGIN'] = "/usr/lib/qt5/plugins"
+ 
+     # Path to Mendeley Desktop and PDFNet libraries
+     results['MENDELEY_LIB'] = results['MENDELEY_BASE'] + "/lib/"
+ 

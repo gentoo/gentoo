@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-astronomy@gentoo.org</email>
+		<name>Gentoo Astronomy Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		XFITSview is a Graphical User Interface based on the Motif library to
+		visualize astronomical images in the FITS format. It's a fairly simple
+		program useful for doing simple astrometry.
+	</longdescription>
+</pkgmetadata>

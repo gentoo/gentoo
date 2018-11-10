@@ -1,0 +1,69 @@
+--- neilb-csvfix-e804a794d175/alib/Makefile
++++ neilb-csvfix-e804a794d175/alib/Makefile
+@@ -2,12 +2,12 @@
+ # Copyright (C) 2009 Neil Butterworth
+ 
+ OUT = lib/alib.a
++AR = ar
+ CCTYPE = gcc
+ IDIR = inc
+ ODIR = obj
+-XDIR = expat
+ SDIR = src
+-INC = -Iinc -Iexpat
++INC = -Iinc
+ 
+ cc.gcc = g++
+ cc.clang = clang++ -std=c++11 -stdlib=libc++  
+@@ -26,9 +26,6 @@
+ _WINOBJS = a_db.o a_dir.o a_opsys.o a_winerr.o
+ WINOBJS = $(patsubst %,$(ODIR)/%,$(_WINOBJS))
+ 
+-_EXPAT = xmlparse.o  xmlrole.o  xmltok.o  xmltok_impl.o  xmltok_ns.o
+-EXPAT = $(patsubst %,$(ODIR)/%,$(_EXPAT))
+-
+ $(ODIR)/%.o: $(SDIR)/%.cpp $(IDIR)/%.h 
+ 	$(CC) -c $(INC) $(CFLAGS) -o $@ $< 
+ 
+@@ -36,10 +33,10 @@
+ 	$(CC) -c $(INC) $(CFLAGS) -o $@ $< 
+ 
+ win: $(OBJS) $(EXPAT) $(WINOBJS)
+-	ar rvs $(OUT) $^
++	$(AR) rvs $(OUT) $^
+ 
+ lin: $(OBJS) $(EXPAT) 
+-	ar rvs $(OUT) $^
++	$(AR) rvs $(OUT) $^
+ 
+ .PHONY: clean
+ clean:
+--- neilb-csvfix-e804a794d175/csvfix/Makefile
++++ neilb-csvfix-e804a794d175/csvfix/Makefile
+@@ -22,7 +22,7 @@
+ 
+ ALIB = ../alib/lib/alib.a
+ WINLIBS = ../alib/lib/alib.a -lodbc32 
+-LINLIBS = ../alib/lib/alib.a 
++LINLIBS = ../alib/lib/alib.a -lexpat
+ 
+ _OBJS = csved_atable.o \
+ 		csved_block.o \
+@@ -99,8 +99,7 @@
+ 	strip $(WINOUT)
+ 
+ $(LINOUT): $(OBJS) $(ALIB)
+-	$(CC) -o $@ $^ $(LINLIBS)
+-	strip $(LINOUT)
++	$(CC) $(LDFLAGS) -o $@ $^ $(LINLIBS)
+ 
+ .PHONY: win
+ win:
+--- neilb-csvfix-e804a794d175/Makefile
++++ neilb-csvfix-e804a794d175/Makefile
+@@ -1,3 +1,5 @@
++CFLAGS += -std=c++11
++
+ ifndef COMSPEC
+ 	CLEAN =	(cd alib; $(MAKE) clean) && (cd csvfix; $(MAKE) clean) 
+ else

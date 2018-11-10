@@ -1,0 +1,11 @@
+--- gimmage-0.2.3/src/FileManager.cpp~	2007-06-26 15:51:15.000000000 +0200
++++ gimmage-0.2.3/src/FileManager.cpp	2008-02-16 13:58:34.000000000 +0100
+@@ -21,6 +21,8 @@
+ 
+ // we make extensive use of get_current_dir_name() from Glib
+ 
++#include <cstring>
++
+ #include "FileManager.h"
+ #include "defines.h"
+

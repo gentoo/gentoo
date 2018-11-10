@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>aidecoe@gentoo.org</email>
+		<name>Amadeusz Żołnowski</name>
+	</maintainer>
+	<longdescription lang="en">
+		cache_tab application is intended to proxy back-end operations for
+		Key-Value insert, lookup and delete and maintain a cache of those
+		Key-Values in-memory, to save back-end operations.
+
+		Operations are intended to be atomic between back-end and cache tables.
+
+		The lifetime of the cache object and the max size of the cache can be
+		defined as table parameters to limit the size of the in-memory tables.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">processone/cache_tab</remote-id>
+	</upstream>
+</pkgmetadata>

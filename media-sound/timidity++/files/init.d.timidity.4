@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+ 
+depend() {
+	after alsasound esound
+}
+ 
+start() {
+	ebegin "Starting TiMidity++ Virtual Midi Sequencer"
+	test -n "$TIMIDITY_PCM_NAME" && export TIMIDITY_PCM_NAME
+	start-stop-daemon --start --background --chdir /usr/share/timidity \
+	--user timidity --group audio --make-pidfile --pidfile /var/run/timidity.pid \
+	--exec /usr/bin/timidity -- -iA ${TIMIDITY_OPTS}
+	eend $?
+}
+ 
+stop() {
+	ebegin "Stopping TiMidity++"
+	start-stop-daemon --stop --quiet --pidfile /var/run/timidity.pid
+	eend $?
+}

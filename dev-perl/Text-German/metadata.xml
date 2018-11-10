@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Text-German</remote-id>
+    <remote-id type="cpan-module">Text::German</remote-id>
+    <remote-id type="cpan-module">Text::German::Adjektiv</remote-id>
+    <remote-id type="cpan-module">Text::German::Ausnahme</remote-id>
+    <remote-id type="cpan-module">Text::German::Cache</remote-id>
+    <remote-id type="cpan-module">Text::German::Endung</remote-id>
+    <remote-id type="cpan-module">Text::German::Regel</remote-id>
+    <remote-id type="cpan-module">Text::German::Util</remote-id>
+    <remote-id type="cpan-module">Text::German::Verb</remote-id>
+    <remote-id type="cpan-module">Text::German::Vorsilbe</remote-id>
+  </upstream>
+</pkgmetadata>

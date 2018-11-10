@@ -1,0 +1,13 @@
+--- src/linux/rw_x11.c.old
++++ src/linux/rw_x11.c
+@@ -989,8 +989,8 @@
+ 	} 
+ 	else 
+ 	  {
+-	    mx -= ((int)event.xmotion.x + mwx)*2;
+-	    my -= ((int)event.xmotion.y + mwy)*2;
++	    mx += ((int)event.xmotion.x - mwx)*2;
++	    my += ((int)event.xmotion.y - mwy)*2;
+ 	    mwx = event.xmotion.x;
+ 	    mwy = event.xmotion.y;
+ 	    

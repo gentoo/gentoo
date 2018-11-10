@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<longdescription lang="en">
+		GRAMPS helps you track your family tree. It allows you to store, edit,
+		and research genealogical data. GRAMPS attempts to provide all of the
+		common capabilities of other genealogical programs, but, more
+		importantly, to provide an additional capability of integration not
+		common to these programs. This is the ability to input any bits and
+		pieces of information directly into GRAMPS and rearrange/manipulate
+		any/all data events in the entire data base (in any order or sequence)
+		to assist the user in doing research, analysis and correlation with
+		the potential of filling relationship gaps.
+	</longdescription>
+	<longdescription lang="cs">
+		GRAMPS Vám pomůže sledovat Váš rodokmen. Dovolí Vám využít počítač pro
+		ukládání, úpravy a zkoumání genealogických dat.
+
+		GRAMPS se snaží nabídnout všechny vlastnosti obvyklé u jiných
+		dostupných genealogických programů. Oproti nim však poskytuje další
+		možnosti integrace, které u těchto programů nejsou běžné. Je to
+		možnost vložit jakýkoli kus informace přímo do GRAMPS a
+		přeskupit/manipulovat jednotlivými/všemi událostmi v celé
+		databázi. Tím pomáhá badateli při výzkumu, analýze a korelacích s
+		potenciálem zaplnění mezer ve vztazích mezi subjekty.
+	</longdescription>
+	<longdescription lang="de">
+		GRAMPS hilft dir, deinen Familienstammbaum zurückzuverfolgen. Es
+		erlaubt dir das Speichern, Bearbeiten, und Erforschen genealogischer
+		Daten mit deinem Computer. GRAMPS versucht alle möglichen Funktionen,
+		die andere genealogische Programme bieten einzubeziehen, aber noch
+		viel wichtiger, die Möglichkeit des einfachen Imports fremder Daten zu
+		bieten. Das ist die Fähigkeit jedes noch so kleine Detail direkt in
+		GRAMPS einzugeben und alle damit verbundenen Daten und Events in der
+		gesamten Datenbank neu zu ordnen oder zu manipulieren um die Arbeit
+		für den Benutzer zu erleichtern. So können jederzeit potentielle
+		Lücken in jeglichen Beziehungen gefüllt werden.
+	</longdescription>
+	<longdescription lang="fr">
+		GRAMPS vous aide à suivre votre lignée. Il vous permet de stocker,
+		éditer, ainsi que rechercher des données généalogiques avec votre
+		ordinateur. GRAMPS tente de fournir toutes les capacités communes aux
+		autres programmes généalogiques, mais, plus important, fournir des
+		capacités supplémentaires non communes à ces programmes. C'est la
+		capacité d'entrer toutes parties d'informations directement dans
+		GRAMPS et réarranger/manipuler quelques/toutes données événement dans
+		la base de données (dans n'importe quel ordre ou séquence) pour
+		assiter l'utilisateur dans ses recherches, analyse et corrélation avec
+		les relations possibles.
+	</longdescription>
+	<longdescription lang="nl">
+		GRAMPS laat je toe je familiestamboom op te stellen. Het programma
+		laat je toe om je genealogische gegevens op te slaan, te wijzigen en
+		genealogisch onderzoek te doen met je computer. GRAMPS probeert om
+		bovenover de gebruikelijke mogelijkheden die andere genealogische
+		programma's bieden, een verdergaande integratiemogelijkheid te geven
+		die die andere programma's niet hebben. Je kan zo alle stukjes en
+		gedeelten van informatie rechtstreeks in GRAMPS invoeren en achteraf
+		kan je dan deze gegevens bewerken/manipuleren. Dit kan je doen met het
+		volledige gegevensbestand( in gelijkwelke volgorde). Zo wordt de
+		gebruiker ondersteund in zijn onderzoeken biedt dit een hulp bij
+		analyse en de correlatie om zo relatieleemten te kunnen opvullen.
+	</longdescription>
+	<longdescription lang="pl">
+		GRAMPS pomaga Ci śledzić Twoje drzewo rodzinne. Pozwala Ci wprowadzać,
+		edytować i analizować informacje genealogiczne za pomocą
+		komputera. GRAMPS próbuje zapewnić wszystkie wspólne cechy innych
+		programów genealogicznych, ale, co ważniejsze, dostarczyć Ci
+		możliwości w nich nie dostępne. Ma możliwość wprowadzenia każdej
+		informacji i wiadomości bezpośrednio do programu i późniejszą analizę
+		i zmianę zdarzeń czy pojedynczo, czy grupowo (w dowolnej kolejności) w
+		celu pomocy użytkownikowi w analizie, badaniu i korelowaniu
+		potencjalnych luk w relacjach w rodzinie.
+	</longdescription>
+	<longdescription lang="sl">
+		GRAMPS vam pomaga voditi svoj rodovnik. Z njim lahko shranjujete,
+		urejate in raziskujete rodoslovne podatke na svojem
+		računalniku. Pogram GRAMPS vključuje večino skupnih elementov drugih
+		rodoslovnih programov, poleg tega pa omogoča še funkcije, ki jih ti
+		programi običajno nimajo. Med njimi sta npr. možnost vnosa
+		kakršnegakoli podatka neposredno v GRAMPS ter preurejanje in
+		spreminjanje vseh zapisov dogodkov v celotni bazi podatkov (ne glede
+		na vrstni red), kar vam bo v pomoč pri vaših raziskavah, analizah in
+		zapolnjevanju vrzeli v rodoslovnih podatkih.
+	</longdescription>
+	<use>
+		<flag name="geo">Enable rendering of geographical data using <pkg>sci-geosciences/osm-gps-map</pkg></flag>
+		<flag name="reports">All external software that is needed for graphical reports will be installed</flag>
+		<flag name="rcs">Adds support for family tree archives via <pkg>dev-vcs/rcs</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">gramps</remote-id>
+		<remote-id type="github">gramps-project/gramps</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,23 @@
+diff -Nur nlopt-2.3.orig/Makefile.am nlopt-2.3/Makefile.am
+--- nlopt-2.3.orig/Makefile.am	2012-08-03 02:07:09.000000000 +0100
++++ nlopt-2.3/Makefile.am	2012-08-03 02:13:13.000000000 +0100
+@@ -25,6 +25,7 @@
+ 
+ if WITH_CXX
+ libnlopt@NLOPT_SUFFIX@_la_LDFLAGS = -version-info @SHARED_VERSION_INFO@
++libnlopt@NLOPT_SUFFIX@_la_LIBADD += -lstdc++
+ else
+ libnlopt@NLOPT_SUFFIX@_la_LDFLAGS = -no-undefined -version-info @SHARED_VERSION_INFO@
+ endif
+diff -Nur nlopt-2.3.orig/swig/Makefile.am nlopt-2.3/swig/Makefile.am
+--- nlopt-2.3.orig/swig/Makefile.am	2012-08-03 02:07:09.000000000 +0100
++++ nlopt-2.3/swig/Makefile.am	2012-08-03 03:04:30.000000000 +0100
+@@ -9,7 +9,7 @@
+ # Guile wrapper
+ 
+ libnlopt@NLOPT_SUFFIX@_guile_la_SOURCES = nlopt-guile.cpp
+-libnlopt@NLOPT_SUFFIX@_guile_la_LIBADD = ../libnlopt@NLOPT_SUFFIX@.la
++libnlopt@NLOPT_SUFFIX@_guile_la_LIBADD = ../libnlopt@NLOPT_SUFFIX@.la @GUILE_LIBS@
+ libnlopt@NLOPT_SUFFIX@_guile_la_LDFLAGS = -version-info @SHARED_VERSION_INFO@
+ libnlopt@NLOPT_SUFFIX@_guile_la_CPPFLAGS = $(GUILE_CPPFLAGS) -I$(top_builddir)/api
+ 

@@ -1,0 +1,50 @@
+From 9bce473ba7417b45bfdb59d4151a8857dcfff4ad Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@hasufell.de>
+Date: Mon, 2 Nov 2015 16:27:06 +0100
+Subject: [PATCH 2/4] makefile: quote variables
+
+Make does not take care of this in make rules. If any of the variables
+DESTDIR, INCLUDEDIR or LIBDIR contain whitespaces, then the related
+install command will fail.
+
+This is even more important for the uninstall rule.
+---
+ Makefile | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 76153a0..8c4a9d7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -123,19 +123,19 @@ tags: http_parser.c http_parser.h test.c
+ 	ctags $^
+ 
+ install: library
+-	$(INSTALL) -D  http_parser.h $(DESTDIR)$(INCLUDEDIR)/http_parser.h
+-	$(INSTALL) -D $(SONAME) $(DESTDIR)$(LIBDIR)/$(SONAME)
+-	ln -s $(LIBDIR)/$(SONAME) $(DESTDIR)$(LIBDIR)/libhttp_parser.$(SOEXT)
++	$(INSTALL) -D  http_parser.h "$(DESTDIR)$(INCLUDEDIR)/http_parser.h"
++	$(INSTALL) -D $(SONAME) "$(DESTDIR)$(LIBDIR)/$(SONAME)"
++	ln -s $(LIBDIR)/$(SONAME) "$(DESTDIR)$(LIBDIR)/libhttp_parser.$(SOEXT)"
+ 
+ install-strip: library
+-	$(INSTALL) -D  http_parser.h $(DESTDIR)$(INCLUDEDIR)/http_parser.h
+-	$(INSTALL) -D -s $(SONAME) $(DESTDIR)$(LIBDIR)/$(SONAME)
+-	ln -s $(LIBDIR)/$(SONAME) $(DESTDIR)$(LIBDIR)/libhttp_parser.$(SOEXT)
++	$(INSTALL) -D  http_parser.h "$(DESTDIR)$(INCLUDEDIR)/http_parser.h"
++	$(INSTALL) -D -s $(SONAME) "$(DESTDIR)$(LIBDIR)/$(SONAME)"
++	ln -s $(LIBDIR)/$(SONAME) "$(DESTDIR)$(LIBDIR)/libhttp_parser.$(SOEXT)"
+ 
+ uninstall:
+-	rm $(DESTDIR)$(INCLUDEDIR)/http_parser.h
+-	rm $(DESTDIR)$(LIBDIR)/$(SONAME)
+-	rm $(DESTDIR)$(LIBDIR)/libhttp_parser.so
++	rm "$(DESTDIR)$(INCLUDEDIR)/http_parser.h"
++	rm "$(DESTDIR)$(LIBDIR)/$(SONAME)"
++	rm "$(DESTDIR)$(LIBDIR)/libhttp_parser.so"
+ 
+ clean:
+ 	rm -f *.o *.a tags test test_fast test_g \
+-- 
+2.6.1
+

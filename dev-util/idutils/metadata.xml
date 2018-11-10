@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Fast, high-capacity, identifier database tool.
+		Actually, the term `identifier' is too limiting--`mkid' stores tokens, be
+		they program identifiers of any form, literal numbers, or words of
+		human-readable text. Database queries can be issued from the command-line,
+		or from within emacs, serving as an augmented tags facility.
+	</longdescription>
+</pkgmetadata>

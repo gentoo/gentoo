@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kernel@gentoo.org</email>
+		<name>Gentoo Kernel Project</name>
+	</maintainer>
+	<longdescription>Full sources for the Xbox Linux kernel</longdescription>
+	<upstream>
+		<remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
+		<remote-id type="sourceforge">xbox-linux</remote-id>
+	</upstream>
+</pkgmetadata>

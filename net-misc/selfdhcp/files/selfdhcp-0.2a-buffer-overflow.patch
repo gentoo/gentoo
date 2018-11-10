@@ -1,0 +1,11 @@
+--- selfdhcp-0.2a.orig/src/selfdhcp_profiles.c	2004-08-02 18:10:36.000000000 -0400
++++ selfdhcp-0.2a/src/selfdhcp_profiles.c	2011-01-29 11:54:29.132199679 -0500
+@@ -345,7 +345,7 @@
+ 	{
+ 	  key = xmlNodeListGetString (doc, cur->xmlChildrenNode, 1);
+ 	  err_msg (DBG_PROG, "xml element \"%s\"", (char *) key);
+-	  strncpy (netconf_buff.domainname, (char *) key, 49);
++	  strncpy (netconf_buff.domainname, (char *) key, sizeof(netconf_buff.domainname)-1);
+ 	  netconf_buff.what_is_set &= NETADDR;
+ 	  err_msg (DBG_INFO, "read domain name \"%s\"",
+ 		   netconf_buff.domainname);

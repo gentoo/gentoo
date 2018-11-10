@@ -1,0 +1,4 @@
+# /etc/conf.d/ganeti-kvm-poweroff: config file for /etc/init.d/ganeti-kvm-poweroff
+
+# Maximum time in seconds to wait until KVM VMs shutdown before giving up. 
+# GANETI_KVM_TIMEOUT="60"

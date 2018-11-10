@@ -1,0 +1,39 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -317,7 +317,7 @@
+     ('LINK_PRIORITY','Priority list in which to sort library and include paths (default order is internal, other, frameworks, user, then system - see source of `sort_paths` function for more detail)',','.join(DEFAULT_LINK_PRIORITY)),
+ 
+     # Install Variables
+-    ('PREFIX', 'The install path "prefix"', '/usr/local'),
++    ('PREFIX', 'The install path "prefix"', '/usr'),
+     ('LIBDIR_SCHEMA', 'The library sub-directory appended to the "prefix", sometimes lib64 on 64bit linux systems', LIBDIR_SCHEMA_DEFAULT),
+     ('DESTDIR', 'The root directory to install into. Useful mainly for binary package building', '/'),
+     ('PATH', 'A custom path (or multiple paths divided by ":") to append to the $PATH env to prioritize usage of command line programs (if multiple are present on the system)', ''),
+@@ -1222,6 +1222,8 @@
+ 
+     color_print(4,'Configuring build environment...')
+ 
++    OPTIONAL_LIBSHEADERS = []
++
+     if not env['FAST']:
+         SetCacheMode('force')
+ 
+@@ -1410,7 +1412,8 @@
+     # https://github.com/mapnik/mapnik/issues/913
+     if env.get('XMLPARSER') and env['XMLPARSER'] == 'libxml2':
+         if env.get('XML2_LIBS') or env.get('XML2_INCLUDES'):
+-            OPTIONAL_LIBSHEADERS.insert(0,['libxml2','libxml/parser.h',True,'C'])
++            # code doesn't actually use HAVE_XMML2 but set just to have a fifth value
++            OPTIONAL_LIBSHEADERS.append(['libxml2','libxml/parser.h',True,'C','-DHAVE_XML2'])
+             if env.get('XML2_INCLUDES'):
+                 inc_path = env['XML2_INCLUDES']
+                 env.AppendUnique(CPPPATH = fix_path(inc_path))
+@@ -1428,8 +1431,6 @@
+         else:
+             env['SKIPPED_DEPS'].extend(['dlfcn'])
+ 
+-    OPTIONAL_LIBSHEADERS = []
+-
+     if env['JPEG']:
+         OPTIONAL_LIBSHEADERS.append(['jpeg', ['stdio.h', 'jpeglib.h'], False,'C','-DHAVE_JPEG'])
+         inc_path = env['%s_INCLUDES' % 'JPEG']

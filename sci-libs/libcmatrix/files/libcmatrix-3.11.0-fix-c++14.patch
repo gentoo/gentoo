@@ -1,0 +1,40 @@
+Fix building with C++14, which errors out due -Wnarrowing conversions.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594680
+
+--- a/include/lcm_ssecomplex.h
++++ b/include/lcm_ssecomplex.h
+@@ -151,7 +151,7 @@
+ {
+   static const union {
+     int i[4]; ssecomplex_t v;
+-  } signbithigh = {{0,0,0,0x80000000}};
++  } signbithigh = {{0,0,0,(int)0x80000000}};
+   ssecomplex_t b_im = _mm_shuffle_pd(b,b,3); // Imag. part of b in both
+   const ssecomplex_t b_re = _mm_shuffle_pd(b,b,0); // Real part of b in both
+   const ssecomplex_t tmp=_mm_mul_pd(a,b_re);
+@@ -166,7 +166,7 @@
+   ssecomplex_t b_re = _mm_set1_pd(b);
+   static const union {
+     int i[4]; ssecomplex_t v;
+-  } signbithigh = {{0,0,0,0x80000000}};
++  } signbithigh = {{0,0,0,(int)0x80000000}};
+   b_re = _mm_xor_pd(b_re, signbithigh.v); // Change sign of high
+   return complex(_mm_mul_pd(a.z_, b_re));
+ }
+@@ -184,14 +184,14 @@
+ inline complex operator- (const complex& a) {
+   static const union { // (signbit,signbit)
+     int i[4]; ssecomplex_t v;
+-  } signbits = {{0,0x80000000,0,0x80000000}};
++  } signbits = {{0,(int)0x80000000,0,(int)0x80000000}};
+   return complex(_mm_xor_pd(a, signbits.v)); // Change sign of both elements
+ }
+ 
+ inline complex conj(const complex& a) {
+   static const union { // (signbit,signbit)
+     int i[4]; ssecomplex_t v;
+-  } signbithigh = {{0,0,0,0x80000000}};
++  } signbithigh = {{0,0,0,(int)0x80000000}};
+   return complex(_mm_xor_pd(a.z_, signbithigh.v)); // Change sign of imag. part
+ }
+ 

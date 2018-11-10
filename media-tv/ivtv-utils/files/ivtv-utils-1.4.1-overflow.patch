@@ -1,0 +1,71 @@
+http://bugs.gentoo.org/339405
+
+--- utils/cx25840ctl/cx25840ctl.c
++++ utils/cx25840ctl/cx25840ctl.c
+@@ -57,7 +57,7 @@
+ 		return 0;
+ 	}
+ 
+-	sprintf(device, "/dev/i2c-%s", opt.inputs[0]);
++	snprintf(device, sizeof(device), "/dev/i2c-%s", opt.inputs[0]);
+ 
+ 	// open the device
+ 	if ((fd = open(device, O_RDWR)) < 0)
+@@ -67,7 +67,7 @@
+ 		exit(1);
+ 	}
+ 
+-	sprintf(sysfile, "/sys/bus/i2c/devices/%s-%04x/name", opt.inputs[0], address);
++	snprintf(sysfile, sizeof(sysfile), "/sys/bus/i2c/devices/%s-%04x/name", opt.inputs[0], address);
+ 	if ((fp = fopen(sysfile, "r")) != NULL)
+ 	{
+ 		fgets(name, sizeof(name), fp);
+--- utils/ivtv-ctl.c
++++ utils/ivtv-ctl.c
+@@ -358,7 +358,7 @@
+ 	__u32 reset = 0;
+ 	int new_debug_level, gdebug_level;
+ 	double timestamp;
+-	char ptsstr[64];
++	char ptsstr[256];
+ 	char short_options[26 * 2 * 2 + 1];
+ 
+ 	if (argc == 1) {
+@@ -420,7 +420,7 @@
+ 				static char newdev[20];
+ 				char dev = device[0];
+ 
+-				sprintf(newdev, "/dev/video%c", dev);
++				snprintf(newdev, sizeof(newdev), "/dev/video%c", dev);
+ 				device = newdev;
+ 			}
+ 			break;
+@@ -600,7 +600,7 @@
+ 		char buf[20];
+ 		new_debug_level = debug_level;
+ 
+-		sprintf(buf, "%d", debug_level);
++		snprintf(buf, sizeof(buf), "%d", debug_level);
+ 		if (dowrite(buf, "/sys/module/ivtv/parameters/debug") == 0) {
+ 			printf(" set debug level: ");
+ 			print_debug_mask(new_debug_level);
+--- utils/v4l2-ctl.cpp
++++ utils/v4l2-ctl.cpp
+@@ -416,7 +416,7 @@
+ {
+ 	char buf[10];
+ 
+-	sprintf(buf, "%08x", num);
++	snprintf(buf, sizeof(buf), "%08x", num);
+ 	return buf;
+ }
+ 
+@@ -1449,7 +1449,7 @@
+ 				static char newdev[20];
+ 				char dev = device[0];
+ 
+-				sprintf(newdev, "/dev/video%c", dev);
++				snprintf(newdev, sizeof(newdev), "/dev/video%c", dev);
+ 				device = newdev;
+ 			}
+ 			break;

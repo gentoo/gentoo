@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>NP-Hardass@gentoo.org</email>
+		<name>NP-Hardass</name>
+	</maintainer>
+	<use>
+		<flag name="crypt">Enables user authentication with GPG</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ProgVal/Limnoria</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,15 @@
+Return void properly, else clang aborts with
+* tok_io.c:231:6: error: non-void function 'do_control' should return a value [-Wreturn-type]
+See also: https://bugs.gentoo.org/show_bug.cgi?id=523096
+
+--- dev86-0.16.21/unproto/tok_io.c
++++ dev86-0.16.21/unproto/tok_io.c
+@@ -189,7 +189,7 @@
+ 
+ /* do_control - parse control line */
+ 
+-static int do_control()
++static void do_control()
+ {
+     struct token *t;
+     int     line;

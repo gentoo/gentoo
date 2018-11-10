@@ -1,0 +1,13 @@
+Index: flexbackup
+===================================================================
+--- flexbackup	(revision 814)
++++ flexbackup	(revision 891)
+@@ -2419,7 +2419,7 @@
+     if (! -r "$configfile") {
+ 	die("config file $configfile: $OS_ERROR");
+     }
+-    system("perl -c \"$configfile\"");
++    system("perl -c \"$configfile\" 2>&1");
+     if ($CHILD_ERROR) {
+ 	die("syntax error in config file $configfile");
+     }

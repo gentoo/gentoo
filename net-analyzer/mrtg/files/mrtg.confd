@@ -1,0 +1,16 @@
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+MRTG_CONF="/etc/mrtg.conf"
+MRTG_PID="/var/run/mrtg.pid"
+
+# uncomment and set the following, if you'd like to run mrtg as a 
+# different user/group
+#MRTG_USER=""
+#MRTG_GROUP=""
+
+# uncomment if you'd like to enable logging
+#MRTG_LOG="/var/log/mrtg.log"
+
+# set any extra options here
+MRTG_OPTS=""

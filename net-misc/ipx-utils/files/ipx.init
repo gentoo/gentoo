@@ -1,0 +1,42 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+#NB: Config is in /etc/conf.d/ipx
+
+depend() {
+	use net
+}
+
+start() {
+	local retval=0
+	
+	ebegin "Bringing IPX up"
+	if [ ${IPX_INTERNAL_NET} = "yes" ]
+	then
+		/sbin/ipx_internal_net add ${IPX_NETNUM} ${IPX_NODENUM}
+		retval=$?
+	else
+		/sbin/ipx_interface add -p ${IPX_DEVICE} \
+			${IPX_FRAME} ${IPX_NETNUM}
+		retval=$?
+	fi
+	
+	ipx_configure \
+		--auto_primary=${IPX_AUTO_PRIMARY} \
+		--auto_interface=${IPX_AUTO_INTERFACE}
+	retval=$(( $retval + $? ))
+	eend ${retval} "Failed to bring IPX up"
+}
+
+stop() {
+	local retval=0
+	
+	ebegin "Bringing IPX down"
+	/bin/umount -v -a -tncpfs
+	/sbin/ipx_configure --auto_primary=off --auto_interface=off
+	retval=$?
+	/sbin/ipx_interface delall
+	retval=$(( $retval + $? ))
+	eend ${retval} "Failed to down IPX"
+}

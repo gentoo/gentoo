@@ -1,0 +1,100 @@
+* Remove hardcoded user variables
+* Respect LDFLAGS and CPPFLAGS
+* Fix installation dir for arch-independent files
+
+--- a/Makefile
++++ b/Makefile
+@@ -3,22 +3,22 @@
+ sinclude Makefile.local
+ 
+ all:
+-	+cd sdlwidgets; make
+-	+cd src; make
++	$(MAKE) -C sdlwidgets
++	$(MAKE) -C src
+ runc:
+-	+cd src; make runc
++	$(MAKE) -C src runc
+ runs:
+-	+cd src; make runs
++	$(MAKE) -C src runs
+ doc:
+-	cd src; make doc
++	$(MAKE) -C src doc
+ clean:
+-	cd sdlwidgets; make clean
+-	cd src; make clean
++	$(MAKE) -C sdlwidgets clean
++	$(MAKE) -C src clean
+ 	cd doc; rm -rf html
+ unison:
+-	cd src; make unison
++	$(MAKE) -C src unison
+ gunison:
+-	cd src; make gunison
++	$(MAKE) -C src gunison
+ snapshot-src:
+ 	ln -s . wop;                                           \
+ 	tar cjvf wop-`date +%F`.tar.bz2                        \
+--- a/sdlwidgets/Makefile
++++ b/sdlwidgets/Makefile
+@@ -9,16 +9,12 @@
+ CXXFLAGS ?= -Wall -Wshadow -Wsign-compare -Wparentheses -Wconversion -g -O3 -ansi
+ CXXFLAGS += $(shell sdl-config --cflags)
+ 
+-CXX = g++
+-AR = ar cru
+-RANLIB = ranlib
+-
+ sinclude ../src/Makefile.local
+ 
+ all: $(TARGET)
+ 
+ $(TARGET): $(OBJECT_FILES) Makefile
+-	$(AR) $(TARGET) $(OBJECT_FILES)
++	$(AR) cru $(TARGET) $(OBJECT_FILES)
+ 	$(RANLIB) $(TARGET)
+ 
+ %.o: %.cpp Makefile
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -18,14 +18,13 @@
+             -DUSE_SDL -DNEW=new\(std::nothrow\) \
+             -I../sdlwidgets \
+             $(shell sdl-config --cflags) # -g
+-LDFLAGS  = -L../sdlwidgets -lsdlwidgets -lz \
++LIBS      = -L../sdlwidgets -lsdlwidgets -lz \
+            -lm -lSDL_net -lSDL_mixer -lSDL_ttf -lSDL_image \
+            $(shell sdl-config --libs) # -g
+ 
+ WOPFLAGS = data=../data
+ DOXYGENFLAGS = ../doc/doxygen.rc
+ 
+-CXX = g++
+ DOXYGEN = doxygen
+ UNISON_SOURCE = ssh://131.188.67.22//homes/staff/pohlt/wop/.unison_data
+ 
+@@ -56,10 +55,10 @@
+ 
+ $(TARGET): $(OBJECT_FILES) Makefile ../sdlwidgets/libsdlwidgets.a
+ 	-mkdir ../bin
+-	$(CXX) $(OBJECT_FILES) -o $(TARGET) $(LDFLAGS)
++	$(CXX) $(LDFLAGS) $(OBJECT_FILES) -o $(TARGET) $(LIBS)
+ 
+ %.o: %.cpp Makefile
+-	$(CXX) $(CXXFLAGS) -c $< -o $@
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c $< -o $@
+ 
+ clean:
+ 	-rm -f $(TARGET) *.o Makefile.depend*
+--- a/woprc
++++ b/woprc
+@@ -30,7 +30,7 @@
+ 
+ ## path of the data directory
+ ##  - optional, default "./data"
+-data = ./data
++data = /usr/share/wop
+ 
+ ## server name or IP address
+ ##  - optional, default "localhost"

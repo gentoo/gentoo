@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>candrews@gentoo.org</email>
+        <name>Craig Andrews</name>
+    </maintainer>
+    <use>
+        <flag name="uinput">Enable support for uinput</flag>
+        <flag name="devinput">Support the devinput input device</flag>
+        <flag name="inputlirc">Add a dependency on app-misc/inputlircd</flag>
+        <flag name="audio">Support using an audio device connected to an IR receiver</flag>
+        <flag name="ftdi">Support FTDI devices</flag>
+        <flag name="gtk">Include GTK support which enables the use of lirc-setup</flag>
+    </use>
+    <upstream>
+        <remote-id type="sourceforge">lirc</remote-id>
+    </upstream>
+    <longdescription lang="en">
+        LIRC (Linux Infrared remote control) allows users to receive and send infrared signals.
+    </longdescription>
+</pkgmetadata>
+

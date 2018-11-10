@@ -1,0 +1,49 @@
+Fix issues caused by Octave-4 renaming Octave_map to octave_map
+See also
+https://bugs.gentoo.org/show_bug.cgi?id=569996
+https://github.com/stevengj/nlopt/commit/5326ab410c978f9d8c3cae7e4917f55c10ef2c2e?diff=unified
+
+--- nlopt-2.4.2_old/octave/nlopt_optimize-oct.cc	2014-05-20 20:35:58.000000000 +0200
++++ nlopt-2.4.2/octave/nlopt_optimize-oct.cc	2016-01-09 16:10:53.358491776 +0100
+@@ -30,5 +30,5 @@
+ #include "nlopt_optimize_usage.h"
+ 
+-static int struct_val_default(Octave_map &m, const std::string& k,
++static int struct_val_default(octave_map &m, const std::string& k,
+ 				 int dflt)
+ {
+@@ -40,5 +40,5 @@
+ }
+ 
+-static double struct_val_default(Octave_map &m, const std::string& k,
++static double struct_val_default(octave_map &m, const std::string& k,
+ 				 double dflt)
+ {
+@@ -50,5 +50,5 @@
+ }
+ 
+-static Matrix struct_val_default(Octave_map &m, const std::string& k,
++static Matrix struct_val_default(octave_map &m, const std::string& k,
+ 				 Matrix &dflt)
+ {
+@@ -141,5 +141,5 @@
+ #define CHECK1(cond, msg) if (!(cond)) { fprintf(stderr, msg "\n\n"); nlopt_destroy(opt); nlopt_destroy(local_opt); return NULL; }
+ 
+-nlopt_opt make_opt(Octave_map &opts, int n)
++nlopt_opt make_opt(octave_map &opts, int n)
+ {
+   nlopt_opt opt = NULL, local_opt = NULL;
+@@ -196,5 +196,5 @@
+ 	  && (opts.contents("local_optimizer"))(0).is_map(),
+ 	  "opt.local_optimizer must be a structure");
+-    Octave_map local_opts = (opts.contents("local_optimizer"))(0).map_value();
++    octave_map local_opts = (opts.contents("local_optimizer"))(0).map_value();
+     CHECK1((local_opt = make_opt(local_opts, n)), 
+ 	  "error initializing local optimizer");
+@@ -217,5 +217,5 @@
+ 
+   CHECK(args(0).is_map(), "opt must be structure")
+-  Octave_map opts = args(0).map_value();
++  octave_map opts = args(0).map_value();
+ 
+   CHECK(args(1).is_real_matrix() || args(1).is_real_scalar(),

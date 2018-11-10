@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+	<email>maksbotan@gentoo.org</email>
+	<name>Maxim Koltsov</name>
+	</maintainer>
+	<maintainer type="project">
+	<email>perl@gentoo.org</email>
+	<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+	<remote-id type="cpan">Sys-Virt</remote-id>
+	<remote-id type="cpan-module">Sys::Virt</remote-id>
+	<remote-id type="cpan-module">Sys::Virt::Domain</remote-id>
+	<remote-id type="cpan-module">Sys::Virt::DomainSnapshot</remote-id>
+	<remote-id type="cpan-module">Sys::Virt::Error</remote-id>
+	<remote-id type="cpan-module">Sys::Virt::Event</remote-id>
+	<remote-id type="cpan-module">Sys::Virt::Interface</remote-id>
+	<remote-id type="cpan-module">Sys::Virt::NWFilter</remote-id>
+	<remote-id type="cpan-module">Sys::Virt::Network</remote-id>
+	<remote-id type="cpan-module">Sys::Virt::NodeDevice</remote-id>
+	<remote-id type="cpan-module">Sys::Virt::Secret</remote-id>
+	<remote-id type="cpan-module">Sys::Virt::StoragePool</remote-id>
+	<remote-id type="cpan-module">Sys::Virt::StorageVol</remote-id>
+	<remote-id type="cpan-module">Sys::Virt::Stream</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,26 @@
+--- db-3.2.9/dist/Makefile.in.orig	2003-02-23 23:41:13.000000000 +0200
++++ db-3.2.9/dist/Makefile.in	2003-02-23 23:42:07.000000000 +0200
+@@ -240,19 +240,19 @@
+ 
+ $(libso_target): $(OBJS)
+ 	$(SOLINK) $(SOFLAGS) -o $(libso_target) \
+-	    $(OBJS) $(LDFLAGS) $(LIBSO_LIBS)
++	    $(OBJS) $(LDFLAGS) $(LIBS) $(LIBSO_LIBS)
+ 
+ $(libxso_target): $(COBJS) $(OBJS)
+ 	$(SOLINK) $(SOFLAGS) -o $(libxso_target) \
+-	    $(COBJS) $(OBJS) $(LDFLAGS) $(LIBXSO_LIBS)
++	    $(COBJS) $(OBJS) $(LDFLAGS) $(LIBS) $(LIBXSO_LIBS)
+ 
+ $(libjso_target): $(JOBJS) $(OBJS)
+ 	$(SOLINK) $(SOFLAGS) -o $(libjso_target) \
+-	    $(JOBJS) $(OBJS) $(LDFLAGS) $(LIBJSO_LIBS)
++	    $(JOBJS) $(OBJS) $(LDFLAGS) $(LIBS) $(LIBJSO_LIBS)
+ 
+ $(libtso_target): $(TOBJS) $(OBJS)
+ 	$(SOLINK) $(SOFLAGS) -o $(libtso_target) \
+-	    $(TOBJS) $(OBJS) $(LDFLAGS) $(LIBTSO_LIBS)
++	    $(TOBJS) $(OBJS) $(LDFLAGS) $(LIBS) $(LIBTSO_LIBS)
+ 
+ ##################################################
+ # Creating individual dependencies and actions for building class

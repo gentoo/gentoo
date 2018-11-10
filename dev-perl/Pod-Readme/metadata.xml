@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>kentnl@gentoo.org</email>
+    <name>Kent Fredric</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Pod-Readme</remote-id>
+    <remote-id type="cpan-module">Pod::Readme</remote-id>
+    <remote-id type="cpan-module">Pod::Readme::Filter</remote-id>
+    <remote-id type="cpan-module">Pod::Readme::Plugin</remote-id>
+    <remote-id type="cpan-module">Pod::Readme::Plugin::changes</remote-id>
+    <remote-id type="cpan-module">Pod::Readme::Plugin::requires</remote-id>
+    <remote-id type="cpan-module">Pod::Readme::Plugin::version</remote-id>
+    <remote-id type="cpan-module">Pod::Readme::Types</remote-id>
+  </upstream>
+</pkgmetadata>

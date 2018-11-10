@@ -1,0 +1,13 @@
+diff --git a/Graphics/Rendering/OpenGL/GL/IOState.hs b/Graphics/Rendering/OpenGL/GL/IOState.hs
+index 6fbc144..2c2a42d 100644
+--- a/Graphics/Rendering/OpenGL/GL/IOState.hs
++++ b/Graphics/Rendering/OpenGL/GL/IOState.hs
+@@ -21 +21,2 @@ module Graphics.Rendering.OpenGL.GL.IOState (
+-import Control.Monad(replicateM)
++import Control.Applicative
++import Control.Monad(replicateM,ap)
+@@ -31,0 +33,4 @@ instance Functor (IOState s) where
++instance Applicative (IOState s) where
++    pure  = return
++    (<*>) = ap  -- defined in Control.Monad
++

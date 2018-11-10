@@ -1,0 +1,5 @@
+[Unit]
+Description=Buildbot target that allows to start or stop all buildmaster@*.service instances
+
+[Install]
+WantedBy=multi-user.target

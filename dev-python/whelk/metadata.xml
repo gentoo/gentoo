@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>nicolasbock@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		We all like python for scripting, because it's so much more powerful
+		than a shell. But sometimes we really need to call a shell command
+		because it's so much easier than writing yet another library in python
+		or adding a dependency.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">seveas/whelk</remote-id>
+	</upstream>
+</pkgmetadata>

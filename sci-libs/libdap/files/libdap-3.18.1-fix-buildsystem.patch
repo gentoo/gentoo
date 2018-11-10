@@ -1,0 +1,20 @@
+Do not install headers and static library required only for test suite.
+
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -36,13 +36,13 @@
+ # Build the test drivers. The drivers all use the
+ # subclassed types in Test*.cc and the TestTypesFactory.
+ 
+-lib_LIBRARIES = libtest-types.a
++noinst_LIBRARIES = libtest-types.a
+ 
+ libtest_types_a_SOURCES = $(TESTSRCS) $(TEST_HDR)
+ libtest_types_a_CXXFLAGS = -fPIC
+ 
+ testheadersdir = $(pkgincludedir)/test
+-testheaders_HEADERS = $(TEST_HDR)
++noinst_testheaders = $(TEST_HDR)
+ 
+ das_test_SOURCES = das-test.cc
+ das_test_LDADD =  libtest-types.a ../libdapserver.la ../libdap.la 

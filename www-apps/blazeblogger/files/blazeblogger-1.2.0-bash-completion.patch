@@ -1,0 +1,83 @@
+--- blazeblogger-1.2.0/unix/bash_completion
++++ blazeblogger-1.2.0/unix/bash_completion
+@@ -103,7 +103,7 @@
+       # argument completions
+       case "$prev" in
+         -b|--blogdir)
+-          COMPREPLY=( $(compgen -d -- ${cur}) )
++	  _filedir -d
+           return 0
+           ;;
+         *)
+@@ -131,7 +131,7 @@
+       # argument completions
+       case "$prev" in
+         -b|--blogdir)
+-          COMPREPLY=( $(compgen -d -- ${cur}) )
++	  _filedir -d
+           return 0
+           ;;
+         -E|--editor)
+@@ -166,7 +166,7 @@
+       # argument completions
+       case "$prev" in
+         -b|--blogdir)
+-          COMPREPLY=( $(compgen -d -- ${cur}) )
++          _filedir -d
+           return 0
+           ;;
+         -d|--date)
+@@ -187,7 +187,7 @@
+         COMPREPLY=( $(compgen -W "${specopts}" -- ${cur}) )
+         return 0
+       else
+-        COMPREPLY=( $(compgen -f -- ${cur}) )
++        _filedir
+         return 0
+       fi
+       ;;
+@@ -200,7 +200,7 @@
+       # argument completions
+       case "$prev" in
+         -b|--blogdir)
+-          COMPREPLY=( $(compgen -d -- ${cur}) )
++          _filedir -d
+           return 0
+           ;;
+         -E|--editor)
+@@ -227,7 +227,7 @@
+       # argument completions
+       case "$prev" in
+         -b|--blogdir)
+-          COMPREPLY=( $(compgen -d -- ${cur}) )
++          _filedir -d
+           return 0
+           ;;
+         *)
+@@ -252,7 +252,7 @@
+       # argument completions
+       case "$prev" in
+         -b|--blogdir)
+-          COMPREPLY=( $(compgen -d -- ${cur}) )
++          _filedir -d
+           return 0
+           ;;
+         -d|--day)
+@@ -292,7 +292,7 @@
+       # argument completions
+       case "$prev" in
+         -b|--blogdir|-d|--destdir)
+-          COMPREPLY=( $(compgen -d -- ${cur}) )
++          _filedir -d
+           return 0
+           ;;
+         *)
+@@ -315,7 +315,7 @@
+       # argument completions
+       case "$prev" in
+         -b|--blogdir)
+-          COMPREPLY=( $(compgen -d -- ${cur}) )
++          _filedir -d
+           return 0
+           ;;
+         -n|--number)

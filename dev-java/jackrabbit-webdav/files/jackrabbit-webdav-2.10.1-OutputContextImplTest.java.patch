@@ -1,0 +1,16 @@
+--- src/test/java/org/apache/jackrabbit/webdav/io/OutputContextImplTest.java.orig	2015-07-03 09:26:48.578000000 +0000
++++ src/test/java/org/apache/jackrabbit/webdav/io/OutputContextImplTest.java	2015-07-03 09:27:34.109000000 +0000
+@@ -40,6 +40,13 @@
+             public void setHeader(String name, String value) {
+                 assertTrue(Long.parseLong(value) > Integer.MAX_VALUE);
+             }
++            @Override
++            public void setCharacterEncoding(String name) {
++            }
++            @Override
++            public String getContentType() {
++                return null;
++            }
+         };
+ 
+         OutputContext ctx = new OutputContextImpl(response, null);

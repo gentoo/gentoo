@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+	use logger
+}
+
+start() {
+	ebegin "Starting mailman"
+	su - mailman -c 'bin/mailmanctl -s start' >/dev/null 2>&1
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping mailman"
+	su - mailman -c 'bin/mailmanctl stop' >/dev/null 2>&1
+	eend $?
+}
+
+svc_restart() {
+	ebegin "Restarting mailman"
+	su - mailman -c 'bin/mailmanctl restart' >/dev/null 2>&1
+	eend $?
+}

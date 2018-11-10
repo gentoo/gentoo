@@ -1,0 +1,17 @@
+diff -ur graveman-0.3.12-5.orig/desktop/graveman.desktop.in graveman-0.3.12-5/desktop/graveman.desktop.in
+--- graveman-0.3.12-5.orig/desktop/graveman.desktop.in	2005-05-24 00:07:08.000000000 +0300
++++ graveman-0.3.12-5/desktop/graveman.desktop.in	2008-05-10 06:33:32.000000000 +0300
+@@ -1,5 +1,4 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=Graveman
+ Name[cs]=Graveman
+ Name[de]=Graveman
+@@ -48,5 +47,5 @@
+ Exec=graveman
+ Terminal=false
+ Type=Application
+-Icon=graveman48.png
+-Categories=Application;Utility;
++Icon=graveman48
++Categories=Utility;

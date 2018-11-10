@@ -1,0 +1,51 @@
+--- libpri-1.4.12-beta3/Makefile.orig	2010-10-07 06:00:04.000000000 +0200
++++ libpri-1.4.12-beta3/Makefile	2010-11-23 22:04:59.884448930 +0100
+@@ -96,7 +96,7 @@
+ CFLAGS=-Wall -Werror -Wstrict-prototypes -Wmissing-prototypes -g -fPIC $(ALERTING) $(LIBPRI_COUNTERS) $(LIBPRI_OPT) $(COVERAGE_CFLAGS)
+ INSTALL_PREFIX=$(DESTDIR)
+ INSTALL_BASE=/usr
+-libdir?=$(INSTALL_BASE)/lib
++LIBDIR=$(INSTALL_PREFIX)$(INSTALL_BASE)/lib
+ ifneq ($(findstring Darwin,$(OSARCH)),)
+   SOFLAGS=-dynamic -bundle -Xlinker -macosx_version_min -Xlinker 10.4 -Xlinker -undefined -Xlinker dynamic_lookup -force_flat_namespace
+   ifeq ($(shell /usr/bin/sw_vers -productVersion | cut -c1-4),10.6)
+@@ -168,27 +168,27 @@
+ 	fi
+ 
+ install: $(STATIC_LIBRARY) $(DYNAMIC_LIBRARY)
+-	mkdir -p $(INSTALL_PREFIX)$(libdir)
++	mkdir -p $(LIBDIR)
+ 	mkdir -p $(INSTALL_PREFIX)$(INSTALL_BASE)/include
+ ifneq (${OSARCH},SunOS)
+ 	install -m 644 libpri.h $(INSTALL_PREFIX)$(INSTALL_BASE)/include
+-	install -m 755 $(DYNAMIC_LIBRARY) $(INSTALL_PREFIX)$(libdir)
+-	#if [ -x /usr/sbin/sestatus ] && ( /usr/sbin/sestatus | grep "SELinux status:" | grep -q "enabled"); then /sbin/restorecon -v $(INSTALL_PREFIX)$(libdir)/$(DYNAMIC_LIBRARY); fi
+-	( cd $(INSTALL_PREFIX)$(libdir) ; ln -sf libpri.so.$(SONAME) libpri.so)
+-	install -m 644 $(STATIC_LIBRARY) $(INSTALL_PREFIX)$(libdir)
+-	if test $$(id -u) = 0; then $(LDCONFIG) $(LDCONFIG_FLAGS) $(INSTALL_PREFIX)$(libdir); fi
++	install -m 755 $(DYNAMIC_LIBRARY) $(LIBDIR)
++	if [ -x /usr/sbin/sestatus ] && ( /usr/sbin/sestatus | grep "SELinux status:" | grep -q "enabled"); then /sbin/restorecon -v $(LIBDIR)/$(DYNAMIC_LIBRARY); fi
++	( cd $(LIBDIR) ; ln -sf libpri.so.$(SONAME) libpri.so)
++	install -m 644 $(STATIC_LIBRARY) $(LIBDIR)
++	if test $$(id -u) = 0; then $(LDCONFIG) $(LDCONFIG_FLAGS) $(LIBDIR); fi
+ else
+ 	install -f $(INSTALL_PREFIX)$(INSTALL_BASE)/include -m 644 libpri.h
+-	install -f $(INSTALL_PREFIX)$(libdir) -m 755 $(DYNAMIC_LIBRARY)
+-	( cd $(INSTALL_PREFIX)$(libdir) ; ln -sf libpri.so.$(SONAME) libpri.so)
+-	install -f $(INSTALL_PREFIX)$(libdir) -m 644 $(STATIC_LIBRARY)
++	install -f $(LIBDIR) -m 755 $(DYNAMIC_LIBRARY)
++	( cd $(LIBDIR) ; ln -sf libpri.so.$(SONAME) libpri.so)
++	install -f $(LIBDIR) -m 644 $(STATIC_LIBRARY)
+ endif
+ 
+ uninstall:
+ 	@echo "Removing Libpri"
+-	rm -f $(INSTALL_PREFIX)$(libdir)/libpri.so.$(SONAME)
+-	rm -f $(INSTALL_PREFIX)$(libdir)/libpri.so
+-	rm -f $(INSTALL_PREFIX)$(libdir)/libpri.a
++	rm -f $(LIBDIR)/libpri.so.$(SONAME)
++	rm -f $(LIBDIR)/libpri.so
++	rm -f $(LIBDIR)/libpri.a
+ 	rm -f $(INSTALL_PREFIX)$(INSTALL_BASE)/include/libpri.h
+ 
+ pritest: pritest.o

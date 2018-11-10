@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  PSPP is a program for statistical analysis of sampled data. It
+  interprets commands in the SPSS language and produces tabular and
+  graphical output in ASCII, HTML, or PostScript format.
+  PSPP supports a large subset of SPSS's transformation language. Its
+  statistical procedure support is limited but growing.	
+  PSPP has both text-based and a GTK+ based graphical user interfaces.
+</longdescription>
+</pkgmetadata>

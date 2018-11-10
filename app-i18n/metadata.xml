@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-i18n category contains internationalisation-related packages.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-i18n enthält Programme im Zusammenhang mit Internationalisierung.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-i18n contiene paquetes para Internacionalización.
+	</longdescription>
+	<longdescription lang="ja">
+		app-i18nカテゴリには国際化関連パッケージが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De app-i18n categorie bevat applicaties om te internationaliseren (vertalen).
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-i18n chứa các gói liên quan đến
+		quốc tế hoá (i18n).
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-i18n contiene pacchetti per l'internazionalizzazione.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-i18n contém pacotes para internacionalização.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-i18n zawiera pakiety zawierające tłumaczenia różnych
+		składników systemu na różne języki.
+	</longdescription>
+</catmetadata>
+

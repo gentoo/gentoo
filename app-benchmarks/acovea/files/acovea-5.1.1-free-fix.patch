@@ -1,0 +1,12 @@
+--- a/benchmarks/treebench.c
++++ b/benchmarks/treebench.c
+@@ -201,8 +201,8 @@
+         if (page->m_links[n] != NULL)
+             recursive_destroy_page(page->m_links[n]);
+         
+-        free(page);
+     }
++    free(page);
+ }
+ 
+ static void free_btree(btree * btree)

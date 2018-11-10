@@ -1,0 +1,28 @@
+From db9a217dd5a02b5be72d47b7618f877f39cb31bc Mon Sep 17 00:00:00 2001
+From: Justin Bronder <jsbronder@gmail.com>
+Date: Mon, 13 Feb 2017 18:20:39 -0500
+Subject: [PATCH 1/3] use system configobj
+
+---
+ sabnzbd/config.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/sabnzbd/config.py b/sabnzbd/config.py
+index 2f58ffd..04bfaab 100644
+--- a/sabnzbd/config.py
++++ b/sabnzbd/config.py
+@@ -30,9 +30,10 @@ from hashlib import md5
+ from urlparse import urlparse
+ import sabnzbd.misc
+ from sabnzbd.constants import CONFIG_VERSION, NORMAL_PRIORITY, DEFAULT_PRIORITY, MAX_WIN_DFOLDER
+-from sabnzbd.utils import configobj
+ from sabnzbd.decorators import synchronized
+ 
++import configobj
++
+ CONFIG_LOCK = threading.Lock()
+ SAVE_CONFIG_LOCK = threading.Lock()
+ 
+-- 
+2.13.0
+

@@ -1,0 +1,9 @@
+--- libtecla/Makefile.rules.orig	2016-04-13 11:13:10.000000000 +0300
++++ libtecla/Makefile.rules	2016-04-13 11:17:45.628234106 +0300
+@@ -165,5 +165,5 @@
+ # Include file dependencies.
+ #-----------------------------------------------------------------------
+ 
+-$(OBJDIR)/keytab.h: $(srcdir)/keytab.h $(srcdir)/libtecla.h
++$(OBJDIR)/keytab.h: $(srcdir)/keytab.h $(srcdir)/libtecla.h $(OBJDIR)
+ 	cp $(srcdir)/keytab.h $@

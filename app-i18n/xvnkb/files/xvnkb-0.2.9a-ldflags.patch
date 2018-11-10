@@ -1,0 +1,34 @@
+diff --git a/Makefile.common b/Makefile.common
+index 06f0b78..d9f8976 100644
+--- a/Makefile.common
++++ b/Makefile.common
+@@ -19,10 +19,10 @@ all: do-it-all
+ 	$(CC) -fpic $(CFLAGS) $(FPTR) $(VK_OPT) -DVERSION=\"$(VERSION)\" -Wall -I$(XLIB_INC) -c $<
+ 
+ $(CORE): $(CORE_OBJS)
+-	$(CC) $(CFLAGS) $(DLFLAGS) $(CORE_OBJS) -o $@ -L$(XLIB_PATH) $(LIBDL)
++	$(CC) $(CFLAGS) $(DLFLAGS) $(CORE_OBJS) -o $@ -L$(XLIB_PATH) $(LIBDL) $(LDFLAGS)
+ 
+ $(GUI): $(GUI_OBJS)
+-	$(CC) $(CFLAGS) $(GUI_OBJS) -o $@ -L$(XLIB_PATH) $(LIBS) $(XFT_LIBS)
++	$(CC) $(CFLAGS) $(GUI_OBJS) -o $@ -L$(XLIB_PATH) $(LIBS) $(XFT_LIBS) $(LDFLAGS)
+ 
+ main: $(CORE) $(GUI)
+ 	@echo >/dev/null
+diff --git a/tools/Makefile.common b/tools/Makefile.common
+index fe16cc1..16ec511 100644
+--- a/tools/Makefile.common
++++ b/tools/Makefile.common
+@@ -16,10 +16,10 @@ all: do-it-all
+ 	$(CC) $(CFLAGS) $(DEFS) -Wall -I$(XLIB_INC) -c $<
+ 
+ xvnkb_ctrl: $(CONTROL_OBJS)
+-	$(CC) $(CFLAGS) -o $@ $(CONTROL_OBJS) -L$(XLIB_PATH) $(LIBS)
++	$(CC) $(CFLAGS) -o $@ $(CONTROL_OBJS) -L$(XLIB_PATH) $(LIBS) $(LDFLAGS)
+ 
+ xvnkb_setup: $(SETUP_OBJS)
+-	$(CC) $(CFLAGS) -o $@ $(SETUP_OBJS) -L$(XLIB_PATH) $(LIBS) $(XFT_LIBS)
++	$(CC) $(CFLAGS) -o $@ $(SETUP_OBJS) -L$(XLIB_PATH) $(LIBS) $(XFT_LIBS) $(LDFLAGS)
+ 
+ main-tools: $(TOOLS)
+ 

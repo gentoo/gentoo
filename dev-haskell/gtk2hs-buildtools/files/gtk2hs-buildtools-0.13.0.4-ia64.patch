@@ -1,0 +1,47 @@
+ia64 is is a special showflake.
+
+Technically does nothing bad,
+but it alone uses '__builtin_offsetof (struct sigcontext'
+in system headers. c2hs does not handle that.
+
+https://bugs.gentoo.org/498638
+diff --git a/c2hs/c/C.hs b/c2hs/c/C.hs
+index f79b6d9..aa1b5e4 100644
+--- a/c2hs/c/C.hs
++++ b/c2hs/c/C.hs
+@@ -1 +1,2 @@
++{-# LANGUAGE CPP, PatternGuards #-}
+ --  C->Haskell Compiler: interface to C processing routines
+@@ -94,2 +95,20 @@ isuffix  = ".i"
+ 
++-- This stanza workarounds very specific limitation
++-- of c2hs of not being able to expang __builtin_offsetof
++-- used by all glib/gtk headers at least on ia64.
++raw_mangle :: String -> String
++raw_mangle s = case s of
++    [] -> []
++#ifdef ia64_HOST_ARCH
++    _ | Just (h, rest) <- chop_head "__builtin_offsetof (struct sigcontext, sc_gr[0])"
++                                    "200" -- ia64/linux/glibc, sigh
++        -> h ++ raw_mangle rest
++#endif /* ia64_HOST_ARCH */
++    (h:t) -> h : raw_mangle t
++  where chop_head prefix new_prefix =
++            case splitAt p_len s of
++                (h, t) | h == prefix -> Just (new_prefix, t)
++                _                    -> Nothing
++              where p_len = length prefix
++
+ -- given a file name (with suffix), parse that file as a C header and do the
+@@ -106,3 +124,3 @@ loadAttrC fname  = do
+ 		     traceInfoRead fname
+-		     contents <- readFileCIO fname
++		     contents <- raw_mangle `fmap` readFileCIO fname
+ 
+@@ -126,4 +144,4 @@ loadAttrC fname  = do
+ 			 errmsgs <- showErrors
+-			 fatal ("C header contains \
+-				\errors:\n\n" ++ errmsgs)   -- fatal error
++			 fatal ("C header contains " ++
++				"errors:\n\n" ++ errmsgs)   -- fatal error
+ 		       else do

@@ -1,0 +1,31 @@
+diff --git a/Makefile.am b/Makefile.am
+index aa8e2d6..4193aac 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -22,7 +22,7 @@ SUBDIRS = po data
+ 
+ bin_SCRIPTS = xgsch2pcb
+ 
+-pkglib_PYTHON = lib/xgsch2pcb/pcbmanager.py \
++pkgpython_PYTHON = lib/xgsch2pcb/pcbmanager.py \
+  lib/xgsch2pcb/gsch2pcbproject.py \
+  lib/xgsch2pcb/gui.py \
+  lib/xgsch2pcb/new_project_gui.py \
+@@ -30,7 +30,7 @@ pkglib_PYTHON = lib/xgsch2pcb/pcbmanager.py \
+  lib/xgsch2pcb/templates.py \
+  lib/xgsch2pcb/funcs.py
+ 
+-nodist_pkglib_PYTHON = config.py
++nodist_pkgpython_PYTHON = config.py
+ 
+ INTLTOOL_FILES = intltool-extract.in \
+                  intltool-merge.in \
+@@ -53,7 +53,7 @@ templatesdir = @templatesdir@
+ do_subst = sed -e 's,[@]prefix[@],$(prefix),g' \
+                -e 's,[@]PYTHON[@],$(PYTHON),g' \
+ 				       -e 's,[@]VERSION[@],$(VERSION),g' \
+-							 -e 's,[@]pkglibdir[@],$(pkglibdir),g' \
++							 -e 's,[@]pkglibdir[@],$(pkgpythondir),g' \
+ 							 -e 's,[@]templatesdir[@],$(templatesdir),g' \
+ 							 -e 's,[@]PACKAGE[@],$(PACKAGE),g'
+ 

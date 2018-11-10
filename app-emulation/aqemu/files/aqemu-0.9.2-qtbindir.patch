@@ -1,0 +1,15 @@
+Ensure the Qt 5 version of rcc is used instead of whatever is in $PATH.
+
+Gentoo-bug: 589332
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -285,7 +285,7 @@
+ 		
+ 		SET( _out ${CMAKE_CURRENT_SOURCE_DIR}/${_basename}.rcc )
+ 		
+-		ADD_CUSTOM_COMMAND( OUTPUT ${_out} COMMAND rcc ARGS ${_in} -binary -o ${_out} DEPENDS ${_in} )
++		ADD_CUSTOM_COMMAND( OUTPUT ${_out} COMMAND ${Qt5Core_RCC_EXECUTABLE} ARGS ${_in} -binary -o ${_out} DEPENDS ${_in} )
+ 		
+ 		SET( ${_sources} ${${_sources}} ${_out} )
+ 	ENDFOREACH( curFile )

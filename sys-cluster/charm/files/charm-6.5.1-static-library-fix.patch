@@ -1,0 +1,396 @@
+From 3a7261ab3a00472dd4bde0619c145c69aecf80c3 Mon Sep 17 00:00:00 2001
+From: Nicolas Bock <nicolasbock@gmail.com>
+Date: Mon, 14 Oct 2013 07:15:14 -0600
+Subject: [PATCH] Some libraries are only built statically,
+
+preventing a Charm++ installation with only dynamic libraries.
+
+On a typical Linux system only shared libraries are installed, because of the
+usual security and bloat arguments. However, if I build charm with
+--build-shared, and then install only what is in lib_so, the charmc script
+breaks because some Converse libraries are built purely as .o and don't end up
+in lib_so. One example is seed based load balancing, e.g. libldb-rand.o. As
+far as I can tell, this is not too hard to fix. In the main makefile, the
+targets libldb-*.o are renamed to libldb-*.a, and the charmc script now tests
+both .a and .so when linking the seed based load balancing code.
+---
+ src/scripts/Makefile | 136 +++++++++++++++++++++++++--------------------------
+ src/scripts/charmc   |  37 ++++++++------
+ 2 files changed, 91 insertions(+), 82 deletions(-)
+
+diff --git a/src/scripts/Makefile b/src/scripts/Makefile
+index 51d0e7b..1550ed2 100644
+--- a/src/scripts/Makefile
++++ b/src/scripts/Makefile
+@@ -349,7 +349,7 @@ dirs+sources:
+ # Converse Libraries
+ # 
+ ###############################################################################
+-CLBLIBS=$(L)/libldb-rand.o $(L)/libldb-spray.o   $(L)/libldb-workstealing.o  $(L)/libldb-neighbor.o $(L)/libldb-none.o $(L)/libldb-test.o $(L)/libldb-bluegene.o
++CLBLIBS=$(L)/libldb-rand.a $(L)/libldb-spray.a   $(L)/libldb-workstealing.a  $(L)/libldb-neighbor.a $(L)/libldb-none.a $(L)/libldb-test.a $(L)/libldb-bluegene.a
+ 
+ TRACELIBS = $(L)/libtrace-converse.a $(L)/libtracef_f.a 
+ 
+@@ -363,32 +363,32 @@ TRACELIBS += $(L)/libtrace-projections.a  $(L)/libtrace-summary.a  \
+              $(L)/libtrace-memory.a
+ endif
+ 
+-MEMLIBS=$(L)/libmemory-default.o $(L)/libmemory-os.o $(L)/libmemory-gnu.o \
+-          $(L)/libmemory-gnuold.o $(L)/libmemory-verbose.o 	\
+-	  $(L)/libmemory-paranoid.o \
+-	  $(L)/libmemory-leak.o $(L)/libmemory-isomalloc.o \
+-	  $(L)/libmemory-os-verbose.o $(L)/libmemory-os-isomalloc.o \
+-	  $(L)/libmemory-os-leak.o $(L)/libmemory-os-paranoid.o \
+-          $(L)/libmemory-os-lock.o $(L)/libmemory-os-wrapper.o
++MEMLIBS=$(L)/libmemory-default.a $(L)/libmemory-os.a $(L)/libmemory-gnu.a \
++          $(L)/libmemory-gnuold.a $(L)/libmemory-verbose.a 	\
++	  $(L)/libmemory-paranoid.a \
++	  $(L)/libmemory-leak.a $(L)/libmemory-isomalloc.a \
++	  $(L)/libmemory-os-verbose.a $(L)/libmemory-os-isomalloc.a \
++	  $(L)/libmemory-os-leak.a $(L)/libmemory-os-paranoid.a \
++          $(L)/libmemory-os-lock.a $(L)/libmemory-os-wrapper.a
+ 
+ BUILD_CHARMDEBUG=$(shell CHARMINC=.; if test -f ./conv-config.sh; then . ./conv-config.sh; echo $$CMK_CHARMDEBUG; fi )
+ 
+ ifneq "$(BUILD_CHARMDEBUG)" "0"
+-MEMLIBS += $(L)/libmemory-charmdebug.o $(L)/libmemory-charmdebug-mmap.o \
+-	  $(L)/libmemory-charmdebug-slot.o  \
+-          $(L)/libmemory-charmdebug-mmap-slot.o \
+-	  $(L)/libmemory-os-charmdebug.o $(L)/libmemory-hooks-charmdebug.o
++MEMLIBS += $(L)/libmemory-charmdebug.a $(L)/libmemory-charmdebug-mmap.a \
++	  $(L)/libmemory-charmdebug-slot.a  \
++          $(L)/libmemory-charmdebug-mmap-slot.a \
++	  $(L)/libmemory-os-charmdebug.a $(L)/libmemory-hooks-charmdebug.a
+ endif
+ 
+-THREADLIBS=$(L)/libthreads-default.o $(L)/libthreads-default-tls.o  \
+-          $(L)/libthreads-qt.o 	$(L)/libthreads-qt-tls.o  \
+-	  $(L)/libthreads-context.o $(L)/libthreads-context-tls.o  \
+-	  $(L)/libthreads-uJcontext.o  $(L)/libthreads-uJcontext-tls.o \
+-	  $(L)/libthreads-pthreads.o $(L)/libthreads-fibers.o \
+-	  $(L)/libthreads-stackcopy.o $(L)/libthreads-memoryalias.o \
+-          $(L)/libthreads-qt-memoryalias.o	\
+-	  $(L)/libthreads-context-memoryalias.o	\
+-	  $(L)/libthreads-uJcontext-memoryalias.o
++THREADLIBS=$(L)/libthreads-default.a $(L)/libthreads-default-tls.a  \
++          $(L)/libthreads-qt.a 	$(L)/libthreads-qt-tls.a  \
++	  $(L)/libthreads-context.a $(L)/libthreads-context-tls.a  \
++	  $(L)/libthreads-uJcontext.a  $(L)/libthreads-uJcontext-tls.a \
++	  $(L)/libthreads-pthreads.a $(L)/libthreads-fibers.a \
++	  $(L)/libthreads-stackcopy.a $(L)/libthreads-memoryalias.a \
++          $(L)/libthreads-qt-memoryalias.a	\
++	  $(L)/libthreads-context-memoryalias.a	\
++	  $(L)/libthreads-uJcontext-memoryalias.a
+ 
+ CVLIBS=$(L)/libconv-core.a \
+ 	$(L)/libconv-cplus-y.a $(L)/libconv-cplus-n.a \
+@@ -543,19 +543,19 @@ lz4.o: lz4.c lz4.h
+ 	$(CHARMC) -o $@ $<
+ 
+ ## Converse load balancers (seed balancers, -balance)
+-$(L)/libldb-none.o: cldb.none.c $(CVHEADERS)
++$(L)/libldb-none.a: cldb.none.c $(CVHEADERS)
+ 	$(CHARMC) -o $@ cldb.none.c
+ 
+-$(L)/libldb-rand.o: cldb.rand.c cldb.h $(CVHEADERS)
++$(L)/libldb-rand.a: cldb.rand.c cldb.h $(CVHEADERS)
+ 	$(CHARMC) -o $@ cldb.rand.c
+ 
+-$(L)/libldb-neighbor.o: cldb.neighbor.c cldb.neighbor.h graph.h $(CVHEADERS)
++$(L)/libldb-neighbor.a: cldb.neighbor.c cldb.neighbor.h graph.h $(CVHEADERS)
+ 	$(CHARMC) -o $@ cldb.neighbor.c
+ 
+-$(L)/libldb-workstealing.o: cldb.workstealing.c cldb.workstealing.h graph.h $(CVHEADERS)
++$(L)/libldb-workstealing.a: cldb.workstealing.c cldb.workstealing.h graph.h $(CVHEADERS)
+ 	$(CHARMC) -o $@ cldb.workstealing.c
+ 
+-$(L)/libldb-spray.o: cldb.spray.c $(CVHEADERS)
++$(L)/libldb-spray.a: cldb.spray.c $(CVHEADERS)
+ 	$(CHARMC) -o $@ cldb.spray.c
+ 
+ 
+@@ -565,138 +565,138 @@ $(L)/libldb-spray.o: cldb.spray.c $(CVHEADERS)
+ #//$(L)/libldb-prioritycentralizedopt.o: cldb.prioritycentralizedopt.c cldb.prioritycentralizedopt.h  $(CVHEADERS)
+ #//	$(CHARMC) -o $@ cldb.prioritycentralizedopt.c 
+ 
+-$(L)/libldb-test.o: cldb.test.c $(CVHEADERS)
++$(L)/libldb-test.a: cldb.test.c $(CVHEADERS)
+ 	$(CHARMC) -o $@ cldb.test.c
+ 
+-$(L)/libldb-bluegene.o: cldb.bluegene.c $(CVHEADERS)
++$(L)/libldb-bluegene.a: cldb.bluegene.c $(CVHEADERS)
+ 	$(CHARMC) -o $@ cldb.bluegene.c
+ 
+ ## Memory allocation libraries (-memory)
+ MEM_DEPS=memory.c memory-gnu.c memory-gnuold.c converse.h conv-mach.h $(CVHEADERS)
+-$(L)/libmemory-default.o: $(MEM_DEPS)
++$(L)/libmemory-default.a: $(MEM_DEPS)
+ 	$(CHARMC) -I. -o $@ -DCMK_MEMORY_BUILD_DEFAULT memory.c
+ 
+-$(L)/libmemory-os.o: $(MEM_DEPS)
++$(L)/libmemory-os.a: $(MEM_DEPS)
+ 	$(CHARMC) -I. -o $@ -DCMK_MEMORY_BUILD_OS memory.c
+ 
+-$(L)/libmemory-os-verbose.o: memory-verbose.c $(MEM_DEPS)
++$(L)/libmemory-os-verbose.a: memory-verbose.c $(MEM_DEPS)
+ 	-$(CHARMC) -I. -o $@ -DCMK_MEMORY_BUILD_OS_WRAPPED -DCMK_MEMORY_BUILD_VERBOSE memory.c || touch $@
+ 
+-$(L)/libmemory-os-paranoid.o: memory-paranoid.c $(MEM_DEPS)
++$(L)/libmemory-os-paranoid.a: memory-paranoid.c $(MEM_DEPS)
+ 	-$(CHARMC) -o $@ -DCMK_MEMORY_BUILD_OS_WRAPPED -DCMK_MEMORY_BUILD_PARANOID memory.c || touch $@
+ 
+-$(L)/libmemory-os-leak.o: $(MEM_DEPS)
++$(L)/libmemory-os-leak.a: $(MEM_DEPS)
+ 	-$(CHARMC) -I. -o $@ -DCMK_MEMORY_BUILD_OS_WRAPPED -DCMK_MEMORY_BUILD_LEAK memory.c || touch $@
+ 
+-$(L)/libmemory-os-isomalloc.o: memory-isomalloc.c $(MEM_DEPS)
++$(L)/libmemory-os-isomalloc.a: memory-isomalloc.c $(MEM_DEPS)
+ 	-$(CHARMC) -I. -o $@ -DCMK_MEMORY_BUILD_OS_WRAPPED -DCMK_MEMORY_BUILD_ISOMALLOC memory.c || touch $@
+ 
+-$(L)/libmemory-os-lock.o: memory-lock.c $(MEM_DEPS)
++$(L)/libmemory-os-lock.a: memory-lock.c $(MEM_DEPS)
+ 	-$(CHARMC) -I. -o $@ -DCMK_MEMORY_BUILD_OS_WRAPPED -DCMK_MEMORY_BUILD_LOCK memory.c || touch $@
+ 
+-$(L)/libmemory-os-charmdebug.o: memory-charmdebug.c $(MEM_DEPS)
++$(L)/libmemory-os-charmdebug.a: memory-charmdebug.c $(MEM_DEPS)
+ 	-$(CHARMC) -o $@ -DCMK_MEMORY_BUILD_OS_WRAPPED -DCMK_MEMORY_BUILD_CHARMDEBUG memory.c || touch $@
+ 
+-$(L)/libmemory-os-wrapper.o: memory-os-wrapper.C $(MEM_DEPS)
++$(L)/libmemory-os-wrapper.a: memory-os-wrapper.C $(MEM_DEPS)
+ 	-$(CHARMC) -o $@ memory-os-wrapper.C || touch $@
+ 
+-$(L)/libmemory-hooks-charmdebug.o: memory-charmdebug.c $(MEM_DEPS)
++$(L)/libmemory-hooks-charmdebug.a: memory-charmdebug.c $(MEM_DEPS)
+ 	-$(CHARMC) -o $@ -DCMK_MEMORY_BUILD_GNU_HOOKS -DCMK_MEMORY_BUILD_CHARMDEBUG memory.c || touch $@
+ 
+ # If the system doesn't have sbrk, these compilations may fail.
+ #  This is OK, but then we can't use "-memory gnu" or friends.
+-$(L)/libmemory-gnu.o: $(MEM_DEPS)
++$(L)/libmemory-gnu.a: $(MEM_DEPS)
+ 	-$(CHARMC) -I. -o $@ -DCMK_MEMORY_BUILD_GNU memory.c || touch $@
+ 
+-$(L)/libmemory-gnuold.o: $(MEM_DEPS)
++$(L)/libmemory-gnuold.a: $(MEM_DEPS)
+ 	-$(CHARMC) -I. -o $@ -DCMK_MEMORY_BUILD_GNUOLD memory.c || touch $@
+ 
+-$(L)/libmemory-verbose.o: memory-verbose.c $(MEM_DEPS)
++$(L)/libmemory-verbose.a: memory-verbose.c $(MEM_DEPS)
+ 	-$(CHARMC) -I. -o $@ -DCMK_MEMORY_BUILD_VERBOSE memory.c || touch $@
+ 
+-$(L)/libmemory-paranoid.o: memory-paranoid.c $(MEM_DEPS)
++$(L)/libmemory-paranoid.a: memory-paranoid.c $(MEM_DEPS)
+ 	-$(CHARMC) -I. -o $@ -DCMK_MEMORY_BUILD_PARANOID memory.c || touch $@
+ 
+-$(L)/libmemory-leak.o: memory-leak.c $(MEM_DEPS)
++$(L)/libmemory-leak.a: memory-leak.c $(MEM_DEPS)
+ 	-$(CHARMC) -I. -o $@ -DCMK_MEMORY_BUILD_LEAK memory.c || touch $@
+ 
+-$(L)/libmemory-cache.o: memory-cache.c $(MEM_DEPS)
++$(L)/libmemory-cache.a: memory-cache.c $(MEM_DEPS)
+ 	-$(CHARMC) -I. -o $@ -DCMK_MEMORY_BUILD_CACHE memory.c || touch $@
+ 
+-$(L)/libmemory-isomalloc.o: memory-isomalloc.c $(MEM_DEPS)
++$(L)/libmemory-isomalloc.a: memory-isomalloc.c $(MEM_DEPS)
+ 	-$(CHARMC) -I. -o $@ -DCMK_MEMORY_BUILD_ISOMALLOC memory.c || touch $@
+ 
+-$(L)/libmemory-charmdebug.o: memory-charmdebug.c $(MEM_DEPS)
++$(L)/libmemory-charmdebug.a: memory-charmdebug.c $(MEM_DEPS)
+ 	-$(CHARMC) -I. -optimize -o $@ -DCMK_MEMORY_BUILD_CHARMDEBUG memory.c || touch $@
+ 
+-$(L)/libmemory-charmdebug-slot.o: memory-charmdebug.c $(MEM_DEPS)
++$(L)/libmemory-charmdebug-slot.a: memory-charmdebug.c $(MEM_DEPS)
+ 	-$(CHARMC) -I. -optimize -o $@ -DCMK_MEMORY_BUILD_CHARMDEBUG -DCMK_SEPARATE_SLOT memory.c || touch $@
+ 
+-$(L)/libmemory-charmdebug-mmap.o: memory-charmdebug.c $(MEM_DEPS)
++$(L)/libmemory-charmdebug-mmap.a: memory-charmdebug.c $(MEM_DEPS)
+ 	-$(CHARMC) -I. -optimize -o $@ -DCMK_MEMORY_BUILD_CHARMDEBUG -DCPD_USE_MMAP memory.c || touch $@
+ 
+-$(L)/libmemory-charmdebug-mmap-slot.o: memory-charmdebug.c $(MEM_DEPS)
++$(L)/libmemory-charmdebug-mmap-slot.a: memory-charmdebug.c $(MEM_DEPS)
+ 	-$(CHARMC) -I. -optimize -o $@ -DCMK_MEMORY_BUILD_CHARMDEBUG -DCPD_USE_MMAP -DCMK_SEPARATE_SLOT memory.c || touch $@
+ 
+ ## Thread libraries (-thread)
+ 
+ LIBTHREADSDEPS = threads.c $(CVHEADERS) QUICK_THREADS
+ 
+-$(L)/libthreads-default.o: $(LIBTHREADSDEPS)
++$(L)/libthreads-default.a: $(LIBTHREADSDEPS)
+ 	$(CHARMC) -o $@ -DCMK_THREADS_BUILD_DEFAULT=1 -IQuickThreads -I. threads.c
+ 
+-$(L)/libthreads-default-tls.o: $(LIBTHREADSDEPS)
++$(L)/libthreads-default-tls.a: $(LIBTHREADSDEPS)
+ 	-$(CHARMC) -o $@ -DCMK_THREADS_BUILD_DEFAULT=1 -DCMK_THREADS_BUILD_TLS=1 -IQuickThreads -I. threads.c 2> /dev/null || touch $@
+ 
+-$(L)/libthreads-qt.o: $(LIBTHREADSDEPS) 
++$(L)/libthreads-qt.a: $(LIBTHREADSDEPS)
+ 	$(CHARMC) -o $@ -DCMK_THREADS_BUILD_QT=1 -IQuickThreads threads.c
+ 
+-$(L)/libthreads-qt-tls.o: $(LIBTHREADSDEPS) 
++$(L)/libthreads-qt-tls.a: $(LIBTHREADSDEPS)
+ 	-$(CHARMC) -o $@ -DCMK_THREADS_BUILD_QT=1 -DCMK_THREADS_BUILD_TLS=1 -IQuickThreads threads.c 2> /dev/null || touch $@
+ 
+-$(L)/libthreads-context.o: $(LIBTHREADSDEPS) 
++$(L)/libthreads-context.a: $(LIBTHREADSDEPS)
+ 	-$(CHARMC) -o $@ -DCMK_THREADS_BUILD_CONTEXT=1 -IQuickThreads threads.c || touch $@
+ 
+-$(L)/libthreads-context-tls.o: $(LIBTHREADSDEPS) 
++$(L)/libthreads-context-tls.a: $(LIBTHREADSDEPS)
+ 	-$(CHARMC) -o $@ -DCMK_THREADS_BUILD_CONTEXT=1 -DCMK_THREADS_BUILD_TLS=1 -IQuickThreads threads.c 2> /dev/null || touch $@
+ 
+-$(L)/libthreads-uJcontext.o: $(LIBTHREADSDEPS) uJcontext.c
++$(L)/libthreads-uJcontext.a: $(LIBTHREADSDEPS) uJcontext.c
+ 	-$(CHARMC) -o $@ -DCMK_THREADS_BUILD_JCONTEXT=1 -IQuickThreads -I. threads.c || touch $@
+ 
+-$(L)/libthreads-uJcontext-tls.o: $(LIBTHREADSDEPS) uJcontext.c
++$(L)/libthreads-uJcontext-tls.a: $(LIBTHREADSDEPS) uJcontext.c
+ 	-$(CHARMC) -o $@ -DCMK_THREADS_BUILD_JCONTEXT=1 -DCMK_THREADS_BUILD_TLS=1 -IQuickThreads -I. threads.c || touch $@
+ 
+-$(L)/libthreads-pthreads.o: $(LIBTHREADSDEPS) 
++$(L)/libthreads-pthreads.a: $(LIBTHREADSDEPS)
+ 	-$(CHARMC) -o $@ -DCMK_THREADS_BUILD_PTHREADS=1 -IQuickThreads threads.c || touch $@
+ 
+-$(L)/libthreads-fibers.o: $(LIBTHREADSDEPS)
++$(L)/libthreads-fibers.a: $(LIBTHREADSDEPS)
+ 	-$(CHARMC) -o $@ -DCMK_THREADS_BUILD_FIBERS=1 -IQuickThreads threads.c 2> /dev/null || touch $@
+ 
+-$(L)/libthreads-stackcopy.o: $(LIBTHREADSDEPS) 
++$(L)/libthreads-stackcopy.a: $(LIBTHREADSDEPS)
+ 	-$(CHARMC) -o $@ -DCMK_THREADS_BUILD_STACKCOPY=1 -IQuickThreads threads.c || touch $@
+ 
+-$(L)/libthreads-memoryalias.o: $(LIBTHREADSDEPS) 
++$(L)/libthreads-memoryalias.a: $(LIBTHREADSDEPS)
+ 	-$(CHARMC) -o $@ -DCMK_THREADS_ALIAS_STACK=1 -DCMK_THREADS_BUILD_DEFAULT=1 -IQuickThreads threads.c || touch $@
+ 
+-$(L)/libthreads-qt-memoryalias.o: $(LIBTHREADSDEPS) 
++$(L)/libthreads-qt-memoryalias.a: $(LIBTHREADSDEPS)
+ 	-$(CHARMC) -o $@ -DCMK_THREADS_ALIAS_STACK=1 -DCMK_THREADS_BUILD_QT=1 -IQuickThreads threads.c || touch $@
+ 
+-$(L)/libthreads-context-memoryalias.o: $(LIBTHREADSDEPS) 
++$(L)/libthreads-context-memoryalias.a: $(LIBTHREADSDEPS)
+ 	-$(CHARMC) -o $@ -DCMK_THREADS_ALIAS_STACK=1 -DCMK_THREADS_BUILD_CONTEXT=1 -IQuickThreads threads.c || touch $@
+ 
+-$(L)/libthreads-uJcontext-memoryalias.o: $(LIBTHREADSDEPS) 
++$(L)/libthreads-uJcontext-memoryalias.a: $(LIBTHREADSDEPS)
+ 	-$(CHARMC) -o $@ -DCMK_THREADS_ALIAS_STACK=1 -DCMK_THREADS_BUILD_JCONTEXT=1 -IQuickThreads -I. threads.c || touch $@
+ 
+ ## Global swapping (-swapglobal)
+-swapglobal-target: $(L)/libglobal-swap.o $(L)/libglobal-copy.o $(L)/loadsym.o
++swapglobal-target: $(L)/libglobal-swap.a $(L)/libglobal-copy.a $(L)/loadsym.a
+ 
+-$(L)/libglobal-swap.o: global-elfgot.C $(CVHEADERS)
++$(L)/libglobal-swap.a: global-elfgot.C $(CVHEADERS)
+ 	-$(CHARMC) -c global-elfgot.C -o $@ || touch $@
+ 
+-$(L)/libglobal-copy.o: global-elfcopy.C  $(CVHEADERS)
++$(L)/libglobal-copy.a: global-elfcopy.C  $(CVHEADERS)
+ 	-$(CHARMC) -c global-elfcopy.C -o $@ || touch $@
+ 
+-$(L)/loadsym.o: loadsym.c  $(CVHEADERS)
++$(L)/loadsym.a: loadsym.c  $(CVHEADERS)
+ 	-$(CHARMC) -c loadsym.c -o $@ || touch $@
+ 
+ ###############################################################################
+diff --git a/src/scripts/charmc b/src/scripts/charmc
+index 4d37a6b..ee4e76c 100755
+--- a/src/scripts/charmc
++++ b/src/scripts/charmc
+@@ -340,6 +340,14 @@ printVersion()
+ 	echo Charm++ Version $version
+ }
+ 
++getLibraryObject()
++{
++  if [[ -f "${CHARMLIB}/$1-$2.a" ]]; then
++    echo "${CHARMLIB}/$1-$2.a"
++  else
++    echo "${CHARMLIBSO}/$1-$2.so"
++  fi
++}
+ 
+ ##############################################################################
+ #
+@@ -1616,13 +1624,12 @@ then
+ fi
+ 
+ BAL_EXT=`getExtention $BALANCE`
+-if [ -z "$BAL_EXT" ]
+-then
+-# Balance has no extention-- is a library reference
+-    BAL_OBJ="$CHARMLIB/libldb-$BALANCE.o"
++if [[ -z "$BAL_EXT" ]]; then
++  # Balance has no extension-- is a library reference
++  BAL_OBJ=$(getLibraryObject "libldb" ${BALANCE})
+ else
+-# Balance has some extention-- must be a .o or .a file
+-    BAL_OBJ="$BALANCE"
++  # Balance has some extension-- must be a .o or .a file
++  BAL_OBJ="$BALANCE"
+ fi
+ 
+ Debug "Finished with BAL_OBJ=$BAL_OBJ, TRACEMODE=$TRACEMODE..."
+@@ -1638,10 +1645,11 @@ then
+ 	fi
+ fi
+ 
++Debug "Finished with BAL_OBJ=$BAL_OBJ, TRACEMODE=$TRACEMODE..."
+ 
+ # Check for valid choice of MEMORY
+ 
+-MEM_OBJ="$CHARMLIB/libmemory-$MEMORY.o"
++MEM_OBJ=$(getLibraryObject "libmemory" ${MEMORY})
+ 
+ if [ ! -r $MEM_OBJ -o ! -s $MEM_OBJ ] 
+ then
+@@ -1652,7 +1660,7 @@ fi
+ # For memory wrapping around the OS allocator, need to add also the wrapper object
+ case $MEMORY in
+   os-*)
+-  MEM_OBJ=$MEM_OBJ" $CHARMLIB/libmemory-os-wrapper.o"
++    MEM_OBJ="${MEM_OBJ} $(getLibraryObject 'libmemory' 'os-wrapper')"
+   ;;
+ esac
+ 
+@@ -1670,7 +1678,8 @@ then
+     THREAD=${THREAD}-tls
+   fi
+ fi
+-THREAD_OBJ="$CHARMLIB/libthreads-$THREAD.o"
++
++THREAD_OBJ=$(getLibraryObject "libthreads" ${THREAD})
+ 
+ if [ ! -r $THREAD_OBJ -o ! -s $THREAD_OBJ ] 
+ then
+@@ -1836,7 +1845,7 @@ esac
+ 
+ if [ "$BUILD_SHARE" = "0" ]
+ then
+-	MIDDLE_LIBS="$MEM_OBJ $THREAD_OBJ $MIDDLE_LIBS"
++	MIDDLE_LIBS="$MIDDLE_LIBS $MEM_OBJ $THREAD_OBJ"
+ fi
+ 
+ if [ "$CHARM_SHARED" = "1" ]
+@@ -1848,17 +1857,17 @@ then
+   then
+     LANG_LIBS="-L$CHARMLIBSO $OBJECTFILES $PRE_LIBRARIES"
+   else
+-    LANG_LIBS="-L$CHARMLIBSO $BAL_OBJ $OBJECTFILES $modInitObj $PRE_LIBRARIES"
++    LANG_LIBS="-L$CHARMLIBSO $OBJECTFILES $modInitObj $PRE_LIBRARIES"
+   fi
+ else
+-  LANG_LIBS="-L$CHARMLIB -I$CHARMINC $BAL_OBJ $OBJECTFILES $modInitObj $PRE_LIBRARIES"
++  LANG_LIBS="-L$CHARMLIB -I$CHARMINC $OBJECTFILES $modInitObj $PRE_LIBRARIES"
+ fi
+ if [ "$TRACE_WITH_TAU" = 1 ]
+ then
+ 	echo "Linking with the TAU libraries: $TAU_LIBS"
+-	ALL_LIBS="$LANG_LIBS $MIDDLE_LIBS $CMK_LIBS $POST_LIBRARIES $CMK_SYSLIBS $TAU_LIBS"
++	ALL_LIBS="$LANG_LIBS $MIDDLE_LIBS $BAL_OBJ $CMK_LIBS $POST_LIBRARIES $CMK_SYSLIBS $TAU_LIBS"
+ else
+-	ALL_LIBS="$LANG_LIBS $MIDDLE_LIBS $CMK_LIBS $POST_LIBRARIES $CMK_SYSLIBS"
++	ALL_LIBS="$LANG_LIBS $MIDDLE_LIBS $BAL_OBJ $CMK_LIBS $POST_LIBRARIES $CMK_SYSLIBS"
+ fi
+ Debugf "All libraries are: $ALL_LIBS"
+ 
+-- 
+1.8.1.5
+

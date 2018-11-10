@@ -1,0 +1,9 @@
+# Based on Debian /etc/default/mdadm
+
+# Gentoo comment: The cronjob checks for this value to decide to actually
+#                 validate arrays. If missing, it does NOT actually do anything.
+# AUTOCHECK:
+#   should mdadm run periodic redundancy checks over your arrays? See
+#   /etc/cron.weekly/mdadm
+
+#AUTOCHECK=true

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription>
+dnspython is a DNS toolkit for Python. It supports almost all of the record
+types. It can be used for queries, zone transfers, and dynamic updates. It
+supports TSIG authenticated messages and EDNS0.  dnspython provides both high
+and low level access to DNS. The high level classes perform queries for data
+of a given name, type, and class, and return an answer set. The low level
+classes allow direct manipulation of DNS zones, messages, names, and records.
+	</longdescription>
+	<longdescription lang="ja">
+DNSPythonはPython言語用のDNSツールキットです。ほとんどのレコード・タイプをサポー
+トします。クエリー、ゾーン・トランスファー、ダイナミック・アップデートができます
+。TSTGメッセージ認証とEDNS0をサポートします。DNSPythonは高水準でのアクセスと低水
+準でのアクセスの両方を提供します。高水準ではネーム、タイプ、クラスでクエリーを行
+い、その戻り値を使います。低水準はゾーン、メッセージ、ネーム、レコードを直接操作
+します。
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">dnspython</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Monad classes using functional dependencies, with instances
+		for various monad transformers, inspired by the paper
+		/Functional Programming with Overloading and Higher-Order Polymorphism/,
+		by Mark P Jones, in /Advanced School of Functional Programming/, 1995
+		(&lt;http://web.cecs.pdx.edu/~mpj/pubs/springschool.html&gt;).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ekmett/mtl</remote-id>
+	</upstream>
+</pkgmetadata>

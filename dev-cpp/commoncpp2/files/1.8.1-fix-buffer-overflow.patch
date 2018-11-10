@@ -1,0 +1,13 @@
+diff --git a/src/inaddr.cpp b/src/inaddr.cpp
+index 5a4b9c4..50127f3 100644
+--- a/src/inaddr.cpp
++++ b/src/inaddr.cpp
+@@ -333,7 +333,7 @@ void IPV4Address::setAddress(const char *host)
+             if(ipaddr)
+                 delete[] ipaddr;
+             ipaddr = new struct in_addr[1];
+-            memset((void *)&ipaddr[0], 0, sizeof(ipaddr));
++            memset((void *)&ipaddr[0], 0, sizeof(*ipaddr));
+             return;
+         }
+ 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		The Vienna RNA Package consists of a C code library and several
+		stand-alone programs for the prediction and comparison of RNA secondary
+		structures. RNA secondary structure prediction through energy
+		minimization is the most used function in the package. We provide three
+		kinds of dynamic programming algorithms for structure prediction: the
+		minimum free energy algorithm of (Zuker and Stiegler 1981) which yields a
+		single optimal structure, the partition function algorithm of
+		(McCaskill 1990) which calculates base pair probabilities in the
+		thermodynamic ensemble, and the suboptimal folding algorithm of
+		(Wuchty et.al 1999) which generates all suboptimal structures within a
+		given energy range of the optimal energy. For secondary structure
+		comparison, the package contains several measures of distance
+		(dissimilarities) using either string alignment or tree-editing
+		(Shapiro and Zhang 1990). Finally, we provide an algorithm to design
+		sequences with a predefined structure (inverse folding).
+	</longdescription>
+</pkgmetadata>

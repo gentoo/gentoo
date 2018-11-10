@@ -1,0 +1,318 @@
+--- portmidi/CMakeLists.txt
++++ portmidi/CMakeLists.txt
+@@ -9,12 +9,11 @@
+   set(CMAKE_BUILD_TYPE Release CACHE STRING 
+       "Semicolon-separate list of supported configuration types")
+   # set default directories but don't override cached values...
+-  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CACHEFILE_DIR}/${CMAKE_BUILD_TYPE}
++  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+       CACHE STRING "libraries go here")
+-  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CACHEFILE_DIR}/${CMAKE_BUILD_TYPE}
++  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+       CACHE STRING "libraries go here")
+-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY 
+-      ${CMAKE_CACHEFILE_DIR}/${CMAKE_BUILD_TYPE}
++  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+       CACHE STRING "executables go here")
+ 
+ else(UNIX)
+@@ -68,10 +67,20 @@
+ include_directories(pm_common porttime)
+ add_subdirectory(pm_common)
+ 
+-add_subdirectory(pm_test)
++option(PORTMIDI_ENABLE_JAVA "Enable Java bindings support" ON)
++option(PORTMIDI_ENABLE_STATIC "Build and install static libraries" OFF)
++option(PORTMIDI_ENABLE_TEST "Build test programs" ON)
++
++if(PORTMIDI_ENABLE_TEST)
++  add_subdirectory(pm_test)
++endif(PORTMIDI_ENABLE_TEST)
+ 
+ add_subdirectory(pm_dylib)
+ 
+ # Cannot figure out how to make an xcode Java application with CMake
+-add_subdirectory(pm_java)
++if(PORTMIDI_ENABLE_JAVA)
++  set(JAR_INSTALL_DIR share/java
++      CACHE STRING "Define directory name for jar installation")
++  add_subdirectory(pm_java)
++endif(PORTMIDI_ENABLE_JAVA)
+ 
+--- portmidi/pm_common/CMakeLists.txt
++++ portmidi/pm_common/CMakeLists.txt
+@@ -44,9 +44,6 @@
+ 
+ # first include the appropriate system-dependent file:
+ if(UNIX)
+-  # add the -g switch for Linux and Mac OS X (not used in Win32)
+-  set (CMAKE_C_FLAGS_DEBUG "-g ${CMAKE_C_FLAGS_DEBUG}" 
+-       CACHE STRING "enable extra checks for debugging" FORCE)
+   if(APPLE)
+     set(MACSRC pmmacosxcm pmmac readbinaryplist finddefault)
+     prepend_path(LIBSRC ../pm_mac/ ${MACSRC})
+@@ -62,19 +59,23 @@
+                              ${COREMIDI_LIB} ${CORESERVICES_LIB}
+         CACHE INTERNAL "")
+ 
+-    set(JAVAVM_LIB "${FRAMEWORK_PATH}/JavaVM.framework")
+-    set(JAVA_INCLUDE_PATHS ${JAVAVM_LIB}/Headers)
++    if(PORTMIDI_ENABLE_JAVA)
++      set(JAVAVM_LIB "${FRAMEWORK_PATH}/JavaVM.framework")
++      set(JAVA_INCLUDE_PATHS ${JAVAVM_LIB}/Headers)
++    endif(PORTMIDI_ENABLE_JAVA)
+     message(STATUS "SYSROOT: " ${CMAKE_OSX_SYSROOT})
+   else(APPLE)
+     # LINUX settings...
+-    include(FindJNI)
+-    message(STATUS "JAVA_JVM_LIB_PATH is " ${JAVA_JVM_LIB_PATH})
+-    message(STATUS "JAVA_INCLUDE_PATH is " ${JAVA_INCLUDE_PATH})
+-    message(STATUS "JAVA_INCLUDE_PATH2 is " ${JAVA_INCLUDE_PATH2})
+-    message(STATUS "JAVA_JVM_LIBRARY is " ${JAVA_JVM_LIBRARY})
+-    set(JAVA_INCLUDE_PATHS ${JAVA_INCLUDE_PATH} ${JAVA_INCLUDE_PATH2})
+-    # libjvm.so is found relative to JAVA_INCLUDE_PATH:
+-    set(JAVAVM_LIB ${JAVA_JVM_LIBRARY}/libjvm.so)
++    if(PORTMIDI_ENABLE_JAVA)
++      include(FindJNI)
++      message(STATUS "JAVA_JVM_LIB_PATH is " ${JAVA_JVM_LIB_PATH})
++      message(STATUS "JAVA_INCLUDE_PATH is " ${JAVA_INCLUDE_PATH})
++      message(STATUS "JAVA_INCLUDE_PATH2 is " ${JAVA_INCLUDE_PATH2})
++      message(STATUS "JAVA_JVM_LIBRARY is " ${JAVA_JVM_LIBRARY})
++      set(JAVA_INCLUDE_PATHS ${JAVA_INCLUDE_PATH} ${JAVA_INCLUDE_PATH2})
++      # libjvm.so is found relative to JAVA_INCLUDE_PATH:
++      set(JAVAVM_LIB ${JAVA_JVM_LIBRARY}/libjvm.so)
++    endif(PORTMIDI_ENABLE_JAVA)
+ 
+     set(LINUXSRC pmlinuxalsa pmlinux finddefault)
+     prepend_path(LIBSRC ../pm_linux/ ${LINUXSRC})
+@@ -88,10 +89,12 @@
+     # /MD is multithread DLL, /MT is multithread. Change to static:
+     include(../pm_win/static.cmake)
+     
+-    include(FindJNI)
++    if(PORTMIDI_ENABLE_JAVA)
++      include(FindJNI)
+ 
+-    set(JAVA_INCLUDE_PATHS ${JAVA_INCLUDE_PATH} ${JAVA_INCLUDE_PATH2})
+-    # message(STATUS "JAVA_INCLUDE_PATHS: " ${JAVA_INCLUDE_PATHS})
++      set(JAVA_INCLUDE_PATHS ${JAVA_INCLUDE_PATH} ${JAVA_INCLUDE_PATH2})
++      # message(STATUS "JAVA_INCLUDE_PATHS: " ${JAVA_INCLUDE_PATHS})
++    endif(PORTMIDI_ENABLE_JAVA)
+ 
+     set(WINSRC pmwin pmwinmm)
+     prepend_path(LIBSRC ../pm_win/ ${WINSRC})
+@@ -99,29 +102,43 @@
+     set(PM_NEEDED_LIBS winmm.lib)
+   endif(WIN32)
+ endif(UNIX)
+-set(JNI_EXTRA_LIBS ${PM_NEEDED_LIBS} ${JAVA_JVM_LIBRARY})
++
++if(PORTMIDI_ENABLE_JAVA)
++  set(JNI_EXTRA_LIBS ${PM_NEEDED_LIBS} ${JAVA_JVM_LIBRARY})
++endif(PORTMIDI_ENABLE_JAVA)
+ 
+ # this completes the list of library sources by adding shared code
+ list(APPEND LIBSRC pmutil portmidi)
+ 
+ # now add the shared files to make the complete list of library sources
+-add_library(portmidi-static ${LIBSRC})
+-set_target_properties(portmidi-static PROPERTIES OUTPUT_NAME "portmidi_s")
+-target_link_libraries(portmidi-static ${PM_NEEDED_LIBS})
+-
+-# define the jni library
+-include_directories(${JAVA_INCLUDE_PATHS})
+-
+-set(JNISRC ${LIBSRC} ../pm_java/pmjni/pmjni.c)
+-add_library(pmjni SHARED ${JNISRC})
+-target_link_libraries(pmjni ${JNI_EXTRA_LIBS})
+-set_target_properties(pmjni PROPERTIES EXECUTABLE_EXTENSION "jnilib")
++if(PORTMIDI_ENABLE_STATIC)
++  add_library(portmidi-static ${LIBSRC})
++  set_target_properties(portmidi-static PROPERTIES OUTPUT_NAME "portmidi")
++  target_link_libraries(portmidi-static ${PM_NEEDED_LIBS})
++endif(PORTMIDI_ENABLE_STATIC)
++
++if(PORTMIDI_ENABLE_JAVA)
++  # define the jni library
++  include_directories(${JAVA_INCLUDE_PATHS})
++
++  set(JNISRC ${LIBSRC} ../pm_java/pmjni/pmjni.c)
++  add_library(pmjni SHARED ${JNISRC})
++  target_link_libraries(pmjni ${JNI_EXTRA_LIBS})
++  set_target_properties(pmjni PROPERTIES EXECUTABLE_EXTENSION "jnilib")
++endif(PORTMIDI_ENABLE_JAVA)
+ 
+ # install the libraries (Linux and Mac OS X command line)
+ if(UNIX)
+-  INSTALL(TARGETS portmidi-static pmjni
+-    LIBRARY DESTINATION /usr/local/lib
+-    ARCHIVE DESTINATION /usr/local/lib)
++  if(PORTMIDI_ENABLE_STATIC)
++    INSTALL(TARGETS portmidi-static
++      LIBRARY DESTINATION lib${LIB_SUFFIX}
++      ARCHIVE DESTINATION lib${LIB_SUFFIX})
++  endif(PORTMIDI_ENABLE_STATIC)
++  if(PORTMIDI_ENABLE_JAVA)
++    INSTALL(TARGETS pmjni
++      LIBRARY DESTINATION lib${LIB_SUFFIX}
++      ARCHIVE DESTINATION lib${LIB_SUFFIX})
++  endif(PORTMIDI_ENABLE_JAVA)
+ # .h files installed by pm_dylib/CMakeLists.txt, so don't need them here
+ #  INSTALL(FILES portmidi.h ../porttime/porttime.h
+ #    DESTINATION /usr/local/include)
+--- portmidi/pm_dylib/CMakeLists.txt
++++ portmidi/pm_dylib/CMakeLists.txt
+@@ -39,9 +39,6 @@
+ 
+ # first include the appropriate system-dependent file:
+ if(UNIX)
+-  # add the -g switch for Linux and Mac OS X (not used in Win32)
+-  set (CMAKE_C_FLAGS_DEBUG "-g ${CMAKE_C_FLAGS_DEBUG}" 
+-       CACHE STRING "enable extra checks for debugging" FORCE)
+   if(APPLE)
+     set(MACSRC pmmacosxcm pmmac readbinaryplist finddefault)
+     prepend_path(LIBSRC ../pm_mac/ ${MACSRC})
+@@ -63,7 +60,8 @@
+     message(STATUS "SYSROOT: " ${CMAKE_OSX_SYSROOT})
+   else(APPLE)
+     # LINUX settings...
+-    include(FindJNI)
++    if(PORTMIDI_ENABLE_JAVA)
++      include(FindJNI)
+     # message(STATUS "JAVA_JVM_LIB_PATH is " ${JAVA_JVM_LIB_PATH})
+     # message(STATUS "JAVA_INCLUDE_PATH is " ${JAVA_INCLUDE_PATH})
+     # note: should use JAVA_JVM_LIB_PATH, but it is not set properly
+@@ -75,11 +73,8 @@
+     # JAVA_INCLUDE_PATH2; if no, then we need to make both JAVA_INCLUDE_PATH
+     # and JAVA_INCLUDE_PATH2 set by user (will need clear documentation
+     # because JAVA_INCLUDE_PATH2 is pretty obscure)
+-    set(JAVA_INCLUDE_PATH  ${JAVA_INCLUDE_PATH-UNKNOWN}
+-        CACHE STRING "where to find Java SDK include directory")
+-    set(JAVA_INCLUDE_PATHS ${JAVA_INCLUDE_PATH} ${JAVA_INCLUDE_PATH}/linux)
+-    # libjvm.so is found relative to JAVA_INCLUDE_PATH:
+-    set(JAVAVM_LIB ${JAVA_INCLUDE_PATH}/../jre/lib/i386/client/libjvm.so)
++      set(JAVAVM_LIB ${JAVA_JVM_LIBRARY})
++    endif(PORTMIDI_ENABLE_JAVA)
+ 
+     set(LINUXSRC pmlinuxalsa pmlinux finddefault)
+     prepend_path(LIBSRC ../pm_linux/ ${LINUXSRC})
+@@ -91,13 +86,15 @@
+   if(WIN32)
+     # /MDd is multithread debug DLL, /MTd is multithread debug
+     # /MD is multithread DLL, /MT is multithread 
+-    
+-    include(FindJNI)
+-    # note: should use JAVA_JVM_LIB_PATH, but it is not set properly
+-    set(JAVAVM_LIB ${JAVA_INCLUDE_PATH}/../lib/jvm.lib)
+ 
+-    set(JAVA_INCLUDE_PATHS ${JAVA_INCLUDE_PATH} ${JAVA_INCLUDE_PATH2})
+-    # message(STATUS "JAVA_INCLUDE_PATHS: " ${JAVA_INCLUDE_PATHS})
++    if(PORTMIDI_ENABLE_JAVA)
++      include(FindJNI)
++      # note: should use JAVA_JVM_LIB_PATH, but it is not set properly
++      set(JAVAVM_LIB ${JAVA_INCLUDE_PATH}/../lib/jvm.lib)
++
++      set(JAVA_INCLUDE_PATHS ${JAVA_INCLUDE_PATH} ${JAVA_INCLUDE_PATH2})
++      # message(STATUS "JAVA_INCLUDE_PATHS: " ${JAVA_INCLUDE_PATHS})
++    endif(PORTMIDI_ENABLE_JAVA)
+ 
+     set(WINSRC pmwin pmwinmm)
+     prepend_path(LIBSRC ../pm_win/ ${WINSRC})
+@@ -106,7 +103,10 @@
+     # message(STATUS "JAVAVM_LIB: " ${JAVAVM_LIB})
+   endif(WIN32)
+ endif(UNIX)
++
++if(PORTMIDI_ENABLE_JAVA)
+ set(JNI_EXTRA_LIBS ${PM_NEEDED_LIBS} ${JAVAVM_LIB})
++endif(PORTMIDI_ENABLE_JAVA)
+ 
+ # this completes the list of library sources by adding shared code
+ set(SHARED_FILES pmutil portmidi)
+@@ -120,8 +120,8 @@
+ # install the libraries (Linux and Mac OS X command line)
+ if(UNIX)
+   INSTALL(TARGETS portmidi-dynamic
+-    LIBRARY DESTINATION /usr/local/lib
+-    ARCHIVE DESTINATION /usr/local/lib)
++    LIBRARY DESTINATION lib${LIB_SUFFIX}
++    ARCHIVE DESTINATION lib${LIB_SUFFIX})
+   INSTALL(FILES ../pm_common/portmidi.h ../porttime/porttime.h
+-    DESTINATION /usr/local/include)
++    DESTINATION include)
+ endif(UNIX)
+--- portmidi/pm_java/CMakeLists.txt
++++ portmidi/pm_java/CMakeLists.txt
+@@ -5,43 +5,24 @@
+     # java not dealt with in CMake -- see pm_mac/pm_mac.xcodeproj
+   else(APPLE)
+     # linux
+-    set(JPORTMIDICLASS JPortMidi.class JPortMidiException.class
+-    		       JPortMidiApi.class)
+-    set(PMDEFAULTSCLASS PmDefaultsFrame.class PmDefaults.class)
+-    prepend_path(JPORTMIDICLASS2 jportmidi/ ${JPORTMIDICLASS})
+-    prepend_path(PMDEFAULTSCLASS2 pmdefaults/ ${PMDEFAULTSCLASS})
+-    set(PMDEFAULTS_ALL_CLASSES ${JPORTMIDICLASS2} ${PMDEFAULTSCLASS2})
+-    # message(STATUS "PMDEFAULTS_ALL_CLASSES is " ${PMDEFAULTS_ALL_CLASSES})
+-    add_custom_command(OUTPUT pmdefaults/PmDefaultsFrame.class
+-        COMMAND javac -classpath . pmdefaults/PmDefaultsFrame.java
+-	MAIN_DEPENDENCY pmdefaults/PmDefaultsFrame.java
+-	DEPENDS pmdefaults/PmDefaults.java
+-	WORKING_DIRECTORY pm_java)
+-    add_custom_command(OUTPUT pmdefaults/PmDefaults.class
+-        COMMAND javac -classpath . pmdefaults/PmDefaults.java
+-	MAIN_DEPENDENCY pmdefaults/PmDefaults.java
+-	DEPENDS pmdefaults/PmDefaultsFrame.java
+-	WORKING_DIRECTORY pm_java)
+-    add_custom_command(OUTPUT ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/pmdefaults.jar
+-        COMMAND	cp pmdefaults/portmusic_logo.png .
+-        COMMAND	jar cmf pmdefaults/manifest.txt pmdefaults.jar
+-		pmdefaults/*.class portmusic_logo.png jportmidi/*.class
+-  	COMMAND chmod +x pmdefaults/pmdefaults
+-	COMMAND cp pmdefaults/pmdefaults ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}
+-	COMMAND mv pmdefaults.jar ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}
+-	COMMAND rm portmusic_logo.png
+-	MAIN_DEPENDENCY pmdefaults/PmDefaults.class
+-	DEPENDS ${PMDEFAULTS_ALL_CLASSES}
+-	WORKING_DIRECTORY pm_java)
+-    add_custom_target(pmdefaults_target ALL 
+-        DEPENDS ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/pmdefaults.jar)
+-    # message(STATUS "add_custom_target: pmdefaults.jar")
++	set(JAVA_CLASSES jportmidi pmdefaults)
++	add_custom_command(OUTPUT ${JAVA_CLASSES}
++		COMMAND javac -d ${CMAKE_CURRENT_BINARY_DIR} jportmidi/*.java pmdefaults/*.java
++		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
++	add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/pmdefaults.jar
++		DEPENDS ${JAVA_CLASSES}
++		COMMAND jar cmf pmdefaults/manifest.txt ${CMAKE_CURRENT_BINARY_DIR}/pmdefaults.jar
++		-C pmdefaults portmusic_logo.png -C ${CMAKE_CURRENT_BINARY_DIR} jportmidi
++		-C ${CMAKE_CURRENT_BINARY_DIR} pmdefaults
++		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
++	add_custom_target(pmdefaults.jar ALL
++		DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/pmdefaults.jar)
+ 
+     # install the libraries (Linux only)
+-    INSTALL(FILES ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/pmdefaults.jar
+-      DESTINATION /usr/share/java)
+-    INSTALL(PROGRAMS ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/pmdefaults
+-      DESTINATION /usr/local/bin)
++    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/pmdefaults.jar
++      DESTINATION ${JAR_INSTALL_DIR})
++    INSTALL(PROGRAMS ${CMAKE_CURRENT_SOURCE_DIR}/pmdefaults/pmdefaults
++      DESTINATION bin)
+   endif(APPLE)
+ endif(UNIX)
+ # In windows, use pm_java/make.bat
+--- portmidi/pm_test/CMakeLists.txt
++++ portmidi/pm_test/CMakeLists.txt
+@@ -12,8 +12,8 @@
+ 
+ macro(make_a_test name)
+   add_executable(${name} ${name}.c)
+-  target_link_libraries(${name} portmidi-static ${PM_NEEDED_LIBS})
+-  add_dependencies(${name} portmidi-static)
++  target_link_libraries(${name} portmidi ${PM_NEEDED_LIBS})
++  add_dependencies(${name} portmidi)
+ endmacro(make_a_test)
+ 
+ make_a_test(test)

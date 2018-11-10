@@ -1,0 +1,14 @@
+--- testsuite/data/Makefile.am	2011-06-13 14:29:38.843665225 +0300
++++ testsuite/data/Makefile.am	2011-06-13 14:31:16.000000000 +0300
+@@ -22,8 +22,10 @@
+ EXTRA_DIST = pubring.asc secring.asc anubis.pem append.txt users
+ CLEANFILES = *.gpg random_seed *~ text.db
+ 
+-pubring.gpg secring.gpg: $(srcdir)/pubring.asc $(srcdir)/secring.asc
++pubring.gpg: $(srcdir)/pubring.asc
+ 	$(GPG) --homedir . --import < $(srcdir)/pubring.asc
++
++secring.gpg: $(srcdir)/secring.asc
+ 	$(GPG) --homedir . --allow-secret-key-import --import < $(srcdir)/secring.asc
+ 
+ text.db: $(srcdir)/users

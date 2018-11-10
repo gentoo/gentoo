@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<longdescription lang="en">
+		Go is a new systems programming language developped at google by
+		Rob Pike. It has garbage collection, coroutines, communication
+		channels and a clean syntax.  
+	</longdescription>
+	<use>
+		<flag name="gccgo">Enable bootstrapping using gccgo</flag>
+	</use>
+</pkgmetadata>

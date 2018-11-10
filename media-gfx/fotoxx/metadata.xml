@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		Navigate a large image collection using a thumbnail browser.
+		Import camera RAW files and edit with 16-bit color.
+		Save edited images as TIFF-8/16, PNG or JPEG with adjustable compression.
+		Edit the whole image or a selected area, with adjustable edge-blending.
+		Edit functions have live feedback using the full window.
+		Undo/redo up to 99 edits. Add tags, dates, and star-ratings to images
+		and search using these criteria and (wildcard) file names.
+		Fotoxx does not use filters, layers, and masks - the edit functions work directly on the image.
+	</longdescription>
+</pkgmetadata>

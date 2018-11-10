@@ -1,0 +1,16 @@
+# Config file for /etc/init.d/metasploit
+
+# Bind to the following IP instead of the loopback address
+IPADDR=127.0.0.1
+
+# Bind to the following TCP port instead of default 55555
+PORT=55553
+
+# Use the following username instead of msf
+USER="msf"
+
+# Use the following password instead of msf
+PASS="secure"
+
+# All options
+MSF_OPTS="-U $USER -P $PASS -S -a $IPADDR -p $PORT"

@@ -1,0 +1,14 @@
+http://bugs.gentoo.org/499480
+
+Patch is from ArchLinux git libmng-2.0.2-3
+
+--- libmng_types.h
++++ libmng_types.h
+@@ -204,6 +204,7 @@
+ #define HAVE_BOOLEAN
+ typedef int boolean;
+ #endif
++#include <stdio.h>
+ #include <jpeglib.h>
+ #endif /* MNG_INCLUDE_IJG6B */
+ 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
+
+<longdescription>
+Jal is a partial port of the STL by the C++ Standard Template Library, done by
+Matthew Austern and Alexander Stepanov.
+
+It contains several useful algorithms that cannot be found elsewhere (e.g.,
+linear-time n-th order statistics and sorting arrays using arbitrary
+predicates).
+</longdescription>
+</pkgmetadata>

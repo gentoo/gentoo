@@ -1,0 +1,12 @@
+[Unit]
+Description=Samba Winbind daemon
+After=network.target nmbd.service
+
+[Service]
+Type=forking
+PIDFile=/var/run/samba/winbindd.pid
+ExecStart=/usr/sbin/winbindd -D 
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

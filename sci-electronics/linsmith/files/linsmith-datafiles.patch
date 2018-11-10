@@ -1,0 +1,30 @@
+--- Makefile.am.old	2005-11-03 00:56:51.000000000 -0300
++++ Makefile.am	2005-11-03 00:57:09.000000000 -0300
+@@ -20,15 +20,6 @@
+ 	    fi \
+ 	  done \
+ 	fi
+-	@$(NORMAL_INSTALL)
+-	if test -d $(srcdir)/datafiles; then \
+-	  $(mkinstalldirs) $(DESTDIR)$(datadir)/$(PACKAGE); \
+-	  for datafile in $(srcdir)/datafiles/*; do \
+-	    if test -f $$datafile; then \
+-	      $(INSTALL_DATA) $$datafile $(DESTDIR)$(datadir)/$(PACKAGE); \
+-	    fi \
+-	  done \
+-	fi
+ 
+ dist-hook:
+ 	if test -d pixmaps; then \
+@@ -39,11 +30,3 @@
+ 	    fi \
+ 	  done \
+ 	fi
+-	if test -d datafiles; then \
+-	  mkdir $(distdir)/datafiles; \
+-	  for datafile in datafiles/*; do \
+-	    if test -f $$datafile; then \
+-	      cp -p $$datafile $(distdir)/datafiles; \
+-	    fi \
+-	  done \
+-	fi

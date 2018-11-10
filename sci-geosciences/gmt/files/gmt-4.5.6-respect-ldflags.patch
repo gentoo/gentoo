@@ -1,0 +1,56 @@
+diff -urN GMT4.5.6/src/Makefile GMT4.5.6.new/src/Makefile
+--- GMT4.5.6/src/Makefile	2011-03-03 22:02:50.000000000 +0100
++++ GMT4.5.6.new/src/Makefile	2011-06-07 14:48:00.969500019 +0200
+@@ -195,13 +195,13 @@
+ 		$(RANLIB) $@
+ 
+ libpsl.$(SL):	libpsl.a
+-		$(LD) $(LD_OPT) pslib.o $(LIBS) -o $@
++		$(LD) $(LD_OPT) $(LDFLAGS) pslib.o $(LIBS) -o $@
+ 
+ libgmt.$(SL):	libgmt.a
+-		$(LD) $(LD_OPT) $(LIB_O) $(TRIANGLE_O) $(ALPHA_SINCOS_O) $(NETCDF_LIB) $(GDAL_LIB) $(LIBS) -o $@
++		$(LD) $(LD_OPT) $(LDFLAGS) $(LIB_O) $(TRIANGLE_O) $(ALPHA_SINCOS_O) $(NETCDF_LIB) $(GDAL_LIB) $(LIBS) -o $@
+ 
+ libgmtps.$(SL):	libgmtps.a libgmt.$(SL) libpsl.$(SL)
+-		$(LD) $(LD_OPT) $(LIBPS_O) libgmt.$(SL) libpsl.$(SL) $(LIBS) -o $@
++		$(LD) $(LD_OPT) $(LDFLAGS) $(LIBPS_O) libgmt.$(SL) libpsl.$(SL) $(LIBS) -o $@
+ 
+ #-------------------------------------------------------------------------------
+ #	program rules
+diff -urN GMT4.5.6/src/mgd77/Makefile GMT4.5.6.new/src/mgd77/Makefile
+--- GMT4.5.6/src/mgd77/Makefile	2010-11-01 23:39:16.000000000 +0100
++++ GMT4.5.6.new/src/mgd77/Makefile	2011-06-07 14:53:46.394181616 +0200
+@@ -93,7 +93,7 @@
+ 		$(RANLIB) $@
+ 
+ libmgd77.$(SL):	libmgd77.a
+-		$(LD) $(LD_OPT) $(LIB_O) $(GMT_LIB) $(NETCDF_LIB) $(LIBS) -o $@
++		$(LD) $(LD_OPT) $(LDFLAGS) $(LIB_O) $(GMT_LIB) $(NETCDF_LIB) $(LIBS) -o $@
+ 
+ #-------------------------------------------------------------------------------
+ #	program rules
+diff -urN GMT4.5.6/src/mgg/Makefile GMT4.5.6.new/src/mgg/Makefile
+--- GMT4.5.6/src/mgg/Makefile	2010-11-01 23:39:16.000000000 +0100
++++ GMT4.5.6.new/src/mgg/Makefile	2011-06-07 14:54:48.096410233 +0200
+@@ -95,7 +95,7 @@
+ 		$(RANLIB) $@
+ 
+ libgmt_mgg.$(SL):	libgmt_mgg.a
+-		$(LD) $(LD_OPT) $(LIB_O) $(GMT_LIB) $(NETCDF_LIB) $(LIBS) -o $@
++		$(LD) $(LD_OPT) $(LDFLAGS) $(LIB_O) $(GMT_LIB) $(NETCDF_LIB) $(LIBS) -o $@
+ 
+ #-------------------------------------------------------------------------------
+ #	program rules
+diff -urN GMT4.5.6/src/x2sys/Makefile GMT4.5.6.new/src/x2sys/Makefile
+--- GMT4.5.6/src/x2sys/Makefile	2010-11-01 23:39:16.000000000 +0100
++++ GMT4.5.6.new/src/x2sys/Makefile	2011-06-07 14:54:15.124822433 +0200
+@@ -83,7 +83,7 @@
+ 		$(RANLIB) $@
+ 
+ libx2sys.$(SL):	libx2sys.a
+-		$(LD) $(LD_OPT) x2sys.o $(ALLLIB) -o $@
++		$(LD) $(LD_OPT) $(LDFLAGS) x2sys.o $(ALLLIB) -o $@
+ 
+ #-------------------------------------------------------------------------------
+ #	program rules

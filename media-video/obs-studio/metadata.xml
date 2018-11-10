@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>chiitoo@gentoo.org</email>
+    <name>Jimi Huotari</name>
+  </maintainer>
+  <longdescription>
+    A rewrite of what was formerly known as "Open Broadcaster Software",
+    software originally designed for recording and streaming live video
+    content, efficiently.  Aims to be multi-platform, and improved upon
+    internally.
+  </longdescription>
+  <use>
+    <flag name="fdk">Enable libfdk support for AAC encoding.</flag>
+    <flag name="imagemagick">Use ImageMagick for image loading instead of FFmpeg.</flag>
+    <flag name="luajit">Build support for scripting via Luajit.</flag>
+    <flag name="nvenc">Enable NVENC encoding for nVidia video cards.</flag>
+    <flag name="python">Build support for scripting via Python 3.</flag>
+    <flag name="speex">Enable noise suppression filter support via
+      <pkg>media-libs/speexdsp</pkg>.</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">obsproject/obs-studio</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,120 @@
+ setup.py             |  6 ------
+ src/manuel/index.txt | 26 ++++++++------------------
+ src/manuel/tests.py  | 13 +++++++++----
+ 3 files changed, 17 insertions(+), 28 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 4561779..b6730c8 100644
+--- a/setup.py
++++ b/setup.py
+@@ -20,8 +20,6 @@ with open('README.rst') as readme:
+     with open('CHANGES.rst') as changes:
+         long_description = readme.read() + '\n\n' + changes.read()
+ 
+-tests_require = ['zope.testing']
+-
+ setup(
+     name='manuel',
+     version='1.8.0',
+@@ -44,10 +42,6 @@ setup(
+         'License :: OSI Approved :: Apache Software License',
+         ],
+     license='Apache Software License, Version 2.0',
+-    extras_require={
+-        'tests': tests_require,
+-        },
+-    tests_require=tests_require,
+     test_suite='manuel.tests.test_suite',
+     install_requires=[
+         'setuptools',
+diff --git a/src/manuel/index.txt b/src/manuel/index.txt
+index c1d85f3..a315317 100644
+--- a/src/manuel/index.txt
++++ b/src/manuel/index.txt
+@@ -166,16 +166,16 @@ can pass in your own class to `TestSuite`.
+ 
+ .. code-block:: python
+ 
+-     import os.path
+-     import manuel.testing
++    import os.path
++    import manuel.testing
+ 
+-     class StripDirsTestCase(manuel.testing.TestCase):
+-         def shortDescription(self):
+-             return os.path.basename(str(self))
+-     suite = manuel.testing.TestSuite(
+-         m, path_to_test, TestCase=StripDirsTestCase)
++    class StripDirsTestCase(manuel.testing.TestCase):
++        def shortDescription(self):
++            return os.path.basename(str(self))
++    suite = manuel.testing.TestSuite(
++        m, path_to_test, TestCase=StripDirsTestCase)
+ 
+-    >>> list(suite)[0].shortDescription()
++    list(suite)[0].shortDescription()
+     'bugs.txt'
+ 
+ 
+@@ -236,16 +236,6 @@ checkers <http://docs.python.org/library/doctest.html#outputchecker-objects>`_
+    smoothes over the differences between CPython's and PyPy's NameError
+    messages:
+ 
+-.. code-block:: python
+-
+-    import re
+-    import zope.testing.renormalizing
+-    checker = zope.testing.renormalizing.RENormalizing([
+-        (re.compile(r"NameError: global name '([a-zA-Z0-9_]+)' is not defined"),
+-         r"NameError: name '\1' is not defined"),
+-    ])
+-
+-
+ .. reset-globs
+ .. _capture:
+ 
+diff --git a/src/manuel/tests.py b/src/manuel/tests.py
+index 07723a6..b1a3a76 100644
+--- a/src/manuel/tests.py
++++ b/src/manuel/tests.py
+@@ -11,11 +11,12 @@ import manuel.testing
+ import os.path
+ import re
+ import unittest
+-import zope.testing.renormalizing
+ 
+ here = os.path.dirname(os.path.abspath(__file__))
+ 
+-checker = zope.testing.renormalizing.RENormalizing([
++try:
++	import zope.testing.renormalizing
++	checker = zope.testing.renormalizing.RENormalizing([
+     (re.compile(r"<unittest\.result\.TestResult"), '<unittest.TestResult'),
+     # PyPy spells some error messages differently
+     (re.compile(r"NameError: global name '([a-zA-Z0-9_]+)' is not defined"),
+@@ -25,7 +26,9 @@ checker = zope.testing.renormalizing.RENormalizing([
+      r"<\1 object"),
+     (re.compile(r"<SRE_Match object"),
+      r"<_sre.SRE_Match object"),
+-])
++	])
++except ImportError:
++	pass
+ 
+ 
+ def turtle_on_the_bottom_test():
+@@ -59,7 +62,6 @@ def test_suite():
+     optionflags = doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS
+ 
+     m = manuel.ignore.Manuel()
+-    m += manuel.doctest.Manuel(optionflags=optionflags, checker=checker)
+     m += manuel.codeblock.Manuel()
+     m += manuel.capture.Manuel()
+     m += manuel.testcase.SectionManuel()
+@@ -73,3 +75,6 @@ def test_suite():
+         suite,
+         doctest.DocTestSuite(),
+         ))
++
++if __name__ == '__main__':
++    unittest.TextTestRunner().run(test_suite())

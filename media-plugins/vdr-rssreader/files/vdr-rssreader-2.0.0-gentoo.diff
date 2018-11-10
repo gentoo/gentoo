@@ -1,0 +1,18 @@
+diff -Naur rssreader-1.7.2.orig/rssreader/rssreader.conf rssreader-1.7.2/rssreader/rssreader.conf
+--- rssreader-1.7.2.orig/rssreader/rssreader.conf	2012-09-30 13:43:33.000000000 +0200
++++ rssreader-1.7.2/rssreader/rssreader.conf	2012-09-30 13:46:57.000000000 +0200
+@@ -1,10 +1,14 @@
+ # Configuration file for RssReader plugin (VDR)
+ # "Label" : # Comment
+ # "Title" : "URL"
++-- Gentoo				: # Label
++VDR Project Overlay	: http://overlays.gentoo.org/proj/vdr/timeline?changeset=on&wiki=on&max=50&daysback=90&format=rss
++Gentoo					: http://www.gentoo.org/rdf/en/gentoo-news.rdf
+ -- VDR                 : # Label
+ Linuxtv.fi foorumi     : http://www.linuxtv.fi/feed.php
+ VDR Releases           : http://projects.vdr-developer.org/projects/vdr/news.atom
+ VDR Developer          : http://projects.vdr-developer.org/projects.atom
++PizakBlog              : http://pizzak.wordpress.com/feed/
+ -- Kotimaiset          : # Label
+ Lehti                  : http://lehtilehti.fi/feed/
+ Salakuunneltua         : http://www.salakuunneltua.fi/rss.php

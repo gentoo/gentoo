@@ -1,0 +1,145 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+[ -x /usr/sbin/clvmd ] && CLVMD_BIN="/usr/sbin/clvmd" || CLVMD_BIN="/sbin/clvmd"
+
+[ -z "$CLVMD_CLUSTER_TIMEOUT" ] && CLVMD_CLUSTER_TIMEOUT=30
+[ -n "$CLVMD_NODES_TIMEOUT" ] || CLVMD_NODES_TIMEOUT=60
+
+VGCHANGE="/sbin/vgchange"
+VGSCAN="/sbin/vgscan"
+VGDISPLAY="/sbin/vgdisplay"
+CLVMD_PIDFILE="/var/run/clvmd.pid"
+
+depend() {
+	use net dns logger dmeventd
+	want cman corosync openais
+}
+
+load_modules() {
+	local module modules
+	modules=$1
+	
+	for module in ${modules}; do
+		ebegin "Loading ${module} kernel module"
+		modprobe ${module}
+		eend $? "Failed to load ${module} kernel module"
+	done
+}
+
+unload_modules() {
+	local module modules
+	modules=$1
+	
+	for module in ${modules}; do
+		ebegin "Unloading ${module} kernel module"
+		modprobe -r ${module}
+		eend $? "Failed to unload ${module} kernel module"
+	done
+}
+
+umount_gfs_filesystems() {
+	local sig retry
+	local remaining="$(awk '$3 == "gfs" { print $2 }' /proc/mounts | sort -r)"
+
+	if [ -n "${remaining}" ]
+	then
+	        sig=
+	        retry=3
+	        while [ -n "${remaining}" -a "${retry}" -gt 0 ]
+	        do
+	                if [ "${retry}" -lt 3 ]
+			then
+	                        ebegin "Unmounting GFS filesystems (retry)"
+	                        umount ${remaining} &>/dev/null
+	                        eend $? "Failed to unmount GFS filesystems this retry"
+	                else
+	                        ebegin "Unmounting GFS filesystems"
+	                        umount ${remaining} &>/dev/null
+	                        eend $? "Failed to unmount GFS filesystems"
+	                fi
+	                remaining="$(awk '$3 == "gfs" { print $2 }' /proc/mounts | sort -r)"
+	                [ -z "${remaining}" ] && break
+	                /bin/fuser -k -m ${sig} ${remaining} &>/dev/null
+	                sleep 5
+	                retry=$((${retry} -1))
+	                sig=-9
+	        done
+	fi
+}
+
+
+start_volumes() {
+	ebegin "Scanning LVM volumes"
+	$VGSCAN > /dev/null 2>&1
+	eend $?
+
+	ret=$?
+	if [ "$ret" -eq 5 ]
+	then
+		einfo "  Waiting for other nodes to join the cluster ($CLVMD_NODES_TIMEOUT seconds)"
+	fi
+
+	clustervgs=`$VGDISPLAY 2> /dev/null | awk 'BEGIN {RS="VG Name"} {if (/Clustered/) print $1;}'`
+	for vg in $clustervgs; do
+		ebegin "  Activating Clustered VG: ${vg} "
+
+		wait=0
+		while [ -n "$($VGCHANGE -a y ${vg} 2>&1 |grep "clvmd not running")" ]; do
+			if [ $wait -lt $CLVMD_NODES_TIMEOUT ]; then
+				sleep 3
+				wait=$(($wait + 3))
+			else
+				eend 1
+			fi
+		done
+		eend 0
+	done
+}
+
+stop_volumes() {
+	# Deactivate only clustered volumes
+	clustervgs=`$VGDISPLAY 2> /dev/null | awk 'BEGIN {RS="VG Name"} {if (/Clustered/) print $1;}'`
+	for vg in $clustervgs; do
+		ebegin "  Shutting Down Clustered VG: ${vg} "
+		$VGCHANGE -anl ${vg} >/dev/null
+		eend $?
+	done
+}
+
+
+start() {
+	local module=$(awk '$1 == "dm_mod" { print $1 }' /proc/{modules,devices})
+
+	if [ -z "${module}" ]; then
+		load_modules "dm-mod"
+		sleep 1s
+	fi
+
+	ebegin "Starting clvmd ($CLVMD_CLUSTER_TIMEOUT seconds)"
+
+	start-stop-daemon --start --quiet --exec ${CLVMD_BIN} -- -T ${CLVMD_CLUSTER_TIMEOUT}
+	eend $?
+
+	start_volumes
+}
+
+stop() {
+
+	# umount GFS filesystems
+	umount_gfs_filesystems
+
+	#stop_volumes
+
+	ebegin "Stopping clvmd"
+	#start-stop-daemon --stop -s TERM --quiet --exec ${CLVMD_BIN} --name clvmd
+	killall -TERM ${CLVMD_BIN} >/dev/null
+	eend $?
+
+        #local module=$(awk '$1 == "dm_mod" { print $1 }' /proc/modules)
+
+	#if [[ "$?" -eq 0 && ! -z "${module}" ]]; then
+        #        unload_modules "dm-mod"
+        #fi
+}

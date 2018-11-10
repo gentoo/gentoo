@@ -1,0 +1,12 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,8 +1,7 @@
+
+ 
+ INCLUDES = -I$(top_srcdir)/include @GLIB_CFLAGS@
+-AM_LDFLAGS = @GLIB_LIBS@ @NSL_LIBS@ @SOCKET_LIBS@
+-CFLAGS = -g -O0
++jnettop_LDADD = @GLIB_LIBS@ @NSL_LIBS@ @SOCKET_LIBS@
+ 
+ man_MANS = jnettop.8
+ 

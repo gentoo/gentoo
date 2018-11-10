@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription>
+		xd3d is a simple scientific visualization tool designed to be easy to learn.
+		It can plot 2d and 3d meshes, with shadowing, contour plots, vector fields,
+		iso-contour (3d), as well as 3d surfaces z=f(x,y) defined by an algebraic
+		expression or a cloud of points. It generates high quality vector PostScript
+		files for scientific publications and still or animated bitmap images.
+		It includes the graph plotter xgraphic.
+	</longdescription>
+</pkgmetadata>

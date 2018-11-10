@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>idl0r@gentoo.org</email>
+		<name>Christian Ruppert</name>
+	</maintainer>
+	<longdescription lang="en">
+	Gitolite is an access control layer on top of git, which allows access
+	control down to the branch level, including specifying who can and cannot
+	rewind a given branch.
+	</longdescription>
+	<use>
+		<flag name="contrib">Install user-contributed files</flag>
+		<flag name="tools">Install tools to e.g. convert a Gitosis config to
+			gitolite or one to check if your setup is gitolite &gt;= 3.x compatible</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">sitaramc/gitolite</remote-id>
+	</upstream>
+</pkgmetadata>

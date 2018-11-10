@@ -1,0 +1,41 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/sbin/knotd
+command_args="-d"
+pidfile=/var/run/knot/knot.pid
+required_files=/etc/knot/knot.conf
+extra_started_commands="reload"
+description_reload="Reload configuration and changed zones."
+
+depend() {
+	need net
+}
+
+start() {
+	checkpath -d -m 0750 -o knot:knot /var/run/knot/ /var/lib/knot/
+
+	ebegin "Starting knot"
+	start-stop-daemon --start \
+		--pidfile $pidfile --exec $command -- $command_args
+	eend $?
+}
+
+stop() {
+	ebegin "Stoping knot"
+	/usr/sbin/knotc stop >/dev/null 2>&1
+	# In case remote control is not working
+	if [ "$?" != 0 ]; then
+		if [ -f $pidfile ]; then
+			start-stop-daemon --stop --pidfile $pidfile
+		fi
+	fi
+	ewend $?
+}
+
+reload() {
+	ebegin "Reloading knot"
+	/usr/sbin/knotc reload >/dev/null
+	eend $?
+}

@@ -1,0 +1,20 @@
+Description: Always use a format string in printf
+ Fix the warning: buf.c:216:9: error: format not a string literal and no
+ format arguments [-Werror=format-security]
+Author: Andrey Rahmatullin <wrar@wrar.name>
+Forwarded: no
+Last-Update: 2012-02-05
+
+diff --git a/buf.c b/buf.c
+index 7f4e7a0..3a83f2b 100644
+--- a/buf.c
++++ b/buf.c
+@@ -213,7 +213,7 @@ rs_result rs_file_copy_cb(void *arg, rs_long_t pos, size_t *len, void **buf)
+ 
+     got = fread(*buf, 1, *len, f);
+     if (got == -1) {
+-        rs_error(strerror(errno));
++        rs_error("%s", strerror(errno));
+         return RS_IO_ERROR;
+     } else if (got == 0) {
+         rs_error("unexpected eof on fd%d", fileno(f));

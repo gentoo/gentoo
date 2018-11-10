@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-dialup category contains dialup-related networking software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-dialup enthält Software für Dialup-Verbindungen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-dialup contiene paquetes relacionados con conexiones
+		telefónicas.
+	</longdescription>
+	<longdescription lang="ja">
+		net-dialupカテゴリーにはダイアルアップに関連したネットワーキング・ソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-dialup categorie bevat applicaties voor inbelverbindingen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-dialup chứa các phần mềm liên quan đến mạng quay số.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-dialup contiene pacchetti per la connessione telefonica dial-up.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria net-dialup contém programas relacionados com
+		conexões telefônicas.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria net-dialup zawiera programy sieciowe związane z połączeniami
+		telefonicznymi (dialup).
+	</longdescription>
+</catmetadata>
+

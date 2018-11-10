@@ -1,0 +1,20 @@
+--- rblcheck-1.5/configure	2005-07-01 10:50:36.000000000 +0100
++++ rblcheck-1.5/configure	2005-07-01 10:57:05.000000000 +0100
+@@ -1529,13 +1529,12 @@
+ cat > conftest.$ac_ext <<EOF
+ #line 1531 "configure"
+ #include "confdefs.h"
+-/* Override any gcc2 internal prototype to avoid an error.  */
+-/* We use char because int might match the return type of a gcc2
+-    builtin and then its argument prototype would still apply.  */
+-char res_query();
++
++/* Include <resolv.h> to get macro definition for res_query */
++#include <resolv.h>
+ 
+ int main() {
+-res_query()
++res_query("",0,0,"",0)
+ ; return 0; }
+ EOF
+ if { (eval echo configure:1542: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then

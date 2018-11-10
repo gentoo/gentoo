@@ -1,0 +1,11 @@
+--- matio-1.5.0.orig/src/Makefile.am	2012-04-24 18:14:45.000000000 +0100
++++ matio-1.5.0/src/Makefile.am	2012-04-24 18:18:14.000000000 +0100
+@@ -45,7 +45,7 @@
+ lib_LTLIBRARIES        = libmatio.la
+ libmatio_la_SOURCES    = snprintf.c endian.c io.c $(ZLIB_SRC) read_data.c \
+                          mat5.c mat4.c mat.c matvar_cell.c matvar_struct.c
+-libmatio_la_LIBADD     = $(ZLIB_LIBS)
++libmatio_la_LIBADD     = $(ZLIB_LIBS) $(HDF5_LIBS)
+ 
+ if MAT73
+ libmatio_la_SOURCES+= mat73.c

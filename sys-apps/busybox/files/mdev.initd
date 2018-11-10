@@ -1,0 +1,52 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend()
+{
+	provide dev
+	need dev-mount sysfs
+}
+
+find_mdev()
+{
+	if [ -x /sbin/mdev ] ; then
+		echo "/sbin/mdev"
+	else
+		echo "/bin/busybox mdev"
+	fi
+}
+
+populate_mdev()
+{
+	ebegin "Populating /dev with existing devices with mdev -s"
+	$(find_mdev) -s
+	eend $?
+	return 0
+}
+
+seed_dev()
+{
+	# copy over any persistent things
+	if [ -d /lib/mdev/devices ] ; then
+		cp -RPp /lib/mdev/devices/* /dev 2>/dev/null
+	fi
+}
+
+start()
+{
+	seed_dev
+
+	# Setup hotplugging (if possible)
+	if [ -e /proc/sys/kernel/hotplug ] ; then
+		ebegin "Setting up mdev as hotplug agent"
+		echo $(find_mdev) > /proc/sys/kernel/hotplug
+		eend 0
+	fi
+
+	if get_bootparam "nocoldplug" ; then
+		ewarn "Skipping mdev coldplug as requested in kernel cmdline"
+	else
+		populate_mdev
+	fi
+}

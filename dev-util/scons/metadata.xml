@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
+  <longdescription lang="en">
+    SCons is a make replacement providing a range of enhanced
+    features such as automated dependency generation and built in
+    compilation cache support. SCons rule sets are Python scripts so
+    as well as the features it provides itself SCons allows you to use
+    the full power of Python to control compilation.
+  </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">scons</remote-id>
+  </upstream>
+</pkgmetadata>

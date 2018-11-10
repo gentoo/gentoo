@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">NetAddr-IP</remote-id>
+    <remote-id type="cpan-module">NetAddr::IP</remote-id>
+    <remote-id type="cpan-module">NetAddr::IP::InetBase</remote-id>
+    <remote-id type="cpan-module">NetAddr::IP::Lite</remote-id>
+    <remote-id type="cpan-module">NetAddr::IP::Util</remote-id>
+    <remote-id type="cpan-module">NetAddr::IP::UtilPP</remote-id>
+    <remote-id type="cpan-module">NetAddr::IP::UtilPolluted</remote-id>
+    <remote-id type="cpan-module">NetAddr::IP::Util_IS</remote-id>
+  </upstream>
+</pkgmetadata>

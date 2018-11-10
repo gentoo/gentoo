@@ -1,0 +1,21 @@
+--- tvision/classes/ipstream.cc
++++ tvision/classes/ipstream.cc
+@@ -19,6 +19,7 @@
+  *
+  */
+ #include <assert.h>
++#include <stdio.h>
+ #define Uses_string
+ #define Uses_TStreamable
+ #define Uses_TStreamableClass
+--- tvision/include/tv/textdev.h
++++ tvision/include/tv/textdev.h
+@@ -16,6 +16,8 @@
+ #if defined( Uses_TTextDevice ) && !defined( __TTextDevice )
+ #define __TTextDevice
+ 
++#include <stdio.h>
++
+ class TRect;
+ class TScrollBar;
+ 

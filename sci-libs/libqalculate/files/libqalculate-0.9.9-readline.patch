@@ -1,0 +1,13 @@
+diff -ru libqalculate-0.9.9.orig/src/qalc.cc libqalculate-0.9.9/src/qalc.cc
+--- libqalculate-0.9.9.orig/src/qalc.cc	2016-07-26 14:41:40.000000000 +0200
++++ libqalculate-0.9.9/src/qalc.cc	2016-08-04 18:27:36.553906707 +0200
+@@ -3179,7 +3179,9 @@
+ 		if(!file) {
+ 			g_free(gstr_file);
+ 			g_free(gstr_oldfile);
++#ifdef HAVE_LIBREADLINE
+ 			g_free(historyfile);
++#endif
+ 			first_time = true;
+ 			set_saved_mode();
+ 			return;

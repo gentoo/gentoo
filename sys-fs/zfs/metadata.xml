@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ryao@gentoo.org</email>
+		<name>Richard Yao</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<use>
+		<flag name="kernel-builtin">Disable dependency on sys-fs/zfs-kmod under the assumption that ZFS is part of the kernel source tree</flag>
+		<flag name="rootfs">Enable dependencies required for booting off a pool containing a rootfs</flag>
+		<flag name="test-suite">Install regression test suite</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">zfsonlinux/zfs</remote-id>
+	</upstream>
+</pkgmetadata>

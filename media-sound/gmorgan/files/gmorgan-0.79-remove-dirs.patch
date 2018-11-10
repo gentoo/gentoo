@@ -1,0 +1,33 @@
+From b1ca9596933eb4e9486eebadd1c4ca2254da35e1 Mon Sep 17 00:00:00 2001
+From: Harri Nieminen <moikkis@gmail.com>
+Date: Sat, 4 Mar 2017 13:54:03 +0200
+Subject: [PATCH 3/3] Remove duplicate dirs from data/Makefile.am
+
+They are already defined in SUBDIRS variable
+---
+ data/Makefile.am | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/data/Makefile.am b/data/Makefile.am
+index a73f8d7..fc9ff0c 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -15,7 +15,6 @@ FourAntiR.gmsong \
+ Four.gmsong \
+ fullkeyboard.gmos \
+ GMPresetList.txt \
+-help \
+ hhtm.gmps \
+ HowHignTheBoom.gmsong \
+ HowInsensate.gmsong \
+@@ -33,7 +32,6 @@ QuietNight.gmos \
+ README \
+ Saxaphones.gmos \
+ shearing.gmos \
+-skins \
+ sounds.gmox \
+ StyleLib.lib \
+ template.gmos \
+-- 
+2.12.0
+

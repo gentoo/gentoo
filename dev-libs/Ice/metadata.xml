@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>Dessa@gmake.de</email>
+		<name>Robert Förster</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>cpp@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		Ice is a C++ middleware technology with bindings for other languages.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">zeroc-ice/ice</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,26 @@
+diff --git a/src/mk b/src/mk
+index 475d25a..d4b7e83 100755
+--- a/src/mk
++++ b/src/mk
+@@ -5,17 +5,14 @@ ObjNames='aligngivenpath.o aligngivenpathsw.o aligntwomsas.o aligntwoprofs.o aln
+ rm -f *.o muscle.make.stdout.txt muscle.make.stderr.txt
+ for CPPName in $CPPNames
+ do
+-  echo $CPPName >> /dev/tty
+-  g++ $ENV_GCC_OPTS -c -O3 -msse2 -mfpmath=sse -D_FILE_OFFSET_BITS=64 -DNDEBUG=1 $CPPName.cpp -o $CPPName.o  >> muscle.make.stdout.txt 2>> muscle.make.stderr.txt
++  echo "${CXX} ${CXXFLAGS} -c -D_FILE_OFFSET_BITS=64 -DNDEBUG=1 $CPPName.cpp -o $CPPName.o"
++  ${CXX} ${CXXFLAGS} -c -D_FILE_OFFSET_BITS=64 -DNDEBUG=1 $CPPName.cpp -o $CPPName.o
+ done
+ 
+ LINK_OPTS=
+ if [ `uname -s` == Linux ] ; then
+     LINK_OPTS=-static
+ fi
+-g++ $LINK_OPTS $ENV_LINK_OPTS -g -o muscle $ObjNames  >> muscle.make.stdout.txt 2>> muscle.make.stderr.txt
+-tail muscle.make.stderr.txt
+ 
+-strip muscle
+-ls -lh muscle
+-sum muscle
++echo "${CXX} ${LDFLAGS} -o muscle $ObjNames"
++${CXX} ${LDFLAGS} -o muscle $ObjNames

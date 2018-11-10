@@ -1,0 +1,20 @@
+--- conf/Makefile.am.orig	2013-05-12 22:45:26.514768943 +0200
++++ conf/Makefile.am	2013-05-12 22:46:33.399545628 +0200
+@@ -7,7 +7,7 @@
+ XML =	addns.xml conf.xml kasp.xml zonelist.xml signconf.xml enforcerstate.xml
+ XSL=	kasp2html.xsl
+ 
+-TRANG=		$(srcdir)/trang/trang.jar
++TRANG=		/usr/bin/trang
+ TRANG_URL	"https://code.google.com/p/jing-trang/"
+ 
+ sysconfdir = @sysconfdir@/opendnssec
+@@ -31,7 +31,7 @@
+ .rnc.rng:
+ 	@test -x "${JAVA}" || \
+ 		(echo "java is required for converting RelaxNG Compact to RelaxNG"; false)
+-	${JAVA} -jar ${TRANG} $< $@
++	${TRANG} $< $@
+ 
+ regress: $(RNG)
+ 	@test -x "${XMLLINT}" || \

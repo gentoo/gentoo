@@ -1,0 +1,34 @@
+diff --git a/src/monkeysphere-authentication b/src/monkeysphere-authentication
+index edc7995..2711ff2 100755
+--- a/src/monkeysphere-authentication
++++ b/src/monkeysphere-authentication
+@@ -84,6 +84,13 @@ gpg_sphere() {
+     su_monkeysphere_user gpg --fixed-list-mode --no-greeting --quiet --no-tty "$@"
+ }
+ 
++check_openpgp2ssh_sanity() {
++    if [[ `su_monkeysphere_user openpgp2ssh ABC &>/dev/null || echo $?` != "255" ]]; then
++    echo "openpgp2ssh command gives unexpected return code. This can lead to a scenario where no authorized keys are populated, even though they are otherwise valid. Aborting!"
++    exit 1
++    fi; 
++}
++
+ # output to stdout the core fingerprint from the gpg core secret
+ # keyring
+ core_fingerprint() {
+@@ -163,6 +170,7 @@ case $COMMAND in
+     'update-users'|'update-user'|'update'|'u')
+ 	source "${MASHAREDIR}/setup"
+ 	setup
++	check_openpgp2ssh_sanity
+ 	source "${MASHAREDIR}/update_users"
+ 	OUTPUT_STDOUT= update_users "$@"
+ 	;;
+@@ -171,6 +179,7 @@ case $COMMAND in
+ 	(( $# > 0 )) || failure "Must specify user."
+ 	source "${MASHAREDIR}/setup"
+ 	setup
++	check_openpgp2ssh_sanity
+ 	source "${MASHAREDIR}/update_users"
+ 	OUTPUT_STDOUT=true update_users "$1"
+ 	;;

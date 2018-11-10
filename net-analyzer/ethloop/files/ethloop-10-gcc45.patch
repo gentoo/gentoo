@@ -1,0 +1,32 @@
+Fix recv call (bug #336755), add some more includes.
+
+--- a/ethloop.c	2002-05-03 15:13:20.000000000 +0200
++++ b/ethloop.c	2010-12-27 18:21:24.000000000 +0100
+@@ -1,5 +1,7 @@
+ /* vim: cin sw=4 ts=4
+ */
++#include <arpa/inet.h> /* htons() */
++#include <sys/types.h> /* recv() */
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
+ #include <sys/poll.h>
+@@ -13,6 +15,7 @@
+ #include <stdlib.h>
+ #include <sys/time.h>
+ #include <signal.h>
++#include <string.h>
+ 
+ int sock;
+ 
+@@ -133,9 +136,9 @@
+ int recv_raw(int tmo)
+ {
+ 	struct pollfd pf = {sock,POLLIN,0};
+-	int r; unsigned short proto;
++	ssize_t r; unsigned short proto;
+ 	if(poll(&pf,1,tmo) <= 0) return 0;
+-	r = recv(sock,&buf,1550,0);
++	r = recv(sock,&buf,sizeof(buf),0);
+ 	if (r <= 0) {
+ 		printf("error recv (%d)\n",r);
+ 		return 0;

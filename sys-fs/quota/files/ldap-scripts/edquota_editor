@@ -1,0 +1,32 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+die "QUOTA_USER environment variable not set\n" unless defined $ENV{'QUOTA_USER'};
+die "QUOTA_FILESYS environment variable not set\n" unless defined $ENV{'QUOTA_FILESYS'};
+die "QUOTA_SBLOCKS environment variable not set\n" unless defined $ENV{'QUOTA_SBLOCKS'};
+die "QUOTA_HBLOCKS environment variable not set\n" unless defined $ENV{'QUOTA_HBLOCKS'};
+die "QUOTA_SFILES environment variable not set\n" unless defined $ENV{'QUOTA_SFILES'};
+die "QUOTA_HFILES environment variable not set\n" unless defined $ENV{'QUOTA_HFILES'};
+
+open FILE, $ARGV[0];
+my $qdata = join '', (@_=<FILE>);
+close FILE;
+open FILE, ">$ARGV[0]";
+print FILE &edit_quota_file($qdata, $ENV{'QUOTA_FILESYS'}, $ENV{'QUOTA_SBLOCKS'}, $ENV{'QUOTA_HBLOCKS'}, $ENV{'QUOTA_SFILES'}, $ENV{'QUOTA_HFILES'});
+close FILE;
+
+# edit_quota_file(data, filesys, sblocks, hblocks, sfiles, hfiles)
+sub edit_quota_file {
+	my($rv, $line, @line, $i);
+	@line = split /\n/, $_[0];
+	for ( $i=0; $i<@line; $i++ ) {
+		if ($line[$i] =~ /^\s+(\S+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)$/ && ($1 eq $_[1] || $_[1] eq '*')) {
+			# new-style line to change
+			$rv .= "  $1 $2 $_[2] $_[3] $5 $_[4] $_[5]\n";
+		} else {
+			$rv .= "$line[$i]\n";
+		}
+	}
+	return $rv;
+}

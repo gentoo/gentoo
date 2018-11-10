@@ -1,0 +1,45 @@
+ unix/Makefile.in |   10 +++++-----
+ 1 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/unix/Makefile.in b/unix/Makefile.in
+index bf187ba..763558f 100755
+--- a/unix/Makefile.in
++++ b/unix/Makefile.in
+@@ -43,7 +43,7 @@ CXX_FLAGS = @CPPFLAGS@ @CXXFLAGS@ @MK_THREADS@ @SHLIB_CFLAGS@ \
+ # (e.g. in Mk4py).  This does not affect standard operation, *only* errors.
+ # Happens in gcc 2.95.3, it has been disabled for now (even though slower).
+ #CXXFLAGS = -fomit-frame-pointer $(CXX_FLAGS)
+-CXXFLAGS = $(CXX_FLAGS)
++CXXFLAGS +=   -I$(srcdir)/../include
+ #CXXFLAGS = -Dq4_CHECK $(CXX_FLAGS)
+ #CXXFLAGS = -Wall -pedantic -Wno-unused $(CXX_FLAGS)
+ 
+@@ -134,24 +134,24 @@ libmk4$(LIB_SUFFIX): $(LOBJS)
+ 	ranlib $@
+ 
+ libmk4$(SHLIB_SUFFIX): $(LOBJS) $(LINK_SPECIAL_FILES)
+-	$(SHLIB_LD) -o $@ $(LOBJS) $(LINK_SPECIAL_FLAGS)
++	$(SHLIB_LD) $(LDFLAGS) -o $@ $(LOBJS) $(LINK_SPECIAL_FLAGS)
+ 
+ Mk4tcl$(LIB_SUFFIX): mk4tcl.o mk4too.o $(LOBJS)
+ 	ar rcu $@ mk4tcl.o mk4too.o $(LOBJS)
+ 	ranlib $@
+ 
+ Mk4tcl$(SHLIB_SUFFIX): mk4tcl.o mk4too.o $(LOBJS) $(LINK_SPECIAL_FILES)
+-	$(SHLIB_LD) -o $@ mk4tcl.o mk4too.o $(LOBJS) $(LINK_SPECIAL_FLAGS)
++	$(SHLIB_LD) $(LDFLAGS) -o $@ mk4tcl.o mk4too.o $(LOBJS) $(LINK_SPECIAL_FLAGS)
+ 
+ Mk4py$(LIB_SUFFIX): $(PYOBJS) $(LOBJS)
+ 	ar cru $@ $(PYOBJS) $(LOBJS)
+ 	ranlib $@
+ 
+ Mk4py$(SHLIB_SUFFIX): $(PYOBJS) $(LOBJS) $(LINK_SPECIAL_FILES)
+-	$(SHLIB_LD) -o $@ $(PYOBJS) $(LOBJS) $(LINK_SPECIAL_FLAGS)
++	$(SHLIB_LD) $(LDFLAGS) -o $@ $(PYOBJS) -L. -lmk4 $(LINK_SPECIAL_FLAGS) $(PYTHON_LIB)
+ 
+ Mk4lua$(SHLIB_SUFFIX): mk4lua.o $(LOBJS) $(LINK_SPECIAL_FILES)
+-	$(SHLIB_LD) -o $@ mk4lua.o $(LOBJS) $(LINK_SPECIAL_FLAGS)
++	$(SHLIB_LD) $(LDFLAGS) -o $@ mk4lua.o $(LOBJS) $(LINK_SPECIAL_FLAGS)
+ 
+ demo: $(srcdir)/../demos/demo.cpp libmk4$(LIBEXT)
+ 	$(CXX) $(CXX_SWITCHES) -o $@$(EXEEXT) \

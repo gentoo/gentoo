@@ -1,0 +1,86 @@
+--- src/input/input.c
++++ src/input/input.c
+@@ -240,7 +240,10 @@
+ *
+ ******************************************************************************/
+ int load_input_cfg(void) {
+-	FILE *fp = fopen("./.epiar-input.ecf", "rb");
++	char filename[PATH_MAX];
++	FILE *fp;
++	snprintf(filename, sizeof(filename), "%s/.epiar-input.ecf", getenv("HOME"));
++	fp = fopen(filename, "rb");
+ 
+ 	/* make sure all keys are enabled */
+ 	unlock_keys();
+@@ -282,7 +285,7 @@
+ 	} else {
+ 		float file_version = 0.0f;
+ 		/* read the file into the struct */
+-		fp = fopen("./.epiar-input.ecf", "rb");
++		fp = fopen(filename, "rb");
+ 
+ 		if (fp == NULL) {
+ 			fprintf(stdout, "Could not open \"./.epiar-input.ecf\" for reading, assuming default bindings.\n");
+@@ -472,10 +475,12 @@
+ }
+ 
+ void save_keybindings(void) {
++	char filename[PATH_MAX];
+ 	float file_version = 0.2f;
+ 	FILE *fp;
+ 
+-	fp = fopen("./.epiar-input.ecf", "wb");
++	snprintf(filename, sizeof(filename), "%s/.epiar-input.ecf", getenv("HOME"));
++	fp = fopen(filename, "wb");
+ 	if (fp == NULL) {
+ 		fprintf(stdout, "Could not create '~/.epiar-input.ecf' to save keybindings\n");
+ 		return;
+--- src/main.c
++++ src/main.c
+@@ -16,7 +16,7 @@
+ unsigned char view_mode = 0;
+ int ship_to_follow = 0;
+ int desired_bpp = 16;
+-char *game_path;
++const char * const game_path = "GENTOO_DATADIR";
+ unsigned char use_ogl = 0;
+ unsigned char skip_intro = 0;
+ FILE *epiar_eaf = NULL, *main_eaf = NULL;
+@@ -78,8 +78,6 @@
+ 
+ 	parse_commandline(argc, argv);
+ 
+-	get_absolute_path(argv[0]);
+-
+ 	init(desired_bpp);
+ 
+ 	menu();
+--- src/main.h
++++ src/main.h
+@@ -1,2 +1,2 @@
+ extern char epiar_version[6];
+-extern char *game_path;
++extern const char * const game_path;
+--- src/system/init.c
++++ src/system/init.c
+@@ -89,9 +89,6 @@
+ 		main_eaf = NULL;
+ 	}
+ 
+-	assert(game_path != NULL);
+-	free(game_path);
+-	game_path = NULL;
+ 
+ 	if (average_loop_time == 0) average_loop_time = 18; /* in case they quit on menu */
+ #ifndef NDEBUG
+--- src/system/path.c
++++ src/system/path.c
+@@ -45,7 +45,7 @@
+ }
+ #endif
+ 
+-#ifdef LINUX
++#if 0
+ char *strip_path_of_binary(char *argv) {
+ 	int len = 0, i, blen = 0;
+ 	char *stripped = NULL;

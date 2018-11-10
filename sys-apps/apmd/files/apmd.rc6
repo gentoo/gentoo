@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need localmount
+}
+
+checkconfig() {
+	if [ ! -e /proc/apm ] ; then
+		eerror "APM support has not been compiled into the kernel"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting apmd"
+	start-stop-daemon --start --quiet --pidfile /var/run/apmd.pid \
+		--startas /usr/sbin/apmd -- ${APMD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping apmd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/apmd.pid
+	eend $?
+}

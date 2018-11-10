@@ -1,0 +1,4 @@
+# Example /etc/issue.net(5)
+
+# This is %h running %s:%r on a %m
+# You are on /dev/ttyp%t at %d' > ${D}/etc/issue.net

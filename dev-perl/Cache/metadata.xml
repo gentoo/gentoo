@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">Cache</remote-id>
+		<remote-id type="cpan-module">Cache</remote-id>
+		<remote-id type="cpan-module">Cache::Entry</remote-id>
+		<remote-id type="cpan-module">Cache::File</remote-id>
+		<remote-id type="cpan-module">Cache::File::Entry</remote-id>
+		<remote-id type="cpan-module">Cache::File::Handle</remote-id>
+		<remote-id type="cpan-module">Cache::File::Heap</remote-id>
+		<remote-id type="cpan-module">Cache::IOString</remote-id>
+		<remote-id type="cpan-module">Cache::Memory</remote-id>
+		<remote-id type="cpan-module">Cache::Memory::Entry</remote-id>
+		<remote-id type="cpan-module">Cache::Memory::HeapElem</remote-id>
+		<remote-id type="cpan-module">Cache::Null</remote-id>
+		<remote-id type="cpan-module">Cache::Null::Entry</remote-id>
+		<remote-id type="cpan-module">Cache::RemovalStrategy</remote-id>
+		<remote-id type="cpan-module">Cache::RemovalStrategy::FIFO</remote-id>
+		<remote-id type="cpan-module">Cache::RemovalStrategy::LRU</remote-id>
+		<remote-id type="cpan-module">Cache::Tester</remote-id>
+	</upstream>
+</pkgmetadata>

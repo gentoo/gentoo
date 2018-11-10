@@ -1,0 +1,29 @@
+From 544930de3b1c754fa8803169902a63bce7cc02ba Mon Sep 17 00:00:00 2001
+From: Adam Goode <adam@spicenitz.org>
+Date: Wed, 6 Feb 2008 20:17:51 -0500
+Subject: [PATCH] Remove PROT_EXEC from mprotect
+
+It looks like mprotect is used here as part of signal handling.
+There doesn't seems to be a reason to have the area of memory
+marked as executable. In fact, on Fedora 9, this causes MLton
+compiled binaries (including MLton itself) to fail.
+---
+ runtime/platform/mmap-protect.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/runtime/platform/mmap-protect.c b/runtime/platform/mmap-protect.c
+index f0dea49..df42215 100644
+--- a/runtime/platform/mmap-protect.c
++++ b/runtime/platform/mmap-protect.c
+@@ -7,7 +7,7 @@ void *GC_mmapAnon_safe_protect (void *start, size_t length,
+         if (mprotect (low, dead_low, PROT_NONE))
+                 diee ("mprotect failed");
+         result = (void*)((pointer)low + dead_low);
+-        if (mprotect (result, length, PROT_READ | PROT_WRITE | PROT_EXEC))
++        if (mprotect (result, length, PROT_READ | PROT_WRITE))
+                 diee ("mprotect failed");
+         high = (void*)((pointer)result + length);
+         if (mprotect (high, dead_high, PROT_NONE))
+-- 
+1.5.4
+

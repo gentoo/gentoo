@@ -1,0 +1,60 @@
+--- Makefile
++++ Makefile
+@@ -2,11 +2,26 @@
+ # (c) 2004-2009 Daniel Stoedle, daniels@cs.uit.no
+ # ptunnel.exe target added by Mike Miller, mike@mikeage.net
+ 
+-CC	 		= gcc
+-CFLAGS		= -Wall -g
+-LDOPTS		= -lpthread -lpcap
++# set to 1 to enable debug symbols
++DEBUG=0
++
++# set to 1 to enable selinux support
++SELINUX=0
++
++CC         ?= gcc
++CFLAGS		+= -Wall
++LIBS		+= -lpthread -lpcap
+ PT_OBJS		= ptunnel.o md5.o
+ 
++ifeq ($(DEBUG),1)
++CFLAGS += -g
++endif
++
++ifeq ($(SELINUX),1)
++CPPFLAGS += -DHAVE_SELINUX
++LIBS += -lselinux
++endif
++
+ WIN32_CC    = mingw32-gcc
+ WIN32_CFLAGS = -g -Wall -DWIN32 -I"c:\Program Files\WpdPack\Include"
+ WIN32_LDOPTS = -lwpcap -lwsock32 -L"c:\Program Files\WpdPack\Lib"
+@@ -26,13 +41,13 @@
+ 	
+ 
+ install: ptunnel
+-	install -d $(bindir)/
+-	install -d $(mandir)/
+-	install ./ptunnel $(bindir)/ptunnel
+-	install ./ptunnel.8 $(mandir)/ptunnel.8
++	install -d "$(DESTDIR)/$(bindir)/"
++	install -d "$(DESTDIR)/$(mandir)/"
++	install -m755 ./ptunnel "$(DESTDIR)/$(bindir)/ptunnel"
++	install -m644 ./ptunnel.8 "$(DESTDIR)/$(mandir)/ptunnel.8"
+ 
+ ptunnel: $(PT_OBJS)
+-	$(CC) -o $@ $^ $(LDOPTS) `[ -e /usr/include/selinux/selinux.h ] && echo -lselinux`
++	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(LIBS)
+ 
+ ptunnel.exe: $(WIN32_PT_OBJS)
+ 	$(CC) -o $@ $^ $(WIN32_LDOPTS)
+@@ -47,7 +62,7 @@
+ 	$(CC) $(CFLAGS) -MM *.c > $@
+ 
+ %.o:%.c
+-	$(CC) $(CFLAGS) `[ -e /usr/include/selinux/selinux.h ] && echo -DHAVE_SELINUX` -c -o $@ $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+ 
+ %.obj:%.c
+ 	$(WIN32_CC) $(WIN32_CFLAGS) -c -o $@ $<

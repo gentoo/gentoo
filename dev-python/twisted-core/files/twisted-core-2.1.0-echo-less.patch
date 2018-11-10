@@ -1,0 +1,13 @@
+=== modified file 'twisted/test/test_process.py'
+--- twisted/test/test_process.py	
++++ twisted/test/test_process.py	
+@@ -76,7 +76,7 @@
+ 
+ class EchoProtocol(protocol.ProcessProtocol):
+ 
+-    s = "1234567" * 1001
++    s = "1234567" * 11
+     n = 10
+     finished = 0
+ 
+

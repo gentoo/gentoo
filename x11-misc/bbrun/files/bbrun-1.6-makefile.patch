@@ -1,0 +1,29 @@
+Respect {C,LD}FLAGS, fix underlinking
+
+http://bugs.gentoo.org/367853
+
+--- bbrun/Makefile
++++ bbrun/Makefile
+@@ -1,7 +1,7 @@
+ CC     = gcc
+ LIBDIR = -L/usr/lib -L/usr/X11R6/lib
+-LIBS   = -lXpm `pkg-config --libs gtk+-2.0`
+-CFLAGS = `pkg-config --cflags gtk+-2.0`
++LIBS   = `pkg-config --libs xext xpm gtk+-2.0`
++DEP_CFLAGS = `pkg-config --cflags xext xpm gtk+-2.0`
+ 
+ OBJS   = bbrun.o \
+          ../wmgeneral/wmgeneral.o \
+@@ -11,10 +11,10 @@
+ all: bbrun
+ 
+ .c.o:
+-	$(CC) -g -c -O2 -Wall $< -o $*.o $(CFLAGS)
++	$(CC) $(CFLAGS) $(DEP_CFLAGS) -c -Wall $< -o $*.o
+ 
+ bbrun: $(OBJS)
+-	$(CC) -Wall -g -o bbrun $^ $(LIBDIR) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -Wall -o bbrun $^ $(LIBDIR) $(LIBS)
+ 
+ install:
+ 	cp bbrun /usr/local/bin/

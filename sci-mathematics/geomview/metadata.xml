@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-mathematics@gentoo.org</email>
+		<name>Gentoo Mathematics Project</name>
+	</maintainer>
+	<longdescription>Geomview is an interactive geometry viewer and Object Oriented Graphics Library (OOGL).</longdescription>
+	<use>
+		<flag name="motionaveraging">Enable experimental motion averaging technique</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">geomview</remote-id>
+	</upstream>
+</pkgmetadata>

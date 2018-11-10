@@ -1,0 +1,19 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Some USE-flags that only die-hards don't want:
+# readline:  to have some sane command line editing, e.g. in python
+# zlib:      for many things you just want gzip support
+# ncurses:   a nice working console drawing library
+# ssl:       encrypted connections are a nice feature
+USE="readline zlib ncurses ssl"
+
+
+# Python 3.6 is unmasked for us, build stuff by default with latest to
+# avoid unnecessary builds
+# NOTE: Both are incremental variables: Need to drop obsolete base values.
+PYTHON_TARGETS="python2_7 -python3_5 python3_6"
+PYTHON_SINGLE_TARGET="-python3_5 python3_6"
+
+# Move away from ruby22 fast forward to ruby24, we don't have ruby23
+RUBY_TARGETS="ruby24"

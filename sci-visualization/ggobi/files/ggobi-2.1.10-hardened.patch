@@ -1,0 +1,66 @@
+Description: Upstream changes introduced in version 2.1.10-4
+ This patch has been created by dpkg-source during the package build.
+ Here's the last changelog entry, hopefully it gives details on why
+ those changes were made:
+ .
+ ggobi (2.1.10-4) unstable; urgency=low
+ .
+   * src/ggobi.c: Applied patch kindly supplied by Michael Lawrence to
+     address issues found under hardened compiler flags (Closes: #646260)
+ .
+ The person named in the Author field signed this changelog entry.
+Author: Dirk Eddelbuettel <edd@debian.org>
+Bug-Debian: http://bugs.debian.org/646260
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- ggobi-2.1.10.orig/src/ggobi.c
++++ ggobi-2.1.10/src/ggobi.c
+@@ -698,10 +698,10 @@ ValidateGGobiRef (ggobid * gg, gboolean
+   }
+ 
+   if (fatal) {
+-    g_error (error_msg);
++    g_error ("%s", error_msg);
+   }
+   else
+-    g_critical (error_msg);
++    g_critical ("%s", error_msg);
+ 
+   return (NULL);
+ }
+@@ -718,9 +718,9 @@ ValidateDatadRef (GGobiData * d, ggobid
+   }
+ 
+   if (fatal)
+-    g_error (error_msg);
++    g_error ("%s", error_msg);
+   else
+-    g_critical (error_msg);
++    g_critical ("%s", error_msg);
+ 
+   return (NULL);
+ }
+@@ -739,9 +739,9 @@ ValidateDisplayRef (displayd * d, ggobid
+   }
+ 
+   if (fatal)
+-    g_error (error_msg);
++    g_error ("%s", error_msg);
+   else
+-    g_critical (error_msg);
++    g_critical ("%s", error_msg);
+ 
+   return (NULL);
+ }

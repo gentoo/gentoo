@@ -1,0 +1,54 @@
+commit b34b7b0474878d1951637b762c68694c16c1c574
+Author: hasufell <hasufell@gentoo.org>
+Date:   Sun Jun 30 22:37:10 2013 +0200
+
+    unbundle http-parser
+
+diff --git a/Makefile b/Makefile
+index a0e9277..99535ca 100644
+--- a/Makefile
++++ b/Makefile
+@@ -40,6 +40,7 @@ USE_SYSTEM_SSL?=0
+ USE_SYSTEM_LUAJIT?=0
+ USE_SYSTEM_ZLIB?=0
+ USE_SYSTEM_YAJL?=0
++USE_SYSTEM_HTTPPARSER?=0
+ 
+ DEBUG ?= 1
+ ifeq (${DEBUG},1)
+@@ -95,6 +96,10 @@ endif
+ LIBS += ${UVDIR}/libuv.a
+ LIBS += ${CARESDIR}/libcares.a
+ 
++ifeq (${USE_SYSTEM_HTTPPARSER},1)
++LIBS += -lhttp_parser
++endif
++
+ ifeq (${USE_SYSTEM_LUAJIT},1)
+ CPPFLAGS+=$(shell pkg-config --cflags luajit)
+ LIBS+=$(shell pkg-config --libs luajit)
+@@ -174,8 +179,11 @@ LUVLIBS=${BUILDDIR}/utils.o          \
+         ${BUILDDIR}/lhttp_parser.o
+ 
+ DEPS= ${UVDIR}/libuv.a             \
+-		${CARESDIR}/libcares.a \
+-		${HTTPDIR}/http_parser.o
++		${CARESDIR}/libcares.a
++
++ifeq (${USE_SYSTEM_HTTPPARSER},0)
++DEPS += ${HTTPDIR}/http_parser.o
++endif
+ 
+ ifeq (${USE_SYSTEM_LUAJIT},0)
+ DEPS+=${LUADIR}/src/libluajit.a
+@@ -290,8 +298,10 @@ install: all
+ 	install ${BUILDDIR}/luvit ${BINDIR}/luvit
+ 	mkdir -p ${LIBDIR}
+ 	cp lib/luvit/*.lua ${LIBDIR}
++ifeq (${USE_SYSTEM_HTTPPARSER},0)
+ 	mkdir -p ${INCDIR}/http_parser
+ 	cp ${HTTPDIR}/http_parser.h ${INCDIR}/http_parser/
++endif
+ 	mkdir -p ${INCDIR}/uv
+ 	cp -r ${UVDIR}/include/* ${INCDIR}/uv/
+ 	cp src/*.h ${INCDIR}/

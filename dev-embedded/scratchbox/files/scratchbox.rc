@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+
+depend() {
+	need localmount
+	use logger net
+}
+
+start() {
+	test -x /opt/scratchbox/sbin/sbox_ctl || \
+		eend 1 "scratchbox init script not found. Aborting" || return 1
+
+	/opt/scratchbox/sbin/sbox_ctl start
+	return $?
+}
+
+stop() {
+	test -x /opt/scratchbox/sbin/sbox_ctl || \
+		eend 1 "scratchbox init script not found. Aborting" || return 1
+	
+	/opt/scratchbox/sbin/sbox_ctl stop
+	return $?
+}
+

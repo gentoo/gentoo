@@ -1,0 +1,48 @@
+diff -purN a/cmake/OpenCVFindLibsGrfmt.cmake b/cmake/OpenCVFindLibsGrfmt.cmake
+--- a/cmake/OpenCVFindLibsGrfmt.cmake	2015-12-18 15:02:16.000000000 +0000
++++ b/cmake/OpenCVFindLibsGrfmt.cmake	2016-11-07 13:18:04.567340791 +0000
+@@ -18,7 +18,7 @@ endif()
+ if(NOT ZLIB_FOUND)
+   ocv_clear_vars(ZLIB_LIBRARY ZLIB_LIBRARIES ZLIB_INCLUDE_DIRS)
+ 
+-  set(ZLIB_LIBRARY zlib)
++  set(ZLIB_LIBRARY z)
+   add_subdirectory("${OpenCV_SOURCE_DIR}/3rdparty/zlib")
+   set(ZLIB_INCLUDE_DIRS "${${ZLIB_LIBRARY}_SOURCE_DIR}" "${${ZLIB_LIBRARY}_BINARY_DIR}")
+   set(ZLIB_LIBRARIES ${ZLIB_LIBRARY})
+@@ -40,7 +40,7 @@ if(WITH_TIFF)
+   if(NOT TIFF_FOUND)
+     ocv_clear_vars(TIFF_LIBRARY TIFF_LIBRARIES TIFF_INCLUDE_DIR)
+ 
+-    set(TIFF_LIBRARY libtiff)
++    set(TIFF_LIBRARY tiff)
+     set(TIFF_LIBRARIES ${TIFF_LIBRARY})
+     add_subdirectory("${OpenCV_SOURCE_DIR}/3rdparty/libtiff")
+     set(TIFF_INCLUDE_DIR "${${TIFF_LIBRARY}_SOURCE_DIR}" "${${TIFF_LIBRARY}_BINARY_DIR}")
+@@ -79,7 +79,7 @@ if(WITH_JPEG)
+   if(NOT JPEG_FOUND)
+     ocv_clear_vars(JPEG_LIBRARY JPEG_LIBRARIES JPEG_INCLUDE_DIR)
+ 
+-    set(JPEG_LIBRARY libjpeg)
++    set(JPEG_LIBRARY jpeg)
+     set(JPEG_LIBRARIES ${JPEG_LIBRARY})
+     add_subdirectory("${OpenCV_SOURCE_DIR}/3rdparty/libjpeg")
+     set(JPEG_INCLUDE_DIR "${${JPEG_LIBRARY}_SOURCE_DIR}")
+@@ -136,7 +136,7 @@ if(WITH_JASPER)
+   if(NOT JASPER_FOUND)
+     ocv_clear_vars(JASPER_LIBRARY JASPER_LIBRARIES JASPER_INCLUDE_DIR)
+ 
+-    set(JASPER_LIBRARY libjasper)
++    set(JASPER_LIBRARY jasper)
+     set(JASPER_LIBRARIES ${JASPER_LIBRARY})
+     add_subdirectory("${OpenCV_SOURCE_DIR}/3rdparty/libjasper")
+     set(JASPER_INCLUDE_DIR "${${JASPER_LIBRARY}_SOURCE_DIR}")
+@@ -169,7 +169,7 @@ if(WITH_PNG)
+   if(NOT PNG_FOUND)
+     ocv_clear_vars(PNG_LIBRARY PNG_LIBRARIES PNG_INCLUDE_DIR PNG_PNG_INCLUDE_DIR HAVE_LIBPNG_PNG_H PNG_DEFINITIONS)
+ 
+-    set(PNG_LIBRARY libpng)
++    set(PNG_LIBRARY png)
+     set(PNG_LIBRARIES ${PNG_LIBRARY})
+     add_subdirectory("${OpenCV_SOURCE_DIR}/3rdparty/libpng")
+     set(PNG_INCLUDE_DIR "${${PNG_LIBRARY}_SOURCE_DIR}")

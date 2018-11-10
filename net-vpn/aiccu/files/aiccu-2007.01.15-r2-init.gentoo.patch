@@ -1,0 +1,33 @@
+--- aiccu/doc/aiccu.init.gentoo
++++ aiccu/doc/aiccu.init.gentoo
+@@ -2,7 +2,7 @@
+ 
+ depend() {
+ 	need net
+-	after ntp-client
++	after ntp-client ntpd
+ }
+ 
+ checkconfig() {
+@@ -23,14 +23,19 @@
+ start() {
+ 	checkconfig || return 1
+ 	ebegin "Starting aiccu"
+-	start-stop-daemon --start --oknodo --quiet --exec /usr/sbin/aiccu -- start
++	start-stop-daemon --start --quiet --exec /usr/sbin/aiccu -- start
+ 	eend $?
+ }
+ 
+ 
+ stop() {
+ 	ebegin "Stopping aiccu"
+-	start-stop-daemon --stop --oknodo --quiet --exec /usr/sbin/aiccu -- stop
++	start-stop-daemon --stop --pidfile /var/run/aiccu.pid --quiet --exec /usr/sbin/aiccu -- stop
+ 	eend $?
+ }
+ 
++restart() {
++	stop
++	sleep 3
++	start
++}

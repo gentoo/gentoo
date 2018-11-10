@@ -1,0 +1,17 @@
+--- tkx2vnc	2010-03-14 21:31:49.000000000 +0100
++++ tkx2vnc.new	2010-03-14 21:32:58.000000000 +0100
+@@ -1,10 +1,13 @@
+-#!/usr/bin/expectk -f
++#!/usr/bin/wish
+ 
+ # Name: tkx2vnc
+ # Author: David Noble
+ # Version: 1.0a
+ # Written: May 13, 2002
+ # Modified: May 15, 2002
++# Expect dependency fixed by Patrick Kursawe, March 14, 2010
++
++package require Expect
+ 
+ proc prompt {} {
+     global prefs

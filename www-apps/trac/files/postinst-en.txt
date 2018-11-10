@@ -1,0 +1,41 @@
+Install Instructions
+====================
+
+This is brief and generic information about Trac.
+
+See the releases notes at http://trac.edgewall.org/wiki/TracDev/ReleaseNotes
+for the Trac version you have installed to learn about software changes and
+possible caveats.
+
+Web Server
+----------
+
+Trac installation depends on the web server you are using.
+
+FastCGI users: see http://trac.edgewall.org/wiki/TracFastCgi
+
+CGI users: see http://trac.edgewall.org/wiki/TracCgi
+
+Apache 2 and mod_python users: you have to manually emerge
+www-apache/mod_python. See http://trac.edgewall.org/wiki/TracModPython
+
+You can also use Trac without having to install a web server. See
+http://trac.edgewall.org/wiki/TracStandalone to know more.
+
+Trac relies on the web server for users authentication. Please refer to the
+Trac wiki and to your web server documentation to set up authentication.
+
+Trac environments
+-----------------
+
+To complete the install, create your first Trac environment by running this
+command:
+
+	trac-admin /var/lib/trac/<project-name> initenv
+
+Don't forget to review the configuration file! It is located at
+/var/lib/trac/<project-name>/conf/trac.ini. Consult its reference at
+http://trac.edgewall.org/wiki/TracIni
+
+See http://trac.edgewall.org/wiki/TracEnvironment to know more about Trac
+environments and how to configure them.

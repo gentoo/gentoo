@@ -1,0 +1,45 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# Somehow based on init.d file shipped with mt-daapd itself.
+#
+# You can run multiple copies of this service just symlinking them to
+# mt-daapd.<name>, then it will load /etc/mt-daapd.d/<name>.conf as config
+# file.
+# Remember to give them different logs and cache directories.
+#
+# The main instance (with no <name>) uses /etc/mt-daapd.conf
+
+# Check for OpenRC/Baselayout 2 -- see bug #230917
+if [ -f /lib/librc.so -o -f /etc/init.d/sysfs -o -f /lib/rc/version ]; then
+	myservice=$RC_SVCNAME
+fi
+
+CONF="${myservice##*.}"
+if [ -n ${CONF} -a ${myservice} != "mt-daapd" ]; then
+	PIDFILE="/var/run/mt-daapd.${CONF}.pid"
+	CONFFILE="/etc/mt-daapd.d/${CONF}.conf"
+else
+	PIDFILE="/var/run/mt-daapd.pid"
+	CONFFILE="/etc/mt-daapd.conf"
+fi
+
+depend() {
+	need net
+	#USEHOWL need mDNSResponderPosix
+}
+
+start() {
+	ebegin "Starting mt-daapd DAAP server"
+	start-stop-daemon --start --quiet --pidfile ${PIDFILE} \
+		--exec /usr/sbin/mt-daapd -- -P ${PIDFILE} -c ${CONFFILE}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping mt-daapd DAAP server"
+	start-stop-daemon --stop --quiet --pidfile ${PIDFILE} --signal 2
+	eend $?
+
+	rm -f ${PIDFILE}
+}

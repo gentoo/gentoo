@@ -1,0 +1,19 @@
+--- logtalk-3.18.0.orig/scripts/logtalk_user_setup.sh	2018-06-26 15:11:02.000000000 +0200
++++ logtalk-3.18.0/scripts/logtalk_user_setup.sh	2018-07-22 14:05:50.343406307 +0200
+@@ -131,16 +131,6 @@
+ rm -f "$LOGTALKUSER"/tools/lgtdoc/xml/lgt2*
+ rm -f "$LOGTALKUSER"/tools/lgtdoc/xml/logtalk.dtd
+ rm -f "$LOGTALKUSER"/tools/lgtdoc/xml/logtalk.xsd
+-ln -sf "$LOGTALKHOME"/ACKNOWLEDGMENTS.md "$LOGTALKUSER"/ACKNOWLEDGMENTS.md
+-ln -sf "$LOGTALKHOME"/BIBLIOGRAPHY.bib "$LOGTALKUSER"/BIBLIOGRAPHY.bib
+-ln -sf "$LOGTALKHOME"/CONTRIBUTING.md "$LOGTALKUSER"/CONTRIBUTING.md
+-ln -sf "$LOGTALKHOME"/CUSTOMIZE.md "$LOGTALKUSER"/CUSTOMIZE.md
+-ln -sf "$LOGTALKHOME"/INSTALL.md "$LOGTALKUSER"/INSTALL.md
+-ln -sf "$LOGTALKHOME"/LICENSE.txt "$LOGTALKUSER"/LICENSE.txt
+-ln -sf "$LOGTALKHOME"/QUICK_START.md "$LOGTALKUSER"/QUICK_START.md
+-ln -sf "$LOGTALKHOME"/README.md "$LOGTALKUSER"/README.md
+-ln -sf "$LOGTALKHOME"/RELEASE_NOTES.md "$LOGTALKUSER"/RELEASE_NOTES.md
+-ln -sf "$LOGTALKHOME"/UPGRADING.md "$LOGTALKUSER"/UPGRADING.md
+ ln -sf "$LOGTALKHOME"/adapters "$LOGTALKUSER"/adapters
+ ln -sf "$LOGTALKHOME"/coding "$LOGTALKUSER"/coding
+ ln -sf "$LOGTALKHOME"/integration "$LOGTALKUSER"/integration

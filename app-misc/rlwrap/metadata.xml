@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>common-lisp@gentoo.org</email>
+    <name>Gentoo Common Lisp Project</name>
+  </maintainer>
+  <longdescription>
+    rlwrap is a 'readline wrapper' that uses the GNU Readline library to
+    allow the editing of keyboard input for any other command. Input
+    history is remembered across invocations, separately for each command;
+    history completion and search work as in bash and completion word
+    lists can be specified on the command line.
+  </longdescription>
+  <use>
+    <flag name="debug">Enable debug</flag>
+  </use>
+</pkgmetadata>

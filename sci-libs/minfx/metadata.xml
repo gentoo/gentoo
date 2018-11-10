@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<longdescription>
+		The minfx project is a python package for numerical optimisation,
+		being a large collection of standard minimisation algorithms. The name minfx
+		is simply a shortening of the mathematical expression min f(x).
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,84 @@
+--- src/probes/unix/Process58Probe.cpp.old	2013-01-14 16:05:18.000000000 +0100
++++ src/probes/unix/Process58Probe.cpp	2013-01-14 16:06:16.000000000 +0100
+@@ -29,8 +29,8 @@
+ //****************************************************************************************//
+ 
+ #ifdef LINUX
+-#  include <selinux/selinux.h>
+-#  include <selinux/context.h>
++/*#  include <selinux/selinux.h>
++#  include <selinux/context.h>*/
+ #  include <sys/capability.h>
+ #  include <SecurityContextGuard.h>
+ #endif
+@@ -328,7 +328,7 @@
+ 	pid_t sessionId;
+ 	uid_t loginuid;
+ 	uint64_t effCap, *effCapp=&effCap;
+-	string selinuxDomainLabel;
++/*	string selinuxDomainLabel;*/
+ 
+ 	Process58Probe::ProcStatus statStatus, statusStatus, ttyStatus, loginuidStatus;
+ 
+@@ -423,10 +423,10 @@
+ 	}
+ 
+ 	// this one doesn't require reading anything in /proc
+-	if (!RetrieveSelinuxDomainLabel(pid, &selinuxDomainLabel, &errMsg)) {
++/*	if (!RetrieveSelinuxDomainLabel(pid, &selinuxDomainLabel, &errMsg)) {
+ 		item->AppendMessage(new OvalMessage(errMsg, OvalEnum::LEVEL_ERROR));
+ 		item->SetStatus(OvalEnum::STATUS_ERROR);
+-	}
++	}*/
+ 
+ 	// The Linux start time is represented as the number of jiffies (1/100 sec)
+ 	// that the application was started after the last system reboot.  To get an
+@@ -522,10 +522,10 @@
+ 		// aren't any.
+ 		item->AppendElement(new ItemEntity("posix_capability", "", OvalEnum::DATATYPE_STRING, OvalEnum::STATUS_ERROR));
+ 
+-	if (selinuxDomainLabel.empty())
++/*	if (selinuxDomainLabel.empty())
+ 		item->AppendElement(new ItemEntity("selinux_domain_label", "", OvalEnum::DATATYPE_STRING, OvalEnum::STATUS_ERROR));
+ 	else
+-		item->AppendElement(new ItemEntity("selinux_domain_label", selinuxDomainLabel));
++		item->AppendElement(new ItemEntity("selinux_domain_label", selinuxDomainLabel));*/
+ 
+ 	if (statStatus == PROC_OK)
+ 		item->AppendElement(new ItemEntity("session_id", Common::ToString(sessionId), OvalEnum::DATATYPE_INTEGER));
+@@ -740,7 +740,7 @@
+ 											   capMap[capEnum]));
+ 	}
+ }
+-
++/*
+ bool Process58Probe::RetrieveSelinuxDomainLabel(pid_t pid, string *label, string *err) {
+ 	security_context_t sctx;
+ 	int ec = getpidcon(pid, &sctx);
+@@ -763,7 +763,7 @@
+ 	*label = tmp;
+ 	return true;
+ }
+-
++*/
+ #elif defined SUNOS
+ 
+ void Process58Probe::GetPSInfo(string command, string pidStr, ItemVector* items) {
+@@ -830,7 +830,7 @@
+ 	item->AppendElement(new ItemEntity("exec_shield", "", OvalEnum::DATATYPE_BOOLEAN, OvalEnum::STATUS_NOT_COLLECTED));
+ 	item->AppendElement(new ItemEntity("loginuid", "", OvalEnum::DATATYPE_INTEGER, OvalEnum::STATUS_NOT_COLLECTED));
+  	item->AppendElement(new ItemEntity("posix_capability", "", OvalEnum::DATATYPE_STRING, OvalEnum::STATUS_NOT_COLLECTED));
+- 	item->AppendElement(new ItemEntity("selinux_domain_label", "", OvalEnum::DATATYPE_STRING, OvalEnum::STATUS_NOT_COLLECTED));
++/* 	item->AppendElement(new ItemEntity("selinux_domain_label", "", OvalEnum::DATATYPE_STRING, OvalEnum::STATUS_NOT_COLLECTED));*/
+ 	item->AppendElement(new ItemEntity("session_id", Common::ToString(info.pr_sid), OvalEnum::DATATYPE_INTEGER));
+ 
+ 	items->push_back(item);
+@@ -988,7 +988,7 @@
+ 	item->AppendElement(new ItemEntity("exec_shield", "", OvalEnum::DATATYPE_BOOLEAN, OvalEnum::STATUS_NOT_COLLECTED));
+ 	item->AppendElement(new ItemEntity("loginuid", "", OvalEnum::DATATYPE_INTEGER, OvalEnum::STATUS_NOT_COLLECTED));
+ 	item->AppendElement(new ItemEntity("posix_capability", "", OvalEnum::DATATYPE_STRING, OvalEnum::STATUS_NOT_COLLECTED));
+-	item->AppendElement(new ItemEntity("selinux_domain_label", "", OvalEnum::DATATYPE_STRING, OvalEnum::STATUS_NOT_COLLECTED));
++/*	item->AppendElement(new ItemEntity("selinux_domain_label", "", OvalEnum::DATATYPE_STRING, OvalEnum::STATUS_NOT_COLLECTED));*/
+ 	item->AppendElement(new ItemEntity("session_id", "", OvalEnum::DATATYPE_INTEGER, OvalEnum::STATUS_NOT_COLLECTED));
+     
+     items->push_back(item);

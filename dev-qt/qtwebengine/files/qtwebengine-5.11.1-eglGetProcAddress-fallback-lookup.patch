@@ -1,0 +1,68 @@
+From a66d4cd82972996d76edff52d17464c150dec6a6 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Mon, 11 Jun 2018 16:16:55 +0300
+Subject: Add fallback lookup for eglGetProcAddress
+
+Use the GLContext to find address for eglGetProcAddress symbol, if it's
+not found with dlopen.
+
+Change-Id: I3f5330c21ecc9b66e5e376d50d3fc6965b227f85
+Reviewed-by: Michal Klocek <michal.klocek@qt.io>
+---
+ src/core/gl_context_qt.cpp | 11 +++++++++++
+ src/core/gl_context_qt.h   |  1 +
+ src/core/gl_surface_qt.cpp |  4 ++++
+ 3 files changed, 16 insertions(+)
+
+diff --git a/src/core/gl_context_qt.cpp b/src/core/gl_context_qt.cpp
+index 9ed1db8b..95491709 100644
+--- a/src/core/gl_context_qt.cpp
++++ b/src/core/gl_context_qt.cpp
+@@ -155,6 +155,17 @@ QFunctionPointer GLContextHelper::getGlXGetProcAddress()
+     return get_proc_address;
+ }
+ 
++QFunctionPointer GLContextHelper::getEglGetProcAddress()
++{
++     QFunctionPointer get_proc_address = nullptr;
++#ifndef QT_NO_OPENGL
++    if (QOpenGLContext *context = qt_gl_global_share_context()) {
++        get_proc_address = context->getProcAddress("eglGetProcAddress");
++    }
++#endif
++    return get_proc_address;
++}
++
+ QT_END_NAMESPACE
+ 
+ #if defined(USE_OZONE) || defined(OS_WIN)
+diff --git a/src/core/gl_context_qt.h b/src/core/gl_context_qt.h
+index 8ffdad58..cecceabc 100644
+--- a/src/core/gl_context_qt.h
++++ b/src/core/gl_context_qt.h
+@@ -63,6 +63,7 @@ public:
+     static void* getXDisplay();
+     static void* getNativeDisplay();
+     static QFunctionPointer getGlXGetProcAddress();
++    static QFunctionPointer getEglGetProcAddress();
+ private:
+     Q_INVOKABLE bool initializeContextOnBrowserThread(gl::GLContext* context, gl::GLSurface* surface, gl::GLContextAttribs attribs);
+ 
+diff --git a/src/core/gl_surface_qt.cpp b/src/core/gl_surface_qt.cpp
+index 7e579246..4d38d7c2 100644
+--- a/src/core/gl_surface_qt.cpp
++++ b/src/core/gl_surface_qt.cpp
+@@ -227,6 +227,10 @@ bool InitializeStaticGLBindings(GLImplementation implementation) {
+               base::GetFunctionPointerFromNativeLibrary(library,
+                                                         "eglGetProcAddress"));
+       if (!get_proc_address) {
++          QFunctionPointer address = GLContextHelper::getEglGetProcAddress();
++          get_proc_address = reinterpret_cast<gl::GLGetProcAddressProc>(address);
++      }
++      if (!get_proc_address) {
+         LOG(ERROR) << "eglGetProcAddress not found.";
+         base::UnloadNativeLibrary(library);
+         return false;
+-- 
+cgit v1.1-6-g87c4
+

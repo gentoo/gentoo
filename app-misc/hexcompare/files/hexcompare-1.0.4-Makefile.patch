@@ -1,0 +1,14 @@
+--- hexcompare-1.0.4/Makefile
++++ hexcompare-1.0.4/Makefile
+@@ -1,9 +1,9 @@
+-CFLAGS = -O3 -Wall -Wextra -pedantic -Wformat-security -std=gnu89
++CFLAGS += -Wall -Wextra -pedantic -Wformat-security -std=gnu89
+ 
+ all: hexcompare
+ 
+ hexcompare: main.c gui.c
+-	$(CC) $(CFLAGS) -o hexcompare main.c gui.c -lncurses
++	$(CC) $(CFLAGS) `pkg-config --cflags ncurses` -o hexcompare main.c gui.c `pkg-config --libs ncurses`
+ 
+ clean:
+ 	rm -f *.o

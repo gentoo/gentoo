@@ -1,0 +1,145 @@
+Index: mldonkey-3.1.5/src/config/unix/os_stubs_c.c
+===================================================================
+--- mldonkey-3.1.5.orig/src/config/unix/os_stubs_c.c
++++ mldonkey-3.1.5/src/config/unix/os_stubs_c.c
+@@ -66,7 +66,7 @@ ssize_t os_read(OS_FD fd, char *buf, siz
+ 
+ void os_ftruncate(OS_FD fd, OFF_T len, /* bool */ int sparse)
+ {
+-  int64 cursize;
++  int64_t cursize;
+   if(!fd) failwith("ftruncate32: file is closed");
+   
+   cursize = os_getfdsize(fd);
+@@ -109,7 +109,7 @@ int os_getdtablesize()
+ 
+ *******************************************************************/
+ 
+-int64 os_getfdsize(OS_FD fd)
++int64_t os_getfdsize(OS_FD fd)
+ {
+   struct stat buf;
+ 
+@@ -127,7 +127,7 @@ int64 os_getfdsize(OS_FD fd)
+ 
+ *******************************************************************/
+ 
+-int64 os_getfilesize(char *path)
++int64_t os_getfilesize(char *path)
+ {
+   struct stat buf;
+ 
+Index: mldonkey-3.1.5/src/networks/donkey/donkeyGlobals.ml
+===================================================================
+--- mldonkey-3.1.5.orig/src/networks/donkey/donkeyGlobals.ml
++++ mldonkey-3.1.5/src/networks/donkey/donkeyGlobals.ml
+@@ -781,7 +781,6 @@ let set_client_name c name md4 =
+       c.client_md4 <- md4;
+     end
+ 
+-exception ClientFound of client
+ let find_client_by_name name =
+   try
+     H.iter (fun c ->
+Index: mldonkey-3.1.5/src/utils/cdk/zip.ml
+===================================================================
+--- mldonkey-3.1.5.orig/src/utils/cdk/zip.ml
++++ mldonkey-3.1.5/src/utils/cdk/zip.ml
+@@ -72,8 +72,6 @@ type out_file =
+     mutable of_entries: entry list;
+     of_comment: string }
+ 
+-exception Error of string * string * string
+-
+ (* Return the position of the last occurrence of s1 in s2, or -1 if not
+    found. *)
+ 
+Index: mldonkey-3.1.5/src/utils/cdk/zlibstubs.c
+===================================================================
+--- mldonkey-3.1.5.orig/src/utils/cdk/zlibstubs.c
++++ mldonkey-3.1.5/src/utils/cdk/zlibstubs.c
+@@ -191,7 +191,7 @@ value camlzip_inflateEnd(value vzs)
+ 
+ value camlzip_update_crc32(value crc, value buf, value pos, value len)
+ {
+-  return copy_int32(crc32((uint32) Int32_val(crc), 
++  return copy_int32(crc32((uint32_t) Int32_val(crc), 
+                           &Byte_u(buf, Long_val(pos)),
+                           Long_val(len)));
+ }
+Index: mldonkey-3.1.5/src/utils/lib/fst_hash.c
+===================================================================
+--- mldonkey-3.1.5.orig/src/utils/lib/fst_hash.c
++++ mldonkey-3.1.5/src/utils/lib/fst_hash.c
+@@ -197,7 +197,7 @@ unsigned short fst_hash_checksum (unsign
+ /*****************************************************************************/
+ 
+ // hash file
+-int fst_hash_file (unsigned char *fth, char *file, int64 filesize)
++int fst_hash_file (unsigned char *fth, char *file, int64_t filesize)
+ {
+   FILE *fp;
+   unsigned char *buf;
+@@ -271,7 +271,7 @@ int fst_hash_file (unsigned char *fth, c
+ }
+ 
+ 
+-void fst_hash_string (unsigned char *fth, unsigned char *file, int64 filesize)
++void fst_hash_string (unsigned char *fth, unsigned char *file, int64_t filesize)
+ {
+   unsigned char * buf = file;
+   size_t len = filesize;
+Index: mldonkey-3.1.5/src/utils/lib/options.ml4
+===================================================================
+--- mldonkey-3.1.5.orig/src/utils/lib/options.ml4
++++ mldonkey-3.1.5/src/utils/lib/options.ml4
+@@ -332,7 +332,6 @@ let exit_exn = Exit
+ 
+ 
+ let unsafe_get = String.unsafe_get
+-external is_printable : char -> bool = "caml_is_printable"
+ let unsafe_set = String.unsafe_set
+   
+ let escaped s =
+@@ -343,7 +342,7 @@ let escaped s =
+         (match unsafe_get s i with
+            '"' | '\\' -> 2
+          | '\n' | '\t' -> 1
+-         | c -> if is_printable c then 1 else 4)
++         | c -> 1)
+   done;
+   if !n = String.length s then s
+   else
+@@ -354,16 +353,7 @@ let escaped s =
+         '"' | '\\' as c -> unsafe_set s' !n '\\'; incr n; unsafe_set s' !n c
+       | '\n' | '\t' as c -> unsafe_set s' !n c
+       | c ->
+-          if is_printable c then unsafe_set s' !n c
+-          else
+-            let a = int_of_char c in
+-            unsafe_set s' !n '\\';
+-            incr n;
+-            unsafe_set s' !n (char_of_int (48 + a / 100));
+-            incr n;
+-            unsafe_set s' !n (char_of_int (48 + a / 10 mod 10));
+-            incr n;
+-            unsafe_set s' !n (char_of_int (48 + a mod 10))
++          unsafe_set s' !n c
+       end;
+       incr n
+     done;
+Index: mldonkey-3.1.5/src/utils/lib/os_stubs.h
+===================================================================
+--- mldonkey-3.1.5.orig/src/utils/lib/os_stubs.h
++++ mldonkey-3.1.5/src/utils/lib/os_stubs.h
+@@ -155,8 +155,8 @@ extern OFF_T os_lseek(OS_FD fd, OFF_T po
+ extern void os_ftruncate(OS_FD fd, OFF_T len, int sparse);
+ extern ssize_t os_read(OS_FD fd, char *buf, size_t len);
+ extern int os_getdtablesize();
+-extern int64 os_getfdsize(OS_FD fd);
+-extern int64 os_getfilesize(char *path);
++extern int64_t os_getfdsize(OS_FD fd);
++extern int64_t os_getfilesize(char *path);
+ extern void os_set_nonblock(OS_SOCKET fd);
+ extern void os_uname(char buf[]);
+ extern int os_os_supported();

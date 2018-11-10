@@ -1,0 +1,54 @@
+--- a/doc/release-notes.html
++++ b/doc/release-notes.html
+@@ -15,6 +15,21 @@
+     </div>
+     <h2>MEME Suite Release Notes</h2>
+     <hr>
++      <b>MEME version 4.11.2 patch 2 -- October 24, 2016</b>
++      <ul>
++        <li>
++            <b>Bug fixes</b>
++            <ul>
++              <li>
++              Fixed bug in handling of RNA-like custom alphabets.
++              </li>
++              <li>
++              Fixed bug in MAST -comp option.
++              </li>
++            </ul
++        </li>
++      </ul>
++      <hr>
+       <b>MEME version 4.11.2 patch 1 -- June 16, 2016</b>
+       <ul>
+         <li>
+--- a/src/alph-in.c
++++ b/src/alph-in.c
+@@ -1044,7 +1044,7 @@
+           lookup[0] = sym->complement;
+           comp2 = (ALPH_SYM_T*)rbtree_get(reader->merged, lookup);
+         }
+-        if (comp1 != comp2) {
++        if (comp1 && (comp1 != comp2)) {
+           add_msg(reader, parmsg_create(SEVERITY_ERROR, -1, -1, -1, 
+                 "not like %s alphabet as %c complement rules are incorrect",
+                 ext_name, req_syms[i]));
+--- a/src/mast-util.c
++++ b/src/mast-util.c
+@@ -740,14 +740,14 @@
+ 
+   // create the frequency array  
+   alph = xlate ? xlate_dest_alph(xlate) : alph;
+-  freq = allocate_array(alph_size_core(alph));
++  freq = allocate_array(alph_size_full(alph));
+   init_array(0, freq);
+ 
+   // count the number of letters of each type 
+   if (xlate) {
+     for (n=0; sequence[n]; n++) {
+       i = xlate_index(xlate, false, sequence+n);
+-      if (i > 0 && i < alph_size_core(alph)) incr_array_item(i, 1, freq);
++      if (i > 0 && i < alph_size_full(alph)) incr_array_item(i, 1, freq);
+     }
+   } else {
+     for (n=0; sequence[n]; n++) {

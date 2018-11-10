@@ -1,0 +1,11 @@
+--- a/celestia.cfg
++++ b/celestia.cfg
+@@ -195,7 +195,7 @@
+ # or
+ #   ExtrasDirectories  [ "D:\\celestia-extras" ]
+ #------------------------------------------------------------------------
+-  ExtrasDirectories  [ "extras-standard" "extras" ]
++  ExtrasDirectories  [ "extras-standard" "extras" "~/.celestia" ]
+ 
+ 
+ #------------------------------------------------------------------------

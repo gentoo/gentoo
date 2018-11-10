@@ -1,0 +1,13 @@
+wchar_t is defined in /usr/include/stddef.h on Solaris
+
+--- include/X11/Xlib.h
++++ include/X11/Xlib.h
+@@ -71,7 +71,7 @@
+ #endif
+ #endif
+ 
+-#ifndef X_WCHAR
++#if !defined(X_WCHAR) || defined(__sun__)
+ #include <stddef.h>
+ #else
+ #ifdef __UNIXOS2__

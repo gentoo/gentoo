@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>waebbl@gmail.com</email>
+	<name>Bernd Waibel</name>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<longdescription>
+	Denemo is a music notation editor which uses
+	<pkg>media-sound/lilypond</pkg> to typeset music notation with LaTeX.
+</longdescription>
+<use>
+	<flag name="alsa">
+		Enable alsa support through <pkg>media-libs/alsa-lib</pkg>
+	</flag>
+	<flag name="aubio">
+		Enable <pkg>media-libs/aubio</pkg> support
+	</flag>
+	<flag name="doc">
+		Use <pkg>dev-util/gtk-doc</pkg> to build documentation in html format
+	</flag>
+	<flag name="evince">
+		Use <pkg>app-text/evince</pkg> document viewer
+	</flag>
+	<flag name="fluidsynth">
+		Enable Fluidsynth MIDI software synthesis using
+		<pkg>media-sound/fluidsynth</pkg>
+	</flag>
+	<flag name="gtk3">
+		Enable support for the GTK+. If enabled uses slot 3 of
+		<pkg>x11-libs/gtk+</pkg>, if disabled it uses slot 2
+	</flag>
+	<flag name="jack">
+		Enable jack support through <pkg>virtual/jack</pkg>
+	</flag>
+	<flag name="portaudio">
+		Enable support for <pkg>media-libs/portaudio</pkg>
+	</flag>
+	<flag name="portmidi">
+		Enable support for the <pkg>media-libs/portmidi</pkg> backend
+	</flag>
+	<flag name="rubberband">
+		Enable support for <pkg>media-libs/rubberband</pkg>
+	</flag>
+</use>
+<upstream>
+	<bugs-to>https://savannah.gnu.org/bugs/?group=denemo&amp;func=additem</bugs-to>
+</upstream>
+</pkgmetadata>

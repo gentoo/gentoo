@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>patrick@gentoo.org</email>
+        <name>Patrick Lauer</name>
+    </maintainer>
+    <longdescription>
+    LibTomPoly has the following features.
+
+      * Totally public domain and is only dependent on LibTomMath, another public 
+        domain library.
+      * Portable source code.
+      * Provides access to polynomials of finite characteristic of varying degrees 
+        (it will grow to accomodate)
+      * Includes several algebraic operations.
+            o Usual addition, subtraction, division, multiplication.
+            o Modular versions of the add/sub/mul
+            o Modular exponentiation
+            o Irreducibility testing.
+            o Monic reductions
+            o Comparisons
+    </longdescription>
+    <upstream>
+        <remote-id type="github">libtom/libtompoly</remote-id>
+    </upstream>
+</pkgmetadata>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>aballier@gentoo.org</email>
+		<name>Alexis Ballier</name>
+	</maintainer>
+	<use>
+		<flag name="cuda">Adds support for NVIDIA CUDA.</flag>
+		<flag name="openni">Adds support for Kinect-like 3D sensors devices with <pkg>dev-libs/OpenNI</pkg>.</flag>
+		<flag name="openni2">Adds support for Kinect-like 3D sensors devices with <pkg>dev-libs/OpenNI2</pkg> (should be preferred over openni).</flag>
+		<flag name="pcap">Adds pcap file capabilities in some drivers.</flag>
+		<flag name="qhull">Adds convex-hull operation support via <pkg>media-libs/qhull</pkg>.</flag>
+		<flag name="vtk">Adds support for VTK-Visualizations.</flag>
+		<flag name="tutorials">Builds and installs tutorials.</flag>
+	</use>
+	<longdescription lang="en">
+		The Point Cloud Library (PCL) is a standalone, large scale, open project for 2D/3D image and point cloud processing.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">PointCloudLibrary/pcl</remote-id>
+	</upstream>
+</pkgmetadata>

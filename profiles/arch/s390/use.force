@@ -1,0 +1,11 @@
+# Copyright 1999-2014 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+
+# Force the flag which corresponds to ARCH.
+s390
+
+# Force the flag corresponding to the only ABI.
+abi_s390_32
+
+# We do not have multilib by default.
+-multilib

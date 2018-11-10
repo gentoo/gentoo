@@ -1,0 +1,11 @@
+--- a/src/tests/Makefile.am
++++ b/src/tests/Makefile.am
+@@ -67,7 +67,7 @@
+ 
+ TESTS=$(BUILT_TESTS) $(TESTSCRIPTS)
+ 
+-TESTS_ENVIRONMENT=RUN_FROM_MAKE=1 AWK=$(AWK) srcdir=$(srcdir) SHELL="$(SHELL)" $(SHELL) $(VERBOSE)
++TESTS_ENVIRONMENT=RUN_FROM_MAKE=1 AWK=$(AWK) srcdir=$(srcdir) SHELL="$(SHELL)" $(VERBOSE)
+ 
+ EXTRA_DIST=$(TESTSCRIPTS) t.frame t.save t.skel \
+ 	printcore t._abort unsort.pl \

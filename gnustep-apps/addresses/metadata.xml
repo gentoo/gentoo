@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gnustep@gentoo.org</email>
+	<name>Gentoo GNUstep Project</name>
+</maintainer>
+<longdescription>
+This package constitutes a personal address manager for the GNUstep
+software system. It allows archiving complete personal contact
+information, organizing contacts in groups, integration with other
+software such as mail clients and sharing address information with
+other users over the network.
+</longdescription>
+</pkgmetadata>

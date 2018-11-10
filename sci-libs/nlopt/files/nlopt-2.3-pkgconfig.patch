@@ -1,0 +1,10 @@
+--- nlopt.pc.in.orig	2012-08-03 01:41:30.000000000 +0100
++++ nlopt.pc.in	2012-08-03 01:42:29.000000000 +0100
+@@ -6,5 +6,6 @@
+ Name: NLopt
+ Description: nonlinear optimization libary
+ Version: @VERSION@
+-Libs: -L${libdir} -lnlopt -lm
++Libs: -L${libdir} -lnlopt@NLOPT_SUFFIX@
++Libs.private: -lm
+ Cflags: -I${includedir}

@@ -1,0 +1,31 @@
+From: Ed Catmur <ed@catmur.co.uk>
+Gentoo-Bug: 229653
+X-Gentoo-URL: http://bugs.gentoo.org/show_bug.cgi?id=229653
+X-Gentoo-URL: http://bugs.gentoo.org/attachment.cgi?id=158565&action=view
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+For uint64_t to be available, <stdint.h> must be included:
+http://www.opengroup.org/onlinepubs/009695399/basedefs/stdint.h.html
+
+--- a/include/sg_cmds_basic.h
++++ b/include/sg_cmds_basic.h
+@@ -30,6 +30,8 @@
+  *
+  */
+ 
++#include <stdint.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+--- a/include/sg_cmds_extra.h
++++ b/include/sg_cmds_extra.h
+@@ -30,6 +30,8 @@
+  *
+  */
+ 
++#include <stdint.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif

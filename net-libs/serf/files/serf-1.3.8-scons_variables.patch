@@ -1,0 +1,110 @@
+https://code.google.com/p/serf/issues/detail?id=151
+https://code.google.com/p/serf/source/detail?r=2413
+
+--- SConstruct
++++ SConstruct
+@@ -223,12 +223,12 @@
+ 
+ if sys.platform == 'darwin':
+ #  linkflags.append('-Wl,-install_name,@executable_path/%s.dylib' % (LIBNAME,))
+-  env.Append(LINKFLAGS='-Wl,-install_name,%s/%s.dylib' % (thisdir, LIBNAME,))
++  env.Append(LINKFLAGS=['-Wl,-install_name,%s/%s.dylib' % (thisdir, LIBNAME,)])
+ 
+ if sys.platform != 'win32':
+   ### gcc only. figure out appropriate test / better way to check these
+   ### flags, and check for gcc.
+-  env.Append(CFLAGS='-std=c89')
++  env.Append(CFLAGS=['-std=c89'])
+ 
+   ### These warnings are not available on Solaris
+   if sys.platform != 'sunos5': 
+@@ -237,17 +237,17 @@
+                         '-Wall'])
+ 
+   if debug:
+-    env.Append(CCFLAGS='-g')
++    env.Append(CCFLAGS=['-g'])
+     env.Append(CPPDEFINES=['DEBUG', '_DEBUG'])
+   else:
+-    env.Append(CCFLAGS='-O2')
+-    env.Append(CPPDEFINES='NDEBUG')
++    env.Append(CCFLAGS=['-O2'])
++    env.Append(CPPDEFINES=['NDEBUG'])
+ 
+   ### works for Mac OS. probably needs to change
+   env.Append(LIBS=['ssl', 'crypto', 'z', ])
+ 
+   if sys.platform == 'sunos5':
+-    env.Append(LIBS='m')
++    env.Append(LIBS=['m'])
+ else:
+   # Warning level 4, no unused argument warnings
+   env.Append(CCFLAGS=['/W4', '/wd4100'])
+@@ -260,8 +260,8 @@
+   else:
+     # Optimize for speed, use DLL runtime
+     env.Append(CCFLAGS=['/O2', '/MD'])
+-    env.Append(CPPDEFINES='NDEBUG')
+-    env.Append(LINKFLAGS='/RELEASE')
++    env.Append(CPPDEFINES=['NDEBUG'])
++    env.Append(LINKFLAGS=['/RELEASE'])
+ 
+ # PLAN THE BUILD
+ SHARED_SOURCES = []
+@@ -307,25 +307,25 @@
+                CPPPATH=['$APR/include', '$APU/include'])
+ 
+   # zlib
+-  env.Append(LIBS='zlib.lib')
++  env.Append(LIBS=['zlib.lib'])
+   if not env.get('SOURCE_LAYOUT', None):
+-    env.Append(CPPPATH='$ZLIB/include',
+-               LIBPATH='$ZLIB/lib')
++    env.Append(CPPPATH=['$ZLIB/include'],
++               LIBPATH=['$ZLIB/lib'])
+   else:
+-    env.Append(CPPPATH='$ZLIB',
+-               LIBPATH='$ZLIB')
++    env.Append(CPPPATH=['$ZLIB'],
++               LIBPATH=['$ZLIB'])
+ 
+   # openssl
+   env.Append(LIBS=['libeay32.lib', 'ssleay32.lib'])
+   if not env.get('SOURCE_LAYOUT', None):
+-    env.Append(CPPPATH='$OPENSSL/include/openssl',
+-               LIBPATH='$OPENSSL/lib')
++    env.Append(CPPPATH=['$OPENSSL/include/openssl'],
++               LIBPATH=['$OPENSSL/lib'])
+   elif 0: # opensslstatic:
+-    env.Append(CPPPATH='$OPENSSL/inc32',
+-               LIBPATH='$OPENSSL/out32')
++    env.Append(CPPPATH=['$OPENSSL/inc32'],
++               LIBPATH=['$OPENSSL/out32'])
+   else:
+-    env.Append(CPPPATH='$OPENSSL/inc32',
+-               LIBPATH='$OPENSSL/out32dll')
++    env.Append(CPPPATH=['$OPENSSL/inc32'],
++               LIBPATH=['$OPENSSL/out32dll'])
+ else:
+   if os.path.isdir(apr):
+     apr = os.path.join(apr, 'bin', 'apr-1-config')
+@@ -351,8 +351,8 @@
+     apr_libs = ''
+     apu_libs = ''
+ 
+-  env.Append(CPPPATH='$OPENSSL/include')
+-  env.Append(LIBPATH='$OPENSSL/lib')
++  env.Append(CPPPATH=['$OPENSSL/include'])
++  env.Append(LIBPATH=['$OPENSSL/lib'])
+ 
+ 
+ # If build with gssapi, get its information and define SERF_HAVE_GSSAPI
+@@ -362,7 +362,7 @@
+         env['GSSAPI_LIBS'] = cmd.strip()
+         return env.MergeFlags(cmd, unique)
+     env.ParseConfig('$GSSAPI --libs gssapi', parse_libs)
+-    env.Append(CPPDEFINES='SERF_HAVE_GSSAPI')
++    env.Append(CPPDEFINES=['SERF_HAVE_GSSAPI'])
+ if sys.platform == 'win32':
+   env.Append(CPPDEFINES=['SERF_HAVE_SSPI'])
+ 

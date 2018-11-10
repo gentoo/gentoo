@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>graphics@gentoo.org</email>
+		<name>Gentoo Graphics Project</name>
+	</maintainer>
+	<longdescription>
+gd is a graphics library. It allows your code to quickly draw images complete  
+with lines, arcs, text, multiple colors, cut and paste from other images, and
+flood fills, and write out the result as a PNG or JPEG file. This is particularly
+useful in World Wide Web applications, where PNG and JPEG are two of the formats
+accepted for inline images by most browsers.
+
+gd is not a paint program. If you are looking for a paint program, you are
+looking in the wrong place. If you are not a programmer, you are looking in the
+wrong place, unless you are installing a required library in order to run an
+application.
+
+gd does not provide for every possible desirable graphics operation. It is not
+necessary or desirable for gd to become a kitchen-sink graphics package, but
+version 2.0 does include most frequently requested features, including both  
+truecolor and palette images, resampling (smooth resizing of truecolor images)
+and so forth.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">libgd/libgd</remote-id>
+		<bugs-to>https://github.com/libgd/libgd/issues</bugs-to>
+		<remote-id type="bitbucket">libgd/gd-libgd</remote-id>
+	</upstream>
+	<use>
+		<flag name="webp">Enable support for the webp format</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,21 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Cast the numpy arrays in the test to the same data type
+Bug: https://ci.debian.net/data/packages/unstable/amd64/a/astroscrappy/20160112_151253.autopkgtest.log.gz
+--- a/astroscrappy/tests/test_astroscrappy.py
++++ b/astroscrappy/tests/test_astroscrappy.py
+@@ -36,7 +36,7 @@
+     imdata += gaussian(imdata.shape, x, y, brightness, 3.5)
+ 
+ # Add the poisson noise
+-imdata = np.random.poisson(imdata)
++imdata = np.float32(np.random.poisson(imdata))
+ 
+ # Add readnoise
+ imdata += np.random.normal(0.0, 10.0, size=(1001, 1001))
+@@ -60,4 +60,4 @@
+     # contrast that we can turn our detection threshold up.
+     mask, _clean = detect_cosmics(imdata, readnoise=10., gain=1.0,
+                                   sigclip=6, sigfrac=1.0)
+-    assert (mask == expected_crmask).sum() == (1001 * 1001)
+\ No newline at end of file
++    assert (mask == expected_crmask).sum() == (1001 * 1001)

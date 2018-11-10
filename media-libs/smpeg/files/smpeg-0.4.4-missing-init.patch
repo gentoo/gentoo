@@ -1,0 +1,10 @@
+--- MPEG_old.cpp	2007-01-07 23:24:45.000000000 +0100
++++ MPEG.cpp	2007-01-07 23:25:11.000000000 +0100
+@@ -133,6 +133,7 @@
+     video = NULL;
+     system = NULL;
+     error = NULL;
++    source = NULL;
+ 
+     audiostream = videostream = NULL;
+     audioaction = NULL;

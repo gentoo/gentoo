@@ -1,0 +1,8 @@
+# Daemon user
+USER="milter"
+
+# The location of the Unix socket
+SOCKET="/var/run/milter-regex/milter-regex.sock"
+
+# Regular expression rules
+CONFIG="/etc/mail/milter-regex.conf"

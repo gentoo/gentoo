@@ -1,0 +1,111 @@
+OpenRA is a Libre/Free Real Time Strategy game engine supporting early
+Westwood games like Command & Conquer and Command & Conquer: Red Alert.
+
+Distributed mods include a reimagining and updating of both the Red
+Alert and Command & Conquer multiplayer games.
+
+You may run the game from desktop games menu or just manually
+run the game with `mono OpenRA.Game.exe Game.Mods=ra` for Red Alert
+or `mono OpenRA.Game.exe Game.Mods=cnc` for Command & Conquer.
+
+If you have problems starting the game consider switching to
+alternative Cg Renderer. You may run the game with alternative
+Cg Graphics Renderer from desktop games menu or by adding
+`Graphics.Renderer=Cg` parameter explicitly to above console commands
+ (convenient for some integrated graphics cards).
+To run explicitly with a default one use `Graphics.Renderer=Gl`
+parameter. The default Graphics Renderer is a better one, so
+don't forget to upgrade your graphics hardware drivers to the
+latest version. For Cg renderer also try to upgrade nvidia-cg-toolkit
+too. 
+
+The RA packages will need to be extracted to ~/.openra/Content/ra/
+before the RA mod will actually work. The C&C packages will need
+to be extracted to ~/.openra/Contet/cnc/ for C&C mod. You may 
+execute OpenRA and it will suggest to download content from original
+CD or a minimal one from OpenRA site automatically. You may also try
+to download minimal content pack from OpenRA site manually by using
+OpenRA Utility:
+
+cd /usr/share/games/openra
+mono OpenRA.Utility.exe --download-url=http://open-ra.org/get-dependency.php?file=ra-packages,/tmp/ra-packages.zip
+mono OpenRA.Utility.exe --extract-zip=/tmp/ra-packages.zip,~/.openra/Content/ra/
+
+The same commands for C&C mod:
+mono OpenRA.Utility.exe --download-url=http://open-ra.org/get-dependency.php?file=cnc-packages,/tmp/cnc-packages.zip
+mono OpenRA.Utility.exe --extract-zip=/tmp/cnc-packages.zip,~/.openra/Content/cnc/
+
+But the better choice is to download a full pack from original game CD
+(or iso). However, full CD pack usage result in slower game start from
+OpenRA Lobby. It happens due to a lot of unnecessary things like video
+clips were pre-packaged in it. If you want optimal game start and all
+music themes (made by Frank Klepacki) from classic CD you should
+download them from OpenRA Forum:
+http://www.sleipnirstuff.com/forum/viewtopic.php?f=83&t=15063
+
+The minimal required files for the Red Alert mod are:
+EITHER:
+ * conquer.mix
+ * temperat.mix
+ * interior.mix
+ * snow.mix
+ * sounds.mix
+ * allies.mix
+ * russian.mix
+OR: (Usually pretty long game start)
+ * main.mix
+AND:
+ * redalert.mix
+
+The minimal required files for the Command and Conquer mod are:
+ * cclocal.mix
+ * speech.mix
+ * conquer.mix
+ * sounds.mix
+ * tempicnh.mix
+ * temperat.mix
+ * winter.mix
+ * desert.mix
+
+If you have a case-sensitive filesystem you must change the filenames to
+lower case.
+
+Red Alert and C&C have been released by EA Games as freeware. They could be
+downloaded from http://www.commandandconquer.com/classic
+Unfortunately the installer is 16-bit and so won’t run on 64-bit operating
+systems. This can be worked around by using the Red Alert Setup Manager
+ (http://ra.afraid.org/html/downloads/utilities-3.html).
+Make sure you apply the no-CD protection fix so all the files needed
+are installed to the hard drive.
+
+If your notebook doesn't show long battery life under OpenRA load you can
+do several things:
+1. Turn off "Show Shellmap" item under General tab of Settings menu.
+2. Edit ~/.openra/settings.yaml in the "Graphics:" section to add
+framelimiter. Add "CapFramerate: True" string there to enable framelimiter.
+The default setting is 60 frames per second. You can change it's value by
+adding "MaxFramerate: 70", for example, string in that section. Be careful
+with special tab symbols at the beginning of the strings. Don't forget to
+backup your settings file.
+
+Please note: OpenRA has 2 types of released versions:
+1. Release Versions or just Versions.
+2. Unstable Playtests Versions or just Playtests.
+Release Versions are considered as more stable ones. Playtests are also
+pretty stable in most cases but they have usually more features wich are
+needed to be tested before inclusion into release. So, if you have any
+problems, please report them to the IRC channel #openra on irc.freenode.net
+(Use http://webchat.freenode.net/ if you don't have IRC client)
+or to the bug-tracker (http://bugs.open-ra.org).
+
+You may also see servers list with
+http://master.open-ra.org/list.php
+or by using orabot on IRC channel:
+]games (or !games)
+to see the games wich are waiting to start or
+]games --all
+to see all games.
+
+Please read HACKING for an overview of the engine and read OpenRA Wiki
+page for more info about the game and it's development:
+https://github.com/OpenRA/OpenRA/wiki

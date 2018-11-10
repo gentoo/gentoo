@@ -1,0 +1,32 @@
+Before you can run WebDAV CGI you need to configure your web server and WebDAV
+CGI itself.
+
+The following configuration snippet serves as an example for the Apache HTTPD
+web server. You will have to adapt it to suite your own server and configuration
+needs.
+
+    ScriptAlias  /cgi-bin/ "${VHOST_CGIBINDIR}/"
+
+    <Location /${VHOST_CGIBINDIR##*/}/>
+        AuthType Basic
+        AuthName "WebDAV-CGI"
+        AuthUserFile ${VHOST_ROOT}/etc/users.htpasswd
+        Require valid-user
+        Order Allow,Deny
+        Allow from all
+    </Location>
+
+    RewriteEngine On
+    RewriteRule ^/${VHOST_APPDIR}/logout /${VHOST_CGIBINDIR##*/}/logout [PT,E=REALM:WebDAV-CGI,E=HOMEURL:/${VHOST_APPDIR},L]
+    RewriteRule ^/${VHOST_APPDIR} /${VHOST_CGIBINDIR##*/}/webdavwrapper [PT,E=WEBDAVCONF:${VHOST_ROOT}/etc/webdav.conf,E=PERLLIB:${VHOST_ROOT}/lib/perl,L]
+
+
+Afterwards you need to copy the default configuration file and edit it:
+cp -p ${VHOST_ROOT}/etc/{webdav.conf-dist,webdav.conf}
+\$EDITOR ${VHOST_ROOT}/etc/webdav.conf
+
+Also make sure that all system users which should be able to login to WebDAV CGI
+are able to access the installed files below ${VHOST_ROOT}.
+
+For further informations study the online documentation which is located at:
+http://webdavcgi.sourceforge.net/doc.html

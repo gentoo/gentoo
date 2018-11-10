@@ -1,0 +1,58 @@
+--- umoria/unix/Makefile.orig	2003-12-31 14:52:58.583335976 -0500
++++ umoria/unix/Makefile	2003-12-31 14:51:54.621059720 -0500
+@@ -3,6 +3,7 @@
+ # LIBDIR must be the same directory defined in config.h
+ # OWNER is who you want the game to be chown to.
+ # GROUP is who you wnat the game to be chgrp to.
++STATEDIR = /var/lib
+ BINDIR = /home/zariski/grabiner/moria
+ LIBDIR = /home/zariski/grabiner/moria/files
+ OWNER = grabiner
+@@ -65,12 +66,11 @@
+ 	chmod 4711 $(BINDIR)/moria
+ 	chmod 711 $(LIBDIR)
+ 	(cd files; cp $(LIBFILES) $(LIBDIR))
+-	(cd $(LIBDIR); chmod 444 $(LIBFILES))
+-	(cd $(LIBDIR); touch scores; chmod 644 scores)
++	(cd $(STATEDIR); touch moriascores; chmod 664 moriascores; chown $(OWNER) moriascores; chgrp $(GROUP) moriascores)
+ 	chown $(OWNER) $(BINDIR)/moria
+ 	chgrp $(GROUP) $(BINDIR)/moria
+-	(cd $(LIBDIR); chown $(OWNER) $(LIBFILES) scores)
+-	(cd $(LIBDIR); chgrp $(GROUP) $(LIBFILES) scores)
++	(cd $(LIBDIR); chown $(OWNER) $(LIBFILES))
++	(cd $(LIBDIR); chgrp $(GROUP) $(LIBFILES))
+ # If you are short on disk space, or aren't interested in debugging moria.
+ #	strip $(BINDIR)/moria
+ 
+--- umoria/source/config.h.orig	2003-12-31 15:19:48.893531616 -0500
++++ umoria/source/config.h	2003-12-31 15:21:09.584264760 -0500
+@@ -199,17 +199,18 @@
+ #else
+ 
+ /* This must be unix; change MORIA_LIB as appropriate.  */
+-#define MORIA_SAV	"moria.save"
+-#define MORIA_LIB(xxx)  "/home/math/grabiner/moria/files/xxx"
+-#define MORIA_HOU	MORIA_LIB(hours)
+-#define MORIA_MOR	MORIA_LIB(news)
+-#define MORIA_TOP	MORIA_LIB(scores)
+-#define MORIA_HELP	MORIA_LIB(roglcmds.hlp)
+-#define MORIA_ORIG_HELP	MORIA_LIB(origcmds.hlp)
+-#define MORIA_WIZ_HELP	MORIA_LIB(rwizcmds.hlp)
+-#define MORIA_OWIZ_HELP	MORIA_LIB(owizcmds.hlp)
+-#define MORIA_WELCOME	MORIA_LIB(welcome.hlp)
+-#define MORIA_VER	MORIA_LIB(version.hlp)
++#define MORIA_SAV	".moria.save"
++#define MORIA_LIB(xxx)  "GENTOO_DATADIR/" xxx
++#define MORIA_STATE(xxx) "GENTOO_STATEDIR/" xxx
++#define MORIA_HOU	MORIA_LIB("hours")
++#define MORIA_MOR	MORIA_LIB("news")
++#define MORIA_TOP	MORIA_STATE("moriascores")
++#define MORIA_HELP	MORIA_LIB("roglcmds.hlp")
++#define MORIA_ORIG_HELP	MORIA_LIB("origcmds.hlp")
++#define MORIA_WIZ_HELP	MORIA_LIB("rwizcmds.hlp")
++#define MORIA_OWIZ_HELP	MORIA_LIB("owizcmds.hlp")
++#define MORIA_WELCOME	MORIA_LIB("welcome.hlp")
++#define MORIA_VER	MORIA_LIB("version.hlp")
+ 
+ #endif
+ #endif

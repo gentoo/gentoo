@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">Flask-SQLAlchemy</remote-id>
+		<remote-id type="github">mitsuhiko/flask-sqlalchemy</remote-id>
+		<bugs-to>https://github.com/mitsuhiko/flask-sqlalchemy/issues</bugs-to>
+	</upstream>
+	<longdescription lang="en">
+		Flask-SQLAlchemy is a Flask microframework extension which adds
+		support for the SQLAlchemy SQL toolkit/ORM.
+	</longdescription>
+</pkgmetadata>

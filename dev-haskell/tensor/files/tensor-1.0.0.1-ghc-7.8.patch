@@ -1,0 +1,185 @@
+diff --git a/src/Data/Tensor.hs b/src/Data/Tensor.hs
+index a5042df..0ba41f0 100644
+--- a/src/Data/Tensor.hs
++++ b/src/Data/Tensor.hs
+@@ -1,3 +1,4 @@
++{-# LANGUAGE DeriveDataTypeable #-}
+ --------------------------------------------------------------------------------
+ -- |
+ -- Module      :  Data.Tensor
+@@ -32,7 +33,7 @@ import Foreign.Storable
+ 
+ -- | A vertex with /y/=0, /z/=0 and /w/=1.
+ newtype Vertex1 a = Vertex1 a
+-   deriving (Eq, Ord, Ix, Bounded, Show, Read)
++   deriving (Eq, Ord, Ix, Bounded, Show, Read, Typeable)
+ 
+ instance Functor Vertex1 where
+    fmap f (Vertex1 x) = Vertex1 (f x)
+@@ -53,12 +54,6 @@ instance Traversable Vertex1 where
+    mapM f (Vertex1 x) = return Vertex1 `ap` f x
+    sequence (Vertex1 x) = return Vertex1 `ap` x
+ 
+-instance Typeable1 Vertex1 where
+-   typeOf1 _ = mkTyConApp (mkTyCon "Vertex1") []
+-
+-instance Typeable a => Typeable (Vertex1 a) where
+-   typeOf = typeOfDefault
+-
+ instance Storable a => Storable (Vertex1 a) where
+    sizeOf    ~(Vertex1 s) = sizeOf s
+    alignment ~(Vertex1 s) = alignment s
+@@ -69,7 +64,7 @@ instance Storable a => Storable (Vertex1 a) where
+ 
+ -- | A vertex with /z/=0 and /w/=1.
+ data Vertex2 a = Vertex2 !a !a
+-   deriving (Eq, Ord, Ix, Bounded, Show, Read)
++   deriving (Eq, Ord, Ix, Bounded, Show, Read, Typeable)
+ 
+ instance Functor Vertex2 where
+    fmap f (Vertex2 x y) = Vertex2 (f x) (f y)
+@@ -90,12 +85,6 @@ instance Traversable Vertex2 where
+    mapM f (Vertex2 x y) = return Vertex2 `ap` f x `ap` f y
+    sequence (Vertex2 x y) = return Vertex2 `ap` x `ap` y
+ 
+-instance Typeable1 Vertex2 where
+-   typeOf1 _ = mkTyConApp (mkTyCon "Vertex2") []
+-
+-instance Typeable a => Typeable (Vertex2 a) where
+-   typeOf = typeOfDefault
+-
+ instance Storable a => Storable (Vertex2 a) where
+    sizeOf ~(Vertex2 x _) = 2 * sizeOf x
+    alignment ~(Vertex2 x _) = alignment x
+@@ -106,7 +95,7 @@ instance Storable a => Storable (Vertex2 a) where
+ 
+ -- | A vertex with /w/=1.
+ data Vertex3 a = Vertex3 !a !a !a
+-   deriving (Eq, Ord, Ix, Bounded, Show, Read)
++   deriving (Eq, Ord, Ix, Bounded, Show, Read, Typeable)
+ 
+ instance Functor Vertex3 where
+    fmap f (Vertex3 x y z) = Vertex3 (f x) (f y) (f z)
+@@ -127,12 +116,6 @@ instance Traversable Vertex3 where
+    mapM f (Vertex3 x y z) = return Vertex3 `ap` f x `ap` f y `ap` f z
+    sequence (Vertex3 x y z) = return Vertex3 `ap` x `ap` y `ap` z
+ 
+-instance Typeable1 Vertex3 where
+-   typeOf1 _ = mkTyConApp (mkTyCon "Vertex3") []
+-
+-instance Typeable a => Typeable (Vertex3 a) where
+-   typeOf = typeOfDefault
+-
+ instance Storable a => Storable (Vertex3 a) where
+    sizeOf ~(Vertex3 x _ _) = 3 * sizeOf x
+    alignment ~(Vertex3 x _ _) = alignment x
+@@ -143,7 +126,7 @@ instance Storable a => Storable (Vertex3 a) where
+ 
+ -- | A fully-fledged four-dimensional vertex.
+ data Vertex4 a = Vertex4 !a !a !a !a
+-   deriving (Eq, Ord, Ix, Bounded, Show, Read)
++   deriving (Eq, Ord, Ix, Bounded, Show, Read, Typeable)
+ 
+ instance Functor Vertex4 where
+    fmap f (Vertex4 x y z w) = Vertex4 (f x) (f y) (f z) (f w)
+@@ -164,12 +147,6 @@ instance Traversable Vertex4 where
+    mapM f (Vertex4 x y z w) = return Vertex4 `ap` f x `ap` f y `ap` f z `ap` f w
+    sequence (Vertex4 x y z w) = return Vertex4 `ap` x `ap` y `ap` z `ap` w
+ 
+-instance Typeable1 Vertex4 where
+-   typeOf1 _ = mkTyConApp (mkTyCon "Vertex4") []
+-
+-instance Typeable a => Typeable (Vertex4 a) where
+-   typeOf = typeOfDefault
+-
+ instance Storable a => Storable (Vertex4 a) where
+    sizeOf ~(Vertex4 x _ _ _) = 4 * sizeOf x
+    alignment ~(Vertex4 x _ _ _) = alignment x
+@@ -180,7 +157,7 @@ instance Storable a => Storable (Vertex4 a) where
+ 
+ -- | A one-dimensional vector.
+ newtype Vector1 a = Vector1 a
+-   deriving (Eq, Ord, Ix, Bounded, Show, Read)
++   deriving (Eq, Ord, Ix, Bounded, Show, Read, Typeable)
+ 
+ instance Functor Vector1 where
+    fmap f (Vector1 x) = Vector1 (f x)
+@@ -201,12 +178,6 @@ instance Traversable Vector1 where
+    mapM f (Vector1 x) = return Vector1 `ap` f x
+    sequence (Vector1 x) = return Vector1 `ap` x
+ 
+-instance Typeable1 Vector1 where
+-   typeOf1 _ = mkTyConApp (mkTyCon "Vector1") []
+-
+-instance Typeable a => Typeable (Vector1 a) where
+-   typeOf = typeOfDefault
+-
+ instance Storable a => Storable (Vector1 a) where
+    sizeOf    ~(Vector1 s) = sizeOf s
+    alignment ~(Vector1 s) = alignment s
+@@ -217,7 +188,7 @@ instance Storable a => Storable (Vector1 a) where
+ 
+ -- | A two-dimensional vector.
+ data Vector2 a = Vector2 !a !a
+-   deriving (Eq, Ord, Ix, Bounded, Show, Read)
++   deriving (Eq, Ord, Ix, Bounded, Show, Read, Typeable)
+ 
+ instance Functor Vector2 where
+    fmap f (Vector2 x y) = Vector2 (f x) (f y)
+@@ -238,12 +209,6 @@ instance Traversable Vector2 where
+    mapM f (Vector2 x y) = return Vector2 `ap` f x `ap` f y
+    sequence (Vector2 x y) = return Vector2 `ap` x `ap` y
+ 
+-instance Typeable1 Vector2 where
+-   typeOf1 _ = mkTyConApp (mkTyCon "Vector2") []
+-
+-instance Typeable a => Typeable (Vector2 a) where
+-   typeOf = typeOfDefault
+-
+ instance Storable a => Storable (Vector2 a) where
+    sizeOf ~(Vector2 x _) = 2 * sizeOf x
+    alignment ~(Vector2 x _) = alignment x
+@@ -254,7 +219,7 @@ instance Storable a => Storable (Vector2 a) where
+ 
+ -- | A three-dimensional vector.
+ data Vector3 a = Vector3 !a !a !a
+-   deriving (Eq, Ord, Ix, Bounded, Show, Read)
++   deriving (Eq, Ord, Ix, Bounded, Show, Read, Typeable)
+ 
+ instance Functor Vector3 where
+    fmap f (Vector3 x y z) = Vector3 (f x) (f y) (f z)
+@@ -275,12 +240,6 @@ instance Traversable Vector3 where
+    mapM f (Vector3 x y z) = return Vector3 `ap` f x `ap` f y `ap` f z
+    sequence (Vector3 x y z) = return Vector3 `ap` x `ap` y `ap` z
+ 
+-instance Typeable1 Vector3 where
+-   typeOf1 _ = mkTyConApp (mkTyCon "Vector3") []
+-
+-instance Typeable a => Typeable (Vector3 a) where
+-   typeOf = typeOfDefault
+-
+ instance Storable a => Storable (Vector3 a) where
+    sizeOf ~(Vector3 x _ _) = 3 * sizeOf x
+    alignment ~(Vector3 x _ _) = alignment x
+@@ -291,7 +250,7 @@ instance Storable a => Storable (Vector3 a) where
+ 
+ -- | A four-dimensional vector.
+ data Vector4 a = Vector4 !a !a !a !a
+-   deriving (Eq, Ord, Ix, Bounded, Show, Read)
++   deriving (Eq, Ord, Ix, Bounded, Show, Read, Typeable)
+ 
+ instance Functor Vector4 where
+    fmap f (Vector4 x y z w) = Vector4 (f x) (f y) (f z) (f w)
+@@ -312,12 +271,6 @@ instance Traversable Vector4 where
+    mapM f (Vector4 x y z w) = return Vector4 `ap` f x `ap` f y `ap` f z `ap` f w
+    sequence (Vector4 x y z w) = return Vector4 `ap` x `ap` y `ap` z `ap` w
+ 
+-instance Typeable1 Vector4 where
+-   typeOf1 _ = mkTyConApp (mkTyCon "Vector4") []
+-
+-instance Typeable a => Typeable (Vector4 a) where
+-   typeOf = typeOfDefault
+-
+ instance Storable a => Storable (Vector4 a) where
+    sizeOf ~(Vector4 x _ _ _) = 4 * sizeOf x
+    alignment ~(Vector4 x _ _ _) = alignment x

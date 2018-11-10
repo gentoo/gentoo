@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
+
+<longdescription>
+
+Network Security Services for Java (JSS) is a Java interface to NSS. It supports
+most of the security standards and encryption technologies supported by NSS. JSS
+also provides a pure Java interface for ASN.1 types and BER/DER encoding.
+
+</longdescription>
+</pkgmetadata>

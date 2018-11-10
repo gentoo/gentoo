@@ -1,0 +1,20 @@
+--- a/configure.in
++++ b/configure.in
+@@ -121,12 +121,16 @@
+ save_LIBS="$LIBS"
+ LIB_CURSES=""
+ AC_CHECK_LIB(curses, initscr, LIB_CURSES="-lcurses", [ curses_found=no ])
+-if test "$curses_found" == no; then
++if test "$curses_found" = no; then
+   AC_CHECK_LIB(ncurses, initscr, LIB_CURSES="-lncurses",
+  AC_ERROR([Can't compile without curses!!!]))
+ fi
+ 
+ LIBS="$save_LIBS"
++
++AC_SEARCH_LIBS(stdscr, tinfo curses ncurses, [LIB_CURSES="$LIB_CURSES $ac_cv_search_stdscr"],
++ AC_MSG_ERROR([Cannot find a library providing stdscr]))
++
+ AC_SUBST(LIB_CURSES)
+ 
+ 

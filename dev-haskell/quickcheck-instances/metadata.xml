@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		QuickCheck instances.
+		
+		The goal is to supply QuickCheck instances for
+		types provided by the Haskell Platform.
+		
+		Since all of these instances are provided as
+		orphans, I recommend that you do not use this library
+		within another library module, so that you don't
+		impose these instances on down-stream consumers of
+		your code.
+		
+		For information on writing a test-suite with Cabal
+		see &lt;http://www.haskell.org/cabal/users-guide/#test-suites&gt;
+	</longdescription>
+	<upstream>
+		<remote-id type="github">aslatter/qc-instances</remote-id>
+	</upstream>
+</pkgmetadata>

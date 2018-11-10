@@ -1,0 +1,31 @@
+diff -Nru rp-pppoe-3.10.orig/src/pppoe.h rp-pppoe-3.10/src/pppoe.h
+--- rp-pppoe-3.10.orig/src/pppoe.h	2008-06-30 16:00:43.000000000 +0200
++++ rp-pppoe-3.10/src/pppoe.h	2008-06-30 23:25:54.000000000 +0200
+@@ -19,6 +19,13 @@
+ 
+ extern int IsSetID;
+ 
++/* Ugly header files on some Linux boxes... */
++#if defined(HAVE_LINUX_IF_H)
++#include <linux/if.h>
++#elif defined(HAVE_NET_IF_H)
++#include <net/if.h>
++#endif
++
+ #if defined(HAVE_NETPACKET_PACKET_H) || defined(HAVE_LINUX_IF_PACKET_H)
+ #define _POSIX_SOURCE 1 /* For sigaction defines */
+ #endif
+@@ -51,13 +58,6 @@
+ #include <sys/socket.h>
+ #endif
+ 
+-/* Ugly header files on some Linux boxes... */
+-#if defined(HAVE_LINUX_IF_H)
+-#include <linux/if.h>
+-#elif defined(HAVE_NET_IF_H)
+-#include <net/if.h>
+-#endif
+-
+ #ifdef HAVE_NET_IF_TYPES_H
+ #include <net/if_types.h>
+ #endif

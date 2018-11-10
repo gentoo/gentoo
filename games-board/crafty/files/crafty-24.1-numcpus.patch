@@ -1,0 +1,44 @@
+diff -ru crafty-24.1.org/lock.h crafty-24.1/lock.h
+--- crafty-24.1.org/lock.h	2015-03-10 16:24:09.064539177 +0100
++++ crafty-24.1/lock.h	2015-03-10 17:45:37.675995497 +0100
+@@ -42,6 +42,7 @@
+  *                                                                             *
+  *******************************************************************************
+  */
++#    if defined(__i386__) || defined(__amd64__)
+ static void __inline__ LockX86(volatile int *lock) {
+   int dummy;
+   asm __volatile__(
+@@ -71,17 +72,26 @@
+       :"memory");
+ }
+ 
+-#    define LockInit(p)           (p=0)
+-#    define LockFree(p)           (p=0)
+-#    define Unlock(p)             (UnlockX86(&p))
+-#    define Lock(p)               (LockX86(&p))
+-#    define lock_t                volatile int
+-#  endif
++#      define LockInit(p)           (p=0)
++#      define LockFree(p)           (p=0)
++#      define Unlock(p)             (UnlockX86(&p))
++#      define Lock(p)               (LockX86(&p))
++#      define lock_t                volatile int
++#    else /* Not building for x86 or amd64 platforms */
++#      define LockInit(p)
++#      define LockFree(p)
++#      define Lock(p)
++#      define Unlock(p)
++#      define Pause()
++#      define lock_t volatile int
++#    endif /* x86 && amd64 platforms or rest of the world. */
++#  endif                          /*  SMP code */
+ #else
+ #  define LockInit(p)
+ #  define LockFree(p)
+ #  define Lock(p)
+ #  define Unlock(p)
++#  define Pause()
+ #  define lock_t volatile int
+ #endif                          /*  SMP code */
+ /* *INDENT-ON* */

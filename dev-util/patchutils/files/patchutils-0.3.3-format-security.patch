@@ -1,0 +1,25 @@
+ src/filterdiff.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/filterdiff.c b/src/filterdiff.c
+index eb08d49..0b2b301 100644
+--- a/src/filterdiff.c
++++ b/src/filterdiff.c
+@@ -1263,7 +1263,7 @@ read_regex_file (const char *file)
+ 			char errstr[300];
+ 			regerror (err, &regex[num_regex - 1], errstr,
+ 				  sizeof (errstr));
+-			error (EXIT_FAILURE, 0, errstr);
++			error (EXIT_FAILURE, 0, "%s", errstr);
+ 			exit (1);
+ 		}
+ 	}
+@@ -1509,7 +1509,7 @@ int main (int argc, char *argv[])
+ 			char errstr[300];
+ 			regerror (err, &regex[num_regex - 1], errstr,
+ 				  sizeof (errstr));
+-			error (EXIT_FAILURE, 0, errstr);
++			error (EXIT_FAILURE, 0, "%s", errstr);
+ 			exit (1);
+ 		}
+ 	}

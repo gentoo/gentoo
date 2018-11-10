@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-chemistry@gentoo.org</email>
+    <name>Gentoo Chemistry Project</name>
+  </maintainer>
+  <longdescription lang="en">
+A collection of data files to add support for chemical MIME types.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">chemical-mime</remote-id>
+  </upstream>
+</pkgmetadata>

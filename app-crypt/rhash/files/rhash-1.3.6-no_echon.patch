@@ -1,0 +1,54 @@
+From c1776248a0b34a690e99ab9a7a814c34f78088ec Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Mon, 19 Mar 2018 10:47:13 +0100
+Subject: [PATCH] "echo -n" cannot be expected to work with every POSIX shell
+
+See "man 1p echo" section APPLICATION USAGE. This patch replaces "echo -n"
+with "printf '%s'".
+---
+ configure | 15 ++-------------
+ 1 file changed, 2 insertions(+), 13 deletions(-)
+
+diff --git a/configure b/configure
+index f480f7b..2a7d485 100755
+--- a/configure
++++ b/configure
+@@ -22,17 +22,6 @@ INSTALL_LIB_STATIC=auto
+ INSTALL_LIB_SHARED=auto
+ INSTALL_PKGCONFIGDIR="$PKG_INSTALLDIR"
+ 
+-case $(echo -n) in
+-  -n) # SysV style
+-    ECHO_N=
+-    ECHO_C='\c'
+-    ;;
+-  *) # BSD style
+-    ECHO_N='-n '
+-    ECHO_C=
+-    ;;
+-esac
+-
+ # display error message and exit
+ die () {
+   echo
+@@ -235,7 +224,7 @@ trap remove_tmpdir EXIT
+ 
+ str_concat()
+ {
+-  echo ${ECHO_N} $@ ${ECHO_C}
++  printf '%s ' $@
+ }
+ 
+ yn_nonempty()
+@@ -246,7 +235,7 @@ yn_nonempty()
+ # Use this before starting a check
+ start_check() {
+   echo "============ Checking for $1 ============" >> "$TMPLOG"
+-  echo ${ECHO_N} "Checking for $1 ... ${ECHO_C}"
++  printf '%s' "Checking for $1 ... "
+   res_comment=""
+ }
+ 
+-- 
+2.16.2
+

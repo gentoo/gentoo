@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Module-Install</remote-id>
+    <remote-id type="cpan-module">Module::AutoInstall</remote-id>
+    <remote-id type="cpan-module">Module::Install</remote-id>
+    <remote-id type="cpan-module">Module::Install::Admin</remote-id>
+    <remote-id type="cpan-module">Module::Install::Admin::Bundle</remote-id>
+    <remote-id type="cpan-module">Module::Install::Admin::Compiler</remote-id>
+    <remote-id type="cpan-module">Module::Install::Admin::Find</remote-id>
+    <remote-id type="cpan-module">Module::Install::Admin::Include</remote-id>
+    <remote-id type="cpan-module">Module::Install::Admin::Makefile</remote-id>
+    <remote-id type="cpan-module">Module::Install::Admin::Manifest</remote-id>
+    <remote-id type="cpan-module">Module::Install::Admin::Metadata</remote-id>
+    <remote-id type="cpan-module">Module::Install::Admin::ScanDeps</remote-id>
+    <remote-id type="cpan-module">Module::Install::Admin::WriteAll</remote-id>
+    <remote-id type="cpan-module">Module::Install::AutoInstall</remote-id>
+    <remote-id type="cpan-module">Module::Install::Base</remote-id>
+    <remote-id type="cpan-module">Module::Install::Base::FakeAdmin</remote-id>
+    <remote-id type="cpan-module">Module::Install::Bundle</remote-id>
+    <remote-id type="cpan-module">Module::Install::Can</remote-id>
+    <remote-id type="cpan-module">Module::Install::Compiler</remote-id>
+    <remote-id type="cpan-module">Module::Install::DSL</remote-id>
+    <remote-id type="cpan-module">Module::Install::Deprecated</remote-id>
+    <remote-id type="cpan-module">Module::Install::External</remote-id>
+    <remote-id type="cpan-module">Module::Install::Fetch</remote-id>
+    <remote-id type="cpan-module">Module::Install::Include</remote-id>
+    <remote-id type="cpan-module">Module::Install::Inline</remote-id>
+    <remote-id type="cpan-module">Module::Install::MakeMaker</remote-id>
+    <remote-id type="cpan-module">Module::Install::Makefile</remote-id>
+    <remote-id type="cpan-module">Module::Install::Metadata</remote-id>
+    <remote-id type="cpan-module">Module::Install::PAR</remote-id>
+    <remote-id type="cpan-module">Module::Install::Run</remote-id>
+    <remote-id type="cpan-module">Module::Install::Scripts</remote-id>
+    <remote-id type="cpan-module">Module::Install::Share</remote-id>
+    <remote-id type="cpan-module">Module::Install::Win32</remote-id>
+    <remote-id type="cpan-module">Module::Install::With</remote-id>
+    <remote-id type="cpan-module">Module::Install::WriteAll</remote-id>
+    <remote-id type="cpan-module">inc::Module::Install</remote-id>
+    <remote-id type="cpan-module">inc::Module::Install::DSL</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,21 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Remove "multilib-strict" for now wrt #424423
+FEATURES="collision-protect sign splitdebug test test-fail-continue userpriv usersandbox"
+
+# Disable branding (from desktop)
+USE="-branding"
+
+# As much as it pains me, we hope that developers know what they're doing.
+I_KNOW_WHAT_I_AM_DOING="yes"
+
+# Log eqawarn messages
+PORTAGE_ELOG_CLASSES="${PORTAGE_ELOG_CLASSES} qa"
+
+# Settings that previously were in targets/server, we dont inherit that anymore as
+# it is going away.
+# USE="-perl -python snmp truetype xml"
+# perl and python are now disabled by default anyway, truetype and xml are enabled
+# by the also inherited desktop profile
+USE="snmp"

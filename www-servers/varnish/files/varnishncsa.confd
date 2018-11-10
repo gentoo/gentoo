@@ -1,0 +1,3 @@
+# /etc/conf.d/varnishncsa
+
+VARNISHNCSA_OPTS="-a -w /var/log/varnish/${SVCNAME}.log"

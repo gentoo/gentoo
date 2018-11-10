@@ -1,0 +1,69 @@
+--- install.pl.orig	2003-02-18 13:15:15.000000000 -0800
++++ install.pl	2003-02-18 13:49:10.000000000 -0800
+@@ -31,9 +31,24 @@
+ #
+ # Now figure out where everything goes:
+ #
+-$prefix = "/usr/local";
++$prefix = shift(@ARGV) ||
++	read_with_prompt( "
++You can specify a prefix directory that will simplify defaults for
++further questions.
++
++What should be the prefix directory [$prefix]? ") ||
++	"/usr/local";
++
++$inst_prefix = shift(@ARGV) ||
++	read_with_prompt( "
++You can specify an install prefix that is prefixed to the runtime
++prefix for the install phase only.  This is useful when installing
++into staging directories for packaging systems.
+ 
+-$bindir = shift(@_) ||
++What should the install prefix be []? ") ||
++	"";
++
++$bindir = shift(@ARGV) ||
+   read_with_prompt("
+ Makepp needs to know where you want to install it and its data files.
+ makepp is written in perl, but there is no particular reason to install
+@@ -43,10 +58,7 @@
+ Where should the makepp executable be installed [$prefix/bin]? ") ||
+   "$prefix/bin";
+ 
+-$bindir =~ m@(.*)/bin@ and $prefix = $1;
+-				# See if a prefix was specified.
+-
+-$datadir = shift @_ || read_with_prompt("
++$datadir = shift @ARGV || read_with_prompt("
+ Makepp has a number of library files that it needs to install somewhere.  Some
+ of these are perl modules, but they can't be used by other perl programs, so
+ there's no point in installing them in the perl modules hierarchy; they are
+@@ -55,14 +67,24 @@
+ Where should the library files be installed [$prefix/share/makepp]? ") ||
+   "$prefix/share/makepp";
+ 
+-$htmldir = shift @_ || read_with_prompt("
++$htmldir = shift @ARGV || read_with_prompt("
+ Where should the HTML documentation be installed?
+ Enter \"none\" if you do not want any documentation installed.
+ HTML documentation directory [$prefix/share/makepp/html]: ") ||
+   "$prefix/share/makepp/html";
+ 
+-substitute_file("makepp", $bindir, 0755);
+-substitute_file("recursive_makepp", $datadir, 0644);
++substitute_file("makepp", "$inst_prefix/$bindir", 0755);
++substitute_file("recursive_makepp", "$inst_prefix/$datadir", 0644);
++
++if( $inst_prefix ) {
++	$bindir = join( '/', $inst_prefix, $bindir );
++	$datadir = join( '/', $inst_prefix, $datadir );
++	$htmldir = join( '/', $inst_prefix, $htmldir );
++}
++
++print STDERR "bindir now $bindir\n";
++print STDERR "datadir now $datadir\n";
++print STDERR "htmldir now $htmldir\n";
+ 
+ make_dir("$datadir/Signature");
+ foreach $module (qw(FileInfo FileInfo_makepp MakeEvent Glob Makefile Makesubs Rule

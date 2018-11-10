@@ -1,0 +1,23 @@
+diff -durr lagan20-orig/src/glocal/score.cpp lagan20/src/glocal/score.cpp
+--- lagan20-orig/src/glocal/score.cpp	2009-02-04 15:25:57.698333297 +0000
++++ lagan20/src/glocal/score.cpp	2009-02-04 15:27:23.894092890 +0000
+@@ -2,7 +2,7 @@
+ #include<score.h>
+ #include<leftinfluence.h>
+ #include<rightinfluence.h>
+-#include<fstream.h>
++#include<fstream>
+ 
+ extern vector<class Score*> scoreFunctions[1<<(UPSTRANDBITS+DOWNSTRANDBITS+RELPOSBITS)];
+ 
+diff -durr lagan20-orig/src/utils/Glue.cpp lagan20/src/utils/Glue.cpp
+--- lagan20-orig/src/utils/Glue.cpp	2009-02-04 15:25:57.702333182 +0000
++++ lagan20/src/utils/Glue.cpp	2009-02-04 15:27:04.190822654 +0000
+@@ -1,6 +1,7 @@
+ #include "MultiSequence.h"
+ #include "SafeVector.h"
+ #include "Output.h"
++#include <string.h>
+ #include <math.h>
+ #include <assert.h>
+ #include <fstream>

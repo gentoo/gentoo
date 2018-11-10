@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-SSH-Perl</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Agent</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Auth</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Auth::ChallengeResponse</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Auth::KeyboardInt</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Auth::KeyboardInteractive</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Auth::Password</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Auth::PublicKey</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Auth::RSA</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Auth::Rhosts</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Auth::Rhosts_RSA</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::AuthMgr</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Buffer</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Channel</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::ChannelMgr</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::AES128_CBC</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::AES128_CTR</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::AES192_CBC</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::AES192_CTR</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::AES256_CBC</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::AES256_CTR</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::AES_CBC</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::AES_CTR</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::Blowfish</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::CBC</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::CFB</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::CTR</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::ChachaPoly</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::DES</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::DES3</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::DES3::EDE3</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::IDEA</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Cipher::RC4</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Comp</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Comp::Zlib</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Config</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Constants</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Handle</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Handle::SSH1</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Handle::SSH2</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Kex</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Kex::C25519</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Kex::DH</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Kex::DH1</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Kex::DH14SHA1</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Kex::DH14SHA256</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Kex::DH16SHA512</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Kex::DH18SHA512</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Kex::DHGEX</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Kex::DHGEXSHA1</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Kex::DHGEXSHA256</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Key</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Key::DSA</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Key::ECDSA</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Key::ECDSA256</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Key::ECDSA384</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Key::ECDSA521</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Key::Ed25519</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Key::RSA</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Key::RSA1</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Mac</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Mac::MD5</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Mac::SHA1</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Mac::SHA2_256</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Mac::SHA2_512</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Packet</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Proxy</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::SSH1</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::SSH2</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Subsystem::Client</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Subsystem::Server</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Util</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Util::Authfile</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Util::Hosts</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Util::RSA</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Util::SSH1MP</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Util::SSH1Misc</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Util::Term</remote-id>
+    <remote-id type="cpan-module">Net::SSH::Perl::Util::Win32</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,38 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -f /etc/totd.conf ]
+	then
+		eerror "The config file /etc/totd.conf does not exist."
+		return 1
+	else
+		return 0
+	fi
+}
+
+start() {
+	checkconfig || return 1
+
+	ebegin "Starting totd"
+		start-stop-daemon --start --quiet --exec /usr/sbin/totd
+	eend $?
+}
+
+stop() {
+	local pid_file
+	pid_file="`grep ^pidfile /etc/totd.conf | cut -f2 -d ' '`"
+	ebegin "Stopping totd"
+	if [ -n "$pid_file" ]
+	then
+			start-stop-daemon --stop --quiet --pidfile $pid_file
+	else
+			start-stop-daemon --stop --quiet --pidfile /var/run/totd.pid
+	fi
+	eend $?
+}

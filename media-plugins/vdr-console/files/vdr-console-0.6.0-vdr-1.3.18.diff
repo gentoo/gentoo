@@ -1,0 +1,43 @@
+diff -Nru console-0.6.0-original/menu.c console-0.6.0/menu.c
+--- console-0.6.0-original/menu.c	2004-09-12 00:10:57.000000000 +0200
++++ console-0.6.0/menu.c	2005-01-15 11:59:07.735539136 +0100
+@@ -1210,14 +1210,14 @@
+     }
+     case kNone:
+                     // Handle blinking elements
+-                    if (time_ms() >= _nextBlinkTime) {
++                    if ((int)cTimeMs::Now() >= _nextBlinkTime) {
+ 
+-                      _nextBlinkTime = time_ms() + config.BlinkRate * 100;
++                      _nextBlinkTime = cTimeMs::Now() + config.BlinkRate * 100;
+                       _blink = !_blink;
+                     }
+ 
+                     // Handle keyboard releaseing
+-                    if (time_ms() >= _timeReleaseCapture) {
++                    if ((int)cTimeMs::Now() >= _timeReleaseCapture) {
+                       _timeReleaseCapture = INT_MAX;
+ 
+                       // Time elapsed -> repost ESC...
+@@ -1243,10 +1243,10 @@
+                       _pConsole->getScreen().BellSeen();
+ 
+                       if (config.BellTimeout) {
+-                        _toRing = time_ms() + config.BellTimeout * 1000;
++                        _toRing = cTimeMs::Now() + config.BellTimeout * 1000;
+                         state = osUser1;
+                       }
+-                    } else if (_toRing && time_ms() > _toRing) {
++                    } else if (_toRing && (int)cTimeMs::Now() > _toRing) {
+                       _toRing = 0;
+                       state = osUser1;
+                     }
+@@ -1441,7 +1441,7 @@
+           // esc detected. Ask for exit
+           if (data[i] == ESC) {
+ 
+-            _timeReleaseCapture = time_ms() + 1000;
++            _timeReleaseCapture = cTimeMs::Now() + 1000;
+             _inputState = 1;
+ 
+           } else

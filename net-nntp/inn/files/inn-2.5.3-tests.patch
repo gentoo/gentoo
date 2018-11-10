@@ -1,0 +1,19 @@
+Certain filesystems (such as reiserfs) cannot properly report
+the number of free inodes. In this case, inndf reports an absurdly
+high number instead of nothing, which standard df does.
+There seems to be some confusion about which FOO_MAX is returned,
+so this patch adds an actual value known to be returned.
+
+See bug #348490.
+
+--- tests/util/inndf.t
++++ tests/util/inndf.t
+@@ -62,7 +62,7 @@
+         real=`df -i . | sed 1d | awk '{ print $4 }'`
+     fi
+     try=`$inndf -i .`
+-    if [ "$try" = 4294967295 ] ; then
++    if [ "$try" = 4294967295 ] || [ "$try" = 2147483647 ] ; then
+         printcount "ok"
+     else
+         diff=`expr "$real" - "$try"`

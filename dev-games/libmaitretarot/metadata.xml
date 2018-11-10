@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+		MaitreTarot is a Tarot card game. Understand a game like freecell or poker,
+		nothing to do with astrology. Tarot is rather a French game.
+
+		MaitreTarot is made of two kind of elements:
+
+		* A server, that knows the rules, that gives the cards to the clients, that
+		counts the points, and everything else that a server should do.
+		* Clients. The main idea is to have differents clients. Some would be
+		clients for human players, with a GUI (gtk+, qt, web, ncurses, win32...). And
+		some would be AI. That would allow users to play with AI, and even AI
+		tournaments could be played in order to know the best AI!
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,28 @@
+Description: use unsigned char to keep int value
+ Use unsigned char to keep all bits of int values in the array.
+Author: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Bug-Debian: https://bugs.debian.org/811762
+Last-Update: 2016-07-16
+
+---
+
+--- a/src/samples.cpp
++++ b/src/samples.cpp
+@@ -75,7 +75,7 @@ struct sampleChannel
+ sampleChannel ch4, ch5;
+ 
+ 
+-const sbyte galwayNoiseTab1[16] =
++const ubyte galwayNoiseTab1[16] =
+ {
+ 	0x80,0x91,0xa2,0xb3,0xc4,0xd5,0xe6,0xf7,
+ 	0x08,0x19,0x2a,0x3b,0x4c,0x5d,0x6e,0x7f
+@@ -84,7 +84,7 @@ const sbyte galwayNoiseTab1[16] =
+ ubyte galwayNoiseVolTab[16];
+ sbyte galwayNoiseSamTab[16];
+ 
+-const sbyte sampleConvertTab[16] =
++const ubyte sampleConvertTab[16] =
+ {
+ //  0x81,0x99,0xaa,0xbb,0xcc,0xdd,0xee,0xff,
+ //  0x00,0x11,0x22,0x33,0x44,0x55,0x66,0x7f

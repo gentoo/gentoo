@@ -1,0 +1,18 @@
+X-Git-Url: http://code.l3ib.org/?p=fsniper.git;a=blobdiff_plain;f=src%2Fmain.c;fp=src%2Fmain.c;h=cd49dffebe4b4c728b62c28c1381c4fb6f5ad87d;hp=03a8d701d6f9802ba346b591429e58741ca53479;hb=82cb0b46c48485fd4f6231ce3169c7be87d1ea07;hpb=2bbeb5d6e6b55bb9692c043fcdbeab15d9723c9e
+
+diff --git a/src/main.c b/src/main.c
+index 03a8d70..cd49dff 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -153,7 +153,10 @@ char *get_pid_filename()
+ void write_pid_file(char *pidfilename)
+ {
+     FILE *pidfile;
++    mode_t umask_old;
++    umask_old = umask(0177);
+     pidfile = fopen(pidfilename, "w");
++    umask(umask_old);
+     fprintf(pidfile, "%d", getpid());
+     fclose(pidfile);
+ }
+

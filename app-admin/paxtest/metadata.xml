@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>blueness@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>hardened@gentoo.org</email>
+		<name>Gentoo Hardened</name>
+	</maintainer>
+	<longdescription>Test suite for the PaX kernel patch
+		PaX is a Linux kernel patch which adds much stricter control on how memory
+		is being used by applications. A normal Linux kernel leaves the control to the
+		application and does not implement any enforcement. Especially buffer overflow
+		attacks benefit from the absense of kernel enforced memory control. PaX tries
+		to do its best to enforce this control of memory used by applications, thereby
+		making it harder to succesfully exploit buffer overflows.
+
+		Furthermore, it adds several randomisations, which also make it harder for
+		buffer overflows to succeed.
+
+		The test programs test all this functionality, but not all PaX functionality
+		is covered.
+
+		For more information about PaX, see http://pageexec.virtualave.net/.
+	</longdescription>
+</pkgmetadata>

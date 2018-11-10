@@ -1,0 +1,12 @@
+diff -ru abuse-0.8.orig/Makefile.am abuse-0.8/Makefile.am
+--- abuse-0.8.orig/Makefile.am	2011-05-09 03:58:04.000000000 -0400
++++ abuse-0.8/Makefile.am	2011-05-16 22:22:51.642655295 -0400
+@@ -2,8 +2,6 @@
+ 
+ SUBDIRS = src data doc
+ 
+-EXTRA_DIST = COPYING.GPL COPYING.WTFPL PACKAGERS bootstrap
+-
+ dist-hook:
+ 	@echo ""
+ 	@echo "          ===================================================="

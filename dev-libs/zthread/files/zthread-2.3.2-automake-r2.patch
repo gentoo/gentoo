@@ -1,0 +1,75 @@
+From 577b34b74b7a73650d906f371044bfaed6e8b74c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tiziano=20M=C3=BCller?= <tm@dev-zero.ch>
+Date: Tue, 19 Feb 2013 10:13:12 +0100
+Subject: [PATCH] Use standard automake rules rather than hand coding the
+ install rules and append linker flags to LDFLAGS and not LDADD, otherwise
+ --as-needed gets ignored (and possibly others).
+
+---
+ Makefile.am     | 21 +++++----------------
+ configure.ac    |  1 -
+ src/Makefile.am |  2 --
+ 3 files changed, 5 insertions(+), 19 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 6c092cf..2d7bddf 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -24,24 +24,13 @@ LICENSE \
+ MIT.TXT \
+ depcomp
+ 
++bin_SCRIPTS = share/zthread-config
+ 
+-## install the config script
+-install-exec-hook:
+-	$(mkinstalldirs) $(bindir)
+-	$(INSTALL_PROGRAM) $(top_srcdir)/share/zthread-config $(bindir)
++aclocaldir = $(datadir)/aclocal
++aclocal_DATA = share/zthread.m4 share/pthread.m4
+ 
+-## install the config script & m4 macros
+-install-data-hook:
+-	$(mkinstalldirs) $(datadir)/aclocal
+-	$(INSTALL_DATA) $(top_srcdir)/share/zthread.m4 $(datadir)/aclocal
+-	$(INSTALL_DATA) $(top_srcdir)/share/pthread.m4 $(datadir)/aclocal
+-	mkdir -p $(DESTDIR)$(includedir)/zthread
+-	cp -pR $(top_srcdir)/include/zthread $(DESTDIR)$(includedir)/
+-
+-## uninstall the config script & m4 macros
+-uninstall-local:
+-	-rm -rf $(datadir)/aclocal/pthread.m4
+-	-rm -rf $(datadir)/aclocal/zthread.m4
++zincludedir = $(includedir)/zthread
++zinclude_HEADERS = include/zthread/*.h
+ 
+ distclean-local: 
+ 	-rm -rf $(top_srcdir)/$(PACKAGE)-$(VERSION).tar.gz
+diff --git a/configure.ac b/configure.ac
+index 866041b..5d32a58 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -226,7 +226,6 @@ AC_TRY_LINK( [#include <windows.h>], [_beginthreadex((void*)0, 0, 0, (void*)0, 0
+ 
+ dnl Configure the final compiler & linker options
+ COMPILER_OPTIONS="$COMPILER_OPTIONS $CXXFLAGS"
+-LINKER_OPTIONS="$LINKER_OPTIONS $LDFLAGS"
+ 
+ dnl Configured flags for compiling ZThreads
+ AC_SUBST(LINKER_OPTIONS)
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 04404d6..35dc764 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -21,8 +21,6 @@ AM_CXXFLAGS = @COMPILER_OPTIONS@ @EXTRA_COMPILER_OPTIONS@
+ INCLUDES = -I$(top_srcdir)/include
+ SUBDIRS=.
+ 
+-libdir=$(prefix)/lib
+-
+ lib_LTLIBRARIES = libZThread.la
+ 
+ libZThread_la_LIBADD=@LINKER_OPTIONS@ @EXTRA_LINKER_OPTIONS@
+-- 
+1.8.1.1
+

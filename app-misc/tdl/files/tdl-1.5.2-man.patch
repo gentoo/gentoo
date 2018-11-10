@@ -1,0 +1,507 @@
+--- tdl-1.5.2.orig/tdl.1
++++ tdl-1.5.2/tdl.1
+@@ -2,25 +2,25 @@
+ .SH NAME
+ tdl \- To do list manager
+ .SH SYNOPSIS
+-tdl  [-q]
++tdl  [\-q]
+ .br
+-tdl  [-q] add|edit|defer|log
++tdl  [\-q] add|edit|defer|log
+ .br
+-tdl  [-q] list|done|undo|report
++tdl  [\-q] list|done|undo|report
+ .br
+-tdl  [-q] remove|above|below|into|clone|copyto
++tdl  [\-q] remove|above|below|into|clone|copyto
+ .br
+-tdl  [-q] postpone|ignore|open
++tdl  [\-q] postpone|ignore|open
+ .br
+-tdl  [-q] which|version|help
++tdl  [\-q] which|version|help
+ .br
+-tdla [-q]
++tdla [\-q]
+ .br
+-tdll [-q]
++tdll [\-q]
+ .br
+-tdld [-q]
++tdld [\-q]
+ .br
+-tdlg [-q]
++tdlg [\-q]
+ 
+ .SH DESCRIPTION
+ A program for managing a to-do list.
+@@ -68,9 +68,9 @@
+ modified database back to the disk. Only use it if you want to discard 
+ all changes made in this tdl run. 
+ 
+-.pp
++.PP
+ All forms may take
+-.I -q
++.I \-q
+ as the first command line argument.  Currently, this suppresses the warning
+ message if no existing database can be found.  The intended use is for using
+ .B tdll
+@@ -104,7 +104,7 @@
+ appear as the last children of the parent node afterwards.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl add
+ .I [@datespec]
+@@ -156,7 +156,7 @@
+ environment is set, in which case this specifies the path to use).
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl below
+ .I index_to_insert_below
+@@ -173,7 +173,7 @@
+ appear as the first children of the parent node afterwards.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl clone
+ .I index_to_clone ...
+@@ -185,7 +185,7 @@
+ to change its text. 
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl copyto
+ .I new_parent_index
+@@ -197,7 +197,7 @@
+ children of an existing entry, rather than making them new top level entries. 
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl create
+ .PP
+@@ -217,7 +217,7 @@
+ TDL_DATABASE.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl defer
+ .I [@datespec]
+@@ -233,7 +233,7 @@
+ .P
+ which defers entries 1, 2.1 and all its children, and 5 until the following Friday. 
+ To list deferred entries, use 
+-.I list -p
++.I list \-p
+ , to defer entries indefinitely, see 
+ .I postpone 
+ command. 
+@@ -242,7 +242,7 @@
+ command. 
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl done
+ .I @datespec
+@@ -278,7 +278,7 @@
+ section later in this page.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl edit
+ .I index_to_change
+@@ -294,7 +294,7 @@
+ command.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B exit
+ .PP
+@@ -308,7 +308,7 @@
+ command, which loses all updates made during the current tdl run. 
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl export
+ .I filename
+@@ -322,14 +322,14 @@
+ the original database.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl help
+ .PP
+ This command displays a summary of use of each of the commands.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl ignore
+ .I index_to_ignore ...
+@@ -353,7 +353,7 @@
+ it
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl import
+ .I filename
+@@ -367,7 +367,7 @@
+ wanted to merge their entries to form one combo database.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl into
+ .I new_parent_index
+@@ -381,23 +381,23 @@
+ argument has ".0" appended to it.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl list
+-.I [-v]
+-.I [-a]
+-.I [-p]
+-.I [-m]
+-.I [-1...9]
++.I [\-v]
++.I [\-a]
++.I [\-p]
++.I [\-m]
++.I [\-1...9]
+ .I [<min-priority>]
+ .I [<parent_index>|<search_conditions>...]
+ .br
+ .B tdll
+-.I [-v]
+-.I [-a]
+-.I [-p]
+-.I [-m]
+-.I [-1...9]
++.I [\-v]
++.I [\-a]
++.I [\-p]
++.I [\-m]
++.I [\-1...9]
+ .I [<min-priority>]
+ .I [<parent_index>|<search_conditions...]
+ .PP
+@@ -410,13 +410,13 @@
+ .B done
+ and which don't have start times deferred into the future are shown.  If you
+ want to display all entries, include the
+-.B -a
++.B \-a
+ option (which means 'all').  If you want to display the dates and times when
+ the entries were added and/or done, include the 
+-.B -v
++.B \-v
+ option (which means 'verbose').
+ The
+-.B -p
++.B \-p
+ option stands for postponed. It means that tasks which are 'deferred' or 'postponed' 
+ are shown as well as open tasks. 
+ .PP
+@@ -431,14 +431,14 @@
+ top node of each part of the database you want to show.  So if your database
+ contains entries with indices 1, 2, 2.1, 2.2, 2.2.1, 3 and 4, the command
+ .PP
+-tdl list -a 2
++tdl list \-a 2
+ .PP
+ will show all entries 2, 2.1, 2.2 and 2.2.1, whether or not they are completed.
+ .PP
+ Also by default, all entries in the database, at any depth, will be shown.  If
+ you only wish to show 'top-level' entries, for example, you can use
+ .PP
+-tdl list -1
++tdl list \-1
+ .PP
+ This lists level-1 entries.  Any level-1 entry with hidden child entries
+ underneath it will show a summary of how many such children there are.  For
+@@ -454,11 +454,11 @@
+ the normal 'negative index' method can't be used to specify an entry a certain
+ distance from the end of the list.  If you want to do this, use a syntax like
+ .PP
+-tdl list -- -1
++tdl list \-\- \-1
+ .PP
+ to show the last index in the array, or
+ .PP
+-tdl list -2 -- -3 -2 -1
++tdl list \-2 \-\- \-3 \-2 \-1
+ .PP
+ to show level-1 and level-2 entries within the last 3 level-1 entries in the
+ list.
+@@ -489,7 +489,7 @@
+ approximate matches with keys up to 31 characters. 
+ .PP
+ By default, the listing is produced with colour highlighting.  The
+-.B -m
++.B \-m
+ option can be used to produce a monochrome listing instead.  Alternatively, the
+ .B TDL_LIST_MONOCHROME
+ enviroment variable can be set (to any value) to achieve the same effect.
+@@ -512,7 +512,7 @@
+ .TE
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl log
+ .br
+@@ -530,7 +530,7 @@
+ command.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B narrow
+ .I new_root_index
+@@ -562,7 +562,7 @@
+ wouldn't make much sense). 
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl open 
+ .I index_to_reopen[...] ...
+@@ -573,7 +573,7 @@
+ current time. 
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl postpone
+ .I index_to_postpone[...] ...
+@@ -586,7 +586,7 @@
+ command. 
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl pri
+ .I new_priority
+@@ -602,7 +602,7 @@
+ command.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl purge
+ .I since_epoch
+@@ -626,7 +626,7 @@
+ descendents.  The default is to purge the entire database.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B quit
+ .PP
+@@ -642,7 +642,7 @@
+ The main use for the quit command would be to avoid damaging the database if a serious error had been made. 
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl remove
+ .I index_to_remove ...
+@@ -659,7 +659,7 @@
+ descendents.  This provides a quick way to remove a whole sub-tree of tasks.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl report
+ .I start_time
+@@ -688,12 +688,12 @@
+ will list all tasks completed between 2 and 1 weeks ago.
+ .PP
+ Where a child entry has been completed in the reporting period, but its parent
+-has not been completed, the parent text in the report will be surrounded by
+-'[[' and ']]'.  To give one example, this will happen if the parent has other
++has not been completed, the parent text in the report will be surrounded by '[['
++and ']]'.  To give one example, this will happen if the parent has other
+ child entries that haven't been completed yet.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B revert
+ .PP
+@@ -706,7 +706,7 @@
+ The revert command does not take any arguments. 
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B save
+ .PP
+@@ -728,7 +728,7 @@
+ The save command does not take any arguments.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl undo
+ .I index_of_entry_to_undo ...
+@@ -742,7 +742,7 @@
+ descendents.  This provides a quick way to re-open a whole sub-tree of tasks.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl usage
+ .PP
+@@ -751,21 +751,21 @@
+ (q.v.)
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl version
+ .PP
+ Show the version number of the software.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B tdl which
+ .PP
+ Show the filename of the database that tdl accesses in the current context.
+ .P
+ .ce 1
+---ooOOoo--
++\-\-ooOOoo-\-
+ .PP
+ .B widen
+ .I n_level
+@@ -831,30 +831,30 @@
+ .TS
+ tab(&);
+ l l.
+--1h & exactly 1 hour ago
+--2d & exactly 2 days ago
++\-1h & exactly 1 hour ago
++\-2d & exactly 2 days ago
+ +1w & exactly 1 week in the future
+ +1m & exactly 1 month (30 days) in the future
+ +2y & exactly 2 years in the future
+--1d-0815 & 08:15am yesterday
++\-1d-0815 & 08:15am yesterday
+ +1d-08 & 8am tomorrow
+ +1w-08 & 8am on the same day as today next week
+ +6h-08 & 8am on the day containing the time 6 hours ahead of now
+-\.-08 & 8am today
+-\.-20 & 8pm today
++\.\-08 & 8am today
++\.\-20 & 8pm today
+ 20011020 & absolute : 12 noon on 20th October 2001
+ 011020 & absolute : 12 noon on 20th October 2001 (current century)
+ 1020 & absolute : 12 noon on 20th October 2001 (current century and year)
+ 20 & absolute : 12 noon on 20th October 2001 (current century, year and month)
+-20011020-081500 & absolute : 08:15am on 20th October 2001
+-20011020-0815 & absolute : 08:15am on 20th October 2001 (seconds=0)
+-20011020-08 & absolute : 08:00am on 20th October 2001 (minutes=seconds=0)
+-011020-08 & absolute : 08:00am on 20th October 2001 (minutes=seconds=0, current century)
++20011020\-081500 & absolute : 08:15am on 20th October 2001
++20011020\-0815 & absolute : 08:15am on 20th October 2001 (seconds=0)
++20011020\-08 & absolute : 08:00am on 20th October 2001 (minutes=seconds=0)
++011020\-08 & absolute : 08:00am on 20th October 2001 (minutes=seconds=0, current century)
+ etc & (see below)
+--sun & 12 noon on the previous Sunday
++\-sun & 12 noon on the previous Sunday
+ +sat & 12 noon on the following Saturday
+ +sat-08 & 8am on the following Saturday
+--tue-0815 & 08:15am on the previous Tuesday
++\-tue-0815 & 08:15am on the previous Tuesday
+ etc & (see below)
+ .TE
+ .PP
+@@ -876,7 +876,7 @@
+ of the more uses of this mode are rather far-fetched.
+ .PP
+ For the weekday and relative formats, the sign is actually optional.  The
+-default sign (implying past (-) or future (+)) will then be assumed depending on
++default sign (implying past (\-) or future (+)) will then be assumed depending on
+ the command as shown below:
+ 
+ .PP
+@@ -886,9 +886,9 @@
+ Command & Default & Reason
+ _
+ add & + & Add entries with deferred start times
+-done & - & Entries have been completed at some time in the past
+-report & - & Reporting on earlier completed tasks not future ones
+-purge & - & Tasks won't be completed in the future, so no need to purge future ones
++done & \- & Entries have been completed at some time in the past
++report & \- & Reporting on earlier completed tasks not future ones
++purge & \- & Tasks won't be completed in the future, so no need to purge future ones
+ .TE
+ 
+ .SH HOMEPAGE
+@@ -943,16 +943,7 @@
+ .IP
+ cd project1
+ .br
+-ln -s ../project2/.tdldb .
++ln \-s ../project2/.tdldb .
+ 
+ .SH BUGS
+ Please report them to the author.
+-
+-.SH SEE ALSO
+-The full documentation for tdl is maintained as a Texinfo manual. If the info and tdl
+-programs are properly installed at your site, the command
+-.IP
+-info tdl
+-.PP
+-should give you access to the complete manual.
+-

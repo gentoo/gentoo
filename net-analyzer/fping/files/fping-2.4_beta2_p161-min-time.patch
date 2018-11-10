@@ -1,0 +1,47 @@
+--- a/fping.c
++++ b/fping.c
+@@ -25,6 +25,7 @@
+  * Original author:  Roland Schemers  <schemers@stanford.edu>
+  * IPv6 Support:     Jeroen Massar    <jeroen@unfix.org / jeroen@ipng.nl>
+  * Bugfixes, byte order & senseful seq.-numbers: Stephan Fuhrmann (stephan.fuhrmann AT 1und1.de)
++ * Fixes: min_reply_i in splits and compiler warning. Alex Ghoth (alex AT ghoth.net)
+  *
+  *
+  * RCS header information no longer used.  It has been moved to the
+@@ -743,7 +744,7 @@
+ 	
+ 	if( ( ping_data_size > MAX_PING_DATA ) || ( ping_data_size < MIN_PING_DATA ) )
+ 	{
+-		fprintf( stderr, "%s: data size %u not valid, must be between %u and %u\n",
++		fprintf( stderr, "%s: data size %u not valid, must be between %lu and %u\n",
+ 			prog, ping_data_size, MIN_PING_DATA, MAX_PING_DATA );
+ 		usage();
+ 	
+@@ -1112,7 +1113,7 @@
+ 		ht = timeval_diff( &current_time, &cursor->last_send_time );
+ 
+ 		if( report_interval && ( loop_flag || count_flag ) &&
+-			( timeval_diff ( &current_time, &last_report_time )	> report_interval ) )
++			( timeval_diff ( &current_time, &last_report_time )	>= report_interval ) )
+ 		{
+ 			print_per_system_splits();
+ 			gettimeofday( &current_time, &tz );
+@@ -1487,8 +1488,8 @@
+ 		}/* IF */
+ 		
+ 		fprintf( stderr, "\n" );
+-		h->num_sent_i = h->num_recv_i = h->max_reply_i =
+-			h->min_reply_i = h->total_time_i = 0;
++		h->num_sent_i = h->num_recv_i = h->max_reply_i = h->total_time_i = 0;
++		h->min_reply_i = 10000000;
+ 	
+ 	}/* FOR */
+ 
+@@ -2377,6 +2378,7 @@
+ 	p->timeout = timeout;
+ 	p->running = 1;
+ 	p->min_reply = 10000000;
++	p->min_reply_i = 10000000;
+ 
+ 	if( strlen( p->host ) > max_hostname_len )
+ 		max_hostname_len = strlen( p->host );

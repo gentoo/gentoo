@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  The libtifiles is a library providing support for operations on Texas
+  Instruments calculators files. All formats for all calculators are
+  supported read/write ; the library is also able to manipulate the
+  group files, which means it is able to group and ungroup variables
+  into such group files. 
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">tilp</remote-id>
+  </upstream>
+</pkgmetadata>

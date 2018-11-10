@@ -1,0 +1,15 @@
+This piece of code is from libXaw3d-1.6/src/Scrollbar.c (Line 644)
+
+http://bugs.gentoo.org/399753
+
+--- src/Scrollbar.c
++++ src/Scrollbar.c
+@@ -1006,7 +1006,7 @@
+    TOPLOC = newtop;
+    SHOWNLENGTH = newbot-newtop+1;
+ 
+-   (*swclass->threeD_class.shadowdraw) (w, event, region, FALSE);
++   (*swclass->threeD_class.shadowdraw) (w, event, region, sbw->threeD.relief, FALSE);
+ 
+    ENDMESSAGE(Redisplay)
+ }

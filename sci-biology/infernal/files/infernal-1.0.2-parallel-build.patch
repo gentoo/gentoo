@@ -1,0 +1,31 @@
+Fix parallel build 
+
+http://bugs.gentoo.org/show_bug.cgi?id=311919
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -82,9 +82,10 @@
+ all: core 
+ 
+ core:
+-	(cd easel;     make CC="$(CC)" CFLAGS="$(CFLAGS)"; make)
+-	(cd src;       make CC="$(CC)" CFLAGS="$(CFLAGS)"; make module)
+-	(cd testsuite; make CC="$(CC)" CFLAGS="$(CFLAGS)")
++	$(MAKE) -C easel
++	$(MAKE) -C src 
++	$(MAKE) -C src module
++	$(MAKE) -C testsuite
+ 
+ #.PHONY: $(RIGFILTERS)
+ #$(RIGFILTERS): core
+--- a/easel/Makefile.in
++++ b/easel/Makefile.in
+@@ -132,7 +132,7 @@
+ 	esl_wuss.o
+ 
+ all: libeasel.a
+-	(cd miniapps; make)
++	$(MAKE) -C miniapps
+ 
+ .c.o: 
+ 	${CC} -I. ${CFLAGS} ${SIMDFLAGS} ${DEFS} -c $<		

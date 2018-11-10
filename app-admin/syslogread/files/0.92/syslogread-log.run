@@ -1,0 +1,3 @@
+#!/bin/sh
+#exec setuidgid syslog syslogxlate '*.*' | multilog t /var/log/syslog
+exec setuidgid syslog multilog t /var/log/syslog

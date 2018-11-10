@@ -1,0 +1,23 @@
+--- fdupes-1.50-PR2/Makefile.orig	2010-11-19 19:05:18.152330536 -0800
++++ fdupes-1.50-PR2/Makefile	2010-11-19 19:06:00.998659992 -0800
+@@ -72,9 +72,9 @@
+ # Make Configuration
+ #
+ CC = gcc
+-COMPILER_OPTIONS = -Wall -O -g
++COMPILER_OPTIONS = -Wall
+ 
+-CFLAGS= $(COMPILER_OPTIONS) -I. -DVERSION=\"$(VERSION)\" $(EXTERNAL_MD5) $(OMIT_GETOPT_LONG) $(FILEOFFSET_64BIT)
++CFLAGS += $(COMPILER_OPTIONS) -I. -DVERSION=\"$(VERSION)\" $(EXTERNAL_MD5) $(OMIT_GETOPT_LONG) $(FILEOFFSET_64BIT)
+ 
+ INSTALL_PROGRAM = $(INSTALL) -c -m 0755
+ INSTALL_DATA    = $(INSTALL) -c -m 0644
+@@ -94,7 +94,7 @@
+ all: fdupes
+ 
+ fdupes: $(OBJECT_FILES)
+-	$(CC) $(CFLAGS) -o fdupes $(OBJECT_FILES)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o fdupes $(OBJECT_FILES)
+ 
+ installdirs:
+ 	test -d $(BIN_DIR) || $(MKDIR) $(BIN_DIR)

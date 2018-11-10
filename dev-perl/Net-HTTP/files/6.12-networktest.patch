@@ -1,0 +1,131 @@
+From 3cfadd0fd690678e57eb5b6d1e0528724195238d Mon Sep 17 00:00:00 2001
+From: Olaf Alders <olaf@wundersolutions.com>
+Date: Thu, 29 Dec 2016 22:25:12 -0500
+Subject: [PATCH 1/2] Allow for 302s in live tests.
+
+---
+ t/live-https.t | 7 ++-----
+ t/live.t       | 7 ++-----
+ 2 files changed, 4 insertions(+), 10 deletions(-)
+
+diff --git a/t/live-https.t b/t/live-https.t
+index 3482bbf..82e3b3d 100644
+--- a/t/live-https.t
++++ b/t/live-https.t
+@@ -63,12 +63,9 @@ for ( 1 .. 2 ) {
+         $buf .= $tmp;
+     }
+     $buf =~ s/\r//g;
+-    
+-    # ( my $out = $buf ) =~ s/^/# /gm;
+-    # print $out;
+ 
+-    is( $code,              "200" );
++    ok( $code == 302 || $code == 200, 'success' );
+     like( $h{'Content-Type'}, qr{text/html} );
+-    like( $buf, qr{</html>} );
++    like( $buf, qr{</html>}i );
+ }
+ 
+diff --git a/t/live.t b/t/live.t
+index 747515a..9a8306d 100644
+--- a/t/live.t
++++ b/t/live.t
+@@ -57,12 +57,9 @@ for ( 1 .. 2 ) {
+         $buf .= $tmp;
+     }
+     $buf =~ s/\r//g;
+-    
+-    # ( my $out = $buf ) =~ s/^/# /gm;
+-    # print $out;
+ 
+-    is( $code,              "200" );
++    ok( $code == 302 || $code == 200, 'success' );
+     like( $h{'Content-Type'}, qr{text/html} );
+-    like( $buf, qr{</html>} );
++    like( $buf, qr{</html>}i );
+ }
+ 
+-- 
+2.11.0
+
+From e9e0dcfb01425e3f620312375eaa50c4d6d0e561 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Sun, 8 Jan 2017 17:54:44 +1300
+Subject: [PATCH 2/2] Use NO_NETWORK_TESTING env var to fence off live tests
+
+---
+ t/live-https.t |  4 ++--
+ t/live.t       |  4 ++--
+ t/rt-112313.t  | 25 ++++++++++++++++++++-----
+ 3 files changed, 24 insertions(+), 9 deletions(-)
+
+diff --git a/t/live-https.t b/t/live-https.t
+index 82e3b3d..7d5d258 100644
+--- a/t/live-https.t
++++ b/t/live-https.t
+@@ -1,6 +1,6 @@
+ BEGIN {
+-    unless ( -f "t/LIVE_TESTS" || -f "LIVE_TESTS" ) {
+-        print "1..0 # SKIP Live tests disabled; pass --live-tests to Makefile.PL to enable\n";
++    if ( $ENV{NO_NETWORK_TESTING} ) {
++        print "1..0 # SKIP Live tests disabled due to NO_NETWORK_TESTING\n";
+         exit;
+     }
+     eval {
+diff --git a/t/live.t b/t/live.t
+index 9a8306d..a7c2f9d 100644
+--- a/t/live.t
++++ b/t/live.t
+@@ -1,6 +1,6 @@
+ BEGIN {
+-    unless ( -f "t/LIVE_TESTS" || -f "LIVE_TESTS" ) {
+-        print "1..0 # SKIP Live tests disabled; pass --live-tests to Makefile.PL to enable\n";
++    if ( $ENV{NO_NETWORK_TESTING} ) {
++        print "1..0 # SKIP Live tests disabled due to NO_NETWORK_TESTING\n";
+         exit;
+     }
+     eval {
+diff --git a/t/rt-112313.t b/t/rt-112313.t
+index 365d498..f98040d 100644
+--- a/t/rt-112313.t
++++ b/t/rt-112313.t
+@@ -1,3 +1,23 @@
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print "1..0 # SKIP Live tests disabled due to NO_NETWORK_TESTING\n";
++    exit;
++  }
++  eval {
++        require IO::Socket::INET;
++        my $s = IO::Socket::INET->new(
++            PeerHost => "httpbin.org:80",
++            Timeout  => 5,
++        );
++        die "Can't connect: $@" unless $s;
++  };
++  if ($@) {
++        print "1..0 # SKIP Can't connect to httpbin.org\n";
++        print $@;
++        exit;
++  }
++}
++
+ use strict;
+ use warnings;
+ use Test::More;
+@@ -15,11 +35,6 @@ use Net::HTTP;
+ # So, we check that the reponse growth is only one byte after each iteration and also test multiple
+ # times across the 1024, 2048 and 3072 boundaries...
+ 
+-unless (-f "t/LIVE_TESTS" || -f "LIVE_TESTS")
+-{
+-    print "1..0 # SKIP Live tests disabled; pass --live-tests to Makefile.PL to enable\n";
+-    exit;
+-}
+ 
+ sub try
+ {
+-- 
+2.11.0
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  Whine modifies a lot of the commands bound to the main Emacs keys, like SPC
+  and C-f and RET and C-x C-s. They still do the same things they did before,
+  but they whine about it, printing messages which do not in general have
+  anything to do with reality. The main lossage is C-l, which refreshes the
+  screen and then whines about it so that you can't get a clear message line.
+</longdescription>
+<stabilize-allarches/>
+</pkgmetadata>

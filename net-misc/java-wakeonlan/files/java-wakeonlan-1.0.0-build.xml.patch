@@ -1,0 +1,43 @@
+--- build.xml	2004-06-03 16:21:44.000000000 +0300
++++ build.xml.fixed	2009-01-31 11:48:56.000000000 +0200
+@@ -38,7 +38,6 @@
+ 			target="${build.target}" 
+ 			classpathref="build.classpath" >
+ 			<src path="${src.dir}" />
+-			<src path="${testsrc.dir}" />
+ 		</javac>
+ 		<copy todir="${build.classes.dir}" overwrite="true">
+ 			<fileset dir="${src.dir}">
+@@ -56,6 +55,16 @@
+ 		</copy>
+ 	</target>
+ 	
++	<target name="build-test">
++		<javac destdir="${build.classes.dir}" 
++			debug="${build.debug}" 
++			optimize="${build.optimize}" 
++			target="${build.target}" 
++			classpathref="build.classpath" >
++			<src path="${testsrc.dir}" />
++		</javac>
++	</target>
++	
+ 	<target name="init.javadoc">
+ 		<mkdir dir="${deploy.javadoc.dir}"/>
+ 	</target>
+@@ -74,7 +83,7 @@
+ 		</javadoc>
+ 	</target>
+ 	
+-	<target name="test" depends="build">
++	<target name="test" depends="build-test">
+ 		<junit showoutput="true" printsummary="true">
+ 			<classpath >
+ 				<path refid="build.classpath" />
+@@ -179,4 +188,4 @@
+ 		<antcall target="deploy.ws" />
+ 		<antcall target="deploy.zip" />
+ 	</target>
+-</project>
+\ Dosya sonunda yenisatır yok.
++</project>

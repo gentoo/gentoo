@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/529044
+
+deploy this workaround until newer versions of the kernel/C library/libsandbox
+are rolled out into general circulation
+
+--- a/src/closures.c
++++ b/src/closures.c
+@@ -301,7 +301,8 @@ open_temp_exec_file_dir (const char *dir)
+ #ifdef O_TMPFILE
+   fd = open (dir, flags | O_RDWR | O_EXCL | O_TMPFILE, 0700);
+   /* If the running system does not support the O_TMPFILE flag then retry without it. */
+-  if (fd != -1 || (errno != EINVAL && errno != EISDIR && errno != EOPNOTSUPP)) {
++  if (fd != -1 || (errno != EINVAL && errno != EISDIR && errno != EOPNOTSUPP &&
++		   errno != EACCES)) {
+     return fd;
+   } else {
+     errno = 0;

@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -27,7 +27,7 @@
+ fi
+ 
+ # Checks for libraries.
+-AC_SEARCH_LIBS([tgetent], [termcap curses ncurses])
++AC_SEARCH_LIBS([tgetent], [termcap tinfo curses ncurses])
+ AC_SEARCH_LIBS([basename], [gen])
+ if test "x$with_pcre" != "xno"; then
+    AC_SEARCH_LIBS([pcre_compile], [pcre], ,

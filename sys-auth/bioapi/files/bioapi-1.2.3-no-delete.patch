@@ -1,0 +1,15 @@
+do not delete the installed symlink -- let the package manager handle that
+
+--- bioapi-linux/apps/mod_install/install.c
++++ bioapi-linux/apps/mod_install/install.c
+@@ -496,10 +496,6 @@
+ 							}
+ 							else if ( Action == INSTALL_ACTION_UNINSTALL )
+ 							{
+-/* Linux-Port: Added the Linux branch */
+-#if defined (LINUX) || defined (SOLARIS)
+-								DeleteFile(szDstPath);
+-#endif
+ 								printf( "Module uninstalled successfully.\n" );
+ 							}
+ 							else if ( Action == INSTALL_ACTION_REFRESH )

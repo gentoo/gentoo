@@ -1,0 +1,15 @@
+--- rdesktop.orig/configure.ac	2009-06-30 10:35:14.000000000 +0200
++++ rdesktop/configure.ac		2009-06-30 11:35:10.000000000 +0200
+@@ -228,7 +228,11 @@
+ if test -n "$PKG_CONFIG"; then
+     PKG_CHECK_MODULES(LIBAO, ao, [HAVE_LIBAO=1], [HAVE_LIBAO=0])
+     PKG_CHECK_MODULES(ALSA, alsa, [HAVE_ALSA=1], [HAVE_ALSA=0])
+-    PKG_CHECK_MODULES(LIBSAMPLERATE, samplerate, [HAVE_LIBSAMPLERATE=1], [HAVE_LIBSAMPLERATE=0])
++    AC_ARG_WITH(libsamplerate,
++        [  --without-libsamplerate disable libsamplerate support])
++    if test "x$with_libsamplerate" != "xno"; then
++        PKG_CHECK_MODULES(LIBSAMPLERATE, samplerate, [HAVE_LIBSAMPLERATE=1], [HAVE_LIBSAMPLERATE=0])
++    fi
+     if test x"$HAVE_LIBSAMPLERATE" = "x1"; then
+         AC_DEFINE(HAVE_LIBSAMPLERATE)
+         if test x"$static_libsamplerate" = "xyes"; then

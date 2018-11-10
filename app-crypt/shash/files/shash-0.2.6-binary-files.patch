@@ -1,0 +1,34 @@
+--- shash-0.2.6/src/shash.c
++++ shash-0.2.6/src/shash.c
+@@ -631,11 +631,11 @@
+ 
+ 		if (nosalt == FALSE && hmac == 1) {
+ 			if (sscanf
+-			    (linebuf, "%s %s  %s\n", hexbuffer, buffer,
+-			     buffer2) < 2) {
++			    (linebuf, "%s %s *%s\n", hexbuffer, buffer,
++			     buffer2) != 3) {
+ 				if (sscanf
+-				    (linebuf, "%s %s *%s\n", hexbuffer,
+-				     buffer, buffer2) < 2)
++				    (linebuf, "%s %s  %s\n", hexbuffer,
++				     buffer, buffer2) != 3)
+ 					continue;
+ 			}
+ 
+@@ -648,11 +648,11 @@
+ 			key = pass2key(algorithm, keymode_buffer, &keylen, password, plen);
+ 
+ 		} else {
+-			if (sscanf(linebuf, "%s  %s\n", buffer, buffer2) ==
+-			    0) {
++			if (sscanf(linebuf, "%s *%s\n", buffer, buffer2) !=
++			    2) {
+ 				if (sscanf
+-				    (linebuf, "%s *%s\n", buffer,
+-				     buffer2) == 0)
++				    (linebuf, "%s  %s\n", buffer,
++				     buffer2) != 2)
+ 					continue;
+ 			}
+ 

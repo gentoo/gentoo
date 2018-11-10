@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>fonts@gentoo.org</email>
+    <name>Fonts</name>
+  </maintainer>
+  <longdescription lang="en">
+    Welcome to the Doulos SIL font package. The goal for this product
+    was to provide a single Unicode-based font family that would
+    contain a comprehensive inventory of glyphs needed for almost any
+    Roman- or Cyrillic-based writing system, whether used for phonetic
+    or orthographic needs. In addition, there is provision for other
+    characters and symbols useful to linguists. This font makes use of
+    state-of-the-art font technologies to support complex typographic
+    issues, such as the need to position arbitrary combinations of
+    base glyphs and diacritics optimally.
+
+    Doulos is very similar to Times/Times New Roman, but only has a
+    single face - regular. It is intended for use alongside other
+    Times-like fonts where a range of styles (italic, bold) are not
+    needed.  
+  </longdescription>
+</pkgmetadata>

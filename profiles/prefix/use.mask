@@ -1,0 +1,23 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Michael Haubenwallner <haubi@gentoo.org> (21 Jun 2018)
+# sys-libs/libseccomp is a linux interface, not sure if it will work
+# in prefix for Linux either, bug #585756
+seccomp
+
+# Mask all glibc/linux combination, unmasked in the appropriate profiles
+elibc_glibc
+kernel_linux
+
+# USE=acl will probably never work because of how it is related to the kernel
+# and Gentoo Prefix does not have access to that. Also, definately problems with
+# coreutils on darwin.
+acl
+
+# Prefix removed python3_5 from PYTHON_TARGETS and PYTHON_SINGLE_TARGET
+python_targets_python3_5
+python_single_target_python3_5
+
+# Similar for Ruby 2.3
+ruby_targets_ruby23

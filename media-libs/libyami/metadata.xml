@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="egl">Enable EGL support.</flag>
+		<flag name="v4l">Add support for V4L2 hardware codecs.</flag>
+		<flag name="md5">Add support for generating md5 sums for each frame.</flag>
+		<flag name="dmabuf">Enable dma_buf buffer sharing.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">01org/libyami</remote-id>
+	</upstream>
+</pkgmetadata>

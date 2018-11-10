@@ -1,0 +1,15 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# /etc/conf.d/logmein-hamachi
+# Config file for logmein-hamachi control script
+
+# Location of config, identity and log files
+CONFDIR="/var/lib/logmein-hamachi"
+
+# Your nickname
+# Set it to enable auto-login when starting the service
+NICKNAME=""
+
+# Seconds to wait before auto-login (if enabled)
+WAIT="2"

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>media-video@gentoo.org</email>
+    <name>Gentoo Video project</name>
+  </maintainer>
+  <longdescription lang="en">
+  D.J. Bernstein Fast Fourier Transform (djbfft) is an extremely 
+  fast library for floating-point convolution. The current version
+  holds most of the speed records for double-precision FFTs on
+  general-purpose computers.
+  djbfft provides power-of-2 complex FFTs, real FFTs at twice the speed,
+  and fast multiplication of complex arrays. Single precision and double
+  precision are equally supported.
+</longdescription>
+</pkgmetadata>

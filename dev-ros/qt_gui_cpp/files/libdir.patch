@@ -1,0 +1,15 @@
+Index: qt_gui_core-0.2.26/qt_gui_cpp/src/qt_gui_cpp_sip/CMakeLists.txt
+===================================================================
+--- qt_gui_core-0.2.26.orig/qt_gui_cpp/src/qt_gui_cpp_sip/CMakeLists.txt
++++ qt_gui_core-0.2.26/qt_gui_cpp/src/qt_gui_cpp_sip/CMakeLists.txt
+@@ -29,8 +29,8 @@ set(qt_gui_cpp_sip_DEPENDENT_FILES
+ # maintain context for different named target
+ set(qt_gui_cpp_sip_INCLUDE_DIRS ${qt_gui_cpp_INCLUDE_DIRS} "${CMAKE_CURRENT_SOURCE_DIR}/../../include" ${catkin_INCLUDE_DIRS})
+ set(qt_gui_cpp_sip_LIBRARIES ${qt_gui_cpp_LIBRARIES} ${PROJECT_NAME} ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+-set(qt_gui_cpp_sip_LIBRARY_DIRS ${qt_gui_cpp_LIBRARY_DIRS} ${CATKIN_DEVEL_PREFIX}/lib)
+-set(qt_gui_cpp_sip_LDFLAGS_OTHER ${qt_gui_cpp_LDFLAGS_OTHER} -Wl,-rpath,\\"${CATKIN_DEVEL_PREFIX}/lib\\")
++set(qt_gui_cpp_sip_LIBRARY_DIRS ${qt_gui_cpp_LIBRARY_DIRS} ${CATKIN_DEVEL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
++set(qt_gui_cpp_sip_LDFLAGS_OTHER ${qt_gui_cpp_LDFLAGS_OTHER} -Wl,-rpath,\\"${CATKIN_DEVEL_PREFIX}/${CMAKE_INSTALL_LIBDIR}\\")
+ 
+ find_package(python_qt_binding REQUIRED)
+ include(${python_qt_binding_EXTRAS_DIR}/sip_helper.cmake)

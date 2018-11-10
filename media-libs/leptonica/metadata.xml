@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<use>
+		<flag name="utils">Install command-line utilities</flag>
+	</use>
+	<longdescription>
+		Leptonica is a pedagogically-oriented open source site
+		containing software that is broadly useful for image
+		processing and image analysis applications.
+	</longdescription>
+</pkgmetadata>

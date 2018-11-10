@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<changelog>http://sumwars.org/mantis/changelog_page.php</changelog>
+		<bugs-to>https://sumwars.org/mantis/index.php</bugs-to>
+		<remote-id type="sourceforge">sumwars</remote-id>
+	</upstream>
+	<use>
+		<flag name="tools">Builds editor tools</flag>
+	</use>
+</pkgmetadata>

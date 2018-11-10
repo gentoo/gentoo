@@ -1,0 +1,17 @@
+# rename *mon to *mon.nstats to avoid conflict with
+# net-analyzer/bmon, sys-cluster/ceph and sys-process/nmon
+# bug #364685
+
+--- a/Makefile
++++ b/Makefile
+@@ -53,7 +53,7 @@
+ 	mkdir -p $(DESTDIR)$(prefix)/bin/
+ 	mkdir -p $(DESTDIR)$(mandir)/man8/
+ 	install nstats $(DESTDIR)$(prefix)/bin/
+-	install bmon $(DESTDIR)$(prefix)/bin/
+-	install cmon $(DESTDIR)$(prefix)/bin/
+-	install nmon $(DESTDIR)$(prefix)/bin/
++	install bmon $(DESTDIR)$(prefix)/bin/bmon.nstats
++	install cmon $(DESTDIR)$(prefix)/bin/cmon.nstats
++	install nmon $(DESTDIR)$(prefix)/bin/nmon.nstats
+ 	install man/nstats.8 $(DESTDIR)$(mandir)/man8/

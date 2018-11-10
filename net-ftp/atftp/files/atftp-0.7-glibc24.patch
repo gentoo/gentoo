@@ -1,0 +1,22 @@
+--- atftp-0.7/stats.c.org
++++ atftp-0.7/stats.c
+@@ -18,6 +18,7 @@
+ 
+ #include <limits.h>
+ #include <string.h>
++#include <unistd.h>
+ #include "tftp_def.h"
+ #include "stats.h"
+ #include "logger.h"
+@@ -157,8 +158,9 @@
+ 
+      logger(LOG_INFO, "  Load measurements:");
++	  long sc_clk_tck = sysconf(_SC_CLK_TCK);
+      logger(LOG_INFO, "   User: %8.3fs  Sys:%8.3fs",
+-            (double)(s_stats.tms.tms_utime) / CLK_TCK,
+-            (double)(s_stats.tms.tms_stime) / CLK_TCK);
++            (double)(s_stats.tms.tms_utime) / sc_clk_tck,
++            (double)(s_stats.tms.tms_stime) / sc_clk_tck);
+      logger(LOG_INFO, "   Total:%8.3fs  CPU:%8.3f%%", 
+             (double)(tmp.tv_sec + tmp.tv_usec * 1e-6),
+             (double)(s_stats.tms.tms_utime + s_stats.tms.tms_stime) /

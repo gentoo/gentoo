@@ -1,0 +1,10 @@
+--- a/util.c
++++ b/util.c
+@@ -25,6 +25,7 @@
+ #endif
+ 
+ #include <sys/types.h>
++#include <stdlib.h> /* exit() */
+ 
+ #include <stdio.h>
+ #if __STDC__

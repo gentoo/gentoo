@@ -1,0 +1,34 @@
+From 21b8eb73d9272e06707ad6d0357f3034b8d9a46f Mon Sep 17 00:00:00 2001
+From: "Anthony G. Basile" <blueness@gentoo.org>
+Date: Wed, 14 Oct 2015 16:18:19 -0400
+Subject: [PATCH] tests/pixbuf-lowmem.c: Do not run pixbuf-lowmem test on
+ uClibc
+
+pixbuf-lowmem.c depends on GNU libc internals and does not build
+on musl or uClibc.  Commit e1fd25a fixes this issue for musl by
+testing if __GLIBC__ is set.  However, uClibc sets __GLIBC__ and
+so this check is insufficient there.  We expand the check so that
+we run pixbuf-lowmem on glibc, while avoiding it on both musl and
+uClibc.
+
+Signed-off-by: Anthony G. Basile <blueness@gentoo.org>
+---
+ tests/pixbuf-lowmem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/pixbuf-lowmem.c b/tests/pixbuf-lowmem.c
+index 9e9571f..ec7504f 100644
+--- a/tests/pixbuf-lowmem.c
++++ b/tests/pixbuf-lowmem.c
+@@ -24,7 +24,7 @@
+ #include <time.h>
+ #include <string.h>
+ 
+-#ifdef __GLIBC__
++#if defined(__GLIBC__) && !defined(__UCLIBC__)
+ #define PRETEND_MEM_SIZE (16 * 1024 * 1024)
+ #define REMAINING_MEM_SIZE 100000
+ 
+-- 
+2.4.9
+

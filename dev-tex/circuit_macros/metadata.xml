@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>calchan@gentoo.org</email>
+</maintainer>
+<maintainer type="project">
+	<email>tex@gentoo.org</email>
+	<name>Gentoo TeX Project</name>
+</maintainer>
+<maintainer type="project">
+	<email>sci-electronics@gentoo.org</email>
+	<name>Gentoo Electronics Project</name>
+</maintainer>
+<longdescription>Set of macros for drawing high-quality line diagrams to include
+	in TeX, LaTeX, or similar documents. Fundamental electric circuit
+	elements and basic logic gates are included with several tools and
+	examples of other types of diagrams.
+</longdescription>
+<use>
+	<flag name="script">Install cm2pdf to automatically create a correctly
+		sized PDF from a circuit_macro m4 source
+	</flag>
+</use>
+</pkgmetadata>

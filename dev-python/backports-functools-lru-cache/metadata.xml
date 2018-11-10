@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sbraz@gentoo.org</email>
+		<name>Louis Sautier</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">backports.functools_lru_cache</remote-id>
+		<remote-id type="github">jaraco/backports.functools_lru_cache</remote-id>
+		<bugs-to>https://github.com/jaraco/backports.functools_lru_cache/issues</bugs-to>
+		<changelog>https://github.com/jaraco/backports.functools_lru_cache/blob/master/CHANGES.rst</changelog>
+	</upstream>
+</pkgmetadata>

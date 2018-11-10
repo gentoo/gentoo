@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-libs category contains various miscellaneous programming
+		libraries.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-libs enthält verschiedenste Programmierbibliotheken.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-libs contiene varias librerías mixtas
+		para programación.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-libsカテゴリーには多種多様なプログラミング・ライブラリが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-libs categorie bevat verschillende bibliotheken die het
+		programmeren ondersteunen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-libs chứa các thư viện lập trình khác nhau.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória dev-libs obsahuje rôzne programovacie knižnice.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-libs contiene varie librerie per la programmazione.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-libs contém várias bibliotecas mistas para
+		programação.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-libs zawiera różne dodatkowe biblioteki związane z programowaniem.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,13 @@
+--- a/configs/server/burp.conf.in
++++ b/configs/server/burp.conf.in
+@@ -68,8 +68,8 @@
+ # keep = 6
+ 
+ # Run as different user/group.
+-# user=graham
+-# group=nogroup
++user=burp
++group=burp
+ 
+ # CA options.
+ # If you want your server to be a certificate authority and generate its own

@@ -1,0 +1,32 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# David Seifert <soap@gentoo.org> (17 Apr 2017)
+# These py2-only packages also support pypy, enable
+# Python 2.7 as the default implementation, preparing
+# for the eventual switch to py3 in PYTHON_SINGLE_TARGET
+app-text/asciidoc python_single_target_python2_7 python_targets_python2_7
+app-text/wklej python_single_target_python2_7 python_targets_python2_7
+dev-vcs/git-bz python_single_target_python2_7 python_targets_python2_7
+gnome-base/libglade python_single_target_python2_7 python_targets_python2_7
+sci-chemistry/pdb-tools python_single_target_python2_7 python_targets_python2_7
+
+# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Enable the BPF target by default
+sys-devel/clang llvm_targets_BPF
+sys-devel/llvm llvm_targets_BPF
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (27 Jul 2012)
+# Modular X: Build the Xorg X server by default
+x11-base/xorg-server xorg
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (11 Apr 2011)
+# Disable ldap support by default in sudo, as it seem to lack
+# developers maintaining that particular support and is, thus, vastly
+# untested.
+app-admin/sudo -ldap
+
+# Zac Medico <zmedico@gentoo.org> (04 Dec 2009)
+# Bug #295615 - Disable cxx by default, in order to avoid a die
+# in pkg_setup with default USE settings (cxx requires sasl).
+net-nds/openldap -cxx

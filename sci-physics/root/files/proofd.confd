@@ -1,0 +1,12 @@
+# conf.d file for proof daemon
+#
+# Please refer to the proofd(1) man(1) page for more information on 
+# command line parameters. 
+#
+PROOFD_OPTS=
+
+# Specify your base of your PROOF directory here.  If left blank, it
+# will use the system default (e.g., /usr/share/root/proof). 
+# Note, however, that ROOT recommends that this directory is shared (via
+# NFS or similar) among all the nodes of the cluster.
+PROOF_DIR=

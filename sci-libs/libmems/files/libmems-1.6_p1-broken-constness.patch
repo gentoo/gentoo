@@ -1,0 +1,24 @@
+Fix bug 529770 caused by non-const copy constructor.
+
+--- libmems-1.6_p1/libMems/Aligner.cpp
++++ libmems-1.6_p1/libMems/Aligner.cpp
+@@ -939,7 +939,7 @@
+ 	MatchLeftEndComparator( unsigned seq = 0 ){
+ 		m_seq = seq;
+ 	}
+-	MatchLeftEndComparator( MatchLeftEndComparator& msc ){
++	MatchLeftEndComparator( const MatchLeftEndComparator& msc ){
+ 		m_seq = msc.m_seq;
+ 	}
+ 	// TODO??  make this do a wraparound comparison if all is equal?
+--- libmems-1.6_p1/libMems/Aligner.h
++++ libmems-1.6_p1/libMems/Aligner.h
+@@ -49,7 +49,7 @@
+ 	LabeledMemComparator( uint seq ){
+ 		m_seq = seq;
+ 	}
+-	LabeledMemComparator( LabeledMemComparator& lmc ){
++	LabeledMemComparator( const LabeledMemComparator& lmc ){
+ 		m_seq = lmc.m_seq;
+ 	}
+ 	boolean operator()(const LabeledMem& a, const LabeledMem& b) const{

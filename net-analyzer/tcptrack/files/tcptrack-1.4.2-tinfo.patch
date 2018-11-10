@@ -1,0 +1,11 @@
+--- a/configure.in
++++ b/configure.in
+@@ -26,7 +26,7 @@
+ AC_CHECK_LIB(socket,gethostbyname)
+ AC_CHECK_LIB(nsl,gethostbyname)
+ AC_CHECK_LIB(nsl,inet_addr)
+-AC_CHECK_LIB(ncurses, initscr)
++PKG_CHECK_MODULES(ncurses,ncurses,LIBS="$LIBS $ncurses_LIBS",AC_MSG_ERROR([ncurses is required]))
+ AC_CHECK_LIB(pcap, pcap_open_live)
+ AC_CHECK_LIB(pthread, pthread_create)
+ AC_CHECK_LIB(rt, nanosleep)

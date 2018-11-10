@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		A free IDL (Interactive Data Language) compatible incremental compiler
+		(ie. runs IDL programs). IDL is a registered trademark of ITT Visual
+		Information Solutions.
+	</longdescription>
+	<use>
+		<flag name="eigen">Build matrix manipulation with <pkg>dev-cpp/eigen</pkg></flag>
+		<flag name="hdf">Add support for the Hierarchical Data Format v.4</flag>
+		<flag name="gshhs">Add support for projection adn continent maps with <pkg>sci-geosciences/gshhs-data</pkg></flag>
+		<flag name="grib">Add support for the meteorological GRIB format with <pkg>sci-libs/grib_api</pkg></flag>
+		<flag name="proj">Add support for <pkg>sci-libs/proj</pkg> (geographic projections)</flag>
+		<flag name="udunits">Add support for manipulating units of physical quantities</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">gnudatalanguage</remote-id>
+	</upstream>
+</pkgmetadata>

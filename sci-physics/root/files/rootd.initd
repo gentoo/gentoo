@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+    need net
+    use logger
+    provide root-file-server
+}
+
+start() {
+    ebegin "Starting ROOT file server"
+    pid=$(start-stop-daemon --start --quiet --user ${ROOTD_USER} \
+	--pidfile /var/run/rootd.pid \
+	--exec /usr/bin/rootd -- ${ROOTD_OPTS})
+    retval=$?
+    echo ${ROOTD_PID} > /var/run/rootd.pid
+    eend ${retval}
+}
+
+stop() {
+    ebegin "Stopping ROOT file server"
+    start-stop-daemon --stop --quiet \
+	--pidfile /var/run/rootd.pid \
+	--exec /usr/bin/rootd
+    eend $?
+}

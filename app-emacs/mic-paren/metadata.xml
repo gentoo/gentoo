@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  Load this file, activate it and Emacs will display highlighting on whatever
+  parenthesis (and paired delimiter if you like this) matches the one before
+  or after point. This is an extension to the paren.el file distributed with
+  Emacs. The default behaviour is similar to paren.el but more sophisticated.
+  Normally you can try all default settings to enjoy mic-paren.
+</longdescription>
+<stabilize-allarches/>
+</pkgmetadata>

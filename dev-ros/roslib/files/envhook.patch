@@ -1,0 +1,34 @@
+Use env python for running python so that it uses the proper version on Gentoo.
+Honour CATKIN_PREFIX_PATH gentoo addition.
+
+Index: roslib/env-hooks/10.ros.sh.em
+===================================================================
+--- roslib.orig/env-hooks/10.ros.sh.em
++++ roslib/env-hooks/10.ros.sh.em
+@@ -1,8 +1,5 @@
+ # generated from ros/env-hooks/10.ros.sh.em
+ 
+-# scrub old ROS bin dirs, to avoid accidentally finding the wrong executables
+-export PATH="`@(PYTHON_EXECUTABLE) -c \"import os; print(os.pathsep.join([x for x in \\\"$PATH\\\".split(os.pathsep) if not any([d for d in ['cturtle', 'diamondback', 'electric', 'fuerte'] if d in x])]))\"`"
+-
+ @{
+ # This is a build-time environment variable which allows a build engineer to override the expected
+ # ROS_DISTRO value for a workspace, for example to deliberately use a newer version of roslib with
+@@ -19,7 +16,7 @@ export ROS_DISTRO=@(ROS_DISTRO)
+ PYTHON_CODE_BUILD_ROS_PACKAGE_PATH=$(cat <<EOF
+ from __future__ import print_function
+ import os
+-env_name = 'CMAKE_PREFIX_PATH'
++env_name = 'CATKIN_PREFIX_PATH'
+ paths = [path for path in os.environ[env_name].split(os.pathsep)] if env_name in os.environ and os.environ[env_name] != '' else []
+ workspaces = [path for path in paths if os.path.exists(os.path.join(path, '.catkin'))]
+ paths = []
+@@ -38,7 +35,7 @@ for workspace in workspaces:
+ print(os.pathsep.join(paths))
+ EOF
+ )
+-export ROS_PACKAGE_PATH="`@(PYTHON_EXECUTABLE) -c \"$PYTHON_CODE_BUILD_ROS_PACKAGE_PATH\"`"
++export ROS_PACKAGE_PATH="`/usr/bin/env python -c \"$PYTHON_CODE_BUILD_ROS_PACKAGE_PATH\"`"
+ 
+ @[if DEVELSPACE]@
+ # env variables in develspace

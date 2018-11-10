@@ -1,0 +1,17 @@
+diff -uNr amqplib-0.6.1.org/tests/client_0_8/run_all.py amqplib-0.6.1/tests/client_0_8/run_all.py
+--- amqplib-0.6.1.org/tests/client_0_8/run_all.py	2011-07-06 16:21:22.000000000 -0400
++++ amqplib-0.6.1/tests/client_0_8/run_all.py	2011-07-06 16:21:38.000000000 -0400
+@@ -28,13 +28,8 @@
+         'test_exceptions',
+         'test_serialization',
+         'test_basic_message',
+-        'test_connection',
+-        'test_channel',
+         ]
+ 
+-if sys.version_info >= (2, 5):
+-    TEST_NAMES.append('test_with')
+-
+ def main():
+     suite = unittest.TestLoader().loadTestsFromNames(TEST_NAMES)
+     unittest.TextTestRunner(**settings.test_args).run(suite)

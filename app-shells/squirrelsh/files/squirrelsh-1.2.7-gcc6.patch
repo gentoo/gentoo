@@ -1,0 +1,217 @@
+diff --git a/shell/base.cpp b/shell/base.cpp
+index 3a89b6d..33803c3 100644
+--- a/shell/base.cpp
++++ b/shell/base.cpp
+@@ -1,5 +1,5 @@
+ // Squirrel Shell
+-// Copyright (c) 2006-2010, Constantin Makshin
++// Copyright (c) 2006-2017, Constantin Makshin
+ //
+ // This program is free software; you can redistribute it and/or modify
+ // it under the terms of the GNU General Public License as published by
+@@ -15,6 +15,7 @@
+ // along with this program. If not, see <http://www.gnu.org/licenses/>.
+ 
+ #include "common.h"
++#include <algorithm>
+ #include <string.h>
+ #include <string>
+ 
+@@ -36,14 +37,6 @@ typedef HANDLE SysHandle;
+ typedef	int SysHandle;
+ #endif
+ 
+-#if !defined(min)
+-#	define min(a, b) ((a) < (b) ? (a) : (b))
+-#endif
+-
+-#if !defined(max)
+-#	define max(a, b) ((a) > (b) ? (a) : (b))
+-#endif
+-
+ // Maximum number of command line arguments passed to the child process
+ #define MAX_ARGS		 130
+ // Maximum number of environment variables passed to the child process
+@@ -177,7 +170,7 @@ static bool ReadFromPipe (SysHandle pipe, void* buffer, size_t numBytesToRead, s
+ 
+ 	if (!numBytesToRead ||
+ 		!PeekNamedPipe(pipe, NULL, 0, NULL, &numBytesAvailable, NULL) || !numBytesAvailable ||
+-		!ReadFile(pipe, buffer, min(numBytesToRead, numBytesAvailable), &nbr, NULL) || !nbr)
++		!ReadFile(pipe, buffer, std::min(numBytesToRead, numBytesAvailable), &nbr, NULL) || !nbr)
+ 	{
+ 		return false;
+ 	}
+@@ -188,7 +181,7 @@ static bool ReadFromPipe (SysHandle pipe, void* buffer, size_t numBytesToRead, s
+ #else
+ 	int nbr = read(pipe, buffer, numBytesToRead);
+ 	if (numBytesRead)
+-		*numBytesRead = max(nbr, 0);
++		*numBytesRead = std::max(nbr, 0);
+ 
+ 	return nbr > 0;
+ #endif
+@@ -210,7 +203,7 @@ static bool WriteToPipe (SysHandle pipe, const void* buffer, size_t numBytesToWr
+ #else
+ 	int nbw = write(pipe, buffer, numBytesToWrite);
+ 	if (numBytesWritten)
+-		*numBytesWritten = max(nbw, 0);
++		*numBytesWritten = std::max(nbw, 0);
+ 
+ 	return nbw > 0;
+ #endif
+@@ -786,7 +779,7 @@ static SQInteger Run (HSQUIRRELVM)
+ 			// Pass data to/from child process' streams
+ 			std::basic_string<SQChar> output,
+ 									  error;
+-			int						  nfds = max(newInput[1], max(newOutput[0], newError[0])) + 1;
++			int						  nfds = std::max(newInput[1], std::max(newOutput[0], newError[0])) + 1;
+ 			for (;;)
+ 			{
+ 				// Check if there's any data available for reading/writing
+diff --git a/shell/common.h b/shell/common.h
+index 7cb4d47..461410d 100644
+--- a/shell/common.h
++++ b/shell/common.h
+@@ -1,5 +1,5 @@
+ // Squirrel Shell
+-// Copyright (c) 2006-2010, Constantin Makshin
++// Copyright (c) 2006-2017, Constantin Makshin
+ //
+ // This program is free software; you can redistribute it and/or modify
+ // it under the terms of the GNU General Public License as published by
+@@ -47,6 +47,7 @@
+ #	define  WIN32_LEAN_AND_MEAN
+ #	define  WIN64_LEAN_AND_MEAN
+ #	define  STRICT
++#	define  NOMINMAX
+ #	include <windows.h>
+ #else
+ #	include <unistd.h>
+@@ -88,14 +89,6 @@
+ #	define MAX_PATH 260
+ #endif
+ 
+-#if !defined(min)
+-#	define min(a, b) ((a) < (b) ? (a) : (b))
+-#endif
+-
+-#if !defined(max)
+-#	define max(a, b) ((a) > (b) ? (a) : (b))
+-#endif
+-
+ #define SQUIRREL_VERSION_SHORT "3.0.3"
+ 
+ extern HSQUIRRELVM sqvm;	// We aren't going to create more than one VM, so it's acceptable to make this global
+diff --git a/shell/hash_adler32.cpp b/shell/hash_adler32.cpp
+index c42f440..b250875 100644
+--- a/shell/hash_adler32.cpp
++++ b/shell/hash_adler32.cpp
+@@ -8,6 +8,7 @@
+  */
+ 
+ #include "hash.h"
++#include <algorithm>
+ 
+ #define BASE 65521ul
+ #define NMAX 5552
+@@ -87,7 +88,7 @@ void Hash_Adler32 (FILE* file, unsigned char* block, unsigned char* hash, SQInte
+ 	unsigned adler = 1;
+ 	do
+ 	{
+-		size_t r = fread(block, 1, min(left, BLOCK_SIZE), file);
++		size_t r = fread(block, 1, size_t(std::min<SQInteger>(left, BLOCK_SIZE)), file);
+ 		adler = adler32(adler, block, r);
+ 		left -= SQInteger(r);
+ 	} while (left);
+diff --git a/shell/hash_crc32.cpp b/shell/hash_crc32.cpp
+index d18a3aa..9bcb233 100644
+--- a/shell/hash_crc32.cpp
++++ b/shell/hash_crc32.cpp
+@@ -8,6 +8,7 @@
+  */
+ 
+ #include "hash.h"
++#include <algorithm>
+ 
+ static unsigned crc_table[256];
+ 
+@@ -63,7 +64,7 @@ void Hash_CRC32 (FILE* file, unsigned char* block, unsigned char* hash, SQIntege
+ 	unsigned crc = 0;
+ 	do
+ 	{
+-		size_t r = fread(block, 1, min(left, BLOCK_SIZE), file);
++		size_t r = fread(block, 1, size_t(std::min<SQInteger>(left, BLOCK_SIZE)), file);
+ 		crc = crc32(crc, block, r);
+ 		left -= SQInteger(r);
+ 	} while (left);
+diff --git a/shell/hash_md5.cpp b/shell/hash_md5.cpp
+index b1a3c2a..a82d4c5 100644
+--- a/shell/hash_md5.cpp
++++ b/shell/hash_md5.cpp
+@@ -20,6 +20,7 @@
+  */
+ 
+ #include "hash.h"
++#include <algorithm>
+ 
+ struct MD5Context
+ {
+@@ -201,7 +202,7 @@ void Hash_MD5 (FILE* file, unsigned char* block, unsigned char* hash, SQInteger
+ 	MD5Init(&ctx);
+ 	do
+ 	{
+-		size_t r = fread(block, 1, min(left, BLOCK_SIZE), file);
++		size_t r = fread(block, 1, size_t(std::min<SQInteger>(left, BLOCK_SIZE)), file);
+ 		MD5Update(&ctx, block, r);
+ 		left -= SQInteger(r);
+ 	} while (left);
+diff --git a/shell/util.cpp b/shell/util.cpp
+index 48983f6..6d0d199 100644
+--- a/shell/util.cpp
++++ b/shell/util.cpp
+@@ -1,5 +1,5 @@
+ // Squirrel Shell
+-// Copyright (c) 2006-2009, Constantin Makshin
++// Copyright (c) 2006-2017, Constantin Makshin
+ //
+ // This program is free software; you can redistribute it and/or modify
+ // it under the terms of the GNU General Public License as published by
+@@ -15,6 +15,7 @@
+ // along with this program. If not, see <http://www.gnu.org/licenses/>.
+ 
+ #include "common.h"
++#include <algorithm>
+ #include <string.h>
+ #include <ctype.h>
+ 
+@@ -123,8 +124,12 @@ SQInteger TimeToInt (unsigned year, unsigned month, unsigned day, unsigned hour,
+ 		--day;
+ 
+ 	DateAndTime result;
+-	result.dt.time = (min(hour, 23) * 3600) + (min(minute, 59) * 60) + min(second, 59);
+-	result.dt.date = (min(year, NUM_YEARS) * 372) + (min(month, 11) * 31) + min(day, NumberOfDays(month, year) - 1);
++	result.dt.time = (std::min<SQInteger>(hour, 23) * 3600)
++				   + (std::min<SQInteger>(minute, 59) * 60)
++				   + std::min<SQInteger>(second, 59);
++	result.dt.date = (std::min<SQInteger>(year, NUM_YEARS) * 372)
++				   + (std::min<SQInteger>(month, 11) * 31)
++				   + std::min<SQInteger>(day, NumberOfDays(month, year) - 1);
+ 	return result.value;
+ }
+ 
+@@ -798,8 +803,13 @@ static SQInteger MkTime (HSQUIRRELVM)
+ 	sq_getinteger(sqvm, 5, &hour);
+ 	sq_getinteger(sqvm, 6, &minute);
+ 	sq_getinteger(sqvm, 7, &second);
+-	sq_pushinteger(sqvm, TimeToInt(unsigned(max(year, MIN_YEAR)), unsigned(max(month, 1)), unsigned(max(day, 1)),
+-								   unsigned(max(hour, 0)), unsigned(max(minute, 0)), unsigned(max(second, 0))));
++	sq_pushinteger(sqvm,
++				   TimeToInt(unsigned(std::max<SQInteger>(year, MIN_YEAR)),
++							 unsigned(std::max<SQInteger>(month, 1)),
++							 unsigned(std::max<SQInteger>(day, 1)),
++							 unsigned(std::max<SQInteger>(hour, 0)),
++							 unsigned(std::max<SQInteger>(minute, 0)),
++							 unsigned(std::max<SQInteger>(second, 0))));
+ 	return 1;
+ }
+ 

@@ -1,0 +1,76 @@
+AC_PREREQ(2.59)
+AC_INIT([dataplot], [20090821], [n.heckert@nist.gov])
+AC_CONFIG_HEADER([config.h])
+AC_CONFIG_AUX_DIR(config)
+AM_MAINTAINER_MODE
+AM_INIT_AUTOMAKE([foreign])
+
+AC_PROG_CC
+AC_PROG_F77
+AC_F77_LIBRARY_LDFLAGS
+case $F77 in
+    *gfortran*) FFLAGS="${FFLAGS} -w -fno-range-check" ;;
+    *) ;;
+esac
+
+AC_CANONICAL_HOST
+case $host in
+     i?86*linux*) MAXOBV=100000 ;;
+     *64*linux*)  MAXOBV=1000000 ;;
+esac
+AC_SUBST(MAXOBV)
+
+AC_ARG_ENABLE(gd,
+  [AS_HELP_STRING([--enable-gd], [Enable the gd device driver])],
+  [enable_gd=$enableval],
+  [enable_gd=no])
+
+AC_CHECK_LIB(plot, pl_closepl_r, ,
+   	[AC_MSG_ERROR([plotutils libraries not found])])
+
+AC_ARG_ENABLE(gl,
+  [AS_HELP_STRING([--enable-gl], [Enable the OpenGL device driver])],
+  [enable_gl=$enableval],
+  [enable_gl=no])
+
+AC_ARG_ENABLE(X,
+  [AS_HELP_STRING([--enable-X], [Enable the X11 device driver])],
+  [enable_x11=$enableval],
+  [enable_x11=no])
+
+if test x"$enable_gd" = x"yes"; then
+   AC_CHECK_PROG(enable_gd, [gdlib-config],,
+   	[AC_MSG_ERROR([GD driver requested but gdlib-config not found])])
+   GD_LIBS="`gdlib-config --libs` -lgd"
+   GD_CFLAGS="`gdlib-config --cflags`"
+   AC_SUBST(GD_LIBS)
+   AC_SUBST(GD_CFLAGS)
+fi
+AM_CONDITIONAL(ENABLE_GD, [test x"$enable_gd" = x"yes"] )
+
+if test x"$enable_gl" = x"yes"; then
+dnl hardcoded opengl libs (should be host/implementation dependent)
+   AC_CHECK_HEADER(GL/gl.h,,
+   	[AC_MSG_ERROR([OpenGL driver requested but header gl.h not found])])
+   AC_CHECK_HEADER(GL/glu.h,,
+  	[AC_MSG_ERROR([OpenGL driver requested but header glu.h not found])])
+   GL_CFLAGS="-DUNIX_OS -DAPPEND_UNDERSCORE -DSUBROUTINE_CASE"
+   AC_SUBST(GL_CFLAGS)
+
+   AC_CHECK_LIB(GL, glXCreateContext, GL_LIBS="-lGL",
+   	[AC_MSG_ERROR([OpenGL driver requested but libraries not found])])
+   AC_CHECK_LIB(GLU, gluPerspective, GL_LIBS="-lGL -lGLU",
+   	[AC_MSG_ERROR([OpenGL driver requested but libraries not found])])
+   GL_LIBS="-lGL -lGLU"
+   AC_SUBST(GL_LIBS)
+fi
+AM_CONDITIONAL(ENABLE_GL, [ test x"$enable_gl" = x"yes" ])
+
+if test x"$enable_x11" = x"yes"; then
+   PKG_CHECK_MODULES(X11, x11,,
+     [AC_MSG_ERROR([X11 driver requested but pkgconfig module not found])])
+fi
+AM_CONDITIONAL(ENABLE_X11, [ test x"$enable_x11" = x"yes" ])
+
+AC_CONFIG_FILES([Makefile DPCOPA.INC dp1_linux.f])
+AC_OUTPUT

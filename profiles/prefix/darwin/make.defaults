@@ -1,0 +1,18 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# System-wide defaults for all Darwin profiles
+# This file should rarely need to be changed
+
+# 'Sane' defaults
+ELIBC="Darwin"
+KERNEL="Darwin"
+
+# strip isn't GNU
+FEATURES="nostrip"
+
+# ALSA + Darwin != working
+USE_EXPAND="-ALSA_CARDS"
+
+# This is the sort of equivalent of --as-needed
+LDFLAGS="-Wl,-dead_strip_dylibs"

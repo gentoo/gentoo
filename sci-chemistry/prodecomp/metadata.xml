@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<longdescription>
+		PRODECOMP (PROjection DECOMPosition) is a software tool for
+		decomposition of 2D projections of high-dimensional NMR spectra to a set
+		of components (defined in turn by one-dimensional "shapes").
+		Simultaneous analysis of projections from one or several
+		high-dimensional experiments provide unambigous chemical shifts for
+		large spin systems. The latter can be used for backbone and side-chain
+		assignments as well as structural studies of proteins
+		(Malmodin and Billeter 2005; 2006; Staykova et al. 2008a,b).
+	</longdescription>
+</pkgmetadata>

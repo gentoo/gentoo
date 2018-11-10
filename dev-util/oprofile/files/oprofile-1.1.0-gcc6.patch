@@ -1,0 +1,30 @@
+--- a/libop/op_alloc_counter.c
++++ b/libop/op_alloc_counter.c
+@@ -171,7 +171,7 @@
+ 	/* no counters then probably perfmon managing perfmon hw */
+ 	if (nr_counters <= 0) {
+ 		nr_counters = op_get_nr_counters(cpu_type);
+-		unavailable_counters = (~0) << nr_counters;
++		unavailable_counters = (~0U) << nr_counters;
+ 	}
+ 
+ 	/* Check to see if we have enough physical counters to map events*/
+--- a/libutil++/op_bfd.cpp
++++ b/libutil++/op_bfd.cpp
+@@ -535,15 +535,13 @@
+ {
+ 	op_bfd_symbol const & sym = syms[sym_idx];
+ 
+-	bool const verbose = cverb << (vbfd & vlevel1);
+-
+ 	if (anon_obj)
+ 		start = sym.vma();
+ 	else
+ 		start = sym.filepos();
+ 	end = start + sym.size();
+ 
+-	if (!verbose)
++	if (!(cverb << (vbfd & vlevel1)))
+ 		return;
+ 
+ 	io_state state(cverb << (vbfd & vlevel1));

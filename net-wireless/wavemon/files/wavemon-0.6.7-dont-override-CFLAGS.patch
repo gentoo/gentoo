@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,8 +9,6 @@
+ AC_DEFINE_UNQUOTED([BUILD_DATE], ["`/bin/date`"],
+ 		   [date wavemon was last configured and built])
+ 
+-CFLAGS="-O2 -Wall"
+-
+ # wavemon is only supported on Linux, warn user about futile compilations
+ AC_CANONICAL_HOST
+ case "$host_os" in

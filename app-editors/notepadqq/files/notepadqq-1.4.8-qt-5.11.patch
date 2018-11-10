@@ -1,0 +1,26 @@
+Bug: https://bugs.gentoo.org/665286
+
+From 8fabccfe2682583f5190b84dbc1922cce9c8d82b Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Thu, 11 Oct 2018 23:23:08 +1100
+Subject: [PATCH] Add missing include.
+
+---
+ src/ui/EditorNS/languageservice.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/ui/EditorNS/languageservice.cpp b/src/ui/EditorNS/languageservice.cpp
+index bbe03dc..9a0f212 100644
+--- a/src/ui/EditorNS/languageservice.cpp
++++ b/src/ui/EditorNS/languageservice.cpp
+@@ -6,6 +6,7 @@
+ #include <QJsonDocument>
+ #include <QJsonObject>
+ #include <QJsonValue>
++#include <QTextStream>
+ 
+ namespace EditorNS {
+ 
+-- 
+2.18.1
+

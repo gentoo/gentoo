@@ -1,0 +1,36 @@
+--- Makefile	2004-06-07 04:27:40.000000000 +0400
++++ Makefile	2011-07-21 11:50:22.580167326 +0400
+@@ -11,7 +11,7 @@
+ 
+ # For shadow support
+ 
+-CCOPTS	= -O2 -DSHADOW_PWD
++CCOPTS	= -DSHADOW_PWD
+ LIBS	= -lcrypt
+ #LIBS	= -lshadow
+ 
+@@ -24,19 +24,19 @@
+ all:		ttysnoops ttysnoop
+ 
+ ttysnoops:	$(SERVEROBJS)
+-		$(CC) $(SERVEROBJS) -o ttysnoops $(LIBS)
++		$(CC) $(SERVEROBJS) -o ttysnoops $(LDFLAGS) $(LIBS)
+ 
+ ttysnoop:	$(CLIENTOBJS)
+-		$(CC) $(CLIENTOBJS) -o ttysnoop $(LIBS)
++		$(CC) $(CLIENTOBJS) -o ttysnoop $(LDFLAGS) $(LIBS)
+ 
+ ttysnoops.o:	$(SERVERSRCS) $(INCLUDES)
+-		$(CC) $(CCOPTS) -c -o ttysnoops.o $(SERVERSRCS)
++		$(CC) $(CCOPTS) $(CFLAGS) -c -o ttysnoops.o $(SERVERSRCS)
+ 
+ ttysnoop.o:	$(CLIENTSRCS) $(INCLUDES)
+-		$(CC) $(CCOPTS) -c -o ttysnoop.o $(CLIENTSRCS)
++		$(CC) $(CCOPTS) $(CFLAGS) -c -o ttysnoop.o $(CLIENTSRCS)
+ 
+ common.o:	common.c common.h
+-		$(CC) $(CCOPTS) -c -o common.o common.c
++		$(CC) $(CCOPTS) $(CFLAGS) -c -o common.o common.c
+ 
+ clean:
+ 		rm -f *.o core ttysnoop ttysnoops

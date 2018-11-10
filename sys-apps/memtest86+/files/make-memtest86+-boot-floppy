@@ -1,0 +1,111 @@
+#!/bin/sh
+#
+# Script for making a memtest86 boot floppy using GRUB as bootloader
+#
+
+# (c) 2003 Peter Loje Hansen <pl@2m.dk>
+#  - original version
+# (c) 2004 Yann Dirson <dirson@debian.org>
+#  - added parameters
+#  - ability to work on a floppy image instead of a real floppy
+#  - adapted patches from Martin Koeppe <martin@koeppe-net.de>, to use
+#    mtools and install full grub
+
+# TODO:
+# - add a flag to generate a default boot entry for (hd0)
+
+set -e
+
+MEMTEST=/boot/memtest86plus/memtest.bin
+FLOPPYIMAGE=/dev/fd0
+GRUBBIN=/sbin/grub
+GRUBLIB=/lib/grub
+MFORMAT=/usr/bin/mformat
+
+arch=$(uname -m)
+
+case "$arch" in
+	i386|i486|i686)		GRUBARCH=i386-pc;;
+	x86_64)				GRUBARCH=x86_64-pc;;
+	*)					error "Unsupported architecture: $arch";;
+esac
+
+error()
+{
+    echo >&2 "$0: $*"
+    exit 1
+}
+
+needsarg()
+{
+    [ $1 -ge 2 ] || error "syntax error"
+}
+
+[ -d $GRUBLIB ] || error "Can't find $GRUBLIB - did you install a recent grub package (0.95+cvs20040624 or later) ?"
+[ -x $MFORMAT ] || error "Can't find mformat - did you install the mtools package ?"
+
+while [ $# -gt 0 ]
+do
+    case "$1" in
+    --help) echo "$0 [--memtest $MEMTEST] [--floppyimage $FLOPPYIMAGE]"; exit 0 ;;
+    --memtest) needsarg $#; MEMTEST="$2"; shift ;;
+    --floppyimage) needsarg $#; FLOPPYIMAGE="$2"; shift ;;
+    *) error "syntax error" ;;
+    esac
+    shift
+done
+
+MOUNTPOINT=$(mktemp -d)
+
+if [ -b "$FLOPPYIMAGE" ]
+then
+    FINALDEV="$FLOPPYIMAGE"
+    FLOPPYIMAGE="$(mktemp)"
+else
+    FINALDEV=""
+fi
+
+echo "* Creating msdos file system"
+echo
+if [ ! -s "$FLOPPYIMAGE" ]; then
+    # unless a non-empty image exists, create a blank one first
+    dd bs=1024 count=1440 if=/dev/zero of="$FLOPPYIMAGE"
+fi
+# FIXME: "-f 1440" should probably be dropped
+mformat -i $FLOPPYIMAGE -f 1440 :: 
+
+mmd -i $FLOPPYIMAGE ::/boot 
+mmd -i $FLOPPYIMAGE ::/boot/grub 
+
+echo
+echo "* Installing GRUB files"
+mcopy -v -i "$FLOPPYIMAGE" - ::/boot/grub/menu.lst <<EOF
+color green/black light-green/black
+default 0
+timeout 10
+title  memtest
+kernel (fd0)/boot/memtest.bin
+EOF
+mcopy -v -i "$FLOPPYIMAGE" $GRUBLIB/$GRUBARCH/* ::/boot/grub 
+
+echo
+echo "* Installing $MEMTEST"
+mcopy -v -i "$FLOPPYIMAGE" "$MEMTEST" ::/boot/memtest.bin 
+
+echo
+echo -n "* Installing GRUB"
+$GRUBBIN --batch --device-map=/dev/null <<EOF
+device (fd0) $FLOPPYIMAGE
+root (fd0)
+setup (fd0)
+quit
+EOF
+
+if [ -n "$FINALDEV" ]; then
+    echo
+    echo "Insert a writable floppy for $FINALDEV and press enter"
+    read FOO
+
+    dd bs=1024 if="$FLOPPYIMAGE" of="$FINALDEV"
+    rm "$FLOPPYIMAGE"
+fi

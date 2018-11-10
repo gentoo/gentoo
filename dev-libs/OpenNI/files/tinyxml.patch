@@ -1,0 +1,29 @@
+Index: OpenNI-9999/Platform/Linux/Build/OpenNI/Makefile
+===================================================================
+--- OpenNI-9999.orig/Platform/Linux/Build/OpenNI/Makefile
++++ OpenNI-9999/Platform/Linux/Build/OpenNI/Makefile
+@@ -4,13 +4,11 @@ BIN_DIR = ../../Bin
+ 
+ INC_DIRS = \
+ 	../../../../Include \
+-	../../../../Source \
+-	../../../../Externals/TinyXml
++	../../../../Source
+ 
+ SRC_FILES = \
+ 	../../../../Source/OpenNI/*.cpp \
+-	../../../../Source/OpenNI/Linux/*.cpp \
+-	../../../../Externals/TinyXml/*.cpp
++	../../../../Source/OpenNI/Linux/*.cpp
+ 
+ ifeq ("$(OSTYPE)","Darwin")
+ 	INC_DIRS += /opt/local/include
+@@ -19,7 +17,7 @@ ifeq ("$(OSTYPE)","Darwin")
+ endif
+ 
+ LIB_NAME = OpenNI
+-USED_LIBS = usb-1.0 dl pthread
++USED_LIBS = usb-1.0 dl pthread tinyxml
+ ifneq ("$(OSTYPE)","Darwin")
+ 	USED_LIBS += rt 
+ endif

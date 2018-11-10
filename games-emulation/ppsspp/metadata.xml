@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="headless">Build headless version of the PPSSPP</flag>
+		<flag name="system-ffmpeg">Use the system-wide media-video/ffmpeg instead of bundled</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/hrydgard/ppsspp/issues</bugs-to>
+		<remote-id type="github">hrydgard/ppsspp</remote-id>
+	</upstream>
+</pkgmetadata>

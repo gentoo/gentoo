@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  CoinUtils (Coin-or Utilities) is a collection of classes that are
+  generally useful to COmputational INfrastructure for Operations
+  Research (COIN-OR) projects. These include vector, matrix, mps file
+  reading classes.
+</longdescription>
+  <use>
+    <flag name="glpk">Enable GNU Linear Programming Kit
+  <pkg>sci-mathematics/glpk</pkg> support</flag>
+  </use>
+</pkgmetadata>

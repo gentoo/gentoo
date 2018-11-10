@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package contains definitions for the <pkg>app-text/pandoc</pkg> data
+		structure, which is used by pandoc to represent
+		structured documents.  These definitions used to live
+		in the pandoc package, but starting with pandoc 1.7, they
+		have been split off, so that other packages can use them
+		without drawing in all of pandoc's dependencies, and
+		pandoc itself can depend on packages (like <pkg>dev-haskell/citeproc-hs</pkg>)
+		that use them.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,2 @@
+# Config file for policyd
+POLICYD_CONFIG="/etc/policyd.conf"

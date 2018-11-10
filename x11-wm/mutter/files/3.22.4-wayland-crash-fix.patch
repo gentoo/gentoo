@@ -1,0 +1,31 @@
+From ba317dcd74baebfd8f8c8dd417ded71f6cc8c771 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Mon, 17 Apr 2017 13:27:35 +0800
+Subject: [PATCH 1/5] wayland/subsurface: Handle clients committing on
+ destroyed subsurface
+
+A client can still commit state to a destroyed subsurface. It wont
+update anything on the screen, since the subsurface will not be
+visible, but mutter should still handle it and not crash.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=781391
+---
+ src/wayland/meta-wayland-surface.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/wayland/meta-wayland-surface.c b/src/wayland/meta-wayland-surface.c
+index 99e3dfd..a6079ee 100644
+--- a/src/wayland/meta-wayland-surface.c
++++ b/src/wayland/meta-wayland-surface.c
+@@ -605,7 +605,7 @@ subsurface_role_get_toplevel (MetaWaylandSurfaceRole *surface_role)
+     meta_wayland_surface_role_get_surface (surface_role);
+   MetaWaylandSurface *parent = surface->sub.parent;
+ 
+-  if (parent->role)
++  if (parent && parent->role)
+     return meta_wayland_surface_role_get_toplevel (parent->role);
+   else
+     return NULL;
+-- 
+2.10.1
+

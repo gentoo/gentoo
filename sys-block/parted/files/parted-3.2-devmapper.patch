@@ -1,0 +1,60 @@
+--- a/libparted/arch/linux.c
++++ b/libparted/arch/linux.c
+@@ -2304,6 +2304,7 @@
+   return r < 0 ? NULL : resultp;
+ }
+ 
++#ifdef ENABLE_DEVICE_MAPPER
+ static char *
+ dm_canonical_path (PedDevice const *dev)
+ {
+@@ -2326,12 +2327,22 @@
+ err:
+         return NULL;
+ }
++#endif /* ENABLE_DEVICE_MAPPER */
+ 
+ static char*
+ _device_get_part_path (PedDevice const *dev, int num)
+ {
+-        char *devpath = (dev->type == PED_DEVICE_DM
+-                         ? dm_canonical_path (dev) : dev->path);
++        char *devpath =
++#ifdef ENABLE_DEVICE_MAPPER
++                        (
++                         dev->type == PED_DEVICE_DM
++                         ? dm_canonical_path (dev) :
++#endif /* ENABLE_DEVICE_MAPPER */
++						 dev->path
++#ifdef ENABLE_DEVICE_MAPPER
++                        )
++#endif /* ENABLE_DEVICE_MAPPER */
++                        ;
+         size_t path_len = strlen (devpath);
+         char *result;
+         /* Check for devfs-style /disc => /partN transformation
+@@ -2945,12 +2956,14 @@
+                                                unsigned long long *length);
+ 
+ 
++#ifdef ENABLE_DEVICE_MAPPER
+         if (disk->dev->type == PED_DEVICE_DM) {
+                 add_partition = _dm_add_partition;
+                 remove_partition = _dm_remove_partition;
+                 resize_partition = _dm_resize_partition;
+                 get_partition_start_and_length = _dm_get_partition_start_and_length;
+         } else {
++#endif /* ENABLE_DEVICE_MAPPER */
+                 add_partition = _blkpg_add_partition;
+                 remove_partition = _blkpg_remove_partition;
+ #ifdef BLKPG_RESIZE_PARTITION
+@@ -2959,7 +2972,9 @@
+                 resize_partition = NULL;
+ #endif
+                 get_partition_start_and_length = _kernel_get_partition_start_and_length;
++#ifdef ENABLE_DEVICE_MAPPER
+         }
++#endif /* ENABLE_DEVICE_MAPPER */
+ 
+         /* lpn = largest partition number.
+          * for remove pass, use greater of device or label limit */

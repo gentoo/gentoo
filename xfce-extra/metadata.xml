@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The xfce-extra category contains non-core XFCE applications.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie xfce-extra enthält zusätzliche Software für den
+		XFCE-Desktop.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría xfce-extra contiene paquetes no esenciales de XFCE.
+	</longdescription>
+	<longdescription lang="ja">
+		xfce-extraカテゴリーにはXFCEの拡張パッケージが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De xfce-extra categorie bevat additionele XFCE-applicaties.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm xfce-extra chứa các gói XFCE mở rộng.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria xfce-extra contiene applicazioni non essenziali per XFCE.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria xfce-extra contém aplicações não essenciais de XFCE.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria xfce-extra zawiera dodatkowe pakiety środowiska XFCE.
+	</longdescription>
+</catmetadata>
+

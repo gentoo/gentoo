@@ -1,0 +1,11 @@
+--- EMBOSS-6.6.0/emboss/embossversion.c
++++ EMBOSS-6.6.0/emboss/embossversion.c
+@@ -415,7 +415,7 @@
+ 	ajFmtPrintF(outfile, "X_DISPLAY_MISSING %d\n", X_DISPLAY_MISSING);
+ #endif
+ #ifdef _FORTIFY_SOURCE
+-	ajFmtPrintF(outfile, "_FORTIFY_SOURCE %d\n", _FORTIFY_SOURCE);
++	ajFmtPrintF(outfile, "_FORTIFY_SOURCE %d\n", __USE_FORTIFY_LEVEL);
+ #endif
+ 	ajFmtPrintF(outfile, "\n");
+ 	ajFmtPrintF(outfile, "Sizes (bytes):\n");

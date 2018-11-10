@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">Moo</remote-id>
+		<remote-id type="cpan-module">Method::Generate::Accessor</remote-id>
+		<remote-id type="cpan-module">Method::Generate::BuildAll</remote-id>
+		<remote-id type="cpan-module">Method::Generate::Constructor</remote-id>
+		<remote-id type="cpan-module">Method::Generate::DemolishAll</remote-id>
+		<remote-id type="cpan-module">Moo</remote-id>
+		<remote-id type="cpan-module">Moo::HandleMoose</remote-id>
+		<remote-id type="cpan-module">Moo::HandleMoose::FakeConstructor</remote-id>
+		<remote-id type="cpan-module">Moo::HandleMoose::FakeMetaClass</remote-id>
+		<remote-id type="cpan-module">Moo::Object</remote-id>
+		<remote-id type="cpan-module">Moo::Role</remote-id>
+		<remote-id type="cpan-module">Moo::_Utils</remote-id>
+		<remote-id type="cpan-module">Moo::_mro</remote-id>
+		<remote-id type="cpan-module">Moo::sification</remote-id>
+		<remote-id type="cpan-module">oo</remote-id>
+	</upstream>
+</pkgmetadata>

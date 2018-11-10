@@ -1,0 +1,8 @@
+i=1
+while (i < $argc)
+  Open($argv[i])
+  Select(0ufe4f); Move(0, -760)
+  Generate($argv[i])
+  Close()
+  i += 1
+endloop

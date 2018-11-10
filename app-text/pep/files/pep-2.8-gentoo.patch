@@ -1,0 +1,25 @@
+--- a/Makefile	1995-08-11 02:00:00.000000000 +0200
++++ b/Makefile	2010-08-26 23:54:34.000000000 +0200
+@@ -66,7 +66,7 @@
+ 
+ # Unix
+ CC	= gcc
+-LFLAGS	= -o pep
++LFLAGS	= -o pep $(LDFLAGS)
+ SRC	= src
+ XXX	= c
+ OBJ	= o
+@@ -78,10 +78,10 @@
+ UNZIP	= unzip
+ 
+ # directories, etc.
+-BINDIR	= /local/bin
+-LIBDIR	= /local/share/lib/pep
++BINDIR	= /usr/bin
++LIBDIR	= /usr/share/pep
+ MANEXT	= 1
+-MANDIR	= /local/man/man$(MANEXT)
++MANDIR	= /usr/share/man/man$(MANEXT)
+ TODAY	= 19950811
+ CLOCK	= 0200
+ VER	= 28

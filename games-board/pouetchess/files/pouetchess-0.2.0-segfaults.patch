@@ -1,0 +1,57 @@
+--- a/src/faile/search.c
++++ b/src/faile/search.c
+@@ -805,6 +805,7 @@
+       for (j = 0; j < indent; j++) {
+ 	fputc (' ', output);
+       }
++      void print_move (move_s moves[], int m, FILE *stream);
+       print_move (&moves[0], i, output);
+       fprintf (output, "\n");
+ 
+--- a/src/faile/utils.c
++++ b/src/faile/utils.c
+@@ -125,7 +125,7 @@
+       rank (target) < 1 || rank (target) > 8 ||
+       file (target) < 1 || file (target) > 8) 
+   {
+-	sprintf (str, "*** FAILE INTERNAL ERROR ***");
++	sprintf (str, "xxxx");
+     return;
+   }
+   
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -184,6 +184,9 @@
+ 	// first scene is SCENE_INIT.
+ 	pGlobalInfos->SetCurrentScene(GAME_SCENE_INIT);
+ 
++    /* @FB 02/08/06 */
++    pGlobalInfos->ReleaseKeys();
++
+ 	// main game loop
+ 	while( pGlobalInfos->IsGameRunning() )
+ 	{
+--- a/src/scene_main_game.cpp
++++ b/src/scene_main_game.cpp
+@@ -245,7 +245,7 @@
+ 	
+ 	if (pGlobalInfos->OnLeftMouseButtonDown())
+ 	{	
+-		if (chessboard->clickOnChessBoard(mouseX,mouseY,&sqX,&sqY));
++		if (chessboard->clickOnChessBoard(mouseX,mouseY,&sqX,&sqY))
+ 		{
+ 			// if a piece was already selected, this means the player want to move this piece
+ 			if (SquareXSelected>-1 && SquareZSelected>-1)
+--- a/src/graphic_chessboard.cpp
++++ b/src/graphic_chessboard.cpp
+@@ -122,8 +122,8 @@
+ 	
+ 	for(int i=0;i<6;i++)
+ 	{
+-		char texture_filename[50];
+-		sprintf(texture_filename,PC_DATA_TEXTURE_SKYBOX,i),
++		char texture_filename[256];
++		snprintf(texture_filename,sizeof(texture_filename),PC_DATA_TEXTURE_SKYBOX,i),
+ 		texture_skybox[i] = new CBasicTexture;
+ 		if (false==texture_skybox[i]->load(texture_filename,false))
+ 		{

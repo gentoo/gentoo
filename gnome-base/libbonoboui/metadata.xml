@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gnome@gentoo.org</email>
+	<name>Gentoo GNOME Desktop</name>
+</maintainer>
+<longdescription>
+	computer. It will however make a snappier openoffice than the binary  version.
+	The Bonobo UI library provides a number of user interface controls using the 
+	Bonobo component framework.	This module is heading towards planned deprecation.
+	It will continue to be supported and API/ABI stable	throughout the GNOME 2.x 
+	series, but we do not recommend using it in new applications unless you require
+	functionality that has not already been moved elsewhere.
+</longdescription>
+</pkgmetadata>

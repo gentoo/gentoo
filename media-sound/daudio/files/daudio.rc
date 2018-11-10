@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting daudio"
+	start-stop-daemon --start --quiet --background --make-pidfile --pidfile /var/run/daudio.pid --exec /usr/bin/daudiod
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping daudio"
+	start-stop-daemon --stop --quiet --pidfile /var/run/daudio.pid
+	eend $?
+}

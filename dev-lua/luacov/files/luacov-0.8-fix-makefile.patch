@@ -1,0 +1,25 @@
+diff --git a/Makefile b/Makefile
+index 477f9de..adad2cc 100644
+--- a/Makefile
++++ b/Makefile
+@@ -6,13 +6,13 @@ BINDIR=$(PREFIX)/bin
+ LUADIR=$(PREFIX)/share/lua/5.1/
+ 
+ install:
+-	mkdir -p $(BINDIR)
+-	cp src/bin/luacov $(BINDIR)
+-	chmod +x $(BINDIR)/luacov
+-	mkdir -p $(LUADIR)
+-	cp src/luacov.lua $(LUADIR)
+-	mkdir -p $(LUADIR)/luacov
+-	cp src/luacov/*.lua $(LUADIR)/luacov
++	mkdir -p $(DESTDIR)$(BINDIR)
++	cp src/bin/luacov $(DESTDIR)$(BINDIR)
++	chmod +x $(DESTDIR)$(BINDIR)/luacov
++	mkdir -p $(DESTDIR)$(LUADIR)
++	cp src/luacov.lua $(DESTDIR)$(LUADIR)
++	mkdir -p $(DESTDIR)$(LUADIR)/luacov
++	cp src/luacov/*.lua $(DESTDIR)$(LUADIR)/luacov
+ 
+ dist:
+ 	rm -rf $(PACKAGE)-$(VERSION)

@@ -1,0 +1,55 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+#
+# System-wide defaults for the Portage system
+# See portage(5) manpage
+#
+# Please avoid enabling things by default in here if possible. Understand any 
+# implications with core packages.  For example, if "java" is in USE and db 
+# has a conditional dependency on java (which it does,) then a JDK will be 
+# pulled in during *emerge system*!
+
+
+# Default starting set of USE flags for all default/linux profiles.
+USE="berkdb crypt ipv6 ncurses nls pam readline ssl tcpd zlib"
+
+# make sure toolchain has sane defaults <tooclhain@gentoo.org>
+USE="${USE} fortran openmp"
+
+# Security ftw.
+USE="${USE} seccomp"
+
+# 2010/10/21 - Ole Markus With <olemarkus@gentoo.org>
+# These USE flags were originally inserted here because of PHP
+# and were later removed by me. Reinserting the USE flags again because they are
+# global USE flags that may be expected to be set by other packages.
+USE="${USE} cli pcre"
+
+# 2006/03/07 - Donnie Berkholz <dberkholz@gentoo.org>
+# Modular X: Support direct rendering by default
+# 2013/01/21 - Andreas K. Huettel <dilfridge@gentoo.org>
+# Re-added following discussion with chithead
+USE="${USE} dri"
+
+# 2006/10/28 - Luca Barbato <lu_zero@gentoo.org>
+# on glibc system you cannot turn it off
+USE="${USE} iconv"
+
+# 2017/01/17 - Matt Turner <mattst88@gentoo.org>
+# Sane defaults for input drivers
+INPUT_DEVICES="libinput"
+
+# 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
+# Lowest common denominator defaults for video drivers,
+# except hppa, which lacks v4l so removes it in the hppa profile
+VIDEO_CARDS="dummy fbdev v4l"
+
+# 2008/07/09 - Doug Goldstein <cardoe@gentoo.org>
+# Adding LDFLAGS="-Wl,-O1 for all Linux profiles by default
+# after discussion on the gentoo-dev ML. As we bang out a clear
+# direction with how LDFLAGS will be set by default, this entry
+# may move.
+# 2010/07/12 - Samuli Suominen <ssuominen@gentoo.org>
+# Note that adding LDFLAGS="-Wl,-O1 ${LDFLAGS}" breaks dev-util/boost-build
+# because of whitespace.
+LDFLAGS="-Wl,-O1 -Wl,--as-needed"

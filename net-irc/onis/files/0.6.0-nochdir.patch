@@ -1,0 +1,11 @@
+--- a/onis	2004-03-15 00:48:07.874308008 +0100
++++ b/onis	2004-03-15 00:48:17.110903832 +0100
+@@ -15,8 +15,6 @@
+ 
+ BEGIN
+ {
+-	if ($0 =~ m#^(.*)[/\\]#) { chdir ($1); }
+-
+ 	unshift (@INC, 'lib');
+ 
+ 	# 0x0010   Language (make not-translated lines red/yellow)

@@ -1,0 +1,10 @@
+diff -Naur unp-2.0~pre7+nmu1/bash_completion.d/unp unp-2.0~pre7+nmu1-1/bash_completion.d/unp
+--- unp-2.0~pre7+nmu1/bash_completion.d/unp	2012-05-16 22:05:13.000000000 +0200
++++ unp-2.0~pre7+nmu1-1/bash_completion.d/unp	2014-10-22 10:34:20.343233166 +0200
+@@ -1,6 +1,5 @@
+ # bash completion for unp
+ 
+-have unp &&
+ _unp()
+ {
+     local cur

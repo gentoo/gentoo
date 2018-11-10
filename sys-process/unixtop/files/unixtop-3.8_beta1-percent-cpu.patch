@@ -1,0 +1,23 @@
+https://hg.openindiana.org/upstream/oracle/userland-gate/file/23c55a2f8a8e/components/top/patches/04.percent_cpu.patch
+
+--- top-3.8beta1/machine/m_sunos5.c.orig	Tue Nov  8 11:23:08 2011
++++ top-3.8beta1/machine/m_sunos5.c	Tue Nov  8 11:23:11 2011
+@@ -152,8 +152,17 @@
+  * one of the spare slots in the prinfo structure.
+  */
+ 
+-#define percent_cpu(pp) (*(double *)dbl_align(&pp->pr_filler[0]))
++#if OSREV > 59
++/* 
++ * on Solaris 10, psinfo.pr_filler is 4 bytes and not double-aligned, so we must * move our scratch space to the larger pr.lwp_pr_filler which is 20 bytes
++ * XXX this is a time bomb and will likely break in future Solaris releases.
++ */
++#define percent_cpu(pp) (*(double *)dbl_align(&pp->pr_lwp.pr_filler[0]))
++#else
++#define percent_cpu(pp) (*(double *)dbl_align(&pp->pr_filler[0]))
++#endif
+ 
++
+ /* definitions for indices in the nlist array */
+ #define X_V			 0
+ #define X_MPID			 1

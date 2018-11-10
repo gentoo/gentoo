@@ -1,0 +1,13 @@
+--- alpine-2.00.orig/alpine/Makefile.in
++++ alpine-2.00/alpine/Makefile.in
+@@ -169,7 +169,7 @@
+ LIBICONV = @LIBICONV@
+ LIBINTL = @LIBINTL@
+ LIBOBJS = @LIBOBJS@
+-LIBS = @LIBS@
++LIBS = @LIBS@ -lpam
+ LIBTOOL = @LIBTOOL@
+ LN = @LN@
+ LN_S = @LN_S@
+ LTLIBICONV = @LTLIBICONV@
+ LTLIBINTL = @LTLIBINTL@

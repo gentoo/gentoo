@@ -1,0 +1,28 @@
+diff --git a/data/tails-installer-launcher.desktop b/data/tails-installer-launcher.desktop
+index b8a3f81..c7c5b2a 100644
+--- a/data/tails-installer-launcher.desktop
++++ b/data/tails-installer-launcher.desktop
+@@ -6,8 +6,8 @@ Name[sv]=Tails installerare
+ Comment=Install, clone, upgrade Tails
+ Comment[fr]=Installer, cloner, mettre à jour Tails
+ Comment[sv]=Installera, klona, uppgradera Tails
+-Icon=tails-installer.svg
++Icon=tails-installer
+ Exec=tails-installer-launcher
+ Terminal=false
+-Categories=System;Tails;
++Categories=System;
+ Keywords=Tails;Install;Upgrade;Update;Copy;Clone;Installer;USB;Installation;Anonymity;Tor;Anonymous;SD;Amnesic;Amnesia;
+diff --git a/data/tails-installer.desktop b/data/tails-installer.desktop
+index 7d7fd2c..a79b57a 100644
+--- a/data/tails-installer.desktop
++++ b/data/tails-installer.desktop
+@@ -2,7 +2,7 @@
+ Type=Application
+ Name=Tails Installer
+ Comment=Write operating system images to a USB device
+-Icon=tails-installer.svg
++Icon=tails-installer
+ Exec=tails-installer
+ Terminal=false
+ Categories=System;

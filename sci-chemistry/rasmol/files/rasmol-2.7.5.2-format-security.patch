@@ -1,0 +1,39 @@
+diff -urp RasMol-2.7.5.2/src/command.c RasMol-2.7.5.2_sprintf/src/command.c
+--- RasMol-2.7.5.2/src/command.c	2011-05-15 01:23:49.000000000 +0700
++++ RasMol-2.7.5.2_sprintf/src/command.c	2014-02-12 18:02:24.633489549 +0700
+@@ -1286,7 +1286,7 @@ void ShowRecordCommand( void ) {
+         if (record_on[1]) WriteString("record appearance on\n");
+         else WriteString("record apperance off\n");
+         if (RecordMaxMS == 1.) {
+-            sprintf(param,RecordTemplate);
++            sprintf(param, "%s", RecordTemplate);
+         } else{
+             sprintf(param,RecordTemplate,millisec<0?0:millisec);
+         }
+@@ -1381,7 +1381,7 @@ void ShowPlayCommand( void ) {
+             WriteString(param);
+         }
+         if (PlayMaxMS == 1.) {
+-            sprintf(param,PlayTemplate);
++            sprintf(param, "%s", PlayTemplate);
+         } else{
+             sprintf(param,PlayTemplate,millisec<0?0:millisec);
+         }
+@@ -1469,7 +1469,7 @@ void WriteMovieFrame( void ) {
+         RecordPause = True;
+     } else {
+         if (RecordMaxMS == 1.) {
+-          sprintf(param,RecordTemplate);
++          sprintf(param, "%s", RecordTemplate);
+         } else{
+           sprintf(param,RecordTemplate,millisec);
+         }
+@@ -1505,7 +1505,7 @@ static int PlayMovieFrame( void ) {
+         for (play_frame[1] = 0;play_frame[1]<=millisec; play_frame[1]++) 
+         {
+             if (RecordMaxMS == 1.) {
+-                sprintf(param,PlayTemplate);
++                sprintf(param, "%s", PlayTemplate);
+             } else{
+                 sprintf(param,PlayTemplate,millisec-play_frame[1]);
+             }

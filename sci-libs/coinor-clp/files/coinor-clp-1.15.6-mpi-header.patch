@@ -1,0 +1,12 @@
+--- src/ClpCholeskyMumps.cpp.orig	2013-06-19 09:58:02.834485943 -0700
++++ src/ClpCholeskyMumps.cpp	2013-06-19 09:57:39.013355095 -0700
+@@ -14,8 +14,8 @@
+ #define USE_COMM_WORLD -987654
+ extern "C" {
+ #include "dmumps_c.h"
+-#include "mpi.h"
+ }
++#include "mpi.h"
+ 
+ #include "ClpCholeskyMumps.hpp"
+ #include "ClpMessage.hpp"

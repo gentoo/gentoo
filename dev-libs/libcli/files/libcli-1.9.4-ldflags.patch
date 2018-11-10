@@ -1,0 +1,11 @@
+--- Makefile~	2008-07-28 03:13:16.000000000 +0200
++++ Makefile	2010-09-12 15:39:05.000000000 +0200
+@@ -28,7 +28,7 @@
+ libcli.o: libcli.h
+ 
+ clitest: clitest.o $(LIB)
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $< -L. -lcli
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $< -L. -lcli
+ 
+ clitest.exe: clitest.c libcli.o
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $< libcli.o -lws2_32

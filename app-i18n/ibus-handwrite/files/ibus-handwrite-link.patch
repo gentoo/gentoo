@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -80,6 +80,8 @@
+ 		AM_CONDITIONAL(WITH_ZINNIA,[false])		
+ ])
+ 
++AC_CHECK_LIB([m],[atan2])
++
+ # check ibus
+ PKG_CHECK_MODULES(IBUS, [
+     ibus-1.0 >= 1.3

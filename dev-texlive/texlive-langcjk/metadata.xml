@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>aballier@gentoo.org</email>
+		<name>Alexis Ballier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>tex@gentoo.org</email>
+		<name>Gentoo TeX Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Packages supporting a combination of Chinese, Japanese, Korean,
+		including macros, fonts, documentation.  Also Thai in the c90
+		encoding, since there is some overlap in those fonts; standard
+		Thai support is in collection-langother.  Additional packages
+		for CJK are in their individual language collections.
+	</longdescription>
+</pkgmetadata>

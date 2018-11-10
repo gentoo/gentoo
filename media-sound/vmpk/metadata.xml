@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>proaudio@gentoo.org</email>
+		<name>Gentoo ProAudio Project</name>
+	</maintainer>
+	<longdescription lang="en">
+	Virtual MIDI Piano Keyboard is a MIDI event generator and receiver. It
+	doesn't produce any sound by itself, but can be used to drive a MIDI
+	synthesizer (either hardware or software, internal or external). You can use
+	the computer's keyboard to play MIDI notes, and also the mouse. You can use
+	the Virtual MIDI Piano Keyboard to display the played MIDI notes from
+	another instrument or MIDI file player. To do so, connect the other MIDI
+	port to the input port of VMPK.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">vmpk</remote-id>
+	</upstream>
+</pkgmetadata>

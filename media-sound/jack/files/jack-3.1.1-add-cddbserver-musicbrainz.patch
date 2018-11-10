@@ -1,0 +1,15 @@
+--- a/jack_freedb.py
++++ b/jack_freedb.py
+@@ -46,6 +46,12 @@
+         'mail': "freedb-submit@freedb.org",
+         'my_mail': "default"
+     },
++    'musicbrainz': {
++        'host': "freedb.musicbrainz.org",
++        'id': prog_name + " " + prog_version,
++        'mail': "",
++        'my_mail': "default"
++    },
+ }
+ 
+ def interpret_db_file(all_tracks, freedb_form_file, verb, dirs = 0, warn = None):

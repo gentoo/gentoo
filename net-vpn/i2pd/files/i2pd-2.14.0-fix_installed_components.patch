@@ -1,0 +1,31 @@
+--- a/build/CMakeLists.txt
++++ b/build/CMakeLists.txt
+@@ -455,20 +455,7 @@ if (WITH_BINARY)
+   endif ()
+ endif ()
+ 
+-install(FILES ../LICENSE
+-  DESTINATION .
+-  COMPONENT Runtime
+-  )
+-# Take a copy on Appveyor
+-install(FILES "C:/projects/openssl-$ENV{OPENSSL}/LICENSE"
+-  DESTINATION .
+-  COMPONENT Runtime
+-  RENAME LICENSE_OPENSSL
+-  OPTIONAL                      # for local builds only!
+-  )
+-
+ file(GLOB_RECURSE I2PD_SOURCES "../libi2pd/*.cpp" "../libi2pd_client/*.cpp" "../daemon/*.cpp" "../build" "../Win32" "../Makefile*")
+-install(FILES ${I2PD_SOURCES} DESTINATION src/ COMPONENT Source)
+ # install(DIRECTORY ../ DESTINATION src/
+ #   # OPTIONAL
+ #   COMPONENT Source FILES_MATCHING
+@@ -477,7 +464,6 @@ install(FILES ${I2PD_SOURCES} DESTINATION src/ COMPONENT Source)
+ #   )
+ 
+ file(GLOB I2PD_HEADERS "../libi2pd/*.h" "../libi2pd_client/*.h" "../daemon/*.h")
+-install(FILES ${I2PD_HEADERS} DESTINATION src/ COMPONENT Headers)
+ # install(DIRECTORY ../ DESTINATION src/
+ #   # OPTIONAL
+ #   COMPONENT Headers FILES_MATCHING

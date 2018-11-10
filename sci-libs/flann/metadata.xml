@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  FLANN is a library for performing fast approximate nearest neighbor
+  searches in high dimensional spaces. It contains a collection of
+  algorithms we found to work best for nearest neighbor search and a
+  system for automatically choosing the best algorithm and optimum
+  parameters depending on the dataset.
+  FLANN is written in C++ and contains bindings for the following
+  languages: C, MATLAB and Python.
+  </longdescription>
+  <use>
+    <flag name="octave">Add bindings for
+    <pkg>sci-mathematics/octave</pkg></flag>
+    <flag name="cuda">Enable support for nVidia CUDA</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">mariusmuja/flann</remote-id>
+  </upstream>
+</pkgmetadata>

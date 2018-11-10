@@ -1,0 +1,12 @@
+--- a/m4/lib-prefix.m4
++++ b/m4/lib-prefix.m4
+@@ -108,7 +108,8 @@
+         if test -z "$haveit"; then
+           if test -d "$additional_libdir"; then
+             dnl Really add $additional_libdir to $LDFLAGS.
+-            LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-L$additional_libdir"
++            dnl No, let's not do that.
++            :
+           fi
+         fi
+       fi

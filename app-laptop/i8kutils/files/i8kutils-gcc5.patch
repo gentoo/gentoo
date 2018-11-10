@@ -1,0 +1,28 @@
+Fix build with GCC 5.
+
+x86_64-pc-linux-gnu-gcc -O2 -march=native -g -pipe   -c -o i8kctl.o i8kctl.c
+gcc -Wall -c -Wl,--hash-style=gnu -Wl,-O1 -Wl,--as-needed -DLIB i8kctl.c
+gcc -Wall -c -Wl,--hash-style=gnu -Wl,-O1 -Wl,--as-needed -DLIB probe_i8k_calls_time.c
+gcc -o probe_i8k_calls_time i8kctl.o probe_i8k_calls_time.o
+probe_i8k_calls_time.o: In function `main':
+probe_i8k_calls_time.c:(.text+0x62): undefined reference to `timestamp'
+probe_i8k_calls_time.c:(.text+0x82): undefined reference to `timestamp'
+probe_i8k_calls_time.c:(.text+0xa2): undefined reference to `timestamp'
+probe_i8k_calls_time.c:(.text+0xbf): undefined reference to `timestamp'
+probe_i8k_calls_time.c:(.text+0xdc): undefined reference to `timestamp'
+probe_i8k_calls_time.o:probe_i8k_calls_time.c:(.text+0xf9): more undefined references to `timestamp' follow
+collect2: error: ld returned 1 exit status
+Makefile:24: recipe for target 'probe_i8k_calls_time' failed
+
+
+--- a/probe_i8k_calls_time.c
++++ b/probe_i8k_calls_time.c
+@@ -13,7 +13,7 @@ double t;
+ 
+ struct timespec tmst;
+ 
+-inline double timestamp()
++double timestamp()
+ {
+ 	clock_gettime(CLOCK_REALTIME, &tmst);
+ 	t = tmst.tv_nsec;

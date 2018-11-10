@@ -1,0 +1,9 @@
+# Options for CouchDB
+
+EXEC="/usr/bin/couchdb"
+COUCHDB_USER="couchdb:couchdb"
+COUCHDB_PID_FILE="/var/run/couchdb/couchdb.pid"
+COUCHDB_STDOUT_FILE="/dev/null"
+COUCHDB_STDERR_FILE="/dev/null"
+#COUCHDB_RESPAWN_TIMEOUT=
+#COUCHDB_OPTIONS=

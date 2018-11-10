@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<longdescription lang="en">
+		gnome-autoar provides functions, widgets, and gschemas for GNOME applications which want to use archives as a method to transfer directories over the Internet.
+	</longdescription>
+</pkgmetadata>

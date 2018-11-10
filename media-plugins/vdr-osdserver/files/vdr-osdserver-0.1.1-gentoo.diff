@@ -1,0 +1,16 @@
+change the default path for config directory
+zulio (at) zulinux.net
+
+diff -Naur osdserver-0.1.1.orig/osdserver.c osdserver-0.1.1/osdserver.c
+--- osdserver-0.1.1.orig/osdserver.c	2007-10-07 00:34:47.000000000 +0200
++++ osdserver-0.1.1/osdserver.c	2007-11-30 20:05:54.000000000 +0100
+@@ -72,7 +72,7 @@
+ 
+ bool cPluginOsdServer::Initialize() {
+     // Initialize any background activities the plugin shall perform.
+-    cString OsdServerHosts = AddDirectory(cPlugin::ConfigDirectory(), "osdserverhosts.conf");
++    cString OsdServerHosts = AddDirectory(cPlugin::ConfigDirectory(), "osdserver/osdserverhosts.conf");
+     if (access(OsdServerHosts, F_OK) == 0)
+         Server = new cServer(Port, OsdServerHosts);
+     else
+

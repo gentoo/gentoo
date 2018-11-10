@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>grozin@gentoo.org</email>
+		<name>Andrey Grozin</name>
+	</maintainer>
+	<longdescription>A book reader for .fb2 .html and plain text (possibly gzipped)</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">pybookreader</remote-id>
+	</upstream>
+</pkgmetadata>

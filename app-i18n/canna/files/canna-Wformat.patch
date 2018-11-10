@@ -1,0 +1,11 @@
+--- a/doc/man/guide/tex/cannaindex.c
++++ b/doc/man/guide/tex/cannaindex.c
+@@ -198,7 +198,7 @@
+   }
+   inf = fopen(argv[1], "r");
+   if (!inf) {
+-    fprintf(stderr, "%s: Can not open file \"%s\".\n", argv[1]);
++    fprintf(stderr, "%s: Can not open file \"%s\".\n", program, argv[1]);
+     exit(1);
+   }
+   pages = readindex(inf, entries);

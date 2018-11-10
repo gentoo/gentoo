@@ -1,0 +1,16 @@
+--- a/theme.c
++++ b/theme.c
+@@ -70,13 +70,7 @@
+ 		if ((f = fopen(filename, "r")) == NULL)
+ 		{
+ 			bzero(&filename, BUFSIZ);
+-#ifdef __NetBSD__
+-			snprintf(filename, BUFSIZ, "/usr/pkg/share/slurm/%s.theme", name);
+-#elif __Debian__
+ 			snprintf(filename, BUFSIZ, "/usr/share/slurm/%s.theme", name);
+-#else
+-			snprintf(filename, BUFSIZ, "/usr/local/share/slurm/%s.theme", name);
+-#endif
+ 			if ((f = fopen(filename, "r")) == NULL)
+ 				error(ERR_FATAL, "cannot find theme '%s'", name);
+ 		}

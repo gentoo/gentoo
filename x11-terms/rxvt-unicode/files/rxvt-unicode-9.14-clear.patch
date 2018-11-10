@@ -1,0 +1,25 @@
+store visible lines to buffer before clearing the screen when pressing ctrl-l
+
+patch by rlblaster
+https://bbs.archlinux.org/viewtopic.php?id=129302
+
+--- a/src/command.C
++++ b/src/command.C
+@@ -2932,6 +2932,17 @@
+ 
+       case CSI_CUP:		/* 8.3.21: (1,1) CURSOR POSITION */
+       case CSI_HVP:		/* 8.3.64: (1,1) CHARACTER AND LINE POSITION */
++        if (nargs == 1 && current_screen == 0)
++          {
++            // This is usually followed with clear screen so add some extra
++            // lines to avoid deleting the lines already on screen. If we are
++            // already at the top, add an extra screen height of lines.
++            int extra_lines = nrow-1;
++            if (screen.cur.row == 0)
++              extra_lines += nrow;
++            for (int i = 0; i < extra_lines; ++i)
++              scr_add_lines (L"\r\n", 2);
++          }
+         scr_gotorc (arg[0] - 1, nargs < 2 ? 0 : (arg[1] - 1), 0);
+         break;
+ 

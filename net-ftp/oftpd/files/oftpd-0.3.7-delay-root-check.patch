@@ -1,0 +1,30 @@
+check for root after processing args so non-root can run --help
+
+--- a/src/oftpd.c
++++ b/src/oftpd.c
+@@ -56,12 +56,6 @@ int main(int argc, char *argv[])
+         exe_name = argv[0];
+     }
+ 
+-    /* verify we're running as root */
+-    if (geteuid() != 0) {
+-        fprintf(stderr, "%s: program needs root permission to run\n", exe_name);
+-        exit(1);
+-    }
+-
+     /* default command-line arguments */
+     port = FTP_PORT;
+     user_ptr = NULL;
+@@ -187,6 +181,12 @@ int main(int argc, char *argv[])
+         exit(1);
+     }
+ 
++    /* verify we're running as root */
++    if (geteuid() != 0) {
++        fprintf(stderr, "%s: program needs root permission to run\n", exe_name);
++        exit(1);
++    }
++
+     /* become a daemon */
+     if (detach) {
+         daemonize();

@@ -1,0 +1,118 @@
+diff -Naur pyicqt-0.8.1.5/src/avatar.py p1//src/avatar.py
+--- pyicqt-0.8.1.5/src/avatar.py	2010-06-07 12:16:36.000000000 +0200
++++ p1//src/avatar.py	2010-06-07 12:16:16.000000000 +0200
+@@ -6,7 +6,7 @@
+ from twisted.words.xish.domish import Element
+ from debug import LogEvent, INFO, WARN, ERROR
+ import lang
+-import sha
++from hashlib import sha1
+ import base64
+ import os
+ import os.path
+@@ -46,7 +46,7 @@
+ class Avatar:
+ 	""" Represents an Avatar. Does not store the image in memory. """
+ 	def __init__(self, imageData, avatarCache):
+-		self.__imageHash = sha.sha(imageData).hexdigest()
++		self.__imageHash = sha1(imageData).hexdigest()
+ 		self.__avatarCache = avatarCache
+ 
+ 	def getImageHash(self):
+diff -Naur pyicqt-0.8.1.5/src/contact.py p1//src/contact.py
+--- pyicqt-0.8.1.5/src/contact.py	2010-06-07 12:16:43.000000000 +0200
++++ p1//src/contact.py	2010-06-07 12:16:16.000000000 +0200
+@@ -8,7 +8,6 @@
+ import config
+ from debug import LogEvent, INFO, WARN, ERROR
+ import lang
+-import sha
+ import legacy
+ import globals
+ import base64
+diff -Naur pyicqt-0.8.1.5/src/legacy/buddies.py p1//src/legacy/buddies.py
+--- pyicqt-0.8.1.5/src/legacy/buddies.py	2009-08-24 14:37:59.000000000 +0200
++++ p1//src/legacy/buddies.py	2010-06-07 12:07:37.000000000 +0200
+@@ -12,7 +12,7 @@
+ import os.path
+ import binascii
+ import os.path
+-import md5
++from hashlib import md5
+ 
+ X = os.path.sep
+ 
+@@ -188,7 +188,7 @@
+ 				avatarData = avatar.AvatarCache().setAvatar(imgmanip.convertToPNG(iconData))
+ 				c.updateAvatar(avatarData, push=True)
+ 				if not md5Hash:
+-					m = md5.new()
++					m = md5()
+ 					m.update(iconData)
+ 					md5Hash = m.digest()
+ 				if not numHash:
+diff -Naur pyicqt-0.8.1.5/src/legacy/glue.py p1//src/legacy/glue.py
+--- pyicqt-0.8.1.5/src/legacy/glue.py	2009-08-24 14:37:59.000000000 +0200
++++ p1//src/legacy/glue.py	2010-06-07 12:07:37.000000000 +0200
+@@ -18,7 +18,7 @@
+ import time
+ import binascii
+ import avatar
+-import md5
++from hashlib import md5
+ import random
+ 
+ from twisted.python import log
+@@ -398,7 +398,7 @@
+ 			try:
+ 				self.myavatar = imgmanip.convertToJPG(imageData)
+ 				self.myavatarlen = len(self.myavatar)
+-				m=md5.new()
++				m=md5()
+ 				m.update(self.myavatar)
+ 				self.myavatarsum = m.digest()
+ 				self.myavatarstamp = time.time()
+diff -Naur pyicqt-0.8.1.5/src/legacy/icqt.py p1//src/legacy/icqt.py
+--- pyicqt-0.8.1.5/src/legacy/icqt.py	2009-08-24 14:37:59.000000000 +0200
++++ p1//src/legacy/icqt.py	2010-06-07 12:07:37.000000000 +0200
+@@ -14,7 +14,6 @@
+ import time
+ import datetime
+ import binascii
+-import md5
+ import locale
+ import struct
+ 
+diff -Naur pyicqt-0.8.1.5/src/tlib/oscar.py p1//src/tlib/oscar.py
+--- pyicqt-0.8.1.5/src/tlib/oscar.py	2009-08-24 14:37:59.000000000 +0200
++++ p1//src/tlib/oscar.py	2010-06-07 12:07:37.000000000 +0200
+@@ -21,7 +21,7 @@
+ from scheduler import Scheduler
+ 
+ import struct
+-import md5
++from hashlib import md5
+ import string
+ import socket
+ import random
+@@ -120,9 +120,9 @@
+     return dict,data
+ 
+ def encryptPasswordMD5(password,key):
+-    m=md5.new()
++    m=md5()
+     m.update(key)
+-    m.update(md5.new(password).digest())
++    m.update(md5(password).digest())
+     m.update("AOL Instant Messenger (SM)")
+     return m.digest()
+ 
+@@ -534,7 +534,7 @@
+         self.iconSum = tlvs.get(0xd5,"")
+ 
+     def updateIcon(self, iconData):
+-        m=md5.new()
++        m=md5()
+         m.update(iconData)
+         self.iconSum = m.digest()
+         log.msg("icon sum is %s" % binascii.hexlify(self.iconSum))

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>voyageur@gentoo.org</email>
+    <name>Bernard Cafarelli</name>
+  </maintainer>
+  <longdescription lang="en">
+Python implementation of the Sane API (using ctypes) and abstration layer.
+
+The code is divided in 3 layers:
+
+ * rawapi : Ctypes binding to the raw Sane API
+ * abstract : An Object-Oriented layer that simplifies the use of the Sane API and try to avoid possible misuse of the Sane API. When scanning, it also takes care of returning a Pillow image.
+ * abstract_th : The Sane API is not thread-safe and cannot be used in a multi-threaded environment easily. This layer solves this problem by using a fully dedicated thread.
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">pyinsane2</remote-id>
+    <remote-id type="github">openpaperwork/pyinsane</remote-id>
+  </upstream>
+</pkgmetadata>

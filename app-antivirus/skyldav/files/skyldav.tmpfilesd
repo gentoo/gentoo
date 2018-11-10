@@ -1,0 +1,2 @@
+# skyldav runtime directory for skyldav.pid and log (used by skyldavnotify)
+d /run/skyldav 0755 root root -

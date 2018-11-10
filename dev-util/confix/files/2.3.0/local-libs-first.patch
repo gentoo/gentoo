@@ -1,0 +1,39 @@
+With libtool, link local libraries with /path/to/libfile.la instead of libpath,
+to avoid encoding local libpath into installed la-file.
+These also have to be linked first, to avoid finding already installed
+libraries of previous versions during libtool-relink.
+diff -ru Confix-2.3.0.orig/libconfix/plugins/automake/c/out_c.py Confix-2.3.0/libconfix/plugins/automake/c/out_c.py
+--- Confix-2.3.0.orig/libconfix/plugins/automake/c/out_c.py	2010-07-06 12:55:59.286540943 +0200
++++ Confix-2.3.0/libconfix/plugins/automake/c/out_c.py	2010-07-06 13:01:23.574428852 +0200
+@@ -411,6 +411,8 @@
+         """
+         assert isinstance(linked_builder, LinkedBuilder)
+         
++        local_paths = []
++        local_libraries = []
+         native_paths = []
+         native_libraries = []
+         external_linkline = []
+@@ -424,8 +426,11 @@
+ 
+         for bi in native_libs_to_use:
+             if isinstance(bi, BuildInfo_CLibrary_NativeLocal):
+-                native_paths.append('-L'+'/'.join(['$(top_builddir)']+bi.dir()))
+-                native_libraries.append('-l'+bi.basename())
++                if self.__use_libtool:
++                    local_libraries.append('/'.join(['$(top_builddir)']+bi.dir()+['lib'+bi.basename()+'.la']))
++                else:
++                    local_paths.append('-L'+'/'.join(['$(top_builddir)']+bi.dir()))
++                    local_libraries.append('-l'+bi.basename())
+                 continue
+             if isinstance(bi, BuildInfo_CLibrary_NativeInstalled):
+                 using_installed_library = True
+@@ -447,7 +452,7 @@
+             external_linkline.extend(elem)
+             pass
+ 
+-        return native_paths + native_libraries + external_linkline
++        return local_paths + local_libraries + native_paths + native_libraries + external_linkline
+ 
+     def external_libpath(self):
+         """ For unit tests only. """

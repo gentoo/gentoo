@@ -1,0 +1,55 @@
+From 3929648c83910a45a37e84b4d3e5316631ce7c6b Mon Sep 17 00:00:00 2001
+From: "W. Trevor King" <wking@tremily.us>
+Date: Mon, 24 Aug 2015 00:08:24 -0700
+Subject: [PATCH 3/7] Allocate additional byte for trailing null
+
+These variables needs a byte for every character in the path and an
+additional trailing null, but the length returned by strlen excludes
+the trailing null.
+---
+ mtpfs.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/mtpfs.c b/mtpfs.c
+index bdd5f46..e31acd9 100644
+--- a/mtpfs.c
++++ b/mtpfs.c
+@@ -416,7 +416,7 @@ parse_path (const gchar * path)
+     LIBMTP_folder_t *folder;
+     gchar **fields;
+     gchar *directory;
+-    directory = (gchar *) g_malloc (strlen (path));
++  directory = (gchar *) g_malloc (strlen (path) + 1);
+     directory = strcpy (directory, "");
+     fields = g_strsplit (path, "/", -1);
+     res = -ENOENT;
+@@ -488,7 +488,7 @@ mtpfs_release (const char *path, struct fuse_file_info *fi)
+             gchar *filename = g_strdup("");
+             gchar **fields;
+             gchar *directory;
+-            directory = (gchar *) g_malloc (strlen (path));
++	  directory = (gchar *) g_malloc (strlen (path) + 1);
+             directory = strcpy (directory, "/");
+             fields = g_strsplit (path, "/", -1);
+             int i;
+@@ -1089,7 +1089,7 @@ mtpfs_mkdir_real (const char *path, mode_t mode)
+         gchar **fields;
+         gchar *directory;
+ 	
+-        directory = (gchar *) g_malloc (strlen (path));
++      directory = (gchar *) g_malloc (strlen (path) + 1);
+         directory = strcpy (directory, "/");
+         fields = g_strsplit (path, "/", -1);
+         int i;
+@@ -1168,7 +1168,7 @@ mtpfs_rename (const char *oldname, const char *newname)
+     gchar *filename;
+     gchar **fields;
+     gchar *directory;
+-    directory = (gchar *) g_malloc (strlen (newname));
++    directory = (gchar *) g_malloc (strlen (newname) + 1);
+     directory = strcpy (directory, "/");
+     fields = g_strsplit (newname, "/", -1);
+     int i;
+-- 
+2.5.3
+

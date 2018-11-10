@@ -1,0 +1,12 @@
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# /etc/conf.d/audio-entropyd
+
+# The acceptable values are DEVICE, READSIZE and SAMPLERATE
+# These defaults give the optimum entropy 
+
+#DEVICE="hw:0"
+
+#SAMPLERATE must be a valid sampling rate of your audio source
+SAMPLERATE="44050"

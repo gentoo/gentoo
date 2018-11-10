@@ -1,0 +1,23 @@
+From: Felipe Sateler <fsateler@debian.org>
+Date: Fri, 1 Jul 2016 19:06:31 -0400
+Subject: Avoid ambiguity in div invocation
+
+Be specific and use int version.
+Fixes build failure with gcc >= 6
+---
+ AutoFilter.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/AutoFilter.cc b/AutoFilter.cc
+index fc087d0..bd6b12f 100644
+--- a/AutoFilter.cc
++++ b/AutoFilter.cc
+@@ -69,7 +69,7 @@ AutoFilter::activate()
+ void
+ AutoFilter::cycle (uint frames)
+ {
+-	div_t qr = div (frames, blocksize);
++	div_t qr = div ((int)frames, (int)blocksize);
+ 	int blocks = qr.quot;
+ 	if (qr.rem) ++blocks;
+ 	double over_blocks = 1./blocks;

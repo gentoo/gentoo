@@ -1,0 +1,8 @@
+diff --git a/src/LexBNF.x b/src/LexBNF.x
+index 927e15d..aea3386 100644
+--- a/src/LexBNF.x
++++ b/src/LexBNF.x
+@@ -11,2 +11,3 @@ import qualified Data.Bits
+ import Data.Word (Word8)
++import Data.Char (ord)
+ }

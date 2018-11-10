@@ -1,0 +1,22 @@
+--- icewm-1.3.10/lib/menu.in
++++ icewm-1.3.10/lib/menu.in
+@@ -4,14 +4,9 @@
+ # since modifications to this file will be discarded when you
+ # (re)install icewm.
+ #
+-prog xterm xterm xterm
+-prog rxvt xterm rxvt -bg black -cr green -fg white -C -fn 9x15 -sl 500
+-prog fte fte fte
+-prog NEdit nedit nedit
+-prog Mozilla mozilla mozilla
+-prog XChat xchat xchat
+-prog Gimp gimp gimp
++prog xterm /usr/share/icons/gnome/16x16/apps/terminal.png xterm
++"Web browser" /usr/share/icons/gnome/16x16/apps/web-browser.png xdg-open about:blank
+ separator
+-menuprog "Desktop Apps" folder icewm-menu-fdo
+-menufile Programs folder programs
+-menufile Tool_bar folder toolbar
++prog "Rebuild program menu" /usr/share/icons/gnome/16x16/actions/edit-find-replace.png /usr/share/icewm/startup
++separator
++menufile Programs folder programs.autogen

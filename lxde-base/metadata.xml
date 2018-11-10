@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The lxde-base category contains core packages for LXDE,
+		the Lightweight X11 Desktop Environment.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría lxde-base contiene paquetes vitales para LXDE, el
+		entorno de escritorio ligero X11.
+	</longdescription>
+</catmetadata>

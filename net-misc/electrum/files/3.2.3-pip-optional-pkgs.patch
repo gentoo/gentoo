@@ -1,0 +1,11 @@
+diff -Naur a/setup.py b/setup.py
+--- a/setup.py	2018-09-17 12:56:34.000000000 +0100
++++ b/setup.py	2018-10-14 14:46:16.524385198 +0100
+@@ -72,7 +72,6 @@
+     name="Electrum",
+     version=version.ELECTRUM_VERSION,
+     install_requires=requirements,
+-    extras_require=extras_require,
+     packages=[
+         'electrum',
+         'electrum.gui',

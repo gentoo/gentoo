@@ -1,0 +1,80 @@
+--- README.rdoc
++++ README.rdoc
+@@ -42,7 +42,7 @@ In a nutshell:
+   data = Net::SCP::download!("remote.host.com", "username", "/remote/path")
+ 
+   # use a persistent connection to transfer files
+-  Net::SCP.start("remote.host.com", "username", :ssh => { :password => "password" }) do |scp|
++  Net::SCP.start("remote.host.com", "username", :password => "password") do |scp|
+     # upload a file to a remote server
+     scp.upload! "/local/path", "/remote/path"
+ 
+--- lib/net/scp.rb
++++ lib/net/scp.rb
+@@ -395,7 +395,7 @@ module Net
+       def await_response_state(channel)
+         return if channel[:buffer].available == 0
+         c = channel[:buffer].read_byte
+-        raise "#{c.chr}#{channel[:buffer].read}" if c != 0
++        raise Net::SCP::Error, "#{c.chr}#{channel[:buffer].read}" if c != 0
+         channel[:next], channel[:state] = nil, channel[:next]
+         send("#{channel[:state]}_state", channel)
+       end
+--- lib/net/scp/download.rb
++++ lib/net/scp/download.rb
+@@ -129,7 +129,7 @@ module Net; class SCP
+       channel[:local] = File.join(channel[:local], directive[:name])
+ 
+       if File.exists?(channel[:local]) && !File.directory?(channel[:local])
+-        raise "#{channel[:local]} already exists and is not a directory"
++        raise Net::SCP::Error, "#{channel[:local]} already exists and is not a directory"
+       elsif !File.exists?(channel[:local])
+         Dir.mkdir(channel[:local], directive[:mode] | 0700)
+       end
+@@ -162,4 +162,4 @@ module Net; class SCP
+     end
+   end
+ 
+-end; end
+\ No newline at end of file
++end; end
+--- test/test_download.rb
++++ test/test_download.rb
+@@ -158,6 +158,37 @@ class TestDownload < Net::SCP::TestCase
+     assert_raises(Net::SCP::Error) { scp.download!("/path/to/remote") }
+   end
+ 
++  def test_download_should_raise_error_if_gets_not_ok
++    prepare_file("/path/to/local.txt", "")
++
++    expect_scp_session "-f /path/to/remote.txt" do |channel|
++      channel.sends_ok
++      channel.gets_data "C0666 0 remote.txt\n"
++      channel.sends_ok
++      channel.gets_data "\1"
++    end
++
++    e = assert_raises(Net::SCP::Error) { scp.download!("/path/to/remote.txt", "/path/to/local.txt") }
++    assert_equal("\1", e.message)
++  end
++
++  def test_download_directory_should_raise_error_if_local_exists_and_is_not_directory
++    File.stubs(:exists?).with("/path/to/local").returns(true)
++    File.stubs(:exists?).with("/path/to/local/remote").returns(true)
++    File.stubs(:directory?).with("/path/to/local/remote").returns(false)
++
++    expect_scp_session "-f -r /path/to/remote" do |channel|
++      channel.sends_ok
++      channel.gets_data "D0755 0 remote\n"
++      channel.sends_ok
++      channel.gets_data "E\n"
++      channel.sends_ok
++    end
++    
++    e = assert_raises(Net::SCP::Error) { scp.download!("/path/to/remote", "/path/to/local", :recursive => true) }
++    assert_match(/exists and is not a directory/, e.message)
++  end
++
+   def test_download_directory_should_create_directory_and_files_locally
+     file = nil
+     prepare_directory "/path/to/local" do |dir|

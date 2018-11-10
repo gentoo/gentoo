@@ -1,0 +1,31 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,7 +9,7 @@
+ # *not* the same as the "public" version number.  CURRENT:REVISION:AGE
+ SHARED_VERSION_INFO="2:4:0"
+ AC_SUBST(SHARED_VERSION_INFO)
+-AM_ENABLE_SHARED(no) dnl shared libs cause too many headaches to be default
++AM_ENABLE_SHARED(yes) dnl shared libs cause too many headaches to be default
+ 
+ ##############################################################################
+ 
+@@ -123,9 +123,16 @@
+ ###########################################################################
+ 
+ # Checks for BLAS/LAPACK libraries:
+-
+-ACX_BLAS([], [AC_MSG_ERROR([BLAS library not found])])
+-ACX_LAPACK([], [AC_MSG_ERROR([LAPACK library not found])])
++sinclude(acx_blas.m4)
++ACX_BLAS
++if test x"$BLAS_LIBS" = x ; then
++   AC_MSG_ERROR([BLAS library not found])
++fi
++sinclude(acx_lapack.m4)
++ACX_LAPACK
++if test x"$LAPACK_LIBS" = x ; then
++   AC_MSG_ERROR([LAPACK library not found])
++fi
+ 
+ LIBS="$LAPACK_LIBS $BLAS_LIBS $LIBS $FLIBS"
+ 

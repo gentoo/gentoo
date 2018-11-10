@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>horea.christ@gmail.com</email>
+		<name>Horea Christian</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		MoviePy is a Python module for video editing: cuts, concatenations, 
+		title insertions, video compositing (a.k.a. non-linear editing), 
+		video processing, and creation of custom effects. See the gallery
+		for some examples of use.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Zulko/moviepy</remote-id>
+	</upstream>
+</pkgmetadata>

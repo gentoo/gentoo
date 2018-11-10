@@ -1,0 +1,18 @@
+--- sqlitebrowser-3.7.0/CMakeLists.txt
++++ sqlitebrowser-3.7.0/CMakeLists.txt
+@@ -29,15 +29,9 @@
+ find_package(Antlr2)
+ 
+ set(QHEXEDIT_DIR libs/qhexedit)
+-set(QCUSTOMPLOT_DIR libs/qcustomplot-source)
+ set(QSCINTILLA_DIR libs/qscintilla/Qt4Qt5)
+ 
+-if(NOT ANTLR2_FOUND)
+-    set(ANTLR_DIR libs/antlr-2.7.7)
+-    add_subdirectory(${ANTLR_DIR})
+-endif()
+ add_subdirectory(${QHEXEDIT_DIR})
+-add_subdirectory(${QCUSTOMPLOT_DIR})
+ add_subdirectory(${QSCINTILLA_DIR})
+ 
+ if(USE_QT5)

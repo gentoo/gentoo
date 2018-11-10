@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>xfce@gentoo.org</email>
+    <name>XFCE Team</name>
+  </maintainer>
+  <use>
+    <flag name='clock-panel-plugin'>Build the clock plugin for the XFCE
+      panel</flag>
+  </use>
+</pkgmetadata>

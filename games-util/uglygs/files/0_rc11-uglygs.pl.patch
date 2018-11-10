@@ -1,0 +1,131 @@
+--- a/uglygs.pl
++++ b/uglygs.pl
+@@ -8,7 +8,8 @@
+ ##########                                      Contact uglygs@uglypunk.com                                    ##########
+ #########################################################################################################################
+ #########################################################################################################################
+-require 'uglygs.conf';
++$qstatcfg = 'GENTOO_DIR/qstat.cfg';
++require 'GENTOO_DIR/uglygs.conf';
+ 
+ $VERSION = "rc10";
+ 
+@@ -23,7 +24,7 @@
+ if (!-f $qstat) { die "Sorry the Qstat file doesn't exist, you may no have compiled it yet"};
+ if (!-d  $data) { die "Sorry the data directory doesn't exist, it should be located here:  $data"};
+ if (!-d  $tmp)  { die "Sorry the temp directory doesn't exist, it should be located here:  $tmp"};
+-if (!-d  "./templates/$template") { die "Sorry the templates/template directory doesnt exist, it should be located here:  templates/$template"};
++if (!-d  "$templates/$template") { die "Sorry the templates/template directory doesnt exist, it should be located here:  $templates/$template"};
+ 
+ if ($html eq "y"){
+         if (!-f $rrdtool) { die "Sorry the rrdtool file doesn't exist, Please install RRDTOOL"};
+@@ -88,7 +89,7 @@
+ $timemonth = $time - 2592000;
+ $timeyear = $time - 31536000;
+ system(`rm $tmp/*.tmp`);
+-require "templates/$template/graphs.conf";
++require "$templates/$template/graphs.conf";
+ 
+ 
+ ################################# Seach everything VERY MESSY #########################
+@@ -96,7 +97,7 @@
+ if ($doscan eq "y"){
+ 
+ 
+- 	open(QSTAT, "|$qstat -cfg qstat/qstat.cfg -maxsim 60 -timeout 8 -Ts ./templates/qstat $qstatcom $addports >> $tmp/serversannounce.tmp" );
++ 	open(QSTAT, "|$qstat -cfg $qstatcfg -maxsim 60 -timeout 8 -Ts $templates/qstat $qstatcom $addports >> $tmp/serversannounce.tmp" );
+  	close(QSTAT);
+ 
+ 	if (-s "$tmp/serversannounce.tmp"){
+@@ -121,7 +122,7 @@
+   $defport = $tabledata[2];
+   $defport =~ s/\n//;
+   if ($tabledata[0] eq "Q3S") {
+-    open (QSTAT, "$qstat -cfg qstat/qstat.cfg -nh -R -q3s $tabledata[1]:$defport|");
++    open (QSTAT, "$qstat -cfg $qstatcfg -nh -R -q3s $tabledata[1]:$defport|");
+     @qstatoutput = <QSTAT>;
+     $qstatoutput = $qstatoutput[1];
+     if ($qstatoutput =~m/version=Wolf /) {
+@@ -172,7 +173,7 @@
+ 
+ ############################# SERVER QUERY PROCESSING ###############################
+ 
+-system( "$qstat -cfg qstat/qstat.cfg -maxsim 60 -timeout 8 -Ts ./templates/sqdata -of $tmp/sqservers.tmp -f $configfile" );
++system( "$qstat -cfg $qstatcfg -maxsim 60 -timeout 8 -Ts $templates/sqdata -of $tmp/sqservers.tmp -f $configfile" );
+     
+ open (PROCESS, "< $tmp/sqservers.tmp");
+ @name = <PROCESS>;
+@@ -194,7 +195,7 @@
+                 $defport = $tabledata[2];
+                 $defport =~ s/\n//;
+                 if ($tabledata[0] eq "GPS") {
+-                        open (QSTAT, "$qstat -cfg qstat/qstat.cfg -nh -R -gps $tabledata[1]:$defport|");
++                        open (QSTAT, "$qstat -cfg $qstatcfg -nh -R -gps $tabledata[1]:$defport|");
+                         @qstatoutput = <QSTAT>;
+                         $qstatoutput = $qstatoutput[1];
+ 
+@@ -206,7 +207,7 @@
+                         close(QSTAT);
+ 
+                 } elsif ($tabledata[0] eq "RWS") {
+-                        open (QSTAT, "$qstat -cfg qstat/qstat.cfg -nh -R -rws $tabledata[1]:$defport|");
++                        open (QSTAT, "$qstat -cfg $qstatcfg -nh -R -rws $tabledata[1]:$defport|");
+                         @qstatoutput = <QSTAT>;
+                         $qstatoutput = $qstatoutput[1];
+                                 if ($qstatoutput =~m/protocol=17,/) {
+@@ -218,7 +219,7 @@
+ 
+                         
+                  } elsif ($tabledata[0] eq "RGS") {
+-                         open (QSTAT, "$qstat -cfg qstat/qstat.cfg -nh -R -rgs $tabledata[1]:$defport|");
++                         open (QSTAT, "$qstat -cfg $qstatcfg -nh -R -rgs $tabledata[1]:$defport|");
+                          @qstatoutput = <QSTAT>;
+                          $qstatoutput = $qstatoutput[1];
+ 
+@@ -231,7 +232,7 @@
+                         close(QSTAT);
+ 
+                  } elsif ($tabledata[0] eq "SMS") {
+-                         open (QSTAT, "$qstat -cfg qstat/qstat.cfg -nh -R -sms $tabledata[1]:$defport|");
++                         open (QSTAT, "$qstat -cfg $qstatcfg -nh -R -sms $tabledata[1]:$defport|");
+                          @qstatoutput = <QSTAT>;
+                          $qstatoutput = $qstatoutput[1];
+ 
+@@ -247,7 +248,7 @@
+ 
+ 
+                  } elsif ($tabledata[0] eq "GOS") {
+-                         open (QSTAT, "$qstat -cfg qstat/qstat.cfg -nh -R -gos $tabledata[1]:$defport|");
++                         open (QSTAT, "$qstat -cfg $qstatcfg -nh -R -gos $tabledata[1]:$defport|");
+                          @qstatoutput = <QSTAT>;
+                          $qstatoutput = $qstatoutput[1];
+ 
+@@ -261,7 +262,7 @@
+ 
+ 
+                  } elsif ($tabledata[0] eq "SF2S") {
+-                         open (QSTAT, "$qstat -cfg qstat/qstat.cfg -nh -R -sf2s $tabledata[1]:$defport|");
++                         open (QSTAT, "$qstat -cfg $qstatcfg -nh -R -sf2s $tabledata[1]:$defport|");
+                          @qstatoutput = <QSTAT>;
+                          $qstatoutput = $qstatoutput[1];
+                                 if ($qstatoutput =~m/version=SOF2MP V1.02t/) {
+@@ -301,7 +302,7 @@
+ 
+ 
+ if ($html eq "y"){
+-  open(TOTALOUT, "$qstat -cfg qstat/qstat.cfg -R -sort $htmlgame  -maxsim 60 -timeout 4 -Th ./templates/$template/header.html -Tt ./templates/$template/footer.html -Ts ./templates/$template/data.html -f $configfile 2> /dev/null |");
++  open(TOTALOUT, "$qstat -cfg $qstatcfg -R -sort $htmlgame  -maxsim 60 -timeout 4 -Th $templates/$template/header.html -Tt $templates/$template/footer.html -Ts $templates/$template/data.html -f $configfile 2> /dev/null |");
+   while( $totalline = <TOTALOUT> ){
+     my @totaldata = split(/ /,$totalline);
+      if ($totaldata[0] eq "<!--" and $totaldata[1] eq "gamedetails"){
+@@ -372,7 +373,7 @@
+     $graph = "$tabledata[0]$tabledata[1]$port";
+ 
+       
+-    open(QSTAT, "$qstat -cfg qstat/qstat.cfg -R -P -sort $htmlplayer -maxsim 60 -timeout 4 -Th ./templates/$template/gameheader.html -Tt ./templates/$template/gamefooter.html -Ts ./templates/$template/gamedata.html -Tp ./templates/$template/gameplayer.html -$gametype $tabledata[1]:$port | "); 
++    open(QSTAT, "$qstat -cfg $qstatcfg -R -P -sort $htmlplayer -maxsim 60 -timeout 4 -Th $templates/$template/gameheader.html -Tt $templates/$template/gamefooter.html -Ts $templates/$template/gamedata.html -Tp $templates/$template/gameplayer.html -$gametype $tabledata[1]:$port | "); 
+      while($serverline = <QSTAT>){
+      my @data = split(/ /,$serverline);
+      if ($data[0] eq "<!--" and $data[1] eq "gamedetails"){
+--- a/a/uglygs.pl
++++ b/b/uglygs.pl

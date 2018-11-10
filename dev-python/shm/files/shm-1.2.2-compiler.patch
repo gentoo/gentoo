@@ -1,0 +1,11 @@
+--- setup.py	2010-06-26 03:29:30.000000000 +0200
++++ setup.py	2010-06-26 03:30:10.000000000 +0200
+@@ -84,7 +84,7 @@
+         filename = "%d.c" % i
+         file(path + filename, "w").write(src % ('_' * i))
+         
+-        cmd = ["cc", "-c", "-o", "/dev/null", "%s" % path + filename]
++        cmd = [os.environ.get("CC", "cc"), "-c", "-o", "/dev/null", "%s" % path + filename]
+ 
+         po = popen2.Popen4(cmd)
+         if not po.wait(): underscores[i] = True

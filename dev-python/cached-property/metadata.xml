@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>cedk@gentoo.org</email>
+		<name>Cédric Krier</name>
+	</maintainer>
+	<longdescription lang="en">
+		A cached-property for decorating methods in classes.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">cached-property</remote-id>
+		<remote-id type="github">pydanny/cached-property</remote-id>
+	</upstream>
+</pkgmetadata>

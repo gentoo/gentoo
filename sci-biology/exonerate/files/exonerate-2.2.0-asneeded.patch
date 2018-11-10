@@ -1,0 +1,15 @@
+Fix build with --as-needed
+
+https://bugs.gentoo.org/268094
+
+--- a/configure.in
++++ b/configure.in
+@@ -289,7 +289,7 @@
+ if test "$enable_pthreads" = yes; then
+     echo "Using PTHREADS"
+     CFLAGS="$CFLAGS -DUSE_PTHREADS"
+-    LDFLAGS="$LDFLAGS -lpthread"
++    LIBS="$LIBS -lpthread"
+ elif test "$enable_pthreads" = no; then
+     echo "Not using pthreads"
+ else

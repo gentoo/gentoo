@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Test-Trap</remote-id>
+    <remote-id type="cpan-module">Test::Trap</remote-id>
+    <remote-id type="cpan-module">Test::Trap::Builder</remote-id>
+    <remote-id type="cpan-module">Test::Trap::Builder::PerlIO</remote-id>
+    <remote-id type="cpan-module">Test::Trap::Builder::SystemSafe</remote-id>
+    <remote-id type="cpan-module">Test::Trap::Builder::TempFile</remote-id>
+  </upstream>
+</pkgmetadata>

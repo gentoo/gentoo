@@ -1,0 +1,19 @@
+Description: Update assogiate desktop file
+Author: Vincent Legout <vincent@legout.info>
+
+Index: assogiate/data/assogiate.desktop.in
+===================================================================
+--- assogiate.orig/data/assogiate.desktop.in	2011-05-02 20:46:29.322670186 +0200
++++ assogiate/data/assogiate.desktop.in	2011-05-02 20:46:47.835433235 +0200
+@@ -1,9 +1,9 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ _Name=File Types Editor
+ _Comment=Modify the detection and display of file types
+ Exec=assogiate
+ Icon=assogiate
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;System;FileTools;
++Categories=GNOME;GTK;System;FileTools;X-GNOME-PersonalSettings;
++OnlyShowIn=GNOME;

@@ -1,0 +1,192 @@
+Description: Update for wx 3.0.0
+ Update configure to recognise that wx 3.0.0 >= 2.4.2.
+ Fix code for wx API changes.
+Author: Olly Betts <olly@survex.com>
+Origin: debian
+Forwarded: no
+Last-Update: 2014-04-10
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -171,6 +171,8 @@
+         ;;
+     [2.[5-9].*])
+ 	;;
++    3.*)
++	;;
+     *)
+         AC_MSG_ERROR([wxWidgets >= 2.4.2 required, found version $WX_VERSION])
+ 	AC_MSG_ERROR([Try --with-wx-config.])
+--- a/src/filelist_ctrl.cpp
++++ b/src/filelist_ctrl.cpp
+@@ -1029,7 +1029,7 @@
+ 
+     // Workaround for issue 324 (only local+non-flat+update):
+     //   we chdir to the requested dir and pass "." to svn
+-    if (!pathUtf8.isUrl() && m->WithUpdate && !m->FlatMode)
++    if (!pathUtf8.isUrl() && m->WithUpdate && !m->FlatMode && !m->Path.empty())
+     {
+       m->IsRelative = true;
+       ::wxSetWorkingDirectory(m->Path);
+@@ -1606,7 +1606,7 @@
+   }
+ }
+ 
+-inline void
++bool
+ FileListCtrl::SetColumnWidth(const int col, const int width)
+ {
+   m->ColumnWidth[col] = width;
+@@ -1614,8 +1614,9 @@
+   int index = m->ColumnIndex[col];
+   if (index != -1)
+   {
+-    wxListCtrl::SetColumnWidth(index, width);
++    return wxListCtrl::SetColumnWidth(index, width);
+   }
++  return false;
+ }
+ 
+ int
+--- a/src/filelist_ctrl.hpp
++++ b/src/filelist_ctrl.hpp
+@@ -118,7 +118,7 @@
+    * @param col column number
+    * @param width
+    */
+-  void
++  bool
+   SetColumnWidth(const int col, const int width);
+ 
+   /**
+--- a/src/hist_val.cpp
++++ b/src/hist_val.cpp
+@@ -113,7 +113,7 @@
+       }
+ 
+       // if we have an entry, select it
+-      if (!comboBox->IsEmpty())
++      if (!comboBox->IsListEmpty())
+         comboBox->SetSelection(0, 0);
+     }
+ 
+--- a/src/listener.cpp
++++ b/src/listener.cpp
+@@ -167,7 +167,7 @@
+     wxMutexLocker lock(mutex);
+     wxString localCertFile = wxFileSelector(
+                                _("Select Certificate File"), wxT(""), wxT(""), wxT(""),
+-                               wxT("*.*"), wxOPEN | wxFILE_MUST_EXIST, parent);
++                               wxT("*.*"), wxFD_OPEN | wxFD_FILE_MUST_EXIST, parent);
+     LocalToUtf8(localCertFile, certFile);
+ 
+     dataReceived = !localCertFile.empty();
+--- a/src/log_dlg.cpp
++++ b/src/log_dlg.cpp
+@@ -211,7 +211,7 @@
+ 
+     for (size_t idx = 0; idx < str.Length(); idx++)
+     {
+-      switch (str[idx])
++      switch ((wchar_t)str[idx])
+       {
+       case wxT('\r'):
+       case wxT('\n'):
+--- a/src/preferences_dlg.cpp
++++ b/src/preferences_dlg.cpp
+@@ -126,7 +126,7 @@
+ PreferencesDlg::SelectExecutable(const wxString & title, wxTextCtrl * textCtrl)
+ {
+   wxFileDialog dlg(this, title, wxEmptyString, wxEmptyString,
+-                   EXECUTABLE_WILDCARD, wxOPEN);
++                   EXECUTABLE_WILDCARD, wxFD_OPEN);
+   dlg.SetPath(textCtrl->GetValue());
+ 
+   if (dlg.ShowModal() != wxID_OK)
+--- a/src/verblist.cpp
++++ b/src/verblist.cpp
+@@ -71,7 +71,7 @@
+ const wxString &
+ VerbList::GetName(size_t /*index*/) const
+ {
+-  return wxT("");
++  return wxEmptyString;
+ }
+ 
+ 
+--- a/src/checkout_action.cpp
++++ b/src/checkout_action.cpp
+@@ -120,7 +120,8 @@
+       pegRevision = svn::Revision(revnum);
+   }
+ 
+-  wxSetWorkingDirectory(m_data.DestFolder);
++  if (!m_data.DestFolder.empty())
++    wxSetWorkingDirectory(m_data.DestFolder);
+ 
+   svn::Path repUrlUtf8(PathUtf8(m_data.RepUrl));
+   svn::Path destFolderUtf8(PathUtf8(dest_folder));
+--- a/src/action.cpp
++++ b/src/action.cpp
+@@ -218,7 +218,9 @@
+ bool
+ Action::Prepare()
+ {
+-  wxSetWorkingDirectory(Utf8ToLocal(m->path.c_str()));
++  const wxString & dir = Utf8ToLocal(m->path.c_str());
++  if (!dir.empty())
++    wxSetWorkingDirectory(dir);
+ 
+   return true;
+ }
+--- a/src/cleanup_action.cpp
++++ b/src/cleanup_action.cpp
+@@ -52,7 +52,9 @@
+   svn::Client client(GetContext());
+   const svn::Path & path = GetPath();
+ 
+-  wxSetWorkingDirectory(Utf8ToLocal(path.c_str()));
++  const wxString & dir = Utf8ToLocal(path.c_str());
++  if (!dir.empty())
++    wxSetWorkingDirectory(dir);
+   client.cleanup(path.c_str());
+ 
+   return true;
+--- a/src/export_action.cpp
++++ b/src/export_action.cpp
+@@ -111,7 +111,8 @@
+       pegRevision = svn::Revision(revnum);
+   }
+ 
+-  wxSetWorkingDirectory(m_data.DestPath);
++  if (!m_data.DestPath.empty())
++    wxSetWorkingDirectory(m_data.DestPath);
+ 
+   svn::Path srcPathUtf8(PathUtf8(m_data.SrcPath));
+   svn::Path destPathUtf8(PathUtf8(m_data.DestPath));
+--- a/src/get_action.cpp
++++ b/src/get_action.cpp
+@@ -56,7 +56,9 @@
+              m_data.revision.revnum());
+   Trace(msg);
+ 
+-  wxSetWorkingDirectory(Utf8ToLocal(GetPath().c_str()));
++  const wxString & dir = Utf8ToLocal(GetPath().c_str());
++  if (!dir.empty())
++    wxSetWorkingDirectory(dir);
+   client.update(svn::Path(LocalToUtf8(m_data.path)),
+                 m_data.revision,
+                 true, false);
+--- a/src/update_action.cpp
++++ b/src/update_action.cpp
+@@ -75,7 +75,9 @@
+     }
+   }
+ 
+-  wxSetWorkingDirectory(Utf8ToLocal(GetPath().c_str()));
++  const wxString & dir = Utf8ToLocal(GetPath().c_str());
++  if (!dir.empty())
++    wxSetWorkingDirectory(dir);
+   svn::Client client(GetContext());
+ 
+   client.update(GetTargets(), revision, m_data.recursive,

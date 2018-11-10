@@ -1,0 +1,7 @@
+--- Isabelle2016-1-orig/contrib/bash_process-1.2.1/etc/settings	2016-02-14 09:48:03.000000000 +1100
++++ Isabelle2016-1/contrib/bash_process-1.2.1/etc/settings	2017-01-02 13:44:49.355549312 +1100
+@@ -1,3 +1,3 @@
+ # -*- shell-script -*- :mode=shellscript:
+ 
+-ISABELLE_BASH_PROCESS="$COMPONENT/${ISABELLE_PLATFORM64:-$ISABELLE_PLATFORM32}/bash_process"
++ISABELLE_BASH_PROCESS="$COMPONENT/bash_process"

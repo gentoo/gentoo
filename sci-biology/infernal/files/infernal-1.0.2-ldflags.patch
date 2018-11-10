@@ -1,0 +1,15 @@
+Respect LDFLAGS
+
+http://bugs.gentoo.org/show_bug.cgi?id=338177
+
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -86,7 +86,7 @@
+ all: 	$(PROGS) 
+ 
+ $(PROGS): @EXEC_DEPENDENCY@ $(OBJS) ${HDRS}
+-	$(CC) $(CFLAGS) $(DEFS) $(MYLIBDIR) -o $@ $@.o $(OBJS) $(MYLIBS) $(LIBS) $(MPILIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(DEFS) $(MYLIBDIR) -o $@ $@.o $(OBJS) $(MYLIBS) $(LIBS) $(MPILIBS)
+ 
+ 
+ #################################################################

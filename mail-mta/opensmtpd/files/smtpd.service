@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenSMTPD
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/smtpd
+
+[Install]
+WantedBy=multi-user.target

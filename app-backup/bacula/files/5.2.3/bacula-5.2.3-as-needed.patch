@@ -1,0 +1,14 @@
+# see bug #310087 
+diff -urN bacula-5.2.1.orig/src/findlib/Makefile.in bacula-5.2.1/src/findlib/Makefile.in
+--- bacula-5.2.1.orig/src/findlib/Makefile.in	2010-02-24 16:33:48.000000000 +0100
++++ bacula-5.2.1/src/findlib/Makefile.in	2010-03-22 17:37:43.772805754 +0100
+@@ -59,7 +59,7 @@
+ 
+ libbacfind.la: Makefile $(LIBBACFIND_LOBJS) 
+ 	@echo "Making $@ ..."
+-	$(LIBTOOL_LINK) $(CXX) $(DEFS) $(DEBUG) $(LDFLAGS) -o $@ $(LIBBACFIND_LOBJS) -export-dynamic -rpath $(libdir) -release $(LIBBACFIND_LT_RELEASE)
++	$(LIBTOOL_LINK) $(CXX) $(DEFS) $(DEBUG) $(LDFLAGS) -o $@ $(LIBBACFIND_LOBJS) -export-dynamic -rpath $(libdir) -release $(LIBBACFIND_LT_RELEASE) -L../lib -lbac $(LIBS) $(OPENSSL_LIBS)
+ 
+ Makefile: $(srcdir)/Makefile.in $(topdir)/config.status
+ 	cd $(topdir) \
+

@@ -1,0 +1,13 @@
+--- src/base/digitseq/cl_asm_arm_.cc	2009-05-10 16:32:30.000000000 -0400
++++ src/base/digitseq/cl_asm_arm_.cc.new	2009-12-29 09:03:02.161401990 -0500
+@@ -77,8 +77,8 @@
+ #else
+ #define DECLARE_FUNCTION(x)
+ #endif
+-#define GLABEL(x) _##x##:
+-#define LABEL(x) x##:
++#define GLABEL(x) _##x:
++#define LABEL(x) x:
+ #define RRX rrx
+ #define END
+ 

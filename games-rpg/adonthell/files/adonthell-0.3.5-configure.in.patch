@@ -1,0 +1,92 @@
+--- a/configure.in
++++ b/configure.in
+@@ -13,7 +13,7 @@
+ AM_INIT_AUTOMAKE([])
+ AM_CONFIG_HEADER(config.h)
+ 
+-CFLAGS="-g -Wall -fno-exceptions"
++CXXFLAGS="$CXXFLAGS -Wall -fno-exceptions"
+ CPPFLAGS=""
+ DEFS=""
+ 
+@@ -163,10 +163,8 @@
+ 
+    dnl Extract the version using Python, check against 2.2+
+ 
+-   changequote(<<, >>)
+-   PYTHON_VERSION=`$PYPACKAGE -c 'import sys ; print (int(sys.version[0]) * 10 + int(sys.version[2]))'`
+-   PY_VERSION=`$PYPACKAGE -c 'import sys ; print sys.version[0:3]'`
+-   changequote([, ])
++   PYTHON_VERSION=`$PYPACKAGE -c 'import sys ; print (int(sys.version@<:@0@:>@) * 10 + int(sys.version@<:@2@:>@))'`
++   PY_VERSION=`$PYPACKAGE -c 'import sys ; print sys.version@<:@0:3@:>@'`
+ 
+    if test $PYTHON_VERSION -lt 22; then
+ 	echo "Sorry, you need to have Python 2.2+ installed - update your version!"
+@@ -176,9 +174,7 @@
+    dnl Find the Python.h header file
+ 
+    AC_MSG_CHECKING(for Python header files)
+-   changequote(<<, >>)
+-   PYINCLUDE=`$PYPACKAGE -c 'import sys ; print "%s/include/python%s" % (sys.prefix, sys.version[:3])'`
+-   changequote([, ])
++   PYINCLUDE=`$PYPACKAGE -c 'import sys ; print "%s/include/python%s" % (sys.prefix, sys.version@<:@:3@:>@)'`
+ 
+    if test -r "$PYINCLUDE/Python.h"; then
+       PY_CFLAGS="-I$PYINCLUDE"
+@@ -191,10 +187,8 @@
+    dnl Find the Python library
+    AC_MSG_CHECKING(for Python library)
+    PYLIB=""
+-   changequote(<<, >>)
+    PYPREFIX=`$PYPACKAGE -c 'import sys; print sys.prefix'`
+-   PYLIBVER=`$PYPACKAGE -c 'import sys; print sys.version[:3]'`
+-   changequote([, ])
++   PYLIBVER=`$PYPACKAGE -c 'import sys; print sys.version@<:@:3@:>@'`
+ 
+    dnl look for a framework build of python first
+    fw=`echo "$PYPREFIX" | sed 's/.*\(Python\.framework\).*/\1/;'`
+@@ -233,19 +227,9 @@
+    fi
+    dnl Get the libraries that python depends on
+ 
+-   AC_PATH_PROG(haveldd, ldd)
+    AC_MSG_CHECKING(for Python's dependencies)
+ 
+-   if test x$haveldd != x ; then
+-       changequote(<<, >>)
+-       py_deps=`ldd $PYPACKAGE | sed 's/\( *.*lib\([^\/]*\)\.so.*=.*$\)/-l\2/p; d' | grep -v 'stdc++'`
+-       for py_lib in $py_deps ; do
+-         if test "$py_lib" != "-lm" && test "$py_lib" != "-lc" ; then
+-            PY_DEPS="$PY_DEPS $py_lib"
+-         fi
+-      done
+-      changequote([, ])
+-   fi
++   PY_DEPS="$PY_DEPS `python-config --libs` -lutil"
+ 
+    case $target in
+        *-sun-solaris*)
+@@ -293,11 +277,9 @@
+ if test "$P_SWIG" != "no" ; then
+     $P_SWIG -version &> swig.ver
+ 
+-    changequote(<<, >>)
+-    swig_major_ver=`more swig.ver | sed 's/.* \([0-9]*\)\.[0-9]*\.[0-9]*.*/\1/p; d'`
+-    swig_minor_ver=`more swig.ver | sed 's/.* [0-9]*\.\([0-9]*\)\.[0-9]*.*/\1/p; d'`
+-    swig_micro_ver=`more swig.ver | sed 's/.* [0-9]*\.[0-9]*\.\([0-9]*\).*/\1/p; d'`
+-    changequote([, ])
++    swig_major_ver=`more swig.ver | sed 's/.* \(@<:@0-9@:>@*\)\.@<:@0-9@:>@*\.@<:@0-9@:>@*.*/\1/p; d'`
++    swig_minor_ver=`more swig.ver | sed 's/.* @<:@0-9@:>@*\.\(@<:@0-9@:>@*\)\.@<:@0-9@:>@*.*/\1/p; d'`
++    swig_micro_ver=`more swig.ver | sed 's/.* @<:@0-9@:>@*\.@<:@0-9@:>@*\.\(@<:@0-9@:>@*\).*/\1/p; d'`
+ 
+     rm -f swig.ver
+ 
+@@ -387,7 +369,7 @@
+ dnl Generate our compiler arguements
+ dnl ********************************
+ 
+-CXXFLAGS="$CFLAGS $DEFS $INCLUDES"
++CXXFLAGS="$CXXFLAGS $DEFS $INCLUDES"
+ 
+ AC_SUBST(CXX) 
+ AC_SUBST(CXXFLAGS) 

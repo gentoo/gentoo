@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>rafaelmartins@gentoo.org</email>
+    <name>Rafael G. Martins</name>
+  </maintainer>
+  <use>
+    <flag name="cython">Build cython-based python modules</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">racker/falcon</remote-id>
+  </upstream>
+</pkgmetadata>

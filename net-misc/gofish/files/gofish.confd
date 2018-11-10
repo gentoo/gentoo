@@ -1,0 +1,27 @@
+#
+# Config file for gofish Gentoo start-script.
+# Should be stored as: /etc/conf.d/gofish
+#
+
+# Application name
+GOFISH_APP=gofish
+
+# Path to gofish executable
+GOFISH_EXEC=/usr/sbin/gofish
+
+# The gofish config file
+GOFISH_CONF_FILE=/etc/gofish.conf
+
+# The start options
+GOFISH_START_OPTS="-d"
+
+# The stop options
+GOFISH_STOP_OPTS=""
+
+# The reload options
+GOFISH_RELOAD_OPTS=""
+
+# The pid file
+GOFISH_PIDFILE=/var/run/gofish.pid
+
+

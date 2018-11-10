@@ -1,0 +1,164 @@
+From cbbac2c31a04e956261489ce75c962be7e2454ae Mon Sep 17 00:00:00 2001
+From: Joe George <joe@zeroc.com>
+Date: Mon, 12 Dec 2016 11:51:41 -0500
+Subject: [PATCH] ICE-7445 - Add libressl build support
+
+---
+ cpp/src/IceSSL/OpenSSLEngine.cpp       | 20 ++++++++++----------
+ cpp/src/IceSSL/OpenSSLTransceiverI.cpp |  6 +++---
+ cpp/src/IceSSL/Util.cpp                |  8 ++++----
+ 3 files changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/cpp/src/IceSSL/OpenSSLEngine.cpp b/cpp/src/IceSSL/OpenSSLEngine.cpp
+index 8c45950..7360d06 100644
+--- a/cpp/src/IceSSL/OpenSSLEngine.cpp
++++ b/cpp/src/IceSSL/OpenSSLEngine.cpp
+@@ -43,7 +43,7 @@ IceUtil::Mutex* staticMutex = 0;
+ int instanceCount = 0;
+ bool initOpenSSL = false;
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ IceUtil::Mutex* locks = 0;
+ #endif
+ 
+@@ -59,10 +59,10 @@ class Init
+     ~Init()
+     {
+         //
+-        // OpenSSL 1.1.0 introduces a new thread API and removes 
++        // OpenSSL 1.1.0 introduces a new thread API and removes
+         // the need to use a custom thread callback.
+         //
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+         CRYPTO_set_locking_callback(0);
+         CRYPTO_set_id_callback(0);
+ 
+@@ -84,10 +84,10 @@ extern "C"
+ {
+ 
+ //
+-// OpenSSL 1.1.0 introduces a new thread API and removes 
++// OpenSSL 1.1.0 introduces a new thread API and removes
+ // the need to use a custom thread callback.
+ //
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ //
+ // OpenSSL mutex callback.
+ //
+@@ -158,7 +158,7 @@ IceSSL_opensslPasswordCallback(char* buf, int size, int flag, void* userData)
+ DH*
+ IceSSL_opensslDHCallback(SSL* ssl, int /*isExport*/, int keyLength)
+ {
+-#  if OPENSSL_VERSION_NUMBER >= 0x10100000L
++#  if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
+     SSL_CTX* ctx = SSL_get_SSL_CTX(ssl);
+ #  else
+     SSL_CTX* ctx = ssl->ctx;
+@@ -219,7 +219,7 @@ OpenSSLEngine::OpenSSLEngine(const CommunicatorPtr& communicator) :
+             //
+             // OpenSSL 1.1.0 remove the need for library initialization and cleanup.
+             //
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+             //
+             // Create the mutexes and set the callbacks.
+             //
+@@ -326,7 +326,7 @@ OpenSSLEngine::~OpenSSLEngine()
+ //
+ // OpenSSL 1.1.0 remove the need for library initialization and cleanup.
+ //
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+     //
+     // Clean up OpenSSL resources.
+     //
+@@ -399,7 +399,7 @@ OpenSSLEngine::initialize()
+                                                     "IceSSL: unable to create SSL context:\n" + sslErrors());
+             }
+ 
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
+             int securityLevel = properties->getPropertyAsIntWithDefault(propPrefix + "SecurityLevel", -1);
+             if(securityLevel != -1)
+             {
+@@ -954,7 +954,7 @@ OpenSSLEngine::parseProtocols(const StringSeq& protocols) const
+ SSL_METHOD*
+ OpenSSLEngine::getMethod(int /*protocols*/)
+ {
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
+     SSL_METHOD* meth = const_cast<SSL_METHOD*>(TLS_method());
+ #else
+     //
+diff --git a/cpp/src/IceSSL/OpenSSLTransceiverI.cpp b/cpp/src/IceSSL/OpenSSLTransceiverI.cpp
+index d66c5eb..9f07044 100644
+--- a/cpp/src/IceSSL/OpenSSLTransceiverI.cpp
++++ b/cpp/src/IceSSL/OpenSSLTransceiverI.cpp
+@@ -36,7 +36,7 @@ using namespace IceSSL;
+ //
+ // See: http://cvs.openssl.org/chngview?cn=22569
+ //
+-#if defined(OPENSSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER < 0x100000bfL
++#if defined(OPENSSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER < 0x100000bfL && !defined(LIBRESSL_VERSION_NUMBER)
+ namespace
+ {
+ 
+@@ -156,13 +156,13 @@ IceSSL::TransceiverI::initialize(IceInternal::Buffer& readBuffer, IceInternal::B
+         //
+         // See: http://cvs.openssl.org/chngview?cn=22569
+         //
+-#if defined(OPENSSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER < 0x100000bfL
++#if defined(OPENSSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER < 0x100000bfL && !defined(LIBRESSL_VERSION_NUMBER)
+         IceUtilInternal::MutexPtrLock<IceUtil::Mutex> sync(sslMutex);
+ #endif
+ 
+         int ret = _incoming ? SSL_accept(_ssl) : SSL_connect(_ssl);
+ 
+-#if defined(OPENSSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER < 0x100000bfL
++#if defined(OPENSSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER < 0x100000bfL && !defined(LIBRESSL_VERSION_NUMBER)
+         sync.release();
+ #endif
+         if(ret <= 0)
+diff --git a/cpp/src/IceSSL/Util.cpp b/cpp/src/IceSSL/Util.cpp
+index a60ee4c..50c47f3 100644
+--- a/cpp/src/IceSSL/Util.cpp
++++ b/cpp/src/IceSSL/Util.cpp
+@@ -110,7 +110,7 @@ namespace
+ {
+ 
+ #  ifndef OPENSSL_NO_DH
+-#    if OPENSSL_VERSION_NUMBER < 0x10100000L
++#    if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ // The following arrays are predefined Diffie Hellman group parameters.
+ // These are known strong primes, distributed with the OpenSSL library
+@@ -228,7 +228,7 @@ unsigned char dh4096_g[] = { 0x02 };
+ //
+ // With OpenSSL 1.1.0 is no longer possible to acess the DH p and g
+ // data members to set the DH params. We still use the same default
+-// parameters but they were converted to DER format using 
++// parameters but they were converted to DER format using
+ // i2d_DHparams and can be restored using d2i_DHparams
+ 
+ unsigned char dh512[] =
+@@ -338,7 +338,7 @@ unsigned char dh4096[] =
+ //
+ // Convert a predefined parameter set into a DH value.
+ //
+-#    if OPENSSL_VERSION_NUMBER >= 0x10100000L
++#    if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
+ static DH*
+ convertDH(const unsigned char* buf, int len)
+ {
+@@ -428,7 +428,7 @@ IceSSL::DHParams::get(int keyLength)
+     // No match found. Use one of the predefined parameter sets instead.
+     //
+     IceUtil::Mutex::Lock sync(*this);
+-#    if OPENSSL_VERSION_NUMBER >= 0x10100000L
++#    if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
+     if(keyLength >= 4096)
+     {
+         if(!_dh4096)

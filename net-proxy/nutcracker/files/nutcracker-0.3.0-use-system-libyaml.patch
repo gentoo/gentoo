@@ -1,0 +1,57 @@
+diff -uNr nutcracker-0.3.0.orig/configure.ac nutcracker-0.3.0/configure.ac
+--- nutcracker-0.3.0.orig/configure.ac	2014-03-17 17:55:54.500000001 -0400
++++ nutcracker-0.3.0/configure.ac	2014-03-17 17:58:50.290000001 -0400
+@@ -195,11 +195,8 @@
+   [AC_DEFINE([HAVE_STATS], [1], [Define to 1 if stats is not disabled])])
+ AC_MSG_RESULT($disable_stats)
+ 
+-# Untar the yaml-0.1.4 in contrib/ before config.status is rerun
+-AC_CONFIG_COMMANDS_PRE([tar xvfz contrib/yaml-0.1.4.tar.gz -C contrib])
+-
+-# Call yaml-0.1.4 ./configure recursively
+-AC_CONFIG_SUBDIRS([contrib/yaml-0.1.4])
++# Use systems libyaml.
++PKG_CHECK_MODULES([YAML], [yaml-0.1 >= 0.1])
+ 
+ # Define Makefiles
+ AC_CONFIG_FILES([Makefile
+diff -uNr nutcracker-0.3.0.orig/Makefile.am nutcracker-0.3.0/Makefile.am
+--- nutcracker-0.3.0.orig/Makefile.am	2014-03-17 17:55:54.500000001 -0400
++++ nutcracker-0.3.0/Makefile.am	2014-03-17 17:56:38.920000001 -0400
+@@ -2,7 +2,7 @@
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-SUBDIRS = contrib src
++SUBDIRS = src
+ 
+ dist_man_MANS = man/nutcracker.8
+ 
+diff -uNr nutcracker-0.3.0.orig/src/Makefile.am nutcracker-0.3.0/src/Makefile.am
+--- nutcracker-0.3.0.orig/src/Makefile.am	2014-03-17 17:55:54.500000001 -0400
++++ nutcracker-0.3.0/src/Makefile.am	2014-03-17 18:00:08.480000001 -0400
+@@ -7,7 +7,6 @@
+ AM_CPPFLAGS += -I $(top_srcdir)/src/hashkit
+ AM_CPPFLAGS += -I $(top_srcdir)/src/proto
+ AM_CPPFLAGS += -I $(top_srcdir)/src/event
+-AM_CPPFLAGS += -I $(top_srcdir)/contrib/yaml-0.1.4/include
+ 
+ AM_CFLAGS =
+ AM_CFLAGS += -Wall -Wshadow
+@@ -17,9 +16,10 @@
+ AM_CFLAGS += -Wno-unused-parameter -Wno-unused-value
+ AM_CFLAGS += -Wconversion -Wsign-compare
+ AM_CFLAGS += -Wstrict-prototypes -Wmissing-prototypes -Wredundant-decls -Wmissing-declarations
++AM_CFLAGS += $(YAML_CFLAGS)
+ 
+ AM_LDFLAGS =
+-AM_LDFLAGS += -lm -lpthread -rdynamic
++AM_LDFLAGS += -lm -lpthread -rdynamic $(YAML_LIBS)
+ if OS_SOLARIS
+ AM_LDFLAGS += -lnsl -lsocket
+ endif
+@@ -52,4 +52,3 @@
+ nutcracker_LDADD = $(top_builddir)/src/hashkit/libhashkit.a
+ nutcracker_LDADD += $(top_builddir)/src/proto/libproto.a
+ nutcracker_LDADD += $(top_builddir)/src/event/libevent.a
+-nutcracker_LDADD += $(top_builddir)/contrib/yaml-0.1.4/src/.libs/libyaml.a

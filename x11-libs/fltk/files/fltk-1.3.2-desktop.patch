@@ -1,0 +1,19 @@
+--- a/fluid/fluid.desktop
++++ b/fluid/fluid.desktop
+@@ -6,5 +6,5 @@
+ Icon=fluid
+ Terminal=false
+ Type=Application
+-MimeType=application/x-fluid
++MimeType=application/x-fluid;
+ Categories=Development;GUIDesigner;
+--- a/fluid/x-fluid.desktop
++++ b/fluid/x-fluid.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Type=MimeType
+-MimeType=application/x-fluid
++MimeType=application/x-fluid;
+ Icon=fluid.png
+ Patterns=*.fl
+ Name=FLUID

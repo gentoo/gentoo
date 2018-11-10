@@ -1,0 +1,9 @@
+diff --git a/tests/TestHTF.hs b/tests/TestHTF.hs
+index 4a71874..c0442a5 100644
+--- a/tests/TestHTF.hs
++++ b/tests/TestHTF.hs
+@@ -383,3 +383,3 @@ checkOutput output =
+           BSL.toStrict $
+-          J.encodePretty' (J.Config 2 J.compare) json
++          J.encodePretty' (J.defConfig { J.confIndent = J.Spaces 2, J.confCompare = J.compare }) json
+ 

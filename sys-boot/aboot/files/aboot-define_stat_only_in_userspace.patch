@@ -1,0 +1,35 @@
+# Patch by Sergei Trofimovich
+# http://bugs.gentoo.org/364697
+
+diff --git a/Makefile b/Makefile
+index bbe3b60..b4245af 100644
+--- a/Makefile
++++ b/Makefile
+@@ -138,10 +138,10 @@ distclean: clean
+ 	find . -name \*~ | xargs rm -f
+ 
+ lib/%:
+-	make -C lib $* CPPFLAGS="$(CPPFLAGS)" TESTING="$(TESTING)"
++	make -C lib $* CPPFLAGS="$(CPPFLAGS) -D__KERNEL__" TESTING="$(TESTING)"
+ 
+ tools/%:
+-	make -C tools $* CPPFLAGS="$(CPPFLAGS)"
++	make -C tools $* CPPFLAGS="$(CPPFLAGS) -U__KERNEL__"
+ 
+ sdisklabel/%:
+ 	make -C sdisklabel $* CPPFLAGS="$(CPPFLAGS)"
+diff --git a/include/isolib.h b/include/isolib.h
+index 392327a..0ef6e2a 100644
+--- a/include/isolib.h
++++ b/include/isolib.h
+@@ -7,7 +7,10 @@
+ # define fd_set kernel_fd_set
+ #endif
+ 
++#ifdef __KERNEL__
++/* userspace stuff has it's own struct stat */
+ #include <asm/stat.h>
++#endif
+ 
+ extern int  iso_read_super (void * data, int quiet);
+ extern int  iso_open (const char * filename);

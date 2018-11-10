@@ -1,0 +1,11 @@
+--- a/reduce_src/Makefile
++++ b/reduce_src/Makefile
+@@ -34,7 +34,7 @@
+ all:    reduce
+ 
+ reduce: $(OBJLIST)
+-	$(CXX) -o $@ $(OBJLIST) $(LFLAGS)
++	$(CXX) $(LDFLAGS) -o $@ $(OBJLIST) $(LFLAGS)
+ 
+ clean:
+ 	@rm -rf *.o *.ckp ii_files

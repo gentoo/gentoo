@@ -1,0 +1,189 @@
+#!/sbin/openrc-run
+# Portions Copyright 2003 Gentoo Linux
+#
+# script originally from Courier distfile original name = courier.sysvinit
+# adapted for Gentoo by Brian Jackson
+#
+# TODO
+# should we update all the .dat/.pem files when the source/config files are 
+#	newer than the .dat/.pem files?
+
+prefix="/usr"
+exec_prefix="/usr/bin"
+sysconfdir="/etc/courier"
+sbindir="/usr/sbin"
+libexecdir="/usr/lib/courier"
+datadir="/usr/share/courier"
+
+depend() {
+	need net
+	[ -d /etc/courier/authlib ] && need courier-authlib
+	grep -q "^IMAPDSTART=.*[Yy].*" /etc/courier/imapd && use famd
+	grep -q "^IMAPDSSLSTART=.*[Yy].*" /etc/courier/imapd-ssl && use famd
+}
+
+checkconfig() {
+	checkpath -q -d -o mail:mail -m 0755 /var/run/courier
+
+	[ -f ${sysconfdir}/pop3d-ssl ] && . ${sysconfdir}/pop3d-ssl
+
+	# If we do not have a certificate, make one up.
+	[ ! -f "${datadir}/pop3d.pem" ] && \
+	ebegin " generating-POP3-SSL-certificate..." && "${sbindir}/mkpop3dcert"
+
+	[ -f ${sysconfdir}/imapd-ssl ] && . ${sysconfdir}/imapd-ssl
+
+	# If we do not have a certificate, make one up.
+	[ ! -f ${datadir}/imapd.pem ] && \
+	ebegin " generating-IMAP-SSL-certificate..." && "${sbindir}/mkimapdcert"
+
+	[ -f ${sysconfdir}/esmtpd-ssl ] && . ${sysconfdir}/esmtpd-ssl
+
+	# If we do not have a certificate, make one up.
+	[ ! -f ${datadir}/esmtpd.pem ] && \
+	ebegin " generating-ESMTP-SSL-certificate..." && "${sbindir}/mkesmtpdcert"
+
+	# First time after install create aliases.dat and smtpaccess.dat
+
+	[ -f ${sysconfdir}/aliases.dat ] || ${sbindir}/makealiases
+
+	[ -f ${sysconfdir}/${ACCESSFILE}.dat ] || ${sbindir}/makesmtpaccess
+
+	[ -f ${sysconfdir}/${ACCESSFILE}.dat ] || ${sbindir}/makesmtpaccess-msa
+}
+
+start() {
+	# Start daemons.
+	ebegin "Starting Courier mail server:"
+
+	checkconfig || return 1
+
+	ebegin " Starting courierfilterd"
+	${sbindir}/courierfilter start
+
+	[ ! -d /etc/courier/authlib ] && [ -x ${libexecdir}/authlib/authdaemond ] && \
+	${libexecdir}/authlib/authdaemond start && ebegin " Starting authdaemond"
+
+	[ -x ${sbindir}/webmaild ] && \
+	  ${sbindir}/webmaild start && ebegin " Starting webmaild" 
+
+	[ -x ${sbindir}/courierldapaliasd ] && \
+	${sbindir}/courierldapaliasd start && ebegin " Starting courierldapaliasd"
+
+	ebegin " Starting courierd"
+	${sbindir}/courier start
+
+	savepath="$PATH"
+	# start esmtpd if so written
+	[ -f ${sysconfdir}/esmtpd ] && source ${sysconfdir}/esmtpd
+	PATH="$savepath"
+	case x$ESMTPDSTART in
+	x[yY]*)
+		ebegin " Starting esmtpd"
+		${sbindir}/esmtpd start
+		;;
+	esac
+
+	# start esmtpd-msa if so written
+	[ -f ${sysconfdir}/esmtpd-msa ] && source ${sysconfdir}/esmtpd-msa
+	PATH="$savepath"
+	case x$ESMTPDSTART in
+	x[yY]*)
+		ebegin " Starting esmtpd-msa"
+		${sbindir}/esmtpd-msa start
+		;;
+	esac
+
+	# start esmtpd-ssl if so written
+	[ -f ${sysconfdir}/esmtpd-ssl ] && source ${sysconfdir}/esmtpd-ssl
+	PATH="$savepath"
+	case x$ESMTPDSSLSTART in
+	x[yY]*)
+		ebegin " Starting esmtpd-ssl"
+		${sbindir}/esmtpd-ssl start
+		;;
+	esac
+
+	# start pop3d if so written
+	[ -f ${sysconfdir}/pop3d ] && source ${sysconfdir}/pop3d
+	PATH="$savepath"
+	case x$POP3DSTART in
+	x[yY]*)
+		ebegin " courier-pop3d"
+		${sbindir}/courier-pop3d start
+		;;
+	esac
+
+	# start pop3d-ssl if so written
+	[ -f ${sysconfdir}/pop3d-ssl ] && source ${sysconfdir}/pop3d-ssl
+	PATH="$savepath"
+	case x$POP3DSSLSTART in
+	x[yY]*)
+		ebegin " courier-pop3d-ssl"
+		${sbindir}/courier-pop3d-ssl start
+		;;
+	esac
+
+	[ -f ${sysconfdir}/imapd ] && source ${sysconfdir}/imapd
+	PATH="$savepath"
+	case x$IMAPDSTART in
+	x[yY]*)
+		ebegin " courier-imapd"
+		${sbindir}/courier-imapd start
+		;;
+	esac
+
+	[ -f ${sysconfdir}/imapd-ssl ] && source ${sysconfdir}/imapd-ssl
+	PATH="$savepath"
+	case x$IMAPDSSLSTART in
+	x[yY]*)
+		ebegin " courier-imapd-ssl"
+		${sbindir}/courier-imapd-ssl start
+		;;
+	esac
+
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Courier mail server:"
+
+	ebegin " Stopping courier-esmtpd"
+	${sbindir}/esmtpd stop
+
+	ebegin " Stopping courier-esmtpd-msa"
+	${sbindir}/esmtpd-msa stop
+
+	ebegin " Stopping courier-esmtpd-ssl"
+	${sbindir}/esmtpd-ssl stop
+
+	[ -x ${sbindir}/courier-pop3d ] && \
+		ebegin " Stopping courier-pop3d" && ${sbindir}/courier-pop3d stop
+
+	[ -x ${sbindir}/courier-pop3d-ssl ] && \
+		ebegin " Stopping courier-pop3d-ssl" && ${sbindir}/courier-pop3d-ssl stop
+
+	[ -x ${sbindir}/courier-imapd ] && \
+		ebegin " Stopping courier-imapd" && ${sbindir}/courier-imapd stop
+
+
+	[ -x ${sbindir}/courier-imapd-ssl ] && \
+		ebegin " Stopping courier-imapd-ssl" && ${sbindir}/courier-imapd-ssl stop
+
+	ebegin " Stopping courierd"
+	${sbindir}/courier stop
+
+	[ -x ${sbindir}/courierldapaliasd ] && \
+	( ${sbindir}/courierldapaliasd stop ; ebegin " Stopping courierldapaliasd" )
+
+	[ -x ${sbindir}/webmaild ] && \
+	  ( ${sbindir}/webmaild stop ; ebegin " Stopping webmaild" )
+
+	[ ! -d /etc/courier/authlib ] && [ -x ${libexecdir}/authlib/authdaemond ] && \
+	( ${libexecdir}/authlib/authdaemond stop ; ebegin " Stopping authdaemond" )
+
+	${sbindir}/courierfilter stop
+	ebegin " Stopping courierfilterd"
+
+	eend $?
+}

@@ -1,0 +1,93 @@
+--- qcc_pr_comp.c
++++ qcc_pr_comp.c
+@@ -7322,7 +7322,7 @@
+ 	QCC_def_t		*def, *d;
+ 	QCC_function_t	*f;
+ 	QCC_dfunction_t	*df;
+-	int			i;
++	int			i = 0;
+ 	pbool shared=false;
+ 	pbool externfnc=false;
+ 	pbool isconstant = false;
+@@ -8541,8 +8545,6 @@
+ 	struct qcc_includechunk_s *oldcurrentchunk;
+ 	extern struct qcc_includechunk_s *currentchunk;
+ 
+-	extern char qccmsourcedir[];
+-
+ 	ocompilingfile = compilingfile;
+ 	os_file = s_file;
+ 	os_file2 = s_file2;
+--- hash.h
++++ hash.h
+@@ -19,12 +19,12 @@
+ int Hash_Key(char *name, int modulus);
+ void *Hash_Get(hashtable_t *table, char *name);
+ void *Hash_GetInsensative(hashtable_t *table, char *name);
+-void *Hash_GetKey(hashtable_t *table, int key);
++void *Hash_GetKey(hashtable_t *table, long key);
+ void *Hash_GetNext(hashtable_t *table, char *name, void *old);
+ void *Hash_GetNextInsensative(hashtable_t *table, char *name, void *old);
+ void *Hash_Add(hashtable_t *table, char *name, void *data, bucket_t *buck);
+ void *Hash_AddInsensative(hashtable_t *table, char *name, void *data, bucket_t *buck);
+ void Hash_Remove(hashtable_t *table, char *name);
+ void Hash_RemoveData(hashtable_t *table, char *name, void *data);
+-void Hash_RemoveKey(hashtable_t *table, int key);
+-void *Hash_AddKey(hashtable_t *table, int key, void *data, bucket_t *buck);
++void Hash_RemoveKey(hashtable_t *table, long key);
++void *Hash_AddKey(hashtable_t *table, long key, void *data, bucket_t *buck);
+--- hash.c
++++ hash.c
+@@ -68,7 +68,7 @@
+ 	}
+ 	return NULL;
+ }
+-void *Hash_GetKey(hashtable_t *table, int key)
++void *Hash_GetKey(hashtable_t *table, long key)
+ {
+ 	int bucknum = key%table->numbuckets;
+ 	bucket_t *buck;
+@@ -77,7 +77,7 @@
+ 
+ 	while(buck)
+ 	{
+-		if ((int)buck->keystring == key)
++		if ((long)buck->keystring == key)
+ 			return buck->data;
+ 
+ 		buck = buck->next;
+@@ -168,7 +168,7 @@
+ 
+ 	return buck;
+ }
+-void *Hash_AddKey(hashtable_t *table, int key, void *data, bucket_t *buck)
++void *Hash_AddKey(hashtable_t *table, long key, void *data, bucket_t *buck)
+ {
+ 	int bucknum = key%table->numbuckets;
+ 
+@@ -237,14 +237,14 @@
+ }
+ 
+ 
+-void Hash_RemoveKey(hashtable_t *table, int key)
++void Hash_RemoveKey(hashtable_t *table, long key)
+ {
+ 	int bucknum = key%table->numbuckets;
+ 	bucket_t *buck;	
+ 
+ 	buck = table->bucket[bucknum];
+ 
+-	if ((int)buck->keystring == key)
++	if ((long)buck->keystring == key)
+ 	{
+ 		table->bucket[bucknum] = buck->next;
+ 		return;
+@@ -253,7 +253,7 @@
+ 
+ 	while(buck->next)
+ 	{
+-		if ((int)buck->next->keystring == key)
++		if ((long)buck->next->keystring == key)
+ 		{
+ 			buck->next = buck->next->next;
+ 			return;

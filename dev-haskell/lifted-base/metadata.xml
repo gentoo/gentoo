@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		@lifted-base@ exports IO operations from the base library lifted to
+		any instance of 'MonadBase' or 'MonadBaseControl'.
+		
+		Note that not all modules from @base@ are converted yet. If
+		you need a lifted version of a function from @base@, just
+		ask me to add it or send me a patch.
+		
+		The package includes a copy of the @monad-peel@ testsuite written
+		by Anders Kaseorg The tests can be performed using @cabal test@.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">basvandijk/lifted-base</remote-id>
+	</upstream>
+</pkgmetadata>

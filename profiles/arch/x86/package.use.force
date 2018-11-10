@@ -1,0 +1,16 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (14 May 2018)
+# Force the host target to avoid dependency hell
+dev-lang/rust llvm_targets_X86
+
+# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Force the host target to avoid dependency hell
+sys-devel/clang llvm_targets_X86
+sys-devel/llvm llvm_targets_X86
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (12 Jun 2014)
+# On x86 Chromium can be built in non-PIC mode, and this
+# flag can affect performance, see http://crbug.com/332109 .
+www-client/chromium -pic

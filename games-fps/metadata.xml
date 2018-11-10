@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The games-fps category contains first person shooter games.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie games-fps enthält Egoshooter.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-fps contiene juegos de disparo en primera persona.
+	</longdescription>
+	<longdescription lang="ja">
+		games-fpsカテゴリーにはファースト・パーソン・シューター・ゲームが
+		含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De games-fps categorie bevat schietspellen (uit persoonsperspectief).
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-fps chứa các trò chơi bắn súng dạng "First Person Shooter (FPS)".
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-fps contiene giochi sparatutto in prima persona "First Person Shooter (FPS)".
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria games-fps contém jogos de tiro em primeira pessoa.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria games-fps zawiera gry akcji oglądane z perspektywy pierwszej
+		osoby.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,202 @@
+--- postgrey.orig	2011-05-04 22:54:15.000000000 +0200
++++ postgrey	2011-10-17 10:10:21.000000000 +0200
+@@ -309,6 +309,22 @@
+             $self->mylog(1, "cleaning clients database finished. before: $nr_keys_before, after: $nr_keys_after");
+         }
+ 
++        if($self->{postgrey}{targrey}) {
++            # cleanup tarpit blacklist database
++            my $tarpit_db = $self->{postgrey}{db_tarpit};
++            ($nr_keys_before, $nr_keys_after) = (0, 0);
++            while (my ($key, $tarpit_last_seen) = each %$tarpit_db) {
++                $nr_keys_before++;
++                if($now - $tarpit_last_seen > $retry_window) {
++                    delete $tarpit_db->{$key};
++                }
++                else {
++                    $nr_keys_after++;
++                }
++            }
++            $self->mylog(1, "cleaning tarpit blacklist database finished. before: $nr_keys_before, after: $nr_keys_after");
++        }
++
+         $self->{postgrey}{last_maint_keys}=$now;
+     }
+ }
+@@ -383,7 +399,7 @@
+         # whitelist if count is enough
+         if(defined $cawl_count and $cawl_count >= $self->{postgrey}{awl_clients})
+         {
+-            if(($now >= $cawl_last+3600) or ($cawl_last > $now)) {
++            if(($now >= $cawl_last + $self->{postgrey}{awl_delay}) or ($cawl_last > $now)) {
+                 $cawl_count++; # for statistics
+                 $cawl_db->{$cawl_key}=$cawl_count.','.$now;
+             }
+@@ -392,6 +408,28 @@
+         }
+     }
+ 
++    # check tarpit passed if targrey mode
++    if ($self->{postgrey}{targrey} && $attr->{protocol_state} eq 'DATA') { # passed tarpit
++        # remove tarpit blacklist
++        my $tarpit_db = $self->{postgrey}{db_tarpit};
++        my $tarpit_key = $attr->{client_address};
++        delete $tarpit_db->{$tarpit_key};
++
++        # auto whitelist clients by tarpit
++        if ($self->{postgrey}{awl_clients}) {
++            # enough time has passed (record only one attempt per hour)
++            if (! defined $cawl_last or $now >= $cawl_last + $self->{postgrey}{awl_delay}) {
++                # ok, increase count
++                $cawl_count++;
++                $cawl_db->{$cawl_key}=$cawl_count.','.$now;
++                $self->mylog(1, "tarpit whitelisted: $attr->{client_name}"."[".$attr->{client_address}."]")
++                    if $cawl_count==$self->{postgrey}{awl_clients};
++            }
++        }
++
++        return 'DUNNO';
++    }
++
+     # lookup
+     my $sender = $self->do_sender_substitutions($attr->{sender});
+     my ($client_net, $client_host) =
+@@ -402,10 +440,11 @@
+     }
+     my $val    = $db->{$key};
+     my $first;
++    my $retry_count=0;
+     my $last_was_successful=0;
+     if(defined $val) {
+         my $last;
+-        ($first, $last) = split(/,/,$val);
++        ($first, $last, $retry_count) = split(/,/,$val);
+         # find out if the last time was unsuccessful, so that we can add a header
+         # to say how much had to be waited
+         if($last - $first >= $self->{postgrey}{delay}) {
+@@ -426,16 +465,19 @@
+         $first = $now;
+     }
+ 
++    my $diff = $self->{postgrey}{delay} - ($now - $first);
++
++    # enough waited? -> increase retry_count
++    $retry_count++ if($diff <= 0);
++
+     # update (put as last element stripped host-part if it was stripped)
+     if(defined $client_host) {
+-        $db->{$key}="$first,$now,$client_host";
++        $db->{$key}="$first,$now,$retry_count,$client_host";
+     }
+     else {
+-        $db->{$key}="$first,$now";
++        $db->{$key}="$first,$now,$retry_count";
+     }
+ 
+-    my $diff = $self->{postgrey}{delay} - ($now - $first);
+-
+     # auto whitelist clients
+     # algorithm:
+     # - on successful entry in the greylist db of a triplet:
+@@ -443,23 +485,41 @@
+     #   - client whitelisted already? -> update last-seen timestamp
+     if($self->{postgrey}{awl_clients}) {
+         # greylisting succeeded
+-        if($diff <= 0 and !$last_was_successful) {
++        if($retry_count >= $self->{postgrey}{retry_count} and !$last_was_successful) {
+             # enough time has passed (record only one attempt per hour)
+-            if(! defined $cawl_last or $now >= $cawl_last + 3600) {
++            if(! defined $cawl_last or $now >= $cawl_last + $self->{postgrey}{awl_delay}) {
+                 # ok, increase count
+                 $cawl_count++;
+                 $cawl_db->{$cawl_key}=$cawl_count.','.$now;
+                 my $client = $attr->{client_name} ?
+                     $attr->{client_name}.'['.$attr->{client_address}.']' :
+                     $attr->{client_address};
+-                $self->mylog(1, "whitelisted: $client")
++                $self->mylog(1, "whitelisted: $attr->{client_name}"."[".$attr->{client_address}."]")
+                     if $cawl_count==$self->{postgrey}{awl_clients};
+             }
+         }
+     }
+ 
+-    # not enough waited? -> greylist
+-    if ($diff > 0 ) {
++    # not enough retry? -> greylist
++    if ($retry_count < $self->{postgrey}{retry_count}) {
++        if($self->{postgrey}{tarpit} && ! $self->{postgrey}{targrey}) {
++            # do tarpit and greylist if tarpit option only
++            # don't add message after greylist_action
++            return "SLEEP $self->{postgrey}{tarpit}, $self->{postgrey}{greylist_action}";
++        }
++        if($self->{postgrey}{targrey}) {
++            # do tarpit if targrey option
++            # add tarpit blacklist
++            my $tarpit_db = $self->{postgrey}{db_tarpit};
++            my $tarpit_key = $attr->{client_address};
++            my $tarpit_last = $tarpit_db->{$tarpit_key};
++            $tarpit_last = 0 unless (defined $tarpit_last);
++            $tarpit_db->{$tarpit_key} = "$now" if ($now >= $tarpit_last+300); # update if 5min ago
++
++            # return sleep if not tarpit blacklisted
++            return "SLEEP $self->{postgrey}{tarpit}" if ($tarpit_last == 0);
++            # greylist if tarpit blacklisted
++        }
+         my $msg = $self->{postgrey}{greylist_text};
+         # Workaround for an Exchange bug related to Greylisting:
+         # use DSN 4.2.0 instead of the default 4.7.1. This works
+@@ -517,6 +577,7 @@
+         'syslogfacility|syslog-facility|facility=s',
+         'retry-window=s', 'greylist-action=s', 'greylist-text=s', 'privacy',
+         'hostname=s', 'exim', 'listen-queue-size=i', 'x-greylist-header=s',
++        'tarpit:s', 'targrey', 'retry-count=i', 'auto-whitelist-delay=i',
+     ) or exit(1);
+     # note: lookup-by-subnet can be given for compatibility, but it is default
+     # so do not do nothing with it...
+@@ -606,7 +667,9 @@
+             awl_clients      => defined $opt{'auto-whitelist-clients'} ?
+                 ($opt{'auto-whitelist-clients'} ne '' ?
+                     $opt{'auto-whitelist-clients'} : 5) : 5,
++            awl_delay        => $opt{'auto-whitelist-delay'} || 3600,
+             retry_window     => $retry_window,
++            retry_count      => $opt{'retry-count'} || 1,
+             greylist_action  => $opt{'greylist-action'} || 'DEFER_IF_PERMIT',
+             greylist_text    => $opt{'greylist-text'} || 'Greylisted, see http://postgrey.schweikert.ch/help/%r.html',
+             whitelist_clients_files    => $opt{'whitelist-clients'} ||
+@@ -618,6 +681,10 @@
+             hostname => defined $opt{hostname} ? $opt{hostname} : hostname,
+             exim => defined $opt{'exim'},
+             x_greylist_header  => $opt{'x-greylist-header'} || 'X-Greylist: delayed %t seconds by postgrey-%v at %h; %d',
++            tarpit           => defined $opt{'tarpit'} ?
++                ($opt{'tarpit'} ne '' ?
++                    $opt{'tarpit'} : 65) : undef,
++            targrey          => defined $opt{'targrey'},
+         },
+     }, 'postgrey';
+ 
+@@ -633,6 +700,11 @@
+         require Digest::SHA;
+     }
+ 
++    # --targrey needs tarpit sec
++    if(defined $opt{'targrey'} && ! defined $opt{'tarpit'}) {
++        $server->{postgrey}{tarpit} = 125;
++    }
++
+     $0 = join(' ', @{$server->{server}{commandline}});
+     $server->run;
+ 
+@@ -711,6 +783,13 @@
+             -Env      => $self->{postgrey}{db_env}
+         ) or die "ERROR: can't create database $self->{server}{dbdir}/postgrey_clients.db: $!\n";
+     }
++    if($self->{postgrey}{targrey}) { # use targrey
++        tie(%{$self->{postgrey}{db_tarpit}}, 'BerkeleyDB::Btree',
++            -Filename => 'tarpit_clients.db',
++            -Flags    => DB_CREATE,
++            -Env      => $self->{postgrey}{db_env}
++           ) or die "ERROR: can't create database $self->{server}{dbdir}/tarpit_clients.db: $!\n";
++    }
+ }
+ 
+ sub mux_input()

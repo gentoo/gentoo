@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription lang="en">
+		An implementation of a WBEM services client that includes an IETF RFC
+		2614 compliant SLP client for CIM service discovery.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">sblim</remote-id>
+	</upstream>
+</pkgmetadata>

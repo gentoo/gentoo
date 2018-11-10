@@ -1,0 +1,26 @@
+diff --git a/Makefile b/Makefile
+index c1eed73..932ea60 100644
+--- a/Makefile
++++ b/Makefile
+@@ -34,10 +34,9 @@ INSTALL_PROGRAM ?= install -o root -g root -m 755 -s
+ INSTALL_DIR	?= install -o root -g root -m 755 -d
+ STRIP		?= strip
+ 
+-OPTIMISE=	-O2
+-LDFLAGS=	-g
+ LIBS=		-ldl -lc
+-CFLAGS=		-g $(OPTIMISE) \
++SHARED_LDFLAGS=
++CFLAGS+=	\
+ 		-Wall -Wwrite-strings -Wpointer-arith -Wimplicit \
+ 		-Wnested-externs -Wmissing-prototypes -Wstrict-prototypes
+ CPPFLAGS=	-DMAJOR_VER='"$(MAJOR)"' -DMINOR_VER='"$(MINOR)"' \
+@@ -82,7 +81,7 @@ helper:			helper.o
+ helper.o authbind.o:	authbind.h
+ 
+ $(LIBTARGET):		libauthbind.o
+-		ld -shared -soname $(LIBCANON) -o $@ $< $(LIBS)
++		$(LD) $(SHARED_LDFLAGS) -shared -soname $(LIBCANON) -o $@ $< $(LIBS)
+ 
+ clean distclean:
+ 		rm -f $(TARGETS) *.o *~ ./#*# *.bak *.new core

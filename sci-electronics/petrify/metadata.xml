@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-electronics@gentoo.org</email>
+    <name>Gentoo Electronics Project</name>
+  </maintainer>
+  <longdescription>
+  Petrify is a tool for synthesis of Petri nets and asynchronous controllers.
+  Petrify is able to obtain Petri nets with some specific properties: pure, free
+  choice, unique choice, place irredundant, etc... The Petri nets accepted by
+  petrify can also be interpreted as Signal Transition Graphs describing the
+  behavior of asynchronous controllers. Petrify is able to solve the Complete
+  State Coding problem and generate a speed-independent circuit.
+  </longdescription>
+</pkgmetadata>

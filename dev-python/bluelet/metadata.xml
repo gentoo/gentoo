@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+Bluelet is a simple, pure-Python solution for writing intelligible asynchronous socket applications. It uses PEP 342 coroutines to make concurrent I/O look and act like sequential programming.
+
+In this way, it is similar to the Greenlet green-threads library and its associated packages Eventlet and Gevent. Bluelet has a simpler, 100% Python implementation that comes at the cost of flexibility and performance when compared to Greenlet-based solutions. However, it should be sufficient for many applications that don't need serious scalability; it can be thought of as a less-horrible alternative to asyncore or an asynchronous replacement for SocketServer (and more).		
+	</longdescription>
+	<upstream>
+		<remote-id type="github">sampsyo/bluelet</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,9 @@
+diff --git a/c2hs/c/CLexer.x b/c2hs/c/CLexer.x
+index 77702ed..1cd2483 100644
+--- a/c2hs/c/CLexer.x
++++ b/c2hs/c/CLexer.x
+@@ -68,3 +68,3 @@ module CLexer (lexC, parseError) where
+ 
+-import Data.Char      (isDigit)
++import Data.Char      (ord, isDigit)
+ import Data.Word      (Word8)

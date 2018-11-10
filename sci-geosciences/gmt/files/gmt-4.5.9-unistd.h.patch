@@ -1,0 +1,19 @@
+Fix "gmtdigitize.c:77:2: error: unknown type name 'gid_t'"
+build failure; patch from upstream version 4.5.11
+
+https://bugs.gentoo.org/show_bug.cgi?id=543624
+
+--- a/src/misc/gmtdigitize.c
++++ b/src/misc/gmtdigitize.c
+@@ -37,6 +37,11 @@
+  *
+  */
+  
++#define _XOPEN_SOURCE
++#ifdef HAVE_UNISTD_H
++#include <unistd.h>
++#endif
++
+ #include "gmt.h"
+ 
+ #ifndef WIN32

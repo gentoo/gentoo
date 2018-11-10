@@ -1,0 +1,36 @@
+diff --git a/builder/ModuleBuilder.cs b/builder/ModuleBuilder.cs
+index 0f62e92..7edb1ab 100644
+--- a/builder/ModuleBuilder.cs
++++ b/builder/ModuleBuilder.cs
+@@ -119,7 +119,7 @@ public class ModuleBuilder
+ 		//System.Console.WriteLine("gmcs {0}", sb.ToString());
+ 		System.Console.WriteLine(">> Building module {0}...", module.Name);
+ 
+-		Process buildProcess = Process.Start("gmcs", sb.ToString());
++		Process buildProcess = Process.Start("mcs", sb.ToString());
+ 		buildProcess.WaitForExit();
+ 
+ 		if (buildProcess.ExitCode == 0) {
+@@ -137,4 +137,4 @@ public class ModuleBuilder
+ }
+ 
+ 
+-}
+\ No newline at end of file
++}
+diff --git a/configure.ac b/configure.ac
+index 415cc64..a8e527c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -24,9 +24,9 @@ if test "x$PKG_CONFIG" = "xno"; then
+ fi
+ 	
+ # C# compiler
+-AC_PATH_PROG(MCS, gmcs, no)
++AC_PATH_PROG(MCS, mcs, no)
+ 
+-CS="gmcs C#"
++CS="mcs C#"
+ if test "x$MCS" = "xno"  ; then
+ 	AC_MSG_ERROR([No $CS compiler found])
+ fi

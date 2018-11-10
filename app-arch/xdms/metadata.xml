@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		Supports decompression of files compressed using all known DMS compression modes, including old and obsolete ones, and also encrypted files, for 100% compatibility.
+		Can test DMS files integrity, view file informations and show attached Banners and FILEID.DIZ .
+		Can generate standard disk images and compressed disk images, using gzip, if you want to store your files in ADF or ADZ formats.
+		Can extract the files contained inside the DMS archives, if the compressed disk is an AmigaDOS disk, using readdisk made by Bernd Schmidt.
+		Can process multiple files in batch with a single command, and also use stdin and stdout for input and output of data.
+	</longdescription>
+</pkgmetadata>

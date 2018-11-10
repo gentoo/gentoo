@@ -1,0 +1,12 @@
+diff -aur vncsnapshot-1.2a-orig/rfb.h vncsnapshot-1.2a/rfb.h
+--- vncsnapshot-1.2a-orig/rfb.h	2002-02-09 16:00:42.000000000 -0500
++++ vncsnapshot-1.2a/rfb.h	2008-09-24 16:57:13.000000000 -0400
+@@ -34,7 +34,7 @@
+ 
+ // Define the CARD* types as used in X11/Xmd.h
+ 
+-typedef unsigned long CARD32;
++typedef unsigned int CARD32;
+ typedef unsigned short CARD16;
+ typedef short INT16;
+ typedef unsigned char  CARD8;

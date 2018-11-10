@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>shell-tools@gentoo.org</email>
+    <name>Gentoo Shell Tools Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  The GNU Talk Filters are filter programs that convert ordinary English text
+  into text that mimics a stereotyped or otherwise humorous dialect. These
+  filters have been in the public domain for many years, but now for the first
+  time they are provided as a single integrated package. The filters include
+  austro, b1ff, brooklyn, chef, cockney, drawl, dubya, fudd, funetak, jethro,
+  jive, kraut, pansy, pirate, postmodern, redneck, valspeak, and warez. Each
+  program reads from standard input and writes to standard output. The package
+  also provides the filters as a C library, so they can be easily used by other
+  programs.
+  </longdescription>
+</pkgmetadata>

@@ -1,0 +1,43 @@
+# HG changeset patch
+# User Tony Tung <tonytung@merly.org>
+# Date 1517901695 28800
+# Node ID 843f409526fbea3ffde674922b730075d5cfd4d3
+# Parent  6dc827703bfb995b89b0da5b2e9eaffe3479ea45
+compat: pass memctx to memfilectx constructor on hg 4.5+
+
+diff --git a/hggit/git_handler.py b/hggit/git_handler.py
+--- a/hggit/git_handler.py
++++ b/hggit/git_handler.py
+@@ -985,16 +985,22 @@
+                 if copied:
+                     copied_path = copied[0]
+ 
+-            try:
+-                return context.memfilectx(self.repo, f, data,
+-                                          islink='l' in e,
+-                                          isexec='x' in e,
+-                                          copied=copied_path)
+-            except TypeError:
+-                return context.memfilectx(f, data,
+-                                          islink='l' in e,
+-                                          isexec='x' in e,
+-                                          copied=copied_path)
++            # Different versions of mercurial have different parameters to
++            # memfilectx.  Try them from newest to oldest.
++            args_to_try = (
++                (self.repo, memctx, f, data),   # hg 4.5+
++                (self.repo, f, data),           # hg 3.1 - 4.5
++                (f, data),                      # hg < 3.1
++            )
++            for args in args_to_try:
++                try:
++                    return context.memfilectx(*args,
++                                              islink='l' in e,
++                                              isexec='x' in e,
++                                              copied=copied_path)
++                except TypeError as ex:
++                    last_ex = ex
++            raise last_ex
+ 
+         p1, p2 = (nullid, nullid)
+         octopus = False

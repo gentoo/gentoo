@@ -1,0 +1,15 @@
+--- a/src/screen.C
++++ b/src/screen.C
+@@ -1927,11 +1927,11 @@
+ #  endif
+     XMapWindow (dpy, parent[0]);
+ # endif
+ 
+ # if ENABLE_FRILLS
+-  if (option (Opt_urgentOnBell))
++  if (option (Opt_urgentOnBell) && !focus)
+     set_urgency (1);
+ # endif
+ 
+   if (option (Opt_visualBell))
+     {

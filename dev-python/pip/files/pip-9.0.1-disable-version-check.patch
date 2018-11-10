@@ -1,0 +1,32 @@
+From 890a1c26018752f2c57c7800968e4b8d1e0987f9 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 20 Nov 2016 19:52:40 +0100
+Subject: [PATCH] Stop checking for new versions
+
+---
+ pip/basecommand.py | 9 ---------
+ 1 file changed, 9 deletions(-)
+
+diff --git a/pip/basecommand.py b/pip/basecommand.py
+index 54c6706..3cffe86 100644
+--- a/pip/basecommand.py
++++ b/pip/basecommand.py
+@@ -241,15 +241,6 @@ class Command(object):
+             logger.critical('Exception:', exc_info=True)
+ 
+             return UNKNOWN_ERROR
+-        finally:
+-            # Check if we're using the latest version of pip available
+-            if (not options.disable_pip_version_check and not
+-                    getattr(options, "no_index", False)):
+-                with self._build_session(
+-                        options,
+-                        retries=0,
+-                        timeout=min(5, options.timeout)) as session:
+-                    pip_version_check(session)
+ 
+         return SUCCESS
+ 
+-- 
+2.10.2
+

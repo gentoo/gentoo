@@ -1,0 +1,26 @@
+Files md68_0.ps md71_0.ps have unknown copyright and license and are
+therefore not included in the "DFSG" tarball. Suppress these files
+(and the fixmacps program that references them) in Makefile.
+https://bugs.gentoo.org/show_bug.cgi?id=440938
+
+--- psutils-1.17.orig/Makefile.unix
++++ psutils/Makefile.unix
+@@ -44,15 +44,15 @@
+ BIN = psbook psselect pstops epsffit psnup \
+ 	psresize
+ SHELLSCRIPTS = getafm showchar
+-PERLSCRIPTS = fixfmps fixmacps fixpsditps fixpspps \
++PERLSCRIPTS = fixfmps fixpsditps fixpspps \
+ 	fixtpps fixwfwps fixwpps fixscribeps fixwwps \
+ 	fixdlsrps extractres includeres psmerge
+ MANPAGES = psbook.$(MANEXT) psselect.$(MANEXT) pstops.$(MANEXT) epsffit.$(MANEXT) psnup.$(MANEXT) \
+ 	psresize.$(MANEXT) psmerge.$(MANEXT) fixscribeps.$(MANEXT) getafm.$(MANEXT) \
+-	fixdlsrps.$(MANEXT) fixfmps.$(MANEXT) fixmacps.$(MANEXT) fixpsditps.$(MANEXT) \
++	fixdlsrps.$(MANEXT) fixfmps.$(MANEXT) fixpsditps.$(MANEXT) \
+ 	fixpspps.$(MANEXT) fixtpps.$(MANEXT) fixwfwps.$(MANEXT) fixwpps.$(MANEXT) \
+ 	fixwwps.$(MANEXT) extractres.$(MANEXT) includeres.$(MANEXT)
+-INCLUDES = md68_0.ps md71_0.ps
++INCLUDES =
+ 
+ all: $(BIN) $(PERLSCRIPTS) $(MANPAGES) $(SHELLSCRIPTS)
+ 

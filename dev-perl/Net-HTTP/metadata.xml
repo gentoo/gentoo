@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">Net-HTTP</remote-id>
+		<remote-id type="cpan-module">Net::HTTP</remote-id>
+		<remote-id type="cpan-module">Net::HTTP::Methods</remote-id>
+		<remote-id type="cpan-module">Net::HTTP::NB</remote-id>
+		<remote-id type="cpan-module">Net::HTTPS</remote-id>
+	</upstream>
+</pkgmetadata>

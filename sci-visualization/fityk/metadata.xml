@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Fityk is a program for nonlinear fitting of analytical functions
+  (especially peak-shaped) to data. It can also be used to display
+  data or to remove baseline from data.
+
+  It is reported to be used in crystallography, chromatography,
+  photoluminescence, infrared and Raman spectroscopy and other fields.
+  
+  Fityk knows about common peak-shaped functions (Gaussian, Lorentzian,
+  Voigt, Pearson VII, bifurcated Gaussian, EMG, Doniach-Sunjic, etc.) and
+  polynomials. It also supports user-defined functions.
+  
+  Fityk offers a graphical interface (and also command line
+  interface), various optimization methods (standard Marquardt
+  least-squares algorithm, Genetic Algorithms, Nelder-Mead simplex),
+  equality constraints, modeling error of x coordinate of points
+  (eg. zero-shift of instrument), handling series of datasets,
+  automation of common tasks with scripts, and more.
+</longdescription>
+  <use>
+    <flag name="nlopt">Enable optimization with <pkg>sci-libs/nlopt</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="github">wojdyr/fityk</remote-id>
+  </upstream>
+</pkgmetadata>

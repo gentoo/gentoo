@@ -1,0 +1,11 @@
+--- a/CMakeModules/FindLCMS2.cmake	2016-09-24 11:28:47.000000000 +0200
++++ b/CMakeModules/FindLCMS2.cmake	2017-02-11 16:15:33.492507341 +0100
+@@ -5,7 +5,7 @@
+       /usr/local/include
+       /usr/include
+   )
+-  FIND_LIBRARY(LCMS2_LIBRARIES lcms2 HINTS /usr/local/lib /usr/lib/x86_64-linux-gnu /usr/lib32)
++  FIND_LIBRARY(LCMS2_LIBRARIES lcms2 HINTS /usr/local/lib /usr/lib/x86_64-linux-gnu /usr/lib)
+ ELSE(NOT WIN32)
+     FIND_PATH(LCMS2_ROOT_DIR
+       NAMES include/lcms2.h

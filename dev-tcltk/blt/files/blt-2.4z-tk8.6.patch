@@ -1,0 +1,20 @@
+--- src/tkButton.c.orig	2013-01-04 23:24:45.000000000 -0500
++++ src/tkButton.c	2013-01-04 23:28:29.000000000 -0500
+@@ -526,8 +526,6 @@
+ static Blt_TileChangedProc TileChangedProc;
+ static Tcl_CmdProc ButtonCmd, LabelCmd, CheckbuttonCmd, RadiobuttonCmd;
+ 
+-EXTERN int TkCopyAndGlobalEval _ANSI_ARGS_((Tcl_Interp *interp, char *script));
+-
+ #if (TK_MAJOR_VERSION > 4)
+ EXTERN void TkComputeAnchor _ANSI_ARGS_((Tk_Anchor anchor, Tk_Window tkwin, 
+ 	int padX, int padY, int innerWidth, int innerHeight, int *xPtr, 
+@@ -1890,7 +1888,7 @@
+ 	}
+     }
+     if ((butPtr->type != TYPE_LABEL) && (butPtr->command != NULL)) {
+-	return TkCopyAndGlobalEval(butPtr->interp, butPtr->command);
++	return Tcl_EvalObjEx(butPtr->interp, butPtr->command, TCL_EVAL_GLOBAL);
+     }
+     return TCL_OK;
+ }

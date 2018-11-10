@@ -1,0 +1,110 @@
+diff -up ./src/dvr/dvr_rec.c.orig ./src/dvr/dvr_rec.c
+--- ./src/dvr/dvr_rec.c.orig	2017-12-18 09:57:28.000000000 +0100
++++ ./src/dvr/dvr_rec.c	2018-03-08 17:15:06.479877783 +0100
+@@ -669,7 +669,7 @@ static int
+ pvr_generate_filename(dvr_entry_t *de, const streaming_start_t *ss)
+ {
+   char filename[PATH_MAX];
+-  char path[PATH_MAX];
++  char path[PATH_MAX + 1];
+   char ptmp[PATH_MAX];
+   char number[16];
+   char tmp[MAX(PATH_MAX, 512)];
+diff -up ./src/epgdb.c.orig ./src/epgdb.c
+--- ./src/epgdb.c.orig	2017-12-18 09:57:28.000000000 +0100
++++ ./src/epgdb.c	2018-03-08 17:15:06.479877783 +0100
+@@ -470,7 +470,7 @@ static int _epg_write_sect ( sbuf_t *sb,
+ 
+ static void epg_save_tsk_callback ( void *p, int dearmed )
+ {
+-  char tmppath[PATH_MAX];
++  char tmppath[PATH_MAX + 4];
+   char path[PATH_MAX];
+   sbuf_t *sb = p;
+   size_t size = sb->sb_ptr, orig;
+diff -up ./src/epggrab/module/eit.c.orig ./src/epggrab/module/eit.c
+--- ./src/epggrab/module/eit.c.orig	2017-12-18 09:57:28.000000000 +0100
++++ ./src/epggrab/module/eit.c	2018-03-08 17:15:06.480877787 +0100
+@@ -50,8 +50,8 @@ typedef struct eit_private
+ 
+ typedef struct eit_event
+ {
+-  char              uri[257];
+-  char              suri[257];
++  char              uri[529];
++  char              suri[529];
+   
+   lang_str_t       *title;
+   lang_str_t       *summary;
+diff -up ./src/imagecache.c.orig ./src/imagecache.c
+--- ./src/imagecache.c.orig	2017-12-18 09:57:28.000000000 +0100
++++ ./src/imagecache.c	2018-03-08 17:15:06.481877791 +0100
+@@ -252,7 +252,7 @@ imagecache_image_fetch ( imagecache_imag
+ {
+   int res = 1, r;
+   url_t url;
+-  char tpath[PATH_MAX] = "", path[PATH_MAX];
++  char tpath[PATH_MAX + 4] = "", path[PATH_MAX];
+   tvhpoll_event_t ev;
+   tvhpoll_t *efd = NULL;
+   http_client_t *hc = NULL;
+diff -up ./src/input/mpegts/dvb_psi.c.orig ./src/input/mpegts/dvb_psi.c
+--- ./src/input/mpegts/dvb_psi.c.orig	2017-12-18 09:57:28.000000000 +0100
++++ ./src/input/mpegts/dvb_psi.c	2018-03-08 17:15:06.482877795 +0100
+@@ -678,7 +678,7 @@ static int
+ dvb_freesat_add_service
+   ( dvb_bat_id_t *bi, dvb_freesat_region_t *fr, mpegts_service_t *s, uint32_t lcn )
+ {
+-  char name[96], src[64];
++  char name[96], src[126];
+   if (!fr->bouquet) {
+     strcpy(name, "???");
+     if (idnode_is_instance(&bi->mm->mm_id, &dvb_mux_dvbs_class))
+diff -up ./src/input/mpegts/dvb_support.c.orig ./src/input/mpegts/dvb_support.c
+--- ./src/input/mpegts/dvb_support.c.orig	2017-12-18 09:57:28.000000000 +0100
++++ ./src/input/mpegts/dvb_support.c	2018-03-08 17:15:06.483877799 +0100
+@@ -853,7 +853,7 @@ dvb_str2val(qam);
+ 
+ const char *dvb_bw2str(int p)
+ {
+-  static char __thread buf[16];
++  static char __thread buf[17];
+   const char *res = dvb_common2str(p);
+   if (res)
+     return res;
+diff -up ./src/input/mpegts/linuxdvb/linuxdvb_satconf.c.orig ./src/input/mpegts/linuxdvb/linuxdvb_satconf.c
+--- ./src/input/mpegts/linuxdvb/linuxdvb_satconf.c.orig	2017-12-18 09:57:28.000000000 +0100
++++ ./src/input/mpegts/linuxdvb/linuxdvb_satconf.c	2018-03-08 17:15:06.484877803 +0100
+@@ -185,7 +185,7 @@ linuxdvb_satconf_class_orbitalpos_set
+   linuxdvb_satconf_t *ls = p;
+   int c = *(int*)linuxdvb_satconf_class_orbitalpos_get(p);
+   int n = *(int*)v;
+-  char buf[20];
++  char buf[22];
+ 
+   if (n == c)
+     return 0;
+diff -up ./src/input/mpegts/scanfile.c.orig ./src/input/mpegts/scanfile.c
+--- ./src/input/mpegts/scanfile.c.orig	2017-12-18 09:57:28.000000000 +0100
++++ ./src/input/mpegts/scanfile.c	2018-03-08 17:23:20.200963915 +0100
+@@ -331,7 +331,7 @@ scanfile_create_network
+ {
+   scanfile_region_t *reg = NULL;
+   scanfile_network_t *net;
+-  char buf[256], buf2[256], buf3[256], *str;
++  char buf[256], buf2[263], buf3[270], *str;
+   int opos;
+ 
+   /* Region */
+diff -up ./src/settings.c.orig ./src/settings.c
+--- ./src/settings.c.orig	2017-12-18 09:57:28.000000000 +0100
++++ ./src/settings.c	2018-03-08 17:15:06.484877803 +0100
+@@ -129,7 +129,7 @@ void
+ hts_settings_save(htsmsg_t *record, const char *pathfmt, ...)
+ {
+   char path[PATH_MAX];
+-  char tmppath[PATH_MAX];
++  char tmppath[PATH_MAX + 4];
+   int fd;
+   va_list ap;
+   htsbuf_queue_t hq;

@@ -1,0 +1,50 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
+
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+
+inherit distutils-r1
+
+DESCRIPTION="Python library for distributed computation"
+HOMEPAGE="http://distributed.readthedocs.io/"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+IUSE="test"
+
+RDEPEND="
+	dev-python/click[${PYTHON_USEDEP}]
+	>=dev-python/cloudpickle-0.2.2[${PYTHON_USEDEP}]
+	>=dev-python/dask-0.14.1[${PYTHON_USEDEP}]
+	>=dev-python/joblib-0.10.2[${PYTHON_USEDEP}]
+	dev-python/msgpack[${PYTHON_USEDEP}]
+	>=dev-python/partd-0.3.7[${PYTHON_USEDEP}]
+	dev-python/psutil[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/sortedcollections[${PYTHON_USEDEP}]
+	dev-python/tblib[${PYTHON_USEDEP}]
+	>=dev-python/toolz-0.7.4[${PYTHON_USEDEP}]
+	dev-python/zict[${PYTHON_USEDEP}]
+	www-servers/tornado[${PYTHON_USEDEP}]
+	virtual/python-futures[${PYTHON_USEDEP}]
+"
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (
+	   ${RDEPEND}
+	   dev-python/pytest[${PYTHON_USEDEP}]
+	)
+"
+
+python_test() {
+	cd "${BUILD_DIR}"/lib || die
+	py.test  -m "not avoid_travis" distributed \
+			 --verbose -r s \
+			 --timeout-method=thread \
+			 --timeout=300 \
+			 --durations=20 || die
+}

@@ -1,0 +1,28 @@
+Use CFLAGS when linking.  Some flags can add functionality to generated
+code that requires extra libs to be linked in (eg. libgomp when using
+autoparallelization).  Other flags are required when building and linking
+(eg. -flto).
+
+https://bugs.gentoo.org/365975
+
+--- a/config/autoconf.mk.in
++++ b/config/autoconf.mk.in
+@@ -81,6 +81,7 @@ OS_DLLFLAGS	= @OS_DLLFLAGS@
+ DLLFLAGS	= @DLLFLAGS@
+ EXEFLAGS  = @EXEFLAGS@
+ OPTIMIZER	= @OPTIMIZER@
++LD_CFLAGS   = @CFLAGS@
+ 
+ PROFILE_GEN_CFLAGS  = @PROFILE_GEN_CFLAGS@
+ PROFILE_GEN_LDFLAGS = @PROFILE_GEN_LDFLAGS@
+--- a/config/config.mk
++++ b/config/config.mk
+@@ -72,7 +72,7 @@ NOMD_CFLAGS	= $(CC_ONLY_FLAGS) $(OPTIMIZER) $(NOMD_OS_CFLAGS)\
+ NOMD_CCFLAGS	= $(CCC_ONLY_FLAGS) $(OPTIMIZER) $(NOMD_OS_CFLAGS)\
+ 		  $(XP_DEFINE) $(DEFINES) $(INCLUDES) $(XCFLAGS)
+ 
+-LDFLAGS		= $(OS_LDFLAGS)
++LDFLAGS		= $(LD_CFLAGS) $(OS_LDFLAGS)
+ 
+ # Enable profile-guided optimization
+ ifdef MOZ_PROFILE_GENERATE

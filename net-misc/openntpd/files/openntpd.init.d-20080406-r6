@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+name="OpenNTPD"
+command="/usr/sbin/ntpd"
+pidfile="/run/ntpd.pid"
+command_args="-p ${pidfile} ${NTPD_OPTS}"
+
+depend() {
+	need net
+	after ntp-client
+	use dns logger
+}

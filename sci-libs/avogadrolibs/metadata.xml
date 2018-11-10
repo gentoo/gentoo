@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<use>
+		<flag name="archive">Enable archive support using <pkg>app-arch/libarchive</pkg></flag>
+		<flag name="static-plugins">Build all plugins statically into main plugin modules</flag>
+		<flag name="vtk">Enable <pkg>sci-libs/vtk</pkg> support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">OpenChemistry/avogadrolibs</remote-id>
+		<remote-id type="sourceforge">avogadro</remote-id>
+	</upstream>
+</pkgmetadata>

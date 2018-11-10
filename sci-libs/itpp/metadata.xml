@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  IT++ is a C++ library of mathematical, signal processing and
+  communication classes and functions. Its main use is in simulation
+  of communication systems and for performing research in the area of
+  communications. The kernel of the library consists of generic vector
+  and matrix classes, and a set of accompanying routines. Such a
+  kernel makes IT++ similar to MATLAB or GNU Octave .
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">itpp</remote-id>
+  </upstream>
+</pkgmetadata>

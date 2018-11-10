@@ -1,0 +1,98 @@
+diff -urN hylafax-5.5.4/hfaxd/Login.c++ hylafax-5.5.4-libc217/hfaxd/Login.c++
+--- hylafax-5.5.4/hfaxd/Login.c++	2013-08-07 01:23:35.000000000 +0200
++++ hylafax-5.5.4-libc217/hfaxd/Login.c++	2013-11-13 12:56:02.000000000 +0100
+@@ -30,9 +30,6 @@
+ #include <ctype.h>
+ #include <fcntl.h>
+ #include <pwd.h>
+-#if HAS_CRYPT_H
+-#include <crypt.h>
+-#endif
+ 
+ void
+ HylaFAXServer::loginRefused(const char* why)
+@@ -434,7 +431,7 @@
+     /*
+      * Check hosts.hfaxd first, then PAM, and last, LDAP
+      */
+-    if (pass[0] == '\0' || !(strcmp(crypt(pass, passWd), passWd) == 0 || 
++    if (pass[0] == '\0' || !(strcmp(Sys::crypt(pass, passWd), passWd) == 0 || 
+ 			     pamCheck(the_user, pass) || 
+ 			     ldapCheck(the_user,pass)))
+     {
+@@ -513,7 +510,7 @@
+ {
+     fxAssert(IS(LOGGEDIN), "ADMIN command permitted when not logged in");
+     // NB: null adminWd is permitted
+-    if ((strcmp(crypt(pass, adminWd), adminWd) != 0) && !pamIsAdmin()) {
++    if ((strcmp(Sys::crypt(pass, adminWd), adminWd) != 0) && !pamIsAdmin()) {
+ 	if (++adminAttempts >= maxAdminAttempts) {
+ 	    reply(530, "Password incorrect (closing connection).");
+ 	    logNotice("Repeated admin failures from %s [%s]"
+diff -urN hylafax-5.5.4/hfaxd/SNPPServer.c++ hylafax-5.5.4-libc217/hfaxd/SNPPServer.c++
+--- hylafax-5.5.4/hfaxd/SNPPServer.c++	2013-08-07 01:23:35.000000000 +0200
++++ hylafax-5.5.4-libc217/hfaxd/SNPPServer.c++	2013-11-13 12:55:42.000000000 +0100
+@@ -36,9 +36,6 @@
+ #include "RE.h"
+ 
+ #include <ctype.h>
+-#if HAS_CRYPT_H
+-#include <crypt.h>
+-#endif
+ 
+ extern "C" {
+ #include <netdb.h>
+@@ -1003,7 +1000,7 @@
+ 
+     if (checkUser(loginID)) {
+ 	if (passWd != "") {
+-	    if (pass[0] == '\0' || !(streq(crypt(pass, passWd), passWd) || pamCheck(the_user, pass))) {
++	    if (pass[0] == '\0' || !(streq(Sys::crypt(pass, passWd), passWd) || pamCheck(the_user, pass))) {
+ 		if (++loginAttempts >= maxLoginAttempts) {
+ 		    reply(421, "Login incorrect (closing connection).");
+ 		    logNotice("Repeated SNPP login failures for user %s from %s [%s]"
+diff -urN hylafax-5.5.4/hfaxd/User.c++ hylafax-5.5.4-libc217/hfaxd/User.c++
+--- hylafax-5.5.4/hfaxd/User.c++	2013-08-07 01:23:35.000000000 +0200
++++ hylafax-5.5.4-libc217/hfaxd/User.c++	2013-11-13 12:55:19.000000000 +0100
+@@ -30,9 +30,6 @@
+ 
+ #include <ctype.h>
+ #include <pwd.h>
+-#if HAS_CRYPT_H
+-#include <crypt.h>
+-#endif
+ #include <math.h>
+ 
+ #ifndef CHAR_BIT
+@@ -374,7 +371,7 @@
+ #else
+     to64(&salt[0], random(), 2);
+ #endif
+-    result = crypt(pass, salt);
++    result = Sys::crypt(pass, salt);
+     return (true);
+ }
+ 
+diff -urN hylafax-5.5.4/util/Sys.h hylafax-5.5.4-libc217/util/Sys.h
+--- hylafax-5.5.4/util/Sys.h	2013-08-07 01:23:35.000000000 +0200
++++ hylafax-5.5.4-libc217/util/Sys.h	2013-11-13 12:56:26.000000000 +0100
+@@ -44,6 +44,10 @@
+ #include <osfcn.h>
+ #endif
+ 
++#if HAS_CRYPT_H
++#include <crypt.h>
++#endif
++
+ /*
+  * Wrapper functions for C library calls.
+  *
+@@ -140,5 +144,8 @@
+ 	{ return ::fopen(filename, mode); }
+ 
+     static int getOpenMax();
++
++    static const char* crypt(const char* key, const char* salt)
++	{ const char* enc = ::crypt(key, salt); return enc ? enc : ""; }
+ };
+ #endif /* _Sys_ */

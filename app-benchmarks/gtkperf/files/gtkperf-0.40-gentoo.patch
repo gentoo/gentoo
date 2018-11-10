@@ -1,0 +1,47 @@
+--- gtkperf-0.40/work/gtkperf/configure.in
++++ gtkperf-0.40/work/gtkperf/configure.in
+@@ -8,7 +8,6 @@
+ AM_CONFIG_HEADER(config.h)
+ 
+ AC_ISC_POSIX
+-CFLAGS=""
+ AC_SUBST(CFLAGS)
+ AC_PROG_CC
+ AM_PROG_CC_STDC
+--- gtkperf-0.40/work/gtkperf/src/timing.c
++++ gtkperf-0.40/work/gtkperf/src/timing.c
+@@ -97,7 +97,7 @@
+ 	gtk_text_buffer_insert (appdata->textview_info_buffer, &iter,
+ 				timestring, -1);
+ 
+-	g_printf (timestring);
++	g_printf ("%s", timestring);
+ 
+ }
+ 
+@@ -129,7 +129,7 @@
+ 	gtk_statusbar_push (GTK_STATUSBAR (appdata->statusbar_main), 0,
+ 			    " Test Finished");
+ 
+-	g_printf (timestring);
++	g_printf ("%s", timestring);
+ 
+ }
+ 
+@@ -154,5 +154,5 @@
+ 	gtk_statusbar_push (GTK_STATUSBAR (appdata->statusbar_main), 0,
+ 			    " Running tests...");
+ 
+-	g_printf (timestring);
++	g_printf ("%s", timestring);
+ }
+--- gtkperf-0.40/work/gtkperf/src/main.c
++++ gtkperf-0.40/work/gtkperf/src/main.c
+@@ -5,6 +5,7 @@
+ #endif
+ 
+ #include <gtk/gtk.h>
++#include <stdlib.h>
+ 
+ #ifdef HILDONIZED
+ #include <libosso.h>

@@ -1,0 +1,21 @@
+--- setup.py
++++ setup.py
+@@ -1,9 +1,9 @@
+ #!/usr/bin/env python
+ 
+ try:
+-    from distutils.core import setup
+-except ImportError, excp:
+     from setuptools import setup
++except ImportError, excp:
++    from distutils.core import setup
+     
+ import pydot
+ import os
+@@ -31,5 +31,4 @@
+         'Topic :: Software Development :: Libraries :: Python Modules'],
+     long_description = "\n".join(pydot.__doc__.split('\n')),
+     py_modules = ['pydot', 'dot_parser'],
+-    install_requires = ['pyparsing', 'setuptools'],
+-    data_files = [('.', ['LICENSE', 'README'])] )
++    install_requires = ['pyparsing', 'setuptools'] )

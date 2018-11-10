@@ -1,0 +1,24 @@
+diff -urN ogdi-3.2.0.beta2.old/makefile ogdi-3.2.0.beta2/makefile
+--- ogdi-3.2.0.beta2.old/makefile	2011-06-17 12:45:53.171219473 +0200
++++ ogdi-3.2.0.beta2/makefile	2011-06-17 12:46:34.013708870 +0200
+@@ -17,7 +17,7 @@
+ #
+ # Sub-directories that need to be built
+ #
+-subdirs	= external vpflib ogdi contrib
++subdirs	= vpflib ogdi contrib
+ 
+ ifneq ($(PROJ_SETTING),external)
+ subdirs := proj $(subdirs) 
+diff -urN ogdi-3.2.0.beta2.old/ogdi/makefile ogdi-3.2.0.beta2/ogdi/makefile
+--- ogdi-3.2.0.beta2.old/ogdi/makefile	2011-06-17 12:45:53.174219434 +0200
++++ ogdi-3.2.0.beta2/ogdi/makefile	2011-06-17 12:47:38.814898744 +0200
+@@ -15,7 +15,7 @@
+ #
+ # Sub-directories that need to be built
+ #
+-subdirs	= include c-api glutil attr_driver datum_driver driver gltpd examples
++subdirs	= include c-api glutil attr_driver datum_driver driver gltpd
+ 
+ #
+ # Default target to build everything in all sub-directories

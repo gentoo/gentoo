@@ -1,0 +1,44 @@
+From 40750fc87b7a1cad60d0e605732b9df50dd16c11 Mon Sep 17 00:00:00 2001
+From: root <admin@catmur.co.uk>
+Date: Sun, 8 Jan 2012 13:55:05 +0000
+Subject: [PATCH] Fix automagic gnome-bluetooth dependency
+
+https://bugs.gentoo.org/show_bug.cgi?id=398145
+
+Ed Catmur 2012-01-08 13:46:22 UTC
+libgnome-bluetooth-applet is a private library so they shouldn't be linking
+against it anyway.  I tried to work out how to tell libtool to add it to rpath
+but got totally lost.
+
+I'll see if I can work out how to fix the automagic gnome-bluetooth dependency
+so I can at least merge USE=-bluetooth.
+---
+ configure.ac | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index c0e43e1..bc764e1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -111,6 +111,8 @@ PKG_CHECK_MODULES(GVC, libpulse libpulse-mainloop-glib gobject-2.0)
+ PKG_CHECK_MODULES(DESKTOP_SCHEMAS, cinnamon-desktop >= 1.0.0)
+ 
+ AC_MSG_CHECKING([for bluetooth support])
++AC_ARG_WITH([bluetooth], AS_HELP_STRING([--without-bluetooth], [Build without gnome-bluetooth library (default: auto)]))
++AS_IF([test "x$with_bluetooth" != "xno"], [
+ PKG_CHECK_EXISTS([gnome-bluetooth-1.0 >= 3.1.0],
+         [BLUETOOTH_DIR=`$PKG_CONFIG --variable=applet_libdir gnome-bluetooth-1.0`
+ 	 BLUETOOTH_LIBS=`$PKG_CONFIG --variable=applet_libs gnome-bluetooth-1.0`
+@@ -123,6 +125,9 @@ PKG_CHECK_EXISTS([gnome-bluetooth-1.0 >= 3.1.0],
+ 	[AC_DEFINE([HAVE_BLUETOOTH],[0])
+ 	 AC_SUBST([HAVE_BLUETOOTH],[0])
+ 	 AC_MSG_RESULT([no])])
++], [AC_DEFINE([HAVE_BLUETOOTH],[0])
++	 AC_SUBST([HAVE_BLUETOOTH],[0])
++	 AC_MSG_RESULT([no])])
+ 
+ MUFFIN_GIR_DIR=`$PKG_CONFIG --variable=girdir libmuffin`
+ MUFFIN_TYPELIB_DIR=`$PKG_CONFIG --variable=typelibdir libmuffin`
+-- 
+1.9.2
+

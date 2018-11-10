@@ -1,0 +1,11 @@
+--- vorbis-tools-1.4.0.orig/ogg123/status.c
++++ vorbis-tools-1.4.0/ogg123/status.c
+@@ -148,7 +148,7 @@
+ 
+     switch (stats->type) {
+     case stat_noarg:
+-      len += sprintf(str+len, stats->formatstr);
++      len += sprintf(str+len, "%s", stats->formatstr);
+       break;
+     case stat_intarg:
+       len += sprintf(str+len, stats->formatstr, stats->arg.intarg);

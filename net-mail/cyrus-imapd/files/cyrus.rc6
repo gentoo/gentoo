@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use net
+	use dns logger
+	after drac saslauthd
+}
+
+start() {
+	ebegin "Starting cyrus imapd"
+	start-stop-daemon --start --quiet --background \
+		--exec /usr/lib/cyrus/master -- ${CYRUS_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping cyrus imapd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/cyrus-master.pid
+	eend $?
+}

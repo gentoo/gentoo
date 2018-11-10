@@ -1,0 +1,20 @@
+diff --git a/Makefile b/Makefile
+index 2a150cf..3f9b883 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,12 +1,12 @@
+ 
+ #   Unix make file for random test program
+ 
+-CC = gcc
+-CFLAGS = -g -Wall
++CC ?= gcc
++CFLAGS ?= -g -Wall
+ #CFLAGS = -O
+ 
+ ent:	ent.o iso8859.o randtest.o chisq.o
+-	$(CC) $(CFLAGS) ent.o iso8859.o randtest.o chisq.o -o ent -lm
++	$(CC) $(LDFLAGS) $(CFLAGS) ent.o iso8859.o randtest.o chisq.o -o ent -lm
+ 
+ ent.c:	iso8859.h randtest.h
+ 

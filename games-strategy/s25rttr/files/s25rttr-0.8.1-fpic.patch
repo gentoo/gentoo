@@ -1,0 +1,38 @@
+From 2b4f956263864cebb1b9c5ce120c7cd30f512bdb Mon Sep 17 00:00:00 2001
+From: nE0sIghT <ykonotopov@gmail.com>
+Date: Sat, 18 Jul 2015 19:03:05 +0300
+Subject: [PATCH] Fixed build of sdl drivers
+
+---
+ driver/audio/SDL/src/CMakeLists.txt | 1 +
+ driver/video/SDL/src/CMakeLists.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/driver/audio/SDL/src/CMakeLists.txt b/driver/audio/SDL/src/CMakeLists.txt
+index 5ad3f02..5a91cd5 100644
+--- a/driver/audio/SDL/src/CMakeLists.txt
++++ b/driver/audio/SDL/src/CMakeLists.txt
+@@ -20,6 +20,7 @@ IF (SDL_FOUND)
+         
+         ADD_LIBRARY(audioSDL SHARED SDL.cpp SDL.h main.h SoundSDL_Music.cpp SoundSDL_Music.h SoundSDL_Effect.cpp SoundSDL_Effect.h ${PROJECT_SOURCE_DIR}/build_version.cpp ../../../src/DriverInterface.cpp ../../../src/tempname.cpp ../../../src/tempname.h)
+     
++    	ADD_DEFINITIONS(-fPIC)
+         ADD_FLAGS(CMAKE_C_FLAGS -I${SDL_INCLUDE_DIR} -I${SDLMIXER_INCLUDE_DIR})
+         ADD_FLAGS(CMAKE_CXX_FLAGS -I${SDL_INCLUDE_DIR} -I${SDLMIXER_INCLUDE_DIR})
+ 
+diff --git a/driver/video/SDL/src/CMakeLists.txt b/driver/video/SDL/src/CMakeLists.txt
+index 83d10cf..ca67573 100644
+--- a/driver/video/SDL/src/CMakeLists.txt
++++ b/driver/video/SDL/src/CMakeLists.txt
+@@ -16,6 +16,7 @@ IF (SDL_FOUND)
+ 
+ 	ADD_LIBRARY(videoSDL SHARED SDL.cpp SDL.h main.h ../../../../build_version.cpp ../../../src/DriverInterface.cpp)
+ 
++	ADD_DEFINITIONS(-fPIC)
+ 	ADD_FLAGS(CMAKE_C_FLAGS -I${SDL_INCLUDE_DIR})
+ 	ADD_FLAGS(CMAKE_CXX_FLAGS -I${SDL_INCLUDE_DIR})
+ 
+-- 
+2.3.6
+
+

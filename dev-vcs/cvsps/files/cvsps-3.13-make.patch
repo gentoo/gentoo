@@ -1,0 +1,52 @@
+diff --git a/Makefile b/Makefile
+index 6266c9d..4f60d2f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -8,6 +8,9 @@ INSTALL = install
+ prefix?=/usr/local
+ target=$(DESTDIR)$(prefix)
+ 
++PROG         = cvsps
++MANPAGE      = $(PROG).1
++
+ OBJS= debug.o \
+ 	hash.o \
+ 	sio.o \
+@@ -19,12 +22,12 @@ OBJS= debug.o \
+ 	cvsclient.o \
+ 	list_sort.o
+ 
+-all: cvsps 
++all: $(PROG) $(MANPAGE)
+ 
+ deps:
+ 	makedepend -Y -I. *.c
+ 
+-cvsps: $(OBJS)
+-	$(CC) -o cvsps $(OBJS) $(LDFLAGS) $(LDLIBS)
++$(PROG): $(OBJS)
++	$(CC) -o $(PROG) $(OBJS) $(LDFLAGS) $(LDLIBS)
+ 
+ check:
+@@ -50,17 +53,17 @@ pylint:
+ .txt.html:
+ 	a2x --doctype manpage --format xhtml $*.txt
+ 
+-install: cvsps.1 all
++install: all
+ 	$(INSTALL) -d "$(target)/bin"
+ 	$(INSTALL) -d "$(target)/share/man/man1"
+-	$(INSTALL) cvsps "$(target)/bin"
+-	$(INSTALL) -m 644 cvsps.1 "$(target)/share/man/man1"
++	$(INSTALL) $(PROG) "$(target)/bin"
++	$(INSTALL) -m 644 $(MANPAGE) "$(target)/share/man/man1"
+ 
+ tags: *.c *.h
+ 	ctags *.c *.h
+ 
+ clean:
+-	rm -f cvsps *.o core tags cvsps.1 cvsps.html docbook-xsl.css
++	rm -f $(PROG) *.o core tags $(MANPAGE) cvsps.html docbook-xsl.css
+ 
+ SOURCES = Makefile *.[ch] merge_utils.sh
+ DOCS = README COPYING NEWS cvsps.asc TODO

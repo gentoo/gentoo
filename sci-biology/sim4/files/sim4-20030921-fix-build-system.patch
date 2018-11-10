@@ -1,0 +1,21 @@
+Fix build system to honour user flags.
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,13 +1,11 @@
+-
+ # For better performance, replace ``-O'' with whatever
+ # the best optimization flag is for your computer.
+ # For Sun's compilers under Solaris, ``-fast'' works well.
+ # For gcc, ``-O2'' works well.
+-CC=cc
+-CFLAGS=-O
+-LDLIBS=-lm
++CC ?= gcc
++LDLIBS = -lm
+  
+ sim4:
+-	$(CC) -o sim4 -I. $(CFLAGS) *.c $(LDLIBS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o sim4 -I. *.c $(LDLIBS)
+ clean:
+ 	rm -f sim4 *.o

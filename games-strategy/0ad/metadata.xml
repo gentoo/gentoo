@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="editor">Include Atlas scenario editor projects</flag>
+		<flag name="lobby">Enable the use of <pkg>net-libs/gloox</pkg>
+			and the multiplayer lobby</flag>
+		<flag name="nvtt">Support for some uncompressed data formats
+			via <pkg>media-gfx/nvidia-texture-tools</pkg>
+			(might be needed for some mods)</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">zero-ad</remote-id>
+	</upstream>
+</pkgmetadata>

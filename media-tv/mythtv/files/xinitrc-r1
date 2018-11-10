@@ -1,0 +1,8 @@
+# .xinitrc
+[ -x /usr/bin/nvidia-settings ] && /usr/bin/nvidia-settings -l
+/usr/bin/xset s noblank
+/usr/bin/xset s off
+/usr/bin/xset -dpms
+/usr/bin/evilwm &
+# Configure arguments via /etc/conf.d/mythfrontend
+exec /usr/bin/mythfrontend

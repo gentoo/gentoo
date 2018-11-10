@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">RPC-XML</remote-id>
+    <remote-id type="cpan-module">Apache::RPC::Server</remote-id>
+    <remote-id type="cpan-module">Apache::RPC::Status</remote-id>
+    <remote-id type="cpan-module">RPC::XML</remote-id>
+    <remote-id type="cpan-module">RPC::XML::Client</remote-id>
+    <remote-id type="cpan-module">RPC::XML::Function</remote-id>
+    <remote-id type="cpan-module">RPC::XML::Method</remote-id>
+    <remote-id type="cpan-module">RPC::XML::Parser</remote-id>
+    <remote-id type="cpan-module">RPC::XML::Parser::XMLLibXML</remote-id>
+    <remote-id type="cpan-module">RPC::XML::Parser::XMLParser</remote-id>
+    <remote-id type="cpan-module">RPC::XML::ParserFactory</remote-id>
+    <remote-id type="cpan-module">RPC::XML::Procedure</remote-id>
+    <remote-id type="cpan-module">RPC::XML::Server</remote-id>
+    <remote-id type="cpan-module">RPC::XML::array</remote-id>
+    <remote-id type="cpan-module">RPC::XML::base64</remote-id>
+    <remote-id type="cpan-module">RPC::XML::boolean</remote-id>
+    <remote-id type="cpan-module">RPC::XML::datatype</remote-id>
+    <remote-id type="cpan-module">RPC::XML::datetime_iso8601</remote-id>
+    <remote-id type="cpan-module">RPC::XML::double</remote-id>
+    <remote-id type="cpan-module">RPC::XML::fault</remote-id>
+    <remote-id type="cpan-module">RPC::XML::i4</remote-id>
+    <remote-id type="cpan-module">RPC::XML::i8</remote-id>
+    <remote-id type="cpan-module">RPC::XML::int</remote-id>
+    <remote-id type="cpan-module">RPC::XML::nil</remote-id>
+    <remote-id type="cpan-module">RPC::XML::request</remote-id>
+    <remote-id type="cpan-module">RPC::XML::response</remote-id>
+    <remote-id type="cpan-module">RPC::XML::simple_type</remote-id>
+    <remote-id type="cpan-module">RPC::XML::string</remote-id>
+    <remote-id type="cpan-module">RPC::XML::struct</remote-id>
+  </upstream>
+</pkgmetadata>

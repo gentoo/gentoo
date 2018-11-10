@@ -1,0 +1,65 @@
+http://bugs.gentoo.org/231775
+http://lists.gnu.org/archive/html/bug-bash/2008-07/msg00010.html
+
+A parent bash shell sometimes will set the session leader tty (using tcsetpgrp)
+back to itself, taking control away from a child bash shell, due to a race
+condition.  A result is that the child can then not then execute some commands
+(like stty) from its init script (e.g. .bashrc).  The result I (and others)
+have seen is that the bash shell will hang while reading the init script.
+
+*** jobs.c.20080704	2008-07-10 15:14:13.000000000 -0400
+--- jobs.c	2008-07-10 15:17:59.000000000 -0400
+***************
+*** 266,269 ****
+--- 266,270 ----
+  static void set_job_running __P((int));
+  static void setjstatus __P((int));
++ static int maybe_give_terminal_to __P((pid_t, pid_t, int));
+  static void mark_all_jobs_as_dead __P((void));
+  static void mark_dead_jobs_as_notified __P((int));
+***************
+*** 637,641 ****
+  	   */
+  	  if (job_control && newjob->pgrp && (subshell_environment&SUBSHELL_ASYNC) == 0)
+! 	    give_terminal_to (newjob->pgrp, 0);
+  	}
+      }
+--- 638,642 ----
+  	   */
+  	  if (job_control && newjob->pgrp && (subshell_environment&SUBSHELL_ASYNC) == 0)
+! 	    maybe_give_terminal_to (shell_pgrp, newjob->pgrp, 0);
+  	}
+      }
+***************
+*** 3833,3836 ****
+--- 3834,3863 ----
+  }
+  
++ /* Give terminal to NPGRP iff it's currently owned by OPGRP.  FLAGS are the
++    flags to pass to give_terminal_to(). */
++ static int
++ maybe_give_terminal_to (opgrp, npgrp, flags)
++      pid_t opgrp, npgrp;
++      int flags;
++ {
++   int tpgrp;
++ 
++   tpgrp = tcgetpgrp (shell_tty);
++   if (tpgrp == npgrp)
++     {
++       terminal_pgrp = npgrp;
++       return 0;
++     }
++   else if (tpgrp != opgrp)
++     {
++ #if defined (DEBUG)
++       internal_warning ("maybe_give_terminal_to: terminal pgrp == %d shell pgrp = %d", tpgrp, opgrp);
++ #endif
++       return -1;
++     }
++   else
++     return (give_terminal_to (npgrp, flags));     
++ }
++ 
+  /* Clear out any jobs in the job array.  This is intended to be used by
+     children of the shell, who should not have any job structures as baggage

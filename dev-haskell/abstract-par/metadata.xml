@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		The 'Par' monad(s) offer an alternative
+		parallel programming API to that provided by the
+		@parallel@ package.
+		A 'Par' monad allows the simple description of
+		parallel computations, and can be used to add
+		parallelism to pure Haskell code.  The basic API
+		is straightforward: a @Par@ monad supports forking
+		and simple communication in terms of 'IVar's.
+		This module is an interface module only. It
+		provides a number of type clasess, but not an
+		implementation.  The type classes separate different
+		levels of @Par@ functionality.  See the
+		"Control.Monad.Par.Class" module for more details.
+		The 'monad-par' library is one example of a
+		concrete library providing this interface.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">simonmar/monad-par</remote-id>
+	</upstream>
+</pkgmetadata>

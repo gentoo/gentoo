@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-electronics@gentoo.org</email>
+		<name>Gentoo Electronics Project</name>
+	</maintainer>
+	<longdescription>
+		Create a dedicated "Electronics" entry in the top-menu of your XDG-compliant
+		Desktop Environment (Gnome, KDE, etc...), so that you electronics
+		applications don't get stuck in "Education" anymore.
+	</longdescription>
+</pkgmetadata>

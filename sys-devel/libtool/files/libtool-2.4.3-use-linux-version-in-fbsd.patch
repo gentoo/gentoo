@@ -1,0 +1,38 @@
+Force linux-style versioning when generating shared libraries on
+Gentoo/FreeBSD hosts only.
+
+Patch by Diego Elio Pettenò
+
+http://bugs.gentoo.org/109105
+
+--- a/m4/libtool.m4
++++ b/m4/libtool.m4
+@@ -1375,7 +1375,14 @@
+     *) objformat=elf ;;
+     esac
+   fi
+-  version_type=freebsd-$objformat
++  # Handle Gentoo/FreeBSD as it was Linux
++  case $host_vendor in
++    gentoo)
++      version_type=linux ;;
++    *)
++      version_type=freebsd-$objformat ;;
++  esac
++
+   case $version_type in
+     freebsd-elf*)
+       library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext} $libname${shared_ext}'
+@@ -1386,6 +1392,12 @@
+       library_names_spec='${libname}${release}${shared_ext}$versuffix $libname${shared_ext}$versuffix'
+       need_version=yes
+       ;;
++    linux)
++      library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major ${libname}${shared_ext}'
++      soname_spec='${libname}${release}${shared_ext}$major'
++      need_lib_prefix=no
++      need_version=no
++      ;;
+   esac
+   shlibpath_var=LD_LIBRARY_PATH
+   case $host_os in

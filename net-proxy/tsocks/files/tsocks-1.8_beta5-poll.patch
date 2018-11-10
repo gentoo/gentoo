@@ -1,0 +1,16 @@
+--- a/tsocks.c
++++ b/tsocks.c
+@@ -659,10 +659,11 @@
+              * be ready for writing), otherwise we'll just let the select loop
+              * come around again (since we can't flag it for read, we don't know
+              * if there is any data to be read and can't be bothered checking) */
+-            if (conn->selectevents & WRITE) {
+-               setevents |= POLLOUT; 
++            if (conn->selectevents & POLLOUT) {
++               ufds[i].revents |= POLLOUT;
+                nevents++;
+             }
++            ufds[i].events = conn->selectevents;
+          }
+       }
+    } while (nevents == 0);

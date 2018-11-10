@@ -1,0 +1,20 @@
+Index: pcsc-lite-1.8.11/doc/org.debian.pcsc-lite.policy
+===================================================================
+--- pcsc-lite-1.8.11.orig/doc/org.debian.pcsc-lite.policy
++++ pcsc-lite-1.8.11/doc/org.debian.pcsc-lite.policy
+@@ -15,6 +15,7 @@
+       <allow_inactive>auth_admin</allow_inactive>
+       <allow_active>yes</allow_active>
+     </defaults>
++    <annotate key="org.freedesktop.policykit.owner">unix-user:pcscd</annotate>
+   </action>
+ 
+   <action id="org.debian.pcsc-lite.access_card">
+@@ -25,6 +26,7 @@
+       <allow_inactive>auth_admin</allow_inactive>
+       <allow_active>yes</allow_active>
+     </defaults>
++    <annotate key="org.freedesktop.policykit.owner">unix-user:pcscd</annotate>
+   </action>
+ 
+ </policyconfig>

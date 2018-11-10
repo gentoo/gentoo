@@ -1,0 +1,22 @@
+--- a/echoping.c
++++ b/echoping.c
+@@ -134,7 +134,7 @@
+     SSL            *sslh = NULL;
+ #endif
+ #ifdef GNUTLS
+-    gnutls_session  session;
++    gnutls_session_t  session;
+     gnutls_certificate_credentials xcred;
+     int             tls_result;
+     const int       cert_type_priority[3] = { GNUTLS_CRT_X509,
+--- a/echoping.h
++++ b/echoping.h
+@@ -103,7 +103,7 @@
+     SSL            *ssl;
+ #endif
+ #ifdef GNUTLS
+-    gnutls_session  tls;
++    gnutls_session_t  tls;
+ #endif
+ } CHANNEL;
+ 

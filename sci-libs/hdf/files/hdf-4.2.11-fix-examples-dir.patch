@@ -1,0 +1,120 @@
+diff -Nur hdf-4.2.11.orig/hdf/examples/Makefile.am hdf-4.2.11/hdf/examples/Makefile.am
+--- hdf-4.2.11.orig/hdf/examples/Makefile.am	2016-03-16 20:07:45.103492925 +0000
++++ hdf-4.2.11/hdf/examples/Makefile.am	2016-03-16 22:16:35.836304451 +0000
+@@ -46,8 +46,8 @@
+ INSTALL_TOP_FILES = README
+ 
+ # Where to install example files
+-EXAMPLEDIR=$(prefix)/examples/c
+-EXAMPLETOPDIR=$(prefix)/examples
++EXAMPLEDIR=$(docdir)/examples/c
++EXAMPLETOPDIR=$(docdir)/examples
+ 
+ # How to build C programs using h4cc
+ $(EXTRA_PROG): $(H4CC)
+diff -Nur hdf-4.2.11.orig/hdf/fortran/examples/Makefile.am hdf-4.2.11/hdf/fortran/examples/Makefile.am
+--- hdf-4.2.11.orig/hdf/fortran/examples/Makefile.am	2016-03-16 20:07:45.103492925 +0000
++++ hdf-4.2.11/hdf/fortran/examples/Makefile.am	2016-03-16 22:17:58.775261767 +0000
+@@ -41,7 +41,7 @@
+ INSTALL_SCRIPT_FILES = run-fortran-ex.sh
+ 
+ # Where to install Fortran example files
+-EXAMPLEDIR=$(prefix)/examples/fortran
++EXAMPLEDIR=$(docdir)/examples/fortran
+ 
+ # How to build Fortran programs using h4fc
+ $(EXTRA_PROG): $(H4FC)
+diff -Nur hdf-4.2.11.orig/mfhdf/examples/Makefile.am hdf-4.2.11/mfhdf/examples/Makefile.am
+--- hdf-4.2.11.orig/mfhdf/examples/Makefile.am	2016-03-16 20:07:45.183491919 +0000
++++ hdf-4.2.11/mfhdf/examples/Makefile.am	2016-03-16 22:18:38.304764814 +0000
+@@ -23,7 +23,7 @@
+ 	SD_get_info.c SD_find_sds_by_name.c SD_set_get_dim_info.c        \
+ 	SD_dimscale_vs_sds.c SD_set_attr.c SD_get_attr.c SD_chunking_example.c
+ 
+-EXAMPLEDIR=$(prefix)/examples/c
++EXAMPLEDIR=$(docdir)/examples/c
+ 
+ # How to build programs using h4cc
+ $(EXTRA_PROG): $(H4CC)
+diff -Nur hdf-4.2.11.orig/mfhdf/fortran/examples/Makefile.am hdf-4.2.11/mfhdf/fortran/examples/Makefile.am
+--- hdf-4.2.11.orig/mfhdf/fortran/examples/Makefile.am	2016-03-16 20:07:45.183491919 +0000
++++ hdf-4.2.11/mfhdf/fortran/examples/Makefile.am	2016-03-16 22:18:15.075056851 +0000
+@@ -24,7 +24,7 @@
+ 	SD_set_attr.f SD_get_attr.f SD_compress_sds.f SD_chunking_example.f
+ 
+ # Where to install example files
+-EXAMPLEDIR=$(prefix)/examples/fortran
++EXAMPLEDIR=$(docdir)/examples/fortran
+ 
+ # How to build Fortran programs using h4fc
+ $(EXTRA_PROG): $(H4FC)
+diff -up hdf-4.2.11/config/examples.am.destdir hdf-4.2.11/config/examples.am
+--- hdf-4.2.11/config/examples.am.destdir	2015-02-09 09:43:05.000000000 -0700
++++ hdf-4.2.11/config/examples.am	2015-02-13 13:24:09.008230956 -0700
+@@ -44,7 +44,7 @@ CHECK_CLEANFILES+= *.hdf
+ CLEANFILES=$(EXAMPLE_PROG)
+ 
+ # How to create EXAMPLEDIR if it doesn't already exist
+-$(EXAMPLEDIR):
++$(DESTDIR)$(EXAMPLEDIR):
+ 	mkdir -p $@
+ 
+ # Install and uninstall rules.  We install the source files, not the
+@@ -54,42 +54,42 @@ install-data-local:
+ uninstall-local:
+ 	@$(MAKE) $(AM_MAKEFLAGS) uninstall-examples
+ 
+-install-examples: $(EXAMPLEDIR) 
++install-examples: $(DESTDIR)$(EXAMPLEDIR) 
+ 	@for f in X $(INSTALL_FILES); do                                     \
+ 	  if test $$f != X; then                                             \
+-	    (set -x; $(INSTALL) $(srcdir)/$$f $(EXAMPLEDIR)/. || exit 1);    \
+-	    chmod a-x $(EXAMPLEDIR)/$$f;                                     \
++	    (set -x; $(INSTALL) $(srcdir)/$$f $(DESTDIR)$(EXAMPLEDIR)/. || exit 1);    \
++	    chmod a-x $(DESTDIR)$(EXAMPLEDIR)/$$f;                                     \
+ 	  fi;                                                                \
+ 	done
+ 	@for f in X $(INSTALL_SCRIPT_FILES); do                              \
+ 	  if test $$f != X; then                                             \
+-	    (set -x; $(INSTALL) $(srcdir)/$$f $(EXAMPLEDIR)/. || exit 1);    \
++	    (set -x; $(INSTALL) $(srcdir)/$$f $(DESTDIR)$(EXAMPLEDIR)/. || exit 1);    \
+ 	  fi;                                                                \
+ 	done
+ 	@for f in X $(INSTALL_TOP_FILES); do                                 \
+ 	  if test $$f != X; then                                             \
+-	    (set -x; $(INSTALL) $(srcdir)/$$f $(EXAMPLETOPDIR)/. || exit 1); \
+-	    chmod a-x $(EXAMPLETOPDIR)/$$f;                                  \
++	    (set -x; $(INSTALL) $(srcdir)/$$f $(DESTDIR)$(EXAMPLETOPDIR)/. || exit 1); \
++	    chmod a-x $(DESTDIR)$(EXAMPLETOPDIR)/$$f;                                  \
+ 	  fi;                                                                \
+ 	done
+ 	@for f in X $(INSTALL_TOP_SCRIPT_FILES); do                          \
+ 	  if test $$f != X; then                                             \
+-	    (set -x; $(INSTALL) $(srcdir)/$$f $(EXAMPLETOPDIR)/. || exit 1); \
++	    (set -x; $(INSTALL) $(srcdir)/$$f $(DESTDIR)$(EXAMPLETOPDIR)/. || exit 1); \
+ 	  fi;                                                                \
+ 	done
+ 
+ uninstall-examples:
+-	@if test -n "$(INSTALL_FILES)" -a -d $(EXAMPLEDIR); then           \
+-	  set -x; cd $(EXAMPLEDIR) && $(RM) $(INSTALL_FILES);              \
++	@if test -n "$(INSTALL_FILES)" -a -d $(DESTDIR)$(EXAMPLEDIR); then           \
++	  set -x; cd $(DESTDIR)$(EXAMPLEDIR) && $(RM) $(INSTALL_FILES);              \
+ 	fi
+-	@if test -n "$(INSTALL_SCRIPT_FILES)" -a -d $(EXAMPLEDIR); then    \
+-	  set -x; cd $(EXAMPLEDIR) && $(RM) $(INSTALL_SCRIPT_FILES);       \
++	@if test -n "$(INSTALL_SCRIPT_FILES)" -a -d $(DESTDIR)$(EXAMPLEDIR); then    \
++	  set -x; cd $(DESTDIR)$(EXAMPLEDIR) && $(RM) $(INSTALL_SCRIPT_FILES);       \
+ 	fi
+-	@if test -n "$(INSTALL_TOP_FILES)" -a -d $(EXAMPLETOPDIR); then    \
+-	  set -x; cd $(EXAMPLETOPDIR) && $(RM) $(INSTALL_TOP_FILES);       \
++	@if test -n "$(INSTALL_TOP_FILES)" -a -d $(DESTDIR)$(EXAMPLETOPDIR); then    \
++	  set -x; cd $$(DESTDIR)(EXAMPLETOPDIR) && $(RM) $(INSTALL_TOP_FILES);       \
+ 	fi
+-	@if test -n "$(INSTALL_TOP_SCRIPT_FILES)" -a -d $(EXAMPLETOPDIR); then    \
+-	  set -x; cd $(EXAMPLETOPDIR) && $(RM) $(INSTALL_TOP_SCRIPT_FILES);       \
++	@if test -n "$(INSTALL_TOP_SCRIPT_FILES)" -a -d $(DESTDIR)$(EXAMPLETOPDIR); then    \
++	  set -x; cd $(DESTDIR)$(EXAMPLETOPDIR) && $(RM) $(INSTALL_TOP_SCRIPT_FILES);       \
+ 	fi
+ 
+ installcheck-local:

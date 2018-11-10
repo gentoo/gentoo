@@ -1,0 +1,46 @@
+diff -ru visit2.8.2-old/src/tools/annotations/CMakeLists.txt visit2.8.2-new/src/tools/annotations/CMakeLists.txt
+--- a/tools/annotations/CMakeLists.txt	2014-08-11 23:46:11.000000000 +0200
++++ b/tools/annotations/CMakeLists.txt	2015-01-07 08:19:35.000735956 +0100
+@@ -54,9 +54,9 @@
+ # Specify the libraries to link against
+ TARGET_LINK_LIBRARIES(text2polys vtkIOLegacy)
+ IF(HAVE_LIB_R)
+-TARGET_LINK_LIBRARIES(time_annotation vtkRenderingOpenGL vtkRenderingFreeType vtkRenderingFreeTypeOpenGL vtkInteractionStyle vtkFiltersStatisticsGnuR vtksys vtkIOImage)
++TARGET_LINK_LIBRARIES(time_annotation vtkRenderingOpenGL vtkRenderingFreeType vtkRenderingFreeTypeOpenGL vtkInteractionStyle vtkFiltersStatisticsGnuR vtksys vtkIOMPIImage)
+ ELSE(HAVE_LIB_R)
+-TARGET_LINK_LIBRARIES(time_annotation vtkRenderingOpenGL vtkRenderingFreeType vtkRenderingFreeTypeOpenGL vtkInteractionStyle vtksys vtkIOImage)
++TARGET_LINK_LIBRARIES(time_annotation vtkRenderingOpenGL vtkRenderingFreeType vtkRenderingFreeTypeOpenGL vtkInteractionStyle vtksys vtkIOMPIImage)
+ ENDIF(HAVE_LIB_R)
+ # add vtk definitions
+ ADD_TARGET_DEFINITIONS(time_annotation "${VTK_DEFINITIONS}")
+diff -ru visit2.8.2-old/src/vtkqt/CMakeLists.txt visit2.8.2-new/src/vtkqt/CMakeLists.txt
+--- a/vtkqt/CMakeLists.txt	2014-08-11 23:46:46.000000000 +0200
++++ b/vtkqt/CMakeLists.txt	2015-01-07 08:19:00.950735904 +0100
+@@ -64,9 +64,9 @@
+ 
+ # Specify the libraries to link against on Windows & Mac
+ IF(HAVE_LIB_R)
+-    TARGET_LINK_LIBRARIES(vtkqt vtkCommonCore vtkGUISupportQtOpenGL vtkIOImage vtkRenderingOpenGL vtkRenderingFreeTypeOpenGL ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTOPENGL_LIBRARY} ${OPENGL_gl_LIBRARY} vtkFiltersStatisticsGnuR)
++    TARGET_LINK_LIBRARIES(vtkqt vtkCommonCore vtkGUISupportQtOpenGL vtkIOMPIImage vtkRenderingOpenGL vtkRenderingFreeTypeOpenGL ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTOPENGL_LIBRARY} ${OPENGL_gl_LIBRARY} vtkFiltersStatisticsGnuR)
+ ELSE(HAVE_LIB_R)
+-    TARGET_LINK_LIBRARIES(vtkqt vtkCommonCore vtkGUISupportQtOpenGL vtkIOImage vtkRenderingOpenGL vtkRenderingFreeTypeOpenGL ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTOPENGL_LIBRARY} ${OPENGL_gl_LIBRARY})
++    TARGET_LINK_LIBRARIES(vtkqt vtkCommonCore vtkGUISupportQtOpenGL vtkIOMPIImage vtkRenderingOpenGL vtkRenderingFreeTypeOpenGL ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTOPENGL_LIBRARY} ${OPENGL_gl_LIBRARY})
+ ENDIF(HAVE_LIB_R)
+ # Add vtk definitions
+ ADD_TARGET_DEFINITIONS(vtkqt "${VTK_DEFINITIONS}")
+--- a/visit_vtk/full/CMakeLists.txt	2015-01-14 13:08:53.249224731 +0100
++++ b/visit_vtk/full/CMakeLists.txt	2015-01-14 13:08:28.569224460 +0100
+@@ -125,9 +125,11 @@
+ ADD_LIBRARY(visit_vtk ${VISIT_VTK_SOURCES})
+ 
+ IF(HAVE_LIB_R)
+-    TARGET_LINK_LIBRARIES(visit_vtk lightweight_visit_vtk vtkFiltersExtraction vtkFiltersFlowPaths vtkImagingHybrid vtkRenderingOpenGL vtkRenderingFreeType vtkRenderingFreeTypeOpenGL vtkInteractionStyle vtkFiltersStatisticsGnuR)
++    TARGET_LINK_LIBRARIES(visit_vtk lightweight_visit_vtk vtkFiltersExtraction
++	    vtkFiltersFlowPaths vtkIOMPIImage vtkImagingHybrid vtkRenderingOpenGL vtkRenderingFreeType vtkRenderingFreeTypeOpenGL vtkInteractionStyle vtkFiltersStatisticsGnuR)
+ ELSE(HAVE_LIB_R)
+-    TARGET_LINK_LIBRARIES(visit_vtk lightweight_visit_vtk vtkFiltersExtraction vtkFiltersFlowPaths vtkImagingHybrid vtkRenderingOpenGL vtkRenderingFreeType vtkRenderingFreeTypeOpenGL vtkInteractionStyle)
++    TARGET_LINK_LIBRARIES(visit_vtk lightweight_visit_vtk vtkFiltersExtraction
++	    vtkFiltersFlowPaths vtkIOMPIImage vtkImagingHybrid vtkRenderingOpenGL vtkRenderingFreeType vtkRenderingFreeTypeOpenGL vtkInteractionStyle)
+ ENDIF(HAVE_LIB_R)
+ # Add vtk definitions
+ ADD_TARGET_DEFINITIONS(visit_vtk "${VTK_DEFINITIONS}")

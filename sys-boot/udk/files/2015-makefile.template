@@ -1,0 +1,54 @@
+TOP := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
+EXEC = «MODULE».efi
+SRC = $(shell find $(TOP) -type f -name '*.c')
+OBJ = $(SRC:.c=.o)
+INC_DIR = /usr/include/«PACKAGE_NAME»
+LIB_DIR = /usr/lib
+«STATIC_LIBS»
+
+EFI_LDS = $(LIB_DIR)/GccBase.lds
+
+«MODULE_TYPE»
+«IMAGE_ENTRY_POINT»
+
+«CP»
+«RM»
+«CC»
+«DLINK»
+«OBJCOPY»
+«GENFW»
+
+CC_FLAGS = -g -fshort-wchar -fno-strict-aliasing -Wall -Werror \
+	-Wno-array-bounds -ffunction-sections -fdata-sections -c -iquote$(TOP) \
+	-include AutoGen.h -I$(INC_DIR) -DSTRING_ARRAY_NAME=«MODULE»Strings -m64 \
+	-fno-stack-protector "-DEFIAPI=__attribute__((ms_abi))" -DNO_BUILTIN_VA_FUNCS \
+	-mno-red-zone -Wno-address -mcmodel=large -Wno-address \
+	-Wno-unused-but-set-variable
+DLINK_FLAGS=-nostdlib -n -q --gc-sections --entry $(IMAGE_ENTRY_POINT) \
+	-u $(IMAGE_ENTRY_POINT) -melf_x86_64 --oformat=elf64-x86-64 -L $(LIB_DIR) \
+	--script=$(EFI_LDS) --defsym=PECOFF_HEADER_SIZE=«PECOFF_HEADER_SIZE»
+«OBJCOPY_FLAGS»
+«GENFW_FLAGS»
+
+all:	$(EXEC)
+
+%.efi:	$(OBJ)
+	$(DLINK) -o $(@:.efi=.dll) $(DLINK_FLAGS) \
+		--start-group $(STATIC_LIBRARY_FILES) $^ --end-group
+	$(OBJCOPY) $(OBJCOPY_FLAGS) $(@:.efi=.dll)
+	$(CP) $(@:.efi=.dll) $(@:.efi=.debug)
+	$(OBJCOPY) --strip-unneeded -R .eh_frame $(@:.efi=.dll)
+	$(OBJCOPY) --add-gnu-debuglink=$(@:.efi=.debug) $(@:.efi=.dll)
+	$(GENFW) -e $(MODULE_TYPE) -o $@ $(@:.efi=.dll) $(GENFW_FLAGS)
+	$(RM) $(@:.efi=.dll)
+
+%.o:	%.c
+	$(CC) $(CC_FLAGS) -o $@ $^
+
+clean:
+	$(RM) *.o
+
+mrproper: clean
+	$(RM) $(EXEC) $(EXEC:.efi=.debug)
+
+.PHONY: all clean mrproper

@@ -1,0 +1,13 @@
+fix compile with kernel >= 4.5.2
+wrt bug 581450
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> 2016/05/05
+--- a/linux/drivers/media/common/saa716x/saa716x_pci.c.old	2016-04-27 20:59:51.000000000 +0200
++++ b/linux/drivers/media/common/saa716x/saa716x_pci.c	2016-04-27 21:19:03.117822874 +0200
+@@ -1,6 +1,7 @@
+ #include <asm/atomic.h>
+ #include <linux/spinlock_types.h>
+ #include <asm/io.h>
++#include <asm/processor.h>
+ #include <asm/pgtable.h>
+ #include <asm/page.h>
+ #include <linux/kmod.h>

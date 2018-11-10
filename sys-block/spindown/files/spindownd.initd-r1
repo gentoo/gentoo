@@ -1,0 +1,61 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+SPINDOWND_BIN="/usr/sbin/spindownd"
+SPINDOWND_CFG=${SPINDOWND_CFG:-/etc/spindown.conf}
+SPINDOWND_PID=${SPINDOWND_PID:-/var/run/spindown.pid}
+SPINDOWND_FIFO=${SPINDOWND_FIFO:-/var/run/spindown.fifo}
+
+extra_started_commands="reload"
+
+depend() {
+	need localmount
+	after bootmisc
+}
+
+checkconfig() {
+	# check for config file
+	if [ ! -e "${SPINDOWND_CFG}" ]; then
+		eerror
+		eerror "The spindownd config file (${SPINDOWND_CFG})"
+		eerror "is missing!"
+		eerror
+		return 1
+	fi
+	# check for leftover pidfile
+	if [ -f "${SPINDOWND_PID}" ]; then
+		ewarn
+		ewarn "The spindownd pidfile (${SPINDOWND_PID})"
+		ewarn "exists although the service is not marked as started."
+		ewarn "Will remove the pidfile and start the service in 10s"
+		ewarn "if not interrupted..."
+		ewarn
+		sleep 10
+		if ! rm -f "${SPINDOWND_PID}"; then
+			eerror "Failed to remove the spindownd pidfile (${SPINDOWND_PID})"
+			return 1
+		fi
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting spindownd"
+	start-stop-daemon --start --exec ${SPINDOWND_BIN} \
+		-- -d -c ${SPINDOWND_CFG} -p ${SPINDOWND_PID} -f ${SPINDOWND_FIFO}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping spindownd"
+	start-stop-daemon --stop --exec ${SPINDOWND_BIN} --pidfile ${SPINDOWND_PID}
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading spindownd configuration"
+	start-stop-daemon --exec ${SPINDOWND_BIN} --pidfile ${SPINDOWND_PID} \
+		--signal HUP
+	eend $?
+}

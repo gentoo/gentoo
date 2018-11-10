@@ -1,0 +1,76 @@
+Support spaces in filenames (bug #39207) based on a patch from
+kyberneticist AT yahoo DOT com with additional fixes to address bug
+#293654 by Kevin McCarthy <signals@gentoo.org>
+
+Fix insecure temporary file permissions (bug #235808) based on a patch from
+Robert Buchholz <rbu@gentoo.org>
+
+Fix ignored interactive keyboard commands when aview is called from the
+asciiview script (bug #293654) by Kevin McCarthy <signals@gentoo.org>
+
+Rollup patch created by Kevin McCarthy <signals@gentoo.org>
+
+--- asciiview
++++ asciiview
+@@ -3,13 +3,13 @@
+ clear()
+ {
+   kill $! 2>/dev/null
+-  rm -f /tmp/aview$$.pgm 2>/dev/null
++  rm -rf $tmpdir 2>/dev/null
+ }
+ myconvert()
+ {
+-   if anytopnm $1 >/tmp/aview$$.pgm 2>/dev/null ; then
++   if anytopnm "$1" >"$2" 2>/dev/null ; then
+      exit
+-   elif convert -colorspace gray $1 pgm:- 2>/dev/null ; then
++   elif convert -colorspace gray "$1" pgm:- 2>/dev/null ; then
+      exit
+    fi
+    echo "Failed to convert file format to PNM by both convert and anytopnm" >&2
+@@ -44,27 +44,34 @@
+       options="$options $1"
+       shift
+       ;;
+-    *) 
+-      filenames="$filenames $1"
++    *)
++      if [ "$filenames" = "" ]
++      then
++        filenames=$1   #avoid leading null
++      else
++        filenames=$(echo -e "$filenames\n$1")
++      fi
+       shift
+       ;;
+   esac
+ done
+ trap clear 0
+-mkfifo /tmp/aview$$.pgm
+-outfile=/tmp/aview$$.pgm
+-for name in $filenames ; do
+-if test -r $name ; then
+-case $name in
++tmpdir=`mktemp -t -d`
++outfile=$tmpdir/aview.pgm
++mkfifo $outfile
++exec 3<&0
++echo "$filenames" | while read name; do
++if test -r "$name" ; then
++case "$name" in
+ *.fli | *.lfc | *.flic )
+   PATH="$PATH:."
+-  aaflip $options $name
++  aaflip $options "$name"
+   ;;
+ *)
+-  myconvert $name >/tmp/aview$$.pgm &
++  myconvert "$name" "$outfile" >"$outfile" &
+   pid=$!
+   PATH="$PATH:."
+-  aview  $options /tmp/aview$$.pgm
++  aview  $options $outfile <&3
+   kill $pid 2>/dev/null
+ esac
+ else

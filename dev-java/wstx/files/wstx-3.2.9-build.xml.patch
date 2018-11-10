@@ -1,0 +1,13 @@
+--- a/build.xml
++++ b/build.xml
+@@ -104,10 +104,6 @@
+         <include name="org/codehaus/stax2/**/*.class" />
+     </patternset>
+ 
+-    <!-- 02-Mar-2009, TSa: Let's try automating Maven builds
+-      -->
+-    <import file="build-maven-deploy.xml" />
+-
+     <!-- And then something nifty, for creating minimal jars! -->
+ 
+     <classfileset id="j2meInputMinimal" dir="${BuildClassesDir}">

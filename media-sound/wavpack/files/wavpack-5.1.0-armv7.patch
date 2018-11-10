@@ -1,0 +1,19 @@
+ARM asm is armv7 only in wavpack. Restrict based on host cpu.
+https://bugs.gentoo.org/show_bug.cgi?id=609168
+
+Upstream PR:
+https://github.com/dbry/WavPack/pull/20
+
+Index: wavpack-5.1.0/configure.ac
+===================================================================
+--- wavpack-5.1.0.orig/configure.ac
++++ wavpack-5.1.0/configure.ac
+@@ -159,7 +159,7 @@ AS_IF([test "x$enable_asm" != "xno"],[
+   AS_CASE([$host_cpu],
+     [i386|i486|i586|i686|i786], [AC_DEFINE([OPT_ASM_X86]) asm_selected=x86],
+     [x86_64], [AC_DEFINE([OPT_ASM_X64]) asm_selected=x64],
+-    [arm*], [AC_DEFINE([OPT_ASM_ARM]) asm_selected=arm],
++    [armv7*], [AC_DEFINE([OPT_ASM_ARM]) asm_selected=arm],
+     [AS_IF([test "x$enable_asm" = "xyes"],[AC_MSG_ERROR(no assembly code for CPU $host_cpu)])]
+   )
+   AC_MSG_RESULT($asm_selected)

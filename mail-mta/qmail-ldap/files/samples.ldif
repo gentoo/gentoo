@@ -1,0 +1,32 @@
+#ldapauth, better to use this than your rootdn for security reasons
+dn: uid=ldapauth,ou=People,dc=yhourhost,dc=net
+uid: ldapauth
+cn: ldapuath
+objectClass: account
+objectClass: posixAccount
+objectClass: top
+objectClass: shadowAccount
+shadowLastChange: 12116
+loginShell: /bin/true
+uidNumber: 11184
+gidNumber: 2110
+homeDirectory: /var/qmail/maildirs/
+gecos: ldap authorization,,,
+userPassword: libcrypt_format
+
+#sample user dn
+dn: uid=denverj ,ou=people,dc=yourhost,dc=net
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: qmailUser
+objectClass: person
+cn: John Denver
+givenName: denverj
+sn: denverj
+uid: denverj
+mail: denverj@yourhost.net
+mailMessageStore: /var/qmail/maildirs/denverj/Maildir/
+nohomeDirectory: /var/qmail/maildirs/denverj/
+mailAlternateAddress: denverj@alias.host.net
+userPassword: libcrypt_format
+

@@ -1,0 +1,33 @@
+commit afadc8d05674a0e3e2fcf6dfbcf5f3c8f9133119
+Author: hasufell <hasufell@hasufell.de>
+Date:   Sun May 18 19:32:59 2014 +0200
+
+    Respect CFLAGS/CXXFLAGS/LDFLAGS, fixes #66
+    
+    Even in linking command CFLAGS should be respected, no matter
+    if all objects have already been compiled or not. Some flags
+    affect both linking and object compilation and users shouldn't
+    be required to figure them out. This is standard in most build
+    systems anyway.
+    
+    Reorderd the linker line a bit, so it matches common practice,
+    although this doesn't matter technically (except that LDFLAGS
+    must go before libraries we link against).
+
+diff --git a/Makefile.in b/Makefile.in
+index a522ac1..6dda689 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -104,10 +104,10 @@ $(FLINT_LIB): $(LOBJS) $(LIB_SOURCES) $(EXT_SOURCES) $(HEADERS) $(EXT_HEADERS) |
+ 	$(AT)$(foreach dir, $(BUILD_DIRS), mkdir -p build/$(dir); BUILD_DIR=../build/$(dir); export BUILD_DIR; MOD_DIR=$(dir); export MOD_DIR; $(MAKE) -f ../Makefile.subdirs -C $(dir) shared || exit $$?;)
+ 	$(AT)if [ "$(WANT_NTL)" -eq "1" ]; then \
+ 	  $(MAKE) build/interfaces/NTL-interface.lo; \
+-	  $(CXX) $(ABI_FLAG) -shared $(EXTRA_SHARED_FLAGS) build/interfaces/NTL-interface.lo $(LOBJS) $(MOD_LOBJS) $(EXT_OBJS) $(LIBS2) -o $(FLINT_LIB); \
++	  $(CXX) $(CXXFLAGS) $(ABI_FLAG) -shared $(EXTRA_SHARED_FLAGS) build/interfaces/NTL-interface.lo $(LOBJS) $(MOD_LOBJS) $(EXT_OBJS) -o $(FLINT_LIB) $(LDFLAGS) $(LIBS2); \
+ 	fi
+ 	$(AT)if [ "$(WANT_NTL)" -ne "1" ]; then \
+-	  $(CC) $(ABI_FLAG) -shared $(EXTRA_SHARED_FLAGS) $(LOBJS) $(MOD_LOBJS) $(EXT_OBJS) $(LIBS2) -o $(FLINT_LIB); \
++	  $(CC) $(CFLAGS) $(ABI_FLAG) -shared $(EXTRA_SHARED_FLAGS) $(LOBJS) $(MOD_LOBJS) $(EXT_OBJS) -o $(FLINT_LIB) $(LDFLAGS) $(LIBS2); \
+ 	fi
+ 
+ libflint.a: $(OBJS) $(LIB_SOURCES) $(EXT_SOURCES) $(HEADERS) $(EXT_HEADERS) | build build/interfaces

@@ -1,0 +1,105 @@
+--- usr/sbin/ofpath	2008-08-03 04:00:35.000000000 -0400
++++ usr/sbin/ofpath	2009-01-09 13:46:12.000000000 -0500
+@@ -337,15 +337,18 @@
+ 
+ ide_ofpath()
+ {
+-    if [ ! -L "/proc/ide/$DEVNODE" ] ; then
++    if [ ! -L "/proc/ide/$DEVNODE" ] && [ ! -e "/sys/block/$DEVNODE" ] ; then
+ 	echo 1>&2 "$PRG: /dev/$DEVNODE: Device not configured"
+ 	return 1
+     fi
+ 
+-    local IDEBUS="$(v=`readlink /proc/ide/$DEVNODE` ; echo ${v%%/*} )"
+-    if [ -z "$IDEBUS" ] ; then
+-	echo 1>&2 "$PRG: BUG: IDEBUS == NULL"
+-	return 1
++    if [ -L "/proc/ide/$DEVNODE" ] ; then
++    	    local USE_OLD_PROC=1
++	    local IDEBUS="$(v=`readlink /proc/ide/$DEVNODE` ; echo ${v%%/*} )"
++	    if [ -z "$IDEBUS" ] ; then
++		echo 1>&2 "$PRG: BUG: IDEBUS == NULL"
++		return 1
++   	 fi
+     fi
+ 
+     case "$(uname -r)" in
+@@ -363,7 +366,8 @@
+ 		echo 1>&2 "$PRG: Unable to determine sysfs mountpoint"
+ 		return 1
+ 	    fi
+-	    local OF1275IDE="${SYS}/block/${DEVNODE}/device/../../devspec"
++	    local OF1275IDE=$(cd -P "${SYS}/block/${DEVNODE}/device" && pwd)
++	    OF1275IDE="${OF1275IDE}/../../devspec"
+ 	    ;;
+ 	*)
+ 	    local OF1275IDE="/proc/ide/$IDEBUS/devspec"
+@@ -402,34 +406,41 @@
+ 	    return 1
+ 	fi
+ 
+-	if [ ! -f "/proc/ide/${IDEBUS}/channel" ] ; then
+-	    echo 1>&2 "$PRG: KERNEL BUG: /proc/ide/${IDEBUS}/channel does not exist"
+-	    return 1
+-	fi
+-
+-	case "$(cat /proc/device-tree${DEVSPEC}/device_type 2> /dev/null)" in
+-	    ide|ata)
+-		local MASTER="/disk@0"
+-		local SLAVE="/disk@1"
+-		;;
+-	    pci-ide|pci-ata)
+-		local MASTER="/@$(cat /proc/ide/${IDEBUS}/channel)/disk@0"
+-		local SLAVE="/@$(cat /proc/ide/${IDEBUS}/channel)/disk@1"
+-		;;
+-	    scsi) ## some lame controllers pretend they are scsi, hopefully all kludges are created equal.
+-		local MASTER="/@$(($(cat /proc/ide/${IDEBUS}/channel) * 2 + 0))"
+-		local SLAVE="/@$(($(cat /proc/ide/${IDEBUS}/channel) * 2 + 1))"
+-		;;
+-	    spi)
+-		local MASTER="/disk@$(cat /proc/ide/${IDEBUS}/channel),0"
+-		local SLAVE="/disk@$(cat /proc/ide/${IDEBUS}/channel),1"
+-		;;
+-	    *)
+-		echo 1>&2 "$PRG: Unsupported IDE device type: \"$(cat /proc/device-tree${DEVSPEC}/device_type 2> /dev/null)\""
+-		return 1
+-		;;
+-	esac
++	
++	if [ "${USE_OLD_PROC}" = "1" ] ; then
++		if [ ! -f "/proc/ide/${IDEBUS}/channel" ] ; then
++		    echo 1>&2 "$PRG: KERNEL BUG: /proc/ide/${IDEBUS}/channel does not exist"
++		    return 1
++		fi
+ 
++		case "$(cat /proc/device-tree${DEVSPEC}/device_type 2> /dev/null)" in
++		    ide|ata)
++			local MASTER="/disk@0"
++			local SLAVE="/disk@1"
++			;;
++		    pci-ide|pci-ata)
++			local MASTER="/@$(cat /proc/ide/${IDEBUS}/channel)/disk@0"
++			local SLAVE="/@$(cat /proc/ide/${IDEBUS}/channel)/disk@1"
++			;;
++		    scsi) ## some lame controllers pretend they are scsi, hopefully all kludges are created equal.
++			local MASTER="/@$(($(cat /proc/ide/${IDEBUS}/channel) * 2 + 0))"
++			local SLAVE="/@$(($(cat /proc/ide/${IDEBUS}/channel) * 2 + 1))"
++			;;
++		    spi)
++			local MASTER="/disk@$(cat /proc/ide/${IDEBUS}/channel),0"
++			local SLAVE="/disk@$(cat /proc/ide/${IDEBUS}/channel),1"
++			;;
++		    *)
++			echo 1>&2 "$PRG: Unsupported IDE device type: \"$(cat /proc/device-tree${DEVSPEC}/device_type 2> /dev/null)\""
++			return 1
++			;;
++		esac
++	else
++	    ### I don't know what other disks would look like... FIXME
++	    local MASTER="/disk@0"
++	    local SLAVE="/disk@1"
++	fi
++	
+ 	case "$DEVNODE" in
+ 	    hda|hdc|hde|hdg|hdi|hdk|hdm|hdo)
+ 		echo "${DEVSPEC}${MASTER}:$PARTITION"

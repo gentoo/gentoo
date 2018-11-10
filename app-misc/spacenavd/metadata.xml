@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sping@gentoo.org</email>
+		<name>Sebastian Pipping</name>
+	</maintainer>
+	<longdescription>
+		The spacenavd daemon can be used directly as a drop-in replacement
+		to the 3DxWare daemon. It can communicate with the official magellan
+		SDK, and thus any program compiled with it can work with spacenavd
+		transparently without any change or need of recompilation.
+		Also, spacenavd provides an alternative communication protocol, for
+		programs that use libspnav, that doesn't require an X server, as the
+		original protocol does. 
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">spacenav</remote-id>
+	</upstream>
+</pkgmetadata>

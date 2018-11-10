@@ -1,0 +1,30 @@
+ configure.in     | 2 +-
+ test/Makefile.am | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index 7335451..7817998 100644
+--- a/configure.in
++++ b/configure.in
+@@ -33,7 +33,7 @@ AC_SUBST(LIBGNOMEVFS_REVISION)
+ AC_SUBST(LIBGNOMEVFS_AGE)
+ AC_SUBST(LIBGNOMEVFS_VERSION)
+ 	
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_INIT_AUTOMAKE(gnome-vfs, $LIBGNOMEVFS_VERSION)
+ 
+ dnl make sure we keep ACLOCAL_FLAGS around for maintainer builds to work
+diff --git a/test/Makefile.am b/test/Makefile.am
+index 5b0992e..626bdec 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -65,7 +65,7 @@ TESTS = test-acl	  \
+ 	test-async-cancel \
+ 	test-escape       \
+ 	test-uri       	  \
+-	$(srcdir)/auto-test	
++	auto-test
+ 
+ libraries =						\
+ 	$(top_builddir)/libgnomevfs/libgnomevfs-2.la	\

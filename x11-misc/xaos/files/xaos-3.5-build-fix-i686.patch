@@ -1,0 +1,20 @@
+--- xaos-3.5/src/engine/zoomd.c.orig	2009-07-18 00:50:31.000000000 +0100
++++ xaos-3.5/src/engine/zoomd.c	2012-05-20 19:04:55.891065437 +0100
+@@ -280,6 +280,7 @@ dosymetry2(void /*@unused@ */ *data, str
+ #endif
+ #undef bpp1
+ 
++REGISTERS(0)
+ static INLINE void fillline(int line)
+ {
+     register unsigned char *RESTRICT vbuff = cimage.currlines[line];
+--- xaos-3.5/src/engine/zoom.c.fix-build	2009-07-18 00:50:31.000000000 +0100
++++ xaos-3.5/src/engine/zoom.c	2012-05-20 19:11:53.625083113 +0100
+@@ -933,6 +933,7 @@ static /*INLINE */ void preparemoveoldpo
+ }
+ 
+ #ifndef USE_i386ASM
++REGISTERS(0)
+ static /*INLINE */ void
+ moveoldpoints(void /*@unused@ */ *data1,
+ 	      struct taskinfo /*@unused@ */ *task,

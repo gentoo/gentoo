@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The x11-terms category contains terminal emulators for X11 environments.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie x11-terms enthält Terminalemulatoren für verschiedene
+		Desktopumgebungen und Window Manager.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría x11-terms contiene emuladores de terminal para varios
+		ambientes X11.
+	</longdescription>
+	<longdescription lang="ja">
+		x11-termsカテゴリーにはX11環境で使うターミナル・エミュレーターが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De x11-terms categorie bevat terminalemulators voor verschillende
+		desktopomgevingen en window managers.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm x11-term chứa các terminal emulator cho X11.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória x11-term obsahuje emulátory terminálu pre prostredia X11.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria x11-terms contiene emulatori di terminale per gli ambienti X11.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria x11-terms contém emuladores de terminal para
+		ambientes X11.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria x11-terms zawiera emulatory terminala dla środowisk X11.
+	</longdescription>
+</catmetadata>
+

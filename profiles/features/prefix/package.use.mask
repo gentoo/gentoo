@@ -1,0 +1,42 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Benda Xu <heroxbd@gentoo.org> (28 Jul 2016)
+# Needs root privilege.
+sys-fs/eudev hwdb kmod
+
+# Kacper Kowalik <xarthisius@gentoo.org> (14 Jan 2012)
+# sci-libs/mkl don't have prefix keywords
+dev-python/numexpr mkl
+
+# Fabian Groffen <grobian@gentoo.org> (08 Dec 2011)
+# USE=vanilla produces a broken compiler for Prefix.  Only use this flag
+# when you're absolutely sure what you're doing.  Do NOT report bugs
+# about failing packages when using a vanilla compiler!
+sys-devel/gcc vanilla
+
+# Rafael Goncalves Martins <rafaelmartins@gentoo.org> (29 Sep 2010)
+# dev-libs/judy without prefix keywords
+# (amd64-linux and x86-linux)
+sci-electronics/gtkwave judy
+
+# Christian Faulhammer <fauli@gentoo.org> (09 Jan 2010)
+# m17n-lib is not available in Prefix
+app-editors/emacs-vcs m17n-lib
+app-editors/emacs m17n-lib
+
+# Jeremy Olexa <darkside@gentoo.org> (30 Sep 2009)
+# berkdb has hardcoded paths all over, breaks on linux at least. Use flag
+# disappearing in next bump: prefix can be early and force it to be not used to
+# save headaches.
+# NOTE to prefix devs: if it needs to not be a global mask, talk to me because
+# it currently causes failures on linux. It can be made a "less global" mask.
+dev-lang/python berkdb
+
+# Elias Pipping <pipping@gentoo.org> (18 Nov 2007)
+# feynmf fails to build documentation
+dev-tex/feynmf doc
+
+# Elias Pipping <pipping@gentoo.org> (15 Nov 2007)
+# pkg_postinst tries to create/delete a user, fails
+dev-libs/cyrus-sasl berkdb gdbm

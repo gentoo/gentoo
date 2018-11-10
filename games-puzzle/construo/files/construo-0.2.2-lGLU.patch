@@ -1,0 +1,18 @@
+--- a/configure.ac.old	2009-11-24 18:27:48.000000000 +0100
++++ b/configure.ac	2009-11-24 18:28:29.000000000 +0100
+@@ -114,7 +114,7 @@
+ AC_CHECK_LIB(glut, glutMainLoop,
+ [
+   ConstruoTargets="$ConstruoTargets construo.glut"
+-  AC_SUBST(glut_LIBS,"-lglut")
++  AC_SUBST(glut_LIBS,"-lglut -lGLU -lGL -lm")
+ ],
+ [])
+ 
+@@ -158,4 +158,4 @@
+ echo "  Ingo Ruhnke <grumbel@gmx.de>"
+ echo ""
+ 
+-# EOF #
+\ No newline at end of file
++# EOF #

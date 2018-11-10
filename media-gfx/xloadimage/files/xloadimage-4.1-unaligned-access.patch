@@ -1,0 +1,51 @@
+diff -ruN ./cmuwmraster.c /tmp/xloadimage.4.1/cmuwmraster.c
+--- a/cmuwmraster.c	2005-07-23 13:15:50 -0700
++++ b/cmuwmraster.c	2005-07-23 13:08:36 -0700
+@@ -20,7 +20,7 @@
+ char *name;
+ struct cmuwm_header *headerp;
+ {
+-    printf("%s is a %ldx%ld %ld plane CMU WM raster\n",
++    printf("%s is a %lux%lu %lu plane CMU WM raster\n",
+ 	   name,
+ 	   memToVal(headerp->width, sizeof(long)),
+ 	   memToVal(headerp->height, sizeof(long)),
+diff -ruN ./niff.c /tmp/xloadimage.4.1/niff.c
+--- a/niff.c	2005-07-23 13:15:50 -0700
++++ b/niff.c	2005-07-23 13:07:55 -0700
+@@ -24,18 +24,18 @@
+ 	 memToVal(header->width, 4),
+ 	 memToVal(header->height, 4));
+   if (memToVal(header->version, 4) != NIFF_VERSION)
+-    printf("version %ld ", memToVal(header->version, 4));
++    printf("version %lu ", memToVal(header->version, 4));
+   printf("NIFF ");
+   switch (header->type) {
+   case NIFF_BITMAP:
+     printf("bitmap image");
+     break;
+   case NIFF_RGB:
+-    printf("%ld-bit RGB image with %ld colors",
++    printf("%lu-bit RGB image with %lu colors",
+ 	   memToVal(header->depth, 4), memToVal(header->cmap_size, 4));
+     break;
+   case NIFF_TRUE:
+-    printf("%ld-bit true color image", memToVal(header->depth, 4));
++    printf("%lu-bit true color image", memToVal(header->depth, 4));
+     break;
+   default:
+     printf("image with an unknown type");
+diff -ruN ./root.c /tmp/xloadimage.4.1/root.c
+--- a/root.c	2005-07-23 13:15:51 -0700
++++ b/root.c	2005-07-23 13:05:48 -0700
+@@ -68,8 +68,8 @@
+   Pixmap *pm;			
+   Atom	actual_type;		/* NOTUSED */
+   int	format;
+-  int	nitems;
+-  int	bytes_after;
++  unsigned long	nitems;
++  unsigned long	bytes_after;
+ 
+   /* intern the property name */
+   Atom atom = XInternAtom(dpy, RETAIN_PROP_NAME, 0);

@@ -1,0 +1,208 @@
+From: Devan Franchini <twitch153@gentoo.org>
+Date: Fri, 18 Oct 2014 15:21:24 -0400
+Subject: [PATCH] Removes doctest remnants
+
+--- a/layman/api.py	2014-10-18 14:27:13.233842116 -0400
++++ b/layman/api.py	2014-10-18 14:29:51.184849673 -0400
+@@ -714,15 +714,3 @@
+     write = os.fdopen(fd_w, 'w')
+     read = os.fdopen(fd_r, 'r')
+     return (read, write, fd_r, fd_w)
+-
+-
+-if __name__ == '__main__':
+-    import doctest, sys
+-
+-    # Ignore warnings here. We are just testing
+-    from warnings     import filterwarnings, resetwarnings
+-    filterwarnings('ignore')
+-
+-    doctest.testmod(sys.modules[__name__])
+-
+-    resetwarnings()
+--- a/layman/argsparser.py	2014-10-18 14:27:13.233842116 -0400
++++ b/layman/argsparser.py	2014-10-18 14:30:35.256851781 -0400
+@@ -404,14 +404,3 @@
+         self.output.debug('ARGSPARSER: Returning keys', 9)
+ 
+         return keys
+-
+-
+-#===============================================================================
+-#
+-# Testing
+-#
+-#-------------------------------------------------------------------------------
+-
+-if __name__ == '__main__':
+-    import doctest
+-    doctest.testmod(sys.modules[__name__])
+--- a/layman/cli.py	2014-10-18 14:27:13.233842116 -0400
++++ b/layman/cli.py	2014-10-18 14:32:11.456856384 -0400
+@@ -397,15 +397,3 @@
+         # blank newline  -- no " *"
+         self.output.notice('')
+         return info != {}
+-
+-
+-if __name__ == '__main__':
+-    import doctest
+-
+-    # Ignore warnings here. We are just testing
+-    from warnings     import filterwarnings, resetwarnings
+-    filterwarnings('ignore')
+-
+-    doctest.testmod(sys.modules[__name__])
+-
+-    resetwarnings()
+--- a/layman/config.py	2014-10-18 14:27:13.233842116 -0400
++++ b/layman/config.py	2014-10-18 14:31:02.528853086 -0400
+@@ -348,13 +348,3 @@
+         if new_defaults is not None:
+             self._defaults.update(new_defaults)
+         return
+-
+-#===============================================================================
+-#
+-# Testing
+-#
+-#-------------------------------------------------------------------------------
+-
+-if __name__ == '__main__':
+-    import doctest
+-    doctest.testmod(sys.modules[__name__])
+--- a/layman/db.py	2014-10-18 14:27:13.234842116 -0400
++++ b/layman/db.py	2014-10-18 14:32:32.160857374 -0400
+@@ -315,21 +315,3 @@
+             raise Exception('Syncing overlay "' + overlay_name +
+                             '" returned status ' + str(result) + '!' +
+                             '\ndb.sync()')
+-
+-
+-#===============================================================================
+-#
+-# Testing
+-#
+-#-------------------------------------------------------------------------------
+-
+-if __name__ == '__main__':
+-    import doctest, sys
+-
+-    # Ignore warnings here. We are just testing
+-    from warnings     import filterwarnings, resetwarnings
+-    filterwarnings('ignore')
+-
+-    doctest.testmod(sys.modules[__name__])
+-
+-    resetwarnings()
+--- a/layman/dbbase.py	2014-10-18 14:27:13.234842116 -0400
++++ b/layman/dbbase.py	2014-10-18 14:31:14.648853666 -0400
+@@ -252,21 +252,3 @@
+         """returns a list of the overlay names
+         """
+         return sorted(self.overlays)
+-
+-
+-#===============================================================================
+-#
+-# Testing
+-#
+-#-------------------------------------------------------------------------------
+-
+-if __name__ == '__main__':
+-    import doctest
+-
+-    # Ignore warnings here. We are just testing
+-    from warnings     import filterwarnings, resetwarnings
+-    filterwarnings('ignore')
+-
+-    doctest.testmod(sys.modules[__name__])
+-
+-    resetwarnings()
+--- a/layman/overlays/archive.py	2014-10-18 14:27:13.253842116 -0400
++++ b/layman/overlays/archive.py	2014-10-18 14:31:54.640855579 -0400
+@@ -188,15 +188,3 @@
+         '''
+ 
+         return self.is_supported()
+-
+-
+-if __name__ == '__main__':
+-    import doctest
+-
+-    # Ignore warnings here. We are just testing.
+-    from warnings    import filterwarnings, resetwarnings
+-    filterwarnings('ignore')
+-
+-    doctest.testmod(sys.modules[__name__])
+-
+-    resetwarnings()
+--- a/layman/overlays/modules/tar/tar.py	2014-10-18 14:27:13.245842116 -0400
++++ b/layman/overlays/modules/tar/tar.py	2014-10-18 15:10:13.303965557 -0400
+@@ -94,14 +94,3 @@
+         return require_supported(
+             [(self.command(),  'tar', 'app-arch/tar'), ],
+             self.output.warn)
+-
+-if __name__ == '__main__':
+-    import doctest
+-
+-    # Ignore warnings here. We are just testing
+-    from warnings     import filterwarnings, resetwarnings
+-    filterwarnings('ignore')
+-
+-    doctest.testmod(sys.modules[__name__])
+-
+-    resetwarnings()
+--- a/layman/overlays/overlay.py	2014-10-18 14:27:13.253842116 -0400
++++ b/layman/overlays/overlay.py	2014-10-18 14:31:38.624854813 -0400
+@@ -546,14 +546,3 @@
+     def source_types(self):
+         for i in self.sources:
+             yield i.type
+-
+-
+-#==============================================================================
+-#
+-# Testing
+-#
+-#------------------------------------------------------------------------------
+-
+-if __name__ == '__main__':
+-    import doctest
+-    doctest.testmod(sys.modules[__name__])
+--- a/layman/remotedb.py	2014-10-18 14:27:13.253842116 -0400
++++ b/layman/remotedb.py	2014-10-18 14:29:31.064848710 -0400
+@@ -384,14 +384,3 @@
+         self.signed_urls = [i.strip()
+             for i in self.config['gpg_signed_lists'].split('\n') if len(i)]
+     '''
+-
+-if __name__ == '__main__':
+-    import doctest
+-
+-    # Ignore warnings here. We are just testing
+-    from warnings     import filterwarnings, resetwarnings
+-    filterwarnings('ignore')
+-
+-    doctest.testmod(sys.modules[__name__])
+-
+-    resetwarnings()
+--- a/layman/utils.py	2014-10-18 14:27:13.254842117 -0400
++++ b/layman/utils.py	2014-10-18 14:30:24.088851247 -0400
+@@ -347,14 +347,3 @@
+     for key in kwargs:
+         result[key] = kwargs[key]
+     return result
+-
+-
+-#===============================================================================
+-#
+-# Testing
+-#
+-#-------------------------------------------------------------------------------
+-
+-if __name__ == '__main__':
+-    import doctest
+-    doctest.testmod(sys.modules[__name__])
+

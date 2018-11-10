@@ -1,0 +1,39 @@
+diff --git a/daemons/daemon-util.in b/daemons/daemon-util.in
+index 6a47253..11eb9d1 100644
+--- a/daemons/daemon-util.in
++++ b/daemons/daemon-util.in
+@@ -294,10 +294,11 @@ start() {
+   @PKGLIBDIR@/ensure-dirs
+ 
+   if type -p start-stop-daemon >/dev/null; then
+-    start-stop-daemon --start --quiet --oknodo \
++    start-stop-daemon --start --quiet \
+       --pidfile $pidfile \
+-      --startas $daemonexec \
+-      --chuid $usergroup \
++      --exec $daemonexec \
++      --user $usergroup \
++      --wait 300 \
+       -- $args "$@"
+   else
+     # TODO: Find a way to start daemon with a group, until then the group must
+@@ -323,7 +324,7 @@ stop() {
+   if use_systemctl; then
+     systemctl stop "${name}.service"
+   elif type -p start-stop-daemon >/dev/null; then
+-    start-stop-daemon --stop --quiet --oknodo --retry 30 \
++    start-stop-daemon --stop --quiet --retry 30 \
+       --pidfile $pidfile
+   else
+     _ignore_error killproc -p $pidfile $name
+@@ -409,8 +410,8 @@ rotate_logs() {
+   local daemonexec=$(_daemon_executable $name)
+ 
+   if type -p start-stop-daemon >/dev/null; then
+-    start-stop-daemon --stop --signal HUP --quiet \
+-      --oknodo --pidfile $pidfile
++    start-stop-daemon --signal HUP --quiet \
++      --pidfile $pidfile
+   else
+     _ignore_error killproc \
+       -p $pidfile \

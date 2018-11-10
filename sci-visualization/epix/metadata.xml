@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  ePiX creates mathematically accurate figures, plots, and
+  movies using easy-to-learn syntax. The output is expressly suitable
+  for use with LaTeX; figures may be written in a LaTeX picture
+  environment containing PSTricks, tikz, or eepic macros, or as vector
+  (EPS or PDF) image files. The user interface resembles that of
+  LaTeX: You prepare a human-readable scene description in a text
+  editor, then compile the input file into a picture.
+  use ePiX, however. 
+</longdescription>
+</pkgmetadata>

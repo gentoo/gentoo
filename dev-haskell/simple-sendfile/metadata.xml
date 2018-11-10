@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Cross platform library for the sendfile system call.
+		This library tries to call minimum system calls which
+		are the bottleneck of web servers.
+	</longdescription>
+	<use>
+		<flag name="allow-bsd">Allow use of BSD sendfile (disable on
+		GNU/kFreeBSD)</flag>
+	</use>
+</pkgmetadata>

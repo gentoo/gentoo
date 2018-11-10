@@ -1,0 +1,79 @@
+--- ripmime-1.4.0.9.orig/Makefile	2008-11-06 19:33:33.000000000 -0800
++++ ripmime-1.4.0.9/Makefile	2010-11-07 12:53:03.898947384 -0800
+@@ -42,22 +42,22 @@
+ 	./generate-buildcodes.sh
+ 
+ ripOLE/ole.o:
+-	./build_ripOLE
++	$(MAKE) -C ripOLE
+ 
+ tnef/tnef.o:
+-	./build_tnef
++	$(MAKE) -C tnef
+ 
+ .c.o:
+-	${CC} ${CFLAGS} $(COMPONENTS) -c $*.c
++	${CC} ${CFLAGS} -fPIC $(COMPONENTS) -c $*.c
+ 
+ all: ${OBJ} 
+ 
+ 
+ solib: ${OFILES} ripmime-api.o
+-	gcc --shared -Wl,-soname,libripmime.so.1 ${OFILES} ripmime-api.o -o libripmime.so.1.4.0 -lc
++	${CC} ${LDFLAGS} --shared -Wl,-soname,libripmime.so.1 ${OFILES} ripmime-api.o -o libripmime.so.1.4.0 -lc
+ 
+-libripmime: ${OFILES} ripmime-api.o
+-	ar ruvs libripmime.a ${OFILES}  ripmime-api.o
++libripmime.a: ${OFILES} ripmime-api.o
++	${AR} ruvs $@ $^
+ 
+ ripl: ripmime.a
+ 	${CC} ${CFLAGS} ripmime.c ripmime.a -o ripmime
+@@ -65,8 +65,10 @@
+ sco: ${OFILES}
+ 	${CC} ${CFLAGS} ripmime.c ${OFILES} -o ripmime -lsocket
+ 
+-ripmime: ${OFILES} ripmime.c buildcodes.h
+-	${CC} ${CFLAGS} $(COMPONENTS) ripmime.c ${OFILES} -o ripmime ${LIBS}
++ripmime: ${OFILES} ripmime.o
++	${CC} ${CFLAGS} $(COMPONENTS) $(LDFLAGS) $^ -o $@ ${LIBS}
++
++ripmime.o: buildcodes.h
+ 
+ riptest: ${OFILES}
+ 	${CC} ${CFLAGS} riptest.c ${OFILES} -o riptest
+--- ripmime-1.4.0.9.orig/ripOLE/Makefile	2008-10-31 09:17:32.000000000 -0700
++++ ripmime-1.4.0.9/ripOLE/Makefile	2010-11-07 12:55:38.222278266 -0800
+@@ -4,7 +4,7 @@
+ 
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) $(DEFINES) -c $*.c
++	$(CC) $(CFLAGS) -fPIC $(DEFINES) -c $*.c
+ 
+ default: ripole
+ 
+@@ -12,7 +12,7 @@
+ 	rm -f *.o ripole
+ 
+ ripole: $(OBJS) ripole.[ch]
+-		$(CC) $(CFLAGS) $(OBJS) $(DEFINES) ripole.c -o ripole
++		$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(DEFINES) ripole.c -o ripole
+ 	
+ validate: ripole
+ 		cp ripole validate
+--- ripmime-1.4.0.9.orig/tnef/Makefile	2008-11-06 19:33:33.000000000 -0800
++++ ripmime-1.4.0.9/tnef/Makefile	2010-11-07 12:54:47.434840614 -0800
+@@ -8,10 +8,10 @@
+ CFLAGS=-Wall -g -O2 -I.
+ 
+ default: config.h tnef.h tnef.c
+-	$(CC) $(CFLAGS) $(PLATFORM) -c tnef.c
++	$(CC) $(CFLAGS) -fPIC $(PLATFORM) -c tnef.c
+ 	
+ lib: tnef.o
+-	ar ruvs tnef.a tnef.o
++	${AR} ruvs tnef.a tnef.o
+ 
+ clean:
+ 	rm -f *.o *.~[ch]

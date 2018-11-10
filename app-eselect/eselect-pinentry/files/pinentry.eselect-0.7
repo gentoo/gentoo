@@ -1,0 +1,12 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+DESCRIPTION="Manage /usr/bin/pinentry implementation"
+MAINTAINER="ssuominen@gentoo.org"
+VERSION="0.7"
+
+SYMLINK_PATH=/usr/bin/pinentry
+SYMLINK_TARGETS=( pinentry-gnome3 pinentry-qt pinentry-gtk-2 pinentry-qt4 pinentry-curses pinentry-tty )
+SYMLINK_DESCRIPTION='pinentry binary'
+
+inherit bin-symlink

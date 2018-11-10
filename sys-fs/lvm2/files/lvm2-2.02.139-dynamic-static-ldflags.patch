@@ -1,0 +1,63 @@
+diff -ur LVM2.2.02.139_O/configure.in LVM2.2.02.139/configure.in
+--- LVM2.2.02.139_O/configure.in	2016-01-19 12:54:33.155187005 +0000
++++ LVM2.2.02.139/configure.in	2016-01-19 12:56:39.487181372 +0000
+@@ -31,6 +31,7 @@
+ 	linux*)
+ 		CLDFLAGS="$CLDFLAGS -Wl,--version-script,.export.sym"
+ 		ELDFLAGS="-Wl,--export-dynamic"
++		STATIC_LDFLAGS="-Wl,--no-export-dynamic"
+ 		# FIXME Generate list and use --dynamic-list=.dlopen.sym
+ 		CLDWHOLEARCHIVE="-Wl,-whole-archive"
+ 		CLDNOWHOLEARCHIVE="-Wl,-no-whole-archive"
+@@ -2009,6 +2010,7 @@
+ AC_SUBST(SELINUX_PC)
+ AC_SUBST(SNAPSHOTS)
+ AC_SUBST(STATICDIR)
++AC_SUBST(STATIC_LDFLAGS)
+ AC_SUBST(STATIC_LINK)
+ AC_SUBST(TESTING)
+ AC_SUBST(TESTSUITE_DATA)
+diff -ur LVM2.2.02.139_O/daemons/dmeventd/Makefile.in LVM2.2.02.139/daemons/dmeventd/Makefile.in
+--- LVM2.2.02.139_O/daemons/dmeventd/Makefile.in	2016-01-19 12:54:33.278186999 +0000
++++ LVM2.2.02.139/daemons/dmeventd/Makefile.in	2016-01-19 12:57:44.277178484 +0000
+@@ -67,7 +67,7 @@
+ 	$(DL_LIBS) $(LVMLIBS) $(LIBS) -rdynamic
+ 
+ dmeventd.static: $(LIB_STATIC) dmeventd.o $(interfacebuilddir)/libdevmapper.a
+-	$(CC) $(CFLAGS) $(LDFLAGS) $(ELDFLAGS) -static -L. -L$(interfacebuilddir) -o $@ \
++	$(CC) $(CFLAGS) $(LDFLAGS) $(ELDFLAGS) $(STATIC_LDFLAGS) -static -L. -L$(interfacebuilddir) -o $@ \
+ 	dmeventd.o $(DL_LIBS) $(LVMLIBS) $(LIBS) $(STATIC_LIBS)
+ 
+ ifeq ("@PKGCONFIG@", "yes")
+diff -ur LVM2.2.02.139_O/make.tmpl.in LVM2.2.02.139/make.tmpl.in
+--- LVM2.2.02.139_O/make.tmpl.in	2016-01-19 12:54:33.529186988 +0000
++++ LVM2.2.02.139/make.tmpl.in	2016-01-19 12:58:31.514176378 +0000
+@@ -49,6 +49,7 @@
+ # FIXME set this only where it's needed, not globally?
+ CFLAGS ?= @COPTIMISE_FLAG@ @CFLAGS@
+ LDFLAGS ?= @COPTIMISE_FLAG@ @LDFLAGS@
++STATIC_LDFLAGS += @STATIC_LDFLAGS@
+ CLDFLAGS += @CLDFLAGS@
+ ELDFLAGS += @ELDFLAGS@
+ LDDEPS += @LDDEPS@
+diff -ur LVM2.2.02.139_O/tools/Makefile.in LVM2.2.02.139/tools/Makefile.in
+--- LVM2.2.02.139_O/tools/Makefile.in	2016-01-08 18:51:21.000000000 +0000
++++ LVM2.2.02.139/tools/Makefile.in	2016-01-19 13:00:08.349172060 +0000
+@@ -129,7 +129,7 @@
+ 	      -o $@ dmsetup.o -ldevmapper $(LIBS)
+ 
+ dmsetup.static: dmsetup.o $(interfacebuilddir)/libdevmapper.a
+-	$(CC) $(CFLAGS) $(LDFLAGS) -static -L$(interfacebuilddir) \
++	$(CC) $(CFLAGS) $(LDFLAGS) $(STATIC_LDFLAGS) -static -L$(interfacebuilddir) \
+ 	      -o $@ dmsetup.o -ldevmapper $(M_LIBS) $(PTHREAD_LIBS) $(STATIC_LIBS) $(LIBS)
+ 
+ all: device-mapper
+@@ -146,7 +146,7 @@
+ endif
+ 
+ lvm.static: $(OBJECTS) lvm-static.o $(top_builddir)/lib/liblvm-internal.a  $(interfacebuilddir)/libdevmapper.a
+-	$(CC) $(CFLAGS) $(LDFLAGS) -static -L$(interfacebuilddir) -o $@ \
++	$(CC) $(CFLAGS) $(LDFLAGS) $(STATIC_LDFLAGS) -static -L$(interfacebuilddir) -o $@ \
+ 	      $(OBJECTS) lvm-static.o $(LVMLIBS) $(STATIC_LIBS) $(LIBS)
+ 
+ liblvm2cmd.a: $(top_builddir)/lib/liblvm-internal.a $(OBJECTS) lvmcmdlib.o lvm2cmd.o

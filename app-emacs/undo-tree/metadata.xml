@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription lang="en">
+  Emacs has a powerful undo system. Unlike the standard undo/redo system in
+  most software, it allows you to recover *any* past state of a buffer
+  (whereas the standard undo/redo system can lose past states as soon as you
+  redo). However, this power comes at a price: many people find Emacs' undo
+  system confusing and difficult to use, spawning a number of packages that
+  replace it with the less powerful but more intuitive undo/redo system.
+
+  Both the loss of data with standard undo/redo, and the confusion of Emacs'
+  undo, stem from trying to treat undo history as a linear sequence of
+  changes. It's not. The `undo-tree-mode' provided by this package replaces
+  Emacs' undo system with a system that treats undo history as what it is: a
+  branching tree of changes. This simple idea allows the more intuitive
+  behaviour of the standard undo/redo system to be combined with the power of
+  never losing any history. An added side bonus is that undo history can in
+  some cases be stored more efficiently, allowing more changes to accumulate
+  before Emacs starts discarding history.
+
+  The only downside to this more advanced yet simpler undo system is that it
+  was inspired by Vim. But, after all, most successful religions steal the
+  best ideas from their competitors!
+</longdescription>
+<stabilize-allarches/>
+</pkgmetadata>

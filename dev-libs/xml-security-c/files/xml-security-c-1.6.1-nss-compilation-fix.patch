@@ -1,0 +1,13 @@
+diff --git a/xsec/tools/xtest/xtest.cpp b/xsec/tools/xtest/xtest.cpp
+index ec40cb2..9cd389e 100644
+--- a/xsec/tools/xtest/xtest.cpp
++++ b/xsec/tools/xtest/xtest.cpp
+@@ -2566,7 +2566,7 @@ int main(int argc, char **argv) {
+ 		}
+ #endif
+ #if defined(XSEC_HAVE_NSS)
+-		else if (stricmp(argv[paramCount], "--nss") == 0 || stricmp(argv[paramCount], "-n") == 0) {
++		else if (_stricmp(argv[paramCount], "--nss") == 0 || _stricmp(argv[paramCount], "-n") == 0) {
+ 			g_useNSS = true;
+ 			paramCount++;
+ 		}

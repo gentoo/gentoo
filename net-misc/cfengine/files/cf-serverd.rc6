@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting cf-serverd"
+	start-stop-daemon --start --exec /usr/sbin/cf-serverd -- ${EXTRA_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping cf-serverd"
+	start-stop-daemon --stop --pidfile /var/cfengine/cf-serverd.pid --exec /usr/sbin/cf-serverd
+	eend $?
+}

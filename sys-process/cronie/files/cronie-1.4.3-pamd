@@ -1,0 +1,9 @@
+#
+# The PAM configuration file for the cron daemon
+#
+#
+auth       include    system-auth
+account    required   pam_access.so
+account    include    system-auth
+session    required   pam_loginuid.so
+session    include    system-auth

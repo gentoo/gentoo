@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>rafaelmartins@gentoo.org</email>
+		<name>Rafael G. Martins</name>
+	</maintainer>
+	<longdescription lang="en">
+		A microframework for C based on GLib and bad intentions.
+	</longdescription>
+	<upstream>
+		<maintainer status="active">
+			<email>rafaelmartins@gentoo.org</email>
+			<name>Rafael G. Martins</name>
+		</maintainer>
+		<bugs-to>mailto:balde-dev@googlegroups.com</bugs-to>
+		<remote-id type="github">balde/balde</remote-id>
+	</upstream>
+</pkgmetadata>

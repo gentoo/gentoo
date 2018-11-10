@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="apicheck">Compile Lua with -DLUA_USE_APICHECK..</flag>
+		<flag name="system-lua">Use the system-wide lua instead of the bundled copy.</flag>
+	</use>
+	<longdescription>
+		The Scripting.Lua module is a wrapper of Lua language interpreter
+		as described in www.lua.org.
+		
+		The package is standalone: full Lua interpreter version 5.1.4
+		is distributed in this package as well.
+	</longdescription>
+</pkgmetadata>

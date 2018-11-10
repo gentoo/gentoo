@@ -1,0 +1,12 @@
+[Unit]
+Description=clamd scanner (%i) daemon
+After=nss-lookup.target network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/clamd -c /etc/clamd%i.conf
+Restart=on-failure
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

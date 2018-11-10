@@ -1,0 +1,66 @@
+--- b/backend/src/backend/gen_insn_selection_optimize.cpp
++++ a/backend/src/backend/gen_insn_selection_optimize.cpp
+@@ -74,7 +74,8 @@ namespace gbe
+                   const GenRegister& replacement) :
+                   insn(insn), intermedia(intermedia), replacement(replacement)
+       {
+-        assert(insn.opcode == SEL_OP_MOV || insn.opcode == SEL_OP_ADD);
++        assert(insn.opcode == SEL_OP_MOV);
++        assert(&(insn.src(0)) == &replacement);
+         assert(&(insn.dst(0)) == &intermedia);
+         this->elements = CalculateElements(intermedia, insn.state.execWidth);
+         replacementOverwritten = false;
+@@ -101,7 +102,6 @@ namespace gbe
+     void doReplacement(ReplaceInfo* info);
+     bool CanBeReplaced(const ReplaceInfo* info, const SelectionInstruction& insn, const GenRegister& var);
+     void cleanReplaceInfoMap();
+-    void doNegAddOptimization(SelectionInstruction &insn);
+ 
+     SelectionBlock &bb;
+     const ir::Liveness::LiveOut& liveout;
+@@ -159,13 +159,8 @@ namespace gbe
+ 
+   void SelBasicBlockOptimizer::addToReplaceInfoMap(SelectionInstruction& insn)
+   {
+-    assert(insn.opcode == SEL_OP_MOV || insn.opcode == SEL_OP_ADD);
+-    GenRegister &src = insn.src(0);
+-    if (insn.opcode == SEL_OP_ADD) {
+-      if (src.file == GEN_IMMEDIATE_VALUE)
+-        src = insn.src(1);
+-    }
+-
++    assert(insn.opcode == SEL_OP_MOV);
++    const GenRegister& src = insn.src(0);
+     const GenRegister& dst = insn.dst(0);
+     if (src.type != dst.type || src.file != dst.file)
+       return;
+@@ -254,29 +249,10 @@ namespace gbe
+ 
+       if (insn.opcode == SEL_OP_MOV)
+         addToReplaceInfoMap(insn);
+-
+-      doNegAddOptimization(insn);
+     }
+     cleanReplaceInfoMap();
+   }
+ 
+-  /* LLVM transform Mad(a, -b, c) to
+-     Add b, -b, 0
+-     Mad val, a, b, c
+-     for Gen support negtive modifier, mad(a, -b, c) is native suppoted.
+-     Also it can be used for the same like instruction sequence.
+-     Do it just like a:  mov b, -b, so it is a Mov operation like LocalCopyPropagation
+-  */
+-  void SelBasicBlockOptimizer::doNegAddOptimization(SelectionInstruction &insn) {
+-    if (insn.opcode == SEL_OP_ADD) {
+-      GenRegister src0 = insn.src(0);
+-      GenRegister src1 = insn.src(1);
+-      if ((src0.negation && src1.file == GEN_IMMEDIATE_VALUE && src1.value.f == 0.0f) ||
+-          (src1.negation && src0.file == GEN_IMMEDIATE_VALUE && src0.value.f == 0.0f))
+-        addToReplaceInfoMap(insn);
+-    }
+-  }
+-
+   void SelBasicBlockOptimizer::run()
+   {
+     for (size_t i = 0; i < MaxTries; ++i) {

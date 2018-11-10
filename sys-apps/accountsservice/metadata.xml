@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<use>
+		<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> instead of
+			<pkg>sys-auth/consolekit</pkg> for session tracking</flag>
+		<flag name="systemd">Use <pkg>sys-apps/systemd</pkg> instead of
+			<pkg>sys-auth/consolekit</pkg> for session tracking</flag>
+	</use>
+</pkgmetadata>

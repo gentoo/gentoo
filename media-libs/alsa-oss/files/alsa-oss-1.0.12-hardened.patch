@@ -1,0 +1,13 @@
+Index: alsa-oss-1.0.12/test/Makefile.am
+===================================================================
+--- alsa-oss-1.0.12.orig/test/Makefile.am
++++ alsa-oss-1.0.12/test/Makefile.am
+@@ -7,7 +7,7 @@ lmixer_SOURCES=lmixer.cc
+ noinst_HEADERS = mixctl.h
+ 
+ INCLUDES=-I$(top_srcdir)/oss-redir
+-AM_CFLAGS=-static -Wall -pipe -g
++AM_CFLAGS=-Wall -pipe -g
+ 
+ EXTRA_DIST=
+ 

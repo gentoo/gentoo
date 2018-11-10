@@ -1,0 +1,10 @@
+--- 1/arch/linux/i386/platform_specific.h
++++ 1/arch/linux/i386/platform_specific.h
+@@ -2,6 +2,7 @@
+ #define PLATFORM_SPECIFIC_H
+ 
+ #include <asm/ptrace.h>
++#include <sys/types.h>
+ #include <sys/syscall.h>
+ #include <sys/resource.h>
+ 

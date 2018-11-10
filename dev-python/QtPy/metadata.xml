@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Gentoo Python Project</name>
+  </maintainer>
+  <longdescription>
+     QtPy is a small abstraction layer that lets you write
+     applications using a single API call to either PyQt or
+     PySide. QtPy also provides a set of additional QWidgets. It
+     provides support for PyQt5, PyQt4 and PySide using the PyQt5
+     layout (where the QtGui module has been split into QtGui and
+     QtWidgets).
+     Basically, you write your code as if you were using PyQt5 but
+     import qt from QtPy instead of PyQt5.
+  </longdescription>
+  <use>
+    <flag name="designer">Build bindings for the QtDesigner module and enable the designer plugin</flag>
+    <flag name="gui">Build bindings for the QtGui module</flag>
+    <flag name="svg">Build bindings for the QtSvg module</flag>
+    <flag name="testlib">Build bindings for the QtTest module</flag>
+    <flag name="webengine">Build bindings for the QtWebEngine module</flag>
+    <flag name="webkit">Build bindings for the QtWebKit module</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">spyder-ide/qtpy</remote-id>
+    <remote-id type="pypi">QtPy</remote-id>
+  </upstream>
+</pkgmetadata>

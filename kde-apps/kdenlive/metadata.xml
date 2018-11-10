@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="freesound">Enable freesound.org credentials support via <pkg>dev-qt/qtwebkit</pkg> to download files</flag>
+		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
+		<flag name="jogshuttle">Enable support for Jog-Shuttle devices</flag>
+		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>
+	</use>
+</pkgmetadata>

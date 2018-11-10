@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+		Descent 1 is a classic first-person shooter released in 1995 by Interplay
+		and Parallax.  It was one of the first games with true 3-dimensional
+		graphics, movement, and light sourcing.  D1X-Rebirth is a modification of the
+		Descent 1 source that was released by Parallax and is based on the D1X source.
+	</longdescription>
+	<use>
+		<flag name="demo">Use the demo data instead of the full game</flag>
+		<flag name="music">Support for ingame music</flag>
+		<flag name="l10n_de">Provides German translations for the game's briefings, robot descriptions, and outro of the original campaign</flag>
+		<flag name="opl3-musicpack">Include alternate version of the game's music, recorded with the Yamaha YMF262 OPL3 soundchip</flag>
+		<flag name="sc55-musicpack">Include alternate version of the game's music, recorded with the Roland Sound Canvas SC-55 MIDI module</flag>
+	</use>
+</pkgmetadata>

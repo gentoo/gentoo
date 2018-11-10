@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>junghans@gentoo.org</email>
+    <name>Christoph Junghans</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-physics@gentoo.org</email>
+    <name>Gentoo Physics Project</name>
+  </maintainer>
+  <use>
+    <flag name="cuda">Enable cuda support</flag>
+    <flag name="examples">Installs the examples</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">espressomd/espresso</remote-id>
+  </upstream>
+</pkgmetadata>

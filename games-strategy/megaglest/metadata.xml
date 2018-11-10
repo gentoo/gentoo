@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<changelog>https://github.com/MegaGlest/megaglest-source/blob/develop/docs/CHANGELOG.txt</changelog>
+		<doc lang="en">http://glest.wikia.com/wiki/MG</doc>
+		<bugs-to>https://github.com/MegaGlest/megaglest-source/issues</bugs-to>
+		<remote-id type="github">MegaGlest/megaglest-source</remote-id>
+	</upstream>
+	<use>
+		<flag name="editor">Build map editor</flag>
+		<flag name="fribidi">Enable FriBIDi support</flag>
+		<flag name="streflop">Use the library streflop. Out of synchs may
+			occur if not enabled.</flag>
+		<flag name="tools">Build model import/export tools</flag>
+		<flag name="unicode">Use unicode strings for wxwidgets</flag>
+		<flag name="wxuniversal">Use the wxUniversal port which implements
+			the various GUI controls by drawing them itself </flag>
+		<flag name="model-viewer">Build model viewer</flag>
+	</use>
+	<longdescription lang="en">
+		MegaGlest is an entertaining free (freeware and free software) and
+		open source cross-platform 3D real-time strategy (RTS) game, where
+		you control the armies of one of seven different factions: Tech,
+		Magic, Egyptians, Indians, Norsemen, Persian or Romans. The game is
+		setup in one of 17 naturally looking settings, which -like the unit
+		models- are crafted with great appreciation for detail. Additional
+		game data can be downloaded from within the game at no cost.
+	</longdescription>
+</pkgmetadata>

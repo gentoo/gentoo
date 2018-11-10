@@ -1,0 +1,10 @@
+--- vitunes-2.3/players/mplayer.h.orig
++++ vitunes-2.3/players/mplayer.h
+@@ -28,6 +28,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <time.h>
+ #include <unistd.h>
+ 
+ #include "player_utils.h"

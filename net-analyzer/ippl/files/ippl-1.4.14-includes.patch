@@ -1,0 +1,20 @@
+--- a/Source/filter.c
++++ b/Source/filter.c
+@@ -22,6 +22,7 @@
+ 
+ #include <stdlib.h>
+ #include <ctype.h>
++#include <string.h> /* memcpy() */
+ 
+ #include <fnmatch.h>
+ 
+--- a/Source/main.c
++++ b/Source/main.c
+@@ -37,6 +37,7 @@
+ #include <pwd.h>
+ #include <stdlib.h>
+ #include <getopt.h>
++#include <grp.h> /* initgroups() */
+ 
+ #include "defines.h"
+ #include "configuration.h"

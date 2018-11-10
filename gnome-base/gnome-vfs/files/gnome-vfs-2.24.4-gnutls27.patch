@@ -1,0 +1,68 @@
+Debian #529827
+GNOME #574589
+Gentoo #253729
+Patch by Gilles Dartiguelongue, fixed for correctly setting have_ssl
+
+Allow gnome-vfs-2.24 to build with gnutls >= 2.7.0
+Use pkg-config in place of gnutls own macro since it's not present anymore.
+
+As gnome-vfs-ssl.c also directly uses libgcrypt, we need to make sure that
+configure checks for it. Use AM_PATH_LIBGCRYPT macro for that.
+
+
+Index: gnome-vfs-2.24.4/configure.in
+===================================================================
+--- gnome-vfs-2.24.4.orig/configure.in	2011-03-16 14:07:18.901009688 +0100
++++ gnome-vfs-2.24.4/configure.in	2011-03-16 14:16:19.317009687 +0100
+@@ -667,15 +667,14 @@
+   if test "x${OPENSSL_LIBS}" != "x"; then
+     AC_MSG_ERROR([*** Can't use both openssl and gnutls at the same time. Please pick one only. ***])
+   else
+-    AC_CHECK_HEADER(gcrypt.h,, AC_MSG_ERROR([*** Need gcrypt.h to compile with GnuTLS support ***]))
+-    AM_PATH_LIBGNUTLS(1.0.0, [AC_DEFINE(HAVE_GNUTLS, 1, [Define to 1 if GnuTLS is available])
+-			      have_ssl=true])
+-
++    AM_PATH_LIBGCRYPT
++    if test "x${LIBGCRYPT_LIBS}" = "x"; then
++      AC_MSG_ERROR([Unable to find LIBGRYPT])
++    fi
++    PKG_CHECK_MODULES(LIBGNUTLS, gnutls >= 1.0.0, [AC_DEFINE(HAVE_GNUTLS, 1, [Define to 1 if GnuTLS is available])
++    				 	   	  have_ssl=true])
+     if test "x${LIBGNUTLS_LIBS}" = "x"; then
+-      AM_PATH_LIBGNUTLS(0.5.1, [AC_DEFINE(HAVE_GNUTLS, 1, [Define to 1 if GnuTLS is available])
+-                                 AC_DEFINE(GNUTLS_COMPAT, 1, [FIXME])
+-				 have_ssl=true],
+-                                 AC_MSG_ERROR([Unable to find GNUTLS]))
++      AC_MSG_ERROR([Unable to find GNUTLS])
+     fi
+   fi
+ fi
+@@ -1045,8 +1044,8 @@
+ dnl ==============================================================================
+ 
+ PKG_CHECK_MODULES(LIBGNOMEVFS, glib-2.0 >= $GLIB_REQUIRED gmodule-no-export-2.0 >= $GLIB_REQUIRED gthread-2.0 >= $GLIB_REQUIRED gobject-2.0 >= $GLIB_REQUIRED gconf-2.0 >= $GCONF_REQUIRED libxml-2.0 >= $XML_REQUIRED gnome-mime-data-2.0 $dbus_requirement)
+-LIBGNOMEVFS_CFLAGS="$LIBGNOMEVFS_CFLAGS $OPENSSL_CFLAGS $LIBGNUTLS_CFLAGS $HOWL_CFLAGS $AVAHI_CFLAGS"
+-LIBGNOMEVFS_LIBS="$LIBGNOMEVFS_LIBS $OPENSSL_LIBS $LIBGNUTLS_LIBS $HOWL_LIBS $AVAHI_LIBS $RESOLVER_LIBS"
++LIBGNOMEVFS_CFLAGS="$LIBGNOMEVFS_CFLAGS $OPENSSL_CFLAGS $LIBGNUTLS_CFLAGS $LIBGCRYPT_CFLAGS $HOWL_CFLAGS $AVAHI_CFLAGS"
++LIBGNOMEVFS_LIBS="$LIBGNOMEVFS_LIBS $OPENSSL_LIBS $LIBGNUTLS_LIBS $LIBGCRYPT_LIBS $HOWL_LIBS $AVAHI_LIBS $RESOLVER_LIBS"
+ AC_SUBST(LIBGNOMEVFS_CFLAGS)
+ AC_SUBST(LIBGNOMEVFS_LIBS)
+ 
+Index: gnome-vfs-2.24.4/libgnomevfs/gnome-vfs-ssl.c
+===================================================================
+--- gnome-vfs-2.24.4.orig/libgnomevfs/gnome-vfs-ssl.c	2011-03-16 14:07:18.861009688 +0100
++++ gnome-vfs-2.24.4/libgnomevfs/gnome-vfs-ssl.c	2011-03-16 14:09:17.517009687 +0100
+@@ -61,13 +61,6 @@
+ #endif
+ #endif
+ 
+-#if defined GNUTLS_COMPAT
+-#define gnutls_certificate_credentials GNUTLS_CERTIFICATE_CREDENTIALS
+-#define gnutls_session GNUTLS_STATE
+-#define gnutls_certificate_free_credentials gnutls_certificate_free_sc
+-#define gnutls_certificate_allocate_credentials gnutls_certificate_allocate_sc
+-#endif
+-
+ typedef struct {
+ #ifdef HAVE_OPENSSL
+ 	int sockfd;

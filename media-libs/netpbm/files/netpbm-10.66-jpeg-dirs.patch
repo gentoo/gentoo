@@ -1,0 +1,28 @@
+use same -I style as converter/other/Makefile so people can disable these
+
+--- a/converter/other/jbig/Makefile
++++ b/converter/other/jbig/Makefile
+@@ -11,7 +11,9 @@ LIBJBIG_OBJECTS = jbig.o jbig_tab.o
+ 
+ EXTERN_INCLUDES =
+ ifneq ($(JBIGHDR_DIR),NONE)
+-  EXTERN_INCLUDES += -I$(JBIGHDR_DIR)
++  ifneq ($(JBIGHDR_DIR)x,x)
++    EXTERN_INCLUDES += -I$(JBIGHDR_DIR)
++  endif
+ endif
+ 
+ ifneq ($(JBIGHDR_DIR),NONE)
+--- a/converter/other/jpeg2000/Makefile
++++ b/converter/other/jpeg2000/Makefile
+@@ -11,7 +11,9 @@ include $(BUILDDIR)/config.mk
+ 
+ EXTERN_INCLUDES =
+ ifneq ($(JASPERHDR_DIR),NONE)
+-  EXTERN_INCLUDES += -I$(JASPERHDR_DIR)
++  ifneq ($(JASPERHDR_DIR)x,x)
++    EXTERN_INCLUDES += -I$(JASPERHDR_DIR)
++  endif
+ endif
+ 
+ 

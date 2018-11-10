@@ -1,0 +1,13 @@
+Index: lgrind/source/lgutil.c
+===================================================================
+--- lgrind.orig/source/lgutil.c
++++ lgrind/source/lgutil.c
+@@ -113,7 +113,7 @@ void Internal_Help_Language_List()
+ 		check=0;
+ 		if (*config=='\n' || config[strlen(config)-2]!='\\')
+ 			check=1;
+-		if (fgets(config, BUFFERSIZE, tf)==NULL) break;
++		if (fgets(config, BUFFERSIZE/4, tf)==NULL) break;
+ 		if (check!=0) AddToLList(config, &currlch, &llch);
+ 	} while (strcmp((*currlch).name, "EndOfLanguageDefinitions")!=0);
+ 	rch=lch;

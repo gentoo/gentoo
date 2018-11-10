@@ -1,0 +1,15 @@
+[Unit]
+Description=Sendmail Mail Transport Agent
+After=syslog.target network.target
+Wants=sm-client.service
+
+[Service]
+Type=forking
+PIDFile=/var/run/sendmail.pid
+ExecStartPre=-/usr/bin/newaliases
+ExecStartPre=-/bin/rm -f /var/spool/mqueue/xf*
+ExecStart=/usr/sbin/sendmail -bd -q30m -L sm-mta
+
+[Install]
+WantedBy=multi-user.target
+Also=sm-client.service

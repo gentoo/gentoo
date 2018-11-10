@@ -1,0 +1,29 @@
+From b6d3ab6d0324f8b462f57aaa551bd1d4aa1465f3 Mon Sep 17 00:00:00 2001
+From: Christian Ruppert <idl0r@gentoo.org>
+Date: Thu, 13 Feb 2014 22:19:40 +0100
+Subject: [PATCH 2/3] Fix return value of rsct_platform_create_com if
+ --disable-nonserial
+
+Return NULL instead of CJ_ERR_OPENING_DEVICE (int).
+
+Signed-off-by: Christian Ruppert <idl0r@gentoo.org>
+---
+ cjeca32/Platform_unix.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cjeca32/Platform_unix.cpp b/cjeca32/Platform_unix.cpp
+index e3f4997..cbe6876 100644
+--- a/cjeca32/Platform_unix.cpp
++++ b/cjeca32/Platform_unix.cpp
+@@ -54,7 +54,7 @@ CBaseCommunication *rsct_platform_create_com(const char *deviceName, CReader *re
+     com=new CUSBUnix(deviceName, reader);
+ # else
+   /* libusb and libhal not supported for serial devices */
+-  return CJ_ERR_OPENING_DEVICE;
++  return NULL;
+ # endif
+   else
+     com=new CSerialUnix(deviceName, reader);
+-- 
+1.8.3.2
+

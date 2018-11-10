@@ -1,0 +1,16 @@
+diff --git a/Storage/Hashed/Test.hs b/Storage/Hashed/Test.hs
+index d3cab6f..7f8291e 100644
+--- a/Storage/Hashed/Test.hs
++++ b/Storage/Hashed/Test.hs
+@@ -1,2 +1,2 @@
+-{-# LANGUAGE ScopedTypeVariables, FlexibleInstances #-}
++{-# LANGUAGE ScopedTypeVariables, FlexibleInstances, CPP #-}
+ module Storage.Hashed.Test( tests ) where
+@@ -464,2 +464,3 @@ posix = [ testCase "getFileStatus" $ check_stat Posix.getFileStatus
+ 
++#if ! MIN_VERSION_QuickCheck(2,8,2)
+ instance (Arbitrary a, Ord a) => Arbitrary (S.Set a)
+@@ -469,2 +470,3 @@ instance (Arbitrary k, Arbitrary v, Ord k) => Arbitrary (M.Map k v)
+     where arbitrary = M.fromList `fmap` arbitrary
++#endif
+ 

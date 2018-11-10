@@ -1,0 +1,49 @@
+.TH CPULIMIT "8" "July 2006" "cpulimit" "System Management"
+.SH NAME
+cpulimit -- limits the CPU usage of a process
+.SH SYNOPSIS
+.B cpulimit
+\fITARGET \fR[\fIOPTIONS\fR...]
+.SH DESCRIPTION
+.P
+\fITARGET \fRmust be exactly one of these:
+.TP
+\fB\-p\fR, \fB\-\-pid\fR=\fIN\fR
+pid of the process
+.TP
+\fB\-e\fR, \fB\-\-exe\fR=\fIFILE\fR
+name of the executable program file
+.TP
+\fB\-P\fR, \fB\-\-path\fR=\fIPATH\fR
+absolute path name of the executable program file
+.P
+\fIOPTIONS\fR
+.TP
+\fB\-l\fR, \fB\-\-limit\fR=\fIN\fR
+percentage of CPU allowed from 0 to 100 (mandatory)
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+show control statistics
+.TP
+\fB\-z\fR, \fB\-\-lazy\fR
+exit if there is no suitable target process, or if it dies
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+display this help and exit
+.SH EXAMPLES
+Assuming you have started \fB`foo \-\-bar`\fR and you find out with \fItop\fR(1) or
+\fIps\fR(1) that this process uses all your CPU time you can either
+.TP
+\[sh] \fBcpulimit \-e foo \-l 50\fR
+limits the CPU usage of the process by acting on the executable program file
+(note: the argument "\-\-bar" is omitted)
+.TP
+\[sh] \fBcpulimit \-p 1234 \-l 50\fR
+limits the CPU usage of the process by acting on its PID, as shown by
+\fIps\fR(1)
+.TP
+\[sh] \fBcpulimit \-P /usr/bin/foo \-l 50\fR
+same as \fI\-e\fR but uses the absolute path name 
+.SH AUTHOR
+This manpage was written for the Debian project by gregor herrmann
+<gregor+debian@comodo.priv.at> but may be used by others.

@@ -1,0 +1,11 @@
+--- configure.ac.ori	2014-01-31 01:00:58.796123088 +0100
++++ configure.ac	2014-01-31 01:00:43.767787763 +0100
+@@ -20,7 +20,7 @@
+ dnl List of tests
+ AC_SUBST([TESTS], ["basic copymove props locks http"])
+ 
+-NE_REQUIRE_VERSIONS([0], [25 26 27 28 29])
++NE_REQUIRE_VERSIONS([0], [25 26 27 28 29 30])
+ NEON_WITHOUT_ZLIB
+ NEON_WITHOUT_ACL
+ NEON_TEST

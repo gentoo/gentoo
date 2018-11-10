@@ -1,0 +1,27 @@
+--- hdf-4.2.11.orig/configure.ac	2016-03-16 20:07:45.093493050 +0000
++++ hdf-4.2.11/configure.ac	2016-03-16 22:08:06.232711036 +0000
+@@ -473,12 +473,14 @@
+   yes)
+     HAVE_SZIP="yes"
+     AC_CHECK_HEADERS([szlib.h], [HAVE_SZLIB_H="yes"], [unset HAVE_SZIP])
+-    if test "x$HAVE_SZLIB" = "xyes" -a "x$HAVE_SZLIB_H" = "xyes"; then
++    if test "x$HAVE_SZIP" = "xyes" -a "x$HAVE_SZLIB_H" = "xyes"; then
+       AC_CHECK_LIB([sz], [SZ_BufftoBuffCompress],, [unset HAVE_SZIP])
+     fi
+ 
+     if test -z "$HAVE_SZIP"; then
+       AC_MSG_ERROR([couldn't find szlib library])
++    else
++      USE_COMP_SZIP="yes"
+     fi
+     ;;
+   no)
+@@ -525,7 +527,7 @@
+       AC_CHECK_LIB([sz], [SZ_BufftoBuffCompress],, [unset HAVE_SZIP])
+     fi
+ 
+-    if test -z "$HAVE_SZIP"; then
++    if test  "x$HAVE_SZIP" != "xyes"; then
+       AC_MSG_ERROR([couldn't find szlib library])
+     else
+       USE_COMP_SZIP="yes"

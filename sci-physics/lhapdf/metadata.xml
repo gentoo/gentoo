@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci-physics@gentoo.org</email>
+  <name>Gentoo Physics Project</name>
+</maintainer>
+<longdescription lang="en">
+  Les Houches Parton Density Function (LHAPDF)
+  provides a unified and easy to use interface to modern PDF
+  sets. It is designed to work not only with individual PDF sets but
+  also with the more recent multiple "error" sets. It can be viewed as
+  the successor to PDFLIB, incorporating many of the older sets found in
+  the latter, including pion and photon PDFs. In LHAPDF the computer
+  code and input parameters/grids are separated thus allowing more easy
+  updating and no limit to the expansion possibilities. The code and
+  data sets can be downloaded together or individually as desired. From
+  version 4.1 onwards a configuration script facilitates the
+  installation of LHAPDF.
+</longdescription>
+<use>
+  <flag name="octave">Add bindings for <pkg>sci-mathematics/octave</pkg></flag> 
+</use>
+</pkgmetadata>

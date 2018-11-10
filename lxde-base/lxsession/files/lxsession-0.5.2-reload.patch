@@ -1,0 +1,43 @@
+--- lxsession-0.5.2/Makefile.am.debug	2014-11-29 23:50:05.000000000 +0900
++++ lxsession-0.5.2/Makefile.am	2015-06-17 11:08:14.510501437 +0900
+@@ -424,6 +424,7 @@
+     --pkg gio-2.0 \
+     --pkg posix \
+     --pkg lxsettings-daemon \
++    --pkg xevent \
+     $(buildinclip_VALAFLAGS) \
+     $(buildinpolkit_VALAFLAGS) \
+     $(NULL)
+--- lxsession-0.5.2/lxsession/main.vala.debug	2014-10-05 08:49:49.000000000 +0900
++++ lxsession-0.5.2/lxsession/main.vala	2015-06-17 11:19:54.979024117 +0900
+@@ -96,6 +96,17 @@
+             return -1;
+         }
+ 
++		if (xevent_init() == false)
++		{
++			return 1;
++		}
++
++		if (reload == true)
++		{
++			send_internal_command(LXS_CMD.RELOAD);
++			return 0;
++		}
++
+         message ("Session is %s",session);
+         message ("DE is %s", desktop_environnement);
+ 
+--- lxsession-0.5.2/vapi/xevent.vapi.debug	2015-06-17 11:08:14.520501444 +0900
++++ lxsession-0.5.2/vapi/xevent.vapi	2015-06-17 11:20:16.384040089 +0900
+@@ -0,0 +1,10 @@
++[CCode (cprefix = "LxsessionXEvent", cheader_filename = "lxsettings-daemon/xevent.h")]
++    public static void send_internal_command( int cmd );
++    public static bool xevent_init();
++
++[CCode (cname = "int", cprefix = "LXS_", cheader_filename = "lxsettings-daemon/xevent.h", has_type_id = false)]
++	public enum LXS_CMD {
++		RELOAD,
++		EXIT,
++		LAST_CMD
++	}

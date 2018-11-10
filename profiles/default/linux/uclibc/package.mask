@@ -1,0 +1,85 @@
+# Copyright 1999-2018 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+sys-libs/musl
+sys-libs/glibc
+sys-libs/pam
+
+# We use eudev which is tested on both uclibc and musl
+sys-apps/systemd
+sys-fs/udev
+
+# Working on it, bug #470884
+dev-libs/elfutils
+>virtual/libelf-2
+
+# These binary pkgs have a hard dep on glibc; make repoman shut up
+app-arch/rar
+dev-games/gtkradiant
+dev-games/ps2-packer
+games-action/descent3
+games-action/descent3-demo
+games-action/shadowgrounds-bin
+games-action/shadowgrounds-survivor-bin
+games-action/trine
+games-fps/enemy-territory
+games-fps/enemy-territory-etpro
+games-fps/enemy-territory-truecombat
+games-fps/etqw-bin
+games-fps/glxquake-bin
+games-fps/legends
+games-fps/postal2
+games-fps/quake3-bin
+games-fps/quake3-demo
+games-fps/rtcwmp-demo
+games-fps/rtcwsp-demo
+games-fps/soldieroffortune
+games-fps/transfusion-bin
+games-fps/tribes2
+games-fps/ut2004
+games-fps/ut2004-action
+games-fps/ut2004-airbuccaneers
+games-fps/ut2004-bonuspack-cbp1
+games-fps/ut2004-bonuspack-cbp2
+games-fps/ut2004-bonuspack-ece
+games-fps/ut2004-bonuspack-mega
+games-fps/ut2004-cor
+games-fps/ut2004-crossfire
+games-fps/ut2004-data
+games-fps/ut2004-deathball
+games-fps/ut2004-fragops
+games-fps/ut2004-hamsterbash
+games-fps/ut2004-muralis
+games-fps/ut2004-strikeforce
+games-fps/ut2004-troopers
+games-fps/ut2004-unwheel
+games-puzzle/world-of-goo
+games-puzzle/world-of-goo-demo
+games-rpg/wasteland2
+games-server/etqw-ded
+games-server/ut2004-ded
+games-simulation/bcs-demo
+games-strategy/defcon-demo
+games-strategy/knights-demo
+games-strategy/majesty-demo
+www-plugins/adobe-flash
+
+# needs boost[nls]
+games-strategy/wesnoth
+
+# missing multilib deps
+games-action/beathazardultra
+games-action/brutal-legend
+games-action/hotline-miami
+games-action/intrusion2
+games-action/solar2
+games-action/swordandsworcery
+games-action/trine-enchanted-edition
+games-action/trine2
+games-arcade/dynamitejack
+games-arcade/thinktanks-demo
+games-misc/little-inferno
+games-misc/papers-please
+games-rpg/dear-esther
+games-rpg/dungeon-defenders
+

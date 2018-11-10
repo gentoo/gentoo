@@ -1,0 +1,133 @@
+use stdint.h rather than hand guessing the underlying size
+
+--- a/tryulong32.c
++++ /dev/null
+@@ -1,11 +0,0 @@
+-main()
+-{
+-  unsigned long u;
+-  u = 1;
+-  u += u; u += u; u += u; u += u; u += u; u += u; u += u; u += u;
+-  u += u; u += u; u += u; u += u; u += u; u += u; u += u; u += u;
+-  u += u; u += u; u += u; u += u; u += u; u += u; u += u; u += u;
+-  u += u; u += u; u += u; u += u; u += u; u += u; u += u; u += u;
+-  if (!u) _exit(0);
+-  _exit(1);
+-}
+--- a/tryulong64.c
++++ /dev/null
+@@ -1,11 +0,0 @@
+-main()
+-{
+-  unsigned long u;
+-  u = 1;
+-  u += u; u += u; u += u; u += u; u += u; u += u; u += u; u += u;
+-  u += u; u += u; u += u; u += u; u += u; u += u; u += u; u += u;
+-  u += u; u += u; u += u; u += u; u += u; u += u; u += u; u += u;
+-  u += u; u += u; u += u; u += u; u += u; u += u; u += u; u += u;
+-  if (!u) _exit(1);
+-  _exit(0);
+-}
+--- a/uint32.h1
++++ /dev/null
+@@ -1,11 +0,0 @@
+-#ifndef UINT32_H
+-#define UINT32_H
+-
+-typedef unsigned int uint32;
+-
+-extern void uint32_pack(char *,uint32);
+-extern void uint32_pack_big(char *,uint32);
+-extern void uint32_unpack(const char *,uint32 *);
+-extern void uint32_unpack_big(const char *,uint32 *);
+-
+-#endif
+--- a/uint32.h2
++++ /dev/null
+@@ -1,11 +0,0 @@
+-#ifndef UINT32_H
+-#define UINT32_H
+-
+-typedef unsigned long uint32;
+-
+-extern void uint32_pack(char *,uint32);
+-extern void uint32_pack_big(char *,uint32);
+-extern void uint32_unpack(const char *,uint32 *);
+-extern void uint32_unpack_big(const char *,uint32 *);
+-
+-#endif
+--- a/uint64.h1
++++ /dev/null
+@@ -1,8 +0,0 @@
+-#ifndef UINT64_H
+-#define UINT64_H
+-
+-/* sysdep: -ulong64 */
+-
+-typedef unsigned long long uint64;
+-
+-#endif
+--- a/uint64.h2
++++ /dev/null
+@@ -1,8 +0,0 @@
+-#ifndef UINT64_H
+-#define UINT64_H
+-
+-/* sysdep: +ulong64 */
+-
+-typedef unsigned long uint64;
+-
+-#endif
+--- /dev/null
++++ b/uint32.h
+@@ -0,0 +1,12 @@
++#ifndef UINT32_H
++#define UINT32_H
++
++#include <stdint.h>
++typedef uint32_t uint32;
++
++extern void uint32_pack(char *,uint32);
++extern void uint32_pack_big(char *,uint32);
++extern void uint32_unpack(const char *,uint32 *);
++extern void uint32_unpack_big(const char *,uint32 *);
++
++#endif
+--- /dev/null
++++ b/uint64.h
+@@ -0,0 +1,8 @@
++#ifndef UINT64_H
++#define UINT64_H
++
++#include <stdint.h>
++
++typedef uint64_t uint64;
++
++#endif
+--- a/Makefile
++++ b/Makefile
+@@ -788,13 +788,6 @@ uint16_unpack.o: \
+ compile uint16_unpack.c uint16.h
+ 	./compile uint16_unpack.c
+ 
+-uint32.h: \
+-tryulong32.c compile load uint32.h1 uint32.h2
+-	( ( ./compile tryulong32.c && ./load tryulong32 && \
+-	./tryulong32 ) >/dev/null 2>&1 \
+-	&& cat uint32.h2 || cat uint32.h1 ) > uint32.h
+-	rm -f tryulong32.o tryulong32
+-
+ uint32_pack.o: \
+ compile uint32_pack.c uint32.h
+ 	./compile uint32_pack.c
+@@ -803,10 +796,6 @@ uint32_unpack.o: \
+ compile uint32_unpack.c uint32.h
+ 	./compile uint32_unpack.c
+ 
+-uint64.h: \
+-choose compile load tryulong64.c uint64.h1 uint64.h2
+-	./choose clr tryulong64 uint64.h1 uint64.h2 > uint64.h
+-
+ unix.a: \
+ makelib alloc.o alloc_re.o buffer.o buffer_0.o buffer_1.o buffer_2.o \
+ buffer_copy.o buffer_get.o buffer_put.o env.o error.o error_str.o \

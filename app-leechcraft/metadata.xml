@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-leechcraft category contains LeechCraft core and all plugins.
+	</longdescription>
+	<longdescription lang="ru">
+		Категория app-leechcraft содержит ядро LeechCraft'а и его плагины.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-leechcraft contiene el núcleo principal de LeechCraft
+		y todos sus añadidos.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,104 @@
+--- openarena-engine-source-0.8.8/Makefile
++++ openarena-engine-source-0.8.8/Makefile
+@@ -1406,41 +1406,6 @@
+   $(B)/client/l_script.o \
+   $(B)/client/l_struct.o \
+   \
+-  $(B)/client/jcapimin.o \
+-  $(B)/client/jcapistd.o \
+-  $(B)/client/jccoefct.o  \
+-  $(B)/client/jccolor.o \
+-  $(B)/client/jcdctmgr.o \
+-  $(B)/client/jchuff.o   \
+-  $(B)/client/jcinit.o \
+-  $(B)/client/jcmainct.o \
+-  $(B)/client/jcmarker.o \
+-  $(B)/client/jcmaster.o \
+-  $(B)/client/jcomapi.o \
+-  $(B)/client/jcparam.o \
+-  $(B)/client/jcphuff.o \
+-  $(B)/client/jcprepct.o \
+-  $(B)/client/jcsample.o \
+-  $(B)/client/jdapimin.o \
+-  $(B)/client/jdapistd.o \
+-  $(B)/client/jdatasrc.o \
+-  $(B)/client/jdcoefct.o \
+-  $(B)/client/jdcolor.o \
+-  $(B)/client/jddctmgr.o \
+-  $(B)/client/jdhuff.o \
+-  $(B)/client/jdinput.o \
+-  $(B)/client/jdmainct.o \
+-  $(B)/client/jdmarker.o \
+-  $(B)/client/jdmaster.o \
+-  $(B)/client/jdpostct.o \
+-  $(B)/client/jdsample.o \
+-  $(B)/client/jdtrans.o \
+-  $(B)/client/jerror.o \
+-  $(B)/client/jfdctflt.o \
+-  $(B)/client/jidctflt.o \
+-  $(B)/client/jmemmgr.o \
+-  $(B)/client/jmemnobs.o \
+-  $(B)/client/jutils.o \
+   \
+   $(B)/client/tr_animation.o \
+   $(B)/client/tr_backend.o \
+--- openarena-engine-source-0.8.8/code/renderer/tr_image_jpg.c
++++ openarena-engine-source-0.8.8/code/renderer/tr_image_jpg.c
+@@ -31,7 +31,7 @@
+  */
+ 
+ #define JPEG_INTERNALS
+-#include "../jpeg-6b/jpeglib.h"
++#include <jpeglib.h>
+ 
+ void R_LoadJPG( const char *filename, unsigned char **pic, int *width, int *height ) {
+   /* This struct contains the JPEG decompression parameters and pointers to
+@@ -131,7 +131,10 @@
+   }
+ 
+   memcount = pixelcount * 4;
+-  row_stride = cinfo.output_width * cinfo.output_components;
++  if (3 == cinfo.output_components)
++    row_stride = cinfo.output_width * 4;
++  else
++    row_stride = cinfo.output_width * cinfo.output_components;
+ 
+   out = ri.Malloc(memcount);
+ 
+@@ -144,14 +147,26 @@
+   /* Here we use the library's state variable cinfo.output_scanline as the
+    * loop counter, so that we don't have to keep track ourselves.
+    */
++  buf = out;
+   while (cinfo.output_scanline < cinfo.output_height) {
+     /* jpeg_read_scanlines expects an array of pointers to scanlines.
+      * Here the array is only one element long, but you could ask for
+      * more than one scanline at a time if that's more convenient.
+      */
+-	buf = ((out+(row_stride*cinfo.output_scanline)));
+ 	buffer = &buf;
+     (void) jpeg_read_scanlines(&cinfo, buffer, 1);
++    if (3 == cinfo.output_components) {
++      /* turn RGB into RGBA */
++      int ioffset = cinfo.output_width * 3 - 1;
++      int ooffset = cinfo.output_width * 4 - 1;
++      do {
++	buf[ooffset--] = 255;
++	buf[ooffset--] = buf[ioffset--];
++	buf[ooffset--] = buf[ioffset--];
++	buf[ooffset--] = buf[ioffset--];
++      } while (ioffset > 0);
++    }
++    buf += row_stride;
+   }
+   
+   buf = out;
+@@ -176,7 +191,7 @@
+ 		buf[--dindex] = greyshade;
+ 	} while(sindex);
+   }
+-  else
++  else if (4 == cinfo.output_components) 
+   {
+ 	// clear all the alphas to 255
+ 	int	i;

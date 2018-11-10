@@ -1,0 +1,54 @@
+ Makefile | 20 +++++++++++++-------
+ 1 file changed, 13 insertions(+), 7 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index bbf0778..1dc6c62 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,22 +4,22 @@
+ #	On System V machines, RANLIB should be ':'
+ #
+ SHELL		= /bin/sh
+-RANLIB		= :
++#RANLIB		= :
+ 
+-CXX		= gcc -felide-constructors
++CXX		?= g++
+ #CXX		= CC
+ 
+ .SUFFIXES:	.cc
+ 
+ .cc.o:
+-	$(CXX) $(CCFLAGS) -c $< -o $@
++	$(CXX) $(CXXFLAGS) -fPIC -felide-constructors -c $< -o $@
+ 
+ OPT		= -O
+ DEBUG		=
+ CCFLAGS		= $(OPT) $(DEBUG)
+ LIBRARY		= pdb++
+ 
+-LIBARCH		= lib$(LIBRARY).a
++LIBARCH		= lib$(LIBRARY)
+ OBJS		= pdb_read.o pdb_sprntf.o pdb_sscanf.o pdb_chars.o \
+ 		pdb_type.o pdb++.o pdbinput.o
+ SRCS		= pdb_read.cc pdb_sprntf.cc pdb_sscanf.cc pdb_chars.cc \
+@@ -30,10 +30,16 @@ all:		$(LIBARCH)
+ install:	$(LIBARCH)
+ 		install -F /usr/local/lib $(LIBARCH)
+ 
+-$(LIBARCH):     $(OBJS)
++$(LIBARCH).a:     $(OBJS)
+ 		@echo "Loading $(LIBARCH) ... "
+-		@ar cru $(LIBARCH) $(OBJS)
+-		@$(RANLIB) $(LIBARCH)
++		$(AR) cru $@ $(OBJS)
++		$(RANLIB) $@
++		@echo "done"
++
++$(LIBARCH).so:     $(OBJS)
++		$(CXX) $(LDFLAGS) -shared -Wl,--soname,libpdb++.so.0 -o libpdb++.so.0.1 $(OBJS)
++		ln -sf libpdb++.so.0.1 libpdb++.so.0
++		ln -sf libpdb++.so.0.1 libpdb++.so
+ 		@echo "done"
+ 
+ clean:;		@rm -f $(OBJS)

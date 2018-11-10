@@ -1,0 +1,122 @@
+ apbs/contrib/iapbs/src/apbs_driver.c |  6 +++---
+ apbs/src/CMakeLists.txt              |  1 +
+ apbs/tools/CMakeLists.txt            |  2 +-
+ apbs/tools/python/CMakeLists.txt     |  1 +
+ apbs/tools/python/apbslib.c          |  4 ++--
+ apbs/tools/python/apbslib.i          |  4 ++--
+ apbs/tools/python/setup.py           | 16 ++++++++++++++++
+ 7 files changed, 26 insertions(+), 8 deletions(-)
+
+diff --git a/apbs/contrib/iapbs/src/apbs_driver.c b/apbs/contrib/iapbs/src/apbs_driver.c
+index c9e443b..e1ad67f 100644
+--- a/apbs/contrib/iapbs/src/apbs_driver.c
++++ b/apbs/contrib/iapbs/src/apbs_driver.c
+@@ -595,7 +595,7 @@ int apbsdrv_(
+ 		printPBEPARM(pbeparm);
+ 
+ 		/* Refine mesh */
+-		if (!preRefineFE(i, nosh, feparm, fetk)) {
++		if (!preRefineFE(i, feparm, fetk)) {
+ 		    Vnm_tprint( 2, "Error pre-refining mesh!\n");
+ 		    VJMPERR1(0);
+ 		}
+@@ -609,7 +609,7 @@ int apbsdrv_(
+ 		Vnm_tprint(1, "  Beginning solve-estimate-refine cycle:\n");
+ 		for (isolve=0; isolve<feparm->maxsolve; isolve++) {
+ 		    Vnm_tprint(1, "    Solve #%d...\n", isolve);
+-		    if (!solveFE(i, nosh, pbeparm, feparm, fetk)) {
++		    if (!solveFE(i, pbeparm, feparm, fetk)) {
+ 			Vnm_tprint(2, "ERROR SOLVING EQUATION!\n");
+ 			VJMPERR1(0);
+ 		    }
+@@ -622,7 +622,7 @@ int apbsdrv_(
+ 		    /* We're not going to refine if we've hit the max number
+ 		     * of solves */
+ 		    if (isolve < (feparm->maxsolve)-1) {
+-			if (!postRefineFE(i, nosh, feparm, fetk)) break;
++			if (!postRefineFE(i, feparm, fetk)) break;
+ 		    }
+ 		    bytesTotal = Vmem_bytesTotal();
+ 		    highWater = Vmem_highWaterTotal();
+diff --git a/apbs/src/CMakeLists.txt b/apbs/src/CMakeLists.txt
+index 44d20fa..2577343 100644
+--- a/apbs/src/CMakeLists.txt
++++ b/apbs/src/CMakeLists.txt
+@@ -68,6 +68,7 @@ configure_file(
+ 
+ if(ENABLE_iAPBS)
+     ADD_LIBRARY(apbs_routines routines.c routines.h)
++    target_link_libraries(apbs_routines apbs_mg apbs_fem)
+     INSTALL(TARGETS apbs_routines DESTINATION ${LIBRARY_INSTALL_PATH})
+     INSTALL(FILES apbscfg.h DESTINATION ${HEADER_INSTALL_PATH})
+ endif()
+diff --git a/apbs/tools/CMakeLists.txt b/apbs/tools/CMakeLists.txt
+index 1982a3c..4acbe68 100644
+--- a/apbs/tools/CMakeLists.txt
++++ b/apbs/tools/CMakeLists.txt
+@@ -4,5 +4,5 @@ add_subdirectory(mesh)
+ add_subdirectory(manip)
+ 
+ if(ENABLE_PYTHON)
+-    add_subdirectory(manip)
++    add_subdirectory(python)
+ endif(ENABLE_PYTHON)
+diff --git a/apbs/tools/python/CMakeLists.txt b/apbs/tools/python/CMakeLists.txt
+new file mode 100644
+index 0000000..8b13789
+--- /dev/null
++++ b/apbs/tools/python/CMakeLists.txt
+@@ -0,0 +1 @@
++
+diff --git a/apbs/tools/python/apbslib.c b/apbs/tools/python/apbslib.c
+index fef5cc8..feaaa2c 100644
+--- a/apbs/tools/python/apbslib.c
++++ b/apbs/tools/python/apbslib.c
+@@ -2504,8 +2504,8 @@ static swig_module_info swig_module = {swig_types, 24, 0, 0, 0, 0};
+ #include "maloc/maloc.h"
+ #include "apbscfg.h" 
+ #include "routines.h"
+-#include "apbs/valist.h"
+-#include "apbs/vatom.h"
++#include "generic/valist.h"
++#include "generic/vatom.h"
+ 
+ 
+ #include <limits.h>
+diff --git a/apbs/tools/python/apbslib.i b/apbs/tools/python/apbslib.i
+index 17fe521..44d05ea 100644
+--- a/apbs/tools/python/apbslib.i
++++ b/apbs/tools/python/apbslib.i
+@@ -15,8 +15,8 @@ Header files:
+ #include "maloc/maloc.h"
+ #include "apbscfg.h" 
+ #include "routines.h"
+-#include "apbs/valist.h"
+-#include "apbs/vatom.h"
++#include "generic/valist.h"
++#include "generic/vatom.h"
+ %} 
+ 
+ /* 
+diff --git a/apbs/tools/python/setup.py b/apbs/tools/python/setup.py
+new file mode 100644
+index 0000000..4a20198
+--- /dev/null
++++ b/apbs/tools/python/setup.py
+@@ -0,0 +1,16 @@
++from distutils.core import setup, Extension
++setup(name='apbs',
++    version='1.4.1',
++    package_dir={'apbs': '', 'vgrid': 'vgrid'},
++    packages=['apbs', 'vgrid'],
++    py_modules=['apbslib', 'main', 'noinput'],
++    ext_modules=[
++        Extension(
++            '_apbslib',
++            ['apbslib.i'],
++            swig_opts=['-module', 'apbslib', '-I../include'],
++            include_dirs=["../../src"],
++            libraries=["apbs_generic", "apbs_routines"]
++            )
++        ],
++    )

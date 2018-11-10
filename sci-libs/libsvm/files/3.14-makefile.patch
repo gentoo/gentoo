@@ -1,0 +1,51 @@
+* respect CFLAGS and CXXFLAGS from user
+* compile with CC for C and CXX for C++ files
+* propagate and respect user's LDFLAGS
+* PIC only used for the library
+* link the shared version library
+nov 2012 - bicatali@gentoo.org
+
+--- a/Makefile.orig	2012-11-29 10:39:07.149421728 -0800
++++ b/Makefile	2012-11-29 10:57:19.727766521 -0800
+@@ -1,9 +1,12 @@
+ CXX ?= g++
+-CFLAGS = -Wall -Wconversion -O3 -fPIC
++CC ?= gcc
++CFLAGS ?= -Wall -Wconversion -O3
++CXXFLAGS ?= $(CFLAGS)
+ SHVER = 2
+ OS = $(shell uname)
++PICFLAGS ?= -fPIC
+ 
+-all: svm-train svm-predict svm-scale
++all: svm-train svm-predict svm-scale lib
+ 
+ lib: svm.o
+ 	if [ "$(OS)" = "Darwin" ]; then \
+@@ -11,15 +14,20 @@
+ 	else \
+ 		SHARED_LIB_FLAG="-shared -Wl,-soname,libsvm.so.$(SHVER)"; \
+ 	fi; \
+-	$(CXX) $${SHARED_LIB_FLAG} svm.o -o libsvm.so.$(SHVER)
++	$(CXX) $(LDFLAGS) $${SHARED_LIB_FLAG} svm.o -o libsvm.so.$(SHVER) ; \
++	ln -s libsvm.so.$(SHVER) libsvm.so
+ 
+ svm-predict: svm-predict.c svm.o
+-	$(CXX) $(CFLAGS) svm-predict.c svm.o -o svm-predict -lm
++	$(CC) $(CFLAGS) -c $@.c -o $@.o
++	$(CXX) $(LDFLAGS) $@.o svm.o -lm -o $@
+ svm-train: svm-train.c svm.o
+-	$(CXX) $(CFLAGS) svm-train.c svm.o -o svm-train -lm
++	$(CC) $(CFLAGS) -c $@.c -o $@.o
++	$(CXX) $(LDFLAGS) $@.o svm.o -lm -o $@
+ svm-scale: svm-scale.c
+-	$(CXX) $(CFLAGS) svm-scale.c -o svm-scale
++	$(CC) $(CFLAGS) -c $@.c -o $@.o
++	$(CXX) $(LDFLAGS) $@.o -o $@
++
+ svm.o: svm.cpp svm.h
+-	$(CXX) $(CFLAGS) -c svm.cpp
++	$(CXX) $(CXXFLAGS) $(PICFLAGS) -c svm.cpp -o $@
+ clean:
+-	rm -f *~ svm.o svm-train svm-predict svm-scale libsvm.so.$(SHVER)
++	rm -f *~ svm.o svm-train svm-predict svm-scale libsvm.so.$(SHVER) libsvm.so

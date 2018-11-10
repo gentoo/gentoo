@@ -1,0 +1,33 @@
+From ef34b197dd23833c0dde9ea20f62681dbafa7a9b Mon Sep 17 00:00:00 2001
+From: Jason Zaman <jason@perfinion.com>
+Date: Fri, 7 Sep 2018 21:19:11 +0800
+Subject: [PATCH 1/2] cmake: Fix GOOGLE_CLOUD_CPP_GRPC_PROVIDER=pkg-config
+
+The grpc_cpp_plugin executable needs to be marked imported otherwise
+cmake will try (and fail) to build it. Also the location variable was
+typo'd.
+
+Signed-off-by: Jason Zaman <jason@perfinion.com>
+---
+ cmake/IncludeGrpc.cmake | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/cmake/IncludeGrpc.cmake b/cmake/IncludeGrpc.cmake
+index 36dcfe5c..c18f5cbc 100644
+--- a/cmake/IncludeGrpc.cmake
++++ b/cmake/IncludeGrpc.cmake
+@@ -225,9 +225,8 @@ elseif("${GOOGLE_CLOUD_CPP_GRPC_PROVIDER}" STREQUAL "pkg-config")
+             ${PROTOBUF_SRC_ROOT_FOLDER}/vsprojects/${_PROTOBUF_ARCH_DIR}Release
+             ${PROTOBUF_SRC_ROOT_FOLDER}/vsprojects/${_PROTOBUF_ARCH_DIR}Debug)
+     mark_as_advanced(PROTOC_GRPCPP_PLUGIN_EXECUTABLE)
+-    add_executable(grpc_cpp_plugin ${PROTOC_GRPC_PLUGIN_EXECUTABLE})
++    add_executable(grpc_cpp_plugin IMPORTED)
+     set_property(TARGET grpc_cpp_plugin
+-                 PROPERTY IMPORTED_LOCATION
+-                          ${PROTOC_GRPCPP_CPP_PLUGIN_EXECUTABLE})
++                 PROPERTY IMPORTED_LOCATION ${PROTOC_GRPCPP_PLUGIN_EXECUTABLE})
+ 
+ endif ()
+-- 
+2.16.4
+

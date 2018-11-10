@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>alsa-bugs@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="alisp">Enable support for ALISP (ALSA LISP) interpreter for advanced features.</flag>
+    <flag name="thread-safety">thread-safe API functions</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:alsa-project:alsa-lib</remote-id>
+  </upstream>
+</pkgmetadata>

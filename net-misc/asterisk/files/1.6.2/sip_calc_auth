@@ -1,0 +1,25 @@
+#! /bin/bash
+
+[ $# -lt 7 ] && echo "USAGE: $0 username realm password method uri algorithm nonce" && exit 1
+
+un=$1
+realm=$2
+pw=$3
+method=$4
+uri=$5
+alg=$6
+nonce=$7
+
+echo "Using $un@$realm (secret $pw) for method $method to $uri with nonce $nonce (alg=$alg)"
+
+a1=$un:$realm:$pw
+a2=$method:$uri
+ha1=$(echo -n "$a1" | openssl $alg)
+ha2=$(echo -n "$a2" | openssl $alg)
+resp=$(echo -n "$ha1:$nonce:$ha2" | openssl $alg)
+
+echo "a1=$a1"
+echo "a2=$a2"
+echo "ha1=$ha1"
+echo "ha2=$ha2"
+echo "resp=$resp"

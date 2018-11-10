@@ -1,0 +1,52 @@
+From a7b82fb3d3bd3de3ce624d9e4b0da53cb9835c2d Mon Sep 17 00:00:00 2001
+From: Ashesh Vashi <ashesh.vashi@enterprisedb.com>
+Date: Mon, 31 Jul 2017 14:57:55 +0530
+Subject: [PATCH] Added support two digits version for PostgreSQL/EDB Postgres
+ Advanced Server >= 10
+
+---
+ CMakeLists.txt     | 6 +++++-
+ cmake/FindPG.cmake | 6 +++---
+ 2 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8214650..29755b4 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -176,7 +176,11 @@ MESSAGE(STATUS "  Description                 : ${CPACK_PACKAGE_DESCRIPTION_SUMM
+ MESSAGE(STATUS "  Version                     : ${VERSION}")
+ MESSAGE(STATUS " ")
+ MESSAGE(STATUS "  PostgreSQL version string   : ${PG_VERSION_STRING}")
+-MESSAGE(STATUS "  PostgreSQL version parts    : ${PG_MAJOR_VERSION}.${PG_MINOR_VERSION}.${PG_PATCH_VERSION}")
++IF(${PG_MAJOR_VERSION} GREATER 9)
++	MESSAGE(STATUS "  PostgreSQL version parts    : ${PG_MAJOR_VERSION}")
++ELSE()
++	MESSAGE(STATUS "  PostgreSQL version parts    : ${PG_MAJOR_VERSION}.${PG_MINOR_VERSION}")
++ENDIF(${PG_MAJOR_VERSION} GREATER 10)
+ MESSAGE(STATUS "  PostgreSQL path             : ${PG_ROOT_DIR}")
+ MESSAGE(STATUS "  PostgreSQL config binary    : ${PG_CONFIG_PATH}")
+ MESSAGE(STATUS "  PostgreSQL include path     : ${PG_INCLUDE_DIRS}")
+diff --git a/cmake/FindPG.cmake b/cmake/FindPG.cmake
+index 349086c..9768771 100644
+--- a/cmake/FindPG.cmake
++++ b/cmake/FindPG.cmake
+@@ -28,7 +28,6 @@
+ # PG_VERSION_STRING - The PostgreSQL version number.
+ # PG_MAJOR_VERSION - The PostgreSQL major version (x in x.y.z).
+ # PG_MINOR_VERSION - The PostgreSQL minor version (y in x.y.z).
+-# PG_PATCH_VERSION - The PostgreSQL patch version (z in x.y.z).
+ # PG_EXTENSION - Set to TRUE if PostgreSQL supports extensions.
+ 
+ IF(NOT PG_STATIC OR PG_STATIC STREQUAL "")
+@@ -70,8 +69,9 @@ IF(NOT _retval)
+     # Split the version into its component parts.
+     STRING(REGEX MATCHALL "[0-9]+" PG_VERSION_PARTS "${PG_VERSION_STRING}")
+     LIST(GET PG_VERSION_PARTS 0 PG_MAJOR_VERSION)
+-    LIST(GET PG_VERSION_PARTS 1 PG_MINOR_VERSION)
+-    LIST(GET PG_VERSION_PARTS 2 PG_PATCH_VERSION)
++    IF((PG_MAJOR_VERSION LESS 10))
++        LIST(GET PG_VERSION_PARTS 1 PG_MINOR_VERSION)
++    ENDIF((PG_MAJOR_VERSION LESS 10))
+ 
+     # Are extensions supported?
+     IF((PG_MAJOR_VERSION GREATER 9) OR ((PG_MAJOR_VERSION EQUAL 9) AND (PG_MINOR_VERSION GREATER 0)))

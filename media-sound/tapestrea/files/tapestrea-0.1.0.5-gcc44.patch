@@ -1,0 +1,33 @@
+diff -ur tapestrea-0.1.0.5-orig/scripting/chuck-1.2.1.2/src/util_string.h tapestrea-0.1.0.5/scripting/chuck-1.2.1.2/src/util_string.h
+--- tapestrea-0.1.0.5-orig/scripting/chuck-1.2.1.2/src/util_string.h	2009-06-27 19:06:03.000000000 -0400
++++ tapestrea-0.1.0.5/scripting/chuck-1.2.1.2/src/util_string.h	2009-06-27 19:06:54.000000000 -0400
+@@ -36,6 +36,7 @@
+ #include "chuck_def.h"
+ #include <string>
+ #include <vector>
++#include <cstdio>
+ 
+ 
+ // itoa
+diff -ur tapestrea-0.1.0.5-orig/src/taps_birdbrain.cpp tapestrea-0.1.0.5/src/taps_birdbrain.cpp
+--- tapestrea-0.1.0.5-orig/src/taps_birdbrain.cpp	2009-06-27 19:06:18.000000000 -0400
++++ tapestrea-0.1.0.5/src/taps_birdbrain.cpp	2009-06-27 17:49:18.000000000 -0400
+@@ -35,6 +35,7 @@
+ #include "taps_birdbrain.h"
+ #include "util_thread.h"
+ #include <stdarg.h>
++#include <cstdio>
+ 
+ // for getcwd and chdir
+ #ifdef __PLATFORM_WIN32__
+diff -ur tapestrea-0.1.0.5-orig/src/ui_audiofx.cpp tapestrea-0.1.0.5/src/ui_audiofx.cpp
+--- tapestrea-0.1.0.5-orig/src/ui_audiofx.cpp	2009-06-27 19:06:18.000000000 -0400
++++ tapestrea-0.1.0.5/src/ui_audiofx.cpp	2009-06-27 17:49:18.000000000 -0400
+@@ -36,6 +36,7 @@
+ #include "taps_birdbrain.h"
+ #include "ui_audiofx.h"
+ #include <iostream>
++#include <cstdio>
+ using namespace std;
+ 
+ // Start FxStk

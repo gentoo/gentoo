@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Convertible provides a typeclass with a single function
+		that is designed to help convert between different types: numeric
+		values, dates and times, and the like. The conversions perform bounds
+		checking and return a pure 'Either' value. This means that you need
+		not remember which specific function performs the conversion you
+		desire.
+	</longdescription>
+</pkgmetadata>

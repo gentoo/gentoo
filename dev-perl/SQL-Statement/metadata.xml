@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">SQL-Statement</remote-id>
+    <remote-id type="cpan-module">SQL::Dialects::ANSI</remote-id>
+    <remote-id type="cpan-module">SQL::Dialects::AnyData</remote-id>
+    <remote-id type="cpan-module">SQL::Dialects::CSV</remote-id>
+    <remote-id type="cpan-module">SQL::Dialects::Role</remote-id>
+    <remote-id type="cpan-module">SQL::Eval</remote-id>
+    <remote-id type="cpan-module">SQL::Eval::Table</remote-id>
+    <remote-id type="cpan-module">SQL::Parser</remote-id>
+    <remote-id type="cpan-module">SQL::Statement</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Aggregate</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::ColumnValue</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::ConstantTerm</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Function</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Function::NumericEval</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Function::StrConcat</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Function::SubString</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Function::Trim</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Function::UserFunc</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Functions</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::GetInfo</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Group</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Limit</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::ANSI::Is</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::And</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::Between</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::Clike</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::Contains</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::Equal</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::Equality</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::Greater</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::GreaterEqual</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::Is</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::Like</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::Lower</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::LowerEqual</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::Neg</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::NotEqual</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::Or</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::Regexp</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Operation::Rlike</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Order</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Param</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Placeholder</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::RAM</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::RAM::Table</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Table</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::TempTable</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Term</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::TermFactory</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Util</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Util::Column</remote-id>
+    <remote-id type="cpan-module">SQL::Statement::Util::Function</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,17 @@
+<project name="squareness-jlf" default="jar">
+	<target name="compile">
+		<mkdir dir="build"/>
+		<javac srcdir="." destdir="build" classpath="${gentoo.classpath}">
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="squareness-jlf.jar" basedir="build"/>
+	</target>
+
+	<target name="javadoc" depends="compile">
+		<mkdir dir="docs"/>
+		<javadoc sourcepath="." destdir="docs" classpath="${gentoo.classpath}"/>
+	</target>
+
+</project>

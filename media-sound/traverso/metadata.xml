@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>proaudio@gentoo.org</email>
+		<name>Gentoo ProAudio Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Traverso is a multitrack audio recording and editing program for GNU/Linux with
+		special emphasis to create an easy to use program with a clean and
+		intuitive interface.
+	</longdescription>
+	<use>
+		<flag name="lv2">Add support for Ladspa V2</flag>
+	</use>
+</pkgmetadata>

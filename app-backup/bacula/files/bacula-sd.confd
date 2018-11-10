@@ -1,0 +1,10 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Config file for /etc/init.d/bacula-sd
+
+# Options for the storage daemon.
+# The storage daemon can be run as a non-root user, however
+# please ensure that this user has proper permissions to
+# access your backup devices.
+SD_OPTIONS="-u root -g bacula -c /etc/bacula/bacula-sd.conf"

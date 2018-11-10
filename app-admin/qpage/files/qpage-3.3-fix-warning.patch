@@ -1,0 +1,12 @@
+diff -urN qpage-3.3.orig/srvrsnpp.c qpage-3.3/srvrsnpp.c
+--- qpage-3.3.orig/srvrsnpp.c	1998-10-25 14:55:05.000000000 -0500
++++ qpage-3.3/srvrsnpp.c	2006-01-25 15:49:57.000000000 -0500
+@@ -1061,7 +1061,7 @@
+ 		if (ptr && strcmp(ptr, STRING_UNKNOWN) != 0)
+ 			p->ident = strdup(ptr);
+ 
+-		ptr = eval_hostinfo(&request.client);
++		ptr = eval_hostinfo(&request.client[0]);
+ 
+ 		if (ptr && strcmp(ptr, STRING_UNKNOWN) != 0)
+ 			p->hostname = strdup(ptr);

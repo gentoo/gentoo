@@ -1,0 +1,107 @@
+diff -Nru imlib-1.9.15.old/gifutil.h imlib-1.9.15/gifutil.h
+--- imlib-1.9.15.old/gifutil.h	2015-02-03 00:53:09.742075193 +0000
++++ imlib-1.9.15/gifutil.h	2015-02-05 19:24:09.848783163 +0000
+@@ -2,7 +2,7 @@
+ #define __GIFUTIL_H__
+ 
+ static void
+-_PrintGifError(GifFileType *gif)
++_PrintGifError(int errorCode)
+ {
+   /* GIFLIB_MAJOR is only defined in libgif >= 4.2.0 */
+   /* libgif 4.2.0 has retired PrintGifError() and added GifErrorString() */
+@@ -11,7 +11,7 @@
+   /* Static string actually, hence the const char* cast */
+   
+ #if GIFLIB_MAJOR >= 5
+-  const char* gifliberr = (const char*) GifErrorString(gif->Error);
++  const char* gifliberr = (const char*) GifErrorString(errorCode);
+ #else
+   const char* gifliberr = (const char*) GifErrorString();
+ #endif
+diff -Nru imlib-1.9.15.old/Imlib/load.c imlib-1.9.15/Imlib/load.c
+--- imlib-1.9.15.old/Imlib/load.c	2015-02-03 00:53:09.742075193 +0000
++++ imlib-1.9.15/Imlib/load.c	2015-02-05 19:30:12.847147998 +0000
+@@ -434,6 +434,19 @@
+ #ifdef HAVE_LIBGIF
+ /*------------------------*/
+ /*------------------------*/
++void
++_CloseGIF(GifFileType *gif)
++{
++#if GIFLIB_MAJOR > 5 || (GIFLIB_MAJOR == 5 && GIFLIB_MINOR >= 1)
++    int errCode = 0;
++
++    if (DGifCloseFile(gif, &errCode) != GIF_OK)
++      _PrintGifError(errCode);
++#else
++    DGifCloseFile(gif);
++#endif
++}
++
+ unsigned char      *
+ _LoadGIF(ImlibData * id, FILE *f, int *w, int *h, int *t)
+ {
+@@ -464,10 +477,7 @@
+   gif = DGifOpenFileHandle(fd, &errCode);
+   if (!gif)
+   {
+-    const char* gifliberr = (const char*) GifErrorString(errCode);
+-    if (gifliberr == NULL)
+-      gifliberr = "Unknown error";
+-    fprintf(stderr, "%s\n", gifliberr);
++    _PrintGifError(errCode);
+     return NULL;
+   }
+ #else
+@@ -481,14 +491,14 @@
+     {
+       if (DGifGetRecordType(gif, &rec) == GIF_ERROR)
+ 	{
+-	  _PrintGifError(gif);
++	  _PrintGifError(gif->Error);
+ 	  rec = TERMINATE_RECORD_TYPE;
+ 	}
+       if ((rec == IMAGE_DESC_RECORD_TYPE) && (!done))
+ 	{
+ 	  if (DGifGetImageDesc(gif) == GIF_ERROR)
+ 	    {
+-	      _PrintGifError(gif);
++	      _PrintGifError(gif->Error);
+ 	      rec = TERMINATE_RECORD_TYPE;
+ 	    }
+ 	  *w = gif->Image.Width;
+@@ -500,13 +510,13 @@
+ 	  rows = malloc(*h * sizeof(GifRowType *));
+ 	  if (!rows)
+ 	    {
+-	      DGifCloseFile(gif);
++	      _CloseGIF(gif);
+ 	      return NULL;
+ 	    }
+ 	  data = _imlib_malloc_image(*w, *h);
+ 	  if (!data)
+ 	    {
+-	      DGifCloseFile(gif);
++	      _CloseGIF(gif);
+ 	      free(rows);
+ 	      return NULL;
+ 	    }
+@@ -517,7 +527,7 @@
+ 	      rows[i] = malloc(*w * sizeof(GifPixelType));
+ 	      if (!rows[i])
+ 		{
+-		  DGifCloseFile(gif);
++		  _CloseGIF(gif);
+ 		  for (i = 0; i < *h; i++)
+ 		    if (rows[i])
+ 		      free(rows[i]);
+@@ -606,7 +616,7 @@
+ 	    }
+ 	}
+     }
+-  DGifCloseFile(gif);
++  _CloseGIF(gif);
+   for (i = 0; i < *h; i++)
+     free(rows[i]);
+   free(rows);

@@ -1,0 +1,42 @@
+--- pasang-emas-2.1.0-orig/src/Makefile.in
++++ pasang-emas-2.1.0/src/Makefile.in
+@@ -221,11 +221,11 @@
+ 	pasang.vapi \
+ 	pasang.h
+ 
+-LDADD = libpasang.a $(DEPS_LIBS)
++LDADD = libpasang.a $(DEPS_LIBS) -lm
+ INCLUDES = $(DEPS_CFLAGS) \
+ 	--include ../config.h \
+ 	-DLOCALEDIR=\"$(localedir)\"    \
+-	-DPIXMAPSDIR=\"$(datadir)/pixmaps\" \
++	-DPIXMAPSDIR=\"/usr/share/pixmaps\" \
+ 	-DDATADIR=\"$(datadir)\" \
+ 	-DTHEME_ROOT_DIR=\"$(datadir)/$(PACKAGE_TARNAME)/themes\" \
+ 	-DUSER_THEME_ROOT_DIR=\".$(PACKAGE_TARNAME)/themes\" \
+--- pasang-emas-2.1.0-orig/data/Makefile.in
++++ pasang-emas-2.1.0/data/Makefile.in
+@@ -229,10 +229,10 @@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ SUBDIRS = kayu
+-desktopdir = $(datadir)/applications
++desktopdir = /usr/share/applications
+ desktop_in_files = pasang-emas.desktop.in
+ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+-appicondir = $(datadir)/pixmaps
++appicondir = /usr/share/pixmaps
+ appicon_DATA = \
+ 	pasang-emas.png		\
+ 	pasang-emas-flash.png
+--- pasang-emas-2.1.0-orig/po/Makefile.in.in
++++ pasang-emas-2.1.0/po/Makefile.in.in
+@@ -34,7 +34,7 @@
+ datarootdir = @datarootdir@
+ libdir = @libdir@
+ DATADIRNAME = @DATADIRNAME@
+-itlocaledir = $(prefix)/$(DATADIRNAME)/locale
++itlocaledir = /usr/share/locale
+ subdir = po
+ install_sh = @install_sh@
+ # Automake >= 1.8 provides @mkdir_p@.

@@ -1,0 +1,16 @@
+ src/tool/omniidl/cxx/cccp/cccp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tool/omniidl/cxx/cccp/cccp.c b/src/tool/omniidl/cxx/cccp/cccp.c
+index 0198b1a..64d80ae 100644
+--- a/src/tool/omniidl/cxx/cccp/cccp.c
++++ b/src/tool/omniidl/cxx/cccp/cccp.c
+@@ -8034,7 +8034,7 @@ macroexpand (hp, op)
+       else
+ 	parse_error = macarg (NULL_PTR, 0);
+       if (parse_error) {
+-	error_with_line (line_for_error (start_line), parse_error);
++	error_with_line (line_for_error (start_line), "%s", parse_error);
+ 	break;
+       }
+       i++;

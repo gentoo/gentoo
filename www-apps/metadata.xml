@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The www-apps category contains various world wide web applications.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría www-apps contiene paquetes relacionados con la world wide
+		web (WWW).
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie www-apps enthält verschiedene WWW-Applikationen wie
+		beispielsweise Wikis, CMS- oder Blogging-Software.
+	</longdescription>
+	<longdescription lang="ja">
+		www-appsカテゴリーには様々なワールド・ワイド・ウェブの
+		アプリケーションが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De www-apps categorie bevat verschillende WWW-applicaties zoals bijvoorbeeld
+		wiki's, CMS- en blogging-software.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm www-apps chứa các ứng dụng web.
+	</longdescription>
+	<longdescription lang="sk">
+		Táto kategória obsahuje rôzne WWW aplikácie.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria www-apps contiene applicazioni per il world wide
+		web (WWW) come software per wiki, CMS e blog.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria www-apps contém várias aplicações relacionadas a
+		world wide web (WWW).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria www-apps zawiera programy związane z przeglądaniem WWW.
+	</longdescription>
+</catmetadata>
+

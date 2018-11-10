@@ -1,0 +1,24 @@
+diff -durr glimmer3.02-orig/src/Common/gene.cc glimmer3.02/src/Common/gene.cc
+--- glimmer3.02-orig/src/Common/gene.cc	2009-12-28 13:34:21.577437056 +0000
++++ glimmer3.02/src/Common/gene.cc	2009-12-28 13:36:06.914974685 +0000
+@@ -443,7 +443,7 @@
+ //  Return a subscript corresponding to character  ch .
+ 
+   {
+-   char  * p;
++   const char  * p;
+ 
+    p = strchr (CONVERSION_STRING, tolower (ch));
+    if  (p == NULL)
+diff -durr glimmer3.02-orig/src/ICM/icm.cc glimmer3.02/src/ICM/icm.cc
+--- glimmer3.02-orig/src/ICM/icm.cc	2009-12-28 13:34:21.577437056 +0000
++++ glimmer3.02/src/ICM/icm.cc	2009-12-28 13:36:44.649451803 +0000
+@@ -1981,7 +1981,7 @@
+ //  model) for character  ch .
+ 
+   {
+-   char  * p;
++   const char  * p;
+ 
+    p = strchr (ALPHA_STRING, tolower (Filter (ch)));
+    if  (p == NULL)

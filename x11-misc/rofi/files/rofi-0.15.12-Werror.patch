@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -7,7 +7,7 @@
+ dnl Setup automake to be silent and in foreign mode.
+ dnl We want xz distribution
+ dnl ---------------------------------------------------------------------
+-AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects dist-xz])
++AM_INIT_AUTOMAKE([-Wall foreign subdir-objects dist-xz])
+ AM_SILENT_RULES([yes])
+ 
+ dnl ---------------------------------------------------------------------

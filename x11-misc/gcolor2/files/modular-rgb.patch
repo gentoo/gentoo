@@ -1,0 +1,21 @@
+--- src/callbacks.h.orig	2006-01-10 21:26:19.000000000 -0500
++++ src/callbacks.h	2006-01-10 21:26:44.000000000 -0500
+@@ -12,6 +12,7 @@
+ #define SYSTEM_FILE_2      "/usr/lib/X11/rgb.txt"
+ #define SYSTEM_FILE_3      "/etc/X11/rgb.txt"
+ #define SYSTEM_FILE_4      "/usr/openwin/lib/X11/rgb.txt"
++#define SYSTEM_FILE_5      "/usr/share/X11/rgb.txt"
+ 
+ /* about dialog text */
+ #define ABOUT_CREDITS_TEXT "Developer:\n" \
+--- src/main.c.orig	2006-01-10 21:43:20.000000000 -0500
++++ src/main.c	2006-01-10 21:42:14.000000000 -0500
+@@ -36,6 +36,8 @@
+ 		sys_filename = SYSTEM_FILE_3;
+ 	else if (g_file_test (SYSTEM_FILE_4, G_FILE_TEST_EXISTS))
+ 		sys_filename = SYSTEM_FILE_4;
++	else if (g_file_test (SYSTEM_FILE_5, G_FILE_TEST_EXISTS))
++		sys_filename = SYSTEM_FILE_5;
+ 	else
+ 		return FALSE;
+ 	return TRUE;

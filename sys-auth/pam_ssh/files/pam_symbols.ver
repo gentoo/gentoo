@@ -1,0 +1,4 @@
+{
+	global: pam_sm_*;
+	local: *;
+};

@@ -1,0 +1,10 @@
+--- Makefile.PL.old	2007-06-25 11:58:33.000000000 -0400
++++ Makefile.PL	2007-06-25 11:58:37.000000000 -0400
+@@ -86,7 +86,6 @@ sub postamble {
+ pm_to_blib: README
+ 
+ README: lib/RPC/PlServer.pm
+-\tperldoc -t lib/RPC/PlServer.pm >README
+ 
+ END_OF_POSTAMBLE
+ }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">POE-Test-Loops</remote-id>
+    <remote-id type="cpan-module">DynamicStates</remote-id>
+    <remote-id type="cpan-module">FibClient</remote-id>
+    <remote-id type="cpan-module">FibServer</remote-id>
+    <remote-id type="cpan-module">MappedObject</remote-id>
+    <remote-id type="cpan-module">MappedPackage</remote-id>
+    <remote-id type="cpan-module">MockDriver</remote-id>
+    <remote-id type="cpan-module">My::LineFilter</remote-id>
+    <remote-id type="cpan-module">MyObject</remote-id>
+    <remote-id type="cpan-module">Operator</remote-id>
+    <remote-id type="cpan-module">POE::Kernel</remote-id>
+    <remote-id type="cpan-module">POE::MySession</remote-id>
+    <remote-id type="cpan-module">POE::Test::DondeEstan</remote-id>
+    <remote-id type="cpan-module">POE::Test::Loops</remote-id>
+    <remote-id type="cpan-module">PoeTestWorker</remote-id>
+    <remote-id type="cpan-module">Switch</remote-id>
+    <remote-id type="cpan-module">UnmappedObject</remote-id>
+    <remote-id type="cpan-module">UnmappedPackage</remote-id>
+  </upstream>
+</pkgmetadata>

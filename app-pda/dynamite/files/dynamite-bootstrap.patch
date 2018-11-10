@@ -1,0 +1,16 @@
+--- bootstrap
++++ bootstrap
+@@ -26,8 +26,8 @@
+ 	INCLUDES="-I m4"
+ fi
+ set -x
+-aclocal $INCLUDES
+-autoheader
+-libtoolize --copy --automake
+-automake --copy --foreign --add-missing
+-autoconf
++# aclocal $INCLUDES
++# autoheader
++# libtoolize --copy --automake
++# automake --copy --foreign --add-missing
++# autoconf

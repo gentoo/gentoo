@@ -1,0 +1,28 @@
+From f2d51cde0e72853050495b3d995db4aee14c66a6 Mon Sep 17 00:00:00 2001
+From: Jan Schmidt <jan@centricular.com>
+Date: Tue, 13 May 2014 14:30:34 -0400
+Subject: ui: string concatenation to use corect format
+
+---
+ src/user_interface.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/user_interface.c b/src/user_interface.c
+index c29c688..8e3894a 100644
+--- a/src/user_interface.c
++++ b/src/user_interface.c
+@@ -1052,9 +1052,9 @@ position_ns_to_str (UserInterface * ui, gint64 nanoseconds)
+   seconds = seconds - (minutes * SEC_IN_MIN);
+ 
+   if (hours >= 1)
+-    return g_strdup_printf ("%d:%02d:%02ld", hours, minutes, seconds);
++    return g_strdup_printf ("%d:%02d:%02" G_GINT64_FORMAT, hours, minutes, seconds);
+   else
+-    return g_strdup_printf ("%02d:%02ld", minutes, seconds);
++    return g_strdup_printf ("%02d:%02" G_GINT64_FORMAT, minutes, seconds);
+ }
+ 
+ static void
+-- 
+cgit v0.11.2
+

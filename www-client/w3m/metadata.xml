@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<use>
+		<flag name="gdk-pixbuf">Enable support for <pkg>x11-libs/gdk-pixbuf</pkg></flag>
+		<flag name="lynxkeymap">If you prefer Lynx-like key binding</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">w3m</remote-id>
+		<remote-id type="github">tats/w3m</remote-id>
+	</upstream>
+</pkgmetadata>

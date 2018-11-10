@@ -1,0 +1,49 @@
+http://forum.canardpc.com/threads/110955-PATCH-don-t-pull-in-system-headers
+
+avoid using C library headers as it'd mean we'd need 32-bit glibc files available
+
+https://bugs.gentoo.org/592638
+
+--- a/dmi.c
++++ b/dmi.c
+@@ -10,7 +10,7 @@
+ 
+ 
+ #include "test.h"
+-#include <stdint.h>
++#include "stdint.h"
+ 
+ 
+ #define round_up(x,y) (((x) + (y) - 1) & ~((y)-1))
+--- a/test.c
++++ b/test.c
+@@ -14,7 +14,28 @@
+ #include "stdint.h"
+ #include "cpuid.h"
+ #include "smp.h"
+-#include <sys/io.h>
++
++static inline unsigned char
++inb_p (unsigned short int __port)
++{
++  unsigned char _v;
++
++  __asm__ __volatile__ ("inb %w1,%0\noutb %%al,$0x80":"=a" (_v):"Nd" (__port));
++  return _v;
++}
++
++static inline void
++outb (unsigned char __value, unsigned short int __port)
++{
++  __asm__ __volatile__ ("outb %b0,%w1": :"a" (__value), "Nd" (__port));
++}
++
++static inline void
++outb_p (unsigned char __value, unsigned short int __port)
++{
++  __asm__ __volatile__ ("outb %b0,%w1\noutb %%al,$0x80": :"a" (__value),
++			"Nd" (__port));
++}
+ 
+ extern struct cpu_ident cpu_id;
+ extern volatile int    mstr_cpu;

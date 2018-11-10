@@ -1,0 +1,25 @@
+# Config file for /etc/init.d/sguild
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+#PATH to the sguild config (sguild.conf) file.
+CONF=/etc/sguil/sguild.conf
+
+#PATH to the sguild config (autocat.conf) file.
+AUTOCAT=/etc/sguil/autocat.conf
+
+#PATH to the sguild global queries (sguild.queries) file.
+QUERIES=/etc/sguil/sguild.queries
+
+#PATH to the sguild users (sguild.users) file.
+USERS=/etc/sguil/sguild.users
+
+#PATH to the sguild access file
+ACCESS=/etc/sguil/sguild.access
+
+#Directory that contains sguild.pem and sguild.key
+#Uncomment to enable openssl connectivity
+#OPENSSLPATH="/etc/sguil/"
+
+#For any other options you wish to add
+#EXTRA_SGUILD_OPTS=

@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/run/amavis/amavis-mc.pid"
+command="/usr/sbin/amavis-mc"
+command_args="${amavis_mc_args} -P ${pidfile}"
+start_stop_daemon_args="--interpreted"
+
+depend() {
+	use logger
+	before amavisd-new snmpd
+}
+
+start_pre() {
+	checkpath -d -o amavis /run/amavis
+}

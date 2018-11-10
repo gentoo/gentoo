@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <use>
+    <flag name="suggested">Install extra dependencies needed for extended regression tests</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpan">Sub-Name</remote-id>
+    <remote-id type="cpan-module">Sub::Name</remote-id>
+  </upstream>
+</pkgmetadata>

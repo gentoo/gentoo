@@ -1,0 +1,17 @@
+--- Makefile.original	2009-04-11 22:46:08.000000000 -0600
++++ Makefile	2009-04-12 14:30:55.000000000 -0600
+@@ -92,14 +92,10 @@
+ OBJS =	emsg.o \
+ 	init.o \
+ 	tofrodos.o \
+ 	utility.o
+ 
+-# implicit rules
+-.c.o:
+-	$(CC) $(CFLAGS) $<
+-
+ # user visible rules
+ all: $(FROMDOS) $(TODOS)
+ 
+ clean:
+ 	$(RM) $(OBJS)

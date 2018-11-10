@@ -1,0 +1,44 @@
+--- mitmproxy-0.10/libmproxy/contrib/jsbeautifier/__init__.py
++++ mitmproxy-0.10/libmproxy/contrib/jsbeautifier/__init__.py
+@@ -246,7 +246,7 @@
+         return sweet_code
+ 
+     def unpack(self, source, evalcode=False):
+-        import jsbeautifier.unpackers as unpackers
++        from ..jsbeautifier import unpackers
+         try:
+             return unpackers.run(source, evalcode)
+         except unpackers.UnpackingError as error:
+--- mitmproxy-0.10/libmproxy/contrib/jsbeautifier/unpackers/__init__.py
++++ mitmproxy-0.10/libmproxy/contrib/jsbeautifier/unpackers/__init__.py
+@@ -7,7 +7,7 @@
+ 
+ import pkgutil
+ import re
+-from jsbeautifier.unpackers import evalbased
++from ...jsbeautifier.unpackers import evalbased
+ 
+ # NOTE: AT THE MOMENT, IT IS DEACTIVATED FOR YOUR SECURITY: it runs js!
+ BLACKLIST = ['jsbeautifier.unpackers.evalbased']
+--- mitmproxy-0.10/libmproxy/contrib/jsbeautifier/unpackers/myobfuscate.py
++++ mitmproxy-0.10/libmproxy/contrib/jsbeautifier/unpackers/myobfuscate.py
+@@ -40,7 +40,7 @@
+ except ImportError:
+     from urllib.parse import unquote
+ 
+-from jsbeautifier.unpackers import UnpackingError
++from ...jsbeautifier.unpackers import UnpackingError
+ 
+ PRIORITY = 1
+ 
+--- mitmproxy-0.10/libmproxy/contrib/jsbeautifier/unpackers/packer.py
++++ mitmproxy-0.10/libmproxy/contrib/jsbeautifier/unpackers/packer.py
+@@ -14,7 +14,7 @@
+ 
+ import re
+ import string
+-from jsbeautifier.unpackers import UnpackingError
++from ...jsbeautifier.unpackers import UnpackingError
+ 
+ PRIORITY = 1
+ 

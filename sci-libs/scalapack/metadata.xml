@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		The ScaLAPACK (or Scalable LAPACK) library includes a subset of LAPACK routines
+		redesigned for distributed memory MIMD parallel computers. It is currently
+		written in a Single-Program-Multiple-Data style using explicit message
+		passing for interprocessor communication. It assumes matrices are laid out
+		in a two-dimensional block cyclic decomposition.
+	</longdescription>
+</pkgmetadata>

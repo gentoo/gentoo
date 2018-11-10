@@ -1,0 +1,12 @@
+Drop seemingly wrong test line that throws an AttributeError.
+
+--- pyPEG2-2.15.1/pypeg2/test/test_pyPEG2.py
++++ pyPEG2-2.15.1/pypeg2/test/test_pyPEG2.py
+@@ -255,7 +255,6 @@
+     def runTest(self):
+         r = pypeg2.parse("!all", type(self).C1)
+         self.assertEqual(str(r), "all")
+-        self.assertEqual(r._ignore1, None)
+ 
+ class ParseOmitTestCase(ParserTestCase):
+     def runTest(self):

@@ -1,0 +1,12 @@
+# logrotate snippet for ufw
+# requires app-admin/syslog-ng
+# copy the file into /etc/logrotate.d
+/var/log/ufw.log {
+    missingok
+    rotate 5
+    notifempty
+    sharedscripts
+    postrotate
+        /etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+    endscript
+}

@@ -1,0 +1,11 @@
+--- a/configure.ac	2010-03-09 12:41:45.000000000 +0100
++++ b/configure.ac	2010-05-17 23:07:39.000000000 +0200
+@@ -222,7 +222,7 @@
+     CFLAGS="-DNDEBUG $CFLAGS"
+ fi
+ 
+-LDFLAGS="-Wl,-z,defs"
++LDFLAGS="$LDFLAGS -Wl,-z,defs"
+ 
+ dnl
+ dnl Make sure we can actually handle the "--with-*" and "--enable-*" stuff.

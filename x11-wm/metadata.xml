@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The x11-wm category contains X11 window managers.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie x11-wm enthält verschiedene Window Manager für X11.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría x11-wm contiene manejadores de ventanas para X11.
+	</longdescription>
+	<longdescription lang="ja">
+		x11-wmカテゴリーにはX11のウィンドゥ・マネージャーが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De x11-wm categorie bevat verschillende window managers voor X11.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória x11-wm obsahuje správcov okien (window managers) pre X11.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm x11-wm chứa các trình quản lý cửa sổ X11.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria x11-wm contiene dei gestori di finestre per X11.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria x11-wm contém gerenciadores de janelas para X11.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria x11-wm zawiera menedżery okien dla środowisk X11.
+	</longdescription>
+</catmetadata>
+

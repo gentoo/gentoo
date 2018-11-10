@@ -1,0 +1,3 @@
+# /etc/conf.d/varnishlog
+
+VARNISHLOG_OPTS="-a -w /var/log/varnish/varnishlog.log"

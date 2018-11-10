@@ -1,0 +1,12 @@
+diff -ur pvrinput-2011-08-18.orig/common.h pvrinput-2011-08-18/common.h
+--- pvrinput-2011-08-18.orig/common.h	2011-03-29 21:59:42.000000000 +0200
++++ pvrinput-2011-08-18/common.h	2012-04-11 23:05:24.870618177 +0200
+@@ -7,6 +7,7 @@
+ #include <sys/ioctl.h>
+ #include <stdarg.h>
+ 
++#include <vdr/device.h>
+ #include <vdr/plugin.h>
+ #if VDRVERSNUM > 10712
+ #include <vdr/sourceparams.h>
+

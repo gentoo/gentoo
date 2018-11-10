@@ -1,0 +1,80 @@
+diff --git a/src/Imakefile b/src/Imakefile
+index 03be00e..a0c68f9 100755
+--- a/src/Imakefile
++++ b/src/Imakefile
+@@ -176,7 +176,7 @@ XFORMSLIB_DIR = /usr/local
+ #endif
+ endif
+ XFORMSLIB_INCLUDE_DIR = $(XFORMSLIB_DIR)/include
+-XFORMSLIB_LDLIB = -lXpm -L$(XFORMSLIB_DIR)/lib -lforms
++XFORMSLIB_LDLIB = -lXpm -L$(XFORMSLIB_DIR)/lib
+ #endif
+ #endif
+ #endif
+@@ -281,17 +281,10 @@ RASMOLDIR = $(USRLIBDIR)/rasmol/
+ 
+ #ifndef USE_XFORMSLIB
+ DEFINES = $(GTKCFLAGS) $(GUIDEF) -DRASMOLDIR=\"$(RASMOLDIR)\" $(DEPTHDEF) $(LOCALEDEF) \
+-          -D_USE_RASMOL_H_ $(GUIOPTION) -I$(CBFLIB_INCLUDE_DIR) \
+-          -I$(CQRLIB_INCLUDE_DIR) \
+-          -I$(CVECTOR_INCLUDE_DIR) \
+-          -I$(NEARTREE_INCLUDE_DIR)
++          -D_USE_RASMOL_H_ $(GUIOPTION) -I@GENTOO_PORTAGE_EPREFIX@/usr/include -I@GENTOO_PORTAGE_EPREFIX@/usr/include/cbflib
+ #else
+ DEFINES = $(GTKCFLAGS) $(GUIDEF) -DRASMOLDIR=\"$(RASMOLDIR)\" $(DEPTHDEF) $(LOCALEDEF) \
+-	-D_USE_RASMOL_H_ $(GUIOPTION) -I$(CBFLIB_INCLUDE_DIR) \
+-	-I$(CQRLIB_INCLUDE_DIR) \
+-	-I$(CVECTOR_INCLUDE_DIR) \
+-	-I$(NEARTREE_INCLUDE_DIR) \
+-  	-I$(XFORMSLIB_INCLUDE_DIR)
++	-D_USE_RASMOL_H_ $(GUIOPTION) -I@GENTOO_PORTAGE_EPREFIX@/usr/include -I@GENTOO_PORTAGE_EPREFIX@/usr/include/cbflib
+ #endif
+ 
+ 
+@@ -317,11 +310,11 @@ OBJS = rasmol.o molecule.o abstree.o cmndline.o command.o transfor.o \
+ # Additional RS6000 AIX MITSHM Library
+ # LDLIBS = -lm -lXi -lXextSam $(XLIB)
+ 
+-LDLIBS = -lm -lXi $(XLIB) $(EXTRA_LIBRARIES) $(XFORMSLIB) $(GTKLIBS) \
+-			$(CBFLIB_LDLIB) \
+-			$(CQRLIB_LDLIB) \
+-			$(CVECTOR_LDLIB) \
+-			$(NEARTREE_LDLIB) $(XFORMSLIB_LDLIB)
++LDLIBS = -lm -lXi $(XLIB) $(EXTRA_LIBRARIES) $(GTKLIBS) \
++			-lcbf \
++			-lCQRlib \
++			-lCVector \
++			-lCNearTree -lgfortran
+ 
+ 
+ #
+@@ -425,11 +418,11 @@ $(NEARTREE_DIR):
+ $(NEARTREE_DIR)/CNearTree.c: $(NEARTREE_DIR)
+ #endif		  
+ 
+-$(OBJS):  $(EXTPKGDIR) $(CBFLIB_OBJDEP) \
+-			$(CQRLIB_OBJDEP) \
+-			$(CVECTOR_OBJDEP) \
+-			$(NEARTREE_OBJDEP) \
+-			$(XFORMSLIB_OBJDEP)
++# $(OBJS):  $(EXTPKGDIR) $(CBFLIB_OBJDEP) \
++#			$(CQRLIB_OBJDEP) \
++#			$(CVECTOR_OBJDEP) \
++#			$(NEARTREE_OBJDEP) \
++#			$(XFORMSLIB_OBJDEP)
+ 
+ 
+ gtkwin.c: gtkui.h
+diff --git a/src/Makefile.in b/src/Makefile.in
+index fc6d0af..bad90fc 100755
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -165,7 +165,7 @@ $(CBFLIBDIR)/lib/libcbf.a: $(CBFLIBDIR)
+ 
+ all:		postdownload rasmol rastxt
+ 
+-rasmol:		postdownload $(X11OBJS) $(CBFLIBDIR)/lib/libcbf.a
++rasmol:		postdownload $(X11OBJS) 
+ 		$(CC) -o rasmol $(LFLAGS) $(X11OBJS) $(X11LIBS)
+ 		chmod 755 rasmol
+ 

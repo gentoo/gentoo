@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<longdescription>
+p3d was developed in order to offer a Python module that is powerful and fast,
+yet intuitive to use. The simplicity of p3d is due to the usage of object 
+oriented programming (i.e. atoms are treated as vectors), the implementation 
+of a query parser that translates queries readable by humans into a combination
+of algebra set operations the fact that no additional Python packages are 
+necessary. The speed is due to the usage of a binary space partitioning (BSP)
+tree which allows very fast queries in 3D (Henry et al. 1980). The additional 
+synergy is obtained by the flexible combination of both speed and complexity in
+the queries to the structural data. The combination of these factors makes p3d
+the optimal module to rapidly develop new and powerful bioinformatic tools that
+follow the Python philosophy of making the source code readable.
+</longdescription>
+</pkgmetadata>

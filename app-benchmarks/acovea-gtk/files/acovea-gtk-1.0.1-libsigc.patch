@@ -1,0 +1,101 @@
+--- a/src/about_box_glade.cc
++++ b/src/about_box_glade.cc
+@@ -1530,8 +1530,8 @@
+    hbuttonbox1->show();
+    vbox3->show();
+    about_box->show();
+-   about_close_button->signal_clicked().connect(SigC::slot(*this, &about_box_glade::on_about_close_button_clicked), false);
+-   about_box->signal_realize().connect(SigC::slot(*this, &about_box_glade::on_about_box_realize), false);
++   about_close_button->signal_clicked().connect(sigc::mem_fun(*this, &about_box_glade::on_about_close_button_clicked), false);
++   about_box->signal_realize().connect(sigc::mem_fun(*this, &about_box_glade::on_about_box_realize), false);
+ }
+ 
+ about_box_glade::~about_box_glade()
+--- a/src/main_window_glade.cc
++++ b/src/main_window_glade.cc
+@@ -998,19 +998,19 @@
+    main_status->show();
+    vbox1->show();
+    main_window->show();
+-   menu_set_run_options->signal_activate().connect(SigC::slot(*this, &main_window_glade::on_menu_set_run_options_activate), false);
+-   menu_save_options_default->signal_activate().connect(SigC::slot(*this, &main_window_glade::on_menu_save_options_default_activate), false);
+-   menu_load_default_options->signal_activate().connect(SigC::slot(*this, &main_window_glade::on_menu_load_default_options_activate), false);
+-   menu_save_options->signal_activate().connect(SigC::slot(*this, &main_window_glade::on_menu_save_options_activate), false);
+-   save_load_options->signal_activate().connect(SigC::slot(*this, &main_window_glade::on_load_options_activate), false);
+-   menu_quit->signal_activate().connect(SigC::slot(*this, &main_window_glade::on_menu_quit_activate), false);
+-   menu_run->signal_activate().connect(SigC::slot(*this, &main_window_glade::on_menu_run_activate), false);
+-   menu_stop->signal_activate().connect(SigC::slot(*this, &main_window_glade::on_menu_stop_activate), false);
+-   menu_save_output->signal_activate().connect(SigC::slot(*this, &main_window_glade::on_menu_save_output_activate), false);
+-   menu_about->signal_activate().connect(SigC::slot(*this, &main_window_glade::on_about1_activate), false);
+-   toolbar_settings_button->signal_clicked().connect(SigC::slot(*this, &main_window_glade::on_toolbar_settings_button_clicked), false);
+-   toolbar_run_button->signal_clicked().connect(SigC::slot(*this, &main_window_glade::on_toolbar_run_button_clicked), false);
+-   toolbar_stop_button->signal_clicked().connect(SigC::slot(*this, &main_window_glade::on_toolbar_stop_button_clicked), false);
++   menu_set_run_options->signal_activate().connect(sigc::mem_fun(*this, &main_window_glade::on_menu_set_run_options_activate), false);
++   menu_save_options_default->signal_activate().connect(sigc::mem_fun(*this, &main_window_glade::on_menu_save_options_default_activate), false);
++   menu_load_default_options->signal_activate().connect(sigc::mem_fun(*this, &main_window_glade::on_menu_load_default_options_activate), false);
++   menu_save_options->signal_activate().connect(sigc::mem_fun(*this, &main_window_glade::on_menu_save_options_activate), false);
++   save_load_options->signal_activate().connect(sigc::mem_fun(*this, &main_window_glade::on_load_options_activate), false);
++   menu_quit->signal_activate().connect(sigc::mem_fun(*this, &main_window_glade::on_menu_quit_activate), false);
++   menu_run->signal_activate().connect(sigc::mem_fun(*this, &main_window_glade::on_menu_run_activate), false);
++   menu_stop->signal_activate().connect(sigc::mem_fun(*this, &main_window_glade::on_menu_stop_activate), false);
++   menu_save_output->signal_activate().connect(sigc::mem_fun(*this, &main_window_glade::on_menu_save_output_activate), false);
++   menu_about->signal_activate().connect(sigc::mem_fun(*this, &main_window_glade::on_about1_activate), false);
++   toolbar_settings_button->signal_clicked().connect(sigc::mem_fun(*this, &main_window_glade::on_toolbar_settings_button_clicked), false);
++   toolbar_run_button->signal_clicked().connect(sigc::mem_fun(*this, &main_window_glade::on_toolbar_run_button_clicked), false);
++   toolbar_stop_button->signal_clicked().connect(sigc::mem_fun(*this, &main_window_glade::on_toolbar_stop_button_clicked), false);
+ }
+ 
+ main_window_glade::~main_window_glade()
+--- a/src/settings_window_glade.cc
++++ b/src/settings_window_glade.cc
+@@ -391,11 +391,11 @@
+    hbuttonbox3->show();
+    vbox6->show();
+    settings_window->show();
+-   settings_benchmark_browse_button->signal_clicked().connect(SigC::slot(*this, &settings_window_glade::on_settings_benchmark_browse_button_clicked), false);
+-   settings_config_browse_button->signal_clicked().connect(SigC::slot(*this, &settings_window_glade::on_settings_config_browse_button_clicked), false);
+-   settings_seed_check->signal_toggled().connect(SigC::slot(*this, &settings_window_glade::on_settings_seed_check_toggled), false);
+-   settings_cancel_button->signal_clicked().connect(SigC::slot(*this, &settings_window_glade::on_settings_cancel_button_clicked), false);
+-   settings_okay_button->signal_clicked().connect(SigC::slot(*this, &settings_window_glade::on_settings_okay_button_clicked), false);
++   settings_benchmark_browse_button->signal_clicked().connect(sigc::mem_fun(*this, &settings_window_glade::on_settings_benchmark_browse_button_clicked), false);
++   settings_config_browse_button->signal_clicked().connect(sigc::mem_fun(*this, &settings_window_glade::on_settings_config_browse_button_clicked), false);
++   settings_seed_check->signal_toggled().connect(sigc::mem_fun(*this, &settings_window_glade::on_settings_seed_check_toggled), false);
++   settings_cancel_button->signal_clicked().connect(sigc::mem_fun(*this, &settings_window_glade::on_settings_cancel_button_clicked), false);
++   settings_okay_button->signal_clicked().connect(sigc::mem_fun(*this, &settings_window_glade::on_settings_okay_button_clicked), false);
+ }
+ 
+ settings_window_glade::~settings_window_glade()
+--- a/src/about_box_glade.cc
++++ b/src/about_box_glade.cc
+@@ -14,8 +14,7 @@
+ #endif //
+ #include "config.h"
+ #include <gtkmmconfig.h>
+ #if GTKMM_MAJOR_VERSION==2 && GTKMM_MINOR_VERSION>2
+-#include <sigc++/compatibility.h>
+ #define GMM_GTKMM_22_24(a,b) b
+ #else //gtkmm 2.2
+ #define GMM_GTKMM_22_24(a,b) a
+--- a/src/main_window_glade.cc
++++ b/src/main_window_glade.cc
+@@ -14,8 +14,7 @@
+ #endif //
+ #include "config.h"
+ #include <gtkmmconfig.h>
+ #if GTKMM_MAJOR_VERSION==2 && GTKMM_MINOR_VERSION>2
+-#include <sigc++/compatibility.h>
+ #define GMM_GTKMM_22_24(a,b) b
+ #else //gtkmm 2.2
+ #define GMM_GTKMM_22_24(a,b) a
+--- a/src/settings_window_glade.cc
++++ b/src/settings_window_glade.cc
+@@ -14,8 +14,7 @@
+ #endif //
+ #include "config.h"
+ #include <gtkmmconfig.h>
+ #if GTKMM_MAJOR_VERSION==2 && GTKMM_MINOR_VERSION>2
+-#include <sigc++/compatibility.h>
+ #define GMM_GTKMM_22_24(a,b) b
+ #else //gtkmm 2.2
+ #define GMM_GTKMM_22_24(a,b) a
+

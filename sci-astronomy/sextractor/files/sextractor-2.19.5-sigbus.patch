@@ -1,0 +1,26 @@
+Author: Justin Pryzby <justinpryzby@users.sf.net>
+Description: (guess) Handle the "sigbus" case only if it exists
+--- a/src/fits/fitscleanup.c
++++ b/src/fits/fitscleanup.c
+@@ -164,7 +164,9 @@
+ /* Catch CTRL-Cs */
+   signal(SIGINT, signal_function);
+ /* Catch bus errors */
++#ifdef	SIGBUS // TODO: what if it is an enum?
+   signal(SIGBUS, signal_function);
++#endif
+ /* Catch segmentation faults */
+   signal(SIGSEGV, signal_function);
+ /* Catch floating exceptions */
+@@ -195,9 +197,11 @@
+     case SIGINT:
+       fprintf(stderr, "^C\n");
+       exit(-1);
++#ifdef	SIGBUS
+     case SIGBUS:
+       fprintf(stderr, "bus error\n");
+       exit(-1);
++#endif
+     case SIGSEGV:
+       fprintf(stderr, "segmentation fault\n");
+       exit(-1);

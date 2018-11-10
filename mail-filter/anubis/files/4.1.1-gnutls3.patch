@@ -1,0 +1,14 @@
+--- src/tls.c	2008-12-16 16:21:54.000000000 +0000
++++ src/tls.c	2012-10-30 09:06:37.387243098 +0000
+@@ -294,7 +294,10 @@
+ static void
+ verify_certificate (gnutls_session session)
+ {
+-  int status = gnutls_certificate_verify_peers (session);
++  int status, verify_ret;
++  verify_ret = gnutls_certificate_verify_peers2 (session, &status);
++  if (!verify_ret)
++    return status;
+ 
+   if (status == GNUTLS_E_NO_CERTIFICATE_FOUND)
+     {

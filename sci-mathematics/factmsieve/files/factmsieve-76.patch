@@ -1,0 +1,52 @@
+--- a/factmsieve.py
++++ b/factmsieve.py
+@@ -1,3 +1,4 @@
++#!/usr/bin/env python
+ # factmsieve.py - A Python driver for GGNFS and MSIEVE
+ #
+ # Copyright (c) 2010, Brian Gladman
+@@ -56,9 +57,12 @@
+ import time, subprocess, gzip, glob, math, tempfile, datetime
+ import atexit, threading, collections, multiprocessing, platform
+ 
++# need to save pwd
++CUR_DIR=os.path.realpath(os.curdir)
++
+ # Set binary directory paths
+-GGNFS_PATH = '../../bin/x64/Release/'
+-MSIEVE_PATH = '../../../msieve/build.vc10/x64/Release/'
++GGNFS_PATH = '/usr/bin/'
++MSIEVE_PATH = '/usr/bin/'
+ 
+ # Set the number of CPU cores and threads
+ NUM_CORES = 4
+@@ -69,7 +73,7 @@
+ # number of linear algebra threads to launch
+ LA_THREADS = NUM_CORES * THREADS_PER_CORE
+ 
+-USE_CUDA = True
++USE_CUDA = False
+ GPU_NUM = 0
+ MSIEVE_POLY_TIME_LIMIT = 0
+ 
+@@ -103,8 +107,8 @@
+ 
+ # default parameter files
+ 
+-DEFAULT_PAR_FILE = GGNFS_PATH + 'def-par.txt'
+-DEFAULT_POLSEL_PAR_FILE = GGNFS_PATH + 'def-nm-params.txt'
++DEFAULT_PAR_FILE = '/usr/share/doc/ggnfs/def-par.txt'
++DEFAULT_POLSEL_PAR_FILE = '/usr/share/doc/ggnfs/def-nm-params.txt'
+ 
+ # temporary files
+ 
+@@ -258,7 +262,8 @@
+ # write string to log(s):
+ 
+ def write_string_to_log(s):
+-  with open(LOGNAME, 'a') as out_f:
++  # XXX hax
++  with open(CUR_DIR+'/'+LOGNAME, 'a') as out_f:
+     print(date_time_string() + s, file = out_f)
+ 
+ def output(s, console = True, log = True):

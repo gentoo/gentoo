@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+config_file=${config_file:-/etc/${SVCNAME}.conf}
+run_dir=${run_dir:-/run/mongodb}
+
+command="/usr/bin/mongod"
+command_args="--config ${config_file}"
+command_background="true"
+pidfile=${run_dir}/${SVCNAME}.pid
+user=${user:-mongodb}
+group=${group:-mongodb}
+start_stop_daemon_args="--user ${user} --group ${group}"
+
+depend() {
+	use net
+}
+
+start_pre() {
+    checkpath -d -m 0750 -o "${user}":"${group}" "${run_dir}"
+    if [ ! -f ${config_file} ]; then
+    	eerror "Missing configuration file ${config_file}"
+    	return 1
+    fi
+}

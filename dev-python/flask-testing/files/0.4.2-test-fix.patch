@@ -1,0 +1,17 @@
+https://github.com/jarus/flask-testing/commit/c969b41b31f60a5a8bacd44b3eb63d1642f2d8bf
+diff --git a/flask_testing/utils.py b/flask_testing/utils.py
+index add12ef..9b479df 100644
+--- a/flask_testing/utils.py
++++ b/flask_testing/utils.py
+@@ -143,8 +143,8 @@ def _post_teardown(self):
+ 
+         if _is_signals:
+             template_rendered.disconnect(self._add_template)
+-        if hasattr(self, '_true_render'):
+-            templating._render = self._true_render
++        if hasattr(self, '_original_template_render'):
++            templating._render = self._original_template_render
+ 
+         if self.run_gc_after_test:
+             gc.collect()
+

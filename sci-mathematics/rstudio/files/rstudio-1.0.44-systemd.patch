@@ -1,0 +1,21 @@
+--- rstudio-1.0.44-orig/src/cpp/server/CMakeLists.txt	2016-10-19 08:32:41.000000000 +1100
++++ rstudio-1.0.44/src/cpp/server/CMakeLists.txt	2016-12-02 11:11:45.259050839 +1100
+@@ -203,17 +203,12 @@
+            DESTINATION ${RSERVER_UPSTART_DIR})
+ 
+     # install configured systemd profile
+-   set(RSERVER_SYSTEMD_DIR "extras/systemd")
++   set(RSERVER_SYSTEMD_DIR "lib/systemd/system")
+    set(RSERVER_SYSTEMD_PROFILE "${RSERVER_SYSTEMD_DIR}/rstudio-server.service")
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_SYSTEMD_PROFILE}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_SYSTEMD_PROFILE})
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_SYSTEMD_PROFILE}
+            DESTINATION ${RSERVER_SYSTEMD_DIR})
+-   set(RSERVER_SYSTEMD_PROFILE_REDHAT "${RSERVER_SYSTEMD_DIR}/rstudio-server.redhat.service")
+-   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_SYSTEMD_PROFILE_REDHAT}.in
+-                  ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_SYSTEMD_PROFILE_REDHAT})
+-   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_SYSTEMD_PROFILE_REDHAT}
+-           DESTINATION ${RSERVER_SYSTEMD_DIR})
+ 
+ elseif(APPLE)
+ 

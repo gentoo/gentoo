@@ -1,0 +1,146 @@
+commit 09ac1811820c2d2b92f8de779f7c389f89dc6c16
+Author: Jason A. Donenfeld <Jason@zx2c4.com>
+Date:   Sat Mar 12 02:54:35 2016 +0100
+
+    Remove Mozilla::CA dependency
+
+diff --git a/Build.PL b/Build.PL
+index 6031458..8de2f2a 100644
+--- a/Build.PL
++++ b/Build.PL
+@@ -53,7 +53,6 @@ my $builder = $class->new(
+         'List::AllUtils' => 0,
+         'List::MoreUtils' => 0,
+         'List::MoreUtils::XS' => 0,
+-        'Mozilla::CA' =>  '20141217',
+         'Regexp::Common' => 0,
+         'Log::Log4perl' => 0,
+         'Unicode::Collate' => '1.14',
+diff --git a/bin/biber b/bin/biber
+index f9e28fb..8d614e5 100755
+--- a/bin/biber
++++ b/bin/biber
+@@ -78,7 +78,6 @@ GetOptions(
+            'sortgiveninits|sortfirstinits=s',
+            'sortlocale|l=s',
+            'sortupper=s',
+-           'ssl-nointernalca',
+            'ssl-noverify-host',
+            'strip_comments|strip-comments',
+            'tool',
+@@ -710,12 +709,6 @@ default sorting (B<--collate|-C>). When
+ using B<--fastsort|-f>, your OS collation locale determines
+ this and this option is ignored (default is true).
+ 
+-=item B<--ssl-nointernalca>
+-
+-Don't try to use the default Mozilla CA certificates when using HTTPS to fetch remote data.
+-This assumes that the user will set one of the perl LWP::UserAgent module environment variables
+-to find the CA certs.
+-
+ =item B<--ssl-noverify-host>
+ 
+ Turn off host verification when using HTTPS to fetch remote data sources.
+diff --git a/data/schemata/config.rnc b/data/schemata/config.rnc
+index 7baf386..f3d321e 100644
+--- a/data/schemata/config.rnc
++++ b/data/schemata/config.rnc
+@@ -79,7 +79,6 @@ start =
+         map+
+       }+
+     }? &
+-    element ssl-nointernalca     { "0" | "1" }? &
+     element ssl-noverify-host    { "0" | "1" }? &
+     element tool                 { "0" | "1" }? &
+     element tool_config          { text }? &
+diff --git a/data/schemata/config.rng b/data/schemata/config.rng
+index f11b38e..fff209a 100644
+--- a/data/schemata/config.rng
++++ b/data/schemata/config.rng
+@@ -353,14 +353,6 @@
+           </element>
+         </optional>
+         <optional>
+-          <element name="ssl-nointernalca">
+-            <choice>
+-              <value>0</value>
+-              <value>1</value>
+-            </choice>
+-          </element>
+-        </optional>
+-        <optional>
+           <element name="ssl-noverify-host">
+             <choice>
+               <value>0</value>
+diff --git a/lib/Biber/Input/file/biblatexml.pm b/lib/Biber/Input/file/biblatexml.pm
+index 8139cd4..14018da 100644
+--- a/lib/Biber/Input/file/biblatexml.pm
++++ b/lib/Biber/Input/file/biblatexml.pm
+@@ -115,19 +115,6 @@ sub extract_entries {
+     else {
+       if ($1) {                 # HTTPS
+         # use IO::Socket::SSL qw(debug99); # useful for debugging SSL issues
+-        # We have to explicitly set the cert path because otherwise the https module
+-        # can't find the .pem when PAR::Packer'ed
+-        # Have to explicitly try to require Mozilla::CA here to get it into %INC below
+-        # It may, however, have been removed by some biber unpacked dists
+-        if (not exists($ENV{PERL_LWP_SSL_CA_FILE}) and
+-            not exists($ENV{PERL_LWP_SSL_CA_PATH}) and
+-            not defined(Biber::Config->getoption('ssl-nointernalca')) and
+-            eval {require Mozilla::CA}) {
+-          # we assume that the default CA file is in .../Mozilla/CA/cacert.pem
+-          (my $vol, my $dir, undef) = File::Spec->splitpath( $INC{"Mozilla/CA.pm"} );
+-          $dir =~ s/\/$//;      # splitpath sometimes leaves a trailing '/'
+-          $ENV{PERL_LWP_SSL_CA_FILE} = File::Spec->catpath($vol, "$dir/CA", 'cacert.pem');
+-        }
+ 
+         # fallbacks for, e.g., linux
+         unless (exists($ENV{PERL_LWP_SSL_CA_FILE})) {
+diff --git a/lib/Biber/Input/file/bibtex.pm b/lib/Biber/Input/file/bibtex.pm
+index 6cc365a..b41e946 100644
+--- a/lib/Biber/Input/file/bibtex.pm
++++ b/lib/Biber/Input/file/bibtex.pm
+@@ -138,19 +138,6 @@ sub extract_entries {
+     else {
+       if ($1) {                 # HTTPS
+         # use IO::Socket::SSL qw(debug99); # useful for debugging SSL issues
+-        # We have to explicitly set the cert path because otherwise the https module
+-        # can't find the .pem when PAR::Packer'ed
+-        # Have to explicitly try to require Mozilla::CA here to get it into %INC below
+-        # It may, however, have been removed by some biber unpacked dists
+-        if (not exists($ENV{PERL_LWP_SSL_CA_FILE}) and
+-            not exists($ENV{PERL_LWP_SSL_CA_PATH}) and
+-            not defined(Biber::Config->getoption('ssl-nointernalca')) and
+-            eval {require Mozilla::CA}) {
+-          # we assume that the default CA file is in .../Mozilla/CA/cacert.pem
+-          (my $vol, my $dir, undef) = File::Spec->splitpath( $INC{"Mozilla/CA.pm"} );
+-          $dir =~ s/\/$//;      # splitpath sometimes leaves a trailing '/'
+-          $ENV{PERL_LWP_SSL_CA_FILE} = File::Spec->catpath($vol, "$dir/CA", 'cacert.pem');
+-        }
+ 
+         # fallbacks for, e.g., linux
+         unless (exists($ENV{PERL_LWP_SSL_CA_FILE})) {
+diff --git a/lib/Biber/Input/file/ris.pm b/lib/Biber/Input/file/ris.pm
+index 9814723..e849b95 100644
+--- a/lib/Biber/Input/file/ris.pm
++++ b/lib/Biber/Input/file/ris.pm
+@@ -109,19 +109,6 @@ sub extract_entries {
+     else {
+       if ($1) {                 # HTTPS
+         # use IO::Socket::SSL qw(debug99); # useful for debugging SSL issues
+-        # We have to explicitly set the cert path because otherwise the https module
+-        # can't find the .pem when PAR::Packer'ed
+-        # Have to explicitly try to require Mozilla::CA here to get it into %INC below
+-        # It may, however, have been removed by some biber unpacked dists
+-        if (not exists($ENV{PERL_LWP_SSL_CA_FILE}) and
+-            not exists($ENV{PERL_LWP_SSL_CA_PATH}) and
+-            not defined(Biber::Config->getoption('ssl-nointernalca')) and
+-            eval {require Mozilla::CA}) {
+-          # we assume that the default CA file is in .../Mozilla/CA/cacert.pem
+-          (my $vol, my $dir, undef) = File::Spec->splitpath( $INC{"Mozilla/CA.pm"} );
+-          $dir =~ s/\/$//;      # splitpath sometimes leaves a trailing '/'
+-          $ENV{PERL_LWP_SSL_CA_FILE} = File::Spec->catpath($vol, "$dir/CA", 'cacert.pem');
+-        }
+ 
+         # fallbacks for, e.g., linux
+         unless (exists($ENV{PERL_LWP_SSL_CA_FILE})) {

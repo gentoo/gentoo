@@ -1,0 +1,11 @@
+diff -Naur termpkg-3.3.orig/libtn/SocketIO.c termpkg-3.3/libtn/SocketIO.c
+--- termpkg-3.3.orig/libtn/SocketIO.c	2008-09-03 18:21:28.881220673 +0200
++++ termpkg-3.3/libtn/SocketIO.c	2008-09-03 18:23:29.106343243 +0200
+@@ -25,6 +25,7 @@
+ #endif
+ #include <sys/socket.h>
+ #include <netinet/in.h>
++#include <arpa/inet.h>
+ #include <fcntl.h>
+ #include <string.h>
+ #include <stdlib.h>

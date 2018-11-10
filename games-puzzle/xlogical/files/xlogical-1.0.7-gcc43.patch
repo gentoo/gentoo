@@ -1,0 +1,51 @@
+--- gamelogic.cpp
++++ gamelogic.cpp
+@@ -25,6 +25,7 @@
+ #include<fstream>
+ #include<cstdio>
+ #include<cctype>
++#include <cstdlib>
+ 
+ #ifndef WIN32
+ #include<unistd.h>
+--- levelmap.cpp
++++ levelmap.cpp
+@@ -21,6 +21,7 @@
+ ////////////////////////////////////////////////////////////////////////
+ 
+ // Language Includes
++#include <cstdlib>
+ #include <cstdio>
+ #include <cctype>
+ #include <cstring>
+--- mapedit.cpp
++++ mapedit.cpp
+@@ -26,6 +26,8 @@
+ #include<cstdio>
+ #include<list>
+ #include<vector>
++#include <cstdlib>
++#include <cstring>
+ 
+ #ifndef WIN32
+ #include<unistd.h>
+--- modlist.cpp
++++ modlist.cpp
+@@ -22,6 +22,7 @@
+ 
+ #include <iostream>
+ #include <fstream>
++#include <cstdlib>
+ 
+ #ifdef WIN32
+ #include <afxwin.h>
+--- tile_spinner.cpp
++++ tile_spinner.cpp
+@@ -24,6 +24,7 @@
+ 
+ 
+ // Application Includes
++#include <cstdlib>
+ #include "audio.h"
+ #include "properties.h"
+ #include "defs.h"

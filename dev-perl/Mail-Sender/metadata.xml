@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Module for sending mails with attachments through an SMTP server
+  </longdescription>
+  <longdescription lang="ja">
+    SMTPでアタッチメントでメールを送るperlモジュール
+  </longdescription>
+  <upstream>
+    <remote-id type="cpan">Mail-Sender</remote-id>
+    <remote-id type="cpan-module">Mail::Sender</remote-id>
+    <remote-id type="cpan-module">Mail::Sender::CType::Ext</remote-id>
+    <remote-id type="cpan-module">Mail::Sender::CType::Win32</remote-id>
+    <remote-id type="cpan-module">Mail::Sender::DBIO</remote-id>
+    <remote-id type="cpan-module">Mail::Sender::IO</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,46 @@
+diff -ur mode2cdmaker-1.5.1.orig/Makefile.linux mode2cdmaker-1.5.1/Makefile.linux
+--- mode2cdmaker-1.5.1.orig/Makefile.linux	2003-02-01 16:27:18.000000000 +0200
++++ mode2cdmaker-1.5.1/Makefile.linux	2008-06-15 19:24:14.000000000 +0300
+@@ -4,8 +4,8 @@
+ output=mode2cdmaker
+ 
+ all:
+-	gcc -c $(srcs)
+-	gcc -o $(output) $(objs)
++	$(CC) ${CFLAGS} -DMAX_PATH=512 -c $(srcs)
++	$(CC) ${LDFLAGS} -o $(output) $(objs)
+ 
+ clean:
+ 	-rm -f $(objs) $(output)
+diff -ur mode2cdmaker-1.5.1.orig/mkvcdfs.c mode2cdmaker-1.5.1/mkvcdfs.c
+--- mode2cdmaker-1.5.1.orig/mkvcdfs.c	2003-03-14 19:57:38.000000000 +0200
++++ mode2cdmaker-1.5.1/mkvcdfs.c	2008-06-15 19:23:25.000000000 +0300
+@@ -120,6 +120,7 @@
+ #endif
+ #endif
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <fcntl.h>
+ #include <string.h>
+ #include <ctype.h>
+@@ -629,7 +630,7 @@
+ 				next_command[1]=(char*)malloc(256);
+ 				while (fgets(next_command[1],256,pf))
+ 				{
+-					next_command[1][lstrlen(next_command[1])-1]=0;
++					next_command[1][strlen(next_command[1])-1]=0;
+ 					parse_params(2,next_command,idepth+1);
+ 				}
+ 				fclose(pf);
+diff -ur mode2cdmaker-1.5.1.orig/vcdisofs.c mode2cdmaker-1.5.1/vcdisofs.c
+--- mode2cdmaker-1.5.1.orig/vcdisofs.c	2003-02-02 00:02:44.000000000 +0200
++++ mode2cdmaker-1.5.1/vcdisofs.c	2008-06-15 19:19:59.000000000 +0300
+@@ -80,6 +80,8 @@
+ #include <windows.h>
+ #endif
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include <time.h>
+ #include "defaults.h"
+ 

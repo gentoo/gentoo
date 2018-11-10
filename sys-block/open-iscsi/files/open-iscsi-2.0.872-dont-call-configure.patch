@@ -1,0 +1,11 @@
+--- open-iscsi-2.0-872.orig/Makefile
++++ open-iscsi-2.0-872/Makefile
+@@ -27,7 +27,7 @@ IFACEFILES = etc/iface.example
+ all: user kernel
+ 
+ user: ;
+-	cd utils/open-isns; ./configure; $(MAKE)
++	cd utils/open-isns; $(MAKE)
+ 	$(MAKE) -C utils/sysdeps
+ 	$(MAKE) -C utils/fwparam_ibft
+ 	$(MAKE) -C usr

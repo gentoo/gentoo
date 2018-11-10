@@ -1,0 +1,62 @@
+diff -uNr lcdtest-1.18.ORIG/SConstruct lcdtest-1.18/SConstruct
+--- lcdtest-1.18.ORIG/SConstruct	2013-04-17 14:32:37.735358663 +0100
++++ lcdtest-1.18/SConstruct	2013-04-17 14:33:52.706359788 +0100
+@@ -119,10 +119,10 @@
+ # code
+ #-----------------------------------------------------------------------------
+ 
+-build_dir = 'build/'
++variant_dir = 'build/'
+ 
+ SConscript ('src/SConscript',
+-            build_dir = build_dir,
++            variant_dir = variant_dir,
+             duplicate = 0,
+ 	    exports = {'env' : env})
+ 
+@@ -137,7 +137,7 @@
+ #-----------------------------------------------------------------------------
+ 
+ SConscript ('desktop/SConscript',
+-	   build_dir = build_dir + '/desktop',
++	   variant_dir = variant_dir + '/desktop',
+ 	   duplicate = 0)
+ 
+ #-----------------------------------------------------------------------------
+diff -uNr lcdtest-1.18.ORIG/src/SConscript lcdtest-1.18/src/SConscript
+--- lcdtest-1.18.ORIG/src/SConscript	2013-04-17 14:32:37.734358663 +0100
++++ lcdtest-1.18/src/SConscript	2013-04-17 14:32:54.194358910 +0100
+@@ -17,6 +17,7 @@
+ # along with this program.  If not, see see <http://www.gnu.org/licenses/>.
+ 
+ import os
++import SCons.Util
+ 
+ Import('env')
+ 
+@@ -29,13 +30,18 @@
+ 
+ objs = [env.Object(src) for src in srcs]
+ 
+-# respect the environment CFLAGS if given
+-if 'CFLAGS' in ARGUMENTS:
+-    env.MergeFlags (ARGUMENTS ['CFLAGS'])
+-elif 'CFLAGS' in os.environ:
+-    env.MergeFlags (os.environ ['CFLAGS'])
+-else:
+-    env.Append (CCFLAGS = ['-g', '-Wall', '-Wextra'])
++# respect the environments flags if given
++
++if os.environ.has_key('CC'):
++	env['CC'] = os.environ['CC']
++if os.environ.has_key('CFLAGS'):
++	env['CCFLAGS'] += SCons.Util.CLVar(os.environ['CFLAGS'])
++if os.environ.has_key('CXX'):
++	env['CXX'] = os.environ['CXX']
++if os.environ.has_key('CXXFLAGS'):
++	env['CXXFLAGS'] += SCons.Util.CLVar(os.environ['CXXFLAGS'])
++if os.environ.has_key('LDFLAGS'):
++	env['LINKFLAGS'] += SCons.Util.CLVar(os.environ['LDFLAGS'])
+ 
+ env.Append (LIBS = ['SDL', 'SDL_image', 'SDL_ttf']);
+ 

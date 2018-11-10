@@ -1,0 +1,106 @@
+From 7f8f72ac5f7ba7b060b4366828200050b96a9df0 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Thu, 11 Jan 2018 21:28:15 +0100
+Subject: [PATCH 1/3] Fix Qt5LinguistTools detection/lrelease binary location
+
+Correctly find the Qt5 module that provides the path to Qt5-based lrelease.
+Only available since >= Qt-5.3.1 which is a low enough minimum dependency.
+---
+ src/CMakeLists.txt              | 10 ++++++----
+ src/translations/CMakeLists.txt |  7 ++++++-
+ 2 files changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 64652c5..5779a49 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -17,10 +17,12 @@ if(WITH_JACK)
+ endif()
+ 
+ if(WITH_QT5)
+-	find_package(Qt5Core REQUIRED)
+-	find_package(Qt5Gui REQUIRED)
+-	find_package(Qt5Widgets REQUIRED)
+-	find_package(Qt5X11Extras REQUIRED)
++	set(QT_MIN_VERSION "5.3.1")
++	find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
++		Gui
++		Widgets
++		X11Extras
++	)
+ else()
+ 	find_package(Qt4 REQUIRED QtGui)
+ endif()
+diff --git a/src/translations/CMakeLists.txt b/src/translations/CMakeLists.txt
+index 455fdb2..0902cfd 100644
+--- a/src/translations/CMakeLists.txt
++++ b/src/translations/CMakeLists.txt
+@@ -1,6 +1,11 @@
+ # translations for 'simplescreenrecorder' executable
+ 
+-find_program(LRELEASE lrelease)
++if(WITH_QT5)
++	find_package(Qt5LinguistTools REQUIRED)
++	set(LRELEASE Qt5::lrelease)
++else()
++	find_program(LRELEASE lrelease)
++endif()
+ 
+ if(LRELEASE)
+ 
+-- 
+2.15.1
+
+
+From 24db02e2a689e08f737c4d720e195a3758cba2eb Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Thu, 11 Jan 2018 21:43:08 +0100
+Subject: [PATCH 2/3] Use FeatureSummary
+
+---
+ CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e770251..cb36d7d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,6 +25,7 @@ option(WITH_GLINJECT "Build the 'libssr-glinject' library. Required for OpenGL r
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+ 
++include(FeatureSummary)
+ include(GNUInstallDirs)
+ 
+ # try to guess the correct 32-bit library path on 64-bit systems
+@@ -106,3 +107,5 @@ if(WITH_SIMPLESCREENRECORDER)
+ 	)
+ 
+ endif()
++
++feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+-- 
+2.15.1
+
+
+From 329ec866097de4f011cd1bbde9dad784acbb487f Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Thu, 11 Jan 2018 22:07:39 +0100
+Subject: [PATCH 3/3] FindFFmpeg.cmake: Provide FFMPEG_FOUND
+
+---
+ cmake/FindFFmpeg.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cmake/FindFFmpeg.cmake b/cmake/FindFFmpeg.cmake
+index 117e654..993219b 100644
+--- a/cmake/FindFFmpeg.cmake
++++ b/cmake/FindFFmpeg.cmake
+@@ -28,3 +28,4 @@ mark_as_advanced(SWSCALE_INCLUDE_DIR SWSCALE_LIBRARY)
+ 
+ set(FFMPEG_INCLUDE_DIRS ${AVFORMAT_INCLUDE_DIR} ${AVCODEC_INCLUDE_DIR} ${AVUTIL_INCLUDE_DIR} ${SWSCALE_INCLUDE_DIR})
+ set(FFMPEG_LIBRARIES ${AVFORMAT_LIBRARY} ${AVCODEC_LIBRARY} ${AVUTIL_LIBRARY} ${SWSCALE_LIBRARY})
++set(FFMPEG_FOUND ${PC_FFMPEG_FOUND})
+-- 
+2.15.1
+

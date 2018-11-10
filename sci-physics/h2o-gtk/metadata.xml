@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>mgorny@gentoo.org</email>
+			<name>Michał Górny</name>
+		</maintainer>
+		<bugs-to>https://github.com/mgorny/h2o-gtk/issues/</bugs-to>
+		<remote-id type="github">mgorny/h2o-gtk</remote-id>
+	</upstream>
+</pkgmetadata>

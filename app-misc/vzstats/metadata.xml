@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<maintainer status="active">
+			<email>kir@openvz.org</email>
+			<name>Kir Kolyshkin</name>
+		</maintainer>
+	</upstream>
+	<longdescription>This is an OpenVZ component to gather OpenVZ usage and hardware statistics,
+	in order to improve the project.
+	
+	Statistics gathered and reported include the following:
+	1 Hardware info.
+	- CPU, disk, memory/swap, PCI devices
+	2 Software info.
+	- host distribution, versions of OpenVZ components, kernel version
+	3 Containers info.
+	- number of containers existing/running/using ploop/using vswap
+	- OS templates of containers
+	</longdescription>
+</pkgmetadata>

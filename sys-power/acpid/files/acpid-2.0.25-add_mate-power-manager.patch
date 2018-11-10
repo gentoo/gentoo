@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/538590
+
+--- acpid-2.0.25/samples/powerbtn/powerbtn.sh
++++ acpid-2.0.25/samples/powerbtn/powerbtn.sh
+@@ -51,7 +51,7 @@
+ getXconsole
+ 
+ # A list of power management system process names.
+-PMS="gnome-power-manager kpowersave xfce4-power-manager"
++PMS="gnome-power-manager kpowersave xfce4-power-manager mate-power-manager"
+ PMS="$PMS guidance-power-manager.py dalston-power-applet"
+ 
+ # If one of those is running or any of several others,

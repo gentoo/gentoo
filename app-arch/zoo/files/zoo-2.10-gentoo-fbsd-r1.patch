@@ -1,0 +1,25 @@
+--- a/sysv.c	2007-06-16 15:01:53 +0200
++++ b/sysv.c.new	2007-06-16 14:38:38 +0200
+@@ -63,8 +63,8 @@
+    return (fname); /* default is no-op */
+ }
+ 
+-extern long timezone;   /* defined by library routine */
+-long time ();
++/*extern long timezone;    defined by library routine */
++/* long time (); */
+ struct tm *localtime ();
+ 
+ /* Function gettz(), returns the offset from GMT in seconds of the
+--- a/zoo.h	2007-06-16 15:01:53 +0200
++++ /zoo.h.new	2007-06-16 14:57:58 +0200
+@@ -95,6 +95,9 @@
+ #endif
+ 
+ typedef unsigned char uchar;
++typedef unsigned int uint;
++typedef unsigned long ulong;
++typedef unsigned short ushort;
+ 
+ /* WARNING:  Static initialization in zooadd.c or zooext.c depends on the 
+    order of fields in struct zoo_header */

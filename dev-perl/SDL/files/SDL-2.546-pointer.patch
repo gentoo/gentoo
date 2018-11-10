@@ -1,0 +1,29 @@
+--- ./src/Core/objects/Event.xs.orig	2015-11-02 17:32:54.831820664 -0500
++++ ./src/Core/objects/Event.xs	2015-11-02 17:33:35.802090936 -0500
+@@ -611,7 +611,7 @@
+ 		char *CLASS = "SDL::JoyHatEvent";
+ 	CODE:
+ 		RETVAL = NULL;
+-		if ( &event != NULL ) 
++		if ( event ) 
+ 		RETVAL = &(event->jhat);
+ 	OUTPUT:
+ 		RETVAL
+@@ -683,7 +683,7 @@
+ 		char *CLASS = "SDL::JoyButtonEvent";
+ 	CODE:
+ 		RETVAL = NULL;
+-		if ( &event != NULL ) 
++		if ( event ) 
+ 		RETVAL = &(event->jbutton);
+ 	OUTPUT:
+ 		RETVAL
+@@ -755,7 +755,7 @@
+ 		char *CLASS = "SDL::ResizeEvent";
+ 	CODE:
+ 		RETVAL = NULL;
+-		if ( &event != NULL ) 
++		if ( event ) 
+ 		RETVAL = &(event->resize);
+ 	OUTPUT:
+ 		RETVAL

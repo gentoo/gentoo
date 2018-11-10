@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/crond"
+command_args="${CRONDARGS}"
+pidfile="/var/run/crond.pid"
+
+depend() {
+	use clock logger
+	need localmount
+	provide cron	
+}

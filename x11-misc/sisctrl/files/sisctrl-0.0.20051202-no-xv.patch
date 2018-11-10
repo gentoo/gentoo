@@ -1,0 +1,12 @@
+--- a/src/sisctrl.c
++++ b/src/sisctrl.c
+@@ -4067,7 +4067,9 @@
+ 			 ( (!(sc.sdflags & SiS_SD_SUPPORT2OVL)) || (sc.sd2flags & SiS_SD2_SUPPORT760OO) ) ) ?
+ 			 	1 : 0;
+ 
++#ifdef USEXV
+     gl.noxvdemo = (sc.noxvdemo) ? 1 : 0;
++#endif
+ 
+ #ifdef USE_STRAY
+     gl.dontusesystemtray = sc.dontusesystemtray;

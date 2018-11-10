@@ -1,0 +1,12 @@
+Newer C libraries omit this include from sys/types.h.
+
+--- a/src/bootlogd.c
++++ b/src/bootlogd.c
+@@ -32,6 +32,7 @@
+  *
+  */
+ 
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <sys/stat.h>

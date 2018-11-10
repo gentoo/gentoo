@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+    need net
+    after pbs_server slurmctld
+    before pbs_mom slurmd
+    after logger
+}
+
+start() {
+    ebegin "Starting Maui scheduler"
+    start-stop-daemon --start --exec /usr/sbin/maui 
+    eend ${?}		
+}
+
+stop() {
+    ebegin "Stopping Maui scheduler"
+    start-stop-daemon --stop -p /var/spool/maui/maui.pid
+    eend ${?}
+}
+# vim:ts=4

@@ -1,0 +1,25 @@
+From 804370c1ad2f94937ac9184dbbb40354885ea6be Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 6 Apr 2011 16:19:46 +0200
+Subject: [PATCH] [Gentoo] use vendor dirs for perl modules.
+
+---
+ plugins/perl/Makefile.in |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/plugins/perl/Makefile.in b/plugins/perl/Makefile.in
+index 84d378b..309e2e2 100644
+--- a/plugins/perl/Makefile.in
++++ b/plugins/perl/Makefile.in
+@@ -594,7 +594,7 @@ all-local:
+ 	set -e; for dir in $(perl_dirs); do \
+ 	 cd $$dir && \
+ 	 if [ ! -f Makefile ]; then \
+-	   $(PERL) Makefile.PL; \
++	   $(PERL) Makefile.PL INSTALLDIRS=vendor; \
+ 	 fi && \
+ 	 $(MAKE) CC="$(CC)" CCFLAGS="$(PERL_CFLAGS) $(AM_CFLAGS) $(CFLAGS)" && \
+ 	 cd ..; \
+-- 
+1.7.4.1
+

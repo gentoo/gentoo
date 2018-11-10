@@ -1,0 +1,32 @@
+From: David Bryant <david@wavpack.com>
+Date: Sun, 8 Apr 2018 16:27:40 -0700
+Subject: fix memory leaks
+
+---
+ src/common_utils.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/src/common_utils.c b/src/common_utils.c
+index caf6b8f..629e60e 100644
+--- a/src/common_utils.c
++++ b/src/common_utils.c
+@@ -373,6 +373,19 @@ WavpackContext *WavpackCloseFile (WavpackContext *wpc)
+ 
+     WavpackFreeWrapper (wpc);
+ 
++    if (wpc->metadata) {
++        int i;
++
++        for (i = 0; i < wpc->metacount; ++i)
++            if (wpc->metadata [i].data)
++                free (wpc->metadata [i].data);
++
++        free (wpc->metadata);
++    }
++
++    if (wpc->channel_identities)
++        free (wpc->channel_identities);
++
+     if (wpc->channel_reordering)
+         free (wpc->channel_reordering);
+ 

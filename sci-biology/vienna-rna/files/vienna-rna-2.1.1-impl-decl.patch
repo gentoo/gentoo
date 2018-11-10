@@ -1,0 +1,15 @@
+ Readseq/readseq.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Readseq/readseq.c b/Readseq/readseq.c
+index 8af7b39..56a25ae 100644
+--- a/Readseq/readseq.c
++++ b/Readseq/readseq.c
+@@ -171,6 +171,7 @@ link -w -o readseq -t MPST -c 'MPS ' 
+ #include <stdio.h>
+ #include <string.h>
+ #include <ctype.h>
++#include <stdlib.h>
+ 
+ #include "ureadseq.h"
+ 

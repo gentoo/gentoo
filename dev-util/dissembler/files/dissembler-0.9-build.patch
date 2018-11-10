@@ -1,0 +1,21 @@
+--- a/dissembler.c
++++ b/dissembler.c
+@@ -16,6 +16,9 @@
+ 
+          /*   FOR EDUCATIONAL PURPOSES ONLY  */
+
++#define _GNU_SOURCE 
++#include <string.h>
++#include <unistd.h>
+ #include <stdio.h>
+ #include <sys/stat.h>
+ #include <ctype.h>
+@@ -217,7 +217,7 @@ freedom:
+ 			fprintf(fh, "P");
+ 	}
+ 	fprintf(fh,"\n");
+-	if(fh != stdout) close(fh);
++	if(fh != stdout) fclose(fh);
+ 	free(mem-21);
+ }
+ 

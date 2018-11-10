@@ -1,0 +1,41 @@
+From 0a7009c61811b4451ff6cccda24f42ab07142603 Mon Sep 17 00:00:00 2001
+From: DJ Delorie <dj@redhat.com>
+Date: Thu, 23 Oct 2014 01:49:45 +0000
+Subject: [PATCH] 2014-10-22  Tim Harder  <radhermit@gmail.com> *
+ msp430/Makefile.in: respect DESTDIR during install
+
+---
+ libgloss/ChangeLog          | 4 ++++
+ libgloss/msp430/Makefile.in | 6 ++++--
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+2014-10-22  Tim Harder  <radhermit@gmail.com>
+
+	* msp430/Makefile.in: respect DESTDIR during install
+
+diff --git a/libgloss/msp430/Makefile.in b/libgloss/msp430/Makefile.in
+index d72051d..b9f5a6a 100644
+--- a/libgloss/msp430/Makefile.in
++++ b/libgloss/msp430/Makefile.in
+@@ -12,6 +12,7 @@
+ 
+ # Makefile for libgloss/msp430.
+ 
++DESTDIR =
+ VPATH = @srcdir@
+ srcdir = @srcdir@
+ objdir = .
+@@ -138,11 +139,11 @@
+ 
+ install: $(CRT) $(SIM_BSP) $(LIBNOSYS) $(LIB_CRT) $(SCRIPTS)
+ 	for c in $(CRT) $(SIM_BSP) $(LIBNOSYS) $(LIB_CRT); do \
+-	  $(INSTALL_DATA) $$c $(tooldir)/lib${MULTISUBDIR}/$$c ;\
++	  $(INSTALL_DATA) $$c $(DESTDIR)$(tooldir)/lib${MULTISUBDIR}/$$c ;\
+ 	done
+ 	for c in $(SCRIPTS); do \
+ 	  b=`basename $$c`; \
+-	  $(INSTALL_DATA) $$c $(tooldir)/lib${MULTISUBDIR}/$$b ;\
++	  $(INSTALL_DATA) $$c $(DESTDIR)$(tooldir)/lib${MULTISUBDIR}/$$b ;\
+ 	done
+ 
+ clean mostlyclean:

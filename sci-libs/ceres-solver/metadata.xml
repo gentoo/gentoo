@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Ceres Solver is a portable C++ library that allows for
+  modeling and solving large complicated nonlinear least squares
+  problems. It features:
+    * automatic differentiation
+    * robust loss functions
+    * local parameterizations
+    * threaded Jacobian evaluators and linear solvers
+    * Levenberg-Marquardt and Dogleg (Powell, Subspace) solvers
+    * Dense QR and Cholesky factorization (using Eigen) for small problems
+    * Sparse Cholesky factorization (using SuiteSparse) for large sparse
+      problems
+    * Specialized solvers for bundle adjustment problems in computer vision
+    * Iterative linear solvers for general sparse and bundle
+      adjustment problems
+</longdescription>
+  <use>
+    <flag name="cxsparse">Enable simple support for sparse matrix algebra from
+  <pkg>sci-libs/cxsparse</pkg> with no LAPACK dependencies</flag>
+    <flag name="schur">Enable fixed-size schur specializations (disable if
+  binary size is an issue)</flag>
+    <flag name="sparse">Enable support for sparse matrix algebra with various
+  packages from SuiteSparse</flag>
+    <flag name="gflags">Use <pkg>dev-cpp/gflags</pkg> for flag parsing</flag>
+    <flag name="c++11">Build ceres-solver using the C++11 standard</flag>
+  </use>
+</pkgmetadata>

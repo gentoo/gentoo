@@ -1,0 +1,19 @@
+Author: hasufell <hasufell@gentoo.org>
+Date:   Sun Sep 29 20:19:39 2013 +0200
+
+    fix nls
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -79,7 +79,10 @@ AC_SUBST(CONSOLE_FLAGS)
+ AC_SUBST(GUI_FLAGS)
+ 
+ dnl localization tools
+-IT_PROG_INTLTOOL([0.40], [no-xml])
++AM_NLS
++if test "$USE_NLS" != "no"; then
++    IT_PROG_INTLTOOL([0.40], [no-xml])
++fi
+ 
+ AM_CONDITIONAL(BUILD_TESTS,test x$build_tests != xno)
+ 

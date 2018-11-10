@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  The Qwt library contains GUI Components and utility classes which are
+  primarily useful for programs with a technical background.
+  Besides a 2D plot widget it provides scales, sliders, dials,
+  compasses, thermometers, wheels and knobs to control or display
+  values, arrays or ranges of type double.  
+</longdescription>
+  <use>
+    <flag name="designer">Installs <pkg>dev-qt/designer</pkg> plugin.</flag>
+    <flag name="mathml">Use the MathML renderer of the Qt solutions package.</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">qwt</remote-id>
+  </upstream>
+</pkgmetadata>

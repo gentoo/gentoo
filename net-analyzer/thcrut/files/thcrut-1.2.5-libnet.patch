@@ -1,0 +1,65 @@
+--- a/src/arp_main.c
++++ b/src/arp_main.c
+@@ -18 +18 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+--- a/src/arpg.c
++++ b/src/arpg.c
+@@ -12 +12 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+--- a/src/dhcp_main.c
++++ b/src/dhcp_main.c
+@@ -14 +14 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+--- a/src/discover_dispatch.c
++++ b/src/discover_dispatch.c
+@@ -10 +10 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+--- a/src/discover_main.c
++++ b/src/discover_main.c
+@@ -8 +8 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+--- a/src/fp.h
++++ b/src/fp.h
+@@ -10 +10 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+--- a/src/icmp_main.c
++++ b/src/icmp_main.c
+@@ -14 +14 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+--- a/src/network_raw.c
++++ b/src/network_raw.c
+@@ -10 +10 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+--- a/src/packets.c
++++ b/src/packets.c
+@@ -6 +6 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+--- a/src/thcrut.c
++++ b/src/thcrut.c
+@@ -87 +87 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+--- a/src/thcrut.h
++++ b/src/thcrut.h
+@@ -7 +7 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+--- a/src/thcrut_libnet.c
++++ b/src/thcrut_libnet.c
+@@ -5 +5 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+--- a/src/thcrut_libnet.h
++++ b/src/thcrut_libnet.h
+@@ -5 +5 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>

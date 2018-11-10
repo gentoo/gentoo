@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">ExtUtils-XSpp</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Cmd</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Driver</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Exception</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Exception::code</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Exception::object</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Exception::perlcode</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Exception::simple</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Exception::stdmessage</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Exception::unknown</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Grammar</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Grammar::YappDriver</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Lexer</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::Access</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::Argument</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::Class</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::Comment</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::Constructor</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::Destructor</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::Enum</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::EnumValue</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::File</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::Function</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::Method</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::Module</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::Package</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::PercAny</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::Preprocessor</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::Raw</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Node::Type</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Parser</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Typemap</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Typemap::parsed</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Typemap::reference</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSpp::Typemap::simple</remote-id>
+  </upstream>
+</pkgmetadata>

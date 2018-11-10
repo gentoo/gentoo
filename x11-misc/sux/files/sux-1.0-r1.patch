@@ -1,0 +1,52 @@
+--- a/sux
++++ b/sux
+@@ -29,7 +29,6 @@
+ # are on NFS. In such a case, change the default to copy-cookies.
+ sux_root_cookie_transfer="c"
+ 
+-
+ usage()
+ {
+   echo "usage: `basename $0` [-m|-p|--preserve-environment]" >&2
+@@ -230,10 +229,10 @@
+   # Remove the old cookies. They may cause trouble if we transfer only one 
+   # cookie, e.g. an MIT cookie, and there's still a stale XDM cookie hanging 
+   # around.
+-  export TERM="xauth -q remove $DISPLAY 2>/dev/null;"
++  export TERM="/usr/X11R6/bin/xauth -q remove $DISPLAY 2>/dev/null;"
+   if [ -n "$sux_unix_display" ]
+   then
+-    TERM="$TERM xauth -q remove $sux_unix_display;"
++    TERM="$TERM /usr/X11R6/bin/xauth -q remove $sux_unix_display;"
+   fi
+ 
+   # Note that there may be more than one cookie to transfer, hence 
+@@ -250,7 +249,7 @@
+     sux_i=`expr $sux_i + 1`
+     if [ $sux_i -eq 9 ]
+     then
+-      TERM="$TERM | xauth nmerge - ;"
++      TERM="$TERM | /usr/X11R6/bin/xauth nmerge - ;"
+       sux_i=0
+     fi
+   done
+@@ -316,12 +316,12 @@
+ # wouldn't have the proper access rights anyway...
+ unset XAUTHORITY
+ 
++sux_home=`egrep "^$sux_username:" /etc/passwd | cut -d: -f6`
+ 
+ ##
+ # --preserve-environment special case
+ if [ -n "$sux_preserve" -a -n "$sux_xauth_cmd" ]
+ then
+-  sux_home=`egrep "^$sux_username:" /etc/passwd | cut -d: -f6`
+   if [ -z "$sux_home" ]
+   then
+     echo "WARNING: --preserve-environment has been set, but no good value was found for XAUTHORITY, expect trouble" >&2
+@@ -334,4 +334,4 @@
+ ##
+ # Execute su
+ exec su $sux_su_opts -c "$sux_xauth_cmd \
+-     exec env $sux_xauthority $sux_term DISPLAY='$DISPLAY' $sux_cmd;"
++     exec env $sux_xauthority $sux_term HOME='$sux_home' DISPLAY='$DISPLAY' $sux_cmd;"

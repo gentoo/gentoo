@@ -1,0 +1,53 @@
+diff -Naur libnatpmp-20130911.orig/Makefile libnatpmp-20130911/Makefile
+--- libnatpmp-20130911.orig/Makefile	2013-09-10 16:15:06.000000000 -0400
++++ libnatpmp-20130911/Makefile	2013-09-12 13:20:29.191447842 -0400
+@@ -5,7 +5,7 @@
+ # http://miniupnp.free.fr/libnatpmp.html
+ 
+ OS = $(shell uname -s)
+-CC = gcc
++CC ?= gcc
+ INSTALL = install
+ VERSION = $(shell cat VERSION)
+ 
+@@ -22,6 +22,7 @@
+ # APIVERSION is used in soname
+ APIVERSION = 1
+ #LDFLAGS = -Wl,--no-undefined
++GENTOO_CFLAGS := $(CFLAGS)
+ CFLAGS = -Os
+ #CFLAGS = -g -O0
+ CFLAGS += -fPIC
+@@ -52,6 +53,8 @@
+ endif
+ endif
+ 
++CFLAGS := $(CFLAGS) $(GENTOO_CFLAGS)
++
+ HEADERS = natpmp.h
+ 
+ EXECUTABLES = testgetgateway natpmpc-shared natpmpc-static
+@@ -144,19 +147,19 @@
+ 	$(CC) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
+ 
+ natpmpc-static:	natpmpc.o $(STATICLIB)
+-	$(CC) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
+ 
+ natpmpc-shared:	natpmpc.o $(SHAREDLIB)
+-	$(CC) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
+ 
+ $(STATICLIB):	$(LIBOBJS)
+ 	$(AR) crs $@ $?
+ 
+ $(SHAREDLIB):	$(LIBOBJS)
+ ifeq ($(OS), Darwin)
+-	$(CC) -dynamiclib -Wl,-install_name,$(SONAME) -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) -dynamiclib -Wl,-install_name,$(SONAME) -o $@ $^
+ else
+-	$(CC) -shared -Wl,-soname,$(SONAME) -o $@ $^ $(EXTRA_LD)
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -Wl,-soname,$(SONAME) -o $@ $^ $(EXTRA_LD)
+ endif
+ 
+ 

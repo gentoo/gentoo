@@ -1,0 +1,47 @@
+--- Makefile.orig	2013-02-01 13:34:54.490898002 +0400
++++ Makefile	2013-02-01 13:44:25.927772130 +0400
+@@ -1,5 +1,6 @@
+ CC=gcc
+-CFLAGS=-g -pedantic -Wall -O2 -shared -fpic -I /usr/include/lua5.1 -I /usr/include/mysql -I /usr/include/postgresql/ -I /opt/ibm/db2exc/V9.5/include/ -I /usr/lib/oracle/xe/app/oracle/product/10.2.0/client/rdbms/public/ -I .
++INCLUDES=-I /usr/include/lua5.1 -I /usr/include/mysql -I /usr/include/postgresql/ -I /opt/ibm/db2exc/V9.5/include/ -I /usr/lib/oracle/xe/app/oracle/product/10.2.0/client/rdbms/public/ -I .
++CFLAGS+=-pedantic -shared -fpic $(INCLUDES)
+ AR=ar rcu
+ RANLIB=ranlib
+ RM=rm -rf
+@@ -27,6 +27,14 @@
+ DB2_OBJS=$(OBJS) build/dbd_db2_main.o build/dbd_db2_connection.o build/dbd_db2_statement.o
+ ORACLE_OBJS=$(OBJS) build/dbd_oracle_main.o build/dbd_oracle_connection.o build/dbd_oracle_statement.o
+ 
++INSTALL = install
++INSTALL_PROGRAM = $(INSTALL)
++INSTALL_DATA = $(INSTALL) -m 644
++LUA_INC_DIR=/usr/include/lua5.1
++LUA_LIB_DIR=/usr/lib
++INSTALL_DIR_LUA=/usr/share/lua/5.1
++INSTALL_DIR_BIN=/usr/lib/lua/5.1
++
+ free: mysql psql sqlite3
+ 
+ all:  mysql psql sqlite3 db2 oracle
+@@ -90,3 +98,21 @@
+ build:
+ 	$(MKDIR) ${BUILDDIR}
+ 
++install_lua:
++	$(INSTALL_DATA) -D DBI.lua $(DESTDIR)$(INSTALL_DIR_LUA)/DBI.lua
++
++install_mysql: install_lua
++	$(INSTALL_PROGRAM) -D $(DBDMYSQL) $(DESTDIR)$(INSTALL_DIR_BIN)/$(DBDMYSQL)
++
++install_psql: install_lua
++	$(INSTALL_PROGRAM) -D $(DBDPSQL) $(DESTDIR)$(INSTALL_DIR_BIN)/$(DBDPSQL)
++
++install_sqlite3: install_lua
++	$(INSTALL_PROGRAM) -D $(DBDSQLITE3) $(DESTDIR)$(INSTALL_DIR_BIN)/$(DBDSQLITE3)
++
++install_db2: install_lua
++	$(INSTALL_PROGRAM) -D $(DBDDB2) $(DESTDIR)$(INSTALL_DIR_BIN)/$(DBDDB2)
++
++install_oracle: install_lua
++	$(INSTALL_PROGRAM) -D $(DBDORACLE) $(DESTDIR)$(INSTALL_DIR_BIN)/$(DBDORACLE)
++

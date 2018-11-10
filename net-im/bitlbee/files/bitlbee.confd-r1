@@ -1,0 +1,8 @@
+# Bitlbee options (see /usr/sbin/bitlbee -h)
+BITLBEE_OPTS="-F"
+
+# By default, the bitlbee init script will attempt to stop
+# all bitlbee-owned processes, including per-client forks.
+# Setting this to "no" tells the init script to only
+# stop the main bitlbee process.
+BITLBEE_STOP_ALL="yes"

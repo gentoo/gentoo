@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		Some nice themes for blinkensim. Included are themes of the "Haus des
+		Lehrers" at Alexanderplatz n Berlin. This is the place where the
+		original Blinkenlights installation where set up. Then there are themes
+		of the "Bibliothèque nationale de France" in Paris where the second
+		installation called "Arcade" took place. Furthermore you can find some
+		experimental themes for LED-clones.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,30 @@
+Description: Redefine some constants in include/random.h as unsigned
+ These constants are used with unsigned variables, so redefine them
+ for consistency.
+ .
+ This also fixes compilation errors under C++11: In C++11, array initialization
+ is considered list initialization and so prohibits narrowing conversions
+ (from negative signed values to unsigned).
+Author: Philip Chung <philipchung1995@yahoo.com>
+Bug-Debian: https://bugs.debian.org/811778
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+---
+ include/random.h |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+--- din-5.2.1.orig/include/random.h
++++ din-5.2.1/include/random.h
+@@ -28,9 +28,9 @@
+ 
+ const int N = 624;
+ const int M = 397;
+-const int MATRIX_A = 0x9908b0df; /* constant vector a */
+-const int UPPER_MASK = 0x80000000; /* most significant w-r bits */
+-const int LOWER_MASK = 0x7fffffff; /* least significant r bits */
++const unsigned int MATRIX_A = 0x9908b0df; /* constant vector a */
++const unsigned int UPPER_MASK = 0x80000000; /* most significant w-r bits */
++const unsigned int LOWER_MASK = 0x7fffffff; /* least significant r bits */
+ 
+ static unsigned int mt[N]; /* the array for the state vector  */
+ static int mti=N+1; /* mti==N+1 means mt[N] is not initialized */

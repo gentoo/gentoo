@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<longdescription lang="en">
+		Windows / Hyper-V library for OpenStack projects.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">openstack/os-win</remote-id>
+		<remote-id type="pypi">os-win</remote-id>
+	</upstream>
+</pkgmetadata>

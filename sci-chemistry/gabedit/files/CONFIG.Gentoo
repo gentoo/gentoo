@@ -1,0 +1,14 @@
+GTKLIB      = `pkg-config --libs gtk+-2.0 gtkglext-1.0`
+GTKCFLAGS   = `pkg-config --cflags gtk+-2.0 gtkglext-1.0`
+OGLLIB      = `pkg-config --libs glu`
+OGLCFLAGS   = `pkg-config --cflags glu`
+X11LIB      = `pkg-config --libs x11`
+LIBPTHREAD  = -lpthread
+RM   = rm -f
+MAKE = make
+MKDIR = mkdir -p
+WIN32LIB   =
+
+#DRAWGEOMGL= 
+DRAWGEOMGL=-DDRAWGEOMGL
+

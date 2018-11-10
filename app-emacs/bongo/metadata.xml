@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  Bongo is a buffer-oriented media player for Emacs, contemporary with and
+  comparable to <pkg>app-emacs/emms</pkg>.
+
+  Notable features of Bongo include
+  * separate playlist and library buffers (each of which you may have any
+    number — even zero of both is okay if you don’t need playlist
+    functionality),
+  * hierarchical buffers with collapsable sections for each artist and album,
+  * familiar Emacs bindings for editing Bongo buffers (edit playlists much
+    like you would regular text), 
+  * a nice visual seeking interface doubling as a progress meter (hit ‘s’),
+  * a visual audio volume control (<pkg>app-emacs/volume</pkg>, which is
+    actually a stand-alone package),
+  * built-in support for playing and retrieving information about audio CDs,
+  * built-in support for submitting information to Last.fm using
+    ‘lastfmsubmitd’,
+  * the ability to perform arbitrary actions (stopping playback is a simple
+    example) once playback reaches certain points in the playlist, using
+    so-called “action tracks”,
+  * an XMMS-like keymap for XMMS refugees,
+  * zero-configuration, out-of-the-box rock’n’roll action.
+
+  Bongo currently comes with backends for VLC, mpg321, ogg123, speexdec,
+  TiMidity and MikMod. All backends support pausing and resuming, but only VLC
+  and mpg321 support interactive seeking. Defining your own non-interactive
+  backends is very simple.
+</longdescription>
+<stabilize-allarches/>
+</pkgmetadata>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sbraz@gentoo.org</email>
+		<name>Louis Sautier</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">airdcpp-web/airdcpp-webui</remote-id>
+		<bugs-to>https://github.com/airdcpp-web/airdcpp-webclient/issues</bugs-to>
+	</upstream>
+	<longdescription lang="en">
+		AirDC++ Web UI written in Javascript. Communicates with AirDC++ Core via AirDC++ Web API.
+	</longdescription>
+</pkgmetadata>

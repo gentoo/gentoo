@@ -1,0 +1,11 @@
+diff -uNr libss7-1.0.2.ORIG/Makefile libss7-1.0.2/Makefile
+--- libss7-1.0.2.ORIG/Makefile	2012-08-23 10:26:35.733775711 +0100
++++ libss7-1.0.2/Makefile	2012-08-23 10:27:06.826807271 +0100
+@@ -48,7 +48,6 @@
+ 	install -m 755 $(DYNAMIC_LIBRARY) $(INSTALL_PREFIX)$(libdir)
+ 	( cd $(INSTALL_PREFIX)$(libdir) ; ln -sf libss7.so.1 libss7.so ; ln -sf libss7.so.1.0 libss7.so.1 )
+ 	install -m 644 $(STATIC_LIBRARY) $(INSTALL_PREFIX)$(libdir)
+-	if test $$(id -u) = 0; then $(LDCONFIG); fi
+ 
+ $(STATIC_LIBRARY): $(STATIC_OBJS)
+ 	ar rcs $(STATIC_LIBRARY) $(STATIC_OBJS)

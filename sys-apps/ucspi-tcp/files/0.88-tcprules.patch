@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/90679
+
+patch by Michael Hanselmann <hansmi@gentoo.org>
+
+--- a/tcprules.c
++++ b/tcprules.c
+@@ -127,6 +127,9 @@
+     for (;;) {
+       int tmp;
+       tmp = byte_chr(x + colon,len - colon,':');
++      if (colon == 0 && tmp == len) {
++        strerr_die2x(111, FATAL, "Unable to find colon on non-empty line.");
++      }
+       colon += tmp;
+       if (colon == len) continue;
+       if (byte_equal(x+colon+1,4,"deny") || byte_equal(x+colon+1,5,"allow")) break;

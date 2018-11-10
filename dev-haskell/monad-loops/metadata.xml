@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Some useful control operators for looping.
+		
+		New in 0.3.2.0: various functions for traversing lists and
+		computing minima/maxima using arbitrary procedures to compare
+		or score the elements.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">mokus0/monad-loops</remote-id>
+	</upstream>
+</pkgmetadata>

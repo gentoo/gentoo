@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>cory@lukasa.co.uk</email>
+			<name>Cory Benfield</name>
+		</maintainer>
+		<remote-id type="pypi">hyperframe</remote-id>
+	</upstream>
+	<longdescription>This library contains the HTTP/2 framing code used in the
+		hyper project. It provides a pure-Python codebase that is capable of
+		decoding a binary stream into HTTP/2 frames.
+	</longdescription>
+</pkgmetadata>

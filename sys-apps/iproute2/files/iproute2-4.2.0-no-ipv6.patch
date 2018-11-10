@@ -1,0 +1,37 @@
+--- iproute2-4.2.0/ip/ipmonitor.c
++++ iproute2-4.2.0/ip/ipmonitor.c
+@@ -115,7 +115,6 @@
+ 	}
+ 	if (n->nlmsg_type == RTM_NEWPREFIX) {
+ 		print_headers(fp, "[PREFIX]", ctrl);
+-		print_prefix(who, n, arg);
+ 		return 0;
+ 	}
+ 	if (n->nlmsg_type == RTM_NEWRULE || n->nlmsg_type == RTM_DELRULE) {
+--- iproute2-4.2.0/ip/iptunnel.c
++++ iproute2-4.2.0/ip/iptunnel.c
+@@ -637,13 +637,6 @@
+ 		break;
+ 	case AF_INET:
+ 		break;
+-	/*
+-	 * This is silly enough but we have no easy way to make it
+-	 * protocol-independent because of unarranged structure between
+-	 * IPv4 and IPv6.
+-	 */
+-	case AF_INET6:
+-		return do_ip6tunnel(argc, argv);
+ 	default:
+ 		fprintf(stderr, "Unsupported protocol family: %d\n", preferred_family);
+ 		exit(-1);
+--- iproute2-4.2.0/ip/Makefile
++++ iproute2-4.2.0/ip/Makefile
+@@ -1,6 +1,6 @@
+ IPOBJ=ip.o ipaddress.o ipaddrlabel.o iproute.o iprule.o ipnetns.o \
+-    rtm_map.o iptunnel.o ip6tunnel.o tunnel.o ipneigh.o ipntable.o iplink.o \
+-    ipmaddr.o ipmonitor.o ipmroute.o ipprefix.o iptuntap.o iptoken.o \
++    rtm_map.o iptunnel.o tunnel.o ipneigh.o ipntable.o iplink.o \
++    ipmaddr.o ipmonitor.o ipmroute.o iptuntap.o iptoken.o \
+     ipxfrm.o xfrm_state.o xfrm_policy.o xfrm_monitor.o \
+     iplink_vlan.o link_veth.o link_gre.o iplink_can.o \
+     iplink_macvlan.o iplink_macvtap.o ipl2tp.o link_vti.o link_vti6.o \

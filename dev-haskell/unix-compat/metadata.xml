@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package provides portable implementations of parts
+		of the unix package. This package re-exports the unix
+		package when available. When it isn't available,
+		portable implementations are used.
+	</longdescription>
+	<use>
+		<flag name="old-time">build against old-time package</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">jystic/unix-compat</remote-id>
+	</upstream>
+</pkgmetadata>

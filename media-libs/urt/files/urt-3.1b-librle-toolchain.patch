@@ -1,0 +1,60 @@
+--- a/lib/makefile.src
++++ b/lib/makefile.src
+@@ -5,10 +5,6 @@
+ DEST =
+ #endif
+ 
+-#ifndef NO_RANLIB
+-RANLIB = ranlib
+-#endif
+-
+ # If nothing else is specified, default is to build the library.
+ default: buildlib
+ 
+@@ -40,8 +36,8 @@
+ 		echo cp $(LIBNAME) $(DEST)/$(LIBNAME) ; \
+ 		cp $(LIBNAME) $(DEST)/$(LIBNAME) ; \
+ 		if test x$(RANLIB) != x ; then \
+-			echo ranlib $(DEST)/$(LIBNAME) ; \
+-			ranlib $(DEST)/$(LIBNAME) ; \
++			echo $(RANLIB) $(DEST)/$(LIBNAME) ; \
++			$(RANLIB) $(DEST)/$(LIBNAME) ; \
+ 		else \
+ 			true ; \
+ 		fi ; \
+@@ -49,11 +45,11 @@
+ 			echo cp $(LIBNAME) $(DEST)/debug/$(LIBNAME) ; \
+ 			if test x$(RANLIB) != x ; then \
+ 				cp $(LIBNAME) $(DEST)/debug/$(LIBNAME) ; \
+-				echo ranlib $(DEST)/debug/$(LIBNAME) ; \
++				echo $(RANLIB) $(DEST)/debug/$(LIBNAME) ; \
+ 			else \
+ 				true ; \
+ 			fi ; \
+-			ranlib $(DEST)/debug/$(LIBNAME) ; \
++			$(RANLIB) $(DEST)/debug/$(LIBNAME) ; \
+ 		else \
+ 			true ; \
+ 		fi ; \
+@@ -65,13 +61,18 @@
+ # Rebuild the library from all the .o files.
+ buildlib: $(OBJS)
+ 	-rm -f $(LIBNAME)
+-	ar rc $(LIBNAME)
+-	ar q $(LIBNAME) $(OBJS)
++	$(AR) rc $(LIBNAME) $(OBJS)
+ #ifndef NO_RANLIB
+-	ranlib $(LIBNAME)
++	$(RANLIB) $(LIBNAME)
+ #endif
+ 	touch buildlib
+ 
++# Gentoo wants dynamic linking
++buildlibso: $(OBJS)
++	-rm -f $(LIBNAME).so
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -Wl,-soname=librle-0.0.0.so $(OBJS) -lm -o librle.so
++	touch buildlibso
++
+ # Clean up installed stuff and binaries
+ pristine: clean
+ 	-@if test $(DEST)X != X ; then \

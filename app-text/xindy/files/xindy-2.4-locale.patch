@@ -1,0 +1,22 @@
+--- xindy-2.4.orig/src/Makefile.am
++++ xindy-2.4/src/Makefile.am
+@@ -41,7 +41,7 @@
+ DEFAULTS   = defaults.xdy
+ DUMP_XINDY = dump-xindy.lsp
+ MEMFILE    = xindy.mem
+-CLISP      = @CLISP@ -q -E iso-8859-1
++CLISP      = @CLISP@ -q
+ 
+ xindy.mem: $(DEFAULTS) $(FAS) $(DUMP_XINDY)
+ 	rm -f $(MEMFILE)
+--- xindy-2.4.orig/user-commands/xindy.in
++++ xindy-2.4/user-commands/xindy.in
+@@ -777,7 +777,7 @@
+ sub call_xindy ( $$ ) {
+     my ($mem_file, $xindy_exp) = @_;
+ 
+-    my @command = ($clisp, '-M', $mem_file, '-E', 'iso-8859-1');
++    my @command = ($clisp, '-M', $mem_file);
+     if ( $interactive ) {
+ 	print "Proposed xindy expression:\n\n$xindy_exp\n"  unless $quiet;
+     } else {

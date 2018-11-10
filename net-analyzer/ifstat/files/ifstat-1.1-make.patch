@@ -1,0 +1,122 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -65,14 +65,14 @@
+ install: install-$(TARGET) install-@LIBTARGET@
+ 
+ install-$(TARGET): $(TARGET)
+-	$(INSTALL) -d -m 755 $(bindir)
+-	$(INSTALL) -s -m 755 $(TARGET) $(bindir)/$(TARGET)
+-	$(INSTALL) -d -m 755 $(mandir)/man1
+-	$(INSTALL) -m 644 ifstat.1 $(mandir)/man1/ifstat.1
++	$(INSTALL) -d -m 755 $(DESTDIR)/$(bindir)
++	$(INSTALL) -m 755 $(TARGET) $(DESTDIR)/$(bindir)/$(TARGET)
++	$(INSTALL) -d -m 755 $(DESTDIR)/$(mandir)/man1
++	$(INSTALL) -m 644 ifstat.1 $(DESTDIR)/$(mandir)/man1/ifstat.1
+ 
+ install-$(LIBTARGET): $(LIBTARGET) libifstat-config
+-	$(INSTALL) -d -m 755 $(bindir)
+-	$(INSTALL) -m 755 libifstat-config $(bindir)/libifstat-config
++	$(INSTALL) -d -m 755 $(DESTDIR)/$(bindir)
++	$(INSTALL) -m 755 libifstat-config $(DESTDIR)/$(bindir)/libifstat-config
+ 	$(INSTALL) -d -m 755 $(includedir)
+ 	$(INSTALL) -m 644 ifstat.h $(includedir)/ifstat.h
+ 	$(INSTALL) -d -m 755 $(libdir)
+--- a/configure.in
++++ b/configure.in
+@@ -55,9 +55,8 @@
+ # checking for proc (Linux)
+ if test "x$with_proc" != "xno"; then
+   case "$with_proc" in
+-     /*) file=$with_proc ;;
+-     *) file=/proc/net/dev ;;
+-  esac
++     /*) file=$with_proc; with_proc=yes ;;
++     *) file=/proc/net/dev
+   AC_MSG_CHECKING([for proc interface in $file])
+   if grep -q Inter- $file 2>/dev/null; then
+     AC_DEFINE([USE_PROC], 1, [Define if you want to use /proc to get stats])
+@@ -69,6 +68,8 @@
+     with_proc=no
+   fi
+   AC_MSG_RESULT([$with_proc])
++        ;;
++  esac
+ fi
+ 
+ # checking for kstat (Solaris)
+@@ -393,7 +394,7 @@
+                 [snmp_ok=yes], [snmp_ok=no])
+     AC_MSG_RESULT([$snmp_ok])
+     if test "x$snmp_ok" = "xyes"; then
+-      with_snmp=yes
++      use_snmp=yes
+       snmp_type=net
+     else
+       CPPFLAGS="$OCPPFLAGS"
+@@ -402,22 +403,22 @@
+   fi
+ 
+   if test "x$snmp_ok" != "xyes"; then
+-    if test "x$with_snmp" != "xyes" ; then
++    if test "x$use_snmp" != "xyes" ; then
+       CPPFLAGS="$CPPFLAGS -I$with_snmp/include"
+       LDFLAGS="$LDFLAGS -L$with_snmp/lib"
+     fi
+     AC_CHECK_HEADER(net-snmp/net-snmp-config.h, snmp_type=net,
+ 	  	    [AC_CHECK_HEADER(ucd-snmp/ucd-snmp-config.h,
+-                                     snmp_type=ucd, with_snmp=no)])
++                                     snmp_type=ucd, use_snmp=no)])
+ 
+-    if test "x$with_snmp" != "xno"; then
++    if test "x$use_snmp" != "xno"; then
+       if test "x$snmp_type" = "xnet"; then
+          libsnmp="-lnetsnmp"
+       else
+          libsnmp="-lsnmp"
+       fi
+ 
+-      with_snmp=no
++      use_snmp=no
+       SNMPLIBALONE="$libsnmp"
+       # Setting to be able to force linking with -lcrypto....
+       # This is needed on OpenBSD (at least) where the snmplib port links without -lcrypto,
+@@ -429,18 +430,18 @@
+         SNMPLIBALONE=""
+       fi
+       for lib in $SNMPLIBALONE "$libsnmp -lcrypto" ; do
+-        if test "x$with_snmp" != "xyes" ; then
++        if test "x$use_snmp" != "xyes" ; then
+           AC_MSG_CHECKING([for snmp support in $lib])
+           OLIBS="$LIBS"
+           LIBS="$LIBS $lib"
+           AC_TRY_LINK([], [snmp_sess_init();],
+-                      [with_snmp=yes], [LIBS="$OLIBS"])
+-          AC_MSG_RESULT([$with_snmp])
++                      [use_snmp=yes], [LIBS="$OLIBS"])
++          AC_MSG_RESULT([$use_snmp])
+         fi
+       done
+     fi
+   fi
+-  if test "x$with_snmp" = "xyes" ; then
++  if test "x$use_snmp" = "xyes" ; then
+     AC_DEFINE([USE_SNMP], 1, [Define if you have SNMP support])
+     if test "x$snmp_type" = "xnet"; then
+        AC_DEFINE([HAVE_NET_SNMP], 1,
+@@ -464,10 +465,13 @@
+ 
+ # checking that we do have at least one driver
+ if test "x$local" != "xyes"; then
++  AC_MSG_WARN([no native stats gathering mechanism found; will use SNMP.])
+   if test "x$with_snmp" = "xyes"; then
+-    AC_MSG_WARN([no native stats gathering mechanism found; will use SNMP.])
+-  else
+-    AC_MSG_ERROR([no statistics gathering methods found, porting needed.])
++    if test "x$use_snmp" = "xno"; then
++      AC_MSG_ERROR([net-snmp requested but not found.])
++    else
++      AC_MSG_ERROR([no statistics gathering methods found, porting needed.])
++    fi
+   fi
+ fi
+ 

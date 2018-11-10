@@ -1,0 +1,32 @@
+From 1de3c56c636adfdb74970bf9d7a5424af3830d92 Mon Sep 17 00:00:00 2001
+From: Yuri Konotopov <ykonotopov@gnome.org>
+Date: Mon, 23 Jan 2017 19:43:30 +0400
+Subject: [PATCH 3/6] connector: assume that "enabled-extensions" array can
+ contains duplicates
+
+See-Also: https://bugzilla.gnome.org/show_bug.cgi?id=777650
+Fixes: https://github.com/nE0sIghT/chrome-gnome-shell-mirror/issues/26
+---
+ connector/chrome-gnome-shell.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/connector/chrome-gnome-shell.py b/connector/chrome-gnome-shell.py
+index 719a347..0b92d83 100755
+--- a/connector/chrome-gnome-shell.py
++++ b/connector/chrome-gnome-shell.py
+@@ -424,9 +424,10 @@ class ChromeGNOMEShell(Gio.Application):
+                     continue
+ 
+                 if extension['enable']:
+-                    uuids.append(extension['uuid'])
++                    if not extension['uuid'] in uuids:
++                        uuids.append(extension['uuid'])
+                 elif extension['uuid'] in uuids:
+-                    uuids.remove(extension['uuid'])
++                    uuids = [value for value in uuids if value != extension['uuid']]
+ 
+             settings.set_strv(ENABLED_EXTENSIONS_KEY, uuids)
+ 
+-- 
+2.10.2
+

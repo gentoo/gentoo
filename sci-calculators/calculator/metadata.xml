@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription>
+  The FOX Calculator is a simple desktop calculator geared toward the
+  programmer for the FOX Toolkit. It supports not only a full
+  complement scientific functions, but also common operations that
+  programmers need, such as bitwise operations, bitwise shifting, and
+  base-2 logarithm and exponents, and numeric conversion between
+  hexadecimal, octal, binary, and decimal. The FOX Calculator
+  implements correct operator precedences, so expressions like 2+3*5
+  yield the correct result, which is 17, and not 25. Also featured is
+  a constant memory, which permanently stores its value even if you
+  exit the calculator and restart it later.
+</longdescription>
+</pkgmetadata>

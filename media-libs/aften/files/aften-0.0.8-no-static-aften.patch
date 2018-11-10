@@ -1,0 +1,15 @@
+Patch from user Ihar Hrachyshka on Gentoo bug 258397. Replaces the
+"aften_static" target with "aften" which is dynamically linked.
+
+diff -urN aften-0.0.8.orig/CMakeLists.txt aften-0.0.8/CMakeLists.txt
+--- a/CMakeLists.txt	2007-09-08 04:51:47.000000000 +0300
++++ b/CMakeLists.txt	2009-08-30 22:56:00.000000000 +0300
+@@ -278,7 +278,7 @@
+   # When linking to static aften, dllimport mustn't be used
+   SET_TARGET_PROPERTIES(aften_exe PROPERTIES COMPILE_FLAGS -DAFTEN_BUILD_LIBRARY)
+ ENDIF(WIN32)
+-TARGET_LINK_LIBRARIES(aften_exe aften_pcm aften_static)
++TARGET_LINK_LIBRARIES(aften_exe aften_pcm aften)
+ 
+ ADD_EXECUTABLE(wavinfo util/wavinfo.c)
+ TARGET_LINK_LIBRARIES(wavinfo aften_pcm)

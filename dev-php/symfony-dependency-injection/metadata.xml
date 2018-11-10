@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>guillaumeseren@gmail.com</email>
+    <name>Guillaume Seren</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>php-bugs@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    The DependencyInjection component allows you to standardize
+    and centralize the way objects are constructed in your application.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">symfony/dependency-injection</remote-id>
+  </upstream>
+</pkgmetadata>

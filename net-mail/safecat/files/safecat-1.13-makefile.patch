@@ -1,0 +1,20 @@
+--- safecat-1.13/Makefile.orig	2010-11-07 14:06:40.071879291 -0800
++++ safecat-1.13/Makefile	2010-11-07 14:08:38.438849840 -0800
+@@ -114,7 +114,7 @@
+ 	./compile install.c
+ 
+ instcheck: \
+-load instcheck.o hier.o auto_home.o strerr.a substdio.a error.a str.a
++install load instcheck.o hier.o auto_home.o strerr.a substdio.a error.a str.a
+ 	./load instcheck hier.o auto_home.o strerr.a substdio.a \
+ 	error.a str.a
+ 
+@@ -387,7 +387,7 @@
+ 	./compile taia_tai.c
+ 
+ tempfile.o: \
+-compile tempfile.c
++compile tempfile.c uint64.h
+ 	./compile tempfile.c
+ 
+ uint32.h: \

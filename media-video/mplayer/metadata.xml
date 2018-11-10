@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>media-video@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="bl">Blinkenlights video output</flag>
+    <flag name="bluray">Enable playback of Blu-ray filesystems</flag>
+    <flag name="bs2b">Enable Bauer stereophonic-to-binaural headphone filter</flag>
+    <flag name="cdio">Use libcdio for CD support (instead of cdparanoia)</flag>
+    <flag name="cpudetection">Enables runtime CPU detection (useful for binpkgs, compatibility on other CPUs)</flag>
+    <flag name="dvdnav">Use forked libdvdnav, navigate menus in GUIs</flag>
+    <flag name="enca">Enables support for charset discovery and conversion</flag>
+    <flag name="faac">Use external faac library for AAC encoding</flag>
+    <flag name="faad">Use external faad library for AAC decoding</flag>
+    <flag name="libmpeg2">Build support for mpeg2 over media-libs/libmpeg2 rather than using ffmpeg.</flag>
+    <flag name="live">Enables live.com streaming media support</flag>
+    <flag name="md5sum">Enables md5sum video output</flag>
+    <flag name="mng">MNG input support</flag>
+    <flag name="network">Enables network streaming support</flag>
+    <flag name="nut">Enables support for the NUT container format</flag>
+    <flag name="osdmenu">Enables support for on-screen display (OSD) menus</flag>
+    <flag name="pnm">Add PNM video output option, to create PPM/PGM/PGMYUV images</flag>
+    <flag name="pvr">Enable Video4Linux2 MPEG PVR</flag>
+    <flag name="radio">Enable V4L2 radio interface and support</flag>
+    <flag name="rar">Enable Unique RAR File Library</flag>
+    <flag name="rtc">Enables usage of the linux real time clock. The alternative is software emulation of rtc</flag>
+    <flag name="rtmp">Enables RTMPDump Streaming Media support</flag>
+    <flag name="shm">Enable support for shm</flag>
+    <flag name="tga">Enables Targa video output</flag>
+    <flag name="toolame">Enable toolame MPEG-2 encoding</flag>
+    <flag name="tremor">Enable internal support for Vorbis</flag>
+    <flag name="twolame">Enable twolame MPEG-2 encoding</flag>
+    <flag name="vcd">Enables VCD support</flag>
+    <flag name="vidix">Support for vidix video output</flag>
+    <flag name="xvmc">Enables X-Video Motion Compensation support</flag>
+    <flag name="yuv4mpeg">Enables yuv4mpeg video output</flag>
+    <flag name="zoran">Enables ZR360[56]7/ZR36060 video output</flag>
+  </use>
+</pkgmetadata>

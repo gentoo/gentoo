@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
+	<use>
+		<flag name="stunnel3">Install the stunnel3 wrapper.</flag>
+	</use>
+	<longdescription lang="en">
+		Stunnel is a program that allows you to encrypt arbitrary TCP
+		connections inside SSL (Secure Sockets Layer) available on both Unix and
+		Windows. Stunnel can allow you to secure non-SSL aware daemons and
+		protocols (like POP, IMAP, LDAP, etc) by having Stunnel provide the
+		encryption, requiring no changes to the daemon's code.
+	</longdescription>
+</pkgmetadata>

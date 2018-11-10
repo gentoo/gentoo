@@ -1,0 +1,11 @@
+[Unit]
+Description=http-replicator daemon
+After=network.target 
+
+[Service]
+ExecStart=/usr/bin/http-replicator -s -f \
+		--dir /var/cache/http-replicator --user portage --log /var/log/http-replicator.log \
+		$DAEMON_OPTS
+
+[Install]
+WantedBy=multi-user.target

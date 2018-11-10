@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gnustep@gentoo.org</email>
+		<name>Gentoo GNUstep Project</name>
+	</maintainer>
+	<longdescription>
+Welcome to GNUstep Renaissance!
+
+GNUstep Renaissance is free software (GNU LGPL), and part of the
+GNUstep project.  It is a development framework which runs on top of
+the GNUstep libraries.  It also works on top of the Apple Mac OS X
+Cocoa libraries, providing an opaque layer to write portable
+applications.
+
+In short, GNUstep Renaissance allows you to describe your user
+interfaces (that is, the windows in your application, and the buttons,
+boxes, textfields, etc in the windows) in simple and intuitive XML
+files, using an open, standard format describing the logic of the
+interface.  GNUstep Renaissance can then, at run time, generate the
+user interfaces (using the native host OpenStep-like libraries) by
+reading the XML files.  The connections between the objects created
+from the XML files, and the other objects in the application are done
+via outlets (as traditionally in OpenStep); a new quick and intuitive
+syntax has been developed to make creating outlets as easy as
+possible.
+	</longdescription>
+</pkgmetadata>

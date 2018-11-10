@@ -1,0 +1,172 @@
+diff --git a/Bustle/Diagram.hs b/Bustle/Diagram.hs
+index d558beb..ef96d60 100644
+--- a/Bustle/Diagram.hs
++++ b/Bustle/Diagram.hs
+@@ -450,7 +450,7 @@ mkLayout :: (MonadIO m)
+ mkLayout s e a = liftIO $ do
+     ctx <- cairoCreateContext Nothing
+     layout <- layoutEmpty ctx
+-    layoutSetMarkup layout (Markup.unMarkup s)
++    layoutSetMarkup layout (Markup.unMarkup s) :: IO String
+     layoutSetFontDescription layout (Just font)
+     layoutSetEllipsize layout e
+     layoutSetAlignment layout a
+diff --git a/Bustle/UI.hs b/Bustle/UI.hs
+index a78797e..9843b29 100644
+--- a/Bustle/UI.hs
++++ b/Bustle/UI.hs
+@@ -30,6 +30,7 @@ import Data.IORef
+ import qualified Data.Set as Set
+ import Data.List (intercalate)
+ import Data.Time
++import qualified Data.Text as T
+ import Data.Monoid (mempty)
+ import Text.Printf
+ 
+@@ -281,6 +282,7 @@ promptToSave wi = io $ do
+     case mdetails of
+         Just (RecordedLog tempFilePath) -> do
+             let tempFileName = takeFileName tempFilePath
++                title :: String
+                 title = printf (__ "Save log '%s' before closing?") tempFileName
+             prompt <- messageDialogNew (Just (wiWindow wi))
+                                        [DialogModal]
+@@ -459,7 +461,7 @@ wiSetLogDetails :: WindowInfo
+                 -> IO ()
+ wiSetLogDetails wi logDetails = do
+     writeIORef (wiLogDetails wi) (Just logDetails)
+-    windowSetTitle (wiWindow wi) (printf (__ "%s - Bustle") (logWindowTitle logDetails))
++    windowSetTitle (wiWindow wi) (printf (__ "%s - Bustle") (logWindowTitle logDetails) :: String)
+ 
+ setPage :: MonadIO io
+         => WindowInfo
+@@ -525,7 +527,7 @@ loadPixbuf :: FilePath -> IO (Maybe Pixbuf)
+ loadPixbuf filename = do
+   iconName <- getDataFileName $ "data/" ++ filename
+   C.catch (fmap Just (pixbufNewFromFile iconName))
+-          (\(GError _ _ msg) -> warn msg >> return Nothing)
++          (\(GError _ _ msg) -> warn (T.unpack msg) >> return Nothing)
+ 
+ openDialogue :: Window -> B ()
+ openDialogue window = embedIO $ \r -> do
+diff --git a/Bustle/UI/Canvas.hs b/Bustle/UI/Canvas.hs
+index 46c1582..5a28761 100644
+--- a/Bustle/UI/Canvas.hs
++++ b/Bustle/UI/Canvas.hs
+@@ -1,3 +1,4 @@
++{-# LANGUAGE OverloadedStrings #-}
+ {-
+ Bustle.UI.Canvas: displays diagrams
+ Copyright © 2008–2012 Collabora Ltd.
+@@ -58,7 +59,7 @@ canvasNew :: Eq a
+           -> (Maybe a -> IO ())
+           -> IO (Canvas a)
+ canvasNew builder showBounds selectionChangedCb = do
+-    layout <- builderGetObject builder castToLayout "diagramLayout"
++    layout <- builderGetObject builder castToLayout ("diagramLayout" :: String)
+     idRef <- newIORef Nothing
+     shapesRef <- newIORef []
+     widthRef <- newIORef 0
+diff --git a/Bustle/UI/DetailsView.hs b/Bustle/UI/DetailsView.hs
+index 35e80d6..d1b9d96 100644
+--- a/Bustle/UI/DetailsView.hs
++++ b/Bustle/UI/DetailsView.hs
+@@ -55,7 +55,7 @@ addValue :: Table
+          -> Int
+          -> IO Label
+ addValue table row = do
+-    label <- labelNew Nothing
++    label <- labelNew (Nothing :: Maybe String)
+     miscSetAlignment label 0 0
+     labelSetEllipsize label EllipsizeStart
+     labelSetSelectable label True
+@@ -77,7 +77,7 @@ detailsViewNew = do
+                 , tableColumnSpacing := 6
+                 ]
+ 
+-    title <- labelNew Nothing
++    title <- labelNew (Nothing :: Maybe String)
+     miscSetAlignment title 0 0
+     tableAttach table title 0 2 0 1 [Fill] [Fill] 0 0
+ 
+diff --git a/Bustle/UI/FilterDialog.hs b/Bustle/UI/FilterDialog.hs
+index 9560507..152931e 100644
+--- a/Bustle/UI/FilterDialog.hs
++++ b/Bustle/UI/FilterDialog.hs
+@@ -99,7 +99,7 @@ runFilterDialog parent names currentlyHidden = do
+     nameStore <- makeStore names currentlyHidden
+     sw <- makeView nameStore
+ 
+-    instructions <- labelNew Nothing
++    instructions <- labelNew (Nothing :: Maybe String)
+     widgetSetSizeRequest instructions 600 (-1)
+     labelSetMarkup instructions
+         (__ "Unticking a service hides its column in the diagram, \
+diff --git a/Bustle/UI/Recorder.hs b/Bustle/UI/Recorder.hs
+index 1e98a68..085eea2 100644
+--- a/Bustle/UI/Recorder.hs
++++ b/Bustle/UI/Recorder.hs
+@@ -27,6 +27,7 @@ import Control.Monad (when, liftM)
+ import Control.Concurrent.MVar
+ import qualified Data.Map as Map
+ import Data.Monoid
++import qualified Data.Text as T
+ import Control.Monad.State (runStateT)
+ import Text.Printf
+ 
+@@ -77,8 +78,7 @@ processBatch pendingRef n label incoming = do
+                 -- message from the user's perspective.
+                 i <- takeMVar n
+                 let j = i + (length pending)
+-                labelSetMarkup label $
+-                    printf (__ "Logged <b>%u</b> messages…") j
++                labelSetMarkup label $ (printf (__ "Logged <b>%u</b> messages…") j :: String)
+                 putMVar n j
+ 
+                 incoming rr'
+@@ -97,8 +97,8 @@ recorderRun filename mwindow incoming finished = C.handle newFailed $ do
+     maybe (return ()) (windowSetTransientFor dialog) mwindow
+     dialog `set` [ windowModal := True ]
+ 
+-    label <- labelNew Nothing
+-    labelSetMarkup label $ printf (__ "Logged <b>%u</b> messages…") (0 :: Int)
++    label <- labelNew (Nothing :: Maybe String)
++    labelSetMarkup label $ (printf (__ "Logged <b>%u</b> messages…") (0 :: Int) :: String)
+     loaderStateRef <- newMVar Map.empty
+     pendingRef <- newMVar []
+     let updateLabel µs body = do
+@@ -142,7 +142,7 @@ recorderRun filename mwindow incoming finished = C.handle newFailed $ do
+     widgetShowAll dialog
+   where
+     newFailed (GError _ _ message) = do
+-        displayError mwindow message Nothing
++        displayError mwindow (T.unpack message) Nothing
+ 
+ recorderChooseFile :: FilePath
+                    -> Maybe Window
+diff --git a/bustle.cabal b/bustle.cabal
+index 4ac107c..2d1f907 100644
+--- a/bustle.cabal
++++ b/bustle.cabal
+@@ -106,10 +106,10 @@ Executable bustle
+                , directory
+                , filepath
+                , glib
+-               , gtk >= 0.12.4
++               , gtk >= 0.13
+                , hgettext >= 0.1.5
+                , mtl
+-               , pango
++               , pango >= 0.13
+                , parsec
+                , pcap
+                , process
+@@ -136,7 +136,7 @@ Executable test-monitor
+                , dbus
+                , directory
+                , filepath
+-               , gtk > 0.12
++               , gtk >= 0.13
+                , glib
+                , hgettext
+                , mtl

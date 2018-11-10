@@ -1,0 +1,82 @@
+diff -Naur wmakerconf-2.12.orig/src/menu.c wmakerconf-2.12/src/menu.c
+--- wmakerconf-2.12.orig/src/menu.c	2012-02-10 17:34:57.601475631 +0100
++++ wmakerconf-2.12/src/menu.c	2012-02-10 17:35:03.917287748 +0100
+@@ -500,10 +500,10 @@
+  *  No return value.
+  */
+ {
+-   if (!WMWritePropListToFile (orig_wmaker, orig_wmaker_fname, YES))
++   if (!WMWritePropListToFile(orig_wmaker, orig_wmaker_fname))
+       warning (_("Can't revert to backupfile of `WindowMaker'. "
+ 		 "Please manually revert from file WindowMaker.bak."));
+-   if (orig_rootmenu && !WMWritePropListToFile (orig_rootmenu, orig_rootmenu_fname, YES))
++   if (orig_rootmenu && !WMWritePropListToFile(orig_rootmenu, orig_rootmenu_fname))
+       warning (_("Can't revert to backupfile of `WMRootMenu'. "
+ 		 "Please manually revert from file WMRootMenu.bak."));
+    gtk_main_quit ();
+diff -Naur wmakerconf-2.12.orig/src/rootmenu.c wmakerconf-2.12/src/rootmenu.c
+--- wmakerconf-2.12.orig/src/rootmenu.c	2012-02-10 17:34:57.601475631 +0100
++++ wmakerconf-2.12/src/rootmenu.c	2012-02-10 17:35:03.929287391 +0100
+@@ -365,7 +365,7 @@
+ 		       node_freeitem, NULL);
+       g_node_destroy (node);
+ 
+-      if (WMWritePropListToFile (menu, filename, YES))
++      if (WMWritePropListToFile(menu, filename))
+       {
+ 	 menu_changed = NO;
+ 	 message (_("Window Maker root menu file '%s' saved."), filename);
+diff -Naur wmakerconf-2.12.orig/src/themebrowser.c wmakerconf-2.12/src/themebrowser.c
+--- wmakerconf-2.12.orig/src/themebrowser.c	2012-02-10 17:34:57.601475631 +0100
++++ wmakerconf-2.12/src/themebrowser.c	2012-02-10 17:35:56.515722786 +0100
+@@ -2705,7 +2705,7 @@
+ 	 oldfiles = g_list_remove (oldfiles, tmp);
+ 	 Free (tmp);
+       }
+-      if (!WMWritePropListToFile (theme, stylename, YES))
++      if (!WMWritePropListToFile(theme, stylename))
+       {
+ 	 dialog_popup (DIALOG_ERROR, NULL, NULL,
+ 		       _("Can't save theme file\n`%s'\n"
+diff -Naur wmakerconf-2.12.orig/src/window.c wmakerconf-2.12/src/window.c
+--- wmakerconf-2.12.orig/src/window.c	2012-02-10 17:34:57.601475631 +0100
++++ wmakerconf-2.12/src/window.c	2012-02-10 17:35:03.953286677 +0100
+@@ -1069,7 +1069,7 @@
+ 	 WMReleasePropList (all_keys);
+       }
+ 
+-      if (WMWritePropListToFile (newwm, orig_wmaker_fname, YES))
++      if (WMWritePropListToFile(newwm, orig_wmaker_fname))
+       {
+ 	 changed = NO;
+ 	 message (_("Window Maker config file '%s' saved."),
+diff -Naur wmakerconf-2.12.orig/src/wmconfig.c wmakerconf-2.12/src/wmconfig.c
+--- wmakerconf-2.12.orig/src/wmconfig.c	2012-02-10 17:34:57.601475631 +0100
++++ wmakerconf-2.12/src/wmconfig.c	2012-02-10 17:35:03.957286559 +0100
+@@ -216,7 +216,7 @@
+ 	 /*
+ 	  *  Generate backup file "'path'.bak"
+ 	  */
+-	 if (WMWritePropListToFile (orig_rootmenu, new, YES))
++	 if (WMWritePropListToFile(orig_rootmenu, new))
+ 	    message (_("Backupfile `%s' generated."), new);
+ 	 else
+ 	    error (_("Can't write backupfile `%s'."), new);
+@@ -280,7 +280,7 @@
+    if (!windowmaker)
+    {
+       windowmaker = global_windowmaker;
+-      if (WMWritePropListToFile (windowmaker, orig_wmaker_fname, YES))
++      if (WMWritePropListToFile(windowmaker, orig_wmaker_fname))
+ 	 warning (_("New WindowMaker configuration file `%s' created."),
+ 		  orig_wmaker_fname);
+       else
+@@ -294,7 +294,7 @@
+       /*
+        *  Generate backup file "'path'.bak"
+        */
+-      if (WMWritePropListToFile (windowmaker, new, YES))
++      if (WMWritePropListToFile(windowmaker, new))
+ 	 message (_("Backupfile `%s' generated."), new);
+       else
+ 	 error (_("Can't write backupfile `%s'."), new);

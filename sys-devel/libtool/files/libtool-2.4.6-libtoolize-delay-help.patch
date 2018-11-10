@@ -1,0 +1,53 @@
+https://lists.gnu.org/archive/html/libtool-patches/2016-02/msg00002.html
+
+From 53419307d5b44e5b0cff80d76f88ea02f237b747 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sat, 13 Feb 2016 03:32:20 -0500
+Subject: [PATCH] libtoolize: don't execute automake and autoconf on every
+ invocation.
+
+Same fix as applied to libtool in commit 408cfb9c5fa8a666917167ffb806cb
+to delay use of automake/autoconf to when the --help option is actually
+specified.
+
+* libtoolize.in (func_help): Override func_help() from
+gl/build-aux/options-parser to only run automake --version and
+autoconf --version when libtool --help is executed on the command
+line.
+---
+ libtoolize.in | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/libtoolize.in b/libtoolize.in
+index 3fe61ce..0d4af3d 100644
+--- a/libtoolize.in
++++ b/libtoolize.in
+@@ -94,7 +94,12 @@ usage_message="Options:
+ "
+ 
+ # Additional text appended to 'usage_message' in response to '--help'.
+-long_help_message=$long_help_message"
++func_help ()
++{
++    $debug_cmd
++
++    func_usage_message
++    $ECHO "$long_help_message
+        'environment'   show warnings about LIBTOOLIZE_OPTIONS content
+        'file'          show warnings about file copying and linking
+ 
+@@ -120,8 +125,9 @@ include the following information:
+ 
+ Report bugs to <@PACKAGE_BUGREPORT@>.
+ GNU @PACKAGE@ home page: <@PACKAGE_URL@>.
+-General help using GNU software: <http://www.gnu.org/gethelp/>.
+-"
++General help using GNU software: <http://www.gnu.org/gethelp/>."
++    exit 0
++}
+ 
+ warning_categories='environment file'
+ 
+-- 
+2.6.2
+

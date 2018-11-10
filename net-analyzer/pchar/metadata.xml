@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>chutzpah@gentoo.org</email>
+	<name>Patrick McLean</name>
+</maintainer>
+<longdescription lang="en">
+pchar is a reimplementation of the pathchar utility, written by Van
+Jacobson.  Both programs attempt to characterize the bandwidth,
+latency, and loss of links along an end-to-end path through the
+Internet.  pchar works in both IPv4 and IPv6 networks.
+</longdescription>
+<use>
+	<flag name="pcap">Use the <pkg>net-libs/libpcap</pkg> library</flag>
+</use>
+</pkgmetadata>

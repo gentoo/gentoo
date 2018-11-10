@@ -1,0 +1,55 @@
+ CMakeLists.txt     | 8 +++-----
+ src/CMakeLists.txt | 4 ++--
+ 2 files changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c768e28..65d5633 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,14 +6,12 @@ set(${PROJECT_NAME}_VERSION_MAJOR 1)
+ set(${PROJECT_NAME}_VERSION_MINOR 5)
+ set(${PROJECT_NAME}_VERSION_PATCH 1)
+ 
+-set(CMAKE_CXX_FLAGS "-Wall")
+-
+ set(CMAKE_CXX_FLAGS_DEBUG "-g ${CMAKE_CXX_FLAGS}")
+ set(CMAKE_CXX_FLAGS_RHDEBINFO "-O3 -g ${CMAKE_CXX_FLAGS}")
+ set(CMAKE_CXX_FLAGS_MINSIZEREL "-Os ${CMAKE_CXX_FLAGS}")
+ 
+ set(CMAKE_BUILD_TYPE Release)
+-set(Boost_USE_STATIC_LIBS ON)
++set(Boost_USE_STATIC_LIBS OFF)
+ 
+ find_package(Boost 1.39
+     COMPONENTS
+@@ -33,10 +31,10 @@ endif(GPERFTOOLS_TCMALLOC_LIB)
+ 
+ find_package(Protobuf)
+ if (PROTOBUF_FOUND)
+-  include_directories(${Boost_INCLUDE_DIRS} ${PROTOBUF_INCLUDE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/bamtools/include") 
++  include_directories(${Boost_INCLUDE_DIRS} ${PROTOBUF_INCLUDE_DIR} ${BAMTOOLS_INCLUDE})
+ 	set(PROTO_INT 1)
+ else (PROTOBUF_FOUND)
+-  include_directories(${Boost_INCLUDE_DIRS} "${CMAKE_CURRENT_SOURCE_DIR}/bamtools/include") 
++  include_directories(${Boost_INCLUDE_DIRS} ${BAMTOOLS_INCLUDE})
+ 	set(PROTO_INT 0)
+ endif(PROTOBUF_FOUND)
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 1cc0c01..8929d1f 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -16,11 +16,11 @@ endif (GPERFTOOLS_TCMALLOC)
+ if(WIN32)
+   set(LIBRARIES ${LIBRARIES} "${CMAKE_CURRENT_SOURCE_DIR}/../bamtools/lib/libbamtools.lib" "${CMAKE_CURRENT_SOURCE_DIR}/../win_build/zlibd.lib")
+ else(WIN32)
+-  set(LIBRARIES ${LIBRARIES} "${CMAKE_CURRENT_SOURCE_DIR}/../bamtools/lib/libbamtools.a" "pthread")
++  set(LIBRARIES ${LIBRARIES} "bamtools" "pthread")
+ endif(WIN32)
+ 
+ if (PROTOBUF_FOUND)
+-  set(LIBRARIES ${LIBRARIES} "libprotobuf.a")
++  set(LIBRARIES ${LIBRARIES} "protobuf")
+ endif(PROTOBUF_FOUND)
+ 
+ target_link_libraries(express ${LIBRARIES})

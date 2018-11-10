@@ -1,0 +1,12 @@
+Set the soname which glibc expects us to have.
+--- nss_ldap-254/configure.in	2007-02-26 16:40:53.000000000 -0500
++++ nss_ldap-254/configure.in	2007-02-26 16:40:47.000000000 -0500
+@@ -92,7 +92,7 @@
+   nss_ldap_so_LDFLAGS="-b -dynamic -G `cat exports.hpux`"
+   CPPFLAGS="$CPPFLAGS -I. -DHPUX"
+   TARGET_OS=HPUX ;;
+-linux*) nss_ldap_so_LDFLAGS="-shared -Wl,-Bdynamic -Wl,--version-script,\$(srcdir)/exports.linux" ;;
++linux*) nss_ldap_so_LDFLAGS="-shared -Wl,-Bdynamic -Wl,--version-script,\$(srcdir)/exports.linux -Wl,-soname=libnss_ldap.so.2" ;;
+ *) nss_ldap_so_LDFLAGS="-shared -Wl,-Bdynamic" ;;
+ esac
+ 

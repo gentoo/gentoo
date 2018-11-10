@@ -1,0 +1,54 @@
+Remove unneeded executable stack
+
+Assembly routines in libthread and libmp use an executable stack by
+default. This is not needed and can be removed using --noexecstack.
+
+The plan9port 9a wrapper wrapper needs to be modified to pass flags to the
+underlying assembler first though..
+
+Patch by Andy Spencer
+
+  http://code.swtch.com/plan9port/issue/76/
+--- a/bin/9a
++++ b/bin/9a
+@@ -1,10 +1,5 @@
+ #!/bin/sh
+ 
+-if [ $# != 1 ]; then
+-	echo 'usage: 9a file.s' 1>&2
+-	exit 1
+-fi
+-
+ test -f $PLAN9/config && . $PLAN9/config
+ 
+ aflags=""
+@@ -17,5 +12,16 @@ Darwin-*x86_64*)
+ 	;;
+ esac
+ 
+-out=`echo $1 | sed 's/\.s$//;s/$/.o/'`
+-exec as $aflags -o $out $1
++for arg; do
++	case $arg in
++	-*)
++		opts="$opts $arg"
++		;;
++	*.s)
++		src=$arg
++		dst=$(echo $arg | sed 's/\.s/\.o/')
++		;;
++	esac
++done
++
++exec as $aflags $opts -o $dst $src
+--- a/src/mkhdr
++++ b/src/mkhdr
+@@ -30,7 +30,7 @@ AR=9ar
+ INSTALL=install
+ CFLAGS=
+ LDFLAGS=
+-AFLAGS=
++AFLAGS=--noexecstack
+ CLEANFILES=
+ NUKEFILES=
+ YACC=9 yacc

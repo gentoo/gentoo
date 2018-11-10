@@ -1,0 +1,66 @@
+# Copyright 1999-2014 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+
+# Gentoo Base Profile
+
+# NOTE: THIS IS THE BASE PROFILE FOR *ANY* GENTOO BASED OPERATING SYSTEM.
+# NO MODIFICATIONS MAY BE MADE TO THIS FILE WITHOUT PRIOR DISCUSSION.  IF
+# YOU ARE CREATING A NEW PROFILE, YOU SIMPLY NEED TO INHERIT THIS BASE
+# PROFILE IN YOUR PROFILE DIRECTORY'S "parent" FILE.
+
+
+# OK, you're staring at this file and you have no idea what these stars are
+# for.  Here's the scoop.  An initial "*" marks a package that is part of
+# the official BASE system profile.  If there is a "*" then `emerge system`
+# will use the line in its calculations of what should be installed for the
+# base profile.  Lines without a "*" prefix will be ignored for profile
+# system calculations.
+
+# Please note that this file is rarely used as a package inclusion mask
+# file, because it affects EVERY SINGLE gentoo profile.   As can be seen,
+# we've limited the inclusion mask to a version of portage which supports
+# cascaded profiles, but apart from that, there should be no version
+# specific information in here. This file serves as a high level description
+# of the minimum set of packages needed for any Gentoo based system.
+
+*>=sys-apps/baselayout-2
+*app-arch/bzip2
+*app-arch/gzip
+*app-arch/tar
+*app-arch/xz-utils
+*app-shells/bash:0
+*net-misc/iputils
+*net-misc/rsync
+*net-misc/wget
+*sys-apps/coreutils
+*sys-apps/diffutils
+*sys-apps/file
+# Much of the tree relies on newer features like "-exec +".
+# Force a recent stable version so people stay up-to-date.
+*>=sys-apps/findutils-4.4
+*sys-apps/gawk
+*sys-apps/grep
+*sys-apps/kbd
+# temporary bugfix for #398295
+*sys-apps/less
+*sys-process/procps
+*sys-process/psmisc
+*sys-apps/sed
+*sys-apps/which
+*sys-devel/binutils
+*sys-devel/gcc
+*sys-devel/gnuconfig
+*sys-devel/make
+*>=sys-devel/patch-2.7
+*sys-fs/e2fsprogs
+*virtual/dev-manager
+*virtual/editor
+*virtual/libc
+*virtual/man
+*virtual/modutils
+*virtual/os-headers
+*virtual/package-manager
+*virtual/pager
+*virtual/service-manager
+*virtual/shadow
+*virtual/ssh

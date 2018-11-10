@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-DBus</remote-id>
+    <remote-id type="cpan-module">Net::DBus</remote-id>
+    <remote-id type="cpan-module">Net::DBus::ASyncReply</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Annotation</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Binding::Bus</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Binding::Connection</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Binding::Introspector</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Binding::Iterator</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Binding::Message</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Binding::Message::Error</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Binding::Message::MethodCall</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Binding::Message::MethodReturn</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Binding::Message::Signal</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Binding::PendingCall</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Binding::Server</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Binding::Value</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Binding::Watch</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Callback</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Dumper</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Error</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Exporter</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Object</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Reactor</remote-id>
+    <remote-id type="cpan-module">Net::DBus::RemoteObject</remote-id>
+    <remote-id type="cpan-module">Net::DBus::RemoteService</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Service</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Test::MockConnection</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Test::MockIterator</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Test::MockMessage</remote-id>
+    <remote-id type="cpan-module">Net::DBus::Test::MockObject</remote-id>
+  </upstream>
+</pkgmetadata>

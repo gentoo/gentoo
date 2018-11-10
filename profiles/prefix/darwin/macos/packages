@@ -1,0 +1,7 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Mac OS X is built with LLVM/Clang
+-*sys-devel/gcc
+-*sys-devel/gcc-config
+*sys-devel/clang

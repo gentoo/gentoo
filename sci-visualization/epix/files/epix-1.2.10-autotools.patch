@@ -1,0 +1,85 @@
+diff -Nur epix-1.2.10.orig/configure.ac epix-1.2.10/configure.ac
+--- epix-1.2.10.orig/configure.ac	2012-11-29 21:04:20.411280150 -0800
++++ epix-1.2.10/configure.ac	2012-11-29 21:14:00.462163755 -0800
+@@ -9,6 +9,7 @@
+ dnl Checks for programs.
+ AC_PROG_CXX
+ AC_PROG_LN_S
++AM_PROG_AR
+ AC_PROG_RANLIB
+ AC_PROG_MAKE_SET
+ AC_PROG_INSTALL
+diff -Nur epix-1.2.10.orig/doc/Makefile.am epix-1.2.10/doc/Makefile.am
+--- epix-1.2.10.orig/doc/Makefile.am	2012-11-29 21:04:20.414280167 -0800
++++ epix-1.2.10/doc/Makefile.am	2012-11-29 21:04:30.491329674 -0800
+@@ -1,7 +1,7 @@
+ # Makefile.am for ePiX v1.x "doc" directory
+ #
+ 
+-EPIXFLAGS = --no-defaults -I.. -L.. -lepix -v
++EPIXFLAGS = --no-defaults -I.. -L.. -lepix -q
+ 
+ %.eepic: %.xp
+ 	../epix-local $(EPIXFLAGS) $<
+@@ -13,13 +13,13 @@
+ CLEANFILES = *~ *.aux *.dvi *.log *.out *.toc \
+ 	*.fdx *.flg *.fnd *.idx *.ilg *.ind \
+ 	epix.info epix.info.bz2 manual_src.tar manual.pdf manual.ps \
+-	manual_src.tar.gz manual.pdf.gz manual.ps.gz manual-stamp
++	manual_src.tar.gz manual.pdf manual.ps.gz manual-stamp
+ 
+ MAINTAINERCLEANFILES = *.eepic *.aux *.dvi *.log *.out *.toc \
+ 	*.fdx *.flg *.fnd *.idx *.ilg *.ind
+ 
+ ## Targets ##
+-doc_DATA = manual.pdf.gz manual.ps.gz manual_src.tar.gz
++doc_DATA = 
+ 
+ info_TEXINFOS = epix.texi
+ 
+@@ -42,8 +42,7 @@
+ 	gzip -9 -c manual.ps > manual.ps.gz
+ 
+ #PDF
+-manual.pdf.gz: manual-stamp
+-	gzip -9 -c manual.pdf > manual.pdf.gz
++manual.pdf: manual-stamp
+ 
+ epix.info: manual-stamp epix.texi
+ 	makeinfo epix.texi 2>&1 >/dev/null
+diff -Nur epix-1.2.10.orig/Makefile.am epix-1.2.10/Makefile.am
+--- epix-1.2.10.orig/Makefile.am	2012-11-29 21:04:20.415280173 -0800
++++ epix-1.2.10/Makefile.am	2012-11-29 21:05:52.489734436 -0800
+@@ -56,7 +56,7 @@
+ 
+ EPIX_CONFFILES = bash_completions $(EPIX_EL)
+ 
+-EPIX_NOTEFILES = AUTHORS BUGS ChangeLog COPYING INSTALL NEWS POST-INSTALL \
++EPIX_NOTEFILES = AUTHORS BUGS ChangeLog NEWS POST-INSTALL \
+ 	README THANKS VERSION
+ 
+ EXTRA_DIST = $(bin_SCRIPTS) $(man_MANS) $(EPIX_CONFFILES) $(EPIX_NOTEFILES) \
+@@ -85,11 +85,6 @@
+ 	    -e 's%@RUNTIME_COMPILER\@%$(CXX)%;' $< > $@-local
+ 	chmod a+x $@ $@-local
+ 
+-# libepix.a
+-libepix.a: $(libepix_a_OBJECTS)
+-	ar -ru libepix.a $(libepix_a_OBJECTS)
+-	$(RANLIB) libepix.a
+-
+ # object file dependencies
+ $(libepix_a_LIBADD): %.o: %.cc %.h
+ 
+diff -Nur epix-1.2.10.orig/samples/Makefile.am epix-1.2.10/samples/Makefile.am
+--- epix-1.2.10.orig/samples/Makefile.am	2012-11-29 21:04:20.416280179 -0800
++++ epix-1.2.10/samples/Makefile.am	2012-11-29 21:04:30.491329674 -0800
+@@ -7,7 +7,7 @@
+ CLEANFILES = *~ *.eepic *.eps sample_src.tar sample_src.tar.gz sample-stamp
+ 
+ ## Targets ##
+-doc_DATA = sample_src.tar.gz
++doc_DATA =
+ 
+ 
+ # tar up tex, xp, and eepic files

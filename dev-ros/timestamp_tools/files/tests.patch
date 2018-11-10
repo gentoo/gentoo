@@ -1,0 +1,14 @@
+Index: driver_common-1.6.8/timestamp_tools/CMakeLists.txt
+===================================================================
+--- driver_common-1.6.8.orig/timestamp_tools/CMakeLists.txt
++++ driver_common-1.6.8/timestamp_tools/CMakeLists.txt
+@@ -17,5 +17,7 @@ install(DIRECTORY include/${PROJECT_NAME
+   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+   FILES_MATCHING PATTERN "*.h")
+ 
++if(CATKIN_ENABLE_TESTING)
+ catkin_add_gtest(test_trigger_matcher test/test_trigger_matcher.cpp)
+-target_link_libraries(test_trigger_matcher ${catkin_LIBRARIES})
+\ No newline at end of file
++target_link_libraries(test_trigger_matcher ${catkin_LIBRARIES})
++endif()

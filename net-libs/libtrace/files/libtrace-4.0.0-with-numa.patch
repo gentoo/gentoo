@@ -1,0 +1,27 @@
+--- a/configure.in
++++ b/configure.in
+@@ -431,7 +431,23 @@
+         [[#include <linux/if_packet.h>]])
+ 
+ # If we use DPDK we might be able to use libnuma
+-AC_CHECK_LIB(numa, numa_node_to_cpus, have_numa=1, have_numa=0)
++AC_ARG_WITH(numa,
++	AS_HELP_STRING(--with-numa,include NUMA support),
++[
++	if test "$withval" = no
++	then
++		want_numa=no
++	else
++		want_numa=yes
++	fi
++],[
++	# Default to building without NUMA
++	want_numa=yes
++])
++
++if test "$want_numa" != no; then
++	AC_CHECK_LIB(numa, numa_node_to_cpus, have_numa=1, have_numa=0)
++fi
+ 
+ # Checks for various "optional" libraries
+ AC_CHECK_LIB(pthread, pthread_create, have_pthread=1, have_pthread=0)

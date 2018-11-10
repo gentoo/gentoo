@@ -1,0 +1,12 @@
+# Configuration variables for the zabbix jmx proxy
+
+
+# LISTEN_IP="0.0.0.0"
+# LISTEN_PORT=10052
+# START_POLLERS=5
+# TIMEOUT=3
+
+# uncomment to enable remote monitoring of the standard JMX objects on the Zabbix Java Gateway itself
+# JAVA_OPTIONS="$JAVA_OPTIONS -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=12345
+#       -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
+

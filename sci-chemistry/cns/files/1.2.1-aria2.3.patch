@@ -1,0 +1,22 @@
+diff --git a/cns/src/cns.f b/cns/src/cns.f
+index a3c2cbe..51a34f8 100644
+--- a/cns/src/cns.f
++++ b/cns/src/cns.f
+@@ -470,6 +470,7 @@ C local
+       INTEGER      HNLEN, TMP, PTRSZ, STLEN
+       CHARACTER*(1) CNSPTMP
+       CHARACTER*(4) ST
++!$    integer omp_get_max_threads
+ C
+ C write header
+       WRITE(6,'(10X,A)')
+@@ -526,6 +527,9 @@ C
+       WRITE(6,'(10X,7A)')
+      & ' Running on machine: ',HOSTNM(1:HNLEN),
+      & ' (',SYSNM(1:TMP),',',ST(1:STLEN),'-bit)'
++!$    write(6,'(31x,a,i3,a)') 'with',omp_get_max_threads(),
++!$   &  ' threads'
++!$C (to change use setenv OMP_NUM_THREADS x)
+ C
+       CALL GETNAM(USERNM,12,TMP)
+       WRITE(6,'(10X,2A)')

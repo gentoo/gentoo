@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-mobilephone category contains software for working with mobile phones.
+	</longdescription>
+	<longdescription lang="ja">
+		app-mobilephoneカテゴリにはケタイと使うソフトウェアが含まれます。
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-mobilephone chứa các phần mềm hoạt động với
+		điện thoại di động.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-mobilephone enthält Software für das Arbeiten mit Mobiltelefonen.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-mobilephone contiene software per la telefonia mobile.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-mobilephone contém programas para trabalhar com
+		telefones celulares.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-mobilephone zawiera oprogramowanie do współpracy z
+		telefonami komórkowymi.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-mobilephone contiene software para trabajar con
+		teléfonos móviles.
+	</longdescription>
+</catmetadata>
+

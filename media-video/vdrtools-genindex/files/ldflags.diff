@@ -1,0 +1,12 @@
+diff -Naur genindex-0.1.3.orig/Makefile genindex-0.1.3/Makefile
+--- genindex-0.1.3.orig/Makefile	2010-09-24 14:55:48.000000000 +0200
++++ genindex-0.1.3/Makefile	2010-09-24 14:56:06.000000000 +0200
+@@ -52,7 +52,7 @@
+ # The main program:
+ 
+ genindex: $(OBJS)
+-	$(CXX) $(CXXFLAGS) $^ -o $@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
+ 
+ rmstream: rmstream.o thread.o ringbuffer.o pes.o
+ 	$(CXX) $(CXXFLAGS) $^ -o $@

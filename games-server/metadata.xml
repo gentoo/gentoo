@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The games-server category contains game servers.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie games-server enthält Spieleserver.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-server contiene servidores de juegos.
+	</longdescription>
+	<longdescription lang="ja">
+		games-serverカテゴリーにはゲーム・サーバーが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De games-server categorie bevat spelservers.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-server chứa các game server.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-server contiene server per i giochi multigiocatore.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria games-server contém servidores de jogos.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria games-server zawiera serwery gier.
+	</longdescription>
+</catmetadata>
+

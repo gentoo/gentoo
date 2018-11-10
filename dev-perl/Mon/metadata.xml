@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Mon</remote-id>
+    <remote-id type="cpan-module">Mon::Client</remote-id>
+    <remote-id type="cpan-module">Mon::Protocol</remote-id>
+    <remote-id type="cpan-module">Mon::SNMP</remote-id>
+  </upstream>
+</pkgmetadata>

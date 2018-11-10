@@ -1,0 +1,40 @@
+diff --git a/j2ssh/build.xml b/j2ssh/build.xml
+index 2c867ee..7ba5814 100644
+--- a/j2ssh/build.xml
++++ b/j2ssh/build.xml
+@@ -52,7 +52,7 @@
+          <mkdir dir="${build.dist.lib}"/>
+ 
+          <!-- Build the J2SSH library files -->
+- 	         <jar jarfile="${build.dist.lib}/j2ssh-core-${j2ssh.version.major}.${j2ssh.version.minor}.${j2ssh.version.build}.jar" basedir="${build.dist.classes}">
++ 	         <jar jarfile="${build.dist.lib}/j2ssh-core.jar" basedir="${build.dist.classes}">
+                 <include name="com/sshtools/j2ssh/**/*.class"/>
+                 <manifest>
+                    <attribute name="Product-Version"
+@@ -60,7 +60,7 @@
+                  </manifest>
+              </jar>
+ 
+-             <jar jarfile="${build.dist.lib}/j2ssh-ant-${j2ssh.version.major}.${j2ssh.version.minor}.${j2ssh.version.build}.jar" basedir="${build.dist.classes}">
++             <jar jarfile="${build.dist.lib}/j2ssh-ant.jar" basedir="${build.dist.classes}">
+                 <include name="com/sshtools/ant/**/*.class"/>
+                 <manifest>
+                    <attribute name="Product-Version"
+@@ -68,7 +68,7 @@
+                  </manifest>
+              </jar>
+ 
+-             <jar jarfile="${build.dist.lib}/j2ssh-dameon-${j2ssh.version.major}.${j2ssh.version.minor}.${j2ssh.version.build}.jar" basedir="${build.dist.classes}">
++             <jar jarfile="${build.dist.lib}/j2ssh-dameon.jar" basedir="${build.dist.classes}">
+                 <include name="com/sshtools/daemon/**/*.class"/>
+                 <exclude name="com/sshtools/daemon/windows/**/*.*"/>
+                 <exclude name="com/sshtools/daemon/linux/**/*.*"/>
+@@ -78,7 +78,7 @@
+                  </manifest>
+              </jar>
+              
+-   	         <jar jarfile="${build.dist.lib}/j2ssh-common-${j2ssh.version.major}.${j2ssh.version.minor}.${j2ssh.version.build}.jar" basedir="${build.dist.classes}">
++   	         <jar jarfile="${build.dist.lib}/j2ssh-common.jar" basedir="${build.dist.classes}">
+                 <include name="com/sshtools/common/**/*.class"/>
+                 <include name="com/sshtools/common/**/*.png"/>
+                 <include name="com/sshtools/common/**/*.gif"/>

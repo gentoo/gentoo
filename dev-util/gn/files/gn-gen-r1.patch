@@ -1,0 +1,57 @@
+diff --git a/build/gen.py b/build/gen.py
+index 76f88e84..5e088b2a 100755
+--- a/build/gen.py
++++ b/build/gen.py
+@@ -326,9 +326,6 @@ def WriteGNNinja(path, platform, host, options, linux_sysroot):
+     if options.debug:
+       cflags.extend(['-O0', '-g'])
+     else:
+-      cflags.append('-DNDEBUG')
+-      cflags.append('-O3')
+-      ldflags.append('-O3')
+       # Use -fdata-sections and -ffunction-sections to place each function
+       # or data item into its own section so --gc-sections can eliminate any
+       # unused functions and data items.
+@@ -340,14 +337,6 @@ def WriteGNNinja(path, platform, host, options, linux_sysroot):
+         # Garbage collection is done by default on aix.
+         ldflags.append('-Wl,--gc-sections')
+ 
+-      # Omit all symbol information from the output file.
+-      if platform.is_darwin():
+-        ldflags.append('-Wl,-S')
+-      elif platform.is_aix():
+-        ldflags.append('-Wl,-s')
+-      else:
+-        ldflags.append('-Wl,-strip-all')
+-
+       # Enable identical code-folding.
+       if options.use_icf:
+         ldflags.append('-Wl,--icf=all')
+@@ -356,26 +345,17 @@ def WriteGNNinja(path, platform, host, options, linux_sysroot):
+         '-D_FILE_OFFSET_BITS=64',
+         '-D__STDC_CONSTANT_MACROS', '-D__STDC_FORMAT_MACROS',
+         '-pthread',
+-        '-pipe',
+         '-fno-exceptions',
+         '-fno-rtti',
+     ])
+     cflags_cc.extend(['-std=c++14', '-Wno-c++11-narrowing'])
++    ldflags.append('-pthread')
+ 
+     if platform.is_linux():
+       if linux_sysroot:
+         # Use the sid sysroot that UpdateLinuxSysroot() downloads.
+         cflags.append('--sysroot=' + linux_sysroot)
+         ldflags.append('--sysroot=' + linux_sysroot)
+-      ldflags.extend([
+-          '-static-libstdc++',
+-          '-Wl,--as-needed',
+-      ])
+-      libs.extend([
+-          # These are needed by libc++.
+-          '-ldl',
+-          '-lpthread',
+-      ])
+     elif platform.is_darwin():
+       min_mac_version_flag = '-mmacosx-version-min=10.9'
+       cflags.append(min_mac_version_flag)

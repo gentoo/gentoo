@@ -1,0 +1,35 @@
+From ad92e199f221499c19f22dce7a16e7d770ad3ae7 Mon Sep 17 00:00:00 2001
+From: Carsten Pfeiffer <carsten.pfeiffer@gebit.de>
+Date: Fri, 10 Aug 2018 16:06:20 +0200
+Subject: [PATCH] Fix crash in pango_fc_font_key_get_variations() when key is
+ null
+
+---
+ pango/pangofc-shape.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/pango/pangofc-shape.c b/pango/pangofc-shape.c
+index a59ca67c..53269d73 100644
+--- a/pango/pangofc-shape.c
++++ b/pango/pangofc-shape.c
+@@ -380,8 +380,10 @@ _pango_fc_shape (PangoFont           *font,
+ 		    fc_font->is_hinted ? ft_face->size->metrics.x_ppem : 0,
+ 		    fc_font->is_hinted ? ft_face->size->metrics.y_ppem : 0);
+ 
+-  variations = pango_fc_font_key_get_variations (key);
+-  if (variations)
++  if (key)
++  {
++    variations = pango_fc_font_key_get_variations (key);
++    if (variations)
+     {
+       guint n_variations;
+       hb_variation_t *hb_variations;
+@@ -391,6 +393,7 @@ _pango_fc_shape (PangoFont           *font,
+ 
+       g_free (hb_variations);
+     }
++  }
+ 
+   hb_buffer = acquire_buffer (&free_buffer);
+ 

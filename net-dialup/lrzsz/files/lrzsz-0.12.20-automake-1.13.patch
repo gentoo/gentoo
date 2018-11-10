@@ -1,0 +1,12 @@
+diff -urN lrzsz-0.12.20/configure.in lrzsz-0.12.20-new/configure.in
+--- lrzsz-0.12.20/configure.in	1998-12-30 16:50:07.000000000 +0900
++++ lrzsz-0.12.20-new/configure.in	2013-04-26 18:53:29.020100620 +0900
+@@ -1,7 +1,7 @@
+ dnl Process this file with autoconf to produce a configure script.
+ AC_INIT(src/crctab.c)
+ AM_INIT_AUTOMAKE(lrzsz, 0.12.20)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
+ 
+ 
+ dnl AC_C_CROSS is in AC_PROG_CC since 2.12

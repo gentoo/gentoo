@@ -1,0 +1,181 @@
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+Follow these instructions to finish setting up mailman. This file and the
+original ebuild were tweaked by me <lamer@gentoo.org> but were graciously
+submitted by Joby Walker (YOU RULE!) 
+2003 Jul 09: updated by Jesus Perez and re-tweaked by me <raker@gentoo.org>
+for 2.1.x.
+
+Please view the documentation on Mailman at: http://www.list.org/
+
+This documentation assumes you're using the default gentoo path
+(/usr/lib/mailman/), if you've changed it with MAILMAN_PREFIX, adjust them
+accordingly.
+
+1) If this is your first time installing mailman, after your "emerge mailman",
+you need to add -D MAILMAN to /etc/conf.d/apache or /etc/conf.d/apache2 and restart
+apache.
+
+2) In your /etc/conf.d/apache (for apache 1.x)
+	or /etc/conf.d/apache2 (for apache 2.x) 
+	file add the additional option to the
+	APACHE_OPTS or APACHE2_OPTS variable:
+
+	-D MAILMAN
+
+3) Make sure mailman is a part of the cron group
+
+4) This must be done as user mailman:
+
+	su - mailman
+
+Add the cron jobs:
+
+	cd cron
+	crontab crontab.in
+	cd ..
+
+Create the site password:
+
+	bin/mmsitepass
+
+and main list:
+
+	bin/newlist mailman
+
+
+5) Change back to root:
+
+	exit
+
+(Postfix users: read the notes at the end of this file before you continue)
+Add this to /etc/mail/aliases (and see point 9 for notes):
+     mailman:              "|/usr/lib/mailman/mail/mailman post mailman"
+     mailman-admin:        "|/usr/lib/mailman/mail/mailman admin mailman"
+     mailman-bounces:      "|/usr/lib/mailman/mail/mailman bounces mailman"
+     mailman-confirm:      "|/usr/lib/mailman/mail/mailman confirm mailman"
+     mailman-join:         "|/usr/lib/mailman/mail/mailman join mailman"
+     mailman-leave:        "|/usr/lib/mailman/mail/mailman leave mailman"
+     mailman-owner:        "|/usr/lib/mailman/mail/mailman owner mailman"
+     mailman-request:      "|/usr/lib/mailman/mail/mailman request mailman"
+     mailman-subscribe:    "|/usr/lib/mailman/mail/mailman subscribe mailman"
+     mailman-unsubscribe:  "|/usr/lib/mailman/mail/mailman unsubscribe mailman"
+
+For courier, the aliases have to go to /etc/courier/aliases and you have to skip
+the quotes.
+
+Run newaliases (only if you use sendmail).
+
+	newaliases
+    
+6) Start the mailman daemon:
+
+	/etc/init.d/mailman start
+
+and add it to default runlevel (optional but recommended):
+
+	rc-update add mailman default
+
+7) For each list created (either with web interface or with bin/newlist) 
+this must be added to /etc/mail/aliases (see smrsh notes below)
+replace <list-name> with the name of the list:
+
+	<list-name>: "|/usr/lib/mailman/mail/mailman post <list-name>"
+	<list-name>-admin: "|/usr/lib/mailman/mail/mailman admin <list-name>"
+	<list-name>-bounces: "|/usr/lib/mailman/mail/mailman bounces <list-name>"
+     	<list-name>-confirm: "|/usr/lib/mailman/mail/mailman confirm <list-name>"
+     	<list-name>-join: "|/usr/lib/mailman/mail/mailman join <list-name>"
+	<list-name>-leave: "|/usr/lib/mailman/mail/mailman leave <list-name>"
+	<list-name>-owner: "|/usr/lib/mailman/mail/mailman owner <list-name>"
+	<list-name>-request: "|/usr/lib/mailman/mail/mailman request <list-name>"
+     	<list-name>-subscribe: "|/usr/lib/mailman/mail/mailman subscribe <list-name>"
+	<list-name>-unsubscribe: "|/usr/lib/mailman/mail/mailman unsubscribe <list-name>"
+
+For courier, the aliases have to go to /etc/courier/aliases and you have to skip
+the quotes.
+
+Run newaliases:
+
+	newaliases
+
+smrsh notes
+-----------
+(if you use sendmail, you are surely using srmsh) you must note that 
+sendmail won't run any program outside of EBINDIR. I tried to change 
+EBINDIR using,define(`confEBINDIR', `/usr/lib/mailman/mail')dnl in 
+sendmail.mc but it didn't work, so mailman must be placed in EBINDIR, 
+which in Gentoo is /usr/adm/sm.bin, so you must run as root:
+
+     ln -s /usr/lib/mailman/mail/mailman /usr/adm/sm.bin/mailman
+
+And the lines in /etc/mail/aliases which refer to 
+/usr/lib/mailman/mail/mailman must be changed to mailman:
+
+     <list-name>:              "|mailman post <list-name>"
+     <list-name>-admin:        "|mailman admin <list-name>"
+     <list-name>-bounces:      "|mailman bounces <list-name>"
+     <list-name>-confirm:      "|mailman confirm <list-name>"
+     <list-name>-join:         "|mailman join <list-name>"
+     <list-name>-leave:        "|mailman leave <list-name>"
+     <list-name>-owner:        "|mailman owner <list-name>"
+     <list-name>-request:      "|mailman request <list-name>"
+     <list-name>-subscribe:    "|mailman subscribe <list-name>"
+     <list-name>-unsubscribe:  "|mailman unsubscribe <list-name>"
+
+exim notes
+----------
+You can write an exim stanza for the router and transport that looks something
+like (Derived from, and in part taken from cpanel):
+
+mailman_virtual_router:
+	driver = accept
+	require_files = /var/lib/mailman/lists/${lc::$local_part}/config.pck
+	local_part_suffix_optional
+	local_part_suffix = -admin     : \
+						-bounces   : -bounces+* : \
+						-confirm   : -confirm+* : \
+						-join      : -leave     : \
+						-owner     : -request   : \
+						-subscribe : -unsubscribe
+	transport = mailman_virtual_transport
+
+mailman_virtual_transport:
+    driver = pipe
+    command = /usr/lib/mailman/mail/mailman \
+              '${if def:local_part_suffix \
+                    {${sg{$local_part_suffix}{-(\\w+)(\\+.*)?}{\$1}}} \
+                    {post}}' \
+              ${lc:$local_part}
+    current_directory = /usr/lib/mailman
+    home_directory = /usr/lib/mailman
+    user = mailman
+    group = mailman
+
+Note the double colon in the require files.  See
+http://wiki.exim.org/FAQ/General_Debugging/Q0060 for more information.
+
+This should be modified if you're using the vhosts USE flag, specifically you
+need to modify the location of the config.pck file, to be
+${lc::$local_part}-${lc::$domain} instead of simply ${lc::$local_part}, and for the
+transport you need to change the last part of the command in the same fashion.
+
+Other Helpful things to know...
+-------------------------------
+run "bin/check_perms -f" from the root mailman directory
+(/usr/lib/mailman) to check and fix permission problems.
+
+The INSTALL file is located in /usr/share/doc/mailman-$VERSION/ 
+
+Postfix notes
+-------------
+If you're using Postfix, don't manually change your /etc/mail/aliases
+file, as described above. Instead, follow these instructions:
+
+http://list.org/mailman-install/node13.html
+
+This will set up Mailman and Postfix to automatically generate the new
+aliases when you create new lists. It will also make sure that Postfix
+uses the correct group ID when it's talking to Mailman, otherwise you
+will get security errors from Mailman.
+

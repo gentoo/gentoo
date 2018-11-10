@@ -1,0 +1,11 @@
+diff -uNr tacacs+-F4.0.4.27a.ORIG/configure.in tacacs+-F4.0.4.27a/configure.in
+--- tacacs+-F4.0.4.27a.ORIG/configure.in	2015-03-25 11:13:06.976024203 +0000
++++ tacacs+-F4.0.4.27a/configure.in	2015-03-25 11:13:36.816025689 +0000
+@@ -126,7 +126,6 @@
+ 
+ # compiler specifics
+ AC_PROG_CC
+-AM_C_PROTOTYPES
+ AC_PROG_CPP
+ AC_C_CONST
+ AC_C_INLINE

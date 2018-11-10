@@ -1,0 +1,2 @@
+Due to /usr/bin/say conflicting with the speech-dispatcher ebuild, it has
+beenn moved to /usr/bin/epos_say.

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>fonts@gentoo.org</email>
+    <name>Fonts</name>
+  </maintainer>
+  <use>
+    <flag name="tahoma">Also install the Tahoma font. Due to the lack of a free
+      bold variant, this may render badly. See bug 184790.</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">corefonts</remote-id>
+  </upstream>
+</pkgmetadata>

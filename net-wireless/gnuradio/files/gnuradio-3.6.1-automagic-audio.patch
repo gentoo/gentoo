@@ -1,0 +1,90 @@
+diff -ur a/gr-audio/lib/CMakeLists.txt b/gr-audio/lib/CMakeLists.txt
+--- a/gr-audio/lib/CMakeLists.txt	2012-06-11 17:55:20.000000000 +0200
++++ b/gr-audio/lib/CMakeLists.txt	2012-06-12 23:34:58.601611171 +0200
+@@ -38,7 +38,11 @@
+ ########################################################################
+ find_package(ALSA)
+ 
+-if(ALSA_FOUND)
++GR_REGISTER_COMPONENT("gr-audio-alsa" ENABLE_GR_AUDIO_ALSA
++    ALSA_FOUND
++)
++
++if(ALSA_FOUND AND ENABLE_GR_AUDIO_ALSA)
+ 
+     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/alsa ${ALSA_INCLUDE_DIRS})
+     list(APPEND gr_audio_libs ${ALSA_LIBRARIES})
+@@ -49,14 +53,18 @@
+     )
+     list(APPEND gr_audio_confs ${CMAKE_CURRENT_SOURCE_DIR}/alsa/gr-audio-alsa.conf)
+ 
+-endif(ALSA_FOUND)
++endif(ALSA_FOUND AND ENABLE_GR_AUDIO_ALSA)
+ 
+ ########################################################################
+ ## OSS Support
+ ########################################################################
+ find_package(OSS)
+ 
+-if(OSS_FOUND)
++GR_REGISTER_COMPONENT("gr-audio-oss" ENABLE_GR_AUDIO_OSS
++    OSS_FOUND
++)
++
++if(OSS_FOUND AND ENABLE_GR_AUDIO_OSS)
+ 
+     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/oss ${OSS_INCLUDE_DIRS})
+     list(APPEND gr_audio_sources
+@@ -65,7 +73,7 @@
+     )
+     list(APPEND gr_audio_confs ${CMAKE_CURRENT_SOURCE_DIR}/oss/gr-audio-oss.conf)
+ 
+-endif(OSS_FOUND)
++endif(OSS_FOUND AND ENABLE_GR_AUDIO_OSS)
+ 
+ 
+ ########################################################################
+@@ -73,7 +81,11 @@
+ ########################################################################
+ find_package(Jack)
+ 
+-if(JACK_FOUND)
++GR_REGISTER_COMPONENT("gr-audio-jack" ENABLE_GR_AUDIO_JACK
++    JACK_FOUND
++)
++
++if(JACK_FOUND AND ENABLE_GR_AUDIO_JACK)
+ 
+     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/jack ${JACK_INCLUDE_DIRS})
+     list(APPEND gr_audio_libs ${JACK_LIBRARIES})
+@@ -85,7 +97,7 @@
+     )
+     list(APPEND gr_audio_confs ${CMAKE_CURRENT_SOURCE_DIR}/jack/gr-audio-jack.conf)
+ 
+-endif(JACK_FOUND)
++endif(JACK_FOUND AND ENABLE_GR_AUDIO_JACK)
+ 
+ ########################################################################
+ ## OSX Support
+@@ -115,7 +127,11 @@
+ ########################################################################
+ find_package(Portaudio)
+ 
+-if(PORTAUDIO_FOUND)
++GR_REGISTER_COMPONENT("gr-audio-portaudio" ENABLE_GR_AUDIO_PORTAUDIO
++    PORTAUDIO_FOUND
++)
++
++if(PORTAUDIO_FOUND AND ENABLE_GR_AUDIO_PORTAUDIO)
+ 
+     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/portaudio ${PORTAUDIO_INCLUDE_DIRS})
+     list(APPEND gr_audio_libs ${PORTAUDIO_LIBRARIES})
+@@ -127,7 +143,7 @@
+     )
+     list(APPEND gr_audio_confs ${CMAKE_CURRENT_SOURCE_DIR}/portaudio/gr-audio-portaudio.conf)
+ 
+-endif(PORTAUDIO_FOUND)
++endif(PORTAUDIO_FOUND AND ENABLE_GR_AUDIO_PORTAUDIO)
+ 
+ ########################################################################
+ ## Windows Support

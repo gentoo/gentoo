@@ -1,0 +1,11 @@
+diff -uNr work.ORIG/mongo/src/mongo/shell/linenoise_utf8.h work/mongo/src/mongo/shell/linenoise_utf8.h
+--- work.ORIG/mongo/src/mongo/shell/linenoise_utf8.h	2017-03-30 15:20:51.880842717 +0100
++++ work/mongo/src/mongo/shell/linenoise_utf8.h	2017-03-30 15:21:26.002844416 +0100
+@@ -16,6 +16,7 @@
+  */
+ 
+ #include <boost/smart_ptr/scoped_array.hpp>
++#include <algorithm>
+ #include <string.h>
+ 
+ namespace linenoise_utf8 {

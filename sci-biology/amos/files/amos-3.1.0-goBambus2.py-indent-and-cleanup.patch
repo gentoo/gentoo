@@ -1,0 +1,25 @@
+--- amos-3.1.0/src/Pipeline/goBambus2.py.orig	2013-09-11 01:05:29.850090457 +0200
++++ amos-3.1.0/src/Pipeline/goBambus2.py	2013-09-11 01:07:03.250090701 +0200
+@@ -1,7 +1,7 @@
+ #pipeline script for assembly + Bambus 2
+ #contributed by Todd J Treangen
+ 
+-import string, sys, os, subprocess#, spincursor
++import sys, os, subprocess#, spincursor
+ 
+ RED =    "\033[0;31m"
+ GREEN =  "\033[0;32m"
+@@ -360,7 +360,7 @@
+                 print "\t\t%s...failed%s"%(RED,NONE)
+                 sys.exit(1)
+ 
+-       p = subprocess.Popen(AMOSDIR+"OutputResults -b %s -prefix %s %s"%(amosbank, prefix+".scaff.linear"), shell=True, stdin=subprocess.PIPE, stdout=vtext, stderr=logfile)
++        p = subprocess.Popen(AMOSDIR+"OutputResults -b %s -prefix %s %s"%(amosbank, prefix+".scaff.linear"), shell=True, stdin=subprocess.PIPE, stdout=vtext, stderr=logfile)
+ 
+         if xopt_dict["verbose"] == 1:
+             print "10) running OutputResults"
+@@ -388,4 +388,3 @@
+             else:
+                 print "\t\t%s...failed%s"%(RED,NONE)
+                 sys.exit(1)
+-)

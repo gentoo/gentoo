@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2         
+
+depend() {
+	use avahi
+}
+
+start() {
+	ebegin "Starting obby dedicated server"
+	start-stop-daemon -b --quiet --start  --make-pidfile \
+		--pidfile /var/run/sobby.pid -u ${SOBBY_USER} -g ${SOBBY_GROUP} \
+		--exec /usr/bin/sobby -- ${SOBBY_OPTS}
+	eend $? "Failed to start sobby"
+}
+
+stop() {
+	ebegin "Stopping obby dedicated server"
+	start-stop-daemon --stop --quiet --pidfile /var/run/sobby.pid
+	eend $? "Failed to stop sobby"
+}

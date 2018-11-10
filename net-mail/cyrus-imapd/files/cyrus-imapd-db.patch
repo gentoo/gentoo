@@ -1,0 +1,81 @@
+--- configure.ac	2015-07-06 01:22:19.000000000 +0000
++++ configure.ac	2015-07-22 11:18:33.000000000 +0000
+@@ -236,50 +236,29 @@
+ dnl Berkeley DB Detection
+ 
+ AC_ARG_WITH(bdb,
+-	[AS_HELP_STRING([--with-bdb=DIR], [use Berkeley DB (in DIR) [yes]])],
+-	with_bdb=$withval, with_bdb="yes")
+-
+-dnl support old-style
+-AC_ARG_WITH(dbdir,, with_bdb=$withval)
++	[AS_HELP_STRING([--with-bdb], [use Berkeley DB [yes]])],
++	[],
++	[with_bdb="yes"])
+ 
++# On a properly installed system, we build
++# by including <db.h> and by linking with -ldb
+ case "$with_bdb" in
+-  no)
+-	use_berkeley="no"
+-	;;
+-  yes)
+-	use_berkeley="yes"
+-	with_bdb_lib=none
+-	with_bdb_inc=none
+-	;;
+-  *)
+-	use_berkeley="yes"
+-	with_bdb_lib="$with_bdb/lib"
+-	with_bdb_inc="$with_bdb/include"
++  no)	;;
++  *)	AC_CHECK_FILE([/usr/include/db.h],
++  	[],
++	  AC_CHECK_FILE([/usr/include/db/db.h]),
++	  [BDB_INC="-I/usr/include/db"],
++          AC_MSG_ERROR([No <db.h> include file is found.  Install the
++	  appropriate db*-devel package first.]))
++	BDB_LIB="-ldb"
++	AC_SUBST(BDB_INC)
++	AC_SUBST(BDB_LIB)
++	LIBS="${LIBS} ${BDB_LIB}"
++	CPPFLAGS="${CPPFLAGS} ${BDB_INC}"
++	AC_DEFINE(HAVE_BDB,[],[Build in Berkeley DB support?])
+ 	;;
+ esac
+-
+-if test "$use_berkeley" != "no"; then
+-  CYRUS_BERKELEY_DB_CHK()
+-
+-  if test "$dblib" = "no"; then
+-    AC_MSG_ERROR([Berkeley DB 3.x or later was not found.  You may need to 
+-    supply the --with-bdb-libdir or --with-bdb-incdir configure options.])
+-  fi
+-
+-  if test "$with_bdb_lib" != "none"; then
+-    CMU_ADD_LIBPATH($with_bdb_lib)
+-  fi
+-
+-  BDB_INC=${BDB_INCADD}
+-  BDB_LIB=${BDB_LIBADD}
+-  AC_SUBST(BDB_INC)
+-  AC_SUBST(BDB_LIB)
+-
+-  LIBS="${LIBS} ${BDB_LIBADD}"
+-  CPPFLAGS="${BDB_INCADD} ${CPPFLAGS}"
+-  AC_DEFINE(HAVE_BDB,[],[Build in Berkeley DB support?])
+-fi
+-AM_CONDITIONAL([USE_BERKELEY], [test "$use_berkeley" != "no"])
++AM_CONDITIONAL([USE_BERKELEY], [test "$with_bdb" != "no"])
+ 
+ dnl End Berkeley DB Detection
+ 
+@@ -1800,7 +1779,7 @@
+    pcre:               $cyrus_cv_pcre_utf8
+ 
+ Database support:
+-   bdb:                $use_berkeley
++   bdb:                $with_bdb
+    mysql:              $with_mysql
+    postgresql:         $use_pgsql
+    sqlite:             $use_sqlite

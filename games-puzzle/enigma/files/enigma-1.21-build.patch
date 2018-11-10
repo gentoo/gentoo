@@ -1,0 +1,110 @@
+diff -ru enigma-1.21.orig/Makefile.am enigma-1.21/Makefile.am
+--- enigma-1.21.orig/Makefile.am	2014-12-19 16:26:06.000000000 -0500
++++ enigma-1.21/Makefile.am	2015-02-06 18:20:22.239518323 -0500
+@@ -3,12 +3,9 @@
+ #   tools -> lib-src/lua
+ #   src   -> tools, lib-src
+ #
+-SUBDIRS = m4 lib-src tools intl src data doc po etc
++SUBDIRS = m4 lib-src tools intl src data po etc
+ EXTRA_DIST = enigma CHANGES ACKNOWLEDGEMENTS
+ 
+-docdir = @datadir@/doc/enigma
+-doc_DATA = README CHANGES COPYING ACKNOWLEDGEMENTS
+-
+ ACLOCAL_AMFLAGS = -I m4
+ 
+ .PHONY: tolua
+diff -ru enigma-1.21.orig/configure.ac enigma-1.21/configure.ac
+--- enigma-1.21.orig/configure.ac	2014-12-19 16:26:06.000000000 -0500
++++ enigma-1.21/configure.ac	2015-02-06 18:20:22.282516643 -0500
+@@ -342,7 +342,6 @@
+ 	CXXFLAGS="$CXXFLAGS -O2 -ffast-math -fomit-frame-pointer"
+ 	AC_MSG_RESULT(yes)
+ else
+-	CXXFLAGS="$CXXFLAGS -g"
+ 	AC_MSG_RESULT(no)
+ fi
+ 
+diff -ru enigma-1.21.orig/etc/Makefile.am enigma-1.21/etc/Makefile.am
+--- enigma-1.21.orig/etc/Makefile.am	2014-12-19 16:26:05.000000000 -0500
++++ enigma-1.21/etc/Makefile.am	2015-02-06 18:25:44.131945494 -0500
+@@ -1,18 +1,18 @@
+ # if !MINGW32
+ # Comply with xdg icon theme specification
+-icondir = $(prefix)/share/icons/hicolor/48x48/apps
++icondir = /usr/share/icons/hicolor/48x48/apps
+ icon_DATA = enigma.png
+ 
+ # Backwards-compatible global search location for images
+-pixmapdir = $(prefix)/share/pixmaps
++pixmapdir = /usr/share/pixmaps
+ pixmap_DATA = enigma.png
+ 
+ # Install .desktop file in xdg standard location
+-desktopdir = $(prefix)/share/applications
++desktopdir = /usr/share/applications
+ desktop_DATA = enigma.desktop
+ 
+ # Install AppData file
+-appdatadir = $(prefix)/share/appdata
++appdatadir = /usr/share/appdata
+ dist_appdata_DATA = enigma.appdata.xml
+ # endif !MINGW32
+ 
+diff -ru enigma-1.21.orig/etc/enigma.desktop enigma-1.21/etc/enigma.desktop
+--- enigma-1.21.orig/etc/enigma.desktop	2014-12-19 16:26:05.000000000 -0500
++++ enigma-1.21/etc/enigma.desktop	2015-02-06 18:20:22.282516643 -0500
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Version=1.21
++Version=1.0
+ Name=Enigma
+ Name[be]=Enigma
+ Name[cs]=Enigma
+@@ -44,5 +44,5 @@
+ StartupNotify=false
+ Icon=enigma
+ Type=Application
+-Categories=Application;Game;PuzzleGame;
++Categories=Game;X-PuzzleGame;
+ 
+diff -ru enigma-1.21.orig/po/Makefile.in.in enigma-1.21/po/Makefile.in.in
+--- enigma-1.21.orig/po/Makefile.in.in	2014-12-19 16:26:06.000000000 -0500
++++ enigma-1.21/po/Makefile.in.in	2015-02-06 18:20:22.283516604 -0500
+@@ -25,12 +25,12 @@
+ exec_prefix = @exec_prefix@
+ datarootdir = @datarootdir@
+ datadir = @datadir@
+-localedir = $(datadir)/locale
++localedir = /usr/share/locale
+ gettextsrcdir = $(datadir)/gettext/po
+ 
+ INSTALL = @INSTALL@
+ INSTALL_DATA = @INSTALL_DATA@
+-MKINSTALLDIRS = @MKINSTALLDIRS@ 
++MKINSTALLDIRS = $(top_srcdir)/mkinstalldirs
+ #install_sh@ -d
+ mkinstalldirs = $(SHELL) $(MKINSTALLDIRS)
+ 
+diff -ru enigma-1.21.orig/src/Makefile.am enigma-1.21/src/Makefile.am
+--- enigma-1.21.orig/src/Makefile.am	2014-12-19 16:24:38.000000000 -0500
++++ enigma-1.21/src/Makefile.am	2015-02-06 18:20:22.283516604 -0500
+@@ -12,7 +12,7 @@
+ CXXFLAGS = @CXXFLAGS@\
+ 	-DSYSTEM_DATA_DIR=\"$(datadir)/enigma\" \
+ 	-DDOCDIR=\"$(docdir)\" \
+-	-DLOCALEDIR=\"$(localedir_enigma)\" \
++	-DLOCALEDIR=\"/usr/share/locale\" \
+ 	-I$(top_srcdir)/lib-src/zipios++  \
+ 	-I$(top_builddir)/lib-src/zipios++ \
+ 	-I$(top_srcdir)/lib-src/lua \
+@@ -440,7 +440,7 @@
+ 
+ else # not MINGW32
+ 
+-  localedir_enigma := $(datadir)/locale
++  localedir_enigma := /usr/share/locale
+   mingw_ldadd =
+ 
+ endif

@@ -1,0 +1,8 @@
+--- libpst-0.6.53/libpst.pc.in.orig
++++ libpst-0.6.53/libpst.pc.in
+@@ -8,4 +8,5 @@
+ Version: @VERSION@
+ Requires:
+ Libs: -L${libdir} -lpst
++Libs.private: @LIBS@
+ Cflags: -I${includedir}/libpst-@LIBPST_SO_MAJOR@

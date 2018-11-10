@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>robbat2@gentoo.org</email>
+</maintainer>
+<longdescription>This little utility dumps MSRPC endpoint information from
+    Windows systems. Similar to the rpcdump program from Microsoft, but does
+    not need a DCE stack and so runs on Unixes. dcetest can be very useful once
+    inside a DMZ to fingerprint Windows machines on the network. dcetest
+    operates over TCP port 135. (Think of it as rpcinfo -p against
+    Windows.)
+</longdescription>
+<longdescription lang="ja">
+これは Windows システムからの MSRPC エンドポイント情報をダンプする小さな
+ユーティリティです。Microsoft 社の rpcdump プログラムに似ていますが、DCE
+スタックを必要とせず、何より Unix 系で動きます。Dcetest は DMZ 内の 
+Windows マシンの指紋を一度に取るのに便利です。Dcetest はポート番号135で
+作動します。(Windows マシンへ向けて rpcinfo -p を実行したと考えます)
+</longdescription>
+</pkgmetadata>

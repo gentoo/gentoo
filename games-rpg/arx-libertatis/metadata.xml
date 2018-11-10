@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="c++0x">Build ROOT using the C++11 standard.</flag>
+		<flag name="crash-reporter">Build a <pkg>dev-qt/qtgui</pkg>-based
+			tool that allows to submit crash information to the upstream
+			backtracker.</flag>
+		<flag name="debug">Enable asserts and debug logging.</flag>
+		<flag name="static">Link libraries statically, currently only
+			<pkg>media-libs/glew</pkg></flag>
+		<flag name="tools">Build tools that can extract the game's data and
+			save files.</flag>
+		<flag name="unity-build">Build everything in one big source file,
+			allowing for faster build times and better optimizations at
+			the cost of higher memory usage.</flag>
+	</use>
+	<longdescription lang="en">
+		Arx Libertatis is a cross-platform, open source port of
+		Arx Fatalis, a 2002 first-person role-playing game/dungeon crawler
+		developed by Arkane Studios.
+		Arx Fatalis features crafting, melee and ranged combat, as well
+		as a unique casting system where the player draws runes in real
+		time to effect the desired spell.
+		Arx Libertatis updates and improves Arx Fatalis by supporting
+		modern systems, porting the game to new systems as well as
+		eliminating bugs and limitations.
+	</longdescription>
+	<longdescription lang="de">
+		Arx Libertatis ist eine cross-platform, open source Portierung
+		von Arx Fatalis, ein Rollenspiel/Dungeon Crawler in Ego-Perspektive
+		aus dem Jahr 2002, entwickelt von Arkane Studios.
+		Arx Fatalist umfasst das Herstellen von Gegenständen,
+		Nah- und Fernkampf, sowie ein einzigartiges Magiesystem,
+		in dem der Spieler Runen in Echtzeit zeichnen muss, um einen
+		Zauberspruch auszusprechen.
+		Arx Libertatis aktualisiert und verbessert Arx Fatalis, indem
+		es moderne Systeme unterstützt, das Spiel auch zu neuen Systemen
+		portiert und bugs und Beschränkungen behebt.
+	</longdescription>
+	<upstream>
+		<maintainer status="active">
+			<email>daniel@constexpr.org</email>
+			<name>Daniel Scharrer</name>
+		</maintainer>
+		<bugs-to>https://bugs.arx-libertatis.org/</bugs-to>
+		<changelog>
+			http://wiki.arx-libertatis.org/Changelog
+		</changelog>
+		<doc lang="en">http://wiki.arx-libertatis.org/</doc>
+		<remote-id type="github">arx/ArxLibertatis</remote-id>
+		<remote-id type="sourceforge">arx</remote-id>
+		<remote-id type="freecode">arx-libertatis</remote-id>
+	</upstream>
+</pkgmetadata>

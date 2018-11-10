@@ -1,0 +1,27 @@
+--- a/src/cronolog.c	2003-10-13 12:35:17.000000000 +0000
++++ b/src/cronolog.c	2003-10-13 12:36:36.000000000 +0000
+@@ -82,6 +82,8 @@
+  * written to "file" (e.g. /dev/console) or to stderr if "file" is "-".
+  */
+ 
++#define _GNU_SOURCE	1
++
+ #include "cronoutils.h"
+ #include "getopt.h"
+ 
+@@ -394,13 +396,13 @@
+ 	   timestamp(*pnext_period), *pnext_period,
+ 	   *pnext_period - time_now));
+     
+-    log_fd = open(pfilename, O_WRONLY|O_CREAT|O_APPEND, FILE_MODE);
++    log_fd = open(pfilename, O_WRONLY|O_CREAT|O_APPEND|O_LARGEFILE, FILE_MODE);
+     
+ #ifndef DONT_CREATE_SUBDIRS
+     if ((log_fd < 0) && (errno == ENOENT))
+     {
+ 	create_subdirs(pfilename);
+-	log_fd = open(pfilename, O_WRONLY|O_CREAT|O_APPEND, FILE_MODE);
++	log_fd = open(pfilename, O_WRONLY|O_CREAT|O_APPEND|O_LARGEFILE, FILE_MODE);
+     }
+ #endif	    
+ 

@@ -1,0 +1,12 @@
+Index: libquicktime-1.2.4/plugins/ffmpeg/ffmpeg.h
+===================================================================
+--- libquicktime-1.2.4.orig/plugins/ffmpeg/ffmpeg.h
++++ libquicktime-1.2.4/plugins/ffmpeg/ffmpeg.h
+@@ -27,6 +27,7 @@
+ 
+ #include <quicktime/qtprivate.h>
+ #include AVCODEC_HEADER
++#include <libavutil/mem.h>
+ 
+ void quicktime_init_video_codec_ffmpeg(quicktime_codec_t * codec,
+                                        quicktime_video_map_t *vtrack,

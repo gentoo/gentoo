@@ -1,0 +1,31 @@
+ bibusStart.py | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/bibusStart.py b/bibusStart.py
+index edfc19f..99c5381 100644
+--- a/bibusStart.py
++++ b/bibusStart.py
+@@ -17,12 +17,14 @@
+ # along with Bibus; if not, write to the Free Software
+ # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA.
+ #
+-import ConfigParser,os,sys,urllib,urlparse
++import ConfigParser,os,sys,urllib,urlparse,site
+ cp=ConfigParser.ConfigParser()
+ fileName = sys.argv[0]
+ while os.path.islink(fileName): fileName = os.readlink(fileName)
+ sourcedir = os.path.abspath( os.path.dirname(fileName) )
+-cp.read( os.path.join(sourcedir,'bibus.cfg') )
++bibus_sitedir = os.path.join(site.getsitepackages()[0], 'bibus')
++bibus_cfg = os.path.join(bibus_sitedir, 'bibus.cfg')
++cp.read(bibus_cfg)
+ # We read first, then if it is not null we convert to absolute path
+ # otherwise, empty path will be converted to the current directory path
+ python = cp.get('PATH','python')
+@@ -69,5 +71,5 @@ else:
+ 	except KeyError:
+ 		os.environ[LIBPATH] = oopath
+ # starting Bibus
+-os.execl( python , os.path.basename(python) , QUOTE+ os.path.join(sourcedir,'bibus.py') +QUOTE )
++os.execl( python , os.path.basename(python) , QUOTE+ os.path.join(bibus_sitedir,'bibus.py') +QUOTE )
+ 

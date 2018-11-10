@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="lib-only">don't build 'aeson-pretty' executable.</flag>
+	</use>
+	<longdescription>
+		A JSON pretty-printing library compatible with aeson as well as
+		a command-line tool to improve readabilty of streams of JSON data.
+		
+		The /library/ provides the function "encodePretty". It is a drop-in
+		replacement for aeson's "encode" function, producing JSON-ByteStrings for
+		human readers.
+		
+		The /command-line tool/ reads JSON from stdin and writes prettified JSON
+		to stdout. It also offers a complementary "compact"-mode, essentially the
+		opposite of pretty-printing. If you specify @-flib-only@ like this
+		
+		&gt; cabal install -flib-only aeson-pretty
+		
+		the command-line tool will NOT be installed.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">informatikr/aeson-pretty</remote-id>
+	</upstream>
+</pkgmetadata>

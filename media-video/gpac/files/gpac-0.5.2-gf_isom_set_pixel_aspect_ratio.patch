@@ -1,0 +1,15 @@
+Export gf_isom_set_pixel_aspect_ratio.
+media-video/x264-encoder needs it and this funcion used to be exported.
+
+diff --git a/src/isomedia/isom_write.c b/src/isomedia/isom_write.c
+index e935acc..9841d85 100644
+--- a/src/isomedia/isom_write.c
++++ b/src/isomedia/isom_write.c
+@@ -1270,6 +1270,7 @@ GF_Err gf_isom_set_visual_info(GF_ISOFile *movie, u32 trackNumber, u32 StreamDes
+ 	}
+ }
+ 
++GF_EXPORT
+ GF_Err gf_isom_set_pixel_aspect_ratio(GF_ISOFile *movie, u32 trackNumber, u32 StreamDescriptionIndex, u32 hSpacing, u32 vSpacing)
+ {
+ 	GF_Err e;

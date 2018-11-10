@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name='archs'>support archive formats</flag>
+		<flag name='codes'>support cource code formats</flag>
+		<flag name='docs'>support document formats</flag>
+		<flag name='imgs'>support image formats</flag>
+		<flag name='media'>support media formats</flag>
+		<flag name='net'>support networking formats</flag>
+		<flag name='pki'>support PKI formats</flag>
+	</use>
+	<longdescription>
+		An experimental grammar fuzzer in Haskell using QuickCheck.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">CIFASIS/QuickFuzz</remote-id>
+	</upstream>
+</pkgmetadata>

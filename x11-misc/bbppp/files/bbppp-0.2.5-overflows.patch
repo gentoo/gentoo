@@ -1,0 +1,17 @@
+diff --git a/pppstat.cc b/pppstat.cc
+index 71264e4..ca0f11c 100644
+--- a/pppstat.cc
++++ b/pppstat.cc
+@@ -52,10 +52,10 @@ PPPStat::PPPStat(ToolWindow *toolwindow)
+ 	lastTimeMil = 0.0;
+ 	ppp_h = -1;
+ #ifndef ISDN
+-	active_interface= new char[4];
++	active_interface= new char[5];
+ 	strcpy(active_interface,"ppp0");
+ #else
+-	active_interface= new char[5];
++	active_interface= new char[6];
+ 	strcpy(active_interface,"ippp0");
+ #endif
+ 	connect_status=false;

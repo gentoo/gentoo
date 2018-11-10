@@ -1,0 +1,29 @@
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -62,19 +62,22 @@
+ 
+ 
+ $(LIBSTATIC): $(OBJS)
+-	ar -cr $@ $(OBJS)
++	$(AR) -cr $@ $(OBJS)
+ 	$(RANLIB) $@
+ $(LIBSHARED): $(OBJS_SHARED)
+ 	$(CC) -shared -Wl,-soname,$(LIBSHARED) $(LDFLAGS) -o $(LIBSHARED) $(OBJS_SHARED) $(LIBS) $(LNETLIB) $(PCAPLIB)
+ 
+-_install install: $(LIBSTATIC)
++installbase: 
+ 	../mkinstalldirs $(install_prefix)$(libdir)
+ 	../mkinstalldirs $(install_prefix)$(includedir)
+ 	../mkinstalldirs $(install_prefix)$(mandir)/man3
+-	$(INSTALL) -c -m 644 libnids.a $(install_prefix)$(libdir)
+ 	$(INSTALL) -c -m 644 nids.h $(install_prefix)$(includedir)
+ 	$(INSTALL) -c -m 644 libnids.3 $(install_prefix)$(mandir)/man3
+-_installshared installshared: install $(LIBSHARED)
++
++_install install: $(LIBSTATIC) installbase
++	$(INSTALL) -c -m 644 libnids.a $(install_prefix)$(libdir)
++
++_installshared installshared: $(LIBSHARED) installbase
+ 	$(INSTALL) -c -m 755 $(LIBSHARED) $(install_prefix)$(libdir)
+ 	ln -s -f $(LIBSHARED) $(install_prefix)$(libdir)/libnids.so
+  

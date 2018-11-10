@@ -1,0 +1,13 @@
+u_int is defined in sys/types.h
+makes header usable alone.
+
+--- sys/sys/sysctl.h.old	2012-05-25 11:08:53.000000000 -0400
++++ sys/sys/sysctl.h	2012-05-25 11:09:16.000000000 -0400
+@@ -788,6 +788,7 @@
+ 		    struct sysctl_req *);
+ #else	/* !_KERNEL */
+ #include <sys/cdefs.h>
++#include <sys/types.h> /* for u_int */
+ 
+ __BEGIN_DECLS
+ int	sysctl(const int *, u_int, void *, size_t *, const void *, size_t);

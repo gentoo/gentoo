@@ -1,0 +1,40 @@
+From d5cfe429edb8c5f6f039153a0f646f2198c06b16 Mon Sep 17 00:00:00 2001
+From: Raphael Kubo da Costa <rakuco@FreeBSD.org>
+Date: Mon, 29 Jan 2018 12:19:55 +0100
+Subject: [PATCH] cmake: Stop calling QT5_WRAP_CPP().
+
+The USE_QT5 code path already unconditionally sets CMAKE_AUTOMOC to on.
+
+Calling QT5_WRAP_CPP() used to be just redundant, as antimicro_HEADERS_MOC
+was never actually added as a source dependency of the antimicro target. In
+other words, CMake's own automoc infrastructure was actually being used and
+the moc invocations from QT5_WRAP_CPP() were not being made at all.
+
+Starting with Qt 5.9.4, calling QT5_WRAP_CPP() disables the AUTOMOC property
+on the macro's input files, which means neither CMake's automoc
+infrastructure not QT5_WRAP_CPP()'s code were being used and we ended up
+with several 'undefined reference to vtable' errors when linking.
+---
+ CMakeLists.txt | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 63ef851..0e47889 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -499,7 +499,6 @@ if (UNIX)
+         find_package(Qt5Network REQUIRED)
+         find_package(Qt5LinguistTools REQUIRED)
+ 
+-        QT5_WRAP_CPP(antimicro_HEADERS_MOC ${antimicro_HEADERS})
+         QT5_WRAP_UI(antimicro_FORMS_HEADERS ${antimicro_FORMS})
+         QT5_ADD_RESOURCES(antimicro_RESOURCES_RCC ${antimicro_RESOURCES})
+         add_subdirectory("share/antimicro/translations")
+@@ -550,7 +549,6 @@ elseif(WIN32)
+     find_package(Qt5Network REQUIRED)
+     find_package(Qt5LinguistTools REQUIRED)
+ 
+-    QT5_WRAP_CPP(antimicro_HEADERS_MOC ${antimicro_HEADERS})
+     QT5_WRAP_UI(antimicro_FORMS_HEADERS ${antimicro_FORMS})
+     QT5_ADD_RESOURCES(antimicro_RESOURCES_RCC ${antimicro_RESOURCES})
+     add_subdirectory("share/antimicro/translations")

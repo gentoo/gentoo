@@ -1,0 +1,49 @@
+commit 9e251c7574d074e424ea19024f743c754f321979
+Author: Devan Franchini <twitch153@gentoo.org>
+Date:   Fri Jul 10 21:25:17 2015 -0400
+
+    config.py: Fixes package version checking regression
+    
+    Previously webapp-config would not do any sanity checks when
+    setting the package version. After adding a sanity check in 1.54
+    I made the mistake of not being flexible enough and this caused
+    a regression that prevented web apps with versions such as
+    "20140929d"[1] to be installed. This commit fixes that while still
+    allowing for some sanity checking.
+    
+    [1]: https://github.com/gentoo/webapp-config/issues/2
+
+diff --git a/WebappConfig/config.py b/WebappConfig/config.py
+index 6c915c3..3a176a0 100644
+--- a/WebappConfig/config.py
++++ b/WebappConfig/config.py
+@@ -996,17 +996,20 @@ class Config:
+                     OUT.die('Invalid package name')
+ 
+                 if len(args) > 1:
+-                    argsvr = args[1].split('.')
+-                    if len(argsvr) == 1:
+-                        OUT.die('Invalid package version: %(pvr)s'
++                    pvr = args[1]
++                    has_int = False # A package version should have at least one
++                                    # numerical value, but we want to allow for
++                                    # the flexibility of having any alphanumeric
++                                    # value while checking to make sure it's sane.
++
++                    for char in pvr:
++                        if char.isdigit():
++                            has_int = True
++
++                    if not has_int:
++                        OUT.die('Invalid package version: "%(pvr)s"'
+                                 % {'pvr': args[1]})
+ 
+-                    pvr = ''
+-                    for i in range(0, len(argsvr)):
+-                        if not i == len(argsvr) - 1:
+-                            pvr += argsvr[i] + '.'
+-                        else:
+-                            pvr += argsvr[i]
+                     self.config.set('USER', 'pvr', pvr)
+ 
+                 if (not options['dir'] and

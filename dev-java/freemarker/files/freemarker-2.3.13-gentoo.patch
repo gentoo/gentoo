@@ -1,0 +1,126 @@
+diff -Nru freemarker-2.3.13.vanilla/build.xml freemarker-2.3.13/build.xml
+--- freemarker-2.3.13.vanilla/build.xml	2008-06-21 00:46:08.000000000 +0200
++++ freemarker-2.3.13/build.xml	2008-06-21 00:46:48.000000000 +0200
+@@ -69,21 +69,28 @@
+         <pathelement path="${lib.log4j}"/>
+         <pathelement path="${lib.rhino}"/>
+         <pathelement path="${java.class.path}"/>
++        <fileset dir="lib" includes="*.jar"/>
+     </path>
+     
+     <path id="compile.classpath">
+         <path refid="compile.nojsp.classpath"/>
+         <pathelement path="${lib.jsp21}"/>
++        <fileset dir="lib" includes="*.jar"/>
++		<fileset dir="lib/jsp-2.1" includes="*.jar"/>
+     </path>
+ 
+     <path id="compile.jsp1.classpath">
+         <path refid="compile.nojsp.classpath"/>
+         <pathelement path="${lib.jsp12}"/>
++        <fileset dir="lib" includes="*.jar"/>
++		<fileset dir="lib/jsp-1.2" includes="*.jar"/>
+     </path>
+ 
+     <path id="compile.jsp2.classpath">
+ 	<path refid="compile.nojsp.classpath"/>
+ 	<pathelement path="${lib.jsp20}"/>
++	<fileset dir="lib" includes="*.jar"/>
++	<fileset dir="lib/jsp-2.0" includes="*.jar"/>
+     </path>
+     
+     <path id="compile.classpath.testcases">
+@@ -92,6 +99,7 @@
+         <pathelement path="${lib.jdom}"/>
+         <pathelement path="${lib.servlet}"/>
+         <pathelement path="${lib.jsp20}"/>
++        <fileset dir="lib" includes="*.jar"/>
+     </path>
+ 
+     <path id="compile.classpath.javadoc">
+@@ -110,12 +118,14 @@
+         <pathelement path="${src.dir}"/>
+         <pathelement path="${build.javacc.dir}"/>
+         <pathelement path="${java.class.path}"/>
++        <fileset dir="lib" includes="*.jar"/>
+     </path>
+ 
+     <path id="compile.classpath.examples">
+         <pathelement path="${lib.servlet}"/>
+         <pathelement path="${lib.dir}/freemarker.jar"/>
+         <pathelement path="${lib.struts}"/>
++        <fileset dir="lib" includes="*.jar"/>
+     </path>
+     
+     <path id="full.classpath">
+@@ -131,6 +141,7 @@
+         <pathelement path="${lib.logkit}"/>
+         <pathelement path="${lib.log4j}"/>
+         <pathelement path="${java.class.path}"/>
++        <fileset dir="lib" includes="*.jar"/>
+     </path>
+     
+     
+@@ -180,7 +191,6 @@
+ 
+     <patternset id="freemarker.compile.jdk15">
+         <include name="freemarker/ext/beans/EnumModels.java"/>
+-        <include name="freemarker/ext/dom/SunInternalXalanXPathSupport.java"/>
+     </patternset>
+ 
+     <patternset id="freemarker.compile.xalan">
+@@ -311,7 +321,6 @@
+                 <available file="lib/xalan.jar"/>
+             </and>
+         </condition>
+-        <antcall target="fetchlibs"/>
+         <available
+             property="log4j.available"
+             classname="org.apache.log4j.Logger"
+diff -Nru freemarker-2.3.13.vanilla/src/freemarker/ext/jsp/FreeMarkerPageContext21.java freemarker-2.3.13/src/freemarker/ext/jsp/FreeMarkerPageContext21.java
+--- freemarker-2.3.13.vanilla/src/freemarker/ext/jsp/FreeMarkerPageContext21.java	2008-06-21 00:46:08.000000000 +0200
++++ freemarker-2.3.13/src/freemarker/ext/jsp/FreeMarkerPageContext21.java	2008-06-21 00:46:12.000000000 +0200
+@@ -2,11 +2,13 @@
+ 
+ import java.security.AccessController;
+ import java.security.PrivilegedAction;
++import java.util.Enumeration;
+ 
+ import javax.el.ELContext;
+ import javax.servlet.jsp.JspApplicationContext;
+ import javax.servlet.jsp.JspContext;
+ import javax.servlet.jsp.JspFactory;
++import javax.servlet.jsp.ErrorData;
+ import javax.servlet.jsp.PageContext;
+ import javax.servlet.jsp.el.ELException;
+ import javax.servlet.jsp.el.ExpressionEvaluator;
+@@ -24,6 +26,9 @@
+ class FreeMarkerPageContext21 extends FreeMarkerPageContext {
+     private static final Logger logger = Logger.getLogger("freemarker.jsp");
+ 
++	public ErrorData getErrorData() { return null; }
++	public Enumeration getAttributeNames() { return getServletContext().getAttributeNames(); }
++
+     static {
+         if(JspFactory.getDefaultFactory() == null) {
+             JspFactory.setDefaultFactory(new FreeMarkerJspFactory21());
+diff -Nru freemarker-2.3.13.vanilla/src/freemarker/ext/jython/JythonHashModel.java freemarker-2.3.13/src/freemarker/ext/jython/JythonHashModel.java
+--- freemarker-2.3.13.vanilla/src/freemarker/ext/jython/JythonHashModel.java	2008-06-21 00:46:08.000000000 +0200
++++ freemarker-2.3.13/src/freemarker/ext/jython/JythonHashModel.java	2008-06-21 00:46:12.000000000 +0200
+@@ -137,7 +137,7 @@
+         {
+             throw new TemplateModelException(e);
+         }
+-        throw new TemplateModelException("'?keys' is not supported as there is no 'keys' nor 'keySet' attribute on an instance of " + object.__class__.__name__);
++        throw new TemplateModelException("'?keys' is not supported as there is no 'keys' nor 'keySet' attribute on an instance of " + object.getType());
+     }
+ 
+     /**
+@@ -157,6 +157,6 @@
+         {
+             throw new TemplateModelException(e);
+         }
+-        throw new TemplateModelException("'?values' is not supported as there is no 'values' attribute on an instance of " + object.__class__.__name__);
++        throw new TemplateModelException("'?values' is not supported as there is no 'values' attribute on an instance of " + object.getType());
+     }
+ }

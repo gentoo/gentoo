@@ -1,0 +1,45 @@
+--- build.xml	2008-06-11 05:25:20.000000000 +0200
++++ build.xml.new	2008-08-22 15:59:53.000000000 +0200
+@@ -102,6 +102,7 @@
+     <path id="empty.classpath"/>
+ 
+     <path id="class.path">
++	<fileset dir="lib" includes="*.jar"/>
+       <pathelement location="${specificjar}"/>
+       <pathelement location="."/>
+     </path>
+@@ -487,14 +488,14 @@
+     <!-- JUnit unit tests                                             -->
+     <!-- ============================================================ -->
+ 
+-    <target name="init-unittest" depends="init">
++    <target name="init-unittest" depends="init" unless="notest">
+         <delete dir="${unittest.datadir}"/>
+         <delete dir="${unittest.reportsdir}"/>
+         <mkdir dir="${unittest.datadir}"/>
+         <mkdir dir="${unittest.reportsdir}"/>
+     </target>
+ 
+-    <target name="clean-unittest" depends="init-unittest">
++    <target name="clean-unittest" depends="init-unittest" unless="notest">
+         <delete dir="${unittest.destdir}"/>
+         <mkdir dir="${unittest.destdir}"/>
+         <delete dir="${unittest.testserialdir}"/>
+@@ -503,7 +504,7 @@
+         <mkdir dir="${unittest.testevolvedir}"/>
+     </target>
+ 
+-    <target name="compile-unittest" depends="compile-src">
++    <target name="compile-unittest" depends="compile-src" unless="notest">
+       <ant antfile="ant/compile.xml" dir="." inheritall="false">
+         <property name="srcdir" value="${unittest.srcdir}"/>
+         <property name="destdir" value="${unittest.destdir}"/>
+@@ -597,7 +598,7 @@
+     </path>
+ 
+     <target name="test"
+-            depends="compile-unittest, init-unittest, jar">
++            depends="compile-unittest, init-unittest, jar" unless="notest">
+ 
+       <!-- Determine which tests to run. -->
+       <condition property="alltests">

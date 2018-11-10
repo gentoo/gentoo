@@ -1,0 +1,20 @@
+--- dbmulti.c	2005-07-17 07:00:07.000000000 -0400
++++ dbmulti.c	2005-07-17 06:59:35.000000000 -0400
+@@ -60,7 +60,7 @@
+ 		}
+ #endif
+ #ifdef DBMULTI_scp
+-		if (strcmp(progname, "scp") == 0) {
++		if ((strcmp(progname, "scp") == 0) || (strcmp(progname, "dbscp") == 0)) {
+ 			return scp_main(argc, argv);
+ 		}
+ #endif
+@@ -81,7 +81,7 @@
+ 			"'dropbearconvert' - the key converter\n"
+ #endif
+ #ifdef DBMULTI_scp
+-			"'scp' - secure copy\n"
++			"'dbscp' - secure copy\n"
+ #endif
+ 			,
+ 			DROPBEAR_VERSION);

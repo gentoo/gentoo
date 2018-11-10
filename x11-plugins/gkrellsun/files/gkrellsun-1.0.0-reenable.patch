@@ -1,0 +1,16 @@
+diff --git a/src20/gkrellsun.c b/src20/gkrellsun.c
+index f3adff5..0738bfc 100644
+--- a/src20/gkrellsun.c
++++ b/src20/gkrellsun.c
+@@ -1140,7 +1140,10 @@ cb_plugin_disabled()
+ 
+    save_sun_data();
+ 
+-   if (textOptions.fontDesc) pango_font_description_free (textOptions.fontDesc);
++   if (textOptions.fontDesc) {
++      pango_font_description_free (textOptions.fontDesc);
++      textOptions.fontDesc = NULL;
++   }
+ 
+    /* This happens when user quits X Windows and gkrellm2 is still running */
+    if (colormap == NULL)

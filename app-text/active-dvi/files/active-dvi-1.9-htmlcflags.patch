@@ -1,0 +1,13 @@
+Index: advi-1.9/doc/Makefile.am
+===================================================================
+--- advi-1.9.orig/doc/Makefile.am
++++ advi-1.9/doc/Makefile.am
+@@ -113,6 +113,8 @@ TEX_ENV		= TEXINPUTS=$(srcdir):$(top_src
+ HEVEA_FLAGS	= -entities -I $(srcdir) -I $(top_srcdir)/tex
+ HTMLC_FLAGS	= -I $(srcdir)/includes \
+ 		  -D CamlVersion '$(OCAMLVERSION)' \
++		  -D HOSTNAME "$(HOSTNAME)" \
++		  -D USER "$(USER)" \
+ 		  -D version '$(VERSION)'
+ 
+ MV		= mv -f

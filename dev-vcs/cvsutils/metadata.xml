@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		CVS Utilities are helpful scripts for working with CVS repositories
+		offline and online.  They include the ability to check file status,
+		"fake" include files in the repo, diff new files easily, change CVS
+		server of a repository and more.
+	</longdescription>
+</pkgmetadata>

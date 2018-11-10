@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/519450
+
+--- spek-0.8.3/src/spek-fft.cc
++++ spek-0.8.3/src/spek-fft.cc
+@@ -17,6 +17,7 @@
+  */
+ 
+ #include <math.h>
++#include <stdlib.h>
+ 
+ #define __STDC_CONSTANT_MACROS
+ extern "C" {
+--- spek-0.8.3/src/spek-events.cc
++++ spek-0.8.3/src/spek-events.cc
+@@ -16,6 +16,7 @@
+  * along with Spek.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include <stdlib.h>
+ #include "spek-events.h"
+ 
+ //IMPLEMENT_DYNAMIC_CLASS(SpekHaveSampleEvent, wxEvent)

@@ -1,0 +1,36 @@
+Description: Switch LDADD with LDFLAGS
+ This change is to move the objects before the libs. to fix an FTBFS when 
+ --as-needed is passed to gcc.
+Author: �حمودي (Ahmed El-Mahmoudy) <aelmahmoudy@sabily.org>
+Forwarded: yes
+--- drawtiming-0.7.1.orig/src/Makefile.am
++++ drawtiming-0.7.1/src/Makefile.am
+@@ -3,7 +3,7 @@
+ 
+ bin_PROGRAMS = drawtiming
+ drawtiming_SOURCES = main.cc globals.h parser.yy scanner.ll timing.cc timing.h
+-drawtiming_LDFLAGS = @MAGICK_LIBS@
++drawtiming_LDADD   = @MAGICK_LIBS@
+ 
+ EXTRA_DIST = parser.h
+ BUILT_SOURCES = parser.h
+--- drawtiming-0.7.1.orig/src/Makefile.in
++++ drawtiming-0.7.1/src/Makefile.in
+@@ -51,7 +51,7 @@
+ am_drawtiming_OBJECTS = main.$(OBJEXT) parser.$(OBJEXT) \
+ 	scanner.$(OBJEXT) timing.$(OBJEXT)
+ drawtiming_OBJECTS = $(am_drawtiming_OBJECTS)
+-drawtiming_LDADD = $(LDADD)
++drawtiming_LDADD = @MAGICK_LIBS@ $(LDADD)
+ DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
+ depcomp = $(SHELL) $(top_srcdir)/depcomp
+ am__depfiles_maybe = depfiles
+@@ -159,7 +159,7 @@
+ AM_CXXFLAGS = @MAGICK_CFLAGS@ -DYYDEBUG=1
+ AM_YFLAGS = -d
+ drawtiming_SOURCES = main.cc globals.h parser.yy scanner.ll timing.cc timing.h
+-drawtiming_LDFLAGS = @MAGICK_LIBS@
++drawtiming_LDFLAGS = @LDFLAGS@
+ EXTRA_DIST = parser.h
+ BUILT_SOURCES = parser.h
+ all: $(BUILT_SOURCES)

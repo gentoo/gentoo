@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">perl-ldap</remote-id>
+    <remote-id type="cpan-module">Bundle::Net::LDAP</remote-id>
+    <remote-id type="cpan-module">LWP::Protocol::ldap</remote-id>
+    <remote-id type="cpan-module">LWP::Protocol::ldapi</remote-id>
+    <remote-id type="cpan-module">LWP::Protocol::ldaps</remote-id>
+    <remote-id type="cpan-module">Net::LDAP</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::ASN</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Bind</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Constant</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::Assertion</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::EntryChange</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::ManageDsaIT</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::MatchedValues</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::Paged</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::PasswordPolicy</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::PersistentSearch</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::PostRead</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::PreRead</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::ProxyAuth</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::Sort</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::SortResult</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::SyncDone</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::SyncRequest</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::SyncState</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::VLV</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Control::VLVResponse</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::DSML</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::DSML::output</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::DSML::pp</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Entry</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Extension</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Extension::Cancel</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Extension::Refresh</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Extension::SetPassword</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Extension::WhoAmI</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Extra</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Extra::AD</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Filter</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::FilterList</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::FilterMatch</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Intermediate</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Intermediate::SyncInfo</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::LDIF</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Message</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Message::Dummy</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Reference</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::RootDSE</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Schema</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Search</remote-id>
+    <remote-id type="cpan-module">Net::LDAP::Util</remote-id>
+    <remote-id type="cpan-module">Net::LDAPI</remote-id>
+    <remote-id type="cpan-module">Net::LDAPS</remote-id>
+  </upstream>
+</pkgmetadata>

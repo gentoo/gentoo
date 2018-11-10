@@ -1,0 +1,36 @@
+From fa320a06147079458aa5f4834ae8b22cfe278481 Mon Sep 17 00:00:00 2001
+From: Dennis Lichtenthaeler <dennis.lichtenthaeler@stiftung-tannenhof.de>
+Date: Wed, 27 Apr 2016 10:57:17 +0200
+Subject: [PATCH 3/3] Use pkg-config instead of trickery to find samba-4
+ libs/headers
+
+---
+ Makefile.PL | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 954df92..ed9d846 100755
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -110,6 +110,18 @@ sub find_path {
+     push(@path, $_."/$ext") if !$defaultsDir->{$_};
+   }
+   foreach (keys %$defaultsDir) { push(@path, $_."/$ext"); }
++
++  ## get default paths from pkg-config
++  my $pkgconfig;
++  if($_[0]=~m!\.h$!) {
++    $pkgconfig = qx/pkg-config --variable=includedir smbclient/;
++  }
++  else {
++    $pkgconfig = qx/pkg-config --variable=libdir smbclient/;
++  }
++  $pkgconfig =~ s/\n//g;
++  push(@path, $pkgconfig);
++
+   print "I search in: ",(join "\n", @path),"\n";
+   return @path;
+ }
+-- 
+2.7.3
+

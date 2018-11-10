@@ -1,0 +1,1 @@
+0 0  * * * /var/www/bugzilla/bugzilla.cron.daily

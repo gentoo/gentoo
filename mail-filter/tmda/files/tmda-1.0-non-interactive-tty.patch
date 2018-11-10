@@ -1,0 +1,31 @@
+--- a/TMDA/Pending.py	2004-10-11 15:50:13.014474866 -0400
++++ b/TMDA/Pending.py	2004-10-11 16:06:02.640603837 -0400
+@@ -64,6 +64,7 @@
+         self.verbose = verbose
+         self.younger = younger
+         self.pretend = pretend
++        self.interactive = 0
+ 
+         self.stdout = sys.stdout
+ 
+@@ -86,8 +87,9 @@
+                     self.msgs.extend(line.strip().split())
+                 self.msgs.remove('-')
+                 # re-open stdin on the tty
+-                sys.stdin.close()
+-                sys.stdin = open('/dev/tty', 'r')
++                if self.interactive:
++                    sys.stdin.close()
++                    sys.stdin = open('/dev/tty', 'r')
+ 
+         if not self.msgs and not wantedstdin:
+             cwd = os.getcwd()
+@@ -341,6 +343,8 @@
+                        younger,
+                        pretend)
+ 
++        self.interactive = 1
++
+ 
+     def initQueue(self):
+         """Additionally initialize the interactive queue."""

@@ -1,0 +1,108 @@
+ configure.ac    | 49 +++++++------------------------------------------
+ src/Makefile.am |  7 +++----
+ 2 files changed, 10 insertions(+), 46 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index f5a4ecf..bbe0743 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -649,33 +649,6 @@ AS_CASE([${host_os}],
+ 
+ 
+ 
+-dnl PCRE library definitions - see the MAJOR and MINOR values
+-dnl to see which version's configure.in these lines come from
+-
+-dnl Provide the current PCRE version information. Do not use numbers
+-dnl with leading zeros for the minor version, as they end up in a C
+-dnl macro, and may be treated as octal constants. Stick to single
+-dnl digits for minor numbers less than 10. There are unlikely to be
+-dnl that many releases anyway.
+-
+-PCRE_MAJOR="7"
+-PCRE_MINOR="9"
+-PCRE_DATE="11-Apr-2009"
+-PCRE_VERSION="${PCRE_MAJOR}.${PCRE_MINOR}"
+-
+-dnl Default values for miscellaneous macros
+-
+-POSIX_MALLOC_THRESHOLD="-DPOSIX_MALLOC_THRESHOLD=10"
+-
+-dnl Provide versioning information for libtool shared libraries that
+-dnl are built by default on Unix systems.
+-
+-PCRE_LIB_VERSION="0:1:0"
+-PCRE_POSIXLIB_VERSION="0:0:0"
+-
+-
+-
+-
+ dnl FIXME: This does no longer seem required with Autoconf 2.67?
+ dnl Intel MacOSX 10.6 puts X11 in a non-standard place
+ dnl AS_IF([test "x${with_x}" != "xno"],
+@@ -751,21 +724,6 @@ AX_LIB_POSTGRESQL
+ 
+ 
+ 
+-dnl "Export" these variables for PCRE
+-
+-AC_SUBST([HAVE_MEMMOVE])
+-AC_SUBST([HAVE_STRERROR])
+-AC_SUBST([PCRE_MAJOR])
+-AC_SUBST([PCRE_MINOR])
+-AC_SUBST([PCRE_DATE])
+-AC_SUBST([PCRE_VERSION])
+-AC_SUBST([PCRE_LIB_VERSION])
+-AC_SUBST([PCRE_POSIXLIB_VERSION])
+-AC_SUBST([POSIX_MALLOC_THRESHOLD])
+-
+-
+-
+-
+ dnl Test if --enable-localforce given
+ locallink="no"
+ embprefix="/usr/local"
+@@ -888,6 +846,13 @@ AC_ARG_ENABLE([systemlibs],
+ AM_CONDITIONAL([ESYSTEMLIBS], [test "x${enable_systemlibs}" = "xyes"])
+ 
+ 
++AS_IF([test "x${enable_systemlibs}" = "xyes"],
++[
++dnl using system libraries
++  PKG_CHECK_MODULES([PLPLOT], [plplotd],
++  [],[PKG_CHECK_MODULES([PLPLOT], [plplot])]
++  )
++])
+ 
+ 
+ # Enable the purify tool: --enable-purify, sets CC and LIBTOOL
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 1f5b756..e178914 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -32,9 +32,7 @@ AM_CPPFLAGS = -I../H -I../../../nucleus -I../../../ajax/pcre \
+ 	-I../../../ajax/ensembl -I../../../ajax/ajaxdb \
+ 	-I../../../ajax/acd -I../../../plplot
+ else
+-AM_CPPFLAGS = -I../H -I${embprefix}/include -I${embprefix}/include/eplplot \
+-	$(NLINCLUDES) \
+-	-I${embprefix}/include/epcre
++AM_CPPFLAGS = -I$(top_srcdir)/H -I${embprefix}/include $(NLINCLUDES) $(PLPLOT_CFLAGS)
+ endif
+ 
+ if ISSHARED
+@@ -87,6 +85,7 @@ LINKFLAGS = $(VERS_INF)
+ endif
+ 
+ liboviennarna_la_LDFLAGS = $(LINKFLAGS)
++liboviennarna_la_LIBADD = -lajax
+ 
+ ovrnaalifold_SOURCES = vrnaalifold.c
+ ovrnaalifoldpf_SOURCES = vrnaalifoldpf.c
+@@ -119,5 +118,5 @@ LDADD = liboviennarna.la \
+ 	$(XLIB)
+ else
+ LDADD = liboviennarna.la -L${embprefix}/lib -lnucleus -lacd -lajaxdb \
+-	-lensembl -lajaxg -lajax -lepcre $(NLADD) -leplplot $(XLIB)
++	-lensembl -lajaxg -lajax $(NLADD) $(XLIB)
+ endif

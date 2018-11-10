@@ -1,0 +1,11 @@
+--- a/lib/Slic3r.pm	2015-06-17 04:38:28.000000000 -0400
++++ b/lib/Slic3r.pm	2015-06-19 11:56:07.005873299 -0400
+@@ -30,7 +30,7 @@
+     if $^V == v5.16;
+ 
+ use FindBin;
+-our $var = decode_path($FindBin::Bin) . "/var";
++our $var = decode_path($FindBin::RealBin) . "/var";
+ 
+ use Moo 1.003001;
+ 

@@ -1,0 +1,13 @@
+Index: rosbridge_server/setup.py
+===================================================================
+--- rosbridge_server.orig/setup.py
++++ rosbridge_server/setup.py
+@@ -11,8 +11,6 @@ from catkin_pkg.python_setup import gene
+ d = generate_distutils_setup(
+     packages=[
+         'rosbridge_server',
+-        'backports',
+-        'backports.ssl_match_hostname',
+         'tornado',
+         'tornado.platform'
+     ],

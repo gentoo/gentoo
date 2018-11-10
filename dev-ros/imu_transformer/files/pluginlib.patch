@@ -1,0 +1,17 @@
+commit 2c98b4c99b90bf88eabcd1ce071c7194ae05bf2b
+Author: Mikael Arguedas <mikael@osrfoundation.org>
+Date:   Fri Oct 27 15:03:06 2017 -0700
+
+    update to use non deprecated pluginlib macro
+
+diff --git a/imu_transformer/src/imu_transformer_nodelet.cpp b/imu_transformer/src/imu_transformer_nodelet.cpp
+index 7c0a30f..9ad94ec 100644
+--- a/imu_transformer/src/imu_transformer_nodelet.cpp
++++ b/imu_transformer/src/imu_transformer_nodelet.cpp
+@@ -123,4 +123,4 @@ namespace imu_transformer
+ 
+ }
+ 
+-PLUGINLIB_DECLARE_CLASS(imu_transformer, ImuTransformerNodelet, imu_transformer::ImuTransformerNodelet, nodelet::Nodelet);
+\ No newline at end of file
++PLUGINLIB_EXPORT_CLASS(imu_transformer::ImuTransformerNodelet, nodelet::Nodelet)

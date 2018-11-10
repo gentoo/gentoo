@@ -1,0 +1,74 @@
+From f1939e044183c711f23468eb1aa068435add42c6 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Sun, 19 Mar 2017 01:52:52 +1300
+Subject: Inhibit generation of perllocal.pod
+
+---
+ lib/ExtUtils/MM_Unix.pm | 5 +++++
+ t/INSTALL_BASE.t        | 2 +-
+ t/basic.t               | 6 +++---
+ 3 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/lib/ExtUtils/MM_Unix.pm b/lib/ExtUtils/MM_Unix.pm
+index 66a24d7..82d7b42 100644
+--- a/lib/ExtUtils/MM_Unix.pm
++++ b/lib/ExtUtils/MM_Unix.pm
+@@ -1682,6 +1682,11 @@ sub init_main {
+ ###     $self->{NAME}) =~ s!::!/!g ; #eg. BSD/Foo/Socket
+     $self->{FULLEXT} = $self->catdir(split /::/, $self->{NAME});
+ 
++    # Workaround for https://bugs.gentoo.org/show_bug.cgi?id=221179
++    if (!exists($self->{NO_PERLLOCAL})) {
++        $self->{NO_PERLLOCAL} = 1;
++    }
++
+ 
+     # Copied from DynaLoader:
+ 
+diff --git a/t/INSTALL_BASE.t b/t/INSTALL_BASE.t
+index 6939811..f7cf8d4 100644
+--- a/t/INSTALL_BASE.t
++++ b/t/INSTALL_BASE.t
+@@ -49,7 +49,7 @@ ok( chdir(File::Spec->catdir($SPACEDIR, 'Big-Dummy')), "chdir'd to Big-Dummy") |
+ for my $instdir (@INSTDIRS) {
+   $instdir = File::Spec->rel2abs($instdir);
+   $instdir = VMS::Filespec::unixpath($instdir) if $Is_VMS;
+-  my @mpl_out = run(qq{$perl Makefile.PL "INSTALL_BASE=$instdir"});
++  my @mpl_out = run(qq{$perl Makefile.PL "INSTALL_BASE=$instdir" NO_PERLLOCAL=0 NO_PACKLIST=0});
+ 
+   cmp_ok( $?, '==', 0, 'Makefile.PL exited with zero' ) ||
+     diag(@mpl_out);
+diff --git a/t/basic.t b/t/basic.t
+index c98e28c..97db20a 100644
+--- a/t/basic.t
++++ b/t/basic.t
+@@ -24,7 +24,7 @@ use ExtUtils::MM;
+ use Test::More
+     !MM->can_run(make()) && $ENV{PERL_CORE} && $Config{'usecrosscompile'}
+     ? (skip_all => "cross-compiling and make not available")
+-    : (tests => 186);
++    : (tests => 180);
+ use File::Find;
+ use File::Spec;
+ use File::Path;
+@@ -79,7 +79,7 @@ sub extrachar {
+   'š';
+ }
+ my $DUMMYINST = '../dummy-in'.extrachar().'tall';
+-my @mpl_out = run(qq{$perl Makefile.PL "PREFIX=$DUMMYINST"});
++my @mpl_out = run(qq{$perl Makefile.PL "PREFIX=$DUMMYINST" NO_PERLLOCAL=0 NO_PACKLIST=0});
+ 
+ cmp_ok( $?, '==', 0, 'Makefile.PL exited with zero' ) ||
+   diag(@mpl_out);
+@@ -196,7 +196,7 @@ sub check_dummy_inst {
+     ok( $files{'liar.pm'},      '  Liar.pm installed'  ) unless $skipsubdir;
+     ok( $files{'program'},      '  program installed'  );
+     ok( $files{'.packlist'},    '  packlist created'   );
+-    ok( $files{'perllocal.pod'},'  perllocal.pod created' );
++#    ok( $files{'perllocal.pod'},'  perllocal.pod created' );
+     \%files;
+ }
+ 
+-- 
+2.12.0
+

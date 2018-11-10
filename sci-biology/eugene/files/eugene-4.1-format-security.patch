@@ -1,0 +1,16 @@
+ src/Hits.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Hits.cc b/src/Hits.cc
+index edfe178..b228be6 100755
+--- a/src/Hits.cc
++++ b/src/Hits.cc
+@@ -166,7 +166,7 @@ Hits* Hits::ReadFromFile(FILE* HitFile, int *NumHits, int level, int margin, int
+     while ((read=fscanf(HitFile,"%d %d %d %lf %d %s %d %d %as\n", &deb, &fin,
+                         &poids, &evalue, &phase, HitId, &HSPDeb, &HSPFin,HSP)) >= 8)
+     {
+-        if (HSP) fprintf(stderr,HSP);
++        if (HSP) fprintf(stderr, "%s", HSP);
+         if (phase < 0  &&  deb > fin)
+         {
+             int tmp = deb;

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>ulm@gentoo.org</email>
+  <name>Ulrich Müller</name>
+</maintainer>
+<maintainer type="person">
+  <email>junghans@gentoo.org</email>
+  <name>Christoph Junghans</name>
+</maintainer>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
+<longdescription>
+  Gnuplot is a command-driven interactive function plotting program.
+  It can be used to plot functions and data points in both two- and
+  three-dimensional plots in many different formats. It is designed
+  primarily for the visual display of scientific data.
+</longdescription>
+<use>
+  <flag name="compat">Enable backwards compatibility with version 4
+    syntax</flag>
+  <flag name="gd">Add support for <pkg>media-libs/gd</pkg>.
+    Needed for GIF, JPEG, and PNG image output.</flag>
+  <flag name="libcerf">Enable special functions from
+    <pkg>sci-libs/libcerf</pkg></flag>
+  <flag name="bitmap">Enable dot-matrix printers and pbm terminal</flag>
+  <flag name="regis">Enable ReGIS terminal</flag>
+</use>
+<upstream>
+  <remote-id type="sourceforge">gnuplot</remote-id>
+</upstream>
+</pkgmetadata>

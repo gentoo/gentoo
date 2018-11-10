@@ -1,0 +1,22 @@
+diff -ur rtf2html-0.2.0-orig/rtf_keyword.h rtf2html-0.2.0/rtf_keyword.h
+--- rtf2html-0.2.0-orig/rtf_keyword.h	2007-08-03 04:50:45.000000000 -0400
++++ rtf2html-0.2.0/rtf_keyword.h	2009-01-03 17:45:14.000000000 -0500
+@@ -2,6 +2,7 @@
+ 
+ #include "config.h"
+ #include <string>
++#include <cstdlib>
+ #include <map>
+ #include <ctype.h>
+ 
+diff -ur rtf2html-0.2.0-orig/rtf_table.cpp rtf2html-0.2.0/rtf_table.cpp
+--- rtf2html-0.2.0-orig/rtf_table.cpp	2007-07-31 11:16:52.000000000 -0400
++++ rtf2html-0.2.0/rtf_table.cpp	2009-01-03 17:45:14.000000000 -0500
+@@ -4,6 +4,7 @@
+ #include <iostream>
+ #include <stdexcept>
+ #include <functional>
++#include <algorithm>
+ 
+ typedef std::set<int> intset;
+ 

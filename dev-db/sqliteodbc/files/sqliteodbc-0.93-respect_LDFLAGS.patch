@@ -1,0 +1,30 @@
+--- Makefile.in.old	2012-03-24 12:57:34.533234122 +0100
++++ Makefile.in	2012-03-24 12:58:06.908198492 +0100
+@@ -37,23 +37,23 @@
+ all:		@LIB_TARGETS@
+ 
+ libsqliteodbc.la:	sqliteodbc.lo
+-		$(LIBTOOL) --mode=link $(CC) $(CFLAGS) -o libsqliteodbc.la \
++		$(LIBTOOL) --mode=link $(CC) $(LDFLAGS) -o libsqliteodbc.la \
+ 		    sqliteodbc.lo -rpath $(drvdir) $(SQLITE_LIB) \
+ 		    $(ODBC_LIB) -release $(VER_INFO)
+ 
+ libsqlite3odbc.la:	sqlite3odbc.lo $(SQLITE3_A10N_O)
+-		$(LIBTOOL) --mode=link $(CC) $(CFLAGS) -o libsqlite3odbc.la \
++		$(LIBTOOL) --mode=link $(CC) $(LDFLAGS) -o libsqlite3odbc.la \
+ 		    sqlite3odbc.lo $(SQLITE3_A10N_O) -rpath $(drvdir) \
+ 		    $(SQLITE3_LIB) $(ODBC_LIB) -release $(VER_INFO) \
+ 		    @DL_INITFINI@
+ 
+ libsqlite3_mod_blobtoxy.la:	blobtoxy.lo
+-		$(LIBTOOL) --mode=link $(CC) $(CFLAGS) \
++		$(LIBTOOL) --mode=link $(CC) $(LDFLAGS) \
+ 		    -o libsqlite3_mod_blobtoxy.la \
+ 		    blobtoxy.lo -rpath $(drvdir) -release $(VER_INFO)
+ 
+ libsqlite3_mod_impexp.la:	impexp.lo
+-		$(LIBTOOL) --mode=link $(CC) $(CFLAGS) \
++		$(LIBTOOL) --mode=link $(CC) $(LDFLAGS) \
+ 		    -o libsqlite3_mod_impexp.la \
+ 		    impexp.lo -rpath $(drvdir) -release $(VER_INFO)
+ 

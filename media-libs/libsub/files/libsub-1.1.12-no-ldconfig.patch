@@ -1,0 +1,9 @@
+--- libsub-1.1.12/wscript
++++ libsub-1.1.12/wscript
+@@ -148,5 +148,4 @@
+         sys.exit(-1)
+ 
+ def post(ctx):
+-    if ctx.cmd == 'install':
+-        ctx.exec_command('/sbin/ldconfig')
++    pass

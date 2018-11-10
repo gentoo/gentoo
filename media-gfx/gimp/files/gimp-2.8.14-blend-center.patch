@@ -1,0 +1,30 @@
+From 97e55692ebad5897be334c81c133b6626b9b6920 Mon Sep 17 00:00:00 2001
+From: Michael Natterer <mitch@gimp.org>
+Date: Wed, 26 Aug 2015 23:23:16 +0200
+Subject: app: the blend tool was rendering all gradients off-by-0.5
+
+When calculating the color of a pixel, we want to calculate the color
+at its center, not at its top-left corner. Found by Raymond Jennings.
+
+EDIT (by Sebastian Pipping <sping@gentoo.org>):
+  Cut away patch chunk for app/operations/gimpoperationblend.c
+  since 2.8.14 doesn't seem to have that file.
+
+diff --git a/app/core/gimpdrawable-blend.c b/app/core/gimpdrawable-blend.c
+index af565d1..e4f92a1 100644
+--- a/app/core/gimpdrawable-blend.c
++++ b/app/core/gimpdrawable-blend.c
+@@ -628,6 +628,10 @@ gradient_render_pixel (gdouble   x,
+   RenderBlendData *rbd = render_data;
+   gdouble          factor;
+ 
++  /*  we want to calculate the color at the pixel's center  */
++  x += 0.5;
++  y += 0.5;
++
+   /* Calculate blending factor */
+ 
+   switch (rbd->gradient_type)
+-- 
+cgit v0.10.2
+

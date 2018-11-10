@@ -1,0 +1,37 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="checkconfig"
+extra_started_commands="reload"
+
+description_checkconfig="Check the configuration file"
+description_reload="Reload the configuration file"
+
+: ${h2o_config:="/etc/${RC_SVCNAME}/${RC_SVCNAME}.conf"}
+
+start_stop_daemon_args="--group ${RC_SVCNAME}"
+command="/usr/bin/${RC_SVCNAME}"
+command_args="-m daemon -c \"${h2o_config}\""
+pidfile="$(grep pid-file "${h2o_config}" | cut -d' ' -f2)"
+name="H2O"
+
+depend() {
+	need net
+	use dns
+}
+
+checkconfig() {
+	"${command}" -m test -c "${h2o_config}" || return 1
+}
+
+start_pre() {
+	checkconfig || return 1
+}
+
+reload() {
+	checkconfig || return 1
+	ebegin "Reloading ${name:-${RC_SVCNAME}}"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend ${?}
+}

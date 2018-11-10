@@ -1,0 +1,25 @@
+--- a/Makefile
++++ b/Makefile
+@@ -18,10 +18,9 @@
+ CC=gcc
+ AR=ar
+ RANLIB=ranlib
+-LDFLAGS=
+ 
+ BIGFILES=-D_FILE_OFFSET_BITS=64
+-CFLAGS=-Wall -Winline -O2 -g $(BIGFILES)
++CFLAGS+=-Wall -Winline $(BIGFILES) $(CPPFLAGS)
+ 
+ # Where you want it installed when you do 'make install'
+ PREFIX=/usr/local
+--- a/Makefile-libbz2_so
++++ b/Makefile-libbz2_so
+@@ -24,7 +24,7 @@
+ SHELL=/bin/sh
+ CC=gcc
+ BIGFILES=-D_FILE_OFFSET_BITS=64
+-CFLAGS=-fpic -fPIC -Wall -Winline -O2 -g $(BIGFILES)
++CFLAGS+=-fpic -fPIC -Wall -Winline $(BIGFILES) $(CPPFLAGS)
+ 
+ OBJS= blocksort.o  \
+       huffman.o    \

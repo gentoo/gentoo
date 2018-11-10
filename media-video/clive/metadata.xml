@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">Command line tool for extracting videos from Youtube, Google Video,
+		Dailymotion, Guba (free) and Stage6  websites</longdescription>
+	<use>
+		<flag name="clipboard">Support reading from X clipboard</flag>
+		<flag name="pager">Support pager!?</flag>
+		<flag name="password">Support password controlled sites</flag>
+	</use>
+	<upstream>
+		<remote-id type="google-code">clive</remote-id>
+		<remote-id type="sourceforge">clive</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		Control physical access to a linux computer by locking all of its virtual
+		terminals / consoles.
+
+		physlock is an alternative to vlock, it is equivalent to `vlock -an'. It is
+		written because vlock blocks some linux kernel mechanisms like hibernate and
+		suspend and can therefore only be used with some limitations. physlock is
+		designed to be more lightweight, it does not have a plugin interface and it is
+		not started using a shell script wrapper.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">muennich/physlock</remote-id>
+	</upstream>
+</pkgmetadata>

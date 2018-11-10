@@ -1,0 +1,30 @@
+ configure.ac              | 2 +-
+ icons/hicolor/Makefile.am | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6f87a94..a503da4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -102,7 +102,7 @@ if test "x$enable_convert" != "xyes" -a "x$CONVERT" = "xno" ; then
+ 		[RSVG],
+ 		[The 'rsvg' binary with path. Use it to define or override the location of 'rsvg'.]
+ 	)
+-	AC_PATH_PROG([RSVG], [rsvg], [no])
++	AC_PATH_PROG([RSVG], [rsvg-convert], [no])
+ 	AC_SUBST([RSVG])
+ fi
+ 
+diff --git a/icons/hicolor/Makefile.am b/icons/hicolor/Makefile.am
+index ba0847a..f2e0a84 100644
+--- a/icons/hicolor/Makefile.am
++++ b/icons/hicolor/Makefile.am
+@@ -24,7 +24,7 @@ if BOOL_HICOLOR_THEME
+ 	gzip -c $< > $@
+ 	for size in $(icon_sizes) ; do \
+ 		if test "x$(RSVG)" != "x" ; then \
+-			$(RSVG) -w $${size} -h $${size} -f png $< $*_$${size}.png ; \
++			$(RSVG) -w $${size} -h $${size} -f png $< --output $*_$${size}.png ; \
+ 		else \
+ 			$(CONVERT) $< -resize $${size}x$${size} $*_$${size}.png ; \
+ 		fi \

@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/salt-master"
+command_args="${SALT_OPTS}"
+command_background="1"
+pidfile="/var/run/salt-master.pid"
+name="SALT master daemon"
+retry="20"
+
+depend() {
+	use net logger
+}

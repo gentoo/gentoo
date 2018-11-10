@@ -1,0 +1,65 @@
+diff --git a/Makefile.linux b/Makefile.linux
+index 6638394..5da56b0 100644
+--- a/Makefile.linux
++++ b/Makefile.linux
+@@ -1,5 +1,5 @@
+ # The C compiler
+-CC=gcc
++CC ?= gcc
+ 
+ # The following line must be uncommented if you want to specify a place
+ # where the 'gs' (or 'pstoedit') program is.
+@@ -25,11 +25,10 @@ GTK_LIBS=`pkg-config --libs gtk+-2.0`
+ # The list of important files
+ OBJECTS=auxi.o bonds.o easychem.o export.o dialogs.o detect.o library.o drawing.o
+ 
+-all: easychem po/
++all: easychem po
+ 
+-easychem: postscript/ graph/ $(OBJECTS)
+-	$(CC) -o easychem $(OBJECTS) $(GTK_LIBS) $(C_FLAGS)
+-	strip easychem
++easychem: postscript graph $(OBJECTS)
++	$(CC) $(C_FLAGS) $(LDFLAGS) -o easychem $(OBJECTS) $(GTK_LIBS) -lm
+ 
+ clean: FORCE
+ 	-cd graph; make clean
+@@ -37,7 +36,7 @@ clean: FORCE
+ 	-cd po; make clean
+ 	-rm $(OBJECTS) easychem
+ 
+-export.o: export.c common.h bonds.h postscript/
++export.o: export.c common.h bonds.h postscript
+ 	$(CC) $(GTK_FLAGS) $(C_FLAGS) -c export.c
+ bonds.o: bonds.c common.h bonds.h
+ 	$(CC) $(GTK_FLAGS) $(C_FLAGS) -c bonds.c
+@@ -49,20 +48,22 @@ library.o: library.c common.h library.h
+ 	$(CC) $(GTK_FLAGS) $(C_FLAGS) -c library.c
+ drawing.o: drawing.c common.h drawing.h
+ 	$(CC) $(GTK_FLAGS) $(C_FLAGS) -c drawing.c
+-dialogs.o: dialogs.c common.h dialogs.h graph/
++dialogs.o: dialogs.c common.h dialogs.h graph
+ 	$(CC) $(GTK_FLAGS) $(C_FLAGS) -c dialogs.c
+ detect.o: detect.c common.h detect.h
+ 	$(CC) $(GTK_FLAGS) $(C_FLAGS) -c detect.c
+ 
+ # The rules for subdirectories
+-graph/: FORCE
+-	cd graph; make all
++graph:
++	+make -C $@
+ 
+-postscript/: FORCE
+-	cd postscript; make all
++postscript:
++	+make -C $@
+ 
+-po/: FORCE
+-	cd po; make all
++po:
++	+make -C $@
+ 
+ # This is used to force an update
+ FORCE:
++
++.PHONY: graph postscript po

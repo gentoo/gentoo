@@ -1,0 +1,128 @@
+diff -Nur scotch_6.0.4/src/check/Makefile scotch_6.0.4_patched/src/check/Makefile
+--- scotch_6.0.4/src/check/Makefile	2015-03-01 03:18:02.000000000 -0700
++++ scotch_6.0.4_patched/src/check/Makefile	2015-07-17 15:15:58.447398954 -0600
+@@ -53,7 +53,7 @@
+ 				$(CC) $(CFLAGS) $(CLIBFLAGS) -I$(SCOTCHINCLUDEDIR) -c $(<) -o $(@)
+ 
+ %$(EXE)	:	%.c
+-		 		$(CC) $(CFLAGS) -I$(SCOTCHINCLUDEDIR) -L$(SCOTCHLIBDIR) $(<) -o $(@) $(SCOTCHLIBS) $(LDFLAGS)
++				$(CC) $(CFLAGS) $(LDFLAGS) -I$(SCOTCHINCLUDEDIR) -L$(SCOTCHLIBDIR) $(<) $(SCOTCHLIBS) $(LIBS) -o $(@)
+ 
+ ##
+ ##  Project rules.
+diff -Nur scotch_6.0.4/src/esmumps/Makefile scotch_6.0.4_patched/src/esmumps/Makefile
+--- scotch_6.0.4/src/esmumps/Makefile	2015-03-13 17:32:06.000000000 -0600
++++ scotch_6.0.4_patched/src/esmumps/Makefile	2015-07-17 15:17:47.389600699 -0600
+@@ -44,7 +44,7 @@
+ 				$(CC) $(CFLAGS) $(CLIBFLAGS) -I$(includedir) -c $(<) -o $(@)
+ 
+ %$(EXE)	:	%.c
+-		 		$(CC) $(CFLAGS) -I$(includedir) $(<) -o $(@) -L$(libdir) $(LDFLAGS) -L. -l$(ESMUMPSLIB) -l$(SCOTCHLIB) -lscotch -l$(SCOTCHLIB)errexit -lm
++				$(CC) $(CFLAGS) $(LDFLAGS) -I$(includedir) $(<) -L$(libdir) -L. -l$(ESMUMPSLIB) -l$(SCOTCHLIB) -lscotch -l$(SCOTCHLIB)errexit $(LIBS) -o $(@)
+ 
+ ##
+ ##  Project rules.
+@@ -57,7 +57,7 @@
+ 					libesmumps$(LIB)							\
+ 					main_esmumps$(EXE)
+ 
+-ptscotch			:	clean
++ptscotch			:	clean common.h
+ 					$(MAKE) CFLAGS="$(CFLAGS) -DSCOTCH_PTSCOTCH" CC="$(CCP)" SCOTCHLIB=ptscotch ESMUMPSLIB=ptesmumps	\
+ 					libesmumps$(LIB)											\
+ 					main_esmumps$(EXE)
+@@ -160,6 +160,6 @@
+ 					order.h					\
+ 					symbol.h				\
+ 					esmumps.h				\
+-					lib$(ESMUMPSLIB)$(LIB)			\
++					libesmumps$(LIB)              \
+ 					$(libdir)/lib$(SCOTCHLIB)$(LIB)		\
+ 					$(libdir)/lib$(SCOTCHLIB)errexit$(LIB)
+diff -Nur scotch_6.0.4/src/libscotch/Makefile scotch_6.0.4_patched/src/libscotch/Makefile
+--- scotch_6.0.4/src/libscotch/Makefile	2014-09-23 13:28:28.000000000 -0600
++++ scotch_6.0.4_patched/src/libscotch/Makefile	2015-07-17 15:19:17.320116484 -0600
+@@ -43,7 +43,7 @@
+ 				$(CC) $(CFLAGS) $(CLIBFLAGS) -c $(<) -o $(@)
+ 
+ %$(EXE)	:	%.c
+-		 		$(CC) $(CFLAGS) -DSCOTCH_VERSION=$(VERSION) -DSCOTCH_RELEASE=$(RELEASE) -DSCOTCH_PATCHLEVEL=$(PATCHLEVEL) $(<) -o $(@) $(LDFLAGS)
++				$(CC) $(CFLAGS) $(LDFLAGS) -DSCOTCH_VERSION=$(VERSION) -DSCOTCH_RELEASE=$(RELEASE) -DSCOTCH_PATCHLEVEL=$(PATCHLEVEL) $(<) $(LIBS)  -o $(@)
+ 
+ ##
+ ##  Project rules.
+@@ -2937,14 +2937,14 @@
+ 					mapping.h				\
+ 					order.h					\
+ 					parser.h
+-			 		$(CCD) $(CFLAGS) -DSCOTCH_VERSION=$(VERSION) -DSCOTCH_RELEASE=$(RELEASE) -DSCOTCH_PATCHLEVEL=$(PATCHLEVEL) $(<) -o $(@) $(LDFLAGS)
++					$(CCD) $(CFLAGS) $(LDFLAGS) -DSCOTCH_VERSION=$(VERSION) -DSCOTCH_RELEASE=$(RELEASE) -DSCOTCH_PATCHLEVEL=$(PATCHLEVEL) $(<) $(LIBS) -o $(@)
+ 
+ ptdummysizes$(EXE)		:	dummysizes.c				\
+ 					module.h				\
+ 					common.h				\
+ 					dgraph.h				\
+ 					dorder.h
+-			 		$(CCD) $(CFLAGS) -DSCOTCH_VERSION=$(VERSION) -DSCOTCH_RELEASE=$(RELEASE) -DSCOTCH_PATCHLEVEL=$(PATCHLEVEL) $(<) -o $(@) $(LDFLAGS)
++					$(CCD) $(CFLAGS) $(LDFLAGS) -DSCOTCH_VERSION=$(VERSION) -DSCOTCH_RELEASE=$(RELEASE) -DSCOTCH_PATCHLEVEL=$(PATCHLEVEL) $(<) $(LIBS) -o $(@)
+ 
+ scotch.h			:	dummysizes$(EXE)			\
+ 					library.h
+diff -Nur scotch_6.0.4/src/libscotchmetis/Makefile scotch_6.0.4_patched/src/libscotchmetis/Makefile
+--- scotch_6.0.4/src/libscotchmetis/Makefile	2011-09-06 10:46:48.000000000 -0600
++++ scotch_6.0.4_patched/src/libscotchmetis/Makefile	2015-07-17 15:19:42.648698497 -0600
+@@ -44,7 +44,7 @@
+ 				$(CC) $(CFLAGS) $(CLIBFLAGS) -I$(includedir) -I../libscotch -c $(<) -o $(@)
+ 
+ %$(EXE)	:	%.c
+-		 		$(CC) $(CFLAGS) -I$(includedir) -I../libscotch $(<) -o $(@) -L$(libdir) $(LDFLAGS)
++				$(CC) $(CFLAGS) $(LDFLAGS) -I$(includedir) -I../libscotch $(<) -L$(libdir) -o $(@)
+ 
+ ##
+ ##  Project rules.
+diff -Nur scotch_6.0.4/src/scotch/Makefile scotch_6.0.4_patched/src/scotch/Makefile
+--- scotch_6.0.4/src/scotch/Makefile	2015-02-24 15:39:44.000000000 -0700
++++ scotch_6.0.4_patched/src/scotch/Makefile	2015-07-17 15:22:25.275015105 -0600
+@@ -41,13 +41,13 @@
+ include ../Makefile.inc
+ 
+ %$(EXE)	:	%$(OBJ)
+-		 		$(CC) $(CFLAGS) -I$(includedir) -I../libscotch $(<) -o $(@) -L$(libdir) -l$(SCOTCHLIB) -lscotch -l$(SCOTCHLIB)errexit $(LDFLAGS)
++				$(CC) $(CFLAGS) $(LDFLAGS) -I$(includedir) -I../libscotch $(<) -L$(libdir) -l$(SCOTCHLIB) -lscotch -l$(SCOTCHLIB)errexit $(LIBS) -o $(@)
+ 
+ %$(OBJ)	:	%.c
+ 				$(CC) $(CFLAGS) -I$(includedir) -I../libscotch -c $(<) -o $(@)
+ 
+ %$(EXE)	:	%.c
+-		 		$(CC) $(CFLAGS) -I$(includedir) -I../libscotch $(<) -o $(@) -L$(libdir) -l$(SCOTCHLIB) -lscotch -l$(SCOTCHLIB)errexit $(LDFLAGS)
++				$(CC) $(CFLAGS) $(LDFLAGS) -I$(includedir) -I../libscotch $(<) -L$(libdir) -l$(SCOTCHLIB) -lscotch -l$(SCOTCHLIB)errexit $(LIBS) -o $(@)
+ 
+ ##
+ ##  Project rules.
+@@ -209,7 +209,7 @@
+ 					$(libdir)/libptscotch$(LIB)		\
+ 					$(libdir)/libptscotcherrexit$(LIB)	\
+ 					dgmap.h
+-			 		$(CC) $(CFLAGS) -I$(includedir) -I../libscotch $(<) -DSCOTCH_COMPILE_PART -o $(@) -L$(libdir) -lptscotch -lscotch -lptscotcherrexit $(LDFLAGS)
++					$(CC) $(CFLAGS) $(LDFLAGS) -I$(includedir) -I../libscotch $(<) -DSCOTCH_COMPILE_PART -L$(libdir) -lptscotch -lscotch -lptscotcherrexit $(LIBS) -o $(@)
+ 
+ dgscat$(EXE)			:	dgscat.c				\
+ 					../libscotch/module.h			\
+@@ -321,7 +321,7 @@
+ 					gout_o.c				\
+ 					$(includedir)/scotch.h			\
+ 					$(libdir)/libscotch$(LIB)
+-					$(CC) $(CFLAGS) -I../libscotch -I$(includedir) gout_c.c gout_o.c -o $(@) -L$(libdir) -lscotch -lscotcherrexit $(LDFLAGS)
++					$(CC) $(CFLAGS) $(LDFLAGS) -I../libscotch -I$(includedir) gout_c.c gout_o.c -L$(libdir) -lscotch -lscotcherrexit $(LIBS) -o $(@)
+ 
+ gpart$(EXE)			:	gmap.c					\
+ 					../libscotch/module.h			\
+@@ -330,7 +330,7 @@
+ 					$(libdir)/libscotch$(LIB)		\
+ 					$(libdir)/libscotcherrexit$(LIB)	\
+ 					gmap.h
+-			 		$(CC) $(CFLAGS) -I$(includedir) -I../libscotch $(<) -DSCOTCH_COMPILE_PART -o $(@) -L$(libdir) -lscotch -lscotcherrexit $(LDFLAGS)
++					$(CC) $(CFLAGS) $(LDFLAGS) -I$(includedir) -I../libscotch $(<) -DSCOTCH_COMPILE_PART -L$(libdir) -lscotch -lscotcherrexit $(LIBS) -o $(@)
+ 
+ gscat$(EXE)			:	gscat.c					\
+ 					../libscotch/module.h			\

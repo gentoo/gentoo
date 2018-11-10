@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-misc category contains various miscellaneous networking tools
+		and utilities.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-misc enthält verschiedenste Programme und Werkzeuge
+		rund um Netzwerke.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-misc contiene varias herramientas y utilidades
+		relacionadas con las redes.
+	</longdescription>
+	<longdescription lang="ja">
+		net-miscカテゴリーには多種多様なネットワーキング・ツールと
+		ユーティリティが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-misc categorie bevat verschillende netwerkapplicaties.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-misc chứa các công cụ mạng khác nhau.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-misc contiene vari strumenti ed utilità per la gestione delle reti.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria net-misc contém várias ferramentas e utilitários
+		de rede.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria net-misc zawiera różne dodatkowe narzędzia i programy sieciowe.
+	</longdescription>
+</catmetadata>
+

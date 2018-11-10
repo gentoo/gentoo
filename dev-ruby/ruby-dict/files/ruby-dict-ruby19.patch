@@ -1,0 +1,20 @@
+--- lib/dict.rb.orig	2013-10-27 19:15:03.957167192 +0100
++++ lib/dict.rb	2013-10-27 19:16:15.191165936 +0100
+@@ -153,7 +153,7 @@
+ 
+ 
+ require 'socket'
+-require 'md5'
++require 'digest/md5'
+ 
+ 
+ # lines that start with .. need to be reduced to .
+@@ -434,7 +434,7 @@
+   # AUTHorise user
+   #
+   def auth(user, secret)
+-    auth = MD5::new(@msgid + secret).hexdigest
++    auth = Digest::MD5.new.hexdigest(@msgid + secret)
+     exec_cmd('AUTH %s %s' % [ user, auth ])
+   end
+ 

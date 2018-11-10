@@ -1,0 +1,15 @@
+Gentoo-bug: https://bugs.gentoo.org/show_bug.cgi?id=497496
+Gentoo-Haskell-bug: https://github.com/gentoo-haskell/gentoo-haskell/issues/297
+diff --git a/Network/CGI/Monad.hs b/Network/CGI/Monad.hs
+index 758ab03..9c41fc3 100644
+--- a/Network/CGI/Monad.hs
++++ b/Network/CGI/Monad.hs
+@@ -119,7 +119,7 @@ catchCGI = catch
+ 
+ -- | Catches any exception thrown by an CGI action, and returns either
+ --   the exception, or if no exception was raised, the result of the action.
+-tryCGI :: (MonadCGI m, MonadCatchIO m) => m a -> m (Either SomeException a)
++tryCGI :: (MonadCGI m, MonadCatchIO m, Functor m) => m a -> m (Either SomeException a)
+ tryCGI = try
+ 
+ {-# DEPRECATED handleExceptionCGI "Use catchCGI instead." #-}

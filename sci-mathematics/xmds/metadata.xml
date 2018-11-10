@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-mathematics@gentoo.org</email>
+		<name>Gentoo Mathematics Project</name>
+	</maintainer>
+	<longdescription lang="en">
+XMDS is a code generator that integrates differential equations (ODEs, PDEs and
+SDEs are all supported).  The system of equations to be integrated is specified
+in a XML file, which XMDS then uses to generate a C++ integrator.  The code can
+autamatically take advantage of MPI and FFTW.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">xmds</remote-id>
+	</upstream>
+</pkgmetadata>

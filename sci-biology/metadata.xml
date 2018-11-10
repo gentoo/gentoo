@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sci-biology category contains software that can be used
+		in biological and related scientific environments.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sci-biology enthält Software, die in biologischen
+		und verwandten wissenschaftlichen Umgebungen genutzt werden kann.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sci-biology contiene programas que pueden ser utilizados en
+		entornos relacionados con la biología.
+	</longdescription>
+	<longdescription lang="ja">
+		sci-biologyカテゴリーには生物学の科学的な分野に利用される
+		ソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De sci-biology categorie bevat software, die in biologische en gerelateerde
+		wetenschappelijke omgevingen gebruikt kan worden.
+	</longdescription>
+	<longdescription lang="fr">
+		La catégorie sci-biology contient des logiciels pour les sciences
+		biologiques et les disciplines connexes.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sci-biology chứa các phần mềm sinh học và liên quan đến khoa học.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória sci-biology obsahuje programy, ktoré sa používajú pri
+		biologickom výskume.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sci-biology contiene programmi per la biologia.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sci-biology contém programas que podem ser usados
+		em ambientes relacionados a biologia.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sci-biology zawiera programy naukowe związane z biologią.
+	</longdescription>
+</catmetadata>
+

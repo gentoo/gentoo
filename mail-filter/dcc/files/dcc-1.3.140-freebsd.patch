@@ -1,0 +1,13 @@
+diff --git a/configure b/configure
+index 5efe49d..de8d6f2 100755
+--- a/configure
++++ b/configure
+@@ -3677,7 +3677,7 @@ case "$TARGET_SYS" in
+ 	#   compressed via /usr/share/mk
+ 	mancat=man
+ 	MANX='$(MAN8)'
+-	USE_DCCMANINSTALL='# USE_DCCMANINSTALL=no'
++	USE_DCCMANINSTALL='USE_DCCMANINSTALL=yes'
+ 	;;
+     DragonFly)
+ 	# default to /usr/local/man/man8 and use nroff files, possibly

@@ -1,0 +1,44 @@
+diff --git a/ncurses-5.9/c++/cursesf.h b/ncurses-5.9/c++/cursesf.h
+index 70a30c3..db38063 100644
+--- a/ncurses-5.9/c++/cursesf.h
++++ b/ncurses-5.9/c++/cursesf.h
+@@ -677,7 +677,7 @@ protected:
+   }
+ 
+ public:
+-  NCursesUserForm (NCursesFormField Fields[],
++  NCursesUserForm (NCursesFormField* Fields[],
+ 		   const T* p_UserData = STATIC_CAST(T*)(0),
+ 		   bool with_frame=FALSE,
+ 		   bool autoDelete_Fields=FALSE)
+@@ -686,7 +686,7 @@ public:
+ 	set_user (const_cast<void *>(p_UserData));
+   };
+ 
+-  NCursesUserForm (NCursesFormField Fields[],
++  NCursesUserForm (NCursesFormField* Fields[],
+ 		   int nlines,
+ 		   int ncols,
+ 		   int begin_y = 0,
+diff --git a/ncurses-5.9/c++/cursesm.h b/ncurses-5.9/c++/cursesm.h
+index d9c2273..2d5b79a 100644
+--- a/ncurses-5.9/c++/cursesm.h
++++ b/ncurses-5.9/c++/cursesm.h
+@@ -635,7 +635,7 @@ protected:
+   }
+ 
+ public:
+-  NCursesUserMenu (NCursesMenuItem Items[],
++  NCursesUserMenu (NCursesMenuItem* Items[],
+ 		   const T* p_UserData = STATIC_CAST(T*)(0),
+ 		   bool with_frame=FALSE,
+ 		   bool autoDelete_Items=FALSE)
+@@ -644,7 +644,7 @@ public:
+ 	set_user (const_cast<void *>(p_UserData));
+   };
+ 
+-  NCursesUserMenu (NCursesMenuItem Items[],
++  NCursesUserMenu (NCursesMenuItem* Items[],
+ 		   int nlines,
+ 		   int ncols,
+ 		   int begin_y = 0,

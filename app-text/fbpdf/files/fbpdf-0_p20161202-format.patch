@@ -1,0 +1,14 @@
+diff --git a/fbpdf.c b/fbpdf.c
+index 6caa08f..48d12f5 100644
+--- a/fbpdf.c
++++ b/fbpdf.c
+@@ -343,3 +343,3 @@ static void mainloop(void)
+ static char *usage =
+-	"usage: fbpdf [-r rotation] [-z zoom x10] [-p page] filename\n";
++	"usage: fbpdf [-r rotation] [-z zoom x10] [-p page] filename";
+ 
+@@ -349,3 +349,3 @@ int main(int argc, char *argv[])
+ 	if (argc < 2) {
+-		printf(usage);
++		puts(usage);
+ 		return 1;

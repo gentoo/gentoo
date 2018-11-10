@@ -1,0 +1,30 @@
+ setup.py | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 46cda83..5cfd22a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -184,14 +184,14 @@ modules.append(cairo_module)
+ #		libraries=['potrace'])
+ #modules.append(trace_module)
+ 
+-#libimg_src = os.path.join(src_path, 'uc2', 'libimg')
+-#files = make_source_list(libimg_src, ['_libimg.c', ])
+-#include_dirs = make_source_list(include_path, ['ImageMagick', ])
+-#libimg_module = Extension('uc2.libimg._libimg',
+-#		define_macros=[('MAJOR_VERSION', '1'), ('MINOR_VERSION', '0')],
+-#		sources=files, include_dirs=include_dirs,
+-#		libraries=['MagickWand'])
+-#modules.append(libimg_module)
++libimg_src = os.path.join(src_path, 'uc2', 'libimg')
++files = make_source_list(libimg_src, ['_libimg.c', ])
++include_dirs = make_source_list(include_path, ['ImageMagick-6', ])
++libimg_module = Extension('uc2.libimg._libimg',
++		define_macros=[('MAJOR_VERSION', '1'), ('MINOR_VERSION', '0')],
++		sources=files, include_dirs=include_dirs,
++		libraries=['MagickWand'])
++modules.append(libimg_module)
+ 
+ if os.path.isfile(os.path.join(include_path, 'lcms2.h')):
+  	pycms_src = os.path.join(src_path, 'uc2', 'cms')

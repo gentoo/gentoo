@@ -1,0 +1,11 @@
+--- a/OMakefile
++++ b/OMakefile
+@@ -33,7 +33,7 @@
+     #
+     # Extra options for the C compiler
+     #
+-    CFLAGS += -g -O2 -Wall -Werror -Wno-unused
++    CFLAGS += -Wall -Wno-unused
+ 
+     #
+     # We never need threads on Unix

@@ -1,0 +1,12 @@
+diff -U 3 -dHrN singular-4.0.0.orig/omalloc/configure.ac singular-4.0.0/omalloc/configure.ac
+--- singular-4.0.0.orig/omalloc/configure.ac	2014-03-06 18:07:49.000000000 +0100
++++ singular-4.0.0/omalloc/configure.ac	2014-05-09 15:41:19.755097185 +0200
+@@ -117,7 +117,7 @@
+ dnl check for programs
+ dnl
+ AC_CHECK_PROG(AR, ar, ar, :)
+-if test "$ac_cv_prog_AR" != ar; then
++if test "$ac_cv_prog_AR" = no; then
+   AC_MSG_ERROR(*** ar program not found)
+ fi
+ AC_CHECK_PROGS(PERL, perl, "no")

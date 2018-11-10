@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zoltan@sinustrom.info</email>
+		<name>Zoltan Puskas</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="github">Add github support into PCB editor</flag>
+		<flag name="i18n">Allow GUI internationalization through l10n_* use flags</flag>
+		<flag name="minimal">Build only binaries without parts library and examples</flag>
+		<flag name="ngspice">Enable circuit simulation</flag>
+		<flag name="occ">Enable viewing 3D rendering of designs via opencascade</flag>
+		<flag name="oce">Enable viewing 3D rendering of designs via OCE</flag>
+		<flag name="python">Enable python scripting support</flag>
+	</use>
+	<longdescription>
+		Kicad is an open source (GPL) software for the creation of electronic
+		schematic diagrams and printed circuit board artwork.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">KiCad/kicad-i18n</remote-id>
+		<remote-id type="launchpad">kicad</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,105 @@
+From 29f5ad4805a04e4c4fd18795f7153798c80a46ce Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Mon, 18 Nov 2013 12:20:52 +0100
+Subject: [PATCH] Security notice on Storable and reply attack
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ README              | 16 ++++++++++++++++
+ lib/RPC/PlServer.pm | 15 +++++++++++++++
+ 2 files changed, 31 insertions(+)
+
+diff --git a/README b/README
+index 8a68657..48a33e4 100644
+--- a/README
++++ b/README
+@@ -204,6 +204,7 @@ EXAMPLE
+         require RPC::PlServer;
+         require MD5;
+ 
++
+         package MD5_Server;  # Clients need to request application
+                              # "MD5_Server"
+ 
+@@ -245,6 +246,10 @@ SECURITY
+     that I missed something. Security was a design goal, but not *the*
+     design goal. (A well known problem ...)
+ 
++    Due to implementation of PlRPC, it's hard to use internal authentication
++    mechanisms properly to achieve secured remote calls. Therefore users are
++    advised to use an external authentication mechanism like TLS or IPsec.
++
+     I highly recommend the following design principles:
+ 
+   Protection against "trusted" users
+@@ -263,6 +268,14 @@ SECURITY
+     Be restrictive
+         Think twice, before you give a client access to a method.
+ 
++    Use of Storable
++        Storable module used for serialization and deserialization
++        underneath is inherently insecure. Deserialized data can contain
++        objects which lead to loading foreign modules and executing possible
++        attached destructors. Do not accept host-based unauthorized
++        connections. The Storable module is exercised before checking user
++        password.
++
+     perlsec
+         And just in case I forgot it: Read the "perlsec" man page. :-)
+ 
+@@ -283,6 +296,9 @@ SECURITY
+         authorized, you should switch to a user based key. See the
+         DBI::ProxyServer for an example.
+ 
++        Please note PlRPC encryption does not protect from reply attacks.
++        You should have implement it on the application or the cipher level.
++
+ AUTHOR AND COPYRIGHT
+     The PlRPC-modules are
+ 
+diff --git a/lib/RPC/PlServer.pm b/lib/RPC/PlServer.pm
+index 10b56c9..ce38594 100644
+--- a/lib/RPC/PlServer.pm
++++ b/lib/RPC/PlServer.pm
+@@ -613,6 +613,10 @@ I did my best to avoid security problems, but it is more than likely,
+ that I missed something. Security was a design goal, but not *the*
+ design goal. (A well known problem ...)
+ 
++Due to implementation of PlRPC, it's hard to use internal authentication
++mechanisms properly to achieve secured remote calls. Therefore users are
++advised to use an external authentication mechanism like TLS or IPsec.
++
+ I highly recommend the following design principles:
+ 
+ =head2 Protection against "trusted" users
+@@ -637,6 +641,14 @@ object handle is valid before coercing a method on it.
+ 
+ Think twice, before you give a client access to a method.
+ 
++=item Use of Storable
++
++L<Storable> module used for serialization and deserialization underneath is
++inherently insecure. Deserialized data can contain objects which lead to
++loading foreign modules and executing possible attached destructors. Do not
++accept host-based unauthorized connections. The L<Storable> module is
++exercised before checking user password.
++
+ =item perlsec
+ 
+ And just in case I forgot it: Read the C<perlsec> man page. :-)
+@@ -667,6 +679,9 @@ login phase, where to use a host based key. As soon as the user
+ has authorized, you should switch to a user based key. See the
+ DBI::ProxyServer for an example.
+ 
++Please note PlRPC encryption does not protect from reply attacks. You should
++have implement it on the application or the cipher level.
++
+ =back
+ 
+ =head1 AUTHOR AND COPYRIGHT
+-- 
+1.8.3.1
+

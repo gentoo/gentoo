@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>slis@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		DEAP stands for Distributed Evolutionary Algorithm in Python, it is dedicated to people who
+		wish to learn how to use evolutionary algorithms and to those who wish to
+		rediscover evolutionary algorithms. DEAP is the proof that evolutionary
+		algorithms do **not** need to be neither complex or complicated.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">deap</remote-id>
+		<remote-id type="github">DEAP/deap</remote-id>
+	</upstream>
+</pkgmetadata>

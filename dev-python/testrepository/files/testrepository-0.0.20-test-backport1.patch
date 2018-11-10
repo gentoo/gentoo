@@ -1,0 +1,22 @@
+From d3d6cac4fd42f2067c0dd81be748853f81c348fc Mon Sep 17 00:00:00 2001
+From: Robert Collins <robertc@robertcollins.net>
+Date: Sun, 12 Jul 2015 21:37:34 +1200
+Subject: [PATCH] Fix 3.3+ tests with nested classnames.
+
+---
+ testrepository/tests/ui/test_cli.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/testrepository/tests/ui/test_cli.py b/testrepository/tests/ui/test_cli.py
+index 9ba11ad..e1f9b44 100644
+--- a/testrepository/tests/ui/test_cli.py
++++ b/testrepository/tests/ui/test_cli.py
+@@ -157,7 +157,7 @@ def method(self):
+         self.assertThat(ui._stdout.buffer.getvalue().decode('utf8'),
+             DocTestMatches("""\
+ ======================================================================
+-FAIL: testrepository.tests.ui.test_cli.Case.method
++FAIL: testrepository.tests.ui.test_cli...Case.method
+ ----------------------------------------------------------------------
+ ...Traceback (most recent call last):...
+   File "...test_cli.py", line ..., in method

@@ -1,0 +1,36 @@
+--- axiom/_schema.py	(revision 17031)
++++ axiom/_schema.py	(working copy)
+@@ -28,7 +28,7 @@
+ CREATE TABLE *DATABASE*.axiom_attributes (
+     type_id INTEGER,
+     row_offset INTEGER,
+-    indexed BOOLEAN,
++    "indexed" BOOLEAN,
+     sqltype VARCHAR,
+     allow_none BOOLEAN,
+     pythontype VARCHAR,
+@@ -47,13 +47,13 @@
+ HAS_SCHEMA_FEATURE = ("SELECT COUNT(oid) FROM *DATABASE*.sqlite_master "
+                       "WHERE type = ? AND name = ?")
+ 
+-IDENTIFYING_SCHEMA = ('SELECT indexed, sqltype, allow_none, attribute '
++IDENTIFYING_SCHEMA = ('SELECT "indexed", sqltype, allow_none, attribute '
+                       'FROM *DATABASE*.axiom_attributes WHERE type_id = ? '
+                       'ORDER BY row_offset')
+ 
+ ADD_SCHEMA_ATTRIBUTE = (
+     'INSERT INTO *DATABASE*.axiom_attributes '
+-    '(type_id, row_offset, indexed, sqltype, allow_none, attribute, docstring, pythontype) '
++    '(type_id, row_offset, "indexed", sqltype, allow_none, attribute, docstring, pythontype) '
+     'VALUES (?, ?, ?, ?, ?, ?, ?, ?)')
+ 
+ ALL_TYPES = 'SELECT oid, module, typename, version FROM *DATABASE*.axiom_types'
+@@ -61,7 +61,7 @@
+ GET_GREATER_VERSIONS_OF_TYPE = ('SELECT version FROM *DATABASE*.axiom_types '
+                                 'WHERE typename = ? AND version > ?')
+ 
+-SCHEMA_FOR_TYPE = ('SELECT indexed, pythontype, attribute, docstring '
++SCHEMA_FOR_TYPE = ('SELECT "indexed", pythontype, attribute, docstring '
+                    'FROM *DATABASE*.axiom_attributes '
+                    'WHERE type_id = ?')
+ 

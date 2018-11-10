@@ -1,0 +1,87 @@
+diff --git a/pycallgraph/config.py b/pycallgraph/config.py
+index 5911fef..e3492c1 100755
+--- a/pycallgraph/config.py
++++ b/pycallgraph/config.py
+@@ -34,7 +34,7 @@ class Config(object):
+         self.did_init = True
+ 
+         # Update the defaults with anything from kwargs
+-        [setattr(self, k, v) for k, v in kwargs.iteritems()]
++        [setattr(self, k, v) for k, v in kwargs.items()]
+ 
+         self.create_parser()
+ 
+diff --git a/pycallgraph/output/graphviz.py b/pycallgraph/output/graphviz.py
+index 6f10049..d130d65 100644
+--- a/pycallgraph/output/graphviz.py
++++ b/pycallgraph/output/graphviz.py
+@@ -148,7 +148,7 @@ class GraphvizOutput(Output):
+ 
+     def attrs_from_dict(self, d):
+         output = []
+-        for attr, val in d.iteritems():
++        for attr, val in d.items():
+             output.append('%s = "%s"' % (attr, val))
+         return ', '.join(output)
+ 
+@@ -164,7 +164,7 @@ class GraphvizOutput(Output):
+ 
+     def generate_attributes(self):
+         output = []
+-        for section, attrs in self.graph_attributes.iteritems():
++        for section, attrs in self.graph_attributes.items():
+             output.append('{} [ {} ];'.format(
+                 section, self.attrs_from_dict(attrs),
+             ))
+diff --git a/pycallgraph/output/output.py b/pycallgraph/output/output.py
+index 9660d58..48eef49 100644
+--- a/pycallgraph/output/output.py
++++ b/pycallgraph/output/output.py
+@@ -16,14 +16,14 @@ class Output(object):
+         self.edge_label_func = self.edge_label
+ 
+         # Update the defaults with anything from kwargs
+-        [setattr(self, k, v) for k, v in kwargs.iteritems()]
++        [setattr(self, k, v) for k, v in kwargs.items()]
+ 
+     def set_config(self, config):
+         '''
+         This is a quick hack to move the config variables set in Config into
+         the output module config variables.
+         '''
+-        for k, v in config.__dict__.iteritems():
++        for k, v in config.__dict__.items():
+             if hasattr(self, k) and callable(getattr(self, k)):
+                 continue
+             setattr(self, k, v)
+diff --git a/pycallgraph/tracer.py b/pycallgraph/tracer.py
+index 17e9286..74a1477 100644
+--- a/pycallgraph/tracer.py
++++ b/pycallgraph/tracer.py
+@@ -297,7 +297,7 @@ class TraceProcessor(Thread):
+         grp = defaultdict(list)
+         for node in self.nodes():
+             grp[self.group(node.name)].append(node)
+-        for g in grp.iteritems():
++        for g in grp.items():
+             yield g
+ 
+     def stat_group_from_func(self, func, calls):
+@@ -315,14 +315,14 @@ class TraceProcessor(Thread):
+         return stat_group
+ 
+     def nodes(self):
+-        for func, calls in self.func_count.iteritems():
++        for func, calls in self.func_count.items():
+             yield self.stat_group_from_func(func, calls)
+ 
+     def edges(self):
+-        for src_func, dests in self.call_dict.iteritems():
++        for src_func, dests in self.call_dict.items():
+             if not src_func:
+                 continue
+-            for dst_func, calls in dests.iteritems():
++            for dst_func, calls in dests.items():
+                 edge = self.stat_group_from_func(dst_func, calls)
+                 edge.src_func = src_func
+                 edge.dst_func = dst_func

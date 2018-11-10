@@ -1,0 +1,102 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2010-03-07 02:38:40.000000000 +0800
++++ b/CMakeLists.txt	2015-10-19 19:28:48.185748034 +0800
+@@ -1,31 +1,38 @@
+ set(KDE_MIN_VERSION "4.4.0")
+-find_package(KDE4 4.4.0 REQUIRED)
+-include (KDE4Defaults)
++
++find_package(ECM 0.0.11 REQUIRED NO_MODULE)
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
++
++include(KDEInstallDirs)
++include(KDECMakeSettings)
++include(KDECompilerSettings)
++include(FeatureSummary)
++
++find_package(Qt5 REQUIRED COMPONENTS Widgets)
++find_package(KF5 REQUIRED COMPONENTS KDELibs4Support) #CoreAddons Solid
+ 
+ add_definitions(-DKDE_DEFAULT_DEBUG_AREA=7199)
+ 
+-include_directories( ${KDE4_INCLUDES} )
+-include_directories( ${KDE4_KIO_INCLUDES} )
+ 
+-macro_optional_add_subdirectory(doc)
+-macro_optional_add_subdirectory(po)
++add_subdirectory(doc)
++add_subdirectory(po)
+ 
+ set(kio_locate_PART_SRCS
+    pattern.cpp
+    kio_locate.cpp
+    locater.cpp)
+ 
+-kde4_add_ui_files(kio_locate_PART_SRCS
++qt5_wrap_ui(kio_locate_PART_SRCS
+    klocateconfigfilterwidget.ui
+    klocateconfiglocatewidget.ui
+    klocateconfigwidget.ui)
+ 
+-kde4_add_kcfg_files(kio_locate_PART_SRCS klocateconfig.kcfgc)
++kconfig_add_kcfg_files(kio_locate_PART_SRCS klocateconfig.kcfgc)
+ 
+-kde4_add_plugin(kio_locate ${kio_locate_PART_SRCS} ${kio_locate_PART_RCCS})
++add_library(kio_locate MODULE ${kio_locate_PART_SRCS} ${kio_locate_PART_RCCS})
+ 
+ 
+-target_link_libraries(kio_locate ${KDE4_KDE3SUPPORT_LIBS})
++target_link_libraries(kio_locate KF5::KDELibs4Support KF5::KIOCore)
+ 
+ install(TARGETS kio_locate DESTINATION ${PLUGIN_INSTALL_DIR} )
+ 
+diff -Naur a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+--- a/doc/CMakeLists.txt	2010-03-12 01:49:04.000000000 +0800
++++ b/doc/CMakeLists.txt	2015-10-19 18:47:14.081029481 +0800
+@@ -1 +1 @@
+-macro_optional_add_subdirectory(en)
++add_subdirectory(en)
+diff -Naur a/kio_locate.cpp b/kio_locate.cpp
+--- a/kio_locate.cpp	2010-03-20 17:05:46.000000000 +0800
++++ b/kio_locate.cpp	2015-10-19 18:49:56.251128472 +0800
+@@ -290,7 +290,7 @@
+ void LocateProtocol::setUrl(const KUrl& url)
+ {
+     if (url.protocol() != "locater") {
+-        QString pattern = KUrl::decode_string(url.url());
++        QString pattern = url.toString();
+         pattern = pattern.mid(url.protocol().length() + 1);
+ 
+         KUrl newUrl;
+@@ -371,7 +371,7 @@
+         /// \todo Is UDS_NAME used for anything in stat? If so we should
+         /// at least strip of the protocol part.
+         UDSEntry entry;
+-        entry.insert(KIO::UDSEntry::UDS_NAME, url.decode_string(url.url()));
++        entry.insert(KIO::UDSEntry::UDS_NAME, url.toString());
+         entry.insert(KIO::UDSEntry::UDS_FILE_TYPE, isDir ? S_IFDIR : S_IFREG);
+         statEntry(entry);
+         finished();
+@@ -767,7 +767,7 @@
+ 
+     KConfigDialog *dialog = new KConfigDialog(0, "settings", KLocateConfig::self());
+     dialog->setFaceType(KPageDialog::List);
+-    dialog->setCaption(i18n("Configure - kio-locate"));
++    dialog->setWindowTitle(i18n("Configure - kio-locate"));
+     dialog->setWindowIcon(SmallIcon("edit-find"));
+ 
+     Ui::KLocateConfigWidget w1;
+diff -Naur a/kio_locate.h b/kio_locate.h
+--- a/kio_locate.h	2010-03-20 17:05:46.000000000 +0800
++++ b/kio_locate.h	2015-10-19 18:51:19.908758859 +0800
+@@ -62,6 +62,10 @@
+ #include "locater.h"
+ #include "pattern.h"
+ 
++#include <KUrl>
++#include <kicon.h>
++#define KDE_EXPORT   __attribute__ ((visibility("default")))
++
+ class QByteArray;
+ class KUrl;
+ 

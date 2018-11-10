@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    The LIBSVM library is used to calculate Support Vector Machine
+    optimizations  with a great variety of options. It includes
+    one-class, two-class, multiclass, regression-mode, and probablistic
+    output functionality. It is primarily of interest to machine-learning
+    researchers and artificial intelligence application developers.
+  </longdescription>
+  <use>
+    <flag name="tools">Install python based tool scripts for data selection and visualization with <pkg>sci-visualization/gnuplot</pkg></flag>
+  </use>
+</pkgmetadata>

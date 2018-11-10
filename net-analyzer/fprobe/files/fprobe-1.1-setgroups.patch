@@ -1,0 +1,18 @@
+This seems to fail after the chroot(), so just squelch the exit for now.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+--- a/src/fprobe.c
++++ b/src/fprobe.c
+@@ -1541,10 +1541,10 @@
+ 	}
+ 
+ 	if (pw) {
+		if (setgroups(0, NULL) < 0) {
+			my_log(LOG_CRIT, "setgroups: %s", strerror(errno));
+-			exit(1);
++			//exit(1);
+		}
+ 		if (setregid(pw->pw_gid, pw->pw_gid)) {
+ 			my_log(LOG_CRIT, "setregid(%u): %s", pw->pw_gid, strerror(errno));
+ 			exit(1);

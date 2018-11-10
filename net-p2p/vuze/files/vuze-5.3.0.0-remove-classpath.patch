@@ -1,0 +1,10 @@
+--- a/build.xml
++++ b/build.xml
+@@ -46,7 +46,6 @@ NOTE:  You may need to set the  ANT_OPTS="-Xmx512m"  env prop in order to compil
+       <jar destfile="${root.dir}/${dist.dir}/Azureus2.jar" basedir="${root.dir}" excludes="${dist.jar.excludes}" >
+          <manifest>
+             <attribute name="Main-Class" value="org.gudy.azureus2.ui.common.Main" />
+-            <attribute name="Class-Path" value="Azureus2.jar apple-extensions.jar commons-cli.jar log4j.jar swt.jar swt-win32.jar swt-osx.jar" />
+          </manifest>
+       </jar>
+       

@@ -1,0 +1,28 @@
+--- a/main.c	2004-06-02 01:26:00.000000000 -0700
++++ b/main.c	2004-06-02 01:27:30.000000000 -0700
+@@ -13,6 +13,7 @@
+ #include<SDL/SDL.h>
+ #include<unistd.h>
+ #include<stdlib.h>		/* atexit */
++#include<string.h>
+ #include "defs.h"
+ void virus(Uint8 posX, Uint8 posY)
+ {
+@@ -206,7 +207,7 @@
+ int main(int argc, char **argv)
+ {
+     struct move hoho;
+-    Uint8 caseX, caseY,selx, sely, checked = 0,  canmove = 1;
++    Uint8 caseX, caseY,selx = 0, sely = 0, checked = 0,  canmove = 1;
+     SDL_Surface *ico;
+     int pions1=0, pions2=0;
+     if (SDL_Init(SDL_INIT_VIDEO) == -1) {
+@@ -238,7 +239,7 @@
+ 		 argv[0]);
+ #else
+ 	    printf
+-		("\nSyntax: %s OPTIONS\n\n options:\n-h\t\tPrint help\n-t n1 n2\tSet width=n1 and height=n2\n\-ai\t\tActivate 1 player mode, [i] key during game.\n\n",
++		("\nSyntax: %s OPTIONS\n\n options:\n-h\t\tPrint help\n-t n1 n2\tSet width=n1 and height=n2\n-ai\t\tActivate 1 player mode, [i] key during game.\n\n",
+ 		 argv[0]);
+ 
+ #endif				/*  */

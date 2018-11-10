@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+name="Greenbone Security Assistant Daemon"
+command="/usr/sbin/gsad"
+command_args="${ASSISTANT_LISTEN} ${ASSISTANT_PORT} ${MANAGER_LISTEN} ${MANAGER_PORT} ${ASSISTANT_EXTRA_ARGS}"
+pidfile="/run/gsad.pid"
+
+depend() {
+	after bootmisc
+	need localmount net openvasmd
+}

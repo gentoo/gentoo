@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">AppConfig</remote-id>
+    <remote-id type="cpan-module">AppConfig</remote-id>
+    <remote-id type="cpan-module">AppConfig::Args</remote-id>
+    <remote-id type="cpan-module">AppConfig::CGI</remote-id>
+    <remote-id type="cpan-module">AppConfig::File</remote-id>
+    <remote-id type="cpan-module">AppConfig::Getopt</remote-id>
+    <remote-id type="cpan-module">AppConfig::State</remote-id>
+    <remote-id type="cpan-module">AppConfig::Sys</remote-id>
+  </upstream>
+</pkgmetadata>

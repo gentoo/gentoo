@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		Codon usage tables maintained at the Kazusa DNA Research Institute.
+		Codon usage in individual genes has been calculated using the
+		nucleotide sequence data obtained from the GenBank Genetic Sequence
+		Database. The compilation of codon usage is synchronized with each
+		major release of GenBank.
+	</longdescription>
+</pkgmetadata>

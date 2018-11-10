@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    Mathomatic is a small, portable symbolic math program that can
+    automatically solve, simplify, differentiate, combine, and compare
+    algebraic equations, perform polynomial and complex arithmetic,
+    etc.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">mfillpot/mathomatic</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The gnome-extra category contains additional non-core GNOME packages.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie gnome-extra enthält zusätzliche GNOME-Pakete die nicht
+		Teil des Basissystems sind.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría gnome-extra contiene paquetes adicionales de GNOME.
+	</longdescription>
+	<longdescription lang="ja">
+		gnome-extraカテゴリーにはGNOMEのコアなし拡張パッケージが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De gnome-extra categorie bevat optionele extra's voor de GNOME desktopomgeving.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm gnome-extra chứa các gói GNOME bổ sung, không thuộc về các gói cốt lõi.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria gnome-extra contiene pacchetti vari per GNOME.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria gnome-extra contém pacotes adicionais de GNOME.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria gnome-extra zawiera dodatkowe pakiety dla środowiska GNOME.
+	</longdescription>
+</catmetadata>
+

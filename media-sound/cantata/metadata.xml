@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="cdio">Use <pkg>dev-libs/libcdio-paranoia</pkg> for CD support (instead of cdparanoia)</flag>
+		<flag name="http-server">Enable internal HTTP server to play non-MPD files</flag>
+		<flag name="replaygain">Enable ReplayGain support, for relative volume adjustments</flag>
+		<flag name="streaming">Enable playback of MPD HTTP streams using LibVLC (<pkg>media-video/vlc</pkg>)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">cdrummond/cantata</remote-id>
+	</upstream>
+</pkgmetadata>

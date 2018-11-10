@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>media-video@gentoo.org</email>
+</maintainer>
+<longdescription>
+StreamDVD is a fast tool to backup Video DVDs 'on the fly', there will
+be no ripping, demultiplexing, recoding, remultiplexing .... You can
+select the wanted title, chapters, video, audio and subpicture streams
+and also a resize factor and StreamDVD will write a 'ready to author'
+vob file to stdout.
+</longdescription>
+</pkgmetadata>

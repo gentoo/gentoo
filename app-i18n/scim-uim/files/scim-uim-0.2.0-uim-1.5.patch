@@ -1,0 +1,12 @@
+--- scim-uim-0.2.0/src/scim_uim_imengine.cpp
++++ scim-uim-0.2.0/src/scim_uim_imengine.cpp
+@@ -35,7 +35,8 @@
+ #include <cstring>
+ #include <scim.h>
+ #include "scim_uim_imengine.h"
+-#include <uim/uim-compat-scm.h>
++#include <uim/uim-scm.h>
++#include <uim/uim-util.h>
+
+ #define scim_module_init uim_LTX_scim_module_init
+ #define scim_module_exit uim_LTX_scim_module_exit

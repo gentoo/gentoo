@@ -1,0 +1,22 @@
+Index: ocamlsdl-0.9.1/src/Makefile
+===================================================================
+--- ocamlsdl-0.9.1.orig/src/Makefile
++++ ocamlsdl-0.9.1/src/Makefile
+@@ -17,7 +17,7 @@ gfx_MODULES    = sdlgfx
+ 
+ TARGETS  = sdl.cma $(patsubst %,sdl%.cma,$(PARTS))
+ TARGETS += libsdlstub.$(A) $(patsubst %,libsdl%stub.$(A),$(PARTS))
+-ifdef OCAMLOPT
++ifneq ($(OCAMLOPT),no)
+ TARGETS += sdl.cmxa $(patsubst %,sdl%.cmxa,$(PARTS))
+ endif
+ 
+@@ -87,7 +87,7 @@ ifdef OCAMLFIND
+ install-findlib :
+ 	$(OCAMLFIND) install sdl ../META \
+           *.cma lib*.$(A) *.cmi *.mli \
+-          $(if $(OCAMLOPT),*.cmxa sdl*.$(A) *.cmx) \
++          $(if $(filter-out $(OCAMLOPT),no),*.cmxa sdl*.$(A) *.cmx) \
+           $(if $(OCAMLMKLIB),dll*.so)
+ ifeq ($(PLATFORM),Apple)
+ 	$(RANLIB) $$($(OCAMLFIND) printconf destdir)/sdl/*.$(A)

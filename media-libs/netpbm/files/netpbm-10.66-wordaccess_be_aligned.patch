@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/547252
+
+------------------------------------------------------------------------
+r2395 | giraffedata | 2015-01-23 13:51:17 -0500 (Fri, 23 Jan 2015) | 1 line
+
+Fix syntax error
+
+build: fix compile failure in wordint_access_be.h with
+Bigendian target platforms.
+
+Index: trunk/lib/util/wordaccess_be_aligned.h
+===================================================================
+--- trunk/lib/util/wordaccess_be_aligned.h	(revision 2394)
++++ trunk/lib/util/wordaccess_be_aligned.h	(revision 2395)
+@@ -24,7 +24,7 @@ bytesToWordint(wordintBytes bytes) {
+ static __inline__ void
+ wordintToBytes(wordintBytes * const bytesP,
+                wordint        const wordInt) {
+-    uint16_t const hi = ((wordInt >> 48) & 0xFF)
++    uint16_t const hi = ((wordInt >> 48) & 0xFF);
+     uint16_t const mh = ((wordInt >> 32) & 0xFF);
+     uint16_t const ml = ((wordInt >> 24) & 0xFF);
+     uint16_t const lo = ((wordInt >>  0) & 0xFF);

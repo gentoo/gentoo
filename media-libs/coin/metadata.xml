@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>reavertm@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="qthelp">Build API documentation in QtHelp format</flag>
+    <flag name="simage">Texture loading via <pkg>media-libs/simage</pkg> library</flag>
+  </use>
+  <upstream>
+    <remote-id type="bitbucket">Coin3D/coin</remote-id>
+  </upstream>
+</pkgmetadata>

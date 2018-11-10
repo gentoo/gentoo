@@ -1,0 +1,31 @@
+From f91c824ebad74e8c23e62fe3390842c5fe322aee Mon Sep 17 00:00:00 2001
+From: itziakos <ioannist@enthought.com>
+Date: Wed, 20 May 2015 22:52:42 +0100
+Subject: [PATCH] check the enable._version.py when installing from source
+
+---
+ setup.py | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index f765f51..3328b93 100644
+--- a/setup.py
++++ b/setup.py
+@@ -92,13 +92,14 @@ def write_version_py(filename):
+     fullversion = VERSION
+     if os.path.exists('.git'):
+         git_revision, dev_num = git_version()
+-    elif os.path.exists('kiva/_version.py'):
++    # All packages are synced with the enable version
++    elif os.path.exists('enable/_version.py'):
+         # must be a source distribution, use existing version file
+         try:
+-            from kiva._version import git_revision, full_version
++            from enable._version import git_revision, full_version
+         except ImportError:
+             raise ImportError("Unable to import git_revision. Try removing "
+-                              "kiva/_version.py and the build directory "
++                              "enable/_version.py and the build directory "
+                               "before building.")
+ 
+         match = re.match(r'.*?\.dev(?P<dev_num>\d+)', full_version)

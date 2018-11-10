@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+	use dns logger antivirus
+	provide mta
+}
+
+start() {
+	ebegin "Starting sendmail"
+	/usr/bin/newaliases > /dev/null 2>&1
+	(cd /var/spool/mqueue; rm -f xf*)
+	/usr/sbin/sendmail ${SENDMAIL_OPTS} > /dev/null 2>&1
+	/usr/sbin/sendmail ${CLIENTMQUEUE_OPTS} > /dev/null 2>&1
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping sendmail"
+	kill ${KILL_OPTS} `head -n 1 /var/run/sendmail.pid`
+	kill ${KILL_OPTS} `head -n 1 /var/spool/clientmqueue/sm-client.pid`
+	eend $?
+}

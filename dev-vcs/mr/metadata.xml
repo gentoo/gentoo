@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<longdescription lang="en">
+		The mr(1) command can checkout, update, or perform other actions on a
+		set of repositories as if they were one combined respository. It
+		supports any combination of git, svn, mercurial, bzr, darcs, cvs, vcsh,
+		fossil, and veracity repositories, and support for other version control
+		systems can easily be added. (There are extensions adding support for unison
+		and git-svn.)
+
+		It is extremely configurable via simple shell scripting. Some examples
+		of things it can do include:
+
+		* Update a repository no more frequently than once every twelve hours.
+		* Run an arbitrary command before committing to a repository.
+		* When updating a git repository, pull from two different upstreams and merge the two together.
+		* Run several repository updates in parallel, greatly speeding up the update process.
+		* Remember actions that failed due to a laptop being offline, so they can be retried when it comes back online.
+
+		This package also includes the webcheckout command.
+	</longdescription>
+</pkgmetadata>

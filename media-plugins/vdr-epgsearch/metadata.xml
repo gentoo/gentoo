@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>martin.dummer@gmx.net</email>
+	<name>Martin Dummer</name>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<maintainer type="project">
+	<email>vdr@gentoo.org</email>
+	<name>Gentoo VDR Project</name>
+</maintainer>
+<use>
+	<flag name="conflictcheckonly">install the "conflictcheckonly" vdr-plugin</flag>
+	<flag name="epgsearchonly">install the "epgsearchonly" vdr-plugin</flag>
+	<flag name="quicksearch">install the "quicksearch" vdr-plugin</flag>
+	<flag name="tre">Add support for unlimited fuzzy searching with help of <pkg>dev-libs/tre</pkg> library</flag>
+</use>
+</pkgmetadata>

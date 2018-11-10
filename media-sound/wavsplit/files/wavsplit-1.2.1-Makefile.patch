@@ -1,0 +1,23 @@
+--- a/Makefile	2006-03-30 08:54:03.000000000 +0200
++++ b/Makefile	2006-03-30 08:55:04.000000000 +0200
+@@ -6,16 +6,16 @@
+ version = 1.2.1
+ 
+ CC = gcc
+-CFLAGS = -Wall
+-LDFLAGS = -lm
++CFLAGS += -Wall
++LIBS = -lm
+ 
+ all: wavsplit wavren
+ 
+ wavsplit:  wavsplit.c wavsplit.h
+-	gcc $(CFLAGS) wavsplit.c $(LDFLAGS) -o $@
++	$(CC) $(CFLAGS) wavsplit.c $(LIBS) $(LDFLAGS) -o $@
+ 
+ wavren: wavren.c
+-	gcc $(CFLAGS) wavren.c -o $@
++	$(CC) $(CFLAGS) wavren.c $(LDFLAGS) -o $@
+ 
+ install:
+ 	cp wavsplit $(BIN)

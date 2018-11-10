@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+CD-HIT is a very widely used program for clustering and comparing large sets 
+of protein or nucleotide sequences. CD-HIT is very fast and can handle 
+extremely large databases. CD-HIT helps to significantly reduce the 
+computational and manual efforts in many sequence analysis tasks and aids in 
+understanding the data structure and correct the bias within a dataset.
+The CD-HIT package has CD-HIT, CD-HIT-2D, CD-HIT-EST, CD-HIT-EST-2D, 
+CD-HIT-454, CD-HIT-PARA, PSI-CD-HIT and over a dozen scripts. CD-HIT 
+(CD-HIT-EST) clusters similar proteins (DNAs) into clusters that meet a 
+user-defined similarity threshold. CD-HIT-2D (CD-HIT-EST-2D) compares 2 
+datasets and identifies the sequences in db2 that are similar to db1 above 
+a threshold. CD-HIT-454 is a program to identify natural and artificial 
+duplicates from pyrosequencing reads. The usage of other programs and 
+scripts can be found in CD-HIT user's guide.
+	</longdescription>
+	<upstream>
+		<remote-id type="google-code">cdhit</remote-id>
+		<remote-id type="github">weizhongli/cdhit</remote-id>
+	</upstream>
+</pkgmetadata>

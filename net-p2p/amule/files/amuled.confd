@@ -1,0 +1,12 @@
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# owner of amuled process (must be existing)
+AMULEUSER="p2p"
+
+# home directory for amuled (must be existing)
+AMULEHOME="/home/p2p"
+
+# log file (/dev/null for nowhere)
+LOG=/var/log/amuled.log
+

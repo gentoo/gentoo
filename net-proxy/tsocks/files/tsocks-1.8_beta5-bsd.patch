@@ -1,0 +1,22 @@
+Index: tsocks-1.8/configure.in
+===================================================================
+--- tsocks-1.8.orig/configure.in
++++ tsocks-1.8/configure.in
+@@ -122,7 +122,7 @@ LIBS=
+ 
+ dnl Checks for libraries.
+ dnl Replace `main' with a function in -ldl:
+-AC_CHECK_LIB(dl, dlsym,,AC_MSG_ERROR("libdl is required"))
++AC_CHECK_FUNC([dlsym], [], [AC_CHECK_LIB(dl, dlsym,,AC_MSG_ERROR("libdl is required"))])
+ 
+ dnl If we're using gcc here define _GNU_SOURCE
+ AC_MSG_CHECKING("for RTLD_NEXT from dlfcn.h")
+@@ -312,7 +312,7 @@ AC_DEFINE_UNQUOTED(CLOSE_SIGNATURE, [${P
+ dnl Find the correct poll prototype on this machine 
+ AC_MSG_CHECKING(for correct poll prototype)
+ PROTO=
+-for testproto in 'struct pollfd *ufds, unsigned long nfds, int timeout' 
++for testproto in 'struct pollfd *ufds, unsigned long nfds, int timeout' 'struct pollfd ufds[[]], nfds_t nfds, int timeout'
+ do
+   if test "${PROTO}" = ""; then
+     AC_TRY_COMPILE([

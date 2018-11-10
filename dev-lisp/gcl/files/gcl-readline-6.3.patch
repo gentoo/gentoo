@@ -1,0 +1,18 @@
+diff -r -U1 gcl.orig/o/gcl_readline.d gcl/o/gcl_readline.d
+--- gcl.orig/o/gcl_readline.d	2013-11-11 21:55:48.000000000 +0700
++++ gcl/o/gcl_readline.d	2014-03-30 18:29:42.131967005 +0700
+@@ -53,2 +53,9 @@
+ 
++/* Deprecated CPPFunction disappeared in libreadline-6.3 */
++#if defined(_RL_FUNCTION_TYPEDEF)
++#define RL_COMPLETION_FUNC_T rl_completion_func_t
++#else
++#define RL_COMPLETION_FUNC_T CPPFunction
++#endif
++
+ int readline_on = 0;		/* On (1) or off (0) */
+@@ -471,3 +478,3 @@
+ #ifdef RL_COMPLETION
+-  rl_attempted_completion_function = (CPPFunction *)rl_completion;
++  rl_attempted_completion_function = (RL_COMPLETION_FUNC_T *)rl_completion;
+ #endif		

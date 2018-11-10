@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>graphics@gentoo.org</email>
+		<name>Gentoo Graphics Project</name>
+	</maintainer>
+	<use>
+		<flag name="contrast">enable contrast setting option</flag>
+		<flag name="fits">Enable support for the FITS image format through <pkg>sci-libs/cfitsio</pkg></flag>
+		<flag name="timezone">enable DST correction for file timestamps</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">ufraw</remote-id>
+	</upstream>
+</pkgmetadata>

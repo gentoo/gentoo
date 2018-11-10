@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Software-License</remote-id>
+    <remote-id type="cpan-module">Software::License</remote-id>
+    <remote-id type="cpan-module">Software::License::AGPL_3</remote-id>
+    <remote-id type="cpan-module">Software::License::Apache_1_1</remote-id>
+    <remote-id type="cpan-module">Software::License::Apache_2_0</remote-id>
+    <remote-id type="cpan-module">Software::License::Artistic_1_0</remote-id>
+    <remote-id type="cpan-module">Software::License::Artistic_2_0</remote-id>
+    <remote-id type="cpan-module">Software::License::BSD</remote-id>
+    <remote-id type="cpan-module">Software::License::CC0_1_0</remote-id>
+    <remote-id type="cpan-module">Software::License::Custom</remote-id>
+    <remote-id type="cpan-module">Software::License::EUPL_1_1</remote-id>
+    <remote-id type="cpan-module">Software::License::EUPL_1_2</remote-id>
+    <remote-id type="cpan-module">Software::License::FreeBSD</remote-id>
+    <remote-id type="cpan-module">Software::License::GFDL_1_2</remote-id>
+    <remote-id type="cpan-module">Software::License::GFDL_1_3</remote-id>
+    <remote-id type="cpan-module">Software::License::GPL_1</remote-id>
+    <remote-id type="cpan-module">Software::License::GPL_2</remote-id>
+    <remote-id type="cpan-module">Software::License::GPL_3</remote-id>
+    <remote-id type="cpan-module">Software::License::LGPL_2_1</remote-id>
+    <remote-id type="cpan-module">Software::License::LGPL_3_0</remote-id>
+    <remote-id type="cpan-module">Software::License::MIT</remote-id>
+    <remote-id type="cpan-module">Software::License::Mozilla_1_0</remote-id>
+    <remote-id type="cpan-module">Software::License::Mozilla_1_1</remote-id>
+    <remote-id type="cpan-module">Software::License::Mozilla_2_0</remote-id>
+    <remote-id type="cpan-module">Software::License::None</remote-id>
+    <remote-id type="cpan-module">Software::License::OpenSSL</remote-id>
+    <remote-id type="cpan-module">Software::License::Perl_5</remote-id>
+    <remote-id type="cpan-module">Software::License::PostgreSQL</remote-id>
+    <remote-id type="cpan-module">Software::License::QPL_1_0</remote-id>
+    <remote-id type="cpan-module">Software::License::SSLeay</remote-id>
+    <remote-id type="cpan-module">Software::License::Sun</remote-id>
+    <remote-id type="cpan-module">Software::License::Zlib</remote-id>
+    <remote-id type="cpan-module">Software::LicenseUtils</remote-id>
+  </upstream>
+</pkgmetadata>

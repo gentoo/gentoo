@@ -1,0 +1,28 @@
+--- shash-0.2.6/src/errors.c
++++ shash-0.2.6/src/errors.c
+@@ -4,7 +4,7 @@
+ 
+ void err_quit(char *errmsg)
+ {
+-	fprintf(stderr, errmsg);
++	fputs(errmsg, stderr);
+ 	exit(-1);
+ }
+ 
+@@ -12,7 +12,7 @@
+ {
+ 
+ 	if (quiet < 1) {
+-		fprintf(stderr, errmsg);
++		fputs(errmsg, stderr);
+ 	}
+ 
+ }
+@@ -20,6 +20,6 @@
+ void err_crit(char *errmsg)
+ {
+ 	if (quiet <= 2) {
+-		fprintf(stderr, errmsg);
++		fputs(errmsg, stderr);
+ 	}
+ }

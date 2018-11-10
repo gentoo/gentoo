@@ -1,0 +1,8 @@
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Force the GNU/Linux ELIBC, KERNEL, and USERLAND
+# flags that apply to the majority of profiles.
+elibc_glibc
+kernel_linux
+userland_GNU

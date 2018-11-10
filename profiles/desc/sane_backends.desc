@@ -1,0 +1,91 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of SANE_BACKENDS USE_EXPAND flags for media-gfx/sane-backends.
+
+# Keep it sorted.
+
+abaton - SANE_BACKENDS setting for building the abaton backend
+agfafocus - SANE_BACKENDS setting for building the agfafocus backend
+apple - SANE_BACKENDS setting for building the apple backend
+artec - SANE_BACKENDS setting for building the artec backend
+artec_eplus48u - SANE_BACKENDS setting for building the artec_eplus48u backend
+as6e - SANE_BACKENDS setting for building the as6e backend
+avision - SANE_BACKENDS setting for building the avision backend
+bh - SANE_BACKENDS setting for building the bh backend
+canon - SANE_BACKENDS setting for building the canon backend
+canon630u - SANE_BACKENDS setting for building the canon630u backend
+canon_dr - SANE_BACKENDS setting for building the canon_dr backend
+canon_pp - SANE_BACKENDS setting for building the canon_pp backend
+cardscan - SANE_BACKENDS setting for building the cardscan backend
+coolscan - SANE_BACKENDS setting for building the coolscan backend
+coolscan2 - SANE_BACKENDS setting for building the coolscan2 backend
+coolscan3 - SANE_BACKENDS setting for building the coolscan3 backend
+dc25 - SANE_BACKENDS setting for building the dc25 backend
+dc210 - SANE_BACKENDS setting for building the dc210 backend
+dc240 - SANE_BACKENDS setting for building the dc240 backend
+dell1600n_net - SANE_BACKENDS setting for building the dell1600n_net backend
+dmc - SANE_BACKENDS setting for building the dmc backend
+epjitsu - SANE_BACKENDS setting for building the epjitsu backend
+epson - SANE_BACKENDS setting for building the epson backend
+epson2 - SANE_BACKENDS setting for building the epson2 backend
+fujitsu - SANE_BACKENDS setting for building the fujitsu backend
+genesys - SANE_BACKENDS setting for building the genesys backend
+gt68xx - SANE_BACKENDS setting for building the gt68xx backend
+hp - SANE_BACKENDS setting for building the hp backend
+hp3500 - SANE_BACKENDS setting for building the hp3500 backend
+hp3900 - SANE_BACKENDS setting for building the hp3900 backend
+hp4200 - SANE_BACKENDS setting for building the hp4200 backend
+hp5400 - SANE_BACKENDS setting for building the hp5400 backend
+hp5590 - SANE_BACKENDS setting for building the hp5590 backend
+hpsj5s - SANE_BACKENDS setting for building the hpsj5s backend
+hpljm1005 - SANE_BACKENDS setting for building the hpljm1005 backend
+hs2p - SANE_BACKENDS setting for building the hs2p backend
+ibm - SANE_BACKENDS setting for building the ibm backend
+kodak - SANE_BACKENDS setting for building the kodak backend
+kodakaio - SANE_BACKENDS setting for building the kodak backend
+kvs1025 - SANE_BACKENDS setting for building the kvs1025 backend
+kvs20xx - SANE_BACKENDS setting for building the kvs20xx backend
+kvs40xx - SANE_BACKENDS setting for building the kvs20xx backend
+leo - SANE_BACKENDS setting for building the leo backend
+lexmark - SANE_BACKENDS setting for building the lexmark backend
+ma1509 - SANE_BACKENDS setting for building the ma1509 backend
+magicolor - SANE_BACKENDS setting for building the magicolor backend
+matsushita - SANE_BACKENDS setting for building the matsushita backend
+microtek - SANE_BACKENDS setting for building the microtek backend
+microtek2 - SANE_BACKENDS setting for building the microtek2 backend
+mustek - SANE_BACKENDS setting for building the mustek backend
+mustek_pp - SANE_BACKENDS setting for building the mustek_pp backend
+mustek_usb - SANE_BACKENDS setting for building the mustek_usb backend
+mustek_usb2 - SANE_BACKENDS setting for building the mustek_usb2 backend
+nec - SANE_BACKENDS setting for building the nec backend
+net - SANE_BACKENDS setting for building the net backend
+niash - SANE_BACKENDS setting for building the niash backend
+p5 - SANE_BACKENDS setting for building the p5 backend
+pie - SANE_BACKENDS setting for building the pie backend
+pixma - SANE_BACKENDS setting for building the pixma backend
+plustek - SANE_BACKENDS setting for building the plustek backend
+plustek_pp - SANE_BACKENDS setting for building the plustek_pp backend
+pnm - SANE_BACKENDS settings for building the pnm test backend, considered a possible security risk
+qcam - SANE_BACKENDS setting for building the qcam backend
+ricoh - SANE_BACKENDS setting for building the ricoh backend
+rts8891 - SANE_BACKENDS setting for building the rts8891 backend
+s9036 - SANE_BACKENDS setting for building the s9036 backend
+sceptre - SANE_BACKENDS setting for building the sceptre backend
+sharp - SANE_BACKENDS setting for building the sharp backend
+sm3600 - SANE_BACKENDS setting for building the sm3600 backend
+sm3840 - SANE_BACKENDS setting for building the sm3840 backend
+snapscan - SANE_BACKENDS setting for building the snapscan backend
+sp15c - SANE_BACKENDS setting for building the sp15c backend
+st400 - SANE_BACKENDS setting for building the st400 backend
+stv680 - SANE_BACKENDS setting for building the stv680 backend
+tamarack - SANE_BACKENDS setting for building the tamarack backend
+teco1 - SANE_BACKENDS setting for building the teco1 backend
+teco2 - SANE_BACKENDS setting for building the teco2 backend
+teco3 - SANE_BACKENDS setting for building the teco3 backend
+test - SANE_BACKENDS setting for building the test backend
+u12 - SANE_BACKENDS setting for building the u12 backend
+umax - SANE_BACKENDS setting for building the umax backend
+umax_pp - SANE_BACKENDS setting for building the umax_pp backend
+umax1220u - SANE_BACKENDS setting for building the umax1220u backend
+xerox_mfp - SANE_BACKENDS setting for building the xerox_mfp backend

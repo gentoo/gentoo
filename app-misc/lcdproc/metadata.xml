@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>xmw@gentoo.org</email>
+		<name>Michael Weber</name>
+	</maintainer>
+	<longdescription lang="en">
+		LCDproc is a piece of software that displays real-time system information
+		from your Linux/*BSD box on a LCD. The server supports several serial
+		devices: Matrix Orbital, CrystalFontz, Bayrad, LB216, LCDM001
+		(kernelconcepts.de), Wirz-SLI, Cwlinux(.com) and PIC-an-LCD; and some
+		devices connected to the LPT port: HD44780, STV5730, T6963, SED1520 and
+		SED1330. Various clients are available that display things like CPU load,
+		system load, memory usage, uptime, and a lot more.
+	</longdescription>
+	<use>
+		<flag name="hid">Enable HID support using libhid</flag>
+		<flag name="irman">Enable support for IRMan (<pkg>media-libs/libirman</pkg>)</flag>
+		<flag name="nfs">Adds support for NFS file system</flag>
+		<flag name="seamless-hbars">Try to avoid gaps in horizontal bars</flag>
+		<flag name="ftdi">Enable support for FTDI connections in some selected LCD_DEVICES (currently hd44780)</flag>
+		<flag name="lcd_devices_sdeclcd">Enable support for VLSYS M428 display</flag>
+		<flag name="lcd_devices_vlsys_m428">Enable support for VLSYS M428 display</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">lcdproc</remote-id>
+	</upstream>
+</pkgmetadata>

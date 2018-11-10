@@ -1,0 +1,59 @@
+diff -uNr ushare-1.1a.a/src/cds.c ushare-1.1a.b/src/cds.c
+--- ushare-1.1a.a/src/cds.c	2007-12-09 08:03:36.000000000 -0500
++++ ushare-1.1a.b/src/cds.c	2012-05-27 11:28:42.000000000 -0400
+@@ -19,7 +19,9 @@
+  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  */
+ 
++#include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <upnp/upnp.h>
+ #include <upnp/upnptools.h>
+ 
+diff -uNr ushare-1.1a.a/src/cms.c ushare-1.1a.b/src/cms.c
+--- ushare-1.1a.a/src/cms.c	2007-12-09 08:03:36.000000000 -0500
++++ ushare-1.1a.b/src/cms.c	2012-05-27 11:25:03.000000000 -0400
+@@ -20,6 +20,7 @@
+  */
+ 
+ #include <stdlib.h>
++#include <string.h>
+ #include <upnp/upnp.h>
+ #include <upnp/upnptools.h>
+ 
+diff -uNr ushare-1.1a.a/src/http.c ushare-1.1a.b/src/http.c
+--- ushare-1.1a.a/src/http.c	2012-05-27 11:23:32.000000000 -0400
++++ ushare-1.1a.b/src/http.c	2012-05-27 11:25:13.000000000 -0400
+@@ -25,6 +25,7 @@
+ #include <errno.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <unistd.h>
+ #include <errno.h>
+ 
+diff -uNr ushare-1.1a.a/src/presentation.c ushare-1.1a.b/src/presentation.c
+--- ushare-1.1a.a/src/presentation.c	2007-12-09 08:03:36.000000000 -0500
++++ ushare-1.1a.b/src/presentation.c	2012-05-27 11:30:08.000000000 -0400
+@@ -18,7 +18,9 @@
+  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  */
+ 
++#include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ #if HAVE_LANGINFO_CODESET
+ # include <langinfo.h>
+diff -uNr ushare-1.1a.a/src/services.c ushare-1.1a.b/src/services.c
+--- ushare-1.1a.a/src/services.c	2007-12-09 08:03:36.000000000 -0500
++++ ushare-1.1a.b/src/services.c	2012-05-27 11:25:26.000000000 -0400
+@@ -20,6 +20,7 @@
+  */
+ 
+ #include <stdlib.h>
++#include <string.h>
+ #include <upnp/upnp.h>
+ #include <upnp/upnptools.h>
+ 

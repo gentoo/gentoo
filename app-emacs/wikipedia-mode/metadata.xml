@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  An Emacs major mode for editing articles in Wikipedia and other wikis
+  running MediaWiki software offline. This mode tweaks Emacs's behavior in
+  several ways to make it easier to edit MediaWiki articles. In particular,
+  wikipedia-mode provides syntax highlighting for MediaWiki markup.
+</longdescription>
+<stabilize-allarches/>
+<use>
+  <flag name="outline-magic">Enable support for outline-mode extensions
+  (<pkg>app-emacs/outline-magic</pkg>)</flag>
+</use>
+</pkgmetadata>

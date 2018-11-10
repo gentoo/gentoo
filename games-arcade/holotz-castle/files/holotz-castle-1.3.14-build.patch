@@ -1,0 +1,71 @@
+--- a/JLib/Makefile
++++ b/JLib/Makefile
+@@ -19,7 +19,7 @@
+ endif
+ 
+ # Define -D_JLIB_DEBUG to debug JLib. Compile the app to debug also with this flag
+-CFLAGS=-I. -I/usr/local/include/SDL -O3 -ffast-math -fPIC -Wall -Wshadow `$(SDL_CONFIG) --cflags`
++CXXFLAGS+=-I. -Wall -Wshadow `$(SDL_CONFIG) --cflags`
+ 
+ # Sample LDFLAGS for applications
+ # LDFLAGS=-L. -ffast-math -lSDL_image -lSDL_ttf -lSDL_mixer `$(SDL_CONFIG) --libs`
+@@ -28,15 +28,14 @@
+ 
+ # JLib
+ libJLib: $(JLIB_OBJS)
+-	g++-4.1 -shared -L/usr/lib -fPIC -o $@.so $? \
+-	&& ar rvus $@.a $? \
++	$(AR) rvus $@.a $?
+ 
+ $(GRAPHICS)/%.o: $(GRAPHICS)/%.cpp
+-	g++-4.1 $(CFLAGS) -c -o $@ $<
++	$(CXX) $(CXXFLAGS) -c -o $@ $<
+ $(UTIL)/%.o: $(UTIL)/%.cpp
+-	g++-4.1 $(CFLAGS) -c -o $@ $<
++	$(CXX) $(CXXFLAGS) -c -o $@ $<
+ $(MATH)/%.o: $(MATH)/%.cpp
+-	g++-4.1 $(CFLAGS) -c -o $@ $<
++	$(CXX) $(CXXFLAGS) -c -o $@ $<
+ 
+ .PHONY: install
+ install:
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -30,7 +30,7 @@
+ 
+ DEFINES = -DHC_DATA_DIR=\"$(HC_DATA)\" -DHCED_DATA_DIR=\"$(HCED_DATA)\"
+ 
+-all: JLib HC HCed
++all: HC HCed
+ 
+ HC_OBJ_MAIN=HolotzCastle.o
+ HC_OBJS=HCUtil.o HCTimer.o HCLoadSaveSlot.o HCPlaylist.o HCPreferences.o HCTheme.o HCText.o \
+@@ -42,23 +42,23 @@
+ 
+ # Definir -D_JLIB_DEBUG para debug con JLib. Ponerlo también en el Makefile de JLib.
+ # Define -D_JLIB_DEBUG for JLib debug mode. Put it also in JLib's Makefile.
+-CFLAGS=-fno-strict-aliasing -I. -I../JLib `$(SDL_CONFIG) --cflags` -I/usr/local/include/ -I/usr/local/include/SDL -O3 -Wall -Werror -Wshadow $(CPU_OPTS) -ffast-math -c
+-LDFLAGS=-L. -ffast-math -lSDL_image -lSDL_ttf -lSDL_mixer `$(SDL_CONFIG) --libs`
++CXXFLAGS+=-fno-strict-aliasing -I. -I../JLib `$(SDL_CONFIG) --cflags` -Wall -Wshadow
++LDLIBS=-L. -lSDL_image -lSDL_ttf -lSDL_mixer `$(SDL_CONFIG) --libs`
+ 
+ 
+ JLib: 
+ 	$(MAKE) -C ../JLib;
+ 
+ %.o: %.cpp %.h
+-	g++ $(CFLAGS) $(DEFINES) $< -o $@
++	$(CXX) -c $(CXXFLAGS) $(DEFINES) $< -o $@
+ 
+ HC: $(HC_OBJS) $(HC_OBJ_MAIN) ../JLib/libJLib.a
+-	g++ $(LDFLAGS) $? -o $@;\
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $? $(LDLIBS);\
+ 	mv HC ../holotz-castle
+ 
+ # HCed (Holotz's Castle editor).
+ HCed: $(HC_OBJS) $(HCED_OBJ_MAIN) ../JLib/libJLib.a
+-	g++ $(LDFLAGS) $? -o $@;\
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $? $(LDLIBS);\
+ 	mv HCed ../holotz-castle-editor
+ 
+ install:

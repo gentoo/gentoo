@@ -1,0 +1,98 @@
+--- a/mp32ogg
++++ b/mp32ogg
+@@ -9,6 +9,8 @@
+ # 0.11-gentoo
+ #     * Jeremy Huddleston <eradicator@gentoo.org>:
+ #       Added support for mpg321
++#     * --quality option support (from Debian 0.11-r3 release)
++#     * Non-zero exit code on failure (from Debian 0.11-r3 release)
+ #
+ # 0.11
+ #     * Have output reflect change in license (doh)
+@@ -104,8 +106,10 @@
+ print "(c) 2000-2002 Nathan Walp\n";
+ print "Released without warranty under the terms of the Artistic License\n\n";
+ 
++my $userquality=-2.0;
+ 
+ GetOptions("help|?",\&showhelp,
++		"quality=f" => \$userquality,
+ 		"delete", 
+ 		"rename=s", 
+ 		"lowercase",
+@@ -116,6 +120,8 @@
+ sub showhelp() {
+ 	print "Usage: $0 [options] dir1 dir2 file1 file2 ...\n\n";
+ 	print "Options:\n";
++	print "--quality=[-1..10]       Set Ogg/Vorbis quality level\n";
++	print "                         Defaults to bitrate of original .mp3\n";
+ 	print "--delete                 Delete files after converting\n";
+ 	print "--rename=format          Instead of simply replacing the .mp3 with\n";
+ 	print "                         .ogg for the output file, produce output \n";
+@@ -174,20 +180,26 @@
+ 	}
+ 
+ 	$mp3bitrate = $fileinfo->{BITRATE};
+-	if($mp3bitrate ne "") {
+-	   if($mp3bitrate > 256) {
+-	      $quality = 8;
+-	   } elsif($mp3bitrate > 192) {
+-	      $quality = 7;
+-	   } elsif($mp3bitrate > 128) {
+-	      $quality = 6;
+-	   } else {
+-	      $quality = 5;
+-	   }
++	if (($userquality < -1) || ($userquality > 10)) {
++	    # Set quality adjacent to mp3 bitrate
++	    if($mp3bitrate ne "") {
++		if($mp3bitrate > 256) {
++		    $quality = 8;
++		} elsif($mp3bitrate > 192) {
++		    $quality = 7;
++		} elsif($mp3bitrate > 128) {
++		    $quality = 6;
++		} else {
++		    $quality = 5;
++		}
++	    }
+ 	} else {
+ 	   $quality = 5;
+ 	   print "MP3::Info didn't report the bitrate... weird. Corrupt MP3 file? Bug?\n";
++	   # User defined quality
++	   $quality = $userquality;
+ 	}
++
+ 	if($filename eq "" ||
+ 		((/\%a/) && $info->{ARTIST} eq "") ||
+ 		((/\%t/) && $info->{TITLE} eq "") ||
+@@ -276,19 +288,19 @@
+ 	      {
+ 		 warn "Conversion failed ($oggoutputfile truncated).\n";
+ 		 close CHECK;
+-		 return;
++		 exit 1;
+ 	      }
+ 	      elsif($_ eq "header_integrity=fail\n")
+ 	      {
+ 		 warn "Conversion failed ($oggoutputfile header integrity check failed).\n";
+ 		 close CHECK;
+-		 return;
++		 exit 1;
+ 	      }
+ 	      elsif($_ eq "stream_integrity=fail\n")
+ 	      {
+ 		 warn "Conversion failed ($oggoutputfile header integrity check failed).\n";
+ 		 close CHECK;
+-		 return;
++		 exit 1;
+ 	      }
+ 	   }
+ 	   close CHECK;
+@@ -300,5 +312,6 @@
+ 	}
+ 	else {
+ 	   warn "Conversion failed ($oggenc returned $result).\n";
++	   exit 1
+ 	}
+ }

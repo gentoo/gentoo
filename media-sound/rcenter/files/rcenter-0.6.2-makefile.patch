@@ -1,0 +1,16 @@
+Index: rcenter-0.6.2/Makefile
+===================================================================
+--- rcenter-0.6.2.orig/Makefile
++++ rcenter-0.6.2/Makefile
+@@ -19,9 +19,9 @@ button.o : button.c
+ main.o : main.c
+ 
+ rcenter : main.o lowlevel.o handler.o button.o
+-	$(CC) $(CFLAGS) -o rcenter $^ -lpthread
++	$(CC) $(LDFLAGS) -o rcenter $^ -lpthread
+ 
+-projname := $(shell awk '/RCENTER_VERSION/ { print $$3 }' version.h )
++projname := $(shell gawk '/RCENTER_VERSION/ { print $$3 }' version.h )
+ 
+ install: rcenter
+ 	install -D rcenter $(PREFIX)/bin/rcenter

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>kde@gentoo.org</email>
+    <name>Gentoo KDE Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sound@gentoo.org</email>
+    <name>Gentoo Sound project</name>
+  </maintainer>
+  <use>
+    <flag name="acoustid">Enable support for acoustic fingerprinting plugin using
+      (<pkg>media-libs/chromaprint</pkg>)</flag>
+  </use>
+  <upstream>
+    <bugs-to>https://sourceforge.net/p/kid3/bugs/</bugs-to>
+    <remote-id type="sourceforge">kid3</remote-id>
+  </upstream>
+</pkgmetadata>

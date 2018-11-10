@@ -1,0 +1,47 @@
+diff -burN sources/glprintf.cpp sources-linux/glprintf.cpp
+--- sources/glprintf.cpp	2002-10-26 00:17:00.000000000 +0200
++++ sources-linux/glprintf.cpp	2005-06-18 18:22:54.000000000 +0200
+@@ -3,6 +3,7 @@
+ #endif
+ #include "GL/gl.h"
+ 
++#include "string.h"
+ #include "stdio.h"
+ #include "stdarg.h"
+ #include "GL/gl.h"
+diff -burN sources/list.h sources-linux/list.h
+--- sources/list.h	2002-10-27 12:17:00.000000000 +0100
++++ sources-linux/list.h	2005-06-18 18:21:34.000000000 +0200
+@@ -1,6 +1,9 @@
+ #ifndef GENERIC_LIST
+ #define GENERIC_LIST
+ 
++
++#include "stdlib.h"
++
+ /* 
+ Funciones para LISTAS: 
+ 
+diff -burN sources/maps.cpp sources-linux/maps.cpp
+--- sources/maps.cpp	2005-05-05 23:42:00.000000000 +0200
++++ sources-linux/maps.cpp	2005-06-18 18:23:05.000000000 +0200
+@@ -3,6 +3,7 @@
+ #endif
+ 
+ #include "stdio.h"
++#include "string.h"
+ 
+ #include "GL/gl.h"
+ #include "GL/glu.h"
+diff -burN sources/myglutaux.cpp sources-linux/myglutaux.cpp
+--- sources/myglutaux.cpp	2002-10-26 00:17:00.000000000 +0200
++++ sources-linux/myglutaux.cpp	2005-06-18 18:23:29.000000000 +0200
+@@ -5,6 +5,8 @@
+ #include <GL/gl.h>
+ #include "GL/glut.h"
+ 
++#include "string.h"
++#include "stdlib.h"
+ #include "stdio.h"
+ #include "math.h"
+ #include "vector.h"

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>patrick@gentoo.org</email>
+    <name>Patrick Lauer</name>
+  </maintainer>
+  <use>
+    <flag name="custom-tune">Improve performance of some operations by selecting machine-specific defaults</flag>
+    <flag name="gwnum">Use GWNum lib where possible</flag>
+  </use>
+</pkgmetadata>

@@ -1,0 +1,59 @@
+diff --git a/src/tests/correctness/blas-lapack.c b/src/tests/correctness/blas-lapack.c
+index 9687bdf..54666b1 100644
+--- a/src/tests/correctness/blas-lapack.c
++++ b/src/tests/correctness/blas-lapack.c
+@@ -655,7 +655,7 @@ complex cdotu( int n, complex *x, int incx, complex *y, int incy)
+     #elif defined( __APPLE__)
+         cblas_cdotu_sub(n, x, incx, y, incy, &ans);
+     #else
+-        cdotusub_(&n, x, &incx, y, &incy, &ans);
++        ans = cdotu_(&n, x, &incx, y, &incy);
+     #endif
+ 
+     return ans;
+@@ -670,7 +670,7 @@ doublecomplex zdotu( int n, doublecomplex *x, int incx,  doublecomplex *y, int i
+     #elif defined(__APPLE__)
+         cblas_zdotu_sub(n, x, incx, y, incy, &ans);
+     #else
+-        zdotusub_(&n, x, &incx, y, &incy, &ans);
++        ans = zdotu_(&n, x, &incx, y, &incy);
+     #endif
+ 
+     return ans;
+@@ -685,7 +685,7 @@ complex cdotc( int n, complex *x, int incx, complex *y, int incy)
+     #elif defined(__APPLE__)
+         cblas_cdotc_sub(n, x, incx, y, incy, &ans);
+     #else
+-        cdotcsub_(&n, x, &incx, y, &incy, &ans);
++        ans = cdotc_(&n, x, &incx, y, &incy);
+     #endif
+ 
+     return ans;
+@@ -700,7 +700,7 @@ doublecomplex zdotc( int n, doublecomplex *x, int incx,  doublecomplex *y, int i
+     #elif defined(__APPLE__)
+         cblas_zdotc_sub(n, x, incx, y, incy, &ans);
+     #else
+-        zdotcsub_(&n, x, &incx, y, &incy, &ans);
++        ans = zdotc_(&n, x, &incx, y, &incy);
+     #endif
+ 
+     return ans;
+diff --git a/src/tests/correctness/blas-lapack.h b/src/tests/correctness/blas-lapack.h
+index d2db1aa..8619e1e 100644
+--- a/src/tests/correctness/blas-lapack.h
++++ b/src/tests/correctness/blas-lapack.h
+@@ -1170,10 +1170,10 @@ double ddot_(int *n, double *x, int *incx, double* y, int *incy);
+     complex cdotc_(int *n, complex *x, int *incx, complex* y, int *incy);
+     doublecomplex zdotc_(int *n, doublecomplex *x, int *incx, doublecomplex* y, int *incy);
+ #else
+-    void cdotusub_(int *n, complex *x, int *incx, complex* y, int *incy, complex *ans);
+-    void zdotusub_(int *n, doublecomplex *x, int *incx, doublecomplex* y, int *incy, doublecomplex *ans);
+-    void cdotcsub_(int *n, complex *x, int *incx, complex* y, int *incy, complex *ans);
+-    void zdotcsub_(int *n, doublecomplex *x, int *incx, doublecomplex* y, int *incy, doublecomplex *ans);
++    complex cdotu_(int *n, complex *x, int *incx, complex* y, int *incy);
++    doublecomplex zdotu_(int *n, doublecomplex *x, int *incx, doublecomplex* y, int *incy);
++    complex cdotc_(int *n, complex *x, int *incx, complex* y, int *incy);
++    doublecomplex zdotc_(int *n, doublecomplex *x, int *incx, doublecomplex* y, int *incy);
+ #endif
+ 
+ void sswap_(int *n, float *x, int *incx, float* y, int *incy);

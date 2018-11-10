@@ -1,0 +1,14 @@
+diff -r 5f7ee764ec1f src/share/common
+--- a/src/share/common	Mon Oct 07 19:22:36 2013 +0200
++++ b/src/share/common	Mon Oct 07 19:22:58 2013 +0200
+@@ -863,6 +863,10 @@
+ 		    ;;
+ 		('known_hosts')
+ 		    host=${userID#ssh://}
++	    	    if [[ "${host}" == *:* ]]; then
++			IFS=':' read -a ARR <<< "${host}"
++			host="[${ARR[0]}]:${ARR[1]}"
++		    fi
+ 		    remove_line "$keyFile" "$host" "$sshKey"
+ 		    ;;
+ 	    esac

@@ -1,0 +1,10 @@
+--- OpenCV-2.3.1.orig/modules/highgui/src/cap_ffmpeg_impl.hpp	2011-11-14 05:33:37.000000000 +0100
++++ OpenCV-2.3.1/modules/highgui/src/cap_ffmpeg_impl.hpp	2011-11-14 05:33:18.000000000 +0100
+@@ -104,6 +104,7 @@
+ #endif
+ #if defined(HAVE_LIBAVCODEC_AVCODEC_H)
+   #include <libavcodec/avcodec.h>
++  #include <libavutil/mathematics.h>
+ #endif
+ #if defined(HAVE_LIBSWSCALE_SWSCALE_H)
+   #include <libswscale/swscale.h>

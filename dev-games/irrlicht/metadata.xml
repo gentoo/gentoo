@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+The Irrlicht Engine is an open source high performance realtime 3D engine written in 
+C++. It is completely cross-platform, using D3D, OpenGL and its own software renderer, 
+and has all of the state-of-the-art features which can be found in commercial 3d 
+engines.
+We've got a huge active community, and there are lots of games in development that use 
+the engine. You can find enhancements for Irrlicht all over the web, like alternative 
+terrain renderers, portal renderers, world layers, tutorials, editors, bindings for 
+perl, ruby, python, and so on. And best of all: It's completely free.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">irrlicht</remote-id>
+	</upstream>
+</pkgmetadata>

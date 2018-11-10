@@ -1,0 +1,22 @@
+diff -ru glimmer3.02-orig/src/Makefile glimmer3.02/src/Makefile
+--- glimmer3.02-orig/src/Makefile	2006-06-12 21:40:14.000000000 +0200
++++ glimmer3.02/src/Makefile	2010-03-18 14:30:15.000000000 +0100
+@@ -2,12 +2,12 @@
+ 
+ 
+ all:
+-	@ TGT=objs
+-	@ $(dosubdirs)
+-	@ TGT=libs
+-	@ $(dosubdirs)
+-	@ TGT=progs
+-	@ $(dosubdirs)
++	@+ TGT=objs
++	@+ $(dosubdirs)
++	@+ TGT=libs
++	@+ $(dosubdirs)
++	@+ TGT=progs
++	@+ $(dosubdirs)
+ 
+ 
+ install: all

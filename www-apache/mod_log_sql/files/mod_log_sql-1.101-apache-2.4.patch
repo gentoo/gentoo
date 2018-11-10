@@ -1,0 +1,17 @@
+Description: Fixes compatibility with Apache 2.4 API
+Author: Thomas Goirand <zigo@debian.org>
+Bug-Debian: http://bugs.debian.org/666797
+Forwarded: http://lists.outoforder.cc/pipermail/mod_log_sql/2012-April/000358.html
+Last-Update: 2013-07-10
+
+--- libapache-mod-log-sql-1.100.orig/functions.h
++++ libapache-mod-log-sql-1.100/functions.h
+@@ -14,7 +14,7 @@ static const char *extract_remote_addres
+ 
+ static const char *extract_remote_address(request_rec *r, char *a)
+ {
+-    return r->connection->remote_ip;
++    return r->useragent_ip;
+ }
+ 
+ static const char *extract_local_address(request_rec *r, char *a) __attribute__((unused));

@@ -1,0 +1,11 @@
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+# format: period delay job-identifier command
+##
+## If you turn any of the following on, make sure that the
+## regular cron daemon does not run them also. This could
+## lead to double execution of the jobs.
+#1       5       cron.daily      run-parts /etc/cron.daily
+#7       10      cron.weekly     run-parts /etc/cron.weekly
+#30      15      cron.monthly    run-parts /etc/cron.monthly
+

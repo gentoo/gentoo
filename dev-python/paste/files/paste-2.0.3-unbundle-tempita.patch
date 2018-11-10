@@ -1,0 +1,36 @@
+ paste/util/looper/__init__.py                     | 4 ++++
+ paste/util/{looper.py => looper/_looper.py}       | 0
+ paste/util/template/__init__.py                   | 6 ++++++
+ paste/util/{template.py => template/_template.py} | 0
+ 4 files changed, 10 insertions(+)
+
+diff --git a/paste/util/looper/__init__.py b/paste/util/looper/__init__.py
+new file mode 100644
+index 0000000..77d7e80
+--- /dev/null
++++ b/paste/util/looper/__init__.py
+@@ -0,0 +1,4 @@
++try:
++    from tempita._looper import *
++except ImportError:
++    from _looper import *
+diff --git a/paste/util/looper.py b/paste/util/looper/_looper.py
+similarity index 100%
+rename from paste/util/looper.py
+rename to paste/util/looper/_looper.py
+diff --git a/paste/util/template/__init__.py b/paste/util/template/__init__.py
+new file mode 100644
+index 0000000..a0a5730
+--- /dev/null
++++ b/paste/util/template/__init__.py
+@@ -0,0 +1,6 @@
++try:
++    from tempita import *
++    from tempita import paste_script_template_renderer
++except ImportError:
++    from _template import *
++    from _template import paste_script_template_renderer
+diff --git a/paste/util/template.py b/paste/util/template/_template.py
+similarity index 100%
+rename from paste/util/template.py
+rename to paste/util/template/_template.py

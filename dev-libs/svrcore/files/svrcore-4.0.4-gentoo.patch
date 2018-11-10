@@ -1,0 +1,100 @@
+diff -uNr src/Makefile.am svrcore-4.0.4src/Makefile.am
+--- src/Makefile.am	2006-12-14 18:07:32.000000000 +0100
++++ src/Makefile.am	2007-08-06 17:37:17.000000000 +0200
+@@ -4,8 +4,8 @@
+ 	     Makefile.win \
+ 	     ntgetpin.rc
+ 
+-lib_LTLIBRARIES = libsvrcore.la
+-include_HEADERS = svrcore.h
++pkglib_LTLIBRARIES = libsvrcore.la
++pkginclude_HEADERS = svrcore.h
+ libsvrcore_la_SOURCES =	alt.c \
+ 		      	cache.c \
+ 		      	errors.c \
+diff -uNr svrcore.pc.in svrcore.pc.in
+--- svrcore.pc.in	2006-12-14 18:07:32.000000000 +0100
++++ svrcore.pc.in	2007-08-06 17:38:12.000000000 +0200
+@@ -1,11 +1,11 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+-libdir=@libdir@
+-includedir=@includedir@
++libdir=@libdir@/@PACKAGE@
++includedir=@includedir@/@PACKAGE@
+ 
+ Name: svrcore
+ Description: Svrcore - Secure PIN handling using NSS crypto
+ Version: @VERSION@
+ Requires: @NSPR_NAME@ >= @NSPR_MIN_VER@ , @NSS_NAME@ >= @NSS_MIN_VER@
+-Libs: -lsvrcore
++Libs: -L${libdir} -lsvrcore
+ Cflags: -I${includedir}
+diff -ur m4.orig/nspr.m4 m4/nspr.m4
+--- m4.orig/nspr.m4	2009-10-06 01:40:18.979484804 +0300
++++ m4/nspr.m4	2009-10-06 01:41:21.539982482 +0300
+@@ -52,28 +52,6 @@
+ ],
+ AC_MSG_RESULT(no))
+ 
+-# see if we are doing an "in-tree" build with the other
+-# mozilla components
+-if test -z "$nspr_inc" -o -z "$nspr_lib" ; then
+-    for nsprpath in "../../dist" "../../dist/*.OBJ" ; do
+-        savedir=`pwd`
+-        cd $nsprpath
+-        abs_nsprpath=`pwd`
+-        cd $savedir
+-        if test -f "$abs_nsprpath/include/nspr/nspr.h" ; then
+-            nspr_inc="-I$abs_nsprpath/include/nspr"
+-        elif test -f "$abs_nsprpath/include/nspr.h" ; then
+-            nspr_inc="-I$abs_nsprpath/include"
+-        fi
+-        if test -d "$abs_nsprpath/lib" ; then
+-            nspr_lib="-L$abs_nsprpath/lib"
+-        fi
+-        if test -n "$nspr_inc" -a -n "$nspr_lib" ; then
+-            break
+-        fi
+-    done
+-fi
+-
+ # if NSPR is not found yet, try pkg-config
+ # last resort
+ if test -z "$nspr_inc" -o -z "$nspr_lib" ; then
+diff -ur m4.orig/nss.m4 m4/nss.m4
+--- m4.orig/nss.m4	2009-10-06 01:40:18.979484804 +0300
++++ m4/nss.m4	2009-10-06 01:41:31.291485717 +0300
+@@ -52,32 +52,6 @@
+ ],
+ AC_MSG_RESULT(no))
+ 
+-# see if we are building "in tree" with the
+-# other mozilla components
+-if test -z "$nss_inc" -o -z "$nss_lib"; then
+-    nsslibpath=`echo ../../dist/*.OBJ/lib | cut -f1 -d' '`
+-    savedir=`pwd`
+-    cd $nsslibpath
+-    abs_nsslibpath=`pwd`
+-    cd $savedir
+-    nssincpath=../../dist/public/nss
+-    savedir=`pwd`
+-    cd $nssincpath
+-    abs_nssincpath=`pwd`
+-    cd $savedir
+-    if test -f "$abs_nssincpath/nss.h" ; then
+-        nss_inc="-I$abs_nssincpath"
+-    fi
+-    if test -d "$abs_nsslibpath" ; then
+-        nss_lib="-L$abs_nsslibpath"
+-    fi
+-    if test -n "$nss_inc" -a -n "$nss_lib" ; then
+-        AC_MSG_CHECKING(using in-tree NSS from $nssincpath $nsslibpath)
+-    else
+-        AC_MSG_CHECKING(could not find in-tree NSS in ../../dist)
+-    fi
+-fi
+-
+ # if NSS is not found yet, try pkg-config
+ # last resort
+ if test -z "$nss_inc" -o -z "$nss_lib"; then

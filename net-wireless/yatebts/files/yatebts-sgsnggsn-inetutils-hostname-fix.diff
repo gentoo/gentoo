@@ -1,0 +1,14 @@
+diff --git a/mbts/SGSNGGSN/iputils.cpp b/mbts/SGSNGGSN/iputils.cpp
+index 979ae3a..49bb0ff 100644
+--- a/mbts/SGSNGGSN/iputils.cpp
++++ b/mbts/SGSNGGSN/iputils.cpp
+@@ -466,7 +466,7 @@ EXPORT uint32_t *ip_findmyaddr()
+ 	const int maxaddrs = 5;
+ 	static uint32_t addrs[maxaddrs+1];
+ 	int n = 0;
+-	int fd = runcmd("|/bin/hostname","hostname","-I", NULL);
++	int fd = runcmd("|/bin/hostname","hostname","-i", NULL);
+ 	if (fd < 0) {
+ 		failed:
+ 		addrs[0] = (unsigned) -1;	// converts to all 1s
+

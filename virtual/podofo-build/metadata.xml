@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person"><email>zmedico@gentoo.org</email></maintainer>
+<use>
+	<flag name="boost">Add support for boost</flag>
+	<flag name="tools">
+		Build and install commandline tools.
+	</flag>
+</use>
+</pkgmetadata>

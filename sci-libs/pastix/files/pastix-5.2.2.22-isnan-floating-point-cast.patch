@@ -1,0 +1,47 @@
+Add missing cast to floating-point type:
+* sopalin/src/variable_csc.c: In function ‘vcsc_add_node’:
+* sopalin/src/variable_csc.c:138:13: error: non-floating-point argument in call to function ‘__builtin_isnan’
+*              if (isnan(vcsc->values[COL-1][i*dof2 + ii])) {
+See also:
+https://bugs.gentoo.org/show_bug.cgi?id=580422
+
+--- src/common/src/errors.h
++++ src/common/src/errors.h
+@@ -140,7 +140,7 @@
+  *   expr - The value to check.
+  */
+ #define CHECK_NAN(expr) {					\
+-    ASSERT_DEBUG(!isnan(expr), DBG_SOPALIN_NAN);		\
++    ASSERT_DEBUG(!isnan(((double) expr)), DBG_SOPALIN_NAN);		\
+     ASSERT_DEBUG(!isinf(expr), DBG_SOPALIN_INF);		\
+   }
+ #else
+--- src/sopalin/src/variable_csc.c
++++ src/sopalin/src/variable_csc.c
+@@ -135,7 +135,7 @@
+ #endif
+ 
+           for (ii = 0; ii < dof2; ii++) {
+-            if (isnan(vcsc->values[COL-1][i*dof2 + ii])) {
++            if (isnan(((double) vcsc->values[COL-1][i*dof2 + ii]))) {
+               vcsc->values[COL-1][i*dof2 + ii] = VALUE[ii];
+             } else {
+               vcsc->values[COL-1][i*dof2 + ii] = op(vcsc->values[COL-1][i*dof2 + ii],
+@@ -252,7 +252,7 @@
+                     vcsc->rows[COL_NODE][i]);
+           }
+ #endif
+-          if (isnan(vcsc->values[COL_NODE][idx])) {
++          if (isnan(((double) vcsc->values[COL_NODE][idx]))) {
+             vcsc->values[COL_NODE][idx] = VALUE;
+           } else {
+             vcsc->values[COL_NODE][idx] = op(vcsc->values[COL_NODE][idx],
+@@ -660,7 +660,7 @@
+           } else {
+             INTS iterdof;
+             for (iterdof = 0; iterdof < dof2; iterdof++) {
+-              if (!isnan(vcsc->values[MYCOL-1][dof2*iter2+iterdof])) {
++              if (!isnan(((double) vcsc->values[MYCOL-1][dof2*iter2+iterdof]))) {
+                 /* ignore NaN values from VCSC */
+                 (*values_o)[dof2*iter3+iterdof] = op(
+                   (*values_o)[dof2*iter3+iterdof],

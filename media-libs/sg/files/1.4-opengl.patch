@@ -1,0 +1,98 @@
+diff --git a/configure.ac b/configure.ac
+index 68ff24a..a2cd6b5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -844,9 +844,6 @@ AC_OUTPUT([
+ 
+     src/base/Makefile
+ 
+-    src/gl/Makefile
+-    src/glu/Makefile
+-    src/glw/Makefile
+     src/ogl/Makefile
+     src/vgl/Makefile
+ 
+diff --git a/src/Makefile.am b/src/Makefile.am
+index ad9562f..7d5173c 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -35,5 +35,5 @@
+ AUTOMAKE_OPTIONS = no-dependencies
+ SUFFIXES = .y .l .H .h .m .C .cc .c .f .java .o
+ always_built_SUBDIRS = ogl vgl
+-SUBDIRS = base @gl@ @glu@ @glw@ $(always_built_SUBDIRS) aaa_inc aaa_lib .
++SUBDIRS = base $(always_built_SUBDIRS) aaa_inc aaa_lib .
+ 
+diff --git a/src/aaa_inc/GL/Makefile.am b/src/aaa_inc/GL/Makefile.am
+index 10efb6b..0d5b8b7 100644
+--- a/src/aaa_inc/GL/Makefile.am
++++ b/src/aaa_inc/GL/Makefile.am
+@@ -37,27 +37,6 @@ SUFFIXES = .y .l .H .h .m .C .cc .c .f .java .o
+ always_built_SUBDIRS =
+ SUBDIRS = $(always_built_SUBDIRS) .
+ 
+-if BUILD_GL
+-GL_HEADS    = gl.h glx.h osmesa.h wmesa.h xmesa.h
+-else
+-GL_HEADS    =
+-endif
+-
+-if BUILD_GLU
+-GLU_HEADS   = glu.h
+-else
+-GLU_HEADS   =
+-endif
+-
+-if BUILD_GLW
+-GLW_HEADS   = GLwDrawA.h
+-else
+-GLW_HEADS   =
+-endif
+-
+-includedir = ${prefix}/include/GL
+-include_HEADERS = ${GL_HEADS} ${GLU_HEADS} ${GLW_HEADS}
+-
+ distclean-local: clean-local
+ 
+ clean-local:
+diff --git a/src/aaa_lib/Makefile.am b/src/aaa_lib/Makefile.am
+index bb93779..0512c45 100644
+--- a/src/aaa_lib/Makefile.am
++++ b/src/aaa_lib/Makefile.am
+@@ -41,32 +41,16 @@ BASE_LIBS  = ../base/libbase.la
+ OGL_LIBS   = ../ogl/libogl.la
+ VGL_LIBS   = ../vgl/libvgl.la
+ 
+-GL_LIBS    = ../gl/libGL.la
+-if BUILD_GL
+-LIBGL = libGL.la
+-else
+-LIBGL =
+-endif
++GL_LIBS    = ${libdir}/libGL.la
+ 
+-GLU_LIBS   = ../glu/libGLU.la
+-if BUILD_GLU
+-LIBGLU = libGLU.la
+-else
+-LIBGLU =
+-endif
++GLU_LIBS   = ${libdir}/libGLU.la
+ 
+-GLW_LIBS   = ../glw/libGLw.la
+-if BUILD_GLW
+-LIBGLW = libGLw.la
+-else
+-LIBGLW =
+-endif
++GLW_LIBS   = ${libdir}/libGLw.la
+ 
+-libdir           = ${prefix}/lib
+ lib_LTLIBRARIES  = libsg.la ${LIBGL} ${LIBGLU} ${LIBGLW}
+ 
+ libsg_la_SOURCES =
+-libsg_la_LIBADD  = ${BASE_LIBS} ${OGL_LIBS} ${VGL_LIBS}
++libsg_la_LIBADD  = ${BASE_LIBS} ${OGL_LIBS} ${VGL_LIBS} -lGL -lGLU -lGLw -lXm -lmaloc -lXaw
+ libsg_la_LDFLAGS = -version-info ${FETK_VERSION}
+ 
+ libGL_la_SOURCES =

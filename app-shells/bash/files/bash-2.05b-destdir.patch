@@ -1,0 +1,28 @@
+support DESTDIR install
+
+--- bash-2.05b/Makefile.in
++++ bash-2.05b/Makefile.in
+@@ -20,16 +20,16 @@
+ all: .made
+ 
+ # Include some boilerplate Gnu makefile definitions.
+-prefix = @prefix@
++prefix = $(DESTDIR)@prefix@
+ 
+-exec_prefix = @exec_prefix@
+-bindir = @bindir@
+-libdir = @libdir@
+-infodir = @infodir@
+-includedir = @includedir@
++exec_prefix = $(DESTDIR)@exec_prefix@
++bindir = $(DESTDIR)@bindir@
++libdir = $(DESTDIR)@libdir@
++infodir = $(DESTDIR)@infodir@
++includedir = $(DESTDIR)@includedir@
+ datadir = @datadir@
+ 
+-mandir = @mandir@
++mandir = $(DESTDIR)@mandir@
+ manpfx = man
+ 
+ man1ext = .1

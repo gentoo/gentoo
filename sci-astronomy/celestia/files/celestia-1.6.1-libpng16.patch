@@ -1,0 +1,25 @@
+image.cpp:530:61: error: ‘memcpy’ was not declared in this scope
+
+https://bugs.gentoo.org/show_bug.cgi?id=464764
+
+Patch written by Lars Wendler <polynomial-c@gentoo.org>
+--- a/src/celengine/image.cpp
++++ b/src/celengine/image.cpp
+@@ -42,6 +42,7 @@ extern "C" {
+ #include "jpeglib.h"
+ #else
+ #include <cstdio>
++#include <string.h>
+ #include <jpeglib.h>
+ #endif
+ }
+--- a/src/celengine/texture.cpp
++++ b/src/celengine/texture.cpp
+@@ -28,6 +28,7 @@
+ #include <cstdlib>
+ #include <cstdio>
+ #include <cassert>
++#include <string.h>
+ 
+ #ifndef _WIN32
+ #ifndef TARGET_OS_MAC

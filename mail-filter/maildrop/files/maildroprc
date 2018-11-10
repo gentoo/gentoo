@@ -1,0 +1,3 @@
+# Global maildrop filter file
+
+#DEFAULT="$HOME/.maildir/"

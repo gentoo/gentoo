@@ -1,0 +1,37 @@
+diff -Naur euler-1.61.0/configure.in euler-1.61.0-new/configure.in
+--- euler-1.61.0/configure.in	2005-10-30 16:40:27.000000000 +0000
++++ euler-1.61.0-new/configure.in	2006-02-08 23:38:54.000000000 +0000
+@@ -8,8 +8,6 @@
+ AM_CONFIG_HEADER(config.h)
+ 
+ AC_ISC_POSIX
+-CFLAGS=""
+-AC_SUBST(CFLAGS)
+ AC_PROG_CC
+ AM_PROG_CC_STDC
+ AC_HEADER_STDC
+@@ -21,6 +19,10 @@
+ 
+ 
+ dnl Checks for libraries.
++dnl Check for libm for fmod()
++AC_SEARCH_LIBS([fmod], [m], [], [
++	AC_MSG_ERROR([unable to find the fmod() function])
++])
+ 
+ 
+ dnl Checks for header files.
+diff -Naur euler-1.61.0/src/Makefile.am euler-1.61.0-new/src/Makefile.am
+--- euler-1.61.0/src/Makefile.am	2005-10-30 22:48:35.000000000 +0000
++++ euler-1.61.0-new/src/Makefile.am	2006-02-08 23:41:32.000000000 +0000
+@@ -7,10 +7,6 @@
+ INCLUDES = \
+ 	$(GTK_CFLAGS)
+ 
+-AM_CFLAGS =\
+-	 -Wall\
+-	 -O3
+-
+ bin_PROGRAMS = euler
+ 
+ euler_SOURCES = \

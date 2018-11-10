@@ -1,0 +1,14 @@
+diff -Naruw geos-3.4.2.orig/include/geos/platform.h.in geos-3.4.2/include/geos/platform.h.in
+--- geos-3.4.2.orig/include/geos/platform.h.in	2013-08-25 15:10:32.000000000 +0000
++++ geos-3.4.2/include/geos/platform.h.in	2013-10-20 23:45:29.891690795 +0000
+@@ -98,8 +98,9 @@
+    // It does leave a version in std.
+ #  define ISNAN(x) (std::isnan(x))
+ # elif (defined(__sun) || defined(__sun__)) && defined(__SUNPRO_CC)
++#  define _XOPEN_SOURCE 600 //force iso/math_c99
+ #  include <math.h>
+-#  define ISNAN(x) (::isnan(x))
++#  define ISNAN(x) (std::isnan(x))
+ # endif
+ #endif
+ 

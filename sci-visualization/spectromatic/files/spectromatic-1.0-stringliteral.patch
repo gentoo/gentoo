@@ -1,0 +1,78 @@
+diff -ru spectromatic-1.0/spectromatic.c spectromatic-1.0-new/spectromatic.c
+--- a/spectromatic.c
++++ b/spectromatic.c
+@@ -21,6 +21,7 @@
+  ****************************************************************************/
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <malloc.h>
+ #include <png.h>
+ #include <string.h>
+@@ -37,36 +38,36 @@
+ void usage (char *pname)
+ {
+ 	fprintf (stderr,
+-"
+-Usage: %s [options] file.wav
+-
+-Options:
+-	--window <size>		FFT window size (default: 2048)
+-	
+-	--step <size>		Slide the window by <size> samples each time 
+-				(default: 200)
+-	
+-	--inverse		White/Colour-on-black
+-	
+-	--logarithmic		Intensity is calculated by
+-				log10 (1 + 9 * (amplitude / max_amp)) -
+-				better for visualising weaker signals
+-
+-	--combine XYZ		Determines how a stereo signal is
+-				represented as an RGB image. The argument is
+-				a 3-character block, each character
+-				corresponding to R, G and B components. It
+-				may take values of L, R, A, D, X or Z,
+-				meaning Left, Right, Average, Difference,
+-				Cross-Correlation or Zero respectively.
+-
+-	--verbose		Slightly less quiet
+-	
+-	--version		Print out the version
+-	
+-	--help			You're in it.
+-
+-", pname);
++"\n"
++"Usage: %s [options] file.wav\n"
++"\n"
++"Options:\n"
++"	--window <size>		FFT window size (default: 2048)\n"
++"\n"
++"	--step <size>		Slide the window by <size> samples each time \n"
++"				(default: 200)\n"
++"\n"
++"	--inverse		White/Colour-on-black\n"
++"\n"
++"	--logarithmic		Intensity is calculated by\n"
++"				log10 (1 + 9 * (amplitude / max_amp)) -\n"
++"				better for visualising weaker signals\n"
++"\n"
++"	--combine XYZ		Determines how a stereo signal is\n"
++"				represented as an RGB image. The argument is\n"
++"				a 3-character block, each character\n"
++"				corresponding to R, G and B components. It\n"
++"				may take values of L, R, A, D, X or Z,\n"
++"				meaning Left, Right, Average, Difference,\n"
++"				Cross-Correlation or Zero respectively.\n"
++"\n"
++"	--verbose		Slightly less quiet\n"
++"\n"
++"	--version		Print out the version\n"
++"\n"
++"	--help			You're in it.\n"
++"\n"
++, pname);
+ 	
+ 
+ 	exit (-1);

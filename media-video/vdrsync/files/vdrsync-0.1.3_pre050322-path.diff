@@ -1,0 +1,39 @@
+fix not founded path to some progs
+
+Joerg Bornkessel <hd_brummy@gentoo.org> ( 29 May 2005 )
+
+--- vdrsync.pl.orig	2006-05-29 19:10:25.146198500 +0200
++++ vdrsync.pl	2006-05-29 19:09:06.937310750 +0200
+@@ -37,19 +37,19 @@
+ # Hash that lists potential helper Programs
+ #########################################################################
+ my %progs = (
+-    tcmplex           => "",
+-    mplex             => "",
+-    tcmplex_panteltje => "",
+-    dvdauthor         => "",
+-    mkisofs           => "",
+-    transcode         => "",
+-    tcrequant         => "",
+-    requant           => "",
+-    mpg123            => "",
+-    mp2enc            => "",
+-    "dvd-menu.pl"     => "",
+-    "vdrsync-buffer.pl"=>"",
+-    "vdrsync.pl"      =>"",
++    tcmplex           => "/usr/bin/tcmplex",
++    mplex             => "/usr/bin/mplex",
++    tcmplex_panteltje => "/usr/bin/tcmplex-panteltje",
++    dvdauthor         => "/usr/bin/dvdauthor",
++    mkisofs           => "/usr/bin/mkisofs",
++    transcode         => "/usr/bin/transcode",
++    tcrequant         => "/usr/bin/tcrequant",
++    requant           => "/usr/bin/requant",
++    mpg123            => "/usr/bin/mp123",
++    mp2enc            => "/usr/bin/mp2enc",
++    "dvd-menu.pl"     => "/usr/bin/dvd-menu.pl",
++    "vdrsync-buffer.pl"=>"/usr/bin/vdrsync-buffer.pl",
++    "vdrsync.pl"      => "/usr/bin/vdrsync.pl",
+ );
+ 
+ 

@@ -1,0 +1,72 @@
+ parse_options_getopt.c | 8 ++++----
+ parse_options_popt.c   | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/parse_options_getopt.c b/parse_options_getopt.c
+index 1f80966..ea2b266 100644
+--- a/parse_options_getopt.c
++++ b/parse_options_getopt.c
+@@ -98,9 +98,9 @@ struct detox_options *parse_options_getopt(int argc, char **argv)
+ #endif
+ 		switch (optcode) {
+ 			case 'h':
+-				printf(usage_message);
++				printf("%s", usage_message);
+ 				printf("\n");
+-				printf(help_message);
++				printf("%s", help_message);
+ 				exit(EXIT_SUCCESS);
+ 
+ 			case 'f':
+@@ -138,7 +138,7 @@ struct detox_options *parse_options_getopt(int argc, char **argv)
+ 				exit(EXIT_SUCCESS);
+ 
+ 			case '?':
+-				printf(usage_message);
++				printf("%s", usage_message);
+ 				exit(EXIT_SUCCESS);
+ 
+ 			case 0:
+@@ -195,7 +195,7 @@ struct detox_options *parse_options_getopt(int argc, char **argv)
+ 	}
+ 	else {
+ #ifndef INLINE_MODE
+-		printf(usage_message);
++		printf("%s", usage_message);
+ 		exit(EXIT_FAILURE);
+ #endif
+ 	}
+diff --git a/parse_options_popt.c b/parse_options_popt.c
+index 60dad7a..370c3cc 100644
+--- a/parse_options_popt.c
++++ b/parse_options_popt.c
+@@ -94,9 +94,9 @@ struct detox_options *parse_options_popt(int argc, const char **argv)
+ 	while ((c = poptGetNextOpt(optCon)) >= 0) {
+ 		switch (c) {
+ 			case 'h':
+-				printf(usage_message);
++				printf("%s", usage_message);
+ 				printf("\n");
+-				printf(help_message);
++				printf("%s", help_message);
+ 				exit(EXIT_SUCCESS);
+ 
+ 			case 'f':
+@@ -142,7 +142,7 @@ struct detox_options *parse_options_popt(int argc, const char **argv)
+ 				break;
+ 
+ 			case '?':
+-				printf(usage_message);
++				printf("%s", usage_message);
+ 				exit(EXIT_SUCCESS);
+ 
+ 		}
+@@ -177,7 +177,7 @@ struct detox_options *parse_options_popt(int argc, const char **argv)
+ 
+ #ifndef INLINE_MODE
+ 	if (i == 0) {
+-		fprintf(stderr, usage_message);
++		fprintf(stderr, "%s", usage_message);
+ 		exit(EXIT_FAILURE);
+ 	}
+ #endif

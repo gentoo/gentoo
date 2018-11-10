@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>netmon@gentoo.org</email>
+	<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
+<longdescription>
+I just noticed that netpipes doesn't support bidirectional pipes.
+So I made my own version.
+Now I can say in computer A that "plis 12345 -io ohjelma" and in computer B
+that "pcon A 12345 -io ohjelma2", and they communicate together then.
+My example utilization was that I can send the picture of SNES-emulator to
+another computer via network, and grab the keyboard input there, so get two
+consoles to the same game.
+My friend wanted to watch when I play FF6, but didn't want to sit next to my
+monitor, and asked if he could get the picture to his monitor.
+And he got it.
+Then he asked if he could play it from his computer at the same time as me...
+And now it works too.
+Other ways of use can everybody invent theirselves.
+It's really easy to make simple server software with this.
+For example, do "plis 79 -io finger" and then you have a finger-service.
+Or "plis 5555 -o 'cat signature'" and then port 5555 gives your signature.
+</longdescription>
+</pkgmetadata>

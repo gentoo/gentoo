@@ -1,0 +1,22 @@
+From 2a26224b5ff103d2b8e2ff7be56e616d1ecde1f4 Mon Sep 17 00:00:00 2001
+From: wicher <wicher@gavagai.eu>
+Date: Sun, 26 Apr 2015 13:07:13 +0200
+Subject: [PATCH] Allow TLS
+
+---
+ ptstream.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ptstream.c b/ptstream.c
+index 4c87c80..6d55137 100644
+--- a/ptstream.c
++++ b/ptstream.c
+@@ -151,7 +151,7 @@ int stream_enable_ssl(PTSTREAM *pts) {
+ 	
+ 	/* Initialise the connection */
+ 	SSLeay_add_ssl_algorithms();
+-	meth = SSLv3_client_method();
++	meth = SSLv23_client_method();
+ 	SSL_load_error_strings();
+ 
+ 	ctx = SSL_CTX_new (meth);

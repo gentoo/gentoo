@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>titanofold@gentoo.org</email>
+		<name>Aaron W. Swenson</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<use>
+		<flag name="aqbanking">
+			Connect to some internet banks via AqBanking
+		</flag>
+		<flag name="chipcard">
+			Enable support for chipcard reading and processing.
+		</flag>
+		<flag name="gui">
+			Enable graphic interface (needs net-libs/webkit-gtk:4
+			and x11-libs/gtk+:3)
+		</flag>
+		<flag name="quotes">Enable Online Stock Quote retrieval</flag>
+		<flag name="register2">Use the new register (Experimental)</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">gnucash</remote-id>
+	</upstream>
+</pkgmetadata>

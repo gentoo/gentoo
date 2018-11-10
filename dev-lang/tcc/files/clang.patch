@@ -1,0 +1,18 @@
+# Fix compiling tcc with clang. Upstream commit 73ac39c317a20accaf3b25ba833deee0c2e2849f
+# Gentoo bug #502452
+diff --git a/lib/libtcc1.c b/lib/libtcc1.c
+index cf9babf..b46fb5d 100644
+--- a/lib/libtcc1.c
++++ b/lib/libtcc1.c
+@@ -647,6 +647,11 @@ struct __va_list_struct {
+     char *reg_save_area;
+ };
+ 
++#undef __va_start
++#undef __va_arg
++#undef __va_copy
++#undef __va_end
++
+ void *__va_start(void *fp)
+ {
+     struct __va_list_struct *ap =

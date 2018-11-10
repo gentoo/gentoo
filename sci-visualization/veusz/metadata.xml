@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  A Qt based scientific plotting package written in Python using PyQt. It is
+  designed to produce publication ready Postscript output. It provides a GUI,
+  command line and scripting interface (based on Python) to its plotting
+  facilities.
+</longdescription>
+  <use>
+    <flag name="fits">Add FITS format via <pkg>dev-python/astropy</pkg></flag>
+    <flag name="emf">Add FITS format via <pkg>dev-python/pyemf</pkg></flag>
+    <flag name="minuit">Use Minuit during fitting via<pkg>dev-python/pyminuit</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">veusz</remote-id>
+  </upstream>
+</pkgmetadata>

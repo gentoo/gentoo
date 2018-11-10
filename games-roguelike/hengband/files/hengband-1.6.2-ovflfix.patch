@@ -1,0 +1,11 @@
+--- src/effects.c.old	2010-10-28 11:51:31.000000000 +0200
++++ src/effects.c	2010-10-28 11:51:59.000000000 +0200
+@@ -5191,7 +5191,7 @@
+ 			}
+ 			else
+ 			{
+-				char buf[10];
++				char buf[15];
+ 
+ 				if (p_ptr->inside_arena)
+ #ifdef JP

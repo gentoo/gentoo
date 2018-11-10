@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>heroxbd@gentoo.org</email>
+    <name>Benda Xu</name>
+  </maintainer>
+  <longdescription lang="en">
+PyMC is a python module that implements Bayesian statistical models
+and fitting algorithms, including Markov chain Monte Carlo.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">pymc-devs/pymc</remote-id>
+    <remote-id type="pypi">pymc</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,54 @@
+--- ffm.cpp.old	2013-06-22 20:12:27.972712290 +0200
++++ ffm.cpp	2013-06-22 20:13:33.586709956 +0200
+@@ -672,7 +672,7 @@
+                         ost->file_index, ost->index);
+                 return false;
+             }
+-            if (avcodec_open(ost->st->codec, codec) < 0) {
++            if (avcodec_open2(ost->st->codec, codec, NULL) < 0) {
+                 fprintf(stderr, "Error while opening codec for output stream #%d.%d - maybe incorrect parameters such as bit_rate, rate, width or height\n",
+                         ost->file_index, ost->index);
+                 return false;
+@@ -691,7 +691,7 @@
+                         ist->st->codec->codec_id, ist->file_index, ist->index);
+                 return false;
+             }
+-            if (avcodec_open(ist->st->codec, codec) < 0) {
++            if (avcodec_open2(ist->st->codec, codec, NULL) < 0) {
+                 fprintf(stderr, "Error while opening codec for input stream #%d.%d\n",
+                         ist->file_index, ist->index);
+                 return false;
+@@ -937,7 +937,7 @@
+ 
+     /* If not enough info to get the stream parameters, we decode the
+        first frames to get it. (used in mpeg case for example) */
+-    ret = av_find_stream_info(ic);
++    ret = avformat_find_stream_info(ic, NULL);
+     if (ret < 0 && verbose >= 0) {
+         fprintf(stderr, "%s: could not find codec parameters\n", filename);
+         return false;
+@@ -1034,12 +1034,13 @@
+     AVCodecContext *video_enc;
+     CodecID codec_id;
+ 
+-    st = av_new_stream(oc, oc->nb_streams);
++    st = avformat_new_stream(oc, NULL);
+     if (!st) {
+         fprintf(stderr, "Could not alloc stream\n");
+         return false;
+     }
+-    avcodec_get_context_defaults2(st->codec, AVMEDIA_TYPE_VIDEO);
++    st->id = oc->nb_streams;
++    avcodec_get_context_defaults3(st->codec, NULL);
+ 
+     video_enc = st->codec;
+ 
+@@ -1204,7 +1205,7 @@
+ {
+     av_log_set_level(verbose);
+     av_register_all();
+-    avctx_opts= avcodec_alloc_context();
++    avctx_opts= avcodec_alloc_context3(NULL);
+ }
+ 
+ void ffm_deinitalize(void)

@@ -1,0 +1,5 @@
+# Michał Górny <mgorny@gentoo.org> (26 Jan 2013)
+# Force the flag corresponding to the default ABI, and unforce generic
+# one.
+abi_x86_x32
+-abi_x86_64

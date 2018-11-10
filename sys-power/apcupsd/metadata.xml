@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>john.einar@gmail.com</email>
+		<name>John Einar Reitan</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>k_f@gentoo.org</email>
+		<name>Kristian Fiskerstrand</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<longdescription lang="en">
+		Apcupsd can be used for power mangement and controlling most of
+		APC's UPS models on Unix and Windows machines. Apcupsd works with
+		most of APC's Smart-UPS models as well as most simple signalling
+		models such a Back-UPS, and BackUPS-Office. During a power failure,
+		apcupsd will inform the users about the power failure and that a
+		shutdown may occur. If power is not restored, a system shutdown
+		will follow when the battery is exhausted, a timeout (seconds)
+		expires, or runtime expires based on internal APC calculations
+		determined by power consumption rates.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">apcupsd</remote-id>
+	</upstream>
+	<use>
+		<flag name="modbus">Enable MODBUS support over USB</flag>
+	</use>
+</pkgmetadata>

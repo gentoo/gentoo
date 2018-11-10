@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>swegener@gentoo.org</email>
+		<name>Sven Wegener</name>
+	</maintainer>
+	<longdescription>shash is a command-line interface for libmhash and is used to generate or check digests or MACs of files.</longdescription>
+</pkgmetadata>

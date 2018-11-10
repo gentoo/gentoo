@@ -1,0 +1,55 @@
+diff -NuarwbB open-iscsi-2.0-872/usr/Makefile open-iscsi-2.0-872.orig/usr/Makefile
+--- open-iscsi-2.0-872.orig/usr/Makefile	2012-02-09 08:58:04.402623915 +0000
++++ open-iscsi-2.0-872/usr/Makefile	2012-02-09 08:56:51.159070006 +0000
+@@ -65,6 +65,6 @@
+ 	rm -f *.o $(PROGRAMS) .depend $(LIBSYS)
+ 
+ depend:
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+diff -NuarwbB open-iscsi-2.0-872/utils/fwparam_ibft/Makefile open-iscsi-2.0-872.orig/utils/fwparam_ibft/Makefile
+--- open-iscsi-2.0-872.orig/utils/fwparam_ibft/Makefile	2012-02-09 08:57:58.579273051 +0000
++++ open-iscsi-2.0-872/utils/fwparam_ibft/Makefile	2010-08-11 15:27:07.000000000 +0000
+@@ -38,6 +38,6 @@
+ $(OBJS): prom_parse.tab.h prom_parse.h fwparam_ibft.h
+ 
+ depend:
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+diff -NuarwbB open-iscsi-2.0-872/utils/Makefile open-iscsi-2.0-872.orig/utils/Makefile
+--- open-iscsi-2.0-872.orig/utils/Makefile	2012-02-09 08:57:37.825877235 +0000
++++ open-iscsi-2.0-872/utils/Makefile	2012-02-09 08:56:51.145736633 +0000
+@@ -12,6 +12,6 @@
+ 	rm -f *.o $(PROGRAMS) .depend
+ 
+ depend:
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+diff -NuarwbB open-iscsi-2.0-872/utils/open-isns/Makefile.in open-iscsi-2.0-872.orig/utils/open-isns/Makefile.in
+--- open-iscsi-2.0-872.orig/utils/open-isns/Makefile.in	2012-02-09 08:57:47.812573971 +0000
++++ open-iscsi-2.0-872/utils/open-isns/Makefile.in	2010-08-11 15:27:07.000000000 +0000
+@@ -77,6 +77,6 @@
+ 	ar cr $@ $(LIBOBJS)
+ 
+ depend:
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+diff -NuarwbB open-iscsi-2.0-872/utils/sysdeps/Makefile open-iscsi-2.0-872.orig/utils/sysdeps/Makefile
+--- open-iscsi-2.0-872.orig/utils/sysdeps/Makefile	2012-02-09 08:57:43.459227530 +0000
++++ open-iscsi-2.0-872/utils/sysdeps/Makefile	2010-08-11 15:27:07.000000000 +0000
+@@ -10,6 +10,6 @@
+ 	rm -f *.o .depend
+ 
+ depend:
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend

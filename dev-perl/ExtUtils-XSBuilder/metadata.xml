@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">ExtUtils-XSBuilder</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSBuilder</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSBuilder::C::grammar</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSBuilder::CallbackMap</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSBuilder::FunctionMap</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSBuilder::MapBase</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSBuilder::MapUtil</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSBuilder::PODTemplate</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSBuilder::ParseSource</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSBuilder::StructureMap</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSBuilder::TypeMap</remote-id>
+    <remote-id type="cpan-module">ExtUtils::XSBuilder::WrapXS</remote-id>
+  </upstream>
+</pkgmetadata>

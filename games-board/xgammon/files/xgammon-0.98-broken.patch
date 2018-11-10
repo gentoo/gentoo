@@ -1,0 +1,15 @@
+--- a/lib/db.c
++++ b/lib/db.c
+@@ -259,10 +259,11 @@
+     close(fid);
+ }
+ 
+-void main()
++int main()
+ {
+     set_binom();
+     set_naufm();
+     set_offset();
+     set_V_Werte();
++    return(0);
+ }

@@ -1,0 +1,53 @@
+From 297b654133436c6ee5146fce31529da4e52dfe74 Mon Sep 17 00:00:00 2001
+From: Brian Pepple <bpepple@fedoraproject.org>
+Date: Sat, 25 Aug 2012 17:41:59 -0400
+Subject: [PATCH] Replace GL data types with equivalent glib types.
+
+---
+ mx/mx-deform-texture.c | 8 ++++----
+ mx/mx-texture-frame.c  | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/mx/mx-deform-texture.c b/mx/mx-deform-texture.c
+index 93c54d7..466cc9f 100644
+--- a/mx/mx-deform-texture.c
++++ b/mx/mx-deform-texture.c
+@@ -493,9 +493,9 @@ mx_deform_texture_class_init (MxDeformTextureClass *klass)
+ static void
+ mx_deform_texture_init_arrays (MxDeformTexture *self)
+ {
+-  GLushort *idx, *bf_idx;
++  gushort *idx, *bf_idx;
+   gint x, y, direction;
+-  GLushort *static_indices, *static_bf_indices;
++  gushort *static_indices, *static_bf_indices;
+   MxDeformTexturePrivate *priv = self->priv;
+ 
+   mx_deform_texture_free_arrays (self);
+@@ -503,8 +503,8 @@ mx_deform_texture_init_arrays (MxDeformTexture *self)
+   priv->n_indices = (2 + 2 * priv->tiles_x) *
+                     priv->tiles_y +
+                     (priv->tiles_y - 1);
+-  static_indices = g_new (GLushort, priv->n_indices);
+-  static_bf_indices = g_new (GLushort, priv->n_indices);
++  static_indices = g_new (gushort, priv->n_indices);
++  static_bf_indices = g_new (gushort, priv->n_indices);
+ 
+ #define MESH_INDEX(X, Y) (Y) * (priv->tiles_x + 1) + (X)
+ 
+diff --git a/mx/mx-texture-frame.c b/mx/mx-texture-frame.c
+index bde57ff..a88985f 100644
+--- a/mx/mx-texture-frame.c
++++ b/mx/mx-texture-frame.c
+@@ -200,7 +200,7 @@ mx_texture_frame_paint (ClutterActor *self)
+ 
+ 
+   {
+-    GLfloat rectangles[] =
++    gfloat rectangles[] =
+     {
+       /* top left corner */
+       0, 0,
+-- 
+1.7.12
+

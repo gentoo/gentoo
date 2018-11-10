@@ -1,0 +1,28 @@
+From eb92ecdfe7e310499743a5686560e18bb48ef0f0 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Wed, 2 Oct 2013 14:51:20 -0400
+Subject: [PATCH] tests: fix MessageDialogTest.testSubclass
+
+Don't check sub.__gtype__ until we set sub
+
+https://bugzilla.gnome.org/show_bug.cgi?id=709304
+---
+ tests/test_dialog.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_dialog.py b/tests/test_dialog.py
+index a6a3ce5..6540be3 100644
+--- a/tests/test_dialog.py
++++ b/tests/test_dialog.py
+@@ -20,7 +20,7 @@ class MessageDialogTest(unittest.TestCase):
+         print sub.__gtype__.name
+         self.assertEqual(sub.__gtype__.name, 'GtkMessageDialog')
+ 
+-        type('Sub', (gtk.MessageDialog,), {'__gtype_name__': 'SubDialog'})
++        sub = type('Sub', (gtk.MessageDialog,), {'__gtype_name__': 'SubDialog'})
+         self.assertEqual(sub.__gtype__.name, 'SubDialog')
+ 
+     def testDialogLeak(self):
+-- 
+1.8.3.2
+

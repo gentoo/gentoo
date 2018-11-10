@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
+<longdescription>
+ECJ is the Eclipse Compiler for Java. It's a separate packaging of
+the embedded Java compiler that comes with Eclipse. It can be used
+as a batch-compiler by running the ecj-3.1 script, or it can be
+used with Ant by using the -lib option to and and setting
+-Dbuild.compiler=ecj
+</longdescription>
+</pkgmetadata>

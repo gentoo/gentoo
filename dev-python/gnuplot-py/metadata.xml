@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription lang="en">
+		Gnuplot.py is a Python module that interfaces to gnuplot, the popular
+		plotting program. It allows you to use gnuplot from within Python to
+		plot arrays of data from memory, data files, or mathematical
+		functions. If you use Python to perform computations or as `glue' for
+		numerical programs, you can use this module to plot data on the fly as
+		they are computed. And the combination with Python makes it is easy to
+		automate things, including to create crude `animations' by plotting
+		different datasets one after another.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">gnuplot-py</remote-id>
+	</upstream>
+</pkgmetadata>

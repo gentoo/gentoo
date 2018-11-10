@@ -1,0 +1,221 @@
+#!/bin/sh
+#
+# This file sets up the appropriate environmental variables and paths
+# for CNSsolve. In the case of the same machines with different versions
+# of the OS, backward compatibility is assumed - ie. a later version will
+# be setup for a previous version of the OS if nothing else is available.
+#
+#   written by: Paul Adams
+#
+#   copyright Yale University
+#
+# ==========================================================================
+#
+# >>>>>> Important: define the location of the CNSsolve directory <<<<<<
+#
+# CHANGE THE NEXT LINE TO POINT TO THE LOCATION OF THE CNSsolve DIRECTORY
+
+	CNS_SOLVE=_CNSsolve_location_
+
+#
+# ==========================================================================
+#
+# full expansion of the CNS_SOLVE variable prior to use.
+#
+export CNS_SOLVE; CNS_SOLVE=$CNS_SOLVE
+#
+# ==========================================================================
+#
+# set the number of threads for SGI multiprocessors
+# if this causes a problem on other systems it can be commented out
+#
+export MP_SET_NUMTHREADS; MP_SET_NUMTHREADS=1
+#
+# ==========================================================================
+#
+# get the machine architecture
+#
+if [ -d $CNS_SOLVE ]; then
+  if [ ! "$CNS_ARCH" ]; then
+    export CNS_ARCH; CNS_ARCH=`$CNS_SOLVE/bin/getarch`
+  fi
+else
+  export CNS_ARCH; CNS_ARCH='unknown'
+fi
+#
+# system variables (this is needed for openmp)
+#
+ulimit -s unlimited
+# ==========================================================================
+#
+# general environmental variables
+#
+export CNS_LIB; CNS_LIB=$CNS_SOLVE/libraries
+export CNS_MODULE; CNS_MODULE=$CNS_SOLVE/modules
+export CNS_TOPPAR; CNS_TOPPAR=$CNS_LIB/toppar
+export CNS_CONFDB; CNS_CONFDB=$CNS_LIB/confdb
+export CNS_XTALLIB; CNS_XTALLIB=$CNS_LIB/xtal
+export CNS_NMRLIB; CNS_NMRLIB=$CNS_LIB/nmr
+export CNS_XRAYLIB; CNS_XRAYLIB=$CNS_LIB/xray
+export CNS_XTALMODULE; CNS_XTALMODULE=$CNS_MODULE/xtal
+export CNS_NMRMODULE; CNS_NMRMODULE=$CNS_MODULE/nmr
+export CNS_HELPLIB; CNS_HELPLIB=$CNS_SOLVE/helplib
+#
+# general user aliases
+#
+cns_web () { $CNS_SOLVE/bin/cns_web; }
+cns_header () { $CNS_SOLVE/bin/cns_header; }
+cns_info () { cat $CNS_SOLVE/bin/cns_info; }
+cns_transfer () { $CNS_SOLVE/bin/cns_transfer; }
+if [ -x $CNS_SOLVE/bin/cns_edit_local ]; then
+  cns_edit () { $CNS_SOLVE/bin/cns_edit_local; }
+else
+  cns_edit () { $CNS_SOLVE/bin/cns_edit; }
+fi
+run_tutorial () { "csh -f tutorial.csh"; }
+#
+# g77 compilation and use
+#
+g77on () { CNS_G77=ON; . $CNS_SOLVE/.cns_solve_env_sh; }
+g77off () { unset CNS_G77; . $CNS_SOLVE/.cns_solve_env_sh; }
+#
+# developer aliases
+#
+run_tests () { $CNS_SOLVE/bin/run_tests; }
+run_diffs () { $CNS_SOLVE/bin/run_diffs; }
+maketar () { $CNS_SOLVE/bin/maketar; }
+create_patch () { $CNS_SOLVE/bin/create_patch; }
+#
+#
+# ==========================================================================
+#
+# to do expansions - unset noglob just in case user has it otherwise
+#
+set +f
+#
+# try to set up appropriate path
+#
+# first strip off any trailing information (eg. _g77)
+#
+CNS_ARCH=`echo ${CNS_ARCH} | sed -e 's/_g77//g'`
+#
+cns_vendor=`echo $CNS_ARCH | awk 'BEGIN{FS="-"}{print $1}'`
+cns_cpu=`echo $CNS_ARCH | awk 'BEGIN{FS="-"}{print $2}'`
+cns_os=`echo $CNS_ARCH | awk 'BEGIN{FS="-"}{print $3}'`
+cns_major=`echo $CNS_ARCH | awk 'BEGIN{FS="-"}{print $4}'`
+cns_minor=`echo $cns_major | sed -e 's/\./ /g'`
+#
+# if we are looking for a specific type of setup then limit search
+#
+cns_dirs=""
+if [ ! "$CNS_G77" ]; then
+  if /bin/ls -d $CNS_SOLVE/$cns_vendor-* >/dev/null 2>&1 ; then
+    cns_dirs="`/bin/ls -d $CNS_SOLVE/$cns_vendor-* 2>&1 | awk 'BEGIN{FS="/"}{print $NF}' | sort -t\- -n -r -k 3 -k 4`"
+  fi
+else
+  CNS_ARCH="${CNS_ARCH}_g77"
+  if /bin/ls -d $CNS_SOLVE/$cns_vendor-*_g77 >/dev/null 2>&1 ; then
+    cns_dirs="`/bin/ls -d $CNS_SOLVE/$cns_vendor-*_g77 2>&1 | awk 'BEGIN{FS="/"}{print $NF}' | sort -t\- -n -r -k 3 -k 4`"
+  fi
+fi
+#
+# first look for an exact match (with os version)
+#
+#
+cns_found=0
+if [ -n "$cns_dirs" ]; then
+  for cns_dir in $cns_dirs ; do
+    cns_tmp_major=`echo $cns_dir | awk 'BEGIN{FS="-"}{print $4}'`
+    if [ -f $CNS_SOLVE/$cns_dir/bin/cns_solve ]; then
+      if [ $cns_dir = ${cns_vendor}-${cns_cpu}-${cns_os}-${cns_major} -o \
+           $cns_dir = ${cns_vendor}-${cns_cpu}-${cns_os}-${cns_major}_g77 ]; then
+        cns_archenv=$cns_dir
+        cns_found=1
+      fi
+    fi
+  done
+#
+#
+# now look for an exact match (without os version)
+#
+  if [ $cns_found -eq 0 ]; then
+    for cns_dir in $cns_dirs ; do
+      if [ -f $CNS_SOLVE/$cns_dir/bin/cns_solve ]; then
+        if [ $cns_dir = ${cns_vendor}-${cns_cpu}-${cns_os} -o \
+             $cns_dir = ${cns_vendor}-${cns_cpu}-${cns_os}_g77 ]; then
+          cns_archenv=$cns_dir
+          cns_found=1
+        fi
+      fi
+    done
+  fi
+#
+# now look for a backwards compatible match (with os version major/minor)
+#
+  if [ $cns_found -eq 0 ]; then
+    for cns_dir in $cns_dirs ; do
+      if [ $cns_found -eq 0 ]; then
+        cns_tmp_major=`echo $cns_dir | awk 'BEGIN{FS="-"}{print $4}' | sed 's/_g77//g'`
+        if [ -f $CNS_SOLVE/$cns_dir/bin/cns_solve ]; then
+          if [ $cns_dir = ${cns_vendor}-${cns_cpu}-${cns_os}-* ]; then
+	    osv_test=`echo $cns_major $cns_tmp_major | awk '{if ($1 > $2) print 1}'`
+            if [ $osv_test -eq 1 ]; then
+              cns_archenv=$cns_dir
+	      cns_found=1
+            fi
+          fi
+        fi
+      fi
+    done
+  fi
+#
+# now look for a wildcard match on cpu
+#
+  if [ $cns_found -eq 0 ]; then
+    cpu_cpu=`echo $cns_cpu | sed 's/[0-9]*\.*[0-9]*$//'`
+    cpu_ver=`echo $cns_cpu | sed 's/[A-Za-z]*//'`
+    for cns_dir in $cns_dirs ; do
+      if [ $cns_found -eq 0 ]; then
+        cns_tmp_cpu=`echo $cns_dir | awk 'BEGIN{FS="-"}{print $2}' | sed 's/[0-9]*\.*[0-9]*$//'`
+        cns_tmp_ver=`echo $cns_dir | awk 'BEGIN{FS="-"}{print $2}' | sed 's/[A-Za-z]*//'`
+        if [ -f $CNS_SOLVE/$cns_dir/bin/cns_solve ]; then
+          if [ $cns_dir = ${cns_vendor}-${cpu_cpu}*-${cns_os}-${cns_major} -o \
+               $cns_dir = ${cns_vendor}-${cpu_cpu}*-${cns_os}-${cns_major}_g77 ]; then
+  	    cpu_test=`echo $cpu_ver $cns_tmp_ver | awk '{if ($1 > $2) print 1}'`
+            if [ $cpu_test -eq 1 ]; then
+              cns_archenv=$cns_dir
+	      cns_found=1
+            fi
+          fi
+        fi
+      fi
+    done
+  fi
+fi
+#
+# if found set environment
+#
+if [ $cns_found -eq 1 ]; then
+  #
+  # set installation and source directory
+  #
+  export CNS_INST; CNS_INST=$CNS_SOLVE/$cns_archenv
+  export CNS_SOURCE; CNS_SOURCE=$CNS_INST/source
+  #
+  # path for CNSsolve utility programs
+  #
+  if [ -d $CNS_SOLVE/$cns_archenv/utils ]; then
+    export PATH; PATH=`$CNS_SOLVE/bin/modify_path -sh $CNS_SOLVE/$cns_archenv/utils`
+  fi
+  #
+  # path for CNSsolve executable if installed
+  #
+  if [ -d $CNS_SOLVE/$cns_archenv/bin ]; then
+    export PATH; PATH=`$CNS_SOLVE/bin/modify_path -sh $CNS_SOLVE/$cns_archenv/bin`
+  fi
+fi
+#
+unset cns_vendor cns_cpu cns_os cns_major cns_minor cns_tmp_major cns_tmp_minor
+unset cns_dir cns_dirs cns_found cns_archenv cns_diff cns_count cns_same
+unset cpu_cpu cpu_ver cns_tmp_cpu cns_tmp_ver cpu_test osv_test
+#

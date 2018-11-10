@@ -1,0 +1,17 @@
+fix `durep -hs 1g` output
+
+Patch by Stephen Tallowitz
+
+http://bugs.gentoo.org/108942
+
+--- durep
++++ durep
+@@ -468,7 +468,7 @@
+     elsif ($temp =~ m/^[mM]/) {
+       return $size * 1048576;
+     }
+-    elsif ($temp =~ m/^[mM]/) {
++    elsif ($temp =~ m/^[gG]/) {
+       return $size * 1048576 * 1024;
+     }
+     return $size;

@@ -1,0 +1,34 @@
+From 6306f9920f639cf092ca3f1935ac7aa202f78c86 Mon Sep 17 00:00:00 2001
+From: Yuri Konotopov <ykonotopov@gnome.org>
+Date: Fri, 13 Jan 2017 19:06:43 +0400
+Subject: [PATCH] cmake: do not hardcode icon cache update
+
+---
+ CMakeLists.txt               | 1 -
+ src/tint2conf/CMakeLists.txt | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b4a1089..ef06393 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -241,7 +241,6 @@ set_target_properties( tint2 PROPERTIES LINK_FLAGS "-pthread -fno-strict-aliasin
+ install( TARGETS tint2 DESTINATION bin )
+ install( FILES tint2.svg DESTINATION ${DATADIR}/icons/hicolor/scalable/apps )
+ install( FILES tint2.desktop DESTINATION ${DATADIR}/applications )
+-install( CODE "execute_process(COMMAND gtk-update-icon-cache -f -t ${DATADIR}/icons/hicolor WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX})" )
+ install( FILES themes/tint2rc DESTINATION ${SYSCONFDIR}/xdg/tint2 )
+ install( FILES default_icon.png DESTINATION ${DATADIR}/tint2 )
+ install( FILES AUTHORS ChangeLog README.md doc/tint2.md doc/manual.html doc/readme.html DESTINATION ${DOCDIR} )
+diff --git a/src/tint2conf/CMakeLists.txt b/src/tint2conf/CMakeLists.txt
+index 9595f6a..fd616fa 100644
+--- a/src/tint2conf/CMakeLists.txt
++++ b/src/tint2conf/CMakeLists.txt
+@@ -72,4 +72,3 @@ add_subdirectory(po)
+ install( TARGETS tint2conf DESTINATION bin )
+ install( FILES tint2conf.svg DESTINATION ${DATADIR}/icons/hicolor/scalable/apps )
+ install( FILES tint2conf.desktop DESTINATION ${DATADIR}/applications )
+-install( CODE "execute_process(COMMAND gtk-update-icon-cache -f -t ${DATADIR}/icons/hicolor WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX})" )
+-- 
+2.10.2
+

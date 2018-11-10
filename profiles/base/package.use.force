@@ -1,0 +1,95 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (11 Sep 2018)
+# All glibc versions that include RPC code are masked now.
+dev-libs/libspt libtirpc
+dev-perl/Lab-VXI11 libtirpc
+net-analyzer/argus libtirpc
+net-analyzer/snort libtirpc
+net-firewall/conntrack-tools libtirpc
+net-fs/autofs libtirpc
+net-misc/netkit-bootparamd libtirpc
+sci-astronomy/esomidas libtirpc
+sys-cluster/glusterfs libtirpc
+
+# Matt Turner <mattst88@gentoo.org> (13 Jun 2018)
+# Upstream is transitioning to Meson, but does not yet have any configuration
+# options. Until those configuration options are provided, force USE flags on
+# to avoid automagic deps.
+>=x11-apps/igt-gpu-tools-1.23 alsa chamelium doc glib gsl sound valgrind video_cards_amdgpu video_cards_intel video_cards_nouveau X xrandr xv
+
+# NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
+# Always force patch on appropriate variant to ensure
+# similar experience when using app-emulation/wine-any
+app-emulation/wine-staging staging
+app-emulation/wine-d3d9 d3d9
+
+# David Seifert <soap@gentoo.org> (07 Mar 2017)
+# Only ever use system ffmpeg, allow kodi bundled ffmpeg
+# only for debug pruposes.
+media-tv/kodi system-ffmpeg
+
+# Sam Jorna <wraeth@gentoo.org> (15 Dec 2016)
+# Known to build unbootable EFI binaries on some systems when built with
+# UDK. Forcing use of gnu-efi until it's more stable.
+sys-boot/refind gnuefi
+
+# Mike Gilbert <floppym@gentoo.org> (13 Oct 2016)
+# Python without threads breaks in many ways.
+dev-lang/python threads
+
+# Maciej Mrozowski <reavertm@gentoo.org> (1 Sept 2016)
+# Workaround until resolved upstream (bug #586840)
+>=dev-games/simgear-2016.2.1 dns
+
+# Lars Wendler <polynomial-c@gentoo.org> (11 Sep 2015)
+# Package fails to build with dbus USE flag being disabled (bug #560208)
+=x11-wm/afterstep-2.2.12 dbus
+
+# Justin Lecher <jlec@gentoo.org> (10 Aug 2014)
+# Doesn't work without acl support
+# No patch yet, #516626
+>=net-fs/netatalk-3.1.3 acl
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (12 Jun 2014)
+# Chromium builds in PIC mode on most arches anyway,
+# i.e. this use flag has no effect on them.
+www-client/chromium pic
+
+# Zac Medico <zmedico@gentoo.org> (4 Dec 2012)
+# Force app-shells/bash[readline] in stage1 builds, so that compgen is
+# available for sys-apps/portage (see bug #445576).
+app-shells/bash:0 readline
+
+# Michał Górny <mgorny@gentoo.org> (14 Oct 2012)
+# Force-enable all PYTHON_TARGETS for python-exec to avoid using private
+# API. Please remember to keep it in sync with python_targets.desc.
+dev-lang/python-exec python_targets_python2_7
+dev-lang/python-exec python_targets_python3_4
+dev-lang/python-exec python_targets_python3_5
+dev-lang/python-exec python_targets_python3_6
+dev-lang/python-exec python_targets_python3_7
+dev-lang/python-exec python_targets_jython2_7
+dev-lang/python-exec python_targets_pypy
+dev-lang/python-exec python_targets_pypy3
+
+# Zac Medico <zmedico@gentoo.org> (20 Oct 2010)
+# Force ipc USE flag since it should remain enabled unless
+# it is found to be incompatible with a specific profile
+# or environment. When enabled, it fixes bug #278895,
+# bug #315615, and makes subshell die support more robust
+# (so that repoman's ebuild.nesteddie check is irrelevant).
+sys-apps/portage ipc
+sys-apps/portage-mgorny ipc
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+# Python should use wide Unicode implementation by default.
+# Switching of "wide-unicode" USE flag changes ABI of Python
+# and requires reinstallation of many Python modules.
+dev-lang/python wide-unicode
+
+# Peter Alfredsen <loki_val@gentoo.org> (11 Apr 2009)
+# Forcing w.r.t. bug 265336. When unicode use-flag is
+# turned off, ABI is broken without a .so bump.
+dev-libs/libpcre unicode

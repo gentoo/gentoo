@@ -1,0 +1,18 @@
+--- a/lib/MooseX/Types/DateTimeX.pm	2010-09-21 15:51:35.000000000 +0000
++++ b/lib/MooseX/Types/DateTimeX.pm	2013-06-15 22:22:50.682619575 +0000
+@@ -15,13 +15,13 @@
+ 
+ use MooseX::Types -declare => [qw( DateTime Duration)];
+ 
+-subtype DateTime, as MooseX::Types::DateTime::ButMaintained::DateTime;
++subtype DateTime, as 'MooseX::Types::DateTime::ButMaintained::DateTime';
+ coerce( DateTime,
+     @{ $MooseX::Types::DateTime::ButMaintained::coercions{DateTime} },
+     from Str, via { DateTimeX::Easy->new($_) },
+ );
+ 
+-subtype Duration, as MooseX::Types::DateTime::ButMaintained::Duration;
++subtype Duration, as 'MooseX::Types::DateTime::ButMaintained::Duration';
+ coerce( Duration,
+     @{ $MooseX::Types::DateTime::ButMaintained::coercions{"DateTime::Duration"} },
+     from Str, via { 

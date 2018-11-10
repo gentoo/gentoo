@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-DOM</remote-id>
+    <remote-id type="cpan-module">XML::DOM</remote-id>
+    <remote-id type="cpan-module">XML::DOM::AttDef</remote-id>
+    <remote-id type="cpan-module">XML::DOM::AttlistDecl</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Attr</remote-id>
+    <remote-id type="cpan-module">XML::DOM::CDATASection</remote-id>
+    <remote-id type="cpan-module">XML::DOM::CharacterData</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Comment</remote-id>
+    <remote-id type="cpan-module">XML::DOM::DOMException</remote-id>
+    <remote-id type="cpan-module">XML::DOM::DOMImplementation</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Document</remote-id>
+    <remote-id type="cpan-module">XML::DOM::DocumentFragment</remote-id>
+    <remote-id type="cpan-module">XML::DOM::DocumentType</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Element</remote-id>
+    <remote-id type="cpan-module">XML::DOM::ElementDecl</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Entity</remote-id>
+    <remote-id type="cpan-module">XML::DOM::EntityReference</remote-id>
+    <remote-id type="cpan-module">XML::DOM::NamedNodeMap</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Node</remote-id>
+    <remote-id type="cpan-module">XML::DOM::NodeList</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Notation</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Parser</remote-id>
+    <remote-id type="cpan-module">XML::DOM::PerlSAX</remote-id>
+    <remote-id type="cpan-module">XML::DOM::PrintToFileHandle</remote-id>
+    <remote-id type="cpan-module">XML::DOM::PrintToString</remote-id>
+    <remote-id type="cpan-module">XML::DOM::ProcessingInstruction</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Text</remote-id>
+    <remote-id type="cpan-module">XML::DOM::XMLDecl</remote-id>
+    <remote-id type="cpan-module">XML::Handler::BuildDOM</remote-id>
+    <remote-id type="cpan-module">XML::Parser::Dom</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Node</remote-id>
+  </upstream>
+</pkgmetadata>

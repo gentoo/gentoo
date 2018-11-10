@@ -1,0 +1,24 @@
+From 41134b03b96b741d95554846841c189313052265 Mon Sep 17 00:00:00 2001
+From: John Wiggins <jwiggins@enthought.com>
+Date: Thu, 1 Oct 2015 20:40:07 +0200
+Subject: [PATCH] Read the docs version directly from enable._version
+
+---
+ docs/source/conf.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/docs/source/conf.py b/docs/source/conf.py
+index 10b7552..995e315 100644
+--- a/docs/source/conf.py
++++ b/docs/source/conf.py
+@@ -41,8 +41,8 @@
+ # The default replacements for |version| and |release|, also used in various
+ # other places throughout the built documents.
+ d = {}
+-execfile(os.path.join('..', '..', 'enable', '__init__.py'), d)
+-version = release = d['__version__']
++execfile(os.path.join('..', '..', 'enable', '_version.py'), d)
++version = release = d['full_version']
+ 
+ # There are two options for replacing |today|: either, you set today to some
+ # non-false value, then it is used:

@@ -1,0 +1,82 @@
+From 1953081269ce1cfdf29023a8590db40312c43194 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Wed, 5 Jun 2013 20:39:05 -0400
+Subject: [PATCH] Update PIL imports for compatibility with Pillow
+
+---
+ cgkit/_Image.py       | 2 +-
+ cgkit/_ImageDraw.py   | 2 +-
+ cgkit/riutil.py       | 2 +-
+ utilities/checkenv.py | 2 +-
+ utilities/postbake.py | 3 ++-
+ 5 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/cgkit/_Image.py b/cgkit/_Image.py
+index 7266d4b..0122cd2 100644
+--- a/cgkit/_Image.py
++++ b/cgkit/_Image.py
+@@ -38,7 +38,7 @@
+ try:
+ 
+     # Try to import the original module...
+-    from Image import *
++    from PIL.Image import *
+     
+ except ImportError:
+ 
+diff --git a/cgkit/_ImageDraw.py b/cgkit/_ImageDraw.py
+index dfd6cf8..d1d3cff 100644
+--- a/cgkit/_ImageDraw.py
++++ b/cgkit/_ImageDraw.py
+@@ -38,7 +38,7 @@
+ try:
+ 
+     # Try to import the original module...
+-    from ImageDraw import *
++    from PIL.ImageDraw import *
+     
+ except ImportError:
+ 
+diff --git a/cgkit/riutil.py b/cgkit/riutil.py
+index b51f192..ae0fba2 100644
+--- a/cgkit/riutil.py
++++ b/cgkit/riutil.py
+@@ -38,7 +38,7 @@ import types, sys, getpass
+ from .cgtypes import vec3
+ from .ri import *
+ try:
+-    import Image
++    from PIL import Image
+     _PIL_installed = 1
+ except ImportError:
+     _PIL_installed = 0
+diff --git a/utilities/checkenv.py b/utilities/checkenv.py
+index dda600f..8b6f74e 100644
+--- a/utilities/checkenv.py
++++ b/utilities/checkenv.py
+@@ -96,7 +96,7 @@ visualize them. You can obtain PyOpenGL at http://pyopengl.sourceforge.net/
+ # Check PIL
+ chkmsg("PIL")
+ try:
+-    import Image
++    from PIL import Image
+     print("is installed")
+ except:
+     print("missing")
+diff --git a/utilities/postbake.py b/utilities/postbake.py
+index 90e3140..27728c2 100644
+--- a/utilities/postbake.py
++++ b/utilities/postbake.py
+@@ -34,7 +34,8 @@
+ #
+ # ***** END LICENSE BLOCK *****
+ 
+-import sys, optparse, Image
++import sys, optparse
++from PIL import Image
+ 
+ # shift
+ def shift(img, dx, dy):
+-- 
+1.8.2.1
+

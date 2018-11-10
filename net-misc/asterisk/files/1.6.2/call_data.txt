@@ -1,0 +1,32 @@
+It's sometimes useful to look at SIP conversations in retrospect.  If you have
+a troublesome system, enable sip debug (in the CLI: sip set debug on), set up
+logger.conf to log it to some file and then you can use the two scripts here to
+extract the SIP converssations as seen by asterisk.
+
+find_call_ids.sh:
+
+This script will locate Call-ID values given an A and B number. Just invoke it with:
+
+find_call_ids.sh /path/to/log A-num B-num
+
+eg:
+
+find_call_ids.sh /var/log/asterisk/debug 102 105
+
+To find the Call-IDs for calls going from ext 102 to ext 105 (depends on your
+exact setup and the actual values being passed in the SIP INVITE packets)
+
+find_call_sip_trace.sh
+
+This script will extract a SIP conversation from the log for one or more
+Call-ID values.  Invoke with:
+
+find_call_sip_trace.sh /path/to/log Call-ID [...]
+
+Eg:
+
+find_call_sip_trace.sh /var/log/asterisk/debug 12341665haf434qgrq3@192.168.0.5 123123@192.168.0.3
+
+This will find the SIP packets for those two conversations from the log
+(interleaving the packets in the order asterisk output them - useful for
+analysing the two SIP legs of the same call).

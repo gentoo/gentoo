@@ -1,0 +1,13 @@
+--- a/share/server/core/classes/GlobalMainCfg.php	2012-05-31 11:14:23.000000000 -0400
++++ b/share/server/core/classes/GlobalMainCfg.php	2012-05-31 11:17:10.000000000 -0400
+@@ -1215,8 +1215,8 @@
+      * @author	Roman Kyrylych <rkyrylych@op5.com>
+      */
+     private function getBasePath() {
+-        // Go 3 levels up from nagvis/share/nagvis to nagvis base path
+-        return realpath(dirname($_SERVER['SCRIPT_FILENAME']) . '/../../..') . '/';
++        // Go 2 levels up from share/nagvis to nagvis base path
++        return realpath(dirname($_SERVER['SCRIPT_FILENAME']) . '/../..') . '/';
+         // Note: the method below causes problems when <docroot>/nagvis is a symlink to <nagvis-base>/share
+         // return realpath(dirname(dirname(dirname($_SERVER['SCRIPT_FILENAME'])))).'/';
+     }

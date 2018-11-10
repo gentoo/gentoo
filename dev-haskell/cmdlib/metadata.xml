@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A commandline parsing library, based on getopt. Comes with a
+		powerful attribute system. Supports complex interfaces with many
+		options and commands, with option &amp; command grouping, with simple
+		and convenient API. Even though quite powerful, it strives to keep
+		simple things simple. The library uses "System.Console.GetOpt" as
+		its backend.
+		
+		In comparison to the other commandline handling libraries:
+		
+		Compared to cmdargs, cmdlib has a pure attribute system and is
+		based on GetOpt for help formatting &amp; argument parsing. Cmdlib may
+		also be more extendable due to typeclass design, and can use
+		user-supplied types for option arguments.
+		
+		Cmdargs &gt;= 0.4 can optionally use a pure attribute system,
+		although this is clearly an add-on and the API is a second-class
+		citizen in relation to the impure version.
+		
+		GetOpt and parseargs both require explicit flag representation, so
+		they live a level below cmdlib. GetOpt is in fact used as a
+		backend by cmdlib.
+	</longdescription>
+</pkgmetadata>

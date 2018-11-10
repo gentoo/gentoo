@@ -1,0 +1,200 @@
+--- multipath-tools-0.5.0/kpartx/Makefile
++++ multipath-tools-0.5.0/kpartx/Makefile
+@@ -12,7 +12,7 @@
+ 	CFLAGS += -DLIBDM_API_COOKIE
+ endif
+ 
+-LDFLAGS = -ldevmapper
++LIBS = -ldevmapper
+ OBJS = bsd.o dos.o kpartx.o solaris.o unixware.o dasd.o sun.o \
+        gpt.o mac.o ps3.o crc32.o lopart.o xstrncpy.o devmapper.o
+ EXEC = kpartx
+@@ -20,8 +20,7 @@
+ all: $(EXEC)
+ 
+ $(EXEC): $(OBJS)
+-	$(CC) $(OBJS) -o $(EXEC) $(LDFLAGS)
+-	$(GZIP) $(EXEC).8 > $(EXEC).8.gz
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBS) -o $(EXEC)
+ 
+ install: $(EXEC) $(EXEC).8
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(bindir)
+@@ -29,14 +28,15 @@
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(libudevdir)
+ 	$(INSTALL_PROGRAM) -m 755 kpartx_id $(DESTDIR)$(libudevdir)
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)/etc/udev/rules.d
+-	$(INSTALL_PROGRAM) -m 644 kpartx.rules $(DESTDIR)/etc/udev/rules.d/
++	$(INSTALL_PROGRAM) -m 644 kpartx.rules $(DESTDIR)/etc/udev/rules.d/66-kpartx.rules
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(mandir)
+-	$(INSTALL_PROGRAM) -m 644 $(EXEC).8.gz $(DESTDIR)$(mandir)
++	$(INSTALL_PROGRAM) -m 644 $(EXEC).8 $(DESTDIR)$(mandir)
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(bindir)/$(EXEC)
+-	rm -f $(DESTDIR)$(mandir)/$(EXEC).8.gz
++	rm -f $(DESTDIR)$(mandir)/$(EXEC).8
+ 	rm -f $(DESTDIR)$(libudevdir)/kpartx_id
++	rm -f $(DESTDIR)/etc/udev/rules.d/66-kpartx.rules
+ 
+ clean:
+-	rm -f core *.o $(EXEC) *.gz
++	rm -f core *.o $(EXEC)
+--- multipath-tools-0.5.0/libmpathpersist/Makefile
++++ multipath-tools-0.5.0/libmpathpersist/Makefile
+@@ -22,8 +22,6 @@
+ 	$(CC) -Wall -fPIC -c $(CFLAGS) *.c 
+ 	$(CC)  -shared $(LIBDEPS) -Wl,-soname=$@ $(CFLAGS) -o $@ $(OBJS)
+ 	ln -s $(LIBS) $(DEVLIB)
+-	$(GZIP) mpath_persistent_reserve_in.3 > mpath_persistent_reserve_in.3.gz	
+-	$(GZIP) mpath_persistent_reserve_out.3 > mpath_persistent_reserve_out.3.gz	
+ 
+ install: $(LIBS)
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(syslibdir)
+@@ -31,19 +29,17 @@
+ 	$(INSTALL_PROGRAM) -m 755 -d $(DESTDIR)$(syslibdir)
+ 	$(INSTALL_PROGRAM) -m 755 -d $(DESTDIR)$(man3dir)
+ 	$(INSTALL_PROGRAM) -m 755 -d $(DESTDIR)/usr/include/
+-	$(INSTALL_PROGRAM) -m 755 -d $(DESTDIR)/usr/share/doc/mpathpersist/
+-	ln -sf $(DESTDIR)$(syslibdir)/$(LIBS) $(DESTDIR)$(syslibdir)/$(DEVLIB)
+-	install -m 644 mpath_persistent_reserve_in.3.gz $(DESTDIR)$(man3dir)	
+-	install -m 644 mpath_persistent_reserve_out.3.gz $(DESTDIR)$(man3dir)	
+-	install -m 644 mpath_persist.h $(DESTDIR)/usr/include/
++	$(INSTALL_PROGRAM) -m 644 mpath_persistent_reserve_in.3 $(DESTDIR)$(man3dir)
++	$(INSTALL_PROGRAM) -m 644 mpath_persistent_reserve_out.3 $(DESTDIR)$(man3dir)
++	$(INSTALL_PROGRAM) -m 644 mpath_persist.h $(DESTDIR)/usr/include/
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(syslibdir)/$(LIBS)
+-	rm $(DESTDIR)$(mandir)/mpath_persistent_reserve_in.3.gz	
+-	rm $(DESTDIR)$(mandir)/mpath_persistent_reserve_out.3.gz	
++	rm $(DESTDIR)$(mandir)/mpath_persistent_reserve_in.3	
++	rm $(DESTDIR)$(mandir)/mpath_persistent_reserve_out.3	
+ 
+ clean:
+ 	rm -f core *.a *.o 
+ 	rm -f libmpathpersist.so.0
+ 	rm -f libmpathpersist.so
+-	rm -f mpath_persistent_reserve_in.3.gz mpath_persistent_reserve_out.3.gz
++	rm -f mpath_persistent_reserve_in.3 mpath_persistent_reserve_out.3
+--- multipath-tools-0.5.0/Makefile.inc
++++ multipath-tools-0.5.0/Makefile.inc
+@@ -48,8 +48,8 @@
+ 	RPM_OPT_FLAGS = -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4
+ endif
+ 
+-OPTFLAGS     = $(RPM_OPT_FLAGS) -Wunused -Wstrict-prototypes
+-CFLAGS	     = $(OPTFLAGS) -fPIC -DLIB_STRING=\"${LIB}\"
++OPTFLAGS     = -Wall -Wunused -Wstrict-prototypes
++CFLAGS	    += $(OPTFLAGS) -fPIC -DLIB_STRING=\"${LIB}\"
+ SHARED_FLAGS = -shared
+ 
+ %.o:	%.c
+--- multipath-tools-0.5.0/mpathpersist/Makefile
++++ multipath-tools-0.5.0/mpathpersist/Makefile
+@@ -13,18 +13,17 @@
+ 
+ $(EXEC): $(OBJS)
+ 	$(CC) -g $(OBJS) -o $(EXEC) $(LDFLAGS) $(CFLAGS)
+-	$(GZIP) $(EXEC).8 > $(EXEC).8.gz
+ 	
+ install:
+ 	install -d $(DESTDIR)$(bindir)
+ 	install -m 755 $(EXEC) $(DESTDIR)$(bindir)/
+ 	install -d $(DESTDIR)$(mandir)
+-	install -m 644 $(EXEC).8.gz $(DESTDIR)$(mandir)
++	install -m 644 $(EXEC).8 $(DESTDIR)$(mandir)
+ 	
+ clean:
+ 	rm -f *.o $(EXEC)
+-	rm -f mpathpersist.8.gz
++	rm -f mpathpersist.8
+ 
+ uninstall:
+ 	rm $(DESTDIR)$(bindir)/$(EXEC)
+-	rm $(DESTDIR)$(mandir)/$(EXEC).8.gz
++	rm $(DESTDIR)$(mandir)/$(EXEC).8
+--- multipath-tools-0.5.0/multipath/Makefile
++++ multipath-tools-0.5.0/multipath/Makefile
+@@ -7,29 +7,27 @@
+ OBJS = main.o
+ 
+ CFLAGS += -I$(multipathdir)
+-LDFLAGS += -lpthread -ldevmapper -ldl -L$(multipathdir) -lmultipath -ludev
++LIBS += -lpthread -ldevmapper -ldl -L$(multipathdir) -lmultipath -ludev
+ 
+ EXEC = multipath
+ 
+ all: $(EXEC)
+ 
+ $(EXEC): $(OBJS)
+-	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC) $(LDFLAGS)
+-	$(GZIP) $(EXEC).8 > $(EXEC).8.gz
+-	$(GZIP) $(EXEC).conf.5 > $(EXEC).conf.5.gz
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBS) -o $(EXEC)
+ 
+ install:
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(bindir)
+ 	$(INSTALL_PROGRAM) -m 755 $(EXEC) $(DESTDIR)$(bindir)/
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(mandir)
+-	$(INSTALL_PROGRAM) -m 644 $(EXEC).8.gz $(DESTDIR)$(mandir)
++	$(INSTALL_PROGRAM) -m 644 $(EXEC).8 $(DESTDIR)$(mandir)
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(man5dir)
+-	$(INSTALL_PROGRAM) -m 644 $(EXEC).conf.5.gz $(DESTDIR)$(man5dir)
++	$(INSTALL_PROGRAM) -m 644 $(EXEC).conf.5 $(DESTDIR)$(man5dir)
+ 
+ uninstall:
+ 	rm $(DESTDIR)$(bindir)/$(EXEC)
+-	rm $(DESTDIR)$(mandir)/$(EXEC).8.gz
+-	rm $(DESTDIR)$(man5dir)/$(EXEC).conf.5.gz
++	rm $(DESTDIR)$(mandir)/$(EXEC).8
++	rm $(DESTDIR)$(man5dir)/$(EXEC).conf.5
+ 
+ clean:
+-	rm -f core *.o $(EXEC) *.gz
++	rm -f core *.o $(EXEC)
+--- multipath-tools-0.5.0/multipathd/Makefile
++++ multipath-tools-0.5.0/multipathd/Makefile
+@@ -9,11 +9,11 @@
+ ifdef SYSTEMD
+ 	CFLAGS += -DUSE_SYSTEMD=$(SYSTEMD)
+ endif
+-LDFLAGS += -lpthread -ldevmapper -lreadline
++LIBS += -lpthread -ldevmapper -lreadline
+ ifdef SYSTEMD
+-	LDFLAGS += -lsystemd-daemon
++	LIBS += -lsystemd-daemon
+ endif
+-LDFLAGS += -ludev -ldl \
++LIBS += -ludev -ldl \
+ 	-L$(multipathdir) -lmultipath -L$(mpathpersistdir) -lmpathpersist
+ 
+ #
+@@ -35,8 +35,7 @@
+ all : $(EXEC)
+ 
+ $(EXEC): $(OBJS)
+-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(EXEC)
+-	$(GZIP) $(EXEC).8 > $(EXEC).8.gz
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBS) -o $(EXEC)
+ 
+ install:
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(bindir)
+@@ -48,15 +47,15 @@
+ 	$(INSTALL_PROGRAM) -m 644 $(EXEC).socket $(DESTDIR)$(unitdir)
+ endif
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(mandir)
+-	$(INSTALL_PROGRAM) -m 644 $(EXEC).8.gz $(DESTDIR)$(mandir)
++	$(INSTALL_PROGRAM) -m 644 $(EXEC).8 $(DESTDIR)$(mandir)
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(bindir)/$(EXEC)
+ 	rm -f $(DESTDIR)$(rcdir)/$(EXEC)
+-	rm -f $(DESTDIR)$(mandir)/$(EXEC).8.gz
++	rm -f $(DESTDIR)$(mandir)/$(EXEC).8
+ 	rm -f $(DESTDIR)$(unitdir)/$(EXEC).service
+ 	rm -f $(DESTDIR)$(unitdir)/$(EXEC).socket
+ 
+ clean:
+-	rm -f core *.o $(EXEC) *.gz
++	rm -f core *.o $(EXEC)
+ 

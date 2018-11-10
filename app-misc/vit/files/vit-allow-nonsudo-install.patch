@@ -1,0 +1,36 @@
+diff --git a/Makefile.in b/Makefile.in
+index 87abf5b..66d6acd 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -7,6 +7,8 @@ VERSION=@VERSION@
+ TASK=@TASK@
+ PERL=@PERL@
+ CLEAR=@CLEAR@
++SUDO=@SUDO@
++SUDO=sudo
+ 
+ .PHONY : install
+ 
+@@ -28,14 +30,14 @@ build:
+ 	chmod 755 vit
+ 
+ install:
+-	sudo mkdir -p @prefix@/bin
+-	sudo cp vit @prefix@/bin/vit
+-	sudo mkdir -p @prefix@/man/man1
+-	sudo cp vit.1 @prefix@/man/man1/
+-	sudo mkdir -p @prefix@/man/man5
+-	sudo cp vitrc.5 @prefix@/man/man5/
+-	sudo mkdir -p @prefix@/etc/
+-	sudo cp commands @prefix@/etc/vit-commands
++	$(SUDO) mkdir -p $(DESTDIR)@prefix@/bin
++	$(SUDO) cp vit $(DESTDIR)@prefix@/bin/vit
++	$(SUDO) mkdir -p $(DESTDIR)@prefix@/man/man1
++	$(SUDO) cp vit.1 $(DESTDIR)@prefix@/man/man1/
++	$(SUDO) mkdir -p $(DESTDIR)@prefix@/man/man5
++	$(SUDO) cp vitrc.5 $(DESTDIR)@prefix@/man/man5/
++	$(SUDO) mkdir -p $(DESTDIR)@prefix@/etc/
++	$(SUDO) cp commands $(DESTDIR)@prefix@/etc/vit-commands
+ 
+ autoconf:
+ 	@make -f .makefile autoconf

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>fonts@gentoo.org</email>
+		<name>Fonts</name>
+	</maintainer>
+	<use>
+		<flag name="adobe-cff">Use Adobe CFF as default font-renderer</flag>
+		<flag name="cleartype_hinting">New bytecode hinting mode for TrueType fonts that
+			activates subpixel hinting (a.k.a. ClearType hinting) by default</flag>
+		<flag name="bindist">Disable ClearType support (see http://freetype.org/patents.html)</flag>
+		<flag name="bzip2">Support bzip2 compressed PCF fonts.</flag>
+		<flag name="fontforge">Install internal headers required for TrueType
+			debugger in <pkg>media-gfx/fontforge</pkg> (built with
+			USE=truetype-debugger)</flag>
+		<flag name="harfbuzz">Use <pkg>media-libs/harfbuzz</pkg> for auto-hinting
+			OpenType fonts. WARNING: may trigger circular dependencies!</flag>
+		<flag name="infinality">Enable infinality options for improved LCD
+			filtering</flag>
+		<flag name="utils">Install utilities and examples from ft2demos</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:freetype:freetype</remote-id>
+		<remote-id type="sourceforge">freetype</remote-id>
+	</upstream>
+</pkgmetadata>

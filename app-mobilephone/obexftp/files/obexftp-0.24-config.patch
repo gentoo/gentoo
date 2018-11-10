@@ -1,0 +1,11 @@
+--- a/apps/obexftp.c
++++ b/apps/obexftp.c
+@@ -43,8 +43,6 @@
+ 
+ #include <common.h>
+ 
+-#include <config.h>
+-
+ #ifdef HAVE_SYS_TIMES_H
+ #include <sys/times.h>
+ #endif

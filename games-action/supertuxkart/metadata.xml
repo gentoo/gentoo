@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="fribidi">Support for right-to-left languages</flag>
+		<flag name="recorder">Enable recording with <pkg>media-libs/libopenglrecorder</pkg></flag>
+		<flag name="wiimote">Support for wiimote input devices</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">supertuxkart</remote-id>
+	</upstream>
+</pkgmetadata>

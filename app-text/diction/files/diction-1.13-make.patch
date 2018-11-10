@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -50,7 +50,7 @@
+ 		[ -d $(DESTDIR)@mandir@/man1 ] || @INSTALL@ -m 755 -d $(DESTDIR)@mandir@/man1
+ 		@INSTALL@ -m 644 diction.1 $(DESTDIR)@mandir@/man1/diction.1
+ 		@INSTALL@ -m 644 style.1 $(DESTDIR)@mandir@/man1/style.1
+-		make install-po-@USE_NLS@
++		$(MAKE) install-po-@USE_NLS@
+ 
+ install-po-no:
+ install-po-yes:	$(CATALOGS)

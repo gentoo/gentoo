@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>aidecoe@gentoo.org</email>
+		<name>Amadeusz Żołnowski</name>
+	</maintainer>
+	<longdescription lang="en">
+		Stringprep is a framework for preparing Unicode test strings in order
+		to increase the likelihood that string input and string comparison
+		work.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">processone/stringprep</remote-id>
+	</upstream>
+</pkgmetadata>

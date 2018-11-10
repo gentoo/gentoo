@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>genkernel@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="cryptsetup">Enable support for Luks disk encryption using <pkg>sys-fs/cryptsetup</pkg></flag>
+		<flag name="firmware">Prefer system firmware <pkg>sys-kernel/linux-firmware</pkg> over local copy.</flag>
+	</use>
+	<!--
+	<upstream>
+		<remote-id type="gentoo">git://git.gentoo.org/proj/genkernel</remote-id>
+	</upstream>
+	-->
+	<upstream>
+		<remote-id type="sourceforge">fuse</remote-id>
+	</upstream>
+</pkgmetadata>

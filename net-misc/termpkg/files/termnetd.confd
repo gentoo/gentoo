@@ -1,0 +1,14 @@
+# Config file for /etc/init.d/termnetd
+
+# Set the configuration file to one other than the default of /etc/termnetd.conf
+#
+#CONFIG_FILE="/etc/termnetd.conf"
+
+# Sets the IP port to listen to for the control port (default = none).
+#
+#CONTROL_PORT=""
+
+# see the termnetd(1) manual page for additional options you can configure here
+#
+#EXTRA_OPTS=""
+

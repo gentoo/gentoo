@@ -1,0 +1,13 @@
+Seems they've never seen gcc on AIX.
+
+--- cshim/mqbasictypes.h.orig	2010-03-01 18:00:38 +0100
++++ cshim/mqbasictypes.h	2010-03-01 18:00:58 +0100
+@@ -64,7 +64,7 @@
+ #endif
+ #endif
+ 
+-#if (defined(__IBMC__) || defined (__IBMCPP__)) && defined(__unix__)
++#if ((defined(__IBMC__) || defined (__IBMCPP__)) && defined(__unix__)) || defined(_AIX)
+ #ifndef AIX 
+ #define AIX 
+ #endif

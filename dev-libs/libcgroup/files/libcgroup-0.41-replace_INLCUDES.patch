@@ -1,0 +1,74 @@
+Replace INCLUDES with AM_CPPFLAGS in Makefile.am
+
+We replace the deprecated INCLUDES with AM_CPPFLAGS in all
+Makefile.am's.
+
+Signed-off-by: Anthony G. Basile <blueness@gentoo.org>
+
+diff -Naur libcgroup-0.41.orig/src/Makefile.am libcgroup-0.41/src/Makefile.am
+--- libcgroup-0.41.orig/src/Makefile.am	2014-01-13 14:05:56.000000000 +0000
++++ libcgroup-0.41/src/Makefile.am	2015-07-13 14:36:38.922428040 +0000
+@@ -9,7 +9,7 @@
+ 
+ CLEANFILES = lex.c parse.c parse.h
+ 
+-INCLUDES = -I$(top_srcdir)/include
++AM_CPPFLAGS = -I$(top_srcdir)/include
+ lib_LTLIBRARIES = libcgroup.la
+ libcgroup_la_SOURCES = parse.h parse.y lex.l api.c config.c libcgroup-internal.h libcgroup.map wrapper.c log.c
+ libcgroup_la_LIBADD = -lpthread
+diff -Naur libcgroup-0.41.orig/src/bindings/Makefile.am libcgroup-0.41/src/bindings/Makefile.am
+--- libcgroup-0.41.orig/src/bindings/Makefile.am	2014-01-13 14:05:56.000000000 +0000
++++ libcgroup-0.41/src/bindings/Makefile.am	2015-07-13 14:37:12.267428146 +0000
+@@ -1,5 +1,5 @@
+ SUBDIRS = .
+-INCLUDES = -I$(top_srcdir)/include
++AM_CPPFLAGS = -I$(top_srcdir)/include
+ 
+ lib_LTLIBRARIES = _libcgroup.la
+ _libcgroup_la_SOURCES = libcgroup.c
+@@ -11,5 +11,5 @@
+ 
+ libcgroup.c: libcgroup.p $(top_srcdir)/include/libcgroup.h
+ 	cp libcgroup.p libcgroup.i
+-	$(CC) $(INCLUDES) -DSWIG -E $(top_srcdir)/include/libcgroup.h >> libcgroup.i
++	$(CC) $(CPPFLAGS) -DSWIG -E $(top_srcdir)/include/libcgroup.h >> libcgroup.i
+ 	$(SWIG) -python -o libcgroup.c libcgroup.i
+diff -Naur libcgroup-0.41.orig/src/daemon/Makefile.am libcgroup-0.41/src/daemon/Makefile.am
+--- libcgroup-0.41.orig/src/daemon/Makefile.am	2014-01-13 14:05:56.000000000 +0000
++++ libcgroup-0.41/src/daemon/Makefile.am	2015-07-13 14:36:55.781428093 +0000
+@@ -1,4 +1,4 @@
+-INCLUDES = -I $(top_srcdir)/include
++AM_CPPFLAGS = -I $(top_srcdir)/include
+ 
+ if WITH_DAEMON
+ 
+diff -Naur libcgroup-0.41.orig/src/pam/Makefile.am libcgroup-0.41/src/pam/Makefile.am
+--- libcgroup-0.41.orig/src/pam/Makefile.am	2014-01-13 14:05:56.000000000 +0000
++++ libcgroup-0.41/src/pam/Makefile.am	2015-07-13 14:36:28.768428007 +0000
+@@ -1,4 +1,4 @@
+-INCLUDES = -I $(top_srcdir)/include
++AM_CPPFLAGS = -I $(top_srcdir)/include
+ 
+ if WITH_PAM
+ 
+diff -Naur libcgroup-0.41.orig/src/tools/Makefile.am libcgroup-0.41/src/tools/Makefile.am
+--- libcgroup-0.41.orig/src/tools/Makefile.am	2014-01-13 14:05:56.000000000 +0000
++++ libcgroup-0.41/src/tools/Makefile.am	2015-07-13 14:36:19.098427976 +0000
+@@ -1,4 +1,4 @@
+-INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/include
++AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/include
+ LDADD = $(top_builddir)/src/.libs/libcgroup.la
+ 
+ if WITH_TOOLS
+diff -Naur libcgroup-0.41.orig/tests/Makefile.am libcgroup-0.41/tests/Makefile.am
+--- libcgroup-0.41.orig/tests/Makefile.am	2014-01-13 14:05:56.000000000 +0000
++++ libcgroup-0.41/tests/Makefile.am	2015-07-13 14:37:23.146428181 +0000
+@@ -1,6 +1,6 @@
+ SUBDIRS = tools
+ 
+-INCLUDES = -I$(top_srcdir)/include
++AM_CPPFLAGS = -I$(top_srcdir)/include
+ LDADD = $(top_builddir)/src/.libs/libcgroup.la
+ 
+ # compile the tests, but do not install them

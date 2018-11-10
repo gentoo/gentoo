@@ -1,0 +1,21 @@
+diff -Nuar tilecache-2.11.orig/TileCache/Layer.py tilecache-2.11/TileCache/Layer.py
+--- tilecache-2.11.orig/TileCache/Layer.py	2010-10-15 04:00:18.000000000 -0700
++++ tilecache-2.11/TileCache/Layer.py	2013-11-09 11:05:17.620475332 -0800
+@@ -391,7 +391,7 @@
+         return MetaTile(self, x, y, tile.z) 
+ 
+     def renderMetaTile (self, metatile, tile):
+-        import StringIO, Image
++        import StringIO, PIL.Image as Image
+ 
+         data = self.renderTile(metatile)
+         image = Image.open( StringIO.StringIO(data) )
+@@ -444,7 +444,7 @@
+                 return self.renderTile(tile)
+ 
+     def watermark (self, img):
+-        import StringIO, Image, ImageEnhance
++        import StringIO, PIL.Image as Image, PIL.ImageEnhance as ImageEnhance
+         tileImage = Image.open( StringIO.StringIO(img) )
+         wmark = Image.open(self.watermarkimage)
+         assert self.watermarkopacity >= 0 and self.watermarkopacity <= 1

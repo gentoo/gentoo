@@ -1,0 +1,16 @@
+https://www.mail-archive.com/openvas-discuss@wald.intevation.org/msg05828.html
+Fixes build issue with the newer version of libssh
+
+diff -ru openvas-libraries-7.0.1.orig/nasl/nasl_ssh.c openvas-libraries-7.0.1.new/nasl/nasl_ssh.c
+--- openvas-libraries-7.0.1.orig/nasl/nasl_ssh.c	2014-04-14 19:15:40.000000000 +0200
++++ openvas-libraries-7.0.1.new/nasl/nasl_ssh.c	2014-05-23 00:13:56.791111974 +0200
+@@ -1861,7 +1861,8 @@
+     return NULL;
+   session = session_table[tbl_slot].session;
+ 
+-  banner = ssh_get_serverbanner (session);
++  //banner = ssh_get_serverbanner (session);
++  banner = (char*) ssh_get_serverbanner (session);
+   if (!banner)
+     return NULL;
+ 

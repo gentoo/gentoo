@@ -1,0 +1,11 @@
+--- magic-7.5.231/scripts/configure.in
++++ magic-7.5.231/scripts/configure.in
+@@ -1695,7 +1695,7 @@
+       if {[[catch {package require BLT}]]} {puts stdout no} {puts stdout yes}
+       exit
+ EOF
+-      usingBLT=`cat temp.out`
++      usingBLT=yes
+       rm -f temp.out
+       if test "x${usingBLT}" = "xyes" ; then
+          echo "yes"

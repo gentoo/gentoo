@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">horst3180/arc-theme</remote-id>
+	</upstream>
+	<use>
+		<flag name="cinnamon">Install theme for <pkg>gnome-extra/cinnamon</pkg></flag>
+		<flag name="gtk2">Install GTK+2 theme</flag>
+		<flag name="gtk3">Install GTK+3 theme</flag>
+		<flag name="mate">Install Metacity theme for <pkg>mate-base/mate</pkg></flag>
+		<flag name="gnome-shell">Install theme for <pkg>gnome-base/gnome-shell</pkg></flag>
+		<flag name="pre-rendered">Avoid <pkg>media-gfx/inkscape</pkg> and <pkg>media-gfx/optipng</pkg> dependencies by using pre-rendered PNGs</flag>
+		<flag name="xfce">Install theme for <pkg>xfce-base/xfwm4</pkg></flag>
+	</use>
+</pkgmetadata>

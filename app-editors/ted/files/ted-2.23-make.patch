@@ -1,0 +1,11 @@
+--- Makefile.orig	2013-04-01 13:24:45.854051804 +0400
++++ Makefile	2013-04-01 13:25:02.618052336 +0400
+@@ -246,7 +246,7 @@
+ 	: To install Ted, you can now run 'make install' AS ROOT
+ 
+ package.shared: compile.shared tedPackage/makefile
+-	cd tedPackage && make package.shared
++	cd tedPackage && $(MAKE) package.shared
+ 	:
+ 	: Dynamically linked package ready.
+ 	: To install Ted, you can now run 'make install' AS ROOT

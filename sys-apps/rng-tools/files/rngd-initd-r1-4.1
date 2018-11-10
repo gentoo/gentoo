@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need localmount
+	after urandom
+	provide entropy
+}
+
+command=/usr/sbin/rngd
+pidfile="/var/run/${SVCNAME}.pid"
+command_args="--pid-file ${pidfile} --background --random-step ${STEP:-64} ${NO_TPM:+--no-tpm=1} \
+	${NO_DRNG:+--no-drng=1} --fill-watermark ${WATERMARK} ${DEVICE:+--rng-device ${DEVICE}}"
+start_stop_daemon_args="--wait 1000"
+retry="SIGKILL/5000"

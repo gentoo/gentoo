@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>miyako.dev@gmail.com</email>
+			<name>Hiroyuki Takagi</name>
+		</maintainer>
+		<remote-id type="pypi">m2r</remote-id>
+		<remote-id type="github">miyakogi/m2r</remote-id>
+	</upstream>
+	<longdescription>
+		M2R converts a markdown file including reST markups to a valid reST format.
+	</longdescription>
+</pkgmetadata>

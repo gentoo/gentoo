@@ -1,0 +1,28 @@
+Index: libdnsres-0.1a/Makefile.am
+===================================================================
+--- libdnsres-0.1a.orig/Makefile.am
++++ libdnsres-0.1a/Makefile.am
+@@ -10,12 +10,12 @@ libdnsres_la_SOURCES = res_comp.c res_de
+ 	res_data.c res_init.c res_query.c res_send.c resolv.h dnsres.h \
+ 	gethostnamadr.c getaddrinfo.c getservbyname.c getservent.c base64.c \
+ 	dnsres-internal.h
+-libdnsres_la_LIBADD = @LIBOBJS@
++libdnsres_la_LIBADD = @LTLIBOBJS@
+ libdnsres_la_LDFLAGS = -version-info 0:1:0
+ 
+ include_HEADERS = dnsres.h
+ 
+-CFLAGS = -Wall -O0 -g -DRESOLVSORT
++AM_CFLAGS = -Wall -g -DRESOLVSORT
+ INCLUDES = -I$(top_srcdir)/compat @EVENTINC@
+ 
+ man_MANS = dnsres.3
+@@ -23,7 +23,7 @@ man_MANS = dnsres.3
+ noinst_PROGRAMS = simple_test
+ simple_test_SOURCES = test/simple_test.c
+ simple_test_INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/compat @EVENTINC@
+-simple_test_LDADD = -L$(top_buildir) -ldnsres @EVENTLIB@
++simple_test_LDADD = libdnsres.la @EVENTLIB@
+ 
+ verify: libdnsres.a
+ 	cd $(srcdir)/test && make verify	

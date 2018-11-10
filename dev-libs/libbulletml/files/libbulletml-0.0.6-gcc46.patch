@@ -1,0 +1,20 @@
+--- calc.yy.old	2011-05-18 12:26:38.701666366 +0200
++++ calc.yy	2011-05-18 12:27:43.020672135 +0200
+@@ -17,7 +17,7 @@
+ #include "formula.h"
+ #include "formula-variables.h"
+ 
+-int yyerror(char* s);
++int yyerror(const char* s);
+ int yylex();
+ 
+ const char* yyinStr;
+@@ -149,7 +149,7 @@
+ 	return c;
+ }
+ 
+-int yyerror(char* s) {
++int yyerror(const char* s) {
+ 	printf("yyerror: %s\n", s);
+ 	return 0;
+ }

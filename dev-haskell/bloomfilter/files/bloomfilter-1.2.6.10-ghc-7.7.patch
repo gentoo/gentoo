@@ -1,0 +1,46 @@
+diff --git a/Data/BloomFilter.hs b/Data/BloomFilter.hs
+index 69711ef..97a8348 100644
+--- a/Data/BloomFilter.hs
++++ b/Data/BloomFilter.hs
+@@ -93,7 +93,8 @@ import Control.Monad (liftM, forM_)
+ import Control.Monad.ST (ST, runST)
+ import Control.DeepSeq (NFData(..))
+ import Data.Array.Base (unsafeAt, unsafeRead, unsafeWrite)
+-import Data.Array.ST (STUArray, thaw, unsafeFreeze)
++import Data.Array.ST (STUArray, thaw)
++import qualified Data.Array.Unsafe as U (unsafeFreeze)
+ import Data.Array.Unboxed (UArray)
+ import Data.Bits ((.&.), (.|.))
+ import Data.BloomFilter.Array (newArray)
+@@ -336,7 +337,7 @@ notElemB elt ub = any test (hashesU ub elt)
+ -- occur.  For a safer creation interface, use 'createB'.
+ unsafeFreezeMB :: MBloom s a -> ST s (Bloom a)
+ unsafeFreezeMB mb = B (hashMB mb) (shiftMB mb) (maskMB mb) `liftM`
+-                    unsafeFreeze (bitArrayMB mb)
++                    U.unsafeFreeze (bitArrayMB mb)
+ 
+ -- | Copy an immutable Bloom filter to create a mutable one.  There is
+ -- no non-copying equivalent.
+diff --git a/Data/BloomFilter/Array.hs b/Data/BloomFilter/Array.hs
+index e085bbe..5accde9 100644
+--- a/Data/BloomFilter/Array.hs
++++ b/Data/BloomFilter/Array.hs
+@@ -3,7 +3,8 @@
+ 
+ module Data.BloomFilter.Array (newArray) where
+ 
+-import Control.Monad.ST (ST, unsafeIOToST)
++import Control.Monad.ST (ST)
++import qualified Control.Monad.ST.Unsafe as U (unsafeIOToST)
+ import Data.Array.Base (MArray, STUArray(..), unsafeNewArray_)
+ #if __GLASGOW_HASKELL__ >= 704
+ import Foreign.C.Types (CInt(..), CSize(..))
+@@ -18,7 +19,7 @@ newArray :: forall e s. (MArray (STUArray s) e (ST s)) =>
+ {-# INLINE newArray #-}
+ newArray numElems numBytes = do
+   ary@(STUArray _ _ _ marr#) <- unsafeNewArray_ (0, numElems - 1)
+-  _ <- unsafeIOToST (memset marr# 0 (fromIntegral numBytes))
++  _ <- U.unsafeIOToST (memset marr# 0 (fromIntegral numBytes))
+   return ary
+ 
+ foreign import ccall unsafe "memset"

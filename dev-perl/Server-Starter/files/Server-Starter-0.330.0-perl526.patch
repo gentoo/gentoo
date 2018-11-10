@@ -1,0 +1,11 @@
+diff -ruN Server-Starter-0.33.orig/Build.PL Server-Starter-0.33/Build.PL
+--- Server-Starter-0.33.orig/Build.PL	2016-12-13 01:39:23.000000000 +0100
++++ Server-Starter-0.33/Build.PL	2017-07-08 01:21:03.354611818 +0200
+@@ -9,6 +9,7 @@
+ use warnings;
+ use utf8;
+ 
++use lib q[.];
+ use builder::MyBuilder;
+ use File::Basename;
+ use File::Spec;

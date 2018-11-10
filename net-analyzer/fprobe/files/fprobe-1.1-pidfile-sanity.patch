@@ -1,0 +1,47 @@
+If we are using the chroot() option or the setuid options, we must create the
+pidfile before doing the chroot OR the setreuid. It's actually best for
+start-stop-daemon if we create the pidfile from the master side of the fork()
+before it exits, since most of the startup checks happen after the chroot()
+unfortunetly.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+--- a/src/fprobe.c
++++ b/src/fprobe.c
+@@ -1379,7 +1379,8 @@
+ 
+ 	my_log_open(ident, verbosity, log_dest);
+ 	if (!(log_dest & 2)) {
+-		switch (fork()) {
++		pid_t childpid = fork();
++		switch (childpid) {
+ 			case -1:
+ 				fprintf(stderr, "fork(): %s", strerror(errno));
+ 				exit(1);
+@@ -1392,6 +1393,12 @@
+ 				break;
+ 
+ 			default:
++				if (!(pidfile = fopen(pidfilepath, "w")))
++					my_log(LOG_ERR, "Can't create pid file. fopen(): %s", strerror(errno));
++				else {
++					fprintf(pidfile, "%ld\n", (long) childpid);
++					fclose(pidfile);
++				}
+ 				exit(0);
+ 		}
+ 	} else {
+@@ -1548,13 +1555,6 @@
+ 		}
+ 	}
+ 
+-	if (!(pidfile = fopen(pidfilepath, "w")))
+-		my_log(LOG_ERR, "Can't create pid file. fopen(): %s", strerror(errno));
+-	else {
+-		fprintf(pidfile, "%ld\n", (long) pid);
+-		fclose(pidfile);
+-	}
+-
+ 	my_log(LOG_INFO, "pid: %d", pid);
+ 	my_log(LOG_INFO, "interface: %s, datalink: %s (%d)",
+ 		dev, dlt[link_type_idx].descr, link_type);

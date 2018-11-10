@@ -1,0 +1,15 @@
+--- glightoff.desktop.in.old	2014-11-22 17:57:47.019838007 +0100
++++ glightoff.desktop.in	2014-11-22 17:58:15.484321664 +0100
+@@ -1,10 +1,9 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ _Name=GLightOff
+ _Comment=Simple Light Off game
+ Exec=glightoff
+ Terminal=false
+ Type=Application
+-Icon=glightoff.png
+-Categories=GNOME;Application;Game;PuzzleGame;
++Icon=glightoff
++Categories=GNOME;Game;
+ StartupNotify=true

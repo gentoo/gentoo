@@ -1,0 +1,27 @@
+diff --git a/include/dieharder/libdieharder.h b/include/dieharder/libdieharder.h
+index 2138ebf..f6d471b 100644
+--- a/include/dieharder/libdieharder.h
++++ b/include/dieharder/libdieharder.h
+@@ -6,6 +6,8 @@
+ 
+ #include "copyright.h"
+ 
++#define _GNU_SOURCE
++
+ /* To enable large file support */
+ #define _FILE_OFFSET_BITS 64
+ 
+@@ -16,13 +18,11 @@
+ #include <sys/time.h>
+ 
+ /* This turns on uint macro in c99 */
+-#define __USE_MISC 1
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+ 
+ /* This turns on M_PI in math.h */
+-#define __USE_BSD 1
+ #include <math.h>
+ #include <limits.h>
+ #include <gsl/gsl_rng.h>

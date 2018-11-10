@@ -1,0 +1,37 @@
+diff -ur iscan-2.29.1/configure.ac iscan-2.29.1.new/configure.ac
+--- iscan-2.29.1/configure.ac	2014-01-27 14:15:28.139043864 -0500
++++ iscan-2.29.1.new/configure.ac	2014-01-27 14:17:10.608044736 -0500
+@@ -279,6 +279,9 @@
+ 		  AC_HELP_STRING([--enable-$1],
+ 				 [ensure support for the $3 file format]),
+ 		  [if test "x$enable_$1" != xno; then
++		      if test "x$4" != xno; then
++		         PKG_CHECK_MODULES($3,[$4])
++		      fi
+ 		      iff_header="`echo $2 | $as_tr_sh`"
+ 		      AC_CHECK_HEADERS([$2])
+ 		      if test `eval echo '$ac_cv_header_'$iff_header` \
+@@ -289,9 +292,9 @@
+ 		  [AC_CHECK_HEADERS([$2])])
+    ])
+ 
+-ISCAN_FILE_FORMAT(jpeg,jpeglib.h,JPEG)
+-ISCAN_FILE_FORMAT(png,png.h,PNG)
+-ISCAN_FILE_FORMAT(tiff,tiffio.h,TIFF)
++ISCAN_FILE_FORMAT(jpeg,jpeglib.h,JPEG,no)
++ISCAN_FILE_FORMAT(png,png.h,PNG,libpng)
++ISCAN_FILE_FORMAT(tiff,tiffio.h,TIFF,no)
+ 
+ 
+ dnl  Support for performance measurements.
+diff -ur iscan-2.29.1/frontend/Makefile.am iscan-2.29.1.new/frontend/Makefile.am
+--- iscan-2.29.1/frontend/Makefile.am	2014-01-27 14:15:28.123043864 -0500
++++ iscan-2.29.1.new/frontend/Makefile.am	2014-01-27 14:17:43.628045017 -0500
+@@ -37,6 +37,7 @@
+ 	-lltdl \
+ 	@GTK_LIBS@ \
+ 	@GDK_IMLIB_LIBS@ \
++	@PNG_LIBS@ \
+ 	$(top_builddir)/non-free/libesmod.so
+ iscan_SOURCES = \
+ 	$(iscan_source_files)

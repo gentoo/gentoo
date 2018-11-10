@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  If you have astronomical imaging of the sky with celestial
+  coordinates you do not know—or do not trust—then Astrometry.net is
+  for you. Input an image and we'll give you back astrometric
+  calibration meta-data, plus lists of known objects falling inside
+  the field of view.
+</longdescription>
+<upstream>
+  <remote-id type="github">dstndstn/astrometry.net</remote-id>
+</upstream>
+</pkgmetadata>

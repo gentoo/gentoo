@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>shell-tools@gentoo.org</email>
+		<name>Gentoo Shell Tools Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Symlinks scans directories for symbolic links and lists them on stdout.
+		Each link is prefixed with a classification of relative, absolute,
+		dangling, messy, lengthy or other_fs. Symlinks can also convert
+		absolute links (within the same filesystem) to relative links and can
+		delete messy and dangling links. 
+	</longdescription>
+</pkgmetadata>

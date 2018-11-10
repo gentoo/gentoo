@@ -1,0 +1,17 @@
+diff --git a/Makefile b/Makefile
+index bb27034..30979bd 100644
+--- a/Makefile
++++ b/Makefile
+@@ -48,6 +48,12 @@ TKINTER_PYMOD	= _tkinter$(PYMOD_SUFFIX)
+ all nopython $(SPY_PYMOD) $(TKINTER_PYMOD) $(EXECUTABLES) debug-sparky clean: force
+ 	cd $(SPARKY_OBJ) && $(MAKE) -f $(SPARKY_SRC)/Makefile -e $@
+ 
++libraries:
++	cd $(SPARKY_OBJ) && $(MAKE) -f $(SPARKY_SRC)/Makefile -e $(SPY_PYMOD) $(TKINTER_PYMOD)
++
++binaries:
++	cd $(SPARKY_OBJ) && $(MAKE) -f $(SPARKY_SRC)/Makefile -e $(EXECUTABLES) debug-sparky
++
+ Makefile.dep TAGS: force
+ 	cd $(SPARKY_SRC) && $(MAKE) -f Makefile -e $@
+ 

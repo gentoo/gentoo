@@ -1,0 +1,36 @@
+#!/bin/sh
+# update-canna-dics_dir
+# compiles dics.dir files for Canna Server
+# Copyright 2001 ISHIKAWA Mutsumi
+# Licensed under the GNU General Public License, version 2.  See the file
+# /usr/share/common-licenses/GPL or <http://www.gnu.org/copyleft/gpl.txt>.
+
+SRC=/var/lib/canna/dic/dics.d
+DEST=/var/lib/canna/dic/canna
+
+for DIR in $SRC $DEST; do
+    VALID=yes
+    if [ ! -d $DIR ]; then
+	echo "$0: $DIR does not exist or is not a directory." >&2
+	VALID=
+    fi
+done
+
+if [ -n "$VALID" ]; then
+    # write new dics.dir file in case we are interrupted
+    echo '# dics.dir -- automatically generated file.  DO NOT EDIT.' > $DEST/dics.dir.update-new
+#    echo '# To modify, see update-canna-dics_dir(8). >> $DEST/dics.dir.update-new
+    # are there any files to process?
+    if [ "$(echo $SRC/*.dics.dir)" != "$SRC/*.dics.dir" ]; then
+	for file in $SRC/*.dics.dir; do
+	    echo "# $file" >> $DEST/dics.dir.update-new
+	    cat $file >> $DEST/dics.dir.update-new
+	done
+	mv $DEST/dics.dir.update-new $DEST/dics.dir
+    else
+      # no files to process, remove the one
+	rm -f $DEST/dics.dir
+    fi
+fi
+
+exit

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  This package provides several shortcut commands for visiting or
+  inserting files without having to specify them by their complete name.
+  For example, you can visit programs in your exec-path (some of which
+  may be humanly-readable shell scripts or config files), or anything
+  else which is quickly locatable via a prebuilt database or path list.
+  Completion is also available for many commands.
+</longdescription>
+<stabilize-allarches/>
+</pkgmetadata>

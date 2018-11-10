@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription>
+		The simplegeneric module lets you define simple single-dispatch
+		generic functions, akin to Python's built-in generic functions like len(),
+		iter() and so on. However, instead of using specially-named methods, these
+		generic functions use simple lookup tables, akin to those used by
+		e.g. pickle.dump() and other generic functions found in the Python
+		standard library.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">simplegeneric</remote-id>
+	</upstream>
+</pkgmetadata>

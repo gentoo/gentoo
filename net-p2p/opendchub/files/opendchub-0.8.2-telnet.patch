@@ -1,0 +1,11 @@
+--- opendchub-0.8.2/src/main.c.orig
++++ opendchub-0.8.2/src/main.c
+@@ -1073,7 +1073,7 @@
+ 	     /* The chat command, starts with <nick> */
+ 	     else if(*temp == '<')
+ 	       {
+-		  if((user->type & (SCRIPT | UNKEYED | LINKED | NON_LOGGED)) == 0)
++		  if((user->type & (SCRIPT | UNKEYED | LINKED | NON_LOGGED | NON_LOGGED_ADM)) == 0)
+ 		    chat(temp, user);
+ 	       }
+ 	     

@@ -1,0 +1,35 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Required by >=dev-qt/qtwebengine-5.9
+dev-libs/libxml2 icu
+
+# Required by app-editors/okteta
+dev-qt/qtscript:5 scripttools
+
+# Required by kde-apps/akonadi
+dev-qt/qtsql:5 mysql
+
+# Required by kde-apps/ktp-text-ui
+kde-apps/ktp-common-internals otr
+
+# Required by kde-apps/libkexiv2
+media-gfx/exiv2 xmp
+
+# Required by kde-frameworks/kapidox
+media-gfx/graphviz python
+
+# Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
+media-libs/gd fontconfig
+
+# Required by kde-plasma/kwin
+media-libs/mesa egl wayland
+
+# Required by kde-apps/kdenlive
+>=media-libs/mlt-0.9.8-r2 ffmpeg kdenlive melt
+
+# Required by kde-plasma/plasma-pa
+media-sound/pulseaudio gnome
+
+# Required by kde-frameworks/kactivities
+sys-libs/zlib minizip

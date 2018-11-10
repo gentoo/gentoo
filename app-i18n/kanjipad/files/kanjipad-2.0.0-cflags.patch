@@ -1,0 +1,19 @@
+diff --git a/Makefile b/Makefile
+index 4869923..0f7509c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,4 @@
+-OPTIMIZE=-g -Wall
++OPTIMIZE=-Wall
+ #OPTIMIZE=-O2 
+ 
+ GTKINC=$(shell pkg-config --cflags gtk+-2.0) -DG_DISABLE_DEPRECATED  -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED
+@@ -26,7 +26,7 @@ PACKAGE = kanjipad
+ VERSION = 2.0.0
+ 
+ OBJS = kpengine.o scoring.o util.o
+-CFLAGS = $(OPTIMIZE) $(GTKINC) -DFOR_PILOT_COMPAT -DKP_LIBDIR=\"$(LIBDIR)\" -DBINDIR=\"$(BINDIR)\"
++CFLAGS += $(OPTIMIZE) $(GTKINC) -DFOR_PILOT_COMPAT -DKP_LIBDIR=\"$(LIBDIR)\" -DBINDIR=\"$(BINDIR)\"
+ 
+ all: kpengine kanjipad jdata.dat
+ 

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>php-bugs@gentoo.org</email>
+		<name>PHP</name>
+	</maintainer>
+	<use>
+		<flag name="igbinary">Enable support for the igbinary serializer</flag>
+		<flag name="json">Enable support for json serialization</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">php-memcached-dev/php-memcached</remote-id>
+	</upstream>
+</pkgmetadata>

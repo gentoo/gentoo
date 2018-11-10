@@ -1,0 +1,109 @@
+Author: Adam
+Date: 2012-01-11
+Subject: Fix https://bugs.gentoo.org/381119 , where -I ordering causes
+	mariadb's services.h to be #include-ed improperly.
+
+diff --git a/src/Makefile b/src/Makefile
+index 739c918..a9a2ee2 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -25,7 +25,7 @@ MAKEARGS = 'CFLAGS=${CFLAGS}' 'CC=${CC}' 'ANOPELIBS=${ANOPELIBS}' \
+ 	   'RDB=${RDB}' 'SHARED=${SHARED}' 'MODULEFLAGS=${MODULEFLAGS}'
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) -I../include/ -c $<
++	$(CC) -I../include/ $(CFLAGS) -c $<
+ 
+ all: services
+ 
+diff --git a/src/core/Makefile b/src/core/Makefile
+index 4ec2754..32c049f 100644
+--- a/src/core/Makefile
++++ b/src/core/Makefile
+@@ -21,7 +21,7 @@ install:
+ distclean: spotless
+ 
+ .c.o:
+-	$(CC) ${CFLAGS} ${CDEFS} ${MODULEFLAGS} -I../${INCLUDEDIR} -c $<
++	$(CC) -I../${INCLUDEDIR} ${CFLAGS} ${CDEFS} ${MODULEFLAGS} -c $<
+ 
+ .o.s:
+ 	$(CC) ${SHARED} ../mod_version.o $< -o $*.so ${PROFILE}
+diff --git a/src/core/Makefile.sub b/src/core/Makefile.sub
+index 9fbadf3..d93e6d5 100644
+--- a/src/core/Makefile.sub
++++ b/src/core/Makefile.sub
+@@ -16,7 +16,7 @@ module: $(OBJECTS) so
+ distclean: spotless
+ 
+ .c.o:
+-	$(CC) $(CC) ${CFLAGS} ${CDEFS} ${MODULEFLAGS} -I../ -I../../${INCLUDEDIR} -c $<
++	$(CC) -I../ -I../../${INCLUDEDIR} ${CFLAGS} ${CDEFS} ${MODULEFLAGS} -c $<
+ 
+ so:
+ 	$(CC) ${SHARED} $(OBJECTS) -o ../$(TARGET).so ${PROFILE}
+diff --git a/src/modules/Makefile b/src/modules/Makefile
+index cafbe45..bde65b3 100644
+--- a/src/modules/Makefile
++++ b/src/modules/Makefile
+@@ -24,7 +24,7 @@ install:
+ distclean: spotless
+ 
+ .c.o:
+-	$(CC) ${CFLAGS} ${CDEFS} ${MODULEFLAGS} -I../${INCLUDEDIR} -c $<
++	$(CC) -I../${INCLUDEDIR} ${CFLAGS} ${CDEFS} ${MODULEFLAGS} -c $<
+ 
+ .o.s:
+ 	$(CC) ${SHARED} ../mod_version.o $< -o $*.so  ${PROFILE}
+diff --git a/src/modules/Makefile.sub b/src/modules/Makefile.sub
+index 7697249..b7c244f 100644
+--- a/src/modules/Makefile.sub
++++ b/src/modules/Makefile.sub
+@@ -16,7 +16,7 @@ module: $(OBJECTS) so
+ distclean: spotless
+ 
+ .c.o:
+-	$(CC) ${CFLAGS} ${CDEFS} ${MODULEFLAGS} -I../ -I../../${INCLUDEDIR} -c $<
++	$(CC) -I../ -I../../${INCLUDEDIR} ${CFLAGS} ${CDEFS} ${MODULEFLAGS} -c $<
+ 
+ so:
+ 	$(CC) ${SHARED} ../../mod_version.o  $(OBJECTS) -o ../$(TARGET).so ${PROFILE}
+diff --git a/src/protocol/Makefile b/src/protocol/Makefile
+index ab837e4..d962d8b 100644
+--- a/src/protocol/Makefile
++++ b/src/protocol/Makefile
+@@ -21,7 +21,7 @@ install:
+ distclean: clean spotless
+ 
+ .c.o:
+-	$(CC) ${CFLAGS} ${CDEFS} ${MODULEFLAGS} -I../${INCLUDEDIR} -c $<
++	$(CC) -I../${INCLUDEDIR} ${CFLAGS} ${CDEFS} ${MODULEFLAGS} -c $<
+ 
+ .o.s:
+ 	$(CC) ${SHARED} ../mod_version.o  $< -o $*.so ${PROFILE}
+diff --git a/src/protocol/Makefile.sub b/src/protocol/Makefile.sub
+index a2d6a41..d93e6d5 100644
+--- a/src/protocol/Makefile.sub
++++ b/src/protocol/Makefile.sub
+@@ -16,7 +16,7 @@ module: $(OBJECTS) so
+ distclean: spotless
+ 
+ .c.o:
+-	$(CC) ${CFLAGS} ${CDEFS} ${MODULEFLAGS} -I../ -I../../${INCLUDEDIR} -c $<
++	$(CC) -I../ -I../../${INCLUDEDIR} ${CFLAGS} ${CDEFS} ${MODULEFLAGS} -c $<
+ 
+ so:
+ 	$(CC) ${SHARED} $(OBJECTS) -o ../$(TARGET).so ${PROFILE}
+diff --git a/src/tools/Makefile b/src/tools/Makefile
+index 4dffbf0..87bd0ae 100644
+--- a/src/tools/Makefile
++++ b/src/tools/Makefile
+@@ -10,7 +10,7 @@ MAKEARGS = 'CFLAGS=${CFLAGS}' 'CC=${CC}' 'ANOPELIBS=${ANOPELIBS}' \
+    	   'RUNGROUP=${RUNGROUP}' 
+ 
+ .c.o:
+-	$(CC) $(LDFLAGS) $(CFLAGS) -I../include/ $< -o $*
++	$(CC) -I../include/ $(LDFLAGS) $(CFLAGS) $< -o $*
+ 
+ all: ${OBJS}
+ 

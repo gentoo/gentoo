@@ -1,0 +1,57 @@
+Fake demo_xe.mk found in Oracle eXpress Edition,
+known by CPAN DBD::Oracle (bug#165834).
+This provides absolute paths for headers and libraries.
+
+Paranoia drops those REMOVE lines.
+--- sdk/demo/demo.mk.orig	2012-03-06 17:11:57.636990449 +0100
++++ sdk/demo/demo.mk	2012-03-06 17:19:37.985324293 +0100
+@@ -28,8 +28,9 @@
+ CC=/opt/SunProd/SUNWspro6.1/bin/CC
+ cc=/opt/SunProd/SUNWspro6.1/bin/cc
+ 
+-ICINCHOME=../
+-ICLIBHOME=../../
++LIBDIR=lib
++ICINCHOME=$(ORACLE_HOME)/
++ICLIBHOME=$(ORACLE_HOME)/$(LIBDIR)
+ ICLIBPATH=-L$(ICLIBHOME)
+ THREADLIBS=-lthread
+ CCLIB=$(ICLIBPATH) -locci -lclntsh $(THREADLIBS)
+@@ -64,18 +64,18 @@
+ all: clean buildoci $(OCCIDEMO) $(OCCIOBJDEMO)
+ 
+ buildoci: $(CLNCACHE) $(LIBCLNT) $(CDEMOOBJS)
+-	$(MKLINK) $(ICLIBHOME)libclntsh$(SO_EXT).11.1 $(ICLIBHOME)libclntsh$(SO_EXT)
+-	$(MKLINK) $(ICLIBHOME)libocci$(SO_EXT).11.1 $(ICLIBHOME)libocci$(SO_EXT)
++#	$(MKLINK) $(ICLIBHOME)libclntsh$(SO_EXT).11.1 $(ICLIBHOME)libclntsh$(SO_EXT)
++#	$(MKLINK) $(ICLIBHOME)libocci$(SO_EXT).11.1 $(ICLIBHOME)libocci$(SO_EXT)
+ 	$(CC) -o $(CDEMOEXE) $(LDFLAGS) $(CDEMOOBJS) $(CCLIB)
+-	$(REMOVE) $(ICLIBHOME)libclntsh$(SO_EXT)
+-	$(REMOVE) $(ICLIBHOME)libocci$(SO_EXT)
++#	$(REMOVE) $(ICLIBHOME)libclntsh$(SO_EXT)
++#	$(REMOVE) $(ICLIBHOME)libocci$(SO_EXT)
+ 
+ buildocci: $(CLNCACHE) $(LIBCLNT) $(OBJS)
+-	$(MKLINK) $(ICLIBHOME)libclntsh$(SO_EXT).11.1 $(ICLIBHOME)libclntsh$(SO_EXT)
+-	$(MKLINK) $(ICLIBHOME)libocci$(SO_EXT).11.1 $(ICLIBHOME)libocci$(SO_EXT)
++#	$(MKLINK) $(ICLIBHOME)libclntsh$(SO_EXT).11.1 $(ICLIBHOME)libclntsh$(SO_EXT)
++#	$(MKLINK) $(ICLIBHOME)libocci$(SO_EXT).11.1 $(ICLIBHOME)libocci$(SO_EXT)
+ 	$(CC) -o $(EXE) $(LDFLAGS) $(OBJS) $(CCLIB)
+-	$(REMOVE) $(ICLIBHOME)libclntsh$(SO_EXT)
+-	$(REMOVE) $(ICLIBHOME)libocci$(SO_EXT)
++#	$(REMOVE) $(ICLIBHOME)libclntsh$(SO_EXT)
++#	$(REMOVE) $(ICLIBHOME)libocci$(SO_EXT)
+ 
+ $(OCCIDEMO):
+ 	$(MAKE) -f $(MAKEFILE) buildocci OBJS=$@.o EXE=$@
+@@ -93,8 +93,8 @@
+ 
+ cleancache:
+ 	$(REMOVE) $(CACHEDIR)
+-	$(REMOVE) $(ICLIBHOME)libclntsh$(SO_EXT)
+-	$(REMOVE) $(ICLIBHOME)libocci$(SO_EXT)
++#	$(REMOVE) $(ICLIBHOME)libclntsh$(SO_EXT)
++#	$(REMOVE) $(ICLIBHOME)libocci$(SO_EXT)
+ 
+ clean: $(CLNCACHE)
+ 	$(REMOVE) cdemo81 cdemo81.o occidml occidml.o occiobj occiobj.o occiobjo* occiobjm* occiobj.h occiobjout.type

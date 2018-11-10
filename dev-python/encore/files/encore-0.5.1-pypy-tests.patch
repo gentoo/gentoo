@@ -1,0 +1,36 @@
+diff -ur encore-0.5.1.orig/encore/events/tests/test_event_manager.py encore-0.5.1/encore/events/tests/test_event_manager.py
+--- encore/events/tests/test_event_manager.py	2014-01-06 22:40:24.000000000 +0800
++++ encore/events/tests/test_event_manager.py	2014-05-05 17:56:16.606026933 +0800
+@@ -10,7 +10,7 @@
+ import mock
+ import weakref
+ import threading
+-
++import sys
+ # Local imports.
+ from encore.events.event_manager import EventManager, BaseEvent
+ from encore.events.api import (get_event_manager, set_event_manager,
+@@ -429,6 +429,7 @@
+         self.evt_mgr.emit(BaseEvent())
+         self.assertEqual(data, [1])
+ 
++    @unittest.skipIf(hasattr(sys, 'pypy_version_info'), "test written for py2 garbage collection methods")
+     def test_method_weakref(self):
+         """ Test if methods do not prevent garbage collection of objects.
+         """
+@@ -464,6 +465,7 @@
+         self.evt_mgr.emit(obj)
+         self.assertEqual(data, [1, 2])
+ 
++    @unittest.skipIf(hasattr(sys, 'pypy_version_info'), "test written for py2 garbage collection methods")
+     def test_method_collect(self):
+         """ Test if object garbage collection disconnects listener method.
+         """
+@@ -481,6 +483,7 @@
+         self.assertEqual(data, [])
+         self.assertEqual(len(list(self.evt_mgr.get_listeners(BaseEvent))), 0)
+ 
++    @unittest.skipIf(hasattr(sys, 'pypy_version_info'), "test written for py2 garbage collection methods")
+     def test_method_disconnect(self):
+         """ Test if method disconnect works.
+         """

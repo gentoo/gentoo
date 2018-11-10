@@ -1,0 +1,411 @@
+ Makefile.am               |  9 +++---
+ ajax/Makefile.am          |  4 +--
+ ajax/acd/Makefile.am      |  8 +++--
+ ajax/ajaxdb/Makefile.am   |  6 ++--
+ ajax/core/Makefile.am     |  6 ++--
+ ajax/core/ajreg.h         |  7 ++--
+ ajax/ensembl/Makefile.am  |  6 ++--
+ ajax/graphics/Makefile.am |  8 +++--
+ configure.ac              | 82 ++++++++++++++++++++++++++---------------------
+ emboss/Makefile.am        | 13 +++++---
+ jemboss/lib/Makefile.am   |  2 +-
+ m4/idxdbs.m4              | 17 +++-------
+ nucleus/Makefile.am       |  8 +++--
+ 13 files changed, 100 insertions(+), 76 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 177dec5..18dd99a 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -12,8 +12,11 @@ LICENSE \
+ ONEWS \
+ PROBLEMS
+ 
+-SUBDIRS = \
+-plplot \
++SUBDIRS =
++if !ESYSTEMLIBS
++SUBDIRS += plplot
++endif
++SUBDIRS += \
+ ajax \
+ nucleus \
+ emboss \
+@@ -33,5 +36,3 @@ dist-hook:
+ 	tar cBf - doc | ( cd $(distdir); tar xBf - ; find doc -name CVS | xargs rm -rf; )
+ 	tar cBf - jemboss | ( cd $(distdir); tar xBf - ; find jemboss -name CVS | xargs rm -rf; find jemboss -name Makefile | xargs rm -rf; find jemboss -name .cvsignore | xargs rm -rf )
+ 
+-install-exec-hook:
+-	$(bindir)/embossupdate
+diff --git a/ajax/Makefile.am b/ajax/Makefile.am
+index f27472c..de34e17 100644
+--- a/ajax/Makefile.am
++++ b/ajax/Makefile.am
+@@ -1,7 +1,7 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-SUBDIRS  = pcre
++SUBDIRS  =
+ if !ESYSTEMLIBS
+-SUBDIRS += expat zlib
++SUBDIRS += pcre expat zlib
+ endif
+ SUBDIRS += core graphics ensembl ajaxdb acd
+diff --git a/ajax/acd/Makefile.am b/ajax/acd/Makefile.am
+index 9f0f700..3295a1d 100644
+--- a/ajax/acd/Makefile.am
++++ b/ajax/acd/Makefile.am
+@@ -3,16 +3,20 @@
+ lib_LTLIBRARIES = libacd.la
+ 
+ libacd_la_CFLAGS = $(WARN_CFLAGS) $(DEVWARN_CFLAGS) $(JAVA_CFLAGS)
++libacd_la_LIBADD = ../core/libajax.la ../graphics/libajaxg.la
+ 
+ libacd_la_CPPFLAGS  = -I$(top_srcdir)/ajax/ajaxdb
++libacd_la_CPPFLAGS += -I$(top_srcdir)/ajax/core
+ libacd_la_CPPFLAGS += -I$(top_srcdir)/ajax/ensembl
+ libacd_la_CPPFLAGS += -I$(top_srcdir)/ajax/graphics
+-libacd_la_CPPFLAGS += -I$(top_srcdir)/ajax/pcre
+ if !ESYSTEMLIBS
++libacd_la_CPPFLAGS += -I$(top_srcdir)/ajax/pcre
+ libacd_la_CPPFLAGS += -I$(top_srcdir)/ajax/expat
+ libacd_la_CPPFLAGS += -I$(top_srcdir)/ajax/zlib
+-endif
+ libacd_la_CPPFLAGS += -I$(top_srcdir)/plplot
++else
++libacd_la_CFLAGS   += $(PLPLOT_CFLAGS)
++endif
+ libacd_la_CPPFLAGS += $(JAVA_CPPFLAGS)
+ 
+ libacd_la_LDFLAGS  = -version-info 6:5:0
+diff --git a/ajax/ajaxdb/Makefile.am b/ajax/ajaxdb/Makefile.am
+index c2b0c00..9de14fe 100644
+--- a/ajax/ajaxdb/Makefile.am
++++ b/ajax/ajaxdb/Makefile.am
+@@ -3,14 +3,16 @@
+ lib_LTLIBRARIES = libajaxdb.la
+ 
+ libajaxdb_la_CFLAGS = $(WARN_CFLAGS) $(DEVWARN_CFLAGS) $(JAVA_CFLAGS)
++libajaxdb_la_LIBADD = ../core/libajax.la ../ensembl/libensembl.la
+ 
+ libajaxdb_la_CPPFLAGS  = -I$(top_srcdir)/ajax/ensembl
+-libajaxdb_la_CPPFLAGS += -I$(top_srcdir)/ajax/pcre
++libajaxdb_la_CPPFLAGS += -I$(top_srcdir)/ajax/core
+ if !ESYSTEMLIBS
++libajaxdb_la_CPPFLAGS += -I$(top_srcdir)/ajax/pcre
+ libajaxdb_la_CPPFLAGS += -I$(top_srcdir)/ajax/expat
+ libajaxdb_la_CPPFLAGS += -I$(top_srcdir)/ajax/zlib
+-endif
+ libajaxdb_la_CPPFLAGS += -I$(top_srcdir)/plplot
++endif
+ libajaxdb_la_CPPFLAGS += $(AXIS2C_CPPFLAGS)
+ libajaxdb_la_CPPFLAGS += $(JAVA_CPPFLAGS)
+ 
+diff --git a/ajax/core/Makefile.am b/ajax/core/Makefile.am
+index 2906837..3189c34 100644
+--- a/ajax/core/Makefile.am
++++ b/ajax/core/Makefile.am
+@@ -3,13 +3,15 @@
+ lib_LTLIBRARIES = libajax.la
+ 
+ libajax_la_CFLAGS = $(WARN_CFLAGS) $(DEVWARN_CFLAGS) $(JAVA_CFLAGS)
++libajax_la_LIBADD = $(EXPAT_LIBS) $(PCRE_LIBS) $(ZLIB_LIBS)
+ 
+-libajax_la_CPPFLAGS  = -I$(top_srcdir)/ajax/pcre
++libajax_la_CPPFLAGS  =
+ if !ESYSTEMLIBS
++libajax_la_CPPFLAGS += -I$(top_srcdir)/ajax/pcre
+ libajax_la_CPPFLAGS += -I$(top_srcdir)/ajax/expat
+ libajax_la_CPPFLAGS += -I$(top_srcdir)/ajax/zlib
+-endif
+ libajax_la_CPPFLAGS += -I$(top_srcdir)/plplot
++endif
+ libajax_la_CPPFLAGS += $(JAVA_CPPFLAGS)
+ libajax_la_CPPFLAGS += $(MYSQL_CPPFLAGS)
+ libajax_la_CPPFLAGS += $(POSTGRESQL_CPPFLAGS)
+diff --git a/ajax/core/ajreg.h b/ajax/core/ajreg.h
+index 1623c82..5d928cf 100644
+--- a/ajax/core/ajreg.h
++++ b/ajax/core/ajreg.h
+@@ -39,9 +39,8 @@
+ #include "ajdefine.h"
+ #include "ajstr.h"
+ 
+-#include "pcre_config.h"
+-#include "pcre_internal.h"
+-#include "pcreposix.h"
++#include <pcre.h>
++#include <pcreposix.h>
+ 
+ AJ_BEGIN_DECLS
+ 
+@@ -84,7 +83,7 @@ AJ_BEGIN_DECLS
+ 
+ typedef struct AjSRegexp
+ {
+-    real_pcre *pcre;
++    struct real_pcre *pcre;
+     pcre_extra *extra;
+     int *ovector;
+     const char* orig;
+diff --git a/ajax/ensembl/Makefile.am b/ajax/ensembl/Makefile.am
+index 0d1250b..5484c02 100644
+--- a/ajax/ensembl/Makefile.am
++++ b/ajax/ensembl/Makefile.am
+@@ -3,13 +3,15 @@
+ lib_LTLIBRARIES = libensembl.la
+ 
+ libensembl_la_CFLAGS = $(WARN_CFLAGS) $(DEVWARN_CFLAGS) $(JAVA_CFLAGS)
++libensembl_la_LIBADD = ../core/libajax.la
+ 
+-libensembl_la_CPPFLAGS  = -I$(top_srcdir)/ajax/pcre
++libensembl_la_CPPFLAGS  = -I$(top_srcdir)/ajax/core
+ if !ESYSTEMLIBS
++libensembl_la_CPPFLAGS += -I$(top_srcdir)/ajax/pcre
+ libensembl_la_CPPFLAGS += -I$(top_srcdir)/ajax/expat
+ libensembl_la_CPPFLAGS += -I$(top_srcdir)/ajax/zlib
+-endif
+ libensembl_la_CPPFLAGS += -I$(top_srcdir)/plplot
++endif
+ libensembl_la_CPPFLAGS += $(JAVA_CPPFLAGS)
+ 
+ libensembl_la_LDFLAGS  = -version-info 6:5:0
+diff --git a/ajax/graphics/Makefile.am b/ajax/graphics/Makefile.am
+index a4f202b..1114c2c 100644
+--- a/ajax/graphics/Makefile.am
++++ b/ajax/graphics/Makefile.am
+@@ -3,12 +3,16 @@
+ lib_LTLIBRARIES = libajaxg.la
+ 
+ libajaxg_la_CFLAGS = $(WARN_CFLAGS) $(DEVWARN_CFLAGS) $(JAVA_CFLAGS)
++libajaxg_la_LIBADD = ../core/libajax.la $(PLPLOT_LIBS)
+ 
+-libajaxg_la_CPPFLAGS  = -I$(top_srcdir)/ajax/pcre
++libajaxg_la_CPPFLAGS  = -I$(top_srcdir)/ajax/core
+ if !ESYSTEMLIBS
++libajaxg_la_CPPFLAGS += -I$(top_srcdir)/ajax/pcre
+ libajaxg_la_CPPFLAGS += -I$(top_srcdir)/ajax/expat
+-endif
+ libajaxg_la_CPPFLAGS += -I$(top_srcdir)/plplot
++else
++libajaxg_la_CFLAGS   += $(PLPLOT_CFLAGS)
++endif
+ libajaxg_la_CPPFLAGS += $(JAVA_CPPFLAGS)
+ 
+ libajaxg_la_LDFLAGS  = -version-info 6:5:0
+diff --git a/configure.ac b/configure.ac
+index a7bd9c6..9ba3121 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -629,32 +629,6 @@ AS_CASE([${host_os}],
+ 
+ 
+ 
+-
+-dnl PCRE library definitions - see the MAJOR and MINOR values
+-dnl to see which version's configure.in these lines come from
+-
+-dnl Provide the current PCRE version information. Do not use numbers
+-dnl with leading zeros for the minor version, as they end up in a C
+-dnl macro, and may be treated as octal constants. Stick to single
+-dnl digits for minor numbers less than 10. There are unlikely to be
+-dnl that many releases anyway.
+-
+-PCRE_MAJOR="7"
+-PCRE_MINOR="9"
+-PCRE_DATE="11-Apr-2009"
+-PCRE_VERSION="${PCRE_MAJOR}.${PCRE_MINOR}"
+-
+-dnl Default values for miscellaneous macros
+-
+-POSIX_MALLOC_THRESHOLD="-DPOSIX_MALLOC_THRESHOLD=10"
+-
+-dnl Provide versioning information for libtool shared libraries that
+-dnl are built by default on Unix systems.
+-
+-PCRE_LIB_VERSION="0:1:0"
+-PCRE_POSIXLIB_VERSION="0:0:0"
+-
+-
+ dnl Define where the EMBOSS package is located
+ AC_SUBST([AJAX_FIXED_ROOT])
+ AJAX_FIXED_ROOT="\\\"`pwd`/emboss\\\""
+@@ -743,17 +717,7 @@ AX_LIB_POSTGRESQL
+ 
+ 
+ 
+-dnl "Export" these variables for PCRE
+ 
+-AC_SUBST([HAVE_MEMMOVE])
+-AC_SUBST([HAVE_STRERROR])
+-AC_SUBST([PCRE_MAJOR])
+-AC_SUBST([PCRE_MINOR])
+-AC_SUBST([PCRE_DATE])
+-AC_SUBST([PCRE_VERSION])
+-AC_SUBST([PCRE_LIB_VERSION])
+-AC_SUBST([PCRE_POSIXLIB_VERSION])
+-AC_SUBST([POSIX_MALLOC_THRESHOLD])
+ 
+ 
+ 
+@@ -849,7 +813,53 @@ AC_ARG_ENABLE([systemlibs],
+ 
+ AM_CONDITIONAL([ESYSTEMLIBS], [test "x${enable_systemlibs}" = "xyes"])
+ 
++AS_IF([test "x${enable_systemlibs}" = "xyes"],
++[
++dnl using system libraries
++  PKG_CHECK_MODULES([PCRE], [libpcre])
++  PKG_CHECK_MODULES([EXPAT], [expat])
++  PKG_CHECK_MODULES([ZLIB], [zlib])
++  PKG_CHECK_MODULES([PLPLOT], [plplotd],
++    [],[PKG_CHECK_MODULES([PLPLOT], [plplot])]
++    )
++],
++[
++dnl using bundled libraries
++  dnl PCRE library definitions - see the MAJOR and MINOR values
++  dnl to see which version's configure.ac these lines come from
+ 
++  dnl Provide the current PCRE version information. Do not use numbers
++  dnl with leading zeros for the minor version, as they end up in a C
++  dnl macro, and may be treated as octal constants. Stick to single
++  dnl digits for minor numbers less than 10. There are unlikely to be
++  dnl that many releases anyway.
++
++  PCRE_MAJOR="7"
++  PCRE_MINOR="9"
++  PCRE_DATE="11-Apr-2009"
++  PCRE_VERSION="${PCRE_MAJOR}.${PCRE_MINOR}"
++
++  dnl Default values for miscellaneous macros
++
++  POSIX_MALLOC_THRESHOLD="-DPOSIX_MALLOC_THRESHOLD=10"
++
++  dnl Provide versioning information for libtool shared libraries that
++  dnl are built by default on Unix systems.
++
++  PCRE_LIB_VERSION="0:1:0"
++  PCRE_POSIXLIB_VERSION="0:0:0"
++
++  dnl "Export" these variables for PCRE
++  AC_SUBST([HAVE_MEMMOVE])
++  AC_SUBST([HAVE_STRERROR])
++  AC_SUBST([PCRE_MAJOR])
++  AC_SUBST([PCRE_MINOR])
++  AC_SUBST([PCRE_DATE])
++  AC_SUBST([PCRE_VERSION])
++  AC_SUBST([PCRE_LIB_VERSION])
++  AC_SUBST([PCRE_POSIXLIB_VERSION])
++  AC_SUBST([POSIX_MALLOC_THRESHOLD])
++])
+ 
+ 
+ # Enable the purify tool: --enable-purify, sets CC and LIBTOOL
+diff --git a/emboss/Makefile.am b/emboss/Makefile.am
+index 89ada78..f987d40 100644
+--- a/emboss/Makefile.am
++++ b/emboss/Makefile.am
+@@ -28,15 +28,18 @@ endif
+ 
+ AM_CPPFLAGS  = -I$(top_srcdir)/ajax/acd
+ AM_CPPFLAGS += -I$(top_srcdir)/ajax/ajaxdb
++AM_CPPFLAGS += -I$(top_srcdir)/ajax/core
+ AM_CPPFLAGS += -I$(top_srcdir)/ajax/ensembl
+ AM_CPPFLAGS += -I$(top_srcdir)/ajax/graphics
++if !ESYSTEMLIBS
+ AM_CPPFLAGS += -I$(top_srcdir)/ajax/pcre
+-if !ESYSTEMLIBS
+ AM_CPPFLAGS += -I$(top_srcdir)/ajax/expat
+ AM_CPPFLAGS += -I$(top_srcdir)/ajax/zlib
+-endif
+-AM_CPPFLAGS += -I$(top_srcdir)/nucleus
+ AM_CPPFLAGS += -I$(top_srcdir)/plplot
++else
++AM_CFLAGS   += $(PLPLOT_CFLAGS)
++endif
++AM_CPPFLAGS += -I$(top_srcdir)/nucleus
+ AM_CPPFLAGS += $(AXIS2C_CPPFLAGS)
+ AM_CPPFLAGS += $(JAVA_CPPFLAGS)
+ 
+@@ -49,9 +52,11 @@ LDADD += ../ajax/core/libajax.la
+ if !ESYSTEMLIBS
+ LDADD += ../ajax/zlib/libezlib.la
+ LDADD += ../ajax/expat/libeexpat.la
+-endif
+ LDADD += ../ajax/pcre/libepcre.la
+ LDADD += ../plplot/libeplplot.la
++else
++LDADD += $(EXPAT_LIBS) $(PCRE_LIBS) $(ZLIB_LIBS) $(PLPLOT_LIBS)
++endif
+ LDADD += $(XLIB)
+ 
+ #if PURIFY
+diff --git a/jemboss/lib/Makefile.am b/jemboss/lib/Makefile.am
+index 5f7e21e..8b45ce2 100644
+--- a/jemboss/lib/Makefile.am
++++ b/jemboss/lib/Makefile.am
+@@ -12,7 +12,7 @@ mail.jar \
+ jalviewApplet.jar \
+ jemboss.jar
+ 
+-jemboss.jar:../org/emboss/jemboss/server/JembossFile*Server.java
++jemboss.jar:$(srcdir)/../org/emboss/jemboss/server/JembossFile*Server.java
+ if JAVA_BUILD
+ 	$(ANT) -f ../build.xml package -Demboss.data=../emboss/data -Dname=jemboss -Djar.dir=lib -Dnotformemboss=yes;
+ endif
+diff --git a/m4/idxdbs.m4 b/m4/idxdbs.m4
+index 0ca7ea9..9b54f2a 100644
+--- a/m4/idxdbs.m4
++++ b/m4/idxdbs.m4
+@@ -1,17 +1,8 @@
+ AC_DEFUN([CHECK_IDXDBS],
+ [
+-AC_MSG_CHECKING(for EMBOSS pre-indexed databases)
++AC_MSG_NOTICE(checking for EMBOSS pre-indexed databases)
+ 
+-
+-if test -f ./emboss/index/edam.xac; then
+-AC_MSG_RESULT(yes)
+-else
+-AC_MSG_RESULT(no)
+-echo ""
+-echo "Pre-indexed edam, taxon + drcat databases not found."
+-echo "Please download them from within this directory using:"
+-echo "    rsync -av rsync://emboss.open-bio.org/EMBOSS/ ."
+-echo "and then repeat the configure step."
+-exit 1
+-fi
++AC_CHECK_FILE([$srcdir/emboss/index/edam.xac],
++	[],
++	[AC_MSG_ERROR([cannot find pre-indexed edam, taxon + drcat databases])])
+ ])
+diff --git a/nucleus/Makefile.am b/nucleus/Makefile.am
+index 37b8543..5819c89 100644
+--- a/nucleus/Makefile.am
++++ b/nucleus/Makefile.am
+@@ -3,6 +3,7 @@
+ lib_LTLIBRARIES = libnucleus.la
+ 
+ libnucleus_la_CFLAGS  = $(WARN_CFLAGS) $(DEVWARN_CFLAGS) $(JAVA_CFLAGS)
++libnucleus_la_LIBADD  = ../ajax/core/libajax.la ../ajax/ajaxdb/libajaxdb.la ../ajax/acd/libacd.la
+ 
+ if ISSHARED
+ if ISAIXIA64
+@@ -10,11 +11,14 @@ libnucleus_la_CFLAGS += -Wl,-G -lm
+ endif
+ endif
+ 
+-libnucleus_la_CPPFLAGS  = -I$(top_srcdir)/plplot
+-libnucleus_la_CPPFLAGS += -I$(top_srcdir)/ajax/pcre
++libnucleus_la_CPPFLAGS  = -I$(top_srcdir)/ajax/core
+ if !ESYSTEMLIBS
++libnucleus_la_CPPFLAGS += -I$(top_srcdir)/plplot
++libnucleus_la_CPPFLAGS += -I$(top_srcdir)/ajax/pcre
+ libnucleus_la_CPPFLAGS += -I$(top_srcdir)/ajax/expat
+ libnucleus_la_CPPFLAGS += -I$(top_srcdir)/ajax/zlib
++else
++libnucleus_la_CFLAGS   += $(PLPLOT_CFLAGS)
+ endif
+ libnucleus_la_CPPFLAGS += -I$(top_srcdir)/ajax/graphics
+ libnucleus_la_CPPFLAGS += -I$(top_srcdir)/ajax/ensembl

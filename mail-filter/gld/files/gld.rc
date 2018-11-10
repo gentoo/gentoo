@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net # in case mysql daemon is not local
+	use dns mysql postgresql
+	before postfix
+	provide postfix_greylist
+}
+
+start() {
+	ebegin "Starting gld"
+	start-stop-daemon --start --quiet --exec /usr/bin/gld
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping gld"
+	start-stop-daemon --stop --quiet --name gld
+	eend $?
+}

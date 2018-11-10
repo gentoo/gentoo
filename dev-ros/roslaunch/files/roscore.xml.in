@@ -1,0 +1,13 @@
+<!-- 
+  ROS Core Stack definition
+
+  Before making any modifications to this file, please read:
+  http://ros.org/wiki/roscore
+  -->
+<launch>
+  <group ns="/">
+    <param name="rosversion" value="@PKG_VERSION@" />
+    <param name="rosdistro" value="Gentoo" />
+    <node pkg="rosout" type="rosout" name="rosout" respawn="true"/>
+  </group>
+</launch>

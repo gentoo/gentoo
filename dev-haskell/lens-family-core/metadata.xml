@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package provides first class( ) functional references.
+		In addition to the usual operations of getting, setting and composition, plus integration with the state monad, lens families provide some unique features:
+		
+		* Polymorphic updating
+		
+		* Traversals
+		
+		* Cast projection functions to read-only lenses
+		
+		* Cast \"toList\" functions to read-only traversals
+		
+		* Cast semantic editor combinators to modify-only traversals.
+		
+		( ) For optimal first-class support use the @lens-family@ package with rank 2 / rank N polymorphism.
+		"Lens.Family.Clone" allows for first-class support of lenses and traversals for those who require Haskell 98.
+	</longdescription>
+</pkgmetadata>

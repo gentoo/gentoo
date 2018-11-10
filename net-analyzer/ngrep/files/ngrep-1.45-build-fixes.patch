@@ -1,0 +1,186 @@
+This patch fixes a number of problems with have with build:
+
+ * more clean cut off pcre library; we'll never use bundled pcre library, so
+   some autoconf added REGEX_LIBS to pass correct system libs and header change.
+
+ * We use AC_CONFIG_SUBDIRS to pass make autoconf reconfigure gnuregex library
+   - this way ./configure will be called correctly and correct comipler will be
+   selected automatically.
+
+ * With the previous change some modifications were required to make gnuregex
+   buildable: a) we should not overide CFLAGS in Makefile.in (as they together
+   with -DHAVE_CONFIG_H will be passed to gnuregex and it'll fail to build,
+   since no config.h exist) b) obvious way to remove warning "_GNU_SOURCE"
+   redefined
+
+ * also we don't pass $(MAKEFLAGS) since it caused us problems in the past (bug
+   #178684)
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -7,7 +7,8 @@
+ 
+ CC=@CC@
+ 
+-CFLAGS=@CFLAGS@ -D@OS@ @DEFS@ @EXTRA_DEFINES@ 
++# Never redefine CFLAGS, as it pollutes env and gnuregex build failes
++EXTRA_CFLAGS=@CFLAGS@ -D@OS@ @DEFS@ @EXTRA_DEFINES@ 
+ INCLUDES=-I@srcdir@ @PCAP_INCLUDE@ @EXTRA_INCLUDES@
+ 
+ LDFLAGS=@LDFLAGS@ @PCAP_LINK@
+@@ -34,25 +35,25 @@
+ 
+ REGEX_DIR=@REGEX_DIR@
+ REGEX_OBJS=@REGEX_OBJS@
+-
++REGEX_LIBS=@REGEX_LIBS@
+ 
+ all: $(TARGET) 
+ 
+ $(TARGET): $(REGEX_OBJS) $(OBJS) 
+-	$(CC) $(CFLAGS) $(LDFLAGS) $(STRIPFLAG) -o $(TARGET) $(OBJS) $(REGEX_OBJS) $(LIBS) 
++	$(CC) $(EXTRA_CFLAGS) $(LDFLAGS) -o $(TARGET) $(OBJS) $(REGEX_OBJS) $(REGEX_LIBS) $(LIBS) 
+ 
+ debug: $(REGEX_OBJS) $(OBJS)
+-	$(CC) $(CFLAGS) $(LDFLAGS) -g -o $(TARGET) $(OBJS) $(REGEX_OBJS) $(LIBS) 
++	$(CC) $(EXTRA_CFLAGS) $(LDFLAGS) -g -o $(TARGET) $(OBJS) $(REGEX_OBJS) $(REGEX_LIBS) $(LIBS) 
+ 
+ static: $(REGEX_OBJS) $(OBJS)
+-	$(CC) $(CFLAGS) $(LDFLAGS) $(STRIPFLAG) -o $(TARGET).static -static $(OBJS) $(REGEX_OBJS) $(LIBS) 
++	$(CC) $(EXTRA_CFLAGS) $(LDFLAGS) -o $(TARGET).static -static $(OBJS) $(REGEX_OBJS) $(REGEX_LIBS) $(LIBS) 
+ 
+ install: $(TARGET)
+ 	$(INSTALL) -c -m 0755 $(TARGET)  $(DESTDIR)/$(BINDIR_INSTALL)/$(TARGET)
+ 	$(INSTALL) -c -m 0644 $(MANPAGE) $(DESTDIR)/$(MANDIR_INSTALL)/$(MANPAGE)
+ 
+ .c.o:	
+-	$(CC) $(CFLAGS) $(INCLUDES) -g -c $<
++	$(CC) $(EXTRA_CFLAGS) $(INCLUDES) -g -c $<
+ 
+ clean:
+ 	make -C $(REGEX_DIR) clean
+@@ -63,7 +64,7 @@
+ 	rm -f config.status config.cache config.log config.h Makefile 
+ 
+ $(REGEX_OBJS): $(REGEX_OBJS:.o=.c) $(REGEX_DIR)/*.h
+-	$(MAKE) $(MAKEFLAGS) -C $(REGEX_DIR) $(notdir $(REGEX_OBJS))
++	$(MAKE) -C $(REGEX_DIR) $(notdir $(REGEX_OBJS))
+ 
+ $(OBJS): Makefile ngrep.c ngrep.h
+ 
+
+--- a/configure.in
++++ b/configure.in
+@@ -124,14 +124,16 @@
+   use_pcre="no"
+ ])
+ 
++REGEX_DIR=""
++REGEX_OBJS=""
++REGEX_LIBS=""
+ if test $use_pcre = yes; then
+ 
+   echo 
+-  echo 'Configuring Perl-Compatible Regular Expression (PCRE) library ...' 
++  echo 'Using System Perl-Compatible Regular Expression (PCRE) library ...' 
+   echo 
+ 
+-  REGEX_DIR='pcre-5.0'
+-  REGEX_OBJS="$REGEX_DIR/pcre.o $REGEX_DIR/study.o"
++  REGEX_LIBS="`pcre-config --libs`"
+   USE_PCRE="1"
+ 
+ else
+@@ -144,12 +146,19 @@
+   REGEX_OBJS="$REGEX_DIR/regex.o"
+   USE_PCRE="0"
+ 
++  AC_CONFIG_SUBDIRS([regex-0.12])
++
++  echo
++  echo 'GNU Regular Expression library is configured...'
++  echo
++
+ fi
+ 
+-( cd $REGEX_DIR && ./configure )
+ 
+ AC_SUBST(REGEX_DIR)
+ AC_SUBST(REGEX_OBJS)
++AC_SUBST(REGEX_LIBS)
++
+ 
+ 
+ echo
+
+--- a/ngrep.c
++++ b/ngrep.c
+@@ -92,7 +92,7 @@
+ #endif
+ 
+ #if USE_PCRE
+-#include "pcre-5.0/pcre.h"
++#include <pcre.h>
+ #else
+ #include "regex-0.12/regex.h"
+ #endif
+
+--- a/regex-0.12/Makefile.in
++++ b/regex-0.12/Makefile.in
+@@ -18,23 +18,6 @@
+ 
+ version = 0.12
+ 
+-# You can define CPPFLAGS on the command line.  Aside from system-specific
+-# flags, you can define:
+-#   -DREGEX_MALLOC to use malloc/realloc/free instead of alloca.
+-#   -DDEBUG to enable the compiled pattern disassembler and execution
+-#           tracing; code runs substantially slower.
+-#   -DEXTRACT_MACROS to use the macros EXTRACT_* (as opposed to
+-#           the corresponding C procedures).  If not -DDEBUG, the macros
+-#           are used.
+-CPPFLAGS = 
+-
+-# Likewise, you can override CFLAGS to optimize, use -Wall, etc.
+-CFLAGS = -g
+-
+-# Ditto for LDFLAGS and LOADLIBES.
+-LDFLAGS =
+-LOADLIBES =
+-
+ srcdir = @srcdir@
+ VPATH = @srcdir@
+ 
+@@ -43,7 +26,7 @@
+ 
+ SHELL = /bin/sh
+ 
+-subdirs = doc test
++subdirs = 
+ 
+ default all:: regex.o
+ .PHONY: default all
+
+--- a/regex-0.12/configure.in
++++ b/regex-0.12/configure.in
+@@ -34,4 +34,4 @@
+ 
+ esac
+ 
+-AC_OUTPUT(Makefile doc/Makefile test/Makefile)
++AC_OUTPUT(Makefile)
+
+=== modified file 'regex-0.12/regex.c'
+--- a/regex-0.12/regex.c
++++ b/regex-0.12/regex.c
+@@ -34,7 +34,9 @@
+   #pragma alloca
+ #endif
+ 
++#ifndef _GNU_SOURCE
+ #define _GNU_SOURCE
++#endif
+ 
+ /* We need this for `regex.h', and perhaps for the Emacs include files.  */
+ #include <sys/types.h>
+

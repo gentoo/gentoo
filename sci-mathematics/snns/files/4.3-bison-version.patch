@@ -1,0 +1,11 @@
+--- a/configure	2015-04-08 16:27:05.000000000 -0400
++++ b/configure	2015-04-08 16:26:41.000000000 -0400
+@@ -5071,7 +5071,7 @@
+ else
+     { echo "$as_me:$LINENO: checking for version of bison" >&5
+ echo $ECHO_N "checking for version of bison... $ECHO_C" >&6; }
+-    bison_version=`$BISON --version`
++    bison_version=`$BISON --version |head -n 1`
+     { echo "$as_me:$LINENO: result: $bison_version" >&5
+ echo "${ECHO_T}$bison_version" >&6; }
+     warn_bison=yes

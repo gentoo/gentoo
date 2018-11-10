@@ -1,0 +1,45 @@
+From 98ff7acca7595f508b094506195aeffaf2e8b74c Mon Sep 17 00:00:00 2001
+From: Stefan Sauer <ensonic@users.sf.net>
+Date: Wed, 23 Jan 2013 08:11:18 +0100
+Subject: mconvert: enable recursive scheme lookup and fix a crasher
+
+The recursive scheme lookup is needed to scan the whole settings path. The crash
+would happen in the case of a misconfiguration (e.g. building gconf from source
+and running uninstalled while the configure settings don't match the one used to
+create the installed package).
+
+diff --git a/gsettings/gsettings-data-convert.c b/gsettings/gsettings-data-convert.c
+index a8af942..9b2d1d0 100644
+--- a/gsettings/gsettings-data-convert.c
++++ b/gsettings/gsettings-data-convert.c
+@@ -22,6 +22,7 @@
+ #include <string.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <stdlib.h>
+ #include <unistd.h>
+ #include <errno.h>
+ 
+@@ -90,6 +91,10 @@ get_writable_client (void)
+   GSList *addresses;
+ 
+   addresses = get_writable_source_path ();
++  if (!addresses) {
++    g_printf("No writable gconf locations found\n");
++    exit (1);
++  }
+   engine = gconf_engine_get_local_for_addresses (addresses, NULL);
+   gconf_address_list_free (addresses);
+ 
+@@ -155,7 +160,7 @@ handle_file (const gchar *filename)
+ 
+       schema_path = g_strsplit (groups[i], ":", 2);
+ 
+-      schema = g_settings_schema_source_lookup (source, schema_path[0], FALSE);
++      schema = g_settings_schema_source_lookup (source, schema_path[0], TRUE);
+       if (schema == NULL)
+         {
+           if (verbose)
+-- 
+cgit v0.10.1
+

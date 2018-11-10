@@ -1,0 +1,9 @@
+[Unit]
+Description=UDP-to-HTTP multicast traffic relay daemon
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/bin/udpxy -T -p 4022
+
+[Install]
+WantedBy=multi-user.target

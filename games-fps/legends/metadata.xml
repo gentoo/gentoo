@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
+<longdescription>
+Legends is a fast-paced first-person-perspective online multiplayer 
+game. The game is designed to take advantage of the beautiful 
+environments available from the Torque engine it is based on while still 
+offering the breakneck pacing and variety of styles available from such 
+classics as Quake and Tribes.
+
+Gameplay is not the strafe-strafe-jump-strafe-shoot-strafe-run-like-hell 
+style a lot of games espouse; the addition of a jetpack adds a third 
+dimension of mobility that makes skill, forethought, and restraint 
+necessities to winning.
+
+Team sizes are going to be ideal between 10 and 15 on each side, and the 
+network code will allow anyone with any bandwidth to play relatively 
+smoothly. Game type offerings will range from the classic Capture the 
+Flag to our own new type, affectionately called "Knockout".
+
+Plenty of maps will be provided by us, but the beauty of this game is 
+its customization possibilities. Mission creation has never been easier, 
+with a stable, full-featured editor integrated into the game engine 
+itself. Skins, models, and effects can all be modified by the end-user 
+with commonly available tools. 
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,23 @@
+--- dustrac-1.11.0.orig/CMakeLists.txt
++++ dustrac-1.11.0/CMakeLists.txt
+@@ -68,8 +68,7 @@
+ endif()
+ 
+ if(CMAKE_COMPILER_IS_GNUCXX OR MINGW OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+-    add_compile_options(-std=c++11 -W -Wall -O3 -pedantic)
+-    add_compile_options(-fomit-frame-pointer -finline-functions -ffast-math)
++	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -W -Wall -fomit-frame-pointer -finline-functions")
+ elseif(MSVC)
+     add_definitions(-DNOMINMAX)
+ endif()
+--- dustrac-1.11.0.orig/InstallLinux.cmake
++++ dustrac-1.11.0/InstallLinux.cmake
+@@ -58,7 +58,7 @@
+     install(FILES data/fonts.conf DESTINATION ${DATA_PATH})
+     install(FILES data/meshes.conf DESTINATION ${DATA_PATH})
+     install(FILES data/surfaces.conf DESTINATION ${DATA_PATH})
+-    install(FILES AUTHORS CHANGELOG COPYING README DESTINATION ${DOC_PATH})
++    install(FILES AUTHORS CHANGELOG README DESTINATION ${DOC_PATH})
+     install(DIRECTORY data/images DESTINATION ${DATA_PATH} FILES_MATCHING PATTERN "*.jpg")
+     install(DIRECTORY data/images DESTINATION ${DATA_PATH} FILES_MATCHING PATTERN "*.png")
+     install(DIRECTORY data/levels DESTINATION ${DATA_PATH} FILES_MATCHING PATTERN "*.trk")

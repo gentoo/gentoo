@@ -1,0 +1,43 @@
+Index: pwsafe.cpp
+===================================================================
+RCS file: /cvsroot/pwsafe/pwsafe/pwsafe.cpp,v
+retrieving revision 1.57
+diff -u -r1.57 pwsafe.cpp
+--- pwsafe.cpp	12 Aug 2007 12:33:06 -0000	1.57
++++ pwsafe.cpp	30 Mar 2011 05:44:07 -0000
+@@ -1619,7 +1619,7 @@
+     snprintf(ent_buf, sizeof(ent_buf), "%d", entropy_needed);
+     ent_buf[sizeof(ent_buf)-1] = '\0';
+     char len_buf[24];
+-    snprintf(len_buf, sizeof(len_buf), "%d", pw.length());
++    snprintf(len_buf, sizeof(len_buf), "%lu", static_cast<unsigned long>(pw.length()));
+     len_buf[sizeof(len_buf)-1] = '\0';
+     switch (tolower(get1char("Use "+pw+"\ntype "+type_name+", length "+len_buf+", "+ent_buf+" bits of entropy [y/N/ /+/-/q/?] ? ", 'n'))) {
+       case 'y':
+@@ -2380,7 +2380,7 @@
+     version = VERSION_1_7;
+   }
+  
+-  if (arg_verbose > 1) printf("read in %u entries\n", entries.size());
++  if (arg_verbose > 1) printf("read in %lu entries\n", static_cast<unsigned long>(entries.size()));
+ 
+   opened = true;
+   return true;
+@@ -2601,7 +2601,7 @@
+       for (matches_t::const_iterator i=matches.begin(); i!=matches.end() && count < 3; ++i, ++count)
+         printf("%s%s", (count?", ":""), (*i)->groupname().c_str());
+       if (count != matches.size())
+-        printf(", ... (%u more) ", matches.size()-3);
++        printf(", ... (%lu more) ", static_cast<unsigned long>(matches.size()-3));
+       printf(".\n");
+       throw FailEx();
+     }
+@@ -2637,7 +2637,7 @@
+             // print out the UUID too
+             fprintf(outfile, "%s\n", formatuuid(e.uuid).c_str());
+           if (!e.extras.empty())
+-            fprintf(outfile, "and %u unknown extra fields\n", e.extras.size());
++            fprintf(outfile, "and %lu unknown extra fields\n", static_cast<unsigned long>(e.extras.size()));
+         }
+       } else
+         // just print out the name

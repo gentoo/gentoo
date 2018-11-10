@@ -1,0 +1,77 @@
+diff -ru tomenet-4.6.1a.orig/src/makefile tomenet-4.6.1a/src/makefile
+--- tomenet-4.6.1a.orig/src/makefile	2015-12-31 07:05:21.000000000 -0500
++++ tomenet-4.6.1a/src/makefile	2016-02-10 01:42:12.958344532 -0500
+@@ -203,7 +203,7 @@
+ #
+ # This is my compiler of choice, it seems to work most everywhere
+ #
+-CC = gcc
++CC ?= gcc
+ 
+ # For allowing #if..#else..#endif constructs in LUA files - C. Blue
+ # Note: The flags must contain
+@@ -215,16 +215,26 @@
+ # need to use the gcc invocation below instead.
+ #
+ # cpp variant:
+-CPP = cpp
+-CPPFLAGS = -C -P
++#CPP = cpp
++#CPPFLAGS = -C -P
+ # gcc variant:
+-#CPP = gcc
+-#CPPFLAGS = -x c -E -Wp,-C,-P
++CPP ?= gcc
++CPPFLAGS = -x c -E -Wp,-C,-P
+ 
+ 
+ # For variations with X11
+ X11BASE = /usr/X11R6
+ 
++# defines
++ifdef USE_SDL
++CFLAGS += -DSOUND_SDL $(shell sdl-config --cflags)
++SDL_LIBS = $(shell sdl-config --libs) -lSDL_mixer
++endif
++
++ifdef USE_X
++CFLAGS += -I${X11BASE}/include -DUSE_X11
++LIBS += -L${X11BASE}/lib -lX11
++endif
+ 
+ ##
+ ## Standard version -- supports X11 (main-x11.c)
+@@ -237,6 +247,11 @@
+ #CFLAGS = -g -pipe -Wall -DUSE_X11 -I${X11BASE}/include -D_XOPEN_SOURCE -D_BSD_SOURCE -DMEXP=19937 -std=c99 -DSOUND_SDL `sdl-config --cflags`
+ #LIBS = -L${X11BASE}/lib -L/usr/pkg/lib -lX11 -lcrypt -lm `sdl-config --libs` -lSDL_mixer
+ ##
++
++CFLAGS += -Wall
++CFLAGS += -DUSE_GCU -D_XOPEN_SOURCE -D_BSD_SOURCE -DMEXP=19937 -std=c99
++LIBS += -L/usr/pkg/lib $(shell ${PKG_CONFIG} --libs ncurses) -lcrypt -lm ${SDL_LIBS}
++
+ ## Without SDL
+ #CFLAGS = -g -pipe -Wall -DUSE_X11 -I${X11BASE}/include -D_XOPEN_SOURCE -D_BSD_SOURCE -DMEXP=19937 -std=c99
+ #LIBS = -L${X11BASE}/lib -L/usr/pkg/lib -lX11 -lcrypt -lm
+@@ -256,8 +271,8 @@
+ # attempt to "guess" at many of these flags based on your system.
+ #
+ ## With SDL
+-CFLAGS = -g -pipe -Wall -DUSE_X11 -DUSE_GCU -I${X11BASE}/include -D_XOPEN_SOURCE -D_BSD_SOURCE -DMEXP=19937 -std=c99 -DSOUND_SDL `sdl-config --cflags` -D_DEFAULT_SOURCE -DACC32
+-LIBS = -L${X11BASE}/lib -L/usr/pkg/lib -lX11 -lncurses -lcrypt -lm `sdl-config --libs` -lSDL_mixer
++#CFLAGS = -g -pipe -Wall -DUSE_X11 -DUSE_GCU -I${X11BASE}/include -D_XOPEN_SOURCE -D_BSD_SOURCE -DMEXP=19937 -std=c99 -DSOUND_SDL `sdl-config --cflags` -D_DEFAULT_SOURCE -DACC32
++LIBS = -L${X11BASE}/lib -L/usr/pkg/lib -lX11 $(shell ${PKG_CONFIG} --libs ncurses) -lcrypt -lm $(shell sdl-config --libs) -lSDL_mixer
+ ##
+ ## Without SDL
+ #CFLAGS = -g -pipe -Wall -DUSE_X11 -DUSE_GCU -I${X11BASE}/include -D_XOPEN_SOURCE -D_BSD_SOURCE -DMEXP=19937 -std=c99
+@@ -357,10 +372,6 @@
+ # Compile a client with 'test client' version/tag
+ tomenet.test: CFLAGS += -DTEST_CLIENT -O0
+ 
+-# Normal release build
+-tomenet: CFLAGS += -O2
+-
+-
+ # Lua
+ SRCS += $(LUASRCS)
+ SRCS += $(CLI_LUASRCS)

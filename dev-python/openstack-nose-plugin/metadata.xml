@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription lang="en">
+		openstack.nose_plugin provides a nose plugin that allow's nosetests output
+		to mimic the output of openstack's run_tests.py.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">openstack.nose_plugin</remote-id>
+		<remote-id type="github">openstack-dev/openstack-nose</remote-id>
+	</upstream>
+</pkgmetadata>

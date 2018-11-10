@@ -1,0 +1,13 @@
+# Copyright 1999-2014 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+#
+
+# selinux - Enable SELinux support
+USE="selinux"
+
+FEATURES="selinux sesandbox sfperms"
+
+POLICY_TYPES="strict targeted"
+PORTAGE_T="portage_t"
+PORTAGE_FETCH_T="portage_fetch_t"
+PORTAGE_SANDBOX_T="portage_sandbox_t"

@@ -1,0 +1,34 @@
+ pip/_vendor/__init__.py | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
+
+diff --git a/pip/_vendor/__init__.py b/pip/_vendor/__init__.py
+index ef8851d..349d022 100644
+--- a/pip/_vendor/__init__.py
++++ b/pip/_vendor/__init__.py
+@@ -14,7 +14,7 @@ import sys
+ # Downstream redistributors which have debundled our dependencies should also
+ # patch this value to be true. This will trigger the additional patching
+ # to cause things like "six" to be available as pip.
+-DEBUNDLED = False
++DEBUNDLED = True
+ 
+ # By default, look in this directory for a bunch of .whl files which we will
+ # add to the beginning of sys.path before attempting to import anything. This
+@@ -29,13 +29,10 @@ WHEEL_DIR = os.path.abspath(os.path.dirname(__file__))
+ def vendored(modulename):
+     vendored_name = "{0}.{1}".format(__name__, modulename)
+ 
+-    try:
+-        __import__(vendored_name, globals(), locals(), level=0)
+-    except ImportError:
+-        __import__(modulename, globals(), locals(), level=0)
+-        sys.modules[vendored_name] = sys.modules[modulename]
+-        base, head = vendored_name.rsplit(".", 1)
+-        setattr(sys.modules[base], head, sys.modules[modulename])
++    __import__(modulename, globals(), locals(), level=0)
++    sys.modules[vendored_name] = sys.modules[modulename]
++    base, head = vendored_name.rsplit(".", 1)
++    setattr(sys.modules[base], head, sys.modules[modulename])
+ 
+ 
+ # If we're operating in a debundled setup, then we want to go ahead and trigger

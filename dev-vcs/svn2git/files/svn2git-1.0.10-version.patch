@@ -1,0 +1,23 @@
+From d8b1c8c774a61666e7c62bf5beb8f0f1b4a3e01a Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Tue, 21 May 2013 23:11:25 +0200
+Subject: [PATCH] Stop using Git SHA1 version string
+
+diff --git a/src/src.pro b/src/src.pro
+index da6d40d..2626a6f 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -6,10 +6,7 @@ SVN_INCLUDE = /usr/include/subversion-1 /usr/local/include/subversion-1
+ APR_INCLUDE = /usr/include/apr-1.0 /usr/include/apr-1 /usr/local/include/apr-1
+ exists(local-config.pri):include(local-config.pri)
+ 
+-VERSION = $$system(git --no-pager show --pretty=oneline --no-notes | head -1 | cut -b-40)
+-    !isEmpty(VERSION){
+-      VERSION = $${VERSION}
+-    }
++VERSION = $$(SVN_ALL_FAST_EXPORT_VERSION)
+ 
+ VERSTR = '\\"$${VERSION}\\"'  # place quotes around the version string
+ DEFINES += VER=\"$${VERSTR}\" # create a VER macro containing the version string
+-- 
+1.8.2.1

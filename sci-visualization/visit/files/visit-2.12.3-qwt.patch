@@ -1,0 +1,14 @@
+--- a/CMake/FindQwt.cmake.orig	2017-07-12 07:46:34.560120549 +0200
++++ b/CMake/FindQwt.cmake	2017-07-12 07:46:58.120121063 +0200
+@@ -54,7 +54,10 @@
+     SET(QWT_LIBRARY ${QWT_LIBRARY_DIR}/${QWT_LIB}/qwt)
+   ENDIF(VISIT_STATIC)
+ ELSE (WIN32)
+-  SET_UP_THIRD_PARTY(QWT lib include qwt)
++  SET(QWT_FOUND true CACHE BOOL "QWT library found" FORCE)
++  SET(QWT_INCLUDE_DIR "/usr/include/qwt6")
++  SET(QWT_LIBRARY_DIR "/usr/lib")
++  SET(QWT_LIB "/usr/lib/libqwt6-qt5.so")
+   SET(QWT_LIBRARY ${QWT_LIB} CACHE STRING "name of qwt library" FORCE)
+ ENDIF (WIN32)
+ 

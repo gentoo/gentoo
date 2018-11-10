@@ -1,0 +1,22 @@
+--- a/src/media-stream.c
++++ b/src/media-stream.c
+@@ -23,6 +23,7 @@
+ #include "config.h"
+ #include "media-stream.h"
+ 
++#include <libpurple/version.h>
+ #include <libpurple/media/backend-iface.h>
+ #include <string.h>
+ #include <telepathy-glib/dbus.h>
+@@ -1076,7 +1077,11 @@ haze_media_stream_new_native_candidate (
+       if (proto == TP_MEDIA_STREAM_BASE_PROTO_UDP)
+         protocol = PURPLE_MEDIA_NETWORK_PROTOCOL_UDP;
+       else if (proto == TP_MEDIA_STREAM_BASE_PROTO_TCP)
++#if PURPLE_VERSION_CHECK (2, 10, 12)
++        protocol = PURPLE_MEDIA_NETWORK_PROTOCOL_TCP_PASSIVE;
++#else
+         protocol = PURPLE_MEDIA_NETWORK_PROTOCOL_TCP;
++#endif
+       else
+         DEBUG ("Unknown network protocol");
+ 

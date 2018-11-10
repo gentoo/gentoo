@@ -1,0 +1,13 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 6b33220..30c9f2e 100755
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -139,7 +139,7 @@ libpstoedit_la_SOURCES =			\
+ 	genericints.h 				\
+ 	version.h
+ 
+-libpstoedit_la_LIBADD = ${CXX_STD_LIB} ${CXX_RUNTIME_LIB} -ldl -lm
++libpstoedit_la_LIBADD = ${CXX_STD_LIB} ${CXX_RUNTIME_LIB} ${LIBLD_LDFLAGS} -lm
+ libpstoedit_la_LDFLAGS = -no-undefined
+ 
+ pstoedit_SOURCES = cmdmain.cpp

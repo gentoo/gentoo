@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nitro@legroom.net</email>
+		<name>Jared B.</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		A utility for creating and opening lzh archives.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge-jp">lha</remote-id>
+	</upstream>
+</pkgmetadata>

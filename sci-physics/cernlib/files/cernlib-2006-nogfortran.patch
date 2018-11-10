@@ -1,0 +1,56 @@
+--- debian/add-ons/Makefile.orig	2008-03-15 16:46:46.000000000 +0000
++++ debian/add-ons/Makefile	2008-03-15 16:47:51.000000000 +0000
+@@ -28,6 +28,9 @@
+ ifneq (,$(findstring ifort,$(DEB_BUILD_OPTIONS)))
+ 	sed -i -e 's/-lgfortran/-limf/' $(CERN_BINDIR)/cernlib
+ endif
++ifneq (,$(findstring g77,$(DEB_BUILD_OPTIONS)))
++	sed -i -e 's/-lgfortran/-lg2c/' $(CERN_BINDIR)/cernlib
++endif
+ 	chmod a+x $(CERN_BINDIR)/cernlib
+ 
+ # target to install include files for development packages
+--- debian/add-ons/cernlib.mk.orig	2008-03-15 16:48:05.000000000 +0000
++++ debian/add-ons/cernlib.mk	2008-03-15 17:09:14.000000000 +0000
+@@ -35,6 +35,10 @@
+ 	export TOOL_SONAME = _gfortran
+ 	export TOOL_NAME   = _gfortran
+ endif
++ifeq (,$(findstring g77,$(DEB_BUILD_OPTIONS)))
++	export TOOL_SONAME = _gfortran
++	export TOOL_NAME   = _gfortran
++endif
+ export PATH	   := $(CERN_BINDIR):$(ADDONDIR)/bin:$(datadir)/cernlib:${PATH}
+ export INSTALL_OPTS   ?= -s
+ export CC	      ?= gcc
+@@ -118,6 +122,8 @@
+ endif
+ ifneq (,$(findstring ifort,$(DEB_BUILD_OPTIONS)))
+ 	echo '#define HasIntelifc YES' >> $(CVSCOSRC)/config/host.def
++else ifneq (,$(findstring g77,$(DEB_BUILD_OPTIONS)))
++	echo  >> $(CVSCOSRC)/config/host.def
+ else
+ 	echo '#define Hasgfortran YES' >> $(CVSCOSRC)/config/host.def
+ endif
+--- debian/patches/320-support-ifort.dpatch.orig	2008-03-15 17:31:34.000000000 +0000
++++ debian/patches/320-support-ifort.dpatch	2008-03-15 17:31:56.000000000 +0000
+@@ -27,7 +27,7 @@
+  #if defined(CERNLIB_UNIX)
+  CLIBS= -G Motif kernlib
+ +# if defined(CERNLIB_INTELIFC)
+-+CLIBS= $(CLIBS) -nofor_main
+++CLIBS:= $(CLIBS) -nofor_main
+ +# endif
+  #endif
+  
+--- debian/patches/803-link-binaries-dynamically.dpatch.orig	2008-03-15 17:48:38.000000000 +0000
++++ debian/patches/803-link-binaries-dynamically.dpatch	2008-03-15 17:49:17.000000000 +0000
+@@ -64,7 +64,7 @@
+ -CLIBS= -G Motif kernlib
+ +CLIBS= -G Motif -u Xm
+  # if defined(CERNLIB_INTELIFC)
+- CLIBS= $(CLIBS) -nofor_main
++ CLIBS:= $(CLIBS) -nofor_main
+  # endif
+  #endif
+  

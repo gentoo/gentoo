@@ -1,0 +1,79 @@
+--- edna.py.orig	2007-01-31 19:25:14.000000000 +0000
++++ edna.py	2007-01-31 20:55:09.000000000 +0000
+@@ -64,6 +64,12 @@
+   oggSupport = 'no'
+ 
+ try:
++  from mutagen.flac import FLAC
++  flacSupport = True
++except ImportError:
++  flacSupport = False
++
++try:
+   import cStringIO
+   StringIO = cStringIO
+ except ImportError:
+@@ -920,6 +926,9 @@
+     if ext == '.ogg':
+       info = OggInfo(fullpath)
+       self.__dict__.update(info.__dict__)
++    elif ext == '.flac':
++      info = FlacInfo(fullpath)
++      self.__dict__.update(info.__dict__)
+     else:
+       info = MP3Info.MP3Info(open(fullpath, 'rb'))
+       self.__dict__.update(info.__dict__)
+@@ -1001,6 +1010,45 @@
+             self.transcoded = val
+     self.valid = 1
+ 
++class FlacInfo:
++	def __init__(self, name):
++		# Setup the defaults
++		self.valid = 0
++		self.total_time = 0
++		self.samplerate = 'unknown'
++		self.bitrate = 'unknown'
++		self.mode = ''
++		self.mode_extension = ''
++		
++		if not flacSupport: return
++		
++		mflac = FLAC(name)
++		streaminfo = mflac.metadata_blocks[0]
++		
++		self.samplerate = streaminfo.sample_rate
++		self.total_time = streaminfo.length
++		self.bitrate =int(round((streaminfo.bits_per_sample * streaminfo.total_samples) / streaminfo.length))
++		self.filesize = os.path.getsize(name) / (1024 ** 2)
++		
++		for key, val in mflac.tags:
++			if key == 'TITLE':
++				self.title = val
++			elif key == 'ARTIST':
++				self.artist = val
++			elif key == 'ALBUM':
++				self.album = val
++			elif key == 'DATE':
++				self.year = val
++			elif key == 'GENRE':
++				self.genre = val
++			elif key == 'VENDOR':
++				self.vendor = val
++			elif key == 'TRACKNUMBER':
++				self.track = val
++			elif key == 'DESCRIPTION':
++				self.comment = val
++		
++		self.valid = 1
+ 
+ def _usable_file(fname):
+   return fname[0] != '.'
+@@ -1044,6 +1092,7 @@
+   '.avi' : 'video/x-msvideo',
+   '.mpg' : 'video/mpeg',
+   '.ogg' : 'application/x-ogg',
++  '.flac' : 'audio/x-flac',
+   '.m4a' : 'audio/mp4',
+   '.mp4' : 'video/mp4',  
+   }

@@ -1,0 +1,22 @@
+From: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
+Date: Thu, 10 Aug 2017 19:06:35 +0000
+Subject: FTBFS_with_gcc-3.4_conflicting_types
+
+===================================================================
+---
+ src/save.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/save.c b/src/save.c
+index c7e4395..bf50bdf 100644
+--- a/src/save.c
++++ b/src/save.c
+@@ -404,6 +404,8 @@ int save_load_rt_info(GNGB_FILE * stream,char op) {
+   return 0;
+ }
+ 
++void movie_add_pad(Uint8 pad);
++
+ int save_load_pad_movie(GNGB_FILE * stream,char op) {
+   if (!op) {			/* Write */
+     PAD_SAVE *p=gngb_movie.first_pad;

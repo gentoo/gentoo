@@ -1,0 +1,25 @@
+* Fix compiler warnings.
+* Remove unused variable.
+
+--- a/mvcase.c
++++ b/mvcase.c
+@@ -17,6 +17,10 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h> /* exit() free() realloc() */
++#include <string.h> /* strlen() strcpy() */
++#include <strings.h> /* rindex() */
++#include <ctype.h> /* tolower() toupper() */
+ #include <shhopt.h>
+ 
+ #define VERSION_INT 0
+@@ -45,7 +45,7 @@
+ 
+ int main (int argc, char **argv)
+ {
+-  int i,j,k;
++  int i,j;
+   int static flag_upper = 0;
+   int static flag_lower = 0;
+   int static flag_path  = 0;

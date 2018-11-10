@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The games-rpg category contains role-playing games.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie games-rpg enthält Rollenspiele.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-rpg contiene juegos de rol.
+	</longdescription>
+	<longdescription lang="ja">
+		games-rpgカテゴリーにはロール・プレイング・ゲームが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De games-rpg categorie bevat rollenspellen (Role-Playing Games).
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-rpg chứa các trò chơi dạng chơi theo lượt (role-playing - RPG).
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-rpg contiene giochi di ruolo.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria games-rpg contém jogos de RPG (Role-Playing Games).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria games-rpg zawiera gry RPG.
+	</longdescription>
+</catmetadata>
+

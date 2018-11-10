@@ -1,0 +1,191 @@
+ CMakeLists.txt                              | 21 +++++++++++++++++++++
+ src/plugins/chemjson/CMakeLists.txt         |  6 +++++-
+ src/plugins/chemjson/chemjsonfileformat.cpp |  4 ++++
+ src/plugins/cml/cmlfileformat.h             |  4 ++++
+ src/plugins/inchi/CMakeLists.txt            |  4 +++-
+ src/plugins/inchi/inchikeylineformat.cpp    |  4 ++++
+ src/plugins/inchi/inchilineformat.cpp       |  4 ++++
+ src/plugins/pdb/pdbmlfileformat.cpp         |  4 ++++
+ src/plugins/xtc/CMakeLists.txt              |  9 +++++++--
+ src/plugins/xtc/xtcfileformat.cpp           |  4 ++++
+ 10 files changed, 60 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e531be4..622ea9d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -55,6 +55,27 @@ configure_file(
+ # export the Chemkit package
+ export(PACKAGE Chemkit)
+ 
++option(USE_SYSTEM_INCHI "Use inchi installed in system" OFF)
++option(USE_SYSTEM_JSONCPP "Use json cpp installed in system" OFF)
++option(USE_SYSTEM_RAPIXML "Use rapidxml installed in system" OFF)
++option(USE_SYSTEM_XDRF "Use xdrflib installed in system" OFF)
++
++if(USE_SYSTEM_INCHI)
++	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DSYSTEM_INCHI")
++endif()
++
++if(USE_SYSTEM_JSONCPP)
++	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DSYSTEM_JSONCPP")
++endif()
++
++if(USE_SYSTEM_RAPIDXML)
++	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DSYSTEM_RAPIDXML")
++endif()
++
++if(USE_SYSTEM_XDRF)
++	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DSYSTEM_XDRF")
++endif()
++
+ # build options
+ option(CHEMKIT_WITH_GRAPHICS "Build the chemkit-graphics library." ON)
+ option(CHEMKIT_WITH_IO "Build the chemkit-io library." ON)
+diff --git a/src/plugins/chemjson/CMakeLists.txt b/src/plugins/chemjson/CMakeLists.txt
+index 0e115b5..a5e6f48 100644
+--- a/src/plugins/chemjson/CMakeLists.txt
++++ b/src/plugins/chemjson/CMakeLists.txt
+@@ -10,7 +10,11 @@ set(SOURCES
+   chemjsonplugin.cpp
+ )
+ 
+-aux_source_directory(../../3rdparty/jsoncpp/ JSONCPP_SOURCES)
++if(NOT USE_SYSTEM_JSONCPP)
++	aux_source_directory(../../3rdparty/jsoncpp/ JSONCPP_SOURCES)
++else()
++	target_link_libraries(chemjson jsoncpp)
++endif()
+ 
+ add_chemkit_plugin(chemjson ${SOURCES} ${JSONCPP_SOURCES})
+ target_link_libraries(chemjson ${CHEMKIT_LIBRARIES})
+diff --git a/src/plugins/chemjson/chemjsonfileformat.cpp b/src/plugins/chemjson/chemjsonfileformat.cpp
+index a0d271e..3cd5827 100644
+--- a/src/plugins/chemjson/chemjsonfileformat.cpp
++++ b/src/plugins/chemjson/chemjsonfileformat.cpp
+@@ -43,7 +43,11 @@
+ #include <chemkit/molecule.h>
+ #include <chemkit/moleculefile.h>
+ 
++#ifdef SYSTEM_JSONCPP
++#include <jsoncpp/json/json.h>
++#else
+ #include "../../3rdparty/jsoncpp/json/json.h"
++#endif
+ 
+ namespace {
+ 
+diff --git a/src/plugins/cml/cmlfileformat.h b/src/plugins/cml/cmlfileformat.h
+index e813223..61a547d 100644
+--- a/src/plugins/cml/cmlfileformat.h
++++ b/src/plugins/cml/cmlfileformat.h
+@@ -38,7 +38,11 @@
+ 
+ #include <chemkit/moleculefileformat.h>
+ 
++#ifdef SYSTEM_RAPIDXML
++#include <rapidxml/rapidxml.hpp>
++#else
+ #include "../../3rdparty/rapidxml/rapidxml.hpp"
++#endif
+ 
+ class CmlFileFormat : public chemkit::MoleculeFileFormat
+ {
+diff --git a/src/plugins/inchi/CMakeLists.txt b/src/plugins/inchi/CMakeLists.txt
+index 2b25d9b..5f45f8a 100644
+--- a/src/plugins/inchi/CMakeLists.txt
++++ b/src/plugins/inchi/CMakeLists.txt
+@@ -7,7 +7,9 @@ set(SOURCES
+   inchiplugin.cpp
+ )
+ 
+-aux_source_directory(../../3rdparty/inchi/ IUPAC_INCHI_SOURCES)
++if(NOT USE_SYSTEM_INCHI)
++	aux_source_directory(../../3rdparty/inchi/ IUPAC_INCHI_SOURCES)
++endif()
+ 
+ add_chemkit_plugin(inchi ${SOURCES} ${IUPAC_INCHI_SOURCES})
+ target_link_libraries(inchi ${CHEMKIT_LIBRARIES})
+diff --git a/src/plugins/inchi/inchikeylineformat.cpp b/src/plugins/inchi/inchikeylineformat.cpp
+index 2682f95..cec0a17 100644
+--- a/src/plugins/inchi/inchikeylineformat.cpp
++++ b/src/plugins/inchi/inchikeylineformat.cpp
+@@ -38,7 +38,11 @@
+ #include <boost/format.hpp>
+ 
+ #include "inchilineformat.h"
++#ifdef SYSTEM_INCHI
++#include <inchi_api.h>
++#else
+ #include "../../3rdparty/inchi/inchi_api.h"
++#endif
+ 
+ InchiKeyLineFormat::InchiKeyLineFormat()
+     : chemkit::LineFormat("inchikey")
+diff --git a/src/plugins/inchi/inchilineformat.cpp b/src/plugins/inchi/inchilineformat.cpp
+index 5b9bc42..ea5977c 100644
+--- a/src/plugins/inchi/inchilineformat.cpp
++++ b/src/plugins/inchi/inchilineformat.cpp
+@@ -42,7 +42,11 @@
+ 
+ #include <boost/algorithm/string.hpp>
+ 
++#ifdef SYSTEM_INCHI
++#include <inchi_api.h>
++#else
+ #include "../../3rdparty/inchi/inchi_api.h"
++#endif
+ 
+ #include <chemkit/atom.h>
+ #include <chemkit/bond.h>
+diff --git a/src/plugins/pdb/pdbmlfileformat.cpp b/src/plugins/pdb/pdbmlfileformat.cpp
+index 081a4ec..2ca4269 100644
+--- a/src/plugins/pdb/pdbmlfileformat.cpp
++++ b/src/plugins/pdb/pdbmlfileformat.cpp
+@@ -35,7 +35,11 @@
+ 
+ #include "pdbmlfileformat.h"
+ 
++#ifdef SYSTEM_RAPIDXML
++#include <rapidxml/rapidxml.hpp>
++#else
+ #include "../../3rdparty/rapidxml/rapidxml.hpp"
++#endif
+ 
+ #include <chemkit/atom.h>
+ #include <chemkit/polymer.h>
+diff --git a/src/plugins/xtc/CMakeLists.txt b/src/plugins/xtc/CMakeLists.txt
+index 98d8ba7..8c09e64 100644
+--- a/src/plugins/xtc/CMakeLists.txt
++++ b/src/plugins/xtc/CMakeLists.txt
+@@ -13,7 +13,12 @@ set(SOURCES
+   xtcplugin.cpp
+ )
+ 
+-aux_source_directory(../../3rdparty/xdrf/ XDRF_SOURCES)
++
++if(USE_SYSTEM_XDRF)
++	find_library(XDRF_LIBRARY NAMES xdrfile libxdrfile)
++else()
++	aux_source_directory(../../3rdparty/xdrf/ XDRF_SOURCES)
++endif()
+ 
+ add_chemkit_plugin(xtc ${SOURCES} ${XDRF_SOURCES})
+-target_link_libraries(xtc ${CHEMKIT_LIBRARIES} ${Boost_LIBRARIES})
++target_link_libraries(xtc ${CHEMKIT_LIBRARIES} ${Boost_LIBRARIES} ${XDRF_LIBRARY} )
+diff --git a/src/plugins/xtc/xtcfileformat.cpp b/src/plugins/xtc/xtcfileformat.cpp
+index 0f00cb6..f8659ca 100644
+--- a/src/plugins/xtc/xtcfileformat.cpp
++++ b/src/plugins/xtc/xtcfileformat.cpp
+@@ -47,7 +47,11 @@
+ #include <chemkit/trajectoryframe.h>
+ #include <chemkit/cartesiancoordinates.h>
+ 
++#ifdef SYSTEM_XDRF
++#include <xdrfile/xdrfile.h>
++#else
+ #include "../../3rdparty/xdrf/xdrf.h"
++#endif
+ 
+ XtcFileFormat::XtcFileFormat()
+     : chemkit::TrajectoryFileFormat("xtc")

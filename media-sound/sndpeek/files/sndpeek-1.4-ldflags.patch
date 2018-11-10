@@ -1,0 +1,65 @@
+Index: sndpeek-1.4/src/sndpeek/makefile.alsa
+===================================================================
+--- sndpeek-1.4.orig/src/sndpeek/makefile.alsa
++++ sndpeek-1.4/src/sndpeek/makefile.alsa
+@@ -12,7 +12,7 @@ OBJS=chuck_fft.o RtAudio.o Thread.o sndp
+ 	MagFFT.o NormRMS.o MarSignal.o fmatrix.o
+ 
+ sndpeek: $(OBJS)
+-	$(CXX) -o $@ $(OBJS) $(LIBS)
++	$(CXX) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ Centroid.o:
+ 	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
+Index: sndpeek-1.4/src/sndpeek/makefile.jack
+===================================================================
+--- sndpeek-1.4.orig/src/sndpeek/makefile.jack
++++ sndpeek-1.4/src/sndpeek/makefile.jack
+@@ -11,7 +11,7 @@ OBJS=chuck_fft.o RtAudio.o Thread.o sndp
+ 	MagFFT.o NormRMS.o MarSignal.o fmatrix.o
+ 
+ sndpeek: $(OBJS)
+-	$(CXX) -o $@ $(OBJS) $(LIBS)
++	$(CXX) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ Centroid.o:
+ 	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
+Index: sndpeek-1.4/src/sndpeek/makefile.oss
+===================================================================
+--- sndpeek-1.4.orig/src/sndpeek/makefile.oss
++++ sndpeek-1.4/src/sndpeek/makefile.oss
+@@ -12,7 +12,7 @@ OBJS=chuck_fft.o RtAudio.o Thread.o sndp
+ 	MagFFT.o NormRMS.o MarSignal.o fmatrix.o
+ 
+ sndpeek: $(OBJS)
+-	$(CXX) -o $@ $(OBJS) $(LIBS)
++	$(CXX) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ Centroid.o:
+ 	$(CXX) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
+Index: sndpeek-1.4/src/sndpeek/makefile.osx
+===================================================================
+--- sndpeek-1.4.orig/src/sndpeek/makefile.osx
++++ sndpeek-1.4/src/sndpeek/makefile.osx
+@@ -13,7 +13,7 @@ OBJS=chuck_fft.o RtAudio.o Thread.o sndp
+ 	MagFFT.o NormRMS.o MarSignal.o fmatrix.o
+ 
+ sndpeek: $(OBJS)
+-	$(CPP) -o $@ $(OBJS) $(LIBS)
++	$(CPP) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ Centroid.o:
+ 	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp
+Index: sndpeek-1.4/src/sndpeek/makefile.win32
+===================================================================
+--- sndpeek-1.4.orig/src/sndpeek/makefile.win32
++++ sndpeek-1.4/src/sndpeek/makefile.win32
+@@ -12,7 +12,7 @@ OBJS=chuck_fft.o RtAudio.o Thread.o sndp
+ 	MagFFT.o NormRMS.o MarSignal.o fmatrix.o
+ 
+ sndpeek: $(OBJS)
+-	$(CPP) -o $@ $(OBJS) $(LIBS)
++	$(CPP) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ Centroid.o:
+ 	$(CC) $(CFLAGS) $(MARSYAS_DIR)$*.cpp

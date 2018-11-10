@@ -1,0 +1,69 @@
+--- a/wavsplit.c	2006-11-24 17:53:36.056883000 +0100
++++ b/wavsplit.c	2006-11-24 17:52:38.345276250 +0100
+@@ -403,7 +403,7 @@
+   ptr += 4;                     /* we move past fmt_ */
+   memcpy (&waveformat, ptr, sizeof (WAVEFORMAT));
+ 
+-  if (waveformat.dwSize < (sizeof (WAVEFORMAT) - sizeof (u_long))) {
++  if (waveformat.dwSize < (sizeof (WAVEFORMAT) - sizeof (u_int))) {
+     fprintf (stderr, "Bad format: Bad fmt size\n");
+     return 1;
+   }
+@@ -423,7 +423,7 @@
+   }
+ 
+   ptr += 4;                     /* we move past data */
+-  memcpy (&databytes, ptr, sizeof (u_long));
++  memcpy (&databytes, ptr, sizeof (u_int));
+ 
+   struct stat stat_buf;
+ 
+@@ -446,7 +446,7 @@
+ 
+   if (verbose) {
+     printf ("Channels: %d\n", waveformat.wChannels);
+-    printf ("Samplerate: %ldHz\n", waveformat.dwSamplesPerSec);
++    printf ("Samplerate: %dHz\n", waveformat.dwSamplesPerSec);
+     printf ("Samplebits: %d\n", waveformat.wBitsPerSample);
+     printf ("Databytes: %llu\n\n", databytes);
+     printf ("Split         Hours  Mins   Seconds         Bytes         %%\n");
+--- a/wavsplit.h	2006-11-24 17:53:36.056883000 +0100
++++ b/wavsplit.h	2006-11-24 17:43:58.648797250 +0100
+@@ -46,29 +46,29 @@
+ } TIMEFORMAT;
+ 
+ typedef struct {
+-  u_long dwSize;
++  u_int dwSize;
+   u_short wFormatTag;
+   u_short wChannels;
+-  u_long dwSamplesPerSec;
+-  u_long dwAvgBytesPerSec;
++  u_int dwSamplesPerSec;
++  u_int dwAvgBytesPerSec;
+   u_short wBlockAlign;
+   u_short wBitsPerSample;
+ } WAVEFORMAT;
+ 
+ typedef struct {
+   char RiffID[4];
+-  u_long RiffSize;
++  u_int RiffSize;
+   char WaveID[4];
+   char FmtID[4];
+-  u_long FmtSize;
++  u_int FmtSize;
+   u_short wFormatTag;
+   u_short nChannels;
+-  u_long nSamplesPerSec;
+-  u_long nAvgBytesPerSec;
++  u_int nSamplesPerSec;
++  u_int nAvgBytesPerSec;
+   u_short nBlockAlign;
+   u_short wBitsPerSample;
+   char DataID[4];
+-  u_long nDataBytes;
++  u_int nDataBytes;
+ } WAVE_HEADER;
+ 
+ typedef struct {

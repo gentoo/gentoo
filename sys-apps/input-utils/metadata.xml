@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+<email>robbat2@gentoo.org</email>
+<name>Robin H. Johnson</name>
+</maintainer>
+<longdescription lang="en">
+This is a collection of utilities which are useful when working with the input
+layer of the Linux kernel (version 2.6 and later). Included are utilities to
+list the input devices known to the kernel, show the input events that are
+received by a device, and query or modify keyboard maps.
+</longdescription>
+</pkgmetadata>

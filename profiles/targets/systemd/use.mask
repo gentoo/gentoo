@@ -1,0 +1,2 @@
+# People running systemd must use logind instead, bug #478258
+consolekit

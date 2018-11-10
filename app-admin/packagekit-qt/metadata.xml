@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mudler@gentoo.org</email>
+		<name>Ettore Di Giacinto</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>johu@gentoo.org</email>
+		<name>Johannes Huber</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">hughsie/PackageKit-Qt</remote-id>
+	</upstream>
+</pkgmetadata>

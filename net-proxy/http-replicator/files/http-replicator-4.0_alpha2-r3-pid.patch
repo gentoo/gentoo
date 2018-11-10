@@ -1,0 +1,101 @@
+Bring back the --pid functionality of 3.x, needed for our init script.
+
+Patch contributed by Nikita Kozlov (klnikita / klnikita_ on IRC).
+
+Slight adjustments made to use --pid instead of --pidfile and reordered --help.
+
+URL: https://dpaste.org/Menvq/
+BUG: https://bugs.gentoo.org/show_bug.cgi?id=472422
+
+--- a/fiber.py
++++ b/fiber.py
+@@ -136,11 +136,13 @@
+     self.__stdout.flush()
+     self.__newline = string.endswith( '\n' )
+ 
+ 
+-def fork( output ):
++def fork( output, pidfile ):
+ 
+   try:
++    if pidfile:
++      pidout = open(pidfile, 'w') # open pid file for writing
+     log = open( output, 'w' )
+     nul = open( '/dev/null', 'r' )
+     pid = os.fork()
+   except IOError, e:
+@@ -166,17 +168,20 @@
+     print 'error:', e
+     sys.exit( 1 )
+ 
+   if pid:
++    if pidfile:
++      pidout.write(str(pid))
++      pidout.close()
+     print pid
+     sys.exit( 0 )
+ 
+   os.dup2( log.fileno(), sys.stdout.fileno() )
+   os.dup2( log.fileno(), sys.stderr.fileno() )
+   os.dup2( nul.fileno(), sys.stdin.fileno()  )
+ 
+ 
+-def spawn( generator, port, debug, log ):
++def spawn( generator, port, debug, log, pidfile ):
+ 
+   try:
+     listener = socket.socket( socket.AF_INET, socket.SOCK_STREAM )
+     listener.setblocking( 0 )
+@@ -187,9 +192,9 @@
+     print 'error: failed to create socket:', e
+     sys.exit( 1 )
+ 
+   if log:
+-    fork( log )
++    fork( log, pidfile )
+ 
+   if debug:
+     myFiber = DebugFiber
+   else:
+--- a/http-replicator
++++ b/http-replicator
+@@ -59,5 +59,5 @@
+ 
+   print 'Transaction successfully completed'
+ 
+ 
+-fiber.spawn( Replicator, Params.PORT, Params.DEBUG, Params.LOG )
++fiber.spawn( Replicator, Params.PORT, Params.DEBUG, Params.LOG, Params.PIDFILE )
+--- a/Params.py
++++ b/Params.py
+@@ -6,8 +6,9 @@
+ PORT = 8080
+ ROOT = os.getcwd() + os.sep
+ VERBOSE = 0
+ TIMEOUT = 15
++PIDFILE = False
+ FAMILY = socket.AF_INET
+ FLAT = False
+ STATIC = False
+ ONLINE = True
+@@ -21,8 +22,9 @@
+ 
+ options:
++     --pid FILE      write process ID to FILE
+   -h --help          show this help message and exit
+   -p --port PORT     listen on this port for incoming connections, default %(PORT)i
+   -r --root DIR      set cache root directory, default current: %(ROOT)s
+   -v --verbose       show http headers and other info
+   -t --timeout SEC   break connection after so many seconds of inactivity, default %(TIMEOUT)i
+   -6 --ipv6          try ipv6 addresses if available
+@@ -74,8 +76,10 @@
+     except:
+       sys.exit( 'Error: %s requires a numerical argument' % _arg )
+   elif _arg == '--daemon':
+     LOG = _args.next()
++  elif _arg == '--pid':
++    PIDFILE = _args.next()
+   elif _arg == '--debug':
+     DEBUG = True
+   else:
+     sys.exit( 'Error: invalid option %r' % _arg )

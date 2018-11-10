@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting ut2004-ded"
+	start-stop-daemon --start --quiet --background --make-pidfile \
+		--pidfile /var/run/ut2004-ded.pid \
+		--chuid ${ut2004_ded_user}:${ut2004_ded_group} \
+		--env HOME="${ut2004_ded_home}" \
+		--exec "@DIR@/ut2004-ded" \
+		-- ${ut2004_ded_opts}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ut2004-ded"
+	start-stop-daemon --stop \
+		--pidfile /var/run/ut2004-ded.pid
+	eend $?
+}

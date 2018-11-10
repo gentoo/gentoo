@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index ee6693d..d258252 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -26,7 +26,7 @@ AC_PREREQ(2.64)
+ AC_REVISION($Revision: 1.1 $)
+ GC_SET_VERSION
+ AM_INIT_AUTOMAKE([foreign dist-bzip2 nostdinc])
+-AM_CONFIG_HEADER([include/private/config.h])
++AC_CONFIG_HEADER([include/private/config.h])
+ AM_MAINTAINER_MODE
+ 
+ AC_SUBST(PACKAGE)

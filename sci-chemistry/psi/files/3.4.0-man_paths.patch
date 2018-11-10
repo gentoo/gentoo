@@ -1,0 +1,25 @@
+Fix man paths
+
+http://bugs.gentoo.org/show_bug.cgi?id=326185
+
+--- src/bin/nonbonded/Makefile.in
++++ src/bin/nonbonded/Makefile.in
+@@ -19,5 +19,5 @@
+ endif
+ 
+ install_man:: nonbonded.1
+-	$(MKDIRS) $(mandir)/man1
+-	$(INSTALL_INCLUDE) $^ $(mandir)/man1
++	$(MKDIRS) $(DESTDIR)$(mandir)/man1
++	$(INSTALL_INCLUDE) $^ $(DESTDIR)$(mandir)/man1
+--- src/bin/intder/Makefile.in
++++ src/bin/intder/Makefile.in
+@@ -21,6 +21,6 @@
+ endif
+ 
+ install_man:: intder.1
+-	$(MKDIRS) $(mandir)/man1
+-	$(INSTALL_INCLUDE) $^ $(mandir)/man1
++	$(MKDIRS) $(DESTDIR)$(mandir)/man1
++	$(INSTALL_INCLUDE) $^ $(DESTDIR)$(mandir)/man1
+ 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  ZenIRC is a full-featured scriptable IRC client for the EMACS text editor.
+  It runs on any OS where EMACS supports sockets. It is compatible with GNU
+  Emacs 18.59 and above, and all versions of XEmacs. ZenIRC is Free Software.
+  ZenIRC supports multiple irc sessions in separate buffers. There is a
+  rudimentary command syntax for use within those sessions, but most user
+  preferences and extensions are written and configured in emacs-lisp. Most
+  features are implemented via module extensions. For example, DCC (Direct
+  Client-to-Client) can be enabled at the user's option.
+</longdescription>
+<stabilize-allarches/>
+</pkgmetadata>

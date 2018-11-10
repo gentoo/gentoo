@@ -1,0 +1,66 @@
+commit 43f63356fec31e46dfc5ab4574bb62cd75b35dfe
+Author: Eray Aslan <eras@gentoo.org>
+Date:   Mon Jun 6 17:19:48 2011 +0300
+
+    Fix missing includes
+
+diff --git a/addrlist.c b/addrlist.c
+index fe196c8..a2ae631 100644
+--- a/addrlist.c
++++ b/addrlist.c
+@@ -3,6 +3,7 @@
+ #include "subfd.h"
+ #include "getln.h"
+ #include "mess822.h"
++#include "exit.h"
+ 
+ #define FATAL "addrlist: fatal: "
+ 
+diff --git a/leapsecs_read.c b/leapsecs_read.c
+index 62c8712..ff2ec23 100644
+--- a/leapsecs_read.c
++++ b/leapsecs_read.c
+@@ -1,6 +1,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
++#include <stdlib.h>
+ #include <errno.h>
+ extern int errno;
+ #include "tai.h"
+diff --git a/parsedate.c b/parsedate.c
+index 06f1d57..e90e198 100644
+--- a/parsedate.c
++++ b/parsedate.c
+@@ -6,6 +6,7 @@
+ #include "leapsecs.h"
+ #include "caltime.h"
+ #include "tai.h"
++#include "exit.h"
+ 
+ #define FATAL "parsedate: fatal: "
+ 
+diff --git a/quote.c b/quote.c
+index 7d21ac0..e8c7aa2 100644
+--- a/quote.c
++++ b/quote.c
+@@ -2,6 +2,7 @@
+ #include "subfd.h"
+ #include "substdio.h"
+ #include "strerr.h"
++#include "exit.h"
+ 
+ #define FATAL "quote: fatal: "
+ 
+diff --git a/tokenize.c b/tokenize.c
+index 667987d..840a220 100644
+--- a/tokenize.c
++++ b/tokenize.c
+@@ -3,6 +3,7 @@
+ #include "subfd.h"
+ #include "getln.h"
+ #include "mess822.h"
++#include "exit.h"
+ 
+ #define FATAL "tokenize: fatal: "
+ 

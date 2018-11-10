@@ -1,0 +1,33 @@
+--- a/gi_sdl.c
++++ b/gi_sdl.c
+@@ -606,6 +606,7 @@
+ {
+   int i,found;
+   gi_sdl_data *data = &GI;
++  char temp_path[70];
+ 
+   switch(e.type) {
+ 
+@@ -714,7 +715,8 @@
+ 	  sim_start(&g->sim);
+ 	break;
+       case SDLK_F6:
+-	map_save(&g->sim.map, "saved.mus");
++	snprintf(temp_path, 70, "%s/.mures.save", getenv("HOME"));
++	map_save(&g->sim.map, temp_path);
+ 	break;
+       case SDLK_F1:
+ 	game_restart(g);
+
+--- a/output.c
++++ b/output.c
+@@ -215,7 +215,8 @@
+ 
+ void output_screenshot()
+ {
+-  char *l = "shot.bmp";
++  char l[70];
++  snprintf(l, 70, "%s/mures_shot.bmp", getenv("HOME"));
+   SDL_SaveBMP(screen, l);
+   printf("Screenshot saved to %s.\n", l);
+ }

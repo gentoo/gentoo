@@ -1,0 +1,32 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+: ${KEYFILE:="/etc/spiped/keyfile"}
+: ${SPIPED_USER:="nobody"}
+
+command="/usr/sbin/spiped"
+command_args="${OPTS}
+	-s [${SRCHOST}]:${SRCPORT}
+	-t ${TARGETHOST}:${TARGETPORT}
+	-k ${KEYFILE}
+	-F"
+command_background="true"
+command_user="${SPIPED_USER}"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+    use net
+    before logger
+}
+
+checkconfig() {
+    if [[ ! "$IS_CONFIGURED" == "yes" ]]; then
+        eerror "You need to setup /etc/conf.d/spiped first!"
+        return 1
+    fi
+}
+
+start_pre() {
+    checkconfig || return 1
+}

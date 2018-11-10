@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">OOTools</remote-id>
+    <remote-id type="cpan-module">Class::Error</remote-id>
+    <remote-id type="cpan-module">Class::Util</remote-id>
+    <remote-id type="cpan-module">Class::constr</remote-id>
+    <remote-id type="cpan-module">Class::groups</remote-id>
+    <remote-id type="cpan-module">Class::props</remote-id>
+    <remote-id type="cpan-module">Object::groups</remote-id>
+    <remote-id type="cpan-module">Object::props</remote-id>
+    <remote-id type="cpan-module">Package::groups</remote-id>
+    <remote-id type="cpan-module">Package::props</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,25 @@
+--- a/src/protocols/tests/__init__.py
++++ b/src/protocols/tests/__init__.py
+@@ -256,22 +256,6 @@
+         makeSuite(GenerationTests,'check'),
+     ]
+ 
+-    try:
+-        import zope.interface
+-    except ImportError:
+-        pass
+-    else:
+-        from protocols.tests import test_zope
+-        tests.append( test_zope.test_suite() )
+-
+-    try:
+-        from twisted.python.components import Interface
+-    except (ImportError, SystemError):
+-        pass
+-    else:
+-        from protocols.tests import test_twisted
+-        tests.append( test_twisted.test_suite() )
+-
+     return TestSuite(
+         tests
+     )

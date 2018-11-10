@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>chainsaw@gentoo.org</email>
+    <name>Tony Vroon</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">MongoDB</remote-id>
+    <remote-id type="cpan-module">MongoDB</remote-id>
+    <remote-id type="cpan-module">MongoDB::AuthError</remote-id>
+    <remote-id type="cpan-module">MongoDB::BSON</remote-id>
+    <remote-id type="cpan-module">MongoDB::BSON::Binary</remote-id>
+    <remote-id type="cpan-module">MongoDB::BSON::Regexp</remote-id>
+    <remote-id type="cpan-module">MongoDB::BulkWrite</remote-id>
+    <remote-id type="cpan-module">MongoDB::BulkWriteResult</remote-id>
+    <remote-id type="cpan-module">MongoDB::BulkWriteView</remote-id>
+    <remote-id type="cpan-module">MongoDB::Code</remote-id>
+    <remote-id type="cpan-module">MongoDB::Collection</remote-id>
+    <remote-id type="cpan-module">MongoDB::CommandResult</remote-id>
+    <remote-id type="cpan-module">MongoDB::ConnectionError</remote-id>
+    <remote-id type="cpan-module">MongoDB::Cursor</remote-id>
+    <remote-id type="cpan-module">MongoDB::CursorNotFoundError</remote-id>
+    <remote-id type="cpan-module">MongoDB::DBRef</remote-id>
+    <remote-id type="cpan-module">MongoDB::Database</remote-id>
+    <remote-id type="cpan-module">MongoDB::DatabaseError</remote-id>
+    <remote-id type="cpan-module">MongoDB::DecodingError</remote-id>
+    <remote-id type="cpan-module">MongoDB::DeleteResult</remote-id>
+    <remote-id type="cpan-module">MongoDB::DocumentError</remote-id>
+    <remote-id type="cpan-module">MongoDB::DuplicateKeyError</remote-id>
+    <remote-id type="cpan-module">MongoDB::Error</remote-id>
+    <remote-id type="cpan-module">MongoDB::ExecutionTimeout</remote-id>
+    <remote-id type="cpan-module">MongoDB::GridFS</remote-id>
+    <remote-id type="cpan-module">MongoDB::GridFS::File</remote-id>
+    <remote-id type="cpan-module">MongoDB::GridFSBucket</remote-id>
+    <remote-id type="cpan-module">MongoDB::GridFSBucket::DownloadStream</remote-id>
+    <remote-id type="cpan-module">MongoDB::GridFSBucket::UploadStream</remote-id>
+    <remote-id type="cpan-module">MongoDB::GridFSError</remote-id>
+    <remote-id type="cpan-module">MongoDB::HandshakeError</remote-id>
+    <remote-id type="cpan-module">MongoDB::IndexView</remote-id>
+    <remote-id type="cpan-module">MongoDB::InsertManyResult</remote-id>
+    <remote-id type="cpan-module">MongoDB::InsertOneResult</remote-id>
+    <remote-id type="cpan-module">MongoDB::InternalError</remote-id>
+    <remote-id type="cpan-module">MongoDB::MongoClient</remote-id>
+    <remote-id type="cpan-module">MongoDB::NetworkError</remote-id>
+    <remote-id type="cpan-module">MongoDB::NetworkTimeout</remote-id>
+    <remote-id type="cpan-module">MongoDB::NotMasterError</remote-id>
+    <remote-id type="cpan-module">MongoDB::OID</remote-id>
+    <remote-id type="cpan-module">MongoDB::ProtocolError</remote-id>
+    <remote-id type="cpan-module">MongoDB::QueryResult</remote-id>
+    <remote-id type="cpan-module">MongoDB::QueryResult::Filtered</remote-id>
+    <remote-id type="cpan-module">MongoDB::ReadConcern</remote-id>
+    <remote-id type="cpan-module">MongoDB::ReadPreference</remote-id>
+    <remote-id type="cpan-module">MongoDB::SelectionError</remote-id>
+    <remote-id type="cpan-module">MongoDB::TimeoutError</remote-id>
+    <remote-id type="cpan-module">MongoDB::Timestamp</remote-id>
+    <remote-id type="cpan-module">MongoDB::UnacknowledgedResult</remote-id>
+    <remote-id type="cpan-module">MongoDB::UpdateResult</remote-id>
+    <remote-id type="cpan-module">MongoDB::UsageError</remote-id>
+    <remote-id type="cpan-module">MongoDB::WriteConcern</remote-id>
+    <remote-id type="cpan-module">MongoDB::WriteConcernError</remote-id>
+    <remote-id type="cpan-module">MongoDB::WriteError</remote-id>
+  </upstream>
+</pkgmetadata>

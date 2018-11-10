@@ -1,0 +1,16 @@
+Portage preserve-libs removes the linker name (.so) of a library but leaves
+the soname (.so.4) and realname (.so.4.0) installed.  findLib searches for 
+mywxlibname.* and returns true if anything is found.  Disaster ensues.
+
+
+--- a/wxPython/config.py
++++ b/wxPython/config.py
+@@ -612,7 +612,7 @@ def findLib(name, libdirs):
+         dirs = libdirs[:]
+     for d in dirs:
+         p = os.path.join(d, name)
+-        if glob.glob(p+'*') != []:
++        if glob.glob(p+'*.so') != []:
+             return True
+     return False
+ 

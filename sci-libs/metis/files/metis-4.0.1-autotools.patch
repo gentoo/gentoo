@@ -1,0 +1,85 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -0,0 +1,15 @@
++# -*- Autoconf -*-
++AC_PREREQ(2.59)
++AC_INIT(metis, 4.0.1, karypis@cs.umn.edu)
++AM_INIT_AUTOMAKE([foreign])
++AC_CONFIG_HEADER([config.h])
++AC_PROG_INSTALL
++AC_PROG_LIBTOOL
++AC_CHECK_LIB(m, sqrt)
++AC_CONFIG_FILES([
++	Makefile
++	metis.pc
++	Lib/Makefile
++	Programs/Makefile\
++	Test/Makefile])
++AC_OUTPUT
+--- a/metis.pc.in
++++ b/metis.pc.in
+@@ -0,0 +1,10 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: METIS
++Description: Software for partioning unstructured graphes and meshes
++Version: @VERSION@
++Libs: -L${libdir} -lmetis
++Cflags: -I${includedir}/metis
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -0,0 +1,5 @@
++SUBDIRS = Lib Programs Test
++EXTRA_DIST = CHANGES VERSION metis.pc.in
++
++pkgconfigdir = $(libdir)/pkgconfig
++pkgconfig_DATA = metis.pc
+--- a/Lib/Makefile.am
++++ b/Lib/Makefile.am
+@@ -0,0 +1,15 @@
++pkginclude_HEADERS = defs.h macros.h metis.h proto.h rename.h struct.h
++pkgincludedir = $(includedir)/metis
++lib_LTLIBRARIES = libmetis.la
++libmetis_la_SOURCES = \
++	coarsen.c fm.c initpart.c match.c ccgraph.c memory.c \
++	pmetis.c pqueue.c refine.c util.c timing.c debug.c \
++	bucketsort.c graph.c stat.c kmetis.c kwayrefine.c \
++	kwayfm.c balance.c ometis.c srefine.c sfm.c separator.c \
++	mincover.c mmd.c mesh.c meshpart.c frename.c fortran.c \
++	myqsort.c compress.c parmetis.c estmem.c \
++	mpmetis.c mcoarsen.c mmatch.c minitpart.c mbalance.c \
++	mrefine.c mutil.c mfm.c mkmetis.c mkwayrefine.c mkwayfmh.c \
++	mrefine2.c minitpart2.c mbalance2.c mfm2.c \
++	kvmetis.c kwayvolrefine.c kwayvolfm.c subdomains.c
++libmetis_la_LDFLAGS = -no-undefined -version-info 4:0:0
+--- a/Programs/Makefile.am
++++ b/Programs/Makefile.am
+@@ -0,0 +1,15 @@
++AM_CPPFLAGS = -I$(top_srcdir)/Lib
++LDADD = $(top_builddir)/Lib/libmetis.la -lm
++
++bin_PROGRAMS = pmetis kmetis oemetis onmetis mesh2dual mesh2nodal \
++	partdmesh partnmesh graphchk
++
++pmetis_SOURCES = pmetis.c io.c
++kmetis_SOURCES = kmetis.c io.c
++oemetis_SOURCES = oemetis.c io.c smbfactor.c
++onmetis_SOURCES = onmetis.c io.c smbfactor.c
++mesh2dual_SOURCES = mesh2dual.c io.c 
++mesh2nodal_SOURCES = mesh2nodal.c io.c 
++partdmesh_SOURCES = partdmesh.c io.c 
++partnmesh_SOURCES = partnmesh.c io.c 
++graphchk_SOURCES = graphchk.c io.c 
+--- a/Test/Makefile.am
++++ b/Test/Makefile.am
+@@ -0,0 +1,7 @@
++AM_CPPFLAGS = -I$(top_srcdir)/Lib
++LDADD = $(top_builddir)/Lib/libmetis.la -lm
++check_PROGRAMS = mtest
++mtest_SOURCES = mtest.c ../Programs/io.c
++
++check-local: $(check_PROGRAMS)
++	- ./mtest ../Graphs/4elt.graph

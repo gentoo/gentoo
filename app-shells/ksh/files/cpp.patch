@@ -1,0 +1,24 @@
+iffe depends on cc -E not inserting newlines between tokens
+
+https://build.opensuse.org/package/view_file/home:Andreas_Schwab:Factory/ksh/cpp.patch?expand=1
+
+--- a/src/cmd/INIT/iffe.sh
++++ b/src/cmd/INIT/iffe.sh
+@@ -3427,7 +3427,7 @@
+ 						(eval "$src") <&$nullin || e=1
+ 						;;
+ 					mac*|nomac*)
+-						if	compile $cc -E $tmp.c <&$nullin >$tmp.i
++						if	compile $cc -E -P $tmp.c <&$nullin >$tmp.i
+ 						then	sed -e '/<<[ 	]*".*"[ 	]*>>/!d' -e 's/<<[ 	]*"//g' -e 's/"[ 	]*>>//g' $tmp.i
+ 						else	e=1
+ 						fi
+@@ -3718,7 +3718,7 @@
+ <<\"#define $v\">>	$v	<<\"/* native $v */\">>
+ <<\"#endif\">>
+ #endif" > $tmp.c
+-					if	compile $cc -E $tmp.c <&$nullin >$tmp.i
++					if	compile $cc -E -P $tmp.c <&$nullin >$tmp.i
+ 					then	sed -e '/<<[ 	]*".*"[ 	]*>>/!d' -e 's/<<[ 	]*"//g' -e 's/"[ 	]*>>//g' $tmp.i > $tmp.t
+ 						if	test -s $tmp.t
+ 						then	success

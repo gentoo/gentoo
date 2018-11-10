@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-crypt category contains cryptographic (encryption, decryption,
+		steganography and signing) software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-crypt enhält kryptographische (Ver- und Entschlüsselung,
+		Steganographie, Signierung) Software.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-crypt contiene programas para criptografía
+		(cifrado, des-cifrado, estenografía y firmas). 
+	</longdescription>
+	<longdescription lang="ja">
+		app-cryptカテゴリには暗号手法ソフトウェア
+		(暗証化と復号化と電子透かしと電子署名)が含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De app-crypt categorie bevat cryptografische applicaties (encryptie,
+		decryptie, steganografie,...).
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-crypto chứa các ứng dụng về mật mã (mã hóa,
+		giải mã, kỷ tên và steganography).
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-crypt contiene programmi di crittografia (cifratura, decifratura, steganografia e firma).
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-crypt contém programas criptográficos (cifradores,
+		descifradores, esteganografia e assinaturas).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-crypt zawiera programy kryptograficzne związane z
+		szyfrowaniem, deszyfrowaniem, stenografią oraz podpisywaniem danych.
+	</longdescription>
+</catmetadata>
+

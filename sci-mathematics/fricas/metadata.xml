@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+FriCAS is a fork of Axiom computer algebra system.
+</longdescription>
+  <use>
+    <flag name="clisp">Add support for GNU CLISP
+    (<pkg>dev-lisp/clisp</pkg>)</flag>
+    <flag name="cmucl">Add support for CMU Common Lisp
+    (<pkg>dev-lisp/cmucl</pkg>)</flag>
+    <flag name="gcl">Add support for GNU Common Lisp
+    (<pkg>dev-lisp/gcl</pkg>)</flag>
+    <flag name="sbcl">Add support for Steel Bank Common Lisp
+    (<pkg>dev-lisp/sbcl</pkg>)</flag>
+    <flag name="ecls">Add support for Embeddable Common Lisp
+    (<pkg>dev-lisp/ecls</pkg>)</flag>
+    <flag name="clozurecl">Add support for Clozure Common Lisp
+    (<pkg>dev-lisp/clozurecl</pkg>)</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">fricas</remote-id>
+  </upstream>
+</pkgmetadata>

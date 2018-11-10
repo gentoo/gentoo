@@ -1,0 +1,47 @@
+https://bugs.gentoo.org/459446
+
+https://raw.github.com/archlinuxcn/repo/master/apache-tools/apache-tools-Makefile.patch
+
+--- a/support/Makefile.in
++++ b/support/Makefile.in
+@@ -1,9 +1,9 @@
+ DISTCLEAN_TARGETS = apxs apachectl dbmmanage log_server_status \
+-	logresolve.pl phf_abuse_log.cgi split-logfile envvars-std
++	logresolve.pl phf_abuse_log.cgi split-logfile
+ 
+ CLEAN_TARGETS = suexec
+ 
+-bin_PROGRAMS = htpasswd htdigest htdbm ab logresolve httxt2dbm
++bin_PROGRAMS = htpasswd htdigest htdbm ab logresolve httxt2dbm dbmmanage
+ sbin_PROGRAMS = htcacheclean rotatelogs $(NONPORTABLE_SUPPORT)
+ TARGETS  = $(bin_PROGRAMS) $(sbin_PROGRAMS)
+ 
+@@ -15,26 +15,18 @@
+ install:
+ 	@test -d $(DESTDIR)$(bindir) || $(MKINSTALLDIRS) $(DESTDIR)$(bindir)
+ 	@test -d $(DESTDIR)$(sbindir) || $(MKINSTALLDIRS) $(DESTDIR)$(sbindir)
+-	@test -d $(DESTDIR)$(libexecdir) || $(MKINSTALLDIRS) $(DESTDIR)$(libexecdir)
+-	@cp -p $(top_builddir)/server/httpd.exp $(DESTDIR)$(libexecdir)
+-	@for i in apxs dbmmanage; do \
++	@for i in $(bin_PROGRAMS); do \
+ 	    if test -f "$(builddir)/$$i"; then \
+ 	        cp -p $$i $(DESTDIR)$(bindir); \
+ 	        chmod 755 $(DESTDIR)$(bindir)/$$i; \
+ 	    fi ; \
+ 	done
+-	@for i in apachectl; do \
++	@for i in $(sbin_PROGRAMS); do \
+ 	    if test -f "$(builddir)/$$i"; then \
+ 	        cp -p $$i $(DESTDIR)$(sbindir); \
+ 	        chmod 755 $(DESTDIR)$(sbindir)/$$i; \
+ 	    fi ; \
+ 	done
+-	@if test -f "$(builddir)/envvars-std"; then \
+-	    cp -p envvars-std $(DESTDIR)$(sbindir); \
+-	    if test ! -f $(DESTDIR)$(sbindir)/envvars; then \
+-	        cp -p envvars-std $(DESTDIR)$(sbindir)/envvars ; \
+-	    fi ; \
+-	fi
+ 
+ htpasswd.lo: passwd_common.h
+ passwd_common.lo: passwd_common.h

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The games-mud category contains multi-user dungeon games.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie games-mud enthält Multi-User Dungeon (MUD) Clients und Spiele.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-mud contiene juegos de tipo MUD multijugador.
+	</longdescription>
+	<longdescription lang="ja">
+		games-mudカテゴリーには多人数用のダンジョン・ゲームが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De games-mud categorie bevat MUD (Multi-User Dungeon) spellen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-mud chứa các trò chơi dạng multi-user dungeon.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória games-mud obsahuje klienty a servery MUD (Multi User Dungeon).
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-mud contiene giochi di tipo MUD (Multi User Dungeon).
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria games-mud contém jogos do tipo MUD (Multi User
+		Dungeon).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria games-mud zawiera gry wieloosobowe typu MUD.
+	</longdescription>
+</catmetadata>
+

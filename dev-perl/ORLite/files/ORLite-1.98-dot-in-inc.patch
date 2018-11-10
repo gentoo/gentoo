@@ -1,0 +1,394 @@
+From 8dd424a2c96200a491bea293d38898f9703dfd56 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Fri, 7 Jul 2017 11:02:30 +1200
+Subject: [PATCH] Fix tests failing without '.' in @INC
+
+Note: t/22_overlay.t seems to have some magical behaviour
+where previously it loaded t/lib/TableOne.pm by *implication* during
+ORLite construction.
+
+The test code for this needs to be slightly augmented to retain
+traditional semantics without radially overhauling the test code.
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=122383
+---
+ Makefile.PL         |  1 +
+ t/01_compile.t      |  2 +-
+ t/02_basics.t       |  2 +-
+ t/03_fk.t           |  2 +-
+ t/04_readonly.t     |  2 +-
+ t/05_notables.t     |  2 +-
+ t/06_create.t       |  2 +-
+ t/07_pk.t           |  2 +-
+ t/08_prune.t        |  2 +-
+ t/09_badfile.t      |  2 +-
+ t/10_cleanup.t      |  2 +-
+ t/11_cleanup.t      |  2 +-
+ t/12_xs.t           |  2 +-
+ t/13_array_basics.t |  2 +-
+ t/14_array_fk.t     |  2 +-
+ t/15_array_xs.t     |  2 +-
+ t/16_array_create.t |  2 +-
+ t/17_cache.t        |  2 +-
+ t/18_update.t       |  2 +-
+ t/19_view.t         |  2 +-
+ t/20_shim.t         |  2 +-
+ t/21_normalize.t    |  2 +-
+ t/22_overlay.t      | 10 ++++++----
+ t/23_unicode.t      |  2 +-
+ t/24_rowid.t        |  2 +-
+ t/25_blob.t         |  2 +-
+ 26 files changed, 31 insertions(+), 28 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 5a4610a..c762072 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,3 +1,4 @@
++use lib '.';
+ use inc::Module::Install::DSL 1.06;
+ 
+ all_from      lib/ORLite.pm
+diff --git a/t/01_compile.t b/t/01_compile.t
+index 9e8d053..05b1cd0 100644
+--- a/t/01_compile.t
++++ b/t/01_compile.t
+@@ -10,7 +10,7 @@ BEGIN {
+ use Test::More tests => 3;
+ 
+ require_ok( 'ORLite' );
+-require_ok( 't::lib::Test' );
++require_ok( './t/lib/Test.pm' );
+ 
+ is(
+ 	$ORLite::VERSION,
+diff --git a/t/02_basics.t b/t/02_basics.t
+index 448e256..3f9df0d 100644
+--- a/t/02_basics.t
++++ b/t/02_basics.t
+@@ -11,7 +11,7 @@ BEGIN {
+ 
+ use Test::More tests => 74;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ SCOPE: {
+ 	# Test file
+diff --git a/t/03_fk.t b/t/03_fk.t
+index 7f5db26..88d57e1 100644
+--- a/t/03_fk.t
++++ b/t/03_fk.t
+@@ -9,7 +9,7 @@ BEGIN {
+ 
+ use Test::More tests => 5;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ 
+ 
+diff --git a/t/04_readonly.t b/t/04_readonly.t
+index c13fcd7..b918fc2 100644
+--- a/t/04_readonly.t
++++ b/t/04_readonly.t
+@@ -11,7 +11,7 @@ BEGIN {
+ 
+ use Test::More tests => 13;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ SCOPE: {
+ 	# Test file
+diff --git a/t/05_notables.t b/t/05_notables.t
+index a5772c5..5f0d867 100644
+--- a/t/05_notables.t
++++ b/t/05_notables.t
+@@ -11,7 +11,7 @@ BEGIN {
+ 
+ use Test::More tests => 5;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ SCOPE: {
+ 	# Test file
+diff --git a/t/06_create.t b/t/06_create.t
+index 9a2735a..cc2ba57 100644
+--- a/t/06_create.t
++++ b/t/06_create.t
+@@ -11,7 +11,7 @@ BEGIN {
+ 
+ use Test::More tests => 25;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ 
+ 
+diff --git a/t/07_pk.t b/t/07_pk.t
+index 49c85ad..072ffa3 100644
+--- a/t/07_pk.t
++++ b/t/07_pk.t
+@@ -9,7 +9,7 @@ BEGIN {
+ 
+ use Test::More tests => 6;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ 
+ #####################################################################
+diff --git a/t/08_prune.t b/t/08_prune.t
+index 9ea2ca8..ac95366 100644
+--- a/t/08_prune.t
++++ b/t/08_prune.t
+@@ -12,7 +12,7 @@ BEGIN {
+ use Test::More tests => 7;
+ use Test::Script;
+ use File::Remove;
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ # Where the test file will be
+ my $file = test_db();
+diff --git a/t/09_badfile.t b/t/09_badfile.t
+index 4d3445e..cf43ff4 100644
+--- a/t/09_badfile.t
++++ b/t/09_badfile.t
+@@ -11,7 +11,7 @@ BEGIN {
+ use Test::More tests => 2;
+ use Test::Script;
+ use File::Remove;
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ # Where the test file will be
+ my $file = test_db();
+diff --git a/t/10_cleanup.t b/t/10_cleanup.t
+index 75a3cf3..9683624 100644
+--- a/t/10_cleanup.t
++++ b/t/10_cleanup.t
+@@ -9,7 +9,7 @@ BEGIN {
+ 
+ use Test::More tests => 2;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ 
+ #####################################################################
+diff --git a/t/11_cleanup.t b/t/11_cleanup.t
+index 7ba7af1..6e95ff7 100644
+--- a/t/11_cleanup.t
++++ b/t/11_cleanup.t
+@@ -9,7 +9,7 @@ BEGIN {
+ 
+ use Test::More tests => 4;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ 
+ #####################################################################
+diff --git a/t/12_xs.t b/t/12_xs.t
+index 151b2ed..6a26730 100644
+--- a/t/12_xs.t
++++ b/t/12_xs.t
+@@ -19,7 +19,7 @@ BEGIN {
+ 	}
+ }
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ 
+ 
+diff --git a/t/13_array_basics.t b/t/13_array_basics.t
+index 71a3d54..62fb167 100644
+--- a/t/13_array_basics.t
++++ b/t/13_array_basics.t
+@@ -10,7 +10,7 @@ BEGIN {
+ 
+ use Test::More tests => 71;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ SCOPE: {
+ 	# Test file
+diff --git a/t/14_array_fk.t b/t/14_array_fk.t
+index fc898b0..842b33c 100644
+--- a/t/14_array_fk.t
++++ b/t/14_array_fk.t
+@@ -9,7 +9,7 @@ BEGIN {
+ 
+ use Test::More tests => 5;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ 
+ 
+diff --git a/t/15_array_xs.t b/t/15_array_xs.t
+index 97402c0..06d5b1b 100644
+--- a/t/15_array_xs.t
++++ b/t/15_array_xs.t
+@@ -19,7 +19,7 @@ BEGIN {
+ 	}
+ }
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ 
+ 
+diff --git a/t/16_array_create.t b/t/16_array_create.t
+index 817c72a..3123c0c 100644
+--- a/t/16_array_create.t
++++ b/t/16_array_create.t
+@@ -11,7 +11,7 @@ BEGIN {
+ 
+ use Test::More tests => 25;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ 
+ 
+diff --git a/t/17_cache.t b/t/17_cache.t
+index 5a64066..8472373 100644
+--- a/t/17_cache.t
++++ b/t/17_cache.t
+@@ -11,7 +11,7 @@ BEGIN {
+ use Test::More tests => 9;
+ use File::Spec::Functions ':ALL';
+ use File::Remove 'clear';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ # Where will the cache file be written to
+ my $orlite_version = $t::lib::Test::VERSION;
+diff --git a/t/18_update.t b/t/18_update.t
+index 840f9c0..bf3eed6 100644
+--- a/t/18_update.t
++++ b/t/18_update.t
+@@ -9,7 +9,7 @@ BEGIN {
+ 
+ use Test::More tests => 10;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ 
+ 
+diff --git a/t/19_view.t b/t/19_view.t
+index d893b59..120d9e1 100644
+--- a/t/19_view.t
++++ b/t/19_view.t
+@@ -11,7 +11,7 @@ BEGIN {
+ 
+ use Test::More tests => 81;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ # Set up again
+ my $file = test_db();
+diff --git a/t/20_shim.t b/t/20_shim.t
+index 7f47634..3868225 100644
+--- a/t/20_shim.t
++++ b/t/20_shim.t
+@@ -9,7 +9,7 @@ BEGIN {
+ 
+ use Test::More tests => 12;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ 
+ 
+diff --git a/t/21_normalize.t b/t/21_normalize.t
+index 2a6aa83..f703c64 100644
+--- a/t/21_normalize.t
++++ b/t/21_normalize.t
+@@ -11,7 +11,7 @@ BEGIN {
+ 
+ use Test::More tests => 78;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ SCOPE: {
+ 	# Test file
+diff --git a/t/22_overlay.t b/t/22_overlay.t
+index fca2faa..5848d61 100644
+--- a/t/22_overlay.t
++++ b/t/22_overlay.t
+@@ -9,7 +9,7 @@ BEGIN {
+ 
+ use Test::More tests => 7;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ 
+ 
+@@ -30,9 +30,11 @@ eval <<"END_PERL"; die $@ if $@;
+ package t::lib;
+ 
+ use strict;
+-use ORLite {
+-	file => '$file',
+-};
++BEGIN {
++  require ORLite;
++  local \@INC=(\@INC, '.');
++  ORLite->import({ file => '$file' });
++}
+ 
+ 1;
+ END_PERL
+diff --git a/t/23_unicode.t b/t/23_unicode.t
+index a63d50f..b2be363 100644
+--- a/t/23_unicode.t
++++ b/t/23_unicode.t
+@@ -17,7 +17,7 @@ BEGIN {
+ 
+ use utf8;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ 
+ 
+diff --git a/t/24_rowid.t b/t/24_rowid.t
+index a5527f5..5104437 100644
+--- a/t/24_rowid.t
++++ b/t/24_rowid.t
+@@ -11,7 +11,7 @@ BEGIN {
+ 
+ use Test::More tests => 51;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ # Set up the database
+ my $file = test_db();
+diff --git a/t/25_blob.t b/t/25_blob.t
+index 75aa607..b0bdf06 100644
+--- a/t/25_blob.t
++++ b/t/25_blob.t
+@@ -9,7 +9,7 @@ BEGIN {
+ }
+ use Test::More;
+ use File::Spec::Functions ':ALL';
+-use t::lib::Test;
++BEGIN { require "./t/lib/Test.pm"; t::lib::Test->import() }
+ 
+ 
+ 
+-- 
+2.13.1
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<longdescription lang="en">
+		A framework for table based input methods using IBus.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">kaio/ibus-table</remote-id>
+	</upstream>
+</pkgmetadata>

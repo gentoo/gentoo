@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/xl2tpd"
+pidfile="/var/run/xl2tpd.pid"
+required_files="/etc/xl2tpd/xl2tpd.conf"
+
+start_pre() {
+	checkpath -d /var/run/xl2tpd
+}

@@ -1,0 +1,15 @@
+--- /config/init/systemd/lxcfs.service.orig	2018-10-13 17:24:46.534035126 -0500
++++ /config/init/systemd/lxcfs.service	2018-10-13 17:25:33.007034294 -0500
+@@ -5,10 +5,10 @@
+ Documentation=man:lxcfs(1)
+ 
+ [Service]
+-ExecStart=/usr/bin/lxcfs /var/lib/lxcfs/
++ExecStart=/usr/bin/lxcfs -o allow_other,nonempty /var/lib/lxcfs/
+ KillMode=process
+ Restart=on-failure
+-ExecStopPost=-/bin/fusermount -u /var/lib/lxcfs
++ExecStopPost=-/usr/bin/fusermount -u /var/lib/lxcfs
+ Delegate=yes
+ 
+ [Install]

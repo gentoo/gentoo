@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>netmon@gentoo.org</email>
+	<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
+<longdescription>
+UNINETTs delay statistics for IPv6 is now up and 
+running as a test project. The main goal with this 
+test project,is to test how well
+Mping 2.0 works against the IPv6 network, and how well 
+it handles IPv4 and IPv6 adresses simultaniously. For 
+now we have to
+resort to "IPv6 over IPv4 tunneling", but this is not 
+a permanent solution.
+</longdescription>
+</pkgmetadata>

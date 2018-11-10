@@ -1,0 +1,10 @@
+--- mstring.c
++++ mstring.c
+@@ -1,6 +1,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <stdarg.h>
++#include <string.h>
+ #include <ctype.h>
+ #include "mstring.h"
+ 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tomjbe@gentoo.org</email>
+		<name>Thomas Beierlein</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci-electronics@gentoo.org</email>
+		<name>Gentoo Electronics Project</name>
+	</maintainer>
+<upstream>
+	<maintainer>
+		<email>neoklis.kyriazis@gmail.com</email>
+		<name>Neoklis Kyriazis</name>
+	</maintainer>
+</upstream>
+	<longdescription>
+		xnec2c is a GTK+ graphical interactive version of nec2c. It incorporates
+		the nec2c core which it uses for reading input files and calculating
+		output data, but it does not need and indeed does not produce an output
+		file by default. Since xnec2c incorporates the nec2c core, it has access
+		to all internal buffers, including structure data, frequency-related
+		data (structure currents, input impedance, gain etc) and radiation
+		pattern data (for the far field and near field). It therefore has the
+		ability to graphically display user-requested data directly, as the
+		frequency loop progresses or after input from the user. Graphs of
+		frequency-related data and the current or charge distribution evolve as
+		the frequency loop progresses, and radiation patterns (far and near
+		field) are sequentially drawn for each frequency step. A new frequency
+		can be entered by the user from spin buttons in the main or radiation
+		pattern windows or by clicking on the graphs of frequency-related data.
+		New output data are then computed and displayed in text and graphical
+		form.
+	</longdescription>
+</pkgmetadata>

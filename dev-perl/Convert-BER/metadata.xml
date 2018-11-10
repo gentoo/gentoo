@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Convert-BER</remote-id>
+    <remote-id type="cpan-module">Convert::BER</remote-id>
+    <remote-id type="cpan-module">Convert::BER::ANY</remote-id>
+    <remote-id type="cpan-module">Convert::BER::BER</remote-id>
+    <remote-id type="cpan-module">Convert::BER::BIT_STRING</remote-id>
+    <remote-id type="cpan-module">Convert::BER::BIT_STRING8</remote-id>
+    <remote-id type="cpan-module">Convert::BER::BOOLEAN</remote-id>
+    <remote-id type="cpan-module">Convert::BER::CHOICE</remote-id>
+    <remote-id type="cpan-module">Convert::BER::CONSTRUCTED</remote-id>
+    <remote-id type="cpan-module">Convert::BER::INTEGER</remote-id>
+    <remote-id type="cpan-module">Convert::BER::NULL</remote-id>
+    <remote-id type="cpan-module">Convert::BER::OBJECT_ID</remote-id>
+    <remote-id type="cpan-module">Convert::BER::OPTIONAL</remote-id>
+    <remote-id type="cpan-module">Convert::BER::REAL</remote-id>
+    <remote-id type="cpan-module">Convert::BER::SEQUENCE</remote-id>
+    <remote-id type="cpan-module">Convert::BER::SEQUENCE_OF</remote-id>
+    <remote-id type="cpan-module">Convert::BER::STRING</remote-id>
+    <remote-id type="cpan-module">Convert::BER::_Time_generic</remote-id>
+  </upstream>
+</pkgmetadata>

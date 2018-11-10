@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		The COIN-OR Formulation of Linear Optimization Problems in C++
+		(FLOPC++) is a linear optimization modelling language that can be
+		specified in a declarative style, similar to algebraic modelling
+		languages such as GAMS and AMPL, within a C++ program. As a result
+		the traditional strengths of algebraic modelling languages are
+		preserved, while embedding linear optimization models in software
+		applications is facilitated.
+	</longdescription>
+</pkgmetadata>

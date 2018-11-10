@@ -1,0 +1,15 @@
+#!/bin/sh
+# this wrapper disables the auto-updater of telegram-desktop
+# This program is licensed under the same license as telegram-desktop
+
+# telegram-desktop fails to set RestartCommand with the session manager
+# exclude it from session management to prevent restarts without the argument
+unset SESSION_MANAGER
+
+# telegram-desktop expects old fontconfig configuration files
+# this is a workaround to try and deal with that
+[ -e /etc/telegram-desktop-bin/fonts.conf ] && \
+  [ -z $( printenv FONTCONFIG_FILE ) ] && \
+  export FONTCONFIG_FILE=/etc/telegram-desktop-bin/fonts.conf
+
+exec /usr/lib/telegram-desktop-bin/Telegram -externalupdater $@

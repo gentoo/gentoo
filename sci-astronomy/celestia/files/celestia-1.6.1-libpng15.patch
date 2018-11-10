@@ -1,0 +1,14 @@
+imagecapture.cpp:184:40: error: ‘Z_BEST_COMPRESSION’ was not declared in this scope
+
+--- a/src/celestia/imagecapture.cpp
++++ b/src/celestia/imagecapture.cpp
+@@ -31,6 +31,9 @@
+ #include "png.h"
+ #endif
+ 
++// Z_BEST_COMPRESSION
++#include <zlib.h>
++
+ // Define png_jmpbuf() in case we are using a pre-1.0.6 version of libpng
+ #ifndef png_jmpbuf
+ #define png_jmpbuf(png_ptr) png_ptr->jmpbuf

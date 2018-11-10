@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>chutzpah@gentoo.org</email>
+    <name>Patrick McLean</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>dlan@gentoo.org</email>
+    <name>Yixun Lan</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>cluster@gentoo.org</email>
+    <name>Gentoo Cluster Project</name>
+  </maintainer>
+  <longdescription>
+    Ceph is a distributed network file system designed to provide excellent performance, reliability, and scalability.
+  </longdescription>
+  <use>
+    <flag name="babeltrace">Add support for LTTng babeltrace</flag>
+    <flag name="cryptopp">Use <pkg>dev-libs/crypto++</pkg> for cryptography</flag>
+    <flag name="cephfs">Build support for cephfs, a POSIX compatible filesystem built on top of ceph</flag>
+    <flag name="dpdk">Enable DPDK messaging</flag>
+    <flag name="fuse">Build fuse client</flag>
+    <flag name="libatomic">Use libatomic instead of builtin atomic operations</flag>
+    <flag name="libaio">Use libaio as asynchronous input/output library</flag>
+    <flag name="lttng">Add support for LTTng</flag>
+    <flag name="mgr">Build the ceph-mgr daemon</flag>
+    <flag name="mgr-frontend">Build the mgr/dashboard frontend with npm, this is not required for the frontend to work</flag>
+    <flag name="nss">Use <pkg>dev-libs/nss</pkg> for cryptography</flag>
+    <flag name="radosgw">Add radosgw support</flag>
+    <flag name="system-boost">Use system <pkg>dev-libs/boost</pkg> instead of the bundled one</flag>
+    <flag name="xfs">Add xfs support</flag>
+    <flag name="zfs">Add zfs support</flag>
+  </use>
+</pkgmetadata>

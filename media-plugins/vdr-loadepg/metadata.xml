@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>vdr@gentoo.org</email>
+		<name>Gentoo VDR Project</name>
+	</maintainer>
+	<longdescription>
+		This is the Loadepg plugin for the Video Disk Recorder (VDR)
+		With this Plugin EPG data can be received via Satelite,
+		become the information from the Canal+ group (Mediahighway of receivers) ready placed.
+	</longdescription>
+</pkgmetadata>

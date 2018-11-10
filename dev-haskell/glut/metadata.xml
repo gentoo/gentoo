@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A Haskell binding for the OpenGL Utility Toolkit, a window system independent
+		toolkit for writing OpenGL programs. For more information about the C library
+		on which this binding is based, please see:
+		&lt;http://www.opengl.org/resources/libraries/glut/&gt;.
+	</longdescription>
+</pkgmetadata>

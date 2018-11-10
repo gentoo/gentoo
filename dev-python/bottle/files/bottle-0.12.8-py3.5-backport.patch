@@ -1,0 +1,36 @@
+ test/test_environ.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/test/test_environ.py b/test/test_environ.py
+old mode 100755
+new mode 100644
+index 2b8079b..2feebe3
+--- a/test/test_environ.py
++++ b/test/test_environ.py
+@@ -592,7 +592,7 @@ class TestResponse(unittest.TestCase):
+         r.set_cookie('name2', 'value', max_age=datetime.timedelta(days=1))
+         cookies = sorted([value for name, value in r.headerlist
+                    if name.title() == 'Set-Cookie'])
+-        self.assertEqual(cookies[0], 'name1=value; Max-Age=5')
++        self.assertEqual(cookies[0].lower(), 'name1=value; max-age=5')
+         self.assertEqual(cookies[1], 'name2=value; Max-Age=86400')
+ 
+     def test_set_cookie_expires(self):
+@@ -602,7 +602,7 @@ class TestResponse(unittest.TestCase):
+         r.set_cookie('name2', 'value', expires=datetime.datetime(1970,1,1,0,0,43))
+         cookies = sorted([value for name, value in r.headerlist
+                    if name.title() == 'Set-Cookie'])
+-        self.assertEqual(cookies[0], 'name1=value; expires=Thu, 01 Jan 1970 00:00:42 GMT')
++        self.assertEqual(cookies[0].lower(), 'name1=value; expires=thu, 01 jan 1970 00:00:42 gmt')
+         self.assertEqual(cookies[1], 'name2=value; expires=Thu, 01 Jan 1970 00:00:43 GMT')
+ 
+     def test_delete_cookie(self):
+@@ -611,7 +611,7 @@ class TestResponse(unittest.TestCase):
+         response.delete_cookie('name')
+         cookies = [value for name, value in response.headerlist
+                    if name.title() == 'Set-Cookie']
+-        self.assertTrue('name=;' in cookies[0])
++        self.assertTrue('Max-Age=-1' in cookies[0])
+ 
+     def test_set_header(self):
+         response = BaseResponse()

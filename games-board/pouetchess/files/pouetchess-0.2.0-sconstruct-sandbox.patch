@@ -1,0 +1,29 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -22,14 +22,24 @@
+ 
+ 
+ 
+-import os,glob
++import os,glob,SCons.Util
+ 
+ 
++# https://dev.gentoo.org/~vapier/scons-blows.txt
+ 
+ # create build environment
+ 
++env = Environment()
++env.SConsignFile()
+ env = Environment(tools = ['default', 'pouetChess'], toolpath = ['.'])
+-env.AppendUnique(CXXFLAGS = ['-Wall'])
++env['CC'] = os.environ['CC']
++env['CXX'] = os.environ['CXX']
++if os.environ.has_key('CFLAGS'):
++	env['CCFLAGS'] = SCons.Util.CLVar(os.environ['CFLAGS'])
++if os.environ.has_key('CXXFLAGS'):
++	env['CXXFLAGS'] = SCons.Util.CLVar(os.environ['CXXFLAGS'])
++if os.environ.has_key('LDFLAGS'):
++	env['LINKFLAGS'] = SCons.Util.CLVar(os.environ['LDFLAGS'])
+ 
+ # gather a list of source files
+ SOURCES =  glob.glob('src/*.cpp')

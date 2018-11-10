@@ -1,0 +1,22 @@
+Index: monocam_settler/CMakeLists.txt
+===================================================================
+--- monocam_settler.orig/CMakeLists.txt
++++ monocam_settler/CMakeLists.txt
+@@ -16,7 +16,7 @@ catkin_package(DEPENDS actionlib actionl
+ )
+ 
+ 
+-include_directories(SYSTEM ${catkin_INCLUDE_DIRS})
++include_directories(${catkin_INCLUDE_DIRS})
+ include_directories(include)
+ 
+ # deal with the include
+@@ -33,7 +33,7 @@ install(TARGETS ${PROJECT_NAME}
+ )
+ 
+ # deal with the executable
+-include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
++include_directories(${Boost_INCLUDE_DIRS})
+ add_executable(monocam_settler_action src/monocam_settler_action.cpp)
+ target_link_libraries(monocam_settler_action ${Boost_LIBRARIES}
+                                              ${catkin_LIBRARIES}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A small, efficient and portable regex library for Perl 5 compatible regular expressions
+		
+		The PCRE library is a set of functions that implement regular
+		expression pattern matching using the same syntax and semantics as Perl 5.
+		
+		Test coverage data for this library is available at:
+		&lt;http://code.haskell.org/~dons/tests/pcre-light/hpc_index.html&gt;
+		
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Daniel-Diaz/pcre-light</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,165 @@
+From 675018c54227ce5db4a91a153092d5f4d06f9af0 Mon Sep 17 00:00:00 2001
+From: Paul Rouse <pgr@doynton.org>
+Date: Thu, 9 Jun 2016 20:25:34 +0100
+Subject: [PATCH 1/3] Changes for persistent-2.5
+
+---
+ esqueleto.cabal                                     |  2 +-
+ src/Database/Esqueleto.hs                           |  8 ++++----
+ src/Database/Esqueleto/Internal/Language.hs         | 15 +++++----------
+ src/Database/Esqueleto/Internal/PersistentImport.hs | 12 +++++++++++-
+ test/Test.hs                                        |  8 ++++----
+ 5 files changed, 25 insertions(+), 20 deletions(-)
+
+diff --git a/esqueleto.cabal b/esqueleto.cabal
+index 65aa237..1768d2d 100644
+--- a/esqueleto.cabal
++++ b/esqueleto.cabal
+@@ -66,7 +66,7 @@ library
+       base                 >= 4.5     && < 4.9
+     , bytestring
+     , text                 >= 0.11    && < 1.3
+-    , persistent           >= 2.1.1.7 && < 2.3
++    , persistent           >= 2.1.1.7
+     , transformers         >= 0.2
+     , unordered-containers >= 0.2
+     , tagged               >= 0.2
+diff --git a/src/Database/Esqueleto.hs b/src/Database/Esqueleto.hs
+index eb135c2..97e3211 100644
+--- a/src/Database/Esqueleto.hs
++++ b/src/Database/Esqueleto.hs
+@@ -430,8 +430,8 @@ valJ = val . unValue
+ 
+ -- | Synonym for 'Database.Persist.Store.delete' that does not
+ -- clash with @esqueleto@'s 'delete'.
+-deleteKey :: ( PersistStore (PersistEntityBackend val)
+-             , MonadIO m
+-             , PersistEntity val )
+-          => Key val -> ReaderT (PersistEntityBackend val) m ()
++deleteKey :: ( PersistStore backend
++             , PersistRecordBackend val backend
++             , MonadIO m )
++          => Key val -> ReaderT backend m ()
+ deleteKey = Database.Persist.delete
+diff --git a/src/Database/Esqueleto/Internal/Language.hs b/src/Database/Esqueleto/Internal/Language.hs
+index fbe88e2..ab18999 100644
+--- a/src/Database/Esqueleto/Internal/Language.hs
++++ b/src/Database/Esqueleto/Internal/Language.hs
+@@ -74,13 +74,11 @@ class (Functor query, Applicative query, Monad query) =>
+   --   In the end, 'fromFinish' is called to materialize the
+   --   @JOIN@.
+   fromStart
+-    :: ( PersistEntity a
+-       , PersistEntityBackend a ~ backend )
++    :: PersistRecordBackend a backend
+     => query (expr (PreprocessedFrom (expr (Entity a))))
+   -- | (Internal) Same as 'fromStart', but entity may be missing.
+   fromStartMaybe
+-    :: ( PersistEntity a
+-       , PersistEntityBackend a ~ backend )
++    :: PersistRecordBackend a backend
+     => query (expr (PreprocessedFrom (expr (Maybe (Entity a)))))
+   -- | (Internal) Do a @JOIN@.
+   fromJoin
+@@ -926,8 +924,7 @@ class ToBaseId ent where
+ -- @
+ -- person
+ --   :: ( Esqueleto query expr backend
+---      , PersistEntity Person
+---      , PersistEntityBackend Person ~ backend
++--      , PersistRecordBackend Person backend
+ --      ) => expr (Entity Person)
+ -- (person, blogPost)
+ --   :: (...) => (expr (Entity Person), expr (Entity BlogPost))
+@@ -1054,14 +1051,12 @@ class Esqueleto query expr backend => FromPreprocess query expr backend a where
+   fromPreprocess :: query (expr (PreprocessedFrom a))
+ 
+ instance ( Esqueleto query expr backend
+-         , PersistEntity val
+-         , PersistEntityBackend val ~ backend
++         , PersistRecordBackend val backend
+          ) => FromPreprocess query expr backend (expr (Entity val)) where
+   fromPreprocess = fromStart
+ 
+ instance ( Esqueleto query expr backend
+-         , PersistEntity val
+-         , PersistEntityBackend val ~ backend
++         , PersistRecordBackend val backend
+          ) => FromPreprocess query expr backend (expr (Maybe (Entity val))) where
+   fromPreprocess = fromStartMaybe
+ 
+diff --git a/src/Database/Esqueleto/Internal/PersistentImport.hs b/src/Database/Esqueleto/Internal/PersistentImport.hs
+index ad193e0..02fbd20 100644
+--- a/src/Database/Esqueleto/Internal/PersistentImport.hs
++++ b/src/Database/Esqueleto/Internal/PersistentImport.hs
+@@ -1,7 +1,13 @@
++{-# LANGUAGE CPP                        #-}
++{-# LANGUAGE ConstraintKinds            #-}
++{-# LANGUAGE TypeFamilies               #-}
+ -- | Re-export "Database.Persist.Sql" without any clashes with
+ -- @esqueleto@.
+ module Database.Esqueleto.Internal.PersistentImport
+   ( module Database.Persist.Sql
++#if ! MIN_VERSION_persistent(2,5,0)
++    , PersistRecordBackend
++#endif
+   ) where
+ 
+ import Database.Persist.Sql hiding
+@@ -10,4 +16,8 @@ import Database.Persist.Sql hiding
+   , selectKeysList, deleteCascadeWhere, (=.), (+=.), (-=.), (*=.), (/=.)
+   , (==.), (!=.), (<.), (>.), (<=.), (>=.), (<-.), (/<-.), (||.)
+   , listToJSON, mapToJSON, getPersistMap, limitOffsetOrder, selectSource
+-  , update )
++  , update, count )
++
++#if ! MIN_VERSION_persistent(2,5,0)
++type PersistRecordBackend record backend = (PersistEntity record, PersistEntityBackend record ~ backend)
++#endif
+diff --git a/test/Test.hs b/test/Test.hs
+index 80c6784..524bd7c 100644
+--- a/test/Test.hs
++++ b/test/Test.hs
+@@ -1396,10 +1396,10 @@ main = do
+ 
+ 
+ insert' :: ( Functor m
+-           , PersistStore (PersistEntityBackend val)
+-           , MonadIO m
+-           , PersistEntity val )
+-        => val -> ReaderT (PersistEntityBackend val) m (Entity val)
++           , PersistStore backend
++           , PersistRecordBackend val backend
++           , MonadIO m )
++        => val -> ReaderT backend m (Entity val)
+ insert' v = flip Entity v <$> insert v
+ 
+ 
+-- 
+2.9.0
+
+From 4c9ecd94f2748be52c50c85ca8ed7314e21b9e82 Mon Sep 17 00:00:00 2001
+From: Paul Rouse <pgr@doynton.org>
+Date: Thu, 9 Jun 2016 20:29:45 +0100
+Subject: [PATCH 2/3] Allow base-4.9 for GHC 8
+
+---
+ esqueleto.cabal | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/esqueleto.cabal b/esqueleto.cabal
+index 1768d2d..3b9efb9 100644
+--- a/esqueleto.cabal
++++ b/esqueleto.cabal
+@@ -63,7 +63,7 @@ library
+   other-modules:
+     Database.Esqueleto.Internal.PersistentImport
+   build-depends:
+-      base                 >= 4.5     && < 4.9
++      base                 >= 4.5     && < 5
+     , bytestring
+     , text                 >= 0.11    && < 1.3
+     , persistent           >= 2.1.1.7 && < 2.6
+-- 
+2.9.0
+

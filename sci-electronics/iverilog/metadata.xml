@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-electronics@gentoo.org</email>
+    <name>Gentoo Electronics Project</name>
+  </maintainer>
+  <longdescription>
+  Icarus Verilog is a Verilog simulation and synthesis tool. It operates as a
+  compiler, compiling source code writen in Verilog (IEEE-1364) into some target
+  format. The compiler proper is intended to parse and elaborate design
+  descriptions written to the IEEE standard IEEE Std 1364-2001.
+  </longdescription>
+</pkgmetadata>

@@ -1,0 +1,102 @@
+From 09227cacda77d7785e864c0fec3854c22b3273f7 Mon Sep 17 00:00:00 2001
+From: Michal Sekletar <msekleta@redhat.com>
+Date: Thu, 2 Mar 2017 09:25:45 +0100
+Subject: [PATCH] Fix build failure with gcc-7
+
+When function is declared inline but it is not static then compiler
+assumes it could be potentially called from other translation
+units. Hence it will inline the function within the translation unit and
+at the same time it will generate object code for function with external
+linkage. However both extern and inline variant *must* be the same and
+therefore such function can not use any variables with static storage
+duration. In our case functions in g3cat.c and pbm2g3.c are not called
+from other translation units hence it is fine to mark then explicitly as
+static and compiler won't generate other (problematic) extern variant.
+---
+ g3/g3cat.c  | 8 ++++----
+ g3/pbm2g3.c | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/g3/g3cat.c b/g3/g3cat.c
+index 8a4b708..1951210 100644
+--- a/g3/g3cat.c
++++ b/g3/g3cat.c
+@@ -44,7 +44,7 @@ static int b_written = 0;		/* bytes of a line already */
+ 					/* written */
+ 
+ #ifdef __GNUC__
+-inline
++static inline
+ #endif
+ void putcode _P2( (code, len), int code, int len )
+ {
+@@ -67,7 +67,7 @@ void putcode _P2( (code, len), int code, int len )
+ }
+ 
+ #ifdef __GNUC__
+-inline
++static inline
+ #endif
+ void putwhitespan _P1( (l), int l )
+ {
+@@ -98,7 +98,7 @@ void putwhitespan _P1( (l), int l )
+ }
+ 
+ #ifdef __GNUC__
+-inline
++static inline
+ #endif
+ void putblackspan _P1( (l), int l )
+ {
+@@ -129,7 +129,7 @@ void putblackspan _P1( (l), int l )
+ }
+ 
+ #ifdef __GNUC__
+-inline
++static inline
+ #endif
+ void puteol _P0( void )			/* write byte-aligned EOL */
+ {
+diff --git a/g3/pbm2g3.c b/g3/pbm2g3.c
+index 283a728..57cb69a 100644
+--- a/g3/pbm2g3.c
++++ b/g3/pbm2g3.c
+@@ -40,7 +40,7 @@ static unsigned int out_hibit = 0;
+ static int out_byte_tab[ 256 ];			/* for g3 byte reversal */
+ 
+ #ifdef __GNUC__
+-inline
++static inline
+ #endif
+ void putcode _P2( (code, len), int code, int len )
+ {
+@@ -60,7 +60,7 @@ void putcode _P2( (code, len), int code, int len )
+ }
+ 
+ #ifdef __GNUC__
+-inline
++static inline
+ #endif
+ void puteol _P0( void )			/* write byte-aligned EOL */
+ {
+@@ -69,7 +69,7 @@ void puteol _P0( void )			/* write byte-aligned EOL */
+ }
+ 
+ #ifdef __GNUC__
+-inline
++static inline
+ #endif
+ void putwhitespan _P1( (l), int l )
+ {
+@@ -100,7 +100,7 @@ void putwhitespan _P1( (l), int l )
+ }
+ 
+ #ifdef __GNUC__
+-inline
++static inline
+ #endif
+ void putblackspan _P1( (l), int l )
+ {
+-- 
+2.9.3
+

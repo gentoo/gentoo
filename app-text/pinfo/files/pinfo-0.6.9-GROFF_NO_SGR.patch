@@ -1,0 +1,10 @@
+--- a/src/manual.c	2006-03-16 15:14:30.000000000 +0100
++++ b/src/manual.c	2010-06-03 19:47:11.000000000 +0200
+@@ -261,6 +261,7 @@
+ 		xfree(tmpfilename1);
+ 	}
+ 	tmpfilename1 = make_tempfile();
++	putenv("GROFF_NO_SGR=true");
+ 
+ #ifdef getmaxyx
+ 	init_curses();

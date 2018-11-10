@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->	
+	<longdescription lang="en">
+	The Uncomplicated Firewall (ufw) is a frontend for iptables and is
+	particularly well-suited for host-based firewalls. It provides a framework
+	for managing netfilter, as well as an easy to use command-line interface for
+	manipulating the firewall.
+</longdescription>
+	<upstream>
+		<remote-id type="launchpad">ufw</remote-id>
+	</upstream>
+</pkgmetadata>

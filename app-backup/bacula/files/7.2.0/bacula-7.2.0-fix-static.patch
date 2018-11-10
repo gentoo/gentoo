@@ -1,0 +1,56 @@
+--- src/console/Makefile.in.orig	2011-10-30 14:10:41.100802721 -0400
++++ src/console/Makefile.in	2011-10-30 14:14:42.330488174 -0400
+@@ -29,10 +29,11 @@
+ GETTEXT_LIBS = @LIBINTL@
+ 
+ CONS_INC=@CONS_INC@
+ CONS_LIBS=@CONS_LIBS@
+ CONS_LDFLAGS=@CONS_LDFLAGS@
++ZLIBS=@ZLIBS@
+ 
+ .SUFFIXES:	.c .o
+ .PHONY:
+ .DONTCARE:
+ 
+@@ -46,17 +47,17 @@
+ 	@echo " "
+ 
+ 
+ bconsole: Makefile $(CONSOBJS) ../lib/libbac$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE)
+ 	$(LIBTOOL_LINK) $(CXX) -L../lib -L../cats $(LDFLAGS) $(CONS_LDFLAGS) -o $@ $(CONSOBJS) \
+-	      $(DLIB) $(CONS_LIBS) -lbaccfg -lbac -lm $(LIBS) $(GETTEXT_LIBS) \
+-	      $(OPENSSL_LIBS)
++	      $(DLIB) $(CONS_LIBS) -lbaccfg -lbac -lm $(ZLIBS) $(GETTEXT_LIBS) \
++	      $(OPENSSL_LIBS) $(LIBS)
+ 
+ static-bconsole: Makefile $(CONSOBJS) ../lib/libbac.a ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE)
+ 	$(LIBTOOL_LINK) $(CXX) -static $(LDFLAGS) $(CONS_LDFLAGS) -L../lib -L../cats -o $@ $(CONSOBJS) \
+-	      $(DLIB) $(CONS_LIBS) -lbaccfg -lbac -lm $(LIBS) $(GETTEXT_LIBS) \
+-	      $(OPENSSL_LIBS)
++	      $(DLIB) $(CONS_LIBS) -lbaccfg -lbac -lm $(ZLIBS) $(GETTEXT_LIBS) \
++	      $(OPENSSL_LIBS) $(LIBS) $(ZLIBS)
+ 	strip $@
+ 
+ 
+ Makefile: $(srcdir)/Makefile.in $(topdir)/config.status
+ 	cd $(topdir) \
+--- src/filed/Makefile.in.orig	2015-09-04 12:47:13.000000000 +0200
++++ src/filed/Makefile.in	2015-09-04 12:49:39.000000000 +0200
+@@ -66,13 +66,13 @@
+ bacula-fd:  Makefile $(SVROBJS) ../findlib/libbacfind$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE) ../lib/libbac$(DEFAULT_ARCHIVE_TYPE)
+ 	@echo "Linking $@ ..."
+ 	$(LIBTOOL_LINK) $(CXX) $(WLDFLAGS) $(LDFLAGS) -L../lib -L../findlib -o $@ $(SVROBJS) \
+-	  $(FDLIBS) $(ZLIBS) -lbacfind -lbaccfg -lbac -lm $(LIBS) \
+-	  $(DLIB) $(WRAPLIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS) $(CAP_LIBS) $(AFS_LIBS) $(LZO_LIBS)
++	  $(FDLIBS) $(ZLIBS) -lbacfind -lbaccfg -lbac -lm \
++	  $(DLIB) $(WRAPLIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS) $(LIBS) $(CAP_LIBS) $(AFS_LIBS) $(LZO_LIBS)
+ 
+ static-bacula-fd: Makefile $(SVROBJS) ../findlib/libbacfind.a ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE) ../lib/libbac$(DEFAULT_ARCHIVE_TYPE)
+ 	$(LIBTOOL_LINK) $(CXX) $(WLDFLAGS) $(LDFLAGS) -static -L../lib -L../findlib -o $@ $(SVROBJS) \
+-	   $(FDLIBS) $(ZLIBS) -lbacfind -lbaccfg -lbac -lm $(LIBS) \
+-	   $(DLIB) $(WRAPLIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS) $(CAP_LIBS) $(AFS_LIBS) $(LZO_LIBS)
++	   $(FDLIBS) $(ZLIBS) -lbacfind -lbaccfg -lbac -lm \
++	   $(DLIB) $(WRAPLIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS) $(LIBS) $(CAP_LIBS) $(AFS_LIBS) $(LZO_LIBS)
+ 	strip $@
+ 
+ Makefile: $(srcdir)/Makefile.in $(topdir)/config.status

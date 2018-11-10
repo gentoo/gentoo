@@ -1,0 +1,37 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2
+
+extra_started_commands="check"
+description_check="Running quotacheck with quota being offline"
+
+depend() {
+	need localmount
+	use portmap
+}
+
+start() {
+	if [ "${RUN_QUOTACHECK}" = "yes" ] ; then
+		ebegin "Checking quotas (may take a while)"
+		quotacheck ${QUOTACHECK_OPTS}
+		eend $?
+	fi
+
+	ebegin "Starting quota"
+	quotaon ${QUOTAON_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping quota"
+	quotaoff ${QUOTAOFF_OPTS}
+	eend $?
+}
+
+check() {
+	ebegin "Checking quota"
+	quotaoff ${QUOTAOFF_OPTS} && \
+	quotacheck ${QUOTACHECK_OPTS} && \
+	quotaon ${QUOTAON_OPTS}
+	eend $?
+}

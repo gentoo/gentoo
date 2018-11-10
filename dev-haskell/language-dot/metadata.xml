@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="executable">Build the `ppdot' executable</flag>
+	</use>
+	<longdescription>
+		A library for the analysis and creation of Graphviz DOT files.
+	</longdescription>
+</pkgmetadata>

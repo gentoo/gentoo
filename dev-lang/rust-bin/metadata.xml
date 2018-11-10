@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>rust@gentoo.org</email>
+    <name>Rust Project</name>
+  </maintainer>
+  <use>
+    <flag name="cargo">Install cargo component</flag>
+    <flag name="clippy">Install clippy component</flag>
+    <flag name="rustfmt">Install rustfmt component</flag>
+  </use>
+</pkgmetadata>

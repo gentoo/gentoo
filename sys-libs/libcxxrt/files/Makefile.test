@@ -1,0 +1,7 @@
+OBJS=test.o test_exception.o test_guard.o test_typeinfo.o
+
+cxxrttest: $(OBJS)
+	$(CXX) -nodefaultlibs $(CXXFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
+
+check: cxxrttest
+	./cxxrttest

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-nds category contains NDS (NetWare Directory Services) software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-nds enthält Software für die NetWare Directory Services (NDS).
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-nds contiene programas NDS (NetWare Directory
+		Services).
+	</longdescription>
+	<longdescription lang="ja">
+		net-ndsカテゴリーにはNetWare・ディレクトリ・サービスの
+		ソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-nds categorie bevat applicaties voor NDS (NetWare Directory Service).
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-nds chứa phần mềm NDS (NetWare Directory Services).
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-nds contiene programmi NDS (NetWare Directory
+		Services).
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria net-nds contém programas de NDS (NetWare Directory
+		Services).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria net-nds zawiera oprogramowanie NDS (NetWare Directory Services).
+	</longdescription>
+</catmetadata>
+

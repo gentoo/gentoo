@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Simple network library for all your connection need.
+		
+		Features: Really simple to use, SSL/TLS, SOCKS.
+		
+		This library provides a very simple api to create sockets
+		to a destination with the choice of SSL/TLS, and SOCKS.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">vincenthz/hs-connection</remote-id>
+	</upstream>
+</pkgmetadata>

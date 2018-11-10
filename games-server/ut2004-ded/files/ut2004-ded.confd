@@ -1,0 +1,9 @@
+# User and group the server should run as
+ut2004_ded_user="@USER@"
+ut2004_ded_group="@GROUP@"
+
+# Directory to use for HOME
+ut2004_ded_home="@HOME@"
+
+# Any extra options you want to pass to the server
+ut2004_ded_opts="DM-Deck17"

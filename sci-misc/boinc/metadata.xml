@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>yamakuzure@gmx.net</email>
+    <name>Sven Eden</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+<longdescription lang="en">
+  BOINC (Berkeley Open Infrastructure for Network Computing) is a software
+  platform for distributed computing using volunteered computer resources.
+</longdescription>
+  <use>
+    <flag name="cuda">
+  Use nvidia cuda toolkit for speeding up computations.
+  NOTE: works only for subset of nvidia graphic cards so make sure your card
+  is supported before opening a bug about it.
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">BOINC/boinc</remote-id>
+  </upstream>
+</pkgmetadata>

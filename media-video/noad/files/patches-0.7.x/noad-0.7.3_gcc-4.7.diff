@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/show_bug.cgi?id=423623
+compilefix gcc-4.7.x
+
+signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> (2012/06/27)
+
+diff -Naur noad-0.7.3.orig/vdr_cl.h noad-0.7.3/vdr_cl.h
+--- noad-0.7.3.orig/vdr_cl.h	2012-06-27 20:27:57.000000000 +0200
++++ noad-0.7.3/vdr_cl.h	2012-06-27 20:30:56.000000000 +0200
+@@ -287,7 +287,7 @@
+ 				{
+ 					T *l = new T;
+                if (l->Parse(s))
+-						Add(l);
++						this->Add(l);
+                else 
+ 					{
+ 						esyslog("ERROR: error in %s, line %d", fileName, line);

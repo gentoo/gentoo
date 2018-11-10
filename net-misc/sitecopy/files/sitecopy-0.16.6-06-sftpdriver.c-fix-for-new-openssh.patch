@@ -1,0 +1,13 @@
+From: Agustin Martin Domingo <agmartin@debian.org>
+Subject: Patch for sftp protocol doesn't work with >= 1:4.2p1-1
+
+diff -urNad sitecopy-0.16.3~/src/sftpdriver.c sitecopy-0.16.3/src/sftpdriver.c
+--- sitecopy-0.16.3~/src/sftpdriver.c	2005-06-29 11:44:47.000000000 +0200
++++ sitecopy-0.16.3/src/sftpdriver.c	2007-10-22 14:58:51.000000000 +0200
+@@ -140,7 +140,6 @@
+     }
+     close(c_in);
+     close(c_out);
+-    read_sftp(sess);    /* wait for prompt */
+     return SITE_OK;
+ }

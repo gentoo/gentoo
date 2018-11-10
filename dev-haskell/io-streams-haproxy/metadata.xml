@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		HAProxy protocol version 1.5 support (see
+		&lt;http://haproxy.1wt.eu/download/1.5/doc/proxy-protocol.txt&gt;) for applications
+		using io-streams. The proxy protocol allows information about a networked
+		peer (like remote address and port) to be propagated through a forwarding
+		proxy that is configured to speak this protocol.
+	</longdescription>
+</pkgmetadata>

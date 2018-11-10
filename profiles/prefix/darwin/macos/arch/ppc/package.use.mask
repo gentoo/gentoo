@@ -1,0 +1,14 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# The 32-bits profile is inherited by the 64-bits one!
+# All the Mac OS X profiles inherit from their matching arch profile here.
+
+
+# Elias Pipping <pipping@gentoo.org> (01 Sep 2007)
+# imlib2 does not compile with USE=mmx
+media-libs/imlib2 cpu_flags_x86_mmx
+
+# Elias Pipping <pipping@gentoo.org> (01 Sep 2007)
+# mpg123 does not compile with USE=mmx
+media-sound/mpg123 cpu_flags_x86_mmx

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>aballier@gentoo.org</email>
+		<name>Alexis Ballier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>tex@gentoo.org</email>
+		<name>Gentoo TeX Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Programs for conversion between font formats, testing fonts,
+		virtual fonts, .gf and .pk manipulation, mft, fontinst, etc.
+		Manipulating OpenType, TrueType, Type 1,and for manipulation of
+		PostScript and other image formats.
+	</longdescription>
+</pkgmetadata>

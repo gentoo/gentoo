@@ -1,0 +1,31 @@
+# Main ARM64 (Aarch64/ARMv8) profile; endian independent.
+
+ARCH="arm64"
+ACCEPT_KEYWORDS="arm64"
+
+MULTILIB_ABIS="arm64"
+DEFAULT_ABI="arm64"
+ABI="${DEFAULT_ABI}"
+
+CFLAGS="-O2"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+LIBDIR_arm64="lib64"
+
+# Defaults for video drivers
+VIDEO_CARDS="fbdev"
+
+# Mart Raudsepp <leio@gentoo.org> (5 Jun 2018)
+# Enable USE=libtirpc by default, to ease dependency resolution during
+# the stabilization of glibc-2.26. Bug 657148
+USE="libtirpc"
+
+# Michał Górny <mgorny@gentoo.org> (14 Mar 2017)
+# Unhide the ARM-specific USE_EXPANDs.
+USE_EXPAND_HIDDEN="-CPU_FLAGS_ARM"
+
+# Hans de Graaff <graaff@gentoo.org> (17 Apr 2017)
+# Temporary entry to support stable bug 615818
+RUBY_TARGETS="ruby21"

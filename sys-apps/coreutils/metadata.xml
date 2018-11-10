@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
+<longdescription>Standard GNU file utilities (chmod, cp, dd, dir, ls, ...), text utilities (sort, tr, head, wc, ...), and shell utilities (whoami, who, ...)
+</longdescription>
+<use>
+	<flag name="caps">Add Linux capabilities support in output of file utilities (ls, dir, ...) via <pkg>sys-libs/libcap</pkg></flag>
+	<flag name="hostname">Build the hostname program</flag>
+	<flag name="kill">Build the kill program</flag>
+	<flag name="multicall">Build all tools into a single `coreutils` program akin to busybox to save space</flag>
+	<flag name="split-usr">Enable this if /bin and /usr/bin are separate directories</flag>
+</use>
+<upstream>
+	<remote-id type="cpe">cpe:/a:gnu:coreutils</remote-id>
+</upstream>
+</pkgmetadata>

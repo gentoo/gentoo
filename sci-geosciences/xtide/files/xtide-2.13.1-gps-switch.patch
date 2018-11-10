@@ -1,0 +1,88 @@
+commit 755677baae16fd8772efd523a25b787ea3fc0772
+Author: hasufell <hasufell@gentoo.org>
+Date:   Sat Jul 13 13:26:24 2013 +0200
+
+    BUILD: add --with-gps switch
+    
+    We don't want automagic gps detection, but give control
+    to the user.
+
+diff --git a/configure.ac b/configure.ac
+index 86c7569..307def4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -156,6 +156,12 @@ if test -z "${SKIP_COMPLICATED}"; then
+ fi
+ CXXFLAGS="${SAVED_CXXFLAGS}"
+ 
++AC_ARG_WITH([gps],
++            [AS_HELP_STRING([--with-gps],
++              [use libgpsd (default: no)])],
++            [gps=$withval],
++            [gps=no])
++
+ # xttpd configs
+ AC_ARG_WITH([xttpd-user],
+             [AS_HELP_STRING([--with-xttpd-user=user],
+@@ -381,32 +387,35 @@ AC_CHECK_HEADER([Dstr], [AC_CHECK_LIB([dstr], [DstrCompat20070215Check])])
+ AM_CONDITIONAL(NO_LIBDSTR, test "$ac_cv_lib_dstr_DstrCompat20070215Check" != "yes")
+ 
+ # libgps is optional; use it if you have a compatible version.
+-AC_CHECK_HEADER([gps.h], [AC_CHECK_LIB([gps], [timestamp], [
+-  AC_MSG_CHECKING([if libgps is 3.x or newer, compatible version])
+-  AC_COMPILE_IFELSE(
+-    [AC_LANG_SOURCE([[
+-#include <gps.h>
+-#if (GPSD_API_MAJOR_VERSION < 5)
+-#FAIL
+-#endif
+-int main (int argc, char **argv) {
+-  struct gps_data_t gpsdata;
+-  gps_open ("127.0.0.1", "2947", &gpsdata);
+-  gps_stream (&gpsdata, WATCH_ENABLE|WATCH_NEWSTYLE, NULL);
+-  gps_read (&gpsdata);
+-  return (gpsdata.fix.mode >= MODE_2D);
+-}
+-    ]])],
+-    [
+-      AC_MSG_RESULT(yes)
+-      AC_DEFINE([GPS_GOOD])
+-      AC_SUBST([GPSD_LIBS], ["-lgps"])
+-    ],
+-    [
+-      AC_MSG_RESULT(no)
+-    ]
+-  )
+-])])
++
++AS_IF([test "x$gps" = "xyes"], [
++	AC_CHECK_HEADER([gps.h], [AC_CHECK_LIB([gps], [timestamp], [
++	  AC_MSG_CHECKING([if libgps is 3.x or newer, compatible version])
++	  AC_COMPILE_IFELSE(
++		[AC_LANG_SOURCE([[
++	#include <gps.h>
++	#if (GPSD_API_MAJOR_VERSION < 5)
++	#FAIL
++	#endif
++	int main (int argc, char **argv) {
++	  struct gps_data_t gpsdata;
++	  gps_open ("127.0.0.1", "2947", &gpsdata);
++	  gps_stream (&gpsdata, WATCH_ENABLE|WATCH_NEWSTYLE, NULL);
++	  gps_read (&gpsdata);
++	  return (gpsdata.fix.mode >= MODE_2D);
++	}
++		]])],
++		[
++		  AC_MSG_RESULT(yes)
++		  AC_DEFINE([GPS_GOOD])
++		  AC_SUBST([GPSD_LIBS], ["-lgps"])
++		],
++		[
++		  AC_MSG_RESULT(no)
++		]
++	  )
++	], [AC_MSG_ERROR([cannot find libgps])])], [AC_MSG_ERROR([cannot find gps.h])])
++	])
+ 
+ AC_TYPE_INT8_T
+ AC_TYPE_INT16_T

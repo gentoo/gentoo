@@ -1,0 +1,18 @@
+--- test/test_net_http_pipeline.rb.old	2016-11-17 07:58:57.284997283 +0100
++++ test/test_net_http_pipeline.rb	2016-11-17 07:58:50.345168508 +0100
+@@ -96,6 +96,7 @@
+   def http_get
+     get = []
+     get << 'GET / HTTP/1.1'
++    get << 'Accept-Encoding: gzip;q=1.0,deflate;q=0.6,identity;q=0.3'
+     get << 'Accept: */*'
+     get << 'User-Agent: Ruby' if RUBY_VERSION > '1.9'
+     get.push nil, nil
+@@ -106,6 +107,7 @@
+   def http_post
+     get = []
+     get << 'POST / HTTP/1.1'
++    get << 'Accept-Encoding: gzip;q=1.0,deflate;q=0.6,identity;q=0.3'
+     get << 'Accept: */*'
+     get << 'User-Agent: Ruby' if RUBY_VERSION > '1.9'
+     get.push nil, nil

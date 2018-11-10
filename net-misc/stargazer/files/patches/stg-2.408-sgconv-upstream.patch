@@ -1,0 +1,40 @@
+--- projects/sgconv/Makefile.org	2013-01-08 12:07:06.000000000 +0200
++++ projects/sgconv/Makefile	2013-01-08 12:07:11.000000000 +0200
+@@ -4,7 +4,7 @@
+ 
+ include ../../Makefile.conf
+ 
+-PROG = convertor
++PROG = sgconv
+ 
+ SRCS = ./main.cpp \
+        ./settings_impl.cpp
+--- projects/sgconv/build.org	2012-02-09 12:26:57.000000000 +0200
++++ projects/sgconv/build	2013-01-08 12:10:02.000000000 +0200
+@@ -45,13 +45,13 @@
+ if [ "$OS" = "unknown" ]
+ then 
+     echo "#############################################################################"
+-    echo "# Sorry, but convertor currently supported by Linux, FreeBSD 4.x, 5.x, 6.x  #"
++    echo "# Sorry, but sgconv currently supported by Linux, FreeBSD 4.x, 5.x, 6.x     #"
+     echo "#############################################################################"
+     exit 1
+ fi
+ 
+ echo "#############################################################################"
+-echo "       Building convertor for $sys $release"
++echo "       Building sgconv for $sys $release"
+ echo "#############################################################################"
+ 
+ STG_LIBS="logger.lib 
+--- projects/sgconv/settings_impl.h.org	2013-01-08 12:11:53.000000000 +0200
++++ projects/sgconv/settings_impl.h	2013-01-08 12:11:58.000000000 +0200
+@@ -38,7 +38,7 @@
+ 
+ class SETTINGS_IMPL {
+ public:
+-    SETTINGS_IMPL() : confFile("./convertor.conf") {}
++    SETTINGS_IMPL() : confFile("./sgconv.conf") {}
+     SETTINGS_IMPL(const std::string & cf) : confFile(cf) {}
+     ~SETTINGS_IMPL() {}
+     int ReadSettings();

@@ -1,0 +1,34 @@
+diff -Naur batti-0.3.8.orig/src/PowerBackend.py batti-0.3.8/src/PowerBackend.py
+--- batti-0.3.8.orig/src/PowerBackend.py	2014-04-15 19:30:34.123260000 +0200
++++ batti-0.3.8/src/PowerBackend.py	2014-04-15 19:32:11.859168509 +0200
+@@ -180,17 +180,6 @@
+         
+         properties = dbus.Interface(iface, 'org.freedesktop.DBus.Properties')
+ 
+-        if properties.Get(self.dbus_interface, 'CanSuspend'):
+-            self.__can_suspend = True
+-        else:
+-            self.__can_suspend = False
+-        
+-        if properties.Get(self.dbus_interface, 'CanHibernate'):
+-            self.__can_hibernate = True
+-        else:
+-            self.__can_hibernate = False
+-    
+-    
+     def __get_interface(self):
+         dkit_obj = self.__bus.get_object(self.dbus_service, self.dbus_object)
+         return dbus.Interface(dkit_obj, self.dbus_interface)
+@@ -201,12 +190,6 @@
+             self.__mc_action(widget, event, data)
+             
+          
+-    def can_suspend(self):   
+-        return self.__can_suspend and self.__get_interface().SuspendAllowed()
+-
+-    def can_hibernate(self):
+-        return self.__can_hibernate and self.__get_interface().HibernateAllowed()
+-
+     def suspend(self):
+         self.__get_interface().Suspend()
+ 

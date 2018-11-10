@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+How many of you remeber the BBS days back in the late 80's and early 90's? 
+Back when you would call in play games and go on with your life? Well I'm 
+trying to duplicate one of those old games. It was called Trade Wars 
+2002(Created by Martech Software). So I decided to make a game similar to it 
+that runs in Linux.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">twclone</remote-id>
+	</upstream>
+</pkgmetadata>

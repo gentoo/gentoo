@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
+<longdescription>
+Ascii-Invaders is a clone of Space Invaders for text-terminals using the 
+curses library. It compiles and runs on MacOS X, GNU/Linux and probably 
+any other system with a curses implementation.
+</longdescription>
+</pkgmetadata>

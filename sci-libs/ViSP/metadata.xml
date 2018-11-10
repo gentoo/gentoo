@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>aballier@gentoo.org</email>
+		<name>Alexis Ballier</name>
+	</maintainer>
+	<use>
+		<flag name="coin">Enables Coin3D support.</flag>
+		<flag name="dmtx">Enables barcode data matrix support.</flag>
+		<flag name="demos">Installs demo programs.</flag>
+		<flag name="ogre">Enables <pkg>dev-games/ogre</pkg> support.</flag>
+		<flag name="opencv">Enables <pkg>media-libs/opencv</pkg> support.</flag>
+		<flag name="tutorials">Installs tutorials.</flag>
+		<flag name="zbar">Enables barcodes reading.</flag>
+	</use>
+	<longdescription lang="en">
+		ViSP standing for Visual Servoing Platform is a modular cross platform library that allows prototyping and developing applications using visual tracking and visual servoing technics at the heart of the researches done by Inria 	Lagadic team.
+		ViSP is able to compute control laws that can be applied to robotic systems.
+		It provides a set of visual features that can be tracked using real time image processing or computer vision algorithms.
+		ViSP provides also simulation capabilities.
+
+		ViSP can be useful in robotics, computer vision, augmented reality and computer animation.
+	</longdescription>
+</pkgmetadata>

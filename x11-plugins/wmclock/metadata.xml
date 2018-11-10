@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>voyageur@gentoo.org</email>
+	<name>Bernard Cafarelli</name>
+</maintainer>
+
+<longdescription>
+Wmclock is an applet which displays the date and time in a dockable tile. 
+Wmclock is specially designed for Window Maker, and features multiple language 
+support, twenty-four-hour and twelve-hour (am/pm) time display, and, 
+optionally, can run a user-specified program on a mouse click. Wmclock is 
+derived from ASClock (now called ASClock classic), a similar clock for the 
+AfterStep window manager.
+</longdescription>
+</pkgmetadata>

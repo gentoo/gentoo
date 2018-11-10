@@ -1,0 +1,12 @@
+diff --git a/setup.py b/setup.py
+index 5550188..123d22c 100755
+--- a/setup.py
++++ b/setup.py
+@@ -2,7 +2,6 @@
+ 
+ import sys
+ 
+-sys.path.append('setuptools-0.7a1dev_r53614-py2.4.egg')
+ from setuptools import setup, find_packages
+ from pysize.version import VERSION
+ 

@@ -1,0 +1,33 @@
+diff -Naur ClanLib-0.8.1-old/Sources/GL/canvas_opengl.cpp ClanLib-0.8.1/Sources/GL/canvas_opengl.cpp
+--- ClanLib-0.8.1-old/Sources/GL/canvas_opengl.cpp	2009-08-01 18:15:44.000000000 +0200
++++ ClanLib-0.8.1/Sources/GL/canvas_opengl.cpp	2009-08-01 18:08:55.000000000 +0200
+@@ -48,6 +48,7 @@
+ #include "graphic_context_opengl.h"
+ #include "surface_target_opengl.h"
+ #include <cstring>
++#include <cstdio>
+ 
+ /////////////////////////////////////////////////////////////////////////////
+ // CL_Canvas_OpenGL construction:
+diff -Naur ClanLib-0.8.1-old/Sources/GL/GLX/input_device_linuxevent.cpp ClanLib-0.8.1/Sources/GL/GLX/input_device_linuxevent.cpp
+--- ClanLib-0.8.1-old/Sources/GL/GLX/input_device_linuxevent.cpp	2009-08-01 18:17:25.000000000 +0200
++++ ClanLib-0.8.1/Sources/GL/GLX/input_device_linuxevent.cpp	2009-08-01 18:11:23.000000000 +0200
+@@ -35,6 +35,7 @@
+ #include <iostream>
+ #include <errno.h>
+ #include <cstring>
++#include <cstdio>
+ 
+ #include "API/Core/System/error.h"
+ #include "API/Core/System/clanstring.h"
+diff -Naur ClanLib-0.8.1-old/Sources/GL/GLX/input_device_xinput.cpp ClanLib-0.8.1/Sources/GL/GLX/input_device_xinput.cpp
+--- ClanLib-0.8.1-old/Sources/GL/GLX/input_device_xinput.cpp	2009-08-01 18:17:41.000000000 +0200
++++ ClanLib-0.8.1/Sources/GL/GLX/input_device_xinput.cpp	2009-08-01 18:12:56.000000000 +0200
+@@ -29,6 +29,7 @@
+ 
+ #include <iostream>
+ #include <cstring>
++#include <cstdio>
+ #include "API/Core/System/log.h"
+ #include "API/Display/input_device.h"
+ #include "API/Display/input_event.h"

@@ -1,0 +1,74 @@
+ make/Makefile.pcom   | 8 ++++----
+ make/Makefile.pcom_s | 8 ++++----
+ make/Makefile.pcom_t | 8 ++++----
+ 3 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/make/Makefile.pcom b/make/Makefile.pcom
+index 9c5f801..33fc001 100644
+--- a/make/Makefile.pcom
++++ b/make/Makefile.pcom
+@@ -209,14 +209,14 @@ print_pssm : print_pssm.c getseq.c karlin.c apam.c
+ 	$(CC) -o print_pssm $(CFLAGS) print_pssm.c getseq.c karlin.c apam.c $(LIB_M)
+ 
+ map_db : map_db.c uascii.h ncbl2_head.h
+-	$(CC) $(CFLAGS) -o $(BIN)/map_db map_db.c
++	$(CC) $(CFLAGS) $(HFLAGS) $(BIN)/map_db map_db.c
+ 
+ list_db : list_db.c
+-	$(CC) $(CFLAGS) -o $(BIN)/list_db list_db.c
++	$(CC) $(CFLAGS) $(HFLAGS) $(BIN)/list_db list_db.c
+ 
+ 
+ lav2ps : lav2plt.o lavplt_ps.o
+-	$(CC) -DUNIX -o $(BIN)/lav2ps lav2plt.o lavplt_ps.o -lm
++	$(CC) -DUNIX $(HFLAGS) $(BIN)/lav2ps lav2plt.o lavplt_ps.o -lm
+ 
+ lav2svg : lav2plt.o lavplt_svg.o
+-	$(CC) -DUNIX -o $(BIN)/lav2svg  lav2plt.o lavplt_svg.o -lm
++	$(CC) -DUNIX $(HFLAGS) $(BIN)/lav2svg  lav2plt.o lavplt_svg.o -lm
+diff --git a/make/Makefile.pcom_s b/make/Makefile.pcom_s
+index dc53001..8a45044 100644
+--- a/make/Makefile.pcom_s
++++ b/make/Makefile.pcom_s
+@@ -143,14 +143,14 @@ print_pssm : print_pssm.c getseq.c karlin.c apam.c
+ 	$(CC) -o print_pssm $(CFLAGS) print_pssm.c getseq.c karlin.c apam.c $(LIB_M)
+ 
+ map_db : map_db.c uascii.h ncbl2_head.h
+-	$(CC) $(CFLAGS) -o $(BIN)/map_db map_db.c
++	$(CC) $(CFLAGS) $(HFLAGS) $(BIN)/map_db map_db.c
+ 
+ list_db : list_db.c
+-	$(CC) $(CFLAGS) -o $(BIN)/list_db list_db.c
++	$(CC) $(CFLAGS) $(HFLAGS) $(BIN)/list_db list_db.c
+ 
+ 
+ lav2ps : lav2plt.o lavplt_ps.o
+-	$(CC) -DUNIX -o $(BIN)/lav2ps lav2plt.o lavplt_ps.o -lm
++	$(CC) -DUNIX $(HFLAGS) $(BIN)/lav2ps lav2plt.o lavplt_ps.o -lm
+ 
+ lav2svg : lav2plt.o lavplt_svg.o
+-	$(CC) -DUNIX -o $(BIN)/lav2svg  lav2plt.o lavplt_svg.o -lm
++	$(CC) -DUNIX $(HFLAGS) $(BIN)/lav2svg  lav2plt.o lavplt_svg.o -lm
+diff --git a/make/Makefile.pcom_t b/make/Makefile.pcom_t
+index 8a71438..5b08a50 100644
+--- a/make/Makefile.pcom_t
++++ b/make/Makefile.pcom_t
+@@ -164,14 +164,14 @@ print_pssm : print_pssm.c getseq.c karlin.c apam.c
+ 	$(CC) -o print_pssm $(CFLAGS) print_pssm.c getseq.c karlin.c apam.c $(LIB_M)
+ 
+ map_db : map_db.c uascii.h ncbl2_head.h
+-	$(CC) $(CFLAGS) -o $(BIN)/map_db map_db.c
++	$(CC) $(CFLAGS) $(HFLAGS) $(BIN)/map_db map_db.c
+ 
+ list_db : list_db.c
+-	$(CC) $(CFLAGS) -o $(BIN)/list_db list_db.c
++	$(CC) $(CFLAGS) $(HFLAGS) $(BIN)/list_db list_db.c
+ 
+ 
+ lav2ps : lav2plt.o lavplt_ps.o
+-	$(CC) -DUNIX -o $(BIN)/lav2ps lav2plt.o lavplt_ps.o -lm
++	$(CC) -DUNIX $(HFLAGS) $(BIN)/lav2ps lav2plt.o lavplt_ps.o -lm
+ 
+ lav2svg : lav2plt.o lavplt_svg.o
+-	$(CC) -DUNIX -o $(BIN)/lav2svg  lav2plt.o lavplt_svg.o -lm
++	$(CC) -DUNIX $(HFLAGS) $(BIN)/lav2svg  lav2plt.o lavplt_svg.o -lm

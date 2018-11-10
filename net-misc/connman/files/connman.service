@@ -1,0 +1,11 @@
+[Unit]
+Description=Network Connection Manager Daemon
+
+[Service]
+Type=dbus
+BusName=net.connman
+ExecStart=/usr/sbin/connmand --nodaemon
+
+[Install]
+WantedBy=multi-user.target
+Alias=net.connman.service

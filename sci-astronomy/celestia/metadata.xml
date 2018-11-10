@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Celestia is a real-time space simulation that lets you experience
+  our universe in three dimensions. You can travel throughout the solar
+  system, to any of over 100,000 stars, or beyond the galaxy. All
+  travel in Celestia is seamless; the exponential zoom feature lets you
+  explore space across a range of scales, from galaxy clusters down
+  to spacecraft a few meters across. A 'point-and-goto' interface
+  is used to navigate through the universe to the object you
+  want to visit.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">celestia</remote-id>
+  </upstream>
+</pkgmetadata>

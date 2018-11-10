@@ -1,0 +1,47 @@
+diff -ur iniparser3.0b/src/dictionary.c iniparser3.0b-patched/src/dictionary.c
+--- iniparser3.0b/src/dictionary.c	2007-11-24 05:39:18.000000000 +0800
++++ iniparser3.0b-patched/src/dictionary.c	2009-04-01 21:38:09.000000000 +0800
+@@ -38,6 +38,9 @@
+ /*---------------------------------------------------------------------------
+   							Private functions
+  ---------------------------------------------------------------------------*/
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ /* Doubles the allocated size associated to a pointer */
+ /* 'size' is the current allocated size. */
+@@ -401,5 +404,10 @@
+ 	dictionary_del(d);
+ 	return 0 ;
+ }
++
++#ifdef __cplusplus
++}
++#endif
++
+ #endif
+ /* vim: set ts=4 et sw=4 tw=75 */
+diff -ur iniparser3.0b/src/iniparser.h iniparser3.0b-patched/src/iniparser.h
+--- iniparser3.0b/src/iniparser.h	2007-11-24 05:38:19.000000000 +0800
++++ iniparser3.0b-patched/src/iniparser.h	2009-04-01 21:38:02.000000000 +0800
+@@ -41,6 +41,10 @@
+ #define iniparser_getstr(d, k)  iniparser_getstring(d, k, NULL)
+ #define iniparser_setstr        iniparser_setstring
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ /*-------------------------------------------------------------------------*/
+ /**
+   @brief    Get number of sections in a dictionary
+@@ -277,4 +281,8 @@
+ /*--------------------------------------------------------------------------*/
+ void iniparser_freedict(dictionary * d);
+ 
++#ifdef __cplusplus
++}
++#endif
++
+ #endif

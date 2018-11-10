@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
+<longdescription>
+HawkNL is a free, open source, game oriented network API released under 
+the GNU Library General Public License (LGPL). HawkNL (NL) is a fairly 
+low level API, a wrapper over Berkeley/Unix Sockets and Winsock. But NL 
+also provides other features including support for many OSs, groups of 
+sockets, socket statistics, high accuracy timer, CRC functions, macros 
+to read and write data to packets with endian conversion, and support 
+for multiple network transports. NL has been tested on Windows 
+9x/ME/NT/2000/XP/CE, Linux, Solaris, IRIX, AIX, BSDs, MacOS 7-9 and 
+MacOS X. There are also the two high level APIs, HawkNLU(tm) (NLU) 
+and HawkVoice(tm), which are built on top of NL. It is NLU and 
+HawkVoice(tm) that are most exciting, since they give developers 
+portable, easy to use alternatives to Microsoft®'s DirectPlay® and 
+DirectPlay® Voice.
+</longdescription>
+</pkgmetadata>

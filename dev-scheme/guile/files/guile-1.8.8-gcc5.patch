@@ -1,0 +1,15 @@
+Preprocessor changes in GCC 5 cause guile-snarf to output garbage.
+
+https://bugs.gentoo.org/560736
+
+--- a/libguile/guile-snarf.in
++++ b/libguile/guile-snarf.in
+@@ -50,7 +50,7 @@
+     ## Apparently, AIX's preprocessor is unhappy if you try to #include an
+     ## empty file.
+     echo "/* cpp arguments: $@ */" ;
+-    ${cpp} -DSCM_MAGIC_SNARF_INITS -DSCM_MAGIC_SNARFER "$@" > ${temp} && cpp_ok_p=true
++    ${cpp} -P -DSCM_MAGIC_SNARF_INITS -DSCM_MAGIC_SNARFER "$@" > ${temp} && cpp_ok_p=true
+     grep "^ *\^ *\^" ${temp} | sed -e "s/^ *\^ *\^//" -e "s/\^\ *:\ *\^.*/;/"
+ }
+ 

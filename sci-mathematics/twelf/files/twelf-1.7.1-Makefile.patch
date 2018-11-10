@@ -1,0 +1,43 @@
+--- twelf-orig/Makefile	2011-03-03 09:41:47.000000000 +1100
++++ twelf/Makefile	2012-12-10 00:19:52.255787064 +1100
+@@ -17,6 +17,18 @@
+ twelfdir = `pwd`
+ twelfserver = twelf-server
+ 
++ifdef CFLAGS
++ccopts=$(foreach cf,$(CFLAGS),-cc-opt $(cf))
++else
++ccopts=
++endif
++
++ifdef LDFLAGS
++linkopts=$(foreach lf,$(LDFLAGS),-link-opt $(lf))
++else
++linkopts=
++endif
++
+ # ---------------------------------------------------------------
+ # You should not need to edit beyond this point
+ # ---------------------------------------------------------------
+@@ -53,12 +65,12 @@
+ 		echo; echo "Error: MLton >= 20041109 required";	echo;	\
+ 		exit 1;							\
+ 	fi;								\
+-	$(mlton) -output bin/$(twelfserver) build/$${cmfileid}
++	$(mlton) $(ccopts) $(linkopts) -as-opt -Wa,--noexecstack -output bin/$(twelfserver) build/$${cmfileid}
+ 
+ .PHONY: twelf-server-smlnj
+ twelf-server-smlnj:
+ 	$(smlnj) < build/twelf-server-smlnj.sml ;
+-	bin/.mkexec "$(smlnj)" "$(twelfdir)" twelf-server "$(twelfserver)" ;
++	bin/.mkexec "$(smlnj)" "$(twelfdir)" twelf-server "$(twelfserver)" "$(twelfexecdir)" ;
+ 
+ .PHONY: twelf-emacs
+ twelf-emacs: ; 
+@@ -87,4 +99,4 @@
+ 	$(mlton) -output bin/twelf-regression TEST/mlton-regression.cm
+ 
+ check : twelf-regression
+-	$(make) -C TEST check
+\ No newline at end of file
++	$(make) -C TEST check

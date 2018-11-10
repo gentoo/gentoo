@@ -1,0 +1,16 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (14 May 2018)
+# Force the host target to avoid dependency hell
+dev-lang/rust llvm_targets_AArch64
+
+# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Force the host target to avoid dependency hell
+sys-devel/clang llvm_targets_AArch64
+sys-devel/llvm llvm_targets_AArch64
+
+# James Le Cuirot <chewi@gentoo.org> (16 May 2016)
+# For reasons best known to themselves, Oracle do not ship the
+# libawt_xawt.so library on arm64 even though they do on arm32.
+dev-java/oracle-jdk-bin headless-awt

@@ -1,0 +1,37 @@
+From 3dbc91fcfe5412598201e33de80db7b1b01e4ffb Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 21 Jan 2017 18:49:04 +0100
+Subject: [PATCH] Use system installation path
+
+---
+ data/CMakeLists.txt | 2 +-
+ src/main.cpp        | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/data/CMakeLists.txt b/data/CMakeLists.txt
+index d9029b3..a2454cd 100644
+--- a/data/CMakeLists.txt
++++ b/data/CMakeLists.txt
+@@ -34,5 +34,5 @@ set(install_files
+ if (WIN32)
+ 	install(FILES ${install_files} DESTINATION data)
+ elseif (UNIX)
+-	install(FILES ${install_files} DESTINATION share/blobby)
++	install(FILES ${install_files} DESTINATION /usr/share/blobby)
+ endif (WIN32)
+diff --git a/src/main.cpp b/src/main.cpp
+index 2628990..15bddf2 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -78,7 +78,7 @@ void setupPHYSFS()
+ 	std::string separator = fs.getDirSeparator();
+ 	// Game should be playable out of the source package on all
+ 	// relevant platforms.
+-	std::string baseSearchPath("data" + separator);
++	std::string baseSearchPath("/usr/share/blobby/");
+ 	// Android and iOS are needing a special path
+ 	#ifdef __ANDROID__
+ 		baseSearchPath = SDL_AndroidGetExternalStoragePath() + separator;
+-- 
+2.11.0
+

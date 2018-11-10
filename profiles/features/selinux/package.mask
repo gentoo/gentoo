@@ -1,0 +1,48 @@
+# Matthew Thode <prometheanfire@gentoo.org> (30 Jul 2018)
+# sys-apps/bolt links against systemd, which gentoo SELinux does not support
+sys-apps/bolt
+
+# Göktürk Yüksek <gokturk@gentoo.org> (09 Nov 2016)
+# On behalf of proxy-maint
+# Mask due to the package requiring systemd
+# and causing unresolvable dep issues
+# See: https://github.com/gentoo/gentoo/pull/2262
+www-misc/profile-sync-daemon
+
+# Jason Zaman <perfinion@gentoo.org> (27 Jun 2015)
+# SystemD has no support in the SELinux policy at the moment.
+# Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
+app-admin/systemdgenie
+app-eselect/eselect-gnome-shell-extensions
+app-office/wps-office
+sys-apps/systemd
+app-admin/calamares
+dev-python/python-systemd
+gnome-base/gdm
+gnome-base/gnome
+gnome-base/gnome-extra-apps
+gnome-base/gnome-light
+gnome-base/gnome-shell
+gnome-extra/chrome-gnome-shell
+gnome-extra/gnome-logs
+gnome-extra/gnome-shell-extensions
+gnome-extra/gnome-shell-frippery
+gnome-extra/gnome-shell-extensions-topicons-plus
+gnome-extra/gnome-shell-extension-gsconnect
+gnome-extra/gnome-tweak-tool
+x11-themes/zukitwo-shell
+gnome-extra/office-runner
+kde-misc/systemd-kcm
+net-firewall/firewalld
+net-misc/netctl
+sys-apps/gentoo-systemd-integration
+sys-apps/systemd-readahead
+sys-process/systemd-cron
+sys-apps/dbus-broker
+
+# Gilles Dartiguelongue <eva@gentoo.org> (24 May 2018)
+# Packages use systemd unconditionally for now
+>=app-admin/abrt-2.10
+app-admin/gnome-abrt
+>=dev-libs/libreport-2.9
+games-util/gamemode

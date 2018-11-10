@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sys-fs category contains filesystem tools and utilities.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sys-fs contiene herramientas y utilidades de sistemas de
+		ficheros.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sys-fs enthält Programme für die Arbeit mit Dateisystemen.
+	</longdescription>
+	<longdescription lang="nl">
+		De sys-fs categorie bevat hulpmiddelen om met bestandssystemen te werken.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sys-fs chứa các công cụ và tiện ích về hệ tập tin.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sys-fs contiene gli strumenti e le utilità di supporto per i vari file systems.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sys-fs contém certos utilitários e ferramentas para
+		sistemas de arquivos.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sys-fs zawiera programy i narzędzia związane z różnymi
+		systemami plików.
+	</longdescription>
+</catmetadata>
+

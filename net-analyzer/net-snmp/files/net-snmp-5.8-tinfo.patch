@@ -1,0 +1,10 @@
+--- a/configure.d/config_os_libs2
++++ b/configure.d/config_os_libs2
+@@ -611,6 +611,7 @@
+ AC_CHECK_HEADERS([curses.h])
+ AC_CHECK_HEADERS([ncurses/curses.h])
+ NETSNMP_SEARCH_LIBS([endwin], [curses ncurses],,,,[LIBCURSES])
++NETSNMP_SEARCH_LIBS([cbreak], [tinfo],[LIBCURSES="$LIBCURSES -ltinfo"],,,)
+ AC_SUBST([LIBCURSES])
+ 
+ #   libm for ceil

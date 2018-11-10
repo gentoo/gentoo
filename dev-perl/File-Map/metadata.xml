@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
+<maintainer type="project">
+  <email>perl@gentoo.org</email>
+  <name>Gentoo Perl Project</name>
+</maintainer>
+<longdescription lang="en">
+  File::Map maps files or anonymous memory into perl variables.
+</longdescription>
+<upstream>
+  <remote-id type="cpan">File-Map</remote-id>
+  <remote-id type="cpan-module">File::Map</remote-id>
+</upstream>
+</pkgmetadata>

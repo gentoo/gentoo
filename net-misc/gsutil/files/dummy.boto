@@ -1,0 +1,6 @@
+# dummy .boto file for testing
+
+[Credentials]
+gs_oauth2_refresh_token = 1/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+[GSUtil]

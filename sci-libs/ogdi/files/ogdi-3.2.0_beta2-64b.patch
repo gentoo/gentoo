@@ -1,0 +1,11 @@
+--- ogdi.old/ogdi/driver/vrf/feature.c	2007/05/09 20:46:28	1.16
++++ ogdi/ogdi/driver/vrf/feature.c	2009/05/08 04:15:50	1.17
+@@ -1347,7 +1350,7 @@
+   short int temp4;
+   int temp5;
+   date_type temp6;
+-  long count;
++  int32 count;
+ 
+   if (returnString != NULL) {
+     free(returnString);

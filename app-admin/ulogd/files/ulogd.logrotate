@@ -1,0 +1,9 @@
+/var/log/ulogd/*.log {
+    sharedscripts
+    missingok
+    notifempty
+    create 0640 ulogd
+    postrotate
+        [ -f /run/ulogd.pid ] && /bin/kill -HUP $(cat /run/ulogd.pid)
+    endscript
+}

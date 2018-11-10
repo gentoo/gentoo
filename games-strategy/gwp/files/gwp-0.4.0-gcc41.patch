@@ -1,0 +1,107 @@
+--- src/gwp-game-state.c.old	2006-03-05 00:56:48.000000000 +0900
++++ src/gwp-game-state.c	2006-03-05 00:57:38.000000000 +0900
+@@ -749,7 +749,7 @@
+   /* Connect to interesting signals */
+   /**********************************/
+   /* Selected planets */
+-  static void planet_conn (gpointer key, gpointer value, gpointer self) {
++  void planet_conn (gpointer key, gpointer value, gpointer self) {
+     g_signal_connect (GWP_PLANET(value),
+ 		      "selected",
+ 		      G_CALLBACK(selected_planet_notification),
+@@ -757,7 +757,7 @@
+   }
+   g_hash_table_foreach (planet_list, (GHFunc) planet_conn, self);
+   /* Selected ships */
+-  static void ship_conn (gpointer key, gpointer value, gpointer self) {
++  void ship_conn (gpointer key, gpointer value, gpointer self) {
+     g_signal_connect (GWP_SHIP(value),
+ 		      "selected",
+ 		      G_CALLBACK(selected_ship_notification),
+--- src/starchart.c.old	2006-03-05 01:13:39.000000000 +0900
++++ src/starchart.c	2006-03-05 01:18:04.000000000 +0900
+@@ -2111,7 +2111,7 @@
+   /*******************/
+   /* Planets signals */
+   /*******************/
+-  static void planet_conn (gpointer key, gpointer value, gpointer data) {
++  void planet_conn (gpointer key, gpointer value, gpointer data) {
+     g_signal_connect (GWP_PLANET(value),
+ 		      "property-changed",
+ 		      G_CALLBACK(update_planet_notification),
+--- src/vp_utils.c.old	2006-03-05 01:18:14.000000000 +0900
++++ src/vp_utils.c	2006-03-05 01:18:52.000000000 +0900
+@@ -2590,7 +2590,7 @@
+ 	  gwp_planet_set_colonists (planet, atoi(p_clans));
+       
+ 	  /* Compare func */
+-	  static gint compare_race (gconstpointer race, gconstpointer adj) {
++	  gint compare_race (gconstpointer race, gconstpointer adj) {
+ 	       gchar *race_str = gwp_race_get_adjective(GWP_RACE(race));
+ 	       if (strncmp(race_str, adj, strlen(adj)) == 0) 
+ 		    return 0;
+@@ -2639,7 +2639,7 @@
+ 	  /* Assign known planet values */
+ 	  gwp_planet_set_is_known (planet, TRUE);
+ 	  /* Compare func */
+-	  static gint compare_race (gconstpointer race, gconstpointer adj) {
++	  gint compare_race (gconstpointer race, gconstpointer adj) {
+ 	       gchar *race_str = gwp_race_get_adjective(GWP_RACE(race));
+ 	       if (strncmp(race_str, adj, strlen(adj)) == 0) 
+ 		    return 0;
+--- src/gwp-py-mappings.c.old	2006-03-05 01:28:39.000000000 +0900
++++ src/gwp-py-mappings.c	2006-03-05 01:29:30.000000000 +0900
+@@ -8657,7 +8657,7 @@
+ {
+   PyObject *ret = PyDict_New();
+ 
+-  static void add_ship (gpointer key, gpointer value, gpointer user_data) {
++  void add_ship (gpointer key, gpointer value, gpointer user_data) {
+     PyObject *dict = (PyObject *)user_data;
+     GwpShip *ship = GWP_SHIP(value);
+ 
+@@ -8679,7 +8679,7 @@
+ {
+   PyObject *ret = PyDict_New();
+ 
+-  static void add_planet (gpointer key, gpointer value, gpointer user_data) {
++  void add_planet (gpointer key, gpointer value, gpointer user_data) {
+     PyObject *dict = (PyObject *)user_data;
+     GwpPlanet *planet = GWP_PLANET(value);
+ 
+@@ -8701,7 +8701,7 @@
+ {
+   PyObject *ret = PyDict_New();
+ 
+-  static void add_hullspec (gpointer value, gpointer user_data) {
++  void add_hullspec (gpointer value, gpointer user_data) {
+     PyObject *dict = (PyObject *)user_data;
+     GwpHullSpec *hullspec = GWP_HULLSPEC(value);
+ 
+@@ -8723,7 +8723,7 @@
+ {
+   PyObject *ret = PyDict_New();
+ 
+-  static void add_engspec (gpointer value, gpointer user_data) {
++  void add_engspec (gpointer value, gpointer user_data) {
+     PyObject *dict = (PyObject *)user_data;
+     GwpEngSpec *engspec = GWP_ENGSPEC(value);
+ 
+@@ -8745,7 +8745,7 @@
+ {
+   PyObject *ret = PyDict_New();
+ 
+-  static void add_beamspec (gpointer value, gpointer user_data) {
++  void add_beamspec (gpointer value, gpointer user_data) {
+     PyObject *dict = (PyObject *)user_data;
+     GwpBeamSpec *beamspec = GWP_BEAMSPEC(value);
+ 
+@@ -8767,7 +8767,7 @@
+ {
+   PyObject *ret = PyDict_New();
+ 
+-  static void add_torpspec (gpointer value, gpointer user_data) {
++  void add_torpspec (gpointer value, gpointer user_data) {
+     PyObject *dict = (PyObject *)user_data;
+     GwpTorpSpec *torpspec = GWP_TORPSPEC(value);
+ 

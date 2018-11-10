@@ -1,0 +1,12 @@
+diff -Naur wmudmount-2.2.orig/make-chars.pl wmudmount-2.2/make-chars.pl
+--- wmudmount-2.2.orig/make-chars.pl	2014-02-03 06:41:59.000000000 +0100
++++ wmudmount-2.2/make-chars.pl	2017-10-22 21:13:22.555748713 +0200
+@@ -52,7 +52,7 @@
+ 
+ while(<IN>){
+     $head.=$_;
+-    if(/^static char \* ([a-zA-Z0-9_]+_xpm)\[\] = {/){
++    if(/^static char \* ([a-zA-Z0-9_]+_xpm)\[\] = \{/){
+         $name=$1;
+         last;
+     }

@@ -1,0 +1,5 @@
+METHOD="--darpi"
+IFACE="eth0"
+LOGFILE="/var/log/arpon.log"
+
+ARPON_OPTS="${METHOD} --iface ${IFACE} --log-file ${LOGFILE} --log"

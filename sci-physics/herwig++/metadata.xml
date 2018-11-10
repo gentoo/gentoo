@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-physics@gentoo.org</email>
+    <name>Gentoo Physics Project</name>
+  </maintainer>
+  <longdescription>
+  Herwig++ is a completely new event generator, written in C++.
+  It is built on the experience gained with the well-known
+  event generator HERWIG. The aim is to provide a multi purpose
+  event generator with similar or improved capabilities (like angular
+  ordered parton evolution and the cluster hadronization model).
+</longdescription>
+  <use>
+    <flag name="c++11">Build Herwig++ using the C++11 standard.
+  Experimental feature, not for production use.</flag>
+    <flag name="fastjet">Adds support for <pkg>sci-physics/fastjet</pkg></flag>
+  </use>
+</pkgmetadata>

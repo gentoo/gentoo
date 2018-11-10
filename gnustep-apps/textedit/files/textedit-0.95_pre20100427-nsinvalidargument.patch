@@ -1,0 +1,26 @@
+--- textedit.app-4.0+20061029.orig/Document.m
++++ textedit.app-4.0+20061029/Document.m
+@@ -124,12 +124,6 @@
+ 		[self setViewSize: size];
+ 	}
+ 
+-	[[NSNotificationCenter defaultCenter]
+-		addObserver: self
+-		   selector: @selector (fixUpScrollViewBackgroundColor:)
+-			   name: NSSystemColorsDidChangeNotification
+-			 object: nil];
+-
+ 	potentialSaveDirectory = nil;
+ 	return self;
+ }
+@@ -195,10 +189,6 @@
+ 	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+ 
+ 	[center removeObserver: self
+-					  name: NSSystemColorsDidChangeNotification
+-					object: nil];
+-
+-	[center removeObserver: self
+ 					  name: NSTextStorageDidProcessEditingNotification
+ 					object: [self textStorage]];
+ 

@@ -1,0 +1,16 @@
+diff --git a/tests/test_pytest_cov.py b/tests/test_pytest_cov.py
+index 6cbf341..614e53c 100644
+--- a/tests/test_pytest_cov.py
++++ b/tests/test_pytest_cov.py
+@@ -337,7 +337,10 @@ def test_central_nonspecific(testdir):
+     ])
+ 
+     # multi-module coverage report
+-    assert any(line.startswith('TOTAL ') for line in result.stdout.lines[-4:])
++    # Fix test failure due to pytest deprecation warnings being
++    # added to the expected output.  Look in entire output lines instead.
++    # assert any(line.startswith('TOTAL ') for line in result.stdout.lines[-4:])
++    assert any(line.startswith('TOTAL ') for line in result.stdout.lines[-10:])
+ 
+     assert result.ret == 0
+ 

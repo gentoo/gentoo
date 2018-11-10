@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting tracd"
+	# tracd fails to create pidfile if started as non-root user, thus we are asking
+	# s-s-d to do that. To have correct pid we avoid -d option of tracd and use
+	# --background option of s-s-d.
+	start-stop-daemon --start --user ${TRACD_USER:-tracd} --group ${TRACD_GROUP:-tracd} \
+                --pidfile /var/run/tracd.pid --make-pidfile --background \
+		--env PYTHON_EGG_CACHE="/var/lib/trac/egg-cache" \
+		--exec /usr/bin/tracd -- \
+		-p ${TRACD_PORT:-8000} ${TRACD_OPTS:---env-parent-dir /var/lib/trac/}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping tracd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/tracd.pid
+	eend $?
+}

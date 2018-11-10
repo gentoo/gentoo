@@ -1,0 +1,27 @@
+From a530d8853aa6b6ec46236f6ae787cbd37c94e9ba Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sat, 18 Aug 2012 17:15:19 -0400
+Subject: [PATCH] fix DESTDIR installs
+
+Make sure the dirs we install into exist first:
+        make install DESTDIR=$PWD/foo
+
+---
+ Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile b/Makefile
+index ec437e2..039795e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -18,6 +18,7 @@ all : .depend $(TARGETS)
+ -include .depend
+ 
+ install : all
++	mkdir -p -m 755 $(DESTDIR)/usr/bin $(DESTDIR)/usr/include/sys
+ 	install -m 755 -t $(DESTDIR)/usr/bin ppsfind $(TARGETS)
+ 	install -m 644 -t $(DESTDIR)/usr/include/sys timepps.h
+ 
+-- 
+2.14.2
+

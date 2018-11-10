@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		scponly is an alternative 'shell' (of sorts) for system administrators
+		who would like to provide access to remote users to both read and write
+		local files without providing any remote execution priviledges.
+		Functionally, it is best described as a wrapper to the tried and true
+		ssh suite of applications.
+	</longdescription>
+	<use>
+		<flag name="rsync">Enables rsync compatibility with potential security risks</flag>
+		<flag name="unison">Enables Unison compatibility with potential security risks</flag>
+		<flag name="subversion">Enables Subversion compatibility with potential security risks</flag>
+		<flag name="winscp">Enables WinSCP 2.0 compatibility with potential security risks</flag>
+		<flag name="scp">Enables scp compatibility with potential security risks</flag>
+		<flag name="sftp">Enables SFTP compatibility</flag>
+		<flag name="gftp">Enables gFTP compatibility</flag>
+		<flag name="quota">Enables quota compatibility</flag>
+		<flag name="passwd">Enables passwd compatibility</flag>
+		<flag name="logging">Enables SFTP logging compatibility</flag>
+		<flag name="wildcards">Enables wildcard processing with potential security risks</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">scponly</remote-id>
+	</upstream>
+</pkgmetadata>

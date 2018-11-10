@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="project">
+        <email>sci-geosciences@gentoo.org</email>
+        <name>Gentoo Geosciences Project</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>pgsql-bugs@gentoo.org</email>
+        <name>PostgreSQL and Related Package Development</name>
+    </maintainer>
+    <longdescription lang="en">
+        Converts OSM planet.osm data to a PostgreSQL / PostGIS database
+        suitable for specific applications like rendering into map tiles by
+        Mapnik or geocoding with Nominatim.
+    </longdescription>
+    <upstream>
+        <remote-id type="github">openstreetmap/osm2pgsql</remote-id>
+    </upstream>
+</pkgmetadata>

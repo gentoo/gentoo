@@ -1,0 +1,39 @@
+Index: ccdep.pl
+===================================================================
+--- ccdep.pl	(revision 123)
++++ ccdep.pl	(revision 125)
+@@ -137,13 +137,20 @@
+ 
+ my @DS=find_ds();
+ my @DSQ=map{shq$_}@DS;
+-my $R="$GCCP -DOBJDEP -M -MG -E 2>&1 @DSQ";
+-$R=backtick($R);
++my $DIAG=" -fno-diagnostics-show-caret";
++my $Q="$GCCP -DOBJDEP$DIAG -M -MG -E 2>&1 @DSQ";
++my $R=backtick($Q);
++if ($R=~/\berror: .*-fno-diagnostics-show-caret\b/) {
++  # gcc-4.6 and earlier don't have this flag, and they fail.
++  $Q=~s@ -fno-diagnostics-show-caret(?=\s)@@;
++  $DIAG="";
++  $R=backtick($Q);
++}
+ 
+ if ($R!~/: warning: #warning\b/) {
+   # config2.h:314:4: warning: #warning REQUIRES: c_lgcc3.o
+   # Dat: g++-3.3 ignores #warning with -M -MG -E
+-  $R.="\n".backtick("$GCCP -DOBJDEP -E 2>&1 >/dev/null @DSQ");
++  $R.="\n".backtick("$GCCP -DOBJDEP$DIAG -E 2>&1 >/dev/null @DSQ");
+ }
+ 
+ ## die $R;
+--- rule.hpp	2013-04-18 12:14:20.385333527 +0200
++++ rule.hpp	2013-04-18 12:14:35.818870070 +0200
+@@ -88,7 +88,7 @@
+       PR_PNGAuto=15,
+       PR_PNGAutoMaybe=25,
+       PR_PNGAutoBadUnsigned=45,
+-      PR_PNGAutoBadSigned=55,
++      PR_PNGAutoBadSigned=55
+     END_STATIC_ENUM()
+     pr_t Predictor;
+ 

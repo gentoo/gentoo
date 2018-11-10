@@ -1,0 +1,12 @@
+diff -Naurp Net-IP-1.25.old/IP.pm Net-IP-1.25/IP.pm
+--- Net-IP-1.25.old/IP.pm	2006-05-22 12:46:40.000000000 -0400
++++ Net-IP-1.25/IP.pm	2007-03-30 16:50:48.000000000 -0400
+@@ -410,7 +410,7 @@ sub intip {
+ 
+     my $int = ip_bintoint($self->binip());
+ 
+-    if (!$int) {
++    if (ref($int) ne "Math::BigInt") {
+         $self->{error} = $ERROR;
+         $self->{errno} = $ERRNO;
+         return;

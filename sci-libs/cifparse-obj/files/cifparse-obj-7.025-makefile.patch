@@ -1,0 +1,115 @@
+diff -Naur cifparse-obj-v7.025-prod-src/etc/make.platform.gnu3 cifparse-obj-v7.025-prod-src.new/etc/make.platform.gnu3
+--- cifparse-obj-v7.025-prod-src/etc/make.platform.gnu3	2008-02-06 07:17:49.000000000 -0500
++++ cifparse-obj-v7.025-prod-src.new/etc/make.platform.gnu3	2008-09-03 09:18:55.000000000 -0400
+@@ -107,8 +107,8 @@
+ C_WARNINGS=$(WARNINGS)
+ 
+ # C compiler flags
+-CFLAGS=$(OPT) $(ABI) $(ANSI_C_FLAG) $(C_WARNINGS) $(DEFINES) $(INCLUDES)
+-CFLAGS_NONANSI=$(OPT) $(ABI) $(NON_ANSI_C_FLAG) $(C_WARNINGS) $(DEFINES) \
++CFLAGS=$(C_OPT) $(ABI) $(ANSI_C_FLAG) $(C_WARNINGS) $(DEFINES) $(INCLUDES)
++CFLAGS_NONANSI=$(C_OPT) $(ABI) $(NON_ANSI_C_FLAG) $(C_WARNINGS) $(DEFINES) \
+                $(INCLUDES) 
+ 
+ ## C++ compiler
+@@ -128,13 +128,13 @@
+ EXT=C
+ 
+ # C++ compiler flags
+-C++FLAGS=$(OPT) $(ABI) $(ANSI_C_PLUS_FLAG) $(C_PLUS_WARNINGS) $(DEFINES) \
++C++FLAGS=$(CXX_OPT) $(ABI) $(ANSI_C_PLUS_FLAG) $(C_PLUS_WARNINGS) $(DEFINES) \
+         $(INCLUDES)
+-C++FLAGS_NONANSI=$(OPT) $(ABI) $(NON_ANSI_C_PLUS_FLAG) $(C_PLUS_WARNINGS) \
++C++FLAGS_NONANSI=$(CXX_OPT) $(ABI) $(NON_ANSI_C_PLUS_FLAG) $(C_PLUS_WARNINGS) \
+                  $(DEFINES) $(INCLUDES)
+ # C++FLAGS_RELAXED should be set to avoid warnings reported by third party
+ # source code that is not maintained by PDB
+-C++FLAGS_RELAXED=$(OPT) $(ABI) $(ANSI_C_PLUS_FLAG) $(NO_DEPRECATED) $(DEFINES) \
++C++FLAGS_RELAXED=$(CXX_OPT) $(ABI) $(ANSI_C_PLUS_FLAG) $(NO_DEPRECATED) $(DEFINES) \
+         $(INCLUDES)
+ 
+ ## Fortran compiler
+@@ -144,7 +144,7 @@
+ F77=f77
+ 
+ # Fortran compiler flags
+-FFLAGS=-O -u
++FFLAGS=$(F_OPT)
+ 
+ # Additional Fortran libraries
+ F77LIBS=
+@@ -157,7 +157,7 @@
+ STATIC_LINKING=-static
+ 
+ # Linker flags
+-LDFLAGS=$(ABI) -w $(STATIC_LINKING)
++LDFLAGS=$(ABI) -w $(STATIC_LINKING) $(LD_OPT)
+ LDFLAGS_NO_STATIC=$(ABI) -w
+ 
+ # Fortran linker
+diff -Naur cifparse-obj-v7.025-prod-src/etc/make.platform.gnu4 cifparse-obj-v7.025-prod-src.new/etc/make.platform.gnu4
+--- cifparse-obj-v7.025-prod-src/etc/make.platform.gnu4	2008-02-06 07:17:49.000000000 -0500
++++ cifparse-obj-v7.025-prod-src.new/etc/make.platform.gnu4	2008-09-03 09:20:16.000000000 -0400
+@@ -107,12 +107,12 @@
+ C_WARNINGS=$(WARNINGS)
+ 
+ # C compiler flags
+-CFLAGS=$(OPT) $(ABI) $(ANSI_C_FLAG) $(C_WARNINGS) $(DEFINES) $(INCLUDES)
+-CFLAGS_NONANSI=$(OPT) $(ABI) $(NON_ANSI_C_FLAG) $(C_WARNINGS) $(DEFINES) \
++CFLAGS=$(C_OPT) $(ABI) $(ANSI_C_FLAG) $(C_WARNINGS) $(DEFINES) $(INCLUDES)
++CFLAGS_NONANSI=$(C_OPT) $(ABI) $(NON_ANSI_C_FLAG) $(C_WARNINGS) $(DEFINES) \
+                $(INCLUDES) 
+ 
+ ## C++ compiler
+-## This part defines C++ compiler information
++
+ 
+ # C++ compiler executable
+ CCC=g++
+@@ -128,13 +128,13 @@
+ EXT=C
+ 
+ # C++ compiler flags
+-C++FLAGS=$(OPT) $(ABI) $(ANSI_C_PLUS_FLAG) $(C_PLUS_WARNINGS) $(DEFINES) \
++C++FLAGS=$(CXX_OPT) $(ABI) $(ANSI_C_PLUS_FLAG) $(C_PLUS_WARNINGS) $(DEFINES) \
+         $(INCLUDES)
+-C++FLAGS_NONANSI=$(OPT) $(ABI) $(NON_ANSI_C_PLUS_FLAG) $(C_PLUS_WARNINGS) \
++C++FLAGS_NONANSI=$(CXX_OPT) $(ABI) $(NON_ANSI_C_PLUS_FLAG) $(C_PLUS_WARNINGS) \
+                  $(DEFINES) $(INCLUDES)
+ # C++FLAGS_RELAXED should be set to avoid warnings reported by third party
+ # source code that is not maintained by PDB
+-C++FLAGS_RELAXED=$(OPT) $(ABI) $(ANSI_C_PLUS_FLAG) $(NO_DEPRECATED) $(DEFINES) \
++C++FLAGS_RELAXED=$(CXX_OPT) $(ABI) $(ANSI_C_PLUS_FLAG) $(NO_DEPRECATED) $(DEFINES) \
+         $(INCLUDES)
+ 
+ ## Fortran compiler
+@@ -144,7 +144,7 @@
+ F77=f77
+ 
+ # Fortran compiler flags
+-FFLAGS=-O -u
++FFLAGS=$(F_OPT)
+ 
+ # Additional Fortran libraries
+ F77LIBS=
+@@ -157,7 +157,7 @@
+ STATIC_LINKING=-static
+ 
+ # Linker flags
+-LDFLAGS=$(ABI) -w $(STATIC_LINKING)
++LDFLAGS=$(ABI) -w $(STATIC_LINKING) $(LD_OPT)
+ LDFLAGS_NO_STATIC=$(ABI) -w
+ 
+ # Fortran linker
+diff -Naur cifparse-obj-v7.025-prod-src/Makefile cifparse-obj-v7.025-prod-src.new/Makefile
+--- cifparse-obj-v7.025-prod-src/Makefile	2008-02-06 07:17:48.000000000 -0500
++++ cifparse-obj-v7.025-prod-src.new/Makefile	2008-09-03 09:19:12.000000000 -0400
+@@ -62,7 +62,7 @@
+ 		echo "------------------------------------------------------------"; \
+ 		echo "**** Making $$libdir ****"; \
+ 		echo "------------------------------------------------------------"; \
+-		(cd $$libdir && $(MAKE) -f $(MAKEFILE) "OPT=-O" install) || exit 1; \
++		(cd $$libdir && $(MAKE) -f $(MAKEFILE) C_OPT="${CFLAGS}" CXX_OPT="${CXXFLAGS}" F_OPT="${FFLAGS}" LD_OPT="${LDFLAGS}" install) || exit 1; \
+ 	done
+ 
+ debug:

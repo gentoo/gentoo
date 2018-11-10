@@ -1,0 +1,4 @@
+#JOBQUEUE_USER=bugzilla
+#JOBQUEUE_GROUP=bugzilla
+
+JOBQUEUE_PATH=/var/www/bugzilla/jobqueue.pl

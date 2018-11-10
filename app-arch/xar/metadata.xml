@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>prefix@gentoo.org</email>
+		<name>Gentoo Prefix</name>
+	</maintainer>
+	<longdescription lang="en">
+		The XAR project aims to provide an easily extensible archive format.
+		Important design decisions include an easily extensible XML table of
+		contents for random access to archived files, storing the toc at the
+		beginning of the archive to allow for efficient handling of streamed
+		archives, the ability to handle files of arbitrarily large sizes, the
+		ability to choose independent encodings for individual files in the
+		archive, the ability to store checksums for individual files in both
+		compressed and uncompressed form, and the ability to query the table of
+		content's rich meta-data.
+	</longdescription>
+</pkgmetadata>

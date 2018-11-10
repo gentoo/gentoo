@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+	zbackup is a globally-deduplicating backup tool.
+	The program has the following features:
+	Parallel LZMA or LZO compression of the stored data
+	Built-in AES encryption of the stored data
+	Possibility to delete old backup data
+	Use of a 64-bit rolling hash, keeping the amount of soft collisions to zero
+	</longdescription>
+	<use>
+		<flag name="tartool">Install tartool utility</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">zbackup/zbackup</remote-id>
+	</upstream>
+</pkgmetadata>

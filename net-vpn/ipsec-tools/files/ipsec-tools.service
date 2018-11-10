@@ -1,0 +1,12 @@
+[Unit]
+Description=Load IPSec Security Policy Database
+After=syslog.target network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/sbin/setkey -k -f /etc/ipsec-tools.conf
+ExecStop=/usr/sbin/setkey -F -P ; /usr/sbin/setkey -F
+
+[Install]
+WantedBy=multi-user.target

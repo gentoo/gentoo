@@ -1,0 +1,27 @@
+Index: polyml/libpolyml/gc_mark_phase.cpp
+===================================================================
+--- polyml/libpolyml/gc_mark_phase.cpp	(revision 2006)
++++ polyml/libpolyml/gc_mark_phase.cpp	(revision 2007)
+@@ -130,13 +130,6 @@
+                     if (locPtr == LARGECACHE_SIZE) locPtr = 0;
+                     largeObjectCache[locPtr].base = obj;
+                     largeObjectCache[locPtr].current = currentPtr;
+-                    // To try to narrow down a bug that results in the ASSERT failing,
+-                    // add these extra checks.
+-                    POLYUNSIGNED lengthWord = obj->LengthWord();
+-                    ASSERT (OBJ_IS_LENGTH(lengthWord));
+-                    POLYUNSIGNED length = OBJ_OBJECT_LENGTH(lengthWord);
+-                    ASSERT(length == originalLength);
+-                    ASSERT(currentPtr > (PolyWord*)obj && currentPtr < ((PolyWord*)obj)+length);
+                 }
+             }
+             else StackOverflow(obj);
+@@ -579,6 +572,8 @@
+     ASSERT(nInUse == 0);
+     MTGCProcessMarkPointers *marker = &markStacks[0];
+     marker->active = true;
++    marker->locPtr = 0;
++    marker->largeObjectCache[0].base = 0;
+     nInUse = 1;
+ 
+     // Scan the permanent mutable areas.

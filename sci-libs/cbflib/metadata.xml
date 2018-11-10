@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription>
+CBFLIB is a library of ANSI-C functions providing a simple mechanism
+for accessing Crystallographic Binary Files (CBF files) and Image-supporting
+CIF (imgCIF) files. The CBFLIB API is loosely based on the CIFPARSE API for
+mmCIF files. Starting with this release, CBFLIB performs validation checks
+on reading of a CBF. If a dictionary is provided, values will be validated
+against dictionary ranges and enumerations. Tags missing under parent-child
+relationships or category key requirements will be reported. CBFlib provides
+functions to create, read, modify and write CBF binary data files and imgCIF
+ASCII data files.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">cbflib</remote-id>
+	</upstream>
+</pkgmetadata>

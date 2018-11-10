@@ -1,0 +1,12 @@
+[Unit]
+Description=peervpn server
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Environment=PEERVPN_OPTS="/etc/peervpn/peervpn.conf"
+ExecStart=/usr/sbin/peervpn $PEERVPN_OPTS
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

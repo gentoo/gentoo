@@ -1,0 +1,12 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Michael Haubenwallner <haubi@gentoo.org> (03 Mar 2017)
+# Only these versions have the patches for proper AIX support.
+# note: these ebuilds come from repo/proj/prefix.git
+~sys-devel/gcc-4.2.4
+~sys-devel/gcc-4.8.4
+
+# Michael Haubenwallner <haubi@gentoo.org> (14 Apr 2014)
+# Endless loop while compiling gcc-4.2.4 for yet unknown reason.
+~sys-devel/make-4.0

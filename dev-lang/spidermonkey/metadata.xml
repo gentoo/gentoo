@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>mozilla@gentoo.org</email>
+		<name>Gentoo Mozilla Team</name>
+	</maintainer>
+	<longdescription lang="en">
+		Stand-alone JavaScript C++ library
+	</longdescription>
+	<use>
+		<flag name="custom-optimization">Build with user-specified compiler optimizations
+			(-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)</flag>
+		<flag name="debug">Enable assertions to allow for easier debugging of programs that link to spidermonkey -- note this will often crash software on regular end-user systems</flag>
+		<flag name="threadsafe">Build a threadsafe version of spidermonkey</flag>
+		<flag name="system-icu">Use the system-wide <pkg>dev-libs/icu</pkg> instead of bundled -- note, only takes effect when icu flag is enabled</flag>
+	</use>
+</pkgmetadata>

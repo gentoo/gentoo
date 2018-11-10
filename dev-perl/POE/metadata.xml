@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">POE</remote-id>
+    <remote-id type="cpan-module">POE</remote-id>
+    <remote-id type="cpan-module">POE::Component</remote-id>
+    <remote-id type="cpan-module">POE::Component::Client::TCP</remote-id>
+    <remote-id type="cpan-module">POE::Component::Server::TCP</remote-id>
+    <remote-id type="cpan-module">POE::Driver</remote-id>
+    <remote-id type="cpan-module">POE::Driver::SysRW</remote-id>
+    <remote-id type="cpan-module">POE::Filter</remote-id>
+    <remote-id type="cpan-module">POE::Filter::Block</remote-id>
+    <remote-id type="cpan-module">POE::Filter::Grep</remote-id>
+    <remote-id type="cpan-module">POE::Filter::HTTPD</remote-id>
+    <remote-id type="cpan-module">POE::Filter::Line</remote-id>
+    <remote-id type="cpan-module">POE::Filter::Map</remote-id>
+    <remote-id type="cpan-module">POE::Filter::RecordBlock</remote-id>
+    <remote-id type="cpan-module">POE::Filter::Reference</remote-id>
+    <remote-id type="cpan-module">POE::Filter::Stackable</remote-id>
+    <remote-id type="cpan-module">POE::Filter::Stream</remote-id>
+    <remote-id type="cpan-module">POE::Kernel</remote-id>
+    <remote-id type="cpan-module">POE::Loop</remote-id>
+    <remote-id type="cpan-module">POE::Loop::IO_Poll</remote-id>
+    <remote-id type="cpan-module">POE::Loop::PerlSignals</remote-id>
+    <remote-id type="cpan-module">POE::Loop::Select</remote-id>
+    <remote-id type="cpan-module">POE::NFA</remote-id>
+    <remote-id type="cpan-module">POE::Pipe</remote-id>
+    <remote-id type="cpan-module">POE::Pipe::OneWay</remote-id>
+    <remote-id type="cpan-module">POE::Pipe::TwoWay</remote-id>
+    <remote-id type="cpan-module">POE::Queue</remote-id>
+    <remote-id type="cpan-module">POE::Queue::Array</remote-id>
+    <remote-id type="cpan-module">POE::Resource</remote-id>
+    <remote-id type="cpan-module">POE::Resource::Aliases</remote-id>
+    <remote-id type="cpan-module">POE::Resource::Events</remote-id>
+    <remote-id type="cpan-module">POE::Resource::Extrefs</remote-id>
+    <remote-id type="cpan-module">POE::Resource::FileHandles</remote-id>
+    <remote-id type="cpan-module">POE::Resource::SIDs</remote-id>
+    <remote-id type="cpan-module">POE::Resource::Sessions</remote-id>
+    <remote-id type="cpan-module">POE::Resource::Signals</remote-id>
+    <remote-id type="cpan-module">POE::Resources</remote-id>
+    <remote-id type="cpan-module">POE::Session</remote-id>
+    <remote-id type="cpan-module">POE::Wheel</remote-id>
+    <remote-id type="cpan-module">POE::Wheel::Curses</remote-id>
+    <remote-id type="cpan-module">POE::Wheel::FollowTail</remote-id>
+    <remote-id type="cpan-module">POE::Wheel::ListenAccept</remote-id>
+    <remote-id type="cpan-module">POE::Wheel::ReadLine</remote-id>
+    <remote-id type="cpan-module">POE::Wheel::ReadLine::Keymap</remote-id>
+    <remote-id type="cpan-module">POE::Wheel::ReadWrite</remote-id>
+    <remote-id type="cpan-module">POE::Wheel::Run</remote-id>
+    <remote-id type="cpan-module">POE::Wheel::SocketFactory</remote-id>
+  </upstream>
+</pkgmetadata>

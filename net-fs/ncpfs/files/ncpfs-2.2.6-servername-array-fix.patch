@@ -1,0 +1,15 @@
+diff -Naurp ncpfs-2.2.6.orig/include/ncp/ncplib.h ncpfs-2.2.6/include/ncp/ncplib.h
+--- ncpfs-2.2.6.orig/include/ncp/ncplib.h	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/include/ncp/ncplib.h	2014-08-12 21:01:01.159192798 -0400
+@@ -485,9 +485,9 @@ struct ncp_file_server_info
+ 
+ struct ncp_file_server_info_2 {
+ #ifdef SWIG
+-	fixedArray ServerName[49];
++	fixedArray ServerName[50];
+ #else
+-	u_int8_t ServerName[49];
++	u_int8_t ServerName[50];
+ #endif	
+ 	u_int8_t FileServiceVersion;
+ 	u_int8_t FileServiceSubVersion;

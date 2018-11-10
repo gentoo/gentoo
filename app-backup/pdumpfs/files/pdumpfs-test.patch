@@ -1,0 +1,12 @@
+patch by proxy maintainer, P. Healy, April 2015
+# Bug 509960
+--- tests/pdumpfs-test_orig	2004-08-10 07:54:28.000000000 +0100
++++ tests/pdumpfs-test	2015-04-01 11:24:35.948633870 +0100
+@@ -17,6 +17,7 @@
+ 
+ ../pdumpfs src dest > tmp.log || exit 1
+ diff -r src dest/$today/src || exit 1
++mkdir -p dest/$yesterday && rmdir dest/$yesterday
+ mv dest/$today dest/$yesterday
+ 
+ echo update > src/foo

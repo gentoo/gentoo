@@ -1,0 +1,30 @@
+--- src/com/onionnetworks/fec/Native8Code.java.orig	2015-10-18 14:27:06.160486000 +0000
++++ src/com/onionnetworks/fec/Native8Code.java	2015-10-18 14:30:32.557486000 +0000
+@@ -3,6 +3,7 @@
+ //import java.security.AccessController;
+ //import sun.security.action.*;
+ import com.onionnetworks.util.*;
++import java.io.File;
+ 
+ /**
+  * This class is the frontend for the JNI wrapper for the C implementation of
+@@ -21,15 +22,10 @@
+     final private long code;
+ 
+     static {
+-        String path = NativeDeployer.getLibraryPath
+-            (Native8Code.class.getClassLoader(),"fec8");
+-        if (path != null) {
+-            System.load(path);
+-            initFEC();
+-        } else {
+-            System.out.println("Unable to find native library for fec8 for platform "+NativeDeployer.OS_ARCH);
+-            System.out.println(path);
+-        }
++        File path = new File("/usr/lib/libfec8.so");
++		 System.out.println("Loading FEC lib ["+path.getAbsolutePath()+']');
++        System.load(path.getAbsolutePath());
++        initFEC();
+     }
+ 
+     public Native8Code(int k, int n) {

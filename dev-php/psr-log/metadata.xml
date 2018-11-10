@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>guillaumeseren@gmail.com</email>
+    <name>Guillaume Seren</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>php-bugs@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    PSR-3 logger, provide a common interface for logging libraries.
+    The main goal is to allow libraries to receive a
+    Psr\Log\LoggerInterface object and write logs to it in a simple
+    and universal way.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">php-fig/log</remote-id>
+  </upstream>
+</pkgmetadata>

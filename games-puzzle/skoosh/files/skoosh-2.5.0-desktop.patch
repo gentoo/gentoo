@@ -1,0 +1,17 @@
+--- skoosh.desktop.old	2014-11-21 09:54:37.000861347 +0100
++++ skoosh.desktop	2014-11-21 09:54:47.898132607 +0100
+@@ -1,12 +1,11 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+-Icon=skoosh.png
++Icon=skoosh
+ Name=Fifteen
+ Comment=Slide tiles to reveal a picture
+ Comment[fr]=Déplacez les tuiles pour révéler un dessin
+ Exec=skoosh
+ Terminal=false
+ Type=Application
+-Categories=GNOME;Application;Game;PuzzleGame;
++Categories=Game;
+ StartupNotify=true
+ X-GNOME-DocPath=skoosh/skoosh.xml

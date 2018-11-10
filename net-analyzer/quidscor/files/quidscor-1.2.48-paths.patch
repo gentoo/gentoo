@@ -1,0 +1,37 @@
+--- a/quidscor.conf
++++ b/quidscor.conf
+@@ -15,9 +15,9 @@
+ # Logdir: directory
+ LOGDIR /var/log/quidscor/
+ # Cachedir: directory
+-CACHEDIR /var/run/quidscor/cache/
++CACHEDIR /var/lib/quidscor
+ # Rulesdir: directory where .rules (for snort) live (.lib for dragon)
+-RULESDIR /usr/local/etc/snort-rules
++RULESDIR /etc/snort/rules
+ # Expiretime: time_in_seconds
+ EXPIRETIME 86400
+ # File for custom mapping (must be absolute path)
+--- a/quidscor.h
++++ b/quidscor.h
+@@ -85,7 +85,7 @@
+ #define AL_UNVER                "alerts_unknown.log" 
+ 
+ // Directories
+-#define CACHE_DIR               "run/quidscor/cache/"
++#define CACHE_DIR               "/lib/quidscor"
+ #define LOG_DIR                 "log/quidscor/"
+ #define CREATE_MOD              0700
+ #define MOD_PID                 0640
+--- a/Makefile
++++ b/Makefile
+@@ -84,8 +84,7 @@
+ 
+ install:
+ 	install -d -m 0700 $(IVARPREFIX)/log/$(PNAME)/
+-	install -d -m 0700 $(IVARPREFIX)/run/$(PNAME)/
+-	install -d -m 0700 $(IVARPREFIX)/run/$(PNAME)/cache/
++	install -d -m 0700 $(IVARPREFIX)/lib/$(PNAME)/
+ 	install -d -m 0755 $(IPREFIX)/sbin/
+ 	install -m 0755 $(PNAME) $(IPREFIX)/sbin/$(PNAME)
+ 	install -d -m 0755 $(IPREFIX)/etc/

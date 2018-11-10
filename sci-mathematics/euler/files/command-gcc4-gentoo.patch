@@ -1,0 +1,12 @@
+diff -Naur euler-1.61.0/src/command.c euler-1.61.0-new/src/command.c
+--- euler-1.61.0/src/command.c	2005-10-24 00:38:24.000000000 +0000
++++ euler-1.61.0-new/src/command.c	2006-02-08 23:30:43.000000000 +0000
+@@ -732,7 +732,7 @@
+ }
+ 
+ 
+-static int command_count;
++int command_count;
+ 
+ commandtyp command_list[] = {
+ 	{"quit",c_quit,do_quit},

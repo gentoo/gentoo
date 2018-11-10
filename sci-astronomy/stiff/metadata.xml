@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-astronomy@gentoo.org</email>
+		<name>Gentoo Astronomy Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		STIFF is a program that convert scientific FITS images to the
+		more popular TIFF, in 8 (grayscale) or 24 (true colour: 3 times 8) bits per
+		pixel.
+	</longdescription>
+</pkgmetadata>

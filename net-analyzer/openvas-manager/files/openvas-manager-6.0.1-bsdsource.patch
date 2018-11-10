@@ -1,0 +1,16 @@
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4eb89a0..7ccfc5a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -338,7 +338,7 @@ configure_file (tools/openvas-migrate-to-postgres.in tools/openvas-migrate-to-po
+ set (HARDENING_FLAGS            "-Wformat -Wformat-security -O2 -D_FORTIFY_SOURCE=2 -fstack-protector -Wl,-z,relro -Wl,-z,now")
+ 
+ set (CMAKE_C_FLAGS_DEBUG        "${CMAKE_C_FLAGS_DEBUG} -Werror")
+-set (CMAKE_C_FLAGS              "${CMAKE_C_FLAGS} ${HARDENING_FLAGS} -Wall -D_BSD_SOURCE -D_ISOC99_SOURCE -D_SVID_SOURCE -D_DEFAULT_SOURCE -D_FILE_OFFSET_BITS=64")
++set (CMAKE_C_FLAGS              "${CMAKE_C_FLAGS} ${HARDENING_FLAGS} -Wall -D_DEFAULT_SOURCE -D_ISOC99_SOURCE -D_DEFAULT_SOURCE -D_FILE_OFFSET_BITS=64")
+ 
+ add_subdirectory (src)
+ 

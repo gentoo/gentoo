@@ -1,0 +1,82 @@
+add support for isl-0.15+
+
+--- a/source/isl/domain.c
++++ b/source/isl/domain.c
+@@ -68,25 +68,39 @@
+ void cloog_domain_print_constraints(FILE *foo, CloogDomain *domain,
+ 					int print_number)
+ {
++	isl_printer *printer;
+ 	isl_basic_set *bset;
+ 	isl_set *set = isl_set_from_cloog_domain(domain);
+ 
+-	if (print_number)
+-		isl_set_print(set, foo, 0, ISL_FORMAT_EXT_POLYLIB);
+-	else {
++	printer = isl_printer_to_file(isl_set_get_ctx(set), foo);
++	printer = isl_printer_set_indent(printer, 0);
++	printer = isl_printer_set_prefix(printer, NULL);
++	printer = isl_printer_set_suffix(printer, NULL);
++
++	if (print_number) {
++		printer = isl_printer_set_output_format(printer, ISL_FORMAT_EXT_POLYLIB);
++		printer = isl_printer_print_set(printer, set);
++	} else {
+ 		assert(isl_set_n_basic_set(set) == 1);
+ 		bset = isl_set_copy_basic_set(set);
+-		isl_basic_set_print(bset, foo,
+-					0, NULL, NULL, ISL_FORMAT_POLYLIB);
++		printer = isl_printer_set_output_format(printer, ISL_FORMAT_POLYLIB);
++		isl_printer_print_basic_set(printer, bset);
+ 		isl_basic_set_free(bset);
+ 	}
++
++	isl_printer_free(printer);
+ }
+ 
+ 
+ void cloog_scattering_print_constraints(FILE *foo, CloogScattering *scattering)
+ {
++	isl_printer *printer;
+ 	isl_map *map = isl_map_from_cloog_scattering(scattering);
+-	isl_map_print(map, foo, 0, ISL_FORMAT_EXT_POLYLIB);
++	printer = isl_printer_to_file(isl_map_get_ctx(map), foo);
++	printer = isl_printer_set_indent(printer, 0);
++	printer = isl_printer_set_output_format(printer, ISL_FORMAT_EXT_POLYLIB);
++	printer = isl_printer_print_map(printer, map);
++	isl_printer_free(printer);
+ }
+ 
+ 
+@@ -343,6 +357,7 @@
+ void cloog_domain_print_structure(FILE *file, CloogDomain *domain, int level,
+ 				  const char *name)
+ {
++	isl_printer *printer;
+ 	int i ;
+ 	isl_set *set = isl_set_from_cloog_domain(domain);
+ 
+@@ -358,7 +373,11 @@
+ 	for (i = 0; i < level+1; ++i)
+ 		fprintf(file, "|\t");
+ 
+-	isl_set_print(set, file, 0, ISL_FORMAT_ISL);
++	printer = isl_printer_to_file(isl_set_get_ctx(set), file);
++	printer = isl_printer_set_indent(printer, 0);
++	printer = isl_printer_set_output_format(printer, ISL_FORMAT_EXT_POLYLIB);
++	printer = isl_printer_print_set(printer, set);
++	isl_printer_free(printer);
+ 
+ 	fprintf(file, "\n");
+ }
+--- a/source/isl/constraints.c
++++ b/source/isl/constraints.c
+@@ -450,7 +450,7 @@ CloogConstraintSet *cloog_constraint_set_copy(CloogConstraintSet *constraints)
+ {
+ 	isl_basic_set *bset;
+ 	bset = cloog_constraints_set_to_isl(constraints);
+-	return cloog_constraint_set_from_isl_basic_set(isl_basic_set_dup(bset));
++	return cloog_constraint_set_from_isl_basic_set(isl_basic_set_copy(bset));
+ }
+ 
+ 

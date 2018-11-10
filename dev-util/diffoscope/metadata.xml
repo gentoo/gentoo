@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>grozin@gentoo.org</email>
+  <name>Andrey Grozin</name>
+</maintainer>
+<longdescription>
+  diffoscope will try to get to the bottom of what makes files or directories different.
+  It will recursively unpack archives of many kinds and transform various binary formats
+  into more human readable form to compare them.
+  It can compare two tarballs, ISO images, or PDF just as easily.
+</longdescription>
+<use>
+  <flag name="binutils">Use <pkg>sys-devel/binutils</pkg></flag>
+  <flag name="colord">Use <pkg>x11-misc/colord</pkg></flag>
+  <flag name="cpio">Use <pkg>app-arch/cpio</pkg></flag>
+  <flag name="diff">Use <pkg>sys-apps/diffutils</pkg></flag>
+  <flag name="docx">Use <pkg>app-text/docx2txt</pkg></flag>
+  <flag name="dtc">Use <pkg>sys-apps/dtc</pkg></flag>
+  <flag name="e2fsprogs">Use <pkg>sys-fs/e2fsprogs</pkg></flag>
+  <flag name="file">Use <pkg>sys-apps/file</pkg></flag>
+  <flag name="find">Use <pkg>sys-apps/findutils</pkg></flag>
+  <flag name="gettext">Use <pkg>sys-devel/gettext</pkg></flag>
+  <flag name="gpg">Use <pkg>app-crypt/gnupg</pkg></flag>
+  <flag name="haskell">Use <pkg>dev-lang/ghc</pkg></flag>
+  <flag name="hex">Use <pkg>app-editors/vim-core</pkg></flag>
+  <flag name="iso">Use <pkg>virtual/cdrtools</pkg></flag>
+  <flag name="llvm">Use <pkg>sys-devel/llvm</pkg></flag>
+  <flag name="opendocument">Use <pkg>app-text/odt2txt</pkg></flag>
+  <flag name="pascal">Use <pkg>dev-lang/fpc</pkg></flag>
+  <flag name="R">Use <pkg>dev-lang/R</pkg></flag>
+  <flag name="rpm">Use <pkg>app-arch/rpm</pkg></flag>
+  <flag name="squashfs">Use <pkg>sys-fs/squashfs-tools</pkg></flag>
+  <flag name="ssh">Use <pkg>net-misc/openssh</pkg></flag>
+  <flag name="tar">Use <pkg>app-arch/tar</pkg></flag>
+  <flag name="tcpdump">Use <pkg>net-analyzer/tcpdump</pkg></flag>
+  <flag name="xz">Use <pkg>app-arch/xz-utils</pkg></flag>
+  <flag name="zip">Use <pkg>app-arch/unzip</pkg></flag>
+</use>
+<upstream>
+  <remote-id type="pypi">diffoscope</remote-id>
+</upstream>
+</pkgmetadata>

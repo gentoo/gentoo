@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>php-bugs@gentoo.org</email>
+    <name>PHP</name>
+  </maintainer>
+  <use>
+    <flag name="executable">
+      Install the "agavi" executable used to manage projects. This
+      requires <pkg>dev-php/phing</pkg>, and may be omitted if you are
+      (for example) deploying an existing site to a production server.
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">agavi/agavi</remote-id>
+  </upstream>
+</pkgmetadata>

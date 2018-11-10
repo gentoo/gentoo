@@ -1,0 +1,60 @@
+https://bugs.launchpad.net/libnih/+bug/518921
+
+fix race in signal processing leading to lost signals
+
+The current loop will walk all signals one by one and run the handler
+for it if any signals were pending.  Then it clears the array.  But if
+a signal comes in for an earlier checked signal, it will get clobbered
+when the final clear runs.
+
+Change the logic so that we only clear entries for signals whose handler
+we explicitly call.  If a different signal comes in, we'll process it
+the next time around.
+
+This was discovered & triaged by Jeffy Chen from Rockchip.
+
+=== modified file 'nih/signal.c'
+--- nih/signal.c	2009-06-23 09:29:37 +0000
++++ nih/signal.c	2015-05-21 08:12:11 +0000
+@@ -337,17 +337,37 @@
+ 
+ 	nih_signal_init ();
+ 
++	/* Since this poller runs w/out signals masked, we do not want to try
++	 * and clear any other signals (like zeroing the caught array at the
++	 * end).  If we do that, we open a race:
++	 * - Walk the list of signals.
++	 * - First one is not set so we move on to the second one.
++	 * - First signal comes in while processing second and increments the
++	 *   caught array entry.
++	 * - Finish walking the whole list.
++	 * - Zero out the whole list and thus throw away the first signal.
++	 * Since the signal handlers can take any length of time, this race
++	 * can be open for a variable amount of time.
++	 */
++
+ 	NIH_LIST_FOREACH_SAFE (nih_signals, iter) {
+ 		NihSignal *signal = (NihSignal *)iter;
+ 
+ 		if (! signals_caught[signal->signum])
+ 			continue;
+ 
++		/* Now that we know we're going to process this signal, clear
++		 * out all pending counts for it.  There is a slight race here
++		 * where the same signal can come in, but the API has never
++		 * guaranteed exact coverage since POSIX does not provide it --
++		 * more than one signal can be collapsed into one event.  All
++		 * we can guarantee is that we'll notice signals that come in
++		 * once the handler runs.
++		 */
++		signals_caught[signal->signum] = 0;
++
+ 		signal->handler (signal->data, signal);
+ 	}
+-
+-	for (s = 0; s < NUM_SIGNALS; s++)
+-		signals_caught[s] = 0;
+ }
+ 
+ 
+

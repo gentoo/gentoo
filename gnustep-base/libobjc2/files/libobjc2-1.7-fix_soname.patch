@@ -1,0 +1,58 @@
+diff -Naur libobjc2-1.7.orig/CMakeLists.txt libobjc2-1.7/CMakeLists.txt
+--- libobjc2-1.7.orig/CMakeLists.txt	2013-06-27 13:30:41.000000000 +0200
++++ libobjc2-1.7/CMakeLists.txt	2015-05-20 13:20:55.214244088 +0200
+@@ -8,7 +8,8 @@
+ set(CMAKE_C_FLAGS_RELEASE "-O3 ${CMAKE_C_FLAGS_RELEASE}")
+ set(CMAKE_C_FLAGS "-std=gnu99 ${CMAKE_C_FLAGS}")
+ 
+-set(libobjc_VERSION 4.6)
++set(libobjc_SOVERSION 4)
++set(libobjc_VERSION 4.6.0)
+ 
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fexceptions")
+ # Build configuration
+@@ -204,7 +205,8 @@
+ 			add_library(objcxx SHARED ${libobjcxx_CXX_SRCS})
+ 			set_target_properties(objcxx PROPERTIES
+ 				LINKER_LANGUAGE C
+-				SOVERSION ${libobjc_VERSION}
++            SOVERSION ${libobjc_SOVERSION}
++            VERSION ${libobjc_VERSION}
+ 				)
+ 			target_link_libraries(objcxx ${CXX_RUNTIME})
+ 			set(CXX_RUNTIME "")
+@@ -220,7 +222,8 @@
+ 		add_library(objcxx SHARED ${libobjcxx_CXX_SRCS})
+ 		set_target_properties(objcxx PROPERTIES
+ 			LINKER_LANGUAGE C
+-			SOVERSION ${libobjc_VERSION}
++         SOVERSION ${libobjc_SOVERSION}
++         VERSION ${libobjc_VERSION}
+ 			)
+ 		set(CXX_RUNTIME "")
+ 		list(APPEND INSTALL_TARGETS objcxx)
+@@ -241,7 +244,8 @@
+ 
+ set_target_properties(objc PROPERTIES
+ 	LINKER_LANGUAGE C
+-	SOVERSION ${libobjc_VERSION}
++   SOVERSION ${libobjc_SOVERSION}
++   VERSION ${libobjc_VERSION}
+ 	OUTPUT_NAME ${LIBOBJC_NAME}
+ 	LINK_FLAGS "${objc_LINK_FLAGS}"
+ 	)
+@@ -349,3 +353,14 @@
+ 	add_subdirectory(Test)
+ endif (TESTS)
+ 
++
++MESSAGE(STATUS "<<< Gentoo configuration >>>
++Build type      ${CMAKE_BUILD_TYPE}
++Install path    ${CMAKE_INSTALL_PREFIX}
++Compiler flags:
++C               ${CMAKE_C_FLAGS}
++C++             ${CMAKE_CXX_FLAGS}
++Linker flags:
++Executable      ${CMAKE_EXE_LINKER_FLAGS}
++Module          ${CMAKE_MODULE_LINKER_FLAGS}
++Shared          ${CMAKE_SHARED_LINKER_FLAGS}\n")

@@ -1,0 +1,16 @@
+ configure |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/configure b/configure
+index 12fa395..258b157 100755
+--- a/configure
++++ b/configure
+@@ -2915,7 +2915,7 @@ fi
+ 		FIELD2=`$FLTK_CONFIG --version | awk -F . '{print $2}'`;
+ 		FIELD3=`$FLTK_CONFIG --version | awk -F . '{print $3}'`;
+ 
+-		if test $FIELD1 -le 1 -a $FIELD3 -lt 6; then
++		if test $FIELD1 -le 1 -a $FIELD2 -lt 1; then
+ 			echo -e "\nconfigure: error: fltk-version must be 1.1.6 or greater!\n"; exit -1;
+ 		fi
+ 		if test $FIELD1 -lt 1; then

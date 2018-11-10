@@ -1,0 +1,33 @@
+http://bugs.gentoo.org/270388
+
+--- a/cpuid.c
++++ b/cpuid.c
+@@ -62,12 +62,28 @@
+ 		sched_setaffinity(getpid(), sizeof(set), &set);
+ 	}
+ 
++#ifdef __PIC__
++	/* GCC on i386 bitches if you clobber ebx.  So hide it behind
++	 * gcc's back. */
++	asm(
++		"movl %%ebx,%%edi\n"
++		"cpuid\n"
++		"movl %%ebx,%1\n"
++		"movl %%edi,%%ebx\n"
++		: "=a" (a),
++		  "=m" (b),
++		  "+c" (c),
++		  "=d" (d)
++		: "0" ((unsigned int)idx)
++		: "edi");
++#else
+ 	asm("cpuid"
+ 		: "=a" (a),
+ 		  "=b" (b),
+ 		  "+c" (c),
+ 		  "=d" (d)
+ 		: "0" ((unsigned int)idx));
++#endif
+ 
+ 	if (eax!=NULL)
+ 		*eax = a;

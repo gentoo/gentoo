@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pinkbyte@gentoo.org</email>
+		<name>Sergey Popov</name>
+	</maintainer>
+	<use>
+		<flag name="tcmalloc">Use tcmalloc from <pkg>dev-util/google-perftools</pkg> for allocations</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">chriso/bitset</remote-id>
+	</upstream>
+</pkgmetadata>

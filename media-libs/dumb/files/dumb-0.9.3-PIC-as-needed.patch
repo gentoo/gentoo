@@ -1,0 +1,72 @@
+diff -Naur dumb.orig/Makefile dumb/Makefile
+--- dumb.orig/Makefile	2003-04-03 16:34:18.000000000 -0800
++++ dumb/Makefile	2004-07-06 14:43:38.158063165 -0700
+@@ -199,11 +199,11 @@
+ ALLEGRO_EXAMPLES_EXE := $(addprefix examples/, $(notdir $(patsubst %.c, %$(EXE_SUFFIX), $(ALLEGRO_EXAMPLES))))
+ 
+ 
+-CORE_LIB_FILE_RELEASE := $(LIBDIR)/libdumb.a
+-ALLEGRO_LIB_FILE_RELEASE := $(LIBDIR)/libaldmb.a
++CORE_LIB_FILE_RELEASE := $(LIBDIR)/libdumb.so
++ALLEGRO_LIB_FILE_RELEASE := $(LIBDIR)/libaldmb.so
+ 
+-CORE_LIB_FILE_DEBUG := $(LIBDIR)/libdumbd.a
+-ALLEGRO_LIB_FILE_DEBUG := $(LIBDIR)/libaldmd.a
++CORE_LIB_FILE_DEBUG := $(LIBDIR)/libdumbd.so
++ALLEGRO_LIB_FILE_DEBUG := $(LIBDIR)/libaldmd.so
+ 
+ 
+ core: $(CORE_LIB_FILE_RELEASE) $(CORE_LIB_FILE_DEBUG)
+@@ -272,22 +272,22 @@
+ 
+ OBJDIR := $(OBJDIR_BASE)/release
+ CFLAGS := $(CFLAGS_RELEASE)
+-CORE_LIB_FILE := $(LIBDIR)/libdumb.a
+-ALLEGRO_LIB_FILE := $(LIBDIR)/libaldmb.a
++CORE_LIB_FILE := $(LIBDIR)/libdumb.so
++ALLEGRO_LIB_FILE := $(LIBDIR)/libaldmb.so
+ include make/Makefile.inc
+ 
+ OBJDIR := $(OBJDIR_BASE)/debug
+ CFLAGS := $(CFLAGS_DEBUG)
+-CORE_LIB_FILE := $(LIBDIR)/libdumbd.a
+-ALLEGRO_LIB_FILE := $(LIBDIR)/libaldmd.a
++CORE_LIB_FILE := $(LIBDIR)/libdumbd.so
++ALLEGRO_LIB_FILE := $(LIBDIR)/libaldmd.so
+ include make/Makefile.inc
+ 
+ 
+ $(CORE_EXAMPLES_EXE): examples/%$(EXE_SUFFIX): examples/%.o $(CORE_LIB_FILE_RELEASE)
+-	$(CC) $^ -o $@ $(LDFLAGS) $(LINK_MATH)
++	$(CC) $^ -o $@ $(LDFLAGS) $(LINK_MATH)
+ 
+ $(ALLEGRO_EXAMPLES_EXE): examples/%$(EXE_SUFFIX): examples/%.o $(ALLEGRO_LIB_FILE_RELEASE) $(CORE_LIB_FILE_RELEASE)
+-	$(CC) $^ -o $@ $(LDFLAGS) $(LINK_ALLEGRO)
++	$(CC) $^ -o $@ $(LDFLAGS) $(LINK_ALLEGRO)
+ 
+ $(CORE_EXAMPLES_OBJ): examples/%.o: examples/%.c include/dumb.h
+ 	$(CC) -c $< -o $@ $(CFLAGS_RELEASE)
+diff -Naur dumb.orig/make/Makefile.inc dumb/make/Makefile.inc
+--- dumb.orig/make/Makefile.inc	2003-04-03 16:34:18.000000000 -0800
++++ dumb/make/Makefile.inc	2004-07-06 14:37:13.082037585 -0700
+@@ -10,8 +10,8 @@
+ # accurately, create a local copy of the current CFLAGS variable. This is
+ # necessary because Make doesn't expand variables in commands until they are
+ # executed.
+-$(CORE_LIB_FILE): CFLAGS := $(CFLAGS)
+-$(ALLEGRO_LIB_FILE): CFLAGS := $(CFLAGS)
++$(CORE_LIB_FILE): CFLAGS := $(CFLAGS) -fPIC -DPIC
++$(ALLEGRO_LIB_FILE): CFLAGS := $(CFLAGS) -fPIC -DPIC
+ 
+ 
+ $(OBJDIR)/%.o: src/core/%.c include/dumb.h include/internal/dumb.h
+@@ -28,7 +28,7 @@
+ 	$(CC) -c -o $@ $< $(CFLAGS) $(WFLAGS_ALLEGRO)
+ 
+ $(CORE_LIB_FILE): $(CORE_OBJECTS)
+-	$(AR) rs $@ $^
++	$(CC) -shared -o $@ $(LDFLAGS) -Wl,-shared,-soname,$(shell basename $@) $^ -lm
+ 
+ $(ALLEGRO_LIB_FILE): $(ALLEGRO_OBJECTS)
+-	$(AR) rs $@ $^
++	$(CC) -shared -o $@ $(LDFLAGS) -Wl,-shared,-soname,$(shell basename $@) $^ -ldumb

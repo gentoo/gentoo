@@ -1,0 +1,18 @@
+[Unit]
+Description=Name Service Cache Daemon (unscd)
+Wants=ldap.service network-online.target slapd.service
+After=ldap.service network-online.target nss-lookup.target nss-user-lookup.target slapd.service
+
+[Service]
+Type=forking
+PIDFile=/run/nscd/nscd.pid
+ExecStart=/usr/sbin/unscd
+ExecStop=/usr/sbin/nscd --shutdown
+ExecReload=/usr/sbin/nscd -i passwd
+ExecReload=/usr/sbin/nscd -i group
+ExecReload=/usr/sbin/nscd -i hosts
+ExecReload=/usr/sbin/nscd -i services
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

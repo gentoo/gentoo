@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+PhotoFilmStrip creates movies out of your pictures in just three steps.
+There are several output possibilities for VCD, SVCD, DVD up to FULL-HD.
+First select your photos, customize the motion path of the Ken Burns effect and
+render the video. Comments of the pictures are generated into a subtitle file. 
+Furthermore an audio file can be specified to setup the background music for the
+slideshow.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">photostoryx</remote-id>
+	</upstream>
+</pkgmetadata>

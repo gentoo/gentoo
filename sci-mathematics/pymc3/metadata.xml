@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    PyMC3 is a Python package for Bayesian statistical modeling and
+    Probabilistic Machine Learning which focuses on advanced Markov
+    chain Monte Carlo and variational fitting algorithms. Its
+    flexibility and extensibility make it applicable to a large suite
+    of problems.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">pymc-devs/pymc3</remote-id>
+    <remote-id type="pypi">pymc3</remote-id>
+  </upstream>
+</pkgmetadata>

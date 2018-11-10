@@ -1,0 +1,22 @@
+--- xc-4.3.2/crc.c
++++ xc-4.3.2/crc.c
+@@ -5,6 +5,8 @@
+  *  Crc - 32 BIT ANSI X3.66 CRC checksum files
+  */
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #define OK 0
+ #define ERROR (-1)
+ #define LINT_ARGS
+--- xc-4.3.2/xcterm.c
++++ xc-4.3.2/xcterm.c
+@@ -4,6 +4,8 @@
+ #define XCTERM_C 1
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>

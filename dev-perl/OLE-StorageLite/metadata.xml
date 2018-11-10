@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">OLE-Storage_Lite</remote-id>
+    <remote-id type="cpan-module">OLE::Storage_Lite</remote-id>
+    <remote-id type="cpan-module">OLE::Storage_Lite::PPS</remote-id>
+    <remote-id type="cpan-module">OLE::Storage_Lite::PPS::Dir</remote-id>
+    <remote-id type="cpan-module">OLE::Storage_Lite::PPS::File</remote-id>
+    <remote-id type="cpan-module">OLE::Storage_Lite::PPS::Root</remote-id>
+  </upstream>
+</pkgmetadata>

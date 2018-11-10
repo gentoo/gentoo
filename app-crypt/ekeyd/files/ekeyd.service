@@ -1,0 +1,10 @@
+[Unit]
+Description=Entropy key daemon
+
+[Service]
+ExecStart=/usr/libexec/ekeyd 
+Type=forking
+PIDFile=/var/run/ekeyd.pid
+
+[Install]
+WantedBy=multi-user.target

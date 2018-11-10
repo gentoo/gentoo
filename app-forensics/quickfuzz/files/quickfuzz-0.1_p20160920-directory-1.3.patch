@@ -1,0 +1,9 @@
+diff --git a/src/Check.hs b/src/Check.hs
+index b38a56a..246bf24 100644
+--- a/src/Check.hs
++++ b/src/Check.hs
+@@ -23,3 +23,3 @@ import System.Posix.Env
+ import System.Exit
+-import System.Directory
++import System.Directory hiding (getFileSize)
+ import System.IO.Unsafe

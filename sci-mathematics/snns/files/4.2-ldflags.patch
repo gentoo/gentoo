@@ -1,0 +1,42 @@
+Respect LDFLAGS
+
+https://bugs.gentoo.org/show_bug.cgi?id=332475
+
+--- a/tools/sources/Makefile
++++ b/tools/sources/Makefile
+@@ -147,19 +147,19 @@
+ # Linking of single stand alone programs
+ 
+ analyze: analyze.o
+-	$(CC) analyze.o -lm -o analyze
++	$(CC) $(LDFLAGS) analyze.o -lm -o analyze
+ 
+ pat_sel_simple: pat_sel_simple.o
+-	$(CC) pat_sel_simple.o -lm -o pat_sel_simple
++	$(CC) $(LDFLAGS) pat_sel_simple.o -lm -o pat_sel_simple
+ 
+ mkhead: mkhead.o
+-	$(CC) mkhead.o -lm -o mkhead
++	$(CC) $(LDFLAGS) mkhead.o -lm -o mkhead
+ 
+ mkout: mkout.o
+-	$(CC) mkout.o -lm -o mkout
++	$(CC) $(LDFLAGS) mkout.o -lm -o mkout
+ 
+ mkpat: mkpat.o
+-	$(CC) mkpat.o -lm -o mkpat
++	$(CC) $(LDFLAGS) mkpat.o -lm -o mkpat
+ 
+ 
+ # Make sure that kernel libs are available and up to date
+--- a/xgui/sources/Makefile
++++ b/xgui/sources/Makefile
+@@ -202,7 +202,7 @@
+ # Linking of xgui
+ 
+ xgui: $(LIBXGUI1) $(LIBXGUI2) $(BN3DLIB) $(KERNELLIBS)
+-	$(CC) $(LIBXGUI1) $(LIBXGUI2) $(BN3DLIB) \
++	$(CC) $(LDFLAGS) $(LIBXGUI1) $(LIBXGUI2) $(BN3DLIB) \
+ 	$(X_LIBS) -lXaw3d -lXmu -lXt -lXext $(X_PRE_LIBS) -lX11 $(X_EXTRA_LIBS) \
+ 	$(KERNELALLLIBS) -o xgui 
+ 

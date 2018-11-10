@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zx2c4@gentoo.org</email>
+		<name>Jason A. Donenfeld</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>toolchain@gentoo.org</email>
+		<name>Gentoo Toolchain Project</name>
+	</maintainer>
+	<use>
+		<flag name="gtk">Build the test-inspect utility (requires <pkg>x11-libs/gtk+</pkg> version 2)</flag>
+		<flag name="llvm">Build the sparse-llvm utility</flag>
+		<flag name="xml">Build the c2xml utility (requires <pkg>dev-libs/libxml2</pkg>)</flag>
+	</use>
+</pkgmetadata>

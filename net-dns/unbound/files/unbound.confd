@@ -1,0 +1,4 @@
+# Settings should normally not need any changes.
+
+# Location of the unbound configuration file. Leave empty for the default.
+#UNBOUND_CONFFILE="/etc/unbound/unbound.conf"

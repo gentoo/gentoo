@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>ulm@gentoo.org</email>
+</maintainer>
+<use>
+  <flag name='6-pieces'>Install tablebases for 6 pieces (huge!)</flag>
+</use>
+</pkgmetadata>

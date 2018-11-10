@@ -1,0 +1,35 @@
+--- mod_geoip.c.geoip
++++ mod_geoip.c
+@@ -66,6 +66,7 @@
+ #include "http_config.h"
+ #include "http_protocol.h"
+ #include "http_log.h"
++#include "util_script.h"
+ #include "ap_config.h"
+ #include "apr_strings.h"
+ #include <GeoIP.h>
+@@ -320,7 +321,11 @@
+ 		return DECLINED;
+ 
+ 	if (!cfg->scanProxyHeaders) {
++#if AP_MODULE_MAGIC_AT_LEAST(20111130,0)
++		ipaddr = r->useragent_ip;
++#else
+ 		ipaddr = r->connection->remote_ip;
++#endif
+ 	}
+ 	else {
+ 		ap_add_common_vars(r);
+@@ -338,7 +343,11 @@
+ 		}
+ 		if (!ipaddr_ptr) {
+ 			ap_log_error(APLOG_MARK, APLOG_DEBUG | APLOG_NOERRNO, 0, r->server, "[mod_geoip]: Error while getting ipaddr from proxy headers. Using REMOTE_ADDR.");
+-			ipaddr = r->connection->remote_ip;
++#if AP_MODULE_MAGIC_AT_LEAST(20111130,0)
++			ipaddr = r->useragent_ip;
++#else
++	                ipaddr = r->connection->remote_ip;
++#endif
+ 		}
+ 		else {
+ 			ap_log_error(APLOG_MARK, APLOG_DEBUG | APLOG_NOERRNO, 0, r->server, "[mod_geoip]: IPADDR_PTR: %s", ipaddr_ptr);

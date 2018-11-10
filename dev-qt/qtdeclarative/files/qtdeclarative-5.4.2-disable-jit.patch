@@ -1,0 +1,18 @@
+diff --git a/src/qml/jsruntime/qv4global_p.h b/src/qml/jsruntime/qv4global_p.h
+index 4b08194..224ddb1 100644
+--- a/src/qml/jsruntime/qv4global_p.h
++++ b/src/qml/jsruntime/qv4global_p.h
+@@ -96,8 +96,13 @@ inline double trunc(double d) { return d > 0 ? floor(d) : ceil(d); }
+ #    undef V4_ENABLE_JIT
+ #endif
+ #endif
+ 
++// Gentoo note: disable the JIT due to USE="-jit"
++#ifdef V4_ENABLE_JIT
++#undef V4_ENABLE_JIT
++#endif
++
+ // Do certain things depending on whether the JIT is enabled or disabled
+ 
+ #ifdef V4_ENABLE_JIT
+ #define ENABLE_YARR_JIT 1

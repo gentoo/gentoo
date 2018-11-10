@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
+
+<longdescription>
+Codec was formed as an attempt to focus development effort on one
+definitive implementation of the Base64 encoder. At the time of Codec's
+proposal, there were approximately 34 different Java classes that dealt
+with Base64 encoding spread over the Foundation's CVS repository.
+Developers in the Jakarta Tomcat project had implemented an original
+version of the Base64 codec which had been copied by the Commons
+HttpClient and Apache XML project's XML-RPC subproject. After almost one
+year, the two forked versions of Base64 had significantly diverged from
+one another. XML-RPC had applied numerous fixes and patches which were
+not applied to the Commons HttpClient Base64. Different subprojects had
+differing implementations at various levels of compliance with the RFC
+2045.
+
+Out of that confusing duplication of effort sprang this simple attempt
+to encourage code reuse among various projects. While this package
+contains a abstract framework for the creation of encoders and decoders,
+Codec itself is primarily focused on providing functional utilities for
+working with common encodings.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,69 @@
+#!/bin/sh
+
+. /usr/share/grub/grub-mkconfig_lib
+
+memtest=/boot/memtest86/memtest.bin
+
+memtestelf=/boot/memtest86/memtest
+
+if [ -f "${memtest}" ] && [ -f "${memtestelf}" ]; then
+	multiple_memtest=true
+fi
+
+submenu_indentation=""
+if [ "${multiple_memtest}" = "true" ] && [ "${GRUB_DISABLE_SUBMENU}" != "y" ]; then
+	submenu_indentation="${grub_tab}"
+	cat <<EOF
+submenu 'Memtest86' {
+EOF
+fi
+
+if [ -f "${memtest}" ]; then
+	gettext_printf "Found memtest image: %s\n" "${memtest}" >&2
+
+	device="$("${grub_probe}" --target=device "${memtest}")"
+	path="$(make_system_path_relative_to_its_root "${memtest}")"
+	cat <<EOF
+${submenu_indentation}menuentry 'Memtest86' {
+EOF
+
+	if [ -n "{submenu_indentation}" ]; then
+		prepare_grub_to_access_device "${device}" | grub_add_tab | grub_add_tab
+	else
+		prepare_grub_to_access_device "${device}" | grub_add_tab
+	fi
+
+	cat <<EOF
+	${submenu_indentation}linux16 "${path}"
+${submenu_indentation}}
+EOF
+fi
+
+if [ -f "${memtestelf}" ]; then
+	gettext_printf "Found memtest image: %s\n" "${memtestelf}" >&2
+
+	device="$("${grub_probe}" --target=device "${memtestelf}")"
+	path="$(make_system_path_relative_to_its_root "${memtestelf}")"
+	cat <<EOF
+${submenu_indentation}menuentry 'Memtest86 (ELF)' {
+EOF
+
+	if [ -n "${submenu_indentation}" ]; then
+		prepare_grub_to_access_device "${device}" | grub_add_tab | grub_add_tab
+	else
+		prepare_grub_to_access_device "${device}" | grub_add_tab
+	fi
+
+	# We use knetbsd as a lazy way of booting an ELF.
+	# It's not actually related to NetBSD at all.
+	cat <<EOF
+	${submenu_indentation}knetbsd "${path}"
+${submenu_indentation}}
+EOF
+fi
+
+if [ "${multiple_memtest}" = "true" ] && [ "${GRUB_DISABLE_SUBMENU}" != "y" ]; then
+	cat <<EOF
+}
+EOF
+fi

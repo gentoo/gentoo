@@ -1,0 +1,40 @@
+diff -Nuar i7z-5023138d7c35c4667c938b853e5ea89737334e92/GUI/i7z_GUI.cpp 
+i7z-5023138d7c35c4667c938b853e5ea89737334e92-fixed/GUI/i7z_GUI.cpp
+--- i7z-5023138d7c35c4667c938b853e5ea89737334e92/GUI/i7z_GUI.cpp	2013-10-12 20:59:19.000000000 +0000
++++ i7z-5023138d7c35c4667c938b853e5ea89737334e92-fixed/GUI/i7z_GUI.cpp	2017-03-06 18:27:54.825756111 +0000
+@@ -16,7 +16,7 @@
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <time.h>
+-#include <math.h>
++#include <cmath>
+ 
+ #include <QApplication>
+ #include <QPushButton>
+@@ -382,7 +382,7 @@
+ 
+             //C1_time[i] -= C3_time[i] + C6_time[i];
+ 			C1_time[i] = c1_time - (C3_time[i] + C6_time[i]) ;
+-            if (!isnan(c1_time) && !isinf(c1_time)) {
++            if (!std::isnan(c1_time) && !std::isinf(c1_time)) {
+                 if (C1_time[i] <= 0) {
+                     C1_time[i]=0;
+                 }
+@@ -642,13 +642,13 @@
+ 
+     for (i = 0; i < (int)numCPUs; i++)
+     {
+-        if ( (mythread->FREQ[i] > Max_Freq_socket0) && (!isnan(mythread->FREQ[i])) &&
+-                (!isinf(mythread->FREQ[i]))  && (socket_list[i] == socket_0.socket_num) ) {
++        if ( (mythread->FREQ[i] > Max_Freq_socket0) && (!std::isnan(mythread->FREQ[i])) &&
++                (!std::isinf(mythread->FREQ[i]))  && (socket_list[i] == socket_0.socket_num) ) {
+             Max_Freq_socket0 = mythread->FREQ[i];
+             num_socket0_cpus++;
+         }
+-        if ( (mythread->FREQ[i] > Max_Freq_socket1) && (!isnan(mythread->FREQ[i])) &&
+-                (!isinf(mythread->FREQ[i]))  && (socket_list[i] == socket_1.socket_num) ) {
++        if ( (mythread->FREQ[i] > Max_Freq_socket1) && (!std::isnan(mythread->FREQ[i])) &&
++                (!std::isinf(mythread->FREQ[i]))  && (socket_list[i] == socket_1.socket_num) ) {
+             Max_Freq_socket1 = mythread->FREQ[i];
+             num_socket1_cpus++;
+         }

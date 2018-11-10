@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need localmount
+}
+
+start() {
+	checkpath -q -d -m 0770 -o smsd:sms /run/smsd || return 1
+	checkpath -q -f -o smsd:sms /var/log/smsd.log || return 1
+	ebegin "Starting smsd"
+	start-stop-daemon -b -u smsd:sms --start --exec /usr/bin/smsd -- \
+		-c /etc/smsd.conf -p /run/smsd/smsd.pid \
+		-i /run/smsd/smsd.working
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping smsd"
+	start-stop-daemon --stop -n smsd
+	eend ${?}
+}

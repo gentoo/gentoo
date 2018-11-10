@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <use>
+    <flag name="admin">
+      Modules required for the DBIx::Class administrative library
+    </flag>
+    <flag name="admin_script">
+      Modules required for the CLI DBIx::Class interface dbicadmin
+    </flag>
+    <flag name="deploy">
+      Modules required for "deploy" in DBIx::Class::Storage::DBI and
+      "deploymen_statements" in DBIx::Class::Storage::DBI
+    </flag>
+    <flag name="replicated">
+      Modules required for DBIx::Class::Storage::DBI::Replicated
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="cpan">DBIx-Class</remote-id>
+    <remote-id type="cpan-module">DBIx::Class</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::AccessorGroup</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Admin</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::CDBICompat</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::CDBICompat::Iterator</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::CDBICompat::SQLTransformer</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::CDBICompat::Tied::ColumnValue</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Core</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Cursor</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::DB</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Exception</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::FilterColumn</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::InflateColumn</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::InflateColumn::DateTime</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::InflateColumn::File</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Optional::Dependencies</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Ordered</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::PK</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::PK::Auto</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Relationship</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Relationship::Base</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::ResultClass::HashRefInflator</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::ResultSet</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::ResultSetColumn</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::ResultSetManager</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::ResultSource</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::ResultSource::Table</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::ResultSource::View</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::ResultSourceHandle</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::ResultSourceProxy::Table</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Row</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::SQLMaker</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::SQLMaker::LimitDialects</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::SQLMaker::OracleJoins</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Schema</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Schema::Versioned</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Serialize::Storable</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::StartupCheck</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::ACCESS</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::ADO</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::ADO::MS_Jet</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::ADO::MS_Jet::Cursor</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::ADO::Microsoft_SQL_Server</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::ADO::Microsoft_SQL_Server::Cursor</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::AutoCast</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Cursor</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::DB2</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Firebird</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Firebird::Common</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::IdentityInsert</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Informix</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::InterBase</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::MSSQL</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::NoBindVars</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::ODBC</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::ODBC::ACCESS</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::ODBC::DB2_400_SQL</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::ODBC::Firebird</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::ODBC::Microsoft_SQL_Server</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::ODBC::SQL_Anywhere</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Oracle</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Oracle::Generic</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Oracle::WhereJoins</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Pg</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Replicated</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Replicated::Balancer</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Replicated::Balancer::First</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Replicated::Balancer::Random</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Replicated::Pool</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Replicated::Replicant</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Replicated::WithDSN</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::SQLAnywhere</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::SQLAnywhere::Cursor</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::SQLite</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Sybase</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Sybase::ASE</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Sybase::ASE::NoBindVars</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Sybase::FreeTDS</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Sybase::MSSQL</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Sybase::Microsoft_SQL_Server</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::Sybase::Microsoft_SQL_Server::NoBindVars</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::UniqueIdentifier</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::DBI::mysql</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::Statistics</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::Storage::TxnScopeGuard</remote-id>
+    <remote-id type="cpan-module">DBIx::Class::UTF8Columns</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::DBIx::Class</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::DBIx::Class::File</remote-id>
+  </upstream>
+</pkgmetadata>

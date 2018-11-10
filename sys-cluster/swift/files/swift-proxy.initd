@@ -1,0 +1,56 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+COMMAND=/usr/bin/swift-init
+PIDFILE=/run/swift/proxy-server.pid
+
+depend() {
+    after net
+}
+
+opts="reload"
+
+checkconfig() {
+    if [ ! -r /etc/swift/swift.conf ]; then
+        eerror "Missing required config file: /etc/swift/swift.conf"
+        return 1
+    fi
+    if [ ! -r /etc/swift/proxy-server.conf ]; then
+        eerror "Missing required config file: /etc/swift/proxy-server.conf"
+        return 1
+    fi
+    return 0
+}
+
+start() {
+    checkconfig || return $?
+    ebegin "Starting ${SVCNAME}"
+    start-stop-daemon --start --quiet -i --pidfile ${PIDFILE} ${COMMAND} -- proxy start
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping ${SVCNAME}"
+    start-stop-daemon --stop --quiet -i --pidfile ${PIDFILE} ${COMMAND} -- proxy stop
+    eend $?
+}
+
+reload() {
+    checkconfig || return $?
+    ebegin "Reloading ${SVCNAME}"
+    start-stop-daemon --quiet -i ${COMMAND} -- proxy reload
+    eend $? "Failed to reload ${SVCNAME}"
+}
+
+restart() {
+    checkconfig || return $?
+    ebegin "Restarting ${SVCNAME}"
+    start-stop-daemon --quiet -i --pidfile ${PIDFILE} ${COMMAND} -- proxy restart
+    eend $? "Failed to restart ${SVCNAME}"
+}
+
+status() {
+    start-stop-daemon --quiet -i ${COMMAND} -- proxy status
+    eend $? "Failed to get status for ${SVCNAME}"
+}

@@ -1,0 +1,6 @@
+#!/bin/sh
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+if [ -e ./env ] ; then source ./env ; else echo "failed to source env" ; fi
+exec "${basedir}/sbin/mysqld" --defaults-file="${MY_CNF}" ${MY_ARGS} 2>&1

@@ -1,0 +1,12 @@
+diff -uNr apachetop-0.12.6.orig/configure.ac apachetop-0.12.6/configure.ac
+--- apachetop-0.12.6.orig/configure.ac	2013-07-09 14:06:14.000000000 -0400
++++ apachetop-0.12.6/configure.ac	2013-07-09 14:07:36.000000000 -0400
+@@ -6,7 +6,7 @@
+ AC_CONFIG_AUX_DIR(config)
+ #AC_CONFIG_MACRO_DIR(m4) # 2.58
+ 
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADER(config.h)
+ AM_INIT_AUTOMAKE(apachetop, 0.12.6) # 2.53 only?
+ 
+ # Add non-standard directories to the include path

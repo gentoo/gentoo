@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sir.suriv@gmail.com</email>
+		<name>Diogo Pereira</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		This is a suite of GIMP plugins known as the 'Resynthesizer'.
+		The most commonly used is 'Heal selection' but all use the plugin
+		whose full interface is found at 'Filters>Map>Resynthesize.'
+	</longdescription>
+	<upstream>
+		<maintainer status="active">
+			<email>bootch@nc.rr.com</email>
+			<name>Lloyd Konneker</name>
+		</maintainer>
+		<remote-id type="github">bootchk/resynthesizer</remote-id>
+		<bugs-to>https://github.com/bootchk/resynthesizer/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

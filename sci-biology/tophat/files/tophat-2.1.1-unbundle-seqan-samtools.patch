@@ -1,0 +1,162 @@
+Unbundle the included samtools and SeqAn, and use system libraries.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=566494
+
+Remove ancient ax_boost_base.m4 and ax_boost_thread.m4, and depend
+on >=sys-devel/autoconf-archive-2016.09.16 in the ebuild instead.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594810
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,26 +28,15 @@
+ AC_PROG_INSTALL
+ AM_PATH_PYTHON([2.4])
+ 
+-m4_include([ax_boost_base.m4])
+-m4_include([ax_boost_thread.m4])
+ # CXXFLAGS="$CXXFLAGS $threadLib"
+ AX_BOOST_BASE([1.38.0])
++AX_BOOST_SYSTEM
+ AX_BOOST_THREAD
+-if test -z "$BOOST_THREAD_LIBS"; then
++if test -z "$BOOST_THREAD_LIB"; then
+   AC_MSG_ERROR([boost.thread not found. Aborting.])
+ fi
+ 
+ 
+-# BAM related:
+- ac_bam_path=samtools-0.1.18
+- BAM_LIB="-lbam"
+- BAM_LDFLAGS="-L./$ac_bam_path"
+- BAM_CPPFLAGS="-I./$ac_bam_path"
+- AC_SUBST(BAM_CPPFLAGS)
+- AC_SUBST(BAM_LDFLAGS)
+- AC_SUBST(BAM_LIB)
+-
+-
+ # Checks for header files.
+ AC_CHECK_HEADERS([stdlib.h string.h unistd.h])
+ 
+@@ -80,32 +69,23 @@
+ # set CFLAGS and CXXFLAGS
+ #user_CFLAGS="${CXXFLAGS}"
+ user_CFLAGS=${CFLAGS}
+-generic_CFLAGS="-Wall -Wno-strict-aliasing -g -gdwarf-2 -Wuninitialized"
++generic_CFLAGS=""
+ ext_CFLAGS=""
+ debug_CFLAGS=""
+ user_LDFLAGS="$LDFLAGS"
+ 
+-AC_ARG_ENABLE(intel64,      [  --enable-intel64        optimize for Intel64 CPU such as Xeon and Core2],
+-			  [ext_CFLAGS="${ext_CFLAGS} -mtune=nocona"], [])
+-
+ AC_ARG_ENABLE([debug],
+               [AS_HELP_STRING([--enable-debug],
+ 	                      [enable debugging info (default is no)])],
+               [], [enable_debug=no])
+-AC_ARG_ENABLE([optim],
+-              [AS_HELP_STRING([--enable-optim@<:@=0|1|2|3@:>@],
+-	                      [set optimization level (default is 3)])],
+-              [if test "x$enable_optim" = xyes; then enable_optim=3; fi],
+-              [enable_optim=3])
+ 
+-AS_IF([test "x$enable_optim" != xno], [ext_CFLAGS="$ext_CFLAGS -O$enable_optim"])	
+ AS_IF([test "x$enable_debug" = xyes],
+       [debug_CFLAGS="-DDEBUG"],
+       [debug_CFLAGS="-DNDEBUG"])
+ 	  
+ CFLAGS="${generic_CFLAGS} ${ext_CFLAGS} ${user_CFLAGS} ${debug_CFLAGS}"
+ CXXFLAGS="$CFLAGS"
+-CXXFLAGS="$CXXFLAGS $BAM_CPPFLAGS $BOOST_CPPFLAGS -I./SeqAn-1.4.2"
++CXXFLAGS="$CXXFLAGS $BAM_CPPFLAGS $BOOST_CPPFLAGS"
+ LDFLAGS="$BAM_LDFLAGS $BOOST_LDFLAGS $user_LDFLAGS"
+ 
+ AM_INIT_AUTOMAKE([-Wall foreign tar-pax foreign])
+@@ -122,7 +102,7 @@
+ -- ${PACKAGE_STRING} Configuration Results --
+   C++ compiler:        ${CXX} ${CXXFLAGS}
+   Linker flags:        ${LDFLAGS}
+-  BOOST libraries:     ${BOOST_THREAD_LIBS}"
++  BOOST libraries:     ${BOOST_THREAD_LIB}"
+ 
+ if test x"${GCC}" = x"yes" ; then
+    gcc_version=`${CC} --version | head -n 1`
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -683,17 +683,12 @@
+ SeqAn-1.4.2/seqan/system/system_thread.h \
+ SeqAn-1.4.2/seqan/version.h
+ 
+-SAMDIR = ./samtools-0.1.18
+-SAMLIB = libbam.a
+-SAMPROG = samtools_0.1.18
+-BAM_LIB = -lbam
+-BAM_CPPFLAGS = -I$(SAMDIR)
+-BAM_LDFLAGS = -L$(SAMDIR)
++BAM_LIB = -lbam-0.1-legacy
++AM_CPPFLAGS = -I/usr/include/bam-0.1-legacy/
+ 
+ #-- progs to be installed in $prefix/bin
+ 
+ bin_PROGRAMS = \
+-	$(SAMPROG) \
+ 	prep_reads \
+ 	gtf_to_fasta \
+ 	fix_map_ordering \
+@@ -722,9 +717,6 @@
+ 	tophat2 \
+ 	tophat
+ 
+-clean-local:
+-	cd $(SAMDIR) && make clean
+-
+ tophat2: tophat2.sh
+ 	cp tophat2.sh tophat2 && chmod 755 tophat2
+ 
+@@ -732,7 +724,7 @@
+ 	sed -e 's|__VERSION__|$(VERSION)|' tophat.py > tophat && chmod 755 tophat
+ 
+ #-- tophat library for linking convienence
+-noinst_LIBRARIES = $(SAMLIB) libgc.a libtophat.a
++noinst_LIBRARIES = libgc.a libtophat.a
+ 
+ noinst_HEADERS = \
+ 	reads.h \
+@@ -801,11 +793,11 @@
+ prep_reads_LDFLAGS = $(BAM_LDFLAGS) $(LDFLAGS) 
+ 
+ segment_juncs_SOURCES = segment_juncs.cpp
+-segment_juncs_LDADD = $(top_builddir)/src/libtophat.a $(BOOST_THREAD_LIBS) $(BOOST_SYSTEM_LIB) $(BAM_LIB)
++segment_juncs_LDADD = $(top_builddir)/src/libtophat.a $(BOOST_THREAD_LIB) $(BOOST_SYSTEM_LIB) $(BAM_LIB)
+ segment_juncs_LDFLAGS = $(BAM_LDFLAGS) $(LDFLAGS) $(BOOST_LDFLAGS)
+ 
+ long_spanning_reads_SOURCES = long_spanning_reads.cpp
+-long_spanning_reads_LDADD = $(top_builddir)/src/libtophat.a $(BOOST_THREAD_LIBS) $(BOOST_SYSTEM_LIB) $(BAM_LIB)
++long_spanning_reads_LDADD = $(top_builddir)/src/libtophat.a $(BOOST_THREAD_LIB) $(BOOST_SYSTEM_LIB) $(BAM_LIB)
+ long_spanning_reads_LDFLAGS = $(BAM_LDFLAGS) $(LDFLAGS) $(BOOST_LDFLAGS)
+ 
+ gtf_juncs_SOURCES = gtf_juncs.cpp
+@@ -817,7 +809,7 @@
+ juncs_db_LDFLAGS = $(BAM_LDFLAGS) $(LDFLAGS)
+ 
+ tophat_reports_SOURCES = tophat_reports.cpp
+-tophat_reports_LDADD = $(top_builddir)/src/libtophat.a  $(BOOST_THREAD_LIBS) $(BOOST_SYSTEM_LIB) $(BAM_LIB)
++tophat_reports_LDADD = $(top_builddir)/src/libtophat.a  $(BOOST_THREAD_LIB) $(BOOST_SYSTEM_LIB) $(BAM_LIB)
+ tophat_reports_LDFLAGS = $(BAM_LDFLAGS) $(LDFLAGS) $(BOOST_LDFLAGS)
+ 
+ fix_map_ordering_SOURCES = fix_map_ordering.cpp
+@@ -844,15 +836,5 @@
+ gtf_to_fasta_LDADD = $(top_builddir)/src/libtophat.a libgc.a $(BAM_LIB)
+ gtf_to_fasta_LDFLAGS = $(BAM_LDFLAGS) $(LDFLAGS)
+ 
+-
+-libbam_a_SOURCES = 
+-samtools_0_1_18_SOURCES = 
+-
+-$(SAMPROG): $(SAMLIB)
+-	
+-
+-$(SAMLIB):
+-	cd $(SAMDIR) && make $(SAMPROG) && cp $(SAMLIB) $(SAMPROG) ..
+-
+ install-data-hook:
+ 	cp -r intervaltree sortedcontainers $(DESTDIR)$(bindir)

@@ -1,0 +1,45 @@
+--- Makefile.orig	2010-03-29 13:57:15.000000000 +0300
++++ Makefile	2010-03-29 13:59:11.000000000 +0300
+@@ -5,12 +5,10 @@
+ #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+ 
+ # Change this PREFIX to where you want docker to be installed
+-PREFIX=/usr/local
+-# Change this XLIBPATH to point to your X11 development package's installation
+-XLIBPATH=/usr/X11R6/lib
++PREFIX = /usr
+ 
+ # Sets some flags for stricter compiling
+-CFLAGS=-pedantic -Wall -W -O
++CFLAGS += -pedantic -Wall -W
+ 
+ #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
+ #                                                                 #
+@@ -24,14 +22,14 @@
+ target=docker
+ sources=docker.c kde.c icons.c xproperty.c net.c
+ headers=docker.h kde.h icons.h xproperty.h net.h version.h
+-extra=README COPYING version.h.in
++extra=README version.h.in
+ 
+ all: $(target) $(sources) $(headers)
+ 	@echo Build Successful
+ 
+ $(target): $(sources:.c=.o)
+-	$(CC) $(CFLAGS) -L$(XLIBPATH) -lX11 \
+-		`pkg-config --libs glib-2.0` $^ -o $@
++	$(CC) $(LDFLAGS) $(CFLAGS) $^ -lX11 \
++		`pkg-config --libs glib-2.0` -o $@
+ 
+ %.o: %.c
+ 	$(CC) -c $(CFLAGS) `pkg-config --cflags glib-2.0` $<
+@@ -40,7 +38,8 @@
+ 	sed -e "s/@VERSION@/$(VERSION)/" version.h.in > $@
+ 
+ install: all
+-	install $(target) $(PREFIX)/bin/$(target)
++	install -d $(DESTDIR)$(PREFIX)/bin
++	install $(target) $(DESTDIR)$(PREFIX)/bin/$(target)
+ 
+ uninstall:
+ 	rm -f $(PREFIX)/$(target)

@@ -1,0 +1,38 @@
+
+  First part is adapted from http://cvsweb.se.netbsd.org/cgi-bin/bsdweb.cgi/pkgsrc/editors/nvi/patches/patch-aa?rev=1.3;content-type=text/plain
+
+--- a/common/db.h
++++ b/common/db.h
+@@ -4,7 +4,7 @@
+ #define DB_BUFFER_SMALL		ENOMEM
+ #endif
+ 
+-#if DB_VERSION_MAJOR >= 3 && DB_VERSION_MINOR >= 1
++#if (DB_VERSION_MAJOR >= 3 && DB_VERSION_MINOR >= 1) || DB_VERSION_MAJOR > 3
+ #define db_env_open(env,path,flags,mode)				\
+     (env)->open(env, path, flags, mode)
+ #define db_env_remove(env,path,flags)					\
+@@ -16,7 +16,10 @@
+     (env)->remove(env, path, NULL, flags)
+ #endif
+ 
+-#if DB_VERSION_MAJOR >= 4 && DB_VERSION_MINOR >= 1
++# if (DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR >= 4) || DB_VERSION_MAJOR > 4
++#define db_open(db,file,type,flags,mode)				\
++    (db)->open(db, NULL, file, NULL, type, flags | DB_CREATE, mode)
++#elif DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR >= 1
+ #define db_open(db,file,type,flags,mode)				\
+     (db)->open(db, NULL, file, NULL, type, flags, mode)
+ #else
+--- a/common/msg.c
++++ b/common/msg.c
+@@ -724,7 +724,8 @@
+ 		p = buf;
+ 	} else
+ 		p = file;
+-	if ((sp->db_error = db_create(&db, 0, 0)) != 0 ||
++	if (access(p, R_OK) != 0 ||
++	    (sp->db_error = db_create(&db, 0, 0)) != 0 ||
+ 	    (sp->db_error = db->set_re_source(db, p)) != 0 ||
+ 	    (sp->db_error = db_open(db, NULL, DB_RECNO, 0, 0)) != 0) {
+ 		if (first) {

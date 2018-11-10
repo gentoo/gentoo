@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting cf-monitord"
+	start-stop-daemon --start --exec /usr/sbin/cf-monitord -- ${EXTRA_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping cf-monitord"
+	start-stop-daemon --stop --pidfile /var/cfengine/cf-monitord.pid --exec /usr/sbin/cf-monitord
+	eend $?
+}

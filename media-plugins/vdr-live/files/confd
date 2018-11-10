@@ -1,0 +1,8 @@
+# configuration of vdr-live
+
+# use this portnumber
+LIVE_PORT="8008"
+
+# bind to these IP addresses
+LIVE_BIND_IPS="127.0.0.1"
+

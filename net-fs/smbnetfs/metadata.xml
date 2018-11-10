@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>slyfox@gentoo.org</email>
+		<name>Sergei Trofimovich</name>
+	</maintainer>
+	<longdescription>
+		SMBNetFS is a Linux/FreeBSD FUSE filesystem that allow you to use samba/microsoft network.
+
+		Features:
+		- Linux-2.6 and FreeBSD &gt;= 6.0 are supported (Linux-2.4 is not tested)
+		- you can use Samba/Microsoft network as a regular unix filesystem
+		- workgroup/computer/share entries are dynamically created
+		- windows domain supported
+		- user defined workgroup/link/hosts are supported
+		- national character supported
+		- in config files you can specify different user/password to access different network shares
+		- command "cd mountpoint/username:password@computer_or_ip" allows you to access "computer_or_ip" as user "username" with password "password" (this is insecure, but usefull)
+		- the program is multithreaded, so simultaneous access to a file/share is possible
+	</longdescription>
+	<use>
+		<flag name="gnome">Use the <pkg>gnome-base/gnome-keyring</pkg> for password management.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">smbnetfs</remote-id>
+	</upstream>
+</pkgmetadata>

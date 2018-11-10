@@ -1,0 +1,39 @@
+Patch by Robert Scheck <robert@fedoraproject.org> for apachetop <= 0.12.6, which
+adds some includes in order to have a real change to get MAXPATHLEN defined with
+a valid value. Once MAXPATHLEN really gets filled with 128, it will just cause a
+buffer overflow.
+
+See Red Hat Bugzilla #446199 (https://bugzilla.redhat.com/show_bug.cgi?id=446199)
+for more information. This patch should solve the mentioned bug report and should
+be sane enough to get included by upstream of apachetop for the next release. It
+is important to run autoheader before ./configure to get these changes activated.
+
+--- apachetop-0.12.6/configure.ac		2005-10-27 18:39:25.000000000 +0200
++++ apachetop-0.12.6/configure.ac.maxpathlen	2008-06-21 16:00:38.000000000 +0200
+@@ -34,7 +34,8 @@
+ # Checks for header files.
+ AC_HEADER_STDC
+ AC_CHECK_HEADERS([arpa/inet.h netdb.h netinet/in.h \
+-		string.h strings.h sys/socket.h time.h sys/time.h])
++		string.h strings.h sys/socket.h time.h sys/time.h \
++		limits.h sys/param.h])
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+ #AC_HEADER_STDBOOL # not in 2.53?
+--- apachetop-0.12.6/src/apachetop.h		2005-10-15 18:10:01.000000000 +0200
++++ apachetop-0.12.6/src/apachetop.h.maxpatlen	2008-06-21 16:02:00.000000000 +0200
+@@ -89,8 +89,12 @@
+ #define getMIN(a,b) (a < b ? a : b)
+ #define getMAX(a,b) (a > b ? a : b)
+ 
+-#ifndef MAXPATHLEN
+-# define MAXPATHLEN 128
++#ifdef HAVE_SYS_PARAM_H
++# include <sys/param.h>
++#endif
++ 
++#if HAVE_LIMITS_H
++# include <limits.h>
+ #endif
+ 
+ /* upon startup, each input file is put into an element of this array,

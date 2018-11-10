@@ -1,0 +1,34 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -x /usr/sbin/radiusd ] ; then
+		eerror "The radius daemon was not found."
+		eerror "Please (re)emerge cistronradius."
+		return 1
+	fi
+
+	if [ ! -e /etc/raddb/clients ] ; then
+		eerror "No /etc/raddb/clients file found."
+		eerror "Please create the file and retry."
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting Cistron Radius"
+	start-stop-daemon --start --quiet --exec /usr/sbin/radiusd
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Cistron Radius"
+	start-stop-daemon --stop --quiet --pidfile /var/run/radiusd.pid
+	eend $?
+}

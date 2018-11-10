@@ -1,0 +1,40 @@
+Make scons respect user variables
+
+--- a/setup.py
++++ b/setup.py
+@@ -214,7 +214,7 @@
+ 
+ # The following variables are used to customize the compile process
+ 
+-INC_DIRS = []
++INC_DIRS = ['/usr/include']
+ LIB_DIRS = []
+ LIBS     = []
+ CC_ARGS  = []
+--- a/supportlib/SConstruct
++++ b/supportlib/SConstruct
+@@ -30,19 +30,11 @@
+ # Add the local 'include' directory...
+ env.Append(CPPPATH = ["include"])
+ 
+-# Do platform specific stuff...
+-if sys.platform=="win32":
+-    env.Append(CCFLAGS = ["/GX", "/GR", "/MD", "/W3"])
+-    env.Append(CPPDEFINES = ["WIN32", "_LIB"])
+-elif sys.platform=="darwin":
+-    env.Append(CCFLAGS = ["-arch", "x86_64"])
+-    env.Append(CCFLAGS = ["-arch", "i386"])
+-#    env.Append(CCFLAGS = ["-arch", "ppc"])
+-    env.Append(CPPPATH = ["/opt/local/include"])
+-    env.Append(CCFLAGS = ["-fPIC"])
+-else:
+-    env.Append(CPPPATH = ["/opt/local/include"])
+-    env.Append(CCFLAGS = ["-fPIC"])
++env.Append(CPPPATH = ['/usr/include'])
++env['AR'] = os.environ.get('AR', 'ar')
++env['CXX'] = os.environ.get('CXX', 'g++')
++env['CXXFLAGS'] = os.environ.get('CXXFLAGS', '-fPIC')
++env['CPPFLAGS'] = os.environ.get('CPPFLAGS', '')
+ 
+ # Setup the help message
+ Help(vars.GenerateHelpText(env))

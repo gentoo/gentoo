@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription>
+		PUNC (Portable Understructure for Numerical Computing) is a small standard
+		collection of software libraries for numerical computing. The PUNC
+		collection includes reference implementations of the standard (dense matrix)
+		linear algebra tools BLAS and LAPACK, and also includes some newer (sparse
+		matrix) linear algebra tools ARPACK, SuperLU, CgCode, and PMG. PUNC also
+		provides some additional basic infrastructure such as the standard F2C
+		header and corresponding library (libF2C), to support the use of F2C'd
+		FORTRAN codes, and some other standard tools used to build numerical
+		simulation software, such as the HDF5 library. While most of the libraries
+		included in PUNC are completely stand-alone, and are the reference
+		implementations developed by the individual library authors, PUNC also
+		provides some Object-oriented C wrappers (written by the FETK developers)
+		for use with Object-oriented C/C++ codes such as FETK . This is accomplished
+		by building PUNC on top of FETK 's MALOC library.
+	</longdescription>
+</pkgmetadata>

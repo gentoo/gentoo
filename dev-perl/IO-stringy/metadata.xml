@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">IO-stringy</remote-id>
+    <remote-id type="cpan-module">IO::AtomicFile</remote-id>
+    <remote-id type="cpan-module">IO::Clever</remote-id>
+    <remote-id type="cpan-module">IO::InnerFile</remote-id>
+    <remote-id type="cpan-module">IO::Lines</remote-id>
+    <remote-id type="cpan-module">IO::Scalar</remote-id>
+    <remote-id type="cpan-module">IO::ScalarArray</remote-id>
+    <remote-id type="cpan-module">IO::Stringy</remote-id>
+    <remote-id type="cpan-module">IO::Wrap</remote-id>
+    <remote-id type="cpan-module">IO::WrapTie</remote-id>
+    <remote-id type="cpan-module">IO::WrapTie::Master</remote-id>
+    <remote-id type="cpan-module">IO::WrapTie::Slave</remote-id>
+  </upstream>
+</pkgmetadata>

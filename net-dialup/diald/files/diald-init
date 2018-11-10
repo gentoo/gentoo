@@ -1,0 +1,29 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -e /etc/diald/diald.conf ] ; then
+		eerror "You need an /etc/diald/diald.conf file first"
+		eerror "There is a  sample  in  /usr/share/doc/diald"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting diald"
+	start-stop-daemon --start --quiet --exec /usr/sbin/diald \
+		-- -f /etc/diald/diald.conf
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping diald"
+	start-stop-daemon --stop --quiet --pidfile /var/run/diald.pid
+	eend $?
+}

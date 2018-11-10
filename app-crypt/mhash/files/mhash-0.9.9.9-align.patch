@@ -1,0 +1,119 @@
+diff -up mhash-0.9.9.9/lib/stdfns.c.BAD mhash-0.9.9.9/lib/stdfns.c
+--- mhash-0.9.9.9/lib/stdfns.c.BAD	2009-07-02 16:38:43.217029623 -0400
++++ mhash-0.9.9.9/lib/stdfns.c	2009-07-02 16:41:58.647120391 -0400
+@@ -152,6 +152,18 @@ mutils_bzero(void *s, __const mutils_wor
+ 	}
+ }
+ 
++static void
++mutils_memset8(void *s, __const mutils_word8 c, __const mutils_word32 n)
++{
++	mutils_word8 *stmp = s;
++	mutils_word32 i;
++
++	for (i = 0; i < n; i++, stmp++)
++	{
++               *stmp = c;
++	}
++}
++
+ WIN32DLL_DEFINE
+ void
+ mutils_memset(void *s, __const mutils_word8 c, __const mutils_word32 n)
+@@ -160,8 +172,7 @@ mutils_memset(void *s, __const mutils_wo
+ 	/* Sparc needs 8-bit alignment - just use standard memset */
+ 	memset(s, (int) c, (size_t) n);
+ #else
+-	mutils_word8 *stmp;
+-	mutils_word32 *ltmp = (mutils_word32 *) s;
++	mutils_word32 *ltmp;
+ 	mutils_word32 lump;
+ 	mutils_word32 i;
+ 	mutils_word32 words;
+@@ -172,22 +183,30 @@ mutils_memset(void *s, __const mutils_wo
+ 		return;
+ 	}
+ 
++	if (n < 16)
++	{
++		return mutils_memset8(s, c, n);
++	}
++
++	/* unaligned portion at beginning */
++	remainder = (-(mutils_word32)s) & 0x3;
++	mutils_memset8(s, c, remainder);
++
++	/* aligned words in the middle */
++	ltmp = (mutils_word32 *) (s + remainder);
++
+ 	lump = (c << 24) + (c << 16) + (c << 8) + c;
+ 
+-	words = n >> 2;
+-	remainder = n - (words << 2);
++	words = (n - remainder) >> 2;
++	remainder = n - remainder - (words << 2);
+ 
+ 	for (i = 0; i < words; i++, ltmp++)
+ 	{
+ 		*ltmp = lump;
+ 	}
+ 
+-	stmp = (mutils_word8 *) ltmp;
+-
+-	for (i = 0; i < remainder; i++, stmp++)
+-	{
+-		*stmp = c;
+-	}
++	/* unaligned portion at end */
++	return mutils_memset8(ltmp, c, remainder);
+ #endif
+ }
+ 
+@@ -281,6 +300,9 @@ mutils_word32nswap(mutils_word32 *x, mut
+ 	mutils_word32 *buffer;
+ 	mutils_word32 *ptrIn;
+ 	mutils_word32 *ptrOut;
++	mutils_word8 *ptr8In;
++	mutils_word8 *ptr8Out;
++	mutils_word8 tmp8;
+ 	mutils_word32 count = n * 4;
+ 
+ 	if (destructive == MUTILS_FALSE)
+@@ -301,9 +323,35 @@ mutils_word32nswap(mutils_word32 *x, mut
+  * data on a little-endian machine.
+  */
+ 
+-	for (loop = 0, ptrIn = x, ptrOut = buffer; loop < n; loop++, ptrOut++, ptrIn++)
++	if ((mutils_word32)x & 0x3)
++	{
++         ptr8In = (mutils_word8 *) x;
++         ptr8Out = (mutils_word8 *) buffer;
++         for (loop = 0; loop < n; loop++)
++           {
++#ifdef WORDS_BIGENDIAN
++             tmp8 = ptr8In[0];
++             ptr8Out[0] = ptr8In[3];
++             ptr8Out[3] = tmp8;
++             tmp8 = ptr8In[1];
++             ptr8Out[1] = ptr8In[2];
++             ptr8Out[2] = tmp8;
++#else
++             ptr8Out[0] = ptr8In[0];
++             ptr8Out[1] = ptr8In[1];
++             ptr8Out[2] = ptr8In[2];
++             ptr8Out[3] = ptr8In[3];
++#endif
++             ptr8Out += 4;
++             ptr8In += 4;
++           }
++	}
++	else
+ 	{
+-		*ptrOut = mutils_lend32(*ptrIn);
++               for (loop = 0, ptrIn = x, ptrOut = buffer; loop < n; loop++, ptrOut++, ptrIn++)
++               {
++                       *ptrOut = mutils_lend32(*ptrIn);
++               }
+ 	}
+ 
+ 	return(buffer);

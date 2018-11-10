@@ -1,0 +1,58 @@
+From b19339d4356efbd9b49f73e67ed7c09b9dad4b75 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Thu, 16 May 2013 12:24:17 +0300
+Subject: [PATCH 1/2] types: add sanity tests for used sizes
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ GccUnix.mak |  2 +-
+ checks.c    | 26 ++++++++++++++++++++++++++
+ 2 files changed, 27 insertions(+), 1 deletion(-)
+ create mode 100644 checks.c
+
+diff --git a/gccmod.inc b/gccmod.inc
+index 70f388a..86cb2bf 100644
+--- a/gccmod.inc
++++ b/gccmod.inc
+@@ -6,6 +6,7 @@ $(OUTD)/atofloat.o \
+ $(OUTD)/backptch.o \
+ $(OUTD)/bin.o      \
+ $(OUTD)/branch.o   \
++$(OUTD)/checks.o   \
+ $(OUTD)/cmdline.o  \
+ $(OUTD)/codegen.o  \
+ $(OUTD)/coff.o     \
+diff --git a/checks.c b/checks.c
+new file mode 100644
+index 0000000..af8630f
+--- /dev/null
++++ b/checks.c
+@@ -0,0 +1,26 @@
++/****************************************************************************
++*
++*  This code is Public Domain.
++*
++*  ========================================================================
++*
++* Description:  make sure "inttype.h" filelds are of the desired size.
++*
++****************************************************************************/
++
++#include "inttype.h"
++
++/* fails to compile if type sizes are of unexpected size */
++static void validate_inttype_sizes()
++{
++/* try to create */
++#define T_IS_SIZE(__type, __expected_size, __test_name) \
++    char __test_name[2 * (sizeof (__type) == (__expected_size)) - 1];
++
++    T_IS_SIZE(uint_8,  1, size_of_uint_8_must_be_1_byte);
++    T_IS_SIZE(uint_16, 2, size_of_uint_16_must_be_2_bytes);
++    T_IS_SIZE(uint_32, 4, size_of_uint_32_must_be_4_bytes);
++    T_IS_SIZE(uint_64, 8, size_of_uint_64_must_be_8_bytes);
++
++#undef T_IS_SIZE
++}
+-- 
+1.8.2.1

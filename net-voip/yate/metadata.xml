@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
+	</maintainer>
+	<use>
+		<flag name="dahdi">Enable Dahdi driver</flag>
+		<flag name="zaptel">Enable Zaptel driver</flag>
+		<flag name="wpcard">Enable Wanpipe card driver</flag>
+		<flag name="tdmcard">Enable TDMV API card driver</flag>
+		<flag name="wanpipe">Enable Wanpipe support</flag>
+		<flag name="ilbc">Enable iLBC codec</flag>
+		<flag name="ilbc-webrtc">Enable iLBC webrtc codec</flag>
+		<flag name="isac-float">Enable iSAC float codec</flag>
+		<flag name="isac-fixed">Enable iSAC fixed codec</flag>
+		<flag name="postgres">use Postgress SQL</flag>
+		<flag name="mysql">use MySQL client library</flag>
+		<flag name="gsm">use GSM codec</flag>
+		<flag name="speex">use Speex codec</flag>
+		<flag name="amrnb">use AMR-NB</flag>
+		<flag name="spandsp">use spandsp library</flag>
+	</use>
+</pkgmetadata>

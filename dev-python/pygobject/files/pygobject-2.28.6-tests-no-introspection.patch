@@ -1,0 +1,33 @@
+From 9c8ec7495e9e73855dc284be293828572f408c92 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Tue, 25 Dec 2012 00:26:05 -0500
+Subject: [PATCH] Do not run introspection tests when building with
+ introspection disabled
+
+---
+ tests/Makefile.am | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index e60bad5..3a0d1b7 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -120,9 +120,14 @@ RUN_TESTS_ENV_VARS= \
+ RUN_TESTS_LAUNCH=$(RUN_TESTS_ENV_VARS) $(DBUS_LAUNCH) $(EXEC_NAME) $(PYTHON) $(srcdir)/runtests.py
+ 
+ # run tests in separately to avoid loading static and introspection bindings in the same process
+-check-local: $(check_LTLIBRARIES:.la=.so) Regress-1.0.typelib GIMarshallingTests-1.0.typelib gschemas.compiled
++if ENABLE_INTROSPECTION
++CHECK_LOCAL_INTROSPECTION_REQ = Regress-1.0.typelib GIMarshallingTests-1.0.typelib gschemas.compiled
++endif
++check-local: $(check_LTLIBRARIES:.la=.so) $(CHECK_LOCAL_INTROSPECTION_REQ)
+ 	TEST_FILES="$(TEST_FILES_STATIC)" $(RUN_TESTS_LAUNCH)
++if ENABLE_INTROSPECTION
+ 	TEST_FILES="$(TEST_FILES_GI)" $(RUN_TESTS_LAUNCH)
++endif
+ if BUILD_GIO
+ 	TEST_FILES="$(TEST_FILES_GIO)" $(RUN_TESTS_LAUNCH)
+ endif 
+-- 
+1.8.0.2
+

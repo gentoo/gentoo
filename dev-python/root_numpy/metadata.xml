@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-physics@gentoo.org</email>
+    <name>Gentoo Physics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  root_numpy is a Python extension for converting ROOT TTrees into
+  NumPy recarrays or structured arrays. With the core internals
+  written in C++, root_numpy can efficiently handle large amounts of
+  data (limited only by the available memory). 
+  Now that your ROOT data is in NumPy form, you can make use of the many
+  powerful scientific Python packages or perform quick exploratory data
+  analysis in interactive environments like IPython.
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">root_numpy</remote-id>
+    <remote-id type="github">rootpy/root_numpy</remote-id>
+  </upstream>
+</pkgmetadata>

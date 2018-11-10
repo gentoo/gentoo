@@ -1,0 +1,186 @@
+--- projects/rscriptd/rscriptd.conf.org	2013-01-08 18:19:34.000000000 +0200
++++ projects/rscriptd/rscriptd.conf	2013-01-08 18:20:52.000000000 +0200
+@@ -6,7 +6,7 @@
+ # Parameter: optional
+ # Value: file path
+ # Default: /var/log/rscriptd.log
+-LogFileName = /var/log/rscriptd.log
++LogFileName = /var/log/stargazer/rscriptd.log
+ 
+ # Amount of rscriptd-exec processes.
+ # These processes are responsible for the execution of scripts 
+@@ -22,7 +22,7 @@
+ # Parameter: optional
+ # Value: directory path
+ # Default: /etc/rscriptd
+-ConfigDir = /etc/rscriptd
++ConfigDir = /etc/stargazer
+ 
+ # Defines password for the encryption exchange between
+ # Stargazer server and rscriptd.
+@@ -49,12 +49,12 @@
+ # Parameter: optional
+ # Value: file path
+ # Default: /etc/rscriptd/OnConnect
+-ScriptOnConnect = /etc/rscriptd/OnConnect
++ScriptOnConnect = /etc/stargazer/OnConnect
+ 
+ # Defines file which runs when user loses access
+ # Parameter: optional
+ # Value: file path
+ # Default: /etc/rscriptd/OnDisconnect
+-ScriptOnDisconnect = /etc/rscriptd/OnDisconnect
++ScriptOnDisconnect = /etc/stargazer/OnDisconnect
+ 
+ ################################################################################
+\ No newline at end of file
+--- projects/sgconv/sgconv.conf.org	2012-12-18 21:56:33.578221904 +0200
++++ projects/sgconv/sgconv.conf	2012-12-18 21:58:22.355217059 +0200
+@@ -18,27 +18,27 @@
+     # Working server directory, provides data on tariffs, users, administrators.
+     # Parameter: required
+     # Value: directory path
+-    WorkDir = /var/stargazer
++    WorkDir = /var/lib/stargazer
+ 
+     # Owner, group and permissions of the files of user statistics (stat)
+     # Parameter: required
+     # Values: any, supported by OS
+-    ConfOwner = root
+-    ConfGroup = root
++    ConfOwner = stg
++    ConfGroup = stg
+     ConfMode = 600
+ 
+     # Owner, group and permissions on user configuration files (conf)
+     # Parameter: required
+     # Values: any, supported by OS
+-    StatOwner = root
+-    StatGroup = root
++    StatOwner = stg
++    StatGroup = stg
+     StatMode = 640
+ 
+     # Owner, group and permissions for user log files (log)
+     # Parameter: required
+     # Values: any, supported by OS
+-    UserLogOwner = root
+-    UserLogGroup = root
++    UserLogOwner = stg
++    UserLogGroup = stg
+     UserLogMode = 640
+ 
+ </SourceStoreModule>
+@@ -54,7 +54,7 @@
+     # Parameter: required
+     # Value: file path
+     # Default: /var/stg/stargazer.fdb
+-    # database = /var/stg/stargazer.fdb
++    # database = /var/lib/stargazer/stargazer.fdb
+ 
+     # Database username
+     # Parameter: required
+--- projects/stargazer/inst/linux/etc/stargazer/stargazer.conf.org	2012-12-30 14:35:22.000000000 +0200
++++ projects/stargazer/inst/linux/etc/stargazer/stargazer.conf	2012-12-30 14:36:37.000000000 +0200
+@@ -6,7 +6,7 @@
+ # Parameter: required
+ # Value: file path
+ # Default: /var/log/stargazer.log
+-LogFile = /var/log/stargazer.log
++LogFile = /var/log/stargazer/stargazer.log
+ 
+ # PID file name
+ # Parameter: optional
+@@ -147,7 +147,7 @@
+ # Parameter: optional
+ # Value: file path
+ # Default: /var/stargazer/monitor
+-#MonitorDir=/var/stargazer/monitor
++#MonitorDir=/var/lib/stargazer/monitor
+ 
+ # Defines message maximum lifetime
+ # Note: 0 - unlimited
+--- projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_remote_script.conf.org	2012-12-25 14:03:49.000000000 +0200
++++ projects/stargazer/inst/linux/etc/stargazer/conf-available.d/mod_remote_script.conf	2012-12-25 14:04:00.000000000 +0200
+@@ -16,7 +16,7 @@
+     # Parametr: required
+     # Values: filename
+     # Default: subnets
+-    SubnetFile = subnets
++    SubnetFile = /etc/stargazer/subnets
+ 
+     # The password to encrypt packets between the stg-server and remote server
+     # Parameter: required
+--- projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_files.conf.org	2012-12-25 13:31:01.000000000 +0200
++++ projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_files.conf	2012-12-25 13:31:43.000000000 +0200
+@@ -5,27 +5,27 @@
+     # Working server directory, provides data on tariffs, users, administrators.
+     # Parameter: required
+     # Value: directory path
+-    WorkDir = /var/stargazer
++    WorkDir = /var/lib/stargazer
+ 
+     # Owner, group and permissions of the files of user statistics (stat)
+     # Parameter: required
+     # Values: any, supported by OS
+-    ConfOwner = root
+-    ConfGroup = root
++    ConfOwner = stg
++    ConfGroup = stg
+     ConfMode = 640
+ 
+     # Owner, group and permissions on user configuration files (conf)
+     # Parameter: required
+     # Values: any, supported by OS
+-    StatOwner = root
+-    StatGroup = root
++    StatOwner = stg
++    StatGroup = stg
+     StatMode = 640
+ 
+     # Owner, group and permissions for user log files (log)
+     # Parameter: required
+     # Values: any, supported by OS
+-    UserLogOwner = root
+-    UserLogGroup = root
++    UserLogOwner = stg
++    UserLogGroup = stg
+     UserLogMode = 640
+ 
+ </StoreModule>
+--- projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_firebird.conf.org	2012-12-25 13:39:00.000000000 +0200
++++ projects/stargazer/inst/linux/etc/stargazer/conf-available.d/store_firebird.conf	2012-12-25 13:39:28.000000000 +0200
+@@ -9,7 +9,7 @@
+     # Parameter: required
+     # Value: file path
+     # Default: /var/stg/stargazer.fdb
+-    Database = /var/stg/stargazer.fdb
++    Database = /var/lib/stargazer/stargazer.fdb
+ 
+     # Database username
+     # Parameter: required
+--- projects/stargazer/plugins/configuration/rpcconfig/rpcconfig.cpp.org	2012-12-31 11:08:26.000000000 +0200
++++ projects/stargazer/plugins/configuration/rpcconfig/rpcconfig.cpp	2012-12-31 11:08:41.000000000 +0200
+@@ -169,7 +169,7 @@
+ rpcServer = new xmlrpc_c::serverAbyss(
+         xmlrpc_c::serverAbyss::constrOpt()
+         .registryP(&rpcRegistry)
+-        .logFileName("/var/log/stargazer_rpc.log")
++        .logFileName("/var/log/stargazer/xmlrpc.log")
+         .socketFd(fd)
+         );
+ 
+--- projects/stargazer/inst/var/00-base-00.sql.org	2013-01-02 16:22:28.000000000 +0200
++++ projects/stargazer/inst/var/00-base-00.sql	2013-01-02 16:22:52.000000000 +0200
+@@ -50,9 +50,9 @@
+ /*
+  * CONNECT 'localhost:/var/stg/stargazer.fdb' USER 'stg' PASSWORD '123456';
+  * DROP DATABASE;
+- *
+- * CREATE DATABASE 'localhost:/var/stg/stargazer.fdb' USER 'stg' PASSWORD '123456' DEFAULT CHARACTER SET UTF8;
+  */
++  CREATE DATABASE 'localhost:/var/lib/stargazer/stargazer.fdb' USER 'stg' PASSWORD '123456' DEFAULT CHARACTER SET UTF8;
++ 
+ 
+  
+ 

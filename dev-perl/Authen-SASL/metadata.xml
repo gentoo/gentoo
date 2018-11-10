@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Authen-SASL</remote-id>
+    <remote-id type="cpan-module">Authen::SASL</remote-id>
+    <remote-id type="cpan-module">Authen::SASL::CRAM_MD5</remote-id>
+    <remote-id type="cpan-module">Authen::SASL::EXTERNAL</remote-id>
+    <remote-id type="cpan-module">Authen::SASL::Perl</remote-id>
+    <remote-id type="cpan-module">Authen::SASL::Perl::ANONYMOUS</remote-id>
+    <remote-id type="cpan-module">Authen::SASL::Perl::CRAM_MD5</remote-id>
+    <remote-id type="cpan-module">Authen::SASL::Perl::DIGEST_MD5</remote-id>
+    <remote-id type="cpan-module">Authen::SASL::Perl::EXTERNAL</remote-id>
+    <remote-id type="cpan-module">Authen::SASL::Perl::GSSAPI</remote-id>
+    <remote-id type="cpan-module">Authen::SASL::Perl::LOGIN</remote-id>
+    <remote-id type="cpan-module">Authen::SASL::Perl::Layer</remote-id>
+    <remote-id type="cpan-module">Authen::SASL::Perl::PLAIN</remote-id>
+  </upstream>
+</pkgmetadata>

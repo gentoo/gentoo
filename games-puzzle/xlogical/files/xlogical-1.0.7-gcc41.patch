@@ -1,0 +1,49 @@
+--- properties.h.old	2007-01-11 17:33:45.000000000 +0100
++++ properties.h	2007-01-11 17:34:32.000000000 +0100
+@@ -33,9 +33,7 @@
+ #include <map>
+ #include <string>
+ 
+-#ifdef WIN32
+ using namespace std;
+-#endif
+ 
+ #include "defs.h"
+ 
+--- anim.h.old	2007-01-11 17:36:20.000000000 +0100
++++ anim.h	2007-01-11 17:36:37.000000000 +0100
+@@ -27,9 +27,7 @@
+ // Language Includes
+ #include <list>
+ 
+-#ifdef WIN32
+ using namespace std;
+-#endif
+ 
+ // Application Includes
+ #include "graph.h"
+--- exception.h.old	2007-01-11 17:37:37.000000000 +0100
++++ exception.h	2007-01-11 17:38:21.000000000 +0100
+@@ -27,10 +27,9 @@
+ 
+ // Language Includes
+ #include <string>
++#include <iostream>
+ 
+-#ifdef WIN32
+ using namespace std;
+-#endif
+ 
+ #define CatchEx(aEx)		catch( CXLException aEx )
+ #define ThrowEx(aError)		throw CXLException(aError,__FILE__,__LINE__)
+--- gamelogic.cpp.old	2007-01-11 17:38:52.000000000 +0100
++++ gamelogic.cpp	2007-01-11 17:39:12.000000000 +0100
+@@ -154,7 +154,7 @@
+ 		levelFile = NULL;
+ 	}
+ 
+-	currentMap = NULL;
++	currentMap = gameLevels.begin();
+ 
+ 	playerName = new char[32+1];
+ 	strcpy( playerName, "nobody" );

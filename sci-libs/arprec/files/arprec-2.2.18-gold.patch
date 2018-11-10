@@ -1,0 +1,15 @@
+ fortran/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/fortran/Makefile.am b/fortran/Makefile.am
+index 8eb4d19..91a125c 100644
+--- a/fortran/Makefile.am
++++ b/fortran/Makefile.am
+@@ -4,6 +4,7 @@ LDADD = libarprec_f_main.la libarprecmod.la $(top_builddir)/src/libarprec.la $(F
+ 
+ lib_LTLIBRARIES = libarprecmod.la libarprec_f_main.la
+ libarprecmod_la_SOURCES = f_mp.cpp mp_mod.f mp_modm.f mp_modx.f
++libarprecmod_la_LIBADD = $(top_builddir)/src/libarprec.la $(FCLIBS)
+ libarprec_f_main_la_SOURCES = main.cpp
+ 
+ if UPCASE_MODULE

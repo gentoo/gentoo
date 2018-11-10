@@ -1,0 +1,73 @@
+Description: Refactoring to support new libgps API 
+Author: James Page <james.page@ubuntu.com>
+Bug: https://bugs.freedesktop.org/show_bug.cgi?id=40996
+Forwarded: no
+
+--- providers/gpsd/geoclue-gpsd.c
++++ providers/gpsd/geoclue-gpsd.c
+@@ -40,7 +40,12 @@
+ #include <geoclue/gc-iface-position.h>
+ #include <geoclue/gc-iface-velocity.h>
+ 
++#if GPSD_API_MAJOR_VERSION >= 5
++/* gps_data conflicts with gps_data function */
++typedef struct gps_data_t gps_data_l;
++#else
+ typedef struct gps_data_t gps_data;
++#endif
+ typedef struct gps_fix_t gps_fix;
+ 
+ /* only listing used tags */
+@@ -59,7 +64,11 @@
+ 	char *host;
+ 	char *port;
+ 	
++#if GPSD_API_MAJOR_VERSION >= 5
++	gps_data_l *gpsdata;
++#else
+ 	gps_data *gpsdata;
++#endif
+ 	
+ 	gps_fix *last_fix;
+ 	
+@@ -394,10 +403,16 @@
+ static gboolean
+ geoclue_gpsd_start_gpsd (GeoclueGpsd *self)
+ {
++#if GPSD_API_MAJOR_VERSION >= 5
++	int status = gps_open (self->host, self->port, self->gpsdata);
++	if (status == 0) {
++		gps_stream(self->gpsdata, WATCH_ENABLE | WATCH_NMEA, NULL);
++#else
+ 	self->gpsdata = gps_open (self->host, self->port);
+ 	if (self->gpsdata) {
+ 		gps_stream(self->gpsdata, WATCH_ENABLE | WATCH_NMEA | POLL_NONBLOCK, NULL);
+ 		gps_set_raw_hook (self->gpsdata, gpsd_raw_hook);
++#endif
+ 		return TRUE;
+ 	} else {
+ 		g_warning ("gps_open() failed, is gpsd running (host=%s,port=%s)?", self->host, self->port);
+@@ -410,10 +425,23 @@
+ {
+ 	GeoclueGpsd *self = (GeoclueGpsd*)data;
+ 	if (self->gpsdata) {
++#if GPSD_API_MAJOR_VERSION >= 5 
++		/* gps_poll and gps_set_raw_hook no longer present in this API version */
++		if (gps_waiting(self->gpsdata, 500)) {
++			if (gps_read(self->gpsdata) == -1) {
++				geoclue_gpsd_set_status (self, GEOCLUE_STATUS_ERROR);
++				geoclue_gpsd_stop_gpsd(self);
++				return FALSE;
++			} else {          
++				/* Call existing raw_hook to process the data */
++				gpsd_raw_hook(self->gpsdata, NULL, 0);    
++			}
++#else
+ 		if (gps_poll(self->gpsdata) < 0) {
+ 			geoclue_gpsd_set_status (self, GEOCLUE_STATUS_ERROR);
+ 			geoclue_gpsd_stop_gpsd(self);
+ 			return FALSE;
++#endif
+ 		}
+ 	}
+ 	return TRUE;

@@ -1,0 +1,14 @@
+diff -purN a/COLLADABaseUtils/include/COLLADABUPcreCompiledPattern.h b/COLLADABaseUtils/include/COLLADABUPcreCompiledPattern.h
+--- a/COLLADABaseUtils/include/COLLADABUPcreCompiledPattern.h	2018-07-19 01:10:56.000000000 +0100
++++ b/COLLADABaseUtils/include/COLLADABUPcreCompiledPattern.h	2018-08-07 12:12:59.209871432 +0100
+@@ -12,9 +12,7 @@
+ #define __COLLADABU_PCRECOMPILEDPATTERN_H__
+ 
+ #include "COLLADABUPrerequisites.h"
+-
+-struct real_pcre;
+-typedef struct real_pcre pcre;
++#include <pcre.h>
+ 
+ 
+ namespace COLLADABU

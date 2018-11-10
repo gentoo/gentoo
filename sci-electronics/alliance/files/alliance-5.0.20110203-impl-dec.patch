@@ -1,0 +1,119 @@
+ dreal/src/GRD_error.c    |    1 +
+ lynx/src/cutelbow.c      |    1 +
+ lynx/src/parse.c         |    1 +
+ mips_asm/src/mips_util.c |    1 +
+ proof/src/proof_main.c   |    1 +
+ proof/src/proof_util.c   |    1 +
+ xfsm/src/XFS_error.c     |    1 +
+ xgra/src/XGR_error.c     |    1 +
+ xsch/src/XSC_error.c     |    1 +
+ 9 files changed, 9 insertions(+), 0 deletions(-)
+
+diff --git a/dreal/src/GRD_error.c b/dreal/src/GRD_error.c
+index e3baba6..c00bf13 100644
+--- a/dreal/src/GRD_error.c
++++ b/dreal/src/GRD_error.c
+@@ -46,6 +46,7 @@
+ # include <stdlib.h>
+ # include <signal.h>
+ # include <setjmp.h>
++# include <string.h>
+ # include "mut.h"
+ # include "mph.h"
+ # include "rds.h"
+diff --git a/lynx/src/cutelbow.c b/lynx/src/cutelbow.c
+index 7411f35..306649b 100644
+--- a/lynx/src/cutelbow.c
++++ b/lynx/src/cutelbow.c
+@@ -43,6 +43,7 @@
+ \------------------------------------------------------------*/
+ 
+ # include <stdio.h>
++# include <string.h>
+ 
+ # include "mut.h"
+ # include "mlo.h"
+diff --git a/lynx/src/parse.c b/lynx/src/parse.c
+index ed8a2e5..9077c3f 100644
+--- a/lynx/src/parse.c
++++ b/lynx/src/parse.c
+@@ -43,6 +43,7 @@
+ \------------------------------------------------------------*/
+ 
+ # include <stdio.h>
++# include <string.h>
+ 
+ # include "mut.h"
+ # include "mlo.h"
+diff --git a/mips_asm/src/mips_util.c b/mips_asm/src/mips_util.c
+index f5fa55f..5ad6a4f 100644
+--- a/mips_asm/src/mips_util.c
++++ b/mips_asm/src/mips_util.c
+@@ -30,6 +30,7 @@
+ /* ###--------------------------------------------------------------### */
+ 	
+ #include <stdio.h>
++#include <string.h>
+ #include "mut.h"
+ #include "log.h"
+ #include "beh.h"
+diff --git a/proof/src/proof_main.c b/proof/src/proof_main.c
+index b6eee94..3d8a91a 100644
+--- a/proof/src/proof_main.c
++++ b/proof/src/proof_main.c
+@@ -32,6 +32,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include "mut.h"
+ #include "log.h"
+ #include "beh.h"
+diff --git a/proof/src/proof_util.c b/proof/src/proof_util.c
+index 841937f..fa20ba1 100644
+--- a/proof/src/proof_util.c
++++ b/proof/src/proof_util.c
+@@ -31,6 +31,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ #include "mut.h"
+ #include "log.h"
+diff --git a/xfsm/src/XFS_error.c b/xfsm/src/XFS_error.c
+index 20ccd0a..5aded2b 100644
+--- a/xfsm/src/XFS_error.c
++++ b/xfsm/src/XFS_error.c
+@@ -46,6 +46,7 @@
+ # include <stdlib.h>
+ # include <signal.h>
+ # include <setjmp.h>
++# include <string.h>
+ # include "mut.h"
+ # include "aut.h"
+ # include "abl.h"
+diff --git a/xgra/src/XGR_error.c b/xgra/src/XGR_error.c
+index 3204423..b2d35c5 100644
+--- a/xgra/src/XGR_error.c
++++ b/xgra/src/XGR_error.c
+@@ -46,6 +46,7 @@
+ # include <stdlib.h>
+ # include <signal.h>
+ # include <setjmp.h>
++# include <string.h>
+ # include "mut.h"
+ # include "aut.h"
+ # include "XSB.h"
+diff --git a/xsch/src/XSC_error.c b/xsch/src/XSC_error.c
+index 9bdf65e..b8c5689 100644
+--- a/xsch/src/XSC_error.c
++++ b/xsch/src/XSC_error.c
+@@ -46,6 +46,7 @@
+ # include <stdlib.h>
+ # include <signal.h>
+ # include <setjmp.h>
++# include <string.h>
+ # include "mut.h"
+ # include "aut.h"
+ # include "mlo.h"

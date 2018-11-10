@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>openstack@gentoo.org</email>
+		<name>Openstack</name>
+	</maintainer>
+	<longdescription lang="en">
+	Retrying is an Apache 2.0 licensed general-purpose retrying library, written in Python, to simplify the task of adding retry behavior to just about anything.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">retrying</remote-id>
+		<remote-id type="github">rholder/retrying</remote-id>
+	</upstream>
+</pkgmetadata>

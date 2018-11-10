@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		GGobi is an open source visualization program for exploring
+		high-dimensional data. It provides highly dynamic and interactive
+		graphics such as tours, as well as familiar graphics such as the
+		scatterplot, barchart and parallel coordinates plots. Plots are
+		interactive and linked with brushing and identification.
+	</longdescription>
+</pkgmetadata>

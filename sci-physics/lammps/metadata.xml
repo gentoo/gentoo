@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		LAMMPS is a classical molecular dynamics code, and an acronym for
+		Large-scale Atomic/Molecular Massively Parallel Simulator.
+
+		LAMMPS has potentials for soft materials (biomolecules, polymers) and
+		solid-state materials (metals, semiconductors) and coarse-grained or
+		mesoscopic systems. It can be used to model atoms or, more generically,
+		as a parallel particle simulator at the atomic, meso, or continuum
+		scale.
+
+		LAMMPS runs on single processors or in parallel using message-passing
+		techniques and a spatial-decomposition of the simulation domain. The
+		code is designed to be easy to modify or extend with new functionality. 
+	</longdescription>
+	<use>
+		<flag name="lammps-memalign">Enables the use of the posix_memalign()
+			call instead of malloc() when large chunks or memory are allocated
+			by LAMMPS. Aliengnment is on 16 byte boundaries.</flag>
+		<flag name="cuda">Enable cuda non-bonded kernels</flag>
+	</use>
+	<maintainer type="person">
+		<email>nicolasbock@gentoo.org</email>
+		<name>Nicolas Bock</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci-physics@gentoo.org</email>
+		<name>Gentoo Physics Project</name>
+	</maintainer>
+</pkgmetadata>

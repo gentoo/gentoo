@@ -1,0 +1,47 @@
+diff -r -U2 sympy-1.0.orig/sympy/functions/special/tests/test_zeta_functions.py sympy-1.0/sympy/functions/special/tests/test_zeta_functions.py
+--- sympy-1.0.orig/sympy/functions/special/tests/test_zeta_functions.py	2016-03-09 00:38:39.000000000 +0600
++++ sympy-1.0/sympy/functions/special/tests/test_zeta_functions.py	2016-12-28 23:25:19.370041561 +0700
+@@ -125,5 +125,5 @@
+     assert polylog(s, 0) == 0
+     assert polylog(s, 1) == zeta(s)
+-    assert polylog(s, -1) == dirichlet_eta(s)
++    assert polylog(s, -1) == -dirichlet_eta(s)
+ 
+     assert myexpand(polylog(1, z), -log(1 + exp_polar(-I*pi)*z))
+diff -r -U2 sympy-1.0.orig/sympy/functions/special/zeta_functions.py sympy-1.0/sympy/functions/special/zeta_functions.py
+--- sympy-1.0.orig/sympy/functions/special/zeta_functions.py	2016-03-09 00:38:39.000000000 +0600
++++ sympy-1.0/sympy/functions/special/zeta_functions.py	2016-12-28 23:23:56.109047180 +0700
+@@ -245,5 +245,5 @@
+     zeta(s)
+     >>> polylog(s, -1)
+-    dirichlet_eta(s)
++    -dirichlet_eta(s)
+ 
+     If :math:`s` is a negative integer, :math:`0` or :math:`1`, the
+@@ -272,10 +272,17 @@
+     @classmethod
+     def eval(cls, s, z):
++        from sympy import unpolarify
+         if z == 1:
+             return zeta(s)
+         elif z == -1:
+-            return dirichlet_eta(s)
++            return -dirichlet_eta(s)
+         elif z == 0:
+-            return 0
++            return S.Zero
++
++        # branch handling
++        if (1 - abs(z)).is_nonnegative:
++            newz = unpolarify(z)
++            if newz != z:
++                return cls(s, newz)
+ 
+     def fdiff(self, argindex=1):
+@@ -486,5 +493,5 @@
+     For `\operatorname{Re}(s) > 0`, this function is defined as
+ 
+-    .. math:: \eta(s) = \sum_{n=1}^\infty \frac{(-1)^n}{n^s}.
++    .. math:: \eta(s) = \sum_{n=1}^\infty \frac{(-1)^{n-1}}{n^s}.
+ 
+     It admits a unique analytic continuation to all of :math:`\mathbb{C}`.

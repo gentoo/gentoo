@@ -1,0 +1,12 @@
+--- a/handlers.h
++++ b/handlers.h
+@@ -30,7 +30,8 @@
+ #ifdef WIN32
+ #define IFN_SIZE 512 // on windows iface names are VEERY long
+ #else
+-#define IFN_SIZE 32 // iface name size. As in linux/sockios.h
++#include <net/if.h>
++#define IFN_SIZE IFNAMSIZ // iface name size. As in linux/sockios.h
+ #endif
+ 
+ #define MPH_IFLIST 0x2 // iface type - for mempool

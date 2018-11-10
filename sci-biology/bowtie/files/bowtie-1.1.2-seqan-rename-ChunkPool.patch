@@ -1,0 +1,382 @@
+Description: Renamed ChunkPool class to bowtieChunkPool.
+ SeqAn has a class with the same name and fatal name collision happens.
+Forwarded: no
+Author: Ognyan Kulev <ogi@debian.org>
+Last-Update: 2013-04-18
+
+--- a/aligner.h
++++ b/aligner.h
+@@ -337,7 +337,7 @@ public:
+ 		bool verbose,
+ 		bool quiet,
+ 		int maxBts,
+-		ChunkPool *pool,
++		bowtieChunkPool *pool,
+ 		int *btCnt = NULL,
+ 		AlignerMetrics *metrics = NULL) :
+ 		Aligner(true, rangeMode),
+@@ -544,7 +544,7 @@ protected:
+ 	bool quiet_; // don't print informational/warning info
+ 
+ 	const int maxBts_;
+-	ChunkPool *pool_;
++	bowtieChunkPool *pool_;
+ 	int *btCnt_;
+ 	AlignerMetrics *metrics_;
+ };
+@@ -585,7 +585,7 @@ public:
+ 		bool verbose,
+ 		bool quiet,
+ 		int maxBts,
+-		ChunkPool *pool,
++		bowtieChunkPool *pool,
+ 		int *btCnt) :
+ 		Aligner(true, rangeMode),
+ 		refs_(refs),
+@@ -1358,7 +1358,7 @@ protected:
+ 	bool quiet_;
+ 
+ 	int maxBts_;
+-	ChunkPool *pool_;
++	bowtieChunkPool *pool_;
+ 	int *btCnt_;
+ 
+ 	// Range-finding state for first mate
+@@ -1482,7 +1482,7 @@ public:
+ 		bool verbose,
+ 		bool quiet,
+ 		int maxBts,
+-		ChunkPool *pool,
++		bowtieChunkPool *pool,
+ 		int *btCnt) :
+ 		Aligner(true, rangeMode),
+ 		refs_(refs),
+@@ -2035,7 +2035,7 @@ protected:
+ 	TDriver* driver_;
+ 
+ 	// Pool for distributing chunks of best-first path descriptor memory
+-	ChunkPool *pool_;
++	bowtieChunkPool *pool_;
+ 
+ 	bool verbose_;
+ 	bool quiet_;
+--- a/aligner_0mm.h
++++ b/aligner_0mm.h
+@@ -32,7 +32,7 @@ public:
+ 			RangeCache* cacheFw,
+ 			RangeCache* cacheBw,
+ 			uint32_t cacheLimit,
+-			ChunkPool *pool,
++			bowtieChunkPool *pool,
+ 			BitPairReference* refs,
+ 			vector<String<Dna5> >& os,
+ 			bool maqPenalty,
+@@ -124,7 +124,7 @@ private:
+ 	RangeCache *cacheFw_;
+ 	RangeCache *cacheBw_;
+ 	const uint32_t cacheLimit_;
+-	ChunkPool *pool_;
++	bowtieChunkPool *pool_;
+ 	BitPairReference* refs_;
+ 	vector<String<Dna5> >& os_;
+ 	bool maqPenalty_;
+@@ -164,7 +164,7 @@ public:
+ 			RangeCache* cacheFw,
+ 			RangeCache* cacheBw,
+ 			uint32_t cacheLimit,
+-			ChunkPool *pool,
++			bowtieChunkPool *pool,
+ 			BitPairReference* refs,
+ 			vector<String<Dna5> >& os,
+ 			bool reportSe,
+@@ -366,7 +366,7 @@ private:
+ 	RangeCache *cacheFw_;
+ 	RangeCache *cacheBw_;
+ 	const uint32_t cacheLimit_;
+-	ChunkPool *pool_;
++	bowtieChunkPool *pool_;
+ 	BitPairReference* refs_;
+ 	vector<String<Dna5> >& os_;
+ 	const bool reportSe_;
+--- a/aligner_1mm.h
++++ b/aligner_1mm.h
+@@ -32,7 +32,7 @@ public:
+ 			RangeCache *cacheFw,
+ 			RangeCache *cacheBw,
+ 			uint32_t cacheLimit,
+-			ChunkPool *pool,
++			bowtieChunkPool *pool,
+ 			BitPairReference* refs,
+ 			vector<String<Dna5> >& os,
+ 			bool maqPenalty,
+@@ -161,7 +161,7 @@ private:
+ 	RangeCache *cacheFw_;
+ 	RangeCache *cacheBw_;
+ 	const uint32_t cacheLimit_;
+-	ChunkPool *pool_;
++	bowtieChunkPool *pool_;
+ 	BitPairReference* refs_;
+ 	vector<String<Dna5> >& os_;
+ 	const bool maqPenalty_;
+@@ -201,7 +201,7 @@ public:
+ 			RangeCache *cacheFw,
+ 			RangeCache *cacheBw,
+ 			uint32_t cacheLimit,
+-			ChunkPool *pool,
++			bowtieChunkPool *pool,
+ 			BitPairReference* refs,
+ 			vector<String<Dna5> >& os,
+ 			bool reportSe,
+@@ -478,7 +478,7 @@ private:
+ 	RangeCache *cacheFw_;
+ 	RangeCache *cacheBw_;
+ 	const uint32_t cacheLimit_;
+-	ChunkPool *pool_;
++	bowtieChunkPool *pool_;
+ 	BitPairReference* refs_;
+ 	vector<String<Dna5> >& os_;
+ 	const bool reportSe_;
+--- a/aligner_23mm.h
++++ b/aligner_23mm.h
+@@ -33,7 +33,7 @@ public:
+ 			RangeCache *cacheFw,
+ 			RangeCache *cacheBw,
+ 			uint32_t cacheLimit,
+-			ChunkPool *pool,
++			bowtieChunkPool *pool,
+ 			BitPairReference* refs,
+ 			vector<String<Dna5> >& os,
+ 			bool maqPenalty,
+@@ -231,7 +231,7 @@ private:
+ 	RangeCache *cacheFw_;
+ 	RangeCache *cacheBw_;
+ 	const uint32_t cacheLimit_;
+-	ChunkPool *pool_;
++	bowtieChunkPool *pool_;
+ 	BitPairReference* refs_;
+ 	vector<String<Dna5> >& os_;
+ 	const bool maqPenalty_;
+@@ -273,7 +273,7 @@ public:
+ 			RangeCache *cacheFw,
+ 			RangeCache *cacheBw,
+ 			uint32_t cacheLimit,
+-			ChunkPool *pool,
++			bowtieChunkPool *pool,
+ 			BitPairReference* refs,
+ 			vector<String<Dna5> >& os,
+ 			bool reportSe,
+@@ -675,7 +675,7 @@ private:
+ 	RangeCache *cacheFw_;
+ 	RangeCache *cacheBw_;
+ 	const uint32_t cacheLimit_;
+-	ChunkPool *pool_;
++	bowtieChunkPool *pool_;
+ 	BitPairReference* refs_;
+ 	vector<String<Dna5> >& os_;
+ 	const bool reportSe_;
+--- a/aligner_seed_mm.h
++++ b/aligner_seed_mm.h
+@@ -37,7 +37,7 @@ public:
+ 			RangeCache* cacheFw,
+ 			RangeCache* cacheBw,
+ 			uint32_t cacheLimit,
+-			ChunkPool *pool,
++			bowtieChunkPool *pool,
+ 			BitPairReference* refs,
+ 			vector<String<Dna5> >& os,
+ 			bool maqPenalty,
+@@ -554,7 +554,7 @@ private:
+ 	RangeCache *cacheFw_;
+ 	RangeCache *cacheBw_;
+ 	const uint32_t cacheLimit_;
+-	ChunkPool *pool_;
++	bowtieChunkPool *pool_;
+ 	BitPairReference* refs_;
+ 	vector<String<Dna5> >& os_;
+ 	bool strandFix_;
+@@ -598,7 +598,7 @@ public:
+ 			RangeCache* cacheFw,
+ 			RangeCache* cacheBw,
+ 			uint32_t cacheLimit,
+-			ChunkPool *pool,
++			bowtieChunkPool *pool,
+ 			BitPairReference* refs,
+ 			vector<String<Dna5> >& os,
+ 			bool reportSe,
+@@ -1375,7 +1375,7 @@ private:
+ 	RangeCache *cacheFw_;
+ 	RangeCache *cacheBw_;
+ 	const uint32_t cacheLimit_;
+-	ChunkPool *pool_;
++	bowtieChunkPool *pool_;
+ 	BitPairReference* refs_;
+ 	vector<String<Dna5> >& os_;
+ 	const bool reportSe_;
+--- a/ebwt_search.cpp
++++ b/ebwt_search.cpp
+@@ -111,7 +111,7 @@ static bool strandFix;  // attempt to fi
+ static bool randomizeQuals; // randomize quality values
+ static bool stats; // print performance stats
+ static int chunkPoolMegabytes;    // max MB to dedicate to best-first search frames per thread
+-static int chunkSz;    // size of single chunk disbursed by ChunkPool
++static int chunkSz;    // size of single chunk disbursed by bowtieChunkPool
+ static bool chunkVerbose; // have chunk allocator output status messages?
+ static bool recal;
+ static int recalMaxCycle;
+@@ -223,7 +223,7 @@ static void resetOptions() {
+ 	randomizeQuals			= false; // randomize quality values
+ 	stats					= false; // print performance stats
+ 	chunkPoolMegabytes		= 64;    // max MB to dedicate to best-first search frames per thread
+-	chunkSz					= 256;   // size of single chunk disbursed by ChunkPool (in KB)
++	chunkSz					= 256;   // size of single chunk disbursed by bowtieChunkPool (in KB)
+ 	chunkVerbose			= false; // have chunk allocator output status messages?
+ 	recal					= false;
+ 	recalMaxCycle			= 64;
+@@ -1201,7 +1201,7 @@ static void exactSearchWorkerStateful(vo
+ 	PatternSourcePerThreadFactory* patsrcFact = createPatsrcFactory(_patsrc, tid);
+ 	HitSinkPerThreadFactory* sinkFact = createSinkFactory(_sink);
+ 
+-	ChunkPool *pool = new ChunkPool(chunkSz * 1024, chunkPoolMegabytes * 1024 * 1024, chunkVerbose);
++	bowtieChunkPool *pool = new bowtieChunkPool(chunkSz * 1024, chunkPoolMegabytes * 1024 * 1024, chunkVerbose);
+ 	UnpairedExactAlignerV1Factory alSEfact(
+ 			ebwt,
+ 			NULL,
+@@ -1385,7 +1385,7 @@ static void mismatchSearchWorkerFullStat
+ 	// Global initialization
+ 	PatternSourcePerThreadFactory* patsrcFact = createPatsrcFactory(_patsrc, tid);
+ 	HitSinkPerThreadFactory* sinkFact = createSinkFactory(_sink);
+-	ChunkPool *pool = new ChunkPool(chunkSz * 1024, chunkPoolMegabytes * 1024 * 1024, chunkVerbose);
++	bowtieChunkPool *pool = new bowtieChunkPool(chunkSz * 1024, chunkPoolMegabytes * 1024 * 1024, chunkVerbose);
+ 
+ 	Unpaired1mmAlignerV1Factory alSEfact(
+ 			ebwtFw,
+@@ -1687,7 +1687,7 @@ static void twoOrThreeMismatchSearchWork
+ 	PatternSourcePerThreadFactory* patsrcFact = createPatsrcFactory(_patsrc, tid);
+ 	HitSinkPerThreadFactory* sinkFact = createSinkFactory(_sink);
+ 
+-	ChunkPool *pool = new ChunkPool(chunkSz * 1024, chunkPoolMegabytes * 1024 * 1024, chunkVerbose);
++	bowtieChunkPool *pool = new bowtieChunkPool(chunkSz * 1024, chunkPoolMegabytes * 1024 * 1024, chunkVerbose);
+ 	Unpaired23mmAlignerV1Factory alSEfact(
+ 			ebwtFw,
+ 			&ebwtBw,
+@@ -2156,7 +2156,7 @@ static void seededQualSearchWorkerFullSt
+ 	// Global initialization
+ 	PatternSourcePerThreadFactory* patsrcFact = createPatsrcFactory(_patsrc, tid);
+ 	HitSinkPerThreadFactory* sinkFact = createSinkFactory(_sink);
+-	ChunkPool *pool = new ChunkPool(chunkSz * 1024, chunkPoolMegabytes * 1024 * 1024, chunkVerbose);
++	bowtieChunkPool *pool = new bowtieChunkPool(chunkSz * 1024, chunkPoolMegabytes * 1024 * 1024, chunkVerbose);
+ 
+ 	AlignerMetrics *metrics = NULL;
+ 	if(stats) {
+--- a/ebwt_search_backtrack.h
++++ b/ebwt_search_backtrack.h
+@@ -2724,7 +2724,7 @@ public:
+ 			bool verbose,
+ 			bool quiet,
+ 			bool mate1,
+-			ChunkPool* pool,
++			bowtieChunkPool* pool,
+ 			int *btCnt) :
+ 			SingleRangeSourceDriver<EbwtRangeSource>(
+ 					params, rs, fw, sink, sinkPt, os, verbose,
+@@ -2927,7 +2927,7 @@ public:
+ 			bool verbose,
+ 			bool quiet,
+ 			bool mate1,
+-			ChunkPool* pool,
++			bowtieChunkPool* pool,
+ 			int *btCnt = NULL) :
+ 			params_(params),
+ 			rs_(rs),
+@@ -2986,7 +2986,7 @@ protected:
+ 	bool verbose_;
+ 	bool quiet_;
+ 	bool mate1_;
+-	ChunkPool* pool_;
++	bowtieChunkPool* pool_;
+ 	int *btCnt_;
+ };
+ 
+--- a/pool.h
++++ b/pool.h
+@@ -19,13 +19,13 @@
+  * is set at construction time.  Heap memory is only allocated at
+  * construction and deallocated at destruction.
+  */
+-class ChunkPool {
++class bowtieChunkPool {
+ public:
+ 	/**
+ 	 * Initialize a new pool with an initial size of about 'bytes'
+ 	 * bytes.  Exit with an error message if we can't allocate it.
+ 	 */
+-	ChunkPool(uint32_t chunkSz, uint32_t totSz, bool verbose_) :
++	bowtieChunkPool(uint32_t chunkSz, uint32_t totSz, bool verbose_) :
+ 		verbose(verbose_), patid(0), pool_(NULL), cur_(0),
+ 		chunkSz_(chunkSz), totSz_(totSz), lim_(totSz/chunkSz),
+ 		bits_(lim_), exhaustCrash_(false),
+@@ -38,7 +38,7 @@ public:
+ 			}
+ 		} catch(std::bad_alloc& e) {
+ 			ThreadSafe _ts(&gLock);
+-			std::cerr << "Error: Could not allocate ChunkPool of "
++			std::cerr << "Error: Could not allocate bowtieChunkPool of "
+ 			          << totSz << " bytes" << std::endl;
+ 			exhausted();
+ 			throw 1; // Exit if we haven't already
+@@ -48,7 +48,7 @@ public:
+ 	/**
+ 	 * Delete all the pools.
+ 	 */
+-	~ChunkPool() {
++	~bowtieChunkPool() {
+ 		if(pool_ != NULL) delete[] pool_;
+ 	}
+ 
+@@ -189,7 +189,7 @@ public:
+ 	 * Initialize a new pool with an initial size of about 'bytes'
+ 	 * bytes.  Exit with an error message if we can't allocate it.
+ 	 */
+-	AllocOnlyPool(ChunkPool* pool, const char *name) :
++	AllocOnlyPool(bowtieChunkPool* pool, const char *name) :
+ 		pool_(pool), name_(name), curPool_(0), cur_(0)
+ 	{
+ 		assert(pool != NULL);
+@@ -388,7 +388,7 @@ protected:
+ 		lastCurInPool_.pop_back();
+ 	}
+ 
+-	ChunkPool*      pool_;
++	bowtieChunkPool*      pool_;
+ 	const char     *name_;
+ 	std::vector<T*> pools_; /// the memory pools
+ 	uint32_t        curPool_; /// pool we're current allocating from
+--- a/range_source.h
++++ b/range_source.h
+@@ -1388,7 +1388,7 @@ class PathManager {
+ 
+ public:
+ 
+-	PathManager(ChunkPool* cpool_, int *btCnt, bool verbose, bool quiet) :
++	PathManager(bowtieChunkPool* cpool_, int *btCnt, bool verbose, bool quiet) :
+ 		branchQ_(verbose, quiet),
+ 		cpool(cpool_),
+ 		bpool(cpool, "branch"),
+@@ -1637,7 +1637,7 @@ protected:
+ 
+ public:
+ 
+-	ChunkPool *cpool; // pool for generic chunks of memory
++	bowtieChunkPool *cpool; // pool for generic chunks of memory
+ 	AllocOnlyPool<Branch> bpool; // pool for allocating Branches
+ 	AllocOnlyPool<RangeState> rpool; // pool for allocating RangeStates
+ 	AllocOnlyPool<Edit> epool; // pool for allocating Edits
+@@ -1811,7 +1811,7 @@ public:
+ 		bool quiet,
+ 		bool mate1,
+ 		uint32_t minCostAdjustment,
+-		ChunkPool* pool,
++		bowtieChunkPool* pool,
+ 		int *btCnt) :
+ 		RangeSourceDriver<TRangeSource>(true, minCostAdjustment),
+ 		len_(0), mate1_(mate1),

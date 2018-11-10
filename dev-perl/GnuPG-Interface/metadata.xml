@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">GnuPG-Interface</remote-id>
+    <remote-id type="cpan-module">GnuPG::Fingerprint</remote-id>
+    <remote-id type="cpan-module">GnuPG::Handles</remote-id>
+    <remote-id type="cpan-module">GnuPG::HashInit</remote-id>
+    <remote-id type="cpan-module">GnuPG::Interface</remote-id>
+    <remote-id type="cpan-module">GnuPG::Key</remote-id>
+    <remote-id type="cpan-module">GnuPG::Options</remote-id>
+    <remote-id type="cpan-module">GnuPG::PrimaryKey</remote-id>
+    <remote-id type="cpan-module">GnuPG::PublicKey</remote-id>
+    <remote-id type="cpan-module">GnuPG::Revoker</remote-id>
+    <remote-id type="cpan-module">GnuPG::SecretKey</remote-id>
+    <remote-id type="cpan-module">GnuPG::Signature</remote-id>
+    <remote-id type="cpan-module">GnuPG::SubKey</remote-id>
+    <remote-id type="cpan-module">GnuPG::UserAttribute</remote-id>
+    <remote-id type="cpan-module">GnuPG::UserId</remote-id>
+  </upstream>
+</pkgmetadata>

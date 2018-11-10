@@ -1,0 +1,18 @@
+--- spec/unit/network/http/api/indirected_routes_spec.rb  2016-10-11 13:24:09.500955469 -0500
++++ spec/unit/network/http/api/indirected_routes_spec.rb.new  2016-10-11 13:24:00.501700977 -0500
+@@ -139,15 +139,6 @@
+       indirection, _, _, _ = handler.uri2indirection("GET", uri_escaped, params)
+     end
+ 
+-    it "should not pass through an environment to check_authorization and fail if the environment is unknown" do
+-      handler.expects(:check_authorization).with(anything,
+-                                                 anything,
+-                                                 Not(has_entry(:environment)))
+-      expect(lambda { handler.uri2indirection("GET",
+-                                              "#{master_url_prefix}/node/bar",
+-                                              {:environment => 'bogus'}) }).to raise_error(not_found_error)
+-    end
+-
+     it "should not URI unescape the indirection key as passed through to a call to check_authorization" do
+       handler.expects(:check_authorization).with(anything,
+                                                  anything,

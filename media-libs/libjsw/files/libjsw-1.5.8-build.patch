@@ -1,0 +1,110 @@
+--- libjsw/Makefile.old	2010-03-22 17:03:21.000000000 +0100
++++ libjsw/Makefile	2010-03-22 17:07:02.000000000 +0100
+@@ -51,10 +51,10 @@
+ #                               to debug the program.
+ #
+ 
+-CFLAGS = -Wall -O2 -g
+-CFLAGS += -ffast-math
++CFLAGS += -fPIC
++CXXFLAGS += -fPIC
+ 
+-CPPFLAGS = -D__cplusplus
++CPPFLAGS += -D__cplusplus
+ 
+ 
+ # ########################################################################
+@@ -82,11 +82,9 @@
+ OBJ_C   = $(SRC_C:.c=.o)
+ OBJ_CPP = $(SRC_CPP:.cpp=.o)
+ .c.o:
+-	@echo "Compiling module $*.o"
+-	@+$(CC) -c $*.c $(INC_DIRS) $(CFLAGS)
++	$(CC) -c $*.c $(INC_DIRS) $(CFLAGS)
+ .cpp.o:
+-	@echo "Compiling module $*.o"
+-	@+$(CPP) -c $*.cpp $(INC_DIRS) $(CFLAGS) $(CPPFLAGS)
++	$(CPP) -c $*.cpp $(INC_DIRS) $(CXXFLAGS) $(CPPFLAGS)
+ 
+ 
+ # ########################################################################
+@@ -95,13 +93,7 @@
+ $(LIB): prebuild modules postbuild
+ 
+ modules: $(OBJ_C) $(OBJ_CPP)
+-	@echo  -n "Linking modules..."
+-	@$(CC) $(OBJ_C) $(OBJ_CPP) -Wl,-soname=$(LIB) -shared -o $(LIB) $(LIBS) $(LIB_DIRS)
+-	@echo -n "   "
+-	@$(RM) $(RMFLAGS) $(LIBPFX).so
+-	@$(LINK) -s $(LIB) $(LIBPFX).so
+-	@$(LINK) -s $(LIB) $(LIBPFX).so.1
+-	@-$(LS) $(LSFLAGS) $(LIB)
++	$(CPP) $(OBJ_C) $(OBJ_CPP) -o $(LIB) $(LDFLAGS) $(LIBS) $(LIB_DIRS)
+ 
+ prebuild:
+ 	@echo "Building library \"$(LIB)\"..."
+--- jscalibrator/Makefile.old	2010-03-22 17:08:07.000000000 +0100
++++ jscalibrator/Makefile	2010-03-22 17:11:26.000000000 +0100
+@@ -59,9 +59,6 @@
+ #CFLAGS = -Wall -O -g \
+ #         `gtk-config --cflags`
+ 
+-CFLAGS = -Wall -O6 -fomit-frame-pointer -funroll-loops -ffast-math \
+-         `gtk-config --cflags`
+-
+ CPPFLAGS = -D__cplusplus
+ 
+ 
+@@ -76,7 +73,7 @@
+ #   to the LIB line depending on what you have set in the CFLAGS line
+ #   farther above.
+ #
+-LIBS = -ljsw `gtk-config --libs`
++LIBS := -ljsw $(shell gtk-config --libs)
+ 
+ # Library Directories:
+ #
+@@ -85,7 +82,7 @@
+ #   Each argument is of the format -L<dir> where <dir> is the full
+ #   path to the directory.
+ #
+-LIB_DIRS =
++LIB_DIRS = -L../libjsw
+ 
+ # Header File Directories:
+ #
+@@ -95,7 +92,7 @@
+ #   Each argument is of the format -I<dir> where <dir> is the full
+ #   path to the directory.
+ #
+-INC_DIRS =
++INC_DIRS = $(shell gtk-config --cflags) -I../libjsw
+ 
+ 
+ # ########################################################################
+@@ -117,11 +114,9 @@
+ OBJ_C   = $(SRC_C:.c=.o)
+ OBJ_CPP = $(SRC_CPP:.cpp=.o)
+ .c.o:
+-	@echo "Compiling module $*.o"
+-	@+$(CC) -c $*.c $(INC_DIRS) $(CFLAGS)
++	$(CC) -c $*.c $(INC_DIRS) $(CFLAGS)
+ .cpp.o:
+-	@echo "Compiling module $*.o"
+-	@+$(CPP) -c $*.cpp $(INC_DIRS) $(CFLAGS) $(CPPFLAGS)
++	$(CPP) -c $*.cpp $(INC_DIRS) $(CXXFLAGS) $(CPPFLAGS)
+ 
+ 
+ # ########################################################################
+@@ -130,10 +125,7 @@
+ $(BIN): prebuild modules postbuild
+ 
+ modules: $(OBJ_C) $(OBJ_CPP)
+-	@echo  -n "Linking modules..."
+-	@$(CC) $(OBJ_C) $(OBJ_CPP) -o $(BIN) $(LIBS) $(LIB_DIRS)
+-	@echo -n "   "
+-	@-$(LS) $(LSFLAGS) $(BIN)
++	$(CC) $(OBJ_C) $(OBJ_CPP) -o $(BIN) $(LDFLAGS) $(LIB_DIRS) $(LIBS)
+ 
+ prebuild:
+ 	@echo "Building program \"$(BIN)\"..."

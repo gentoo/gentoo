@@ -1,0 +1,1 @@
+d /var/run/pulse 0755 pulse audio -

@@ -1,0 +1,20 @@
+diff -ru confix-9999.orig/libconfix/plugins/automake/makefile_am.py confix-9999/libconfix/plugins/automake/makefile_am.py
+--- confix-9999.orig/libconfix/plugins/automake/makefile_am.py	2009-10-30 13:20:42.106291175 +0100
++++ confix-9999/libconfix/plugins/automake/makefile_am.py	2009-10-30 13:23:39.562354663 +0100
+@@ -472,7 +472,15 @@
+         
+         # register automatic tests and set their environment
+ 
+-        tests = self.dir_primary('check', 'PROGRAMS') + \
++        test_tmp = self.dir_primary('check', 'PROGRAMS')
++        count = 0
++        for prog in test_tmp:
++            prog += "$(EXEEXT)"
++            test_tmp[count] = prog
++            count += 1
++            pass
++
++        tests = test_tmp + \
+                 self.dir_primary('check', 'SCRIPTS')
+         if len(tests):
+             lines.extend(makefile.List(name='TESTS', values=tests, mitigate=True).lines())

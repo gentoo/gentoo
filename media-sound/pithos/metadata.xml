@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<use>
+		<flag name="appindicator">Enable usage of appindicator to export menu options in to unity</flag>
+		<flag name="keybinder">Use keybinder to enable global key bindings</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">pithos/pithos</remote-id>
+	</upstream>
+</pkgmetadata>

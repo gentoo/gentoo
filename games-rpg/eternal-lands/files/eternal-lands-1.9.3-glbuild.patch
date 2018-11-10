@@ -1,0 +1,25 @@
+--- gl_init.c	2012-02-13 22:01:54.000000000 -0500
++++ gl_init.c	2012-12-02 18:09:41.274014922 -0500
+@@ -27,6 +27,8 @@
+ #include "fsaa/fsaa.h"
+ #endif	/* FSAA */
+ 
++#define APIENTRY
++
+ Uint32 flags;
+ 
+ int window_width=640;
+--- platform.h	2012-02-13 22:01:54.000000000 -0500
++++ platform.h	2012-12-02 17:32:46.017627957 -0500
+@@ -87,9 +87,10 @@
+  #define APIENTRYP *
+ #elif !defined(BSD)
+  #define GL_GLEXT_LEGACY
++ #include <GL/glew.h>
+  #include <GL/gl.h>
+  #include <GL/glu.h>
+- #include "glext.h"
++ #include <GL/glext.h>
+ #else // BSD
+  #include <GL/gl.h>
+  #include <GL/glu.h>

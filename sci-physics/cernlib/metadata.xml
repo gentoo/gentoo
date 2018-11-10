@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-physics@gentoo.org</email>
+    <name>Gentoo Physics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  The CERN Program Library is a large collection of general purpose
+  libraries and modules maintained and offered in both source and
+  object code form on the CERN central computers. Most of these
+  programs were developed at CERN and are therefore oriented towards
+  the needs of a physics research laboratory that is general
+  mathematics, data analysis, detectors simulation, data-handling
+  etc... applicable to a wide range of problems.
+</longdescription>
+</pkgmetadata>

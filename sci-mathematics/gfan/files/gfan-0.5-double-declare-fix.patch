@@ -1,0 +1,12 @@
+diff -U 3 -dHrN gfan0.5/app_minkowski.cpp gfan0.5-new/app_minkowski.cpp
+--- gfan0.5/app_minkowski.cpp	2011-01-23 12:21:47.000000000 -0500
++++ gfan0.5-new/app_minkowski.cpp	2012-06-29 15:23:48.604280985 -0400
+@@ -160,7 +160,7 @@
+ 	    //log0 fprintf(Stderr,"4");
+ 	    f.insert(c);
+ 	    //log0 fprintf(Stderr,"5\n");
+-	    static int i;
++	    //	    static int i;
+ 	    //log0 fprintf(Stderr,"inserted:%i\n",++i);
+ 	  }
+ 	log1 fprintf(Stderr,"Resolving symmetries.\n");

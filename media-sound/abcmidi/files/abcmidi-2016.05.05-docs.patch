@@ -1,0 +1,18 @@
+Install docs via Gentoo mechanisms instead of the build system.
+
+--- abcmidi/Makefile.in
++++ abcmidi/Makefile.in
+@@ -143,13 +143,6 @@
+ 	$(INSTALL) -d $(DESTDIR)$(bindir)
+ 	$(INSTALL) -m 755 ${binaries} $(DESTDIR)$(bindir)
+ 
+-	# install documentation
+-	$(INSTALL) -d $(DESTDIR)${docdir}
+-	$(INSTALL)  -m 644 doc/*.txt $(DESTDIR)$(docdir)
+-	$(INSTALL)  -m 644 doc/AUTHORS $(DESTDIR)$(docdir)
+-	$(INSTALL)  -m 644 doc/CHANGES $(DESTDIR)$(docdir)
+-	$(INSTALL)  -m 644 VERSION $(DESTDIR)$(docdir)
+-
+ 	# install manpages
+ 	$(INSTALL)  -d $(DESTDIR)${mandir}
+ 	$(INSTALL)  -m 644 doc/*.1 $(DESTDIR)$(mandir)

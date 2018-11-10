@@ -1,0 +1,120 @@
+--- a/sn_cfgfile.h
++++ b/sn_cfgfile.h
+@@ -10,3 +10,4 @@
+ void make_nr_dot (char *);
+ void interprete_line (char *);
+ void read_cfg_file (char *);    
++char *strlower (char *);
+--- a/sn_structs.h
++++ b/sn_structs.h
+@@ -67,7 +67,7 @@
+ struct snif_mask                                         /* struct for mask */
+   {
+   _32_bit source_ip, destination_ip;
+-  _32_bit short source_port, destination_port;
++  _32_bit source_port, destination_port;
+   };
+ 
+ /* (packet generation) */
+--- a/sn_analyse.c
++++ b/sn_analyse.c
+@@ -1,6 +1,9 @@
+ /* Analyse traffic for logging mode                                      */
+ /*   - by: Brecht Claerhout                                              */
+ 
++#include <stdlib.h>
++#include <string.h>
++
+ const unsigned char *data;
+ memcpy(&tcphead,header,sizeof(struct TCP_header));
+ 	  	
+--- a/sn_cfgfile.c
++++ b/sn_cfgfile.c
+@@ -3,6 +3,11 @@
+ /*   - improvements: Shudoh Kazuyuki                                      */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include "sn_interface.h"
++#include <string.h>
++#include <ctype.h>
++#include <time.h>
+ #include <netdb.h>	                           /* for getservbyname() */
+ 
+ #include "sn_config.h"
+--- a/sn_conn_desc.c
++++ b/sn_conn_desc.c
+@@ -1,6 +1,8 @@
+ /* Connection description detection file                                 */
+ /*   - by: Brecht Claerhout                                              */
+ 
++#include <ctype.h>
++#include <string.h>
+ 
+ /* Simple PORT BASED detection */
+ 
+--- a/sn_generation.c
++++ b/sn_generation.c
+@@ -6,12 +6,16 @@
+ #ifdef INCLUDE_INTERFACE
+ #ifdef GENERATION
+ #include <unistd.h>
++#include <stdlib.h>
++#include <string.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>     
+ #include "sn_curses.h"
+ #include "sn_defines.h"
+ #include "sn_structs.h"
+ #include "sn_generation.h"  
++#include "sn_interface.h" /* input_field() */
++#include "sn_packets.h" /* in_cksum() */
+ 
+ extern volatile int screen_busy;
+ 
+--- a/sniffit.0.3.7.c
++++ b/sniffit.0.3.7.c
+@@ -4,6 +4,9 @@
+ #include "sn_config.h"		/* Config header file */
+ 
+ #include <unistd.h>
++#include <stdlib.h>
++#include <string.h>
++#include <ctype.h>
+ #include <signal.h>
+ #include <stdio.h>
+ #include <fcntl.h>
+--- a/sn_interface.c
++++ b/sn_interface.c
+@@ -6,6 +6,9 @@
+ #ifdef INCLUDE_INTERFACE
+ #include <signal.h>
+ #include <unistd.h>
++#include <stdlib.h>
++#include <string.h>
++#include <ctype.h>
+ #include <sys/ipc.h>
+ #include <sys/shm.h>       
+ #include "sn_curses.h" 
+--- a/sn_logfile.c
++++ b/sn_logfile.c
+@@ -4,6 +4,9 @@
+ #include "sn_config.h"
+ 
+ #include <stdio.h>
++#include <stdlib.h> /* exit() */
++#include <string.h> /* strcpy() */
++#include <time.h> /* time() ctime() */
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ #include "sn_defines.h"
+--- a/sn_packets.c
++++ b/sn_packets.c
+@@ -5,6 +5,7 @@
+ #include "sn_defines.h"
+ #include "sn_structs.h"
+ #include <netinet/in.h>
++#include <string.h> /* memcpy() strcpy() */
+ 
+ extern int PROTO_HEAD;
+ extern char NO_CHKSUM;

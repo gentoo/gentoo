@@ -1,0 +1,24 @@
+commit 1cbb888d55388d6bb88141c946bd6993b3e9872f
+Author: Ilya Tumaykin <itumaykin@gmail.com>
+Date:   Tue May 23 17:24:29 2017 +0300
+
+db: add missing include
+
+url_fclose() function used in this file is defined in fopen.h.
+See https://sourceforge.net/p/aide/bugs/99/
+
+diff --git a/src/db.c b/src/db.c
+index dd133d4..858240d 100644
+--- a/src/db.c
++++ b/src/db.c
+@@ -28,6 +28,10 @@
+ #include "db_disk.h"
+ #include "md.h"
+
++#ifdef WITH_CURL
++#include "fopen.h"
++#endif
++
+ #ifdef WITH_PSQL
+ #include "db_sql.h"
+ #endif

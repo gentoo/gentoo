@@ -1,0 +1,121 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Mark tests that are known to fail with matplotlib-1.5
+--- a/aplpy/tests/test_images.py
++++ b/aplpy/tests/test_images.py
+@@ -61,6 +61,8 @@
+ 
+ class TestBasic(BaseImageTests):
+ 
++# see https://github.com/aplpy/aplpy/issues/278
++    @pytest.mark.xfail()
+     # Test for showing grayscale
+     def test_basic_image(self, generate):
+         f = FITSFigure(self.filename_2)
+@@ -68,6 +70,8 @@
+         self.generate_or_test(generate, f, 'basic_image.png')
+         f.close()
+ 
++# see https://github.com/aplpy/aplpy/issues/278
++    @pytest.mark.xfail()
+     def test_ticks_labels_options(self, generate):
+         f = FITSFigure(self.filename_2)
+         f.ticks.set_color('black')
+@@ -84,6 +88,8 @@
+         self.generate_or_test(generate, f, 'tick_labels_options.png')
+         f.close()
+ 
++# see https://github.com/aplpy/aplpy/issues/278
++    @pytest.mark.xfail()
+     # Test for showing colorscale
+     def test_show_colorbar_scalebar_beam(self, generate):
+         f = FITSFigure(self.filename_1)
+@@ -96,6 +102,8 @@
+         self.generate_or_test(generate, f, 'colorbar_scalebar_beam.png')
+         f.close()
+ 
++# see https://github.com/aplpy/aplpy/issues/278
++    @pytest.mark.xfail()
+     # Test for overlaying shapes
+     def test_overlay_shapes(self, generate):
+         f = FITSFigure(self.filename_1)
+@@ -112,6 +120,8 @@
+         self.generate_or_test(generate, f, 'overlay_shapes.png')
+         f.close()
+ 
++# see https://github.com/aplpy/aplpy/issues/278
++    @pytest.mark.xfail()
+     # Test for grid
+     def test_grid(self, generate):
+         f = FITSFigure(self.filename_1)
+@@ -125,6 +135,8 @@
+         self.generate_or_test(generate, f, 'grid.png')
+         f.close()
+ 
++# see https://github.com/aplpy/aplpy/issues/278
++    @pytest.mark.xfail()
+     # Test recenter
+     def test_recenter(self, generate):
+         f = FITSFigure(self.filename_2)
+@@ -135,6 +147,8 @@
+         self.generate_or_test(generate, f, 'recenter.png')
+         f.close()
+ 
++# see https://github.com/aplpy/aplpy/issues/278
++    @pytest.mark.xfail()
+     # Test overlaying contours
+     def test_contours(self, generate):
+         data = np.arange(256).reshape((16, 16))
+@@ -144,6 +158,8 @@
+         self.generate_or_test(generate, f, 'contours.png')
+         f.close()
+ 
++# see https://github.com/aplpy/aplpy/issues/278
++    @pytest.mark.xfail()
+     # Test cube slice
+     def test_cube_slice(self, generate):
+         f = FITSFigure(self.filename_3, dimensions=[2, 0], slices=[10])
+--- a/aplpy/tests/test_rgb.py
++++ b/aplpy/tests/test_rgb.py
+@@ -6,6 +6,7 @@
+ 
+ import numpy as np
+ from astropy.io import fits
++from astropy.tests.helper import pytest
+ 
+ from .. import FITSFigure
+ from ..rgb import make_rgb_image
+@@ -17,6 +18,8 @@
+ 
+ class TestRGB(BaseImageTests):
+ 
++# see https://github.com/aplpy/aplpy/issues/278
++    @pytest.mark.xfail()
+     def test_rgb(self, generate, tmpdir):
+ 
+         # Regression test to check that RGB recenter works properly
+--- a/aplpy/tests/test_vectors.py
++++ b/aplpy/tests/test_vectors.py
+@@ -1,4 +1,5 @@
+ import numpy as np
++from astropy.tests.helper import pytest
+ 
+ from ..core import FITSFigure
+ 
+@@ -15,6 +16,8 @@
+ 
+ class TestVectors(BaseImageTests):
+ 
++# see https://github.com/aplpy/aplpy/issues/278
++    @pytest.mark.xfail()
+     def test_default(self, generate):
+         f = FITSFigure(IMAGE, figsize=(4,4))
+         f.show_grayscale()
+@@ -22,6 +25,8 @@
+         self.generate_or_test(generate, f, 'vectors_default.png', tolerance=2.5)
+         f.close()
+ 
++# see https://github.com/aplpy/aplpy/issues/278
++    @pytest.mark.xfail()
+     def test_step_scale(self, generate):
+         f = FITSFigure(IMAGE, figsize=(4,4))
+         f.show_grayscale()

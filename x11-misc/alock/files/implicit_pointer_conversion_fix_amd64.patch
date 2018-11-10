@@ -1,0 +1,13 @@
+Index: alock-svn-94/src/auth_passwd.c
+===================================================================
+--- alock-svn-94.orig/src/auth_passwd.c
++++ alock-svn-94/src/auth_passwd.c
+@@ -43,7 +43,7 @@
+ \* ---------------------------------------------------------------- */
+ 
+ static struct passwd* pwd_entry = NULL;
+-
++char * crypt (const char *key, const char *salt);
+ static int alock_auth_passwd_init(const char* args) {
+ 
+     errno = 0;

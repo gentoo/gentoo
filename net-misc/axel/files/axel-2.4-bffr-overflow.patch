@@ -1,0 +1,16 @@
+ http.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/http.c b/http.c
+index 5d64e9b..db91701 100644
+--- a/http.c
++++ b/http.c
+@@ -164,7 +164,7 @@ int http_exec( http_t *conn )
+ 		{
+ 			i ++;
+ 		}
+-		strncat( conn->headers, s, MAX_QUERY );
++		strncat( conn->headers, s, MAX_QUERY - 1);
+ 	}
+ 
+ #ifdef DEBUG

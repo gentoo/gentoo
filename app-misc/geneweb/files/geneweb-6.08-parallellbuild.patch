@@ -1,0 +1,31 @@
+--- geneweb-6.08/wserver/Makefile.old	2017-01-09 21:15:00.328750224 +0100
++++ geneweb-6.08/wserver/Makefile	2017-01-09 21:15:16.825751748 +0100
+@@ -11,6 +11,8 @@
+ 	camlp5r pa_extend.cmo q_MLast.cmo -o pa_macro5.ppo pa_macro5.ml
+ 	ocamlc -c -I "`camlp5 -where`" -impl pa_macro5.ppo
+ 
++wserver.cmi: pa_macro5.cmo
++
+ depend:
+ 	TOP=.. ../tools/camlp5_depend.sh $(OCAMLI) *.ml* > .depend
+ 
+--- geneweb-6.08/src/.depend.old	2017-01-09 21:36:25.644868941 +0100
++++ geneweb-6.08/src/.depend	2017-01-09 21:37:04.994872576 +0100
+@@ -39,7 +39,7 @@
+ check_base.cmx: check.cmx def.cmi gwdb.cmx secure.cmx
+ compilation.cmo: def.cmi util.cmi
+ compilation.cmx: def.cmi util.cmx
+-config.cmi: def.cmi
++config.cmi: def.cmi gwdb.cmi
+ consang.cmo: adef.cmi def.cmi gwdb.cmi consang.cmi
+ consang.cmx: adef.cmx def.cmi gwdb.cmx consang.cmi
+ consang.cmi: def.cmi gwdb.cmi
+@@ -311,7 +311,7 @@
+     num.cmi perso.cmi ../wserver/wserver.cmi
+ searchName.cmx: adef.cmx buff.cmx checkItem.cmx config.cmi date.cmx def.cmi \
+     gutil.cmx gwdb.cmx hutil.cmx mutil.cmx name.cmx util.cmx \
+-    num.cmx perso.cmx ../wserver/wserver.cmx
++    num.cmx perso.cmx ../wserver/wserver.cmx some.cmo
+ secure.cmo: secure.cmi
+ secure.cmx: secure.cmi
+ select.cmo: adef.cmi def.cmi gutil.cmi gwdb.cmi name.cmi

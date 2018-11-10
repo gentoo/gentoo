@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">File-Listing</remote-id>
+		<remote-id type="cpan-module">File::Listing</remote-id>
+		<remote-id type="cpan-module">File::Listing::apache</remote-id>
+		<remote-id type="cpan-module">File::Listing::dosftp</remote-id>
+		<remote-id type="cpan-module">File::Listing::netware</remote-id>
+		<remote-id type="cpan-module">File::Listing::unix</remote-id>
+		<remote-id type="cpan-module">File::Listing::vms</remote-id>
+	</upstream>
+</pkgmetadata>

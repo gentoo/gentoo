@@ -1,0 +1,21 @@
+diff -up ./denyhosts.py.orig ./denyhosts.py
+--- ./denyhosts.py.orig	2012-01-30 13:14:41.146715839 -0600
++++ ./denyhosts.py	2012-01-30 14:45:14.372539341 -0600
+@@ -1,5 +1,6 @@
+ #!/usr/bin/env python
+ import os
++import platform
+ import sys
+ 
+ import DenyHosts.python_version
+@@ -107,6 +108,10 @@ if __name__ == '__main__':
+             print "DenyHosts version:", VERSION
+             sys.exit(0)
+ 
++    # This is generally expected to be in the environment, but there's no
++    # non-hackish way to get systemd to set it, so just hack it in here.
++    os.environ['HOSTNAME'] = platform.node()
++
+     prefs = Prefs(config_file)    
+             
+     first_time = 0

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+"Battle Tanks" is a funny battle on your desk, where you can choose one of three
+vehicles and eliminate your enemy using the whole arsenal of weapons. It has
+original cartoon-like graphics and cool music, it's fun and dynamic, it has
+several network modes for deathmatch and cooperative --- what else is needed to
+have fun with your friends? And all is packed and ready for you in "Battle
+Tanks".
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">btanks</remote-id>
+	</upstream>
+</pkgmetadata>

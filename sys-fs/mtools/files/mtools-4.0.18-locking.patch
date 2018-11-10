@@ -1,0 +1,163 @@
+https://crbug.com/508713
+https://lists.gnu.org/archive/html/info-mtools/2016-11/msg00000.html
+
+From 04df65ed797e47da5b423c7f9aec99d82dfde400 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Wed, 7 Sep 2016 12:33:42 -0400
+Subject: [PATCH] add support for retrying device locking
+
+When running syslinux's install phase, it will run a bunch of mtools
+commands in quick succession.  If you're on a fast enough machine, it
+can often fail with errors like:
+plain floppy: device "/proc/2908/fd/3" busy (Resource temporarily unavailable):
+Cannot initialize 'S:'
+Bad target s:/ldlinux.sys
+syslinux: failed to create ldlinux.sys
+
+The issue is that after some of the mtools calls, the kernel notices
+that the fs image has changed, so it notifies userspace.  This wakes
+up udev which grabs a lock on the device to rescan it for changes
+(e.g. updated fs metadata like UUID).  The udev phase does not finish
+before syslinux fires off another mtools call which means mtools now
+fails with a locking error.
+
+You can recreate this with a simple test:
+- loop mount a fat fs image
+- open the loop device for writing
+- generate a mtools.conf pointing the file to /proc/$pid/fd/$fd
+- run mattrib && mcopy
+- see udev open/lock the loop device after mattrib runs to probe it
+- see mcopy fail because udev is still holding the lock
+
+To fix things, we teach mtools to retry its locking calls temporarily.
+If it still fails after a timeout, we abort like normal.  We also make
+this behavior configurable by adding a new global timeout option.
+---
+ config.c      |  2 ++
+ mtools.h      |  1 +
+ mtools.texi   |  7 +++++++
+ mtools.tmpl.5 |  4 ++++
+ plain_io.c    | 10 ++++++++++
+ xdf_io.c      | 11 +++++++++++
+ 6 files changed, 35 insertions(+)
+
+diff --git a/config.c b/config.c
+index f08688399d1d..ea4178452f6a 100644
+--- a/config.c
++++ b/config.c
+@@ -63,6 +63,7 @@ unsigned int mtools_no_vfat=0;
+ unsigned int mtools_numeric_tail=1;
+ unsigned int mtools_dotted_dir=0;
+ unsigned int mtools_twenty_four_hour_clock=1;
++unsigned int mtools_lock_timeout=30;
+ unsigned int mtools_default_codepage=850;
+ const char *mtools_date_string="yyyy-mm-dd";
+ char *country_string=0;
+@@ -90,6 +91,7 @@ static switches_t global_switches[] = {
+       (caddr_t) &mtools_twenty_four_hour_clock, T_UINT },
+     { "MTOOLS_DATE_STRING",
+       (caddr_t) &mtools_date_string, T_STRING },
++    { "MTOOLS_LOCK_TIMEOUT", (caddr_t) &mtools_lock_timeout, T_UINT },
+     { "DEFAULT_CODEPAGE", (caddr_t) &mtools_default_codepage, T_UINT }
+ };
+ 
+diff --git a/mtools.h b/mtools.h
+index ef98e942ee2c..fa8c1bdc8a1b 100644
+--- a/mtools.h
++++ b/mtools.h
+@@ -188,6 +188,7 @@ extern unsigned int mtools_ignore_short_case;
+ extern unsigned int mtools_no_vfat;
+ extern unsigned int mtools_numeric_tail;
+ extern unsigned int mtools_dotted_dir;
++extern unsigned int mtools_lock_timeout;
+ extern unsigned int mtools_twenty_four_hour_clock;
+ extern const char *mtools_date_string;
+ extern unsigned int mtools_rate_0, mtools_rate_any;
+diff --git a/mtools.texi b/mtools.texi
+index 1085789c1cb6..1c7ad94d40f9 100644
+--- a/mtools.texi
++++ b/mtools.texi
+@@ -658,6 +658,10 @@ DOSEMU image files.
+ @vindex MTOOLS_FAT_COMPATIBILITY
+ @vindex MTOOLS_LOWER_CASE
+ @vindex MTOOLS_NO_VFAT
++@vindex MTOOLS_DOTTED_DIR
++@vindex MTOOLS_NAME_NUMERIC_TAIL
++@vindex MTOOLS_TWENTY_FOUR_HOUR_CLOCK
++@vindex MTOOLS_LOCK_TIMEOUT
+ @cindex FreeDOS
+ 
+ Global flags may be set to 1 or to 0.
+@@ -692,6 +696,9 @@ clash would have happened.
+ @item MTOOLS_TWENTY_FOUR_HOUR_CLOCK
+ If 1, uses the European notation for times (twenty four hour clock),
+ else uses the UK/US notation (am/pm)
++@item MTOOLS_LOCK_TIMEOUT
++How long, in seconds, to wait for a locked device to become free.
++Defaults to 30.
+ @end table
+ 
+ Example:
+diff --git a/mtools.tmpl.5 b/mtools.tmpl.5
+index 565fdd7513aa..8cdaaf2ba929 100644
+--- a/mtools.tmpl.5
++++ b/mtools.tmpl.5
+@@ -106,6 +106,10 @@ clash would have happened.
+ \&\fR\&\f(CWMTOOLS_TWENTY_FOUR_HOUR_CLOCK\fR\ 
+ If 1, uses the European notation for times (twenty four hour clock),
+ else uses the UK/US notation (am/pm)
++.TP
++\&\fR\&\f(CWMTOOLS_LOCK_TIMEOUT\fR\ 
++How long, in seconds, to wait for a locked device to become free.
++Defaults to 30.
+ .PP
+ Example:
+ Inserting the following line into your configuration file instructs
+diff --git a/plain_io.c b/plain_io.c
+index c9d8418b8b4d..3dc035c9ce92 100644
+--- a/plain_io.c
++++ b/plain_io.c
+@@ -632,7 +632,17 @@ APIRET rc;
+ #ifndef __CYGWIN__
+ #ifndef OS_mingw32msvc
+ 	/* lock the device on writes */
++ retry:
+ 	if (locked && lock_dev(This->fd, mode == O_RDWR, dev)) {
++		/* retry the lock in case another system process (e.g. udev)
++		 * has temporarily locked the device.  this happens when you
++		 * run multiple mtools commands at once which triggers the
++		 * system to lock/rescan/unlock. */
++		static int retries = 0;
++		if (errno == EAGAIN && retries++ < mtools_lock_timeout * 10) {
++			usleep(100);
++			goto retry;
++		}
+ 		if(errmsg)
+ #ifdef HAVE_SNPRINTF
+ 			snprintf(errmsg,199,
+diff --git a/xdf_io.c b/xdf_io.c
+index f0db3b3d9f38..8f64f6348f0c 100644
+--- a/xdf_io.c
++++ b/xdf_io.c
+@@ -638,7 +638,18 @@ Stream_t *XdfOpen(struct device *dev, char *name,
+ 		goto exit_2;
+ 
+ 	/* lock the device on writes */
++ retry:
+ 	if (lock_dev(This->fd, mode == O_RDWR, dev)) {
++		/* retry the lock in case another system process (e.g. udev)
++		 * has temporarily locked the device.  this happens when you
++		 * run multiple mtools commands at once which triggers the
++		 * system to lock/rescan/unlock. */
++		static int retries = 0;
++		if (errno == EAGAIN && retries++ < mtools_lock_timeout * 10) {
++			usleep(100);
++			goto retry;
++		}
++
+ #ifdef HAVE_SNPRINTF
+ 		snprintf(errmsg,199,"xdf floppy: device \"%s\" busy:", 
+ 			dev->name);
+-- 
+2.9.0
+

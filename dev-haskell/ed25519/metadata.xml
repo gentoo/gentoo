@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package provides a simple, fast, self-contained copy of the
+		Ed25519 public-key signature system with a clean interface. It also
+		includes support for detached signatures, and thorough documentation
+		on the design and implementation, including usage guidelines.
+	</longdescription>
+</pkgmetadata>

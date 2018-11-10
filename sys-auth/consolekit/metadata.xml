@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>perfinion@gentoo.org</email>
+		<name>Jason Zaman</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>freedesktop-bugs@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="cgroups">Use the kernel to track processes instead of the session cookie.</flag>
+		<flag name="evdev">For handling VT switching with a session controller.</flag>
+		<flag name="pm-utils">Adds support for suspend/resume using <pkg>sys-power/pm-utils</pkg></flag>
+		<flag name="policykit">Use the PolicyKit framework (<pkg>sys-auth/polkit</pkg>) to get authorization for suspend/shutdown.</flag>
+		<flag name="systemd-units">Install systemd unit files to replace the modern functionality of logind in <pkg>sys-apps/systemd</pkg>. Not recommended.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ConsoleKit2/ConsoleKit2</remote-id>
+		<remote-id type="launchpad">debian</remote-id>
+	</upstream>
+</pkgmetadata>

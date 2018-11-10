@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>perfinion@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		A high performance, open-source universal RPC framework
+	</longdescription>
+	<use>
+		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
+		<flag name="tools">Install gRPC python tools</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">grpc/grpc</remote-id>
+	</upstream>
+</pkgmetadata>

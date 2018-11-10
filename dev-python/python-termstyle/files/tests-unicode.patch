@@ -1,0 +1,10 @@
+diff --git a/test2.py b/test2.py
+index 2d84c37..1331545 100755
+--- a/test2.py
++++ b/test2.py
+@@ -2,4 +2,4 @@
+ 
+ from termstyle import *
+ 
+-print green(u"unicod\xe9!")
++print green(u"unicod\xe9!".encode('utf-8'))

@@ -1,0 +1,21 @@
+diff -Naur renaissance-0.8.1_pre20070522.orig/Documentation/GNUmakefile renaissance-0.8.1_pre20070522/Documentation/GNUmakefile
+--- renaissance-0.8.1_pre20070522.orig/Documentation/GNUmakefile	2007-10-17 14:32:41.000000000 +0200
++++ renaissance-0.8.1_pre20070522/Documentation/GNUmakefile	2007-10-17 14:33:18.000000000 +0200
+@@ -8,6 +8,7 @@
+ macros.tex \
+ autolayout.tex \
+ gsmarkup.tex
++manual_DOC_INSTALL_DIR = Developer/Renaissance
+ 
+ SUBPROJECTS = Tutorials
+ 
+diff -Naur renaissance-0.8.1_pre20070522.orig/Documentation/Tutorials/Renaissance/GNUmakefile renaissance-0.8.1_pre20070522/Documentation/Tutorials/Renaissance/GNUmakefile
+--- renaissance-0.8.1_pre20070522.orig/Documentation/Tutorials/Renaissance/GNUmakefile	2007-10-17 14:32:41.000000000 +0200
++++ renaissance-0.8.1_pre20070522/Documentation/Tutorials/Renaissance/GNUmakefile	2007-10-17 14:33:07.000000000 +0200
+@@ -3,5 +3,6 @@
+ DOCUMENT_NAME = Renaissance
+ 
+ Renaissance_LATEX_FILES = Renaissance.tex
++Renaissance_DOC_INSTALL_DIR = Developer/Renaissance
+ 
+ include $(GNUSTEP_MAKEFILES)/documentation.make

@@ -1,0 +1,7 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Tobias Klausmann <klausman@gentoo.org> 2014-12-04
+# The Firefox/Mozilla build system is broken in regards to linking the shipped
+# ICU library. Bug 529944
+www-client/firefox system-icu

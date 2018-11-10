@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		@test-framework-th@ contains two interesting functions: @defaultMainGenerator@ and @testGroupGenerator@.
+		
+		@defaultMainGenerator@ will extract all functions beginning with case_ or prop_ in the module and put them in a testGroup.
+		
+		&gt; -- file SomeModule.hs
+		&gt; ( -# LANGUAGE TemplateHaskell #- )
+		&gt; module SomeModule where
+		&gt; import Test.Framework.TH
+		&gt; import Test.Framework
+		&gt; import Test.HUnit
+		&gt; import Test.Framework.Providers.HUnit
+		&gt; import Test.Framework.Providers.QuickCheck2
+		&gt;
+		&gt; -- observe this line!
+		&gt; main = $(defaultMainGenerator)
+		&gt; case_1 = do 1 @=? 1
+		&gt; case_2 = do 2 @=? 2
+		&gt; prop_reverse xs = reverse (reverse xs) == xs
+		&gt;    where types = xs::[Int]
+		
+		is the same as
+		
+		&gt; -- file SomeModule.hs
+		&gt; ( -# LANGUAGE TemplateHaskell #- )
+		&gt; module SomeModule where
+		&gt; import Test.Framework.TH
+		&gt; import Test.Framework
+		&gt; import Test.HUnit
+		&gt; import Test.Framework.Providers.HUnit
+		&gt; import Test.Framework.Providers.QuickCheck2
+		&gt;
+		&gt; -- observe this line!
+		&gt; main =
+		&gt;   defaultMain [
+		&gt;     testGroup "SomeModule" [ testCase "1" case_1, testCase "2" case_2, testProperty "reverse" prop_reverse]
+		&gt;     ]
+		&gt;
+		&gt; case_1 = do 1 @=? 1
+		&gt; case_2 = do 2 @=? 2
+		&gt; prop_reverse xs = reverse (reverse xs) == xs
+		&gt;    where types = xs::[Int]
+		
+		@testGroupGenerator@ is like @defaultMainGenerator@ but without @defaultMain@. It is useful if you need a function for the testgroup
+		(e.g. if you want to be able to call the testgroup from another module).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">finnsson/test-generator</remote-id>
+	</upstream>
+</pkgmetadata>

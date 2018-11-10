@@ -1,0 +1,31 @@
+Index: tidy-20090325/include/platform.h
+===================================================================
+--- tidy-20090325.orig/include/platform.h
++++ tidy-20090325/include/platform.h
+@@ -24,7 +24,7 @@ extern "C" {
+ */
+ 
+ /* #define TIDY_CONFIG_FILE "/etc/tidy_config.txt" */ /* original */
+-/* #define TIDY_CONFIG_FILE "/etc/tidyrc" */
++#define TIDY_CONFIG_FILE "/etc/tidyrc"
+ /* #define TIDY_CONFIG_FILE "/etc/tidy.conf" */
+ 
+ /*
+@@ -33,7 +33,7 @@ extern "C" {
+   It enables tidy to find config files named ~/.tidyrc if 
+   the HTML_TIDY environment variable is not set.
+ */
+-/* #define TIDY_USER_CONFIG_FILE "~/.tidyrc" */
++#define TIDY_USER_CONFIG_FILE "~/.tidyrc"
+ 
+ /*
+   Uncomment the following #define if your
+@@ -48,7 +48,7 @@ extern "C" {
+   Contributed by Todd Lewis.
+ */
+ 
+-/* #define SUPPORT_GETPWNAM */
++#define SUPPORT_GETPWNAM
+ 
+ 
+ /* Enable/disable support for Big5 and Shift_JIS character encodings */

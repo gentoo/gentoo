@@ -1,0 +1,36 @@
+From 1c56fc78f2a04625ae8c3aebd55236556ce28a90 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sun, 2 Nov 2014 12:04:24 +0100
+Subject: [PATCH 1/2] Remove some CFLAGS
+
+* Debugging level is only useful for debugging.
+* Werror is taken care of in error-on-warning configure switch.
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b38da9b..d80e7e5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -393,7 +393,7 @@ dnl # *************************************
+ AC_MSG_CHECKING(what extra warning flags to pass to the C compiler)
+ if test ${GCC}x = yesx; then
+   warnFLAGS=
+-  CFLAGS="${CFLAGS} -g2 -Wall"
++  CFLAGS="${CFLAGS} -Wall"
+   AC_ARG_ENABLE(error-on-warning,
+         [  --disable-error-on-warning
+                           disable treating compile warnings as errors],
+@@ -431,7 +431,7 @@ AC_ARG_ENABLE(compile-warnings,
+ 
+ if test "$GCC" = "yes" -a "$set_compile_warnings" != "no"; then
+         warnFLAGS="$warnFLAGS -Wcast-align -Wsign-compare \
+- -Wmissing-prototypes -Wmissing-declarations -Werror -Wmissing-include-dirs \
++ -Wmissing-prototypes -Wmissing-declarations -Wmissing-include-dirs \
+  -Wstrict-prototypes -Winline -Wnested-externs -Wpointer-arith \
+  -Wmissing-field-initializers"
+ # LDFLAGS="$LDFLAGS -Wl,-z,defs"
+-- 
+2.1.2
+

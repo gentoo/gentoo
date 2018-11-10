@@ -1,0 +1,24 @@
+diff -ur carbon-0.9.12.orig/setup.py carbon-0.9.12/setup.py
+--- /setup.py	2013-08-22 00:53:16.000000000 +0800
++++ /setup.py	2014-01-26 11:20:59.705864697 +0800
+@@ -13,12 +13,6 @@
+   setup_kwargs = dict()
+ 
+ 
+-storage_dirs = [ ('storage/whisper',[]), ('storage/lists',[]),
+-                 ('storage/log',[]), ('storage/rrd',[]) ]
+-conf_files = [ ('conf', glob('conf/*.example')) ]
+-
+-install_files = storage_dirs + conf_files
+-
+ # If we are building on RedHat, let's use the redhat init scripts.
+ if platform.dist()[0] == 'redhat':
+     init_scripts = [ ('/etc/init.d', ['distro/redhat/init.d/carbon-cache',
+@@ -39,7 +33,6 @@
+   package_dir={'' : 'lib'},
+   scripts=glob('bin/*'),
+   package_data={ 'carbon' : ['*.xml'] },
+-  data_files=install_files,
+   install_requires=['twisted', 'txamqp'],
+   **setup_kwargs
+ )

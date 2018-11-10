@@ -1,0 +1,48 @@
+diff --git a/configure.ac b/configure.ac
+index 5cbf273..9e80b48 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -4,8 +4,7 @@ AC_SUBST(PYILMBASE_VERSION, 2.3.0)
+ AC_CANONICAL_HOST
+ AC_CONFIG_SRCDIR(PyIex/iexmodule.cpp)
+ AC_CONFIG_HEADER(config/PyIlmBaseConfig.h)
+-AM_INIT_AUTOMAKE(1.6.3)  dnl Require automake 1.6.3 or better
+-AM_MAINTAINER_MODE
++AM_INIT_AUTOMAKE
+ dnl static python modules make no sense - disable static
+ AC_DISABLE_STATIC
+ 
+@@ -20,7 +19,7 @@ dnl Checks for programs.
+ AC_PROG_CXX
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+-AC_PROG_LIBTOOL
++LT_INIT
+ AC_PROG_MAKE_SET
+ 
+ dnl
+@@ -164,22 +163,13 @@ AC_C_CONST
+ AC_C_INLINE
+ AC_TYPE_SIZE_T
+ 
+-AC_MSG_CHECKING(for gcc optimization flags)
+-old_cflags=$CFLAGS
+-CFLAGS="$CFLAGS -pipe"
+-AC_TRY_COMPILE([#include <stdio.h>],
+-[ printf ("hello, world"); ],
+-[ EXTRA_OPT_CFLAGS="-pipe"],[ EXTRA_OPT_CFLAGS=""])
+-CFLAGS=$old_cflags
+-AC_MSG_RESULT([$EXTRA_OPT_CFLAGS])
+-
+ dnl Platform-specific stuff
+ case "$host" in
+ *linux*)
+-  AC_DEFINE(HAVE_LINUX_PROCFS)
++  AC_DEFINE([HAVE_LINUX_PROCFS], [1], [define on linux])
+   ;;
+ *darwin*) 
+-  AC_DEFINE(HAVE_DARWIN) 
++  AC_DEFINE([HAVE_DARWIN], [1], [define on OSX]) 
+   ;;
+ esac
+ 

@@ -1,0 +1,26 @@
+--- a/CMakeLists.txt	2018-03-23 10:48:02.309486850 +0100
++++ b/CMakeLists.txt	2018-03-23 10:48:04.157486836 +0100
+@@ -614,7 +614,9 @@
+ endif ()
+ 
+ # Setup samples
+-add_subdirectory(Samples)
++if (OGRE_BUILD_SAMPLES2)
++    add_subdirectory(Samples)
++endif ()
+ 
+ # Add android JNI binding
+ if(ANDROID AND OGRE_BUILD_ANDROID_JNI_SAMPLE)
+--- a/CMake/InstallResources.cmake	2018-04-06 19:18:45.095348540 +0200
++++ b/CMake/InstallResources.cmake	2018-04-06 19:20:00.342345608 +0200
+@@ -62,8 +62,8 @@
+   set(OGRE_TEST_MEDIA_DIR_DBG "${CMAKE_INSTALL_PREFIX}/Tests/Media")
+   set(OGRE_PLUGIN_DIR_REL "${CMAKE_INSTALL_PREFIX}/${OGRE_LIB_DIRECTORY}/OGRE")
+   set(OGRE_PLUGIN_DIR_DBG "${CMAKE_INSTALL_PREFIX}/${OGRE_LIB_DIRECTORY}/OGRE")
+-  set(OGRE_SAMPLES_DIR_REL "${CMAKE_INSTALL_PREFIX}/${OGRE_LIB_DIRECTORY}/OGRE/Samples")
+-  set(OGRE_SAMPLES_DIR_DBG "${CMAKE_INSTALL_PREFIX}/${OGRE_LIB_DIRECTORY}/OGRE/Samples")
++  set(OGRE_SAMPLES_DIR_REL "${CMAKE_INSTALL_PREFIX}/share/OGRE/Samples")
++  set(OGRE_SAMPLES_DIR_DBG "${CMAKE_INSTALL_PREFIX}/share/OGRE/Samples")
+   set(OGRE_CFG_INSTALL_PATH "share/OGRE")
+ endif ()
+ 

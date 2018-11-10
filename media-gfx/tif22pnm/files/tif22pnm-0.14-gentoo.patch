@@ -1,0 +1,44 @@
+--- configure.in
++++ configure.in
+@@ -21,7 +21,6 @@
+ dnl Checks for programs.
+ AC_PROG_CC
+ AC_LANG_C
+-CFLAGS=" "
+ dnl ^^^ set it to non-empty, so AC_PROG_CXX won't include `-g'
+ dnl AC_PROG_CXX
+ dnl AC_PTS_PROG_CFLAGS(fs, -fsigned-char)
+--- do.sh
++++ do.sh
+@@ -35,8 +35,8 @@
+ if [ x"$CMD" != x ]; then echo "Executing: $CMD"; fi
+ 
+ if [ "$CMD" = fast ]; then
+-  L_CC="$CC -s -O3 -DNDEBUG"
+-  L_LD="$LD -s"
++  L_CC="$CC -DNDEBUG"
++  L_LD="$LD"
+ elif [ "$CMD" = debug ]; then
+   L_CC="$CC $GFLAG"
+   L_LD="$LD"
+@@ -47,14 +47,14 @@
+   L_CC="checkergcc $GFLAG"
+   L_LD="checkergcc"
+ elif [ "$CMD" = small ]; then
+-  L_CC="$CC -Os -DNDEBUG"
+-  L_LD="$LD -s"
++  L_CC="$CC -DNDEBUG"
++  L_LD="$LD"
+ elif [ "$CMD" = final ]; then
+-  L_CC="$CC -O2 -DNDEBUG"
+-  L_LD="$LD -s"
++  L_CC="$CC -DNDEBUG"
++  L_LD="$LD"
+ elif [ "$CMD" = asserted ]; then
+-  L_CC="$CC -O2"
+-  L_LD="$LD -s"
++  L_CC="$CC"
++  L_LD="$LD"
+ elif [ "$CMD" = clean ]; then
+   rm -f *.o core DEADJOE tif22pnm png22pnm
+   exit

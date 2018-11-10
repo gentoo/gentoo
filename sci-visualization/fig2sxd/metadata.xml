@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  This program converts a file in XFig format into a .sxd file for
+  OpenOffice.org Draw.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">fig2sxd</remote-id>
+  </upstream>
+</pkgmetadata>

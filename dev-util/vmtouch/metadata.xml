@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>dlan@gentoo.org</email>
+    <name>Yixun Lan</name>
+  </maintainer>
+  <longdescription>
+  vmtouch is a tool for learning about and controlling the file system cache
+  of unix and unix-like systems. It is BSD licensed so you can basically 
+  do whatever you want with it.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">hoytech/vmtouch</remote-id>
+  </upstream>
+</pkgmetadata>

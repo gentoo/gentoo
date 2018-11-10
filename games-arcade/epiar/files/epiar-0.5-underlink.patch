@@ -1,0 +1,10 @@
+--- Makefile.linux.old	2011-06-22 15:15:50.000000000 +0200
++++ Makefile.linux	2011-06-22 15:17:01.000000000 +0200
+@@ -1,6 +1,6 @@
+ CFLAGS=-W -Wall `sdl-config --cflags` -Isrc/ -DLINUX -DDEVEL -export-dynamic -I/usr/include/SDL -I/usr/local/include/SDL -DBLIT_METHOD_2 -DNAUDIO -O2 -march=pentium4 -pipe -mfpmath=sse -ggdb -Wl,-O1 -Wl,--as-needed
+ 
+-LIBS=-lm `sdl-config --libs` -lSDL_image
++LIBS=-lm `sdl-config --libs` -lSDL_image -ldl
+ STATIC_LIBS=-lm /usr/local/lib/libSDL.a /usr/local/lib/libSDL_image.a /usr/local/lib/libSDL_ttf.a /usr/local/lib/libopenal.a /usr/local/lib/libvorbisfile.a /usr/local/lib/libvorbis.a /usr/local/lib/libogg.a /usr/lib/libpng.a /usr/lib/libz.a -lpthread -ldl -lfreetype /usr/lib/libjpeg.a -lX11 -lXext -lesd
+ 
+ OBJS=main.o init.o video.o backbuffer.o debug.o audio.o linux_video.o \

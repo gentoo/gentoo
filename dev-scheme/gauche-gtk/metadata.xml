@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hattya@gentoo.org</email>
+		<name>Akinori Hattori</name>
+	</maintainer>
+	<longdescription>
+		Gauche extension module to use GTK.
+	</longdescription>
+	<use>
+		<flag name="glgd">Enable GL graph draw</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">shirok/Gauche-gtk2</remote-id>
+	</upstream>
+</pkgmetadata>

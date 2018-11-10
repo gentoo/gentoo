@@ -1,0 +1,20 @@
+--- break_filelist.old	2013-10-14 17:23:01.523330534 +0800
++++ break_filelist	2004-08-01 12:17:28.000000000 +0800
+@@ -177,7 +177,7 @@
+   "p" => "pascal", "pas" => "pascal", "pp" => "pascal", "dpr" => "pascal",
+   "py" => "python",
+   "s" => "asm", "S" => "asm", "asm" => "asm",
++  "sh" => "sh", "bash" => "sh", "ebuild" => "sh",
+-  "sh" => "sh", "bash" => "sh",
+   "csh" => "csh", "tcsh" => "csh", 
+   "java" => "java",
+   "lisp" => "lisp", "el" => "lisp", "scm" => "lisp", "sc" => "lisp", 
+@@ -879,7 +879,7 @@
+   $command = $2;
+  }
+ 
++ if ( ($command =~ m/^(bash|ksh|zsh|pdksh|sh|runscript)[0-9\.]*(\.exe)?$/i) ||
+- if ( ($command =~ m/^(bash|ksh|zsh|pdksh|sh)[0-9\.]*(\.exe)?$/i) ||
+      ($firstline =~
+           m~^#!\s*\@_?(SCRIPT_)?(PATH_)?(BA|K)?SH(ELL)?(\d+)?\@?(\s|\Z)~)) {
+     # Note: wish(1) uses a funny trick; see wish(1) for more info.

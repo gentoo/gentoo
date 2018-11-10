@@ -1,0 +1,20 @@
+--- slime-2.11-orig/slime.el	2014-12-01 21:05:54.000000000 +1100
++++ slime-2.11/slime.el	2014-12-19 11:57:45.455393436 +1100
+@@ -134,16 +134,7 @@
+     "Return the datestring of the latest entry in the ChangeLog file.
+ Return nil if the ChangeLog file cannot be found."
+     (interactive "p")
+-    (let ((changelog (expand-file-name "ChangeLog" slime-path))
+-          (date nil))
+-      (when (file-exists-p changelog)
+-        (with-temp-buffer
+-          (insert-file-contents-literally changelog nil 0 100)
+-          (goto-char (point-min))
+-          (setq date (symbol-name (read (current-buffer))))))
+-      (when interactivep
+-        (message "Slime ChangeLog dates %s." date))
+-      date)))
++    "@SLIME-CHANGELOG-DATE@"))
+ 
+ (defvar slime-protocol-version nil)
+ (setq slime-protocol-version

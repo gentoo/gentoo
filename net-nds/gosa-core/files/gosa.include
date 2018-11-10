@@ -1,0 +1,36 @@
+Alias /gosa /usr/share/gosa/html
+
+<Directory /usr/share/gosa/html>
+    Options None
+    AllowOverride None
+    Order deny,allow
+    Allow from all
+</Directory>
+
+<IfModule mod_php5.c>
+<Location /gosa>
+    php_admin_flag engine on
+    php_admin_flag register_globals off
+    php_admin_flag allow_call_time_pass_reference off
+    php_admin_flag expose_php off
+    php_admin_flag zend.ze1_compatibility_mode off
+    php_admin_flag register_long_arrays off
+    php_admin_flag magic_quotes_gpc on
+    php_admin_value upload_tmp_dir /var/spool/gosa/
+    php_admin_value session.cookie_lifetime 0
+    include /etc/gosa/gosa.secrets
+</Location>
+</IfModule>
+
+<IfModule mod_fcgid.c>
+   PHP_Fix_Pathinfo_Enable 1
+   <Location /gosa>
+     Options +ExecCGI
+     AddHandler fcgid-script .php
+     FCGIWrapper /var/www/php-fcgi/php-fcgi-starter .php
+     include /etc/gosa/gosa.secrets
+   </Location>
+</IfModule>
+
+
+# vim: ts=4 filetype=apache

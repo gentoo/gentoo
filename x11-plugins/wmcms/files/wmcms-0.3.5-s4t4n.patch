@@ -1,0 +1,274 @@
+diff -Naur wmcms-0.3.5/state_linux.h wmcms-0.3.5/state_linux.h
+--- wmcms-0.3.5/state_linux.h	2001-09-24 00:56:28.000000000 +0200
++++ wmcms-0.3.5/state_linux.h	1970-01-01 01:00:00.000000000 +0100
+@@ -1,47 +0,0 @@
+-/* wmcms - WindowMaker CPU / Mem Usage Monitor DockApp
+- * state_linux.h
+- * Linux specific functions to get system usage, may someone write it to another plataform
+- * Copyright (C) 2001 Fabio Pugliese Ornellas <fabio.ornellas@poli.usp.br>
+- *
+- * This program is free software; you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation; either version 2 of the License, or
+- * (at your option) any later version.
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+- */
+-
+-int cpu_user;
+-int cpu_nice;
+-int cpu_kernel;
+-int cpu_idle;
+-
+-int mem_total;
+-int mem_used;
+-int mem_buffers;
+-int mem_cached;
+-
+-int swap_total;
+-int swap_used;
+-
+-void get_cpuinfo ( void )
+-{
+-  FILE *fp;
+-  fp = fopen ( "/proc/stat", "r" );
+-  fscanf ( fp, "%*s %d %d %d %d", &cpu_user, &cpu_nice, &cpu_kernel, &cpu_idle );
+-  fclose ( fp );
+-}
+-
+-void get_meminfo ( void )
+-{
+-  FILE *fp;
+-  fp = fopen ( "/proc/meminfo", "r" );
+-  fscanf ( fp, "%*s %*s %*s %*s %*s %*s %*s %d %d %*d %*d %d %d %*s %d %d", &mem_total, &mem_used, &mem_buffers, &mem_cached, &swap_total, &swap_used );
+-  fclose ( fp );
+-}
+diff -Naur wmcms-0.3.5/state_linux_2.4.h wmcms-0.3.5/state_linux_2.4.h
+--- wmcms-0.3.5/state_linux_2.4.h	1970-01-01 01:00:00.000000000 +0100
++++ wmcms-0.3.5/state_linux_2.4.h	2004-07-20 22:09:11.157182296 +0200
+@@ -0,0 +1,47 @@
++/* wmcms - WindowMaker CPU / Mem Usage Monitor DockApp
++ * state_linux.h
++ * Linux specific functions to get system usage, may someone write it to another plataform
++ * Copyright (C) 2001 Fabio Pugliese Ornellas <fabio.ornellas@poli.usp.br>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++ */
++
++int cpu_user;
++int cpu_nice;
++int cpu_kernel;
++int cpu_idle;
++
++int mem_total;
++int mem_used;
++int mem_buffers;
++int mem_cached;
++
++int swap_total;
++int swap_used;
++
++void get_cpuinfo_24 ( void )
++{
++  FILE *fp;
++  fp = fopen ( "/proc/stat", "r" );
++  fscanf ( fp, "%*s %d %d %d %d", &cpu_user, &cpu_nice, &cpu_kernel, &cpu_idle );
++  fclose ( fp );
++}
++
++void get_meminfo_24 ( void )
++{
++  FILE *fp;
++  fp = fopen ( "/proc/meminfo", "r" );
++  fscanf ( fp, "%*s %*s %*s %*s %*s %*s %*s %d %d %*d %*d %d %d %*s %d %d", &mem_total, &mem_used, &mem_buffers, &mem_cached, &swap_total, &swap_used );
++  fclose ( fp );
++}
+diff -Naur wmcms-0.3.5/state_linux_2.6.h wmcms-0.3.5/state_linux_2.6.h
+--- wmcms-0.3.5/state_linux_2.6.h	1970-01-01 01:00:00.000000000 +0100
++++ wmcms-0.3.5/state_linux_2.6.h	2004-07-20 22:08:54.256751552 +0200
+@@ -0,0 +1,55 @@
++/* wmcms - WindowMaker CPU / Mem Usage Monitor DockApp
++ * state_linux.h
++ * Linux specific functions to get system usage, may someone write it to another plataform
++ * Copyright (C) 2001 Fabio Pugliese Ornellas <fabio.ornellas@poli.usp.br>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++ */
++
++int cpu_user;
++int cpu_nice;
++int cpu_kernel;
++int cpu_idle;
++
++int mem_total;
++int mem_free;
++int mem_used;
++int mem_buffers;
++int mem_cached;
++
++int swap_total;
++int swap_free;
++int swap_used;
++
++void get_cpuinfo_26 ( void )
++{
++  FILE *fp;
++  fp = fopen ( "/proc/stat", "r" );
++  fscanf ( fp, "%*s %d %d %d %d", &cpu_user, &cpu_nice, &cpu_kernel, &cpu_idle );
++  fclose ( fp );
++}
++
++void get_meminfo_26 ( void )
++{
++  FILE *fp;
++  fp = fopen ( "/proc/meminfo", "r" );
++/*  The format of /proc/meminfo has changed with the 2.6 kernel; this new line will work for 2.6 -- idh
++    fscanf ( fp, "%*s %*s %*s %*s %*s %*s %*s %d %d %*d %*d %d %d %*s %d %d", &mem_total, &mem_used, &mem_buffers, &mem_cached, &swap_total, &swap_used ); */
++  fscanf ( fp, "%*s %d %*s %*s %d %*s %*s %d %*s %*s %d %*s %*s %*d %*s %*s %*d %*s %*s %*d %*s %*s %*d %*s %*s %*d %*s %*s %*d %*s %*s %*d %*s %*s %d %*s %*s %d %*s",
++      &mem_total, &mem_free, &mem_buffers, &mem_cached, &swap_total, &swap_free );
++  fclose ( fp );
++
++  mem_used  = mem_total  - mem_free;
++  swap_used = swap_total - swap_free;
++}
+diff -Naur wmcms-0.3.5/wmcms.c wmcms-0.3.5/wmcms.c
+--- wmcms-0.3.5/wmcms.c	2001-09-24 00:57:06.000000000 +0200
++++ wmcms-0.3.5/wmcms.c	2004-07-20 22:34:26.917751664 +0200
+@@ -19,7 +19,8 @@
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <dockapp.h>
+-#include "state_linux.h"
++#include "state_linux_2.6.h"
++#include "state_linux_2.4.h"
+ #include "wmcms.xpm"
+ 
+ char *displayName = "";
+@@ -34,6 +35,13 @@
+ int no_nice;
+ char *exe = "";
+ 
++typedef enum
++{
++	IS_2_6 = 0,
++	IS_OTHER
++} kernel_versions;
++kernel_versions kernel_version;
++
+ /* command line */
+ static DAProgramOption options[] = {
+      {"-d", "--display", "display to use", DOString, False, {&displayName} },
+@@ -44,6 +52,8 @@
+      {"-p", "--program", "program to run on CPU click", DOString, False, {&exe} }
+      };
+ 
++kernel_versions Get_Kernel_version(void);
++
+ /* draw bars */
+ void bar ( int size, int x, int y, int barx, int bary )
+ {
+@@ -156,6 +166,9 @@
+   /* define callbacks */
+   DACallbacks callbacks = { NULL, change, NULL, NULL, NULL, NULL };
+ 
++	/* determine kernel version */
++	kernel_version = Get_Kernel_version();
++
+   advanced = 0;
+   up = 0;
+   no_nice = 0;
+@@ -204,14 +217,23 @@
+   XCopyArea ( DADisplay, backdrop, pixmap, gc, 3, 140, 58, 58, 0, 0);
+   DASetPixmap(pixmap);
+ 
+-  /* initial cpu total while splash */
+-  get_cpuinfo();
++  /* initial cpu total while splash */	
++	if (kernel_version == IS_2_6)
++		get_cpuinfo_26();
++	else
++		get_cpuinfo_24();
++
+   old_cpu_user = cpu_user;
+   old_cpu_nice = cpu_nice;
+   old_cpu_kernel = cpu_kernel;
+   old_cpu_idle = cpu_idle;
+   usleep ( delay );
+-  get_cpuinfo();
++
++	if (kernel_version == IS_2_6)
++		get_cpuinfo_26();
++	else
++		get_cpuinfo_24();
++
+   cpu_total = cpu_user - old_cpu_user + cpu_nice - old_cpu_nice + cpu_kernel - old_cpu_kernel + cpu_idle - old_cpu_idle;
+ 
+   /* draw background */
+@@ -230,8 +252,16 @@
+     XCopyArea ( DADisplay, backdrop, pixmap, gc, 4, 14, 56, 8, 1, 49 );
+ 
+     /* read values */
+-    get_cpuinfo ();
+-    get_meminfo ();
++		if (kernel_version == IS_2_6)
++		{
++			get_cpuinfo_26 ();
++			get_meminfo_26 ();
++		}
++		else
++		{
++			get_cpuinfo_24 ();
++			get_meminfo_24 ();
++		}
+ 
+     /* cpu total */
+     cpu_total = cpu_user - old_cpu_user + cpu_nice - old_cpu_nice + cpu_kernel - old_cpu_kernel + cpu_idle - old_cpu_idle;
+@@ -328,3 +358,20 @@
+   fprintf(stderr, "Congratulations, something truely awful has happened.\n");
+   return -1;
+ }
++
++kernel_versions Get_Kernel_version(void)
++{
++	FILE *fp = fopen("/proc/version", "r");
++	char buf[512];
++
++	if (!fp) return IS_OTHER;
++	if (!fgets(buf, 512, fp))
++	{
++		fclose(fp);
++		return IS_OTHER;
++	}
++	fclose(fp);
++
++	if (strstr(buf, "2.6.")) return IS_2_6;
++	return IS_OTHER;
++}

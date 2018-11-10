@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+<email>jer@gentoo.org</email>
+<name>Jeroen Roovers</name>
+</maintainer>
+<use>
+<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> as backend instead of <pkg>dev-qt/qtwebkit</pkg> (experimental)</flag>
+</use>
+<upstream>
+<remote-id type="github">OtterBrowser/otter-browser</remote-id>
+</upstream>
+</pkgmetadata>

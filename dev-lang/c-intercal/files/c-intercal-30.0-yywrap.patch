@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/604848
+
+--- intercal-0.30-orig/src/lexer.l
++++ intercal-0.30/src/lexer.l
+@@ -38,12 +38,10 @@
+ /*#undef wchar_t*/
+ /*#define wchar_t unsigned char*/
+ 
+-#ifndef yywrap
+ static int yywrap(void)
+ {
+     return 1;
+ }
+-#endif /* yywrap */
+ 
+ int 	iyylineno = 1;
+ 

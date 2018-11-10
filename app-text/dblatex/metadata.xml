@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>zoltan@sinustrom.info</email>
+        <name>Zoltan Puskas</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <use>
+        <flag name="inkscape">Use inkscape to convert SVG. Disable to use gnome-base/librsvg instead.</flag>
+    </use>
+    <longdescription>
+               dbaltex is an opensource DocBook to LaTeX publishing software 
+               that originally started as DB2LaTeX clone, but now is more
+               feature rich and easier to use.
+    </longdescription>
+    <upstream>
+        <remote-id type="sourceforge">dblatex</remote-id>
+    </upstream>
+</pkgmetadata>

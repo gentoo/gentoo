@@ -1,0 +1,27 @@
+--- Makefile.in.orig	2007-04-03 15:06:53.066980500 +0100
++++ Makefile.in	2007-04-03 15:16:53.795027250 +0100
+@@ -230,14 +230,13 @@
+ x_includes = @x_includes@
+ x_libraries = @x_libraries@
+ MAINTAINERCLEANFILES = Makefile.in configure libtool config.guess config.sub ltconfig ltmain.sh aclocal.m4 config.h.in install-sh missing mkinstalldirs
+-SUBDIRS = include src examples doc scripts
++SUBDIRS = include src
+ EXTRA_DIST = configure ac_find_xbae.m4 Imakefile Xbae.tmpl Xbae.rules \
+ 	CVSMake
+ 
+ aclocaldir = @ACLOCALDIR@
+ @Aclocal_TRUE@aclocal_DATA = ac_find_xbae.m4
+ docdir = $(datadir)/Xbae
+-doc_DATA = NEWS README
+ 
+ #
+ # Some convenient targets for users of Exuberant ctags
+@@ -657,7 +656,7 @@
+ 
+ info-am:
+ 
+-install-data-am: install-aclocalDATA install-docDATA
++install-data-am: install-aclocalDATA
+ 
+ install-exec-am:
+ 

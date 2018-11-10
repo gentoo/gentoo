@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/516964
+diff --git a/main.c b/main.c
+index c0648b4..a9fac57 100644
+--- a/main.c
++++ b/main.c
+@@ -160,6 +160,17 @@ main (int argc, char *argv[])
+   aa_flush (context);
+   if (tolower (aa_getkey (context, 1)) != 'n')
+     {
++      /* Unfortunately recently added native pulseaudio
++       * driver in libmikmod does not allow you to
++       * call 'MikMod_Update' in a non-blocking way.
++       *
++       * It's a known limitation of simple pulseaudio API
++       * thus we derevisted pulseaudio driver to fallback
++       * on alsa, oss or whatever used to work for user.
++       */
++      drv_pulseaudio.Name    = NULL;
++      drv_pulseaudio.Version = NULL;
++
+       MikMod_RegisterAllDrivers ();
+       MikMod_RegisterLoader (&load_s3m);
+       /*md_mode |= DMODE_SOFT_MUSIC; */

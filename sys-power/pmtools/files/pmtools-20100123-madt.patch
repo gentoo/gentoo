@@ -1,0 +1,39 @@
+diff -Nuar pmtools-20100123.orig/madt/madt.c pmtools-20100123/madt/madt.c
+--- pmtools-20100123.orig/madt/madt.c	2005-11-11 18:07:04.000000000 +0100
++++ pmtools-20100123/madt/madt.c	2010-03-07 14:39:31.657017114 +0100
+@@ -26,8 +26,6 @@
+ 
+ #define printk printf
+ 
+-#include "./tables.c"
+-
+ //#define INPUT_FILE "madt.dat"
+ //#include <sys/types.h>
+ //#include <sys/stat.h>
+@@ -37,6 +35,8 @@
+ #include <stdio.h> // fread
+ #include <stdlib.h> // malloc
+ 
++#include "./tables.c"
++
+ int verbose = 0;
+ /*
+ /* read standard input
+diff -Nuar pmtools-20100123.orig/madt/Makefile pmtools-20100123/madt/Makefile
+--- pmtools-20100123.orig/madt/Makefile	2005-11-11 18:07:04.000000000 +0100
++++ pmtools-20100123/madt/Makefile	2010-03-07 14:34:17.486002917 +0100
+@@ -1,3 +1,5 @@
++all: madt
++
+ test: madt
+ 	./madt < APIC
+ madt: madt.c acpi.h tables.c
+diff -Nuar pmtools-20100123.orig/Makefile pmtools-20100123/Makefile
+--- pmtools-20100123.orig/Makefile	2010-01-23 19:18:18.000000000 +0100
++++ pmtools-20100123/Makefile	2010-03-07 14:33:01.729955480 +0100
+@@ -1,4 +1,4 @@
+-DIRS = acpidump acpixtract turbostat
++DIRS = acpidump acpixtract madt turbostat
+ 
+ all:
+ 	for i in $(DIRS); do $(MAKE) -C $$i $@; done

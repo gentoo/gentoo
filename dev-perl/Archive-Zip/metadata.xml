@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Archive-Zip</remote-id>
+    <remote-id type="cpan-module">Archive::Zip</remote-id>
+    <remote-id type="cpan-module">Archive::Zip::Archive</remote-id>
+    <remote-id type="cpan-module">Archive::Zip::BufferedFileHandle</remote-id>
+    <remote-id type="cpan-module">Archive::Zip::DirectoryMember</remote-id>
+    <remote-id type="cpan-module">Archive::Zip::FileMember</remote-id>
+    <remote-id type="cpan-module">Archive::Zip::Member</remote-id>
+    <remote-id type="cpan-module">Archive::Zip::MemberRead</remote-id>
+    <remote-id type="cpan-module">Archive::Zip::MockFileHandle</remote-id>
+    <remote-id type="cpan-module">Archive::Zip::NewFileMember</remote-id>
+    <remote-id type="cpan-module">Archive::Zip::StringMember</remote-id>
+    <remote-id type="cpan-module">Archive::Zip::Tree</remote-id>
+    <remote-id type="cpan-module">Archive::Zip::ZipFileMember</remote-id>
+  </upstream>
+</pkgmetadata>

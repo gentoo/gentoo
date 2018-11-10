@@ -1,0 +1,11 @@
+--- fetchmail-6.3.26/Makefile.am
++++ fetchmail-6.3.26/Makefile.am
+@@ -45,7 +47,7 @@
+ check_PROGRAMS=
+ 
+ TESTS=			t.smoke t.validate-xhtml10 t.validate-xhtml t.x509_name_match
+-TESTS_ENVIRONMENT=	srcdir="$(srcdir)" LC_ALL=C TZ=UTC SHELL="$(SHELL)" $(SHELL)
++TESTS_ENVIRONMENT=	srcdir="$(srcdir)" LC_ALL=C TZ=UTC SHELL="$(SHELL)"
+ 
+ if NEED_TRIO
+ noinst_LIBRARIES+=	libtrio.a

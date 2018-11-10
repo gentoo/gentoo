@@ -1,0 +1,112 @@
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 11 Oct 2016 19:52:13 -0400
+Subject: clean up trailing whitespace
+
+---
+ lib/GnuPG/Fingerprint.pm |  2 +-
+ lib/GnuPG/Handles.pm     |  2 +-
+ lib/GnuPG/Interface.pm   | 16 ++++++++--------
+ 3 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/lib/GnuPG/Fingerprint.pm b/lib/GnuPG/Fingerprint.pm
+index fcb1028..81c38a7 100644
+--- a/lib/GnuPG/Fingerprint.pm
++++ b/lib/GnuPG/Fingerprint.pm
+@@ -20,7 +20,7 @@ with qw(GnuPG::HashInit);
+ 
+ has as_hex_string => (
+     isa => 'Any',
+-    is  => 'rw',        
++    is  => 'rw',
+ );
+ 
+ sub compare {
+diff --git a/lib/GnuPG/Handles.pm b/lib/GnuPG/Handles.pm
+index b30ca57..3eee0e3 100644
+--- a/lib/GnuPG/Handles.pm
++++ b/lib/GnuPG/Handles.pm
+@@ -73,7 +73,7 @@ GnuPG::Handles - GnuPG handles bundle
+     = ( IO::Handle->new(), IO::Handle->new(), IO::Handle->new(),
+         IO::Handle->new(), IO::Handle->new(), IO::Handle->new(),
+       );
+- 
++
+   my $handles = GnuPG::Handles->new
+     ( stdin      => $stdin,
+       stdout     => $stdout,
+diff --git a/lib/GnuPG/Interface.pm b/lib/GnuPG/Interface.pm
+index 1f1e6d5..19e8070 100644
+--- a/lib/GnuPG/Interface.pm
++++ b/lib/GnuPG/Interface.pm
+@@ -833,7 +833,7 @@ GnuPG::Interface - Perl interface to GnuPG
+   # A simple example
+   use IO::Handle;
+   use GnuPG::Interface;
+-  
++
+   # setting up the situation
+   my $gnupg = GnuPG::Interface->new();
+   $gnupg->options->hash_init( armor   => 1,
+@@ -852,7 +852,7 @@ GnuPG::Interface - Perl interface to GnuPG
+   # Now we'll go about encrypting with the options already set
+   my @plaintext = ( 'foobar' );
+   my $pid = $gnupg->encrypt( handles => $handles );
+-  
++
+   # Now we write to the input of GnuPG
+   print $input @plaintext;
+   close $input;
+@@ -1144,7 +1144,7 @@ The following setup can be done before any of the following examples:
+ 
+   my $handles = GnuPG::Handles->new( stdin    => $input,
+                                      stdout   => $output );
+-   
++
+   # this sets up the communication
+   # Note that the recipients were specified earlier
+   # in the 'options' data member of the $gnupg object.
+@@ -1220,7 +1220,7 @@ The following setup can be done before any of the following examples:
+   # a file written to disk
+   # Make sure you "use IO::File" if you use this module!
+   my $cipher_file = IO::File->new( 'encrypted.gpg' );
+-   
++
+   # this sets up the communication
+   my $pid = $gnupg->decrypt( handles => $handles );
+ 
+@@ -1252,7 +1252,7 @@ The following setup can be done before any of the following examples:
+   # This time we'll just let GnuPG print to our own output
+   # and read from our input, because no input is needed!
+   my $handles = GnuPG::Handles->new();
+-  
++
+   my @ids = ( 'ftobin', '0xABCD1234' );
+ 
+   # this time we need to specify something for
+@@ -1260,7 +1260,7 @@ The following setup can be done before any of the following examples:
+   # search ids as arguments
+   my $pid = $gnupg->list_public_keys( handles      => $handles,
+                                       command_args => [ @ids ] );
+-  
++
+    waitpid $pid, 0;
+ 
+ =head2 Creating GnuPG::PublicKey Objects
+@@ -1280,7 +1280,7 @@ The following setup can be done before any of the following examples:
+       command_args => [ qw( test/key.1.asc ) ],
+       handles      => $handles,
+     );
+-    
++
+     my @out = <$handles->stdout()>;
+     waitpid $pid, 0;
+ 
+@@ -1357,7 +1357,7 @@ under the same terms as Perl itself.
+ 
+ =head1 AUTHOR
+ 
+-GnuPg::Interface is currently maintained by Jesse Vincent <jesse@cpan.org>.  
++GnuPg::Interface is currently maintained by Jesse Vincent <jesse@cpan.org>.
+ 
+ Frank J. Tobin, ftobin@cpan.org was the original author of the package.
+ 

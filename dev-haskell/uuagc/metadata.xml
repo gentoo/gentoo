@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="with-loag">Use <pkg>dev-haskell/minisat</pkg> external SAT-solver to schedule all Linear Ordered AGs.</flag>
+	</use>
+	<longdescription>
+		Generates Haskell files from an attribute grammar specification
+	</longdescription>
+</pkgmetadata>

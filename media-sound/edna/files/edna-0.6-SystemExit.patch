@@ -1,0 +1,11 @@
+--- edna.py.orig	2007-01-27 15:31:00.000000000 +0000
++++ edna.py	2007-01-27 16:03:30.000000000 +0000
+@@ -1159,7 +1159,7 @@
+ 
+   if os.path.isfile(fname) != 1:
+     print "edna: %s:No such file" %fname
+-    raise systemExit
++    raise SystemExit
+ 
+   if daemon_mode:
+     daemonize('/dev/null', '/var/log/edna.log', '/var/log/edna.log', '/var/run/edna.pid')

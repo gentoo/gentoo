@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+Welcome to ClanLib, a multi-platform game development library.
+
+ClanLib is a medium level development kit. At its lowest level, it provides a 
+platform independent (as much as that is possible in C++) way of dealing with 
+display, sound, input, networking, files, threadding and such.
+
+On top of that, ClanLib builds a generic game development framework, giving you 
+easy handling of resources, network object replication, graphical user 
+interfaces (GUI) with theme support, game scripting and more.
+
+The goal of ClanLib is to allow the game developer to focus on stuff that 
+matters, avoiding all those nasty (and boring) lowlevel trivials like setting up 
+a directdraw window, sound mixing, reading image files, etc. All those things 
+are simplified into object oriented classes and function calls, making it a joy 
+to write your game.
+
+ClanLib uses a resource system to keep track of images, fonts, samples and 
+music. It supports Targa, PCX, JPEG, PNG and BMP for images. Wave files for 
+sample. Ogg Vorbis (open sound format that has same sound quality as mp3) and 
+MikMod for music. By using a resource system, you cleanly seperate the physical 
+data formats from your code, and makes it easy to make themes and other plugins 
+for your game. The resource system is written in a manner that allows you to add 
+your own custom resources.
+
+All classes in clanlib focus on making simple interfaces that are customizeable 
+and expandable. This keeps your game code clean and simple; but still allows you 
+to do advanced stuff. As an example, look at some sound code:
+CL_SoundBuffer my_sample("Weapon/Minigun/sound", resources);
+my_sample.play();
+
+In this example, we play a simple sound effect, and afterwards forget all about 
+it. Nice and simple. But if we want to adjust the frequency during its playback 
+(eg. for a dobbler effect), it could look like this:
+CL_SoundBuffer_Session playback = my_sample.play();
+playback.set_frequency(1.2f); // increase frequency by 20%
+
+We only need to keep the session handle if we are going to use it. Keep things 
+simple when they are simple, and make them complex when they are complex. :)
+
+The object oriented nature of ClanLib allows you to operate both at high and low 
+levels, minimizing redundant code and still allows you to do stuff that isnt 
+supported by clanlib's high level APIs.
+
+ClanLib currently support Windows 98, Windows 2000, Windows XP and Linux. The 
+following display targets are supported under linux: X11 and OpenGL. Some parts 
+of ClanLib still isnt entirely endian clean, so it will currently only work 
+without problems on the x86 architecture. Work is underway for a MacOS port. 
+Current compilers supported is VC++ 6.0, VC++ 7.0, GCC, Borland and MingW.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">sphair/ClanLib</remote-id>
+	</upstream>
+</pkgmetadata>

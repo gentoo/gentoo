@@ -1,0 +1,71 @@
+--- elscreen.el.orig	2007-12-29 15:12:05.000000000 +0000
++++ elscreen.el
+@@ -1691,6 +1691,10 @@ Use \\[toggle-read-only] to permit editi
+                   ("-e"                . elscreen-command-line-funcall))))
+ 
+   (static-when elscreen-on-emacs
++    (cond
++     ;  -----------------------
++     ((< emacs-major-version 23)	; emacs22 or prior to
++	(progn
+     (defun elscreen-e21-command-line ()
+       (when (string-match "\\`-" argi)
+         (error "Unknown option `%s'" argi))
+@@ -1703,11 +1707,55 @@ Use \\[toggle-read-only] to permit editi
+         (elscreen-command-line-find-file file file-count line column))
+       (setq line 0)
+       (setq column 0)
+-      t)
++      t) ; defun
+ 
+     (add-hook 'after-init-hook (lambda ()
+                                  (add-to-list 'command-line-functions
+-                                              'elscreen-e21-command-line t))))
++                                              'elscreen-e21-command-line t)))) ; progn
++    )  ; else
++     ;  -----------------------
++    ((= emacs-major-version 23)	; emacs23
++      (progn
++    (defun elscreen-e23-command-line ()
++      (when (string-match "\\`-" argi)
++        (error "Unknown option `%s'" argi))
++      (setq file-count (1+ file-count))
++      (setq inhibit-startup-buffer-menu t)
++      (let* ((file
++              (expand-file-name
++               (command-line-normalize-file-name orig-argi)
++               cl1-dir)))
++        (elscreen-command-line-find-file file file-count cl1-line cl1-column))
++      (setq cl1-line 0)
++      (setq cl1-column 0)
++      t) ; defun
++    
++    (add-hook 'after-init-hook (lambda ()
++                                 (add-to-list 'command-line-functions
++                                              'elscreen-e23-command-line t)))) ; progn
++      ) ; else
++     ;  -----------------------
++    ((> emacs-major-version 23)	; emacs24 or later
++      (progn
++    (defun elscreen-e24-command-line ()
++      (when (string-match "\\`-" cl1-argi)
++        (error "Unknown option `%s'" cl1-argi))
++      (setq file-count (1+ file-count))
++      (setq inhibit-startup-buffer-menu t)
++      (let* ((file
++              (expand-file-name
++               (command-line-normalize-file-name orig-argi)
++               cl1-dir)))
++        (elscreen-command-line-find-file file file-count cl1-line cl1-column))
++      (setq cl1-line 0)
++      (setq cl1-column 0)
++      t) ; defun
++    
++    (add-hook 'after-init-hook (lambda ()
++                                 (add-to-list 'command-line-functions
++                                              'elscreen-e24-command-line t)))) ; progn
++      )
++      )) ; endif (emacs22 or prior to)
+ 
+   (static-when elscreen-on-xemacs
+     (defadvice command-line-1 (around elscreen-xmas-command-line-1 activate)

@@ -1,0 +1,11 @@
+--- a/nfbtrans.c	2004-09-21 19:52:34.341784094 -0500
++++ b/nfbtrans.c	2004-09-21 19:54:07.005727168 -0500
+@@ -6,7 +6,7 @@
+ #define LINT_ARGS
+ #define DOS
+ #else
+-#define UNIX_PATH "/usr/local/lib/"
++#define UNIX_PATH "/etc/nfbtrans/"
+ #endif             /* unix */
+ #include	<stdio.h>
+ #include <sys/types.h>

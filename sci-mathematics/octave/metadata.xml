@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-mathematics@gentoo.org</email>
+		<name>Gentoo Mathematics Project</name>
+	</maintainer>
+	<longdescription lang="en">
+	Octave is a high-level language, primarily intended for numerical computations. It provides a convenient command line interface for solving linear and nonlinear problems numerically, and for performing other numerical experiments. It may also be used as a batch-oriented language.
+	</longdescription>
+	<use>
+		<flag name="glpk">Add support for <pkg>sci-mathematics/glpk</pkg> for linear programming</flag>
+		<flag name="gui">Enable the graphical user interface</flag>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> for low level hash functions</flag>
+		<flag name="qhull">Add support for <pkg>media-libs/qhull</pkg>, to allow `delaunay', `convhull', and related functions</flag>
+		<flag name="qrupdate">Add support for <pkg>sci-libs/qrupdate</pkg>for QR and Cholesky update functions</flag>
+		<flag name="sparse">Add enhanced support for sparse matrix algebra with SuiteSparse</flag>
+	</use>
+</pkgmetadata>

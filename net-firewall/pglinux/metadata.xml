@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<changelog>https://sourceforge.net/p/peerguardian/news/</changelog>
+		<doc lang="en">https://sourceforge.net/projects/peerguardian/support</doc>
+		<bugs-to>https://sourceforge.net/p/peerguardian/bugs/</bugs-to>
+		<remote-id type="sourceforge">peerguardian</remote-id>
+	</upstream>
+	<use>
+		<flag name="cron">Install cron script</flag>
+		<flag name="logrotate">Install logrotate.d file</flag>
+	</use>
+	<longdescription lang="en">
+	PeerGuardian Linux (pgl) is a privacy oriented firewall application. It blocks
+	connections to and from hosts specified in huge blocklists (thousands or
+	millions of IP ranges). pgl is based on the Linux kernel netfilter framework
+	and iptables.
+	</longdescription>
+</pkgmetadata>

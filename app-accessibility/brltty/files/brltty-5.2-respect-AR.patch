@@ -1,0 +1,11 @@
+--- a/Programs/Makefile.in
++++ b/Programs/Makefile.in
+@@ -434,7 +434,7 @@
+ 	[ ! -f lib.def ] || mv lib.def $(API_DEF)
+ 
+ $(API_ARC): $(API_CLIENT_OBJECTS)
+-	ar rc $@ $(API_CLIENT_OBJECTS)
++	$(AR) rc $@ $(API_CLIENT_OBJECTS)
+ 	$(RANLIB) $@
+ 
+ brlapi_client.$O:

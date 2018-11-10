@@ -1,0 +1,100 @@
+From b83f0a0d1171fab0d839de23b97e0ffe3aae4d3e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 5 Sep 2018 08:46:09 +0200
+Subject: [PATCH] Fix build with SKG_DESIGNER=OFF
+
+Summary: cmake was adding designerplugin code to build with SKG_DESIGNER=OFF.
+
+Reviewers: #skrooge
+
+Differential Revision: https://phabricator.kde.org/D15282
+---
+ skgbankgui/CMakeLists.txt | 12 +++++++----
+ skgbasegui/CMakeLists.txt | 44 +++++++++++++++++++++------------------
+ 2 files changed, 32 insertions(+), 24 deletions(-)
+
+diff --git a/skgbankgui/CMakeLists.txt b/skgbankgui/CMakeLists.txt
+index 9bb197f3d..17c7c6ca2 100644
+--- a/skgbankgui/CMakeLists.txt
++++ b/skgbankgui/CMakeLists.txt
+@@ -26,12 +26,16 @@ SET(skgbankgui_SRCS
+     skgpredicatcreator.cpp
+     skgquerydelegate.cpp
+     skgunitcombobox.cpp
++)
+ 
+-    skgquerycreatordesignerplugin.cpp
+-    skgbkwidgetcollectiondesignerplugin.cpp
+-    skgpredicatcreatordesignerplugin.cpp
+-    skgunitcomboboxdesignerplugin.cpp
++IF(SKG_DESIGNER)
++    SET(skgbankgui_SRCS ${skgbankgui_SRCS}
++        skgquerycreatordesignerplugin.cpp
++        skgbkwidgetcollectiondesignerplugin.cpp
++        skgpredicatcreatordesignerplugin.cpp
++        skgunitcomboboxdesignerplugin.cpp
+     )
++ENDIF()
+ 
+ SET(LIBS Qt5::Xml skgbankmodeler skgbasemodeler skgbasegui)
+ IF(SKG_DESIGNER)
+diff --git a/skgbasegui/CMakeLists.txt b/skgbasegui/CMakeLists.txt
+index 112efe267..81b0bf8de 100644
+--- a/skgbasegui/CMakeLists.txt
++++ b/skgbasegui/CMakeLists.txt
+@@ -63,28 +63,32 @@ SET(skgbasegui_SRCS
+     skgshow.cpp
+     skgwidgetselector.cpp
+     skgsimpleperiodedit.cpp
+-
+-    skgwidgetcollectiondesignerplugin.cpp
+-    skgtabwidgetdesignerplugin.cpp
+-    skgtablewidgetdesignerplugin.cpp
+-    skgtableviewdesignerplugin.cpp
+-    skgfilteredtableviewdesignerplugin.cpp
+-    skgtreeviewdesignerplugin.cpp
+-    skgcomboboxdesignerplugin.cpp
+-    skgcolorbuttondesignerplugin.cpp
+-    skgwidgetselectordesignerplugin.cpp
+-    skgwebviewdesignerplugin.cpp
+-    skgzoomselectordesignerplugin.cpp
+-    skgcalculatoreditdesignerplugin.cpp
+-    skggraphicsviewdesignerplugin.cpp
+-    skgshowdesignerplugin.cpp
+-    skgtablewithgraphdesignerplugin.cpp
+-    skgdateeditdesignerplugin.cpp
+-    skgprogressbardesignerplugin.cpp
+-    skgperiodeditdesignerplugin.cpp
+-    skgsimpleperiodeditdesignerplugin.cpp
+ )
+ 
++IF(SKG_DESIGNER)
++    SET(skgbasegui_SRCS ${skgbasegui_SRCS}
++        skgwidgetcollectiondesignerplugin.cpp
++        skgtabwidgetdesignerplugin.cpp
++        skgtablewidgetdesignerplugin.cpp
++        skgtableviewdesignerplugin.cpp
++        skgfilteredtableviewdesignerplugin.cpp
++        skgtreeviewdesignerplugin.cpp
++        skgcomboboxdesignerplugin.cpp
++        skgcolorbuttondesignerplugin.cpp
++        skgwidgetselectordesignerplugin.cpp
++        skgwebviewdesignerplugin.cpp
++        skgzoomselectordesignerplugin.cpp
++        skgcalculatoreditdesignerplugin.cpp
++        skggraphicsviewdesignerplugin.cpp
++        skgshowdesignerplugin.cpp
++        skgtablewithgraphdesignerplugin.cpp
++        skgdateeditdesignerplugin.cpp
++        skgprogressbardesignerplugin.cpp
++        skgperiodeditdesignerplugin.cpp
++        skgsimpleperiodeditdesignerplugin.cpp
++    )
++ENDIF()
++
+ SET(LIBS KF5::Parts KF5::KIOFileWidgets KF5::NotifyConfig KF5::Notifications Qt5::QuickWidgets Qt5::PrintSupport Qt5::Svg skgbasemodeler)
+ IF(SKG_DESIGNER)
+     SET(LIBS ${LIBS} Qt5::Designer)
+-- 
+2.18.0
+

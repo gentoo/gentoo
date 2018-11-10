@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>grobian@gentoo.org</email>
+		<name>Fabian Groffen</name>
+	</maintainer>
+	<longdescription>
+		Tcsh is an enhanced, but completely compatible version of the Berkeley
+		UNIX C shell (csh). It is a command language interpreter usable both as
+		an interactive login shell and a shell script command processor. It
+		includes a command-line editor, programmable word completion, spelling
+		correction, a history mechanism, job control and a C-like syntax.
+	</longdescription>
+</pkgmetadata>

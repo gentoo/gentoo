@@ -1,0 +1,51 @@
+diff --git a/configure.in b/configure.in
+index 94e9d29..6999615 100644
+--- a/configure.in
++++ b/configure.in
+@@ -35,27 +35,18 @@ MYDOCUMENTFILES="COPYING FOSSEXCEPTION ChangeLog doc kyotocabinet.idl"
+ MYPCFILES="kyotocabinet.pc"
+ 
+ # Building flags
+-MYCFLAGS="-Wall -ansi -pedantic -fPIC -fsigned-char -g0 -O2"
+-MYCXXFLAGS="-Wall -fPIC -fsigned-char -g0 -O2"
+-MYCPPFLAGS="-I. -I\$(INCLUDEDIR) -I/usr/local/include"
++MYCFLAGS="-Wall -ansi -pedantic -fPIC -fsigned-char"
++MYCXXFLAGS="-Wall -fPIC -fsigned-char"
++MYCPPFLAGS="-I. -I\$(INCLUDEDIR)"
+ MYCPPFLAGS="$MYCPPFLAGS -DNDEBUG -D_GNU_SOURCE=1"
+ MYCPPFLAGS="$MYCPPFLAGS -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D__EXTENSIONS__"
+-MYLDFLAGS="-L. -L\$(LIBDIR) -L/usr/local/lib"
++MYLDFLAGS="-L. -L\$(LIBDIR)"
+ MYCMDLDFLAGS=""
+ MYCMDLIBS=""
+ MYLDLIBPATH=""
+ MYLDLIBPATHENV="LD_LIBRARY_PATH"
+ MYPOSTCMD="true"
+ 
+-# Building paths
+-PATH=".:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH"
+-CPATH=".:/usr/local/include:$CPATH"
+-LIBRARY_PATH=".:/usr/local/lib:$LIBRARY_PATH"
+-LD_LIBRARY_PATH=".:/usr/local/lib:$LD_LIBRARY_PATH"
+-PKG_CONFIG_PATH=".:/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
+-export PATH CPATH LIBRARY_PATH LD_LIBRARY_PATH PKG_CONFIG_PATH
+-
+-
+ 
+ #================================================================
+ # Options
+@@ -285,14 +276,6 @@ then
+   MYCMDLIBS="$MYCMDLIBS $LIBS"
+ fi
+ 
+-# As-needed linking
+-if uname | grep Linux >config.tmp
+-then
+-  MYLDFLAGS="$MYLDFLAGS -Wl,-rpath-link,.:/usr/local/lib:$MYLDLIBPATH"
+-  MYLDFLAGS="$MYLDFLAGS -Wl,--as-needed"
+-else
+-  MYCMDLIBS="$MYCMDLIBS $LIBS"
+-fi
+ 
+ # Shared libraries
+ if test "$enable_shared" != "no" && test "$enable_profile" != "yes"

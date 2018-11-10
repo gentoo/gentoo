@@ -1,0 +1,22 @@
+set up some secure defaults:
+ - services can only be accessed from localhost
+ - sanitize the runtime environment (so root's shell vars don't bleed through)
+
+--- contrib/xinetd.conf
++++ contrib/xinetd.conf
+@@ -22,5 +22,5 @@
+ #
+ #	no_access	=
+-#	only_from	=
++	only_from	= localhost
+ #	max_load	= 0
+ 	cps		= 50 10
+@@ -35,7 +35,7 @@ defaults
+ 
+ # setup environmental attributes
+ #
+-#	passenv		=
++	passenv		=
+ 	groups		= yes
+ 	umask		= 002
+ 

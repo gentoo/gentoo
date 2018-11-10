@@ -1,0 +1,10 @@
+- Remove macro for enabling large file support, this is better handled at an
+  ebuild level, where the LFS flags can be handled for multiple architectures
+- Remove static flag, which is contrary to Gentoo policy
+
+--- a/includes/linux.inc
++++ b/includes/linux.inc
+@@ -1,2 +1,2 @@
+ # define our processor specific flags
+-export PLATFORM_FLAGS = -D_FILE_OFFSET_BITS=64 -static
++export PLATFORM_FLAGS =

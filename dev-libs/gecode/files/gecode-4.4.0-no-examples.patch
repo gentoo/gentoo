@@ -1,0 +1,18 @@
+Avoid installing examples to system root.
+
+Patch from Fedora.
+
+Gentoo-bug: 488150
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -953,8 +953,7 @@
+ ALLGECODEHDR = \
+ 	$(SUPPORTHDR) $(KERNELHDR) $(SEARCHHDR) \
+         $(INTHDR) $(FLOATHDR) $(SETHDR) $(MMHDR) \
+-	$(DRIVERHDR) $(ITERHDR) $(GISTHDR) $(FLATZINCHDR) \
+-	$(INTEXAMPLEHDR)
++	$(DRIVERHDR) $(ITERHDR) $(GISTHDR) $(FLATZINCHDR)
+ ALLHDR = \
+ 	$(ALLGECODEHDR) $(THIRDHDR)
+ ALLOBJ0 = $(ALLSRC:%.cpp=%$(OBJSUFFIX)) \

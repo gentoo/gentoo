@@ -1,0 +1,88 @@
+* respect user's docdir,htmldir,pdfdir at configuration time
+* install recursive for doxygen generated
+* works for out-of-source directory installation
+
+bicatali@gentoo.org Aug 2012
+
+diff -Nur doc.orig/doxygen/Makefile.am doc/doxygen/Makefile.am
+--- doc.orig/doxygen/Makefile.am	2012-05-11 13:11:13.000000000 -0700
++++ doc/doxygen/Makefile.am	2012-08-13 13:44:27.616583722 -0700
+@@ -2,7 +2,6 @@
+ 
+ # Support doxygen documentation ?
+ 
+-docdir = $(datadir)/doc/$(PACKAGE)-$(VERSION)/doxygen
+ 
+ DISTCLEANFILES = Doxyfile doxygen-warning 
+ 
+@@ -84,29 +83,27 @@
+ 		$(RM) -rf latex; \
+ 	fi
+ 
+-# Install hooks
+-make-install-dirs:
+-	@if test '!' -d $(DESTDIR)$(docdir) ; \
+-		then mkdir -p $(DESTDIR)$(docdir) ; \
+-	fi
+ 
+-install-data-hook: make-install-dirs
++install-data-hook:
+ 	@if test -d html; then \
+-		echo Installing HTML documentation into $(DESTDIR)$(docdir) ; \
+-		$(INSTALL_DATA) html/* $(DESTDIR)$(docdir) ; \
++		echo Installing HTML documentation into $(DESTDIR)$(htmldir) ; \
++		$(MKDIR_P) $(DESTDIR)$(htmldir) ; \
++		cp -r html/* $(DESTDIR)$(htmldir) ; \
+ 	fi
+ 	@if test -f $(PACKAGE).pdf; then \
+-		echo Installing PDF manual into $(DESTDIR)$(docdir) ; \
+-		$(INSTALL_DATA) $(PACKAGE).pdf $(DESTDIR)$(docdir) ; \
++		echo Installing PDF manual into $(DESTDIR)$(pdfdir) ; \
++		$(MKDIR_P) $(DESTDIR)$(pdfdir) ; \
++		$(INSTALL_DATA) $(PACKAGE).pdf $(DESTDIR)$(pdfdir) ; \
+ 	fi
+ 	@if test -f $(PACKAGE).ps; then \
+-		echo Installing PS manual into $(DESTDIR)$(docdir) ; \
+-		$(INSTALL_DATA) $(PACKAGE).ps $(DESTDIR)$(docdir) ; \
++		echo Installing PS manual into $(DESTDIR)$(psdir) ; \
++		$(MKDIR_P) $(DESTDIR)$(psdir) ; \
++		$(INSTALL_DATA) $(PACKAGE).ps $(DESTDIR)$(psdir) ; \
+ 	fi
+ 
+ uninstall-hook: 
+ 	@echo Uninstalling doxygen documentation directory ; \
+-	rm -rf "$(DESTDIR)$(docdir)";
++	rm -rf "$(DESTDIR)$(htmldir)" "$(DESTDIR)$(psdir)" "$(DESTDIR)$(pdfdir)" ;
+ 
+ 
+ 
+diff -Nur doc.orig/Makefile.am doc/Makefile.am
+--- doc.orig/Makefile.am	2012-05-11 13:11:13.000000000 -0700
++++ doc/Makefile.am	2012-08-13 13:54:04.490647132 -0700
+@@ -4,8 +4,6 @@
+ 
+ SUBDIRS = examples stencils doxygen
+ 
+-# docdir directory to install the doc (pdf ps html) 
+-docdir = $(datadir)/doc/$(PACKAGE)-$(VERSION)
+ 
+ DVIPS=export TEXPICTS=$(srcdir); dvips
+ AM_MAKEINFOFLAGS = --no-split -I$(srcdir)
+@@ -78,7 +76,7 @@
+ # Install also the images into the directory html 
+ install-html-local:
+ 	test -z "$(htmldir)" || $(MKDIR_P) "$(DESTDIR)$(htmldir)"
+-	$(INSTALL_DATA) *.gif *.jpg $(DESTDIR)$(htmldir)
++	$(INSTALL_DATA) $(srcdir)/*.gif $(srcdir)/*.jpg $(DESTDIR)$(htmldir)
+ 
+ .PHONY: html
+ 
+@@ -86,7 +84,7 @@
+ 
+ # Install also the images into the directory containing the html files
+ install-html-local:
+-	$(INSTALL_DATA) *.gif *.jpg blitz.html
++	$(INSTALL_DATA) $(srcdir)/*.gif $(srcdir)/*.jpg $(top_builddir)/doc/blitz.html
+ 
+ endif
+ 

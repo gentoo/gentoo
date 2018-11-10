@@ -1,0 +1,133 @@
+ Makefile.in |   40 ++++++++++++++++------------------------
+ 1 files changed, 16 insertions(+), 24 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 00960d9..16d4123 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -29,9 +29,9 @@ exec_prefix =		@exec_prefix@
+ # The following definition can be set to non-null for special systems
+ # like AFS with replication.  It allows the pathnames used for installation
+ # to be different than those used for actually reference files at
+-# run-time.  INSTALL_ROOT is prepended to $prefix and $exec_prefix
++# run-time.  DESTDIR is prepended to $prefix and $exec_prefix
+ # when installing files.
+-INSTALL_ROOT =
++DESTDIR =
+ 
+ # Directory from which applications will reference the library of Tcl
+ # scripts (note: you can set the CK_LIBRARY environment variable at
+@@ -39,22 +39,22 @@ INSTALL_ROOT =
+ CK_LIBRARY =		$(prefix)/lib/ck$(VERSION)
+ 
+ # Path name to use when installing library scripts:
+-SCRIPT_INSTALL_DIR =	$(INSTALL_ROOT)$(CK_LIBRARY)
++SCRIPT_INSTALL_DIR =	$(DESTDIR)$(CK_LIBRARY)
+ 
+ # Directory in which to install the archive libck*:
+-LIB_INSTALL_DIR =	$(INSTALL_ROOT)$(exec_prefix)/lib
++LIB_INSTALL_DIR =	$(DESTDIR)$(exec_prefix)/lib
+ 
+ # Directory in which to install the program cwsh:
+-BIN_INSTALL_DIR =	$(INSTALL_ROOT)$(exec_prefix)/bin
++BIN_INSTALL_DIR =	$(DESTDIR)$(exec_prefix)/bin
+ 
+ # Directory from which the program cwsh should be referenced by scripts:
+ BIN_DIR =		$(exec_prefix)/bin
+ 
+ # Directory in which to install the include file ck.h:
+-INCLUDE_INSTALL_DIR =	$(INSTALL_ROOT)$(prefix)/include
++INCLUDE_INSTALL_DIR =	$(DESTDIR)$(prefix)/include
+ 
+ # Top-level directory for manual entries:
+-MAN_INSTALL_DIR =	$(INSTALL_ROOT)$(prefix)/man
++MAN_INSTALL_DIR = $(DESTDIR)$(prefix)/share/man
+ 
+ # Directory in which to install manual entry for cwsh:
+ MAN1_INSTALL_DIR =	$(MAN_INSTALL_DIR)/man1
+@@ -96,7 +96,7 @@ LIBS = @TCL_BUILD_LIB_SPEC@ @LIBS@ $(CURSES_LIB_SWITCHES) @DL_LIBS@ @MATH_LIBS@
+ 
+ # To change the compiler switches, for example to change from -O
+ # to -g, change the following line:
+-CFLAGS = -O
++#CFLAGS = -O
+ 
+ # To disable ANSI-C procedure prototypes reverse the comment characters
+ # on the following lines:
+@@ -231,14 +231,14 @@ configInfo: Makefile
+ 	@echo "CK_CURSES_INCLUDES = ${CURSES_INCLUDES}" >> configInfo
+ 	@echo "CK_LIBS = ${CURSES_LIB_SWITCHES} @LIBS@" >> configInfo
+ 
+-install: install-binaries install-libraries
++install: install-man install-binaries install-libraries
+ 
+ install-binaries: $(CK_LIB_FILE) cwsh
+ 	@for i in $(LIB_INSTALL_DIR) $(BIN_INSTALL_DIR) ; \
+ 	    do \
+ 	    if [ ! -d $$i ] ; then \
+ 		echo "Making directory $$i"; \
+-		mkdir $$i; \
++		mkdir -p $$i; \
+ 		chmod 755 $$i; \
+ 		else true; \
+ 		fi; \
+@@ -251,12 +251,12 @@ install-binaries: $(CK_LIB_FILE) cwsh
+ 	@$(INSTALL_PROGRAM) cwsh $(BIN_INSTALL_DIR)/cwsh
+ 
+ install-libraries:
+-	@for i in $(INSTALL_ROOT)$(prefix)/lib $(INCLUDE_INSTALL_DIR) \
++	@for i in $(DESTDIR)$(prefix)/lib $(INCLUDE_INSTALL_DIR) \
+ 		$(SCRIPT_INSTALL_DIR) ; \
+ 	    do \
+ 	    if [ ! -d $$i ] ; then \
+ 		echo "Making directory $$i"; \
+-		mkdir $$i; \
++		mkdir -p $$i; \
+ 		chmod 755 $$i; \
+ 		else true; \
+ 		fi; \
+@@ -270,13 +270,13 @@ install-libraries:
+ 	    done;
+ 
+ install-demos:
+-	@for i in $(INSTALL_ROOT)$(prefix)/lib $(SCRIPT_INSTALL_DIR) \
++	@for i in $(DESTDIR)$(prefix)/lib $(SCRIPT_INSTALL_DIR) \
+ 		$(SCRIPT_INSTALL_DIR)/demos \
+ 		$(SCRIPT_INSTALL_DIR)/demos/images ; \
+ 	    do \
+ 	    if [ ! -d $$i ] ; then \
+ 		echo "Making directory $$i"; \
+-		mkdir $$i; \
++		mkdir -p $$i; \
+ 		chmod 755 $$i; \
+ 		else true; \
+ 		fi; \
+@@ -301,11 +301,11 @@ install-demos:
+ 	    done;
+ 
+ install-man:
+-	@for i in $(MAN_INSTALL_DIR) $(MAN1_INSTALL_DIR) $(MAN3_INSTALL_DIR) $(MANN_INSTALL_DIR) ; \
++	@for i in $(MAN_INSTALL_DIR) $(MAN1_INSTALL_DIR) $(MAN3_INSTALL_DIR); \
+ 	    do \
+ 	    if [ ! -d $$i ] ; then \
+ 		echo "Making directory $$i"; \
+-		mkdir $$i; \
++		mkdir -p $$i; \
+ 		chmod 755 $$i; \
+ 		else true; \
+ 		fi; \
+@@ -326,14 +326,6 @@ install-man:
+ 		    $$i > $(MAN3_INSTALL_DIR)/$$i; \
+ 	    chmod 444 $(MAN3_INSTALL_DIR)/$$i; \
+ 	    done;
+-	@cd $(SRC_DIR)/doc; for i in *.n; \
+-	    do \
+-	    echo "Installing doc/$$i"; \
+-	    rm -f $(MANN_INSTALL_DIR)/$$i; \
+-	    sed -e '/man\.macros/r man.macros' -e '/man\.macros/d' \
+-		    $$i > $(MANN_INSTALL_DIR)/$$i; \
+-	    chmod 444 $(MANN_INSTALL_DIR)/$$i; \
+-	    done;
+ 
+ Makefile: $(SRC_DIR)/Makefile.in
+ 	$(SHELL) config.status

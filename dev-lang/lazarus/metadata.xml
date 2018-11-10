@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>amynka@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		A Borland Delphi lookalike for linux.
+		Uses the free pascal compiler.
+	</longdescription>
+	<use>
+		<flag name="minimal">Don't build extra packages from the bigide component</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">downloads</remote-id>
+	</upstream>
+</pkgmetadata>

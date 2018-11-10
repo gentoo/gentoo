@@ -1,0 +1,51 @@
+--- bubbob/images.py	2007-09-08 17:03:41.000000000 +0200
++++ bubbob/images.py	2007-09-08 17:57:45.000000000 +0200
+@@ -454,7 +454,6 @@
+     # check and maybe regenerate the colored image files
+     file = os.path.join('images', 'buildcolors.py')
+     g = {'__name__': '__auto__', '__file__': file}
+-    execfile(file, g)
+     # replace the entries 'filename_%d.ppm' by a family of entries,
+     # one for each color
+     sprmap = {}
+--- display/pclient.py	2007-09-08 17:03:41.000000000 +0200
++++ display/pclient.py	2007-09-08 17:57:45.000000000 +0200
+@@ -162,8 +162,8 @@
+         if mode[-1].has_key('cfgfile'):
+             self.trackcfgfile = mode[-1]['cfgfile']
+         else:
+-            self.trackcfgfile = os.path.join(DataChunk.SOURCEDIR,
+-                                             'http2', 'config.txt')
++            self.trackcfgfile = os.path.join(os.environ.get('HOME'),
++                                             '.bubnbros')
+         self.udpsock = None
+         self.udpsock_low = None
+         self.udpsock2 = None
+--- http2/httppages.py	2007-09-08 17:03:41.000000000 +0200
++++ http2/httppages.py	2007-09-08 17:57:45.000000000 +0200
+@@ -38,7 +38,7 @@
+ 
+ 
+ class PageServer:
+-    CONFIGFILE = 'config.txt'
++    CONFIGFILE = '.bubnbros'
+     localservers = None
+ 
+     def __init__(self, Game):
+@@ -46,7 +46,7 @@
+         self.seed = hex(random.randrange(0x1000, 0x10000))
+         #self.unique_actions = {}
+         self.localhost = gamesrv.HOSTNAME
+-        self.filename = os.path.join(LOCALDIR, self.CONFIGFILE)
++        self.filename = os.path.join(os.environ.get('HOME'), self.CONFIGFILE)
+         data = self.loadoptionfile()
+         self.globaloptions = Options(data.get('*', {}))
+         self.localoptions  = Options(data.get(self.localhost, {}))
+@@ -333,7 +333,6 @@
+                             'buildcolors.py')
+         if os.path.exists(file):
+             g = {'__name__': '__auto__', '__file__': file}
+-            execfile(file, g)
+ 
+         if port:
+             address = '%s:%s' % (host, port)

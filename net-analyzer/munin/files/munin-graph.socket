@@ -1,0 +1,8 @@
+[Unit]
+Description=Munin FastCGI Graph Socket
+
+[Socket]
+ListenStream=/run/munin/fcgi-graph.sock
+
+[Install]
+WantedBy=sockets.target

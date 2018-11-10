@@ -1,0 +1,70 @@
+--- lucidlife-0.9.2/configure.ac
++++ lucidlife-0.9.2/configure.ac
+@@ -23,7 +23,7 @@
+ AC_SUBST(CFLAGS)
+ AC_SUBST(LDFLAGS)
+ 
+-GNOME_MODULES="[gtk+-2.0 >= 2.6.0 gnome-vfs-2.0 >= 2.0.0]"
++GNOME_MODULES="[gtk+-2.0 >= 2.6.0]"
+ PKG_CHECK_MODULES(GNOME, $GNOME_MODULES)
+ AC_SUBST(GNOME_CFLAGS)
+ AC_SUBST(GNOME_LIBS)
+--- lucidlife-0.9.2/src/lucidlife.c
++++ lucidlife-0.9.2/src/lucidlife.c
+@@ -35,8 +35,6 @@
+ 
+ #include <gtk/gtk.h>
+ #include <glib.h>
+-#include <libgnomevfs/gnome-vfs-init.h>
+-#include <libgnomevfs/gnome-vfs-utils.h>
+ 
+ #include <libintl.h>
+ #define _(String) gettext (String)
+@@ -418,7 +416,6 @@
+ 	state_from_config();
+ 	load_recent_files_list();
+ 
+-	gnome_vfs_init();
+ 	gtk_init(&argc, &argv);
+ 	init_gui();
+ 
+@@ -445,8 +442,6 @@
+ 
+ 	main_loop();
+ 
+-	gnome_vfs_shutdown();
+-
+ 	return 0;
+ }
+ 
+@@ -1635,7 +1630,7 @@
+ 
+ void activate_url(GtkAboutDialog *about, const gchar *url, gpointer data)
+ {
+-	gnome_vfs_url_show (url);
++	gtk_show_uri (NULL, url, GDK_CURRENT_TIME, NULL );
+ }
+ 
+ /*** Bound Function Helpers ***/
+@@ -1859,7 +1856,7 @@
+ 	char*  url;
+ 
+ 	url = dsprintf("file://%s/%s", DOCDIR, filename);
+-	gnome_vfs_url_show(url);
++	gtk_show_uri (NULL, url, GDK_CURRENT_TIME, NULL );
+ 	free(url);
+ }
+ 
+--- lucidlife-0.9.2/lucidlife.desktop.in
++++ lucidlife-0.9.2/lucidlife.desktop.in
+@@ -2,8 +2,7 @@
+ Name=LucidLife
+ Comment=A user-friendly version of Conway's game of life
+ Exec=lucidlife
+-Icon=lucidlife.png
++Icon=lucidlife
+ Terminal=false
+ Type=Application
+-Categories=GNOME;Application;Game;
+-Encoding=UTF-8
++Categories=GNOME;GTK;Game;

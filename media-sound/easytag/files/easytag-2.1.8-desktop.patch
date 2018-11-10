@@ -1,0 +1,11 @@
+--- easytag.desktop.in
++++ easytag.desktop.in
+@@ -6,7 +6,7 @@
+ Type=Application
+ Icon=easytag
+ Categories=GTK;AudioVideo;AudioVideoEditing;
+-MimeType=x-directory/normal;inode/directory;audio/x-mp3;audio/x-mpeg;audio/mpeg;application/ogg;audio/x-vorbis+ogg;audio/x-flac;audio/x-musepack;audio/x-ape;
++MimeType=audio/x-mp3;audio/x-mpeg;audio/mpeg;application/ogg;audio/x-vorbis+ogg;audio/x-flac;audio/x-musepack;audio/x-ape;
+ Exec=easytag %F
+ Terminal=false
+ StartupNotify=true

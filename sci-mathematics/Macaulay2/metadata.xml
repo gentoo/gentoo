@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <use>
+    <flag name="optimization">Accept upstream's choices for -O option, i.e. -O3 almost everywhere.</flag>
+  </use>
+  <longdescription lang="en">
+  Macaulay2 is a research tool for algraic geometry and commutative
+  algebra. 
+</longdescription>
+</pkgmetadata>

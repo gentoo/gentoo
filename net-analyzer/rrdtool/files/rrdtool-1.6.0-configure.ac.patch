@@ -1,0 +1,25 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -177,7 +177,7 @@
+ AC_PROG_CPP
+ AC_PROG_CC
+ AM_PROG_CC_C_O
+-AC_PROG_LIBTOOL
++LT_INIT
+ 
+ dnl Try to detect/use GNU features
+ CFLAGS="$CFLAGS -D_GNU_SOURCE"
+@@ -239,13 +239,6 @@
+ AC_CHECK_FUNC(acos,  , AC_CHECK_LIB(m, acos))
+ AC_CHECK_FUNC(round, , AC_CHECK_LIB(m, round))
+ 
+-
+-
+-dnl add pic flag in any case this makes sure all our code is relocatable
+-eval `./libtool --config | grep pic_flag=`
+-CFLAGS="$CFLAGS $pic_flag"
+-
+-
+ dnl Checks for library functions.
+ AC_FUNC_STRFTIME
+ AC_FUNC_VPRINTF

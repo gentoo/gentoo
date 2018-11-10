@@ -1,0 +1,23 @@
+--- a/sprite.c	2007-11-15 18:26:30.000000000 -0500
++++ b/sprite.c	2007-11-15 18:26:57.000000000 -0500
+@@ -2,6 +2,7 @@
+ #include <ctype.h>
+ #include <stdlib.h>
+ #include <stdio.h>
++#include <unistd.h>
+ 
+ #ifndef WIN32
+ #include "config.h"
+@@ -188,6 +189,12 @@
+  
+ 	if (!(f=fopen(filename,"rb")))
+ 	{
++		chdir(DATA_PATH);
++	}
++	if (!(f=fopen(filename,"rb"))) {
++		chdir(DATA_PATH "/../");
++	}
++	if (!(f=fopen(filename,"rb"))) {
+ 		unsigned char msg[256];
+ 		snprintf(msg,256,"Error opening file \"%s\"!\n",filename);
+ 		ERROR(msg);

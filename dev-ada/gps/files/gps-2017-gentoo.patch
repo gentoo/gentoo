@@ -1,0 +1,339 @@
+--- gps-9999/aclocal.m4.old	2017-05-13 21:59:20.129039064 +0200
++++ gps-9999/aclocal.m4	2017-05-13 22:02:12.637234659 +0200
+@@ -37,7 +37,7 @@
+   HAVE_GNAT_PROJECT_$1=yes
+ else
+   # Try with "gnatls", in case gprls was not available
+-  if AC_TRY_COMMAND([gnat ls -Pconftest.gpr system.ads > /dev/null 2>conftest.out])
++  if AC_TRY_COMMAND([@GNAT@ ls -Pconftest.gpr system.ads > /dev/null 2>conftest.out])
+   then
+     HAVE_GNAT_PROJECT_$1=yes
+   else
+@@ -156,7 +156,7 @@
+ 
+ AC_DEFUN(AM_PATH_GNAT,
+ [
+-   AC_PATH_PROG(GNATMAKE, gnatmake, no)
++   AC_PATH_PROG(GNATMAKE, @GNATMAKE@, no)
+ 
+    if test x$GNATMAKE = xno ; then
+       AC_MSG_ERROR(I could not find gnatmake. See the file 'INSTALL' for more details.)
+@@ -279,7 +279,7 @@
+     AC_MSG_RESULT($GTK_PREFIX $GLIB_PREFIX $ATK_PREFIX $PANGO_PREFIX $CAIRO_PREFIX)
+   fi
+ 
+-  AC_PATH_PROG(GNATDRV, gnat, no)
++  AC_PATH_PROG(GNATDRV, @GNAT@, no)
+   min_gtk_version=ifelse([$1], ,2.0.0,$1)
+   AC_MSG_CHECKING(for GtkAda - version >= $min_gtk_version)
+   GTKADA_PRJ=`$GNATDRV ls -vP1 -Pgtkada 2>&1 | grep gtkada.gpr | grep Parsing | cut -d'"' -f2 | head -1`
+--- gps-gps-17.0/templates_parser/templates_parser.gpr.old	2017-05-18 21:34:42.892039427 +0200
++++ gps-gps-17.0/templates_parser/templates_parser.gpr	2017-05-18 21:35:16.661512990 +0200
+@@ -55,7 +55,7 @@
+ 
+    end Naming;
+ 
+-   Common_Options := ("-gnat05");
++   Common_Options := ("-gnat05", "-fPIC");
+    --  Common options used for the Debug and Release modes
+ 
+    Debug_Options :=
+--- gps-gps-17.0/shared.gpr.in.old	2017-05-18 21:35:56.475892075 +0200
++++ gps-gps-17.0/shared.gpr.in	2017-05-18 21:36:24.972447550 +0200
+@@ -24,7 +24,7 @@
+    end IDE;
+ 
+    package Compiler is
+-      Common := ("-g", "-gnat12");
++      Common := ("-g", "-gnat12", "-fPIC");
+       Optimize := ();
+ 
+       case OS is
+@@ -83,6 +83,7 @@
+          when "false" =>
+             null;
+       end case;
++      for Driver use External ("CC", "gcc");
+    end Linker;
+ 
+ end Shared;
+--- gps-gps-17.0/common/common_with_xmlada.gpr.in.old	2017-05-18 21:37:25.302506085 +0200
++++ gps-gps-17.0/common/common_with_xmlada.gpr.in	2017-05-18 21:37:58.472988222 +0200
+@@ -13,7 +13,7 @@
+       for Switches ("Ada") use Shared.Compiler'Switches ("Ada");
+       for Switches ("C") use Shared.Compiler'Switches ("C");
+       for Switches ("test_htables.adb") use ("-g", "-O2", "-gnatwue");
+-      for Switches ("s-memory.adb") use ("-g", "-O2", "-gnatpg");
++      for Switches ("s-memory.adb") use ("-g", "-O2", "-gnatpg", "-fPIC");
+ 
+       No_Checks := ("-g", "-O2", "-gnat2012", "-gnatpn");
+ 
+--- gps-gps-17.0/common/common_no_xmlada.gpr.in.old	2017-05-18 21:37:31.406410812 +0200
++++ gps-gps-17.0/common/common_no_xmlada.gpr.in	2017-05-18 21:38:14.796733359 +0200
+@@ -12,7 +12,7 @@
+       for Switches ("Ada") use Shared.Compiler'Switches ("Ada");
+       for Switches ("C") use Shared.Compiler'Switches ("C");
+       for Switches ("test_htables.adb") use ("-g", "-O2", "-gnatwue");
+-      for Switches ("s-memory.adb") use ("-g", "-O2", "-gnatpg");
++      for Switches ("s-memory.adb") use ("-g", "-O2", "-gnatpg", "-fPIC");
+ 
+       No_Checks := ("-g", "-O2", "-gnat2012", "-gnatpn");
+ 
+--- gps-gps-17.0/widgets/widgets.gpr.old	2017-05-18 22:26:05.117847006 +0200
++++ gps-gps-17.0/widgets/widgets.gpr	2017-05-18 22:21:01.646368091 +0200
+@@ -12,6 +12,7 @@
+    package Compiler extends Shared.Compiler is
+       for Switches ("C") use
+         Shared.Compiler'Switches ("C") & GnatColl_Gtk.Gtk_Include;
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+    package IDE renames Shared.IDE;
+--- gps-gps-17.0/cli/Makefile.old	2017-05-19 08:07:44.591042479 +0200
++++ gps-gps-17.0/cli/Makefile	2017-05-19 08:08:50.086991123 +0200
+@@ -1,8 +1,9 @@
+ GPRBUILD=gprbuild
+ GPRCLEAN=gprclean
++GPRBUILD_FLAGS=0
+ 
+ all default:
+-	$(GPRBUILD) -p -Pcli
++	$(GPRBUILD) $(GPRBUILD_FLAGS) -p -Pcli
+ 
+ clean:
+ 	$(GPRCLEAN) -q -r -Pcli
+--- gps-gps-17.0/gps/gps.gpr.old	2017-05-19 09:24:19.438123599 +0200
++++ gps-gps-17.0/gps/gps.gpr	2017-05-19 09:24:58.639492518 +0200
+@@ -75,7 +75,7 @@
+       end case;
+       for Switches ("Ada") use Linker'Switches ("Ada")
+          & Shared.Linker'Switches ("Ada");
+-
++      for Driver use External ("CC", "gcc");
+       --  for Switches ("Ada") use ("-lgmem");
+       --  for Switches ("Ada") use ("-pg");
+    end Linker;
+--- gps-gps-17.0/testsuite/Makefile.old	2017-05-19 11:08:48.966913663 +0200
++++ gps-gps-17.0/testsuite/Makefile	2017-05-19 11:06:17.245366714 +0200
+@@ -1,5 +1,6 @@
+ GPRBUILD=gprbuild
+ GPRCLEAN=gprclean
++GPRBUILD_FLAGS=
+ 
+ SYS := $(shell gcc -dumpmachine)
+ ifeq ($(OS),Windows_NT)
+@@ -14,7 +14,7 @@
+ endif
+ 
+ all default: package
+-	$(GPRBUILD) -P testsuite_drivers.gpr -m -XOS=${OS} -j0 -XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable
++	$(GPRBUILD) $(GPRBUILD_FLAGS) -P testsuite_drivers.gpr -m -XOS=${OS} -j0 -XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable
+ 
+ package:
+ 	mkdir -p share/doc
+--- gps-gps-17.0/testsuite/testsuite_drivers.gpr.old	2017-05-19 11:21:20.645705481 +0200
++++ gps-gps-17.0/testsuite/testsuite_drivers.gpr	2017-05-19 11:15:42.163206405 +0200
+@@ -10,6 +10,10 @@
+    for Object_Dir use "obj";
+    for Exec_Dir use "bin";
+ 
++   package Compiler is
++      for Switches ("Ada") use ("-fPIC");
++   end Compiler;
++
+    package Builder is
+       for Switches ("Ada") use ("-gnat12", "-ws", "-g", "-j0", "-m", "-gnaty");
+    end Builder;
+--- gps-gps-17.0/Makefile.in.old	2017-05-19 11:49:47.172018411 +0200
++++ gps-gps-17.0/Makefile.in	2017-05-19 11:50:24.653412280 +0200
+@@ -10,7 +10,7 @@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+ INSTALL_DATA    = @INSTALL_DATA@
+ GNATCOLL_INSTALL  = @GNATCOLL_INSTALL@
+-prefix          = @prefix@
++prefix          = $(DESTDIR)@prefix@
+ bindir          = $(prefix)/bin
+ sharedir        = $(prefix)/share
+ examplesdir     = $(prefix)/share/examples/gps
+--- gps-gps-17.0/docs/Makefile.in.old	2017-05-19 11:54:52.805076624 +0200
++++ gps-gps-17.0/docs/Makefile.in	2017-05-19 11:55:24.332566945 +0200
+@@ -1,4 +1,4 @@
+-prefix = @prefix@
++prefix = $(DESTDIR)@prefix@
+ docdir = $(prefix)/share/doc/gps
+ sharedir = $(prefix)/share/gps
+ 
+--- gps-gpl-2017-src/share/support/core/gnat_help_menus.py.old	2017-11-23 21:41:11.897912345 +0100
++++ gps-gpl-2017-src/share/support/core/gnat_help_menus.py	2017-11-23 21:44:53.019038030 +0100
+@@ -25,7 +25,7 @@
+    # GPRbuild
+    'gprbuild': {"GPR Tools User's Guide":
+                 ('gprbuild/html/gprbuild_ug.html', 'GPR/')},
+-   'gnatls': {
++   '@GNATLS@': {
+        # Ada RMs
+        "Ada 2005 Reference Manual": ('gnat/html/arm05.html', 'Ada/'),
+        "Ada 2012 Reference Manual": ('gnat/html/arm12.html', 'Ada/'),
+@@ -86,8 +86,8 @@
+ 
+         for exec_name in _DOC_ENTRIES.keys():
+             executable = exec_name
+-            if exec_name == 'gnatls' and GPS.get_target():
+-                executable = '{}-gnatls'.format(GPS.get_target())
++            if exec_name == '@GNATLS@' and GPS.get_target():
++                executable = '{}-@GNATLS@'.format(GPS.get_target())
+             ex = os_utils.locate_exec_on_path(executable)
+             if ex:
+                 for descr, tup in _DOC_ENTRIES[exec_name].iteritems():
+--- gps-gpl-2017-src/share/support/core/toolchains.py.old	2017-11-23 21:46:11.969652447 +0100
++++ gps-gpl-2017-src/share/support/core/toolchains.py	2017-11-23 21:47:21.723427305 +0100
+@@ -16,11 +16,11 @@
+        nullified by using an empty value in the corresponding tag
+   -->
+   <toolchain_default>
+-    <gnat_driver>gnat</gnat_driver>
+-    <gnat_list>gnatls</gnat_list>
++    <gnat_driver>@GNAT@</gnat_driver>
++    <gnat_list>@GNATLS@</gnat_list>
+     <debugger>gdb</debugger>
+     <cpp_filt>c++filt</cpp_filt>
+-    <compiler lang="ada">gnatmake</compiler>
++    <compiler lang="ada">@GNATMAKE@</compiler>
+     <compiler lang="c">gcc</compiler>
+     <compiler lang="c++">g++</compiler>
+     <compiler lang="asm">gcc</compiler>
+--- gps-gpl-2017-src/share/support/core/projects.py.old	2017-11-23 21:49:13.477462632 +0100
++++ gps-gpl-2017-src/share/support/core/projects.py	2017-11-23 21:51:53.774640693 +0100
+@@ -143,7 +143,7 @@
+           <string />
+        </index>
+        <specialized_index value="Ada">
+-          <choice default="true" >gnatmake</choice>
++          <choice default="true" >@GNATMAKE@</choice>
+        </specialized_index>
+    </project_attribute>
+ 
+@@ -163,7 +163,7 @@
+        description="The gnatls command used to find where the Ada run time files are installed (including optional arguments, e.g. gnatls --RTS=sjlj)."
+        hide_in="all"
+        label="Gnatls">
+-       <choice default="true" >gnatls</choice>
++       <choice default="true" >@GNATLS@</choice>
+        <string />
+    </project_attribute>
+ 
+@@ -175,7 +175,7 @@
+        description="The gnat driver used to run the various commands associated with the GNAT toolchain."
+        hide_in="all"
+        label="Gnat">
+-       <choice default="true" >gnat</choice>
++       <choice default="true" >@GNAT@</choice>
+        <string />
+    </project_attribute>
+ 
+--- gps-gpl-2017-src/cli/src/gps-cli_utils.adb.old	2017-11-23 22:00:22.716652753 +0100
++++ gps-gpl-2017-src/cli/src/gps-cli_utils.adb	2017-11-23 22:01:19.885640611 +0100
+@@ -166,7 +166,7 @@
+ 
+       --  Set GNAT version
+       Kernel.Registry.Environment.Set_Path_From_Gnatls
+-        ("gnatls", GNAT_Version);
++        ("@GNATLS@", GNAT_Version);
+    end Create_Kernel_Context;
+ 
+    ----------------------------
+--- gps-gpl-2017-src/toolchains_editor/core/src/toolchains.adb.old	2017-11-23 22:02:52.819994229 +0100
++++ gps-gpl-2017-src/toolchains_editor/core/src/toolchains.adb	2017-11-23 22:07:20.326248295 +0100
+@@ -309,12 +309,13 @@
+                else
+                   Set_Command
+                     (Tc, GNAT_Driver,
+-                     To_String (Full_Path) & "gnat",
++                     To_String (Full_Path) & "@GNAT@",
+                      From_Default,
+                      Is_Default_Path);
+                   Set_Command
+                     (Tc, GNAT_List,
+-                     To_String (Full_Path) & "gnatls",
++                     To_String (Full_Path) &
++                        "@GNATLS@",
+                      From_Default,
+                      Is_Default_Path);
+                   Set_Command
+@@ -728,10 +728,10 @@
+       begin
+          case Name is
+             when GNAT_List =>
+-               return "gnatls";
++               return "@GNATLS@";
+ 
+             when GNAT_Driver =>
+-               return "gnat";
++               return "@GNAT@";
+ 
+             when Debugger =>
+                return "gdb";
+@@ -2000,15 +2000,18 @@
+          Manager            => Toolchain_Manager (Manager),
+          Refs               => 0);
+ 
+-      Set_Command (Native_Toolchain, GNAT_Driver, "gnat", From_Default, True);
+-      Set_Command (Native_Toolchain, GNAT_List, "gnatls", From_Default, True);
++      Set_Command (Native_Toolchain, GNAT_Driver,
++         "@GNAT@", From_Default, True);
++      Set_Command (Native_Toolchain, GNAT_List,
++         "@GNATLS@", From_Default, True);
+       Set_Command (Native_Toolchain, Debugger, "gdb", From_Default, True);
+       Set_Command (Native_Toolchain, CPP_Filt, "c++filt", From_Default, True);
+ 
+       Compute_Predefined_Paths (Native_Toolchain);
+ 
+       if Get_Compiler (Native_Toolchain, "Ada") = No_Compiler then
+-         Add_Compiler (Native_Toolchain, "Ada", "gnatmake", From_Default);
++         Add_Compiler (Native_Toolchain, "Ada",
++            "@GNATMAKE@", From_Default);
+       end if;
+ 
+       if Get_Compiler (Native_Toolchain, "C") = No_Compiler then
+--- gps-gpl-2017-src/gps/Makefile.old	2017-12-10 20:29:18.267622400 +0100
++++ gps-gpl-2017-src/gps/Makefile	2017-12-10 20:29:34.564312700 +0100
+@@ -45,7 +45,8 @@
+ 	for f in ../kernel/generated/*; do cat $$f | tr -d '\015' > $$f-aux; mv -f $$f-aux $$f; done
+ endif
+ 	$(GPRBUILD) $(GPRBUILD_FLAGS) -m -p -ws -XTP_TASKING=No_Tasking \
+-	  $(GPRBUILD_BUILD_TYPE_FLAGS) -Pgps -largs `pkg-config gmodule-2.0 --libs`
++	  $(GPRBUILD_BUILD_TYPE_FLAGS) -Pgps -largs `pkg-config gmodule-2.0 --libs` \
++	  -cargs:Ada $(ADAFLAGS) -cargs:C ${CFLAGS}
+ 
+ resources:
+ ifeq ($(OS),Windows_NT)
+--- gps-gpl-2017-src/common/common_no_xmlada.gpr.in.old	2017-12-10 20:48:13.986166250 +0100
++++ gps-gpl-2017-src/common/common_no_xmlada.gpr.in	2017-12-10 20:48:29.654872055 +0100
+@@ -22,6 +22,7 @@
+              for Switches ("dynamic_arrays.adb") use No_Checks;
+           when "Debug" =>
+       end case;
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+    package Naming is
+--- gps-gpl-2017-src/common/common_with_xmlada.gpr.in.old	2017-12-10 20:48:37.352727540 +0100
++++ gps-gpl-2017-src/common/common_with_xmlada.gpr.in	2017-12-10 20:48:50.423482155 +0100
+@@ -23,6 +23,7 @@
+              for Switches ("dynamic_arrays.adb") use No_Checks;
+           when "Debug" =>
+       end case;
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+    package Binder is
+--- gps-gpl-2017-src/shared.gpr.in.old	2017-12-10 20:52:51.117967249 +0100
++++ gps-gpl-2017-src/shared.gpr.in	2017-12-10 20:53:15.627507886 +0100
+@@ -56,6 +56,7 @@
+                );
+             for Switches ("C") use Optimize & ("-g", "-O2");
+       end case;
++      for Driver ("C") use External ("CC", "gcc");
+    end Compiler;
+ 
+    package Binder is

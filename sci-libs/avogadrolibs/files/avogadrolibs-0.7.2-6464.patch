@@ -1,0 +1,16 @@
+ cmake/AvogadroLibsConfig.cmake.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/AvogadroLibsConfig.cmake.in b/cmake/AvogadroLibsConfig.cmake.in
+index ad57195..8a63400 100644
+--- a/cmake/AvogadroLibsConfig.cmake.in
++++ b/cmake/AvogadroLibsConfig.cmake.in
+@@ -10,7 +10,7 @@ set(AvogadroLibs_VERSION         "${AvogadroLibs_VERSION_MAJOR}.${AvogadroLibs_V
+ 
+ set(AvogadroLibs_INSTALL_PREFIX  "@CMAKE_INSTALL_PREFIX@")
+ set(AvogadroLibs_INCLUDE_DIRS    "${AvogadroLibs_INSTALL_PREFIX}/@INSTALL_INCLUDE_DIR@")
+-set(AvogadroLibs_LIBRARY_DIR     "${AvogadroLibs_INSTALL_PREFIX}/@INSTALL_LIBRARY_DIR@@LIB_SUFFIX@")
++set(AvogadroLibs_LIBRARY_DIR     "${AvogadroLibs_INSTALL_PREFIX}/@INSTALL_LIBRARY_DIR@")
+ set(AvogadroLibs_RUNTIME_DIR     "${AvogadroLibs_INSTALL_PREFIX}/@INSTALL_RUNTIME_DIR@")
+ set(AvogadroLibs_CMAKE_DIR       "${AvogadroLibs_LIBRARY_DIR}/cmake/avogadrolibs")
+ 

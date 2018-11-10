@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sysadmin@gentoo.org</email>
+    <name>Gentoo Sysadmin Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    This program is designed to accept passive service check results
+    from clients that use the send_nsca utility (which is included in
+    this package) and pass them along to the Nagios process by using
+    the external command interface. The program can either be run as a
+    standalone daemon or as a service under inetd. If you have
+    libmcrypt installed on your systems, you can choose from multiple
+    crypto algorithms (DES, 3DES, CAST, xTEA, Twofish, LOKI97,
+    RJINDAEL, SERPENT, GOST, SAFER/SAFER+, etc.) for encrypting the
+    traffic between the client and the server.  Encryption is
+    important in this addon, as it prevents unauthorized users from
+    sending bogus check results to Nagios. Read the included SECURITY
+    document for more information.
+
+    This package provides the send_nsca utility running on the client.
+  </longdescription>
+  <use>
+    <flag name="crypt">
+      Build support for crypted communication with nsca, through
+      <pkg>dev-libs/libmcrypt</pkg>. It's recommended not to disable this
+      flag unless all the communication will be handled in an
+      absolutely safe environment.
+    </flag>
+    <flag name="minimal">
+      Only build and install the send_nsca command and not the
+      daemon. This allows a very minimal install with no overhead when
+      setting up a node.
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">nagios</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,112 @@
+diff -Nauru lapack-3.2.1.old/TESTING/EIG/Makefile lapack-3.2.1/TESTING/EIG/Makefile
+--- lapack-3.2.1.old/TESTING/EIG/Makefile	2008-11-17 17:51:24.000000000 -0500
++++ lapack-3.2.1/TESTING/EIG/Makefile	2009-12-12 11:23:22.000000000 -0500
+@@ -126,25 +126,25 @@
+ double: ../xeigtstd
+ complex16: ../xeigtstz
+ 
+-../xeigtsts: $(SEIGTST) $(SCIGTST) $(AEIGTST) ; \
+-          $(LOADER) $(LOADOPTS) -o xeigtsts \
+-          $(SEIGTST) $(SCIGTST) $(AEIGTST) ../../$(TMGLIB) \
+-	  ../../$(LAPACKLIB) $(BLASLIB) && mv xeigtsts $@
+-
+-../xeigtstc: $(CEIGTST) $(SCIGTST) $(AEIGTST) ; \
+-          $(LOADER) $(LOADOPTS) -o xeigtstc \
+-          $(CEIGTST) $(SCIGTST) $(AEIGTST) ../../$(TMGLIB) \
+-	  ../../$(LAPACKLIB) $(BLASLIB) && mv xeigtstc $@
+-
+-../xeigtstd: $(DEIGTST) $(DZIGTST) $(AEIGTST) ; \
+-          $(LOADER) $(LOADOPTS) -o xeigtstd \
+-          $(DEIGTST) $(DZIGTST) $(AEIGTST) ../../$(TMGLIB) \
+-	  ../../$(LAPACKLIB) $(BLASLIB) && mv xeigtstd $@
+-
+-../xeigtstz: $(ZEIGTST) $(DZIGTST) $(AEIGTST) ; \
+-          $(LOADER) $(LOADOPTS) -o xeigtstz \
+-          $(ZEIGTST) $(DZIGTST) $(AEIGTST) ../../$(TMGLIB) \
+-	  ../../$(LAPACKLIB) $(BLASLIB) && mv xeigtstz $@
++../xeigtsts: $(SEIGTST) $(SCIGTST) $(AEIGTST)
++	$(LOADER) $(LOADOPTS) \
++	$(SEIGTST) $(SCIGTST) $(AEIGTST) ../../$(TMGLIB) \
++	../../$(LAPACKLIB) $(BLASLIB) -o ../xeigtsts 
++
++../xeigtstc: $(CEIGTST) $(SCIGTST) $(AEIGTST)
++	$(LOADER) $(LOADOPTS) \
++	$(CEIGTST) $(SCIGTST) $(AEIGTST) ../../$(TMGLIB) \
++	../../$(LAPACKLIB) $(BLASLIB) -o ../xeigtstc 
++
++../xeigtstd: $(DEIGTST) $(DZIGTST) $(AEIGTST)
++	$(LOADER) $(LOADOPTS) \
++	$(DEIGTST) $(DZIGTST) $(AEIGTST) ../../$(TMGLIB) \
++	../../$(LAPACKLIB) $(BLASLIB) -o ../xeigtstd
++
++../xeigtstz: $(ZEIGTST) $(DZIGTST) $(AEIGTST)
++	$(LOADER) $(LOADOPTS) \
++	$(ZEIGTST) $(DZIGTST) $(AEIGTST) ../../$(TMGLIB) \
++	../../$(LAPACKLIB) $(BLASLIB) -o ../xeigtstz
+ 
+ $(AEIGTST): $(FRC)
+ $(SCIGTST): $(FRC)
+@@ -169,4 +169,5 @@
+ zchkee.o: zchkee.f
+ 	$(FORTRAN) $(DRVOPTS) -c $< -o $@
+ 
+-.f.o : ; $(FORTRAN) $(OPTS) -c $< -o $@
++.f.o : 
++	$(FORTRAN) $(OPTS) -c $< -o $@
+diff -Nauru lapack-3.2.1.old/TESTING/LIN/Makefile lapack-3.2.1/TESTING/LIN/Makefile
+--- lapack-3.2.1.old/TESTING/LIN/Makefile	2009-02-10 12:23:05.000000000 -0500
++++ lapack-3.2.1/TESTING/LIN/Makefile	2009-12-12 07:22:41.000000000 -0500
+@@ -238,43 +238,43 @@
+ 
+ ../xlintsts : $(ALINTST) $(SLINTST) $(SCLNTST)
+ 	$(LOADER) $(LOADOPTS)  $(ALINTST) $(SCLNTST) $(SLINTST) \
+-        ../../$(TMGLIB) ../../$(LAPACKLIB) $(XBLASLIB)  $(BLASLIB) -o xlintsts && mv xlintsts $@
++        ../../$(TMGLIB) ../../$(LAPACKLIB) $(XBLASLIB)  $(BLASLIB) -o ../xlintsts 
+ 
+ ../xlintstc : $(ALINTST) $(CLINTST) $(SCLNTST)
+ 	$(LOADER) $(LOADOPTS)  $(ALINTST) $(SCLNTST) $(CLINTST) \
+-        ../../$(TMGLIB) ../../$(LAPACKLIB) $(XBLASLIB)  $(BLASLIB) -o xlintstc && mv xlintstc $@
++        ../../$(TMGLIB) ../../$(LAPACKLIB) $(XBLASLIB)  $(BLASLIB) -o ../xlintstc 
+  
+ ../xlintstd : $(ALINTST) $(DLINTST) $(DZLNTST)
+ 	$(LOADER) $(LOADOPTS) $^ \
+-        ../../$(TMGLIB) ../../$(LAPACKLIB) $(XBLASLIB) $(BLASLIB) -o xlintstd && mv xlintstd $@
++        ../../$(TMGLIB) ../../$(LAPACKLIB) $(XBLASLIB) $(BLASLIB) -o ../xlintstd 
+  
+ ../xlintstz : $(ALINTST) $(ZLINTST) $(DZLNTST)
+ 	$(LOADER) $(LOADOPTS)  $(ALINTST) $(DZLNTST) $(ZLINTST) \
+-        ../../$(TMGLIB) ../../$(LAPACKLIB) $(XBLASLIB)  $(BLASLIB) -o xlintstz && mv xlintstz $@
++        ../../$(TMGLIB) ../../$(LAPACKLIB) $(XBLASLIB)  $(BLASLIB) -o ../xlintstz 
+  
+ ../xlintstds : $(DSLINTST)
+ 	$(LOADER) $(LOADOPTS)  $(DSLINTST) \
+-        ../../$(TMGLIB) ../../$(LAPACKLIB) $(BLASLIB) -o xlintstds && mv xlintstds $@
++        ../../$(TMGLIB) ../../$(LAPACKLIB) $(BLASLIB) -o ../xlintstds 
+  
+ ../xlintstzc : $(ZCLINTST)
+ 	$(LOADER) $(LOADOPTS)  $(ZCLINTST) \
+-        ../../$(TMGLIB) ../../$(LAPACKLIB) $(BLASLIB) -o xlintstzc && mv xlintstzc $@
++        ../../$(TMGLIB) ../../$(LAPACKLIB) $(BLASLIB) -o ../xlintstzc 
+  
+ ../xlintstrfs : $(SLINTSTRFP)
+ 	$(LOADER) $(LOADOPTS)  $(SLINTSTRFP) \
+-        ../../$(TMGLIB) ../../$(LAPACKLIB) $(BLASLIB) -o xlintstrfs && mv xlintstrfs $@
++        ../../$(TMGLIB) ../../$(LAPACKLIB) $(BLASLIB) -o ../xlintstrfs 
+  
+ ../xlintstrfd : $(DLINTSTRFP)
+ 	$(LOADER) $(LOADOPTS)  $(DLINTSTRFP) \
+-        ../../$(TMGLIB) ../../$(LAPACKLIB) $(BLASLIB) -o xlintstrfd && mv xlintstrfd $@
++        ../../$(TMGLIB) ../../$(LAPACKLIB) $(BLASLIB) -o ../xlintstrfd
+  
+ ../xlintstrfc : $(CLINTSTRFP)
+ 	$(LOADER) $(LOADOPTS)  $(CLINTSTRFP) \
+-        ../../$(TMGLIB) ../../$(LAPACKLIB) $(BLASLIB) -o xlintstrfc && mv xlintstrfc $@
++        ../../$(TMGLIB) ../../$(LAPACKLIB) $(BLASLIB) -o ../xlintstrfc 
+  
+ ../xlintstrfz : $(ZLINTSTRFP)
+ 	$(LOADER) $(LOADOPTS)  $(ZLINTSTRFP) \
+-        ../../$(TMGLIB) ../../$(LAPACKLIB) $(BLASLIB) -o xlintstrfz && mv xlintstrfz $@
++        ../../$(TMGLIB) ../../$(LAPACKLIB) $(BLASLIB) -o ../xlintstrfz
+  
+ $(ALINTST): $(FRC)
+ $(SCLNTST): $(FRC)

@@ -1,0 +1,27 @@
+From 263d95ce191421a51d4b2d088297700032a8987b Mon Sep 17 00:00:00 2001
+From: eroen <eroen@occam.eroen.eu>
+Date: Mon, 19 Dec 2016 19:53:15 +0100
+Subject: [PATCH] Check for librevenge-stream if tests are enabled
+
+X-Gentoo-Bug: 603098
+X-Gentoo-Bug-URL: https://bugs.gentoo.org/show_bug.cgi?id=603098
+---
+ configure.ac | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 6e00ed5..ecbd14b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -357,6 +357,8 @@ AS_IF([test "x$with_tools" = "xyes"],[
+     PKG_CHECK_MODULES([REVENGE_GENERATORS],[
+         librevenge-generators-0.0
+     ])
++])
++AS_IF([test "x$with_tools" = "xyes" || test "x$enable_tests" = "xyes"],[
+     PKG_CHECK_MODULES([REVENGE_STREAM],[
+         librevenge-stream-0.0
+     ])
+-- 
+2.11.0
+

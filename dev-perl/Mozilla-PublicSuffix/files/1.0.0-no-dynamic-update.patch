@@ -1,0 +1,90 @@
+From 7dcc6afa75d5318325856fdef0456f4ddf1672b1 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Fri, 6 Jan 2017 12:32:50 +1300
+Subject: [PATCH] Remove dynamic update code
+
+As this basically makes builds unreproducale anyway, and the download
+URI is invariant meaning we can't even approximate the same logic via
+SRC_URI without having frequently changing Manifests, but no change in
+URI.
+---
+ Build.PL | 26 --------------------------
+ META.yml |  2 --
+ 2 files changed, 28 deletions(-)
+
+diff --git a/Build.PL b/Build.PL
+index 7ef1ca0..1e7834d 100755
+--- a/Build.PL
++++ b/Build.PL
+@@ -5,11 +5,9 @@ use warnings FATAL => "all";
+ use utf8;
+ use open ":encoding(UTF-8)";
+ use Carp qw(croak);
+-use HTTP::Tiny;
+ use Module::Build;
+ use IO::File;
+ use Tie::File;
+-use URI;
+ 
+ my $builder = Module::Build->new(
+     dist_name => "Mozilla-PublicSuffix",
+@@ -28,11 +26,9 @@ my $builder = Module::Build->new(
+     'perl' => '5.008'
+   },
+   'configure_requires' => {
+-    'HTTP::Tiny' => '0',
+     'IO::File' => '0',
+     'Module::Build' => '0.28',
+     'Tie::File' => '0',
+-    'URI' => '0',
+     'perl' => '5.008'
+   },
+   'requires' => {
+@@ -43,28 +39,6 @@ my $builder = Module::Build->new(
+ );
+ 
+ my $dat_file = "effective_tld_names.dat";
+-my $get_new_list = $builder->y_n(
+-    "Check for a new version of the Public Suffix List?", "N"
+-);
+-if ($get_new_list) {
+-    my $http = HTTP::Tiny->new( timeout => 6 );
+-    my $list_uri = URI->new(
+-        "http://mxr.mozilla.org/mozilla-central/source/netwerk/dns/$dat_file"
+-    );
+-    $list_uri->query_form({ raw => 1 });
+-    my %options = (
+-        headers => {
+-            "If-Modified-Since" => "Fri, 17 May 2013 00:00:00 UTC"
+-        }
+-    );
+-    my $response = $http->get($list_uri, \%options);
+-    if ( $response->{status} == 200 ) {
+-        IO::File->new($dat_file, "w")->print($response->{content});
+-    }
+-    elsif ( $response->{status} != 304 ) {
+-        croak "Unable to download public suffix list.";
+-    }
+-}
+ 
+ # Divide rules from list into sets:
+ my $rules = join " ", map {
+diff --git a/META.yml b/META.yml
+index b25bc9c..2697608 100644
+--- a/META.yml
++++ b/META.yml
+@@ -11,11 +11,9 @@ build_requires:
+   blib: '1.01'
+   perl: '5.008'
+ configure_requires:
+-  HTTP::Tiny: '0'
+   IO::File: '0'
+   Module::Build: '0.28'
+   Tie::File: '0'
+-  URI: '0'
+   perl: '5.008'
+ dynamic_config: 0
+ generated_by: 'Dist::Zilla version 6.006, CPAN::Meta::Converter version 2.150001'
+-- 
+2.11.0
+

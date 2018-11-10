@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<use>
+		<flag name="capmt">Enable support for capmt (dvbapi) protocol</flag>
+		<flag name="constcw">Enable support for the constcw protocol</flag>
+		<flag name="cwc">Enable support for the cwc (newcamd) protocol</flag>
+		<flag name="ddci">Enable support for DDCI hardware</flag>
+		<flag name="dvbcsa">Enable decryption of the DVB Common Scrambling Algorithm</flag>
+		<flag name="dvben50221">Enable support for hardware CAM</flag>
+		<flag name="hdhomerun">Enable support for the HDHomeRun device</flag>
+		<flag name="imagecache">Enable support for image caching</flag>
+		<flag name="iptv">Enable support for Internet Protocol TV</flag>
+		<flag name="satip">Enable support for IP-based Satellite TV</flag>
+		<flag name="timeshift">Enable TimeShift support</flag>
+		<flag name="uriparser">Use <pkg>dev-libs/uriparser</pkg></flag>
+		<flag name="vpx">Enable transcoding with the VP8/VP9 video codecs</flag>
+		<flag name="x264">Enable transcoding with the H.264 video codec</flag>
+		<flag name="x265">Enable transcoding with the HEVC video codec</flag>
+		<flag name="xmltv">Use <pkg>media-tv/xmltv</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">tvheadend/tvheadend</remote-id>
+	</upstream>
+</pkgmetadata>

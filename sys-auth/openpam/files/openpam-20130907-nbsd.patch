@@ -1,0 +1,12 @@
+--- openpam-20050201.orig/lib/libpam/pam_debug_log.c	2006-02-18 01:15:39.000000000 -0200
++++ openpam-20050201/lib/libpam/pam_debug_log.c	2006-02-18 01:16:30.000000000 -0200
+@@ -47,7 +47,8 @@
+     const char *file, const char *function, const char *format, ...)
+ {
+ 	va_list ap;
+-	char *fmtbuf, *modname, *period;
++	char *fmtbuf;
++	const char *modname, *period;
+ 
+ 	if (!(flags & PAM_SILENT) && !openpam_get_option(pamh, "no_warn")) {
+ 		modname = basename(file);

@@ -1,0 +1,19 @@
+diff --git a/sentinel.conf b/sentinel.conf
+index bc9a705..05e58d3 100644
+--- a/sentinel.conf
++++ b/sentinel.conf
+@@ -28,12 +28,12 @@ daemonize no
+ # When running daemonized, Redis Sentinel writes a pid file in
+ # /var/run/redis-sentinel.pid by default. You can specify a custom pid file
+ # location here.
+-pidfile /var/run/redis-sentinel.pid
++pidfile /run/redis-sentinel.pid
+ 
+ # Specify the log file name. Also the empty string can be used to force
+ # Sentinel to log on the standard output. Note that if you use standard
+ # output for logging but daemonize, logs will be sent to /dev/null
+-logfile ""
++logfile "/var/log/redis/sentinel.log"
+ 
+ # sentinel announce-ip <ip>
+ # sentinel announce-port <port>

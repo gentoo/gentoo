@@ -1,0 +1,13 @@
+Index: gtk-nodoka-engine-0.7.5/src/GTKEngine/animation.c
+===================================================================
+--- gtk-nodoka-engine-0.7.5.orig/src/GTKEngine/animation.c
++++ gtk-nodoka-engine-0.7.5/src/GTKEngine/animation.c
+@@ -23,7 +23,7 @@
+ #include "animation.h"
+ 
+ #ifdef HAVE_ANIMATION
+-#include <glib/gtimer.h>
++#include <glib.h>
+ 
+ struct _AnimationInfo
+ {

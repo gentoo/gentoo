@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		notify-webhook is a git post-receive hook script that posts JSON data to a
+		webhook capable server.
+
+		This implements the GitHub Web hooks API as closely as possible. It allows
+		arbitrary git repositories to use webhook capable services.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">metajack/notify-webhook</remote-id>
+	</upstream>
+</pkgmetadata>

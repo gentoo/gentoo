@@ -1,0 +1,4 @@
+# Example
+
+# default ceph conf file
+#ceph_conf="/etc/ceph/ceph.conf"

@@ -1,0 +1,13 @@
+Index: vtun-3.0.3/cfg_file.y
+===================================================================
+--- vtun-3.0.3.orig/cfg_file.y
++++ vtun-3.0.3/cfg_file.y
+@@ -624,7 +624,7 @@ int clear_nat_hack_client(void *d, void
+ }
+
+ /* Clear the VTUN_NAT_HACK flag which are not relevant to the current operation mode */
+-inline void clear_nat_hack_flags(int svr)
++extern inline void clear_nat_hack_flags(int svr)
+ {
+ 	if (svr)
+ 		llist_trav(&host_list,clear_nat_hack_server,NULL);

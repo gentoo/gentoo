@@ -1,0 +1,48 @@
+From 2593304723c6def159c10b9060dafa78a775a057 Mon Sep 17 00:00:00 2001
+From: Lyubomyr Shaydariv <lyubomyr-shaydariv@users.noreply.github.com>
+Date: Fri, 11 Sep 2015 00:41:17 +0300
+Subject: [PATCH] git-remote-mediawiki: support subpages as subdirectories
+
+This is a fix for https://github.com/moy/Git-Mediawiki/issues/22
+The subdirectories option is enabled using -c remote.origin.subpageDirs=true
+during the cloning and it is not recommended to be modified in or
+removed from .git/config after the cloning.
+---
+ contrib/mw-to-git/git-remote-mediawiki.perl | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/contrib/mw-to-git/git-remote-mediawiki.perl b/contrib/mw-to-git/git-remote-mediawiki.perl
+index 8dd74a9..f3624be 100755
+--- a/contrib/mw-to-git/git-remote-mediawiki.perl
++++ b/contrib/mw-to-git/git-remote-mediawiki.perl
+@@ -63,6 +63,11 @@
+ my @tracked_categories = split(/[ \n]/, run_git("config --get-all remote.${remotename}.categories"));
+ chomp(@tracked_categories);
+ 
++# Use subdirectories for subpages
++my $use_subpage_dirs = run_git("config --get --bool remote.${remotename}.subpageDirs");
++chomp($use_subpage_dirs);
++$use_subpage_dirs = ($use_subpage_dirs eq 'true');
++
+ # Import media files on pull
+ my $import_media = run_git("config --get --bool remote.${remotename}.mediaimport");
+ chomp($import_media);
+@@ -689,6 +694,9 @@ sub fe_escape_path {
+     $path =~ s/\\/\\\\/g;
+     $path =~ s/"/\\"/g;
+     $path =~ s/\n/\\n/g;
++    if ($use_subpage_dirs) {
++        $path =~ s/%2F/\//g;
++    }
+     return qq("${path}");
+ }
+ 
+@@ -927,7 +935,7 @@ sub mw_import_revids {
+ 		# If this is a revision of the media page for new version
+ 		# of a file do one common commit for both file and media page.
+ 		# Else do commit only for that page.
+-		print {*STDERR} "${n}/", scalar(@{$revision_ids}), ": Revision #$rev->{revid} of $commit{title}\n";
++		print {*STDERR} "${n}/", scalar(@{$revision_ids}), ": Revision #$rev->{revid} of ", fe_escape_path($commit{title}), "\n";
+ 		import_file_revision(\%commit, ($fetch_from == 1), $n_actual, \%mediafile);
+ 	}
+ 

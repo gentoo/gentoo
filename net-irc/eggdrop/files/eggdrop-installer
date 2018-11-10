@@ -1,0 +1,83 @@
+#!/bin/bash
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+source /lib/gentoo/functions.sh || {
+	echo "${0}: Could not source /lib/gentoo/functions.sh!"
+	exit 1
+}
+
+# Checks to see if user is trying to install eggdrop as root.
+root_check() {
+	if [ "${HOME}" = "/root" ] || [ "$(whoami)" = "root" ]
+	then
+		ewarn "You should not be installing eggdrop as root."
+		ewarn
+		ewarn "Installing eggdrop as root leaves your computer vulnerable"
+		ewarn "to attack from other irc clients. Please use the eggdrop-installer"
+		ewarn "script as the user who you wish to run eggdrop with"
+		exit 1
+	fi
+}
+
+# Usage information
+usage() {
+	cat <<USAGE_END
+Usage: eggdrop-installer <bot-name>
+Install eggdrop for a specific user, creating the directories and files
+needed for eggdrop to run securely and safely.
+USAGE_END
+	exit 1
+}
+
+# Install eggdrop
+install_eggdrop() {
+	einfo "Installing Eggdrop"
+	einfo
+
+	root_check
+
+	if [ -d "${bot_dir}" ]
+	then
+		einfo "Already found a bot home directory for ${bot_name}"
+		exit 1
+	fi
+
+	einfo "Creating directories for your eggdrop..."
+	for dir in logs filesys/incoming text tmp scripts var
+	do
+		mkdir -p "${bot_dir}/${dir}"
+	done
+
+	einfo "Creating symlinks to required files for your bot to run..."
+	for file in help language modules eggdrop
+	do
+		ln -s "/opt/eggdrop/${file}" "${bot_dir}/${file}"
+	done
+
+	einfo "Copying motd, banner, scripts and config file..."
+	cp /opt/eggdrop/text/* "${bot_dir}/text"
+	cp /opt/eggdrop/scripts/* "${bot_dir}/scripts"
+	cp /opt/eggdrop/eggdrop.conf "${bot_dir}/eggdrop.conf"
+
+	einfo "Finished..."
+	einfo
+	einfo "Please edit your ${bot_dir}/eggdrop.conf!"
+	einfo
+	einfo "The bot needs to be run from the ${bot_dir} directory."
+	einfo "Run 'cd ${bot_dir} && ./eggdrop -m eggdrop.conf'"
+	einfo "to create the user file and then remove the -m command line option"
+	einfo "to start your eggdrop bot."
+	einfo
+	einfo "If you need any help please refer to the man page, or"
+	einfo "eggdrop website at http://www.egghelp.org/"
+}
+
+if [ -z "${1}" ]
+then
+	usage
+else
+	bot_name="${1}"
+	bot_dir="${HOME}/.eggdrop/${bot_name}"
+	install_eggdrop
+fi

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <longdescription>
+pylize is a Python script that generates a set of HTML files that
+make up an on-screen presentation from a master file. The HTML files
+can be viewed with any CSS-aware browser. The master file contains
+the text for all the slides and some additional information like
+title, author etc. pylize can also create a template master file for
+you
+</longdescription>
+</pkgmetadata>

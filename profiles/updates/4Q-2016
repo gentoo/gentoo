@@ -1,0 +1,31 @@
+move net-analyzer/ipv6-toolkit net-analyzer/ipv6toolkit
+move x11-apps/xvfb-run x11-misc/xvfb-run
+move kde-plasma/plasma-mediacenter media-video/plasma-mediacenter
+move kde-misc/plasma-nm kde-plasma/plasma-nm
+move app-office/akonadi-server kde-apps/akonadi
+move net-wireless/bluedevil kde-plasma/bluedevil
+move kde-base/kdeplasma-addons kde-plasma/kdeplasma-addons
+move kde-misc/milou kde-plasma/milou
+move kde-misc/kde-gtk-config kde-plasma/kde-gtk-config
+move kde-base/powerdevil kde-plasma/powerdevil
+move kde-base/kwrited kde-plasma/kwrited
+move kde-base/kmenuedit kde-plasma/kmenuedit
+move kde-base/khotkeys kde-plasma/khotkeys
+move kde-base/kinfocenter kde-plasma/kinfocenter
+move kde-base/ksysguard kde-plasma/ksysguard
+move dev-perl/google-api-adwords-perl dev-perl/Google-Ads-AdWords-Client
+move kde-misc/kscreen kde-plasma/kscreen
+move x11-libs/libkscreen kde-plasma/libkscreen
+slotmove media-sound/cantata 4 0
+move kde-base/systemsettings kde-plasma/systemsettings
+move kde-base/kfilemetadata kde-frameworks/kfilemetadata
+move kde-base/baloo kde-frameworks/baloo
+move kde-base/kwin kde-plasma/kwin
+slotmove dev-python/pyinsane 0 1
+move media-sound/kwave kde-apps/kwave
+move app-misc/ddctool app-misc/ddcutil
+move media-libs/prison kde-frameworks/prison
+move kde-base/kactivities kde-frameworks/kactivities
+move kde-base/plasma-workspace kde-plasma/plasma-workspace
+move dev-perl/extutils-pkgconfig dev-perl/ExtUtils-PkgConfig
+move kde-base/krosspython kde-apps/kross-interpreters

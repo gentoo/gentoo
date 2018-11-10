@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+config="/etc/teamspeak3-server/ts3server.ini"
+name="TeamSpeak3 Server"
+pidfile="/run/${RC_SVCNAME}.pid"
+start_stop_daemon_args="--chdir /opt/teamspeak3-server --env TS3SERVER_LICENSE=accept"
+
+command="/opt/bin/ts3server"
+command_args="inifile=${config}"
+command_background="true"
+command_group="teamspeak"
+command_user="teamspeak"
+
+depend() {
+	use mysql
+}
+
+start_pre() {
+	# Fix for EPERM bug
+	rm -f /dev/shm/7gbhujb54g8z9hu43jre8
+}

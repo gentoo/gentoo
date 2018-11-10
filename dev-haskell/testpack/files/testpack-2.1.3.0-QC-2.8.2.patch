@@ -1,0 +1,12 @@
+diff --git a/src/Test/QuickCheck/Instances.hs b/src/Test/QuickCheck/Instances.hs
+index 98367b7..f65eb37 100644
+--- a/src/Test/QuickCheck/Instances.hs
++++ b/src/Test/QuickCheck/Instances.hs
+@@ -30,2 +30,3 @@ import Data.Word
+ 
++#if ! MIN_VERSION_QuickCheck(2,8,2)
+ instance (Arbitrary k, Arbitrary v, Eq k, Ord k) => Arbitrary (Map.Map k v) where
+@@ -37,2 +38,3 @@ instance (CoArbitrary k, CoArbitrary v, Eq k, Ord k) => CoArbitrary (Map.Map k v
+     coarbitrary = coarbitrary . Map.keys
++#endif
+ 

@@ -1,0 +1,21 @@
+From 5972e777aeb7e8e127114476c031a681862f8852 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pawe=C5=82=20Salawa?= <pawelsalawa@gmail.com>
+Date: Mon, 18 Jun 2018 23:12:18 +0200
+Subject: [PATCH] #3341 Fixed compilation with Qt 5.11.
+
+---
+ SQLiteStudio3/guiSQLiteStudio/mainwindow.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/SQLiteStudio3/guiSQLiteStudio/mainwindow.cpp b/SQLiteStudio3/guiSQLiteStudio/mainwindow.cpp
+index 643caa2d..4ca68bce 100644
+--- a/SQLiteStudio3/guiSQLiteStudio/mainwindow.cpp
++++ b/SQLiteStudio3/guiSQLiteStudio/mainwindow.cpp
+@@ -47,6 +47,7 @@
+ #include <QInputDialog>
+ #include <QProgressBar>
+ #include <QLabel>
++#include <QStyle>
+ 
+ CFG_KEYS_DEFINE(MainWindow)
+ MainWindow* MainWindow::instance = nullptr;

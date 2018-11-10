@@ -1,0 +1,5 @@
+#!/bin/bash
+if [ $1 = "start" -o $1 = "install" ]; then
+	sed -e "s|skin_template_dir = /home/metadot/metadot/sitedata/skins|skin_template_dir = ${MY_INSTALLDIR}/sitedata/skins|
+		s|public_uploads_dir = /home/metadot/metadot/sitedata/public|public_uploads_dir = ${MY_INSTALLDIR}/sitedata/public|" -i  ${MY_INSTALLDIR}/etc/metadot.conf
+fi

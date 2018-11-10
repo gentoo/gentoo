@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  The Computational Geometry Algorithms Library is a collaborative
+  open source library containing:
+  * the Kernel with geometric primitives such as points, vectors,
+    lines, predicates for testing things such as relative positions of
+    points, and operations such as intersections and distance calculation.
+  * the Basic Library which is a collection of standard data
+    structures and geometric algorithms, such as convex hull in 2D/3D,
+    (Delaunay) triangulation in 2D/3D, planar map, polyhedron, smallest
+    enclosing circle, and multidimensional query structures.
+  * the Support Library which offers interfaces to other packages,
+    e.g., for visualisation, and I/O, and other support facilities.
+  </longdescription>
+  <use>
+    <flag name="mpfi">Enable support for multiple recision interval arithmetic via <pkg>sci-libs/mpfi</pkg></flag>
+    <flag name="ntl">Enable support for <pkg>dev-libs/ntl</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="github">CGAL/cgal</remote-id>
+  </upstream>
+</pkgmetadata>

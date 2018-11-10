@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		An abstract interface to highly-parameterizable queues/deques.
+		
+		Background: There exists a feature space for queues that extends between:
+		
+		* simple, single-ended, non-concurrent, bounded queues
+		
+		* double-ended, threadsafe, growable queues
+		
+		... with important points inbetween (such as
+		the queues used for work-stealing).
+		
+		This package includes an interface for Deques that allows the
+		programmer to use a single API for all of the above, while using the
+		type-system to select an efficient implementation given the
+		requirements (using type families).
+		
+		This package also includes a simple reference implementation based
+		on 'IORef' and "Data.Sequence".
+	</longdescription>
+	<use>
+		<flag name="usecas"> Enable the reference implementation to use hardware compare-and-swap.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">rrnewton/haskell-lockfree</remote-id>
+	</upstream>
+</pkgmetadata>

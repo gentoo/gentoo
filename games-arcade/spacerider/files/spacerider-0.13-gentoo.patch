@@ -1,0 +1,27 @@
+--- a/Makefile
++++ b/Makefile
+@@ -3,12 +3,12 @@
+ BINDIR=/usr/bin/
+ MANDIR=/usr/share/man/man1/
+ DATADIR=/usr/share/games/spacerider/
+-CXX=g++
++CXX?=g++
+ CP=cp
+ MKDIR=mkdir -p
+ INSTALL=install
+ RM=rm -f
+-CXXFLAGS=-Wall -fomit-frame-pointer -O3 `sdl-config --cflags`
++CXXFLAGS+=$(shell sdl-config --cflags)
+ OBJS=main.o globals.o spacerider.o music.o sprite.o enemy.o effect.o visible.o box.o features.o font.o image.o bullet.o
+ OUTPUT=spacerider
+ LIBS=`sdl-config --libs` -lSDL_image -lSDL_ttf -lSDL_mixer -lSDL_net -lSDL_gfx
+@@ -22,8 +22,7 @@
+ 
+ 
+ $(OUTPUT): $(OBJS)
+-	$(CXX) $(CXXFLAGS) -o $(OUTPUT) $(OBJS) $(LIBS)
+-	strip $(OUTPUT)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $(OUTPUT) $(OBJS) $(LIBS)
+ 
+ %.o: %.cpp
+ 	$(CXX) $(CXXFLAGS) -c $<

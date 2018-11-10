@@ -1,0 +1,62 @@
+Two issues in one patch:
+
+We use shared libpci so we don't need to check for libraries it might be linking to, such as zlib.
+Change mkdir_p with MKDIR_P for compability with recent autotools.
+
+--- configure.ac
++++ configure.ac
+@@ -14,6 +14,7 @@
+ AC_PROG_INTLTOOL
+ AC_GNU_SOURCE
+ AC_HEADER_STDC
++AC_PROG_MKDIR_P
+ 
+ AC_CHECK_FUNCS([vasprintf])
+ 
+@@ -33,14 +34,6 @@
+   echo "> Not using debug"
+ fi
+ 
+-# PCI library needs libz.
+-
+-AC_CHECK_HEADER([zlib.h],
+-AC_CHECK_LIB(z,inflate,
+-LIBS="$LIBS -lz"
+-)
+-)
+-
+ AC_CHECK_HEADER([pci/pci.h],
+ AC_CHECK_LIB(pci,pci_alloc, 
+ AC_DEFINE(HAVE_PCIUTILS,[1],[Use pci utils to discover devices])
+--- po/Makefile.in.in
++++ po/Makefile.in.in
+@@ -37,9 +37,9 @@
+ itlocaledir = $(prefix)/$(DATADIRNAME)/locale
+ subdir = po
+ install_sh = @install_sh@
+-# Automake >= 1.8 provides @mkdir_p@.
++# Automake >= 1.8 provides @MKDIR_P@.
+ # Until it can be supposed, use the safe fallback:
+-mkdir_p = $(install_sh) -d
++MKDIR_P = $(install_sh) -d
+ 
+ INSTALL = @INSTALL@
+ INSTALL_DATA = @INSTALL_DATA@
+@@ -98,7 +98,7 @@
+ install-data: install-data-@USE_NLS@
+ install-data-no: all
+ install-data-yes: all
+-	$(mkdir_p) $(DESTDIR)$(itlocaledir)
++	$(MKDIR_P) $(DESTDIR)$(itlocaledir)
+ 	if test -n "$(PO_LINGUAS)"; then \
+ 	  linguas="$(PO_LINGUAS)"; \
+ 	else \
+@@ -106,7 +106,7 @@
+ 	fi; \
+ 	for lang in $$linguas; do \
+ 	  dir=$(DESTDIR)$(itlocaledir)/$$lang/LC_MESSAGES; \
+-	  $(mkdir_p) $$dir; \
++	  $(MKDIR_P) $$dir; \
+ 	  if test -r $$lang.gmo; then \
+ 	    $(INSTALL_DATA) $$lang.gmo $$dir/$(GETTEXT_PACKAGE).mo; \
+ 	    echo "installing $$lang.gmo as $$dir/$(GETTEXT_PACKAGE).mo"; \

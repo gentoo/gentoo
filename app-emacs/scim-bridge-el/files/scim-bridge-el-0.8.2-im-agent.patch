@@ -1,0 +1,25 @@
+run against scim-im-agent, after scim-bridge integration into scim.
+
+http://www.scim-im.org/news/scim_news/a_new_stable_version_has_been_released_the_main_change_is_the_incorporation_of_scim_bridge
+--- a/scim-bridge.el
++++ b/scim-bridge.el
+@@ -649,7 +649,7 @@
+ (defvar scim-bridge-compat-version "0.3.0")
+ (defvar scim-bridge-socket-dir "/tmp/")
+ (defvar scim-bridge-socket-name "socket")
+-(defvar scim-bridge-name "scim-bridge")
++(defvar scim-bridge-name "scim-im-agent")
+ (defvar scim-bridge-host-name "localhost")
+ (defvar scim-bridge-socket-path-common
+   (concat scim-bridge-socket-dir scim-bridge-name "-"
+@@ -2485,8 +2485,8 @@
+ 	 (i 0)
+ 	 proc error)
+     (unless (file-exists-p socket)
+-      (scim-message "Launch SCIM-Bridge..."))
+-    (call-process-shell-command scim-bridge-name nil 0 nil "--noexit")
++      (scim-message "Launch SCIM-Bridge...")
++      (call-process-shell-command scim-bridge-name nil 0 nil "--noexit"))
+     (while (and (not (processp proc))
+ 		(< i 10)) ; Try connection 10 times at maximum
+       (sleep-for (* 0.1 i))

@@ -1,0 +1,25 @@
+--- a/Makefile	2003-11-26 00:27:29.000000000 +0100
++++ b/Makefile_new	2013-03-15 21:36:05.331857288 +0100
+@@ -6,19 +6,18 @@
+ GKRELLM_INCLUDE = -I$(PREFIX)/include
+ GTK_CFLAGS = `$(GTK_CONFIG) --cflags` 
+ GTK_LIB = `$(GTK_CONFIG) --libs`
+-FLAGS = -Wall -fPIC $(GTK_CFLAGS) $(GKRELLM_INCLUDE)
+-CFLAGS ?= -O -g
++FLAGS = -fPIC $(GTK_CFLAGS) $(GKRELLM_INCLUDE)
+ CFLAGS += $(FLAGS)
+ CFLAGS += -DVERSION=\"$(VERSION)\"
+ LIBS = $(GTK_LIB)
+ LFLAGS = -shared
+-CC ?= gcc
++CC = $(CC)
+ INSTALL = install -c
+ INSTALL_PROGRAM = $(INSTALL) -s
+ OBJS = trayicons.o
+ 
+ trayicons.so: $(OBJS)
+-	$(CC) $(FLAGS) $(OBJS) -o trayicons.so $(LIBS) $(LFLAGS)
++	$(CC) $(FLAGS) $(LDFLAGS) $(OBJS) -o trayicons.so $(LIBS) $(LFLAGS)
+ 
+ clean:
+ 	rm -f *.o core *.so* *.bak *~

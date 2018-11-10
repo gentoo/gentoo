@@ -1,0 +1,51 @@
+From b5611dfa0510ec8fbaa2db4b6834d0bd7ecf0909 Mon Sep 17 00:00:00 2001
+From: Jesse <jessefrgsmith@yahoo.ca>
+Date: Sat, 27 Jun 2015 20:24:44 -0300
+Subject: [PATCH] Fixed a type check which was causing syntax/undefined errors
+ in DenyHosts/report.py when switching between Python2 and Python3.
+
+---
+ CHANGELOG.txt       | 8 ++++++++
+ DenyHosts/report.py | 4 +++-
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/CHANGELOG.txt b/CHANGELOG.txt
+index ca173cb..b585332 100644
+--- a/CHANGELOG.txt
++++ b/CHANGELOG.txt
+@@ -1,5 +1,13 @@
+ DENYHOSTS CHANGELOG
+ 
++3.1
++======================
++
++Fixed a type check in DenyHosts/report.py which was causing
++problems when moving between Python2 and Python3.
++
++
++
+ 3.0
+ ======================
+ 
+diff --git a/DenyHosts/report.py b/DenyHosts/report.py
+index 05f3e3d..9560eab 100644
+--- a/DenyHosts/report.py
++++ b/DenyHosts/report.py
+@@ -3,6 +3,7 @@
+ import socket
+ # Removing this as it causes runtime errors on Python3.4
+ # from types import ListType, TupleType
++import types
+ from .util import is_true
+ try:
+     import syslog
+@@ -38,7 +39,8 @@ def get_report(self):
+     def add_section(self, message, iterable):
+         self.report += "%s:\n\n" % message
+         for i in iterable:
+-            if type(i) in (TupleType, ListType):
++            # if type(i) in (TupleType, ListType):
++            if (type(i) is types.ListType) or (type(i) is types.TupleType):
+                 extra = ": %d\n" % i[1]
+                 i = i[0]
+             else:

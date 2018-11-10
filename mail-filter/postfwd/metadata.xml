@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>c@roessner.co</email>
+		<name>Christian Roessner</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>mschiff@gentoo.org</email>
+		<name>Marc Schiffbauer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>info@postfwd.org</email>
+			<name>Jan Peter Kessler</name>
+		</maintainer>
+		<changelog>http://www.postfwd.org/postfwd2.CHANGELOG</changelog>
+	</upstream>
+	<longdescription lang="en">
+		postfwd (short for Postfix Firewall Daemon) is a Postfix policy server
+		that is written in Perl. It allows to define flexible and complex rules
+		to block access to the mail system before the actual message has been
+		accepted. The ruleset configuration supports features like scoring,
+		grouping, date and time based dependencies together with DNSBL lookups
+		and policy delegation (e.g. postgrey).
+	</longdescription>
+	<use>
+		<flag name="tools">Install additional tools for testing postfwd</flag>
+	</use>
+</pkgmetadata>

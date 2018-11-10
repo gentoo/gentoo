@@ -1,0 +1,201 @@
+diff -ur j2ssh-0.2.9/src/com/sshtools/j2ssh/io/ByteArrayReader.java j2ssh-0.2.9_patched/src/com/sshtools/j2ssh/io/ByteArrayReader.java
+--- j2ssh-0.2.9/src/com/sshtools/j2ssh/io/ByteArrayReader.java	2007-04-28 21:02:54.000000000 +0200
++++ j2ssh-0.2.9_patched/src/com/sshtools/j2ssh/io/ByteArrayReader.java	2008-01-18 19:27:38.000000000 +0100
+@@ -118,7 +118,13 @@
+         byte[] chars = new byte[(int) len];
+         System.arraycopy(data, start + 4, chars, 0, len);
+ 
+-        return new String(chars);
++        try {
++            return new String(chars, "UTF-8");
++        }
++        catch(java.io.UnsupportedEncodingException e) {
++            // This should never happen, UTF-8 is necessarily supported.
++            return new String(chars);
++        }
+     }
+ 
+     /**
+@@ -163,6 +169,12 @@
+         byte[] raw = new byte[(int) len];
+         read(raw);
+ 
+-        return new String(raw);
++        try {
++            return new String(raw, "UTF-8");
++        }
++        catch(java.io.UnsupportedEncodingException e) {
++            // This should never happen, UTF-8 is necessarily supported.
++            return new String(raw);
++        }
+     }
+ }
+diff -ur j2ssh-0.2.9/src/com/sshtools/j2ssh/io/ByteArrayWriter.java j2ssh-0.2.9_patched/src/com/sshtools/j2ssh/io/ByteArrayWriter.java
+--- j2ssh-0.2.9/src/com/sshtools/j2ssh/io/ByteArrayWriter.java	2007-04-29 10:54:48.000000000 +0200
++++ j2ssh-0.2.9_patched/src/com/sshtools/j2ssh/io/ByteArrayWriter.java	2008-01-18 19:30:36.000000000 +0100
+@@ -190,15 +190,15 @@
+         if (str == null) {
+             writeInt(0);
+         } else {
+-            /*
+-            writeInt(str.length());
+-            // don't use US-ASCII by default!
+-            write(str.getBytes());
+-            */
+-            // patch as of version 0.2.9
+-            // for UTF-8 length of string is not necessarily
+-            // equal to number of bytes
+-            byte[] strBytes = str.getBytes();
++            byte[] strBytes;
++            try {
++                strBytes = str.getBytes("UTF-8");
++            }
++            catch(java.io.UnsupportedEncodingException e) {
++                // This should never happen, UTF-8 is necessarily supported.
++                strBytes = str.getBytes();
++            }
++            
+             writeInt(strBytes.length);
+             write(strBytes);
+         }
+diff -ur j2ssh-0.2.9/src/com/sshtools/j2ssh/sftp/SftpFileInputStream.java j2ssh-0.2.9_patched/src/com/sshtools/j2ssh/sftp/SftpFileInputStream.java
+--- j2ssh-0.2.9/src/com/sshtools/j2ssh/sftp/SftpFileInputStream.java	2007-04-28 21:02:54.000000000 +0200
++++ j2ssh-0.2.9_patched/src/com/sshtools/j2ssh/sftp/SftpFileInputStream.java	2008-01-18 19:26:58.000000000 +0100
+@@ -38,7 +38,7 @@
+  */
+ public class SftpFileInputStream extends InputStream {
+     SftpFile file;
+-    UnsignedInteger64 position = new UnsignedInteger64("0");
++    UnsignedInteger64 position;
+ 
+     /**
+      * Creates a new SftpFileInputStream object.
+@@ -48,16 +48,47 @@
+      * @throws IOException
+      */
+     public SftpFileInputStream(SftpFile file) throws IOException {
++		this(file, 0);
++    }
++
++    /**
++     * Creates a new SftpFileInputStream object and sets the file offset to the specified position.
++     *
++     * @param file
++	 * @param position the initial file offset, must be >=0
++     *
++     * @throws IOException
++     */
++    public SftpFileInputStream(SftpFile file, long position) throws IOException {
+         if (file.getHandle() == null) {
+             throw new IOException("The file does not have a valid handle!");
+         }
+-
++        
+         if (file.getSFTPSubsystem() == null) {
+-            throw new IOException(
+-                "The file is not attached to an SFTP subsystem!");
++            throw new IOException("The file is not attached to an SFTP subsystem!");
+         }
+-
++        
+         this.file = file;
++		this.position = new UnsignedInteger64(""+position);
++    }
++
++    /**
++     * Returns the current offset within the file.
++     *
++     * @return the current offset within the file
++     */
++	public long getPosition() {
++        return position.longValue();
++    }
++
++    /**
++     * Sets the current file offset to the given position. 
++     * Subsequent calls to read methods will start reading data at this position.
++     *
++     * @param position the new offset, must be >=0
++     */
++    public void setPosition(long position) {
++        this.position = new UnsignedInteger64(""+position);
+     }
+ 
+     /**
+diff -ur j2ssh-0.2.9/src/com/sshtools/j2ssh/sftp/SftpFileOutputStream.java j2ssh-0.2.9_patched/src/com/sshtools/j2ssh/sftp/SftpFileOutputStream.java
+--- j2ssh-0.2.9/src/com/sshtools/j2ssh/sftp/SftpFileOutputStream.java	2007-04-28 21:02:54.000000000 +0200
++++ j2ssh-0.2.9_patched/src/com/sshtools/j2ssh/sftp/SftpFileOutputStream.java	2008-01-18 19:08:55.000000000 +0100
+@@ -38,7 +38,7 @@
+  */
+ public class SftpFileOutputStream extends OutputStream {
+     SftpFile file;
+-    UnsignedInteger64 position = new UnsignedInteger64("0");
++    UnsignedInteger64 position;
+ 
+     /**
+      * Creates a new SftpFileOutputStream object.
+@@ -48,6 +48,18 @@
+      * @throws IOException
+      */
+     public SftpFileOutputStream(SftpFile file) throws IOException {
++        this(file, 0);
++    }
++
++    /**
++     * Creates a new SftpFileOutputStream object and sets the file offset to the specified position.
++     *
++     * @param file
++	 * @param position the initial file offset, must be >=0
++     *
++     * @throws IOException
++     */
++    public SftpFileOutputStream(SftpFile file, long position) throws IOException {
+         if (file.getHandle() == null) {
+             throw new IOException("The file does not have a valid handle!");
+         }
+@@ -58,6 +70,7 @@
+         }
+ 
+         this.file = file;
++		this.position = new UnsignedInteger64(""+position);
+     }
+ 
+     /**
+diff -ur j2ssh-0.2.9/src/com/sshtools/j2ssh/sftp/SftpSubsystemClient.java j2ssh-0.2.9_patched/src/com/sshtools/j2ssh/sftp/SftpSubsystemClient.java
+--- j2ssh-0.2.9/src/com/sshtools/j2ssh/sftp/SftpSubsystemClient.java	2007-04-28 21:02:54.000000000 +0200
++++ j2ssh-0.2.9_patched/src/com/sshtools/j2ssh/sftp/SftpSubsystemClient.java	2008-01-21 17:48:06.000000000 +0100
+@@ -231,16 +231,28 @@
+     }
+ 
+     /**
++     * Creates the directory with the specified path. The default permissions for the directory are 0755 ("rwxr-xr-x").
+      *
++     * @param path the path to the directory to create
++     * @throws IOException if an error occurs
++     */
++    public synchronized void makeDirectory(String path) throws IOException {
++        makeDirectory(path, 0755);  // default to 755 octal (493 decimal): "rwxr-xr-x"
++    }
++
++    /**
++     * Creates the directory with the specified path and file permissions.  
+      *
+-     * @param path
+-     *
+-     * @throws IOException
++     * @param path the path to the directory to create
++     * @param permissions the file permissions of the new directory
++     * @throws IOException if an error occurs
+      */
+-    public synchronized void makeDirectory(String path)
+-        throws IOException {
++    public synchronized void makeDirectory(String path, int permissions) throws IOException {
+         UnsignedInteger32 requestId = nextRequestId();
+-        SshFxpMkdir msg = new SshFxpMkdir(requestId, path, new FileAttributes());
++        FileAttributes attrs = new FileAttributes();
++        attrs.setPermissions(new UnsignedInteger32(permissions));
++
++        SshFxpMkdir msg = new SshFxpMkdir(requestId, path, attrs);
+         sendMessage(msg);
+         getOKRequestStatus(requestId);
+     }

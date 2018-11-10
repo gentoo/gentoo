@@ -1,0 +1,16 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -279,9 +279,10 @@
+   olibs="$LIBS"
+   AC_CHECK_LIB(termcap, tgetent, LIBS="-ltermcap $olibs",
+     AC_CHECK_LIB(termlib, tgetent, LIBS="-ltermlib $olibs",
+-      AC_CHECK_LIB(curses, tgetent, LIBS="-lcurses $olibs",
+-        AC_CHECK_LIB(xtermcap, tgetent, LIBS="-lxtermcap $olibs",
+-          AC_MSG_ERROR([i can not find tgetent.  you need to help me])))))
++      AC_CHECK_LIB(tinfo, tgetent, LIBS="-ltinfo $olibs",
++        AC_CHECK_LIB(curses, tgetent, LIBS="-lcurses $olibs",
++          AC_CHECK_LIB(xtermcap, tgetent, LIBS="-lxtermcap $olibs",
++            AC_MSG_ERROR([i can not find tgetent.  you need to help me]))))))
+ fi
+ 
+ dnl ----------------------------------------------------------

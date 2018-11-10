@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>dlan@gentoo.org</email>
+    <name>Yixun Lan</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
+  <use>
+    <flag name="boost">Enable support for <pkg>dev-libs/boost</pkg></flag>
+    <flag name="doc">Generate API documentation</flag>
+    <flag name="opencc">Enable support for <pkg>app-i18n/opencc</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="github">pyzy/pyzy</remote-id>
+  </upstream>
+</pkgmetadata>

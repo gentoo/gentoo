@@ -1,0 +1,11 @@
+--- makefile.u.orig	2008-07-07 23:27:41.000000000 -0700
++++ makefile.u	2008-07-07 23:28:39.000000000 -0700
+@@ -82,7 +82,7 @@
+ ## of "cc -shared".
+ 
+ libf2c.so: $(OFILES)
+-	$(CC) -shared -o libf2c.so $(OFILES)
++	$(CC) -shared $(LDFLAGS) -Wl,-soname,libf2c.so.2 $(OFILES) -o libf2c.so.2 -lm
+ 
+ ### If your system lacks ranlib, you don't need it; see README.
+ 

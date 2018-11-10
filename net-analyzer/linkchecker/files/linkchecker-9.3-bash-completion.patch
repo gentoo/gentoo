@@ -1,0 +1,21 @@
+ config/linkchecker-completion | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/config/linkchecker-completion b/config/linkchecker-completion
+index 5252b3b..0ea3b21 100644
+--- a/config/linkchecker-completion
++++ b/config/linkchecker-completion
+@@ -2,7 +2,6 @@
+ # Debian Linux system. For other system read the documentation that
+ # comes with the bash-completion package.
+ 
+-have linkchecker &&
+ _linkcheck() {
+     local cur prev
+ 
+@@ -17,4 +16,4 @@ _linkcheck() {
+     fi
+     return 0
+ }
+-[ "$have" ] && complete $filenames -F _linkcheck linkchecker
++complete $filenames -F _linkcheck linkchecker

@@ -1,0 +1,135 @@
+Modified version of.
+http://cvs.openpkg.org/fileview?f=openpkg-src/cvsps/cvsps.patch&v=1.13
+
+diff --git a/cache.c b/cache.c
+index 4c51cf7..2c3918d 100644
+--- a/cache.c
++++ b/cache.c
+@@ -361,7 +361,7 @@ static void parse_cache_revision(PatchSetMember * psm, const char * p_buff)
+ 
+     strcpy(buff, p_buff);
+ 
+-    while ((s = strsep(&p, ";")))
++    while ((s = my_strsep(&p, ";")))
+     {
+ 	char * c = strchr(s, ':');
+ 
+diff --git a/cvs_direct.c b/cvs_direct.c
+index e281848..5aa8f0f 100644
+--- a/cvs_direct.c
++++ b/cvs_direct.c
+@@ -92,12 +92,12 @@ CvsServerCtx * open_cvs_server(char * p_root, int compress)
+ 
+     strcpy_a(root, p_root, PATH_MAX);
+ 
+-    tok = strsep(&p, ":");
++    tok = my_strsep(&p, ":");
+ 
+     /* if root string looks like :pserver:... then the first token will be empty */
+     if (strlen(tok) == 0)
+     {
+-	char * method = strsep(&p, ":");
++	char * method = my_strsep(&p, ":");
+ 	if (strcmp(method, "pserver") == 0)
+ 	{
+ 	    ctx = open_ctx_pserver(ctx, p);
+@@ -185,14 +185,14 @@ static CvsServerCtx * open_ctx_pserver(CvsServerCtx * ctx, const char * p_root)
+ 
+     strcpy_a(root, p_root, PATH_MAX);
+ 
+-    tok = strsep(&p, ":");
++    tok = my_strsep(&p, ":");
+     if (strlen(tok) == 0 || !p)
+     {
+ 	debug(DEBUG_APPERROR, "parse error on third token");
+ 	goto out_free_err;
+     }
+ 
+-    tok2 = strsep(&tok, "@");
++    tok2 = my_strsep(&tok, "@");
+     if (!strlen(tok2) || (!tok || !strlen(tok)))
+     {
+ 	debug(DEBUG_APPERROR, "parse error on user@server in pserver");
+@@ -272,7 +272,7 @@ static CvsServerCtx * open_ctx_forked(CvsServerCtx * ctx, const char * p_root)
+     strcpy_a(root, p_root, PATH_MAX);
+ 
+     /* if there's a ':', it's remote */
+-    tok = strsep(&p, ":");
++    tok = my_strsep(&p, ":");
+ 
+     if (p)
+     {
+@@ -281,7 +281,7 @@ static CvsServerCtx * open_ctx_forked(CvsServerCtx * ctx, const char * p_root)
+ 	if (!cvs_rsh)
+ 	    cvs_rsh = "rsh";
+ 
+-	tok2 = strsep(&tok, "@");
++	tok2 = my_strsep(&tok, "@");
+ 
+ 	if (tok)
+ 	    snprintf(execcmd, PATH_MAX, "%s -l %s %s %s server", cvs_rsh, tok2, tok, cvs_server);
+@@ -776,7 +776,7 @@ void cvs_rupdate(CvsServerCtx * ctx, const char * rep, const char * file, const
+ static int parse_patch_arg(char * arg, char ** str)
+ {
+     char *tok, *tok2 = "";
+-    tok = strsep(str, " ");
++    tok = my_strsep(str, " ");
+     if (!tok)
+ 	return 0;
+ 
+@@ -796,7 +796,7 @@ static int parse_patch_arg(char * arg, char ** str)
+     /* see if command wants two args and they're separated by ' ' */
+     if (tok[2] == 0 && strchr("BdDFgiorVxYz", tok[1]))
+     {
+-	tok2 = strsep(str, " ");
++	tok2 = my_strsep(str, " ");
+ 	if (!tok2)
+ 	{
+ 	    debug(DEBUG_APPERROR, "diff_opts parse_error: argument %s requires two arguments", tok);
+diff --git a/util.c b/util.c
+index 7884c84..f3ab3a3 100644
+--- a/util.c
++++ b/util.c
+@@ -316,3 +316,31 @@ void strcpy_a(char * dst, const char * src, int n)
+ 	exit(1);
+     }
+ }
++
++char *my_strsep(char **stringp, const char *delim)
++{
++	char *s;
++	const char *spanp;
++	int c, sc;
++	char *tok;
++
++	if ((s = *stringp) == NULL)
++		return NULL;
++	for (tok = s;;) {
++		c = *s++;
++		spanp = delim;
++		do {
++			if ((sc = *spanp++) == c) {
++				if (c == 0)
++					s = NULL;
++				else
++					s[-1] = 0;
++				*stringp = s;
++				return tok;
++			}
++		} while (sc != 0);
++	}
++	/* NOTREACHED */
++    return NULL;
++}
++
+diff --git a/util.h b/util.h
+index ff2d3a0..336fd63 100644
+--- a/util.h
++++ b/util.h
+@@ -24,5 +24,6 @@ void timing_stop(const char *);
+ int my_system(const char *);
+ int escape_filename(char *, int, const char *);
+ void strcpy_a(char * dst, const char * src, int n);
++char *my_strsep(char **, const char *);
+ 
+ #endif /* UTIL_H */

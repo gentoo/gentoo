@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-geosciences@gentoo.org</email>
+    <name>Gentoo Geosciences Project</name>
+  </maintainer>
+  <use>
+    <flag name="postgres">Include support for <pkg>dev-db/postgresql</pkg></flag>
+  </use>
+</pkgmetadata>

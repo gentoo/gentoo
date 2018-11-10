@@ -1,0 +1,13 @@
+diff --git a/usr.sbin/nmtree/Makefile b/usr.sbin/nmtree/Makefile
+index 033002c..d198f10 100644
+--- a/usr.sbin/nmtree/Makefile
++++ b/usr.sbin/nmtree/Makefile
+@@ -5,7 +5,7 @@
+ .PATH: ${.CURDIR}/../../contrib/mtree
+ 
+ PROG=		mtree
+-MAN=		mtree.5 mtree.8
++MAN=		mtree.8
+ SRCS=		compare.c crc.c create.c excludes.c getid.c misc.c mtree.c \
+ 		only.c spec.c specspec.c verify.c
+ 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <use>
+    <flag name="assets">
+      Support web asset management through <pkg>dev-python/assets</pkg>
+    </flag>
+    <flag name="charts">
+      Support chart generation through <pkg>dev-python/pygal</pkg>
+    </flag>
+    <flag name="ghpages">
+      Add support for direct uploading to github pages thru
+      <pkg>dev-python/ghp-import</pkg>
+    </flag>
+    <flag name="hyphenation">
+      Add hyphenation support through <pkg>dev-python/pyphen</pkg>
+    </flag>
+    <flag name="ipython">
+      Add IPython notebook compilation and LESS support
+    </flag>
+    <flag name="jinja">
+      Add support for <pkg>dev-python/jinja</pkg> as alternative templating
+      engine to Mako
+    </flag>
+    <flag name="watchdog">
+      Use <pkg>dev-python/watchdog</pkg> to monitor file system events
+    </flag>
+    <flag name="webmedia">
+      Use <pkg>dev-python/micawber</pkg> to extract metadata from web media
+      links
+    </flag>
+    <flag name="websocket">
+      Add websocket support thru <pkg>dev-python/ws4py</pkg>
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">Nikola</remote-id>
+  </upstream>
+</pkgmetadata>

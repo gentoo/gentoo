@@ -1,0 +1,21 @@
+diff -ur mdk3-v5-orig/mdk3.c mdk3-v5/mdk3.c
+--- mdk3-v5-orig/mdk3.c	2008-11-10 21:45:02.000000000 +0100
++++ mdk3-v5/mdk3.c	2009-01-10 01:47:03.546875000 +0100
+@@ -1092,10 +1092,13 @@
+ {
+   struct clistwidsclient *first = c;
+ 
+-  do {
+-    if (!(memcmp(c->mac, mac, mac_len))) return c;
+-    c = c->next;
+-  } while (c != first);
++  if (c != NULL)
++  {
++    do {
++      if (c->mac != NULL && !(memcmp(c->mac, mac, mac_len))) return c;
++      c = c->next;
++    } while (c != NULL && c != first);
++  }
+ 
+   return NULL;
+ }

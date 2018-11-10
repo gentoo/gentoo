@@ -1,0 +1,10 @@
+--- a/src/configure.in
++++ b/src/configure.in
+@@ -26,6 +26,7 @@
+ #include<net/ethernet.h>
+ #include<linux/if.h>
+ #include<linux/in.h>
++#include <linux/in6.h>
+ ])
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.

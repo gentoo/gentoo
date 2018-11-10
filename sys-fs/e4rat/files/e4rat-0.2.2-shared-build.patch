@@ -1,0 +1,74 @@
+Index: e4rat-0.2.2/CMakeLists.txt
+===================================================================
+--- e4rat-0.2.2.orig/CMakeLists.txt
++++ e4rat-0.2.2/CMakeLists.txt
+@@ -14,7 +14,6 @@ IF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_D
+     set(CMAKE_INSTALL_PREFIX "/" CACHE PATH "e4rat install prefix" FORCE)
+ ENDIF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+ 
+-set(Boost_USE_STATIC_LIBS   ON)
+ set(Boost_USE_MULTITHREADED OFF)
+ add_definitions(-DBOOST_FILESYSTEM_VERSION=2)
+ find_package(Boost 1.41 COMPONENTS system filesystem regex REQUIRED)
+Index: e4rat-0.2.2/src/CMakeLists.txt
+===================================================================
+--- e4rat-0.2.2.orig/src/CMakeLists.txt
++++ e4rat-0.2.2/src/CMakeLists.txt
+@@ -131,21 +131,12 @@ IF(CMAKE_BUILD_TYPE STREQUAL "debug")
+     )
+ ENDIF(CMAKE_BUILD_TYPE STREQUAL "debug")
+ 
+-# On 64 bit architecture you cannot link a static to a shared library
+-# Therefore -static-libstdc++ will fail.
+-if(BUILD_CORE_LIBRARY_STATIC)
+-    add_library(${PROJECT_NAME}-core STATIC
+-        ${${PROJECT_NAME}-core_SRC}
+-    )
+-else(BUILD_CORE_LIBRARY_STATIC)
+-    add_library(${PROJECT_NAME}-core SHARED
+-        ${${PROJECT_NAME}-core_SRC}
+-    )
+-    set_target_properties(${PROJECT_NAME}-core  PROPERTIES
+-        SOVERSION   0
+-        LINK_FLAGS  "-static-libgcc -static-libstdc++"
+-    )
+-endif(BUILD_CORE_LIBRARY_STATIC)
++add_library(${PROJECT_NAME}-core SHARED
++	${${PROJECT_NAME}-core_SRC}
++)
++set_target_properties(${PROJECT_NAME}-core  PROPERTIES
++	SOVERSION   0
++)
+ 
+ target_link_libraries(${PROJECT_NAME}-core
+         ${${PROJECT_NAME}_LIBRARIES}
+@@ -158,15 +149,13 @@ foreach( EXE     ${PROJECT_NAME}-collect
+     TARGET_LINK_LIBRARIES(${EXE}
+         ${PROJECT_NAME}-core
+     )
+-    set_target_properties(${EXE}  PROPERTIES
+-        LINK_FLAGS  "-static-libgcc -static-libstdc++"
+-    )
+ endforeach( EXE )
+ 
+ ###
+ # install project targets
+ ###
+ set(${PROJECT_NAME}_TARGETS 
++    ${PROJECT_NAME}-core
+     ${PROJECT_NAME}-collect
+     ${PROJECT_NAME}-preload
+     ${PROJECT_NAME}-realloc
+Index: e4rat-0.2.2/src/cmake/Findaudit.cmake
+===================================================================
+--- e4rat-0.2.2.orig/src/cmake/Findaudit.cmake
++++ e4rat-0.2.2/src/cmake/Findaudit.cmake
+@@ -1,7 +1,7 @@
+ FIND_PATH(AUDIT_INCLUDE_DIR libaudit.h /usr/include
+     /usr/local/include)
+ 
+-FIND_LIBRARY(AUDIT_LIBRARY NAMES libaudit.a PATH /usr/lib /usr/local/lib) 
++FIND_LIBRARY(AUDIT_LIBRARY NAMES audit PATH /usr/lib /usr/local/lib) 
+ 
+ IF (AUDIT_INCLUDE_DIR AND AUDIT_LIBRARY)
+    SET(AUDIT_FOUND TRUE)

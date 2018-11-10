@@ -1,0 +1,10 @@
+--- orig-libofa-0.9.3/examples/example.cpp      2009-04-11 12:22:55.397455430 +0200
++++ libofa-0.9.3/examples/example.cpp   2009-04-11 12:25:21.466456955 +0200
+@@ -9,6 +9,7 @@
+
+ #include "protocol.h"
+
++#include <stdio.h>
+ #include <string.h>
+
+ AudioData* loadWaveFile(char *file);

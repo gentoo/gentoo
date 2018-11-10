@@ -1,0 +1,11 @@
+--- security/jss/build_java.pl.orig	2015-10-01 23:04:22.540035573 +0100
++++ security/jss/build_java.pl	2015-10-01 23:11:41.413230402 +0100
+@@ -323,7 +323,7 @@
+     ensure_dir_exists("$dist_dir/jssdoc");
+     my $targets = join(" ", @packages);
+     print "$targets\n";
+-    print_do("$javadoc -breakiterator -sourcepath . -d $dist_dir/jssdoc $html_header_opt $targets");
++    print_do("$javadoc -Xdoclint:none -breakiterator -sourcepath . -d $dist_dir/jssdoc $html_header_opt $targets");
+     print_do("cp $dist_dir/jssdoc/index.html $dist_dir/jssdoc/index.html.bak");
+     print_do("cp $dist_dir/jssdoc/overview-summary.html $dist_dir/jssdoc/index.html");
+ }

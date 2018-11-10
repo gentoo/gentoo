@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		A shell script for burning optical media. Supports data and audio burning,
+		with broad format support including WAV, MP3, Vorbis, and FLAC.
+	</longdescription>
+	<upstream>
+		<maintainer status="inactive">
+			<email>anders.linden@gmail.com</email>
+			<name>Anders Lindén</name>
+		</maintainer>
+		<doc lang="en">http://bashburn.dose.se/index.php?s=docs</doc>
+	</upstream>
+</pkgmetadata>

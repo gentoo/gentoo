@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription>
+    CLBlast is a modern, lightweight, performant and tunable OpenCL
+    BLAS library written in C++11. It is designed to leverage the full
+    performance potential of a wide variety of OpenCL devices from
+    different vendors, including desktop and laptop GPUs, embedded
+    GPUs, and other accelerators. CLBlast implements BLAS routines:
+    basic linear algebra subprograms operating on vectors and
+    matrices.
+  </longdescription>
+  <use>
+    <flag name="client">
+      Enable compilation of the clients to test and compare performance with reference libraries
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">CNugteren/CLBlast</remote-id>
+  </upstream>
+</pkgmetadata>

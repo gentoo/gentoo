@@ -1,0 +1,76 @@
+commit fe71fd989a4501c77314b2906756f4e9a328ff31
+Author: Romain Bignon <romain@symlink.me>
+Date:   Tue May 8 16:46:35 2012 +0200
+
+    fixes for gcc 4.7
+
+--- a/src/im/account.cpp
++++ b/src/im/account.cpp
+@@ -18,6 +18,7 @@
+ 
+ #include <cassert>
+ #include <cstring>
++#include <unistd.h>
+ #ifdef HAVE_IMLIB
+ 	#include <Imlib2.h>
+ #endif /* HAVE_IMLIB */
+--- a/src/im/request.cpp
++++ b/src/im/request.cpp
+@@ -18,6 +18,7 @@
+ 
+ #include <errno.h>
+ #include <string.h>
++#include <unistd.h>
+ 
+ #include "request.h"
+ #include "buddy.h"
+--- a/src/irc/dcc.cpp
++++ b/src/irc/dcc.cpp
+@@ -23,6 +23,7 @@
+ #include <string.h>
+ #include <sys/types.h>
+ #include <netinet/in.h>
++#include <unistd.h>
+ 
+ #include "dcc.h"
+ #include "nick.h"
+--- a/src/irc/irc.cpp
++++ b/src/irc/irc.cpp
+@@ -246,7 +246,7 @@ Nick* IRC::getNick(string nickname, bool case_sensitive) const
+ Buddy* IRC::getNick(const im::Buddy& buddy) const
+ {
+ 	map<string, Nick*>::const_iterator it;
+-	Buddy* nb;
++	Buddy* nb = NULL;
+ 	for(it = users.begin();
+ 	    it != users.end() && (!(nb = dynamic_cast<Buddy*>(it->second)) || nb->getBuddy() != buddy);
+ 	    ++it)
+@@ -261,7 +261,7 @@ Buddy* IRC::getNick(const im::Buddy& buddy) const
+ ConvNick* IRC::getNick(const im::Conversation& conv) const
+ {
+ 	map<string, Nick*>::const_iterator it;
+-	ConvNick* n;
++	ConvNick* n = NULL;
+ 	for(it = users.begin();
+ 	    it != users.end() && (!(n = dynamic_cast<ConvNick*>(it->second)) || n->getConversation() != conv);
+ 	    ++it)
+--- a/src/server_poll/inetd.cpp
++++ b/src/server_poll/inetd.cpp
+@@ -18,6 +18,7 @@
+ 
+ #include <cassert>
+ #include <glib.h>
++#include <unistd.h>
+ 
+ #include "inetd.h"
+ #include "irc/irc.h"
+--- a/src/sockwrap/sockwrap.cpp
++++ b/src/sockwrap/sockwrap.cpp
+@@ -22,6 +22,7 @@
+ #  include "sockwrap_tls.h"
+ #endif
+ #include "core/util.h"
++#include <unistd.h>
+ 
+ namespace sock
+ {

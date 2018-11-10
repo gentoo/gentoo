@@ -1,0 +1,41 @@
+--- work.orig/Makefile
++++ work/Makefile
+@@ -1,26 +1,30 @@
+-CFLAGS	+= -O2 -s -fstack-protector-all
++CFLAGS	+= -Wall -D_GNU_SOURCE
+ PREFIX	= /usr/local
+ BINDIR	= $(PREFIX)/bin
+ SRC	= src/gslist.c src/enctype1_decoder.c src/enctype2_decoder.c src/enctype_shared.c src/mydownlib.c
+ #LIBS	= -lpthread /usr/lib/libGeoIP.a /usr/lib/i386-linux-gnu/libz.a
+ #SQLIBS	= /usr/lib/i386-linux-gnu/libmysqlclient.a /usr/lib/i386-linux-gnu/libm.a -ldl
+ LIBS	= -lpthread -lGeoIP -lz
+-SQLIBS	= -lmysqlclient
+ O	= $(SRC:.c=.o)
+ 
+-all:	gslist gslistsql
++ifneq ($(GSWEB),0)
++CFLAGS += -DGSWEB
++endif
+ 
+-gslist:	
+-	$(CC) $(SRC) $(CFLAGS) -o gslist $(LIBS) -DGSWEB
+-	$(CC) $(SRC) $(CFLAGS) -o gslistsql $(SQLIBS) $(LIBS) -DGSWEB -DSQL
++ifneq ($(SQL),0)
++CFLAGS += -DSQL
++LIBS   += -lmysqlclient
++endif
++
++gslist:	$(O)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o gslist $(O) $(LIBS)
+ 
+ clean:
+-	rm -f gslist gslistsql src/gslist.o src/enctype1_decoder.o src/enctype2_decoder.o src/enctype_shared.o src/enctypex_decoder.o src/mydownlib.o
++	rm -f gslist $(O)
+ 
+ install:
+ 	install -m 755 -d $(BINDIR)
+ 	install -m 755 gslist $(BINDIR)/gslist
+-	install -m 755 gslistsql $(BINDIR)/gslistsql
+ 
+ .PHONY:
+ 	clean install

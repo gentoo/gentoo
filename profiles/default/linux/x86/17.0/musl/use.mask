@@ -1,0 +1,5 @@
+# Copyright 1999-2018 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+
+# ssp is broken on x86 musl.  This is critical for gcc-6.
+ssp

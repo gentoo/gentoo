@@ -1,0 +1,271 @@
+From b296fb1d9db532a14c815d6e90ec606a32f570be Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@lanl.gov>
+Date: Wed, 30 Nov 2016 11:01:58 -0700
+Subject: [PATCH] cmake: add multilib support
+
+---
+ CMakeLists.txt                       | 13 ++++++++-----
+ src/caliper-stub/CMakeLists.txt      |  8 ++++----
+ src/caliper/CMakeLists.txt           |  6 +++---
+ src/common/CMakeLists.txt            |  8 ++++----
+ src/common/csv/CMakeLists.txt        |  2 +-
+ src/fortran/CMakeLists.txt           |  2 +-
+ src/reader/CMakeLists.txt            |  6 +++---
+ src/services/callpath/CMakeLists.txt |  2 +-
+ src/services/mpiwrap/CMakeLists.txt  |  4 ++--
+ src/services/ompt/CMakeLists.txt     |  2 +-
+ src/services/papi/CMakeLists.txt     |  2 +-
+ src/services/recorder/CMakeLists.txt |  2 +-
+ src/tools/cali-graph/CMakeLists.txt  |  2 +-
+ src/tools/cali-query/CMakeLists.txt  |  2 +-
+ src/tools/cali-stat/CMakeLists.txt   |  2 +-
+ src/tools/util/CMakeLists.txt        |  6 +++---
+ 16 files changed, 36 insertions(+), 33 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3088112..e3e2384 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,6 +16,9 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
+ include(FindLibunwind)
+ include(FindPAPI)
+ include(FindLibcurl)
++
++include(GNUInstallDirs)
++
+ # Optional Fortran
+ option(WITH_FORTRAN "Install Fortran interface and build test programs")
+ 
+@@ -131,15 +134,15 @@ configure_file(
+   @ONLY)
+ 
+ install(FILES ${PROJECT_BINARY_DIR}/caliper-config.cmake 
+-  DESTINATION share/cmake/caliper)
++  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/cmake/caliper)
+ install(EXPORT caliper
+-  DESTINATION share/cmake/caliper)
++  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/cmake/caliper)
+ 
+ install(FILES ${PROJECT_BINARY_DIR}/caliper-config.h 
+-  DESTINATION include/caliper)
++  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/caliper)
+ 
+ install(FILES ${PROJECT_BINARY_DIR}/caliper.pc 
+-  DESTINATION share/pkgconfig)
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ 
+ add_subdirectory(src)
+ if (WITH_TESTS)
+@@ -149,4 +152,4 @@ endif()
+ add_subdirectory(doc)
+ 
+ # Install exports
+-#install(EXPORT caliper DESTINATION lib/cmake)
++#install(EXPORT caliper DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
+diff --git a/src/caliper-stub/CMakeLists.txt b/src/caliper-stub/CMakeLists.txt
+index b796f47..d168875 100644
+--- a/src/caliper-stub/CMakeLists.txt
++++ b/src/caliper-stub/CMakeLists.txt
+@@ -12,9 +12,9 @@ add_library(caliper-stub ${CALIPER_STUB_CXX_SOURCES})
+ 
+ install(TARGETS caliper-stub-c
+   EXPORT caliper-stub-c
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib)
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ install(TARGETS caliper-stub
+   EXPORT caliper-stub
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib)
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+diff --git a/src/caliper/CMakeLists.txt b/src/caliper/CMakeLists.txt
+index 4c25990..38b58ac 100644
+--- a/src/caliper/CMakeLists.txt
++++ b/src/caliper/CMakeLists.txt
+@@ -26,9 +26,9 @@ foreach (_extlib ${CALIPER_EXTERNAL_LIBS})
+   target_link_libraries(caliper ${_extlib})
+ endforeach()
+ 
+-install(FILES ${CALIPER_HEADERS} DESTINATION include/caliper)
++install(FILES ${CALIPER_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/caliper)
+ 
+ install(TARGETS caliper 
+   EXPORT caliper 
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib)
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+diff --git a/src/common/CMakeLists.txt b/src/common/CMakeLists.txt
+index 73666fb..0c0b441 100644
+--- a/src/common/CMakeLists.txt
++++ b/src/common/CMakeLists.txt
+@@ -36,10 +36,10 @@ add_library(caliper-common
+   $<TARGET_OBJECTS:c-util>
+   ${CALIPER_COMMON_SOURCES})
+ 
+-install(FILES ${CALIPER_COMMON_HEADERS} DESTINATION include/caliper)
+-install(FILES ${CALIPER_UTIL_HEADERS} DESTINATION include/caliper/util)
++install(FILES ${CALIPER_COMMON_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/caliper)
++install(FILES ${CALIPER_UTIL_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/caliper/util)
+ 
+ install(TARGETS caliper-common 
+   EXPORT caliper
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib)
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+diff --git a/src/common/csv/CMakeLists.txt b/src/common/csv/CMakeLists.txt
+index ef4357a..1f6f506 100644
+--- a/src/common/csv/CMakeLists.txt
++++ b/src/common/csv/CMakeLists.txt
+@@ -13,5 +13,5 @@ if (${BUILD_SHARED_LIBS})
+   set_property(TARGET caliper-csv PROPERTY POSITION_INDEPENDENT_CODE TRUE)
+ endif()
+ 
+-install(FILES ${CALIPER_CSV_HEADERS} DESTINATION include/caliper/csv)
++install(FILES ${CALIPER_CSV_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/caliper/csv)
+ 
+diff --git a/src/fortran/CMakeLists.txt b/src/fortran/CMakeLists.txt
+index c81323c..9c57f47 100644
+--- a/src/fortran/CMakeLists.txt
++++ b/src/fortran/CMakeLists.txt
+@@ -6,4 +6,4 @@ set_target_properties(testf03 PROPERTIES LINKER_LANGUAGE CXX)
+ 
+ target_link_libraries(testf03 caliper)
+ 
+-install(FILES caliper.f90 DESTINATION share/fortran)
++install(FILES caliper.f90 DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/fortran)
+diff --git a/src/reader/CMakeLists.txt b/src/reader/CMakeLists.txt
+index 5d23d24..3ca79b9 100644
+--- a/src/reader/CMakeLists.txt
++++ b/src/reader/CMakeLists.txt
+@@ -21,9 +21,9 @@ add_library(caliper-reader ${CALIPER_READER_SOURCES})
+ 
+ target_link_libraries(caliper-reader caliper-common)
+ 
+-install(FILES ${CALIPER_READER_HEADERS} DESTINATION include/caliper)
++install(FILES ${CALIPER_READER_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/caliper)
+ 
+ install(TARGETS caliper-reader 
+   EXPORT caliper
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib)
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+diff --git a/src/services/callpath/CMakeLists.txt b/src/services/callpath/CMakeLists.txt
+index dd47570..1f49f36 100644
+--- a/src/services/callpath/CMakeLists.txt
++++ b/src/services/callpath/CMakeLists.txt
+@@ -3,7 +3,7 @@ include_directories(${LIBUNWIND_INCLUDE_DIR})
+ set(CALIPER_CALLPATH_SOURCES
+     Callpath.cpp)
+ 
+-# install(TARGETS caliper-callpath DESTINATION lib)
++# install(TARGETS caliper-callpath DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ add_library(caliper-callpath OBJECT ${CALIPER_CALLPATH_SOURCES})
+ 
+diff --git a/src/services/mpiwrap/CMakeLists.txt b/src/services/mpiwrap/CMakeLists.txt
+index 53a8377..c381347 100644
+--- a/src/services/mpiwrap/CMakeLists.txt
++++ b/src/services/mpiwrap/CMakeLists.txt
+@@ -27,6 +27,6 @@ target_link_libraries(caliper-mpiwrap ${MPI_C_LIBRARIES})
+ 
+ install(TARGETS caliper-mpiwrap
+   EXPORT caliper
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib)
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ add_caliper_service("mpi CALIPER_HAVE_MPI")
+diff --git a/src/services/ompt/CMakeLists.txt b/src/services/ompt/CMakeLists.txt
+index f0e4085..8563eb2 100644
+--- a/src/services/ompt/CMakeLists.txt
++++ b/src/services/ompt/CMakeLists.txt
+@@ -8,7 +8,7 @@ set(CALIPER_OMPT_SOURCES
+ # target_link_libraries(caliper-ompt caliper-common)
+ # target_link_libraries(caliper-ompt caliper)
+ 
+-# install(TARGETS caliper-ompt DESTINATION lib)
++# install(TARGETS caliper-ompt DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ add_library(caliper-ompt OBJECT ${CALIPER_OMPT_SOURCES})
+ 
+diff --git a/src/services/papi/CMakeLists.txt b/src/services/papi/CMakeLists.txt
+index 70dab41..fa971cc 100644
+--- a/src/services/papi/CMakeLists.txt
++++ b/src/services/papi/CMakeLists.txt
+@@ -9,7 +9,7 @@ set(CALIPER_PAPI_SOURCES
+ # target_link_libraries(caliper-papi caliper)
+ # target_link_libraries(caliper-papi ${PAPI_LIBRARIES})
+ 
+-# install(TARGETS caliper-papi DESTINATION lib)
++# install(TARGETS caliper-papi DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ add_library(caliper-papi OBJECT ${CALIPER_PAPI_SOURCES})
+ 
+diff --git a/src/services/recorder/CMakeLists.txt b/src/services/recorder/CMakeLists.txt
+index c0543d4..c5c6ea8 100644
+--- a/src/services/recorder/CMakeLists.txt
++++ b/src/services/recorder/CMakeLists.txt
+@@ -7,7 +7,7 @@ set(CALIPER_RECORDER_SOURCES
+ # target_link_libraries(caliper-recorder caliper-common)
+ # target_link_libraries(caliper-recorder caliper)
+ 
+-# install(TARGETS caliper-recorder DESTINATION lib)
++# install(TARGETS caliper-recorder DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ add_service_sources(${CALIPER_RECORDER_SOURCES})
+ add_caliper_service("recorder")
+diff --git a/src/tools/cali-graph/CMakeLists.txt b/src/tools/cali-graph/CMakeLists.txt
+index 2b90f51..e3aa7c1 100644
+--- a/src/tools/cali-graph/CMakeLists.txt
++++ b/src/tools/cali-graph/CMakeLists.txt
+@@ -13,4 +13,4 @@ target_link_libraries(cali-graph caliper-common)
+ target_link_libraries(cali-graph caliper-tools-util)
+ target_link_libraries(cali-graph caliper)
+ 
+-install(TARGETS cali-graph DESTINATION bin)
++install(TARGETS cali-graph DESTINATION ${CMAKE_INSTALL_BINDIR})
+diff --git a/src/tools/cali-query/CMakeLists.txt b/src/tools/cali-query/CMakeLists.txt
+index e013e96..72202be 100644
+--- a/src/tools/cali-query/CMakeLists.txt
++++ b/src/tools/cali-query/CMakeLists.txt
+@@ -13,4 +13,4 @@ target_link_libraries(cali-query caliper-common)
+ target_link_libraries(cali-query caliper-tools-util)
+ target_link_libraries(cali-query caliper)
+ 
+-install(TARGETS cali-query DESTINATION bin)
++install(TARGETS cali-query DESTINATION ${CMAKE_INSTALL_BINDIR})
+diff --git a/src/tools/cali-stat/CMakeLists.txt b/src/tools/cali-stat/CMakeLists.txt
+index 35395d9..d337abb 100644
+--- a/src/tools/cali-stat/CMakeLists.txt
++++ b/src/tools/cali-stat/CMakeLists.txt
+@@ -13,4 +13,4 @@ target_link_libraries(cali-stat caliper-common)
+ target_link_libraries(cali-stat caliper-tools-util)
+ target_link_libraries(cali-stat caliper)
+ 
+-install(TARGETS cali-stat DESTINATION bin)
++install(TARGETS cali-stat DESTINATION ${CMAKE_INSTALL_BINDIR})
+diff --git a/src/tools/util/CMakeLists.txt b/src/tools/util/CMakeLists.txt
+index be4e393..652194c 100644
+--- a/src/tools/util/CMakeLists.txt
++++ b/src/tools/util/CMakeLists.txt
+@@ -5,9 +5,9 @@ set(CALIPER_TOOLS_UTIL_HEADERS
+ 
+ add_library(caliper-tools-util ${CALIPER_TOOLS_UTIL_SOURCES})
+ 
+-install(FILES ${CALIPER_TOOLS_UTIL_HEADERS} DESTINATION include/caliper)
++install(FILES ${CALIPER_TOOLS_UTIL_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/caliper)
+ 
+ install(TARGETS caliper-tools-util 
+   EXPORT caliper
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib)
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+-- 
+2.7.3
+

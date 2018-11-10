@@ -1,0 +1,12 @@
+--- quake2-r0.16.1/src/linux/q_shlinux.c
++++ quake2-r0.16.1-modified/src/linux/q_shlinux.c
+@@ -17,6 +17,9 @@
+ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ 
+ */
++#if !defined(_GNU_SOURCE)
++	#define _GNU_SOURCE
++#endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <errno.h>

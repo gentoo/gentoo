@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<use>
+		<flag name="gnome-dictionary">Enable plugin for dictionary lookups using <pkg>app-dicts/gnome-dictionary</pkg>.</flag>
+		<flag name="gucharmap">Enable plugin for unicode symbols selection using <pkg>gnome-extra/gucharmap</pkg>.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">gtranslator</remote-id>
+	</upstream>
+</pkgmetadata>

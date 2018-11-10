@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>Hloupy.Honza@centrum.cz</email>
+		<name>Honza Macháček</name>
+	</maintainer>
+	<longdescription lang="en">
+Libxc is a library of exchange-correlation functionals for density-functional theory.
+The aim is to provide a portable, well tested and reliable set of exchange and correlation
+functionals that can be used by all the ETSF codes and also other codes.
+
+In Libxc you can find different types of functionals: LDA, GGA, hybrids, and mGGA (experimental).
+These functionals depend on local information, in the sense that the value of the potential
+at a given point depends only on the values of the density -- and the gradient of the density
+and the kinetic energy density, for the GGA and mGGA cases.
+
+It can calculate the functional itself and its derivative; for some functionals,
+higher-order derivatives are available.
+
+Libxc is written in C and has Fortran bindings. It is released under the LGPL license (v. 3.0).
+Contributions are welcome. 
+</longdescription>
+	<upstream>
+		<doc>http://octopus-code.org/wiki/Libxc:manual</doc>
+	</upstream>
+</pkgmetadata>

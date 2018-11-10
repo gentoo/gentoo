@@ -1,0 +1,160 @@
+From a00eecc78507f48843f719f32e80ae8805a34c15 Mon Sep 17 00:00:00 2001
+From: Alexander Volkov <a.volkov@rusbitech.ru>
+Date: Tue, 7 Aug 2018 23:59:15 +0300
+Subject: Make dependency on KActivities optional
+
+Reviewers: #gwenview, rkflx
+
+Reviewed By: #gwenview, rkflx
+
+Subscribers: asturmlechner, rkflx
+
+Differential Revision: https://phabricator.kde.org/D14512
+---
+ CMakeLists.txt          |  4 +++-
+ app/CMakeLists.txt      |  5 ++++-
+ app/viewmainpage.cpp    | 19 ++++++++++++++++---
+ config-gwenview.h.cmake |  1 +
+ 4 files changed, 24 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6e3e412..810813a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -71,7 +71,6 @@ add_definitions(-DPHONON_LIB_SONAME=\"${PHONON_LIB_SONAME}\")
+ 
+ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+     KIO
+-    Activities
+     ItemModels
+     I18n
+     DocTools
+@@ -80,6 +79,9 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+     IconThemes
+     Notifications
+ )
++find_package(KF5 ${KF5_MIN_VERSION} OPTIONAL_COMPONENTS
++    Activities
++)
+ 
+ ## Dependencies
+ find_package(JPEG)
+diff --git a/app/CMakeLists.txt b/app/CMakeLists.txt
+index 5fe34d6..0d24360 100644
+--- a/app/CMakeLists.txt
++++ b/app/CMakeLists.txt
+@@ -78,11 +78,14 @@ add_executable(gwenview ${gwenview_SRCS})
+ 
+ target_link_libraries(gwenview
+     KF5::ItemModels
+-    KF5::Activities
+     KF5::Notifications
+     gwenviewlib
+     )
+ 
++if (KF5Activities_FOUND)
++    target_link_libraries(gwenview KF5::Activities)
++endif()
++
+ target_link_libraries(gwenview LINK_INTERFACE_LIBRARIES KF5::KIOCore Qt5::Core)
+ 
+ if (KF5Kipi_FOUND)
+diff --git a/app/viewmainpage.cpp b/app/viewmainpage.cpp
+index fa06e80..480d3c2 100644
+--- a/app/viewmainpage.cpp
++++ b/app/viewmainpage.cpp
+@@ -18,6 +18,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ 
+ */
+ #include "viewmainpage.h"
++#include "config-gwenview.h"
+ 
+ // Qt
+ #include <QCheckBox>
+@@ -35,8 +36,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ #include <KMessageBox>
+ #include <KModelIndexProxyMapper>
+ #include <KToggleAction>
+-#include <KActivities/ResourceInstance>
+ #include <KSqueezedTextLabel>
++#ifdef KF5Activities_FOUND
++#include <KActivities/ResourceInstance>
++#endif
+ 
+ // Local
+ #include "fileoperations.h"
+@@ -132,7 +135,9 @@ struct ViewMainPagePrivate
+     // Activity Resource events reporting needs to be above KPart,
+     // in the shell itself, to avoid problems with other MDI applications
+     // that use this KPart
++#ifdef KF5Activities_FOUND
+     QHash<DocumentView*, KActivities::ResourceInstance*> mActivityResources;
++#endif
+ 
+     bool mCompareMode;
+     ZoomMode::Enum mZoomMode;
+@@ -250,7 +255,9 @@ struct ViewMainPagePrivate
+         QObject::connect(view, &DocumentView::videoFinished, mSlideShow, &SlideShow::resumeAndGoToNextUrl);
+ 
+         mDocumentViews << view;
++#ifdef KF5Activities_FOUND
+         mActivityResources.insert(view, new KActivities::ResourceInstance(q->window()->winId(), view));
++#endif
+ 
+         return view;
+     }
+@@ -269,7 +276,9 @@ struct ViewMainPagePrivate
+         QObject::disconnect(view, nullptr, mSlideShow, nullptr);
+ 
+         mDocumentViews.removeOne(view);
++#ifdef KF5Activities_FOUND
+         mActivityResources.remove(view);
++#endif
+         mDocumentViewContainer->deleteView(view);
+     }
+ 
+@@ -344,8 +353,10 @@ struct ViewMainPagePrivate
+         }
+         if (oldView) {
+             oldView->setCurrent(false);
++#ifdef KF5Activities_FOUND
+             Q_ASSERT(mActivityResources.contains(oldView));
+             mActivityResources.value(oldView)->notifyFocusedOut();
++#endif
+         }
+         view->setCurrent(true);
+         mDocumentViewController->setView(view);
+@@ -358,10 +369,10 @@ struct ViewMainPagePrivate
+             // *before* listing /foo (because it matters less to the user)
+             mThumbnailBar->selectionModel()->setCurrentIndex(index, QItemSelectionModel::Current);
+         }
+-
++#ifdef KF5Activities_FOUND
+         Q_ASSERT(mActivityResources.contains(view));
+         mActivityResources.value(view)->notifyFocusedIn();
+-
++#endif
+         QObject::connect(view, &DocumentView::currentToolChanged,
+                          q, &ViewMainPage::updateFocus);
+     }
+@@ -701,7 +712,9 @@ void ViewMainPage::openUrls(const QList<QUrl>& allUrls, const QUrl &currentUrl)
+         DocumentView* view = it.value();
+         DocumentView::Setup savedSetup = d->mDocumentViewContainer->savedSetup(url);
+         view->openUrl(url, d->mZoomMode == ZoomMode::Individual && savedSetup.valid ? savedSetup : setup);
++#ifdef KF5Activities_FOUND
+         d->mActivityResources.value(view)->setUri(url);
++#endif
+     }
+ 
+     // Init views
+diff --git a/config-gwenview.h.cmake b/config-gwenview.h.cmake
+index 29a5a60..369442a 100644
+--- a/config-gwenview.h.cmake
++++ b/config-gwenview.h.cmake
+@@ -6,3 +6,4 @@
+ #cmakedefine HAVE_X11 ${HAVE_X11}
+ #cmakedefine HAVE_FITS ${HAVE_FITS}
+ #cmakedefine HAVE_QTDBUS ${HAVE_QTDBUS}
++#cmakedefine KF5Activities_FOUND 1
+-- 
+cgit v0.11.2

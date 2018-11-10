@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
+
+<longdescription>
+
+The Kunststoff Look&amp;Feel is an extension to the the Java Metal
+Look&amp;Feel.  This makes it very compact in size (approx. 43 kBytes) and
+ensures that all the great features provided by the Metal Look&amp;Feel do not
+get lost.
+
+</longdescription>
+</pkgmetadata>

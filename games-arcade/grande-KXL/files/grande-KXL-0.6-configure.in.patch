@@ -1,0 +1,17 @@
+--- a/configure.in
++++ b/configure.in
+@@ -17,12 +17,8 @@
+ AC_CHECK_HEADERS(unistd.h)
+ 
+ dnl installation & score path
+-if test "x${prefix}" = "xNONE"; then
+-  inst_path="${ac_default_prefix}/games/grande"
+-else
+-  inst_path="${prefix}/games/grande"
+-fi
+-score_path="/var/games"
++inst_path="${datadir}/grande"
++score_path="${localstatedir}"
+ 
+ dnl check if installation was disabled
+ AC_ARG_ENABLE( install,

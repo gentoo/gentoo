@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>patrick@gentoo.org</email>
+  <name>Patrick Lauer</name>
+</maintainer>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
+<use>
+  <flag name="int64">Build the 64 bits integer library (needed for &gt; 2^31 vertices)</flag>
+  <flag name="tools">Build and install extra exec tools</flag>
+</use>
+<longdescription lang="en">
+  SCOTCH is a software package and libraries for graph, mesh and
+  hypergraph partitioning, static mapping, and sparse matrix block
+  ordering.
+  Its purpose of Scotch is to apply graph theory, with a divide and
+  conquer approach, to scientific computing problems such as graph and
+  mesh partitioning, static mapping, and sparse matrix ordering, in
+  application domains ranging from structural mechanics to operating
+  systems or bio-chemistry.
+  The SCOTCH distribution is a set of programs and libraries which
+  implement the static mapping and sparse matrix reordering algorithms
+  developed within the SCOTCH project.
+</longdescription>
+</pkgmetadata>

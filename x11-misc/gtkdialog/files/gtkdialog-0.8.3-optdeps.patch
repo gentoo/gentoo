@@ -1,0 +1,62 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -25,32 +25,40 @@
+ AC_PROG_YACC
+ AC_SUBST(YACC)
+ 
++PKG_PROG_PKG_CONFIG([0.24])
++
+ # Checks for libraries.
+-pkg_modules="gtk+-2.0 >= 2.0.0"
+-PKG_CHECK_MODULES(GTK, [$pkg_modules])
++PKG_CHECK_MODULES(GTK, [gtk+-2.0 >= 2.0.0])
+ AC_SUBST(GTK_CFLAGS)
+ AC_SUBST(GTK_LIBS)
+ 
+-pkg_modules="gthread-2.0"
+-PKG_CHECK_MODULES(GTHREAD, [$pkg_modules])
++PKG_CHECK_MODULES(GTHREAD, [gthread-2.0])
+ AC_SUBST(GTHREAD_CFLAGS)
+ AC_SUBST(GTHREAD_LIBS)
+ 
+-glade_lib="libglade-2.0"
+-PKG_CHECK_MODULES([GLADE_LIB], \
+-	[$glade_lib], \
+-	AC_SUBST(HAVE_GLADE_LIB, 1),\
+-	AC_SUBST(HAVE_GLADE_LIB, 0))
+-AC_SUBST(GLADE_LIB_CFLAGS)
+-AC_SUBST(GLADE_LIB_LIBS)
+-
+-vte_lib="vte >= 0.23.5"
+-PKG_CHECK_MODULES([VTE], \
+-	[$vte_lib], \
+-	AC_SUBST(HAVE_VTE, 1),\
+-	AC_SUBST(HAVE_VTE, 0))
+-AC_SUBST(VTE_CFLAGS)
+-AC_SUBST(VTE_LIBS)
++AC_ARG_WITH([glade],
++  AS_HELP_STRING([--with-glade], [enable support for libglade])
++)
++
++AC_ARG_WITH([vte],
++  AS_HELP_STRING([--with-vte], [enable support for vte])
++)
++
++AS_IF(
++  [test "x$with_glade" = "xyes"],
++  [PKG_CHECK_MODULES([GLADE_LIB], [libglade-2.0], [have_glade_lib=1], AC_MSG_ERROR([glade requested but not found]))],
++  [test "x$with_glade" = "xno"],
++  [have_glade_lib=0]
++)
++AC_SUBST([HAVE_GLADE_LIB], [$have_glade_lib])
++
++AS_IF(
++  [test "x$with_vte" = "xyes"],
++  [PKG_CHECK_MODULES([VTE], [vte >= 0.23.5], [have_vte=1], AC_MSG_ERROR([vte requested but not found]))],
++  [test "x$with_vte" = "xno"],
++  [have_vte=0]
++)
++AC_SUBST([HAVE_VTE], [$have_vte])
+ 
+ # Checks for header files.
+ AC_CHECK_HEADERS([locale.h])

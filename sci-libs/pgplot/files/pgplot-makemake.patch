@@ -1,0 +1,223 @@
+--- a/makemake	2012-07-05 14:08:30.210815190 -0700
++++ b/makemake	2012-07-05 14:26:28.353381906 -0700
+@@ -73,7 +73,7 @@
+ 
+ # List the default make targets.
+ 
+-DEFAULT_TARGETS="lib grfont.dat prog pgplot.doc"
++DEFAULT_TARGETS="lib grfont.dat pgplot.doc"
+ 
+ # Get the configuration variables.
+ 
+@@ -199,18 +199,18 @@
+ fi
+ 
+ if (echo $DRIV_LIST | grep -s xmdriv 2>&1 1>/dev/null); then
+-  DEFAULT_TARGETS="$DEFAULT_TARGETS libXmPgplot.a pgmdemo"
+-  INSTALL_LIST="$INSTALL_LIST libXmPgplot.a XmPgplot.h"
++  DEFAULT_TARGETS="$DEFAULT_TARGETS libXmPgplot.a"
++  INSTALL_LIST="$INSTALL_LIST libXmPgplot.a XmPgplot.h"
+ fi
+ 
+ if (echo $DRIV_LIST | grep -s xadriv 2>&1 1>/dev/null); then
+-  DEFAULT_TARGETS="$DEFAULT_TARGETS libXaPgplot.a pgawdemo"
++  DEFAULT_TARGETS="$DEFAULT_TARGETS libXaPgplot.a"
+   INSTALL_LIST="$INSTALL_LIST libXaPgplot.a XaPgplot.h"
+ fi
+ 
+ if (echo $DRIV_LIST | grep -s tkdriv 2>&1 1>/dev/null); then
+-  DEFAULT_TARGETS="$DEFAULT_TARGETS libtkpgplot.a pgtkdemo pgtkdemo.tcl"
+-  INSTALL_LIST="$INSTALL_LIST libtkpgplot.a tkpgplot.h"
++  DEFAULT_TARGETS="$DEFAULT_TARGETS libtkpgplot.a"
++  INSTALL_LIST="$INSTALL_LIST libtkpgplot.a tkpgplot.h"
+ fi
+ 
+ if (echo $DRIV_LIST | grep -s rvdriv 2>&1 1>/dev/null); then
+@@ -622,7 +622,7 @@
+ # Fortran compiler and compilation flags
+ #
+ FCOMPL=$FCOMPL
+-FFLAGC=$FFLAGC
++FFLAGC=$FFLAGC \$(FFLAGS)
+ FFLAGD=$FFLAGD
+ #
+ # C compiler and compilation flags
+@@ -633,7 +633,7 @@
+ TK_INCL=$TK_INCL
+ RV_INCL=$RV_INCL
+ CCOMPL=$CCOMPL
+-CFLAGC=$CFLAGC -I.
++CFLAGC=$CFLAGC -I. \$(CFLAGS)
+ CFLAGD=$CFLAGD
+ MCOMPL=$MCOMPL
+ MFLAGC=$MFLAGC
+@@ -657,7 +657,10 @@
+ # Shared library creation.
+ #
+ SHARED_LIB=$SHARED_LIB
++SHARED_CLIB=$SHARED_CLIB
+ SHARED_LD=$SHARED_LD
++SHARED_LD_PGPLOT_OPTS=$SHARED_LD_PGPLOT_OPTS
++SHARED_LD_CPGPLOT_OPTS=$SHARED_LD_CPGPLOT_OPTS
+ #
+ # The libraries that the shared PGPLOT library depends upon.
+ # This is for systems that allow one to specify what libraries
+@@ -806,7 +809,8 @@
+ # libraries.
+ #-----------------------------------------------------------------------
+ 
+-lib : libpgplot.a $(SHARED_LIB)
++#lib : libpgplot.a $(SHARED_LIB)
++lib : libpgplot.a
+ 
+ libpgplot.a : $(PG_ROUTINES) $(PG_NON_STANDARD) $(GR_ROUTINES) \
+ 	   $(DISPATCH_ROUTINE) $(DRIVERS) $(SYSTEM_ROUTINES)
+@@ -816,6 +820,16 @@
+ 		$(DRIVERS) $(SYSTEM_ROUTINES) | sort | uniq`
+ 	$(RANLIB) libpgplot.a
+ 
++#shared: $(PG_ROUTINES) $(PG_NON_STANDARD) $(GR_ROUTINES) \
++#	   $(DISPATCH_ROUTINE) $(DRIVERS) $(SYSTEM_ROUTINES)
++#	   $(SHARED_LD)
++
++shared: $(PG_ROUTINES) $(PG_NON_STANDARD) grfont.dat \
++	$(GR_ROUTINES) $(DISPATCH_ROUTINE) $(DRIVERS) $(SYSTEM_ROUTINES)
++	$(SHARED_LD) $(SHARED_LD_PGPLOT_OPTS) `ls $(PG_ROUTINES) \
++	$(PG_NON_STANDARD) $(GR_ROUTINES) $(DISPATCH_ROUTINE) \
++	$(DRIVERS) $(SYSTEM_ROUTINES) | sort | uniq` $(SHARED_LIB_LIBS) -o $(SHARED_LIB)
++	ln -s $(SHARED_LIB) libpgplot.so
+ EOD
+ 
+ # Emit the shared library dependency if requested.
+@@ -824,7 +838,7 @@
+ cat >> makefile << \EOD
+ $(SHARED_LIB): $(PG_ROUTINES) $(PG_NON_STANDARD) \
+ 	$(GR_ROUTINES) $(DISPATCH_ROUTINE) $(DRIVERS) $(SYSTEM_ROUTINES)
+-	$(SHARED_LD) `ls $(PG_ROUTINES) \
++	$(SHARED_LD) $(SHARED_LD_PGPLOT_OPTS) `ls $(PG_ROUTINES) \
+ 	$(PG_NON_STANDARD) $(GR_ROUTINES) $(DISPATCH_ROUTINE) \
+ 	$(DRIVERS) $(SYSTEM_ROUTINES) | sort | uniq` $(SHARED_LIB_LIBS)
+ EOD
+@@ -857,7 +871,7 @@
+ 
+ for file in $DEMOS; do
+ echo "${file}: \$(DEMDIR)/${file}.f $EXTRA_DEPENDENCY"
+-echo "	\$(FCOMPL) \$(FFLAGD) -o ${file} \$(DEMDIR)/${file}.f \$(PGPLOT_LIB) \$(LIBS)"
++echo "	\$(FCOMPL) \$(FFLAGD) \$(DEMDIR)/${file}.f \$(PGPLOT_LIB) \$(LIBS) -o ${file}"
+ done >> makefile
+ 
+ cat >> makefile << \EOD
+@@ -921,13 +935,13 @@
+ # Target "pgxwin_server" is the server program for the XW driver
+ #-----------------------------------------------------------------------
+ pgxwin_server: $(DRVDIR)/pgxwin_server.c
+-	$(CCOMPL) $(CFLAGC) $(XINCL) -o pgxwin_server $(DRVDIR)/pgxwin_server.c $(LIBS)
++	$(CCOMPL) $(CFLAGC) $(LDFLAGS) $(XINCL) $(DRVDIR)/pgxwin_server.c $(LIBS) -o pgxwin_server
+ 
+ #-----------------------------------------------------------------------
+ # Target "pgdisp" is the pgdisp server program for /XDISP driver
+ #-----------------------------------------------------------------------
+ pgdisp: $(PGDISP_ROUTINES)
+-	$(CCOMPL) $(CFLAGC) -o pgdisp $(PGDISP_ROUTINES) $(LIBS)
++	$(CCOMPL) $(CFLAGC) $(LDFLAGS) $(PGDISP_ROUTINES) $(LIBS) -o pgdisp
+ 
+ #-----------------------------------------------------------------------
+ # Target "libxmpgplot.a" contains the Motif widget driver.
+@@ -937,6 +951,10 @@
+ 	ar ru libXmPgplot.a XmPgplot.o
+ 	$(RANLIB) libXmPgplot.a
+ 
++libXmPgplot.so: XmPgplot.h XmPgplot.o
++	$(SHARED_LD) $(LDFLAGS) -Wl,-soname,libXmPgplot.so.5 XmPgplot.o -L. -lcpgplot $(MOTIF_LIBS) -o libXmPgplot.so.5
++	ln -s libXmPgplot.so.5 libXmPgplot.so
++
+ XmPgplot.h: $(XMDIR)/XmPgplot.h 
+ 	cp $(XMDIR)/XmPgplot.h XmPgplot.h
+ 
+@@ -965,6 +983,10 @@
+ 	ar ru libtkpgplot.a tkpgplot.o
+ 	$(RANLIB) libtkpgplot.a
+ 
++libtkpgplot.so: tkpgplot.h tkpgplot.o
++	$(SHARED_LD) $(LDFLAGS) -Wl,-soname,libtkpgplot.so.5 tkpgplot.o -L. -lcpgplot $(TK_LIBS) -o libtkpgplot.so.5
++	ln -s libtkpgplot.so.5 libtkpgplot.so
++
+ tkpgplot.h: $(TKDIR)/tkpgplot.h 
+ 	cp $(TKDIR)/tkpgplot.h tkpgplot.h
+ 
+@@ -983,7 +1005,7 @@
+ 	cp $(TKDIR)/rvpgplot.h rvpgplot.h
+ 
+ rvpgplot.o: $(DRVDIR)/pgxwin.h rvpgplot.h $(TKDIR)/tkpgplot.c
+-	$(CCOMPL) -o $@ -c -DUSE_RIVET $(CFLAGC) -I$(DRVDIR) -I$(TKDIR) $(RV_INCL) $(TKDIR)/tkpgplot.c
++	$(CCOMPL) -c -DUSE_RIVET $(CFLAGC) -I$(DRVDIR) -I$(TKDIR) $(RV_INCL) $(TKDIR)/tkpgplot.c -o $@
+ 
+ #-----------------------------------------------------------------------
+ # Target "install" is required for Figaro.
+@@ -1025,12 +1047,12 @@
+ grivas.o : $(DRVDIR)/gadef.h
+ grtv00.o : $(DRVDIR)/imdef.h
+ pgxwin.o : $(DRVDIR)/pgxwin.h
+-pndriv.o : ./png.h ./pngconf.h ./zlib.h ./zconf.h
++pndriv.o : /usr/include/png.h /usr/include/pngconf.h /usr/include/zlib.h /usr/include/zconf.h
+ 
+ x2driv.o figdisp_comm.o: $(DRVDIR)/commands.h
+ 
+ 
+-cpg:	libcpgplot.a cpgplot.h cpgdemo 
++cpg:	cpgplot.h libcpgplot.a
+ 	@echo ' '
+ 	@echo '*** Finished compilation of the C PGPLOT wrapper library ***'
+ 	@echo ' '
+@@ -1039,24 +1061,36 @@
+ 	@echo 'will be needed.'
+ 	@echo ' '
+ 
++cpg-shared: libcpgplot.so
++
+ pgbind: $(SRC)/cpg/pgbind.c
+ 	$(CCOMPL) $(CFLAGC) $(SRC)/cpg/pgbind.c -o pgbind
+ 
+-libcpgplot.a cpgplot.h: $(PG_SOURCE) pgbind 
++cpgplot.h: $(PG_SOURCE) pgbind
+ 	./pgbind $(PGBIND_FLAGS) -h -w $(PG_SOURCE)
++
++libcpgplot.a: cpgplot.h
+ 	$(CCOMPL) -c $(CFLAGC) cpg*.c
+ 	rm -f cpg*.c
+ 	ar ru libcpgplot.a cpg*.o
+ 	$(RANLIB) libcpgplot.a
+ 	rm -f cpg*.o
+ 
++libcpgplot.so: cpgplot.h $(PG_SOURCE) pgbind 
++	./pgbind $(PGBIND_FLAGS) -w $(PG_SOURCE)
++	$(CCOMPL) -c $(CFLAGC) cpg*.c
++	rm -f cpg*.c
++	$(SHARED_LD) $(SHARED_LD_CPGPLOT_OPTS) cpg*.o -L. -lpgplot $(SHARED_LIB_LIBS) -o $(SHARED_CLIB)
++	ln -s $(SHARED_CLIB) libcpgplot.so
++	rm -f cpg*.o
++
+ cpgdemo: cpgplot.h $(SRC)/cpg/cpgdemo.c libcpgplot.a
+ 	$(CCOMPL) $(CFLAGD) -c -I. $(SRC)/cpg/cpgdemo.c
+-	$(FCOMPL) -o cpgdemo cpgdemo.o $(CPGPLOT_LIB) $(LIBS)
++	$(FCOMPL) cpgdemo.o $(CPGPLOT_LIB) $(LIBS) -o cpgdemo
+ 	rm -f cpgdemo.o
+ 
+-pgmdemo: pgmdemo.o libXmPgplot.a
+-	$(FCOMPL) -o pgmdemo pgmdemo.o -L`pwd` -lXmPgplot $(CPGPLOT_LIB) $(MOTIF_LIBS)
++pgmdemo: pgmdemo.o libXmPgplot.so
++	$(FCOMPL) pgmdemo.o -L`pwd` -lXmPgplot $(CPGPLOT_LIB) $(MOTIF_LIBS) -o pgmdemo
+ 
+ pgmdemo.o: $(XMDIR)/pgmdemo.c XmPgplot.h libcpgplot.a cpgplot.h
+ 	$(CCOMPL) $(CFLAGD) -c -I`pwd` $(MOTIF_INCL) $(XMDIR)/pgmdemo.c
+@@ -1067,8 +1101,8 @@
+ pgawdemo.o: $(XADIR)/pgawdemo.c XaPgplot.h libcpgplot.a cpgplot.h
+ 	$(CCOMPL) $(CFLAGD) -c -I`pwd` $(ATHENA_INCL) $(XADIR)/pgawdemo.c
+ 
+-pgtkdemo: pgtkdemo.o libtkpgplot.a
+-	$(FCOMPL) -o pgtkdemo pgtkdemo.o -L`pwd` -ltkpgplot $(CPGPLOT_LIB) $(TK_LIBS)
++pgtkdemo: pgtkdemo.o libtkpgplot.so
++	$(FCOMPL) pgtkdemo.o -L`pwd` -ltkpgplot $(CPGPLOT_LIB) $(TK_LIBS) -o pgtkdemo
+ 
+ pgtkdemo.tcl: $(TKDIR)/pgtkdemo.tcl
+ 	cp $(TKDIR)/pgtkdemo.tcl pgtkdemo.tcl

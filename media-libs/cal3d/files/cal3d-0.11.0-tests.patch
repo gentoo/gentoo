@@ -1,0 +1,11 @@
+--- tests/Makefile.am.old	2014-10-27 12:14:44.534607920 +0100
++++ tests/Makefile.am	2014-10-27 12:16:00.825891248 +0100
+@@ -14,7 +14,7 @@
+ EXTRA_DIST = \
+ 	$(wildcard cal3d_converter/base.??f)
+ 
+-TESTS_ENVIRONMENT = sh ./run
++LOG_COMPILER = sh ./run
+ TESTS = converter/skeleton converter/mesh converter/material converter/animation
+ 
+ .PHONY: ${TESTS}

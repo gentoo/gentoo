@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Data-ICal</remote-id>
+    <remote-id type="cpan-module">Data::ICal</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Entry</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Entry::Alarm::Audio</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Entry::Alarm::Display</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Entry::Alarm::Email</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Entry::Alarm::Procedure</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Entry::Event</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Entry::FreeBusy</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Entry::Journal</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Entry::TimeZone</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Entry::TimeZone::Daylight</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Entry::TimeZone::Standard</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Entry::Todo</remote-id>
+    <remote-id type="cpan-module">Data::ICal::Property</remote-id>
+  </upstream>
+</pkgmetadata>

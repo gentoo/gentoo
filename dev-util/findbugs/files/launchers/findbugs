@@ -1,0 +1,83 @@
+escape_arg() {
+	echo "$1" | sed -e "s,\\([\\\"'         ]\\),\\\\\\1,g"
+}
+
+# Set defaults
+fb_mainclass="edu.umd.cs.findbugs.LaunchAppropriateUI"
+user_jvmargs=''
+ea_arg=''
+debug_arg=''
+conservespace_arg=''
+user_props=''
+
+# Handle command line arguments.
+while [ $# -gt 0 ]; do
+	case $1 in
+	-gui)
+		# this is the default
+		;;
+
+	-gui1)
+		user_props="-Dfindbugs.launchUI=1 $user_props"
+		;;
+
+	-textui)
+		fb_mainclass="edu.umd.cs.findbugs.FindBugs2"
+		;;
+
+	-jvmArgs)
+		shift
+		user_jvmargs="$1"
+		;;
+		
+	-ea)
+		ea_arg='-ea'
+		;;
+
+	-maxHeap)
+		shift
+		fb_maxheap="-Xmx$1m"
+		;;
+
+	-debug)
+		debug_arg="-Dfindbugs.debug=true"
+		;;
+
+	-conserveSpace)
+		conservespace_arg="-Dfindbugs.conserveSpace=true"
+		;;
+
+	-property)
+		shift
+		user_props="-D$1 $user_props"
+		;;
+	
+	-D*=*)
+		user_props="$1 $user_props"
+		;;
+
+	-version)
+		fb_mainclass=edu.umd.cs.findbugs.Version
+		fb_appargs="-release"
+		while [ $# -gt 0 ]; do
+			shift
+		done
+		;;
+
+	-help)
+		fb_mainclass="edu.umd.cs.findbugs.ShowHelp"
+		;;
+
+	# All unrecognized arguments will be accumulated and
+	# passed to the application.
+	*)
+		fb_appargs="$fb_appargs `escape_arg "$1"`"
+		;;
+	esac
+
+	shift
+done
+
+fb_maxheap=${fb_maxheap:-"-Xmx768m"}
+fb_jvmargs="$fb_maxheap $user_jvmargs $debug_arg $conservespace_arg $user_props $ea_arg"
+gjl_pkg_args="$fb_appargs"

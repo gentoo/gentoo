@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>slis@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    SCOOP (Scalable COncurrent Operations in Python) is a distributed task module
+    allowing concurrent parallel programming on various environments, from
+    heterogeneous grids to supercomputers.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">scoop</remote-id>
+  </upstream>
+</pkgmetadata>

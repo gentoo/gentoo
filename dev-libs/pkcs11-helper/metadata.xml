@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>crypto@gentoo.org</email>
+		<name>Crypto</name>
+	</maintainer>
+	<use>
+		<flag name="nss">Enable NSS crypto engine</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">opensc</remote-id>
+		<remote-id type="github">OpenSC/pkcs11-helper</remote-id>
+	</upstream>
+</pkgmetadata>

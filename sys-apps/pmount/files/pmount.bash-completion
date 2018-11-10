@@ -1,0 +1,94 @@
+#-*- mode: shell-script;-*-
+#
+# Bash Completion snippet for the pmount command
+# Copyright (c) Eduard Bloch, 2009-2011
+#
+# Supports most (all?) of the possible option sets of version 0.9.18 except of
+# too many device/directory arguments, the charset search can also be improved
+#
+# Inputs:
+#   $1 -- name of the command whose arguments are being completed
+#   $2 -- word being completed
+#   $3 -- word preceding the word being completed
+#   $COMP_LINE  -- current command line
+#   $COMP_PONT  -- cursor position
+#   $COMP_WORDS -- array containing individual words in the current
+#                  command line
+#   $COMP_CWORD -- index into ${COMP_WORDS} of the word containing the
+#                  current cursor position
+# Output:
+#   COMPREPLY array variable contains possible completions
+
+_pmount() {
+
+   local cur prev options devices fslist
+
+   options=' -r --read-only -w --read-write -s --sync -A --noatime -e --exec \
+   -t filesystem --type filesystem -c charset --charset charset -u umask \
+   --umask umask --dmask dmask --fmask fmask -p file --passphrase file \
+   -h --help -d --debug -V --version'
+   fslist=' ascii cp1250 cp1251 cp1255 cp437 cp737 cp775 cp850 cp852 cp855 cp857 cp860 cp861 cp862 cp863 cp864 cp865 cp866 cp869 cp874 cp932 cp936 cp949 cp950 euc-jp iso8859-1 iso8859-13 iso8859-14 iso8859-15 iso8859-2 iso8859-3 iso8859-4 iso8859-5 iso8859-6 iso8859-7 iso8859-9 koi8-r koi8-ru koi8-u utf8'
+
+   COMPREPLY=()
+   cur=${COMP_WORDS[COMP_CWORD]}
+   prev=${COMP_WORDS[COMP_CWORD-1]}
+
+   case "$prev" in
+      -@(t|-type))
+      COMPREPLY=( $( grep "^[[:space:]]$cur" /proc/filesystems ) )
+      return 0
+      ;;
+
+      -@(c|-charset))
+      COMPREPLY=( $( compgen -W "$fslist" -- $cur ) )
+      return 0
+      ;;
+      -@(u|d|-umask|-dmask))
+      COMPREPLY=( ${cur}0 ${cur}1 ${cur}2 ${cur}3 ${cur}4 ${cur}5 ${cur}6 ${cur}7 )
+      return 0
+      ;;
+
+      -@(p|-passphrase))
+      _filedir
+      return 0
+      ;;
+
+   esac
+
+	if [[ "$cur" == -* ]]; then
+		COMPREPLY=( $( compgen -W "$options" -- $cur ) )
+	else
+    devices="$( command ls $(grep -v '^[[:space:]]*#' /etc/pmount.allow ) $(grep 1 /sys/block/*/removable | sed -e 's,/sys/block/,/dev/,;s,/removable:1,*,') 2>/dev/null | sort -u | sed -e 's,\(^/dev/\)\(.*\),\1\2 \2,' )"
+		COMPREPLY=( $( compgen -W "$devices" -- $cur ) )
+	fi
+
+	return 0
+}
+
+
+_pumount() {
+
+   local cur prev options devices mdir
+
+   mdir="$(readlink -f /media)"
+
+   options=' -l --luks-force -h --help -d --debug --version'
+
+   COMPREPLY=()
+   cur=${COMP_WORDS[COMP_CWORD]}
+   prev=${COMP_WORDS[COMP_CWORD-1]}
+
+
+   if [[ "$cur" == -* ]]; then
+      COMPREPLY=( $( compgen -W "$options" -- $cur ) )
+   else
+      devices="$( grep $mdir /proc/mounts | sed -e 's,.*/$mdir/,,;s,\ .*,,;s,\(.*\),\1\n/dev/\1,;s,/dev//dev,/dev,' )"
+      COMPREPLY=( $( compgen -W "$devices" -- $cur ) )
+   fi
+
+   return 0
+}
+
+complete -F _pmount $filenames pmount
+complete -F _pumount $filenames pumount
+

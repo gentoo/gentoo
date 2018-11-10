@@ -1,0 +1,33 @@
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -1,4 +1,4 @@
+-noinst_PROGRAMS = fftw_test rfftw_test
++check_PROGRAMS = fftw_test rfftw_test
+ noinst_HEADERS = test_main.h
+ 
+ FFTWDIR=../fftw
+--- a/mpi/Makefile.am
++++ b/mpi/Makefile.am
+@@ -4,8 +4,8 @@
+ 
+ lib_LTLIBRARIES = @FFTW_MPI_LIBLIST@
+ include_HEADERS = @FFTW_MPI_INCLUDELIST@
+-noinst_PROGRAMS = @FFTW_MPI_PROGLIST@
++check_PROGRAMS = @FFTW_MPI_PROGLIST@
+ 
+ EXTRA_LTLIBRARIES = lib@FFTW_PREFIX@fftw_mpi.la \
+                     lib@FFTW_PREFIX@rfftw_mpi.la
+ EXTRA_HEADERS = @FFTW_PREFIX@fftw_mpi.h @FFTW_PREFIX@rfftw_mpi.h 
+--- a/threads/Makefile.am
++++ b/threads/Makefile.am
+@@ -4,9 +4,9 @@
+ 
+ lib_LTLIBRARIES = @FFTW_THREADS_LIBLIST@
+ include_HEADERS = @FFTW_THREADS_INCLUDELIST@
+-noinst_PROGRAMS = @FFTW_THREADS_PROGLIST@
++check_PROGRAMS = @FFTW_THREADS_PROGLIST@
+ 
+ EXTRA_LTLIBRARIES = lib@FFTW_PREFIX@fftw_threads.la \
+                     lib@FFTW_PREFIX@rfftw_threads.la
+ EXTRA_HEADERS = @FFTW_PREFIX@fftw_threads.h \
+                 @FFTW_PREFIX@rfftw_threads.h

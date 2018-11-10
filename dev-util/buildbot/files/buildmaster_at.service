@@ -1,0 +1,16 @@
+[Unit]
+Description=buildbot master daemon
+After=local-fs.target network.target
+PartOf=buildmaster.target
+
+[Service]
+Environment=BASEDIR=/var/lib/buildmaster
+Type=forking
+User=buildbot
+ExecStartPre=/usr/bin/buildbot checkconfig ${BASEDIR}/%i
+ExecStart=/usr/bin/buildbot start ${BASEDIR}/%i
+ExecStop=/usr/bin/buildbot stop ${BASEDIR}/%i
+
+[Install]
+WantedBy=buildmaster.target
+

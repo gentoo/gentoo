@@ -1,0 +1,50 @@
+--- ice-3.6.3/csharp/src/Makefile~	2015-06-23 17:30:20.000000000 +0200
++++ ice-3.6.3/csharp/src/Makefile	2015-06-27 20:07:04.217188211 +0200
+@@ -11,7 +11,7 @@
+ 
+ include $(top_srcdir)/config/Make.rules.cs
+ 
+-SUBDIRS		= Ice IceStorm Glacier2 IcePatch2 IceGrid IceBox IceDiscovery IceLocatorDiscovery
++SUBDIRS		= Ice IceStorm Glacier2 IcePatch2 IceGrid IceBox IceSSL IceDiscovery IceLocatorDiscovery
+ 
+ $(EVERYTHING)::
+ 	@for subdir in $(SUBDIRS); \
+--- /dev/null	2015-06-27 16:44:15.733558105 +0200
++++ ice-3.6.3/csharp/lib/pkgconfig/IceSSL.pc	2015-06-27 20:19:30.731894653 +0200
+@@ -0,0 +1,10 @@
++version = 3.6.3
++mono_root = /usr
++
++name = IceSSL
++
++Name: ${name}
++Description: IceSSL run-time support
++Version: ${version}
++Libs: -r:${mono_root}/lib/mono/${name}/${name}.dll
++Requires: Ice = ${version}
+--- /dev/null	2015-06-27 16:44:15.733558105 +0200
++++ ice-3.6.3/csharp/lib/pkgconfig/IceDiscovery.pc	2015-06-27 20:20:44.312515987 +0200
+@@ -0,0 +1,10 @@
++version = 3.6.3
++mono_root = /usr
++
++name = IceDiscovery
++
++Name: ${name}
++Description: IceDiscovery run-time support
++Version: ${version}
++Libs: -r:${mono_root}/lib/mono/${name}/${name}.dll
++Requires: Ice = ${version}
+--- /dev/null	2015-06-27 16:44:15.733558105 +0200
++++ ice-3.6.3/csharp/lib/pkgconfig/IceLocatorDiscovery.pc	2015-06-27 20:21:22.206185123 +0200
+@@ -0,0 +1,10 @@
++version = 3.6.3
++mono_root = /usr
++
++name = IceLocatorDiscovery
++
++Name: ${name}
++Description: IceLocatorDiscovery run-time support
++Version: ${version}
++Libs: -r:${mono_root}/lib/mono/${name}/${name}.dll
++Requires: Ice = ${version}

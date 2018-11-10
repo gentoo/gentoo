@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>o.freyermuth@googlemail.com</email>
+    <name>Oliver Freyermuth</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">vmc-project/geant4_vmc</remote-id>
+  </upstream>
+  <use>
+    <flag name="vgm">Enable the Virtual Geometry Model (<pkg>sci-physics/vgm</pkg>)</flag>
+    <flag name="g4root">Build G4Root (interface for GEANT4 simulation with a ROOT geometry)</flag>
+    <flag name="geant3">Build with Geant4 G3toG4 library</flag>
+    <flag name="mtroot">Build MTRoot (provides ROOT IO manager classes with multi-threading support)</flag>
+  </use>
+</pkgmetadata>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+ SymPy is a Python library for symbolic mathematics (manipulation). It
+ aims to become a full-featured computer algebra system (CAS) while keeping
+ the code as simple as possible in order to be comprehensible and easily
+ extensible. SymPy is written entirely in Python and does not require
+ any external libraries, except optionally for plotting support.
+</longdescription>
+  <use>
+    <flag name="ipython">Add support for <pkg>dev-python/ipython</pkg></flag>
+    <flag name="imaging">Add support for <pkg>dev-python/pillow</pkg></flag>
+    <flag name="mathml">Add support for mathml</flag>
+    <flag name="pyglet">Use <pkg>dev-python/pyglet</pkg> for plots and print preview</flag>
+    <flag name="symengine">Add support for a <pkg>dev-python/symengine</pkg> backend</flag>    
+    <flag name="texmacs">Add <pkg>app-office/texmacs</pkg> interface</flag>   
+    <flag name="theano">Add support for <pkg>dev-python/theano</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">sympy</remote-id>
+    <remote-id type="github">sympy/sympy</remote-id>
+  </upstream>
+</pkgmetadata>

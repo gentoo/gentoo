@@ -1,0 +1,13 @@
+diff -ru -x '*.Po' -x '*.Plo' -x '*.o' -x '*.lo' libX11-1.1.5/src/xlibi18n/Ximint.h libX11-1.1.5.orig/src/xlibi18n/Ximint.h
+--- libX11-1.1.5/src/xlibi18n/Ximint.h	2009-01-16 10:14:37 +0100
++++ libX11-1.1.5.orig/src/xlibi18n/Ximint.h	2009-01-16 09:39:48 +0100
+@@ -37,6 +37,9 @@
+ 
+ #include <stdio.h>
+ #include <X11/Xutil.h>
++#ifdef WIN32
++# include <X11/Xwindows.h>
++#endif
+ 
+ #define Public /**/
+ #define Private static

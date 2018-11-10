@@ -1,0 +1,11 @@
+diff -ru qsynth-0.4.0/configure qsynth-0.4.0-modified/configure
+--- qsynth-0.4.0/configure	2015-09-07 16:59:25.083842955 +0200
++++ qsynth-0.4.0-modified/configure	2016-01-12 15:57:36.673008368 +0100
+@@ -4159,6 +4159,7 @@
+ 
+       cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
++#define QT_NO_VERSION_TAGGING
+ #include "QtCore/qglobal.h"
+ int
+ main ()

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		x11-drivers contain drivers that interface with the core X11 server.
+	</longdescription>
+	<longdescription lang="ja">
+		x11-driversカテゴリにはX11コアサーバとインタフェスするドライバが含まれます。
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie x11-drivers enthält zusätzliche Treiber für den X-Server.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria x11-drivers contém drivers que fazem interface com
+		o servidor de X11 principal.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria x11-drivers zawiera sterowniki dla serwera X11.
+	</longdescription>
+	<longdescription lang="es">
+		x11-drivers contiene controladores que interactúan con el servidor
+		principal X11.
+	</longdescription>
+</catmetadata>
+

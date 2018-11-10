@@ -1,0 +1,60 @@
+diff --git a/kpartx/dasd.c b/kpartx/dasd.c
+index 1206e45..f50c1bd 100644
+--- a/kpartx/dasd.c
++++ b/kpartx/dasd.c
+@@ -28,6 +28,7 @@
+ #include <inttypes.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <sys/ioctl.h>
+ #include <linux/hdreg.h>
+ #include <errno.h>
+diff --git a/kpartx/kpartx.c b/kpartx/kpartx.c
+index d31fea8..3452787 100644
+--- a/kpartx/kpartx.c
++++ b/kpartx/kpartx.c
+@@ -28,6 +28,7 @@
+ #include <stdint.h>
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <ctype.h>
+ #include <libdevmapper.h>
+diff --git a/libmultipath/checkers/tur.c b/libmultipath/checkers/tur.c
+index 4d6c3c2..d9a9e67 100644
+--- a/libmultipath/checkers/tur.c
++++ b/libmultipath/checkers/tur.c
+@@ -11,6 +11,7 @@
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <sys/ioctl.h>
++#include <sys/sysmacros.h>
+ #include <errno.h>
+ #include <sys/time.h>
+ #include <pthread.h>
+diff --git a/libmultipath/devmapper.c b/libmultipath/devmapper.c
+index 4f8ef13..9c0b240 100644
+--- a/libmultipath/devmapper.c
++++ b/libmultipath/devmapper.c
+@@ -12,6 +12,7 @@
+ #include <ctype.h>
+ #include <unistd.h>
+ #include <errno.h>
++#include <sys/sysmacros.h>
+ 
+ #include "checkers.h"
+ #include "vector.h"
+diff --git a/libmultipath/util.c b/libmultipath/util.c
+index 03a5738..1841f35 100644
+--- a/libmultipath/util.c
++++ b/libmultipath/util.c
+@@ -4,6 +4,7 @@
+ #include <pthread.h>
+ #include <string.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <unistd.h>
+ 

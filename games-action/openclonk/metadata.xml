@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<changelog>http://hg.openclonk.org/openclonk/</changelog>
+		<doc lang="en">http://wiki.openclonk.org/w/C4Script_Documentation</doc>
+		<bugs-to>http://bugs.openclonk.org/</bugs-to>
+	</upstream>
+	<longdescription lang="en">
+		OpenClonk is the Open source successor of the Clonk gaming series.
+		OpenClonk is a project dedicated to the further development of the
+		Clonk game series. Our goal is to improve and make the real strengths
+		of Clonk more fun to play: Bustling mining, production lines and
+		economy, fast and fiddly melees. Another focus lies on the further
+		enchancement of the game engine and the extensibility/modability of
+		the game content with C4Script which has always been one of the most
+		important features of Clonk.
+	</longdescription>
+</pkgmetadata>

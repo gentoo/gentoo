@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">libxml-perl</remote-id>
+    <remote-id type="cpan-module">Data::Grove</remote-id>
+    <remote-id type="cpan-module">Data::Grove::Characters</remote-id>
+    <remote-id type="cpan-module">Data::Grove::Parent</remote-id>
+    <remote-id type="cpan-module">Data::Grove::ParentList</remote-id>
+    <remote-id type="cpan-module">Data::Grove::Visitor</remote-id>
+    <remote-id type="cpan-module">XML::ESISParser</remote-id>
+    <remote-id type="cpan-module">XML::Handler::CanonXMLWriter</remote-id>
+    <remote-id type="cpan-module">XML::Handler::Sample</remote-id>
+    <remote-id type="cpan-module">XML::Handler::Subs</remote-id>
+    <remote-id type="cpan-module">XML::Handler::XMLWriter</remote-id>
+    <remote-id type="cpan-module">XML::Parser::PerlSAX</remote-id>
+    <remote-id type="cpan-module">XML::PatAct::ACTION</remote-id>
+    <remote-id type="cpan-module">XML::PatAct::Amsterdam</remote-id>
+    <remote-id type="cpan-module">XML::PatAct::MatchName</remote-id>
+    <remote-id type="cpan-module">XML::PatAct::PATTERN</remote-id>
+    <remote-id type="cpan-module">XML::PatAct::ToObjects</remote-id>
+    <remote-id type="cpan-module">XML::Perl2SAX</remote-id>
+    <remote-id type="cpan-module">XML::SAX2Perl</remote-id>
+  </upstream>
+</pkgmetadata>

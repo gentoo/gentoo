@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>scheme@gentoo.org</email>
+		<name>Gentoo Scheme Project</name>
+	</maintainer>
+	<longdescription lang="en">
+Scmxlate is a configuration tool for software packages written in Scheme.
+Scmxlate provides the package author with a strategy for programmatically specifying the changes required to translate the package for a variety of Scheme dialects and Common Lisp, and a variety of operating systems. The end-user simply loads one file into their Scheme or Common Lisp, which triggers the entire configuration process with little or no further intervention. 
+	</longdescription>
+</pkgmetadata>

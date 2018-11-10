@@ -1,0 +1,156 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -10,58 +10,43 @@
+ VPATH       = $(srcdir)
+ 
+ # These may be overridden by make invocators
+-DESTDIR  =
+-OPTFLAGS = @OPTFLAGS@
+-CC       = @CC@
+-LIBS     = -lkakasi @LIBS@
+-CFLAGS   = @CFLAGS@ @KAKASI_INCDIR@ $(OPTFLAGS)
+-LDFLAGS  = @LDFLAGS@ @KAKASI_LIBDIR@ 
+-INSTALL_TYPE = @INSTALL_TYPE@
+-
+-# Set by configure
+-GOSH     = @GOSH@
+-GAUCHE_CONFIG = @GAUCHE_CONFIG@
+-OBJEXT   = @OBJEXT@
+-DSOEXT   = @SOEXT@
++DESTDIR        =
++CFLAGS         = @CFLAGS@ @KAKASI_INCDIR@
++CPPFLAGS       = @CPPFLAGS@
++LDFLAGS        = @LDFLAGS@ @KAKASI_LIBDIR@
++GOSH           = "@GOSH@"
++GAUCHE_CONFIG  = "@GAUCHE_CONFIG@"
++GAUCHE_PACKAGE = "@GAUCHE_PACKAGE@"
++INSTALL        = "@GAUCHE_INSTALL@"
+ 
+-INSTALL  = @GAUCHE_INSTALL@
++# Other parameters
++SOEXT    = @SOEXT@
++OBJEXT   = @OBJEXT@
++EXEEXT   = @EXEEXT@
+ 
+-MODULE   = kakasi
++# Module-specific stuff
++PACKAGE   = kakasi
+ 
+-ARCHFILES = $(MODULE).$(DSOEXT)
+-SCMFILES  = text/$(MODULE).scm
+-HEADERS   = 
++ARCHFILES = $(PACKAGE).$(SOEXT)
++SCMFILES  = text/$(PACKAGE).scm
++HEADERS   =
+ 
+ TARGET    = $(ARCHFILES)
+-OBJS      = kakasi_head.$(OBJEXT) \
+-            kakasi.$(OBJEXT)      \
+-            kakasilib.$(OBJEXT)   \
+-            kakasi_tail.$(OBJEXT)
+-GENERATED = kakasilib.$(OBJEXT) kakasi_head.c kakasi_tail.c
++GENERATED =
+ CONFIG_GENERATED = Makefile config.cache config.log config.status \
+-		   configure.lineno autom4te*.cache Gauche-kakasi.gpd
+-
+-HEADER_INSTALL_DIR  = $(DESTDIR)`$(GAUCHE_CONFIG) --$(INSTALL_TYPE)incdir`
+-SCM_INSTALL_DIR     = $(DESTDIR)`$(GAUCHE_CONFIG) --$(INSTALL_TYPE)libdir`
+-ARCH_INSTALL_DIR    = $(DESTDIR)`$(GAUCHE_CONFIG) --$(INSTALL_TYPE)archdir`
+-
+-all : $(TARGET)
+-
+-.SUFFIXES: .o .stub
++		   configure.lineno autom4te*.cache @PACKAGE_NAME@.gpd
+ 
+-.c.o:
+-	$(CC) $(CFLAGS) -c $< -o $@
++HEADER_INSTALL_DIR  = "$(DESTDIR)`$(GAUCHE_CONFIG) --siteincdir`"
++SCM_INSTALL_DIR     = "$(DESTDIR)`$(GAUCHE_CONFIG) --sitelibdir`"
++ARCH_INSTALL_DIR    = "$(DESTDIR)`$(GAUCHE_CONFIG) --sitearchdir`"
+ 
+-.stub.c:
+-	$(GOSH) genstub $<
++kakasi_SRCS = kakasi.c kakasilib.stub
++kakasi_LIBS = -lkakasi
+ 
+-kakasilib.c : kakasilib.stub
+-
+-$(MODULE).$(DSOEXT): $(OBJS)
+-	$(CC) -Wl,-rpath -Wl,`gauche-config --sysarchdir` $(LDFLAGS) $(MODULE).$(DSOEXT) $(OBJS) $(LIBS)
++all : $(TARGET)
+ 
+-$(MODULE)_head.c $(MODULE)_tail.c :
+-	$(GAUCHE_CONFIG) --fixup-extension $(MODULE)
++$(PACKAGE).$(SOEXT): $(kakasi_SRCS)
++	$(GAUCHE_PACKAGE) compile --verbose --cppflags="$(CPPFLAGS)" --cflags="$(CFLAGS)" --ldflags="$(LDFLAGS)" --libs="$(kakasi_LIBS)" $(PACKAGE) $(kakasi_SRCS)
+ 
+ check : all
+ 	@rm -f test.log
+@@ -71,10 +56,11 @@
+ 	$(INSTALL) -m 444 -T $(HEADER_INSTALL_DIR) $(HEADERS)
+ 	$(INSTALL) -m 444 -T $(SCM_INSTALL_DIR) $(SCMFILES) 
+ 	$(INSTALL) -m 555 -T $(ARCH_INSTALL_DIR) $(ARCHFILES)
+-	$(INSTALL) -m 444 -T $(SCM_INSTALL_DIR)/.packages Gauche-kakasi.gpd
++	$(INSTALL) -m 444 -T $(SCM_INSTALL_DIR)/.packages @PACKAGE_NAME@.gpd
+ 
+ clean :
+-	rm -rf core $(TARGET) $(OBJS) $(GENERATED) *~ test.log so_locations
++	$(GAUCHE_PACKAGE) compile --clean $(PACKAGE) $(kakasi_SRCS)
++	rm -rf core $(TARGET) $(GENERATED) *~ test.log so_locations
+ 
+ distclean : clean
+ 	rm -rf $(CONFIG_GENERATED)
+--- a/configure.in
++++ b/configure.in
+@@ -7,10 +7,6 @@
+ 
+ AC_PREREQ(2.54)
+ AC_INIT(Gauche-kakasi, 0.1, shiro@acm.org)
+-dnl If you want to use the system name (OS, architecture, etc) in the
+-dnl configure, uncomment the following line.  In such a case, you need
+-dnl to copy config.guess and config.sub from automake distribution.
+-AC_CANONICAL_SYSTEM
+ 
+ dnl Sets several Gauche-specific parameters.
+ AC_GAUCHE_INIT_EXT
+@@ -27,16 +23,10 @@
+ AC_SUBST(KAKASI_INCDIR)
+ AC_SUBST(KAKASI_LIBDIR)
+ 
+-dnl Sets the default value of INSTALL_TYPE macro.
+-dnl You can set it either 'site' or 'sys'.  Usually, user-provided
+-dnl extensions are installed as 'site' category.
+-AC_GAUCHE_INSTALL_TYPE(site)
+-
+ dnl Get compiler parameters which Gauche has been compiled with.
+ dnl Do not use AC_PROG_CC.  You need to compile and link with the
+ dnl same programs as gosh.
+ AC_GAUCHE_CC
+-AC_GAUCHE_FLAGS
+ 
+ dnl Check for other programs.
+ dnl Add your macro calls to check existence of programs, if you have any.
+@@ -44,9 +34,9 @@
+ dnl Check for libraries
+ dnl Add your macro calls to check required libraries, if you have any.
+ 
+-dnl Set LDFLAGS to generate dlopen-able extension.
+-dnl This should come after all tests, or the tests that does link will fail.
+-AC_GAUCHE_FIX_LIBS
++AC_SUBST(CFLAGS)
++AC_SUBST(CPPFLAGS)
++AC_SUBST(LDFLAGS)
+ 
+ dnl Output
+ AC_GAUCHE_MAKE_GPD
+--- a/kakasilib.stub
++++ b/kakasilib.stub
+@@ -43,7 +43,7 @@
+   SCM_RETURN(sr);")
+ 
+ (define-cproc kakasi-close-kanwadict ()
+-  (return <fixnum> "kakasi_close_kanwadict"))
++  "SCM_RETURN(SCM_MAKE_INT(kakasi_close_kanwadict()));")
+ 
+ ;; Local variables:
+ ;; mode: scheme

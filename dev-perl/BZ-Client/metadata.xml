@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">BZ-Client</remote-id>
+    <remote-id type="cpan-module">BZ::Client</remote-id>
+    <remote-id type="cpan-module">BZ::Client::API</remote-id>
+    <remote-id type="cpan-module">BZ::Client::Bug</remote-id>
+    <remote-id type="cpan-module">BZ::Client::Bug::Attachment</remote-id>
+    <remote-id type="cpan-module">BZ::Client::Bug::Comment</remote-id>
+    <remote-id type="cpan-module">BZ::Client::BugUserLastVisit</remote-id>
+    <remote-id type="cpan-module">BZ::Client::Bugzilla</remote-id>
+    <remote-id type="cpan-module">BZ::Client::Classification</remote-id>
+    <remote-id type="cpan-module">BZ::Client::Component</remote-id>
+    <remote-id type="cpan-module">BZ::Client::Exception</remote-id>
+    <remote-id type="cpan-module">BZ::Client::FlagType</remote-id>
+    <remote-id type="cpan-module">BZ::Client::Group</remote-id>
+    <remote-id type="cpan-module">BZ::Client::Product</remote-id>
+    <remote-id type="cpan-module">BZ::Client::User</remote-id>
+    <remote-id type="cpan-module">BZ::Client::XMLRPC</remote-id>
+    <remote-id type="cpan-module">BZ::Client::XMLRPC::Array</remote-id>
+    <remote-id type="cpan-module">BZ::Client::XMLRPC::Handler</remote-id>
+    <remote-id type="cpan-module">BZ::Client::XMLRPC::Parser</remote-id>
+    <remote-id type="cpan-module">BZ::Client::XMLRPC::Response</remote-id>
+    <remote-id type="cpan-module">BZ::Client::XMLRPC::Struct</remote-id>
+    <remote-id type="cpan-module">BZ::Client::XMLRPC::Value</remote-id>
+    <remote-id type="cpan-module">BZ::Client::XMLRPC::base64</remote-id>
+    <remote-id type="cpan-module">BZ::Client::XMLRPC::boolean</remote-id>
+    <remote-id type="cpan-module">BZ::Client::XMLRPC::double</remote-id>
+    <remote-id type="cpan-module">BZ::Client::XMLRPC::int</remote-id>
+    <remote-id type="github">djzort/BZ-Client</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<longdescription>
+		A set of udev rules and scripts to mount USB media automatically
+		as soon as they are inserted. Features flexible configuration,
+		including mountpoint naming rules, and hooks.
+	</longdescription>
+	<upstream>
+		<maintainer status="active">
+			<email>mgorny@gentoo.org</email>
+			<name>Michał Górny</name>
+		</maintainer>
+		<bugs-to>https://github.com/mgorny/uam/issues/</bugs-to>
+		<remote-id type="github">mgorny/uam</remote-id>
+	</upstream>
+</pkgmetadata>

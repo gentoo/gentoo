@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>christian.tietz@mailbox.org</email>
+		<name>Christian Tietz</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>alexvandermey@gmail.com</email>
+			<name>Alexander van der Mey</name>
+		</maintainer>
+		<remote-id type="github">alexandervdm/gummi</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,47 @@
+--- a/jack_t_curses.py
++++ b/jack_t_curses.py
+@@ -35,11 +35,9 @@
+ try:
+     from jack_curses import endwin, resizeterm, A_REVERSE, newwin, newpad, initscr, noecho, cbreak, echo, nocbreak
+ except ImportError:
+-    warning("jack_curses module not found, trying normal curses...")
++    info("jack_curses module not found, using normal curses...")
+     try:
+-        from curses import endwin, A_REVERSE, newwin, newpad, initscr, noecho, cbreak, echo, nocbreak
+-        def resizeterm(y, x):
+-            pass
++        from curses import endwin, resizeterm, A_REVERSE, newwin, newpad, initscr, noecho, cbreak, echo, nocbreak
+     except ImportError:
+         print "curses module not found or too old, please install it (see README)"
+ 
+--- a/setup.py
++++ b/setup.py
+@@ -2,7 +2,7 @@
+
+ """Setup script for the jack module distribution."""
+
+-from distutils.core import setup, Extension
++from distutils.core import setup
+
+ setup( # Distribution meta-data
+     name = "jack",
+@@ -11,11 +11,7 @@
+     author = "Arne Zellentin",
+     author_email = "zarne@users.sf.net",
+     url = "http://www.home.unix-ag.org/arne/jack/",
+-
+-    # Description of the modules and packages in the distribution
+-    ext_modules = [ Extension('jack_cursesmodule',
+-    ['cursesmodule/jack_cursesmodule.c'], libraries=["ncurses"],
+-    extra_compile_args=["-Wno-strict-prototypes"]) ],
++    scripts=['jack'],
+
+     py_modules = [ 'jack_CDTime', 'jack_TOC', 'jack_TOCentry', 'jack_argv',
+     'jack_checkopts', 'jack_children', 'jack_config', 'jack_constants',
+@@ -26,6 +22,3 @@
+     'jack_ripstuff', 'jack_status', 'jack_t_curses', 'jack_t_dumb', 'jack_tag',
+     'jack_targets', 'jack_term', 'jack_utils', 'jack_version', 'jack_workers']
+ )
+-
+-print "If you have installed the modules, copy jack to some place in your $PATH,"
+-print "like /usr/local/bin/."

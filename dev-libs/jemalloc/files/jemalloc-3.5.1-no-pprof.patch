@@ -1,0 +1,25 @@
+diff -urN a/Makefile.in b/Makefile.in
+--- a/Makefile.in	2014-02-25 18:49:15.000000000 -0600
++++ b/Makefile.in	2014-03-07 18:24:10.978141932 -0600
+@@ -73,7 +73,6 @@
+ LIBJEMALLOC := $(LIBPREFIX)jemalloc$(install_suffix)
+ 
+ # Lists of files.
+-BINS := $(srcroot)bin/pprof $(objroot)bin/jemalloc.sh
+ C_HDRS := $(objroot)include/jemalloc/jemalloc$(install_suffix).h
+ C_SRCS := $(srcroot)src/jemalloc.c $(srcroot)src/arena.c \
+ 	$(srcroot)src/atomic.c $(srcroot)src/base.c $(srcroot)src/bitmap.c \
+@@ -273,13 +272,6 @@
+ build_lib_static: $(STATIC_LIBS)
+ build_lib: build_lib_shared build_lib_static
+ 
+-install_bin:
+-	install -d $(BINDIR)
+-	@for b in $(BINS); do \
+-	echo "install -m 755 $$b $(BINDIR)"; \
+-	install -m 755 $$b $(BINDIR); \
+-done
+-
+ install_include:
+ 	install -d $(INCLUDEDIR)/jemalloc
+ 	@for h in $(C_HDRS); do \

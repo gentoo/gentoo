@@ -1,0 +1,515 @@
+.\" Man page generated from reStructuredText.
+.
+.TH "M2R" "1" "Mar 30, 2017" "0.1.5" "M2R"
+.SH NAME
+m2r \- M2R Documentation
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+\fI\%PyPI\fP\fI\%PyPI version\fP\fI\%Build Status\fP\fI\%codecov\fP
+.sp
+.ce
+----
+
+.ce 0
+.sp
+.sp
+M2R converts a markdown file including reST markups to a valid reST format.
+.SH WHY ANOTHER CONVERTER?
+.sp
+I wanted to write sphinx document in markdown, since it\(aqs widely used now and
+easy to write code blocks and lists. However, converters using pandoc or
+recommonmark do not support many reST markups and sphinx extensions. For
+example, reST\(aqs reference link like \fBsee \(garef\(ga_\fP (this is very convenient in
+long document in which same link appears multiple times) will be converted to
+a code block in HTML like \fBsee <code>ref</code>_\fP, which is not expected.
+.SH FEATURES
+.INDENT 0.0
+.IP \(bu 2
+Basic markdown and some extensions (see below)
+.INDENT 2.0
+.IP \(bu 2
+inline/block\-level raw html
+.IP \(bu 2
+fenced\-code block
+.IP \(bu 2
+tables
+.IP \(bu 2
+footnotes (\fB[^1]\fP)
+.UNINDENT
+.IP \(bu 2
+Inline\- and Block\-level reST markups
+.INDENT 2.0
+.IP \(bu 2
+single\- and multi\-line directives (\fB\&.. directive::\fP)
+.IP \(bu 2
+inline\-roles (\fB:code:\(gaprint(1)\(ga ...\fP)
+.IP \(bu 2
+ref\-link (\fBsee \(garef\(ga_\fP)
+.IP \(bu 2
+footnotes (\fB[#fn]_\fP)
+.IP \(bu 2
+math extension inspired by \fI\%recommonmark\fP
+.UNINDENT
+.IP \(bu 2
+Sphinx extension
+.INDENT 2.0
+.IP \(bu 2
+add markdown support for sphinx
+.IP \(bu 2
+\fBmdinclude\fP directive to include markdown from md or reST files
+.UNINDENT
+.UNINDENT
+.SH INSTALLATION
+.sp
+Python 2.7 or Python 3.3+ is required.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+pip install m2r
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SH USAGE
+.SS Command Line
+.sp
+\fBm2r\fP command converts markdown file to reST format.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+m2r your_document.md [your_document2.md ...]
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Then you will find \fByour_document.rst\fP in the same directory.
+.SS Programmatic Use
+.sp
+Instantiate \fBM2R\fP class and call with markdown text. Then it will return converted text.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+from m2r import M2R
+m2r = M2R()
+rest = m2r(\(aq# Title\en\enSentence.\(aq)
+print(rest)
+# Title
+# =====
+#
+# Sentence.
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Or, use \fBparse_from_file\fP function to load markdown file and obtain converted text.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+from m2r import parse_from_file
+output = parse_from_file(\(aqmarkdown_file.md\(aq)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+This is an example of setup.py to write README in markdown, and publish it to PyPI as reST format.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+readme_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), \(aqREADME.md\(aq)
+try:
+    from m2r import parse_from_file
+    readme = parse_from_file(readme_file)
+except ImportError:
+    # m2r may not be installed in user environment
+    with open(readme_file) as f:
+        readme = f.read()
+setup(
+    ...,
+    long_description=readme,
+    ...,
+)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Sphinx Integration
+.sp
+In your conf.py, add the following lines.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+extensions = [
+    ...,
+    \(aqm2r\(aq,
+]
+
+# source_suffix = \(aq.rst\(aq
+source_suffix = [\(aq.rst\(aq, \(aq.md\(aq]
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Write index.md and run \fBmake html\fP\&.
+.sp
+When \fBm2r\fP extension is enabled on sphinx and \fB\&.md\fP file is loaded, m2r
+converts to reST and pass to sphinx, not making new \fB\&.rst\fP file.
+.SS mdinclude directive
+.sp
+Like \fB\&.. include:: file\fP directive, \fB\&.. mdinclude:: file\fP directive inserts
+markdown file at the line.
+.sp
+Note: do not use \fB\&.. include:: file\fP directive to include markdown file even if
+in the markdown file, please use \fB\&.. mdinclude:: file\fP instead.
+.SH RESTRICTIONS
+.INDENT 0.0
+.IP \(bu 2
+In the reST\(aqs directives, markdown is not available. Please write in reST.
+.IP \(bu 2
+Column alignment of tables is not supported. (reST does not support this feature)
+.IP \(bu 2
+Heading with overline\-and\-underline is not supported.
+.INDENT 2.0
+.IP \(bu 2
+Heading with underline is OK
+.UNINDENT
+.UNINDENT
+.sp
+If you find any bug or unexpected behaviour, please report it to
+\fI\%Issues\fP\&.
+.SH EXAMPLE
+.sp
+See \fI\%example document\fP and \fI\%its
+source code\fP\&.
+.sp
+I\(aqm using m2r for writing user guide of \fI\%WDOM\fP\&.
+So you can see it as another example. Its \fI\%HTML is
+here\fP, and \fI\%its
+source code is here\fP\&.
+.SH ACKNOWLEDGEMENT
+.sp
+m2r is written as an extension of
+\fI\%mistune\fP, which is highly extensible
+pure\-python markdown parser.
+Without the mistune, I couldn\(aqt write this. Thank you!
+.SH LICENCE
+.sp
+\fI\%MIT\fP
+.SH CONTENTS
+.SS Example
+.sp
+This page is written in mixed markdown and reST.
+Source code is \fI\%here\fP\&.
+.SS Basic Markups (inline)
+.sp
+A \fBstrong\fP, \fIemphasis\fP, , \fBcode with single\-backtick\fP,
+\fBcode with two\-backticks\fP, ,
+\fBreST\(aqs code role\fP, and delete.
+.SS Link
+.sp
+Auto link to \fI\%http://example.com/\fP\&.
+.sp
+Link to \fI\%example.com\fP in markdown.
+.sp
+Link to \fI\%example.com\fP in reST.
+.sp
+Link to \fI\%example\fP in reST_ref.
+.SS Basic Markups (block)
+.sp
+This is a simple sentence.
+.nf
+sentence with
+newlines
+(reST)
+.fi
+.sp
+.sp
+Sentence with
+hard\-wrap (markdown, trailing two spaces)
+.INDENT 0.0
+.INDENT 3.5
+block quote
+second line
+.INDENT 0.0
+.INDENT 3.5
+nested quote
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+
+.sp
+.ce
+----
+
+.ce 0
+.sp
+.INDENT 0.0
+.INDENT 3.5
+Block quote after raw\-html directive
+.UNINDENT
+.UNINDENT
+.SS List
+.SS Unordered list
+.INDENT 0.0
+.IP \(bu 2
+unordered list
+new line
+.IP \(bu 2
+next item
+.INDENT 2.0
+.IP \(bu 2
+nested list
+with new line
+.IP \(bu 2
+nested list item 2
+.UNINDENT
+.IP \(bu 2
+original depth
+.INDENT 2.0
+.IP 1. 3
+ordered list item
+.IP 2. 3
+second
+with new line
+.UNINDENT
+.IP \(bu 2
+original depth again
+.UNINDENT
+.SS Ordered list
+.INDENT 0.0
+.IP 1. 3
+ordered list
+in new line
+.IP 2. 3
+second item
+.INDENT 3.0
+.IP \(bu 2
+nested unordered list
+.IP \(bu 2
+second item
+with new line
+.UNINDENT
+.IP 3. 3
+original depth
+.INDENT 3.0
+.IP 1. 3
+nested ordered list
+with new line
+.IP 2. 3
+again
+.UNINDENT
+.IP 4. 3
+original depth again
+.UNINDENT
+.SS Code Block
+.sp
+Simple, indented code block
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+pip install sphinx
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Code block with triple backticks and language.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+def a(n: int) \-> None:
+    for i in range(n):
+        print(i)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Triple\-tildes (\fB~~~\fP) are also available.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+def a(n: int) \-> None:
+    for i in range(n):
+        print(i)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Here is reST style code block.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+if True:
+    print(\(aq\en\(aq)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Extensions
+.SS Table (Markdown\-Style)
+.sp
+(cell\-alignment is not supported currently)
+.TS
+center;
+|l|l|l|.
+_
+T{
+Table Header 1
+T}	T{
+Table Header 2
+T}	T{
+Table Header 3
+T}
+_
+T{
+normal
+T}	T{
+\fIitalic\fP
+T}	T{
+\fBbold\fP
+T}
+_
+T{
+\fBcode\fP
+T}	T{
+T}	T{
+T}
+_
+.TE
+.SS Math
+.sp
+This is E = mc^2 inline math.
+.sp
+The below is math\-block (markdown\-style).
+.sp
+.ce
+
+.ce 0
+.sp
+The below is reST\-style math\-block.
+.sp
+.ce
+
+.ce 0
+.SS Footnote
+.sp
+Footnote[2] and footnote[3] with markdown.
+.sp
+Footnote with reST[1]\&.
+.sp
+
+.IP [1] 5
+reST footnote
+.IP [2] 5
+footnote 1
+.IP [3] 5
+footnote key
+.SS Change Log
+.SS Version 0.2
+.sp
+(next version)
+.SS Version 0.1.5 (2016\-06\-21)
+.INDENT 0.0
+.IP \(bu 2
+Support multiple backticks in inline code, like: 
+.UNINDENT
+.SS Version 0.1.4 (2016\-06\-08)
+.INDENT 0.0
+.IP \(bu 2
+Support indented directives/reST\-comments
+.IP \(bu 2
+Support role\-name after backticks (\fB\(gatext\(ga:role: style\fP)
+.UNINDENT
+.SS Version 0.1.3 (2016\-06\-02)
+.INDENT 0.0
+.IP \(bu 2
+Remove extra escaped\-spaces (\(aq\(aq)
+.INDENT 2.0
+.IP \(bu 2
+before and after normal spaces
+.IP \(bu 2
+at the beginning of lines
+.IP \(bu 2
+before dots
+.UNINDENT
+.UNINDENT
+.SS Version 0.1.2 (2016\-06\-01)
+.INDENT 0.0
+.IP \(bu 2
+Add reST\(aqs \fB::\fP marker support
+.IP \(bu 2
+Add options to disable emphasis by underscore (\fB_\fP or \fB__\fP)
+.UNINDENT
+.SS Version 0.1.1 (2016\-05\-30)
+.INDENT 0.0
+.IP \(bu 2
+Fix Bug: when code or link is placed at the end of line, spaces to the next word is disappeared
+.UNINDENT
+.SS Version 0.1 (2016\-05\-30)
+.sp
+First public release.
+.INDENT 0.0
+.IP \(bu 2
+genindex
+.IP \(bu 2
+modindex
+.IP \(bu 2
+search
+.UNINDENT
+.SH AUTHOR
+Hiroyuki Takagi
+.SH COPYRIGHT
+2016, Hiroyuki Takagi
+.\" Generated by docutils manpage writer.
+.

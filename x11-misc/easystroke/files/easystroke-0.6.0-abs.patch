@@ -1,0 +1,45 @@
+--- a/handler.cc
++++ b/handler.cc
+@@ -533,7 +533,7 @@
+ 	virtual Grabber::State grab_mode() { return parent->grab_mode(); }
+ };
+ 
+-static inline float abs(float x) { return x > 0 ? x : -x; }
++static inline float easystroke_abs(float x) { return x > 0 ? x : -x; }
+ 
+ class AbstractScrollHandler : public Handler {
+ 	bool have_x, have_y;
+@@ -559,7 +559,7 @@
+ 			xstate->fake_click(b2);
+ 	}
+ 	static float curve(float v) {
+-		return v * exp(log(abs(v))/3);
++		return v * exp(log(easystroke_abs(v))/3);
+ 	}
+ protected:
+ 	void move_back() {
+@@ -597,8 +597,8 @@
+ 		offset_x += factor * curve(dx/dt)*dt/20.0;
+ 		offset_y += factor * curve(dy/dt)*dt/10.0;
+ 		int b1 = 0, n1 = 0, b2 = 0, n2 = 0;
+-		if (abs(offset_x) > 1.0) {
+-			n1 = (int)floor(abs(offset_x));
++		if (easystroke_abs(offset_x) > 1.0) {
++			n1 = (int)floor(easystroke_abs(offset_x));
+ 			if (offset_x > 0) {
+ 				b1 = 7;
+ 				offset_x -= n1;
+@@ -607,10 +607,10 @@
+ 				offset_x += n1;
+ 			}
+ 		}
+-		if (abs(offset_y) > 1.0) {
+-			if (abs(offset_y) < 1.0)
++		if (easystroke_abs(offset_y) > 1.0) {
++			if (easystroke_abs(offset_y) < 1.0)
+ 				return;
+-			n2 = (int)floor(abs(offset_y));
++			n2 = (int)floor(easystroke_abs(offset_y));
+ 			if (offset_y > 0) {
+ 				b2 = 5;
+ 				offset_y -= n2;

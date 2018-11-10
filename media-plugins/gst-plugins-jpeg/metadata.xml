@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gstreamer@gentoo.org</email>
+	<name>GStreamer package maintainers</name>
+</maintainer>
+<longdescription lang="en">
+	GStreamer plugin for the JPEG format.
+
+	Includes the following elements:
+	* jpegdec - Decode images from JPEG format
+	* jpegenc - Encode images in JPEG format
+
+	In 0.10 only (deprecated):
+	* smokedec - Decode video from Smoke format
+	* smokeenc - Encode images into the Smoke format
+
+	See the installed README if interested what the Smoke codec is.
+</longdescription>
+</pkgmetadata>

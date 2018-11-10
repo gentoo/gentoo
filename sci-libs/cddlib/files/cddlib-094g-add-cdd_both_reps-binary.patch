@@ -1,0 +1,41 @@
+--- src-gmp/Makefile.am	2009-01-26 09:30:16.000000000 +0000
++++ src-gmp/Makefile.am	2009-10-04 10:36:17.000000000 +0100
+@@ -11,7 +11,8 @@
+ testcdd2_gmp \
+ testlp1_gmp \
+ testlp2_gmp \
+-testlp3_gmp
++testlp3_gmp \
++cdd_both_reps_gmp 
+ #cddmathlink
+ 
+ scdd_gmp_SOURCES                   = simplecdd.c
+@@ -27,6 +28,7 @@
+ testlp1_gmp_SOURCES                = testlp1.c
+ testlp2_gmp_SOURCES                = testlp2.c
+ testlp3_gmp_SOURCES                = testlp3.c
++cdd_both_reps_gmp_SOURCES          = cdd_both_reps.c
+ # cddmathlink_SOURCES                = cddmathlink.c cddmlio.h cddmlio.c
+ 
+ LDADD        = ../lib-src-gmp/libcddgmp.la
+--- src/Makefile.am	2009-01-26 09:30:03.000000000 +0000
++++ src/Makefile.am	2009-10-04 10:36:17.000000000 +0100
+@@ -11,7 +11,8 @@
+ testcdd2 \
+ testlp1 \
+ testlp2 \
+-testlp3
++testlp3 \
++cdd_both_reps 
+ #cddmathlink
+ 
+ scdd_SOURCES                   = simplecdd.c
+@@ -27,6 +28,7 @@
+ testlp1_SOURCES                = testlp1.c
+ testlp2_SOURCES                = testlp2.c
+ testlp3_SOURCES                = testlp3.c
++cdd_both_reps_SOURCES          = cdd_both_reps.c
+ # cddmathlink_SOURCES                = cddmathlink.c cddmlio.h cddmlio.c
+ 
+ LDADD        = ../lib-src/libcdd.la
+

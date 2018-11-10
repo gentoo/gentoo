@@ -1,0 +1,19 @@
+--- virtualenv-12.1.1/tests/test_virtualenv.py
++++ virtualenv-12.1.1/tests/test_virtualenv.py
+@@ -6,6 +6,7 @@
+ import tempfile
+ import pytest
+ import platform  # noqa
++import unittest
+ 
+ from mock import patch, Mock
+ 
+@@ -126,7 +127,7 @@
+         shutil.rmtree(tmp_virtualenv)
+ 
+ 
+-@pytest.mark.skipif("platform.python_implementation() == 'PyPy'")
++@unittest.skip("Running create environment while testing is broken")
+ def test_always_copy_option():
+     """Should be no symlinks in directory tree"""
+     tmp_virtualenv = tempfile.mkdtemp()

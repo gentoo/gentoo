@@ -1,0 +1,136 @@
+diff -ub flexbackup-old/flexbackup flexbackup-new/flexbackup
+--- flexbackup-old/flexbackup	2007-05-11 20:14:13.000000000 -0400
++++ flexbackup-new/flexbackup	2007-05-11 20:22:36.000000000 -0400
+@@ -3085,7 +3085,6 @@
+ 	    $::read_cmd = "$bufcmd $read_flags";
+ 
+ 	} elsif ($cfg::buffer eq "mbuffer") {
+-
+ 	    $::path{'mbuffer'} = &checkinpath('mbuffer');
+ 	    push(@::remoteprogs, $::path{'mbuffer'});
+ 
+@@ -3101,7 +3100,6 @@
+ 	    }
+ 	}
+     } else {
+-
+ 	# If buffering disabled, use dd or cat depending on if blocking turned off on not
+ 	if ($cfg::blksize eq '0') {
+ 	    $::buffer_cmd = "";
+@@ -4887,18 +4885,19 @@
+ 		my $rex;
+ 	# FreeBSD needs -E (above) and no backslashes around the (|) chars
+ 	if ($::uname =~ /FreeBSD/) {
+-			$rex  = '-regex "\./(';
++			$rex  = '"\./(';
+ 			$rex .= join('|', keys %{$::prune{$prunekey}});
+-			$rex .= ')/.*" ';
++			$rex .= ')"';
+ 		} else {
+-			$rex  = '-regex "\./\(';
++			$rex  = '"\./\(';
+ 			$rex .= join('\|', keys %{$::prune{$prunekey}});
+-			$rex .= '\)/.*" ';
++			$rex .= '\)"';
+ 		}
+ 		# Show what the darn thing is constructing for prune expressions.
+-		&log("| \"find\" regex for pruning is: $rex");
+-		$cmd .= $rex;
+-	$cmd .= '-prune -o ';
++		&log("| \"find\" regex for pruning is:");
++		&log("|     $rex");
++		&line();
++		$cmd .= '-regex ' . $rex . ' -prune -o ';
+     } else {
+ 		# Show what the darn thing is constructing for prune expressions.
+ 		&log("| No pruning defined for this tree.");
+diff -ub flexbackup-old/flexbackup.1 flexbackup-new/flexbackup.1
+--- flexbackup-old/flexbackup.1	2007-05-11 20:14:13.000000000 -0400
++++ flexbackup-new/flexbackup.1	2007-05-11 20:09:58.000000000 -0400
+@@ -48,7 +48,7 @@
+ Extract (restore) the files listed in text file \(dqfilelist\(dq into your
+ current working directory.
+ .TP
+-\fBflexbackup\fR \fI-extract\fR \fI-flist\fR <\fIfilename\fR>
++\fBflexbackup\fR \fI-extract\fR \fI-onefile\fR <\fIfilename\fR>
+ Extract (restore) the single file named \(dqfilename\(dq into your current
+ working directory.
+ .TP
+diff -ub flexbackup-old/flexbackup.conf flexbackup-new/flexbackup.conf
+--- flexbackup-old/flexbackup.conf	2007-05-11 20:14:13.000000000 -0400
++++ flexbackup-new/flexbackup.conf	2007-05-11 20:26:48.000000000 -0400
+@@ -28,10 +28,10 @@
+ 
+ # Subtree pruning
+ # A space-separated list of directories to prune from each backup.
+-# Key is a filesystem or host:dir spec as outlined above
+-# regular expressions allowed (not shell-type wildcards!)
++# Key is a filesystem or host:dir spec as outlined above.
++# Regular expressions are allowed (not shell-type wildcards!)
+ #
+-# Note:  These directories are actually regular expressions and must
++# Note:  These "directories" are actually regular expressions and must
+ # match "find" output relative to the path of the current backup set. This
+ # means that different exclusions are needed for different backup sets.
+ # This is a little tricky, so, read on.
+@@ -46,9 +46,11 @@
+ #
+ # then, the constructed -regex argument to "find" looks like this
+ #
+-#     -regex "\./\(one\|two\|three\)/.*"
++#     -regex "\./(one|two|three)"
+ #
+-# The last thing you need to know is that FlexBackup only uses the prune
++# (with characters escaped as necessary depending on your environment).
++#
++# Another thing you need to know is that FlexBackup only uses the prune
+ # terms that match the current base directory in the set you're backing
+ # up.  For example, if your backup set definition looks like this
+ #
+@@ -66,9 +68,16 @@
+ #
+ #     $prune{'/'} = "home/bert home/ernie var/tmp";
+ #
+-# does not work, unless, of course, your backup set is backing up "/", 
++# doesn't work, unless, of course, your backup set is backing up "/", 
+ # which our example is not.
+ #
++# Many other complex and abstruse variations are possible.  Here's one 
++# interesting corner case.  If you want to preserve a directory but none of its
++# contents, you can do it.  Picking on ernie from our previous example, preserve
++# only his home directory:
++#
++#     $prune{'/home'} = "ernie/.*";
++#
+ $prune{'/'} = "tmp proc";
+ 
+ # Compression
+@@ -138,10 +147,10 @@
+ # Matches paths, not filenames, so put .* on the front/back as needed.
+ # Comment these out to exclude nothing.
+ # 
+-# Note:  The first example line breaks portage in a restored backup because
+-# "/usr/lib/portage/pym/cache" is not backed up.  Way too general!  The moral
+-# of this story is, be very careful with global excludes.  The second example 
+-# is probably okay.
++# Gentoo note:  The first example line breaks portage in a restored backup 
++# because "/usr/lib/portage/pym/cache" is not backed up.  Way too general!
++# The moral of this story is, be very careful with global excludes.  The 
++# second example is probably okay.
+ # $exclude_expr[0] = '.*/[Cc]ache/.*';
+ # $exclude_expr[1] = '.*~$';
+ 
+diff -ub flexbackup-old/flexbackup.conf.5 flexbackup-new/flexbackup.conf.5
+--- flexbackup-old/flexbackup.conf.5	2007-05-11 20:14:13.000000000 -0400
++++ flexbackup-new/flexbackup.conf.5	2007-05-11 20:09:58.000000000 -0400
+@@ -40,7 +40,9 @@
+ \fB$prune{\fI'/'\fR}\fR = \fI'tmp proc'\fR;
+ Configure subtree pruning. A space-separated list of directories to prune from
+ each backup. Key is a filesystem/directory or \(dqhost:directory\(dq spec as
+-outlined above regular expressions allowed (not shell-type wildcards!).
++outlined above. Regular expressions allowed (not shell-type wildcards!). There
++is additional explanation (and a lot of examples) in the provided configuration
++file.
+ .TP
+ \fB$compress\fR = \fI'false|gzip|bzip2|lzop|zip|compress|hardware'\fR;
+ .TQ

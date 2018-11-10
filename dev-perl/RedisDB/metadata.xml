@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">RedisDB</remote-id>
+    <remote-id type="cpan-module">RedisDB</remote-id>
+    <remote-id type="cpan-module">RedisDB::Cluster</remote-id>
+    <remote-id type="cpan-module">RedisDB::Error</remote-id>
+    <remote-id type="cpan-module">RedisDB::Error::ASK</remote-id>
+    <remote-id type="cpan-module">RedisDB::Error::DISCONNECTED</remote-id>
+    <remote-id type="cpan-module">RedisDB::Error::EAGAIN</remote-id>
+    <remote-id type="cpan-module">RedisDB::Error::MOVED</remote-id>
+    <remote-id type="cpan-module">RedisDB::Sentinel</remote-id>
+    <remote-id type="cpan-module">Test::RedisDB</remote-id>
+  </upstream>
+</pkgmetadata>

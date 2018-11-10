@@ -1,0 +1,57 @@
+From 0d9e5f7f1a0edaea0de312828ce47d11f74ee3dc Mon Sep 17 00:00:00 2001
+From: benaryorg <binary@benary.org>
+Date: Fri, 20 Jan 2017 06:31:28 +0100
+Subject: [PATCH] fix build with irssi 1.0
+
+use_ssl field of SERVER_CONNECT_REC has been renamed to use_tls.
+
+Original patch from darix.
+
+Signed-off-by: benaryorg <binary@benary.org>
+---
+ src/core/xmpp-servers.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/src/core/xmpp-servers.c b/src/core/xmpp-servers.c
+index 405ecd9..8d0b62d 100644
+--- a/src/core/xmpp-servers.c
++++ b/src/core/xmpp-servers.c
+@@ -32,6 +32,11 @@
+ #include "rosters-tools.h"
+ #include "tools.h"
+ 
++/* IRSSI_ABI_VERSION was introduced in 0.8.18 */
++#if !defined(IRSSI_ABI_VERSION) || IRSSI_ABI_VERSION < 6
++#  define use_tls use_ssl
++#endif
++
+ static void
+ channels_join(SERVER_REC *server, const char *data, int automatic)
+ {
+@@ -151,7 +156,7 @@ xmpp_server_init_connect(SERVER_CONNECT_REC *connrec)
+ 	server->connect_pid = -1;
+ 
+ 	if (server->connrec->port <= 0)
+-		server->connrec->port = (server->connrec->use_ssl) ?
++		server->connrec->port = (server->connrec->use_tls) ?
+ 		    LM_CONNECTION_DEFAULT_PORT_SSL : LM_CONNECTION_DEFAULT_PORT;
+ 
+ 	if (conn->real_jid == NULL)
+@@ -335,7 +340,7 @@ lm_open_cb(LmConnection *connection, gboolean success,
+ 		g_free(host);
+ 	} else
+ 		signal_emit("server connecting", 1, server);
+-	if (server->connrec->use_ssl)
++	if (server->connrec->use_tls)
+ 		signal_emit("xmpp server status", 2, server, 
+ 		    "Using SSL encryption.");
+ 	else if (lm_ssl_get_use_starttls(lm_connection_get_ssl(server->lmconn)))
+@@ -470,7 +475,7 @@ xmpp_server_connect(XMPP_SERVER_REC *server)
+ 		return;
+ 	error = NULL;
+ 	err_msg = NULL;
+-	if (server->connrec->use_ssl) {
++	if (server->connrec->use_tls) {
+ 		if (!set_ssl(server->lmconn, &error, server, FALSE)) {
+ 			err_msg = "Cannot init ssl";
+ 			goto err;

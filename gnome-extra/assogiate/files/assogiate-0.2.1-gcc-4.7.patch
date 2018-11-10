@@ -1,0 +1,17 @@
+Description: Fix ftbfs with gcc-4.7
+Author: Vincent Legout <vlegout@debian.org>
+Last-Update: 2012-04-04
+Bug-Debian: http://bugs.debian.org/667104
+
+Index: assogiate/libassogiate/mime-package.cc
+===================================================================
+--- assogiate.orig/libassogiate/mime-package.cc	2012-03-25 10:47:26.524889975 +0200
++++ assogiate/libassogiate/mime-package.cc	2012-04-04 18:54:11.675024484 +0200
+@@ -31,6 +31,7 @@
+ #include <libxml/tree.h>
+ #include <libxml++/parsers/domparser.h>
+ #include <libgnomevfsmm/init.h>
++#include <unistd.h>
+ 
+ /******************************************************************************/
+ /* Globals                                                                    */

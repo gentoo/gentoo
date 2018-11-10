@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Nicolas Bock</name>
+		<email>nicolasbock@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		Many central git hosting services, such as GitHub and GitLab, provide
+		an API to perform actions such as creating repositories and filing
+		pull requests. git-spindle is a collection of git subcommands to make
+		using these services easier.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">seveas/git-spindle</remote-id>
+	</upstream>
+</pkgmetadata>

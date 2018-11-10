@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Apache::AuthCookie allows you to intercept a user's first unauthenticated
+    access to a protected document. The user will be presented with a custom
+    form where they can enter authentication credentials. The credentials are
+    posted to the server where AuthCookie verifies them and returns a session
+    key.
+  </longdescription>
+  <upstream>
+    <remote-id type="cpan">Apache-AuthCookie</remote-id>
+    <remote-id type="cpan-module">Apache2::AuthCookie</remote-id>
+    <remote-id type="cpan-module">Apache2::AuthCookie::Base</remote-id>
+    <remote-id type="cpan-module">Apache2::AuthCookie::Params</remote-id>
+    <remote-id type="cpan-module">Apache2_4::AuthCookie</remote-id>
+    <remote-id type="cpan-module">Apache::AuthCookie</remote-id>
+    <remote-id type="cpan-module">Apache::AuthCookie::Params</remote-id>
+    <remote-id type="cpan-module">Apache::AuthCookie::Params::Base</remote-id>
+    <remote-id type="cpan-module">Apache::AuthCookie::Params::CGI</remote-id>
+    <remote-id type="cpan-module">Apache::AuthCookie::Util</remote-id>
+  </upstream>
+</pkgmetadata>

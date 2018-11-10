@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+gem 'test-unit', '>= 2.5', '<4'
+require 'test/unit'
+(r = Test::Unit::AutoRunner.new(true)).process_args(ARGV) or
+  abort r.options.banner + " tests..."
+exit r.run

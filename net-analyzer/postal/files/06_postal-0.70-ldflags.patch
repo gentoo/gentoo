@@ -1,0 +1,27 @@
+--- Makefile.in~	2011-06-08 11:38:59.123333174 +0300
++++ Makefile.in		2011-06-08 11:46:02.000000000 +0300
+@@ -24,19 +24,19 @@
+ ALLOBJS=$(BASEOBJS) smtp.o client.o basictcp.o bhmusers.o smtpserver.o
+ 
+ postal: postal.cpp $(BASEOBJS) postal.h smtp.o
+-	$(CXX) postal.cpp $(BASEOBJS) smtp.o -o postal $(CRYPTLFLAGS)
++	$(CXX) $(LDFLAGS) postal.cpp $(BASEOBJS) smtp.o -o postal $(CRYPTLFLAGS)
+ 
+ rabid: rabid.cpp $(BASEOBJS) postal.h client.o
+-	$(CXX) rabid.cpp $(BASEOBJS) client.o -o rabid $(CRYPTLFLAGS)
++	$(CXX) $(LDFLAGS) rabid.cpp $(BASEOBJS) client.o -o rabid $(CRYPTLFLAGS)
+ 
+ bhm: bhm.cpp userlist.o basictcp.o logit.o results.o mutex.o bhmusers.o postal.h
+-	$(CXX) bhm.cpp userlist.o basictcp.o logit.o results.o mutex.o bhmusers.o -o bhm $(CRYPTLFLAGS)
++	$(CXX) $(LDFLAGS) bhm.cpp userlist.o basictcp.o logit.o results.o mutex.o bhmusers.o -o bhm $(CRYPTLFLAGS)
+ 
+ ex-test: ex-test.cpp expand.o
+-	$(CXX) ex-test.cpp expand.o -o ex-test $(LFLAGS)
++	$(CXX) $(LDFLAGS) ex-test.cpp expand.o -o ex-test $(LFLAGS)
+ 
+ postal-list: postal-list.cpp expand.o
+-	$(CXX) postal-list.cpp expand.o -o postal-list $(LFLAGS)
++	$(CXX) $(LDFLAGS) postal-list.cpp expand.o -o postal-list $(LFLAGS)
+ 
+ install-bin: $(EXE) $(SEXE)
+ 	mkdir -p $(DESTDIR)$(eprefix)/sbin $(DESTDIR)$(eprefix)/bin

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-geosciences@gentoo.org</email>
+		<name>Gentoo Geosciences Project</name>
+	</maintainer>
+<longdescription>The original GIS, yes the first one, developed by the US 
+Army Corp of Engineers, now an active open source GIS. See the GRASS Documentation 
+Project for more info http://grass.itc.it/gdp/index.php
+</longdescription>
+	<use>
+		<flag name="geos">Use <pkg>sci-libs/geos</pkg> for v.buffer and adds
+		extended options to the v.select module</flag>
+		<flag name="liblas">Include support for LAS and LAZ encoded LiDAR
+		files through <pkg>sci-geosciences/liblas</pkg></flag>
+		<flag name="opencl">Enable OpenCL support</flag>
+	</use>
+</pkgmetadata>

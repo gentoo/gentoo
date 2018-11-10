@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription>
+		edtFTPj is the first choice of Java developers worldwide
+		for incorporating FTP functionality into their applications.
+		edtFTPj is Open Source, licensed under the LGPL, the GNU
+		Lesser General Public License. This means you can freely
+		embed edtFTPj into your commercial Java applications,
+		subject to the normal LGPL restrictions. Unrestricted
+		(non-GPL) source licenses can be also be purchased. edtFTPj
+		has been downloaded over 100,000 times since its first
+		release, and is in use in thousands of companies worldwide.
+	</longdescription>
+</pkgmetadata>

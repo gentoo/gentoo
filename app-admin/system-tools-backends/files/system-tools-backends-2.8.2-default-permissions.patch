@@ -1,0 +1,25 @@
+From ea88120dac8ba2c2dabf4c393c283f69b3d33b5a Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Mon, 14 Dec 2009 20:37:15 +0100
+Subject: [PATCH 2/4] Gentoo: restrict access to stb to users in stb-admin group
+
+---
+ org.freedesktop.SystemToolsBackends.conf |    4 ++++
+ 1 files changed, 4 insertions(+), 0 deletions(-)
+
+diff --git a/org.freedesktop.SystemToolsBackends.conf b/org.freedesktop.SystemToolsBackends.conf
+index d031525..58972ee 100644
+--- a/org.freedesktop.SystemToolsBackends.conf
++++ b/org.freedesktop.SystemToolsBackends.conf
+@@ -60,4 +60,8 @@
+     <allow send_destination="org.freedesktop.SystemToolsBackends.UserConfig"/>
+     <allow send_destination="org.freedesktop.SystemToolsBackends.UsersConfig"/>
+   </policy>
++  <policy group="stb-admin">
++    <!-- be able to speak to the dispatcher -->
++    <allow send_destination="org.freedesktop.SystemToolsBackends"/>
++  </policy>
+ </busconfig>
+-- 
+1.6.5.4
+

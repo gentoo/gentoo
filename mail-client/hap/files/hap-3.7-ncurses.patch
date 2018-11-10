@@ -1,0 +1,14 @@
+--- configure.in	1996-07-17 00:50:03.000000000 +0300
++++ configure.in	2013-03-06 15:09:29.579148360 +0200
+@@ -6,8 +6,9 @@
+ AC_PROG_INSTALL
+ 
+ dnl Checks for libraries.
+-dnl Replace `main' with a function in -ltermcap:
+-AC_CHECK_LIB(termcap, tputs)
++dnl Replace `main' with a function in -lncurses or -ltinfo
++AC_CHECK_LIB(ncurses, tputs,,
++    [AC_CHECK_LIB(tinfo, tputs)])
+ 
+ dnl Checks for header files.
+ AC_CHECK_HEADERS(sgtty.h unistd.h libc.h termcap.h strings.h string.h dirent.h sys/ioctl.h)

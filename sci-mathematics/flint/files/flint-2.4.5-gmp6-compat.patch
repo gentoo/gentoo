@@ -1,0 +1,115 @@
+From a7f911140e7d0a0125653a40aa2c5fe257bd78f5 Mon Sep 17 00:00:00 2001
+From: Fredrik Johansson <fredrik.johansson@gmail.com>
+Date: Thu, 18 Sep 2014 14:49:05 +0200
+Subject: [PATCH] redefine fmpz_invmod to consider any integer invertible mod 1
+ (for gmp 6.0 compatibility)
+
+---
+ fmpz/doc/fmpz.txt    |  3 ++-
+ fmpz/invmod.c        | 11 +++++++++--
+ fmpz/test/t-invmod.c | 21 +++++++++++++++++----
+ 3 files changed, 28 insertions(+), 7 deletions(-)
+
+diff --git a/fmpz/doc/fmpz.txt b/fmpz/doc/fmpz.txt
+index fb422d8..2ada719 100644
+--- a/fmpz/doc/fmpz.txt
++++ b/fmpz/doc/fmpz.txt
+@@ -899,7 +899,8 @@ int fmpz_invmod(fmpz_t f, const fmpz_t g, const fmpz_t h)
+     Sets $f$ to the inverse of $g$ modulo $h$.  The value of $h$ may 
+     not be $0$ otherwise an exception results.  If the inverse exists 
+     the return value will be non-zero, otherwise the return value will
+-    be $0$ and the value of $f$ undefined. 
++    be $0$ and the value of $f$ undefined. As a special case, we
++    consider any number invertible modulo $h = \pm 1$, with inverse 0.
+ 
+ void fmpz_negmod(fmpz_t f, const fmpz_t g, const fmpz_t h)
+ 
+diff --git a/fmpz/invmod.c b/fmpz/invmod.c
+index a0cf601..0e20f39 100644
+--- a/fmpz/invmod.c
++++ b/fmpz/invmod.c
+@@ -67,7 +67,11 @@ fmpz_invmod(fmpz_t f, const fmpz_t g, const fmpz_t h)
+             if (c2 < WORD(0))
+                 c2 = -c2;
+             if (c2 == WORD(1))
+-                return 0;       /* special case not handled by n_invmod */
++            {
++                fmpz_zero(f);
++                return 1;       /* special case not handled by n_invmod */
++            }
++
+             gcd = z_gcdinv(&inv, c1, c2);
+ 
+             return (gcd == UWORD(1) ? fmpz_set_si(f, inv), 1 : 0);
+@@ -106,7 +110,10 @@ fmpz_invmod(fmpz_t f, const fmpz_t g, const fmpz_t h)
+             if (c2 < WORD(0))
+                 c2 = -c2;
+             if (c2 == WORD(1))
+-                return 0;       /* special case not handled by z_gcd_invert */
++            {
++                fmpz_zero(f);
++                return 1;       /* special case not handled by z_gcd_invert */
++            }
+             /* reduce g mod h first */
+ 
+             r = flint_mpz_fdiv_ui(COEFF_TO_PTR(c1), c2);
+diff --git a/fmpz/test/t-invmod.c b/fmpz/test/t-invmod.c
+index aea236e..8ff1c7f 100644
+--- a/fmpz/test/t-invmod.c
++++ b/fmpz/test/t-invmod.c
+@@ -30,6 +30,19 @@
+ #include "ulong_extras.h"
+ #include "fmpz.h"
+ 
++/* Use the definiton of GMP versions >= 6.0 */
++int
++mpz_invert2(mpz_t a, const mpz_t b, const mpz_t c)
++{
++    if (mpz_cmpabs_ui(c, 1) == 0)
++    {
++        mpz_set_ui(a, 0);
++        return 1;
++    }
++    else
++        return mpz_invert(a, b, c);
++}
++
+ int
+ main(void)
+ {
+@@ -63,7 +76,7 @@ main(void)
+         fmpz_get_mpz(e, b);
+ 
+         r1 = fmpz_invmod(c, a, b);
+-        r2 = mpz_invert(f, d, e);
++        r2 = mpz_invert2(f, d, e);
+ 
+         fmpz_get_mpz(g, c);
+ 
+@@ -106,7 +119,7 @@ main(void)
+         fmpz_get_mpz(d, a);
+ 
+         r1 = fmpz_invmod(c, a, a);
+-        r2 = mpz_invert(f, d, d);
++        r2 = mpz_invert2(f, d, d);
+ 
+         fmpz_get_mpz(g, c);
+ 
+@@ -149,7 +162,7 @@ main(void)
+         fmpz_get_mpz(e, b);
+ 
+         r1 = fmpz_invmod(a, a, b);
+-        r2 = mpz_invert(f, d, e);
++        r2 = mpz_invert2(f, d, e);
+ 
+         fmpz_get_mpz(g, a);
+ 
+@@ -192,7 +205,7 @@ main(void)
+         fmpz_get_mpz(e, b);
+ 
+         r1 = fmpz_invmod(b, a, b);
+-        r2 = mpz_invert(f, d, e);
++        r2 = mpz_invert2(f, d, e);
+ 
+         fmpz_get_mpz(g, b);
+ 

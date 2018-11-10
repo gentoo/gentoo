@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  This SciKit (toolkit for SciPy) includes useful image processing
+  algorithms for use with Python and NumPy. While SciPy’s ndimage
+  provides low-level manipulation, scikits.image centres around
+  algorithms and applications.
+</longdescription>
+  <use>
+    <flag name="freeimage">Enable support for image i/o via
+  <pkg>media-libs/freeimage</pkg></flag>
+    <flag name="pyamg">Enable support for algebraic solvers via <pkg>dev-python/pyamg</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">scikit-image</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,41 @@
+From 873186988c7b7cbde50d1f44ad0e745ddadf0e18 Mon Sep 17 00:00:00 2001
+From: Jim Ramsay <jim_ramsay@dell.com>
+Date: Mon, 1 Nov 2010 08:44:17 -0400
+Subject: [PATCH 3/3] Remove a few more GCC warnings
+
+These are mostly harmless, but no harm in cleaning them up.
+---
+ mailwatch.c |    5 +++--
+ 1 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/mailwatch.c b/mailwatch.c
+index 5cca01e..fcb77a8 100644
+--- a/mailwatch.c
++++ b/mailwatch.c
+@@ -198,7 +198,7 @@ check_mh(Mailbox * mbox) {
+     return TRUE;
+ 
+   /* Check the unseen mail */
+-  while (fgets(buf, sizeof(buf), f), !feof(f))
++  while (fgets(buf, sizeof(buf), f) && !feof(f))
+     if (!strncmp(buf, "unseen", sizeof("unseen") - 1)) {
+       found = 1;
+       break;
+@@ -444,12 +444,13 @@ plug_expose_event(GtkWidget * widget, GdkEventExpose * event) {
+ static gint
+ button_release(GtkWidget * widget, GdkEventButton * ev, Mailpanel * panel) {
+   gchar *command;
++  int retcode;
+ 
+   if (panel->command == NULL)
+     return FALSE;
+   command = malloc((strlen(panel->command) + 4) * sizeof(char));
+   strcpy(command, panel->command);
+-  system(strcat(command, " &"));
++  retcode = system(strcat(command, " &"));
+   free(command);
+   return FALSE;
+ }
+-- 
+1.7.3.1
+

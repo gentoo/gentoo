@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>printing@gentoo.org</email>
+		<name>Gentoo Printing Project</name>
+	</maintainer>
+	<longdescription>
+	GtkLP is an graphical frontend for CUPS, the Common UNIX Printing System.
+	It is used to have an easy (and graphical) access to all of the many options
+	of cups-managed printers. Package also includes GtkLPQ - a graphical
+	frontend for CUPS-Printqueues.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">gtklp</remote-id>
+	</upstream>
+</pkgmetadata>

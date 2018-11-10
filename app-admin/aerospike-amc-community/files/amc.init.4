@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+run_dir=${run_dir:-/run}
+
+command="/opt/amc/amc"
+command_progress="true"
+retry='TERM/30/KILL/5'
+pidfile=${run_dir}/${SVCNAME}.pid
+user=${user:-root}
+group=${group:-root}
+start_stop_daemon_args="--user ${user} --group ${group}"
+command_args="--daemon"
+
+depend() {
+	use net
+}

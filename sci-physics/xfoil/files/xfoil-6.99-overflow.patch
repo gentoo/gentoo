@@ -1,0 +1,11 @@
+--- Xfoil/src/xoper.f.orig	2013-12-08 22:21:22.000000000 +0400
++++ Xfoil/src/xoper.f	2017-03-05 23:02:33.214895357 +0300
+@@ -114,7 +114,7 @@
+ C---- don't try to read integers, since might get integer overflow
+       DO I=1, NINPUT
+         IF(ABS(RINPUT(I)) .GT. 2.1E9) THEN
+-         IINPUT(I) = 2**30
++         IINPUT(I) = HUGE(0)
+         ELSE
+          IINPUT(I) = INT(RINPUT(I))
+         ENDIF

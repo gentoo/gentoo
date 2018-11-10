@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>itumaykin+gentoo@gmail.com</email>
+		<name>Coacher</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="client">Build fwknop client</flag>
+		<flag name="extras">Install utility scripts and AppArmor policy for fwknopd</flag>
+		<flag name="firewalld">Use <pkg>net-firewall/firewalld</pkg> as the default server backend</flag>
+		<flag name="gdbm">Use <pkg>sys-libs/gdbm</pkg> to store fwknopd digest cache</flag>
+		<flag name="gpg">Enable GPG support via <pkg>app-crypt/gpgme</pkg></flag>
+		<flag name="iptables">Use <pkg>net-firewall/iptables</pkg> as the default server backend</flag>
+		<flag name="nfqueue">Enable UDP-only NFQUEUE server mode (no <pkg>net-libs/libpcap</pkg> dependency)</flag>
+		<flag name="server">Build fwknopd server</flag>
+		<flag name="udp-server">Enable UDP-only server mode (no <pkg>net-libs/libpcap</pkg> dependency)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mrash/fwknop</remote-id>
+	</upstream>
+</pkgmetadata>

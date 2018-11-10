@@ -1,0 +1,12 @@
+--- a/docs/reference/Makefile.am	2018-08-22 18:11:17.138111534 +0100
++++ b/docs/reference/Makefile.am	2018-08-22 18:11:23.105118175 +0100
+@@ -80,9 +80,6 @@
+ 	$(top_builddir)/loudmouth/libloudmouth.la
+ 
+ 
+-# This includes the standard gtk-doc make rules, copied by gtkdocize.
+-include $(top_srcdir)/gtk-doc.make
+-
+ # Other files to distribute
+ # e.g. EXTRA_DIST += version.xml.in
+ EXTRA_DIST +=

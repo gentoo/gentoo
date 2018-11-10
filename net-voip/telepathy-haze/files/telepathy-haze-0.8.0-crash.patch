@@ -1,0 +1,28 @@
+From 83589722731dde63118104f75c9ab89f66b21c21 Mon Sep 17 00:00:00 2001
+From: Debarshi Ray <debarshir@freedesktop.org>
+Date: Tue, 28 Apr 2015 19:13:39 +0200
+Subject: [PATCH] contact-list: Don't crash if a contact is already in the
+ roster
+
+Bug: https://bugs.freedesktop.org/show_bug.cgi?id=47005
+---
+ src/contact-list.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/contact-list.c b/src/contact-list.c
+index fc46de8..710ed19 100644
+--- a/src/contact-list.c
++++ b/src/contact-list.c
+@@ -532,7 +532,8 @@ haze_contact_list_request_subscription (HazeContactList *self,
+   /* If the buddy already exists, then it should already be on the
+    * subscribe list.
+    */
+-  g_assert (purple_find_buddy (account, bname) == NULL);
++  if (purple_find_buddy (account, bname) != NULL)
++    return;
+ 
+   buddy = purple_buddy_new (account, bname, NULL);
+ 
+-- 
+2.1.0
+

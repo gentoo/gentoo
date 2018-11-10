@@ -1,0 +1,14 @@
+diff -ur maui-3.3.1.orig/src/moab/MPBSI.c maui-3.3.1/src/moab/MPBSI.c
+--- maui-3.3.1.orig/src/moab/MPBSI.c      2013-07-31 09:36:31.831849229 -0700
++++ maui-3.3.1/src/moab/MPBSI.c           2013-07-31 09:37:12.951107957 -0700
+@@ -174,8 +174,8 @@
+ 
+ extern int pbs_errno; 
+ 
+-extern int get_svrport(const char *,char *,int);
+-extern int openrm(char *,int);
++extern unsigned int get_svrport(char *,char *,unsigned int);
++extern int openrm(char *,unsigned int);
+ extern int addreq(int,char *);
+ extern int closerm(int);
+ extern int pbs_stagein(int,char *,char *,char *);

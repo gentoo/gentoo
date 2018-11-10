@@ -1,0 +1,22 @@
+--- Isabelle2016-1-orig/src/HOL/SMT.thy	2016-12-13 01:03:38.000000000 +1100
++++ Isabelle2016-1/src/HOL/SMT.thy	2016-12-30 14:11:09.379863215 +1100
+@@ -201,7 +201,7 @@
+ (given in seconds) to restrict their runtime.
+ \<close>
+ 
+-declare [[smt_timeout = 20]]
++declare [[smt_timeout = 300]]
+ 
+ text \<open>
+ SMT solvers apply randomized heuristics. In case a problem is not
+--- Isabelle2016-1-orig/src/HOL/Tools/SMT/smt_config.ML	2016-12-13 01:03:42.000000000 +1100
++++ Isabelle2016-1/src/HOL/Tools/SMT/smt_config.ML	2016-12-30 14:11:27.186904132 +1100
+@@ -170,7 +170,7 @@
+ (* options *)
+ 
+ val oracle = Attrib.setup_config_bool @{binding smt_oracle} (K true)
+-val timeout = Attrib.setup_config_real @{binding smt_timeout} (K 30.0)
++val timeout = Attrib.setup_config_real @{binding smt_timeout} (K 300.0)
+ val reconstruction_step_timeout = Attrib.setup_config_real @{binding smt_reconstruction_step_timeout} (K 10.0)
+ val random_seed = Attrib.setup_config_int @{binding smt_random_seed} (K 1)
+ val read_only_certificates = Attrib.setup_config_bool @{binding smt_read_only_certificates} (K false)

@@ -1,0 +1,22 @@
+http://repos.archlinux.org/wsvn/community/greycstoration/trunk/libpng14.patch
+
+--- a/CImg.h
++++ b/CImg.h
+@@ -25671,7 +25671,7 @@
+       png_read_info(png_ptr,info_ptr);
+       png_uint_32 W, H;
+       int bit_depth, color_type, interlace_type;
+-      png_get_IHDR(png_ptr,info_ptr,&W,&H,&bit_depth,&color_type,&interlace_type,int_p_NULL,int_p_NULL);
++      png_get_IHDR(png_ptr,info_ptr,&W,&H,&bit_depth,&color_type,&interlace_type,NULL,NULL);
+       int new_bit_depth = bit_depth;
+       int new_color_type = color_type;
+ 
+@@ -25682,7 +25682,7 @@
+         new_bit_depth = 8;
+       }
+       if (new_color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8){
+-        png_set_gray_1_2_4_to_8(png_ptr);
++        png_set_expand_gray_1_2_4_to_8(png_ptr);
+         new_bit_depth = 8;
+       }
+       if (png_get_valid(png_ptr, info_ptr, PNG_INFO_tRNS))

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+A GNOME trayicon which checks for email. Supports mbox, MH,
+Maildir, IMAP, Sylpheed, POP3, Gmail and Evolution.  Authenticates via
+apop, ssl, sasl.
+</longdescription>
+	<use>
+		<flag name="sylpheed">Enable support for MH mailboxes used by
+		<pkg>mail-client/sylpheed</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">epienbroek/mail-notification</remote-id>
+	</upstream>
+</pkgmetadata>

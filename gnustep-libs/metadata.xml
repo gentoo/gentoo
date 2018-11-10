@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The gnustep-libs category contains GNUstep libraries.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie gnustep-libs enthält Bibliotheken für die
+		GNUstep-Umgebung.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría gnustep-libs contiene las librerías de GNUstep.
+	</longdescription>
+	<longdescription lang="ja">
+		gnustep-libsカテゴリーにはGNUstepライブラリが含まれています。
+	</longdescription>				
+	<longdescription lang="nl">
+		De gnustep-libs categorie bevat GNUstep bibliotheken.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm gnustep-libs chứa các thư viện GNUstep.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria gnustep-libs contiene le librerie di GNUstep.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria gnustep-libs contém as bibliotecas de GNUstep.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria gnustep-libs zawiera biblioteki GNUstep.
+	</longdescription>
+</catmetadata>
+

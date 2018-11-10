@@ -1,0 +1,93 @@
+ src/cmds/qstat.c                | 18 ++++++++++++++++++
+ src/scheduler.tcl/pbs_tclWrap.c | 13 +++++++++++++
+ 2 files changed, 31 insertions(+)
+
+diff --git a/src/cmds/qstat.c b/src/cmds/qstat.c
+index 4e1c6b6..07ed448 100644
+--- a/src/cmds/qstat.c
++++ b/src/cmds/qstat.c
+@@ -1795,8 +1795,13 @@ tcl_init(void)
+ 
+   if (Tcl_Init(interp) == TCL_ERROR)
+     {
++#if TCL_MAJOR_VERSION <=8 && TCL_MINOR_VERSION < 6
+     fprintf(stderr, "Tcl_Init error: %s",
+             interp->result);
++#else
++    fprintf(stderr, "Tcl_Init error: %s",
++            Tcl_GetStringResult(interp));
++#endif
+     }
+ 
+ #if TCLX
+@@ -1808,8 +1813,14 @@ tcl_init(void)
+   if (Tclx_Init(interp) == TCL_ERROR)
+     {
+ #endif
++
++#if TCL_MAJOR_VERSION <=8 && TCL_MINOR_VERSION < 6
+     fprintf(stderr, "Tclx_Init error: %s",
+             interp->result);
++#else
++    fprintf(stderr, "Tclx_Init error: %s",
++            Tcl_GetStringResult(interp));
++#endif
+     }
+ 
+ #endif /* TCLX */
+@@ -1920,10 +1931,17 @@ void tcl_run(
+     trace = (char *)Tcl_GetVar(interp, "errorInfo", 0);
+ 
+     if (trace == NULL)
++#if TCL_MAJOR_VERSION <=8 && TCL_MINOR_VERSION < 6
+       trace = interp->result;
+ 
+     fprintf(stderr, "%s: TCL error @ line %d: %s\n",
+             script, interp->errorLine, trace);
++#else
++      trace = Tcl_GetStringResult(interp);
++
++    fprintf(stderr, "%s: TCL error @ line %d: %s\n",
++            script, Tcl_GetErrorLine(interp), trace);
++#endif
+     }
+ 
+   Tcl_DeleteInterp(interp);
+diff --git a/src/scheduler.tcl/pbs_tclWrap.c b/src/scheduler.tcl/pbs_tclWrap.c
+index a85e8ff..46c1012 100644
+--- a/src/scheduler.tcl/pbs_tclWrap.c
++++ b/src/scheduler.tcl/pbs_tclWrap.c
+@@ -900,8 +900,13 @@ char *argv[];
+ 
+   if (argc != 2)
+     {
++#if TCL_MAJOR_VERSION <=8 && TCL_MINOR_VERSION < 6
+     sprintf(interp->result,
+             "%s: wrong # args: job_id", argv[0]);
++#else
++    sprintf(Tcl_GetStringResult(interp),
++            "%s: wrong # args: job_id", argv[0]);
++#endif
+     return TCL_ERROR;
+     }
+ 
+@@ -912,11 +917,19 @@ char *argv[];
+     return TCL_OK;
+     }
+ 
++#if TCL_MAJOR_VERSION <=8 && TCL_MINOR_VERSION < 6
+   interp->result = "0";
++#else
++  Tcl_SetResult(interp, "0", TCL_STATIC);
++#endif
+ 
+   if (pbs_rerunjob_err(connector, argv[1], extend, &local_errno))
+     {
++#if TCL_MAJOR_VERSION <=8 && TCL_MINOR_VERSION < 6
+     interp->result = "-1";
++#else
++    Tcl_SetResult(interp, "-1", TCL_STATIC);
++#endif
+     msg = pbs_geterrmsg(connector);
+     sprintf(log_buffer, "%s (%d)", msg ? msg : fail, local_errno);
+     log_err(-1, argv[0], log_buffer);

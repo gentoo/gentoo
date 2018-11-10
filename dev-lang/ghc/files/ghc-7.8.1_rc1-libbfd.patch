@@ -1,0 +1,81 @@
+commit bb5953484579968c984d074ca1af5d21e1c9e7a0
+Author: Sergei Trofimovich <slyfox@gentoo.org>
+Date:   Mon Feb 10 12:45:58 2014 +0300
+
+    rts: unrust 'libbfd' debug symbols parser
+    
+    Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+
+diff --git a/configure.ac b/configure.ac
+index e7fbc7f..e47979c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -801,7 +801,8 @@ fi
+ dnl ** check whether this machine has BFD and libiberty installed (used for debugging)
+ dnl    the order of these tests matters: bfd needs libiberty
+ AC_CHECK_LIB(iberty, xmalloc)
+-AC_CHECK_LIB(bfd,    bfd_uncompress_section_contents)
++dnl 'bfd_init' is a rare non-macro in libbfd
++AC_CHECK_LIB(bfd,    bfd_init)
+ 
+ dnl ################################################################
+ dnl Check for libraries
+diff --git a/rts/Printer.c b/rts/Printer.c
+index ca9ca49..ce02b02 100644
+--- a/rts/Printer.c
++++ b/rts/Printer.c
+@@ -48,6 +48,9 @@ void printPtr( StgPtr p )
+     raw = lookupGHCName(p);
+     if (raw != NULL) {
+         printZcoded(raw);
++        /* it can be just a C symbol, like 'stg_returnToStackTop' */
++        debugBelch("<%s>", raw);
++        debugBelch("[%p]", p);
+     } else {
+         debugBelch("%p", p);
+     }
+@@ -794,7 +797,7 @@ static void printZcoded( const char *raw )
+    disabling this for now. 
+ */
+ #ifdef USING_LIBBFD
+-
++#include "../mk/config.h" /* silly BFD's requirement */
+ #include <bfd.h>
+ 
+ /* Fairly ad-hoc piece of code that seems to filter out a lot of
+@@ -863,7 +866,10 @@ extern void DEBUG_LoadSymbols( char *name )
+         for( i = 0; i != number_of_symbols; ++i ) {
+             symbol_info info;
+             bfd_get_symbol_info(abfd,symbol_table[i],&info);
+-            /*debugBelch("\t%c\t0x%x      \t%s\n",info.type,(nat)info.value,info.name); */
++            if (0)
++            {
++                debugBelch("\t%c\t0x%x      \t%s\n",info.type,(nat)info.value,info.name);
++            }
+             if (isReal(info.type, info.name)) {
+                 num_real_syms += 1;
+             }
+diff --git a/rts/RtsStartup.c b/rts/RtsStartup.c
+index aa7306f..5bdef94 100644
+--- a/rts/RtsStartup.c
++++ b/rts/RtsStartup.c
+@@ -19,6 +19,7 @@
+ #include "RtsFlags.h"
+ #include "RtsUtils.h"
+ #include "Prelude.h"
++#include "Printer.h"    /* DEBUG_LoadSymbols */
+ #include "Schedule.h"   /* initScheduler */
+ #include "Stats.h"      /* initStats */
+ #include "STM.h"        /* initSTM */
+@@ -162,6 +163,11 @@ hs_init_ghc(int *argc, char **argv[], RtsConfig rts_config)
+                       rts_config.rts_opts_enabled, rts_config.rts_opts, rts_config.rts_hs_main);
+     }
+ 
++#ifdef DEBUG
++    /* load debugging symbols */
++    DEBUG_LoadSymbols((*argv)[0]);
++#endif /* DEBUG */
++
+     /* Initialise the stats department, phase 1 */
+     initStats1();
+ 

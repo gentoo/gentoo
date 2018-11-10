@@ -1,0 +1,15 @@
+--- bindings/python/setup.py	2011-05-14 07:20:52.000000000 +0200
++++ bindings/python/setup.py	2013-08-02 17:04:16.423771834 +0200
+@@ -1,8 +1,10 @@
+ from distutils.core import setup, Extension
+ 
+ marisa_module = Extension("_marisa",
+-                          sources=["marisa-swig_wrap.cxx", "marisa-swig.cxx"],
+-                          libraries=["marisa"])
++                          sources=["marisa-swig.i", "marisa-swig.cxx"],
++                          swig_opts=["-c++"],
++                          libraries=["marisa"], library_dirs=["../../lib/.libs"],
++                          include_dirs=["../../lib"])
+ 
+ setup(name = "marisa",
+       ext_modules = [marisa_module],

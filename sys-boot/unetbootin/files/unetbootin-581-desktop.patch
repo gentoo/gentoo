@@ -1,0 +1,24 @@
+ * unetbootin.desktop: error: key "GenericName[en_US]" in group "Desktop Entry"
+   is a localized key, but there is no non-localized key "GenericName"
+ * unetbootin.desktop: warning: value "Application;System;" for key
+   "Categories" in group "Desktop Entry" contains a deprecated value
+ * "Application"
+
+
+
+--- a/unetbootin.desktop
++++ b/unetbootin.desktop
+@@ -2,11 +2,11 @@
+ Version=1.0
+ Name=UNetbootin
+ Comment=Tool for creating Live USB drives
+-Categories=Application;System;
++Categories=System;
+ Exec=/usr/bin/unetbootin
+ Terminal=false
+ Type=Application
+ Name[en_US]=UNetbootin
+-GenericName[en_US]=UNetbootin
++GenericName=UNetbootin
+ Comment[en_US]=Tool for creating Live USB drives
+ Icon=unetbootin

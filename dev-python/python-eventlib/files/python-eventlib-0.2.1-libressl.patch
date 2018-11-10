@@ -1,0 +1,14 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Tue Sep  8 01:22:40 UTC 2015
+Subject: fix compatibility with libressl
+
+--- a/eventlib/green/socket.py
++++ b/eventlib/green/socket.py
+@@ -89,7 +89,6 @@
+ else:
+     # some constants the SSL module exports but not in __all__
+     from eventlib.green.ssl import (RAND_add,
+-                                    RAND_egd,
+                                     RAND_status,
+                                     SSL_ERROR_ZERO_RETURN,
+                                     SSL_ERROR_WANT_READ,

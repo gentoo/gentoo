@@ -1,0 +1,12 @@
+--- a/Makefile
++++ b/Makefile
+@@ -12,7 +12,8 @@
+ LSMSR_TMP_HEADERS=AMD/k8.h AMD/fam10h.h AMD/fam11h.h generic_msr.h
+ 
+ %.h: %.regs scripts/createheader.py
+-	python scripts/createheader.py $< `basename $< .regs` >$@
++	$(PYTHON) scripts/createheader.py $< `basename $< .regs` >$@.tmp ; \
++	mv $@.tmp $@
+ 
+ LSMSR_SRC = \
+ 	lsmsr.c \

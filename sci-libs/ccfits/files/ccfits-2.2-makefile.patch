@@ -1,0 +1,26 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -26,12 +26,11 @@
+ EXTRA_DIST = config CHANGES README.INSTALL License.txt file1.pha $(MSVC_FILES)
+ 
+ 
+-bin_PROGRAMS = cookbook
++check_PROGRAMS = cookbook
+ 
+ cookbook_SOURCES = cookbook.cxx
+ 
+ cookbook_LDADD = libCCfits.la
+-cookbook_LDFLAGS = -R $(R_LIB_PATH) -R $(CXX_LIB_PATH)
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = CCfits.pc
+@@ -64,8 +63,7 @@
+ 
+ # This will tell shared library which STD C++ library to use without
+ # needing the user to use LD_LIBRARY_PATH environment variable
+-libCCfits_la_LIBADD = $(LIBSTDCPP)
+-libCCfits_la_LDFLAGS = -R $(R_LIB_PATH) -R $(CXX_LIB_PATH)
++#libCCfits_la_LIBADD = $(LIBSTDCPP) 
+ 
+ libCCfits_ladir = $(pkgincludedir)
+ 

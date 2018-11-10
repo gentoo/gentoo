@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Natural Docs is an open-source, extensible, multi-language
+		documentation generator. It extracts specially formatted comments
+		from source code and builds HTML documentation from it. The syntax
+		is transparent so that the comments in the source code read just as
+		easily as the generated documentation. It also focuses on automation
+		and high-quality generated output.
+	</longdescription>
+	<maintainer type="person">
+		<email>titanofold@gentoo.org</email>
+		<name>Aaron W. Swenson</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">naturaldocs</remote-id>
+	</upstream>
+</pkgmetadata>

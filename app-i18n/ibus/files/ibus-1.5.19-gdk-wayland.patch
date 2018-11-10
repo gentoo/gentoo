@@ -1,0 +1,88 @@
+From aa0f4252ff965729b871c91b4ed089bf98963c0b Mon Sep 17 00:00:00 2001
+From: fujiwarat <takao.fujiwara1@gmail.com>
+Date: Fri, 10 Aug 2018 15:43:58 +0900
+Subject: [PATCH] ui/gtk3: Check if gdk-wayland is installed
+
+BUG=https://github.com/ibus/ibus/issues/2035
+---
+ configure.ac              | 10 ++++++++++
+ ui/gtk3/Makefile.am       |  5 ++++-
+ ui/gtk3/panelbinding.vala |  5 +++++
+ 3 files changed, 19 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 091e20f2..4b6a7a21 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -237,12 +237,21 @@ if test x"$enable_gtk3" = x"yes"; then
+     PKG_CHECK_MODULES(GTK3, [
+         gtk+-3.0
+     ])
++    PKG_CHECK_EXISTS([gdk-wayland-3.0],
++        [enable_gdk3_wayland=yes],
++        [enable_gdk3_wayland=no]
++    )
+ 
+     gtk3_binary_version=`$PKG_CONFIG --variable=gtk_binary_version gtk+-3.0`
+     GTK3_IM_MODULEDIR="$libdir"/gtk-3.0/$gtk3_binary_version/immodules
+ else
+     enable_gtk3="no (disabled, use --enable-gtk3 to enable)"
++    enable_gdk3_wayland=no
++fi
++if test x"$enable_gdk3_wayland" != x"yes"; then
++    enable_gdk3_wayland="no (disabled, need to install gdk-wayland-3.0.pc)"
+ fi
++AM_CONDITIONAL([ENABLE_GDK3_WAYLAND], [test x"$enable_gdk3_wayland" = x"yes"])
+ 
+ if test x"$enable_xim" = x"yes"; then
+     # Check for x11
+@@ -785,6 +794,7 @@ Build options:
+   Build gtk3 immodule           $enable_gtk3
+   Build XIM agent server        $enable_xim
+   Build wayland support         $enable_wayland
++  Build gdk3 wayland support    $enable_gdk3_wayland
+   Build appindicator support    $enable_appindicator
+   Build appindicator engine icon $enable_appindicator_engine_icon
+   Build python library          $enable_python_library
+diff --git a/ui/gtk3/Makefile.am b/ui/gtk3/Makefile.am
+index aaba7a4d..6ebc96ce 100644
+--- a/ui/gtk3/Makefile.am
++++ b/ui/gtk3/Makefile.am
+@@ -78,7 +78,6 @@ AM_VALAFLAGS = \
+ 	--pkg=ibus-1.0 \
+ 	--pkg=config \
+ 	--pkg=xi \
+-	--pkg=gdk-wayland \
+ 	--target-glib="$(VALA_TARGET_GLIB_VERSION)" \
+ 	$(NULL)
+ 
+@@ -105,6 +104,10 @@ if ENABLE_APPINDICATOR_ENGINE_ICON
+ AM_VALAFLAGS += --define=INDICATOR_ENGINE_ICON
+ endif
+ 
++if ENABLE_GDK3_WAYLAND
++AM_VALAFLAGS += --pkg=gdk-wayland --define=USE_GDK_WAYLAND
++endif
++
+ libexec_PROGRAMS = ibus-ui-gtk3
+ 
+ ibus_ui_gtk3_SOURCES = \
+diff --git a/ui/gtk3/panelbinding.vala b/ui/gtk3/panelbinding.vala
+index 95115b13..981b5509 100644
+--- a/ui/gtk3/panelbinding.vala
++++ b/ui/gtk3/panelbinding.vala
+@@ -237,9 +237,14 @@ class PanelBinding : IBus.PanelService {
+         GLib.Object(connection : bus.get_connection(),
+                     object_path : IBus.PATH_PANEL_EXTENSION_EMOJI);
+ 
++#if USE_GDK_WAYLAND
+         Type instance_type = Gdk.Display.get_default().get_type();
+         Type wayland_type = typeof(GdkWayland.Display);
+         m_is_wayland = instance_type.is_a(wayland_type);
++#else
++        m_is_wayland = false;
++        warning("Checking Wayland is disabled");
++#endif
+ 
+         m_bus = bus;
+         m_application = application;

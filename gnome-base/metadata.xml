@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The gnome-base category contains core GNOME packages.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie gnome-base enthält die GNOME Basispakete.
+	</longdescription>
+	<longdescription lang="es">
+		La catagoría gnome-base contiene los paquetes principales de GNOME.
+	</longdescription>
+	<longdescription lang="ja">
+		gnome-baseカテゴリーにはGNOMEのコア・パッケージが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De gnome-base categorie bevat de basisonderdelen van de GNOME desktopomgeving.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm gnome-base chứa các gói GNOME cốt lõi.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria gnome-base contiene i pacchetti base di GNOME.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria gnome-base contém os pacotes principais de GNOME.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria gnome-base zawiera podstawowe pakiety środowiska GNOME.
+	</longdescription>
+</catmetadata>
+

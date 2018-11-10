@@ -1,0 +1,47 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=5
+
+inherit eutils flag-o-matic toolchain-funcs
+
+MY_NCBI_BLAST_V=2.2.23+
+
+DESCRIPTION="RepeatMasker compatible version of NCBI BLAST+"
+HOMEPAGE="http://www.repeatmasker.org/RMBlast.html"
+SRC_URI="http://www.repeatmasker.org/rmblast-${PV}-ncbi-blast-${MY_NCBI_BLAST_V}-src.tar.gz
+	https://dev.gentoo.org/~mgorny/dist/${P}-gcc47.patch.bz2"
+
+LICENSE="OSL-2.1"
+SLOT="0"
+IUSE=""
+KEYWORDS="~amd64 ~x86"
+
+RDEPEND="dev-libs/boost"
+DEPEND="${RDEPEND}
+	app-arch/cpio"
+
+S="${WORKDIR}/${P}-ncbi-blast-${MY_NCBI_BLAST_V}-src/c++"
+
+src_prepare() {
+	filter-ldflags -Wl,--as-needed
+	sed \
+		-e 's/-print-file-name=libstdc++.a//' \
+		-e '/sed/ s/\([gO]\[0-9\]\)\*/\1\\+/' \
+		-e "/DEF_FAST_FLAGS=/s:=\".*\":=\"${CFLAGS}\":g" \
+		-e 's/2.95\* | 2.96\* | 3\.\* | 4\.\* )/2.95\* | 2.96\* | \[3-9\]\.\* )/g' \
+		-i src/build-system/configure || die
+	epatch "${WORKDIR}"/${P}-gcc47.patch
+}
+
+src_configure() {
+	tc-export CXX CC
+
+	"${S}"/configure --without-debug \
+		--with-mt \
+		--without-static \
+		--with-dll \
+		--prefix="${ED}"/opt/${PN} \
+		--with-boost="${EPREFIX}/usr/include/boost" \
+		|| die
+}

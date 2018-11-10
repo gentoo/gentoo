@@ -1,0 +1,79 @@
+diff -Nuar uftp-3.7.orig//makefile uftp-3.7/makefile
+--- uftp-3.7.orig//makefile	2012-08-10 17:00:22.566403478 +0600
++++ uftp-3.7/makefile	2012-08-10 17:04:47.523386683 +0600
+@@ -39,25 +39,26 @@
+ endif
+ 
+ # defaults
+-CC = gcc
+-OPTIONS=-g -Wall $(ENC_OPTS)
++CC ?= gcc
++OPTIONS=$(ENC_OPTS)
+ LDLIBS=-lc -lm $(CRYPT_LIB)
+-CFLAGS=
++CFLAGS?=
++LDFLAGS?=
+ 
+ # FreeBSD
+ ifeq ("FreeBSD", "$(UNAME_S)")
+-OPTIONS=-g -Wall -DHAS_GETIFADDRS $(ENC_OPTS)
++OPTIONS=-DHAS_GETIFADDRS $(ENC_OPTS)
+ endif
+ 
+ # OSX, aka Darwin
+ ifeq ("Darwin", "$(UNAME_S)")
+-OPTIONS=-g -Wall -DHAS_GETIFADDRS $(ENC_OPTS)
++OPTIONS=-DHAS_GETIFADDRS $(ENC_OPTS)
+ endif
+ 
+ # Sun
+ ifeq ("SunOS", "$(UNAME_S)")
+-CC = cc
+-OPTIONS=-g -DBSD_COMP $(ENC_OPTS)
++CC ?= cc
++OPTIONS=-DBSD_COMP $(ENC_OPTS)
+ LDLIBS=-lnsl -lsocket -lm $(CRYPT_LIB)
+ CFLAGS=`getconf LFS_CFLAGS`
+ OPENSSL=/usr/sfw
+@@ -65,9 +66,9 @@
+ 
+ # Linux
+ ifeq ("Linux", "$(UNAME_S)")
+-OPTIONS=-g -Wall -DHAS_GETIFADDRS $(ENC_OPTS)
++OPTIONS=-DHAS_GETIFADDRS $(ENC_OPTS)
+ LDLIBS=-lm $(CRYPT_LIB)
+-CFLAGS=`getconf LFS_CFLAGS`
++CFLAGS?=`getconf LFS_CFLAGS`
+ endif
+ 
+ ifdef OPENSSL
+@@ -82,7 +83,7 @@
+ testclient_multi.o: testclient_multi.c uftp.h uftp_common.h encryption.h
+ 
+ testclient_multi: testclient_multi.o encrypt_openssl.o uftp_common.o
+-	$(CC) $(OPTIONS) $(LIB) -o $@ $^ $(LDLIBS)
++	$(CC) $(OPTIONS) $(LIB) -o $@ $^ $(LDLIBS) $(LDFLAGS)
+ 
+ clean:
+ 	rm -f testclient_multi uftp uftpd uftpproxyd uftp_keymgt *.o
+@@ -176,16 +177,16 @@
+ endif
+ 
+ uftp: $(UFTP_OBJS)
+-	$(CC) $(OPTIONS) $(LIB) -o $@ $^ $(LDLIBS)
++	$(CC) $(OPTIONS) $(LIB) -o $@ $^ $(LDLIBS) $(LDFLAGS)
+ 
+ uftpd: $(UFTPD_OBJS)
+-	$(CC) $(OPTIONS) $(LIB) -o $@ $^ $(LDLIBS)
++	$(CC) $(OPTIONS) $(LIB) -o $@ $^ $(LDLIBS) $(LDFLAGS)
+ 
+ uftpproxyd: $(UFTPPROXYD_OBJS)
+-	$(CC) $(OPTIONS) $(LIB) -o $@ $^ $(LDLIBS)
++	$(CC) $(OPTIONS) $(LIB) -o $@ $^ $(LDLIBS) $(LDFLAGS)
+ 
+ uftp_keymgt: $(UFTP_KEYMGT_OBJS)
+-	$(CC) $(OPTIONS) $(LIB) -o $@ $^ $(LDLIBS)
++	$(CC) $(OPTIONS) $(LIB) -o $@ $^ $(LDLIBS) $(LDFLAGS)
+ 
+ %.o: %.c
+ 	$(CC) $(OPTIONS) $(INCLUDE) $(CFLAGS) -c $<

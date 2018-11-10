@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>tcltk@gentoo.org</email>
+    <name>Gentoo Tcltk Project</name>
+  </maintainer>
+  <longdescription>
+tDOM combines high performance XML data processing with easy and
+powerful Tcl scripting functionality. tDOM should be one of the fastest
+ways to manipulate XML with a scripting language and uses very few
+memory: for example, the DOM tree of the XML recommendation in XML
+(160K) needs only about 450K of memory.
+</longdescription>
+</pkgmetadata>

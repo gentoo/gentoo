@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-chemistry@gentoo.org</email>
+    <name>Gentoo Chemistry Project</name>
+  </maintainer>
+  <longdescription>
+A fortran program in which Tirion's model (also called the Elastic Network 
+Model) is implemented. Within the frame of this model, atoms (particles) 
+less than cutoff (angstroms) away from each others are linked by springs of 
+same strength. Alternatively, a list of interacting atoms can be given to the 
+program.
+Requirements: a file with the coordinates of the system, in PDB (Protein Data 
+Bank) or "x y z mass" format.
+
+Output: the hessian (the mass-weighted second derivatives of energy matrix), 
+in the "i j non-zero-ij-matrix-element" format.
+
+Diagstd, a fortran program with a standard diagonalization routine, can next 
+be used in order to obtain the corresponding normal modes of the system. If 
+the system is large, the RTB approximation can prove usefull (see below).
+</longdescription>
+</pkgmetadata>

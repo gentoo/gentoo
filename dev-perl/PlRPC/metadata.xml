@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">PlRPC</remote-id>
+    <remote-id type="cpan-module">Bundle::PlRPC</remote-id>
+    <remote-id type="cpan-module">RPC::PlClient</remote-id>
+    <remote-id type="cpan-module">RPC::PlClient::Comm</remote-id>
+    <remote-id type="cpan-module">RPC::PlClient::Object</remote-id>
+    <remote-id type="cpan-module">RPC::PlServer</remote-id>
+    <remote-id type="cpan-module">RPC::PlServer::Comm</remote-id>
+    <remote-id type="cpan-module">RPC::PlServer::Test</remote-id>
+  </upstream>
+</pkgmetadata>

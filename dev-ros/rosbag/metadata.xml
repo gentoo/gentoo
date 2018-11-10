@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ros@gentoo.org</email>
+    <name>Gentoo ROS Project</name>
+  </maintainer>
+  <use>
+    <flag name="lz4">Add support for lz4 compressed bags.</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">ros/ros_comm</remote-id>
+  </upstream>
+</pkgmetadata>

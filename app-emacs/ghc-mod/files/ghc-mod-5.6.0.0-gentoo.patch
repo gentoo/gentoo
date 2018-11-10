@@ -1,0 +1,5 @@
+--- a/ghc-mod.cabal
++++ b/ghc-mod.cabal
+@@ -29,2 +29,0 @@
+-Data-Files:             elisp/Makefile
+-                        elisp/*.el

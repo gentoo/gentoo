@@ -1,0 +1,29 @@
+--- ./src/libs/sound/decoders/aiffaud.c.orig	2011-05-20 15:24:44.000000000 -0400
++++ ./src/libs/sound/decoders/aiffaud.c	2016-03-10 00:53:37.336198208 -0500
+@@ -307,7 +307,7 @@
+ {
+ 	int bytes;
+ 
+-	memset(fmt, sizeof(*fmt), 0);
++	memset(fmt, 0, sizeof(*fmt));
+ 	if (size < AIFF_COMM_SIZE)
+ 	{
+ 		aifa->last_error = aifae_BadFile;
+@@ -369,7 +369,7 @@
+ 	aifa->max_pcm = 0;
+ 	aifa->data_ofs = 0;
+ 	memset(&aifa->fmtHdr, 0, sizeof(aifa->fmtHdr));
+-	memset(aifa->prev_val, sizeof(aifa->prev_val), 0);
++	memset(aifa->prev_val, 0, sizeof(aifa->prev_val));
+ 
+ 	// read wave header
+ 	if (!aifa_readFileHeader (aifa, &fileHdr))
+@@ -635,7 +635,7 @@
+ 
+ 	// reset previous values for SDX2 on seek ops
+ 	// the delta will recover faster with reset
+-	memset(aifa->prev_val, sizeof(aifa->prev_val), 0);
++	memset(aifa->prev_val, 0, sizeof(aifa->prev_val));
+ 
+ 	return pcm_pos;
+ }

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>crypto@gentoo.org</email>
+		<name>Crypto</name>
+	</maintainer>
+	<longdescription>
+		GnuPG scd replacement that enables the use of PKCS#11 tokens.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">gnupg-pkcs11</remote-id>
+		<remote-id type="github">alonbl/gnupg-pkcs11-scd</remote-id>
+	</upstream>
+	<use>
+		<flag name="proxy">Build the gnupg-pkcs11-scd-prox</flag>
+	</use>
+</pkgmetadata>

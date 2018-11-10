@@ -1,0 +1,10 @@
+--- a/atom.sh
++++ b/atom.sh
+@@ -92,6 +92,7 @@
+   fi
+ 
+   ATOM_HOME="${ATOM_HOME:-$HOME/.atom}"
++  export PYTHON=python2
+   mkdir -p "$ATOM_HOME"
+ 
+   : ${TMPDIR:=/tmp}

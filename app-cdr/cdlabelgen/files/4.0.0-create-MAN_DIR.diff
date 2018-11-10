@@ -1,0 +1,18 @@
+diff -Naur cdlabelgen-4.0.0.orig/Makefile cdlabelgen-4.0.0/Makefile
+--- cdlabelgen-4.0.0.orig/Makefile	2007-12-16 16:17:22.000000000 +0100
++++ cdlabelgen-4.0.0/Makefile	2007-12-16 16:18:10.000000000 +0100
+@@ -45,13 +45,13 @@
+ 	@echo ""
+ 	$(INSTALL_DIR) $(BIN_DIR)
+ 	$(INSTALL) cdlabelgen $(BIN_DIR)
++	$(INSTALL_DIR) $(MAN_DIR)/man1
+ 	$(INSTALL_FILE) cdlabelgen.1 $(MAN_DIR)/man1
+ 	$(INSTALL_DIR) $(LIB_DIR)
+ 	set -e; \
+ 	for file in $(POSTSCRIPT); do \
+ 		$(INSTALL_FILE) postscript/$$file $(LIB_DIR)/; \
+ 	done
+-	@echo "** Done. Check $(BIN_DIR)/cdlabelgen and fix @where_is_the_template - if needed!"
+ 
+ cdlabelgen-$(VERSION).spec: spec.template
+ 	sed -e "s/TAG_VERSION/$(VERSION)/" < $? > $@

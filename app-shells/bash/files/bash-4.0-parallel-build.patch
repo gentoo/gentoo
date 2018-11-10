@@ -1,0 +1,65 @@
+http://bugs.gentoo.org/267613
+
+add missing dep
+
+patch by Peter Alfredsen
+
+--- bash-4.0/Makefile.in
++++ bash-4.0/Makefile.in
+@@ -1022,10 +1022,11 @@
+ subst.o: flags.h jobs.h siglist.h execute_cmd.h ${BASHINCDIR}/filecntl.h trap.h pathexp.h
+ subst.o: mailcheck.h input.h $(DEFSRC)/getopt.h $(DEFSRC)/common.h
+ subst.o: bashline.h bashhist.h ${GLOB_LIBSRC}/strmatch.h
+ subst.o: ${BASHINCDIR}/chartypes.h
+ subst.o: ${BASHINCDIR}/shmbutil.h
++subst.o: ${DEFDIR}/builtext.h
+ test.o: bashtypes.h ${BASHINCDIR}/posixstat.h ${BASHINCDIR}/filecntl.h
+ test.o: shell.h syntax.h config.h bashjmp.h ${BASHINCDIR}/posixjmp.h command.h ${BASHINCDIR}/stdc.h error.h
+ test.o: general.h xmalloc.h bashtypes.h variables.h arrayfunc.h conftypes.h array.h hashlib.h
+ test.o: quit.h ${BASHINCDIR}/maxpath.h unwind_prot.h dispose_cmd.h
+ test.o: make_cmd.h subst.h sig.h pathnames.h externs.h test.h
+
+http://bugs.gentoo.org/284633
+
+and another ...
+
+--- bash-4.0/lib/sh/Makefile.in
++++ bash-4.0/lib/sh/Makefile.in
+@@ -136,6 +136,9 @@
+ ${BUILD_DIR}/version.h: ${BUILD_DIR}/config.h ${BUILD_DIR}/Makefile Makefile
+ 	-( cd ${BUILD_DIR} && ${MAKE} ${MFLAGS} version.h )
+ 
++${BUILD_DIR}/pathnames.h: ${BUILD_DIR}/config.h ${BUILD_DIR}/Makefile Makefile
++	-( cd ${BUILD_DIR} && ${MAKE} ${MFLAGS} pathnames.h )
++
+ # rules for losing makes, like SunOS
+ casemod.o: casemod.c
+ clktck.o: clktck.c
+
+http://bugs.gentoo.org/300143
+
+and another ...
+
+--- bash-4.0/lib/glob/Makefile.in
++++ bash-4.0/lib/glob/Makefile.in
+@@ -119,6 +119,11 @@
+ mostlyclean: clean
+ 	-( cd doc && $(MAKE) $(MFLAGS) $@ )
+ 
++# Dependencies
++
++${BUILD_DIR}/pathnames.h: ${BUILD_DIR}/config.h ${BUILD_DIR}/Makefile Makefile
++	-( cd ${BUILD_DIR} && ${MAKE} ${MFLAGS} pathnames.h )
++
+ ######################################################################
+ #								     #
+ #  Dependencies for the object files which make up this library.     #
+@@ -136,7 +141,7 @@
+ strmatch.o: $(BUILD_DIR)/config.h
+ strmatch.o: $(BASHINCDIR)/stdc.h
+ 
+-glob.o: $(BUILD_DIR)/config.h
++glob.o: $(BUILD_DIR)/config.h $(topdir)/shell.h $(BUILD_DIR)/pathnames.h
+ glob.o: $(topdir)/bashtypes.h $(BASHINCDIR)/ansi_stdlib.h $(topdir)/bashansi.h
+ glob.o: $(BASHINCDIR)/posixstat.h $(BASHINCDIR)/memalloc.h
+ glob.o: strmatch.h glob.h

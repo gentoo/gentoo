@@ -1,0 +1,38 @@
+--- a/utempter.c
++++ b/utempter.c
+@@ -11,7 +11,9 @@
+ #include <sys/stat.h>
+ #include <sys/sysmacros.h>
+ #include <utmp.h>
++#ifndef __UCLIBC__
+ #include <utmpx.h>
++#endif
+ #include <unistd.h>
+ 
+ static void usage(void) {
+@@ -82,7 +84,11 @@
+ }
+ 
+ int main(int argc, const char ** argv) {
++#ifndef __UCLIBC__
+     struct utmpx utx;
++#else
++    struct utmp utx;
++#endif
+     int add;
+     const char * device, * host;
+     struct passwd * pw;
+@@ -154,8 +160,13 @@
+ 
+     gettimeofday(&utx.ut_tv, NULL);
+ 
++#ifndef __UCLIBC__
+     pututxline(&utx);
+     updwtmpx(_PATH_WTMP, &utx);
++#else
++    pututline(&utx);
++    updwtmp(_PATH_WTMP, &utx);
++#endif
+ 
+     return 0;
+ }

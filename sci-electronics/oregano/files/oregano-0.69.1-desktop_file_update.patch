@@ -1,0 +1,26 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## desktop.file.update.dpatch by Maximiliano Curia <maxy@debian.org>
+##
+## DP: Update categories and name of desktop file
+
+@DPATCH@
+diff -urNad oregano-0.69.1~/oregano.desktop oregano-0.69.1/oregano.desktop
+--- oregano-0.69.1~/oregano.desktop	2009-07-07 12:49:49.000000000 -0300
++++ oregano-0.69.1/oregano.desktop	2009-07-22 20:41:53.209525839 -0300
+@@ -1,8 +1,6 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+-Name=Oregano electrical engineering tool
+-Name[ca]=Eina d'enginyeria elèctrica Oregano
+-Name[es]=Oregano, herramienta para la ingeniería electrónica
++Name=Oregano
+ GenericName=Electrical engineering tool
+ GenericName[ca]=Eina d'enginyeria elèctrica
+ GenericName[es]=Herramienta para la ingeniería electrónica
+@@ -17,5 +15,5 @@
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;Science;Education;Physics;
++Categories=GNOME;GTK;Science;Education;Electronics;
+ MimeType=application/x-oregano;

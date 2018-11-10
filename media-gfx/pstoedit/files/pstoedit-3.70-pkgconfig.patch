@@ -1,0 +1,14 @@
+LIBPNG_LDFLAGS is never substituted...
+https://bugs.gentoo.org/show_bug.cgi?id=551208
+
+Index: pstoedit-3.70/config/pstoedit.pc.in
+===================================================================
+--- pstoedit-3.70.orig/config/pstoedit.pc.in
++++ pstoedit-3.70/config/pstoedit.pc.in
+@@ -7,5 +7,5 @@ Name: pstoedit
+ Description: converts PostScript(TM) and PDF files to other vector graphic formats
+ Version: @VERSION@.0
+ Requires: 
+-Libs: -L@libdir@ -lpstoedit @LIBPNG_LDFLAGS@ @CXX_STD_LIB@ @CXX_RUNTIME_LIB@ @LIBLD_LDFLAGS@
++Libs: -L@libdir@ -lpstoedit @CXX_STD_LIB@ @CXX_RUNTIME_LIB@ @LIBLD_LDFLAGS@
+ Cflags: -I@includedir@

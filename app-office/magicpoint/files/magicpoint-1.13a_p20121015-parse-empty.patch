@@ -1,0 +1,11 @@
+--- kit.orig/parse.c	2010-05-04 00:28:00.000000000 +0200
++++ kit/parse.c	2016-01-12 19:20:41.882222658 +0100
+@@ -1258,7 +1258,7 @@
+ 	 */
+     {
+ 	int textseen;
+-	int contseen;
++	int contseen = 0;
+ 	for (page = 1; page <= maxpage; page++) {
+ 		line = page_attribute[page].pg_linenum;
+ 		for (l = 0; l <= line; l++) {

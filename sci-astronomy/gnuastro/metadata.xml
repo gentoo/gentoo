@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    The GNU Astronomy Utilities (Gnuastro) is an official GNU package
+    consisting of various programs and library functions for the
+    manipulation and analysis of astronomical data. All the programs
+    share the same basic command-line user interface for the comfort
+    of both the users and developers. Gnuastro is written to comply
+    fully with the GNU coding standards so it integrates finely with
+    the GNU/Linux operating system. This also enables astronomers to
+    expect a fully familiar experience in the source code, building,
+    installing and command-line user interaction that they have seen
+    in all the other GNU software that they use.
+  </longdescription>
+</pkgmetadata>

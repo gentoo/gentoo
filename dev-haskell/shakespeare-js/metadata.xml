@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Shakespeare is a template family for type-safe, efficient templates with simple variable interpolation . Shakespeare templates can be used inline with a quasi-quoter or in an external file. Shakespeare interpolates variables according to the type being inserted.
+		In this case, the variable type needs a ToJavascript instance.
+
+		There is also shakespeare-coffeescript for coffeescript templates. Coffescript is a language that compiles down to javascript. It expects a coffeescript compiler in your path, and variable should be a ToCoffee instance.
+
+		Please see http://docs.yesodweb.com/book/templates for a more thorough description and examples
+
+		shakespeare-js was originally called julius, and shakespeare originated from the hamlet template package.
+	</longdescription>
+	<use>
+		<flag name="test_coffee">Test coffee.</flag>
+		<flag name="test_export">Test export.</flag>
+		<flag name="test_roy">Test roy.</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Filter</remote-id>
+    <remote-id type="cpan-module">Filter::Util::Call</remote-id>
+    <remote-id type="cpan-module">Filter::Util::Exec</remote-id>
+    <remote-id type="cpan-module">Filter::cpp</remote-id>
+    <remote-id type="cpan-module">Filter::decrypt</remote-id>
+    <remote-id type="cpan-module">Filter::exec</remote-id>
+    <remote-id type="cpan-module">Filter::sh</remote-id>
+    <remote-id type="cpan-module">Filter::tee</remote-id>
+  </upstream>
+</pkgmetadata>

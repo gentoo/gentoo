@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Test-Inline</remote-id>
+    <remote-id type="cpan-module">Test::Inline</remote-id>
+    <remote-id type="cpan-module">Test::Inline::Content</remote-id>
+    <remote-id type="cpan-module">Test::Inline::Content::Default</remote-id>
+    <remote-id type="cpan-module">Test::Inline::Content::Legacy</remote-id>
+    <remote-id type="cpan-module">Test::Inline::Content::Simple</remote-id>
+    <remote-id type="cpan-module">Test::Inline::Extract</remote-id>
+    <remote-id type="cpan-module">Test::Inline::IO::File</remote-id>
+    <remote-id type="cpan-module">Test::Inline::Script</remote-id>
+    <remote-id type="cpan-module">Test::Inline::Section</remote-id>
+    <remote-id type="cpan-module">Test::Inline::Util</remote-id>
+  </upstream>
+</pkgmetadata>

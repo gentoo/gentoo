@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Convert-Color</remote-id>
+    <remote-id type="cpan-module">Convert::Color</remote-id>
+    <remote-id type="cpan-module">Convert::Color::CMY</remote-id>
+    <remote-id type="cpan-module">Convert::Color::CMYK</remote-id>
+    <remote-id type="cpan-module">Convert::Color::HSL</remote-id>
+    <remote-id type="cpan-module">Convert::Color::HSV</remote-id>
+    <remote-id type="cpan-module">Convert::Color::RGB</remote-id>
+    <remote-id type="cpan-module">Convert::Color::RGB16</remote-id>
+    <remote-id type="cpan-module">Convert::Color::RGB8</remote-id>
+    <remote-id type="cpan-module">Convert::Color::VGA</remote-id>
+    <remote-id type="cpan-module">Convert::Color::X11</remote-id>
+  </upstream>
+</pkgmetadata>

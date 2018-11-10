@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<longdescription lang="en">
+		Script that should be run regularly on systems running software RAID (mdadm) to
+		perform "scrubbing" (https://en.wikipedia.org/wiki/Data_scrubbing#In_RAID)
+	</longdescription>
+	<upstream>
+		<remote-id type="github">fukawi2/raid-check</remote-id>
+	</upstream>
+</pkgmetadata>

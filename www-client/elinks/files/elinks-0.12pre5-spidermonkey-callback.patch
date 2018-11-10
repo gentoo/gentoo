@@ -1,0 +1,12 @@
+diff -Naurp elinks-0.12pre5-orig/src/ecmascript/spidermonkey.c elinks-0.12pre5/src/ecmascript/spidermonkey.c
+--- elinks-0.12pre5-orig/src/ecmascript/spidermonkey.c	2011-06-12 01:03:02.427000686 +0200
++++ elinks-0.12pre5/src/ecmascript/spidermonkey.c	2011-06-12 01:03:31.368000736 +0200
+@@ -130,7 +130,7 @@ setup_safeguard(struct ecmascript_interp
+                 JSContext *ctx)
+ {
+ 	interpreter->exec_start = time(NULL);
+-	JS_SetBranchCallback(ctx, safeguard);
++	JS_SetOperationCallback(ctx, safeguard);
+ }
+ 
+ 

@@ -1,0 +1,30 @@
+From 5d3455065f84fe1ef4673552a27d2e6e8f02c97a Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 22 Sep 2014 10:09:27 -0400
+Subject: [PATCH 1/1] Fix compilation with -Werror=format-security.
+
+The dslog() function takes an optional format string, analogous to
+e.g. printf(), and a list of arguments to be substituted into the
+format string. A call to dslog() in do_reload() omitted the format
+string causing GCC to throw a format-security warning. To silence the
+warning, a trivial format string of "%s" was provided.
+---
+ rbldnsd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rbldnsd.c b/rbldnsd.c
+index abf1d01..e791231 100644
+--- a/rbldnsd.c
++++ b/rbldnsd.c
+@@ -959,7 +959,7 @@ static int do_reload(int do_fork) {
+ # undef kb
+   }
+ #endif /* NO_MEMINFO */
+-  dslog(LOG_INFO, 0, ibuf);
++  dslog(LOG_INFO, 0, "%s", ibuf);
+ 
+   check_expires();
+ 
+-- 
+1.8.5.5
+

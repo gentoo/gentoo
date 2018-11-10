@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>tcltk@gentoo.org</email>
+		<name>Gentoo Tcltk Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		The "Img" package adds a lot of image formats to Tcl/Tk.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">tkimg</remote-id>
+	</upstream>
+</pkgmetadata>

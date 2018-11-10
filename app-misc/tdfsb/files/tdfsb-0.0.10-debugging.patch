@@ -1,0 +1,28 @@
+diff --git a/compile.sh b/compile.sh
+index 2480364..96e9bd2 100755
+--- a/compile.sh
++++ b/compile.sh
+@@ -23,18 +23,20 @@ echo "Using $SDL_CONFIG.";
+ ARGS1=$($SDL_CONFIG --libs);
+ ARGS2=$($SDL_CONFIG --cflags);
+ 
++set -x
++
+ if uname -s | grep -i -c "LINUX" > /dev/null; then 
+     echo "GNU/Linux detected.";
+     echo "compiling...";    
+-    gcc $ARGS2 -I/usr/local/include -I/usr/include/ -I/usr/X11R6/include -L/usr/lib/ -L/usr/local/lib/ -L/usr/X11R6/lib -D_THREAD_SAFE -O2 -x c -o tdfsb tdfsb.c $ARGS1 -lSDL_image -lGL -lGLU -lglut -lXmu -lXi -lXext -lX11 -lm -lsmpeg;
++    gcc $ARGS2 -I/usr/local/include -I/usr/include/ -I/usr/X11R6/include -L/usr/lib/ -L/usr/local/lib/ -L/usr/X11R6/lib -D_THREAD_SAFE -O2 -x c -o tdfsb tdfsb.c $ARGS1 -lSDL_image -lGL -lGLU -lglut -lXmu -lXi -lXext -lX11 -lm -lsmpeg || exit 1
+ elif uname -s | grep -i -c "BEOS" > /dev/null; then 
+     echo "BeOS detected.";
+     echo "compiling...";
+-    gcc $ARGS2 -I/boot/develop/tools/gnupro/include/ -I/boot/develop/headers/be/opengl/ -L/boot/home/config/lib -L/boot/develop/tools/gnupro/lib/ -D_THREAD_SAFE -O2 -x c -o tdfsb tdfsb.c $ARGS1 -lSDL_image -lGL -lglut -lsmpeg;
++    gcc $ARGS2 -I/boot/develop/tools/gnupro/include/ -I/boot/develop/headers/be/opengl/ -L/boot/home/config/lib -L/boot/develop/tools/gnupro/lib/ -D_THREAD_SAFE -O2 -x c -o tdfsb tdfsb.c $ARGS1 -lSDL_image -lGL -lglut -lsmpeg || exit 1
+ elif uname -s | grep -i -c "BSD" > /dev/null; then 
+     echo "BSD detected.";
+     echo "compiling...";
+-    gcc $ARGS2 -I/usr/local/include -I/usr/include/ -I/usr/X11R6/include -L/usr/lib/ -L/usr/local/lib/ -L/usr/X11R6/lib -D_THREAD_SAFE -O2 -x c -o tdfsb tdfsb.c $ARGS1 -lSDL_image -lGL -lGLU -lglut -lXmu -lXi -lXext -lX11 -lm -lsmpeg;
++    gcc $ARGS2 -I/usr/local/include -I/usr/include/ -I/usr/X11R6/include -L/usr/lib/ -L/usr/local/lib/ -L/usr/X11R6/lib -D_THREAD_SAFE -O2 -x c -o tdfsb tdfsb.c $ARGS1 -lSDL_image -lGL -lGLU -lglut -lXmu -lXi -lXext -lX11 -lm -lsmpeg || exit 1
+ else
+     echo "Unknown OS. If you are running Linux, BeOS or";
+     echo "FreeBSD please send me the output of 'uname -s'." 

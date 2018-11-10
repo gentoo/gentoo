@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-chemistry@gentoo.org</email>
+    <name>Gentoo Chemistry Project</name>
+  </maintainer>
+  <use>
+    <flag name="client-only">Install the viewer only, no applet files for httpd
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">jmol</remote-id>
+  </upstream>
+</pkgmetadata>

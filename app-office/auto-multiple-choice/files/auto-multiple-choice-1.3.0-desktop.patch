@@ -1,0 +1,10 @@
+--- a/auto-multiple-choice.desktop.in-old	2014-02-11 20:25:42.995456713 +0100
++++ b/auto-multiple-choice.desktop.in	2014-02-11 20:25:54.972456566 +0100
+@@ -10,5 +10,5 @@
+ GenericName[fr]=QCM automatique
+ Comment=Manage multiple choice questionnaires, with automatic marking from papers' scans
+ Comment[fr]=Conception et correction automatique de QCM en LaTeX
+-Keywords=multiple;choice;questionnaire;exam;grading;marking;MCQ;AMC
+-Keywords[fr]=questionnaire;choix;multiple;examen;correction;QCM;AMC
++Keywords=multiple;choice;questionnaire;exam;grading;marking;MCQ;AMC;
++Keywords[fr]=questionnaire;choix;multiple;examen;correction;QCM;AMC;

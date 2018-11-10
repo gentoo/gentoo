@@ -1,0 +1,282 @@
+#https://github.com/jayvdb/pyflakes/commit/3088ffbd6256521e0213b361bc2294c1e218e6fb
+diff --git a/pyflakes/api.py b/pyflakes/api.py  #index 3bc2330..2a46a0d 100644
+--- a/pyflakes/api.py
++++ b/pyflakes/api.py
+@@ -41,6 +41,18 @@ def check(codeString, filename, reporter=None):
+
+         (lineno, offset, text) = value.lineno, value.offset, value.text
+ 
++        if checker.PYPY:
++            if text is None:
++                lines = codeString.splitlines()
++                if len(lines) >= lineno:
++                    text = lines[lineno - 1]
++                    if sys.version_info >= (3, ) and isinstance(text, bytes):
++                        try:
++                            text = text.decode('ascii')
++                        except UnicodeDecodeError:
++                            text = None
++            offset -= 1
++
+         # If there's an encoding problem with the file, the text is None.
+         if text is None:
+             # Avoid using msg, since for the only known case, it contains a
+diff --git a/pyflakes/checker.py b/pyflakes/checker.py
+index 753fa9b..f538d3f 100644
+--- a/pyflakes/checker.py
++++ b/pyflakes/checker.py
+@@ -11,6 +11,12 @@
+ PY2 = sys.version_info < (3, 0)
+ PY32 = sys.version_info < (3, 3)    # Python 2.5 to 3.2
+ PY33 = sys.version_info < (3, 4)    # Python 2.5 to 3.3
++try:
++    sys.pypy_version_info
++    PYPY = True
++except AttributeError:
++    PYPY = False
++
+ builtin_vars = dir(__import__('__builtin__' if PY2 else 'builtins'))
+ 
+ try:
+@@ -594,8 +600,13 @@ def getDocstring(self, node):
+             node = node.value
+         if not isinstance(node, ast.Str):
+             return (None, None)
+-        # Computed incorrectly if the docstring has backslash
+-        doctest_lineno = node.lineno - node.s.count('\n') - 1
++
++        if PYPY:
++            doctest_lineno = node.lineno - 1
++        else:
++            # Computed incorrectly if the docstring has backslash
++            doctest_lineno = node.lineno - node.s.count('\n') - 1
++
+         return (node.s, doctest_lineno)
+ 
+     def handleNode(self, node, parent):
+@@ -642,6 +653,8 @@ def handleDoctests(self, node):
+                 tree = compile(example.source, "<doctest>", "exec", ast.PyCF_ONLY_AST)
+             except SyntaxError:
+                 e = sys.exc_info()[1]
++                if PYPY:
++                    e.offset += 1
+                 position = (node_lineno + example.lineno + e.lineno,
+                             example.indent + 4 + (e.offset or 0))
+                 self.report(messages.DoctestSyntaxError, node, position)
+diff --git a/pyflakes/test/test_api.py b/pyflakes/test/test_api.py
+index 34a59bc..d2a5036 100644
+--- a/pyflakes/test/test_api.py
++++ b/pyflakes/test/test_api.py
+@@ -23,6 +23,14 @@
+     from io import StringIO
+     unichr = chr
+ 
++try:
++    sys.pypy_version_info
++    PYPY = True
++except AttributeError:
++    PYPY = False
++
++ERROR_HAS_COL_NUM = ERROR_HAS_LAST_LINE = sys.version_info >= (3, 2) or PYPY
++
+ 
+ def withStderrTo(stderr, f, *args, **kwargs):
+     """
+@@ -312,18 +320,25 @@ def evaluate(source):
+             evaluate(source)
+         except SyntaxError:
+             e = sys.exc_info()[1]
+-            self.assertTrue(e.text.count('\n') > 1)
++            if not PYPY:
++                self.assertTrue(e.text.count('\n') > 1)
+         else:
+             self.fail()
+ 
+         sourcePath = self.makeTempFile(source)
++
++        if PYPY:
++            message = 'EOF while scanning triple-quoted string literal'
++        else:
++            message = 'invalid syntax'
++
+         self.assertHasErrors(
+             sourcePath,
+             ["""\
+-%s:8:11: invalid syntax
++%s:8:11: %s
+     '''quux'''
+           ^
+-""" % (sourcePath,)])
++""" % (sourcePath, message)])
+ 
+     def test_eofSyntaxError(self):
+         """
+@@ -331,13 +346,22 @@ def test_eofSyntaxError(self):
+         syntax error reflects the cause for the syntax error.
+         """
+         sourcePath = self.makeTempFile("def foo(")
+-        self.assertHasErrors(
+-            sourcePath,
+-            ["""\
++        if PYPY:
++            result = """\
++%s:1:7: parenthesis is never closed
++def foo(
++      ^
++""" % (sourcePath,)
++        else:
++            result = """\
+ %s:1:9: unexpected EOF while parsing
+ def foo(
+         ^
+-""" % (sourcePath,)])
++""" % (sourcePath,)
++
++        self.assertHasErrors(
++            sourcePath,
++            [result])
+ 
+     def test_eofSyntaxErrorWithTab(self):
+         """
+@@ -345,13 +369,16 @@ def test_eofSyntaxErrorWithTab(self):
+         syntax error reflects the cause for the syntax error.
+         """
+         sourcePath = self.makeTempFile("if True:\n\tfoo =")
++        column = 5 if PYPY else 7
++        last_line = '\t   ^' if PYPY else '\t     ^'
++
+         self.assertHasErrors(
+             sourcePath,
+             ["""\
+-%s:2:7: invalid syntax
++%s:2:%s: invalid syntax
+ \tfoo =
+-\t     ^
+-""" % (sourcePath,)])
++%s
++""" % (sourcePath, column, last_line)])
+ 
+     def test_nonDefaultFollowsDefaultSyntaxError(self):
+         """
+@@ -364,8 +391,8 @@ def foo(bar=baz, bax):
+     pass
+ """
+         sourcePath = self.makeTempFile(source)
+-        last_line = '       ^\n' if sys.version_info >= (3, 2) else ''
+-        column = '8:' if sys.version_info >= (3, 2) else ''
++        last_line = '       ^\n' if ERROR_HAS_LAST_LINE else ''
++        column = '8:' if ERROR_HAS_COL_NUM else ''
+         self.assertHasErrors(
+             sourcePath,
+             ["""\
+@@ -383,8 +410,8 @@ def test_nonKeywordAfterKeywordSyntaxError(self):
+ foo(bar=baz, bax)
+ """
+         sourcePath = self.makeTempFile(source)
+-        last_line = '            ^\n' if sys.version_info >= (3, 2) else ''
+-        column = '13:' if sys.version_info >= (3, 2) else ''
++        last_line = '            ^\n' if ERROR_HAS_LAST_LINE else ''
++        column = '13:' if ERROR_HAS_COL_NUM or PYPY else ''
+ 
+         if sys.version_info >= (3, 5):
+             message = 'positional argument follows keyword argument'
+@@ -407,8 +434,15 @@ def test_invalidEscape(self):
+         sourcePath = self.makeTempFile(r"foo = '\xyz'")
+         if ver < (3,):
+             decoding_error = "%s: problem decoding source\n" % (sourcePath,)
++        elif PYPY:
++            # pypy3 only
++            decoding_error = """\
++%s:1:6: %s: ('unicodeescape', b'\\\\xyz', 0, 2, 'truncated \\\\xXX escape')
++foo = '\\xyz'
++     ^
++""" % (sourcePath, 'UnicodeDecodeError')
+         else:
+-            last_line = '      ^\n' if ver >= (3, 2) else ''
++            last_line = '      ^\n' if ERROR_HAS_LAST_LINE else ''
+             # Column has been "fixed" since 3.2.4 and 3.3.1
+             col = 1 if ver >= (3, 3, 1) or ((3, 2, 4) <= ver < (3, 3)) else 2
+             decoding_error = """\
+@@ -474,8 +508,21 @@ def test_misencodedFileUTF8(self):
+ x = "%s"
+ """ % SNOWMAN).encode('utf-8')
+         sourcePath = self.makeTempFile(source)
++
++        if PYPY and sys.version_info < (3, ):
++            message = ('\'ascii\' codec can\'t decode byte 0xe2 '
++                       'in position 21: ordinal not in range(128)')
++            result = """\
++%s:0:0: %s
++x = "\xe2\x98\x83"
++        ^\n""" % (sourcePath, message)
++
++        else:
++            message = 'problem decoding source'
++            result = "%s: problem decoding source\n" % (sourcePath,)
++
+         self.assertHasErrors(
+-            sourcePath, ["%s: problem decoding source\n" % (sourcePath,)])
++            sourcePath, [result])
+ 
+     def test_misencodedFileUTF16(self):
+         """
+diff --git a/pyflakes/test/test_doctests.py b/pyflakes/test/test_doctests.py
+index f15acb8..6793da9 100644
+--- a/pyflakes/test/test_doctests.py
++++ b/pyflakes/test/test_doctests.py
+@@ -1,3 +1,4 @@
++import sys
+ import textwrap
+ 
+ from pyflakes import messages as m
+@@ -11,6 +12,12 @@
+ from pyflakes.test.test_undefined_names import Test as TestUndefinedNames
+ from pyflakes.test.harness import TestCase, skip
+ 
++try:
++    sys.pypy_version_info
++    PYPY = True
++except AttributeError:
++    PYPY = False
++
+ 
+ class _DoctestMixin(object):
+ 
+@@ -273,12 +280,22 @@ def doctest_stuff():
+         exc = exceptions[0]
+         self.assertEqual(exc.lineno, 4)
+         self.assertEqual(exc.col, 26)
++
++        # PyPy error column offset is 0,
++        # for the second and third line of the doctest
++        # i.e. at the beginning of the line
+         exc = exceptions[1]
+         self.assertEqual(exc.lineno, 5)
+-        self.assertEqual(exc.col, 16)
++        if PYPY:
++            self.assertEqual(exc.col, 13)
++        else:
++            self.assertEqual(exc.col, 16)
+         exc = exceptions[2]
+         self.assertEqual(exc.lineno, 6)
+-        self.assertEqual(exc.col, 18)
++        if PYPY:
++            self.assertEqual(exc.col, 13)
++        else:
++            self.assertEqual(exc.col, 18)
+ 
+     def test_indentationErrorInDoctest(self):
+         exc = self.flakes('''
+@@ -289,7 +306,10 @@ def doctest_stuff():
+             """
+         ''', m.DoctestSyntaxError).messages[0]
+         self.assertEqual(exc.lineno, 5)
+-        self.assertEqual(exc.col, 16)
++        if PYPY:
++            self.assertEqual(exc.col, 13)
++        else:
++            self.assertEqual(exc.col, 16)
+ 
+     def test_offsetWithMultiLineArgs(self):
+         (exc1, exc2) = self.flakes(
+

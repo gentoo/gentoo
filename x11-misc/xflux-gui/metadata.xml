@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The f.lux indicator applet fluxgui is an indicator applet to control xflux,
+		an application that makes the color of your computer's display adapt to
+		the time of day: warm at night, and like sunlight during the day.
+		Reducing blue light exposure in the evening can help you fall asleep at night.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/xflux-gui/fluxgui/issues</bugs-to>
+		<remote-id type="github">xflux-gui/fluxgui</remote-id>
+	</upstream>
+</pkgmetadata>

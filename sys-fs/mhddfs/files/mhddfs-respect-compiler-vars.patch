@@ -1,0 +1,66 @@
+--- Makefile.orig	2012-11-19 15:25:21.665692111 +0400
++++ Makefile	2012-11-19 15:27:08.406691288 +0400
+@@ -22,13 +22,13 @@
+ 
+ TARGET	=	mhddfs
+ 
+-CFLAGS	=	-Wall $(shell pkg-config fuse --cflags) \
++CFLAGS	+=	-Wall $(shell pkg-config fuse --cflags) \
+ 			-DFUSE_USE_VERSION=26 -MMD
+ ifdef WITHOUT_XATTR
+ CFLAGS	+=	-DWITHOUT_XATTR
+ endif
+ 
+-LDFLAGS	=	$(shell pkg-config fuse --libs)
++LIBS		=	$(shell pkg-config fuse --libs)
+ 
+ FORTAR	=	src COPYING LICENSE README Makefile \
+ 		README.ru.UTF-8 ChangeLog mhddfs.1 \
+@@ -64,14 +64,14 @@
+ 		$(shell rpm --eval '%_rpmdir')/*/mhddfs-*$(VERSION)-$(RELEASE)* .
+ 
+ $(TARGET): obj/obj-stamp $(OBJ)
+-	gcc $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) $(LIBS) -o $@
+ 
+ obj/obj-stamp:
+ 	mkdir -p obj
+ 	touch $@
+ 
+ obj/%.o: src/%.c
+-	gcc $(CFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) -c $< -o $@
+ 
+ clean:
+ 	rm -fr obj $(TARGET) pwrite_test statvfs rename
+@@ -79,7 +79,7 @@
+ 	rm -fr rename-test/mnt
+ 
+ rename: tests/rename.c
+-	gcc -o $@ $<
++	$(CC) -o $@ $<
+ 	
+ release_svn_thread:
+ 	@echo current version $(VERSION)
+@@ -94,10 +94,10 @@
+ 	screen -t vim vim Makefile src/*.[ch] README* ChangeLog mhddfs.1
+ 
+ pwrite_test: src/test/pwrite.c
+-	gcc -o $@ $<
++	$(CC) -o $@ $<
+ 
+ statvfs: src/test/statvfs.c
+-	gcc -o $@ $<
++	$(CC) -o $@ $<
+ 
+ images-mount: test1.img test2.img
+ 	mount|grep -q `pwd`/test1 || sudo mount -o loop test1.img test1
+@@ -141,7 +141,7 @@
+ 	while make test; do echo ok; echo; done
+ 
+ ptest:
+-	gcc -o $@ tests/plocks.c -l pthread
++	$(CC) -o $@ tests/plocks.c -l pthread
+ 	-./$@
+ 	rm -f $@
+ 

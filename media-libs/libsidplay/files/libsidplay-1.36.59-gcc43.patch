@@ -1,0 +1,38 @@
+--- a/src/sidtune.cpp
++++ b/src/sidtune.cpp
+@@ -306,11 +306,7 @@ udword sidTune::loadFile(const char* fileName, ubyte** bufferRef)
+         return 0;
+     }
+     // Open binary input file stream at end of file.
+-#if defined(SID_HAVE_IOS_BIN)
+-	ifstream myIn( fileName, ios::in|ios::bin|ios::ate );
+-#else
+ 	ifstream myIn( fileName, ios::in|ios::binary|ios::ate );
+-#endif
+ 	// As a replacement for !is_open(), bad() and the NOT-operator
+     // don't seem to work on all systems.
+ #if defined(SID_DONT_HAVE_IS_OPEN)
+@@ -972,11 +968,7 @@ bool sidTune::saveC64dataFile( const char* fileName, bool overWriteFlag )
+         }
+ 		// Open binary output file stream.
+         else
+-#if defined(SID_HAVE_IOS_BIN)
+-            fMyOut.open( fileName, ios::out|ios::bin|ios::trunc );
+-#else
+             fMyOut.open( fileName, ios::out|ios::binary|ios::trunc );
+-#endif
+ 		if ( !fMyOut )
+ 		{ 
+ 			info.statusString = text_cantCreateFile;
+@@ -1061,11 +1053,7 @@ bool sidTune::savePSIDfile( const char* fileName, bool overWriteFlag )
+         }
+ 		// Open binary output file stream.
+         else
+-#if defined(SID_HAVE_IOS_BIN)
+-            fMyOut.open( fileName, ios::out|ios::bin|ios::trunc );
+-#else
+             fMyOut.open( fileName, ios::out|ios::binary|ios::trunc );
+-#endif
+ 		if ( !fMyOut )
+ 		{
+ 			info.statusString = text_cantCreateFile;

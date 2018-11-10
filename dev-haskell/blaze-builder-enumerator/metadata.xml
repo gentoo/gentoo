@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package integrates the builders from the blaze-builder package with
+		the enumerator package. It provides infrastructure and enumeratees for
+		incrementally executing builders and pass the filled chunks to a bytestring
+		iteratee.
+	</longdescription>
+	<use>
+		<flag name="newbuilder">use bytestring-builder instead of blaze-builder-0.3</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">meiersi/blaze-builder-enumerator</remote-id>
+	</upstream>
+</pkgmetadata>

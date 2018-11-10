@@ -1,0 +1,92 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+HA_DIR=/etc/ha.d
+. $HA_DIR/shellfuncs
+
+depend() {
+	use logger
+	need net
+}
+
+opts="start stop status reload restart"
+
+CheckBool() {
+	case `echo "$1" | tr A-Z a-z` in
+		y|yes|enable|on|true|1)     true;;
+		*)                          false;;
+	esac
+}
+
+# Run pre-startup script if it exists
+RunStartStop() {
+	[ -f $HA_DIR/resource.d/startstop ] && $HA_DIR/resource.d/startstop  "$@"
+}
+
+start() {
+	checkpath -q -d -m 0755 -o root:root /var/run/heartbeat
+
+	ebegin "Starting heartbeat"
+
+	. $HA_DIR/shellfuncs
+
+	# start the log subsystem
+	CheckBool "`ha_parameter use_logd`" && \
+	 ( /usr/lib/heartbeat/ha_logd -s &>/dev/null || \
+           /usr/lib/heartbeat/ha_logd -d -c /etc/ha.d/ha_logd.cf)
+
+	RunStartStop pre-start
+
+	CheckBool "`ha_parameter crm`" || \
+		/usr/lib/heartbeat/ResourceManager verifyallidle
+
+	/usr/lib/heartbeat/heartbeat &>/dev/null
+	ret=$?
+
+	RunStartStop post-start
+
+	eend ${ret}
+}
+
+stop() {
+	ebegin "Stopping heartbeat"
+
+	RunStartStop pre-stop
+
+	/usr/lib/heartbeat/heartbeat -k &>/dev/null
+	ret=$?
+
+	RunStartStop post-stop ${ret}
+
+	# stop log subsystem
+	CheckBool "`ha_parameter use_logd`" && \
+	( /usr/lib/heartbeat/ha_logd -s &>/dev/null && \
+          /usr/lib/heartbeat/ha_logd -k &>/dev/null )
+
+	eend ${ret}
+}
+
+status() {
+	/usr/lib/heartbeat/heartbeat -s
+}
+
+reload() {
+	ebegin "Reloading heartbeat"
+	/usr/lib/heartbeat/heartbeat -r &>/dev/null
+	eend $?
+}
+
+restart() {
+	. $HA_DIR/shellfuncs
+
+	sleeptime=$(( `ha_parameter deadtime` + 10 ))
+
+	svc_stop
+
+	ebegin "  waiting ${sleeptime}s to allow resource takeover to complete"
+	sleep ${sleeptime}
+	eend 0
+
+	svc_start
+}

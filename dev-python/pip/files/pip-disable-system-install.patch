@@ -1,0 +1,29 @@
+From 847553da616edabede18c69ba640a32b719b45a8 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Tue, 27 Oct 2015 12:20:44 -0400
+Subject: [PATCH] install: Raise an error to avoid breaking python-exec
+
+Running pip without --target, --root, or --user will result in packages
+being installed systemwide. This has a tendency to break python-exec if
+setuptools gets installed or upgraded.
+---
+ pip/commands/install.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/pip/commands/install.py b/pip/commands/install.py
+index 46cd9f2..36b72f2 100644
+--- a/pip/commands/install.py
++++ b/pip/commands/install.py
+@@ -204,6 +204,9 @@ class InstallCommand(RequirementCommand):
+             )
+             options.ignore_installed = True
+ 
++        if not options.use_user_site and not options.target_dir and not options.root_path:
++            raise CommandError("(Gentoo) Please run pip with the --user option to avoid breaking python-exec")
++
+         if options.build_dir:
+             options.build_dir = os.path.abspath(options.build_dir)
+ 
+-- 
+2.6.2
+

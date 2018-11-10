@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+		Simple DirectMedia Layer is a cross-platform multimedia library
+		designed to provide low level access to audio, keyboard, mouse,
+		joystick, 3D hardware via OpenGL, and 2D video framebuffer. It is
+		used by MPEG playback software, emulators, and many popular games,
+		including the award winning Linux port of "Civilization: Call To
+		Power."
+
+		Simple DirectMedia Layer supports Linux, Windows, BeOS, MacOS
+		Classic, MacOS X, FreeBSD, OpenBSD, BSD/OS, Solaris, IRIX, and QNX.
+		There is also code, but no official support, for Windows CE,
+		AmigaOS, Dreamcast, Atari, NetBSD, AIX, OSF/Tru64, RISC OS, and
+		SymbianOS.
+
+		SDL is written in C, but works with C++ natively, and has bindings
+		to several other languages, including Ada, Eiffel, Java, Lua, ML,
+		Perl, PHP, Pike, Python, and Ruby.
+	</longdescription>
+	<use>
+		<flag name="gles">include OpenGL ES support</flag>
+		<flag name="haptic">Enable the haptic (force feedback) subsystem</flag>
+		<flag name="joystick">Control joystick support (disable at your own risk)</flag>
+		<flag name="kms">Build the KMSDRM video driver</flag>
+		<flag name="sound">Control audio support (disable at your own risk)</flag>
+		<flag name="tslib">Build with tslib support for touchscreen devices</flag>
+		<flag name="video">Control video support (disable at your own risk)</flag>
+		<flag name="vulkan">Enable Vulkan support</flag>
+	</use>
+</pkgmetadata>

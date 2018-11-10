@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-arch category contains tools for archiving, compressing and
+		uncompressing files or groups of files.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-arch enthält Werkzeuge für das Archivieren, Packen und
+		Entpacken von Dateien oder Gruppen von Dateien.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-arch contiene herramientas para archivar, comprimir
+		y descomprimir archivos ó grupos de archivos.
+	</longdescription>
+	<longdescription lang="ja">
+		app-archカテゴリにはファイルをアーカイブする、圧縮する、解凍する
+		ツールが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		The app-arch categorie bevat applicaties met betrekking tot het
+		archiveren en comprimeren van bestanden.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-arch chứa những công cụ để lưu trữ, nén và
+		giải nén các tập tin hoặc nhóm các tập tin.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-arch contiene strumenti di archiviazione, compressione e decompressione di file o gruppi di files.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-arch contém ferramentas para arquivar, comprimir
+		e descomprimir arquivos ou grupos de arquivos.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-arch zawiera narzędzia służące do archiwizowania,
+		kompresji i dekompresji zarówno pojedynczych plików jak i ich grup.
+	</longdescription>
+</catmetadata>
+

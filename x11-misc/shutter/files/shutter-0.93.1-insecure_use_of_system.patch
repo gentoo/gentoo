@@ -1,0 +1,19 @@
+Description: Fix insecure use of system()
+Author: Luke Faraone <lfaraone@debian.org>
+Bug: https://bugs.launchpad.net/shutter/+bug/1495163
+Debian-Bug: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=798862
+
+Index: shutter/share/shutter/resources/modules/Shutter/App/HelperFunctions.pm
+===================================================================
+--- shutter.orig/share/shutter/resources/modules/Shutter/App/HelperFunctions.pm	2015-11-05 21:34:34.222313258 -0500
++++ shutter/share/shutter/resources/modules/Shutter/App/HelperFunctions.pm	2015-11-05 21:35:37.299461116 -0500
+@@ -53,7 +53,8 @@
+ 
+ sub xdg_open {
+ 	my ( $self, $dialog, $link, $user_data ) = @_;
+-	system("xdg-open $link");
++	my @args = ("xdg-open", $link);
++	system(@args);
+ 	if($?){
+ 		my $response = $self->{_dialogs}->dlg_error_message( 
+ 			sprintf( $self->{_d}->get("Error while executing %s."), "'xdg-open'"),

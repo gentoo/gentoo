@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chainsaw@gentoo.org</email>
+		<name>Tony Vroon</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>ultrabug@gentoo.org</email>
+		<name>Alexys Jacob</name>
+	</maintainer>
+	<use>
+		<flag name="pax_kernel">Apply patch needed for hardened kernels</flag>
+	</use>
+</pkgmetadata>

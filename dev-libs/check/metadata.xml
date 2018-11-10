@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name="subunit">Enable support for the subunit unit test protocol</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">check</remote-id>
+		<remote-id type="github">libcheck/check</remote-id>
+	</upstream>
+</pkgmetadata>

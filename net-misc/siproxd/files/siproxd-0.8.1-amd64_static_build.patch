@@ -1,0 +1,26 @@
+--- siproxd-0.8.1/configure.in
++++ siproxd-0.8.1/configure.in
+@@ -361,8 +361,9 @@
+    dnl link statically to this lib
+    dnl (this probably only will work on linux yet...)
+    AC_MSG_CHECKING("where I can find libosip2.a")
+-   libosip_static=`find $extra_libs $libosip_prefix_dir/lib /lib \
+-                        /usr/lib /usr/local/lib \
++   libosip_static=`find $extra_libs $libosip_prefix_dir/lib64 \
++			$libosip_prefix_dir/lib /lib64 /lib /usr/lib64 \
++                        /usr/lib /usr/local/lib64 /usr/local/lib \
+                         -name libosip2.a 2>/dev/null|head -1`
+    if test "x$libosip_static" != "x"; then
+       LIBS="$libosip_static $LIBS"
+@@ -371,8 +372,9 @@
+       echo "*** ERROR: a static libosip library is required!";exit 1;
+    fi
+    AC_MSG_CHECKING("where I can find libosipparser2.a")
+-   libosip_static=`find $extra_libs $libosip_prefix_dir/lib /lib \
+-                        /usr/lib /usr/local/lib \
++   libosip_static=`find $extra_libs $libosip_prefix_dir/lib64 \
++			$libosip_prefix_dir/lib /lib64 /lib /usr/lib64 \
++                        /usr/lib /ur/local/lib64 /usr/local/lib \
+                         -name libosipparser2.a 2>/dev/null|head -1`
+    if test "x$libosip_static" != "x"; then
+       LIBS="$libosip_static $LIBS"

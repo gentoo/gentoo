@@ -1,0 +1,14 @@
+http://bugs.gentoo.org/383807
+http://tipc.git.sourceforge.net/git/gitweb.cgi?p=tipc/tipcutils;a=commit;h=44efb87cb453c16a31ceef27164b0f0394ae4433
+
+--- tipc-config.c
++++ tipc-config.c
+@@ -1150,7 +1150,7 @@ static void enable_bearer(char *args)
+ 			a, for_dest(), addr2str(domain), pri);
+ 
+ 		req_tlv.priority = htonl(pri);
+-		req_tlv.detect_scope = htonl(domain);
++		req_tlv.disc_domain = htonl(domain);
+ 		strncpy(req_tlv.name, a, TIPC_MAX_BEARER_NAME - 1);
+ 		req_tlv.name[TIPC_MAX_BEARER_NAME - 1] = '\0';
+ 

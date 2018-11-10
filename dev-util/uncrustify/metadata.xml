@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>grobian@gentoo.org</email>
+		<name>Fabian Groffen</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>alexxy@gentoo.org</email>
+		<name>Alexey Shvetosov</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">uncrustify</remote-id>
+		<remote-id type="github">uncrustify/uncrustify</remote-id>
+	</upstream>
+</pkgmetadata>

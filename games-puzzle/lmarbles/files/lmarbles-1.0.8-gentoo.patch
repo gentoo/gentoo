@@ -1,0 +1,15 @@
+diff -ru lmarbles-1.0.8.orig/Makefile.am lmarbles-1.0.8/Makefile.am
+--- lmarbles-1.0.8.orig/Makefile.am	2009-10-26 16:01:08.000000000 -0400
++++ lmarbles-1.0.8/Makefile.am	2009-11-07 13:23:55.994140203 -0500
+@@ -4,11 +4,6 @@
+ README-SDL.txt TODO LMarbles.prj lmarbles32.gif lmarbles48.gif \
+ lmarbles.desktop.in
+ 
+-desktopdir = $(datadir)/applications
+-desktop_DATA = lmarbles.desktop
+-icondir = $(datadir)/icons
+-icon_DATA = lmarbles48.gif
+-
+ AUTOMAKE_OPTIONS = foreign
+ 
+ WIN32_TEXT = AUTHORS COPYING ChangeLog INSTALL README README-SDL.txt TODO marbles.spec

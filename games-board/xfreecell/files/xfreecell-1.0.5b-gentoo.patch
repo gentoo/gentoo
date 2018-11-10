@@ -1,0 +1,349 @@
+diff -ru xfreecellg/card.cpp xfreecell/card.cpp
+--- xfreecellg/card.cpp	1999-03-27 05:36:28.000000000 -0800
++++ xfreecell/card.cpp	2004-02-25 02:17:24.000000000 -0800
+@@ -119,7 +119,7 @@
+     int oldy = y();
+     int newx = dest_x;
+     int newy = dest_y;
+-    int steps = max(abs(oldx - newx), abs(oldy - newy)) / Option::speedup();
++    int steps = std::max(abs(oldx - newx), abs(oldy - newy)) / Option::speedup();
+     float curx = (float) oldx;
+     float cury = (float) oldy;
+ 
+diff -ru xfreecellg/freecell.cpp xfreecell/freecell.cpp
+--- xfreecellg/freecell.cpp	1999-07-27 07:15:27.000000000 -0700
++++ xfreecell/freecell.cpp	2004-02-25 02:18:13.000000000 -0800
+@@ -64,7 +64,7 @@
+ static GameNumberManager* gnManager; 
+ static const int PathLength = 256;
+ static char msNumbersPath[PathLength] = "\0";;
+-static const char defaultMSNumbersPath[] = "/usr/local/lib/xfreecell/MSNumbers";
++static const char defaultMSNumbersPath[] = "/usr/share/games/xfreecell/MSNumbers";
+ 
+ // ##### Functions declarations #####
+ static void adjustSubwindow(NSWindow*);
+@@ -603,7 +603,7 @@
+ void readMSNumbersPath()
+ {
+   char* home = getenv("HOME");
+-  string saveFile;
++  std::string saveFile;
+ 
+   if (home == NULL) {
+     fprintf(stderr, "Cannot get $HOME. Assuming I am at home directory now.\n");
+diff -ru xfreecellg/gnmanager.cpp xfreecell/gnmanager.cpp
+--- xfreecellg/gnmanager.cpp	1999-07-27 07:18:05.000000000 -0700
++++ xfreecell/gnmanager.cpp	2004-02-25 02:17:24.000000000 -0800
+@@ -16,7 +16,7 @@
+ GameNumberManager::GameNumberManager()
+ {
+   char* home = getenv("HOME");
+-  string directory;
++  std::string directory;
+ 
+   if (home == NULL) {
+     fprintf(stderr, "Cannot get $HOME. Assuming I am at home directory now.\n");
+@@ -143,7 +143,7 @@
+   readFile(msLostGameFile, &msLostGames);
+ }
+ 
+-void GameNumberManager::readFile(const string& file, hash_set<int>* hs)
++void GameNumberManager::readFile(const std::string& file, hash_set<int>* hs)
+ {
+   FILE* fp = fopen(file.c_str(), "r");
+   char line[lineLength];
+@@ -169,7 +169,7 @@
+   writeFile(msLostGameFile, &msLostGames);
+ }
+ 
+-void GameNumberManager::writeFile(const string& file, hash_set<int>* hs)
++void GameNumberManager::writeFile(const std::string& file, hash_set<int>* hs)
+ {
+   FILE* fp = fopen(file.c_str(), "w+");
+ 
+diff -ru xfreecellg/gnmanager.h xfreecell/gnmanager.h
+--- xfreecellg/gnmanager.h	1999-03-29 05:07:19.000000000 -0800
++++ xfreecell/gnmanager.h	2004-02-25 02:17:24.000000000 -0800
+@@ -2,7 +2,13 @@
+ #define GNManager_H
+ 
+ #include <string>
++
++#if __GNUG__ < 3
+ #include <hash_set>
++#else
++#include <ext/hash_set>
++using __gnu_cxx::hash_set;
++#endif
+ 
+ class GameNumberManager {
+ public:
+@@ -20,15 +26,15 @@
+   bool alreadyLost(int);
+ 
+   void readFiles();
+-  void readFile(const string&, hash_set<int>*);
+-  void writeFile(const string&, hash_set<int>*);
++  void readFile(const std::string&, hash_set<int>*);
++  void writeFile(const std::string&, hash_set<int>*);
+ 
+-  string lostGameFile, wonGameFile;
++  std::string lostGameFile, wonGameFile;
+   
+   hash_set<int> wonGames;
+   hash_set<int> lostGames;
+ 
+-  string msLostGameFile, msWonGameFile;
++  std::string msLostGameFile, msWonGameFile;
+ 
+   hash_set<int> msWonGames;
+   hash_set<int> msLostGames;
+diff -ru xfreecellg/makefile xfreecell/makefile
+--- xfreecellg/makefile	1999-04-03 05:42:49.000000000 -0800
++++ xfreecell/makefile	2004-02-25 02:17:48.000000000 -0800
+@@ -1,16 +1,15 @@
+ OBJECTS=card.o freecell.o option.o stack.o subwindows.o undo.o util.o gnmanager.o random.o
+-CC=g++
+-CFLAGS=-g -Wall -DSHAPE -DBOGUSRANDOM
++CFLAGS=$(CXXFLAGS) -DSHAPE -DBOGUSRANDOM
+ LIBS=-lm -L. -lns -L/usr/X11R6/lib -lXext -lX11
+ STATICDIR=xfreecell-static
+ DOCS=README CHANGES mshuffle.txt xfreecell.6
+ LIBDIR=/usr/local/lib/xfreecell
+ 
+ all: $(OBJECTS) lib
+-	$(CC) -o xfreecell $(CFLAGS) $(OBJECTS) $(LIBS)
++	$(CXX) -o xfreecell $(LDFLAGS) $(OBJECTS) $(LIBS)
+ 
+ static: $(OBJECTS) lib
+-	$(CC) -o xfreecell -static $(CFLAGS) $(OBJECTS) $(LIBS)
++	$(CXX) -o xfreecell -static $(CFLAGS) $(OBJECTS) $(LIBS)
+ 
+ static-release: static
+ 	mkdir $(STATICDIR)
+@@ -21,17 +20,17 @@
+ 	rm -rf $(STATICDIR)
+ 
+ %.o: %.cpp
+-	$(CC) -c $(CFLAGS) $<
++	$(CXX) -c $(CFLAGS) $<
+ 
+ clean:
+ 	rm -f *~ *.o a.out xfreecell libns.a
+-	make -C widget clean
++	$(MAKE) -C widget clean
+ 
+ lib:
+-	make -C widget lib
++	$(MAKE) -C widget lib
+ 
+ install: all
+-	install xfreecell $(DESTDIR)/usr/local/bin
+-	install xfreecell.6 $(DESTDIR)/usr/local/man/man6
++	install xfreecell $(DESTDIR)/usr/bin
++	install xfreecell.6 $(DESTDIR)/usr/share/man/man6
+ #	install -d $(LIBDIR)
+-#	install ms-compatible/MSNumbers $(DESTDIR)/usr/local/lib/xfreecell
+\ No newline at end of file
++#	install ms-compatible/MSNumbers $(DESTDIR)/usr/share/xfreecell
+diff -ru xfreecellg/option.h xfreecell/option.h
+--- xfreecellg/option.h	1999-03-27 11:39:17.000000000 -0800
++++ xfreecell/option.h	2004-02-25 02:17:24.000000000 -0800
+@@ -22,7 +22,7 @@
+   void readPrefs();
+   void writePrefs();
+ 
+-  string saveFile;
++  std::string saveFile;
+ 
+   static int _speedup;
+   static bool _queryWindow;
+diff -ru xfreecellg/stack.h xfreecell/stack.h
+--- xfreecellg/stack.h	1999-03-02 10:20:02.000000000 -0800
++++ xfreecell/stack.h	2004-02-25 02:17:24.000000000 -0800
+@@ -28,7 +28,7 @@
+   int _next_x, _next_y;
+ 
+ private:
+-  vector<Card*> _cards;
++  std::vector<Card*> _cards;
+ };
+ 
+ class PlayStack : public Stack {
+diff -ru xfreecellg/subwindows.h xfreecell/subwindows.h
+--- xfreecellg/subwindows.h	1999-03-15 15:09:49.000000000 -0800
++++ xfreecell/subwindows.h	2004-02-25 02:17:24.000000000 -0800
+@@ -76,7 +76,7 @@
+   int _undos;
+   int _totalScore;
+ 
+-  string saveFile;
++  std::string saveFile;
+ 
+   bool exitPressed;
+ 
+diff -ru xfreecellg/undo.cpp xfreecell/undo.cpp
+--- xfreecellg/undo.cpp	1999-03-25 07:48:40.000000000 -0800
++++ xfreecell/undo.cpp	2004-02-25 02:17:24.000000000 -0800
+@@ -22,7 +22,7 @@
+   c->moveToStack(from, false, false);
+ }
+ 
+-stack<Move> moves;
++std::stack<Move> moves;
+ 
+ void undoClearMoves()
+ {
+diff -ru xfreecellg/widget/container.cpp xfreecell/widget/container.cpp
+--- xfreecellg/widget/container.cpp	1999-03-03 09:34:52.000000000 -0800
++++ xfreecell/widget/container.cpp	2004-02-25 02:17:24.000000000 -0800
+@@ -61,18 +61,18 @@
+ 
+ void NSContainer::remove(NSComponent* nsc)
+ {
+-  vector<NSComponent*>::iterator iter;
++  std::vector<NSComponent*>::iterator iter;
+   for (iter = nscVec.begin(); iter != nscVec.end(); iter++) 
+     if (*iter == nsc) nscVec.erase(iter);
+ }
+ 
+ void NSContainer::hremove(NSComponent* nsc)
+ {
+-  vector<NSComponent*>::iterator iter;
++  std::vector<NSComponent*>::iterator iter;
+   for (iter = nscVec.begin(); iter != nscVec.end(); iter++) {
+     if (*iter == nsc) {
+       int w = (*iter)->width() + _neighborGap;
+-      vector<NSComponent*>::iterator iter2 = iter + 1;
++      std::vector<NSComponent*>::iterator iter2 = iter + 1;
+       if (nscVec.size() == 0) {
+ 	_width = 0; _height = 0;
+       } else {
+@@ -87,11 +87,11 @@
+ 
+ void NSContainer::vremove(NSComponent* nsc)
+ {
+-  vector<NSComponent*>::iterator iter;
++  std::vector<NSComponent*>::iterator iter;
+   for (iter = nscVec.begin(); iter != nscVec.end(); iter++) {
+     if (*iter == nsc) {
+       int h = (*iter)->height() + _neighborGap;
+-      vector<NSComponent*>::iterator iter2 = iter + 1;
++      std::vector<NSComponent*>::iterator iter2 = iter + 1;
+       if (nscVec.size() == 0) {
+ 	_width = 0; _height = 0;
+       } else {
+diff -ru xfreecellg/widget/makefile xfreecell/widget/makefile
+--- xfreecellg/widget/makefile	1999-03-17 21:54:57.000000000 -0800
++++ xfreecell/widget/makefile	2004-02-25 02:17:59.000000000 -0800
+@@ -1,15 +1,13 @@
+ OBJECTS=window.o plate.o string.o button.o label.o textfield.o container.o frame.o util.o scrollbar.o font.o main.o
+-#C=/usr/local/gcc-2.8.1/bin/g++
+-CC=g++
+-CFLAGS=-g -Wall
++CFLAGS=$(CXXFLAGS) -Wall
+ LIBS=-L/usr/X11R6/lib -lX11
+ LIBNAME=libns.a
+ 
+ all: test.o $(OBJECTS)
+-	$(CC) $(CFLAGS) test.o $(OBJECTS) $(LIBS)
++	$(CXX) $(CFLAGS) test.o $(OBJECTS) $(LIBS)
+ 
+ %.o: %.cpp
+-	$(CC) $(CFLAGS) -c $<
++	$(CXX) $(CFLAGS) -c $<
+ 
+ clean:
+ 	rm -f *.o *~ a.out .nfs* dummy
+diff -ru xfreecellg/widget/textfield.cpp xfreecell/widget/textfield.cpp
+--- xfreecellg/widget/textfield.cpp	1999-03-03 09:34:52.000000000 -0800
++++ xfreecell/widget/textfield.cpp	2004-02-25 02:17:24.000000000 -0800
+@@ -1,3 +1,4 @@
++#include <cctype>
+ #include "widget.h"
+ 
+ GC NSTextField::gc;
+diff -ru xfreecellg/widget/widget.h xfreecell/widget/widget.h
+--- xfreecellg/widget/widget.h	1999-03-15 08:29:32.000000000 -0800
++++ xfreecell/widget/widget.h	2004-02-25 02:17:24.000000000 -0800
+@@ -114,7 +114,7 @@
+     Elt(NSWindow* nw, Window w) { nswindow = nw; window = w; }
+   };
+ 
+-  static vector<Elt> eltVector;
++  static std::vector<Elt> eltVector;
+   static void eraseWindow(Window);
+   static void registerWindow(NSWindow*, Window);
+ };
+@@ -171,7 +171,7 @@
+   void fontWindowHeight(unsigned int);
+   void resizable(bool arg) { _resizable = arg; }
+ 
+-  string _label;
++  std::string _label;
+ private:
+   static const int fontGap = 4;
+   static XFontStruct* fontStruct;
+@@ -272,7 +272,7 @@
+   static unsigned int charWidth, charHeight;
+ 
+   unsigned int maxCharNum;
+-  string _str;
++  std::string _str;
+   unsigned int cursorPos;
+   unsigned int strStart;
+   bool cursorOnTF;
+@@ -327,7 +327,7 @@
+   unsigned int _vGap, _hGap, _neighborGap;
+   Window _parentWindow;
+ 
+-  vector<NSComponent*> nscVec;
++  std::vector<NSComponent*> nscVec;
+ };
+ 
+ // ##### NSHContainer #####
+diff -ru xfreecellg/widget/window.cpp xfreecell/widget/window.cpp
+--- xfreecellg/widget/window.cpp	1999-03-03 09:34:52.000000000 -0800
++++ xfreecell/widget/window.cpp	2004-02-25 02:17:24.000000000 -0800
+@@ -2,7 +2,7 @@
+ 
+ bool NSWindow::windowInitialized = false;
+ Window NSWindow::_root;
+-vector<NSWindow::Elt> NSWindow::eltVector;
++std::vector<NSWindow::Elt> NSWindow::eltVector;
+ 
+ NSWindow::NSWindow(bool create, Window w, int x, int y, unsigned int width, unsigned int height, 
+ 		   unsigned int borderWidth, unsigned long border, unsigned long bg)
+@@ -86,8 +86,8 @@
+ 
+ void NSWindow::registerWindow(NSWindow* nsw, Window w)
+ {
+-  vector<Elt>::iterator begin = eltVector.begin();
+-  vector<Elt>::iterator end = eltVector.end();
++  std::vector<Elt>::iterator begin = eltVector.begin();
++  std::vector<Elt>::iterator end = eltVector.end();
+   Elt elt(nsw, w);
+ 
+   if (eltVector.size() == 0 || w > eltVector.back().window) {
+@@ -95,7 +95,7 @@
+     return;
+   }
+ 
+-  for (vector<Elt>::iterator iter = begin; iter != end; iter++)
++  for (std::vector<Elt>::iterator iter = begin; iter != end; iter++)
+     if ((*iter).window > w)
+       eltVector.insert(iter, elt);
+   
+@@ -104,9 +104,9 @@
+ 
+ void NSWindow::eraseWindow(Window w)
+ {
+-  vector<Elt>::iterator begin = eltVector.begin();
+-  vector<Elt>::iterator end = eltVector.end();
+-  vector<Elt>::iterator iter;
++  std::vector<Elt>::iterator begin = eltVector.begin();
++  std::vector<Elt>::iterator end = eltVector.end();
++  std::vector<Elt>::iterator iter;
+ 
+   for (iter = begin; iter != end; iter++) {
+     if ((*iter).window == w) eltVector.erase(iter);

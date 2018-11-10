@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [[ "$1" = "install" ]]; then
+	chgrp -R dspam "${VHOST_CGIBINDIR}"
+	chown dspam "${VHOST_CGIBINDIR}" "${VHOST_CGIBINDIR}"/*.cgi
+	chmod -R ugo+r "${VHOST_CGIBINDIR}"
+	chmod 0755 "${VHOST_CGIBINDIR}"
+	chmod ugo+rx "${VHOST_CGIBINDIR}"/*.cgi
+fi

@@ -1,0 +1,19 @@
+--- glob2-0.9.4.4.orig/SConstruct
++++ glob2-0.9.4.4/SConstruct
+@@ -110,6 +110,16 @@
+             print "Could not find libz or zlib1.dll"
+             missing.append("zlib")
+ 
++    boost_system = ''
++    if conf.CheckLib("boost_system"):
++        boost_system="boost_system"
++    elif conf.CheckLib("boost_system-mt"):
++        boost_system="boost_system-mt"
++    else:
++        print "Could not find libboost_system or libboost_system-mt"
++        missing.append("libboost_system")
++    env.Append(LIBS=[boost_system])
++
+     boost_thread = ''
+     if conf.CheckLib("boost_thread") and conf.CheckCXXHeader("boost/thread/thread.hpp"):
+         boost_thread="boost_thread"

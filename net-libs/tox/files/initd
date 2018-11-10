@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+
+PIDDIR=/run/tox-bootstrapd
+PIDFILE="${PIDDIR}"/tox-bootstrap.pid
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting tox-dht-bootstrap daemon"
+
+	checkpath -d -q -o "${TOX_USER}":"${TOX_GROUP}" "${PIDDIR}"
+
+	start-stop-daemon --start \
+		--pidfile "${PIDFILE}" \
+		--user="${TOX_USER}" --group="${TOX_GROUP}" \
+		--exec /usr/bin/tox-bootstrapd -- --config /etc/tox-bootstrapd.conf
+
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping tox-dht-bootstrap daemon"
+
+	start-stop-daemon --stop \
+		--pidfile "${PIDFILE}"
+
+	eend $?
+}

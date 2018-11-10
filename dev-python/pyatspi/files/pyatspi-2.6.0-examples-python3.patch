@@ -1,0 +1,26 @@
+From 4f10a696002179082e41568b5109400ac8478a96 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Mon, 10 Dec 2012 04:52:03 -0500
+Subject: [PATCH] examples: support python2 and python3 syntax
+
+https://bugzilla.gnome.org/show_bug.cgi?id=689957
+---
+ examples/magFocusTracker.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/examples/magFocusTracker.py b/examples/magFocusTracker.py
+index 47efe00..7ca3b67 100755
+--- a/examples/magFocusTracker.py
++++ b/examples/magFocusTracker.py
+@@ -282,7 +282,7 @@ def main():
+             startTracking()
+         pyatspi.Registry.start()
+     else:
+-        print 'Magnification service not available. Exiting.'
++        print('Magnification service not available. Exiting.')
+ 
+     return 0
+ 
+-- 
+1.8.0
+

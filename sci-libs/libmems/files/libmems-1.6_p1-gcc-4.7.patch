@@ -1,0 +1,71 @@
+ libMems/CompactGappedAlignment.h | 36 ++++++++++++++++++------------------
+ 1 file changed, 18 insertions(+), 18 deletions(-)
+
+diff --git a/libMems/CompactGappedAlignment.h b/libMems/CompactGappedAlignment.h
+index bf78477..942d4aa 100644
+--- a/libMems/CompactGappedAlignment.h
++++ b/libMems/CompactGappedAlignment.h
+@@ -13,7 +13,7 @@
+ #include "config.h"
+ #endif
+ 
+-#include "libGenome/gnDebug.h"
++#include "libGenome/gnDebug.h"
+ #include "libGenome/gnFilter.h"
+ #include "libGenome/gnSequence.h"
+ #include "libMems/SparseAbstractMatch.h"
+@@ -103,15 +103,15 @@ public:
+ 	/** Eliminates any columns that contain only gap characters */
+ 	void CondenseGapColumns();
+ 
+-	void swap( CompactGappedAlignment& other ){ swap(&other); }
+-
+-protected:
+-	// for use by derived classes in order to swap contents
+-	void swap( CompactGappedAlignment* other ){
+-		std::swap( align_matrix, other->align_matrix );
+-		std::swap( bcount, other->bcount );
+-		BaseType::swap( other );
+-	}
++	void swap( CompactGappedAlignment& other ){ swap(&other); }
++
++protected:
++	// for use by derived classes in order to swap contents
++	void swap( CompactGappedAlignment* other ){
++		std::swap( align_matrix, other->align_matrix );
++		std::swap( bcount, other->bcount );
++		BaseType::swap( other );
++	}
+ 
+ 	std::vector< bitset_t > align_matrix;		/**< aligned positions have true values, gaps are false */
+ 	std::vector< std::vector< size_t > > bcount;
+@@ -572,7 +572,7 @@ void CompactGappedAlignment<BaseType>::CropEnd(gnSeqI crop_amount){
+ 			this->SetStart(i, 0);
+ 		}
+ 	}
+-	SetAlignmentLength( this->AlignmentLength() - crop_amount );
++	this->SetAlignmentLength( this->AlignmentLength() - crop_amount );
+ 	this->create_bitcount();
+ 	if( !this->validate() )
+ 		std::cerr << "CropEnd error\n";
+@@ -806,13 +806,13 @@ void CompactGappedAlignment<BaseType>::CondenseGapColumns()
+ 
+ }
+ 
+-namespace std {
+-template<> inline
+-void swap( mems::CompactGappedAlignment<>& a, mems::CompactGappedAlignment<>& b )
+-{
+-	a.swap(b);
+-}
+-}
++namespace std {
++template<> inline
++void swap( mems::CompactGappedAlignment<>& a, mems::CompactGappedAlignment<>& b )
++{
++	a.swap(b);
++}
++}
+ 
+ 
+ #endif // __CompactGappedAlignment_h__

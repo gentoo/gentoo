@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-pda category contains software for working with personal digital
+		assistants or hand-held computers.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-pda enthält Programme für das Arbeiten mit PDAs und
+		Handheld-Computern.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-pda contiene programas para trabajar con asistentes
+		personales ó computadores hand-held.
+	</longdescription>
+	<longdescription lang="ja">
+		app-pdaカテゴリにはパーソナルデジタルアシスタントと使うソフトウェアが
+		含まれます。
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-pda chứa các ứgn dụng làm việc với các thiết
+		bị PDA hoặc hand-held.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-pda contiene programmi per lavorare con PDA e hand-held pc.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-pda contém programas para trabalhar com assistentes
+		pessoais ou computadores hand-held.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-pda zawiera programy służące do współpracy z urządzeniami PDA.
+	</longdescription>
+</catmetadata>
+

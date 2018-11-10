@@ -1,0 +1,17 @@
+--- splay-0.9.5.2/apps/splay.cc
++++ splay-0.9.5.2/apps/splay.cc
+@@ -184,9 +184,11 @@
+ 	delete mytag;
+ 	
+       }
+-      catch(ID3_Error &err){
+-	cout << err.GetErrorFile() << " (" << err.GetErrorLine() << "): "
+-	     << err.GetErrorType() << ": " << err.GetErrorDesc() << endl;
++//      catch(ID3_Error &err){
++      catch(...){
++	cout << "Error found (GetError functions disabled)" << endl;
++//	cout << err.GetErrorFile() << " (" << err.GetErrorLine() << "): "
++//	     << err.GetErrorType() << ": " << err.GetErrorDesc() << endl;
+       }
+ #endif /* HAVE_LIBID3 */        
+     }

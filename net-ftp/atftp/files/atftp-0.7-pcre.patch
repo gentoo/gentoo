@@ -1,0 +1,14 @@
+--- atftp-0.7/tftpd_pcre.c~	2005-10-17 23:14:52.000000000 +0200
++++ atftp-0.7/tftpd_pcre.c	2005-10-17 23:14:52.000000000 +0200
+@@ -211,9 +211,9 @@
+                chp++; /* point to value indicating substring */
+                rc = pcre_get_substring(str, ovector, matches, *chp - 0x30, &tmpstr);
+                /* found string */
+-               if (rc > 0)
++               if (rc > 0 && outchp - outstr + rc+1 < outsize)
+                {
+-                    Strncpy(outchp, tmpstr, rc);
++                    Strncpy(outchp, tmpstr, rc+1);
+                     outchp += rc;
+                     pcre_free_substring(tmpstr);
+                     continue;

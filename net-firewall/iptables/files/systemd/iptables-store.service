@@ -1,0 +1,11 @@
+[Unit]
+Description=Store iptables firewall rules
+Before=shutdown.target
+DefaultDependencies=No
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "/sbin/iptables-save --counters > /var/lib/iptables/rules-save"
+
+[Install]
+WantedBy=shutdown.target

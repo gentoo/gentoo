@@ -1,0 +1,17 @@
+ m4/glpk-check.m4         |    2 +-
+ src/groebner/Makefile.am |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/groebner/Makefile.am b/src/groebner/Makefile.am
+index 992c4ae..ba2f463 100644
+--- a/src/groebner/Makefile.am
++++ b/src/groebner/Makefile.am
+@@ -269,7 +269,7 @@ lib4ti2int64_la_SOURCES = $(lib4ti2sources)
+ # Arbitrary precision flags.
+ # 4ti2 uses GMP (GLPL), an arbitrary precision arithmetic library.
+ if HAVE_GMP_WITH_CXX
+-4ti2gmp_LDADD = lib4ti2gmp.la
++4ti2gmp_LDADD = lib4ti2gmp.la -lgmp
+ 4ti2gmp_CPPFLAGS = -D_4ti2_GMP_ $(GMP_CFLAGS)
+ 4ti2gmp_SOURCES = $(4ti2sources)
+ lib4ti2gmp_la_CPPFLAGS = -D_4ti2_GMP_

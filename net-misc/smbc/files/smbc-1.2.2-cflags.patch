@@ -1,0 +1,13 @@
+Do not define CFLAGS
+
+--- a/src/Makefile.am	2005-06-29 14:14:02.000000000 +0200
++++ b/src/Makefile.am	2009-04-28 18:18:26.000000000 +0200
+@@ -18,7 +18,7 @@
+               smb-ext.c smb-ext.h
+ 
+ smbc_CFLAGS = -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wall
+-CFLAGS = -O3
++#CFLAGS = -O3
+ 
+ if GDB
+   smbc_CFLAGS += -ggdb -g

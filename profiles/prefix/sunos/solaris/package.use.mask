@@ -1,0 +1,27 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+
+# Fabian Groffen <grobian@gentoo.org> (06 Apr 2016)
+# dev-libs/re2 needs love, bug #563932
+app-misc/sphinx re2
+
+# Fabian Groffen <grobian@gentoo.org> (26 May 2015)
+# Avoid pulling in broken and unnecessary ossp-uuid, bug #324527
+dev-db/postgresql uuid
+
+# Fabian Groffen <grobian@gentoo.org> (08 Dec 2011)
+# Unmask libssp, Solaris' libc doesn't have stack protection symbols
+sys-devel/gcc -libssp
+
+# Fabian Groffen <grobian@gentoo.org> (05 Sep 2011)
+# gir tries to link c++ code using gcc and obviously fails
+app-text/poppler introspection
+
+# Fabian Groffen <grobian@gentoo.org> (24 Apr 2011)
+# kms seems linux only, bug #319285
+x11-libs/libdrm libkms
+
+# Jeremy Olexa <darkside@gentoo.org> (03 Dec 2008)
+# Fails to compile on Solaris, bug #245659
+media-gfx/inkscape lcms

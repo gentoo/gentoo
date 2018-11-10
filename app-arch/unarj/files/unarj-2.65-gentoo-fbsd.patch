@@ -1,0 +1,9 @@
+--- a/environ.c
++++ b/environ.c
+@@ -437,7 +437,6 @@
+ #endif
+ 
+ extern struct tm *localtime();
+-extern time_t time();
+ extern char   *strcpy();
+ extern voidp  *malloc();

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This ingredient adds the ability to run tests by first filtering the test tree
+		based on the result of a previous test run. For example, you can use this to
+		run only those tests that failed in the last run, or to run only tests that
+		have been added since tests were last ran.
+		
+		This ingredient is specifically an ingredient *transformer* - given a list of
+		'Tasty.Ingredient's, 'rerunningTests' adds the ability for all of these
+		ingredients to run against a filtered test tree. This transformer can be
+		applied as follows:
+		
+		&gt; import Test.Tasty
+		&gt; import Test.Tasty.Runners
+		&gt;
+		&gt; main :: IO ()
+		&gt; main =
+		&gt;   defaultMainWithIngredients
+		&gt;     [ rerunningTests [ listingTests, consoleTestReporter ] ]
+		&gt;     tests
+		&gt;
+		&gt; tests :: TestTree
+		&gt; tests = undefined
+		
+		This ingredient adds three command line parameters:
+		
+		[@--rerun-update@] If specified the results of this test run will be saved to
+		the log file at @--rerun-log-file@. If the ingredient does not execute tests
+		(for example, @--list-tests@ is used) then the log file will not be
+		updated. This option is not enabled by default.  This option does not require
+		a value.
+		
+		[@--rerun-log-file@] The path to the log file to read previous test
+		information from, and where to write new information to (if @--rerun-update@
+		is specified). This option defaults to @.tasty-rerun-log@.
+		
+		[@--rerun-filter@] Which filters to apply to the 'Tasty.TestTree' based on
+		previous test runs. The value of this option is a comma separated list of the
+		following options:
+		
+		* @failures@: Only run tests that failed on the previous run.
+		
+		* @exceptions@: Only run tests that threw an exception on the previous run.
+		
+		* @new@: Only run tests that are new since the previous test run.
+		
+		* @successful@: Only run tests that were successful in the previous run.
+		
+		Multiple options can be combined and will be taken under disjunction - so
+		@--rerun-filter=failures,exceptions@ will run only tests that failed *or*
+		threw an exception on the last run.
+		
+		Defaults to all filters, which means all tests will be ran.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ocharles/tasty-rerun</remote-id>
+	</upstream>
+</pkgmetadata>

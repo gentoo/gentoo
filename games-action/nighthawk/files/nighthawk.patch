@@ -1,0 +1,46 @@
+diff -c -3 -r nighthawk-2.2/src/nighthawk.cc nighthawk.orig/src/nighthawk.cc
+*** nighthawk-2.2/src/nighthawk.cc	Sun May 23 01:10:59 1999
+--- nighthawk.orig/src/nighthawk.cc	Fri Jul 12 04:18:38 2002
+***************
+*** 20,25 ****
+--- 20,26 ----
+  #include <string.h>
+  #include <signal.h>
+  #include <pwd.h>
++ #include <time.h>
+  #include <sys/types.h>
+  #include <sys/file.h>
+  #include <sys/stat.h>
+diff -c -3 -r nighthawk-2.2/src_sound/Make.common nighthawk.orig/src_sound/Make.common
+*** nighthawk-2.2/src_sound/Make.common	Sat May  1 18:04:08 1999
+--- nighthawk.orig/src_sound/Make.common	Fri Jul 12 04:23:51 2002
+***************
+*** 10,16 ****
+    endif
+  endif
+  
+! HOST_SAFE = 0
+  
+  ifeq ($(HOSTTYPE),i386)
+    HOST_SAFE = 1
+--- 10,16 ----
+    endif
+  endif
+  
+! HOST_SAFE = 1
+  
+  ifeq ($(HOSTTYPE),i386)
+    HOST_SAFE = 1
+*** nighthawk-2.2/src/object.cc	Mon Sep 30 21:54:56 2002
+--- nighthawk-orig/src/object.cc	Mon Sep 30 21:55:05 2002
+***************
+*** 32,37 ****
+--- 32,39 ----
+  #include "tdroid_8xx.h"
+  #include "tdroid_9xx.h"
+  
++ #include <string.h>
++ 
+  /***************************************************************************
+  *
+  ***************************************************************************/

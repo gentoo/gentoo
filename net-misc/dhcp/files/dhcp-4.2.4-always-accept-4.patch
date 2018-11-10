@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/437108
+
+always accept the -4 option even if we don't have IPv6 support enabled.
+the relay code does this already.
+
+--- a/client/dhclient.c
++++ b/client/dhclient.c
+@@ -170,8 +170,8 @@ main(int argc, char **argv) {
+ 		if (!strcmp(argv[i], "-r")) {
+ 			release_mode = 1;
+ 			no_daemon = 1;
+-#ifdef DHCPv6
+ 		} else if (!strcmp(argv[i], "-4")) {
++#ifdef DHCPv6
+ 			if (local_family_set && local_family != AF_INET)
+ 				log_fatal("Client can only do v4 or v6, not "
+ 					  "both.");
+--- a/server/dhcpd.c
++++ b/server/dhcpd.c
+@@ -373,8 +373,8 @@ main(int argc, char **argv) {
+ 		} else if (!strcmp (argv [i], "-q")) {
+ 			quiet = 1;
+ 			quiet_interface_discovery = 1;
+-#ifdef DHCPv6
+ 		} else if (!strcmp(argv[i], "-4")) {
++#ifdef DHCPv6
+ 			if (local_family_set && (local_family != AF_INET)) {
+ 				log_fatal("Server cannot run in both IPv4 and "
+ 					  "IPv6 mode at the same time.");

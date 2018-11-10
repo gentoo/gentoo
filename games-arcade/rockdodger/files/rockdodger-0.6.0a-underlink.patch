@@ -1,0 +1,11 @@
+--- Makefile.old	2011-06-20 21:25:56.788323912 +0200
++++ Makefile	2011-06-20 21:26:11.970287694 +0200
+@@ -27,7 +27,7 @@
+ #SOUNDLIBRARIES=
+ SOUNDLIBRARIES=-lSDL_mixer
+ 
+-LIBRARIES=`sdl-config --libs` -lSDL_image $(SOUNDLIBRARIES)
++LIBRARIES=`sdl-config --libs` -lSDL_image $(SOUNDLIBRARIES) -lm
+ 
+ all:	$(EXENAME)
+ 

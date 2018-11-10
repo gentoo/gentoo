@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+PIDFILE=/run/dmeventd.pid
+BIN=/sbin/dmeventd
+
+depend() {
+	# As of .67-r1, we call ALL lvm start/stop scripts with --sysinit, that
+	# means dmeventd is NOT notified, as it cannot be safely running
+	after lvm device-mapper
+}
+
+start() {
+	ebegin "Starting dmeventd"
+	start-stop-daemon --start --exec $BIN --pidfile $PIDFILE
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping dmeventd"
+	start-stop-daemon --stop --exec $BIN --pidfile $PIDFILE
+	eend $?
+}
+

@@ -1,0 +1,16 @@
+ configure.in |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index 3110c70..5850231 100755
+--- a/configure.in
++++ b/configure.in
+@@ -74,7 +74,7 @@ AC_SUBST(RHREL)
+ 
+ # get G++ version
+ if test "$GXX" = "yes"; then
+-  GXXVER=`${CXX} -v 2>&1 | grep version | cut -d " " -f 3 -`
++  GXXVER=`${CXX} -v 2>&1 | grep " version " | cut -d " " -f 3 -`
+   GXXVER="gcc${GXXVER}"
+ else
+   GXXVER=""

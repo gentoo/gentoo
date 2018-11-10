@@ -1,0 +1,46 @@
+From 33e0d4c8e450fe69b195422c0880aaa96ca9478d Mon Sep 17 00:00:00 2001
+From: Matthias Maier <tamiko@kyomu.43-1.org>
+Date: Wed, 19 Nov 2014 18:00:06 +0100
+Subject: [PATCH] change systemd service files to gentoo naming scheme
+
+---
+ scheduler/Makefile                  | 10 +++++-----
+ scheduler/org.cups.cupsd.path.in    |  2 +-
+ scheduler/org.cups.cupsd.service.in |  2 +-
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/scheduler/Makefile b/scheduler/Makefile
+index 3e0884a..b354420 100644
+--- a/scheduler/Makefile
++++ b/scheduler/Makefile
+@@ -203,11 +203,11 @@ install-data:
+ 	if test "x$(SYSTEMD_DIR)" != x; then \
+ 		echo Installing systemd configuration files...; \
+ 		$(INSTALL_DIR) $(BUILDROOT)$(SYSTEMD_DIR); \
+-		$(INSTALL_DATA) org.cups.cupsd.path $(BUILDROOT)$(SYSTEMD_DIR); \
+-		$(INSTALL_DATA) org.cups.cupsd.service $(BUILDROOT)$(SYSTEMD_DIR); \
+-		$(INSTALL_DATA) org.cups.cupsd.socket $(BUILDROOT)$(SYSTEMD_DIR); \
+-		$(INSTALL_DATA) org.cups.cups-lpdAT.service $(BUILDROOT)$(SYSTEMD_DIR)/org.cups.cups-lpd@.service; \
+-		$(INSTALL_DATA) org.cups.cups-lpd.socket $(BUILDROOT)$(SYSTEMD_DIR); \
++		$(INSTALL_DATA) org.cups.cupsd.path $(BUILDROOT)$(SYSTEMD_DIR)/cups.path; \
++		$(INSTALL_DATA) org.cups.cupsd.service $(BUILDROOT)$(SYSTEMD_DIR)/cups.service; \
++		$(INSTALL_DATA) org.cups.cupsd.socket $(BUILDROOT)$(SYSTEMD_DIR)/cups.socket; \
++		$(INSTALL_DATA) org.cups.cups-lpdAT.service $(BUILDROOT)$(SYSTEMD_DIR)/cups-lpd@.service; \
++		$(INSTALL_DATA) org.cups.cups-lpd.socket $(BUILDROOT)$(SYSTEMD_DIR)/cups-lpd.socket; \
+ 	elif test "x$(XINETD)" != x; then \
+ 		echo Installing xinetd configuration file for cups-lpd...; \
+ 		$(INSTALL_DIR) -m 755 $(BUILDROOT)$(XINETD); \
+diff --git a/scheduler/org.cups.cupsd.service.in b/scheduler/org.cups.cupsd.service.in
+index 0a27c76..7a04248 100644
+--- a/scheduler/org.cups.cupsd.service.in
++++ b/scheduler/org.cups.cupsd.service.in
+@@ -7,5 +7,5 @@ ExecStart=@sbindir@/cupsd -l
+ Type=simple
+ 
+ [Install]
+-Also=org.cups.cupsd.socket org.cups.cupsd.path
++Also=cups.socket cups.path
+ WantedBy=printer.target
+-- 
+2.0.4
+

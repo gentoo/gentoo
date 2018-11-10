@@ -1,0 +1,23 @@
+--- a/usr/sbin/start_pms	2017-03-01 13:35:28.340489280 -0500
++++ b/usr/sbin/start_pms	2017-03-01 13:36:05.574540305 -0500
+@@ -8,16 +8,20 @@
+ export PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="${HOME}/Library/Application Support"
+ if [ -f /etc/default/locale ]; then
+   export LANG="`cat /etc/default/locale|awk -F '=' '/LANG=/{print $2}'|sed 's/"//g'`"
+   export LC_ALL="$LANG"
+ fi
+ 
+ test -f /etc/default/plexmediaserver && . /etc/default/plexmediaserver
+ 
++# Activate python virtualenv
++. "${PLEX_MEDIA_SERVER_HOME}"/Resources/Python/bin/activate
++
++
+ if [ ! -d "$PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR" ]
+ then
+   mkdir -p "$PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR"
+   if [ ! $? -eq 0 ]
+   then
+     echo "WARNING COULDN'T CREATE $PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR, MAKE SURE I HAVE PERMISSON TO DO THAT!"
+     exit 1
+   fi

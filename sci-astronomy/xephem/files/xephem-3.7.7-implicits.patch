@@ -1,0 +1,12 @@
+sunmenu.c:920:3: warning: implicit declaration of function ‘strptime’
+
+--- a/GUI/xephem/sunmenu.c
++++ b/GUI/xephem/sunmenu.c
+@@ -1,6 +1,7 @@
+ /* code to manage the sun display 
+  */
+ 
++#define _XOPEN_SOURCE /* See feature_test_macros(7) */
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <errno.h>

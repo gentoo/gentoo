@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription>
+    clBLAS is the code for the OpenCL BLAS portion of clMath. The
+    complete set of BLAS level 1, 2 and 3 routines is implemented. See
+    Netlib BLAS for the list of supported routines. In addition to GPU
+    devices, the library also supports running on CPU devices to
+    facilitate debugging and multicore programming.
+  </longdescription>
+  <use>
+    <flag name="client">
+      Build a command line clBLAS client program.
+    </flag>
+    <flag name="ktest">
+      A command line tool for testing single clBLAS kernel.
+    </flag>
+    <flag name="performance">
+      Copy performance scripts that can measure and graph performance.
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">clMathLibraries/clBLAS</remote-id>
+  </upstream>
+</pkgmetadata>

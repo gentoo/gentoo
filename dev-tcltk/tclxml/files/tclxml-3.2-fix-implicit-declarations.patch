@@ -1,0 +1,12 @@
+diff -urpN tclxml-3.2.orig/tclxml.c tclxml-3.2/tclxml.c
+--- tclxml-3.2.orig/tclxml.c	2009-06-08 12:56:10.000000000 +0200
++++ tclxml-3.2/tclxml.c	2009-06-08 12:57:24.000000000 +0200
+@@ -20,6 +20,8 @@
+ #include <tclxslt/tclxslt.h>
+ #include <string.h>
+ 
++int Tcldom_libxml2_Init ( Tcl_Interp *interp );
++
+ #define TCL_DOES_STUBS \
+     (TCL_MAJOR_VERSION > 8 || TCL_MAJOR_VERSION == 8 && (TCL_MINOR_VERSION > 1 || \
+     (TCL_MINOR_VERSION == 1 && TCL_RELEASE_LEVEL == TCL_FINAL_RELEASE)))

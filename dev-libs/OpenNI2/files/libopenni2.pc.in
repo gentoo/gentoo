@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/@libdir@
+includedir=${prefix}/include/openni2
+
+Name: OpenNI2
+Description: A general purpose driver for all OpenNI cameras.
+Version: @version@
+Cflags: -I${includedir}
+Libs: -L${libdir} -lOpenNI2 -L${libdir}/OpenNI2/Drivers -lDummyDevice -lOniFile -lPS1080

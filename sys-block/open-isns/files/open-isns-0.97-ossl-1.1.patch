@@ -1,0 +1,47 @@
+From 70b11a0f9c4056dc6891c2d5550c28993905f18a Mon Sep 17 00:00:00 2001
+From: eroen <open-isns@occam.eroen.eu>
+Date: Mon, 2 Jan 2017 23:15:08 +0100
+Subject: [PATCH] Disable deprecated initializations for openssl-1.1.0
+
+This fixes several undefined reference errors when linking with
+openssl-1.1.0c.
+
+X-Gentoo-Bug: 604454
+X-Gentoo-Bug-URL: https://bugs.gentoo.org/show_bug.cgi?id=604454
+---
+ pki.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/pki.c b/pki.c
+index f69ddca..5fdf9f2 100644
+--- a/pki.c
++++ b/pki.c
+@@ -67,7 +67,9 @@ void BN_GENCB_free(BN_GENCB *cb)
+ #endif
+ 
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+ static int	isns_openssl_init = 0;
++#endif
+ 
+ static int	isns_dsasig_verify(isns_security_t *ctx,
+ 				isns_principal_t *peer,
+@@ -92,6 +94,7 @@ isns_create_dsa_context(void)
+ {
+ 	isns_security_t	*ctx;
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	if (!isns_openssl_init) {
+ 		ERR_load_crypto_strings();
+ 		OpenSSL_add_all_algorithms();
+@@ -99,6 +102,7 @@ isns_create_dsa_context(void)
+ 		OpenSSL_add_all_digests();
+ 		isns_openssl_init = 1;
+ 	}
++#endif
+ 
+ 	ctx = isns_calloc(1, sizeof(*ctx));
+ 
+-- 
+2.11.0
+

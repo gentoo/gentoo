@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/580214
+https://sourceforge.net/p/scsirastools/bugs/16/
+
+--- a/src/sgcommon.c
++++ b/src/sgcommon.c
+@@ -62,6 +62,7 @@
+   -------------------------------------------------------------------------*/
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+--- a/src/sgsubmon.c
++++ b/src/sgsubmon.c
+@@ -34,6 +34,7 @@
+  *---------------------------------------------------------------------------*/
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <stdlib.h>

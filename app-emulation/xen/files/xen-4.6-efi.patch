@@ -1,0 +1,36 @@
+diff --git a/xen/Makefile b/xen/Makefile
+index 4c54e9b..a5cdccd 100644
+--- a/xen/Makefile
++++ b/xen/Makefile
+@@ -41,9 +41,15 @@ _install: Z=$(CONFIG_XEN_INSTALL_SUFFIX)
+ _install: $(TARGET)$(CONFIG_XEN_INSTALL_SUFFIX)
+ 	[ -d $(D)$(BOOT_DIR) ] || $(INSTALL_DIR) $(D)$(BOOT_DIR)
+ 	$(INSTALL_DATA) $(TARGET)$(Z) $(D)$(BOOT_DIR)/$(T)-$(XEN_FULLVERSION)$(Z)
+-	ln -f -s $(T)-$(XEN_FULLVERSION)$(Z) $(D)$(BOOT_DIR)/$(T)-$(XEN_VERSION).$(XEN_SUBVERSION)$(Z)
+-	ln -f -s $(T)-$(XEN_FULLVERSION)$(Z) $(D)$(BOOT_DIR)/$(T)-$(XEN_VERSION)$(Z)
+-	ln -f -s $(T)-$(XEN_FULLVERSION)$(Z) $(D)$(BOOT_DIR)/$(T)$(Z)
++	if [ 'x$(EFI_VENDOR)' == 'x' ]; then \
++		ln -f -s $(T)-$(XEN_FULLVERSION)$(Z) $(D)$(BOOT_DIR)/$(T)-$(XEN_VERSION).$(XEN_SUBVERSION)$(Z); \
++		ln -f -s $(T)-$(XEN_FULLVERSION)$(Z) $(D)$(BOOT_DIR)/$(T)-$(XEN_VERSION)$(Z); \
++		ln -f -s $(T)-$(XEN_FULLVERSION)$(Z) $(D)$(BOOT_DIR)/$(T)$(Z); \
++	else \
++		$(INSTALL_DATA) $(TARGET)$(Z) $(D)$(BOOT_DIR)/$(T)-$(XEN_VERSION).$(XEN_SUBVERSION)$(Z); \
++		$(INSTALL_DATA) $(TARGET)$(Z) $(D)$(BOOT_DIR)/$(T)-$(XEN_VERSION)$(Z); \
++		$(INSTALL_DATA) $(TARGET)$(Z) $(D)$(BOOT_DIR)/$(T)$(Z); \
++	fi;
+ 	[ -d "$(D)$(DEBUG_DIR)" ] || $(INSTALL_DIR) $(D)$(DEBUG_DIR)
+ 	$(INSTALL_DATA) $(TARGET)-syms $(D)$(DEBUG_DIR)/$(T)-syms-$(XEN_FULLVERSION)
+ 	if [ -r $(TARGET).efi -a -n '$(EFI_DIR)' ]; then \
+diff --git a/xen/arch/x86/Makefile b/xen/arch/x86/Makefile
+index 5f24951..4ec0ee2 100644
+--- a/xen/arch/x86/Makefile
++++ b/xen/arch/x86/Makefile
+@@ -116,7 +116,7 @@ $(TARGET)-syms: prelink.o xen.lds $(BASEDIR)/common/symbols-dummy.o
+ 	    $(@D)/.$(@F).1.o -o $@
+ 	rm -f $(@D)/.$(@F).[0-9]*
+ 
+-EFI_LDFLAGS = $(patsubst -m%,-mi386pep,$(LDFLAGS)) --subsystem=10
++EFI_LDFLAGS = -mi386pep $(patsubst -m%,-mi386pep,$(LDFLAGS)) --subsystem=10
+ EFI_LDFLAGS += --image-base=$(1) --stack=0,0 --heap=0,0 --strip-debug
+ EFI_LDFLAGS += --section-alignment=0x200000 --file-alignment=0x20
+ EFI_LDFLAGS += --major-image-version=$(XEN_VERSION)

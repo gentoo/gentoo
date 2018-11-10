@@ -1,0 +1,14 @@
+curses_wchar is set to true/false, so trying to assign it to the compiler
+flags variable makes no sense.  it's already been set up the right value
+at this point, so delete the assignment.
+
+--- a/macros/curses.m4
++++ b/macros/curses.m4
+@@ -130,7 +130,6 @@ AC_DEFUN([AC_CHECK_CURSES],[
+ 		else
+ 			AC_DEFINE(CURSES_WCHAR)
+ 			CURSES_WCHAR=true
+-			CURSES_FLAGS=$curses_wchar
+ 			AC_SUBST(CURSES_FLAGS)
+ 		fi
+ 

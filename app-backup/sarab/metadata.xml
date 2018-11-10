@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>rich0@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+SaraB works with DAR (Disk ARchive) to schedule backups.  SaraB provides a
+powerful, automated rotation schedule which allows administrators to create a
+custom rotation that fits the needs of their network.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">sarab</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>rafaelmartins@gentoo.org</email>
+    <name>Rafael G. Martins</name>
+  </maintainer>
+  <longdescription lang="en">
+    The AccountManagerPlugin offers several features for managing user accounts:
+
+    * allow users to register new accounts
+    * login via an HTML form instead of using HTTP authentication
+    * allow existing users to change their passwords or delete their accounts 
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">TracAccountManager</remote-id>
+  </upstream>
+</pkgmetadata>

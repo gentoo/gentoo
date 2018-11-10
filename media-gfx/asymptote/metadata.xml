@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>grozin@gentoo.org</email>
+		<name>Andrey Grozin</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Asymptote is a powerful descriptive vector graphics language that
+		provides a natural coordinate-based framework for technical drawing.
+		Labels and equations are typeset with LaTeX, for high-quality PostScript
+		output.
+
+		A major advantage of Asymptote over other graphics packages is that it
+		is a programming language, as opposed to just a graphics program.
+	</longdescription>
+	<use>
+		<flag name="boehm-gc">Enables using the Boehm-Demers-Weiser conservative garbage collector</flag>
+		<flag name="sigsegv">Enables using <pkg>dev-libs/libsigsegv</pkg></flag>
+		<flag name="offscreen">Enables off-screen rendering</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">asymptote</remote-id>
+	</upstream>
+</pkgmetadata>

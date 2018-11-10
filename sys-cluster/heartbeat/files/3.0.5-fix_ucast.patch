@@ -1,0 +1,145 @@
+
+# HG changeset patch
+# User Lars Ellenberg <lars@linbit.com>
+# Date 1392200751 -3600
+# Node ID 37f57a36a2dd1abf8461a9b758e62f6fe7a22f77
+# Parent  6d4324633600dc7ae7aa08c56d86c2fcc767977f
+Medium: fix usage of SO_REUSEPORT in ucast sockets
+
+Linux learned SO_REUSEPORT only with kernel 3.9,
+but some linux headers already define SO_REUSEPORT.
+Which, on older kernels, will result in ENOPROTOOPT,
+"Protocol not available".
+
+Failure to set SO_REUSEPORT is NOT critical in general.
+It *may* be a problem on certain BSDs,
+with more than two nodes, all using ucast.
+
+Refusing to start because of failure to set SO_REUSEPORT is
+not helpful for the vast majority of the clusters out there.
+
+While at it, downgrade "critical" log messages to warnings
+in non-fatal situations.
+
+--- a/lib/plugins/HBcomm/ucast.c
++++ b/lib/plugins/HBcomm/ucast.c
+@@ -461,12 +461,6 @@ static int HB_make_send_sock(struct hb_m
+ 	int sockfd;
+ 	struct ip_private *ei;
+ 	int tos;
+-#if defined(SO_BINDTODEVICE)
+-	struct ifreq i;
+-#endif
+-#if defined(SO_REUSEPORT)
+-	int i = 1;
+-#endif
+ 
+ 	UCASTASSERT(mp);
+ 	ei = (struct ip_private*)mp->pd;
+@@ -494,6 +488,7 @@ static int HB_make_send_sock(struct hb_m
+ 
+ #if defined(SO_BINDTODEVICE)
+ 	{
++		struct ifreq i;
+ 		/*
+ 		 *  We want to send out this particular interface
+ 		 *
+@@ -515,12 +510,13 @@ static int HB_make_send_sock(struct hb_m
+ #endif
+ #if defined(SO_REUSEPORT)
+ 	{
++		int one = 1;
+ 		/* this is for OpenBSD to allow multiple *
+ 		*  ucast connections, e.g. a more than   *
+ 		*  two node cluster 			 */
+ 
+ 		if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEPORT,
+-				&i, sizeof(i)) == -1) {
++				&one, sizeof(one)) == -1) {
+ 			PILCallLog(LOG, PIL_CRIT,
+ 			  "ucast: error setting option SO_REUSEPORT(w): %s", strerror(errno));
+ 			close(sockfd);
+@@ -548,7 +544,7 @@ static int HB_make_receive_sock(struct h
+ 	int sockfd;
+ 	int bindtries;
+ 	int boundyet = 0;
+-	int j;
++	int one = 1;
+ 
+ 	UCASTASSERT(mp);
+ 	ei = (struct ip_private*)mp->pd;
+@@ -563,22 +559,19 @@ static int HB_make_receive_sock(struct h
+ 			strerror(errno));
+ 		return -1;
+ 	}
+-	/* 
+- 	 * Set SO_REUSEADDR on the server socket s. Variable j is used
+- 	 * as a scratch varable.
+- 	 *
+- 	 * 16th February 2000
+- 	 * Added by Horms <horms@vergenet.net>
+- 	 * with thanks to Clinton Work <work@scripty.com>
+- 	 */
+-	j = 1;
++	/*
++	 * Set SO_REUSEADDR on the server socket s.
++	 * Below, also try to set SO_REUSEPORT,
++	 * if known and supported.
++	 */
+ 	if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR,
+-			(void *)&j, sizeof j) < 0) {
++			&one, sizeof(one)) < 0) {
+ 		/* Ignore it.  It will almost always be OK anyway. */
+-		PILCallLog(LOG, PIL_CRIT,
++		PILCallLog(LOG, PIL_WARN,
+ 			"ucast: error setting socket option SO_REUSEADDR: %s",
+ 			strerror(errno));
+-	}        
++	} else
++		PILCallLog(LOG, PIL_INFO, "ucast: set SO_REUSEADDR");
+ #if defined(SO_BINDTODEVICE)
+ 	{
+ 		/*
+@@ -600,20 +593,32 @@ static int HB_make_receive_sock(struct h
+ 	}
+ #endif
+ #if defined(SO_REUSEPORT)
+-	{
++	/*
++	 *  Needed for OpenBSD for more than two nodes in a ucast cluster
++	 */
++	if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEPORT,
++			&one, sizeof(one)) == -1) {
+ 		/*
+-		 *  Needed for OpenBSD for more than two nodes in a ucast cluster
++		 * Linux learned SO_REUSEPORT only with kernel 3.9,
++		 * but some linux headers already define SO_REUSEPORT.
++		 * Which will result in ENOPROTOOPT, "Protocol not available"
++		 * on older kernels.
++		 * Failure to set SO_REUSEPORT is NOT critical in general.
++		 * It *may* be a problem on certain BSDs with more than
++		 * two nodes all using ucast.
++		 * Refusing to start because of failure to set SO_REUSEPORT is
++		 * not helpful for the vast majority of the clusters out there.
+ 		 */
+-		int i = 1;
+-		if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEPORT,
+-				&i, sizeof(i)) == -1) {
++		if (errno == ENOPROTOOPT) {
++			PILCallLog(LOG, PIL_WARN,
++			  "ucast: error setting option SO_REUSEPORT: %s", strerror(errno));
++		} else {
+ 			PILCallLog(LOG, PIL_CRIT,
+-			  "ucast: error setting option SO_REUSEPORT(r) %s", strerror(errno));
+-			close(sockfd);
++			  "ucast: error setting option SO_REUSEPORT: %s", strerror(errno));
+ 			return -1;
+ 		}
+-		PILCallLog(LOG, PIL_INFO, "ucast: set SO_REUSEPORT(w)");
+-	}
++	} else
++		PILCallLog(LOG, PIL_INFO, "ucast: set SO_REUSEPORT");
+ #endif
+ 
+ 	/* Try binding a few times before giving up */
+

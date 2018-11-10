@@ -1,0 +1,24 @@
+Index: libmpeg3-1.8/audio/ac3.c
+===================================================================
+--- libmpeg3-1.8.orig/audio/ac3.c
++++ libmpeg3-1.8/audio/ac3.c
+@@ -6,6 +6,7 @@
+ #include "mpeg3protos.h"
+ 
+ #include <string.h>
++#include <stdlib.h>
+ 
+ 
+ mpeg3_ac3_t* mpeg3_new_ac3()
+Index: libmpeg3-1.8/audio/layer3.c
+===================================================================
+--- libmpeg3-1.8.orig/audio/layer3.c
++++ libmpeg3-1.8/audio/layer3.c
+@@ -5,6 +5,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ struct gr_info_s 
+ {

@@ -1,0 +1,37 @@
+--- a/build.xml
++++ b/build.xml
+@@ -433,7 +433,6 @@
+         <jar jarfile="build/private/xmlbeans-${version.base}${version.rc}-sources.jar" index="false">
+             <fileset dir="src/common" includes="**/*.java"/>
+             <fileset dir="src/configschema" includes="**/*.java"/>
+-            <fileset dir="src/jamsupport" includes="**/*.java"/>
+             <fileset dir="src/marshal" includes="**/*.java"/>
+             <fileset dir="src/repackage" includes="**/*.java"/>
+             <fileset dir="src/saaj_api" includes="**/*.java"/>
+@@ -488,7 +487,7 @@
+                  store.classes, saaj_api.classes,
+                  marshal.classes, xpath.classes, oldxbean.jar, xsdschema.classes,
+                  xmlinputstream.classes, resolver.jar, xbean_xpath.jar,
+-                 piccolo.classes, tools.classes, jamsupport.classes">
++                 piccolo.classes, tools.classes">
+         <jar jarfile="build/lib/xbean.jar" index="true">
+             <fileset dir="build/classes/xmlpublic"
+                 excludes="javax/**"/>
+@@ -711,17 +710,6 @@
+             </classpath>
+         </javac>
+     </target>
+-
+-
+-    <!-- support for running JAM under JDK1.5 ========================= -->
+-
+-    <target name="jamsupport.classes" depends="dirs,jam.classes">
+-        <javac srcdir="src/jamsupport" destdir="build/classes/jam" source="${javac.source}" target="${javac.target}" debug="on">
+-            <classpath id="jamsupport.compile.path">
+-                <pathelement location="build/classes/jam"/>
+-            </classpath>
+-        </javac>
+-    </target>
+ 
+     <!-- saaj_api target ============================================== -->
+ 

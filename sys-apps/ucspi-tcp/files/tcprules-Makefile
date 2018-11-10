@@ -1,0 +1,11 @@
+-include Makefile.*
+.PHONY: all 
+.SUFFIXES:
+.SUFFIXES: .cdb
+
+all: $(CDBS) 
+	@echo = CDBLIST: $(CDBS)
+
+%.cdb:: %
+	@echo + Rebuilding $* from $<
+	tcprules $@ $@.tmp < $<

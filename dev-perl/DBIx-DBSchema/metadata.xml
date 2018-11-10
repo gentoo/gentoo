@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">DBIx-DBSchema</remote-id>
+    <remote-id type="cpan-module">DBIx::DBSchema</remote-id>
+    <remote-id type="cpan-module">DBIx::DBSchema::ColGroup</remote-id>
+    <remote-id type="cpan-module">DBIx::DBSchema::ColGroup::Index</remote-id>
+    <remote-id type="cpan-module">DBIx::DBSchema::ColGroup::Unique</remote-id>
+    <remote-id type="cpan-module">DBIx::DBSchema::Column</remote-id>
+    <remote-id type="cpan-module">DBIx::DBSchema::DBD</remote-id>
+    <remote-id type="cpan-module">DBIx::DBSchema::DBD::Oracle</remote-id>
+    <remote-id type="cpan-module">DBIx::DBSchema::DBD::Pg</remote-id>
+    <remote-id type="cpan-module">DBIx::DBSchema::DBD::SQLite</remote-id>
+    <remote-id type="cpan-module">DBIx::DBSchema::DBD::Sybase</remote-id>
+    <remote-id type="cpan-module">DBIx::DBSchema::DBD::mysql</remote-id>
+    <remote-id type="cpan-module">DBIx::DBSchema::Index</remote-id>
+    <remote-id type="cpan-module">DBIx::DBSchema::Table</remote-id>
+    <remote-id type="cpan-module">DBIx::DBSchema::_util</remote-id>
+  </upstream>
+</pkgmetadata>

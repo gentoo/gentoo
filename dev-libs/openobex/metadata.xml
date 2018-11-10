@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bircoph@gentoo.org</email>
+		<name>Andrew Savchenko</name>
+	</maintainer>
+	<longdescription>Free open source implementation of the Object Exchange (OBEX) protocol, 
+used for transferring data to/from mobile devices.</longdescription>
+	<use>
+		<flag name="irda">Enable IrDA support</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">openobex</remote-id>
+	</upstream>
+</pkgmetadata>

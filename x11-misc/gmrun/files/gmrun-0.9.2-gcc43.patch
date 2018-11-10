@@ -1,0 +1,40 @@
+--- a/src/gtkcompletionline.cc
++++ b/src/gtkcompletionline.cc
+@@ -29,6 +29,7 @@
+ #include <set>
+ #include <sstream>
+ #include <string>
++#include <cstring>
+ #include <vector>
+ using namespace std;
+ 
+--- a/src/ci_string.h
++++ b/src/ci_string.h
+@@ -7,6 +7,7 @@
+ #define __CI_STRING_H__
+ 
+ #include <string>
++#include <cstring>
+ #include <ctype.h>
+ 
+ struct ci_char_traits : public std::char_traits<char>
+--- a/src/prefs.cc
++++ b/src/prefs.cc
+@@ -13,6 +13,7 @@
+ #include <fstream>
+ #include <iostream>
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ #include <list>
+ 
+--- a/src/main.cc
++++ b/src/main.cc
+@@ -14,6 +14,7 @@
+ #include <gdk/gdkkeysyms.h>
+ 
+ #include <string>
++#include <cstring>
+ #include <iostream>
+ #include <sstream>
+ #include <vector>

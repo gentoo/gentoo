@@ -1,0 +1,20 @@
+--- xineadump-orig/src/xineinput.cpp	2008-06-14 04:15:30.829493854 +0200
++++ xineadump/src/xineinput.cpp	2008-06-14 04:22:13.181493796 +0200
+@@ -19,6 +19,7 @@
+  ***************************************************************************/
+ 
+ #include "xineinput.h"
++#include <cstring>
+ 
+ static xine_t* xine;
+ static xine_audio_port_t* audio_port;
+--- xineadump-orig/src/zeroinput.cpp	2008-06-14 04:15:39.153496528 +0200
++++ xineadump/src/zeroinput.cpp	2008-06-14 04:21:54.993493742 +0200
+@@ -20,6 +20,7 @@
+ 
+ #include "zeroinput.h"
+ #include <math.h>
++#include <cstring>
+ 
+ ZeroInput::ZeroInput(
+ 	unsigned long timeLimitMS,

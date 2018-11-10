@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
+  <use>
+    <flag name="double-precision">more precise calculations at the expense of speed</flag>
+    <flag name="editor">Depend on inkscape, scripts to convert svg to level (svg2lvl)</flag>
+  </use>
+</pkgmetadata>

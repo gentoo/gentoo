@@ -1,0 +1,154 @@
+diff --git a/gkrellmpc.c b/gkrellmpc.c
+index eb28982..08a3fb3 100644
+--- a/gkrellmpc.c
++++ b/gkrellmpc.c
+@@ -140,7 +140,7 @@ void mpc_create_plugin (GtkWidget *vbox, gint first_create) {
+ 	/* Create the status decal */
+ 	mpc_status_decal = gkrellm_create_decal_pixmap(mpc_panel, gkrellm_decal_misc_pixmap(), gkrellm_decal_misc_mask(), N_MISC_DECALS, style, 0, t);
+ 	mpc_status_decal->x = w - mpc_status_decal->w;
+-	gkrellm_draw_decal_pixmap(mpc_panel, mpc_status_decal, (mpc_mpd ? D_MISC_LED1 : D_MISC_LED0));
++	gkrellm_draw_decal_pixmap(mpc_panel, mpc_status_decal, (mpc_mpd_connected() ? D_MISC_LED1 : D_MISC_LED0));
+ 
+ 	/* Update t */
+ 	t += mpc_label_decal->h > mpc_status_decal->h ? mpc_label_decal->h : mpc_status_decal->h;
+@@ -279,7 +279,7 @@ void mpc_update_plugin () {
+ 	static gint	x_scroll;
+ 
+ 	/* Try to connect to mpd */
+-	if (!mpc_mpd && mpc_ticker->ten_second_tick) {
++	if (!mpc_mpd_connected() && mpc_ticker->ten_second_tick) {
+ 		mpc_mpd_connect();
+ 	}
+ 
+@@ -457,7 +457,7 @@ void mpc_sync_with_mpd() {
+ 	status = mpc_mpd_get("status\n");
+ 	currentsong = mpc_mpd_get("currentsong\n");
+ 
+-	if (!mpc_mpd) {
++	if (!mpc_mpd_connected()) {
+ 		mpc_update_label(_("NO MPD"));
+ 		mpc_update_songname("");
+ 		gtk_tooltips_set_tip(mpc_tooltip, mpc_panel->drawing_area, _("MPD is not running"), NULL);
+diff --git a/mpd.c b/mpd.c
+index 5918416..1d9ea6a 100644
+--- a/mpd.c
++++ b/mpd.c
+@@ -12,18 +12,32 @@
+ #include <sys/socket.h>
+ #include <netdb.h>
+ 
++#include <errno.h>
++#include <pthread.h>
++
+ GIOChannel   * mpc_mpd = NULL;
++pthread_mutex_t mpc_mutex = { { 0, 0, 0, PTHREAD_MUTEX_RECURSIVE_NP, 0, { 0 } } }; //PTHREAD_MUTEX_INITIALIZER;
++
++gboolean mpc_mpd_connected() {
++	if(pthread_mutex_trylock(&mpc_mutex)){
++		return (FALSE);
++	}
++	pthread_mutex_unlock(&mpc_mutex);
++	return (gboolean)mpc_mpd;
++}
+ 
+ /*
+  * Connects to the MPD server, sets up the mpd object, sets the status decal to ON
+  */
+-gboolean mpc_mpd_connect() {
++void* mpc_mpd_connect_worker(void* arg) {
+ 	int sockfd;
+ 	struct hostent *server;
+ 	struct sockaddr_in serv_addr;
+ 	gchar * line;
+ 	gchar ** parts;
+ 	gboolean retval;
++	
++	pthread_mutex_lock(&mpc_mutex);
+ 
+ 	if (mpc_mpd) {
+ 		/*
+@@ -33,11 +47,11 @@ gboolean mpc_mpd_connect() {
+ 	}
+ 
+ 	if (!mpc_conf_hostname || !mpc_conf_port) {
+-		return (FALSE);
++		goto err;
+ 	}
+ 
+-	if ((sockfd = socket(PF_INET, SOCK_STREAM, 0)) == -1) return(FALSE);
+-	if (!(server = gethostbyname(mpc_conf_hostname))) return(FALSE);
++	if ((sockfd = socket(PF_INET, SOCK_STREAM, 0)) == -1) goto err;
++	if (!(server = gethostbyname(mpc_conf_hostname))) goto err;
+ 
+ 	bzero((char *) &serv_addr, sizeof(serv_addr));
+ 	serv_addr.sin_family = AF_INET;
+@@ -46,7 +60,7 @@ gboolean mpc_mpd_connect() {
+ 			server->h_length);
+ 	serv_addr.sin_port = htons(mpc_conf_port);
+ 
+-	if (connect(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0) return(FALSE);
++	if (connect(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0) goto err;
+ 	
+ 	/* Getup the mpd object */
+ 	mpc_mpd = g_io_channel_unix_new(sockfd);
+@@ -72,29 +86,39 @@ gboolean mpc_mpd_connect() {
+ 		retval = FALSE;
+ 	}
+ 
+-	if (retval) {
+-		gkrellm_draw_decal_pixmap(mpc_panel, mpc_status_decal, D_MISC_LED1);
+-		mpc_update_label(_("MPD"));
+-		mpc_update_songname("");
+-	}
++err:	
++	pthread_mutex_unlock(&mpc_mutex);
++	return NULL;
++}
+ 
+-	return(retval);
++gboolean mpc_mpd_connect() {
++	pthread_attr_t attr;
++	pthread_t thread_id;
++	
++	if(pthread_mutex_trylock(&mpc_mutex)){
++		return (FALSE);
++	}
++	
++	pthread_attr_init(&attr);
++	pthread_create(&thread_id, &attr, mpc_mpd_connect_worker, NULL);
++	
++	pthread_mutex_unlock(&mpc_mutex);
++	
++	return (FALSE);
+ }
+ 
+ /*
+  * Disconnects from MPD, destroys the mpd object, sets the status decal to off
+  */
+ gboolean mpc_mpd_disconnect() {
+-
++	pthread_mutex_lock(&mpc_mutex);
+ 	if (mpc_mpd) {
+ 		g_io_channel_shutdown(mpc_mpd, FALSE, NULL);
+ 		free(mpc_mpd);
+ 		mpc_mpd = NULL;
+ 	}
+ 	
+-	gkrellm_draw_decal_pixmap(mpc_panel, mpc_status_decal, D_MISC_LED0);
+-	mpc_update_label(_("NO MPD"));
+-	mpc_update_songname("");
++	pthread_mutex_lock(&mpc_mutex);
+ 	return (TRUE);
+ }
+ 
+diff --git a/mpd.h b/mpd.h
+index efcb9f6..c6942c4 100644
+--- a/mpd.h
++++ b/mpd.h
+@@ -10,5 +10,6 @@ gboolean     mpc_mpd_disconnect();
+ gboolean     mpc_mpd_do(gchar *);
+ GHashTable * mpc_mpd_get(gchar *);
+ GPtrArray  * mpc_mpd_get_clumps(gchar *, gboolean);
++gboolean     mpc_mpd_connected();
+ 
+ #endif

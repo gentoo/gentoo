@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	after net jabber-server
+}
+
+start() {
+	ebegin "Starting Jabber GG Transport"
+	start-stop-daemon --start --user jabber --group jabber --exec /usr/sbin/jggtrans -- -u jabber -g jabber /etc/jabber/jggtrans.xml
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Jabber GG Transport"
+	start-stop-daemon --stop --pidfile /var/run/jabber/jggtrans.pid
+	eend $?
+}

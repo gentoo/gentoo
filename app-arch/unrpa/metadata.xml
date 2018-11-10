@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bircoph@gentoo.org</email>
+		<name>Andrew Savchenko</name>
+	</maintainer>
+	<longdescription>
+		Unrpa is a script to extract files from archives created for
+		the Ren'Py Visual Novel Engine (http://www.renpy.org/)
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Lattyware/unrpa</remote-id>
+	</upstream>
+</pkgmetadata>

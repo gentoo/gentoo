@@ -1,0 +1,16 @@
+Fixes build with gcc 7, by Johannes Hirte.
+https://bugs.gentoo.org/show_bug.cgi?id=618068
+
+diff --git a/../old/dcraw.cc b/dcraw.cc
+index 88c8068..cedf86b 100644
+--- a/../old/dcraw.cc
++++ b/dcraw.cc
+@@ -9242,7 +9242,7 @@ canon_a5:
+     if (make[0] == 'O') {
+       i = find_green (12, 32, 1188864, 3576832);
+       c = find_green (12, 32, 2383920, 2387016);
+-      if (abs(i) < abs(c)) {
++      if (i < c) {
+ 	SWAP(i,c);
+ 	load_flags = 24;
+       }

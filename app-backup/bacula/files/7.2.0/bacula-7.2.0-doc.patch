@@ -1,0 +1,12 @@
+--- Makefile.in.orig	2015-09-03 20:03:22.000000000 +0200
++++ Makefile.in	2015-09-03 20:03:50.000000000 +0200
+@@ -35,8 +35,7 @@
+ 	autoconf/config.h.in  autoconf/acconfig.h  autoconf/Make.common.in \
+ 	autoconf/install-sh autoconf/mkinstalldirs
+ 
+-doc_files = VERIFYING ChangeLog README ReleaseNotes LICENSE \
+-	    LICENSE-FAQ LICENSE-FOSS INSTALL
++doc_files =
+ 
+ MKDIR = $(srcdir)/autoconf/mkinstalldirs
+ LIBTOOL_DEPS = @LIBTOOL_DEPS@

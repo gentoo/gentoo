@@ -1,0 +1,123 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Unmask the flag which corresponds to ARCH.
+-s390
+
+# Unmask ABI flags for this arch.
+-abi_s390_32
+
+# Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
+# Python 3.7 support requires fresh versions of packages which are stuck
+# at keywordreqs.
+# bug #661306: dev-python/pytest
+# bug #661320: dev-python/twisted
+python_targets_python3_7
+python_single_target_python3_7
+
+# James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
+# Unmask as this profile is big endian.
+-big-endian
+
+# Stuff we don't want/not tested
+R
+octave
+xindy
+lasi
+kde
+mpi
+fuse
+lqr
+libproxy
+tokyocabinet
+lpsol
+openexr
+enchant
+fftw
+systemd
+devil
+gts
+clang
+rtmp
+metalink
+lucene
+valgrind
+
+# This file contains a list of useflags that cannot be used on s390.
+bluetooth
+pcmcia
+cdr
+gpm
+3dfx
+acpi
+afs
+alsa
+apm
+directfb
+lirc
+java
+hardened
+qt5
+
+# Needs java
+pdfannotextractor
+
+# no gnome love yet
+fits
+gconf
+gimp
+gtk
+gtk2
+gtk3
+gnome
+gnome-keyring
+
+diet
+m17n-lib
+xemacs
+Xaw3d
+neXt
+motif
+mono
+ocaml
+sdl
+lm_sensors
+wxwidgets
+
+# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
+# libdlm and cman are not keyworded
+cman
+clvm
+
+# Many X drivers make no sense on this platform.
+input_devices_elographics
+input_devices_evdev
+input_devices_joystick
+input_devices_keyboard
+input_devices_mouse
+input_devices_vmmouse
+input_devices_synaptics
+input_devices_tslib
+input_devices_wacom
+video_cards_amdgpu
+video_cards_fbdev
+video_cards_geode
+video_cards_glint
+video_cards_mga
+video_cards_nouveau
+video_cards_nv
+video_cards_r100
+video_cards_r128
+video_cards_r200
+video_cards_r300
+video_cards_r600
+video_cards_radeon
+video_cards_radeonsi
+video_cards_tdfx
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# virtual/opencl is not keyworded
+opencl
+
+# Unmask once sys-libs/libunwind gets ported & keyworded.
+unwind

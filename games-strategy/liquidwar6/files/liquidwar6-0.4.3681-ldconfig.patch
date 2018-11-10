@@ -1,0 +1,16 @@
+commit 1bd3596545912f2e47b8848df3fb5d99195d299a
+Author: hasufell <hasufell@gentoo.org>
+Date:   Wed Jan 8 17:21:09 2014 +0100
+
+    don't run ldconfig
+
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -65,7 +65,6 @@ EXTRA_DIST = scriptpo.c indent.sh scriptpo-update.sh stamp.sh clean.sh dtou.sh u
+ SUBDIRS = lib
+ 
+ install-exec-local:
+-	if which id && which ldconfig && test `id -u` -eq 0 && test "$(prefix)" != "/usr"; then ldconfig; fi # Run ldconfig automatically if we're root
+ 	if test -x $(DESTDIR)$(bindir)/liquidwar6; then mv $(DESTDIR)$(bindir)/liquidwar6 $(DESTDIR)$(bindir)/@PACKAGE_TARNAME@-@LW6_VERSION_BASE@; ln -s @PACKAGE_TARNAME@-@LW6_VERSION_BASE@ $(DESTDIR)$(bindir)/liquidwar6; fi
+ 
+ uninstall-local:

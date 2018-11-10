@@ -1,0 +1,32 @@
+From 560db1e2bc79bb3321c5f431e149418ec3c28a98 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 23 Jul 2017 07:13:46 -0400
+Subject: [PATCH 1/1] config/ndo2db.cfg-sample.in: use @piddir@ for the pid
+ file.
+
+The "lock_file" setting in ndo2db.cfg specifies where the daemon's pid
+file should be stored. In the past, it was stored in @localstatedir@,
+but @piddir@ is more appropriate. As evidence, all of the init scripts
+in the "startup" directory reference @piddir@ and not @localstatedir@
+for the location of the pid file. This commit updates the sample
+config to agree with the init scripts.
+---
+ config/ndo2db.cfg-sample.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/ndo2db.cfg-sample.in b/config/ndo2db.cfg-sample.in
+index 75266dc..5b46fc9 100644
+--- a/config/ndo2db.cfg-sample.in
++++ b/config/ndo2db.cfg-sample.in
+@@ -10,7 +10,7 @@
+ # This is the lockfile that NDO2DB will use to store its PID number
+ # in when it is running in daemon mode.
+ 
+-lock_file=@localstatedir@/ndo2db.pid
++lock_file=@piddir@/ndo2db.pid
+ 
+ 
+ 
+-- 
+2.13.0
+

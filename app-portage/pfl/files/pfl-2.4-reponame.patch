@@ -1,0 +1,11 @@
+--- pfl/pfl.py	(Revision 68)
++++ pfl/pfl.py	(Arbeitskopie)
+@@ -226,6 +226,8 @@
+ 				v = '%s-%s' % (v, r)
+ 				
+ 			repo, = self._vardbapi.aux_get(cpv, ['repository'])
++			if len(repo) == 0:
++				repo, = self._vardbapi.aux_get(cpv, ['REPOSITORY'])
+ 
+ 			# timestamp of merge
+ 			mergedstamp = self._vardbapi.aux_get(cpv, ['_mtime_'])[0]

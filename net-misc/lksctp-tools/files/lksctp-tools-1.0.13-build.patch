@@ -1,0 +1,30 @@
+From 2f2ba4e271b91535860705ca5911a3a6e1f64121 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Diego=20Elio=20Petten=C3=B2?= <flameeyes@flameeyes.eu>
+Date: Sat, 23 Feb 2013 23:08:49 -0800
+Subject: [PATCH lksctp-tools] build: fix out-of-tree build of withsctp.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+
+Signed-off-by: Diego Elio Pettenò <flameeyes@flameeyes.eu>
+---
+ src/withsctp/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/withsctp/Makefile.am b/src/withsctp/Makefile.am
+index e091049..cecf606 100644
+--- a/src/withsctp/Makefile.am
++++ b/src/withsctp/Makefile.am
+@@ -10,7 +10,7 @@ include $(top_srcdir)/Makefile.rules
+ bin_PROGRAMS = checksctp
+ bin_SCRIPTS = withsctp
+ 
+-AM_CPPFLAGS=-I../include
++AM_CPPFLAGS=-I$(top_srcdir)/src/include
+ pkglib_LTLIBRARIES = libwithsctp.la
+ libwithsctp_la_SOURCES = sctp_load_libs.c sctp_socket.c sctp_bind.c \
+ 	sctp_sockopt.c sctp_socket.h
+-- 
+1.8.1.2
+

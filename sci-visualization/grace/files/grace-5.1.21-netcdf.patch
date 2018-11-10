@@ -1,0 +1,11 @@
+--- a/configure	2007-02-16 22:44:49.000000000 +0000
++++ b/configure	2007-09-28 23:03:29.000000000 +0100
+@@ -15181,7 +15181,7 @@
+       int main(void) {
+         char *vlib;
+         vlib = nc_inq_libvers();
+-        if (strcmp(vlib, "3.0") < 0) {
++        if (((vlib[0] == '"') && (strcmp(vlib, "\"3.0") < 0)) || ((vlib[0] != '"') && (strcmp(vlib, "3.0") < 0))){
+           exit(1);
+         }
+         exit(0);

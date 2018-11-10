@@ -1,0 +1,100 @@
+From 34f6084ff3ba1dd025cae17e5d114caff1d7fa6f Mon Sep 17 00:00:00 2001
+From: Frederik Gladhorn <frederik.gladhorn@qt.io>
+Date: Tue, 25 Jul 2017 16:27:12 +0200
+Subject: Compile with clang and make sure qHash works with AccessibleObject
+
+Clang didn't like the complicated friend declaration. To make sure it's
+not broken again, add one test to verify that we can use AO in hashes,
+since apps might want to do that.
+---
+ src/qaccessibilityclient/accessibleobject.cpp |  4 ----
+ src/qaccessibilityclient/accessibleobject.h   | 17 ++++++++++-------
+ tests/auto/tst_accessibilityclient.cpp        |  9 +++++++++
+ 3 files changed, 19 insertions(+), 11 deletions(-)
+
+diff --git a/src/qaccessibilityclient/accessibleobject.cpp b/src/qaccessibilityclient/accessibleobject.cpp
+index b2b005b..b8c9d33 100644
+--- a/src/qaccessibilityclient/accessibleobject.cpp
++++ b/src/qaccessibilityclient/accessibleobject.cpp
+@@ -534,7 +534,3 @@ QACCESSIBILITYCLIENT_EXPORT QDebug QAccessibleClient::operator<<(QDebug d, const
+     return d.space();
+ }
+ #endif
+-
+-uint qHash(const QAccessibleClient::AccessibleObject& object) {
+-    return qHash(object.d);
+-}
+diff --git a/src/qaccessibilityclient/accessibleobject.h b/src/qaccessibilityclient/accessibleobject.h
+index a0d0db4..ee2e5ad 100644
+--- a/src/qaccessibilityclient/accessibleobject.h
++++ b/src/qaccessibilityclient/accessibleobject.h
+@@ -27,8 +27,6 @@ namespace QAccessibleClient {
+     class AccessibleObject;
+ }
+ 
+-uint qHash(const QAccessibleClient::AccessibleObject& object);
+-
+ #include <qlist.h>
+ #include <QSharedPointer>
+ #include <qaction.h>
+@@ -40,6 +38,11 @@ namespace QAccessibleClient {
+ class AccessibleObjectPrivate;
+ class RegistryPrivate;
+ 
++
++#ifndef QT_NO_DEBUG_STREAM
++    QACCESSIBILITYCLIENT_EXPORT QDebug operator<<(QDebug, const AccessibleObject &);
++#endif
++
+ /**
+     This class represents an accessible object.
+ 
+@@ -746,13 +749,13 @@ private:
+     friend class RegistryPrivate;
+     friend class CacheWeakStrategy;
+     friend class CacheStrongStrategy;
+-    friend QDebug QAccessibleClient::operator<<(QDebug, const AccessibleObject &);
+-    friend uint ::qHash(const AccessibleObject& object);
+-};
+-
+ #ifndef QT_NO_DEBUG_STREAM
+-QACCESSIBILITYCLIENT_EXPORT QDebug operator<<(QDebug, const AccessibleObject &);
++    friend QDebug QAccessibleClient::operator<<(QDebug, const AccessibleObject &);
+ #endif
++    friend uint qHash(const QAccessibleClient::AccessibleObject& object) {
++        return qHash(object.d);
++    }
++};
+ 
+ }
+ 
+diff --git a/tests/auto/tst_accessibilityclient.cpp b/tests/auto/tst_accessibilityclient.cpp
+index ad98c0e..c377982 100644
+--- a/tests/auto/tst_accessibilityclient.cpp
++++ b/tests/auto/tst_accessibilityclient.cpp
+@@ -75,6 +75,7 @@ private Q_SLOTS:
+ 
+     void tst_registry();
+     void tst_accessibleObject();
++    void tst_hashable();
+     void tst_application();
+     void tst_navigation();
+     void tst_focus();
+@@ -145,6 +146,14 @@ void AccessibilityClientTest::tst_accessibleObject()
+     QVERIFY(!invalid2.isValid());
+ }
+ 
++void AccessibilityClientTest::tst_hashable()
++{
++    AccessibleObject testObject;
++    QHash<AccessibleObject, int> testHash;
++    testHash[testObject] = 1;
++    QCOMPARE(testHash[testObject], 1);
++}
++
+ void AccessibilityClientTest::tst_application()
+ {
+     QString appName = QLatin1String("Lib QAccessibleClient test");
+-- 
+cgit v0.11.2
+

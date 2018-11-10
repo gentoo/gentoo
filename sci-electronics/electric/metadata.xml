@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-electronics@gentoo.org</email>
+    <name>Gentoo Electronics Project</name>
+  </maintainer>
+  <longdescription>
+  The Electric VLSI Design System is a complete Electronic Design Automation
+  (EDA) system that can handle many forms of circuit design, including:
+    * Custom IC layout
+    * Schematic Capture (digital and analog)
+    * Textual Languages such as VHDL and Verilog
+    * Programmable logic (FPGAs)
+    * ...and much more.
+  </longdescription>
+</pkgmetadata>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		In Haskell 98 the name of a record field
+		is automatically also the name of a function which gets the value
+		of the according field.
+		E.g. if we have
+		
+		data Pair a b = Pair
+		first :: a, second :: b
+		
+		then
+		
+		&gt; first  :: Pair a b -&gt; a
+		&gt; second :: Pair a b -&gt; b
+		
+		However for setting or modifying a field value
+		we need to use some syntactic sugar, which is often clumsy.
+		
+		modifyFirst :: (a -&gt; a) -&gt; (Pair a b -&gt; Pair a b)
+		modifyFirst f r\@(Pair
+		first=a
+		) = r
+		first = f a
+		
+		With this package you can define record field accessors
+		which allow setting, getting and modifying values easily.
+		The package clearly demonstrates the power of the functional approach:
+		You can combine accessors of a record and sub-records,
+		to make the access look like the fields of the sub-record belong to the main record.
+		
+		Example:
+		
+		&gt; *Data.Accessor.Example&gt; (first^:second^=10) (('b',7),"hallo")
+		&gt; (('b',10),"hallo")
+		
+		You can easily manipulate record fields in a 'Control.Monad.State.State' monad,
+		you can easily code 'Show' instances that use the Accessor syntax
+		and you can parse binary streams into records.
+		See @Data.Accessor.Example@ for demonstration of all features.
+		
+		It would be great if in revised Haskell versions the names of record fields
+		are automatically 'Data.Accessor.Accessor's
+		rather than plain @get@ functions.
+		For now, the package @data-accessor-template@ provides Template Haskell functions
+		for automated generation of 'Data.Acesssor.Accessor's.
+		See also the other @data-accessor@ packages
+		that provide an Accessor interface to other data types.
+		The package @enumset@ provides accessors to bit-packed records.
+		
+		For similar packages see @lenses@ and @fclabel@.
+		A related concept are editors
+		&lt;http://conal.net/blog/posts/semantic-editor-combinators/&gt;.
+		Editors only consist of a modify method
+		(and @modify@ applied to a 'const' function is a @set@ function).
+		This way, they can modify all function values of a function at once,
+		whereas an accessor can only change a single function value,
+		say, it can change @f 0 = 1@ to @f 0 = 2@.
+		This way, editors can even change the type of a record or a function.
+		An Arrow instance can be defined for editors,
+		but for accessors only a Category instance is possible ('(.)' method).
+		The reason is the @arr@ method of the @Arrow@ class,
+		that conflicts with the two-way nature (set and get) of accessors.
+	</longdescription>
+</pkgmetadata>

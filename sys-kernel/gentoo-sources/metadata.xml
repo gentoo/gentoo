@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>kernel@gentoo.org</email>
+  <name>Gentoo Kernel Project</name>
+</maintainer>
+<use>
+  <flag name="experimental">Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".</flag>
+</use>
+<upstream>
+  <remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
+</upstream>
+</pkgmetadata>

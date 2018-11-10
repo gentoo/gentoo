@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>horea.christ@gmail.com</email>
+		<name>Horea Christian</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		The indexed_gzip project is a Python extension which aims to provide a
+		drop-in replacement for the built-in Python gzip.GzipFile class,
+		the IndexedGzipFile. This package was written to allow fast random
+		access of compressed NIFTI image files (for which GZIP is the de-facto
+		compression standard), but will work with any GZIP file.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">pauldmccarthy/indexed_gzip</remote-id>
+		<remote-id type="pypi">indexed-gzip"</remote-id>
+	</upstream>
+</pkgmetadata>

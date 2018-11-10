@@ -1,0 +1,13 @@
+http://bugs.gentoo.org/442226
+
+--- progsreiserfs.m4
++++ progsreiserfs.m4
+@@ -10,7 +10,7 @@
+ dnl Adds the required libraries to $REISERFS_LIBS and does an
+ dnl AC_SUBST(REISERFS_LIBS)
+ 
+-AC_DEFUN(AC_CHECK_LIBREISERFS,
++AC_DEFUN([AC_CHECK_LIBREISERFS],
+ [
+ 
+ dnl save LIBS

@@ -1,0 +1,32 @@
+diff -Naur pnp4nagios-0.6.14.orig/src/Makefile.in pnp4nagios-0.6.14/src/Makefile.in
+--- pnp4nagios-0.6.14.orig/src/Makefile.in	2011-08-10 17:18:46.000000000 +0200
++++ pnp4nagios-0.6.14/src/Makefile.in	2011-08-10 17:19:51.000000000 +0200
+@@ -83,7 +83,7 @@
+ #
+ ###############################
+ npcd: npcd.c $(NPCDOBJS) $(NPCDHEAD)
+-	$(CC) $(CFLAGS) -o $@ npcd.c $(NPCDOBJS) -lpthread
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ npcd.c $(NPCDOBJS) -lpthread
+ 
+ ###############################
+ #
+@@ -118,7 +118,6 @@
+ 
+ install:
+ 	$(MAKE) install-basic
+-	$(MAKE) strip-post-install
+ 
+ install-unstripped:
+ 	$(MAKE) install-basic
+diff -Naur pnp4nagios-0.6.14.orig/configure pnp4nagios-0.6.14/configure
+--- pnp4nagios-0.6.14.orig/configure	2011-08-12 09:01:12.000000000 +0200
++++ pnp4nagios-0.6.14/configure	2011-08-12 09:03:32.000000000 +0200
+@@ -5565,7 +5565,7 @@
+ 		PERFDATA_LOG="${localstatedir}/perfdata.log"
+ 		PERFDATA_DIR="${localstatedir}/perfdata"
+ 		PERFDATA_SPOOL_DIR="${localstatedir}/spool"
+-		mandir="\${prefix}/man"
++		mandir="/usr/share/man"
+ 	;;
+ esac
+ 

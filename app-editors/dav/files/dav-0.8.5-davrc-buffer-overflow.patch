@@ -1,0 +1,11 @@
+--- dav-0.8.5.orig/main.c	2011-01-29 14:16:53.537725568 -0500
++++ dav-0.8.5/main.c	2011-01-29 14:20:45.139125094 -0500
+@@ -327,7 +327,7 @@
+ void loadSettings()
+ {
+   int l;
+-  char s[80];
++  char s[200];
+   char home[80];
+   char *r;
+   char *c;

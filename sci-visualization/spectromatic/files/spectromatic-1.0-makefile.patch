@@ -1,0 +1,49 @@
+Respect LDFLAGS, CFLAGS, CC  #334715
+Fix install paths
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,33 +1,29 @@
+ # Makefile for spectromatic
+ 
+-CFLAGS = -O2 -Wall 
+-LIBS = -lgsl -lgslcblas -lpng -lm
++LIBS = -lpng `pkg-config --libs gsl`
+ DESTDIR =
+-TOPLEVEL_HOME = /usr
++TOPLEVEL_HOME ?= /usr
+ 
+-CC = gcc -I.
+-
+ SRC = spectromatic.c wave.c
+ 
+ OBJ = $(SRC:.c=.o)
+ 
+ TARGET = spectromatic
+ 
+-install:	all
+-	mkdir -p $(DESTDIR)$(TOPLEVEL_HOME)/bin
+-	mkdir -p $(DESTDIR)$(TOPLEVEL_HOME)/man/man1
+-	install -o root -g root -m 0755 spectromatic $(DESTDIR)$(TOPLEVEL_HOME)/bin
+-	install -o root -g root -m 0644 man/spectromatic.1 $(DESTDIR)$(TOPLEVEL_HOME)/man/man1
+-
+ all:	$(OBJ)
+-	$(CC) -o $(TARGET) $(OBJ) $(LIBS)
+-	strip $(TARGET)
++	$(CC) $(LDFLAGS) $(OBJ) $(LIBS) -o $(TARGET)
++
++install: $(TARGET)
++	mkdir -p $(DESTDIR)$(TOPLEVEL_HOME)/bin
++	mkdir -p $(DESTDIR)$(TOPLEVEL_HOME)/share/man/man1
++	install -m 0755 spectromatic $(DESTDIR)$(TOPLEVEL_HOME)/bin
++	install -m 0644 man/spectromatic.1 $(DESTDIR)$(TOPLEVEL_HOME)/share/man/man1
+ 
+ clean:
+ 	$(RM) $(TARGET) $(OBJ)
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) -c $< 
++	$(CC) $(CFLAGS) -I. -c $< 
+ 
+ .o:
+ 	$(CC) $< $(LIBS) -o $@

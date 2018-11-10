@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The games-arcade category contains arcade games.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie games-arcade enthält Arcadespiele.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-arcade contiene juegos arcade.
+	</longdescription>
+	<longdescription lang="ja">
+		games-arcadeカテゴリーにはアーケード・ゲームが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De games-arcade categorie bevat arcadespellen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-arcade chứa các trò chơi dạng "arcade".
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-arcade contiene giochi arcade.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria games-arcade contém jogos de arcade.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria games-arcade zawiera gry zręcznościowe.
+	</longdescription>
+	<longdescription lang="ru">
+		Категория games-arcade содержит игры-аркады.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,13 @@
+--- cairo-1.7.6-orig/src/cairo-ft-font.c	2008-09-29 21:43:13.000000000 +0100
++++ cairo-1.7.6/src/cairo-ft-font.c	2008-09-29 21:52:19.000000000 +0100
+@@ -1705,7 +1705,9 @@
+ 	options->base.subpixel_order = other->base.subpixel_order;
+     }
+ 
+-    if (options->base.hint_style == CAIRO_HINT_STYLE_DEFAULT)
++    options->base.hint_style = CAIRO_HINT_STYLE_DEFAULT;
++
++    if (other->base.hint_style != CAIRO_HINT_STYLE_DEFAULT)
+ 	options->base.hint_style = other->base.hint_style;
+ 
+     if (other->base.hint_style == CAIRO_HINT_STYLE_NONE)

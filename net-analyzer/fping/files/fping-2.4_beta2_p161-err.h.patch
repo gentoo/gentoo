@@ -1,0 +1,10 @@
+--- a/fping.c
++++ b/fping.c
+@@ -106,6 +106,7 @@
+ 
+ #include <arpa/inet.h>
+ #include <netdb.h>
++#include <err.h> /* err() warnx() */
+ 
+ /* RS6000 has sys/select.h */
+ #ifdef HAVE_SYS_SELECT_H

@@ -1,0 +1,214 @@
+--- freebirth.c
++++ freebirth.c
+@@ -248,15 +248,15 @@
+   //bass_e    = env_new(1025,10000,(sample_producer *)osc_blender);
+   sl = g_slist_append(sl, bass_e);
+ 
+-  kick   = raw_wave_new("raw/kick.raw");
++  kick   = raw_wave_new("/usr/share/freebirth/raw/kick.raw");
+   sl = g_slist_append(sl, kick);
+-  snare  = raw_wave_new("raw/snare.raw");
++  snare  = raw_wave_new("/usr/share/freebirth/raw/snare.raw");
+   sl = g_slist_append(sl, snare);
+-  cl_hat = raw_wave_new("raw/cl_hat.raw");
++  cl_hat = raw_wave_new("/usr/share/freebirth/raw/cl_hat.raw");
+   sl = g_slist_append(sl, cl_hat);
+-  op_hat = raw_wave_new("raw/op_hat.raw");
++  op_hat = raw_wave_new("/usr/share/freebirth/raw/op_hat.raw");
+   sl = g_slist_append(sl, op_hat);
+-  samp_1 = raw_wave_new("raw/samp_1.raw");
++  samp_1 = raw_wave_new("/usr/share/freebirth/raw/samp_1.raw");
+   sl = g_slist_append(sl, samp_1);
+ 
+   sources = (sample_producer**)
+@@ -1087,7 +1087,7 @@
+   
+ 
+   /*effect window */
+-  effect_window = gtk_window_new (GTK_WINDOW_DIALOG);
++  effect_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+   gtk_window_set_title(GTK_WINDOW (effect_window), "Effects");
+   gtk_widget_set_style(effect_window,window_style);
+   effect_box    = gtk_vbox_new(FALSE,10);
+@@ -1109,7 +1109,7 @@
+ 
+   
+   /* sample freq window */
+-  sample_freq_window = gtk_window_new (GTK_WINDOW_DIALOG);
++  sample_freq_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+   gtk_window_set_title(GTK_WINDOW (sample_freq_window), "Sample Pitch");
+   sample_freq_box    = gtk_vbox_new(TRUE,10);
+   gtk_widget_set_style(sample_freq_window,window_style);
+--- fuse_loops.c
++++ fuse_loops.c
+@@ -122,7 +122,18 @@
+   fprintf(file, "/* generated file -- don't edit */\n");
+   fprintf(file, "#include <unistd.h>\n");
+   fprintf(file, "#include <math.h>\n");
++  fprintf(file, "#include <endian.h>\n");
+   fprintf(file, "#include \"freebirth.h\"\n");
++  fprintf(file, "/* borrowed from glib2 */\n");
++  fprintf(file, "#define SHORT_SWAP_LE_BE(val)  ((short) ( \\\n");
++  fprintf(file, "    (short) ((short) (val) >> 8) |     \\\n");
++  fprintf(file, "    (short) ((short) (val) << 8)))\n");
++  fprintf(file, "static void swap_endian(short *data, int length)\n");
++  fprintf(file, "{\n");
++  fprintf(file, "       int i;\n");
++  fprintf(file, "       for (i = 0; i < length; i += 1, data++)\n");
++  fprintf(file, "               *data = SHORT_SWAP_LE_BE(*data);\n");
++  fprintf(file, "}\n");
+   fprintf(file, "\n");
+ 
+   fprintf(file, "sample_producer *sp[%d];\n", g_list_length(order));
+@@ -172,6 +183,9 @@
+   fprintf(file, "  }\n");
+   fprintf(file, "\n");
+ 
++  fprintf(file, "#if __BYTE_ORDER == __BIG_ENDIAN\n");
++  fprintf(file, "  swap_endian(buffer, 2 * TBASS_BUFF_SIZE);\n");
++  fprintf(file, "#endif\n");
+   fprintf(file, "  write(fd, buffer, 2 * TBASS_BUFF_SIZE * sizeof(short));\n");
+   fprintf(file, "\n");
+ 
+--- gtkdial.c
++++ gtkdial.c
+@@ -75,8 +75,6 @@
+               sizeof (GtkDialClass),
+               (GtkClassInitFunc) gtk_dial_class_init,
+               (GtkObjectInitFunc) gtk_dial_init,
+-              (GtkArgSetFunc) NULL,
+-              (GtkArgGetFunc) NULL,
+             };
+ 
+             dial_type = gtk_type_unique (gtk_widget_get_type (), &dial_info);
+--- Makefile
++++ Makefile
+@@ -1,10 +1,9 @@
+ # Makefile for Freebirth 
+ #
+ 
+-CC=gcc
+-LOADLIBES=-lm $(shell gtk-config --libs)
+-CFLAGS=-g  -O6  -Wall $(shell gtk-config --cflags)
+-LDFLAGS= 
++CC?=gcc
++CFLAGS+=-Wall $(shell pkg-config --cflags gtk+-2.0)
++LIBS=-lm $(shell pkg-config --libs gtk+-2.0)
+ 
+ OFILES=\
+ oscillator.o sequencer.o envelope.o filter.o gtkdial.o mixer.o \
+@@ -22,16 +21,18 @@
+ 	-rm -f *.o freebirth fusebirth fused_loop.c Makefile.deps *~ 
+ 
+ freebirth: $(OFILES) fused_loop.o freebirth.o
++	$(CC) $(LDFLAGS) $(CFLAGS) -o freebirth $(OFILES) fused_loop.o freebirth.o $(LIBS)
+ 
+ fused_loop.c: fusebirth
+ 	./fusebirth > fused_loop.c 2>/dev/null
+ 
+ fusebirth: $(OFILES) fuse_loops.o fusebirth.o
++	$(CC) $(LDFLAGS) $(CFLAGS) -o fusebirth $(OFILES) fuse_loops.o fusebirth.o $(LIBS)
+ 
+ fusebirth.o: freebirth.c
+ 	$(CC) -c $(CFLAGS) -DFUSE_LOOPS -o fusebirth.o freebirth.c
+ 
+ Makefile.deps:
+-	gcc -MM $(CFLAGS) $(CFILES) > Makefile.deps
++	$(CC) -MM $(CFLAGS) $(CFILES) > Makefile.deps
+ 
+ include Makefile.deps
+--- raw_wave.c
++++ raw_wave.c
+@@ -21,18 +21,36 @@
+ #include "raw_wave.h"
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <math.h>
++#include <endian.h>
++
++/* borrowed from glib2 */
++#define SHORT_SWAP_LE_BE(val)  ((short) ( \
++    (short) ((short) (val) >> 8) |      \
++    (short) ((short) (val) << 8)))
++static void swap_endian(short *data, int length)
++{
++       int i;
++       for (i = 0; i < length; i += 1, data++)
++               *data = SHORT_SWAP_LE_BE(*data);
++}
+ 
+ static char *get_full_path(char *fn)
+ {
+   char *full_fn;
+   char *fb_samples;
+ 
+-  if (fn == NULL || fn[0] == '/') return fn;
+   fb_samples = getenv("FB_SAMPLES");
+   if (fb_samples == NULL) fb_samples = FB_SAMPLES;
+-  sprintf(full_fn = (char *)malloc(strlen(fb_samples) + 1 + strlen(fn) + 1),
+-	  "%s/%s", fb_samples, fn);
++  full_fn = (char *)malloc(strlen(fb_samples) + 1 + strlen(fn) + 1);
++   
++  if (fn == NULL || fn[0] == '/') { /* path is valid already */
++     sprintf(full_fn, "%s", fn); 
++  } else {
++     sprintf(full_fn, "%s/%s", fb_samples, fn); /* add path */
++  }
++   
+   return full_fn;
+ }
+ 
+@@ -76,10 +94,13 @@
+ 
+   }
+   this->length += count;
++#if __BYTE_ORDER == __BIG_ENDIAN
++  swap_endian(tmp, this->length);
++#endif
+   this->table = (sample *)malloc(sizeof(sample) * this->length);
+-  for(i = 0; i < this->length;i++)
++  for(i = 0; i < this->length;i++) {
+     this->table[i] = (sample)tmp[i];
+-  
++  }
+   fclose(in);
+   free(tmp);
+ }
+@@ -126,6 +147,7 @@
+ 	
+ 	}
+     }
++
+   return this->buffer;  
+ }
+   
+@@ -145,7 +167,7 @@
+ void raw_wave_set_sample_file(raw_wave* this, char *filename)
+ {
+   FILE *in;
+-  if (this->filename != 0) free(this->filename);
++  if (this->filename != NULL) free(this->filename);
+   this->filename = get_full_path(filename);
+   in = fopen(this->filename,"r");
+   if( in==NULL )
+@@ -243,7 +265,7 @@
+   /* set table to zero here check if it is zero in */
+   /* _fill_table */
+   out->table = 0;
+-  out->filename = 0;
++  out->filename = NULL;
+   raw_wave_set_sample_file(out, filename);
+ 
+   out->buffer   = (sample *)malloc(sizeof(sample) * TBASS_BUFF_SIZE);
+--- raw_wave.h
++++ raw_wave.h
+@@ -62,7 +62,7 @@
+ event *event_pitch_change_new(int seq_handle, double pitch);
+ 
+ // #define FB_SAMPLES "/usr/local/lib/freebirth"
+-#define FB_SAMPLES "."
++#define FB_SAMPLES "/usr/share/freebirth"
+ 
+ /*
+   Local Variables:

@@ -1,0 +1,13 @@
+Index: transcalc-0.14/src/transcalc.c
+===================================================================
+--- transcalc-0.14.orig/src/transcalc.c	2009-05-19 22:00:01.000000000 -0400
++++ transcalc-0.14/src/transcalc.c	2009-05-19 22:01:22.000000000 -0400
+@@ -146,7 +146,7 @@
+   /* see if config file exists */
+   if (stat (config_filename, config_file_stat) != 0) {
+     /* config file missing, so touch it */
+-    config_file_fd = open (config_filename, O_CREAT);
++    config_file_fd = open (config_filename, O_CREAT, 0644);
+     if (config_file_fd == -1)
+       {
+ 	perror ("open[config_file]");

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ml@gentoo.org</email>
+		<name>Gentoo ML Project</name>
+	</maintainer>
+	<use>
+		<flag name="binary">install a binary version</flag>
+		<flag name="bootstrap-smlnj">Boostrap mlton with dev-lang/smlnj
+		(takes a long time)</flag>
+		<flag name="stage3">After bootstrap building mlton with
+		dev-lang/smlnj, rebuild mlton with the second stage build of
+		mlton (recommended).</flag>
+		<flag name="pax_kernel">Enable if the user plans to run the
+		package under a pax enabled hardened kernel</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">mlton</remote-id>
+	</upstream>
+</pkgmetadata>

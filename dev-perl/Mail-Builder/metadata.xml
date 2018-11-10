@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>dev-zero@gentoo.org</email>
+    <name>Tiziano Müller</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Mail-Builder</remote-id>
+    <remote-id type="cpan-module">Mail::Builder</remote-id>
+    <remote-id type="cpan-module">Mail::Builder::Address</remote-id>
+    <remote-id type="cpan-module">Mail::Builder::Attachment</remote-id>
+    <remote-id type="cpan-module">Mail::Builder::Attachment::Data</remote-id>
+    <remote-id type="cpan-module">Mail::Builder::Attachment::File</remote-id>
+    <remote-id type="cpan-module">Mail::Builder::Image</remote-id>
+    <remote-id type="cpan-module">Mail::Builder::Image::Data</remote-id>
+    <remote-id type="cpan-module">Mail::Builder::Image::File</remote-id>
+    <remote-id type="cpan-module">Mail::Builder::List</remote-id>
+    <remote-id type="cpan-module">Mail::Builder::Role::File</remote-id>
+    <remote-id type="cpan-module">Mail::Builder::TypeConstraints</remote-id>
+    <remote-id type="cpan-module">Mail::Builder::Utils</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+Section "Device"
+	Identifier  "Device-vboxvideo"
+	Driver      "vboxvideo"
+EndSection
+Section "Screen"
+	Identifier  "Screen-vboxvideo"
+	Device      "Device-vboxvideo"
+EndSection
+
+Section "ServerLayout"
+	Identifier  "Default Layout"
+	Screen      "Screen-vboxvideo"
+EndSection

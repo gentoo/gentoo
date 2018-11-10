@@ -1,0 +1,433 @@
+From 44d5360d0caed1f4f364691f789fe825fcd17a3e Mon Sep 17 00:00:00 2001
+From: crito <crito@fnordpipe.org>
+Date: Mon, 1 Oct 2018 20:10:05 +0200
+Subject: [PATCH] fix libressl compat
+
+add conditions to build with libressl and add missing functions.
+backported from upstream repo.
+---
+ src/compat.c  | 11 ++++++++---
+ src/digest.c  |  2 +-
+ src/ec.c      |  2 +-
+ src/engine.c  | 10 +++++-----
+ src/lhash.c   |  7 ++++---
+ src/openssl.c | 12 ++++++++++--
+ src/ots.c     |  5 +++++
+ src/pkcs7.c   | 24 ++++++++++++------------
+ src/private.h |  7 ++++---
+ src/sm2.c     |  2 +-
+ src/srp.c     |  3 ++-
+ src/x509.c    |  2 +-
+ 12 files changed, 54 insertions(+), 33 deletions(-)
+
+diff --git a/src/compat.c b/src/compat.c
+index cc4cc21..cc45845 100644
+--- a/src/compat.c
++++ b/src/compat.c
+@@ -5,7 +5,7 @@
+ #include "openssl.h"
+ #include "private.h"
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ int BIO_up_ref(BIO *b)
+ {
+   CRYPTO_add(&b->references, 1, CRYPTO_LOCK_BIO);
+@@ -16,6 +16,11 @@ int X509_up_ref(X509 *x)
+   CRYPTO_add(&x->references, 1, CRYPTO_LOCK_X509);
+   return 1;
+ }
++int X509_CRL_up_ref(X509_CRL *x)
++{
++  int refs = CRYPTO_add(&x->references, 1, CRYPTO_LOCK_X509_CRL);
++  return (refs > 1) ? 1 : 0;
++}
+ int X509_STORE_up_ref(X509_STORE *s)
+ {
+   CRYPTO_add(&s->references, 1, CRYPTO_LOCK_X509_STORE);
+@@ -464,7 +469,7 @@ const ASN1_BIT_STRING *TS_STATUS_INFO_get0_failure_info(const TS_STATUS_INFO *a)
+   return a->failure_info;
+ }
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10002000L
++#if OPENSSL_VERSION_NUMBER < 0x10002000L || defined(LIBRESSL_VERSION_NUMBER)
+ int i2d_re_X509_tbs(X509 *x, unsigned char **pp)
+ {
+   x->cert_info->enc.modified = 1;
+@@ -527,4 +532,4 @@ unsigned char *TS_VERIFY_CTX_set_imprint(TS_VERIFY_CTX *ctx,
+   return ctx->imprint;
+ }
+ 
+-#endif /* < 1.1.0 */
+\ No newline at end of file
++#endif /* < 1.1.0 */
+diff --git a/src/digest.c b/src/digest.c
+index 02e8fe1..0dcf65b 100644
+--- a/src/digest.c
++++ b/src/digest.c
+@@ -468,7 +468,7 @@ restore md data
+ static LUA_FUNCTION(openssl_digest_ctx_data)
+ {
+   EVP_MD_CTX *ctx = CHECK_OBJECT(1, EVP_MD_CTX, "openssl.evp_digest_ctx");
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+   if (lua_isnone(L, 2))
+   {
+     lua_pushlstring(L, ctx->md_data, ctx->digest->ctx_size);
+diff --git a/src/ec.c b/src/ec.c
+index f0d2b6b..5db32db 100644
+--- a/src/ec.c
++++ b/src/ec.c
+@@ -611,7 +611,7 @@ static int openssl_ecdsa_set_method(lua_State *L)
+ {
+   EC_KEY *ec = CHECK_OBJECT(1, EC_KEY, "openssl.ec_key");
+   ENGINE *e = CHECK_OBJECT(2, ENGINE, "openssl.engine");
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+   const ECDSA_METHOD *m = ENGINE_get_ECDSA(e);
+   if (m) {
+     int r = ECDSA_set_method(ec, m);
+diff --git a/src/engine.c b/src/engine.c
+index 1a26d8b..f12ca53 100644
+--- a/src/engine.c
++++ b/src/engine.c
+@@ -14,7 +14,7 @@ enum
+ {
+   TYPE_RSA,
+   TYPE_DSA,
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+   TYPE_ECDH,
+   TYPE_ECDSA,
+ #else
+@@ -24,7 +24,7 @@ enum
+   TYPE_RAND,
+   TYPE_CIPHERS,
+   TYPE_DIGESTS,
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+   TYPE_STORE,
+ #else
+   TYPE_PKEY_METHODS,
+@@ -150,7 +150,7 @@ static int openssl_engine_register(lua_State*L)
+       else
+         ENGINE_register_DSA(eng);
+       break;
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+     case TYPE_ECDH:
+       if (unregister)
+         ENGINE_unregister_ECDH(eng);
+@@ -183,7 +183,7 @@ static int openssl_engine_register(lua_State*L)
+       else
+         ENGINE_register_RAND(eng);
+       break;
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+     case TYPE_STORE:
+       if (unregister)
+         ENGINE_unregister_STORE(eng);
+@@ -392,7 +392,7 @@ static int openssl_engine_set_default(lua_State*L)
+     case TYPE_DSA:
+       ret = ENGINE_set_default_DSA(eng);
+       break;
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+     case TYPE_ECDH:
+       ret = ENGINE_set_default_ECDH(eng);
+       break;
+diff --git a/src/lhash.c b/src/lhash.c
+index 564bb52..8057efb 100644
+--- a/src/lhash.c
++++ b/src/lhash.c
+@@ -130,21 +130,22 @@ static void dump_value_doall_arg(CONF_VALUE *a, lua_State *L)
+   }
+ }
+ 
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
+ IMPLEMENT_LHASH_DOALL_ARG_CONST(CONF_VALUE, lua_State);
+ #elif OPENSSL_VERSION_NUMBER >= 0x10000002L
+ static IMPLEMENT_LHASH_DOALL_ARG_FN(dump_value, CONF_VALUE, lua_State)
+ #endif
++#if !defined(LIBRESSL_VERSION_NUMBER)
+ #define LHM_lh_doall_arg(type, lh, fn, arg_type, arg) \
+   lh_doall_arg(CHECKED_LHASH_OF(type, lh), fn, CHECKED_PTR_OF(arg_type, arg))
+-
++#endif
+ 
+ static LUA_FUNCTION(openssl_lhash_parse)
+ {
+   LHASH* lhash = CHECK_OBJECT(1, LHASH, "openssl.lhash");
+ 
+   lua_newtable(L);
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
+   lh_CONF_VALUE_doall_lua_State(lhash, dump_value_doall_arg, L);
+ #elif OPENSSL_VERSION_NUMBER >= 0x10000002L
+   lh_CONF_VALUE_doall_arg(lhash, LHASH_DOALL_ARG_FN(dump_value), lua_State, L);
+diff --git a/src/openssl.c b/src/openssl.c
+index 994c22b..debea63 100644
+--- a/src/openssl.c
++++ b/src/openssl.c
+@@ -338,6 +338,9 @@ get FIPS mode
+ */
+ static int openssl_fips_mode(lua_State *L)
+ {
++#if defined(LIBRESSL_VERSION_NUMBER)
++  return 0;
++#else
+   int ret =0, on = 0;
+   if(lua_isnone(L, 1))
+   {
+@@ -353,6 +356,7 @@ static int openssl_fips_mode(lua_State *L)
+   else
+     ret = openssl_pushresult(L, ret);
+   return ret;
++#endif
+ }
+ 
+ #ifndef OPENSSL_NO_CRYPTO_MDEBUG
+@@ -405,7 +409,9 @@ void CRYPTO_thread_cleanup(void);
+ 
+ static int luaclose_openssl(lua_State *L)
+ {
++#if !defined(LIBRESSL_VERSION_NUMBER)
+   FIPS_mode_set(0);
++#endif
+ #if defined(OPENSSL_THREADS)
+   CRYPTO_thread_cleanup();
+ #endif
+@@ -421,7 +427,7 @@ static int luaclose_openssl(lua_State *L)
+   CRYPTO_cleanup_all_ex_data();
+ #ifndef OPENSSL_NO_CRYPTO_MDEBUG
+ #if !(defined(OPENSSL_NO_STDIO) || defined(OPENSSL_NO_FP_API))
+-#if OPENSSL_VERSION_NUMBER < 0x10101000L
++#if OPENSSL_VERSION_NUMBER < 0x10101000L || defined(LIBRESSL_VERSION_NUMBER)
+   CRYPTO_mem_leaks_fp(stderr);
+ #else
+   if(CRYPTO_mem_leaks_fp(stderr)!=1)
+@@ -541,13 +547,15 @@ LUALIB_API int luaopen_openssl(lua_State*L)
+   luaopen_dh(L);
+   lua_setfield(L, -2, "dh");
+ 
+-#if (OPENSSL_VERSION_NUMBER >= 0x10101007L) && !defined(OPENSSL_NO_SM2)
++#if (OPENSSL_VERSION_NUMBER >= 0x10101007L) && !defined(OPENSSL_NO_SM2) && !defined(LIBRESSL_VERSION_NUMBER)
+   luaopen_sm2(L);
+   lua_setfield(L, -2, "sm2");
+ #endif
+ 
++#if !defined(LIBRESSL_VERSION_NUMBER)
+   luaopen_srp(L);
+   lua_setfield(L, -2, "srp");
++#endif
+ 
+ #ifdef ENABLE_OPENSSL_GLOBAL
+   lua_pushvalue(L, -1);
+diff --git a/src/ots.c b/src/ots.c
+index 6b75946..762d17e 100644
+--- a/src/ots.c
++++ b/src/ots.c
+@@ -1265,7 +1265,12 @@ static LUA_FUNCTION(openssl_ts_resp_ctx_set_time_cb)
+   arg->cb_arg = luaL_ref(L, LUA_REGISTRYINDEX);
+ 
+   openssl_valueset(L, ctx, time_cb_key);
++#if defined(LIBRESSL_VERSION_NUMBER)
++  ctx->time_cb = openssl_time_cb;
++  ctx->time_cb_data = L;
++#else
+   TS_RESP_CTX_set_time_cb(ctx, openssl_time_cb, L);
++#endif
+   return 0;
+ }
+ 
+diff --git a/src/pkcs7.c b/src/pkcs7.c
+index f043c86..f0e5221 100644
+--- a/src/pkcs7.c
++++ b/src/pkcs7.c
+@@ -346,7 +346,7 @@ static int openssl_pkcs7_dataFinal(PKCS7 *p7, BIO *bio)
+     os = p7->d.signed_and_enveloped->enc_data->enc_data;
+     if (!os)
+     {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+       os = M_ASN1_OCTET_STRING_new();
+ #else
+       os = ASN1_OCTET_STRING_new();
+@@ -364,7 +364,7 @@ static int openssl_pkcs7_dataFinal(PKCS7 *p7, BIO *bio)
+     os = p7->d.enveloped->enc_data->enc_data;
+     if (!os)
+     {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+       os = M_ASN1_OCTET_STRING_new();
+ #else
+       os = ASN1_OCTET_STRING_new();
+@@ -383,7 +383,7 @@ static int openssl_pkcs7_dataFinal(PKCS7 *p7, BIO *bio)
+     /* If detached data then the content is excluded */
+     if (PKCS7_type_is_data(p7->d.sign->contents) && p7->detached)
+     {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+       M_ASN1_OCTET_STRING_free(os);
+ #else
+       ASN1_OCTET_STRING_free(os);
+@@ -398,7 +398,7 @@ static int openssl_pkcs7_dataFinal(PKCS7 *p7, BIO *bio)
+     /* If detached data then the content is excluded */
+     if (PKCS7_type_is_data(p7->d.digest->contents) && p7->detached)
+     {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+       M_ASN1_OCTET_STRING_free(os);
+ #else
+       ASN1_OCTET_STRING_free(os);
+@@ -474,7 +474,7 @@ static int openssl_pkcs7_dataFinal(PKCS7 *p7, BIO *bio)
+       goto err;
+     if (!EVP_DigestFinal_ex(mdc, md_data, &md_len))
+       goto err;
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+     M_ASN1_OCTET_STRING_set(p7->d.digest->digest, md_data, md_len);
+ #else
+     ASN1_OCTET_STRING_set(p7->d.digest->digest, md_data, md_len);
+@@ -577,7 +577,7 @@ int PKCS7_signatureVerify_digest(PKCS7 *p7, PKCS7_SIGNER_INFO *si, X509 *x509,
+ 
+   md_type = OBJ_obj2nid(si->digest_alg->algorithm);
+   md = EVP_get_digestbynid(md_type);
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+   if (!md || !data || (hash && len != (size_t) md->ctx_size) )
+     goto err;
+ 
+@@ -1137,7 +1137,7 @@ static LUA_FUNCTION(openssl_pkcs7_sign_digest)
+     os = p7->d.signed_and_enveloped->enc_data->enc_data;
+     if (!os)
+     {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+       os = M_ASN1_OCTET_STRING_new();
+ #else
+       os = ASN1_OCTET_STRING_new();
+@@ -1155,7 +1155,7 @@ static LUA_FUNCTION(openssl_pkcs7_sign_digest)
+     os = p7->d.enveloped->enc_data->enc_data;
+     if (!os)
+     {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+       os = M_ASN1_OCTET_STRING_new();
+ #else
+       os = ASN1_OCTET_STRING_new();
+@@ -1174,7 +1174,7 @@ static LUA_FUNCTION(openssl_pkcs7_sign_digest)
+     /* If detached data then the content is excluded */
+     if (PKCS7_type_is_data(p7->d.sign->contents) && p7->detached)
+     {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+       M_ASN1_OCTET_STRING_free(os);
+ #else
+       ASN1_OCTET_STRING_free(os);
+@@ -1189,7 +1189,7 @@ static LUA_FUNCTION(openssl_pkcs7_sign_digest)
+     /* If detached data then the content is excluded */
+     if (PKCS7_type_is_data(p7->d.digest->contents) && p7->detached)
+     {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+       M_ASN1_OCTET_STRING_free(os);
+ #else
+       ASN1_OCTET_STRING_free(os);
+@@ -1217,7 +1217,7 @@ static LUA_FUNCTION(openssl_pkcs7_sign_digest)
+ 
+       if (hash)
+       {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+         if (l == (size_t) mdc->digest->ctx_size)
+         {
+           memcpy(mdc->md_data, data, l);
+@@ -1272,7 +1272,7 @@ static LUA_FUNCTION(openssl_pkcs7_sign_digest)
+     unsigned int md_len;
+     md = EVP_get_digestbynid(OBJ_obj2nid(p7->d.digest->md->algorithm));
+     EVP_DigestInit_ex(mdc, md, NULL);
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+     if (l == (size_t) mdc->digest->ctx_size)
+     {
+       memcpy(mdc->md_data, data, l);
+diff --git a/src/private.h b/src/private.h
+index 8e9d5b8..7140cae 100644
+--- a/src/private.h
++++ b/src/private.h
+@@ -46,9 +46,10 @@ extern "C" {
+   luaL_getmetatable(L,"openssl.bn");                    \
+   lua_setmetatable(L,-2)
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ int BIO_up_ref(BIO *b);
+ int X509_up_ref(X509 *x);
++int X509_CRL_up_ref(X509_CRL *x);
+ int X509_STORE_up_ref(X509_STORE *s);
+ int EVP_PKEY_up_ref(EVP_PKEY *pkey);
+ 
+@@ -124,12 +125,12 @@ STACK_OF(X509) *TS_VERIFY_CTS_set_certs(TS_VERIFY_CTX *ctx,
+ unsigned char *TS_VERIFY_CTX_set_imprint(TS_VERIFY_CTX *ctx,
+     unsigned char *hexstr, long len);
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10002000L
++#if OPENSSL_VERSION_NUMBER < 0x10002000L || defined(LIBRESSL_VERSION_NUMBER)
+ int i2d_re_X509_tbs(X509 *x, unsigned char **pp);
++#endif
+ void X509_get0_signature(ASN1_BIT_STRING **psig, X509_ALGOR **palg,
+                          const X509 *x);
+ int X509_get_signature_nid(const X509 *x);
+-#endif
+ 
+ #endif
+ 
+diff --git a/src/sm2.c b/src/sm2.c
+index 0655888..1db3198 100644
+--- a/src/sm2.c
++++ b/src/sm2.c
+@@ -1,7 +1,7 @@
+ #include "openssl.h"
+ #include "private.h"
+ 
+-#if (OPENSSL_VERSION_NUMBER >= 0x10101007L) && !defined(OPENSSL_NO_SM2)
++#if (OPENSSL_VERSION_NUMBER >= 0x10101007L) && !defined(OPENSSL_NO_SM2) && !defined(LIBRESSL_VERSION_NUMBER)
+ 
+ #  include <openssl/sm2.h>
+ 
+diff --git a/src/srp.c b/src/srp.c
+index 85626b5..6fb0a50 100644
+--- a/src/srp.c
++++ b/src/srp.c
+@@ -1,6 +1,7 @@
+ #include "openssl.h"
+ #include "private.h"
+ 
++#if !defined(LIBRESSL_VERSION_NUMBER)
+ #include <openssl/srp.h>
+ #include <openssl/bn.h>
+ 
+@@ -198,4 +199,4 @@ int luaopen_srp(lua_State *L)
+   lua_settable(L, -3);
+   return 1;
+ }
+-
++#endif
+diff --git a/src/x509.c b/src/x509.c
+index 94e9982..07adb54 100644
+--- a/src/x509.c
++++ b/src/x509.c
+@@ -1196,7 +1196,7 @@ static int openssl_x509_extensions(lua_State* L)
+   else
+   {
+     STACK_OF(X509_EXTENSION) *others = (STACK_OF(X509_EXTENSION) *)openssl_sk_x509_extension_fromtable(L, 2);
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+     sk_X509_EXTENSION_pop_free(self->cert_info->extensions, X509_EXTENSION_free);
+     self->cert_info->extensions = others;
+ #else
+-- 
+2.16.4
+

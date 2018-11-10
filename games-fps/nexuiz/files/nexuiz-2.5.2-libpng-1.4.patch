@@ -1,0 +1,42 @@
+fix compatibility with >=libpng-1.4
+https://bugs.gentoo.org/show_bug.cgi?id=491610
+
+diff -Nur darkplaces.old/image_png.c darkplaces/image_png.c
+--- darkplaces.old/image_png.c	2009-09-15 06:08:02.000000000 +0300
++++ darkplaces/image_png.c	2010-01-28 01:23:24.000000000 +0200
+@@ -36,7 +36,7 @@
+ static void*			(*qpng_create_info_struct)	(void*);
+ static void				(*qpng_read_info)			(void*, void*);
+ static void				(*qpng_set_expand)			(void*);
+-static void				(*qpng_set_gray_1_2_4_to_8)	(void*);
++static void				(*qpng_set_expand_gray_1_2_4_to_8)	(void*);
+ static void				(*qpng_set_palette_to_rgb)	(void*);
+ static void				(*qpng_set_tRNS_to_alpha)	(void*);
+ static void				(*qpng_set_gray_to_rgb)		(void*);
+@@ -61,7 +61,7 @@
+ 	{"png_create_info_struct",	(void **) &qpng_create_info_struct},
+ 	{"png_read_info",			(void **) &qpng_read_info},
+ 	{"png_set_expand",			(void **) &qpng_set_expand},
+-	{"png_set_gray_1_2_4_to_8",	(void **) &qpng_set_gray_1_2_4_to_8},
++	{"png_set_expand_gray_1_2_4_to_8",	(void **) &qpng_set_expand_gray_1_2_4_to_8},
+ 	{"png_set_palette_to_rgb",	(void **) &qpng_set_palette_to_rgb},
+ 	{"png_set_tRNS_to_alpha",	(void **) &qpng_set_tRNS_to_alpha},
+ 	{"png_set_gray_to_rgb",		(void **) &qpng_set_gray_to_rgb},
+@@ -110,7 +110,7 @@
+ #elif defined(MACOSX)
+ 		"libpng12.0.dylib",
+ #else
+-		"libpng12.so.0",
++		"libpng14.so.0",
+ 		"libpng.so", // FreeBSD
+ #endif
+ 		NULL
+@@ -311,7 +311,7 @@
+ 	{
+ 		qpng_set_gray_to_rgb(png);
+ 		if (my_png.BitDepth < 8)
+-			qpng_set_gray_1_2_4_to_8(png);
++			qpng_set_expand_gray_1_2_4_to_8(png);
+ 	}
+ 
+ 	if (qpng_get_valid(png, pnginfo, PNG_INFO_tRNS))

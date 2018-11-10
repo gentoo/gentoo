@@ -1,0 +1,27 @@
+fix building with -O0
+
+http://code.google.com/p/pam-bioapi/issues/detail?id=3
+http://bugs.gentoo.org/241322
+
+fix building with newer glibc
+
+https://bugs.gentoo.org/512106
+
+--- libpam_bioapi/pam_bioapi.h
++++ libpam_bioapi/pam_bioapi.h
+@@ -19,6 +19,7 @@
+ #include <sys/stat.h>
+ #include <sys/types.h> /* defines 'uid_t', etc.              */
+ 
++#include <sys/resource.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ #include "earray.h"
+@@ -23,6 +23,7 @@
+ #include <sys/wait.h>
+ #include "earray.h"
+ 
++#include <locale.h>
+ #include <libintl.h> /* gnu gettext support */
+ #define _(String) gettext (String)
+ 

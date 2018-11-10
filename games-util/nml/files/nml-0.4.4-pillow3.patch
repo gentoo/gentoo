@@ -1,0 +1,11 @@
+--- nml-0.4.4.orig/nml/lz77.py
++++ nml-0.4.4/nml/lz77.py
+@@ -25,7 +25,7 @@
+     @return: Compressed data.
+     @rtype:  C{bytearray}
+     """
+-    stream = data.tostring()
++    stream = data.tobytes()
+     position = 0
+     output = array.array('B')
+     literal_bytes = array.array('B')

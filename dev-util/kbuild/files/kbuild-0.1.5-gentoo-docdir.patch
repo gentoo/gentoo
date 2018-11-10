@@ -1,0 +1,11 @@
+--- a/Config.kmk
++++ b/Config.kmk
+@@ -147,7 +147,7 @@
+   MY_INST_DATA := $(MY_INST_ROOT)share/kBuild/
+  endif
+  ifndef MY_INST_DOC
+-  MY_INST_DOC := $(MY_INST_ROOT)share/doc/kBuild-$(KBUILD_VERSION)/
++  MY_INST_DOC := $(MY_INST_ROOT)share/doc/$(PF)/
+  endif
+  if !defined(MY_INST_BIN_MODE) && defined(MY_INST_MODE)
+   MY_INST_BIN_MODE := $(MY_INST_MODE),a+x

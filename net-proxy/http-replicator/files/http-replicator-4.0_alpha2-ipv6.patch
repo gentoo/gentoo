@@ -1,0 +1,68 @@
+diff -ur a/fiber.py b/fiber.py
+--- a/fiber.py	2018-10-27 12:52:10.536264605 -0400
++++ b/fiber.py	2018-10-27 12:57:26.688730570 -0400
+@@ -180,10 +180,10 @@
+   os.dup2( nul.fileno(), sys.stdin.fileno()  )
+ 
+ 
+-def spawn( generator, port, debug, log, pidfile ):
++def spawn( generator, port, debug, log, pidfile, listenfamily ):
+ 
+   try:
+-    listener = socket.socket( socket.AF_INET, socket.SOCK_STREAM )
++    listener = socket.socket( listenfamily, socket.SOCK_STREAM )
+     listener.setblocking( 0 )
+     listener.setsockopt( socket.SOL_SOCKET, socket.SO_REUSEADDR, listener.getsockopt( socket.SOL_SOCKET, socket.SO_REUSEADDR ) | 1 )
+     listener.bind( ( '', port ) )
+diff -ur a/http-replicator b/http-replicator
+--- a/http-replicator	2018-10-27 12:52:10.542931816 -0400
++++ b/http-replicator	2018-10-27 12:59:36.345978943 -0400
+@@ -9,7 +9,7 @@
+ 
+ def Replicator( client, address ):
+ 
+-  print 'Accepted request from %s:%i' % address
++  print 'Accepted request from [%s]:%i' % address[0:2]
+ 
+   request = Request.HttpRequest()
+   while not request.Protocol:
+@@ -60,4 +60,4 @@
+   print 'Transaction successfully completed'
+ 
+ 
+-fiber.spawn( Replicator, Params.PORT, Params.DEBUG, Params.LOG, Params.PIDFILE )
++fiber.spawn( Replicator, Params.PORT, Params.DEBUG, Params.LOG, Params.PIDFILE, Params.LISTENFAMILY )
+diff -ur a/Params.py b/Params.py
+--- a/Params.py	2018-10-27 12:52:10.549599026 -0400
++++ b/Params.py	2018-10-27 12:55:31.772685822 -0400
+@@ -9,6 +9,7 @@
+ TIMEOUT = 15
+ PIDFILE = False
+ FAMILY = socket.AF_INET
++LISTENFAMILY = socket.AF_INET
+ FLAT = False
+ STATIC = False
+ ONLINE = True
+@@ -63,6 +64,7 @@
+       sys.exit( 'Error: %s requires a positive numerical argument' % _arg )
+   elif _arg in ( '-6', '--ipv6' ):
+     FAMILY = socket.AF_UNSPEC
++    LISTENFAMILY = socket.AF_INET6
+   elif _arg == '--flat':
+     FLAT = True
+   elif _arg == '--static':
+diff --git a/Protocol.py b/Protocol.py
+--- a/Protocol.py
++++ b/Protocol.py
+@@ -13,7 +13,7 @@ def connect( addr ):
+ 
+   family, socktype, proto, canonname, sockaddr = DNSCache[ addr ][ 0 ]
+ 
+-  print 'Connecting to %s:%i' % sockaddr
++  print 'Connecting to [%s]:%i' % sockaddr[0:2]
+   sock = socket.socket( family, socktype, proto )
+   sock.setblocking( 0 )
+   sock.connect_ex( sockaddr )
+-- 
+2.18.1
+

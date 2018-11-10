@@ -1,0 +1,51 @@
+--- ./utils/fwparam_ibft/fwparam_ppc.c	2016-09-29 13:33:24.000000000 -0500
++++ ./utils/fwparam_ibft/fwparam_ppc.c	2017-01-02 11:37:32.738351217 -0600
+@@ -356,7 +356,7 @@
+ 	 * Sort the nics into "natural" order.	The proc fs
+ 	 * device-tree has them in somewhat random, or reversed order.
+ 	 */
+-	qsort(niclist, nic_count, sizeof(char *), (__compar_fn_t)nic_cmp);
++	qsort(niclist, nic_count, sizeof(char *), (int (*)(const void *, const void *))nic_cmp);
+ 
+ 	snprintf(prefix, sizeof(prefix), "%s/%s", devtree, "aliases");
+ 	dev_count = 0;
+--- ./usr/idbm.c.orig
++++ ./usr/idbm.c
+@@ -25,6 +25,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <errno.h>
++#include <fcntl.h>
+ #include <dirent.h>
+ #include <limits.h>
+ #include <sys/stat.h>
+--- a/usr/iscsiadm.c	2016-09-29 13:33:24.000000000 -0500
++++ b/usr/iscsiadm.c	2017-01-02 11:46:37.643506953 -0600
+@@ -3262,6 +3262,7 @@
+ 	int tpgt = PORTAL_GROUP_TAG_UNKNOWN, killiscsid=-1, do_show=0;
+ 	int packet_size=32, ping_count=1, ping_interval=0;
+ 	int do_discover = 0, sub_mode = -1;
++	int argerror = 0;
+ 	int portal_type = -1;
+ 	struct sigaction sa_old;
+ 	struct sigaction sa_new;
+@@ -3426,6 +3427,9 @@
+ 			break;
+ 		case 'h':
+ 			usage(0);
++		case '?':
++			log_error("unrecognized character '%c'", optopt);
++			argerror = 1;
+ 		}
+ 
+ 		if (name && value) {
+@@ -3441,8 +3445,7 @@
+ 		}
+ 	}
+ 
+-	if (optopt) {
+-		log_error("unrecognized character '%c'", optopt);
++	if (argerror) {
+ 		rc = ISCSI_ERR_INVAL;
+ 		goto free_ifaces;
+ 	}

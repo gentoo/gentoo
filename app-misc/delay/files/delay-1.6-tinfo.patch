@@ -1,0 +1,16 @@
+--- a/configure.in
++++ b/configure.in
+@@ -35,8 +35,11 @@
+ AC_STRUCT_TM
+ AC_STRUCT_TM_GMTOFF
+ 
+-AC_CHECK_LIB(curses, initscr)
+-AC_CHECK_HEADERS(curses.h)
++PKG_CHECK_MODULES([ncurses],[ncurses],[
++  LIBS="$LIBS $ncurses_LIBS"
++  AC_DEFINE([HAVE_CURSES_H])
++  AC_DEFINE([HAVE_LIBCURSES])],
++  [AC_MSG_ERROR([ncurses not found])])
+ 
+ AC_OUTPUT(Makefile)
+ 

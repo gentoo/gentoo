@@ -1,0 +1,48 @@
+From f1355920fbe819c5b1f5a870fc76cffcdd6328f0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 10 Feb 2017 22:44:53 +0100
+Subject: [PATCH 1/2] [test] Fix test dependencies when using installed tools
+
+Use the LLVM_UTILS_PROVIDED variable to determine whether test tool
+dependencies should be exposed for clang-tools-extra tests. If clang is
+being built stand-alone and LLVM test tools (FileCheck, count and not)
+are installed, the top-level CMakeLists.txt of clang sets this variable
+to indicate that they will not be built as a part of this build,
+and therefore no dependencies should be emitted for them. This fixes
+the dependency errors when building clang stand-alone with tests
+enabled.
+---
+ test/CMakeLists.txt | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index a852ef60..c26bd5c4 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -31,9 +31,6 @@ if(CLANG_TOOLS_TEST_USE_VG)
+ endif()
+ 
+ set(CLANG_TOOLS_TEST_DEPS
+-  # Base line deps.
+-  FileCheck count not
+-
+   # clang-tidy tests require it.
+   clang-headers
+ 
+@@ -58,6 +55,13 @@ set(CLANG_TOOLS_TEST_DEPS
+   ExtraToolsUnitTests
+   )
+ 
++if(NOT LLVM_UTILS_PROVIDED)
++  list(APPEND CLANG_TOOLS_TEST_DEPS
++    # Base line deps.
++    FileCheck count not
++    )
++endif()
++
+ add_lit_testsuite(check-clang-tools "Running the Clang extra tools' regression tests"
+   ${CMAKE_CURRENT_BINARY_DIR}
+   DEPENDS ${CLANG_TOOLS_TEST_DEPS}
+-- 
+2.12.0
+

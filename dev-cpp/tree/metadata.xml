@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		The tree.hh library for C++ provides an STL-like container class for
+		n-ary trees, templated over the data stored at the nodes. Various
+		types of iterators are provided (post-order, pre-order, and
+		others). Where possible the access methods are compatible with the
+		STL or alternative algorithms are available.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,25 @@
+diff -ruN Bastille-gentoo-2/Install.sh Bastille/Install.sh
+--- Bastille-gentoo-2/Install.sh	2014-12-09 23:05:55.674808824 +0100
++++ Bastille/Install.sh	2014-12-09 23:17:25.907847419 +0100
+@@ -3,7 +3,7 @@
+ umask 077
+ 
+ mkdir -p ${DESTDIR}/usr/sbin
+-mkdir -p ${DESTDIR}/usr/lib/perl5/site_perl/Curses
++mkdir -p ${DESTDIR}/${VENDOR_LIB}/Curses
+ mkdir -p ${DESTDIR}/usr/lib/Bastille
+ mkdir -p ${DESTDIR}/usr/share/Bastille
+ mkdir -p ${DESTDIR}/usr/share/Bastille/OSMap
+@@ -13,9 +13,9 @@
+  
+ cp AutomatedBastille ${DESTDIR}/usr/sbin/
+ cp BastilleBackEnd ${DESTDIR}/usr/sbin
+-cp Bastille_Curses.pm ${DESTDIR}/usr/lib/perl5/site_perl
+-cp Bastille_Tk.pm ${DESTDIR}/usr/lib/perl5/site_perl
+-cp Curses/Widgets.pm ${DESTDIR}/usr/lib/perl5/site_perl/Curses
++cp Bastille_Curses.pm ${DESTDIR}/${VENDOR_LIB}
++cp Bastille_Tk.pm ${DESTDIR}/${VENDOR_LIB}
++cp Curses/Widgets.pm ${DESTDIR}/${VENDOR_LIB}/Curses
+ cp InteractiveBastille ${DESTDIR}/usr/sbin
+ # Questions.txt has been replaced by Modules.txt and Questions/
+ #cp Questions.txt ${DESTDIR}/usr/share/Bastille

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-python category contains libraries, utilities or
+		bindings written in or for the Python programming language. 
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-python enthält Bibliotheken und Werkzeuge für die
+		Programmiersprache Python.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-python contiene librerias y utilidades referentes al
+		lenguaje de programación Python.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-pythonカテゴリーにはPythonプログラミング言語で記述された/のために
+		記述されたライブラリーと>ユーティリティとバインディングが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-python categorie bevat bibliotheken en hulpmiddelen voor het 
+		gebruik	van de programmeertaal Python.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-python chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình Python.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-python contiene librerie ed utilità per il linguaggio
+		di programmazione Python.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-python contém bibliotecas, utilitários e
+		bindings escritos em ou para a linguagem de programação Python.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-python zawiera biblioteki, narzędzia i powiązania
+		(bindings) napisane w lub stworzone do pisania w języku programowania
+		Python.
+	</longdescription>
+</catmetadata>
+

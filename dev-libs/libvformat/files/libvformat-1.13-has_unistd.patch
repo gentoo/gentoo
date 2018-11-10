@@ -1,0 +1,13 @@
+--- a/src/vf_reader.c
++++ b/src/vf_reader.c
+@@ -87,8 +87,9 @@
+ 
+ #include <stdio.h>
+ #include <sys/stat.h>
++#include "config.h"
+ 
+-#if defined(HAS_UNISTD_H)
++#if defined(HAVE_UNISTD_H)
+ #include <unistd.h>
+ #endif
+ 

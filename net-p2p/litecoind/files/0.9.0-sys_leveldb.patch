@@ -1,0 +1,34 @@
+commit c38e0af3e021eb0b2aba846c77b06ca71de06b11 (personal-github/sys_leveldb, sys_leveldb)
+Author: Luke Dashjr <luke-jr+git@utopios.org>
+Date:   Mon Sep 9 03:06:17 2013 +0000
+
+    configure: Add unsupported --with-system-leveldb configure flag
+
+diff --git a/configure.ac b/configure.ac
+index 3ed4549..5a5852d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -332,10 +332,22 @@ AC_TRY_COMPILE([#include <sys/socket.h>],
+  [ AC_MSG_RESULT(no)]
+ )
+ 
++dnl Check for leveldb, only if explicitly requested
+ LEVELDB_CPPFLAGS=
+ LIBLEVELDB=
+ LIBMEMENV=
+-AM_CONDITIONAL([EMBEDDED_LEVELDB],[true])
++AC_ARG_WITH([system-leveldb],
++  [AS_HELP_STRING([--with-system-leveldb],
++  [Build with system LevelDB (default is no; DANGEROUS; NOT SUPPORTED)])],
++  [system_leveldb=$withval],
++  [system_leveldb=no]
++)
++if test x$system_leveldb != xno; then
++  LEVELDB_CPPFLAGS=
++  LIBLEVELDB=-lleveldb
++  LIBMEMENV=-lmemenv
++fi
++AM_CONDITIONAL([EMBEDDED_LEVELDB],[test x$system_leveldb = xno])
+ AC_SUBST(LEVELDB_CPPFLAGS)
+ AC_SUBST(LIBLEVELDB)
+ AC_SUBST(LIBMEMENV)

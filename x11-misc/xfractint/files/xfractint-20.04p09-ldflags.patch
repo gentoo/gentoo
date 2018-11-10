@@ -1,0 +1,29 @@
+--- Makefile
++++ Makefile
+@@ -125,7 +125,7 @@
+ 
+ ifeq ($(AS),/usr/bin/nasm)
+ 
+-CFLAGS = -I$(HFD) $(DEFINES) -g -DBIG_ANSI_C -DLINUX -DNASM -fno-builtin
++CFLAGS = -I$(HFD) $(DEFINES) -DBIG_ANSI_C -DLINUX -DNASM -fno-builtin
+ #CFLAGS = -I. -D_CONST $(DEFINES)
+ #CFLAGS = -I$(HFD) $(DEFINES) -g -DBIG_ANSI_C -DLINUX \
+ #         -march=$(ARCH) -DNASM -fno-builtin
+@@ -133,7 +133,7 @@
+ 
+ else
+ 
+-CFLAGS = -I$(HFD) $(DEFINES) -g -DBIG_ANSI_C -DLINUX -fno-builtin
++CFLAGS = -I$(HFD) $(DEFINES) -DBIG_ANSI_C -DLINUX -fno-builtin
+ #CFLAGS = -I$(HFD) $(DEFINES) -g -DBIG_ANSI_C -DLINUX \
+ #         -march=$(ARCH) -fno-builtin
+ #CFLAGS = -I. $(DEFINES) -g -DBIG_ANSI_C -DLINUX -Os -fno-builtin
+@@ -312,7 +312,7 @@
+ 	          "HFD=.${HFD}"
+ 	cd unix ; ${MAKE} all "CC=${CC}" "CFLAGS= -I.${HFD} -I${XFTHFD} ${CFLAGS} ${OPT}" "SRCDIR=${SHRDIR}" \
+ 	          "AS=${AS}" "AFLAGS=${AFLAGS}" "HFD=.${HFD}"
+-	$(CC) -o xfractint $(CFLAGS) $(OPT) $(OBJS) $(U_OBJS) $(LIBS)
++	$(CC) -o xfractint $(CFLAGS) $(LDFLAGS) $(OPT) $(OBJS) $(U_OBJS) $(LIBS)
+ #	strip xfractint
+ 
+ fractint:

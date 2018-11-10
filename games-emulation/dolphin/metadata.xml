@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>slyfox@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="discord-presence">Enables Discord Rich Presence, show the current game on Discord</flag>
+		<flag name="egl">Enable EGL support</flag>
+		<flag name="evdev">Enable evdev input support</flag>
+		<flag name="log">Increase logging output</flag>
+		<flag name="lto">Add support for link-time optimizations.</flag>
+	</use>
+	<longdescription lang="en">
+Dolphin is a Gamecube and Wii emulator. Most games run perfectly or with minor
+bugs. Games are playable at HD quality, with 1080p and more.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">dolphin-emu/dolphin</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+--- src/freemarker/ext/jython/JythonModelCache.java.orig	2015-07-05 08:47:07.035000000 +0000
++++ src/freemarker/ext/jython/JythonModelCache.java	2015-07-05 08:49:31.157000000 +0000
+@@ -10,7 +10,7 @@
+ import org.python.core.PyDictionary;
+ import org.python.core.PyFloat;
+ import org.python.core.PyInteger;
+-import org.python.core.PyJavaInstance;
++import org.python.core.PyJavaType;
+ import org.python.core.PyLong;
+ import org.python.core.PyNone;
+ import org.python.core.PyObject;
+@@ -37,8 +37,8 @@
+     protected TemplateModel create(Object obj) {
+         boolean asHash = false;
+         boolean asSequence = false;
+-        if(obj instanceof PyJavaInstance) {
+-            Object jobj = ((PyJavaInstance)obj).__tojava__(java.lang.Object.class);
++        if(obj instanceof PyJavaType) {
++            Object jobj = PyJavaType.wrapJavaObject(obj).__tojava__(Object.class);
+             // FreeMarker-aware, Jython-wrapped Java objects are left intact 
+             if(jobj instanceof TemplateModel) {
+                 return (TemplateModel)jobj; 

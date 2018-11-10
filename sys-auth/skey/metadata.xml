@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>ulm@gentoo.org</email>
+</maintainer>
+<longdescription lang="en">
+  From RFC2289:
+  One form of attack on networked computing systems is eavesdropping on
+  network connections to obtain authentication information such as the
+  login IDs and passwords of legitimate users. Once this information is
+  captured, it can be used at a later time to gain access to the system.
+  One-time password systems are designed to counter this type of attack,
+  called a "replay attack."
+
+  The authentication system described in this document uses a secret
+  pass-phrase to generate a sequence of one-time (single use) passwords.
+  With this system, the user's secret pass-phrase never needs to cross the
+  network at any time such as during authentication or during pass-phrase
+  changes. Thus, it is not vulnerable to replay attacks. Added security
+  is provided by the property that no secret information need be stored on
+  any system, including the server being protected.
+
+  The OTP system protects against external passive attacks against the
+  authentication subsystem. It does not prevent a network eavesdropper from
+  gaining access to private information and does not provide protection
+  against either "social engineering" or active attacks.
+</longdescription>
+</pkgmetadata>

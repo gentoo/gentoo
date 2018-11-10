@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<use>
+		<flag name="gnat_2016">Compile with dev-lang/gnat-gpl-2016</flag>
+		<flag name="gnat_2017">Compile with dev-lang/gnat-gpl-2017</flag>
+		<flag name="gnat_2018">Compile with dev-lang/gnat-gpl-2018</flag>
+	</use>
+	<longdescription lang="en">
+		GPRbuild is an advanced software tool designed to help automate the
+		construction of multi-language systems. It removes complexity from
+		multi-language development by allowing developers to quickly and easily
+		compile and link software written in a combination of languages
+		including Ada, Assembler, C, C++, and Fortran. Easily extendable by
+		users to cover new toolchains and languages it is primarily aimed at
+		projects of all sizes organized into subsystems and libraries and is
+		particularly well-suited for compiled languages.
+	</longdescription>
+</pkgmetadata>

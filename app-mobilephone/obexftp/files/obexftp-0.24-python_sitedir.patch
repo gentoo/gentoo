@@ -1,0 +1,16 @@
+--- a/swig/python/CMakeLists.txt
++++ b/swig/python/CMakeLists.txt
+@@ -40,11 +40,13 @@
+   OUTPUT_VARIABLE PYTHON_PREFIX
+ )
+ file ( TO_CMAKE_PATH "${PYTHON_PREFIX}" PYTHON_PREFIX )
++if ( NOT PYTHON_SITE_DIR )
+ execute_process (
+   COMMAND ${PYTHON_EXECUTABLE} -c
+   	"import site, sys; sys.stdout.write(site.getsitepackages()[-1])"
+   OUTPUT_VARIABLE PYTHON_SITE_DIR
+ )
++endif ( PYTHON_SITE_DIR )
+ file ( TO_CMAKE_PATH "${PYTHON_SITE_DIR}" PYTHON_SITE_DIR )
+ string ( REGEX REPLACE "^${PYTHON_PREFIX}/" ""
+   PYTHON_SITE_DIR "${PYTHON_SITE_DIR}"

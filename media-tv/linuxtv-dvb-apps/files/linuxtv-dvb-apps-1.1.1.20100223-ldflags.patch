@@ -1,0 +1,20 @@
+--- linuxtv-dvb-apps-1.1.1.20100223/Make.rules
++++ linuxtv-dvb-apps-1.1.1.20100223/Make.rules
+@@ -46,7 +46,7 @@
+ %: %.c
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) -MMD $(LDFLAGS) -o $@ $< $(filter-out %.h %.c,$^) $(LOADLIBES) $(LDLIBS)
+ %.so:
+-	$(CC) -shared -o $@ $^
++	$(CC) $(LDFLAGS) -Wl,-soname -Wl,$@ -shared -o $@ $^
+ %.a:
+ 	$(AR) rcs $@ $^
+ clean::
+@@ -76,7 +76,7 @@
+ 	@$(CC) $(CPPFLAGS) $(CFLAGS) -MMD $(LDFLAGS) -o $@ $< $(filter-out %.h %.c,$^) $(LOADLIBES) $(LDLIBS)
+ %.so:
+ 	@echo CC $@
+-	@$(CC) -shared -o $@ $^
++	@$(CC) $(LDFLAGS) -Wl,-soname -Wl,$@ -shared -o $@ $^
+ %.a:
+ 	@echo AR $@
+ 	@$(AR) rcs $@ $^

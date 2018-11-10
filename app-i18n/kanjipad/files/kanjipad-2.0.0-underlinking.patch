@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 7e67d30..5bf53ba 100644
+--- a/Makefile
++++ b/Makefile
+@@ -40,7 +40,7 @@ kpengine: $(OBJS)
+ 	$(CC) -o kpengine $(OBJS) $(GLIBLIBS) $(LDFLAGS)
+ 
+ kanjipad: kanjipad.o padarea.o
+-	$(CC) -o kanjipad kanjipad.o padarea.o $(GTKLIBS) $(LDFLAGS)
++	$(CC) -o kanjipad kanjipad.o padarea.o -lm $(GTKLIBS) $(LDFLAGS)
+ 
+ jdata.dat: jstroke/strokedata.h conv_jdata.pl
+ 	perl conv_jdata.pl < jstroke/strokedata.h > jdata.dat

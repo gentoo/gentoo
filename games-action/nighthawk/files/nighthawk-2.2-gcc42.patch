@@ -1,0 +1,24 @@
+--- a/src_sound/dsp_mixxer.c
++++ b/src_sound/dsp_mixxer.c
+@@ -302,10 +302,8 @@
+   for(sample_no = 0;sample_no < mix_buffer_size;sample_no++)
+   {
+     if(chmix[chan_no].funkctrl & 0x2)
+-#pragma pack(1)
+       sam = *((sDB *)chmix[chan_no].sample_addr +
+             (unsigned long)chmix[chan_no].sample_ptr);
+-#pragma pack()
+     else
+       sam = 0;
+ 
+@@ -364,10 +362,8 @@
+   for(sample_no = 0;sample_no < mix_buffer_size;sample_no++)
+   {
+     if(chmix[chan_no].funkctrl & 0x2)
+-#pragma pack(1)
+       sam = *((sDW *)chmix[chan_no].sample_addr +
+             (unsigned long)chmix[chan_no].sample_ptr);
+-#pragma pack()
+     else
+       sam = 0;
+ #ifdef DIGITAL_ECHOING

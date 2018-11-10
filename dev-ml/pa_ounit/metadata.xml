@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>Gentoo ML Project</name>
+  </maintainer>
+  <longdescription lang="en">
+Pa_ounit is a syntax extension that helps writing in-line test in ocaml
+code. It allows user to register tests with a new `TEST` top-level expressions
+and automatically collects all the tests in a module (in a function
+`ounit_tests` of type `unit -&gt; OUnit.test`).
+  </longdescription>
+  <upstream>
+    <remote-id type="bitbucket">yminsky/ocaml-core</remote-id>
+  </upstream>
+</pkgmetadata>

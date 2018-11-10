@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# CommanderGenius by default searches pwd for keen data which can cause
+# massive load/lag depending on which dir you are currently in.
+# This wrapper cd's into ~/.CommanderGenius unless you pass a directory
+# on the command line which is used as additional search path then.
+#
+# use: commandergenius [path-to-keen-dir]
+
+if [ -z $1 ] ; then
+	SEARCHDIR=~/.CommanderGenius
+else
+	SEARCHDIR="$1"
+fi
+
+cd ${SEARCHDIR}
+
+exec CommanderGenius "$@"

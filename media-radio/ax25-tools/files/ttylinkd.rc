@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting ttylinkd"
+	start-stop-daemon --start --quiet --background --exec /usr/sbin/ttylinkd
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ttylinkd"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/ttylinkd
+	eend $?
+}

@@ -1,0 +1,25 @@
+--- mpqc-2.3.1.orig/configure.in	2006-03-22 19:04:54.000000000 +0100
++++ mpqc-2.3.1/configure.in	2010-02-13 17:46:19.545557872 +0100
+@@ -10,6 +10,8 @@
+ AC_CONFIG_HEADER(src/lib/scconfig.h)
+ AC_CONFIG_AUX_DIR(bin)
+ 
++m4_include([lib/autoconf/cca.m4])
++m4_include([lib/autoconf/acinclude.m4])
+ AC_CANONICAL_SYSTEM
+ 
+ AC_DEFINE_UNQUOTED(HOST_ARCH, "$host")
+@@ -473,12 +473,10 @@
+ echo Using FORTRAN runtime libraries: $withval
+ )
+ 
+-LDFLAGS=
+-LIBDIRS=
+ AC_ARG_WITH(libdirs,
+ [  --with-libdirs          Specifies library directories (-Ldir1 -Ldir2).],
+ LIBDIRS=$withval
+-LDFLAGS=$withval
++LDFLAGS="$LDFLAGS $withval"
+ echo Using extra library directories: $withval
+ )
+ 

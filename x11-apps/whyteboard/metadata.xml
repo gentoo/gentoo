@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <longdescription lang="en">A simple image, PDF and postscript file annotator.</longdescription>
+  <upstream>
+    <maintainer status="active">
+      <name>Steven Sproat</name>
+    </maintainer>
+    <remote-id type="sourceforge">whyteboard</remote-id>
+  </upstream>
+</pkgmetadata>

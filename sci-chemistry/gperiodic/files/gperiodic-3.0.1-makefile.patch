@@ -1,0 +1,66 @@
+ Makefile | 36 ++++++++++++++----------------------
+ 1 file changed, 14 insertions(+), 22 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 7e86dc4..9bd4fe8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -14,8 +14,8 @@ enable_nls ?= 1
+ 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $<
+ 
+ all: 
+-	make gperiodic
+-	make -C po/ all enable_nls=$(enable_nls)
++	$(MAKE) gperiodic
++	$(MAKE) -C po/ all enable_nls=$(enable_nls)
+ 	intltool-merge -d po gperiodic.desktop.in gperiodic.desktop
+ 
+ gperiodic: gperiodic.o
+@@ -29,24 +29,16 @@ gpdata.o: gpdata.c gperiodic.h
+ gperiodic.o: gperiodic.c gperiodic.h table_data.h
+ 
+ install:
+-	mkdir -p $(DESTDIR)$(bindir)
+-	install -m 755 gperiodic $(DESTDIR)$(bindir)
+-	mkdir -p $(DESTDIR)$(datadir)/applications
+-	install -m 644 gperiodic.desktop $(DESTDIR)$(datadir)/applications
+-	mkdir -p $(DESTDIR)$(datadir)/pixmaps
+-	install -m 644 icons/gperiodic.png $(DESTDIR)$(datadir)/pixmaps
+-	install -m 644 icons/gperiodic.xpm $(DESTDIR)$(datadir)/pixmaps
+-	mkdir -p $(DESTDIR)$(mandir)
+-	install -m 644 gperiodic.1 $(DESTDIR)$(mandir)
+-	mkdir -p $(DESTDIR)$(iconsdir)/hicolor/16x16/apps
+-	mkdir -p $(DESTDIR)$(iconsdir)/hicolor/32x32/apps
+-	mkdir -p $(DESTDIR)$(iconsdir)/hicolor/48x48/apps
+-	mkdir -p $(DESTDIR)$(iconsdir)/hicolor/64x64/apps
+-	install -m 644 icons/hicolor/16x16/apps/gperiodic.png $(DESTDIR)$(iconsdir)/hicolor/16x16/apps
+-	install -m 644 icons/hicolor/32x32/apps/gperiodic.png $(DESTDIR)$(iconsdir)/hicolor/32x32/apps
+-	install -m 644 icons/hicolor/48x48/apps/gperiodic.png $(DESTDIR)$(iconsdir)/hicolor/48x48/apps
+-	install -m 644 icons/hicolor/64x64/apps/gperiodic.png $(DESTDIR)$(iconsdir)/hicolor/64x64/apps
+-	make -C po/ install enable_nls=$(enable_nls) datadir=$(datadir) DESTDIR=$(DESTDIR)
++	install -D -m 755 gperiodic $(DESTDIR)$(bindir)/gperiodic
++	install -D -m 644 gperiodic.desktop $(DESTDIR)$(datadir)/applications/gperiodic.desktop
++	install -D -m 644 icons/gperiodic.png $(DESTDIR)$(datadir)/pixmaps/gperiodic.png
++	install -D -m 644 icons/gperiodic.xpm $(DESTDIR)$(datadir)/pixmaps/gperiodic.xpm
++	install -D -m 644 gperiodic.1 $(DESTDIR)$(mandir)/gperiodic.1
++	install -D -m 644 icons/hicolor/16x16/apps/gperiodic.png $(DESTDIR)$(iconsdir)/hicolor/16x16/apps/gperiodic.png
++	install -D -m 644 icons/hicolor/32x32/apps/gperiodic.png $(DESTDIR)$(iconsdir)/hicolor/32x32/apps/gperiodic.png
++	install -D -m 644 icons/hicolor/48x48/apps/gperiodic.png $(DESTDIR)$(iconsdir)/hicolor/48x48/apps/gperiodic.png
++	install -D -m 644 icons/hicolor/64x64/apps/gperiodic.png $(DESTDIR)$(iconsdir)/hicolor/64x64/apps/gperiodic.png
++	$(MAKE) -C po/ install enable_nls=$(enable_nls) datadir=$(datadir) DESTDIR=$(DESTDIR)
+ 
+ uninstall:
+ 	rm -f $(bindir)/gperiodic \
+@@ -58,10 +50,10 @@ uninstall:
+ 	      $(iconsdir)/hicolor/32x32/apps/gperiodic.png \
+ 	      $(iconsdir)/hicolor/48x48/apps/gperiodic.png \
+ 	      $(iconsdir)/hicolor/64x64/apps/gperiodic.png
+-	make -C po/ uninstall enable_nls=$(enable_nls) datadir=$(datadir) DESTDIR=$(DESTDIR)
++	$(MAKE) -C po/ uninstall enable_nls=$(enable_nls) datadir=$(datadir) DESTDIR=$(DESTDIR)
+ 
+ clean:
+ 	rm -f *.o gperiodic gperiodic.desktop
+-	make -C po/ clean
++	$(MAKE) -C po/ clean
+ 
+ .PHONY: install uninstall clean

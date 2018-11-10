@@ -1,0 +1,14 @@
+# Configuration file
+# It should point to a valid device configuration file
+# eg CONMUX_CONFIG="/etc/conmux/deviceA.cf
+#
+# See https://github.com/autotest/autotest/wiki/Conmux-Howto
+# and https://github.com/autotest/autotest/wiki/Conmux-OriginalDocumentation
+# for examples
+#
+# Default value is empty so the init script will fail and force you
+# to create a new config
+#
+CONMUX_CONFIG=""
+# Log file
+CONMUX_LOG="/var/log/conmux.log"

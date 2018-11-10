@@ -1,0 +1,157 @@
+Index: src/libannotate/addArcs.cpp
+===================================================================
+diff --git a/src/libannotate/addArcs.cpp b/src/libannotate/addArcs.cpp
+--- a/src/libannotate/addArcs.cpp	(revision 206)
++++ b/src/libannotate/addArcs.cpp	(revision 207)
+@@ -258,7 +258,7 @@
+         {
+             ifstream inFile(arcFile.c_str());
+             char *line = new char[MAX_LINE_LENGTH];
+-            while (inFile.getline (line, MAX_LINE_LENGTH, '\n') != NULL)
++            while (inFile.getline (line, MAX_LINE_LENGTH, '\n'))
+                 readArcFile(line, planet, view, projection,
+                             planetProperties, annotationMap);
+             
+@@ -292,7 +292,7 @@
+         {
+             ifstream inFile(arcFile.c_str());
+             char *line = new char[256];
+-            while (inFile.getline (line, 256, '\n') != NULL)
++            while (inFile.getline (line, 256, '\n'))
+                 readArcFile(line, NULL, view, NULL, NULL, annotationMap);
+ 
+             inFile.close();
+Index: src/libannotate/addMarkers.cpp
+===================================================================
+diff --git a/src/libannotate/addMarkers.cpp b/src/libannotate/addMarkers.cpp
+--- a/src/libannotate/addMarkers.cpp	(revision 206)
++++ b/src/libannotate/addMarkers.cpp	(revision 207)
+@@ -429,7 +429,7 @@
+         {
+             ifstream inFile(markerFile.c_str());
+             char *line = new char[MAX_LINE_LENGTH];
+-            while (inFile.getline (line, MAX_LINE_LENGTH, '\n') != NULL)
++            while (inFile.getline (line, MAX_LINE_LENGTH, '\n'))
+             {
+                 unsigned char color[3];
+                 memcpy(color, planetProperties->MarkerColor(), 3);
+@@ -475,7 +475,7 @@
+         {
+             ifstream inFile(markerFile.c_str());
+             char *line = new char[MAX_LINE_LENGTH];
+-            while (inFile.getline (line, MAX_LINE_LENGTH, '\n') != NULL)
++            while (inFile.getline (line, MAX_LINE_LENGTH, '\n'))
+             {
+                 unsigned char color[3];
+                 memcpy(color, options->Color(), 3);
+Index: src/libannotate/addSatellites.cpp
+===================================================================
+diff --git a/src/libannotate/addSatellites.cpp b/src/libannotate/addSatellites.cpp
+--- a/src/libannotate/addSatellites.cpp	(revision 206)
++++ b/src/libannotate/addSatellites.cpp	(revision 207)
+@@ -488,10 +488,10 @@
+         {
+             ifstream inFile(tleFile.c_str());
+             char lines[3][80];
+-            while (inFile.getline(lines[0], 80) != NULL)
++            while (inFile.getline(lines[0], 80))
+             {
+-                if ((inFile.getline(lines[1], 80) == NULL) 
+-                    || (inFile.getline(lines[2], 80) == NULL))
++                if ((!inFile.getline(lines[1], 80)) 
++                    || (!inFile.getline(lines[2], 80)))
+                 {
+                     ostringstream errStr;
+                     errStr << "Malformed TLE file (" << tleFile << ")?\n";
+@@ -542,7 +542,7 @@
+         {
+             ifstream inFile(satFile.c_str());
+             char *line = new char[MAX_LINE_LENGTH];
+-            while (inFile.getline (line, MAX_LINE_LENGTH, '\n') != NULL)
++            while (inFile.getline (line, MAX_LINE_LENGTH, '\n'))
+                 readSatelliteFile(line, planet, view, projection,
+                                   planetProperties, annotationMap);
+             
+Index: src/libannotate/addSpiceObjects.cpp
+===================================================================
+diff --git a/src/libannotate/addSpiceObjects.cpp b/src/libannotate/addSpiceObjects.cpp
+--- a/src/libannotate/addSpiceObjects.cpp	(revision 206)
++++ b/src/libannotate/addSpiceObjects.cpp	(revision 207)
+@@ -524,7 +524,7 @@
+         {
+             ifstream inFile(kernelFile.c_str());
+             char *line = new char[MAX_LINE_LENGTH];
+-            while (inFile.getline(line, MAX_LINE_LENGTH, '\n') != NULL)
++            while (inFile.getline(line, MAX_LINE_LENGTH, '\n'))
+             {
+                 int ii = 0;
+                 while (isDelimiter(line[ii]))
+@@ -576,7 +576,7 @@
+         {
+             ifstream inFile(spiceFile.c_str());
+             char *line = new char[MAX_LINE_LENGTH];
+-            while (inFile.getline(line, MAX_LINE_LENGTH, '\n') != NULL)
++            while (inFile.getline(line, MAX_LINE_LENGTH, '\n'))
+                 readSpiceFile(line, planetsFromSunMap, view, projection,
+                               annotationMap);
+             inFile.close();
+Index: src/libmultiple/RayleighScattering.cpp
+===================================================================
+diff --git a/src/libmultiple/RayleighScattering.cpp b/src/libmultiple/RayleighScattering.cpp
+--- a/src/libmultiple/RayleighScattering.cpp	(revision 206)
++++ b/src/libmultiple/RayleighScattering.cpp	(revision 207)
+@@ -369,7 +369,7 @@
+ 
+     diskTemplate_.clear();
+     limbTemplate_.clear();
+-    while (inFile.getline(line, MAX_LINE_LENGTH, '\n') != NULL)
++    while (inFile.getline(line, MAX_LINE_LENGTH, '\n'))
+     {
+         int i = 0;
+         while (isDelimiter(line[i]))
+@@ -439,7 +439,7 @@
+     values.clear();
+ 
+     char line[MAX_LINE_LENGTH];
+-    while (inFile.getline(line, MAX_LINE_LENGTH, '\n') != NULL)
++    while (inFile.getline(line, MAX_LINE_LENGTH, '\n'))
+     {
+         int i = 0;
+         while (isDelimiter(line[i]))
+@@ -470,7 +470,7 @@
+                               double &value)
+ {
+     char line[MAX_LINE_LENGTH];
+-    while (inFile.getline(line, MAX_LINE_LENGTH, '\n') != NULL)
++    while (inFile.getline(line, MAX_LINE_LENGTH, '\n'))
+     {
+         int i = 0;
+         while (isDelimiter(line[i]))
+Index: src/libmultiple/drawStars.cpp
+===================================================================
+diff --git a/src/libmultiple/drawStars.cpp b/src/libmultiple/drawStars.cpp
+--- a/src/libmultiple/drawStars.cpp	(revision 206)
++++ b/src/libmultiple/drawStars.cpp	(revision 207)
+@@ -41,7 +41,7 @@
+     ifstream inFile(starMap.c_str());
+ 
+     char line[MAX_LINE_LENGTH];
+-    while (inFile.getline(line, MAX_LINE_LENGTH, '\n') != NULL)
++    while (inFile.getline(line, MAX_LINE_LENGTH, '\n'))
+     {
+         if (line[0] == '#') continue;
+ 
+Index: src/readConfig.cpp
+===================================================================
+diff --git a/src/readConfig.cpp b/src/readConfig.cpp
+--- a/src/readConfig.cpp	(revision 206)
++++ b/src/readConfig.cpp	(revision 207)
+@@ -550,7 +550,7 @@
+ 
+         ifstream inFile(configFile.c_str());
+         char *line = new char[256];
+-        while (inFile.getline(line, 256, '\n') != NULL)
++        while (inFile.getline(line, 256, '\n'))
+             readConfig(line, planetProperties);
+         
+         // This condition will only be true if [default] is the only

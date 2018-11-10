@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-ml category contains libraries and utilities relevant to the
+		ML programming language.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-ml enthält Bibliotheken und Werkzeuge für die 
+		Programmiersprache ML.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-ml contiene librerías y utilidades referentes al
+		lenguaje de programación ML.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-ml カテゴリーにはMLプログラミング言語に関連したライブラリーと
+		ユーティリティが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-ml categorie bevat bibliotheken en hulpmiddelen voor het gebruik
+		van de programmeertaal ML.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-ml chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình ML.
+	</longdescription>
+	<longdescription lang="it">
+		La categoría dev-ml contiene librerie ed utilità per il linguaggio di programmazione ML.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-ml contém bibliotecas e utilitários referentes
+		à linguagem de programação ML.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-ml zawiera biblioteki i narzędzia związane z
+		językiem programowania ML.
+	</longdescription>
+</catmetadata>
+

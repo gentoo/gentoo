@@ -1,0 +1,29 @@
+From 68af249e1c36cbac2e39903b0fc357e3ad2bf1ee Mon Sep 17 00:00:00 2001
+From: Vivien Malerba <malerba@gnome-db.org>
+Date: Wed, 16 Apr 2014 14:59:50 +0200
+Subject: [PATCH] Markup message correction
+
+---
+ libgda-ui/demos/ddl_queries.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/libgda-ui/demos/ddl_queries.c b/libgda-ui/demos/ddl_queries.c
+index a47630f..4b29377 100644
+--- a/libgda-ui/demos/ddl_queries.c
++++ b/libgda-ui/demos/ddl_queries.c
+@@ -475,9 +475,9 @@ show_sql (G_GNUC_UNUSED GtkButton *button, DemoData *data)
+ 		else
+ 			msg = g_strdup_printf ("<b>SQL:</b>\n%s", sql);
+ 
+-		dlg = gtk_message_dialog_new_with_markup (GTK_WINDOW (data->top_window),
+-							  GTK_DIALOG_MODAL,
+-							  msg_type, GTK_BUTTONS_CLOSE, msg);
++		dlg = gtk_message_dialog_new (GTK_WINDOW (data->top_window),
++					      GTK_DIALOG_MODAL, msg_type, GTK_BUTTONS_CLOSE, NULL);
++		gtk_message_dialog_set_markup (GTK_MESSAGE_DIALOG (dlg), msg);
+ 		g_free (sql);
+ 		g_free (msg);
+ 
+-- 
+1.9.0
+

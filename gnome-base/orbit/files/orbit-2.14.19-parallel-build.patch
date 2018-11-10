@@ -1,0 +1,25 @@
+From c67303ecfdf80072a2852433c7f7818113e61c06 Mon Sep 17 00:00:00 2001
+From: Michael Haubenwallner <michael.haubenwallner@ssi-schaefer.com>
+Date: Thu, 26 Jun 2014 12:37:59 +0200
+Subject: [PATCH 2/2] bug#732274: fix parallel build failure
+
+---
+ src/services/name/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/services/name/Makefile.am b/src/services/name/Makefile.am
+index deda1ed..8cf868e 100644
+--- a/src/services/name/Makefile.am
++++ b/src/services/name/Makefile.am
+@@ -68,7 +68,7 @@ libname_server_2_a_DEPENDENCIES = $(DEPS) CosNaming.h
+ 
+ orbit_name_server_2_SOURCES = boot.c
+ orbit_name_server_2_LDFLAGS = $(FLAGS)
+-orbit_name_server_2_DEPENDENCIES = $(DEPS) CosNaming.h
++orbit_name_server_2_DEPENDENCIES = $(DEPS) CosNaming.h libname-server-2.a
+ orbit_name_server_2_LDADD = libname-server-2.a $(LDADDS)
+ 
+ $(libname_server_2_a_OBJECTS) $(name_client_2_OBJECTS) $(orbit_name_server_2_OBJECTS) : CosNaming.h
+-- 
+1.8.3.2
+

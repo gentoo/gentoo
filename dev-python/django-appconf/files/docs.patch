@@ -1,0 +1,16 @@
+Prevent unwanted d'loading of un-needed oject.inv files in doc build
+diff -ur django-appconf-0.6.orig/docs/conf.py django-appconf-0.6/docs/conf.py
+--- docs/conf.py	2013-01-29 01:45:50.000000000 +0800
++++ docs/conf.py	2013-05-18 21:40:38.737985957 +0800
+@@ -218,11 +218,3 @@
+     ('index', 'django-appconf', u'django-appconf Documentation',
+      [u'Jannis Leidel and individual contributors'], 1)
+ ]
+-
+-
+-# Example configuration for intersphinx: refer to the Python standard library.
+-intersphinx_mapping = {
+-    'python': ('http://python.readthedocs.org/en/v2.7.2/', None),
+-    'django': ('http://django.readthedocs.org/en/latest/', None),
+-    'celery': ('http://celery.readthedocs.org/en/latest/', None),
+-}

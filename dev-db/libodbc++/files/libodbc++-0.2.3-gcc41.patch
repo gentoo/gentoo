@@ -1,0 +1,12 @@
+diff -ur libodbc++-0.2.3-orig/include/odbc++/drivermanager.h libodbc++-0.2.3/include/odbc++/drivermanager.h
+--- libodbc++-0.2.3-orig/include/odbc++/drivermanager.h	2006-04-08 00:54:19.000000000 -0400
++++ libodbc++-0.2.3/include/odbc++/drivermanager.h	2006-04-08 00:56:15.000000000 -0400
+@@ -26,6 +26,8 @@
+ 
+ #include <odbc++/types.h>
+ 
++#include <odbc++/errorhandler.h>
++
+ /** The namespace where all <b>libodbc++</b> classes reside */
+ namespace odbc {
+ 

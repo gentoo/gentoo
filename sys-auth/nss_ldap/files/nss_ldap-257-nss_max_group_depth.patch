@@ -1,0 +1,92 @@
+Gentoo-Bug: 155492
+Original-Author: Heath Caldwell <hncaldwell@csupomona.edu>
+Rediffed-by: Robin H. Johnson <robbat2@gentoo.org>
+
+--- nss_ldap-257.orig/ChangeLog	2007-09-18 15:02:59.997686000 -0700
++++ nss_ldap-257/ChangeLog	2007-09-18 15:04:07.925113592 -0700
+@@ -3,2 +3,7 @@
+ 
++257.1	Heath Caldwell <hncaldwell@csupomona.edu>
++
++	* add configurable maximum group depth with new
++	  configuration file option called nss_max_group_depth
++
+ 257	Luke Howard <lukeh@padl.com>
+--- nss_ldap-257.orig/ldap-grp.c	2007-08-02 21:51:09.000000000 -0700
++++ nss_ldap-257/ldap-grp.c	2007-09-18 15:03:23.734619150 -0700
+@@ -308,7 +308,7 @@
+   uniquemember_attrs[0] = uniquemember_attr;
+   uniquemember_attrs[1] = NULL;
+ 
+-  if (*depth > LDAP_NSS_MAXGR_DEPTH)
++  if (*depth > _nss_ldap_max_group_depth)
+     {
+       return NSS_NOTFOUND;
+     }
+@@ -844,7 +844,7 @@
+   const char *gidnumber_attrs[2];
+   int erange;
+ 
+-  if (lia->depth > LDAP_NSS_MAXGR_DEPTH)
++  if (lia->depth > _nss_ldap_max_group_depth)
+     return NSS_NOTFOUND;
+ 
+   if (_nss_ldap_namelist_find (lia->known_groups, dn))
+@@ -890,7 +890,7 @@
+   size_t memberCount, i;
+   int erange;
+ 
+-  if (lia->depth > LDAP_NSS_MAXGR_DEPTH)
++  if (lia->depth > _nss_ldap_max_group_depth)
+     return NSS_NOTFOUND;
+ 
+   for (memberCount = 0; membersOf[memberCount] != NULL; memberCount++)
+--- nss_ldap-257.orig/ldap-nss.h	2007-09-18 15:02:59.997686000 -0700
++++ nss_ldap-257/ldap-nss.h	2007-09-18 15:03:23.734619150 -0700
+@@ -105,7 +105,8 @@
+ #define LDAP_NSS_MAXNETGR_DEPTH  16	/* maximum depth of netgroup nesting for innetgr() */
+ #endif /* HAVE_NSSWITCH_H */
+ 
+-#define LDAP_NSS_MAXGR_DEPTH     16     /* maximum depth of group nesting for getgrent()/initgroups() */
++#define LDAP_NSS_MAXGR_DEPTH     16	/* default maximum depth of group nesting for getgrent()/initgroups() */
++extern int _nss_ldap_max_group_depth;	/* global variable to hold maximum group depth */
+ 
+ #if LDAP_NSS_NGROUPS > 64
+ #define LDAP_NSS_BUFLEN_GROUP	(NSS_BUFSIZ + (LDAP_NSS_NGROUPS * (sizeof (char *) + LOGNAME_MAX))) 
+--- nss_ldap-257.orig/nss_ldap.5	2007-09-18 15:03:00.001020000 -0700
++++ nss_ldap-257/nss_ldap.5	2007-09-18 15:05:42.779508238 -0700
+@@ -453,6 +453,10 @@
+ verify no local applications rely on this information before
+ enabling this on a production system.
+ .TP
++.B nss_max_group_depth <value>
++Specifies the maximum depth to which nested groups are queried.
++A value of 0 effectively disables querying for nested groups.
++.TP
+ .B nss_srv_domain <domain>
+ This option determines the DNS domain used for performing SRV
+ lookups.
+--- nss_ldap-257.orig/util.c	2007-09-18 15:03:00.001020000 -0700
++++ nss_ldap-257/util.c	2007-09-18 15:04:35.032083555 -0700
+@@ -62,2 +62,5 @@
+ 
++/* Initialize global maximum group depth to default. */
++int _nss_ldap_max_group_depth = LDAP_NSS_MAXGR_DEPTH;
++
+ static NSS_STATUS do_getrdnvalue (const char *dn,
+@@ -805,2 +808,5 @@
+ 
++  /* Reset global maximum group depth to default. */
++  _nss_ldap_max_group_depth = LDAP_NSS_MAXGR_DEPTH;
++
+   while (fgets (b, sizeof (b), fp) != NULL)
+--- nss_ldap-257.orig/util.h	2007-09-18 15:03:00.001020000 -0700
++++ nss_ldap-257/util.h	2007-09-18 15:05:11.295822638 -0700
+@@ -84,6 +84,7 @@
+ #define NSS_LDAP_KEY_INITGROUPS		"nss_initgroups"
+ #define NSS_LDAP_KEY_INITGROUPS_IGNOREUSERS	"nss_initgroups_ignoreusers"
+ #define NSS_LDAP_KEY_GETGRENT_SKIPMEMBERS	"nss_getgrent_skipmembers"
++#define NSS_LDAP_KEY_MAX_GROUP_DEPTH	"nss_max_group_depth"
+ 
+ /* more reconnect policy fine-tuning */
+ #define NSS_LDAP_KEY_RECONNECT_TRIES		"nss_reconnect_tries"

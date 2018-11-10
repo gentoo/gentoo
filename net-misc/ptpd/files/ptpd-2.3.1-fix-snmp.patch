@@ -1,0 +1,12 @@
+diff -urN old/src/dep/snmp.c new/src/dep/snmp.c
+--- old/src/dep/snmp.c	2015-06-29 17:13:29.000000000 +0200
++++ new/src/dep/snmp.c	2018-09-15 22:54:11.818589001 +0200
+@@ -221,7 +221,7 @@
+ 
+ #define SNMP_LOCAL_VARIABLES			\
+ 	static unsigned long long_ret;		\
+-	static U64 counter64_ret;		\
++	static struct counter64 counter64_ret;		\
+ 	static uint32_t ipaddr;			\
+ 	Integer64 bigint;			\
+ 	struct snmpHeaderIndex idx;		\

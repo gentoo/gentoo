@@ -1,0 +1,15 @@
+Description: Remove another generated file
+Author: Bastian Blank <waldi@debian.org>
+Bug-Debian: http://bugs.debian.org/692471
+
+--- ncpfs-2.2.6.orig/Makefile.in
++++ ncpfs-2.2.6/Makefile.in
+@@ -71,6 +71,7 @@ distclean:
+ 	rm -f intl/Makefile po/Makefile po/Makefile.in
+ 	rm -f lib/Makefile man/Makefile sutil/Makefile util/Makefile
+ 	rm -f include/config.h 
++	rm -f include/private/libncp-atomic.h
+ 	rm -f include/ncp/ext/socket.h include/ncp/ext/stdint.h
+ 	rm -f include/ncp/kernel/fs.h
+ 	rm -f include/ncp/kernel/if.h include/ncp/kernel/route.h include/ncp/kernel/types.h
+

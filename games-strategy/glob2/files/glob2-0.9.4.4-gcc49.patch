@@ -1,0 +1,35 @@
+From https://bugs.gentoo.org/show_bug.cgi?id=538580
+
+Works around this build failure:
+
+In file included from src/AICastor.cpp:26:0:
+src/Game.h: In member function 'void AICastor::computeBuildingNeighbourMap(int, int)':
+src/Game.h:152:9: error: 'struct Game::BuildProject' is private
+  struct BuildProject
+         ^
+src/AICastor.cpp:2296:23: error: within this context
+  for (std::list<Game::BuildProject>::iterator bpi=game->buildProjects.begin(); bpi!=game->buildProjects.end(); bpi++)
+                       ^
+scons: *** [src/AICastor.o] Error 1
+scons: building terminated because of errors.
+
+patch submitted by zimous
+
+--- glob2-0.9.4.4.orig/src/Game.h
++++ glob2-0.9.4.4/src/Game.h
+@@ -149,6 +149,7 @@
+ 		BOTTOM_TO_TOP
+ 	};
+ 	
++public:
+ 	struct BuildProject
+ 	{
+ 		int posX;
+@@ -159,6 +160,7 @@
+ 		int unitWorkingFuture;
+ 	};
+ 	
++private:
+ 	///Initiates Game
+ 	void init(GameGUI *gui, MapEdit* edit);
+ 

@@ -1,0 +1,5 @@
+# cntlm init script configuration file
+
+# here you can specify additional options to cntlm
+# NOTE that using config file is recommended
+CNTLM_OPTS=""

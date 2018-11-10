@@ -1,0 +1,30 @@
+Make boot time detection failures non-fatal.  Taken from PLD Linux
+
+Gentoo bug: https://bugs.gentoo.org/show_bug.cgi?id=468444
+PLD bug: https://bugs.launchpad.net/pld-linux/+bug/1034364
+Patch: https://github.com/pld-linux/tmpwatch/blob/master/tmpwatch-boottime.patch
+
+--- tmpwatch-2.11/tmpwatch.c~
++++ tmpwatch-2.11/tmpwatch.c
+@@ -666,9 +666,11 @@
+ 	time_t boot_time;
+ 
+ 	if (clock_gettime(CLOCK_REALTIME, &real_clock) != 0
+-	    || clock_gettime(CLOCK_BOOTTIME, &boot_clock) != 0)
+-	    message(LOG_FATAL, "Error determining boot time: %s\n",
++	    || clock_gettime(CLOCK_BOOTTIME, &boot_clock) != 0) {
++	    message(LOG_DEBUG, "Error determining boot time: %s\n",
+ 		    strerror(errno));
++	    socket_kill_time = 0; /* Never remove sockets */
++	} else {
+ 	boot_time = real_clock.tv_sec - boot_clock.tv_sec;
+ 	if (real_clock.tv_nsec < boot_clock.tv_nsec)
+ 	    boot_time--;
+@@ -677,6 +679,7 @@
+ 	boot_time -= 2;
+ 
+ 	socket_kill_time = boot_time - grace_seconds;
++	}
+ #else
+ 	socket_kill_time = 0; /* Never remove sockets */
+ #endif

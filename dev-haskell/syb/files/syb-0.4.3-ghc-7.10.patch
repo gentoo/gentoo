@@ -1,0 +1,152 @@
+--- syb-0.4.3-orig/tests/XML.hs	2014-12-31 19:40:41.000000000 +1100
++++ syb-0.4.3/tests/XML.hs	2015-01-02 12:47:10.082782760 +1100
+@@ -13,6 +13,7 @@
+ 
+ import Test.HUnit
+ 
++import Control.Applicative (Alternative(..), Applicative(..))
+ import Control.Monad
+ import Data.Maybe
+ import Data.Generics
+@@ -157,6 +158,17 @@
+                         else Just (tail x, head x)
+                )
+ 
++instance Functor ReadX where
++  fmap  = liftM
++
++instance Applicative ReadX where
++  pure  = return
++  (<*>) = ap
++
++instance Alternative ReadX where
++  (<|>) = mplus
++  empty = mzero
++
+ -- ReadX is a monad!
+ instance Monad ReadX where
+   return x = ReadX (\y -> Just (y,x))
+--- syb-0.4.3-orig/tests/Perm.hs	2014-12-31 19:40:41.000000000 +1100
++++ syb-0.4.3/tests/Perm.hs	2015-01-02 12:47:02.751422866 +1100
+@@ -11,6 +11,7 @@
+ 
+ import Test.HUnit
+ 
++import Control.Applicative (Alternative(..), Applicative(..))
+ import Control.Monad
+ import Data.Generics
+ 
+@@ -44,6 +45,17 @@
+                         else Just (tail x, head x)
+                )
+ 
++instance Functor ReadT where
++  fmap  = liftM
++
++instance Applicative ReadT where
++  pure  = return
++  (<*>) = ap
++
++instance Alternative ReadT where
++  (<|>) = mplus
++  empty = mzero
++
+ -- ReadT is a monad!
+ instance Monad ReadT where
+   return x = ReadT (\y -> Just (y,x))
+--- syb-0.4.3-orig/tests/Bits.hs	2014-12-31 19:40:41.000000000 +1100
++++ syb-0.4.3/tests/Bits.hs	2015-01-02 12:46:37.842839944 +1100
+@@ -39,6 +39,7 @@
+ import Data.Generics
+ import Data.Char
+ import Data.Maybe
++import Control.Applicative (Alternative(..), Applicative(..))
+ import Control.Monad
+ import CompanyDatatypes
+ 
+@@ -129,6 +130,16 @@
+ data ReadB a = ReadB (Bin -> (Maybe a, Bin))
+ unReadB (ReadB f) = f
+ 
++instance Functor ReadB where
++  fmap  = liftM
++
++instance Applicative ReadB where
++  pure  = return
++  (<*>) = ap
++
++instance Alternative ReadB where
++  (<|>) = mplus
++  empty = mzero
+ 
+ -- It's a monad.
+ instance Monad ReadB where
+--- syb-0.4.3-orig/tests/Encode.hs	2014-12-31 19:40:41.000000000 +1100
++++ syb-0.4.3/tests/Encode.hs	2015-01-02 12:51:48.500949407 +1100
+@@ -6,6 +6,8 @@
+ 
+ module Encode () where
+ 
++import Control.Applicative (Applicative(..))
++import Control.Monad (ap, liftM)
+ import Data.Generics
+ 
+ data Bit = Zero | One
+@@ -62,6 +64,11 @@
+ -- Sec. 3.3 cont'd
+ 
+ data EncM a   -- The encoder monad
++instance Functor EncM where
++  fmap  = liftM
++instance Applicative EncM where
++  pure  = return
++  (<*>) = ap
+ instance Monad EncM
+  where
+   return  = undefined
+--- syb-0.4.3-orig/tests/GRead2.hs	2014-12-31 19:40:41.000000000 +1100
++++ syb-0.4.3/tests/GRead2.hs	2015-01-02 12:51:27.524567019 +1100
+@@ -10,6 +10,8 @@
+ 
+ -}
+ 
++import Control.Applicative (Applicative(..))
++import Control.Monad (ap, liftM)
+ import Data.Generics
+ 
+ gread :: Data a => String -> Maybe a
+@@ -18,6 +20,13 @@
+ -- The decoder monad
+ newtype DecM a = D (String -> Maybe (String, a))
+ 
++instance Functor DecM where
++    fmap  = liftM
++
++instance Applicative DecM where
++    pure  = return
++    (<*>) = ap
++
+ instance Monad DecM where
+     return a = D (\s -> Just (s,a))
+     (D m) >>= k = D (\s ->
+--- syb-0.4.3-orig/tests/Ext1.hs	2014-12-31 19:40:41.000000000 +1100
++++ syb-0.4.3/tests/Ext1.hs	2015-01-02 10:30:39.396517984 +1100
+@@ -1,4 +1,5 @@
+ {-# OPTIONS -fglasgow-exts #-}
++{-# LANGUAGE CPP #-}
+ 
+ module Ext1 (tests) where
+ 
+@@ -11,8 +12,11 @@
+ import Test.HUnit
+ 
+ import Data.Generics
++#if MIN_VERSION_base(4,8,0)
++import GHC.Base hiding(foldr)
++#else
+ import GHC.Base
+-
++#endif
+ 
+ -- Unsafe coerce
+ unsafeCoerce :: a -> b

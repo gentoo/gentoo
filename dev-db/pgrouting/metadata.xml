@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>pgsql-bugs@gentoo.org</email>
+    <name>PostgreSQL and Related Package Development</name>
+  </maintainer>
+  <use>
+    <flag name="html">Install HTML formatted documentation</flag>
+    <flag name="drivingdistance">Enable to calculate driving distance</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">pgRouting/pgrouting</remote-id>
+  </upstream>
+</pkgmetadata>

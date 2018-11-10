@@ -1,0 +1,95 @@
+--- a/include/libEMF/wine/winbase.h
++++ b/include/libEMF/wine/winbase.h
+@@ -1802,6 +1802,7 @@ LONG        WINAPI InterlockedIncrement(PLONG);
+ VOID        WINAPI SetLastError(DWORD);
+ #endif  /* __i386__ && __GNUC__ */
+ 
++#if 0
+ /* FIXME: should handle platforms where sizeof(void*) != sizeof(long) */
+ static inline PVOID WINAPI InterlockedCompareExchangePointer( PVOID *dest, PVOID xchg, PVOID compare )
+ {
+@@ -1812,6 +1813,7 @@ static inline PVOID WINAPI InterlockedExchangePointer( PVOID *dest, PVOID val )
+ {
+     return (PVOID)InterlockedExchange( (PLONG)dest, (LONG)val );
+ }
++#endif
+ 
+ #ifdef __WINE__
+ #define GetCurrentProcess() ((HANDLE)0xffffffff)
+--- a/include/libEMF/wine/winnt.h
++++ b/include/libEMF/wine/winnt.h
+@@ -29,10 +29,14 @@
+ 
+ /* Architecture dependent settings. */
+ /* These are hardcoded to avoid dependencies on config.h in Winelib apps. */
+-#if defined(__i386__)
++#if defined(__i386__) || defined(__x86_64__)
+ # undef  WORDS_BIGENDIAN
+ # undef  BITFIELDS_BIGENDIAN
+ # define ALLOW_UNALIGNED_ACCESS
++#elif defined(__alpha__)
++# undef  WORDS_BIGENDIAN
++# undef  BITFIELDS_BIGENDIAN
++# undef  ALLOW_UNALIGNED_ACCESS
+ #elif defined(__sparc__)
+ # define WORDS_BIGENDIAN
+ # define BITFIELDS_BIGENDIAN
+@@ -222,8 +226,13 @@ typedef unsigned short  USHORT,     *PUSHORT,  *LPUSHORT;
+ typedef unsigned short  WORD,       *PWORD,    *LPWORD;
+ typedef int             INT,        *PINT,     *LPINT;
+ typedef unsigned int    UINT,       *PUINT,    *LPUINT;
++#if defined(_LP64) || defined(__alpha__)
++typedef unsigned int    DWORD,      *PDWORD,   *LPDWORD;
++typedef unsigned int    ULONG,      *PULONG,   *LPULONG;
++#else
+ typedef unsigned long   DWORD,      *PDWORD,   *LPDWORD;
+ typedef unsigned long   ULONG,      *PULONG,   *LPULONG;
++#endif
+ typedef float           FLOAT,      *PFLOAT,   *LPFLOAT;
+ typedef double          DOUBLE,     *PDOUBLE,  *LPDOUBLE;
+ typedef double          DATE;
+@@ -263,7 +272,11 @@ typedef VOID           *PVOID,      *LPVOID;
+ typedef BYTE            BOOLEAN,    *PBOOLEAN;
+ typedef char            CHAR,       *PCHAR;
+ typedef short           SHORT,      *PSHORT;
++#if defined(_LP64) || defined(__alpha__)
++typedef int             LONG,       *PLONG,    *LPLONG;
++#else
+ typedef long            LONG,       *PLONG,    *LPLONG;
++#endif
+ 
+ /* Some systems might have wchar_t, but we really need 16 bit characters */
+ #ifndef WINE_WCHAR_DEFINED
+@@ -652,8 +665,13 @@ typedef CONTEXT86 CONTEXT;
+ 
+ #endif  /* __i386__ */
+ 
++#ifdef __x86_64__
++#define CONTEXT_FULL		1
++typedef struct _CONTEXT CONTEXT;
++#endif
++
+ /* Alpha context definitions */
+-#ifdef _ALPHA_
++#if defined(__alpha__)
+ 
+ #define CONTEXT_ALPHA   0x00020000
+  
+--- a/libemf/libemf.h
++++ b/libemf/libemf.h
+@@ -306,6 +306,7 @@ namespace EMF {
+ 	fread( &word, sizeof(INT16), 1, fp_ );
+       return *this;
+     }
++#if !(defined(_LP64) || defined(__alpha__))
+     /*!
+      * Output a double word (long) to the stream (swabbed).
+      * \param word word (long) to output.
+@@ -374,6 +375,7 @@ namespace EMF {
+ 	fread( &long_, sizeof(LONG), 1, fp_ );
+       return *this;
+     }
++#endif
+     /*!
+      * Output a (long) int to the stream (swabbed).
+      * \param int_ (long) int to output.

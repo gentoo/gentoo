@@ -1,0 +1,10 @@
+--- nss/coreconf/Linux.mk
++++ nss/coreconf/Linux.mk
+@@ -130,6 +130,7 @@
+ 		OPTIMIZER += -gdwarf-2
+ 	endif
+ endif
++OPTIMIZER += -fno-strict-aliasing
+ endif
+ 
+ ifndef COMPILER_TAG

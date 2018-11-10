@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/show_bug.cgi?id=471510
+--- a/editor/__init__.py
++++ b/editor/__init__.py
+@@ -52,7 +52,7 @@
+ 		
+ 		if obj.face.material and obj.face.material.texture:
+ 			try:
+-				import Image, ImageTk
++				from PIL import Image, ImageTk
+ 
+ 				self.image = Image.open(os.path.join(soya.path[0], obj.face.material.texture.filename))
+ 				
+@@ -71,7 +71,7 @@
+ 		self.cancel = self.master.cancel
+ 		
+ 	def label_conf(self, event = None):
+-		import Image, ImageTk
++		from PIL import Image, ImageTk
+ 		
+ 		if self.image_width != self.label.winfo_width():
+ 			self.image_width  = self.label.winfo_width()

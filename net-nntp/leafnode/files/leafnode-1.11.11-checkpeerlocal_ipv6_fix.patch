@@ -1,0 +1,19 @@
+diff -x '*~' -purN a/checkpeerlocal.c b/checkpeerlocal.c
+--- a/checkpeerlocal.c	2015-08-25 00:03:26.000000000 +0200
++++ b/checkpeerlocal.c	2017-07-14 20:12:26.109653383 +0200
+@@ -208,6 +208,7 @@ int checkpeerlocal(int sock)
+     }
+ #endif
+ 
++#ifdef HAVE_IPV6
+     if (IN6_IS_ADDR_V4MAPPED(&addr.sin6.sin6_addr)) {
+ 	    /* map to IPv4 */
+ 	    struct sockaddr_in si;
+@@ -216,6 +217,7 @@ int checkpeerlocal(int sock)
+ 	    memcpy(&addr.sin, &si, sizeof(struct sockaddr_in));
+ 	    D(pat(&addr.sa));
+     }
++#endif
+ 
+     if (getifaddrs(&ifap) != 0) {
+ 	D(printf("getifaddrs failed: %s\n", strerror(errno)));

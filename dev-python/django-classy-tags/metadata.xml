@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>slis@gentoo.org</email>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">ojii/django-classy-tags</remote-id>
+    <remote-id type="pypi">django-classy-tags</remote-id>
+  </upstream>
+</pkgmetadata>

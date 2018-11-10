@@ -1,0 +1,153 @@
+From 9d31aa97c8bcc7828e6d04ec4375a75a9bf06836 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Sun, 16 Jun 2013 13:36:08 -0400
+Subject: [PATCH] Update PIL import statements for compatibility with Pillow
+ (PIL-2)
+
+https://bugs.gentoo.org/show_bug.cgi?id=471522
+---
+ install.py          | 2 +-
+ mime/comicthumb     | 2 +-
+ src/comix.py        | 2 +-
+ src/histogram.py    | 6 +++---
+ src/image.py        | 8 ++++----
+ src/library.py      | 4 ++--
+ src/thumbbar.py     | 4 ++--
+ src/thumbnail.py    | 2 +-
+ src/thumbremover.py | 2 +-
+ 9 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/install.py b/install.py
+index f8be7cb..d72d8d1 100755
+--- a/install.py
++++ b/install.py
+@@ -240,7 +240,7 @@ def check_dependencies():
+         print '    !!! PyGTK .................... Not found'
+         required_found = False
+     try:
+-        import Image
++        from PIL import Image
+         assert Image.VERSION >= '1.1.5'
+         print '    Python Imaging Library ....... OK'
+     except ImportError:
+diff --git a/mime/comicthumb b/mime/comicthumb
+index 1081dac..a3e6a83 100755
+--- a/mime/comicthumb
++++ b/mime/comicthumb
+@@ -22,7 +22,7 @@ import tarfile
+ import subprocess
+ 
+ try:
+-    import Image
++    from PIL import Image
+ except ImportError:
+     print '! Could not import the Image module (PIL).'
+     print __doc__
+diff --git a/src/comix.py b/src/comix.py
+index f3f9e1b..ebc73e9 100755
+--- a/src/comix.py
++++ b/src/comix.py
+@@ -51,7 +51,7 @@ except ImportError:
+     sys.exit(1)
+ 
+ try:
+-    import Image
++    from PIL import Image
+     assert Image.VERSION >= '1.1.5'
+ except AssertionError:
+     print "You don't have the required version of the Python Imaging",
+diff --git a/src/histogram.py b/src/histogram.py
+index e9fc68d..42ac9b8 100644
+--- a/src/histogram.py
++++ b/src/histogram.py
+@@ -1,9 +1,9 @@
+ """histogram.py - Draw histograms (RGB) from pixbufs."""
+ 
+ import gtk
+-import Image
+-import ImageDraw
+-import ImageOps
++from PIL import Image
++from PIL import ImageDraw
++from PIL import ImageOps
+ 
+ import image
+ 
+diff --git a/src/image.py b/src/image.py
+index 0603f0a..db51525 100644
+--- a/src/image.py
++++ b/src/image.py
+@@ -1,10 +1,10 @@
+ """image.py - Various image manipulations."""
+ 
+ import gtk
+-import Image
+-import ImageEnhance
+-import ImageOps
+-import ImageStat
++from PIL import Image
++from PIL import ImageEnhance
++from PIL import ImageOps
++from PIL import ImageStat
+ 
+ from preferences import prefs
+ 
+diff --git a/src/library.py b/src/library.py
+index a4fc29b..e14a197 100644
+--- a/src/library.py
++++ b/src/library.py
+@@ -8,8 +8,8 @@ from xml.sax.saxutils import escape as xmlescape
+ import gtk
+ import gobject
+ import pango
+-import Image
+-import ImageDraw
++from PIL import Image
++from PIL import ImageDraw
+ 
+ import archive
+ import encoding
+diff --git a/src/thumbbar.py b/src/thumbbar.py
+index ba4b94c..0a4c33f 100644
+--- a/src/thumbbar.py
++++ b/src/thumbbar.py
+@@ -4,8 +4,8 @@ import urllib
+ 
+ import gtk
+ import gobject
+-import Image
+-import ImageDraw
++from PIL import Image
++from PIL import ImageDraw
+ 
+ import image
+ from preferences import prefs
+diff --git a/src/thumbnail.py b/src/thumbnail.py
+index 25f333e..b565162 100644
+--- a/src/thumbnail.py
++++ b/src/thumbnail.py
+@@ -15,7 +15,7 @@ import shutil
+ import tempfile
+ 
+ import gtk
+-import Image
++from PIL import Image
+ 
+ import archive
+ import constants
+diff --git a/src/thumbremover.py b/src/thumbremover.py
+index fc2fa37..03aa6e6 100644
+--- a/src/thumbremover.py
++++ b/src/thumbremover.py
+@@ -7,7 +7,7 @@ import urllib
+ 
+ import gtk
+ import pango
+-import Image
++from PIL import Image
+ 
+ import encoding
+ import labels
+-- 
+1.8.2.1
+

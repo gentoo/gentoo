@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+<longdescription>
+rawdog is an RSS Aggregator Without Delusions Of Grandeur. Written in Python,
+it uses Mark Pilgrim's feed parser. It runs from cron, collects articles from
+a number of feeds, and generates a static HTML page listing the newest articles
+in date order. It supports per-feed customizable update times, and uses ETags,
+Last-Modified, and gzip compression to minimize network bandwidth usage.
+</longdescription>
+</pkgmetadata>

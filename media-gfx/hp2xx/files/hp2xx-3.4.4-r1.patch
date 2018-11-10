@@ -1,0 +1,137 @@
+diff -ruN hp2xx-3.4.4.orig/makes/generic.mak hp2xx-3.4.4/makes/generic.mak
+--- hp2xx-3.4.4.orig/makes/generic.mak	2003-06-21 17:16:35.000000000 +0200
++++ hp2xx-3.4.4/makes/generic.mak	2012-02-07 22:30:29.000000000 +0100
+@@ -30,11 +30,11 @@
+ CP       = cp
+ MKINFO   = makeinfo
+ RMCMD    = rm -f
+-STRIP    = strip
++STRIP    = true
+ 
+ # Installation sites (GNU conventions):
+ #
+-prefix   = /usr/local
++prefix   = /usr
+ bindir   = $(prefix)/bin
+ includedir = $(prefix)/include
+ mandir   = $(prefix)/man
+@@ -44,10 +44,10 @@
+ # CC and CFLAGS set for gcc, but any ANSI-C compiler should work.
+ # For non-gcc compilers, simply set CFLAGS = -O (to start with)
+ #
+-CC       = gcc
+-CFLAGS   = -O2 -Wall -finline-functions
++#CC       = gcc
++#CFLAGS   = -O2 -Wall -finline-functions
+ 
+-LFLAGS   =                # only sometimes needed; see below for examples
++LFLAGS   = $(LDFLAGS)     # only sometimes needed; see below for examples
+ CPPFLAGS = -I.            # only sometimes needed; see below for examples
+ BINDCMD  =                # only needed for EMX and DJGPP DOS extenders
+ 
+@@ -62,7 +62,7 @@
+ #
+ DEFINES   = -DUNIX -DHAS_UNIX_X11
+ PREVIEWER = to_x11
+-ALL_LIBS  = -lX11 -lm     #  Maybe -lX instead of -lX11 is needed?
++ALL_LIBS  = -L/usr/X11R6/lib/ -lX11 -lm     #  Maybe -lX instead of -lX11 is needed?
+ #
+ # Generic UNIX, no previewer
+ #
+@@ -195,31 +195,41 @@
+ EX_SRC	=
+ EX_OBJ	=
+ EX_DEFS	=
++EX_LIBS = -lz
+ #
+ # PNG support (requires -lpng and -lz on the ALL_LIBS line)
+-#EX_SRC	= png.c to_png.c
+-#EX_OBJ	= png.o to_png.o 
+-#EX_DEFS= -DPNG
++EX_SRC	+= png.c to_png.c
++EX_OBJ	+= png.o to_png.o 
++EX_DEFS += -DPNG
++EX_LIBS += -lpng
+ #
+ # TIFF support (requires -ltiff and possibly -lz on the ALL_LIBS line)
+-#EX_SRC	= to_tif.c
+-#EX_OBJ	= to_tif.o
+-#EX_DEFS	= -DTIF
++EX_SRC	+= to_tif.c
++EX_OBJ	+= to_tif.o
++EX_DEFS	+= -DTIF
++EX_LIBS += -ltiff
+ #
+ # JPEG support (requires -ljpeg)
+-#EX_SRC = to_jpg.c
+-#EX_OBJ = to_jpg.o
+-#EX_DEFS = -DJPG
++EX_SRC  += to_jpg.c
++EX_OBJ  += to_jpg.o
++EX_DEFS += -DJPG
++EX_LIBS += -ljpeg
+ #
+ # PDF support (requires -lpdf)
+-#EX_SRC = to_pdf.c
+-#EX_OBJ = to_pdf.o
+-#EX_DEFS = -DUSEPDF
++#EX_SRC  += to_pdf.c
++#EX_OBJ  += to_pdf.o
++#EX_DEFS += -DUSEPDF
++#EX_LIBS += -lpdf
+ #
+ # Include extras:
+-# EX_SRC	= to_pic.c to_pac.c
+-# EX_OBJ	= to_pic.o to_pac.o
+-# EX_DEFS	= -DPIC_PAC
++EX_SRC	 += to_pic.c to_pac.c
++EX_OBJ	 += to_pic.o to_pac.o
++EX_DEFS += -DPIC_PAC
++#
++# Epson Esc/P2 support 
++EX_SRC	+= to_escp2.c
++EX_OBJ	+= to_escp2.o
++EX_DEFS += -DEPSON
+ #
+ #############################################################################
+ # No user-serviceable parts below!
+@@ -245,8 +255,8 @@
+ PROGRAM	= hp2xx
+ 
+ default:
+-	@echo "This makefile needs manual configuration! Edit it now!
+-	@echo "After configuration, you may use the following commands:
++	@echo "This makefile needs manual configuration! Edit it now!"
++	@echo "After configuration, you may use the following commands:"
+ 	@echo   ""
+ 	@echo   "make all             Compile everything"
+ 	@echo   "make check           Run a color application in preview mode"
+@@ -267,7 +277,7 @@
+ #########################################################################
+ 
+ all: $(OBJS)
+-	$(CC) $(LFLAGS) $(OBJS) $(ALL_LIBS) -o $(PROGRAM)
++	$(CC) $(LFLAGS) $(OBJS) $(ALL_LIBS) $(EX_LIBS) -o $(PROGRAM)
+ 	$(BINDCMD)
+ 
+ 
+diff -ruN hp2xx-3.4.4.orig/sources/png.c hp2xx-3.4.4/sources/png.c
+--- hp2xx-3.4.4.orig/sources/png.c	2003-06-21 17:31:51.000000000 +0200
++++ hp2xx-3.4.4/sources/png.c	2012-02-07 22:26:33.000000000 +0100
+@@ -5,6 +5,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include "to_png.h"
++#include <zlib.h>
+ #include <png.h>
+ 
+ #define PDNCOL 256
+@@ -36,7 +37,7 @@
+ 	}
+ 
+ 	/* set up error handlimg for libpng */
+-	if (setjmp(png_ptr->jmpbuf)) {
++	if (setjmp(png_jmpbuf(png_ptr))) {
+ 		png_destroy_write_struct(&png_ptr, &info_ptr);
+ 		return;
+ 	}

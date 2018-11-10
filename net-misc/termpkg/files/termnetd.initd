@@ -1,0 +1,51 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Terminal Server daemon (${RC_SVCNAME#*.})"
+command="/usr/sbin/termnetd"
+name="${RC_SVCNAME}"
+
+extra_started_commands="reload"
+description_reload="Reread configuration file and make the appropriate changes"
+start_stop_daemon_args="--quiet --exec ${command} --name ${name}"
+
+depend() {
+	use logger
+	need net
+}
+
+config_check() {
+	command_args="${EXTRA_OPTS}"
+	CONFIG_FILE_DEFAULT="/etc/termnetd.conf"
+
+	[ -z "${CONFIG_FILE}" ] && CONFIG_FILE="${CONFIG_FILE_DEFAULT}"
+	[ -n "${CONTROL_PORT}" ] && command_args="${command_args} -s ${CONTROL_PORT}"
+	[ "${CONFIG_FILE}" != "${CONFIG_FILE_DEFAULT}" ] && command_args="${command_args} -c ${CONFIG_FILE}"
+
+	if [ ! -f "${CONFIG_FILE}" ]; then
+		eerror "Please create ${CONFIG_FILE}"
+		eerror "Sample conf: ${CONFIG_FILE_DEFAULT}.dist"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	config_check || return ${?}
+	ebegin "Starting ${description}"
+	start-stop-daemon --start ${start_stop_daemon_args} -- ${command_args}
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping ${description}"
+	start-stop-daemon --stop ${start_stop_daemon_args}
+	eend ${?}
+}
+
+reload() {
+	ebegin "Reloading ${description}"
+	start-stop-daemon --signal HUP ${start_stop_daemon_args}
+	eend ${?}
+}

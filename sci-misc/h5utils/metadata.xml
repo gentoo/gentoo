@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
+<longdescription>
+  h5utils is a set of utilities for visualization and conversion of
+  scientific data in the free, portable HDF5 format.
+  Besides providing a simple tool for batch visualization as PNG images,
+  h5utils also includes programs to convert HDF5 datasets into the
+  formats required by other free visualization software (e.g. plain
+  text, Vis5d, and VTK).
+</longdescription>
+<use>
+  <flag name="octave">Build Octave plugins</flag>
+  <flag name="hdf">Build hdf to hdf5 (and vice-versa) converter</flag>
+</use>
+</pkgmetadata>

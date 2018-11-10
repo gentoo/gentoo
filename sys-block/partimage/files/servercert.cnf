@@ -1,0 +1,36 @@
+# Robin H. Johnson <robbat2@gentoo.org> - October 17, 2003
+# This is the openssl config file to generate keys for partimage
+# It is read by mkservercert
+
+[ req ]
+# you can increase this value, but be aware that it will make things much slower
+# this should be a power of 2!
+default_bits = 1024
+# leave the rest of these alone!
+encrypt_key = yes
+distinguished_name = req_dn
+x509_extensions = cert_type
+prompt = no
+
+[ req_dn ]
+# 2-Letter ISO country code
+C=US
+# FULL name of state/province/district
+# NO abbreviations!
+ST=Alabama
+# FULL name of city
+# NO abbreviations!
+L=Mobile
+# Full Name of your organization
+# NO abbreviations!
+O=Foobar Systems
+# Leave this alone unless specifically need to change it!
+OU=Automatically-generated PartImage SSL key
+# This should be a FQDN that resolves to the IP of your server
+CN=localhost
+# This should be the email address for the administrator of the server
+emailAddress=root@localhost
+
+# Leave this alone!
+[ cert_type ]
+nsCertType = server

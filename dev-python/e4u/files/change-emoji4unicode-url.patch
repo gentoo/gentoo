@@ -1,0 +1,33 @@
+--- a/e4u/__init__.py	2018-05-22 08:32:05.000000000 +0200
++++ b/e4u/__init__.py	2018-07-04 19:40:53.000000000 +0200
+@@ -11,15 +11,15 @@
+ 
+ _loader = None
+ 
+-def load(filename=None,
+-        url=r"https://raw.githubusercontent.com/googlei18n/emoji4unicode/master/data/emoji4unicode.xml",
++def load(filename=r"/usr/share/e4u/emoji4unicode.xml",
++        url=None,
+         loader_class=None):
+     u"""load google's `emoji4unicode` project's xml file. must call this method first to use `e4u` library. this method never work twice if you want to reload, use `e4u.reload()` insted."""
+     if not has_loaded():
+         reload(filename, url, loader_class)
+         
+-def reload(filename=None,
+-        url=r"https://raw.githubusercontent.com/googlei18n/emoji4unicode/master/data/emoji4unicode.xml",
++def reload(filename=r"/usr/share/e4u/emoji4unicode.xml",
++        url=None,
+         loader_class=None):
+     u"""reload google's `emoji4unicode` project's xml file. must call this method first to use `e4u` library."""
+     if loader_class is None:
+--- a/e4u/loader.py	2018-05-22 08:32:05.000000000 +0200
++++ b/e4u/loader.py	2018-07-04 19:43:05.000000000 +0200
+@@ -32,7 +32,7 @@
+         self._translate_dictionaries = create_translate_dictionaries(self.symbols)
+         
+         
+-    def load(self, filename=None, url=r"https://raw.githubusercontent.com/googlei18n/emoji4unicode/master/data/emoji4unicode.xml"):
++    def load(self, filename=r"/usr/share/e4u/emoji4unicode.xml", url=None):
+         if filename:
+             xml = open(filename, 'r').read()
+         else:

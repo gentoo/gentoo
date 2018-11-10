@@ -1,0 +1,26 @@
+diff --git a/gourmet/gtk_extras/ratingWidget.py b/gourmet/gtk_extras/ratingWidget.py
+index 0e01735..efa6463 100644
+--- a/gourmet/gtk_extras/ratingWidget.py
++++ b/gourmet/gtk_extras/ratingWidget.py
+@@ -135,7 +135,7 @@ class StarGenerator:
+         if is_rgba: rowstride = 4
+         else: rowstride = 3
+         pb=gtk.gdk.pixbuf_new_from_data(
+-            image.tostring(),
++            image.tobytes(),
+             gtk.gdk.COLORSPACE_RGB,
+             is_rgba,
+             8,
+diff --git a/gourmet/plugins/browse_recipes/icon_helpers.py b/gourmet/plugins/browse_recipes/icon_helpers.py
+index 61c772c..2e7b08b 100644
+--- a/gourmet/plugins/browse_recipes/icon_helpers.py
++++ b/gourmet/plugins/browse_recipes/icon_helpers.py
+@@ -38,7 +38,7 @@ def get_pixbuf_from_image (image):
+     if is_rgba: rowstride = 4
+     else: rowstride = 3
+     pb=gtk.gdk.pixbuf_new_from_data(
+-        image.tostring(),
++        image.tobytes(),
+         gtk.gdk.COLORSPACE_RGB,
+         is_rgba,
+         8,

@@ -1,0 +1,140 @@
+diff -Nru tinycobol-0.65.9/Makefile.in tinycobol-0.65.9.new/Makefile.in
+--- tinycobol-0.65.9/Makefile.in	2010-01-13 05:42:49.000000000 +0100
++++ tinycobol-0.65.9.new/Makefile.in	2010-01-23 22:46:18.000000000 +0100
+@@ -44,7 +44,7 @@
+ all:
+ 	@for i in ${subdirs}; do \
+ 		echo Making all in $$i ; \
+-		(cd $$i; ${MAKE} all) ; \
++		(cd $$i; ${MAKE} all) || exit ; \
+ 	done
+ 
+ install: all
+Files tinycobol-0.65.9/cobrun/.Makefile.in.swp and tinycobol-0.65.9.new/cobrun/.Makefile.in.swp differ
+diff -Nru tinycobol-0.65.9/cobrun/Makefile.in tinycobol-0.65.9.new/cobrun/Makefile.in
+--- tinycobol-0.65.9/cobrun/Makefile.in	2010-01-13 05:42:49.000000000 +0100
++++ tinycobol-0.65.9.new/cobrun/Makefile.in	2010-01-23 22:40:07.000000000 +0100
+@@ -11,12 +11,12 @@
+ datarootdir = ${prefix}/share
+ pkgdatadir = ${datarootdir}/htcobol
+ #tcob_docdir=@tcob_docdir@
+-tcob_docdir=${prefix}/doc/@tcob_docdir@
++tcob_docdir=${prefix}/share/doc/@tcob_docdir@
+ 
+ INSTALL=@INSTALL@
+ INSTALL_DATA=@INSTALL_DATA@
+ INSTALL_DIR=$(INSTALL) -d -m 755 
+-INSTALL_PROGRAM=$(INSTALL) -s -m 755
++INSTALL_PROGRAM=$(INSTALL) -m 755
+ 
+ INSTRC=@tcob_default@
+ 
+@@ -36,7 +36,7 @@
+ LIBS1=@tcob_ld_args_defaults@
+ LIBS2=-L../lib -lhtcobol @tcob_ld_args_defaults@
+ LDFLAGS=@LDFLAGS@
+-CCXFLAGS=${INCLUDES} -Wall
++CCXFLAGS=${CFLAGS} ${INCLUDES} -Wall
+ 
+ SRC01 = htcobrun.c
+ 
+diff -Nru tinycobol-0.65.9/compiler/Makefile.in tinycobol-0.65.9.new/compiler/Makefile.in
+--- tinycobol-0.65.9/compiler/Makefile.in	2010-01-13 05:42:49.000000000 +0100
++++ tinycobol-0.65.9.new/compiler/Makefile.in	2010-01-23 22:45:27.000000000 +0100
+@@ -14,12 +14,12 @@
+ datarootdir = ${prefix}/share
+ pkgdatadir = ${datarootdir}/htcobol
+ #tcob_docdir=@tcob_docdir@
+-tcob_docdir=${prefix}/doc/@tcob_docdir@
++tcob_docdir=${prefix}/share/doc/@tcob_docdir@
+ 
+ INSTALL=@INSTALL@
+ INSTALL_DATA=@INSTALL_DATA@
+ INSTALL_DIR=$(INSTALL) -d -m 755 
+-INSTALL_PROGRAM=$(INSTALL) -s -m 755
++INSTALL_PROGRAM=$(INSTALL) -m 755
+ 
+ RM= rm -f
+ MKDIR=mkdir -p
+@@ -39,7 +39,7 @@
+ # -DDEBUG_COMPILER -DDEBUG_SCANNER
+ #
+ INCLUDES=@INCLUDES@
+-CCXFLAGS=${INCLUDES} @CCXFLAGS@ -Wall 
++CCXFLAGS=${INCLUDES} ${CFLAGS} @CCXFLAGS@ -Wall 
+ #CCXFLAGS=${INCLUDES} @CCXFLAGS@ -Wall -pedantic -Wno-long-long
+ #CCXFLAGS1=${INCLUDES} @CCXFLAGS@
+ CCXFLAGS1=${INCLUDES}
+@@ -82,14 +82,16 @@
+ 
+ scanner: htcobol.tab.c scan.c pp_parser.tab.c pp_scanner.c
+ 
+-scan.c: scan.l
++scan.c: scan.l htcobol.tab.c
+ 	$(LEX) -o$@ $< 
+ 
+-htcobol.tab.c: htcobol.y scan.c
++htcobol.tab.c: htcobol.y
+ 	$(YACC) -dv -b htcobol $<  
+ 
+ #htcobgen.o: htcoboly.h htcobol.c
+ 
++reswords.o: htcobol.tab.c reswords.c
++
+ htcobol.o: htcoboly.h
+ 	$(CCX) $(CCXFLAGS) -c htcobol.c
+ 
+diff -Nru tinycobol-0.65.9/info/Makefile.in tinycobol-0.65.9.new/info/Makefile.in
+--- tinycobol-0.65.9/info/Makefile.in	2010-01-13 05:42:49.000000000 +0100
++++ tinycobol-0.65.9.new/info/Makefile.in	2010-01-23 22:42:59.000000000 +0100
+@@ -16,15 +16,15 @@
+ #datadir = ${datarootdir}
+ datarootdir = ${prefix}/share
+ pkgdatadir = ${datarootdir}/htcobol
+-mandir = $(prefix)/man/man1
++mandir = $(prefix)/share/man/man1
+ 
+ #tcob_docdir=@tcob_docdir@
+-tcob_docdir=${prefix}/doc/@tcob_docdir@
++tcob_docdir=${prefix}/share/doc/@tcob_docdir@
+ 
+ INSTALL=@INSTALL@
+ INSTALL_DATA=@INSTALL_DATA@
+ INSTALL_DIR=$(INSTALL) -d -m 755 
+-INSTALL_PROGRAM=$(INSTALL) -s -m 755
++INSTALL_PROGRAM=$(INSTALL) -m 755
+ 
+ #mandir=@mandir@
+ #docdir=@docdir@
+diff -Nru tinycobol-0.65.9/lib/Makefile.in tinycobol-0.65.9.new/lib/Makefile.in
+--- tinycobol-0.65.9/lib/Makefile.in	2010-01-13 05:42:49.000000000 +0100
++++ tinycobol-0.65.9.new/lib/Makefile.in	2010-01-23 22:44:03.000000000 +0100
+@@ -9,7 +9,7 @@
+ datarootdir = ${prefix}/share
+ pkgdatadir = ${datarootdir}/htcobol
+ #tcob_docdir=@tcob_docdir@
+-tcob_docdir=${prefix}/doc/@tcob_docdir@
++tcob_docdir=${prefix}/share/doc/@tcob_docdir@
+ lib_dir=${exec_prefix}/lib
+ 
+ INSTRC=@tcob_default@
+@@ -19,7 +19,7 @@
+ INSTALL=@INSTALL@
+ INSTALL_DATA=@INSTALL_DATA@
+ INSTALL_DIR=$(INSTALL) -d -m 755 
+-INSTALL_PROGRAM=$(INSTALL) -s -m 755
++INSTALL_PROGRAM=$(INSTALL) -m 755
+ 
+ RANLIB=@RANLIB@
+ AR=@AR@
+@@ -37,8 +37,8 @@
+ INCLUDES=@INCLUDES@
+ LIBS=@tcob_ld_args_defaults@
+ LDFLAGS=@LDFLAGS@
+-CCXFLAGS=${INCLUDES} @CCXFLAGS@ -Wall 
+-CCXFLAGS1=${INCLUDES} @CCXFLAGS@ -Wall -fPIC -DPIC
++CCXFLAGS=${INCLUDES} ${CFLAGS} @CCXFLAGS@ -Wall 
++CCXFLAGS1=${INCLUDES} ${CFLAGS} @CCXFLAGS@ -Wall -fPIC -DPIC
+ ACXFLAGS=@ACXFLAGS@
+ 
+ #

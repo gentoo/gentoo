@@ -1,0 +1,27 @@
+# /etc/conf.d/vgl
+
+DISPLAY="${DISPLAY:-:0}"
+
+# Make it a function in case we have to repeat it in init script later
+set_xauth() {
+
+# common case (works in almost all tested environments (except of lightdm)):
+XAUTHORITY="$(ps wwax -C X,Xorg -o args= --sort=-stime | grep -m 1 -o '\B[-]auth\s*/var\S*' | cut -d ' ' -f 2)"
+
+# kdm and some others:
+# XAUTHORITY="$(find /var/run/xauth/A${DISPLAY}-*|tail -n1)"
+
+# gdm:
+# XAUTHORITY="/var/gdm/${DISPLAY}.Xauth"
+
+# slim:
+# XAUTHORITY="/var/run/slim.auth"
+
+# lightdm:
+# XAUTHORITY="/var/run/lightdm/root/${DISPLAY}"
+
+# lxdm:
+# XAUTHORITY="/var/run/lxdm/lxdm-${DISPLAY}.auth"
+
+}
+set_xauth

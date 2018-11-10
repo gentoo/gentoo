@@ -1,0 +1,8 @@
+--- libsamplerate-0.1.8/samplerate.pc.in.orig
++++ libsamplerate-0.1.8/samplerate.pc.in
+@@ -8,4 +8,5 @@
+ Requires: 
+ Version: @VERSION@
+ Libs: -L${libdir} -lsamplerate
++Libs.private: @LIBS@
+ Cflags: -I${includedir} 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Data-FormValidator</remote-id>
+    <remote-id type="cpan-module">Data::FormValidator</remote-id>
+    <remote-id type="cpan-module">Data::FormValidator::Constraints</remote-id>
+    <remote-id type="cpan-module">Data::FormValidator::Constraints::Dates</remote-id>
+    <remote-id type="cpan-module">Data::FormValidator::Constraints::RegexpCommon</remote-id>
+    <remote-id type="cpan-module">Data::FormValidator::Constraints::Upload</remote-id>
+    <remote-id type="cpan-module">Data::FormValidator::ConstraintsFactory</remote-id>
+    <remote-id type="cpan-module">Data::FormValidator::Filters</remote-id>
+    <remote-id type="cpan-module">Data::FormValidator::Results</remote-id>
+  </upstream>
+</pkgmetadata>

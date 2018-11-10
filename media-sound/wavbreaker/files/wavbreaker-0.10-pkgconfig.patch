@@ -1,0 +1,11 @@
+diff -ur wavbreaker-0.10.orig/configure.in wavbreaker-0.10/configure.in
+--- wavbreaker-0.10.orig/configure.in	2008-06-02 09:44:27.000000000 +0300
++++ wavbreaker-0.10/configure.in	2008-06-14 15:28:26.000000000 +0300
+@@ -30,6 +30,7 @@
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
++PKG_PROG_PKG_CONFIG
+ 
+ # Checks for libraries.
+ AC_CHECK_LIB([m], [cos])

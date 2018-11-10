@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription>
+    yt is an analysis and visualization system written in Python,
+    designed for use with Astrophysical Simulation codes. yt can process data in a
+    myriad of ways and make a variety of visualizations. It is designed to be portable
+    across simulation codes, and it is developed by developers from a variety of
+    institutions and backgrounds.
+  </longdescription>
+  <use>
+    <flag name="hub">Connect to the yt hub with <pkg>dev-python/girder-client</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">yt</remote-id>
+  </upstream>
+</pkgmetadata>

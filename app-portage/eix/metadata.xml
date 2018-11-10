@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xmw@gentoo.org</email>
+    <name>Michael Weber</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>martin@mvath.de</email>
+    <name>Martin Väth</name>
+    <description>Upstream developer, CC on bugs, do not copy ebuilds
+      from his overlay</description>
+  </maintainer>
+  <use>
+    <flag name="debug">Build with upstream's CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.</flag>
+    <flag name="doc">Create description of the eix cache file additionally in html format</flag>
+    <flag name="sqlite">Compile in support for portage's sqlite backend; to actually use it you need additional configuration of portage and eix</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">vaeth/eix</remote-id>
+  </upstream>
+</pkgmetadata>

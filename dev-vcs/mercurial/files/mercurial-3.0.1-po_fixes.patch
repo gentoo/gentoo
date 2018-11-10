@@ -1,0 +1,40 @@
+--- mercurial-3.0.1/i18n/el.po
++++ mercurial-3.0.1/i18n/el.po
+@@ -11,6 +11,7 @@
+ "PO-Revision-Date: 2009-12-02 03:23+0200\n"
+ "Last-Translator: <keramida@ceid.upatras.gr>\n"
+ "Language-Team: Greek\n"
++"Language: el\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+--- mercurial-3.0.1/i18n/fr.po
++++ mercurial-3.0.1/i18n/fr.po
+@@ -90,6 +90,7 @@
+ "PO-Revision-Date: 2009-10-25 12:43+0100\n"
+ "Last-Translator: Cedric Duval <cedricduval@free.fr>\n"
+ "Language-Team: French\n"
++"Language: fr\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+--- mercurial-3.0.1/i18n/ro.po
++++ mercurial-3.0.1/i18n/ro.po
+@@ -110,6 +110,7 @@
+ "PO-Revision-Date: 2011-06-08 17:00+0200\n"
+ "Last-Translator: Daniel Dumitriu <daniel.dumitriu@gmail.com>\n"
+ "Language-Team: Romanian <>\n"
++"Language: ro\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+--- mercurial-3.0.1/i18n/zh_CN.po
++++ mercurial-3.0.1/i18n/zh_CN.po
+@@ -51,6 +51,7 @@
+ "PO-Revision-Date: 2009-03-31 20:38+0200\n"
+ "Last-Translator: Dongsheng Song <dongsheng.song@gmail.com>\n"
+ "Language-Team: Chinese translation team <i18n-zh@googlegroups.com>\n"
++"Language: zh_CN\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"

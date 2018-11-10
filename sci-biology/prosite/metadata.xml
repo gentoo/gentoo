@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		A protein families and domains database maintained at the Swiss
+		Institude for Bioinformatics. It consists of biologically significant
+		sites, patterns and profiles that help to reliably identify to which
+		known protein family (if any) a new sequence belongs. PROSITE currently
+		contains patterns and profiles specific for more than a thousand
+		protein families or domains. Each of these signatures comes with
+		documentation providing background information on the structure and
+		function of these proteins.
+	</longdescription>
+</pkgmetadata>

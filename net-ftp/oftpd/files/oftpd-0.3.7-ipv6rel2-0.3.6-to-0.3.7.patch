@@ -1,0 +1,354 @@
+Difference from upstream mentioned patch for version 0.3.6
+ftp://ftp.deepspace6.net/pub/ds6/sources/oftpd/oftpd-0.3.6-ipv6rel2.patch.gz
+to Mario Fetka (geos_one) (mario dot fetka at gmail dot com) at 
+http://bugs.gentoo.org/attachment.cgi?id=220543&action=view
+
+--- oftpd-0.3.6-ipv6rel2.patch	2010-09-01 11:17:37.137000090 +0200
++++ oftpd-0.3.6-ipv6rel2.patch	2010-09-01 11:15:21.900000084 +0200
+@@ -1,146 +1,10 @@
+-diff -urN oftpd-0.3.6-orig/Makefile.in oftpd-0.3.6/Makefile.in
+---- oftpd-0.3.6-orig/Makefile.in	Mon May 28 00:53:40 2001
+-+++ oftpd-0.3.6/Makefile.in	Fri Jun  8 19:09:50 2001
+-@@ -72,8 +72,8 @@
+- CONFIG_HEADER = ./src/config.h
+- CONFIG_CLEAN_FILES = 
+- DIST_COMMON =  README AUTHORS COPYING ChangeLog INSTALL Makefile.am \
+--Makefile.in NEWS TODO acconfig.h aclocal.m4 configure configure.in \
+--install-sh missing mkinstalldirs src/config.h.in src/stamp-h.in
+-+Makefile.in NEWS TODO aclocal.m4 configure configure.in install-sh \
+-+missing mkinstalldirs
+- 
+- 
+- DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
+-@@ -83,9 +83,9 @@
+- all: all-redirect
+- .SUFFIXES:
+- $(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
+--	cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps Makefile
+-+	cd $(top_srcdir) && $(AUTOMAKE) --gnu Makefile
+- 
+--Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status
+-+Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status $(BUILT_SOURCES)
+- 	cd $(top_builddir) \
+- 	  && CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
+- 
+-@@ -97,34 +97,6 @@
+- $(srcdir)/configure: $(srcdir)/configure.in $(ACLOCAL_M4) $(CONFIGURE_DEPENDENCIES)
+- 	cd $(srcdir) && $(AUTOCONF)
+- 
+--src/config.h: src/stamp-h
+--	@if test ! -f $@; then \
+--		rm -f src/stamp-h; \
+--		$(MAKE) src/stamp-h; \
+--	else :; fi
+--src/stamp-h: $(srcdir)/src/config.h.in $(top_builddir)/config.status
+--	cd $(top_builddir) \
+--	  && CONFIG_FILES= CONFIG_HEADERS=src/config.h \
+--	     $(SHELL) ./config.status
+--	@echo timestamp > src/stamp-h 2> /dev/null
+--$(srcdir)/src/config.h.in: $(srcdir)/src/stamp-h.in
+--	@if test ! -f $@; then \
+--		rm -f $(srcdir)/src/stamp-h.in; \
+--		$(MAKE) $(srcdir)/src/stamp-h.in; \
+--	else :; fi
+--$(srcdir)/src/stamp-h.in: $(top_srcdir)/configure.in $(ACLOCAL_M4) acconfig.h
+--	cd $(top_srcdir) && $(AUTOHEADER)
+--	@echo timestamp > $(srcdir)/src/stamp-h.in 2> /dev/null
+--
+--mostlyclean-hdr:
+--
+--clean-hdr:
+--
+--distclean-hdr:
+--	-rm -f src/config.h
+--
+--maintainer-clean-hdr:
+--
+- # This directory's subdirectories are mostly independent; you can cd
+- # into them and run `make' without going through this Makefile.
+- # To change the values of `make' variables: instead of editing Makefiles,
+-@@ -252,6 +224,11 @@
+- 	-rm -rf $(distdir)
+- 	mkdir $(distdir)
+- 	-chmod 777 $(distdir)
+-+	here=`cd $(top_builddir) && pwd`; \
+-+	top_distdir=`cd $(distdir) && pwd`; \
+-+	distdir=`cd $(distdir) && pwd`; \
+-+	cd $(top_srcdir) \
+-+	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --gnu Makefile
+- 	$(mkinstalldirs) $(distdir)/dist $(distdir)/init
+- 	@for file in $(DISTFILES); do \
+- 	  d=$(srcdir); \
+-@@ -309,32 +286,32 @@
+- 	-rm -f config.cache config.log stamp-h stamp-h[0-9]*
+- 
+- maintainer-clean-generic:
+--mostlyclean-am:  mostlyclean-hdr mostlyclean-tags mostlyclean-generic
+-+mostlyclean-am:  mostlyclean-tags mostlyclean-generic
+- 
+- mostlyclean: mostlyclean-recursive
+- 
+--clean-am:  clean-hdr clean-tags clean-generic mostlyclean-am
+-+clean-am:  clean-tags clean-generic mostlyclean-am
+- 
+- clean: clean-recursive
+- 
+--distclean-am:  distclean-hdr distclean-tags distclean-generic clean-am
+-+distclean-am:  distclean-tags distclean-generic clean-am
+- 
+- distclean: distclean-recursive
+- 	-rm -f config.status
+- 
+--maintainer-clean-am:  maintainer-clean-hdr maintainer-clean-tags \
+--		maintainer-clean-generic distclean-am
+-+maintainer-clean-am:  maintainer-clean-tags maintainer-clean-generic \
+-+		distclean-am
+- 	@echo "This command is intended for maintainers to use;"
+- 	@echo "it deletes files that may require special tools to rebuild."
+- 
+- maintainer-clean: maintainer-clean-recursive
+- 	-rm -f config.status
+- 
+--.PHONY: mostlyclean-hdr distclean-hdr clean-hdr maintainer-clean-hdr \
+--install-data-recursive uninstall-data-recursive install-exec-recursive \
+--uninstall-exec-recursive installdirs-recursive uninstalldirs-recursive \
+--all-recursive check-recursive installcheck-recursive info-recursive \
+--dvi-recursive mostlyclean-recursive distclean-recursive clean-recursive \
+-+.PHONY: install-data-recursive uninstall-data-recursive \
+-+install-exec-recursive uninstall-exec-recursive installdirs-recursive \
+-+uninstalldirs-recursive all-recursive check-recursive \
+-+installcheck-recursive info-recursive dvi-recursive \
+-+mostlyclean-recursive distclean-recursive clean-recursive \
+- maintainer-clean-recursive tags tags-recursive mostlyclean-tags \
+- distclean-tags clean-tags maintainer-clean-tags distdir info-am info \
+- dvi-am dvi check check-am installcheck-am installcheck install-exec-am \
+-diff -urN oftpd-0.3.6-orig/man/Makefile.in oftpd-0.3.6/man/Makefile.in
+---- oftpd-0.3.6-orig/man/Makefile.in	Mon May 28 00:53:44 2001
+-+++ oftpd-0.3.6/man/Makefile.in	Fri Jun  8 19:09:50 2001
+-@@ -84,9 +84,9 @@
+- all: all-redirect
+- .SUFFIXES:
+- $(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
+--	cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps man/Makefile
+-+	cd $(top_srcdir) && $(AUTOMAKE) --gnu man/Makefile
+- 
+--Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status
+-+Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status $(BUILT_SOURCES)
+- 	cd $(top_builddir) \
+- 	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
+- 
+-@@ -138,6 +138,11 @@
+- subdir = man
+- 
+- distdir: $(DISTFILES)
+-+	here=`cd $(top_builddir) && pwd`; \
+-+	top_distdir=`cd $(top_distdir) && pwd`; \
+-+	distdir=`cd $(distdir) && pwd`; \
+-+	cd $(top_srcdir) \
+-+	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --gnu man/Makefile
+- 	@for file in $(DISTFILES); do \
+- 	  d=$(srcdir); \
+- 	  if test -d $$d/$$file; then \
++Submitted By: Mario Fetka (geos_one) (mario dot fetka at gmail dot com)
++Date: 2010-01-05
++Initial Package Version: 0.3.6
++Origin: ftp://ftp.deepspace6.net/pub/ds6/sources/oftpd/oftpd-0.3.6-ipv6rel2.patch.gz
++Upstream Status: unknown
++Description: add better ipv6 support to oftpd
++ 
+ diff -urN oftpd-0.3.6-orig/src/Makefile.am oftpd-0.3.6/src/Makefile.am
+ --- oftpd-0.3.6-orig/src/Makefile.am	Wed Apr 18 01:05:16 2001
+ +++ oftpd-0.3.6/src/Makefile.am	Fri Jun  8 19:09:45 2001
+@@ -148,158 +12,6 @@
+  bin_PROGRAMS = oftpd
+ -oftpd_SOURCES = file_list.c file_list.h ftp_command.c ftp_command.h ftp_listener.c ftp_listener.h ftp_session.c ftp_session.h oftpd.c oftpd.h telnet_session.c telnet_session.h watchdog.c watchdog.h error.c error.h af_portability.h daemon_assert.c daemon_assert.h
+ +oftpd_SOURCES = file_list.c file_list.h ftp_command.c ftp_command.h ftp_listener.c ftp_listener.h ftp_session.c ftp_session.h oftpd.c oftpd.h telnet_session.c telnet_session.h watchdog.c watchdog.h error.c error.h af_portability.h af_portability.c daemon_assert.c daemon_assert.h
+-diff -urN oftpd-0.3.6-orig/src/Makefile.in oftpd-0.3.6/src/Makefile.in
+---- oftpd-0.3.6-orig/src/Makefile.in	Mon May 28 00:53:42 2001
+-+++ oftpd-0.3.6/src/Makefile.in	Fri Jun  8 19:09:50 2001
+-@@ -66,7 +66,7 @@
+- VERSION = @VERSION@
+- 
+- bin_PROGRAMS = oftpd
+--oftpd_SOURCES = file_list.c file_list.h ftp_command.c ftp_command.h ftp_listener.c ftp_listener.h ftp_session.c ftp_session.h oftpd.c oftpd.h telnet_session.c telnet_session.h watchdog.c watchdog.h error.c error.h af_portability.h daemon_assert.c daemon_assert.h
+-+oftpd_SOURCES = file_list.c file_list.h ftp_command.c ftp_command.h ftp_listener.c ftp_listener.h ftp_session.c ftp_session.h oftpd.c oftpd.h telnet_session.c telnet_session.h watchdog.c watchdog.h error.c error.h af_portability.h af_portability.c daemon_assert.c daemon_assert.h
+- mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+- CONFIG_HEADER = config.h
+- CONFIG_CLEAN_FILES = 
+-@@ -78,7 +78,8 @@
+- LDFLAGS = @LDFLAGS@
+- LIBS = @LIBS@
+- oftpd_OBJECTS =  file_list.o ftp_command.o ftp_listener.o ftp_session.o \
+--oftpd.o telnet_session.o watchdog.o error.o daemon_assert.o
+-+oftpd.o telnet_session.o watchdog.o error.o af_portability.o \
+-+daemon_assert.o
+- oftpd_LDADD = $(LDADD)
+- oftpd_DEPENDENCIES = 
+- oftpd_LDFLAGS = 
+-@@ -93,6 +94,10 @@
+- 
+- TAR = gtar
+- GZIP_ENV = --best
+-+DEP_FILES =  .deps/af_portability.P .deps/daemon_assert.P .deps/error.P \
+-+.deps/file_list.P .deps/ftp_command.P .deps/ftp_listener.P \
+-+.deps/ftp_session.P .deps/oftpd.P .deps/telnet_session.P \
+-+.deps/watchdog.P
+- SOURCES = $(oftpd_SOURCES)
+- OBJECTS = $(oftpd_OBJECTS)
+- 
+-@@ -100,9 +105,9 @@
+- .SUFFIXES:
+- .SUFFIXES: .S .c .o .s
+- $(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
+--	cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps src/Makefile
+-+	cd $(top_srcdir) && $(AUTOMAKE) --gnu src/Makefile
+- 
+--Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status
+-+Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status $(BUILT_SOURCES)
+- 	cd $(top_builddir) \
+- 	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
+- 
+-@@ -160,9 +165,6 @@
+- 	  rm -f $(DESTDIR)$(bindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`; \
+- 	done
+- 
+--.c.o:
+--	$(COMPILE) -c $<
+--
+- .s.o:
+- 	$(COMPILE) -c $<
+- 
+-@@ -217,6 +219,11 @@
+- subdir = src
+- 
+- distdir: $(DISTFILES)
+-+	here=`cd $(top_builddir) && pwd`; \
+-+	top_distdir=`cd $(top_distdir) && pwd`; \
+-+	distdir=`cd $(distdir) && pwd`; \
+-+	cd $(top_srcdir) \
+-+	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --gnu src/Makefile
+- 	@for file in $(DISTFILES); do \
+- 	  d=$(srcdir); \
+- 	  if test -d $$d/$$file; then \
+-@@ -228,6 +235,37 @@
+- 	  fi; \
+- 	done
+- 
+-+DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
+-+
+-+-include $(DEP_FILES)
+-+
+-+mostlyclean-depend:
+-+
+-+clean-depend:
+-+
+-+distclean-depend:
+-+	-rm -rf .deps
+-+
+-+maintainer-clean-depend:
+-+
+-+%.o: %.c
+-+	@echo '$(COMPILE) -c $<'; \
+-+	$(COMPILE) -Wp,-MD,.deps/$(*F).pp -c $<
+-+	@-cp .deps/$(*F).pp .deps/$(*F).P; \
+-+	tr ' ' '\012' < .deps/$(*F).pp \
+-+	  | sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
+-+	    >> .deps/$(*F).P; \
+-+	rm .deps/$(*F).pp
+-+
+-+%.lo: %.c
+-+	@echo '$(LTCOMPILE) -c $<'; \
+-+	$(LTCOMPILE) -Wp,-MD,.deps/$(*F).pp -c $<
+-+	@-sed -e 's/^\([^:]*\)\.o[ 	]*:/\1.lo \1.o :/' \
+-+	  < .deps/$(*F).pp > .deps/$(*F).P; \
+-+	tr ' ' '\012' < .deps/$(*F).pp \
+-+	  | sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
+-+	    >> .deps/$(*F).P; \
+-+	rm -f .deps/$(*F).pp
+- info-am:
+- info: info-am
+- dvi-am:
+-@@ -268,24 +306,26 @@
+- 
+- maintainer-clean-generic:
+- mostlyclean-am:  mostlyclean-hdr mostlyclean-binPROGRAMS \
+--		mostlyclean-compile mostlyclean-tags \
+-+		mostlyclean-compile mostlyclean-tags mostlyclean-depend \
+- 		mostlyclean-generic
+- 
+- mostlyclean: mostlyclean-am
+- 
+- clean-am:  clean-hdr clean-binPROGRAMS clean-compile clean-tags \
+--		clean-generic mostlyclean-am
+-+		clean-depend clean-generic mostlyclean-am
+- 
+- clean: clean-am
+- 
+- distclean-am:  distclean-hdr distclean-binPROGRAMS distclean-compile \
+--		distclean-tags distclean-generic clean-am
+-+		distclean-tags distclean-depend distclean-generic \
+-+		clean-am
+- 
+- distclean: distclean-am
+- 
+- maintainer-clean-am:  maintainer-clean-hdr maintainer-clean-binPROGRAMS \
+- 		maintainer-clean-compile maintainer-clean-tags \
+--		maintainer-clean-generic distclean-am
+-+		maintainer-clean-depend maintainer-clean-generic \
+-+		distclean-am
+- 	@echo "This command is intended for maintainers to use;"
+- 	@echo "it deletes files that may require special tools to rebuild."
+- 
+-@@ -296,10 +336,11 @@
+- maintainer-clean-binPROGRAMS uninstall-binPROGRAMS install-binPROGRAMS \
+- mostlyclean-compile distclean-compile clean-compile \
+- maintainer-clean-compile tags mostlyclean-tags distclean-tags \
+--clean-tags maintainer-clean-tags distdir info-am info dvi-am dvi check \
+--check-am installcheck-am installcheck all-recursive-am install-exec-am \
+--install-exec install-data-am install-data install-am install \
+--uninstall-am uninstall all-redirect all-am all installdirs \
+-+clean-tags maintainer-clean-tags distdir mostlyclean-depend \
+-+distclean-depend clean-depend maintainer-clean-depend info-am info \
+-+dvi-am dvi check check-am installcheck-am installcheck all-recursive-am \
+-+install-exec-am install-exec install-data-am install-data install-am \
+-+install uninstall-am uninstall all-redirect all-am all installdirs \
+- mostlyclean-generic distclean-generic clean-generic \
+- maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+- 
+ diff -urN oftpd-0.3.6-orig/src/af_portability.c oftpd-0.3.6/src/af_portability.c
+ --- oftpd-0.3.6-orig/src/af_portability.c	Thu Jan  1 01:00:00 1970
+ +++ oftpd-0.3.6/src/af_portability.c	Fri Jun  8 19:01:31 2001
+@@ -376,7 +88,7 @@
+ diff -urN oftpd-0.3.6-orig/src/config.h.in oftpd-0.3.6/src/config.h.in
+ --- oftpd-0.3.6-orig/src/config.h.in	Sun May 27 23:04:05 2001
+ +++ oftpd-0.3.6/src/config.h.in	Fri Jun  8 19:03:43 2001
+-@@ -100,14 +100,14 @@
++@@ -97,15 +97,15 @@
+  /* Define if you have the <limits.h> header file.  */
+  #undef HAVE_LIMITS_H
+  
+@@ -388,12 +100,13 @@
+  
+  /* Define if you have the <sys/types.h> header file.  */
+  #undef HAVE_SYS_TYPES_H
+--
++ 
+ -/* Define if you have the <syslog.h> header file.  */
+ -#undef HAVE_SYSLOG_H
+- 
++-
+  /* Define if you have the <unistd.h> header file.  */
+  #undef HAVE_UNISTD_H
++ 
+ diff -urN oftpd-0.3.6-orig/src/error.c oftpd-0.3.6/src/error.c
+ --- oftpd-0.3.6-orig/src/error.c	Wed Apr 18 23:41:04 2001
+ +++ oftpd-0.3.6/src/error.c	Thu Jun 21 20:57:09 2001
+@@ -1436,7 +1149,7 @@
+  	}
+  #else
+  	if (memcmp(&f->client_addr.sin_addr, 
+-@@ -1803,20 +1893,69 @@
++@@ -1811,20 +1901,69 @@
+      }
+  }
+  

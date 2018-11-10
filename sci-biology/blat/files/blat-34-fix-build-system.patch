@@ -1,0 +1,207 @@
+--- a/blat/makefile
++++ b/blat/makefile
+@@ -7,7 +7,7 @@
+ O = blat.o
+ 
+ blat: $O $(MYLIBS)
+-	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/blat $O $(MYLIBS) $L
++	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/blat $O $(MYLIBS) $L
+ 	${STRIP} ${BINDIR}/blat${EXE}
+ 
+ all:
+--- a/gfClient/makefile
++++ b/gfClient/makefile
+@@ -8,5 +8,5 @@
+ X = gfClient
+ 
+ gfClient: $O $(MYLIBS)
+-	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/$X $O $(MYLIBS) $L
++	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/$X $O $(MYLIBS) $L
+ 	${STRIP} ${BINDIR}/$X${EXE}
+--- a/gfServer/makefile
++++ b/gfServer/makefile
+@@ -8,7 +8,7 @@
+ X = gfServer
+ 
+ gfServer: $O $(MYLIBS)
+-	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/$X $O $(MYLIBS) $L
++	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/$X $O $(MYLIBS) $L
+ 	${STRIP} ${BINDIR}/$X${EXE}
+ 
+ test:
+--- a/hg/pslPretty/makefile
++++ b/hg/pslPretty/makefile
+@@ -8,7 +8,7 @@
+ O = pslPretty.o
+ 
+ pslPretty: $O $(MYLIBS)
+-	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/pslPretty $O $(MYLIBS) $L
++	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/pslPretty $O $(MYLIBS) $L
+ 
+ test:: testRna testDnax
+ 
+--- a/hg/pslReps/makefile
++++ b/hg/pslReps/makefile
+@@ -9,7 +9,7 @@
+ O = pslReps.o 
+ 
+ pslReps: $O $(MYLIBS)
+-	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/pslReps${EXE} $O $(MYLIBS) $L
++	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/pslReps${EXE} $O $(MYLIBS) $L
+ 
+ lib:
+ 	cd ../../lib && ${MAKE}
+--- a/hg/pslSort/makefile
++++ b/hg/pslSort/makefile
+@@ -8,7 +8,7 @@
+ O = pslSort.o
+ 
+ pslSort: $O $(MYLIBS)
+-	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/pslSort $O $(MYLIBS) $L
++	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/pslSort $O $(MYLIBS) $L
+ 
+ 
+ lib:
+--- a/inc/common.mk
++++ b/inc/common.mk
+@@ -1,20 +1,15 @@
+-CC=gcc
+-ifeq (${COPT},)
+-    COPT=-O
+-endif
+-CFLAGS=
+ HG_DEFS=-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_GNU_SOURCE -DMACHTYPE_${MACHTYPE}
+ HG_WARN=-Wformat -Wimplicit -Wuninitialized -Wreturn-type
+ HG_INC=-I../inc -I../../inc -I../../../inc -I../../../../inc -I../../../../../inc
+ 
+ # Stronger warning checks, and warnings-->errors, for libraries and CGIs:
+ ifeq (darwin,$(findstring darwin,${OSTYPE}))
+-    HG_WARN_ERR = -DJK_WARN -Wall -Werror -Wno-unused-variable
++    HG_WARN_ERR = -DJK_WARN -Wall -Wno-unused-variable
+ else
+   ifeq (solaris,$(findstring solaris,${OSTYPE}))
+     HG_WARN_ERR = -DJK_WARN -Wall
+   else
+-    HG_WARN_ERR = -DJK_WARN -Wall -Werror
++    HG_WARN_ERR = -DJK_WARN -Wall
+   endif
+ endif
+ # Apply the stronger checks to all code on our development machine:
+@@ -37,7 +32,7 @@
+ endif
+ MKDIR=mkdir -p
+ ifeq (${STRIP},)
+-   STRIP=strip
++   STRIP=true
+ endif
+ CVS=cvs
+ 
+--- a/jkOwnLib/makefile
++++ b/jkOwnLib/makefile
+@@ -9,7 +9,7 @@
+ T = ../lib/$(MACHTYPE)/jkOwnLib.a
+ 
+ $(T): $(O) ../lib/$(MACHTYPE)
+-	ar rcus $(T) $(O)
++	$(AR) rcus $(T) $(O)
+ 
+ ../lib/$(MACHTYPE):
+ 	mkdir ../lib/$(MACHTYPE)
+--- a/lib/makefile
++++ b/lib/makefile
+@@ -32,7 +32,7 @@
+ 
+ 
+ $(MACHTYPE)/jkweb.a: $(O) $(MACHTYPE)
+-	ar rcus $(MACHTYPE)/jkweb.a $(O)
++	$(AR) rcus $(MACHTYPE)/jkweb.a $(O)
+ 
+ $(MACHTYPE):
+ 	mkdir $(MACHTYPE)
+--- a/makefile
++++ b/makefile
+@@ -1,18 +1,18 @@
+ all:
+-	cd lib && ${MAKE}
+-	cd jkOwnLib && ${MAKE}
+-	cd blat && $(MAKE)
+-	cd gfClient && $(MAKE)
+-	cd gfServer && $(MAKE)
+-	cd hg/pslPretty && $(MAKE)
+-	cd hg/pslReps && $(MAKE)
+-	cd hg/pslSort && $(MAKE)
+-	cd utils/nibFrag && $(MAKE)
+-	cd utils/faToNib && $(MAKE)
+-	cd utils/faToTwoBit && $(MAKE)
+-	cd utils/twoBitToFa && $(MAKE)
+-	cd utils/twoBitInfo && $(MAKE)
+-	cd webBlat && $(MAKE)
++	$(MAKE) -C lib
++	$(MAKE) -C jkOwnLib
++	$(MAKE) -C blat
++	$(MAKE) -C gfClient
++	$(MAKE) -C gfServer
++	$(MAKE) -C hg/pslPretty
++	$(MAKE) -C hg/pslReps
++	$(MAKE) -C hg/pslSort
++	$(MAKE) -C utils/nibFrag
++	$(MAKE) -C utils/faToNib
++	$(MAKE) -C utils/faToTwoBit
++	$(MAKE) -C utils/twoBitToFa
++	$(MAKE) -C utils/twoBitInfo
++	$(MAKE) -C webBlat
+ 
+ clean:
+ 	rm -f */*.o */*/*.o
+--- a/utils/faToNib/makefile
++++ b/utils/faToNib/makefile
+@@ -8,4 +8,4 @@
+ O = faToNib.o
+ 
+ faToNib: $O $(MYLIBS)
+-	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/faToNib $O $(MYLIBS) $L
++	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/faToNib $O $(MYLIBS) $L
+--- a/utils/faToTwoBit/makefile
++++ b/utils/faToTwoBit/makefile
+@@ -7,7 +7,7 @@
+ O = faToTwoBit.o
+ 
+ faToTwoBit: $O ${MYLIBS}
+-	${CC} ${COPT} -o ${BINDIR}/faToTwoBit $O ${MYLIBS} $L
++	${CC} ${COPT} ${LDFLAGS} -o ${BINDIR}/faToTwoBit $O ${MYLIBS} $L
+ 	${STRIP} ${BINDIR}/faToTwoBit${EXE}
+ 
+ clean:
+--- a/utils/nibFrag/makefile
++++ b/utils/nibFrag/makefile
+@@ -4,7 +4,7 @@
+ O = nibFrag.o 
+ 
+ nibFrag: $(O)
+-	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/nibFrag $O ../../lib/$(MACHTYPE)/jkweb.a
++	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/nibFrag $O ../../lib/$(MACHTYPE)/jkweb.a
+ 
+ 
+ 
+--- a/utils/twoBitInfo/makefile
++++ b/utils/twoBitInfo/makefile
+@@ -7,7 +7,7 @@
+ O = twoBitInfo.o
+ 
+ twoBitInfo: $O ${MYLIBS}
+-	${CC} ${COPT} -o ${BINDIR}/twoBitInfo $O ${MYLIBS} $L
++	${CC} ${COPT} ${LDFLAGS} -o ${BINDIR}/twoBitInfo $O ${MYLIBS} $L
+ 	${STRIP} ${BINDIR}/twoBitInfo${EXE}
+ 
+ clean:
+--- a/utils/twoBitToFa/makefile
++++ b/utils/twoBitToFa/makefile
+@@ -8,7 +8,7 @@
+ O = twoBitToFa.o
+ 
+ twoBitToFa: $O ${MYLIBS}
+-	${CC} ${COPT} -o ${BINDIR}/twoBitToFa $O ${MYLIBS} $L
++	${CC} ${COPT} ${LDFLAGS} -o ${BINDIR}/twoBitToFa $O ${MYLIBS} $L
+ 	#${STRIP} ${BINDIR}/twoBitToFa${EXE}
+ 
+ clean:

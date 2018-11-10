@@ -1,0 +1,79 @@
+http://svn.debian.org/wsvn/pkg-vdr-dvb/vdr/vdr-plugin-console/trunk/debian/patches/94_console-1.6.0.dpatch?op=file&rev=0&sc=0
+
+by Tobias Grimm <tg@e-tobi.net>
+--- vdr-plugin-console-0.6.0.orig/menu.c
++++ vdr-plugin-console-0.6.0/menu.c
+@@ -24,7 +24,7 @@
+ 
+ 
+ 
+-#include "fontsmallfix.c"
++//#include "fontsmallfix.c"
+ #include "symbols/bell.xpm"
+ #include "symbols/keyboard.xpm"
+ 
+@@ -59,31 +59,11 @@
+     if (backColor != clrConsoleTransparent)
+       bitmap.DrawRectangle(x, y, x + w - 1, y + h - 1, backColor);
+ 
+-    const cFont::tCharData* CharData = font.CharData(ch);
++    char text[2];
++    text[1] = 0;
++    text[0] = ch;
+ 
+-    // Center the char within its cell
+-    x += (w - (int)CharData->width) / 2;
+-    if (w > (int)CharData->width)
+-      w = (int)CharData->width;
+-
+-    for (int row = 0; row < h; ++row) {
+-
+-      cFont::tPixelData PixelData = CharData->lines[row];
+-//@@TEST
+-      PixelData >>= 1;
+-      for (int col = w; col-- > 0;) {
+-
+-        if (PixelData & 1) {
+-          bitmap.SetIndex(x + col, y + row, fg);
+-
+-          // Try to fix flickering
+-//          if (*bitmap.Data(x + col, y + row - 1) != fg)
+-//            bitmap.SetIndex(x + col, y + row + 1, fg);
+-        }
+-
+-        PixelData >>= 1;
+-      }
+-    }
++    bitmap.DrawText(x, y, text, foreColor, backColor, &font);
+ 
+   } else {
+ 
+@@ -794,22 +774,22 @@
+     // Small
+     _pFont = cFont::GetFont(fontSml);
+     _charW = _pFont->Width('A');
+-    _charH = _pFont->Height('A');
++    _charH = _pFont->Height("A");
+ 
+   } else if (_selectedFont == 2) {
+ 
+     // Extra small
+     // The space between the chars can shrink, so more chars can go to the screen.
+-    _pFont = new cFont(consFontSmallFix);
+-    _charW = _pFont->Width('A') - 1;
+-    _charH = _pFont->Height('A') - 1;
++    _pFont = cFont::GetFont(fontOsd);
++    _charW = _pFont->Width('A');
++    _charH = _pFont->Height("A");
+ 
+   } else {
+ 
+     // Normal
+     _pFont = cFont::GetFont(fontFix);
+     _charW = _pFont->Width('A');
+-    _charH = _pFont->Height('A');
++    _charH = _pFont->Height("A");
+   }
+ 
+   _charsW = (_pixelW / _charW);
+

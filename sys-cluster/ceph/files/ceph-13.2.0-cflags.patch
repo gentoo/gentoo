@@ -1,0 +1,26 @@
+diff --git a/cmake/modules/BuildBoost.cmake b/cmake/modules/BuildBoost.cmake
+index d6572115a4..cc0bdddc9f 100644
+--- a/cmake/modules/BuildBoost.cmake
++++ b/cmake/modules/BuildBoost.cmake
+@@ -62,7 +62,7 @@ function(do_build_boost version)
+   else()
+     list(APPEND boost_features "address-model=32")
+   endif()
+-  set(BOOST_CXXFLAGS "-fPIC -w") # check on arm, etc <---XXX
++  set(BOOST_CXXFLAGS "${CMAKE_CXX_FLAGS} -fPIC -w") # check on arm, etc <---XXX
+   list(APPEND boost_features "cxxflags=${BOOST_CXXFLAGS}")
+ 
+   list(FIND Boost_BUILD_COMPONENTS "python" with_python)
+diff --git a/src/compressor/zstd/CMakeLists.txt b/src/compressor/zstd/CMakeLists.txt
+index 5a80aa539c..8d6ff5c8f0 100644
+--- a/src/compressor/zstd/CMakeLists.txt
++++ b/src/compressor/zstd/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ # zstd
+ 
+ # libzstd - build it statically
+-set(ZSTD_C_FLAGS "-fPIC -Wno-unused-variable -O3")
++set(ZSTD_C_FLAGS "-fPIC -Wno-unused-variable $ENV{CFLAGS} -O3")
+ 
+ include(ExternalProject)
+ ExternalProject_Add(zstd_ext

@@ -1,0 +1,101 @@
+From 0991ccb0e7c0be66e087839f88a7120394c2f052 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Tue, 5 May 2015 23:54:16 -0400
+Subject: [PATCH 2/3] pwclient: use print_function for better py3 compatibility
+
+The script already tries to use print like a function in many places but
+is really passing a parenthesized string.  Import the print_function from
+the future module so that it actually works as intended.
+
+We also need to fix up a few latent print statements to make it work.
+
+Signed-off-by: Mike Frysinger <vapier@chromium.org>
+---
+ apps/patchwork/bin/pwclient | 26 ++++++++++++++------------
+ 1 file changed, 14 insertions(+), 12 deletions(-)
+
+diff --git a/apps/patchwork/bin/pwclient b/apps/patchwork/bin/pwclient
+index 56aa909..2e6daa5 100755
+--- a/apps/patchwork/bin/pwclient
++++ b/apps/patchwork/bin/pwclient
+@@ -19,6 +19,8 @@
+ # along with Patchwork; if not, write to the Free Software
+ # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 
++from __future__ import print_function
++
+ import os
+ import sys
+ import xmlrpclib
+@@ -170,9 +172,9 @@ def action_list(rpc, filter, submitter_str, delegate_str, format_str=None):
+         else:
+             for id in ids:
+                 person = rpc.person_get(id)
+-                print "Patches submitted by %s <%s>:" % \
+-                        (unicode(person['name']).encode("utf-8"), \
+-                         unicode(person['email']).encode("utf-8"))
++                print('Patches submitted by %s <%s>:' %
++                      (unicode(person['name']).encode('utf-8'),
++                       unicode(person['email']).encode('utf-8')))
+                 f = filter
+                 f.add("submitter_id", id)
+                 patches = rpc.patch_list(f.d)
+@@ -187,8 +189,8 @@ def action_list(rpc, filter, submitter_str, delegate_str, format_str=None):
+         else:
+             for id in ids:
+                 person = rpc.person_get(id)
+-                print "Patches delegated to %s <%s>:" % \
+-                        (person['name'], person['email'])
++                print('Patches delegated to %s <%s>:' %
++                      (person['name'], person['email']))
+                 f = filter
+                 f.add("delegate_id", id)
+                 patches = rpc.patch_list(f.d)
+@@ -245,7 +247,7 @@ def action_get(rpc, patch_id):
+     try:
+         f.write(unicode(s).encode("utf-8"))
+         f.close()
+-        print "Saved patch to %s" % fname
++        print('Saved patch to %s' % fname)
+     except:
+         sys.stderr.write("Failed to write to %s\n" % fname)
+         sys.exit(1)
+@@ -258,13 +260,13 @@ def action_apply(rpc, patch_id, apply_cmd=None):
+         sys.exit(1)
+ 
+     if apply_cmd is None:
+-      print "Applying patch #%d to current directory" % patch_id
++      print('Applying patch #%d to current directory' % patch_id)
+       apply_cmd = ['patch', '-p1']
+     else:
+-      print "Applying patch #%d using %s" % (
+-          patch_id, repr(' '.join(apply_cmd)))
++      print('Applying patch #%d using %s' %
++            (patch_id, repr(' '.join(apply_cmd))))
+ 
+-    print "Description: %s" % patch['name']
++    print('Description: %s' % patch['name'])
+     s = rpc.patch_get_mbox(patch_id)
+     if len(s) > 0:
+         proc = subprocess.Popen(apply_cmd, stdin = subprocess.PIPE)
+@@ -295,7 +297,7 @@ def action_update_patch(rpc, patch_id, state = None, commit = None):
+     success = False
+     try:
+         success = rpc.patch_set(patch_id, params)
+-    except xmlrpclib.Fault, f:
++    except xmlrpclib.Fault as f:
+         sys.stderr.write("Error updating patch: %s\n" % f.faultString)
+ 
+     if not success:
+@@ -668,7 +670,7 @@ def main():
+         for patch_id in non_empty(h, patch_ids):
+             s = rpc.patch_get_mbox(patch_id)
+             if len(s) > 0:
+-                print unicode(s).encode("utf-8")
++                print(unicode(s).encode('utf-8'))
+ 
+     elif action == 'info':
+         for patch_id in non_empty(h, patch_ids):
+-- 
+2.4.0
+

@@ -1,0 +1,23 @@
+--- a/configure.in
++++ b/configure.in
+@@ -24,9 +24,6 @@
+ AC_DEFINE(OS_BSD,     2,[BSD OS code])
+ AC_DEFINE(OS_SOLARIS,     3,[SOLARIS on SPARC code])
+ 
+-CFLAGS=-g
+-CXXFLAGS=-g
+-
+ AC_CHECK_LIB(pcap, pcap_loop, [LIBS="$LIBS -lpcap"; __ac_have_libpcap=1;], [ break ])
+ 
+ case "$host_os" in
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,6 +1,6 @@
+-bin_PROGRAMS = ndsad
++sbin_PROGRAMS = ndsad
+ 
+ ndsad_SOURCES = linux_ulog.cc linux_ulog.h debug.h eth-hndl.h handlers.h iflist.h iptonf.h ldefs.h logger.h mempool.h nethdr.h nfc.h nf.h ppp-hndl.h thr.h config.cc debug.cc eth-hndl.cc handlers.cc iflist.cc iptonf.cc logger.cc mempool.cc ndsad.cc nf.cc nfc.cc ppp-hndl.cc thr.cc bsd_divert.cc  bsd_divert.h
+ 
+-ndsad_CXXFLAGS = $(AM_CXXFLAGS) -O0 -fno-inline -g -ftemplate-depth-32
++ndsad_CXXFLAGS = $(AM_CXXFLAGS) -fno-inline -ftemplate-depth-32
+ ndsad_LDFLAGS = $(AM_LDFLAGS)

@@ -1,0 +1,11 @@
+--- a/localepurge
++++ b/localepurge
+@@ -254,7 +254,7 @@
+ 
+ # Calculating and reporting total disk space freed:
+ if [ "$SHOWFREEDSPACE" = "enabled" ]; then
+-    let TOTAL=$LOCALETOTAL+$MANTOTAL
++    TOTAL=$(($LOCALETOTAL+$MANTOTAL))
+     if test $TOTAL -lt 0; then
+         TOTAL=0
+     fi

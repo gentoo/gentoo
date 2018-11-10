@@ -1,0 +1,39 @@
+http://bugs.gentoo.org/197366
+
+commit 8952f7248c2637426bcf83d38f07a8b02124a06e
+Author: Ralf Wildenhues <Ralf.Wildenhues@gmx.de>
+Date:   Wed May 10 20:50:53 2006 +0000
+
+    * tests/aclocal7.test: Add `$sleep's between file touching
+    and automake resp aclocal+automake invocations, to ensure
+    they complete with a time stamp strictly later than the touched
+    file.
+
+diff --git a/tests/aclocal7.test b/tests/aclocal7.test
+index 787565c..f6d5e31 100755
+--- a/tests/aclocal7.test
++++ b/tests/aclocal7.test
+@@ -89,6 +89,7 @@ test `ls -1t sub/Makefile.in foo | sed 1q` = sub/Makefile.in
+ touch fragment.inc
+ $sleep
+ touch foo
++$sleep
+ $ACLOCAL -I m4
+ $AUTOMAKE --no-force
+ # Only ./Makefile.in should change.
+@@ -101,6 +102,7 @@ grep README Makefile.in && exit 1
+ : > README
+ $sleep
+ touch foo
++$sleep
+ $AUTOMAKE --no-force
+ # Even if no dependency change, the content changed.
+ test `ls -1t Makefile.in foo | sed 1q` = Makefile.in
+@@ -111,6 +113,7 @@ grep README Makefile.in
+ : > sub/Makefile.in
+ $sleep
+ touch foo
++$sleep
+ $ACLOCAL -I m4
+ $AUTOMAKE --no-force
+ # Only sub/Makefile.in should change.

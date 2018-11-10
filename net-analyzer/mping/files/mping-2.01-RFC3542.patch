@@ -1,0 +1,56 @@
+http://www.ietf.org/rfc/rfc3542.txt
+
+http://bugs.gentoo.org/153252
+
+--- a/src/mping.c
++++ b/src/mping.c
+@@ -1688,6 +1688,20 @@
+         }
+ }
+ 
++/* RFC3542 changed some definitions from RFC2292 for no good reason, whee !
++ * the newer 3542 uses a MLD_ prefix where as 2292 uses ICMP6_ prefix */
++#ifndef MLD_LISTENER_QUERY
++# define MLD_LISTENER_QUERY ICMP6_MEMBERSHIP_QUERY
++#endif
++#ifndef MLD_LISTENER_REPORT
++# define MLD_LISTENER_REPORT ICMP6_MEMBERSHIP_REPORT
++#endif
++#ifndef MLD_LISTENER_REDUCTION
++# define MLD_LISTENER_REDUCTION ICMP6_MEMBERSHIP_REDUCTION
++#endif
++#ifndef ICMP6_DST_UNREACH_BEYONDSCOPE
++# define ICMP6_DST_UNREACH_BEYONDSCOPE ICMP6_DST_UNREACH_NOTNEIGHBOR
++#endif
+ /*
+  *  Print a descriptive string about an ICMP6 header.
+  */
+@@ -1704,8 +1718,8 @@
+                 case ICMP6_DST_UNREACH_ADMIN:
+                         printf("Administratively Prohibited\n");
+                         break;
+-                case ICMP6_DST_UNREACH_NOTNEIGHBOR:
+-                        printf("Not a Neighbour\n");
++                case ICMP6_DST_UNREACH_BEYONDSCOPE:
++                        printf("Beyond scope\n");
+                         break;
+                 case ICMP6_DST_UNREACH_ADDR:
+                         printf("Destination Host Unreachable\n");
+@@ -1755,13 +1769,13 @@
+         case ICMP6_ECHO_REPLY:
+                 printf("Echo reply\n");
+                 break;
+-        case ICMP6_MEMBERSHIP_QUERY:
+-                printf("Membership Query\n");
++        case MLD_LISTENER_QUERY:
++                printf("MLD Query\n");
+                 break;
+-        case ICMP6_MEMBERSHIP_REPORT:
++        case MLD_LISTENER_REPORT:
+                 printf("MLD Report\n");
+                 break;
+-        case ICMP6_MEMBERSHIP_REDUCTION:
++        case MLD_LISTENER_REDUCTION:
+                 printf("MLD Reduction\n");
+                 break;
+ 	case ND_ROUTER_ADVERT:

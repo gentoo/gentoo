@@ -1,0 +1,38 @@
+# Try to fix pointer assigned to int and vice-versa problems.  Written by Joe Pelkey.
+
+diff -ru actkbd-0.2.7.orig/actkbd.h actkbd-0.2.7/actkbd.h
+--- actkbd-0.2.7.orig/actkbd.h	2006-05-02 13:24:01.000000000 -0400
++++ actkbd-0.2.7/actkbd.h	2006-10-27 03:37:37.000000000 -0400
+@@ -122,7 +122,7 @@
+ typedef struct _attr_t attr_t;
+ struct _attr_t {
+     int type;			/* Attribute type */
+-    void *opt;			/* Options for this attribute */
++    int opt;			/* Options for this attribute */
+     attr_t *next;		/* The next node */
+ };
+ 
+diff -ru actkbd-0.2.7.orig/config.c actkbd-0.2.7/config.c
+--- actkbd-0.2.7.orig/config.c	2006-08-20 07:05:36.000000000 -0400
++++ actkbd-0.2.7/config.c	2006-10-27 03:55:21.000000000 -0400
+@@ -107,7 +107,7 @@
+     strtolower(attrs);
+     while ((tmp = strsep(&attrs, ", \t")) != NULL) {
+ 	int type = -1;
+-	void *opt = NULL;
++	int opt = 0;
+ 	char *num = NULL;
+ 
+ 	if (strlen(tmp) == 0)
+@@ -174,9 +174,9 @@
+ 
+ 	    errno = 0;
+ 	    if (strlen(num) > 0) {
+-		opt = (void *)((int)strtol(num, (char **)NULL, 10));
++		opt = ((int)strtol(num, (char **)NULL, 10));
+ 	    } else {
+-		opt = (void *)((int)(-1));
++		opt = ((int)(-1));
+ 	    }
+ 
+ 	    if (((int)opt < 0) &&

@@ -1,0 +1,12 @@
+Index: raul-0.8.0/wscript
+===================================================================
+--- raul-0.8.0.orig/wscript
++++ raul-0.8.0/wscript
+@@ -153,7 +153,5 @@ def build(bld):
+ 	# Documentation
+ 	autowaf.build_dox(bld, 'RAUL', RAUL_VERSION, top, out)
+ 
+-	bld.add_post_fun(autowaf.run_ldconfig)
+-
+ def test(ctx):
+ 	autowaf.run_tests(ctx, APPNAME, tests.split())

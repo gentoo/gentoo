@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+FANCONTROL_CONFIGFILE=${FANCONTROL_CONFIGFILE:-"/etc/fancontrol"}
+FANCONTROL_SSDARGS=${FANCONTROL_SSDARGS:-"--background --wait 1000"}
+FANCONTROL_TERMTIMEOUT=${FANCONTROL_TERMTIMEOUT:-"TERM/60/KILL/5"}
+
+
+command="/usr/sbin/fancontrol"
+command_args="${FANCONTROL_CONFIGFILE}"
+start_stop_daemon_args="${FANCONTROL_SSDARGS}"
+pidfile="/run/fancontrol.pid"
+retry="${FANCONTROL_TERMTIMEOUT}"
+
+required_files="${FANCONTROL_CONFIGFILE}"
+
+depend() {
+	need localmount
+	use lm_sensors
+}

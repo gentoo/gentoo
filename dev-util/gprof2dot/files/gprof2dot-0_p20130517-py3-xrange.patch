@@ -1,0 +1,10 @@
+--- gprof2dot.py	2013-05-29 19:18:46.217823810 +0300
++++ gprof2dot.py	2013-06-16 12:12:28.095478734 +0300
+@@ -39,6 +39,7 @@
+     def compat_keys(x): return list(x.keys())  # keys() is a generator in Python 3
+     basestring = str  # No class basestring in Python 3
+     unichr = chr # No unichr in Python 3
++    xrange = range # No xrange in Python 3
+ else:
+     PYTHON_3 = False
+     def compat_iteritems(x): return x.iteritems()

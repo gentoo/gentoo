@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>ulm@gentoo.org</email>
+</maintainer>
+<longdescription>
+  xtrs is a Radio Shack TRS-80 Model I/III/4/4P emulator for Unix and the
+  X Window System. It includes lower case, the real time clock, hi-res
+  graphics, serial port, parallel printer, mouse, cassette, sound and music
+  output, 5" and 8" floppy disk drives in single and double density, and
+  even hard disk drives. The emulated floppy and hard disk file formats
+  are compatible with the popular MSDOS-based emulators by Jeff Vavasour,
+  Matthew Reed, and David Keil, and (if you choose a capable enough file
+  format), all features of the original TRS-80 floppy disk controller are
+  emulated. Under Linux, physical floppy disk drives are also supported.
+  Physical cassettes can be read and written too. The user interface is a
+  bit spartan, but it gets the job done.
+</longdescription>
+<use>
+  <flag name="ls-dos">Install LS-DOS disk images for Model 4P</flag>
+</use>
+</pkgmetadata>

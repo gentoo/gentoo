@@ -1,0 +1,11 @@
+--- src/command.c
++++ src/command.c
+@@ -1487,7 +1487,7 @@
+ 	static XComposeStatus compose = { NULL, 0 };
+ 	static unsigned char kbuf[KBUFSZ];
+ 	int             ctrl, meta, shft, len;
+-	KeySym          keysym;
++	KeySym          keysym = 0;
+ 
+ /*
+  * use Num_Lock to toggle Keypad on/off.  If Num_Lock is off, allow an

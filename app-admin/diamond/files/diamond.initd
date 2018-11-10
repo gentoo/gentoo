@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --exec /usr/bin/diamond --pidfile /run/${SVCNAME}.pid -- -c /etc/diamond/${SVCNAME}.conf ${DIAMOND_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop -R 80 --pidfile /run/${SVCNAME}.pid
+	eend $?
+}

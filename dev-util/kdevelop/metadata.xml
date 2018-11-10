@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="gdbui">Enable GUI for attaching GDB to a running process</flag>
+		<flag name="hex">Enable hex editor plugin via <pkg>app-editors/okteta</pkg></flag>
+		<flag name="qmake">Enable support for QMake build system</flag>
+		<flag name="reviewboard">Enable reviewboard support</flag>
+		<flag name="webkit">Enable deprecated <pkg>dev-qt/qtwebkit</pkg> instead of <pkg>dev-qt/qtwebengine</pkg> for integrated documentation</flag>
+	</use>
+</pkgmetadata>

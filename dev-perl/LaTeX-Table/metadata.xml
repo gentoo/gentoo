@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">LaTeX-Table</remote-id>
+    <remote-id type="cpan-module">LaTeX::Table</remote-id>
+    <remote-id type="cpan-module">LaTeX::Table::Themes::Beamer</remote-id>
+    <remote-id type="cpan-module">LaTeX::Table::Themes::Booktabs</remote-id>
+    <remote-id type="cpan-module">LaTeX::Table::Themes::Classic</remote-id>
+    <remote-id type="cpan-module">LaTeX::Table::Themes::Modern</remote-id>
+    <remote-id type="cpan-module">LaTeX::Table::Themes::ThemeI</remote-id>
+    <remote-id type="cpan-module">LaTeX::Table::Types::Ctable</remote-id>
+    <remote-id type="cpan-module">LaTeX::Table::Types::Longtable</remote-id>
+    <remote-id type="cpan-module">LaTeX::Table::Types::Std</remote-id>
+    <remote-id type="cpan-module">LaTeX::Table::Types::TypeI</remote-id>
+    <remote-id type="cpan-module">LaTeX::Table::Types::Xtab</remote-id>
+  </upstream>
+</pkgmetadata>

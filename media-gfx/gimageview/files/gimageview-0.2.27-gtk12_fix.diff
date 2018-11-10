@@ -1,0 +1,11 @@
+--- src/gimv_thumb_win.c
++++ src/gimv_thumb_win.c
+@@ -2542,7 +2542,7 @@
+ {
+    if (tw && tw->priv)
+       tw->priv->slideshow_selected_only
+-         = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (widget));
++         = GTK_CHECK_MENU_ITEM (widget)->active;
+ }
+ 
+ 

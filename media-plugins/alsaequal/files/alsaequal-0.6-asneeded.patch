@@ -1,0 +1,16 @@
+--- Makefile
++++ Makefile
+@@ -29,11 +29,11 @@
+ 
+ $(SND_PCM_BIN): $(SND_PCM_OBJECTS)
+ 	@echo LD $@
+-	$(Q)$(LD) $(LDFLAGS) $(SND_PCM_LIBS) $(SND_PCM_OBJECTS) -o $(SND_PCM_BIN)
++	$(Q)$(LD) $(LDFLAGS) $(SND_PCM_OBJECTS) -o $(SND_PCM_BIN) $(SND_PCM_LIBS)
+ 
+ $(SND_CTL_BIN): $(SND_CTL_OBJECTS)
+ 	@echo LD $@
+-	$(Q)$(LD) $(LDFLAGS) $(SND_CTL_LIBS) $(SND_CTL_OBJECTS) -o $(SND_CTL_BIN)
++	$(Q)$(LD) $(LDFLAGS) $(SND_CTL_OBJECTS) -o $(SND_CTL_BIN) $(SND_CTL_LIBS)
+ 
+ %.o: %.c
+ 	@echo GCC $<

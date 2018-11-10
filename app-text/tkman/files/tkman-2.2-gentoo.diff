@@ -1,0 +1,62 @@
+--- tkman-2.2/Makefile.org	2003-12-07 13:26:37.642164439 +0100
++++ tkman-2.2/Makefile	2003-12-07 13:30:39.135540314 +0100
+@@ -25,13 +25,13 @@
+ 
+ ### you need to localize the paths on these lines
+ 
+-WISH = /usr/local/bin/wish8.4
++WISH = /usr/bin/wish
+ #WISH = /usr/sww/tcl-8.4/bin/wish
+ #WISH = /private/share/bin/wish8.4
+ 
+ # the executable `tkman' is placed in BINDIR
+ # this should be a directory that's in your bin PATH
+-BINDIR = /usr/local/bin
++BINDIR = ${DESTDIR}/usr/bin
+ #BINDIR = /private/share/bin
+ 
+ 
+@@ -80,7 +80,7 @@
+ # will examine for matches if a search in the usual locations fails while searching
+ # for a man pages and displaying its associated binaries (if any).
+ # Use this feature carefully as a large number of directories can slow down startup.
+-mastermen = "/usr/man /usr/local/man"
++mastermen = "/usr/share/man /usr/local/man"
+ #mastermen = "/usr/man /usr/local/man /usr/sww/man /usr/share/man /usr/kerberos/man"
+ masterbin = "/usr/bin /usr/local/bin"
+ #masterbin = "/usr/bin /usr/local/bin /usr/sww/bin /usr/sww/share/bin /usr/sww/share/X11R5/bin"
+@@ -203,7 +203,7 @@
+ # BY DEFAULT OFF
+ glimpse = ""
+ # Glimpse on, with Boolean scope set to entire file
+-glimpse = "glimpse -W"
++#glimpse = "glimpse -W"
+ # give the full path, if you'd like
+ #glimpse = /usr/sww/bin/glimpse
+ # variations (refer to the Glimpse manual page)
+@@ -228,11 +228,11 @@
+ #glimpseindex = "glimpseindex -o -B"
+ # To shorten most index build times by incrementally building index when possible.
+ # For me, this drops indexing time from ~25 minutes to ~3 minutes, depending
+-glimpseindex = "glimpseindex -o -B -f"
++#glimpseindex = "glimpseindex -o -B -f"
+ # -M 8 gives 8MB of main memory instead of default 2, which speeds up indexing, maybe
+ #glimpseindex = "glimpseindex -o -B -f -M 8"
+ # if you don't want give the power to index, disable glimpseindex here
+-#glimpseindex = ""
++glimpseindex = ""
+ #glimpseindex = "/usr/sww/bin/glimpseindex -o -B"
+ # compressed manual pages are handled automatically; don't add -z to above
+ 
+@@ -289,9 +289,9 @@
+ rman = rman
+ #rman = /usr/local/bin/rman
+ 
+-apropos = {man -k}
++#apropos = {man -k}
+ # Linux uses a shell script instead:
+-#apropos = apropos
++apropos = apropos
+ # if don't have apropos (maybe on Windoze)
+ #apropos = ""
+ 

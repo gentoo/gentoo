@@ -1,0 +1,15 @@
+In file included from file.h:36:0,
+	from delta.cc:36:
+	../gl/lib/unistd.h:135:3: error: #error "Please include config.h first."
+
+
+--- a/src/delta.h
++++ b/src/delta.h
+@@ -25,6 +25,7 @@
+ #ifndef CSSC_DELTA_H
+ #define CSSC_DELTA_H 1
+ 
++#include "config.h"
+ #include "sid.h"
+ #include "sccsdate.h"
+ #include "mystring.h"

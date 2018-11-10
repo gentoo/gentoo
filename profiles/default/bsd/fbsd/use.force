@@ -1,0 +1,3 @@
+# Force freebsd-specific variables
+elibc_FreeBSD
+kernel_FreeBSD

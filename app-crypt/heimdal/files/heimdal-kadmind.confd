@@ -1,0 +1,5 @@
+# /etc/conf.d/heimdal-kadmind
+
+# Options to pass to the kadmind daemon.  Please see man 8 kadmind for details.
+#
+# OPTIONS="--keytab=/etc/krb5.keytab"

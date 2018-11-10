@@ -1,0 +1,32 @@
+From 46f48277ce8109541ef1d0608bd2532e433124ea Mon Sep 17 00:00:00 2001
+From: David Schleef <ds@schleef.org>
+Date: Thu, 23 Feb 2012 20:45:57 -0800
+Subject: [PATCH] testsuite: fix out-of-dir builds
+
+From ee011f33f80c9691a6cfd5116101fdcf8c3cd6f7 Mon Sep 17 00:00:00 2001
+From: David Schleef <ds@schleef.org>
+Date: Mon, 27 Feb 2012 16:11:52 -0800
+Subject: [PATCH] tests: fix build on os/x
+
+
+--- a/testsuite/Makefile.am
++++ b/testsuite/Makefile.am
+@@ -97,7 +97,8 @@ wavelet_gain_curve_SOURCES = wavelet_gain_curve.c
+ #wavelet_2d_CFLAGS = $(SCHRO_CFLAGS)
+ #wavelet_2d_LDADD = $(SCHRO_LIBS)
+ wavelet_2d_SOURCES = wavelet_2d.c
+-nodist_wavelet_2d_SOURCES = $(top_srcdir)/schroedinger/tmp-orc.c
++nodist_wavelet_2d_SOURCES = $(top_builddir)/schroedinger/tmp-orc.c
+ 
+ wavelet_max_gain_SOURCES = wavelet_max_gain.c
++nodist_wavelet_max_gain_SOURCES = $(top_builddir)/schroedinger/tmp-orc.c
+ 
+@@ -118,7 +118,7 @@ motion2_SOURCES = motion2.c
+ #quant_CFLAGS = 
+ #quant_LDADD = -lm
+ quant_SOURCES = quant.c
+-nodist_quant_SOURCES = $(top_srcdir)/schroedinger/tmp-orc.c
++nodist_quant_SOURCES = $(top_builddir)/schroedinger/tmp-orc.c
+ 
+ #sort_CFLAGS = $(SCHRO_CFLAGS)
+ #sort_LDADD = $(SCHRO_LIBS)

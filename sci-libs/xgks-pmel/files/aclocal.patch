@@ -1,0 +1,146 @@
+--- port/aclocal.m4.orig	2009-04-26 13:33:51.434402251 -0700
++++ port/aclocal.m4	2009-04-26 13:43:33.466651210 -0700
+@@ -582,26 +582,6 @@
+ ])])
+ 
+ 
+-# Check for ncdump(1)
+-#
+-define([UC_PROG_NCDUMP], [dnl
+-AC_PROGRAM_CHECK(NCDUMP, ncdump, ncdump, UC_ABSPATH($exec_prefix)/ncdump)dnl
+-if test `which "$NCDUMP" | wc -w` != 1; then
+-  UC_NEED_VALUE(NCDUMP, [netCDF lister], /usr/local/unidata/bin/ncdump)dnl
+-fi
+-])
+-
+-
+-# Check for ncgen(1)
+-#
+-define([UC_PROG_NCGEN], [dnl
+-AC_PROGRAM_CHECK(NCGEN, ncgen, ncgen, UC_ABSPATH($exec_prefix)/ncgen)dnl
+-if test `which "$NCGEN" | wc -w` != 1; then
+-  UC_NEED_VALUE(NCGEN, [netCDF generator], /usr/local/unidata/bin/ncgen)dnl
+-fi
+-])
+-
+-
+ # Test a script.
+ #
+ define([UC_TEST_SCRIPT],
+@@ -719,16 +699,6 @@
+ ])
+ 
+ 
+-# Check for McIDAS library.
+-#
+-define([UC_LIB_MCIDAS], [dnl
+-echo checking for MCIDAS library
+-UC_TEST_LIB(LD_MCIDAS, /home/mcidas/lib /home/mcidasd/lib, mcidas, McIDAS, dnl
+-  -L/home/mcidas/lib -lmcidas)dnl
+-AC_PROVIDE([$0])dnl
+-])
+-
+-
+ # Check for X11 library.
+ #
+ define([UC_LIB_X11], [dnl
+@@ -745,77 +715,6 @@
+ define([UC_X11], [AC_REQUIRE([UC_CPP_X11])AC_REQUIRE([UC_LIB_X11])])
+ 
+ 
+-# Check for netCDF header-file directory.
+-#
+-define([UC_CPP_NETCDF], [dnl
+-echo checking for netCDF header-file
+-UC_TEST_DIR(CPP_NETCDF, UC_ABSPATH($prefix/[[[include]]]), netcdf.h,
+-    [netCDF [[include]]-directory], [-I/usr/local/unidata/[[include]]])dnl
+-CPP_NETCDF=`case ${CPP_NETCDF} in -I*) echo ${CPP_NETCDF};; *) echo -I${CPP_NETCDF-};; esac`
+-AC_PROVIDE([$0])dnl
+-])
+-
+-
+-# Check for netCDF library.
+-#
+-define([UC_LIB_NETCDF], [dnl
+-echo checking for netCDF library
+-UC_TEST_LIB(LD_NETCDF, UC_ABSPATH($prefix/lib), netcdf,
+-  netCDF, -L/usr/local/unidata/lib -lnetcdf)dnl
+-AC_PROVIDE([$0])dnl
+-])
+-
+-
+-# Check for netCDF implementation (header file and library).
+-#
+-define([UC_NETCDF], [AC_REQUIRE([UC_CPP_NETCDF])AC_REQUIRE([UC_LIB_NETCDF])])
+-
+-
+-# Check for netCDF operators library.
+-#
+-define([UC_LIB_NCOPERS], [dnl
+-echo checking for netCDF operators library
+-UC_TEST_LIB(LD_NCOPERS, UC_ABSPATH($prefix/lib), ncopers,
+-  netCDF-operators, [-L/usr/local/unidata/lib -lncopers])dnl
+-AC_PROVIDE([$0])dnl
+-])
+-
+-
+-# Check for LDM header-file directory.
+-#
+-define([UC_CPP_LDM], [dnl
+-echo checking for LDM header-file
+-UC_TEST_DIR(CPP_LDM, UC_ABSPATH($prefix/[[[include]]]) dnl
+-    UC_ABSPATH($prefix/../[[[include]]]) dnl
+-    UC_ABSPATH($prefix/../ldm/[[[include]]]), ldm.h,
+-    [LDM [[include]]-directory], [-I/usr/local/unidata/[[include]]])dnl
+-CPP_LDM=`case ${CPP_LDM} in -I*) echo ${CPP_LDM};; *) echo -I${CPP_LDM-};; esac`
+-if test -z "$CPP_LDM"; then
+-  UC_NEED_VALUE(CPP_LDM, [LDM include directory], -I/home/ldm/include)dnl
+-fi
+-AC_PROVIDE([$0])dnl
+-])
+-
+-
+-# Check for LDM library.
+-#
+-define([UC_LIB_LDM], [dnl
+-echo checking for LDM library
+-UC_TEST_LIB(LD_LDM, UC_ABSPATH($prefix/lib) dnl
+-  UC_ABSPATH($prefix/../lib) UC_ABSPATH($prefix/../ldm/lib), ldm,
+-  LDM, -L/usr/local/unidata/lib -lldm)dnl
+-if test -z "$LD_LDM"; then
+-  UC_NEED_VALUE(LD_LDM, [LDM library], -L/home/ldm/lib -lldm)dnl
+-fi
+-AC_PROVIDE([$0])dnl
+-])
+-
+-
+-# Check for LDM implementation (header file and library).
+-#
+-define([UC_LDM], [AC_REQUIRE([UC_CPP_LDM])AC_REQUIRE([UC_LIB_LDM])])
+-
+-
+ # Check for udres(3) library.
+ #
+ define([UC_LIB_UDRES], [dnl
+--- port/configure.in.orig	2009-04-26 13:34:08.430308009 -0700
++++ port/configure.in	2009-04-26 13:44:26.218430537 -0700
+@@ -24,8 +24,6 @@
+ UC_PROG_FORTC
+ UC_PROG_NEQN
+ UC_PROG_TBL
+-UC_PROG_NCDUMP
+-UC_PROG_NCGEN
+ UC_PROG_INSTALL
+ 
+ UC_UDPOSIX
+--- port/master.mk.in.orig	2009-04-26 13:34:18.848400960 -0700
++++ port/master.mk.in	2009-04-26 13:45:03.187651071 -0700
+@@ -19,8 +19,6 @@
+ INSTALL_DATA	= @INSTALL_DATA@
+ INSTALL_PROGRAM	= @INSTALL_PROGRAM@
+ FC		= @FC@
+-NCDUMP		= @NCDUMP@
+-NCGEN		= @NCGEN@
+ NEQN		= @NEQN@
+ OS		= @OS@
+ SHELL		= /bin/sh

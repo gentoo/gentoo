@@ -1,0 +1,21 @@
+--- configure.ac	2011-08-07 00:14:06.723806363 +0200
++++ configure.ac	2011-08-07 00:14:02.405860340 +0200
+@@ -68,16 +68,13 @@
+ # Enable libtool, check for libltdl and define @LIBLTDL@ and @INCLTDL@
+ #################################################################
+ 
+-ifdef([LT_CONFIG_LTDL_DIR],
+-      [ LT_CONFIG_LTDL_DIR([libltdl]) ],
+-      [])
++AC_SUBST([INCLTDL], [])
++AC_SUBST([LIBLTDL], [-lltdl])
+ 
+ ifdef([LT_INIT],
+       [ LT_INIT([win32-dll]) ],
+       [ AC_PROG_LIBTOOL ])
+ 
+-AC_WITH_LTDL
+-
+ #################################################################
+ # Check for the type of the host
+ #################################################################

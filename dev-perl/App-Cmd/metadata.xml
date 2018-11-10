@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">App-Cmd</remote-id>
+    <remote-id type="cpan-module">App::Cmd</remote-id>
+    <remote-id type="cpan-module">App::Cmd::ArgProcessor</remote-id>
+    <remote-id type="cpan-module">App::Cmd::Command</remote-id>
+    <remote-id type="cpan-module">App::Cmd::Command::commands</remote-id>
+    <remote-id type="cpan-module">App::Cmd::Command::help</remote-id>
+    <remote-id type="cpan-module">App::Cmd::Command::version</remote-id>
+    <remote-id type="cpan-module">App::Cmd::Plugin</remote-id>
+    <remote-id type="cpan-module">App::Cmd::Setup</remote-id>
+    <remote-id type="cpan-module">App::Cmd::Simple</remote-id>
+    <remote-id type="cpan-module">App::Cmd::Subdispatch</remote-id>
+    <remote-id type="cpan-module">App::Cmd::Subdispatch::DashedStyle</remote-id>
+    <remote-id type="cpan-module">App::Cmd::Tester</remote-id>
+    <remote-id type="cpan-module">App::Cmd::Tester::CaptureExternal</remote-id>
+    <remote-id type="cpan-module">App::Cmd::Tester::Exited</remote-id>
+    <remote-id type="cpan-module">App::Cmd::Tester::Result</remote-id>
+  </upstream>
+</pkgmetadata>

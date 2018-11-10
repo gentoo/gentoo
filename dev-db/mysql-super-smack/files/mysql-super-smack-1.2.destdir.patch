@@ -1,0 +1,13 @@
+--- super-smack-1.2/Makefile.am.orig	2004-02-23 19:57:22.000000000 -0800
++++ super-smack-1.2/Makefile.am	2004-02-23 19:57:40.000000000 -0800
+@@ -23,8 +23,8 @@
+ DATADIR= @DATADIR@
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(SMACKS_DIR) $(DATADIR)
+-	cp -rp $(srcdir)/smacks/* $(SMACKS_DIR)
++	$(mkinstalldirs) $(DESTDIR)$(SMACKS_DIR) $(DESTDIR)$(DATADIR)
++	cp -rp $(srcdir)/smacks/* $(DESTDIR)$(SMACKS_DIR)
+ 
+ 
+ dist-hook:

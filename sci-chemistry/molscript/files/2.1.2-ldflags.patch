@@ -1,0 +1,22 @@
+diff --git a/Makefile.complete b/Makefile.complete
+index 4ad535a..b565266 100644
+--- a/Makefile.complete
++++ b/Makefile.complete
+@@ -91,7 +91,7 @@ clean:
+ 
+ #------------------------------------------------------------
+ molscript: $(OBJ) clib/clib.a
+-	$(CC) -o molscript $(COPT) $(OBJ) $(YLIB) clib/clib.a \
++	$(CC) $(LDFLAGS) -o molscript $(COPT) $(OBJ) $(YLIB) clib/clib.a \
+               $(GLUTLINK) $(JPEGLINK) $(PNGLINK) $(GIFLINK) $(ZLIBLINK) -lm
+ 
+ molscript.tab.o: molscript.tab.c molscript.tab.h
+@@ -147,7 +147,7 @@ gif_img.o: gif_img.c gif_img.h global.h graphics.h image.h opengl.h
+ 
+ #------------------------------------------------------------
+ molauto: molauto.o clib/clib.a
+-	$(CC) -o molauto molauto.o clib/clib.a -lm
++	$(CC) $(LDFLAGS) -o molauto molauto.o clib/clib.a -lm
+ 
+ molauto.o: molauto.c
+ 

@@ -1,0 +1,16 @@
+diff --git a/src/gmt.h b/src/gmt.h
+index d4c9c20..ea6ddc5 100644
+--- a/src/gmt.h
++++ b/src/gmt.h
+@@ -34,9 +34,11 @@ extern "C" {
+ 
+ /*  GMT is POSIX.1 COMPLIANT  */
+ 
++/*
+ #ifndef _POSIX_SOURCE
+ #define _POSIX_SOURCE 1
+ #endif
++*/
+ 
+ /* Declaration modifiers for DLL support (MSC et al) */
+ 

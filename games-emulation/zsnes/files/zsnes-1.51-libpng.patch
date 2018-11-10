@@ -1,0 +1,33 @@
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -163,21 +163,21 @@
+   libpng_prefix="")
+ 
+ min_libpng_version=ifelse([$1], ,1.2.0,$1)
+-tempLIBS="$LIBS"
+-tempCFLAGS="$CFLAGS"
+-if test x$libpng_prefix != x ; then
+-  LIBPNG_LIBS="-L$libpng_prefix"
+-  LIBPNG_CFLAGS="-I$libpng_prefix"
+-fi
+-LIBPNG_LIBS="$LIBPNG_LIBS -lpng -lm"
+-LIBS="$LIBS $LIBPNG_LIBS"
+-CFLAGS="$CFLAGS $LIBPNG_CFLAGS"
+ 
+ AC_MSG_CHECKING(for libpng - version >= $min_libpng_version)
+ 
+ dnl <--- disable for no user choice part #2
+ if test x$enable_libpng != xno; then
+ dnl --->
++  tempLIBS="$LIBS"
++  tempCFLAGS="$CFLAGS"
++  if test x$libpng_prefix != x ; then
++    LIBPNG_LIBS="-L$libpng_prefix"
++    LIBPNG_CFLAGS="-I$libpng_prefix"
++  fi
++  LIBPNG_LIBS="$LIBPNG_LIBS -lpng -lm"
++  LIBS="$LIBS $LIBPNG_LIBS"
++  CFLAGS="$CFLAGS $LIBPNG_CFLAGS"
+ 
+   AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <png.h>

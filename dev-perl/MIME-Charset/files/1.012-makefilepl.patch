@@ -1,0 +1,18 @@
+diff -Naur MIME-Charset-1.012/Makefile.PL MIME-Charset-1.012.new/Makefile.PL
+--- MIME-Charset-1.012/Makefile.PL	2013-10-30 03:03:10.000000000 +0000
++++ MIME-Charset-1.012.new/Makefile.PL	2016-02-22 08:25:19.069712121 +0000
+@@ -8,7 +8,6 @@
+ check_nmake;
+ 
+ # Specific dependencies
+-configure_requires 'CPAN' => 0; # for inc::Module::AutoInstall
+ test_requires 'Test::More' => '0';
+ if ( $] >= 5.007003 ) {
+     requires 'Encode' => '1.98';
+@@ -29,6 +28,5 @@
+ 
+ # Write out
+ no_index directory => 't', 'inc';
+-auto_install force => 0, do_once => 1;
+ WriteAll;
+ 

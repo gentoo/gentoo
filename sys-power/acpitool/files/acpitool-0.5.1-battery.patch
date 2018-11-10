@@ -1,0 +1,484 @@
+Author: Evgeni Golov <evgeni@debian.org>, Michael Meskes <meskes@debian.org>
+Description: Fix reading of battery information.
+
+--- src/acpitool.h
++++ src/acpitool.h
+@@ -39,6 +39,9 @@
+     char Serial[13];
+     char Bat_Type[13];
+     char Voltage_Now[13];
++    char Charge_Now[13];
++    char Charge_Full[13];
++    char Charge_Full_Design[13];
+ };
+ 
+ 
+--- src/battery.cpp
++++ src/battery.cpp
+@@ -107,6 +107,9 @@
+ 	    memset(Batt_Info[i]->Serial, '\0', 13);
+ 	    memset(Batt_Info[i]->Bat_Type, '\0', 13); 
+ 	    memset(Batt_Info[i]->Voltage_Now, '\0', 13); 
++	    memset(Batt_Info[i]->Charge_Now, '\0', 13);
++	    memset(Batt_Info[i]->Charge_Full, '\0', 13);
++	    memset(Batt_Info[i]->Charge_Full_Design, '\0', 13);
+ 	    
+ 	    // initialize all struct members to blanks --> avoid rubbish in output //
+ 			
+@@ -139,7 +142,12 @@
+ 		case 1 : 
+ 		{	
+ 	    	    Present_Batteries++;
+-		    Remaining_Percentage = float(atoi(Batt_Info[i]->Remaining_Cap)) / float(atoi(Batt_Info[i]->LastFull_Cap)) * 100.0;
++
++		    if (strcmp(Batt_Info[i]->Charge_Now,"")!=0 &&
++			strcmp(Batt_Info[i]->Charge_Now,"unknown")!=0)
++		    	Remaining_Percentage = float(atoi(Batt_Info[i]->Charge_Now)) / float(atoi(Batt_Info[i]->Charge_Full)) * 100.0;
++		    else
++			Remaining_Percentage = float(atoi(Batt_Info[i]->Remaining_Cap)) / float(atoi(Batt_Info[i]->LastFull_Cap)) * 100.0;
+ 		    
+ 		    /* from Alan Pope : some broken Dell batteries report a remaining capacity bigger
+ 		       than their last full capacity or their design capacity. This led acpitool to report
+@@ -153,19 +161,24 @@
+             	    else
+             		Precision = 4;
+             	    
+-		    if( strncmp(Batt_Info[i]->Charging_State,"char",4)==0 ) 
++		    if(strncasecmp(Batt_Info[i]->Charging_State,"char",4)==0)
+ 		    {
+ 			Is_Charging = 1;
+ 		    }
+ 		    else
+ 		    {
+-			if(strncmp(Batt_Info[i]->Charging_State,"disch",5)==0) Is_Discharging = 1;
++			if(strncasecmp(Batt_Info[i]->Charging_State,"disch",5)==0) Is_Discharging = 1;
+ 		    }
+ 		    		    
+ 	    	    if(Show_Time)      // calculate remaining or charging time only if present battery rate != 0 //
+ 	    	    {
+-			if(Is_Charging)
+-			  Remaining_Time = (float(atoi(Batt_Info[i]->LastFull_Cap)) - float(atoi(Batt_Info[i]->Remaining_Cap))) / float(atoi(Batt_Info[i]->Present_Rate)); 
++			if(Is_Charging) {
++			  if (strcmp(Batt_Info[i]->Charge_Now,"")!=0 &&
++			      strcmp(Batt_Info[i]->Charge_Now,"unknown")!=0)
++			  	Remaining_Time = (float(atoi(Batt_Info[i]->Charge_Full)) - float(atoi(Batt_Info[i]->Charge_Now))) / float(atoi(Batt_Info[i]->Present_Rate));
++			  else
++			  	Remaining_Time = (float(atoi(Batt_Info[i]->LastFull_Cap)) - float(atoi(Batt_Info[i]->Remaining_Cap))) / float(atoi(Batt_Info[i]->Present_Rate)); 
++			}
+ 			else
+ 			  Remaining_Time = float(atoi(Batt_Info[i]->Remaining_Cap)) / float(atoi(Batt_Info[i]->Present_Rate)); 
+ 			// this represents hours //
+@@ -180,9 +193,11 @@
+ 			Minutes = Time_In_Seconds / 60;
+ 			Time_In_Seconds = Time_In_Seconds - (Minutes * 60);
+ 	    	    }
+-		    
++		   
+ 		    if(atoi(Batt_Info[i]->Design_Cap) > 0)
+ 		      Battery_Left_Percent = float(atoi(Batt_Info[i]->LastFull_Cap)) / float(atoi(Batt_Info[i]->Design_Cap)) * 100.0;
++		    else if(atoi(Batt_Info[i]->Charge_Full_Design) > 0)
++		      Battery_Left_Percent = float(atoi(Batt_Info[i]->Charge_Full)) / float(atoi(Batt_Info[i]->Charge_Full_Design)) * 100.0;
+ 		    else
+ 		      Battery_Left_Percent = -1.0;
+ 		      			  
+@@ -207,8 +222,15 @@
+ 				    <<setfill('0')<<setw(2)<<Time_In_Seconds;
+ 				 cout<<endl;
+ 				 
+-				 cout<<"    Design capacity    : "<<Batt_Info[i]->Design_Cap<<endl;
+-				 cout<<"    Last full capacity : "<<Batt_Info[i]->LastFull_Cap;
++		    		 if(atoi(Batt_Info[i]->Design_Cap) > 0)
++				 	cout<<"    Design capacity    : "<<Batt_Info[i]->Design_Cap<<endl;
++				 else if(atoi(Batt_Info[i]->Charge_Full_Design) > 0)
++				 	cout<<"    Design capacity    : "<<Batt_Info[i]->Charge_Full_Design<<endl;
++
++		    		 if(atoi(Batt_Info[i]->LastFull_Cap) > 0)
++					cout<<"    Last full capacity : "<<Batt_Info[i]->LastFull_Cap;
++				 else if(atoi(Batt_Info[i]->Charge_Full) > 0)
++					cout<<"    Last full capacity : "<<Batt_Info[i]->Charge_Full;
+ 				 
+ 				 if(Battery_Left_Percent<100.0)
+ 				 {
+@@ -327,7 +349,7 @@
+ 
+ 
+ 
+-int Get_Battery_Info_from_Proc(const int bat_nr, Battery_Info *bat_info, int verbose)
++int Get_Battery_Info_from_Proc(const int bat_nr, Battery_Info *batt_info, int verbose)
+ {
+     ifstream file_in;
+     char filename[4][65], str[100], temp[100];
+@@ -378,7 +400,7 @@
+     {
+ 	if(!verbose)
+    	{
+-   	    bat_info->Battery_Present = 2;     // 2 represents error value //
++   	    batt_info->Battery_Present = 2;     // 2 represents error value //
+    	    return 0;
+    	}
+    	else
+@@ -422,24 +444,24 @@
+     	file_in.getline(str, 100);
+     	strncpy(temp, str+25, 4);
+     	if(strncmp(temp,"yes",3)==0)
+-    	    bat_info->Battery_Present = 1;               //yes, we have a battery //
++    	    batt_info->Battery_Present = 1;               //yes, we have a battery //
+     	else
+     	{
+-    	    bat_info->Battery_Present = 0;
++    	    batt_info->Battery_Present = 0;
+     	    return 0;                  //bail out if battery is not present //
+     	}
+     	
+ 	// then get the design capacity //
+     	file_in.getline(str, 100);
+-    	strncpy(bat_info->Design_Cap, str+25, 9);
++    	strncpy(batt_info->Design_Cap, str+25, 9);
+ 	
+     	// then get the last full capacity //
+     	file_in.getline(str, 100);
+-    	strncpy(bat_info->LastFull_Cap, str+25, 9);
++    	strncpy(batt_info->LastFull_Cap, str+25, 9);
+ 	
+-	if (strncmp(bat_info->LastFull_Cap,"unknown",7)==0)
++	if (strncmp(batt_info->LastFull_Cap,"unknown",7)==0)
+ 	{
+-    	    bat_info->Battery_Present = 0;
++    	    batt_info->Battery_Present = 0;
+     	    return 0;                  //bail out if battery is not present //
+     	}
+ 	/* some Dell laptops seem to report a 2nd battery as being present, while it is NOT, but then report the 
+@@ -449,21 +471,21 @@
+     
+     	// then get the technology //
+     	file_in.getline(str, 100);
+-    	strncpy(bat_info->Technology, str+25, 12);
++    	strncpy(batt_info->Technology, str+25, 12);
+     
+     	// then get the model number //
+     	for(int t=0; t<5; t++)
+ 	file_in.getline(str, 100);            //skip 5 lines //
+     	file_in.getline(str, 100);
+-    	strncpy(bat_info->Model, str+25, 12);
++    	strncpy(batt_info->Model, str+25, 12);
+     
+     	// then get the serial number //
+     	file_in.getline(str, 100);
+-    	strncpy(bat_info->Serial, str+25, 12);
++    	strncpy(batt_info->Serial, str+25, 12);
+     
+     	// then get the battery type //
+     	file_in.getline(str, 100);
+-    	strncpy(bat_info->Bat_Type, str+25, 12);
++    	strncpy(batt_info->Bat_Type, str+25, 12);
+     
+     	file_in.close();
+     	
+@@ -480,17 +502,17 @@
+     	// then get the charging state //
+     	file_in.getline(str, 100); file_in.getline(str, 100);     // skip first 2 lines //
+     	file_in.getline(str, 100);
+-    	strncpy(bat_info->Charging_State, str+25, 12);
+-	if (strncmp(bat_info->Charging_State,"unknown",7)==0) strncpy(bat_info->Charging_State, "charged",7);
++    	strncpy(batt_info->Charging_State, str+25, 12);
++	if (strncmp(batt_info->Charging_State,"unknown",7)==0) strncpy(batt_info->Charging_State, "charged",7);
+ 	/* on older kernels, like 2.4.22, the charging state is reported as "unknown", whereas in recent kernels
+ 	   this was changed to "charged". */  
+ 
+     	// then get the charging rate //
+     	file_in.getline(str, 100);
+-    	strncpy(bat_info->Present_Rate, str+25, 9);
+-	if (strncmp(bat_info->Charging_State,"charged",7)==0)
++    	strncpy(batt_info->Present_Rate, str+25, 9);
++	if (strncmp(batt_info->Charging_State,"charged",7)==0)
+ 	{
+-	    if (strncmp(bat_info->Present_Rate, "unknown",7)==0) strncpy(bat_info->Present_Rate, "0      ",7);
++	    if (strncmp(batt_info->Present_Rate, "unknown",7)==0) strncpy(batt_info->Present_Rate, "0      ",7);
+ 	}    
+ 	/* some batteries report the present rate as "unknown", even when they report the battery as being charged.
+ 	   If the battery is charged, the rate should be 0 */     
+@@ -498,12 +520,12 @@
+ 
+     	// then get the remaining capacity //
+     	file_in.getline(str, 100);
+-    	strncpy(bat_info->Remaining_Cap, str+25, 9);
++    	strncpy(batt_info->Remaining_Cap, str+25, 9);
+     
+     	file_in.close();
+ 	}
+ 	else      // battery dir is readable but empty : only . and .. at most //
+-	    bat_info->Battery_Present = 3;   
++	    batt_info->Battery_Present = 3;   
+ 	
+ 	return 0;
+ }
+@@ -513,8 +535,8 @@
+ int Get_Battery_Info_from_Sys(const int bat_nr, Battery_Info *batt_info, int verbose)
+ {
+     ifstream file_in;
+-    char filename[6][65], str[100], temp[100];
+-    int bat_count = 0, start = 0, findex = 0;
++    char filename[6][65], str[100], temp[100], attr[100];
++    int bat_count = 0, start = 0, findex = 0, value = 0;
+     DIR *battery_dir;
+     char *name, *dirname;
+        
+@@ -613,165 +635,104 @@
+ 	    return -1;
+     	}
+     	
+-    	memset(str, '\0', 100);
+-	for(int t=0; t<5; t++)
+-	    fgets(str, 100, power_fp);            /* skip first 5 lines */
+-    	
+-    	/* get battery status (full, charging, ...) */
+-    	memset(str, '\0', 100);
+-    	fgets(str, 100, power_fp);
+-    	if (strlen(str)>0)
+-    	{
+-    	    memset(temp, '\0', 100);
+-    	    sscanf(str, "%*[^=] %*c %s %[^\n]",temp); 
+-    	    strncpy(batt_info->Charging_State, temp, 12);
+-    	}   
+-	
+-	    
+-	/* get battery presence (0 or 1) */    
+-	memset(str, '\0', 100);
+-	fgets(str, 100, power_fp);   
+-	if (strlen(str)>0)
+-	{
+-	    memset(temp, '\0', 100);
+-	    strncpy(temp, str+21, 1);
+-    	    if(strncmp(temp,"1",1)==0)
+-    	        batt_info->Battery_Present = 1;               /* yes, we have a battery */
+-    	    else
+-    	    {
+-    		batt_info->Battery_Present = 0;
+-    		printf(" Battery is not present, bailing out. \n");
+-    		return 0;                                    /* bail out if battery is not present */
+-    	    }
+-    	}
+-    	    
+-    	    
+-    	/* get technology */    
+-    	memset(str, '\0', 100);
+-	fgets(str, 100, power_fp);   
+-	if (strlen(str)>0)
+-    	{
+-    	    memset(temp, '\0', 100);
+-    	    sscanf(str, "%*[^=] %*c %s %[^\n]",temp); 
+-    	    strncpy(batt_info->Technology, temp, 12);
+-    	} 
+-    	else
+-    	    strncpy(batt_info->Technology, "unknown", 7);
+-    	    
+-    	    
+-    	    
+-    	//printf(" \n bat_info_tech = %s \n\n ",  batt_info->Technology);    
+-    	
+-    	
+-
+-	fgets(str, 100, power_fp);    	/* skip 1 line */	
+-
+-
+-	/* get voltage_now */    
+-	memset(str, '\0', 100);
+-	fgets(str, 100, power_fp);
+-	if (strlen(str)>0)
+-    	{
+-    	    memset(temp, '\0', 100);
+-    	    sscanf(str, "%*[^=] %*c %s %[^\n]",temp); 
+-    	    strncpy(batt_info->Voltage_Now, temp, 12);
+-    	}    
+-    	else
+-    	    strncpy(batt_info->Voltage_Now, "unknown", 7);
+-
+-    	
+-	/* get current_now, which I believe is the charging rate ? */    
+-	memset(str, '\0', 100);
+-	fgets(str, 100, power_fp);
+-	if (strlen(str)>0)
+-    	{
+-    	    memset(temp, '\0', 100);
+-    	    sscanf(str, "%*[^=] %*c %s %[^\n]",temp); 
+-    	    strncpy(batt_info->Present_Rate, temp, 12);
+-    	}       
+-    	else
+-    	    strncpy(batt_info->Present_Rate, "unknown", 7);
+-
+-	
+-	/* get charge_full_design */    
+-	memset(str, '\0', 100);
+-	fgets(str, 100, power_fp);
+-	if (strlen(str)>0)
+-    	{
+-    	    memset(temp, '\0', 100);
+-    	    sscanf(str, "%*[^=] %*c %s %[^\n]",temp); 
+-    	    strncpy(batt_info->Design_Cap, temp, 12);
+-    	}          
+-    	else
+-    	    strncpy(batt_info->Design_Cap, "unknown", 7);
+-    	    
+-    	    
+-    	//printf(" \n bat_info_design_cap = %s \n ",  batt_info->Design_Cap);    
+-
+-
+-	/* get charge_full, which is the last full capacity I guess ? */    
+-	memset(str, '\0', 100);
+-	fgets(str, 100, power_fp);   
+-	if (strlen(str)>0)
+-    	{
+-    	    memset(temp, '\0', 100);
+-    	    sscanf(str, "%*[^=] %*c %s %[^\n]",temp); 
+-    	    strncpy(batt_info->LastFull_Cap, temp, 12);
+-    	}       
+-    	else
+-    	    strncpy(batt_info->LastFull_Cap, "unknown", 7);
+-
+-
+-	//printf(" \n bat_info_lastfull_cap = %s \n\n ",  batt_info->LastFull_Cap); 
+-
+-
+-	/* get charge_now */    
+-	memset(str, '\0', 100);
+-	fgets(str, 100, power_fp);   
+-	if (strlen(str)>0)
+-    	{
+-    	    memset(temp, '\0', 100);
+-    	    sscanf(str, "%*[^=] %*c %s %[^\n]",temp); 
+-    	    strncpy(batt_info->Remaining_Cap, temp, 12);
+-    	}       
+-    	else
+-    	    strncpy(batt_info->Remaining_Cap, "unknown", 7);
+-
+-	//printf(" \n bat_info_remaining_cap = %s \n\n ",  batt_info->Remaining_Cap); 
+-
+-
+-	/* get model_name */  
+-	memset(str, '\0', 100);  
+-	fgets(str, 100, power_fp);   
+-	if (strlen(str)>0)
+-    	{
+-    	    memset(temp, '\0', 100);
+-	    strncpy(temp, str+24, 12);         // use strncpy here because sscanf chokes on blanks in this one ? //
+-
+-    	    memset(str, '\0', 100);
+-    	    sscanf(temp, "%[^\n]", str);       // strip trailing \n, fucks up output //
+-    	    
+-    	    strncpy(batt_info->Model, str, 12);
++	strncpy(batt_info->Technology, "unknown", 7);
++	strncpy(batt_info->Voltage_Now, "unknown", 7);
++	strncpy(batt_info->Charge_Now, "unknown", 7);
++	strncpy(batt_info->Charge_Full, "unknown", 7);
++	strncpy(batt_info->Charge_Full_Design, "unknown", 7);
++	strncpy(batt_info->Present_Rate, "unknown", 7);
++	strncpy(batt_info->Design_Cap, "unknown", 7);
++	strncpy(batt_info->LastFull_Cap, "unknown", 7);
++	strncpy(batt_info->Remaining_Cap, "unknown", 7);
++	strncpy(batt_info->Model, "unknown", 7);
++	strncpy(batt_info->Serial, "unknown", 7);
++
++	// see linux-2.6/drivers/power/power_supply_sysfs.c
++	// there can be different number of lines, so read up to 40 lines
++	for(int t=0; t<40; t++) {
++    		memset(str, '\0', 100);
++		memset(attr, '\0', 100);
++    		memset(temp, '\0', 100);
++		fgets(str, 100, power_fp);
++		sscanf(str, "%[^=]s %*s %*[^\n]", attr);
++    		sscanf(str, "%*[^=] %*c %s %*[^\n]",temp); 
++		if (strcmp(attr,"POWER_SUPPLY_STATUS")==0) {
++    			strncpy(batt_info->Charging_State, temp, 12);
++    		}   
++		else if (strcmp(attr,"POWER_SUPPLY_TYPE")==0) {
++			strncpy(batt_info->Bat_Type, temp, 12);
++    		}
++		else if (strcmp(attr,"POWER_SUPPLY_TECHNOLOGY")==0) {
++    			strncpy(batt_info->Technology, temp, 12);
++    		} 
++		else if (strcmp(attr,"POWER_SUPPLY_VOLTAGE_NOW")==0) {
++			value = atoi(temp) / 1000;
++			snprintf(temp, sizeof(temp), "%i mV", value);
++    	    		strncpy(batt_info->Voltage_Now, temp, 12);
++    		}    
++		else if (strcmp(attr,"POWER_SUPPLY_CURRENT_NOW")==0 ||
++			 strcmp(attr,"POWER_SUPPLY_POWER_NOW")==0) {
++			value = atoi(temp) / 1000;
++			snprintf(temp, sizeof(temp), "%i", value);
++			strncpy(batt_info->Present_Rate, temp, 9);
++		}
++		else if (strcmp(attr,"POWER_SUPPLY_CHARGE_NOW")==0) {
++			value = atoi(temp) / 1000;
++			snprintf(temp, sizeof(temp), "%i mA", value);
++			strncpy(batt_info->Charge_Now, temp, 12);
++		}
++		else if (strcmp(attr,"POWER_SUPPLY_CHARGE_FULL_DESIGN")==0) {
++			value = atoi(temp) / 1000;
++			snprintf(temp, sizeof(temp), "%i mA", value);
++			strncpy(batt_info->Charge_Full_Design, temp, 12);
++		}
++		else if (strcmp(attr,"POWER_SUPPLY_CHARGE_FULL")==0) {
++			value = atoi(temp) / 1000;
++			snprintf(temp, sizeof(temp), "%i mA", value);
++			strncpy(batt_info->Charge_Full, temp, 12);
++		}
++		else if (strcmp(attr,"POWER_SUPPLY_ENERGY_FULL_DESIGN")==0) {
++			value = atoi(temp) / 1000;
++			snprintf(temp, sizeof(temp), "%i mWh", value);
++			strncpy(batt_info->Design_Cap, temp, 9);
++		}
++		else if (strcmp(attr,"POWER_SUPPLY_ENERGY_FULL")==0) {
++			value = atoi(temp) / 1000;
++			snprintf(temp, sizeof(temp), "%i mWh", value);
++			strncpy(batt_info->LastFull_Cap, temp, 9);
++		}
++		else if (strcmp(attr,"POWER_SUPPLY_ENERGY_NOW")==0) {
++			value = atoi(temp) / 1000;
++			snprintf(temp, sizeof(temp), "%i mWh", value);
++			strncpy(batt_info->Remaining_Cap, temp, 9);
++    		}       
++		else if (strcmp(attr,"POWER_SUPPLY_MODEL_NAME")==0) {
++			strncpy(batt_info->Model, temp, 12);
++    		}
++		else if (strcmp(attr,"POWER_SUPPLY_SERIAL_NUMBER")==0) {
++			strncpy(batt_info->Serial, temp, 12);
++    		}       
++		else if (strcmp(attr,"POWER_SUPPLY_PRESENT")==0) {
++			if(strncmp(temp,"1",1)==0) {
++				batt_info->Battery_Present = 1;
++			}
++			else {
++				batt_info->Battery_Present = 0;
++				printf(" Battery is not present, bailing out. \n");
++				return 0;
++    			}
++           	}       
+     	}       
++	if (strcmp(batt_info->Charge_Now,"")!=0 &&
++	   strcmp(batt_info->Charge_Now,"unknown")!=0)
++		snprintf(temp, sizeof(temp), "%s mA", batt_info->Present_Rate);
+     	else
+-    	    strncpy(batt_info->Model, "unknown", 7);
++		snprintf(temp, sizeof(temp), "%s mW", batt_info->Present_Rate);
+ 
+-	fgets(str, 100, power_fp);   
++	strncpy(batt_info->Present_Rate, temp, 9);
+ 	
+-	/* get serial */    
+-	memset(str, '\0', 100);
+-	fgets(str, 100, power_fp);   
+-	if (strlen(str)!=0)
+-    	{
+-    	    memset(temp, '\0', 100);
+-    	    sscanf(str, "%*[^=] %*c %s %[^\n]",temp); 
+-    	    strncpy(batt_info->Serial, temp, 12);
+-    	}       
+-    	else
+-    	    strncpy(batt_info->Serial, "unknown", 7);
+-    
+     	fclose(power_fp);
+-	}
++    }
+     else      // battery dir is readable but empty : only . and .. at most //
+         batt_info->Battery_Present = 3;   
+     return 0;

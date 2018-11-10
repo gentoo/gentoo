@@ -1,0 +1,9 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Re-add AIX OS
+kernel_AIX
+elibc_AIX
+
+# Force the flag corresponding to the default ABI
+abi_ppc_32

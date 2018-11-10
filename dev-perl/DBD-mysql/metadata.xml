@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">DBD-mysql</remote-id>
+    <remote-id type="cpan-module">Bundle::DBD::mysql</remote-id>
+    <remote-id type="cpan-module">DBD::mysql</remote-id>
+    <remote-id type="cpan-module">DBD::mysql::GetInfo</remote-id>
+    <remote-id type="cpan-module">DBD::mysql::db</remote-id>
+    <remote-id type="cpan-module">DBD::mysql::dr</remote-id>
+    <remote-id type="cpan-module">DBD::mysql::st</remote-id>
+  </upstream>
+  <use>
+    <flag name="embedded">Support embedded server (libmysqld)</flag>
+    <flag name="ssl">Compile in support for SSL connections via libmysqlclient</flag>
+  </use>
+</pkgmetadata>

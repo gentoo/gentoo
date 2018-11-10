@@ -1,0 +1,163 @@
+--- a/Makefile
++++ b/Makefile
+@@ -6,7 +6,7 @@
+ # Comment/uncomment the following 4 constants to suit your system:
+ #
+ # PREFIX defines the directory below which cnet will be installed.
+-PREFIX		= /usr/local
++PREFIX		= /usr
+ #PREFIX		= $(HOME)
+ #
+ # BINDIR defines the directory where the cnet binary will be installed.
+@@ -16,26 +16,24 @@
+ LIBDIR		= $(PREFIX)/lib64/cnet
+ #
+ # WWWDIR defines the directory to hold cnet's web-based documentation
+-WWWDIR		= /home/httpd/html/cnet
++#WWWDIR		= /home/httpd/html/cnet
+ #WWWDIR		= $(HOME)/WWW/cnet
+ #
+ # ---------------------------------------------------------------------
+ #
+ it:
+-	make -C src
+-	make -C support
++	$(MAKE) -C src
++	$(MAKE) -C support
+ 	@ls -l bin/$(NAME) lib/*.a
+ 
+ install:
+-	make
+-	@mkdir -p  $(BINDIR) $(LIBDIR)
+-	@chmod 755 $(BINDIR) $(LIBDIR)
+-	@cp bin/$(NAME) $(BINDIR)/$(NAME)
+-	@chmod 755 $(BINDIR)/$(NAME)
+-	@rm -rf $(LIBDIR)/*
+-	@cp lib/* $(LIBDIR)
+-	@chmod 644 $(LIBDIR)/*
+-	@ls -l $(BINDIR)/$(NAME) $(LIBDIR)/*.a
++	@mkdir -p  $(DESTDIR)$(BINDIR) $(DESTDIR)$(LIBDIR)
++	@chmod 755 $(DESTDIR)$(BINDIR) $(DESTDIR)$(LIBDIR)
++	@cp bin/$(NAME) $(DESTDIR)$(BINDIR)/$(NAME)
++	@chmod 755 $(DESTDIR)$(BINDIR)/$(NAME)
++	@rm -rf $(DESTDIR)$(LIBDIR)/*
++	@cp lib/* $(DESTDIR)$(LIBDIR)
++	@chmod 644 $(DESTDIR)$(LIBDIR)/*
+ 
+ AND	= html/CLICK html/KEYBOARD html/STOPANDWAIT html/TICKTOCK
+ www:
+--- a/src/Makefile.linux
++++ b/src/Makefile.linux
+@@ -5,7 +5,7 @@
+ #	binutils 2.5.2, and
+ #	libelf (0.6.4 onwards)
+ #
+-WARNINGS =	-Wall -Werror -Wshadow -Wpointer-arith -Wcast-qual \
++WARNINGS =	-Wall -Wshadow -Wpointer-arith -Wcast-qual \
+ 		-Wcast-align -Wwrite-strings -Wconversion \
+ 		-Wstrict-prototypes -Wredundant-decls -Winline \
+ 		-Wcomments -Wtrigraphs -Wimport -Wundef
+@@ -20,8 +20,8 @@
+ XINCLUDES	= -I/usr/include/tcl8.5
+ XLIBS		= -ltcl8.5 -ltk8.5 -lX11
+ #
+-C99		= gcc -std=c99 -Wall -Werror -pedantic
+-CFLAGS		= -O3 -fPIC $(INCLUDES) $(XINCLUDES)
++C99		= $(CC) -std=c99 -Wall -pedantic
++CFLAGS		+= -fPIC $(INCLUDES) $(XINCLUDES)
+ #
+ LD		= gcc -rdynamic
+ LIBDIRS		= $(XLIBDIRS)
+--- a/support/Makefile
++++ b/support/Makefile
+@@ -7,21 +7,21 @@
+ 
+ it:
+ 	@if uname -s -r | grep -q "Linux" ; then \
+-		make -f Makefile.linux ; fi
++		$(MAKE) -f Makefile.linux ; fi
+ 	@if uname -s -r | grep -q "Darwin" ; then \
+-		make -f Makefile.macosx ; fi
++		$(MAKE) -f Makefile.macosx ; fi
+ 	@if uname -s -r | grep -q "SunOS 4" ; then \
+-		make -f Makefile.sunos ; fi
++		$(MAKE) -f Makefile.sunos ; fi
+ 	@if uname -s -r | grep -q "SunOS 5" ; then \
+-		make -f Makefile.solaris ; fi
++		$(MAKE) -f Makefile.solaris ; fi
+ 	@if uname -s -r | grep -q "OSF1" ; then \
+-		make -f Makefile.osf1 ; fi
++		$(MAKE) -f Makefile.osf1 ; fi
+ 	@if uname -s -r | grep -q "IRIX" ; then \
+-		make -f Makefile.irix5 ; fi
++		$(MAKE) -f Makefile.irix5 ; fi
+ 	@if uname -s -r | grep -q "FreeBSD" ; then \
+-		make -f Makefile.freebsd ; fi
++		$(MAKE) -f Makefile.freebsd ; fi
+ 	@if uname -s -r | grep -q "NetBSD" ; then \
+-		make -f Makefile.netbsd ; fi
++		$(MAKE) -f Makefile.netbsd ; fi
+ 	@cp -p cnetsupport.h ../lib
+ 
+ # ---------------------------------------------------------------------
+--- a/support/Makefile.common
++++ b/support/Makefile.common
+@@ -1,13 +1,13 @@
+ #
+-CC		= gcc
+-CFLAGS		= -std=c99 -pedantic -Wall -Werror -O3 -fPIC
++#CC		= gcc
++CFLAGS		+= -std=c99 -pedantic -Wall -fPIC
+ 
+ DOTH		= cnetsupport.h
+ OBJ		= hashtable.o haversine.o lexical.o md5.o queue.o vector.o
+ 
+ $(NAME):	$(OBJ)
+-		ar rc $(NAME) $(OBJ)
+-		ranlib $(NAME)
++		$(AR) rc $(NAME) $(OBJ)
++		$(RANLIB) $(NAME)
+ 		@cp -p $(NAME) ../lib
+ 
+ %.o : %.c $(DOTH)
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -8,21 +8,21 @@
+ 
+ it:
+ 	@if uname -s -r | grep -q "Linux" ; then \
+-		make -f Makefile.linux $(NAME) ; fi
++		$(MAKE) -f Makefile.linux $(NAME) ; fi
+ 	@if uname -s -r | grep -q "Darwin" ; then \
+-		make -f Makefile.macosx $(NAME) ; fi
++		$(MAKE) -f Makefile.macosx $(NAME) ; fi
+ 	@if uname -s -r | grep -q "SunOS 4" ; then \
+-		make -f Makefile.sunos $(NAME) ; fi
++		$(MAKE) -f Makefile.sunos $(NAME) ; fi
+ 	@if uname -s -r | grep -q "SunOS 5" ; then \
+-		make -f Makefile.solaris $(NAME) ; fi
++		$(MAKE) -f Makefile.solaris $(NAME) ; fi
+ 	@if uname -s -r | grep -q "OSF1" ; then \
+-		make -f Makefile.osf1 $(NAME) ; fi
++		$(MAKE) -f Makefile.osf1 $(NAME) ; fi
+ 	@if uname -s -r | grep -q "IRIX" ; then \
+-		make -f Makefile.irix5 $(NAME) ; fi
++		$(MAKE) -f Makefile.irix5 $(NAME) ; fi
+ 	@if uname -s -r | grep -q "FreeBSD" ; then \
+-		make -f Makefile.freebsd $(NAME) ; fi
++		$(MAKE) -f Makefile.freebsd $(NAME) ; fi
+ 	@if uname -s -r | grep -q "NetBSD" ; then \
+-		make -f Makefile.netbsd $(NAME) ; fi
++		$(MAKE) -f Makefile.netbsd $(NAME) ; fi
+ 	@cp -p $(NAME) ../bin
+ 	@cp -p cnet.h  ../lib
+ 
+@@ -33,7 +33,7 @@
+ 	@rm -rf HTML GPATH GRTAGS GSYMS GTAGS
+ 
+ hide:
+-	make clean
++	$(MAKE) clean
+ 	echo '#if	HIDE_GLOBAL_NAMES'		 > hidenames.h
+ 	sort < HIDENAMES | \
+ 	awk '{ if($$0 !~ /#/) printf("#define\t%-36s\t__CN%03d\n", $$0,++n);}'\

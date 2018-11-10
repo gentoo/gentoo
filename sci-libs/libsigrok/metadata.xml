@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+ <email>embedded@gentoo.org</email>
+ <name>Embedded Gentoo</name>
+</maintainer>
+<longdescription>
+  libsigrok is a shared library written in C, which provides the basic
+  hardware access drivers for logic analyzers and other supported devices,
+  as well as input/output file format support.
+</longdescription>
+<use>
+ <flag name="ftdi">Enable drivers that need libftdi</flag>
+ <flag name="parport">Enable drivers that are parallel (IEEE1284) based</flag>
+ <flag name="serial">Enable drivers that are serial (RS232) based</flag>
+</use>
+</pkgmetadata>

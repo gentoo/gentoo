@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+import subprocess
+import site
+import sys
+import os
+
+sitepackages = site.getsitepackages()[0]
+
+_cmd=[os.path.join(sitepackages, "pdb2pqr", "pdb2pqr.py")]
+_cmd.extend(sys.argv[1:])
+
+subprocess.call(_cmd, stdout=sys.stdout, stderr=sys.stderr)

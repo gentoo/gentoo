@@ -1,0 +1,11 @@
+--- src/relaxngcc/builder/SwitchBlockInfo.java.orig	2015-08-13 01:20:52.344000000 +0000
++++ src/relaxngcc/builder/SwitchBlockInfo.java	2015-08-13 01:21:27.424000000 +0000
+@@ -66,8 +66,6 @@
+             
+             if(prologue!=null) sv.add(prologue);
+             
+-            //elsecode, null‚È‚çerrorHandleMethod‚Å•Â‚¶‚é
+-            
+             CDBlock terminal = elsecode;
+             if(terminal==null && errorHandleMethod!=null)
+                 terminal = new CDBlock(errorHandleMethod);

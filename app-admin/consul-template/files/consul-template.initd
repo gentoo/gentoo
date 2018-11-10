@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 2015-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="consul-template agent"
+user=${user:-${RC_SVCNAME}}
+group=${group:-${RC_SVCNAME}}
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+
+command="/usr/bin/${RC_SVCNAME}"
+command_args="-config=/etc/consul-template.d ${command_args}"
+command_background="true"
+start_stop_daemon_args="--user ${user} --group ${group} \
+	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
+	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+stopsig="SIGINT"
+
+depend() {
+	need net
+}

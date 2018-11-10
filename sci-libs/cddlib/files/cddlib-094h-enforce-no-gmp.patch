@@ -1,0 +1,37 @@
+Description: Don't link against gmp in the non-gmp version
+ Using AC_CHECK_LIB will add -lgmp to all children, but we don't want this
+ for the non-gmp variants. Instead, add -lgmp explicitly in gmp variants.
+Author: Ximin Luo <infinity0@debian.org>
+Forwarded: TBD
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/configure.in
++++ b/configure.in
+@@ -14,8 +14,6 @@
+ dnl AC_CHECK_LIB(g, main)
+ dnl Replace `main' with a function in -lstdc:
+ dnl AC_CHECK_LIB(stdc, main)
+-dnl look for gmp:
+-AC_CHECK_LIB(gmp, main)
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
+--- a/lib-src-gmp/Makefile.am
++++ b/lib-src-gmp/Makefile.am
+@@ -25,4 +25,4 @@
+ setoper.h
+ 
+ AM_CPPFLAGS = -I$(gmpincludedir) -DGMPRATIONAL
+-AM_LDFLAGS = -version-info 0:0:0
++AM_LDFLAGS = -lgmp -version-info 0:0:0
+--- a/src-gmp/Makefile.am
++++ b/src-gmp/Makefile.am
+@@ -32,7 +32,7 @@
+ # cddmathlink_SOURCES                = cddmathlink.c cddmlio.h cddmlio.c
+ 
+ LDADD        = ../lib-src-gmp/libcddgmp.la
+-AM_LDFLAGS   = -L$(gmplibdir)
++AM_LDFLAGS   = -lgmp -L$(gmplibdir)
+ INCLUDES     = -I../lib-src-gmp
+ INCLUDES    += -I$(gmpincludedir)
+ AM_CPPFLAGS  = -DGMPRATIONAL

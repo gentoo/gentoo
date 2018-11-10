@@ -1,0 +1,30 @@
+http://bugs.gentoo.org/280293
+
+--- color-theme-6.6.0-orig/color-theme.el	2006-05-28 15:07:29.000000000 +0200
++++ color-theme-6.6.0/color-theme.el	2009-08-10 10:17:00.000000000 +0200
+@@ -72,11 +72,6 @@
+                                   (string-match "XEmacs" emacs-version))
+   "Non-nil if running XEmacs.")
+ 
+-;; Add this since it appears to miss in emacs-2x
+-(or (fboundp 'replace-in-string)
+-    (defun replace-in-string (target old new)
+-      (replace-regexp-in-string old new  target)))
+-
+ ;; face-attr-construct has a problem in Emacs 20.7 and older when
+ ;; dealing with inverse-video faces.  Here is a short test to check
+ ;; wether you are affected.
+@@ -1626,9 +1621,10 @@
+        (add-to-list 'color-themes
+                     (list ',n
+                           (upcase-initials
+-                           (replace-in-string
+-                            (replace-in-string 
+-                             (symbol-name ',n) "^color-theme-" "") "-" " "))
++			   (replace-regexp-in-string
++			    "-" " "
++			    (replace-regexp-in-string
++			     "^color-theme-" "" (symbol-name ',n))))
+                           ,author))
+        (defun ,n ()
+ 	 ,description

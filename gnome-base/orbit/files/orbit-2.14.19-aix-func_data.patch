@@ -1,0 +1,99 @@
+From c50f193f69f9b14dd26fafb7cb4c9514eaa6f15e Mon Sep 17 00:00:00 2001
+From: Michael Haubenwallner <michael.haubenwallner@ssi-schaefer.com>
+Date: Thu, 26 Jun 2014 12:45:18 +0200
+Subject: [PATCH 1/2] bug#732275: rename func_data to gfunc_data for AIX
+
+---
+ include/orbit/orb-core/allocators.h |  2 +-
+ src/idl-compiler/orbit-idl-utils.c  | 14 +++++++-------
+ src/idl-compiler/orbit-idl2.h       |  4 ++--
+ 3 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/include/orbit/orb-core/allocators.h b/include/orbit/orb-core/allocators.h
+index 0401a15..1861ca1 100644
+--- a/include/orbit/orb-core/allocators.h
++++ b/include/orbit/orb-core/allocators.h
+@@ -41,7 +41,7 @@ gpointer ORBit_realloc_tcval (gpointer       old,
+     Below, some magic values of the fnc ptr are defined.
+ **/
+ typedef gpointer (*ORBit_Mem_free_fn) (gpointer mem,
+-				       gpointer func_data);
++				       gpointer gfunc_data);
+ 
+ #define ORBIT_MEMHOW_HOW(how)      ((how) & 0x3)
+ #define ORBIT_MEMHOW_ELEMENTS(how) ((how) >> 2)
+diff --git a/src/idl-compiler/orbit-idl-utils.c b/src/idl-compiler/orbit-idl-utils.c
+index 3bb0467..04fe4a2 100644
+--- a/src/idl-compiler/orbit-idl-utils.c
++++ b/src/idl-compiler/orbit-idl-utils.c
+@@ -362,7 +362,7 @@ orbit_idl_print_node(IDL_tree node, int indent_level)
+ 
+ static void
+ IDL_tree_traverse_helper(IDL_tree p, GFunc f,
+-			 gconstpointer func_data,
++			 gconstpointer gfunc_data,
+ 			 GHashTable *visited_nodes,
+ 			 gboolean    include_self)
+ {
+@@ -376,17 +376,17 @@ IDL_tree_traverse_helper(IDL_tree p, GFunc f,
+ 	for (curitem = IDL_INTERFACE (p).inheritance_spec; curitem;
+ 	     curitem = IDL_LIST (curitem).next) {
+ 		IDL_tree_traverse_helper (IDL_get_parent_node 
+-			(IDL_LIST (curitem).data, IDLN_INTERFACE, NULL), f, func_data, visited_nodes, TRUE);
++			(IDL_LIST (curitem).data, IDLN_INTERFACE, NULL), f, gfunc_data, visited_nodes, TRUE);
+ 	}
+ 
+ 	if (include_self)
+-		f(p, (gpointer)func_data);
++		f(p, (gpointer)gfunc_data);
+ }
+ 
+ void
+ IDL_tree_traverse_parents_full (IDL_tree      p,
+ 				GFunc         f,
+-				gconstpointer func_data,
++				gconstpointer gfunc_data,
+ 				gboolean      include_self)
+ {
+ 	GHashTable *visited_nodes = g_hash_table_new (NULL, g_direct_equal);
+@@ -400,7 +400,7 @@ IDL_tree_traverse_parents_full (IDL_tree      p,
+ 	if (!p)
+ 		return;
+ 
+-	IDL_tree_traverse_helper (p, f, func_data, visited_nodes, include_self);
++	IDL_tree_traverse_helper (p, f, gfunc_data, visited_nodes, include_self);
+ 
+ 	g_hash_table_destroy (visited_nodes);
+ }
+@@ -408,9 +408,9 @@ IDL_tree_traverse_parents_full (IDL_tree      p,
+ void
+ IDL_tree_traverse_parents (IDL_tree p,
+ 			   GFunc f,
+-			   gconstpointer func_data)
++			   gconstpointer gfunc_data)
+ {
+-	IDL_tree_traverse_parents_full (p, f, func_data, TRUE);
++	IDL_tree_traverse_parents_full (p, f, gfunc_data, TRUE);
+ }
+ 
+ /* For use by below function */
+diff --git a/src/idl-compiler/orbit-idl2.h b/src/idl-compiler/orbit-idl2.h
+index b58f57f..670e072 100644
+--- a/src/idl-compiler/orbit-idl2.h
++++ b/src/idl-compiler/orbit-idl2.h
+@@ -16,10 +16,10 @@ void     orbit_idl_print_node            (IDL_tree      node,
+ 					  int           indent_level);
+ void     IDL_tree_traverse_parents       (IDL_tree      p,
+ 					  GFunc         f,
+-					  gconstpointer func_data);
++					  gconstpointer gfunc_data);
+ void     IDL_tree_traverse_parents_full  (IDL_tree      p,
+ 					  GFunc         f,
+-					  gconstpointer func_data, 
++					  gconstpointer gfunc_data,
+ 					  gboolean      include_self);
+ gboolean orbit_cbe_type_contains_complex (IDL_tree      ts);
+ void     orbit_idl_check_oneway_op       (IDL_tree      op);
+-- 
+1.8.3.2
+

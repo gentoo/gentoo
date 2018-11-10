@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-SFTP-Foreign</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Foreign</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Foreign::Attributes</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Foreign::Attributes::Compat</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Foreign::Backend::Unix</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Foreign::Backend::Windows</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Foreign::Buffer</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Foreign::Common</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Foreign::Compat</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Foreign::Constants</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Foreign::DirHandle</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Foreign::FileHandle</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Foreign::Handle</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Foreign::Helpers</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Foreign::Local</remote-id>
+  </upstream>
+</pkgmetadata>

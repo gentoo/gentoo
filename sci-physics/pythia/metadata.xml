@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-physics@gentoo.org</email>
+    <name>Gentoo Physics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  PYTHIA is a program for the generation of high-energy physics
+  events, i.e. for the description of collisions at high energies
+  between elementary particles such as e+, e-, p and pbar in various
+  combinations. It contains theory and models for a number of physics
+  aspects, including hard and soft interactions, parton distributions,
+  initial- and final-state parton showers, multiple interactions,
+  fragmentation and decay. It is largely based on original research,
+  but also borrows many formulae and other knowledge from the
+  literature.
+</longdescription>
+  <use>
+    <flag name="fastjet">Build jets using the <pkg>sci-physics/fastjet</pkg> package</flag>
+    <flag name="hepmc">Adds support for High Energy Physics Monte Carlo Generators <pkg>sci-physics/hepmc</pkg></flag>
+    <flag name="lhapdf">Support the use of external PDF sets via <pkg>sci-physics/lhapdf</pkg></flag>
+    <flag name="root">Use <pkg>sci-physics/root</pkg> trees and histograms (in examples only)</flag>
+  </use>
+</pkgmetadata>

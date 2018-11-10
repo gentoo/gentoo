@@ -1,0 +1,87 @@
+--- vittk-1.3/Makefile.in.orig
++++ vittk-1.3/Makefile.in
+@@ -10,45 +10,45 @@
+ 	@echo "usage: make install"
+ 
+ install:
+-	@if [ ! -d @prefix@/bin ]; then \
+-	  echo mkdir -p @prefix@/bin ; \
+-	  mkdir -p @prefix@/bin ; \
++	@if [ ! -d $(DESTDIR)@prefix@/bin ]; then \
++	  echo mkdir -p $(DESTDIR)@prefix@/bin ; \
++	  mkdir -p $(DESTDIR)@prefix@/bin ; \
+ 	fi
+-	@if [ ! -d @prefix@/share/doc/vittk ]; then \
+-	  echo mkdir -p @prefix@/share/doc/vittk ; \
+-	  mkdir -p @prefix@/share/doc/vittk ; \
++	@if [ ! -d $(DESTDIR)@docdir@ ]; then \
++	  echo mkdir -p $(DESTDIR)@docdir@ ; \
++	  mkdir -p $(DESTDIR)@docdir@ ; \
+ 	fi
+-	@echo installing documentation in @prefix@/share/doc/vittk
+-	@$(INSTALL) -c -m 644 Caveats @prefix@/share/doc/vittk/Caveats
+-	@$(INSTALL) -c -m 644 Fonts @prefix@/share/doc/vittk/Fonts
+-	@$(INSTALL) -c -m 644 README @prefix@/share/doc/vittk/README
+-	@$(INSTALL) -c -m 644 Tutorial @prefix@/share/doc/vittk/Tutorial
+-	@$(INSTALL) -c -m 644 WhatsNew @prefix@/share/doc/vittk/WhatsNew
+-	@echo installing man page in @prefix@/man/man1
+-	@if [ ! -d @prefix@/man/man1 ]; then \
+-	  echo mkdir -p @prefix@/man/man1 ; \
+-	  mkdir -p @prefix@/man/man1 ; \
++	@echo installing documentation in $(DESTDIR)@docdir@
++	@$(INSTALL) -c -m 644 Caveats $(DESTDIR)@docdir@/Caveats
++	@$(INSTALL) -c -m 644 Fonts $(DESTDIR)@docdir@/Fonts
++	@$(INSTALL) -c -m 644 README $(DESTDIR)@docdir@/README
++	@$(INSTALL) -c -m 644 Tutorial $(DESTDIR)@docdir@/Tutorial
++	@$(INSTALL) -c -m 644 WhatsNew $(DESTDIR)@docdir@/WhatsNew
++	@echo installing man page in $(DESTDIR)@mandir@/man1
++	@if [ ! -d $(DESTDIR)@mandir@/man1 ]; then \
++	  echo mkdir -p $(DESTDIR)@mandir@/man1 ; \
++	  mkdir -p $(DESTDIR)@mandir@/man1 ; \
+ 	fi
+-	@$(INSTALL) -c -m 644 vittk.man @prefix@/man/man1/vittk.1
+-	@echo installing vittkrc in @prefix@/etc
+-	@$(INSTALL) -c -m 644 vittkrc @prefix@/etc/vittkrc
+-	@if [ ! -d @prefix@/libexec/vittk ]; then \
+-	  echo mkdir -p @prefix@/libexec/vittk ; \
+-	  mkdir -p @prefix@/libexec/vittk ; \
++	@$(INSTALL) -c -m 644 vittk.man $(DESTDIR)@mandir@/man1/vittk.1
++	@echo installing vittkrc in $(DESTDIR)@sysconfdir@
++	@$(INSTALL) -c -m 644 vittkrc $(DESTDIR)@sysconfdir@/vittkrc
++	@if [ ! -d $(DESTDIR)@prefix@/libexec/vittk ]; then \
++	  echo mkdir -p $(DESTDIR)@prefix@/libexec/vittk ; \
++	  mkdir -p $(DESTDIR)@prefix@/libexec/vittk ; \
+ 	fi
+-	@echo installing task-startstop in @prefix@/libexec/vittk
+-	@$(INSTALL) -c -m 755 task-startstop @prefix@/libexec/vittk/task-startstop
+-	@echo installing task-undo in @prefix@/libexec/vittk
+-	@$(INSTALL) -c -m 755 task-undo @prefix@/libexec/vittk/task-undo
+-	@echo installing .tcl files and tclIndex in @prefix@/lib/vittk
+-	@if [ ! -d @prefix@/lib/vittk ]; then \
+-	  echo mkdir -p @prefix@/lib/vittk ; \
+-	  mkdir -p @prefix@/lib/vittk ; \
++	@echo installing task-startstop in $(DESTDIR)@prefix@/libexec/vittk
++	@$(INSTALL) -c -m 755 task-startstop $(DESTDIR)@prefix@/libexec/vittk/task-startstop
++	@echo installing task-undo in $(DESTDIR)@prefix@/libexec/vittk
++	@$(INSTALL) -c -m 755 task-undo $(DESTDIR)@prefix@/libexec/vittk/task-undo
++	@echo installing .tcl files and tclIndex in $(DESTDIR)@libdir@/vittk
++	@if [ ! -d $(DESTDIR)@libdir@/vittk ]; then \
++	  echo mkdir -p $(DESTDIR)@libdir@/vittk ; \
++	  mkdir -p $(DESTDIR)@libdir@/vittk ; \
+ 	fi
+-	@cp *.tcl @prefix@/lib/vittk
+-	@cp tclIndex @prefix@/lib/vittk
+-	@echo installing vittk in @prefix@/bin
+-	@$(INSTALL) -c -m 755 vittk @prefix@/bin/vittk
++	@cp *.tcl $(DESTDIR)@libdir@/vittk
++	@cp tclIndex $(DESTDIR)@libdir@/vittk
++	@echo installing vittk in $(DESTDIR)@prefix@/bin
++	@$(INSTALL) -c -m 755 vittk $(DESTDIR)@prefix@/bin/vittk
+ 
+ autoconf:
+ 	@make -f .makefile autoconf
+@@ -61,3 +61,4 @@
+ dogfood:
+ 	@make -f .makefile dogfood
+ 
++check:

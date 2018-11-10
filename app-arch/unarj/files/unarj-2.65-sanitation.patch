@@ -1,0 +1,126 @@
+Index: unarj-2.65/sanitize.c
+===================================================================
+--- /dev/null
++++ unarj-2.65/sanitize.c
+@@ -0,0 +1,81 @@
++/*
++ * Path sanitation code by Ludwig Nussel <ludwig.nussel@suse.de>. Public Domain.
++ */
++
++#include "unarj.h"
++
++#include <string.h>
++#include <limits.h>
++#include <stdio.h>
++
++#ifndef PATH_CHAR
++#define PATH_CHAR '/'
++#endif
++#ifndef MIN
++#define MIN(x,y) ((x)<(y)?(x):(y))
++#endif
++
++/* copy src into dest converting the path to a relative one inside the current
++ * directory. dest must hold at least len bytes */
++void copy_path_relative(char *dest, char *src, size_t len)
++{
++    char* o = dest;
++    char* p = src;
++
++    *o = '\0';
++
++    while(*p && *p == PATH_CHAR) ++p;
++    for(; len && *p;)
++    {
++	src = p;
++	p = strchr(src, PATH_CHAR);
++	if(!p) p = src+strlen(src);
++
++	/* . => skip */
++	if(p-src == 1 && *src == '.' )
++	{
++	    if(*p) src = ++p;
++	}
++	/* .. => pop one */
++	else if(p-src == 2 && *src == '.' && src[1] == '.')
++	{
++	    if(o != dest)
++	    {
++		char* tmp;
++		*o = '\0';
++		tmp = strrchr(dest, PATH_CHAR);
++		if(!tmp)
++		{
++		    len += o-dest;
++		    o = dest;
++		    if(*p) ++p;
++		}
++		else
++		{
++		    len += o-tmp;
++		    o = tmp;
++		    if(*p) ++p;
++		}
++	    }
++	    else /* nothing to pop */
++		if(*p) ++p;
++	}
++	else
++	{
++	    size_t copy;
++	    if(o != dest)
++	    {
++		--len;
++		*o++ = PATH_CHAR;
++	    }
++	    copy = MIN(p-src,len);
++	    memcpy(o, src, copy);
++	    len -= copy;
++	    src += copy;
++	    o += copy;
++	    if(*p) ++p;
++	}
++	while(*p && *p == PATH_CHAR) ++p;
++    }
++    o[len?0:-1] = '\0';
++}
+Index: unarj-2.65/unarj.c
+===================================================================
+--- unarj-2.65.orig/unarj.c
++++ unarj-2.65/unarj.c
+@@ -235,6 +235,8 @@ static UCRC   crctable[UCHAR_MAX + 1];
+ 
+ /* Functions */
+ 
++void copy_path_relative(char *dest, char *src, size_t len);
++
+ static void
+ make_crctable()
+ {
+@@ -738,11 +740,11 @@ extract()
+ 
+     no_output = 0;
+     if (command == 'E')
+-        strncopy(name, &filename[entry_pos], sizeof(name));
++        copy_path_relative(name, &filename[entry_pos], sizeof(name));
+     else
+     {
+         strcpy(name, DEFAULT_DIR);
+-        strncopy(name+strlen(name), filename, sizeof(name)-strlen(name));
++        copy_path_relative(name+strlen(name), filename, sizeof(name)-strlen(name));
+     }
+ 
+     if (host_os != OS)
+--- unarj-2.65.orig/Makefile	Mon Nov 29 16:47:24 2004
++++ unarj-2.65/Makefile	Mon Nov 29 22:46:56 2004
+@@ -9,7 +9,9 @@
+ 
+ decode.o:   decode.c  unarj.h
+ 
+-OBJS = unarj.o decode.o environ.o
++sanitize.o: sanitize.c unarj.h
++
++OBJS = unarj.o decode.o environ.o sanitize.o
+ 
+ unarj: $(OBJS)
+ 	$(CC) $(LDFLAGS) $(OBJS) -o unarj

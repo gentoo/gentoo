@@ -1,0 +1,33 @@
+ pymol-plugins-msms-100415.py |   18 ++++++++++--------
+ 1 files changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/pymol-plugins-msms-100415.py b/pymol-plugins-msms-100415.py
+index 725934d..7ea00bf 100644
+--- a/pymol-plugins-msms-100415.py
++++ b/pymol-plugins-msms-100415.py
+@@ -99,15 +99,17 @@ class MSMSPlugin:
+         self.cleanup_saved_pymol_sel.set(True) # by default, clean up
+ 
+         self.pdb_fn.set('')
+-        if 'MSMS_BIN' in os.environ:
+-            if VERBOSE: print 'Found MSMS_BIN in environmental variables', os.environ['MSMS_BIN']
+-            self.msms_bin.set(os.environ['MSMS_BIN'])
+-        else:
+-            if VERBOSE: print 'MSMS_BIN not found in environmental variables.'
+-            self.msms_bin.set('')
++        self.msms_bin.set('GENTOOMSMS')
++##        if 'MSMS_BIN' in os.environ:
++##            if VERBOSE: print 'Found MSMS_BIN in environmental variables', os.environ['MSMS_BIN']
++##            self.msms_bin.set(os.environ['MSMS_BIN'])
++##        else:
++##            if VERBOSE: print 'MSMS_BIN not found in environmental variables.'
++##            self.msms_bin.set('')
+ ##         self.pdb2xyzr_bin.set('')
+-        if 'PDB2XYZRN' in os.environ:  self.pdb2xyzrn_bin.set(os.environ['PDB2XYZRN'])
+-        else:                          self.pdb2xyzrn_bin.set('')
++        self.pdb2xyzrn_bin.set('GENTOOXYZRN')
++##        if 'PDB2XYZRN' in os.environ:  self.pdb2xyzrn_bin.set(os.environ['PDB2XYZRN'])
++##        else:                          self.pdb2xyzrn_bin.set('')
+         self.tmp_dir.set('/tmp')
+         self.cleanup_msms_output = Tkinter.BooleanVar()
+         self.cleanup_msms_output.set(True) # by default, clean up msms output

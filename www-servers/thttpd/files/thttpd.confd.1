@@ -1,0 +1,35 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+## Config file for /etc/init.d/thttpd
+
+## the startup-dir of thttpd is the docroot, so we specify it here
+## and the init-script does a "cd" prior to startup:
+THTTPD_DOCROOT="/var/www/localhost"
+
+## There are 2 ways to configure thttpd:
+##	1) specify all params on the cmd-line
+##	2) use a config-file (and start with "-C <conf-file>")
+
+## For additional thttpd instances, run:
+# ln -s /etc/init.d/thttpd /etc/init.d/thttpd.$NAME
+# cp /etc/conf.d/thttpd /etc/conf.d/thttpd.$NAME
+
+## Note: 1) and 2) can be mixed but
+##		the init-script set PID (option -i) to
+##			/var/run/thttpd.$NAME.run
+##		and logfile (option -l) to
+##			/var/log/thttpd.$NAME.log
+##
+## We choose 1) here -- if you have a more complicated setup read
+## thttpd(8) for details on 2).
+
+THTTPD_OPTS="-p 80 -u thttpd -r"
+
+## For a more complex setup (e.g. cgi-support) use an external configfile:
+## comment the THTTPD_OPTS line above und use the one below.
+#THTTPD_OPTS="-C /etc/thttpd/thttpd.conf"
+
+## If you know what you are doing you can add cgi-support with the line below;
+## but you _should_ use the extern-configfile version!
+#THTTPD_OPTS="$THTTPD_OPTS -c **.cgi|**.sh"

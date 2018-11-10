@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-Stream</remote-id>
+    <remote-id type="cpan-module">XML::Stream</remote-id>
+    <remote-id type="cpan-module">XML::Stream::IO::Select::Win32</remote-id>
+    <remote-id type="cpan-module">XML::Stream::Namespace</remote-id>
+    <remote-id type="cpan-module">XML::Stream::Node</remote-id>
+    <remote-id type="cpan-module">XML::Stream::Parser</remote-id>
+    <remote-id type="cpan-module">XML::Stream::Parser::DTD</remote-id>
+    <remote-id type="cpan-module">XML::Stream::Tools</remote-id>
+    <remote-id type="cpan-module">XML::Stream::Tree</remote-id>
+    <remote-id type="cpan-module">XML::Stream::XPath</remote-id>
+    <remote-id type="cpan-module">XML::Stream::XPath::AllOp</remote-id>
+    <remote-id type="cpan-module">XML::Stream::XPath::AndOp</remote-id>
+    <remote-id type="cpan-module">XML::Stream::XPath::AttributeOp</remote-id>
+    <remote-id type="cpan-module">XML::Stream::XPath::ContextOp</remote-id>
+    <remote-id type="cpan-module">XML::Stream::XPath::EqualOp</remote-id>
+    <remote-id type="cpan-module">XML::Stream::XPath::FunctionOp</remote-id>
+    <remote-id type="cpan-module">XML::Stream::XPath::NodeOp</remote-id>
+    <remote-id type="cpan-module">XML::Stream::XPath::NotEqualOp</remote-id>
+    <remote-id type="cpan-module">XML::Stream::XPath::Op</remote-id>
+    <remote-id type="cpan-module">XML::Stream::XPath::OrOp</remote-id>
+    <remote-id type="cpan-module">XML::Stream::XPath::PositionOp</remote-id>
+    <remote-id type="cpan-module">XML::Stream::XPath::Query</remote-id>
+    <remote-id type="cpan-module">XML::Stream::XPath::Value</remote-id>
+  </upstream>
+</pkgmetadata>

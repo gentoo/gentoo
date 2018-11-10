@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">SVG-Graph</remote-id>
+    <remote-id type="cpan-module">SVG::Graph</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Data</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Data::Datum</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Data::Node</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Data::Tree</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::File</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Frame</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Glyph</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Glyph::axis</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Glyph::bar</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Glyph::barflex</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Glyph::bezier</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Glyph::bubble</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Glyph::heatmap</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Glyph::line</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Glyph::pictogram</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Glyph::scatter</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Glyph::tree</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Glyph::wedge</remote-id>
+    <remote-id type="cpan-module">SVG::Graph::Group</remote-id>
+  </upstream>
+</pkgmetadata>

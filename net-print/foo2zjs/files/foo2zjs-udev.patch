@@ -1,0 +1,12 @@
+diff -ruN foo2zjs/Makefile foo2zjs.orig/Makefile
+--- foo2zjs/Makefile	2012-01-18 21:53:45.834944820 +0100
++++ foo2zjs.orig/Makefile	2012-01-18 21:51:18.872936603 +0100
+@@ -933,7 +933,7 @@
+ 	    echo "      *** OR (generic linux)"; \
+ 	    echo "      ***	# rm -f $(LIBUDEVDIR)/*-printers.rules"; \
+ 	    echo "      ***"; \
+-	    exit 1; \
++	    # exit 1; \
+ 	fi
+ 	# ... OK!
+ 	#

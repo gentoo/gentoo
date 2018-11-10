@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-Amazon-S3</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Bucket</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Client</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Client::Bucket</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Client::Object</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::HTTPRequest</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Request</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Request::CreateBucket</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Request::DeleteBucket</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Request::DeleteObject</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Request::GetBucketAccessControl</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Request::GetBucketLocationConstraint</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Request::GetObject</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Request::GetObjectAccessControl</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Request::ListAllMyBuckets</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Request::ListBucket</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Request::PutObject</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Request::SetBucketAccessControl</remote-id>
+    <remote-id type="cpan-module">Net::Amazon::S3::Request::SetObjectAccessControl</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,68 @@
+commit c62d2b2e64e3d36cac91fbd656db8f69b7c42dc5
+Author: Alexis Ballier <aballier@gentoo.org>
+Date:   Wed Sep 23 14:58:50 2015 +0200
+
+    Revert "Remove all references to FLTK/Fluid"
+    
+    This reverts commit 933f2bf0b776ee028aaa4b58a382101d81fb042e.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7ddd2c7..f709ea5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,12 +14,27 @@ find_package(catkin REQUIRED
+ 
+ find_package(Boost REQUIRED COMPONENTS system thread)
+ 
++find_package(FLTK REQUIRED)
++if(FLTK_FOUND)
++  # FindFLTK.cmake doesn't populate FLTK_INCLUDE_DIRS on some systems,
++  # so we try to use FLTK_INCLUDE_DIR if we need to.
++  if("${FLTK_INCLUDE_DIRS}" STREQUAL "")
++    set(FLTK_INCLUDE_DIRS "${FLTK_INCLUDE_DIR}")
++  endif()
++  message(status "FLTK_LIBRARIES=" ${FLTK_LIBRARIES})
++  message(status "FLTK_INCLUDE_DIR=" ${FLTK_INCLUDE_DIR})
++  message(status "FLTK_INCLUDE_DIRS=" ${FLTK_INCLUDE_DIRS})
++else()
++  message(fatal_error "FLTK not found...aborting!")
++endif()
++
+ set(Stage_DIR cmake)
+ find_package(Stage REQUIRED)
+ 
+ include_directories(
+   ${catkin_INCLUDE_DIRS}
+   ${Boost_INCLUDE_DIRS}
++  ${FLTK_INCLUDE_DIRS}
+   ${Stage_INCLUDE_DIRS}
+ )
+ 
+@@ -34,6 +49,7 @@ endif()
+ target_link_libraries(stageros
+   ${catkin_LIBRARIES}
+   ${Boost_LIBRARIES}
++  ${FLTK_LIBRARIES}
+   ${Stage_LIBRARIES}
+   ${${PROJECT_NAME}_extra_libs}
+ )
+diff --git a/package.xml b/package.xml
+index 8803254..fde1a64 100644
+--- a/package.xml
++++ b/package.xml
+@@ -17,6 +17,7 @@
+   <buildtool_depend>catkin</buildtool_depend>
+ 
+   <build_depend>boost</build_depend>
++  <build_depend>libfltk-dev</build_depend>
+   <build_depend>geometry_msgs</build_depend>
+   <build_depend>nav_msgs</build_depend>
+   <build_depend>roscpp</build_depend>
+@@ -28,6 +29,7 @@
+   <build_depend>tf</build_depend>
+ 
+   <run_depend>boost</run_depend>
++  <run_depend>fluid</run_depend>
+   <run_depend>geometry_msgs</run_depend>
+   <run_depend>nav_msgs</run_depend>
+   <run_depend>roscpp</run_depend>

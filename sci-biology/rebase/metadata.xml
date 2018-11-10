@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		The Restriction Enzyme data BASE is a collection of information about
+		restriction enzymes and related proteins. It is maintained by New
+		England Biolabs. It contains published and unpublished references,
+		recognition and cleavage sites, isoschizomers, commercial availability,
+		methylation sensitivity, crystal and sequence data. DNA
+		methyltransferases, homing endonucleases, nicking enzymes, specificity
+		subunits and control proteins are also included. More recently,
+		putative DNA methyltransferases and restriction enzymes, as predicted
+		from analysis of genomic sequences, are also listed.
+	</longdescription>
+</pkgmetadata>

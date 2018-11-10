@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		T-Coffee is a multiple sequence alignment package. Given a set of
+		sequences (Proteins or DNA), T-Coffee generates a multiple sequence
+		alignment. Version 2.00 and higher can mix sequences and structures.
+		T-Coffee allows the combination of a collection of multiple/pairwise,
+		global or local alignments into a single model. It also allows to
+		estimate the level of consistency of each position within the new
+		alignment with the rest of the alignments.
+	</longdescription>
+</pkgmetadata>

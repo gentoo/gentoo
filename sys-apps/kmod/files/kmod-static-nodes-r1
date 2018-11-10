@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Create list of required static device nodes for the current kernel"
+
+depend() {
+	after dev-mount
+	before tmpfiles.dev dev
+	keyword -lxc -systemd-nspawn
+}
+
+start() {
+	ebegin "Creating list of required static device nodes for the current kernel"
+	checkpath -q -d /run/tmpfiles.d
+	kmod static-nodes --format=tmpfiles --output=/run/tmpfiles.d/kmod.conf
+	eend $?
+}

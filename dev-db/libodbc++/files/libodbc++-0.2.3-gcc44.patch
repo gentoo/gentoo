@@ -1,0 +1,11 @@
+--- libodbc++-0.2.3-orig/src/datastream.h       2009-06-12 13:31:54.000000000 +0200
++++ libodbc++-0.2.3/src/datastream.h    2009-06-12 13:32:11.000000000 +0200
+@@ -25,6 +25,7 @@
+ #include <odbc++/types.h>
+ 
+ #if defined(ODBCXX_HAVE_ISO_CXXLIB)
++# include <cstdio>
+ # include <istream>
+ # include <streambuf>
+ #else
+

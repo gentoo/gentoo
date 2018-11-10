@@ -1,0 +1,12 @@
+diff --git a/common_gui.cpp b/common_gui.cpp
+index 0f38ce8..36b0b9e 100644
+--- a/common_gui.cpp
++++ b/common_gui.cpp
+@@ -6,6 +6,7 @@
+ 
+ #include "common_gui.h"
+ #include "qglobal.h"
++#include <unistd.h>
+ 
+ #ifdef Q_WS_WIN32
+ #include "windows.h"

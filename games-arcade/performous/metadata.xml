@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Performous is an open-source rhythm/performance platform that contains singing, guitar/bass playing, drumming and dancing all in one game.
+	</longdescription>
+	<use>
+		<flag name="midi">Enable MIDI I/O support</flag>
+		<flag name="songs">Install a few demo songs</flag>
+		<flag name="tools">Enable building of song extraction utilities for SingStar and Guitar Hero</flag>
+		<flag name="webcam">Enable Webcam support</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">performous</remote-id>
+		<remote-id type="github">performous/performous</remote-id>
+	</upstream>
+</pkgmetadata>

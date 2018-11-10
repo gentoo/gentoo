@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Chart</remote-id>
+    <remote-id type="cpan-module">Chart::Bars</remote-id>
+    <remote-id type="cpan-module">Chart::Base</remote-id>
+    <remote-id type="cpan-module">Chart::BrushStyles</remote-id>
+    <remote-id type="cpan-module">Chart::Composite</remote-id>
+    <remote-id type="cpan-module">Chart::Constants</remote-id>
+    <remote-id type="cpan-module">Chart::Direction</remote-id>
+    <remote-id type="cpan-module">Chart::ErrorBars</remote-id>
+    <remote-id type="cpan-module">Chart::HorizontalBars</remote-id>
+    <remote-id type="cpan-module">Chart::Lines</remote-id>
+    <remote-id type="cpan-module">Chart::LinesPoints</remote-id>
+    <remote-id type="cpan-module">Chart::Mountain</remote-id>
+    <remote-id type="cpan-module">Chart::Pareto</remote-id>
+    <remote-id type="cpan-module">Chart::Pie</remote-id>
+    <remote-id type="cpan-module">Chart::Points</remote-id>
+    <remote-id type="cpan-module">Chart::Split</remote-id>
+    <remote-id type="cpan-module">Chart::StackedBars</remote-id>
+  </upstream>
+</pkgmetadata>

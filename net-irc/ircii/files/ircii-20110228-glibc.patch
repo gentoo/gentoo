@@ -1,0 +1,29 @@
+From: Nathan Phillip Brink <ohnobinki@ohnopublishing.net>
+
+Support glibc systems where SIGRTMAX and SIGRTMIN macros can only be fully expanded at runtime.
+
+--- a/source/mksiginc.c
++++ b/source/mksiginc.c
+@@ -191,12 +191,18 @@
+ 	signames[SIGRETRACT] = "RETRACT";
+ #endif
+ 
+-#if defined(SIGRTMAX) && SIGRTMAX < MY_MAXSIG
+-	signames[SIGRTMAX] = "RTMAX";
++#if defined(SIGRTMAX)
++	/*
++	 * In recent glibc, SIGRTMAX and SIGRTMIN macros are runtime
++	 * function calls into libc and must be evaluated at runtime.
++	 */
++	if (SIGRTMAX < MY_MAXSIG)
++		signames[SIGRTMAX] = "RTMAX";
+ #endif
+ 
+-#if defined(SIGRTMIN) && SIGRTMIN < MY_MAXSIG
+-	signames[SIGRTMIN] = "RTMIN";
++#if defined(SIGRTMIN)
++	if (SIGRTMIN < MY_MAXSIG)
++		signames[SIGRTMIN] = "RTMIN";
+ #endif
+ 
+ #if defined(SIGSAK) && SIGSAK < MY_MAXSIG

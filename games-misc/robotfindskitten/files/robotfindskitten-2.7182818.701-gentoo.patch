@@ -1,0 +1,24 @@
+--- robotfindskitten-2.7182818.701.orig/nki/Makefile.in
++++ robotfindskitten-2.7182818.701/nki/Makefile.in
+@@ -197,7 +197,7 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-nkidir = $(datadir)/games/robotfindskitten
++nkidir = $(datadir)/robotfindskitten
+ nki_DATA = vanilla.nki
+ all: all-am
+ 
+--- robotfindskitten-2.7182818.701.orig/src/Makefile.in
++++ robotfindskitten-2.7182818.701/src/Makefile.in
+@@ -199,8 +199,8 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-execgamesdir = $(prefix)/games
+-AM_CPPFLAGS = -DSYSTEM_NKI_DIR=\"$(datadir)/games/robotfindskitten\"
++execgamesdir = $(bindir)
++AM_CPPFLAGS = -DSYSTEM_NKI_DIR=\"$(datadir)/robotfindskitten\"
+ robotfindskitten_SOURCES = robotfindskitten.c 
+ SPLINT_SUPPRESSIONS = +charintliteral +charindex
+ all: all-am

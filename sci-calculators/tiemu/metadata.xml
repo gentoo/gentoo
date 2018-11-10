@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		This project aims to develop a fast emulator for the
+		TI89(titanium), 92(+), and V200PLT calculators. This emulator
+		started on the Jonas Minnberg's (X)Tiger emulator which is
+		based on UAE (the Universal Amiga Emulator). It was deeply
+		reworked and improved thus it's very different now.
+	</longdescription>
+</pkgmetadata>

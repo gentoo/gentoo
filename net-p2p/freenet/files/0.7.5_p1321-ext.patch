@@ -1,0 +1,22 @@
+--- src/freenet/node/NodeStarter.java	2010-11-10 21:46:10.000000000 +0100
++++ src/freenet/node/NodeStarter.java.new	2010-11-10 21:50:12.000000000 +0100
+@@ -49,8 +49,8 @@
+ 	public static final String extRevisionNumber;
+ 	
+ 	static {
+-		extBuildNumber = ExtVersion.extBuildNumber();
+-		extRevisionNumber = ExtVersion.extRevisionNumber();
++		extBuildNumber = 29;
++		extRevisionNumber = "";
+ 	}
+ 
+ 	private FreenetFilePersistentConfig cfg;
+@@ -86,7 +86,7 @@
+ 			return Integer.valueOf(-1);
+ 		}
+ 
+-		String builtWithMessage = "freenet.jar built with freenet-ext.jar Build #" + ExtVersion.buildNumber + " r" + ExtVersion.cvsRevision+" running with ext build "+extBuildNumber+" r" + extRevisionNumber;
++		String builtWithMessage = "freenet.jar built with freenet-ext.jar Build #" + extBuildNumber + " running with ext build "+extBuildNumber;
+ 		Logger.normal(this, builtWithMessage);
+ 		System.out.println(builtWithMessage);
+ 

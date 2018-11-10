@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>common-lisp@gentoo.org</email>
+		<name>Gentoo Common Lisp Project</name>
+	</maintainer>
+	<longdescription>
+ffcall - foreign function call libraries
+This is a collection of four libraries which can be used to build foreign
+function call interfaces in embedded interpreters.
+
+The four packages are:
+
+avcall
+- calling C functions with variable arguments
+
+vacall
+- C functions accepting variable argument prototypes
+
+trampoline
+- closures as first-class C functions
+
+callback
+- closures with variable arguments as first-class C functions (a reentrant combination of vacall and trampoline) 
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">clisp</remote-id>
+	</upstream>
+</pkgmetadata>

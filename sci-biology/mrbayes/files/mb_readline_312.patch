@@ -1,0 +1,37 @@
+Index: Makefile
+===================================================================
+RCS file: /cvsroot/mrbayes/mrbayes/Makefile,v
+retrieving revision 3.23
+retrieving revision 3.24
+diff -U2 -r3.23 -r3.24
+--- Makefile	22 Dec 2005 16:13:06 -0000	3.23
++++ Makefile	3 Jan 2006 16:43:13 -0000	3.24
+@@ -50,4 +50,5 @@
+ ifeq  ($(strip $(USEREADLINE)),yes)
+     CFLAGS += -DUSE_READLINE
++#   CFLAGS += -DCOMPLETIONMATCHES
+ 	LIBS += -lncurses -lreadline 
+ endif
+Index: bayes.c
+===================================================================
+RCS file: /cvsroot/mrbayes/mrbayes/bayes.c,v
+retrieving revision 3.39
+retrieving revision 3.40
+diff -U2 -r3.39 -r3.40
+--- bayes.c	23 Dec 2005 16:26:28 -0000	3.39
++++ bayes.c	3 Jan 2006 16:43:13 -0000	3.40
+@@ -382,9 +382,11 @@
+ char **readline_completion(const char *text, int start, int stop) {
+ 	char **matches = (char **) NULL;
+-	
++
++#ifdef COMPLETIONMATCHES	
+ 	if(start == 0)
+-    	matches = rl_completion_matches (text, command_generator);
++    		matches = rl_completion_matches (text, command_generator);
++#endif
+ 
+-  return (matches);	
++	return (matches);	
+ }
+ #endif

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-tcltk category contains Tcl- and Tk-related libraries and tools.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-tcltk enthält Bibliotheken und Werkzeuge für Tcl und Tk.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-tcltk contiene herramientas y librerías referentes
+		a Tcl y Tk.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-tcltkカテゴリーにはTclとTkに関連したライブラリーとツールが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-tcltk categorie bevat bibliotheken en hulpmiddelen voor het gebruik van de
+		programmeertalen Tcl en Tk.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-tcltk chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình Tcl/Tk.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-tcltk contiene utilità e librerie per Tcl e Tk.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-tcltk contém bibliotecas e ferramentas
+		referentes a Tcl e Tk.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-tcltk zawiera biblioteki i narzędzia związane z Tcl i Tk.
+	</longdescription>
+</catmetadata>
+

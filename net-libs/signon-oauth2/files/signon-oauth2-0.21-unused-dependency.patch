@@ -1,0 +1,16 @@
+Qt5XmlPatterns is not actually used, but build will fail if it's missing.
+
+Gentoo-bug: 564316
+
+--- src/src.pro
++++ src/src.pro
+@@ -4,8 +4,7 @@
+ TARGET = oauth2plugin
+ DESTDIR = lib/signon
+ QT += core \
+-    network \
+-    xmlpatterns
++    network
+ QT -= gui
+ CONFIG += plugin \
+     build_all \

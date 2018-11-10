@@ -1,0 +1,56 @@
+ Makefile.Linux |   23 +++++++++++++++--------
+ 1 files changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile.Linux b/Makefile.Linux
+index e3711cd..d5b00cb 100644
+--- a/Makefile.Linux
++++ b/Makefile.Linux
+@@ -1,6 +1,6 @@
+-CC=gcc
+-CFLAGS=-Wall -Wstrict-prototypes -fomit-frame-pointer -pipe -I$(HDDIR) -DOS_TYPE_Linux -DOS_TYPE_STR=\"Linux\"
+-LDFLAGS=-Wl,-warn-common -s -L$(LIBDIR)
++CC ?=gcc
++CFLAGS+=-Wall -Wstrict-prototypes -I$(HDDIR) -DOS_TYPE_Linux -DOS_TYPE_STR=\"Linux\"
++LDFLAGS+=-Wl,-warn-common  -L$(LIBDIR)
+ 
+ LDLIBS = 
+ HDDIR = ./
+@@ -32,26 +32,33 @@ $(PRG_UNDUMP):	$(PRG_UNDUMP).c $(PRG_UNDUMP).h general.h
+ 		$(CC) $(CFLAGS) -Dprg_name=\"$(PRG_UNDUMP)\" -DMANUAL_NUMBER=$(MAN_NO_UNDUMP) $(LDFLAGS) $(PRG_UNDUMP).c -o $@
+ 
+ 
+-$(MAN_DUMP):	$(PRG_DUMP).man
++mkmkman: $(PRG_DUMP)
+ 		$(CC) $(CFLAGS) -Dprg_name=\"$(PRG_DUMP)\" -DMANUAL_NUMBER=$(MAN_NO_DUMP) -Dundump_name=\"$(PRG_UNDUMP)\" $(LDFLAGS) mkmkman.c -o mkmkman
++
++mkman.c:	mkmkman $(PRG_DUMP).man
+ 		cat $(PRG_DUMP).man | ./mkmkman > mkman.c
+ 		ln -sf $(PRG_DUMP).h header.h
++
++$(MAN_DUMP): mkman.c
+ 		$(CC) $(CFLAGS) -Dprg_name=\"$(PRG_DUMP)\" -DMANUAL_NUMBER=$(MAN_NO_DUMP) -Dundump_name=\"$(PRG_UNDUMP)\" $(LDFLAGS) mkman.c -o mkman
+ 		./mkman > $@
+ 
+-
+-$(MAN_UNDUMP):	$(PRG_UNDUMP).man
++mkmkman_u: $(MAN_DUMP) $(PRG_UNDUMP)
+ 		$(CC) $(CFLAGS) -Dprg_name=\"$(PRG_UNDUMP)\" -DMANUAL_NUMBER=$(MAN_NO_UNDUMP) -Ddump_name=\"$(PRG_DUMP)\" $(LDFLAGS) mkmkman.c -o mkmkman
++
++mkman_u.c:	$(PRG_UNDUMP).man mkmkman_u
+ 		cat $(PRG_UNDUMP).man | ./mkmkman > mkman.c
+ 		ln -sf $(PRG_UNDUMP).h header.h
++
++$(MAN_UNDUMP): $(MAN_UNDUMP) mkman_u.c
+ 		$(CC) $(CFLAGS) -Dprg_name=\"$(PRG_UNDUMP)\" -DMANUAL_NUMBER=$(MAN_NO_UNDUMP) -Ddump_name=\"$(PRG_DUMP)\" $(LDFLAGS) mkman.c -o mkman
+ 		./mkman > $@
+ 
+ 
+ install:	all
+-		install -s -m 0755 -o root -g root $(PRG_DUMP) $(INSTALLDIR_BIN_DUMP)
++		install -m 0755 -o root -g root $(PRG_DUMP) $(INSTALLDIR_BIN_DUMP)
+ 		install    -m 0644 -o root -g root $(MAN_DUMP) $(INSTALLDIR_MAN_DUMP)
+-		install -s -m 0755 -o root -g root $(PRG_UNDUMP) $(INSTALLDIR_BIN_UNDUMP)
++		install -m 0755 -o root -g root $(PRG_UNDUMP) $(INSTALLDIR_BIN_UNDUMP)
+ 		install    -m 0644 -o root -g root $(MAN_UNDUMP) $(INSTALLDIR_MAN_UNDUMP)
+ 
+ clean:

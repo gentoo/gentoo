@@ -1,0 +1,138 @@
+# sample diald.filter
+#
+# connect policy during office hours on weekdays
+restrict 8:00:00 17:59:59 1-5 * *
+
+# connect policy outside office hours on weekdays
+#restrict * 7:59:59 1-5 * *
+#or-restrict 18:00:00 * 1-5 * *
+
+# connect policy during the weekend
+#restrict * * 0,6 * *
+
+# always connected
+up
+
+# always down
+# down
+
+
+#------------------------------------------------------------------------------
+# Rules for TCP packets.
+#------------------------------------------------------------------------------
+        
+# If we force the line up (for example to trigger fetchmail)
+# but no packets are sent, specify how long to hold the line
+# up:
+# here :everything else gets 30 minutes.
+
+first-packet-timeout 30
+
+# The first rule is designed to give the link 30 seconds up time
+# when we are initiating a TCP connection.  The idea here is to deal
+# with possibility that the network on the opposite end of the
+# connection is unreachable.  In this case you don't really want to
+# give the link 10 minutes up time. With the rule below we only give
+# the link 30 seconds initially.  If the network is reachable then
+# we will normally get a response that actually contains some data
+# within 30 seconds.  If this causes problems because you have a
+# slow response time at some site you want to regularly access, you
+# can either increase the timeout or remove this rule.
+
+accept tcp 30 tcp.syn
+
+# If you are running named, then it will send data across the link
+# periodically to synchronize against other domain name servers.
+# Since this can happen at any time, it is undesirable to keep the
+# link up for it. Therefore, we ignore any tcp traffic from or to a
+# domain name server.
+
+ignore tcp tcp.dest=tcp.domain
+ignore tcp tcp.source=tcp.domain
+
+# Normally the packet that starts a connection is longer that 40
+# bytes, since it normally contains TCP options to specify the MSS.
+# However, some TCP implementations don't include these options.
+# Therefore, we must be careful not to ignore SYN packets that are
+# only 40 bytes long.
+
+accept tcp 30 ip.tot_len=40,tcp.syn
+
+# Otherwise, we want to ignore any TCP packet that is only 40 bytes
+# long, since it is not carrying any data. However, we don't want to
+# ignore 40 byte packets that mark the closing of a connection,
+# since we use those to cut short the timeout on connections that
+# have died.  Therefore we must test the tcp.live flag here. If it
+# is not set we might want to see this packet later on in the rules.
+
+ignore tcp ip.tot_len=40,tcp.live
+
+# Make sure http transfers hold the link up, even after they end.
+# This prevents web browsers from bouncing the connection too much.
+# 
+# HTTP transfers get 3 minutes
+accept tcp 180 tcp.dest=tcp.www
+accept tcp 180 tcp.source=tcp.www
+
+
+# Once the link is no longer live, we try to shut down the
+# connection quickly. Note that if the link is already down, the
+# closing of the a connection (which will generate traffic) will not
+# bring it back up.
+
+# here :everything else gets 30 minutes.
+keepup tcp 30 !tcp.live
+ignore tcp !tcp.live
+
+# Finally, if we don't match the TCP packet somewhere above, then we
+# give the link 10 minutes up time. Most TCP packets match this
+# rule. Note that as soon as the TCP connection is closed, the keepup
+# rule above overwrites the timeout.
+
+accept tcp 600 any
+
+#------------------------------------------------------------------------------
+# Rules for UDP packets
+#------------------------------------------------------------------------------
+
+# Don't bring the link up for rwho:
+
+ignore udp udp.dest=udp.who
+ignore udp udp.source=udp.who
+
+# Don't bring the link up for routing packets:
+
+ignore udp udp.dest=udp.router
+ignore udp udp.source=udp.router
+
+# Don't bring the link up for NTP or timed:
+
+ignore udp udp.dest=udp.ntp
+ignore udp udp.source=udp.ntp
+ignore udp udp.dest=udp.timed
+ignore udp udp.source=udp.timed
+
+# Don't bring up on domain name requests between two running copies of named:
+
+ignore udp udp.dest=udp.domain,udp.source=udp.domain
+
+# Bring up the network for domain requests:
+
+accept udp 30 udp.dest=udp.domain 
+accept udp 30 udp.source=udp.domain
+
+# Bring up the network for netbios requests, except between netbios servers:
+
+ignore udp udp.source=udp.netbios-ns,udp.dest=udp.netbios-ns
+accept udp 30 udp.dest=udp.netbios-ns
+accept udp 30 udp.source=udp.netbios-ns
+
+# Any other UDP packets:
+
+# here :everything else gets 30 minutes.
+accept udp 30 any
+
+# Catch any packets that we didn't catch above:
+
+# here :everything else gets 30 minutes.
+accept any 30 any

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription lang="en">
+    Python Sorted Container Types: SortedList, SortedDict, and SortedSet 
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">sortedcontainers</remote-id>
+    <remote-id type="github">grantjenks/sorted_containers</remote-id>    
+  </upstream>
+</pkgmetadata>

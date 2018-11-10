@@ -1,0 +1,60 @@
+diff -ru galaxis-1.8.orig/Makefile galaxis-1.8/Makefile
+--- galaxis-1.8.orig/Makefile	2010-10-19 09:48:58.000000000 -0400
++++ galaxis-1.8/Makefile	2010-10-20 04:04:49.246650551 -0400
+@@ -3,9 +3,8 @@
+ VERS=$(shell sed <galaxis.spec -n -e '/Version: \(.*\)/s//\1/p')
+ 
+ # Flags for use with the Linux ncurses package (recommended)
+-CFLAGS = -g -DNDEBUG  # -I/usr/local/include -L/usr/local/lib
++CFLAGS += -DNDEBUG  # -I/usr/local/include -L/usr/local/lib
+ TERMLIB = -lncurses
+-CC = gcc
+ 
+ # Flags for use with stock curses
+ #CFLAGS = -DNDEBUG
+@@ -13,7 +12,7 @@
+ #CC = gcc
+ 
+ galaxis: galaxis.c
+-	$(CC) $(CFLAGS) -o galaxis galaxis.c $(TERMLIB)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o galaxis galaxis.c $(TERMLIB)
+ 
+ galaxis.6: galaxis.xml
+ 	xmlto man galaxis.xml
+diff -ru galaxis-1.8.orig/galaxis.c galaxis-1.8/galaxis.c
+--- galaxis-1.8.orig/galaxis.c	2010-10-13 06:13:31.000000000 -0400
++++ galaxis-1.8/galaxis.c	2010-10-20 04:05:30.036888771 -0400
+@@ -8,6 +8,8 @@
+ #define _POSIX_SOURCE
+ 
+ #include <stdio.h>
++#include <unistd.h>
++#include <time.h>
+ #include <termios.h>
+ #include <curses.h>
+ #include <signal.h>
+@@ -176,6 +177,7 @@
+     (void) refresh();
+ }
+ 
++#if 0
+ static void error(char *s)
+ {
+     (void) move(PROMPTLINE + 2, 0);
+@@ -186,6 +188,7 @@
+ 	(void) beep();
+     }
+ }
++#endif
+ 
+ static int rnd(int n)
+ {
+@@ -644,7 +647,7 @@
+     }
+ }
+ 
+-main(argc, argv)
++int main(argc, argv)
+ int argc;
+ char *argv[];
+ {

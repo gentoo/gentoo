@@ -1,0 +1,20 @@
+fix missing prototype warnings
+
+--- a/libftp-5.0.1.modified.by.in/FtpLibrary.h
++++ b/libftp-5.0.1.modified.by.in/FtpLibrary.h
+@@ -20,6 +20,7 @@
+     extern "C" {
+ #endif
+ 
++#include <ctype.h>
+ #include <errno.h>
+ #include <stdio.h>
+ #include <stdarg.h>
+@@ -33,6 +34,7 @@
+ #include <sys/time.h>
+ #include <sys/socket.h>
+ #include <arpa/ftp.h>
++#include <arpa/inet.h>
+ #include <arpa/telnet.h>
+ #include <netinet/in.h>
+ #include <netdb.h>

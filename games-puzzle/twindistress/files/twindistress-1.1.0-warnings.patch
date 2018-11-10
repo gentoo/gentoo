@@ -1,0 +1,61 @@
+diff -ru twind-1.1.0.orig/twind.c twind-1.1.0/twind.c
+--- twind-1.1.0.orig/twind.c	2004-07-15 21:44:50.000000000 -0400
++++ twind-1.1.0/twind.c	2010-10-19 03:32:44.372280497 -0400
+@@ -674,10 +674,10 @@
+                     if (event.button.x >= MENULX && event.button.x < MENURX && event.button.y >= starty && event.button.y < (starty + height)) {
+                         current_menu_high = (event.button.y - starty) / game.font[font].height;
+                         /* re-assign current_menu_high if blank option */
+-                        if (menu_items[game.menu][current_menu_high] == "")
++                        if (*menu_items[game.menu][current_menu_high] == '\0')
+                             current_menu_high = game.last_menu_high;
+                         if (game.last_menu_high != current_menu_high) {
+-                            if (menu_items[game.menu][current_menu_high] != "") {
++                            if (*menu_items[game.menu][current_menu_high] != '\0') {
+                                 #ifndef NOAUDIO
+                                 if (game.audio_enabled) Mix_PlayChannel(MENU_OPTION, game.sound[MENU_OPTION], 0);
+                                 #endif
+@@ -697,7 +697,7 @@
+                         if (event.button.x >= MENULX && event.button.x < MENURX && event.button.y >= starty && event.button.y < (starty + height)) {
+                             current_menu_high = (event.button.y - starty) / game.font[font].height;
+                             /* make sure the option isn't blank */
+-                            if (menu_items[game.menu][current_menu_high] != "") {
++                            if (*menu_items[game.menu][current_menu_high] != '\0') {
+                                 #ifndef NOAUDIO
+                                 if (game.audio_enabled) Mix_PlayChannel(OPTION_CHOICE, game.sound[OPTION_CHOICE], 0);
+                                 #endif
+@@ -917,7 +917,7 @@
+         #endif
+         current_menu_high--;
+         /* if option blank, go to previous */
+-        while (menu_items[game.menu][current_menu_high] == "")
++        while (*menu_items[game.menu][current_menu_high] == '\0')
+             current_menu_high--;
+         /* wrap around to the bottom entry */
+         if (current_menu_high == -1)
+@@ -930,7 +930,7 @@
+         #endif
+         current_menu_high++;
+         /* if option blank, go to next */
+-        while (menu_items[game.menu][current_menu_high] == "")
++        while (*menu_items[game.menu][current_menu_high] == '\0')
+             current_menu_high++;
+         /* wrap around to the top entry */
+         if (current_menu_high == game.menu_item_cnt)
+@@ -1536,7 +1536,7 @@
+             if (level_time && game.stop_timer + game.added_time < game.best_time)
+                 game.best_time = game.stop_timer + game.added_time;
+             /* subtract a set amount of time after level 11 */
+-            if (game.current_level > 11)
++            if (game.current_level >= 11)
+                 game.level_time -= 10;
+             else
+                 game.level_time = times[level_time];
+@@ -1546,7 +1546,7 @@
+                 break;
+             }
+             /* increase time for next level */
+-            if (level_time != 12)
++            if (level_time != 10)
+                 level_time++;
+         }
+         if (game.exit_game != NEW_GAME) {

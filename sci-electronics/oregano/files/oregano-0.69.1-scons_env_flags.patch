@@ -1,0 +1,27 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## scons.env.flags.dpatch by Maximiliano Curia <maxy@debian.org>
+##
+## DP: Honour the CFLAGS and LDFLAGS environment variables
+
+@DPATCH@
+diff -urNad oregano-0.69.1~/SConstruct oregano-0.69.1/SConstruct
+--- oregano-0.69.1~/SConstruct	2009-07-07 12:49:49.000000000 -0300
++++ oregano-0.69.1/SConstruct	2009-07-22 19:59:31.665525831 -0300
+@@ -76,9 +76,14 @@
+ mo_bld = Builder (action = mo_builder)
+ 
+ CEnv.Append (BUILDERS = {'MoBuild' : mo_bld})
+-CEnv.Append (CCFLAGS = Split ('-Wall'));
+-if CEnv['Debug']:
+-	CEnv.Append (CCFLAGS = Split ('-g'));
++if ( os.environ.has_key('CFLAGS') ):
++	CEnv.Append (CCFLAGS = Split (os.environ['CFLAGS']))
++else:
++	CEnv.Append (CCFLAGS = Split ('-Wall'))
++	if CEnv['Debug']:
++		CEnv.Append (CCFLAGS = Split ('-g'))
++if ( os.environ.has_key('LDFLAGS') ):
++	CEnv.Append (LINKFLAGS = Split (os.environ['LDFLAGS']))
+ 
+ # Check dependencies #
+ if not CEnv.GetOption ('clean'):

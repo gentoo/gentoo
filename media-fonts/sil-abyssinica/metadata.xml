@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>fonts@gentoo.org</email>
+    <name>Fonts</name>
+  </maintainer>
+  <longdescription lang="en">
+    The Ethiopic script is used for writing many of the languages of
+    Ethiopia and Eritrea.  Ethiopic (U+1200..U+137F) was added to
+    Unicode 3.0.  Ethiopic Supplement (U+1380..U+139F) and Ethiopic
+    Extended (U+2D80..U+2DDF) were added to Unicode 4.1. Abyssinica
+    SIL supports all Ethiopic characters which are in Unicode
+    including the Unicode 4.1 extensions. Some languages of Ethiopia
+    are not yet able to be fully represented in Unicode and, where
+    necessary, we have included non-Unicode characters in the Private
+    Use Area (see Private-use (PUA) characters supported by Abyssinica
+    SIL).
+
+    Abyssinica SIL is based on Ethiopic calligraphic traditions. This
+    release is a regular typeface, with no bold or italic version
+    available or planned.
+  </longdescription>
+</pkgmetadata>

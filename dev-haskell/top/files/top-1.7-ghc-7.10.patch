@@ -1,0 +1,66 @@
+diff --git a/src/Top/Implementation/TypeGraph/DefaultHeuristics.hs b/src/Top/Implementation/TypeGraph/DefaultHeuristics.hs
+index 2cc5210..faf4c8c 100644
+--- a/src/Top/Implementation/TypeGraph/DefaultHeuristics.hs
++++ b/src/Top/Implementation/TypeGraph/DefaultHeuristics.hs
+@@ -1,2 +1,3 @@
++{-# LANGUAGE FlexibleContexts #-}
+ -----------------------------------------------------------------------------
+ -- | License      :  GPL
+diff --git a/src/Top/Monad/Select.hs b/src/Top/Monad/Select.hs
+index e5953cb..72276b4 100644
+--- a/src/Top/Monad/Select.hs
++++ b/src/Top/Monad/Select.hs
+@@ -16,4 +16,6 @@ module Top.Monad.Select
+ import Top.Util.Embedding
+ import Control.Monad.State
++import Control.Monad
++import Control.Applicative
+ 
+ --------------------------------------------------------
+@@ -22,4 +24,11 @@ import Control.Monad.State
+ newtype Select t m a = Select (m a)
+ 
++instance Monad m => Functor (Select t m) where
++    fmap  = liftM
++
++instance Monad m => Applicative (Select t m) where
++    pure  = return
++    (<*>) = ap  -- defined in Control.Monad
++
+ instance Monad m => Monad (Select t m) where
+    return a       = Select (return a) 
+@@ -43,4 +52,11 @@ select = Select
+ data SelectFix (t :: (* -> *) -> *) (m :: * -> *) a = SelectFix (m a)
+ 
++instance Monad m => Functor (SelectFix t m) where
++    fmap  = liftM
++
++instance Monad m => Applicative (SelectFix t m) where
++    pure  = return
++    (<*>) = ap  -- defined in Control.Monad
++
+ instance Monad m => Monad (SelectFix t m) where
+    return a          = SelectFix (return a)
+diff --git a/src/Top/Monad/StateFix.hs b/src/Top/Monad/StateFix.hs
+index d77919d..bd8fb76 100644
+--- a/src/Top/Monad/StateFix.hs
++++ b/src/Top/Monad/StateFix.hs
+@@ -16,4 +16,6 @@ import Control.Monad.State
+ import Control.Monad.Identity
+ import Control.Monad.Writer
++import Control.Monad
++import Control.Applicative
+ 
+ type StateFix s = StateFixT s Identity
+@@ -21,4 +23,11 @@ type StateFix s = StateFixT s Identity
+ data StateFixT s m a = Fix { unFix :: StateT (s (StateFixT s m)) m a }
+ 
++instance Monad m => Functor (StateFixT s m) where
++    fmap  = liftM
++
++instance Monad m => Applicative (StateFixT s m) where
++    pure  = return
++    (<*>) = ap  -- defined in Control.Monad
++
+ instance Monad m => Monad (StateFixT s m) where 
+    return  = Fix . return

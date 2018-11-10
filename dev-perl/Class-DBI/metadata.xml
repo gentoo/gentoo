@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Class-DBI</remote-id>
+    <remote-id type="cpan-module">Class::DBI</remote-id>
+    <remote-id type="cpan-module">Class::DBI::Attribute</remote-id>
+    <remote-id type="cpan-module">Class::DBI::Cascade::Delete</remote-id>
+    <remote-id type="cpan-module">Class::DBI::Cascade::Fail</remote-id>
+    <remote-id type="cpan-module">Class::DBI::Cascade::None</remote-id>
+    <remote-id type="cpan-module">Class::DBI::Column</remote-id>
+    <remote-id type="cpan-module">Class::DBI::ColumnGrouper</remote-id>
+    <remote-id type="cpan-module">Class::DBI::Iterator</remote-id>
+    <remote-id type="cpan-module">Class::DBI::Query</remote-id>
+    <remote-id type="cpan-module">Class::DBI::Query::Base</remote-id>
+    <remote-id type="cpan-module">Class::DBI::Relationship</remote-id>
+    <remote-id type="cpan-module">Class::DBI::Relationship::HasA</remote-id>
+    <remote-id type="cpan-module">Class::DBI::Relationship::HasMany</remote-id>
+    <remote-id type="cpan-module">Class::DBI::Relationship::MightHave</remote-id>
+    <remote-id type="cpan-module">Class::DBI::SQL::Transformer</remote-id>
+    <remote-id type="cpan-module">Class::DBI::Search::Basic</remote-id>
+    <remote-id type="cpan-module">Class::DBI::Test::SQLite</remote-id>
+    <remote-id type="cpan-module">Class::DBI::__::Base</remote-id>
+  </upstream>
+</pkgmetadata>

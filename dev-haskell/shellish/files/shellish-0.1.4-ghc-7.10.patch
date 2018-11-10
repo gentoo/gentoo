@@ -1,0 +1,9 @@
+diff --git a/Shellish.hs b/Shellish.hs
+index 1e3c192..0ac20c2 100644
+--- a/Shellish.hs
++++ b/Shellish.hs
+@@ -1,3 +1,3 @@
+ {-# LANGUAGE ScopedTypeVariables, DeriveDataTypeable, OverloadedStrings,
+-             MultiParamTypeClasses, FlexibleInstances #-}
++             MultiParamTypeClasses, FlexibleInstances, FlexibleContexts #-}
+ 

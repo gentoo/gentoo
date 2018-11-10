@@ -1,0 +1,107 @@
+diff --git a/Makefile b/Makefile
+index fbbbe79..a1d449b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+ all:
+-	(cd src; $(MAKE))
++	$(MAKE) -C src
+ clean:
+ 	rm -f chaos anchors order glocal utils/bin2bl mlagan utils/cstat utils/bin2mf utils/rc *~ utils/contigorder utils/getbounds utils/cextract utils/seqmerge utils/getlength utils/getoverlap utils/*~ utils/scorealign utils/scorecontigs mlagan.purify utils/getcontigpos utils/fa2xfa utils/Glue utils/dotplot utils/overlay
+ 	(cd src; $(MAKE) clean)
+diff --git a/src/Makefile b/src/Makefile
+index 7f6b6fd..dd6309b 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -4,51 +4,51 @@ CFLAGS = -O3 # -Wall -W
+ TRGT_DIR = ..
+ 
+ all: ../anchors ../chaos ../order ../mlagan ../prolagan ../utils/bin2mf ../utils/bin2bl ../utils/cextract ../utils/cstat ../utils/contigorder ../utils/getbounds ../utils/getlength ../utils/getoverlap ../utils/rc ../utils/seqmerge ../utils/scorealign ../utils/scorecontigs ../utils/getcontigpos ../utils/fa2xfa ../utils/Glue ../utils/dotplot ../utils/overlay
+-	(cd glocal; $(MAKE))
++	$(MAKE) -C glocal
+ clean: 
+ 	rm -f *.o *~ utils/*~ mlagan.purify core
+ 	(cd glocal; $(MAKE) clean)
+ ../anchors: anchors.c skiplist.c
+-	$(CC) -o $(TRGT_DIR)/anchors anchors.c skiplist.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/anchors anchors.c skiplist.c
+ ../chaos: fchaos.c thrtrie.c skiplist.c global.c translate.c mempage.c filebuffer.c
+-	$(CC) -o $(TRGT_DIR)/chaos fchaos.c thrtrie.c skiplist.c global.c translate.c filebuffer.c -lm -DCHAOS__FLAG
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/chaos fchaos.c thrtrie.c skiplist.c global.c translate.c filebuffer.c -lm -DCHAOS__FLAG
+ ../order: order.c diagmatrix.c filebuffer.c
+-	$(CC) -o $(TRGT_DIR)/order order.c diagmatrix.c filebuffer.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/order order.c diagmatrix.c filebuffer.c
+ ../mlagan: mlagan.c diagmatrix.c multial.c skiplist.c filebuffer.c
+-	$(CC) -o $(TRGT_DIR)/mlagan mlagan.c multial.c diagmatrix.c skiplist.c filebuffer.c -lm -DMULTIAL__FLAG
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/mlagan mlagan.c multial.c diagmatrix.c skiplist.c filebuffer.c -lm -DMULTIAL__FLAG
+ ../prolagan: prolagan.c diagmatrix.c multial.c skiplist.c filebuffer.c
+-	$(CC) -o $(TRGT_DIR)/prolagan prolagan.c multial.c diagmatrix.c skiplist.c filebuffer.c -lm -DMULTIAL__FLAG
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/prolagan prolagan.c multial.c diagmatrix.c skiplist.c filebuffer.c -lm -DMULTIAL__FLAG
+ ../utils/bin2mf: utils/bin2mf.c
+-	$(CC) -o $(TRGT_DIR)/utils/bin2mf utils/bin2mf.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/bin2mf utils/bin2mf.c
+ ../utils/bin2bl: utils/bin2bl.c
+-	$(CC) -o $(TRGT_DIR)/utils/bin2bl utils/bin2bl.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/bin2bl utils/bin2bl.c
+ ../utils/cextract: utils/cextract.c
+-	$(CC) -o $(TRGT_DIR)/utils/cextract utils/cextract.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/cextract utils/cextract.c
+ ../utils/cstat: utils/cstat.c
+-	$(CC) -o $(TRGT_DIR)/utils/cstat utils/cstat.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/cstat utils/cstat.c
+ ../utils/contigorder: utils/contigorder.c
+-	$(CC) -o $(TRGT_DIR)/utils/contigorder utils/contigorder.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/contigorder utils/contigorder.c
+ ../utils/getbounds: utils/getbounds.c
+-	$(CC) -o $(TRGT_DIR)/utils/getbounds utils/getbounds.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/getbounds utils/getbounds.c
+ ../utils/getcontigpos: utils/getcontigpos.c
+-	$(CC) -o $(TRGT_DIR)/utils/getcontigpos utils/getcontigpos.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/getcontigpos utils/getcontigpos.c
+ ../utils/getlength: utils/getlength.c
+-	$(CC) -o $(TRGT_DIR)/utils/getlength utils/getlength.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/getlength utils/getlength.c
+ ../utils/getoverlap: utils/getoverlap.c
+-	$(CC) -o $(TRGT_DIR)/utils/getoverlap utils/getoverlap.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/getoverlap utils/getoverlap.c
+ ../utils/rc: utils/rc.c
+-	$(CC) -o $(TRGT_DIR)/utils/rc utils/rc.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/rc utils/rc.c
+ ../utils/seqmerge: utils/seqmerge.c
+-	$(CC) -o $(TRGT_DIR)/utils/seqmerge utils/seqmerge.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/seqmerge utils/seqmerge.c
+ ../utils/scorealign: utils/scorealign.c
+-	$(CC) -o $(TRGT_DIR)/utils/scorealign utils/scorealign.c -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/scorealign utils/scorealign.c -lm
+ ../utils/scorecontigs: utils/scorecontigs.c
+-	$(CC) -o $(TRGT_DIR)/utils/scorecontigs utils/scorecontigs.c -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/scorecontigs utils/scorecontigs.c -lm
+ ../utils/fa2xfa: utils/fa2xfa.c
+-	$(CC) -o $(TRGT_DIR)/utils/fa2xfa utils/fa2xfa.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/fa2xfa utils/fa2xfa.c
+ ../utils/overlay: utils/overlay.c
+-	$(CC) -o $(TRGT_DIR)/utils/overlay utils/overlay.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/overlay utils/overlay.c
+ ../utils/Glue: utils/Glue.cpp
+-	$(CPP) -o $(TRGT_DIR)/utils/Glue utils/Glue.cpp
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/Glue utils/Glue.cpp
+ ../utils/dotplot: utils/dotplot.cpp
+-	$(CPP) -o $(TRGT_DIR)/utils/dotplot utils/dotplot.cpp
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $(TRGT_DIR)/utils/dotplot utils/dotplot.cpp
+diff --git a/src/glocal/Makefile b/src/glocal/Makefile
+index ce1421a..b82507f 100755
+--- a/src/glocal/Makefile
++++ b/src/glocal/Makefile
+@@ -10,10 +10,10 @@ TRGT = glocal
+ OBJECTS = glocal.o io.o rightinfluence.o leftinfluence.o score.o
+ 
+ .cpp.o:
+-	$(CC) -Wno-deprecated $(CFLAGS) $(INCDIR) -c $*.cpp
++	$(CXX) $(CXXFLAGS) $(INCDIR) -c $*.cpp
+ 
+ $(TRGT): $(OBJECTS)
+-	$(CLINKER) $(OPTFLAGS) $(OBJECTS) -o $(TRGT_DIR)/$(TRGT) $(MLIB)
++	$(CXX) $(LDFLAGS) $(OBJECTS) -o $(TRGT_DIR)/$(TRGT) $(MLIB)
+ 
+ clean :
+ 	rm -f *.o ./*~ *~ core

@@ -1,0 +1,23 @@
+--- a/Makefile	2009-11-03 03:20:21.000000000 +0100
++++ b/Makefile	2009-12-27 19:12:02.461539607 +0100
+@@ -1,9 +1,12 @@
+-CFLAGS?=-Wall -g
++CFLAGS ?= -Wall -g
++INCLUDES = $(shell pkg-config --cflags x11)
++LIBS = $(shell pkg-config --libs x11) -lm
++BIN_DIST = musca apis xlisten
+ 
+-all:
+-	$(CC) $(CFLAGS) -I/usr/X11R6/include -L/usr/X11R6/lib -lc -lm -lX11 -o musca musca.c
+-	$(CC) $(CFLAGS) -I/usr/X11R6/include -L/usr/X11R6/lib -lc -lm -lX11 -o apis apis.c
+-	$(CC) $(CFLAGS) -I/usr/X11R6/include -L/usr/X11R6/lib -lc -lm -lX11 -o xlisten xlisten.c
++all: $(BIN_DIST)
++
++$(BIN_DIST):
++	$(CC) $(CFLAGS) $(INCLUDES) $@.c -o $@ $(LDFLAGS) $(LIBS)
+ 
+ clean:
+-	rm -f musca apis
++	rm -f $(BIN_DIST)
++
++.PHONY: all clean

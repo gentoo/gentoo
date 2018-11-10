@@ -1,0 +1,47 @@
+--- teco.el
++++ teco.el
+@@ -312,7 +312,7 @@
+   "Return string describing the version of Teco.  When called interactively,
+ displays the version."
+   (interactive)
+-  (if (interactive-p)
++  (if (called-interactively-p 'interactive)
+       (message "Teco version %s" (teco-version))
+     teco-version))
+ 
+@@ -2254,7 +2254,7 @@
+ 
+ (defun teco:command-self-insert ()
+   (interactive)
+-  (teco:command-insert-character last-command-char))
++  (teco:command-insert-character last-command-event))
+ 
+ (defun teco:command-quit ()
+   (interactive)
+@@ -2267,7 +2267,7 @@
+ 
+ (defun teco:command-return ()
+   (interactive)
+-  (setq last-command-char ?\n)
++  (setq last-command-event ?\n)
+   (teco:command-self-insert))
+ 
+ (defun teco:command-escape ()
+@@ -2275,7 +2275,7 @@
+   ;; Two ESCs in a row terminate the command string
+   (if (eq last-command 'teco:command-escape)
+       (throw 'teco:command-quit (minibuffer-contents-no-properties)))
+-  (teco:command-insert-character last-command-char))
++  (teco:command-insert-character last-command-event))
+ 
+ (defun teco:command-ctrl-u ()
+   (interactive)
+@@ -2334,7 +2334,7 @@
+       ;; q-register
+       (progn
+ 	;; insert the * into the buffer
+-	(teco:command-insert-character last-command-char)
++	(teco:command-insert-character last-command-event)
+ 	;; read the next character
+ 	(let ((c (read-char))
+ 	      c1)

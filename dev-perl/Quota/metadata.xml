@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>c.affolter@purplehaze.ch</email>
+    <name>Christian Affolter</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>dev-zero@gentoo.org</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>The Quota module provides access to file system quotas. The quotactl system call or ioctl is used to query or set quotas on the local host, or queries are submitted via RPC to a remote host. Mount tables can be parsed with getmntent and paths can be translated to device files (or whatever the actual quotactl implementations needs as argument) of the according file system.</longdescription>
+  <upstream>
+    <remote-id type="cpan">Quota</remote-id>
+    <remote-id type="cpan-module">Quota</remote-id>
+  </upstream>
+</pkgmetadata>

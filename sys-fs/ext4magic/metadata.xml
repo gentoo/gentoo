@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gokturk@gentoo.org</email>
+		<name>Göktürk Yüksek</name>
+	</maintainer>
+	<use>
+		<flag name="expert-mode">Builds ext4magic with expert mode. Highly useful in recovering data from a corrupted filesystem</flag>
+		<flag name="file-attr">Enable the recovery of file attributes (append, immutable, nodump etc)</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">ext4magic</remote-id>
+	</upstream>
+</pkgmetadata>
