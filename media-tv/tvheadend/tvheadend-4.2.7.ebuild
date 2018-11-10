@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit linux-info systemd toolchain-funcs user
 
@@ -14,6 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
 IUSE="+capmt +constcw +cwc dbus debug dvbcsa dvben50221 +dvb +ffmpeg hdhomerun +imagecache +inotify iptv libressl satip systemd +timeshift uriparser xmltv zeroconf zlib"
+
+BDEPEND="
+	sys-devel/gettext
+	virtual/pkgconfig"
 
 RDEPEND="
 	virtual/libiconv
@@ -30,8 +34,6 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	sys-devel/gettext
-	virtual/pkgconfig
 	dvb? ( virtual/linuxtv-dvb-headers )"
 
 RDEPEND+="
@@ -47,8 +49,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.9-use_system_queue.patch
 	"${FILESDIR}"/${PN}-4.2.1-hdhomerun.patch
 	"${FILESDIR}"/${PN}-4.2.2-dtv_scan_tables.patch
-	"${FILESDIR}"/${PN}-4.2.5-ffmpeg_3.5.patch
-	"${FILESDIR}"/${PN}-4.2.5-gcc8.patch
 )
 
 DOCS=( README.md )

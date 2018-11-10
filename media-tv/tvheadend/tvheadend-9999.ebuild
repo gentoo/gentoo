@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit git-r3 linux-info systemd toolchain-funcs user
 
@@ -14,6 +14,10 @@ SLOT="0"
 KEYWORDS=""
 
 IUSE="dbus debug +ddci dvbcsa +dvb +ffmpeg hdhomerun +imagecache +inotify iptv libressl opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib"
+
+BDEPEND="
+	sys-devel/gettext
+	virtual/pkgconfig"
 
 RDEPEND="
 	virtual/libiconv
@@ -32,8 +36,6 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	sys-devel/gettext
-	virtual/pkgconfig
 	dvb? ( virtual/linuxtv-dvb-headers )
 	ffmpeg? (
 		opus? ( media-libs/opus )
