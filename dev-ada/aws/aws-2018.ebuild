@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,18 +28,12 @@ S="${WORKDIR}"/${MY_P}
 PATCHES=( "${FILESDIR}"/${PN}-2016-gentoo.patch )
 
 src_configure() {
-	emake -j1 setup prefix=/usr ENABLE_SHARED=true
+	emake -j1 setup prefix=/usr ENABLE_SHARED=true \
+		GPRBUILD="/usr/bin/gprbuild -v"
 }
 
 src_compile() {
-	if use gnat_2018; then
-		GCC_PV=7.3.1
-	elif use gnat_2017; then
-		GCC_PV=6.3.0
-	else
-		GCC_PV=4.9.4
-	fi
-	emake GCC=${CHOST}-gcc-${GCC_PV} \
+	emake \
 		PROCESSORS=$(makeopts_jobs) \
 		GPRBUILD="/usr/bin/gprbuild -v"
 }
