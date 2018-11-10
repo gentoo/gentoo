@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-05">
+  <title>PHProjekt: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PHProjekt due to
+    embedded Zend Framework, the worst of which could allow attackers to
+    remotely execute arbitrary commands.
+  </synopsis>
+  <product type="ebuild">PHProjekt</product>
+  <announced>2018-11-10</announced>
+  <revised count="1">2018-11-10</revised>
+  <bug>650936</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/phprojekt" auto="yes" arch="*">
+      <vulnerable range="le">6.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PHProjekt is an application suite that supports communication and
+      management of teams and companies.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PHProjekt due to
+      embedded Zend Framework. Please review the GLSA identifiers referenced
+      below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could execute arbitrary commands or conduct SQL
+      injection attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for PHProjekt and recommends that users
+      unmerge the package:
+    </p>
+    
+    <code>
+      # emerge --unmerge "www-apps/phprojekt"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://security.gentoo.org/glsa/201804-10">GLSA 201804-10</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-10-10T16:56:26Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-11-10T00:10:47Z">whissi</metadata>
+</glsa>
