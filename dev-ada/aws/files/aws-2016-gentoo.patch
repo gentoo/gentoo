@@ -1,13 +1,5 @@
---- aws-gpl-2016-src/shared.gpr.old	2017-01-30 20:00:39.022743691 +0100
-+++ aws-gpl-2016-src/shared.gpr	2017-01-30 20:01:20.524985069 +0100
-@@ -130,6 +130,7 @@
-    package Compiler is
- 
-       for Driver ("Makefile") use "";
-+      for Driver ("C") use External ("GCC", "gcc");
- 
-       case Build is
-          when "Debug" =>
+--- a/shared.gpr	2017-01-30 20:00:39.022743691 +0100
++++ b/shared.gpr	2017-01-30 20:01:20.524985069 +0100
 @@ -151,11 +151,11 @@
        end case;
  
@@ -23,8 +15,8 @@
        --  Disable validity check on this unit to work-around N728-028
  
        --  ADAFLAGS and CFLAGS should come last so that command line
---- aws-gpl-2016-src/include/include.gpr.old	2017-02-17 22:09:14.361695926 +0100
-+++ aws-gpl-2016-src/include/include.gpr	2017-02-17 22:11:36.497215517 +0100
+--- a/include/include.gpr	2017-02-17 22:09:14.361695926 +0100
++++ b/include/include.gpr	2017-02-17 22:11:36.497215517 +0100
 @@ -54,7 +54,7 @@
  
           when "Release" =>
