@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils toolchain-funcs xdg
+inherit meson xdg-utils
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -11,35 +11,28 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_BRANCH="develop"
 else
 	KEYWORDS="~amd64 ~arm ~x86"
-	SRC_URI="http://pwmt.org/projects/zathura/plugins/download/${P}.tar.gz"
+	SRC_URI="http://pwmt.org/projects/zathura/plugins/download/${P}.tar.xz"
 fi
 
 DESCRIPTION="PDF plug-in for zathura"
-HOMEPAGE="http://pwmt.org/projects/zathura/"
+HOMEPAGE="https://pwmt.org/projects/zathura-pdf-poppler"
 
 LICENSE="ZLIB"
 SLOT="0"
-IUSE=""
 
-RDEPEND="app-text/poppler[cairo]
-	>=app-text/zathura-0.3.8
-	x11-libs/cairo:="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="app-text/poppler[cairo]
+	>=app-text/zathura-0.3.9
+	dev-libs/girara
+	dev-libs/glib:2"
 
-src_configure() {
-	myzathuraconf=(
-		CC="$(tc-getCC)"
-		LD="$(tc-getLD)"
-		VERBOSE=1
-	)
+RDEPEND="${DEPEND}"
+
+BDEPEND="virtual/pkgconfig"
+
+pkg_postinst() {
+	xdg_desktop_database_update
 }
 
-src_compile() {
-	emake "${myzathuraconf[@]}"
-}
-
-src_install() {
-	emake "${myzathuraconf[@]}" DESTDIR="${ED%/}" install
-	dodoc AUTHORS
+pkg_postrm() {
+	xdg_desktop_database_update
 }
