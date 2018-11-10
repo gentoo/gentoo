@@ -10,7 +10,7 @@ HOMEPAGE="http://motiontrack.sourceforge.net"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~ppc64 ~sparc ~mips ~alpha ~hppa ~amd64"
+KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="debug graphicsmagick imagemagick multiprocess"
 
