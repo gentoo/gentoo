@@ -20,3 +20,10 @@ DOCS="README.md"
 
 # Tries to download emake tool on the fly
 RESTRICT="test"
+
+src_prepare() {
+	# Avoid examples which would require circular dependencies
+	rm -f examples.el || die
+
+	default
+}
