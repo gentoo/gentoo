@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils toolchain-funcs xdg
+inherit gnome2-utils meson xdg-utils
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -11,37 +11,30 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_BRANCH="develop"
 else
 	KEYWORDS="~amd64 ~arm ~x86"
-	SRC_URI="http://pwmt.org/projects/zathura/plugins/download/${P}.tar.gz"
+	SRC_URI="https://pwmt.org/projects/zathura-djvu/download/${P}.tar.xz"
 fi
 
 DESCRIPTION="DjVu plug-in for zathura"
-HOMEPAGE="http://pwmt.org/projects/zathura/"
+HOMEPAGE="https://pwmt.org/projects/zathura-djvu/"
 
 LICENSE="ZLIB"
 SLOT="0"
-IUSE=""
 
-RDEPEND=">=app-text/djvu-3.5.24-r1:=
-	>=app-text/zathura-0.3.8
-	dev-libs/glib:2=
-	x11-libs/cairo:="
+RDEPEND="app-text/djvu
+	>=app-text/zathura-0.3.9
+	dev-libs/girara
+	dev-libs/glib:2
+	x11-libs/cairo"
+
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-src_configure() {
-	myzathuraconf=(
-		CC="$(tc-getCC)"
-		LD="$(tc-getLD)"
-		VERBOSE=1
-		DESTDIR="${D}"
-	)
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
 
-src_compile() {
-	emake "${myzathuraconf[@]}"
-}
-
-src_install() {
-	emake "${myzathuraconf[@]}" install
-	dodoc AUTHORS
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
