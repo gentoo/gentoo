@@ -49,7 +49,7 @@ COMMON_DEPEND="
 		$(add_qt_dep qtgui)
 		$(add_qt_dep qtsvg)
 		$(add_qt_dep qtwidgets)
-		$(add_qt_dep qtx11extras)
+		X? ( $(add_qt_dep qtx11extras) )
 	)
 	X? (
 		x11-libs/libX11
@@ -68,6 +68,7 @@ DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.9.0-build_testing.patch"
+	"${FILESDIR}/${PN}-1.9.0-no-X-buildfix.patch"
 )
 
 src_configure() {
