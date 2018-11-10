@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>gyakovlev@gentoo.org</email>
+    <name>Georgy Yakovlev</name>
+  </maintainer>
+  <longdescription>Eclipse OpenJ9 is a high performance, scalable, Java™ virtual machine (JVM) implementation
+    that represents hundreds of person-years of effort.
+    Contributed to the Eclipse project by IBM, the OpenJ9 JVM underpins the IBM SDK,
+    Java Technology Edition product that is a core component of many IBM Enterprise software products.
+    AdoptOpenJDK provides prebuilt Eclipse OpenJ9 binaries from a fully open source set of build scripts and infrastructure.
+  </longdescription>
+  <use>
+    <flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs (used to be X flag)</flag>
+    <flag name="largeheap">Install jvm variant that supports heap size over ~57GB</flag>
+    <flag name="gentoo-vm">Allow this JDK to be recognised by Gentoo (package manager, eselect, java-config, EXPERIMENTAL!)</flag>
+    <flag name="source">Install JVM sources</flag>
+    <flag name="webstart">Provide javaws command through symlink to icedtea-web</flag>
+  </use>
+</pkgmetadata>
