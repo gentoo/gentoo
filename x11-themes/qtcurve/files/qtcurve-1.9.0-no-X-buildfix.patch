@@ -1,0 +1,54 @@
+From 9aae21bb68308d9017977a53059dd75b347d7bbd Mon Sep 17 00:00:00 2001
+From: "R.J.V. Bertin" <rjvbertin@gmail.com>
+Date: Tue, 3 Apr 2018 18:18:37 +0200
+Subject: Minor X11-related build fixes:
+
+- don't override QTC_ENABLE_X11 with platform conditionals
+- use qtcX11Enabled() instead of QTC_ENABLE_X11 everywhere
+
+Committed from host : Portia.local
+---
+ qt5/CMakeLists.txt           | 2 +-
+ qt5/config/qtcurveconfig.cpp | 7 ++++---
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/qt5/CMakeLists.txt b/qt5/CMakeLists.txt
+index 930c919..8cff198 100644
+--- a/qt5/CMakeLists.txt
++++ b/qt5/CMakeLists.txt
+@@ -36,7 +36,7 @@ if(ENABLE_QT5)
+     set(QTC_QT5_DEFS ${QTC_QT5_DEFS} ${${QtModule}_DEFINITIONS})
+     set(QTC_QT5_INCLUDES ${QTC_QT5_INCLUDES} ${${QtModule}_INCLUDE_DIRS})
+   endforeach()
+-  if(NOT APPLE)
++  if(QTC_ENABLE_X11)
+     set(QTC_QT5_OPT_MODULES Qt5X11Extras)
+   endif()
+   foreach(QtModule ${QTC_QT5_OPT_MODULES})
+diff --git a/qt5/config/qtcurveconfig.cpp b/qt5/config/qtcurveconfig.cpp
+index b320c25..a34f9bd 100644
+--- a/qt5/config/qtcurveconfig.cpp
++++ b/qt5/config/qtcurveconfig.cpp
+@@ -42,6 +42,7 @@
+ #include <qtcurve-utils/dirs.h>
+ #include <qtcurve-utils/process.h>
+ #include <qtcurve-utils/qtutils.h>
++#include <qtcurve-utils/x11base.h>
+ 
+ // Qt
+ #include <QCheckBox>
+@@ -975,9 +976,9 @@ QtCurveConfig::QtCurveConfig(QWidget *parent)
+     dropShadowSize->setRange(0, 100);
+     dropShadowSize->setSingleStep(1);
+     dropShadowSize->setValue(qtcX11ShadowSize());
+-#ifndef QTC_ENABLE_X11
+-    dropShadowSize->setEnabled(false);
+-#endif
++    if (!qtcX11Enabled()) {
++        dropShadowSize->setEnabled(false);
++    }
+ 
+ 
+     sliderWidth->setRange(MIN_SLIDER_WIDTH, MAX_SLIDER_WIDTH);
+-- 
+cgit v0.11.2
