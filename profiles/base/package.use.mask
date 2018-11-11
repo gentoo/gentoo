@@ -7,6 +7,22 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# pm-utils will be removed, bug #659616
+net-misc/wicd pm-utils
+sys-apps/razercfg pm-utils
+sys-power/powermgmt-base pm-utils
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# razor will be removed
+mail-filter/amavisd-new razor
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# sci-libs/spqr is going to be removed
+dev-cpp/eigen test
+kde-apps/cantor julia
+sci-libs/ceres-solver sparse
+
 # Alon Bar-Lev <alonbl@gentoo.org> (08 Nov 2018)
 # Waiting for >=dev-libs/libressl-2.7 to be unmasked.
 >=app-crypt/xca-2.1.0 libressl
