@@ -29,6 +29,187 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Dead for years (#425156) with security issues (#534540). Removal in a
+# month.
+x11-libs/gksu
+x11-libs/libgksu
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Both are part of ant-core for years (#466558). Removal in a month.
+dev-java/ant-nodeps
+dev-java/ant-trax
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Unmaintained for years, buggy (#183273, #491010, #605544). You can rely on
+# INSTALL_MASK to skip unwanted locales and install only foo locale:
+# INSTALL_MASK="/usr/share/locale -/usr/share/locale/foo"
+# Removal in a month.
+app-admin/localepurge
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Unmaintained, really old version in the tree with someone needs to get
+# bumped (#622572). Removal in a month.
+net-p2p/ppcoind
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Our current version is broken for ages (#622722), no maintained, needs to
+# be bumped, no reverse deps in the tree. Removal in a month.
+media-libs/libptp2
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Completely broken for a long time and uninstallable (#492484, #585516,
+# #586582, #627094, #654548). 
+sci-libs/spqr
+dev-lang/julia
+sci-libs/suitesparse
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Dead for years, last package depending on old musicbrainz:3 (#629392).
+# Removal in a month.
+media-video/gnome-mplayer
+www-plugins/gecko-mediaplayer
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Upstream dead for years and marked EOL (#629676, #665850). Removal in a
+# month.
+dev-db/mysql-proxy
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Unmaintained, fails to build, nothing requires it anymore (#630400).
+# Removal in a month.
+app-forensics/libbfio
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Needs someone to finally take care of it, bump it and let it be
+# installable again (#635476, #645740). Removal in a month.
+net-analyzer/nessus-bin
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Pending version bump (#648380), doesn't build (#637350). Removal in a
+# month.
+sys-apps/likwid
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Doesn't build for a long time (#638096). Removal in a month.
+games-action/rafkill
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Dead for a long time, failing tests (#638376), nothing requires it
+# anymore. Removal in a month.
+dev-python/flask-testing
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Doesn't build for a long time (#638710), nothing requires it. Removal in a
+# month.
+app-emulation/vpcs
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Fails to build with current glibc (#638840). Removal in a month.
+sys-devel/heirloom-devtools
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Fails to build for a long time (#639844). Removal in a month.
+dev-embedded/scratchbox2
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Fails to build with current gcc (#640926), file collisions (#630668), no
+# reverse deps. Removal in a month.
+media-video/sswf
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Replaced by libunibreak and no reverse deps (#640974). Removal in a month.
+dev-libs/liblinebreak
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Fails at runtime (#645690). Removal in a month.
+dev-lang/gnu-smalltalk
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Replaced by dev-db/percona-toolkit, cannot be fetched (#645984). Removal
+# in a month.
+dev-db/maatkit
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Unmaintained and buggy (#648204). Removal in a month.
+mail-filter/razor
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Unmaintained, upstream dead, fails to build (#650084). Removal in a month.
+sys-power/suspend
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Merged into >=app-portage/gentoolkit-0.4 (#659412). Removal in a month.
+app-portage/gentoolkit-dev
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Broken since python 3.6 (#659414), buggy (#640372, #607666). Removal in a
+# month.
+app-portage/gs-pypi
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Fails at runtime (#661746). Removal in a month.
+games-roguelike/mangband
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Nobody is taking care of them, use the ones provided by the maintained
+# sys-kernel/linux-firmware package (#661884). Removal in a month.
+net-dialup/ueagle-atm
+net-dialup/ueagle4-atm
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Fails to build (#662000), not compatible with kernel-4, use kernel driver rtsx_pci
+# instead. Removal in a month.
+sys-block/rts_pstor
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Fails to run (#662180). Removal in a month.
+app-text/chm2pdf
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Unmaintained, security issues (#630796, #663164). Removal in a month.
+dev-db/couchdb
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Unkeyworded since 2008, non-installable (#664680). Removal in a month.
+sys-fs/devfsd
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Orphan, no reverse deps, dead since 2003 (#665046, #521242). Removal in a
+# month.
+app-text/clara
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Merged into >=media-tv/mythtv-29, bug #665924. Removal in a month.
+media-plugins/mythplugins
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# No reverse deps, obsoleted in 2016 (#666130). Removal in a month.
+dev-python/jenkins-webapi
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Build issues (#666166), upstream dead for years (#619624). Removal in a
+# month.
+media-plugins/vdr-image
+media-plugins/vdr-picselshow
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Dead for years, no reverse deps (#665046). Removal in a month.
+app-text/clara
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# ebuild plays with /dev (#666456). Removal in a month.
+app-misc/fujiplay
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Relies on dead imlib-1, not needed by anything in the tree (#668310).
+# Removal in a month.
+media-libs/fnlib
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
+# Build issues (#670436), dead since year 2000. Removal in a month.
+net-ftp/axyftp
+
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
 # Removal in 30 days.
