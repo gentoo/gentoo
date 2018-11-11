@@ -1517,6 +1517,7 @@ app-text/zathura-pdf-poppler 0.2.8: PDF plug-in for zathura
 app-text/zathura-ps 0.2.5: PostScript plug-in for zathura
 app-vim/ackvim 1.0.9-r1: vim plugin: run ack from vim
 app-vim/airline 0.9: vim plugin: lean & mean statusline for vim that's light as air
+app-vim/airline-themes 0_pre20181021: vim plugin: a collection of themes for vim-airline
 app-vim/align 43: vim plugin: commands and maps to help produce aligned text
 app-vim/alternate 2.18-r1: vim plugin: quickly switch between .c and .h files
 app-vim/ansiesc 12: vim plugin: ansi escape sequences concealed, but highlighted as specified
