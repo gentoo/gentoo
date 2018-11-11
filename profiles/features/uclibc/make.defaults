@@ -10,3 +10,4 @@ USE="nptl unicode -berkdb"
 BOOTSTRAP_USE="${BOOTSTRAP_USE} nptl -berkdb"
 
 SYMLINK_LIB="no"
+FEATURES="-multilib-strict"
