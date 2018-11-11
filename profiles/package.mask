@@ -135,10 +135,6 @@ dev-db/maatkit
 mail-filter/razor
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Unmaintained, upstream dead, fails to build (#650084). Removal in a month.
-sys-power/suspend
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Merged into >=app-portage/gentoolkit-0.4 (#659412). Removal in a month.
 app-portage/gentoolkit-dev
 
