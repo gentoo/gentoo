@@ -1848,7 +1848,7 @@ dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
 dev-cpp/libmcpp 2.7.2-r2: A portable C++ preprocessor
 dev-cpp/libxmlpp 2.40.1 3.0.1: C++ wrapper for the libxml2 XML parser library
-dev-cpp/lucene++ 3.0.7 3.0.7-r1: C++ port of Lucene library, a high-performance, full-featured text search engine
+dev-cpp/lucene++ 3.0.7-r1: C++ port of Lucene library, a high-performance, full-featured text search engine
 dev-cpp/mm-common 0.9.12: Build infrastructure and utilities for GNOME C++ bindings
 dev-cpp/muParser 2.2.5: Library for parsing mathematical expressions
 dev-cpp/pangomm 2.40.1: C++ interface for pango
@@ -7766,7 +7766,6 @@ media-libs/webrtc-audio-processing 0.3: AudioProcessing library from the webrtc.
 media-libs/woff2 1.0.2-r1: Encode/decode WOFF2 font format
 media-libs/wxsvg 1.5.9 1.5.11: C++ library to create, manipulate and render SVG files
 media-libs/x264 0.0.20170701: A free library for encoding X264/AVC streams
-media-libs/x265 2.2 2.6 2.8: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.9-r2: Core libraries for Xine movie player
 media-libs/xvid 1.3.3: XviD, a high performance/quality MPEG-4 video de-/encoding solution
 media-libs/zimg 2.5: Scaling, colorspace conversion, and dithering library
