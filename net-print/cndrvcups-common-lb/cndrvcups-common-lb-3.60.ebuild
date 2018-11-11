@@ -1,31 +1,31 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools versionator
+EAPI=7
+inherit autotools
 
-MY_PV="$(delete_all_version_separators)"
+MY_PV="$(ver_rs 1- '')"
 SOURCES_NAME="linux-UFRII-drv-v${MY_PV}-uken"
 
 DESCRIPTION="Common files for Canon drivers"
-HOMEPAGE="https://www.canon-europe.com/support/products/imagerunner/imagerunner-1133.aspx?type=drivers&language=EN&os=LINUX"
-SRC_URI="http://gdlp01.c-wss.com/gds/8/0100007658/04/${SOURCES_NAME}.tar.gz"
+HOMEPAGE="https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx"
+SRC_URI="http://gdlp01.c-wss.com/gds/0/0100009240/02/${SOURCES_NAME}.tar.gz"
 
 # GPL-2 License inside LICENSE-EN.txt files
 LICENSE="Canon-UFR-II GPL-2 MIT"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-libs/libxml2
-	gnome-base/libglade
-	net-print/cups
-	x11-libs/gtk+:2
+	>=dev-libs/libxml2-2.6:2
+	>=gnome-base/libglade-2.4:2.0
+	>=net-print/cups-1.1.17
+	>=x11-libs/gtk+-2.4:2
 "
 DEPEND="${DEPEND}"
 
-S="${WORKDIR}/${SOURCES_NAME}/Sources/${P/-lb-${PV}/-3.80}"
+S="${WORKDIR}/${SOURCES_NAME}/Sources/${P/-lb-${PV}/-4.00}"
 
 pkg_setup() {
 	# Don't raise a fuss over pre-built binaries
@@ -48,7 +48,7 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 	cd "${WORKDIR}/${SOURCES_NAME}/Sources/" || die
-	unpack ./${P/-lb-${PV}/-3.80}-1.tar.gz
+	unpack ./${P/-lb-${PV}/-4.00}-1.tar.gz
 }
 
 change_dir() {
@@ -107,8 +107,9 @@ src_install() {
 		dosym "${lib}" "/usr/$(get_libdir)/${lib%.?.?.?}"
 	done
 
-	# c3pldrv dlopens the absolute path /usr/lib/libc3pl.so :(
-	if [[ "$(get_libdir)" != lib ]]; then
-		dosym "../$(get_libdir)/libc3pl.so" /usr/lib/libc3pl.so
-	fi
+	# c3pldrv dlopens the absolute path /usr/lib/libc3pl.so :(, bug #????
+	# # Skipped for now due to bug #642138
+#	if [[ "$(get_libdir)" != lib ]]; then
+#		dosym "../$(get_libdir)/libc3pl.so" /usr/lib/libc3pl.so
+#	fi
 }

@@ -1,32 +1,33 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools ltprune versionator
+EAPI=7
+inherit autotools
 
-MY_PV="$(delete_all_version_separators)"
+MY_PV="$(ver_rs 1- '')"
 SOURCES_NAME="linux-UFRII-drv-v${MY_PV}-uken"
 
 DESCRIPTION="Canon UFR II / LIPSLX Printer Driver for Linux"
-HOMEPAGE="https://www.canon-europe.com/support/products/imagerunner/imagerunner-1133.aspx?type=drivers&language=EN&os=LINUX"
-SRC_URI="http://gdlp01.c-wss.com/gds/8/0100007658/04/${SOURCES_NAME}.tar.gz"
+HOMEPAGE="https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx"
+SRC_URI="http://gdlp01.c-wss.com/gds/0/0100009240/02/${SOURCES_NAME}.tar.gz"
 
 LICENSE="Canon-UFR-II"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	gnome-base/libglade
-	net-print/cups
-	~net-print/cndrvcups-common-lb-${PV}
-	x11-libs/gtk+:2
 	>=dev-libs/libxml2-2.9.1-r4[abi_x86_32(-)]
+	>=gnome-base/libglade-2.4:2.0
+	>=net-print/cups-1.1.17
+	~net-print/cndrvcups-common-lb-${PV}
+	>=x11-libs/gtk+-2.4:2
 	virtual/jpeg:62[abi_x86_32(-)]
 "
 DEPEND="${DEPEND}"
 
 S="${WORKDIR}/${SOURCES_NAME}/Sources/${P}"
+
 MAKEOPTS+=" -j1"
 
 pkg_setup() {
@@ -51,7 +52,7 @@ src_unpack() {
 }
 
 change_dir() {
-	for i in ppd pstoufr2cpca cngplp cngplp/files cpca ; do
+	for i in pstoufr2cpca cngplp cngplp/files cpca ; do
 		cd "${i}" || die
 		"${@}"
 		cd "${S}" || die
@@ -74,10 +75,9 @@ src_configure() {
 
 src_install() {
 	default
-
 	einstalldocs
 
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 
 	cd "${S}/data" || die
 	insinto /usr/share/caepcm
@@ -101,8 +101,9 @@ src_install() {
 		dosym "${lib}" "/usr/$(get_libdir)/${lib%.?.?.?}"
 	done
 
-	# c3pldrv dlopens the absolute path /usr/lib/libcnlbcm.so :(
-	if [[ "$(get_libdir)" != lib ]]; then
-		dosym "../$(get_libdir)/libcnlbcm.so" /usr/lib/libcnlbcm.so
-	fi
+	# c3pldrv dlopens the absolute path /usr/lib/libcnlbcm.so :(, bug #????
+	# Skipped for now due to bug #642138
+#	if [[ "$(get_libdir)" != lib ]]; then
+#		dosym "../$(get_libdir)/libcnlbcm.so" /usr/lib/libcnlbcm.so
+#	fi
 }
