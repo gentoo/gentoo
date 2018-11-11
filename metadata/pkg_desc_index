@@ -4990,7 +4990,7 @@ dev-python/ipdb 0.10.3: IPython-enabled pdb
 dev-python/ipy 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 4.6.1-r2: IPython Kernel for Jupyter
 dev-python/ipyparallel 6.0.2-r1: Interactive Parallel Computing with IPython
-dev-python/ipython 5.4.1-r1: Advanced interactive shell for Python
+dev-python/ipython 5.4.1-r2: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0: Vestigial utilities from IPython
 dev-python/ipywidgets 7.0.0: IPython HTML widgets for Jupyter
 dev-python/irc 16.3: IRC client framework written in Python
