@@ -65,6 +65,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/util-linux-2.32-python3-tests.patch"
+	"${FILESDIR}/util-linux-2.32.1-skip-oids-test-when-uuidgen-is-not-available.patch"
 )
 
 src_prepare() {
