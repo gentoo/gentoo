@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/vim-airline/vim-airline-themes"
 SRC_URI="https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${P}.tar.xz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="app-vim/airline"
 RDEPEND="${DEPEND}"
