@@ -163,8 +163,8 @@ src_configure() {
 		$(use_with doc xmlto)
 		$(use_with systemd systemd-daemon)
 		$(use_enable systemd systemd-logind)
-		$(use_enable systemd suid-wrapper)
-		$(use_enable suid install-setuid)
+		$(usex suid $(use_enable systemd suid-wrapper) '--disable-suid-wrapper')
+		$(usex suid $(use_enable !systemd install-setuid) '--disable-install-setuid')
 		--enable-libdrm
 		--sysconfdir="${EPREFIX}"/etc/X11
 		--localstatedir="${EPREFIX}"/var
