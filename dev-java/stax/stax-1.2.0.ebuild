@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -18,7 +18,7 @@ IUSE=""
 
 RDEPEND=">=virtual/jre-1.4"
 
-#	test? ( dev-java/ant-junit dev-java/ant-trax dev-java/xerces )
+#	test? ( dev-java/ant-junit dev-java/xerces )
 DEPEND="
 	>=virtual/jdk-1.4
 	app-arch/unzip"
@@ -40,7 +40,7 @@ RESTRICT="test"
 src_test() {
 	mkdir lib
 	java-ant_rewrite-classpath build.xml
-	ANT_TASKS="ant-junit ant-trax" \
+	ANT_TASKS="ant-junit" \
 		EANT_GENTOO_CLASSPATH="junit,xerces-2" eant test
 }
 
