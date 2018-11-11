@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20180804-2323Z"
+MY_EXTRAS_VER="20181111-2314Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
@@ -64,6 +64,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20027_all_mysql-5.5-perl5.26-includes.patch
 	"${MY_PATCH_DIR}"/20028_all_mysql-5.6-gcc7.patch
 	"${MY_PATCH_DIR}"/20031_all_mysql-5.6-fix-monitor.test.patch
+	"${MY_PATCH_DIR}"/20036_all_mysql-5.6-fix-rpl_semi_sync_shutdown_hang.test.patch
 )
 
 # Be warned, *DEPEND are version-dependant
