@@ -23,28 +23,6 @@
  
  #######################################################################
  #  install
---- a/src/gnatcoll_sqlite.gpr	2017-01-07 09:00:17.146448202 +0100
-+++ b/src/gnatcoll_sqlite.gpr	2017-01-07 09:00:44.884885281 +0100
-@@ -60,7 +60,7 @@
- 
-                   --  force full optimization for sqlite, we do not debug it
-                   --  in any case.
--                  "-O3") & Gnatcoll_Shared.Sqlite_Switches;
-+                  "-O3", "-fPIC") & Gnatcoll_Shared.Sqlite_Switches;
-       end case;
-    end Compiler;
- 
---- a/src/gnatcoll_python.gpr.in	2017-01-07 09:12:30.490399897 +0100
-+++ b/src/gnatcoll_python.gpr.in	2017-01-07 09:12:53.111976591 +0100
-@@ -30,7 +30,7 @@
-         GnatColl_Shared.Compiler'Switches ("Ada");
- 
-       for Switches ("C") use
--        ("-g", "-O2") & GnatColl_Shared.Python_Cflags;
-+        ("-g", "-O2", "-fPIC") & GnatColl_Shared.Python_Cflags;
-    end Compiler;
- 
-    package Linker is
 --- a/gnatcoll_shared.gpr.in	2017-01-20 19:50:03.222808656 +0100
 +++ b/gnatcoll_shared.gpr.in	2017-01-20 19:50:28.200399274 +0100
 @@ -13,7 +13,7 @@
@@ -65,17 +43,6 @@
        end case;
  
        case Syslog is
---- a/src/gnatcoll_gtk.gpr.in	2017-01-20 19:53:16.647607400 +0100
-+++ b/src/gnatcoll_gtk.gpr.in	2017-01-20 19:53:57.302925708 +0100
-@@ -63,7 +63,7 @@
-       for Switches ("Ada") use GnatColl_Shared.Compiler'Switches ("Ada");
- 
-       for Switches ("C") use
--        ("-g", "-O2")
-+        ("-g", "-O2", "-fPIC")
-         & GnatColl_Shared.Python_Cflags
-         & GnatColl_Shared.Pygtk_Include
-         & GnatColl_Shared.PyGobject_Include
 --- a/aclocal.m4	2017-04-06 08:25:14.796699365 +0200
 +++ b/aclocal.m4	2017-04-06 08:25:36.622318016 +0200
 @@ -45,7 +45,7 @@
@@ -146,3 +113,104 @@
              Arguments   => Args,
              Input       => "",
              Status      => Status'Access,
+--- a/src/gnatcoll_python.gpr.in	2018-11-11 11:04:46.275182850 +0100
++++ b/src/gnatcoll_python.gpr.in	2018-11-11 11:10:22.809783463 +0100
+@@ -33,14 +33,19 @@
+       "lib" & Project'Library_Name
+       & GnatColl_Shared.So_Ext & "." & GnatColl_Shared.Version;
+ 
+-   --  When linking a shared library (see Linker_Options below in addition)
+-   for Library_Options use GnatColl_Shared.Python_Libs;
+-
+    case GnatColl_Shared.Python is
+       when "yes" =>
+          for Languages use ("Ada", "C");
+          for Source_Dirs use ("python");
+-         for Library_Options use (@PYTHON_LIBS_GPR@);
++         case Gnatcoll_Shared.Library_Type is
++            when "relocatable" =>
++               --  When linking a shared library (see Linker_Options
++               --  below in addition)
++               for Library_Options use GnatColl_Shared.Python_Libs;
++            when others =>
++               null;
++         end case;
++
+       when "no"  =>
+          for Languages use ("Ada");
+          for Source_Dirs use ("nopython");
+--- a/src/gnatcoll_iconv.gpr	2018-11-11 11:39:47.736090039 +0100
++++ b/src/gnatcoll_iconv.gpr	2018-11-11 11:40:42.161198640 +0100
+@@ -44,7 +44,13 @@
+         for Source_Dirs use ("iconv", "iconv/no_iconv");
+       when "yes" =>
+         for Source_Dirs use ("iconv", "iconv/with_iconv");
+-        for Library_Options use (GnatColl_Shared.Iconv_Dir) & Gnatcoll_Shared.Iconv_Lib;
++        case Gnatcoll_Shared.Library_Type is
++           when "relocatable" =>
++              for Library_Options use (GnatColl_Shared.Iconv_Dir)
++                 & Gnatcoll_Shared.Iconv_Lib;
++           when others =>
++              null;
++        end case;
+    end case;
+ 
+    package Compiler is
+--- a/src/gnatcoll_sqlite.gpr	2018-11-11 11:45:36.672371038 +0100
++++ b/src/gnatcoll_sqlite.gpr	2018-11-11 11:48:24.898610725 +0100
+@@ -51,8 +51,15 @@
+         for Source_Dirs use ("sqlite", "sqlite/no_sqlite");
+       when "yes" =>
+         for Source_Dirs use ("sqlite", "sqlite/with_sqlite");
+-        for Library_Options use (GnatColl_Shared.Sqlite_Dir)
+-          & "-lsqlite3" & Thread_Lib;
++
++        case Gnatcoll_Shared.Library_Type is
++           when "relocatable" =>
++              for Library_Options use (GnatColl_Shared.Sqlite_Dir)
++                & "-lsqlite3" & Thread_Lib;
++           when others =>
++              null;
++        end case;
++
+       when "embedded" =>
+         for Languages use ("Ada", "C");
+         for Source_Dirs use ("sqlite", "sqlite/with_sqlite", "sqlite/amalgamation");
+--- a/src/gnatcoll_readline.gpr.in	2018-11-11 11:51:19.119750140 +0100
++++ b/src/gnatcoll_readline.gpr.in	2018-11-11 11:52:00.531069930 +0100
+@@ -6,7 +6,14 @@
+       when "yes" =>
+          for Languages use ("Ada");
+          for Source_Dirs use ("readline", "readline/with_readline");
+-         for Library_Options use ("-lreadline");
++
++         case Gnatcoll_Shared.Library_Type is
++            when "relocatable" =>
++               for Library_Options use ("-lreadline");
++            when others =>
++               null;
++         end case;
++
+       when "no" =>
+          for Source_Dirs use ("readline", "readline/no_readline");
+    end case;
+--- a/src/gnatcoll_gtk.gpr.in	2018-11-11 11:55:32.460587328 +0100
++++ b/src/gnatcoll_gtk.gpr.in	2018-11-11 11:56:15.930872692 +0100
+@@ -47,8 +47,15 @@
+          for Source_Dirs use ();
+       when "yes" =>
+          for Source_Dirs use ("gtk");
+-         for Library_Options use GnatColl_Shared.Gtk_Libs
+-            & GnatColl_Shared.Python_Libs;
++
++         case Gnatcoll_Shared.Library_Type is
++            when "relocatable" =>
++               for Library_Options use GnatColl_Shared.Gtk_Libs
++                  & GnatColl_Shared.Python_Libs;
++            when others =>
++               null;
++         end case;
++
+          case GnatColl_Shared.Python is
+             when "yes" =>
+                for Source_Dirs use Project'Source_Dirs & ("gtk/python");
