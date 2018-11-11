@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES=( "${FILESDIR}"/tests.patch )
+PATCHES=( "${FILESDIR}"/${P}-tests.patch )
 
 src_prepare() {
 	distutils-r1_src_prepare

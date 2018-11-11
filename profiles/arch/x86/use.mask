@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Matt Turner <mattst88@gentoo.org> (11 Nov 2018)
+# d3d9 works on x86
+-d3d9
+
 # Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
 # Python 3.7 support requires fresh versions of packages which are stuck
 # at keywordreqs.
