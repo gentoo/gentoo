@@ -94,11 +94,11 @@ src_configure() {
 
 src_compile() {
 	if use shared; then
-		emake PROCESSORS=$(makeopts_jobs) GPRBUILD_OPTIONS=-v \
+		emake PROCESSORS=$(makeopts_jobs) \
 			build_library_type/relocatable
 	fi
 	if use static-libs; then
-		emake PROCESSORS=$(makeopts_jobs) GPRBUILD_OPTIONS=-v \
+		emake PROCESSORS=$(makeopts_jobs) \
 			build_library_type/static
 	fi
 	python_fix_shebang .
