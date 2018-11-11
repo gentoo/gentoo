@@ -78,7 +78,6 @@ app-admin/keepassxc 2.3.3: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/lastpass-cli 1.3.1-r1: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.11-r1: Check for mapped libs and open files that are marked as deleted
-app-admin/localepurge 0.5.4-r2: Script to recover diskspace on unneeded locale files & localized man pages
 app-admin/logcheck 1.3.18-r1: Mails anomalies in the system logfiles to the administrator
 app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.9.1 3.13.0 3.14.0: Rotates, compresses, and mails system logs
@@ -835,7 +834,7 @@ app-forensics/chkrootkit 0.51 0.52: Tool to locally check for signs of a rootkit
 app-forensics/cmospwd 5.1-r1: CmosPwd decrypts password stored in cmos used to access BIOS SETUP
 app-forensics/examiner 0.5-r2: Utilizes the objdump command to disassemble and comment foreign binaries
 app-forensics/foremost 1.5.7-r3: A console program to recover files based on their headers and footers
-app-forensics/libewf 20130416 20171104: Implementation of the EWF (SMART and EnCase) image format
+app-forensics/libewf 20171104: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/magicrescue 1.1.9: Find deleted files in block devices
 app-forensics/memdump 1.01: Simple memory dumper for UNIX-Like systems
 app-forensics/rkhunter 1.4.6: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
@@ -1229,7 +1228,6 @@ app-portage/g-cpan 0.16.5 0.16.9-r1: Autogenerate and install ebuilds for CPAN m
 app-portage/gemato 14.0: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1: A nice emerge.log parser
 app-portage/gentoolkit 0.3.3 0.4.0 0.4.2-r1: Collection of administration scripts for Gentoo
-app-portage/gentoolkit-dev 0.2.8.3-r1 0.3.0: Collection of developer scripts for Gentoo
 app-portage/gentoopm 0.3.0: A common interface to Gentoo package managers
 app-portage/gpyutils 0.2.2: Utitilies for maintaining Python packages
 app-portage/grs 0.5 0.6-r1: Suite to build Gentoo Reference Systems
@@ -1306,8 +1304,6 @@ app-text/catdoc 0.95: Converter for Microsoft Word, Excel, PowerPoint and RTF fi
 app-text/cb2bib 1.9.8: Tool for extracting unformatted bibliographic references
 app-text/cedilla 0.6: UTF-8 to postscript converter
 app-text/chasen 2.4.4-r3: Japanese Morphological Analysis System, ChaSen
-app-text/chm2pdf 0.9.1-r2: A script that converts a CHM file into a single PDF file
-app-text/clara 20031214: An OCR (Optical Character Recognition) program
 app-text/cmark 0.28.0: CommonMark parsing and rendering library and program in C
 app-text/cmigemo 1.3c-r2: C/Migemo -- Migemo library implementation in C
 app-text/code2html 0.9.1-r2: Converts source files to colored HTML output
@@ -1345,7 +1341,7 @@ app-text/enscript 1.6.6: Powerful text-to-postscript converter
 app-text/epspdf 0.6.0: GUI and command-line converter for [e]ps and pdf
 app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes bounding boxes
 app-text/evince 3.24.2-r1: Simple document viewer for GNOME
-app-text/fbreader 0.99.4-r3 0.99.4-r5: E-Book Reader. Supports many e-book formats
+app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/flpsed 0.7.0: Pseudo PostScript editor
 app-text/ghostscript-gpl 9.21 9.25: Ghostscript is an interpreter for the PostScript language and for PDF
 app-text/glark 1.10.5-r1: File searcher similar to grep but with fancy output
@@ -1864,7 +1860,6 @@ dev-cpp/tree 2.81: An STL-like tree class
 dev-cpp/yaml-cpp 0.6.2: YAML parser and emitter in C++
 dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
-dev-db/couchdb 1.7.2: Distributed, fault-tolerant and schema-free document-oriented database
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
 dev-db/freetds 1.00.41: Tabular Datastream Library
 dev-db/henplus 0.9.8-r1: Java-based multisession SQL shell for databases with JDBC support
@@ -1877,7 +1872,6 @@ dev-db/libiodbc 3.52.8-r2: ODBC Interface for Linux
 dev-db/libzdb 2.11.1 2.12 3.1: A thread safe high level multi-database connection pool library
 dev-db/lmdb 0.9.18 0.9.22: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/m17n-db 1.7.0: Database for the m17n library
-dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
 dev-db/mariadb 10.0.35-r2 10.1.34: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.0.6-r1: C client library for MariaDB/MySQL
 dev-db/metakit 2.4.9.7-r2: Embedded database library
@@ -2435,11 +2429,9 @@ dev-java/ant-jmf 1.9.2: Apache Ant's optional tasks for the Java Media Framework
 dev-java/ant-jsch 1.9.2: Apache Ant's optional tasks depending on jsch
 dev-java/ant-junit 1.9.2: Apache Ant's optional tasks depending on junit
 dev-java/ant-junit4 1.9.2: Apache Ant's optional tasks depending on junit-4
-dev-java/ant-nodeps 1.9.2: Formerly Ant's optional tasks w/o external deps, now compat empty jar
 dev-java/ant-owanttask 1.3.2: ObjectWeb's Ant tasks
 dev-java/ant-swing 1.9.2: Apache Ant's optional tasks for Swing
 dev-java/ant-testutil 1.9.2: Apache Ant's optional test utility classes
-dev-java/ant-trax 1.9.2: Apache Ant .jar with optional tasks depending on XML transformer (Deprecated!)
 dev-java/antlr 2.7.7-r7 3.2 3.5.2 4.5.1: A parser generator for many languages
 dev-java/aopalliance 1.0-r2: Aspect-Oriented Programming (AOP) Alliance classes
 dev-java/appframework 1.03-r5: Set of Java classes to build desktop applications easily
@@ -2537,7 +2529,7 @@ dev-java/flyingsaucer 7-r2: 100% Java XHTML+CSS renderer
 dev-java/fontbox 1.7.1-r1 1.8.11: An open source Java library for parsing font files
 dev-java/fop 2.0-r3: Formatting Objects Processor is a print formatter driven by XSL
 dev-java/forehead 1.0_beta5-r2: A framework to assist in controlling the run-time ClassLoader
-dev-java/freemarker 2.3.13-r2 2.3.25: A Java tool to generate text output based on templates
+dev-java/freemarker 2.3.25: A Java tool to generate text output based on templates
 dev-java/fscript 1.17-r1: Java based scripting engine designed to be embedded into other Java applications
 dev-java/geoip-java 1.3.0: Java library for lookup countries by IP addresses
 dev-java/glassfish-connector-api 1.1.2.2.04: Java Transaction API
@@ -3111,7 +3103,6 @@ dev-libs/libisofs 1.4.8: Open-source library for reading, mastering and writing 
 dev-libs/libixion 0.13.0: General purpose formula parser & interpreter
 dev-libs/libksba 1.3.5-r1: X.509 and CMS (PKCS#7) library
 dev-libs/liblinear 210-r1: A Library for Large Linear Classification
-dev-libs/liblinebreak 2.1: Line breaking library
 dev-libs/liblist 2.4: Generic linked-list manipulation routines, plus queues and stacks
 dev-libs/liblogging 1.0.5 1.0.6: Liblogging is an easy to use, portable, open source library for system logging
 dev-libs/liblognorm 2.0.5: Fast samples-based log normalization library
@@ -5236,7 +5227,7 @@ dev-python/pkgconfig 1.2.2: Interface Python with pkg-config
 dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
 dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
 dev-python/pluggy 0.5.2: plugin and hook calling mechanisms for python
-dev-python/plumbum 1.6.0 1.6.4: A library for shell script-like programs in python
+dev-python/plumbum 1.6.4: A library for shell script-like programs in python
 dev-python/ply 3.6-r1 3.9: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
 dev-python/pmw 1.3.3-r2 2.0.1: Toolkit for building high-level compound widgets in Python using the Tkinter module
@@ -5537,7 +5528,7 @@ dev-python/ropemode 0.2-r1: A helper for using rope refactoring library in IDEs
 dev-python/routes 2.4.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.4 0.7.5: Pure python parser generator that also works with RPython
 dev-python/rpy 2.6.2: Python interface to the R Programming Language
-dev-python/rpyc 3.3.0 3.4.4: Remote Python Call (RPyC), a transparent and symmetric RPC library
+dev-python/rpyc 3.4.4: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rsa 3.2.3-r1: Pure-Python RSA implementation
 dev-python/rst-linker 1.7 1.9-r1: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rst2pdf 0.93-r3: Tool for transforming reStructuredText to PDF using ReportLab
@@ -7075,7 +7066,6 @@ mail-filter/postgrey 1.34-r3 1.36-r1: Postgrey is a Postfix policy server implem
 mail-filter/procmail 3.22-r10: Mail delivery agent/filter
 mail-filter/procmail-lib 20081108: Procmail Module Library is a collection of modules for Procmail
 mail-filter/pypolicyd-spf 2.0.1: Python-based policy daemon for Postfix SPF verification
-mail-filter/razor 2.85-r2: Distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sieve-connect 0.87: Sieve Command Line Interface
@@ -7485,7 +7475,6 @@ media-libs/flac 1.3.2-r1: free lossless audio encoder and decoder
 media-libs/flickcurl 1.26: C library for the Flickr API
 media-libs/fluidsynth-dssi 1.0.0: DSSI Soft Synth Interface
 media-libs/fmod 4.38.00: music and sound effects library, and a sound processing system
-media-libs/fnlib 0.5-r2: Font Library for enlightenment
 media-libs/fontconfig 2.12.6 2.13.0-r4: A library for configuring and customizing font access
 media-libs/fontconfig-infinality 20130404: Configuration for freetype-infinality subpixel hinting
 media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
@@ -7647,7 +7636,6 @@ media-libs/libpgf 6.11.32 6.12.27: Library to load, handle and manipulate images
 media-libs/libpng 1.2.57 1.5.28 1.6.34: Portable Network Graphics library
 media-libs/libpostproc 0.8.0.20121125 10.20140517-r1: Video post processing library
 media-libs/libprojectm 2.1.0-r2: A graphical music visualization plugin similar to milkdrop
-media-libs/libptp2 1.1.10: Library and client to communicate with cameras via PTP
 media-libs/libqaccessibilityclient 0.2.0: Library for writing accessibility clients such as screen readers
 media-libs/libquicktime 1.2.4-r3: An enhanced version of the quicktime4linux library
 media-libs/libquvi 0.4.1 0.4.1-r1 0.4.1-r2 0.9.4 0.9.4-r1: Library for parsing video download links
@@ -7929,7 +7917,6 @@ media-plugins/vdr-femon 2.0.4: VDR Plugin: DVB Frontend Status Monitor (signal s
 media-plugins/vdr-fepg 0.4.1: VDR plugin: show epg of multiple channels graphically
 media-plugins/vdr-freecell 0.0.2-r3: VDR plugin: play 'Freecell' on the On Screen Display
 media-plugins/vdr-fritzbox 1.5.3: VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook
-media-plugins/vdr-image 0.4.0: VDR plugin: display of digital images, like jpeg, tiff, png, bmp
 media-plugins/vdr-lcr 0.0.9 0.0.9-r1: VDR Plugin: informe about Least Cost Routing (LCR)
 media-plugins/vdr-live 0.3.0_p20130504-r1: VDR Plugin: Web Access To Settings
 media-plugins/vdr-mailbox 0.7.0-r1: VDR plugin: MailBox provides access to multiple e-mail accounts
@@ -8253,7 +8240,6 @@ media-video/ffmpegthumbnailer 2.2.0: Lightweight video thumbnailer that can be u
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
 media-video/gaupol 1.4: A subtitle editor for text-based subtitles
 media-video/get_flash_videos 1.24-r1: Downloads videos from various Flash-based video hosting sites
-media-video/gnome-mplayer 1.0.9-r1: A GTK+ interface to MPlayer
 media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and picture application
 media-video/gpac 0.6.1-r2: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
 media-video/griffith 0.13-r2: Movie collection manager
@@ -9418,7 +9404,6 @@ sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositio
 sci-libs/scipy 0.16.1 0.19.1: Scientific algorithms library for Python
 sci-libs/scotch 6.0.0: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.4.0-r1: Library for manipulating ESRI Shapefiles
-sci-libs/spqr 1.2.3-r1: Multithreaded multifrontal sparse QR factorization library
 sci-libs/suitesparseconfig 4.2.1-r1: Common configurations for all packages in suitesparse
 sci-libs/superlu 4.3-r1 5.2.1-r1: Sparse LU factorization library
 sci-libs/szip 2.1-r2: Extended-Rice lossless compression algorithm implementation
@@ -10284,7 +10269,6 @@ sys-power/pmtools 20110323-r1: Collection of tools for ACPI and power management
 sys-power/powermgmt-base 1.31: Script to test whether computer is running on AC power
 sys-power/powernowd 1.00-r4: Daemon to control the speed and voltage of CPUs
 sys-power/powertop 2.8 2.9: tool that helps you find what software is using the most power
-sys-power/suspend 1.0_p20150810: Userspace Software Suspend and S2Ram
 sys-power/upower 0.99.5 0.99.8 0.99.8-r1: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-process/acct 6.6.4-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r2: a periodic command scheduler
@@ -10337,7 +10321,7 @@ virtual/checkpassword 0: Virtual for checkpassword compatible applications
 virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0 0-r1: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
-virtual/dev-manager 0-r1: Virtual for the device filesystem manager
+virtual/dev-manager 0-r2: Virtual for the device filesystem manager
 virtual/editor 0-r2: Virtual for editor
 virtual/eject 0-r1: Virtual for the eject command
 virtual/emacs 23 24 25 26: Virtual for GNU Emacs
@@ -10599,7 +10583,6 @@ www-misc/urlwatch 2.13: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
-www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-servers/apache 2.2.34 2.4.27-r1 2.4.34-r2: The Apache Web Server
 www-servers/gunicorn 19.1.1 19.6.0: A WSGI HTTP Server for UNIX
 www-servers/lighttpd 1.4.45-r1: Lightweight high-performance web server
@@ -10744,7 +10727,6 @@ x11-libs/fltk 1.3.3-r3: C++ user interface toolkit for X and OpenGL
 x11-libs/fox 1.6.49 1.7.54: C++ Toolkit for developing Graphical User Interfaces easily and effectively
 x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
 x11-libs/gdk-pixbuf 2.36.11 2.36.12: Image loading library for GTK+
-x11-libs/gksu 2.0.2-r2: A gtk+ frontend for libgksu
 x11-libs/gl2ps 1.3.9: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.36.3 0.38.3 0.40.2: GNOME Setuid helper for opening ptys
 x11-libs/goffice 0.10.38: A library of document-centric objects and utilities
@@ -10804,7 +10786,6 @@ x11-libs/libfm 1.2.5: A library for file management
 x11-libs/libfm-extra 1.2.5: A library for file management
 x11-libs/libfm-qt 0.13.1-r1: Qt port of libfm, a library providing components to build desktop file managers
 x11-libs/libfontenc 1.1.3-r1: X.Org fontenc library
-x11-libs/libgksu 2.0.12-r3 2.0.12-r4: A library for integration of su into applications
 x11-libs/libnotify 0.7.6-r3 0.7.7-r1: A library for sending desktop notifications
 x11-libs/liboglappth 1.0.0: Libary for OpenGL applications with easy-to-code scene setup and selection
 x11-libs/libpciaccess 0.14: Library providing generic access to the PCI bus and devices
