@@ -9404,6 +9404,7 @@ sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositio
 sci-libs/scipy 0.16.1 0.19.1: Scientific algorithms library for Python
 sci-libs/scotch 6.0.0: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.4.0-r1: Library for manipulating ESRI Shapefiles
+sci-libs/spqr 1.2.3-r1: Multithreaded multifrontal sparse QR factorization library
 sci-libs/suitesparseconfig 4.2.1-r1: Common configurations for all packages in suitesparse
 sci-libs/superlu 4.3-r1 5.2.1-r1: Sparse LU factorization library
 sci-libs/szip 2.1-r2: Extended-Rice lossless compression algorithm implementation
