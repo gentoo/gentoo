@@ -315,7 +315,6 @@ dev-python/jenkinsapi
 # Dead upstream, unmaintained, no revdep. Removal in 30 days.
 # Bug #285169
 dev-python/twill
-dev-python/flask-testing
 
 # Sergei Trofimovich <slyfox@gentoo.org> (09 Oct 2018)
 # Upstream is not actively maintained. Needs a port to mupdf-1.14.
