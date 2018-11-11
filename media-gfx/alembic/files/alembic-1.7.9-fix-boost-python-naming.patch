@@ -1,0 +1,17 @@
+diff --git a/python/PyAlembic/CMakeLists.txt b/python/PyAlembic/CMakeLists.txt
+index 5a75e63..492be6a 100644
+--- a/python/PyAlembic/CMakeLists.txt
++++ b/python/PyAlembic/CMakeLists.txt
+@@ -33,10 +33,10 @@
+ ##
+ ##-*****************************************************************************
+ 
+-MESSAGE(STATUS "Boost_PYTHON_LIBRARY: ${Boost_PYTHON_LIBRARY}")
++MESSAGE(STATUS "Boost_PYTHON2.7_LIBRARY_RELEASE: ${Boost_PYTHON2.7_LIBRARY_RELEASE}")
+ 
+ # set core libs
+-IF (Boost_PYTHON_LIBRARY AND ALEMBIC_PYTHON_LIBRARY)
++IF (Boost_PYTHON2.7_LIBRARY_RELEASE AND ALEMBIC_PYTHON_LIBRARY)
+     MESSAGE(STATUS "Found libboost_python: ${Boost_PYTHON_LIBRARY}")
+     SET(PLIBS ${ALEMBIC_PYTHON_LIBRARY} ${Boost_PYTHON_LIBRARY})
+ 
