@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -62,7 +62,7 @@ src_install() {
 	fperms 700 /var/consoles
 
 	## add startup and sample config
-	newinitd "${FILESDIR}"/conserver.initd-r1 conserver
+	newinitd "${FILESDIR}"/conserver.initd conserver
 	newconfd "${FILESDIR}"/conserver.confd conserver
 
 	dodir /etc/conserver
