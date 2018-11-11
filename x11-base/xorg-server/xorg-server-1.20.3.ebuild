@@ -13,7 +13,7 @@ if [[ ${PV} != 9999* ]]; then
 	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 fi
 
-IUSE_SERVERS="dmx kdrive suid wayland xephyr xnest xorg xvfb"
+IUSE_SERVERS="dmx kdrive +suid wayland xephyr xnest xorg xvfb"
 IUSE="${IUSE_SERVERS} debug +glamor ipv6 libressl minimal selinux systemd +udev unwind xcsecurity"
 
 CDEPEND=">=app-eselect/eselect-opengl-1.3.0
@@ -162,8 +162,8 @@ src_configure() {
 		$(use_with doc xmlto)
 		$(use_with systemd systemd-daemon)
 		$(use_enable systemd systemd-logind)
-		$(use_enable systemd suid-wrapper)
-		$(use_enable suid install-setuid)
+		$(usex suid $(use_enable systemd suid-wrapper) '--disable-suid-wrapper')
+		$(usex suid $(use_enable !systemd install-setuid) '--disable-install-setuid')
 		--enable-libdrm
 		--sysconfdir="${EPREFIX}"/etc/X11
 		--localstatedir="${EPREFIX}"/var
