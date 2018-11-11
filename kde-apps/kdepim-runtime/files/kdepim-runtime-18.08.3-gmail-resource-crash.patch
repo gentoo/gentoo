@@ -1,0 +1,25 @@
+From a4316a290e243fd71a565a9b936012d27f116029 Mon Sep 17 00:00:00 2001
+From: Allan Sandfeld Jensen <allan.jensen@qt.io>
+Date: Sun, 28 Oct 2018 20:38:49 +0100
+Subject: Fix crash in failing GMail resource
+
+BUG: 400400
+---
+ resources/imap/gmailpasswordrequester.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/resources/imap/gmailpasswordrequester.h b/resources/imap/gmailpasswordrequester.h
+index b5b8aa8..6f013c9 100644
+--- a/resources/imap/gmailpasswordrequester.h
++++ b/resources/imap/gmailpasswordrequester.h
+@@ -45,7 +45,7 @@ private Q_SLOTS:
+ 
+ private:
+     ImapResourceBase *mResource = nullptr;
+-    KGAPI2::AccountPromise *mPendingPromise = nullptr;
++    QPointer<KGAPI2::AccountPromise> mPendingPromise;
+ };
+ 
+ #endif
+-- 
+cgit v0.11.2
