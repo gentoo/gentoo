@@ -6,6 +6,10 @@
 
 # SECTION: Unmask
 
+# Matt Turner <mattst88@gentoo.org> (11 Nov 2018)
+# d3d9 works on amd64
+-d3d9
+
 # Michael Orlitzky <mjo@gentoo.org> (07 Jan 2018)
 # Oracle database stuff should work on amd64.
 -oci8
