@@ -7766,6 +7766,7 @@ media-libs/webrtc-audio-processing 0.3: AudioProcessing library from the webrtc.
 media-libs/woff2 1.0.2-r1: Encode/decode WOFF2 font format
 media-libs/wxsvg 1.5.9 1.5.11: C++ library to create, manipulate and render SVG files
 media-libs/x264 0.0.20170701: A free library for encoding X264/AVC streams
+media-libs/x265 2.8: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.9-r2: Core libraries for Xine movie player
 media-libs/xvid 1.3.3: XviD, a high performance/quality MPEG-4 video de-/encoding solution
 media-libs/zimg 2.5: Scaling, colorspace conversion, and dithering library
@@ -8518,7 +8519,7 @@ net-firewall/nfacct 1.0.1: Command line tool to create/retrieve/delete accountin
 net-firewall/nftables 0.8-r3: Linux kernel (3.13+) firewall, NAT and packet mangling tools
 net-firewall/psad 2.2.5: Port Scanning Attack Detection daemon
 net-firewall/rtsp-conntrack 3.7-r1: RTSP conntrack module for Netfilter
-net-firewall/shorewall 5.2.0.5: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.2.1.1: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35-r1: A program used to manage a netfilter firewall
 net-firewall/xtables-addons 2.13: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.2: Kernel based automounter
@@ -9815,7 +9816,7 @@ sys-apps/kexec-tools 2.0.17-r1: Load another kernel from the currently executing
 sys-apps/keyutils 1.5.9-r4: Linux Key Management Utilities
 sys-apps/kmod 24: library and tools for managing linux kernel modules
 sys-apps/less 531: Excellent text file viewer
-sys-apps/lm_sensors 3.4.0_p20170901 3.4.0_p20180923: Hardware Monitoring user-space utilities
+sys-apps/lm_sensors 3.4.0_p20180923: Hardware Monitoring user-space utilities
 sys-apps/lnxhc 1.2-r1: Linux Health Checker
 sys-apps/logwatch 7.4.3: Analyzes and Reports on system logs
 sys-apps/lomoco 1.0-r9: Lomoco can configure vendor-specific options on Logitech USB mice
@@ -10588,7 +10589,7 @@ www-servers/apache 2.2.34 2.4.27-r1 2.4.34-r2: The Apache Web Server
 www-servers/gunicorn 19.1.1 19.6.0: A WSGI HTTP Server for UNIX
 www-servers/lighttpd 1.4.45-r1: Lightweight high-performance web server
 www-servers/monkeyd 1.6.9-r1: A small, fast, and scalable web server
-www-servers/nginx 1.14.0-r3 1.14.1: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.14.1: Robust, small and high performance http and reverse proxy server
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/puma 3.11.0 3.11.4: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/spawn-fcgi 1.6.3-r1: A FCGI spawner for lighttpd and cherokee and other webservers
