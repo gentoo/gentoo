@@ -2026,7 +2026,7 @@ dev-games/physfs 2.0.3-r2: Abstraction layer for filesystem and archive access
 dev-games/poker-eval 138.0: A fast C library for evaluating poker hands
 dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
-dev-games/tiled 1.1.6: A general purpose tile map editor
+dev-games/tiled 1.2.0: A general purpose tile map editor
 dev-games/vamos 0.7.1 0.8.2: An automotive simulation framework
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/blackfriday 1.2_p20150720: a markdown processor implemented in Go
