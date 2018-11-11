@@ -6,13 +6,13 @@ EAPI="4"
 inherit eutils qmail
 
 DESCRIPTION="Collection of tools for managing UNIX services"
-HOMEPAGE="http://cr.yp.to/ucspi-tcp.html"
+HOMEPAGE="https://cr.yp.to/ucspi-tcp.html"
 SRC_URI="
-	http://cr.yp.to/${PN}/${P}.tar.gz
+	https://cr.yp.to/${PN}/${P}.tar.gz
 	mirror://qmail/ucspi-rss.diff
 	http://smarden.org/pape/djb/manpages/${P}-man.tar.gz
 	http://xs3.b92.net/tomislavr/${P}-rblspp.patch
-	ipv6? ( http://www.fefe.de/ucspi/${P}-ipv6.diff19.bz2 )
+	ipv6? ( https://www.fefe.de/ucspi/${P}-ipv6.diff19.bz2 )
 "
 
 LICENSE="public-domain"
