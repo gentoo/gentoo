@@ -63,6 +63,10 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/util-linux-2.32.1-skip-oids-test-when-uuidgen-is-not-available.patch"
+)
+
 src_prepare() {
 	default
 
