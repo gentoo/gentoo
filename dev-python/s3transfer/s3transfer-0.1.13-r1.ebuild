@@ -30,6 +30,7 @@ DEPEND="
 "
 RDEPEND="${CDEPEND}"
 
+PATCHES=( "${FILESDIR}/s3transfer-0.1.13-tests.patch" )
 python_test() {
 	nosetests -v tests/unit/ tests/functional/ || die "tests failed under ${EPYTHON}"
 }
