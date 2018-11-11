@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/gmp:0= dev-libs/libxml2:2 dev-libs/mpfr:0= virtual/libiconv curl? ( net-misc/curl ) icu? ( dev-libs/icu:= ) readline? ( sys-libs/readline:0= ) dev-util/intltool sys-devel/gettext virtual/pkgconfig
+DESCRIPTION=A modern multi-purpose calculator library
+EAPI=7
+HOMEPAGE=https://qalculate.github.io/
+IUSE=curl icu gnuplot readline static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-libs/gmp:0= dev-libs/libxml2:2 dev-libs/mpfr:0= virtual/libiconv curl? ( net-misc/curl ) icu? ( dev-libs/icu:= ) readline? ( sys-libs/readline:0= ) gnuplot? ( >=sci-visualization/gnuplot-3.7 )
+SLOT=0/20
+SRC_URI=https://github.com/Qalculate/libqalculate/releases/download/v2.8.1/libqalculate-2.8.1.tar.gz
+_md5_=626ca6eb6479f2c095fba09ccac9f3bc
