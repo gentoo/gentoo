@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,6 +33,7 @@ RDEPEND="|| (
 	app-editors/levee
 	app-editors/lpe
 	app-editors/mg
+	app-editors/moe
 	app-editors/ne
 	app-editors/neovim
 	app-editors/ng
