@@ -33,7 +33,7 @@ DESCRIPTION="allows to boot Xen domU kernels from a menu.lst laying inside guest
 HOMEPAGE="https://www.xenproject.org"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="custom-cflags"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
