@@ -1344,7 +1344,6 @@ app-text/evince 3.24.2-r1: Simple document viewer for GNOME
 app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/flpsed 0.7.0: Pseudo PostScript editor
 app-text/ghostscript-gpl 9.21 9.25: Ghostscript is an interpreter for the PostScript language and for PDF
-app-text/glark 1.10.5-r1: File searcher similar to grep but with fancy output
 app-text/glosung 3.6.2-r1: Watch word program for the GNOME2 desktop (watch word (german): losung)
 app-text/gnome-doc-utils 0.20.10-r1: A collection of documentation utilities for the Gnome project
 app-text/gnopaster 0.0.9: A submitter for gnopaste, a nopaste service like http://nopaste.info
@@ -1372,7 +1371,6 @@ app-text/iso-codes 3.76: ISO language, territory, currency, script codes and the
 app-text/jabref 2.10-r2: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 3.7 3.8.2: Java GUI for managing BibTeX and other bibliographies
 app-text/jadetex 3.13-r7: TeX macros used by Jade TeX output
-app-text/jist 1.5.1-r1: A ruby gem to publish a gist
 app-text/kbibtex 0.8.1: BibTeX editor to edit bibliographies used with LaTeX
 app-text/kchmviewer 7.7-r1: Feature rich chm file viewer, based on Qt
 app-text/keepnote 0.7.9-r2: A note taking application
@@ -1906,7 +1904,7 @@ dev-db/postgresql 9.3.24 9.3.25 9.4.19 9.4.20 9.5.14 9.5.15 9.6.10 9.6.11 10.5 1
 dev-db/pspg 1.3.0: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
-dev-db/redis 3.2.8-r5 3.2.12 4.0.2-r1 4.0.10: A persistent caching system, key-value and data structures database
+dev-db/redis 4.0.2-r1 4.0.10: A persistent caching system, key-value and data structures database
 dev-db/slony1 2.2.6: A replication system for the PostgreSQL Database Management System
 dev-db/spatialite 4.3.0-r1: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/sqlcipher 3.4.1 3.4.2: Full Database Encryption for SQLite
@@ -5924,7 +5922,6 @@ dev-ruby/rack 1.6.7 1.6.11 2.0.3 2.0.5 2.0.6: A modular Ruby webserver interface
 dev-ruby/rack-cache 1.7.1: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-protection 1.5.5: This gem protects against typical web attacks
 dev-ruby/rack-test 0.6.3: Rack::Test is a small, simple testing API for Rack apps
-dev-ruby/ragol 1.0.1-r2: Another implementation of an option processor
 dev-ruby/rails-dom-testing 2.0.3: Compare doms and assert certain elements exists in doms using Nokogiri
 dev-ruby/rails-html-sanitizer 1.0.3-r1: Sanitize HTML fragments in Rails applications
 dev-ruby/railties 5.1.4 5.1.6: Tools for creating, working with, and running Rails applications
@@ -6037,7 +6034,7 @@ dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form suppor
 dev-ruby/unf_ext 0.0.7.4: Unicode Normalization Form support library for CRuby
 dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.5-r1: Simple library to generate UUIDs
-dev-ruby/webmock 1.24.6 2.3.2: Allows stubbing HTTP requests and setting expectations on HTTP requests
+dev-ruby/webmock 2.3.2: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.2: A library to help write robots.txt compliant web robots
 dev-ruby/wirble 0.1.3-r4: Wirble is a set of enhancements for Irb
 dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean's Perl module XML::Simple
@@ -8994,7 +8991,7 @@ net-misc/spiped 1.6.0-r1: secure pipe daemon
 net-misc/spread 4.1.0-r1: Distributed network messaging system
 net-misc/ssh-askpass-fullscreen 1.0-r1: A small SSH Askpass replacement written with GTK2
 net-misc/sshpass 1.05 1.06: Tool for noninteractively performing password authentication with ssh
-net-misc/sslh 1.18-r2: Port multiplexer - accept both HTTPS and SSH connections on the same port
+net-misc/sslh 1.18-r2 1.19c: Port multiplexer - accept both HTTPS and SSH connections on the same port
 net-misc/sstp-client 1.0.10-r1: A client implementation of Secure Socket Tunneling Protocol (SSTP)
 net-misc/ssvnc 1.0.29-r2: VNC viewer that adds encryption security to VNC connections
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
@@ -9081,8 +9078,8 @@ net-p2p/transmission 2.94: A Fast, Easy and Free BitTorrent client
 net-p2p/transmission-remote-gtk 1.3.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
 net-p2p/vuze 4.8.1.2-r1 5.7.2.0-r1: BitTorrent client in Java, formerly called Azureus
 net-p2p/vuze-coreplugins 4.8.1.2 5.7.2.0: Core plugins for Vuze that are included in upstream distribution
-net-print/cndrvcups-common-lb 3.50: Common files for Canon drivers
-net-print/cndrvcups-lb 3.50: Canon UFR II / LIPSLX Printer Driver for Linux
+net-print/cndrvcups-common-lb 3.50 3.50-r1: Common files for Canon drivers
+net-print/cndrvcups-lb 3.50 3.50-r1: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.2.7: The Common Unix Printing System
 net-print/cups-bjnp 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.17.9 1.20.4: Cups filters
@@ -10597,7 +10594,7 @@ www-servers/thttpd 2.27.1: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.85 8.0.50 8.5.30 9.0.7: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1 4.5.3: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.17: uWSGI server for Python web applications
-www-servers/varnish 4.0.5 4.1.8 5.1.3: Varnish is a state-of-the-art, high-performance HTTP accelerator
+www-servers/varnish 4.0.5 4.1.8 5.1.3 6.0.1: Varnish is a state-of-the-art, high-performance HTTP accelerator
 x11-apps/amlc 0.5.1: Another Modeline Calculator, generates quality X11 display configs easily
 x11-apps/appres 1.0.4 1.0.5: list X application resource database
 x11-apps/bdftopcf 1.1: X.Org bdftopcf application
