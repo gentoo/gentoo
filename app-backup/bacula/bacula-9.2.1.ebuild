@@ -436,5 +436,5 @@ pkg_postinst() {
 	einfo "you have to enable 'USE=qt5'."
 	einfo
 	einfo "/var/lib/bacula/tmp was configured for archivedir. This dir will be used during"
-	einfo "restores, so be sure to set it to an appropriate in dir in the bacula config."
+	einfo "restores, so be sure to set it to an appropriate dir in the bacula config."
 }
