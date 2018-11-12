@@ -143,10 +143,6 @@ dev-lang/gnu-smalltalk
 dev-db/maatkit
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Unmaintained and buggy (#648204). Removal in a month.
-mail-filter/razor
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Merged into >=app-portage/gentoolkit-0.4 (#659412). Removal in a month.
 app-portage/gentoolkit-dev
 
