@@ -13,8 +13,10 @@ DESCRIPTION="The web browser from Google"
 HOMEPAGE="https://www.google.com/chrome"
 
 if [[ ${PN} == google-chrome ]]; then
+	KEYWORDS="-* amd64"
 	MY_PN=${PN}-stable
 else
+	KEYWORDS="-* ~amd64"
 	MY_PN=${PN}
 fi
 
@@ -24,7 +26,6 @@ SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd
 
 LICENSE="google-chrome"
 SLOT="0"
-KEYWORDS="-* amd64"
 IUSE="+plugins"
 RESTRICT="bindist mirror strip"
 
@@ -38,7 +39,6 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	>=dev-libs/nss-3.26
-	gnome-base/gconf:2
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype:2
@@ -94,6 +94,13 @@ src_install() {
 	rm -r etc usr/share/menu || die
 	mv usr/share/doc/${MY_PN} usr/share/doc/${PF} || die
 
+	gzip -d usr/share/doc/${PF}/changelog.gz || die
+	gzip -d usr/share/man/man1/${MY_PN}.1.gz || die
+	if [[ -L usr/share/man/man1/google-chrome.1.gz ]]; then
+		rm usr/share/man/man1/google-chrome.1.gz || die
+		dosym ${MY_PN}.1 usr/share/man/man1/google-chrome.1
+	fi
+
 	pushd "${CHROME_HOME}/locales" > /dev/null || die
 	chromium_remove_language_paks
 	popd > /dev/null || die
@@ -104,9 +111,13 @@ src_install() {
 			-i "${CHROME_HOME}/${PN}" || die
 	fi
 
+	local suffix=
+	[[ ${PN} == google-chrome-beta ]] && suffix=_beta
+	[[ ${PN} == google-chrome-unstable ]] && suffix=_dev
+
 	local size
 	for size in 16 22 24 32 48 64 128 256 ; do
-		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}.png" ${PN}.png
+		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}${suffix}.png" ${PN}.png
 	done
 
 	pax-mark m "${CHROME_HOME}/chrome"

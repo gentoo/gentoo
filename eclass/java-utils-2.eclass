@@ -1,4 +1,4 @@
-# Copyright 2004-2017 Gentoo Foundation
+# Copyright 2004-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-utils-2.eclass
@@ -25,21 +25,13 @@ export WANT_JAVA_CONFIG="2"
 # Prefix variables are only available for EAPI>=3
 has "${EAPI:-0}" 0 1 2 && ED="${D}" EPREFIX= EROOT="${ROOT}"
 
-# @VARIABLE: JAVA_PKG_PORTAGE_DEP
-# @INTERNAL
-# @DESCRIPTION:
-# The version of portage we need to function properly. Previously it was
-# portage with phase hooks support but now we use a version with proper env
-# saving. For EAPI 2 we have new enough stuff so let's have cleaner deps.
-has "${EAPI}" 0 1 && JAVA_PKG_PORTAGE_DEP=">=sys-apps/portage-2.1.2.7"
-
 # @VARIABLE: JAVA_PKG_E_DEPEND
 # @INTERNAL
 # @DESCRIPTION:
 # This is a convience variable to be used from the other java eclasses. This is
 # the version of java-config we want to use. Usually the latest stable version
 # so that ebuilds can use new features without depending on specific versions.
-JAVA_PKG_E_DEPEND=">=dev-java/java-config-2.2.0-r3 ${JAVA_PKG_PORTAGE_DEP}"
+JAVA_PKG_E_DEPEND=">=dev-java/java-config-2.2.0-r3"
 has source ${JAVA_PKG_IUSE} && JAVA_PKG_E_DEPEND="${JAVA_PKG_E_DEPEND} source? ( app-arch/zip )"
 
 # @ECLASS-VARIABLE: JAVA_PKG_WANT_BOOTCLASSPATH
