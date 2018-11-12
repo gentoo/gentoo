@@ -16,10 +16,9 @@ case ${PV} in
 	inherit git-r3
 	;;
 *)
-	CODENAME="Leia"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/notspiff/audiodecoder.timidity/archive/${PV}-${CODENAME}.tar.gz -> ${P}-${CODENAME}.tar.gz"
-	S="${WORKDIR}/audiodecoder.timidity-${PV}-${CODENAME}"
+	SRC_URI="https://github.com/notspiff/audiodecoder.timidity/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/audiodecoder.timidity-${PV}"
 	;;
 esac
 
@@ -28,7 +27,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	~media-tv/kodi-9999
+	=media-tv/kodi-17*
 	"
 RDEPEND="
 	${DEPEND}
