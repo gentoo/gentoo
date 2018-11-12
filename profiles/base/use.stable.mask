@@ -13,7 +13,6 @@ python_single_target_pypy3
 
 # Hans de Graaff <graaff@gentoo.org> (25 Dec 2017)
 # Currently in testing and not ready to go stable yet.
-ruby_targets_ruby24
 ruby_targets_ruby25
 
 # Patrick Lauer <patrick@gentoo.org> (28 Apr 2015)
