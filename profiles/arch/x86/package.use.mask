@@ -50,11 +50,6 @@ net-fs/samba -ceph
 # Catalyst has support for assembling bootloader on this arch
 dev-util/catalyst -system-bootloader
 
-# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (17 Jun 2018)
-# Vulkan support is only available on few selected arches atm.
-# Mask everywhere, unmask where appropriate.
-media-video/mpv -vulkan
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (21 May 2018)
 # LO kde support on x86 is broken, see bug 650208
 =app-office/libreoffice-bin-6.0* kde
