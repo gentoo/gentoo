@@ -1,0 +1,15 @@
+diff -uprw razor-agents-2.85.orig/Makefile.PL razor-agents-2.85/Makefile.PL
+--- razor-agents-2.85.orig/Makefile.PL	2007-05-09 01:47:53.000000000 +0300
++++ razor-agents-2.85/Makefile.PL	2015-06-14 20:36:23.677213987 +0300
+@@ -140,9 +140,9 @@ sub MY::install {
+   my $inherited = $self->SUPER::install(@_);
+ 
+   my $man5 = q{ \\
+-		$(INST_MAN5DIR) $(INSTALLMAN5DIR)};
++		"$(INST_MAN5DIR)" "$(INSTALLMAN5DIR)"};
+ 
+-  $inherited =~ s/(\$\((?:DEST)?INSTALL\w*MAN1DIR\))/$1$man5/gm;
++  $inherited =~ s/("?\$\((?:DEST)?INSTALL\w*MAN1DIR\)"?)/$1$man5/gm;
+ 
+   return $inherited;
+ }
