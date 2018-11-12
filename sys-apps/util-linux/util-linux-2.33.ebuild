@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2018 Gentoo Foundation and others
 # Copyright 2018 Sony Interactive Entertainment Inc.
 # Distributed under the terms of the GNU General Public License v2
 
