@@ -13,8 +13,10 @@ DESCRIPTION="The web browser from Google"
 HOMEPAGE="https://www.google.com/chrome"
 
 if [[ ${PN} == google-chrome ]]; then
+	KEYWORDS="-* amd64"
 	MY_PN=${PN}-stable
 else
+	KEYWORDS="-* ~amd64"
 	MY_PN=${PN}
 fi
 
@@ -24,7 +26,6 @@ SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd
 
 LICENSE="google-chrome"
 SLOT="0"
-KEYWORDS="-* ~amd64"
 IUSE="+plugins"
 RESTRICT="bindist mirror strip"
 
@@ -103,9 +104,13 @@ src_install() {
 			-i "${CHROME_HOME}/${PN}" || die
 	fi
 
+	local suffix=
+	[[ ${PN} == google-chrome-beta ]] && suffix=_beta
+	[[ ${PN} == google-chrome-unstable ]] && suffix=_dev
+
 	local size
 	for size in 16 22 24 32 48 64 128 256 ; do
-		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}_dev.png" ${PN}.png
+		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}${suffix}.png" ${PN}.png
 	done
 
 	pax-mark m "${CHROME_HOME}/chrome"
