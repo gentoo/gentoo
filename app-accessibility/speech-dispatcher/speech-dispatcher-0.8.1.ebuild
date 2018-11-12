@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,8 +32,8 @@ COMMON_DEPEND="python? ( ${PYTHON_DEPS} )
 DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.40.0
 	virtual/pkgconfig"
-	RDEPEND="${COMMON_DEPEND}
-	dev-python/pyxdg"
+RDEPEND="${COMMON_DEPEND}
+	python? ( dev-python/pyxdg[${PYTHON_USEDEP}] )"
 
 src_configure() {
 	local myeconfargs=(
