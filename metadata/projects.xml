@@ -1759,17 +1759,12 @@
     <name>Java</name>
     <url>https://wiki.gentoo.org/wiki/Project:Java</url>
     <description>We maintain everything Java-related in Gentoo, that is, most of dev-java/* and also packages in categories like dev-util, www-servers etc.</description>
-    <member is-lead="1">
-      <email>chewi@gentoo.org</email>
-      <name>James Le Cuirot</name>
-      <role>Developer</role>
-    </member>
     <member>
       <email>fordfrog@gentoo.org</email>
       <name>Miroslav Šulc</name>
       <role>Developer</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>monsieurp@gentoo.org</email>
       <name>Patrice Clement</name>
       <role>Developer</role>
