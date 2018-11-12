@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,12 +41,8 @@ src_configure() {
 		-DBUILD_SHARED_LIB="ON"
 		# Upstream recommends to keep this off as libusb is broken
 		-DUSB_BACKEND_LIBUSB="OFF"
+		$(usex qt5 '-DDESIRED_QT_VERSION=5' '')
 	)
-	if use qt5 ; then
-		mycmakeargs+=(
-			-DDESIRED_QT_VERSION=5
-		)
-	fi
 	cmake-utils_src_configure
 }
 
