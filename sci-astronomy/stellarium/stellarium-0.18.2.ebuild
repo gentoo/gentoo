@@ -31,11 +31,11 @@ RDEPEND="
 	dev-qt/qtprintsupport:5
 	dev-qt/qtserialport:5
 	dev-qt/qtwidgets:5
-	gps? ( dev-qt/qtpositioning:5 )
-	media? ( dev-qt/qtmultimedia:5[widgets] )
 	media-fonts/dejavu
 	sys-libs/zlib
 	virtual/opengl
+	gps? ( dev-qt/qtpositioning:5 )
+	media? ( dev-qt/qtmultimedia:5[widgets] )
 "
 DEPEND="${RDEPEND}
 	dev-qt/qtconcurrent:5
