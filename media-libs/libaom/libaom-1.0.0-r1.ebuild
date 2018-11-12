@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}/libdirpc2.patch"
 	"${FILESDIR}/pthread_lib2.patch"
 	"${FILESDIR}/${P}-version.patch"
+	"${FILESDIR}/${P}-armv7l.patch"
 )
 
 src_prepare() {
