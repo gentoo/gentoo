@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,12 +22,9 @@ RDEPEND="dev-python/pyyaml
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	dev-ada/langkit"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	^^ ( gnat_2016 gnat_2017 )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}"/${PN}-gps-src
-
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
 	default
@@ -39,7 +36,7 @@ src_configure() {
 }
 
 src_compile() {
-	ada/manage.py build || die
+	ada/manage.py --verbosity=debug build || die
 }
 
 src_test () {
