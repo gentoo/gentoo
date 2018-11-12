@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-lang/perl:=
+DESCRIPTION=Distributed, collaborative spam detection and filtering network
+EAPI=6
+HOMEPAGE=http://razor.sourceforge.net/
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=Artistic
+RDEPEND=dev-perl/URI dev-perl/Net-DNS virtual/perl-Net-Ping virtual/perl-Time-HiRes dev-perl/Digest-Nilsimsa || ( virtual/perl-Digest-SHA dev-perl/Digest-SHA1 ) dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://sourceforge/razor/razor-agents-2.85.tar.bz2
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_md5_=5d369fac34c32b042689d6262ab48f4b
