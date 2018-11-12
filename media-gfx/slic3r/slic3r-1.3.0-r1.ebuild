@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,9 +14,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+gui test"
 
+# check Build.PL for dependencies
 RDEPEND="!=dev-lang/perl-5.16*
 	>=dev-libs/boost-1.55[threads]
 	dev-perl/Class-XSAccessor
+	dev-perl/Devel-CheckLib
+	dev-perl/Devel-Size
 	>=dev-perl/Encode-Locale-1.50.0
 	dev-perl/IO-stringy
 	>=dev-perl/Math-PlanePath-53.0.0
@@ -49,6 +52,7 @@ RDEPEND="!=dev-lang/perl-5.16*
 		x11-libs/libXmu
 	)"
 DEPEND="${RDEPEND}
+	dev-perl/Devel-CheckLib
 	>=dev-perl/ExtUtils-CppGuess-0.70.0
 	>=dev-perl/ExtUtils-Typemaps-Default-1.50.0
 	>=dev-perl/ExtUtils-XSpp-0.170.0
@@ -61,12 +65,21 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/Slic3r-${PV}/xs"
 
+pkg_pretend() {
+	einfo "Checking for -std=c++11 support in compiler"
+	test-flags-CXX -std=c++11 > /dev/null || die
+}
+
 src_prepare() {
 	pushd "${WORKDIR}/Slic3r-${PV}" || die
-	eapply "${FILESDIR}/${P}-adjust_var_path.patch"
-	eapply "${FILESDIR}/${P}-c++11.patch"
+	sed -i lib/Slic3r.pm -e "s@FindBin::Bin@FindBin::RealBin@g" || die
+	eapply "${FILESDIR}"/${P}-no-locallib.patch
 	eapply_user
 	popd || die
+	# drop std=c++11 to compiler defaults...
+	sed \
+		-e '/c++11/d' \
+		-i Build.PL || die
 }
 
 src_configure() {
