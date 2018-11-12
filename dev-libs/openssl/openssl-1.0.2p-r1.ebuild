@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 inherit eutils flag-o-matic toolchain-funcs multilib multilib-minimal
 
-PATCH_SET="openssl-1.0.2-patches-1.5"
+PATCH_SET="openssl-1.0.2-patches-1.6"
 MY_P=${P/_/-}
 DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
 HOMEPAGE="https://www.openssl.org/"
