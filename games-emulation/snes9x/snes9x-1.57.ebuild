@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/snes9xgit/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Snes9x GPL-2 GPL-2+ LGPL-2.1 LGPL-2.1+ ISC MIT ZLIB Info-ZIP"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd"
-IUSE="alsa debug gtk joystick multilib netplay nls opengl oss png pulseaudio portaudio +xv +xrandr"
+IUSE="alsa debug gtk joystick multilib netplay nls opengl oss png pulseaudio portaudio wayland xinerama +xv"
 RESTRICT="bindist"
 
 RDEPEND="
@@ -21,16 +21,23 @@ RDEPEND="
 	x11-libs/libXext
 	png? ( media-libs/libpng:0= )
 	gtk? (
-		>=x11-libs/gtk+-2.10:2
+		dev-libs/glib:2
+		dev-libs/libxml2
+		>=x11-libs/gtk+-3.22:3[wayland?]
+		x11-libs/libXrandr
 		x11-misc/xdg-utils
-		portaudio? ( >=media-libs/portaudio-19_pre )
-		joystick? ( >=media-libs/libsdl-1.2.12[joystick] )
-		opengl? ( virtual/opengl )
-		xv? ( x11-libs/libXv )
-		xrandr? ( x11-libs/libXrandr )
 		alsa? ( media-libs/alsa-lib )
+		joystick? ( media-libs/libsdl2[joystick] )
+		opengl? (
+			media-libs/libepoxy
+			virtual/opengl
+		)
+		portaudio? ( >=media-libs/portaudio-19_pre )
 		pulseaudio? ( media-sound/pulseaudio )
-	)"
+		xv? ( x11-libs/libXv )
+		wayland? ( dev-libs/wayland )
+	)
+	xinerama? ( x11-libs/libXinerama )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-base/xorg-proto
@@ -40,7 +47,7 @@ S="${WORKDIR}/${P}/unix"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.53-cross-compile.patch
-	"${FILESDIR}"/${PN}-1.55-build-system.patch
+	"${FILESDIR}"/${PN}-1.56-build-system.patch
 )
 
 src_prepare() {
@@ -59,31 +66,38 @@ src_configure() {
 	append-ldflags -Wl,-z,noexecstack
 
 	# build breaks when zlib/zip support is disabled
-	econf \
-		--enable-gzip \
-		--enable-zip \
-		--with-system-zip \
-		$(use_enable joystick gamepad) \
-		$(use_enable debug debugger) \
-		$(use_enable netplay) \
+	local myeconfargs=(
+		--enable-gzip
+		--enable-zip
+		--with-system-zip
+		$(use_enable joystick gamepad)
+		$(use_enable debug debugger)
+		$(use_enable netplay)
 		$(use_enable png screenshot)
+		$(use_enable xinerama)
+	)
+	econf "${myeconfargs[@]}"
 
 	if use gtk; then
 		cd ../gtk || die
-		econf \
-			--with-zlib \
-			--with-system-zip \
-			$(use_enable nls) \
-			$(use_with opengl) \
-			$(use_with joystick) \
-			$(use_with xv) \
-			$(use_with xrandr) \
-			$(use_with netplay) \
-			$(use_with alsa) \
-			$(use_with oss) \
-			$(use_with pulseaudio) \
-			$(use_with portaudio) \
+		myeconfargs=(
+			--with-gtk3
+			--with-zlib
+			--with-system-zip
+			--without-gtk2
+			$(use_enable nls)
+			$(use_with opengl)
+			$(use_with joystick)
+			$(use_with xv)
+			$(use_with netplay)
+			$(use_with alsa)
+			$(use_with oss)
+			$(use_with pulseaudio)
+			$(use_with portaudio)
 			$(use_with png screenshot)
+			$(use_with wayland)
+		)
+		econf "${myeconfargs[@]}"
 	fi
 }
 
