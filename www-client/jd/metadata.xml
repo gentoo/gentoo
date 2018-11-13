@@ -6,6 +6,7 @@
 		<name>Cjk</name>
 	</maintainer>
 	<use>
+		<flag name="migemo">Enable migemo support for Japanese</flag>
 		<flag name="oniguruma">Use <pkg>dev-libs/oniguruma</pkg> for regular expression</flag>
 	</use>
 	<upstream>
