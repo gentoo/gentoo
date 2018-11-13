@@ -14,8 +14,6 @@
 </upstream>
 <use>
 	<flag name="bmp">BMP bitmap image support (media-libs/libnsbmp)</flag>
-	<flag name="fbcon_frontend_able">Use framebuffer frontend able</flag>
-	<flag name="fbcon_frontend_linux">Use framebuffer frontend linux</flag>
 	<flag name="fbcon_frontend_sdl">Use framebuffer frontend sdl</flag>
 	<flag name="fbcon_frontend_vnc">Use framebuffer frontend vnc</flag>
 	<flag name="fbcon_frontend_x">Use framebuffer frontend X</flag>
@@ -23,9 +21,8 @@
 	<flag name="rosprite">RISC OS Sprite bitmap image support (media-libs/librosprite)</flag>
 	<flag name="svgtiny">SVG image support via media-libs/svgatiny instead of gnome-base/librsvg</flag>
 	<flag name="psl">Use public suffix list via media-libs/libnspsl</flag>
-	<flag name="gtk">Build GTK GUI, defaults to GTK3</flag>
+	<flag name="gtk">Build GTK3 GUI</flag>
 	<flag name="gtk2">Build GTK2 GUI</flag>
-	<flag name="gtk3">Build GTK3 GUI</flag>
 	<flag name="duktape">Use duktape.org javascript engine</flag>
 </use>
 <longdescription lang="en">
