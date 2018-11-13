@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -742,7 +742,7 @@ pkg_config() {
 		--max_allowed_packet=8M \
 		--net_buffer_length=16K \
 		--socket=${socket} \
-		--pid-file=${pidfile}
+		--pid-file=${pidfile} \
 		--tmpdir=${ROOT}/${MYSQL_TMPDIR}"
 	#einfo "About to start mysqld: ${mysqld}"
 	ebegin "Starting mysqld"
