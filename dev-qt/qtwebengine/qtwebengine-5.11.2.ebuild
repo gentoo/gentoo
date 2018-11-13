@@ -34,6 +34,7 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/harfbuzz:=
+	media-libs/lcms:2
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	>=media-libs/libvpx-1.5:=[svc]
