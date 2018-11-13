@@ -23,7 +23,7 @@ RDEPEND="
 	gtk? (
 		dev-libs/glib:2
 		dev-libs/libxml2
-		>=x11-libs/gtk+-3.22:3
+		>=x11-libs/gtk+-3.22:3[wayland?]
 		x11-libs/libXrandr
 		x11-misc/xdg-utils
 		alsa? ( media-libs/alsa-lib )
