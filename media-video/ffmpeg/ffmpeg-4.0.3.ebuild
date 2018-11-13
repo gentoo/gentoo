@@ -71,7 +71,7 @@ FFMPEG_FLAG_MAP=(
 		cdio:libcdio iec61883:libiec61883 ieee1394:libdc1394 libcaca openal
 		opengl
 		# indevs
-		libv4l:libv4l2 pulseaudio:libpulse libdrm
+		libv4l:libv4l2 pulseaudio:libpulse libdrm jack:libjack
 		# decoders
 		amr:libopencore-amrwb amr:libopencore-amrnb codec2:libcodec2 fdk:libfdk-aac
 		jpeg2k:libopenjpeg bluray:libbluray gme:libgme gsm:libgsm
@@ -98,7 +98,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 )
 
 IUSE="
-	alsa chromium doc +encode jack oss pic static-libs test v4l
+	alsa chromium doc +encode oss pic static-libs test v4l
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
 "
