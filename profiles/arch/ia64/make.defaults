@@ -34,4 +34,4 @@ ALSA_CARDS="ali5451 als4000 atiixp atiixp-modem bt87x ca0106 cmipci emu10k1x ens
 
 # Hans de Graaff <graaff@gentoo.org> (12 Nov 2018)
 # Temporary entry to support stable bug 661262
-RUBY_TARGETS="ruby23"
+RUBY_TARGETS="ruby23 -ruby24"
