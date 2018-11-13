@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -23,7 +23,6 @@ DEPEND="
 "
 RDEPEND="
 	app-cdr/cdrdao
-	dev-libs/gobject-introspection[${PYTHON_USEDEP}]
 	>=dev-libs/libcdio-paranoia-0.94_p2
 	dev-python/cddb-py[${PYTHON_USEDEP}]
 	dev-python/pycdio[${PYTHON_USEDEP}]
