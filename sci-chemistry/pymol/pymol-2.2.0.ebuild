@@ -28,6 +28,7 @@ DEPEND="
 	media-libs/freeglut
 	media-libs/freetype:2
 	media-libs/glew:0=
+	media-libs/glm
 	media-libs/libpng:0=
 	media-video/mpeg-tools
 	sys-libs/zlib
