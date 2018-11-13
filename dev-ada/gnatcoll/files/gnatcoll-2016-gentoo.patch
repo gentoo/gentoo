@@ -34,15 +34,6 @@
     Syslog : Yes_No := External ("SYSLOG", "@WITH_SYSLOG@");
     Postgres : Yes_No := External ("POSTGRES", "@WITH_POSTGRES@");
     type Sqlite_Inclusion is ("yes", "no", "embedded");
-@@ -67,7 +67,7 @@
- 
-          when "Production" =>
-             for Switches ("Ada") use ("-O2", "-gnatn", "-gnatws");
--            for Switches ("C") use ("-O2", "-Wunreachable-code");
-+            for Switches ("C") use ("-O2", "-Wunreachable-code", "-fPIC");
-       end case;
- 
-       case Syslog is
 --- a/aclocal.m4	2017-04-06 08:25:14.796699365 +0200
 +++ b/aclocal.m4	2017-04-06 08:25:36.622318016 +0200
 @@ -45,7 +45,7 @@
@@ -214,3 +205,14 @@
           case GnatColl_Shared.Python is
              when "yes" =>
                 for Source_Dirs use Project'Source_Dirs & ("gtk/python");
+--- a/src/gnatcoll-projects-normalize.adb	2018-11-13 19:34:01.491003676 +0100
++++ b/src/gnatcoll-projects-normalize.adb	2018-11-13 19:34:16.289760553 +0100
+@@ -2202,7 +2202,7 @@
+             when N_Comment_Zones =>
+                null;
+ 
+-            when N_Comment =>
++            when others =>
+                null;
+          end case;
+       end if;
