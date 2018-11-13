@@ -3274,7 +3274,7 @@ dev-libs/uulib 0.5.20: Library that supports Base64 (MIME), uuencode, xxencode a
 dev-libs/vala-common 0.36.13: Build infrastructure for packages that use Vala
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
 dev-libs/vc 0.7.4 1.3.0: SIMD Vector Class Library for C++
-dev-libs/volume_key 0.3.9 0.3.11: Library for manipulating and storing storage volume encryption keys
+dev-libs/volume_key 0.3.11: Library for manipulating and storing storage volume encryption keys
 dev-libs/wayland 1.15.0 1.16.0: Wayland protocol libraries
 dev-libs/wayland-protocols 1.13 1.16: Wayland protocol files
 dev-libs/weston 3.0.0: Wayland reference compositor
@@ -9778,7 +9778,7 @@ sys-apps/gawk 4.1.4: GNU awk pattern-matching language
 sys-apps/gentoo-functions 0.12: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.24.1: Disk Utility for GNOME using udisks
-sys-apps/gptfdisk 1.0.1 1.0.3: GPT partition table manipulator for Linux
+sys-apps/gptfdisk 1.0.3: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312: Administrative interface for the grsecurity Role Based Access Control system
 sys-apps/grep 3.0 3.1: GNU regular expression matcher
 sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
