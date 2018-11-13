@@ -6,5 +6,6 @@
 <flag name="cancel-locks">Enable Cancel-Lock header functionality (also enables USE=evil)</flag>
 <flag name="gpg">Enable <pkg>app-crypt/gnupg</pkg> support</flag>
 <flag name="etiquette">Enable the display off posting etiquettes</flag>
+<flag name="mime">Add MIME support</flag>
 </use>
 </pkgmetadata>
