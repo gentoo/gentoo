@@ -15,5 +15,6 @@ visualization tools are currently available.
   <use>
     <flag name="openbabel">Use <pkg>sci-chemistry/openbabel</pkg> for file
     conversions</flag>
+    <flag name="seamonkey">Add support for the Seamonkey web-browser</flag>
   </use>
 </pkgmetadata>
