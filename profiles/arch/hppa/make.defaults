@@ -27,4 +27,4 @@ VIDEO_CARDS="fbdev"
 
 # Hans de Graaff <graaff@gentoo.org> (12 Nov 2018)
 # Temporary entry to support stable bug 661262
-RUBY_TARGETS="ruby23"
+RUBY_TARGETS="ruby23 -ruby24"
