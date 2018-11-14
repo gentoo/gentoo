@@ -34,6 +34,7 @@ src_compile() {
 		GPRBUILD_FLAGS="-vl"
 	emake tools PROCESSORS=$(makeopts_jobs) \
 		GPRBUILD_FLAGS="-vl \
+		-XGPR_BUILD=relocatable \
 		-XLIBRARY_TYPE=relocatable \
 		-XXMLADA_BUILD=relocatable"
 }
@@ -42,6 +43,7 @@ src_install() {
 	emake prefix="${D}"/usr install
 	emake prefix="${D}"/usr install-tools \
 		GPRINSTALL="gprinstall \
+		-XGPR_BUILD=relocatable \
 		-XLIBRARY_TYPE=relocatable \
 		-XXMLADA_BUILD=relocatable"
 }
