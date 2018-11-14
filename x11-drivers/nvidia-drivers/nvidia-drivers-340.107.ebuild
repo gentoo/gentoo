@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,13 +32,14 @@ COMMON="
 	app-eselect/eselect-opencl
 	kernel_linux? ( >=sys-libs/glibc-2.6.1 )
 	tools? (
+		>=x11-libs/gtk+-2.4:2
 		dev-libs/atk
 		dev-libs/glib:2
 		dev-libs/jansson
 		x11-libs/gdk-pixbuf[X]
-		>=x11-libs/gtk+-2.4:2
 		x11-libs/libX11
 		x11-libs/libXext
+		x11-libs/libXv
 		x11-libs/pango[X]
 	)
 	X? (
