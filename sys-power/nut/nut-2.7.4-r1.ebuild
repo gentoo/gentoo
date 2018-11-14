@@ -27,6 +27,7 @@ CDEPEND="
 	ipmi? ( sys-libs/freeipmi )
 	zeroconf? ( net-dns/avahi )
 	dev-libs/libltdl
+	net-libs/libnsl
 	virtual/udev"
 DEPEND="$CDEPEND
 	>=sys-apps/sed-4
