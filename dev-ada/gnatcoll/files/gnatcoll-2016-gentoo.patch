@@ -1,5 +1,14 @@
 --- a/Makefile	2017-01-20 19:39:07.131398270 +0100
 +++ b/Makefile	2017-01-20 19:42:30.088728844 +0100
+@@ -28,7 +28,7 @@
+ 
+ # Build either type of library. The argument (%) is the type of library to build
+ 
+-GPRBLD_OPTS=-p -m -j${PROCESSORS} -XLIBRARY_TYPE=$(@F) -XGnatcoll_Build=${Gnatcoll_Build}
++GPRBLD_OPTS=-p -m -j${PROCESSORS} -XGPR_BUILD=$(@F) -XLIBRARY_TYPE=$(@F) -XGnatcoll_Build=${Gnatcoll_Build}
+ 
+ build_library_type/%: generate_sources
+ 	@${RM} src/gnatcoll-atomic.adb
 @@ -34,19 +36,19 @@
  	@${RM} src/gnatcoll-atomic.adb
  
@@ -23,6 +32,14 @@
  
  #######################################################################
  #  install
+@@ -53,6 +53,7 @@
+ 
+ GPRINST_OPTS=-p -f --prefix=${prefix} --install-name=gnatcoll \
+ 	--exec-subdir=${bindir} --project-subdir=lib/gnat \
++	-XGPR_BUILD=$(@F) \
+ 	--build-var=LIBRARY_TYPE --build-name=$(@F) -XLIBRARY_TYPE=$(@F)
+ 
+ install-clean:
 --- a/gnatcoll_shared.gpr.in	2017-01-20 19:50:03.222808656 +0100
 +++ b/gnatcoll_shared.gpr.in	2017-01-20 19:50:28.200399274 +0100
 @@ -13,7 +13,7 @@
@@ -216,3 +233,65 @@
                 null;
           end case;
        end if;
+--- a/src/gnatcoll-projects.adb	2018-11-14 18:47:27.760365233 +0100
++++ b/src/gnatcoll-projects.adb	2018-11-14 19:10:43.961337201 +0100
+@@ -3273,9 +3273,9 @@
+       Status                   : out Status_Type;
+       Result                   : out GNATCOLL.VFS.File_Array_Access)
+    is
+-      Mains_Str_List : String_List_Access;
++      Mains_Str_List : String_Vectors.Vector;
+       Closure_Status : GPR.Util.Status_Type;
+-      Closures_List  : String_List_Access;
++      Closures_List  : String_Vectors.Vector;
+    begin
+       Trace (Me, "Get_Closures");
+ 
+@@ -3287,25 +3287,18 @@
+          return;
+       end if;
+ 
+-      Mains_Str_List := new String_List (Mains'First .. Mains'Last);
+       for I in Mains'Range loop
+-         Mains_Str_List (I) := new String'(Mains (I).Display_Base_Name);
++         Mains_Str_List.Append (Mains (I).Display_Base_Name);
+       end loop;
+ 
+       GPR.Util.Get_Closures
+         (Project.Get_View, Project.Tree_View,
+-         Mains                    => Mains_Str_List.all,
++         Mains                    => Mains_Str_List,
+          All_Projects             => All_Projects,
+          Include_Externally_Built => Include_Externally_Built,
+          Status                   => Closure_Status,
+          Result                   => Closures_List);
+ 
+-      --  Freeing temporary list of mains.
+-      for I in Mains_Str_List'Range loop
+-         Free (Mains_Str_List (I));
+-      end loop;
+-      Free (Mains_Str_List);
+-
+       case Closure_Status is
+          when Success =>
+             Status := Success;
+@@ -3321,17 +3314,10 @@
+       end case;
+ 
+       if Closure_Status in Success | Incomplete_Closure then
+-         for I in Closures_List'Range loop
+-            Append (Result, Create (+Closures_List (I).all));
++         for Closure of Closures_List loop
++            Append (Result, Create (+Closure));
+          end loop;
+       end if;
+-
+-      --  Freeing temporary list of closures.
+-      for I in Closures_List'Range loop
+-         Free (Closures_List (I));
+-      end loop;
+-      Free (Closures_List);
+-
+    end Get_Closures;
+ 
+    ----------------
