@@ -1,6 +1,12 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (28 Sep 2018)
+# No stable nftables yet. Let new iptables stabilization
+# to pick nftables up. Meanwhile keep old iptables off
+# nftables.
+<net-firewall/iptables-1.6.2 nftables
+
 # Virgil Dupras <vdupras@gentoo.org> (08 Oct 2018)
 # app-text/mupdf sparc keyword was dropped in bug #631970
 net-print/cups-filters pdf
@@ -141,10 +147,6 @@ media-video/ffmpeg snappy
 # James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
 # scrollview requires Java, which is unsupported on SPARC.
 app-text/tesseract scrollview
-
-# Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
-# Needs keywording. #569254
-net-firewall/iptables nftables
 
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires
