@@ -61,7 +61,7 @@ fi
 
 PATCHES=(
 	"${MY_PATCH_DIR}"/20015_all_mariadb-pkgconfig-location.patch
-	"${MY_PATCH_DIR}"/20018_all_mariadb-10.2.9-without-clientlibs-tools.patch
+	"${MY_PATCH_DIR}"/20018_all_mariadb-10.2.16-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20024_all_mariadb-10.2.6-mysql_st-regression.patch
 	"${MY_PATCH_DIR}"/20025_all_mariadb-10.2.6-gssapi-detect.patch
 	"${MY_PATCH_DIR}"/20035_all_mariadb-10.2-atomic-detection.patch
