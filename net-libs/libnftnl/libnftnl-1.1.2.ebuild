@@ -10,7 +10,7 @@ HOMEPAGE="https://netfilter.org/projects/nftables/"
 SRC_URI="https://netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-SLOT="0/7" # libnftnl.so version
+SLOT="0/11" # libnftnl.so version
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="examples static-libs test"
 
