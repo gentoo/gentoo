@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils perl-module
+inherit eutils flag-o-matic perl-module
 
 DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)"
 HOMEPAGE="http://slic3r.org"
