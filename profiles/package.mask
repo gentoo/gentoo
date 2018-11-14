@@ -967,12 +967,6 @@ www-plugins/chrome-binary-plugins:unstable
 # Upstream next versions
 >=sys-boot/raspberrypi-firmware-1_pre
 
-# Richard Freeman <rich0@gentoo.org> (24 Mar 2013)
-# Contains known buffer overflows.  Package generally works
-# but should not be fed untrusted input (eg from strangers).
-# Masked to ensure users are aware before they install.
-app-text/cuneiform
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (03 Jan 2009)
 # These packages are not supposed to be merged directly, instead
 # please use sys-devel/crossdev to install them.
