@@ -20,6 +20,7 @@ REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
 	dev-libs/libltdl:*
+	net-libs/libnsl
 	virtual/udev
 	cgi? ( >=media-libs/gd-2[png] )
 	gui? ( dev-python/pygtk[${PYTHON_USEDEP}] )
