@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,8 +27,14 @@ S=${WORKDIR}/${MY_P}
 
 DOCS=( readme.txt )
 PATCHES=(
+	# From Fedora
 	"${FILESDIR}/c-assert.diff"
 	"${FILESDIR}/libm.diff"
+	"${FILESDIR}/${P}-fix_buffer_overflow.patch"
+	"${FILESDIR}/${P}-fix_buffer_overflow_2.patch"
+	"${FILESDIR}/${P}-gcc6.patch"
+	"${FILESDIR}/${P}-gcc7.patch"
+	"${FILESDIR}/${P}-typos.patch"
 )
 
 src_prepare(){
