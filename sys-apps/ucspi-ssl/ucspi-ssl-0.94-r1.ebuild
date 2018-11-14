@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,6 +16,7 @@ IUSE="perl"
 
 DEPEND="
 	>=dev-libs/openssl-0.9.6g:=
+	net-libs/libnsl
 	perl? ( dev-lang/perl:= )
 "
 RDEPEND="
