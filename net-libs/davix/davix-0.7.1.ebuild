@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,6 +32,16 @@ RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="test? ( tools )"
 
+src_prepare() {
+	cmake-utils_src_prepare
+
+	for x in doc test; do
+		if ! use $x; then
+			sed -i -e "/add_subdirectory ($x)/d" CMakeLists.txt
+		fi
+	done
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
@@ -44,7 +54,6 @@ src_configure() {
 		-DSTATIC_LIBRARY=OFF
 		-DSYSCONF_INSTALL_DIR="${EPREFIX}/etc"
 		-DBUILD_TESTING=$(usex test)
-		-DUNIT_TESTS=$(usex test)
 	)
 	cmake-utils_src_configure
 }
@@ -61,5 +70,9 @@ src_install() {
 
 	if ! use tools; then
 		rm -rf "${ED}/usr/share/man/man1"
+	fi
+
+	if use test; then
+		rm -rf "${ED}/usr/bin/davix-unit-tests"
 	fi
 }
