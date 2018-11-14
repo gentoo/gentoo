@@ -1,5 +1,5 @@
 DEFINED_PHASES=config configure install postinst prepare unpack
-DEPEND=acl? ( virtual/acl ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) selinux? ( sys-libs/libselinux ) tokyocabinet? ( dev-db/tokyocabinet ) qdbm? ( dev-db/qdbm ) libvirt? ( app-emulation/libvirt ) xml? ( dev-libs/libxml2:2 ) dev-libs/openssl dev-libs/libpcre >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=acl? ( virtual/acl ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) selinux? ( sys-libs/libselinux ) tokyocabinet? ( dev-db/tokyocabinet ) qdbm? ( dev-db/qdbm ) libvirt? ( app-emulation/libvirt ) xml? ( dev-libs/libxml2:2 ) dev-libs/openssl dev-libs/libpcre net-libs/libnsl >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=An automated suite of programs for configuring and maintaining Unix-like computers
 EAPI=5
 HOMEPAGE=http://www.cfengine.org/
@@ -7,9 +7,9 @@ IUSE=acl examples libvirt mysql masterfiles postgres +qdbm selinux tokyocabinet 
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 PDEPEND=vim-syntax? ( app-vim/cfengine-syntax )
-RDEPEND=acl? ( virtual/acl ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) selinux? ( sys-libs/libselinux ) tokyocabinet? ( dev-db/tokyocabinet ) qdbm? ( dev-db/qdbm ) libvirt? ( app-emulation/libvirt ) xml? ( dev-libs/libxml2:2 ) dev-libs/openssl dev-libs/libpcre
+RDEPEND=acl? ( virtual/acl ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) selinux? ( sys-libs/libselinux ) tokyocabinet? ( dev-db/tokyocabinet ) qdbm? ( dev-db/qdbm ) libvirt? ( app-emulation/libvirt ) xml? ( dev-libs/libxml2:2 ) dev-libs/openssl dev-libs/libpcre net-libs/libnsl
 REQUIRED_USE=^^ ( qdbm tokyocabinet )
 SLOT=3
 SRC_URI=http://cfengine.package-repos.s3.amazonaws.com/tarballs/cfengine-3.6.2.tar.gz -> cfengine-3.6.2.tar.gz masterfiles? ( http://cfengine.package-repos.s3.amazonaws.com/tarballs/masterfiles-3.6.2.tar.gz -> cfengine-masterfiles-3.6.2.tar.gz )
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=7839610b0a4451dbc64f11427a7cd7c7
+_md5_=86c09dc16a7362df7c9650d96a18ad89
