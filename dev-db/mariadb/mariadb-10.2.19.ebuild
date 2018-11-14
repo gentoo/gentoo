@@ -39,7 +39,6 @@ RESTRICT="!bindist? ( bindist ) libressl? ( test )"
 
 REQUIRED_USE="jdbc? ( extraengine server !static )
 	server? ( tokudb? ( jemalloc !tcmalloc ) )
-	!server? ( !extraengine )
 	?? ( tcmalloc jemalloc )
 	static? ( yassl !pam )"
 
@@ -260,6 +259,13 @@ src_unpack() {
 }
 
 src_prepare() {
+	_disable_plugin() {
+		echo > "${S%/}/plugin/${1}/CMakeLists.txt" || die
+	}
+	_disable_engine() {
+		echo > "${S%/}/storage/${1}/CMakeLists.txt" || die
+	}
+
 	if use tcmalloc; then
 		echo "TARGET_LINK_LIBRARIES(mysqld tcmalloc)" >> "${S}/sql/CMakeLists.txt"
 	fi
@@ -269,12 +275,36 @@ src_prepare() {
 	sed -i -e 's/ build_lzma//' -e 's/ build_snappy//' "${S}/storage/tokudb/PerconaFT/ft/CMakeLists.txt" || die
 	sed -i -e 's/add_dependencies\(tokuportability_static_conv build_jemalloc\)//' "${S}/storage/tokudb/PerconaFT/portability/CMakeLists.txt" || die
 
-	# Remove the bundled groonga
-	# There is no CMake flag, it simply checks for existance
-	rm -r "${S}"/storage/mroonga/vendor/groonga || die "could not remove packaged groonga"
+	local plugin
+	local server_plugins=( handler_socket auth_socket feedback metadata_lock_info
+				locale_info qc_info server_audit sql_errlog )
+	local test_plugins=( audit_null auth_examples daemon_example fulltext
+				debug_key_management example_key_management )
+	if ! use server; then # These plugins are for the server
+		for plugin in "${server_plugins[@]}" ; do
+			_disable_plugin "${plugin}"
+		done
+	fi
 
-	if ! use server; then
-		rm -r "${S}"/plugin/handler_socket || die
+	if ! use test; then # These plugins are only used during testing
+		for plugin in "${test_plugins[@]}" ; do
+			_disable_plugin "${plugin}"
+		done
+		_disable_engine test_sql_discovery
+	fi
+
+	_disable_engine example
+
+	if ! use oqgraph ; then # avoids extra library checks
+		_disable_engine oqgraph
+	fi
+
+	if use mroonga ; then
+		# Remove the bundled groonga
+		# There is no CMake flag, it simply checks for existance
+		rm -r "${S}"/storage/mroonga/vendor/groonga || die "could not remove packaged groonga"
+	else
+		_disable_engine mroonga
 	fi
 
 	cmake-utils_src_prepare
@@ -350,6 +380,9 @@ multilib_src_configure() {
 		-DWITH_EXTERNAL_ZLIB=YES
 		-DSUFFIX_INSTALL_DIR=""
 		-DWITH_UNITTEST=OFF
+		-DCLIENT_PLUGIN_DIALOG=OFF
+		-DCLIENT_PLUGIN_AUTH_GSSAPI_CLIENT=OFF
+		-DCLIENT_PLUGIN_MYSQL_CLEAR_PASSWORD=STATIC
 	)
 	if use test ; then
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mariadb/mysql-test )
@@ -358,7 +391,7 @@ multilib_src_configure() {
 	fi
 
 	if ! use yassl ; then
-		mycmakeargs+=( -DWITH_SSL=system )
+		mycmakeargs+=( -DWITH_SSL=system -DCLIENT_PLUGIN_SHA256_PASSWORD=STATIC )
 	else
 		mycmakeargs+=( -DWITH_SSL=bundled )
 	fi
