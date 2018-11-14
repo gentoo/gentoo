@@ -3255,6 +3255,7 @@ media-sound/qmmp:qtmedia - Enable playback via dev-qt/qtmultimedia
 media-sound/qmmp:scrobbler - Enable audioscrobbler/last.fm support
 media-sound/qmmp:shout - Enable shoutcast plug-in via media-libs/libshout.
 media-sound/qmmp:sid - Build with SID (Commodore 64 Audio) support
+media-sound/qmmp:sndfile - Enable wav playback support via media-libs/libsndfile
 media-sound/qmmp:soxr - Use the SoX resampling library
 media-sound/qmmp:stereo - Enable stereo effect
 media-sound/qmmp:tray - Build tray icon
