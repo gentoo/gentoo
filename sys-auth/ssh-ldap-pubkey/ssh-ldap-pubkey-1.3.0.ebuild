@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
+IUSE="schema test"
 RESTRICT="!test? ( test )"
 
 MY_CDEPEND="
@@ -40,7 +40,7 @@ DEPEND="
 # We need to block previous net-misc/openssh packages
 # to avoid file collision on "/etc/openldap/schema/openssh-lpk.schema"
 RDEPEND="${MY_CDEPEND}
-	!net-misc/openssh[ldap]"
+	schema? ( !net-misc/openssh[ldap] )"
 
 DOCS=( README.md CHANGELOG.adoc )
 
@@ -51,8 +51,10 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	insinto /etc/openldap/schema
-	doins etc/openssh-lpk.schema
+	if use schema; then
+		insinto /etc/openldap/schema
+		doins etc/openssh-lpk.schema
+	fi
 
 	local MY_DOCDIR="/usr/share/doc/${PF}/examples"
 	insinto "${MY_DOCDIR}"
