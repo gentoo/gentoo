@@ -26,20 +26,12 @@ pkg_setup() {
 		eerror "This package requires kernel version 3.13 or newer to work properly."
 	fi
 }
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	local myeconfargs=(
 		$(use_enable static-libs static)
 	)
 	econf "${myeconfargs[@]}"
-}
-
-src_test() {
-	default
 }
 
 src_install() {
