@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,6 +38,7 @@ COMMON="
 		x11-libs/gtk+:2
 		x11-libs/libX11
 		x11-libs/libXext
+		x11-libs/libXv
 		x11-libs/pango[X]
 		x11-libs/pangox-compat
 	)
