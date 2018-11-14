@@ -63,6 +63,7 @@ crossbeam-epoch-0.6.1
 crossbeam-utils-0.2.2
 crossbeam-utils-0.5.0
 crossbeam-utils-0.6.0
+crossbeam-utils-0.6.1
 deflate-0.7.19
 dirs-1.0.4
 dlib-0.4.1
@@ -80,7 +81,7 @@ euclid-0.17.3
 expat-sys-2.1.6
 failure-0.1.3
 failure_derive-0.1.3
-filetime-0.2.2
+filetime-0.2.3
 flate2-1.0.4
 fnv-1.0.6
 font-0.1.0
@@ -155,7 +156,7 @@ named_pipe-0.3.0
 native-tls-0.1.5
 net2-0.2.33
 nix-0.11.0
-nodrop-0.1.12
+nodrop-0.1.13
 nom-3.2.1
 nom-4.1.1
 notify-4.0.6
@@ -186,7 +187,7 @@ phf_shared-0.7.23
 pkg-config-0.3.14
 png-0.12.0
 podio-0.1.6
-proc-macro2-0.4.21
+proc-macro2-0.4.23
 quick-error-1.2.2
 quote-0.3.15
 quote-0.6.10
@@ -240,7 +241,7 @@ stable_deref_trait-1.1.1
 static_assertions-0.2.5
 stb_truetype-0.2.4
 strsim-0.7.0
-syn-0.15.19
+syn-0.15.20
 synstructure-0.10.1
 tempdir-0.3.7
 termcolor-1.0.4
@@ -318,6 +319,7 @@ inherit bash-completion-r1 cargo desktop
 DESCRIPTION="GPU-accelerated terminal emulator"
 HOMEPAGE="https://github.com/jwilm/alacritty"
 SRC_URI="https://github.com/jwilm/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~gyakovlev/distfiles/alacritty.png
 	$(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0"
@@ -363,7 +365,9 @@ src_install() {
 	insinto /usr/share/terminfo/a/
 	doins  "${T}"/a/alacritty*
 
+	sed -i '/^Icon=/s/utilities-terminal/alacritty/' alacritty.desktop || die
 	domenu alacritty.desktop
+	doicon "${DISTDIR}"/alacritty.png
 
 	newman alacritty.man alacritty.1
 
