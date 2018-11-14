@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -48,6 +48,8 @@ DEPEND="
 "
 
 DOCS=( AUTHORS MAILING-LIST NEWS README doc/sample.wgetrc )
+
+PATCHES=( "${FILESDIR}"/${P}-fix-dot-prefixed-domain-matching.patch )
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
