@@ -14,10 +14,6 @@ sys-apps/razercfg pm-utils
 sys-power/powermgmt-base pm-utils
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# razor will be removed
-mail-filter/amavisd-new razor
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # sci-libs/spqr is going to be removed
 dev-cpp/eigen test
 kde-apps/cantor julia
