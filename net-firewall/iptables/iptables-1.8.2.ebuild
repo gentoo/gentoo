@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,12 +42,6 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
-	eapply "${FILESDIR}"/${P}-fix-building-without-nft-backend.patch
-	touch -r configure extensions/GNUmakefile.in || die
-
-	eapply "${FILESDIR}"/${P}-support-nft-suffix-for-arptables-and-ebtables.patch
-	touch -r configure iptables/Makefile.{am,in} || die
-
 	# use the saner headers from the kernel
 	rm -f include/linux/{kernel,types}.h
 
@@ -118,6 +112,9 @@ src_install() {
 
 		# Bug 660886
 		rm "${ED%/}"/sbin/{arptables,ebtables} || die
+
+		# Bug 669894
+		rm "${ED%/}"/sbin/ebtables-{save,restore} || die
 	fi
 
 	systemd_dounit "${FILESDIR}"/systemd/iptables-{re,}store.service
