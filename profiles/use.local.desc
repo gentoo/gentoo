@@ -1427,6 +1427,7 @@ dev-lang/rust:cargo - Install cargo component
 dev-lang/rust:clippy - Install clippy component
 dev-lang/rust:rls - Install rls component
 dev-lang/rust:rustfmt - Install rustfmt component
+dev-lang/rust:system-llvm - Use the system LLVM install
 dev-lang/rust:wasm - Build support for the wasm32-unknown-unknown target
 dev-lang/rust-bin:cargo - Install cargo component
 dev-lang/rust-bin:clippy - Install clippy component
