@@ -2910,8 +2910,8 @@ dev-lang/python 2.7.14-r1 2.7.15 3.4.5-r1 3.4.8 3.5.4-r1 3.5.5 3.6.3-r1 3.6.5: A
 dev-lang/python-exec 2.4.6: Python script wrapper
 dev-lang/qu-prolog 10.1: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/ruby 2.3.7 2.3.8: An object-oriented scripting language
-dev-lang/rust 1.29.1: Systems programming language from Mozilla
-dev-lang/rust-bin 1.29.1: Systems programming language from Mozilla
+dev-lang/rust 1.29.1-r1: Systems programming language from Mozilla
+dev-lang/rust-bin 1.29.1-r1: Systems programming language from Mozilla
 dev-lang/sassc 3.4.7: A libsass command line driver
 dev-lang/scala 2.12.4: The Scala Programming Language
 dev-lang/scala-bin 2.11.8 2.12.4: The Scala Programming Language
