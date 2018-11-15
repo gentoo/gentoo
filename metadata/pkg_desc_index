@@ -1890,7 +1890,7 @@ dev-db/oracle-instantclient-jdbc 11.2.0.3 11.2.0.4: Oracle 11g Instant Client: J
 dev-db/oracle-instantclient-odbc 11.2.0.3 11.2.0.4: Oracle 11g Instant Client: ODBC supplement
 dev-db/oracle-instantclient-sqlplus 11.2.0.3 11.2.0.3-r1 11.2.0.4: Oracle 11g Instant Client: SQL*Plus
 dev-db/percona-toolkit 2.2.11 2.2.20: Advanced command-line tools to perform a variety of MySQL and system tasks
-dev-db/percona-xtrabackup 2.4.9: Hot backup utility for MySQL based servers
+dev-db/percona-xtrabackup 2.4.9 2.4.12: Hot backup utility for MySQL based servers
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin4 3.0: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
@@ -9134,7 +9134,7 @@ net-vpn/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-vpn/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/proxies using HTTP
 net-vpn/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-vpn/isatapd 0.9.7-r2: creates and maintains an ISATAP tunnel (rfc5214)
-net-vpn/libreswan 3.25: IPsec implementation for Linux, fork of Openswan
+net-vpn/libreswan 3.25 3.27: IPsec implementation for Linux, fork of Openswan
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/openconnect 7.08-r1: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.7.1: A Fortinet compatible VPN client
