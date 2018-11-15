@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="Ice Window Manager with Themes"
-HOMEPAGE="http://www.icewm.org/ https://github.com/bbidulock/icewm"
+HOMEPAGE="https://ice-wm.org/ https://github.com/bbidulock/icewm"
 LICENSE="GPL-2"
 SRC_URI="https://github.com/bbidulock/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
