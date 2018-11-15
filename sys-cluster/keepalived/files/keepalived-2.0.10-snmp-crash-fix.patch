@@ -1,0 +1,122 @@
+diff --git a/keepalived/check/check_snmp.c b/keepalived/check/check_snmp.c
+index 67ae0e4f9..95c6e6f83 100644
+--- a/keepalived/check/check_snmp.c
++++ b/keepalived/check/check_snmp.c
+@@ -1451,6 +1451,9 @@ static struct variable8 check_vars[] = {
+ void
+ check_snmp_agent_init(const char *snmp_socket)
+ {
++	if (snmp_running)
++		return;
++
+ 	/* We handle the global oid if we are running SNMP */
+ 	snmp_agent_init(snmp_socket, true);
+ 	snmp_register_mib(check_oid, OID_LENGTH(check_oid), "Healthchecker",
+@@ -1462,6 +1465,9 @@ check_snmp_agent_init(const char *snmp_socket)
+ void
+ check_snmp_agent_close()
+ {
++	if (!snmp_running)
++		return;
++
+ 	snmp_unregister_mib(check_oid, OID_LENGTH(check_oid));
+ 	snmp_agent_close(true);
+ }
+diff --git a/keepalived/core/snmp.c b/keepalived/core/snmp.c
+index a9472feae..eb5bed20a 100644
+--- a/keepalived/core/snmp.c
++++ b/keepalived/core/snmp.c
+@@ -325,6 +325,9 @@ snmp_unregister_mib(oid *myoid, size_t len)
+ void
+ snmp_agent_init(const char *snmp_socket, bool base_mib)
+ {
++	if (snmp_running)
++		return;
++
+ 	log_message(LOG_INFO, "Starting SNMP subagent");
+ 	netsnmp_enable_subagent();
+ 	snmp_disable_log();
+@@ -378,6 +381,9 @@ snmp_agent_init(const char *snmp_socket, bool base_mib)
+ void
+ snmp_agent_close(bool base_mib)
+ {
++	if (!snmp_running)
++		return;
++
+ 	if (base_mib)
+ 		snmp_unregister_mib(global_oid, OID_LENGTH(global_oid));
+ 	snmp_shutdown(global_name);
+diff --git a/keepalived/vrrp/vrrp_snmp.c b/keepalived/vrrp/vrrp_snmp.c
+index ca9d46768..db696159c 100644
+--- a/keepalived/vrrp/vrrp_snmp.c
++++ b/keepalived/vrrp/vrrp_snmp.c
+@@ -4552,6 +4552,9 @@ vrrp_handles_global_oid(void)
+ void
+ vrrp_snmp_agent_init(const char *snmp_socket)
+ {
++	if (snmp_running)
++		return;
++
+ 	/* We let the check process handle the global OID if it is running and with snmp */
+ 	snmp_agent_init(snmp_socket, vrrp_handles_global_oid());
+ 
+@@ -4581,6 +4584,9 @@ vrrp_snmp_agent_init(const char *snmp_socket)
+ void
+ vrrp_snmp_agent_close(void)
+ {
++	if (!snmp_running)
++		return;
++
+ #ifdef _WITH_SNMP_VRRP_
+ 	if (global_data->enable_snmp_vrrp)
+ 		snmp_unregister_mib(vrrp_oid, OID_LENGTH(vrrp_oid));
+diff --git a/lib/scheduler.c b/lib/scheduler.c
+index 0a1c334c3..9090a7f88 100644
+--- a/lib/scheduler.c
++++ b/lib/scheduler.c
+@@ -1630,7 +1630,7 @@ thread_fetch_next_queue(thread_master_t *m)
+ 				if (!ev->read) {
+ 					log_message(LOG_INFO, "scheduler: No read thread bound on fd:%d (fl:0x%.4X)"
+ 						      , ev->fd, ep_ev->events);
+-					assert(0);
++					continue;
+ 				}
+ 				thread_move_ready(m, &m->read, ev->read, THREAD_READY_FD);
+ 				ev->read = NULL;
+@@ -1641,7 +1641,7 @@ thread_fetch_next_queue(thread_master_t *m)
+ 				if (!ev->write) {
+ 					log_message(LOG_INFO, "scheduler: No write thread bound on fd:%d (fl:0x%.4X)"
+ 						      , ev->fd, ep_ev->events);
+-					assert(0);
++					continue;
+ 				}
+ 				thread_move_ready(m, &m->write, ev->write, THREAD_READY_FD);
+ 				ev->write = NULL;
+@@ -1710,7 +1710,12 @@ process_threads(thread_master_t *m)
+ 		thread = thread_trim_head(thread_list);
+ 		if (!shutting_down ||
+ 		    (thread->type == THREAD_READY_FD &&
+-		     (thread->u.fd == m->timer_fd || thread->u.fd == m->signal_fd)) ||
++		     (thread->u.fd == m->timer_fd ||
++		      thread->u.fd == m->signal_fd
++#ifdef _WITH_SNMP_
++		      || FD_ISSET(thread->u.fd, &m->snmp_fdset)
++#endif
++							       )) ||
+ 		    thread->type == THREAD_CHILD ||
+ 		    thread->type == THREAD_CHILD_TIMEOUT ||
+ 		    thread->type == THREAD_CHILD_TERMINATED ||
+diff --git a/lib/utils.c b/lib/utils.c
+index 6f9ec254d..e5b82b524 100644
+--- a/lib/utils.c
++++ b/lib/utils.c
+@@ -789,7 +789,9 @@ FILE *fopen_safe(const char *path, const char *mode)
+ {
+ 	int fd;
+ 	FILE *file;
++#ifdef ENABLE_LOG_FILE_APPEND
+ 	int flags = O_NOFOLLOW | O_CREAT | O_CLOEXEC;
++#endif
+ 	int sav_errno;
+ 	char file_tmp_name[] = "/tmp/keepalivedXXXXXX";
+ 
