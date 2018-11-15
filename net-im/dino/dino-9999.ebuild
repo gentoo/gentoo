@@ -33,7 +33,10 @@ RDEPEND="
 	x11-libs/pango
 	gnupg? ( app-crypt/gpgme:1 )
 	http? ( net-libs/libsoup:2.4 )
-	omemo? ( dev-libs/libgcrypt:0 )
+	omemo? (
+		dev-libs/libgcrypt:0
+		media-gfx/qrencode
+	)
 "
 DEPEND="
 	$(vala_depend)
