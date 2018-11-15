@@ -26,7 +26,10 @@
 		<flag name="ppp">Enable support for mobile broadband and PPPoE
 			connections using <pkg>net-dialup/ppp</pkg></flag>
 		<flag name="resolvconf">Use <pkg>net-dns/openresolv</pkg> for managing
-			DNS information</flag>
+			DNS information in /etc/resolv.conf. Generally, a symlink to
+			/run/NetworkManager/resolv.conf is simpler. On systems running
+			systemd-resolved, disable this flag and create a symlink to
+			/run/systemd/resolve/stub-resolv.conf.</flag>
 		<flag name="teamd">Enable Teamd control support</flag>
 		<flag name="wifi">Enable support for wifi and 802.1x security</flag>
 		<flag name="wext">Enable support for the deprecated Wext (Wireless
