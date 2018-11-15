@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ inherit distutils-r1 flag-o-matic toolchain-funcs
 PROTOBUF_VERSION="3.5.2"
 
 DESCRIPTION="Modern open source high performance RPC framework"
-HOMEPAGE="http://www.grpc.io"
+HOMEPAGE="https://www.grpc.io"
 SRC_URI="
 	https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	tools? ( https://github.com/google/protobuf/archive/v${PROTOBUF_VERSION}.tar.gz -> protobuf-${PROTOBUF_VERSION}.tar.gz )
