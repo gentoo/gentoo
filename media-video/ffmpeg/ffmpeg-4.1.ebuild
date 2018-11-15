@@ -304,6 +304,7 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
+	"${FILESDIR}/${P}-vaapi-tools.patch"
 )
 
 MULTILIB_WRAPPED_HEADERS=(
