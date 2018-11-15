@@ -1364,7 +1364,7 @@ app-text/html401 19991224-r3: DTDs for the HyperText Markup Language 4.01
 app-text/htmldoc 1.8.30: Convert HTML pages into a PDF document
 app-text/htmlmin 0.1.11_pre20170909 0.1.12: A configurable HTML Minifier with safety features
 app-text/htmltidy 20090325-r2: Tidy the layout and correct errors in HTML and XML documents
-app-text/hunspell 1.6.1-r1: Hunspell spell checker - an improved replacement for myspell in OOo
+app-text/hunspell 1.6.1-r1 1.6.2-r1: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/info2html 2.0: Converts GNU .info files to HTML
 app-text/iso-codes 3.76: ISO language, territory, currency, script codes and their translations
@@ -2915,7 +2915,7 @@ dev-lang/rust-bin 1.29.1-r1: Systems programming language from Mozilla
 dev-lang/sassc 3.4.7: A libsass command line driver
 dev-lang/scala 2.12.4: The Scala Programming Language
 dev-lang/scala-bin 2.11.8 2.12.4: The Scala Programming Language
-dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4 38.3.0: Stand-alone JavaScript C library
+dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 17.0.0-r4 17.0.0-r5 24.2.0-r3 24.2.0-r4 38.3.0 52.9.1_pre1: Stand-alone JavaScript C++ library
 dev-lang/squirrel 3.1: A interpreted language mainly used for games
 dev-lang/swi-prolog 7.4.2: free, small, and standard compliant Prolog compiler
 dev-lang/swig 2.0.9 3.0.12: Simplified Wrapper and Interface Generator
@@ -8638,7 +8638,7 @@ net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.24.4: GNOME framework for accessing online accounts
 net-libs/gnutls 3.5.19: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
-net-libs/gsoap 2.8.63: A cross-platform open source C and C++ SDK for SOAP/XML Web services
+net-libs/gsoap 2.8.63 2.8.70: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.2: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.7.2: VNC viewer widget for GTK
 net-libs/gupnp 1.0.2: An object-oriented framework for creating UPnP devs and control points
@@ -9930,7 +9930,7 @@ sys-auth/pam_skey 1.1.5-r5: PAM interface for the S/Key authentication system
 sys-auth/pam_ssh 1.98: Uses ssh-agent to provide single sign-on
 sys-auth/pam_u2f 1.0.4-r1: Library for authenticating against PAM with a Yubikey
 sys-auth/pambase 20150213-r1 20150213-r2: PAM base configuration files
-sys-auth/polkit 0.113-r4: Policy framework for controlling privileges for system-wide services
+sys-auth/polkit 0.113-r4 0.115-r1: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
 sys-auth/polkit-qt 0.112.0_p20160416-r2: PolicyKit Qt API wrapper library
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
