@@ -262,7 +262,7 @@ RDEPEND="
 RDEPEND="${RDEPEND}
 	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 	!libressl? (
-		openssl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
+		openssl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 		!openssl? ( gnutls? ( >=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}] ) )
 	)
 "
