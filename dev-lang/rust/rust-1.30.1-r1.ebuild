@@ -68,6 +68,11 @@ toml_usex() {
 	usex "$1" true false
 }
 
+pkg_setup() {
+	python-any-r1_pkg_setup
+	llvm_pkg_setup
+}
+
 src_prepare() {
 	local rust_stage0_root="${WORKDIR}"/rust-stage0
 
