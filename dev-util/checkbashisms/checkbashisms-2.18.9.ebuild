@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="mirror://debian/pool/main/d/${MY_PN}/${MY_P/-/_}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 # Requires python packages to check tools we don't need anyway
@@ -27,7 +27,7 @@ S="${WORKDIR}/${MY_P}/scripts"
 src_prepare() {
 	default
 
-	eapply -p2 "${FILESDIR}"/${PN}-2.15.9-command-vV.patch
+	eapply -p2 "${FILESDIR}"/${PN}-2.18.6-command-vV.patch
 
 	sed "s@###VERSION###@${PV}@" -i checkbashisms.pl || die
 }
