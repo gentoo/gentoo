@@ -248,9 +248,6 @@ PATCHES=(
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
-
-	# TODO: upstream
-	"${FILESDIR}/${PN}-5.2.5.1-glibc-2.24.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
