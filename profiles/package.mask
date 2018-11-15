@@ -51,6 +51,7 @@ dev-python/aldryn-search
 dev-python/aldryn-bootstrap3
 dev-python/django-filer
 dev-python/django-mptt
+dev-python/django-standard-form
 
 # Sergei Trofimovich <slyfox@gentoo.org> (13 Nov 2018)
 # New version started creating files when input file is not set.
