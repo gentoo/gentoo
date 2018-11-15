@@ -3,6 +3,11 @@
 
 # This file requires >=portage-2.1.1
 
+# Thomas Deutschmann <whissi@gentoo.org> (15 Nov 2018)
+# - rdrand plugin is supported on x86
+# - padlock plugin is supported on x86
+net-vpn/strongswan -strongswan_plugins_rdrand -strongswan_plugins_padlock
+
 # Alexys Jacob <ultrabug@gentoo.org> (05 Nov 2018)
 # Requires dev-db/mongodb which has dropped x86 support
 net-analyzer/zmap mongo
