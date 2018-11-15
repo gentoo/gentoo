@@ -502,10 +502,6 @@ media-gfx/splash-themes-livedvd
 # dependencies. Removal in 30 days.
 dev-tcltk/ck
 
-# Matt Turner <mattst88@gentoo.org> (16 Oct 2018)
-# Unmaintained. Unused. Removal in 30 days. Bug #668826
-media-libs/libomxil-bellagio
-
 # Sobhan Mohammadpour <sobhan@gentoo.org> (15 Oct 2018)
 # Masked for testing.
 sys-apps/bubblewrap
