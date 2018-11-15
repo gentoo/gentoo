@@ -38,7 +38,7 @@ LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
 IUSE="clippy cpu_flags_x86_sse2 debug doc +jemalloc libressl rls rustfmt wasm ${ALL_LLVM_TARGETS[*]}"
 
-RDEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
+COMMON_DEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
 		jemalloc? ( dev-libs/jemalloc )
 		sys-libs/zlib
 		!libressl? ( dev-libs/openssl:0= )
@@ -46,16 +46,16 @@ RDEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
 		net-libs/libssh2
 		net-libs/http-parser:=
 		net-misc/curl[ssl]"
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	|| (
 		>=sys-devel/gcc-4.7
 		>=sys-devel/clang-3.5
 	)
+	dev-util/cmake"
+RDEPEND="${COMMON_DEPEND}
 	!dev-util/cargo
-	rustfmt? ( !dev-util/rustfmt )
-	dev-util/cmake
-"
+	rustfmt? ( !dev-util/rustfmt )"
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 				x86? ( cpu_flags_x86_sse2 )"
 

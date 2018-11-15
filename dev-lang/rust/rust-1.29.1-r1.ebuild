@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{5,6} pypy )
 
-inherit eapi7-ver multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
+inherit eapi7-ver multiprocessing multilib-build python-any-r1 toolchain-funcs
 
 if [[ ${PV} = *beta* ]]; then
 	betaver=${PV//*beta}
@@ -18,10 +18,17 @@ else
 	SLOT="stable/${ABI_VER}"
 	MY_P="rustc-${PV}"
 	SRC="${MY_P}-src.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
+CHOST_amd64=x86_64-unknown-linux-gnu
+CHOST_x86=i686-unknown-linux-gnu
+CHOST_arm64=aarch64-unknown-linux-gnu
+
 RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).0"
+RUST_STAGE0_amd64="rust-${RUST_STAGE0_VERSION}-${CHOST_amd64}"
+RUST_STAGE0_x86="rust-${RUST_STAGE0_VERSION}-${CHOST_x86}"
+RUST_STAGE0_arm64="rust-${RUST_STAGE0_VERSION}-${CHOST_arm64}"
 
 CARGO_DEPEND_VERSION="0.$(($(ver_cut 2) + 1)).0"
 
@@ -29,7 +36,10 @@ DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
 
 SRC_URI="https://static.rust-lang.org/dist/${SRC} -> rustc-${PV}-src.tar.xz
-		$(rust_all_arch_uris rust-${RUST_STAGE0_VERSION})"
+	amd64? ( https://static.rust-lang.org/dist/${RUST_STAGE0_amd64}.tar.xz )
+	x86? ( https://static.rust-lang.org/dist/${RUST_STAGE0_x86}.tar.xz )
+	arm64? ( https://static.rust-lang.org/dist/${RUST_STAGE0_arm64}.tar.xz )
+"
 
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC Sparc SystemZ X86 XCore )
@@ -40,7 +50,7 @@ LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
 IUSE="cargo clippy cpu_flags_x86_sse2 debug doc +jemalloc libressl rls rustfmt wasm ${ALL_LLVM_TARGETS[*]}"
 
-RDEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
+COMMON_DEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
 		jemalloc? ( dev-libs/jemalloc )
 		cargo? (
 			sys-libs/zlib
@@ -50,24 +60,22 @@ RDEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
 			net-libs/http-parser:=
 			net-misc/curl[ssl]
 		)"
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	|| (
 		>=sys-devel/gcc-4.7
 		>=sys-devel/clang-3.5
 	)
+	dev-util/cmake"
+RDEPEND="${COMMON_DEPEND}
 	cargo? ( !dev-util/cargo )
-	rustfmt? ( !dev-util/rustfmt )
-	dev-util/cmake
-"
+	rustfmt? ( !dev-util/rustfmt )"
 PDEPEND="!cargo? ( >=dev-util/cargo-${CARGO_DEPEND_VERSION} )"
 
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 				x86? ( cpu_flags_x86_sse2 )"
 
 S="${WORKDIR}/${MY_P}-src"
-
-PATCHES=( "${FILESDIR}"/${PV}-clippy-sysroot.patch )
 
 toml_usex() {
 	usex "$1" true false
@@ -76,7 +84,8 @@ toml_usex() {
 src_prepare() {
 	local rust_stage0_root="${WORKDIR}"/rust-stage0
 
-	local rust_stage0="rust-${RUST_STAGE0_VERSION}-$(rust_abi)"
+	local rust_stage0_name="RUST_STAGE0_${ARCH}"
+	local rust_stage0="${!rust_stage0_name}"
 
 	"${WORKDIR}/${rust_stage0}"/install.sh --disable-ldconfig --destdir="${rust_stage0_root}" --prefix=/ || die
 
@@ -88,7 +97,8 @@ src_configure() {
 
 	# Collect rust target names to compile standard libs for all ABIs.
 	for v in $(multilib_get_enabled_abi_pairs); do
-		rust_targets="${rust_targets},\"$(rust_abi $(get_abi_CHOST ${v##*.}))\""
+		rust_target_name="CHOST_${v##*.}"
+		rust_targets="${rust_targets},\"${!rust_target_name}\""
 	done
 	if use wasm; then
 		rust_targets="${rust_targets},\"wasm32-unknown-unknown\""
@@ -115,7 +125,8 @@ src_configure() {
 
 	local rust_stage0_root="${WORKDIR}"/rust-stage0
 
-	rust_target="$(rust_abi)"
+	rust_target_name="CHOST_${ARCH}"
+	rust_target="${!rust_target_name}"
 
 	cat <<- EOF > "${S}"/config.toml
 		[llvm]
@@ -138,7 +149,7 @@ src_configure() {
 		tools = [${tools}]
 		[install]
 		prefix = "${EPREFIX}/usr"
-		libdir = "$(get_libdir)/${P}"
+		libdir = "$(get_libdir)"
 		docdir = "share/doc/${P}"
 		mandir = "share/${P}/man"
 		[rust]
@@ -217,7 +228,7 @@ src_install() {
 		abi_libdir=$(get_abi_LIBDIR ${v##*.})
 		rust_target=$(get_abi_CHOST ${v##*.})
 		mkdir -p "${D}/usr/${abi_libdir}"
-		cp "${D}/usr/$(get_libdir)/${P}/rustlib/${rust_target}/lib"/*.so \
+		cp "${D}/usr/$(get_libdir)/rustlib/${rust_target}/lib"/*.so \
 		   "${D}/usr/${abi_libdir}" || die
 	done
 
