@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{5,6} pypy )
 
-inherit eapi7-ver multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
+inherit eapi7-ver llvm multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
 
 if [[ ${PV} = *beta* ]]; then
 	betaver=${PV//*beta}
@@ -36,7 +36,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
-IUSE="clippy cpu_flags_x86_sse2 debug doc +jemalloc libressl rls rustfmt wasm ${ALL_LLVM_TARGETS[*]}"
+IUSE="clippy cpu_flags_x86_sse2 debug doc +jemalloc libressl rls rustfmt system-llvm wasm ${ALL_LLVM_TARGETS[*]}"
 
 COMMON_DEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
 		jemalloc? ( dev-libs/jemalloc )
@@ -45,7 +45,8 @@ COMMON_DEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
 		libressl? ( dev-libs/libressl:0= )
 		net-libs/libssh2
 		net-libs/http-parser:=
-		net-misc/curl[ssl]"
+		net-misc/curl[ssl]
+		system-llvm? ( >=sys-devel/llvm-6:= )"
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	|| (
@@ -78,7 +79,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local rust_target="" rust_targets="" rust_target_name arch_cflags
+	local rust_target="" rust_targets="" arch_cflags
 
 	# Collect rust target names to compile standard libs for all ABIs.
 	for v in $(multilib_get_enabled_abi_pairs); do
@@ -110,6 +111,7 @@ src_configure() {
 		release-debuginfo = $(toml_usex debug)
 		assertions = $(toml_usex debug)
 		targets = "${LLVM_TARGETS// /;}"
+		link-shared = $(toml_usex system-llvm)
 		[build]
 		build = "${rust_target}"
 		host = ["${rust_target}"]
@@ -140,7 +142,7 @@ src_configure() {
 	EOF
 
 	for v in $(multilib_get_enabled_abi_pairs); do
-		rust_target=$(get_abi_CHOST ${v##*.})
+		rust_target=$(rust_abi $(get_abi_CHOST ${v##*.}))
 		arch_cflags="$(get_abi_CFLAGS ${v##*.})"
 
 		cat <<- EOF >> "${S}"/config.env
@@ -154,6 +156,11 @@ src_configure() {
 			linker = "$(tc-getCC)"
 			ar = "$(tc-getAR)"
 		EOF
+		if use system-llvm; then
+			cat <<- EOF >> "${S}"/config.toml
+			    llvm-config = "$(get_llvm_prefix)/bin/llvm-config"
+			EOF
+		fi
 	done
 
 	if use wasm; then
@@ -200,10 +207,9 @@ src_install() {
 			continue
 		fi
 		abi_libdir=$(get_abi_LIBDIR ${v##*.})
-		rust_target=$(get_abi_CHOST ${v##*.})
-		rust_abi=$(rust_abi $rust_target)
+		rust_target=$(rust_abi $(get_abi_CHOST ${v##*.}))
 		mkdir -p "${D}/usr/${abi_libdir}"
-		cp "${D}/usr/$(get_libdir)/${P}/rustlib/${rust_abi}/lib"/*.so \
+		cp "${D}/usr/$(get_libdir)/${P}/rustlib/${rust_target}/lib"/*.so \
 		   "${D}/usr/${abi_libdir}" || die
 	done
 
