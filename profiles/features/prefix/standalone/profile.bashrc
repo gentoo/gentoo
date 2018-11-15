@@ -26,6 +26,9 @@ elif [[ ${CATEGORY}/${PN} == sys-devel/clang && ${EBUILD_PHASE} == configure ]];
     sed -i -e "s@DEFAULT_SYSROOT \"\"@DEFAULT_SYSROOT \"${EPREFIX}\"@" "${S}"/CMakeLists.txt
     eend $?
     pushd "${S}/lib/Driver/ToolChains" >/dev/null
+    ebegin "Use dynamic linker from ${EPREFIX}"
+    sed -i -e "/LibDir.*Loader/s@return \"\/\"@return \"${EPREFIX%/}/\"@" Linux.cpp
+    eend $?
     ebegin "Remove --sysroot call on ld for native toolchain"
     sed -i -e "$(grep -n -B1 sysroot= Gnu.cpp | sed -ne '{1s/-.*//;1p}'),+1 d" Gnu.cpp
     eend $?
