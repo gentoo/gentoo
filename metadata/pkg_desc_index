@@ -7027,7 +7027,7 @@ mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.3.6 1.3.7 1.3.8: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
 mail-client/thunderbird 60.3.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 60.3.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 60.3.1: Thunderbird Mail Client
 mail-client/trojita 0.7-r2: A Qt IMAP e-mail client
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1: sendmail milter for amavisd-new
 mail-filter/amavisd-new 2.7.2 2.8.1-r1 2.11.0-r3: High-performance interface between the MTA and content checkers
@@ -9140,7 +9140,7 @@ net-vpn/openconnect 7.08-r1: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.7.1: A Fortinet compatible VPN client
 net-vpn/openvpn 2.4.4 2.4.6: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
-net-vpn/strongswan 5.6.0-r1 5.7.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
+net-vpn/strongswan 5.7.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tor 0.3.1.10 0.3.4.7_rc: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
