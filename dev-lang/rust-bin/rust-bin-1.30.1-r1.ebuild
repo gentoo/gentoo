@@ -16,17 +16,16 @@ SLOT="stable"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="clippy cpu_flags_x86_sse2 doc libressl rustfmt"
 
-DEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
+DEPEND=""
+RDEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
+	sys-libs/zlib
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
+	net-libs/libssh2
+	net-misc/curl[ssl]
 	!dev-lang/rust:0
 	!dev-util/cargo
-	rustfmt? ( !dev-util/rustfmt )
-"
-RDEPEND="${DEPEND}
-		sys-libs/zlib
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-		net-libs/libssh2
-		net-misc/curl[ssl]"
+	rustfmt? ( !dev-util/rustfmt )"
 REQUIRED_USE="x86? ( cpu_flags_x86_sse2 )"
 
 QA_PREBUILT="

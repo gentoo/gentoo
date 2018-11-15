@@ -3,41 +3,33 @@
 
 EAPI=6
 
-inherit eutils bash-completion-r1 versionator toolchain-funcs
+inherit eutils bash-completion-r1 rust-toolchain versionator toolchain-funcs
 
 MY_P="rust-${PV}"
 
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
-SRC_URI="amd64? ( https://static.rust-lang.org/dist/${MY_P}-x86_64-unknown-linux-gnu.tar.xz )
-	arm? (
-		https://static.rust-lang.org/dist/${MY_P}-arm-unknown-linux-gnueabi.tar.xz
-		https://static.rust-lang.org/dist/${MY_P}-arm-unknown-linux-gnueabihf.tar.xz
-		https://static.rust-lang.org/dist/${MY_P}-armv7-unknown-linux-gnueabihf.tar.xz
-		)
-	arm64? ( https://static.rust-lang.org/dist/${MY_P}-aarch64-unknown-linux-gnu.tar.xz )
-	x86? ( https://static.rust-lang.org/dist/${MY_P}-i686-unknown-linux-gnu.tar.xz )"
+SRC_URI="$(rust_all_arch_uris ${MY_P})"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="cargo clippy cpu_flags_x86_sse2 doc libressl rustfmt"
 
 CARGO_DEPEND_VERSION="0.$(($(get_version_component_range 2) + 1)).0"
 
-DEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
+DEPEND=""
+RDEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
+	cargo? (
+		sys-libs/zlib
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+		net-libs/libssh2
+		net-misc/curl[ssl]
+		!dev-util/cargo
+	)
 	!dev-lang/rust:0
-	cargo? ( !dev-util/cargo )
-	rustfmt? ( !dev-util/rustfmt )
-"
-RDEPEND="${DEPEND}
-		cargo? (
-			sys-libs/zlib
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
-			net-libs/libssh2
-			net-misc/curl[ssl]
-		)"
+	rustfmt? ( !dev-util/rustfmt )"
 PDEPEND="!cargo? ( >=dev-util/cargo-${CARGO_DEPEND_VERSION} )"
 REQUIRED_USE="x86? ( cpu_flags_x86_sse2 )"
 
@@ -56,21 +48,7 @@ pkg_pretend () {
 
 src_unpack() {
 	default
-
-	local postfix
-	use amd64 && postfix=x86_64-unknown-linux-gnu
-
-	if use arm && [[ "$(tc-is-softfloat)" != "no" ]] && [[ ${CHOST} == armv6* ]]; then
-		postfix=arm-unknown-linux-gnueabi
-	elif use arm && [[ ${CHOST} == armv6*h* ]]; then
-		postfix=arm-unknown-linux-gnueabihf
-	elif use arm && [[ ${CHOST} == armv7*h* ]]; then
-		postfix=armv7-unknown-linux-gnueabihf
-	fi
-
-	use arm64 && postfix=aarch64-unknown-linux-gnu
-	use x86 && postfix=i686-unknown-linux-gnu
-	mv "${WORKDIR}/${MY_P}-${postfix}" "${S}" || die
+	mv "${WORKDIR}/${MY_P}-$(rust_abi)" "${S}" || die
 }
 
 src_install() {
