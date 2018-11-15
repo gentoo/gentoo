@@ -8,6 +8,7 @@
   <use>
     <flag name="cargo">Install cargo component</flag>
     <flag name="clippy">Install clippy component</flag>
+    <flag name="system-llvm">Use the system LLVM install</flag>
     <flag name="rls">Install rls component</flag>
     <flag name="rustfmt">Install rustfmt component</flag>
     <flag name="wasm">Build support for the wasm32-unknown-unknown
