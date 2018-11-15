@@ -8,7 +8,7 @@ inherit flag-o-matic toolchain-funcs
 MY_PV="${PV//_pre/-pre}"
 
 DESCRIPTION="Modern open source high performance RPC framework"
-HOMEPAGE="http://www.grpc.io"
+HOMEPAGE="https://www.grpc.io"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
