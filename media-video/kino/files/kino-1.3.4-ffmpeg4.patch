@@ -1,0 +1,13 @@
+diff --git a/old/frame.cc b/src/frame.cc
+index c88508f..1e2573a 100644
+--- a/old/frame.cc
++++ b/src/frame.cc
+@@ -1367,7 +1367,7 @@ bool Frame::CreateEncoder( bool isPAL, bool isWide )
+ 			avcodecEncoder->thread_count = 2;
+ 			avcodecEncoder->time_base= isPAL ? ( AVRational ){ 1, 25 } : ( AVRational ){ 1001, 30000 };
+ 			avcodecEncoder->pix_fmt = isPAL ? AV_PIX_FMT_YUV420P : AV_PIX_FMT_YUV411P;
+-			avcodecEncoder->flags |= CODEC_FLAG_INTERLACED_DCT;
++			avcodecEncoder->flags |= AV_CODEC_FLAG_INTERLACED_DCT;
+ 			avcodec_open2( avcodecEncoder, avcodec_find_encoder( AV_CODEC_ID_DVVIDEO ), NULL );
+ 			av_new_packet( &avpacketEncoder, 144000 );
+ 			tempImage = ( uint8_t* ) av_malloc(

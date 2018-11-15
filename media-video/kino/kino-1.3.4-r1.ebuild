@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -81,6 +81,7 @@ src/page_bttv.cc' po/POTFILES.in || die
 	eapply "${FILESDIR}/${P}-libav-0.8.patch"
 	eapply "${FILESDIR}/${P}-libavcodec-pkg-config.patch"
 	eapply "${FILESDIR}/${P}-ffmpeg3.patch"
+	eapply "${FILESDIR}/${P}-ffmpeg4.patch"
 
 	mv configure.in configure.ac || die
 	eautoreconf
