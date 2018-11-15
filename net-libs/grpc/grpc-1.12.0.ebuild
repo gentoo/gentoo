@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{5,6} )
 inherit python-r1 toolchain-funcs multilib flag-o-matic
 
 DESCRIPTION="Modern open source high performance RPC framework"
-HOMEPAGE="http://www.grpc.io"
+HOMEPAGE="https://www.grpc.io"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
