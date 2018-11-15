@@ -23,7 +23,7 @@ QA_PREBUILT="usr/bin/makemkvcon usr/bin/mmdtsdec"
 DEPEND="
 	sys-libs/glibc
 	dev-libs/expat
-	dev-libs/openssl:0[-bindist(-)]
+	dev-libs/openssl:0=[-bindist(-)]
 	sys-libs/zlib
 	gui? (
 		dev-qt/qtcore:5
