@@ -20,9 +20,8 @@ ADDONS_URI="https://dev-www.libreoffice.org/src/"
 BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
-[[ ${MY_PV} == *9999* ]] && SCM_ECLASS="git-r3"
-inherit autotools bash-completion-r1 check-reqs eapi7-ver flag-o-matic gnome2-utils java-pkg-opt-2 multiprocessing pax-utils python-single-r1 qmake-utils toolchain-funcs xdg-utils ${SCM_ECLASS}
-unset SCM_ECLASS
+[[ ${MY_PV} == *9999* ]] && inherit git-r3
+inherit autotools bash-completion-r1 check-reqs eapi7-ver flag-o-matic gnome2-utils java-pkg-opt-2 multiprocessing pax-utils python-single-r1 qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="A full office productivity suite"
 HOMEPAGE="https://www.libreoffice.org"
@@ -297,6 +296,7 @@ src_unpack() {
 		[[ ${mypv} != ${MY_PV} ]] && branch="${PN}-${mypv/./-}"
 		git-r3_fetch "${base_uri}/${PN}/core" "refs/heads/${branch}"
 		git-r3_checkout "${base_uri}/${PN}/core"
+		LOCOREGIT_VERSION=${EGIT_VERSION}
 
 		git-r3_fetch "${base_uri}/${PN}/help" "refs/heads/master"
 		git-r3_checkout "${base_uri}/${PN}/help" "helpcontent2" # doesn't match on help
@@ -368,6 +368,11 @@ src_configure() {
 		export MOC5="$(qt5_get_bindir)/moc"
 	fi
 
+	local gentoo_buildid="Gentoo official package"
+	if [[ -n ${LOCOREGIT_VERSION} ]]; then
+		gentoo_buildid+=" (from git: ${LOCOREGIT_VERSION})"
+	fi
+
 	# system headers/libs/...: enforce using system packages
 	# --disable-breakpad: requires not-yet-in-tree dev-utils/breakpad
 	# --enable-cairo: ensure that cairo is always required
@@ -404,7 +409,7 @@ src_configure() {
 		--disable-openssl
 		--disable-pdfium
 		--disable-report-builder
-		--with-build-version="Gentoo official package"
+		--with-build-version="${gentoo_buildid}"
 		--enable-extension-integration
 		--with-external-dict-dir="${EPREFIX}/usr/share/myspell"
 		--with-external-hyph-dir="${EPREFIX}/usr/share/myspell"
