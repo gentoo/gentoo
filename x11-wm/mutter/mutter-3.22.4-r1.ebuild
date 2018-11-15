@@ -5,7 +5,7 @@ EAPI=6
 inherit gnome2 virtualx
 
 DESCRIPTION="GNOME 3 compositing window manager based on Clutter"
-HOMEPAGE="https://git.gnome.org/browse/mutter/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/mutter/"
 
 LICENSE="GPL-2+"
 SLOT="0"

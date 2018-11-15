@@ -6,7 +6,7 @@ GNOME2_EAUTORECONF="yes"
 inherit gnome2 virtualx
 
 DESCRIPTION="GNOME 3 compositing window manager based on Clutter"
-HOMEPAGE="https://git.gnome.org/browse/mutter/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/mutter/"
 SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="GPL-2+"
