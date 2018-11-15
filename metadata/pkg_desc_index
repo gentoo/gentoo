@@ -6213,7 +6213,7 @@ dev-util/ccache 3.2.4 3.3.4-r1: fast compiler cache
 dev-util/cdiff 0.9.8: Colored, side-by-side diff terminal viewer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
-dev-util/checkbashisms 2.18.2: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.18.6: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/cloc 1.72: Count Lines of Code
 dev-util/cmake 3.9.6: Cross platform Make
