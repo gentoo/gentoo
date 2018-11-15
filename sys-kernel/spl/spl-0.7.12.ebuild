@@ -15,7 +15,7 @@ fi
 inherit flag-o-matic linux-info linux-mod autotools-utils
 
 DESCRIPTION="The Solaris Porting Layer provides many of the Solaris kernel APIs"
-HOMEPAGE="http://zfsonlinux.org/"
+HOMEPAGE="https://zfsonlinux.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
