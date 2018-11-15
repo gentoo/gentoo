@@ -16,7 +16,7 @@ fi
 inherit autotools-utils bash-completion-r1 flag-o-matic linux-info python-r1 systemd toolchain-funcs udev
 
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
-HOMEPAGE="http://zfsonlinux.org/"
+HOMEPAGE="https://zfsonlinux.org/"
 
 LICENSE="BSD-2 CDDL MIT"
 SLOT="0"
