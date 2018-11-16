@@ -92,7 +92,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
 	>=sys-kernel/linux-headers-${MINKV}
-	virtual/pkgconfig
+	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
 	test? ( sys-apps/dbus )
 	app-text/docbook-xml-dtd:4.2
