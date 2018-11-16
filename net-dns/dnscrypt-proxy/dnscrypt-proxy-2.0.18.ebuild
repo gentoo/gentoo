@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,16 +7,20 @@ EGO_PN="github.com/jedisct1/${PN}"
 
 inherit fcaps golang-build systemd user
 
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://${EGO_PN}.git"
+else
+	SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~x86"
+fi
+
 DESCRIPTION="A flexible DNS proxy, with support for encrypted DNS protocols"
 HOMEPAGE="https://github.com/jedisct1/dnscrypt-proxy"
-SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
-IUSE="test"
-
-DEPEND="<dev-lang/go-1.11"
+IUSE="pie test"
 
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
 PATCHES=( "${FILESDIR}"/config-full-paths-r10.patch )
@@ -32,6 +36,10 @@ src_prepare() {
 	mkdir -p "src/${EGO_PN%/*}" || die
 	mv "${PN}" "src/${EGO_PN}" || die
 	mv "vendor" "src/" || die
+}
+
+src_configure() {
+	EGO_BUILD_FLAGS="-buildmode=$(usex pie pie default)"
 }
 
 src_install() {
