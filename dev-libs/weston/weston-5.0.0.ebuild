@@ -25,7 +25,7 @@ fi
 LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE="colord dbus +drm editor examples fbdev +gles2 headless ivi jpeg +launch lcms rdp remoting +resize-optimization screen-sharing static-libs +suid systemd test wayland-compositor webp +X xwayland"
+IUSE="colord dbus +drm editor examples fbdev +gles2 headless ivi jpeg +launch lcms rdp +resize-optimization screen-sharing static-libs +suid systemd test wayland-compositor webp +X xwayland"
 
 REQUIRED_USE="
 	drm? ( gles2 )
@@ -38,7 +38,7 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/libinput-0.8.0
 	>=dev-libs/wayland-1.12.0
-	>=dev-libs/wayland-protocols-1.14
+	>=dev-libs/wayland-protocols-1.13
 	lcms? ( media-libs/lcms:2 )
 	media-libs/libpng:0=
 	webp? ( media-libs/libwebp:0= )
@@ -64,10 +64,6 @@ RDEPEND="
 		media-libs/mesa[gles2,wayland]
 	)
 	rdp? ( >=net-misc/freerdp-1.1.0:= )
-	remoting? (
-		media-libs/gstreamer:1.0
-		media-libs/gst-plugins-base:1.0
-	)
 	systemd? (
 		sys-auth/pambase[systemd]
 		>=sys-apps/systemd-209[pam]
@@ -120,7 +116,6 @@ src_configure() {
 		$(use_enable launch weston-launch) \
 		$(use_enable colord) \
 		$(use_enable gles2 egl) \
-		$(use_enable remoting) \
 		$(use_enable resize-optimization) \
 		$(use_enable screen-sharing) \
 		$(use_enable suid setuid-install) \
