@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -191,7 +191,7 @@ src_install() {
 		newdoc README README.usbip
 		newdoc AUTHORS AUTHORS.usbip
 		popd >/dev/null
-		dodoc drivers/usb/usbip/usbip_protocol.txt
+		dodoc Documentation/usb/usbip_protocol.txt
 	fi
 
 	mv -f "${D}"/usr/sbin/{,iio_}generic_buffer
