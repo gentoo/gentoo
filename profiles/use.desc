@@ -94,7 +94,6 @@ firebird - Add support for the Firebird relational database
 flac - Add support for FLAC: Free Lossless Audio Codec
 fltk - Add support for the Fast Light Toolkit gui interface
 fontconfig - Support for configuring and customizing font access via media-libs/fontconfig
-foomaticdb - Add support for the foomatic printing driver database
 fortran - Add support for fortran
 freetds - Add support for the TDS protocol to connect to MSSQL/Sybase databases
 freewnn - Add support for FreeWnn kana to kanji conversion engine
@@ -194,7 +193,6 @@ mhash - Add support for the mhash library
 migemo - Enable migemo support for Japanese
 mikmod - Add libmikmod support to allow playing of SoundTracker-style music files
 milter - Add sendmail mail filter (milter) support
-mime - Add MIME support
 minimal - Install a very minimal build (disables, for example, plugins, fonts, most drivers, non-critical features)
 mmap - Add mmap (memory map) support
 mms - Support for Microsoft Media Server (MMS) streams
@@ -319,7 +317,6 @@ subversion - Enable subversion (version control system) support
 suid - Enable setuid root program, with potential security risks
 svg - Add support for SVG (Scalable Vector Graphics)
 svga - Add support for SVGAlib (graphics library)
-sybase - Add support for the Sybase SQL Database Server
 symlink - Force kernel ebuilds to automatically update the /usr/src/linux symlink
 syslog - Enable support for syslog
 systemd - Enable use of systemd-specific libraries and features like socket activation or session tracking
