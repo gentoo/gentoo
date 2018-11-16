@@ -158,7 +158,9 @@ src_prepare() {
 	sed -i -e '/"dns.resolver":/d' "${S}"/third_party/wscript || die
 
 	# unbundle iso8601 unless tests are enabled
-	use test || sed -i -e '/"iso8601":/d' "${S}"/third_party/wscript || die
+	if ! use test ; then
+		sed -i -e '/"iso8601":/d' "${S}"/third_party/wscript || die
+	fi
 
 	# ugly hackaround for bug #592502
 	cp /usr/include/tevent_internal.h "${S}"/lib/tevent/ || die
@@ -231,7 +233,7 @@ multilib_src_install() {
 	waf-utils_src_install
 
 	# Make all .so files executable
-	find "${ED}" -type f -name "*.so" -exec chmod +x {} +
+	find "${ED}" -type f -name "*.so" -exec chmod +x {} + || die
 
 	if multilib_is_native_abi ; then
 		# install ldap schema for server (bug #491002)
