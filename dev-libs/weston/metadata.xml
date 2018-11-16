@@ -15,6 +15,7 @@
 	<flag name="ivi">Enable the IVI shell</flag>
 	<flag name="launch">Install weston-launch utility</flag>
 	<flag name="rdp">Enable Remote Desktop Protocol compositor support</flag>
+	<flag name="remoting">Enable plugin to stream output to remote hosts using <pkg>media-libs/gstreamer</pkg></flag>
 	<flag name="resize-optimization">Increase performance, allocate more RAM. Recommended to disable on Raspberry Pi</flag>
 	<flag name="screen-sharing">Enable screen-sharing through RDP</flag>
 	<flag name="unwind">Enable libunwind usage for backtraces</flag>
