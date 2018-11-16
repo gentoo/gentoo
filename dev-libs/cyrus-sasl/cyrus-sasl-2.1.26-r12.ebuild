@@ -26,7 +26,7 @@ DEPEND="
 	openldap? ( >=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}] )
 	mysql? ( virtual/mysql )
 	pam? ( >=virtual/pam-0-r1[${MULTILIB_USEDEP}] )
-	postgres? ( dev-db/postgresql:= )
+	postgres? ( dev-db/postgresql:* )
 	sqlite? ( >=dev-db/sqlite-3.8.2:3[${MULTILIB_USEDEP}] )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
@@ -127,7 +127,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable java)
 		$(multilib_native_use_with java javahome ${JAVA_HOME})
 		$(multilib_native_use_with mysql mysql "${EPREFIX}"/usr)
-		$(multilib_native_use_with postgres pgsql)
+		$(multilib_native_use_with postgres pgsql "${EPREFIX}"/usr/$(get_libdir)/postgresql)
 		$(use_with sqlite sqlite3 "${EPREFIX}"/usr/$(get_libdir))
 		$(use_enable srp)
 		$(use_enable static-libs static)
