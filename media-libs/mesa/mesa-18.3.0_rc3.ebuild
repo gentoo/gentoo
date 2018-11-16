@@ -301,9 +301,7 @@ pkg_pretend() {
 }
 
 python_check_deps() {
-	if use test; then
-		has_version ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]"
-	fi
+	has_version ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
