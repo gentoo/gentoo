@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="6"
 
-inherit multilib eutils toolchain-funcs linux-info multilib-minimal
+inherit multilib toolchain-funcs linux-info multilib-minimal
 
 DESCRIPTION="Linux Key Management Utilities"
 HOMEPAGE="https://people.redhat.com/dhowells/keyutils/"
 SRC_URI="https://people.redhat.com/dhowells/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
-SLOT="0/1.6"
+SLOT="0/1.8"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="static static-libs test"
 
@@ -18,8 +18,8 @@ RDEPEND=""
 DEPEND="!prefix? ( >=sys-kernel/linux-headers-2.6.11 )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.5.10-endian-check-1.patch
-	"${FILESDIR}"/${PN}-1.5.10-makefile-fixup.patch
+	"${FILESDIR}"/${PN}-1.6-endian-check-1.patch
+	"${FILESDIR}"/${PN}-1.6-makefile-fixup.patch
 	"${FILESDIR}"/${PN}-1.5.10-silence-rpm-check.patch #656446
 	"${FILESDIR}"/${PN}-1.5.10-disable-tests.patch #519062 #522050
 	"${FILESDIR}"/${PN}-1.5.9-header-extern-c.patch
@@ -57,7 +57,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
 
 	# The lsb check is useless, so avoid spurious command not found messages.
 	sed -i -e 's,lsb_release,:,' tests/prepare.inc.sh || die
@@ -65,7 +65,7 @@ src_prepare() {
 	sed -i -r \
 		-e 's:([[:space:]])sh([[:space:]]):\1bash\2:' \
 		tests/{Makefile*,*.sh} || die
-	find tests/ -name '*.sh' -exec sed -i '1s:/sh$:/bash:' {} +
+	find tests/ -name '*.sh' -exec sed -i '1s:/sh$:/bash:' {} + || die
 	# Some tests call the kernel which calls userspace, but that will
 	# run the install keyutils rather than the locally compiled one,
 	# so disable round trip tests.
