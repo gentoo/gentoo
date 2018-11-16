@@ -597,6 +597,7 @@ src_test() {
 	# These are failing in Percona-Server 5.7 for now and are believed to be
 	# false positives or are known to fail:
 	#
+	# encryption.innodb_encryption_tables:              https://jira.percona.com/browse/PS-5036
 	# group_replication.gr_communication_configuration: requires a valid local network address
 	#                                                   which clashes with FEATURES=network-sandbox
 	# main.mysqlshow:                                   https://jira.percona.com/browse/PS-5017
@@ -604,15 +605,36 @@ src_test() {
 	# keyring_vault.keyring_vault_timeout:              requires network access to vault.public-ci.percona.com
 	#                                                   which clashes with FEATURES=network-sandbox
 	# perfschema.show_sanity:                           https://jira.percona.com/browse/PS-5018
+	# rocksdb.rocksdb:                                  https://jira.percona.com/browse/PS-5034
+	# rocksdb.show_engine:                              https://jira.percona.com/browse/PS-5033
+	# rocksdb.show_table_status:                        https://jira.percona.com/browse/PS-5035
+	# x.crud_insert_cast:                               https://jira.percona.com/browse/PS-5032
+	# x.insert_table_bad_column:                        https://jira.percona.com/browse/PS-5032
+	# x.insert_table_bad_numcolumns:                    https://jira.percona.com/browse/PS-5032
+	# x.insert_table_bad_column_type:                   https://jira.percona.com/browse/PS-5032
+	# x.insert_table:                                   https://jira.percona.com/browse/PS-5032
+	# x.update_crud_arrayappend_o:                      https://jira.percona.com/browse/PS-5032
+	# x.update_crud_arrayinsert_o:                      https://jira.percona.com/browse/PS-5032
 	#
 	local t
 
 	for t in \
+		encryption.innodb_encryption_tables \
 		group_replication.gr_communication_configuration \
 		main.mysqlshow \
 		main.percona_bug1289599 \
 		keyring_vault.keyring_vault_timeout \
 		perfschema.show_sanity \
+		rocksdb.rocksdb \
+		rocksdb.show_engine \
+		rocksdb.show_table_status \
+		x.crud_insert_cast \
+		x.insert_table_bad_column \
+		x.insert_table_bad_numcolumns \
+		x.insert_table_bad_column_type \
+		x.insert_table \
+		x.update_crud_arrayappend_o \
+		x.update_crud_arrayinsert_o \
 	; do
 			_disable_test "$t" "False positives in Gentoo / Known bug"
 	done
