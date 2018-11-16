@@ -2,12 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>xmw@gentoo.org</email>
-		<name>Michael Weber</name>
+		<email>rtgiskard@gmail.com</email>
+		<name>giskard</name>
 	</maintainer>
-	<longdescription lang="en">
-Freeplane is a free and open source software application that supports thinking, sharing information and getting things done at work, in school and at home. The software can be used for mind mapping and analyzing the information contained in mind maps.
-	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">freeplane</remote-id>
 	</upstream>

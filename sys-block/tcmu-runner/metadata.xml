@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>rtgiskard@gmail.com</email>
+		<name>giskard</name>
+	</maintainer>
+	<use>
+		<flag name="systemd">Support for systemd</flag>
+		<flag name="rbd">Support for ceph rbd</flag>
+		<flag name="glfs">Support for glusterfs</flag>
+		<flag name="zbc">Support for zoned block device</flag>
+		<flag name="qcow">Support for qcow image file</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">open-iscsi/tcmu-runner</remote-id>
+	</upstream>
+</pkgmetadata>

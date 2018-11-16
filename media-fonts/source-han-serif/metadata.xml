@@ -5,8 +5,7 @@
 		<email>rtgiskard@gmail.com</email>
 		<name>giskard</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>java@gentoo.org</email>
-		<name>Java</name>
-	</maintainer>
+	<upstream>
+		<remote-id type="github">adobe-fonts/source-han-serif</remote-id>
+	</upstream>
 </pkgmetadata>
