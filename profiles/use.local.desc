@@ -1047,6 +1047,7 @@ dev-db/redis:tcmalloc - Use tcmalloc from dev-util/google-perftools for allocati
 dev-db/spatialite:geos - Add the sci-libs/geos library for exact topological tests
 dev-db/spatialite:proj - Add the sci-libs/proj library for reprojection features
 dev-db/spatialite:xls - Add the dev-libs/freexl library for xls import support
+dev-db/sqldeveloper:sybase - Add support for the Sybase SQL Database Server
 dev-db/sqlite:secure-delete - Enable overwriting of deleted content with zeros by default (http://sqlite.org/pragma.html#pragma_secure_delete), causing some performance penalty
 dev-db/sqlite:tools - Install additional tools
 dev-db/unixODBC:minimal - Disable bundled drivers and extra libraries (most users don't need these)
@@ -4599,6 +4600,7 @@ net-nntp/slrn:uudeview - Add support for yEnc coding and more using dev-libs/uul
 net-nntp/tin:cancel-locks - Enable Cancel-Lock header functionality (also enables USE=evil)
 net-nntp/tin:etiquette - Enable the display off posting etiquettes
 net-nntp/tin:gpg - Enable app-crypt/gnupg support
+net-nntp/tin:mime - Add MIME support
 net-p2p/amule:daemon - Enable amule daemon
 net-p2p/amule:remote - Enable remote controlling of the client
 net-p2p/amule:stats - Enable statistic reporting
@@ -4677,6 +4679,7 @@ net-print/hplip:parport - Enable parallel port for devices which require it
 net-print/hplip:scanner - Enable scanner on multifunction devices which support it
 net-print/hplip:snmp - Add support for net-analyzer/net-snmp which enables this driver to work over networks (both for server and client)
 net-print/hplip:static-ppds - Use statically-generated PPDs instead of Dynamic PPDs. Although this is deprecated some printers may still need it to work properly. Use this flag if hp-setup fails to find/create a valid PPD file
+net-print/lprng:foomaticdb - Add support for the foomatic printing driver database
 net-print/magicfilter:lprng-failsafe - Refuse options for compability with certain LPRng versions.
 net-proxy/haproxy:51degrees - Device Detection using 51 Degrees
 net-proxy/haproxy:device-atlas - Use dev-libs/device-atlas-api-c library
