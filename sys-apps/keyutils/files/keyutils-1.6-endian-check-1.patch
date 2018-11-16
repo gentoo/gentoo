@@ -1,0 +1,32 @@
+From 0a99778774df85448aeda0a37b85c43bc8868a9e Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Fri, 16 Nov 2018 12:37:29 +0100
+Subject: [PATCH] fix regexp match against `file /proc/$$/exe` for -fPIE bash
+
+Now that bash is built with PIE enabled, keyutils' check for endianness
+fails because file no longer returns "executable", but instead returns
+"shared object" for file << 5.33 and "pie executable" for file >= 5.33.
+---
+ tests/toolbox.inc.sh | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/toolbox.inc.sh b/tests/toolbox.inc.sh
+index 0ce6db0..712c5bd 100644
+--- a/tests/toolbox.inc.sh
++++ b/tests/toolbox.inc.sh
+@@ -13,10 +13,10 @@
+ echo === $OUTPUTFILE ===
+ 
+ endian=`file -L /proc/$$/exe`
+-if expr "$endian" : '.* MSB \+\(executable\|shared object\).*' >&/dev/null
++if expr "$endian" : '.* MSB \+\(executable\|shared object\|pie executable\).*' >&/dev/null
+ then
+     endian=BE
+-elif expr "$endian" : '.* LSB \+\(executable\|shared object\).*' >&/dev/null
++elif expr "$endian" : '.* LSB \+\(executable\|shared object\|pie executable\).*' >&/dev/null
+ then
+     endian=LE
+ else
+-- 
+2.19.1
+
