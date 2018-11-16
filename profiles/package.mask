@@ -811,11 +811,6 @@ sys-kernel/hardened-sources
 # upstream.
 >=app-text/jabref-bin-4.0
 
-# Pacho Ramos <pacho@gentoo.org> (14 Jul 2017)
-# Randomly broken due to sys-devel/binutils-config bug (#584296).
-# Unmask when it is finally fixed, so people can build the package.
-dev-util/mutrace
-
 # Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
 # Bundles obsolete and vulnerable webkit version.
 # Upstream has stopped development and recommends using
