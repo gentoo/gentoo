@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -153,9 +153,6 @@ src_prepare() {
 	# This is needed for the qt5 version check.
 	sed -e 's@^check_gcc$@cc_maj="$(gcc -dumpversion | cut -d. -f1)" ; cc_min="$(gcc -dumpversion | cut -d. -f2)"@' \
 		-i configure || die
-
-	# Don't use "echo -n"
-	sed 's@ECHO_N="echo -n"@ECHO_N="printf"@' -i configure || die
 
 	# Disable things unused or split into separate ebuilds
 	sed -e "s@MY_LIBDIR@$(get_libdir)@" \
