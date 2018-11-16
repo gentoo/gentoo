@@ -35,6 +35,7 @@ DEPEND="
 	libav? ( >=media-video/libav-0.8.9:0= )
 "
 RDEPEND="${DEPEND}
+	media-video/ccextractor
 	net-misc/wget"
 
 CONFIG_CHECK="~CHR_DEV_SG"
@@ -72,6 +73,9 @@ src_install() {
 	# install profiles and locales
 	insinto /usr/share/MakeMKV
 	doins src/share/*
+
+	# add symlink rather than relying on MMCCEXTRACTOR env var
+	dosym ccextractor /usr/bin/mmccextr
 }
 
 pkg_postinst() {
