@@ -1,0 +1,27 @@
+--- ./configure.ac	2019-11-04 20:09:50.094172283 +0100
++++ ./configure.ac	2019-11-04 20:59:33.775007247 +0100
+@@ -257,6 +257,7 @@
+   alpine_c_client_gccoptlevel="-O0"
+   AC_MSG_RESULT([no])
+ fi
++AC_ARG_WITH([pam], AS_HELP_STRING([--without-pam], [Build without PAM support]))
+ 
+ dnl disable mouse support
+ AC_MSG_CHECKING([option: mouse support enabled])
+@@ -1108,7 +1109,7 @@
+       alpine_PAM="yes"
+     else
+       systype="LNX"
+-      AC_CHECK_LIB(pam, pam_start,
++      AS_IF(test "x$with_pam" != "xno",
+         [
+           alpine_c_client_target="lnp"
+ 	  alpine_PAM="yes"
+@@ -1119,6 +1120,7 @@
+ 	  else
+ 	    alpine_c_client_target="lnx"
+ 	  fi
++	  alpine_PAM="none"
+         ])
+     fi
+     ;;
