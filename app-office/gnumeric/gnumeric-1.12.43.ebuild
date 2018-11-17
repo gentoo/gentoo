@@ -3,20 +3,20 @@
 
 EAPI="6"
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python{3_4,3_5,3_6} )
 
-inherit gnome2 flag-o-matic python-single-r1
+inherit gnome2 flag-o-matic python-r1
 
 DESCRIPTION="The GNOME Spreadsheet"
 HOMEPAGE="http://www.gnumeric.org/"
 LICENSE="GPL-2"
-SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/gnumeric/1.12/gnumeric-1.12.43.tar.xz"
 
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
-IUSE="introspection libgda perl python"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="+introspection libgda perl python"
+# python-loader plugin is python2.7 only
+REQUIRED_USE="python? ( $(python_gen_useflags -2) )"
 
 # Missing gnome-extra/libgnomedb required version in tree
 # but its upstream is dead and will be dropped soon.
@@ -44,17 +44,23 @@ RDEPEND="
 	libgda? ( gnome-extra/libgda:5[gtk] )
 "
 DEPEND="${RDEPEND}
+	app-text/docbook-xml-dtd:4.5
+	app-text/yelp-tools
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.35.0
-	app-text/yelp-tools
 	virtual/pkgconfig
 "
 
-pkg_setup() {
-	use python && python-single-r1_pkg_setup
+src_prepare() {
+	# Manage gi overrides ourselves
+	sed '/SUBDIRS/ s/introspection//' -i Makefile.{am,in} || die
+	gnome2_src_prepare
 }
 
 src_configure() {
+	if use python ; then
+		python_setup 'python2*'
+	fi
 	gnome2_src_configure \
 		--disable-static \
 		--with-zlib \
@@ -62,4 +68,10 @@ src_configure() {
 		$(use_enable introspection) \
 		$(use_with perl) \
 		$(use_with python)
+}
+
+src_install() {
+	gnome2_src_install
+	python_moduleinto gi.overrides
+	python_foreach_impl python_domodule introspection/gi/overrides/Gnm.py
 }
