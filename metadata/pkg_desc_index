@@ -985,6 +985,7 @@ app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common u
 app-misc/dailystrips 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.17: A program (and preload library) to fake system date
 app-misc/datovka 4.10.3: GUI to access the Czech eGov system of Datove schranky
+app-misc/ddate 0.2.2: Perpetual date converter from gregorian to poee calendar
 app-misc/delay 1.6-r2: Sleeplike program that counts down the number of seconds specified
 app-misc/detachtty 9-r1: Attach/detach from interactive processes across the network
 app-misc/detox 1.2.0-r3: Safely remove spaces and strange characters from filenames
@@ -10269,7 +10270,7 @@ sys-power/pmtools 20110323-r1: Collection of tools for ACPI and power management
 sys-power/powermgmt-base 1.31: Script to test whether computer is running on AC power
 sys-power/powernowd 1.00-r4: Daemon to control the speed and voltage of CPUs
 sys-power/powertop 2.8 2.9: tool that helps you find what software is using the most power
-sys-power/suspend 1.0_p20150810: Userspace Software Suspend and S2Ram
+sys-power/suspend 1.0_p20150810 1.0_p20150810-r1: Userspace Software Suspend and S2Ram
 sys-power/upower 0.99.5 0.99.8 0.99.8-r1: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-process/acct 6.6.4-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r2: a periodic command scheduler
