@@ -8,7 +8,7 @@
 # @AUTHOR:
 # Author Justin Lecher <jlec@gentoo.org>
 # Test functions provided by Sebastien Fabbro and Kacper Kowalik
-# @SUPPORTED_EAPIS: 4 5 6
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: Simplify fortran compiler management
 # @DESCRIPTION:
 # If you need a fortran compiler, then you should be inheriting this eclass.
@@ -27,12 +27,15 @@
 #
 # FORTRAN_NEED_OPENMP=1
 
-inherit eutils toolchain-funcs
-
+inherit toolchain-funcs
 case ${EAPI:-0} in
-	4|5|6) EXPORT_FUNCTIONS pkg_setup ;;
+	# not used in the eclass, but left for backward compatibility with legacy users
+	4|5|6) inherit eutils ;;
+	7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
+
+EXPORT_FUNCTIONS pkg_setup
 
 if [[ ! ${_FORTRAN_2_CLASS} ]]; then
 
