@@ -8610,7 +8610,7 @@ net-irc/scrollz 2.2.1: Advanced IRC client based on ircII
 net-irc/shadowircd 6.3.3-r1: An IRCd based on charybdis that adds several useful features
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
-net-irc/unrealircd 3.2.10.7 4.0.18-r1: An advanced Internet Relay Chat daemon
+net-irc/unrealircd 4.0.18-r1: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.0.1 2.2-r1: Portable and multi-interface IRC client
 net-irc/znc 1.7.1: An advanced IRC Bouncer
 net-libs/accounts-qt 1.15: Qt5 bindings for libaccounts-glib
