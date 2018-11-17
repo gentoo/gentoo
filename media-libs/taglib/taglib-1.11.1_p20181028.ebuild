@@ -23,7 +23,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.11-install-examples.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.11-install-examples.patch
+	"${FILESDIR}"/${P}-version-1.11.2.patch
+)
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/taglib-config
