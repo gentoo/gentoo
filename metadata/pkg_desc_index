@@ -1502,13 +1502,13 @@ app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edi
 app-text/xmlto 0.0.26-r1 0.0.28-r1: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/yelp-tools 3.18.0: Collection of tools for building and converting documentation
-app-text/zathura 0.3.8: A highly customizable and functional document viewer
-app-text/zathura-cb 0.1.7: Comic book plug-in for zathura with 7zip, rar, tar and zip support
-app-text/zathura-djvu 0.2.7: DjVu plug-in for zathura
+app-text/zathura 0.3.8 0.4.1: A highly customizable and functional document viewer
+app-text/zathura-cb 0.1.7 0.1.8: Comic book plug-in for zathura with 7zip, rar, tar and zip support
+app-text/zathura-djvu 0.2.7 0.2.8: DjVu plug-in for zathura
 app-text/zathura-meta 0: Meta package for app-text/zathura plugins
-app-text/zathura-pdf-mupdf 0.3.2: PDF plug-in for zathura
-app-text/zathura-pdf-poppler 0.2.8: PDF plug-in for zathura
-app-text/zathura-ps 0.2.5: PostScript plug-in for zathura
+app-text/zathura-pdf-mupdf 0.3.2 0.3.4: PDF plug-in for zathura
+app-text/zathura-pdf-poppler 0.2.8 0.2.9: PDF plug-in for zathura
+app-text/zathura-ps 0.2.5 0.2.6: PostScript plug-in for zathura
 app-vim/ackvim 1.0.9-r1: vim plugin: run ack from vim
 app-vim/airline 0.9: vim plugin: lean & mean statusline for vim that's light as air
 app-vim/airline-themes 0_pre20181021: vim plugin: a collection of themes for vim-airline
@@ -1809,7 +1809,7 @@ dev-ada/asis 2016 2017: To develop tools for Ada software
 dev-ada/aunit 2018: Ada unit testing framework
 dev-ada/aws 2017: A complete Web development framework
 dev-ada/gnat_util 2016 2017: Provides access to GNAT compiler internals for AdaCore utilities
-dev-ada/gnatcoll 2016 2017: GNAT Component Collection
+dev-ada/gnatcoll 2017: GNAT Component Collection
 dev-ada/gnatmem 2018: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2018: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r1 2018-r3: Multi-Language Management
@@ -2886,7 +2886,7 @@ dev-lang/f2c 20060507: Fortran to C converter
 dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting language
 dev-lang/fpc 2.6.4: Free Pascal Compiler
 dev-lang/ghc 7.8.4 7.10.3 8.0.2: The Glasgow Haskell Compiler
-dev-lang/gnat-gpl 2016-r1 2017 2018-r1: GNAT Ada Compiler - GPL version
+dev-lang/gnat-gpl 2016-r2 2017 2018-r1: GNAT Ada Compiler - GPL version
 dev-lang/go 1.10.1 1.10.3: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/icon 9.5.1-r1: very high level language
@@ -2959,7 +2959,7 @@ dev-libs/crypto++ 5.6.5-r1 7.0.0-r3: C++ class library of cryptographic schemes
 dev-libs/cvector 1.0.3-r1: An ANSI C implementation of dynamic arrays (Approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p11: REINER SCT cyberJack pinpad/e-com USB user space driver library
-dev-libs/cyrus-sasl 2.1.26-r9: The Cyrus SASL (Simple Authentication and Security Layer)
+dev-libs/cyrus-sasl 2.1.26-r9 2.1.26-r10: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32: A C++ template library that implements Double-Array
 dev-libs/dbus-glib 0.102 0.108 0.110: D-Bus bindings for glib
@@ -2987,7 +2987,7 @@ dev-libs/gdl 3.22.0: GNOME docking library
 dev-libs/geoip 1.6.9-r1 1.6.10: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1: C/C++ routines for fast arithmetic in GF(2)[x]
-dev-libs/girara 0.2.8: UI library that focuses on simplicity and minimalism
+dev-libs/girara 0.2.8 0.3.1: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.46.0 1.48.7: Javascript bindings for GNOME
 dev-libs/glib 2.52.3: The GLib library of C routines
 dev-libs/gmime 2.6.23 3.2.0: Utilities for creating and parsing messages using MIME
@@ -8361,7 +8361,7 @@ net-analyzer/lft 3.77: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/linkchecker 9.3.1-r1: Check websites for broken links
 net-analyzer/macchanger 1.7.0: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
-net-analyzer/monitoring-plugins 2.2-r2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
+net-analyzer/monitoring-plugins 2.2-r2 2.2-r3: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.4-r1: A tool to monitor the traffic load on network-links
 net-analyzer/mtr 0.87: My TraceRoute, an Excellent network diagnostic tool
@@ -8734,7 +8734,7 @@ net-libs/rabbitmq-c 0.8.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.8 1.1.11: A parsing library for RIPE Atlas result strings
 net-libs/rpcsvc-proto 1.3.1-r1: rpcsvc protocol definitions from glibc
-net-libs/serf 1.3.8: HTTP client library
+net-libs/serf 1.3.8 1.3.8-r1: HTTP client library
 net-libs/shairplay 0_pre20170118: Apple airplay and raop protocol server
 net-libs/signon-oauth2 0.21-r1: OAuth2 plugin for Signon daemon
 net-libs/signon-ui 0.15-r1: Online accounts signon UI
