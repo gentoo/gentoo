@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth hotkeys http gme jack lame libav
+IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav
 	libnotify libsamplerate lirc mms modplug mp3 nls pulseaudio scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
 	|| ( alsa jack pulseaudio sdl )
@@ -116,6 +116,7 @@ src_configure() {
 		--enable-songchange \
 		--disable-coreaudio \
 		--disable-gtk \
+		--disable-hotkey \
 		--disable-notify \
 		--disable-oss4 \
 		--disable-qtglspectrum \
@@ -131,7 +132,6 @@ src_configure() {
 		$(use_enable fluidsynth amidiplug) \
 		$(use_enable flac filewriter) \
 		$(use_enable gme console) \
-		$(use_enable hotkeys hotkey) \
 		$(use_enable http neon) \
 		$(use_enable jack) \
 		$(use_enable lame filewriter_mp3) \
