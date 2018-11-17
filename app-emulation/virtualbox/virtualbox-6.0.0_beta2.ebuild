@@ -350,7 +350,7 @@ src_install() {
 		done
 
 		if use qt5 ; then
-			vbox_inst VirtualBox 4750
+			vbox_inst VirtualBox
 			pax-mark -m "${ED%/}"${vbox_inst_path}/VirtualBox
 
 			if use opengl ; then
