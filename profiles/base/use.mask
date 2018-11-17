@@ -30,7 +30,7 @@ mumble
 video_cards_tdfx
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (04 Nov 2017)
-# ... since audacious is being last-rited ... bug 632513
+# Unkeyworded on most arches, unmasked in supported arch profiles.
 audacious
 
 # Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
