@@ -1,13 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit systemd user
 
-MY_P="${P/_/-}"
 DESCRIPTION="High-performance interface between the MTA and content checkers"
-HOMEPAGE="https://www.ijs.si/software/amavisd/"
-SRC_URI="https://www.ijs.si/software/amavisd/${MY_P}.tar.xz"
+HOMEPAGE="https://gitlab.com/amavis/amavis"
+SRC_URI="${HOMEPAGE}/-/archive/${P}/amavis-${P}.tar.gz"
 PORTAGE_DOHTML_WARN_ON_SKIPPED_FILES=yes
 
 LICENSE="GPL-2 BSD-2"
@@ -51,7 +50,7 @@ RDEPEND="${DEPEND}
 	>=virtual/perl-Time-HiRes-1.49
 	dev-perl/Unix-Syslog
 	dev-perl/Net-LibIDN
-	sys-apps/file
+	dev-perl/File-LibMagic
 	>=sys-libs/db-4.4.20
 	dev-perl/BerkeleyDB
 	dev-perl/Convert-BinHex
@@ -70,7 +69,14 @@ RDEPEND="${DEPEND}
 	zmq? ( dev-perl/ZMQ-LibZMQ3 )"
 
 AMAVIS_ROOT="/var/amavis"
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/amavis-${P}"
+
+pkg_setup() {
+	# Create the user beforehand so that we can install the config file
+	# (and some directories) with group "amavis" in src_install().
+	enewgroup amavis
+	enewuser amavis -1 -1 "${AMAVIS_ROOT}" amavis
+}
 
 src_prepare() {
 	# amavisd-new version 2.11.0 breaks DKIM signing of outbound mail,
@@ -103,8 +109,9 @@ src_prepare() {
 	if ! use spamassassin ; then
 		sed -i -e \
 			"/^#[[:space:]]*@bypass_spam_checks_maps[[:space:]]*=[[:space:]]*(1)/s/^#//" \
-				"${S}/amavisd.conf" || die "missing conf file - sa"
+			"${S}/amavisd.conf" || die "missing conf file - sa"
 	fi
+
 	eapply_user
 }
 
@@ -125,21 +132,32 @@ src_install() {
 		newinitd "${FILESDIR}"/amavis-mc.initd amavis-mc
 	fi
 
+	if use ldap ; then
+		dodir /etc/openldap/schema
+		insinto /etc/openldap/schema
+		newins LDAP.schema ${PN}.schema || die
+	fi
+
+	# The config file should be root:amavis so that the amavis user can
+	# read (only) it after dropping privileges. And of course he should
+	# own everything in his home directory.
 	insinto /etc
-	insopts -m0640
+	insopts -m0640 -g amavis
 	doins amavisd.conf
 
-	newinitd "${FILESDIR}/amavisd.initd-r1" amavisd
+	# Implementation detail? Keepdir calls dodir under the hood.
+	diropts -o amavis -g amavis
+	keepdir "${AMAVIS_ROOT}"/{,db,quarantine,tmp,var}
 
-	systemd_dounit "${FILESDIR}/amavisd.service"
-	use clamav || sed -i -e '/Wants=clamd/d' "${ED}"/usr/lib/systemd/system/amavisd.service
-	use spamassassin || sed -i -e '/Wants=spamassassin/d' "${ED}"/usr/lib/systemd/system/amavisd.service
+	# BEWARE:
+	#
+	# Anything below this line is using the mangled insopts/diropts from
+	# above!
+	#
 
-	keepdir "${AMAVIS_ROOT}"
-	keepdir "${AMAVIS_ROOT}/db"
-	keepdir "${AMAVIS_ROOT}/quarantine"
-	keepdir "${AMAVIS_ROOT}/tmp"
-	keepdir "${AMAVIS_ROOT}/var"
+	newinitd "${FILESDIR}/amavisd.initd-r2" amavisd
+
+	systemd_dounit "${FILESDIR}/amavisd.service-r1"
 
 	dodoc AAAREADME.first INSTALL MANIFEST RELEASE_NOTES TODO \
 		amavisd.conf-default amavisd-custom.conf
@@ -155,18 +173,11 @@ src_install() {
 	docinto test-messages
 	dodoc test-messages/README
 	dodoc test-messages/sample.tar.gz.compl
-
-	if use ldap ; then
-		dodir /etc/openldap/schema
-		insinto /etc/openldap/schema
-		insopts -o root -g root -m 644
-		newins LDAP.schema ${PN}.schema || die
-	fi
 }
 
 pkg_preinst() {
-	enewgroup amavis
-	enewuser amavis -1 -1 "${AMAVIS_ROOT}" amavis
+	# TODO: the following is done as root, but should probably be done
+	# as the amavis user.
 	if use razor ; then
 		if [ ! -d "${ROOT}${AMAVIS_ROOT}/.razor" ] ; then
 			elog "Setting up initial razor config files..."
@@ -176,9 +187,4 @@ pkg_preinst() {
 				"${D}/${AMAVIS_ROOT}/.razor/razor-agent.conf" || die
 		fi
 	fi
-}
-
-pkg_postinst() {
-	chown root:amavis "${ROOT}/etc/amavisd.conf"
-	chown -R amavis:amavis "${ROOT}/${AMAVIS_ROOT}"
 }
