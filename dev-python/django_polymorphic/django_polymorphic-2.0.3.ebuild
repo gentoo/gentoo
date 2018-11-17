@@ -11,7 +11,7 @@ DESCRIPTION="Seamless Polymorphic Inheritance for Django Models"
 HOMEPAGE="https://pypi.org/project/django-polymorphic/"
 
 # pypi tarball does not include 'models.py' and 'admintestcase.py' from test directory
-SRC_URI="https://github.com/django-polymorphic/django-polymorphic/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/django-polymorphic/django-polymorphic/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 KEYWORDS="~amd64 ~x86"
@@ -21,7 +21,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-python/django-1.11
+	>=dev-python/django-1.11[$PYTHON_USEDEP]
 "
 
 DEPEND="
