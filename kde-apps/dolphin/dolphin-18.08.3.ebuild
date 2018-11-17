@@ -62,6 +62,8 @@ RDEPEND="${DEPEND}
 
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-kcrash-init.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package semantic-desktop KF5Baloo)
