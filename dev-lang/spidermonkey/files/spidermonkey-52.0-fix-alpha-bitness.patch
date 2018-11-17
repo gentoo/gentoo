@@ -1,0 +1,32 @@
+
+# HG changeset patch
+# User John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+# Date 1482966103 -3600
+# Node ID 1f4d99d8dff27bcc25eff21dc6a16dae63f48595
+# Parent  ce9e9f0dc752896ac7ba00bb0610b3f731e948b0
+Bug 1326496 - mozbuild: Fix bitness from 32 to 64 bits on alpha. r=glandium
+
+
+diff --git a/python/mozbuild/mozbuild/configure/constants.py b/python/mozbuild/mozbuild/configure/constants.py
+--- a/python/mozbuild/mozbuild/configure/constants.py
++++ b/python/mozbuild/mozbuild/configure/constants.py
+@@ -35,17 +35,17 @@ Kernel = EnumString.subclass(
+     'Linux',
+     'NetBSD',
+     'OpenBSD',
+     'WINNT',
+ )
+ 
+ CPU_bitness = {
+     'aarch64': 64,
+-    'Alpha': 32,
++    'Alpha': 64,
+     'arm': 32,
+     'hppa': 32,
+     'ia64': 64,
+     'mips32': 32,
+     'mips64': 64,
+     'ppc': 32,
+     'ppc64': 64,
+     's390': 32,
+
