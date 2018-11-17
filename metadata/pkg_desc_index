@@ -4679,7 +4679,7 @@ dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling byt
 dev-python/bz2file 0.98: Replacement for bz2.BZ2File with features from newest CPython
 dev-python/cached-property 1.3.1: A cached-property for decorating methods in classes
 dev-python/cachetools 2.0.1 2.1.0: Extensible memoizing collections and decorators
-dev-python/cairocffi 0.7.2 0.8.0: CFFI-based drop-in replacement for Pycairo
+dev-python/cairocffi 0.8.0: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.2-r1: Python wrapper for libcangjie
 dev-python/carbon 0.9.13: Backend data caching and persistence daemon for Graphite
 dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
