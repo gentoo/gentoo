@@ -1,0 +1,43 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/spectrum2_manager"
+command_group="spectrum"
+command_user="spectrum"
+name="Spectrum2 Transport"
+shell="/bin/sh"
+su="/bin/su"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting ${name}"
+	"${su}" "${command_user}" -c "${command} start" -s "${shell}"
+	eend $?
+}
+
+start_pre() {
+	# Letting the spectrum user own '/run/spectrum2' subdir,
+	# because spectrum2_manager (which runs unprivileged) stores individual services PIDs here,
+	# stores individual services PIDs here,
+	# so that it not an init script, which can terminate them later.
+	# Files in this dir are used exclusively by the spectrum2_manager
+	# and are not read by any privileged process. Should be secure.
+	checkpath -d -o "${command_user}:${command_group}" -q "/run/spectrum2"
+}
+
+status() {
+	ebegin "Status ${name}"
+	"${su}" "${command_user}" -c "${command} status" -s "${shell}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${name}"
+	"${su}" "${command_user}" -c "${command} stop" -s "${shell}"
+	eend $?
+}
+
