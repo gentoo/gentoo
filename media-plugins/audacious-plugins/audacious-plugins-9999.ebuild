@@ -5,7 +5,7 @@ EAPI=6
 
 MY_P="${P/_/-}"
 
-DESCRIPTION="Audacious Player - Your music, your way, no exceptions"
+DESCRIPTION="Lightweight and versatile audio player"
 HOMEPAGE="https://audacious-media-player.org/"
 
 if [[ ${PV} == *9999 ]]; then
