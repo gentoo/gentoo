@@ -142,6 +142,8 @@ src_prepare() {
 
 	# Bug 638056
 	epatch "${FILESDIR}/${P}-bootstrap.patch"
+	# add Finalization_Size Attribute
+	epatch "${FILESDIR}/${P}-finalization.patch"
 
 	toolchain_src_prepare
 

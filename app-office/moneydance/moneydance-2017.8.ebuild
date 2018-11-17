@@ -8,7 +8,7 @@ MY_PN="Moneydance"
 inherit desktop gnome2-utils java-pkg-2
 
 DESCRIPTION="A personal finance app for Mac, Windows, Linux, iPhone and iPad"
-HOMEPAGE="https://www.moneydance.com/"
+HOMEPAGE="https://moneydance.com/"
 SRC_URI="
 	amd64? ( https://infinitekind.com/stabledl/current/${MY_PN}_linux_amd64.tar.gz -> ${P}-amd64.tar.gz )
 	x86? ( https://infinitekind.com/stabledl/current/${MY_PN}_linux_x86.tar.gz -> ${P}-x86.tar.gz )
