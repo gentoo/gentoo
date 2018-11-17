@@ -28,10 +28,11 @@ RDEPEND="!app-emulation/virtualbox-bin
 	dev-libs/libxml2
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
-	sys-libs/zlib
+	sys-libs/zlib:=
 	!headless? (
 		media-libs/libsdl:0[X,video]
 		x11-libs/libX11
+		x11-libs/libxcb:=
 		x11-libs/libXcursor
 		x11-libs/libXext
 		x11-libs/libXmu
@@ -196,6 +197,11 @@ src_prepare() {
 	eapply_user
 }
 
+doecho() {
+	echo "$@"
+	"$@" || die
+}
+
 src_configure() {
 	local myconf=(
 		--with-gcc="$(tc-getCC)"
@@ -227,7 +233,7 @@ src_configure() {
 		myconf+=( --disable-vmmraw )
 	fi
 	# not an autoconf script
-	./configure ${myconf[@]} || die "configure failed"
+	doecho ./configure ${myconf[@]}
 }
 
 src_compile() {
