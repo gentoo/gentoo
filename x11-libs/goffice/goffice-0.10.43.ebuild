@@ -2,14 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-
 GNOME2_LA_PUNT="yes"
 
 inherit gnome2
 
 DESCRIPTION="A library of document-centric objects and utilities"
-HOMEPAGE="https://git.gnome.org/browse/goffice/"
-SRC_URI="https://ftp.gnome.org/pub/GNOME/sources/goffice/0.10/${P}.tar.xz"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/goffice/"
 
 LICENSE="GPL-2"
 SLOT="0.10"
@@ -19,7 +17,7 @@ IUSE="+introspection"
 # FIXME: add lasem to tree
 RDEPEND="
 	>=app-text/libspectre-0.2.6:=
-	>=dev-libs/glib-2.38.0:2
+	>=dev-libs/glib-2.40.0:2
 	>=dev-libs/libxml2-2.4.12:2
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.22:2
@@ -36,6 +34,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-lang/perl
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.12
 	>=dev-util/intltool-0.35
 	virtual/perl-Compress-Raw-Zlib
