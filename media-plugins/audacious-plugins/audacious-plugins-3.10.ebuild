@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,21 +12,17 @@ if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/audacious-media-player/audacious-plugins.git"
 else
-	SRC_URI="
-		!gtk3? ( https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2 )
-		gtk3? ( https://distfiles.audacious-media-player.org/${MY_P}-gtk3.tar.bz2 )"
+	SRC_URI="https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth hotkeys http gme gtk gtk3 jack lame libav
-	libnotify libsamplerate lirc mms modplug mp3 nls pulseaudio qt5 scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
+IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth hotkeys http gme jack lame libav
+	libnotify libsamplerate lirc mms modplug mp3 nls pulseaudio scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
-	^^ ( gtk gtk3 qt5 )
-	qt5? ( !libnotify )
 	|| ( alsa jack pulseaudio sdl )
-	ampache? ( qt5 http )"
+	ampache? ( http )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI
 # builds do NOT install the libaudgui library & headers.
@@ -50,7 +46,12 @@ RDEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib
 	dev-libs/libxml2:2
-	~media-sound/audacious-${PV}[gtk?,gtk3?,qt5?]
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtmultimedia:5
+	dev-qt/qtwidgets:5
+	media-libs/adplug
+	~media-sound/audacious-${PV}
 	aac? ( >=media-libs/faad2-2.7 )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
 	ampache? ( =media-libs/ampache_browser-1* )
@@ -71,21 +72,11 @@ RDEPEND="
 	)
 	fluidsynth? ( media-sound/fluidsynth )
 	http? ( >=net-libs/neon-0.26.4 )
-	gtk? ( x11-libs/gtk+:2 )
-	gtk3? ( x11-libs/gtk+:3 )
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtmultimedia:5
-		dev-qt/qtwidgets:5
-		media-libs/adplug
-	)
 	jack? (
 		>=media-libs/bio2jack-0.4
 		virtual/jack
 	)
 	lame? ( media-sound/lame )
-	libnotify? ( x11-libs/libnotify )
 	libsamplerate? ( media-libs/libsamplerate:= )
 	lirc? ( app-misc/lirc )
 	mms? ( >=media-libs/libmms-0.3 )
@@ -109,23 +100,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( dev-util/intltool )"
 
+PATCHES=( "${FILESDIR}/${P}-fix-slow-search.patch" )
+
 S="${WORKDIR}/${MY_P}"
-
-src_unpack() {
-	if [[ ${PV} == *9999 ]]; then
-		git-r3_src_unpack
-	else
-		default
-		if use gtk3; then
-			mv "${MY_P}"{-gtk3,} || die
-		fi
-	fi
-}
-
-src_prepare() {
-	default
-	[[ ${PV} == *9999 ]] && eautoreconf
-}
 
 src_configure() {
 	if ! use mp3 ; then
@@ -134,10 +111,14 @@ src_configure() {
 
 	econf \
 		--enable-mpris2 \
+		--enable-qt \
+		--enable-qtaudio \
 		--enable-songchange \
+		--disable-coreaudio \
+		--disable-gtk \
+		--disable-notify \
 		--disable-oss4 \
 		--disable-qtglspectrum \
-		--disable-coreaudio \
 		--disable-sndio \
 		$(use_enable aac) \
 		$(use_enable alsa) \
@@ -150,12 +131,10 @@ src_configure() {
 		$(use_enable fluidsynth amidiplug) \
 		$(use_enable flac filewriter) \
 		$(use_enable gme console) \
-		$(use_enable $(usex gtk gtk gtk3) gtk) \
 		$(use_enable hotkeys hotkey) \
 		$(use_enable http neon) \
 		$(use_enable jack) \
 		$(use_enable lame filewriter_mp3) \
-		$(use_enable libnotify notify) \
 		$(use_enable libsamplerate resample) \
 		$(use_enable lirc) \
 		$(use_enable mms) \
@@ -163,8 +142,6 @@ src_configure() {
 		$(use_enable mp3 mpg123) \
 		$(use_enable nls) \
 		$(use_enable pulseaudio pulse) \
-		$(use_enable qt5 qt) \
-		$(use_enable qt5 qtaudio) \
 		$(use_enable scrobbler scrobbler2) \
 		$(use_enable sdl sdlout) \
 		$(use_enable sid) \
