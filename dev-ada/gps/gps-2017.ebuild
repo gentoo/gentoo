@@ -34,7 +34,7 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	!gnat_2016 gnat_2017 !gnat_2018"
+	^^ ( gnat_2016 gnat_2017 ) !gnat_2018"
 
 RESTRICT="test"
 
@@ -44,7 +44,11 @@ PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
 	default
-	GCC_PV=6.3.0
+	if use gnat_2016; then
+		GCC_PV=4.9.4
+	else
+		GCC_PV=6.3.0
+	fi
 	mv configure.{in,ac} || die
 	sed -i \
 		-e "s:@GNATMAKE@:${CHOST}-gnatmake-${GCC_PV}:g" \
