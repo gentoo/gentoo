@@ -61,6 +61,7 @@ RDEPEND="
 	bs2b? ( media-libs/libbs2b )
 	cdda? (
 		>=media-libs/libcddb-1.2.1
+		dev-libs/libcdio:=
 		dev-libs/libcdio-paranoia
 	)
 	cue? ( media-libs/libcue )
