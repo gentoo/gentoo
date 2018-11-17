@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 	GIT_ECLASS="git-r3"
 else
-	COMMIT=4619a4c1ab3b17b13d4b2327ad477912917eaf36
+	COMMIT=b8eea8ccc116388b67e4b042a5b81e87bf7a24e5
 	SRC_URI="https://github.com/${PN}-player/${PN^}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
@@ -47,7 +47,7 @@ COMMON_DEPEND="
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
 	>=media-libs/libmygpo-qt-1.0.9[qt5(+)]
-	media-libs/taglib
+	>=media-libs/taglib-1.11.1_p20181028
 	sys-libs/zlib
 	virtual/glu
 	virtual/opengl
@@ -104,7 +104,7 @@ S="${WORKDIR}/${PN^}-${COMMIT}"
 
 DOCS=( Changelog README.md )
 
-PATCHES=( "${FILESDIR}"/${PN}-fts3-tokenizer.patch )
+PATCHES=( "${FILESDIR}"/${P}-no-dbus.patch )
 
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
@@ -119,6 +119,8 @@ src_prepare() {
 		sed -e "/find_package.*Qt5/s:\ Test::" -i CMakeLists.txt || die
 		cmake_comment_add_subdirectory tests
 	fi
+
+	rm -r 3rdparty/{libmygpo-qt,libmygpo-qt5,taglib} || die
 }
 
 src_configure() {
@@ -134,7 +136,6 @@ src_configure() {
 		-DENABLE_DEVICEKIT=OFF
 		-DENABLE_GIO=ON
 		-DENABLE_SPOTIFY_BLOB=OFF
-		-DUSE_BUILTIN_TAGLIB=OFF
 		-DUSE_SYSTEM_GMOCK=ON
 		-DUSE_SYSTEM_PROJECTM=ON
 		-DBUNDLE_PROJECTM_PRESETS=OFF
