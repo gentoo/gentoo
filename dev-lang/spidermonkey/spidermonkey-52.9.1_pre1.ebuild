@@ -48,7 +48,7 @@ src_prepare() {
 
 	eapply "${WORKDIR}/${PN}"
 	eapply "${FILESDIR}"/moz38-dont-hardcode-libc-soname.patch
-	#eapply "${FILESDIR}"/${PN}-52-baseconfig.patch
+	eapply "${FILESDIR}"/${PN}-52.0-fix-alpha-bitness.patch
 
 	eapply_user
 
