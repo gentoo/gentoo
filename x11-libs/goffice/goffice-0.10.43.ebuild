@@ -43,6 +43,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# https://gitlab.gnome.org/GNOME/goffice/merge_requests/2
+	"${FILESDIR}"/${PV}-unittest-build-failure.patch
+)
+
 src_configure() {
 	gnome2_src_configure \
 		--without-lasem \
