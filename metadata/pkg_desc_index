@@ -7626,7 +7626,7 @@ media-libs/libofa 0.9.3-r1: Open Fingerprint Architecture
 media-libs/libogg 1.3.3: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
 media-libs/libopendaap 0.4.0: A library to connect to iTunes(R) music shares
-media-libs/libopenraw 0.1.2: A decoding library for RAW image formats
+media-libs/libopenraw 0.0.9 0.1.2: A decoding library for RAW image formats
 media-libs/libopenshot 0.2.2: Video editing library used by OpenShot
 media-libs/libopenshot-audio 0.1.4: Audio library used by OpenShot
 media-libs/libpagemaker 0.0.4: C++ Library that parses the file format of Aldus/Adobe PageMaker documents.
