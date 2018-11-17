@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,4 +19,7 @@ IUSE=""
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#:' Rakefile || die
+
+	# Skip test that is broken with newer ruby releases
+	sed -i -e  '/test_message/,/^  end/ s:^:#:' test/core_ext/name_error_extension_test.rb || die
 }
