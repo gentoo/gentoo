@@ -43,6 +43,8 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=( "${FILESDIR}/${P}-gcc-7.3.patch" )
+
 src_prepare() {
 	default
 	sed -e "/^as_doc_target_dir/s/appstream/${PF}/" -i docs/meson.build || die
