@@ -204,7 +204,7 @@ src_install() {
 	dosym ../VBoxXPCOM.so /opt/VirtualBox/components/VBoxXPCOM.so
 
 	local each
-	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,NetAdpCtl,NetDHCP,NetNAT,TestOGL,ExtPackHelperApp}; do
+	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,NetAdpCtl,NetDHCP,NetNAT,TestOGL,ExtPackHelperApp} VirtualBox ; do
 		fowners root:vboxusers /opt/VirtualBox/${each}
 		fperms 0750 /opt/VirtualBox/${each}
 		pax-mark -m "${ED%/}"/opt/VirtualBox/${each}
@@ -216,7 +216,7 @@ src_install() {
 
 	if ! use headless ; then
 		# Hardened build: Mark selected binaries set-user-ID-on-execution
-		for each in VBox{SDL,Headless} VirtualBox; do
+		for each in VBox{SDL,Headless} ; do
 			fowners root:vboxusers /opt/VirtualBox/${each}
 			fperms 4510 /opt/VirtualBox/${each}
 			pax-mark -m "${ED%/}"/opt/VirtualBox/${each}
