@@ -1,0 +1,56 @@
+From a4cddf7517dab5f666f1c1ede2a58900f3bc5e53 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Thu, 15 Nov 2018 14:43:57 +0100
+Subject: move kcrash link to dolphin app (which is the effective user)
+
+Summary:
+to successfully use kcrash when linking with as-needed (which is a default
+flag on many linux distros) one also needs to call KCrash::initialize.
+this call happens in the app's main.cpp. as such the kcrash link target
+on the dolphinprivate library doesn't do anything for dolphinprivate but
+only kicks into action for dolphin itself.
+to avoid confusion and make it clear that kcrash is only initialized in the
+application scope the KF5::Crash link target is now on the application
+target, not the library target.
+
+(this makes no difference in the output, kcrash was still correctly linked
+ via dolphinprivate; but only for kdeinit_dolphin, dolphinprivate did
+ not get linked to it with as-needed)
+
+Test Plan: builds; links as expected
+
+Reviewers: elvisangelaccio, #dolphin
+
+Reviewed By: elvisangelaccio, #dolphin
+
+Subscribers: kfm-devel
+
+Tags: #dolphin
+
+Differential Revision: https://phabricator.kde.org/D16896
+---
+ src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 4a1f173..d5206be 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -136,7 +136,6 @@ target_link_libraries(
+     dolphinvcs
+     Qt5::Concurrent
+     Qt5::Gui
+-    KF5::Crash
+     KF5::I18n
+     KF5::IconThemes
+     KF5::KIOCore
+@@ -301,6 +300,7 @@ kf5_add_kdeinit_executable(dolphin ${dolphin_SRCS})
+ target_link_libraries(kdeinit_dolphin PRIVATE
+     dolphinstatic
+     dolphinprivate
++    KF5::Crash
+ )
+ 
+ include(DbusInterfaceMacros)
+-- 
+cgit v0.11.2
