@@ -8,7 +8,7 @@ inherit gnome2-utils xdg-utils
 MY_P="${P/_/-}"
 S="${WORKDIR}/${MY_P}"
 
-DESCRIPTION="Audacious Player - Your music, your way, no exceptions"
+DESCRIPTION="Lightweight and versatile audio player"
 HOMEPAGE="https://audacious-media-player.org/"
 
 if [[ ${PV} == *9999 ]]; then
