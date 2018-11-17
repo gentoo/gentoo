@@ -47,7 +47,7 @@ COMMON_DEPEND="
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
 	>=media-libs/libmygpo-qt-1.0.9[qt5(+)]
-	media-libs/taglib
+	>=media-libs/taglib-1.11.1_p20181028
 	sys-libs/zlib
 	virtual/glu
 	virtual/opengl
@@ -113,6 +113,8 @@ src_prepare() {
 		sed -e "/find_package.*Qt5/s:\ Test::" -i CMakeLists.txt || die
 		cmake_comment_add_subdirectory tests
 	fi
+
+	rm -r 3rdparty/{libmygpo-qt,libmygpo-qt5,taglib} || die
 }
 
 src_configure() {
@@ -128,7 +130,6 @@ src_configure() {
 		-DENABLE_DEVICEKIT=OFF
 		-DENABLE_GIO=ON
 		-DENABLE_SPOTIFY_BLOB=OFF
-		-DUSE_BUILTIN_TAGLIB=OFF
 		-DUSE_SYSTEM_GMOCK=ON
 		-DUSE_SYSTEM_PROJECTM=ON
 		-DBUNDLE_PROJECTM_PRESETS=OFF
