@@ -136,7 +136,6 @@ src_configure() {
 		--enable-mpris2 \
 		--enable-songchange \
 		--disable-oss4 \
-		--disable-qtaudio \
 		--disable-qtglspectrum \
 		--disable-coreaudio \
 		--disable-sndio \
@@ -165,6 +164,7 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_enable pulseaudio pulse) \
 		$(use_enable qt5 qt) \
+		$(use_enable qt5 qtaudio) \
 		$(use_enable scrobbler scrobbler2) \
 		$(use_enable sdl sdlout) \
 		$(use_enable sid) \
