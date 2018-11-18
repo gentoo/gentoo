@@ -64,11 +64,9 @@ RDEPEND="${COMMON_DEPEND}
 	!x11-themes/gtk-engines-qtcurve
 "
 
-DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
+RESTRICT+=" test"
 
-#PATCHES=(
-#	"${FILESDIR}/${P}-add_utils_include.patch"
-#)
+DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
 
 src_configure() {
 	local mycmakeargs=(
