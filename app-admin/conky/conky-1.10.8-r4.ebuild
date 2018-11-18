@@ -12,7 +12,7 @@ SRC_URI="https://github.com/brndnmtthws/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-3 BSD LGPL-2.1 MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
-IUSE="apcupsd audacious cmus curl eve hddtemp ical iconv imlib iostats ipv6 irc
+IUSE="apcupsd cmus curl eve hddtemp ical iconv imlib iostats ipv6 irc
 	lua-cairo lua-imlib lua-rsvg math moc mpd mysql nano-syntax ncurses
 	nvidia +portmon pulseaudio rss systemd thinkpad truetype vim-syntax
 	weather-metar webserver wifi X xmms2"
@@ -30,7 +30,6 @@ COMMON_DEPEND="
 		x11-libs/libXinerama
 		x11-libs/libXfixes
 		x11-libs/libXext
-		audacious? ( >=media-sound/audacious-1.5 dev-libs/glib:2 )
 		xmms2? ( media-sound/xmms2 )
 	)
 	cmus? ( media-sound/cmus )
@@ -110,7 +109,6 @@ src_configure() {
 			-DBUILD_LUA_IMLIB2=$(usex lua-imlib)
 			-DBUILD_LUA_RSVG=$(usex lua-rsvg)
 			-DBUILD_NVIDIA=$(usex nvidia)
-			-DBUILD_AUDACIOUS=$(usex audacious)
 			-DBUILD_XMMS2=$(usex xmms2)
 		)
 	else
@@ -120,7 +118,6 @@ src_configure() {
 			-DBUILD_LUA_CAIRO=OFF
 			-DBUILD_LUA_IMLIB2=OFF
 			-DBUILD_LUA_RSVG=OFF
-			-DBUILD_AUDACIOUS=OFF
 			-DBUILD_XMMS2=OFF
 		)
 	fi
@@ -154,6 +151,7 @@ src_configure() {
 		-DBUILD_I18N=ON
 		-DMAINTAINER_MODE=ON
 		-DRELEASE=ON
+		-DBUILD_AUDACIOUS=OFF
 		-DBUILD_BMPX=OFF
 		-DDOC_PATH=/usr/share/doc/${PF}
 	)
