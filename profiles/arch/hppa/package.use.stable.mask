@@ -17,10 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Sep 2018)
-# media-libs/game-music-emu is not stable.
-media-video/ffmpeg gme
-
 # Andreas Sturmlechner <asturm@gentoo.org> (20 May 2018)
 # media-libs/libraw is not stable
 media-gfx/imagemagick raw
@@ -28,8 +24,9 @@ media-gfx/imagemagick raw
 # Andreas Sturmlechner <asturm@gentoo.org> (20 May 2018)
 # media-video/faac is not stable.
 # media-libs/{libdc1394,x264} is not stable.
+# media-libs/game-music-emu is not stable.
 media-video/libav faac ieee1394 x264
-media-video/ffmpeg ieee1394 x264
+media-video/ffmpeg gme ieee1394 x264
 
 # Andreas Sturmlechner <asturm@gentoo.org> (6 May 2018)
 # sci-visualization/gnuplot is not stable.
