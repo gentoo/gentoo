@@ -116,7 +116,6 @@ lqr
 indi
 chm
 ebook
-celt
 capi
 lensfun
 jingle
