@@ -5,15 +5,17 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 GNOME2_EAUTORECONF=yes
 
-inherit virtualx autotools gnome2 multilib python-single-r1 ltprune git-r3
+MY_PV="${PV/_rc/-RC}"
+MY_P="${PN}-${MY_PV}"
+
+inherit versionator virtualx autotools gnome2 multilib python-single-r1 ltprune
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
-EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
-SRC_URI=""
+SRC_URI="mirror://gimp/v$(get_version_component_range 1-2)/${MY_P}.tar.bz2"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 LANGS="am ar ast az be bg br ca ca@valencia cs csb da de dz el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km kn ko lt lv mk ml ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
 IUSE="alsa aalib altivec aqua debug doc openexr gnome heif postscript jpeg2k cpu_flags_x86_mmx mng python smp cpu_flags_x86_sse udev unwind vector-icons webp wmf xpm"
@@ -70,7 +72,6 @@ RDEPEND=">=dev-libs/glib-2.56.0:2
 DEPEND="${RDEPEND}
 	>=dev-lang/perl-5.10.0
 	dev-libs/appstream-glib
-	dev-util/gdbus-codegen
 	dev-util/gtk-update-icon-cache
 	sys-apps/findutils
 	virtual/pkgconfig
@@ -78,13 +79,14 @@ DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.19
 	doc? ( >=dev-util/gtk-doc-1 )
 	>=sys-devel/libtool-2.2
-	>=sys-devel/autoconf-2.54
 	>=sys-devel/automake-1.11
 	dev-util/gtk-doc-am"
 
 DOCS="AUTHORS ChangeLog* HACKING NEWS README*"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	if use python; then
@@ -105,7 +107,7 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		GEGL="${EPREFIX}"/usr/bin/gegl-0.4
-		GDBUS_CODEGEN="${EPREFIX}"/usr/bin/gdbus-codegen
+		GDBUS_CODEGEN="${EPREFIX}"/bin/false
 
 		--enable-default-binary
 		--disable-silent-rules
@@ -173,7 +175,7 @@ _rename_plugins() {
 	einfo 'Renaming plug-ins to not collide with pre-2.10.6 file layout (bug #664938)...'
 	local prepend=gimp-org-
 	(
-		cd "${ED%/}"/usr/$(get_libdir)/gimp/2.99/plug-ins || exit 1
+		cd "${ED%/}"/usr/$(get_libdir)/gimp/2.0/plug-ins || exit 1
 		for plugin_slash in $(ls -d1 */); do
 		    plugin=${plugin_slash%/}
 		    if [[ -f ${plugin}/${plugin} ]]; then
@@ -204,7 +206,8 @@ src_install() {
 	prune_libtool_files --all
 
 	# Prevent dead symlink gimp-console.1 from downstream man page compression (bug #433527)
-	mv "${ED%/}"/usr/share/man/man1/gimp-console{-*,}.1 || die
+	local gimp_app_version=$(get_version_component_range 1-2)
+	mv "${ED%/}"/usr/share/man/man1/gimp-console{-${gimp_app_version},}.1 || die
 
 	_rename_plugins || die
 	_clean_up_locales

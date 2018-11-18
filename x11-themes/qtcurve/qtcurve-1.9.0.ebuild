@@ -64,6 +64,8 @@ RDEPEND="${COMMON_DEPEND}
 	!x11-themes/gtk-engines-qtcurve
 "
 
+RESTRICT+=" test"
+
 DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
 
 PATCHES=(
