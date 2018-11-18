@@ -4194,6 +4194,7 @@ net-libs/pjproject:webrtc - Enable WebRTC support
 net-libs/qxmpp:vpx - Enable VP8 codec support via media-libs/libvpx
 net-libs/rabbitmq-c:tools - Builds cli tools to interact with brokers
 net-libs/shairplay:alac - Add support for Apple Lossless Audio Codec files
+net-libs/shairplay:playfair - Add support for handling fairplay handshake (used in for example screen mirroring)
 net-libs/shairplay:tools - Build and install a binary shairplay in /usr/bin
 net-libs/telepathy-qt:farstream - Enable support for audio/video calls via farstream
 net-libs/udns:tools - Build and install dnsget, ex-rdns and rblcheck tools
