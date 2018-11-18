@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -116,8 +116,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	rm -f "${WORKDIR}"/patches/0001-ipmi_-replace-the-ipmitool-based-plugin-with-one-bas.patch
-	rm -f "${WORKDIR}"/patches/0008-netstat-plugin-active-connections.patch
+	echo ${PV} > RELEASE || die
+
 	eapply "${WORKDIR}"/patches/*.patch
 
 	eapply_user
