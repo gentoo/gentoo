@@ -17,6 +17,7 @@ IUSE="audit berkdb +cracklib debug nis nls +pie selinux static-libs"
 DEPEND="app-text/docbook-xml-dtd:4.3
 	app-text/docbook-xml-dtd:4.4
 	app-text/docbook-xml-dtd:4.5
+	dev-libs/libxslt
 	nls? ( sys-devel/gettext )"
 
 RDEPEND="${DEPEND}
