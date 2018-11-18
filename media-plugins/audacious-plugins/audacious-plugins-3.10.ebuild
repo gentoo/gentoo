@@ -18,8 +18,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify
-	libnotify libsamplerate lirc mms modplug mp3 nls pulseaudio scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
+IUSE="aac +adplug alsa ampache bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify
+	libsamplerate lirc mms modplug mp3 nls pulseaudio scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
 	|| ( alsa jack pulseaudio sdl )
 	ampache? ( http )"
@@ -55,10 +55,6 @@ RDEPEND="
 	aac? ( >=media-libs/faad2-2.7 )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
 	ampache? ( =media-libs/ampache_browser-1* )
-	aosd? (
-		x11-libs/libXrender
-		x11-libs/libXcomposite
-	)
 	bs2b? ( media-libs/libbs2b )
 	cdda? (
 		>=media-libs/libcddb-1.2.1
@@ -116,6 +112,7 @@ src_configure() {
 		--enable-qt \
 		--enable-qtaudio \
 		--enable-songchange \
+		--disable-aosd \
 		--disable-coreaudio \
 		--disable-gtk \
 		--disable-hotkey \
@@ -126,7 +123,6 @@ src_configure() {
 		$(use_enable aac) \
 		$(use_enable alsa) \
 		$(use_enable ampache) \
-		$(use_enable aosd) \
 		$(use_enable bs2b) \
 		$(use_enable cdda cdaudio) \
 		$(use_enable cue) \
