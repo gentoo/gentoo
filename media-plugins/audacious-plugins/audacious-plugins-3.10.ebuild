@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav
+IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify
 	libnotify libsamplerate lirc mms modplug mp3 nls pulseaudio scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
 	|| ( alsa jack pulseaudio sdl )
@@ -78,6 +78,7 @@ RDEPEND="
 		virtual/jack
 	)
 	lame? ( media-sound/lame )
+	libnotify? ( x11-libs/libnotify )
 	libsamplerate? ( media-libs/libsamplerate:= )
 	lirc? ( app-misc/lirc )
 	mms? ( >=media-libs/libmms-0.3 )
@@ -136,6 +137,7 @@ src_configure() {
 		$(use_enable http neon) \
 		$(use_enable jack) \
 		$(use_enable lame filewriter_mp3) \
+		$(use_enable libnotify notify) \
 		$(use_enable libsamplerate resample) \
 		$(use_enable lirc) \
 		$(use_enable mms) \
