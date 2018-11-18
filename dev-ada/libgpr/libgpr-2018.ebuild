@@ -20,7 +20,7 @@ RDEPEND="dev-ada/xmlada[shared?,static-libs?,static-pic?]
 	dev-ada/xmlada[gnat_2016=,gnat_2017=,gnat_2018=]
 	!net-libs/grpc"
 DEPEND="${RDEPEND}
-	>=dev-ada/gprbuild-2018[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]"
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]"
 
 S="${WORKDIR}"/${MYP}-src
 
