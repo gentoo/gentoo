@@ -1,0 +1,4 @@
+#!/sbin/openrc-run
+command="/usr/sbin/olsrd"
+command_background="yes"
+pidfile="/run/olsrd.pid"
