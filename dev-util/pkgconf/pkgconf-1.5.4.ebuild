@@ -16,7 +16,7 @@ inherit multilib-minimal
 DESCRIPTION="pkg-config compatible replacement with no dependencies other than ANSI C89"
 HOMEPAGE="https://github.com/pkgconf/pkgconf"
 
-LICENSE="BSD-1"
+LICENSE="ISC"
 SLOT="0/3"
 IUSE="+pkg-config test"
 
