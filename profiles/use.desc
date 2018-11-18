@@ -157,7 +157,7 @@ jit - Enable just-in-time compilation for improved performance. May prevent use 
 joystick - Add support for joysticks in all packages
 jpeg - Add JPEG image support
 jpeg2k - Support for JPEG 2000, a wavelet-based image compression format
-kde - Add support for KDE (K Desktop Environment)
+kde - Add support for software made by KDE, a free software community
 kerberos - Add kerberos support
 ladspa - Enable the ability to support ladspa plugins
 lame - Prefer using LAME libraries for MP3 encoding support
