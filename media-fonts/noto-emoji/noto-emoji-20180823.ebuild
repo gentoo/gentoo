@@ -38,6 +38,9 @@ PATCHES=(
 	# From Fedora
 	"${FILESDIR}/${PN}-use-system-pngquant.patch"
 	"${FILESDIR}/${PN}-build-all-flags.patch"
+
+	# https://github.com/googlei18n/noto-emoji/issues/240
+	"${FILESDIR}/${PN}-20180823-build-path.patch"
 )
 
 src_prepare() {
