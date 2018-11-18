@@ -55,20 +55,20 @@ RDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
 	ampache? ( =media-libs/ampache_browser-1* )
 	aosd? (
-		x11-libs/libXrender
 		x11-libs/libXcomposite
+		x11-libs/libXrender
 	)
 	bs2b? ( media-libs/libbs2b )
 	cdda? (
-		>=media-libs/libcddb-1.2.1
 		dev-libs/libcdio:=
 		dev-libs/libcdio-paranoia
+		>=media-libs/libcddb-1.2.1
 	)
 	cue? ( media-libs/libcue )
 	ffmpeg? ( >=virtual/ffmpeg-0.7.3 )
 	flac? (
-		>=media-libs/libvorbis-1.0
 		>=media-libs/flac-1.2.1-r1
+		>=media-libs/libvorbis-1.0
 	)
 	fluidsynth? ( media-sound/fluidsynth )
 	http? ( >=net-libs/neon-0.26.4 )
@@ -100,8 +100,8 @@ RDEPEND="
 	soxr? ( media-libs/soxr )
 	speedpitch? ( media-libs/libsamplerate:= )
 	vorbis? (
-		>=media-libs/libvorbis-1.2.0
 		>=media-libs/libogg-1.1.3
+		>=media-libs/libvorbis-1.2.0
 	)
 	wavpack? ( >=media-sound/wavpack-4.50.1-r1 )"
 
@@ -148,8 +148,8 @@ src_configure() {
 		$(use_enable cdda cdaudio) \
 		$(use_enable cue) \
 		$(use_enable flac) \
-		$(use_enable fluidsynth amidiplug) \
 		$(use_enable flac filewriter) \
+		$(use_enable fluidsynth amidiplug) \
 		$(use_enable gme console) \
 		$(use_enable $(usex gtk gtk gtk3) gtk) \
 		$(use_enable hotkeys hotkey) \
