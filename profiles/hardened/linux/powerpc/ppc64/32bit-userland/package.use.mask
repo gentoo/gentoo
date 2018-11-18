@@ -9,7 +9,7 @@ app-office/libreoffice libreoffice_extensions_nlpsolver libreoffice_extensions_s
 # Unresolved dependencies.
 app-admin/conky apcupsd hddtemp xmms2
 app-admin/gkrellm hddtemp
-media-video/ffmpeg celt frei0r
+media-video/ffmpeg frei0r
 media-video/gpac dvb
 media-video/libav frei0r
 x11-base/xorg-drivers video_cards_glint

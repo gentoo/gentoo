@@ -4,7 +4,6 @@
 # Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
 # Unresolved dependencies.
 app-admin/puppet rrdtool
-media-video/ffmpeg celt
 media-video/gpac dvb
 x11-base/xorg-drivers video_cards_glint
 
@@ -14,6 +13,6 @@ x11-base/xorg-drivers video_cards_glint
 www-servers/nginx nginx_modules_http_lua pcre-jit
 
 # Kacper Kowalik <xarthisius@gentoo.org> (25 Apr 2012)
-# Masking wrt bug 274847 and other unsolved 
+# Masking wrt bug 274847 and other unsolved
 # dependencies
 app-admin/conky apcupsd xmms2 hddtemp
