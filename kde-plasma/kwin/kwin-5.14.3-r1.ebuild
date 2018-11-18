@@ -89,8 +89,9 @@ PDEPEND="
 RESTRICT+=" test"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.14.3-virtualdesktop-crash.patch"
-	"${FILESDIR}/${PN}-5.14.3-resizewindows-crash.patch"
+	"${FILESDIR}/${P}-virtualdesktop-crash.patch"
+	"${FILESDIR}/${P}-resizewindows-crash.patch"
+	"${FILESDIR}/${P}-kcrash-init.patch"
 )
 
 src_prepare() {
