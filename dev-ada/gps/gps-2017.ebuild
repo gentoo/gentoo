@@ -73,6 +73,7 @@ src_compile() {
 	ADAFLAGS+=" -fno-strict-aliasing"
 	emake GPRBUILD_FLAGS="-v ${MAKEOPTS} \
 		-XLIBRARY_TYPE=relocatable \
+		-XGPR_BUILD=relocatable \
 		-XXMLADA_BUILD=relocatable"
 }
 
