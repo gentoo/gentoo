@@ -1,0 +1,54 @@
+From eb916c305a5cd8683e7e8f955740a7c810220e19 Mon Sep 17 00:00:00 2001
+From: Alexey Min <alexey.min@gmail.com>
+Date: Thu, 8 Nov 2018 00:28:30 +0300
+Subject: Fix crash if XDG_CACHE_HOME directory is too small or out of space
+
+Summary:
+Incorrect checking for error return code of posix_fallocate() causes function to think that everything is OK, while it is not, causing crash in some cases.
+
+BUG: 400610
+CCBUG: 339829
+
+Test Plan:
+good test plan provided in https://bugs.kde.org/show_bug.cgi?id=400610 . Works like a charm, tested in KDE Neon dev-ustable
+
+The reason for bug was that return value of posix_fallocate() was assumed to be negative on error, but in fact it is a positive integer. The check was `< 0`, whi should be `!= 0`. ( http://man7.org/linux/man-pages/man3/posix_fallocate.3.html )
+
+With this fix applied test application does not crash, and the output in console widow is:
+```
+No space left on device. Check filesystem free space at your XDG_CACHE_HOME!
+The operating system is unable to promise 10547304 bytes for mapped cache, abandoning the cache for crash-safety.
+org.kde.kcoreaddons: Failed to establish shared memory mapping, will fallback to private memory -- memory usage will increase
+```
+
+Reviewers: dfaure, #frameworks, mpyne
+
+Reviewed By: dfaure
+
+Subscribers: cfeck, kde-frameworks-devel
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D16744
+---
+ src/lib/caching/kshareddatacache_p.h | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/lib/caching/kshareddatacache_p.h b/src/lib/caching/kshareddatacache_p.h
+index 625bc5d..c13275b 100644
+--- a/src/lib/caching/kshareddatacache_p.h
++++ b/src/lib/caching/kshareddatacache_p.h
+@@ -472,7 +472,10 @@ static bool ensureFileAllocated(int fd, size_t fileSize)
+         ;
+     }
+ 
+-    if (result < 0) {
++    if (result != 0) {
++        if (result == ENOSPC) {
++            qCritical() << "No space left on device. Check filesystem free space at your XDG_CACHE_HOME!";
++        }
+         qCritical() << "The operating system is unable to promise"
+                     << fileSize
+                     << "bytes for mapped cache, "
+-- 
+cgit v0.11.2
