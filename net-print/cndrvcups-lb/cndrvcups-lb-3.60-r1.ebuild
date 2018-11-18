@@ -79,6 +79,9 @@ src_install() {
 
 	find "${D}" -name '*.la' -delete || die
 
+	insinto /usr/share/cups/model
+	doins ppd/*.ppd
+
 	cd "${S}/data" || die
 	insinto /usr/share/caepcm
 	doins *
