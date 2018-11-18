@@ -1809,7 +1809,7 @@ app-xemacs/zenirc 1.16 1.18: ZENIRC IRC Client
 dev-ada/asis 2016 2017: To develop tools for Ada software
 dev-ada/aunit 2018: Ada unit testing framework
 dev-ada/aws 2017: A complete Web development framework
-dev-ada/gnat_util 2016 2017: Provides access to GNAT compiler internals for AdaCore utilities
+dev-ada/gnat_util 2017: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll 2017: GNAT Component Collection
 dev-ada/gnatmem 2018: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2018: Translates addresses into filename, line number, and function names
@@ -2887,7 +2887,7 @@ dev-lang/f2c 20060507: Fortran to C converter
 dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting language
 dev-lang/fpc 2.6.4: Free Pascal Compiler
 dev-lang/ghc 7.8.4 7.10.3 8.0.2: The Glasgow Haskell Compiler
-dev-lang/gnat-gpl 2016-r2 2017 2018-r1: GNAT Ada Compiler - GPL version
+dev-lang/gnat-gpl 2016-r3 2017 2018-r1: GNAT Ada Compiler - GPL version
 dev-lang/go 1.10.1 1.10.3: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/icon 9.5.1-r1: very high level language
