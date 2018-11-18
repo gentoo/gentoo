@@ -131,10 +131,6 @@ net-misc/bfgminer adl lm_sensors
 # no point in pursuing it right now.
 app-shells/bash-completion test
 
-# Johannes Huber <johu@gentoo.org> (14 May 2017)
-# Depends on dev-qt/qtwebengine, not keyworded yet.
-kde-apps/kio-extras htmlthumbs
-
 # James Le Cuirot <chewi@gentoo.org> (25 Apr 2017)
 # Oracle doesn't include VisualVM on this platform.
 dev-java/oracle-jdk-bin visualvm
