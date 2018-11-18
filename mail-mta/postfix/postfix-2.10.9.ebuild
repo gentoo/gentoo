@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,7 +32,7 @@ DEPEND=">=dev-libs/libpcre-3.4
 	postgres? ( dev-db/postgresql:* )
 	sasl? (  >=dev-libs/cyrus-sasl-2 )
 	sqlite? ( dev-db/sqlite:3 )
-	ssl? ( dev-libs/openssl:0 )"
+	ssl? ( dev-libs/openssl:0= )"
 
 RDEPEND="${DEPEND}
 	dovecot-sasl? ( net-mail/dovecot )
