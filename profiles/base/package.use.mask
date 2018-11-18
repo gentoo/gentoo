@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Alfredo Tupone <tupone@gentoo.org> (18 Nov 2018)
+# go brokes build of gnat-gpl
+dev-lang/gnat-gpl go
+
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # pm-utils will be removed, bug #659616
 net-misc/wicd pm-utils
