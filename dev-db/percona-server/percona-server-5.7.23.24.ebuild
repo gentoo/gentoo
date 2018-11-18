@@ -608,6 +608,8 @@ src_test() {
 	# rocksdb.rocksdb:                                  https://jira.percona.com/browse/PS-5034
 	# rocksdb.show_engine:                              https://jira.percona.com/browse/PS-5033
 	# rocksdb.show_table_status:                        https://jira.percona.com/browse/PS-5035
+	# rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch:   https://bugs.mysql.com/bug.php?id=89223
+	# rpl.rpl_multi_source_mts_reset_worker_info:       https://jira.percona.com/browse/PS-3786
 	# x.crud_insert_cast:                               https://jira.percona.com/browse/PS-5032
 	# x.insert_table_bad_column:                        https://jira.percona.com/browse/PS-5032
 	# x.insert_table_bad_numcolumns:                    https://jira.percona.com/browse/PS-5032
@@ -628,6 +630,8 @@ src_test() {
 		rocksdb.rocksdb \
 		rocksdb.show_engine \
 		rocksdb.show_table_status \
+		rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch \
+		rpl.rpl_multi_source_mts_reset_worker_info \
 		x.crud_insert_cast \
 		x.insert_table_bad_column \
 		x.insert_table_bad_numcolumns \
