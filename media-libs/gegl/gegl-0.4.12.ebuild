@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,7 +36,7 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	dev-libs/json-glib
-	>=media-libs/babl-0.1.56
+	>=media-libs/babl-0.1.58
 	>=media-libs/libpng-1.6.0:0=
 	sys-libs/zlib
 	virtual/jpeg:0=
@@ -73,6 +73,10 @@ DEPEND="${RDEPEND}
 	)
 	vala? ( $(vala_depend) )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.3.12-failing-tests.patch"
+)
 
 pkg_setup() {
 	use test && use introspection && python-any-r1_pkg_setup
