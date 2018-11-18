@@ -11,8 +11,10 @@ HOMEPAGE="https://www.kde.org/plasma-desktop"
 LICENSE="metapackage"
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="bluetooth +browser-integration crypt +display-manager grub gtk +handbook
-+legacy-systray networkmanager pam plymouth pulseaudio +sddm sdk +wallpapers"
+IUSE="bluetooth +browser-integration consolekit crypt +display-manager elogind grub gtk +handbook
++legacy-systray networkmanager pam plymouth +pm-utils pulseaudio +sddm sdk systemd +wallpapers"
+
+REQUIRED_USE="^^ ( consolekit elogind systemd )"
 
 RDEPEND="
 	$(add_plasma_dep breeze)
@@ -43,13 +45,20 @@ RDEPEND="
 	$(add_plasma_dep powerdevil)
 	$(add_plasma_dep systemsettings)
 	$(add_plasma_dep user-manager)
+	sys-apps/dbus[elogind?,systemd?]
+	sys-auth/polkit[elogind?,systemd?]
+	sys-fs/udisks:2[elogind?,systemd?]
 	bluetooth? ( $(add_plasma_dep bluedevil) )
 	browser-integration? ( $(add_plasma_dep plasma-browser-integration) )
+	consolekit? (
+		>=sys-auth/consolekit-1.0.1
+		pm-utils? ( sys-power/pm-utils )
+	)
 	crypt? ( $(add_plasma_dep plasma-vault) )
 	display-manager? (
 		sddm? (
 			$(add_plasma_dep sddm-kcm)
-			x11-misc/sddm
+			x11-misc/sddm[consolekit?,elogind?,systemd?]
 		)
 		!sddm? ( x11-misc/lightdm )
 	)
@@ -60,8 +69,14 @@ RDEPEND="
 	)
 	handbook? ( $(add_kdeapps_dep khelpcenter) )
 	legacy-systray? ( $(add_plasma_dep xembed-sni-proxy) )
-	networkmanager? ( $(add_plasma_dep plasma-nm) )
-	pam? ( $(add_plasma_dep kwallet-pam) )
+	networkmanager? (
+		$(add_plasma_dep plasma-nm)
+		net-misc/networkmanager[consolekit?,elogind?,systemd?]
+	)
+	pam? (
+		$(add_plasma_dep kwallet-pam)
+		sys-auth/pambase[consolekit?,elogind?,systemd?]
+	)
 	plymouth? (
 		$(add_plasma_dep breeze-plymouth)
 		$(add_plasma_dep plymouth-kcm)

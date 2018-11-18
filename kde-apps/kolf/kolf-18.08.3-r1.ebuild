@@ -29,7 +29,6 @@ DEPEND="
 	$(add_kdeapps_dep libkdegames)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	media-libs/phonon
 "
 RDEPEND="${DEPEND}
 	!kde-apps/kde4-l10n
