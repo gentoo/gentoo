@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://git.pwmt.org/pwmt/zathura-pdf-mupdf.git"
 	EGIT_BRANCH="develop"
 else
-	KEYWORDS="amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 	SRC_URI="https://pwmt.org/projects/zathura-pdf-mupdf/download/${P}.tar.xz"
 fi
 
@@ -20,7 +20,7 @@ HOMEPAGE="https://pwmt.org/projects/zathura-pdf-mupdf/"
 LICENSE="ZLIB"
 SLOT="0"
 
-DEPEND="app-text/mupdf
+DEPEND=">=app-text/mupdf-1.14.0-r2
 	>=app-text/zathura-0.3.9
 	dev-libs/girara
 	dev-libs/glib:2
