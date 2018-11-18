@@ -106,10 +106,6 @@ media-video/mpv -raspberry-pi
 # smallest wav files.
 media-sound/xmms2 mac
 
-# Gilles Dartiguelongue <eva@gentoo.org> (19 Aug 2017)
-# sys-fs/udftools is not keyworded, bug #628310
-sys-block/gparted udf
-
 # Michał Górny <mgorny@gentoo.org> (10 Aug 2017)
 # Requires USE=ipmi which is masked in this profile.
 sys-power/nut ups_drivers_nut-ipmipsu
