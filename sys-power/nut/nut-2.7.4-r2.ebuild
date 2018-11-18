@@ -26,7 +26,7 @@ DEPEND="
 	gui? ( dev-python/pygtk[${PYTHON_USEDEP}] )
 	ipmi? ( sys-libs/freeipmi )
 	snmp? ( net-analyzer/net-snmp )
-	ssl? ( >=dev-libs/openssl-1 )
+	ssl? ( >=dev-libs/openssl-1:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	usb? ( virtual/libusb:0= )
 	xml? ( >=net-libs/neon-0.25.0 )

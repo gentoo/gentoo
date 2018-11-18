@@ -21,7 +21,7 @@ CDEPEND="
 	cgi? ( >=media-libs/gd-2[png] )
 	snmp? ( net-analyzer/net-snmp )
 	usb? ( virtual/libusb:0 )
-	ssl? ( >=dev-libs/openssl-1 )
+	ssl? ( >=dev-libs/openssl-1:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	xml? ( >=net-libs/neon-0.25.0 )
 	ipmi? ( sys-libs/freeipmi )
