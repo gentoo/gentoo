@@ -61,7 +61,7 @@ dev-perl/GD fcgi
 media-libs/libcanberra gnome
 media-libs/mesa vaapi
 media-sound/pulseaudio equalizer qt5 realtime
-media-video/ffmpeg celt ebur128 kvazaar libilbc openh264
+media-video/ffmpeg ebur128 kvazaar libilbc openh264
 media-video/ffmpeg rubberband sdl ssh x265 zeromq zimg
 net-libs/gnutls idn
 net-print/cups-filters pdf

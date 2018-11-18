@@ -57,7 +57,6 @@ emboss
 jack
 lapack
 lqr
-celt
 capi
 lensfun
 kde

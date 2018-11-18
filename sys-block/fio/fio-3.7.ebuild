@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -87,6 +87,10 @@ src_install() {
 	emake install DESTDIR="${D}" prefix="${EPREFIX}/usr" mandir="${EPREFIX}/usr/share/man"
 
 	if use gnuplot ; then
+		sed -i 's:python2.7:python:g' \
+			"${ED}/usr/bin/fio2gnuplot" \
+			"${ED}/usr/bin/fiologparser_hist.py" \
+			"${ED}/usr/bin/fiologparser.py"
 		python_replicate_script \
 			"${ED}/usr/bin/fio2gnuplot" \
 			"${ED}/usr/bin/fiologparser_hist.py" \
