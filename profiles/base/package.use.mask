@@ -32,7 +32,6 @@ mate-extra/mate-power-manager pm-utils
 media-libs/libquicktime schroedinger
 media-video/ffmpeg schroedinger
 media-video/libav schroedinger
-media-video/vlc schroedinger
 
 # Pacho Ramos <pacho@gento.org> (04 Nov 2018)
 # media-plugins/mediastreamer-silk will be removed (#599580)
