@@ -12,7 +12,7 @@ SRC_URI="https://git.cgsecurity.org/cgit/${PN}/snapshot/${PN}-${EGIT_COMMIT}.tar
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86"
 IUSE="ewf jpeg ntfs qt5 reiserfs static zlib"
 
 REQUIRED_USE="static? ( !qt5 )"
