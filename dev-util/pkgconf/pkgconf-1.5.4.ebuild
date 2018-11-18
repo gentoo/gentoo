@@ -16,8 +16,8 @@ inherit multilib-minimal
 DESCRIPTION="pkg-config compatible replacement with no dependencies other than ANSI C89"
 HOMEPAGE="https://github.com/pkgconf/pkgconf"
 
-LICENSE="BSD-1"
-SLOT="0"
+LICENSE="ISC"
+SLOT="0/3"
 IUSE="+pkg-config test"
 
 # tests require 'kyua'
@@ -54,6 +54,11 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE=${S} econf
+}
+
+multilib_src_test() {
+	unset PKG_CONFIG_LIBDIR PKG_CONFIG_PATH
+	default
 }
 
 multilib_src_install() {
