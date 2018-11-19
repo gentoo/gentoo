@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE="berkdb ipv6 ldap"
 
-RDEPEND="berkdb? ( sys-libs/db )
+RDEPEND="berkdb? ( sys-libs/db:5.3 )
 	ldap? ( net-nds/openldap )
 	sys-libs/zlib"
 
@@ -25,10 +25,6 @@ DEPEND="${RDEPEND}"
 RDEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
-
-src_prepare() {
-	epatch "${FILESDIR}"/c-icap-0.2.6-fix-icap-parsing.patch
-}
 
 src_configure() {
 	# some void *** pointers get casted around and can be troublesome to
