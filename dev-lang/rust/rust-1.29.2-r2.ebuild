@@ -65,6 +65,8 @@ PDEPEND="!cargo? ( >=dev-util/cargo-${CARGO_DEPEND_VERSION} )"
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 				x86? ( cpu_flags_x86_sse2 )"
 
+CHECKREQS_DISK_BUILD="7G"
+
 S="${WORKDIR}/${MY_P}-src"
 
 PATCHES=( "${FILESDIR}"/${PV}-clippy-sysroot.patch )

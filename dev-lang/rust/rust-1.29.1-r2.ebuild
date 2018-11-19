@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{5,6} pypy )
 
-inherit eapi7-ver llvm multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
+inherit eapi7-ver multiprocessing multilib-build python-any-r1 toolchain-funcs
 
 if [[ ${PV} = *beta* ]]; then
 	betaver=${PV//*beta}
@@ -18,16 +18,28 @@ else
 	SLOT="stable/${ABI_VER}"
 	MY_P="rustc-${PV}"
 	SRC="${MY_P}-src.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
-RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).2"
+CHOST_amd64=x86_64-unknown-linux-gnu
+CHOST_x86=i686-unknown-linux-gnu
+CHOST_arm64=aarch64-unknown-linux-gnu
+
+RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).0"
+RUST_STAGE0_amd64="rust-${RUST_STAGE0_VERSION}-${CHOST_amd64}"
+RUST_STAGE0_x86="rust-${RUST_STAGE0_VERSION}-${CHOST_x86}"
+RUST_STAGE0_arm64="rust-${RUST_STAGE0_VERSION}-${CHOST_arm64}"
+
+CARGO_DEPEND_VERSION="0.$(($(ver_cut 2) + 1)).0"
 
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
 
 SRC_URI="https://static.rust-lang.org/dist/${SRC} -> rustc-${PV}-src.tar.xz
-		$(rust_all_arch_uris rust-${RUST_STAGE0_VERSION})"
+	amd64? ( https://static.rust-lang.org/dist/${RUST_STAGE0_amd64}.tar.xz )
+	x86? ( https://static.rust-lang.org/dist/${RUST_STAGE0_x86}.tar.xz )
+	arm64? ( https://static.rust-lang.org/dist/${RUST_STAGE0_arm64}.tar.xz )
+"
 
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC Sparc SystemZ X86 XCore )
@@ -36,17 +48,18 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
-IUSE="clippy cpu_flags_x86_sse2 debug doc +jemalloc libressl rls rustfmt system-llvm wasm ${ALL_LLVM_TARGETS[*]}"
+IUSE="cargo clippy cpu_flags_x86_sse2 debug doc +jemalloc libressl rls rustfmt wasm ${ALL_LLVM_TARGETS[*]}"
 
 COMMON_DEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
 		jemalloc? ( dev-libs/jemalloc )
-		sys-libs/zlib
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-		net-libs/libssh2
-		net-libs/http-parser:=
-		net-misc/curl[ssl]
-		system-llvm? ( >=sys-devel/llvm-6:= )"
+		cargo? (
+			sys-libs/zlib
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+			net-libs/libssh2
+			net-libs/http-parser:=
+			net-misc/curl[ssl]
+		)"
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	|| (
@@ -55,28 +68,26 @@ DEPEND="${COMMON_DEPEND}
 	)
 	dev-util/cmake"
 RDEPEND="${COMMON_DEPEND}
-	!dev-util/cargo
+	cargo? ( !dev-util/cargo )
 	rustfmt? ( !dev-util/rustfmt )"
+PDEPEND="!cargo? ( >=dev-util/cargo-${CARGO_DEPEND_VERSION} )"
+
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 				x86? ( cpu_flags_x86_sse2 )"
 
-S="${WORKDIR}/${MY_P}-src"
+CHECKREQS_DISK_BUILD="7G"
 
-PATCHES=( "${FILESDIR}"/${PV}-clippy-sysroot.patch )
+S="${WORKDIR}/${MY_P}-src"
 
 toml_usex() {
 	usex "$1" true false
 }
 
-pkg_setup() {
-	python-any-r1_pkg_setup
-	llvm_pkg_setup
-}
-
 src_prepare() {
 	local rust_stage0_root="${WORKDIR}"/rust-stage0
 
-	local rust_stage0="rust-${RUST_STAGE0_VERSION}-$(rust_abi)"
+	local rust_stage0_name="RUST_STAGE0_${ARCH}"
+	local rust_stage0="${!rust_stage0_name}"
 
 	"${WORKDIR}/${rust_stage0}"/install.sh --disable-ldconfig --destdir="${rust_stage0_root}" --prefix=/ || die
 
@@ -84,31 +95,40 @@ src_prepare() {
 }
 
 src_configure() {
-	local rust_target="" rust_targets="" arch_cflags
+	local rust_target="" rust_targets="" rust_target_name arch_cflags
 
 	# Collect rust target names to compile standard libs for all ABIs.
 	for v in $(multilib_get_enabled_abi_pairs); do
-		rust_targets="${rust_targets},\"$(rust_abi $(get_abi_CHOST ${v##*.}))\""
+		rust_target_name="CHOST_${v##*.}"
+		rust_targets="${rust_targets},\"${!rust_target_name}\""
 	done
 	if use wasm; then
 		rust_targets="${rust_targets},\"wasm32-unknown-unknown\""
 	fi
 	rust_targets="${rust_targets#,}"
 
-	local extended="true" tools="\"cargo\","
+	local extended="false" tools=""
+	if use cargo; then
+		extended="true"
+		tools="\"cargo\","
+	fi
 	if use clippy; then
+		extended="true"
 		tools="\"clippy\",$tools"
 	fi
 	if use rls; then
+		extended="true"
 		tools="\"rls\",\"analysis\",\"src\",$tools"
 	fi
 	if use rustfmt; then
+		extended="true"
 		tools="\"rustfmt\",$tools"
 	fi
 
 	local rust_stage0_root="${WORKDIR}"/rust-stage0
 
-	rust_target="$(rust_abi)"
+	rust_target_name="CHOST_${ARCH}"
+	rust_target="${!rust_target_name}"
 
 	cat <<- EOF > "${S}"/config.toml
 		[llvm]
@@ -116,7 +136,6 @@ src_configure() {
 		release-debuginfo = $(toml_usex debug)
 		assertions = $(toml_usex debug)
 		targets = "${LLVM_TARGETS// /;}"
-		link-shared = $(toml_usex system-llvm)
 		[build]
 		build = "${rust_target}"
 		host = ["${rust_target}"]
@@ -132,7 +151,7 @@ src_configure() {
 		tools = [${tools}]
 		[install]
 		prefix = "${EPREFIX}/usr"
-		libdir = "$(get_libdir)/${P}"
+		libdir = "$(get_libdir)"
 		docdir = "share/doc/${P}"
 		mandir = "share/${P}/man"
 		[rust]
@@ -147,7 +166,7 @@ src_configure() {
 	EOF
 
 	for v in $(multilib_get_enabled_abi_pairs); do
-		rust_target=$(rust_abi $(get_abi_CHOST ${v##*.}))
+		rust_target=$(get_abi_CHOST ${v##*.})
 		arch_cflags="$(get_abi_CFLAGS ${v##*.})"
 
 		cat <<- EOF >> "${S}"/config.env
@@ -161,11 +180,6 @@ src_configure() {
 			linker = "$(tc-getCC)"
 			ar = "$(tc-getAR)"
 		EOF
-		if use system-llvm; then
-			cat <<- EOF >> "${S}"/config.toml
-			    llvm-config = "$(get_llvm_prefix)/bin/llvm-config"
-			EOF
-		fi
 	done
 
 	if use wasm; then
@@ -191,7 +205,9 @@ src_install() {
 	mv "${D}/usr/bin/rustdoc" "${D}/usr/bin/rustdoc-${PV}" || die
 	mv "${D}/usr/bin/rust-gdb" "${D}/usr/bin/rust-gdb-${PV}" || die
 	mv "${D}/usr/bin/rust-lldb" "${D}/usr/bin/rust-lldb-${PV}" || die
-	mv "${D}/usr/bin/cargo" "${D}/usr/bin/cargo-${PV}" || die
+	if use cargo; then
+		mv "${D}/usr/bin/cargo" "${D}/usr/bin/cargo-${PV}" || die
+	fi
 	if use clippy; then
 		mv "${D}/usr/bin/clippy-driver" "${D}/usr/bin/clippy-driver-${PV}" || die
 		mv "${D}/usr/bin/cargo-clippy" "${D}/usr/bin/cargo-clippy-${PV}" || die
@@ -212,9 +228,9 @@ src_install() {
 			continue
 		fi
 		abi_libdir=$(get_abi_LIBDIR ${v##*.})
-		rust_target=$(rust_abi $(get_abi_CHOST ${v##*.}))
+		rust_target=$(get_abi_CHOST ${v##*.})
 		mkdir -p "${D}/usr/${abi_libdir}"
-		cp "${D}/usr/$(get_libdir)/${P}/rustlib/${rust_target}/lib"/*.so \
+		cp "${D}/usr/$(get_libdir)/rustlib/${rust_target}/lib"/*.so \
 		   "${D}/usr/${abi_libdir}" || die
 	done
 
@@ -233,7 +249,9 @@ src_install() {
 		/usr/bin/rust-gdb
 		/usr/bin/rust-lldb
 	EOF
-	echo /usr/bin/cargo >> "${T}/provider-${P}"
+	if use cargo; then
+		echo /usr/bin/cargo >> "${T}/provider-${P}"
+	fi
 	if use clippy; then
 		echo /usr/bin/clippy-driver >> "${T}/provider-${P}"
 		echo /usr/bin/cargo-clippy >> "${T}/provider-${P}"
