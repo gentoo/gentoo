@@ -545,9 +545,15 @@ src_test() {
 
 	# Unstable tests
 	# - main.xa_prepared_binlog_off: https://bugs.mysql.com/bug.php?id=83340
-	for t in main.xa_prepared_binlog_off ; do
+	# - rpl.rpl_non_direct_stm_mixing_engines: MDEV-14489
+	for t in main.xa_prepared_binlog_off rpl.rpl_non_direct_stm_mixing_engines ; do
 			_disable_test "$t" "Unstable test"
 	done
+
+	if ! use amd64 ; then
+		# fixed in >=mysql-8 via commit 0a417e84
+		_disable_test "gis.gis_bugs_crashes" "Unstable results on non-amd64 architectures due to floating-point operation"
+	fi
 
 	if use numa && use kernel_linux ; then
 		# bug 584880
