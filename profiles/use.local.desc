@@ -3101,8 +3101,8 @@ media-sound/aqualung:lua - Enable support for programmable title formatting with
 media-sound/aqualung:mac - Enable support for decoding Monkey's Audio files
 media-sound/aqualung:podcast - Enable podcast support
 media-sound/aqualung:systray - Enable system tray support
-media-sound/ario:audioscrobbler - Enable song tracking via last.fm
 media-sound/ario:idle - Enable experimental support for MPD's idle command to reduce bandwidth and cpu usage, requires MPD 0.14
+media-sound/ario:scrobbler - Enable audioscrobbler/last.fm support net-libs/libsoup
 media-sound/asunder:mac - Support for creation of Monkey's Audio files (APE)
 media-sound/audacity:id3tag - Enables ID3 tagging with id3tag library
 media-sound/audacity:lv2 - Add support for Ladspa V2
