@@ -5187,7 +5187,7 @@ dev-python/oslotest 3.2.0: Oslo test framework
 dev-python/osprofiler 1.11.0 1.15.2: OpenStack Profiler Library
 dev-python/ovs 2.7.0 2.7.2 2.8.1 2.9.2: OVS bindings for python.
 dev-python/ovsdbapp 0.4.0 0.10.0: A library for creating OVSDB applications
-dev-python/owslib 0.16.0 0.16.0-r1: Library for client programming with Open Geospatial Consortium web service
+dev-python/owslib 0.16.0-r1: Library for client programming with Open Geospatial Consortium web service
 dev-python/packaging 16.8: Core utilities for Python packages
 dev-python/paho-mqtt 1.1 1.3.1: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/paisley 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
