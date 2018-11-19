@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2018 Gentoo Authors and others
 # Copyright 2018 Sony Interactive Entertainment Inc.
 # Distributed under the terms of the GNU General Public License v2
 
@@ -154,8 +154,8 @@ multilib_src_configure() {
 		$(use_enable nls)
 		$(use_enable unicode widechar)
 		$(use_enable static-libs static)
+		$(use_with ncurses tinfo)
 		$(use_with selinux)
-		$(usex ncurses '' '--without-tinfo')
 	)
 	# build programs only on GNU, on *BSD we want libraries only
 	if multilib_is_native_abi && use userland_GNU; then

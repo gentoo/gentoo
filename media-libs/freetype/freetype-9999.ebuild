@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,9 +42,6 @@ DEPEND="${RDEPEND}
 PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 
 PATCHES=(
-	# This is the same as the 01 patch from infinality
-	"${FILESDIR}"/${PN}-2.7-enable-valid.patch
-
 	"${FILESDIR}"/${PN}-2.4.11-sizeof-types.patch # 459966
 )
 
@@ -96,6 +93,9 @@ src_prepare() {
 	fi
 
 	default
+
+	# This is the same as the 01 patch from infinality
+	sed '/AUX_MODULES += \(gx\|ot\)valid/s@^# @@' -i modules.cfg || die
 
 	enable_option() {
 		sed -i -e "/#define $1/ { s:/\* ::; s: \*/:: }" \
@@ -150,7 +150,7 @@ src_prepare() {
 
 	# we need non-/bin/sh to run configure
 	if [[ -n ${CONFIG_SHELL} ]] ; then
-		sed -i -e "1s:^#![[:space:]]*/bin/sh:#!$CONFIG_SHELL:" \
+		sed -i -e "1s:^#![[:space:]]*/bin/sh:#!${CONFIG_SHELL}:" \
 			"${S}"/builds/unix/configure || die
 	fi
 
