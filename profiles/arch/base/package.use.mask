@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
+# Moved from arch/powerpc/ppc64 as it applies to most architectures.
+sys-firmware/seabios debug
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-28)
 # upstream tarballs for tier-2 arches do not ship docs
 # and starting with 1.37 no longer ship extra tools
