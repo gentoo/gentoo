@@ -12,19 +12,18 @@ if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/audacious-media-player/audacious-plugins.git"
 else
-	SRC_URI="
-		!gtk3? ( https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2 )
-		gtk3? ( https://distfiles.audacious-media-player.org/${MY_P}-gtk3.tar.bz2 )"
+	SRC_URI="https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth hotkeys http gme gtk gtk3 jack lame libav
-	libnotify libsamplerate lirc mms modplug mp3 nls pulseaudio qt5 scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
+IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth hotkeys http gme gtk jack lame libav libnotify
+	libsamplerate lirc mms modplug mp3 nls pulseaudio qt5 qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
-	^^ ( gtk gtk3 qt5 )
+	^^ ( gtk qt5 )
 	qt5? ( !aosd !hotkeys )
+	qtmedia? ( qt5 )
 	|| ( alsa jack pulseaudio sdl )
 	ampache? ( qt5 http )"
 
@@ -50,7 +49,7 @@ RDEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib
 	dev-libs/libxml2:2
-	~media-sound/audacious-${PV}[gtk?,gtk3?,qt5?]
+	~media-sound/audacious-${PV}[gtk?,qt5?]
 	aac? ( >=media-libs/faad2-2.7 )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
 	ampache? ( =media-libs/ampache_browser-1* )
@@ -73,7 +72,6 @@ RDEPEND="
 	fluidsynth? ( media-sound/fluidsynth )
 	http? ( >=net-libs/neon-0.26.4 )
 	gtk? ( x11-libs/gtk+:2 )
-	gtk3? ( x11-libs/gtk+:3 )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -103,25 +101,15 @@ RDEPEND="
 		>=media-libs/libogg-1.1.3
 		>=media-libs/libvorbis-1.2.0
 	)
-	wavpack? ( >=media-sound/wavpack-4.50.1-r1 )"
-
+	wavpack? ( >=media-sound/wavpack-4.50.1-r1 )
+"
 DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
 	virtual/pkgconfig
-	nls? ( dev-util/intltool )"
+	nls? ( dev-util/intltool )
+"
 
 S="${WORKDIR}/${MY_P}"
-
-src_unpack() {
-	if [[ ${PV} == *9999 ]]; then
-		git-r3_src_unpack
-	else
-		default
-		if use gtk3; then
-			mv "${MY_P}"{-gtk3,} || die
-		fi
-	fi
-}
 
 src_prepare() {
 	default
@@ -151,7 +139,7 @@ src_configure() {
 		$(use_enable flac filewriter) \
 		$(use_enable fluidsynth amidiplug) \
 		$(use_enable gme console) \
-		$(use_enable $(usex gtk gtk gtk3) gtk) \
+		$(use_enable gtk) \
 		$(use_enable hotkeys hotkey) \
 		$(use_enable http neon) \
 		$(use_enable jack) \
@@ -165,7 +153,7 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_enable pulseaudio pulse) \
 		$(use_enable qt5 qt) \
-		$(use_enable qt5 qtaudio) \
+		$(use_enable qtmedia qtaudio) \
 		$(use_enable scrobbler scrobbler2) \
 		$(use_enable sdl sdlout) \
 		$(use_enable sid) \

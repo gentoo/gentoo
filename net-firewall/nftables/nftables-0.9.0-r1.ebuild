@@ -69,7 +69,7 @@ src_install() {
 	systemd_enable_service basic.target ${PN}-restore.service
 
 	docinto /usr/share/doc/${PF}/skels
-	dodoc /etc/nftables/*
+	dodoc "${D}"/etc/nftables/*
 	rm -R "${D}"/etc/nftables
 }
 
