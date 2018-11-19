@@ -93,6 +93,7 @@ COMMON_DEPEND="
 "
 DEPEND="virtual/yacc
 	static? ( sys-libs/ncurses[static-libs] )
+	test? ( dev-perl/JSON )
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
 	${COMMON_DEPEND}"
 RDEPEND="selinux? ( sec-policy/selinux-mysql )
