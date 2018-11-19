@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<longdescription>URL blocklist and virus scanner for the C-ICAP server</longdescription>
-	<upstream>
-		<remote-id type="sourceforge">c-icap</remote-id>
-	</upstream>
+  <maintainer type="person">
+    <email>c@roessner.co</email>
+    <name>Christian Rößner</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>URL blocklist and virus scanner for the C-ICAP server</longdescription>
+    <upstream>
+      <remote-id type="sourceforge">c-icap</remote-id>
+    </upstream>
 </pkgmetadata>

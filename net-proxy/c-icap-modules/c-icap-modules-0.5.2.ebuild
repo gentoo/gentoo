@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="berkdb clamav"
 
-DEPEND="berkdb? ( sys-libs/db )
+DEPEND="berkdb? ( sys-libs/db:5.3 )
 	clamav? ( app-antivirus/clamav )
 	net-proxy/c-icap
 	sys-libs/glibc
