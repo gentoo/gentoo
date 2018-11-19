@@ -18,8 +18,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +adplug alsa ampache bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify
-	libsamplerate lirc mms modplug mp3 nls pulseaudio qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
+IUSE="aac +adplug alsa ampache bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify libsamplerate
+	 lirc mms modplug mp3 nls opengl pulseaudio qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
 	|| ( alsa jack pulseaudio qtmedia sdl )
 	ampache? ( http )"
@@ -79,6 +79,7 @@ RDEPEND="
 	mms? ( >=media-libs/libmms-0.3 )
 	modplug? ( media-libs/libmodplug )
 	mp3? ( >=media-sound/mpg123-1.12.1 )
+	opengl? ( dev-qt/qtopengl:5 )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.3 )
 	qtmedia? ( dev-qt/qtmultimedia:5 )
 	scrobbler? ( net-misc/curl )
@@ -115,7 +116,6 @@ src_configure() {
 		--disable-hotkey
 		--disable-notify
 		--disable-oss4
-		--disable-qtglspectrum
 		--disable-sndio
 		$(use_enable aac)
 		$(use_enable alsa)
@@ -137,6 +137,7 @@ src_configure() {
 		$(use_enable modplug)
 		$(use_enable mp3 mpg123)
 		$(use_enable nls)
+		$(use_enable opengl qtglspectrum)
 		$(use_enable pulseaudio pulse)
 		$(use_enable qtmedia qtaudio)
 		$(use_enable scrobbler scrobbler2)

@@ -19,7 +19,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth hotkeys http gme gtk jack lame libav libnotify
-	libsamplerate lirc mms modplug mp3 nls pulseaudio +qt5 qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
+	libsamplerate lirc mms modplug mp3 nls opengl pulseaudio +qt5 qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
 	^^ ( gtk qt5 )
 	qt5? ( !aosd !hotkeys )
@@ -77,6 +77,7 @@ RDEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 		media-libs/adplug
+		opengl? ( dev-qt/qtopengl:5 )
 	)
 	jack? (
 		>=media-libs/bio2jack-0.4
@@ -123,7 +124,6 @@ src_configure() {
 		--enable-mpris2
 		--enable-songchange
 		--disable-oss4
-		--disable-qtglspectrum
 		--disable-coreaudio
 		--disable-sndio
 		$(use_enable aac)
@@ -162,5 +162,7 @@ src_configure() {
 		$(use_enable wavpack)
 		$(use_with ffmpeg ffmpeg $(usex libav libav ffmpeg))
 	)
+	use qt5 && myeconfargs+=( $(usex opengl --enable-qtglspectrum --disable-qtglspectrum) )
+
 	econf "${myeconfargs[@]}"
 }
