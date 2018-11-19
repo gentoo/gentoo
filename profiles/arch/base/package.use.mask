@@ -1,6 +1,13 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# package.use.force forces USE=binary, and USE=debug requires !binary,
+# so it can never be enabled.
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (19 Nov 2018)
+# Moved from arch/powerpc/ppc64 as it applies to most architectures.
+sys-firmware/seabios debug
+
 # Thomas Deutschmann <whissi@gentoo.org> (15 Nov 2018)
 # - rdrand plugin is only supported on amd64 and x86
 # - padlock plugin is only supported on amd64 and x86

@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (19 Nov 2018)
+# iasl is keyworded ~arm64
+sys-firmware/seabios -debug
+
 # Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
 # Requires www-client/firefox which isn't yet keyworded on ARM64
 dev-ruby/capybara test

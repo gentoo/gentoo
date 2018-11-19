@@ -1,6 +1,10 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (19 Nov 2018)
+# iasl is stable on x86
+sys-firmware/seabios -binary
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (14 May 2018)
 # Force the host target to avoid dependency hell
 dev-lang/rust llvm_targets_X86

@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (19 Nov 2018)
+# iasl is stable on x86
+sys-firmware/seabios -debug
+
 # Thomas Deutschmann <whissi@gentoo.org> (15 Nov 2018)
 # - rdrand plugin is supported on x86
 # - padlock plugin is supported on x86
