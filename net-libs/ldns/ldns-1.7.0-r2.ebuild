@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -21,9 +21,9 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	ecdsa? (
-		!libressl? ( >=dev-libs/openssl-1.0.1e:0[-bindist,${MULTILIB_USEDEP}] )
+		!libressl? ( >=dev-libs/openssl-1.0.1e:0=[-bindist,${MULTILIB_USEDEP}] )
 	)
-	!libressl? ( >=dev-libs/openssl-1.0.1e:0[${MULTILIB_USEDEP}] )
+	!libressl? ( >=dev-libs/openssl-1.0.1e:0=[${MULTILIB_USEDEP}] )
 	libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
