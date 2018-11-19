@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,21 +16,24 @@ DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 
-IUSE="+X avahi aqua +asimage cuda +davix emacs +examples fits fftw fortran
-	+gdml graphviz +gsl http jemalloc kerberos ldap libcxx memstat
-	+minuit mysql odbc +opengl oracle postgres prefix pythia6 pythia8
-	+python qt5 R +roofit root7 shadow sqlite +ssl table +tbb test
-	+threads +tiff +tmva +unuran vc xinetd +xml xrootd"
+IUSE="+X avahi aqua +asimage c++11 +c++14 c++17 cuda +davix emacs
+	+examples fits fftw fortran +gdml graphviz +gsl http jemalloc
+	kerberos ldap libcxx memstat +minuit mysql odbc +opengl oracle
+	postgres prefix pythia6 pythia8 +python qt5 R +roofit root7
+	shadow sqlite +ssl table +tbb test +threads +tiff +tmva +unuran
+	vc xinetd +xml xrootd"
 
 SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
 KEYWORDS="~amd64 ~x86"
 
 REQUIRED_USE="
+	^^ ( c++11 c++14 c++17 )
 	!X? ( !asimage !opengl !qt5 !tiff )
 	davix? ( ssl xml )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	qt5? ( root7 )
+	root7? ( || ( c++14 c++17 ) )
 	tmva? ( gsl )
 "
 
@@ -109,21 +112,19 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.12.04-no-ocaml.patch
 	"${FILESDIR}"/${PN}-6.12.06_cling-runtime-sysroot.patch
-	"${FILESDIR}"/${PN}-6.13.02-hsimple.patch
+	"${FILESDIR}"/${PN}-6.14.06-oracle.patch
 )
 
 pkg_setup() {
 	use fortran && fortran-2_pkg_setup
 	use python && python-single-r1_pkg_setup
 
-	echo
 	elog "There are extra options on packages not yet in Gentoo:"
 	elog "Afdsmgrd, AliEn, castor, Chirp, dCache, gfal, Globus, gLite,"
 	elog "HDFS, Monalisa, MaxDB/SapDB, SRP, VecCore."
-	elog "You can use the env variable EXTRA_ECONF variable for this."
+	elog "You can use the environment variable EXTRA_ECONF for this."
 	elog "For example, for Chirp, you would set: "
 	elog "EXTRA_ECONF=\"-Dchirp=ON\""
-	echo
 }
 
 src_prepare() {
@@ -137,16 +138,18 @@ src_prepare() {
 
 # Note: ROOT uses bundled clang because it is patched and API-incompatible
 #       with vanilla clang. The patches enable the C++ interpreter to work.
-#       Since ROOT installs many small files into /etc (~100MB in total),
-#       we install it into another directory to avoid making /etc too big.
+#       Since ROOT installs many files into /etc (~100MB in total) that don't
+#       really belong there, we install it into another directory to avoid
+#       making /etc too big.
 
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
+		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX%/}/usr/$(get_libdir)/${PN}/$(ver_cut 1-2)"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX%/}/usr/$(get_libdir)/${PN}/$(ver_cut 1-2)/share/man"
-		-DMCAKE_INSTALL_LIBDIR=$(get_libdir)
+		-DCMAKE_INSTALL_LIBDIR=$(get_libdir)
 		-DDEFAULT_SYSROOT="${EPREFIX}"
 		-DCLING_BUILD_PLUGINS=OFF
 		-Dexplicitlink=ON
@@ -190,10 +193,13 @@ src_configure() {
 		-Dccache=OFF # use ccache via portage
 		-Dcastor=OFF
 		-Dchirp=OFF
+		-Dclad=OFF
 		-Dcling=ON # cling=OFF is broken
 		-Dcocoa=$(usex aqua)
 		-Dcuda=$(usex cuda)
-		-Dcxx14=$(usex root7)
+		-Dcxx11=$(usex c++11)
+		-Dcxx14=$(usex c++14)
+		-Dcxx17=$(usex c++17)
 		-Dcxxmodules=OFF # requires clang, unstable
 		-Ddavix=$(usex davix)
 		-Ddcache=OFF
@@ -239,7 +245,7 @@ src_configure() {
 		-Droofit=$(usex roofit)
 		-Droot7=$(usex root7)
 		-Drootbench=OFF
-		-Droottest=$(usex test)
+		-Droottest=OFF
 		-Drpath=OFF
 		-Druby=OFF # deprecated and broken
 		-Druntime_cxxmodules=OFF # does not work yet
@@ -250,7 +256,6 @@ src_configure() {
 		-Dsrp=OFF # not implemented
 		-Dssl=$(usex ssl)
 		-Dtable=$(usex table)
-		-Dtbb=$(usex tbb)
 		-Dtcmalloc=OFF
 		-Dtesting=$(usex test)
 		-Dthread=$(usex threads)
@@ -267,6 +272,12 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
+}
+
+src_compile() {
+	# needed for hsimple.root
+	addwrite /dev/random
+	cmake-utils_src_compile
 }
 
 src_install() {
@@ -300,7 +311,7 @@ src_install() {
 	fi
 
 	if ! use examples; then
-		rm -r test tutorials || die
+		rm -r tutorials || die
 	fi
 
 	if ! use tmva; then
@@ -308,5 +319,5 @@ src_install() {
 	fi
 
 	# clean up unnecessary files from installation
-	rm -r emacs || die
+	rm -r emacs test || die
 }
