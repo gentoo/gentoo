@@ -117,50 +117,50 @@ src_prepare() {
 }
 
 src_configure() {
-	if ! use mp3 ; then
-		ewarn "MP3 support is optional, you may want to enable the mp3 USE-flag"
-	fi
+	use mp3 || ewarn "MP3 support is optional, you may want to enable the mp3 USE-flag"
 
-	econf \
-		--enable-mpris2 \
-		--enable-songchange \
-		--disable-oss4 \
-		--disable-qtglspectrum \
-		--disable-coreaudio \
-		--disable-sndio \
-		$(use_enable aac) \
-		$(use_enable alsa) \
-		$(use_enable ampache) \
-		$(use_enable aosd) \
-		$(use_enable bs2b) \
-		$(use_enable cdda cdaudio) \
-		$(use_enable cue) \
-		$(use_enable flac) \
-		$(use_enable flac filewriter) \
-		$(use_enable fluidsynth amidiplug) \
-		$(use_enable gme console) \
-		$(use_enable gtk) \
-		$(use_enable hotkeys hotkey) \
-		$(use_enable http neon) \
-		$(use_enable jack) \
-		$(use_enable lame filewriter_mp3) \
-		$(use_enable libnotify notify) \
-		$(use_enable libsamplerate resample) \
-		$(use_enable lirc) \
-		$(use_enable mms) \
-		$(use_enable modplug) \
-		$(use_enable mp3 mpg123) \
-		$(use_enable nls) \
-		$(use_enable pulseaudio pulse) \
-		$(use_enable qt5 qt) \
-		$(use_enable qtmedia qtaudio) \
-		$(use_enable scrobbler scrobbler2) \
-		$(use_enable sdl sdlout) \
-		$(use_enable sid) \
-		$(use_enable sndfile) \
-		$(use_enable soxr) \
-		$(use_enable speedpitch) \
-		$(use_enable vorbis) \
-		$(use_enable wavpack) \
+	local myeconfargs=(
+		--enable-mpris2
+		--enable-songchange
+		--disable-oss4
+		--disable-qtglspectrum
+		--disable-coreaudio
+		--disable-sndio
+		$(use_enable aac)
+		$(use_enable alsa)
+		$(use_enable ampache)
+		$(use_enable aosd)
+		$(use_enable bs2b)
+		$(use_enable cdda cdaudio)
+		$(use_enable cue)
+		$(use_enable flac)
+		$(use_enable flac filewriter)
+		$(use_enable fluidsynth amidiplug)
+		$(use_enable gme console)
+		$(use_enable gtk)
+		$(use_enable hotkeys hotkey)
+		$(use_enable http neon)
+		$(use_enable jack)
+		$(use_enable lame filewriter_mp3)
+		$(use_enable libnotify notify)
+		$(use_enable libsamplerate resample)
+		$(use_enable lirc)
+		$(use_enable mms)
+		$(use_enable modplug)
+		$(use_enable mp3 mpg123)
+		$(use_enable nls)
+		$(use_enable pulseaudio pulse)
+		$(use_enable qt5 qt)
+		$(use_enable qtmedia qtaudio)
+		$(use_enable scrobbler scrobbler2)
+		$(use_enable sdl sdlout)
+		$(use_enable sid)
+		$(use_enable sndfile)
+		$(use_enable soxr)
+		$(use_enable speedpitch)
+		$(use_enable vorbis)
+		$(use_enable wavpack)
 		$(use_with ffmpeg ffmpeg $(usex libav libav ffmpeg))
+	)
+	econf "${myeconfargs[@]}"
 }
