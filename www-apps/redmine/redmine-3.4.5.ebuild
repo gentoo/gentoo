@@ -22,7 +22,7 @@ ruby_add_rdepend "
 	dev-ruby/i18n:0.7
 	>=dev-ruby/jquery-rails-3.1.4:3
 	dev-ruby/loofah
-	dev-ruby/mime-types:*
+	dev-ruby/mime-types:3
 	dev-ruby/mimemagic
 	>=dev-ruby/nokogiri-1.6.8
 	dev-ruby/protected_attributes
