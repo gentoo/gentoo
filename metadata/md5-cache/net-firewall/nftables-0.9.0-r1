@@ -10,4 +10,4 @@ RDEPEND=>=net-libs/libmnl-1.0.3:0= gmp? ( dev-libs/gmp:0= ) json? ( dev-libs/jan
 SLOT=0
 SRC_URI=https://git.netfilter.org/nftables/snapshot/v0.9.0.tar.gz -> nftables-0.9.0.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=95406911909c1ae1d7211565bb23da9e
+_md5_=21ca5ce4e45fe3e79030ddf1b53b0530
