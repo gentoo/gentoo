@@ -476,7 +476,8 @@ src_test() {
 	# segfaults at random under Portage only, suspect resource limits.
 
 	local t
-	for t in main.mysql_client_test main.mysql_client_test_nonblock \
+	for t in federated.federated_plugin \
+		main.mysql_client_test main.mysql_client_test_nonblock \
 		main.mysql_client_test_comp rpl.rpl_extra_col_master_myisam \
 		main.mysqlhotcopy_archive main.mysqlhotcopy_myisam main.openssl_1 \
 		rpl.rpl_semi_sync_uninstall_plugin ; do
