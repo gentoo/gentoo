@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
+# iasl is stable on ppc
+sys-firmware/seabios -debug
+
 # Conrad Kostecki <ck+gentoo@bl4ckb0x.de> (2019-08-17)
 # app-misc/graphlcd-base won't work on PowerPC/PowerPC64
 app-misc/lcdproc freetype lcd_devices_glcd png
