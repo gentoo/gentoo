@@ -19,7 +19,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="aac +adplug alsa ampache bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify
-	libsamplerate lirc mms modplug mp3 nls pulseaudio scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
+	libsamplerate lirc mms modplug mp3 nls pulseaudio qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
 	|| ( alsa jack pulseaudio sdl )
 	ampache? ( http )"
@@ -48,7 +48,6 @@ RDEPEND="
 	dev-libs/libxml2:2
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtmultimedia:5
 	dev-qt/qtwidgets:5
 	media-libs/adplug
 	~media-sound/audacious-${PV}
@@ -81,6 +80,7 @@ RDEPEND="
 	modplug? ( media-libs/libmodplug )
 	mp3? ( >=media-sound/mpg123-1.12.1 )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.3 )
+	qtmedia? ( dev-qt/qtmultimedia:5 )
 	scrobbler? ( net-misc/curl )
 	sdl? ( media-libs/libsdl2[sound] )
 	sid? ( >=media-libs/libsidplayfp-1.0.0 )
@@ -110,7 +110,6 @@ src_configure() {
 	econf \
 		--enable-mpris2 \
 		--enable-qt \
-		--enable-qtaudio \
 		--enable-songchange \
 		--disable-aosd \
 		--disable-coreaudio \
@@ -141,6 +140,7 @@ src_configure() {
 		$(use_enable mp3 mpg123) \
 		$(use_enable nls) \
 		$(use_enable pulseaudio pulse) \
+		$(use_enable qtmedia qtaudio) \
 		$(use_enable scrobbler scrobbler2) \
 		$(use_enable sdl sdlout) \
 		$(use_enable sid) \

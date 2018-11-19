@@ -18,11 +18,12 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth hotkeys http gme gtk jack lame libav
-	libnotify libsamplerate lirc mms modplug mp3 nls pulseaudio qt5 scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
+IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth hotkeys http gme gtk jack lame libav libnotify
+	libsamplerate lirc mms modplug mp3 nls pulseaudio qt5 qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
 	^^ ( gtk qt5 )
 	qt5? ( !aosd !hotkeys )
+	qtmedia? ( qt5 )
 	|| ( alsa jack pulseaudio sdl )
 	ampache? ( qt5 http )"
 
@@ -152,7 +153,7 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_enable pulseaudio pulse) \
 		$(use_enable qt5 qt) \
-		$(use_enable qt5 qtaudio) \
+		$(use_enable qtmedia qtaudio) \
 		$(use_enable scrobbler scrobbler2) \
 		$(use_enable sdl sdlout) \
 		$(use_enable sid) \
