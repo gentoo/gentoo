@@ -1,0 +1,13 @@
+BDEPEND=net-misc/omniORB mariadb? ( dev-db/mariadb-connector-c ) !mariadb? ( dev-db/mysql-connector-c ) dbserver? ( mariadb? ( dev-db/mariadb[server] ) !mariadb? ( dev-db/mysql[server] ) virtual/mysql[server] ) java? ( virtual/jdk:* ) zeromq? ( net-libs/zeromq )
+DEFINED_PHASES=configure
+DEPEND=net-misc/omniORB mariadb? ( dev-db/mariadb-connector-c ) !mariadb? ( dev-db/mysql-connector-c ) dbserver? ( mariadb? ( dev-db/mariadb[server] ) !mariadb? ( dev-db/mysql[server] ) virtual/mysql[server] ) java? ( virtual/jdk:* ) zeromq? ( net-libs/zeromq )
+DESCRIPTION=Tango is an Open Source solution for SCADA and DCS
+EAPI=7
+HOMEPAGE=http://www.tango-controls.org/
+IUSE=+dbserver java +mariadb +zeromq
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=net-misc/omniORB mariadb? ( dev-db/mariadb-connector-c ) !mariadb? ( dev-db/mysql-connector-c ) dbserver? ( mariadb? ( dev-db/mariadb[server] ) !mariadb? ( dev-db/mysql[server] ) virtual/mysql[server] ) java? ( virtual/jdk:* ) zeromq? ( net-libs/zeromq )
+SLOT=0
+SRC_URI=mirror://sourceforge/tango-cs/tango-9.2.5a.tar.gz
+_md5_=a1114d4d6fd85c3c0884dab8ce42182d
