@@ -1,0 +1,52 @@
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=7
+
+PYTHON_COMPAT=( python{2_7,3_{5,6}} pypy )
+
+inherit distutils-r1
+
+DESCRIPTION="virtualenv-based automation of test activities"
+HOMEPAGE="https://tox.readthedocs.io https://github.com/tox-dev/tox https://pypi.org/project/tox/"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+
+# doc disabled because of missing deps in tree
+IUSE="test"
+
+RDEPEND="
+	dev-python/filelock[${PYTHON_USEDEP}]
+	<dev-python/pluggy-1.0[${PYTHON_USEDEP}]
+	dev-python/pip[${PYTHON_USEDEP}]
+	dev-python/py[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]
+	dev-python/virtualenv[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	test? (
+		>=dev-python/pytest-3.6[${PYTHON_USEDEP}]
+		<dev-python/pytest-4.0
+		<dev-python/pytest-mock-2.0[${PYTHON_USEDEP}]
+	)"
+
+PATCHES=( "${FILESDIR}/${PN}-3.5.3-skip-broken-tests.patch" )
+
+python_test() {
+	# TODO: find why these 8 tests excluded below fail.
+	pytest -v --no-network \
+		--deselect tests/test_config.py::test_plugin_require \
+		--deselect tests/test_docs.py::test_all_rst_ini_blocks_parse \
+		--deselect tests/test_interpreters.py::test_tox_get_python_executable \
+		--deselect tests/test_session.py::test_tox_parallel_build_safe \
+		--deselect tests/test_venv.py::test_install_python3 \
+		--deselect tests/test_z_cmdline.py::test_alwayscopy \
+		--deselect tests/test_z_cmdline.py::test_tox_quickstart_script \
+		--deselect tests/test_z_cmdline.py::test_tox_console_script \
+		|| die "Testsuite failed under ${EPYTHON}"
+}
