@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{5,6} pypy )
 
-inherit eapi7-ver llvm multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
+inherit check-reqs eapi7-ver estack flag-o-matic llvm multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
 
 if [[ ${PV} = *beta* ]]; then
 	betaver=${PV//*beta}
@@ -68,7 +68,24 @@ toml_usex() {
 	usex "$1" true false
 }
 
+pre_build_checks() {
+	CHECKREQS_DISK_BUILD="7G"
+	CHECKREQS_MEMORY="4G"
+	eshopts_push -s extglob
+	if is-flagq '-g?(gdb)?([1-9])'; then
+		CHECKREQS_DISK_BUILD="10G"
+		CHECKREQS_MEMORY="16G"
+	fi
+	eshopts_pop
+	check-reqs_pkg_setup
+}
+
+pkg_pretend() {
+	pre_build_checks
+}
+
 pkg_setup() {
+	pre_build_checks
 	python-any-r1_pkg_setup
 	llvm_pkg_setup
 }
@@ -255,6 +272,10 @@ pkg_postinst() {
 
 	elog "Rust installs a helper script for calling GDB and LLDB,"
 	elog "for your convenience it is installed under /usr/bin/rust-{gdb,lldb}-${PV}."
+
+	ewarn "cargo is now installed from dev-lang/rust{,-bin} instead of dev-util/cargo."
+	ewarn "This might have resulted in a dangling symlink for /usr/bin/cargo on some"
+	ewarn "systems. This can be resolved by calling 'sudo eselect rust set ${P}'."
 
 	if has_version app-editors/emacs || has_version app-editors/emacs-vcs; then
 		elog "install app-emacs/rust-mode to get emacs support for rust."
