@@ -23,7 +23,7 @@ SRC_URI+=" mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="gtk nls qt5"
+IUSE="gtk nls +qt5"
 REQUIRED_USE="^^ ( gtk qt5 )"
 
 RDEPEND="
@@ -44,6 +44,11 @@ DEPEND="${RDEPEND}
 	nls? ( dev-util/intltool )
 "
 PDEPEND="~media-plugins/audacious-plugins-${PV}"
+
+src_unpack() {
+	default
+	[[ ${PV} == *9999 ]] && git-r3_src_unpack
+}
 
 src_prepare() {
 	default
