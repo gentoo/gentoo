@@ -175,12 +175,14 @@ pkg_setup() {
 }
 
 src_unpack() {
-	python_is_python3 && EGIT_BRANCH="feature_python3"
-	ewarn "Using the experimental Python 3 branch!"
-	ewarn "See https://kodi.wiki/view/Migration_to_Python_3 for more information."
-	ewarn "To use the non-experimental Python 2 version:"
-	ewarn "echo '~${CATEGORY}/${P} PYTHON_TARGETS: -* python2_7 PYTHON_SINGLE_TARGET: -* python2_7' >> /etc/portage/package.use"
-	ewarn "then re-merge using: emerge -a =${CATEGORY}/${P}"
+	if python_is_python3; then
+		EGIT_BRANCH="feature_python3"
+		ewarn "Using the experimental Python 3 branch!"
+		ewarn "See https://kodi.wiki/view/Migration_to_Python_3 for more information."
+		ewarn "To use the non-experimental Python 2 version:"
+		ewarn "echo '~${CATEGORY}/${P} PYTHON_TARGETS: -* python2_7 PYTHON_SINGLE_TARGET: -* python2_7' >> /etc/portage/package.use"
+		ewarn "then re-merge using: emerge -a =${CATEGORY}/${PF}"
+	fi
 	git-r3_src_unpack
 }
 
