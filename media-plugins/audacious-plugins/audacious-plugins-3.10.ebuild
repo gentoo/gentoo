@@ -21,7 +21,7 @@ SLOT="0"
 IUSE="aac +adplug alsa ampache bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify
 	libsamplerate lirc mms modplug mp3 nls pulseaudio qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
-	|| ( alsa jack pulseaudio sdl )
+	|| ( alsa jack pulseaudio qtmedia sdl )
 	ampache? ( http )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI

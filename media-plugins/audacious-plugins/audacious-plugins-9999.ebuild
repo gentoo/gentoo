@@ -19,13 +19,13 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="aac +adplug alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth hotkeys http gme gtk jack lame libav libnotify
-	libsamplerate lirc mms modplug mp3 nls pulseaudio qt5 qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
+	libsamplerate lirc mms modplug mp3 nls pulseaudio +qt5 qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
 	^^ ( gtk qt5 )
 	qt5? ( !aosd !hotkeys )
-	qtmedia? ( qt5 )
-	|| ( alsa jack pulseaudio sdl )
-	ampache? ( qt5 http )"
+	|| ( alsa jack pulseaudio qtmedia sdl )
+	ampache? ( qt5 http )
+	qtmedia? ( qt5 )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI
 # builds do NOT install the libaudgui library & headers.
@@ -75,7 +75,6 @@ RDEPEND="
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
-		dev-qt/qtmultimedia:5
 		dev-qt/qtwidgets:5
 		media-libs/adplug
 	)
@@ -91,6 +90,7 @@ RDEPEND="
 	modplug? ( media-libs/libmodplug )
 	mp3? ( >=media-sound/mpg123-1.12.1 )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.3 )
+	qtmedia? ( dev-qt/qtmultimedia:5 )
 	scrobbler? ( net-misc/curl )
 	sdl? ( media-libs/libsdl2[sound] )
 	sid? ( >=media-libs/libsidplayfp-1.0.0 )
