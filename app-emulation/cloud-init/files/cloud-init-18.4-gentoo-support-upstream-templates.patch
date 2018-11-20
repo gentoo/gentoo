@@ -1,7 +1,7 @@
-From 946ce2b005a71e9922654af79bce51fefa16c3d4 Mon Sep 17 00:00:00 2001
+From 823454f1ea140ec47f5f9c5c3c5ad62eb458eb8a Mon Sep 17 00:00:00 2001
 From: Gilles Dartiguelongue <eva@gentoo.org>
 Date: Wed, 24 Oct 2018 10:52:46 +0200
-Subject: [PATCH 2/2] Add support for gentoo in cloud.cfg and templates
+Subject: [PATCH 2/5] Add support for gentoo in cloud.cfg and templates
 
 ---
  config/cloud.cfg.tmpl       |  8 ++++++--
@@ -11,7 +11,7 @@ Subject: [PATCH 2/2] Add support for gentoo in cloud.cfg and templates
  create mode 100644 templates/hosts.gentoo.tmpl
 
 diff --git a/config/cloud.cfg.tmpl b/config/cloud.cfg.tmpl
-index 1fef133a..f66b5f7e 100644
+index 1fef133a..3f5a41a2 100644
 --- a/config/cloud.cfg.tmpl
 +++ b/config/cloud.cfg.tmpl
 @@ -134,7 +134,7 @@ cloud_final_modules:
@@ -39,7 +39,7 @@ index 1fef133a..f66b5f7e 100644
 +{% elif variant == "gentoo" %}
 +     groups: [users, wheel]
 +     primary_group: users
-+     no-user-group: true
++     no_user_group: true
  {% else %}
       groups: [wheel, adm, systemd-journal]
  {% endif %}
@@ -87,5 +87,5 @@ index 8b7cb875..d109044e 100755
  if "avoid-pep8-E402-import-not-top-of-file":
      _tdir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 -- 
-2.19.0
+2.19.1
 
