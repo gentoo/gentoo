@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a99
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 +shared static-libs static-pic"
 
 RDEPEND="
@@ -23,14 +23,14 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]"
 
-REQUIRED_USE="!gnat_2016"
-
 S="${WORKDIR}"/${MYP}-src
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
-	if use gnat_2017; then
+	if use gnat_2016; then
+		GCC_PV=4.9.4
+	elif use gnat_2017; then
 		GCC_PV=6.3.0
 	else
 		GCC_PV=7.3.1
@@ -48,7 +48,7 @@ src_configure() {
 
 src_compile() {
 	build () {
-		GCC=${CHOST}-gcc-${GCC_PV} gprbuild -p -m -j$(makeopts_jobs) \
+		gprbuild -p -m -j$(makeopts_jobs) \
 			-XBUILD=PROD -v -XGNATCOLL_VERSION=${PV} \
 			-XLIBRARY_TYPE=$1 -XXMLADA_BUILD=$* -XGPR_BUILD=$1 \
 			gnatcoll.gpr -cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} || die
