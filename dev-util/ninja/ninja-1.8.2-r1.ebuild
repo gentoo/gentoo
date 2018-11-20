@@ -24,7 +24,7 @@ HOMEPAGE="https://ninja-build.org/"
 LICENSE="Apache-2.0"
 SLOT="0"
 
-IUSE="doc emacs test vim-syntax zsh-completion"
+IUSE="doc emacs test vim-syntax"
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -44,7 +44,6 @@ RDEPEND="
 			app-editors/gvim
 		)
 	)
-	zsh-completion? ( app-shells/zsh )
 	!<net-irc/ninja-1.5.9_pre14-r1" #436804
 
 run_for_build() {
@@ -111,10 +110,8 @@ src_install() {
 		doins "${T}/${PN}.vim"
 	fi
 
-	if use zsh-completion; then
-		insinto /usr/share/zsh/site-functions
-		newins misc/zsh-completion _ninja
-	fi
+	insinto /usr/share/zsh/site-functions
+	newins misc/zsh-completion _ninja
 
 	if use emacs; then
 		cd misc || die
