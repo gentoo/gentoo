@@ -29,8 +29,7 @@ RDEPEND="dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,gnat_2018=]
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]"
 
-REQUIRED_USE="!gnat_2016
-	gnatinspect? ( xref )
+REQUIRED_USE="gnatinspect? ( xref )
 	xref? ( sqlite )
 	sqlite? ( sql )
 	gnatcoll_db2ada? ( sql )"
@@ -40,10 +39,8 @@ S="${WORKDIR}"/${MYP}-src
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
-	GCC_PV=7.3.1
 	build () {
-		GCC=${CHOST}-gcc-${GCC_PV} \
-			GPR_PROJECT_PATH="${S}/sql":"${S}/sqlite":"${S}/xref" \
+		GPR_PROJECT_PATH="${S}/sql":"${S}/sqlite":"${S}/xref" \
 			gprbuild -p -m -v -j$(makeopts_jobs) -XGNATCOLL_SQLITE=external \
 			-XGNATCOLL_VERSION=2018 \
 			-XBUILD=PROD -XLIBRARY_TYPE=$2 -XXMLADA_BUILD=$2 -XGPR_BUILD=$2 \
