@@ -16,13 +16,11 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+gnat_2016 gnat_2017"
 
-DEPEND="dev-ada/gnat_util[gnat_2016=,gnat_2017=]
-	dev-ada/gnatcoll[gnat_2016=,gnat_2017=,projects,shared]
-	dev-ada/gprbuild[gnat_2016=,gnat_2017=]
-	dev-ada/xmlada[gnat_2016=,gnat_2017=]
-	gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
-	gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )"
-RDEPEND="${RDEPEND}"
+RDEPEND="dev-ada/gnat_util[gnat_2016=,gnat_2017=]
+	dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,shared]"
+DEPEND="${RDEPEND}
+	dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
+
 REQUIRED_USE="^^ ( gnat_2016 gnat_2017 )"
 
 S="${WORKDIR}"/${MYP}
