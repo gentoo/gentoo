@@ -54,11 +54,6 @@ MULTILIB_WRAPPED_HEADERS=(
 	usr/include/openssl/opensslconf.h
 )
 
-PATCHES=(
-	"${FILESDIR}"/${P}-CVE-2018-0734.patch
-	"${FILESDIR}"/${P}-CVE-2018-0735.patch
-)
-
 src_prepare() {
 	if use bindist; then
 		# This just removes the prefix, and puts it into WORKDIR like the RPM.
