@@ -34,17 +34,15 @@ S=${WORKDIR}
 # Blacklist bad microcode here.
 # 0x000406f1 aka 06-4f-01 aka CPUID 406F1 require newer microcode loader
 MICROCODE_BLACKLIST_DEFAULT="-s !0x000406f1"
-MICROCODE_BLACKLIST="${MICROCODE_BLACKLIST:=${MICROCODE_BLACKLIST_DEFAULT}}"
 
 # In case we want to set some defaults ...
 MICROCODE_SIGNATURES_DEFAULT=""
 
-# Advanced users only:
-# merge with:
+# Advanced users only!
+# Set MIRCOCODE_SIGNATURES to merge with:
 # only current CPU: MICROCODE_SIGNATURES="-S"
 # only specific CPU: MICROCODE_SIGNATURES="-s 0x00000f4a -s 0x00010676"
 # exclude specific CPU: MICROCODE_SIGNATURES="-s !0x00000686"
-MICROCODE_SIGNATURES="${MICROCODE_SIGNATURES:=${MICROCODE_SIGNATURES_DEFAULT}}"
 
 pkg_pretend() {
 	use initramfs && mount-boot_pkg_pretend
@@ -72,6 +70,10 @@ src_install() {
 	if ! use vanilla; then
 		MICROCODE_SRC+=( "${S}"/intel-microcode-collection-${COLLECTION_SNAPSHOT} )
 	fi
+
+	# These will carry into pkg_preinst via env saving.
+	: ${MICROCODE_BLACKLIST=${MICROCODE_BLACKLIST_DEFAULT}}
+	: ${MICROCODE_SIGNATURES=${MICROCODE_SIGNATUES_DEFAULT}}
 
 	opts=(
 		${MICROCODE_BLACKLIST}
@@ -102,28 +104,16 @@ src_install() {
 		|| die "iucode_tool ${opts[@]} ${MICROCODE_SRC[@]}"
 
 	dodoc releasenote
-
-	# Record how package was created so we can show this in build.log
-	# even for binary packages.
-	if [[ "${MICROCODE_BLACKLIST}" != "${MICROCODE_BLACKLIST_DEFAULT}" ]]; then
-		echo ${MICROCODE_BLACKLIST} > "${ED%/}/tmp/.blacklist_altered" || die "Failed to add marker that MICROCODE_BLACKLIST variable was used"
-	fi
-
-	if [[ "${MICROCODE_SIGNATURES}" != "${MICROCODE_SIGNATURES_DEFAULT}" ]]; then
-		echo ${MICROCODE_SIGNATURES} > "${ED%/}/tmp/.signatures_altered" || die "Failed to add marker that MICROCODE_SIGNATURES variable was used"
-	fi
 }
 
 pkg_preinst() {
-	if [[ -f "${ED%/}/tmp/.blacklist_altered" ]]; then
-		local _recorded_MICROCODE_BLACKLIST_value=$(cat "${ED%/}/tmp/.blacklist_altered")
-		ewarn "MICROCODE_BLACKLIST is set to \"${_recorded_MICROCODE_BLACKLIST_value}\" instead of default \"${MICROCODE_BLACKLIST_DEFAULT}\". You are on your own!"
+	if [[ ${MICROCODE_BLACKLIST} != ${MICROCODE_BLACKLIST_DEFAULT} ]]; then
+		ewarn "MICROCODE_BLACKLIST is set to \"${MICROCODE_BLACKLIST}\" instead of default \"${MICROCODE_BLACKLIST_DEFAULT}\". You are on your own!"
 	fi
 
-	if [[ -f "${ED%/}/tmp/.signatures_altered" ]]; then
-		local _recorded_MICROCODE_SIGNATURES_value=$(cat "${ED%/}/tmp/.signatures_altered")
+	if [[ ${MICROCODE_SIGNATURES} != ${MICROCODE_SIGNATURES_DEFAULT} ]]; then
 		ewarn "Package was created using advanced options:"
-		ewarn "MICROCODE_SIGNATURES is set to \"${_recorded_MICROCODE_SIGNATURES_value}\" instead of default \"${MICROCODE_SIGNATURES_DEFAULT}\"!"
+		ewarn "MICROCODE_SIGNATURES is set to \"${MICROCODE_SIGNATURES}\" instead of default \"${MICROCODE_SIGNATURES_DEFAULT}\"!"
 	fi
 
 	# Make sure /boot is available if needed.
@@ -193,7 +183,7 @@ pkg_preinst() {
 		elog ""
 	elif [[ -z "${_has_installed_something}" ]]; then
 		ewarn "WARNING:"
-		if [[ -f "${ED%/}/tmp/.signatures_altered" ]]; then
+		if [[ ${MICROCODE_SIGNATURES} != ${MICROCODE_SIGNATURES_DEFAULT} ]]; then
 			ewarn "No ucode was installed! Because you have created this package"
 			ewarn "using MICROCODE_SIGNATURES variable please double check if you"
 			ewarn "have an invalid select."
