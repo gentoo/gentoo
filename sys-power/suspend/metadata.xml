@@ -10,7 +10,6 @@
 		<name>Andrew Savchenko</name>
 	</maintainer>
 	<use>
-		<flag name="fbsplash">Add support for framebuffer splash</flag>
 		<flag name="crypt">Allows suspend and resume from encrypted disk</flag>
 	</use>
 	<upstream>
