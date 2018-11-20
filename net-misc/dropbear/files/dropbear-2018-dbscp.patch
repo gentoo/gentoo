@@ -1,0 +1,22 @@
+diff --git a/dbmulti.c b/dbmulti.c
+index 204e9a3..4bdae09 100644
+--- a/dbmulti.c
++++ b/dbmulti.c
+@@ -56,7 +56,7 @@ static int runprog(const char *progname, int argc, char ** argv, int *match) {
+ 		}
+ #endif
+ #ifdef DBMULTI_scp
+-		if (strcmp(progname, "scp") == 0) {
++		if ((strcmp(progname, "scp") == 0) || (strcmp(progname, "dbscp") == 0)) {
+ 			return scp_main(argc, argv);
+ 		}
+ #endif
+@@ -95,7 +95,7 @@ int main(int argc, char ** argv) {
+ 			"'dropbearconvert' - the key converter\n"
+ #endif
+ #ifdef DBMULTI_scp
+-			"'scp' - secure copy\n"
++			"'dbscp' - secure copy\n"
+ #endif
+ 			,
+ 			DROPBEAR_VERSION);
