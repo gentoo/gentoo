@@ -422,6 +422,8 @@ x86-macos		prefix/darwin/macos/10.12/x86			exp
 x64-macos		prefix/darwin/macos/10.12/x64			exp
 x86-macos		prefix/darwin/macos/10.13/x86			exp
 x64-macos		prefix/darwin/macos/10.13/x64			exp
+x86-macos		prefix/darwin/macos/10.14/x86			exp
+x64-macos		prefix/darwin/macos/10.14/x64			exp
 
 # Solaris Profiles
 sparc-solaris		prefix/sunos/solaris/5.9/sparc			exp
