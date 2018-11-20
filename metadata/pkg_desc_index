@@ -6316,7 +6316,7 @@ dev-util/meson 0.46.1 0.47.1: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netbeans 8.2: Netbeans IDE
-dev-util/ninja 1.7.2 1.8.2: A small build system similar to make
+dev-util/ninja 1.8.2: A small build system similar to make
 dev-util/obs-service-cpanspec 20130318: Open Build Service client module - cpanspec service
 dev-util/obs-service-download_files 20130716: Open Build Service client module - download_files service
 dev-util/obs-service-download_src_package 20130318: Open Build Service client module - download_src_package service
