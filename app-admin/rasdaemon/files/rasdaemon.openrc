@@ -4,7 +4,7 @@
 
 description="Starts ${SVCNAME} service"
 
-command="/usr/bin/${SVCNAME}"
+command="/usr/sbin/${SVCNAME}"
 command_args="--foreground --record"
 pidfile=/run/${SVCNAME}.pid
 command_background=true
