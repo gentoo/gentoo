@@ -43,6 +43,7 @@ src_prepare() {
 src_configure() {
 	STRIP=/bin/true \
 	econf \
+		--with-init=custom \
 		--with-kernel-dir=/usr \
 		--enable-sha1 \
 		--enable-vrrp \
