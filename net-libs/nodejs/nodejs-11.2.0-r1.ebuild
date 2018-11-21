@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,12 +23,13 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.19.2:=
+	>=dev-libs/libuv-1.23.2:=
+	>=net-dns/c-ares-1.15.0
 	>=net-libs/http-parser-2.8.0:=
-	>=net-libs/nghttp2-1.32.0
+	>=net-libs/nghttp2-1.34.0
 	sys-libs/zlib
-	icu? ( >=dev-libs/icu-61.1:= )
-	ssl? ( >=dev-libs/openssl-1.0.2n:0=[-bindist] )
+	icu? ( >=dev-libs/icu-63.1:= )
+	ssl? ( =dev-libs/openssl-1.1.0*:0= )
 "
 DEPEND="
 	${RDEPEND}
@@ -38,7 +39,7 @@ DEPEND="
 "
 S="${WORKDIR}/node-v${PV}"
 PATCHES=(
-	"${FILESDIR}"/gentoo-global-npm-config.patch
+	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
 )
 
 pkg_pretend() {
@@ -68,7 +69,7 @@ src_prepare() {
 	# proper libdir, hat tip @ryanpcmcquen https://github.com/iojs/io.js/issues/504
 	local LIBDIR=$(get_libdir)
 	sed -i -e "s|lib/|${LIBDIR}/|g" tools/install.py || die
-	sed -i -e "s/'lib'/'${LIBDIR}'/" lib/module.js deps/npm/lib/npm.js || die
+	sed -i -e "s/'lib'/'${LIBDIR}'/" deps/npm/lib/npm.js || die
 
 	# Avoid writing a depfile, not useful
 	sed -i -e "/DEPFLAGS =/d" tools/gyp/pylib/gyp/generator/make.py || die
@@ -92,7 +93,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=( --shared-http-parser --shared-libuv --shared-nghttp2 --shared-zlib )
+	local myconf=( --shared-cares --shared-http-parser --shared-libuv --shared-nghttp2 --shared-zlib )
 	use debug && myconf+=( --debug )
 	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
 	use inspector || myconf+=( --without-inspector )
@@ -144,8 +145,9 @@ src_install() {
 		for i in `grep -rl 'fonts.googleapis.com' "${S}"/out/doc/api/*`; do
 			sed -i '/fonts.googleapis.com/ d' $i;
 		done
-		# Install docs!
-		dohtml -r "${S}"/doc/*
+		# Install docs
+		docinto html
+		dodoc -r "${S}"/doc/*
 	fi
 
 	if use npm; then
@@ -184,6 +186,8 @@ src_install() {
 				"${find_name[@]}" \
 			\) \) -exec rm -rf "{}" \;
 	fi
+
+	mv "${D}"/usr/share/doc/node "${D}"/usr/share/doc/${PF} || die
 }
 
 src_test() {

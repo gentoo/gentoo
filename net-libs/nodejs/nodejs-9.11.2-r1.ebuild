@@ -23,13 +23,13 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.23.2:=
-	>=net-dns/c-ares-1.14.0
+	>=dev-libs/libuv-1.19.2:=
+	>=net-dns/c-ares-1.13.0
 	>=net-libs/http-parser-2.8.0:=
-	>=net-libs/nghttp2-1.34.0
+	>=net-libs/nghttp2-1.32.0
 	sys-libs/zlib
-	icu? ( >=dev-libs/icu-62.1:= )
-	ssl? ( >=dev-libs/openssl-1.1:0= )
+	icu? ( >=dev-libs/icu-61.1:= )
+	ssl? ( >=dev-libs/openssl-1.0.2n:0=[-bindist] )
 "
 DEPEND="
 	${RDEPEND}
@@ -39,7 +39,7 @@ DEPEND="
 "
 S="${WORKDIR}/node-v${PV}"
 PATCHES=(
-	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
+	"${FILESDIR}"/gentoo-global-npm-config.patch
 )
 
 pkg_pretend() {
@@ -69,7 +69,7 @@ src_prepare() {
 	# proper libdir, hat tip @ryanpcmcquen https://github.com/iojs/io.js/issues/504
 	local LIBDIR=$(get_libdir)
 	sed -i -e "s|lib/|${LIBDIR}/|g" tools/install.py || die
-	sed -i -e "s/'lib'/'${LIBDIR}'/" deps/npm/lib/npm.js || die
+	sed -i -e "s/'lib'/'${LIBDIR}'/" lib/module.js deps/npm/lib/npm.js || die
 
 	# Avoid writing a depfile, not useful
 	sed -i -e "/DEPFLAGS =/d" tools/gyp/pylib/gyp/generator/make.py || die
@@ -145,9 +145,8 @@ src_install() {
 		for i in `grep -rl 'fonts.googleapis.com' "${S}"/out/doc/api/*`; do
 			sed -i '/fonts.googleapis.com/ d' $i;
 		done
-		# Install docs
-		docinto html
-		dodoc -r "${S}"/doc/*
+		# Install docs!
+		dohtml -r "${S}"/doc/*
 	fi
 
 	if use npm; then
@@ -186,8 +185,6 @@ src_install() {
 				"${find_name[@]}" \
 			\) \) -exec rm -rf "{}" \;
 	fi
-
-	mv "${D}"/usr/share/doc/node "${D}"/usr/share/doc/${PF} || die
 }
 
 src_test() {

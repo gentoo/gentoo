@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+RESTRICT="test"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
@@ -24,21 +25,22 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=dev-libs/libuv-1.23.2:=
+	>=net-dns/c-ares-1.10.1
 	>=net-libs/http-parser-2.8.0:=
-	>=net-libs/nghttp2-1.34.0
+	>=net-libs/nghttp2-1.33.0
 	sys-libs/zlib
-	icu? ( >=dev-libs/icu-63.1:= )
-	ssl? ( >=dev-libs/openssl-1.1:0= )
+	icu? ( >=dev-libs/icu-60.1:= )
+	ssl? ( >=dev-libs/openssl-1.0.2n:0=[-bindist] )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	systemtap? ( dev-util/systemtap )
-	test? ( net-misc/curl )
-"
+	test? ( net-misc/curl )"
+
 S="${WORKDIR}/node-v${PV}"
+
 PATCHES=(
-	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
+	"${FILESDIR}"/nodejs-10.3.0-global-npm-config.patch
 )
 
 pkg_pretend() {
@@ -67,8 +69,12 @@ src_prepare() {
 
 	# proper libdir, hat tip @ryanpcmcquen https://github.com/iojs/io.js/issues/504
 	local LIBDIR=$(get_libdir)
-	sed -i -e "s|lib/|${LIBDIR}/|g" tools/install.py || die
-	sed -i -e "s/'lib'/'${LIBDIR}'/" deps/npm/lib/npm.js || die
+	sed -i \
+		-e "s|lib/|${LIBDIR}/|g" \
+		-e 's|share/doc/node/|share/doc/'"${PF}"'/|g' \
+		tools/install.py || die
+
+	sed -i -e "s/'lib'/'${LIBDIR}'/" lib/module.js deps/npm/lib/npm.js || die
 
 	# Avoid writing a depfile, not useful
 	sed -i -e "/DEPFLAGS =/d" tools/gyp/pylib/gyp/generator/make.py || die
@@ -92,7 +98,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=( --shared-http-parser --shared-libuv --shared-nghttp2 --shared-zlib )
+	local myconf=( --shared-cares --shared-http-parser --shared-libuv --shared-nghttp2 --shared-zlib )
 	use debug && myconf+=( --debug )
 	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
 	use inspector || myconf+=( --without-inspector )
@@ -127,6 +133,11 @@ src_compile() {
 	emake -C out
 }
 
+src_test() {
+	out/${BUILDTYPE}/cctest || die
+	"${PYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
+}
+
 src_install() {
 	local LIBDIR="${ED}/usr/$(get_libdir)"
 	emake install DESTDIR="${D}"
@@ -145,7 +156,6 @@ src_install() {
 			sed -i '/fonts.googleapis.com/ d' $i;
 		done
 		# Install docs
-		docinto html
 		dodoc -r "${S}"/doc/*
 	fi
 
@@ -185,13 +195,6 @@ src_install() {
 				"${find_name[@]}" \
 			\) \) -exec rm -rf "{}" \;
 	fi
-
-	mv "${D}"/usr/share/doc/node "${D}"/usr/share/doc/${PF} || die
-}
-
-src_test() {
-	out/${BUILDTYPE}/cctest || die
-	"${PYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
 }
 
 pkg_postinst() {
