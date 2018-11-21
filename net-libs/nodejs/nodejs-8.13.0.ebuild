@@ -25,6 +25,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=dev-libs/libuv-1.23.2:=
+	>=net-dns/c-ares-1.10.1
 	>=net-libs/http-parser-2.8.0:=
 	>=net-libs/nghttp2-1.33.0
 	sys-libs/zlib
@@ -97,7 +98,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=( --shared-http-parser --shared-libuv --shared-nghttp2 --shared-zlib )
+	local myconf=( --shared-cares --shared-http-parser --shared-libuv --shared-nghttp2 --shared-zlib )
 	use debug && myconf+=( --debug )
 	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
 	use inspector || myconf+=( --without-inspector )
