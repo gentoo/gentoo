@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 
-inherit flag-o-matic python-r1
+inherit autotools flag-o-matic python-r1
 
 DESCRIPTION="POSIX 1003.1e capabilities"
 HOMEPAGE="https://people.redhat.com/sgrubb/libcap-ng/"
@@ -26,13 +26,14 @@ src_prepare() {
 	default
 	if use prefix ; then
 		sed -i "s@cat /usr@cat ${EPREFIX}/usr@" bindings/python*/Makefile.am || die
+		eautomake #668722
 	fi
 }
 
 src_configure() {
 	use sparc && replace-flags -O? -O0
 
-	local ECONF_SOURCE=${S}
+	local ECONF_SOURCE="${S}"
 
 	local myconf=(
 		$(use_enable static-libs static)
