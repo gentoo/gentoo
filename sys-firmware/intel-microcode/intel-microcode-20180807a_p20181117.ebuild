@@ -93,10 +93,9 @@ src_install() {
 	# The earlyfw cpio needs to be in /boot because it must be loaded before
 	# rootfs is mounted.
 	use initramfs && dodir /boot && opts+=( --write-earlyfw="${ED%/}"/boot/intel-uc.img )
-	# split location (we use a temporary location so that we are able
-	# to re-run iucode_tool in pkg_preinst; use keepdir instead of dodir to carry
-	# this folder to pkg_preinst to avoid an error even if no microcode was selected):
-	keepdir /tmp/intel-ucode && opts+=( --write-firmware="${ED%/}"/tmp/intel-ucode )
+
+	keepdir /lib/firmware/intel-ucode
+	opts+=( --write-firmware="${ED%/}/lib/firmware/intel-ucode" )
 
 	iucode_tool \
 		"${opts[@]}" \
@@ -120,7 +119,6 @@ pkg_preinst() {
 	use initramfs && mount-boot_pkg_preinst
 
 	local _initramfs_file="${ED%/}/boot/intel-uc.img"
-	local _ucode_dir="${ED%/}/lib/firmware/intel-ucode"
 
 	if use hostonly; then
 		# While this output looks redundant we do this check to detect
@@ -149,20 +147,22 @@ pkg_preinst() {
 		# The earlyfw cpio needs to be in /boot because it must be loaded before
 		# rootfs is mounted.
 		use initramfs && opts+=( --write-earlyfw=${_initramfs_file} )
-		# split location:
-		use split-ucode && dodir /lib/firmware/intel-ucode && opts+=( --write-firmware=${_ucode_dir} )
 
-		iucode_tool \
-			"${opts[@]}" \
-			"${ED%/}"/tmp/intel-ucode \
-			|| die "iucode_tool ${opts[@]} ${ED%/}/tmp/intel-ucode"
-
-	else
 		if use split-ucode; then
-			# Temporary /tmp/intel-ucode will become final /lib/firmware/intel-ucode ...
-			dodir /lib/firmware
-			mv "${ED%/}/tmp/intel-ucode" "${ED%/}/lib/firmware" || die "Failed to install splitted ucodes!"
+			opts+=( --write-firmware="${ED%/}/lib/firmware/intel-ucode" )
 		fi
+
+		opts+=( "${ED%/}"/lib/firmware/intel-ucode-temp )
+
+		mv "${ED%/}"/lib/firmware/intel-ucode{,-temp} || die
+		keepdir /lib/firmware/intel-ucode
+
+		iucode_tool "${opts[@]}" || die "iucode_tool ${opts[@]}"
+
+		rm -r "${ED%/}"/lib/firmware/intel-ucode-temp || die
+
+	elif ! use split-ucode; then # hostonly disabled
+		rm -r "${ED%/}"/lib/firmware/intel-ucode || die
 	fi
 
 	# Because it is possible that this package will install not one single file
@@ -173,7 +173,7 @@ pkg_preinst() {
 	if use initramfs && [[ -s "${_initramfs_file}" ]]; then
 		_has_installed_something="yes"
 	elif use split-ucode; then
-		_has_installed_something=$(find "${_ucode_dir}" -maxdepth 0 -not -empty -exec echo yes \;)
+		_has_installed_something=$(find "${ED%/}/lib/firmware/intel-ucode" -maxdepth 0 -not -empty -exec echo yes \;)
 	fi
 
 	if use hostonly && [[ -n "${_has_installed_something}" ]]; then
@@ -203,10 +203,6 @@ pkg_preinst() {
 			ewarn ""
 		fi
 	fi
-
-	# Cleanup any temporary leftovers so that we don't merge any
-	# unneeded files on disk.
-	rm -r "${ED%/}/tmp" || die "Failed to cleanup '${ED%/}/tmp'"
 }
 
 pkg_prerm() {
