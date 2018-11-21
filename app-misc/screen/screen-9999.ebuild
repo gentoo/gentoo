@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic pam toolchain-funcs user
+inherit autotools eutils flag-o-matic pam tmpfiles toolchain-funcs user
 
 DESCRIPTION="screen manager with VT100/ANSI terminal emulation"
 HOMEPAGE="https://www.gnu.org/software/screen/"
@@ -114,9 +114,7 @@ src_install() {
 		tmpfiles_group="utmp"
 	fi
 
-	dodir /etc/tmpfiles.d
-	echo "d /tmp/screen ${tmpfiles_perms} root ${tmpfiles_group}" \
-		>"${ED}"/etc/tmpfiles.d/screen.conf
+	newtmpfiles - screen.conf <<<"d /tmp/screen ${tmpfiles_perms} root ${tmpfiles_group}"
 
 	insinto /usr/share/screen
 	doins terminfo/{screencap,screeninfo.src}
