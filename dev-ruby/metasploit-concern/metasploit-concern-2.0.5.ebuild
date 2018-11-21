@@ -22,5 +22,5 @@ IUSE=""
 RDEPEND="${RDEPEND} !dev-ruby/metasploit-concern:0"
 
 ruby_add_rdepend ">=dev-ruby/railties-4.2.6:4.2
-		  >=dev-ruby/activesupport-4.2.6:4.2
-		  >=dev-ruby/activemodel-2.4.6:4.2"
+		>=dev-ruby/activesupport-4.2.6:4.2
+		>=dev-ruby/activemodel-2.4.6:4.2"
