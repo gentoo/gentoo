@@ -208,7 +208,7 @@ app-arch/rpm2targz 9.0.0.5g: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
 app-arch/sharutils 4.14-r1: Tools to deal with shar archives
 app-arch/snappy 1.1.7: A high-speed compression/decompression library by Google
-app-arch/star 1.5.3: An enhanced (world's fastest) tar, as well as enhanced mt/rmt
+app-arch/star 1.5.3-r1: An enhanced (world's fastest) tar, as well as enhanced mt/rmt
 app-arch/stuffit 5.2.0.611: Aladdin Software's StuffIt and StuffIt Expander
 app-arch/tar 1.30: Use this to make tarballs :)
 app-arch/tardy 1.28: A tar post-processor
