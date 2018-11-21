@@ -7,7 +7,7 @@ USE_RUBY="ruby24"
 inherit ruby-fakegem
 
 RUBY_FAKEGEM_EXTRAINSTALL="app config db script spec"
-
+RUBY_FAKEGEM_GEMSPEC="${PN}".gemspec
 DESCRIPTION="The database layer for Metasploit"
 HOMEPAGE="https://github.com/rapid7/metasploit_data_models"
 SRC_URI="mirror://rubygems/${P}.gem"
@@ -47,6 +47,8 @@ all_ruby_prepare() {
 	#if ! use test && ! use development; then
 		sed -i -e "/^group :development, :test do/,/^end$/d" Gemfile || die
 	#fi
+	#use the stable version of pg
+	sed -i "s/'pg', \"0.20.0\"/'pg', '0.21.0'/" metasploit_data_models.gemspec || die
 }
 
 each_ruby_prepare() {
