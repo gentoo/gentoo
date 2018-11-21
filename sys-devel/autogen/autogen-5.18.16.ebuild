@@ -7,7 +7,8 @@ inherit toolchain-funcs
 
 DESCRIPTION="Program and text file generation"
 HOMEPAGE="https://www.gnu.org/software/autogen/"
-SRC_URI="mirror://gnu/${PN}/rel${PV}/${P}.tar.xz"
+SRC_URI="mirror://gnu/${PN}/rel${PV}/${P}.tar.xz
+	https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=lib/verify.h;h=3b57ddee0acffd23cc51bc8910a15cf879f90619;hb=537a5511ab0b1326e69b32f87593a50aedb8a589 -> ${P}-gnulib-3b57ddee0acffd23cc51bc8910a15cf879f90619-lib-verify.h"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,6 +22,21 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.18.16-no-werror.patch
 )
+
+src_prepare() {
+	# no-werror.patch fixes both configure{.ac,}
+	# avoid configure echeck
+	touch -r configure.ac orig.configure.ac || die
+	touch -r configure    orig.configure || die
+
+	default
+
+	touch -r orig.configure.ac configure.ac || die
+	touch -r orig.configure    configure || die
+
+	# missing tarball file
+	cp "${DISTDIR}"/${P}-gnulib-3b57ddee0acffd23cc51bc8910a15cf879f90619-lib-verify.h autoopts/verify.h || die
+}
 
 src_configure() {
 	# suppress possibly incorrect -R flag
