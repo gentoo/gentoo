@@ -102,12 +102,21 @@
     </configuration>
 --- a/share/gprconfig/linker.xml	2018-10-27 09:43:17.934862859 +0200
 +++ b/share/gprconfig/linker.xml	2018-10-27 09:43:54.127304471 +0200
-@@ -742,7 +742,7 @@
-    for Shared_Library_Suffix use ".sl";
-    for Library_Auto_Init_Supported use "true";
-    for Run_Path_Option  use ("-Wl,+b,");
--   for Library_Partial_Linker use ("gcc", "-nostdlib", "-Wl,-r", "-o");
-+   for Library_Partial_Linker use ("gcc-@VER@", "-nostdlib", "-Wl,-r", "-o");
+@@ -814,7 +814,7 @@
+       when "arm-android" | "arm-linux-androideabi" =>
+          null;
+       when others =>
+-         for Library_Partial_Linker use ("${PATH(ada)}${PREFIX(ada)}gcc", "-nostdlib", "-Wl,-r", "-o");
++         for Library_Partial_Linker use ("${PATH(ada)}${PREFIX(ada)}gcc-@VER@", "-nostdlib", "-Wl,-r", "-o");
+    end case;
+     </config>
+   </configuration>
+@@ -830,7 +830,7 @@
+        <target name="^.*linux.*$" />
+     </targets>
+     <config>
+-   for Library_Partial_Linker use ("${PATH(ada)}${PREFIX(c)}gcc", "-nostdlib", "-Wl,-r", "-o");
++   for Library_Partial_Linker use ("${PATH(ada)}${PREFIX(c)}gcc-@VER@", "-nostdlib", "-Wl,-r", "-o");
+     </config>
+   </configuration>
  
-    package Linker is
-       for Max_Command_Line_Length use "5000";
