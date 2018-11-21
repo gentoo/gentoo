@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,14 +6,14 @@ USE_RUBY="ruby22 ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
-inherit ruby-fakegem versionator
+inherit ruby-fakegem eapi7-ver
 
 DESCRIPTION="Native PostgreSQL data types and querying extensions for ActiveRecord and Arel"
 HOMEPAGE="https://github.com/dockyard/postgres_ext"
 
 LICENSE="BSD"
-SLOT="$(get_version_component_range 1)"
-KEYWORDS="~amd64 ~arm"
+SLOT="$(ver_cut 1)"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 # Requires live database connection
