@@ -18,7 +18,7 @@ IUSE="pam static-libs"
 # While the build system optionally uses gperf, we don't DEPEND on it because
 # the build automatically falls back when it's unavailable.  #604802
 RDEPEND=">=sys-apps/attr-2.4.47-r1[${MULTILIB_USEDEP}]
-	pam? ( virtual/pam )"
+	pam? ( virtual/pam[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	sys-kernel/linux-headers"
 
@@ -41,7 +41,7 @@ run_emake() {
 	local args=(
 		prefix="${EPREFIX}/usr"
 		lib="$(get_libdir)"
-		PAM_CAP=$(multilib_native_usex pam yes no)
+		PAM_CAP=$(usex pam yes no)
 		DYNAMIC=yes
 	)
 	emake "${args[@]}" "$@"
@@ -68,7 +68,7 @@ multilib_src_install() {
 		rm -r "${ED%/}"/usr/$(get_libdir)/security || die
 	fi
 
-	if multilib_is_native_abi && use pam; then
+	if use pam; then
 		dopammod pam_cap/pam_cap.so
 		dopamsecurity '' pam_cap/capability.conf
 	fi
