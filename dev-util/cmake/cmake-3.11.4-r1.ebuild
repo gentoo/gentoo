@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -62,7 +62,7 @@ PATCHES=(
 	# boost (#660980)                                                                                                                                                                                          
 	"${FILESDIR}"/${PN}-3.11.4-fix-boost-detection.patch
 
-    	# upstream fixes (can usually be removed with a version bump)
+	# upstream fixes (can usually be removed with a version bump)
 	"${FILESDIR}"/${P}-libuv-1.21.patch
 )
 
