@@ -128,6 +128,8 @@ src_install() {
 	doins "${FILESDIR}"/screenrc
 
 	pamd_mimic_system screen auth
+
+	dodoc "${DOCS[@]}"
 }
 
 pkg_postinst() {
