@@ -1,0 +1,383 @@
+Contents
+A. General Terms and Conditions
+B. Supplementary Terms “AnyDesk Free”
+C. Supplementary Terms “AnyDesk Enterprise”
+D. Supplementary Terms “AnyDesk Enterprise Maintenance”
+E. Supplementary Terms for Data Processing on Behalf of the Customer (“Auftragsdatenverarbeitung”)
+
+
+A. General Terms and Conditions
+1. Provider and applicability
+1.1. AnyDesk Software GmbH (hereinafter referred to as ANYDESK), Friedrichstr. 9, 70174 Stuttgart, (Stuttgart Municipal Court, Commercial Register Division B 741697), shall be the service provider and contracting party with regard to the Customer.
+
+1.2. These Terms and Conditions shall apply to the contract conclusion itself and to all contractual relationships between ANYDESK and its customers, regardless of the type and scope of services in the context of current and future commercial relationships.
+
+1.3. The Customer may only transfer its rights and obligations from this agreement to a third party with the prior written consent of ANYDESK.
+
+1.4. The Terms and Conditions of ANYDESK shall apply exclusively. We herewith object to any deviating or additional terms and conditions of the Customer; they shall only apply if ANYDESK gives its written consent to the same (Section 126 (1) of the German Civil Code [BGB]).
+
+1.5. Where individual clauses of these Terms and Conditions are invalid in whole or in part this shall not affect the effectiveness of the remaining clauses. The parties undertake to replace the invalid clause with another valid clause which comes as close as possible to the economic purpose of the original provision. The same shall apply to any gaps in provisions with regard to the contract purpose.
+
+1.6. The contract language is German.
+
+2. Offer of contract and subject of contract
+2.1. The services provided by ANYDESK are addressed exclusively to natural persons or legal entities or partnerships with legal personality which, when entering into legal transactions, act in exercise of their trade, business or profession (Section 14 BGB).
+
+2.2. The subject of the contract is determined by these General Terms and Conditions, the Supplementary Terms, which shall take precedence within the body of provisions, and the provisions agreed in the Service Specification pertaining to the respective offer. Agreements which deviate from these provisions must be in writing.
+
+2.3. Unless expressly stipulated otherwise in the offer, ANYDESK shall not be liable for any particular outcome to be achieved by its services.
+
+2.4. Ancillary agreements and contract amendments are subject to the written consent of the executive management of ANYDESK; they shall not be valid in the absence of such written consent.
+
+2.5. Unless expressly agreed otherwise in written form, ANYDESK may use the services of suitable third parties in the performance of its contractual obligations.
+
+3. Contract conclusion and preconditions for service performance
+3.1. The product options presented by ANYDESK on the ANYDESK websites constitute a non-binding offer to the Customer to use the ANYDESK software for a specific period of time against payment of a fee. The Customer may purchase licenses for one or more terminals (work stations). The Customer shall enter its contact and invoice details (company, contact person, email and invoice address) and its choice of products in the course of the ordering process. A binding offer by the Customer to conclude a licensing contract is only made upon clicking the button “kostenpflichtig bestellen” (“place binding order with costs“). An email containing confirmation of receipt of the order shall be sent immediately; this does not constitute acceptance of the offer. ANYDESK shall be entitled to accept the Customer’s offer within two working days by sending an order confirmation by email. Where no order confirmation is sent within this time period the Customer’s offer shall be deemed rejected and the Customer no longer be bound by its offer.
+
+3.2. Upon acceptance of the Customer’s offer by email the Customer shall receive license keys in accordance with the individual contractual agreement and a link to the security-protected login page of my.anydesk.com; following successful initial login and entering of the licensing key all installed “AnyDesk” clients on the appropriate terminals may be used in accordance with the extent of the license. Once opened, the AnyDesk clients connect to the communications servers of ANYDESK to use, via the Internet, software functions to the extent described in detail in the Service Specification and subject to the conditions and system requirements described in the same.
+
+3.3. Where ANYDESK has provided the Customer with a written offer this shall be deemed accepted if the services offered therein have been approved without change by countersignature; transmission by way of telecommunications technology shall be deemed sufficient compliance with the requirement of written form in this regard (Section 127 (2) BGB). A separate written order confirmation shall only apply where specific reference is made therein (specification of the offer/order and total performance). Unless stipulated otherwise, offers shall apply for two weeks from receipt of the offer. Order confirmations by ANYDESK shall replace the Customer’s order unless a written objection is received within two weeks; ANYDESK shall expressly draw attention to the consequences of no objection being received in the order confirmation.
+
+3.4. The Customer may only access the user software made available to it simultaneously with the contractually agreed number of terminals (work stations).
+
+4. Customer information: Storage of order details, usage instructions
+4.1. ANYDESK stores the Customer’s order, including details on the contract concluded (e.g. type of product, price, etc.). Customers may access their past orders and the extent of their license via the Internet on my.anydesk.com. These General Terms and Conditions will be transmitted to the Customer with the order confirmation and may also be accessed at anydesk.de/agb.
+
+4.2. The Customer may at any time save the product description provided on our website for its own purposes, e.g. by taking a screenshot at the time of ordering or alternatively printing the entire page.
+
+4.3. The Customer may access installation and usage instructions at any time at support.anydesk.com.
+
+5. Customer information: Correcting errors
+5.1. Customers may correct their details online prior to placing an order by using the delete key. ANYDESK shall inform the Customer of further means of correcting details in the course of the order process.
+
+5.2. The order process may be aborted completely at any time by closing the browser window prior to placing an order.
+
+6. Availability and technical requirements
+6.1. Subject to a different service level being expressly agreed, ANYDESK shall provide to the Customer use at the server-side point of delivery subject to the availability and quality values specified in the Service Specification. ANYDESK shall only be responsible for availability to the extent that any unavailability of the part of the network run by ANYDESK and/or the web or communications server of ANYDESK is due to a fault on ANYDESK’s part. ANYDESK shall not be responsible for the data connection between the Customer’s respective terminal or IT system and the server-side point of delivery operated by ANYDESK being established and maintained.
+
+6.2. Regular maintenance measures are required to secure the availability of all services provided; ANYDESK may suspend service performance for defined periods of time in order to carry out such maintenance. ANYDESK shall announce the time and expected duration of maintenance works at least three working days in advance. Wherever possible ANYDESK shall take the Customer’s interests into account when planning maintenance works. These regular maintenance times do not constitute impaired availability in terms of the above.
+
+6.3. Smooth running of the ANYDESK software depends on the hardware and software used by the user on mobile terminals, routers, data communication equipment, etc. meeting the technical minimum requirements applicable to use of the currently offered software version, which are available to the user in the current system requirements specification.
+
+6.4. The Customer shall be exclusively responsible for the configuration of its IT system. ANYDESK offers a support service on the basis of a separate agreement, for a fee.
+
+6.5. The Customer shall be responsible for creating a data connection between the terminals intended for use by the Customer and the data delivery point defined by ANYDESK. ANYDESK shall be entitled to newly define the data delivery point at any time if this is necessary to enable smooth use of the services by the Customer. The Customer shall create a connection to the newly defined point of delivery in this event.
+
+7. Customer’s obligations
+7.1. The services of ANYDESK may not be misused; in particular, no information or contents may be transmitted and/or temporarily stored on ANYDESK servers which are illegal or immoral, or the duplication, provision, publication or use of which breach applicable law, rights of third parties (e.g. copyrights, patents, trademark rights or data protection rights) or agreements with third parties. The Customer shall prevent the unauthorized access of third parties to protected data stores by taking appropriate measures. The Customer shall scan its data and information for viruses and other damaging components prior to submission and shall use a state-of-the-art anti-virus program for this purpose. In the event of a culpable breach against the above provisions the Customer shall be liable for the resulting damage; the Customer shall indemnify ANYDESK against all claims of third parties which are due to such breach and shall compensate ANYDESK for any costs which arise due to potential infringements of rights.
+
+7.2. ANYDESK shall be entitled to suspend software functions with immediate effect if a justified suspicion of misuse in terms of Section 7.1 and/or use which infringes third-party rights arises. A justified suspicion of illegality and/or infringement of rights shall in particular arise where courts, authorities and/or other third parties inform ANYDESK of the same. ANYDESK shall inform the Customer of the suspension and the reason for the same without delay. The suspension shall be discontinued as soon as the suspicion has been proven to be groundless.
+
+7.3. Where the Customer collects, processes or uses personal data in the context of use of ANYDESK services and no statutory provision allowing such collection, processing and use applies, the prior consent of the affected parties must always be sought. ANYDESK and its vicarious agents shall in this context be indemnified against all claims of third parties which are based on illegal use of the products and the related servicers by the Customer. If the Customer realizes or ought to realize that a violation of this type is about to occur, it must notify ANYDESK without undue delay. Where in addition sensitive data in terms of Section 3 (9) of the German Federal Data Protection Act (Bundesdatenschutzgesetz) are to be processed by ANYDESK the Customer must inform ANYDESK of this fact in writing without undue delay.
+
+7.4. Personal access data (user name and password) may not be disclosed to third parties and must be kept safe from access by third parties. For security reasons, they must be changed prior to first use and at regular intervals thereafter. If there is reason to suspect that unauthorized persons have gained access to access data the Customer shall change them without undue delay.
+
+7.5. The Customer shall be solely responsible for data backup. ANYDESK shall not be under any obligation with regard to retention or safekeeping of data transmitted and processed by the Customer.
+
+7.6. The Customer shall reimburse ANYDESK any costs incurred for checking its equipment following submission of a fault report if the checks show that the fault was not in ANYDESK’s equipment and this could have been recognized by the Customer if it had made a reasonable effort to find the fault.
+
+8. Usage rights and software integration
+8.1. The “AnyDesk” software provided to the Customer for use under the contract is protected by copyright. ANYDESK is exclusively entitled to the commercial exploitation of the software.
+
+8.2. Upon contract conclusion, ANYDESK shall grant the Customer a non-exclusive usage right limited to the contract term pertaining to the applicable offer, to download the client software of ANYDESK to a contractually specified number of data-processing terminals (work stations) in order to create a connection with the ANYDESK communications server and use the software functions via the Internet to the extent described in detail in the Service Specification and subject to the conditions and system requirements described therein.
+
+8.3. Notwithstanding the possibility of unrestricted downloads in accordance with the Supplementary Terms “AnyDesk Free“ the Customer shall not have the right to use the software beyond the use permitted under this agreement in any way or to allow third parties to use it or to make it accessible to third parties. Vicarious agents of the Customer who make use of the services without charge shall not be deemed third parties; this includes, for example, the Customer’s employees, freelancers within the scope of their assignment, etc. In particular, the Customer shall not be permitted to duplicate, edit, make publicly accessible or sell the software or parts thereof.
+
+8.4. The Customer shall not be permitted to change, adapt or decompile the software, to decode it, to undertake reverse engineering, or to try to reconstruct or detect a source code or underlying ideas, algorithms, data formats or programming or interoperability interfaces of the product or files contained in the product or created in the course of use of the product, or to reshape the product in any other way into a form readable by humans.
+
+8.5. The Customer may not circumvent technical measures for the protection of the software or apply or provide processes for their circumvention.
+
+8.6. The Customer shall pay the fees which become payable through the actions of users which are registered and therefore authorized by the Customer. The same shall apply in the event of unauthorized use by other third parties if and to the extent that this use is due to a fault on the part of the Customer.
+
+9. Remuneration and terms and conditions of payment
+9.1. Unless otherwise agreed, remuneration shall be payable in accordance with the AnyDesk price list applicable at the point of contract conclusion. Objections to invoices for services performed by ANYDESK must be declared within four weeks of receipt of the invoice, in writing, to the address stated on the invoice. Following expiry of the above period the invoice shall be deemed approved by the Customer. ANYDESK shall draw the Customer’s attention to the significance of its conduct when sending the invoice.
+
+9.2. Fees payable for the use of ANYDESK services shall be paid by means of the payment method agreed for the order. Unless otherwise specified herein, invoices shall be payable immediately without discount. Where no payment date has been agreed, default periods shall be determined by the statutory provisions. Remuneration and ancillary costs are stated strictly as net prices exclusive of the applicable statutory taxes and charges.
+
+9.3. Monthly fees are charged on a pro-rata basis for the rest of the month, starting with the first day of serviceable provision. Thereafter, fees are payable monthly in advance. Where the fee is charged for parts of a calendar month, it is charged pro-rata for each day. A full monthly fee will be charged if the Customer terminates the contractual relationship effectively before the expiry of one month; this shall not apply to termination for good cause. Other fees, in particular fees depending on usage, are payable after service provision.
+
+9.4. The Customer shall have a right to offset claims only if its counterclaims have been finally established by a court of law or are undisputed. The Customer may only assert rights of retention for counterclaims from this contractual relationship.
+
+10. Default
+10.1. In the event of payment default on significant amounts, ANYDESK shall be entitled to suspend the services at the Customer’s expense.
+
+10.2. Where monthly payments have been agreed with the Customer, the Customer shall remain under obligation to pay the monthly fees in the event of default. Where the Customer
+
+10.2.1. defaults on the payment of fees, or a significant part thereof, for two consecutive months, or
+
+10.2.2. defaults on the payment of fees to an extent equivalent to the basic monthly fees for two months in a continuous period of more than two months, ANYDESK may terminate the contractual relationship without notice.
+
+10.3. ANYDESK reserves the right to assert further claims due to late payment.
+
+11. Warranties
+11.1. At the current state of technology, it is impossible to guarantee that data communication via the Internet or wireless will be completely safe, free of faults and/or available at all times. ANYDESK therefore does not guarantee the availability of its service at all times and shall not be liable for disappointed trust of the user in its faultless functioning.
+
+11.2. Technical data, specifications and performance stipulations in public statements, in particular in advertising, do not constitute a warranty as to quality. The functionality of the software is in the first place determined by the contents of the applicable Service Specification and any supplementary agreements made. In other respects, the software must be suitable for the use presupposed under this agreement and otherwise be of the nature common to software of its kind.
+
+11.3. The Customer shall be provided with the software in a suitable condition for use in accordance with the contract. The duty to maintain does not include adaptation of the software to changed conditions of use and technical and functional developments, such as changes in the IT environment, in particular changes of hardware or of the operating system, adaption to the scope of functions of competing products or creation of compatibility with new data formats.
+
+11.4. No-fault liability for damages for defects present at the point of contract conclusion is excluded.
+
+11.5. The Customer shall support ANYDESK in the detection and rectification of defects.
+
+11.6. In the event of material defects in standard software supplied by third parties or performance by a third-party vicarious agent, ANYDESK shall be entitled, with the effect of releasing it from all liability, to assign claims against suppliers, the manufacturer or other third parties to the Customer for the purposes of rectification or replacement supply, unless this cannot reasonably be expected to be acceptable to the Customer. The above shall also apply where ANYDESK has adapted, configured or otherwise changed the software or hardware in accordance with the Customer’s requirements, unless the material defect has been caused by ANYDESK’s own performance.
+
+11.7. The Customer shall inform ANYDESK of defects without undue delay. Warranty claims shall lapse after one year.
+
+12. Liability
+12.1. ANYDESK shall be liable without limitation for all resulting damage due to intent or gross negligence or the absence of a guaranteed property. ANYDESK shall be liable without limitation for ordinary negligence in the event of personal injury or death. In all other respects, ANYDESK shall be liable for ordinary negligence only where a duty is breached the performance of which is essential to the proper implementation of the agreement, the breach of which jeopardizes the purpose of the agreement, and on the performance of which the Customer may regularly rely (so-called cardinal duty). Liability for breach of a cardinal duty shall be limited to foreseeable damage typical of the type of agreement. This shall also apply to loss of profits and loss of expected savings. Liability for other remote consequential harm caused by a defect is excluded.
+
+12.2. No-fault liability of ANYDESK for damages (Section 536a BGB) for defects present at the time of contract conclusion is excluded.
+
+12.3. Liability for all other damage is excluded. This applies particularly to data loss or hardware malfunction caused by incompatibility of the existing components on the Customer’s terminals and/or IT systems with the hardware or software which is newly installed or to be amended, and to system malfunction which may be caused by existing faulty configurations or older, interfering drivers which have not been completely removed. This also particularly applies to data loss caused by the failure of the Customer to perform data backup and therefore ensure that lost data may be restored with a reasonable amount of effort.
+
+12.4. Liability in accordance with the provisions of the German Product Liability Act is unaffected.
+
+13. Data protection
+13.1. The Customer consents to the collection, storage and processing of personal data, provided these data are required to create, define the substance of, or amend the contractual relationship (user data). These personal data shall be used exclusively for the purposes of contract implementation. In the absence of express consent or a statutory basis the Customer’s personal data shall not be disclosed to third parties who do not perform an active part in contract implementation. Following completed contract implementation the data shall be blocked to prevent further use. The data shall be deleted following expiry of the retention periods specified under tax and commercial provisions, unless the Customer has expressly consented to their further use.
+
+13.2. For the purposes of identifying the terminals (work stations) under the agreement, ANYDESK shall, in the course of remote data access and within the scope of the purpose of the agreement, store the IP and MAC addresses of the respective terminals for a period of seven days for the purposes of preventing risks and removing malfunctions; these data are then deleted without trace unless statutory provisions or official orders require otherwise. Unless otherwise stipulated below, ANYDESK has no other direct or administrative access to the transmitted data contents and shall only store them temporarily for the purposes of transmission of the remote access initiated by the Customer.
+
+13.3. ANYDESK shall, with reference to the respective ANYDESK Customer Identification Number, log the time a program is started and the time and duration of the pertaining session (session protocol); these data are stored in a databank which is not connected to the databank containing the user data of the respective user. ANYDESK shall only log and/or store the contents of the respective data connection (session) on behalf of the Customer if this is part of the agreement, in accordance with the offer chosen by the Customer (session recording).
+
+13.4. With regard to data storage and/or processing pursuant to Section 13.2 and 13.3 above the Customer undertakes to check whether this could affect personal data of third parties. The Customer shall inform ANYDESK of the results of these checks prior to first use. In the event of processing of personal data of third parties on behalf of the Customer, ANYDESK shall collect, process, use or access personal data exclusively within the scope of the agreement concluded and in accordance with the instructions of the Customer. The Customer shall in this event, prior to first use, conclude a separate agreement on the processing of personal data, which shall form the basis of the Supplementary Terms for Data Processing on Behalf of the Customer. This must be sent, signed without amendment, to ANYDESK by postal service. The agreement to process data on behalf of the Customer shall only enter into force upon receipt of the signed agreement by ANYDESK. Where data is processed on behalf of another the Customer is always the responsible agent with regard to the personal data and is solely responsible for compliance with the provisions of the German Federal Data Protection Act (BDSG).
+
+13.5. ANYDESK shall also store data on the type of processor, screen resolution, graphics card, operating system and potentially other technical data of the terminal used, exclusively in anonymised form and for purely statistical purposes.
+
+13.6. Personal data during the ordering process is transmitted via the internet using TLS-based encryption. Credit card data is not stored by ANYDESK, but collected and processed by ANYDESK’s payment provider. ANYDESK secures its website and other systems using technical and organizational measures against loss, destruction, access, change or processing of the personal data by unauthorized parties.
+
+13.7. ANYDESK warrants that technical and organizational security measures in accordance with Section 9 BDSG and the appendix to Section 9 BDSG are in place.
+
+13.8. In accordance with the German Federal Data Protection Act, the Customer has a right to free information about the data saved about its person and a right to correction, blocking or deletion of these data. The responsible office in this regard is
+
+AnyDesk Software GmbH
+Friedrichstr. 9
+70174 Stuttgart
+datenschutz@anydesk.de
+
+14. Support, updates and upgrades
+14.1. ANYDESK shall provide the Customer with a support email address and a helpdesk phone number available on weekdays from 9 am to 12 pm and 1 pm to 5 pm with regard to its services. The hotline shall exclusively serve the purpose of providing support to the Customer during use of the ANYDESK services to be provided under this agreement.
+
+14.2. The hotline is also available to other customers. Customer enquiries to the hotline are processed in the order in which they come in. Defects should not be notified to the hotline but directly to the defect team specified in the Service Specification orsupport.anydesk.com .
+
+14.3. Any software updates will be announced online to all customers upon start of the client software and will be provided online; however, ANYDESK reserves the right to provide extensions to functionalities only to certain types of license (plan options).
+
+14.4. Moreover, ANYDESK reserves the right at any time to deactivate outdated client software following an update. Any deactivation shall be announced online upon start of the client software with at least six weeks’ notice.
+
+15. Amendments to the Terms and Conditions, Service Specifications and prices
+15.1. Where ANYDESK intends to make changes to the General Terms and Conditions or Supplementary Terms, the Service Specification, or the prices, the changes shall – in the case of the services provided under the “Free” option – be notified online upon start of the client software at least six weeks prior to the time of their intended applicability and the Customer be required to give its express consent or declare its express objection. The Customer’s decision shall be logged by ANYDESK and stored under the respective Customer ID, IP and MAC address; the provisions of Section 13.1 shall apply in this regard. Where the Customer objects to the intended changes to the General Terms and Conditions or Supplementary Terms, ANYDESK shall be entitled to declare extraordinary termination, to take effect at the time of the changes coming into force. ANYDESK shall make express reference to this consequence in its notification of changes.
+
+15.2. In all other cases, changes shall be notified to the Customer in writing at least six weeks prior to taking effect. Changes shall entitle the Customer to an extraordinary right of termination at the time of the changes coming into force. If no written notice of termination by the Customer is received within six weeks of issue of the notification of changes the changes shall become integral parts of the agreement upon coming into force. ANYDESK shall make express reference to this consequence in its notification of changes.
+
+16. Contract term, termination and software removal
+16.1. Unless expressly agreed otherwise, the following provisions shall apply with regard to contract terms and notice periods for termination:
+
+16.1.1. Contracts with a minimum contract term: The minimum contract term shall be one year, to start, subject to agreement to the contrary, upon notification of serviceable access provision to the Customer. The contract shall be terminable in writing by either party subject to a notice period of three months, to take effect at the earliest upon expiry of the minimum contract term. Where no termination is declared the contract term shall in each case be extended by one year. A mere change in the number of users shall not affect the contract term.
+
+16.1.2. Contracts without a minimum contract term: A contract without a minimum term shall be terminable in writing by either party subject to a notice period of six working days (not including Saturdays), to take effect at the end of a month. In the event that the Customer terminates the contract prior to the expiry of one month after the start of serviceable provision the full monthly fee shall be payable.
+
+16.2. The above terms and deadlines shall also apply to terminations of parts of services, e.g. a change in the number of users.
+
+16.3. This shall not affect the right to terminate the contract for good cause.
+
+16.4. Notice of termination may be given in writing by letter, fax or email.
+
+17. Miscellaneous provisions
+17.1. The entire commercial relationship between ANYDESK and the Customer shall be governed by the law of the Federal Republic of Germany, to the exclusion of UN law on the sale of goods.
+
+17.2. Where the Customer is a merchant, the exclusive place of jurisdiction for all disputes arising from this agreement shall be the registered business seat of ANYDESK.
+
+B. Supplementary Terms “AnyDesk Free”
+1. Order of precedence
+The services offered under the “Free” option shall be subject to the Supplementary Terms below, which shall take precedence over the General Terms and Conditions (Section A) above, which shall apply in all other respects:
+
+2. Preconditions and subject of service provision
+2.1. The “AnyDesk Free” option is addressed to both consumers in terms of Section 13 of the German Civil Code (BGB) and entrepreneurs in terms of Section 14 BGB.
+
+2.2. Use of the AnyDesk software is subject only to the download of the same and acceptance of the applicability of the General Terms and Conditions and Supplementary Terms.
+
+2.3. ANYDESK provides its software on its website for download, without need for registration, to one data processing terminal per Customer. Following saving of the downloaded software to this specific terminal the Customer may start the software to connect to the communications servers of ANYDESK in order to use, via the Internet, software functions to the extent described in detail in the Service Specification and subject to the conditions and system requirements described in the same.
+
+2.4. The download of the software and the use of its functionalities for an indefinite period is free of charge. However, the Customer shall have no legal claim to the free service described in Section 2.1. ANYDESK does not warrant provision of any particular scope of services and reserves the right to discontinue the service described in Section 2.3 at any time and without stating reasons.
+
+3. Amendments to the Terms and Conditions, Service Specifications and prices
+Where the Customer objects to intended changes to the General Terms and Conditions or Supplementary Terms in accordance with Section A.14.1 of the General Terms and Conditions, use shall cease at the specified time of the changes coming into effect. ANYDESK shall make express reference to this consequence in its notification of changes.
+
+C. Supplementary Terms “AnyDesk Enterprise”
+1. Order of precedence
+The services offered under the “Enterprise” option shall be subject to the Supplementary Terms below, which shall take precedence over the General Terms and Conditions (Section A) above, which shall apply in all other respects:
+
+2. Contract conclusion and preconditions for service performance
+2.1. A contract for the use of the “AnyDesk Enterprise” solution shall only arise on the basis of an individual written offer. The written offer by ANYDESK to the Customer shall be deemed accepted if the services offered therein have been approved without change by countersignature; transmission by way of telecommunications technology shall be deemed sufficient compliance with the requirement of written form in this regard (Section 127 (2) of the German Civil Code (BGB)). A separate written order confirmation shall only apply where specific reference is made therein (specification of the offer/order and total performance). Unless stipulated otherwise, offers shall apply for two weeks from receipt of the offer. Order confirmations by ANYDESK shall replace the Customer’s order unless a written objection is received within two weeks; ANYDESK shall expressly draw attention to the consequences of no objection being received in the order confirmation.
+
+2.2. Use of the “AnyDesk Enterprise” plan in the Customer’s internal network is, in accordance with the individual specifications of the written offer, dependant on provision of a communications server (hardware appliance) by ANYDESK, a virtual appliance by ANYDESK or the installation of server software on a server of the Customer; following download of the ANYDESK client software to an unlimited number of terminals (work stations) the individual users belonging to the Customer may start the client to connect to the server in the internal network in order to use, via the Internet, software functions in accordance with the individual provisions of the written offer by ANYDESK to the extent described in detail in the Service Specification and subject to the conditions and system requirements described in the same. The Customer may simultaneously access the user software made available to it with an unlimited number of terminals (work stations).
+
+2.3. ANYDESK shall provide a handbook for the use of the software. Where, in ANYDESK’s opinion, an update of the operational software results in a need for training, ANYDESK shall provide additional training sessions on the new features of the software for a fee.
+
+3. Special obligations of the Customer
+3.1. The Customer shall promptly provide ANYDESK with all information and/or data available to it which are required for or relevant to the service provision in question and inform ANYDESK of all incidents and circumstances which are relevant to the contract (e.g. defects or misuse, changes in the Customer’s network or software environment); this obligation shall constitute an essential contractual duty. This shall particularly apply to documents, incidents and circumstances which become known only after ANYDESK has started service provision.
+
+3.2. The Customer shall be responsible for creating a data connection between the terminals (work stations) intended for use by the Customer and the data delivery point to the ANYDESK communications server defined by ANYDESK.
+
+3.3. Where, in accordance with Section 2.2, the Customer provides its own communications server, the maintenance of the operating system shall be the sole responsibility of the Customer unless otherwise agreed in writing.
+
+4. Nutzungsrechte und Softwareintegration
+4.1. The server software used by ANYDESK in accordance with the respective written offer to provide a communications server or a virtual appliance in the Customer’s internal network is protected by copyright and may only be used by the Customer in accordance with the purpose described in the offer; the server software may not be duplicated, disseminated or made available to third parties in any other form.
+
+4.2. Furthermore, the Customer shall not be permitted to change, adapt or decompile the server software, to decode it, to undertake reverse engineering, or to try to reconstruct or detect a source code or underlying ideas, algorithms, data formats or programming or interoperability interfaces of the product or files contained in the product or created in the course of use of the product, or to reshape the product in any other way into a form readable by humans.
+
+4.3. The Customer may not circumvent technical measures for the protection of the software or apply or provide processes for their circumvention.
+
+4.4. Section A.8 of the General Terms and Conditions shall apply to the client software provided in accordance with the contract.
+
+5. Updates, support and maintenance
+ANYDESK offers updates, support and maintenance to the Customer in accordance with the particular terms of the applicable written offer.
+
+D. Supplementary Terms and Conditions for “Anydesk Enterprise Software Maintenance”
+1. Order of Priority
+The services offered under “AnyDesk Software Maintenance” are subject to payment, and subject to the following additional terms and conditions, which take precedence over the above terms and conditions (Par. A) and the Supplemental Terms “AnyDesk Enterprise” (Par. C):
+
+2. Performance Prerequisite and Subject
+2.1. Unless otherwise stated in the written offer, the ANYDESK maintenance service shall include the following services:
+
+The transfer and installation of the latest versions of the program (Updates) as well as patches for the contractual standard software (against a previously agreed fee) through any necessary adjustments to the client’s IT system environment.
+The update of the user documentation. In the event of a significant change in the functionality or operation of the software, completely new documentation is made available.
+If necessary, after the expiration of the defects warranty period, repair the defect using the latest program version, both within the program code as well as within the documentation. The response time for corrective action is set at a maximum of 10 working days.
+Both written (including by fax or email) and telephone counseling of clients not referred to in Part A Sect. 11 for defect related issues regarding the application of the software as well as, where appropriate, for recorded programming errors. The telephone consultation service (“Hotline”) shall be available weekdays between 09:00-12:00 hours and 13:00-17:00.
+Written reported errors or repeated service requests are assigned a specific “ticket number” no later than the afternoon of the following business day after receipt. This is done by telephone to the extent possible for the purpose of acceleration. The client must therefore add the name and telephone extension of the investigating officer to any written notification. Response by email is also acceptable in the event of error messages or requests for service by e-mail.
+Additional Service Levels are subject to remuneration and possibly subject to separate written agreements between the Parties.
+
+2.2. Not included in the contractual maintenance services provided by the Contractor are the following services:
+
+Consulting services outside the on-call times as listed under Section 2.1.
+Maintenance services, which are required as a result of the use of the software on a different hardware system or another operating system.
+Maintenance services after any type of modification by the client in the program code of the software.
+The repair of any faults or damage caused by improper handling by the client, the action of any third parties or force majeure.
+Maintenance services with regard to the compatibility of the contractual software with other computer programs, which are not covered by the Maintenance Agreement.
+Expansion and / or improvements of the original functionality scope of the contractual software (Upgrades).
+These services are the subject of separate written agreements between the Parties, if necessary.
+
+3. Usage Rights
+3.1. In so far as ANYDESK provides the client with the latest available program version in accordance with this Maintenance Agreement, ANYDESK grants the client usage rights thereto in accordance with Part C Section 4.
+
+3.2. If the client uses contractual matters which are scheduled to be replaced earlier, then his usage rights under the replacement Agreement shall expire.
+
+4. Particular Client Obligations
+4.1. For defining, isolating, detecting and reporting errors, the client must follow the instructions issued by ANYDESK. The client must used checklists provided by ANYDESK as necessary.
+
+4.2. The client shall make every effort to submit a detailed error report with questions. For this purpose, he must rely on his competent staff.
+
+4.3. During necessary test runs, either the client or designated competent employees who are fully authorized to identify and make decisions about defects, feature enhancements, reductions in functionality and changes in the program structure will be present. Other work with the computer system is adjusted during the maintenance period as necessary.
+
+4.4. The client allows ANYDESK remote access to the software by means of telecommunications or Internet. The client shall assume responsibility to provide the necessary connections in accordance with instructions received from ANYDESK.
+
+E. Supplementary Terms for Data Processing on Behalf of the Customer (“Auftragsdatenverarbeitung”)
+1. Applicability and order of precedence
+1.1. Where the Customer wishes to process personal data in the context of using a service of ANYDESK the Customer shall be required to conclude a separate agreement on the processing of personal data with ANYDESK in accordance with Section 11 of the German Federal Data Protection Act (BDSG). This agreement shall be subject to the Supplementary Terms below, which shall take precedence over the General Terms and Conditions (Section A) above, which shall apply in all other respects:
+
+1.2. Two copies of this agreement must be signed and sent to the following address:
+
+AnyDesk Software GmbH
+Friedrichstr. 9
+70176 Stuttgart
+
+ANYDESK shall return one countersigned copy to the Customer.
+
+2. Subject of the agreement
+The subject of this agreement is the regulation of rights and/or duties of the Customer and ANYDESK where, in the context of service provision (in accordance with the General Terms and Conditions and Supplementary Terms), ANYDESK collects, processes and/or uses personal data (hereinafter referred to as “data”) on behalf of the Customer in terms of Section 11 of the German Federal Data Protection Act (BDSG). The agreement shall apply accordingly to the (remote) testing and maintenance of automated procedures or of data processing systems if in doing so the possibility of access to personal data cannot be ruled out.
+
+3. Customer’s responsibility and right to instruct
+3.1. The Customer, as the principal in terms of Section 11 BDSG, shall be solely responsible for assessing the permissibility under data protection law of collecting, processing and using personal data and for the observance of the rights of the affected parties. The Customer shall accordingly ensure that the conditions of permissibility of data processing prescribed by statute or regulatory authority are met, i.e., amongst others, that deletion periods and permitted storage terms are observed and all required declarations of consent are demonstrably obtained, in particular if the Customer’s data processing assignment concerns sensitive data in terms of Section 3 (9) BDSG. In the event of a culpable breach of the above provisions, the Customer shall be liable for the resulting damage; the Customer shall indemnify ANYDESK against all claims of third parties which are due to such breach and shall compensate ANYDESK for any costs which arise due to po-tential infringements of rights.
+
+3.2. The subject, type, duration and purpose of the data processing to be undertaken shall be determined by the Customer by its choice of product, the scope of which is determined by the General Terms and Conditions and Supplementary Terms and the data protection requirements pertaining to which are specified in detail in the Appendix to the Supplementary Terms for Data Processing on Behalf of the Customer.
+
+3.3. Any instructions by the Customer with regard to the processing of personal data which go beyond the contractually agreed services and product features and result in additional efforts on the part of ANYDESK shall attract an appropriate additional fee. ANYDESK shall be entitled to terminate the agreement in the event of instructions the implementation of which by ANYDESK is not possible, or only possible under expense of disproportionately high additional effort. Additional instructions must be in writing.
+
+4. Protection and supervision
+4.1. ANYDESK shall process the data exclusively within the scope of the agreements concluded and shall not use the data for any other purpose; ANYDESK shall, in particular, not be permitted to disclose the data provided to third parties. ANYDESK shall take the required technical and organizational measures in accordance with Section 9 BDSG in order to protect the data, specified in the Appendix to the Supplementary Terms for Data Processing on Behalf of the Customer. Within this specification, ANYDESK may adapt the technical and organizational measures at its discretion in accordance with a due assessment of the circumstances.
+
+4.2. The Customer may at any time at its own cost check compliance with data protection provisions concerning the data processing undertaken on its behalf, or instruct a third party to carry out such checks. Where applicable, the third party shall demonstrably be obligated to maintain confidentiality. The Customer shall be required to give ANYDESK appropriate notice of individual checks and shall act with consideration towards the business operations of ANYDESK during their implementation.
+
+5. Other rights and obligations
+5.1. The Customer shall be the responsible contact point for the exercise of rights of affected persons, such as correction, deletion and blocking of data. ANYDESK shall ensure in the course of service performance that the Customer is able to meet its obligations with regard to the rights of affected persons. Where an affected person exercises its right to correction, deletion or blocking of data with the Customer and the Customer is unable to implement the request by appropriate selection or change in the settings of particular features ANYDESK shall, in collaboration with the Customer, perform the correction, blocking or deletion, provided implementation of the change by ANYDESK is legally and actually possible.
+
+5.2. Any documents containing personal data and files which are no longer required shall be destroyed in accordance with data protection provisions, unless statutory duties require otherwise. Where the Customer is in possession of storage media the Customer shall delete from them all personal data in accordance with data protection provisions before returning them to ANYDESK. Where this is not possible the Customer shall inform ANYDESK in writing in good time; ANYDESK shall in this event carry out the deletion of the personal data from the storage media on behalf of the Customer against payment of an additional fee.
+
+5.3. ANYDESK shall inform the Customer of cases of major operational malfunction, violations of data protection provisions, breaches against terms of this agreement and other significant irregularities related to the processing of the Customer’s data. However, the general duty to ascertain whether the data processing is in breach of any data protection provisions shall not be the duty of ANYDESK; where ANYDESK considers this to be the case ANYDESK shall be entitled to suspend implementation of the respective data processing until it is confirmed or changed by the Customer.
+
+5.4. Where the Customer is under legal duty to supply information on the processing of data to an official body or a natural or legal person ANYDESK shall support the Customer in providing this information. Unless expressly agreed otherwise, ANYDESK shall charge a fee to cover the expense of such support actions.
+
+6. Supervision, maintenance, remote access
+6.1. All checks and maintenance works, in particular those carried out by remote access, shall be documented and logged.
+
+6.2. Where the possibility of access to personal data in the course of checks and maintenance works using automated processes or data processing equipment – including by way of remote access – may not be excluded, ANYDESK shall only make use of the access to the extent which, both in terms of time and subject matter, is strictly required for the proper implementation of the maintenance works and checks requested.
+
+7. Location and subcontractors
+7.1. ANYDESK stores customer data exclusively on servers physically located in Germany.
+
+7.2. ANYDESK may use subcontractors for the performance of its responsibilities described herein, which, where applicable, shall be specified in the Appendix to the Supplementary Terms for Data Processing on Behalf of the Customer. Where required, ANYDESK shall enter into contractual agreements with these subcontractors which match the contractual provisions of this agreement.
+
+Privacy Statement
+General
+AnyDesk takes privacy very serious. We exercise the utmost care and strictly adhere to the statutory provisions in regards to collecting, processing, using and unnecessary disclosure of data. This statement provides an overview about your rights when using our website and software and what kind of data is collected and for what purpose.
+
+Personal Data
+Personal data is any information relating to an identified or identifiable natural person. This includes information and details such as your name, your address or other mailing address, or phone number. This also includes an email-Address if it includes such a reference to your name that it makes you identifiable. Information that can not be used to determine your identity is not considered to be personal data. Such information is, for example, body size, gender, age or education.
+
+Use and Disclosure of Data
+We will use automatically or manually collected personal data related to you to only to respond to your inquiries, to process contracts we have concluded with you, and for technical administration.
+
+We will only disclose personal data to third parties under a limited extent under the following circumstances:
+
+In order to process the payment process at the appropriate payment service
+If you have explicitly consented to the disclosure of the data
+If we are legally obligated to disclose the data (e.g. in response to a court or administrative order)
+In no case will the data be sold.
+
+Deletion of Data
+You have the right to revoke your consent to the storage of your personal data at any time. The deletion of your personal data is carried out when you have revoked your consent and storage is no longer necessary for processing of contracts. In any case we will delete your personal data if we do not longer need it for our services or if the storage gets prohibited for legal reasons.
+
+Website
+As a principle, we ask on our website only to provide us with the data that is immediately necessary for the provision and improvement of our services. In addition, some data is automatically collected for statistical analysis.
+
+E-Mails and Newsletters
+If you use the email services offered on this website or would like receive our newsletter, your email-address will be stored. Additionally, we may require further information which will enable us to check if you are the owner of the email-address or if its owner agrees to reveive the newsletter. You can revoke your permission for storage and usage of this data and your email-address to deliver newsletters at any time.
+
+Email newsletters can be unsubscribed at any time.
+
+Access Protocol
+Every access to our website and related resources is logged. The logging is necessary for internal statistical purposes and to ensure data security. Some information from your browser is collected and stored for that matter. This includes:
+
+Browser type and version
+Operating system
+The previously visited website
+The host name of the accessing computer and its IP address
+Time of the server inquiry
+Cookies
+Cookies are small text files that can be stored on the computer of the visitor of a website. In a subsequent access to the same website, the information stored there is transferred back to the server. The use of our website is possible without the use of cookies.
+
+Basically, we avoid the use of cookies and restrict them to the following applications:
+
+Management of different user sessions (session tracking)
+Storage of user settings of our website (e.g. language setting)
+Use in the context of web analytics
+Web analytics tools
+This website uses Google Analytics, a web analytics service provided by Google, Inc. (“Google”). Google Analytics uses “cookies”, which are text files placed on your computer, to help the website analyze how users use the site. The information generated by the cookie about your use of the website (including your IP address) will be transmitted to and stored by Google on servers in the United States . Google will use this information for the purpose of evaluating your use of the website, compiling reports on website activity for website operators and providing other services relating to website activity and internet usage. Google may also transfer this information to third parties where required to do so by law, or where such third parties process the information on Google’s behalf. Google will not associate your IP address with any other data held by Google. You may refuse the use of cookies by selecting the appropriate settings on your browser, however please note that if you do this you may not be able to use the full functionality of this website. By using this website, you consent to the processing of data about you by Google in the manner and for the purposes set out above.
+
+You can stop the recording and processing of your data usage of this website by Google by downloading and installing the browser plugin available at:
+
+http://tools.google.com/dlpage/gaoptout?hl=en
+Software
+To ensure a reliable and safe operation of AnyDesk, to enable some advanced features and to improve our procduct in the future, AnyDesk will automatically collect the following data:
+
+Time of program start
+IP-address of the machine
+Statistical information about your computer (e.g. CPU-type, screen resolution)
+Time and duration of AnyDesk sessions as well as the AnyDesk-IDs of participants
+This data is saved in a database which is seperate from the database which contains your personal data.
+
+Changes
+We reserve the right at any time to modify this privacy statement in compliance with the legal requirements.
+
+Contact
+For questions about this privacy policy, please contact us via the means specified in the imprint. You can inquire at any time whether and which of your data is stored by us. In addition, you can send us inquiries, deletion and correction requests. Feel free to send suggestions.
