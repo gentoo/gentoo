@@ -38,7 +38,7 @@ DEPEND="
 	test? ( net-misc/curl )
 "
 PATCHES=(
-	"${FILESDIR}"/gentoo-global-npm-config.patch
+	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
 )
 
 pkg_pretend() {
