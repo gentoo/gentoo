@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="An enhanced (world's fastest) tar, as well as enhanced mt/rmt"
 HOMEPAGE="http://s-tar.sourceforge.net/"
@@ -15,13 +15,16 @@ KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linu
 IUSE="acl xattr"
 
 DEPEND="
+	sys-libs/libcap
 	acl? ( sys-apps/acl )
 	xattr? ( sys-apps/attr )"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${P/_alpha[0-9][0-9]}
+S="${WORKDIR}/${P/_alpha[0-9][0-9]}"
 
 src_prepare() {
+	default
+
 	find -type f -exec chmod -c u+w '{}' + || die
 	sed \
 		-e "s:/opt/schily:${EPREFIX}/usr:g" \
@@ -33,14 +36,20 @@ src_prepare() {
 	if use acl; then
 		sed \
 			-e 's:[$]ac_cv_header_sys_acl_h:disable acl:' \
-			-i "${S}/autoconf/configure" || die
+			-i autoconf/configure || die
 	fi
 
 	if use xattr; then
 		sed \
 			-e 's:[$]ac_cv_header_attr_xattr_h:disable xattr:' \
-			-i "${S}/autoconf/configure" || die
+			-i autoconf/configure || die
 	fi
+
+	# "echo -n" is not POSIX compliant
+	sed \
+		-e 's@echo $ac_n@printf@' \
+		-e '/printf/s@$ac_c@@g' \
+		-i autoconf/configure || die
 
 	# Create additional symlinks needed for some archs.
 	pushd "${S}/RULES" > /dev/null
@@ -56,6 +65,7 @@ src_configure() { :; } #avoid ./configure run
 
 src_compile() {
 	emake \
+		GMAKE_NOWARN="true" \
 		CC="$(tc-getCC)" \
 		COPTX="${CFLAGS}" \
 		CPPOPTX="${CPPFLAGS}" \
