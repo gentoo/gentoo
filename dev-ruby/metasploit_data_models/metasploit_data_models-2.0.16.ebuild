@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23"
+USE_RUBY="ruby24"
 
 inherit ruby-fakegem
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://rubygems/${P}.gem"
 
 LICENSE="BSD"
 SLOT="${PV}"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~x86"
 RESTRICT=test
 #IUSE="development test"
 IUSE=""
