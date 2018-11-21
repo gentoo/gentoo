@@ -86,11 +86,11 @@ nvidia_drivers_versions_check() {
 		die "Unexpected \${DEFAULT_ABI} = ${DEFAULT_ABI}"
 	fi
 
-	if use kernel_linux && kernel_is ge 4 19; then
+	if use kernel_linux && kernel_is ge 4 20; then
 		ewarn "Gentoo supports kernels which are supported by NVIDIA"
 		ewarn "which are limited to the following kernels:"
-		ewarn "<sys-kernel/gentoo-sources-4.19"
-		ewarn "<sys-kernel/vanilla-sources-4.19"
+		ewarn "<sys-kernel/gentoo-sources-4.20"
+		ewarn "<sys-kernel/vanilla-sources-4.20"
 		ewarn ""
 		ewarn "You are free to utilize epatch_user to provide whatever"
 		ewarn "support you feel is appropriate, but will not receive"
@@ -507,7 +507,7 @@ src_install-libs() {
 		if use kernel_linux; then
 			NV_GLX_LIBRARIES+=(
 				"libnvidia-ml.so.${NV_SOVER}"
-				"tls/libnvidia-tls.so.${NV_SOVER}"
+				"libnvidia-tls.so.${NV_SOVER}"
 			)
 		fi
 
