@@ -22,6 +22,18 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.18.16-no-werror.patch
 )
 
+src_prepare() {
+	# no-werror.patch fixes both configure{.ac,}
+	# avoid configure echeck
+	touch -r configure.ac orig.configure.ac || die
+	touch -r configure    orig.configure || die
+
+	default
+
+	touch -r orig.configure.ac configure.ac || die
+	touch -r orig.configure    configure || die
+}
+
 src_configure() {
 	# suppress possibly incorrect -R flag
 	export ag_cv_test_ldflags=
