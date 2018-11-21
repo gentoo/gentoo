@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -19,8 +19,8 @@ else
 	SRC_URI="https://github.com/rapid7/metasploit-framework/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
 	RUBY_S="${PN}-framework-${MY_PV}"
-	inherit versionator
-	SLOT="$(get_version_component_range 1).$(get_version_component_range 2)"
+	inherit eapi7-ver
+	SLOT="$(ver_cut 1).$(ver_cut 2)"
 fi
 
 DESCRIPTION="Advanced framework for developing, testing, and using vulnerability exploit code"
@@ -40,8 +40,8 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/bit-struct
 	>=dev-ruby/builder-3.0
 	dev-ruby/bundler
-	dev-ruby/filesize
-	>=dev-ruby/jsobfu-0.3.0
+	dev-ruby/filesize:*
+	>=dev-ruby/jsobfu-0.3.0:*
 	dev-ruby/json:*
 	dev-ruby/kissfft
 	dev-ruby/metasm:1.0.2
@@ -79,9 +79,9 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/rex-struct2
 	dev-ruby/rex-text
 	dev-ruby/rex-zip
-	dev-ruby/ruby_smb
+	dev-ruby/ruby_smb:*
 	dev-ruby/sqlite3
-	>=dev-ruby/pg-0.11
+	>=dev-ruby/pg-0.11:*
 	dev-ruby/packetfu:1.1.13
 	>=dev-ruby/rubyzip-1.1
 	>=dev-ruby/rb-readline-0.5.4
@@ -300,7 +300,7 @@ all_ruby_install() {
 	# do not remove LICENSE, bug #238137
 	dodir /usr/share/doc/${PF}
 	cp -R {documentation,README.md} "${ED}"/usr/share/doc/${PF} || die
-	dosym /usr/share/doc/${PF}/documentation /usr/$(get_libdir)/${PN}${SLOT}/documentation
+	ln -s "../../share/doc/${PF}/documentation" "${ED}/usr/$(get_libdir)/${PN}${SLOT}/documentation"
 
 	fperms +x /usr/$(get_libdir)/${PN}${SLOT}/msfupdate
 
