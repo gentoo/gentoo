@@ -29,7 +29,8 @@ IUSE="extras"
 
 DEPEND="${LIBMSPACK_DEPEND}
 	virtual/pkgconfig"
-RDEPEND="extras? ( dev-lang/perl )"
+RDEPEND="${LIBMSPACK_DEPEND}
+	extras? ( dev-lang/perl )"
 
 src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then

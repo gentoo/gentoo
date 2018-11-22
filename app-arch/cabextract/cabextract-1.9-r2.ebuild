@@ -29,7 +29,8 @@ IUSE="extras"
 
 DEPEND="${LIBMSPACK_DEPEND}
 	virtual/pkgconfig"
-RDEPEND="extras? ( dev-lang/perl )"
+RDEPEND="${LIBMSPACK_DEPEND}
+	extras? ( dev-lang/perl )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-bigendian.patch
