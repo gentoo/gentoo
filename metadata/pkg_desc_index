@@ -1817,8 +1817,8 @@ dev-ada/gnatmem 2018: Monitors dynamic allocation and deallocation activity in a
 dev-ada/gnatsymbolize 2018: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r1 2018-r3: Multi-Language Management
 dev-ada/gtkada 2017 2018: A complete Ada graphical toolkit
-dev-ada/langkit 2017: A Python framework to generate language parsers
-dev-ada/libadalang 2017: high performance semantic engine for the Ada programming language
+dev-ada/langkit 2017 2018: A Python framework to generate language parsers
+dev-ada/libadalang 2017 2018: high performance semantic engine for the Ada programming language
 dev-ada/libgpr 2018: Ada library to handle GPRbuild project files
 dev-ada/xmlada 2018: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/antlr-cpp 2.7.7: The ANTLR 2 C++ Runtime
