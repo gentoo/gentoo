@@ -1,0 +1,17 @@
+https://github.com/kyz/libmspack/commit/c19e707936947b45cf05bc9aaee68517c6c2aca6
+
+---
+ configure.ac  | 1 +
+ 1 files changed, 1 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -30,6 +30,7 @@ AC_CHECK_HEADERS([inttypes.h])
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+ AC_C_INLINE
++AC_C_BIGENDIAN
+ AC_TYPE_MODE_T
+ AC_TYPE_OFF_T
+ AC_TYPE_SIZE_T
