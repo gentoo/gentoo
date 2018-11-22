@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit rpm pax-utils systemd
 
@@ -30,7 +30,7 @@ QA_PREBUILT="opt/nessus_agent/bin/nasl
 S="${WORKDIR}"
 
 pkg_nofetch() {
-	einfo "Please download ${A} from ${HOMEPAGE}/agent-download"
+	einfo "Please download ${A} from ${HOMEPAGE}/download/nessus-agents"
 	einfo "The archive should then be placed into ${DISTDIR}."
 }
 
