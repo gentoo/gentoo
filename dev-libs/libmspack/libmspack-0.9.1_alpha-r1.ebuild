@@ -26,6 +26,8 @@ IUSE="debug doc static-libs"
 DEPEND=""
 RDEPEND=""
 
+PATCHES=( "${FILESDIR}"/${P}-fix-bigendian.patch )
+
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
