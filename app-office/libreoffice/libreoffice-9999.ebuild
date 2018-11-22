@@ -196,9 +196,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/libreoffice-bin
 	!app-office/libreoffice-bin-debug
 	!app-office/openoffice
-	media-fonts/dejavu
 	media-fonts/liberation-fonts
-	media-fonts/libertine
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
 	java? ( >=virtual/jre-1.6 )
 	kde? ( kde-frameworks/breeze-icons:* )
@@ -216,6 +214,7 @@ fi
 # FIXME: cppunit should be moved to test conditional
 #        after everything upstream is under gbuild
 #        as dmake execute tests right away
+#        tests apparently also need google-carlito-fonts (not packaged)
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/libatomic_ops-7.2d
 	dev-perl/Archive-Zip
@@ -241,6 +240,7 @@ DEPEND="${COMMON_DEPEND}
 		app-crypt/gnupg
 		dev-util/cppunit
 		media-fonts/dejavu
+		media-fonts/liberation-fonts
 	)
 "
 
@@ -250,6 +250,7 @@ PATCHES=(
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
+	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
