@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit python-single-r1
+inherit gnome2-utils python-single-r1 xdg-utils
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
@@ -39,4 +39,14 @@ src_prepare() {
 
 src_configure() {
 	econf $(use_with decode libsigrokdecode)
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
