@@ -29,7 +29,7 @@ DOCS=( AUTHORS ChangeLog-2012 NEWS README THANKS TODO ) # ChangeLog-1998 PACKAGI
 
 PATCHES=(
 	"${WORKDIR}"/patches/${PN}-3.1-optional-perl.patch #538300
-	"${WORKDIR}"/patches/${PN}-3.2-avoid_autoreconf.patch
+	"${WORKDIR}"/patches/${P}-avoid_autoreconf.patch
 )
 
 src_prepare() {
