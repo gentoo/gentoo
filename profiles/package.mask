@@ -133,11 +133,6 @@ dev-db/mysql-proxy
 app-forensics/libbfio
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Needs someone to finally take care of it, bump it and let it be
-# installable again (#635476, #645740). Removal in a month.
-net-analyzer/nessus-bin
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Pending version bump (#648380), doesn't build (#637350). Removal in a
 # month.
 sys-apps/likwid
