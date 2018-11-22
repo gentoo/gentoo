@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,15 +16,12 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5b0cfbefc7a4475263382c2a
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
-	|| (
-		dev-ada/gnatcoll[gnat_2017,iconv,shared]
-		dev-ada/gnatcoll-bindings[gnat_2018,iconv,shared]
-	)
+	dev-ada/gnatcoll-bindings[iconv,shared]
 	dev-python/mako
 	dev-python/pyyaml
 	dev-python/enum34
