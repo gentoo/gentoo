@@ -3,17 +3,27 @@
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25"
+
+RUBY_FAKEGEM_RECIPE_DOC="none"
+
+RUBY_FAKEGEM_GEMSPEC="faker.gemspec"
 
 inherit ruby-fakegem
 
 DESCRIPTION="A library for generating fake data such as names, addresses, and phone numbers"
 HOMEPAGE="https://github.com/stympy/faker"
-SRC_URI="mirror://rubygems/${P}.gem"
+SRC_URI="https://github.com/stympy/faker/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE=""
+IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/i18n-0.7:*"
+
+ruby_add_bdepend "test? ( dev-ruby/timecop )"
+
+all_ruby_prepare() {
+	sed -i -e '/simplecov/,/^end/ s:^:#:' test/test_helper.rb || die
+}
