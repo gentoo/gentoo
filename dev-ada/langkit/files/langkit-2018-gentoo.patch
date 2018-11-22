@@ -9,3 +9,52 @@
                                     quex_file,
                                     "-o", "quex_lexer",
                                     "--buffer-element-size", "4",
+--- a/langkit/libmanage.py	2018-11-20 21:38:03.042086783 +0100
++++ b/langkit/libmanage.py	2018-11-20 21:39:50.562273656 +0100
+@@ -682,6 +682,8 @@
+ 
+         result = ['-XBUILD_MODE={}'.format(build_mode),
+                   '-XLIBRARY_TYPE={}'.format(library_type),
++                  '-XGPR_BUILD={}'.format(library_type),
++                  '-XGNATCOLL_CORE_BUILD={}'.format(library_type),
+                   '-XXMLADA_BUILD={}'.format(library_type)]
+ 
+         enable_build_warnings = getattr(args, 'enable_build_warnings', False)
+--- a/testsuite/python_support/utils.py	2018-11-20 21:41:46.156324084 +0100
++++ b/testsuite/python_support/utils.py	2018-11-20 21:42:26.049651194 +0100
+@@ -203,7 +203,8 @@
+                 main_sources=', '.join('"{}"'.format(m) for m in ada_main)
+             ))
+         run('gprbuild', '-Pgen', '-q', '-p',
+-            '-XLIBRARY_TYPE=relocatable', '-XXMLADA_BUILD=relocatable')
++            '-XLIBRARY_TYPE=relocatable', '-XGPR_BUILD=relocatable',
++            '-XXMLADA_BUILD=relocatable')
+ 
+         for i, m in enumerate(ada_main):
+             assert m.endswith('.adb')
+--- a/testsuite/testsuite_support/__init__.py	2018-11-20 21:45:08.828905205 +0100
++++ b/testsuite/testsuite_support/__init__.py	2018-11-20 21:46:10.837858988 +0100
+@@ -110,7 +110,9 @@
+         # Build Langkit_Support so that each testcase does not try to build it
+         # in parallel.
+         if not self.global_env['options'].disable_tear_up_builds:
+-            gargs = ['-p', '-P', self.langkit_support_project_file]
++            gargs = ['-p']
++            gargs = gargs + ['-XGPR_BUILD=relocatable']
++            gargs = gargs + ['-P', self.langkit_support_project_file]
+             cargs = ['-cargs', '-O0', '-g']
+             if self.coverage_enabled:
+                 gargs.append('--subdirs=gnatcov')
+--- a/testsuite/testsuite_support/base_driver.py	2018-11-20 22:04:54.199973719 +0100
++++ b/testsuite/testsuite_support/base_driver.py	2018-11-20 22:05:26.498436100 +0100
+@@ -312,7 +312,9 @@
+ 
+         :param str project_file: Project file name.
+         """
+-        argv = ['gprbuild', '-P', project_file, '-p']
++        argv = ['gprbuild']
++        argv = argv + ['-XGPR_BUILD=relocatable']
++        argv = argv + ['-P', project_file, '-p']
+         cargs = ['-O0', '-g', '-gnata']
+         if self.coverage_enabled:
+             argv.append('--subdirs=gnatcov')
