@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools eutils
 
 DESCRIPTION="A library and tools for trace processing"
@@ -54,5 +54,5 @@ src_install() {
 
 	use doc && dodoc -r docs/doxygen/html
 
-	prune_libtool_files --modules
+	find "${D}" -name "*.la" -delete || die
 }

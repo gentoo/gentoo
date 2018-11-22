@@ -30,7 +30,7 @@ RDEPEND="
 	>=net-libs/nghttp2-1.33.0
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-60.1:= )
-	ssl? ( >=dev-libs/openssl-1.0.2n:0=[-bindist] )
+	ssl? ( =dev-libs/openssl-1.0.2*:0=[-bindist] )
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}

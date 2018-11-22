@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Collection of programs that can be used to automate common tasks in debian/rules"
