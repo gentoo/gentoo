@@ -1848,12 +1848,6 @@ toolchain_src_install() {
 				cp -r "${cxx_mandir}"/man? "${D}${DATAPATH}"/man/
 			fi
 		fi
-		has noinfo ${FEATURES} \
-			&& rm -r "${D}${DATAPATH}"/info \
-			|| prepinfo "${DATAPATH#${EPREFIX}}"
-		has noman ${FEATURES} \
-			&& rm -r "${D}${DATAPATH}"/man \
-			|| prepman "${DATAPATH#${EPREFIX}}"
 	fi
 	# prune empty dirs left behind
 	find "${ED}" -depth -type d -delete 2>/dev/null
