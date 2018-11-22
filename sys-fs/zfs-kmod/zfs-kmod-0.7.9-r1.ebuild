@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,7 +17,7 @@ fi
 inherit flag-o-matic linux-info linux-mod toolchain-funcs autotools-utils
 
 DESCRIPTION="Linux ZFS kernel module for sys-fs/zfs"
-HOMEPAGE="http://zfsonlinux.org/"
+HOMEPAGE="https://zfsonlinux.org/"
 
 LICENSE="CDDL debug? ( GPL-2+ )"
 SLOT="0"

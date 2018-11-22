@@ -10,7 +10,7 @@ if [ ${PV} == "9999" ] ; then
 	EGIT_REPO_URI="git://github.com/zfsonlinux/${PN}.git"
 else
 	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
-	KEYWORDS="amd64"
+	KEYWORDS="~amd64"
 fi
 
 inherit autotools-utils bash-completion-r1 flag-o-matic linux-info python-r1 systemd toolchain-funcs udev
@@ -82,7 +82,6 @@ pkg_setup() {
 			fi
 		fi
 	fi
-
 }
 
 src_prepare() {
@@ -90,7 +89,7 @@ src_prepare() {
 	sed -e "s|/sbin/lsmod|/bin/lsmod|" \
 		-e "s|/usr/bin/scsi-rescan|/usr/sbin/rescan-scsi-bus|" \
 		-e "s|/sbin/parted|/usr/sbin/parted|" \
-		-i scripts/common.sh.in
+		-i scripts/common.sh.in || die
 
 	autotools-utils_src_prepare
 }
@@ -201,7 +200,6 @@ pkg_postinst() {
 	systemd_reenable zfs-import.target
 	systemd_reenable zfs.target
 	systemd_reenable zfs.service
-
 }
 
 pkg_postrm() {

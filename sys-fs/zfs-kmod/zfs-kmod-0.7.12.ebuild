@@ -46,6 +46,7 @@ pkg_setup() {
 		IOSCHED_NOOP
 		MODULES
 		!PAX_KERNEXEC_PLUGIN_METHOD_OR
+		!TRIM_UNUSED_KSYMS
 		ZLIB_DEFLATE
 		ZLIB_INFLATE
 	"
@@ -65,7 +66,7 @@ pkg_setup() {
 	kernel_is ge 2 6 32 || die "Linux 2.6.32 or newer required"
 
 	[ ${PV} != "9999" ] && \
-		{ kernel_is le 4 18 || die "Linux 4.18 is the latest supported version."; }
+		{ kernel_is le 4 19 || die "Linux 4.19 is the latest supported version."; }
 
 	check_extra_config
 }

@@ -3,13 +3,12 @@
 
 EAPI="5"
 
-AUTOTOOLS_AUTORECONF="1"
 if [[ ${PV} == "9999" ]] ; then
+	AUTOTOOLS_AUTORECONF="1"
 	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/${P}.tar.gz
-		https://dev.gentoo.org/~ryao/dist/${PF}-patches.tar.xz"
+	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
@@ -44,6 +43,7 @@ pkg_setup() {
 		KALLSYMS
 		!PAX_KERNEXEC_PLUGIN_METHOD_OR
 		!PAX_SIZE_OVERFLOW
+		!TRIM_UNUSED_KSYMS
 		ZLIB_DEFLATE
 		ZLIB_INFLATE
 	"
@@ -57,20 +57,12 @@ pkg_setup() {
 	kernel_is ge 2 6 32 || die "Linux 2.6.32 or newer required"
 
 	[ ${PV} != "9999" ] && \
-		{ kernel_is le 4 18 || die "Linux 4.18 is the latest supported version."; }
+		{ kernel_is le 4 19 || die "Linux 4.19 is the latest supported version."; }
 
 	check_extra_config
 }
 
 src_prepare() {
-	if [ ${PV} != "9999" ]
-	then
-		# Apply patch set
-		EPATCH_SUFFIX="patch" \
-		EPATCH_FORCE="yes" \
-		epatch "${WORKDIR}/${PF}-patches"
-	fi
-
 	# Workaround for hard coded path
 	sed -i "s|/sbin/lsmod|/bin/lsmod|" "${S}/scripts/check.sh" || \
 		die "Cannot patch check.sh"
