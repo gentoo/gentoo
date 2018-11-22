@@ -7514,7 +7514,7 @@ media-libs/gstreamer-editing-services 1.14.1: SDK for making video editors and m
 media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.1 3.2: Ham radio backend rig control libraries
-media-libs/harfbuzz 1.7.6 1.8.1 1.9.0: An OpenType text shaping engine
+media-libs/harfbuzz 1.7.6 1.8.1 1.9.0 2.0.2: An OpenType text shaping engine
 media-libs/id3lib 3.8.3-r8: Id3 library for C/C++
 media-libs/ilmbase 1.0.2 2.1.0 2.2.0-r1: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r5: Image loading and rendering library
@@ -10556,7 +10556,7 @@ www-apps/trac 1.0.9: Enhanced wiki and issue tracking system for software develo
 www-apps/venus 20100911-r1: A feed aggregator application
 www-apps/viewvc 1.1.26: ViewVC, a web interface to CVS and Subversion
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
-www-client/chromium 70.0.3538.67: Open-source version of Google Chrome web browser
+www-client/chromium 70.0.3538.67 70.0.3538.110: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser
 www-client/epiphany 3.26.7: GNOME webbrowser based on Webkit
