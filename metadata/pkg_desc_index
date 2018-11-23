@@ -1344,7 +1344,7 @@ app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes
 app-text/evince 3.24.2-r1: Simple document viewer for GNOME
 app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/flpsed 0.7.0: Pseudo PostScript editor
-app-text/ghostscript-gpl 9.25: Ghostscript is an interpreter for the PostScript language and for PDF
+app-text/ghostscript-gpl 9.25 9.26: Interpreter for the PostScript language and PDF
 app-text/glosung 3.6.2-r1: Watch word program for the GNOME2 desktop (watch word (german): losung)
 app-text/gnome-doc-utils 0.20.10-r1: A collection of documentation utilities for the Gnome project
 app-text/gnopaster 0.0.9: A submitter for gnopaste, a nopaste service like http://nopaste.info
@@ -10285,7 +10285,7 @@ sys-process/audit 2.6.4 2.7.1 2.8.3: Userspace utilities for storing and process
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 2.5-r1 3.6: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
-sys-process/cronie 1.5.1-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
+sys-process/cronie 1.5.1-r1 1.5.2: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.9: Utilities to assist running batch processing jobs
 sys-process/daemontools 0.76-r7: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r1: A cute little cron from Matt Dillon
