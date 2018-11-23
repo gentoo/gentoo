@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,8 +28,13 @@ DOCS=(
 	README.md
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7-no-werror.patch
+)
+
 src_prepare() {
 	default
+
 	if has_version ">=sys-libs/binutils-libs-2.29"; then
 		eapply "${FILESDIR}"/${PN}-1.1-binutils-2.29.patch
 	fi
