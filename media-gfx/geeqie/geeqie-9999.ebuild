@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools xdg-utils git-r3
+
+inherit autotools xdg-utils git-r3 eutils
 
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
 HOMEPAGE="http://www.geeqie.org"
@@ -10,7 +11,7 @@ EGIT_REPO_URI="https://github.com/BestImageViewer/geeqie"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug doc exif ffmpegthumbnailer gpu-accel gtk3 jpeg lcms lirc lua map tiff xmp"
 
 RDEPEND="gtk3? ( x11-libs/gtk+:3 )
@@ -71,7 +72,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	rm -f "${D}/usr/share/doc/${PF}/COPYING"
 	# Application needs access to the uncompressed file
@@ -82,8 +83,9 @@ pkg_postinst() {
 	xdg_desktop_database_update
 
 	elog "Some plugins may require additional packages"
-	elog "- Image rotate plugin: media-gfx/fbida (JPEG), media-gfx/imagemagick (TIFF/PNG)"
-	elog "- RAW images plugin: media-gfx/ufraw"
+	optfeature "JPEG image rotation." media-gfx/fbida                                                                                                                                                           
+ 	optfeature "TIFF/PNG image rotation." media-gfx/imagemagick                                                                                                                                                 
+ 	optfeature "RAW image display." media-gfx/ufraw
 }
 
 pkg_postrm() {
