@@ -5,7 +5,11 @@
     <email>zerochaos@gentoo.org</email>
     <name>Rick Farina</name>
   </maintainer>
+  <maintainer type="project">
+    <email>ruby@gentoo.org</email>
+    <name>Gentoo Ruby Project</name>
+  </maintainer>
   <upstream>
-    <remote-id type="github">rapid7/metasploit-credential</remote-id>
+    <remote-id type="github">Homebrew/ruby-macho</remote-id>
   </upstream>
 </pkgmetadata>
