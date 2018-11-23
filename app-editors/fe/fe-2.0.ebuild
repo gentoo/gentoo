@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit toolchain-funcs
+
 DESCRIPTION="A small and easy to use folding editor"
 HOMEPAGE="http://www.moria.de/~michael/fe/"
 SRC_URI="http://www.moria.de/~michael/fe/${P}.tar.gz"
@@ -15,11 +17,14 @@ IUSE="sendmail"
 RDEPEND="sys-libs/ncurses:0=
 	sendmail? ( virtual/mta )"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=("${FILESDIR}"/${PN}-1.8-makefile.patch)
 
 src_configure() {
-	econf $(use_enable sendmail)
+	econf \
+		$(use_enable sendmail) \
+		LIBS="$("$(tc-getPKG_CONFIG)" --libs ncurses)"
 }
 
 src_install() {
