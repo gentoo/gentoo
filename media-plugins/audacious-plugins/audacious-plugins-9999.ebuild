@@ -17,7 +17,7 @@ HOMEPAGE="https://audacious-media-player.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +adplug +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify libsamplerate
+IUSE="aac adplug +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify libsamplerate
 	lirc mms modplug mp3 nls opengl pulseaudio qt5 qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
 	|| ( alsa jack pulseaudio qtmedia sdl )
@@ -47,6 +47,7 @@ RDEPEND="
 	dev-libs/libxml2:2
 	~media-sound/audacious-${PV}[qt5=]
 	aac? ( >=media-libs/faad2-2.7 )
+	adplug? ( media-libs/adplug )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
 	ampache? ( =media-libs/ampache_browser-1* )
 	bs2b? ( media-libs/libbs2b )
@@ -68,7 +69,6 @@ RDEPEND="
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
-		media-libs/adplug
 		opengl? ( dev-qt/qtopengl:5 )
 	)
 	jack? (
@@ -119,6 +119,7 @@ src_configure() {
 		--disable-coreaudio
 		--disable-sndio
 		$(use_enable aac)
+		$(use_enable adplug)
 		$(use_enable alsa)
 		$(use_enable ampache)
 		$(use_enable bs2b)
