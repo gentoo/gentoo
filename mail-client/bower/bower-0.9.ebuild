@@ -30,7 +30,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake PARALLEL="--jobs $(makeopts_jobs) --no-strip --very-verbose" || die
+	emake PARALLEL="--jobs $(makeopts_jobs) --no-strip --very-verbose"
 }
 
 src_install() {
