@@ -17,12 +17,11 @@ HOMEPAGE="https://audacious-media-player.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +adplug +alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify
-	libsamplerate lirc mms modplug mp3 nls opengl pulseaudio qt5 qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
+IUSE="aac +adplug +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify libsamplerate
+	lirc mms modplug mp3 nls opengl pulseaudio qt5 qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
 	|| ( alsa jack pulseaudio qtmedia sdl )
-	ampache? ( qt5 http ) qtmedia? ( qt5 )
-	aosd? ( !qt5 )"
+	ampache? ( qt5 http ) qtmedia? ( qt5 )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI
 # builds do NOT install the libaudgui library & headers.
@@ -50,10 +49,6 @@ RDEPEND="
 	aac? ( >=media-libs/faad2-2.7 )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
 	ampache? ( =media-libs/ampache_browser-1* )
-	aosd? (
-		x11-libs/libXcomposite
-		x11-libs/libXrender
-	)
 	bs2b? ( media-libs/libbs2b )
 	cdda? (
 		dev-libs/libcdio:=
@@ -126,7 +121,6 @@ src_configure() {
 		$(use_enable aac)
 		$(use_enable alsa)
 		$(use_enable ampache)
-		$(use_enable aosd)
 		$(use_enable bs2b)
 		$(use_enable cdda cdaudio)
 		$(use_enable cue)
@@ -145,6 +139,7 @@ src_configure() {
 		$(use_enable mp3 mpg123)
 		$(use_enable nls)
 		$(use_enable pulseaudio pulse)
+		$(use_enable !qt5 aosd)
 		$(use_enable !qt5 gtk)
 		$(use_enable !qt5 hotkey)
 		$(use_enable qt5 qt)
