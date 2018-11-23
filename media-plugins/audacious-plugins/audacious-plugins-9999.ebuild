@@ -17,12 +17,12 @@ HOMEPAGE="https://audacious-media-player.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +adplug +alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth hotkeys http gme jack lame libav libnotify
+IUSE="aac +adplug +alsa ampache aosd bs2b cdda cue ffmpeg flac fluidsynth http gme jack lame libav libnotify
 	libsamplerate lirc mms modplug mp3 nls opengl pulseaudio qt5 qtmedia scrobbler sdl sid sndfile soxr speedpitch vorbis wavpack"
 REQUIRED_USE="
 	|| ( alsa jack pulseaudio qtmedia sdl )
 	ampache? ( qt5 http ) qtmedia? ( qt5 )
-	aosd? ( !qt5 ) hotkeys? ( !qt5 )"
+	aosd? ( !qt5 )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI
 # builds do NOT install the libaudgui library & headers.
@@ -134,7 +134,6 @@ src_configure() {
 		$(use_enable flac filewriter)
 		$(use_enable fluidsynth amidiplug)
 		$(use_enable gme console)
-		$(use_enable hotkeys hotkey)
 		$(use_enable http neon)
 		$(use_enable jack)
 		$(use_enable lame filewriter_mp3)
@@ -147,6 +146,7 @@ src_configure() {
 		$(use_enable nls)
 		$(use_enable pulseaudio pulse)
 		$(use_enable !qt5 gtk)
+		$(use_enable !qt5 hotkey)
 		$(use_enable qt5 qt)
 		$(use_enable qtmedia qtaudio)
 		$(use_enable scrobbler scrobbler2)
