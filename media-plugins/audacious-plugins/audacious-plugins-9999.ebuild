@@ -64,17 +64,6 @@ RDEPEND="
 	)
 	fluidsynth? ( media-sound/fluidsynth )
 	http? ( >=net-libs/neon-0.26.4 )
-	!qt5? (
-		x11-libs/gtk+:2
-		x11-libs/libXcomposite
-		x11-libs/libXrender
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-		opengl? ( dev-qt/qtopengl:5 )
-	)
 	jack? (
 		>=media-libs/bio2jack-0.4
 		virtual/jack
@@ -87,6 +76,17 @@ RDEPEND="
 	modplug? ( media-libs/libmodplug )
 	mp3? ( >=media-sound/mpg123-1.12.1 )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.3 )
+	!qt5? (
+		x11-libs/gtk+:2
+		x11-libs/libXcomposite
+		x11-libs/libXrender
+	)
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+		opengl? ( dev-qt/qtopengl:5 )
+	)
 	qtmedia? ( dev-qt/qtmultimedia:5 )
 	scrobbler? ( net-misc/curl )
 	sdl? ( media-libs/libsdl2[sound] )
