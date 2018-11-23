@@ -1344,7 +1344,7 @@ app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes
 app-text/evince 3.24.2-r1: Simple document viewer for GNOME
 app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/flpsed 0.7.0: Pseudo PostScript editor
-app-text/ghostscript-gpl 9.21 9.25: Ghostscript is an interpreter for the PostScript language and for PDF
+app-text/ghostscript-gpl 9.25: Ghostscript is an interpreter for the PostScript language and for PDF
 app-text/glosung 3.6.2-r1: Watch word program for the GNOME2 desktop (watch word (german): losung)
 app-text/gnome-doc-utils 0.20.10-r1: A collection of documentation utilities for the Gnome project
 app-text/gnopaster 0.0.9: A submitter for gnopaste, a nopaste service like http://nopaste.info
