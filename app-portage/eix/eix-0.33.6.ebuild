@@ -86,7 +86,6 @@ src_install() {
 
 	rm -r "${ED%/}"/usr/bin/eix-functions.sh || die
 
-	keepdir /var/cache/eix
 }
 
 pkg_postinst() {
