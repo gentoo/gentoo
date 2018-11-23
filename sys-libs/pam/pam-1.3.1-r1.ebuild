@@ -14,10 +14,11 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="audit berkdb +cracklib debug nis nls +pie selinux static-libs"
 
-DEPEND="app-text/docbook-xml-dtd:4.3
+DEPEND="app-text/docbook-xml-dtd:4.1.2
+	app-text/docbook-xml-dtd:4.3
 	app-text/docbook-xml-dtd:4.4
 	app-text/docbook-xml-dtd:4.5
-	dev-libs/libxslt
+	dev-libs/libxslt[${MULTILIB_USEDEP}]
 	nls? ( sys-devel/gettext )"
 
 RDEPEND="${DEPEND}
@@ -31,7 +32,8 @@ RDEPEND="${DEPEND}
 	!sys-auth/openpam
 	!sys-auth/pam_userdb"
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="sys-devel/flex[${MULTILIB_USEDEP}]
+	virtual/pkgconfig"
 
 PDEPEND="sys-auth/pambase"
 
