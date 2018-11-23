@@ -31,6 +31,7 @@ src_prepare() {
 	if ! use static-libs; then
 		sed -i -e '/^lib_LIBRARIES/s:=.*:=:' -e '/^%.os/s:%.o$::' lib{asm,dw,elf}/Makefile.in || die
 	fi
+	# https://sourceware.org/PR23914
 	sed -i 's:-Werror::' */Makefile.in || die
 }
 
