@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Temporary directories that stick around when tests fail"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="
