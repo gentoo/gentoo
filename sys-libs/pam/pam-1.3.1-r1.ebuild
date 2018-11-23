@@ -33,7 +33,7 @@ RDEPEND="${DEPEND}
 	!sys-auth/pam_userdb"
 
 BDEPEND="sys-devel/flex[${MULTILIB_USEDEP}]
-	virtual/pkgconfig"
+	virtual/pkgconfig[${MULTILIB_USEDEP}]"
 
 PDEPEND="sys-auth/pambase"
 
