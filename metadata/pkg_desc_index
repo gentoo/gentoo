@@ -8714,7 +8714,7 @@ net-libs/libssh 0.8.4: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.8.0-r1: Library implementing the SSH2 protocol
 net-libs/libtirpc 1.0.2-r1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7-r1: BitTorrent library written in C++ for *nix
-net-libs/libtorrent-rasterbar 1.1.5-r1 1.1.9: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/libtorrent-rasterbar 1.1.9: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libupnp 1.6.21: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.16.1: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
