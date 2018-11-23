@@ -5,8 +5,8 @@ depend() {
 }
 
 checkconfig() {
-	if [ ! -e /etc/olsrd.conf ]; then
-		eerror "You need a /etc/olsrd.conf file to run olsrd"
+	if [ ! -e /etc/olsrd/olsrd.conf ]; then
+		eerror "You need a /etc/olsrd/olsrd.conf file to run olsrd"
 		eerror "There is sample file in /usr/share/doc/olsrd-version/"
 		return 1
 	fi
