@@ -63,7 +63,7 @@ multilib_src_configure() {
 	local myconf
 
 	if use libav; then
-		ewarn "Using internal ffmpeg copy as upstream dropped"
+		ewarn "Using bundled ffmpeg copy as upstream dropped"
 		ewarn "the support for compiling against system libav"
 		ewarn "https://bugzilla.gnome.org/show_bug.cgi?id=758183"
 	else
