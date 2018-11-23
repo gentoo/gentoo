@@ -1,10 +1,10 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # eutils inherit required for make_wrapper call
-inherit desktop eutils multilib versionator xdg-utils
+inherit desktop eutils multilib xdg-utils
 
 DESCRIPTION="ICA Client for Citrix Presentation servers"
 HOMEPAGE="https://www.citrix.com/"
@@ -41,11 +41,13 @@ RDEPEND="
 	media-libs/speex
 	net-dns/libidn:1.33
 	net-libs/libsoup:2.4
+	net-misc/curl
 	sys-libs/e2fsprogs-libs
 	sys-libs/zlib
 	virtual/krb5
+	virtual/jpeg:0
 	x11-libs/cairo
-	x11-libs/gdk-pixbuf
+	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/libXaw
@@ -172,8 +174,13 @@ src_install() {
 	dosym /etc/ssl/certs "${ICAROOT}"/keystore/cacerts
 
 	exeinto "${ICAROOT}"/util
-	doexe util/{configmgr,conncenter,gst_play1.0,gst_read1.0,hdxcheck.sh,icalicense.sh,libgstflatstm1.0.so}
+	doexe util/{configmgr,conncenter,gst_play1.0,gst_read1.0,hdxcheck.sh,icalicense.sh,libgstflatstm1.0.so,webcontainer,ctxwebhelper,ctx_rehash,ctx_app_bind}
 	doexe util/{lurdump,new_store,nslaunch,pnabrowse,storebrowse,sunraymac.sh,what,xcapture}
+
+	# https://bugs.gentoo.org/655922
+	dosym gst_play1.0 "${ICAROOT}"/util/gst_play
+	dosym gst_read1.0 "${ICAROOT}"/util/gst_read
+	dosym libgstflatstm1.0.so "${ICAROOT}"/util/libgstflatstm.so
 
 	doenvd "${FILESDIR}"/10ICAClient
 
