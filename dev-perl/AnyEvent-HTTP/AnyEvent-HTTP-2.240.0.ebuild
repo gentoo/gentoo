@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Simple but non-blocking HTTP/HTTPS client"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
