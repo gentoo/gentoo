@@ -64,7 +64,11 @@ RDEPEND="
 	)
 	fluidsynth? ( media-sound/fluidsynth )
 	http? ( >=net-libs/neon-0.26.4 )
-	!qt5? ( x11-libs/gtk+:2 )
+	!qt5? (
+		x11-libs/gtk+:2
+		x11-libs/libXcomposite
+		x11-libs/libXrender
+	)
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
