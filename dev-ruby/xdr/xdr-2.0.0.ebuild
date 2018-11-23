@@ -2,8 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby24"
-RUBY_FAKEGEM_RECIPE_DOC=""
+USE_RUBY="ruby23 ruby24 ruby25"
+
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
+
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md CHANGELOG.md"
 
 inherit ruby-fakegem
@@ -19,15 +22,6 @@ IUSE="test"
 ruby_add_rdepend ">=dev-ruby/activemodel-4.2.7:*
 	>=dev-ruby/activesupport-4.2.7:*"
 
-ruby_add_bdepend "test? ( dev-ruby/bundler
-	dev-ruby/rake
-	dev-ruby/rspec:3 )"
-
 all_ruby_prepare() {
-	sed -i -e '/simplecov/I s:^:#:' spec/spec_helper.rb || die
-}
-
-each_ruby_test() {
-	RSPEC_VERSION=3 ruby-ng_rspec
-	ruby-ng_cucumber
+	sed -i -e '/bundler/,/pry/ s:^:#:' spec/spec_helper.rb || die
 }
