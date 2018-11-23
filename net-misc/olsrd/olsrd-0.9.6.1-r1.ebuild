@@ -1,12 +1,12 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-inherit multilib toolchain-funcs
+EAPI=6
+inherit eutils multilib toolchain-funcs versionator
 
 DESCRIPTION="An implementation of the Optimized Link State Routing protocol"
 HOMEPAGE="http://www.olsr.org/"
-SRC_URI="https://github.com/OLSR/olsrd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="http://www.olsr.org/releases/$(get_version_component_range 1-2)/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="BSD LGPL-2.1"
@@ -40,7 +40,7 @@ src_prepare() {
 		-e 's|@$(CC)|$(CC)|g' \
 		-e 's|@ar |$(AR) |g' \
 		-e '/^prefix/s:/usr/local:/usr:' \
-		$( find . -name 'Makefile*' ) || die
+		$( find -name 'Makefile*' ) || die
 
 	# respect LDFLAGS
 	sed -i \
@@ -76,18 +76,11 @@ src_install() {
 			LIBDIR="${D}/usr/$(get_libdir)/${PN}" DESTDIR="${D}" install
 	fi
 
-	# decompress default compressed man pages to honor user wishes
-	local compressed_man_pages=(
-		"${ED%/}"/usr/share/man/man5/olsrd.conf.5.gz
+	doinitd "${FILESDIR}"/${PN}
+
+	gzip -d \
+		"${ED%/}"/usr/share/man/man5/olsrd.conf.5.gz \
 		"${ED%/}"/usr/share/man/man8/olsrd.8.gz
-	)
-
-	local compressed_man_page=
-	for compressed_man_page in ${compressed_man_pages[@]}; do
-		gzip -d "${compressed_man_page}" || die
-	done
-
-	newinitd "${FILESDIR}"/${PN}-r1.initd ${PN}
 
 	dodoc CHANGELOG \
 		valgrind-howto.txt files/olsrd.conf.default.rfc \
