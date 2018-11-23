@@ -23,8 +23,7 @@ SRC_URI+=" mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="gtk nls +qt5"
-REQUIRED_USE="^^ ( gtk qt5 )"
+IUSE="nls qt5"
 
 RDEPEND="
 	>=dev-libs/dbus-glib-0.60
@@ -32,7 +31,7 @@ RDEPEND="
 	>=x11-libs/cairo-1.2.6
 	>=x11-libs/pango-1.8.0
 	virtual/freedesktop-icon-theme
-	gtk? ( x11-libs/gtk+:2 )
+	!qt5? ( x11-libs/gtk+:2 )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -64,8 +63,8 @@ src_configure() {
 	econf \
 		--disable-valgrind \
 		--enable-dbus \
-		$(use_enable gtk) \
 		$(use_enable nls) \
+		$(use_enable !qt5 gtk) \
 		$(use_enable qt5 qt)
 }
 
