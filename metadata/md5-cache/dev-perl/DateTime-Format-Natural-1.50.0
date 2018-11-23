@@ -4,10 +4,10 @@ DESCRIPTION=Parse informal natural language date/time strings
 EAPI=6
 HOMEPAGE=http://metacpan.org/release/DateTime-Format-Natural
 IUSE=test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp dev-perl/Clone dev-perl/Date-Calc dev-perl/DateTime dev-perl/DateTime-TimeZone virtual/perl-Exporter virtual/perl-File-Spec virtual/perl-Getopt-Long dev-perl/List-MoreUtils dev-perl/Params-Validate virtual/perl-Scalar-List-Utils virtual/perl-Storable virtual/perl-Term-ReadLine dev-perl/boolean dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SC/SCHUBIGER/DateTime-Format-Natural-1.05.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
-_md5_=aeb15a160750590e93787885e9abd536
+_md5_=30e1a64dd96cce4a4f1d6b5a2449217c
