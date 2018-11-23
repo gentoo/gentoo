@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (23 Nov 2018)
+# New version breaks kernel compilation as objtool seemingly
+# corrupts object files: bug #671760
+>=dev-libs/elfutils-0.175
+
 # Tiziano Müller <dev-zero@gentoo.org> (21 Nov 2018)
 # Project is in maintenance-only mode with the last big release in 2012.
 # Needs a dedicated maintainer with a matching LDAP setup (extra schemas required).
