@@ -33,7 +33,7 @@ src_install() {
 		dodoc doc/*.txt
 	else
 		dodoc doc/changelog.txt
-		rm "${D}/usr/share/doc/${PF}/"*.pdf || die
+		rm "${ED}/usr/share/doc/${PF}/"*.pdf || die
 	fi
 
 	find "${ED}" -name "*.la" -delete || die
