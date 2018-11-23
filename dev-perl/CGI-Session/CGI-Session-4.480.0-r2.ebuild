@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="persistent session data in CGI applications"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc x86"
+KEYWORDS="amd64 ~hppa ~ppc x86"
 IUSE="test"
 
 RDEPEND="
