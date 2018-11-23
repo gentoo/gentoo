@@ -781,7 +781,7 @@ app-emulation/wine-mono 4.6.4 4.7.1: A replacement for the .NET runtime and clas
 app-emulation/wine-vanilla 3.0.3: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170823: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r1: HP48 Calculator Emulator
-app-emulation/xen 4.10.2-r1: The Xen virtual machine monitor
+app-emulation/xen 4.10.2-r1 4.10.2-r2: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.10.2: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
 app-emulation/xen-tools 4.10.2-r1: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r4: Radio Shack TRS-80 emulator
