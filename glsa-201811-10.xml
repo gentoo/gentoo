@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-10">
+  <title>Chromium: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium and Google
+    Chrome, the worst of which allows remote attackers to execute arbitrary
+    code.
+  </synopsis>
+  <product type="ebuild">chromium</product>
+  <announced>2018-11-23</announced>
+  <revised count="1">2018-11-23</revised>
+  <bug>665340</bug>
+  <bug>666502</bug>
+  <bug>668986</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">70.0.3538.67</unaffected>
+      <vulnerable range="lt">70.0.3538.67</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source browser project that aims to build a safer,
+      faster, and more stable way for all users to experience the web.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium and Google
+      Chrome. Please review the referenced CVE identifiers and Google Chrome
+      Releases for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code, escalate privileges,
+      cause a heap buffer overflow, obtain sensitive information, or spoof a
+      URL.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-70.0.3538.67"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16065">CVE-2018-16065</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16066">CVE-2018-16066</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16067">CVE-2018-16067</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16068">CVE-2018-16068</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16069">CVE-2018-16069</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16070">CVE-2018-16070</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16071">CVE-2018-16071</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16072">CVE-2018-16072</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16073">CVE-2018-16073</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16074">CVE-2018-16074</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16075">CVE-2018-16075</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16076">CVE-2018-16076</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16077">CVE-2018-16077</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16078">CVE-2018-16078</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16079">CVE-2018-16079</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16080">CVE-2018-16080</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16081">CVE-2018-16081</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16082">CVE-2018-16082</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16083">CVE-2018-16083</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16084">CVE-2018-16084</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16085">CVE-2018-16085</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16086">CVE-2018-16086</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16087">CVE-2018-16087</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16088">CVE-2018-16088</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17462">CVE-2018-17462</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17463">CVE-2018-17463</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17464">CVE-2018-17464</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17465">CVE-2018-17465</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17466">CVE-2018-17466</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17467">CVE-2018-17467</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17468">CVE-2018-17468</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17469">CVE-2018-17469</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17470">CVE-2018-17470</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17471">CVE-2018-17471</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17472">CVE-2018-17472</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17473">CVE-2018-17473</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17474">CVE-2018-17474</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17475">CVE-2018-17475</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17476">CVE-2018-17476</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17477">CVE-2018-17477</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5179">CVE-2018-5179</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-09T23:47:46Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2018-11-23T17:59:02Z">b-man</metadata>
+</glsa>
