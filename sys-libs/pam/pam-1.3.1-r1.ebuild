@@ -30,7 +30,6 @@ DEPEND="
 	nis? ( >=net-libs/libtirpc-0.2.4-r2[${MULTILIB_USEDEP}] )
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}
-	!<sys-apps/openrc-0.11.8
 	!sys-auth/openpam
 	!sys-auth/pam_userdb"
 
