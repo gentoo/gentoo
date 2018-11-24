@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-12">
+  <title>GPL Ghostscript: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GPL Ghostscript, the
+    worst of which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ghostscript</product>
+  <announced>2018-11-24</announced>
+  <revised count="1">2018-11-24</revised>
+  <bug>618820</bug>
+  <bug>626418</bug>
+  <bug>635426</bug>
+  <bug>655404</bug>
+  <bug>668846</bug>
+  <bug>671732</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/ghostscript-gpl" auto="yes" arch="*">
+      <unaffected range="ge">9.26</unaffected>
+      <vulnerable range="lt">9.26</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ghostscript is an interpreter for the PostScript language and for PDF.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GPL Ghostscript. Please
+      review the CVE identifiers referenced below for additional information.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker could entice a user to open a specially
+      crafted PostScript file or PDF document using GPL Ghostscript possibly
+      resulting in the execution of arbitrary code with the privileges of the
+      process, a Denial of Service condition, or other unspecified impacts,
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GPL Ghostscript users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/ghostscript-gpl-9.26"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11714">CVE-2017-11714</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7948">CVE-2017-7948</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9610">CVE-2017-9610</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9611">CVE-2017-9611</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9612">CVE-2017-9612</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9618">CVE-2017-9618</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9619">CVE-2017-9619</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9620">CVE-2017-9620</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9726">CVE-2017-9726</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9727">CVE-2017-9727</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9739">CVE-2017-9739</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9740">CVE-2017-9740</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9835">CVE-2017-9835</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10194">CVE-2018-10194</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15908">CVE-2018-15908</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15909">CVE-2018-15909</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15910">CVE-2018-15910</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15911">CVE-2018-15911</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16509">CVE-2018-16509</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16510">CVE-2018-16510</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16511">CVE-2018-16511</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16513">CVE-2018-16513</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16539">CVE-2018-16539</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16540">CVE-2018-16540</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16541">CVE-2018-16541</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16542">CVE-2018-16542</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16543">CVE-2018-16543</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16585">CVE-2018-16585</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16802">CVE-2018-16802</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18284">CVE-2018-18284</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-19409">CVE-2018-19409</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-23T18:50:20Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-11-24T19:47:44Z">b-man</metadata>
+</glsa>

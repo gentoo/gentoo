@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-13">
+  <title>Mozilla Thunderbird: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Thunderbird,
+    the worst of which could lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mozilla,thunderbird</product>
+  <announced>2018-11-24</announced>
+  <revised count="1">2018-11-24</revised>
+  <bug>651862</bug>
+  <bug>656092</bug>
+  <bug>660342</bug>
+  <bug>669960</bug>
+  <bug>670102</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">60.3.0</unaffected>
+      <vulnerable range="lt">60.3.0</vulnerable>
+    </package>
+    <package name="mail-client/thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">60.3.0</unaffected>
+      <vulnerable range="lt">60.3.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Thunderbird is a popular open-source email client from the
+      Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Thunderbird.
+      Please review the referenced Mozilla Foundation Security Advisories and
+      CVE identifiers below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to execute arbitrary code, cause a Denial
+      of Service condition, obtain sensitive information, or conduct Cross-Site
+      Request Forgery (CSRF).
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Thunderbird users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/thunderbird-60.3.0"
+    </code>
+    
+    <p>All Thunderbird binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=mail-client/thunderbird-bin-60.3.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16541">CVE-2017-16541</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12359">CVE-2018-12359</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12360">CVE-2018-12360</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12361">CVE-2018-12361</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12362">CVE-2018-12362</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12363">CVE-2018-12363</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12364">CVE-2018-12364</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12365">CVE-2018-12365</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12366">CVE-2018-12366</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12367">CVE-2018-12367</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12371">CVE-2018-12371</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12372">CVE-2018-12372</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12373">CVE-2018-12373</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12374">CVE-2018-12374</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12376">CVE-2018-12376</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12377">CVE-2018-12377</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12378">CVE-2018-12378</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12379">CVE-2018-12379</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12383">CVE-2018-12383</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12385">CVE-2018-12385</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12389">CVE-2018-12389</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12390">CVE-2018-12390</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12391">CVE-2018-12391</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12392">CVE-2018-12392</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12393">CVE-2018-12393</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5125">CVE-2018-5125</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5127">CVE-2018-5127</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5129">CVE-2018-5129</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5144">CVE-2018-5144</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5145">CVE-2018-5145</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5146">CVE-2018-5146</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5150">CVE-2018-5150</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5154">CVE-2018-5154</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5155">CVE-2018-5155</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5156">CVE-2018-5156</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5159">CVE-2018-5159</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5161">CVE-2018-5161</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5162">CVE-2018-5162</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5168">CVE-2018-5168</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5170">CVE-2018-5170</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5178">CVE-2018-5178</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5183">CVE-2018-5183</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5184">CVE-2018-5184</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5185">CVE-2018-5185</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5187">CVE-2018-5187</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5188">CVE-2018-5188</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-16T10:50:04Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-11-24T19:51:04Z">b-man</metadata>
+</glsa>
