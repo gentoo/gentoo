@@ -13,7 +13,7 @@ EGIT_REPO_URI="${HOMEPAGE}"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS=""
-DEPEND="
+BDEPEND="
 	dev-python/beautifulsoup[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
 "

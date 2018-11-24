@@ -13,7 +13,7 @@ SRC_URI="${HOMEPAGE}/archive/${P}.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
-DEPEND="
+BDEPEND="
 	dev-python/beautifulsoup[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
 "
