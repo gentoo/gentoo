@@ -110,6 +110,9 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
+	if ! use nls; then
+		sed -e "/SUBDIRS/s/ po//" -i Makefile || die # bug #512698
+	fi
 	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
