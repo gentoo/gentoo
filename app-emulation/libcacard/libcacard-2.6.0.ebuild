@@ -18,6 +18,10 @@ RDEPEND=">=dev-libs/nss-3.13
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-simpletlv-test-fix.patch"
+	)
+
 src_prepare() {
 	default
 
