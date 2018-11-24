@@ -69,7 +69,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	python_fix_shebang screensavers
 	eautoreconf
 	gnome2_src_prepare
 }
