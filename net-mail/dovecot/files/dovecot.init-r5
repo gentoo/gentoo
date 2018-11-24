@@ -2,6 +2,7 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License, v2 or later
 
+extra_commands="checkconfig"
 extra_started_commands="reload"
 
 depend() {
@@ -22,10 +23,9 @@ checkconfig() {
 		eerror "You will need an ${DOVECOT_CONF} first"
 		return 1
 	fi
-	if [ -x /usr/sbin/dovecot ]; then
-		DOVECOT_BASEDIR=$(/usr/sbin/dovecot -c ${DOVECOT_CONF} config -h base_dir)
-	else
-		eerror "dovecot not executable"
+	DOVECOT_BASEDIR=$(/usr/bin/doveconf -c ${DOVECOT_CONF} -h base_dir)
+	if [ $? -ne 0 ]; then
+		eerror "Error parsing ${DOVECOT_CONF}"
 		return 1
 	fi
 	DOVECOT_BASEDIR=${DOVECOT_BASEDIR:-/run/dovecot}
