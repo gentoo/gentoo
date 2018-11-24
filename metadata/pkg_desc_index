@@ -10595,7 +10595,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-servers/apache 2.2.34 2.4.27-r1 2.4.34-r2: The Apache Web Server
 www-servers/gunicorn 19.1.1 19.6.0: A WSGI HTTP Server for UNIX
-www-servers/lighttpd 1.4.45-r1: Lightweight high-performance web server
+www-servers/lighttpd 1.4.51: Lightweight high-performance web server
 www-servers/monkeyd 1.6.9-r1: A small, fast, and scalable web server
 www-servers/nginx 1.14.1: Robust, small and high performance http and reverse proxy server
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
