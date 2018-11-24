@@ -28,7 +28,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
-	>=dev-util/gtk-doc-am-1
+	>=dev-util/gtk-doc-1
 	>=dev-util/intltool-0.40
 	sys-devel/gettext
 	virtual/pkgconfig
