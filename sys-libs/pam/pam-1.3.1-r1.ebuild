@@ -14,26 +14,24 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="audit berkdb +cracklib debug nis nls +pie selinux static-libs"
 
-DEPEND="app-text/docbook-xml-dtd:4.1.2
+BDEPEND="app-text/docbook-xml-dtd:4.1.2
 	app-text/docbook-xml-dtd:4.3
 	app-text/docbook-xml-dtd:4.4
 	app-text/docbook-xml-dtd:4.5
-	dev-libs/libxslt[${MULTILIB_USEDEP}]
+	dev-libs/libxslt
+	sys-devel/flex
+	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	nls? ( sys-devel/gettext )"
-
-RDEPEND="${DEPEND}
+DEPEND="
 	audit? ( >=sys-process/audit-2.2.2[${MULTILIB_USEDEP}] )
 	berkdb? ( >=sys-libs/db-4.8.30-r1:=[${MULTILIB_USEDEP}] )
 	cracklib? ( >=sys-libs/cracklib-2.9.1-r1[${MULTILIB_USEDEP}] )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
 	nis? ( >=net-libs/libtirpc-0.2.4-r2[${MULTILIB_USEDEP}] )
-	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
-	!<sys-apps/openrc-0.11.8
+	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )"
+RDEPEND="${DEPEND}
 	!sys-auth/openpam
 	!sys-auth/pam_userdb"
-
-BDEPEND="sys-devel/flex[${MULTILIB_USEDEP}]
-	virtual/pkgconfig[${MULTILIB_USEDEP}]"
 
 PDEPEND="sys-auth/pambase"
 
