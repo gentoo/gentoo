@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-11">
+  <title>Asterisk: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Asterisk, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">asterisk</product>
+  <announced>2018-11-24</announced>
+  <revised count="1">2018-11-24</revised>
+  <bug>636972</bug>
+  <bug>645710</bug>
+  <bug>668848</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/asterisk" auto="yes" arch="*">
+      <unaffected range="ge">13.23.1</unaffected>
+      <vulnerable range="lt">13.23.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A Modular Open Source PBX System.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Asterisk. Please review
+      the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a Denial of Service condition or conduct
+      information gathering.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Asterisk users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/asterisk-13.23.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16671">CVE-2017-16671</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16672">CVE-2017-16672</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17850">CVE-2017-17850</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12227">CVE-2018-12227</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17281">CVE-2018-17281</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-13T01:09:36Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2018-11-24T19:44:57Z">b-man</metadata>
+</glsa>
