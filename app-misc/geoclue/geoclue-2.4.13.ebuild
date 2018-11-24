@@ -2,21 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
+GNOME2_EAUTORECONF="yes" # 2.4.13 isn't properly disted, as released concurrently with 2.5.x, which is meson
 
-inherit gnome2 systemd user versionator
+inherit gnome2 systemd user
 
-MY_PV=$(get_version_component_range 1-2)
 DESCRIPTION="A geoinformation D-Bus service"
 HOMEPAGE="https://freedesktop.org/wiki/Software/GeoClue"
-SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${MY_PV}/${P}.tar.xz"
+SRC_URI="https://gitlab.freedesktop.org/geoclue/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="2.0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd"
-IUSE="+introspection +modemmanager zeroconf"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+IUSE="+introspection modemmanager zeroconf"
 
 RDEPEND="
-	>=dev-libs/glib-2.34:2
+	>=dev-libs/glib-2.44:2
 	>=dev-libs/json-glib-0.14
 	>=net-libs/libsoup-2.42:2.4
 	sys-apps/dbus
