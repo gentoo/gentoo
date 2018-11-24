@@ -20,12 +20,14 @@ REQUIRED_USE="|| ( mysql postgres sqlite )"
 RDEPEND="
 	dev-libs/boost:=
 	dev-libs/expat
+	dev-libs/libev:=
 	dev-libs/log4cxx
 	dev-libs/jsoncpp:=
 	dev-libs/openssl:0=
 	dev-libs/popt
 	dev-libs/protobuf:=
 	net-dns/libidn:0=
+	net-im/swift:=
 	net-misc/curl
 	sys-libs/zlib:=
 	frotz? ( !games-engines/frotz )
@@ -39,14 +41,12 @@ RDEPEND="
 	postgres? ( dev-libs/libpqxx:= )
 	purple? (
 		dev-libs/glib
-		dev-libs/libev:=
 		net-im/pidgin:=
 	)
 	sms? ( app-mobilephone/smstools )
 	sqlite? ( dev-db/sqlite:3 )
 	twitter? ( net-misc/curl )
-	whatsapp? ( net-im/transwhat )
-	xmpp? ( net-im/swift:= )"
+	whatsapp? ( net-im/transwhat )"
 
 DEPEND="
 	${PYTHON_DEPS}
