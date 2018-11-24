@@ -6511,7 +6511,7 @@ gnome-base/librsvg 2.40.18: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.24.2.1-r1: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
 gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
-gnome-extra/chrome-gnome-shell 8-r1 10: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
+gnome-extra/chrome-gnome-shell 10: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
 gnome-extra/cinnamon 3.6.6-r2: A fork of GNOME Shell with layout similar to GNOME 2
 gnome-extra/cinnamon-control-center 3.6.5: Cinnamons's main interface to configure various aspects of the desktop
 gnome-extra/cinnamon-desktop 3.6.2: A collection of libraries and utilites used by Cinnamon
