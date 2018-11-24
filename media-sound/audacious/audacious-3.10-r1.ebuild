@@ -41,6 +41,13 @@ DEPEND="${RDEPEND}
 "
 PDEPEND="~media-plugins/audacious-plugins-${PV}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-ui-freeze.patch"
+	"${FILESDIR}/${P}-dbus-crash.patch"
+	"${FILESDIR}/${P}-use-after-free.patch"
+	"${FILESDIR}/${P}-volume-slider-boundaries.patch"
+)
+
 S="${WORKDIR}/${MY_P}"
 
 src_unpack() {
