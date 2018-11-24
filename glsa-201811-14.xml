@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-14">
+  <title>Exiv2: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Exiv2, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">exiv2</product>
+  <announced>2018-11-24</announced>
+  <revised count="1">2018-11-24</revised>
+  <bug>647810</bug>
+  <bug>647812</bug>
+  <bug>647816</bug>
+  <bug>652822</bug>
+  <bug>655842</bug>
+  <bug>655958</bug>
+  <bug>658236</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/exiv2" auto="yes" arch="*">
+      <unaffected range="ge">0.26_p20180811-r3</unaffected>
+      <vulnerable range="lt">0.26_p20180811-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Exiv2 is a C++ library and a command line utility to manage image
+      metadata.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Exiv2. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a Denial of Service condition or obtain
+      sensitive information via a specially crafted file.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Exiv2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=media-gfx/exiv2-0.26_p20180811-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17723">CVE-2017-17723</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17724">CVE-2017-17724</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10780">CVE-2018-10780</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10958">CVE-2018-10958</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10998">CVE-2018-10998</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10999">CVE-2018-10999</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-11037">CVE-2018-11037</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-11531">CVE-2018-11531</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12264">CVE-2018-12264</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12265">CVE-2018-12265</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5772">CVE-2018-5772</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-8976">CVE-2018-8976</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-8977">CVE-2018-8977</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-9144">CVE-2018-9144</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-9145">CVE-2018-9145</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-9146">CVE-2018-9146</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-9303">CVE-2018-9303</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-9304">CVE-2018-9304</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-9305">CVE-2018-9305</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-9306">CVE-2018-9306</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-13T06:49:12Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2018-11-24T21:44:28Z">b-man</metadata>
+</glsa>
