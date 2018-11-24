@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/BestImageViewer/geeqie"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS=""
 IUSE="debug doc exif ffmpegthumbnailer gpu-accel gtk3 jpeg lcms lirc lua map tiff xmp"
 
 RDEPEND="gtk3? ( x11-libs/gtk+:3 )
