@@ -6,12 +6,12 @@
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
 <longdescription>
-  Auto-Complete is an intelligent auto-completion extension for Emacs.
-  It extends the standard Emacs completion interface and provides an
-  environment that allows users to concentrate more on their own work.
+  popup.el is a visual popup user interface library for Emacs.
+  This provides a basic API and common UI widgets such as popup
+  tooltips and popup menus.
 </longdescription>
 <stabilize-allarches/>
 <upstream>
-  <remote-id type="github">auto-complete/auto-complete</remote-id>
+  <remote-id type="github">auto-complete/popup-el</remote-id>
 </upstream>
 </pkgmetadata>
