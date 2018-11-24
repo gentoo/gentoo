@@ -17,8 +17,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gcrypt libressl"
 
 RDEPEND="!gcrypt? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:= )
 	)
 	gcrypt? ( dev-libs/libgcrypt:0 )
 	dev-libs/libnl:3
