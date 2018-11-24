@@ -63,7 +63,7 @@ DEPEND=""
 
 pkg_nofetch() {
 	elog "Download the client file ${A} from
-	https://www.citrix.com/downloads/citrix-receiver.html"
+	https://www.citrix.com/downloads/workspace-app/"
 	elog "and place it in ${DISTDIR:-/usr/portage/distfiles}."
 }
 
