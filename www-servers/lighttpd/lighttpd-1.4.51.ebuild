@@ -1,41 +1,44 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools readme.gentoo-r1 systemd user
+inherit autotools flag-o-matic readme.gentoo-r1 systemd user
 
 DESCRIPTION="Lightweight high-performance web server"
-HOMEPAGE="https://www.lighttpd.net
-		  https://github.com/lighttpd"
+HOMEPAGE="https://www.lighttpd.net https://github.com/lighttpd"
 SRC_URI="https://download.lighttpd.net/lighttpd/releases-1.4.x/${P}.tar.xz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~x86-fbsd"
-IUSE="bzip2 doc fam gdbm ipv6 kerberos ldap libev libressl lua minimal mmap memcached mysql pcre php rrdtool selinux ssl test webdav xattr zlib"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~x86-fbsd"
+IUSE="bzip2 dbi doc fam gdbm geoip ipv6 kerberos ldap libev libressl lua minimal mmap memcached mysql pcre php postgres rrdtool sasl selinux ssl sqlite test webdav xattr zlib"
 
-REQUIRED_USE="kerberos? ( ssl !libressl )"
+REQUIRED_USE="kerberos? ( ssl !libressl ) webdav? ( sqlite )"
 
 CDEPEND="
 	bzip2?    ( app-arch/bzip2 )
-	fam?      ( virtual/fam )
-	gdbm?     ( sys-libs/gdbm )
-	ldap?     ( >=net-nds/openldap-2.1.26 )
-	libev?    ( >=dev-libs/libev-4.01 )
-	lua?      ( >=dev-lang/lua-5.1:= )
+	dbi?	( dev-db/libdbi )
+	fam?    ( virtual/fam )
+	gdbm?   ( sys-libs/gdbm )
+	geoip?	( dev-libs/geoip )
+	ldap?   ( >=net-nds/openldap-2.1.26 )
+	libev?  ( >=dev-libs/libev-4.01 )
+	lua?    ( >=dev-lang/lua-5.1:= )
 	memcached? ( dev-libs/libmemcached )
-	mysql?    ( >=virtual/mysql-4.0 )
-	pcre?     ( >=dev-libs/libpcre-3.1 )
+	mysql?  ( dev-db/mysql-connector-c:= )
+	pcre?   ( >=dev-libs/libpcre-3.1 )
 	php?      ( dev-lang/php:*[cgi] )
+	postgres? ( dev-db/postgresql:* )
 	rrdtool?  ( net-analyzer/rrdtool )
+	sasl?     ( dev-libs/cyrus-sasl )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-0.9.7:0=[kerberos?] )
 		libressl? ( dev-libs/libressl:= )
 	)
+	sqlite?	( dev-db/sqlite:3 )
 	webdav? (
 		dev-libs/libxml2
-		>=dev-db/sqlite-3
 		sys-fs/e2fsprogs
 	)
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
@@ -105,6 +108,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	use memcached && append-ldflags -pthread
 	#dev-python/docutils installs rst2html.py not rst2html
 	sed -i -e 's|\(rst2html\)|\1.py|g' doc/outdated/Makefile.am || \
 		die "sed doc/Makefile.am failed"
@@ -117,8 +121,10 @@ src_configure() {
 		$(use_enable ipv6) \
 		$(use_enable mmap) \
 		$(use_with bzip2) \
+		$(use_with dbi) \
 		$(use_with fam) \
 		$(use_with gdbm) \
+		$(use_with geoip ) \
 		$(use_with kerberos krb5) \
 		$(use_with ldap) \
 		$(use_with libev) \
@@ -126,7 +132,10 @@ src_configure() {
 		$(use_with memcached) \
 		$(use_with mysql) \
 		$(use_with pcre) \
+		$(use_with postgres pgsql) \
+		$(use_with sasl) \
 		$(use_with ssl openssl) \
+		$(use_with sqlite sqlite) \
 		$(use_with webdav webdav-props) \
 		$(use_with webdav webdav-locks) \
 		$(use_with xattr attr) \
