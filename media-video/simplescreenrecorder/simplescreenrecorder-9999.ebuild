@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-multilib flag-o-matic xdg-utils
+inherit cmake-multilib flag-o-matic gnome2-utils xdg-utils
 
 if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
@@ -95,9 +95,11 @@ multilib_src_configure() {
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }
