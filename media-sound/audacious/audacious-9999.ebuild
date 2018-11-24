@@ -3,13 +3,7 @@
 
 EAPI=6
 
-inherit gnome2-utils xdg-utils
-
 MY_P="${P/_/-}"
-S="${WORKDIR}/${MY_P}"
-
-DESCRIPTION="Lightweight and versatile audio player"
-HOMEPAGE="https://audacious-media-player.org/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
@@ -18,7 +12,10 @@ else
 	SRC_URI="https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 fi
+inherit gnome2-utils xdg-utils
 
+DESCRIPTION="Lightweight and versatile audio player"
+HOMEPAGE="https://audacious-media-player.org/"
 SRC_URI+=" mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2"
 
 LICENSE="BSD-2"
@@ -44,6 +41,8 @@ DEPEND="${RDEPEND}
 "
 PDEPEND="~media-plugins/audacious-plugins-${PV}"
 
+S="${WORKDIR}/${MY_P}"
+
 src_unpack() {
 	default
 	[[ ${PV} == *9999 ]] && git-r3_src_unpack
@@ -51,6 +50,9 @@ src_unpack() {
 
 src_prepare() {
 	default
+	if ! use nls; then
+		sed -e "/SUBDIRS/s/ po//" -i Makefile || die # bug #512698
+	fi
 	[[ ${PV} == *9999 ]] && eautoreconf
 }
 

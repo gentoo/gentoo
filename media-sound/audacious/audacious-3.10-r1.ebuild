@@ -3,13 +3,7 @@
 
 EAPI=6
 
-inherit gnome2-utils xdg-utils
-
 MY_P="${P/_/-}"
-S="${WORKDIR}/${MY_P}"
-
-DESCRIPTION="Lightweight and versatile audio player"
-HOMEPAGE="https://audacious-media-player.org/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
@@ -18,22 +12,28 @@ else
 	SRC_URI="https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 fi
+inherit gnome2-utils xdg-utils
 
+DESCRIPTION="Lightweight and versatile audio player"
+HOMEPAGE="https://audacious-media-player.org/"
 SRC_URI+=" mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="nls"
+IUSE="nls qt5"
 
 RDEPEND="
 	>=dev-libs/dbus-glib-0.60
 	>=dev-libs/glib-2.28
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
 	>=x11-libs/cairo-1.2.6
 	>=x11-libs/pango-1.8.0
 	virtual/freedesktop-icon-theme
+	!qt5? ( x11-libs/gtk+:2 )
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+	)
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -48,6 +48,21 @@ PATCHES=(
 	"${FILESDIR}/${P}-volume-slider-boundaries.patch"
 )
 
+S="${WORKDIR}/${MY_P}"
+
+src_unpack() {
+	default
+	[[ ${PV} == *9999 ]] && git-r3_src_unpack
+}
+
+src_prepare() {
+	default
+	if ! use nls; then
+		sed -e "/SUBDIRS/s/ po//" -i Makefile || die # bug #512698
+	fi
+	[[ ${PV} == *9999 ]] && eautoreconf
+}
+
 src_configure() {
 	# D-Bus is a mandatory dependency, remote control,
 	# session management and some plugins depend on this.
@@ -57,9 +72,9 @@ src_configure() {
 	econf \
 		--disable-valgrind \
 		--enable-dbus \
-		--enable-qt \
-		--disable-gtk \
-		$(use_enable nls)
+		$(use_enable nls) \
+		$(use_enable !qt5 gtk) \
+		$(use_enable qt5 qt)
 }
 
 src_install() {
