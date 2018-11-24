@@ -83,9 +83,9 @@ pkg_postinst() {
 	xdg_desktop_database_update
 
 	elog "Some plugins may require additional packages"
-	optfeature "JPEG image rotation." media-gfx/fbida                                                                                                                                                           
- 	optfeature "TIFF/PNG image rotation." media-gfx/imagemagick                                                                                                                                                 
- 	optfeature "RAW image display." media-gfx/ufraw
+	optfeature "JPEG image rotation." media-gfx/fbida
+	optfeature "TIFF/PNG image rotation." media-gfx/imagemagick
+	optfeature "RAW image display." media-gfx/ufraw
 }
 
 pkg_postrm() {
