@@ -24,6 +24,7 @@ RDEPEND="
 	modemmanager? ( >=net-misc/modemmanager-1.6 )
 	zeroconf? ( >=net-dns/avahi-0.6.10[dbus] )
 	!<sci-geosciences/geocode-glib-3.10.0
+	x11-libs/libnotify
 "
 DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
