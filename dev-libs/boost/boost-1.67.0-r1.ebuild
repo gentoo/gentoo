@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -49,6 +49,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.55.0-context-x32.patch"
 	"${FILESDIR}/${PN}-1.56.0-build-auto_index-tool.patch"
 	"${FILESDIR}/${PN}-1.67.0-fix-python.patch"
+	"${FILESDIR}/${PN}-1.67.0-lockfree-next.patch"
 )
 
 python_bindings_needed() {
