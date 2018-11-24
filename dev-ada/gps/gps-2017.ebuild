@@ -16,12 +16,12 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/591c45e2c7a447af2deed03b
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc gnat_2016 +gnat_2017 gnat_2018"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-ada/gnatcoll-2017[gtk,iconv,pygobject,sqlite,static-libs,tools]
-	>=dev-ada/gtkada-2017
+	dev-ada/gnatcoll[gtk,iconv,pygobject,sqlite,static-libs,tools]
+	~dev-ada/gtkada-2017
 	dev-ada/libadalang
 	dev-libs/gobject-introspection
 	dev-libs/libffi
