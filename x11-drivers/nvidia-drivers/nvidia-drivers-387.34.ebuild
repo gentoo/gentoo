@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils flag-o-matic linux-info linux-mod multilib-minimal nvidia-driver \
 	portability toolchain-funcs unpacker user udev
 
-NV_URI="http://http.download.nvidia.com/XFree86/"
+NV_URI="https://https.download.nvidia.com/XFree86/"
 X86_NV_PACKAGE="NVIDIA-Linux-x86-${PV}"
 AMD64_NV_PACKAGE="NVIDIA-Linux-x86_64-${PV}"
 ARM_NV_PACKAGE="NVIDIA-Linux-armv7l-gnueabihf-${PV}"

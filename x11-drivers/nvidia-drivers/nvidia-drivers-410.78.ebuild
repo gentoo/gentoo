@@ -12,7 +12,7 @@ AMD64_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86_64-${PV}"
 AMD64_NV_PACKAGE="NVIDIA-Linux-x86_64-${PV}"
 ARM_NV_PACKAGE="NVIDIA-Linux-armv7l-gnueabihf-${PV}"
 
-NV_URI="http://us.download.nvidia.com/XFree86/"
+NV_URI="https://us.download.nvidia.com/XFree86/"
 SRC_URI="
 	amd64-fbsd? ( ${NV_URI}FreeBSD-x86_64/${PV}/${AMD64_FBSD_NV_PACKAGE}.tar.gz )
 	amd64? ( ${NV_URI}Linux-x86_64/${PV}/${AMD64_NV_PACKAGE}.run )
@@ -23,7 +23,7 @@ SRC_URI="
 
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
-KEYWORDS="-* ~amd64 ~amd64-fbsd"
+KEYWORDS="-* amd64 ~amd64-fbsd"
 RESTRICT="bindist mirror"
 EMULTILIB_PKG="true"
 
