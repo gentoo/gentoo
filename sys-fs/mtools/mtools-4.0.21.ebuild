@@ -23,16 +23,7 @@ RDEPEND="
 		x11-libs/libX11
 		x11-libs/libXt
 	)"
-DEPEND="${RDEPEND}
-	sys-apps/texinfo"
-# texinfo is required because we patch mtools.texi
-# drop it when mtools-4.0.18-locking.patch is no longer applied
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-4.0.18-locking.patch # https://crbug.com/508713
-	"${FILESDIR}"/${PN}-4.0.18-attr.patch # https://crbug.com/644387
-	"${FILESDIR}"/${PN}-4.0.18-memset.patch
-)
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
@@ -44,9 +35,11 @@ src_prepare() {
 src_configure() {
 	# 447688
 	use !elibc_glibc && use !elibc_musl && append-libs "-liconv"
-	econf \
-		--sysconfdir="${EPREFIX%/}"/etc/mtools \
+	local myeconfargs=(
+		--sysconfdir="${EPREFIX%/}"/etc/mtools
 		$(use_with X x)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
