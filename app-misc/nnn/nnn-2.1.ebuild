@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,13 +12,10 @@ SRC_URI="https://github.com/jarun/nnn/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="bash-completion fish-completion zsh-completion"
 
 DEPEND="sys-libs/ncurses:0=
 	sys-libs/readline:0="
-RDEPEND="${DEPEND}
-		fish-completion? ( app-shells/fish )
-		zsh-completion? ( app-shells/zsh )"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
@@ -30,18 +27,13 @@ src_prepare() {
 src_install() {
 	emake PREFIX="/usr" DESTDIR="${D}" install
 
-	use bash-completion &&
-		newbashcomp scripts/auto-completion/bash/nnn-completion.bash nnn
+	newbashcomp scripts/auto-completion/bash/nnn-completion.bash nnn
 
-	if use fish-completion; then
-		insinto /usr/share/fish/completions
-		doins scripts/auto-completion/fish/nnn.fish
-	fi
+	insinto /usr/share/fish/vendor_completions.d
+	doins scripts/auto-completion/fish/nnn.fish
 
-	if use zsh-completion; then
-		insinto /usr/share/zsh/site-functions
-		doins scripts/auto-completion/zsh/_nnn
-	fi
+	insinto /usr/share/zsh/site-functions
+	doins scripts/auto-completion/zsh/_nnn
 
 	einstalldocs
 }
