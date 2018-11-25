@@ -40,6 +40,7 @@ RDEPEND="
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	sys-devel/gettext
 	gnome-base/gnome-common
 	>=dev-util/intltool-0.40
