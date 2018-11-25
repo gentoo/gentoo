@@ -16,7 +16,7 @@ DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 
-IUSE="+X avahi aqua +asimage c++11 +c++14 c++17 cuda +davix emacs
+IUSE="+X avahi aqua +asimage +c++11 c++14 c++17 cuda +davix emacs
 	+examples fits fftw fortran +gdml graphviz +gsl http jemalloc
 	kerberos ldap libcxx memstat +minuit mysql odbc +opengl oracle
 	postgres prefix pythia6 pythia8 +python qt5 R +roofit root7
