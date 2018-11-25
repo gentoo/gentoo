@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,6 +44,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	app-text/yelp-tools
+	dev-util/glib-utils
 	>=dev-util/intltool-0.50.1
 	sys-devel/bison
 	sys-devel/flex
