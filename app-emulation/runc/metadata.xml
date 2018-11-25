@@ -20,6 +20,9 @@
 		<flag name="apparmor">
 			Enable AppArmor support.
 		</flag>
+		<flag name="kmem">
+			Enable Kernel Memory Accounting.
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">opencontainers/runc</remote-id>
