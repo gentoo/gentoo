@@ -75,7 +75,7 @@ src_prepare() {
 	default
 
 	if has_version '>=media-gfx/imagemagick-7.0.1.0' ; then
-		eapply "${FILESDIR}/${PN}-0.10_p20121015-ImageMagick-7.diff"
+		eapply "${FILESDIR}/${PN}-0.10_p20121015-ImageMagick-7.patch"
 	fi
 
 	use python && python_fix_shebang examples/upcrpc.py test/*.py
