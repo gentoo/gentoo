@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="dev-lang/perl
 	virtual/opengl
 	sys-libs/zlib
-	x11-libs/wxGTK:${WX_GTK_VER}[X]"
+	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]"
 RDEPEND="${DEPEND}
 	${PYTHON_DEPS}"
 
