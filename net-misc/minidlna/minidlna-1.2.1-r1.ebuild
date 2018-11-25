@@ -77,8 +77,8 @@ src_install() {
 }
 
 pkg_preinst() {
-	local my_is_new="yes"
-	[ -d "${EPREFIX}"/var/lib/minidlna ] && my_is_new="no"
+	local my_is_new=yes
+	[[ -d ${EROOT}/var/lib/minidlna ]] && my_is_new=no
 
 	enewgroup minidlna
 	enewuser minidlna -1 -1 /var/lib/minidlna minidlna
@@ -86,10 +86,11 @@ pkg_preinst() {
 	fowners minidlna:minidlna /var/{lib,log}/minidlna
 	fperms 0750 /var/{lib,log}/minidlna
 
-	if [ -d "${EPREFIX}"/var/lib/minidlna ] && [ "${my_is_new}" == "yes" ] ; then
-		# created by above enewuser command w/ wrong group and permissions
-		chown minidlna:minidlna "${EPREFIX}"/var/lib/minidlna || die
-		chmod 0750 "${EPREFIX}"/var/lib/minidlna || die
+	if [[ -d ${EROOT}/var/lib/minidlna && ${my_is_new} == yes ]]; then
+		# created by above enewuser command w/ wrong group
+		# and permissions
+		chown minidlna:minidlna "${EROOT}"/var/lib/minidlna || die
+		chmod 0750 "${EROOT}"/var/lib/minidlna || die
 		# if user already exists, but /var/lib/minidlna is missing
 		# rely on ${D}/var/lib/minidlna created in src_install
 	fi
