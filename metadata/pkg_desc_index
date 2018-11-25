@@ -159,7 +159,7 @@ app-arch/alien 8.95: Converts between the rpm, dpkg, stampede slp, and slackware
 app-arch/arc 5.21p: Create & extract files from DOS .ARC files
 app-arch/arj 3.10.22-r5: Utility for opening arj archives
 app-arch/atool 0.39.0: a script for managing file archives of various types
-app-arch/brotli 1.0.2: Generic-purpose lossless compression algorithm
+app-arch/brotli 1.0.2 1.0.6-r1: Generic-purpose lossless compression algorithm
 app-arch/bsdsfv 1.18-r2: all-in-one SFV checksum utility
 app-arch/bzip2 1.0.6-r10: A high-quality data compressor used extensively by Gentoo Linux
 app-arch/cabextract 1.6 1.9-r2: Extracts files from Microsoft cabinet archive files
@@ -771,10 +771,10 @@ app-emulation/vice 3.1: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.4.3-r1 1.5.1-r1: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 6.0-r1 7.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.18: Detects if the current machine is running in a virtual machine
-app-emulation/virtualbox 5.2.14-r1: Family of powerful x86 virtualization products for enterprise and home use
-app-emulation/virtualbox-additions 5.2.14: CD image containing guest additions for VirtualBox
-app-emulation/virtualbox-guest-additions 5.2.14: VirtualBox kernel modules and user-space tools for Gentoo guests
-app-emulation/virtualbox-modules 5.2.14: Kernel Modules for Virtualbox
+app-emulation/virtualbox 5.2.14-r1 5.2.22: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-additions 5.2.14 5.2.22: CD image containing guest additions for VirtualBox
+app-emulation/virtualbox-guest-additions 5.2.14 5.2.22: VirtualBox kernel modules and user-space tools for Gentoo guests
+app-emulation/virtualbox-modules 5.2.14 5.2.22: Kernel Modules for Virtualbox
 app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.1: A replacement for the .NET runtime and class libraries in Wine
@@ -8375,7 +8375,7 @@ net-analyzer/monitoring-plugins 2.2-r2 2.2-r3: 50+ standard plugins for Icinga, 
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.4-r1: A tool to monitor the traffic load on network-links
 net-analyzer/mtr 0.87: My TraceRoute, an Excellent network diagnostic tool
-net-analyzer/munin 2.0.34: Munin Server Monitoring Tool
+net-analyzer/munin 2.0.34 2.0.38: Munin Server Monitoring Tool
 net-analyzer/nagios 4.3.3: The Nagios metapackage
 net-analyzer/nagios-check_glsa2 20120930-r1: Nagios check script for GLSAs (Gentoo Linux Security Advisories)
 net-analyzer/nagios-check_ipmi_sensor 3.1 3.2: IPMI Sensor Monitoring Plugin for Nagios/Icinga
