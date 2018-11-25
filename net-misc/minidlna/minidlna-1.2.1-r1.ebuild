@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils linux-info systemd toolchain-funcs user
+inherit autotools eutils linux-info systemd tmpfiles toolchain-funcs user
 
 DESCRIPTION="DLNA/UPnP-AV compliant media server"
 HOMEPAGE="https://sourceforge.net/projects/minidlna/"
@@ -66,7 +66,7 @@ src_install() {
 	newconfd "${FILESDIR}"/minidlna-1.0.25.confd minidlna
 	newinitd "${FILESDIR}"/minidlna-1.1.5.initd minidlna
 	systemd_newunit "${FILESDIR}"/minidlna-1.1.2.service minidlna.service
-	systemd_newtmpfilesd - minidlna.conf <<-EOF
+	newtmpfiles - minidlna.conf <<-EOF
 		d /run/minidlna 0755 minidlna minidlna -
 	EOF
 
@@ -100,4 +100,6 @@ pkg_postinst() {
 	elog "logfile is moved to /var/log/minidlna/minidlna.log,"
 	elog "cache is moved to /var/lib/minidlna."
 	elog "Please edit /etc/conf.d/minidlna and file ownerships to suit your needs."
+
+	tmpfiles_process minidlna.conf
 }
