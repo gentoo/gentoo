@@ -58,20 +58,26 @@ src_prepare() {
 }
 
 src_configure() {
-	local my_plugins="ALL"
+	# default storage and resolver requirements
+	local my_plugins="NONE;dump;resolver;resolver_fm_hpu_b;sync;"
+	# defaults chosen by availability in 0.8.16
+	my_plugins+="ccode;conditionals;constants;enum;error;filecheck;fstab;glob;"
+	my_plugins+="hexcode;hidden;hosts;iterate;keytometa;line;lineendings;list;"
+	my_plugins+="logchange;mathcheck;network;ni;null;path;profile;regexstore;"
+	my_plugins+="rename;semlock;shell;spec;struct;timeofday;tracer;type;validation;"
 
-	use augeas    || my_plugins+=";-augeas"
-	use dbus      || my_plugins+=";-dbus"
-	use iconv     || my_plugins+=";-iconv"
-	use ini       || my_plugins+=";-ini"		# bundles inih
-	use java      || my_plugins+=";-jni"
-	use simpleini || my_plugins+=";-simpleini"
-	use syslog    || my_plugins+=";-syslog"
-	use systemd   || my_plugins+=";-journald"
-	use tcl       || my_plugins+=";-tcl"
-	use uname     || my_plugins+=";-uname"
-	use xml       || my_plugins+=";-xmltool"
-	use yajl      || my_plugins+=";-yajl"
+	use augeas    && my_plugins+="augeas;"
+	use dbus      && my_plugins+="dbus;"
+	use iconv     && my_plugins+="iconv;"
+	use ini       && my_plugins+="ini;"		# bundles inih
+	use java      && my_plugins+="jni;"
+	use simpleini && my_plugins+="simpleini;"
+	use syslog    && my_plugins+="syslog;"
+	use systemd   && my_plugins+="journald;"
+	use tcl       && my_plugins+="tcl;"
+	use uname     && my_plugins+="uname;"
+	use xml       && my_plugins+="xmltool;"
+	use yajl      && my_plugins+="yajl;"
 
 	# Disabling for good (?):
 	# counter - Only useful for debugging the plugin framework
@@ -79,7 +85,7 @@ src_configure() {
 	# noresolver - Does not resolve, but can act as one
 	# template - Template for new plugin written in C
 	# wresolver - Resolver for non-POSIX, e.g. w32/w64 systems
-	my_plugins+=";-counter;-doc;-noresolver;-template;-wresolver"
+	# my_plugins+=";-counter;-doc;-noresolver;-template;-wresolver"
 
 	local my_tools="kdb"
 	use qt5 && my_tools+=";qt-gui"
