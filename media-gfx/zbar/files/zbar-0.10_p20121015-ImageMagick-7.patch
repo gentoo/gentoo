@@ -1,3 +1,6 @@
+Fixed build with imagemagick-7 (bug #592324).
+Thanks-to: Jürgen Rose
+
 diff -r -U3 zbar-0.10_p20121015_orig/configure.ac zbar-0.10_p20121015/configure.ac
 --- zbar-0.10_p20121015_orig/configure.ac	2016-08-28 16:59:23.969753652 +0200
 +++ zbar-0.10_p20121015/configure.ac	2016-08-28 17:17:15.384494517 +0200
