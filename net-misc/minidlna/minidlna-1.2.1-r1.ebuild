@@ -16,12 +16,12 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="avahi libav netgear readynas"
 
 RDEPEND="dev-db/sqlite:3
-	media-libs/flac
-	media-libs/libexif
-	media-libs/libid3tag
-	media-libs/libogg
-	media-libs/libvorbis
-	virtual/jpeg:0
+	media-libs/flac:=
+	media-libs/libexif:=
+	media-libs/libid3tag:=
+	media-libs/libogg:=
+	media-libs/libvorbis:=
+	virtual/jpeg:0=
 	avahi? ( net-dns/avahi )
 	libav? ( media-video/libav:0= )
 	!libav? ( media-video/ffmpeg:0= )"
