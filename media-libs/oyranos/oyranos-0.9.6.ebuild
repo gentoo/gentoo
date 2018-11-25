@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ inherit cmake-multilib flag-o-matic ${GITECLASS}
 unset GITECLASS
 
 DESCRIPTION="Colour management system allowing to share settings across apps and services"
-HOMEPAGE="http://www.oyranos.org/"
+HOMEPAGE="https://www.oyranos.org/"
 [[ ${PV} != *9999 ]] && \
 SRC_URI="https://github.com/${PN}-cms/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~asturm/${P}-patches.tar.xz"
@@ -22,8 +22,6 @@ SLOT="0"
 IUSE="X cairo cups doc examples exif fltk jpeg qt5 raw scanner static-libs test tiff"
 
 REQUIRED_USE="qt5? ( X ) test? ( static-libs )"
-
-#OY_LINGUAS="cs;de;eo;eu;fr;ru" #TODO
 
 COMMON_DEPEND="
 	>=app-admin/elektra-0.8.4:0[${MULTILIB_USEDEP}]
