@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils multilib versionator
+inherit multilib
 
-MY_PV=796b552e8a32cc8e63d40dfb94b8a6209731060b
 DESCRIPTION="Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)"
 HOMEPAGE="https://savannah.nongnu.org/projects/freeverb3"
 SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
