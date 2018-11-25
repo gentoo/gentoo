@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils eutils java-pkg-opt-2
+inherit cmake-utils
 
 DESCRIPTION="Framework to store config parameters in hierarchical key-value pairs"
 HOMEPAGE="https://www.libelektra.org"
@@ -12,7 +12,7 @@ SRC_URI="https://www.libelektra.org/ftp/elektra/releases/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-PLUGIN_IUSE="augeas iconv ini java simpleini syslog systemd tcl +uname xml yajl";
+PLUGIN_IUSE="augeas iconv ini simpleini syslog systemd tcl +uname xml yajl";
 IUSE="dbus doc qt5 static-libs test ${PLUGIN_IUSE}"
 
 RDEPEND="
@@ -21,7 +21,6 @@ RDEPEND="
 	augeas? ( app-admin/augeas )
 	dbus? ( >=sys-apps/dbus-1.6.18-r1 )
 	iconv? ( >=virtual/libiconv-0-r1 )
-	java? ( >=virtual/jdk-1.8:* )
 	qt5? (
 		dev-qt/qtdeclarative:5
 		dev-qt/qtgui:5
@@ -70,7 +69,6 @@ src_configure() {
 	use dbus      && my_plugins+="dbus;"
 	use iconv     && my_plugins+="iconv;"
 	use ini       && my_plugins+="ini;"		# bundles inih
-	use java      && my_plugins+="jni;"
 	use simpleini && my_plugins+="simpleini;"
 	use syslog    && my_plugins+="syslog;"
 	use systemd   && my_plugins+="journald;"
