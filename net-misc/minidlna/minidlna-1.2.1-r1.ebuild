@@ -85,7 +85,7 @@ src_install() {
 	echo "d /run/${PN} 0755 ${PN} ${PN} -" > "${T}"/${PN}.conf
 	systemd_dotmpfilesd "${T}"/${PN}.conf
 
-	dodir /var/{lib,log}/${PN}
+	keepdir /var/{lib,log}/${PN}
 	fowners ${PN}:${PN} /var/{lib,log}/${PN}
 	fperms 0750 /var/{lib,log}/${PN}
 
