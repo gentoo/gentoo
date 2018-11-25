@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -31,6 +31,10 @@ pkg_setup() {
 
 	# force ownership of radvd user and group (bug #19647)
 	[[ -d ${ROOT}/var/run/radvd ]] && chown radvd:radvd "${ROOT}"/var/run/radvd
+}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-headers.patch
 }
 
 src_configure() {
