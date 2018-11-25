@@ -21,7 +21,7 @@ RDEPEND="
 	augeas? ( app-admin/augeas )
 	dbus? ( >=sys-apps/dbus-1.6.18-r1 )
 	iconv? ( >=virtual/libiconv-0-r1 )
-	java? ( >=virtual/jdk-1.8.0 )
+	java? ( >=virtual/jdk-1.8:* )
 	qt5? (
 		dev-qt/qtdeclarative:5
 		dev-qt/qtgui:5
