@@ -63,7 +63,7 @@ src_configure() {
 		-DINSTALL_HELP=ON
 		-DSYSTEM_BOOST=OFF
 		-DSYSTEM_YAMLCPP=OFF
-		-DNO_AVAHI=$(usex !zeroconf avahi)
+		-DNO_AVAHI=$(usex !zeroconf)
 		-DFFT_GREEN=$(usex !fftw)
 		-DNO_GPL3=$(usex !gpl3)
 		-DNO_LIBSNDFILE=$(usex !sndfile)
