@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -79,6 +79,8 @@ src_prepare() {
 		glslang
 		# FIXME: xxhash can't be found by cmake
 		xxhash
+		# no support for for using system library
+		minizip
 		# soundtouch uses shorts, not floats
 		soundtouch
 		cubeb
