@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/supercollider/supercollider/releases/download/Versio
 LICENSE="GPL-2 gpl3? ( GPL-3 )"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="avahi cpu_flags_x86_sse cpu_flags_x86_sse2 debug emacs +fftw gedit +gpl3 jack qt5 server +sndfile static-libs vim"
+IUSE="cpu_flags_x86_sse cpu_flags_x86_sse2 debug emacs +fftw gedit +gpl3 jack qt5 server +sndfile static-libs vim zeroconf"
 RESTRICT="mirror"
 
 RDEPEND="
@@ -20,7 +20,6 @@ RDEPEND="
 	sys-libs/readline:0=
 	x11-libs/libX11
 	x11-libs/libXt
-	avahi? ( net-dns/avahi )
 	fftw? ( sci-libs/fftw:3.0= )
 	jack? ( virtual/jack )
 	!jack? ( media-libs/portaudio )
@@ -35,6 +34,7 @@ RDEPEND="
 	)
 	server? ( !app-admin/supernova )
 	sndfile? ( media-libs/libsndfile )
+	zeroconf? ( net-dns/avahi )
 "
 DEPEND="${RDEPEND}
 	dev-libs/icu
@@ -63,7 +63,7 @@ src_configure() {
 		-DINSTALL_HELP=ON
 		-DSYSTEM_BOOST=OFF
 		-DSYSTEM_YAMLCPP=OFF
-		-DNO_AVAHI=$(usex !avahi)
+		-DNO_AVAHI=$(usex !zeroconf avahi)
 		-DFFT_GREEN=$(usex !fftw)
 		-DNO_GPL3=$(usex !gpl3)
 		-DNO_LIBSNDFILE=$(usex !sndfile)
