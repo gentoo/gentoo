@@ -13,7 +13,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 PLUGIN_IUSE="augeas iconv ini simpleini syslog systemd tcl +uname xml yajl";
-IUSE="dbus doc qt5 static-libs test ${PLUGIN_IUSE}"
+IUSE="dbus doc static-libs test ${PLUGIN_IUSE}"
 
 RDEPEND="
 	dev-libs/libltdl:0
@@ -21,16 +21,17 @@ RDEPEND="
 	augeas? ( app-admin/augeas )
 	dbus? ( >=sys-apps/dbus-1.6.18-r1 )
 	iconv? ( >=virtual/libiconv-0-r1 )
-	qt5? (
-		dev-qt/qtdeclarative:5
-		dev-qt/qtgui:5
-		dev-qt/qttest:5
-		dev-qt/qtwidgets:5
-	)
 	systemd? ( sys-apps/systemd )
 	uname? ( sys-apps/coreutils )
 	yajl? ( >=dev-libs/yajl-1.0.11-r1 )
 "
+# 	qt5? (
+# 		app-text/discount
+# 		dev-qt/qtdeclarative:5
+# 		dev-qt/qtgui:5
+# 		dev-qt/qttest:5
+# 		dev-qt/qtwidgets:5
+# 	)
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( >=dev-cpp/gtest-1.7.0 )
@@ -87,7 +88,7 @@ src_configure() {
 	# my_plugins+=";-counter;-doc;-noresolver;-template;-wresolver"
 
 	local my_tools="kdb"
-	use qt5 && my_tools+=";qt-gui"
+# 	use qt5 && my_tools+=";qt-gui"
 
 	local mycmakeargs=(
 		-DBUILD_PDF=OFF
