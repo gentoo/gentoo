@@ -10,7 +10,6 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<use>
-		<flag name="gtk3">Link against version 3 of the GIMP Toolkit instead of version 2 (x11-libs/gtk+)</flag>
 		<flag name="qt5">Build with Qt5 interface instead Gtk+</flag>
 	</use>
 </pkgmetadata>
