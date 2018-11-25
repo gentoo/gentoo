@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 toolchain-funcs elisp-common
@@ -32,6 +32,14 @@ DEPEND="${RDEPEND}
 SITEFILE=50cython-gentoo.el
 S="${WORKDIR}/${MY_PN}-${PV%_*}"
 
+python_prepare_all() {
+	# tests behavior that is illegal in Python 3.7+
+	# https://github.com/cython/cython/issues/2454
+	sed -i -e '/with_outer_raising/,/return/d' tests/run/generators_py.py || die
+
+	distutils-r1_python_prepare_all
+}
+
 python_compile() {
 	if ! python_is_python3; then
 		local CFLAGS="${CFLAGS} -fno-strict-aliasing"
@@ -47,7 +55,7 @@ python_compile() {
 python_compile_all() {
 	use emacs && elisp-compile Tools/cython-mode.el
 
-	use doc && unset XDG_CONFIG_HOME && emake -C docs html
+	use doc && emake -C docs html
 }
 
 python_test() {
