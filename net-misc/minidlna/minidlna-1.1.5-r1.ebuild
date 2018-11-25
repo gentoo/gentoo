@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils linux-info systemd toolchain-funcs user
 
 DESCRIPTION="DLNA/UPnP-AV compliant media server"
-HOMEPAGE="http://minidlna.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/minidlna/"
 SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz
 	https://dev.gentoo.org/~xmw/${PN}-gentoo-artwork.patch.xz"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa bluetooth discord-presence doc egl +evdev ffmpeg libav log lto profile pulseaudio +qt5 systemd upnp"
+IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg libav log lto profile pulseaudio +qt5 systemd upnp"
 
 RDEPEND="
 	dev-libs/hidapi:0=
@@ -30,6 +30,7 @@ RDEPEND="
 	dev-libs/pugixml:0=
 	media-libs/libpng:0=
 	media-libs/libsfml
+	media-libs/mesa[egl]
 	net-libs/enet:1.3
 	net-libs/mbedtls
 	net-misc/curl:0=
@@ -42,7 +43,6 @@ RDEPEND="
 	virtual/opengl
 	alsa? ( media-libs/alsa-lib )
 	bluetooth? ( net-wireless/bluez )
-	egl? ( media-libs/mesa[egl] )
 	evdev? (
 		dev-libs/libevdev
 		virtual/udev
@@ -79,6 +79,8 @@ src_prepare() {
 		glslang
 		# FIXME: xxhash can't be found by cmake
 		xxhash
+		# no support for for using system library
+		minizip
 		# soundtouch uses shorts, not floats
 		soundtouch
 		cubeb
@@ -129,7 +131,6 @@ src_configure() {
 		-DFASTLOG=$(usex log)
 		-DOPROFILING=$(usex profile)
 		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
-		-DUSE_EGL=$(usex egl)
 		-DUSE_SHARED_ENET=ON
 		-DUSE_UPNP=$(usex upnp)
 	)
