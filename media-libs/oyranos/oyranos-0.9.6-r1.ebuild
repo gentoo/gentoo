@@ -7,7 +7,8 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}-cms/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/${PN}-cms/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/${PN}-cms/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+		https://dev.gentoo.org/~asturm/${P}-patches.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 CMAKE_REMOVE_MODULES_LIST="${CMAKE_REMOVE_MODULES_LIST} FindXcm FindCUPS"
@@ -67,6 +68,8 @@ RDEPEND="${COMMON_DEPEND}
 DOCS=( {AUTHORS,ChangeLog,README}.md )
 
 RESTRICT="test"
+
+PATCHES=( "${WORKDIR}/patches" )
 
 src_prepare() {
 	# remove bundled libs
