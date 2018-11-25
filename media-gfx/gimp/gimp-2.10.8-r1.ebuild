@@ -131,7 +131,7 @@ src_configure() {
 		$(use_enable smp mp)
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_with udev gudev)
-		$(use_with unwind)
+		$(use_with unwind libunwind)
 		$(use_with wmf)
 		--with-xmc
 		$(use_with xpm libxpm)
