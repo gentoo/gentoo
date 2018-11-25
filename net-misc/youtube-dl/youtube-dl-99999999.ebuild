@@ -7,7 +7,7 @@ inherit bash-completion-r1 distutils-r1 git-r3 readme.gentoo-r1
 
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
 HOMEPAGE="https://rg3.github.com/youtube-dl/"
-EGIT_REPO_URI="https://github.com/rg3/youtube-dl.git"
+EGIT_REPO_URI="https://github.com/rg3/youtube-dl"
 
 LICENSE="public-domain"
 SLOT="0"
