@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (8 Apr 2019)
+# Ruby 2.3 is no longer maintained and only receives security patches
+# until March 2019. Please use Ruby 2.4 or newer instead.
+# Masked for removal in 30 days
+dev-lang/ruby:2.3
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (06 Apr 2019)
 # Preparations for the Perl 5.28.2 version bump.
 # DO NOT USE, work in progress.
