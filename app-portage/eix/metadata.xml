@@ -6,6 +6,10 @@
     <name>Mikle Kolyada</name>
   </maintainer>
   <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
+  <maintainer type="person">
     <email>martin@mvath.de</email>
     <name>Martin Väth</name>
     <description>Upstream developer, CC on bugs, do not copy ebuilds
