@@ -58,7 +58,7 @@ src_install() {
 	default
 
 	#bug 536532
-	dosym /usr/sbin/minidlnad /usr/bin/minidlna
+	dosym ../sbin/minidlnad /usr/bin/minidlna
 
 	insinto /etc
 	doins minidlna.conf
