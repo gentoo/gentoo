@@ -1406,7 +1406,7 @@ app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mftrace 1.2.18-r3: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/multitail 6.4.1: Tail with multiple windows
-app-text/mupdf 1.13.0: a lightweight PDF viewer and toolkit written in portable C
+app-text/mupdf 1.13.0 1.14.0-r2: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21: Namazu is a full-text search engine
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
@@ -7440,6 +7440,7 @@ media-gfx/xpaint 2.9.10.2: Image editor with tiff, jpeg and png support
 media-gfx/xsane 0.999-r2: graphical scanning frontend
 media-gfx/xv 3.10a-r17: Interactive image manipulation program supporting a wide variety of formats
 media-gfx/xzgv 0.9.1: Fast and simple GTK+ image viewer
+media-gfx/zbar 0.10_p20121015-r3: Library and tools for reading barcodes from images or video
 media-libs/Field3D 1.7.2: A library for storing voxel data
 media-libs/a52dec 0.7.4-r6 0.7.4-r7: library for decoding ATSC A/52 streams used in DVD
 media-libs/aalib 1.4_rc5-r6: A ASCII-Graphics Library
