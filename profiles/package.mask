@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (25 Nov 2018)
+# Masked per security vulnerability CVE-2018-14345, bug #661510
+# Keeping it masked while users have unsolved issues with >0.15.0.
+<x11-misc/sddm-0.18.0
+
 # Sergei Trofimovich <slyfox@gentoo.org> (23 Nov 2018)
 # New version breaks kernel compilation as objtool seemingly
 # corrupts object files: bug #671760
