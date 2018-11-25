@@ -29,7 +29,7 @@ SLOT="0"
 
 RDEPEND="
 	~sci-libs/votca-tools-${PV}
-	gromacs? ( <sci-chemistry/gromacs-2019:= )
+	gromacs? ( <sci-chemistry/gromacs-2019_beta1:= )
 	hdf5? ( sci-libs/hdf5 )
 	dev-lang/perl
 	app-shells/bash:*"
