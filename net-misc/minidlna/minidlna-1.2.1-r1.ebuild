@@ -33,22 +33,6 @@ CONFIG_CHECK="~INOTIFY_USER"
 PATCHES=( "${WORKDIR}"/${PN}-gentoo-artwork.patch
 	"${FILESDIR}"/${P}-buildsystem.patch )
 
-pkg_setup() {
-	local my_is_new="yes"
-	[ -d "${EPREFIX}"/var/lib/${PN} ] && my_is_new="no"
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
-	if [ -d "${EPREFIX}"/var/lib/${PN} ] && [ "${my_is_new}" == "yes" ] ; then
-		# created by above enewuser command w/ wrong group and permissions
-		chown ${PN}:${PN} "${EPREFIX}"/var/lib/${PN} || die
-		chmod 0750 "${EPREFIX}"/var/lib/${PN} || die
-		# if user already exists, but /var/lib/minidlna is missing
-		# rely on ${D}/var/lib/minidlna created in src_install
-	fi
-
-	linux-info_pkg_setup
-}
-
 src_prepare() {
 	sed -e "/log_dir/s:/var/log:/var/log/${PN}:" \
 		-e "/db_dir/s:/var/cache/:/var/lib/:" \
@@ -86,11 +70,28 @@ src_install() {
 	systemd_dotmpfilesd "${T}"/${PN}.conf
 
 	keepdir /var/{lib,log}/${PN}
-	fowners ${PN}:${PN} /var/{lib,log}/${PN}
-	fperms 0750 /var/{lib,log}/${PN}
 
 	dodoc AUTHORS NEWS README TODO
 	doman ${PN}d.8 ${PN}.conf.5
+}
+
+pkg_preinst() {
+	local my_is_new="yes"
+	[ -d "${EPREFIX}"/var/lib/${PN} ] && my_is_new="no"
+
+	enewgroup ${PN}
+	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
+
+	fowners ${PN}:${PN} /var/{lib,log}/${PN}
+	fperms 0750 /var/{lib,log}/${PN}
+
+	if [ -d "${EPREFIX}"/var/lib/${PN} ] && [ "${my_is_new}" == "yes" ] ; then
+		# created by above enewuser command w/ wrong group and permissions
+		chown ${PN}:${PN} "${EPREFIX}"/var/lib/${PN} || die
+		chmod 0750 "${EPREFIX}"/var/lib/${PN} || die
+		# if user already exists, but /var/lib/minidlna is missing
+		# rely on ${D}/var/lib/minidlna created in src_install
+	fi
 }
 
 pkg_postinst() {
