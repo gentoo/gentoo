@@ -30,8 +30,9 @@ DEPEND="${RDEPEND}
 
 CONFIG_CHECK="~INOTIFY_USER"
 
-PATCHES=( "${WORKDIR}"/minidlna-gentoo-artwork.patch
-	"${FILESDIR}"/${P}-buildsystem.patch )
+PATCHES=(
+	"${WORKDIR}"/minidlna-gentoo-artwork.patch
+)
 
 src_prepare() {
 	sed -e "/log_dir/s:/var/log:/var/log/minidlna:" \
@@ -39,8 +40,6 @@ src_prepare() {
 		-i minidlna.conf || die
 
 	default
-
-	eautoreconf
 }
 
 src_configure() {
@@ -48,9 +47,11 @@ src_configure() {
 		--with-db-path=/var/lib/minidlna
 		--with-log-path=/var/log/minidlna
 		--enable-tivo
-		$(use_enable avahi)
 		$(use_enable netgear)
 		$(use_enable readynas)
+	)
+	use avahi || myconf+=(
+		ac_cv_lib_avahi_client_avahi_threaded_poll_new=no
 	)
 
 	econf "${myconf[@]}"
