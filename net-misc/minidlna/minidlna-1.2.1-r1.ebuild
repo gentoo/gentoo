@@ -66,8 +66,9 @@ src_install() {
 	newconfd "${FILESDIR}"/minidlna-1.0.25.confd minidlna
 	newinitd "${FILESDIR}"/minidlna-1.1.5.initd minidlna
 	systemd_newunit "${FILESDIR}"/minidlna-1.1.2.service minidlna.service
-	echo "d /run/minidlna 0755 minidlna minidlna -" > "${T}"/minidlna.conf
-	systemd_dotmpfilesd "${T}"/minidlna.conf
+	systemd_newtmpfilesd - minidlna.conf <<-EOF
+		d /run/minidlna 0755 minidlna minidlna -
+	EOF
 
 	keepdir /var/{lib,log}/minidlna
 
