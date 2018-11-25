@@ -1828,14 +1828,15 @@ toolchain_src_install() {
 		fi
 	fi
 
-	# Now do the fun stripping stuff
-	env RESTRICT="" CHOST=${CHOST} prepstrip "${D}${BINPATH}"
-	is_crosscompile && \
-		env RESTRICT="" CHOST=${CHOST} prepstrip "${D}${HOSTLIBPATH}"
-	env RESTRICT="" CHOST=${CTARGET} prepstrip "${D}${LIBPATH}"
-	# gcc used to install helper binaries in lib/ but then moved to libexec/
-	[[ -d ${D}${PREFIX}/libexec/gcc ]] && \
-		env RESTRICT="" CHOST=${CHOST} prepstrip "${D}${PREFIX}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}"
+	# TODO: implement stripping (we use RESTRICT=strip)
+	# As gcc installs object files both build against ${CHOST} and ${CTARGET}
+	# we will ned to run stripping using different tools:
+	# Using ${CHOST} tools:
+	#  - "${D}${BINPATH}"
+	#  - (for is_crosscompile) "${D}${HOSTLIBPATH}"
+	#  - "${D}${PREFIX}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}"
+	# Using ${CTARGET} tools:
+	#  - "${D}${LIBPATH}"
 
 	cd "${S}"
 	if is_crosscompile; then
