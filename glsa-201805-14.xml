@@ -44,7 +44,6 @@
   </resolution>
   <references>
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1120">CVE-2018-1120</uri>
-    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1121">CVE-2018-1121</uri>
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1122">CVE-2018-1122</uri>
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1123">CVE-2018-1123</uri>
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1124">CVE-2018-1124</uri>
