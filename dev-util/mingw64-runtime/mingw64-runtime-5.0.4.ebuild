@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -103,6 +103,5 @@ src_install() {
 		dosym usr/include /usr/${CTARGET}/sys-include
 	fi
 
-	env -uRESTRICT CHOST=${CTARGET} prepallstrip
 	rm -rf "${ED}/usr/share"
 }

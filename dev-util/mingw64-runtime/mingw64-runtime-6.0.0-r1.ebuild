@@ -108,6 +108,5 @@ src_install() {
 		dosym usr/include /usr/${CTARGET}/sys-include
 	fi
 
-	env -uRESTRICT CHOST=${CTARGET} prepallstrip
 	rm -rf "${ED}/usr/share"
 }
