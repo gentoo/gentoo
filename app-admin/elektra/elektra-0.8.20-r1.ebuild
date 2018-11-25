@@ -50,6 +50,7 @@ src_prepare() {
 
 	# move doc files to correct location
 	sed -e "s/elektra-api/${PF}/" -i cmake/ElektraCache.cmake || die
+	sed -e "/^install.*LICENSE/s/^/#DONT /" -i CMakeLists.txt || die
 
 	# avoid useless build time, nothing ends up installed
 	cmake_comment_add_subdirectory benchmarks
