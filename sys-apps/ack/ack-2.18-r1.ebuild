@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ DIST_AUTHOR=PETDANCE
 inherit perl-module
 
 DESCRIPTION="ack is a tool like grep, optimized for programmers"
-HOMEPAGE="https://beyondgrep.com/ ${HOMEPAGE}"
+HOMEPAGE="https://beyondgrep.com"
 
 LICENSE="Artistic-2"
 SLOT="0"
