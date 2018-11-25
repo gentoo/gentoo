@@ -23,10 +23,8 @@ IUSE="+magic seccomp sqlite synctex test"
 
 PATCHES=( "${FILESDIR}"/${PN}-find-libm.patch )
 
-RDEPEND="dev-libs/appstream
-	>=dev-libs/girara-0.3.1
+RDEPEND=">=dev-libs/girara-0.3.1
 	>=dev-libs/glib-2.50:2
-	dev-util/desktop-file-utils
 	dev-python/sphinx
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.22:3
