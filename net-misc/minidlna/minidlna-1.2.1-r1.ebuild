@@ -57,6 +57,10 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
+src_test() {
+	:
+}
+
 src_install() {
 	default
 
