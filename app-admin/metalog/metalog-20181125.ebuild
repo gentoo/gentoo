@@ -15,6 +15,7 @@ IUSE="unicode"
 
 RDEPEND=">=dev-libs/libpcre-3.4"
 DEPEND="${RDEPEND}
+	sys-devel/autoconf-archive
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${PN}-${P}"
