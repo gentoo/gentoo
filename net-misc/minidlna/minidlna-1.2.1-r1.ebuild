@@ -44,14 +44,16 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--disable-silent-rules \
-		--with-db-path=/var/lib/minidlna \
-		--with-log-path=/var/log/minidlna \
-		--enable-tivo \
-		$(use_enable avahi ) \
-		$(use_enable netgear) \
+	local myconf=(
+		--with-db-path=/var/lib/minidlna
+		--with-log-path=/var/log/minidlna
+		--enable-tivo
+		$(use_enable avahi)
+		$(use_enable netgear)
 		$(use_enable readynas)
+	)
+
+	econf "${myconf[@]}"
 }
 
 src_install() {
@@ -72,7 +74,6 @@ src_install() {
 
 	keepdir /var/{lib,log}/minidlna
 
-	dodoc AUTHORS NEWS README TODO
 	doman minidlnad.8 minidlna.conf.5
 }
 
