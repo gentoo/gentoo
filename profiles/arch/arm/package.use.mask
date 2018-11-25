@@ -178,6 +178,7 @@ dev-db/mariadb -jdbc
 # to enable imagemagick flag and disable graphicsmagick use flag
 # to enable conversion facilities
 sci-mathematics/octave graphicsmagick
+media-gfx/zbar graphicsmagick
 
 # Davide Pesavento <pesa@gentoo.org> (28 Jul 2016)
 # The corresponding Qt5 modules are not keyworded on arm, and we don't want to
