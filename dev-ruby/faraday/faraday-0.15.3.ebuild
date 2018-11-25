@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,6 +47,9 @@ all_ruby_prepare() {
 
 	# Remove tests for adapters that are not packaged for Gentoo.
 	rm test/adapters/em_http_test.rb test/adapters/em_synchrony_test.rb test/adapters/excon_test.rb test/adapters/typhoeus_test.rb || die
+
+	# Remove tests against live services
+	sed -i -e '/test_dynamic_no_proxy/askip "live network test"' test/connection_test.rb || die
 
 	# The proxy server is already killed, may be OS X vs Linux issue.
 	sed -i -e '138 s/^/#/' script/test || die
