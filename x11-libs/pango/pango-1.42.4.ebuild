@@ -30,6 +30,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.20
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	test? ( media-fonts/cantarell )
