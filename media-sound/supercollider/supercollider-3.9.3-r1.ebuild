@@ -11,7 +11,7 @@ SRC_URI="https://github.com/supercollider/supercollider/releases/download/Versio
 
 LICENSE="GPL-2 gpl3? ( GPL-3 )"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse cpu_flags_x86_sse2 debug emacs +fftw gedit +gpl3 jack qt5 server +sndfile static-libs vim zeroconf"
 RESTRICT="mirror"
 
