@@ -10845,7 +10845,7 @@ x11-misc/3ddesktop 0.2.9-r1: OpenGL virtual desktop switching
 x11-misc/3dfb 0.6.1-r1: 3D File Browser
 x11-misc/3dfm 1.0-r1: OpenGL-based 3D File Manager
 x11-misc/alacarte 3.11.91: Simple GNOME menu editor
-x11-misc/albert 0.14.21: Desktop agnostic launcher
+x11-misc/albert 0.14.22: Desktop agnostic launcher
 x11-misc/alock 1.0.0: locks the local X display until a password is entered
 x11-misc/apwal 0.4.5-r2: A simple application launcher and combined editor
 x11-misc/arandr 0.1.9: Another XRandR GUI
