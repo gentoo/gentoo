@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install
-DEPEND=>=sci-libs/fftw-3.0.1 audacious? ( >=media-sound/audacious-3.9[gtk3] >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile ) jack? ( media-sound/jack-audio-connection-kit >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=sci-libs/fftw-3.0.1 audacious? ( >=media-sound/audacious-3.9[gtk3] >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile ) jack? ( media-sound/jack-audio-connection-kit >=dev-libs/glib-2.4.7:2 >=x11-libs/gtk+-3.0.0:3 x11-libs/pango x11-libs/cairo media-libs/libsndfile )
 DESCRIPTION=Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
 EAPI=6
 HOMEPAGE=https://savannah.nongnu.org/projects/freeverb3
@@ -10,5 +10,5 @@ RDEPEND=>=sci-libs/fftw-3.0.1 audacious? ( >=media-sound/audacious-3.9[gtk3] >=d
 REQUIRED_USE=jack? ( audacious )
 SLOT=0
 SRC_URI=mirror://nongnu/freeverb3/freeverb3-3.2.1.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=588ce1db9c44359548caf4c803964a86
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=df9d3d1ffe0bff06ef21497acb08e7a3
