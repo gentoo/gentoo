@@ -15,9 +15,11 @@ KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="virtual/pam
-		dev-libs/libp11
-		dev-libs/openssl:0="
+	dev-libs/libp11
+	dev-libs/openssl:0="
+
 DEPEND="${RDEPEND}"
+
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
