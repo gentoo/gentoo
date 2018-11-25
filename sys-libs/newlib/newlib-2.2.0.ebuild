@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -75,7 +75,6 @@ src_compile() {
 src_install() {
 	cd "${NEWLIBBUILD}"
 	emake -j1 DESTDIR="${D}" install
-#	env -uRESTRICT CHOST=${CTARGET} prepallstrip
 	# minor hack to keep things clean
 	rm -fR "${D}"/usr/share/info
 	rm -fR "${D}"/usr/info
