@@ -18,8 +18,8 @@ IUSE="doc examples metis mpi +scotch static-libs"
 
 RDEPEND="
 	virtual/blas
-	metis? ( || ( sci-libs/metis <sci-libs/parmetis-4 )
-		mpi? ( <sci-libs/parmetis-4 ) )
+	metis? ( || ( >=sci-libs/metis-5 >=sci-libs/parmetis-4 )
+		mpi? ( >=sci-libs/parmetis-4 ) )
 	scotch? ( <sci-libs/scotch-6[mpi=] )
 	mpi? ( sci-libs/scalapack )"
 

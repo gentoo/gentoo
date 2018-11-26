@@ -7,7 +7,6 @@ inherit systemd user
 DESCRIPTION="High-performance interface between the MTA and content checkers"
 HOMEPAGE="https://gitlab.com/amavis/amavis"
 SRC_URI="${HOMEPAGE}/-/archive/${P}/amavis-${P}.tar.gz"
-PORTAGE_DOHTML_WARN_ON_SKIPPED_FILES=yes
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
@@ -91,10 +90,14 @@ src_prepare() {
 		eapply -p0 amavisd-new-qmqpqq.patch
 	fi
 
+	# We need to fix the daemon_user and daemon_group in amavis-mc even
+	# though we're going to run it in the foreground, because it calls
+	# "drop_priv" unconditionally and will crash if its user/group
+	# doesn't exist.
 	sed -i  \
 		-e '/daemon/s/vscan/amavis/' \
 		-e "s:'/var/virusmails':\"\$MYHOME/quarantine\":" \
-		"${S}/amavisd.conf" "${S}/amavis-mc"  || die "missing conf file"
+		"${S}/amavisd.conf" "${S}/amavis-mc" || die "missing conf file"
 
 	if ! use dkim ; then
 		sed -i -e '/enable_dkim/s/1/0/' "${S}/amavisd.conf" \
@@ -116,26 +119,31 @@ src_prepare() {
 }
 
 src_install() {
-	dosbin amavisd amavisd-agent amavisd-nanny amavisd-release \
-		amavisd-signer amavisd-status
+	dosbin amavisd{,-agent,-nanny,-release,-signer,-status}
 	dobin p0f-analyzer.pl amavisd-submit
 
 	if use snmp ; then
 		dosbin amavisd-snmp-subagent
-		use zmq && dosbin amavisd-snmp-subagent-zmq
+		newinitd "${FILESDIR}/amavisd-snmp-subagent.initd" \
+				 amavisd-snmp-subagent
 		dodoc AMAVIS-MIB.txt
-		newinitd "${FILESDIR}"/amavisd-snmp.initd amavisd-snmp
+
+		if use zmq ; then
+			dosbin amavisd-snmp-subagent-zmq
+			newinitd "${FILESDIR}/amavisd-snmp-subagent-zmq.initd" \
+					 amavisd-snmp-subagent-zmq
+		fi
 	fi
 
 	if use zmq ; then
 		dosbin amavis-services amavis-mc
-		newinitd "${FILESDIR}"/amavis-mc.initd amavis-mc
+		newinitd "${FILESDIR}/amavis-mc.initd-r1" amavis-mc
 	fi
 
 	if use ldap ; then
 		dodir /etc/openldap/schema
 		insinto /etc/openldap/schema
-		newins LDAP.schema ${PN}.schema || die
+		newins LDAP.schema "${PN}.schema"
 	fi
 
 	# The config file should be root:amavis so that the amavis user can
@@ -157,7 +165,7 @@ src_install() {
 
 	newinitd "${FILESDIR}/amavisd.initd-r2" amavisd
 
-	systemd_dounit "${FILESDIR}/amavisd.service-r1"
+	systemd_newunit "${FILESDIR}/amavisd.service-r1" amavisd.service
 
 	dodoc AAAREADME.first INSTALL MANIFEST RELEASE_NOTES TODO \
 		amavisd.conf-default amavisd-custom.conf
