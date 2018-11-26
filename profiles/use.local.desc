@@ -4992,6 +4992,8 @@ sci-libs/nlopt:octave - Add plugin for sci-mathematics/octave
 sci-libs/openfoam:opendx - Install opendx visualisation tool
 sci-libs/openfoam:paraview - Enable support for paraview library
 sci-libs/openfoam:src - Install source files
+sci-libs/parmetis:double-precision - Floating-point operation done as double precision
+sci-libs/parmetis:int64 - Build the 64 bits integer library (needed for > 2^31 vertices)
 sci-libs/pastix:int64 - Build the 64 bits integer library
 sci-libs/pastix:starpu - Build and link with dev-libs/starpu
 sci-libs/scipy:sparse - Adds support for sparse solving with sci-libs/umfpack
