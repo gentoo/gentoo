@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -49,7 +49,7 @@ src_configure() {
 		--enable-posix-shm
 		--enable-threads
 		$(use_enable static-libs static)
-		--with-installbuilddir=/usr/share/${PN}/build
+		--with-installbuilddir="${EPREFIX}"/usr/share/${PN}/build
 	)
 
 	[[ ${CHOST} == *-mint* ]] && export ac_cv_func_poll=no
