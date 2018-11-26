@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-	<name>Mikle Kolyada</name>
-	<email>zlogene@gentoo.org</email>
+<email>grozin@gentoo.org</email>
+<name>Andrey Grozin</name>
 </maintainer>
 </pkgmetadata>
