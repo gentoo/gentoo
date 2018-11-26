@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ RDEPEND="
 	>=sci-libs/arpack-3
 	virtual/blas
 	virtual/lapack
-	>=sci-libs/cxsparse-3
+	sci-libs/suitesparse:0=
 	sci-mathematics/glpk
 	gmp? ( dev-libs/gmp:0 )"
 DEPEND="${RDEPEND}
