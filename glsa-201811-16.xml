@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-16">
+  <title>strongSwan: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in strongSwan, the worst
+    of which could lead to a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">strongswan</product>
+  <announced>2018-11-26</announced>
+  <revised count="1">2018-11-26</revised>
+  <bug>648610</bug>
+  <bug>656338</bug>
+  <bug>658230</bug>
+  <bug>668862</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-vpn/strongswan" auto="yes" arch="*">
+      <unaffected range="ge">5.7.1</unaffected>
+      <vulnerable range="lt">5.7.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>strongSwan is an IPSec implementation for Linux.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in strongSwan. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a Denial of Service condition or
+      impersonate a user.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All strongSwan users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-vpn/strongswan-5.7.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10811">CVE-2018-10811</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16151">CVE-2018-16151</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16152">CVE-2018-16152</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17540">CVE-2018-17540</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5388">CVE-2018-5388</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6459">CVE-2018-6459</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-15T12:36:55Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-11-26T18:35:58Z">b-man</metadata>
+</glsa>
