@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -111,7 +111,7 @@ RDEPEND="
 	net-firewall/ebtables
 	net-firewall/conntrack-tools
 	haproxy? ( net-proxy/haproxy )
-	openvswitch? ( <=net-misc/openvswitch-2.8.9999 )
+	openvswitch? ( net-misc/openvswitch )
 	ipv6? (
 		net-misc/radvd
 		>=net-misc/dibbler-1.0.1
