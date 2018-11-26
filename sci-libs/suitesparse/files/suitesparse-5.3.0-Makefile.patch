@@ -1,0 +1,42 @@
+diff --git a/AMD/Lib/Makefile b/AMD/Lib/Makefile
+index 3b92f6a..3c40cc2 100644
+--- a/AMD/Lib/Makefile
++++ b/AMD/Lib/Makefile
+@@ -62,7 +62,7 @@ $(AR_TARGET): $(OBJ)
+ # compile the Fortran versions and the libamdf77.a library (static only)
+ #-------------------------------------------------------------------------------
+ 
+-fortran: libamdf77.a
++fortran: libamdf77.a libamdf77.so.$(VERSION)
+ 
+ AMDF77 = amd.o amdbar.o
+ 
+@@ -76,6 +76,12 @@ libamdf77.a: $(AMDF77)
+ 	$(ARCHIVE) libamdf77.a $^
+ 	- $(RANLIB) libamdf77.a
+ 
++libamdf77.so.$(VERSION): $(AMDF77)
++	$(CC) $(SO_OPTS) $^ -o $@ $(LDLIBS)
++	ln -sf $@ libamdf77.so.$(SO_VERSION)
++	ln -sf $@ libamdf77.so
++	chmod 755 $@
++
+ #-------------------------------------------------------------------------------
+ # install (shared C version only)
+ #-------------------------------------------------------------------------------
+@@ -98,6 +104,15 @@ $(INSTALL_LIB)/$(SO_TARGET): $(OBJ)
+ 	chmod 644 $(INSTALL_DOC)/AMD_UserGuide.pdf
+ 	chmod 644 $(INSTALL_DOC)/AMD_README.txt
+ 
++install-fortran: $(INSTALL_LIB)/libamdf77.so.$(VERSION)
++
++$(INSTALL_LIB)/libamdf77.so.$(VERSION): fortran
++	@mkdir -p $(INSTALL_LIB)
++	$(CC) $(SO_OPTS) $(AMDF77) -o $@ $(LDLIBS)
++	( cd $(INSTALL_LIB) ; ln -sf libamdf77.so.$(VERSION) libamdf77.so.$(SO_VERSION) )
++	( cd $(INSTALL_LIB) ; ln -sf libamdf77.so.$(VERSION) libamdf77.so )
++	chmod 755 $(INSTALL_LIB)/libamdf77.so.$(VERSION)
++
+ # uninstall AMD
+ uninstall:
+ 	$(RM) $(INSTALL_LIB)/$(SO_TARGET)
