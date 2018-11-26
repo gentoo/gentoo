@@ -20,7 +20,7 @@ DEPEND="dev-util/netsurf-buildsystem"
 S="${WORKDIR}/${MY_P}"
 
 _emake() {
-	source /usr/share/netsurf-buildsystem/gentoo-helpers.sh
+	source "${EPREFIX}"/usr/share/netsurf-buildsystem/gentoo-helpers.sh
 	netsurf_define_makeconf
 	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared $@
 }
@@ -30,5 +30,5 @@ src_compile() {
 }
 
 src_install() {
-	_emake DESTDIR="${ED}" install
+	_emake DESTDIR="${D}" install
 }
