@@ -107,7 +107,7 @@
           null;
        when others =>
 -         for Library_Partial_Linker use ("${PATH(ada)}${PREFIX(ada)}gcc", "-nostdlib", "-Wl,-r", "-o");
-+         for Library_Partial_Linker use ("${PATH(ada)}${PREFIX(ada)}gcc-@VER@", "-nostdlib", "-Wl,-r", "-o");
++         for Library_Partial_Linker use ("${PATH(ada)}${PREFIX(ada)}gcc-@VER@", "-nostdlib", "-Wl,-r", "-no-pie", "-o");
     end case;
      </config>
    </configuration>
@@ -116,7 +116,7 @@
      </targets>
      <config>
 -   for Library_Partial_Linker use ("${PATH(ada)}${PREFIX(c)}gcc", "-nostdlib", "-Wl,-r", "-o");
-+   for Library_Partial_Linker use ("${PATH(ada)}${PREFIX(c)}gcc-@VER@", "-nostdlib", "-Wl,-r", "-o");
++   for Library_Partial_Linker use ("${PATH(ada)}${PREFIX(c)}gcc-@VER@", "-nostdlib", "-Wl,-r", "-no-pie", "-o");
      </config>
    </configuration>
  

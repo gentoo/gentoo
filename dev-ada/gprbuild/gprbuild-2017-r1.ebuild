@@ -50,6 +50,12 @@ src_prepare() {
 		-e "s:@GNATBIND@:gnatbind-${GCC_PV}:g" \
 		src/gprlib.adb \
 		|| die
+	if use gnat_2016; then
+		sed -i \
+			-e 's:"-no-pie", ::g' \
+			share/gprconfig/linker.xml \
+			|| die
+	fi
 }
 
 src_configure() {
