@@ -41,7 +41,6 @@ RDEPEND="
 	"
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-1.0[${PYTHON_USEDEP}]
-	dev-python/pycparser[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '>=dev-python/cffi-1.7:=[${PYTHON_USEDEP}]' 'python*')
 	$(python_gen_cond_dep '!~dev-python/cffi-1.11.3[${PYTHON_USEDEP}]' 'python*')
 	test? (
