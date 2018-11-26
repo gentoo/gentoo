@@ -28,7 +28,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}"/${MYP}
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${PN}-2017-gentoo.patch
+)
 
 src_configure() {
 	ada/manage.py -v debug generate || die
@@ -52,4 +55,5 @@ src_install () {
 		$(use_enable static-libs static) \
 		install "${D}"usr || die
 	python_domodule build/python/libadalang.py
+	rm -r "${D}"usr/python || die
 }
