@@ -11,13 +11,13 @@ DESCRIPTION="A virtual network service for Openstack"
 HOMEPAGE="https://launchpad.net/neutron"
 if [[ ${PV} == *9999 ]];then
 	inherit git-r3
-	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/rocky/configs.tar.gz -> neutron-configs-${PV}.tar.gz
-	https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/rocky/ml2_plugins.tar.gz -> neutron-ml2-plugins-${PV}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/queens/configs.tar.gz -> neutron-configs-${PV}.tar.gz
+	https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/queens/ml2_plugins.tar.gz -> neutron-ml2-plugins-${PV}.tar.gz"
 	EGIT_REPO_URI="https://github.com/openstack/neutron.git"
-	EGIT_BRANCH="stable/rocky"
+	EGIT_BRANCH="stable/queens"
 else
-	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/rocky/configs.tar.gz -> neutron-configs-${PV}.tar.gz
-	https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/rocky/ml2_plugins.tar.gz -> neutron-ml2-plugins-${PV}.tar.gz
+	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/queens/configs.tar.gz -> neutron-configs-${PV}.tar.gz
+	https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/queens/ml2_plugins.tar.gz -> neutron-ml2-plugins-${PV}.tar.gz
 	https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 	KEYWORDS="amd64 ~arm64 x86"
 fi
@@ -44,33 +44,58 @@ RDEPEND="
 	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/eventlet-0.18.4[${PYTHON_USEDEP}]
 	!~dev-python/eventlet-0.20.1[${PYTHON_USEDEP}]
-	>=dev-python/pecan-1.1.1[${PYTHON_USEDEP}]
+	<dev-python/eventlet-0.21.0[${PYTHON_USEDEP}]
+	>=dev-python/pecan-1.0.0[${PYTHON_USEDEP}]
+	!~dev-python/pecan-1.0.2[${PYTHON_USEDEP}]
+	!~dev-python/pecan-1.0.3[${PYTHON_USEDEP}]
+	!~dev-python/pecan-1.0.4[${PYTHON_USEDEP}]
 	!~dev-python/pecan-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/httplib2-0.9.1[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.10[${PYTHON_USEDEP}]
+	>=dev-python/jinja-2.8[${PYTHON_USEDEP}]
+	!~dev-python/jinja-2.9.0[${PYTHON_USEDEP}]
+	!~dev-python/jinja-2.9.1[${PYTHON_USEDEP}]
+	!~dev-python/jinja-2.9.2[${PYTHON_USEDEP}]
+	!~dev-python/jinja-2.9.3[${PYTHON_USEDEP}]
+	!~dev-python/jinja-2.9.4[${PYTHON_USEDEP}]
 	>=dev-python/netaddr-0.7.18[${PYTHON_USEDEP}]
 	>=dev-python/netifaces-0.10.4[${PYTHON_USEDEP}]
-	>=dev-python/neutron-lib-1.18.0[${PYTHON_USEDEP}]
+	>=dev-python/neutron-lib-1.13.0[${PYTHON_USEDEP}]
 	>=dev-python/python-neutronclient-6.3.0[${PYTHON_USEDEP}]
 	>=dev-python/tenacity-3.2.1[${PYTHON_USEDEP}]
-	>=dev-python/ryu-4.24[${PYTHON_USEDEP}]
+	>=dev-python/ryu-4.14[${PYTHON_USEDEP}]
 	compute-only? (
-		>=dev-python/sqlalchemy-1.2.0[${PYTHON_USEDEP}]
+		>=dev-python/sqlalchemy-1.0.10[${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.5[${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.6[${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.7[${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.8[${PYTHON_USEDEP}]
 	)
 	sqlite? (
-		>=dev-python/sqlalchemy-1.2.0[sqlite,${PYTHON_USEDEP}]
+		>=dev-python/sqlalchemy-1.0.10[sqlite,${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.5[sqlite,${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.6[sqlite,${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.7[sqlite,${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.8[sqlite,${PYTHON_USEDEP}]
 	)
 	mysql? (
 		>=dev-python/pymysql-0.7.6[${PYTHON_USEDEP}]
 		!~dev-python/pymysql-0.7.7[${PYTHON_USEDEP}]
-		>=dev-python/sqlalchemy-1.2.0[${PYTHON_USEDEP}]
+		>=dev-python/sqlalchemy-1.0.10[${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.5[${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.6[${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.7[${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.8[${PYTHON_USEDEP}]
 	)
 	postgres? (
 		>=dev-python/psycopg-2.5.0[${PYTHON_USEDEP}]
-		>=dev-python/sqlalchemy-1.2.0[${PYTHON_USEDEP}]
+		>=dev-python/sqlalchemy-1.0.10[${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.5[${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.6[${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.7[${PYTHON_USEDEP}]
+		!~dev-python/sqlalchemy-1.1.8[${PYTHON_USEDEP}]
 	)
 	>=dev-python/webob-1.7.1[${PYTHON_USEDEP}]
-	>=dev-python/keystoneauth-3.4.0[${PYTHON_USEDEP}]
+	>=dev-python/keystoneauth-3.3.0[${PYTHON_USEDEP}]
 	>=dev-python/alembic-0.8.10[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.20.1[${PYTHON_USEDEP}]
@@ -95,7 +120,7 @@ RDEPEND="
 	>=dev-python/oslo-versionedobjects-1.31.2[${PYTHON_USEDEP}]
 	>=dev-python/osprofiler-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/ovs-2.8.0[${PYTHON_USEDEP}]
-	>=dev-python/ovsdbapp-0.9.1[${PYTHON_USEDEP}]
+	>=dev-python/ovsdbapp-0.8.0[${PYTHON_USEDEP}]
 	>=dev-python/psutil-3.2.2[${PYTHON_USEDEP}]
 	>=dev-python/pyroute2-0.4.21[${PYTHON_USEDEP}]
 	>=dev-python/weakrefmethod-1.0.2[$(python_gen_usedep 'python2_7')]
@@ -111,7 +136,7 @@ RDEPEND="
 	net-firewall/ebtables
 	net-firewall/conntrack-tools
 	haproxy? ( net-proxy/haproxy )
-	openvswitch? ( <=net-misc/openvswitch-2.8.9999 )
+	openvswitch? ( net-misc/openvswitch )
 	ipv6? (
 		net-misc/radvd
 		>=net-misc/dibbler-1.0.1
