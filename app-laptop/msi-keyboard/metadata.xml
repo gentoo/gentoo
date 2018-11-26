@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zohran.londais@gmail.com</email>
+	</maintainer>
+	<longdescription lang="en">
+	Control backlight of MSI laptop keyboards without node.js
+	</longdescription>
+	<longdescription lang="fr">
+	Contrôle les claviers rétroéclairés des ordinateurs MSI sans node.js
+	</longdescription>
+</pkgmetadata>
