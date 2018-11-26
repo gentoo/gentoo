@@ -983,10 +983,6 @@ app-eselect/eselect-lua
 # experimental features and accept a more unstable release.
 www-plugins/chrome-binary-plugins:unstable
 
-# Justin Lecher <jlec@gentoo.org> (14 Oct 2013)
-# Seems to break all deps - API change?
->=sci-libs/metis-5
-
 # Michael Weber <xmw@gentoo.org> (17 Jul 2013)
 # Upstream next versions
 >=sys-boot/raspberrypi-firmware-1_pre
