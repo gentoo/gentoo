@@ -7,6 +7,7 @@ inherit user systemd golang-vcs-snapshot
 
 KEYWORDS="~amd64"
 EGO_PN="github.com/coreos/etcd"
+GIT_COMMIT="27fc7e2"
 MY_PV="${PV/_rc/-rc.}"
 DESCRIPTION="Highly-available key value store for shared configuration and service discovery"
 HOMEPAGE="https://github.com/coreos/etcd"
@@ -19,7 +20,7 @@ RDEPEND="!dev-db/etcdctl"
 
 src_prepare() {
 	default
-	sed -e 's|GIT_SHA=.*|GIT_SHA=v${PV}|'\
+	sed -e "s|GIT_SHA=.*|GIT_SHA=${GIT_COMMIT}|"\
 		-i "${S}"/src/${EGO_PN}/build || die
 	sed -e 's:\(for p in \)shellcheck :\1 :' \
 		-e 's:^			gofmt \\$:\\:' \
@@ -40,7 +41,7 @@ pkg_setup() {
 src_compile() {
 	export GOPATH=${S}
 	pushd src/${EGO_PN} || die
-	./build || die
+	GO_BUILD_FLAGS=-v ./build || die
 	popd || die
 }
 
