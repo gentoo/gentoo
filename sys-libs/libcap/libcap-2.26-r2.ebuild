@@ -39,9 +39,11 @@ src_prepare() {
 
 run_emake() {
 	local args=(
+		exec_prefix="${EPREFIX}"
 		lib_prefix="${EPREFIX}/usr"
 		lib="$(get_libdir)"
-		PAM_CAP=$(usex pam yes no)
+		prefix="${EPREFIX}/usr"
+		PAM_CAP="$(usex pam yes no)"
 		DYNAMIC=yes
 	)
 	emake "${args[@]}" "$@"
