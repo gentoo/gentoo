@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-15">
+  <title>MuPDF: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in MuPDF, the worst of
+    which could allow the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">mupdf</product>
+  <announced>2018-11-26</announced>
+  <revised count="1">2018-11-26</revised>
+  <bug>634678</bug>
+  <bug>646010</bug>
+  <bug>651828</bug>
+  <bug>658618</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/mupdf" auto="yes" arch="*">
+      <unaffected range="ge">1.13.0</unaffected>
+      <vulnerable range="lt">1.13.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A lightweight PDF, XPS, and E-book viewer.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MuPDF. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to process a specially crafted
+      file, could possibly execute arbitrary code, cause a Denial of Service
+      condition, or have other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MuPDF users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/mupdf-1.13.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-15587">CVE-2017-15587</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17858">CVE-2017-17858</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000036">
+      CVE-2018-1000036
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000037">
+      CVE-2018-1000037
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000038">
+      CVE-2018-1000038
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000039">
+      CVE-2018-1000039
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000040">
+      CVE-2018-1000040
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000051">
+      CVE-2018-1000051
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5686">CVE-2018-5686</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6187">CVE-2018-6187</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6192">CVE-2018-6192</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6544">CVE-2018-6544</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-24T21:59:01Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-11-26T18:08:44Z">b-man</metadata>
+</glsa>
