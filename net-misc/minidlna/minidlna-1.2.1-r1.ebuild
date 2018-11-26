@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/minidlna/${PV}/${P}.tar.gz
 LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="avahi libav netgear readynas"
+IUSE="libav netgear readynas zeroconf"
 
 RDEPEND="dev-db/sqlite:3
 	media-libs/flac:=
@@ -22,9 +22,9 @@ RDEPEND="dev-db/sqlite:3
 	media-libs/libogg:=
 	media-libs/libvorbis:=
 	virtual/jpeg:0=
-	avahi? ( net-dns/avahi )
 	libav? ( media-video/libav:0= )
-	!libav? ( media-video/ffmpeg:0= )"
+	!libav? ( media-video/ffmpeg:0= )
+	zeroconf? ( net-dns/avahi:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -50,7 +50,7 @@ src_configure() {
 		$(use_enable netgear)
 		$(use_enable readynas)
 	)
-	use avahi || myconf+=(
+	use zeroconf || myconf+=(
 		ac_cv_lib_avahi_client_avahi_threaded_poll_new=no
 	)
 
