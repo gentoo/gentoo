@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ REQUIRED_USE="hypre? ( mpi )"
 RDEPEND="
 	lapack? ( virtual/lapack )
 	mpi? ( virtual/mpi sci-libs/hypre:= )
-	sparse? ( sci-libs/klu:= )
+	sparse? ( sci-libs/suitesparse:0= )
 	superlumt? ( sci-libs/superlu_mt:= )
 "
 DEPEND="${RDEPEND}
