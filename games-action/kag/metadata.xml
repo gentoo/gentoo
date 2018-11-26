@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zohran.londais@gmail.com</email>
+	</maintainer>
+	<longdescription lang="en">
+	2D MMORPG about mining resources, building castles and destroying your enemies
+	</longdescription>
+	<longdescription lang="fr">
+	MMORPG 2D alliant l'exploitation de ressources minières, la contruction de forteresses et bataille contre l'ennemi
+	</longdescription>
+</pkgmetadata>
+ 
