@@ -1,16 +1,16 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic systemd
+EAPI=6
+inherit autotools flag-o-matic systemd
 
 DEBIAN_PV="11"
-DEBIAN_A="${PN}_${PV}-${DEBIAN_PV}.diff.gz"
+DEBIAN_A="${PN}_${PV}-${DEBIAN_PV}.diff"
 
 DESCRIPTION="Advanced TFTP implementation client/server"
 HOMEPAGE="https://sourceforge.net/projects/atftp/"
-SRC_URI="ftp://ftp.mamalinux.com/pub/atftp/${P}.tar.gz
-	mirror://debian/pool/main/a/${PN}/${DEBIAN_A}"
+SRC_URI="mirror://sourceforge/${PN}/${P}.dfsg.tar.gz
+	mirror://debian/pool/main/a/${PN}/${DEBIAN_A}.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,7 +18,7 @@ KEYWORDS="amd64 arm ppc ppc64 ~s390 sparc x86"
 IUSE="selinux tcpd readline pcre"
 
 DEPEND="tcpd? ( sys-apps/tcp-wrappers )
-	readline? ( sys-libs/readline )
+	readline? ( sys-libs/readline:0= )
 	pcre? ( dev-libs/libpcre )"
 RDEPEND="${DEPEND}
 	!net-ftp/netkit-tftp
@@ -26,23 +26,33 @@ RDEPEND="${DEPEND}
 	!net-ftp/uftpd
 	selinux? ( sec-policy/selinux-tftp )"
 
+PATCHES=(
+	"${WORKDIR}/${DEBIAN_A}"
+	"${FILESDIR}/${P}-pcre.patch"
+	"${FILESDIR}/${P}-password.patch"
+	"${FILESDIR}/${P}-tests.patch"
+	"${FILESDIR}/${P}-glibc24.patch"
+	"${FILESDIR}/${P}-blockno.patch"
+	"${FILESDIR}/${P}-spaced_filename.patch"
+	"${FILESDIR}/${P}-illreply.patch"
+	"${FILESDIR}/${P}-CFLAGS.patch"
+)
+
+src_unpack() {
+	default
+	mv atftp-0.7.dfsg atftp-0.7 || die
+}
+
 src_prepare() {
-	epatch "${DISTDIR}"/${DEBIAN_A}
-	epatch "${FILESDIR}"/${P}-pcre.patch
-	epatch "${FILESDIR}"/${P}-password.patch
-	epatch "${FILESDIR}"/${P}-tests.patch
-	epatch "${FILESDIR}"/${P}-glibc24.patch
-	epatch "${FILESDIR}"/${P}-blockno.patch
-	epatch "${FILESDIR}"/${P}-spaced_filename.patch
-	epatch "${FILESDIR}"/${P}-illreply.patch
-	# remove upstream's broken CFLAGS
-	sed -i.orig -e \
-	  '/^CFLAGS="-g -Wall -D_REENTRANT"/s,".*","",g' \
-	  "${S}"/configure
+	append-cppflags -D_REENTRANT -DRATE_CONTROL
+	# fix #561720 by restoring pre-GCC5 inline semantics
+	append-cflags -std=gnu89
+
+	default
+	eautoreconf
 }
 
 src_configure() {
-	append-flags -D_REENTRANT -DRATE_CONTROL
 	econf \
 		$(use_enable tcpd libwrap) \
 		$(use_enable readline libreadline) \
@@ -50,12 +60,8 @@ src_configure() {
 		--enable-mtftp
 }
 
-src_compile() {
-	emake CFLAGS="${CFLAGS}"
-}
-
 src_install() {
-	emake install DESTDIR="${D}"
+	default
 
 	newinitd "${FILESDIR}"/atftp.init atftp
 	newconfd "${FILESDIR}"/atftp.confd atftp
@@ -67,6 +73,6 @@ src_install() {
 	dodoc "${S}"/docs/*
 
 	docinto test
-	cd "${S}"/test
+	cd "${S}"/test || die
 	dodoc load.sh mtftp.conf pcre_pattern.txt test.sh test_suite.txt
 }

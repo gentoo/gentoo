@@ -8,7 +8,7 @@ DEBIAN_PV="11"
 DEBIAN_A="${PN}_${PV}-${DEBIAN_PV}.diff"
 
 DESCRIPTION="Advanced TFTP implementation client/server"
-HOMEPAGE="https://sourceforge.net/projects/atftp/"
+HOMEPAGE="ftp://ftp.mamalinux.com/pub/atftp/"
 SRC_URI="ftp://ftp.mamalinux.com/pub/atftp/${P}.tar.gz
 	mirror://debian/pool/main/a/${PN}/${DEBIAN_A}.gz"
 
