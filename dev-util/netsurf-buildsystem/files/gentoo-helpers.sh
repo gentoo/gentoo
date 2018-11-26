@@ -2,7 +2,7 @@
 
 netsurf_define_makeconf() {
 	NETSURF_MAKECONF=(
-		NSSHARED=/usr/share/netsurf-buildsystem
+		NSSHARED="${EROOT}"/usr/share/netsurf-buildsystem
 		LIBDIR="$(get_libdir)"
 		PREFIX="${EROOT}/usr"
 		Q=
