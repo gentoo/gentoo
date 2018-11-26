@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zohran.londais@gmail.com</email>
+	</maintainer>
+	<longdescription lang="en">
+	The flat assembler g (abbreviated to fasmg) is a new assembly engine designed to become a successor of the one used by flat assembler 1. It does not have a built-in support for x86 instructions. It is a generic assembler that can be used in place of flat assembler 1 in applications where only the pure macroinstruction engine is needed instead of x86 encoder, for example when an instruction set for a different architecture is defined through macroinstructions. However, thanks to the included set of macroinstructions implementing the x86 instruction sets, it has the ability of self-hosting. With the included macroinstructions it is capable of generating all the output formats that flat assembler 1 could and additional ones, like Mach-O or Intel HEX.
+	</longdescription>
+</pkgmetadata>
+ 
