@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ DEBIAN_PV="11"
 DEBIAN_A="${PN}_${PV}-${DEBIAN_PV}.diff.gz"
 
 DESCRIPTION="Advanced TFTP implementation client/server"
-HOMEPAGE="ftp://ftp.mamalinux.com/pub/atftp/"
+HOMEPAGE="https://sourceforge.net/projects/atftp/"
 SRC_URI="ftp://ftp.mamalinux.com/pub/atftp/${P}.tar.gz
 	mirror://debian/pool/main/a/${PN}/${DEBIAN_A}"
 
