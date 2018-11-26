@@ -208,6 +208,7 @@ meson_use() {
 }
 
 # @FUNCTION: meson_src_configure
+# @USAGE: [extra meson arguments]
 # @DESCRIPTION:
 # This is the meson_src_configure function.
 meson_src_configure() {
