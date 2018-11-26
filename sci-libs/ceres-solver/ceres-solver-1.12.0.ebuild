@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,12 +23,7 @@ RDEPEND="
 	cxsparse? ( sci-libs/cxsparse:0= )
 	lapack? ( virtual/lapack )
 	sparse? (
-		sci-libs/amd:0=
-		sci-libs/camd:0=
-		sci-libs/ccolamd:0=
-		sci-libs/cholmod:0=[metis]
-		sci-libs/colamd:0=
-		sci-libs/spqr:0=
+		sci-libs/suitesparse:0=[metis]
 	)"
 
 DEPEND="${RDEPEND}
