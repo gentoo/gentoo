@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,7 @@ RDEPEND="
 	glpk? ( sci-mathematics/glpk:= sci-libs/amd )
 	metis? ( || ( sci-libs/metis sci-libs/parmetis ) )
 	mumps? ( sci-libs/mumps )
-	sparse? ( sci-libs/cholmod )"
+	sparse? ( sci-libs/suitesparse:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen[dot] )
