@@ -3435,6 +3435,7 @@ media-video/ffmpeg:rubberband - Adds time-stretching and pitch-shifting audio fi
 media-video/ffmpeg:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
 media-video/ffmpeg:snappy - Enable app-arch/snappy support. Required for e.g. Vidvox Hap encoder.
 media-video/ffmpeg:sofalizer - Enables Sofalizer filter
+media-video/ffmpeg:srt - Enable support for Secure Reliable Transport (SRT) via net-libs/srt
 media-video/ffmpeg:ssh - Enable SSH/sftp support via net-libs/libssh.
 media-video/ffmpeg:twolame - Enables MP2 encoding via media-sound/twolame as an alternative to the internal encoder.
 media-video/ffmpeg:vpx - Enables vp8 codec support using libvpx: Decoding vp8 does not require this to be enabled but libvpx can also be used for decoding; encoding vp8 requires this useflag to be enabled though.
