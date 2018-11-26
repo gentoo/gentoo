@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ inherit ruby-fakegem
 DESCRIPTION="A pure Ruby DNS client library"
 HOMEPAGE="https://github.com/alexdalitz/dnsruby"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
