@@ -42,7 +42,7 @@ python_test() {
 
 python_install() {
 	distutils-r1_python_install \
-		install_pkgconfig --pkgconfigdir="/usr/$(get_libdir)/pkgconfig"
+		install_pkgconfig --pkgconfigdir="${EPREFIX}/usr/$(get_libdir)/pkgconfig"
 }
 
 python_install_all() {
