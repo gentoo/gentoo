@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 SLOT="0/${PV}"
 IUSE="curl doc fftw +glpk gnuplot graphicsmagick gui hdf5 +imagemagick java libressl opengl
 	portaudio postscript +qhull +qrupdate readline sndfile +sparse ssl static-libs X zlib"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~hppa ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	app-arch/bzip2
@@ -65,13 +65,7 @@ RDEPEND="
 	readline? ( sys-libs/readline:0= )
 	sndfile? ( media-libs/libsndfile )
 	sparse? (
-		sci-libs/arpack:0=
-		sci-libs/camd:0=
-		sci-libs/ccolamd:0=
-		sci-libs/cholmod:0=
-		sci-libs/colamd:0=
-		sci-libs/cxsparse:0=
-		sci-libs/umfpack:0=
+		sci-libs/suitesparse:0=
 	)
 	X? ( x11-libs/libX11:0= )"
 DEPEND="${RDEPEND}
