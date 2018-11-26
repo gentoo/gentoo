@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -30,7 +30,6 @@ DEPEND="
 	test? (
 		>=dev-python/pytest-3.2.2[${PYTHON_USEDEP}]
 		>=dev-python/pytest-aiohttp-0.3.0[${PYTHON_USEDEP}]
-		>=dev-python/pytest-capturelog-0.7[${PYTHON_USEDEP}]
 	)
 "
 
