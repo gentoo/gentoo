@@ -1,11 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 KDE_TEST="forceoptional"
 KDE_HANDBOOK="optional"
-QT_MINIMAL="5.11.1"
 inherit kde5
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then

@@ -1,17 +1,18 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils flag-o-matic git-r3 xdg-utils
+COMMIT=ee9e8cd013766b0df2c5e3b4416f985322b22966
+inherit cmake-utils flag-o-matic vcs-snapshot xdg-utils
 
 DESCRIPTION="Viewer for ICC and CGATS, argyll gamut vrml visualisations and GPU gamma tables"
-HOMEPAGE="http://www.oyranos.org/icc-examin/"
-EGIT_REPO_URI="https://github.com/oyranos-cms/${PN/_/-}.git"
+HOMEPAGE="https://www.oyranos.org/icc-examin/"
+SRC_URI="https://github.com/oyranos-cms/${PN}/tarball/${COMMIT} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -36,7 +37,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}/${PN/_/-}-0.56-fltk.patch" )
+PATCHES=( "${FILESDIR}/${PN}-0.56-fltk.patch" )
 
 src_configure() {
 	append-cxxflags -fpermissive
