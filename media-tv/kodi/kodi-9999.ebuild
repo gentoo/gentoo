@@ -138,12 +138,7 @@ RDEPEND="${COMMON_DEPEND}
 	lirc? ( app-misc/lirc )
 	!media-tv/xbmc
 	udisks? ( sys-fs/udisks:2 )
-	upower? (
-		systemd? ( sys-power/upower )
-		!systemd? (
-			|| ( sys-power/upower-pm-utils sys-power/upower )
-		)
-	)
+	upower? ( sys-power/upower )
 "
 DEPEND="${COMMON_DEPEND}
 	app-arch/bzip2
