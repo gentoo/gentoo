@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-17">
+  <title>Binutils: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Binutils, the worst of
+    which may allow remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">binutils</product>
+  <announced>2018-11-27</announced>
+  <revised count="1">2018-11-27</revised>
+  <bug>634196</bug>
+  <bug>637642</bug>
+  <bug>639692</bug>
+  <bug>639768</bug>
+  <bug>647798</bug>
+  <bug>649690</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-devel/binutils" auto="yes" arch="*">
+      <unaffected range="ge">2.30-r2</unaffected>
+      <vulnerable range="lt">2.30-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU Binutils are a collection of tools to create, modify and analyse
+      binary files. Many of the files use BFD, the Binary File Descriptor
+      library, to do low-level manipulation.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Binutils. Please review
+      the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to compile/execute a specially
+      crafted ELF, object, PE, or binary file, could possibly cause a Denial of
+      Service condition or have other unspecified impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Binutils users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-devel/binutils-2.30-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14933">CVE-2017-14933</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16826">CVE-2017-16826</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16827">CVE-2017-16827</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16828">CVE-2017-16828</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16829">CVE-2017-16829</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16830">CVE-2017-16830</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16831">CVE-2017-16831</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16832">CVE-2017-16832</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17080">CVE-2017-17080</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17121">CVE-2017-17121</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17122">CVE-2017-17122</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17123">CVE-2017-17123</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17124">CVE-2017-17124</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17125">CVE-2017-17125</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17126">CVE-2017-17126</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6543">CVE-2018-6543</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6759">CVE-2018-6759</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6872">CVE-2018-6872</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7208">CVE-2018-7208</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7568">CVE-2018-7568</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7569">CVE-2018-7569</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7570">CVE-2018-7570</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7642">CVE-2018-7642</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-7643">CVE-2018-7643</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-8945">CVE-2018-8945</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-24T22:06:12Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-11-27T02:00:21Z">b-man</metadata>
+</glsa>
