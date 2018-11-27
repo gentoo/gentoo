@@ -102,7 +102,7 @@ src_install() {
 	# dead symlink
 	rm "${ED%/}"/usr/bin/lastb || die
 
-	doinitd "${FILESDIR}"/bootlogd
+	newinitd "${FILESDIR}"/bootlogd.initd bootlogd
 }
 
 pkg_postinst() {
