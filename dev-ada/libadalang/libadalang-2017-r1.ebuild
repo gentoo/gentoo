@@ -21,7 +21,7 @@ RDEPEND="dev-python/pyyaml
 	dev-ada/gnatcoll[projects,shared,gnat_2016=,gnat_2017=]
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
-	dev-ada/langkit"
+	~dev-ada/langkit-2017"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}"/${PN}-gps-src
