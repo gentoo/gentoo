@@ -55,7 +55,6 @@ test_failures=(
 	test_zookeeper_client_ref
 )
 
-
 python_prepare_all() {
 	sed -i -e /setuptools_scm/d setup.py || die
 	while read -r -d ''; do
@@ -66,6 +65,5 @@ python_prepare_all() {
 }
 
 python_test() {
-	# 3 known failures due to caplog.set_level not existing
 	py.test || die "Testing failed with ${EPYTHON}"
 }
