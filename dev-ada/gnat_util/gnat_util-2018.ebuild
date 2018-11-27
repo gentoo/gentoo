@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a6b
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 +shared static-libs static-pic"
 
 RDEPEND="dev-lang/gnat-gpl:7.3.1"
@@ -28,16 +28,15 @@ PATCHES=( "${FILESDIR}"/${PN}-2017-gentoo.patch )
 
 src_compile() {
 	GCC_PV=7.3.1
-	GCC=${CHOST}-gcc-${GCC_PV}
 	GNATMAKE=${CHOST}-gnatmake-${GCC_PV}
 	emake GNATMAKE="${GNATMAKE} ${ADAFLAGS}" \
 		BUILDER="gprbuild -j$(makeopts_jobs)" generate_sources
 	if use static-libs; then
-		emake CC="${GCC}" BUILDER="gprbuild -v -j$(makeopts_jobs)" build-static
+		emake BUILDER="gprbuild -v -j$(makeopts_jobs)" build-static
 	fi
 	for kind in shared static-pic; do
 		if use ${kind}; then
-			emake CC="${GCC}" BUILDER="gprbuild -v -j$(makeopts_jobs)" \
+			emake BUILDER="gprbuild -v -j$(makeopts_jobs)" \
 				build-${kind}
 		fi
 	done
