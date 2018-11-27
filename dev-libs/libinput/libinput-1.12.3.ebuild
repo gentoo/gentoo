@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}
 			dev-python/commonmark[${PYTHON_USEDEP}]
 			dev-python/recommonmark[${PYTHON_USEDEP}]
 			dev-python/sphinx[${PYTHON_USEDEP}]
+			>=dev-python/sphinx_rtd_theme-0.2.4[${PYTHON_USEDEP}]
 		')
 		>=app-doc/doxygen-1.8.3
 		>=media-gfx/graphviz-2.38.0
