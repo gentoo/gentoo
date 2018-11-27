@@ -3767,7 +3767,7 @@ dev-perl/Gentoo-PerlMod-Version 0.8.1: Convert arbitrary Perl Modules' versions 
 dev-perl/Geo-IP 1.450.0 1.510.0: Look up country by IP Address
 dev-perl/Geography-Countries 2009041301.0.0-r1: 2-letter, 3-letter, and numerical codes for countries
 dev-perl/Getopt-ArgvFile 1.110.0-r1: This module is a simple supplement to other option handling modules
-dev-perl/Getopt-Long-Descriptive 0.100.0 0.103.0: Getopt::Long with usage text
+dev-perl/Getopt-Long-Descriptive 0.103.0: Getopt::Long with usage text
 dev-perl/Getopt-Mixed 1.120.0: Getopt::Mixed is used for parsing mixed options
 dev-perl/Glib-Object-Introspection 0.43.0: Dynamically create Perl language bindings
 dev-perl/GnuPG-Interface 0.520.0-r2 0.520.0-r3: Perl module interface to interacting with GnuPG
