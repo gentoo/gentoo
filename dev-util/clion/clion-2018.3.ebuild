@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit desktop eutils
 
@@ -14,13 +14,13 @@ LICENSE="IDEA
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="splitdebug"
-IUSE="-custom-jdk"
+IUSE="custom-jdk"
 
 # RDEPENDS may cause false positives in repoman.
 # clion requires cmake and gdb at runtime to build and debug C/C++ projects
 RDEPEND="
 	sys-devel/gdb
-	dev-util/cmake
+	<dev-util/cmake-3.13.0
 	!custom-jdk? ( virtual/jdk )"
 
 QA_PREBUILT="opt/${P}/*"
