@@ -6416,7 +6416,7 @@ dev-vcs/cvsgraph 1.6.1 1.7.0: CVS/RCS repository grapher
 dev-vcs/cvsps 2.1-r1: Generates patchset information from a CVS repository
 dev-vcs/darcs 2.8.4-r6 2.12.0 2.12.5: a distributed, interactive, smart revision control system
 dev-vcs/fossil 2.6: Simple, high-reliability, source control management, and more
-dev-vcs/git 2.18.1: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.18.1 2.19.2: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-bzr-ng 0_pre20120822-r2: Git subcommand providing a bidirectional bridge to Bazaar repositories
 dev-vcs/git-cola 2.11: The highly caffeinated git GUI
 dev-vcs/git-flow 1.11.0: Git extensions to provide high-level repository operations
@@ -9044,7 +9044,7 @@ net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP whi
 net-nds/gss-proxy 0.7.0-r1: daemon to proxy GSSAPI context establishment and channel handling
 net-nds/jxplorer 3.3.1: A fully functional ldap browser written in java
 net-nds/ldapvi 1.7_p20101214: Manage LDAP entries with a text editor
-net-nds/openldap 2.4.44: LDAP suite of application and development tools
+net-nds/openldap 2.4.44 2.4.45: LDAP suite of application and development tools
 net-nds/rpcbind 0.2.4-r3: portmap replacement which supports RPC over various protocols
 net-nds/smbldap-tools 0.9.8: Samba LDAP management tools
 net-nds/tac_plus 4.0.4.19-r3 4.0.4.19-r4: An updated version of Cisco's TACACS+ server
