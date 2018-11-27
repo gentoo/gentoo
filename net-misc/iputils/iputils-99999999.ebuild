@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # For released versions, we precompile the man/html pages and store
@@ -9,9 +9,7 @@
 
 EAPI="6"
 
-inherit flag-o-matic toolchain-funcs fcaps
-
-PATCHES=()
+inherit fcaps flag-o-matic meson systemd toolchain-funcs
 
 if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="https://github.com/iputils/iputils.git"
@@ -29,7 +27,8 @@ LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
 IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute"
 
-LIB_DEPEND="caps? ( sys-libs/libcap[static-libs(+)] )
+LIB_DEPEND="
+	caps? ( sys-libs/libcap[static-libs(+)] )
 	idn? ( net-dns/libidn2:=[static-libs(+)] )
 	ipv6? (
 		ssl? (
@@ -44,23 +43,30 @@ LIB_DEPEND="caps? ( sys-libs/libcap[static-libs(+)] )
 		)
 	)
 "
-RDEPEND="arping? ( !net-misc/arping )
+RDEPEND="
+	arping? ( !net-misc/arping )
 	rarpd? ( !net-misc/rarpd )
 	traceroute? ( !net-analyzer/traceroute )
-	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
-DEPEND="${RDEPEND}
+	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
+"
+DEPEND="
+	${RDEPEND}
 	static? ( ${LIB_DEPEND} )
 	virtual/os-headers
+	virtual/pkgconfig
 "
 if [[ ${PV} == "99999999" ]] ; then
-	DEPEND+="app-text/docbook-xml-dtd:4.2
+	DEPEND+="
+		app-text/docbook-xml-dtd:4.2
 		app-text/docbook-xml-dtd:4.5
 		app-text/docbook-xsl-stylesheets
 		dev-libs/libxslt:0
 	"
 fi
 
-[ "${PV}" = "99999999" ] || S="${WORKDIR}/${PN}-s${PV}"
+[ "${PV}" == "99999999" ] || S="${WORKDIR}/${PN}-s${PV}"
+
+PATCHES=()
 
 src_prepare() {
 	use SECURITY_HAZARD && PATCHES+=( "${FILESDIR}"/${PN}-20150815-nonroot-floodping.patch )
@@ -71,99 +77,75 @@ src_prepare() {
 src_configure() {
 	use static && append-ldflags -static
 
-	TARGETS=(
-		ping
-		$(for v in arping clockdiff rarpd rdisc tftpd tracepath ; do usev ${v} ; done)
-	)
-	if use ipv6 ; then
-		TARGETS+=(
-			$(usex traceroute 'traceroute6' '')
-		)
-	fi
-
-	myconf=(
-		USE_CRYPTO=no
-		USE_GCRYPT=no
-		USE_NETTLE=no
+	local emesonargs=(
+		-DUSE_CAP="$(usex caps true false)"
+		-DUSE_IDN="$(usex idn true false)"
+		-DBUILD_ARPING="$(usex arping true false)"
+		-DBUILD_CLOCKDIFF="$(usex clockdiff true false)"
+		-DBUILD_PING="true"
+		-DBUILD_RARPD="$(usex rarpd true false)"
+		-DBUILD_RDISC="$(usex rdisc true false)"
+		-DENABLE_RDISC_SERVER="$(usex rdisc true false)"
+		-DBUILD_TFTPD="$(usex tftpd true false)"
+		-DBUILD_TRACEPATH="$(usex tracepath true false)"
+		-DBUILD_TRACEROUTE6="$(usex ipv6 $(usex traceroute true false) false)"
+		-DBUILD_NINFOD="false"
+		-DNINFOD_MESSAGES="false"
+		-DBUILD_HTML_MANS="$(usex doc true false)"
+		-DUSE_SYSFS="$(usex arping true false)"
+		-Dsystemdunitdir="$(systemd_get_systemunitdir)"
 	)
 
 	if use ipv6 && use ssl ; then
-		myconf=(
-			USE_CRYPTO=yes
-			USE_GCRYPT=$(usex gcrypt)
-			USE_NETTLE=$(usex nettle)
+		emesonargs+=(
+			-DUSE_CRYPTO="$(usex gcrypt gcrypt $(usex nettle nettle openssl))"
+		)
+	else
+		emesonargs+=(
+			-DUSE_CRYPTO="none"
 		)
 	fi
+
+	if [[ "${PV}" != 99999999 ]] ; then
+		emesonargs+=(
+			-DBUILD_MANS="false"
+		)
+	fi
+
+	meson_src_configure
 }
 
 src_compile() {
 	tc-export CC
-	emake \
-		USE_CAP=$(usex caps) \
-		USE_IDN=$(usex idn) \
-		IPV4_DEFAULT=$(usex ipv6 'no' 'yes') \
-		TARGETS="${TARGETS[*]}" \
-		${myconf[@]}
-
-	if [[ ${PV} == "99999999" ]] ; then
-		emake man
-
-		use doc && emake html
-	fi
+	meson_src_compile
 }
 
 src_install() {
-	into /
-	dobin ping
+	meson_src_install
+
+	dodir /bin
+	local my_bin
+	for my_bin in $(usex arping arping '') ping ; do
+		mv "${ED%/}"/usr/bin/${my_bin} "${ED%/}"/bin/ || die
+	done
 	dosym ping /bin/ping4
-	if use ipv6 ; then
-		dosym ping /bin/ping6
-		dosym ping.8 /usr/share/man/man8/ping6.8
-	fi
-	doman doc/ping.8
-
-	if use arping ; then
-		dobin arping
-		doman doc/arping.8
-	fi
-
-	into /usr
 
 	if use tracepath ; then
-		dosbin tracepath
-		doman doc/tracepath.8
-		dosym tracepath /usr/sbin/tracepath4
+		dosym tracepath /usr/bin/tracepath4
 	fi
 
-	local u
-	for u in clockdiff rarpd rdisc tftpd ; do
-		if use ${u} ; then
-			case ${u} in
-			clockdiff) dobin ${u};;
-			*) dosbin ${u};;
-			esac
-			doman doc/${u}.8
+	if use ipv6 ; then
+		dosym ping /bin/ping6
+
+		if use tracepath ; then
+			dosym tracepath /usr/bin/tracepath6
+			dosym tracepath.8 /usr/share/man/man8/tracepath6.8
 		fi
-	done
-
-	if use tracepath && use ipv6 ; then
-		dosym tracepath /usr/sbin/tracepath6
-		dosym tracepath.8 /usr/share/man/man8/tracepath6.8
 	fi
 
-	if use traceroute && use ipv6 ; then
-		dosbin traceroute6
-		doman doc/traceroute6.8
+	if use doc ; then
+		mv "${ED%/}"/usr/share/${PN} "${ED%/}"/usr/share/doc/${PF}/html || die
 	fi
-
-	if use rarpd ; then
-		newinitd "${FILESDIR}"/rarpd.init.d rarpd
-		newconfd "${FILESDIR}"/rarpd.conf.d rarpd
-	fi
-
-	dodoc INSTALL.md
-
-	use doc && dodoc doc/*.html
 }
 
 pkg_postinst() {
