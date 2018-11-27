@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A network tool to gather IP traffic information"
@@ -12,8 +12,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="
-	64bit geoip geoipv2 ipv6 jansson kafka mongodb mysql ndpi nflog postgres
-	rabbitmq sqlite threads zmq
+	64bit +bgp-bins +bmp-bins geoip geoipv2 ipv6 jansson kafka +l2 mongodb
+	mysql ndpi nflog plabel postgres rabbitmq sqlite +st-bins +traffic-bins zmq
 "
 REQUIRED_USE="
 	?? ( geoip geoipv2 )
@@ -45,7 +45,7 @@ DEPEND="
 "
 
 DOCS=(
-	CONFIG-KEYS ChangeLog FAQS QUICKSTART TOOLS UPGRADE
+	CONFIG-KEYS ChangeLog FAQS QUICKSTART UPGRADE
 	docs/INTERNALS docs/PLUGINS docs/SIGNALS
 )
 
@@ -55,11 +55,15 @@ src_configure() {
 
 	econf \
 		$(use_enable 64bit) \
+		$(use_enable bgp-bins) \
+		$(use_enable bmp-bins) \
 		$(use_enable geoip) \
 		$(use_enable geoipv2) \
 		$(use_enable ipv6) \
 		$(use_enable jansson) \
 		$(use_enable kafka) \
+		$(use_enable l2) \
+		$(use_enable plabel) \
 		$(use_enable mongodb) \
 		$(use_enable mysql) \
 		$(use_enable ndpi) \
@@ -67,7 +71,8 @@ src_configure() {
 		$(use_enable postgres pgsql) \
 		$(use_enable rabbitmq) \
 		$(use_enable sqlite sqlite3) \
-		$(use_enable threads) \
+		$(use_enable st-bins) \
+		$(use_enable traffic-bins) \
 		$(use_enable zmq) \
 		--disable-debug
 }
