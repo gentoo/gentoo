@@ -268,10 +268,6 @@ sys-devel/gcc pie
 # Needs sandbox-2.11 (masked)
 >=www-client/chromium-59 tcmalloc
 
-# Matt Turner <mattst88@gentoo.org> (04 Mar 2017)
-# Requires dev-util/cmdtest stabilization, bug 611052
-x11-apps/xauth test
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (02 Mar 2017)
 # Known build issue with system libvpx:
 # https://bugs.gentoo.org/show_bug.cgi?id=611394
