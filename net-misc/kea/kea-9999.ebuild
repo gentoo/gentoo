@@ -1,14 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit toolchain-funcs user
 
-MY_PV="${PV//_alpha/a}"
-MY_PV="${MY_PV//_beta/b}"
-MY_PV="${MY_PV//_rc/rc}"
-MY_PV="${MY_PV//_p/-P}"
+MY_PV="${PV//_p/-P}"
+MY_PV="${MY_PV/_/-}"
 MY_P="${PN}-${MY_PV}"
 DESCRIPTION="High-performance production grade DHCPv4 & DHCPv6 server"
 HOMEPAGE="http://www.isc.org/kea/"
@@ -18,6 +16,7 @@ if [[ ${PV} = 9999* ]] ; then
 else
 	SRC_URI="ftp://ftp.isc.org/isc/kea/${MY_P}.tar.gz
 		ftp://ftp.isc.org/isc/kea/${MY_PV}/${MY_P}.tar.gz"
+	[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -30,7 +29,7 @@ DEPEND="
 	dev-cpp/gtest
 	dev-libs/log4cplus
 	!openssl? ( dev-libs/botan:0= )
-	openssl? ( dev-libs/openssl:= )
+	openssl? ( dev-libs/openssl:0= )
 "
 RDEPEND="${DEPEND}"
 
