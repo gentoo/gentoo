@@ -4,9 +4,9 @@
 EAPI=6
 inherit flag-o-matic pam systemd toolchain-funcs user
 
-MY_PV="${PV/_pre/-}"
+MY_PV="${PV/_rc/-RC}"
 MY_SRC="${PN}-${MY_PV}"
-MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/experimental"
+MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/official"
 RC_VER="2.7"
 
 DESCRIPTION="A fast and secure drop-in replacement for sendmail"
@@ -212,7 +212,6 @@ src_install () {
 	# Fix spool removal on upgrade
 	rm -Rf "${D}"/var
 	keepdir /var/spool/postfix
-	keepdir /etc/postfix/postfix-files.d
 
 	# Install rmail for UUCP, closes bug #19127
 	dobin auxiliary/rmail/rmail
@@ -232,7 +231,15 @@ src_install () {
 	dosbin bin/smtp-{source,sink} bin/qmqp-{source,sink}
 	doman man/man1/smtp-{source,sink}.1 man/man1/qmqp-{source,sink}.1
 
+	# Set proper permissions on required files/directories
+	keepdir /var/lib/postfix
+	fowners -R postfix:postfix /var/lib/postfix
+	fperms 0750 /var/lib/postfix
+	fowners root:postdrop /usr/sbin/post{drop,queue}
+	fperms 02755 /usr/sbin/post{drop,queue}
+
 	keepdir /etc/postfix
+	keepdir /etc/postfix/postfix-files.d
 	if use mbox; then
 		mypostconf="mail_spool_directory=/var/spool/mail"
 	else
