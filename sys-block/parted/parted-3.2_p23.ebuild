@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils flag-o-matic
+EAPI=7
+inherit autotools flag-o-matic
 
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
 HOMEPAGE="https://www.gnu.org/software/parted"
@@ -34,7 +34,6 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2-devmapper.patch
 	"${FILESDIR}"/${PN}-3.2-po4a-mandir.patch
-	"${FILESDIR}"/${PN}-3.2-sysmacros.patch
 )
 S=${WORKDIR}/${P/_p*/}
 
@@ -66,5 +65,5 @@ DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/{API,FAT,USER.jp} )
 src_install() {
 	default
 
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
