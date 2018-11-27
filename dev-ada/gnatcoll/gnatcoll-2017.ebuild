@@ -37,7 +37,10 @@ RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
 	projects? (
 		~dev-ada/libgpr-2018[gnat_2016=,gnat_2017=,shared?,static-libs?]
 		dev-ada/xmlada[shared?,static-libs?]
-	)"
+	)
+	!dev-ada/gnatcoll-core
+	!dev-ada/gnatcoll-bindings
+	!dev-ada/gnatcoll-db"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
 
