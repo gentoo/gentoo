@@ -119,4 +119,9 @@ pkg_postinst() {
 
 	elog "The last/lastb/mesg/mountpoint/sulogin/utmpdump/wall tools have been moved to"
 	elog "sys-apps/util-linux. The pidof tool has been moved to sys-process/procps."
+
+	# Required for new bootlogd service
+	if [[ ! -e "${EROOT%/}/var/log/boot" ]] ; then
+		touch "${EROOT%/}/var/log/boot"
+	fi
 }
