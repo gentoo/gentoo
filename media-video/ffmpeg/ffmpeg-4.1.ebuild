@@ -405,6 +405,10 @@ multilib_src_configure() {
 		--enable-avfilter
 		--enable-avresample
 		--disable-stripping
+		# This is only for hardcoded cflags; those are used in configure checks that may
+		# interfere with proper detections, bug #671746 and bug #645778
+		# We use optflags, so that overrides them anyway.
+		--disable-optimizations
 		--disable-libcelt # bug #664158
 		"${myconf[@]}"
 	)
