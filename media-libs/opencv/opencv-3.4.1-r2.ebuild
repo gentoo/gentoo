@@ -345,7 +345,7 @@ multilib_src_configure() {
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_JAVA=$(multilib_native_usex java) # Ant needed, no compile flag
 		-DBUILD_ANDROID_EXAMPLES=OFF
-		-BUILD_opencv_apps=
+		-DBUILD_opencv_apps=
 		-DBUILD_DOCS=OFF # Doesn't install anyways.
 		-DBUILD_EXAMPLES=$(multilib_native_usex examples)
 		-DBUILD_PERF_TESTS=OFF
