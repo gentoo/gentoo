@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-20">
+  <title>spice-gtk: Remote code execution</title>
+  <synopsis>A vulnerability in spice-gtk could allow an attacker to remotely
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">spice-gtk</product>
+  <announced>2018-11-27</announced>
+  <revised count="1">2018-11-27</revised>
+  <bug>650878</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-misc/spice-gtk" auto="yes" arch="*">
+      <unaffected range="ge">0.34</unaffected>
+      <vulnerable range="lt">0.34</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>spice-gtk is a set of GObject and Gtk objects for connecting to Spice
+      servers and a client GUI.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability was found in spice-gtk client due to the incorrect use
+      of integer types and missing overflow checks.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker, by enticing the user to join a malicious server, could
+      remotely execute arbitrary code or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All spice-gtk users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/spice-gtk-0.34"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-12194">CVE-2017-12194</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-24T22:29:36Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-11-27T02:05:55Z">b-man</metadata>
+</glsa>
