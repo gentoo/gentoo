@@ -15,11 +15,15 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~
 IUSE="doc static-libs test"
 
 DEPEND="
-	doc? ( app-doc/doxygen[latex] )
+	doc? ( app-doc/doxygen[dot] )
 "
 RDEPEND=""
 
 DOCS=( AUTHORS ChangeLog README.md )
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-doxygen.patch" # bug 671404
+)
 
 multilib_src_configure() {
 	local mycmakeargs=(
@@ -32,15 +36,14 @@ multilib_src_configure() {
 	cmake-utils_src_configure
 }
 
+multilib_src_compile() {
+	cmake-utils_src_compile
+	multilib_is_native_abi && cmake-utils_src_compile docs
+}
+
 multilib_src_install() {
 	if multilib_is_native_abi && use doc; then
-		pushd doc || die
-		doxygen Doxyfile || die
-		rm -f html/*.md5 latex/*.md5 latex/Manifest man/man3/_* || die
-		dodoc -r html/
-		dodoc -r latex/
-		doman man/man3/*.3
-		popd || die
+		local HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
 	fi
 
 	cmake-utils_src_install
