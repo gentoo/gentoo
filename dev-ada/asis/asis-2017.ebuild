@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,12 +16,11 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="gnat_2016 +gnat_2017"
 
-DEPEND="dev-ada/gnat_util[gnat_2017]
-	dev-ada/gnatcoll[gnat_2017,projects,shared]
-	dev-ada/gprbuild[gnat_2017]
-	dev-ada/xmlada[gnat_2017]
-	dev-lang/gnat-gpl:6.3.0"
-RDEPEND="${RDEPEND}"
+RDEPEND="dev-ada/gnat_util[gnat_2017]
+	dev-ada/gnatcoll[gnat_2017,projects,shared]"
+DEPEND="${RDEPEND}
+	dev-ada/gprbuild[gnat_2017]"
+
 REQUIRED_USE="!gnat_2016 gnat_2017"
 
 S="${WORKDIR}"/${MYP}
@@ -29,9 +28,11 @@ S="${WORKDIR}"/${MYP}
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
-	emake PROCESSORS=$(makeopts_jobs)
+	emake PROCESSORS=$(makeopts_jobs) \
+		GPRBUILD_FLAGS="-vl"
 	emake tools PROCESSORS=$(makeopts_jobs) \
 		GPRBUILD_FLAGS="-vl \
+		-XGPR_BUILD=relocatable \
 		-XLIBRARY_TYPE=relocatable \
 		-XXMLADA_BUILD=relocatable"
 }
@@ -40,6 +41,7 @@ src_install() {
 	emake prefix="${D}"/usr install
 	emake prefix="${D}"/usr install-tools \
 		GPRINSTALL="gprinstall \
+		-XGPR_BUILD=relocatable \
 		-XLIBRARY_TYPE=relocatable \
 		-XXMLADA_BUILD=relocatable"
 }
