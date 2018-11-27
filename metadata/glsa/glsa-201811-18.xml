@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-18">
+  <title>Tablib: Arbitrary command execution</title>
+  <synopsis>A vulnerability in Tablib might allow remote attackers to execute
+    arbitrary python commands.
+  </synopsis>
+  <product type="ebuild">tablib</product>
+  <announced>2018-11-27</announced>
+  <revised count="1">2018-11-27</revised>
+  <bug>621884</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/tablib" auto="yes" arch="*">
+      <unaffected range="ge">0.12.1</unaffected>
+      <vulnerable range="lt">0.12.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Tablib is an MIT Licensed format-agnostic tabular dataset library,
+      written in Python. It allows you to import, export, and manipulate
+      tabular data sets.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in Tablib’s Databook loading
+      functionality, due to improper input validation.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing the user to process a specially crafted
+      Databook via YAML, could possibly execute arbitrary python commands with
+      the privilege of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Tablib users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/tablib-0.12.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-2810">CVE-2017-2810</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-24T22:46:04Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-11-27T02:02:33Z">b-man</metadata>
+</glsa>

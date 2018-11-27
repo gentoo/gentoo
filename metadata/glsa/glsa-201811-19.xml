@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-19">
+  <title>Libav: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Libav, the worst of
+    which may allow a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libav</product>
+  <announced>2018-11-27</announced>
+  <revised count="1">2018-11-27</revised>
+  <bug>637458</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-video/libav" auto="yes" arch="*">
+      <unaffected range="ge">12.3</unaffected>
+      <vulnerable range="lt">12.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Libav is a complete solution to record, convert and stream audio and
+      video.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Libav. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, via a crafted Smacker stream, could cause a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Libav users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/libav-12.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-16803">CVE-2017-16803</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7862">CVE-2017-7862</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-24T23:08:51Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-11-27T02:04:05Z">b-man</metadata>
+</glsa>
