@@ -2,22 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit toolchain-funcs python-r1 java-pkg-opt-2 java-ant-2 cmake-multilib
+inherit toolchain-funcs python-r1 java-pkg-opt-2 java-ant-2 \
+	cmake-multilib
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
 HOMEPAGE="https://opencv.org"
-TINY_DNN_PV="1.0.0a3"
+
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~amynka/snap/imgcodecs-${P}.tar.gz
 	contrib? ( https://github.com/${PN}/${PN}_contrib/archive/${PV}.tar.gz -> ${P}_contrib.tar.gz
-		contrib_dnn? ( https://github.com/tiny-dnn/tiny-dnn/archive/v${TINY_DNN_PV}.tar.gz -> tiny-dnn-${TINY_DNN_PV}.tar.gz )
-		contrib_xfeatures2d? ( https://dev.gentoo.org/~amynka/snap/vgg_boostdesc-3.2.0.tar.gz ) ) "
+		contrib_xfeatures2d? ( https://dev.gentoo.org/~amynka/snap/vgg_boostdesc-${PV}.tar.gz ) )"
 LICENSE="BSD"
-SLOT="0/3.3" # subslot = libopencv* soname version
+SLOT="0/3.2" # subslot = libopencv* soname version
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
-IUSE="contrib cuda debug +eigen examples ffmpeg gdal gflags glog gphoto2 gstreamer gtk ieee1394 jpeg jpeg2k lapack libav opencl openexr opengl openmp pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine contrib_cvv contrib_dnn contrib_hdf contrib_sfm contrib_xfeatures2d"
+IUSE="contrib cuda debug +eigen examples ffmpeg gdal gflags glog gphoto2 gstreamer gtk ieee1394 jpeg jpeg2k lapack libav opencl openexr opengl openmp pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine contrib_cvv contrib_hdf contrib_sfm contrib_xfeatures2d"
 
 # OpenGL needs gtk or Qt installed to activate, otherwise build system
 # will silently disable it without the user knowing, which defeats the
@@ -27,11 +26,8 @@ REQUIRED_USE="
 	gflags? ( contrib )
 	glog? ( contrib )
 	contrib_cvv? ( contrib qt5 )
-	contrib_dnn? ( contrib )
 	contrib_hdf? ( contrib )
 	contrib_sfm? ( contrib eigen gflags glog )
-	contrib_xfeatures2d? ( contrib cuda )
-	java? ( python )
 	opengl? ( || ( gtk qt5 ) )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	tesseract? ( contrib )"
@@ -43,7 +39,6 @@ REQUIRED_USE="
 
 RDEPEND="
 	app-arch/bzip2[${MULTILIB_USEDEP}]
-	dev-libs/protobuf:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	cuda? ( dev-util/nvidia-cuda-toolkit:0= )
 	contrib_hdf? ( sci-libs/hdf5 )
@@ -96,7 +91,6 @@ RDEPEND="
 	xine? ( media-libs/xine-lib )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
-	contrib_dnn? ( dev-libs/cereal )
 	eigen? ( dev-cpp/eigen:3 )
 	java?  ( >=virtual/jdk-1.6 )"
 
@@ -122,109 +116,16 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/opencv2/viz/vizcore.hpp
 	/usr/include/opencv2/viz/widget_accessor.hpp
 	/usr/include/opencv2/viz/widgets.hpp
-	# [cudev]
-	/usr/include/opencv2/cudaarithm.hpp
-	/usr/include/opencv2/cudabgsegm.hpp
-	/usr/include/opencv2/cudacodec.hpp
-	/usr/include/opencv2/cudafeatures2d.hpp
-	/usr/include/opencv2/cudafilters.hpp
-	/usr/include/opencv2/cudaimgproc.hpp
-	/usr/include/opencv2/cudalegacy.hpp
-	/usr/include/opencv2/cudalegacy/NCVBroxOpticalFlow.hpp
-	/usr/include/opencv2/cudalegacy/NCVHaarObjectDetection.hpp
-	/usr/include/opencv2/cudalegacy/NCV.hpp
-	/usr/include/opencv2/cudalegacy/NCVPyramid.hpp
-	/usr/include/opencv2/cudalegacy/NPP_staging.hpp
-	/usr/include/opencv2/cudaobjdetect.hpp
-	/usr/include/opencv2/cudaoptflow.hpp
-	/usr/include/opencv2/cudastereo.hpp
-	/usr/include/opencv2/cudawarping.hpp
-	/usr/include/opencv2/cudev/block/block.hpp
-	/usr/include/opencv2/cudev/block/detail/reduce.hpp
-	/usr/include/opencv2/cudev/block/detail/reduce_key_val.hpp
-	/usr/include/opencv2/cudev/block/dynamic_smem.hpp
-	/usr/include/opencv2/cudev/block/reduce.hpp
-	/usr/include/opencv2/cudev/block/scan.hpp
-	/usr/include/opencv2/cudev/block/vec_distance.hpp
-	/usr/include/opencv2/cudev/common.hpp
-	/usr/include/opencv2/cudev/expr/binary_func.hpp
-	/usr/include/opencv2/cudev/expr/binary_op.hpp
-	/usr/include/opencv2/cudev/expr/color.hpp
-	/usr/include/opencv2/cudev/expr/deriv.hpp
-	/usr/include/opencv2/cudev/expr/expr.hpp
-	/usr/include/opencv2/cudev/expr/per_element_func.hpp
-	/usr/include/opencv2/cudev/expr/reduction.hpp
-	/usr/include/opencv2/cudev/expr/unary_func.hpp
-	/usr/include/opencv2/cudev/expr/unary_op.hpp
-	/usr/include/opencv2/cudev/expr/warping.hpp
-	/usr/include/opencv2/cudev/functional/color_cvt.hpp
-	/usr/include/opencv2/cudev/functional/detail/color_cvt.hpp
-	/usr/include/opencv2/cudev/functional/functional.hpp
-	/usr/include/opencv2/cudev/functional/tuple_adapter.hpp
-	/usr/include/opencv2/cudev/grid/copy.hpp
-	/usr/include/opencv2/cudev/grid/detail/copy.hpp
-	/usr/include/opencv2/cudev/grid/detail/histogram.hpp
-	/usr/include/opencv2/cudev/grid/detail/integral.hpp
-	/usr/include/opencv2/cudev/grid/detail/minmaxloc.hpp
-	/usr/include/opencv2/cudev/grid/detail/pyr_down.hpp
-	/usr/include/opencv2/cudev/grid/detail/pyr_up.hpp
-	/usr/include/opencv2/cudev/grid/detail/reduce.hpp
-	/usr/include/opencv2/cudev/grid/detail/reduce_to_column.hpp
-	/usr/include/opencv2/cudev/grid/detail/reduce_to_row.hpp
-	/usr/include/opencv2/cudev/grid/detail/split_merge.hpp
-	/usr/include/opencv2/cudev/grid/detail/transform.hpp
-	/usr/include/opencv2/cudev/grid/detail/transpose.hpp
-	/usr/include/opencv2/cudev/grid/histogram.hpp
-	/usr/include/opencv2/cudev/grid/integral.hpp
-	/usr/include/opencv2/cudev/grid/pyramids.hpp
-	/usr/include/opencv2/cudev/grid/reduce.hpp
-	/usr/include/opencv2/cudev/grid/reduce_to_vec.hpp
-	/usr/include/opencv2/cudev/grid/split_merge.hpp
-	/usr/include/opencv2/cudev/grid/transform.hpp
-	/usr/include/opencv2/cudev/grid/transpose.hpp
-	/usr/include/opencv2/cudev.hpp
-	/usr/include/opencv2/cudev/ptr2d/constant.hpp
-	/usr/include/opencv2/cudev/ptr2d/deriv.hpp
-	/usr/include/opencv2/cudev/ptr2d/detail/gpumat.hpp
-	/usr/include/opencv2/cudev/ptr2d/extrapolation.hpp
-	/usr/include/opencv2/cudev/ptr2d/glob.hpp
-	/usr/include/opencv2/cudev/ptr2d/gpumat.hpp
-	/usr/include/opencv2/cudev/ptr2d/interpolation.hpp
-	/usr/include/opencv2/cudev/ptr2d/lut.hpp
-	/usr/include/opencv2/cudev/ptr2d/mask.hpp
-	/usr/include/opencv2/cudev/ptr2d/remap.hpp
-	/usr/include/opencv2/cudev/ptr2d/resize.hpp
-	/usr/include/opencv2/cudev/ptr2d/texture.hpp
-	/usr/include/opencv2/cudev/ptr2d/traits.hpp
-	/usr/include/opencv2/cudev/ptr2d/transform.hpp
-	/usr/include/opencv2/cudev/ptr2d/warping.hpp
-	/usr/include/opencv2/cudev/ptr2d/zip.hpp
-	/usr/include/opencv2/cudev/util/atomic.hpp
-	/usr/include/opencv2/cudev/util/detail/tuple.hpp
-	/usr/include/opencv2/cudev/util/detail/type_traits.hpp
-	/usr/include/opencv2/cudev/util/limits.hpp
-	/usr/include/opencv2/cudev/util/saturate_cast.hpp
-	/usr/include/opencv2/cudev/util/simd_functions.hpp
-	/usr/include/opencv2/cudev/util/tuple.hpp
-	/usr/include/opencv2/cudev/util/type_traits.hpp
-	/usr/include/opencv2/cudev/util/vec_math.hpp
-	/usr/include/opencv2/cudev/util/vec_traits.hpp
-	/usr/include/opencv2/cudev/warp/detail/reduce.hpp
-	/usr/include/opencv2/cudev/warp/detail/reduce_key_val.hpp
-	/usr/include/opencv2/cudev/warp/reduce.hpp
-	/usr/include/opencv2/cudev/warp/scan.hpp
-	/usr/include/opencv2/cudev/warp/shuffle.hpp
-	/usr/include/opencv2/cudev/warp/warp.hpp
 )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.0-gles.patch"
 	"${FILESDIR}/${PN}-3.1.0-java-magic.patch"
 	"${FILESDIR}/${PN}-3.1.0-find-libraries-fix.patch"
-	"${WORKDIR}/${P}-imgcodecs-gcc.patch" # bug 627958 and https://github.com/opencv/opencv/pull/9376
-	"${FILESDIR}/${P}-cuda9-cmake.patch"
-	"${FILESDIR}/${P}-cuda9-saturate.patch"
-	"${FILESDIR}/${P}-cuda9-compute20.patch"
+	"${FILESDIR}/${P}-vtk.patch"
+	"${FILESDIR}/${P}-gcc-6.0.patch"
+	"${FILESDIR}/${PN}-3.2.0-fix_ussage_cpu_instructions.patch"
+	"${FILESDIR}/${P}-cpu-mno-sse2.patch"
 )
 
 pkg_pretend() {
@@ -244,14 +145,9 @@ src_prepare() {
 	sed -e '/add_subdirectory(.*3rdparty.*)/ d' \
 		-i CMakeLists.txt cmake/*cmake || die
 
-	if use contrib && use contrib_dnn; then
-		cd  "${WORKDIR}/${PN}_contrib-${PV}" || die
-		eapply "${FILESDIR}/${P}-remove-tiny-dnn-autodownload.patch"
-	fi
-
 	if use contrib && use contrib_xfeatures2d; then
 		cd  "${WORKDIR}/${PN}_contrib-${PV}" || die
-		eapply "${FILESDIR}/${P}-contrib-xfeatures2d.patch"
+		eapply "${FILESDIR}/${P}-contrib_xfeatures2d-autodownload.patch"
 		mv "${WORKDIR}"/*.i "${WORKDIR}/${PN}_contrib-${PV}"/modules/xfeatures2d/src/ || die
 	fi
 
@@ -270,10 +166,10 @@ multilib_src_configure() {
 	# Optional 3rd party components
 	# ===================================================
 		-DWITH_1394=$(usex ieee1394)
-	#	-DWITH_AVFOUNDATION=OFF # IOS
+	#	-DWITH_AVFOUNDATION=OFF 	# IOS
 		-DWITH_VTK=$(multilib_native_usex vtk)
 		-DWITH_EIGEN=$(usex eigen)
-		-DWITH_VFW=OFF # Video windows support
+		-DWITH_VFW=OFF     		# Video windows support
 		-DWITH_FFMPEG=$(usex ffmpeg)
 		-DWITH_GSTREAMER=$(usex gstreamer)
 		-DWITH_GSTREAMER_0_10=OFF	# Don't want this
@@ -286,8 +182,8 @@ multilib_src_configure() {
 		-DWITH_OPENEXR=$(usex openexr)
 		-DWITH_OPENGL=$(usex opengl)
 		-DWITH_OPENVX=OFF
-		-DWITH_OPENNI=OFF	# Not packaged
-		-DWITH_OPENNI2=OFF	# Not packaged
+		-DWITH_OPENNI=OFF 		# Not packaged
+		-DWITH_OPENNI2=OFF 		# Not packaged
 		-DWITH_PNG=$(usex png)
 		-DWITH_GDCM=OFF
 		-DWITH_PVAPI=OFF
@@ -307,7 +203,7 @@ multilib_src_configure() {
 		-DWITH_LIBV4L=$(usex v4l)
 		-DWITH_DSHOW=ON			# direct show supp
 		-DWITH_MSMF=OFF
-		-DWITH_XIMEA=OFF	# Windows only
+		-DWITH_XIMEA=OFF 		# Windows only
 		-DWITH_XINE=$(multilib_native_usex xine)
 		-DWITH_CLP=OFF
 		-DWITH_OPENCL=$(usex opencl)
@@ -324,7 +220,6 @@ multilib_src_configure() {
 		-DWITH_GDAL=$(multilib_native_usex gdal)
 		-DWITH_GPHOTO2=$(usex gphoto2)
 		-DWITH_LAPACK=$(multilib_native_usex lapack)
-		-DWITH_ITT=OFF # 3dparty libs itt_notify
 	# ===================================================
 	# CUDA build components: nvidia-cuda-toolkit takes care of GCC version
 	# ===================================================
@@ -339,7 +234,7 @@ multilib_src_configure() {
 	# ===================================================
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_ANDROID_EXAMPLES=OFF
-		-BUILD_opencv_apps=
+		-DBUILD_opencv_apps=
 		-DBUILD_DOCS=OFF # Doesn't install anyways.
 		-DBUILD_EXAMPLES=$(multilib_native_usex examples)
 		-DBUILD_PERF_TESTS=OFF
@@ -368,6 +263,20 @@ multilib_src_configure() {
 		-DENABLE_SOLUTION_FOLDERS=OFF
 		-DENABLE_PROFILING=OFF
 		-DENABLE_COVERAGE=OFF
+		-DENABLE_OMIT_FRAME_POINTER=OFF
+		-DENABLE_FAST_MATH=OFF
+		-DENABLE_SSE=OFF
+		-DENABLE_SSE2=OFF
+		-DENABLE_SSE3=OFF
+		-DENABLE_SSSE3=OFF
+		-DENABLE_SSE41=OFF
+		-DENABLE_SSE42=OFF
+		-DENABLE_POPCNT=OFF
+		-DENABLE_AVX=OFF
+		-DENABLE_AVX=OFF
+		-DENABLE_AVX2=OFF
+		-DENABLE_FMA3=OFF
+		-DENABLE_NEON=OFF
 
 		-DHAVE_opencv_java=$(multilib_native_usex java YES NO)
 		-DENABLE_NOISY_WARNINGS=OFF
@@ -380,11 +289,7 @@ multilib_src_configure() {
 	# things we want to be hard off or not yet figured out
 	# ===================================================
 		-DBUILD_PACKAGE=OFF
-	# ===================================================
-	# Not building protobuf but update files bug #631418
-	# ===================================================
-		-DBUILD_PROTOBUF=OFF
-		-DPROTOBUF_UPDATE_FILES=ON
+		-DENABLE_PROFILING=OFF
 	# ===================================================
 	# things we want to be hard enabled not worth useflag
 	# ===================================================
@@ -397,8 +302,7 @@ multilib_src_configure() {
 	# ===================================================
 	if use contrib; then
 		GLOBALCMAKEARGS+=(
-			-DBUILD_opencv_dnn=$(usex contrib_dnn ON OFF)
-			-DTINYDNN_ROOT="${WORKDIR}/tiny-dnn-${TINY_DNN_PV}"
+			-DBUILD_opencv_dnn=OFF
 			-DBUILD_opencv_dnns_easily_fooled=OFF
 			-DBUILD_opencv_xfeatures2d=$(usex contrib_xfeatures2d ON OFF)
 			-DBUILD_opencv_cvv=$(usex contrib_cvv ON OFF)
