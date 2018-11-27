@@ -38,7 +38,7 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	cmake-utils_src_compile
-	multilib_is_native_abi && cmake-utils_src_compile docs
+	multilib_is_native_abi && use doc && cmake-utils_src_compile docs
 }
 
 multilib_src_install() {
