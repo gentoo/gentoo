@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,8 +17,11 @@ S="${WORKDIR}/fstrcmp-0.7.D001"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
+	sys-apps/groff
 	doc? ( app-text/ghostscript-gpl )
+	test? ( app-text/ghostscript-gpl )
 "
+RESTRICT="!test? ( test )"
 
 src_prepare() {
 	default
