@@ -12,7 +12,7 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0/10"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="doc input_devices_wacom"
 # Tests require write access to udev rules directory which is a no-no for live system.
 # Other tests are just about logs, exported symbols and autotest of the test library.
@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}
 			dev-python/commonmark[${PYTHON_USEDEP}]
 			dev-python/recommonmark[${PYTHON_USEDEP}]
 			dev-python/sphinx[${PYTHON_USEDEP}]
+			>=dev-python/sphinx_rtd_theme-0.2.4[${PYTHON_USEDEP}]
 		')
 		>=app-doc/doxygen-1.8.3
 		>=media-gfx/graphviz-2.38.0
