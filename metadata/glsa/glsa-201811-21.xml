@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-21">
+  <title>OpenSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSSL, the worst of
+    which may lead to a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>2018-11-28</announced>
+  <revised count="1">2018-11-28</revised>
+  <bug>651730</bug>
+  <bug>653434</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2o</unaffected>
+      <vulnerable range="lt">1.0.2o</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is a robust, commercial-grade, and full-featured toolkit for the
+      Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSSL. Please review
+      the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a Denial of Service condition, obtain
+      private keying material, or gain access to sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.2o"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-0733">CVE-2018-0733</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-0737">CVE-2018-0737</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-0739">CVE-2018-0739</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-25T03:10:27Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-11-28T22:43:29Z">b-man</metadata>
+</glsa>

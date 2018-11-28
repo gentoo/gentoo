@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-22">
+  <title>RPM: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in RPM, the worst of which
+    could allow a remote attacker to escalate privileges.
+  </synopsis>
+  <product type="ebuild">rpm</product>
+  <announced>2018-11-28</announced>
+  <revised count="1">2018-11-28</revised>
+  <bug>533740</bug>
+  <bug>638636</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/rpm" auto="yes" arch="*">
+      <unaffected range="ge">4.14.1</unaffected>
+      <vulnerable range="lt">4.14.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Red Hat Package Manager (RPM) is a command line driven package
+      management system capable of installing, uninstalling, verifying,
+      querying, and updating computer software packages.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in RPM. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing the user to process a specially crafted
+      RPM file, could escalate privileges, execute arbitrary code, or cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All RPM users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/rpm-4.14.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2013-6435">CVE-2013-6435</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2014-8118">CVE-2014-8118</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-7501">CVE-2017-7501</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-25T01:24:35Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-11-28T22:52:35Z">b-man</metadata>
+</glsa>
