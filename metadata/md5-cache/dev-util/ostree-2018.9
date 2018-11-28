@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=app-arch/xz-utils:= app-crypt/gpgme:= dev-libs/glib:= dev-libs/libassuan:= dev-libs/libgpg-error:= dev-libs/openssl:= sys-apps/util-linux:= sys-fs/fuse:= sys-libs/zlib:= archive? ( app-arch/libarchive:= ) grub? ( sys-boot/grub:* ) ssl? ( gnutls? ( net-libs/gnutls:= ) !gnutls? ( dev-libs/openssl:= ) ) libmount? ( sys-apps/util-linux:= ) selinux? ( sys-libs/libselinux:= ) soup? ( net-libs/libsoup:= ) systemd? ( sys-apps/systemd:= ) zeroconf? ( net-dns/avahi:* ) app-text/docbook-xsl-stylesheets sys-devel/bison dev-libs/libxslt sys-devel/bison sys-devel/flex virtual/pkgconfig curl? ( net-misc/curl:= ) introspection? ( dev-libs/gobject-introspection ) doc? ( dev-util/gtk-doc )
+DESCRIPTION=Operating system and container binary deployment and upgrades
+EAPI=6
+HOMEPAGE=https://ostree.readthedocs.io/en/latest/
+IUSE=archive curl doc gnutls grub introspection libmount selinux ssl soup systemd zeroconf
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2+
+RDEPEND=app-arch/xz-utils:= app-crypt/gpgme:= dev-libs/glib:= dev-libs/libassuan:= dev-libs/libgpg-error:= dev-libs/openssl:= sys-apps/util-linux:= sys-fs/fuse:= sys-libs/zlib:= archive? ( app-arch/libarchive:= ) grub? ( sys-boot/grub:* ) ssl? ( gnutls? ( net-libs/gnutls:= ) !gnutls? ( dev-libs/openssl:= ) ) libmount? ( sys-apps/util-linux:= ) selinux? ( sys-libs/libselinux:= ) soup? ( net-libs/libsoup:= ) systemd? ( sys-apps/systemd:= ) zeroconf? ( net-dns/avahi:* )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/ostreedev/ostree/releases/download/v2018.9/libostree-2018.9.tar.xz -> ostree-2018.9.tar.xz
+_md5_=28c2c91b7d24abd91d02960cd7d0260d
