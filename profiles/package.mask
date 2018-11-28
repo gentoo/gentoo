@@ -501,11 +501,6 @@ media-gfx/splash-themes-gentoo
 media-gfx/splash-themes-livecd
 media-gfx/splash-themes-livedvd
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (20 Oct 2018)
-# Fails to build with glibc-2.27, bug 648620. No reverse
-# dependencies. Removal in 30 days.
-dev-tcltk/ck
-
 # Sobhan Mohammadpour <sobhan@gentoo.org> (15 Oct 2018)
 # Masked for testing.
 sys-apps/bubblewrap
