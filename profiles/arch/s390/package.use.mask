@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Mikle Kolyada <zlogene@gentoo.org> (03 Jun 2018)
@@ -11,8 +11,6 @@ app-text/ghostscript-gpl cups
 # VCS for oberlays yet.
 app-portage/layman bazaar darcs mercurial
 dev-python/setuptools_scm mercurial test
-# no practical use of zsh completion here (at least now)
-dev-util/ninja zsh-completion
 # no nmap gui
 net-analyzer/nmap zenmap
 # no lua support for vim

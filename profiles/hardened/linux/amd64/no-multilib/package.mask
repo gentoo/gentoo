@@ -1,8 +1,6 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# >=teamviewer-13 is amd64 native application without wine
-<net-misc/teamviewer-13
 # These are broken as reported by Halcy0n, Aug, 23, 2011
 dev-lang/rebol-bin
 
@@ -33,7 +31,6 @@ app-emulation/q4wine
 >=app-i18n/atokx3-3.0.0
 app-office/ooextras
 app-emulation/winetricks
-app-text/acroread
 dev-embedded/libftd2xx
 dev-embedded/openocd
 dev-util/android-sdk-update-manager
