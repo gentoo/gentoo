@@ -211,7 +211,6 @@ app-arch/snappy 1.1.7: A high-speed compression/decompression library by Google
 app-arch/star 1.5.3-r1: An enhanced (world's fastest) tar, as well as enhanced mt/rmt
 app-arch/stuffit 5.2.0.611: Aladdin Software's StuffIt and StuffIt Expander
 app-arch/tar 1.30: Use this to make tarballs :)
-app-arch/tardy 1.28: A tar post-processor
 app-arch/tarsync 0.2.1-r1: Delta compression suite for using/generating binary patches
 app-arch/torrentzip 0.9: Create identical zip archives over multiple systems
 app-arch/unace 2.5-r5: ACE unarchiver
@@ -3077,7 +3076,6 @@ dev-libs/libev 4.23: A high-performance event loop/event model with lots of feat
 dev-libs/libevdev 1.5.9-r1: Handler library for evdev events
 dev-libs/libevent 2.1.8: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
-dev-libs/libexplain 1.4: Library which may be used to explain Unix and Linux system call errors
 dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20110801-r4: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
