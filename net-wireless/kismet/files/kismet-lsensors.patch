@@ -1,0 +1,11 @@
+--- a/Makefile.in	2018-11-28 03:34:09.589301613 +0300
++++ b/Makefile.in	2018-11-28 03:34:45.423012780 +0300
+@@ -167,7 +167,7 @@
+ 	@make plugins
+ 
+ $(PS):	$(PROTOBUF_CPP_O_TARGET) $(PROTOBUF_CPP_H_TARGET) $(PSO) $(patsubst %c.o,%c.d,$(PSO))
+-	$(LD) $(LDFLAGS) -o $(PS) $(PSO) $(LIBS) $(CXXLIBS) $(PCAPLIBS) $(KSLIBS) -rdynamic
++	$(LD) $(LDFLAGS) -o $(PS) $(PSO) $(LIBS) $(CXXLIBS) $(PCAPLIBS) $(KSLIBS) -lsensors -rdynamic
+ 
+ $(DATASOURCE_COMMON_A):	$(PROTOBUF_C_O) $(PROTOBUF_C_H) $(DATASOURCE_COMMON_C_O)
+ 	$(AR) rcs $(DATASOURCE_COMMON_A) $(DATASOURCE_COMMON_C_O)

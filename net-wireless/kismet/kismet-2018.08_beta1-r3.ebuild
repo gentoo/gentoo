@@ -67,6 +67,9 @@ src_prepare() {
 		-e 's|@mangrp@|root|g' Makefile.in
 
 	epatch "${FILESDIR}"/fix-setuptools.patch
+	if use lm_sensors; then
+		eapply "${FILESDIR}"/kismet-lsensors.patch
+	fi
 	eapply_user
 
 	if [[ ${PV} == "9999" ]] ; then
