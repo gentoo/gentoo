@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Documentation API reference for Cantera package libraries
+EAPI=6
+HOMEPAGE=https://cantera.org
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=x11-misc/xdg-utils
+SLOT=0
+SRC_URI=https://github.com/band-a-prend/gentoo-overlay/releases/download/ct-docs-2.4.0/cantera-docs-2.4.0_modified_menu.tar.xz -> cantera-docs-2.4.0.tar.xz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
+_md5_=d3f2affd758f19c25283ef641594f6aa
