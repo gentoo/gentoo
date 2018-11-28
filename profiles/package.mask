@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (28 Nov 2018)
+# The sources are no longer fetchable and are restricted from mirroring.
+# The maintainer is unable to find a matching replacement archive.
+# Removal in 30 days.  Bug #640580.
+games-server/ut2003-ded
+
+# Michał Górny <mgorny@gentoo.org> (28 Nov 2018)
 # dev-libs/libexplain does not build.  It is unmaintained upstream
 # and keeps accumulating local patches.  Furthermore, it seems to rely
 # on internal system implementation details.  app-arch/tardy
