@@ -1814,6 +1814,7 @@ dev-ada/gnat_util 2017 2018: Provides access to GNAT compiler internals for AdaC
 dev-ada/gnatcoll 2017: GNAT Component Collection
 dev-ada/gnatcoll-bindings 2018: GNAT Component Collection
 dev-ada/gnatcoll-core 2018: GNAT Component Collection Core packages
+dev-ada/gnatcoll-db 2018: GNAT Component Collection
 dev-ada/gnatmem 2018: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2018: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r1 2018-r3: Multi-Language Management
