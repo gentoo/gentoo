@@ -9,7 +9,6 @@ backlight - Backlight control slider gadget
 battery - A gadget to visualize your battery status
 bluez4 - Configure Bluetooth devices
 clock - Nice clock gadget to show current time
-connman - Control Wifi and wired networks as a user
 cpufreq - Gadget to monitor and change the CPU frequency
 everything - The run command module provides an application launcher dialog
 fileman - Enlightenment's integrated file manager
