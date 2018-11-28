@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Andrey Utkin <andrey_utkin@gentoo.org> (11 Mar 2018)
@@ -14,7 +14,7 @@ dev-java/oracle-jre-bin -javafx
 
 # Fabian Groffen <grobian@gentoo.org> (30 Oct 2009)
 # X and linux only
-media-video/mplayer xvmc xv dga X xinerama xscreensaver
+media-video/mplayer xv dga X xinerama xscreensaver
 media-video/mplayer dvb lirc jack joystick
 
 # Fabian Groffen <grobian@gentoo.org> (06 Aug 2008)

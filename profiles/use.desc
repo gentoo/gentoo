@@ -53,7 +53,6 @@ connman - Add support for net-misc/connman
 coreaudio - Build the CoreAudio driver on Mac OS X systems
 cracklib - Support for cracklib strong password checking
 crypt - Add support for encryption -- using mcrypt or gpg where applicable
-cscope - Enable cscope interface -- in vim for example
 css - Enable reading of encrypted DVDs
 cups - Add support for CUPS (Common Unix Printing System)
 curl - Add support for client-side URL transfer library
@@ -79,8 +78,6 @@ eds - Enable support for Evolution-Data-Server (EDS)
 emacs - Add support for GNU Emacs
 emboss - Add support for the European Molecular Biology Open Software Suite
 encode - Add support for encoding of audio or video files
-enscript - Add enscript support to colourize code stored in the repository
-evo - Add support for mail-client/evolution
 examples - Install examples, usually source code
 exif - Add support for reading EXIF headers from JPEG and TIFF images
 expat - Enable the use of dev-libs/expat for XML parsing
@@ -188,9 +185,7 @@ maildir - Add support for maildir (~/.maildir) style mail spools
 matroska - Add support for the matroska container format (extensions .mkv, .mka and .mks)
 mbox - Add support for mbox (/var/spool/mail) style mail spools
 memcached - Add support for memcached
-memlimit - Add memory usage limiting in supporting programs
 mhash - Add support for the mhash library
-migemo - Enable migemo support for Japanese
 mikmod - Add libmikmod support to allow playing of SoundTracker-style music files
 milter - Add sendmail mail filter (milter) support
 minimal - Install a very minimal build (disables, for example, plugins, fonts, most drivers, non-critical features)
@@ -209,7 +204,6 @@ mplayer - Enable mplayer support for playback or encoding
 msn - Enable MSN Messenger IM protocol support
 mssql - Add support for Microsoft SQL Server database
 mtp - Enable support for Media Transfer Protocol
-mule - Add multi-language support to XEmacs
 multilib - On 64bit systems, if you want to be able to compile 32bit and 64bit binaries
 musepack - Enable support for the musepack audio codec
 musicbrainz - Lookup audio metadata using MusicBrainz community service (musicbrainz.org)
@@ -219,7 +213,6 @@ nas - Add support for network audio sound
 ncurses - Add ncurses support (console display library)
 neXt - Enable neXt toolkit
 neon - Enable optimization support for ARM NEON processors
-netboot - Enable network booting
 netcdf - Enable NetCDF data format support
 networkmanager - Enable net-misc/networkmanager support
 nis - Support for NIS/YP services
@@ -271,7 +264,6 @@ pulseaudio - Add support for PulseAudio sound server
 python - Add optional support/bindings for the Python language
 qdbm - Add support for the qdbm (Quick Database Manager) library
 qmail-spp - Add support for qmail SMTP plugins
-qt4 - Add support for the Qt GUI/Application Toolkit version 4.x
 qt5 - Add support for the Qt 5 application and UI framework
 quicktime - Add support for OpenQuickTime
 radius - Add support for RADIUS authentication
@@ -287,12 +279,10 @@ savedconfig - Use this to restore your config from /etc/portage/savedconfig ${CA
 scanner - Add support for scanner hardware (e.g. build the sane frontend in kdegraphics)
 sctp - Support for Stream Control Transmission Protocol
 sdl - Add support for Simple Direct Layer (media library)
-seamonkey - Add support for the Seamonkey web-browser
 seccomp - Enable seccomp (secure computing mode) to perform system call filtering at runtime to increase security of programs
 selinux - !!internal use only!! Security Enhanced Linux support, this must be set by the selinux profile or breakage will occur
 semantic-desktop - Cross-KDE support for semantic search and information retrieval
 session - Add persistent session support
-shorten - Add support for the shorten audio compressor
 skey - Enable S/Key (Single use password) authentication support
 slang - Add support for the slang text display library (it's like ncurses, but different)
 slp - Add Service Locator Protocol support
@@ -380,7 +370,6 @@ xscreensaver - Add support for XScreenSaver extension
 xv - Add in optional support for the Xvideo extension (an X API for video playback)
 xvid - Add support for xvid.org's open-source mpeg-4 codec
 yahoo - Enable Yahoo Messenger IM protocol support
-yaz - Add in optional support for the Z39.50 Protocol for Information Retrieval (YAZ)
 zeroconf - Support for DNS Service Discovery (DNS-SD)
 zip - Enable support for ZIP archives
 zlib - Add support for zlib (de)compression
