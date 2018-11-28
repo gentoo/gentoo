@@ -6,29 +6,29 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-inherit bash-completion-r1 eutils flag-o-matic git-r3 pax-utils python-single-r1 toolchain-funcs
+inherit bash-completion-r1 eutils flag-o-matic pax-utils python-single-r1 toolchain-funcs
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
-EGIT_REPO_URI="https://github.com/nodejs/node"
+SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
 IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl systemtap test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	inspector? ( icu ssl )
+	npm? ( ssl )
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.19.2:=
+	>=dev-libs/libuv-1.23.2:=
 	>=net-dns/c-ares-1.15.0
 	>=net-libs/http-parser-2.8.0:=
-	>=net-libs/nghttp2-1.29.0
+	>=net-libs/nghttp2-1.34.0
 	sys-libs/zlib
-	icu? ( >=dev-libs/icu-61.1:= )
-	npm? ( ${PYTHON_DEPS} )
+	icu? ( >=dev-libs/icu-63.1:= )
 	ssl? ( =dev-libs/openssl-1.1.0*:0= )
 "
 DEPEND="
@@ -37,6 +37,7 @@ DEPEND="
 	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )
 "
+S="${WORKDIR}/node-v${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
 )
@@ -68,7 +69,7 @@ src_prepare() {
 	# proper libdir, hat tip @ryanpcmcquen https://github.com/iojs/io.js/issues/504
 	local LIBDIR=$(get_libdir)
 	sed -i -e "s|lib/|${LIBDIR}/|g" tools/install.py || die
-	sed -i -e "s/'lib'/'${LIBDIR}'/" lib/module.js deps/npm/lib/npm.js || die
+	sed -i -e "s/'lib'/'${LIBDIR}'/" deps/npm/lib/npm.js || die
 
 	# Avoid writing a depfile, not useful
 	sed -i -e "/DEPFLAGS =/d" tools/gyp/pylib/gyp/generator/make.py || die
@@ -144,8 +145,9 @@ src_install() {
 		for i in `grep -rl 'fonts.googleapis.com' "${S}"/out/doc/api/*`; do
 			sed -i '/fonts.googleapis.com/ d' $i;
 		done
-		# Install docs!
-		dohtml -r "${S}"/doc/*
+		# Install docs
+		docinto html
+		dodoc -r "${S}"/doc/*
 	fi
 
 	if use npm; then
@@ -184,6 +186,8 @@ src_install() {
 				"${find_name[@]}" \
 			\) \) -exec rm -rf "{}" \;
 	fi
+
+	mv "${D}"/usr/share/doc/node "${D}"/usr/share/doc/${PF} || die
 }
 
 src_test() {
