@@ -497,7 +497,6 @@ dev-db/pgadmin3
 # Removal in a month.
 media-gfx/splashutils
 media-gfx/bootsplash-themes
-media-gfx/splash-themes-gentoo
 
 # Sobhan Mohammadpour <sobhan@gentoo.org> (15 Oct 2018)
 # Masked for testing.
