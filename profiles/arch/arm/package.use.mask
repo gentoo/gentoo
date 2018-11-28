@@ -264,10 +264,6 @@ sys-auth/sssd samba
 # Needs ilmbase (openexr), which does not build and is masked on arm.
 media-libs/freeimage tiff
 
-# Markus Meier <maekke@gentoo.org> (03 Mar 2015)
-# Unkeyworded deps, bug #540540
-sys-auth/sssd augeas
-
 # Jason A. Donenfeld <zx2c4@gentoo.org> (09 Feb 2015)
 # Google does not distribute the widevine plugin for ARM. It must be extracted from a Chromebook,
 # and this kind of reverse engineering work likely violates many agreements, so we mask the flag.
