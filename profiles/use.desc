@@ -271,7 +271,6 @@ pulseaudio - Add support for PulseAudio sound server
 python - Add optional support/bindings for the Python language
 qdbm - Add support for the qdbm (Quick Database Manager) library
 qmail-spp - Add support for qmail SMTP plugins
-qt4 - Add support for the Qt GUI/Application Toolkit version 4.x
 qt5 - Add support for the Qt 5 application and UI framework
 quicktime - Add support for OpenQuickTime
 radius - Add support for RADIUS authentication
