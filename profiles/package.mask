@@ -29,6 +29,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (28 Nov 2018)
+# dev-libs/libexplain does not build.  It is unmaintained upstream
+# and keeps accumulating local patches.  Furthermore, it seems to rely
+# on internal system implementation details.  app-arch/tardy
+# and dev-util/fhist are its only reverse dependencies.
+# Removal in 30 days.  Bug #669530.
+app-arch/tardy
+dev-libs/libexplain
+dev-util/fhist
+
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Nov 2018)
 # Masked per security vulnerability CVE-2018-14345, bug #661510
 # Keeping it masked while users have unsolved issues with >0.15.0.
