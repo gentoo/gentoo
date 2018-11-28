@@ -152,11 +152,6 @@ sys-apps/likwid
 games-action/rafkill
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Dead for a long time, failing tests (#638376), nothing requires it
-# anymore. Removal in a month.
-dev-python/flask-testing
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Doesn't build for a long time (#638710), nothing requires it. Removal in a
 # month.
 app-emulation/vpcs
@@ -581,15 +576,6 @@ net-analyzer/mate-netspeed
 ~app-portage/gemato-14.0m
 ~app-portage/gemato-9999m
 
-# Mart Raudsepp <leio@gentoo.org> (16 Jul 2018)
-# Parallel-installable old versions with no remaining consumers
-# in main tree. Use applications ported to wxGTK:3.0 and
-# wxpython:3.0 instead.
-# Please keep this package.mask entry until at least 16th Oct 2018
-# for extra notification of the unmerge need. Bug #661284
-x11-libs/wxGTK:2.8
-dev-python/wxpython:2.8
-
 # Kent Fredric <kentnl@gentoo.org> (10 Jul 2018)
 # Perl 5.28 Staging block
 =dev-lang/perl-5.28.0
@@ -641,26 +627,10 @@ dev-python/wxpython:2.8
 =virtual/perl-threads-2.220.0
 =virtual/perl-version-0.992.300
 
-# Mart Raudsepp <leio@gentoo.org> (16 Jun 2018)
-# No upstream (website disappeared), no upstream plugin maintainer,
-# and pretty much a fringe format anyway.
-# Please keep this package.mask entry until at least 16th Sep 2018 for
-# extra notification of the deprecation and replacement. Bug #658194
-media-plugins/gst-plugins-schroedinger
-
 # Brian Evans <grknight@gentoo.org> (14 Jun 2018)
 # Mask new php pre-releases for initial testing
 dev-lang/php:7.3
 virtual/httpd-php:7.3
-
-# Mike Pagano <mpagano@gentoo.org> (30 May 2018)
-# Masking due to bad commit in the networking stack.
-=sys-kernel/gentoo-sources-4.14.46
-=sys-kernel/gentoo-sources-4.9.104
-=sys-kernel/gentoo-sources-4.4.134
-=sys-kernel/vanilla-sources-4.14.46
-=sys-kernel/vanilla-sources-4.9.104
-=sys-kernel/vanilla-sources-4.4.134
 
 # Kent Fredric <kentnl@gentoo.org> (27 May 2018)
 # Subject to Man-in-the-middle security bypass vulnerability.
@@ -688,12 +658,6 @@ media-libs/libglvnd
 # Requires >=dev-libs/openssl-1.1.0
 =net-libs/nodejs-10*
 =net-libs/nodejs-11*
-
-# Tony Vroon <chainsaw@gentoo.org> (24 Mar 2018)
-# This is a vulnerable version of Asterisk and should not be used except
-# to troubleshoot a purported memory leak in the 11.25.3 release.
-# Bug 629682.
-=net-misc/asterisk-11.25.1
 
 # Michał Górny <mgorny@gentoo.org> (20 Mar 2018)
 # Poorly tested version bump followed by a series of quick hacks
@@ -729,17 +693,6 @@ virtual/jre:9
 virtual/jdk:11
 virtual/jre:11
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (22 Oct 2017)
-# Broken with recent Perl (5.26) and not used by anything
-# in the Gentoo repository. Please uninstall.
-sys-devel/autoconf:2.59
-sys-devel/autoconf:2.61
-sys-devel/autoconf:2.62
-sys-devel/autoconf:2.63
-sys-devel/autoconf:2.65
-sys-devel/autoconf:2.67
-sys-devel/autoconf:2.68
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (18 Oct 2017)
 # sys-devel/automake versions 1.4, 1.5, 1.6, 1.7, 1.8
 # have known security vulnerabilities, are broken with
@@ -761,10 +714,6 @@ sys-devel/automake:1.8
 #   emerge -C perl-core/Unicode-Collate
 # See bug #634040
 <perl-core/Unicode-Collate-1.190.0-r99
-
-# Patrice Clement <monsieurp@gentoo.org> (01 Oct 2017)
-# Mask Atom betas for testing.
-app-editors/atom:beta
 
 # Patrice Clement <monsieurp@gentoo.org> (09 Sep 2017)
 # Python 3 port is almost complete with version 0.6.0. Users might run into
