@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=postgres_targets_postgres11? ( dev-db/postgresql:11= ) postgres_targets_postgres10? ( dev-db/postgresql:10= ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3= ) app-arch/unzip dev-perl/TAP-Parser-SourceHandler-pgTAP
+DESCRIPTION=Unit testing for PostgreSQL
+EAPI=6
+HOMEPAGE=https://pgtap.org/
+IUSE=postgres_targets_postgres11 postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3
+KEYWORDS=~amd64
+LICENSE=POSTGRESQL
+RDEPEND=postgres_targets_postgres11? ( dev-db/postgresql:11= ) postgres_targets_postgres10? ( dev-db/postgresql:10= ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3= ) app-arch/unzip dev-perl/TAP-Parser-SourceHandler-pgTAP
+RESTRICT=test
+SLOT=0
+SRC_URI=https://api.pgxn.org/dist/pgtap/0.99.0/pgtap-0.99.0.zip
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	postgres	1d395ef92a41175c81bf7da2cb7fb8cb	postgres-multi	fba0b36e29a3e019a9529049008ebcc6	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=e663cf5895435dfab32b0f3ad99e1877
