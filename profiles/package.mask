@@ -490,13 +490,6 @@ dev-db/pgadmin3
 # See #669278
 =xfce-base/xfconf-4.13.6
 
-# Pacho Ramos <pacho@gentoo.org> (21 Oct 2018)
-# Lots of pending bugs for years, this needs a dedicated maintainer that
-# fixes them: bug #354157, #354639, #398075, #398077, #417375, #499654,
-# #539358, #591682, #625798, #639912, #662316, #664270...
-# Removal in a month.
-media-gfx/splashutils
-
 # Sobhan Mohammadpour <sobhan@gentoo.org> (15 Oct 2018)
 # Masked for testing.
 sys-apps/bubblewrap
