@@ -17,6 +17,7 @@ FFMPEG_KODI_VERSION="17.5"
 CODENAME="Krypton"
 PATCHES=(
 	"${FILESDIR}/${P}-nmblookup.patch"
+	"${FILESDIR}/${P}-wrapper.patch"
 )
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz -> libdvdcss-${LIBDVDCSS_COMMIT}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_COMMIT}.tar.gz -> libdvdread-${LIBDVDREAD_COMMIT}.tar.gz
