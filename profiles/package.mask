@@ -498,7 +498,6 @@ dev-db/pgadmin3
 media-gfx/splashutils
 media-gfx/bootsplash-themes
 media-gfx/splash-themes-gentoo
-media-gfx/splash-themes-livecd
 
 # Sobhan Mohammadpour <sobhan@gentoo.org> (15 Oct 2018)
 # Masked for testing.
