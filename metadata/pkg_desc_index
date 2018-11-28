@@ -7521,7 +7521,7 @@ media-libs/harfbuzz 1.7.6 1.8.1 1.9.0 2.0.2: An OpenType text shaping engine
 media-libs/id3lib 3.8.3-r8: Id3 library for C/C++
 media-libs/ilmbase 1.0.2 2.1.0 2.2.0-r1: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r5: Image loading and rendering library
-media-libs/imlib2 1.5.1 1.5.1-r1: Version 2 of an advanced replacement library for libraries like libXpm
+media-libs/imlib2 1.5.1-r1: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/jasper 2.0.14: Implementation of the codec specified in the JPEG-2000 Part-1 standard
 media-libs/jbig2dec 0.13-r4: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
@@ -8949,7 +8949,7 @@ net-misc/networkmanager-pptp 1.2.4: NetworkManager PPTP plugin
 net-misc/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
 net-misc/npapi-sdk 0.27.2: NPAPI headers bundle
 net-misc/ntp 4.2.8_p11: Network Time Protocol suite/programs
-net-misc/ntpclient 2010.365 2018.244: A NTP (RFC-1305 and RFC-4330) client for unix-alike systems
+net-misc/ntpclient 2018.244: A NTP (RFC-1305 and RFC-4330) client for unix-alike systems
 net-misc/nx 3.5.0.33 3.5.99.16: NX compression technology core libraries
 net-misc/ofono 1.16: Open Source mobile telephony (GSM/UMTS) daemon
 net-misc/oidentd 2.0.8-r5 2.0.8-r6: Another (RFC1413 compliant) ident daemon
