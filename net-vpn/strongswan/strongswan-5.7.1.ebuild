@@ -23,6 +23,8 @@ for mod in $STRONGSWAN_PLUGINS_OPT; do
 	IUSE="${IUSE} strongswan_plugins_${mod}"
 done
 
+REQUIRED_USE="!x86? ( !strongswan_plugins_padlock )"
+
 COMMON_DEPEND="!net-misc/openswan
 	gmp? ( >=dev-libs/gmp-4.1.5:= )
 	gcrypt? ( dev-libs/libgcrypt:0 )
