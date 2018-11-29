@@ -7,7 +7,7 @@ inherit meson xdg-utils
 
 DESCRIPTION="A CLI utility to control media players over MPRIS"
 HOMEPAGE="https://github.com/acrisci/playerctl"
-SRC_URI="https://github.com/acrisci/playerctl/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/acrisci/playerctl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
@@ -26,8 +26,6 @@ DEPEND="${RDEPEND}
 	doc? ( dev-util/gtk-doc )
 	virtual/pkgconfig
 "
-
-S="${WORKDIR}/${PN}-${PV/_/-}"
 
 src_configure() {
 	local emesonargs=(
