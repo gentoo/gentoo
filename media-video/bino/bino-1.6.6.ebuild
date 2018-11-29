@@ -32,6 +32,9 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
+	# Qt5 now requires C++11, #649282
+	append-cxxflags -std=c++11
+
 	use video_cards_nvidia && append-cppflags "-I/usr/include/NVCtrl" \
 		&& append-ldflags "-L/usr/$(get_libdir)/opengl/nvidia/lib \
 		-L/usr/$(get_libdir)" && append-libs "Xext"
