@@ -1,0 +1,39 @@
+From ed34cc5f181e61d1fc98872866c5d7300a90af86 Mon Sep 17 00:00:00 2001
+From: Eike Hein <hein@kde.org>
+Date: Thu, 29 Nov 2018 00:22:17 +0900
+Subject: [PATCH] Fix group popup dialog
+
+Summary:
+Fixes regression introduced with ab26ebb18b74: That diff contained
+a change unrelated to the original submission, swapping a || out for
+&& in response to a review note. This turns out to have broken things.
+
+BUG:401508
+
+Reviewers: davidedmundson
+
+Subscribers: plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D17219
+---
+ applets/taskmanager/package/contents/ui/GroupDialog.qml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/applets/taskmanager/package/contents/ui/GroupDialog.qml b/applets/taskmanager/package/contents/ui/GroupDialog.qml
+index 6f592756..28238dce 100644
+--- a/applets/taskmanager/package/contents/ui/GroupDialog.qml
++++ b/applets/taskmanager/package/contents/ui/GroupDialog.qml
+@@ -262,7 +262,7 @@ PlasmaCore.Dialog {
+         // Setting VisualDataModel.rootIndex drops groupRepeater.count to 0
+         // before the actual row count. updateSize is therefore invoked twice;
+         // only update size once the repeater count matches the model role.
+-        } else if (!groupRepeater.aboutToPopulate && visualParent.childCount == groupRepeater.count) {
++        } else if (!groupRepeater.aboutToPopulate || visualParent.childCount == groupRepeater.count) {
+             var task;
+             var maxWidth = 0;
+             var maxHeight = 0;
+-- 
+2.19.2
+
