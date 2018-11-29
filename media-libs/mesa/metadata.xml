@@ -6,7 +6,6 @@
 		<name>X11</name>
 	</maintainer>
 	<use>
-		<flag name="bindist">Disable patent-encumbered ARB_texture_float, EXT_texture_shared_exponent, and EXT_packed_float extensions.</flag>
 		<flag name="classic">Build drivers based on the classic architecture.</flag>
 		<flag name="d3d9">Enable Direct 3D9 API through Nine state tracker. Can be used together with patched wine.</flag>
 		<flag name="dri3">Enable DRI3 support.</flag>
@@ -17,7 +16,6 @@
 		<flag name="gles2">Enable GLESv2 support.</flag>
 		<flag name="llvm">Enable LLVM backend for Gallium3D.</flag>
 		<flag name="opencl">Enable the Clover Gallium OpenCL state tracker.</flag>
-		<flag name="openmax">Enable OpenMAX video decode/encode acceleration for Gallium3D.</flag>
 		<flag name="osmesa">Build the Mesa library for off-screen rendering.</flag>
 		<flag name="pax_kernel">Enable if the user plans to run the package under a pax enabled hardened kernel</flag>
 		<flag name="pic">disable optimized assembly code that is not PIC friendly</flag>
