@@ -77,6 +77,8 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_kdeapps_dep kdepim-runtime)
 "
 
+RESTRICT+=" test" # tests are either broken or hang, bug #665686
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package X X11)
