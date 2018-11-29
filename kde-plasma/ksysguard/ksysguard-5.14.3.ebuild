@@ -32,7 +32,7 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	lm_sensors? ( sys-apps/lm_sensors )
+	lm_sensors? ( sys-apps/lm_sensors:= )
 "
 RDEPEND="${DEPEND}
 	!kde-plasma/ksysguard:4
