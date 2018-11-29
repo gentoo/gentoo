@@ -18,6 +18,7 @@ RDEPEND="app-emacs/popup"
 BDEPEND="${RDEPEND}
 	doc? ( app-text/pandoc )"
 
+ELISP_REMOVE="${PN}-pkg.el"
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
