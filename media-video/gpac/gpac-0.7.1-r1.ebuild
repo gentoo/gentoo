@@ -27,7 +27,6 @@ RDEPEND="
 	a52? ( media-libs/a52dec )
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
-	dvb? ( media-tv/linuxtv-dvb-apps )
 	ffmpeg? (
 		!libav? ( media-video/ffmpeg:0= )
 		libav? ( media-video/libav:0= )
@@ -64,6 +63,7 @@ RDEPEND="
 # wxwidgets? ( =x11-libs/wxGTK-2.8* )
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
+	dvb? ( sys-kernel/linux-headers )
 "
 
 # DOCS="AUTHORS BUGS Changelog README.md TODO doc/CODING_STYLE doc/*.doc doc/*.bt doc/SceneGenerators doc/ipmpx_syntax.bt doc/*.txt"
@@ -113,6 +113,7 @@ src_configure() {
 		--use-ogg=system \
 		$(use_enable alsa) \
 		$(use_enable debug) \
+		$(use_enable dvb dvb4linux) \
 		$(use_enable ipv6) \
 		$(use_enable jack jack yes) \
 		$(use_enable opengl 3d) \
