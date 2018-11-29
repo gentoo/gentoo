@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018"
 
-RDEPEND="dev-ada/gnat_util[gnat_2016=,gnat_2017=,gnat_2018=]
+RDEPEND="dev-ada/gnat_util[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]
 	|| (
 		dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,gnat_2018=,shared]
 		dev-ada/gnatcoll[gnat_2016=,gnat_2017=,gnat_2018=,projects,shared]
