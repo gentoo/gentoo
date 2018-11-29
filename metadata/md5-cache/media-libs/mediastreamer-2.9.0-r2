@@ -12,4 +12,4 @@ REQUIRED_USE=|| ( oss alsa portaudio coreaudio pulseaudio ) opengl? ( video ) th
 SLOT=0/3
 SRC_URI=mirror://nongnu/linphone/mediastreamer/mediastreamer-2.9.0.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=fc97ded3e5736b9734ec496d48751f01
+_md5_=34f17a83d98a0c808a78e8f7c20caa1e
