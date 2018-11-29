@@ -23,41 +23,48 @@ IUSE="a52 aac alsa debug dvb ffmpeg ipv6 jack jpeg jpeg2k libav libressl mad ope
 	pulseaudio sdl ssl static-libs theora truetype vorbis xml xvid X"
 
 RDEPEND="
+	media-libs/libogg
 	a52? ( media-libs/a52dec )
-	aac? ( >=media-libs/faad2-2.0 )
+	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
 	dvb? ( media-tv/linuxtv-dvb-apps )
 	ffmpeg? (
 		!libav? ( media-video/ffmpeg:0= )
-		libav? ( media-video/libav:0= ) )
+		libav? ( media-video/libav:0= )
+	)
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
-	mad? ( >=media-libs/libmad-0.15.1b )
-	opengl? ( virtual/opengl media-libs/freeglut virtual/glu )
-	>=media-libs/libogg-1.1
-	png? ( >=media-libs/libpng-1.4:0= )
-	vorbis? ( >=media-libs/libvorbis-1.1 )
-	theora? ( media-libs/libtheora )
-	truetype? ( >=media-libs/freetype-2.1.4:2 )
-	xml? ( >=dev-libs/libxml2-2.6.0:2 )
-	xvid? ( >=media-libs/xvid-1.0.1 )
-	sdl? ( media-libs/libsdl )
 	jpeg2k? ( media-libs/openjpeg:0 )
+	mad? ( media-libs/libmad )
+	opengl? (
+		media-libs/freeglut
+		virtual/glu
+		virtual/opengl
+	)
+	png? ( media-libs/libpng:0= )
+	pulseaudio? ( media-sound/pulseaudio )
+	theora? ( media-libs/libtheora )
+	truetype? ( media-libs/freetype:2 )
+	sdl? ( media-libs/libsdl )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= ) )
-	pulseaudio? ( media-sound/pulseaudio )
+		libressl? ( dev-libs/libressl:0= )
+	)
+	vorbis? ( media-libs/libvorbis )
 	X? (
 		x11-libs/libXt
 		x11-libs/libX11
 		x11-libs/libXv
 		x11-libs/libXext
 	)
+	xml? ( dev-libs/libxml2:2 )
+	xvid? ( media-libs/xvid )
 "
 # disabled upstream, see applications/Makefile
 # wxwidgets? ( =x11-libs/wxGTK-2.8* )
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 # DOCS="AUTHORS BUGS Changelog README.md TODO doc/CODING_STYLE doc/*.doc doc/*.bt doc/SceneGenerators doc/ipmpx_syntax.bt doc/*.txt"
 PATCHES=(
