@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (29 Nov 2018)
+# Uses ancient APIs, abandoned by upstream, unsalvageable.
+# Removal in 30 days. Bug #662142.
+app-cdr/nero
+
 # Michał Górny <mgorny@gentoo.org> (28 Nov 2018)
 # The sources are no longer fetchable and are restricted from mirroring.
 # The maintainer is unable to find a matching replacement archive.
