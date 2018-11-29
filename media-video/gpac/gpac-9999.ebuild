@@ -23,41 +23,48 @@ IUSE="a52 aac alsa debug dvb ffmpeg ipv6 jack jpeg jpeg2k libav libressl mad ope
 	pulseaudio sdl ssl static-libs theora truetype vorbis xml xvid X"
 
 RDEPEND="
+	media-libs/libogg
 	a52? ( media-libs/a52dec )
-	aac? ( >=media-libs/faad2-2.0 )
+	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
-	dvb? ( media-tv/linuxtv-dvb-apps )
 	ffmpeg? (
 		!libav? ( media-video/ffmpeg:0= )
-		libav? ( media-video/libav:0= ) )
-	jack? ( media-sound/jack-audio-connection-kit )
+		libav? ( media-video/libav:0= )
+	)
+	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
-	mad? ( >=media-libs/libmad-0.15.1b )
-	opengl? ( virtual/opengl media-libs/freeglut virtual/glu )
-	>=media-libs/libogg-1.1
-	png? ( >=media-libs/libpng-1.4:0= )
-	vorbis? ( >=media-libs/libvorbis-1.1 )
-	theora? ( media-libs/libtheora )
-	truetype? ( >=media-libs/freetype-2.1.4:2 )
-	xml? ( >=dev-libs/libxml2-2.6.0:2 )
-	xvid? ( >=media-libs/xvid-1.0.1 )
-	sdl? ( media-libs/libsdl )
 	jpeg2k? ( media-libs/openjpeg:0 )
+	mad? ( media-libs/libmad )
+	opengl? (
+		media-libs/freeglut
+		virtual/glu
+		virtual/opengl
+	)
+	png? ( media-libs/libpng:0= )
+	pulseaudio? ( media-sound/pulseaudio )
+	theora? ( media-libs/libtheora )
+	truetype? ( media-libs/freetype:2 )
+	sdl? ( media-libs/libsdl )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= ) )
-	pulseaudio? ( media-sound/pulseaudio )
+		libressl? ( dev-libs/libressl:0= )
+	)
+	vorbis? ( media-libs/libvorbis )
 	X? (
 		x11-libs/libXt
 		x11-libs/libX11
 		x11-libs/libXv
 		x11-libs/libXext
 	)
+	xml? ( dev-libs/libxml2:2 )
+	xvid? ( media-libs/xvid )
 "
 # disabled upstream, see applications/Makefile
 # wxwidgets? ( =x11-libs/wxGTK-2.8* )
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	dvb? ( sys-kernel/linux-headers )
+"
 
 PATCHES=( "${FILESDIR}/${PN}-0.7.1-configure.patch" )
 
@@ -92,40 +99,45 @@ src_prepare() {
 src_configure() {
 	tc-export CC CXX AR RANLIB
 
-	econf \
-		--enable-svg \
-		--enable-pic \
-		--disable-amr \
-		--use-js=no \
-		--use-ogg=system \
-		$(use_enable alsa) \
-		$(use_enable debug) \
-		$(use_enable ipv6) \
-		$(use_enable jack jack yes) \
-		$(use_enable opengl 3d) \
-		$(use_enable oss oss-audio) \
-		$(use_enable pulseaudio pulseaudio yes) \
-		$(use_enable sdl) \
-		$(use_enable ssl) \
-		$(use_enable static-libs static-lib) \
-		$(use_enable X x11) $(use_enable X x11-shm) $(use_enable X x11-xv) \
-		--disable-wx \
-		$(my_use a52) \
-		$(my_use aac faad) \
-		$(my_use dvb dvbx) \
-		$(my_use ffmpeg) \
-		$(my_use jpeg) \
-		$(my_use jpeg2k openjpeg) \
-		$(my_use mad) \
-		$(my_use png) \
-		$(my_use theora) \
-		$(my_use truetype ft) \
-		$(my_use vorbis) \
-		$(my_use xvid) \
-		--extra-cflags="${CFLAGS}" \
-		--cc="$(tc-getCC)" \
-		--libdir="/$(get_libdir)" \
+	local myeconfargs=(
+		--extra-cflags="${CFLAGS}"
+		--cc="$(tc-getCC)"
+		--libdir="/$(get_libdir)"
 		--verbose
+		--enable-pic
+		--enable-svg
+		--disable-amr
+		--disable-wx
+		--use-js=no
+		--use-ogg=system
+		$(use_enable alsa)
+		$(use_enable debug)
+		$(use_enable dvb dvb4linux)
+		$(use_enable ipv6)
+		$(use_enable jack jack yes)
+		$(use_enable opengl 3d)
+		$(use_enable oss oss-audio)
+		$(use_enable pulseaudio pulseaudio yes)
+		$(use_enable sdl)
+		$(use_enable ssl)
+		$(use_enable static-libs static-lib)
+		$(use_enable X x11)
+		$(use_enable X x11-shm)
+		$(use_enable X x11-xv)
+		$(my_use a52)
+		$(my_use aac faad)
+		$(my_use dvb dvbx)
+		$(my_use ffmpeg)
+		$(my_use jpeg)
+		$(my_use jpeg2k openjpeg)
+		$(my_use mad)
+		$(my_use png)
+		$(my_use theora)
+		$(my_use truetype ft)
+		$(my_use vorbis)
+		$(my_use xvid)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
