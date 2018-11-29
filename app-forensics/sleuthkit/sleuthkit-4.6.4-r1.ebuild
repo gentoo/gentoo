@@ -60,6 +60,7 @@ DEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.0-tools-shared-libs.patch
 	"${FILESDIR}"/${PN}-4.6.4-default-jar-location-fix.patch
+	"${FILESDIR}"/${PN}-4.6.4-CVE-2018-19497-backport.patch
 )
 
 src_unpack() {
@@ -199,6 +200,9 @@ src_configure() {
 }
 
 src_compile() {
+	# Give it an existing bogus ivy home #672220
+	local -x IVY_HOME="${T}"
+
 	# Create symlinks of jars for the required dependencies
 	if use java; then
 		pushd "${S}"/bindings/java &>/dev/null || die
