@@ -1512,6 +1512,7 @@ gcc_do_filter_flags() {
 	fi
 	if ! tc_version_is_at_least 4.1 ; then
 		filter-flags -fdiagnostics-show-option
+		filter-flags -Wstack-protector
 	fi
 
 	if tc_version_is_at_least 3.4 ; then
