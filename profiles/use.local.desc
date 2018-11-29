@@ -2940,7 +2940,6 @@ media-libs/mediastreamer:ortp - Enable usage of net-libs/ortp
 media-libs/mediastreamer:pcap - Enable usage of net-libs/libpcap
 media-libs/mediastreamer:silk - Use silk (skype protocol) codec plugin
 media-libs/mediastreamer:video - Enable video support
-media-libs/mesa:bindist - Disable patent-encumbered ARB_texture_float, EXT_texture_shared_exponent, and EXT_packed_float extensions.
 media-libs/mesa:classic - Build drivers based on the classic architecture.
 media-libs/mesa:d3d9 - Enable Direct 3D9 API through Nine state tracker. Can be used together with patched wine.
 media-libs/mesa:dri3 - Enable DRI3 support.
@@ -2951,7 +2950,6 @@ media-libs/mesa:gles1 - Enable GLESv1 support.
 media-libs/mesa:gles2 - Enable GLESv2 support.
 media-libs/mesa:llvm - Enable LLVM backend for Gallium3D.
 media-libs/mesa:opencl - Enable the Clover Gallium OpenCL state tracker.
-media-libs/mesa:openmax - Enable OpenMAX video decode/encode acceleration for Gallium3D.
 media-libs/mesa:osmesa - Build the Mesa library for off-screen rendering.
 media-libs/mesa:pax_kernel - Enable if the user plans to run the package under a pax enabled hardened kernel
 media-libs/mesa:pic - disable optimized assembly code that is not PIC friendly
