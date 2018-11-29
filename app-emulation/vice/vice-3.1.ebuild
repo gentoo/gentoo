@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -85,8 +85,9 @@ DEPEND="${RDEPEND}
 		)
 	)"
 
-PATCH=(
-	"${FILESDIR}"/${P}-autotools.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.4.27-autotools.patch
+	"${FILESDIR}"/${P}-ffmpeg4.patch
 )
 
 src_prepare() {
