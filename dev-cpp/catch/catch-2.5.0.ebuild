@@ -3,39 +3,44 @@
 
 EAPI=6
 
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-inherit cmake-utils
+inherit cmake-utils python-any-r1
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/catchorg/Catch2.git"
-	EGIT_BRANCH="Catch1.x"
 else
-	MY_P=${PN^}-${PV}
+	MY_P=${PN^}2-${PV}
 	SRC_URI="https://github.com/catchorg/Catch2/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 
-	S="${WORKDIR}/${PN^}2-${PV}"
+	S=${WORKDIR}/${MY_P}
 fi
 
 DESCRIPTION="Modern C++ header-only framework for unit-tests"
 HOMEPAGE="https://github.com/catchorg/Catch2"
 
 LICENSE="Boost-1.0"
-SLOT="1"
+SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="!<dev-cpp/catch-1.12.2:0"
+DEPEND="test? ( ${PYTHON_DEPS} )"
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_configure() {
 	local mycmakeargs=(
-		-DNO_SELFTEST=$(usex !test)
+		-DCATCH_ENABLE_WERROR=OFF
+		-DBUILD_TESTING=$(usex test)
+		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 	)
-	cmake-utils_src_configure
-}
+	use test &&
+		mycmakeargs+=(-DPYTHON_EXECUTABLE="${PYTHON}")
 
-src_install() {
-	cmake-utils_src_install
-	dodoc -r docs/.
+	cmake-utils_src_configure
 }
