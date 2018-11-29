@@ -21,3 +21,5 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 "
 RDEPEND="${DEPEND}"
+
+RESTRICT+=" test" # bug 668872
