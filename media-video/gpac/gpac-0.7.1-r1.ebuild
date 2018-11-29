@@ -105,41 +105,45 @@ src_prepare() {
 src_configure() {
 	tc-export CC CXX AR RANLIB
 
-	econf \
-		--enable-svg \
-		--enable-pic \
-		--disable-amr \
-		--use-js=no \
-		--use-ogg=system \
-		$(use_enable alsa) \
-		$(use_enable debug) \
-		$(use_enable dvb dvb4linux) \
-		$(use_enable ipv6) \
-		$(use_enable jack jack yes) \
-		$(use_enable opengl 3d) \
-		$(use_enable oss oss-audio) \
-		$(use_enable pulseaudio pulseaudio yes) \
-		$(use_enable sdl) \
-		$(use_enable ssl) \
-		$(use_enable static-libs static-lib) \
-		$(use_enable X x11) $(use_enable X x11-shm) $(use_enable X x11-xv) \
-		--disable-wx \
-		$(my_use a52) \
-		$(my_use aac faad) \
-		$(my_use dvb dvbx) \
-		$(my_use ffmpeg) \
-		$(my_use jpeg) \
-		$(my_use jpeg2k openjpeg) \
-		$(my_use mad) \
-		$(my_use png) \
-		$(my_use theora) \
-		$(my_use truetype ft) \
-		$(my_use vorbis) \
-		$(my_use xvid) \
-		--extra-cflags="${CFLAGS}" \
-		--cc="$(tc-getCC)" \
-		--libdir="/$(get_libdir)" \
+	local myeconfargs=(
+		--extra-cflags="${CFLAGS}"
+		--cc="$(tc-getCC)"
+		--libdir="/$(get_libdir)"
 		--verbose
+		--enable-pic
+		--enable-svg
+		--disable-amr
+		--disable-wx
+		--use-js=no
+		--use-ogg=system
+		$(use_enable alsa)
+		$(use_enable debug)
+		$(use_enable dvb dvb4linux)
+		$(use_enable ipv6)
+		$(use_enable jack jack yes)
+		$(use_enable opengl 3d)
+		$(use_enable oss oss-audio)
+		$(use_enable pulseaudio pulseaudio yes)
+		$(use_enable sdl)
+		$(use_enable ssl)
+		$(use_enable static-libs static-lib)
+		$(use_enable X x11)
+		$(use_enable X x11-shm)
+		$(use_enable X x11-xv)
+		$(my_use a52)
+		$(my_use aac faad)
+		$(my_use dvb dvbx)
+		$(my_use ffmpeg)
+		$(my_use jpeg)
+		$(my_use jpeg2k openjpeg)
+		$(my_use mad)
+		$(my_use png)
+		$(my_use theora)
+		$(my_use truetype ft)
+		$(my_use vorbis)
+		$(my_use xvid)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
