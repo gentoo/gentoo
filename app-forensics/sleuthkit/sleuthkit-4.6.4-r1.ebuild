@@ -60,6 +60,7 @@ DEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.0-tools-shared-libs.patch
 	"${FILESDIR}"/${PN}-4.6.4-default-jar-location-fix.patch
+	"${FILESDIR}"/${PN}-4.6.4-CVE-2018-19497-backport.patch
 )
 
 src_unpack() {
