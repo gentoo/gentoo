@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -83,6 +83,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-tests.patch"
 	"${FILESDIR}/${P}-xxd.patch"
 	"${FILESDIR}/${P}-ffmpeg3.patch"
+	"${FILESDIR}/${P}-ffmpeg4.patch"
 )
 
 src_prepare() {
