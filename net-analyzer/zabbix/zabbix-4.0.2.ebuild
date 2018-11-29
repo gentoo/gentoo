@@ -118,7 +118,8 @@ java_prepare() {
 }
 
 src_prepare() {
-	default
+	eapply -p1 "${FILESDIR}/4.0/patches/zbx401-modulepathfix.patch"
+	eapply_user
 }
 
 src_configure() {
