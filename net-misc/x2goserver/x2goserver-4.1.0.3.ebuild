@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit multilib systemd toolchain-funcs user xdg-utils
 
 DESCRIPTION="The X2Go server"
@@ -52,6 +52,9 @@ src_prepare() {
 	default
 	# Multilib clean
 	sed -e "s#/lib/#/$(get_libdir)/#" -i x2goserver/bin/x2gopath || die
+
+	# Do not compress man pages by default
+	sed '/^[[:space:]]*gzip.*man/d' -i */Makefile || die
 }
 
 src_compile() {
