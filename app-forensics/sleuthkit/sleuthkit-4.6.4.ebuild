@@ -199,6 +199,9 @@ src_configure() {
 }
 
 src_compile() {
+	# Give it an existing bogus ivy home #672220
+	local -x IVY_HOME="${T}"
+
 	# Create symlinks of jars for the required dependencies
 	if use java; then
 		pushd "${S}"/bindings/java &>/dev/null || die
