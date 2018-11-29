@@ -115,6 +115,9 @@ src_prepare() {
 		sed -i -e 's/ tests//' {.,gio,glib}/Makefile.am || die
 	fi
 
+	# Less max runs in network monitor race test to avoid hitting timeout limits
+	eapply "${FILESDIR}"/${PV}-network-monitor-race-test-iterations.patch # included in 2.57.1
+
 	# gdbus-codegen is a separate package
 	eapply "${FILESDIR}"/${PN}-2.54.3-external-gdbus-codegen.patch
 
