@@ -9032,8 +9032,8 @@ net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Lin
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
-net-misc/x2goclient 4.1.1.0 4.1.2.1: The X2Go Qt client
-net-misc/x2goserver 4.0.1.22 4.1.0.2: The X2Go server
+net-misc/x2goclient 4.1.2.1: The X2Go Qt client
+net-misc/x2goserver 4.1.0.2: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
 net-misc/youtube-dl 2018.11.18: Download videos from YouTube.com (and more sites...)
