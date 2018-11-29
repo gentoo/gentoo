@@ -43,3 +43,12 @@ RDEPEND="${DEPEND}
 	!kde-apps/kdepim-l10n
 	!kde-apps/kmail:4
 "
+
+src_test() {
+	# selectiontypetreewidgettest is broken, bug #665690
+	local myctestargs=(
+		-E "(selectiontypetreewidgettest)"
+	)
+
+	kde5_src_test
+}
