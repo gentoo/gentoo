@@ -16,10 +16,9 @@ case ${PV} in
 	inherit git-r3
 	;;
 *)
-	CODENAME="Leia"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/notspiff/audiodecoder.sidplay/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/audiodecoder.sidplay-${PV}-${CODENAME}"
+	SRC_URI="https://github.com/notspiff/audiodecoder.sidplay/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/audiodecoder.sidplay-${PV}"
 	;;
 esac
 
@@ -28,8 +27,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	~media-tv/kodi-9999
-	~media-libs/kodi-platform-9999
+	=media-tv/kodi-17*
+	=media-libs/kodi-platform-17*
 	media-libs/libsidplay:2
 	"
 
