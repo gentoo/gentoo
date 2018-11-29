@@ -77,7 +77,8 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_kdeapps_dep kdepim-runtime)
 "
 
-RESTRICT+=" test" # tests are either broken or hang, bug #665686
+# testkodaymatrix is broken, akonadi* tests need DBus, bug #665686
+RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
