@@ -14,14 +14,14 @@ else
 		KEYWORDS="~amd64 ~x86"
 fi
 
-inherit eutils fcaps meson pam
+inherit eutils fcaps meson
 
 DESCRIPTION="i3-compatible Wayland window manager"
 HOMEPAGE="https://swaywm.org"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="elogind fish-completion +swaybar +swaybg +swaylock systemd +tray wallpapers X zsh-completion"
+IUSE="elogind fish-completion +pam +swaybar +swaybg +swayidle +swaylock +swaymsg +swaynag systemd +tray wallpapers X zsh-completion"
 REQUIRED_USE="?? ( elogind systemd )"
 
 RDEPEND="~dev-libs/wlroots-9999[systemd=,elogind=,X=]
@@ -38,12 +38,12 @@ RDEPEND="~dev-libs/wlroots-9999[systemd=,elogind=,X=]
 	swaybar? ( x11-libs/gdk-pixbuf:2[jpeg] )
 	swaybg? ( x11-libs/gdk-pixbuf:2[jpeg] )
 	swaylock? (
-		virtual/pam
+		pam? ( virtual/pam )
 		x11-libs/gdk-pixbuf:2[jpeg]
 	)
 	systemd? ( >=sys-apps/systemd-237 )
 	tray? ( >=sys-apps/dbus-1.10 )
-	X? ( x11-libs/libxcb:0=[xkb] )"
+	X? ( x11-libs/libxcb:0= )"
 DEPEND="${RDEPEND}"
 BDEPEND="app-text/scdoc
 	virtual/pkgconfig"
@@ -55,7 +55,14 @@ src_prepare() {
 
 	use swaybar || sed -e "s/subdir('swaybar')//g" -i meson.build || die
 	use swaybg || sed -e "s/subdir('swaybg')//g" -i meson.build || die
-	use swaylock || sed -e "s/subdir('swaylock')//g" -i meson.build || die
+	use swayidle || sed -e "s/subdir('swayidle')//g" -e "/swayidle.[0-9].scd/d" \
+		-e "/completions\/[a-z]\+\/_\?swayidle/d" -i meson.build || die
+	use swaylock || sed -e "s/subdir('swaylock')//g" -e "/swaylock.[0-9].scd/d" \
+		-e "/completions\/[a-z]\+\/_\?swaylock/d" -i meson.build || die
+	use swaymsg || sed -e "s/subdir('swaymsg')//g" -e "/swaymsg.[0-9].scd/d" \
+		-e "/completions\/[a-z]\+\/_\?swaymsg/d" -i meson.build || die
+	use swaynag || sed -e "s/subdir('swaynag')//g" -e "/swaynag.[0-9].scd/d" \
+		-e "/completions\/[a-z]\+\/_\?swaynag/d" -i meson.build || die
 }
 
 src_configure() {
@@ -71,12 +78,6 @@ src_configure() {
 	meson_src_configure
 }
 
-src_install() {
-	meson_src_install
-
-	use swaylock && newpamd swaylock/pam/swaylock.linux swaylock
-}
-
 pkg_postinst() {
 	elog "You must be in the input group to allow sway to access input devices!"
 	local dbus_cmd=""
@@ -90,5 +91,8 @@ pkg_postinst() {
 		elog ""
 		elog "If you use ConsoleKit2, remember to launch sway using:"
 		elog "exec ck-launch-session ${dbus_cmd}sway"
+	fi
+	if use swaylock && ! use pam; then
+		fcaps cap_sys_admin usr/bin/swaylock
 	fi
 }
