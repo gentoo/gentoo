@@ -77,6 +77,7 @@ src_prepare() {
 		Bochs_disasm
 		cpp-optparse
 		glslang
+		imgui
 		# FIXME: xxhash can't be found by cmake
 		xxhash
 		# no support for for using system library
