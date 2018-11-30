@@ -24,8 +24,6 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="X wayland"
 
-# Old packaging will cause file collisions
-RDEPEND="!<=media-libs/vulkan-loader-1.1.70.0-r999"
 DEPEND="${PYTHON_DEPS}
 		>=dev-util/glslang-7.9.2888:=[${MULTILIB_USEDEP}]
 		>=dev-util/spirv-tools-2018.2-r1:=[${MULTILIB_USEDEP}]
