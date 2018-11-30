@@ -264,12 +264,21 @@
     </configuration>
 --- a/share/gprconfig/linker.xml	2018-10-17 21:36:15.856883517 +0200
 +++ b/share/gprconfig/linker.xml	2018-10-17 21:35:15.985896804 +0200
+@@ -1025,7 +1025,7 @@
+     </targets>
+     <config>
+    for Library_Partial_Linker use
+-         ("${PATH(ada)}${PREFIX(ada)}gcc", "-nostdlib", "-Wl,-r", "-o");
++         ("${PATH(ada)}${PREFIX(ada)}gcc-@VER@", "-nostdlib", "-Wl,-r", "-no-pie", "-o");
+     </config>
+   </configuration>
+ 
 @@ -1044,7 +1044,7 @@
      </targets>
      <config>
     for Library_Partial_Linker use
 -         ("${PATH(c)}${PREFIX(c)}gcc", "-nostdlib", "-Wl,-r", "-o");
-+         ("${PATH(c)}${PREFIX(c)}gcc-@VER@", "-nostdlib", "-Wl,-r", "-o");
++         ("${PATH(c)}${PREFIX(c)}gcc-@VER@", "-nostdlib", "-Wl,-r", "-no-pie", "-o");
      </config>
    </configuration>
  
