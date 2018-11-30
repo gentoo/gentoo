@@ -310,13 +310,6 @@ dev-libs/gost-engine
 =sys-libs/libomp-7.0.1_rc*
 =sys-libs/llvm-libunwind-7.0.1_rc*
 
-# Andreas Sturmlechner <asturm@gentoo.org> (06 Nov 2018)
-# This was already outdated by the arrival of kde-apps/kdeartwork-iconthemes,
-# which itself was removed more than two years ago. Dead upstream.
-# Masked for removal by end of the month, bugs #670424, #670842
-x11-themes/nuvola
-x11-themes/Tulliana
-
 # Brian Evans <grknight@gentoo.org> (05 Nov 2018)
 # Causes a dependency loop in the OpenRC script. Bug #651998
 =sys-fs/cryptsetup-2.0.5-r1
