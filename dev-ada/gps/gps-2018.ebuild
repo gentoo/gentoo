@@ -17,10 +17,10 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5b0cf627c7a4475261f97ceb
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="gnat_2017 gnat_2018"
+IUSE="gnat_2017 +gnat_2018"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-ada/gnatcoll-db[gnat_2017=,gnat_2018,gnatcoll_db2ada,gnatinspect,xref]
+	dev-ada/gnatcoll-db[gnat_2017=,gnat_2018=,gnatcoll_db2ada,gnatinspect,xref]
 	dev-ada/gnatcoll-bindings[gnat_2017=,gnat_2018=,python]
 	~dev-ada/gtkada-2018[gnat_2017=,gnat_2017=]
 	dev-ada/libadalang[gnat_2017=,gnat_2018=]
