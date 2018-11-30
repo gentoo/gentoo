@@ -275,6 +275,10 @@ src_compile() {
 
 src_test() {
 	cd "${MY_BUILDDIR}"
+
+	# bug 637066
+	filter-flags -Wall -Wreturn-type
+
 	emake -k check
 }
 
