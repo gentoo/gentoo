@@ -24,8 +24,6 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+cube +vulkaninfo X wayland"
 
-# Old packaging will cause file collisions
-RDEPEND="!<=media-libs/vulkan-loader-1.1.70.0-r999"
 DEPEND="${PYTHON_DEPS}
 	cube? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )
 	dev-util/vulkan-headers
