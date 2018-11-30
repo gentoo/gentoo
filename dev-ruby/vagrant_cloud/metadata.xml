@@ -5,12 +5,7 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
-	<use>
-		<flag name="virtualbox">
-			Use VirtualBox provider.
-		</flag>
-	</use>
 	<upstream>
-		<remote-id type="github">hashicorp/vagrant</remote-id>
+		<remote-id type="github">hashicorp/vagrant_cloud</remote-id>
 	</upstream>
 </pkgmetadata>
