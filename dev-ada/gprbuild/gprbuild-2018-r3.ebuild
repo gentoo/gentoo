@@ -30,9 +30,7 @@ REQUIRED_USE="!gnat_2016 ^^ ( gnat_2017 gnat_2018 )"
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
-	if use gnat_2016; then
-		GCC_PV=4.9.4
-	elif use gnat_2017; then
+	if use gnat_2017; then
 		GCC_PV=6.3.0
 	else
 		GCC_PV=7.3.1
@@ -49,10 +47,6 @@ src_prepare() {
 		-e "s:@GNATBIND@:gnatbind-${GCC_PV}:g" \
 		src/gprlib.adb \
 		|| die
-#	sed -i \
-#		-e "s:\"-Wl,-r\":\"-r\":g" \
-#		share/gprconfig/linker.xml \
-#		|| die
 }
 
 src_configure() {
@@ -88,6 +82,5 @@ src_install() {
 	doins share/gprconfig/*
 	insinto /usr/share/gpr
 	doins share/_default.gpr
-	insinto /usr/share/gprconfig
 	einstalldocs
 }
