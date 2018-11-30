@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ IUSE="debug nls lm_sensors selinux static"
 
 CDEPEND="
 	nls? ( virtual/libintl )
-	lm_sensors? ( sys-apps/lm_sensors )
+	lm_sensors? ( sys-apps/lm_sensors:= )
 "
 DEPEND="
 	${CDEPEND}
