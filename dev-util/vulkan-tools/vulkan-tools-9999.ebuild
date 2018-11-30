@@ -9,7 +9,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	EGIT_COMMIT="2cfddd146d666efe0ed06ef1d2bc5565821df144"
+	EGIT_COMMIT="9bbdd552f0fd62741aa1f1e02ab3eafc45cf3c1e"
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-Tools/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-Tools-${EGIT_COMMIT}"
@@ -24,8 +24,6 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+cube +vulkaninfo X wayland"
 
-# Old packaging will cause file collisions
-RDEPEND="!<=media-libs/vulkan-loader-1.1.70.0-r999"
 DEPEND="${PYTHON_DEPS}
 	cube? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )
 	dev-util/vulkan-headers

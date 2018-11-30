@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	EGIT_COMMIT="0ec7ce985fba34d5303f84f09fab79cd2b9874a8"
+	EGIT_COMMIT="6e6da6ccab8931f7c30815966ef839b1155e5bec"
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-ValidationLayers-${EGIT_COMMIT}"
@@ -24,22 +24,15 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="X wayland"
 
-# Old packaging will cause file collisions
-RDEPEND="!<=media-libs/vulkan-loader-1.1.70.0-r999"
 DEPEND="${PYTHON_DEPS}
-		dev-util/glslang:=[${MULTILIB_USEDEP}]
+		>=dev-util/glslang-7.10.2984:=[${MULTILIB_USEDEP}]
 		>=dev-util/spirv-tools-2018.2-r1:=[${MULTILIB_USEDEP}]
-		>=dev-util/vulkan-headers-1.1.77.0-r1
+		>=dev-util/vulkan-headers-1.1.92.0
 		wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 		X? (
 		   x11-libs/libX11:=[${MULTILIB_USEDEP}]
 		   x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
 		   )"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-Use-a-file-to-get-the-spirv-tools-commit-ID.patch"
-	"${FILESDIR}/${PN}-1.1.77.0-layers-Rework-include-dependencies.patch"
-	 )
 
 multilib_src_configure() {
 	local mycmakeargs=(

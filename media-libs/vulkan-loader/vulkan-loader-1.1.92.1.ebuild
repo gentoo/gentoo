@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64"
-	EGIT_COMMIT="c71d5027a9d7fe4b170c0ff69bad67efd1d530cf"
+	EGIT_COMMIT="4cd7e44fc1ca6c4d8361720b43a3588ddf9fc4b6"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-Loader/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-Loader-${EGIT_COMMIT}"
 fi
@@ -26,14 +26,12 @@ IUSE="layers wayland X"
 
 PDEPEND="layers? ( media-libs/vulkan-layers:=[${MULTILIB_USEDEP}] )"
 DEPEND="${PYTHON_DEPS}
-	>=dev-util/vulkan-headers-1.1.77.0-r1
+	>=dev-util/vulkan-headers-1.1.92.0
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
 		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
 	)"
-
-PATCHES=( "${FILESDIR}"/vulkan-loader-1.1.77.0-loader-Rework-include-dependencies.patch )
 
 multilib_src_configure() {
 	local mycmakeargs=(
