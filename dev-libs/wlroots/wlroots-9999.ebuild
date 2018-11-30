@@ -32,7 +32,7 @@ RDEPEND=">=dev-libs/libinput-1.7.0:0=
 	elogind? ( >=sys-auth/elogind-237 )
 	icccm? ( x11-libs/xcb-util-wm )
 	systemd? ( >=sys-apps/systemd-237 )
-	x11-backend? ( x11-libs/libxcb:0=[xkb] )
+	x11-backend? ( x11-libs/libxcb:0= )
 	X? (
 		x11-base/xorg-server[wayland]
 		x11-libs/libxcb:0=
@@ -49,7 +49,6 @@ src_configure() {
 		"-Dxcb-errors=disabled"
 		-Dlibcap=$(usex filecaps enabled disabled)
 		-Dxcb-icccm=$(usex icccm enabled disabled)
-		-Dxcb-xkb=$(usex x11-backend enabled disabled)
 		-Dxwayland=$(usex X enabled disabled)
 		-Dx11-backend=$(usex x11-backend enabled disabled)
 		-Drootston=$(usex rootston true false)
