@@ -1764,6 +1764,11 @@
       <name>Miroslav Šulc</name>
       <role>Developer</role>
     </member>
+    <member>
+      <email>gyakovlev@gentoo.org</email>
+      <name>Georgy Yakovlev</name>
+      <role>Developer</role>
+    </member>
     <member is-lead="1">
       <email>monsieurp@gentoo.org</email>
       <name>Patrice Clement</name>
