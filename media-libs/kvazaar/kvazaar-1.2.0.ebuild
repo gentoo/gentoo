@@ -33,6 +33,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
+	sed -e "/^dist_doc_DATA/s/COPYING //" -i Makefile.am || die
 	eautoreconf
 	if use test && [[ ${PV} != *9999 ]]; then
 		# https://bugs.gentoo.org/show_bug.cgi?id=595932
