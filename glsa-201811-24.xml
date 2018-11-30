@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-24">
+  <title>PostgreSQL: SQL injection</title>
+  <synopsis>A SQL injection in PostgreSQL may allow attackers to execute
+    arbitrary SQL statements.
+  </synopsis>
+  <product type="ebuild">postgresql</product>
+  <announced>2018-11-30</announced>
+  <revised count="1">2018-11-30</revised>
+  <bug>670724</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/postgresql" auto="yes" arch="*">
+      <unaffected range="rge">9.3.25</unaffected>
+      <unaffected range="rge">9.4.20</unaffected>
+      <unaffected range="rge">9.5.15</unaffected>
+      <unaffected range="rge">9.6.11</unaffected>
+      <unaffected range="rge">10.6</unaffected>
+      <unaffected range="ge">11.1</unaffected>
+      <vulnerable range="rlt">9.3.25</vulnerable>
+      <vulnerable range="rlt">9.4.20</vulnerable>
+      <vulnerable range="rlt">9.5.15</vulnerable>
+      <vulnerable range="rlt">9.6.11</vulnerable>
+      <vulnerable range="rlt">10.6</vulnerable>
+      <vulnerable range="lt">11.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PostgreSQL is an open source object-relational database management
+      system.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in PostgreSQL’s pg_upgrade and pg_dump.</p>
+  </description>
+  <impact type="normal">
+    <p>An attacker, by enticing a user to process a specially crafted trigger
+      definition, can execute arbitrary SQL statements with superuser
+      privileges.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PostgreSQL 9.3.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.3.25"
+    </code>
+    
+    <p>All PostgreSQL 9.4.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.4.20"
+    </code>
+    
+    <p>All PostgreSQL 9.5.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.5.15"
+    </code>
+    
+    <p>All PostgreSQL 9.6.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.6.11"
+    </code>
+    
+    <p>All PostgreSQL 10.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-10.6"
+    </code>
+    
+    <p>All PostgreSQL 11.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-11.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16850">CVE-2018-16850</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-29T21:19:15Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-11-30T08:55:37Z">b-man</metadata>
+</glsa>
