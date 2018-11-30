@@ -29,7 +29,7 @@ RDEPEND="!<=media-libs/vulkan-loader-1.1.70.0-r999"
 DEPEND="${PYTHON_DEPS}
 		>=dev-util/glslang-7.10.2984:=[${MULTILIB_USEDEP}]
 		>=dev-util/spirv-tools-2018.2-r1:=[${MULTILIB_USEDEP}]
-		>=dev-util/vulkan-headers-1.1.82.0
+		>=dev-util/vulkan-headers-1.1.92.0
 		wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 		X? (
 		   x11-libs/libX11:=[${MULTILIB_USEDEP}]
