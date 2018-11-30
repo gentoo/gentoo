@@ -159,6 +159,8 @@ REQUIRED_USE="
 	collectd_plugins_python?		( ${PYTHON_REQUIRED_USE} )
 	collectd_plugins_smart?			( udev )"
 
+PATCHES=( "${FILESDIR}"/${PN}-5.8.1-lm_sensors-4.5.0-compatibility.patch )
+
 # @FUNCTION: collectd_plugin_kernel_linux
 # @DESCRIPTION:
 # USAGE: <plugin name> <kernel_options> <severity>
