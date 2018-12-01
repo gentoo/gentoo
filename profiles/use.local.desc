@@ -678,6 +678,8 @@ app-misc/screen:multiuser - Enable multiuser support (by setting correct permiss
 app-misc/screen:nethack - Express error messages in nethack style
 app-misc/screen:utmp - Include utmp support
 app-misc/screenfetch:X - Use the media-gfx/scrot package to take screenshots
+app-misc/skim:tmux - Install sk-tmux script to run skim in a tmux pane
+app-misc/skim:vim - Install vim plugin for skim
 app-misc/sphinx:id64 - use 64-bit document and word IDs
 app-misc/sphinx:mariadb - Add mariadb database support
 app-misc/sphinx:re2 - use the dev-libs/re2 regular expression library
@@ -5213,6 +5215,7 @@ sys-apps/portage:rsync-verify - Enable full-tree cryptographic verification of G
 sys-apps/portage:xattr - Preserve extended attributes (filesystem-stored metadata) when installing files. Usually only required for hardened systems.
 sys-apps/qingy:consolekit - Enable native consolekit support
 sys-apps/qingy:opensslcrypt - Encrypt communications between qingy and its GUI using dev-libs/openssl
+sys-apps/ripgrep:man - Build and install man pages.
 sys-apps/rng-tools:jitterentropy - Enable Jitter RNG entropy support
 sys-apps/rng-tools:nistbeacon - Enable NIST beacon entropy support
 sys-apps/sed:forced-sandbox - Always enable --sandbox mode for simpler/secure runtime (disables e/r/w commands). Note: This may break many configure scripts, so it should be avoided on dev systems (and generally used on binpkg/final systems only).
