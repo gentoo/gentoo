@@ -7,6 +7,15 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (01 Dec 2018)
+# Moved from use.mask to specific packages.
+# Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)
+# media-sound/mumble is masked/not keyworded at this point, bug #656826.
+games-fps/quake3 mumble
+games-fps/turtlearena mumble
+games-fps/urbanterror mumble
+games-rpg/manaplus mumble
+
 # Michał Górny <mgorny@gentoo.org> (28 Nov 2018)
 # Requires last-rited games-server/ut2003-ded.
 games-fps/ut2003 dedicated
@@ -60,10 +69,6 @@ mate-extra/caja-extensions gksu
 # Alfredo Tupone <tupone@gentoo.org> (24 Oct 2018)
 # jit brokes build of gnat-gpl
 dev-lang/gnat-gpl jit
-
-# Matt Turner <mattst88@gentoo.org> (16 Oct 2018)
-# media-libs/libomxil-bellagio is masked for removal.
-media-libs/mesa openmax
 
 # Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
 # Requires www-client/firefox and mail-client/thunderbird
