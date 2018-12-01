@@ -13,6 +13,6 @@ app-xemacs/dired
 app-xemacs/w3
 app-xemacs/prog-modes
 "
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages
