@@ -19,8 +19,7 @@
 
 # Thomas Deutschmann <whissi@gentoo.org> (15 Nov 2018)
 # - rdrand plugin is supported on amd64
-# - padlock plugin is supported on amd64
-net-vpn/strongswan -strongswan_plugins_rdrand -strongswan_plugins_padlock
+net-vpn/strongswan -strongswan_plugins_rdrand
 
 # James Le Cuirot <chewi@gentoo.org> (02 Nov 2018)
 # Vulkan is only available on amd64 at present.
