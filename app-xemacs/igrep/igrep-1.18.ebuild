@@ -11,6 +11,6 @@ RDEPEND="app-xemacs/dired
 app-xemacs/xemacs-base
 app-xemacs/efs
 "
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages
