@@ -20,7 +20,6 @@ IUSE=""
 ruby_add_rdepend "|| (
 			dev-ruby/activerecord:5.2
 			dev-ruby/activerecord:5.1
-			dev-ruby/activerecord:5.0
 			dev-ruby/activerecord:4.2 )"
 
 ruby_add_bdepend "test? (
