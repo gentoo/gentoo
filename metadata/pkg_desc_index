@@ -10393,7 +10393,7 @@ virtual/opengl 7.0-r2: Virtual for OpenGL implementation
 virtual/os-headers 0: Virtual for operating system headers
 virtual/package-manager 1: Virtual for the package manager
 virtual/pager 0: Virtual for command-line pagers
-virtual/pam 0 0-r1: Virtual for PAM (Pluggable Authentication Modules)
+virtual/pam 0-r1: Virtual for PAM (Pluggable Authentication Modules)
 virtual/perl-Archive-Tar 2.40.100_rc-r6: Virtual for Archive-Tar
 virtual/perl-Attribute-Handlers 0.990.0-r2: Virtual for Attribute-Handlers
 virtual/perl-AutoLoader 5.740.0-r6: Virtual for AutoLoader

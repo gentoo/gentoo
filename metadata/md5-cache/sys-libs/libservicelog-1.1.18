@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-db/sqlite:= sys-libs/librtas
+DESCRIPTION=Provides a library for logging service-related events
+EAPI=7
+HOMEPAGE=http://linux-diag.sourceforge.net/servicelog/
+IUSE=static-libs
+KEYWORDS=~ppc ~ppc64
+LICENSE=LGPL-2.1+
+RDEPEND=dev-db/sqlite:= sys-libs/librtas virtual/logger
+SLOT=0
+SRC_URI=mirror://sourceforge/linux-diag/libservicelog-1.1.18.tar.gz
+_md5_=fe7f12798d4223f2ec03c058b39919f6
