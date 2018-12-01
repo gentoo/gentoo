@@ -7,7 +7,7 @@ SLOT="0"
 DESCRIPTION="ERC - The Emacs IRC Client"
 XEMACS_PKG_CAT="standard"
 
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages
 
