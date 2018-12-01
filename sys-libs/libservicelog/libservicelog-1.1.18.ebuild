@@ -1,8 +1,7 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Provides a library for logging service-related events"
 SRC_URI="mirror://sourceforge/linux-diag/${P}.tar.gz"
@@ -30,5 +29,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
