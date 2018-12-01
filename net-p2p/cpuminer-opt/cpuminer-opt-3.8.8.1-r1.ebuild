@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ REQUIRED_USE="cpu_flags_x86_sse2"
 DEPEND="
 	dev-libs/gmp:0
 	dev-libs/jansson
-	curl? ( >=net-misc/curl-7.15[ssl] )
+	>=net-misc/curl-7.15[ssl]
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 "
@@ -35,7 +35,7 @@ src_prepare() {
 
 src_configure() {
 	append-ldflags -Wl,-z,noexecstack
-	econf --with-crypto $(use_with curl)
+	econf --with-crypto --with-curl
 }
 
 src_install() {
@@ -43,4 +43,8 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/${PN}.service
 	insinto "/etc/${PN}"
 	doins cpuminer-conf.json
+}
+
+src_test() {
+	./cpuminer --cputest || die
 }
