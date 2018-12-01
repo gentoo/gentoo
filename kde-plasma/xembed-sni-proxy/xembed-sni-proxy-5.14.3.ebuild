@@ -13,7 +13,7 @@ DESCRIPTION="Legacy xembed tray icons support for SNI-only system trays"
 HOMEPAGE="https://cgit.kde.org/plasma-workspace.git/tree/xembed-sni-proxy/Readme.md"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 DEPEND="
 	$(add_frameworks_dep extra-cmake-modules)
