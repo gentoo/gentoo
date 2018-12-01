@@ -8,5 +8,5 @@ inherit kde5
 DESCRIPTION="Official GTK+ port of Plasma's Breeze widget style"
 HOMEPAGE="https://cgit.kde.org/breeze-gtk.git"
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
