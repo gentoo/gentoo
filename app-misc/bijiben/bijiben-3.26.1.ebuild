@@ -23,10 +23,10 @@ RDEPEND="
 	sys-apps/util-linux
 "
 DEPEND="${RDEPEND}
-	app-text/yelp-tools
 	dev-libs/appstream-glib
 	dev-util/gdbus-codegen
 	>=dev-util/intltool-0.50.1
+	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
 "
