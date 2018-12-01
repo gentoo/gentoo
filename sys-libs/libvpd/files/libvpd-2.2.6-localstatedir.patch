@@ -1,0 +1,21 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -66,6 +66,6 @@
+ 
+ install-exec-hook:
+ 	mkdir -p $(DESTDIR)/${sysconfdir}/udev/rules.d/
+-	mkdir -p $(DESTDIR)/${localstatedir}/lib/lsvpd/
++	mkdir -p $(DESTDIR)/${localstatedir}/lsvpd/
+ 	install -D --mode=644 90-vpdupdate.rules \
+                 ${DESTDIR}/${sysconfdir}/udev/rules.d/90-vpdupdate.rules
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1046,7 +1046,7 @@
+ 
+ install-exec-hook:
+ 	mkdir -p $(DESTDIR)/${sysconfdir}/udev/rules.d/
+-	mkdir -p $(DESTDIR)/${localstatedir}/lib/lsvpd/
++	mkdir -p $(DESTDIR)/${localstatedir}/lsvpd/
+ 	install -D --mode=644 90-vpdupdate.rules \
+                 ${DESTDIR}/${sysconfdir}/udev/rules.d/90-vpdupdate.rules
+ 
