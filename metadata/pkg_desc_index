@@ -1808,7 +1808,7 @@ app-xemacs/xslide 1.09 1.11: XSL editing support
 app-xemacs/xslt-process 1.14: XSLT processing support
 app-xemacs/xwem 1.22 1.23 1.26: X Emacs Window Manager
 app-xemacs/zenirc 1.16 1.18: ZENIRC IRC Client
-dev-ada/asis 2016 2017 2018: To develop tools for Ada software
+dev-ada/asis 2016 2018: To develop tools for Ada software
 dev-ada/aunit 2018: Ada unit testing framework
 dev-ada/aws 2017 2018: A complete Web development framework
 dev-ada/gnat_util 2017 2018: Provides access to GNAT compiler internals for AdaCore utilities
