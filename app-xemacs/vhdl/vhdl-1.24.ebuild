@@ -15,6 +15,6 @@ app-xemacs/ps-print
 app-xemacs/os-utils
 app-xemacs/cedet-common
 "
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages
