@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Jason Zaman <perfinion@gentoo.org> (06 Sep 2015)
@@ -14,10 +14,6 @@ kde-frameworks/kcoreaddons fam
 # apparently... #558100
 # https://archives.gentoo.org/gentoo-dev/message/38503d86a1c41bccfa607745467b1be7
 net-dns/bind seccomp
-
-# Matt Turner <mattst88@gentoo.org> (07 Mar 2014)
-# media-libs/libomxil-bellagio keyworded on amd64/x86
-media-libs/mesa openmax
 
 # Diego Elio Pettenò (27 Aug 2012)
 # The libpci access is only used for linux.

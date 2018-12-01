@@ -61,10 +61,6 @@ mate-extra/caja-extensions gksu
 # jit brokes build of gnat-gpl
 dev-lang/gnat-gpl jit
 
-# Matt Turner <mattst88@gentoo.org> (16 Oct 2018)
-# media-libs/libomxil-bellagio is masked for removal.
-media-libs/mesa openmax
-
 # Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
 # Requires www-client/firefox and mail-client/thunderbird
 # which are not available on all architectures

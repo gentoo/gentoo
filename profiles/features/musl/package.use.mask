@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # See bug #604542
@@ -14,9 +14,6 @@ sys-devel/llvm sanitize
 # even with --without-included-gettext
 sys-devel/gettext nls
 sys-fs/e2fsprogs nls
-
-# See bug #576928
-media-libs/mesa nptl
 
 # bash-malloc relies on sbrk which is implemented
 # as a fail-only stub in musl. breaks horribly if enabled.
