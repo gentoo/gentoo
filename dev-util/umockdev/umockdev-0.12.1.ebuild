@@ -18,19 +18,22 @@ IUSE="+introspection static-libs test"
 RDEPEND="
 	virtual/libudev:=[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.32:2[${MULTILIB_USEDEP}]
+	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
 "
 DEPEND="${RDEPEND}
-	test? ( ${PYTHON_DEPS} )
+	test? (
+		${PYTHON_DEPS}
+		virtual/libgudev:=[${MULTILIB_USEDEP}] )
 	app-arch/xz-utils
 	>=dev-util/gtk-doc-am-1.14
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 "
 
 # Tests seem to hang forever
-RESTRICT="test"
+# RESTRICT="test"
 
 multilib_src_configure() {
-	local ECONF_SOURCE=${S}
+	local ECONF_SOURCE="${S}"
 	econf \
 		--disable-gtk-doc \
 		$(multilib_native_use_enable introspection) \
