@@ -459,7 +459,7 @@ multilib_src_configure() {
 			--disable-shared \
 			--enable-static \
 			--enable-pic \
-			--extra-cflags="-DFF_API_CONVERGENCE_DURATION=0"
+			--disable-opencl
 		echo "${@}"
 		"${@}" || die
 		popd >/dev/null || die
