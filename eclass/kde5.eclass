@@ -215,11 +215,7 @@ case ${KDE_AUTODEPS} in
 
 		if [[ ${CATEGORY} = kde-apps ]]; then
 			[[ ${KDE_BLOCK_SLOT4} = true ]] && RDEPEND+=" !kde-apps/${PN}:4"
-			RDEPEND+="
-				!kde-apps/kde-l10n
-				!<kde-apps/kde4-l10n-16.12.0:4
-				!kde-apps/kdepim-l10n:5
-			"
+			RDEPEND+=" !kde-apps/kde-l10n" # TODO: drop after 18.08.3 removal
 		fi
 		;;
 esac
