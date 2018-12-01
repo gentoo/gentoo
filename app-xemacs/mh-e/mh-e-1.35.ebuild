@@ -23,6 +23,6 @@ app-xemacs/ecrypto
 app-xemacs/cedet-common
 app-xemacs/speedbar
 "
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages
