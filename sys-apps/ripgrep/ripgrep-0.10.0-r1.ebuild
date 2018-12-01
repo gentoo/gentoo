@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -129,7 +129,7 @@ src_install() {
 		$(usex pcre "--features pcre2" "") \
 		|| die "cargo install failed"
 
-	rm -f "${D}/usr/.crates.toml"
+	rm -f "${D}/usr/.crates.toml" || die
 
 	# hack to find/install generated files
 	# stamp file can be present in multiple dirs if we build additional features
