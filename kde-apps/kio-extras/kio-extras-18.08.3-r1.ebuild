@@ -11,7 +11,7 @@ inherit kde5
 DESCRIPTION="KIO plugins present a filesystem-like view of arbitrary data"
 HOMEPAGE="https://cgit.kde.org/kio-extras.git"
 SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${P}-sftp-18.11.80.patch.tar.xz"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="activities +man mtp openexr phonon samba +sftp taglib"
 
 COMMON_DEPEND="
