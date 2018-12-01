@@ -6,7 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="detailedmemory">Enable display of detailed memory information using <pkg>dev-qt/qtwebkit</pkg>.</flag>
 		<flag name="webkit">Enable display of detailed memory information using <pkg>dev-qt/qtwebkit</pkg>.</flag>
 	</use>
 </pkgmetadata>
