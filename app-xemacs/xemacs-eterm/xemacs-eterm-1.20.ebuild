@@ -13,7 +13,7 @@ DESCRIPTION="Terminal emulation"
 
 SRC_URI="http://ftp.xemacs.org/pub/xemacs/packages/${MY_PN}-${PV}-pkg.tar.gz"
 
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 
 RDEPEND="app-xemacs/xemacs-base
 "
