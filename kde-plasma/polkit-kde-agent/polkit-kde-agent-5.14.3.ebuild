@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="PolKit agent module for KDE Plasma"
 HOMEPAGE="https://www.kde.org"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE=""
 
 DEPEND="
