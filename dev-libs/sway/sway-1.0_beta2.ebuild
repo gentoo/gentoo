@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="elogind fish-completion +pam +swaybar +swaybg +swayidle +swaylock +swaymsg +swaynag systemd +tray wallpapers X zsh-completion"
 REQUIRED_USE="?? ( elogind systemd )"
 
-RDEPEND="~dev-libs/wlroots-9999[systemd=,elogind=,X=]
+RDEPEND="~dev-libs/wlroots-0.2[systemd=,elogind=,X=]
 	>=dev-libs/json-c-0.13:0=
 	>=dev-libs/libinput-1.6.0:0=
 	dev-libs/libpcre
@@ -67,6 +67,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
+		"-Dsway-version=${SWAY_PV}"
 		$(meson_use wallpapers default-wallpaper)
 		$(meson_use zsh-completion zsh-completions)
 		$(meson_use fish-completion fish-completions)
