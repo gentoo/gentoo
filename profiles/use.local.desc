@@ -2414,7 +2414,6 @@ kde-plasma/kinfocenter:pci - Show advanced PCI information
 kde-plasma/kmenuedit:hotkeys - Enable support for hotkey editing
 kde-plasma/kwin:gles2 - Use OpenGL ES 2 instead of full GL
 kde-plasma/kwin:multimedia - Enable effect video button in desktop effects KCM
-kde-plasma/libksysguard:detailedmemory - Enable display of detailed memory information using dev-qt/qtwebkit.
 kde-plasma/libksysguard:webkit - Enable display of detailed memory information using dev-qt/qtwebkit.
 kde-plasma/plasma-desktop:appstream - Enable AppStream software metadata support
 kde-plasma/plasma-desktop:ibus - Use ibus input method via app-i18n/ibus
@@ -2444,7 +2443,6 @@ kde-plasma/plasma-workspace:geolocation - Enables dataengine providing location 
 kde-plasma/plasma-workspace:prison - Enable support for barcodes/QRcodes
 kde-plasma/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-plasma/powerdevil:brightness-control - Enable screen brightness control using app-misc/ddcutil
-kde-plasma/powerdevil:consolekit - Enable sys-auth/consolekit support instead of logind session tracking
 kde-plasma/powerdevil:wireless - Enable wireless energy saving actions via kde-frameworks/bluez-qt and kde-frameworks/networkmanager-qt
 kde-plasma/systemsettings:classic - Enable classic mode plugin, requires kde-frameworks/khtml
 lxde-base/lxdm:consolekit - Enables support for authorization using consolekit
