@@ -13,7 +13,7 @@ inherit distutils-r1 flag-o-matic
 MY_PV=$(ver_rs 1-2 '_')
 
 DESCRIPTION="C++ BitTorrent implementation focusing on efficiency and scalability"
-HOMEPAGE="http://libtorrent.org"
+HOMEPAGE="https://libtorrent.org"
 SRC_URI="https://github.com/arvidn/libtorrent/releases/download/libtorrent_1_1_11/${P}.tar.gz"
 
 LICENSE="BSD"
