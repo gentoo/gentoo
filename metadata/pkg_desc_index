@@ -3052,7 +3052,7 @@ dev-libs/libbson 1.8.2: A BSON utility library
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.4.8-r2: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 1.2-r1: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
-dev-libs/libcdio 0.93: A library to encapsulate CD-ROM reading and control
+dev-libs/libcdio 0.93 2.0.0-r1: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.90_p1-r1 0.93_p1: an advanced CDDA reader with error correction
 dev-libs/libcec 3.1.0-r1 4.0.2 4.0.2-r2: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
 dev-libs/libcgroup 0.41-r5: Tools and libraries to configure and manage kernel control groups
@@ -5840,7 +5840,7 @@ dev-ruby/crack 0.4.3-r1: Really simple JSON and XML parsing, ripped from Merb an
 dev-ruby/crass 1.0.3: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.2.6: Wrap existing ruby scripts to be run as a daemon
-dev-ruby/dalli 2.7.6 2.7.8-r1: A high performance pure Ruby client for accessing memcached servers
+dev-ruby/dalli 2.7.8-r1: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/dbf 3.1.1: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/deep_merge 1.2.1: A simple set of utility functions for Hash
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
