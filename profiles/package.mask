@@ -481,12 +481,6 @@ app-misc/iguanaIR
 net-analyzer/nagvis
 
 # Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
-# Buggy (#499298), upstream is dead for a long time, maybe a switch to one
-# of the existing forks would be needed, abi_x86_32 doesn't work (#524498).
-# Removal in a month.
-media-plugins/alsaequal
-
-# Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
 # All this packages are broken and need major version bumps to fix them. See
 # bug #504114, #486510, #510550, #511096, #517260, #551784, #616490, #
 net-voip/linphone
