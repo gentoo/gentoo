@@ -1,8 +1,8 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils udev
+EAPI=7
+inherit udev
 
 DESCRIPTION="Library implementation for listing vpds"
 HOMEPAGE="https://sourceforge.net/projects/linux-diag/"
@@ -18,6 +18,9 @@ DEPEND="
 	sys-libs/zlib
 "
 RDEPEND="${DEPEND}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2.6-localstatedir.patch
+)
 
 src_configure() {
 	# sysconfdir is used only to establish where the udev rules file should go
@@ -29,7 +32,7 @@ src_configure() {
 }
 
 src_install(){
-	emake DESTDIR="${D}" install
-	prune_libtool_files
-
+	default
+	keepdir /var/lib/lsvpd
+	find "${D}" -name '*.la' -delete || die
 }
