@@ -7,6 +7,6 @@ SLOT="0"
 DESCRIPTION="Forms editing support (obsolete, use Widget instead)"
 XEMACS_PKG_CAT="standard"
 
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages
