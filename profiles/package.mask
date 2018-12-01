@@ -29,6 +29,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (1 Dec 2018)
+# Old Rails 5.0 version. This version is no longer maintained
+# upstream. Please update to Rails 5.1 or newer.
+# Masked for removal in 30 days.
+dev-ruby/rails:5.0
+dev-ruby/railties:5.0
+dev-ruby/activerecord:5.0
+dev-ruby/actionmailer:5.0
+dev-ruby/actionpack:5.0
+dev-ruby/actionview:5.0
+dev-ruby/activejob:5.0
+dev-ruby/actioncable:5.0
+dev-ruby/activemodel:5.0
+dev-ruby/activesupport:5.0
+
 # David Seifert <soap@gentoo.org> (29 Nov 2018)
 # Uses ancient APIs, abandoned by upstream, unsalvageable.
 # Removal in 30 days. Bug #662142.
