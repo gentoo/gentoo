@@ -10,7 +10,7 @@ inherit xemacs-packages
 SLOT="0"
 DESCRIPTION="GnuPG interface for Emacs"
 
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 
 RDEPEND="app-xemacs/xemacs-base
 app-xemacs/dired
