@@ -10,4 +10,4 @@ RDEPEND=diet? ( >=dev-libs/dietlibc-0.33_pre20090721 )
 SLOT=0
 SRC_URI=https://www.fefe.de/libowfat/libowfat-0.32.tar.xz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=3dfdb8a2f3a8b9f0a4b54b57724d1a01
+_md5_=21ed32e651df25025a67a5f111ed59c8
