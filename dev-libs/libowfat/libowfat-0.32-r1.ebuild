@@ -27,20 +27,19 @@ src_compile() {
 	emake \
 		CC=$(tc-getCC) \
 		CFLAGS="-I. ${CFLAGS}" \
-		DIET="/usr/bin/diet -Os" \
-		prefix=/usr \
-		INCLUDEDIR=/usr/include/libowfat \
+		DIET="${EPREFIX%/}/usr/bin/diet -Os" \
+		prefix="${EPREFIX%/}/usr" \
+		INCLUDEDIR="${EPREFIX%/}/usr/include" \
 		$( use diet || echo 'DIET=' )
 }
 
 src_install() {
 	emake \
-		DESTDIR="${D}" \
-		LIBDIR="/usr/$(get_libdir)" \
-		MAN3DIR="/usr/share/man/man3" \
-		INCLUDEDIR="/usr/include/libowfat" \
+		DESTDIR="${D%/}" \
+		LIBDIR="${EPREFIX%/}/usr/$(get_libdir)" \
+		MAN3DIR="${EPREFIX%/}/usr/share/man/man3" \
+		INCLUDEDIR="${EPREFIX%/}/usr/include" \
 		install
 
-	cd "${D}"/usr/share/man
-	mv man3/buffer.3 man3/owfat-buffer.3
+	mv "${ED%/}"/usr/share/man/man3/{buffer.3,owfat-buffer.3} || die
 }
