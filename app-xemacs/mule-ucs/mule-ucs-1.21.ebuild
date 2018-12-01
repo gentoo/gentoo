@@ -10,6 +10,6 @@ XEMACS_PKG_CAT="mule"
 RDEPEND="app-xemacs/mule-base
 app-xemacs/latin-euro-standards
 "
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages

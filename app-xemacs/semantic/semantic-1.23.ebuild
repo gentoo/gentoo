@@ -20,6 +20,6 @@ app-xemacs/cc-mode
 app-xemacs/edebug
 app-xemacs/sgml
 "
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages

@@ -7,6 +7,6 @@ SLOT="0"
 DESCRIPTION="User interface tool"
 XEMACS_PKG_CAT="standard"
 
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages
