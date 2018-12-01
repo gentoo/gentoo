@@ -471,11 +471,6 @@ mail-filter/assp
 www-apps/lxr
 
 # Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
-# Needs to be bumped (#475330), build issues (#521094), install files in
-# /dev (#452248), ignores CFLAGS (#452244). Removal in a month.
-app-misc/iguanaIR
-
-# Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
 # All this packages are broken and need major version bumps to fix them. See
 # bug #504114, #486510, #510550, #511096, #517260, #551784, #616490, #
 net-voip/linphone
