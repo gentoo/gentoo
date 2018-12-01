@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Power management for KDE Plasma Shell"
 HOMEPAGE="https://cgit.kde.org/powerdevil.git"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="brightness-control +wireless"
 
 DEPEND="
