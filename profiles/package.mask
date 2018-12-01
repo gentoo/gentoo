@@ -466,11 +466,6 @@ dev-python/pygoocanvas
 mail-filter/assp
 
 # Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
-# Outdated, needs to be bumped to latest release to fix multiple security
-# bugs (#444368). Removal in a month.
-www-apps/lxr
-
-# Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
 # All this packages are broken and need major version bumps to fix them. See
 # bug #504114, #486510, #510550, #511096, #517260, #551784, #616490, #
 net-voip/linphone
