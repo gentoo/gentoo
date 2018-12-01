@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="bluetooth +browser-integration consolekit crypt +display-manager elogind grub gtk +handbook
 +legacy-systray networkmanager pam plymouth +pm-utils pulseaudio +sddm sdk systemd +wallpapers"
 
-REQUIRED_USE="^^ ( consolekit elogind systemd )"
+REQUIRED_USE="?? ( consolekit elogind systemd )"
 
 RDEPEND="
 	$(add_plasma_dep breeze)
@@ -85,3 +85,24 @@ RDEPEND="
 	sdk? ( $(add_plasma_dep plasma-sdk) )
 	wallpapers? ( $(add_plasma_dep plasma-workspace-wallpapers) )
 "
+
+pkg_postinst() {
+	local i selected use_pkg_map=(
+		consolekit:sys-auth/consolekit
+		elogind:sys-auth/elogind
+		systemd:sys-apps/systemd
+	)
+	for i in ${use_pkg_map[@]}; do
+		use ${i%:*} && selected="${i%:*}"
+	done
+	for i in ${use_pkg_map[@]}; do
+		if ! use ${i%:*} && has_version ${i#*:}; then
+			ewarn "An existing installation of ${i#*:} was detected even though"
+			ewarn "${PN} was configured with USE ${selected} instead of ${i%:*}."
+			ewarn "There can only be one session manager at runtime, otherwise random issues"
+			ewarn "may occur. Please make sure USE ${i%:*} is nowhere enabled in make.conf"
+			ewarn "or package.use and remove ${i#*:} before raising bugs."
+			ewarn "For more information, visit https://wiki.gentoo.org/wiki/KDE"
+		fi
+	done
+}
