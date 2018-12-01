@@ -11,7 +11,7 @@ SRC_URI="https://storage.googleapis.com/${MY_PN}/${MY_PN}-v${PV}.linux.x86_64.ta
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="!dev-util/shellcheck"
 RDEPEND="${DEPEND}"
