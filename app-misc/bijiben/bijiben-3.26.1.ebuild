@@ -19,7 +19,7 @@ RDEPEND="
 	>=net-libs/webkit-gtk-2.10.0:4
 	net-libs/gnome-online-accounts:=
 	dev-libs/libxml2:2
-	>=app-misc/tracker-1:=
+	app-misc/tracker:0/100
 	sys-apps/util-linux
 "
 DEPEND="${RDEPEND}

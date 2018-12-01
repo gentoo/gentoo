@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ RDEPEND="
 	>=net-libs/webkit-gtk-2.10.0:4
 	net-libs/gnome-online-accounts:=
 	dev-libs/libxml2
-	>=app-misc/tracker-1:=
+	app-misc/tracker:0/100
 	sys-apps/util-linux
 "
 DEPEND="${RDEPEND}
