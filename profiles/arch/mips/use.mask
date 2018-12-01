@@ -130,8 +130,6 @@ video_cards_nouveau
 video_cards_nv
 video_cards_r128
 video_cards_radeon
-input_devices_dynapro
-input_devices_elo2300
 input_devices_elographics
 input_devices_synaptics
 input_devices_vmmouse
