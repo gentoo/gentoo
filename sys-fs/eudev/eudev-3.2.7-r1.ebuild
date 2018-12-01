@@ -102,12 +102,14 @@ multilib_src_configure() {
 		DBUS_LIBS=' '
 		--with-rootprefix=
 		--with-rootrundir=/run
+		--exec-prefix="${EPREFIX}"
+		--bindir="${EPREFIX}"/bin
+		--includedir="${EPREFIX}"/usr/include
 		--libdir="${EPREFIX}"/usr/$(get_libdir)
 		--with-rootlibexecdir="${EPREFIX}"/lib/udev
 		--enable-split-usr
 		--enable-manpages
 		--disable-hwdb
-		--exec-prefix="${EPREFIX}"
 	)
 
 	# Only build libudev for non-native_abi, and only install it to libdir,
