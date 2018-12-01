@@ -14,15 +14,17 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5b0819e0c7a447df26c27ab8
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="gnat_2016 gnat_2017 +gnat_2018"
+IUSE="gnat_2017 +gnat_2018"
 
-RDEPEND="dev-ada/gnat_util[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]
+RDEPEND="dev-ada/gnat_util[gnat_2017(-)?,gnat_2018(-)?]
 	|| (
-		dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,gnat_2018=,shared]
-		dev-ada/gnatcoll[gnat_2016=,gnat_2017=,gnat_2018=,projects,shared]
+		dev-ada/gnatcoll-core[gnat_2017=,gnat_2018=,shared]
+		dev-ada/gnatcoll[gnat_2017=,gnat_2018=,projects,shared]
 	)"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]"
+	dev-ada/gprbuild[gnat_2017=,gnat_2018=]"
+
+REQUIRED_USE="|| ( gnat_2017 gnat_2018 )"
 
 S="${WORKDIR}"/${MYP}
 
