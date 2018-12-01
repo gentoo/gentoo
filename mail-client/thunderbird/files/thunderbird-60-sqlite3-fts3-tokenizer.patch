@@ -1,0 +1,86 @@
+# HG changeset patch
+# User Arfrever Frehtes Taifersar Arahesis <Arfrever@Apache.Org>
+# Date 1543532530 0
+#      Thu Nov 29 23:02:10 2018 +0000
+# Node ID 1c480085935783bd1d240860bb44f410e2d36322
+# Parent  6453222232be364fb8ce3fd29b6cbcd480e5f2e3
+Bug 1270882 - Enable support for SQLite custom FTS3 tokenizers at run time.
+
+Do not require that SQLite has been built with support for custom FTS3
+tokenizers enabled by default. This allows to use system SQLite in
+distributions which provide SQLite configured in this way (which is SQLite
+upstream's default configuration due to security concerns).
+
+Disable no longer needed setting of SQLITE_ENABLE_FTS3_TOKENIZER macro in
+bundled SQLite build.
+
+diff -r 6453222232be -r 1c4800859357 db/sqlite3/src/moz.build
+--- a/db/sqlite3/src/moz.build	Thu Nov 29 19:08:28 2018 +0000
++++ b/db/sqlite3/src/moz.build	Thu Nov 29 23:02:10 2018 +0000
+@@ -58,10 +58,6 @@
+ if CONFIG['MOZ_WIDGET_TOOLKIT'] == 'uikit':
+     DEFINES['SQLITE_ENABLE_LOCKING_STYLE'] = 0
+ 
+-# Thunderbird needs the 2-argument version of fts3_tokenizer()
+-if CONFIG['MOZ_THUNDERBIRD'] or CONFIG['MOZ_SUITE']:
+-    DEFINES['SQLITE_ENABLE_FTS3_TOKENIZER'] = 1
+-
+ # Turn on SQLite's assertions in debug builds.
+ if CONFIG['MOZ_DEBUG']:
+     DEFINES['SQLITE_DEBUG'] = 1
+diff -r 6453222232be -r 1c4800859357 db/sqlite3/src/sqlite.symbols
+--- a/db/sqlite3/src/sqlite.symbols	Thu Nov 29 19:08:28 2018 +0000
++++ b/db/sqlite3/src/sqlite.symbols	Thu Nov 29 23:02:10 2018 +0000
+@@ -45,6 +45,7 @@
+ sqlite3_create_function16
+ sqlite3_create_module
+ sqlite3_data_count
++sqlite3_db_config
+ sqlite3_db_filename
+ sqlite3_db_handle
+ sqlite3_db_mutex
+diff -r 6453222232be -r 1c4800859357 storage/mozStorageConnection.cpp
+--- a/storage/mozStorageConnection.cpp	Thu Nov 29 19:08:28 2018 +0000
++++ b/storage/mozStorageConnection.cpp	Thu Nov 29 23:02:10 2018 +0000
+@@ -679,6 +679,13 @@
+     return convertResultCode(srv);
+   }
+ 
++#if defined(MOZ_THUNDERBIRD) || defined(MOZ_SUITE)
++  // Thunderbird needs support for custom FTS3 tokenizers
++  // (used by the 2-argument version of fts3_tokenizer() function).
++  // https://sqlite.org/fts3.html#custom_application_defined_tokenizers
++  ::sqlite3_db_config(mDBConn, SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER, 1, 0);
++#endif
++
+   // Do not set mDatabaseFile or mFileURL here since this is a "memory"
+   // database.
+ 
+@@ -715,6 +722,13 @@
+     return convertResultCode(srv);
+   }
+ 
++#if defined(MOZ_THUNDERBIRD) || defined(MOZ_SUITE)
++  // Thunderbird needs support for custom FTS3 tokenizers
++  // (used by the 2-argument version of fts3_tokenizer() function).
++  // https://sqlite.org/fts3.html#custom_application_defined_tokenizers
++  ::sqlite3_db_config(mDBConn, SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER, 1, 0);
++#endif
++
+   // Do not set mFileURL here since this is database does not have an associated
+   // URL.
+   mDatabaseFile = aDatabaseFile;
+@@ -746,6 +760,13 @@
+     return convertResultCode(srv);
+   }
+ 
++#if defined(MOZ_THUNDERBIRD) || defined(MOZ_SUITE)
++  // Thunderbird needs support for custom FTS3 tokenizers
++  // (used by the 2-argument version of fts3_tokenizer() function).
++  // https://sqlite.org/fts3.html#custom_application_defined_tokenizers
++  ::sqlite3_db_config(mDBConn, SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER, 1, 0);
++#endif
++
+   // Set both mDatabaseFile and mFileURL here.
+   mFileURL = aFileURL;
+   mDatabaseFile = databaseFile;

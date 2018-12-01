@@ -1,0 +1,16 @@
+--- a/ext/charlock_holmes/extconf.rb
++++ b/ext/charlock_holmes/extconf.rb
+@@ -54,11 +54,8 @@
+ have_library 'icuuc' or abort 'libicuuc missing'
+ have_library 'icudata' or abort 'libicudata missing'
+ 
+-# icu4c might be built in C++11 mode, but it also might not have been
+-icuconfig = `which icu-config`.chomp if icuconfig.empty?
+-if File.exist?(icuconfig) && `#{icuconfig} --cxxflags`.include?("c++11")
+-  $CXXFLAGS << ' -std=c++11'
+-end
++# Always use C++11
++$CXXFLAGS << ' -std=c++11'
+ 
+ $CFLAGS << ' -Wall -funroll-loops'
+ $CFLAGS << ' -Wextra -O0 -ggdb3' if ENV['DEBUG']
