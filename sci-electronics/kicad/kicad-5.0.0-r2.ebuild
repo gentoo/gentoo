@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -87,7 +87,10 @@ src_configure() {
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 	)
-	use occ && mycmakeargs+=( -DOCC_LIBRARY_DIR="${CASROOT}"/lib )
+	use occ && mycmakeargs+=(
+		-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
+		-DOCC_LIBRARY_DIR="${CASROOT}"/lib
+	)
 
 	cmake-utils_src_configure
 }
