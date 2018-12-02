@@ -454,12 +454,6 @@ sys-cluster/liblogthread
 # Bug #664096
 x11-drivers/xf86-input-tslib
 
-# Mart Raudsepp <leio@gentoo.org> (02 Nov 2018)
-# Old x11-libs/goocanvas:0 SLOT python bindings, not used by anything.
-# New x11-libs/goocanvas:2.0 with introspection should be used instead.
-# Removal in a month. Bug #670142
-dev-python/pygoocanvas
-
 # Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
 # All this packages are broken and need major version bumps to fix them. See
 # bug #504114, #486510, #510550, #511096, #517260, #551784, #616490, #
