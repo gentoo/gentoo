@@ -78,23 +78,19 @@ src_test() {
 	export TUP_NO_NAMESPACING=1
 
 	# Skip tests which require namespacing or root privileges.
+	pushd test || die
+	rm -v ./*full-deps*.sh
 	SKIPPED_TESTS=(
-	t4062-full-deps.sh
-	t4063-full-deps2.sh
-	t4064-full-deps3.sh
-	t4065-full-deps-proc.sh
-	t4067-full-deps5.sh
 	t4069-gcc-coverage.sh
 	t4072-proc-self.sh
 	t4074-getpwd.sh
 	t4131-proc-self-exe.sh
 	t4132-proc-meminfo.sh
 	t4171-dev-null.sh
+	t4200-ccache.sh
 	t5083-symlink-fullpath.sh
 	t5084-symlink-fullpath2.sh
-	t7048-full-deps.sh
 	)
-	pushd test || die
 	rm ${SKIPPED_TESTS[@]} || die
 	./test.sh || die
 	popd || die
