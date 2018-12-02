@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="ayatana +introspection +gcr +modemmanager selinux teamd"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
 	>=app-crypt/libsecret-0.18
