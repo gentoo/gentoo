@@ -98,7 +98,7 @@ src_install() {
 	doins include/iptables/internal.h
 
 	keepdir /var/lib/iptables
-	newinitd "${FILESDIR}"/${PN}-r1.init iptables
+	newinitd "${FILESDIR}"/${PN}-r2.init iptables
 	newconfd "${FILESDIR}"/${PN}-r1.confd iptables
 	if use ipv6 ; then
 		keepdir /var/lib/ip6tables

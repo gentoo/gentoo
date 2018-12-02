@@ -64,7 +64,6 @@ checkconfig() {
 }
 
 start_pre() {
-	checkkernel || return 1
 	checkconfig || return 1
 }
 
@@ -135,7 +134,14 @@ save() {
 }
 
 panic() {
-	checkkernel || return 1
+	# use iptables autoload capability to load at least all required
+	# modules and filter table
+	${iptables_bin} --wait ${iptables_lock_wait_time} --wait-interval ${iptables_lock_wait_interval} -S >/dev/null
+	if [ $? -ne 0 ] ; then
+		eerror "${iptables_bin} failed to load"
+		return 1
+	fi
+
 	if service_started ${iptables_name}; then
 		rc-service ${iptables_name} stop
 	fi
