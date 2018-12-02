@@ -7,6 +7,41 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (02 Dec 2018)
+# Those python2 packages require dev-python/ipython which no longer
+# supports python2.
+app-misc/gourmet ipython
+dev-python/astropy python_targets_python2_7
+dev-python/glueviz python_targets_python2_7 # USE=test
+dev-python/imexam python_targets_python2_7
+dev-python/iminuit python_targets_python2_7 # USE=test
+dev-python/ipdb python_targets_python2_7
+dev-python/ipdbplugin python_targets_python2_7
+dev-python/ipykernel python_targets_python2_7
+dev-python/ipyparallel python_targets_python2_7
+dev-python/jira python_targets_python2_7
+dev-python/jupyter_console python_targets_python2_7
+dev-python/jupyter_core python_targets_python2_7
+dev-python/line_profiler python_targets_python2_7
+dev-python/matplotlib doc
+dev-python/nbconvert doc
+dev-python/netaddr python_targets_python2_7
+dev-python/notebook python_targets_python2_7
+dev-python/oct2py python_targets_python2_7
+dev-python/pandas doc
+dev-python/pandas-datareader doc
+dev-python/patsy doc
+dev-python/qtconsole python_targets_python2_7
+dev-python/restkit cli
+dev-python/rpy python_targets_python2_7
+dev-python/simplecv shell
+dev-python/statsmodels doc
+dev-python/sympy python_targets_python2_7
+www-apps/nikola python_targets_python2_7 # USE=ipython
+# indirect deps
+dev-python/apptools test
+sys-apps/firejail x11
+
 # Michał Górny <mgorny@gentoo.org> (01 Dec 2018)
 # Moved from use.mask to specific packages.
 # Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)

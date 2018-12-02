@@ -29,6 +29,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (02 Dec 2018)
+# Those python2 packages require dev-python/ipython which no longer
+# supports python2.
+dev-python/ets
+sci-chemistry/prody
+sci-chemistry/pymol-plugins-dynamics
+sci-visualization/mayavi
+x11-wm/xpra
+
 # Hans de Graaff <graaff@gentoo.org> (1 Dec 2018)
 # Old Rails 5.0 version. This version is no longer maintained
 # upstream. Please update to Rails 5.1 or newer.
