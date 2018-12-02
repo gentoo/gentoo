@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201812-04">
+  <title>WebkitGTK+: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in WebKitGTK+, the worst
+    of which may lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">webkitgtk</product>
+  <announced>2018-12-02</announced>
+  <revised count="1">2018-12-02</revised>
+  <bug>667892</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/webkit-gtk" auto="yes" arch="*">
+      <unaffected range="ge">2.22.0</unaffected>
+      <vulnerable range="lt">2.22.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>WebKitGTK+ is a full-featured port of the WebKit rendering engine,
+      suitable for projects requiring any kind of web integration, from hybrid
+      HTML/CSS applications to full-fledged web browsers.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in WebKitGTK+. Please
+      review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary commands or cause a Denial of
+      Service condition via maliciously crafted web content.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WebkitGTK+ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/webkit-gtk-2.22.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4191">CVE-2018-4191</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4197">CVE-2018-4197</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4207">CVE-2018-4207</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4208">CVE-2018-4208</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4209">CVE-2018-4209</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4210">CVE-2018-4210</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4212">CVE-2018-4212</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4213">CVE-2018-4213</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4299">CVE-2018-4299</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4306">CVE-2018-4306</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4309">CVE-2018-4309</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4311">CVE-2018-4311</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4312">CVE-2018-4312</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4314">CVE-2018-4314</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4315">CVE-2018-4315</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4316">CVE-2018-4316</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4317">CVE-2018-4317</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4318">CVE-2018-4318</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4319">CVE-2018-4319</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4323">CVE-2018-4323</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4328">CVE-2018-4328</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4358">CVE-2018-4358</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4359">CVE-2018-4359</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4361">CVE-2018-4361</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-24T23:17:09Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-12-02T15:50:31Z">b-man</metadata>
+</glsa>

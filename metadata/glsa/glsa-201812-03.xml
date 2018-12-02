@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201812-03">
+  <title>Nagios: Privilege escalation</title>
+  <synopsis>A vulnerability in Nagios allows local users to escalate
+    privileges.
+  </synopsis>
+  <product type="ebuild">nagios</product>
+  <announced>2018-12-02</announced>
+  <revised count="1">2018-12-02</revised>
+  <bug>629380</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-analyzer/nagios-core" auto="yes" arch="*">
+      <unaffected range="ge">4.3.4</unaffected>
+      <vulnerable range="lt">4.3.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Nagios is an open source host, service and network monitoring program.</p>
+  </background>
+  <description>
+    <p>A vulnerability in Nagios was discovered due to the improper handling of
+      configuration files which can be owned by a non-root user.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker can escalate privileges to root by leveraging access to
+      a non-root owned configuration file.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Nagios users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/nagios-core-4.3.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14312">CVE-2017-14312</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-24T23:02:56Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-12-02T15:48:26Z">b-man</metadata>
+</glsa>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201811-23">
+  <title>libsndfile: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libsndfile, the worst
+    of which might allow remote attackers to cause a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">libsndfile</product>
+  <announced>2018-11-30</announced>
+  <revised count="1">2018-11-30</revised>
+  <bug>618016</bug>
+  <bug>624814</bug>
+  <bug>627152</bug>
+  <bug>631634</bug>
+  <bug>660452</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libsndfile" auto="yes" arch="*">
+      <unaffected range="ge">1.0.28-r4</unaffected>
+      <vulnerable range="lt">1.0.28-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libsndfile is a C library for reading and writing files containing
+      sampled sound.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libsndfile. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to open a specially crafted file,
+      could cause a Denial of Service condition or have other unspecified
+      impacts.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libsndfile users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libsndfile-1.0.28-r4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-12562">CVE-2017-12562</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14634">CVE-2017-14634</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-6892">CVE-2017-6892</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-8361">CVE-2017-8361</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-8362">CVE-2017-8362</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-8363">CVE-2017-8363</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-8365">CVE-2017-8365</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-13139">CVE-2018-13139</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-11-25T00:29:50Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-11-30T08:52:15Z">b-man</metadata>
+</glsa>
