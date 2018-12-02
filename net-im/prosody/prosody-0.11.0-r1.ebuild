@@ -8,8 +8,8 @@ inherit flag-o-matic multilib systemd
 MY_PV=$(ver_rs 3 '')
 MY_P="${PN}-${MY_PV}"
 DESCRIPTION="Prosody is a flexible communications server for Jabber/XMPP written in Lua"
-HOMEPAGE="http://prosody.im/"
-SRC_URI="http://prosody.im/tmp/${MY_PV}/${MY_P}.tar.gz"
+HOMEPAGE="https://prosody.im/"
+SRC_URI="https://prosody.im/tmp/${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -20,7 +20,7 @@ DEPEND="net-im/jabber-base
 		dev-lua/LuaBitOp
 		!jit? ( >=dev-lang/lua-5.1:0 )
 		jit? ( dev-lang/luajit:2 )
-		>=net-dns/libidn-1.1
+		>=net-dns/libidn-1.1:=
 		!libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl:= )"
 RDEPEND="${DEPEND}
 		>=dev-lua/luaexpat-1.3.0
@@ -53,18 +53,15 @@ src_configure() {
 	# the configure script is handcrafted (and yells at unknown options)
 	# hence do not use 'econf'
 	append-cflags -D_GNU_SOURCE
-	luajit=""
-	if use jit; then
-		luajit="--runwith=luajit"
-	fi
 	./configure \
-		--ostype=linux $luajit \
+		--ostype=linux \
 		--prefix="${EPREFIX}/usr" \
-		--libdir="${EPREFIX}/usr/lib64" \
-		--sysconfdir="${JABBER_ETC}" \
-		--datadir="${JABBER_SPOOL}" \
-		--with-lua-include=/usr/include \
-		--with-lua-lib=/usr/$(get_libdir)/lua \
+		--libdir="${EPREFIX}/usr/$(get_libdir)" \
+		--sysconfdir="${EPREFIX}/${JABBER_ETC}" \
+		--datadir="${EPREFIX}/${JABBER_SPOOL}" \
+		--with-lua-include="${EPREFIX}/usr/include" \
+		--with-lua-lib="${EPREFIX}/usr/$(get_libdir)/lua" \
+		--runwith=lua"$(usev jit)" \
 		--cflags="${CFLAGS} -Wall -fPIC" \
 		--ldflags="${LDFLAGS} -shared" \
 		--c-compiler="$(tc-getCC)" \
@@ -76,7 +73,7 @@ src_install() {
 	systemd_dounit "${FILESDIR}/${PN}".service
 	systemd_newtmpfilesd "${FILESDIR}/${PN}".tmpfilesd "${PN}".conf
 	newinitd "${FILESDIR}/${PN}".initd-r2 ${PN}
-	keepdir /var/spool/jabber
+	keepdir "${JABBER_SPOOL}"
 }
 
 pkg_postinst() {
