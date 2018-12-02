@@ -26,6 +26,7 @@ fi
 
 DEPEND="
 	dev-db/sqlite:=
+	dev-libs/libpcre:=
 	sys-fs/fuse:=
 "
 RDEPEND="${DEPEND}"
