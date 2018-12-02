@@ -4805,7 +4805,7 @@ dev-python/django-xslt 0.4.5-r1: an XSLT template system for Django
 dev-python/dnspython 1.15.0-r1: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
 dev-python/docker-py 2.4.2 2.7.0: Python client for Docker
-dev-python/docker-pycreds 0.2.1: Python bindings for the docker credentials store API
+dev-python/docker-pycreds 0.2.1 0.3.0: Python bindings for the docker credentials store API
 dev-python/dockerpty 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2-r2: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
@@ -5251,7 +5251,7 @@ dev-python/priority 1.3.0: A pure-Python implementation of the HTTP/2 priority t
 dev-python/process-tests 1.2.0: Tools for testing processes
 dev-python/progress 1.2: Easy to use progress bars
 dev-python/progressbar 2.3-r3: Text progressbar library for python
-dev-python/prometheus_client 0.2.0: Python client for the Prometheus monitoring system
+dev-python/prometheus_client 0.2.0 0.4.2: Python client for the Prometheus monitoring system
 dev-python/prompt_toolkit 1.0.15: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.5.1.1 3.5.2-r1 3.6.1: Google's Protocol Buffers - Python bindings
 dev-python/psutil 5.4.1 5.4.3: Retrieve information on running processes and system utilization
