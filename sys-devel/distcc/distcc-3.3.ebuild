@@ -75,17 +75,18 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf="--disable-Werror"
+	local myconf=(
+		--disable-Werror
+		$(use_with gtk)
+		$(use_with gnome)
+		$(use_with gssapi auth)
+		$(use_with zeroconf avahi)
+	)
 
 	# --disable-rfc2553 b0rked, bug #254176
-	use ipv6 && myconf="${myconf} --enable-rfc2553"
+	use ipv6 && myconf+=(--enable-rfc2553)
 
-	econf \
-		$(use_with gtk) \
-		$(use_with gnome) \
-		$(use_with gssapi auth) \
-		$(use_with zeroconf avahi) \
-		${myconf}
+	econf "${myconf[@]}"
 }
 
 src_install() {
