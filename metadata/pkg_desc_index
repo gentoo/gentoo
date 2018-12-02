@@ -9755,7 +9755,7 @@ sys-apps/baselayout 2.4.1-r2 2.6-r1: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
 sys-apps/biosdevname 0.7.2: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/bleachbit 2.0: Clean junk to free disk space and to maintain privacy
-sys-apps/busybox 1.29.0: Utilities for rescue and embedded systems
+sys-apps/busybox 1.29.0 1.29.3: Utilities for rescue and embedded systems
 sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/checkpolicy 2.7 2.8: SELinux policy compiler
 sys-apps/chname 1.0-r2: Run a command with a new system hostname
