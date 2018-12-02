@@ -16,7 +16,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="udev"
 
 RDEPEND=""
-DEPEND="${RDEPEND}"
+DEPEND="udev? ( virtual/libudev:= )
+		${RDEPEND}"
 
 src_prepare() {
 	eautoreconf
