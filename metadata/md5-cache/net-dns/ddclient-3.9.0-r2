@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install prepare setup
+DESCRIPTION=Perl client used to update dynamic DNS entries
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/ddclient/
+IUSE=examples iproute2
+KEYWORDS=~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2+
+RDEPEND=dev-lang/perl dev-perl/Data-Validate-IP dev-perl/Digest-SHA1 dev-perl/IO-Socket-INET6 dev-perl/IO-Socket-SSL virtual/perl-Digest-SHA virtual/perl-JSON-PP iproute2? ( sys-apps/iproute2 )
+SLOT=0
+SRC_URI=mirror://sourceforge/ddclient/ddclient-3.9.0.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=a7e96a17b6c311cc02abc67a305b08ea
