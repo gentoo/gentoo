@@ -9,7 +9,7 @@ inherit flag-o-matic multilib-minimal
 
 DESCRIPTION="High performance/quality MPEG-4 video de-/encoding solution"
 HOMEPAGE="https://www.xvid.org/"
-SRC_URI="https://downloads.xvid.org/downloads/${MY_P}.tar.bz2"
+SRC_URI="http://downloads.xvid.org/downloads/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
