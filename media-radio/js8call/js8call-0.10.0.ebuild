@@ -8,7 +8,7 @@ MY_P=${P/_/-}
 
 DESCRIPTION="Weak signal ham radio communication"
 HOMEPAGE="https://groups.io/g/js8call"
-SRC_URI="https://bitbucket.org/widefido/wsjtx/get/v${PV}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://bitbucket.org/widefido/js8call/get/v${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
