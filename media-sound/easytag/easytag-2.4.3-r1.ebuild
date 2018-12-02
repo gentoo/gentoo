@@ -43,6 +43,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.4
 	app-text/yelp-tools
+	dev-util/glib-utils
 	dev-libs/libxml2
 	dev-libs/libxslt
 	>=dev-util/intltool-0.50
