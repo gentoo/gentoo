@@ -6,9 +6,9 @@ inherit user golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/prometheus/node_exporter"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
-NODE_EXPORTER_COMMIT="d42bd70"
+NODE_EXPORTER_COMMIT="f6f6194"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 DESCRIPTION="Prometheus exporter for machine metrics"
 HOMEPAGE="https://github.com/prometheus/node_exporter"
@@ -17,7 +17,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-util/promu"
+DEPEND=">=dev-lang/go-1.11
+	dev-util/promu"
 
 pkg_setup() {
 	enewgroup ${PN}
@@ -32,7 +33,7 @@ src_prepare() {
 src_compile() {
 	pushd src/${EGO_PN} || die
 	mkdir -p bin || die
-	GOPATH="${S}" promu build -v --prefix node_exporter || die
+	GO111MODULE=on GOPATH="${S}" promu build -v --prefix node_exporter || die
 	popd || die
 }
 
