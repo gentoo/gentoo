@@ -90,7 +90,8 @@ src_configure() {
 }
 
 src_install() {
-	default
+	# override GZIP_BIN to stop it from compressing manpages
+	emake DESTDIR="${D}" GZIP_BIN=false install
 	python_optimize
 
 	newinitd "${FILESDIR}/3.2/init" distccd
