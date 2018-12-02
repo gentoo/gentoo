@@ -148,6 +148,12 @@ src_install() {
 }
 
 pkg_postinst() {
+	# remove the old paths when switching from libXX to lib
+	if [[ $(get_libdir) != lib && ${SYMLINK_LIB} != yes && \
+			-d ${EROOT%/}/usr/$(get_libdir)/distcc ]]; then
+		rm -r -f "${EROOT%/}/usr/$(get_libdir)/distcc" || die
+	fi
+
 	if [[ ${ROOT} == / ]]; then
 		eselect compiler-shadow update distcc
 		eselect compiler-shadow update distccd
