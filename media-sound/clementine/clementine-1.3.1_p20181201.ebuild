@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 	GIT_ECLASS="git-r3"
 else
-	COMMIT=b8eea8ccc116388b67e4b042a5b81e87bf7a24e5
+	COMMIT=d87307fbc718a57ca38b5354f196db05b560036c
 	SRC_URI="https://github.com/${PN}-player/${PN^}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
@@ -50,7 +50,6 @@ COMMON_DEPEND="
 	>=media-libs/taglib-1.11.1_p20181028
 	sys-libs/zlib
 	virtual/glu
-	virtual/opengl
 	x11-libs/libX11
 	cdda? ( dev-libs/libcdio:= )
 	dbus? ( dev-qt/qtdbus:5 )
@@ -61,6 +60,7 @@ COMMON_DEPEND="
 	projectm? (
 		media-libs/glew:=
 		>=media-libs/libprojectm-1.2.0
+		virtual/opengl
 	)
 "
 # Note: sqlite driver of dev-qt/qtsql is bundled, so no sqlite use is required; check if this can be overcome someway;
@@ -81,7 +81,6 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-cpp/gtest-1.8.0
 	dev-libs/boost
 	dev-qt/linguist-tools:5
-	dev-qt/qtopengl:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	sys-devel/gettext
@@ -89,6 +88,7 @@ DEPEND="${COMMON_DEPEND}
 	box? ( dev-cpp/sparsehash )
 	dropbox? ( dev-cpp/sparsehash )
 	googledrive? ( dev-cpp/sparsehash )
+	projectm? ( dev-qt/qtopengl:5 )
 	pulseaudio? ( media-sound/pulseaudio )
 	seafile? ( dev-cpp/sparsehash )
 	skydrive? ( dev-cpp/sparsehash )
@@ -104,7 +104,7 @@ S="${WORKDIR}/${PN^}-${COMMIT}"
 
 DOCS=( Changelog README.md )
 
-PATCHES=( "${FILESDIR}"/${P}-no-dbus.patch )
+PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
 
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
@@ -142,7 +142,7 @@ src_configure() {
 		-DLINGUAS="$(l10n_get_locales)"
 		-DENABLE_BOX="$(usex box)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
-		-DENABLE_DBUS="$(usex dbus)"
+		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5DBus=$(usex !dbus)
 		-DENABLE_DROPBOX="$(usex dropbox)"
 		-DENABLE_GOOGLE_DRIVE="$(usex googledrive)"
 		-DENABLE_LIBGPOD="$(usex ipod)"
