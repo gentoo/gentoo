@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-# PyCObject_Check and PyCObject_AsVoidPtr vanished with python 3.3, and setup.py not python3.2 compat
+# PyCObject_Check and PyCObject_AsVoidPtr vanished with python 3.3
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1 eutils flag-o-matic user tmpfiles xdg
+inherit xdg distutils-r1 eutils flag-o-matic user tmpfiles prefix
 
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
 HOMEPAGE="http://xpra.org/ http://xpra.org/src/"
@@ -13,8 +13,8 @@ SRC_URI="http://xpra.org/src/${P}.tar.xz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE="+client +clipboard csc cups dbus dec_avcodec2 enc_ffmpeg enc_x264 enc_x265 libav +lz4 lzo opengl pillow pulseaudio server sound test vpx webcam webp"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="+client +clipboard csc cups dbus dec_avcodec2 enc_ffmpeg enc_x264 enc_x265 jpeg libav +lz4 lzo opengl pillow pulseaudio server sound test vpx webcam webp"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	clipboard? ( || ( server client ) )
@@ -23,7 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( client server )
 	client? ( enc_x264? ( dec_avcodec2 ) enc_x265? ( dec_avcodec2 ) )"
 
-COMMON_DEPEND=""${PYTHON_DEPS}"
+COMMON_DEPEND="${PYTHON_DEPS}
 	dev-python/pygobject:2[${PYTHON_USEDEP}]
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
 	x11-libs/gtk+:2
@@ -39,31 +39,30 @@ COMMON_DEPEND=""${PYTHON_DEPS}"
 		libav? ( media-video/libav:0= )
 	)
 	dec_avcodec2? (
-		!libav? ( >=media-video/ffmpeg-2:0= )
-		libav? ( media-video/libav:0= )
+		!libav? ( >=media-video/ffmpeg-2:0=[x264,x265] )
+		libav? ( media-video/libav:0=[x264,x265] )
 	)
 	enc_ffmpeg? (
 		!libav? ( >=media-video/ffmpeg-3.2.2:0= )
 		libav? ( media-video/libav:0= )
 	)
 	enc_x264? ( media-libs/x264
-		!libav? ( >=media-video/ffmpeg-1.0.4:0= )
-		libav? ( media-video/libav:0= )
+		!libav? ( >=media-video/ffmpeg-1.0.4:0=[x264] )
+		libav? ( media-video/libav:0=[x264] )
 	)
 	enc_x265? ( media-libs/x265
-		!libav? ( >=media-video/ffmpeg-2:0= )
-		libav? ( media-video/libav:0= )
+		!libav? ( >=media-video/ffmpeg-2:0=[x264] )
+		libav? ( media-video/libav:0=[x264] ) )
+	jpeg? ( media-libs/libjpeg-turbo )
 	opengl? ( dev-python/pygtkglext )
 	pulseaudio? ( media-sound/pulseaudio )
 	sound? ( media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 		dev-python/gst-python:1.0 )
 	vpx? ( media-libs/libvpx virtual/ffmpeg )
-	webp? ( media-libs/libwebp )
-	)"
+	webp? ( media-libs/libwebp )"
 
 RDEPEND="${COMMON_DEPEND}
-	dev-python/ipython[${PYTHON_USEDEP}]
 	dev-python/netifaces[${PYTHON_USEDEP}]
 	dev-python/rencode[${PYTHON_USEDEP}]
 	virtual/ssh
@@ -87,8 +86,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-python/cython-0.16[${PYTHON_USEDEP}]"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.13.1-ignore-gentoo-no-compile.patch
-	"${FILESDIR}"/${PN}-0.17.4-deprecated-avcodec.patch
-	"${FILESDIR}"/${PN}-1.0.4-suid-warning.patch )
+	"${FILESDIR}"/${PN}-2.0-suid-warning.patch )
 
 pkg_postinst() {
 	enewgroup ${PN}
@@ -98,14 +96,15 @@ pkg_postinst() {
 }
 
 python_prepare_all() {
-	sed -e "s:/var/run/xpra:${EROOT}run/xpra:" \
-		-i tmpfiles.d/xpra.conf
+	hprefixify -w '/os.path/' setup.py
+	hprefixify tmpfiles.d/xpra.conf xpra/server/{server,socket}_util.py \
+		xpra/platform{/xposix,}/paths.py xpra/scripts/server.py
 
 	distutils-r1_python_prepare_all
 }
 
 python_configure_all() {
-	sed -e "/'pulseaudio'/s:not OSX and not WIN32:$(usex pulseaudio True False):" \
+	sed -e "/'pulseaudio'/s:DEFAULT_PULSEAUDIO:$(usex pulseaudio True False):" \
 		-i setup.py || die
 
 	mydistutilsargs=(
@@ -114,6 +113,7 @@ python_configure_all() {
 		$(use_with client)
 		$(use_with clipboard)
 		$(use_with csc csc_swscale)
+		--without-csc_libyuv
 		$(use_with cups printing)
 		--without-debug
 		$(use_with dbus)
@@ -124,6 +124,7 @@ python_configure_all() {
 		--with-gtk2
 		--without-gtk3
 		--without-html5
+		$(use_with jpeg)
 		--without-mdns
 		--without-minify
 		$(use_with opengl)
@@ -142,5 +143,5 @@ python_configure_all() {
 	# and http://trac.cython.org/ticket/395
 	append-cflags -fno-strict-aliasing
 
-	export XPRA_SOCKET_DIRS="${EROOT}run/xpra"
+	export XPRA_SOCKET_DIRS="${EPREFIX}/run/xpra"
 }

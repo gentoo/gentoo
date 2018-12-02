@@ -5,10 +5,6 @@
 		<email>amynka@gentoo.org</email>
 		<name>Amy Liffey</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>dilfridge@gentoo.org</email>
-		<name>Andreas K. Huettel</name>
-	</maintainer>
 	<longdescription>
 OpenCV (Open Source Computer Vision) is a library of programming functions mainly aimed at real time computer vision.
 Example applications of the OpenCV library are Human-Computer Interaction (HCI); Object Identification, Segmentation and Recognition;
