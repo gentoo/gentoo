@@ -25,7 +25,7 @@ dev-python/jupyter_core python_targets_python2_7
 dev-python/line_profiler python_targets_python2_7
 dev-python/matplotlib doc
 dev-python/nbconvert doc
-dev-python/netaddr python_targets_python2_7
+dev-python/netaddr cli
 dev-python/notebook python_targets_python2_7
 dev-python/oct2py python_targets_python2_7
 dev-python/pandas doc
