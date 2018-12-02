@@ -24,7 +24,8 @@ fi
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="debug hardened iconv ipv6 symlink-compat headers-only"
-RESTRICT="strip"
+# tests fail due to unusual makefile
+RESTRICT="strip test"
 
 # 1) We can't upgrade from uclibc to uclibc-ng via a soft blocker since portage
 #    will delete the ld.so sym link prematurely and break the system. So we

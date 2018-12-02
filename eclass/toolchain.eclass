@@ -1028,7 +1028,7 @@ toolchain_src_configure() {
 			then #291870
 				confgcc+=( --disable-shared )
 			fi
-			needed_libc=uclibc
+			needed_libc=uclibc-ng
 			;;
 		*-cygwin)		 needed_libc=cygwin;;
 		x86_64-*-mingw*|\
