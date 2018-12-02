@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+<maintainer type="person">
+	<email>dilfridge@gentoo.org</email>
+	<name>Andreas K. Huettel</name>
+</maintainer>
 <upstream>
 	<bugs-to>https://www.xpra.org/trac/report</bugs-to>
 </upstream>
