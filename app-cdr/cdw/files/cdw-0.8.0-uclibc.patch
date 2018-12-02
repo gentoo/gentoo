@@ -1,5 +1,5 @@
---- cdw-0.8.0/src/main.c
-+++ cdw-0.8.0-uclibc/src/main.c
+--- a/src/main.c
++++ b/src/main.c
 @@ -44,7 +44,9 @@
  #include <stdio.h>
  #include <stdlib.h>
@@ -10,8 +10,8 @@
  #include <signal.h> /* sig_atomic_t */
  
  #include <dirent.h> /* PATH_MAX */
---- cdw-0.8.0/src/tasks/cdw_create_image.c
-+++ cdw-0.8.0-uclibc/src/tasks/cdw_create_image.c
+--- a/src/tasks/cdw_create_image.c
++++ b/src/tasks/cdw_create_image.c
 @@ -21,6 +21,7 @@
  
  #include <inttypes.h>
@@ -20,8 +20,8 @@
  
  #include "cdw_file_manager.h"
  #include "gettext.h"
---- cdw-0.8.0/src/utilities/cdw_utils.c
-+++ cdw-0.8.0-uclibc/src/utilities/cdw_utils.c
+--- a/src/utilities/cdw_utils.c
++++ b/src/utilities/cdw_utils.c
 @@ -28,6 +28,7 @@
  #include <sys/types.h>
  #include <sys/stat.h>
