@@ -19,14 +19,14 @@ RDEPEND="
 	>=net-libs/webkit-gtk-2.10.0:4
 	net-libs/gnome-online-accounts:=
 	dev-libs/libxml2:2
-	>=app-misc/tracker-1:=
+	app-misc/tracker:0/100
 	sys-apps/util-linux
 "
 DEPEND="${RDEPEND}
-	app-text/yelp-tools
 	dev-libs/appstream-glib
 	dev-util/gdbus-codegen
 	>=dev-util/intltool-0.50.1
+	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
 "
