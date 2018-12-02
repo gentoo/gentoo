@@ -109,7 +109,7 @@ src_install() {
 	fi
 	doconfd "${T}/distccd"
 
-	cat > "${T}/02distcc" <<-EOF || die
+	newenvd - 02distcc <<-EOF || die
 	# This file is managed by distcc-config; use it to change these settings.
 	# DISTCC_LOG and DISTCC_DIR should not be set.
 	DISTCC_VERBOSE="${DISTCC_VERBOSE:-0}"
@@ -121,7 +121,6 @@ src_install() {
 	DISTCC_ENABLE_DISCREPANCY_EMAIL="${DISTCC_ENABLE_DISCREPANCY_EMAIL}"
 	DCC_EMAILLOG_WHOM_TO_BLAME="${DCC_EMAILLOG_WHOM_TO_BLAME}"
 	EOF
-	doenvd "${T}/02distcc"
 
 	keepdir /usr/lib/distcc
 
