@@ -26,6 +26,11 @@ DEPEND="
 	dev-qt/linguist-tools:5
 "
 
+src_prepare() {
+	sed -i -e '/^docs.path/ s:$${TARGET}-$${VERSION}:'"${PF}"':g' fm/fm.pro || die
+	default
+}
+
 src_configure() {
 	eqmake5 PREFIX=/usr XDGDIR=/etc/xdg
 }
