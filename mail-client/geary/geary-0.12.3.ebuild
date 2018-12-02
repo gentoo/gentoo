@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Geary"
 
 LICENSE="LGPL-2.1+ BSD-2 CC-BY-3.0 CC-BY-SA-3.0" # code is LGPL-2.1+, BSD-2 for bundled snowball-stemmer, CC licenses for some icons
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	>=dev-libs/glib-2.42:2
