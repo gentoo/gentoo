@@ -19,7 +19,11 @@ dev-python/ipdb python_targets_python2_7
 dev-python/ipdbplugin python_targets_python2_7
 dev-python/ipykernel python_targets_python2_7
 dev-python/ipyparallel python_targets_python2_7
+dev-python/ipython python_targets_python2_7
+dev-python/ipywidgets python_targets_python2_7
 dev-python/jira python_targets_python2_7
+dev-python/jupyter python_targets_python2_7
+dev-python/jupyter_client python_targets_python2_7
 dev-python/jupyter_console python_targets_python2_7
 dev-python/jupyter_core python_targets_python2_7
 dev-python/line_profiler python_targets_python2_7
@@ -41,6 +45,7 @@ www-apps/nikola python_targets_python2_7 # USE=ipython
 # indirect deps
 dev-python/apptools test
 sys-apps/firejail x11
+dev-python/glue-vispy-viewers python_targets_python2_7 # from glueviz
 # from astropy
 dev-python/aplpy python_targets_python2_7
 dev-python/astlib python_targets_python2_7

@@ -34,6 +34,7 @@
 # supports python2.
 =dev-python/astropy-1.2.1
 dev-python/atpy
+dev-python/django-endless-pagination
 dev-python/ets
 sci-astronomy/astrometry
 sci-astronomy/kapteyn
