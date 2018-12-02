@@ -3,12 +3,12 @@ DEPEND=dev-ada/gnat_util[gnat_2016=,gnat_2017=] || ( dev-ada/gnatcoll[gnat_2016=
 DESCRIPTION=To develop tools for Ada software
 EAPI=6
 HOMEPAGE=http://libre.adacore.com/
-IUSE=+gnat_2016 gnat_2017
+IUSE=+gnat_2016 gnat_2017 gnat_2018
 KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=dev-ada/gnat_util[gnat_2016=,gnat_2017=] || ( dev-ada/gnatcoll[gnat_2016=,gnat_2017=,projects,shared] dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,shared] )
-REQUIRED_USE=^^ ( gnat_2016 gnat_2017 )
+REQUIRED_USE=^^ ( gnat_2016 gnat_2017 ) !gnat_2018
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/57399029c7a447658e0aff71 -> asis-gpl-2016-src.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045
-_md5_=c149b77ba2a054860df219649a670fde
+_md5_=ff422ccba4e7210cee589af355dc0dac
