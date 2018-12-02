@@ -3401,7 +3401,7 @@ dev-perl/App-pwhich 1.140.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
 dev-perl/Archive-Any 0.94.500: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.800.0: Generic archive extracting mechanism
-dev-perl/Archive-Zip 1.600.0 1.640.0: A wrapper that lets you read Zip archive members as if they were files
+dev-perl/Archive-Zip 1.640.0: A wrapper that lets you read Zip archive members as if they were files
 dev-perl/Array-Compare 3.0.1: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r1: Set up array elements as aliases
 dev-perl/Array-Window 1.20.0-r1: Array::Window - Calculate windows/subsets/pages of arrays
