@@ -17,7 +17,7 @@ RDEPEND="
 	app-cdr/dvd+rw-tools
 	dev-libs/libburn
 	dev-libs/libcdio[-minimal]
-	sys-libs/ncurses[unicode]
+	sys-libs/ncurses:*[unicode]
 "
 DEPEND="
 	${RDEPEND}
