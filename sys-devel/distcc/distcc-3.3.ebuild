@@ -48,8 +48,6 @@ S="${WORKDIR}/${MY_P}"
 pkg_setup() {
 	enewuser distcc 240 -1 -1 daemon
 	python-single-r1_pkg_setup
-
-	DCCC_PATH="/usr/$(get_libdir)/distcc/bin"
 }
 
 src_prepare() {
@@ -64,13 +62,13 @@ src_prepare() {
 	use hardened && eapply "${FILESDIR}/distcc-hardened.patch"
 
 	sed -i \
-		-e "/PATH/s:\$distcc_location:${EPREFIX}${DCCC_PATH}:" \
+		-e "/PATH/s:\$distcc_location:${EPREFIX}/usr/lib/distcc/bin:" \
 		-e "s:@PYTHON@:${EPYTHON}:" \
 		pump.in || die "sed failed"
 
 	sed \
 		-e "s:@EPREFIX@:${EPREFIX:-/}:" \
-		-e "s:@libdir@:/usr/$(get_libdir):" \
+		-e "s:@libdir@:/usr/lib:" \
 		"${FILESDIR}/3.2/distcc-config" > "${T}/distcc-config" || die
 
 	hprefixify update-distcc-symlinks.py src/{serve,daemon}.c
@@ -124,7 +122,7 @@ src_install() {
 	EOF
 	doenvd "${T}/02distcc"
 
-	keepdir "${DCCC_PATH%bin}"
+	keepdir /usr/lib/distcc
 
 	dobin "${T}/distcc-config"
 
@@ -141,8 +139,8 @@ src_install() {
 	fi
 
 	insinto /usr/share/shadowman/tools
-	newins - distcc <<<"${EPREFIX}${DCCC_PATH}"
-	newins - distccd <<<"${EPREFIX}${DCCC_PATH%bin}"
+	newins - distcc <<<"${EPREFIX}/usr/lib/distcc/bin"
+	newins - distccd <<<"${EPREFIX}/usr/lib/distcc"
 
 	rm -r "${ED}/etc/default" || die
 	rm "${ED}/etc/distcc/clients.allow" || die
