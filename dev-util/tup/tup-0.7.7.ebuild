@@ -69,6 +69,7 @@ src_install() {
 }
 
 src_test() {
+	[[ -e /dev/fuse ]] || die "/dev/fuse is required for tests to work"
 	# tup uses fuse when tracking dependencies.
 	addwrite /dev/fuse
 
