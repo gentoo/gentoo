@@ -46,6 +46,7 @@ dev-python/aplpy python_targets_python2_7
 dev-python/astlib python_targets_python2_7
 dev-python/astrodendro python_targets_python2_7
 dev-python/astroml python_targets_python2_7
+dev-python/astroml-addons python_targets_python2_7
 dev-python/astroplan python_targets_python2_7
 dev-python/astroquery python_targets_python2_7
 dev-python/astroscrappy python_targets_python2_7
@@ -67,7 +68,6 @@ dev-python/spectral-cube python_targets_python2_7
 dev-python/specutils python_targets_python2_7
 dev-python/sunpy python_targets_python2_7
 dev-python/wcsaxes python_targets_python2_7
-sci-astronomy/astrometry python_targets_python2_7
 sci-visualization/veusz python_targets_python2_7
 
 # Michał Górny <mgorny@gentoo.org> (01 Dec 2018)
