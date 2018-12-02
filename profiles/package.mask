@@ -679,10 +679,6 @@ sys-devel/automake:1.8
 # Gnome 3.26 package mask
 >=app-text/libgepub-0.5
 
-# Anthony G. Basile <blueness@gentoo.org> (27 Aug 2017)
-# Upstream is no longer providing public patches
-sys-kernel/hardened-sources
-
 # Patrice Clement <monsieurp@gentoo.org> (23 Aug 2017)
 # Packages depending on this library need to be tested first before
 # it is unmasked. Possibly some slotting is still needed.
