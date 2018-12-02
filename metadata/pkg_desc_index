@@ -941,7 +941,7 @@ app-laptop/tp_smapi 0.42-r1: IBM ThinkPad SMAPI BIOS driver
 app-laptop/tpb 0.6.4-r1: IBM ThinkPad buttons utility
 app-leechcraft/liblaretz 0.1.0: Shared library to be used by the Laretz sync server and its clients
 app-metrics/collectd 5.8.0-r1: Collects system statistics and provides mechanisms to store the values
-app-metrics/node_exporter 0.15.2: Prometheus exporter for machine metrics
+app-metrics/node_exporter 0.15.2 0.16.0: Prometheus exporter for machine metrics
 app-metrics/prometheus 2.4.3: Prometheus monitoring system and time series database
 app-misc/abook 0.6.1: Abook is a text-based addressbook program designed to use with mutt mail client
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
