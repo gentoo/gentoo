@@ -50,7 +50,6 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 
 	DCCC_PATH="/usr/$(get_libdir)/distcc/bin"
-	DISTCC_VERBOSE="0"
 }
 
 src_prepare() {
