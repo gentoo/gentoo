@@ -12,7 +12,7 @@ DESCRIPTION="Distribute compilation of C code across several machines on a netwo
 HOMEPAGE="http://distcc.org/"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gnome gssapi gtk hardened ipv6 selinux xinetd zeroconf"
@@ -48,9 +48,6 @@ S="${WORKDIR}/${MY_P}"
 pkg_setup() {
 	enewuser distcc 240 -1 -1 daemon
 	python-single-r1_pkg_setup
-
-	DCCC_PATH="/usr/$(get_libdir)/distcc/bin"
-	DISTCC_VERBOSE="0"
 }
 
 src_prepare() {
@@ -65,30 +62,31 @@ src_prepare() {
 	use hardened && eapply "${FILESDIR}/distcc-hardened.patch"
 
 	sed -i \
-		-e "/PATH/s:\$distcc_location:${EPREFIX}${DCCC_PATH}:" \
+		-e "/PATH/s:\$distcc_location:${EPREFIX}/usr/lib/distcc/bin:" \
 		-e "s:@PYTHON@:${EPYTHON}:" \
 		pump.in || die "sed failed"
 
 	sed \
 		-e "s:@EPREFIX@:${EPREFIX:-/}:" \
-		-e "s:@libdir@:/usr/$(get_libdir):" \
+		-e "s:@libdir@:/usr/lib:" \
 		"${FILESDIR}/3.2/distcc-config" > "${T}/distcc-config" || die
 
 	hprefixify update-distcc-symlinks.py src/{serve,daemon}.c
 }
 
 src_configure() {
-	local myconf="--disable-Werror"
+	local myconf=(
+		--disable-Werror
+		$(use_with gtk)
+		$(use_with gnome)
+		$(use_with gssapi auth)
+		$(use_with zeroconf avahi)
+	)
 
 	# --disable-rfc2553 b0rked, bug #254176
-	use ipv6 && myconf="${myconf} --enable-rfc2553"
+	use ipv6 && myconf+=(--enable-rfc2553)
 
-	econf \
-		$(use_with gtk) \
-		$(use_with gnome) \
-		$(use_with gssapi auth) \
-		$(use_with zeroconf avahi) \
-		${myconf}
+	econf "${myconf[@]}"
 }
 
 src_install() {
@@ -111,7 +109,7 @@ src_install() {
 	fi
 	doconfd "${T}/distccd"
 
-	cat > "${T}/02distcc" <<-EOF || die
+	newenvd - 02distcc <<-EOF || die
 	# This file is managed by distcc-config; use it to change these settings.
 	# DISTCC_LOG and DISTCC_DIR should not be set.
 	DISTCC_VERBOSE="${DISTCC_VERBOSE:-0}"
@@ -123,9 +121,8 @@ src_install() {
 	DISTCC_ENABLE_DISCREPANCY_EMAIL="${DISTCC_ENABLE_DISCREPANCY_EMAIL}"
 	DCC_EMAILLOG_WHOM_TO_BLAME="${DCC_EMAILLOG_WHOM_TO_BLAME}"
 	EOF
-	doenvd "${T}/02distcc"
 
-	keepdir "${DCCC_PATH%bin}"
+	keepdir /usr/lib/distcc
 
 	dobin "${T}/distcc-config"
 
@@ -142,8 +139,8 @@ src_install() {
 	fi
 
 	insinto /usr/share/shadowman/tools
-	newins - distcc <<<"${EPREFIX}${DCCC_PATH}"
-	newins - distccd <<<"${EPREFIX}${DCCC_PATH%bin}"
+	newins - distcc <<<"${EPREFIX}/usr/lib/distcc/bin"
+	newins - distccd <<<"${EPREFIX}/usr/lib/distcc"
 
 	rm -r "${ED}/etc/default" || die
 	rm "${ED}/etc/distcc/clients.allow" || die
@@ -151,6 +148,12 @@ src_install() {
 }
 
 pkg_postinst() {
+	# remove the old paths when switching from libXX to lib
+	if [[ $(get_libdir) != lib && ${SYMLINK_LIB} != yes && \
+			-d ${EROOT%/}/usr/$(get_libdir)/distcc ]]; then
+		rm -r -f "${EROOT%/}/usr/$(get_libdir)/distcc" || die
+	fi
+
 	if [[ ${ROOT} == / ]]; then
 		eselect compiler-shadow update distcc
 		eselect compiler-shadow update distccd

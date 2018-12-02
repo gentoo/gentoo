@@ -614,11 +614,6 @@ media-libs/libglvnd
 =net-libs/nodejs-10*
 =net-libs/nodejs-11*
 
-# Michał Górny <mgorny@gentoo.org> (20 Mar 2018)
-# Poorly tested version bump followed by a series of quick hacks
-# that do not make it any more working. Bug #651030.
->=sys-devel/distcc-3.3
-
 # Eray Aslan <eras@gentoo.org> (08 Feb 2018)
 # Mask experimental software
 =mail-mta/postfix-3.4*
