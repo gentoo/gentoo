@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit linux-info toolchain-funcs
 
 DESCRIPTION="A file-based build system"
 HOMEPAGE="http://gittup.org/tup"
@@ -29,6 +29,10 @@ DEPEND="
 	sys-fs/fuse:=
 "
 RDEPEND="${DEPEND}"
+
+CONFIG_CHECK="~FUSE_FS ~NAMESPACES"
+WARNING_FUSE_FS="CONFIG_FUSE_FS is required for tup to work"
+WARNING_NAMESPACES="CONFIG_NAMESPACES is required for tup to work as intended (workaround: set TUP_NO_NAMESPACING env var when running tup)"
 
 src_prepare() {
 	# Use our toolchain
@@ -65,6 +69,7 @@ src_install() {
 }
 
 src_test() {
+	[[ -e /dev/fuse ]] || die "/dev/fuse is required for tests to work"
 	# tup uses fuse when tracking dependencies.
 	addwrite /dev/fuse
 
