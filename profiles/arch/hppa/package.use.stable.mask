@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,10 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Andreas Sturmlechner <asturm@gentoo.org> (02 Dec 2018)
+# gnome-base/nautilus is not stable
+media-sound/easytag nautilus
 
 # Andreas Sturmlechner <asturm@gentoo.org> (20 May 2018)
 # media-libs/libraw is not stable
