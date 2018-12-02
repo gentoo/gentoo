@@ -13,7 +13,7 @@ LICENSE="GPL-2 GPL-2+ LGPL-2 LGPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 
-IUSE="flac mp3 mp4 opus speex test vorbis wavpack"
+IUSE="flac mp3 mp4 nautilus opus speex test vorbis wavpack"
 REQUIRED_USE="
 	opus? ( vorbis )
 	speex? ( vorbis )
@@ -29,6 +29,7 @@ RDEPEND="
 		>=media-libs/libid3tag-0.15.1b-r4
 	)
 	mp4? ( >=media-libs/taglib-1.9.1[mp4(+)] )
+	nautilus? ( gnome-base/nautilus )
 	opus? (
 		>=media-libs/opus-1.1
 		>=media-libs/opusfile-0.4
@@ -64,6 +65,7 @@ src_configure() {
 		$(use_enable test tests) \
 		$(use_enable mp3) \
 		$(use_enable mp3 id3v23) \
+		$(use_enable nautilus nautilus-actions) \
 		$(use_enable vorbis ogg) \
 		$(use_enable opus) \
 		$(use_enable speex) \
