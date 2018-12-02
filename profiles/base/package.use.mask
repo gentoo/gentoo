@@ -41,6 +41,34 @@ www-apps/nikola python_targets_python2_7 # USE=ipython
 # indirect deps
 dev-python/apptools test
 sys-apps/firejail x11
+# from astropy
+dev-python/aplpy python_targets_python2_7
+dev-python/astlib python_targets_python2_7
+dev-python/astrodendro python_targets_python2_7
+dev-python/astroml python_targets_python2_7
+dev-python/astroplan python_targets_python2_7
+dev-python/astroquery python_targets_python2_7
+dev-python/astroscrappy python_targets_python2_7
+dev-python/ccdproc python_targets_python2_7
+dev-python/gammapy python_targets_python2_7
+dev-python/ginga python_targets_python2_7
+dev-python/gwcs python_targets_python2_7
+dev-python/healpy python_targets_python2_7
+dev-python/montage-wrapper python_targets_python2_7
+dev-python/naima python_targets_python2_7
+dev-python/photutils python_targets_python2_7
+dev-python/pyavm python_targets_python2_7
+dev-python/pydl python_targets_python2_7
+dev-python/pymoc python_targets_python2_7
+dev-python/pyregion python_targets_python2_7
+dev-python/regions python_targets_python2_7
+dev-python/reproject python_targets_python2_7
+dev-python/spectral-cube python_targets_python2_7
+dev-python/specutils python_targets_python2_7
+dev-python/sunpy python_targets_python2_7
+dev-python/wcsaxes python_targets_python2_7
+sci-astronomy/astrometry python_targets_python2_7
+sci-visualization/veusz python_targets_python2_7
 
 # Michał Górny <mgorny@gentoo.org> (01 Dec 2018)
 # Moved from use.mask to specific packages.

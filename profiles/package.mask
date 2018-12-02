@@ -32,7 +32,9 @@
 # Michał Górny <mgorny@gentoo.org> (02 Dec 2018)
 # Those python2 packages require dev-python/ipython which no longer
 # supports python2.
+dev-python/atpy
 dev-python/ets
+sci-astronomy/kapteyn
 sci-chemistry/prody
 sci-chemistry/pymol-plugins-dynamics
 sci-visualization/mayavi
