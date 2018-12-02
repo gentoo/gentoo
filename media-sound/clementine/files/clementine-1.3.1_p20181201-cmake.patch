@@ -1,0 +1,165 @@
+From 940fcb260b345d2598d04fd07c6718566b3adda1 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 1 Dec 2018 23:29:43 +0100
+Subject: [PATCH 1/3] Qt5::Test is not required in the global QT_LIBRARIES
+ definition
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e660a376a..e18e008c0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -110,7 +110,7 @@ if(WIN32)
+   find_package(Qt5 REQUIRED COMPONENTS WinExtras)
+ endif()
+ 
+-set(QT_LIBRARIES Qt5::Core Qt5::Concurrent Qt5::Widgets Qt5::Network Qt5::Sql Qt5::Xml Qt5::OpenGL Qt5::Test)
++set(QT_LIBRARIES Qt5::Core Qt5::Concurrent Qt5::Widgets Qt5::Network Qt5::Sql Qt5::Xml Qt5::OpenGL)
+ 
+ if(DBUS_FOUND)
+   set(QT_LIBRARIES ${QT_LIBRARIES} Qt5::DBus)
+-- 
+2.19.2
+
+
+From 4e11613088d24f248046d449f63bfd245f1e82cc Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 1 Dec 2018 23:44:35 +0100
+Subject: [PATCH 2/3] Qt5::DBus had already been optional, drop bogus pkgconfig
+ search
+
+This partially reverts commit 4321ecf7d26c5eed577a97d230786bb9f56ea37f.
+---
+ CMakeLists.txt | 17 +++++++----------
+ 1 file changed, 7 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e18e008c0..0d1403e04 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -52,7 +52,6 @@ find_package(PkgConfig REQUIRED)
+ find_package(Protobuf REQUIRED)
+ find_package(FFTW3)
+ find_package(ALSA)
+-pkg_check_modules(DBUS dbus-1)
+ if (NOT APPLE)
+   find_package(X11)
+ endif()
+@@ -96,13 +95,10 @@ find_path(SPARSEHASH_INCLUDE_DIRS google/sparsetable)
+ # QT
+ set(QT_MIN_VERSION 5.6.0)
+ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Concurrent Widgets Network Sql Xml OpenGL Test)
++find_package(Qt5DBus ${QT_MIN_VERSION})
+ if(X11_FOUND)
+   find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS X11Extras)
+ endif()
+-if(DBUS_FOUND)
+-  find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS DBus)
+-  get_target_property(QT_DBUSXML2CPP_EXECUTABLE Qt5::qdbusxml2cpp LOCATION)
+-endif()
+ if(APPLE)
+   find_package(Qt5 REQUIRED COMPONENTS MacExtras)
+ endif()
+@@ -112,8 +108,9 @@ endif()
+ 
+ set(QT_LIBRARIES Qt5::Core Qt5::Concurrent Qt5::Widgets Qt5::Network Qt5::Sql Qt5::Xml Qt5::OpenGL)
+ 
+-if(DBUS_FOUND)
++if(Qt5DBus_FOUND)
+   set(QT_LIBRARIES ${QT_LIBRARIES} Qt5::DBus)
++  get_target_property(QT_DBUSXML2CPP_EXECUTABLE Qt5::qdbusxml2cpp LOCATION)
+ endif()
+ if(X11_FOUND)
+   set(QT_LIBRARIES ${QT_LIBRARIES} Qt5::X11Extras)
+@@ -286,19 +283,19 @@ optional_component(LIBLASTFM ON "Last.fm support"
+ )
+ 
+ optional_component(DBUS ON "D-Bus support"
+-  DEPENDS "D-Bus" DBUS_FOUND
++  DEPENDS "Qt5DBus" Qt5DBus_FOUND
+ )
+ 
+ optional_component(WIIMOTEDEV ON "Wiimote support"
+-  DEPENDS "D-Bus support" DBUS_FOUND
++  DEPENDS "D-Bus support" Qt5DBus_FOUND
+ )
+ 
+ optional_component(DEVICEKIT ON "Devices: DeviceKit backend"
+-  DEPENDS "D-Bus support" DBUS_FOUND
++  DEPENDS "D-Bus support" Qt5DBus_FOUND
+ )
+ 
+ optional_component(UDISKS2 ON "Devices: UDisks2 backend"
+-  DEPENDS "D-Bus support" DBUS_FOUND
++  DEPENDS "D-Bus support" Qt5DBus_FOUND
+ )
+ 
+ if (CRYPTOPP_FOUND OR HAVE_SPOTIFY_BLOB)
+-- 
+2.19.2
+
+
+From 21e9f8be5b986581ab04869d28c335f949423ef5 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 2 Dec 2018 00:21:17 +0100
+Subject: [PATCH 3/3] Find X11 only once, in root CMakeLists.txt
+
+Since we have HAVE_X11, use HAVE_X11 in cmake.
+---
+ 3rdparty/qxt/CMakeLists.txt | 1 -
+ CMakeLists.txt              | 4 ++--
+ src/CMakeLists.txt          | 1 -
+ 3 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/3rdparty/qxt/CMakeLists.txt b/3rdparty/qxt/CMakeLists.txt
+index 8fd9220ae..73c67a9fa 100644
+--- a/3rdparty/qxt/CMakeLists.txt
++++ b/3rdparty/qxt/CMakeLists.txt
+@@ -10,7 +10,6 @@ set(QXT-MOC-HEADERS
+   qxtglobalshortcut.h
+ )
+ 
+-find_package(X11)
+ include_directories(${X11_INCLUDE_DIR})
+ include_directories(${Qt5Gui_PRIVATE_INCLUDE_DIRS})
+ 
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0d1403e04..bd191b59e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -96,7 +96,7 @@ find_path(SPARSEHASH_INCLUDE_DIRS google/sparsetable)
+ set(QT_MIN_VERSION 5.6.0)
+ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core Concurrent Widgets Network Sql Xml OpenGL Test)
+ find_package(Qt5DBus ${QT_MIN_VERSION})
+-if(X11_FOUND)
++if(HAVE_X11)
+   find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS X11Extras)
+ endif()
+ if(APPLE)
+@@ -112,7 +112,7 @@ if(Qt5DBus_FOUND)
+   set(QT_LIBRARIES ${QT_LIBRARIES} Qt5::DBus)
+   get_target_property(QT_DBUSXML2CPP_EXECUTABLE Qt5::qdbusxml2cpp LOCATION)
+ endif()
+-if(X11_FOUND)
++if(HAVE_X11)
+   set(QT_LIBRARIES ${QT_LIBRARIES} Qt5::X11Extras)
+ endif()
+ if(APPLE)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 0eb14e28c..4a612d5bd 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1364,7 +1364,6 @@ if (UNIX AND NOT APPLE)
+   # command but they're actually used by libraries that appear after them, so
+   # they end up getting ignored.  This appends them to the very end of the link
+   # line, ensuring they're always used.
+-  find_package(X11)
+   if (FREEBSD)
+     target_link_libraries(clementine_lib ${X11_X11_LIB})
+   else ()
+-- 
+2.19.2
+
