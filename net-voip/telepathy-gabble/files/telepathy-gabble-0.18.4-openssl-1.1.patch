@@ -1,0 +1,223 @@
+From 68e7fb2f17dd9348e586ef676d8138c4b849a1ce Mon Sep 17 00:00:00 2001
+From: Roel Aaij <roel.aaij@nikhef.nl>
+Date: Fri, 26 Oct 2018 15:01:37 +0200
+Subject: [PATCH] openssl: fix build with openssl >= 1.1.0
+
+---
+ wocky/wocky-openssl-dh1024.c | 10 ++++++++++
+ wocky/wocky-openssl-dh2048.c | 10 ++++++++++
+ wocky/wocky-openssl-dh4096.c | 10 ++++++++++
+ wocky/wocky-openssl-dh512.c  | 10 ++++++++++
+ wocky/wocky-openssl.c        | 38 ++++++++++++++++++++++++++++++++----
+ 5 files changed, 74 insertions(+), 4 deletions(-)
+
+diff --git a/lib/ext/wocky/wocky/wocky-openssl-dh1024.c b/lib/ext/wocky/wocky/wocky-openssl-dh1024.c
+index b77fb4c..bb50523 100644
+--- a/lib/ext/wocky/wocky/wocky-openssl-dh1024.c
++++ b/lib/ext/wocky/wocky/wocky-openssl-dh1024.c
+@@ -25,11 +25,21 @@ DH *get_dh1024(void)
+ 		0x02,
+ 		};
+ 	DH *dh;
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++	int r = 0;
++#endif
+ 
+ 	if ((dh=DH_new()) == NULL) return(NULL);
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++	r = DH_set0_pqg(dh, BN_bin2bn(dh1024_p,sizeof(dh1024_p),NULL),
++					NULL, BN_bin2bn(dh1024_g,sizeof(dh1024_g),NULL));
++	if (!r)
++		{ DH_free(dh); return(NULL); }
++#else
+ 	dh->p=BN_bin2bn(dh1024_p,sizeof(dh1024_p),NULL);
+ 	dh->g=BN_bin2bn(dh1024_g,sizeof(dh1024_g),NULL);
+ 	if ((dh->p == NULL) || (dh->g == NULL))
+ 		{ DH_free(dh); return(NULL); }
++#endif
+ 	return(dh);
+ 	}
+diff --git a/lib/ext/wocky/wocky/wocky-openssl-dh2048.c b/lib/ext/wocky/wocky/wocky-openssl-dh2048.c
+index c16deb7..d53ceda 100644
+--- a/lib/ext/wocky/wocky/wocky-openssl-dh2048.c
++++ b/lib/ext/wocky/wocky/wocky-openssl-dh2048.c
+@@ -36,11 +36,21 @@ DH *get_dh2048(void)
+ 		0x02,
+ 		};
+ 	DH *dh;
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++	int r = 0;
++#endif
+ 
+ 	if ((dh=DH_new()) == NULL) return(NULL);
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++	r = DH_set0_pqg(dh, BN_bin2bn(dh2048_p,sizeof(dh2048_p),NULL),
++						NULL, BN_bin2bn(dh2048_g,sizeof(dh2048_g),NULL));
++	if (!r)
++		{ DH_free(dh); return(NULL); }
++#else
+ 	dh->p=BN_bin2bn(dh2048_p,sizeof(dh2048_p),NULL);
+ 	dh->g=BN_bin2bn(dh2048_g,sizeof(dh2048_g),NULL);
+ 	if ((dh->p == NULL) || (dh->g == NULL))
+ 		{ DH_free(dh); return(NULL); }
++#endif
+ 	return(dh);
+ 	}
+diff --git a/lib/ext/wocky/wocky/wocky-openssl-dh4096.c b/lib/ext/wocky/wocky/wocky-openssl-dh4096.c
+index 2854385..93fa7e5 100644
+--- a/lib/ext/wocky/wocky/wocky-openssl-dh4096.c
++++ b/lib/ext/wocky/wocky/wocky-openssl-dh4096.c
+@@ -57,11 +57,21 @@ DH *get_dh4096(void)
+ 		0x02,
+ 		};
+ 	DH *dh;
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++	int r = 0;
++#endif
+ 
+ 	if ((dh=DH_new()) == NULL) return(NULL);
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++	r = DH_set0_pqg(dh, BN_bin2bn(dh4096_p,sizeof(dh4096_p),NULL),
++						NULL, BN_bin2bn(dh4096_g,sizeof(dh4096_g),NULL));
++	if (!r)
++		{ DH_free(dh); return(NULL); }
++#else
+ 	dh->p=BN_bin2bn(dh4096_p,sizeof(dh4096_p),NULL);
+ 	dh->g=BN_bin2bn(dh4096_g,sizeof(dh4096_g),NULL);
+ 	if ((dh->p == NULL) || (dh->g == NULL))
+ 		{ DH_free(dh); return(NULL); }
++#endif
+ 	return(dh);
+ 	}
+diff --git a/lib/ext/wocky/wocky/wocky-openssl-dh512.c b/lib/ext/wocky/wocky/wocky-openssl-dh512.c
+index 8e7a278..c2891cd 100644
+--- a/lib/ext/wocky/wocky/wocky-openssl-dh512.c
++++ b/lib/ext/wocky/wocky/wocky-openssl-dh512.c
+@@ -20,11 +20,21 @@ DH *get_dh512(void)
+ 		0x02,
+ 		};
+ 	DH *dh;
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++	int r = 0;
++#endif
+ 
+ 	if ((dh=DH_new()) == NULL) return(NULL);
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++	r = DH_set0_pqg(dh, BN_bin2bn(dh512_p,sizeof(dh512_p),NULL),
++					NULL, BN_bin2bn(dh512_g,sizeof(dh512_g),NULL));
++	if (!r)
++	   { DH_free(dh); return(NULL); }
++#else
+ 	dh->p=BN_bin2bn(dh512_p,sizeof(dh512_p),NULL);
+ 	dh->g=BN_bin2bn(dh512_g,sizeof(dh512_g),NULL);
+ 	if ((dh->p == NULL) || (dh->g == NULL))
+ 		{ DH_free(dh); return(NULL); }
++#endif
+ 	return(dh);
+ 	}
+diff --git a/lib/ext/wocky/wocky/wocky-openssl.c b/lib/ext/wocky/wocky/wocky-openssl.c
+index 2201213..18f9981 100644
+--- a/lib/ext/wocky/wocky/wocky-openssl.c
++++ b/lib/ext/wocky/wocky/wocky-openssl.c
+@@ -885,7 +885,11 @@ check_peer_name (const char *target, X509 *cert)
+   int i;
+   gboolean rval = FALSE;
+   X509_NAME *subject = X509_get_subject_name (cert);
+-  X509_CINF *ci = cert->cert_info;
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++  const STACK_OF(X509_EXTENSION)* extensions = X509_get0_extensions(cert);
++#else
++  const STACK_OF(X509_EXTENSION)* extensions = cert->cert_info->extensions;
++#endif
+   static const long nid[] = { NID_commonName, NID_subject_alt_name, NID_undef };
+ 
+   /* first, see if the x509 name contains the info we want: */
+@@ -906,16 +910,21 @@ check_peer_name (const char *target, X509 *cert)
+    * and extract the subject_alt_name from the x509 v3 extensions: if that   *
+    * extension is present, and a string, use that. If it is present, and     *
+    * a multi-value stack, trawl it for the "DNS" entry and use that          */
+-  if (!rval && (ci->extensions != NULL))
+-    for (i = 0; i < sk_X509_EXTENSION_num(ci->extensions) && !rval; i++)
++  if (!rval && (extensions != NULL))
++    for (i = 0; i < sk_X509_EXTENSION_num(extensions) && !rval; i++)
+       {
+-        X509_EXTENSION *ext = sk_X509_EXTENSION_value (ci->extensions, i);
++        X509_EXTENSION *ext = sk_X509_EXTENSION_value (extensions, i);
+         ASN1_OBJECT *obj = X509_EXTENSION_get_object (ext);
+         X509V3_EXT_METHOD *convert = NULL;
+         long ni = OBJ_obj2nid (obj);
+         const guchar *p;
+         char *value = NULL;
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++        const ASN1_OCTET_STRING* ext_value = X509_EXTENSION_get_data(ext);
++        int len = ASN1_STRING_length(ext_value);
++#else
+         int len = ext->value->length;
++#endif
+         void *ext_str = NULL;
+ 
+         if (ni != NID_subject_alt_name)
+@@ -927,7 +936,11 @@ check_peer_name (const char *target, X509 *cert)
+         if ((convert = (X509V3_EXT_METHOD *) X509V3_EXT_get (ext)) == NULL)
+           continue;
+ 
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++        p = ASN1_STRING_get0_data(ext_value);
++#else
+         p = ext->value->data;
++#endif
+         ext_str = ((convert->it != NULL) ?
+                    ASN1_item_d2i (NULL, &p, len, ASN1_ITEM_ptr(convert->it)) :
+                    convert->d2i (NULL, &p, len) );
+@@ -1120,13 +1133,22 @@ _cert_status (WockyTLSSession *session,
+           X509_STORE *store = SSL_CTX_get_cert_store(session->ctx);
+           X509 *cert = SSL_get_peer_certificate (session->ssl);
+           STACK_OF(X509) *chain = SSL_get_peer_cert_chain (session->ssl);
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++          X509_VERIFY_PARAM* param = X509_STORE_get0_param(store);
++          long old_flags = X509_VERIFY_PARAM_get_flags(param);
++#else
+           long old_flags = store->param->flags;
++#endif
+           long new_flags = old_flags;
+           DEBUG("No CRL available, but not in strict mode - re-verifying");
+ 
+           new_flags &= ~(X509_V_FLAG_CRL_CHECK|X509_V_FLAG_CRL_CHECK_ALL);
+ 
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++          X509_VERIFY_PARAM_set_flags(param, new_flags);
++#else
+           store->param->flags = new_flags;
++#endif
+           X509_STORE_CTX_init (xctx, store, cert, chain);
+           X509_STORE_CTX_set_flags (xctx, new_flags);
+ 
+@@ -1136,7 +1158,11 @@ _cert_status (WockyTLSSession *session,
+               status = _cert_status (session, new_code, level, ssl_code);
+             }
+ 
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++          X509_VERIFY_PARAM_set_flags(param, old_flags);
++#else
+           store->param->flags = old_flags;
++#endif
+           X509_STORE_CTX_free (xctx);
+           X509_free (cert);
+ 
+@@ -1675,12 +1701,16 @@ wocky_tls_session_init (WockyTLSSession *session)
+ 
+   if G_UNLIKELY (g_once_init_enter (&initialised))
+     {
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++      DEBUG ("initialising SSL library and error strings");
++#else
+       gint malloc_init_succeeded;
+ 
+       DEBUG ("initialising SSL library and error strings");
+ 
+       malloc_init_succeeded = CRYPTO_malloc_init ();
+       g_warn_if_fail (malloc_init_succeeded);
++#endif
+ 
+       SSL_library_init ();
+       SSL_load_error_strings ();
