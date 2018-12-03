@@ -11,10 +11,11 @@ tokenizers enabled by default. This allows to use system SQLite in
 distributions which provide SQLite configured in this way (which is SQLite
 upstream's default configuration due to security concerns).
 
+Requires exposing the sqlite3_db_config symbol in bundled SQLite.
+
 Disable no longer needed setting of SQLITE_ENABLE_FTS3_TOKENIZER macro in
 bundled SQLite build.
 
-diff -r 6453222232be -r 1c4800859357 db/sqlite3/src/moz.build
 --- a/db/sqlite3/src/moz.build	Thu Nov 29 19:08:28 2018 +0000
 +++ b/db/sqlite3/src/moz.build	Thu Nov 29 23:02:10 2018 +0000
 @@ -58,10 +58,6 @@
@@ -28,9 +29,8 @@ diff -r 6453222232be -r 1c4800859357 db/sqlite3/src/moz.build
  # Turn on SQLite's assertions in debug builds.
  if CONFIG['MOZ_DEBUG']:
      DEFINES['SQLITE_DEBUG'] = 1
-diff -r 6453222232be -r 1c4800859357 db/sqlite3/src/sqlite.symbols
---- a/db/sqlite3/src/sqlite.symbols	Thu Nov 29 19:08:28 2018 +0000
-+++ b/db/sqlite3/src/sqlite.symbols	Thu Nov 29 23:02:10 2018 +0000
+--- a/db/sqlite3/src/sqlite.symbols     Thu Nov 29 19:08:28 2018 +0000
++++ b/db/sqlite3/src/sqlite.symbols     Thu Nov 29 23:02:10 2018 +0000
 @@ -45,6 +45,7 @@
  sqlite3_create_function16
  sqlite3_create_module
@@ -39,48 +39,61 @@ diff -r 6453222232be -r 1c4800859357 db/sqlite3/src/sqlite.symbols
  sqlite3_db_filename
  sqlite3_db_handle
  sqlite3_db_mutex
-diff -r 6453222232be -r 1c4800859357 storage/mozStorageConnection.cpp
 --- a/storage/mozStorageConnection.cpp	Thu Nov 29 19:08:28 2018 +0000
 +++ b/storage/mozStorageConnection.cpp	Thu Nov 29 23:02:10 2018 +0000
-@@ -679,6 +679,13 @@
+@@ -679,6 +679,10 @@
      return convertResultCode(srv);
    }
  
-+#if defined(MOZ_THUNDERBIRD) || defined(MOZ_SUITE)
-+  // Thunderbird needs support for custom FTS3 tokenizers
-+  // (used by the 2-argument version of fts3_tokenizer() function).
-+  // https://sqlite.org/fts3.html#custom_application_defined_tokenizers
++#ifdef INIT_SQLITE_FTS3_TOKENIZER
 +  ::sqlite3_db_config(mDBConn, SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER, 1, 0);
 +#endif
 +
    // Do not set mDatabaseFile or mFileURL here since this is a "memory"
    // database.
  
-@@ -715,6 +722,13 @@
+@@ -715,6 +719,10 @@
      return convertResultCode(srv);
    }
  
-+#if defined(MOZ_THUNDERBIRD) || defined(MOZ_SUITE)
-+  // Thunderbird needs support for custom FTS3 tokenizers
-+  // (used by the 2-argument version of fts3_tokenizer() function).
-+  // https://sqlite.org/fts3.html#custom_application_defined_tokenizers
++#ifdef INIT_SQLITE_FTS3_TOKENIZER
 +  ::sqlite3_db_config(mDBConn, SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER, 1, 0);
 +#endif
 +
    // Do not set mFileURL here since this is database does not have an associated
    // URL.
    mDatabaseFile = aDatabaseFile;
-@@ -746,6 +760,13 @@
+@@ -746,6 +754,10 @@
      return convertResultCode(srv);
    }
  
-+#if defined(MOZ_THUNDERBIRD) || defined(MOZ_SUITE)
-+  // Thunderbird needs support for custom FTS3 tokenizers
-+  // (used by the 2-argument version of fts3_tokenizer() function).
-+  // https://sqlite.org/fts3.html#custom_application_defined_tokenizers
++#ifdef INIT_SQLITE_FTS3_TOKENIZER
 +  ::sqlite3_db_config(mDBConn, SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER, 1, 0);
 +#endif
 +
    // Set both mDatabaseFile and mFileURL here.
    mFileURL = aFileURL;
    mDatabaseFile = databaseFile;
+--- a/storage/moz.build	2018-11-14 10:14:14.000000000 -0500
++++ b/storage/moz.build	2018-11-29 17:05:42.106058951 -0500
+@@ -101,16 +101,20 @@
+ #
+ # Note: On Windows our sqlite build assumes we use jemalloc.  If you disable
+ # MOZ_STORAGE_MEMORY on Windows, you will also need to change the "ifdef
+ # MOZ_MEMORY" options in db/sqlite3/src/Makefile.in.
+ if CONFIG['MOZ_MEMORY'] and not CONFIG['MOZ_SYSTEM_SQLITE']:
+     if CONFIG['OS_TARGET'] != 'Android':
+         DEFINES['MOZ_STORAGE_MEMORY'] = True
+ 
++# Thunderbird needs the 2-argument version of fts3_tokenizer()
++if CONFIG['MOZ_THUNDERBIRD'] or CONFIG['MOZ_SUITE']:
++    DEFINES['INIT_SQLITE_FTS3_TOKENIZER'] = 1
++
+ # This is the default value.  If we ever change it when compiling sqlite, we
+ # will need to change it here as well.
+ DEFINES['SQLITE_MAX_LIKE_PATTERN_LENGTH'] = 50000
+ 
+ # See Sqlite moz.build for reasoning about TEMP_STORE.
+ # For system sqlite we cannot use the compile time option, so we use a pragma.
+ if CONFIG['MOZ_SYSTEM_SQLITE'] and (CONFIG['OS_TARGET'] == 'Android'
+                                     or CONFIG['HAVE_64BIT_BUILD']):
