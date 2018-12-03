@@ -41,6 +41,11 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# honor Gentoo's docdir
+	sed -i -e '/^docdir=/s/^/#/' \
+		Makefile.am \
+		|| die "failed to modify Makefile.am"
+
 	# Make sure we can cross-compile this puppy
 	if tc-is-cross-compiler ; then
 		sed -i \
@@ -67,8 +72,8 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--with-appresdir="${EPREFIX}"/usr/share/X11/app-defaults
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		--with-appresdir="${EPREFIX%/}"/usr/share/X11/app-defaults
+		--docdir="${EPREFIX%/}"/usr/share/doc/${PF}
 		$(use_with X x)
 	)
 	econf "${myeconfargs[@]}"
