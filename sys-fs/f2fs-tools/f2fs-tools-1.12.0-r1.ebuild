@@ -18,6 +18,7 @@ RDEPEND="selinux? ( sys-libs/libselinux )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	eapply "${FILESDIR}"/${P}-fsck.patch
 	default
 	eautoreconf
 }

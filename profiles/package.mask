@@ -826,8 +826,9 @@ app-admin/amazon-ec2-init
 # Removal in 14 days.  Bug #671240.
 dev-java/jcs
 
-# Andrey Grozin <grozin@gentoo.org> (04 Jan 2016)
-# Needs a bump and substantial ebuild rewrite
+# Andrey Grozin <grozin@gentoo.org> (03 Dec 2018)
+# Masked since 2016.
+# Removal in 30 days. Bug #671242.
 =sci-mathematics/reduce-20110414-r1
 
 # Robin H. Johnson <robbat2@gentoo.org> (04 Aug 2014)
