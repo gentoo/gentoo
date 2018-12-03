@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python2_7 )
 
 inherit autotools eutils multilib user python-single-r1
 
@@ -42,6 +42,7 @@ CDEPEND="
 			dev-libs/libnl:3
 			net-libs/libpcap
 			)
+	dev-libs/libusb:=
 	dev-libs/protobuf-c:=
 	dev-libs/protobuf:=
 	sys-libs/ncurses:=
@@ -66,22 +67,27 @@ src_prepare() {
 	sed -i -e 's| -s||g' \
 		-e 's|@mangrp@|root|g' Makefile.in
 
-	epatch "${FILESDIR}"/fix-setuptools2.patch
+	epatch "${FILESDIR}"/fix-setuptools3.patch
 	eapply_user
 
-	if [[ ${PV} == "9999" ]] ; then
-		eautoreconf
-	fi
-
-	if ! use lm_sensors; then
-		sed -i "s#HAVE_LMSENSORS_H=1#HAVE_LMSENSORS_H=0#" configure
-	fi
-	if use networkmanager; then
-		sed -i "s#havelibnm\=no#havelibnm\=yes#" configure
+	if use lm_sensors; then
+		sed -i "s#HAVE_LMSENSORS_H=0#HAVE_LMSENSORS_H=1#" configure.ac || die
+		sed -i "s#HAVE_LIBLMSENSORS=0#HAVE_LMSENSORS=1#" configure.ac || die
 	else
-		sed -i "s#havelibnm\=yes#havelibnm\=no#" configure
+		sed -i "s#HAVE_LMSENSORS_H=1#HAVE_LMSENSORS_H=0#" configure.ac || die
+		sed -i "s#HAVE_LIBLMSENSORS=1#HAVE_LMSENSORS=0#" configure.ac || die
 	fi
-	sed -i 's#-O3##' configure
+	#fix for bug #662726
+	sed -i "s#HAVE_SENSORS_SENSORS_H#HAVE_LMSENSORS_H#" system_monitor.cc || die
+
+	if use networkmanager; then
+		sed -i "s#havelibnm\=no#havelibnm\=yes#" configure.ac || die
+	else
+		sed -i "s#havelibnm\=yes#havelibnm\=no#" configure.ac || die
+	fi
+	sed -i 's#-O3##' configure.ac || die
+
+	eautoreconf
 }
 
 src_configure() {
