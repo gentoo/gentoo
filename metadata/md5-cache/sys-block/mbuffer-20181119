@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure postinst prepare test
+DEPEND=ssl? ( dev-libs/openssl:0= ) test? ( dev-libs/openssl:0 ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=M(easuring)buffer is a replacement for buffer with additional functionality
+EAPI=6
+HOMEPAGE=http://www.maier-komor.de/mbuffer.html
+IUSE=debug ssl test
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=ssl? ( dev-libs/openssl:0= )
+REQUIRED_USE=test? ( ssl )
+SLOT=0
+SRC_URI=http://www.maier-komor.de/software/mbuffer/mbuffer-20181119.tgz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=2022a61a03413368b98ef1942a9f8f16
