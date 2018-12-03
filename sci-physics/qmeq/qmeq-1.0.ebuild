@@ -25,7 +25,7 @@ COMMON_DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	examples? ( dev-python/jupyter[${PYTHON_USEDEP}] )
+	examples? ( $(python_gen_cond_dep 'dev-python/jupyter[${PYTHON_USEDEP}]' -3) )
 "
 DEPEND="
 	${COMMON_DEPEND}
