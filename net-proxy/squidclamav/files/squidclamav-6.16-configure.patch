@@ -1,0 +1,10 @@
+--- squidclamav-6.13-original/configure	2015-06-01 22:18:41.000000000 +0200
++++ squidclamav-6.13/configure	2015-08-07 14:12:13.087377633 +0200
+@@ -12825,6 +12825,7 @@
+ 		ADDITONAL_LIB=''
+ 	    ;;
+ esac
++ADDITONAL_LIB="$ADDITONAL_LIB -larchive -lz -lbz2"
+ 
+ 
+ CFGDIR=/etc

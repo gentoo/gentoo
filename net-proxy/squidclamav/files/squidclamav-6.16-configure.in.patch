@@ -1,0 +1,10 @@
+--- squidclamav-6.13-original/configure.in	2015-06-01 22:18:41.000000000 +0200
++++ squidclamav-6.13/configure.in	2015-08-07 14:11:03.292243246 +0200
+@@ -160,6 +160,7 @@
+ 		ADDITONAL_LIB=''
+ 	    ;;
+ esac
++ADDITONAL_LIB="$ADDITONAL_LIB -larchive -lz -lbz2"
+ AC_SUBST([ADDITONAL_LIB])
+ 
+ dnl Force config directory to be /etc/

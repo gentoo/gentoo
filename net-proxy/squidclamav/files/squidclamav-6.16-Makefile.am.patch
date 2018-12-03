@@ -1,0 +1,11 @@
+--- squidclamav-6.13-original/src/Makefile.am	2015-06-01 22:18:41.000000000 +0200
++++ squidclamav-6.13/src/Makefile.am	2015-08-07 14:10:04.506340753 +0200
+@@ -7,7 +7,7 @@
+ 
+ DEFS = @DEFS@
+ 
+-squidclamav_la_LIBADD = @MODULES_LIBADD@
++squidclamav_la_LIBADD = @MODULES_LIBADD@ -larchive -lz -lbz2
+ squidclamav_la_LDFLAGS= -module -avoid-version
+ squidclamav_la_CFLAGS=  -I../../include/ @HAVE_TEMPLATE@ -DCONFIGDIR=\"$(CONFIGDIR)\"
+ squidclamav_la_SOURCES = squidclamav.c
