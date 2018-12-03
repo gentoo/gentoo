@@ -38,16 +38,9 @@ RDEPEND="
 DEPEND="
 	${CDEPEND}
 	test? (
-		>=dev-python/astroid-1.3.5[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}]
-		dev-python/ipdb[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
-		>=dev-python/pylint-1.4.2[${PYTHON_USEDEP}]
-		dev-python/wheel[${PYTHON_USEDEP}]
 	)"
 
 python_test() {
-	nosetests -v ${PN} || die
+	pytest -vv ${PN} || die
 }
