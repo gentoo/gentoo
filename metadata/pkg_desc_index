@@ -11252,7 +11252,7 @@ x11-themes/mate-backgrounds 1.18.0: A set of backgrounds packaged with the MATE 
 x11-themes/mate-icon-theme 1.18.2: MATE default icon themes
 x11-themes/mate-icon-theme-faenza 1.18.1: Faenza icon theme, that was adapted for MATE desktop
 x11-themes/mate-themes 3.22.18: A set of MATE themes, with sets for users with limited or low vision
-x11-themes/mate-themes-meta 3-r2: Meta package to facilitate easy use of x11-themes/mate-themes
+x11-themes/mate-themes-meta 3-r2 3-r3: Meta package to facilitate easy use of x11-themes/mate-themes
 x11-themes/murrine-themes 0.98.0-r1: Themes for the Murrine GTK+2 Cairo Engine
 x11-themes/neutral-xcursors 20150106: A family of smoothed and shadowed cursors that resemble the standard X ones
 x11-themes/nimbus 0.1.7-r1: The default OpenSolaris theme (GTK+ 2.x engine, icon- and metacity theme)
