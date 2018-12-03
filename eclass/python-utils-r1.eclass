@@ -1335,16 +1335,12 @@ python_fix_shebang() {
 			fi
 		done < <(find -H "${path}" -type f -print0 || die)
 
-		if [[ ! ${any_fixed} ]]; then
+		if [[ ! ${any_fixed} && ! ${any_correct} ]]; then
 			local cmd=eerror
 			[[ ${EAPI:-0} == [012345] ]] && cmd=eqawarn
 
 			"${cmd}" "QA warning: ${FUNCNAME}, ${path#${D%/}} did not match any fixable files."
-			if [[ ${any_correct} ]]; then
-				"${cmd}" "All files have ${EPYTHON} shebang already."
-			else
-				"${cmd}" "There are no Python files in specified directory."
-			fi
+			"${cmd}" "There are no Python files in specified directory."
 
 			[[ ${cmd} == eerror ]] && die "${FUNCNAME} did not match any fixable files (QA warning fatal in EAPI ${EAPI})"
 		fi
