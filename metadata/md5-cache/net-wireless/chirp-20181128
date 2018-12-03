@@ -10,6 +10,6 @@ RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/
 REQUIRED_USE=|| ( python_targets_python2_7 )
 RESTRICT=test
 SLOT=0
-SRC_URI=http://trac.chirp.danplanet.com/chirp_daily/daily-20180906/chirp-daily-20180906.tar.gz
+SRC_URI=http://trac.chirp.danplanet.com/chirp_daily/daily-20181128/chirp-daily-20181128.tar.gz
 _eclasses_=distutils-r1	71a5ee567fb298e553ce8d1319279151	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=f0249f894289cc77f75e11515f4a6bc5
+_md5_=bdad79ab0decb517be976010c013795d
