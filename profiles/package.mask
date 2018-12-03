@@ -690,18 +690,6 @@ sys-devel/automake:1.8
 # Unset python_targets_python2_7 for ipykernel and ipyparallel if needed.
 >=dev-python/ipython-6
 
-# Mats Lidell <matsl@gentoo.org> (17 Aug 2017)
-# Masked ede and all its dependencies due to security reasons.
-# bug #398241
-<=app-xemacs/ede-1.03-r1
-<=app-xemacs/semantic-1.21
-<=app-xemacs/jde-1.52
-<=app-xemacs/xslt-process-1.12
-<=app-xemacs/xetla-1.02
-<=app-xemacs/cogre-1.02
-<=app-xemacs/ecb-1.22
-<=app-xemacs/xemacs-packages-all-2010.07.29
-
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data
 # corruption when storing data in blobs. Masked, because any code
