@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -24,9 +24,10 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 IUSE=""
 
-DEPEND=">=net-wireless/kismet-2011.03.2-r1:= \
-	>=net-wireless/ubertooth-${PV}:= \
-	>=net-libs/libbtbb-${PV}:= \
+DEPEND=">=net-wireless/kismet-2011.03.2-r1:=
+	<net-wireless/kismet-2017.0.0
+	>=net-wireless/ubertooth-${PV}:=
+	>=net-libs/libbtbb-${PV}:=
 	virtual/libusb:1"
 RDEPEND="${DEPEND}"
 
