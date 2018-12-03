@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,14 +20,12 @@ RDEPEND="dev-python/urllib3[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		>=dev-python/coverage-3.5[${PYTHON_USEDEP}]
 		>=dev-python/nose-1.2[${PYTHON_USEDEP}]
 		>=dev-python/mock-1.0[${PYTHON_USEDEP}]
 		dev-python/sure[${PYTHON_USEDEP}]
 		dev-python/httplib2[${PYTHON_USEDEP}]
 		>=dev-python/requests-1.1[${PYTHON_USEDEP}]
 		>=www-servers/tornado-2.2[${PYTHON_USEDEP}]
-		dev-python/ipdb[${PYTHON_USEDEP}]
 )"
 
 #Required for test phase
