@@ -6074,7 +6074,7 @@ dev-scheme/slib 3.2.5-r1: Portable Scheme library for all standard Scheme implem
 dev-scheme/tinyscheme 1.41: Lightweight scheme interpreter
 dev-tcltk/anigif 1.3-r1: Image rotation package
 dev-tcltk/blt 2.4z-r13: Extension to Tk, adding new widgets, geometry managers, and misc commands
-dev-tcltk/bwidget 1.9.8: High-level widget set for Tcl/Tk
+dev-tcltk/bwidget 1.9.8 1.9.12: High-level widget set for Tcl/Tk
 dev-tcltk/combobox 2.3-r1: A combobox megawidget
 dev-tcltk/expect 5.45: tool for automating interactive applications
 dev-tcltk/expect-lite 4.6.1: quick and easy command line automation tool built on top of expect
