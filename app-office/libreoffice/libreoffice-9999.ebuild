@@ -3,8 +3,8 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
-PYTHON_REQ_USE="threads,xml"
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
+PYTHON_REQ_USE="threads(+),xml"
 
 MY_PV="${PV/_alpha/.alpha}"
 MY_PV="${MY_PV/_beta/.beta}"
