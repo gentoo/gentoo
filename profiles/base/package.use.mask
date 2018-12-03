@@ -25,27 +25,32 @@ dev-python/jira python_targets_python2_7
 dev-python/jupyter python_targets_python2_7
 dev-python/jupyter_client python_targets_python2_7
 dev-python/jupyter_console python_targets_python2_7
-dev-python/jupyter_core python_targets_python2_7
 dev-python/line_profiler python_targets_python2_7
 dev-python/matplotlib doc
-dev-python/nbconvert doc
+dev-python/metakernel python_targets_python2_7
+dev-python/nbconvert python_targets_python2_7
+dev-python/nbval python_targets_python2_7
 dev-python/netaddr cli
 dev-python/notebook python_targets_python2_7
 dev-python/oct2py python_targets_python2_7
+dev-python/octave_kernel python_targets_python2_7
 dev-python/pandas doc
 dev-python/pandas-datareader doc
 dev-python/patsy doc
 dev-python/qtconsole python_targets_python2_7
 dev-python/restkit cli
-dev-python/rpy python_targets_python2_7
 dev-python/simplecv shell
+dev-python/spyder python_targets_python2_7
+dev-python/spyder-kernels python_targets_python2_7
 dev-python/statsmodels doc
-dev-python/sympy python_targets_python2_7
+dev-python/vpython python_targets_python2_7
+dev-python/widgetsnbextension python_targets_python2_7
 www-apps/nikola python_targets_python2_7 # USE=ipython
 # indirect deps
 dev-python/apptools test
 sys-apps/firejail x11
-dev-python/glue-vispy-viewers python_targets_python2_7 # from glueviz
+dev-python/glue-vispy-viewers python_single_target_python2_7 # from glueviz
+sci-geosciences/seawater python_targets_python2_7 # from oct2py
 # from astropy
 dev-python/aplpy python_targets_python2_7
 dev-python/astlib python_targets_python2_7
