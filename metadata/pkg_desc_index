@@ -4965,7 +4965,7 @@ dev-python/htmlgen 2.2.2-r1: HTMLgen - Python modules for the generation of HTML
 dev-python/http-parser 0.8.3: HTTP request/response parser for python in C
 dev-python/httpbin 0.4.1: HTTP Request and Response Service
 dev-python/httplib2 0.10.3-r1: A comprehensive HTTP client library
-dev-python/httpretty 0.8.0 0.8.10 0.8.14: HTTP client mock for Python
+dev-python/httpretty 0.8.14: HTTP client mock for Python
 dev-python/hyper-h2 2.5.1: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1: HTTP/2 framing layer for Python
 dev-python/hypothesis 3.6.0-r1 3.59.1: A library for property based testing
