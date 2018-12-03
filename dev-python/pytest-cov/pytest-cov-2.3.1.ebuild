@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,7 +36,6 @@ DEPEND="
 			dev-python/pytest-cache[${PYTHON_USEDEP}]
 		)
 		=dev-python/pytest-xdist-1.15.0[${PYTHON_USEDEP}]
-		dev-python/pytest-capturelog[${PYTHON_USEDEP}]
 	)
 "
 
