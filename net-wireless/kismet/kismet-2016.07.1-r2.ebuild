@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils multilib user
 
@@ -31,6 +31,7 @@ CDEPEND="net-wireless/wireless-tools
 	plugin-btscan? ( net-wireless/bluez )
 	plugin-dot15d4? ( virtual/libusb:0 )
 	plugin-spectools? ( net-wireless/spectools )
+	plugin-ptw? ( dev-libs/openssl:= )
 "
 
 DEPEND="${CDEPEND}
@@ -51,7 +52,7 @@ src_prepare() {
 		-e 's|@mangrp@|root|g' Makefile.in
 
 	epatch "${FILESDIR}/${P}-ruby-fixes.patch"
-	epatch_user
+	eapply_user
 	eautoreconf
 }
 
