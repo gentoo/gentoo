@@ -7,23 +7,23 @@
   </synopsis>
   <product type="ebuild">postgresql</product>
   <announced>2018-11-30</announced>
-  <revised count="1">2018-11-30</revised>
+  <revised count="2">2018-12-03</revised>
   <bug>670724</bug>
   <access>remote</access>
   <affected>
     <package name="dev-db/postgresql" auto="yes" arch="*">
-      <unaffected range="rge">9.3.25</unaffected>
-      <unaffected range="rge">9.4.20</unaffected>
-      <unaffected range="rge">9.5.15</unaffected>
-      <unaffected range="rge">9.6.11</unaffected>
-      <unaffected range="rge">10.6</unaffected>
-      <unaffected range="ge">11.1</unaffected>
-      <vulnerable range="rlt">9.3.25</vulnerable>
-      <vulnerable range="rlt">9.4.20</vulnerable>
-      <vulnerable range="rlt">9.5.15</vulnerable>
-      <vulnerable range="rlt">9.6.11</vulnerable>
-      <vulnerable range="rlt">10.6</vulnerable>
-      <vulnerable range="lt">11.1</vulnerable>
+      <unaffected range="ge" slot="9.3">9.3.25</unaffected>
+      <unaffected range="ge" slot="9.4">9.4.20</unaffected>
+      <unaffected range="ge" slot="9.5">9.5.15</unaffected>
+      <unaffected range="ge" slot="9.6">9.6.11</unaffected>
+      <unaffected range="ge" slot="10">10.6</unaffected>
+      <unaffected range="ge" slot="11">11.1</unaffected>
+      <vulnerable range="lt" slot="9.3">9.3.25</vulnerable>
+      <vulnerable range="lt" slot="9.4">9.4.20</vulnerable>
+      <vulnerable range="lt" slot="9.5">9.5.15</vulnerable>
+      <vulnerable range="lt" slot="9.6">9.6.11</vulnerable>
+      <vulnerable range="lt" slot="10">10.6</vulnerable>
+      <vulnerable range="lt" slot="11">11.1</vulnerable>
     </package>
   </affected>
   <background>
@@ -90,5 +90,5 @@
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16850">CVE-2018-16850</uri>
   </references>
   <metadata tag="requester" timestamp="2018-11-29T21:19:15Z">b-man</metadata>
-  <metadata tag="submitter" timestamp="2018-11-30T08:55:37Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-12-03T19:06:05Z">b-man</metadata>
 </glsa>
