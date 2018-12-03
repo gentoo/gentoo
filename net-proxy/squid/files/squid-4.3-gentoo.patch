@@ -1,0 +1,79 @@
+--- a/configure.ac	2018-10-14 17:22:35.000000000 +0300
++++ b/configure.ac	2018-10-17 21:27:24.806986467 +0300
+@@ -32,9 +32,9 @@ PRESET_CXXFLAGS="$CXXFLAGS"
+ PRESET_LDFLAGS="$LDFLAGS"
+ 
+ dnl Set default LDFLAGS
+-if test "x$LDFLAGS" = "x" ; then
+-  LDFLAGS="-g"
+-fi
++dnl if test "x$LDFLAGS" = "x" ; then
++dnl   LDFLAGS="-g"
++dnl fi
+ 
+ # Check for GNU cc
+ AC_PROG_CC
+--- a/src/cf.data.pre	2018-10-14 08:25:34.000000000 +0300
++++ b/src/cf.data.pre	2018-10-17 21:27:24.809986705 +0300
+@@ -1520,6 +1520,7 @@ acl Safe_ports port 280		# http-mgmt
+ acl Safe_ports port 488		# gss-http
+ acl Safe_ports port 591		# filemaker
+ acl Safe_ports port 777		# multiling http
++acl Safe_ports port 901		# SWAT
+ acl CONNECT method CONNECT
+ NOCOMMENT_END
+ DOC_END
+@@ -6819,11 +6820,11 @@ COMMENT_END
+ 
+ NAME: cache_mgr
+ TYPE: string
+-DEFAULT: webmaster
++DEFAULT: root
+ LOC: Config.adminEmail
+ DOC_START
+ 	Email-address of local cache manager who will receive
+-	mail if the cache dies.  The default is "webmaster".
++	mail if the cache dies.  The default is "root".
+ DOC_END
+ 
+ NAME: mail_from
+--- a/src/debug.cc	2018-10-14 08:25:34.000000000 +0300
++++ b/src/debug.cc	2018-10-17 21:27:24.807986546 +0300
+@@ -490,7 +490,7 @@ _db_init(const char *logfile, const char
+ #if HAVE_SYSLOG && defined(LOG_LOCAL4)
+ 
+     if (Debug::log_syslog)
+-        openlog(APP_SHORTNAME, LOG_PID | LOG_NDELAY | LOG_CONS, syslog_facility);
++        openlog(APP_SHORTNAME, LOG_PID | LOG_NDELAY, syslog_facility);
+ 
+ #endif /* HAVE_SYSLOG */
+ 
+--- a/src/main.cc	2018-10-14 08:25:34.000000000 +0300
++++ b/src/main.cc	2018-10-17 21:28:28.632044541 +0300
+@@ -1912,7 +1912,7 @@ watch_child(const CommandLine &masterCom
+ 
+     enter_suid();
+ 
+-    openlog(APP_SHORTNAME, LOG_PID | LOG_NDELAY | LOG_CONS, LOG_LOCAL4);
++    openlog(APP_SHORTNAME, LOG_PID | LOG_NDELAY, LOG_LOCAL4);
+ 
+     if (!opt_foreground)
+         GoIntoBackground();
+@@ -2012,7 +2012,7 @@ watch_child(const CommandLine &masterCom
+ 
+             if ((pid = fork()) == 0) {
+                 /* child */
+-                openlog(APP_SHORTNAME, LOG_PID | LOG_NDELAY | LOG_CONS, LOG_LOCAL4);
++                openlog(APP_SHORTNAME, LOG_PID | LOG_NDELAY, LOG_LOCAL4);
+                 (void)execvp(masterCommand.arg0(), kidCommand.argv());
+                 int xerrno = errno;
+                 syslog(LOG_ALERT, "execvp failed: %s", xstrerr(xerrno));
+@@ -2024,7 +2024,7 @@ watch_child(const CommandLine &masterCom
+         }
+ 
+         /* parent */
+-        openlog(APP_SHORTNAME, LOG_PID | LOG_NDELAY | LOG_CONS, LOG_LOCAL4);
++        openlog(APP_SHORTNAME, LOG_PID | LOG_NDELAY, LOG_LOCAL4);
+ 
+         // If Squid received a signal while checking for dying kids (below) or
+         // starting new kids (above), then do a fast check for a new dying kid
