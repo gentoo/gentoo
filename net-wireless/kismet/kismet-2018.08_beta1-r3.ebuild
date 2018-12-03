@@ -76,6 +76,9 @@ src_prepare() {
 	if ! use lm_sensors; then
 		sed -i "s#HAVE_LMSENSORS_H=1#HAVE_LMSENSORS_H=0#" configure
 	fi
+	#fix for bug #662726
+	sed -i "s#HAVE_SENSORS_SENSORS_H#HAVE_LMSENSORS_H#" system_monitor.cc || die
+
 	if use networkmanager; then
 		sed -i "s#havelibnm\=no#havelibnm\=yes#" configure
 	else
