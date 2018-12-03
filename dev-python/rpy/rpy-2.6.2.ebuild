@@ -30,7 +30,8 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
-PDEPEND="dev-python/ipython[${PYTHON_USEDEP}]"
+# ipython doesn't support py2 any more
+PDEPEND="$(python_gen_cond_dep 'dev-python/ipython[${PYTHON_USEDEP}]' -3)"
 
 # ggplot2 is an optional test dep but not in portage
 S="${WORKDIR}/${MY_P}"
