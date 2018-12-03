@@ -27,13 +27,14 @@ DEPEND="${RDEPEND}
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/numpydoc[${PYTHON_USEDEP}]
-	)
-	test? (
-		dev-python/testpath[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
-	)
-	"
+	)"
+
+# test deps commented out because they're restricted
+#test? (
+#    dev-python/testpath[${PYTHON_USEDEP}]
+#    dev-python/pytest[${PYTHON_USEDEP}]
+#    dev-python/pytest-cov[${PYTHON_USEDEP}]
+#)
 
 python_prepare_all() {
 	# Prevent un-needed download during build
