@@ -174,14 +174,8 @@ qt5-build_src_prepare() {
 		qt5_symlink_tools_to_build_dir
 
 		# Avoid unnecessary qmake recompilations
-		if [[ ${QT5_MINOR_VERSION} -ge 8 ]]; then
-			sed -i -e "/Creating qmake/i if [ '!' -e \"\$outpath/bin/qmake\" ]; then" \
-				-e '/echo "Done."/a fi' \
-				configure || die "sed failed (skip qmake bootstrap)"
-		else
-			sed -i -re "s|^if true;.*(\[ '\!').*(\"\\\$outpath/bin/qmake\".*)|if \1 -e \2 then|" \
-				configure || die "sed failed (skip qmake bootstrap)"
-		fi
+		sed -i -e "/Creating qmake/i if [ '!' -e \"\$outpath/bin/qmake\" ]; then" \
+			-e '/echo "Done."/a fi' configure || die "sed failed (skip qmake bootstrap)"
 
 		# Respect CC, CXX, *FLAGS, MAKEOPTS and EXTRA_EMAKE when bootstrapping qmake
 		sed -i -e "/outpath\/qmake\".*\"\$MAKE\")/ s:): \
@@ -195,12 +189,6 @@ qt5-build_src_prepare() {
 		# Respect CXX in bsymbolic_functions, fvisibility, precomp, and a few other tests
 		sed -i -e "/^QMAKE_CONF_COMPILER=/ s:=.*:=\"$(tc-getCXX)\":" \
 			configure || die "sed failed (QMAKE_CONF_COMPILER)"
-
-		if [[ ${QT5_MINOR_VERSION} -le 7 ]]; then
-			# Respect toolchain and flags in config.tests
-			find config.tests/unix -name '*.test' -type f -execdir \
-				sed -i -e 's/-nocache //' '{}' + || die
-		fi
 
 		# Don't inject -msse/-mavx/... into CXXFLAGS when detecting
 		# compiler support for extended instruction sets (bug 552942)
@@ -579,9 +567,6 @@ qt5_base_configure() {
 		# build shared libraries
 		-shared
 
-		# always enable large file support
-		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -largefile)
-
 		# disabling accessibility is not recommended by upstream, as
 		# it will break QStyle and may break other internal parts of Qt
 		-accessibility
@@ -624,7 +609,6 @@ qt5_base_configure() {
 
 		# disable everything to prevent automagic deps (part 2)
 		-no-gtk
-		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-pulseaudio -no-alsa)
 
 		# exclude examples and tests from default build
 		-nomake examples
@@ -636,10 +620,6 @@ qt5_base_configure() {
 
 		# print verbose information about each configure test
 		-verbose
-
-		# always enable iconv support
-		# since 5.8 this is handled in qtcore
-		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -iconv)
 
 		# disable everything to prevent automagic deps (part 3)
 		-no-cups -no-evdev -no-tslib -no-icu -no-fontconfig -no-dbus
@@ -667,10 +647,6 @@ qt5_base_configure() {
 		# disable undocumented X11-related flags, override in qtgui
 		# (not shown in ./configure -help output)
 		-no-xkb
-		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-xrender)
-
-		# disable obsolete/unused X11-related flags
-		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-mitshm -no-xcursor -no-xfixes -no-xrandr -no-xshape -no-xsync)
 
 		# always enable session management support: it doesn't need extra deps
 		# at configure time and turning it off is dangerous, see bug 518262
@@ -685,9 +661,6 @@ qt5_base_configure() {
 
 		# disable libinput-based generic plugin by default, override in qtgui
 		-no-libinput
-
-		# disable gstreamer by default, override in qtmultimedia
-		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-gstreamer)
 
 		# respect system proxies by default: it's the most natural
 		# setting, and it'll become the new upstream default in 5.8
