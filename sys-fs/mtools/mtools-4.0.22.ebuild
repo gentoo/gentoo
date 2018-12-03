@@ -25,10 +25,6 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-4.0.18-memset.patch
-)
-
 src_prepare() {
 	default
 
