@@ -37,7 +37,6 @@ DEPEND="
 			dev-python/pytest-cache[${PYTHON_USEDEP}]
 		)
 		>=dev-python/pytest-xdist-1.15.0[${PYTHON_USEDEP}]
-		dev-python/pytest-capturelog[${PYTHON_USEDEP}]
 	)
 "
 
