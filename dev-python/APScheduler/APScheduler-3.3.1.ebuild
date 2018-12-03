@@ -26,7 +26,6 @@ DEPEND="${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
 
-
 # Tests that are known to fail (some may be triggered by network-sandbox).
 test_failures=(
 	test_add_class_method_job
