@@ -19,4 +19,7 @@
 	<upstream>
 		<remote-id type="sourceforge">grisbi</remote-id>
 	</upstream>
+	<use>
+		<flag name="goffice">enable goffice graphic support</flag>
+	</use>
 </pkgmetadata>
