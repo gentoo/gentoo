@@ -351,7 +351,6 @@ app-benchmarks/os-autoinst
 # Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
 # Nobody willing to update and maintain this for years (#556306, #554488).
 # Removal in a month.
-net-proxy/squidclamav
 net-proxy/c-icap
 
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
