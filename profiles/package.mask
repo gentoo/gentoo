@@ -359,11 +359,6 @@ net-proxy/c-icap
 # #664370). Removal in a month.
 www-client/dooble
 
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Outdated, move to media-gfx/slic3r or other online alternatives (#570324).
-# Removal in a month.
-media-gfx/replicatorg
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
