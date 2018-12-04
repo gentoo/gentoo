@@ -373,10 +373,6 @@ dev-libs/libcdio cddb
 # Chromium uses an internal tcmalloc that doesn't support this arch yet.
 www-client/chromium tcmalloc
 
-# Mike Frysinger <vapier@gentoo.org> (17 Dec 2015)
-# The tlsdate seccomp logic is open-coded and doesn't support this arch yet.
-net-misc/tlsdate seccomp
-
 # Mike Frysinger <vapier@gentoo.org> (20 Jul 2015)
 # Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
 # Needs deps tested.
