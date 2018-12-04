@@ -41,6 +41,7 @@ CDEPEND="
 	>=dev-erlang/stringprep-1.0.8
 	>=dev-erlang/stun-1.0.10
 	>=dev-erlang/xmpp-1.1.9
+	<dev-erlang/xmpp-1.2.0
 	>=dev-lang/erlang-17.1[hipe?,odbc?,ssl]
 	!>=dev-lang/erlang-20.0
 	>=net-im/jabber-base-0.01
