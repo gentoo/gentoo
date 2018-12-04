@@ -5419,11 +5419,11 @@ sys-cluster/openmpi:numa - Enable numactl to allow binding processes to CPUs
 sys-cluster/openmpi:pbs - Add support for the Portable Batch System (PBS)
 sys-cluster/openmpi:romio - Build the ROMIO MPI-IO component
 sys-cluster/openmpi:vt - Enable bundled VampirTrace support
-sys-cluster/pacemaker:cman - Enable sys-cluster/cman support.
+sys-cluster/pacemaker:cman - Enable cman support.
 sys-cluster/pacemaker:heartbeat - Enable sys-cluster/heartbeat support.
 sys-cluster/pacemaker:smtp - Enable SMTP support via net-libs/libesmtp
 sys-cluster/resource-agents:libnet - Force use of net-libs/libnet
-sys-cluster/resource-agents:rgmanager - Install resources for sys-cluster/rgmanager
+sys-cluster/resource-agents:rgmanager - Install resources for rgmanager
 sys-cluster/swift:account - adds swift account support
 sys-cluster/swift:container - adds swift container support
 sys-cluster/swift:memcached - adds memcached support
