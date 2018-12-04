@@ -18,6 +18,10 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc full-support minimal test X"
+REQUIRED_USE="
+	doc? ( || ( python_targets_python3_5 python_targets_python3_6 ) )
+	full-support? ( || ( python_targets_python3_5 python_targets_python3_6 ) )
+"
 
 RECOMMENDED_DEPEND="
 	>=dev-python/bottleneck-1.2.1[${PYTHON_USEDEP}]
@@ -41,7 +45,7 @@ OPTIONAL_DEPEND="
 	)
 	>=dev-python/pytables-3.2.1[${PYTHON_USEDEP}]
 	dev-python/python-gflags[$(python_gen_usedep python2_7 pypy)]
-	dev-python/rpy[${PYTHON_USEDEP}]
+	$(python_gen_any_dep 'dev-python/rpy[${PYTHON_USEDEP}]' -3)
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/statsmodels[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.8.1[${PYTHON_USEDEP}]
@@ -76,11 +80,11 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
-		dev-python/nbsphinx[${PYTHON_USEDEP}]
+		$(python_gen_any_dep 'dev-python/nbsphinx[${PYTHON_USEDEP}]' -3)
 		>=dev-python/openpyxl-1.6.1[${PYTHON_USEDEP}]
 		>=dev-python/pytables-3.0.0[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
-		dev-python/rpy[${PYTHON_USEDEP}]
+		$(python_gen_any_dep 'dev-python/rpy[${PYTHON_USEDEP}]' -3)
 		>=dev-python/sphinx-1.2.1[${PYTHON_USEDEP}]
 		dev-python/xlrd[${PYTHON_USEDEP}]
 		dev-python/xlwt[${PYTHON_USEDEP}]
