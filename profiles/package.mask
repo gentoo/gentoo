@@ -348,11 +348,6 @@ app-crypt/tinyca
 # provide a live ebuild. Removal in a month.
 app-benchmarks/os-autoinst
 
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Nobody willing to update and maintain this for years (#556306, #554488).
-# Removal in a month.
-net-proxy/c-icap
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
