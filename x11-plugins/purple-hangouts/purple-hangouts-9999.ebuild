@@ -19,8 +19,8 @@ RDEPEND="
 	net-im/pidgin
 	sys-libs/zlib"
 
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
