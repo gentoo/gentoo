@@ -364,11 +364,6 @@ www-client/dooble
 # Removal in a month.
 media-gfx/replicatorg
 
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Build issues (#587866), outdated, nothing needs it in the tree. Removal in
-# a month.
-dev-libs/libsolv
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
