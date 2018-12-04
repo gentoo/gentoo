@@ -401,28 +401,9 @@ sys-power/upower-pm-utils
 media-plugins/mediastreamer-silk
 
 # Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Fails to build (#601886), dead for a long time. Removal in a month.
-media-gfx/gimmage
-
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
 # Fringe format, nothing really uses it, upstream disappeared, not really
 # working for some time (#602938). Removal in a month.
 media-libs/schroedinger
-
-
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Needs someone to maintain it and bump to a snapshot not relying on
-# gstreamer:0.10 (#610434, #560254). Removal in a month.
-app-accessibility/pocketsphinx
-
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Fails to build, hard to bump (#608908). Removal in a month.
-net-nntp/inn
-
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Dead since 2005, nobody else still ships it, it creates cruft dirs in /
-# (#565592). Removal in a month.
-app-admin/syslogread
 
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
