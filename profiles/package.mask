@@ -429,7 +429,6 @@ app-admin/syslogread
 # bug #618050. Removal in a month.
 sys-cluster/libccs
 sys-cluster/libcman
-sys-cluster/libfence
 sys-cluster/liblogthread
 
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
