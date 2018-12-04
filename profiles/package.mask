@@ -39,7 +39,7 @@ sci-astronomy/astrometry
 sci-astronomy/kapteyn
 sci-chemistry/prody
 sci-chemistry/pymol-plugins-dynamics
-<sci-geosciences/seawater-3
+sci-geosciences/seawater
 sci-visualization/mayavi
 x11-wm/xpra
 

@@ -52,6 +52,7 @@ dev-python/apptools test
 sys-apps/firejail x11
 dev-python/glue-vispy-viewers python_targets_python2_7 # from glueviz
 sci-geosciences/seawater python_targets_python2_7 # from oct2py
+sci-mathematics/pymc3 python_targets_python2_7 # from nbsphinx
 # from astropy
 dev-python/aplpy python_targets_python2_7
 dev-python/astlib python_targets_python2_7
