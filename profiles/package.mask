@@ -409,12 +409,6 @@ media-gfx/gimmage
 # working for some time (#602938). Removal in a month.
 media-libs/schroedinger
 
-
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Needs someone to maintain it and bump to a snapshot not relying on
-# gstreamer:0.10 (#610434, #560254). Removal in a month.
-app-accessibility/pocketsphinx
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
