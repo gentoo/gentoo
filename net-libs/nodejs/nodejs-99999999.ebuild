@@ -29,7 +29,7 @@ RDEPEND="
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-61.1:= )
 	npm? ( ${PYTHON_DEPS} )
-	ssl? ( =dev-libs/openssl-1.1.0*:0= )
+	ssl? ( =dev-libs/openssl-1.1*:0= )
 "
 DEPEND="
 	${RDEPEND}

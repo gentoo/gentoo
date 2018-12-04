@@ -1,0 +1,128 @@
+diff --git a/BUILDING.md b/BUILDING.md
+index 63ddf8e7..a086f38e 100644
+--- a/BUILDING.md
++++ b/BUILDING.md
+@@ -130,20 +130,29 @@ Depending on the host platform, the selection of toolchains may vary.
+ 
+ #### OpenSSL asm support
+ 
+-OpenSSL-1.1.0 requires the following assembler version for use of asm
++OpenSSL-1.1.1 requires the following assembler version for use of asm
+ support on x86_64 and ia32.
+ 
++For use of AVX-512,
++
++* gas (GNU assembler) version 2.26 or higher
++* nasm version 2.11.8 or higher in Windows
++
++Note that AVX-512 is disabled for Skylake-X by OpenSSL-1.1.1.
++
++For use of AVX2,
++
+ * gas (GNU assembler) version 2.23 or higher
+ * Xcode version 5.0 or higher
+ * llvm version 3.3 or higher
+ * nasm version 2.10 or higher in Windows
+ 
+-If compiling without one of the above, use `configure` with the
+-`--openssl-no-asm` flag. Otherwise, `configure` will fail.
+-
+-The forthcoming OpenSSL-1.1.1 will have different requirements. Please refer to
++Please refer to
+  https://www.openssl.org/docs/man1.1.1/man3/OPENSSL_ia32cap.html for details.
+ 
++ If compiling without one of the above, use `configure` with the
++`--openssl-no-asm` flag. Otherwise, `configure` will fail.
++
+ ## Building Node.js on supported platforms
+ 
+ The [bootstrapping guide](https://github.com/nodejs/node/blob/master/tools/bootstrap/README.md)
+diff --git a/src/node_crypto.cc b/src/node_crypto.cc
+index eab8aae1..28a0eeea 100644
+--- a/src/node_crypto.cc
++++ b/src/node_crypto.cc
+@@ -485,6 +485,12 @@ void SecureContext::Init(const FunctionCallbackInfo<Value>& args) {
+                                  SSL_SESS_CACHE_NO_AUTO_CLEAR);
+ 
+   SSL_CTX_set_min_proto_version(sc->ctx_.get(), min_version);
++
++  if (max_version == 0) {
++    // Selecting some secureProtocol methods allows the TLS version to be "any
++    // supported", but we don't support TLSv1.3, even if OpenSSL does.
++    max_version = TLS1_2_VERSION;
++  }
+   SSL_CTX_set_max_proto_version(sc->ctx_.get(), max_version);
+   // OpenSSL 1.1.0 changed the ticket key size, but the OpenSSL 1.0.x size was
+   // exposed in the public API. To retain compatibility, install a callback
+@@ -906,8 +912,26 @@ void SecureContext::SetCiphers(const FunctionCallbackInfo<Value>& args) {
+ 
+   THROW_AND_RETURN_IF_NOT_STRING(env, args[0], "Ciphers");
+ 
++  // Note: set_ciphersuites() is for TLSv1.3 and was introduced in openssl
++  // 1.1.1, set_cipher_list() is for TLSv1.2 and earlier.
++  //
++  // In openssl 1.1.0, set_cipher_list() would error if it resulted in no
++  // TLSv1.2 (and earlier) cipher suites, and there is no TLSv1.3 support.
++  //
++  // In openssl 1.1.1, set_cipher_list() will not error if it results in no
++  // TLSv1.2 cipher suites if there are any TLSv1.3 cipher suites, which there
++  // are by default. There will be an error later, during the handshake, but
++  // that results in an async error event, rather than a sync error thrown,
++  // which is a semver-major change for the tls API.
++  //
++  // Since we don't currently support TLSv1.3, work around this by removing the
++  // TLSv1.3 cipher suites, so we get backwards compatible synchronous errors.
+   const node::Utf8Value ciphers(args.GetIsolate(), args[0]);
+-  if (!SSL_CTX_set_cipher_list(sc->ctx_.get(), *ciphers)) {
++  if (
++#ifdef TLS1_3_VERSION
++      !SSL_CTX_set_ciphersuites(sc->ctx_.get(), "") ||
++#endif
++      !SSL_CTX_set_cipher_list(sc->ctx_.get(), *ciphers)) {
+     unsigned long err = ERR_get_error();  // NOLINT(runtime/int)
+     if (!err) {
+       return env->ThrowError("Failed to set ciphers");
+diff --git a/src/tls_wrap.cc b/src/tls_wrap.cc
+index 52d4e738..d452a8d6 100644
+--- a/src/tls_wrap.cc
++++ b/src/tls_wrap.cc
+@@ -222,7 +222,10 @@ void TLSWrap::SSLInfoCallback(const SSL* ssl_, int where, int ret) {
+     }
+   }
+ 
+-  if (where & SSL_CB_HANDSHAKE_DONE) {
++  // SSL_CB_HANDSHAKE_START and SSL_CB_HANDSHAKE_DONE are called
++  // sending HelloRequest in OpenSSL-1.1.1.
++  // We need to check whether this is in a renegotiation state or not.
++  if (where & SSL_CB_HANDSHAKE_DONE && !SSL_renegotiate_pending(ssl)) {
+     Local<Value> callback;
+ 
+     c->established_ = true;
+diff --git a/test/parallel/test-tls-set-ciphers-error.js b/test/parallel/test-tls-set-ciphers-error.js
+deleted file mode 100644
+index 5ef08dda..00000000
+--- a/test/parallel/test-tls-set-ciphers-error.js
++++ /dev/null
+@@ -1,22 +0,0 @@
+-'use strict';
+-const common = require('../common');
+-
+-if (!common.hasCrypto)
+-  common.skip('missing crypto');
+-
+-const assert = require('assert');
+-const tls = require('tls');
+-const fixtures = require('../common/fixtures');
+-
+-{
+-  const options = {
+-    key: fixtures.readKey('agent2-key.pem'),
+-    cert: fixtures.readKey('agent2-cert.pem'),
+-    ciphers: 'aes256-sha'
+-  };
+-  assert.throws(() => tls.createServer(options, common.mustNotCall()),
+-                /no cipher match/i);
+-  options.ciphers = 'FOOBARBAZ';
+-  assert.throws(() => tls.createServer(options, common.mustNotCall()),
+-                /no cipher match/i);
+-}

@@ -29,7 +29,7 @@ RDEPEND="
 	>=net-libs/nghttp2-1.34.0
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-62.1:= )
-	ssl? ( =dev-libs/openssl-1.1.0*:0= )
+	ssl? ( =dev-libs/openssl-1.1*:0= )
 "
 DEPEND="
 	${RDEPEND}
@@ -40,6 +40,7 @@ DEPEND="
 S="${WORKDIR}/node-v${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
+	"${FILESDIR}"/${PN}-10.14.0-openssl-compat.patch
 )
 
 pkg_pretend() {
