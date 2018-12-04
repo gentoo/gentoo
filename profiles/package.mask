@@ -424,11 +424,6 @@ net-nntp/inn
 # (#565592). Removal in a month.
 app-admin/syslogread
 
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Upstream dead for many years and nobody taking care of them, bug #443842,
-# bug #618050. Removal in a month.
-sys-cluster/liblogthread
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
