@@ -8,4 +8,4 @@ LICENSE=BSD-2
 RDEPEND=!<sys-apps/openrc-0.23 selinux? ( sec-policy/selinux-base-policy )
 SLOT=0
 _eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	prefix	e51c7882b7b721e54e684f7eb143cbfe
-_md5_=1b012a26e593bd120af52b1866d6c263
+_md5_=115a6f8795524bad88dca31b701134f3
