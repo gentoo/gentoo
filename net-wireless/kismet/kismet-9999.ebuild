@@ -28,7 +28,7 @@ HOMEPAGE="https://www.kismetwireless.net"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-IUSE="lm_sensors networkmanager +pcre selinux +suid"
+IUSE="lm_sensors mousejack networkmanager +pcre selinux +suid"
 
 CDEPEND="
 	${PYTHON_DEPS}
@@ -42,7 +42,7 @@ CDEPEND="
 			dev-libs/libnl:3
 			net-libs/libpcap
 			)
-	dev-libs/libusb:=
+	mousejack? ( dev-libs/libusb:= )
 	dev-libs/protobuf-c:=
 	dev-libs/protobuf:=
 	sys-libs/ncurses:=
@@ -67,32 +67,21 @@ src_prepare() {
 	sed -i -e 's| -s||g' \
 		-e 's|@mangrp@|root|g' Makefile.in
 
-	epatch "${FILESDIR}"/fix-setuptools3.patch
+	eapply "${FILESDIR}"/fix-setuptools3.patch
 	eapply_user
 
-	if use lm_sensors; then
-		sed -i "s#HAVE_LMSENSORS_H=0#HAVE_LMSENSORS_H=1#" configure.ac || die
-		sed -i "s#HAVE_LIBLMSENSORS=0#HAVE_LMSENSORS=1#" configure.ac || die
-	else
-		sed -i "s#HAVE_LMSENSORS_H=1#HAVE_LMSENSORS_H=0#" configure.ac || die
-		sed -i "s#HAVE_LIBLMSENSORS=1#HAVE_LMSENSORS=0#" configure.ac || die
+	if [ "${PV}" = "9999" ]; then
+		eautoreconf
 	fi
-	#fix for bug #662726
-	sed -i "s#HAVE_SENSORS_SENSORS_H#HAVE_LMSENSORS_H#" system_monitor.cc || die
-
-	if use networkmanager; then
-		sed -i "s#havelibnm\=no#havelibnm\=yes#" configure.ac || die
-	else
-		sed -i "s#havelibnm\=yes#havelibnm\=no#" configure.ac || die
-	fi
-	sed -i 's#-O3##' configure.ac || die
-
-	eautoreconf
 }
 
 src_configure() {
 	econf \
-		$(use_enable pcre)
+		$(use_enable pcre) \
+		$(use_enable lm_sensors lmsensors) \
+		$(use_enable mousejack libusb) \
+		$(use_enable networkmanager libnm) \
+		--disable-optimization
 }
 
 src_install() {
