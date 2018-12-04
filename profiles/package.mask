@@ -369,11 +369,6 @@ media-gfx/replicatorg
 # a month.
 dev-libs/libsolv
 
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Build issues (#590316, #603300), no reverse deps, needs a major version
-# bump. Removal in a month.
-dev-lua/lua-openssl
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
