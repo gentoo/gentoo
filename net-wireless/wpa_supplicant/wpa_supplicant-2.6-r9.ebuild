@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -132,6 +132,9 @@ src_prepare() {
 
 	# bug (596332 & 651314)
 	eapply "${FILESDIR}/${P}-libressl-compatibility.patch"
+
+	# bug (671006)
+	eapply "${FILESDIR}/${P}-openssl-1.1.patch"
 
 	# https://w1.fi/security/2017-1/wpa-packet-number-reuse-with-replayed-messages.txt
 	eapply "${FILESDIR}/2017-1/rebased-v2.6-0001-hostapd-Avoid-key-reinstallation-in-FT-handshake.patch"
