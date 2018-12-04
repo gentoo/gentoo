@@ -19,7 +19,7 @@ IUSE="zsh-completion"
 
 RDEPEND=">=dev-python/click-3.2[${PYTHON_USEDEP}]
 	>=dev-python/click-log-0.2.0[${PYTHON_USEDEP}]
-	dev-python/icalendar[${PYTHON_USEDEP}]
+	>=dev-python/icalendar-3.11.7[${PYTHON_USEDEP}]
 	dev-python/urwid[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
