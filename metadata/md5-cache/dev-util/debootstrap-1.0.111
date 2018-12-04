@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst unpack
+DESCRIPTION=Debian/Ubuntu bootstrap scripts
+EAPI=7
+HOMEPAGE=https://packages.qa.debian.org/d/debootstrap.html
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=app-arch/dpkg net-misc/wget sys-devel/binutils
+SLOT=0
+SRC_URI=mirror://debian/pool/main/d/debootstrap/debootstrap_1.0.111.tar.gz mirror://gentoo/devices.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8
+_md5_=52077b1e0dd273deb59502e36463e001
