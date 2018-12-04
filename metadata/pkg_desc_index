@@ -754,7 +754,6 @@ app-emulation/libvirt-glib 1.0.0 1.0.0-r1: GLib and GObject mappings for libvirt
 app-emulation/lxc 2.1.1-r1 3.0.2: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.1 3.0.2: Old style template scripts for LXC
 app-emulation/lxd 3.5 3.6-r1: Fast, dense and secure container management
-app-emulation/nemu 1.4.0: ncurses interface for QEMU
 app-emulation/q4wine 1.3.6-r1: Qt GUI configuration tool for Wine
 app-emulation/qemu 2.12.0-r3 2.12.1: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 2.12.0-r1: QEMU Guest Agent (qemu-ga) for use when running inside a VM
@@ -3764,7 +3763,7 @@ dev-perl/GD-SVG 0.330.0-r1: Seamlessly enable SVG output from scripts written us
 dev-perl/GDGraph 1.490.0: Perl5 module to create charts using the GD module
 dev-perl/GDTextUtil 0.860.0-r1: Text utilities for use with GD
 dev-perl/GSSAPI 0.280.0-r1: GSSAPI - Perl extension providing access to the GSSAPIv2 library
-dev-perl/Gentoo-App-Pram 0.100.200: Utility to merge PRs from the Gentoo Github repository
+dev-perl/Gentoo-App-Pram 0.200.0: Utility to merge PRs from the Gentoo Github repository
 dev-perl/Gentoo-PerlMod-Version 0.8.1: Convert arbitrary Perl Modules' versions into normalised Gentoo versions
 dev-perl/Geo-IP 1.450.0 1.510.0: Look up country by IP Address
 dev-perl/Geography-Countries 2009041301.0.0-r1: 2-letter, 3-letter, and numerical codes for countries

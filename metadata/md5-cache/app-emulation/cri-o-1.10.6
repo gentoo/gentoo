@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=app-crypt/gpgme:= app-emulation/runc dev-libs/glib:= dev-libs/libassuan:= dev-libs/libgpg-error:= net-firewall/conntrack-tools net-firewall/iptables net-misc/cni-plugins net-misc/socat sys-apps/iproute2 btrfs? ( sys-fs/btrfs-progs ) device-mapper? ( sys-fs/lvm2:= ) ostree? ( dev-util/ostree ) seccomp? ( sys-libs/libseccomp:= ) selinux? ( sys-libs/libselinux:= ) dev-go/go-md2man >=dev-lang/go-1.9 virtual/pkgconfig
+DESCRIPTION=OCI-based implementation of Kubernetes Container Runtime Interface
+EAPI=6
+HOMEPAGE=http://cri-o.io/
+IUSE=btrfs +device-mapper ostree seccomp selinux
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=app-crypt/gpgme:= app-emulation/runc dev-libs/glib:= dev-libs/libassuan:= dev-libs/libgpg-error:= net-firewall/conntrack-tools net-firewall/iptables net-misc/cni-plugins net-misc/socat sys-apps/iproute2 btrfs? ( sys-fs/btrfs-progs ) device-mapper? ( sys-fs/lvm2:= ) ostree? ( dev-util/ostree ) seccomp? ( sys-libs/libseccomp:= ) selinux? ( sys-libs/libselinux:= )
+SLOT=0
+SRC_URI=https://github.com/kubernetes-incubator/cri-o/archive/v1.10.6.tar.gz -> cri-o-1.10.6.tar.gz
+_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=e71396a73e6e8241f7dd3119524d27d0
