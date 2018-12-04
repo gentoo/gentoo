@@ -419,11 +419,6 @@ app-accessibility/pocketsphinx
 # Fails to build, hard to bump (#608908). Removal in a month.
 net-nntp/inn
 
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Dead since 2005, nobody else still ships it, it creates cruft dirs in /
-# (#565592). Removal in a month.
-app-admin/syslogread
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
