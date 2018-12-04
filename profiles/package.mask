@@ -32,7 +32,6 @@
 # Michał Górny <mgorny@gentoo.org> (02 Dec 2018)
 # Those python2 packages require dev-python/ipython which no longer
 # supports python2.
-=dev-python/astropy-1.2.1
 dev-python/atpy
 dev-python/django-endless-pagination
 dev-python/ets
@@ -40,6 +39,7 @@ sci-astronomy/astrometry
 sci-astronomy/kapteyn
 sci-chemistry/prody
 sci-chemistry/pymol-plugins-dynamics
+<sci-geosciences/seawater-3
 sci-visualization/mayavi
 x11-wm/xpra
 

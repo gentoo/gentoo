@@ -29,6 +29,7 @@ dev-python/line_profiler python_targets_python2_7
 dev-python/matplotlib doc
 dev-python/metakernel python_targets_python2_7
 dev-python/nbconvert python_targets_python2_7
+dev-python/nbsphinx python_targets_python2_7
 dev-python/nbval python_targets_python2_7
 dev-python/netaddr cli
 dev-python/notebook python_targets_python2_7
@@ -49,7 +50,7 @@ www-apps/nikola python_targets_python2_7 # USE=ipython
 # indirect deps
 dev-python/apptools test
 sys-apps/firejail x11
-dev-python/glue-vispy-viewers python_single_target_python2_7 # from glueviz
+dev-python/glue-vispy-viewers python_targets_python2_7 # from glueviz
 sci-geosciences/seawater python_targets_python2_7 # from oct2py
 # from astropy
 dev-python/aplpy python_targets_python2_7
