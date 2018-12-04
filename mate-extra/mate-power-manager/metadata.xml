@@ -8,7 +8,7 @@
 	<use>
 		<flag name="applet">Enable building of the MATE applet.</flag>
 		<flag name="pm-utils">Adds support for suspend/resume using
-			<pkg>sys-power/upower-pm-utils</pkg> instead of
+			upower-pm-utils instead of
 			<pkg>sys-power/upower</pkg></flag>
 	</use>
 	<upstream>
