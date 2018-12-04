@@ -374,12 +374,6 @@ dev-libs/libsolv
 # bump. Removal in a month.
 dev-lua/lua-openssl
 
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Upstream dead for ages, crashes (#637286), build issues (#592580).
-# Migration to Google fork or other alternative will be needed. Removal in a
-# month.
-net-misc/tlsdate
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
