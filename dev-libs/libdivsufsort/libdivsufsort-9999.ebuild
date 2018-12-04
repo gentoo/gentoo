@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,4 +20,9 @@ src_prepare() {
 	# will appreciate saner approach, if there is any
 	sed -i -e "s:\(DESTINATION \)lib:\1$(get_libdir):" \
 		*/CMakeLists.txt || die
+}
+
+src_configure() {
+	local mycmakeargs=("-DBUILD_DIVSUFSORT64=ON")
+	cmake-utils_src_configure
 }
