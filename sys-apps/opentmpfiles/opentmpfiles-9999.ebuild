@@ -42,6 +42,7 @@ add_service() {
 	local runlevel=$2
 
 	elog "Auto-adding '${initd}' service to your ${runlevel} runlevel"
+	mkdir -p "${EROOT}"etc/runlevels/${runlevel}
 	ln -snf /etc/init.d/${initd} "${EROOT}"etc/runlevels/${runlevel}/${initd}
 }
 

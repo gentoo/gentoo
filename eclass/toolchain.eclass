@@ -1851,6 +1851,14 @@ toolchain_src_install() {
 			fi
 		fi
 	fi
+
+	# portage regenerates 'dir' files on it's own: bug #672408
+	# Drop 'dir' files to avoid collisions.
+	if [[ -f "${D}${DATAPATH}"/info/dir ]]; then
+		einfo "Deleting '${D}${DATAPATH}/info/dir'"
+		rm "${D}${DATAPATH}"/info/dir || die
+	fi
+
 	# prune empty dirs left behind
 	find "${ED}" -depth -type d -delete 2>/dev/null
 
