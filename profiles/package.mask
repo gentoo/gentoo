@@ -396,10 +396,6 @@ sys-auth/pam_bioapi
 # Dead for ages, not needed anymore (#596988). Removal in a month.
 sys-power/upower-pm-utils
 
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Broken and outdated (#445476, #448934, #599580). Removal in a month.
-media-plugins/mediastreamer-silk
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
