@@ -2766,7 +2766,7 @@ dev-java/osgi-foundation 1.2.0-r1: OSGi R4 Foundation EE by Apache Felix
 dev-java/osgi-obr 1.0.2: OSGi Service OBR by Apache
 dev-java/pat 1.5.3-r1: Regular Expressions in Java
 dev-java/pdf-renderer 0.9.1: a 100% Java PDF renderer and viewer
-dev-java/pdfbox 1.8.11: Java library and utilities for working with PDF documents
+dev-java/pdfbox 1.8.11 1.8.15: Java library and utilities for working with PDF documents
 dev-java/piccolo2d 3.0-r1: A Structured 2D Graphics Framework
 dev-java/picocontainer 1.1-r1: Small footprint Dependency Injection container
 dev-java/portletapi 1.0-r1 2.0-r1: Portlet API 2.0 developed by the Java Community Process JSR-286
@@ -5145,7 +5145,7 @@ dev-python/notebook 5.0.0: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/numba 0.27.0 0.37.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numexpr 2.6.1: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.9.2 1.10.4: Fast array and numerical python library
+dev-python/numpy 1.9.2 1.10.4 1.14.5: Fast array and numerical python library
 dev-python/numpydoc 0.6.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
 dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
@@ -7305,7 +7305,7 @@ media-gfx/cropgui 0.1.1-r3: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/darktable 2.2.5 2.4.3: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
-media-gfx/dcraw 9.27.0: Command-line decoder for raw digital photos
+media-gfx/dcraw 9.27.0 9.28.0: Command-line decoder for raw digital photos
 media-gfx/digikam 5.9.0: Digital photo management application
 media-gfx/dpic 20130310: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
@@ -8308,7 +8308,7 @@ media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and a
 media-video/ttcut 0.19.6_p1: Tool for cutting MPEG files especially for removing commercials
 media-video/ushare 1.1a-r6: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/vamps 0.99.2: Very fast requantisizing tool for backup DVDs
-media-video/vcdimager 0.7.24: GNU VCDimager
+media-video/vcdimager 0.7.24 2.0.1: GNU VCDimager
 media-video/vdr 2.0.6-r1 2.2.0-r1: Video Disk Recorder - turns a pc into a powerful set top box for DVB
 media-video/vdr2jpeg 0.1.9-r1 0.2.0: Addon needed for XXV - WWW Admin for the Video Disk Recorder
 media-video/vdrtools-genindex 0.1.3-r1: VDR: genindex Script
@@ -10605,7 +10605,7 @@ www-misc/vdradmin-am 3.6.9: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-servers/apache 2.2.34 2.4.27-r1 2.4.34-r2: The Apache Web Server
-www-servers/gunicorn 19.1.1 19.6.0: A WSGI HTTP Server for UNIX
+www-servers/gunicorn 19.1.1 19.6.0 19.8.1: A WSGI HTTP Server for UNIX
 www-servers/lighttpd 1.4.51: Lightweight high-performance web server
 www-servers/monkeyd 1.6.9-r1: A small, fast, and scalable web server
 www-servers/nginx 1.14.1: Robust, small and high performance http and reverse proxy server
