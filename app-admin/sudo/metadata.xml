@@ -17,6 +17,7 @@
 		<flag name="openssl">Use SHA2 from <pkg>dev-libs/openssl</pkg> instead of sudo's internal SHA2</flag>
 		<flag name="sendmail">Allow sudo to send emails with sendmail</flag>
 		<flag name="sssd">Add System Security Services Daemon support</flag>
+		<flag name="secure-path">Replace PATH variable with compile time secure paths</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:todd_miller:sudo</remote-id>
