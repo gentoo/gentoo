@@ -9,7 +9,7 @@ DESCRIPTION="A CalDAV and CardDAV Server"
 HOMEPAGE="https://davical.org/"
 SRC_URI="https://www.davical.org/downloads/${PN}_${PV}.orig.tar.xz -> ${P}.tar.xz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND=">=dev-php/awl-0.59
