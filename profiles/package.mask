@@ -343,11 +343,6 @@ dev-python/pyramid
 # Upstream dead, multiple unresolved bugs (#540622). Removal in a month.
 app-crypt/tinyca
 
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# gitorious was closed (#544812), nothing needs it in the tree and we only
-# provide a live ebuild. Removal in a month.
-app-benchmarks/os-autoinst
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
