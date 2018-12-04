@@ -390,7 +390,6 @@ net-analyzer/w3af
 # in a month.
 sys-auth/bioapi
 sys-auth/tfm-fingerprint
-sys-auth/pam_bioapi
 
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
