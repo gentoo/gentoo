@@ -427,7 +427,6 @@ app-admin/syslogread
 # Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
 # Upstream dead for many years and nobody taking care of them, bug #443842,
 # bug #618050. Removal in a month.
-sys-cluster/fence-agents
 sys-cluster/libccs
 sys-cluster/libccs-perl
 sys-cluster/libcman
