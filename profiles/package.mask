@@ -354,11 +354,6 @@ app-benchmarks/os-autoinst
 net-proxy/squidclamav
 net-proxy/c-icap
 
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Outdated, doesn't respect CC, installs files in /usr/local (#565894,
-# #664370). Removal in a month.
-www-client/dooble
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
