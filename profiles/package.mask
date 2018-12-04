@@ -385,11 +385,6 @@ net-misc/tlsdate
 # in a month.
 net-analyzer/w3af
 
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# pkg_postinst calls pkg_config (#596648), upstream dead for ages. Removal
-# in a month.
-sys-auth/bioapi
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
