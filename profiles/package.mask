@@ -401,10 +401,6 @@ sys-power/upower-pm-utils
 media-plugins/mediastreamer-silk
 
 # Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Fails to build (#601886), dead for a long time. Removal in a month.
-media-gfx/gimmage
-
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
 # Fringe format, nothing really uses it, upstream disappeared, not really
 # working for some time (#602938). Removal in a month.
 media-libs/schroedinger
