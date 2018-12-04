@@ -4840,6 +4840,7 @@ net-wireless/hostapd:netlink - Adding support for using netlink to create VLANs
 net-wireless/hostapd:sqlite - Adding sqlite support
 net-wireless/hostapd:wps - Add support for Wi-Fi Protected Setup
 net-wireless/kismet:client - Build the ncurses-based user interface
+net-wireless/kismet:mousejack - Add support for mousejack hardware using dev-libs/libusb
 net-wireless/kismet:pcre - Build with pcre support
 net-wireless/kismet:plugin-autowep - Build the autowep plugin
 net-wireless/kismet:plugin-btscan - Build the btscan plugin
