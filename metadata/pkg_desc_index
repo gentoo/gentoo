@@ -3194,7 +3194,7 @@ dev-libs/libxls 1.4.0-r1: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.8: XML C parser and toolkit
 dev-libs/libxslt 1.1.32: XSLT libraries and tools
 dev-libs/libyaml 0.1.7: YAML 1.1 parser and emitter written in C
-dev-libs/libzia 4.11: platform abstraction code for tucnak package
+dev-libs/libzia 4.11 4.14: platform abstraction code for tucnak package
 dev-libs/libzip 1.3.0: Library for manipulating zip archives
 dev-libs/link-grammar 5.3.11: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r3: Library for locking devices
@@ -7971,7 +7971,7 @@ media-radio/qrq 0.3.1 0.3.1-r1: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 9.2.6: Amateur radio SSTV software
 media-radio/svxlink 17.12.1 17.12.2: Multi Purpose Voice Services System, including Qtel for EchoLink
 media-radio/tlf 1.3.0: Console-mode amateur radio contest logger
-media-radio/tucnak 4.11: Amateur Radio VHF Contest Logbook
+media-radio/tucnak 4.11 4.14: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.5.1: A package of programs that fit together to form a morse code tutor program
 media-radio/wsjtx 1.8.0: Weak signal ham radio communication
 media-radio/xastir 2.0.6-r1 2.0.8-r1: X Amateur Station Tracking and Information Reporting
@@ -10054,7 +10054,7 @@ sys-devel/bc 1.06.95-r2: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
 sys-devel/binutils 2.30-r2 2.30-r4: Tools necessary to build programs
 sys-devel/binutils-config 5-r4: Utility to change the binutils version being used
-sys-devel/bison 3.0.5-r1 3.1: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 3.1: A general-purpose (yacc-compatible) parser generator
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 4.0.1 5.0.2 6.0.1: C language family frontend for LLVM
 sys-devel/clang-common 6.0.1: Common files shared between multiple slots of clang
