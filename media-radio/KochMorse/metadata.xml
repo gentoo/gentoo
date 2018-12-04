@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>gentoo@seichter.de</email>
+		<name>Ralph Seichter</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		KochMorse is a simple morse-code tutor using the Koch method. It is
+		written in C++ and uses Qt5 for the graphical user interface.
+	</longdescription>
 	<upstream>
-		<remote-id type="google-code">KochMorse</remote-id>
+		<remote-id type="github">hmatuschek/kochmorse</remote-id>
 	</upstream>
 </pkgmetadata>
