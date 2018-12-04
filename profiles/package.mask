@@ -415,10 +415,6 @@ media-libs/schroedinger
 # gstreamer:0.10 (#610434, #560254). Removal in a month.
 app-accessibility/pocketsphinx
 
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Fails to build, hard to bump (#608908). Removal in a month.
-net-nntp/inn
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
