@@ -400,11 +400,6 @@ sys-power/upower-pm-utils
 # Broken and outdated (#445476, #448934, #599580). Removal in a month.
 media-plugins/mediastreamer-silk
 
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Fringe format, nothing really uses it, upstream disappeared, not really
-# working for some time (#602938). Removal in a month.
-media-libs/schroedinger
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
