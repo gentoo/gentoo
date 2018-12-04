@@ -123,14 +123,13 @@ esac
 
 IUSE="debug test"
 
-[[ ${PN} == qtwebkit ]] && RESTRICT+=" mirror" # bug 524584
 [[ ${QT5_BUILD_TYPE} == release ]] && RESTRICT+=" test" # bug 457182
 
 DEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 "
-if [[ (${PN} != qttest && ${PN} != qtwebkit) || (${PN} == qtwebkit && ${QT5_MINOR_VERSION} -lt 9) ]]; then
+if [[ ${PN} != qttest ]]; then
 	DEPEND+=" test? ( ~dev-qt/qttest-${PV} )"
 fi
 RDEPEND="
@@ -147,7 +146,7 @@ EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install sr
 # Unpacks the sources.
 qt5-build_src_unpack() {
 	# bug 307861
-	if [[ ${PN} == qtwebengine || ${PN} == qtwebkit ]]; then
+	if [[ ${PN} == qtwebengine ]]; then
 		eshopts_push -s extglob
 		if is-flagq '-g?(gdb)?([1-9])'; then
 			ewarn
