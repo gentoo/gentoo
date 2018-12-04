@@ -334,11 +334,6 @@ dev-libs/gost-engine
 # experimental features and accept a more unstable release.
 >=www-client/chromium-72
 
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Unmaintained, needs someone to take care of bumping and maintaining it
-# (#509518). Removal in a month.
-dev-python/pyramid
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
