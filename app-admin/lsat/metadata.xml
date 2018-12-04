@@ -17,6 +17,8 @@
 		for kernel versions.
 	</longdescription>
 	<upstream>
+		<changelog>http://usat.sourceforge.net/changelog.html</changelog>
+		<remote-id type="github">triode3/lsat</remote-id>
 		<remote-id type="sourceforge">usat</remote-id>
 	</upstream>
 </pkgmetadata>
