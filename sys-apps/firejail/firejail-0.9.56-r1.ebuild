@@ -12,13 +12,12 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="apparmor +bind +chroot contrib +file-transfer +network
-	network-restricted +seccomp suid +userns x11"
+IUSE="apparmor +chroot contrib +file-transfer +network
+	+seccomp suid +userns x11"
 
 DEPEND="!sys-apps/firejail-lts
 	apparmor? ( sys-libs/libapparmor )"
-RDEPEND="${DEPEND}
-	x11? ( x11-wm/xpra[client,server] )"
+RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${PV}-contrib-fix.patch" )
 
@@ -35,7 +34,6 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		$(use_enable apparmor)
-		$(use_enable bind)
 		$(use_enable chroot)
 		$(use_enable contrib contrib-install)
 		$(use_enable file-transfer)
@@ -45,6 +43,5 @@ src_configure() {
 		$(use_enable userns)
 		$(use_enable x11)
 	)
-	use network-restricted && myeconfargs+=( --enable-network=restricted )
 	econf "${myeconfargs[@]}"
 }
