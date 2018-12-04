@@ -205,13 +205,9 @@ media-libs/libcaca java mono
 # dev-libs/opencryptoki will not be stabile any time soon (bug#510204)
 app-crypt/tpm-tools pkcs11
 
-# Sergey Popov <pinkbyte@gentoo.org> (28 Oct 2013)
-# sys-cluster/cman is still in ~arch.
-sys-cluster/pacemaker cman
-
 # Samuli Suominen <ssuominen@gentoo.org> (01 Aug 2013)
 # The dependencies for these flags are still in ~arch.
-sys-fs/lvm2 clvm cman
+sys-fs/lvm2 clvm
 
 # Doug Goldstein <cardoe@gentoo.org> (12 Sep 2013)
 # Waiting on glusterfs maintainers in bug #484016
