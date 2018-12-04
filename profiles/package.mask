@@ -430,7 +430,6 @@ app-admin/syslogread
 sys-cluster/cman
 sys-cluster/ccs
 sys-cluster/rgmanager
-sys-cluster/rgmanager-agents
 sys-cluster/libdlm
 sys-cluster/fence-agents
 sys-cluster/libccs
