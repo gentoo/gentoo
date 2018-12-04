@@ -349,11 +349,6 @@ app-crypt/tinyca
 app-benchmarks/os-autoinst
 
 # Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
-# Pending version bumps (with security fixes) for a long time (#550188,
-# #544568, #227993). Removal in a month.
-www-apps/moinmoin
-
-# Pacho Ramos <pacho@gentoo.org> (04 Nov 2018)
 # Nobody willing to update and maintain this for years (#556306, #554488).
 # Removal in a month.
 net-proxy/squidclamav
