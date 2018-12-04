@@ -429,7 +429,6 @@ app-admin/syslogread
 # bug #618050. Removal in a month.
 sys-cluster/cman
 sys-cluster/ccs
-sys-cluster/rgmanager
 sys-cluster/libdlm
 sys-cluster/fence-agents
 sys-cluster/libccs
