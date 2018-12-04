@@ -12,7 +12,7 @@
 		capabilities provided by your preferred cluster infrastructure (either OpenAIS or Heartbeat).
 	</longdescription>
 	<use>
-		<flag name="cman">Enable <pkg>sys-cluster/cman</pkg> support.</flag>
+		<flag name="cman">Enable cman support.</flag>
 		<flag name="heartbeat">Enable <pkg>sys-cluster/heartbeat</pkg> support.</flag>
 		<flag name="smtp">Enable SMTP support via <pkg>net-libs/libesmtp</pkg></flag>
 	</use>
