@@ -1,5 +1,6 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install prepare unpack
-DEPEND=dev-libs/glib:2 dev-libs/json-glib dev-libs/protobuf-c:= net-im/pidgin sys-libs/zlib virtual/pkgconfig dev-vcs/mercurial
+DEPEND=dev-libs/glib:2 dev-libs/json-glib dev-libs/protobuf-c:= net-im/pidgin sys-libs/zlib dev-vcs/mercurial
 DESCRIPTION=Hangouts Plugin for libpurple
 EAPI=7
 HOMEPAGE=https://bitbucket.org/EionRobb/purple-hangouts
@@ -7,4 +8,4 @@ LICENSE=GPL-3+
 RDEPEND=dev-libs/glib:2 dev-libs/json-glib dev-libs/protobuf-c:= net-im/pidgin sys-libs/zlib
 SLOT=0
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	mercurial	9813bb616cb1bd0c943177ab52204409	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=ea94b9818595c2daa77f3cf571acd36f
+_md5_=39389a1492a31977dc78bfeaafd1aa97
