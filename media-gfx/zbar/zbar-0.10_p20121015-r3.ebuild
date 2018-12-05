@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools flag-o-matic java-pkg-opt-2 multilib-minimal python-single-r1 virtualx
 
 DESCRIPTION="Library and tools for reading barcodes from images or video"
-HOMEPAGE="http://zbar.sourceforge.net/"
+HOMEPAGE="https://github.com/mchehab/zbar"
 SRC_URI="https://dev.gentoo.org/~xmw/zbar-0.10_p20121015.zip"
 
 LICENSE="LGPL-2.1"
