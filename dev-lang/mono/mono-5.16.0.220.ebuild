@@ -5,7 +5,6 @@ EAPI=6
 
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
 
-RESTRICT="mirror"
 SLOT="0"
 
 IUSE="nls minimal pax_kernel xen doc"
