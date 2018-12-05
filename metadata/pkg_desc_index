@@ -9818,7 +9818,7 @@ sys-apps/hwids 20170328 20171003: Hardware (PCI, USB, OUI, IAB) IDs databases
 sys-apps/hwinfo 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.11.2-r1: displays the hardware topology in convenient formats
 sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
-sys-apps/i2c-tools 3.1.1-r1 4.0: I2C tools for bus probing, chip dumping, EEPROM decoding, and more
+sys-apps/i2c-tools 4.0: I2C tools for bus probing, chip dumping, EEPROM decoding, and more
 sys-apps/ifplugd 0.28-r10: Brings up/down ethernet ports automatically with cable detection
 sys-apps/init-system-helpers 1.49-r1: Helper scripts useful for both OpenRC and systemd
 sys-apps/input-utils 1.2: Small collection of linux input layer utils

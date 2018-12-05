@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm preinst prerm pretend unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=LINUX PERCCLI Utility For All Dell HBA/PERC Controllers
+EAPI=7
+HOMEPAGE=https://www.dell.com/support/home/us/en/19/drivers/driversdetails?driverId=NF8G9
+IUSE=doc efi
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=Avago BSD
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://downloads.dell.com/FOLDER05235308M/1/perccli_linux_NF8G9_A07_7.529.00.tar.gz doc? ( https://topics-cdn.dell.com/pdf/dell-sas-hba-12gbps_reference-guide_en-us.pdf )
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	mount-boot	1e82d96b7a7dcb483b412497a90bb646	rpm	f52cfa3a435468d86d3b49c357b9cb35
+_md5_=4d013328b62ef4afa013f89fad967ada
