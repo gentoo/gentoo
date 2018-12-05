@@ -8,7 +8,7 @@ PLOCALES="cs_CZ de_DE es_ES fi_FI fr_CA fr_FR it_IT ko_KR nl_NL pl_PL pt_BR ru_R
 inherit cmake-utils flag-o-matic l10n vcs-snapshot
 
 DESCRIPTION="A viewer for comic book archives containing jpeg/png images"
-HOMEPAGE="http://qcomicbook.org/"
+HOMEPAGE="https://github.com/stolowski/QComicBook"
 SRC_URI="https://github.com/stolowski/QComicBook/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
