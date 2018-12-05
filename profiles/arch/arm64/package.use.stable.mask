@@ -65,6 +65,7 @@ net-dns/avahi howl-compat python
 
 # Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
 # Requires xorg-server[xvfb] for tests
+net-libs/glib-networking test
 dev-util/cmake test
 dev-libs/glib test
 app-crypt/heimdal test
