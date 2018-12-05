@@ -9185,7 +9185,7 @@ net-wireless/wepattack 0.1.3-r3: WLAN tool for breaking 802.11 WEP keys
 net-wireless/wifi-radar 2.0.8-r2: WiFi Radar is a Python/PyGTK2 utility for managing WiFi profiles
 net-wireless/wireless-regdb 20171223 20171223-r1 20180509 20180531 20180907 20181024: Binary regulatory database for CRDA
 net-wireless/wireless-tools 30_pre9: A collection of tools to configure IEEE 802.11 wireless LAN cards
-net-wireless/wpa_supplicant 2.6-r3 2.6-r6: IEEE 802.1X/WPA supplicant for secure wireless transfers
+net-wireless/wpa_supplicant 2.6-r6: IEEE 802.1X/WPA supplicant for secure wireless transfers
 perl-core/ExtUtils-Constant 0.230.0-r1: Generate XS code to import C header constants
 perl-core/File-Path 2.130.0: File path and name utilities
 perl-core/File-Temp 0.230.400-r1: File::Temp can be used to create and open temporary files in a safe way
