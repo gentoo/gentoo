@@ -1060,7 +1060,7 @@ app-misc/mencal 3.0: Calendar to track menstruation cycles
 app-misc/mepl 0.45-r1: Self-employed-mode software for 3COM/USR message modems
 app-misc/mime-types 9: Provides /etc/mime.types file
 app-misc/mmv 1.01b_p18: Move/copy/append/link multiple files according to a set of wildcard patterns
-app-misc/mosquitto 1.4.14: An Open Source MQTT v3 Broker
+app-misc/mosquitto 1.4.14 1.5.3: An Open Source MQTT v3 Broker
 app-misc/mouseremote 0.90-r2: X10 MouseRemote
 app-misc/mtail 1.1.1-r3: Tail workalike, that performs output colourising
 app-misc/muttprint 0.73-r4: Script for pretty printing of your mails
@@ -1479,7 +1479,7 @@ app-text/txt2man 1.5.6: Scripts to convert regular ASCII text to man pages
 app-text/txt2pdbdoc 1.4.4: Text/HTML to Doc file converter for the Palm Pilot
 app-text/txt2tags 2.6-r1: Generate marked up documents (HTML, etc.)from a plain text file with markup
 app-text/unac 1.8.0: Library and command-line tool for removing accents from characters
-app-text/unrtf 0.21.9: Converts RTF files to various formats
+app-text/unrtf 0.21.9 0.21.10: Converts RTF files to various formats
 app-text/uudeview 0.5.20-r2: uu, xx, base64, binhex decoder
 app-text/vilistextum 2.6.9-r1: Html to ascii converter specifically programmed to handle incorrect html
 app-text/vlna 1.5: Add nonbreakable spaces after some prepositions in Czech texts
@@ -8767,7 +8767,7 @@ net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.0 0.5.1: HTTP web service mocking library
 net-libs/webkit-gtk 2.22.2: Open source web browser engine
 net-libs/wvstreams 4.6.1-r3: A network programming library in C++
-net-libs/xrootd 4.4.0: Extended ROOT remote file server
+net-libs/xrootd 4.4.0 4.8.3: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.1 4.2.2-r2: A brokerless kernel
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03-r3: A log analyzer for amavisd-new
