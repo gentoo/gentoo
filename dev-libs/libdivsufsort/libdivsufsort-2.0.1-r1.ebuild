@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit cmake-utils multilib
+inherit cmake-utils multilib toolchain-funcs
 
 DESCRIPTION="Suffix-sorting library (for BWT)"
 HOMEPAGE="https://github.com/y-256/libdivsufsort"
@@ -11,7 +11,15 @@ SRC_URI="https://github.com/y-256/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="openmp"
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -22,6 +30,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs=("-DBUILD_DIVSUFSORT64=ON")
+	local mycmakeargs=("-DBUILD_DIVSUFSORT64=ON" "-DUSE_OPENMP=$(usex openmp)")
 	cmake-utils_src_configure
 }
