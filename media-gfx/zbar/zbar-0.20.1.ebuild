@@ -125,6 +125,8 @@ multilib_src_configure() {
 		else
 			myeconfargs+=( --without-qt )
 		fi
+	else
+			myeconfargs+=( --without-qt )
 	fi
 
 	ECONF_SOURCE=${S} \
@@ -136,6 +138,16 @@ multilib_src_configure() {
 
 src_test() {
 	virtx multilib-minimal_src_test
+}
+
+src_install() {
+	if use qt5; then
+		local MULTILIB_WRAPPED_HEADERS=(
+			/usr/include/zbar/QZBar.h
+			/usr/include/zbar/QZBarImage.h
+		)
+	fi
+	multilib-minimal_src_install
 }
 
 multilib_src_install_all() {
