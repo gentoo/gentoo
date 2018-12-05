@@ -30,7 +30,7 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrender
-	>=x11-libs/xapps-1.0.4
+	>=x11-libs/xapps-1.4.0
 
 	exif? ( >=media-libs/libexif-0.6.20:= )
 	introspection? ( >=dev-libs/gobject-introspection-0.6.4:= )
