@@ -37,9 +37,6 @@ PATCHES=(
 	# enable shared libs https://bugs.gentoo.org/583398
 	"${FILESDIR}/${PN}-2.8.70-shared_libs.patch"
 
-	# Fix --enable-xlocale configure switch
-	#"${FILESDIR}/${PN}-2.8.70-xlocale_h.patch"
-
 	# Fix parallel make
 	"${FILESDIR}/${PN}-2.8.70-parallel.patch"
 )
