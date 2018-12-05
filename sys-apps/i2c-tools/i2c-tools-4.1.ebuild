@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 DISTUTILS_OPTIONAL="1"
 
 inherit distutils-r1 flag-o-matic toolchain-funcs
@@ -14,8 +14,8 @@ SRC_URI="${HOMEPAGE}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~mips ~ppc ~ppc64 ~sparc x86"
-IUSE="python"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+IUSE="python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="!<sys-apps/lm_sensors-3
@@ -32,9 +32,10 @@ src_configure() {
 }
 
 src_compile() {
-	emake all-lib AR=$(tc-getAR) CC=$(tc-getCC) # parallel make
+	emake  AR=$(tc-getAR) CC=$(tc-getCC) all-lib # parallel make
 	emake CC=$(tc-getCC)
 	emake -C eepromer CC=$(tc-getCC) CFLAGS="${CFLAGS}"
+
 	if use python ; then
 		cd py-smbus || die
 		append-cppflags -I../include
@@ -43,7 +44,7 @@ src_compile() {
 }
 
 src_install() {
-	emake install-lib install libdir="${D}"/usr/$(get_libdir) prefix="${D}"/usr
+	emake DESTDIR="${D}" libdir="/usr/$(get_libdir)" PREFIX="/usr" install-lib install
 	dosbin eepromer/eeprom{,er}
 	rm -rf "${D}"/usr/include || die # part of linux-headers
 	dodoc CHANGES README
@@ -58,5 +59,9 @@ src_install() {
 		docinto py-smbus
 		dodoc README*
 		distutils-r1_src_install
+	fi
+
+	if ! use static-libs; then
+		rm -rf "${D}"/usr/$(get_libdir)/libi2c.a || die
 	fi
 }
