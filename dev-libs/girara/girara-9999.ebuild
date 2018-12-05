@@ -28,6 +28,7 @@ RDEPEND="dev-libs/glib:2
 	 libnotify? ( x11-libs/libnotify )"
 
 DEPEND="${RDEPEND}
+	 >=dev-util/meson-0.48
 	 doc? ( app-doc/doxygen )
 	 test? ( dev-libs/check )"
 
