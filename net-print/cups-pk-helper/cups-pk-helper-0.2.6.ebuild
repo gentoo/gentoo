@@ -12,7 +12,7 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 # Require {glib,gdbus-codegen}-2.30.0 due to GDBus changes between 2.29.92
