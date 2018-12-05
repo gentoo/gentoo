@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -135,10 +135,7 @@ src_prepare() {
 	fi
 
 	# bug (320097)
-	#eapply "${FILESDIR}/${P}-do-not-call-dbus-functions-with-NULL-path.patch"
-
-	# bug (596332 & 651314)
-	#eapply "${FILESDIR}/${P}-libressl-compatibility.patch"
+	eapply "${FILESDIR}/${PN}-2.6-do-not-call-dbus-functions-with-NULL-path.patch"
 
 	# bug (640492)
 	sed -i 's#-Werror ##' wpa_supplicant/Makefile || die
@@ -387,7 +384,9 @@ src_install() {
 
 	newdoc .config build-config
 
-	#doman doc/docbook/*.{5,8}
+	if [ "${PV}" != "9999" ]; then
+		doman doc/docbook/*.{5,8}
+	fi
 
 	if use qt5 ; then
 		into /usr
