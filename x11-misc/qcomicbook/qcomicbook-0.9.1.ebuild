@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,13 +16,15 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="debug"
 
-DEPEND="app-text/poppler[qt5]
+RDEPEND="app-text/poppler[qt5]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
+"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
