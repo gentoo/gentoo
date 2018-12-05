@@ -54,7 +54,7 @@ src_configure() {
 }
 
 src_install() {
-	local DOCS=( AUTHORS README )
+	local DOCS=( AUTHORS README.md )
 	default
 
 	use static-libs || { find "${D}" -name '*.la' -delete || die; }
