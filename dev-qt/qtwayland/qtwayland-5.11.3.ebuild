@@ -16,7 +16,7 @@ DEPEND="
 	>=dev-libs/wayland-1.6.0
 	~dev-qt/qtcore-${PV}
 	~dev-qt/qtdeclarative-${PV}
-	~dev-qt/qtgui-${PV}[egl,libinput?]
+	~dev-qt/qtgui-${PV}[egl,libinput=]
 	media-libs/mesa[egl]
 	>=x11-libs/libxkbcommon-0.2.0
 	xcomposite? (
