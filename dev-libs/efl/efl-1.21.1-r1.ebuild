@@ -61,7 +61,7 @@ RDEPEND="
 	harfbuzz? ( media-libs/harfbuzz )
 	hyphen? ( dev-libs/hyphen )
 	ibus? ( app-i18n/ibus )
-	jpeg2k? ( media-libs/openjpeg:0= )
+	jpeg2k? ( media-libs/openjpeg:= )
 	libuv? ( dev-libs/libuv )
 	luajit? ( dev-lang/luajit:= )
 	!luajit? ( dev-lang/lua:* )
