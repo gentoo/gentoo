@@ -29,6 +29,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}"/jq-1.6-never-bundle-oniguruma.patch
 		"${FILESDIR}"/jq-1.6-runpath.patch
+		"${FILESDIR}"/jq-1.6-segfault-fix.patch
 	)
 	use oniguruma || { sed -i 's:tests/onigtest::' Makefile.am || die; }
 	sed -i '/^dist_doc_DATA/d' Makefile.am || die
