@@ -132,8 +132,9 @@ multilib_src_configure() {
 	ECONF_SOURCE=${S} \
 		econf "${myeconfargs[@]}"
 
-	# work-around out-of-source build issue
-	mkdir gtk pygtk qt test || die
+	# work around out-of-source build issues for multilib systems
+	# https://bugs.gentoo.org/672184
+	mkdir gtk pygtk qt test zbarcam || die
 }
 
 src_test() {
