@@ -146,6 +146,9 @@ src_prepare() {
 	eapply "${FILESDIR}/2017-1/rebased-v2.6-0007-WNM-Ignore-WNM-Sleep-Mode-Response-without-pending-r.patch"
 	eapply "${FILESDIR}/2017-1/rebased-v2.6-0008-FT-Do-not-allow-multiple-Reassociation-Response-fram.patch"
 
+	# https://w1.fi/security/2018-1/unauthenticated-eapol-key-decryption.txt
+	eapply "${FILESDIR}/rebased-v2.6-0001-WPA-Ignore-unauthenticated-encrypted-EAPOL-Key-data.patch"
+
 	# bug (640492)
 	sed -i 's#-Werror ##' wpa_supplicant/Makefile || die
 }
