@@ -6,6 +6,7 @@ QT5_MODULE="qtlocation"
 inherit qt5-build
 
 DESCRIPTION="Physical position determination library for the Qt5 framework"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${QT5_MODULE}-${PV}-geoclue2.tar.xz"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
@@ -20,7 +21,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 PDEPEND="
-	geoclue? ( app-misc/geoclue:0 )
+	geoclue? ( app-misc/geoclue:2.0 )
 "
 
 QT5_TARGET_SUBDIRS=(
@@ -32,9 +33,14 @@ QT5_TARGET_SUBDIRS=(
 )
 
 pkg_setup() {
-	use geoclue && QT5_TARGET_SUBDIRS+=(src/plugins/position/geoclue)
+	use geoclue && QT5_TARGET_SUBDIRS+=( src/plugins/position/geoclue2 )
 	use qml && QT5_TARGET_SUBDIRS+=(
 		src/positioningquick
 		src/imports/positioning
 	)
+}
+
+src_prepare() {
+	sed -i -e "/qtHaveModule/s/geoclue/geoclue2/" src/plugins/position/position.pro || die
+	qt5-build_src_prepare
 }
