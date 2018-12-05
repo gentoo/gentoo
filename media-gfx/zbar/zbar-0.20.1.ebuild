@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools flag-o-matic java-pkg-opt-2 multilib-minimal python-single-r1 virtualx
 
 DESCRIPTION="Library and tools for reading barcodes from images or video"
-HOMEPAGE="https://github.com/procxx/zbar"
+HOMEPAGE="https://github.com/mchehab/zbar"
 SRC_URI="https://linuxtv.org/downloads/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
