@@ -6,7 +6,7 @@ EAPI=6
 inherit gnome2
 
 DESCRIPTION="Graphical tool for editing the dconf configuration database"
-HOMEPAGE="https://git.gnome.org/browse/dconf-editor"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/dconf-editor"
 
 LICENSE="GPL-3+"
 SLOT="0"
