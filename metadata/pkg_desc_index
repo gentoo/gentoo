@@ -133,7 +133,7 @@ app-admin/sysklogd 1.5.1-r1: Standard log daemons
 app-admin/syslog-ng 3.7.3 3.13.2 3.17.2: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/sysstat 11.4.0: System performance tools for Linux
-app-admin/system-config-printer 1.4.8 1.5.11-r1: Graphical user interface for CUPS administration
+app-admin/system-config-printer 1.5.11-r1: Graphical user interface for CUPS administration
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemrescuecd-x86 5.1.2 5.2.1 5.2.2 5.3.1: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.17: Log parsing and notification program
@@ -1468,7 +1468,7 @@ app-text/teckit 2.5.6: Text Encoding Conversion toolkit
 app-text/tesseract 3.05.01: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2017: A complete TeX distribution
-app-text/texlive-core 2017-r3 2017-r4: A complete TeX distribution
+app-text/texlive-core 2017-r4: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/trang 20151127: Multi-format schema converter based on RELAX NG
@@ -7495,7 +7495,7 @@ media-libs/fontconfig-infinality 20130404: Configuration for freetype-infinality
 media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
 media-libs/freeglut 2.8.1-r1 3.0.0: Completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library
 media-libs/freeimage 3.15.4-r1: Image library supporting many formats
-media-libs/freetype 2.8 2.9.1-r3: A high-quality and portable font engine
+media-libs/freetype 2.9.1-r3: A high-quality and portable font engine
 media-libs/freeverb3 3.1.2_pre20151102-r1: Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.2: Video game music file emulators
@@ -8929,7 +8929,7 @@ net-misc/memcached 1.4.39 1.5.2 1.5.10 1.5.12: High-performance, distributed mem
 net-misc/mindterm 3.4: A Java SSH Client
 net-misc/minidlna 1.1.5-r1: DLNA/UPnP-AV compliant media server
 net-misc/mobile-broadband-provider-info 20170310: Database of mobile broadband service providers
-net-misc/modemmanager 1.6.12 1.8.2: Modem and mobile broadband management libraries
+net-misc/modemmanager 1.8.2: Modem and mobile broadband management libraries
 net-misc/mosh 1.2.6 1.3.2: Mobile shell that supports roaming and intelligent local echo
 net-misc/mrouted 3.9.5-r1: IP multicast routing daemon
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
@@ -8949,7 +8949,7 @@ net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using U
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.10.10 1.14.4: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.14.4: A set of co-operative tools that make networking simple and straightforward
 net-misc/networkmanager-libreswan 1.2.6: NetworkManager libreswan plugin
 net-misc/networkmanager-openconnect 1.2.4-r1: NetworkManager OpenConnect plugin
 net-misc/networkmanager-openvpn 1.8.8: NetworkManager OpenVPN plugin
@@ -9104,7 +9104,7 @@ net-print/cups 2.2.7: The Common Unix Printing System
 net-print/cups-bjnp 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.17.9 1.20.4: Cups filters
 net-print/cups-pdf 2.6.1: Provides a virtual printer for CUPS to produce PDF files
-net-print/cups-pk-helper 0.2.5 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
+net-print/cups-pk-helper 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
 net-print/fax4cups 1.29-r1: Fax backend for CUPS
 net-print/foomatic-db 4.0.20170331: Printer information files for foomatic-db-engine to generate ppds
