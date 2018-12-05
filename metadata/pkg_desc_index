@@ -8002,7 +8002,7 @@ media-sound/awesfx 0.5.1d: AWE32 Sound Driver Utility Programs
 media-sound/aylet 0.5: Aylet plays music files in the .ay format
 media-sound/bladeenc 0.94.2-r1: An mp3 encoder
 media-sound/bplay 0.991: No-frills command-line buffered player and recorder
-media-sound/brutefir 1.0k-r1: Software convolution engine for applying long FIR filters
+media-sound/brutefir 1.0k-r2: Software convolution engine for applying long FIR filters
 media-sound/cantata 2.3.2: Featureful and configurable Qt client for the music player daemon (MPD)
 media-sound/cd-discid 1.3 1.4: returns the disc id for the cd in the cd-rom drive
 media-sound/cdcd 0.6.6-r2: a simple yet powerful command line cd player
