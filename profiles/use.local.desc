@@ -3846,6 +3846,7 @@ net-dns/maradns:authonly - Allows one to build only authoritative DNS server
 net-dns/mydns:alias - Enable David Phillips aliasing
 net-dns/mydns:status - Enable the STATUS opcode to check server status
 net-dns/nsd:bind8-stats - Enables BIND8 like NSTATS and XSTATS
+net-dns/nsd:dnstap - Enable the structured binary log format
 net-dns/nsd:libevent - Use libevent or libev, useful when zone count is high
 net-dns/nsd:minimal-responses - If minimal responses are disabled, responses are more likely to get truncated, resulting in TCP fallback
 net-dns/nsd:munin - Install a plugin for net-analyzer/munin to graph statistical data from nsd.
