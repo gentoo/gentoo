@@ -3,7 +3,7 @@
 
 EAPI=6
 EGIT_REPO_URI="https://github.com/y-256/${PN}"
-inherit cmake-utils multilib git-r3
+inherit cmake-utils multilib toolchain-funcs git-r3
 
 DESCRIPTION="Suffix-sorting library (for BWT)"
 HOMEPAGE="https://github.com/y-256/libdivsufsort"
@@ -12,7 +12,15 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="openmp"
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -23,6 +31,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs=("-DBUILD_DIVSUFSORT64=ON")
+	local mycmakeargs=("-DBUILD_DIVSUFSORT64=ON" "-DUSE_OPENMP=$(usex openmp)")
 	cmake-utils_src_configure
 }
