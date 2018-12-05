@@ -40,15 +40,12 @@ DEPEND="
 	systemd? ( virtual/pkgconfig )
 "
 
-# dnstap fails to build without ipv6
-# See https://www.nlnetlabs.nl/bugs-script/show_bug.cgi?id=4213
-REQUIRED_USE="
-	dnstap? ( ipv6 )
-"
-
 PATCHES=(
 	# Fix the paths in the munin plugin to match our install
 	"${FILESDIR}"/nsd_munin_.patch
+
+	# https://www.nlnetlabs.nl/bugs-script/show_bug.cgi?id=4213
+	"${FILESDIR}"/${P}-dnstap_noipv6_fix.patch
 )
 
 src_prepare() {
