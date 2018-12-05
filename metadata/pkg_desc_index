@@ -9099,6 +9099,7 @@ net-p2p/vuze 4.8.1.2-r1 5.7.2.0-r1: BitTorrent client in Java, formerly called A
 net-p2p/vuze-coreplugins 4.8.1.2 5.7.2.0: Core plugins for Vuze that are included in upstream distribution
 net-print/cndrvcups-common-lb 3.50 3.50-r1: Common files for Canon drivers
 net-print/cndrvcups-lb 3.50 3.50-r1: Canon UFR II / LIPSLX Printer Driver for Linux
+net-print/cnijfilter2 5.50: IJ Printer Driver
 net-print/cups 2.2.7: The Common Unix Printing System
 net-print/cups-bjnp 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.17.9 1.20.4: Cups filters
