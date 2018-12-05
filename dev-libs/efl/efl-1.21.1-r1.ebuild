@@ -12,7 +12,7 @@ SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${P}.tar.xz"
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE="avahi +bmp dds connman debug drm +eet egl examples fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz hyphen +ico ibus jpeg2k libressl libuv luajit neon nls opengl ssl pdf physics postscript +ppm +psd pulseaudio raw scim sdl sound static-libs svg +system-lz4 systemd tga tiff tslib unwind v4l valgrind vlc vnc wayland webp X xcf xim xine xpresent xpm"
+IUSE="+bmp dds connman debug drm +eet egl examples fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz hyphen +ico ibus jpeg2k libressl libuv luajit neon nls opengl ssl pdf physics postscript +ppm +psd pulseaudio raw scim sdl sound static-libs svg +system-lz4 systemd tga tiff tslib unwind v4l valgrind vlc vnc wayland webp X xcf xim xine xpm xpresent zeroconf"
 
 REQUIRED_USE="
 	?? ( opengl egl )
@@ -40,7 +40,6 @@ RDEPEND="
 	sys-apps/util-linux
 	sys-libs/zlib:=
 	virtual/jpeg:0=
-	avahi? ( net-dns/avahi )
 	connman? ( net-misc/connman )
 	drm? (
 		dev-libs/libinput
@@ -52,8 +51,8 @@ RDEPEND="
 	fontconfig? ( media-libs/fontconfig )
 	fribidi? ( dev-libs/fribidi )
 	gif? ( media-libs/giflib:= )
-	glib? ( dev-libs/glib:2 )
 	gles? ( media-libs/mesa[gles2] )
+	glib? ( dev-libs/glib:2 )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -61,7 +60,7 @@ RDEPEND="
 	harfbuzz? ( media-libs/harfbuzz )
 	hyphen? ( dev-libs/hyphen )
 	ibus? ( app-i18n/ibus )
-	jpeg2k? ( media-libs/openjpeg:0= )
+	jpeg2k? ( media-libs/openjpeg:= )
 	libuv? ( dev-libs/libuv )
 	luajit? ( dev-lang/luajit:= )
 	!luajit? ( dev-lang/lua:* )
@@ -115,12 +114,12 @@ RDEPEND="
 		x11-libs/libXrender
 		x11-libs/libXtst
 		x11-libs/libXScrnSaver
-		opengl? (
+		gles? (
 			x11-libs/libX11
 			x11-libs/libXrender
 			virtual/opengl
 		)
-		gles? (
+		opengl? (
 			x11-libs/libX11
 			x11-libs/libXrender
 			virtual/opengl
@@ -129,12 +128,17 @@ RDEPEND="
 	xine? ( media-libs/xine-lib )
 	xpm? ( x11-libs/libXpm )
 	xpresent? ( x11-libs/libXpresent )
+	zeroconf? ( net-dns/avahi )
 "
 
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix_evas_preload_segfault.patch"
+)
 
 src_prepare() {
 	default
@@ -166,7 +170,6 @@ src_configure() {
 		--disable-tizen
 		--disable-wayland-ivi-shell
 
-		$(use_enable avahi)
 		$(use_enable bmp image-loader-bmp)
 		$(use_enable bmp image-loader-wbmp)
 		$(use_enable dds image-loader-dds)
@@ -217,6 +220,7 @@ src_configure() {
 		$(use_enable xine)
 		$(use_enable xpm image-loader-xpm)
 		$(use_enable xpresent)
+		$(use_enable zeroconf avahi)
 
 		--with-crypto=$(usex gnutls gnutls $(usex ssl openssl none))
 		--with-glib=$(usex glib)
