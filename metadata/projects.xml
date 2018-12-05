@@ -4,7 +4,7 @@
   <project>
     <email>3dprint@gentoo.org</email>
     <name>Gentoo 3D print</name>
-    <url>https://wiki.gentoo.org/wiki/Project:3dprint</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3A3dprint</url>
     <description>Packages for 3d printing.</description>
     <member is-lead="1">
       <email>alexxy@gentoo.org</email>
@@ -15,7 +15,7 @@
   <project>
     <email>alsa-bugs@gentoo.org</email>
     <name>Gentoo ALSA Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:ALSA</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AALSA</url>
     <description>The Gentoo ALSA Project maintains packages released by ALSA upstream.</description>
     <member>
       <email>chainsaw@gentoo.org</email>
@@ -25,7 +25,7 @@
   <project>
     <email>amd64@gentoo.org</email>
     <name>AMD64 Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:AMD64</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AAMD64</url>
     <description>The AMD64 Project is devoted to providing stable, secure and up-to-date releases of Gentoo for the AMD64 and EM64T processor families.</description>
     <member is-lead="1">
       <email>ago@gentoo.org</email>
@@ -61,7 +61,7 @@
   <project>
     <email>arm@gentoo.org</email>
     <name>Gentoo Linux ARM Development</name>
-    <url>https://wiki.gentoo.org/wiki/Project:ARM</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AARM</url>
     <description>The ARM Development Project is devoted to keeping Gentoo in good shape on the ARM architecture.</description>
     <member>
       <email>ago@gentoo.org</email>
@@ -127,7 +127,7 @@
   <project>
     <email>arm64@gentoo.org</email>
     <name>Gentoo Linux ARM64 development</name>
-    <url>https://wiki.gentoo.org/wiki/Project:ARM64</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AARM64</url>
     <description>The ARM64 project is devoted to getting and keeping Gentoo in good shape on the ARM AArch64 architecture.</description>
     <member is-lead="1">
       <email>leio@gentoo.org</email>
@@ -142,7 +142,7 @@
   <project>
     <email>accessibility@gentoo.org</email>
     <name>Gentoo Accessibility Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Accessibility</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AAccessibility</url>
     <description>The Gentoo Accessibility Project provides a way for Gentoo developers in various teams to coordinate efforts to make Gentoo more accessible to users who have disabilities.</description>
     <member>
       <email>leio@gentoo.org</email>
@@ -158,7 +158,7 @@
   <project>
     <email>ada@gentoo.org</email>
     <name>Gentoo Resources for Ada</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Ada</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AAda</url>
     <description>This project provides support for Ada compilers and libraries in Portage. At present a gnat compiler is provided: gnat-gpl by AdaCore.</description>
     <member is-lead="1">
       <email>nerdboy@gentoo.org</email>
@@ -174,7 +174,7 @@
   <project>
     <email>alpha@gentoo.org</email>
     <name>Gentoo Linux Alpha Development</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Alpha</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AAlpha</url>
     <description>The Gentoo/Alpha Arch Team is devoted to keeping Gentoo in good shape on the Alpha architecture.</description>
     <member>
       <email>ago@gentoo.org</email>
@@ -200,7 +200,7 @@
   <project>
     <email>antivirus@gentoo.org</email>
     <name>Gentoo Antivirus Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Antivirus</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AAntivirus</url>
     <description>The Antivirus Project maintains antivirus-related packages.</description>
     <member>
       <email>lordvan@gentoo.org</email>
@@ -210,7 +210,7 @@
   <project>
     <email>apache-bugs@gentoo.org</email>
     <name>Gentoo Apache Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Apache</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AApache</url>
     <description>The Apache project is responsible for maintaining the Apache httpd server in Gentoo, and many of its modules. We also maintain a build infrastructure so that other modules may be easily added in a standard way to Apache.</description>
     <member is-lead="1">
       <email>polynomial-c@gentoo.org</email>
@@ -220,7 +220,7 @@
   <project>
     <email>artwork@gentoo.org</email>
     <name>Artwork</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Artwork</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AArtwork</url>
     <description>The Artwork project manages Gentoo artwork and related assets. This includes wallpapers, logos, themes, icons sets, etc.</description>
     <member>
       <email>alicef@gentoo.org</email>
@@ -246,7 +246,7 @@
   <project>
     <email>sci-astronomy@gentoo.org</email>
     <name>Gentoo Astronomy Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Astronomy</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AAstronomy</url>
     <description>The Astronomy Project handles astronomy, astrophysics, cosmology related activities in Gentoo.</description>
     <member>
       <email>bircoph@gentoo.org</email>
@@ -267,7 +267,7 @@
   <project>
     <email>security-audit@gentoo.org</email>
     <name>Gentoo Linux Security Audit Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Auditing</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AAuditing</url>
     <description>The Gentoo Linux Security Audit Project is focused upon auditing packages for security issues. The aim of the project is to audit as many of the packages available through Gentoo Linux stable Portage tree as possible for potential flaws.</description>
     <member>
       <email>k_f@gentoo.org</email>
@@ -283,7 +283,7 @@
   <project>
     <email>bsd@gentoo.org</email>
     <name>BSD Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:BSD</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ABSD</url>
     <description>Maintains BSD userspace and some BSD-origin packages</description>
     <member is-lead="1">
       <email>aballier@gentoo.org</email>
@@ -304,7 +304,7 @@
   <project>
     <email>base-system@gentoo.org</email>
     <name>Gentoo Base System</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Base</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ABase</url>
     <description>The Base System Project provides an umbrella project for keeping the system tools, libraries, compilers and layout consistent for all the various architectures under Gentoo Linux.</description>
     <subproject ref="amd64@gentoo.org"/>
     <subproject ref="arm@gentoo.org"/>
@@ -388,7 +388,7 @@
   <project>
     <email>sci-biology@gentoo.org</email>
     <name>Gentoo Biology Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Biology</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ABiology</url>
     <description>The Biology Project handles all biology related activities in Gentoo.</description>
     <member>
       <email>jlec@gentoo.org</email>
@@ -404,7 +404,7 @@
   <project>
     <email>maintainer-wanted@gentoo.org</email>
     <name>Bug cleaners</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Bug-cleaners</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ABug-2Dcleaners</url>
     <description>The Gentoo Bug Cleaners project aims to clean up the oldest bugs in Bugzilla.</description>
     <member>
       <email>amynka@gentoo.org</email>
@@ -430,7 +430,7 @@
   <project>
     <email>bug-wranglers@gentoo.org</email>
     <name>Bug Wranglers</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Bug-wranglers</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ABug-2Dwranglers</url>
     <description>The Gentoo Bug Wranglers project controls, describes the tasks to be carried out and goals to be achieved for everyone who wrangles bugs on Gentoo's bug tracker.</description>
     <member is-lead="1">
       <email>jer@gentoo.org</email>
@@ -451,7 +451,7 @@
   <project>
     <email>cpp@gentoo.org</email>
     <name>Gentoo C++ Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:C++</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AC-2B-2B</url>
     <description>Maintaining C++ libraries and tools</description>
     <member>
       <email>dev-zero@gentoo.org</email>
@@ -467,7 +467,7 @@
   <project>
     <email>catalyst@gentoo.org</email>
     <name>Catalyst</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Catalyst</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ACatalyst</url>
     <description>The Gentoo Catalyst Project develops and supports the Catalyst release building tool. Catalyst has been designed to be easy to use, customize, and maintain. It is also used in other Gentoo projects, such as GNAP.</description>
     <member>
       <email>bkohler@gentoo.org</email>
@@ -498,7 +498,7 @@
   <project>
     <email>sci-chemistry@gentoo.org</email>
     <name>Gentoo Chemistry Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Chemistry</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AChemistry</url>
     <description>The Chemistry Project handles all chemistry related activities in Gentoo.</description>
     <member>
       <email>alexxy@gentoo.org</email>
@@ -519,7 +519,7 @@
   <project>
     <email>chromium@gentoo.org</email>
     <name>Chromium in Gentoo Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Chromium</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AChromium</url>
     <description>The Chromium in Gentoo project manages the Chromium-related ebuilds within Gentoo.</description>
     <member>
       <email>ago@gentoo.org</email>
@@ -543,7 +543,7 @@
   <project>
     <email>cinnamon@gentoo.org</email>
     <name>Cinnamon</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Cinnamon</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ACinnamon</url>
     <description>The goal of the Cinnamon project is to maintain Cinnamon related packages in the main Gentoo repository.</description>
     <member>
       <email>k_f@gentoo.org</email>
@@ -553,7 +553,7 @@
   <project>
     <email>cjk@gentoo.org</email>
     <name>Cjk</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Cjk</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ACjk</url>
     <description>Chinese/Japanese/Korean support packages.</description>
     <member>
       <email>alicef@gentoo.org</email>
@@ -584,7 +584,7 @@
   <project>
     <email>cluster@gentoo.org</email>
     <name>Gentoo Cluster Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Cluster</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ACluster</url>
     <description>The Cluster Project handles both HPC and HA related activities in Gentoo.</description>
     <member>
       <email>alexxy@gentoo.org</email>
@@ -620,7 +620,7 @@
   <project>
     <email>comrel@gentoo.org</email>
     <name>Gentoo Community Relations</name>
-    <url>https://wiki.gentoo.org/wiki/Project:ComRel</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AComRel</url>
     <description>Community Relations handles many personnel-related tasks, solving conflicts and also ensuring that the Gentoo Code of Conduct and proper and professional behavior is followed across Gentoo's borders.</description>
     <subproject ref="undertakers@gentoo.org"/>
     <member>
@@ -659,7 +659,7 @@
   <project>
     <email>comres@gentoo.org</email>
     <name>Community Resources</name>
-    <url>https://wiki.gentoo.org/wiki/Project:ComRes</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AComRes</url>
     <description>Community Resources is an umbrella project comprising the Recruiters, Retirement and Community Relations subprojects. It acts as a central place for all the human-resources related projects.</description>
     <subproject ref="comrel@gentoo.org" inherit-members="1"/>
     <subproject ref="mentors@gentoo.org" inherit-members="1"/>
@@ -669,7 +669,7 @@
   <project>
     <email>common-lisp@gentoo.org</email>
     <name>Gentoo Common Lisp Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Common_Lisp</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ACommon_Lisp</url>
     <description>The Gentoo Common Lisp Project handles Common Lisp related packages in the Gentoo package tree.</description>
     <member>
       <email>nimiux@gentoo.org</email>
@@ -680,7 +680,7 @@
   <project>
     <email>containers@gentoo.org</email>
     <name>Gentoo Containers</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Containers</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AContainers</url>
     <description>Gentoo Containers provides minimal container images for a variety of container formats so that users can have a consistent experience when building application specific containers.</description>
     <member>
       <email>ultrabug@gentoo.org</email>
@@ -691,7 +691,7 @@
   <project>
     <email>council@gentoo.org</email>
     <name>Gentoo Council</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Council</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ACouncil</url>
     <description>The elected Gentoo Council decides on global issues and policies that affect multiple projects in Gentoo.</description>
     <member>
       <email>dilfridge@gentoo.org</email>
@@ -732,7 +732,7 @@
   <project>
     <email>cron-bugs@gentoo.org</email>
     <name>Gentoo Cron Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Cron</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ACron</url>
     <description>The Gentoo Cron Project maintains cron-related packages.</description>
     <member>
       <email>blueness@gentoo.org</email>
@@ -758,7 +758,7 @@
   <project>
     <email>crossdev@gentoo.org</email>
     <name>Gentoo Crossdev maintainers</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Crossdev</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ACrossdev</url>
     <description>Crossdev is a small wrapper script around emerge to build cross-toolchains.</description>
     <member>
       <email>slyfox@gentoo.org</email>
@@ -772,7 +772,7 @@
   <project>
     <email>crypto@gentoo.org</email>
     <name>Crypto</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Crypto</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ACrypto</url>
     <description>Project for maintaining crypto related packages</description>
     <member>
       <email>alonbl@gentoo.org</email>
@@ -799,7 +799,7 @@
   <project>
     <email>deb-tools@gentoo.org</email>
     <name>Gentoo Debian Tools Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Debian_Tools</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ADebian_Tools</url>
     <description>Maintains tools used to build Debian-like distributions and related packages.</description>
     <member>
       <email>jer@gentoo.org</email>
@@ -809,7 +809,7 @@
   <project>
     <email>desktop-misc@gentoo.org</email>
     <name>Gentoo Desktop Miscellaneous Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Desktop_Miscellaneous</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ADesktop_Miscellaneous</url>
     <description>Maintains various small utilities for X11 that do not fit any other category.</description>
     <member>
       <email>jer@gentoo.org</email>
@@ -824,7 +824,7 @@
   <project>
     <email>devmanual@gentoo.org</email>
     <name>Devmanual</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Devmanual</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ADevmanual</url>
     <description>The Devmanual subproject is tasked with maintaining and updating the Gentoo Development Guide https://devmanual.gentoo.org/</description>
     <member>
       <email>creffett@gentoo.org</email>
@@ -850,7 +850,7 @@
   <project>
     <email>dotnet@gentoo.org</email>
     <name>Gentoo Dotnet Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Dotnet</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ADotnet</url>
     <description>The Dotnet Project handles the development using the C# language. More specifically, it is often oriented with the mono development environment.</description>
     <member is-lead="1">
       <email>cynede@gentoo.org</email>
@@ -860,7 +860,7 @@
   <project>
     <email>elections@gentoo.org</email>
     <name>Elections</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Elections</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AElections</url>
     <description>Gentoo Elections Project gathers all the information necessary to conduct elections in Gentoo.</description>
     <member>
       <email>creffett@gentoo.org</email>
@@ -895,7 +895,7 @@
   <project>
     <email>sci-electronics@gentoo.org</email>
     <name>Gentoo Electronics Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Electronics</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AElectronics</url>
     <description>The Electronics Project handles all electronics related activities in Gentoo.</description>
     <member>
       <email>calchan@gentoo.org</email>
@@ -946,7 +946,7 @@
   <project>
     <email>emacs@gentoo.org</email>
     <name>Gentoo Emacs project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Emacs</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AEmacs</url>
     <description>The Gentoo Emacs project handles Emacs and Elisp related packages in the Gentoo package tree.</description>
     <subproject ref="gnu-emacs@gentoo.org" inherit-members="1"/>
     <subproject ref="xemacs@gentoo.org" inherit-members="1"/>
@@ -969,7 +969,7 @@
   <project>
     <email>embedded@gentoo.org</email>
     <name>Embedded Gentoo</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Embedded</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AEmbedded</url>
     <description>Embedded Gentoo brings the flexibility of Gentoo to embedded systems. The project is responsible for overseeing the build infrastructure for creating images to be installed onto embedded systems.</description>
     <member>
       <email>blueness@gentoo.org</email>
@@ -1010,7 +1010,7 @@
   <project>
     <email>eselect@gentoo.org</email>
     <name>eselect configuration and management tool</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Eselect</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AEselect</url>
     <description>eselect is Gentoo's modular framework for configuration and administration utilities.</description>
     <member is-lead="1">
       <email>ulm@gentoo.org</email>
@@ -1021,7 +1021,7 @@
   <project>
     <email>eudev@gentoo.org</email>
     <name>eudev</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Eudev</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AEudev</url>
     <description>eudev is a device manager for the Linux kernel</description>
     <member>
       <email>axs@gentoo.org</email>
@@ -1067,7 +1067,7 @@
   <project>
     <email>fonts@gentoo.org</email>
     <name>Fonts</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Fonts</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AFonts</url>
     <description>The fonts project handles all fonts-related issues within the Gentoo project.</description>
     <member>
       <email>aballier@gentoo.org</email>
@@ -1093,7 +1093,7 @@
   <project>
     <email>forum-mods@gentoo.org</email>
     <name>Gentoo Linux Forums</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Forums</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AForums</url>
     <description>The Gentoo Forums are a source of support for the Gentoo user community. It allows users to post support questions that can be answered by developers and other users alike.</description>
     <member>
       <email>ago@gentoo.org</email>
@@ -1134,7 +1134,7 @@
   <project>
     <email>trustees@gentoo.org</email>
     <name>Gentoo Foundation</name>
-    <url>https://wiki.gentoo.org/wiki/Foundation:Main_Page</url>
+    <url>https://wiki.gentoo.org/wiki/Foundation-3AMain_Page</url>
     <description>The Gentoo Foundation, Inc. provides the legal and financial base for the Gentoo project.</description>
     <member>
       <email>alicef@gentoo.org</email>
@@ -1175,7 +1175,7 @@
   <project>
     <email>freedesktop-bugs@gentoo.org</email>
     <name>Gentoo Freedesktop Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Freedesktop</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AFreedesktop</url>
     <description>Maintains projects produced by freedesktop.org</description>
     <member>
       <email>asturm@gentoo.org</email>
@@ -1197,7 +1197,7 @@
   <project>
     <email>glep@gentoo.org</email>
     <name>Gentoo Linux Enhancement Proposals</name>
-    <url>https://wiki.gentoo.org/wiki/Project:GLEP</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AGLEP</url>
     <description>The GLEP project manages Gentoo Linux Enhancement Proposals.</description>
     <member>
       <email>creffett@gentoo.org</email>
@@ -1218,7 +1218,7 @@
   <project>
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>
-    <url>https://wiki.gentoo.org/wiki/Project:GNOME</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AGNOME</url>
     <description>The Gentoo Gnome Project aims to bring the current and complete GNOME Desktop Environment to Gentoo.</description>
     <member>
       <email>eva@gentoo.org</email>
@@ -1259,7 +1259,7 @@
   <project>
     <email>gnu-emacs@gentoo.org</email>
     <name>Gentoo GNU Emacs project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:GNU_Emacs</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AGNU_Emacs</url>
     <description>The Gentoo GNU Emacs project handles GNU Emacs and related packages in the Gentoo package tree.</description>
     <member>
       <email>graaff@gentoo.org</email>
@@ -1275,7 +1275,7 @@
   <project>
     <email>gnustep@gentoo.org</email>
     <name>Gentoo GNUstep Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:GNUstep</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AGNUstep</url>
     <description>The Gentoo GNUstep Project maintains GNUstep environment (gnustep-base) and packages (gnustep-libs, gnustep-applications/)</description>
     <member>
       <email>grobian@gentoo.org</email>
@@ -1289,7 +1289,7 @@
   <project>
     <email>gstreamer@gentoo.org</email>
     <name>GStreamer package maintainers</name>
-    <url>https://wiki.gentoo.org/wiki/Project:GStreamer</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AGStreamer</url>
     <description>The GStreamer project maintains packages associated with the upstream GStreamer project and associated Gentoo tooling</description>
     <member>
       <email>eva@gentoo.org</email>
@@ -1303,7 +1303,7 @@
   <project>
     <email>games@gentoo.org</email>
     <name>Gentoo Games Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Games</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AGames</url>
     <description>The Gentoo Games Project manages the game categories (dev-games, games-*) in Portage</description>
     <member>
       <email>chewi@gentoo.org</email>
@@ -1334,7 +1334,7 @@
   <project>
     <email>genkernel@gentoo.org</email>
     <name>Genkernel</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Genkernel</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AGenkernel</url>
     <description>The Genkernel project handles the maintenance and development of [https://packages.gentoo.org/packages/sys-kernel/genkernel sys-kernel/genkernel].</description>
     <member>
       <email>axs@gentoo.org</email>
@@ -1366,7 +1366,7 @@
   <project>
     <email>gkeys@gentoo.org</email>
     <name>Gentoo Keys</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Gentoo-keys</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AGentoo-2Dkeys</url>
     <description>Gentoo Keys is a Python based project that aims to manage the OpenPGP keys used for validation on users and Gentoo's infrastructure servers.</description>
     <member is-lead="1">
       <email>dolsen@gentoo.org</email>
@@ -1387,7 +1387,7 @@
   <project>
     <email>gentoostats@gentoo.org</email>
     <name>Gentoostats</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Gentoostats</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AGentoostats</url>
     <description>Gentoostats project maintains and develops the "gentoostats" statistics collection software for Gentoo machines</description>
     <member>
       <email>dilfridge@gentoo.org</email>
@@ -1408,7 +1408,7 @@
   <project>
     <email>sci-geosciences@gentoo.org</email>
     <name>Gentoo Geosciences Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Geosciences</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AGeosciences</url>
     <description>The Geosciences Project handles all geosciences activities in Gentoo.</description>
     <member is-lead="1">
       <email>amynka@gentoo.org</email>
@@ -1424,7 +1424,7 @@
   <project>
     <email>github@gentoo.org</email>
     <name>GitHub</name>
-    <url>https://wiki.gentoo.org/wiki/Project:GitHub</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AGitHub</url>
     <description>Support team for the Gentoo organization on GitHub and the related resources (mirrors, pull requests).</description>
     <member>
       <email>cynede@gentoo.org</email>
@@ -1460,7 +1460,7 @@
   <project>
     <email>graphics@gentoo.org</email>
     <name>Graphics Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Graphics</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AGraphics</url>
     <description>The Graphics Project maintains media-gfx and related packages.</description>
     <member>
       <email>jstein@gentoo.org</email>
@@ -1486,7 +1486,7 @@
   <project>
     <email>hppa@gentoo.org</email>
     <name>Gentoo Linux HPPA Development</name>
-    <url>https://wiki.gentoo.org/wiki/Project:HPPA</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AHPPA</url>
     <description>The Gentoo HPPA project is designed to bring the Gentoo GNU/Linux operating system to the HP Precision Architecture platforms. We aim to provide a usable computing environment for your various HPPA related endeavors.</description>
     <member>
       <email>jer@gentoo.org</email>
@@ -1512,7 +1512,7 @@
   <project>
     <email>hardened@gentoo.org</email>
     <name>Gentoo Hardened</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Hardened</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AHardened</url>
     <description>Hardened Gentoo is a project which oversees the research, implementation, and maintenance of security oriented projects for Gentoo Linux.</description>
     <subproject ref="gentoo-musl@lists.gentoo.org"/>
     <subproject ref="uclibc@gentoo.org"/>
@@ -1578,7 +1578,7 @@
   <project>
     <email>gentoo-musl@lists.gentoo.org</email>
     <name>Hardened musl</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Hardened_musl</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AHardened_musl</url>
     <description>This subproject aims to port the hardened tool chain to musl based systems for a variety of architectures. The project treats musl as an alternative to glibc and uClibc, and not necessarily as "embedded".</description>
     <member is-lead="1">
       <email>blueness@gentoo.org</email>
@@ -1589,7 +1589,7 @@
   <project>
     <email>uclibc@gentoo.org</email>
     <name>Hardened uClibc</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Hardened_uClibc</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AHardened_uClibc</url>
     <description>This subproject aims to port both tool chain and kernel hardening to uClibc based systems for a variety of architectures. The project treats uClibc as an alternative to glibc, and not necessarily as "embedded".</description>
     <member is-lead="1">
       <email>blueness@gentoo.org</email>
@@ -1605,7 +1605,7 @@
   <project>
     <email>haskell@gentoo.org</email>
     <name>Gentoo Haskell</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Haskell</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AHaskell</url>
     <description>Support Haskell programming language ecosystem on Gentoo systems.</description>
     <member>
       <email>cynede@gentoo.org</email>
@@ -1627,7 +1627,7 @@
   <project>
     <email>ia64@gentoo.org</email>
     <name>Gentoo Linux IA-64 Development</name>
-    <url>https://wiki.gentoo.org/wiki/Project:IA-64</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AIA-2D64</url>
     <description>The IA-64 Development Project is devoted to keeping Gentoo in good shape on the IA-64 architecture.</description>
     <member>
       <email>ago@gentoo.org</email>
@@ -1663,7 +1663,7 @@
   <project>
     <email>infra@gentoo.org</email>
     <name>Gentoo Infrastructure</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Infrastructure</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AInfrastructure</url>
     <description>The Gentoo Infrastructure project provides and develops services for the Gentoo developer and user community, ensuring availability, security, and functionality.</description>
     <subproject ref="github@gentoo.org"/>
     <subproject ref="overlays@gentoo.org"/>
@@ -1730,7 +1730,7 @@
   <project>
     <email>installer@gentoo.org</email>
     <name>Installer</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Installer</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AInstaller</url>
     <description>After many years of an installer being absent from Gentoo, it is time to start work on creating a perfect Gentoo installer.</description>
     <member is-lead="1">
       <email>maffblaster@gentoo.org</email>
@@ -1741,7 +1741,7 @@
   <project>
     <email>integrity@gentoo.org</email>
     <name>Integrity, Compliance, and Reporting</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Integrity</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AIntegrity</url>
     <description>The integrity subproject aims to integrate and maintain technologies related to system integrity within Gentoo Hardened. Although initially focused on Linux IMA/EVM, this will extend towards other integrity, compliance and reporting technologies.</description>
     <member>
       <email>perfinion@gentoo.org</email>
@@ -1757,7 +1757,7 @@
   <project>
     <email>java@gentoo.org</email>
     <name>Java</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Java</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AJava</url>
     <description>We maintain everything Java-related in Gentoo, that is, most of dev-java/* and also packages in categories like dev-util, www-servers etc.</description>
     <member>
       <email>fordfrog@gentoo.org</email>
@@ -1783,7 +1783,7 @@
   <project>
     <email>kde@gentoo.org</email>
     <name>Gentoo KDE Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:KDE</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AKDE</url>
     <description>The primary goal of the Gentoo KDE project is to provide support for all packages produced by the KDE Community.</description>
     <member>
       <email>alexxy@gentoo.org</email>
@@ -1819,7 +1819,7 @@
   <project>
     <email>kerberos@gentoo.org</email>
     <name>Kerberos</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Kerberos</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AKerberos</url>
     <description>The Gentoo Kerberos project aims to maintain kerberos related packages in Gentoo.</description>
     <member>
       <email>eras@gentoo.org</email>
@@ -1830,7 +1830,7 @@
   <project>
     <email>kernel@gentoo.org</email>
     <name>Gentoo Kernel Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Kernel</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AKernel</url>
     <description>The Gentoo Kernel Project aims to deliver the best possible experience from its sources across all supported architectures.</description>
     <member is-lead="1">
       <email>alicef@gentoo.org</email>
@@ -1866,7 +1866,7 @@
   <project>
     <email>security-kernel@gentoo.org</email>
     <name>Gentoo Linux Kernel Security Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Kernel_Security</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AKernel_Security</url>
     <description>The Gentoo Linux Kernel Security Project handles patching our many kernel sources and informing our users about global kernel security status.</description>
     <member>
       <email>alicef@gentoo.org</email>
@@ -1902,7 +1902,7 @@
   <project>
     <email>ldap-bugs@gentoo.org</email>
     <name>Gentoo LDAP Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:LDAP</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ALDAP</url>
     <description>The Gentoo LDAP Project maintains LDAP-related packages.</description>
     <member>
       <email>robbat2@gentoo.org</email>
@@ -1912,7 +1912,7 @@
   <project>
     <email>llvm@gentoo.org</email>
     <name>LLVM</name>
-    <url>https://wiki.gentoo.org/wiki/Project:LLVM</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ALLVM</url>
     <description>Support project for LLVM, clang and the related packages.</description>
     <member>
       <email>aballier@gentoo.org</email>
@@ -1948,7 +1948,7 @@
   <project>
     <email>lxde@gentoo.org</email>
     <name>Gentoo LXDE Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:LXDE</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ALXDE</url>
     <description>The LXDE project manages ebuilds in Gentoo for [http://lxde.org/ LXDE], the Lightweight X11 Desktop Environment, and handles related issues.</description>
     <member is-lead="1">
       <email>hanno@gentoo.org</email>
@@ -1958,7 +1958,7 @@
   <project>
     <email>lxqt@gentoo.org</email>
     <name>LXQt</name>
-    <url>https://wiki.gentoo.org/wiki/Project:LXQt</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ALXQt</url>
     <description>Maintains LXQt DE related packages.</description>
     <member is-lead="1">
       <email>chiitoo@gentoo.org</email>
@@ -1974,7 +1974,7 @@
   <project>
     <email>layman@gentoo.org</email>
     <name>Layman Overlay Manager</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Layman</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ALayman</url>
     <description>Layman is a tool to manage overlays installed on a system. It can add, sync, and delete overlays</description>
     <member is-lead="1">
       <email>dolsen@gentoo.org</email>
@@ -1985,7 +1985,7 @@
   <project>
     <email>gentoo-yeeloong@gentoo.org</email>
     <name>Lemote Yeeloong Gentoo Desktop</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Lemote_Yeeloong_Gentoo_Desktop</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ALemote_Yeeloong_Gentoo_Desktop</url>
     <description>The Lemote Yeeloong Gentoo Desktop aim to provide a ready to install XFCE4 base desktop to the Yeeloong netbook.</description>
     <member is-lead="1">
       <email>blueness@gentoo.org</email>
@@ -1995,7 +1995,7 @@
   <project>
     <email>libressl@gentoo.org</email>
     <name>LibreSSL</name>
-    <url>https://wiki.gentoo.org/wiki/Project:LibreSSL</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ALibreSSL</url>
     <description>LibreSSL is a fork of, and drop in replacement for OpenSSL. Primary development is done in OpenBSD, but it is ported to Linux as well. The LibreSSL project aims to bring support for this alternative SSL provider to Gentoo Linux.</description>
     <member is-lead="1">
       <email>blueness@gentoo.org</email>
@@ -2021,7 +2021,7 @@
   <project>
     <email>licenses@gentoo.org</email>
     <name>Gentoo Licenses Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Licenses</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ALicenses</url>
     <description>The Gentoo Licenses Project tries to make heads &amp; tails of license terms.</description>
     <member>
       <email>hanno@gentoo.org</email>
@@ -2047,7 +2047,7 @@
   <project>
     <email>lisp@gentoo.org</email>
     <name>Gentoo Lisp Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Lisp</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ALisp</url>
     <description>The Gentoo Lisp Project handles Lisp related packages in the Gentoo package tree.</description>
     <subproject ref="common-lisp@gentoo.org" inherit-members="1"/>
     <subproject ref="emacs@gentoo.org" inherit-members="1"/>
@@ -2066,7 +2066,7 @@
   <project>
     <email>livecd@gentoo.org</email>
     <name>Gentoo LiveCD Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:LiveCD</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ALiveCD</url>
     <description>Maintains packages used in the creation of LiveCDs.</description>
     <member>
       <email>jer@gentoo.org</email>
@@ -2076,7 +2076,7 @@
   <project>
     <email>m68k@gentoo.org</email>
     <name>Gentoo Linux m68k Development</name>
-    <url>https://wiki.gentoo.org/wiki/Project:M68k</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AM68k</url>
     <description>The m68k Development Project is devoted to keeping Gentoo in good shape on the m68k architecture.</description>
     <member is-lead="1">
       <email>vapier@gentoo.org</email>
@@ -2086,7 +2086,7 @@
   <project>
     <email>mate@gentoo.org</email>
     <name>Gentoo MATE Desktop</name>
-    <url>https://wiki.gentoo.org/wiki/Project:MATE</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AMATE</url>
     <description>The Gentoo MATE Project aims to bring the current and complete MATE Desktop Environment to Gentoo.</description>
     <member>
       <email>mudler@gentoo.org</email>
@@ -2100,7 +2100,7 @@
   <project>
     <email>mips@gentoo.org</email>
     <name>Gentoo/MIPS Development</name>
-    <url>https://wiki.gentoo.org/wiki/Project:MIPS</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AMIPS</url>
     <description>Gentoo/MIPS is a port of the Gentoo GNU/Linux and the Gentoo Portage package management system to mips-based platforms.</description>
     <subproject ref="gentoo-yeeloong@gentoo.org"/>
     <member>
@@ -2132,7 +2132,7 @@
   <project>
     <email>ml@gentoo.org</email>
     <name>Gentoo ML Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:ML</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AML</url>
     <description>The Gentoo ML Project maintains packages related to the ML programming language family.</description>
     <member is-lead="1">
       <email>aballier@gentoo.org</email>
@@ -2147,7 +2147,7 @@
   <project>
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Mathematics</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AMathematics</url>
     <description>The Mathematics Project handles all math related activities in Gentoo.</description>
     <member>
       <email>bircoph@gentoo.org</email>
@@ -2173,7 +2173,7 @@
   <project>
     <email>mentors@gentoo.org</email>
     <name>Mentors</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Mentors</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AMentors</url>
     <description>The Mentors project acts as a matchmaking service between prospective
 developers and volunteer mentors.</description>
     <member>
@@ -2184,7 +2184,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>mozilla@gentoo.org</email>
     <name>Gentoo Mozilla Team</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Mozilla</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AMozilla</url>
     <description>Mozilla and related applications</description>
     <member is-lead="1">
       <email>anarchy@gentoo.org</email>
@@ -2217,7 +2217,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>multilib@gentoo.org</email>
     <name>Multilib</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Multilib</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AMultilib</url>
     <description>The Gentoo multilib project aims to provide means to build Gentoo packages for multiple ABIs.</description>
     <member>
       <email>aballier@gentoo.org</email>
@@ -2243,7 +2243,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>mysql-bugs@gentoo.org</email>
     <name>MySQL</name>
-    <url>https://wiki.gentoo.org/wiki/Project:MySQL</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AMySQL</url>
     <description>This project maintains MySQL and its derivatives</description>
     <member>
       <email>grknight@gentoo.org</email>
@@ -2265,7 +2265,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>net-mail@gentoo.org</email>
     <name>Net-Mail</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Net-Mail</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ANet-2DMail</url>
     <description>The Gentoo Net-Mail project aims to maintain email related packages in Gentoo.</description>
     <member>
       <email>eras@gentoo.org</email>
@@ -2296,7 +2296,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>netifrc@gentoo.org</email>
     <name>Netifrc Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Netifrc</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ANetifrc</url>
     <description>This project is for the development and maintenance of the netifrc network configuration scripts</description>
     <member>
       <email>axs@gentoo.org</email>
@@ -2314,7 +2314,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>netmon@gentoo.org</email>
     <name>Gentoo network monitoring and analysis project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Netmon</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ANetmon</url>
     <description>Maintaining network monitoring and analysis libraries and programs</description>
     <member is-lead="1">
       <email>jer@gentoo.org</email>
@@ -2335,7 +2335,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>news@gentoo.org</email>
     <name>News</name>
-    <url>https://wiki.gentoo.org/wiki/Project:News</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ANews</url>
     <description>Presenting news as it develops, the News project is intended to provide the Gentoo community a stream of information regarding changes in the Gentoo universe.</description>
     <member is-lead="1">
       <email>maffblaster@gentoo.org</email>
@@ -2346,7 +2346,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>office@gentoo.org</email>
     <name>Gentoo Office project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Office</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AOffice</url>
     <description>The Office project manages the office implementations and related packages in Gentoo.</description>
     <member>
       <email>asturm@gentoo.org</email>
@@ -2362,7 +2362,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>openrc@gentoo.org</email>
     <name>OpenRC</name>
-    <url>https://wiki.gentoo.org/wiki/Project:OpenRC</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AOpenRC</url>
     <description>OpenRC is a dependency based init system that works with the system provided init program, normally &lt;span style="font-family: monospace; font-size: 95%"&gt;/sbin/init&lt;/span&gt;.</description>
     <member>
       <email>blueness@gentoo.org</email>
@@ -2398,7 +2398,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>openstack@gentoo.org</email>
     <name>Openstack</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Openstack</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AOpenstack</url>
     <description>Openstack is a virtualization orchestration suite that allows the creation and management of cloud infrastructures.</description>
     <member is-lead="1">
       <email>prometheanfire@gentoo.org</email>
@@ -2409,7 +2409,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>ops@gentoo.org</email>
     <name>The #gentoo Operators Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Ops</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AOps</url>
     <description>The &lt;span style="font-family: monospace; font-size: 95%;"&gt;[irc://irc.gentoo.org/gentoo #gentoo]&lt;/span&gt; Operators project describes the tasks and policies carried out by the operators of the #gentoo channel on the Freenode network.</description>
     <member>
       <email>blackace@gentoo.org</email>
@@ -2435,7 +2435,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>overlays@gentoo.org</email>
     <name>Gentoo Overlays</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Overlays</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AOverlays</url>
     <description>The Gentoo Overlays project is responsible for the administration of the overlays and the overlays.gentoo.org / repos.gentoo.org websites.</description>
     <subproject ref="repo-qa-checks@gentoo.org"/>
     <member>
@@ -2462,7 +2462,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>pam-bugs@gentoo.org</email>
     <name>Pluggable Authentication Method maintenance</name>
-    <url>https://wiki.gentoo.org/wiki/Project:PAM</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3APAM</url>
     <description>Pluggable Authentication Method is the main authentication method supported by Gentoo; the PAM maintenance project maintain the related software.</description>
     <member>
       <email>robbat2@gentoo.org</email>
@@ -2478,7 +2478,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>php-bugs@gentoo.org</email>
     <name>PHP</name>
-    <url>https://wiki.gentoo.org/wiki/Project:PHP</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3APHP</url>
     <description>This project maintains PHP itself as well as the PHP extensions and libraries</description>
     <member>
       <email>grknight@gentoo.org</email>
@@ -2492,7 +2492,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>pms@gentoo.org</email>
     <name>Package Manager Specification</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Package_Manager_Specification</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3APackage_Manager_Specification</url>
     <description>The Package Manager Specification aims to document what is required of a Gentoo package manager, and what ebuilds may assume about their environment.</description>
     <member>
       <email>mgorny@gentoo.org</email>
@@ -2508,7 +2508,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Perl</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3APerl</url>
     <description>We maintain everything perlish in Gentoo.</description>
     <member>
       <email>axs@gentoo.org</email>
@@ -2554,7 +2554,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>sci-physics@gentoo.org</email>
     <name>Gentoo Physics Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Physics</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3APhysics</url>
     <description>The Physics Project handles all physics related activities in Gentoo.</description>
     <member>
       <email>amadio@gentoo.org</email>
@@ -2580,7 +2580,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>planet@gentoo.org</email>
     <name>Planet Gentoo</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Planet</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3APlanet</url>
     <description>Planet Gentoo provides a central aggregation of developers' blogs, to keep users and other developers informed of what they are working on.</description>
     <member>
       <email>blueknight@gentoo.org</email>
@@ -2611,7 +2611,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>dev-portage@gentoo.org</email>
     <name>Portage</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Portage</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3APortage</url>
     <description>The Portage Development Project is devoted to maintaining and updating Portages core functionality and utilities.</description>
     <subproject ref="tools-portage@gentoo.org"/>
     <subproject ref="sandbox@gentoo.org"/>
@@ -2654,7 +2654,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>tools-portage@gentoo.org</email>
     <name>Gentoo Portage tools team</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Portage-Tools</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3APortage-2DTools</url>
     <description>The Gentoo Portage tools team develops and maintains a number of tools that use Portage's APIs or perform actions relating to the maintenance of the Portage tree ecosystem.</description>
     <subproject ref="layman@gentoo.org"/>
     <member>
@@ -2681,7 +2681,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>pgsql-bugs@gentoo.org</email>
     <name>PostgreSQL</name>
-    <url>https://wiki.gentoo.org/wiki/Project:PostgreSQL</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3APostgreSQL</url>
     <description>This project is focused on maintaining ebuilds and utilities that are closely tied to PostgreSQL including PostgreSQL itself.</description>
     <member>
       <email>mjo@gentoo.org</email>
@@ -2702,7 +2702,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>ppc@gentoo.org</email>
     <name>Gentoo Linux PowerPC Development</name>
-    <url>https://wiki.gentoo.org/wiki/Project:PowerPC</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3APowerPC</url>
     <description>The PowerPC Development Project is devoted to keeping Gentoo in good shape on both 32-bit and 64-bit PowerPC architecture.</description>
     <member>
       <email>ago@gentoo.org</email>
@@ -2748,7 +2748,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>prefix@gentoo.org</email>
     <name>Gentoo Prefix</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Prefix</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3APrefix</url>
     <description>To bring out the virtues of Gentoo on different operating systems, the Gentoo Prefix project develops and maintains a way of installing Gentoo systems in a non-standard location, designated by a "prefix".</description>
     <member>
       <email>amadio@gentoo.org</email>
@@ -2774,7 +2774,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>printing@gentoo.org</email>
     <name>Gentoo Printing Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Printing</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3APrinting</url>
     <description>Printing related stuff, net-print category (+ some extra stuff).</description>
     <member>
       <email>dilfridge@gentoo.org</email>
@@ -2790,7 +2790,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>proaudio@gentoo.org</email>
     <name>Gentoo ProAudio Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:ProAudio</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AProAudio</url>
     <description>The Gentoo ProAudio Project maintains professional audio applications and related libraries.</description>
     <member>
       <email>aballier@gentoo.org</email>
@@ -2812,7 +2812,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>proctors@gentoo.org</email>
     <name>Gentoo Proctors</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Proctors</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AProctors</url>
     <description>The Gentoo Proctors make sure our communication mediums are a friendly and productive place.</description>
     <member>
       <email>dolsen@gentoo.org</email>
@@ -2839,7 +2839,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>prolog@gentoo.org</email>
     <name>Prolog</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Prolog</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AProlog</url>
     <description>Maintains Prolog and logic programming language packages</description>
     <member>
       <email>keri@gentoo.org</email>
@@ -2849,7 +2849,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Proxy_Maintainers</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AProxy_Maintainers</url>
     <description>Proxy Maintainers facilitates high quality user contributions and works to enhance user-developer cooperation in maintaining packages.</description>
     <member>
       <email>alicef@gentoo.org</email>
@@ -2935,7 +2935,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>pr@gentoo.org</email>
     <name>Public Relations</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Public_Relations</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3APublic_Relations</url>
     <description>The Public Relations team improves Gentoo's visibility towards the rest of the world. We maintain presence on various web silos such as Facebook, Google+, and Twitter. Below you will find those responsible on a per-site basis.</description>
     <subproject ref="news@gentoo.org" inherit-members="1"/>
     <subproject ref="planet@gentoo.org"/>
@@ -2981,7 +2981,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>python@gentoo.org</email>
     <name>Python</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Python</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3APython</url>
     <description>The Python project maintains dev-lang/python and most of dev-python/*.</description>
     <member>
       <email>chutzpah@gentoo.org</email>
@@ -3057,7 +3057,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>qt@gentoo.org</email>
     <name>Gentoo Qt Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Qt</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AQt</url>
     <description>The Qt project handles the Qt ebuilds available in Gentoo's portage and the qt overlay. It also maintains various Qt packages and libraries that don't have dedicated maintainers.</description>
     <member>
       <email>chiitoo@gentoo.org</email>
@@ -3078,7 +3078,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>qa@gentoo.org</email>
     <name>Quality Assurance</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Quality_Assurance</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AQuality_Assurance</url>
     <description>The Gentoo Quality Assurance team</description>
     <subproject ref="maintainer-wanted@gentoo.org"/>
     <subproject ref="bug-wranglers@gentoo.org"/>
@@ -3124,7 +3124,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>ros@gentoo.org</email>
     <name>Gentoo ROS Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:ROS</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AROS</url>
     <description>The Gentoo ROS Project maintains packages for the Robot Operating System.</description>
     <member is-lead="1">
       <email>aballier@gentoo.org</email>
@@ -3135,7 +3135,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>rsbac@gentoo.org</email>
     <name>RSBAC</name>
-    <url>https://wiki.gentoo.org/wiki/Project:RSBAC</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ARSBAC</url>
     <description>This project manages the RSBAC support within Gentoo. This includes providing kernels with RSBAC support (loosely based on the hardened-sources), administration utilities to manage and write strong Gentoo-specific policies.</description>
     <member is-lead="1">
       <email>zorry@gentoo.org</email>
@@ -3146,7 +3146,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>radio@gentoo.org</email>
     <name>Radio</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Radio</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ARadio</url>
     <description>This project maintains packages related to sending and receiving radio transmissions.</description>
     <member>
       <email>chithanh@gentoo.org</email>
@@ -3177,7 +3177,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>recruiters@gentoo.org</email>
     <name>Gentoo Developer Recruiters</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Recruiters</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ARecruiters</url>
     <description>The Recruiters subproject provides a central location for information about developer recruitment and recruiter policy.</description>
     <member>
       <email>amynka@gentoo.org</email>
@@ -3193,7 +3193,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>releng@gentoo.org</email>
     <name>Release Engineering</name>
-    <url>https://wiki.gentoo.org/wiki/Project:RelEng</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ARelEng</url>
     <description>Release Engineering ("RelEng") is the official Gentoo project focused on coordinating and improving the creation of official media releases of Gentoo Linux and the associated tools used by the installation process.</description>
     <subproject ref="catalyst@gentoo.org"/>
     <subproject ref="grs@gentoo.org"/>
@@ -3261,7 +3261,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>grs@gentoo.org</email>
     <name>RelEng GRS</name>
-    <url>https://wiki.gentoo.org/wiki/Project:RelEng_GRS</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ARelEng_GRS</url>
     <description>The Gentoo Reference System (GRS) Suite is a set of tools for building and maintaining a well defined Gentoo system in which all choices in building the system are predefined in configuration files housed on a central git repository.</description>
     <member is-lead="1">
       <email>blueness@gentoo.org</email>
@@ -3272,7 +3272,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>repo-qa-checks@gentoo.org</email>
     <name>Repository mirror and CI</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Repository_mirror_and_CI</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ARepository_mirror_and_CI</url>
     <description>The repo-mirror-ci project aims to run basic QA checks on all listed Gentoo repositories and provide syncing mirrors for them (with pre-generated metadata cache).</description>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
@@ -3288,7 +3288,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>ruby@gentoo.org</email>
     <name>Gentoo Ruby Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Ruby</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ARuby</url>
     <description>The Ruby project maintains packages for Ruby implementations, libraries and development tools. This project also maintains the RubyGems package, the de facto standard for packaging Ruby projects.</description>
     <member is-lead="1">
       <email>graaff@gentoo.org</email>
@@ -3309,7 +3309,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>rust@gentoo.org</email>
     <name>Gentoo Rust Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Rust</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ARust</url>
     <description>The Gentoo Rust Project maintains the Rust toolchain and its related packages.</description>
     <member>
       <email>cardoe@gentoo.org</email>
@@ -3335,7 +3335,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>s390@gentoo.org</email>
     <name>Gentoo Linux s390 Development</name>
-    <url>https://wiki.gentoo.org/wiki/Project:S390</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AS390</url>
     <description>The s390 Development Project is devoted to keeping Gentoo in good shape on the s390 architecture.</description>
     <member>
       <email>ago@gentoo.org</email>
@@ -3361,7 +3361,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>selinux@gentoo.org</email>
     <name>SELinux</name>
-    <url>https://wiki.gentoo.org/wiki/Project:SELinux</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ASELinux</url>
     <description>This project manages SELinux support in Gentoo. This includes providing kernels with SELinux support, providing patches to userland utilities, writing strong Gentoo-specific default profiles, and maintaining a good default set of policies.</description>
     <member is-lead="1">
       <email>perfinion@gentoo.org</email>
@@ -3377,7 +3377,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>sparc@gentoo.org</email>
     <name>Gentoo Linux SPARC Development</name>
-    <url>https://wiki.gentoo.org/wiki/Project:SPARC</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ASPARC</url>
     <description>Gentoo/SPARC is a Gentoo project designed to bring the Gentoo GNU/Linux operating system to the SPARC and UltraSPARC platforms. Gentoo/SPARC aims to provide a usable server and desktop environment for your various SPARC related endeavors.</description>
     <member>
       <email>ago@gentoo.org</email>
@@ -3418,7 +3418,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>samba@gentoo.org</email>
     <name>Samba</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Samba</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ASamba</url>
     <description>This project maintains packages related to Samba suit.</description>
     <member>
       <email>axs@gentoo.org</email>
@@ -3434,7 +3434,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>sandbox@gentoo.org</email>
     <name>Gentoo Sandbox Team</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Sandbox</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ASandbox</url>
     <description>The Gentoo Sandbox Team maintains sandbox-related tools and libraries</description>
     <member>
       <email>grobian@gentoo.org</email>
@@ -3455,7 +3455,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>scheme@gentoo.org</email>
     <name>Gentoo Scheme Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Scheme</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AScheme</url>
     <description>The Gentoo Scheme Project handles Scheme related packages in the Gentoo package tree.</description>
     <member>
       <email>amynka@gentoo.org</email>
@@ -3466,7 +3466,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Science</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AScience</url>
     <description>The Gentoo Science project manages science and mathematics related activities in Gentoo</description>
     <subproject ref="sci-astronomy@gentoo.org"/>
     <subproject ref="sci-biology@gentoo.org"/>
@@ -3529,7 +3529,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>security@gentoo.org</email>
     <name>Gentoo Security Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Security</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ASecurity</url>
     <description>The Gentoo Security Project's mission is to ensure that vulnerabilities in software accessible through the Portage tree are found and fixed in a timely manner, so that our users remain protected against known vulnerabilities.</description>
     <subproject ref="security-audit@gentoo.org"/>
     <subproject ref="security-kernel@gentoo.org"/>
@@ -3587,7 +3587,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>shell-tools@gentoo.org</email>
     <name>Gentoo Shell Tools Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Shell_Tools</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AShell_Tools</url>
     <description>Maintains miscellaneous tools used from within a shell environment.</description>
     <member>
       <email>heroxbd@gentoo.org</email>
@@ -3601,7 +3601,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>sound@gentoo.org</email>
     <name>Gentoo Sound project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Sound</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ASound</url>
     <description>The sound team provides and maintains sound applications and drivers.</description>
     <member>
       <email>aballier@gentoo.org</email>
@@ -3632,7 +3632,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>sh@gentoo.org</email>
     <name>Gentoo Linux SuperH (sh) Development</name>
-    <url>https://wiki.gentoo.org/wiki/Project:SuperH</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ASuperH</url>
     <description>The SuperH Development Project is devoted to keeping Gentoo in good shape on the SuperH architecture.</description>
     <member>
       <email>ago@gentoo.org</email>
@@ -3646,7 +3646,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>sysadmin@gentoo.org</email>
     <name>Gentoo Sysadmin Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Sysadmin</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ASysadmin</url>
     <description>The Gentoo Sysadmin Project maintains various system administration packages.</description>
     <member>
       <email>chutzpah@gentoo.org</email>
@@ -3668,7 +3668,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>systemd@gentoo.org</email>
     <name>systemd</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Systemd</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ASystemd</url>
     <description>The Gentoo systemd project aims to bring Gentoo users the best experience in using systemd as an sysvinit/OpenRC alternative.</description>
     <member is-lead="1">
       <email>floppym@gentoo.org</email>
@@ -3709,7 +3709,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>tcltk@gentoo.org</email>
     <name>Gentoo Tcltk Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Tcltk</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ATcltk</url>
     <description>Gentoo tcltk packages.</description>
     <member>
       <email>tupone@gentoo.org</email>
@@ -3720,7 +3720,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>tex@gentoo.org</email>
     <name>Gentoo TeX Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:TeX</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ATeX</url>
     <description>The TeX project maintains ebuilds for TeXLive and TeX related packages. This includes [https://packages.gentoo.org/packages/app-text/texlive app-text/texlive], the [https://packages.gentoo.org/categories/dev-texlive dev-texlive] category, most of [https://packages.gentoo.org/categories/dev-tex dev-tex] and a few others.</description>
     <member is-lead="1">
       <email>aballier@gentoo.org</email>
@@ -3741,7 +3741,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>theology@gentoo.org</email>
     <name>Theology</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Theology</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ATheology</url>
     <description>The theology project maintains religious, genealogy, and humanities-related packages</description>
     <member is-lead="1">
       <email>creffett@gentoo.org</email>
@@ -3752,7 +3752,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>tinderbox-cluster@gentoo.org</email>
     <name>Tinderbox cluster</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Tinderbox-cluster</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ATinderbox-2Dcluster</url>
     <description>A tinderbox that the guest code can run on multiple setups.</description>
     <member is-lead="1">
       <email>zorry@gentoo.org</email>
@@ -3763,7 +3763,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>toolchain@gentoo.org</email>
     <name>Gentoo Toolchain Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Toolchain</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AToolchain</url>
     <description>Manages gcc/binutils/glibc and other toolchain-related packages</description>
     <subproject ref="crossdev@gentoo.org"/>
     <member>
@@ -3814,7 +3814,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>treecleaner@gentoo.org</email>
     <name>Treecleaner</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Treecleaner</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3ATreecleaner</url>
     <description>The Tree Cleaning Team is primarily concerned with removing unmaintained and broken packages from the tree.</description>
     <member>
       <email>bman@gentoo.org</email>
@@ -3845,7 +3845,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>udev-bugs@gentoo.org</email>
     <name>Udev</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Udev</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AUdev</url>
     <description>The purpose of this project is to maintain sys-fs/udev and related packages.</description>
     <member>
       <email>blueness@gentoo.org</email>
@@ -3871,7 +3871,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>undertakers@gentoo.org</email>
     <name>Undertakers</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Undertakers</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AUndertakers</url>
     <description>The Community Relations Undertakers project handles developer retirement, both when developers announce their retirement as well as due to developer inactivity.</description>
     <member is-lead="1">
       <email>amynka@gentoo.org</email>
@@ -3892,7 +3892,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>vdr@gentoo.org</email>
     <name>Gentoo VDR project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:VDR</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AVDR</url>
     <description>The Gentoo VDR Project maintains and updates the VDR packages in the portage tree. It integrates them with Gentoo as tight as possible. VDR is the abbreviation for Video Disk Recorder.</description>
     <member>
       <email>hd_brummy@gentoo.org</email>
@@ -3908,7 +3908,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>media-video@gentoo.org</email>
     <name>Gentoo Video project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Video</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AVideo</url>
     <description>The Video team strives to provide users with the best multimedia experience through providing encoding tools and media players. We do so by maintaining various video based applications including MPlayer, Xine, and Transcode.</description>
     <subproject ref="vdr@gentoo.org"/>
     <member>
@@ -3940,7 +3940,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>vim@gentoo.org</email>
     <name>Gentoo Vim Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Vim</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AVim</url>
     <description>The Gentoo Vim Project maintains Vim-related packages.</description>
     <member>
       <email>monsieurp@gentoo.org</email>
@@ -3958,7 +3958,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>virtualization@gentoo.org</email>
     <name>Gentoo Virtualization Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Virtualization</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AVirtualization</url>
     <description>The Gentoo Virtualization Project maintains packages shared between the different virtualization (sub-)projects and provides documentation and tools to the user to make Gentoo a first choice platform as both host and guest system.</description>
     <subproject ref="openstack@gentoo.org"/>
     <subproject ref="vmware@gentoo.org"/>
@@ -3999,7 +3999,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>vmware@gentoo.org</email>
     <name>Gentoo VMware Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Vmware</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AVmware</url>
     <description>The Gentoo VMware project ("vmware") is the official Gentoo project for the maintenance and development of VMware and VMware-related products in the Gentoo package repository.</description>
     <member is-lead="1">
       <email>dilfridge@gentoo.org</email>
@@ -4010,7 +4010,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>web-apps@gentoo.org</email>
     <name>Gentoo Webapps</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Webapps</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AWebapps</url>
     <description>The web-apps team maintains web applications, an eclass to facilitate writing ebuilds for these packages, and the &lt;span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator"&gt;webapp-config&lt;/span&gt; tool.</description>
     <member>
       <email>blueness@gentoo.org</email>
@@ -4031,7 +4031,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>www@gentoo.org</email>
     <name>Website maintainers</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Website</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AWebsite</url>
     <description>The Website team maintains the Gentoo website and develops new sites for the community.</description>
     <member>
       <email>chrisadr@gentoo.org</email>
@@ -4054,7 +4054,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>wiki@gentoo.org</email>
     <name>Wiki</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Wiki</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AWiki</url>
     <description>The wiki project oversees the community and the content surrounding wiki.gentoo.org</description>
     <member>
       <email>creffett@gentoo.org</email>
@@ -4085,7 +4085,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>wine@gentoo.org</email>
     <name>Wine</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Wine</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AWine</url>
     <description>Maintenance of Wine and Wine-related Packages</description>
     <member is-lead="1">
       <email>chiitoo@gentoo.org</email>
@@ -4121,7 +4121,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>wxwidgets@gentoo.org</email>
     <name>Gentoo wxWidgets Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:WxWidgets</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AWxWidgets</url>
     <description>The Gentoo wxWidgets Project maintains wxGTK and wxPython related packages and applications.</description>
     <member>
       <email>leio@gentoo.org</email>
@@ -4131,7 +4131,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>x11@gentoo.org</email>
     <name>X11</name>
-    <url>https://wiki.gentoo.org/wiki/Project:X11</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AX11</url>
     <description>The X11 project manages the X implementations and related packages in Portage.</description>
     <member>
       <email>chithanh@gentoo.org</email>
@@ -4158,7 +4158,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>x86@gentoo.org</email>
     <name>Gentoo Linux x86 Architecture Development</name>
-    <url>https://wiki.gentoo.org/wiki/Project:X86</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AX86</url>
     <description>The Gentoo Linux/x86 Project works to keep Gentoo the most up to date and secure x86 distribution available.</description>
     <member>
       <email>ago@gentoo.org</email>
@@ -4189,7 +4189,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>xemacs@gentoo.org</email>
     <name>Gentoo XEmacs project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:XEmacs</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AXEmacs</url>
     <description>The Gentoo XEmacs project handles XEmacs and related packages in the Gentoo package tree.</description>
     <member>
       <email>matsl@gentoo.org</email>
@@ -4200,7 +4200,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>xen@gentoo.org</email>
     <name>Gentoo Xen Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Xen</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AXen</url>
     <description>The Gentoo Xen Project maintains packages related to Xen.</description>
     <member>
       <email>alexxy@gentoo.org</email>
@@ -4222,7 +4222,7 @@ developers and volunteer mentors.</description>
   <project>
     <email>xfce@gentoo.org</email>
     <name>Gentoo Xfce Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Xfce</url>
+    <url>https://wiki.gentoo.org/wiki/Project-3AXfce</url>
     <description>The Gentoo Xfce Project aims to bring the current and complete Xfce desktop environment to Gentoo.</description>
     <member>
       <email>calchan@gentoo.org</email>
