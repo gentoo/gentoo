@@ -29,6 +29,7 @@ COMMON_DEPEND="
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/pango[X]
+	>=x11-libs/xapps-1.0.4
 	virtual/opengl
 	systemd? ( >=sys-apps/systemd-183
 			   sys-auth/polkit )
