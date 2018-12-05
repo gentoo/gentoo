@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+EAPI=7
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 
-inherit autotools ltprune linux-info flag-o-matic python-any-r1 readme.gentoo-r1 systemd virtualx user multilib-minimal
+inherit autotools linux-info flag-o-matic python-any-r1 readme.gentoo-r1 systemd virtualx user multilib-minimal
 
 DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
 HOMEPAGE="https://dbus.freedesktop.org/"
@@ -19,7 +19,6 @@ IUSE="debug doc elogind selinux static-libs systemd test user-session X"
 
 REQUIRED_USE="
 	?? ( elogind systemd )
-	test? ( debug )
 "
 
 CDEPEND="
@@ -37,15 +36,18 @@ DEPEND="${CDEPEND}
 	app-text/docbook-xml-dtd:4.4
 	dev-libs/expat
 	sys-devel/autoconf-archive
-	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	test? (
 		>=dev-libs/glib-2.40:2
 		${PYTHON_DEPS}
-		)
+	)
 "
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-dbus )
+"
+
+BDEPEND="
+	virtual/pkgconfig
 "
 
 DOC_CONTENTS="
@@ -86,7 +88,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local docconf myconf
+	local docconf myconf testconf
 
 	# so we can get backtraces from apps
 	case ${CHOST} in
@@ -163,12 +165,15 @@ multilib_src_configure() {
 	if multilib_is_native_abi && use test; then
 		mkdir "${TBD}" || die
 		cd "${TBD}" || die
-		einfo "Running configure in ${TBD}"
-		ECONF_SOURCE="${S}" econf "${myconf[@]}" \
-			$(use_enable test asserts) \
-			$(use_enable test checks) \
-			$(use_enable test embedded-tests) \
+		testconf=(
+			$(use_enable test asserts)
+			$(use_enable test checks)
+			$(use_enable test embedded-tests)
+			$(use_enable test stats)
 			$(has_version dev-libs/dbus-glib && echo --enable-modular-tests)
+		)
+		einfo "Running configure in ${TBD}"
+		ECONF_SOURCE="${S}" econf "${myconf[@]}" "${testconf[@]}"
 	fi
 }
 
@@ -224,10 +229,10 @@ multilib_src_install_all() {
 	# let the init script create the /var/run/dbus directory
 	rm -rf "${ED}"/var/run
 
-	dodoc AUTHORS ChangeLog HACKING NEWS README doc/TODO
+	dodoc AUTHORS ChangeLog NEWS README doc/TODO
 	readme.gentoo_create_doc
 
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
