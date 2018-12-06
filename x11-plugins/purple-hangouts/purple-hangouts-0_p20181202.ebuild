@@ -26,6 +26,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${PN}-0_p20181202-makefile.patch" )
+
 src_prepare() {
 	default
 
