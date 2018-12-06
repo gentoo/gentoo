@@ -215,10 +215,6 @@ app-emulation/libvirt openvz
 # until upstream fixes it properly.
 sys-devel/clang z3
 
-# Brian Evans <grknight@gentoo.org> (21 Jul 2017)
-# Mask USE flag which has limited keywords for app-crypt/argon2
-dev-lang/php argon2
-
 # Mike Gilbert <floppym@gentoo.org> (09 Jul 2017)
 # Matthias Dahl <matthias.dahl@binary-island.eu> (05 Jul 2017)
 # Both are not your typical garden-variety Linux programs and are
