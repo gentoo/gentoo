@@ -69,11 +69,6 @@
       <role>Member (Security bugs primarily)</role>
     </member>
     <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-      <role>Member (Gentoo/ARM Kernel)</role>
-    </member>
-    <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
       <role>Member (Gentoo/ARM)</role>
@@ -222,11 +217,6 @@
     <name>Artwork</name>
     <url>https://wiki.gentoo.org/wiki/Project-3AArtwork</url>
     <description>The Artwork project manages Gentoo artwork and related assets. This includes wallpapers, logos, themes, icons sets, etc.</description>
-    <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-      <role>Developer</role>
-    </member>
     <member>
       <email>dabbott@gentoo.org</email>
       <name>David Abbott</name>
@@ -555,11 +545,6 @@
     <name>Cjk</name>
     <url>https://wiki.gentoo.org/wiki/Project-3ACjk</url>
     <description>Chinese/Japanese/Korean support packages.</description>
-    <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-      <role>Member (Japanese Support)</role>
-    </member>
     <member>
       <email>dlan@gentoo.org</email>
       <name>Yixun Lan</name>
@@ -1136,11 +1121,6 @@
     <name>Gentoo Foundation</name>
     <url>https://wiki.gentoo.org/wiki/Foundation-3AMain_Page</url>
     <description>The Gentoo Foundation, Inc. provides the legal and financial base for the Gentoo project.</description>
-    <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-      <role>Officer:Vice Secretary, Board Member</role>
-    </member>
     <member is-lead="1">
       <email>antarus@gentoo.org</email>
       <name>Alec Warner</name>
@@ -1668,11 +1648,6 @@
     <subproject ref="github@gentoo.org"/>
     <subproject ref="overlays@gentoo.org"/>
     <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-      <role>General system administration, Kernel, gitolite, wiki</role>
-    </member>
-    <member>
       <email>antarus@gentoo.org</email>
       <name>Alec Warner</name>
       <role>General wrangling, packages site</role>
@@ -1832,11 +1807,6 @@
     <name>Gentoo Kernel Project</name>
     <url>https://wiki.gentoo.org/wiki/Project-3AKernel</url>
     <description>The Gentoo Kernel Project aims to deliver the best possible experience from its sources across all supported architectures.</description>
-    <member is-lead="1">
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-      <role>Leader (Kernel, gentoo-sources, genpatches)</role>
-    </member>
     <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
@@ -1868,11 +1838,6 @@
     <name>Gentoo Linux Kernel Security Project</name>
     <url>https://wiki.gentoo.org/wiki/Project-3AKernel_Security</url>
     <description>The Gentoo Linux Kernel Security Project handles patching our many kernel sources and informing our users about global kernel security status.</description>
-    <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-      <role>Member</role>
-    </member>
     <member>
       <email>blueknight@gentoo.org</email>
       <name>Yury German</name>
@@ -2176,10 +2141,6 @@
     <url>https://wiki.gentoo.org/wiki/Project-3AMentors</url>
     <description>The Mentors project acts as a matchmaking service between prospective
 developers and volunteer mentors.</description>
-    <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-    </member>
   </project>
   <project>
     <email>mozilla@gentoo.org</email>
@@ -2852,11 +2813,6 @@ developers and volunteer mentors.</description>
     <url>https://wiki.gentoo.org/wiki/Project-3AProxy_Maintainers</url>
     <description>Proxy Maintainers facilitates high quality user contributions and works to enhance user-developer cooperation in maintaining packages.</description>
     <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>amynka@gentoo.org</email>
       <name>Amy Liffey</name>
       <role>Member</role>
@@ -2940,11 +2896,6 @@ developers and volunteer mentors.</description>
     <subproject ref="news@gentoo.org" inherit-members="1"/>
     <subproject ref="planet@gentoo.org"/>
     <subproject ref="www@gentoo.org"/>
-    <member>
-      <email>alicef@gentoo.org</email>
-      <name>Alice Ferrazzi</name>
-      <role>Facebook (admin), G+ (owner), Twitter, Events, Telegram (admin), Slack (admin), Discord (admin)</role>
-    </member>
     <member>
       <email>cynede@gentoo.org</email>
       <name>Misha Pukhlikov</name>
