@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -61,7 +61,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtquickcontrols:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	media-libs/fontconfig
@@ -118,6 +117,10 @@ src_prepare() {
 	sed \
 		-e 's:\(${CMAKE_INSTALL_PREFIX}\):./\1:g' \
 		-i resources/templates/CMakeLists.txt || die
+
+	sed \
+		-e "/^add_subdirectory(ui\/qml)/s/^/#DONT/" \
+		-i scribus/CMakeLists.txt || die # nothing but a bogus Hello World test
 
 	cmake-utils_src_prepare
 }
