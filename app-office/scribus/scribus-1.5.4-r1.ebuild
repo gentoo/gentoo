@@ -60,7 +60,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtquickcontrols:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	media-libs/fontconfig
@@ -123,6 +122,10 @@ src_prepare() {
 	edos2unix \
 		scribus/plugins/import/pdf/slaoutput.{cpp,h} \
 		scribus/plugins/import/pdf/importpdf.{cpp,h}
+
+	sed \
+		-e "/^add_subdirectory(ui\/qml)/s/^/#DONT/" \
+		-i scribus/CMakeLists.txt || die # nothing but a bogus Hello World test
 
 	cmake-utils_src_prepare
 }
