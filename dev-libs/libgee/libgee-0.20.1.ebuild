@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,6 +24,6 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	gnome2_src_configure \
-		$(use_enable introspection)
+		$(use_enable introspection) \
 		VALAC="$(type -P false)"
 }
