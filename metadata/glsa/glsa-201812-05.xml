@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201812-05">
+  <title>EDE: Privilege escalation</title>
+  <synopsis>A vulnerability in EDE could result in privilege escalation.</synopsis>
+  <product type="ebuild">ede, emacs</product>
+  <announced>2018-12-06</announced>
+  <revised count="1">2018-12-06</revised>
+  <bug>398241</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-xemacs/ede" auto="yes" arch="*">
+      <unaffected range="ge">1.07</unaffected>
+      <vulnerable range="lt">1.07</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A package that simplifies the task of creating, building, and debugging
+      large programs with Emacs. It provides some of the features of an IDE, or
+      Integrated Development Environment, in Emacs.
+    </p>
+  </background>
+  <description>
+    <p>An untrusted search path vulnerability was discovered in EDE.</p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could escalate his privileges via a specially crafted
+      Lisp expression in a Project.ede file in the directory or a parent
+      directory of an opened file.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All EDE users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-xemacs/ede-1.07"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2012-0035">CVE-2012-0035</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-12-03T22:46:03Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-12-06T22:01:41Z">b-man</metadata>
+</glsa>
