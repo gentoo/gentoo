@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -225,4 +225,12 @@ src_install()
 		dosym ../lib/go/${bin_path}/${f} /usr/bin/${f}
 	done
 	einstalldocs
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# fix install_name for test object (binutils_test) on Darwin, it
+		# is never used in real circumstances
+		local libmac64="${EPREFIX}"/usr/lib/go/src/cmd/vendor/github.com/
+		      libmac64+=google/pprof/internal/binutils/testdata/lib_mac_64
+		install_name_tool -id "${libmac64}" "${D}${libmac64}"
+	fi
 }
