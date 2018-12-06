@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit autotools readme.gentoo-r1 user
 DESCRIPTION="GNU package manager (nix sibling)"
 HOMEPAGE="https://www.gnu.org/software/guix/"
 
-# taken from gnu/local.mk and build-aux/download.scm
+# taken from gnu/local.mk and gnu/packages/bootstrap.scm
 BOOT_GUILE=(
 	"aarch64-linux  20170217 guile-2.0.14.tar.xz"
 	"armhf-linux    20150101 guile-2.0.11.tar.xz"
@@ -53,7 +53,11 @@ RESTRICT=test # complains about size of config.log and refuses to start tests
 RDEPEND="
 	dev-libs/libgcrypt:0=
 	>=dev-scheme/guile-2:=[regex,networking,threads]
+	dev-scheme/bytestructures
+	dev-scheme/guile-gcrypt
+	dev-scheme/guile-git
 	dev-scheme/guile-json
+	dev-scheme/guile-sqlite3
 	net-libs/gnutls[guile]
 	sys-libs/zlib
 	app-arch/bzip2
@@ -63,15 +67,15 @@ RDEPEND="
 DEPEND="${RDEPEND}
 "
 
-PATCHES=("${FILESDIR}"/${PN}-0.13.0-default-daemon.patch)
+PATCHES=("${FILESDIR}"/${PN}-0.16.0-default-daemon.patch)
 
-QA_PREBUILT="usr/share/guile/site/2.0/gnu/packages/bootstrap/*"
+QA_PREBUILT="usr/share/guile/site/*/gnu/packages/bootstrap/*"
 
 DISABLE_AUTOFORMATTING=yes
 DOC_CONTENTS="Quick start user guide on Gentoo:
 
 [as root] allow binary substitution to be downloaded (optional)
-	# guix archive --authorize < /usr/share/guix/hydra.gnu.org.pub
+	# guix archive --authorize < /usr/share/guix/ci.guix.info.pub
 [as root] enable guix-daemon service:
 	[systemd] # systemctl enable guix-daemon
 	[openrc]  # rc-update add guix-daemon
@@ -101,7 +105,17 @@ src_prepare() {
 
 	default
 	# build system is very eager to run automake itself: bug #625166
-	eautomake
+	eautoreconf
+
+	# guile is trying to avoid recompilation by checking if file
+	#     /usr/lib64/guile/2.2/site-ccache/guix/modules.go
+	# is newer than
+	#     guix/modules.scm
+	# In case it is instead of using 'guix/modules.scm' guile
+	# loads system one (from potentially older version of guix).
+	# To work it around we bump last modification timestamp of
+	# '*.scm' files.
+	find "${S}" -name "*.scm" -exec touch {} + || die
 }
 
 src_configure() {
