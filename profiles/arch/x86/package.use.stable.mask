@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (06 Dec 2018)
+# Unmask argon2 for php
+dev-lang/php -argon2
+
 # Mikle Kolyada <zlogene@gentoo.org> (07 Nov 2018)
 # unmask sssd for sudo
 app-admin/sudo -sssd

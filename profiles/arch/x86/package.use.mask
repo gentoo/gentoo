@@ -95,10 +95,6 @@ media-gfx/digikam mediaplayer
 # Requires USE=cuda that is masked in this profile.
 media-gfx/blender opensubdiv
 
-# Brian Evans <grknight@gentoo.org> (21 Jul 2017)
-# app-crypt/argon2 is keyworded on x86
-dev-lang/php -argon2
-
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # dev-libs/libmaxminddb is keyworded on x86
 app-admin/rsyslog -mdblookup
