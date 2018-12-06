@@ -6,8 +6,8 @@ HOMEPAGE=https://davical.org/
 IUSE=vhosts
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
-RDEPEND=app-admin/pwgen dev-lang/php:*[calendar,curl,pdo,postgres,xml] dev-perl/DBI dev-perl/DBD-Pg dev-perl/YAML >=dev-php/awl-0.59 virtual/httpd-php >=app-admin/webapp-config-1.50.15
-SLOT=1.1.7
+RDEPEND=app-admin/pwgen dev-lang/php:*[calendar,curl,pdo,postgres,xml] dev-perl/DBD-Pg dev-perl/DBI dev-perl/YAML >=dev-php/awl-0.59 virtual/httpd-php >=app-admin/webapp-config-1.50.15
+SLOT=1.1.7-r1
 SRC_URI=https://www.davical.org/downloads/davical_1.1.7.orig.tar.xz -> davical-1.1.7.tar.xz
 _eclasses_=webapp	6ae2395d7f341093c36057cb4f69101a
-_md5_=d088773798ba0de7de5ac06b313c3471
+_md5_=6a24cf38708615ab749787213b61240f
