@@ -16,13 +16,15 @@ DEPEND=">=dev-php/awl-0.59
 	sys-devel/gettext"
 RDEPEND="app-admin/pwgen
 	dev-lang/php:*[calendar,curl,pdo,postgres,xml]
-	dev-perl/DBI
 	dev-perl/DBD-Pg
+	dev-perl/DBI
 	dev-perl/YAML
 	>=dev-php/awl-0.59
 	virtual/httpd-php"
 
 need_httpd
+
+PATCHES=( "${FILESDIR}/${P}-fix_php4_style_constructors.patch" )
 
 S="${WORKDIR}"
 
@@ -33,7 +35,7 @@ src_compile() {
 src_install() {
 	webapp_src_preinst
 
-	dodoc INSTALL CREDITS README TODO ChangeLog
+	einstalldocs
 
 	einfo "Installing web files"
 	insinto "${MY_HTDOCSDIR}"
