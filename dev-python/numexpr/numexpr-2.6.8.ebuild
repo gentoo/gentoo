@@ -29,11 +29,11 @@ python_prepare_all() {
 	if use mkl; then
 		use amd64 && local ext="_lp64"
 		cat > site.cfg <<- _EOF_ || die
-		[mkl]
-		library_dirs = ${MKLROOT}/lib/em64t
-		include_dirs = ${MKLROOT}/include
-		mkl_libs = mkl_solver${ext}, mkl_intel${ext}, \
-		mkl_intel_thread, mkl_core, iomp5
+			[mkl]
+			library_dirs = ${MKLROOT}/lib/em64t
+			include_dirs = ${MKLROOT}/include
+			mkl_libs = mkl_solver${ext}, mkl_intel${ext}, \
+			mkl_intel_thread, mkl_core, iomp5
 		_EOF_
 	fi
 
