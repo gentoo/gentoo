@@ -75,6 +75,53 @@ index a0fb51b..bbb5dd1 100644
  int
  main(int argc, char *argv[])
  {
+@@ -814,9 +814,8 @@
+ # endif
+ 			} else {
+ 				len = sizeof(cliaddr);
+-				connfd = accept4(s, (struct sockaddr *)&cliaddr,
+-				    &len, SOCK_NONBLOCK);
+-				if (connfd == -1) {
++				connfd = accept(s, (struct sockaddr *)&cliaddr, &len);
++				if (connfd == -1 || fcntl(connfd, F_SETFL, O_NONBLOCK) == -1) {
+ 					/* For now, all errnos are fatal */
+ 					err(1, "accept");
+ 				}
+@@ -1092,14 +1091,16 @@
+ 	int s, save_errno;
+ 
+ 	if (uflag) {
+-		if ((s = unix_bind(unix_dg_tmp_socket, SOCK_CLOEXEC)) < 0)
++		if ((s = unix_bind(unix_dg_tmp_socket, 0)) < 0)
+ 			return -1;
+ 	} else {
+-		if ((s = socket(AF_UNIX, SOCK_STREAM | SOCK_CLOEXEC, 0)) < 0) {
++		if ((s = socket(AF_UNIX, SOCK_STREAM, 0)) < 0) {
+ 			errx(1,"create unix socket failed");
+ 			return -1;
+ 		}
+ 	}
++	if (fcntl(s, F_SETFD, FD_CLOEXEC) == -1)
++		return -1;
+ 
+ 	memset(&s_un, 0, sizeof(struct sockaddr_un));
+ 	s_un.sun_family = AF_UNIX;
+@@ -1174,9 +1175,13 @@
+ 		    port, gai_strerror(error));
+ 
+ 	for (res = res0; res; res = res->ai_next) {
+-		if ((s = socket(res->ai_family, res->ai_socktype |
+-		    SOCK_NONBLOCK, res->ai_protocol)) < 0)
++		if ((s = socket(res->ai_family, res->ai_socktype,
++		    res->ai_protocol)) < 0)
++			continue;
++		if (fcntl(s, F_SETFL, O_NONBLOCK) == -1) {
++			close(s);
+ 			continue;
++		}
+ 
+ 		/* Bind to a local port or source address if specified. */
+ 		if (sflag || pflag) {
 diff --git a/socks.c b/socks.c
 index 9068f39..68b68e3 100644
 --- a/socks.c
