@@ -1183,7 +1183,7 @@ app-office/pinpoint 0.1.8-r1: A tool for making hackers do excellent presentatio
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r1: Spreadsheet Calculator
-app-office/scribus 1.5.4: Desktop publishing (DTP) and layout program
+app-office/scribus 1.5.4-r1: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.15.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2: Wysiwyg text processor with high-quality maths
@@ -1230,7 +1230,7 @@ app-portage/genlop 0.30.9-r1: A nice emerge.log parser
 app-portage/gentoolkit 0.3.3 0.4.0 0.4.2-r1: Collection of administration scripts for Gentoo
 app-portage/gentoopm 0.3.0: A common interface to Gentoo package managers
 app-portage/gpyutils 0.2.2: Utitilies for maintaining Python packages
-app-portage/grs 0.6-r1: Suite to build Gentoo Reference Systems
+app-portage/grs 0.6-r1 0.7: Suite to build Gentoo Reference Systems
 app-portage/layman 2.0.0-r1 2.0.0-r3 2.4.2-r1: Tool to manage Gentoo overlays
 app-portage/metagen 0.6.2-r1 0.6.3 0.6.5: metadata.xml generator for ebuilds
 app-portage/mirrorselect 2.2.0.1 2.2.2 2.2.2-r2 2.2.3: Tool to help select distfiles mirrors for Gentoo
