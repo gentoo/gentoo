@@ -80,26 +80,14 @@ case ${PV} in
 	*_alpha*|*_beta*|*_rc*)
 		# development release
 		QT5_BUILD_TYPE="release"
-
-		if [[ ${QT5_MINOR_VERSION} -ge 10 ]]; then
-			MY_P=${QT5_MODULE}-everywhere-src-${PV/_/-}
-		else
-			MY_P=${QT5_MODULE}-opensource-src-${PV/_/-}
-		fi
-
+		MY_P=${QT5_MODULE}-everywhere-src-${PV/_/-}
 		SRC_URI="https://download.qt.io/development_releases/qt/${PV%.*}/${PV/_/-}/submodules/${MY_P}.tar.xz"
 		S=${WORKDIR}/${MY_P}
 		;;
 	*)
 		# official stable release
 		QT5_BUILD_TYPE="release"
-
-		if [[ ${QT5_MINOR_VERSION} -ge 10 ]]; then
-			MY_P=${QT5_MODULE}-everywhere-src-${PV}
-		else
-			MY_P=${QT5_MODULE}-opensource-src-${PV}
-		fi
-
+		MY_P=${QT5_MODULE}-everywhere-src-${PV}
 		SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${MY_P}.tar.xz"
 		S=${WORKDIR}/${MY_P}
 		;;
@@ -535,13 +523,11 @@ qt5_base_configure() {
 				echo -platform freebsd-clang
 			fi
 		fi)
-		$(if [[ ${QT5_MINOR_VERSION} -ge 10 ]]; then
-			if use kernel_linux; then
-				if tc-is-gcc; then
-					echo -platform linux-g++
-				elif tc-is-clang; then
-					echo -platform linux-clang
-				fi
+		$(if use kernel_linux; then
+			if tc-is-gcc; then
+				echo -platform linux-g++
+			elif tc-is-clang; then
+				echo -platform linux-clang
 			fi
 		fi)
 
@@ -570,9 +556,6 @@ qt5_base_configure() {
 		# disable all SQL drivers by default, override in qtsql
 		-no-sql-db2 -no-sql-ibase -no-sql-mysql -no-sql-oci -no-sql-odbc
 		-no-sql-psql -no-sql-sqlite -no-sql-sqlite2 -no-sql-tds
-
-		# ensure the QML debugging support (qmltooling) is built in qtdeclarative
-		$([[ ${QT5_MINOR_VERSION} -lt 11 ]] && echo -qml-debug)
 
 		# MIPS DSP instruction set extensions
 		$(is-flagq -mno-dsp   && echo -no-mips_dsp)
