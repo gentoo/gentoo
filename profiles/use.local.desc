@@ -5608,6 +5608,10 @@ sys-libs/binutils-libs:64-bit-bfd - Support 64-bit targets even on 32-bit hosts 
 sys-libs/binutils-libs:multitarget - Enable all possible targets in libbfd
 sys-libs/compiler-rt:clang - Force building using installed clang (rather than the default CC/CXX).
 sys-libs/compiler-rt-sanitizers:clang - Force building using installed clang (rather than the default CC/CXX).
+sys-libs/compiler-rt-sanitizers:libfuzzer - Build fuzzing runtime.
+sys-libs/compiler-rt-sanitizers:profile - Build profiling runtime.
+sys-libs/compiler-rt-sanitizers:sanitize - Build sanitizer runtimes.
+sys-libs/compiler-rt-sanitizers:xray - Build XRay runtime.
 sys-libs/db:rpc - Enable rpc client/server
 sys-libs/freeipmi:nagios - Install a nagios plugin to check sensors' status.
 sys-libs/gdbm:berkdb - enable compatibility layer for UNIX-like dbm and ndbm interfaces
