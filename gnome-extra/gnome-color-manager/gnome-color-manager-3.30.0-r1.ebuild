@@ -49,7 +49,7 @@ src_prepare() {
 
 	# Fix hard-coded package name
 	# https://gitlab.gnome.org/GNOME/gnome-color-manager/issues/3
-	sed 's:argyllcms:media-gfx/argyllcms:' src/gcm-utils.h || die
+	sed 's:argyllcms:media-gfx/argyllcms:' -i src/gcm-utils.h || die
 }
 
 src_configure() {
