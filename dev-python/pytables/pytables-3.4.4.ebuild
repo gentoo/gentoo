@@ -12,7 +12,7 @@ MY_P=${MY_PN}-${PV}
 inherit distutils-r1
 
 DESCRIPTION="Hierarchical datasets for Python"
-HOMEPAGE="http://www.pytables.org/"
+HOMEPAGE="https://www.pytables.org/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 SLOT="0"
@@ -23,7 +23,7 @@ IUSE="doc examples"
 RDEPEND="
 	app-arch/bzip2:0=
 	app-arch/lz4:0=
-	>=app-arch/zstd-1.0.0
+	>=app-arch/zstd-1.0.0:=
 	>=dev-libs/c-blosc-1.11.1:0=
 	dev-libs/lzo:2=
 	>=dev-python/numpy-1.8.1[${PYTHON_USEDEP}]
@@ -50,7 +50,10 @@ python_prepare_all() {
 }
 
 python_compile() {
-	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
+	if ! python_is_python3; then
+		local -x CFLAGS="${CFLAGS}"
+		append-cflags -fno-strict-aliasing
+	fi
 	distutils-r1_python_compile
 }
 
@@ -67,11 +70,9 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
-		doins -r contrib
+		dodoc -r examples
+		dodoc -r contrib
 		docompress -x /usr/share/doc/${PF}/examples
 		docompress -x /usr/share/doc/${PF}/contrib
-
 	fi
 }
