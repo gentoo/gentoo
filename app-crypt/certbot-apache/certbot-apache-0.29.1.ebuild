@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999* ]]; then
 	S=${WORKDIR}/${P}/${PN}
 else
 	SRC_URI="https://github.com/${PN%-apache}/${PN%-apache}/archive/v${PV}.tar.gz -> ${PN%-apache}-${PV}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 	S=${WORKDIR}/${PN%-apache}-${PV}/${PN}
 fi
 
@@ -23,8 +23,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="test"
 
-RDEPEND=">=app-crypt/certbot-0.21.1[${PYTHON_USEDEP}]
-	>app-crypt/acme-0.24.0[${PYTHON_USEDEP}]
+RDEPEND=">=app-crypt/certbot-0.26.0[${PYTHON_USEDEP}]
+	>=app-crypt/acme-0.25.0[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/python-augeas[${PYTHON_USEDEP}]
 	dev-python/zope-component[${PYTHON_USEDEP}]
