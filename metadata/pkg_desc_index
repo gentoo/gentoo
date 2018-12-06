@@ -8662,7 +8662,7 @@ net-libs/gtk-vnc 0.8.0: VNC viewer widget for GTK
 net-libs/gupnp 1.0.2 1.0.3: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.10: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.4 0.2.5: Library to handle UPnP IGD port mapping for GUPnP
-net-libs/http-parser 2.6.2 2.8.1: HTTP request/response parser for C
+net-libs/http-parser 2.8.1: HTTP request/response parser for C
 net-libs/ldns 1.7.0-r2: a library with the aim to simplify DNS programming in C
 net-libs/libaccounts-glib 1.23: Accounts SSO (Single Sign-On) management library for GLib applications
 net-libs/libasyncns 0.8-r3: C library for executing name service queries asynchronously
