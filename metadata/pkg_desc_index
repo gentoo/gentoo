@@ -8496,7 +8496,7 @@ net-dns/bind-tools 9.11.2_p1: bind tools: dig, nslookup, host, nsupdate, dnssec-
 net-dns/c-ares 1.13.0: C library that resolves names asynchronously
 net-dns/ddclient 3.8.1-r5 3.9.0-r1: Perl client used to update dynamic DNS entries
 net-dns/djbdns 1.05-r32: Collection of DNS client/server software
-net-dns/dnsmasq 2.79: Small forwarding DNS server
+net-dns/dnsmasq 2.79 2.80: Small forwarding DNS server
 net-dns/dnssec-root 20150403 20170203-r1: The DNSSEC root key(s)
 net-dns/dnstop 20140915: Displays various tables of DNS traffic on your network
 net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
