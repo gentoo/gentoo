@@ -96,7 +96,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/sshkey
 	dev-ruby/tzinfo:*
 	dev-ruby/windows_error
-	dev-ruby/xdr:*
+	dev-ruby/xdr:2.0.0
 	dev-ruby/xmlrpc
 	java? ( dev-ruby/rjb )
 	nexpose? ( dev-ruby/nexpose )
