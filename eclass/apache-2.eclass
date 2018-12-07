@@ -293,7 +293,9 @@ setup_modules() {
 		if ver_test ${PV} -ge 2.4.34 ; then
 			MY_CONF+=( $(use_with !suexec-syslog suexec-logfile "${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}") )
 			MY_CONF+=( $(use_with suexec-syslog) )
-			MY_CONF+=( $(usex suexec-syslog $(usex suexec-caps --enable-suexec-capabilities '') '') )
+			if use suexec-syslog && use suexec-caps ; then
+				MY_CONF+=( --enable-suexec-capabilities )
+			fi
 		else
 			MY_CONF+=( --with-suexec-logfile="${SUEXEC_LOGFILE:-${EPREFIX}/var/log/apache2/suexec_log}" )
 		fi
