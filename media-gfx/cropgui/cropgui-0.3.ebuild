@@ -29,10 +29,6 @@ src_prepare() {
 		-e '/MimeType/s/$/&;/' \
 		-e '/Categories/s/Application;//' \
 		cropgui.desktop || die 'sed on cropgui.desktop failed'
-	# bug 471530
-	eapply "${FILESDIR}/${P}-PIL.patch"
-	# bug 616708
-	eapply "${FILESDIR}/${P}-tobytes.patch"
 
 	eapply_user
 }
