@@ -1,0 +1,9 @@
+diff -ruN gnuclad-0.2.4.orig/src/Makefile.am gnuclad-0.2.4/src/Makefile.am
+--- gnuclad-0.2.4.orig/src/Makefile.am	2011-01-07 19:28:05.000000000 +0100
++++ gnuclad-0.2.4/src/Makefile.am	2018-12-07 23:23:49.878123376 +0100
+@@ -18,4 +18,4 @@
+ 
+ CFLAGS =
+ AM_CXXFLAGS =
+-gnuclad_CPPFLAGS = -Wall -Wextra -Werror -pedantic-errors -ansi -O2
++gnuclad_CPPFLAGS = -Wall -Wextra -pedantic-errors -ansi
