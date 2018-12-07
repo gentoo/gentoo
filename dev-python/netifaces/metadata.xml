@@ -8,5 +8,7 @@
   <upstream>
     <remote-id type="pypi">netifaces</remote-id>
     <remote-id type="bitbucket">al45tair/netifaces</remote-id>
+    <remote-id type="github">al45tair/netifaces</remote-id>
+    <bugs-to>https://github.com/al45tair/netifaces/issues</bugs-to>
   </upstream>
 </pkgmetadata>
