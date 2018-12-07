@@ -37,14 +37,14 @@ COMMON_DEPEND="dbus? ( sys-apps/dbus:= )
 DEPEND="${COMMON_DEPEND}
 	dnssec? (
 		dev-libs/nettle:=[gmp]
-		static? ( dev-libs/nettle[static-libs(+)] )
+		static? ( >=dev-libs/nettle-3.4[static-libs(+)] )
 	)
 "
 
 RDEPEND="${COMMON_DEPEND}
 	dnssec? (
 		!static? (
-			dev-libs/nettle:=[gmp]
+			>=dev-libs/nettle-3.4:=[gmp]
 		)
 	)
 	selinux? ( sec-policy/selinux-dnsmasq )
