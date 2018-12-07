@@ -19,7 +19,7 @@ app-accessibility/nfbtrans 7.74-r2: braille translator from the National Federat
 app-accessibility/orca 3.24.0: Extensible screen reader that provides access to the desktop
 app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring your desktop under your command
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
-app-accessibility/speech-dispatcher 0.8.1 0.8.7: Speech synthesis interface
+app-accessibility/speech-dispatcher 0.8.7: Speech synthesis interface
 app-accessibility/speech-tools 2.1-r4: Speech tools for Festival Text to Speech engine
 app-accessibility/speechd-el 2.5: Emacs speech support
 app-accessibility/sphinx2 0.6: CMU Speech Recognition-engine
@@ -6501,7 +6501,7 @@ gnome-base/gnome-session 3.24.2-r1: Gnome session manager
 gnome-base/gnome-settings-daemon 3.24.4: Gnome Settings Daemon
 gnome-base/gnome-shell 3.24.3: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
-gnome-base/gsettings-desktop-schemas 3.22.0 3.24.1: Collection of GSettings schemas for GNOME desktop
+gnome-base/gsettings-desktop-schemas 3.24.1: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.32.2: Virtual filesystem implementation for gio
 gnome-base/libbonobo 2.24.3-r1: GNOME CORBA framework
 gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
