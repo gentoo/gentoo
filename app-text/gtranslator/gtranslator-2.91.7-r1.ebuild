@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,7 @@ COMMON_DEPEND="
 
 	gnome-base/gsettings-desktop-schemas
 
-	gnome-dictionary? ( app-dicts/gnome-dictionary:= )
+	gnome-dictionary? ( app-dicts/gnome-dictionary:0/10 )
 	gucharmap? ( ${PYTHON_DEPS} )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.3 )
 	spell? ( app-text/gtkspell:3= )
@@ -43,8 +43,10 @@ RDEPEND="${COMMON_DEPEND}
 		x11-libs/gtk+:3[introspection] )
 "
 DEPEND="${COMMON_DEPEND}
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1
 	>=dev-util/intltool-0.50.1
+	dev-util/itstool
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 "
