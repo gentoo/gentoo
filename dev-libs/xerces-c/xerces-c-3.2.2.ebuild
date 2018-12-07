@@ -23,6 +23,9 @@ DEPEND="${RDEPEND}
 	test? ( dev-lang/perl )"
 
 DOCS=( CREDITS KEYS NOTICE README )
+PATCHES=(
+	"${FILESDIR}/${P}-fix-XERCESC-2161.patch"
+)
 
 pkg_setup() {
 	export ICUROOT="${EPREFIX}/usr"
