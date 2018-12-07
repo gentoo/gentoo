@@ -16,14 +16,14 @@ IUSE="test"
 
 RDEPEND="app-misc/jq
 	>=dev-python/pyyaml-3.11[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/xmltodict[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? (
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/flake8[${PYTHON_USEDEP}]
 		dev-python/toml[${PYTHON_USEDEP}]
 		dev-python/wheel[${PYTHON_USEDEP}]
-		dev-python/xmltodict[${PYTHON_USEDEP}]
 	)"
 
 python_prepare_all() {
