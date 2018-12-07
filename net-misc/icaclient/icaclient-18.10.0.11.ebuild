@@ -118,7 +118,7 @@ src_install() {
 	for tmpl in {appsrv,wfclient}.template ; do
 		newins nls/en/${tmpl} ${tmpl/template/ini}
 	done
-	touch "${ED%/}/${ICAROOT}"/config/.server || die
+	touch "${ED}/${ICAROOT}"/config/.server || die
 
 	insinto "${ICAROOT}"/gtk
 	doins gtk/*
@@ -155,8 +155,8 @@ src_install() {
 		dosym UTF-8 "${ICAROOT}"/nls/${lang}/utf8
 
 		for tmpl in {appsrv,wfclient}.template ; do
-			cp "${ED%/}/${ICAROOT}"/nls/${lang}/${tmpl} \
-				"${ED%/}/${ICAROOT}"/nls/${lang}/${tmpl/template/ini} \
+			cp "${ED}/${ICAROOT}"/nls/${lang}/${tmpl} \
+				"${ED}/${ICAROOT}"/nls/${lang}/${tmpl/template/ini} \
 				|| die
 		done
 	done
@@ -188,7 +188,7 @@ src_install() {
 
 	dodir /etc/revdep-rebuild/
 	echo "SEARCH_DIRS_MASK=\"${ICAROOT}\"" \
-		> "${ED%/}"/etc/revdep-rebuild/70icaclient
+		> "${ED}"/etc/revdep-rebuild/70icaclient
 
 	# 651926
 	domenu "${FILESDIR}"/wfica.desktop
