@@ -262,7 +262,7 @@ src_install() {
 	use debug && binpath="debug"
 	cd "${S}"/out/linux.${ARCH}/${binpath}/bin || die
 
-	local vbox_inst_path="/usr/$(get_libdir)/${PN}" each fwfile size ico icofile
+	local vbox_inst_path="/usr/$(get_libdir)/${PN}" each size ico icofile
 
 	vbox_inst() {
 		local binary="${1}"
@@ -312,11 +312,9 @@ src_install() {
 	done
 
 	# Install EFI Firmware files (bug #320757)
-	pushd "${S}"/src/VBox/Devices/EFI/FirmwareBin &>/dev/null || die
-	for fwfile in VBoxEFI{32,64}.fd ; do
-		vbox_inst ${fwfile} 0644
+	for each in VBoxEFI{32,64}.fd ; do
+		vbox_inst ${each} 0644
 	done
-	popd &>/dev/null || die
 
 	# VBoxSVC and VBoxManage need to be pax-marked (bug #403453)
 	# VBoxXPCOMIPCD (bug #524202)
@@ -325,7 +323,7 @@ src_install() {
 	done
 
 	# Symlink binaries to the shipped wrapper
-	for each in vbox{headless,manage} VBox{BugReport,Headless,Manage,VRDP} ; do
+	for each in vbox{autostart,balloonctrl,bugreport,headless,manage} VBox{Autostart,BalloonCtrl,BugReport,Headless,Manage,VRDP} ; do
 		dosym ${vbox_inst_path}/VBox /usr/bin/${each}
 	done
 	dosym ${vbox_inst_path}/VBoxTunctl /usr/bin/VBoxTunctl
@@ -348,8 +346,9 @@ src_install() {
 		done
 
 		if use qt5 ; then
+			vbox_inst Virtualbox
+			vbox_inst VirtualboxVM 4750
 			for each in VirtualBox{,VM} ; do
-				vbox_inst ${each}
 				pax-mark -m "${ED%/}"${vbox_inst_path}/${each}
 			done
 
@@ -358,7 +357,7 @@ src_install() {
 				pax-mark -m "${ED%/}"${vbox_inst_path}/VBoxTestOGL
 			fi
 
-			for each in virtualbox VirtualBox ; do
+			for each in virtualbox{,vm} VirtualBox{,VM} ; do
 				dosym ${vbox_inst_path}/VBox /usr/bin/${each}
 			done
 
