@@ -1,7 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit bash-completion-r1
 
 DESCRIPTION="A pass extension for managing one-time-password (OTP) tokens."
 HOMEPAGE="https://github.com/tadfisher/pass-otp"
@@ -20,4 +22,8 @@ RDEPEND=">=app-admin/pass-1.7
 
 src_compile() {
 	:
+}
+
+src_install() {
+	emake install DESTDIR="${D}" BASHCOMPDIR="$(get_bashcompdir)"
 }
