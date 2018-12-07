@@ -2935,7 +2935,7 @@ dev-lang/yasm 1.2.0-r1 1.3.0: An assembler for x86 and x86_64 instruction sets
 dev-libs/9libs 1.0-r3: A package of Plan 9 compatibility libraries
 dev-libs/Ice 3.6.3-r1: ICE middleware C++ library and generator tools
 dev-libs/ace 5.7.2: The Adaptive Communications Environment
-dev-libs/appstream 0.10.6-r1 0.12.3: Cross-distro effort for providing metadata for software in the Linux ecosystem
+dev-libs/appstream 0.12.3: Cross-distro effort for providing metadata for software in the Linux ecosystem
 dev-libs/appstream-glib 0.6.13 0.7.9: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.5.2 1.6.3-r3: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.4 1.6.1-r3: Apache Portable Runtime Utility Library
