@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=test? ( dev-tcltk/expect:* )
+DESCRIPTION=A pass extension for managing one-time-password (OTP) tokens.
+EAPI=7
+HOMEPAGE=https://github.com/tadfisher/pass-otp
+IUSE=qrcode test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=app-admin/pass-1.7 sys-auth/oath-toolkit qrcode? ( media-gfx/qrencode )
+SLOT=0
+SRC_URI=https://github.com/tadfisher/pass-otp/releases/download/v1.2.0/pass-otp-1.2.0.tar.gz
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=51aabc09e582e25636b35440847760e4
