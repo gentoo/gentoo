@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SLOT="0"
 IUSE="+libtirpc"
 
 RDEPEND="
-	!libtirpc? ( sys-libs/glibc[rpc(-)] )
+	!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
 	libtirpc? ( net-libs/libtirpc )
 "
 DEPEND="
