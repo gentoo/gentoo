@@ -1,11 +1,11 @@
 DEFINED_PHASES=install postinst
 DEPEND=app-admin/eselect !<net-analyzer/metasploit-4.6
 DESCRIPTION=eselect module for metasploit
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.pentoo.ch/
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
 RDEPEND=app-admin/eselect !<net-analyzer/metasploit-4.6
 SLOT=0
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=fb0a03501932a94ec32ca99cbdb8c53b
+_md5_=8196c22e573038af55dda6fb03ebeb9d
