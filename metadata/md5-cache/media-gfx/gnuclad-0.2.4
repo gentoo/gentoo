@@ -1,4 +1,5 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=install prepare
+DEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Cladogram tree generator mainly used by the GNU/Linux distro timeline project
 EAPI=6
 HOMEPAGE=https://launchpad.net/gnuclad/
@@ -7,4 +8,5 @@ KEYWORDS=~amd64
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=http://launchpad.net/gnuclad/trunk/0.2/+download/gnuclad-0.2.4.tar.gz
-_md5_=c8be926cdb0cb377ac18f4c4014d27e3
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=fcd9b6dfa73f0ddebf8abd2d91e95ccd
