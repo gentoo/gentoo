@@ -20,7 +20,7 @@ if ls -A ~/.msf4/*.gemspec > /dev/zero 2>&1; then
 	rm ~/.msf4/*.gemspec
 fi
 
-#fetch the latest Gemfile and gemspecsfrom the selected version of msf
+#fetch the latest Gemfile and gemspecs from the selected version of msf
 cp /usr/lib/metasploit/Gemfile ~/.msf4/
 if ls -A /usr/lib/metasploit/*.gemspec > /dev/zero 2>&1; then
 	cp /usr/lib/metasploit/*.gemspec ~/.msf4/
