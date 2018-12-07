@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>alexxy@gentoo.org</email>
+		<name>Alexey Shvetsov</name>
+	</maintainer>
+	<longdescription>
+		GNU Spread Sheet Widget is a library for Gtk+ which provides a widget for viewing and manipulating 2 dimensional tabular data in a manner similar to many popular spread sheet programs.
+		The design follows the model-view-controller paradigm and is of complexity O(1) in both time and space. This means that it is efficient and fast even for very large data.
+		Features commonly found in graphical user interfaces such as cut and paste, drag and drop and row/column labelling are also included.
+	</longdescription>
+</pkgmetadata>
