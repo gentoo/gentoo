@@ -528,6 +528,12 @@ src_install() {
 		emid='{a62ef8ec-5fdc-40c2-873c-223b8a6925cc}'
 		mkdir -p "${T}/${emid}" || die
 		cp -RLp -t "${T}/${emid}" "${BUILD_OBJ_DIR}"/dist/xpi-stage/gdata-provider/* || die
+
+		# manifest.json does not allow the addon to load, put install.rdf in place
+		# note, version number needs to be set properly
+		cp -RLp -t "${T}/${emid}" "${WORKDIR}"/gdata-provider-${MOZ_LIGHTNING_GDATA_VER}/install.rdf
+		sed -i -e '/em:version/ s/>[^<]*</>4.1</' "${T}/${emid}"/install.rdf
+
 		insinto ${MOZILLA_FIVE_HOME}/extensions
 		doins -r "${T}/${emid}"
 	fi
