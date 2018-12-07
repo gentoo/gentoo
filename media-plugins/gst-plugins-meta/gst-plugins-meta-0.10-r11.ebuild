@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,7 +6,7 @@ EAPI="5"
 inherit multilib-build
 
 DESCRIPTION="Meta ebuild to pull in gst plugins for apps"
-HOMEPAGE="https://www.gentoo.org"
+HOMEPAGE="https://gstreamer.freedesktop.org/"
 
 LICENSE="metapackage"
 SLOT="0.10"
