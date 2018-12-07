@@ -73,6 +73,7 @@ hardened
 pdfannotextractor
 prelude
 mssql
+gajim
 
 # havent tested yet
 gphoto2
