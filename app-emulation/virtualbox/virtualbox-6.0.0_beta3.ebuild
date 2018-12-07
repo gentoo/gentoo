@@ -289,7 +289,7 @@ src_install() {
 
 	# Install the wrapper script
 	exeinto ${vbox_inst_path}
-	newexe "${FILESDIR}/${PN}-ose-5-wrapper" "VBox"
+	newexe "${FILESDIR}/${PN}-ose-6-wrapper" "VBox"
 	fowners root:vboxusers ${vbox_inst_path}/VBox
 	fperms 0750 ${vbox_inst_path}/VBox
 
@@ -302,7 +302,7 @@ src_install() {
 	if use amd64 && ! has_multilib_profile ; then
 		rcfiles=""
 	fi
-	for each in VBox{ExtPackHelperApp,Manage,SVC,Tunctl,XPCOMIPCD} *so *r0 ${rcfiles} ; do
+	for each in VBox{Autostart,BalloonCtrl,BugReport,CpuReport,ExtPackHelperApp,Manage,SVC,Tunctl,VMMPreload,XPCOMIPCD} *so *r0 ${rcfiles} iPxeBaseBin rdesktop-vrdp ; do
 		vbox_inst ${each}
 	done
 
@@ -325,7 +325,7 @@ src_install() {
 	done
 
 	# Symlink binaries to the shipped wrapper
-	for each in vbox{headless,manage} VBox{Headless,Manage,VRDP} ; do
+	for each in vbox{headless,manage} VBox{BugReport,Headless,Manage,VRDP} ; do
 		dosym ${vbox_inst_path}/VBox /usr/bin/${each}
 	done
 	dosym ${vbox_inst_path}/VBoxTunctl /usr/bin/VBoxTunctl
@@ -348,8 +348,10 @@ src_install() {
 		done
 
 		if use qt5 ; then
-			vbox_inst VirtualBox
-			pax-mark -m "${ED%/}"${vbox_inst_path}/VirtualBox
+			for each in VirtualBox{,VM} ; do
+				vbox_inst ${each}
+				pax-mark -m "${ED%/}"${vbox_inst_path}/${each}
+			done
 
 			if use opengl ; then
 				vbox_inst VBoxTestOGL
@@ -364,7 +366,7 @@ src_install() {
 			doins -r nls
 			doins -r UnattendedTemplates
 
-			newmenu "${FILESDIR}"/${PN}-ose.desktop-2 ${PN}.desktop
+			domenu ${PN}.desktop
 		fi
 
 		pushd "${S}"/src/VBox/Artwork/OSE &>/dev/null || die
