@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 MY_PN=tables
 MY_P=${MY_PN}-${PV}
 
-inherit distutils-r1
+inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Hierarchical datasets for Python"
 HOMEPAGE="https://www.pytables.org/"
@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-DOCS=( ANNOUNCE.txt RELEASE_NOTES.txt THANKS )
+DOCS=( RELEASE_NOTES.txt THANKS )
 
 python_prepare_all() {
 	export HDF5_DIR="${EPREFIX}"/usr
