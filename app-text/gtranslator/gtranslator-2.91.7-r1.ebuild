@@ -29,7 +29,7 @@ COMMON_DEPEND="
 
 	gnome-base/gsettings-desktop-schemas
 
-	gnome-dictionary? ( app-dicts/gnome-dictionary:= )
+	gnome-dictionary? ( app-dicts/gnome-dictionary:0/10 )
 	gucharmap? ( ${PYTHON_DEPS} )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.3 )
 	spell? ( app-text/gtkspell:3= )
