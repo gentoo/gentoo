@@ -302,9 +302,9 @@ each_ruby_install() {
 
 	#I'm 99% sure that this will only work for as long as we only support one ruby version.  Creativity will be needed if we wish to support multiple.
 	# should be as simple as copying everything into the target...
-	dodir /usr/$(get_libdir)/${PN}${SLOT}
-	cp -R * "${ED}"/usr/$(get_libdir)/${PN}${SLOT} || die "Copy files failed"
-	rm -Rf "${ED}"/usr/$(get_libdir)/${PN}${SLOT}/documentation "${ED}"/usr/$(get_libdir)/${PN}${SLOT}/README.md
+	dodir /usr/lib/${PN}${SLOT}
+	cp -R * "${ED}"/usr/lib/${PN}${SLOT} || die "Copy files failed"
+	rm -Rf "${ED}"/usr/lib/${PN}${SLOT}/documentation "${ED}"/usr/lib${PN}${SLOT}/README.md
 	fowners -R root:0 /
 
 }
@@ -313,16 +313,16 @@ all_ruby_install() {
 	# do not remove LICENSE, bug #238137
 	dodir /usr/share/doc/${PF}
 	cp -R {documentation,README.md} "${ED}"/usr/share/doc/${PF} || die
-	ln -s "../../share/doc/${PF}/documentation" "${ED}/usr/$(get_libdir)/${PN}${SLOT}/documentation"
+	ln -s "../../share/doc/${PF}/documentation" "${ED}/usr/lib/${PN}${SLOT}/documentation"
 
-	fperms +x /usr/$(get_libdir)/${PN}${SLOT}/msfupdate
+	fperms +x /usr/lib/${PN}${SLOT}/msfupdate
 
 	#tell revdep-rebuild to ignore binaries meant for the target
 	dodir /etc/revdep-rebuild
 	cat <<-EOF > "${ED}"/etc/revdep-rebuild/99-metasploit${SLOT}
 		#These dirs contain prebuilt binaries for running on the TARGET not the HOST
-		SEARCH_DIRS_MASK="/usr/lib*/${PN}${SLOT}/data/meterpreter"
-		SEARCH_DIRS_MASK="/usr/lib*/${PN}${SLOT}/data/exploits"
+		SEARCH_DIRS_MASK="/usr/lib/${PN}${SLOT}/data/meterpreter"
+		SEARCH_DIRS_MASK="/usr/lib/${PN}${SLOT}/data/exploits"
 	EOF
 }
 
