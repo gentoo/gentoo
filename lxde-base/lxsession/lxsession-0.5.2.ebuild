@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	!lxde-base/lxsession-edit
 	sys-apps/lsb-release
-	upower? ( || ( sys-power/upower sys-power/upower-pm-utils ) )
+	upower? ( sys-power/upower )
 "
 DEPEND="${COMMON_DEPEND}
 	$(vala_depend)
