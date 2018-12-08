@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ RDEPEND="apm? ( sys-apps/apmd )
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm
-	upower? ( || ( >=sys-power/upower-0.9.23 sys-power/upower-pm-utils ) )"
+	upower? ( >=sys-power/upower-0.9.23 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
