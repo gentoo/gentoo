@@ -218,7 +218,7 @@ src_configure() {
 
 	myconf="${myconf} \
 		$(use_with X x) \
-		$(use_with batch-insert) \
+		$(use_enable batch-insert) \
 		$(use_enable !readline conio) \
 		$(use_enable readline) \
 		$(use_with readline readline /usr) \
