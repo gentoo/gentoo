@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -77,7 +77,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
 	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
 	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
-	"${FILESDIR}/${P}-validation_fixes.patch" #657526
+	"${FILESDIR}/${P}-usage_argument_fix.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(
