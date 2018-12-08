@@ -72,6 +72,7 @@ src_prepare() {
 		"${FILESDIR}/3.2/distcc-config" > "${T}/distcc-config" || die
 
 	hprefixify update-distcc-symlinks.py src/{serve,daemon}.c
+	python_fix_shebang update-distcc-symlinks.py "${T}/distcc-config"
 	eautoreconf
 }
 
