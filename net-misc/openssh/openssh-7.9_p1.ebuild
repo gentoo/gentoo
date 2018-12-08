@@ -124,9 +124,11 @@ src_prepare() {
 	if use X509 ; then
 		pushd "${WORKDIR}" || die
 		eapply "${FILESDIR}/${P}-X509-glue.patch"
+		eapply "${FILESDIR}/${P}-X509-dont-make-piddir.patch"
 		popd || die
 
 		eapply "${WORKDIR}"/${X509_PATCH%.*}
+		eapply "${FILESDIR}"/${PN}-7.9_p1-libressl-2.8.patch
 
 		# We need to patch package version or any X.509 sshd will reject our ssh client
 		# with "userauth_pubkey: could not parse key: string is too large [preauth]"
@@ -389,6 +391,7 @@ src_install() {
 
 	systemd_dounit "${FILESDIR}"/sshd.{service,socket}
 	systemd_newunit "${FILESDIR}"/sshd_at.service 'sshd@.service'
+	ls -la "${D}"/run
 }
 
 pkg_preinst() {
