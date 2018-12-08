@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+config="/etc/${RC_SVCNAME}.conf"
+name="Thinkfan"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+command="/usr/sbin/thinkfan"
+command_args="-c ${config} ${THINKFAN_OPTS}"
+
+start_pre() {
+	if [ ! -f "${config}" ]; then
+		eerror "You must create ${config} before running ${name}!"
+		return 1
+	fi
+
+	return 0
+}

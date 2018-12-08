@@ -1,0 +1,12 @@
+[Unit]
+Description=Thinkfan
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/thinkfan
+PIDFile=/run/thinkfan.pid
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+Also=thinkfan-wakeup.service

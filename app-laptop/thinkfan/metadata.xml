@@ -5,10 +5,27 @@
 		<email>zlogene@gentoo.org</email>
 		<name>Mikle Kolyada</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Thinkfan is a simple, lightweight fan control program.
+		Originally designed specifically for IBM/Lenovo Thinkpads,
+		it now supports any kind of system via the sysfs hwmon interface.
+		It is designed to eat as little CPU power as possible.
+	</longdescription>
 	<use>
-		<flag name="atasmart">include libatasmart support to get disc temperature</flag>
+		<flag name="atasmart">Use <pkg>dev-libs/libatasmart</pkg> to read temperatures directly from hard disks</flag>
+		<flag name="nvml">Allows to read GPU temperatures from the proprietary nVidia driver <pkg>x11-drivers/nvidia-drivers</pkg></flag>
+		<flag name="yaml">Support the more flexible YAML config file format</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">thinkfan</remote-id>
+		<bugs-to>https://github.com/vmatare/thinkfan/issues</bugs-to>
+		<remote-id type="github">vmatare/thinkfan</remote-id>
 	</upstream>
 </pkgmetadata>
