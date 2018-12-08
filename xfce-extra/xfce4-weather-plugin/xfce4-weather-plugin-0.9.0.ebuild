@@ -21,7 +21,7 @@ RDEPEND=">=dev-libs/glib-2.42
 	>=xfce-base/libxfce4ui-4.12:=
 	>=xfce-base/libxfce4util-4.12:=
 	>=xfce-base/xfce4-panel-4.12:=
-	upower? ( || ( >=sys-power/upower-0.9.23 sys-power/upower-pm-utils ) )"
+	upower? ( >=sys-power/upower-0.9.23 )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig"
