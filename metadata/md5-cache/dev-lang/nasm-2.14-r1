@@ -9,4 +9,4 @@ LICENSE=BSD-2
 SLOT=0
 SRC_URI=https://www.nasm.us/pub/nasm/releasebuilds/2.14/nasm-2.14.tar.xz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=beea2dc717948d643707f6a843b757ff
+_md5_=36696f0524279e0c0b760cd126c0ae47
