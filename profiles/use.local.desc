@@ -1954,7 +1954,6 @@ dev-qt/qt-docs:networkauth - Install documentation for dev-qt/qtnetworkauth
 dev-qt/qt-docs:qch - Install documentation in QCH format
 dev-qt/qt-docs:script - Install documentation for dev-qt/qtscript
 dev-qt/qt-docs:sensors - Install documentation for dev-qt/qtsensors
-dev-qt/qt-docs:speech - Install documentation for dev-qt/qtspeech
 dev-qt/qt-docs:virtualkeyboard - Install documentation for dev-qt/qtvirtualkeyboard
 dev-qt/qt-docs:webengine - Install documentation for dev-qt/qtwebengine
 dev-qt/qt3d:gles2 - Use GLES 2.0 or later instead of full OpenGL
