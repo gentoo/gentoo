@@ -11,7 +11,7 @@ SRC_URI="https://people.freedesktop.org/~hughsient/${PN}/releases/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/8" # soname version
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 ~s390 sparc x86"
 IUSE="doc +introspection stemmer"
 
 RDEPEND="
