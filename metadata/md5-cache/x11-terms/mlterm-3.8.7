@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 bidi? ( dev-libs/fribidi ) brltty? ( app-accessibility/brltty ) cairo? ( x11-libs/cairo[X(+)] ) canna? ( app-i18n/canna ) fbcon? ( media-fonts/unifont ) fcitx? ( app-i18n/fcitx ) freewnn? ( app-i18n/freewnn ) gtk? ( gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) ) harfbuzz? ( media-libs/harfbuzz[truetype(+)] ) ibus? ( app-i18n/ibus ) libssh2? ( net-libs/libssh2 ) m17n-lib? ( dev-libs/m17n-lib ) nls? ( virtual/libintl ) regis? ( || ( media-libs/sdl-ttf media-libs/sdl2-ttf ) ) scim? ( app-i18n/scim ) skk? ( || ( virtual/skkserv app-i18n/skk-jisyo ) ) uim? ( app-i18n/uim ) utempter? ( sys-libs/libutempter ) wayland? ( dev-libs/wayland ) xft? ( x11-libs/libXft ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=A multi-lingual terminal emulator
+EAPI=6
+HOMEPAGE=http://mlterm.sourceforge.net/
+IUSE=bidi brltty cairo canna debug fbcon fcitx freewnn gtk gtk2 harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland xft
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=BSD
+RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 bidi? ( dev-libs/fribidi ) brltty? ( app-accessibility/brltty ) cairo? ( x11-libs/cairo[X(+)] ) canna? ( app-i18n/canna ) fbcon? ( media-fonts/unifont ) fcitx? ( app-i18n/fcitx ) freewnn? ( app-i18n/freewnn ) gtk? ( gtk2? ( x11-libs/gtk+:2 ) !gtk2? ( x11-libs/gtk+:3 ) ) harfbuzz? ( media-libs/harfbuzz[truetype(+)] ) ibus? ( app-i18n/ibus ) libssh2? ( net-libs/libssh2 ) m17n-lib? ( dev-libs/m17n-lib ) nls? ( virtual/libintl ) regis? ( || ( media-libs/sdl-ttf media-libs/sdl2-ttf ) ) scim? ( app-i18n/scim ) skk? ( || ( virtual/skkserv app-i18n/skk-jisyo ) ) uim? ( app-i18n/uim ) utempter? ( sys-libs/libutempter ) wayland? ( dev-libs/wayland ) xft? ( x11-libs/libXft )
+REQUIRED_USE=gtk2? ( gtk )
+SLOT=0
+SRC_URI=mirror://sourceforge/mlterm/mlterm-3.8.7.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=c022770f48452ec7800321fa55ecb29e
