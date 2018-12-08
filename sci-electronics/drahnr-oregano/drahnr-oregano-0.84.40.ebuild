@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,6 +25,7 @@ COMMON_DEP="dev-libs/glib:2
 
 DEPEND="${COMMON_DEP}
 	${PYTHON_DEPS}
+	dev-util/glib-utils
 	virtual/pkgconfig"
 
 RDEPEND="${COMMON_DEP}
