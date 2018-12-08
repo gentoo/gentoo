@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,8 @@ IUSE="doc test"
 
 RDEPEND="${PYTHON_DEPS}
 	~dev-libs/libarcus-${PV}:*
-	dev-libs/protobuf"
+	dev-libs/protobuf
+	dev-libs/stb"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
