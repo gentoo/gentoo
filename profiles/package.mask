@@ -109,12 +109,6 @@ dev-python/django-filer
 dev-python/django-mptt
 dev-python/django-standard-form
 
-# Sergei Trofimovich <slyfox@gentoo.org> (13 Nov 2018)
-# New version started creating files when input file is not set.
-# This is unexpected behaviour change and causes sandbox
-# violations: bug #670944
->=dev-lang/nasm-2.14
-
 # Hans de Graaff <graaff@gentoo.org> (12 Nov 2018)
 # Mask ruby23-only packages for removal. These packages are not
 # compatible with ruby24+ or they are old slots that are ruby23-only
