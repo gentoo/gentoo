@@ -30,10 +30,7 @@ RDEPEND="
 	kde-frameworks/kidletime:5
 	kde-frameworks/solid:5
 	=lxqt-base/liblxqt-$(ver_cut 1-2)*
-	|| (
-		sys-power/upower
-		sys-power/upower-pm-utils
-	)
+	sys-power/upower
 	!lxqt-base/lxqt-common
 "
 DEPEND="${RDEPEND}
