@@ -1,16 +1,19 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit autotools eutils flag-o-matic toolchain-funcs
+
+MY_P=${PN/x/X}-Release-${PV}
 
 DESCRIPTION="X Amateur Station Tracking and Information Reporting"
 HOMEPAGE="http://xastir.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/Xastir/Xastir/archive/Release-2.1.0.tar.gz
+			-> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="festival gdal geotiff +graphicsmagick"
 
 DEPEND=">=x11-libs/motif-2.3:0
@@ -31,7 +34,11 @@ DEPEND=">=x11-libs/motif-2.3:0
 	festival? ( app-accessibility/festival )"
 RDEPEND="${DEPEND}"
 
+S="${WORKDIR}"/${MY_P}
+
 src_prepare() {
+	eapply_user
+
 	# fix script location (bug #407185)
 	epatch "${FILESDIR}"/${P}-scripts.diff
 
@@ -40,7 +47,7 @@ src_prepare() {
 
 	# do not use builtin shapelib if sci-libs/shapelib is not installed
 	# instead build without shapelib support (bug #430704)
-	epatch "${FILESDIR}"/${P}-no-builtin-shapelib.diff
+	epatch "${FILESDIR}"/${PN}-2.0.8-no-builtin-shapelib.diff
 
 	# do not filter duplicate flags (see bug 411095)
 	epatch "${FILESDIR}"/${PN}-2.0.0-dont-filter-flags.diff
@@ -72,8 +79,8 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	rm -rf "${D}"/usr/share/doc/${PN}
-	dodoc AUTHORS ChangeLog FAQ README README.Contributing \
-		README.Getting-Started README.MAPS
+	dodoc AUTHORS ChangeLog CONTRIBUTING.md FAQ README \
+		README.Getting-Started README.MAPS README.OSM_maps
 }
 
 pkg_postinst() {

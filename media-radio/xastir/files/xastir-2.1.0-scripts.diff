@@ -1,20 +1,11 @@
 # patch scripts location (bug #407185). partially backported from upstream.
---- xastir-2.0.0-orig/scripts/Makefile.am.orig	2012-11-27 05:41:23.000000000 +0100
-+++ xastir-2.0.0/scripts/Makefile.am	2012-12-05 06:21:59.000000000 +0100
-@@ -12,9 +12,7 @@
-     get-fcc-rac.pl \
-     get-gnis \
-     get-pop \
--    get-maptools.sh \
-     get-NWSdata \
--    get_shapelib.sh \
-     gpx2shape \
-     icontable.pl \
-     inf2geo.pl \
-@@ -43,10 +41,8 @@
-     values \
-     values.pl \
+diff -u Xastir-Release-2.1.0/scripts.orig/Makefile.am Xastir-Release-2.1.0/scripts/Makefile.am
+--- Xastir-Release-2.1.0/scripts.orig/Makefile.am	2018-12-08 12:14:51.881373754 +0100
++++ Xastir-Release-2.1.0/scripts/Makefile.am	2018-12-08 12:15:53.206401168 +0100
+@@ -45,10 +45,8 @@
      waypoint-get.pl \
+     wms.pl \
+     wxnowsrv.pl \
 -    xastir-fixcfg.sh \
 -    xastir-migrate.sh \
      Xastir_tigerpoly.py
