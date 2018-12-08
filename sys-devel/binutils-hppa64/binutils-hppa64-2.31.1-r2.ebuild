@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,9 +19,10 @@ IUSE="+cxx doc multitarget +nls static-libs test"
 #                    - Default: PV
 # PATCH_DEV          - Use download URI https://dev.gentoo.org/~{PATCH_DEV}/distfiles/...
 #                      for the patchsets
-#                      Default: dilfridge :)
+#                      Default: slyfox
 
-PATCH_VER=2
+PATCH_VER=4
+PATCH_DEV=dilfridge
 
 case ${PV} in
 	9999)
@@ -73,12 +74,6 @@ DEPEND="${RDEPEND}
 	sys-devel/flex
 	virtual/yacc
 "
-if is_cross ; then
-	# The build assumes the host has libiberty and such when cross-compiling
-	# its build tools.  We should probably make binutils itself build a local
-	# copy to use, but until then, be lazy.
-	DEPEND+=" >=sys-libs/binutils-libs-${PV}"
-fi
 
 MY_BUILDDIR=${WORKDIR}/build
 S=${WORKDIR}/${P/-hppa64/}
@@ -243,6 +238,9 @@ src_configure() {
 		# Strip out broken static link flags.
 		# https://gcc.gnu.org/PR56750
 		--without-stage1-ldflags
+		# Change SONAME to avoid conflict across
+		# {native,cross}/binutils, binutils-libs. #666100
+		--with-extra-soversion-suffix=gentoo-${CATEGORY}-${PN}-$(usex multitarget mt st)
 	)
 	echo ./configure "${myconf[@]}"
 	"${S}"/configure "${myconf[@]}" || die
