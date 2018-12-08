@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ DESCRIPTION="A session daemon for MATE that makes it easy to manage your laptop 
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="+applet gnome-keyring pm-utils policykit systemd test"
+IUSE="+applet gnome-keyring policykit systemd test"
 
 # Interactive testsuite.
 RESTRICT="test"
@@ -33,8 +33,7 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.70:0
 	x11-libs/pango:0
 	applet? ( >=mate-base/mate-panel-1.17.0 )
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3:0 )
-	pm-utils? ( >=sys-power/upower-pm-utils-0.9.23 )
-	!pm-utils? ( >=sys-power/upower-0.9.23:= )
+	>=sys-power/upower-0.9.23:=
 	systemd? ( sys-apps/systemd )
 	!systemd? ( >=sys-auth/consolekit-0.9.2 )"
 
