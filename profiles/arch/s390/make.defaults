@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="s390"
-ACCEPT_KEYWORDS="s390 ~s390"
+ACCEPT_KEYWORDS="s390"
 
 MULTILIB_ABIS="s390"
 DEFAULT_ABI="s390"
