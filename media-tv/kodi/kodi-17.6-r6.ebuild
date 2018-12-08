@@ -106,13 +106,8 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	!media-tv/xbmc
 	udisks? ( sys-fs/udisks:0 )
-	upower? (
-		systemd? ( sys-power/upower )
-		!systemd? (
-			|| ( sys-power/upower-pm-utils sys-power/upower )
-		)
-	)
-"
+	upower? ( sys-power/upower )"
+
 DEPEND="${COMMON_DEPEND}
 	app-arch/bzip2
 	app-arch/unzip
