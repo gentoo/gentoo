@@ -23,7 +23,7 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.100:=
 	>=xfce-base/libxfce4ui-4.12.1:=
 	>=xfce-base/xfconf-4.10:=
 	policykit? ( >=sys-auth/polkit-0.102:= )
-	upower? ( || ( >=sys-power/upower-0.9.23 sys-power/upower-pm-utils ) )"
+	upower? ( >=sys-power/upower-0.9.23 )"
 RDEPEND="${COMMON_DEPEND}
 	x11-apps/xrdb
 	nls? ( x11-misc/xdg-user-dirs )

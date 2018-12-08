@@ -29,7 +29,7 @@ RDEPEND=">=dev-libs/dbus-glib-0.100
 	libcanberra? ( >=media-libs/libcanberra-0.25[sound] )
 	input_devices_libinput? ( x11-drivers/xf86-input-libinput )
 	libnotify? ( >=x11-libs/libnotify-0.7 )
-	upower? ( || ( >=sys-power/upower-0.9.23 sys-power/upower-pm-utils ) )
+	upower? ( >=sys-power/upower-0.9.23 )
 	xklavier? ( >=x11-libs/libxklavier-5 )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
