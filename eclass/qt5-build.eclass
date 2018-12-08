@@ -80,26 +80,14 @@ case ${PV} in
 	*_alpha*|*_beta*|*_rc*)
 		# development release
 		QT5_BUILD_TYPE="release"
-
-		if [[ ${QT5_MINOR_VERSION} -ge 10 ]]; then
-			MY_P=${QT5_MODULE}-everywhere-src-${PV/_/-}
-		else
-			MY_P=${QT5_MODULE}-opensource-src-${PV/_/-}
-		fi
-
+		MY_P=${QT5_MODULE}-everywhere-src-${PV/_/-}
 		SRC_URI="https://download.qt.io/development_releases/qt/${PV%.*}/${PV/_/-}/submodules/${MY_P}.tar.xz"
 		S=${WORKDIR}/${MY_P}
 		;;
 	*)
 		# official stable release
 		QT5_BUILD_TYPE="release"
-
-		if [[ ${QT5_MINOR_VERSION} -ge 10 ]]; then
-			MY_P=${QT5_MODULE}-everywhere-src-${PV}
-		else
-			MY_P=${QT5_MODULE}-opensource-src-${PV}
-		fi
-
+		MY_P=${QT5_MODULE}-everywhere-src-${PV}
 		SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${MY_P}.tar.xz"
 		S=${WORKDIR}/${MY_P}
 		;;
@@ -123,14 +111,13 @@ esac
 
 IUSE="debug test"
 
-[[ ${PN} == qtwebkit ]] && RESTRICT+=" mirror" # bug 524584
 [[ ${QT5_BUILD_TYPE} == release ]] && RESTRICT+=" test" # bug 457182
 
 DEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 "
-if [[ (${PN} != qttest && ${PN} != qtwebkit) || (${PN} == qtwebkit && ${QT5_MINOR_VERSION} -lt 9) ]]; then
+if [[ ${PN} != qttest ]]; then
 	DEPEND+=" test? ( ~dev-qt/qttest-${PV} )"
 fi
 RDEPEND="
@@ -147,7 +134,7 @@ EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install sr
 # Unpacks the sources.
 qt5-build_src_unpack() {
 	# bug 307861
-	if [[ ${PN} == qtwebengine || ${PN} == qtwebkit ]]; then
+	if [[ ${PN} == qtwebengine ]]; then
 		eshopts_push -s extglob
 		if is-flagq '-g?(gdb)?([1-9])'; then
 			ewarn
@@ -175,14 +162,8 @@ qt5-build_src_prepare() {
 		qt5_symlink_tools_to_build_dir
 
 		# Avoid unnecessary qmake recompilations
-		if [[ ${QT5_MINOR_VERSION} -ge 8 ]]; then
-			sed -i -e "/Creating qmake/i if [ '!' -e \"\$outpath/bin/qmake\" ]; then" \
-				-e '/echo "Done."/a fi' \
-				configure || die "sed failed (skip qmake bootstrap)"
-		else
-			sed -i -re "s|^if true;.*(\[ '\!').*(\"\\\$outpath/bin/qmake\".*)|if \1 -e \2 then|" \
-				configure || die "sed failed (skip qmake bootstrap)"
-		fi
+		sed -i -e "/Creating qmake/i if [ '!' -e \"\$outpath/bin/qmake\" ]; then" \
+			-e '/echo "Done."/a fi' configure || die "sed failed (skip qmake bootstrap)"
 
 		# Respect CC, CXX, *FLAGS, MAKEOPTS and EXTRA_EMAKE when bootstrapping qmake
 		sed -i -e "/outpath\/qmake\".*\"\$MAKE\")/ s:): \
@@ -197,12 +178,6 @@ qt5-build_src_prepare() {
 		sed -i -e "/^QMAKE_CONF_COMPILER=/ s:=.*:=\"$(tc-getCXX)\":" \
 			configure || die "sed failed (QMAKE_CONF_COMPILER)"
 
-		if [[ ${QT5_MINOR_VERSION} -le 7 ]]; then
-			# Respect toolchain and flags in config.tests
-			find config.tests/unix -name '*.test' -type f -execdir \
-				sed -i -e 's/-nocache //' '{}' + || die
-		fi
-
 		# Don't inject -msse/-mavx/... into CXXFLAGS when detecting
 		# compiler support for extended instruction sets (bug 552942)
 		find config.tests/common -name '*.pro' -type f -execdir \
@@ -213,9 +188,7 @@ qt5-build_src_prepare() {
 			src/{corelib/corelib,gui/gui}.pro || die "sed failed (optimize_full)"
 
 		# Respect build variables in configure tests (bug #639494)
-		if [[ ${QT5_MINOR_VERSION} -ge 9 ]]; then
-			sed -i -e "s|\"\$outpath/bin/qmake\" \"\$relpathMangled\" -- \"\$@\"|& $(qt5_qmake_args) |" configure || die
-		fi
+		sed -i -e "s|\"\$outpath/bin/qmake\" \"\$relpathMangled\" -- \"\$@\"|& $(qt5_qmake_args) |" configure || die
 	fi
 
 	default
@@ -521,9 +494,7 @@ qt5_base_configure() {
 	export LD="$(tc-getCXX)"
 
 	# bug 633838
-	if [[ ${QT5_MINOR_VERSION} -ge 9 ]]; then
-		unset QMAKESPEC XQMAKESPEC QMAKEPATH QMAKEFEATURES
-	fi
+	unset QMAKESPEC XQMAKESPEC QMAKEPATH QMAKEFEATURES
 
 	# configure arguments
 	local conf=(
@@ -552,13 +523,11 @@ qt5_base_configure() {
 				echo -platform freebsd-clang
 			fi
 		fi)
-		$(if [[ ${QT5_MINOR_VERSION} -ge 10 ]]; then
-			if use kernel_linux; then
-				if tc-is-gcc; then
-					echo -platform linux-g++
-				elif tc-is-clang; then
-					echo -platform linux-clang
-				fi
+		$(if use kernel_linux; then
+			if tc-is-gcc; then
+				echo -platform linux-g++
+			elif tc-is-clang; then
+				echo -platform linux-clang
 			fi
 		fi)
 
@@ -580,9 +549,6 @@ qt5_base_configure() {
 		# build shared libraries
 		-shared
 
-		# always enable large file support
-		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -largefile)
-
 		# disabling accessibility is not recommended by upstream, as
 		# it will break QStyle and may break other internal parts of Qt
 		-accessibility
@@ -590,9 +556,6 @@ qt5_base_configure() {
 		# disable all SQL drivers by default, override in qtsql
 		-no-sql-db2 -no-sql-ibase -no-sql-mysql -no-sql-oci -no-sql-odbc
 		-no-sql-psql -no-sql-sqlite -no-sql-sqlite2 -no-sql-tds
-
-		# ensure the QML debugging support (qmltooling) is built in qtdeclarative
-		$([[ ${QT5_MINOR_VERSION} -lt 11 ]] && echo -qml-debug)
 
 		# MIPS DSP instruction set extensions
 		$(is-flagq -mno-dsp   && echo -no-mips_dsp)
@@ -612,8 +575,10 @@ qt5_base_configure() {
 		-no-libpng -no-libjpeg
 		-no-freetype -no-harfbuzz
 		-no-openssl -no-libproxy
-		-no-xkbcommon-x11 -no-xkbcommon-evdev
-		-no-xinput2 -no-xcb-xlib
+		-no-xcb-xlib
+		$([[ ${QT5_MINOR_VERSION} -lt 12 ]] && echo -no-xinput2 -no-xkbcommon-x11 -no-xkbcommon-evdev)
+		$([[ ${PV} = 5.12.0* ]] && echo -no-xcb-xinput -no-xkbcommon-x11 -no-xkbcommon-evdev) # bug 672340
+		$([[ ${QT5_MINOR_VERSION} -ge 12 && ${PV} != 5.12.0* ]] && echo -no-xcb-xinput -no-xkbcommon) # bug 672340
 
 		# cannot use -no-gif because there is no way to override it later
 		#-no-gif
@@ -623,7 +588,6 @@ qt5_base_configure() {
 
 		# disable everything to prevent automagic deps (part 2)
 		-no-gtk
-		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-pulseaudio -no-alsa)
 
 		# exclude examples and tests from default build
 		-nomake examples
@@ -635,10 +599,6 @@ qt5_base_configure() {
 
 		# print verbose information about each configure test
 		-verbose
-
-		# always enable iconv support
-		# since 5.8 this is handled in qtcore
-		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -iconv)
 
 		# disable everything to prevent automagic deps (part 3)
 		-no-cups -no-evdev -no-tslib -no-icu -no-fontconfig -no-dbus
@@ -666,10 +626,6 @@ qt5_base_configure() {
 		# disable undocumented X11-related flags, override in qtgui
 		# (not shown in ./configure -help output)
 		-no-xkb
-		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-xrender)
-
-		# disable obsolete/unused X11-related flags
-		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-mitshm -no-xcursor -no-xfixes -no-xrandr -no-xshape -no-xsync)
 
 		# always enable session management support: it doesn't need extra deps
 		# at configure time and turning it off is dangerous, see bug 518262
@@ -685,9 +641,6 @@ qt5_base_configure() {
 		# disable libinput-based generic plugin by default, override in qtgui
 		-no-libinput
 
-		# disable gstreamer by default, override in qtmultimedia
-		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-gstreamer)
-
 		# respect system proxies by default: it's the most natural
 		# setting, and it'll become the new upstream default in 5.8
 		-system-proxies
@@ -696,7 +649,7 @@ qt5_base_configure() {
 		-no-warnings-are-errors
 
 		# enable in respective modules to avoid poisoning QT.global_private.enabled_features
-		$([[ ${QT5_MINOR_VERSION} -ge 9 ]] && echo -no-gui -no-widgets)
+		-no-gui -no-widgets
 
 		# module-specific options
 		"${myconf[@]}"
@@ -707,11 +660,9 @@ qt5_base_configure() {
 	einfo "Configuring with: ${conf[@]}"
 	"${S}"/configure "${conf[@]}" || die "configure failed"
 
-	if [[ ${QT5_MINOR_VERSION} -ge 8 ]]; then
-		# a forwarding header is no longer created since 5.8, causing the system
-		# config to always be used. bug 599636
-		cp src/corelib/global/qconfig.h include/QtCore/ || die
-	fi
+	# a forwarding header is no longer created since 5.8, causing the system
+	# config to always be used. bug 599636
+	cp src/corelib/global/qconfig.h include/QtCore/ || die
 
 	popd >/dev/null || die
 
@@ -795,7 +746,7 @@ qt5_install_module_config() {
 
 	> "${T}"/${PN}-qconfig.h
 	> "${T}"/${PN}-qconfig.pri
-	[[ ${QT5_MINOR_VERSION} -ge 9 ]] && > "${T}"/${PN}-qmodule.pri
+	> "${T}"/${PN}-qmodule.pri
 
 	# generate qconfig_{add,remove} and ${PN}-qconfig.h
 	for x in "${QT5_GENTOO_CONFIG[@]}"; do
@@ -829,32 +780,30 @@ qt5_install_module_config() {
 		doins "${T}"/${PN}-qconfig.pri
 	)
 
-	if [[ ${QT5_MINOR_VERSION} -ge 9 ]]; then
-		# generate qprivateconfig
-		for x in "${QT5_GENTOO_PRIVATE_CONFIG[@]}"; do
-			local flag=${x%%:*}
-			x=${x#${flag}:}
-			local feature=${x%%:*}
-			x=${x#${feature}:}
+	# generate qprivateconfig
+	for x in "${QT5_GENTOO_PRIVATE_CONFIG[@]}"; do
+		local flag=${x%%:*}
+		x=${x#${flag}:}
+		local feature=${x%%:*}
+		x=${x#${feature}:}
 
-			if [[ -z ${flag} ]] || { [[ ${flag} != '!' ]] && use ${flag}; }; then
-				[[ -n ${feature} ]] && qprivateconfig_add+=" ${feature}"
-			else
-				[[ -n ${feature} ]] && qprivateconfig_remove+=" ${feature}"
-			fi
-		done
+		if [[ -z ${flag} ]] || { [[ ${flag} != '!' ]] && use ${flag}; }; then
+			[[ -n ${feature} ]] && qprivateconfig_add+=" ${feature}"
+		else
+			[[ -n ${feature} ]] && qprivateconfig_remove+=" ${feature}"
+		fi
+	done
 
-		# generate and install ${PN}-qmodule.pri
-		[[ -n ${qprivateconfig_add} ]] && echo "QT.global_private.enabled_features = ${qprivateconfig_add}" >> "${T}"/${PN}-qmodule.pri
-		[[ -n ${qprivateconfig_remove} ]] && echo "QT.global_private.disabled_features = ${qprivateconfig_remove}" >> "${T}"/${PN}-qmodule.pri
-		[[ -s ${T}/${PN}-qmodule.pri ]] && (
-			insinto "${QT5_ARCHDATADIR#${EPREFIX}}"/mkspecs/gentoo
-			doins "${T}"/${PN}-qmodule.pri
-		)
-	fi
+	# generate and install ${PN}-qmodule.pri
+	[[ -n ${qprivateconfig_add} ]] && echo "QT.global_private.enabled_features = ${qprivateconfig_add}" >> "${T}"/${PN}-qmodule.pri
+	[[ -n ${qprivateconfig_remove} ]] && echo "QT.global_private.disabled_features = ${qprivateconfig_remove}" >> "${T}"/${PN}-qmodule.pri
+	[[ -s ${T}/${PN}-qmodule.pri ]] && (
+		insinto "${QT5_ARCHDATADIR#${EPREFIX}}"/mkspecs/gentoo
+		doins "${T}"/${PN}-qmodule.pri
+	)
 
 	# install the original {qconfig,qmodule}.pri from qtcore
-	[[ ${PN} == qtcore && ${QT5_MINOR_VERSION} -ge 9 ]] && (
+	[[ ${PN} == qtcore ]] && (
 		insinto "${QT5_ARCHDATADIR#${EPREFIX}}"/mkspecs/gentoo
 		newins "${D}${QT5_ARCHDATADIR}"/mkspecs/qconfig.pri qconfig-qtcore.pri
 		newins "${D}${QT5_ARCHDATADIR}"/mkspecs/qmodule.pri qmodule-qtcore.pri
@@ -912,60 +861,58 @@ qt5_regenerate_global_configs() {
 		ewarn "${qconfig_pri} does not exist or is not a regular file"
 	fi
 
-	if [[ ${QT5_MINOR_VERSION} -ge 9 ]]; then
-		einfo "Updating QT.global_private in qmodule.pri"
+	einfo "Updating QT.global_private in qmodule.pri"
 
-		local qmodule_pri=${ROOT%/}${QT5_ARCHDATADIR}/mkspecs/qmodule.pri
-		local qmodule_pri_orig=${ROOT%/}${QT5_ARCHDATADIR}/mkspecs/gentoo/qmodule-qtcore.pri
-		if [[ -f ${qmodule_pri} && -f ${qmodule_pri_orig} ]]; then
-			local x
-			local qprivateconfig_enabled= qprivateconfig_disabled=
-			local qprivateconfig_orig_enabled= qprivateconfig_orig_disabled=
-			local new_qprivateconfig_enabled= new_qprivateconfig_disabled=
+	local qmodule_pri=${ROOT%/}${QT5_ARCHDATADIR}/mkspecs/qmodule.pri
+	local qmodule_pri_orig=${ROOT%/}${QT5_ARCHDATADIR}/mkspecs/gentoo/qmodule-qtcore.pri
+	if [[ -f ${qmodule_pri} && -f ${qmodule_pri_orig} ]]; then
+		local x
+		local qprivateconfig_enabled= qprivateconfig_disabled=
+		local qprivateconfig_orig_enabled= qprivateconfig_orig_disabled=
+		local new_qprivateconfig_enabled= new_qprivateconfig_disabled=
 
-			# generate lists of QT.global_private.{dis,en}abled_features
-			qprivateconfig_orig_enabled="$(sed -n 's/^QT.global_private.enabled_features\s=\s*//p' "${qmodule_pri_orig}")"
-			qprivateconfig_orig_disabled="$(sed -n 's/^QT.global_private.disabled_features\s=\s*//p' "${qmodule_pri_orig}")"
-			eshopts_push -s nullglob
-			for x in "${ROOT%/}${QT5_ARCHDATADIR}"/mkspecs/gentoo/*-qmodule.pri; do
-				qprivateconfig_enabled+=" $(sed -n 's/^QT.global_private.enabled_features\s=\s*//p' "${x}")"
-				qprivateconfig_disabled+=" $(sed -n 's/^QT.global_private.disabled_features\s=\s*//p' "${x}")"
-			done
-			eshopts_pop
+		# generate lists of QT.global_private.{dis,en}abled_features
+		qprivateconfig_orig_enabled="$(sed -n 's/^QT.global_private.enabled_features\s=\s*//p' "${qmodule_pri_orig}")"
+		qprivateconfig_orig_disabled="$(sed -n 's/^QT.global_private.disabled_features\s=\s*//p' "${qmodule_pri_orig}")"
+		eshopts_push -s nullglob
+		for x in "${ROOT%/}${QT5_ARCHDATADIR}"/mkspecs/gentoo/*-qmodule.pri; do
+			qprivateconfig_enabled+=" $(sed -n 's/^QT.global_private.enabled_features\s=\s*//p' "${x}")"
+			qprivateconfig_disabled+=" $(sed -n 's/^QT.global_private.disabled_features\s=\s*//p' "${x}")"
+		done
+		eshopts_pop
 
-			# anything enabled is enabled, but anything disabled is
-			# only disabled if it isn't enabled somewhere else.
-			# this is because we need to forcibly disable some stuff
-			# in qtcore to support split qtbase.
-			new_qprivateconfig_enabled=${qprivateconfig_enabled}
-			for x in ${qprivateconfig_disabled}; do
-				if ! has "${x}" ${qprivateconfig_enabled}; then
-					new_qprivateconfig_disabled+=" ${x}"
-				fi
-			done
+		# anything enabled is enabled, but anything disabled is
+		# only disabled if it isn't enabled somewhere else.
+		# this is because we need to forcibly disable some stuff
+		# in qtcore to support split qtbase.
+		new_qprivateconfig_enabled=${qprivateconfig_enabled}
+		for x in ${qprivateconfig_disabled}; do
+			if ! has "${x}" ${qprivateconfig_enabled}; then
+				new_qprivateconfig_disabled+=" ${x}"
+			fi
+		done
 
-			# check all items from the original qtcore qmodule.pri,
-			# and add them to the appropriate list if not overridden
-			# elsewhere
-			for x in ${qprivateconfig_orig_enabled}; do
-				if ! has "${x}" ${new_qprivateconfig_enabled} ${new_qprivateconfig_disabled}; then
-					new_qprivateconfig_enabled+=" ${x}"
-				fi
-			done
-			for x in ${qprivateconfig_orig_disabled}; do
-				if ! has "${x}" ${new_qprivateconfig_enabled} ${new_qprivateconfig_disabled}; then
-					new_qprivateconfig_disabled+=" ${x}"
-				fi
-			done
+		# check all items from the original qtcore qmodule.pri,
+		# and add them to the appropriate list if not overridden
+		# elsewhere
+		for x in ${qprivateconfig_orig_enabled}; do
+			if ! has "${x}" ${new_qprivateconfig_enabled} ${new_qprivateconfig_disabled}; then
+				new_qprivateconfig_enabled+=" ${x}"
+			fi
+		done
+		for x in ${qprivateconfig_orig_disabled}; do
+			if ! has "${x}" ${new_qprivateconfig_enabled} ${new_qprivateconfig_disabled}; then
+				new_qprivateconfig_disabled+=" ${x}"
+			fi
+		done
 
-			# now replace the existing QT.global_private.{dis,en}abled_features
-			# with the generated list
-			sed \
-				-e "s/^QT.global_private.enabled_features\s*=.*/QT.global_private.enabled_features =${new_qprivateconfig_enabled}/" \
-				-e "s/^QT.global_private.disabled_features\s*=.*/QT.global_private.disabled_features =${new_qprivateconfig_disabled}/" \
-				-i "${qmodule_pri}" || eerror "Failed to sed QT.global_private.enabled_features in ${qmodule_pri}"
-		else
-			ewarn "${qmodule_pri} or ${qmodule_pri_orig} does not exist or is not a regular file"
-		fi
+		# now replace the existing QT.global_private.{dis,en}abled_features
+		# with the generated list
+		sed \
+			-e "s/^QT.global_private.enabled_features\s*=.*/QT.global_private.enabled_features =${new_qprivateconfig_enabled}/" \
+			-e "s/^QT.global_private.disabled_features\s*=.*/QT.global_private.disabled_features =${new_qprivateconfig_disabled}/" \
+			-i "${qmodule_pri}" || eerror "Failed to sed QT.global_private.enabled_features in ${qmodule_pri}"
+	else
+		ewarn "${qmodule_pri} or ${qmodule_pri_orig} does not exist or is not a regular file"
 	fi
 }
