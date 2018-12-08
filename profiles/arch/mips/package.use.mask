@@ -41,7 +41,6 @@ app-shells/bash-completion test
 # Mart Raudsepp <leio@gentoo.org> (27 May 2017)
 # app-pda/libimobiledevice, app-pda/libplist and co not tested
 sys-power/upower ios
-sys-power/upower-pm-utils ios
 gnome-base/gvfs ios
 
 # Mart Raudsepp <leio@gentoo.org> (27 May 2017)
