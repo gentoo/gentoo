@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ IUSE="upower"
 
 RDEPEND=">=xfce-base/libxfce4ui-4.12:=[gtk3(+)]
 	>=xfce-base/xfce4-panel-4.12:=
-	upower? ( || ( >=sys-power/upower-0.9.23 sys-power/upower-pm-utils ) )"
+	upower? ( >=sys-power/upower-0.9.23 )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig"
