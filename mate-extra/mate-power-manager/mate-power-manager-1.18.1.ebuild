@@ -33,7 +33,7 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.70:0
 	x11-libs/pango:0
 	applet? ( >=mate-base/mate-panel-1.17.0 )
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3:0 )
-	>=sys-power/upower-0.9.23:= 
+	>=sys-power/upower-0.9.23:=
 	systemd? ( sys-apps/systemd )
 	!systemd? ( >=sys-auth/consolekit-0.9.2 )"
 
