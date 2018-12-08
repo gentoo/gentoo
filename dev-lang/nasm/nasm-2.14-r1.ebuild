@@ -34,6 +34,7 @@ S=${WORKDIR}/${P/_}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.13.03-bsd-cp-doc.patch
+	"${FILESDIR}"/${P}-default-path-BR-3392529.patch
 )
 
 src_configure() {
