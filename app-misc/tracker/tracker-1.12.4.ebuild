@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -64,7 +64,7 @@ RDEPEND="
 	iptc? ( media-libs/libiptcdata )
 	iso? ( >=sys-libs/libosinfo-0.2.9:= )
 	jpeg? ( virtual/jpeg:0 )
-	upower? ( || ( >=sys-power/upower-0.9 sys-power/upower-pm-utils ) )
+	upower? ( >=sys-power/upower-0.9 )
 	mp3? ( >=media-libs/taglib-1.6 )
 	networkmanager? ( >=net-misc/networkmanager-0.8:= )
 	pdf? (
