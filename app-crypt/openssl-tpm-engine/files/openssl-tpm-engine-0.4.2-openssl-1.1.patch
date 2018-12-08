@@ -1,0 +1,754 @@
+diff -ruN a/configure.in b/configure.in
+--- a/configure.in	2012-09-26 16:56:54.000000000 +0200
++++ b/configure.in	2018-12-08 23:44:45.734604908 +0100
+@@ -48,6 +48,25 @@
+ AC_PROG_CC
+ AC_PROG_LIBTOOL
+ 
++AC_MSG_CHECKING([for OpenSSL 1.1])
++AC_TRY_COMPILE(
++    [#include <openssl/opensslv.h>],
++    [
++	    #if OPENSSL_VERSION_NUMBER < 0x1010000fL
++	    #	error "old ssl"
++	    #else
++	    #   warning "new openssl"
++	    #endif
++    ],
++    [AC_MSG_RESULT(yes)
++    openssl_11=true
++    ],
++    [AC_MSG_RESULT(no)
++    openssl_11=false
++    ]
++)
++AM_CONDITIONAL([OPENSSL_11], [test x$openssl_11 = xtrue])
++
+ CFLAGS="$CFLAGS -Wall"
+ AC_SUBST(CFLAGS)
+ 
+diff -ruN a/create_tpm_key.c b/create_tpm_key.c
+--- a/create_tpm_key.c	2011-01-20 19:24:04.000000000 +0100
++++ b/create_tpm_key.c	2018-12-08 23:43:04.496144069 +0100
+@@ -46,6 +46,8 @@
+ #include <trousers/tss.h>
+ #include <trousers/trousers.h>
+ 
++#include "ssl_compat.h"
++
+ #define print_error(a,b) \
+ 	fprintf(stderr, "%s:%d %s result: 0x%x (%s)\n", __FILE__, __LINE__, \
+ 		a, b, Trspi_Error_String(b))
+@@ -115,14 +117,19 @@
+ openssl_get_modulus_and_prime(RSA *rsa, unsigned int *size_n, unsigned char *n,
+ 			      unsigned int *size_p, unsigned char *p)
+ {
++	const BIGNUM *bn_n = NULL, *bn_p = NULL;
++
++	RSA_get0_key(rsa, &bn_n, NULL, NULL);
++	RSA_get0_factors(rsa, &bn_p, NULL);
++
+ 	/* get the modulus from the RSA object */
+-	if ((*size_n = BN_bn2bin(rsa->n, n)) <= 0) {
++	if ((*size_n = BN_bn2bin(bn_n, n)) <= 0) {
+ 		openssl_print_errors();
+ 		return -1;
+ 	}
+ 
+ 	/* get one of the primes from the RSA object */
+-	if ((*size_p = BN_bn2bin(rsa->p, p)) <= 0) {
++	if ((*size_p = BN_bn2bin(bn_p, p)) <= 0) {
+ 		openssl_print_errors();
+ 		return -1;
+ 	}
+diff -ruN a/e_tpm.c b/e_tpm.c
+--- a/e_tpm.c	2012-09-19 19:57:45.000000000 +0200
++++ b/e_tpm.c	2018-12-08 23:43:04.496144069 +0100
+@@ -19,7 +19,6 @@
+ #include <string.h>
+ 
+ #include <openssl/crypto.h>
+-#include <openssl/dso.h>
+ #include <openssl/engine.h>
+ #include <openssl/evp.h>
+ #include <openssl/objects.h>
+@@ -37,6 +36,7 @@
+ #include <trousers/trousers.h>  // XXX DEBUG
+ 
+ #include "e_tpm.h"
++#include "ssl_compat.h"
+ 
+ //#define DLOPEN_TSPI
+ 
+@@ -66,7 +66,7 @@
+ /* random functions */
+ static int tpm_rand_bytes(unsigned char *, int);
+ static int tpm_rand_status(void);
+-static void tpm_rand_seed(const void *, int);
++static RAND_SEED_RET_TYPE tpm_rand_seed(const void *, int);
+ 
+ /* The definitions for control commands specific to this engine */
+ #define TPM_CMD_SO_PATH		ENGINE_CMD_BASE
+@@ -88,24 +88,8 @@
+ 	{0, NULL, NULL, 0}
+ };
+ 
+-#ifndef OPENSSL_NO_RSA
+-static RSA_METHOD tpm_rsa = {
+-	"TPM RSA method",
+-	tpm_rsa_pub_enc,
+-	tpm_rsa_pub_dec,
+-	tpm_rsa_priv_enc,
+-	tpm_rsa_priv_dec,
+-	NULL, /* set in tpm_engine_init */
+-	BN_mod_exp_mont,
+-	tpm_rsa_init,
+-	tpm_rsa_finish,
+-	(RSA_FLAG_SIGN_VER | RSA_FLAG_NO_BLINDING),
+-	NULL,
+-	NULL, /* sign */
+-	NULL, /* verify */
+-	tpm_rsa_keygen
+-};
+-#endif
++static RSA_METHOD *tpm_rsa;
++static const RSA_METHOD *ssl_rsa;
+ 
+ static RAND_METHOD tpm_rand = {
+ 	/* "TPM RAND method", */
+@@ -195,14 +179,44 @@
+ #define Tspi_Policy_AssignToObject p_tspi_Policy_AssignToObject
+ #endif /* DLOPEN_TSPI */
+ 
++static int setup_rsa_method()
++{
++	tpm_rsa = RSA_meth_new("TPM RSA method", 0);
++	if (tpm_rsa == NULL)
++		return 0;
++
++	if (!RSA_meth_set_flags(tpm_rsa,
++				RSA_FLAG_SIGN_VER | RSA_FLAG_NO_BLINDING) ||
++	    !RSA_meth_set_pub_enc(tpm_rsa, tpm_rsa_pub_enc) ||
++	    !RSA_meth_set_pub_dec(tpm_rsa, tpm_rsa_pub_dec) ||
++	    !RSA_meth_set_priv_enc(tpm_rsa, tpm_rsa_priv_enc) ||
++	    !RSA_meth_set_priv_dec(tpm_rsa, tpm_rsa_priv_dec) ||
++	    !RSA_meth_set_bn_mod_exp(tpm_rsa, BN_mod_exp_mont) ||
++	    !RSA_meth_set_init(tpm_rsa, tpm_rsa_init) ||
++	    !RSA_meth_set_finish(tpm_rsa, tpm_rsa_finish) ||
++	    !RSA_meth_set_keygen(tpm_rsa, tpm_rsa_keygen))
++	{
++		RSA_meth_free(tpm_rsa);
++		tpm_rsa = NULL;
++		return 0;
++	}
++
++	return 1;
++}
++
+ /* This internal function is used by ENGINE_tpm() and possibly by the
+  * "dynamic" ENGINE support too */
+ static int bind_helper(ENGINE * e)
+ {
++	if (!setup_rsa_method())
++		return 0;
++
++	ssl_rsa = RSA_PKCS1_OpenSSL();
++
+ 	if (!ENGINE_set_id(e, engine_tpm_id) ||
+ 	    !ENGINE_set_name(e, engine_tpm_name) ||
+ #ifndef OPENSSL_NO_RSA
+-	    !ENGINE_set_RSA(e, &tpm_rsa) ||
++	    !ENGINE_set_RSA(e, tpm_rsa) ||
+ #endif
+ 	    !ENGINE_set_RAND(e, &tpm_rand) ||
+ 	    !ENGINE_set_destroy_function(e, tpm_engine_destroy) ||
+@@ -399,7 +413,7 @@
+ 		goto err;
+ 	}
+ 
+-	tpm_rsa.rsa_mod_exp = RSA_PKCS1_SSLeay()->rsa_mod_exp;
++	RSA_meth_set_mod_exp(tpm_rsa, RSA_meth_get_mod_exp(ssl_rsa));
+ 
+ 	return 1;
+ err:
+@@ -491,6 +505,8 @@
+ 	}
+ 	tpm_dso = NULL;
+ #endif
++	RSA_meth_free(tpm_rsa);
++	tpm_rsa = NULL;
+ 	return 1;
+ }
+ 
+@@ -500,6 +516,7 @@
+ 	UINT32 pubkey_len, encScheme, sigScheme;
+ 	BYTE *pubkey;
+ 	struct rsa_app_data *app_data;
++	BIGNUM *e = NULL, *n = NULL;
+ 
+ 	DBG("%s", __FUNCTION__);
+ 
+@@ -525,7 +542,7 @@
+ 		return 0;
+ 	}
+ 
+-	if ((rsa->n = BN_bin2bn(pubkey, pubkey_len, rsa->n)) == NULL) {
++	if ((n = BN_bin2bn(pubkey, pubkey_len, n)) == NULL) {
+ 		Tspi_Context_FreeMemory(hContext, pubkey);
+ 		TSSerr(TPM_F_TPM_FILL_RSA_OBJECT, TPM_R_BN_CONVERSION_FAILED);
+ 		return 0;
+@@ -534,23 +551,24 @@
+ 	Tspi_Context_FreeMemory(hContext, pubkey);
+ 
+ 	/* set e in the RSA object */
+-	if (!rsa->e && ((rsa->e = BN_new()) == NULL)) {
++	if (((e = BN_new()) == NULL)) {
+ 		TSSerr(TPM_F_TPM_FILL_RSA_OBJECT, ERR_R_MALLOC_FAILURE);
+-		return 0;
++		goto err;
+ 	}
+ 
+-	if (!BN_set_word(rsa->e, 65537)) {
++	if (!BN_set_word(e, 65537)) {
+ 		TSSerr(TPM_F_TPM_FILL_RSA_OBJECT, TPM_R_REQUEST_FAILED);
+-		BN_free(rsa->e);
+-		rsa->e = NULL;
+-		return 0;
++		goto err;
+ 	}
+ 
+ 	if ((app_data = OPENSSL_malloc(sizeof(struct rsa_app_data))) == NULL) {
+ 		TSSerr(TPM_F_TPM_FILL_RSA_OBJECT, ERR_R_MALLOC_FAILURE);
+-		BN_free(rsa->e);
+-		rsa->e = NULL;
+-		return 0;
++		goto err;
++	}
++
++	if (RSA_set0_key(rsa, n, e, NULL) == 0) {
++		TSSerr(TPM_F_TPM_FILL_RSA_OBJECT, TPM_R_REQUEST_FAILED);
++		goto err;
+ 	}
+ 
+ 	DBG("Setting hKey(0x%x) in RSA object", hKey);
+@@ -564,6 +582,12 @@
+ 	RSA_set_ex_data(rsa, ex_app_data, app_data);
+ 
+ 	return 1;
++err:
++	if (e)
++		BN_free(e);
++	if (n)
++		BN_free(n);
++	return 0;
+ }
+ 
+ static EVP_PKEY *tpm_engine_load_key(ENGINE *e, const char *key_id,
+@@ -681,7 +705,6 @@
+ 		TSSerr(TPM_F_TPM_ENGINE_LOAD_KEY, ERR_R_MALLOC_FAILURE);
+ 		return NULL;
+ 	}
+-	pkey->type = EVP_PKEY_RSA;
+ 
+ 	if ((rsa = RSA_new()) == NULL) {
+ 		EVP_PKEY_free(pkey);
+@@ -689,10 +712,8 @@
+ 		TSSerr(TPM_F_TPM_ENGINE_LOAD_KEY, ERR_R_MALLOC_FAILURE);
+ 		return NULL;
+ 	}
+-	rsa->meth = &tpm_rsa;
+-	/* call our local init function here */
+-	rsa->meth->init(rsa);
+-	pkey->pkey.rsa = rsa;
++
++	RSA_set_method(rsa, tpm_rsa);
+ 
+ 	if (!fill_out_rsa_object(rsa, hKey)) {
+ 		EVP_PKEY_free(pkey);
+@@ -841,8 +862,8 @@
+ 
+ 	DBG("%s", __FUNCTION__);
+ 
+-	if ((rv = RSA_PKCS1_SSLeay()->rsa_pub_dec(flen, from, to, rsa,
+-						  padding)) < 0) {
++	if ((rv = RSA_meth_get_pub_dec(ssl_rsa)(
++					flen, from, to, rsa, padding)) < 0) {
+ 		TSSerr(TPM_F_TPM_RSA_PUB_DEC, TPM_R_REQUEST_FAILED);
+ 		return 0;
+ 	}
+@@ -867,7 +888,7 @@
+ 	if (!app_data) {
+ 		DBG("No app data found for RSA object %p. Calling software.",
+ 		    rsa);
+-		if ((rv = RSA_PKCS1_SSLeay()->rsa_priv_dec(flen, from, to, rsa,
++		if ((rv = RSA_meth_get_priv_dec(ssl_rsa)(flen, from, to, rsa,
+ 						padding)) < 0) {
+ 			TSSerr(TPM_F_TPM_RSA_PRIV_DEC, TPM_R_REQUEST_FAILED);
+ 		}
+@@ -908,7 +929,7 @@
+ 	if ((result = Tspi_SetAttribData(app_data->hEncData,
+ 					   TSS_TSPATTRIB_ENCDATA_BLOB,
+ 					   TSS_TSPATTRIB_ENCDATABLOB_BLOB,
+-					   in_len, from))) {
++					   in_len, (BYTE*)from))) {
+ 		TSSerr(TPM_F_TPM_RSA_PRIV_DEC, TPM_R_REQUEST_FAILED);
+ 		return 0;
+ 	}
+@@ -944,7 +965,7 @@
+ 	if (!app_data) {
+ 		DBG("No app data found for RSA object %p. Calling software.",
+ 		    rsa);
+-		if ((rv = RSA_PKCS1_SSLeay()->rsa_pub_enc(flen, from, to, rsa,
++		if ((rv = RSA_meth_get_pub_enc(ssl_rsa)(flen, from, to, rsa,
+ 						padding)) < 0) {
+ 			TSSerr(TPM_F_TPM_RSA_PUB_ENC, TPM_R_REQUEST_FAILED);
+ 		}
+@@ -1010,7 +1031,7 @@
+ 	    app_data->hEncData, in_len);
+ 
+ 	if ((result = Tspi_Data_Bind(app_data->hEncData, app_data->hKey,
+-				       in_len, from))) {
++				       in_len, (BYTE*)from))) {
+ 		TSSerr(TPM_F_TPM_RSA_PUB_ENC, TPM_R_REQUEST_FAILED);
+ 		DBG("result = 0x%x (%s)", result,
+ 		    Trspi_Error_String(result));
+@@ -1051,8 +1072,8 @@
+ 	if (!app_data) {
+ 		DBG("No app data found for RSA object %p. Calling software.",
+ 		    rsa);
+-		if ((rv = RSA_PKCS1_SSLeay()->rsa_priv_enc(flen, from, to, rsa,
+-							   padding)) < 0) {
++		if ((rv = RSA_meth_get_priv_enc(ssl_rsa)(flen, from, to, rsa,
++						padding)) < 0) {
+ 			TSSerr(TPM_F_TPM_RSA_PRIV_ENC, TPM_R_REQUEST_FAILED);
+ 		}
+ 
+@@ -1094,7 +1115,8 @@
+ 		return 0;
+ 	}
+ 
+-	if ((result = Tspi_Hash_SetHashValue(app_data->hHash, flen, from))) {
++	if ((result = Tspi_Hash_SetHashValue(
++					app_data->hHash, flen, (BYTE*)from))) {
+ 		TSSerr(TPM_F_TPM_RSA_PRIV_ENC, TPM_R_REQUEST_FAILED);
+ 		return 0;
+ 	}
+@@ -1137,13 +1159,6 @@
+ 		return 0;
+ 	}
+ 
+-	/* set e in the RSA object as done in the built-in openssl function */
+-	if (!rsa->e && ((rsa->e = BN_new()) == NULL)) {
+-		TSSerr(TPM_F_TPM_RSA_KEYGEN, ERR_R_MALLOC_FAILURE);
+-		return 0;
+-	}
+-	BN_copy(rsa->e, e);
+-
+ 	switch (bits) {
+ 		case 512:
+ 			initFlags |= TSS_KEY_SIZE_512;
+@@ -1260,7 +1275,7 @@
+ 	return 1;
+ }
+ 
+-static void tpm_rand_seed(const void *buf, int num)
++static RAND_SEED_RET_TYPE tpm_rand_seed(const void *buf, int num)
+ {
+ 	TSS_RESULT result;
+ 	UINT32 total_stirred = 0;
+@@ -1270,19 +1285,21 @@
+ 	/* There's a hard maximum of 255 bytes allowed to be sent to the TPM on a TPM_StirRandom
+ 	 * call.  Use all the bytes in  buf, but break them in to 255 or smaller byte chunks */
+ 	while (num - total_stirred > 255) {
+-		if ((result = Tspi_TPM_StirRandom(hTPM, 255, buf + total_stirred))) {
++		if ((result = Tspi_TPM_StirRandom(hTPM, 255,
++						((BYTE*)buf) + total_stirred))) {
+ 			TSSerr(TPM_F_TPM_RAND_SEED, TPM_R_REQUEST_FAILED);
+-			return;
++			return RAND_SEED_BAD_RETURN;
+ 		}
+ 
+ 		total_stirred += 255;
+ 	}
+ 
+-	if ((result = Tspi_TPM_StirRandom(hTPM, num - total_stirred, buf + total_stirred))) {
++	if ((result = Tspi_TPM_StirRandom(hTPM, num - total_stirred,
++					((BYTE*)buf) + total_stirred))) {
+ 		TSSerr(TPM_F_TPM_RAND_SEED, TPM_R_REQUEST_FAILED);
+ 	}
+ 
+-	return;
++	return RAND_SEED_GOOD_RETURN;
+ }
+ 
+ /* This stuff is needed if this ENGINE is being compiled into a self-contained
+diff -ruN a/e_tpm_err.c b/e_tpm_err.c
+--- a/e_tpm_err.c	2011-01-20 19:24:04.000000000 +0100
++++ b/e_tpm_err.c	2018-12-08 23:43:04.496144069 +0100
+@@ -18,7 +18,6 @@
+ #include <stdio.h>
+ 
+ #include <openssl/err.h>
+-#include <openssl/dso.h>
+ #include <openssl/engine.h>
+ 
+ #include <tss/platform.h>
+diff -ruN a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2012-07-13 17:23:26.000000000 +0200
++++ b/Makefile.am	2018-12-08 23:44:45.734604908 +0100
+@@ -2,12 +2,32 @@
+ 
+ EXTRA_DIST = README  openssl.cnf.sample
+ 
+-openssl_engine_LTLIBRARIES=libtpm.la
+ bin_PROGRAMS=create_tpm_key
+ openssl_enginedir=@libdir@/openssl/engines
+ 
+-libtpm_la_LIBADD=-lcrypto -lc -ltspi
+-libtpm_la_SOURCES=e_tpm.c e_tpm.h e_tpm_err.c
++engine_libs=-lcrypto -lc -ltspi
++engine_sources=e_tpm.c e_tpm.h e_tpm_err.c
++engine_ldflags=-avoid-version -module -shared -export-dynamic
++
++# in OpenSSL 1.1 engine modules have been stripped of the lib prefix so we
++# need to adust the library name accordingly.
++#
++# sadly there seems to be no elegant way to change the library name based on a
++# configure check outcome, so we have to explicitly define both variants like
++# this
++if OPENSSL_11
++engine_base=tpm.la
++tpm_la_LIBADD=$(engine_libs)
++tpm_la_LDFLAGS=$(engine_ldflags)
++tpm_la_SOURCES=$(engine_sources)
++else
++engine_base=libtpm.la
++libtpm_la_LIBADD=$(engine_libs)
++libtpm_la_LDFLAGS=$(engine_ldflags)
++libtpm_la_SOURCES=$(engine_sources)
++endif
++
++openssl_engine_LTLIBRARIES=$(engine_base)
+ 
+ create_tpm_key_SOURCES=create_tpm_key.c
+ create_tpm_key_LDADD=-ltspi
+diff -ruN a/Makefile.am.orig b/Makefile.am.orig
+--- a/Makefile.am.orig	1970-01-01 01:00:00.000000000 +0100
++++ b/Makefile.am.orig	2018-12-08 23:44:27.794875232 +0100
+@@ -0,0 +1,14 @@
++SUBDIRS=. test
++
++EXTRA_DIST = README  openssl.cnf.sample
++
++openssl_engine_LTLIBRARIES=libtpm.la
++bin_PROGRAMS=create_tpm_key
++openssl_enginedir=@libdir@/openssl/engines
++
++libtpm_la_LIBADD=-lcrypto -lc -ltspi
++libtpm_la_SOURCES=e_tpm.c e_tpm.h e_tpm_err.c
++libtpm_la_LDFLAGS=-avoid-version -module -shared -export-dynamic
++
++create_tpm_key_SOURCES=create_tpm_key.c
++create_tpm_key_LDADD=-ltspi
+diff -ruN a/ssl_compat.h b/ssl_compat.h
+--- a/ssl_compat.h	1970-01-01 01:00:00.000000000 +0100
++++ b/ssl_compat.h	2018-12-08 23:43:04.496144069 +0100
+@@ -0,0 +1,243 @@
++#ifndef _SSL_COMPAT_H
++#define _SSL_COMPAT_H
++
++// C std. headers
++#include <stdlib.h>
++
++// OpenSSL
++#include <openssl/rsa.h>
++#include <openssl/opensslv.h>
++
++/*
++ * Matthias Gerstner
++ * Copyright (C) SUSE Linux GmbH 2017
++ * mgerstner@suse.de
++ *
++ * This header provides a compatibility layer for being able to compile
++ * against OpenSSL 1.0 as well as OpenSSL 1.1 versions. In OpenSSL 1.1 various
++ * data structures have been made opaque and can no longer be accessed
++ * directly.
++ *
++ * This header provides wrapper functions that do the right thing
++ */
++
++#if OPENSSL_VERSION_NUMBER >= 0x1010000fL
++#	define USE_OPENSSL_OPAQUE_API
++#	define HAVE_OPENSSL_110
++// this flag was removed in 1.1.0, no longer needed, see commit OpenSSL
++// 19c6d3ea2d3b4e0ad3e978e42cc7cbdf0c09891f
++#	define RSA_FLAG_SIGN_VER 0
++#endif
++
++/*
++ * the RAND_METHOD seed function has got an error return type in OpenSSL
++ * 1.1.0.
++ *
++ * these defines help dealing with it.
++ */
++#ifdef HAVE_OPENSSL_110
++#	define RAND_SEED_RET_TYPE int
++#	define RAND_SEED_GOOD_RETURN 1
++#	define RAND_SEED_BAD_RETURN 0
++#else
++#	define RAND_SEED_RET_TYPE void
++#	define RAND_SEED_GOOD_RETURN
++#	define RAND_SEED_BAD_RETURN
++#endif
++
++/*
++ * callback function pointer typedefs
++ */
++
++typedef int (*func_rsa_pub_enc)(int, const unsigned char *, unsigned char *,
++		RSA *, int);
++typedef int (*func_rsa_pub_dec)(int, const unsigned char *, unsigned char *,
++		RSA *, int);
++typedef int (*func_rsa_priv_enc)(int, const unsigned char *, unsigned char *,
++		RSA *, int);
++typedef int (*func_rsa_priv_dec)(int, const unsigned char *, unsigned char *,
++		RSA *, int);
++typedef int (*func_rsa_mod_exp)(BIGNUM *r0, const BIGNUM *I, RSA *rsa,
++		BN_CTX *ctx);
++typedef int (*func_rsa_bn_mod_exp)(BIGNUM *, const BIGNUM *, const BIGNUM *,
++	       const BIGNUM *, BN_CTX *, BN_MONT_CTX *);
++typedef int (*func_rsa_init)(RSA *rsa);
++typedef int (*func_rsa_finish)(RSA *rsa);
++typedef int (*func_rsa_keygen)(RSA *, int, BIGNUM *, BN_GENCB *);
++
++/*
++ * wrapper functions which provide the OpenSSL 1.1 accessor functions to
++ * OpenSSL 1.0.
++ */
++
++#ifndef USE_OPENSSL_OPAQUE_API
++RSA_METHOD* RSA_meth_new(const char *name, int flags)
++{
++	RSA_METHOD *ret = malloc(sizeof(RSA_METHOD));
++	if (ret) {
++		ret->name = name;
++		ret->flags = flags;
++	}
++
++	return ret;
++}
++
++void RSA_meth_free(RSA_METHOD *meth)
++{
++	free(meth);
++}
++
++int RSA_meth_set_flags(RSA_METHOD *method, int flags)
++{
++	method->flags = flags;
++	return 1;
++}
++
++int RSA_meth_set_pub_enc(RSA_METHOD *method, func_rsa_pub_enc pub_enc)
++{
++	method->rsa_pub_enc = pub_enc;
++	return 1;
++}
++
++func_rsa_pub_enc RSA_meth_get_pub_enc(const RSA_METHOD *method)
++{
++	return method->rsa_pub_enc;
++}
++
++int RSA_meth_set_pub_dec(RSA_METHOD *method, func_rsa_pub_dec pub_dec)
++{
++	method->rsa_pub_dec = pub_dec;
++	return 1;
++}
++
++func_rsa_pub_dec RSA_meth_get_pub_dec(const RSA_METHOD *method)
++{
++	return method->rsa_pub_dec;
++}
++
++int RSA_meth_set_priv_enc(RSA_METHOD *method, func_rsa_priv_enc priv_enc)
++{
++	method->rsa_priv_enc = priv_enc;
++	return 1;
++}
++
++func_rsa_priv_enc RSA_meth_get_priv_enc(const RSA_METHOD *method)
++{
++	return method->rsa_priv_enc;
++}
++
++int RSA_meth_set_priv_dec(RSA_METHOD *method, func_rsa_priv_dec priv_dec)
++{
++	method->rsa_priv_dec = priv_dec;
++	return 1;
++}
++
++func_rsa_priv_dec RSA_meth_get_priv_dec(const RSA_METHOD *method)
++{
++	return method->rsa_priv_dec;
++}
++
++int RSA_meth_set_mod_exp(RSA_METHOD *method, func_rsa_mod_exp mod_exp)
++{
++	method->rsa_mod_exp = mod_exp;
++	return 1;
++}
++
++func_rsa_mod_exp RSA_meth_get_mod_exp(const RSA_METHOD *method)
++{
++	return method->rsa_mod_exp;
++}
++
++int RSA_meth_set_bn_mod_exp(RSA_METHOD *method,
++		func_rsa_bn_mod_exp bn_mod_exp)
++{
++	method->bn_mod_exp = bn_mod_exp;
++	return 1;
++}
++
++int RSA_meth_set_init(RSA_METHOD *method, func_rsa_init init)
++{
++	method->init = init;
++	return 1;
++}
++
++int RSA_meth_set_finish(RSA_METHOD *method, func_rsa_finish finish)
++{
++	method->finish = finish;
++	return 1;
++}
++
++int RSA_meth_set_keygen(RSA_METHOD *method, func_rsa_keygen keygen)
++{
++	method->rsa_keygen = keygen;
++	return 1;
++}
++
++int RSA_set0_key(RSA *key, BIGNUM *n, BIGNUM *e, BIGNUM *d)
++{
++	if (key->n == NULL && n == NULL)
++		return 0;
++	if (key->e == NULL && e == NULL)
++		return 0;
++
++	if (n != NULL) {
++		BN_free(key->n);
++		key->n = n;
++	}
++	if (e != NULL) {
++		BN_free(key->e);
++		key->e = e;
++	}
++	if (d != NULL) {
++		BN_free(key->d);
++		key->d = d;
++	}
++
++	return 1;
++}
++
++void RSA_get0_key(RSA *key, const BIGNUM **n, const BIGNUM **e, const BIGNUM **d)
++{
++	if (n)
++		*n = key->n;
++	if (e)
++		*e = key->e;
++	if (d)
++		*d = key->d;
++}
++
++void RSA_get0_factors(RSA *key, const BIGNUM **p, const BIGNUM **q)
++{
++	if (p)
++		*p = key->p;
++	if (q)
++		*q = key->q;
++}
++
++int RSA_set_method(RSA *key, const RSA_METHOD *method)
++{
++	key->meth = method;
++	/* call our local init function here, the original RSA_set_method()
++	 * does this internally */
++	key->meth->init(key);
++	return 1;
++}
++
++RSA* EVP_PKEY_get0_RSA(EVP_PKEY *key)
++{
++	return key->pkey.rsa;
++}
++
++#endif // ! USE_OPENSSL_OPAQUE_API
++
++#ifndef HAVE_OPENSSL_110
++
++const RSA_METHOD* RSA_PKCS1_OpenSSL()
++{
++	// was renamed in 1.1.0
++	return RSA_PKCS1_SSLeay();
++}
++
++#endif // ! HAVE_OPENSSL_110
++
++#endif // include guard
+diff -ruN a/test/engine_key_loading.c b/test/engine_key_loading.c
+--- a/test/engine_key_loading.c	2011-01-20 19:24:04.000000000 +0100
++++ b/test/engine_key_loading.c	2018-12-08 23:43:04.496144069 +0100
+@@ -32,6 +32,7 @@
+ #include <tss/tss_error.h>
+ #include <tss/tspi.h>
+ 
++#include "ssl_compat.h"
+ 
+ #define ERR(x, ...)	fprintf(stderr, "%s:%d " x "\n", __FILE__, __LINE__, ##__VA_ARGS__)
+ 
+@@ -71,8 +72,8 @@
+ int
+ run_test(EVP_PKEY *key)
+ {
+-	RSA *rsa;
+-	char signature[256], data_to_sign[DATA_SIZE], data_recovered[DATA_SIZE];
++	RSA *rsa = NULL;
++	unsigned char signature[256], data_to_sign[DATA_SIZE], data_recovered[DATA_SIZE];
+ 	int sig_size;
+ 
+ 	if (RAND_bytes(data_to_sign, sizeof(data_to_sign)) != 1) {
+@@ -80,10 +81,19 @@
+ 		return 1;
+ 	}
+ 
+-	if (key)
+-		rsa = key->pkey.rsa;
+-	else
+-		rsa = RSA_generate_key(KEY_SIZE_BITS, 65537, NULL, NULL);
++	if (key) {
++		rsa = EVP_PKEY_get0_RSA(key);
++	}
++	else {
++		BIGNUM *e = BN_new();
++		rsa = RSA_new();
++		if( !e || !rsa || !BN_set_word(e, 65537) )
++			return 1;
++		if( RSA_generate_key_ex(rsa, KEY_SIZE_BITS, e, NULL) != 1 )
++		{
++			return 1;
++		}
++	}
+ 
+ 	if (!rsa)
+ 		return 1;
+diff -ruN a/test/Makefile.am b/test/Makefile.am
+--- a/test/Makefile.am	2012-07-13 17:37:29.000000000 +0200
++++ b/test/Makefile.am	2018-12-08 23:43:04.496144069 +0100
+@@ -1,4 +1,5 @@
+ noinst_PROGRAMS=engine_key_loading
+ 
++engine_key_loading_CFLAGS=-I../
+ engine_key_loading_SOURCES=engine_key_loading.c
+ engine_key_loading_LDADD=-ltspi -lcrypto
