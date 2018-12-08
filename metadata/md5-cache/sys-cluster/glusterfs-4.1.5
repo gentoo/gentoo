@@ -5,7 +5,7 @@ DESCRIPTION=GlusterFS is a powerful network/cluster filesystem
 EAPI=7
 HOMEPAGE=https://www.gluster.org/
 IUSE=bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband ipv6 libressl +libtirpc qemu-block rsyslog static-libs +syslog systemtap test +tiering vim-syntax +xml python_targets_python2_7
-KEYWORDS=~amd64 ~arm ~arm64 ppc ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ppc ppc64 ~x86
 LICENSE=|| ( GPL-2 LGPL-3+ )
 RDEPEND=bd-xlator? ( sys-fs/lvm2 ) !elibc_glibc? ( sys-libs/argp-standalone ) emacs? ( virtual/emacs ) fuse? ( >=sys-fs/fuse-2.7.0:0 ) georeplication? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] ) infiniband? ( sys-fabric/libibverbs:* sys-fabric/librdmacm:* ) libtirpc? ( net-libs/libtirpc:= ) !libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) ) qemu-block? ( dev-libs/glib:2 ) systemtap? ( dev-util/systemtap ) tiering? ( dev-db/sqlite:3 ) xml? ( dev-libs/libxml2 ) sys-libs/readline:= dev-libs/libaio !libressl? ( dev-libs/openssl:=[-bindist] ) libressl? ( dev-libs/libressl:= ) dev-libs/userspace-rcu:= net-libs/rpcsvc-proto sys-apps/util-linux
 REQUIRED_USE=georeplication? ( python_targets_python2_7 ) glupy? ( python_targets_python2_7 ) ipv6? ( libtirpc )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://download.gluster.org/pub/gluster/glusterfs/4.1/4.1.5/glusterfs-4.1.5.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	elisp-common	23f47b2e1de7abf387105eddd1318738	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81
-_md5_=01f392770f668f29e12611955021421d
+_md5_=038333ac632bf4362721f7e33b9c6762
