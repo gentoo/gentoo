@@ -8,6 +8,8 @@ HOMEPAGE="https://www.gentoo.org/"
 
 SRC_URI="mirror://gentoo/oodict.eselect-${PVR}.bz2"
 
+S="${WORKDIR}"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
