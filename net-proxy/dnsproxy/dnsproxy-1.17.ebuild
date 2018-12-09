@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit flag-o-matic
 
 DESCRIPTION="The dnsproxy daemon is a proxy for DNS queries"
@@ -10,7 +10,7 @@ SRC_URI="https://www.wolfermann.org/${P}.tar.gz"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	dev-libs/libevent
