@@ -4,6 +4,10 @@
 
 EAPI=5
 
+# apply exlass globals to test version parsing
+TOOLCHAIN_GCC_PV=7.3.0
+PR=r0
+
 source tests-common.sh
 
 inherit toolchain
@@ -81,4 +85,91 @@ test_downgrade_arch_flags 4.3 "-march=foo -mno-sse4.1" "-march=foo -mno-sha -mno
 test_downgrade_arch_flags 4.2 "-march=foo" "-march=foo -mno-sha -mno-rtm -mno-avx2 -mno-avx -mno-sse4.1"
 
 test_downgrade_arch_flags 4.4 "-O2 -march=core2 -ffoo -fblah" "-O2 -march=atom -mno-sha -ffoo -mno-rtm -fblah"
+
+# basic version parsing tests in preparation to eapi7-ver switch
+
+test_tc_version_is_at_least() {
+	local exp msg ret=0 want mine res
+
+	want=${1}
+	mine=${2}
+	exp=${3}
+
+	tbegin "tc_version_is_at_least: ${want} ${mine} => ${exp}"
+
+	tc_version_is_at_least ${want} ${mine}
+	res=$?
+
+	if [[ ${res} -ne ${exp} ]]; then
+		msg="Failure - Expected: \"${exp}\" Got: \"${res}\""
+		ret=1
+	fi
+	tend ${ret} ${msg}
+}
+
+#                           want                mine expect
+test_tc_version_is_at_least 8                   ''   1
+test_tc_version_is_at_least 8.0                 ''   1
+test_tc_version_is_at_least 7                   ''   0
+test_tc_version_is_at_least 7.0                 ''   0
+test_tc_version_is_at_least ${TOOLCHAIN_GCC_PV} ''   0
+test_tc_version_is_at_least 5.0                 6.0  0
+
+test_tc_version_is_between() {
+	local exp msg ret=0 lo hi res
+
+	lo=${1}
+	hi=${2}
+	exp=${3}
+
+	tbegin "tc_version_is_between: ${lo} ${hi} => ${exp}"
+
+	tc_version_is_between ${lo} ${hi}
+	res=$?
+
+	if [[ ${res} -ne ${exp} ]]; then
+		msg="Failure - Expected: \"${exp}\" Got: \"${res}\""
+		ret=1
+	fi
+	tend ${ret} ${msg}
+}
+
+#                          lo                  hi                  expect
+test_tc_version_is_between 1                   0                   1
+test_tc_version_is_between 1                   2                   1
+test_tc_version_is_between 7                   8                   0
+test_tc_version_is_between ${TOOLCHAIN_GCC_PV} 8                   0
+test_tc_version_is_between ${TOOLCHAIN_GCC_PV} ${TOOLCHAIN_GCC_PV} 1
+test_tc_version_is_between 7                   ${TOOLCHAIN_GCC_PV} 1
+test_tc_version_is_between 8                   9                   1
+
+# eclass has a few critical global variables worth not breaking
+test_var_assert() {
+	local var_name exp
+
+	var_name=${1}
+	exp=${2}
+
+	tbegin "asserv variable value: ${var_name} => ${exp}"
+
+	if [[ ${!var_name} != ${exp} ]]; then
+		msg="Failure - Expected: \"${exp}\" Got: \"${!var_name}\""
+		ret=1
+	fi
+	tend ${ret} ${msg}
+}
+
+# TODO: convert these globals to helpers to ease testing against multiple
+# ${TOOLCHAIN_GCC_PV} vaues.
+test_var_assert GCC_PV          7.3.0
+test_var_assert GCC_PVR         7.3.0
+test_var_assert GCC_RELEASE_VER 7.3.0
+test_var_assert GCC_BRANCH_VER  7.3
+test_var_assert GCCMAJOR        7
+test_var_assert GCCMINOR        3
+test_var_assert GCCMICRO        0
+test_var_assert BRANCH_UPDATE   ''
+test_var_assert GCC_CONFIG_VER  7.3.0
+test_var_assert PREFIX          /usr
+
 texit
