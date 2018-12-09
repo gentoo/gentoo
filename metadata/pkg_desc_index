@@ -10218,7 +10218,7 @@ sys-libs/efivar 30 31: Tools and library to manipulate EFI variables
 sys-libs/freeipmi 1.4.8: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2: Standard GNU database libraries
-sys-libs/glibc 2.26-r7 2.27-r6: GNU libc C library
+sys-libs/glibc 2.27-r6: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.20.0: A multi-platform helper library for other libraries
 sys-libs/kpmcore 3.3.0: Library for managing partitions
