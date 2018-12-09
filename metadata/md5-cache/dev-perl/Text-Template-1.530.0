@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp virtual/perl-Encode virtual/perl-Exporter virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Temp virtual/perl-Safe dev-perl/Test-More-UTF8 virtual/perl-Test-Simple dev-perl/Test-Warnings ) dev-lang/perl:=
+DESCRIPTION=Expand template text with embedded Perl
+EAPI=6
+HOMEPAGE=http://metacpan.org/release/Text-Template
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp virtual/perl-Encode virtual/perl-Exporter dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MS/MSCHOUT/Text-Template-1.53.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	0bd80b082268528830da0d72ac571d9a
+_md5_=81c7a0dd30d5039ae3815b266535d143
