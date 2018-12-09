@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (9 Dec 2018)
+# No longer provides tests and no tagged upstream releases. No reverse
+# dependencies. Use classifier-reborn instead. Masked for removal
+# in 30 days.
+dev-ruby/classifier
+
 # Hans de Graaff <graaff@gentoo.org> (1 Dec 2018)
 # Old Rails 5.0 version. This version is no longer maintained
 # upstream. Please update to Rails 5.1 or newer.
