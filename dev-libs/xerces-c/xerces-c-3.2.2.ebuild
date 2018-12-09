@@ -83,11 +83,7 @@ src_configure() {
 src_compile() {
 	cmake-utils_src_compile
 
-	if use doc; then
-		cd doc || die
-		doxygen || die "making docs failed"
-		HTML_DOCS=( doc/html/. )
-	fi
+	use doc && cmake-utils_src_compile doc-style createapidocs doc-xml
 }
 
 src_install () {
