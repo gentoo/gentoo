@@ -69,7 +69,7 @@ src_prepare() {
 	sed \
 		-e "s:@EPREFIX@:${EPREFIX:-/}:" \
 		-e "s:@libdir@:/usr/lib:" \
-		"${FILESDIR}/3.2/distcc-config" > "${T}/distcc-config" || die
+		"${FILESDIR}/distcc-config" > "${T}/distcc-config" || die
 
 	hprefixify update-distcc-symlinks.py src/{serve,daemon}.c
 	python_fix_shebang update-distcc-symlinks.py "${T}/distcc-config"
