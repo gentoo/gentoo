@@ -629,7 +629,7 @@ dev-ruby/poltergeist
 # switch the compiler / the binutils) ASAP. If you need them for a specific
 # (isolated) use case, feel free to unmask them on your system.
 <sys-devel/gcc-5.4
-<sys-libs/glibc-2.26
+<sys-libs/glibc-2.27
 <sys-devel/binutils-2.30-r2
 <sys-libs/binutils-libs-2.30-r2
 
