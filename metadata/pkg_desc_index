@@ -7301,7 +7301,7 @@ media-gfx/cellwriter 1.3.5: Grid-entry natural handwriting input panel
 media-gfx/clockphoto 1.1: Adjusts photo timestamps based on clock photos.
 media-gfx/colorhug-client 0.2.8: Client tools for the ColorHug display colorimeter
 media-gfx/comix 4.0.4-r1: A GTK image viewer specifically designed to handle comic books
-media-gfx/cropgui 0.1.1-r3: GUI for lossless cropping of jpeg images
+media-gfx/cropgui 0.2-r1: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/darktable 2.2.5 2.4.3: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
