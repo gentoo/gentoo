@@ -8,7 +8,7 @@ DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
 RESTRICT="strip" # cross-compilers need controlled stripping
 
-inherit eutils fixheadtails flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs versionator prefix
+inherit eutils fixheadtails flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
 
 if [[ ${PV} == *_pre9999* ]] ; then
 	EGIT_REPO_URI="git://gcc.gnu.org/git/gcc.git"
@@ -26,8 +26,8 @@ FEATURES=${FEATURES/multilib-strict/}
 
 case ${EAPI:-0} in
 	0|1|2|3|4*) die "Need to upgrade to at least EAPI=5" ;;
-	5*)   ;;
-	*)       die "I don't speak EAPI ${EAPI}." ;;
+	5*) inherit eapi7-ver ;;
+	*) die "I don't speak EAPI ${EAPI}." ;;
 esac
 EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
 	src_compile src_test src_install pkg_postinst pkg_postrm
@@ -50,7 +50,7 @@ is_crosscompile() {
 
 # General purpose version check.  Without a second arg matches up to minor version (x.x.x)
 tc_version_is_at_least() {
-	version_is_at_least "$1" "${2:-${GCC_RELEASE_VER}}"
+	ver_test "${2:-${GCC_RELEASE_VER}}" -ge "$1"
 }
 
 # General purpose version range check
@@ -62,17 +62,17 @@ tc_version_is_between() {
 GCC_PV=${TOOLCHAIN_GCC_PV:-${PV}}
 GCC_PVR=${GCC_PV}
 [[ ${PR} != "r0" ]] && GCC_PVR=${GCC_PVR}-${PR}
-GCC_RELEASE_VER=$(get_version_component_range 1-3 ${GCC_PV})
-GCC_BRANCH_VER=$(get_version_component_range 1-2 ${GCC_PV})
-GCCMAJOR=$(get_version_component_range 1 ${GCC_PV})
-GCCMINOR=$(get_version_component_range 2 ${GCC_PV})
-GCCMICRO=$(get_version_component_range 3 ${GCC_PV})
+GCC_RELEASE_VER=$(ver_cut 1-3 ${GCC_PV})
+GCC_BRANCH_VER=$(ver_cut 1-2 ${GCC_PV})
+GCCMAJOR=$(ver_cut 1 ${GCC_PV})
+GCCMINOR=$(ver_cut 2 ${GCC_PV})
+GCCMICRO=$(ver_cut 3 ${GCC_PV})
 [[ ${BRANCH_UPDATE-notset} == "notset" ]] && \
-	BRANCH_UPDATE=$(get_version_component_range 4 ${GCC_PV})
+	BRANCH_UPDATE=$(ver_cut 4 ${GCC_PV})
 
 # According to gcc/c-cppbuiltin.c, GCC_CONFIG_VER MUST match this regex.
 # ([^0-9]*-)?[0-9]+[.][0-9]+([.][0-9]+)?([- ].*)?
-GCC_CONFIG_VER=${GCC_CONFIG_VER:-$(replace_version_separator 3 '-' ${GCC_PV})}
+GCC_CONFIG_VER=${GCC_CONFIG_VER:-$(ver_rs 3 '-' ${GCC_PV})}
 
 # Pre-release support
 if [[ ${GCC_PV} == *_pre* ]] ; then
@@ -2290,7 +2290,7 @@ should_we_gcc_config() {
 	# for being in the same SLOT, make sure we run gcc-config.
 	local curr_config_ver=$(gcc-config -S ${curr_config} | awk '{print $2}')
 
-	local curr_branch_ver=$(get_version_component_range 1-2 ${curr_config_ver})
+	local curr_branch_ver=$(ver_cut 1-2 ${curr_config_ver})
 
 	if [[ ${curr_branch_ver} == ${GCC_BRANCH_VER} ]] ; then
 		return 0
