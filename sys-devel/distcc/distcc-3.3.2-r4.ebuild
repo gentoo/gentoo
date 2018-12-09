@@ -56,6 +56,8 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-3.3.2-freedesktop.patch"
 	# SOCKSv5 support needed for Portage, bug #537616
 	eapply "${FILESDIR}/${PN}-3.2_rc1-socks5.patch"
+	# crash on missing directory
+	eapply "${FILESDIR}"/distcc-3.3.2-noexist-crash.patch
 	eapply_user
 
 	# Bugs #120001, #167844 and probably more. See patch for description.
