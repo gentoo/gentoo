@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (9 Dec 2018)
+# Old component for Rails that is no longer used and no longer
+# maintained upstream. Masked for removal in 30 days.
+dev-ruby/hike
+
+# Hans de Graaff <graaff@gentoo.org> (9 Dec 2018)
 # No longer provides tests and no tagged upstream releases. No reverse
 # dependencies. Use classifier-reborn instead. Masked for removal
 # in 30 days.
