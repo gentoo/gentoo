@@ -16,7 +16,7 @@ test_downgrade_arch_flags() {
 	shift 2
 	CFLAGS=${@}
 
-	tbegin "${ver} ${CFLAGS} => ${exp}"
+	tbegin "downgrade_arch_flags: ${ver} ${CFLAGS} => ${exp}"
 
 	CHOST=x86_64 # needed for tc-arch
 	downgrade_arch_flags ${ver}
