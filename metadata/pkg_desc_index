@@ -7501,7 +7501,7 @@ media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/gavl 1.2.0 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.2.5 2.2.5-r1: Graphics library for fast image creation
-media-libs/gegl 0.2.0-r2 0.2.0-r5 0.3.0 0.3.8 0.3.26: A graph based image processing framework
+media-libs/gegl 0.2.0-r2 0.2.0-r5 0.3.0 0.3.26: A graph based image processing framework
 media-libs/gexiv2 0.10.8: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 4.1.6-r2 4.1.6-r3 5.1.4: Library to handle, display and manipulate GIF images
