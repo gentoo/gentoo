@@ -31,6 +31,8 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}"/${MY_PN}
 ENVD="${T}/50ccl"
 
+PATCHES=( "${FILESDIR}"/${P}-no-pie-32.patch )
+
 src_prepare() {
 	default
 	cp "${EPREFIX}/usr/share/common-lisp/source/asdf/build/asdf.lisp" tools/ || die
