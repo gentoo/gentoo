@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_TEST="test"
 RUBY_FAKEGEM_TASK_DOC=""
@@ -31,23 +31,25 @@ ruby_add_bdepend "test? (
 		dev-ruby/httpclient
 		dev-ruby/rack-test
 		dev-ruby/sinatra
-		dev-ruby/net-http-persistent
+		dev-ruby/net-http-persistent >=dev-ruby/connection_pool-2.2.2
 		dev-ruby/patron
 	)"
 
 all_ruby_prepare() {
 	# Remove bundler support.
 	rm Gemfile || die
-	sed -i -e '/[Bb]undler/d' Rakefile test/helper.rb || die
+	sed -i -e '/[Bb]undler/d ; 1irequire "yaml"' Rakefile test/helper.rb || die
 	sed -i -e '/bundler/,/^fi/ s:^:#:' script/test || die
 
 	# Remove simplecov and coveralls support, not needed to run tests.
 	sed -i -e '/simplecov/,/^end/ s:^:#:' \
-		-e '1igem "rack", "~>1.0"; require "yaml"' \
 		test/helper.rb || die
 
 	# Remove tests for adapters that are not packaged for Gentoo.
 	rm test/adapters/em_http_test.rb test/adapters/em_synchrony_test.rb test/adapters/excon_test.rb test/adapters/typhoeus_test.rb || die
+
+	# Remove tests against live services
+	sed -i -e '/test_dynamic_no_proxy/askip "live network test"' test/connection_test.rb || die
 
 	# The proxy server is already killed, may be OS X vs Linux issue.
 	sed -i -e '138 s/^/#/' script/test || die
@@ -61,7 +63,7 @@ each_ruby_prepare() {
 }
 
 each_ruby_test() {
-	each_fakegem_test
+	MT_NO_PLUGINS=true each_fakegem_test
 
 	# Sleep some time to allow the sinatra test server to die
 	einfo "Waiting for test server to stop"
