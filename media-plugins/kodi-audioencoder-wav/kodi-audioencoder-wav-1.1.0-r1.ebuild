@@ -27,8 +27,5 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	~media-tv/kodi-9999
-	"
-RDEPEND="
-	${DEPEND}
+	=media-tv/kodi-17*
 	"

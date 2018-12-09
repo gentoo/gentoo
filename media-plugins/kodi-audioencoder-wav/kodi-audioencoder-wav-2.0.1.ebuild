@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,5 +27,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	media-tv/kodi
+	=media-tv/kodi-18*
+	"
+RDEPEND="
+	${DEPEND}
 	"
