@@ -96,7 +96,7 @@ CDEPEND="
 	shadow? ( virtual/shadow )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( dev-libs/openssl:0= )
-	tbb? ( dev-cpp/tbb )
+	tbb? ( >=dev-cpp/tbb-2018 )
 	tmva? ( dev-python/numpy[${PYTHON_USEDEP}] )
 	vc? ( dev-libs/vc )
 	xml? ( dev-libs/libxml2:2= )
