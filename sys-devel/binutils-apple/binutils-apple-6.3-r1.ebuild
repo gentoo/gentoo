@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -203,6 +203,10 @@ src_configure() {
 	else
 		use libcxx && \
 			ewarn "libcxx only available with clang and your C++ compiler ($CXX) does not seem to be clang"
+
+		# force gcc-apple, FSF gcc doesn't grok this code
+		export CC=${CTARGET}-gcc-4.2.1
+		export CXX=${CTARGET}-g++-4.2.1
 	fi
 
 	# CPPFLAGS only affects ld64, cctools don't use 'em (which currently is
@@ -228,11 +232,15 @@ src_configure() {
 	if use multitarget ; then
 		ARCHS_TO_SUPPORT="$(grep KNOWN_ARCHS= $creco | \
 			cut -d\" -f2 | tr ',' ' ')"
+	elif use ppc-macos ; then
+		ARCHS_TO_SUPPORT="ppc ppc750 ppc7400 ppc7450 ppc970 ppc64 $(\
+			grep RC_SUPPORTED_ARCHS= $creco | cut -d\" -f2)"
 	fi
 
 	# Create configure.h for ld64 with SUPPORT_ARCH_<arch> defines in it.
+	einfo "building support for: ${ARCHS_TO_SUPPORT}"
 	DERIVED_FILE_DIR=${LD64}/src \
-		RC_SUPPORTED_ARCHS="$ARCHS_TO_SUPPORT" \
+	RC_SUPPORTED_ARCHS="$ARCHS_TO_SUPPORT" \
 		$creco
 
 	# do not depend on MachOFileAbstraction.hpp to define
