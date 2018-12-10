@@ -1,11 +1,11 @@
 DEFINED_PHASES=configure install preinst prepare unpack
-DEPEND=dev-libs/boost:= dev-cpp/gtest dev-libs/log4cplus !openssl? ( dev-libs/botan:0= ) openssl? ( dev-libs/openssl:0= ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=dev-libs/boost:= dev-cpp/gtest dev-libs/log4cplus mysql? ( virtual/mysql ) !openssl? ( dev-libs/botan:0= ) openssl? ( dev-libs/openssl:0= ) postgres? ( dev-db/postgresql:* ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=High-performance production grade DHCPv4 & DHCPv6 server
 EAPI=6
 HOMEPAGE=http://www.isc.org/kea/
-IUSE=openssl samples
+IUSE=mysql openssl postgres samples
 LICENSE=ISC BSD SSLeay GPL-2
-RDEPEND=dev-libs/boost:= dev-cpp/gtest dev-libs/log4cplus !openssl? ( dev-libs/botan:0= ) openssl? ( dev-libs/openssl:0= )
+RDEPEND=dev-libs/boost:= dev-cpp/gtest dev-libs/log4cplus mysql? ( virtual/mysql ) !openssl? ( dev-libs/botan:0= ) openssl? ( dev-libs/openssl:0= ) postgres? ( dev-db/postgresql:* )
 SLOT=0
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81
-_md5_=e8a91efbefd2f72c40b61f2184f69ae2
+_md5_=690e5edb13d6d77317b83a7351349a35
