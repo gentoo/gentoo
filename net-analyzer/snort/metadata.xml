@@ -66,6 +66,11 @@
 			Enable decoding of non-ethernet protocols such as TokenRing, FDDI,
 			IPX, etc.
 		</flag>
+		<flag name="open-appid">
+			Enable OpenAppID, an open, application-focused detection language
+			and processing module for Snort that enables users to create, share,
+			and implement application detection. Requires <pkg>dev-lang/luajit</pkg>.
+		</flag>
 		<flag name="perfprofiling">
 			Enables support for preprocessor and rule performance profiling 
 			using the perfmonitor preprocessor.

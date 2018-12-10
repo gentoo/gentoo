@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (10 Dec 2018)
+# dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
+net-analyzer/snort open-appid
+
 # Andreas Sturmlechner <asturm@gentoo.org> (13 Mar 2018)
 # missing keyword on media-libs/portmidi
 media-sound/hydrogen portmidi
