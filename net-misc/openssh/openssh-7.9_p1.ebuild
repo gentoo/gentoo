@@ -391,7 +391,6 @@ src_install() {
 
 	systemd_dounit "${FILESDIR}"/sshd.{service,socket}
 	systemd_newunit "${FILESDIR}"/sshd_at.service 'sshd@.service'
-	ls -la "${D}"/run
 }
 
 pkg_preinst() {
