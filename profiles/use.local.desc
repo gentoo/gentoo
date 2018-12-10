@@ -2009,9 +2009,6 @@ dev-qt/qtwebkit:printsupport - Enable printing via dev-qt/qtprintsupport
 dev-qt/qtwebkit:qml - Build QML/QtQuick bindings
 dev-qt/qtwebsockets:qml - Build QML bindings
 dev-qt/qtwidgets:gles2 - Use GLES 2.0 or later instead of full OpenGL
-dev-ruby/facter:dmi - Use sys-apps/dmidecode to determine hardware system properties
-dev-ruby/facter:pciutils - Use sys-apps/pciutils to determine hardware system properties
-dev-ruby/facter:virt - Use app-emulation/virt-what for virtual machine detection
 dev-ruby/maruku:highlight - Enable source code highlighting via dev-ruby/syntax
 dev-ruby/net-ssh:ed25519 - Use dev-ruby/ed25519 for Ed25519 support
 dev-ruby/net-ssh:sodium - Use dev-libs/libsodium via dev-ruby/rbnacl for Ed25519 support
