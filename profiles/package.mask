@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (10 Dec 2018)
+# Requires >=dev-lang/lua-5.2 which is masked
+>=app-admin/lsyncd-2.2.3
+
 # Hans de Graaff <graaff@gentoo.org> (9 Dec 2018)
 # Old component for Rails that is no longer used and no longer
 # maintained upstream. Masked for removal in 30 days.
