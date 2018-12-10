@@ -30,6 +30,9 @@ ruby_add_rdepend "
 "
 
 all_ruby_prepare() {
+	# Avoid dependency on git
+	sed -i -e '/ls-files/ s:^:#:' ${RUBY_FAKEGEM_GEMSPEC} || die
+
 	# Only run unit tests since we require unpackaged code for the
 	# integration tests.
 	sed -i -e "/^require 'em-\(spec\|http\|websocket-client\)/ s:^:#:" \
