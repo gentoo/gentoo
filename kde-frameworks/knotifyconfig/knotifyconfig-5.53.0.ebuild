@@ -22,3 +22,5 @@ RDEPEND="
 	phonon? ( media-libs/phonon[qt5(+)] )
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-phonon-optional.patch" )
