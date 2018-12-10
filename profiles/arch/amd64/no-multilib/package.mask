@@ -35,6 +35,7 @@ dev-embedded/openocd
 dev-util/android-ndk
 dev-util/android-sdk-update-manager
 dev-util/biew
+games-action/badland
 games-action/beathazardultra
 games-action/brutal-legend
 games-action/cs2d
