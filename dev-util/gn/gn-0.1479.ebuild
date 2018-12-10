@@ -22,6 +22,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/gn-gen-r2.patch
+	"${FILESDIR}"/gn-numerics-arm.patch
 )
 
 pkg_setup() {
