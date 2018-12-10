@@ -8,6 +8,7 @@ inherit toolchain-funcs user
 MY_PV="${PV//_p/-P}"
 MY_PV="${MY_PV/_/-}"
 MY_P="${PN}-${MY_PV}"
+
 DESCRIPTION="High-performance production grade DHCPv4 & DHCPv6 server"
 HOMEPAGE="http://www.isc.org/kea/"
 if [[ ${PV} = 9999* ]] ; then
@@ -22,14 +23,16 @@ fi
 
 LICENSE="ISC BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
-IUSE="openssl samples"
+IUSE="mysql openssl postgres samples"
 
 DEPEND="
 	dev-libs/boost:=
 	dev-cpp/gtest
 	dev-libs/log4cplus
+	mysql? ( virtual/mysql )
 	!openssl? ( dev-libs/botan:0= )
 	openssl? ( dev-libs/openssl:0= )
+	postgres? ( dev-db/postgresql:* )
 "
 RDEPEND="${DEPEND}"
 
@@ -46,7 +49,9 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		$(use_with mysql)
 		$(use_with openssl)
+		$(use_with postgres pgsql)
 		$(use_enable samples install-configurations)
 		--disable-static
 		--without-werror
