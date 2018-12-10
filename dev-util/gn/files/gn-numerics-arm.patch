@@ -1,0 +1,201 @@
+From 8952cb06749d4bd390991878281bc7e72a6eef2c Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppymaster@gmail.com>
+Date: Mon, 10 Dec 2018 10:27:20 -0500
+Subject: [PATCH] Add missing headers for ARM
+
+Bug: https://bugs.gentoo.org/672862
+---
+ base/numerics/safe_conversions_arm_impl.h |  51 +++++++++
+ base/numerics/safe_math_arm_impl.h        | 122 ++++++++++++++++++++++
+ 2 files changed, 173 insertions(+)
+ create mode 100644 base/numerics/safe_conversions_arm_impl.h
+ create mode 100644 base/numerics/safe_math_arm_impl.h
+
+diff --git a/base/numerics/safe_conversions_arm_impl.h b/base/numerics/safe_conversions_arm_impl.h
+new file mode 100644
+index 00000000..da5813f6
+--- /dev/null
++++ b/base/numerics/safe_conversions_arm_impl.h
+@@ -0,0 +1,51 @@
++// Copyright 2017 The Chromium Authors. All rights reserved.
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#ifndef BASE_NUMERICS_SAFE_CONVERSIONS_ARM_IMPL_H_
++#define BASE_NUMERICS_SAFE_CONVERSIONS_ARM_IMPL_H_
++
++#include <cassert>
++#include <limits>
++#include <type_traits>
++
++#include "base/numerics/safe_conversions_impl.h"
++
++namespace base {
++namespace internal {
++
++// Fast saturation to a destination type.
++template <typename Dst, typename Src>
++struct SaturateFastAsmOp {
++  static const bool is_supported =
++      std::is_signed<Src>::value && std::is_integral<Dst>::value &&
++      std::is_integral<Src>::value &&
++      IntegerBitsPlusSign<Src>::value <= IntegerBitsPlusSign<int32_t>::value &&
++      IntegerBitsPlusSign<Dst>::value <= IntegerBitsPlusSign<int32_t>::value &&
++      !IsTypeInRangeForNumericType<Dst, Src>::value;
++
++  __attribute__((always_inline)) static Dst Do(Src value) {
++    int32_t src = value;
++    typename std::conditional<std::is_signed<Dst>::value, int32_t,
++                              uint32_t>::type result;
++    if (std::is_signed<Dst>::value) {
++      asm("ssat %[dst], %[shift], %[src]"
++          : [dst] "=r"(result)
++          : [src] "r"(src), [shift] "n"(IntegerBitsPlusSign<Dst>::value <= 32
++                                            ? IntegerBitsPlusSign<Dst>::value
++                                            : 32));
++    } else {
++      asm("usat %[dst], %[shift], %[src]"
++          : [dst] "=r"(result)
++          : [src] "r"(src), [shift] "n"(IntegerBitsPlusSign<Dst>::value < 32
++                                            ? IntegerBitsPlusSign<Dst>::value
++                                            : 31));
++    }
++    return static_cast<Dst>(result);
++  }
++};
++
++}  // namespace internal
++}  // namespace base
++
++#endif  // BASE_NUMERICS_SAFE_CONVERSIONS_ARM_IMPL_H_
+diff --git a/base/numerics/safe_math_arm_impl.h b/base/numerics/safe_math_arm_impl.h
+new file mode 100644
+index 00000000..a7cda1bb
+--- /dev/null
++++ b/base/numerics/safe_math_arm_impl.h
+@@ -0,0 +1,122 @@
++// Copyright 2017 The Chromium Authors. All rights reserved.
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#ifndef BASE_NUMERICS_SAFE_MATH_ARM_IMPL_H_
++#define BASE_NUMERICS_SAFE_MATH_ARM_IMPL_H_
++
++#include <cassert>
++#include <limits>
++#include <type_traits>
++
++#include "base/numerics/safe_conversions.h"
++
++namespace base {
++namespace internal {
++
++template <typename T, typename U>
++struct CheckedMulFastAsmOp {
++  static const bool is_supported =
++      FastIntegerArithmeticPromotion<T, U>::is_contained;
++
++  // The following is much more efficient than the Clang and GCC builtins for
++  // performing overflow-checked multiplication when a twice wider type is
++  // available. The below compiles down to 2-3 instructions, depending on the
++  // width of the types in use.
++  // As an example, an int32_t multiply compiles to:
++  //    smull   r0, r1, r0, r1
++  //    cmp     r1, r1, asr #31
++  // And an int16_t multiply compiles to:
++  //    smulbb  r1, r1, r0
++  //    asr     r2, r1, #16
++  //    cmp     r2, r1, asr #15
++  template <typename V>
++  __attribute__((always_inline)) static bool Do(T x, U y, V* result) {
++    using Promotion = typename FastIntegerArithmeticPromotion<T, U>::type;
++    Promotion presult;
++
++    presult = static_cast<Promotion>(x) * static_cast<Promotion>(y);
++    *result = static_cast<V>(presult);
++    return IsValueInRangeForNumericType<V>(presult);
++  }
++};
++
++template <typename T, typename U>
++struct ClampedAddFastAsmOp {
++  static const bool is_supported =
++      BigEnoughPromotion<T, U>::is_contained &&
++      IsTypeInRangeForNumericType<
++          int32_t,
++          typename BigEnoughPromotion<T, U>::type>::value;
++
++  template <typename V>
++  __attribute__((always_inline)) static V Do(T x, U y) {
++    // This will get promoted to an int, so let the compiler do whatever is
++    // clever and rely on the saturated cast to bounds check.
++    if (IsIntegerArithmeticSafe<int, T, U>::value)
++      return saturated_cast<V>(x + y);
++
++    int32_t result;
++    int32_t x_i32 = x;
++    int32_t y_i32 = y;
++
++    asm("qadd %[result], %[first], %[second]"
++        : [result] "=r"(result)
++        : [first] "r"(x_i32), [second] "r"(y_i32));
++    return saturated_cast<V>(result);
++  }
++};
++
++template <typename T, typename U>
++struct ClampedSubFastAsmOp {
++  static const bool is_supported =
++      BigEnoughPromotion<T, U>::is_contained &&
++      IsTypeInRangeForNumericType<
++          int32_t,
++          typename BigEnoughPromotion<T, U>::type>::value;
++
++  template <typename V>
++  __attribute__((always_inline)) static V Do(T x, U y) {
++    // This will get promoted to an int, so let the compiler do whatever is
++    // clever and rely on the saturated cast to bounds check.
++    if (IsIntegerArithmeticSafe<int, T, U>::value)
++      return saturated_cast<V>(x - y);
++
++    int32_t result;
++    int32_t x_i32 = x;
++    int32_t y_i32 = y;
++
++    asm("qsub %[result], %[first], %[second]"
++        : [result] "=r"(result)
++        : [first] "r"(x_i32), [second] "r"(y_i32));
++    return saturated_cast<V>(result);
++  }
++};
++
++template <typename T, typename U>
++struct ClampedMulFastAsmOp {
++  static const bool is_supported = CheckedMulFastAsmOp<T, U>::is_supported;
++
++  template <typename V>
++  __attribute__((always_inline)) static V Do(T x, U y) {
++    // Use the CheckedMulFastAsmOp for full-width 32-bit values, because
++    // it's fewer instructions than promoting and then saturating.
++    if (!IsIntegerArithmeticSafe<int32_t, T, U>::value &&
++        !IsIntegerArithmeticSafe<uint32_t, T, U>::value) {
++      V result;
++      if (CheckedMulFastAsmOp<T, U>::Do(x, y, &result))
++        return result;
++      return CommonMaxOrMin<V>(IsValueNegative(x) ^ IsValueNegative(y));
++    }
++
++    assert((FastIntegerArithmeticPromotion<T, U>::is_contained));
++    using Promotion = typename FastIntegerArithmeticPromotion<T, U>::type;
++    return saturated_cast<V>(static_cast<Promotion>(x) *
++                             static_cast<Promotion>(y));
++  }
++};
++
++}  // namespace internal
++}  // namespace base
++
++#endif  // BASE_NUMERICS_SAFE_MATH_ARM_IMPL_H_
+-- 
+2.20.0.rc2
+
