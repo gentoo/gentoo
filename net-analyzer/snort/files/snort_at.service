@@ -1,0 +1,11 @@
+[Unit]
+Description=Snort IDS system listening on '%I'
+
+[Service]
+Type=simple
+ExecStartPre=/usr/sbin/ip link set up dev %I
+ExecStart=/usr/bin/snort --daq-dir /usr/lib/daq/ -A fast -b -p -u snort -g snort -c /etc/snort/snort.conf -i %I
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+Alias=multi-user.target.wants/snort@%i.service
