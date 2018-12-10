@@ -6,5 +6,11 @@
 
 
 # Fabian Groffen <grobian@gentoo.org> (5 Mar 2012)
-# Apple removed entire PowerPC support from ld in ld64-128.2
->=sys-devel/binutils-apple-4.3
+# Apple removed entire PowerPC support from ld in ld64-128.2 (4.3)
+# a backport of PPC support was kept until compilation with gcc-apple
+# was no longer possible since 7.0.
+# The only working/supported versions are 3.2 and 6.3
+=sys-devel/binutils-apple-4.3-r2
+=sys-devel/binutils-apple-5.1-r1
+=sys-devel/binutils-apple-6.1-r1
+>sys-devel/binutils-apple-6.99999
