@@ -25,6 +25,7 @@ DOCS="ChangeLog* README.md"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.1-o-tmpfile-eacces.patch #529044
 	"${FILESDIR}"/${PN}-3.3_rc0-hppa-no-TEXTREL.patch
+	"${FILESDIR}"/${PN}-3.3_rc0-ppc-macos-go.patch
 )
 
 S=${WORKDIR}/${MY_P}
