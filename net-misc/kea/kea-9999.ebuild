@@ -29,7 +29,7 @@ DEPEND="
 	dev-libs/boost:=
 	dev-cpp/gtest
 	dev-libs/log4cplus
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c )
 	!openssl? ( dev-libs/botan:0= )
 	openssl? ( dev-libs/openssl:0= )
 	postgres? ( dev-db/postgresql:* )
