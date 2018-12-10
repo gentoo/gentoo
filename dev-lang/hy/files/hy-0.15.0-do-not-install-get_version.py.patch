@@ -1,0 +1,22 @@
+Don't install get_version.py
+
+This reverts commit 7361b37a7580bb5caaf7696b7bff5954042fd52b.
+
+This file is not used at runtime, and the way it was installed violated FHS.
+
+---
+ setup.py | 3 ---
+ 1 file changed, 3 deletions(-)
+
+--- a/setup.py
++++ b/setup.py
+@@ -58,9 +58,6 @@ def run(self):
+         'hy.core': ['*.hy', '__pycache__/*'],
+         'hy.extra': ['*.hy', '__pycache__/*'],
+     },
+-    data_files=[
+-        ('get_version', ['get_version.py'])
+-    ],
+     author="Paul Tagliamonte",
+     author_email="tag@pault.ag",
+     long_description=long_description,
