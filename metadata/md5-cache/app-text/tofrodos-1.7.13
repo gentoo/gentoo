@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Utility that converts ASCII files between the MSDOS and the Unix format
+EAPI=7
+HOMEPAGE=http://tofrodos.sourceforge.net/
+KEYWORDS=~amd64 ~arm ~hppa ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://tofrodos.sourceforge.net/download/tofrodos-1.7.13.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=6caadc466ccc50338c8108db1fbef8f4
