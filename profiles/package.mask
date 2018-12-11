@@ -286,10 +286,6 @@ media-plugins/vdr-picselshow
 # Dead for years, no reverse deps (#665046). Removal in a month.
 app-text/clara
 
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# ebuild plays with /dev (#666456). Removal in a month.
-app-misc/fujiplay
-
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
 # Removal in 30 days.
