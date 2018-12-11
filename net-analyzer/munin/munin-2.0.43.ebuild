@@ -83,6 +83,7 @@ DEPEND="${DEPEND_COM}
 	java? ( >=virtual/jdk-1.5 )
 	test? (
 		dev-perl/Test-Deep
+		dev-perl/Test-Exception
 		dev-perl/Test-LongString
 		dev-perl/Test-Differences
 		dev-perl/Test-MockModule
