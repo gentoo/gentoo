@@ -255,10 +255,6 @@ sys-block/rts_pstor
 # Fails to run (#662180). Removal in a month.
 app-text/chm2pdf
 
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Unmaintained, security issues (#630796, #663164). Removal in a month.
-dev-db/couchdb
-
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
 # Removal in 30 days.
