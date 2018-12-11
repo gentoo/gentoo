@@ -162,59 +162,6 @@ dev-java/ant-trax
 app-admin/localepurge
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Unmaintained, really old version in the tree with someone needs to get
-# bumped (#622572). Removal in a month.
-net-p2p/ppcoind
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Our current version is broken for ages (#622722), no maintained, needs to
-# be bumped, no reverse deps in the tree. Removal in a month.
-media-libs/libptp2
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Dead for years, last package depending on old musicbrainz:3 (#629392).
-# Removal in a month.
-media-video/gnome-mplayer
-www-plugins/gecko-mediaplayer
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Upstream dead for years and marked EOL (#629676, #665850). Removal in a
-# month.
-dev-db/mysql-proxy
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Unmaintained, fails to build, nothing requires it anymore (#630400).
-# Removal in a month.
-app-forensics/libbfio
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Pending version bump (#648380), doesn't build (#637350). Removal in a
-# month.
-sys-apps/likwid
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Doesn't build for a long time (#638096). Removal in a month.
-games-action/rafkill
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Doesn't build for a long time (#638710), nothing requires it. Removal in a
-# month.
-app-emulation/vpcs
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Fails to build with current glibc (#638840). Removal in a month.
-sys-devel/heirloom-devtools
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Fails to build for a long time (#639844). Removal in a month.
-dev-embedded/scratchbox2
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Fails to build with current gcc (#640926), file collisions (#630668), no
-# reverse deps. Removal in a month.
-media-video/sswf
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Fails to build (#662000), not compatible with kernel-4, use kernel driver rtsx_pci
 # instead. Removal in a month.
 sys-block/rts_pstor
