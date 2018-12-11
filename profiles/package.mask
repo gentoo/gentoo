@@ -267,10 +267,6 @@ sys-fs/devfsd
 # Merged into >=media-tv/mythtv-29, bug #665924. Removal in a month.
 media-plugins/mythplugins
 
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# No reverse deps, obsoleted in 2016 (#666130). Removal in a month.
-dev-python/jenkins-webapi
-
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
 # Removal in 30 days.
