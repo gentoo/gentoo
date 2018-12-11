@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	gnome? ( gnome-base/gnome-desktop:3= )
 	gnome-keyring? ( >=app-crypt/libsecret-0.5 )
 	introspection? ( >=dev-libs/gobject-introspection-1:= )
-	nautilus? ( >=gnome-base/nautilus-2.91.4[introspection?] )
+	nautilus? ( >=gnome-base/nautilus-2.91.4 )
 	postscript? ( >=app-text/libspectre-0.2:= )
 	tiff? ( >=media-libs/tiff-3.6:0= )
 	xps? ( >=app-text/libgxps-0.2.1:= )
