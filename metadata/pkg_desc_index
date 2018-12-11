@@ -6513,7 +6513,7 @@ gnome-base/libgnomekbd 3.26.0: Gnome keyboard configuration library
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/libgtop 2.36.0: A library that provides top functionality to applications
 gnome-base/librsvg 2.40.18: Scalable Vector Graphics (SVG) rendering library
-gnome-base/nautilus 3.24.2.1-r1: A file manager for the GNOME desktop
+gnome-base/nautilus 3.24.2.1-r2: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
 gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
 gnome-extra/chrome-gnome-shell 10: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
