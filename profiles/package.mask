@@ -259,10 +259,6 @@ app-text/chm2pdf
 # Unmaintained, security issues (#630796, #663164). Removal in a month.
 dev-db/couchdb
 
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Unkeyworded since 2008, non-installable (#664680). Removal in a month.
-sys-fs/devfsd
-
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
 # Removal in 30 days.
