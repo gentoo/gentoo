@@ -352,6 +352,7 @@ RDEPEND="${DEPEND}
 
 BDEPEND="dev-util/cmake
 	sys-libs/ncurses
+	>=virtual/rust-1.31.0
 "
 
 DOCS=( CHANGELOG.md docs/ansicode.txt INSTALL.md README.md alacritty.yml )
