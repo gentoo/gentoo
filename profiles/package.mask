@@ -206,10 +206,6 @@ app-emulation/vpcs
 sys-devel/heirloom-devtools
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Fails to build for a long time (#639844). Removal in a month.
-dev-embedded/scratchbox2
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Fails to build (#662000), not compatible with kernel-4, use kernel driver rtsx_pci
 # instead. Removal in a month.
 sys-block/rts_pstor
