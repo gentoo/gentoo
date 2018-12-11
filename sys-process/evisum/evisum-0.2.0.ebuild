@@ -11,8 +11,8 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=dev-libs/efl-1.20.0[X]"
-RDEPEND="${DEPEND}"
+DEPEND="dev-libs/efl"
+RDEPEND="|| ( dev-libs/efl[X] dev-libs/efl[wayland] )"
 
 src_install() {
 	emake PREFIX="${D}"/usr install
