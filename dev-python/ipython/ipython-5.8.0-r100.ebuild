@@ -88,9 +88,9 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	# Remove script symlinks and man page to avoid collisions with slot 0
-	rm "${D}/usr/bin/iptest"
-	rm "${D}/usr/bin/ipython"
-	rm "${D}/usr/share/man/man1/ipython.*"
+	rm "${D}/usr/bin/iptest" || die
+	rm "${D}/usr/bin/ipython" || die
+	rm "${D}/usr/share/man/man1/ipython.1" || die
 }
 
 pkg_postinst() {
