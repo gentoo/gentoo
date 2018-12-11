@@ -2647,7 +2647,7 @@ mate-base/mate-control-center:appindicator - Add support for AppIndicator
 mate-base/mate-session-manager:xtrans - Build with Xtrans support; WARNING: Disabling this flag will result in ICE binding on all interfaces
 mate-extra/caja-extensions:cdr - Add an extension to burn files to cds using app-cdr/brasero.
 mate-extra/caja-extensions:gajim - Add an extension to support net-im/gajim.
-mate-extra/caja-extensions:gksu - Add an extension to support opening files as root with x11-libs/gksu.
+mate-extra/caja-extensions:gksu - Add an extension to support opening files as root with gksu.
 mate-extra/caja-extensions:image-converter - Add image conversion support.
 mate-extra/caja-extensions:mail - Add an extension to support e-mail functionality.
 mate-extra/caja-extensions:open-terminal - Add an extension to support an open terminal.
