@@ -11058,8 +11058,8 @@ x11-plugins/ascpu 1.11-r1: CPU statistics monitor utility for X Windows
 x11-plugins/asmem 1.12-r1: Monitor the utilization level of memory, cache and swap space
 x11-plugins/asmon 0.71: WindowMaker/AfterStep system monitor dockapp
 x11-plugins/astime 2.8-r2: Analogue clock utility for X Windows
-x11-plugins/bfm 0.6.4-r2 0.6.4-r3: a dockapp and gkrellm plug-in combining timecop's bubblemon and wmfishtime
-x11-plugins/bubblemon 1.46-r2 1.46-r3: A fun monitoring applet for your desktop, complete with swimming duck
+x11-plugins/bfm 0.6.4-r3: a dockapp and gkrellm plug-in combining timecop's bubblemon and wmfishtime
+x11-plugins/bubblemon 1.46-r3: A fun monitoring applet for your desktop, complete with swimming duck
 x11-plugins/docker 1.5-r1: Openbox app which acts as a system tray for KDE and GNOME2
 x11-plugins/enigmail 2.0.8-r1: Mozilla extension to provide GPG support in mail clients
 x11-plugins/fsviewer 0.2.6-r2: A file system viewer for Window Maker
@@ -11107,7 +11107,7 @@ x11-plugins/wmCalClock 1.25-r3: WMaker DockApp: A Calendar clock with antialiase
 x11-plugins/wmMatrix 0.2-r2: WMaker DockApp: Slightly modified version of Jamie Zawinski's xmatrix screenhack
 x11-plugins/wmSMPmon 3.1-r2: SMP system monitor dockapp
 x11-plugins/wmSpaceWeather 1.04_p19-r1: dockapp showing weather at geosynchronous orbit
-x11-plugins/wmSun 1.05 1.05-r1: dockapp which displays the rise/set time of the sun
+x11-plugins/wmSun 1.05-r1: dockapp which displays the rise/set time of the sun
 x11-plugins/wmacpi 2.3-r1: DockApp ACPI status monitor for laptops
 x11-plugins/wmapm 3.1-r2: WindowMaker DockApp: Battery/Power status monitor for laptops
 x11-plugins/wmapmload 0.3.4-r1: dockapp that monitors your apm battery status
@@ -11117,33 +11117,33 @@ x11-plugins/wmbiff 0.4.28: WMBiff is a dock applet for WindowMaker which can mon
 x11-plugins/wmbinclock 0.5-r1: a nifty little binary clock dockapp
 x11-plugins/wmblob 1.0.3: a fancy but useless dockapp with moving blobs
 x11-plugins/wmbutton 0.7.0: a dockapp application that displays nine configurable buttons
-x11-plugins/wmcalc 0.6 0.6-r1: A WindowMaker DockApp calculator
-x11-plugins/wmcliphist 2.1 2.1-r2: Dockable clipboard history application for Window Maker
-x11-plugins/wmclock 1.0.16 1.0.16-r1: a dockapp that displays time and date (same style as NEXTSTEP(tm) OS)
-x11-plugins/wmclockmon 0.8.1 0.8.1-r1: a nice digital clock with 7 different styles either in LCD or LED style
+x11-plugins/wmcalc 0.6-r1: A WindowMaker DockApp calculator
+x11-plugins/wmcliphist 2.1-r2: Dockable clipboard history application for Window Maker
+x11-plugins/wmclock 1.0.16-r1: a dockapp that displays time and date (same style as NEXTSTEP(tm) OS)
+x11-plugins/wmclockmon 0.8.1-r1: a nice digital clock with 7 different styles either in LCD or LED style
 x11-plugins/wmcoincoin 2.6.2_p20140602: a dockapp for browsing dacode news and board sites
 x11-plugins/wmcp 1.2.8-r1: A pager dockapp
 x11-plugins/wmcpuload 1.1.0_pre5: a dockapp for monitoring CPU usage with a LCD display
 x11-plugins/wmcube 1.0.2: a dockapp cpu monitor with spinning 3d objects
 x11-plugins/wmdots 0.2_beta-r1: multishape 3d rotating dots
-x11-plugins/wmdrawer 0.10.5-r2 0.10.5-r3: dockapp which provides a drawer (retractable button bar) to launch applications
+x11-plugins/wmdrawer 0.10.5-r3: dockapp which provides a drawer (retractable button bar) to launch applications
 x11-plugins/wmfire 1.2.4-r3: Load monitoring dockapp displaying dancing flame
-x11-plugins/wmfishtime 1.24-r1 1.24-r2 1.24-r3: A fun clock applet for your desktop featuring swimming fish
+x11-plugins/wmfishtime 1.24-r3: A fun clock applet for your desktop featuring swimming fish
 x11-plugins/wmfortune 0.241-r1: a dockapp showing fortune-mod messages
 x11-plugins/wmfrog 0.2.0-r1: a weather application, it shows the weather in a graphical way
 x11-plugins/wmfsm 0.36: dockapp for monitoring filesystem usage
 x11-plugins/wmget 0.6.1: a libcurl based dockapp for automated downloads
 x11-plugins/wmifinfo 0.10-r1: a dockapp for monitoring network interfaces
 x11-plugins/wmifs 1.8: Network monitoring dockapp
-x11-plugins/wminet 3.0.0-r1 3.0.0-r2: dockapp for monitoring internet connections to and from your computer
-x11-plugins/wmitime 0.5 0.5-r1: Overglorified clock dockapp w/time, date, and internet time
+x11-plugins/wminet 3.0.0-r2: dockapp for monitoring internet connections to and from your computer
+x11-plugins/wmitime 0.5-r1: Overglorified clock dockapp w/time, date, and internet time
 x11-plugins/wmix 3.2: Dockapp mixer for OSS or ALSA
-x11-plugins/wmload 0.9.7 0.9.7-r1: yet another dock application showing a system load gauge
+x11-plugins/wmload 0.9.7-r1: yet another dock application showing a system load gauge
 x11-plugins/wmmaiload 2.2.1-r1: dockapp that monitors one or more mailboxes
-x11-plugins/wmmemload 0.1.8 0.1.8-r1: dockapp that displays memory and swap space usage
+x11-plugins/wmmemload 0.1.8-r1: dockapp that displays memory and swap space usage
 x11-plugins/wmmenu 1.3-r2: a popup menu of icons like in AfterStep, as a dockapp
 x11-plugins/wmmon 1.2_beta1: Dockable system resources monitor applet for WindowMaker
-x11-plugins/wmmon+smp 1.0-r2 1.0-r3: Dockapp CPU monitor resembling Xosview, support for smp
+x11-plugins/wmmon+smp 1.0-r3: Dockapp CPU monitor resembling Xosview, support for smp
 x11-plugins/wmmoonclock 1.27-r1: dockapp that shows lunar ephemeris to a high accuracy
 x11-plugins/wmmp 0.10.0-r1: A Window Maker dock app client for Music Player Daemon(media-sound/mpd)
 x11-plugins/wmnd 0.4.16: WindowMaker Network Devices (dockapp)
@@ -11161,7 +11161,7 @@ x11-plugins/wmsystray 0.1.1-r1: Window Maker dock app that provides a system tra
 x11-plugins/wmtimer 2.92-r2: Dockable clock which can run in alarm, countdown timer or chronograph mode
 x11-plugins/wmtop 0.85: dockapp for monitoring the top three processes using cpu or memory
 x11-plugins/wmtz 0.7_p20150816: dockapp that shows the time in multiple timezones
-x11-plugins/wmudmount 2.2 2.2-r2: A filesystem mounter that uses udisks to handle notification and mounting
+x11-plugins/wmudmount 2.2-r2: A filesystem mounter that uses udisks to handle notification and mounting
 x11-plugins/wmweather 2.4.4: a dockable weather monitor for standard METAR stations using ICAO location
 x11-plugins/wmweather+ 2.13: A dockapp for displaying data collected from METAR, AVN, ETA, and MRF forecasts
 x11-plugins/wmwifi 0.6-r1: wireless network interface monitor dockapp
