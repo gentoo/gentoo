@@ -259,46 +259,6 @@ app-text/chm2pdf
 # Unmaintained, security issues (#630796, #663164). Removal in a month.
 dev-db/couchdb
 
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Unkeyworded since 2008, non-installable (#664680). Removal in a month.
-sys-fs/devfsd
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Orphan, no reverse deps, dead since 2003 (#665046, #521242). Removal in a
-# month.
-app-text/clara
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Merged into >=media-tv/mythtv-29, bug #665924. Removal in a month.
-media-plugins/mythplugins
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# No reverse deps, obsoleted in 2016 (#666130). Removal in a month.
-dev-python/jenkins-webapi
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Build issues (#666166), upstream dead for years (#619624). Removal in a
-# month.
-media-plugins/vdr-image
-media-plugins/vdr-picselshow
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Dead for years, no reverse deps (#665046). Removal in a month.
-app-text/clara
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# ebuild plays with /dev (#666456). Removal in a month.
-app-misc/fujiplay
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Relies on dead imlib-1, not needed by anything in the tree (#668310).
-# Removal in a month.
-media-libs/fnlib
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Build issues (#670436), dead since year 2000. Removal in a month.
-net-ftp/axyftp
-
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
 # Removal in 30 days.
