@@ -11,8 +11,6 @@ acpi
 alsa
 apm
 caps
-cman
-clvm
 directfb
 djbfft
 fbcon

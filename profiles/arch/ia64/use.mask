@@ -171,11 +171,6 @@ connman
 # media-libs/xine-lib is not keyworded
 xine
 
-# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
-# libdlm and cman are not keyworded
-cman
-clvm
-
 template_haskell
 
 # toolkit for nvidia binary drivers

@@ -145,11 +145,6 @@ nvtt
 # fdk-aac is already keyworded here
 -fdk
 
-# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
-# libdlm and cman are not keyworded
-cman
-clvm
-
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2014)
 # Unmask systemd since it is keyworded here.
 -systemd
