@@ -191,7 +191,7 @@ src_install() {
 		VBoxPython?_*.so
 
 	if use headless ; then
-		rm -rf VBoxSDL VirtualBox VBoxKeyboard.so
+		rm -rf VBoxSDL VirtualBox{,VM} VBoxKeyboard.so
 	fi
 
 	doins -r * || die
@@ -204,15 +204,17 @@ src_install() {
 	dosym ../VBoxXPCOM.so /opt/VirtualBox/components/VBoxXPCOM.so
 
 	local each
-	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,NetAdpCtl,NetDHCP,NetNAT,TestOGL,ExtPackHelperApp} VirtualBox ; do
+	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,TestOGL,ExtPackHelperApp} VirtualBox ; do
 		fowners root:vboxusers /opt/VirtualBox/${each}
 		fperms 0750 /opt/VirtualBox/${each}
 		pax-mark -m "${ED%/}"/opt/VirtualBox/${each}
 	done
 	# VBoxNetAdpCtl and VBoxNetDHCP binaries need to be suid root in any case..
-	fperms 4750 /opt/VirtualBox/VBoxNetAdpCtl
-	fperms 4750 /opt/VirtualBox/VBoxNetDHCP
-	fperms 4750 /opt/VirtualBox/VBoxNetNAT
+	for each in VBoxNet{AdpCtl,DHCP,NAT} VirtualBoxVM ; do
+		fowners root:vboxusers /opt/VirtualBox/${each}
+		fperms 4750 /opt/VirtualBox/${each}
+		pax-mark -m "${ED%/}"/opt/VirtualBox/${each}
+	done
 
 	if ! use headless ; then
 		# Hardened build: Mark selected binaries set-user-ID-on-execution

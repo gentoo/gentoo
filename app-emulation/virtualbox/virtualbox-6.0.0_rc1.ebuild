@@ -269,7 +269,7 @@ src_install() {
 		local perms="${2:-0750}"
 		local path="${3:-${vbox_inst_path}}"
 
-		[[ -n "${binary}" ]] || die "vbox_inst: No binray given!"
+		[[ -n "${binary}" ]] || die "vbox_inst: No binary given!"
 		[[ ${perms} =~ ^[[:digit:]]+{4}$ ]] || die "vbox_inst: perms must consist of four digits."
 
 		insinto ${path}
@@ -346,8 +346,8 @@ src_install() {
 		done
 
 		if use qt5 ; then
-			vbox_inst Virtualbox
-			vbox_inst VirtualboxVM 4750
+			vbox_inst VirtualBox
+			vbox_inst VirtualBoxVM 4750
 			for each in VirtualBox{,VM} ; do
 				pax-mark -m "${ED%/}"${vbox_inst_path}/${each}
 			done
@@ -357,7 +357,8 @@ src_install() {
 				pax-mark -m "${ED%/}"${vbox_inst_path}/VBoxTestOGL
 			fi
 
-			for each in virtualbox{,vm} VirtualBox{,VM} ; do
+			#for each in virtualbox{,vm} VirtualBox{,VM} ; do
+			for each in virtualbox VirtualBox ; do
 				dosym ${vbox_inst_path}/VBox /usr/bin/${each}
 			done
 
