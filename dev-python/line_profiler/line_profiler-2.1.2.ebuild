@@ -20,7 +20,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
-	dev-python/ipython[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '>=dev-python/ipython-6[${PYTHON_USEDEP}]' -3)
+	$(python_gen_cond_dep 'dev-python/ipython:py2[${PYTHON_USEDEP}]' -2)
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 

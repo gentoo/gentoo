@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
 RDEPEND="
@@ -33,11 +33,10 @@ DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
+		>=dev-python/pytest-4[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
-	)
-	"
+		dev-python/requests[${PYTHON_USEDEP}]
+	)"
 
 python_prepare_all() {
 	# Prevent un-needed download during build
@@ -56,5 +55,5 @@ python_compile_all() {
 }
 
 python_test() {
-	iptest --coverage xml ipyparallel.tests -- -vsx || die
+	pytest ipyparallel -vv -p no:cov ipyparallel/tests || die
 }

@@ -18,8 +18,7 @@ KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="
-	>=dev-python/ipython-4.0.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '<dev-python/ipython-6[${PYTHON_USEDEP}]' 'python2*')
+	<dev-python/ipython-6:0[${PYTHON_USEDEP}]
 	dev-python/jupyter_client[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-4.1.0[${PYTHON_USEDEP}]
 	>=www-servers/tornado-4.0[${PYTHON_USEDEP}]
