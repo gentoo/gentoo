@@ -295,10 +295,6 @@ app-misc/fujiplay
 # Removal in a month.
 media-libs/fnlib
 
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Build issues (#670436), dead since year 2000. Removal in a month.
-net-ftp/axyftp
-
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
 # Removal in 30 days.
