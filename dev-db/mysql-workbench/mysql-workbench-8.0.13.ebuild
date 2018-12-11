@@ -101,7 +101,3 @@ src_configure() {
 	)
 	cmake-utils_src_configure
 }
-
-#src_compile() {
-#	cmake-utils_src_compile -j1
-#}
