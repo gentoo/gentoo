@@ -16,8 +16,7 @@ SRC_URI="https://github.com/ClusterLabs/${PN}/archive/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
-REQUIRED_USE="cman? ( !heartbeat )"
-IUSE="acl cman heartbeat smtp snmp static-libs"
+IUSE="acl heartbeat smtp snmp static-libs"
 
 DEPEND="${PYTHON_DEPS}
 	app-text/docbook-xsl-stylesheets
@@ -25,7 +24,6 @@ DEPEND="${PYTHON_DEPS}
 	sys-cluster/cluster-glue
 	>=sys-cluster/libqb-0.14.0
 	sys-cluster/resource-agents
-	cman? ( sys-cluster/cman )
 	heartbeat? ( >=sys-cluster/heartbeat-3.0.0 )
 	!heartbeat? ( sys-cluster/corosync )
 	smtp? ( net-libs/libesmtp )
@@ -58,8 +56,8 @@ src_configure() {
 		--disable-dependency-tracking \
 		--disable-fatal-warnings \
 		$(use_with acl) \
-		$(use_with cman cs-quorum) \
-		$(use_with cman cman) \
+		--without-cs-quorum \
+		--without-cman \
 		$(use_with heartbeat) \
 		$(use_with smtp esmtp) \
 		$(use_with snmp) \
