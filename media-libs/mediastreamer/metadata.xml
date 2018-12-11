@@ -15,7 +15,6 @@
 			packet</flag>
 		<flag name="ortp">Enable usage of <pkg>net-libs/ortp</pkg></flag>
 		<flag name="pcap">Enable usage of <pkg>net-libs/libpcap</pkg></flag>
-		<flag name="silk">Use silk (skype protocol) codec plugin</flag>
 		<flag name="video">Enable video support</flag>
 	</use>
 </pkgmetadata>
