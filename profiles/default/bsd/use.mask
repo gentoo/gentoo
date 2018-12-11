@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License, v2
 
 # Mart Raudsepp <leio@gentoo.org>
@@ -56,7 +56,6 @@ tslib
 
 # Mask Xorg-modular drivers that are Linux-specific
 input_devices_evdev
-input_devices_tslib
 input_devices_synaptics
 input_devices_vmmouse
 video_cards_vmware
