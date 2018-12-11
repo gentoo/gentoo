@@ -10,7 +10,8 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	MY_P="imagemagick-9999"
 else
-	MY_P=ImageMagick-$(ver_rs 3 '-')
+	MY_PV="$(ver_rs 3 '-')"
+	MY_P="ImageMagick-${MY_PV}"
 	SRC_URI="mirror://${PN}/${MY_P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
@@ -177,13 +178,18 @@ src_test() {
 		die "Failed to install default blank policy.xml in '${_im_local_config_home}'"
 
 	local im_command= IM_COMMANDS=()
-	IM_COMMANDS+=( "magick -version" ) # Verify that we are using version we just built
+	if [[ ${PV} == "9999" ]] ; then
+		IM_COMMANDS+=( "magick -version" ) # Show version we are using -- cannot verify because of live ebuild
+	else
+		IM_COMMANDS+=( "magick -version | grep -q -- \"${MY_PV}\"" ) # Verify that we are using version we just built
+	fi
 	IM_COMMANDS+=( "magick -list policy" ) # Verify that policy.xml is used
 	IM_COMMANDS+=( "emake check" ) # Run tests
 
 	for im_command in "${IM_COMMANDS[@]}"; do
-		"${S}"/magick.sh \
-		${im_command} || die
+		eval "${S}"/magick.sh \
+			${im_command} || \
+			die "Failed to run \"${im_command}\""
 	done
 }
 
