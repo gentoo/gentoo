@@ -219,10 +219,6 @@ media-video/sswf
 dev-libs/liblinebreak
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Fails at runtime (#645690). Removal in a month.
-dev-lang/gnu-smalltalk
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Fails to build (#662000), not compatible with kernel-4, use kernel driver rtsx_pci
 # instead. Removal in a month.
 sys-block/rts_pstor
