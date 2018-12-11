@@ -1,0 +1,76 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${configfile:=/etc/c-icap/${SVCNAME}.conf}
+
+get_config() {
+    local value=$(awk '$1 == "'$1'" { print $2 }' ${configfile})
+    echo ${value:-$2}
+}
+
+description="C-ICAP service"
+description_checkconfig="Check config for ${SVCNAME}"
+description_reload="Live config reload"
+description_relog="Close and re-open all log files"
+
+command="/usr/libexec/c-icap"
+command_arguments="${EXTRA_OPTS} -f ${configfile}"
+extra_started_commands="relog reload"
+extra_commands="checkconfig"
+
+pidfile=$(get_config PidFile /var/run/c-icap/${SVCNAME}.pid)
+cmdsocket=$(get_config CommandsSocket /var/run/c-icap/${SVCNAME}.ctl)
+
+[[ -z "${MAXWAITONSTOP// }" ]] || stop_retry="--retry ${MAXWAITONSTOP}"
+
+depend() {
+	need localmount
+	config ${configfile}
+	[ "$(get_config Logger file_logger)" = "sys_logger" ] && use logger
+}
+
+checkpidinfo() {
+	if [ ! -e ${pidfile} ]; then
+		eerror "${SVCNAME} isn't running (${pidfile} not found)!"
+		return 1
+	else
+		pidnum=$(cat ${pidfile})
+		if [ ${#pidnum} -eq 0 ]; then
+			eerror "Could not determine PID of ${SVCNAME} (${pidfile} empty)! Did the service ever start?"
+			return 1
+		fi
+		pidcheck="$(ps -eo pid | grep -c ${pidnum})"
+		if [ $((pidcheck)) -ne 1 ]; then
+			eerror "Could not determine PID of ${SVCNAME}! Did the service crash?"
+			return 1
+		fi
+	fi
+}
+
+start_pre() {
+	checkpath -d "$(dirname "${cmdsocket}")" "$(dirname "${pidfile}")"
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop ${stop_retry} --quiet --pidfile ${pidfile} >/dev/null 2>&1
+	eend $?
+}
+
+relog() {
+	checkpidinfo || return 1
+	start_pre || return 1
+	ebegin "Sending relog command to ${SVCNAME} via ${cmdsocket}"
+	echo -n "relog" > ${cmdsocket}
+	eend $?
+}
+
+reload() {
+	checkpidinfo || return 1
+	start_pre || return 1
+	ebegin "Sending reconfigure and relog commands to ${SVCNAME} via ${cmdsocket}"
+	echo -n "reconfigure" > ${cmdsocket}
+	echo -n "relog" > ${cmdsocket}
+	eend $?
+}

@@ -1,0 +1,6 @@
+/var/log/c-icap/access.log /var/log/c-icap/server.log {
+	missingok
+	postrotate
+		/etc/init.d/c-icap relog > /dev/null 2>&1 || true
+	endscript
+}
