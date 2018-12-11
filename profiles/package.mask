@@ -175,7 +175,6 @@ media-libs/libptp2
 # Dead for years, last package depending on old musicbrainz:3 (#629392).
 # Removal in a month.
 media-video/gnome-mplayer
-www-plugins/gecko-mediaplayer
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Fails to build (#662000), not compatible with kernel-4, use kernel driver rtsx_pci
