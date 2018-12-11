@@ -84,11 +84,6 @@ sdl
 lm_sensors
 wxwidgets
 
-# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
-# libdlm and cman are not keyworded
-cman
-clvm
-
 # Many X drivers make no sense on this platform.
 input_devices_elographics
 input_devices_evdev
