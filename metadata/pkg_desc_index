@@ -734,9 +734,9 @@ app-emulation/cloud-init 17.2: cloud initialisation magic
 app-emulation/containerd 1.0.3 1.1.2: A daemon to control runC
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 2.17.0 2.18.0: Golden Disk Image builder.
-app-emulation/docker 18.03.1: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 18.03.1 18.06.1-r1: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.19.0: Multi-container orchestration for Docker
-app-emulation/docker-proxy 0.8.0_p20180411: Docker container networking
+app-emulation/docker-proxy 0.8.0_p20180411 0.8.0_p20180626: Docker container networking
 app-emulation/docker-runc 1.0.0_rc4_p20180122: runc container cli tools (docker fork)
 app-emulation/dosemu 1.4.1_pre20130107-r5: DOS Emulator
 app-emulation/e-uae 0.8.29_rc4-r3: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
@@ -757,7 +757,7 @@ app-emulation/lxd 3.5 3.6-r1: Fast, dense and secure container management
 app-emulation/q4wine 1.3.6-r1: Qt GUI configuration tool for Wine
 app-emulation/qemu 2.12.0-r3 2.12.1: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 2.12.0-r1: QEMU Guest Agent (qemu-ga) for use when running inside a VM
-app-emulation/runc 1.0.0_rc5-r1: runc container cli tools
+app-emulation/runc 1.0.0_rc5-r1 1.0.0_rc5_p20180509: runc container cli tools
 app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, PDP-11 etc.)
 app-emulation/spectemu 0.99.3: 48k ZX Spectrum Emulator
 app-emulation/spice 0.14.0-r2: SPICE server
@@ -7085,7 +7085,7 @@ mail-filter/rblcheck 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sieve-connect 0.87: Sieve Command Line Interface
 mail-filter/spamass-milter 0.3.2: A milter for SpamAssassin
-mail-filter/spamassassin 3.4.1-r19 3.4.1-r20 3.4.1-r21 3.4.2-r2: An extensible mail filter which can identify and tag spam
+mail-filter/spamassassin 3.4.2-r2: An extensible mail filter which can identify and tag spam
 mail-filter/spamdyke 4.3.0: A drop-in connection-time spam filter for qmail
 mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using Bayesian analysis
 mail-filter/sqlgrey 1.7.6-r2: SQLgrey is a postfix policy service implementing a grey-listing policy
@@ -10327,7 +10327,7 @@ sys-process/schedtool 1.3.0-r1: A tool to query or alter a process' scheduling p
 sys-process/supervise-scripts 4.0: Starting and stopping daemontools managed services
 sys-process/systemd-cron 1.5.4 1.5.12-r1: systemd units to create timers for cron directories and crontab
 sys-process/time 1.7-r1 1.7-r3 1.7.2: Displays info about resources used by a program
-sys-process/tini 0.16.1: A tiny but valid init for containers
+sys-process/tini 0.16.1 0.18.0: A tiny but valid init for containers
 sys-process/tiptop 2.2: top for performance counters
 sys-process/vixie-cron 4.1-r14 4.1-r15: Paul Vixie's cron daemon, a fully featured crond implementation
 sys-process/wait_on_pid 0.0.2: small utility to wait for an arbitrary process to exit
