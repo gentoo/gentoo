@@ -271,11 +271,6 @@ media-plugins/mythplugins
 # No reverse deps, obsoleted in 2016 (#666130). Removal in a month.
 dev-python/jenkins-webapi
 
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Build issues (#666166), upstream dead for years (#619624). Removal in a
-# month.
-media-plugins/vdr-image
-
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
 # Removal in 30 days.
