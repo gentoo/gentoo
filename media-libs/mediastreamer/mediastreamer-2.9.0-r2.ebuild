@@ -17,7 +17,7 @@ KEYWORDS="amd64 ppc ppc64 x86"
 # TODO: run-time test for ipv6: does it really need ortp[ipv6] ?
 IUSE="+alsa amr bindist coreaudio debug doc examples +filters g726 g729 gsm ilbc
 	ipv6 libav ntp-timestamp opengl opus +ortp oss pcap portaudio pulseaudio sdl
-	silk +speex static-libs test theora upnp v4l video x264 X"
+	+speex static-libs test theora upnp v4l video x264 X"
 
 REQUIRED_USE="|| ( oss alsa portaudio coreaudio pulseaudio )
 	opengl? ( video )
@@ -72,7 +72,6 @@ PDEPEND="
 	amr? ( !bindist? ( media-plugins/mediastreamer-amr ) )
 	g729? ( !bindist? ( media-plugins/mediastreamer-bcg729 ) )
 	ilbc? ( media-plugins/mediastreamer-ilbc )
-	silk? ( !bindist? ( media-plugins/mediastreamer-silk ) )
 	video? ( x264? ( media-plugins/mediastreamer-x264 ) )
 "
 
