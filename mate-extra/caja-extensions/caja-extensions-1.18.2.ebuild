@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 SENDTO="cdr gajim +mail pidgin upnp"
-IUSE="gksu image-converter +open-terminal share +wallpaper xattr ${SENDTO}"
+IUSE="image-converter +open-terminal share +wallpaper xattr ${SENDTO}"
 
 COMMON_DEPEND=">=dev-libs/glib-2.36:2
 	>=mate-base/caja-1.17.1
@@ -35,7 +35,6 @@ COMMON_DEPEND=">=dev-libs/glib-2.36:2
 RDEPEND="${COMMON_DEPEND}
 	cdr? ( >=app-cdr/brasero-2.32.1:0= )
 	gajim? ( net-im/gajim:0 )
-	gksu? ( x11-libs/gksu )
 	image-converter? (
 		|| (
 			media-gfx/imagemagick
@@ -66,7 +65,7 @@ src_configure() {
 	mate_src_configure \
 		--enable-sendto \
 		--with-sendto-plugins=${sendto_plugins}\
-		$(use_enable gksu) \
+		--disable-gksu \
 		$(use_enable image-converter) \
 		$(use_enable open-terminal) \
 		$(use_enable share) \
