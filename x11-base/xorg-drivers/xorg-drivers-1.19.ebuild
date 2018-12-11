@@ -18,7 +18,6 @@ IUSE_INPUT_DEVICES="
 	input_devices_keyboard
 	input_devices_libinput
 	input_devices_mouse
-	input_devices_tslib
 	input_devices_vmmouse
 	input_devices_void
 	input_devices_synaptics
@@ -65,7 +64,6 @@ PDEPEND="
 	input_devices_keyboard?    ( x11-drivers/xf86-input-keyboard )
 	input_devices_libinput?    ( x11-drivers/xf86-input-libinput )
 	input_devices_mouse?       ( x11-drivers/xf86-input-mouse )
-	input_devices_tslib?       ( x11-drivers/xf86-input-tslib )
 	input_devices_vmmouse?     ( x11-drivers/xf86-input-vmmouse )
 	input_devices_void?        ( x11-drivers/xf86-input-void )
 	input_devices_synaptics?   ( x11-drivers/xf86-input-synaptics )

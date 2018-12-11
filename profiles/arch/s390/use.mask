@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -92,7 +92,6 @@ input_devices_keyboard
 input_devices_mouse
 input_devices_vmmouse
 input_devices_synaptics
-input_devices_tslib
 input_devices_wacom
 video_cards_amdgpu
 video_cards_fbdev
