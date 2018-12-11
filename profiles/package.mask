@@ -251,10 +251,6 @@ net-dialup/ueagle4-atm
 # instead. Removal in a month.
 sys-block/rts_pstor
 
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Fails to run (#662180). Removal in a month.
-app-text/chm2pdf
-
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
 # Removal in 30 days.
