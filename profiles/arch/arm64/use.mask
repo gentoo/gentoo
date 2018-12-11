@@ -128,7 +128,6 @@ tracker
 xindy
 mpi
 lasi
-schroedinger
 hardened
 frei0r
 pdfannotextractor

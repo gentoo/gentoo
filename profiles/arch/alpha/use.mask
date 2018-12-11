@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License, v2
 
 # Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
@@ -98,7 +98,6 @@ openexr
 
 # Stuff we don't want
 afs
-schroedinger
 ots
 frei0r
 libev

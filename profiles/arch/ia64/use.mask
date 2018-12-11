@@ -86,7 +86,6 @@ nut
 sctp
 bs2b
 tokyocabinet
-schroedinger
 ots
 vaapi
 librtmp
