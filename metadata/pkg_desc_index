@@ -1306,7 +1306,7 @@ app-text/cb2bib 1.9.8: Tool for extracting unformatted bibliographic references
 app-text/cedilla 0.6: UTF-8 to postscript converter
 app-text/chasen 2.4.4-r3: Japanese Morphological Analysis System, ChaSen
 app-text/cmark 0.28.0: CommonMark parsing and rendering library and program in C
-app-text/cmigemo 1.3c-r2: C/Migemo -- Migemo library implementation in C
+app-text/cmigemo 1.3c-r3: Migemo library implementation in C
 app-text/code2html 0.9.1-r2: Converts source files to colored HTML output
 app-text/convertlit 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
 app-text/convmv 2.04: convert filenames to utf8 or any other charset
