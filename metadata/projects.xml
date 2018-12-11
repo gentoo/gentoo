@@ -2705,6 +2705,11 @@
       <role>ppc/ppc64 keywording/stabilization</role>
     </member>
     <member>
+      <email>jer@gentoo.org</email>
+      <name>Jeroen Roovers</name>
+      <role>packages</role>
+    </member>
+    <member>
       <email>lu_zero@gentoo.org</email>
       <name>Luca Barbato</name>
       <role>ppc/ppc64 keywording/stabilization</role>
