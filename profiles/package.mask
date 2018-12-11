@@ -241,11 +241,6 @@ app-portage/gs-pypi
 games-roguelike/mangband
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Nobody is taking care of them, use the ones provided by the maintained
-# sys-kernel/linux-firmware package (#661884). Removal in a month.
-net-dialup/ueagle-atm
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Fails to build (#662000), not compatible with kernel-4, use kernel driver rtsx_pci
 # instead. Removal in a month.
 sys-block/rts_pstor
