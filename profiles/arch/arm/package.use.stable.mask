@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (04 Nov 2018)
@@ -139,7 +139,6 @@ www-client/qupzilla kwallet
 gnome-base/gvfs google
 net-libs/libproxy webkit
 >=x11-libs/gtk+-3.12.2 cloudprint
-x11-libs/gksu gnome
 
 # Ian Whyman <thev00d00@gentoo.org> (22 May 2016)
 # RPI support on arm
