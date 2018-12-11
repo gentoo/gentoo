@@ -146,7 +146,6 @@ dev-ruby/wikicloth
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Dead for years (#425156) with security issues (#534540). Removal in a
 # month.
-x11-libs/gksu
 x11-libs/libgksu
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)

@@ -53,7 +53,6 @@ dev-python/networkx pandas test
 # Unkeyworded dependencies.
 dev-python/matplotlib doc
 net-libs/gnome-online-accounts gnome
-x11-libs/gksu gnome
 
 # Thomas Deutschmann <whissi@gentoo.org> (04 Jul 2018)
 # dev-libs/xxhash not keyworded for arm64
