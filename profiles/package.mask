@@ -155,13 +155,6 @@ dev-java/ant-nodeps
 dev-java/ant-trax
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Unmaintained for years, buggy (#183273, #491010, #605544). You can rely on
-# INSTALL_MASK to skip unwanted locales and install only foo locale:
-# INSTALL_MASK="/usr/share/locale -/usr/share/locale/foo"
-# Removal in a month.
-app-admin/localepurge
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Fails to build (#662000), not compatible with kernel-4, use kernel driver rtsx_pci
 # instead. Removal in a month.
 sys-block/rts_pstor
