@@ -275,7 +275,6 @@ dev-python/jenkins-webapi
 # Build issues (#666166), upstream dead for years (#619624). Removal in a
 # month.
 media-plugins/vdr-image
-media-plugins/vdr-picselshow
 
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
