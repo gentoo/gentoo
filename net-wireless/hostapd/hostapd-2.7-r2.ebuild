@@ -7,7 +7,7 @@ inherit toolchain-funcs eutils systemd savedconfig
 
 DESCRIPTION="IEEE 802.11 wireless LAN Host AP daemon"
 HOMEPAGE="http://w1.fi"
-EXTRAS_VER="2.7-r1"
+EXTRAS_VER="2.7-r2"
 EXTRAS_NAME="${CATEGORY}_${PN}_${EXTRAS_VER}_extras"
 SRC_URI="https://dev.gentoo.org/~andrey_utkin/distfiles/${EXTRAS_NAME}.tar.xz"
 
@@ -44,7 +44,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${WORKDIR}/${EXTRAS_NAME}/0001-bug672834-libressl.patch"
+	"${WORKDIR}/${EXTRAS_NAME}/0001-bug672834-libressl-v2.patch"
 )
 
 S="${S}/${PN}"
