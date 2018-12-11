@@ -193,10 +193,6 @@ app-forensics/libbfio
 sys-apps/likwid
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Doesn't build for a long time (#638096). Removal in a month.
-games-action/rafkill
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Fails to build (#662000), not compatible with kernel-4, use kernel driver rtsx_pci
 # instead. Removal in a month.
 sys-block/rts_pstor
