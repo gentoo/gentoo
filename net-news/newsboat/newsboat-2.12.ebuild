@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ HOMEPAGE="https://newsboat.org/ https://github.com/newsboat/newsboat"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
+IUSE=""
 
 RDEPEND="
 	>=dev-db/sqlite-3.5:3
@@ -32,36 +32,23 @@ DEPEND="${RDEPEND}
 	app-text/asciidoc
 	virtual/pkgconfig
 	sys-devel/gettext
-	test? ( >=dev-cpp/catch-2 )
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.11-flags.patch
 )
 
-src_prepare() {
-	default
-
-	# use system catch
-	sed -i 's#"3rd-party/catch.hpp"#<catch/catch.hpp>#' test/*.{cpp,h} || die
-	rm 3rd-party/catch.hpp || die
-}
-
 src_configure() {
 	./config.sh || die
 }
 
 src_compile() {
-	# update object build deps to use system catch
-	echo > mk/mk.deps || die
-	emake depslist
-
 	emake prefix="/usr" CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
 }
 
 src_test() {
 	# tests require UTF-8 locale
-	emake test
+	emake CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" test
 	# Tests fail if in ${S} rather than in ${S}/test
 	cd "${S}"/test || die
 	./test || die
