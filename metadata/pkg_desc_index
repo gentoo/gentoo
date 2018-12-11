@@ -118,7 +118,7 @@ app-admin/radmind 1.14.1-r1: command-line tools and server to remotely administe
 app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.14.1: Tool to manage OpenRC services that need to be restarted
-app-admin/rsyslog 8.35.0-r1 8.38.0-r1: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.38.0-r1: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617: Rules for Sagan log analyzer
 app-admin/setools 4.1.1: Policy Analysis Tools for SELinux
@@ -3150,8 +3150,8 @@ dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /pr
 dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.4.0: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 3.2.0: A Qt implementation of XDG standards
-dev-libs/librdkafka 0.11.4 0.11.5: Apache Kafka C/C++ client library
-dev-libs/librelp 1.2.16 1.2.18: An easy to use library for the RELP protocol
+dev-libs/librdkafka 0.11.5: Apache Kafka C/C++ client library
+dev-libs/librelp 1.2.18: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
 dev-libs/libressl 2.6.5: Free version of the SSL/TLS protocol forked from OpenSSL
@@ -10579,7 +10579,7 @@ www-client/epiphany 3.26.7: GNOME webbrowser based on Webkit
 www-client/falkon 3.0.1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 60.3.0-r1: Firefox Web Browser
-www-client/firefox-bin 60.3.0-r1 63.0.3 64.0: Firefox Web Browser
+www-client/firefox-bin 60.4.0 64.0: Firefox Web Browser
 www-client/httrack 3.48.21-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/links 2.14-r1: A fast and lightweight web browser running in both graphics and text mode
 www-client/lynx 2.8.9_pre11 2.8.9_pre16: An excellent console-based web browser with ssl support
