@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="aac alsa doc dv encode ffmpeg gtk jpeg lame libav cpu_flags_x86_mmx opengl png schroedinger static-libs vorbis X x264"
+IUSE="aac alsa doc dv encode ffmpeg gtk jpeg lame libav cpu_flags_x86_mmx opengl png static-libs vorbis X x264"
 
 RDEPEND="
 	sys-libs/zlib
@@ -32,7 +32,6 @@ RDEPEND="
 	lame? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
 	opengl? ( virtual/opengl )
 	png? ( >=media-libs/libpng-1.6.10:0[${MULTILIB_USEDEP}] )
-	schroedinger? ( >=media-libs/schroedinger-1.0.11-r1[${MULTILIB_USEDEP}] )
 	vorbis? (
 		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
 		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
@@ -98,7 +97,7 @@ multilib_src_configure() {
 		$(use_with jpeg libjpeg) \
 		$(use_with ffmpeg) \
 		$(use_with png libpng) \
-		$(use_with schroedinger) \
+		--without-schroedinger \
 		$(use_with aac faac) \
 		$(use encode || echo --without-faac) \
 		$(use_with aac faad2) \
