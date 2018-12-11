@@ -1081,7 +1081,7 @@ app-misc/plod 1.9-r2: A tool to help administrators keep track of daily activiti
 app-misc/pwsafe 0.2.0-r4: A Password Safe compatible command-line password manager
 app-misc/pysmssend 1.48-r2: Python Application for sending sms over multiple ISPs
 app-misc/pystopwatch 2012.12.24.1-r1: clock and two countdown functions that can minimize to the tray
-app-misc/ranger 1.9.1: A vim-inspired file manager for the console
+app-misc/ranger 1.9.2: A vim-inspired file manager for the console
 app-misc/realpath 1.17: Return the canonicalized absolute pathname
 app-misc/recoll 1.24.1: A personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
