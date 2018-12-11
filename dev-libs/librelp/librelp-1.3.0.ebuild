@@ -1,9 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 
-inherit autotools
+inherit autotools python-any-r1
 
 DESCRIPTION="An easy to use library for the RELP protocol"
 HOMEPAGE="http://www.librelp.com/"
@@ -15,7 +16,7 @@ LICENSE="GPL-3+ doc? ( FDL-1.3 )"
 SLOT="0/0.4.0"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
-IUSE="debug doc +ssl +gnutls libressl openssl static-libs"
+IUSE="debug doc +ssl +gnutls libressl openssl static-libs test"
 REQUIRED_USE="ssl? ( ^^ ( gnutls openssl ) )
 	gnutls? ( ssl )
 	openssl? ( ssl )
@@ -36,7 +37,16 @@ DEPEND="ssl? (
 			libressl? ( dev-libs/libressl:0= )
 		)
 	)
+	test? ( ${PYTHON_DEPS} )
 	virtual/pkgconfig"
+
+RESTRICT="!test? ( test )"
+
+PATCHES=( "${FILESDIR}"/${P}-dummyclient.py-Py3-compatibility.patch )
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	sed -i \

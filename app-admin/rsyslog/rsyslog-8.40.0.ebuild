@@ -16,28 +16,24 @@ if [[ ${PV} == "9999" ]]; then
 
 	inherit git-r3
 else
-	KEYWORDS="amd64 arm ~arm64 hppa x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 
 	SRC_URI="
 		https://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
 		doc? ( https://www.rsyslog.com/files/download/${PN}/${PN}-doc-${PV}.tar.gz )
 	"
-
-	PATCHES=(
-		"${FILESDIR}"/${PN}-8.35.0-fix-issue2719.patch
-		"${FILESDIR}"/${PN}-8.35.0-fix-issue2726.patch
-	)
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
 SLOT="0"
-IUSE="curl dbi debug doc elasticsearch +gcrypt grok jemalloc kafka kerberos kubernetes libressl mdblookup mongodb mysql"
-IUSE+=" normalize omhttpfs omudpspoof postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools +uuid zeromq"
+IUSE="curl dbi debug doc elasticsearch +gcrypt grok gnutls jemalloc kafka kerberos kubernetes libressl mdblookup"
+IUSE+=" mongodb mysql normalize omhttp omhttpfs omudpspoof openssl postgres rabbitmq redis relp rfc3195 rfc5424hmac"
+IUSE+=" snmp ssl systemd test usertools +uuid xxhash zeromq"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/libfastjson-0.99.8:=
 	>=dev-libs/libestr-0.1.9
-	>=dev-libs/liblogging-1.0.1:=[stdlog]
 	>=sys-libs/zlib-1.2.5
 	curl? ( >=net-misc/curl-7.35.0 )
 	dbi? ( >=dev-db/libdbi-0.8.3 )
@@ -60,16 +56,23 @@ RDEPEND="
 	postgres? ( >=dev-db/postgresql-8.4.20:= )
 	rabbitmq? ( >=net-libs/rabbitmq-c-0.3.0:= )
 	redis? ( >=dev-libs/hiredis-0.11.0:= )
-	relp? ( >=dev-libs/librelp-1.2.14:= )
+	relp? ( >=dev-libs/librelp-1.2.17:= )
 	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )
 	rfc5424hmac? (
 		!libressl? ( >=dev-libs/openssl-0.9.8y:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )
-	ssl? ( >=net-libs/gnutls-2.12.23:0= )
+	ssl? (
+		gnutls? ( >=net-libs/gnutls-2.12.23:0= )
+		openssl? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
+	)
 	systemd? ( >=sys-apps/systemd-234 )
 	uuid? ( sys-apps/util-linux:0= )
+	xxhash? ( dev-libs/xxhash:= )
 	zeromq? (
 		>=net-libs/czmq-3.0.2
 	)"
@@ -77,12 +80,16 @@ DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-archive-2015.02.24
 	virtual/pkgconfig
 	test? (
+		>=dev-libs/liblogging-1.0.1[stdlog]
 		jemalloc? ( <sys-libs/libfaketime-0.9.7 )
 		!jemalloc? ( sys-libs/libfaketime )
 		${PYTHON_DEPS}
 	)"
 
-REQUIRED_USE="kubernetes? ( normalize )"
+REQUIRED_USE="
+	kubernetes? ( normalize )
+	ssl? ( || ( gnutls openssl ) )
+"
 
 if [[ ${PV} == "9999" ]]; then
 	DEPEND+=" doc? ( >=dev-python/sphinx-1.1.3-r7 )"
@@ -157,7 +164,10 @@ src_configure() {
 		--disable-debug-symbols
 		--disable-generate-man-pages
 		--without-valgrind-testbench
+		--disable-liblogging-stdlog
 		$(use_enable test testbench)
+		$(use_enable test libfaketime)
+		$(use_enable test extended-tests)
 		# Input Plugins without depedencies
 		--enable-imdiag
 		--enable-imfile
@@ -180,10 +190,15 @@ src_configure() {
 		--enable-omstdout
 		--enable-omuxsock
 		# Misc
+		--enable-fmhash
+		$(use_enable xxhash fmhash-xxhash)
 		--enable-pmaixforwardedfrom
 		--enable-pmciscoios
 		--enable-pmcisconames
 		--enable-pmlastmsg
+		$(use_enable normalize pmnormalize)
+		--enable-pmnull
+		--enable-pmpanngfw
 		--enable-pmsnare
 		# DB
 		$(use_enable dbi libdbi)
@@ -194,7 +209,6 @@ src_configure() {
 		# Debug
 		$(use_enable debug)
 		$(use_enable debug diagtools)
-		$(use_enable debug memcheck)
 		$(use_enable debug valgrind)
 		# Misc
 		$(use_enable curl fmhttp)
@@ -208,6 +222,7 @@ src_configure() {
 		$(use_enable normalize mmnormalize)
 		$(use_enable mdblookup mmdblookup)
 		$(use_enable grok mmgrok)
+		$(use_enable omhttp)
 		$(use_enable omhttpfs)
 		$(use_enable omudpspoof)
 		$(use_enable rabbitmq omrabbitmq)
@@ -216,7 +231,8 @@ src_configure() {
 		$(use_enable rfc5424hmac mmrfc5424addhmac)
 		$(use_enable snmp)
 		$(use_enable snmp mmsnmptrapd)
-		$(use_enable ssl gnutls)
+		$(use_enable gnutls)
+		$(use_enable openssl)
 		$(use_enable systemd imjournal)
 		$(use_enable systemd omjournal)
 		$(use_enable usertools)
