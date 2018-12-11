@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install setup
+DESCRIPTION=Extensible continuous integration server
+EAPI=7
+HOMEPAGE=https://jenkins.io/
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+LICENSE=MIT
+RDEPEND=media-fonts/dejavu media-libs/freetype !dev-util/jenkins-bin:0 >=virtual/jre-1.8.0
+RESTRICT=mirror
+SLOT=lts
+SRC_URI=http://mirrors.jenkins-ci.org/war-stable/2.150.1/jenkins.war -> jenkins-bin-2.150.1.war
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=466abdfb401b0051dd9a694e9e99c453
