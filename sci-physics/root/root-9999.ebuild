@@ -26,7 +26,7 @@ fi
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 
-IUSE="+X avahi aqua +asimage +c++11 c++14 c++17 cuda +davix emacs
+IUSE="+X zeroconf aqua +asimage +c++11 c++14 c++17 cuda +davix emacs
 	+examples fits fftw fortran +gdml graphviz +gsl http jemalloc
 	kerberos ldap libcxx memstat +minuit mysql odbc +opengl oracle
 	postgres prefix pythia6 pythia8 +python qt5 R +roofit root7
@@ -79,7 +79,7 @@ CDEPEND="
 		media-libs/libafterimage[gif,jpeg,png,tiff?]
 		>=x11-wm/afterstep-2.2.11[gif,jpeg,png,tiff?]
 	) )
-	avahi? ( net-dns/avahi[mdnsresponder-compat] )
+	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-9.0 )
 	davix? ( net-libs/davix )
 	emacs? ( virtual/emacs )
@@ -94,7 +94,7 @@ CDEPEND="
 	libcxx? ( sys-libs/libcxx )
 	unuran? ( sci-mathematics/unuran:0= )
 	minuit? ( !sci-libs/minuit )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c )
 	odbc? ( || ( dev-db/libiodbc dev-db/unixODBC ) )
 	oracle? ( dev-db/oracle-instantclient-basic )
 	postgres? ( dev-db/postgresql:= )
@@ -105,7 +105,7 @@ CDEPEND="
 	shadow? ( virtual/shadow )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( dev-libs/openssl:0= )
-	tbb? ( dev-cpp/tbb )
+	tbb? ( >=dev-cpp/tbb-2018 )
 	tmva? ( dev-python/numpy[${PYTHON_USEDEP}] )
 	vc? ( dev-libs/vc )
 	xml? ( dev-libs/libxml2:2= )
@@ -196,7 +196,7 @@ src_configure() {
 		-Dalien=OFF
 		-Dasimage=$(usex asimage)
 		-Dastiff=$(usex tiff)
-		-Dbonjour=$(usex avahi)
+		-Dbonjour=$(usex zeroconf)
 		-Dlibcxx=$(usex libcxx)
 		-Dccache=OFF # use ccache via portage
 		-Dcastor=OFF
