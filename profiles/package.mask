@@ -244,7 +244,6 @@ games-roguelike/mangband
 # Nobody is taking care of them, use the ones provided by the maintained
 # sys-kernel/linux-firmware package (#661884). Removal in a month.
 net-dialup/ueagle-atm
-net-dialup/ueagle4-atm
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Fails to build (#662000), not compatible with kernel-4, use kernel driver rtsx_pci
