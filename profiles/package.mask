@@ -31,7 +31,7 @@
 
 # Zac Medico <zmedico@gentoo.org> (11 Dec 2018)
 # A Go library which has no consumers except those that include
-it via EGO_VENDOR. Masked for removal in 30 days.
+# it via EGO_VENDOR. Masked for removal in 30 days.
 dev-go/sarama
 
 # Thomas Deutschmann <whissi@gentoo.org> (10 Dec 2018)
