@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ inherit desktop distutils-r1
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://www.bitbucket.org/${PN}/targz/downloads/${P}.tar.gz"
-	HG_DEPEND=">=dev-vcs/mercurial-4.6 <dev-vcs/mercurial-4.8"
+	HG_DEPEND=">=dev-vcs/mercurial-4.7 <dev-vcs/mercurial-4.9"
 else
 	inherit mercurial
 	EHG_REPO_URI="https://bitbucket.org/tortoisehg/thg"
