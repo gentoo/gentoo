@@ -455,6 +455,11 @@ src_configure() {
 	[[ ${CHOST} == *-darwin* ]] && \
 		myconf "-Dld=env MACOSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET} $(tc-getCC)"
 
+	# Older macOS with non-Apple GCC chokes on inline in system headers
+	# using c89 mode as injected by cflags.SH
+	[[ ${CHOST} == *-darwin* && ${CHOST##*darwin} -le 9 ]] && tc-is-gcc && \
+		append-cflags -Dinline=__inline__
+
 	# Prefix: the host system needs not to follow Gentoo multilib stuff, and in
 	# Prefix itself we don't do multilib either, so make sure perl can find
 	# something compatible.
