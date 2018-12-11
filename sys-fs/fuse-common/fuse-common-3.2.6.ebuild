@@ -28,6 +28,11 @@ src_prepare() {
 	filter-flags -flto*
 }
 
+src_configure() {
+	local emesonargs=( -Dudevrulesdir="$(get_udevdir)"/rules.d )
+	meson_src_configure
+}
+
 src_install() {
 	newsbin "${BUILD_DIR}"/util/mount.fuse3 mount.fuse
 	newman doc/mount.fuse3.8 mount.fuse.8
