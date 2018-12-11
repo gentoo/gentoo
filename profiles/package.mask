@@ -290,11 +290,6 @@ app-text/clara
 # ebuild plays with /dev (#666456). Removal in a month.
 app-misc/fujiplay
 
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Relies on dead imlib-1, not needed by anything in the tree (#668310).
-# Removal in a month.
-media-libs/fnlib
-
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
 # Removal in 30 days.
