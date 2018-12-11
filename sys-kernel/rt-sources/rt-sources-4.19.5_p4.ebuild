@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -31,17 +31,13 @@ S="${WORKDIR}/linux-${KV_FULL}"
 UNIPATCH_LIST="${DISTDIR}/${RT_FILE}"
 UNIPATCH_STRICTORDER="yes"
 
-PATCHES=(
-	"${FILESDIR}"/rt-sources-posix-printf.patch # 627068
-)
-
 src_prepare() {
 	default
 
 	# 627796
 	sed \
 		"s/default PREEMPT_NONE/default PREEMPT_RT_FULL/g" \
-		-i "${S}/kernel/Kconfig.preempt"
+		-i "${S}/kernel/Kconfig.preempt" || die "sed failed"
 }
 
 pkg_postinst() {
