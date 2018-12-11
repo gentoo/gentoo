@@ -66,10 +66,6 @@ sys-cluster/pacemaker cman
 # cman and co. are going to be removed (#650738)
 sys-fs/lvm2 cman clvm
 
-# Pacho Ramos <pacho@gento.org> (01 Nov 2018)
-# gksu is going to be removed (#594214)
-mate-extra/caja-extensions gksu
-
 # Alfredo Tupone <tupone@gentoo.org> (24 Oct 2018)
 # jit brokes build of gnat-gpl
 dev-lang/gnat-gpl jit
