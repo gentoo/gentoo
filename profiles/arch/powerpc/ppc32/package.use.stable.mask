@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -49,4 +49,3 @@ gnome-base/gvfs google
 mail-client/balsa webkit
 net-libs/libproxy webkit
 >=x11-libs/gtk+-3.12.2 cloudprint
-x11-libs/gksu gnome
