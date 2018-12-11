@@ -210,11 +210,6 @@ sys-devel/heirloom-devtools
 dev-embedded/scratchbox2
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Fails to build with current gcc (#640926), file collisions (#630668), no
-# reverse deps. Removal in a month.
-media-video/sswf
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Fails to build (#662000), not compatible with kernel-4, use kernel driver rtsx_pci
 # instead. Removal in a month.
 sys-block/rts_pstor
