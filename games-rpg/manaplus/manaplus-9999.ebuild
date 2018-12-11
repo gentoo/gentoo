@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -79,19 +79,19 @@ src_install() {
 	default
 
 	local destpath="/usr/share/${PN}"
-	dosym /usr/share/fonts/dejavu/DejaVuSans-Bold.ttf "${destpath}"/data/fonts/dejavusans-bold.ttf
-	dosym /usr/share/fonts/dejavu/DejaVuSans.ttf "${destpath}"/data/fonts/dejavusans.ttf
-	dosym /usr/share/fonts/dejavu/DejaVuSansMono-Bold.ttf "${destpath}"/data/fonts/dejavusansmono-bold.ttf
-	dosym /usr/share/fonts/dejavu/DejaVuSansMono.ttf "${destpath}"/data/fonts/dejavusansmono.ttf
-	dosym /usr/share/fonts/dejavu/DejaVuSerifCondensed-Bold.ttf "${destpath}"/data/fonts/dejavuserifcondensed-bold.ttf
-	dosym /usr/share/fonts/dejavu/DejaVuSerifCondensed.ttf "${destpath}"/data/fonts/dejavuserifcondensed.ttf
-	dosym /usr/share/fonts/liberation-fonts/LiberationMono-Bold.ttf "${destpath}"/data/fonts/liberationsansmono-bold.ttf
-	dosym /usr/share/fonts/liberation-fonts/LiberationMono-Regular.ttf "${destpath}"/data/fonts/liberationsansmono.ttf
-	dosym /usr/share/fonts/liberation-fonts/LiberationSans-Bold.ttf "${destpath}"/data/fonts/liberationsans-bold.ttf
-	dosym /usr/share/fonts/liberation-fonts/LiberationSans-Regular.ttf "${destpath}"/data/fonts/liberationsans.ttf
-	dosym /usr/share/fonts/mplus-outline-fonts/mplus-1p-bold.ttf "${destpath}"/data/fonts/mplus-1p-bold.ttf
-	dosym /usr/share/fonts/mplus-outline-fonts/mplus-1p-regular.ttf "${destpath}"/data/fonts/mplus-1p-regular.ttf
-	dosym /usr/share/fonts/wqy-microhei/wqy-microhei.ttc "${destpath}"/data/fonts/wqy-microhei.ttf
+	dosym ../../../fonts/dejavu/DejaVuSans-Bold.ttf "${destpath}"/data/fonts/dejavusans-bold.ttf
+	dosym ../../../fonts/dejavu/DejaVuSans.ttf "${destpath}"/data/fonts/dejavusans.ttf
+	dosym ../../../fonts/dejavu/DejaVuSansMono-Bold.ttf "${destpath}"/data/fonts/dejavusansmono-bold.ttf
+	dosym ../../../fonts/dejavu/DejaVuSansMono.ttf "${destpath}"/data/fonts/dejavusansmono.ttf
+	dosym ../../../fonts/dejavu/DejaVuSerifCondensed-Bold.ttf "${destpath}"/data/fonts/dejavuserifcondensed-bold.ttf
+	dosym ../../../fonts/dejavu/DejaVuSerifCondensed.ttf "${destpath}"/data/fonts/dejavuserifcondensed.ttf
+	dosym ../../../fonts/liberation-fonts/LiberationMono-Bold.ttf "${destpath}"/data/fonts/liberationsansmono-bold.ttf
+	dosym ../../../fonts/liberation-fonts/LiberationMono-Regular.ttf "${destpath}"/data/fonts/liberationsansmono.ttf
+	dosym ../../../fonts/liberation-fonts/LiberationSans-Bold.ttf "${destpath}"/data/fonts/liberationsans-bold.ttf
+	dosym ../../../fonts/liberation-fonts/LiberationSans-Regular.ttf "${destpath}"/data/fonts/liberationsans.ttf
+	dosym ../../../fonts/mplus-outline-fonts/mplus-1p-bold.ttf "${destpath}"/data/fonts/mplus-1p-bold.ttf
+	dosym ../../../fonts/mplus-outline-fonts/mplus-1p-regular.ttf "${destpath}"/data/fonts/mplus-1p-regular.ttf
+	dosym ../../../fonts/wqy-microhei/wqy-microhei.ttc "${destpath}"/data/fonts/wqy-microhei.ttf
 }
 
 src_test() {
