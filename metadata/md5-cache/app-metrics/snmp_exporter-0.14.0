@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare setup test unpack
+DEPEND=>=dev-lang/go-1.11 dev-util/promu net-analyzer/net-snmp >=dev-lang/go-1.9
+DESCRIPTION=Prometheus exporter for snmp metrics
+EAPI=6
+HOMEPAGE=https://github.com/prometheus/snmp_exporter
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=https://github.com/prometheus/snmp_exporter/archive/v0.14.0.tar.gz -> snmp_exporter-0.14.0.tar.gz
+_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	1b46197451ce01766db03a9955597d7b	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=a74b2f50d8c9f2d47cba048143c892d9
