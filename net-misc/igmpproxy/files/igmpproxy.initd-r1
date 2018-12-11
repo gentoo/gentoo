@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+config="/etc/${RC_SVCNAME}.conf"
+name="IGMPproxy"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+command="/usr/sbin/igmpproxy"
+command_args="${IGMPPROXY_OPTS} -n ${config}"
+command_background="true"
+required_files="${config}"
