@@ -3,6 +3,7 @@
 
 EAPI=6
 
+: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 PYTHON_REQ_USE="libressl?,sqlite,ssl"
 LIBDVDCSS_VERSION="1.4.2-Leia-Beta-5"
 LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-3"
