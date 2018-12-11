@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License, v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -162,7 +162,6 @@ bluray
 gps
 
 # Stuff we don't want
-schroedinger
 ots
 frei0r
 prelude
@@ -222,11 +221,6 @@ multilib
 # Ben de Groot <yngwin@gentoo.org> (11 Feb 2009)
 # Both dev-qt/qtphonon and media-sound/phonon are unkeyworded
 phonon
-
-# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
-# libdlm and cman are not keyworded
-cman
-clvm
 
 # nvidia toolkit for binary drivers
 cg

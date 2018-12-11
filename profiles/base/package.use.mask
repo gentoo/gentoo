@@ -48,28 +48,6 @@ sci-libs/ceres-solver sparse
 # upower-pm-utils will be removed (#596988)
 mate-extra/mate-power-manager pm-utils
 
-# Pacho Ramos <pacho@gento.org> (04 Nov 2018)
-# media-libs/schroedinger will be removed (#602938)
-media-libs/libquicktime schroedinger
-media-video/ffmpeg schroedinger
-media-video/libav schroedinger
-
-# Pacho Ramos <pacho@gento.org> (04 Nov 2018)
-# media-plugins/mediastreamer-silk will be removed (#599580)
-media-libs/mediastreamer silk
-
-# Pacho Ramos <pacho@gento.org> (04 Nov 2018)
-# cman and co. are going to be removed (#650738)
-sys-cluster/pacemaker cman
-
-# Pacho Ramos <pacho@gento.org> (01 Nov 2018)
-# cman and co. are going to be removed (#650738)
-sys-fs/lvm2 cman clvm
-
-# Pacho Ramos <pacho@gento.org> (01 Nov 2018)
-# gksu is going to be removed (#594214)
-mate-extra/caja-extensions gksu
-
 # Alfredo Tupone <tupone@gentoo.org> (24 Oct 2018)
 # jit brokes build of gnat-gpl
 dev-lang/gnat-gpl jit

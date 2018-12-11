@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,10 +22,7 @@ RDEPEND="spirv-tools? ( dev-util/spirv-tools:=[${MULTILIB_USEDEP}] )
 
 DEPEND="${RDEPEND}
 		dev-util/spirv-headers
-		|| (
-			dev-util/vulkan-headers
-			<=media-libs/vulkan-loader-1.1.70.0-r999[${MULTILIB_USEDEP}]
-		   )"
+		dev-util/vulkan-headers"
 
 DESCRIPTION="D3D12 to Vulkan translation library"
 HOMEPAGE="https://source.winehq.org/git/vkd3d.git/"

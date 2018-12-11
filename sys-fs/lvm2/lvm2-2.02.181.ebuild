@@ -12,19 +12,11 @@ SRC_URI="ftp://sourceware.org/pub/lvm2/${PN/lvm/LVM}.${PV}.tgz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="readline static static-libs systemd clvm cman corosync lvm2create_initrd openais sanlock selinux +udev +thin device-mapper-only"
-REQUIRED_USE="device-mapper-only? ( !clvm !cman !corosync !lvm2create_initrd !openais !sanlock !thin )
-	systemd? ( udev )
-	clvm? ( !systemd )"
+IUSE="readline static static-libs systemd lvm2create_initrd sanlock selinux +udev +thin device-mapper-only"
+REQUIRED_USE="device-mapper-only? ( !lvm2create_initrd !sanlock !thin )
+	systemd? ( udev )"
 
 DEPEND_COMMON="
-	clvm? (
-		cman? ( =sys-cluster/cman-3* )
-		corosync? ( sys-cluster/corosync )
-		openais? ( sys-cluster/openais )
-		=sys-cluster/libdlm-3*
-	)
-
 	dev-libs/libaio[static-libs?]
 	static? ( dev-libs/libaio[static-libs] )
 	!static? ( dev-libs/libaio[static-libs?] )
@@ -39,7 +31,6 @@ RDEPEND="${DEPEND_COMMON}
 	>=sys-apps/baselayout-2.2
 	!<sys-apps/openrc-0.11
 	!<sys-fs/cryptsetup-1.1.2
-	!!sys-fs/clvm
 	!!sys-fs/lvm-user
 	>=sys-apps/util-linux-2.16
 	lvm2create_initrd? ( sys-apps/makedev )
@@ -165,29 +156,7 @@ src_configure() {
 		myeconfargs+=( --with-thin=none --with-cache=none )
 	fi
 
-	if use clvm; then
-		myeconfargs+=( --with-cluster="$(usex static internal shared)" )
-		# 4-state! Make sure we get it right, per bug 210879
-		# Valid options are: none, cman, gulm, all
-		#
-		# 2009/02:
-		# gulm is removed now, now dual-state:
-		# cman, none
-		# all still exists, but is not needed
-		#
-		# 2009/07:
-		# TODO: add corosync and re-enable ALL
-		local clvmd=""
-		use cman && clvmd="cman"
-		#clvmd="${clvmd/cmangulm/all}"
-		use corosync && clvmd="${clvmd:+$clvmd,}corosync"
-		use openais && clvmd="${clvmd:+$clvmd,}openais"
-		[ -z "${clvmd}" ] && clvmd="none"
-		myeconfargs+=( --with-clvmd=${clvmd} )
-		myeconfargs+=( --enable-lvmlockd-dlm )
-	else
-		myeconfargs+=( --with-clvmd=none --with-cluster=none )
-	fi
+	myeconfargs+=( --with-clvmd=none --with-cluster=none )
 
 	myeconfargs+=(
 		$(use_enable readline)
@@ -251,11 +220,6 @@ src_install() {
 
 	if use sanlock; then
 		newinitd "${FILESDIR}"/lvmlockd.initd-2.02.166-r1 lvmlockd
-	fi
-
-	if use clvm; then
-		newinitd "${FILESDIR}"/clvmd.rc-2.02.39 clvmd
-		newconfd "${FILESDIR}"/clvmd.confd-2.02.39 clvmd
 	fi
 
 	if use static-libs; then
