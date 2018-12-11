@@ -5,7 +5,8 @@ EAPI="6"
 
 inherit eapi7-ver eutils flag-o-matic libtool perl-functions toolchain-funcs multilib
 
-MY_P=ImageMagick-$(ver_rs 3 '-')
+MY_PV="$(ver_rs 3 '-')"
+MY_P="ImageMagick-${MY_PV}"
 
 DESCRIPTION="A collection of tools and libraries for many image formats"
 HOMEPAGE="https://www.imagemagick.org/"
@@ -173,13 +174,14 @@ src_test() {
 		die "Failed to install default blank policy.xml in '${_im_local_config_home}'"
 
 	local im_command= IM_COMMANDS=()
-	IM_COMMANDS+=( "magick -version" ) # Verify that we are using version we just built
-	IM_COMMANDS+=( "magick -list policy" ) # Verify that policy.xml is used
+	IM_COMMANDS+=( "identify -version | grep -q -- \"${MY_PV}\"" ) # Verify that we are using version we just built
+	IM_COMMANDS+=( "identify -list policy" ) # Verify that policy.xml is used
 	IM_COMMANDS+=( "emake check" ) # Run tests
 
 	for im_command in "${IM_COMMANDS[@]}"; do
-		"${S}"/magick.sh \
-		${im_command} || die
+		eval "${S}"/magick.sh \
+			${im_command} || \
+			die "Failed to run \"${im_command}\""
 	done
 }
 
