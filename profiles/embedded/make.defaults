@@ -10,7 +10,7 @@ EBEEP_IGNORE="1"
 PORTAGE_WORKDIR_MODE="2775"
 PORTAGE_ECLASS_WARNING_ENABLE="0"
 
-INPUT_DEVICES="evdev mouse keyboard tslib"
+INPUT_DEVICES="evdev mouse keyboard"
 VIDEO_CARDS="fbdev"
 KERNEL="linux"
 USERLAND="GNU"

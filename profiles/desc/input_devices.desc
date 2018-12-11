@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of INPUT_DEVICES USE_EXPAND flags.
@@ -32,7 +32,6 @@ roccat_ryosmk - INPUT_DEVICES setting to build driver for Roccat RyosMK Pro inpu
 roccat_ryostkl - INPUT_DEVICES setting to build driver for Roccat RyosMK Pro input devices
 roccat_tyon - INPUT_DEVICES setting to build driver for Roccat Tyon input devices
 synaptics - INPUT_DEVICES setting to build driver for synaptics input devices
-tslib - INPUT_DEVICES setting to build driver for tslib input devices
 vmmouse - INPUT_DEVICES setting to build driver for vmmouse input devices
 void - INPUT_DEVICES setting to build driver for void/dummy input devices
 wacom - INPUT_DEVICES setting to build driver for wacom input devices

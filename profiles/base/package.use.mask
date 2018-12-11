@@ -44,10 +44,6 @@ sci-libs/ceres-solver sparse
 # Waiting for >=dev-libs/libressl-2.7 to be unmasked.
 >=app-crypt/xca-2.1.0 libressl
 
-# Pacho Ramos <pacho@gento.org> (04 Nov 2018)
-# upower-pm-utils will be removed (#596988)
-mate-extra/mate-power-manager pm-utils
-
 # Alfredo Tupone <tupone@gentoo.org> (24 Oct 2018)
 # jit brokes build of gnat-gpl
 dev-lang/gnat-gpl jit
