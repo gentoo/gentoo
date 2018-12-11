@@ -50,7 +50,6 @@ mate-extra/mate-power-manager pm-utils
 
 # Pacho Ramos <pacho@gento.org> (04 Nov 2018)
 # media-libs/schroedinger will be removed (#602938)
-media-video/ffmpeg schroedinger
 media-video/libav schroedinger
 
 # Pacho Ramos <pacho@gento.org> (04 Nov 2018)
