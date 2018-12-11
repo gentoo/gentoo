@@ -188,11 +188,6 @@ dev-db/mysql-proxy
 app-forensics/libbfio
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Pending version bump (#648380), doesn't build (#637350). Removal in a
-# month.
-sys-apps/likwid
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Fails to build (#662000), not compatible with kernel-4, use kernel driver rtsx_pci
 # instead. Removal in a month.
 sys-block/rts_pstor
