@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,12 +39,13 @@ COMMON_DEPEND="
 	exif? ( >=media-libs/libexif-0.6.20 )
 	introspection? ( >=dev-libs/gobject-introspection-0.6.4:= )
 	selinux? ( >=sys-libs/libselinux-2 )
-	tracker? ( >=app-misc/tracker-1:= )
+	tracker? ( app-misc/tracker:0/100 )
 	xmp? ( >=media-libs/exempi-2.1.0:2 )
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-lang/perl-5
 	>=dev-util/gdbus-codegen-2.33
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.10
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
@@ -61,7 +62,6 @@ RDEPEND="${COMMON_DEPEND}
 
 PDEPEND="
 	gnome? ( x11-themes/adwaita-icon-theme )
-	tracker? ( >=gnome-extra/nautilus-tracker-tags-0.12 )
 	previewer? ( >=gnome-extra/sushi-0.1.9 )
 	sendto? ( >=gnome-extra/nautilus-sendto-3.0.1 )
 	>=gnome-base/gvfs-1.14[gtk(+)]
