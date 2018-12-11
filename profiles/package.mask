@@ -178,11 +178,6 @@ media-video/gnome-mplayer
 www-plugins/gecko-mediaplayer
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Upstream dead for years and marked EOL (#629676, #665850). Removal in a
-# month.
-dev-db/mysql-proxy
-
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Fails to build (#662000), not compatible with kernel-4, use kernel driver rtsx_pci
 # instead. Removal in a month.
 sys-block/rts_pstor
