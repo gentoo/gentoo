@@ -12,7 +12,7 @@ inherit kde5
 
 DESCRIPTION="Integrated Development Environment, supporting KF5/Qt, C/C++ and much more"
 LICENSE="GPL-2 LGPL-2"
-IUSE="cvs +gdbui hex +plasma +qmake reviewboard subversion webkit"
+IUSE="+gdbui hex +plasma +qmake reviewboard subversion webkit"
 [[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="~amd64 ~x86"
 
 COMMON_DEPEND="
@@ -82,7 +82,6 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_kdeapps_dep kio-extras)
 	dev-util/ninja
 	>=sys-devel/gdb-7.0[python]
-	cvs? ( dev-vcs/cvs )
 	reviewboard? ( $(add_kdeapps_dep ktp-accounts-kcm) )
 	!dev-util/kdevelop-clang
 	!dev-util/kdevelop-cppcheck
@@ -96,7 +95,6 @@ RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_cvs=$(usex cvs)
 		$(cmake-utils_use_find_package gdbui KF5SysGuard)
 		-DBUILD_executeplasmoid=$(usex plasma)
 		$(cmake-utils_use_find_package plasma KF5Plasma)
