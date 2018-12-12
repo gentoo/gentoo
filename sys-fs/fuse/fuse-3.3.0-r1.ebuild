@@ -20,7 +20,7 @@ DEPEND="virtual/pkgconfig
 		${PYTHON_DEPS}
 		$(python_gen_any_dep 'dev-python/pytest[${PYTHON_USEDEP}]')
 	)"
-RDEPEND="sys-fs/fuse-common"
+RDEPEND=">=sys-fs/fuse-common-3.3.0-r1"
 
 DOCS=( AUTHORS ChangeLog.rst README.md doc/README.NFS doc/kernel.txt )
 
@@ -63,12 +63,11 @@ multilib_src_install_all() {
 
 	# installed via fuse-common
 	rm -r "${ED%/}"/{etc,$(get_udevdir)} || die
-	rm "${ED%/}"/usr/sbin/mount.fuse3 || die
 
 	# handled by the device manager
 	rm -r "${ED%/}"/dev || die
 
-	# manually install man pages
+	# manually install man pages to respect compression
 	rm -r "${ED%/}"/usr/share/man || die
-	doman doc/fusermount3.1
+	doman doc/{fusermount3.1,mount.fuse3.8}
 }
