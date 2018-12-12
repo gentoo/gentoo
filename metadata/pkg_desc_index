@@ -7498,7 +7498,7 @@ media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
 media-libs/freeglut 2.8.1-r1 3.0.0: Completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library
 media-libs/freeimage 3.15.4-r1: Image library supporting many formats
 media-libs/freetype 2.9.1-r3: A high-quality and portable font engine
-media-libs/freeverb3 3.1.2_pre20151102-r1: Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
+media-libs/freeverb3 3.1.2_pre20151102-r1 3.1.2-r1: Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/gavl 1.2.0 1.4.0-r1: library for handling uncompressed audio and video data
@@ -7964,8 +7964,8 @@ media-radio/ax25-apps 0.0.8_rc4: Basic AX.25 (Amateur Radio) user tools, additio
 media-radio/ax25-tools 0.0.10_rc4: Basic AX.25 (Amateur Radio) administrative tools and daemons
 media-radio/cwdaemon 0.10.2: A morse daemon for the parallel or serial port
 media-radio/dxcc 20080225-r1: A ham radio callsign DXCC lookup utility
-media-radio/fldigi 4.0.16: Sound card based multimode software modem for Amateur Radio use
-media-radio/flrig 1.3.39: Transceiver control program for Amateur Radio use
+media-radio/fldigi 4.0.16 4.0.18: Sound card based multimode software modem for Amateur Radio use
+media-radio/flrig 1.3.39 1.3.40: Transceiver control program for Amateur Radio use
 media-radio/gpredict 2.2 2.2.1: Real-time satellite tracking and orbit prediction application
 media-radio/grig 0.8.1: A tool for controlling amateur radios
 media-radio/ibp 0.21-r1: Shows currently transmitting beacons of the International Beacon Project (IBP)
