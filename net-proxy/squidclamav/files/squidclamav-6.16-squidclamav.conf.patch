@@ -1,0 +1,40 @@
+--- squidclamav-6.13-original/etc/squidclamav.conf	2015-06-01 22:18:41.000000000 +0200
++++ squidclamav-6.13/etc/squidclamav.conf	2015-08-17 14:43:36.854662869 +0200
+@@ -78,3 +78,37 @@
+ 
+ # See also 'trustuser' and 'trustclient' configuration directives
+ 
++# Block matching archive entries (supported by libarchive).
++# eg. zip files containing threats such as ransomeware that are not yet
++# detected by clamav or other antivirus software (typically 5KB zip files
++# containing a cab file or a vbe script).
++#ban_archive_entry ^.*\.(ade|adp|app|asd|asf|asx|bas|bat|cab|chm|cmd|com|cpl|crt|dll|exe|fxp|hlp|hta|hto|inf|ini|ins|isp|jse?|lib|lnk|mdb|mde|msc|msi|msp|mst|ocx|pcd|pif|prg|reg|scr|sct|sh|shb|shs|sys|url|vb|vbe|vbs|vcs|vxd|wmd|wms|wmz|wsc|wsf|wsh)$
++
++# Maximum number of entries in an archive in order to block it if there's at least one match.
++# Archives with more than ban_max_entries will not be blocked even if there are matches.
++# A value of 0 (or commented) will ignore the number of entries in an archive.
++# Suggested value: 1
++#ban_max_entries 1
++
++# Maximum number of matched entries in an archive in order to block it.
++# Archives with more than ban_max_matched_entries matches will not be blocked.
++# A value of 0 (or commented) will ban an archive when there's at least one entry match.
++# Suggested value: 1
++#ban_max_matched_entries 1
++
++# Maximum size of an archive that may be opened. Any file bigger that this value
++# will not be scanned.
++# Suggested value: 2M
++banmaxsize 2M
++
++# Path where banned archives are stored (libarchive).
++# hard-coded file format: banned_USERNAME_CLIENTIP_UNIXTIME_RAND(99).FILEEXTENSION
++# USERNAME and CLIENTIP are available when enabling icap_send_client_ip and
++# icap_send_client_username in squid.conf.
++# Check clwarn.cgi example to see how you can retrieve the file name and serve it via http.
++#recoverpath /opt/squidclamav_recover
++
++# Enable if virus files should also be copied to recoverpath (libarchive).
++# hard-coded file format: virus_USERNAME_CLIENTIP_UNIXTIME_RAND(99).FILEEXTENSION
++# Otherwise only archives containing ban_archive_entry matches will be copied.
++#recovervirus 1

@@ -1,0 +1,18 @@
+--- squidclamav-6.13-original/src/squidclamav.h	2015-06-01 22:18:41.000000000 +0200
++++ squidclamav-6.13/src/squidclamav.h	2015-08-18 08:51:50.646126373 +0200
+@@ -83,6 +83,15 @@
+ #define TRUSTCLIENT  3
+ #define ABORT        4
+ #define ABORTCONTENT 5
++/* libarchive */
++#define BANFILE      6
++#define INVALID_CHARS "\\/:*?<>|"
++#define PREFIX_BANNED "banned_"
++#define PREFIX_VIRUS "virus_"
++#define max(a,b) \
++    ({ __typeof__ (a) _a = (a); \
++        __typeof__ (b) _b = (b); \
++        _a > _b ? _a : _b; })
+ 
+ #define ACCEL_NORMAL 1
+ #define ACCEL_START  2
