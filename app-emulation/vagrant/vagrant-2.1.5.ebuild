@@ -36,7 +36,7 @@ ruby_add_rdepend "
 	>=dev-ruby/net-ssh-5.0.0:*
 	>=dev-ruby/net-sftp-2.1
 	>=dev-ruby/net-scp-1.2.0
-	|| ( dev-ruby/rest-client:2 >=dev-ruby/rest-client-1.6.0:0 )
+	dev-ruby/rest-client:2
 	<dev-ruby/mime-types-3:*
 "
 
