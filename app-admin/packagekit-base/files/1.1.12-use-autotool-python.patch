@@ -1,0 +1,28 @@
+From f664bbc43d12f4b30431dfe2ecee4c9ebfaf00e5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Javier=20Jard=C3=B3n?= <jjardon@gnome.org>
+Date: Sat, 1 Dec 2018 18:55:37 +0000
+Subject: [PATCH 1/2] lib/python/packagekit/Makefile.am: Use the detected
+ PYTHON version
+
+This will fix compilation in system where only the "python3"
+executable exists
+---
+ lib/python/packagekit/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/python/packagekit/Makefile.am b/lib/python/packagekit/Makefile.am
+index 617006647..a589cde17 100644
+--- a/lib/python/packagekit/Makefile.am
++++ b/lib/python/packagekit/Makefile.am
+@@ -1,7 +1,7 @@
+ BUILT_SOURCES = enums.py
+ 
+ enums.py: $(top_srcdir)/lib/python/enum-convertor.py $(top_srcdir)/lib/packagekit-glib2/pk-enum.c
+-	python $(top_srcdir)/lib/python/enum-convertor.py $(top_srcdir)/lib/packagekit-glib2/pk-enum.c > enums.py
++	$(PYTHON) $(top_srcdir)/lib/python/enum-convertor.py $(top_srcdir)/lib/packagekit-glib2/pk-enum.c > enums.py
+ 
+ if HAVE_PYTHON_BACKEND
+ packagekitpythondir = ${PYTHON_PACKAGE_DIR}
+-- 
+2.19.2
+

@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 inherit python-any-r1 cmake-utils
@@ -26,7 +26,8 @@ RDEPEND="
 		>=net-libs/telepathy-glib-0.18.0
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 "

@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://gstreamer.freedesktop.org/src/qt-gstreamer/${P}.tar.xz"
@@ -30,7 +30,8 @@ RDEPEND="
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/glib-utils
 	test? ( dev-qt/qttest:5 )
 "
