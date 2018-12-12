@@ -57,6 +57,7 @@ directfb
 lirc
 java
 hardened
+vaapi
 qt5
 
 # Needs java
