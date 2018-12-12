@@ -13,7 +13,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="adns brotli http2 idn ipv6 kerberos ldap metalink rtmp samba ssh ssl static-libs test threads"
-IUSE+=" curl_ssl_axtls curl_ssl_gnutls curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss +curl_ssl_openssl curl_ssl_winssl"
+IUSE+=" curl_ssl_gnutls curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss +curl_ssl_openssl curl_ssl_winssl"
 IUSE+=" elibc_Winnt"
 
 #lead to lots of false negatives, bug #285669
@@ -22,10 +22,6 @@ RESTRICT="test"
 RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	brotli? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
 	ssl? (
-		curl_ssl_axtls? (
-			net-libs/axtls:0=[${MULTILIB_USEDEP}]
-			app-misc/ca-certificates
-		)
 		curl_ssl_gnutls? (
 			net-libs/gnutls:0=[static-libs?,${MULTILIB_USEDEP}]
 			dev-libs/nettle:0=[${MULTILIB_USEDEP}]
@@ -79,7 +75,6 @@ REQUIRED_USE="
 	threads? ( !adns )
 	ssl? (
 		^^ (
-			curl_ssl_axtls
 			curl_ssl_gnutls
 			curl_ssl_libressl
 			curl_ssl_mbedtls
@@ -123,13 +118,10 @@ multilib_src_configure() {
 	# So start with all ssl providers off until proven otherwise
 	# TODO: in the future, we may want to add wolfssl (https://www.wolfssl.com/)
 	local myconf=()
-	myconf+=( --without-axtls --without-gnutls --without-mbedtls --without-nss --without-polarssl --without-ssl --without-winssl )
+	myconf+=( --without-gnutls --without-mbedtls --without-nss --without-polarssl --without-ssl --without-winssl )
 	myconf+=( --without-ca-fallback --with-ca-bundle="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt  )
 	if use ssl ; then
-		if use curl_ssl_axtls; then
-			einfo "SSL provided by axtls"
-			myconf+=( --with-axtls )
-		elif use curl_ssl_gnutls; then
+		if use curl_ssl_gnutls; then
 			einfo "SSL provided by gnutls"
 			myconf+=( --with-gnutls --with-nettle )
 		elif use curl_ssl_libressl; then
