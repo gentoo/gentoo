@@ -5897,13 +5897,13 @@ dev-ruby/loofah 2.2.3: Library for manipulating and transforming HTML/XML docume
 dev-ruby/maruku 0.7.3: A Markdown-superset interpreter written in Ruby
 dev-ruby/maxitest 2.8.0: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
-dev-ruby/mechanize 2.7.5-r2 2.7.6: A Ruby library used for automating interaction with websites
+dev-ruby/mechanize 2.7.6: A Ruby library used for automating interaction with websites
 dev-ruby/metaclass 0.0.4: Adds a __metaclass__ method to all Ruby objects
 dev-ruby/method_source 0.9.0: Retrieve the source code for a method
 dev-ruby/mime-types 1.25.1 2.99.2: Provides a mailcap-like MIME Content-Type lookup for Ruby
 dev-ruby/mini_mime 1.0.0: A lightweight mime type lookup toy
 dev-ruby/minitest 4.7.5-r2 5.3.3-r1 5.10.3: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
-dev-ruby/mocha 0.10.5-r2 0.14.0 1.1.0 1.4.0: Mocking and stubbing using a syntax like that of JMock and SchMock
+dev-ruby/mocha 0.10.5-r2 0.14.0 1.4.0: Mocking and stubbing using a syntax like that of JMock and SchMock
 dev-ruby/multi_json 1.12.1: A gem to provide swappable JSON backends
 dev-ruby/multi_test 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.6.0-r1: A generic swappable back-end for XML parsing
