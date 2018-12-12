@@ -10003,7 +10003,6 @@ sys-block/zram-init 7.1-r1: Scripts to support compressed swap devices or ramdis
 sys-boot/efibootmgr 14 15: User-space application to modify the EFI boot manager
 sys-boot/gnu-efi 3.0.3: Library for build EFI Applications
 sys-boot/grub 0.97-r16 0.97-r18 2.02-r1: GNU GRUB boot loader
-sys-boot/grub-static 0.97-r9 0.97-r10 0.97-r12: GNU GRUB Legacy boot loader (static build)
 sys-boot/lilo 22.8-r2 24.0-r1: Standard Linux boot loader
 sys-boot/mbr 1.1.11-r1: A replacement master boot record for IBM-PC compatible computers
 sys-boot/os-prober 1.76-r1: Utility to detect other OSs on a set of drives
