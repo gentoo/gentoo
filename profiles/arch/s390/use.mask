@@ -55,6 +55,7 @@ alsa
 apm
 directfb
 lirc
+llvm
 java
 hardened
 vaapi
