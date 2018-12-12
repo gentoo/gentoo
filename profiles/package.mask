@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (12 Dec 2018)
+# grub:0 is dead and not being developed by upstream.
+# Two open bugs (427340, 591574).
+# Removal in 30 days.
+sys-boot/grub-static
+
 # Hans de Graaff <graaff@gentoo.org> (12 Dec 2018)
 # Old ruby23 only slots without any reverse dependencies.
 # Use the newer slots instead. Removal in 30 days.
