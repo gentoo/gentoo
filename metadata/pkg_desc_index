@@ -8548,7 +8548,7 @@ net-fs/nfs-utils 2.3.1-r3 2.3.3: NFS client and server daemons
 net-fs/openafs 1.6.22.1: The OpenAFS distributed file system
 net-fs/s3fs 1.80: Amazon S3 mounting via fuse
 net-fs/samba 4.5.16 4.8.6-r2: Samba Suite Version 4
-net-fs/sshfs 2.8 2.10-r1: Fuse-filesystem utilizing the sftp service
+net-fs/sshfs 2.10-r1: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7-r5 0.7-r6: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
