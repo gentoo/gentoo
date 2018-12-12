@@ -51,6 +51,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.11
 	>=dev-util/intltool-0.35.0
+	sys-devel/autoconf-archive
 	sys-devel/gettext
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )

@@ -55,8 +55,10 @@ alsa
 apm
 directfb
 lirc
+llvm
 java
 hardened
+vaapi
 qt5
 
 # Needs java
