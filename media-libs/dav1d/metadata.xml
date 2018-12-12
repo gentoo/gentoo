@@ -6,8 +6,8 @@
 	</maintainer>
 	<use>
 		<flag name="8bit">Add support for decoding 8-bit AV1.</flag>
-		<flag name="10bit">Add support for building 10-bit AV1.</flag>
-		<flag name="asm">Enable custom x86 assembly for faster decoding.</flag>
+		<flag name="10bit">Add support for building 10-bit and 12-bit AV1.</flag>
+		<flag name="asm">Enable custom assembly for faster decoding.</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://code.videolan.org/videolan/dav1d/issues</bugs-to>
