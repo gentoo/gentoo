@@ -3224,7 +3224,7 @@ dev-libs/ntl 9.3.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.2.11 2.2.12: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/oniguruma 6.8.2 6.9.0: Regular expression library for different character encodings
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
-dev-libs/openobex 1.7.2 1.7.2-r1: Implementation of the OBEX protocol used for transferring data to mobile devices
+dev-libs/openobex 1.7.2-r1: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.16.0 0.18.0: Libraries and applications to access smartcards
 dev-libs/openssl 0.9.8z_p8-r1 1.0.2p-r1: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
