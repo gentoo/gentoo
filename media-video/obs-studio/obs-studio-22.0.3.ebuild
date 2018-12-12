@@ -67,7 +67,10 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-21.1.2-use-less-automagic.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-21.1.2-use-less-automagic.patch"
+	"${FILESDIR}/${PN}-22.0.3-fdk-build-fix.patch" # bug 672430
+)
 
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 
