@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.9
+DESCRIPTION=HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
+EAPI=6
+HOMEPAGE=https://github.com/rakyll/hey
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/rakyll/hey/archive/01803349acd49d756dafa2cb6ac5b5bfc141fc3b.tar.gz -> hey-0.1.1_p20181017.tar.gz
+_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	1b46197451ce01766db03a9955597d7b	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
+_md5_=b5fe0bdc4343c7bc0988a409c2eda9a9
