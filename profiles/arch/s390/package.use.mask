@@ -74,10 +74,6 @@ dev-libs/libpcre jit
 # No media-sound/lilypond here, yet (bug #356069)
 app-text/asciidoc test
 
-# Mike Frysinger <vapier@gentoo.org> (10 Feb 2011)
-# Waiting for keywording #354309
-net-firewall/iptables netlink
-
 # Raúl Porcel <armin76@gentoo.org> (27 Mar 2008)
 # Needs gtk USE-flag
 net-dns/avahi python
