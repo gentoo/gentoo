@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=dev-libs/glib-2.54:2 media-libs/fontconfig >=x11-libs/gtk+-2:2 >=x11-libs/gtk+-3:3 x11-libs/pango ~app-admin/packagekit-base-1.1.12[introspection] virtual/pkgconfig dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Gtk3 PackageKit backend library
+EAPI=6
+HOMEPAGE=https://www.freedesktop.org/software/PackageKit/
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.54:2 media-libs/fontconfig >=x11-libs/gtk+-2:2 >=x11-libs/gtk+-3:3 x11-libs/pango ~app-admin/packagekit-base-1.1.12[introspection]
+SLOT=0
+SRC_URI=https://www.freedesktop.org/software/PackageKit/releases/PackageKit-1.1.12.tar.xz
+_eclasses_=xdg	4939e61ae72d18779a8bdac386a7a07e	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=fe5ef428f6cc415ddd2ac0cb97cc3d46

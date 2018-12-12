@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=gtk? ( ~app-admin/packagekit-gtk-1.1.12 ) qt5? ( >=app-admin/packagekit-qt-0.9.6 )
+DESCRIPTION=PackageKit Package Manager interface (meta package)
+EAPI=6
+HOMEPAGE=https://www.freedesktop.org/software/PackageKit/
+IUSE=gtk qt5
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=metapackage
+RDEPEND=gtk? ( ~app-admin/packagekit-gtk-1.1.12 ) qt5? ( >=app-admin/packagekit-qt-0.9.6 )
+SLOT=0
+_md5_=c28953b22f2c370c292e98392f09b1c8
