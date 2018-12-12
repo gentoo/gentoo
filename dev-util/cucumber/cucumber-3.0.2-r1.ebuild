@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby22 ruby23 ruby24"
 
 # Documentation task depends on sdoc which we currently don't have.
 RUBY_FAKEGEM_TASK_DOC=""
@@ -25,6 +25,7 @@ IUSE="examples test"
 
 ruby_add_bdepend "
 	test? (
+		dev-ruby/bundler
 		dev-ruby/rspec:3
 		>=dev-ruby/nokogiri-1.5.2
 		>=dev-ruby/syntax-1.0.0
@@ -36,11 +37,11 @@ ruby_add_bdepend "
 
 ruby_add_rdepend "
 	>=dev-ruby/builder-2.1.2:*
-	dev-util/cucumber-core:3.1
-	dev-util/cucumber-expressions:5.0
+	dev-util/cucumber-core:3.0
+	dev-util/cucumber-expressions:4.0
 	>=dev-util/cucumber-wire-0.0.1:0
-	>=dev-ruby/diff-lcs-1.1.3
-	dev-ruby/gherkin:5
+	>=dev-ruby/diff-lcs-1.3:0
+	dev-ruby/gherkin:4
 	>=dev-ruby/multi_json-1.7.5
 	>=dev-ruby/multi_test-0.1.2
 "
