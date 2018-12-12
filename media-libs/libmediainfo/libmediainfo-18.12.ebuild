@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools ltprune flag-o-matic
+inherit autotools flag-o-matic
 
 MY_PN="MediaInfo"
 DESCRIPTION="MediaInfo libraries"
@@ -12,7 +12,7 @@ SRC_URI="https://mediaarea.net/download/source/${PN}/${PV}/${P/-/_}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="curl doc mms static-libs"
 
 RDEPEND="sys-libs/zlib
@@ -79,5 +79,5 @@ src_install() {
 
 	dodoc "${WORKDIR}"/${MY_PN}Lib/*.txt
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
