@@ -133,20 +133,8 @@ dev-python/django-standard-form
 # Mask ruby23-only packages for removal. These packages are not
 # compatible with ruby24+ or they are old slots that are ruby23-only
 # in Gentoo. Removal in 30 days. Bug #661262
-app-text/glark
-app-text/jist
-dev-ruby/activerecord-deprecated_finders
-dev-ruby/akismet:2
-dev-ruby/awesome_print
-dev-ruby/facets
-dev-ruby/http:1.0
-dev-ruby/http:2.0
 dev-ruby/jira-ruby
-dev-ruby/logging
-dev-ruby/public_suffix:2
-dev-ruby/ragol
 dev-ruby/webmock:0
-dev-ruby/wikicloth
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
 # Fails to build (#662000), not compatible with kernel-4, use kernel driver rtsx_pci
