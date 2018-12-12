@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,9 +28,14 @@ src_prepare() {
 	filter-flags -flto*
 }
 
+src_configure() {
+	local emesonargs=( -Dudevrulesdir="$(get_udevdir)"/rules.d )
+	meson_src_configure
+}
+
 src_install() {
 	newsbin "${BUILD_DIR}"/util/mount.fuse3 mount.fuse
-	doman doc/mount.fuse.8
+	newman doc/mount.fuse3.8 mount.fuse.8
 
 	udev_newrules util/udev.rules 99-fuse.rules
 
@@ -42,16 +47,6 @@ src_install() {
 		die "We don't know what init code install for your kernel, please file a bug."
 	fi
 
-	dodir /etc
-	cat > "${ED}"/etc/fuse.conf <<-EOF
-		# Set the maximum number of FUSE mounts allowed to non-root users.
-		# The default is 1000.
-		#
-		#mount_max = 1000
-
-		# Allow non-root users to specify the 'allow_other' or 'allow_root'
-		# mount options.
-		#
-		#user_allow_other
-	EOF
+	insinto /etc
+	doins util/fuse.conf
 }
