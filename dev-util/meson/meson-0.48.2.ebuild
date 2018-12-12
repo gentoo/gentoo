@@ -32,6 +32,11 @@ python_test() {
 		# test_cross_file_system_paths
 		unset XDG_DATA_HOME
 
+		# ASAN and sandbox both want to control LDPRELOAD
+		# https://bugs.gentoo.org/673016
+		export SANDBOX_ON=0
+		unset LD_PRELOAD
+
 		${EPYTHON} -u run_tests.py
 	) || die "Testing failed with ${EPYTHON}"
 }
