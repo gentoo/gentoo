@@ -25,6 +25,7 @@ IUSE="examples test"
 
 ruby_add_bdepend "
 	test? (
+		dev-ruby/bundler
 		dev-ruby/rspec:3
 		>=dev-ruby/nokogiri-1.5.2
 		>=dev-ruby/syntax-1.0.0
