@@ -18,9 +18,9 @@ IUSE="gcrypt libressl"
 
 RDEPEND="!gcrypt? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		libressl? ( dev-libs/libressl:0= )
 	)
-	gcrypt? ( dev-libs/libgcrypt:0 )
+	gcrypt? ( dev-libs/libgcrypt:0= )
 	dev-libs/libnl:3
 	net-wireless/wireless-regdb"
 DEPEND="${RDEPEND}
