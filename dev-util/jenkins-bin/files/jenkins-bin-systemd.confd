@@ -1,0 +1,108 @@
+# Config file for /etc/jenkins/jenkins.conf
+
+#
+# Directory where Jenkins store its configuration and working
+# files (checkouts, build reports, artifacts, ...).
+#
+JENKINS_HOME="/var/lib/jenkins/home"
+
+#
+# Option to pass to Jenkins daemon
+# If double-dash arguments are used, the daemon will accept only one
+# Meaning, only the first --argument will be passed
+# Cannot be used if you provide more --arguments1 --arguments2
+#
+JENKINS_JAVA_OPTION=""
+
+#
+# Set AWT Mode headless to true
+# Jenkins does not provide a Java-based GUI
+JENKINS_AWT_MODE="-Djava.awt.headless=true"
+
+#
+# Port Jenkins is listening on.
+#
+JENKINS_PORT="8080"
+
+#
+# Secure port Jenkins is listening on
+#
+JENKINS_SSL_PORT="8443"
+
+#
+# Debug level for logs -- the higher the value, the more verbose.
+# 5 is INFO.
+#
+JENKINS_DEBUG_LEVEL="5"
+
+#
+# Maximum number of HTTP worker threads.
+#
+JENKINS_HANDLER_MAX="100"
+
+#
+# Maximum number of idle HTTP worker threads.
+#
+JENKINS_HANDLER_IDLE="20"
+
+#
+# Pass arbitrary arguments to Jenkins.
+# Eg.: --httpListenAddress=127.0.0.1 --prefix=/jenkins
+# Full option list: java -jar jenkins.war --help
+#
+JENKINS_ARGS=""
+
+#
+# User
+#
+JENKINS_USER=jenkins
+
+
+#
+# Pid File 
+#
+JENKINS_PIDFILE="/var/run/jenkins.pid"
+
+#
+# War File
+#
+JENKINS_WAR="/opt/jenkins/jenkins.war"
+
+#
+# Jenkins simple logger class
+LOGGER_CLASS="winstone.accesslog.SimpleAccessLogger"
+
+#
+# Logger format
+LOGGER_FORMAT="combined"
+
+#
+# Simple access logger location
+ACCESS_LOG_FILE="/var/log/jenkins/access_log"
+
+#
+# Standard LOGFILE
+#
+JENKINS_LOGFILE="/var/log/jenkins/jenkins.log"
+
+#
+# If used, this option provides jenkins certificate
+# Must provide absolute path, and readable
+# Must be paired with HTTPS_PRIVKEY
+#
+JENKINS_HTTPS_CERTIFICATE=""
+
+# 
+# If used, must be paired with JENKINS_HTTPS_CERTIFICATE
+# provides the private key location
+# Must provide absolute path, and readable
+#
+JENKINS_HTTPS_PRIVKEY=""
+
+#
+# Use direct and absolute path for Keystore
+# This variable enables JENKINS Keystore for the daemon
+# A valid keystore must be provided via Java keytool
+# Must not be used together with httpsCertificate/httpsPrivKey
+#
+JENKINS_KEYSTORE=""
