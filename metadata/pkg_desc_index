@@ -26,7 +26,7 @@ app-accessibility/sphinx2 0.6: CMU Speech Recognition-engine
 app-accessibility/sphinx3 0.8-r1: CMU Speech Recognition engine
 app-accessibility/sphinxbase 0.8: Support library required by the Sphinx Speech Recognition Engine
 app-accessibility/yasr 0.6.9-r1: General-purpose console screen reader
-app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
+app-admin/abrt 2.0.12-r2 2.10.10-r2: Automatic bug detection and reporting tool
 app-admin/analog 6.0-r4: A webserver log analyzer
 app-admin/ansible 2.5.11 2.6.7 2.7.1: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.34 2.4.27 2.4.34: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -3153,7 +3153,7 @@ dev-libs/libqtxdg 3.2.0: A Qt implementation of XDG standards
 dev-libs/librdkafka 0.11.5: Apache Kafka C/C++ client library
 dev-libs/librelp 1.2.18: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
-dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
+dev-libs/libreport 2.0.13-r1 2.9.5: Generic library for reporting software bugs
 dev-libs/libressl 2.6.5: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.4-r1: A helper library for REVerse ENGineered formats filters
 dev-libs/libsass 3.4.7: A C/C++ implementation of a Sass CSS compiler
@@ -3250,6 +3250,7 @@ dev-libs/re2 0.2016.05.01 0.2018.10.01: An efficient, principled regular express
 dev-libs/redland 1.0.17-r1: High-level interface for the Resource Description Framework
 dev-libs/redland-bindings 1.0.14.1-r2: Language bindings for Redland
 dev-libs/rlog 1.4: A C++ logging library
+dev-libs/satyr 0.26: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/serd 0.28.0-r1: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
@@ -4965,6 +4966,7 @@ dev-python/http-parser 0.8.3: HTTP request/response parser for python in C
 dev-python/httpbin 0.4.1: HTTP Request and Response Service
 dev-python/httplib2 0.10.3-r1: A comprehensive HTTP client library
 dev-python/httpretty 0.8.14: HTTP client mock for Python
+dev-python/humanize 0.5.1: Common humanization utilities
 dev-python/hyper-h2 2.5.1: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1: HTTP/2 framing layer for Python
 dev-python/hypothesis 3.6.0-r1 3.59.1: A library for property based testing
@@ -9313,7 +9315,7 @@ sci-electronics/oregano 0.69.1-r1: Application for the schematic capturing and s
 sci-electronics/pcb 0_p20140316: GPL Electronic Design Automation: Printed Circuit Board editor
 sci-electronics/qelectrotech 0.50: Qt5 application to design electric diagrams
 sci-electronics/spice 3.5.5-r2: general-purpose circuit simulation program
-sci-electronics/voacapl 0.6.7: HF propagation prediction tool
+sci-electronics/voacapl 0.6.7 0.7.2: HF propagation prediction tool
 sci-electronics/xcircuit 3.7.48: Circuit drawing and schematic capture program
 sci-electronics/xnec2c 3.5.1: A GTK+ graphical interactive version of nec2c
 sci-electronics/xoscope 2.0: Soundcard Oscilloscope for X
@@ -9952,7 +9954,7 @@ sys-auth/pam_skey 1.1.5-r5: PAM interface for the S/Key authentication system
 sys-auth/pam_ssh 1.98: Uses ssh-agent to provide single sign-on
 sys-auth/pam_u2f 1.0.4-r1: Library for authenticating against PAM with a Yubikey
 sys-auth/pambase 20150213-r1 20150213-r2: PAM base configuration files
-sys-auth/polkit 0.113-r4 0.115-r1: Policy framework for controlling privileges for system-wide services
+sys-auth/polkit 0.113-r4 0.115-r1 0.115-r2: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
 sys-auth/polkit-qt 0.112.0_p20160416-r2: PolicyKit Qt API wrapper library
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
