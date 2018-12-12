@@ -197,12 +197,12 @@ src_compile() {
 }
 
 src_install() {
-	local inst
-	INSTALL_TARGETS="install install_tmpfiles_configuration"
+	local inst INSTALL_TARGETS
+	INSTALL_TARGETS=( install install_tmpfiles_configuration )
 	# install systemd related files only when requested, bug #522430
-	use systemd && INSTALL_TARGETS="${INSTALL_TARGETS} install_systemd_units install_systemd_generators"
-	use device-mapper-only && INSTALL_TARGETS="install_device-mapper"
-	for inst in ${INSTALL_TARGETS}; do
+	use systemd && INSTALL_TARGETS+=( install_systemd_units install_systemd_generators )
+	use device-mapper-only && INSTALL_TARGETS=( install_device-mapper )
+	for inst in ${INSTALL_TARGETS[@]}; do
 		emake DESTDIR="${D}" ${inst}
 	done
 
