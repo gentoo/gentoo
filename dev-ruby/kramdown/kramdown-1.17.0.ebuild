@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_EXTRADOC="README.md AUTHORS CONTRIBUTERS"
 
@@ -25,7 +25,7 @@ DEPEND+=" test? ( ${LATEX_DEPS} app-text/htmltidy )"
 
 ruby_add_rdepend "dev-ruby/prawn:2
 	>=dev-ruby/prawn-table-0.2.2 =dev-ruby/prawn-table-0.2*
-	>=dev-ruby/rouge-1.8:*
+	>=dev-ruby/rouge-1.8
 	>=dev-ruby/itextomml-1.5
 	>=dev-ruby/coderay-1.0.0
 	>=dev-ruby/ritex-1.0
