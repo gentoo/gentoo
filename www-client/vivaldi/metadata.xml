@@ -5,4 +5,10 @@
 <email>jer@gentoo.org</email>
 <name>Jeroen Roovers</name>
 </maintainer>
+<use>
+<flag name='l10n_es-PE'>Spanish, Peru locale</flag>
+<flag name='l10n_io'>Ido locale</flag>
+<flag name='l10n_jbo'>Lojban locale</flag>
+<flag name='l10n_sc'>Sardinian locale</flag>
+</use>
 </pkgmetadata>
