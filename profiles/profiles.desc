@@ -308,8 +308,6 @@ mips		hardened/linux/mips/n64					exp
 ppc		hardened/linux/powerpc/ppc32				dev
 ppc		hardened/linux/powerpc/ppc64/32bit-userland		dev
 ppc64		hardened/linux/powerpc/ppc64/64bit-userland		dev
-x86		hardened/linux/x86					stable
-x86		hardened/linux/x86/selinux				stable
 
 # musl profiles
 # @MAINTAINER: musl@gentoo.org
