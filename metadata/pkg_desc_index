@@ -10583,7 +10583,7 @@ www-client/firefox 60.3.0-r1: Firefox Web Browser
 www-client/firefox-bin 60.4.0 64.0: Firefox Web Browser
 www-client/httrack 3.48.21-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/links 2.14-r1: A fast and lightweight web browser running in both graphics and text mode
-www-client/lynx 2.8.9_pre11 2.8.9_pre16: An excellent console-based web browser with ssl support
+www-client/lynx 2.8.9_pre16: An excellent console-based web browser with ssl support
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/pybugz 0.12.1 0.13: Command line interface to (Gentoo) Bugzilla
 www-client/qupzilla 2.2.5: A cross-platform web browser using QtWebEngine
