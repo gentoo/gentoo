@@ -16,14 +16,17 @@ if [[ ${PV} == "9999" ]]; then
 
 	inherit git-r3
 else
-	KEYWORDS="amd64 arm ~arm64 hppa x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 
 	SRC_URI="
 		https://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
 		doc? ( https://www.rsyslog.com/files/download/${PN}/${PN}-doc-${PV}.tar.gz )
 	"
 
-	PATCHES=( "${FILESDIR}"/${P}-fix-omprog-output-capture-mt-test.patch )
+	PATCHES=(
+		"${FILESDIR}"/${P}-fix-liblogging_stdlog-linking.patch
+		"${FILESDIR}"/${PN}-8.40.0-fix-omusrmsg.patch
+	)
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
@@ -36,7 +39,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/libfastjson-0.99.8:=
 	>=dev-libs/libestr-0.1.9
-	>=dev-libs/liblogging-1.0.1:=[stdlog]
 	>=sys-libs/zlib-1.2.5
 	curl? ( >=net-misc/curl-7.35.0 )
 	dbi? ( >=dev-db/libdbi-0.8.3 )
@@ -83,6 +85,7 @@ DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-archive-2015.02.24
 	virtual/pkgconfig
 	test? (
+		>=dev-libs/liblogging-1.0.1[stdlog]
 		jemalloc? ( <sys-libs/libfaketime-0.9.7 )
 		!jemalloc? ( sys-libs/libfaketime )
 		${PYTHON_DEPS}
@@ -198,6 +201,9 @@ src_configure() {
 		--enable-pmciscoios
 		--enable-pmcisconames
 		--enable-pmlastmsg
+		$(use_enable normalize pmnormalize)
+		--enable-pmnull
+		--enable-pmpanngfw
 		--enable-pmsnare
 		# DB
 		$(use_enable dbi libdbi)
