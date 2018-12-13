@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,12 +35,7 @@ DEPEND="${RDEPEND}
 # unresolved sandbox issues
 RESTRICT="test"
 
-src_prepare() {
-	default
-
-	sed -e "/^CFLAGS :=/s/-O2 -Werror//" \
-		-i Makefile || die
-}
+PATCHES=( "${FILESDIR}"/${P}-sitedir.patch )
 
 src_configure() {
 	# only build/install docs if enabled
@@ -54,7 +49,8 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX=/usr LIBDIR="/usr/$(get_libdir)/bup" DOCDIR="/usr/share/${PF}" install
+	emake DESTDIR="${D}" PREFIX=/usr DOCDIR="/usr/share/${PF}" \
+		SITEDIR="$(python_get_sitedir)" install
 	python_fix_shebang "${ED}"
 	python_optimize "${ED}"
 }
