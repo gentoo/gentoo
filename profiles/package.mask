@@ -152,11 +152,6 @@ dev-python/django-standard-form
 dev-ruby/jira-ruby
 dev-ruby/webmock:0
 
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2018)
-# Fails to build (#662000), not compatible with kernel-4, use kernel driver rtsx_pci
-# instead. Removal in a month.
-sys-block/rts_pstor
-
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
 # Removal in 30 days.
