@@ -339,8 +339,6 @@ x86		default/linux/x86/17.0/musl/selinux			exp
 
 # Non-embedded uclibc profiles
 # @MAINTAINER: uclibc@gentoo.org
-amd64		default/linux/uclibc/amd64				exp
-amd64		hardened/linux/uclibc/amd64				exp
 amd64		default/linux/amd64/17.0/uclibc				exp
 amd64		default/linux/amd64/17.0/uclibc/hardened		exp
 arm		default/linux/uclibc/arm/armv7a				exp
