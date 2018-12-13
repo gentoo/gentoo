@@ -237,7 +237,7 @@ app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 9.0.8-r1: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.6: Deduplicating backup program with compression and authenticated encryption
-app-backup/btrbk 0.24.0-r1 0.25.1-r1: Tool for creating snapshots and remote backups of btrfs subvolumes
+app-backup/btrbk 0.24.0-r1 0.25.1-r1 0.27.0: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/burp 2.1.32: Network backup and restore client and server for Unix and Windows
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
@@ -1184,7 +1184,7 @@ app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r1: Spreadsheet Calculator
 app-office/scribus 1.5.4-r1: Desktop publishing (DTP) and layout program
-app-office/skrooge 2.15.0: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 2.15.0 2.16.2: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0-r1: A nice LaTeX-IDE
@@ -3220,8 +3220,8 @@ dev-libs/nettle 3.4: Low-level cryptographic library
 dev-libs/newt 0.52.15 0.52.20: Redhat's Newt windowing toolkit development files
 dev-libs/nmeap 0.3: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.3: New GNU Portable Threads Library
-dev-libs/nspr 4.13.1 4.19: Netscape Portable Runtime
-dev-libs/nss 3.29.5 3.37.3: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nspr 4.13.1 4.19 4.20: Netscape Portable Runtime
+dev-libs/nss 3.29.5 3.37.3 3.40.1: Mozilla's Network Security Services library that implements PKI support
 dev-libs/ntl 9.3.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.2.11 2.2.12: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/oniguruma 6.8.2 6.9.0: Regular expression library for different character encodings
@@ -3247,6 +3247,7 @@ dev-libs/qof 0.8.8-r1: A Query Object Framework
 dev-libs/qqwing 1.3.3 1.3.4: Sudoku puzzle generator and solver
 dev-libs/qtkeychain 0.9.0: Qt API for storing passwords securely
 dev-libs/quazip 0.7.6: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
+dev-libs/rapidjson 1.1.0-r1: A fast JSON parser/generator for C++ with both SAX/DOM style API
 dev-libs/rasqal 0.9.32 0.9.33: Library that handles Resource Description Framework (RDF)
 dev-libs/re2 0.2016.05.01 0.2018.10.01: An efficient, principled regular expression library
 dev-libs/redland 1.0.17-r1: High-level interface for the Resource Description Framework
@@ -7730,7 +7731,7 @@ media-libs/portmidi 217-r1: Library for real time MIDI input and output
 media-libs/ptex 2.1.28-r1: Per-Face Texture Mapping for Production Rendering
 media-libs/qhull 2015.2: Geometry library
 media-libs/qimageblitz 0.0.6_p20131029: Graphical effect and filter library by KDE
-media-libs/qt-gstreamer 1.2.0-r3: C++ bindings for GStreamer with a Qt-style API
+media-libs/qt-gstreamer 1.2.0-r3 1.2.0-r4: C++ bindings for GStreamer with a Qt-style API
 media-libs/qtav 1.12.0: Multimedia playback framework based on Qt + FFmpeg
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
 media-libs/quvi 0.2.19 0.4.2 0.9.5: A command line tool for parsing video download links
@@ -8304,7 +8305,7 @@ media-video/smtube 17.5.0-r2: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subviewer srt
 media-video/subliminal 2.0.5-r2: Python library to search and download subtitles
-media-video/subtitlecomposer 0.6.4: Text-based subtitles editor
+media-video/subtitlecomposer 0.6.4 0.6.6: Text-based subtitles editor
 media-video/subtitleeditor 0.54.0: GTK+3 subtitle editing tool
 media-video/subtitleripper 0.3.4-r4: DVD Subtitle Ripper for Linux
 media-video/totem 3.24.0: Media player for GNOME
@@ -10069,7 +10070,7 @@ sys-devel/dev86 0.16.21-r2: Bruce's C compiler - Simple C compiler to generate 8
 sys-devel/distcc 3.2_rc1-r4: Distribute compilation of C code across several machines on a network
 sys-devel/flex 2.6.1 2.6.4-r1: The Fast Lexical Analyzer
 sys-devel/gcc 6.4.0-r1 7.3.0-r3: The GNU Compiler Collection
-sys-devel/gcc-config 1.8-r1: utility to manage compilers
+sys-devel/gcc-config 1.8-r1 2.0: Utility to manage compilers
 sys-devel/gdb 7.10.1 7.12.1 8.1-r1: GNU debugger
 sys-devel/gettext 0.19.8.1: GNU locale utilities
 sys-devel/gnuconfig 20161104 20170101: Updated config.sub and config.guess file from GNU
@@ -11134,7 +11135,7 @@ x11-plugins/wmdrawer 0.10.5-r3: dockapp which provides a drawer (retractable but
 x11-plugins/wmfire 1.2.4-r3: Load monitoring dockapp displaying dancing flame
 x11-plugins/wmfishtime 1.24-r3: A fun clock applet for your desktop featuring swimming fish
 x11-plugins/wmfortune 0.241-r1: a dockapp showing fortune-mod messages
-x11-plugins/wmfrog 0.2.0-r1: a weather application, it shows the weather in a graphical way
+x11-plugins/wmfrog 0.2.0-r1 0.3.1-r1: a weather application, it shows the weather in a graphical way
 x11-plugins/wmfsm 0.36: dockapp for monitoring filesystem usage
 x11-plugins/wmget 0.6.1: a libcurl based dockapp for automated downloads
 x11-plugins/wmifinfo 0.10-r1: a dockapp for monitoring network interfaces
