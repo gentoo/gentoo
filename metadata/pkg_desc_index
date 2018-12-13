@@ -118,7 +118,7 @@ app-admin/radmind 1.14.1-r1: command-line tools and server to remotely administe
 app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.14.1: Tool to manage OpenRC services that need to be restarted
-app-admin/rsyslog 8.38.0-r1: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.38.0-r2: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617: Rules for Sagan log analyzer
 app-admin/setools 4.1.1: Policy Analysis Tools for SELinux
