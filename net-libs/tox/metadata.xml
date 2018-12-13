@@ -17,7 +17,6 @@
 		<flag name="log-info">Log level: 3</flag>
 		<flag name="log-debug">Log level: 4</flag>
 		<flag name="log-trace">Log level: 5</flag>
-		<flag name="ntox">Enable the testing nTox client.</flag>
 		<flag name="daemon">Enable the DHT Bootstrap Daemon.</flag>
 	</use>
 	<upstream>
