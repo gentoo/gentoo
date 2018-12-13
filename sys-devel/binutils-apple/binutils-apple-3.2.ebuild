@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -120,6 +120,12 @@ src_configure() {
 		BINPATH=/usr/${CHOST}/${CTARGET}/binutils-bin/${PV}
 	else
 		BINPATH=/usr/${CTARGET}/binutils-bin/${PV}
+	fi
+
+	if tc-is-gcc && [[ $(gcc-fullversion) != 4.2.1 ]] ; then
+		# force gcc-apple
+		CC=${CTARGET}-gcc-4.2.1
+		CXX=${CTARGET}-g++-4.2.1
 	fi
 }
 
