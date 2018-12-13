@@ -294,11 +294,6 @@ x86-fbsd	default/bsd/fbsd/x86/11.1			exp
 
 # Hardened Profiles
 # @MAINTAINER: hardened@gentoo.org
-amd64		hardened/linux/amd64					stable
-amd64		hardened/linux/amd64/selinux				stable
-amd64		hardened/linux/amd64/no-multilib			stable
-amd64		hardened/linux/amd64/no-multilib/selinux		stable
-amd64		hardened/linux/amd64/x32				dev
 arm		hardened/linux/arm/armv6j				dev
 arm		hardened/linux/arm/armv7a				dev
 ia64		hardened/linux/ia64					dev
@@ -318,10 +313,6 @@ x86		hardened/linux/x86/selinux				stable
 
 # musl profiles
 # @MAINTAINER: musl@gentoo.org
-amd64		default/linux/musl/amd64				exp
-amd64		hardened/linux/musl/amd64				exp
-amd64		default/linux/musl/amd64/x32				exp
-amd64		hardened/linux/musl/amd64/x32				exp
 amd64		default/linux/amd64/17.0/musl				exp
 amd64		default/linux/amd64/17.0/musl/hardened			exp
 amd64		default/linux/amd64/17.0/musl/hardened/selinux		exp
@@ -348,8 +339,6 @@ x86		default/linux/x86/17.0/musl/selinux			exp
 
 # Non-embedded uclibc profiles
 # @MAINTAINER: uclibc@gentoo.org
-amd64		default/linux/uclibc/amd64				exp
-amd64		hardened/linux/uclibc/amd64				exp
 amd64		default/linux/amd64/17.0/uclibc				exp
 amd64		default/linux/amd64/17.0/uclibc/hardened		exp
 arm		default/linux/uclibc/arm/armv7a				exp
