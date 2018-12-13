@@ -89,12 +89,18 @@ src_prepare() {
 }
 
 src_configure() {
+	if has_version dev-db/libiodbc ; then
+		IODBC="-DIODBC_CONFIG_PATH=/usr/bin/iodbc-config"
+	fi
+
 	append-cxxflags -std=c++11
 	ANTLR_JAR_PATH="${DISTDIR}/antlr-4.7.1-complete.jar"
 	local mycmakeargs=(
 		-DWITH_ANTLR_JAR=${ANTLR_JAR_PATH}
 		-DUSE_GNOME_KEYRING="$(usex gnome-keyring)"
 		-DLIB_INSTALL_DIR="/usr/$(get_libdir)"
+		-DIODBC_INCLUDE_PATH="/usr/include/iodbc"
+		${IODBC}
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 		-DMySQL_CONFIG_PATH="/usr/bin/mysql_config"
