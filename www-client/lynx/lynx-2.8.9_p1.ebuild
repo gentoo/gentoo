@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ SRC_URI="http://invisible-mirror.net/archives/lynx/tarballs/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="bzip2 cjk gnutls idn ipv6 nls ssl unicode libressl"
 
 RDEPEND="
@@ -39,7 +39,7 @@ RDEPEND="
 		)
 	)
 	bzip2? ( app-arch/bzip2 )
-	idn? ( net-dns/libidn )
+	idn? ( net-dns/libidn:0= )
 "
 
 DEPEND="${RDEPEND}
@@ -50,7 +50,7 @@ S=${WORKDIR}/${MY_P}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.8.6-mint.patch
-	"${FILESDIR}"/${PN}-2.8.8_p1-parallel.patch
+	"${FILESDIR}"/${P}-parallel.patch
 )
 
 pkg_setup() {
@@ -82,6 +82,12 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
+}
+
+src_compile() {
+	# generating translation files in parallel is currently broken
+	use nls && emake -C po -j1
+	emake
 }
 
 src_install() {
