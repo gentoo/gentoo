@@ -10319,7 +10319,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16f: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.11: Utilities and libraries for NUMA systems
 sys-process/numad 0.5 0.5-r1: The NUMA daemon that manages application locality
-sys-process/parallel 20180322: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20180622: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
 sys-process/procps 3.3.15-r1: standard informational utilities and process-handling tools
 sys-process/psmisc 23.1-r1: A set of tools that use the proc filesystem
