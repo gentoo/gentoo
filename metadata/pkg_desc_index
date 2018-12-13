@@ -1184,7 +1184,7 @@ app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r1: Spreadsheet Calculator
 app-office/scribus 1.5.4-r1: Desktop publishing (DTP) and layout program
-app-office/skrooge 2.15.0 2.16.2: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 2.16.2: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0-r1: A nice LaTeX-IDE
@@ -7731,7 +7731,7 @@ media-libs/portmidi 217-r1: Library for real time MIDI input and output
 media-libs/ptex 2.1.28-r1: Per-Face Texture Mapping for Production Rendering
 media-libs/qhull 2015.2: Geometry library
 media-libs/qimageblitz 0.0.6_p20131029: Graphical effect and filter library by KDE
-media-libs/qt-gstreamer 1.2.0-r3 1.2.0-r4: C++ bindings for GStreamer with a Qt-style API
+media-libs/qt-gstreamer 1.2.0-r4: C++ bindings for GStreamer with a Qt-style API
 media-libs/qtav 1.12.0: Multimedia playback framework based on Qt + FFmpeg
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
 media-libs/quvi 0.2.19 0.4.2 0.9.5: A command line tool for parsing video download links
@@ -8305,7 +8305,7 @@ media-video/smtube 17.5.0-r2: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subviewer srt
 media-video/subliminal 2.0.5-r2: Python library to search and download subtitles
-media-video/subtitlecomposer 0.6.4 0.6.6: Text-based subtitles editor
+media-video/subtitlecomposer 0.6.6: Text-based subtitles editor
 media-video/subtitleeditor 0.54.0: GTK+3 subtitle editing tool
 media-video/subtitleripper 0.3.4-r4: DVD Subtitle Ripper for Linux
 media-video/totem 3.24.0: Media player for GNOME
