@@ -53,6 +53,13 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+src_test() {
+	cmake-utils_src_make test-z3
+	set -- "${BUILD_DIR}"/test-z3 /a
+	echo "${@}" >&2
+	"${@}" || die
+}
+
 src_install() {
 	local DOCS=( "README.md" "RELEASE_NOTES" )
 	cmake-utils_src_install
