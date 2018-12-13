@@ -29,6 +29,7 @@ RDEPEND=">=app-arch/snappy-1.1.3
 	>=dev-libs/libpcre-8.41[cxx]
 	dev-libs/snowball-stemmer
 	net-libs/libpcap
+	>=sys-devel/clang:=	
 	>=sys-libs/zlib-1.2.11:=
 	kerberos? ( dev-libs/cyrus-sasl[kerberos] )
 	mms-agent? ( app-admin/mms-agent )
