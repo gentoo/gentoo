@@ -29,7 +29,6 @@ DEPEND="${RDEPEND}
 		>=dev-python/capturer-2.1[${PYTHON_USEDEP}]
 		>=dev-python/coloredlogs-2.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-3.0.7[${PYTHON_USEDEP}]
-		>=dev-python/pytest-2.4.0[${PYTHON_USEDEP}]
 	)
 	"
 
