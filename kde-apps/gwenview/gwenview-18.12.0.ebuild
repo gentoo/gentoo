@@ -68,6 +68,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kimageformats)
 	$(add_qt_dep qtimageformats)
+	kipi? ( media-plugins/kipi-plugins:5 )
 "
 
 src_prepare() {
@@ -99,11 +100,7 @@ src_configure() {
 pkg_postinst() {
 	kde5_pkg_postinst
 
-	if ! has_version kde-apps/svgpart:${SLOT} ; then
+	if [[ -z "${REPLACING_VERSIONS}" ]] && ! has_version kde-apps/svgpart:${SLOT} ; then
 		elog "For SVG support, install kde-apps/svgpart:${SLOT}"
-	fi
-
-	if use kipi && ! has_version media-plugins/kipi-plugins ; then
-		elog "Plugins for the KIPI interface can be found in media-plugins/kipi-plugins"
 	fi
 }

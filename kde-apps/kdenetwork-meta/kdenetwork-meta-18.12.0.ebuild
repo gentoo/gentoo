@@ -9,7 +9,7 @@ HOMEPAGE="https://www.kde.org/"
 LICENSE="metapackage"
 SLOT="5"
 KEYWORDS="~amd64 ~x86"
-IUSE="+telepathy"
+IUSE="dropbox +telepathy"
 
 RDEPEND="
 	>=kde-apps/kdenetwork-filesharing-${PV}:${SLOT}
@@ -18,5 +18,6 @@ RDEPEND="
 	>=kde-apps/kopete-${PV}:${SLOT}
 	>=kde-apps/krfb-${PV}:${SLOT}
 	>=kde-apps/zeroconf-ioslave-${PV}:${SLOT}
+	dropbox? ( >=kde-apps/dolphin-plugins-dropbox-${PV}:${SLOT} )
 	telepathy? ( >=kde-apps/plasma-telepathy-meta-${PV}:${SLOT} )
 "
