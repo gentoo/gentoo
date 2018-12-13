@@ -351,8 +351,6 @@ ppc		default/linux/uclibc/ppc				exp
 ppc		hardened/linux/uclibc/ppc				exp
 ppc		default/linux/powerpc/ppc32/17.0/uclibc			exp
 ppc		default/linux/powerpc/ppc32/17.0/uclibc/hardened	exp
-x86		default/linux/uclibc/x86				exp
-x86		hardened/linux/uclibc/x86				exp
 x86		default/linux/x86/17.0/uclibc				exp
 x86		default/linux/x86/17.0/uclibc/hardened			exp
 
