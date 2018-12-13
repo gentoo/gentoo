@@ -12,12 +12,9 @@ SRC_URI="https://github.com/leethomason/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 LICENSE="ZLIB"
 SLOT="0/7"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~sparc ~x86"
-IUSE="static-libs test"
+IUSE="test"
 
 multilib_src_configure() {
-	local mycmakeargs=(
-		-DBUILD_STATIC_LIBS=$(usex static-libs)
-		-DBUILD_TESTING=$(usex test)
-	)
+	local mycmakeargs=( -DBUILD_TESTING=$(usex test) )
 	cmake-utils_src_configure
 }

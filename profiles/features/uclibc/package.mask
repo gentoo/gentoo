@@ -12,8 +12,3 @@ sys-fs/udev
 # Working on it, bug #470884
 dev-libs/elfutils
 >virtual/libelf-2
-
-## MJE 18/09/2018 - Do these still apply?:
-## These binary pkgs have a hard dep on glibc; make repoman shut up
-#app-arch/rar
-#www-plugins/adobe-flash
