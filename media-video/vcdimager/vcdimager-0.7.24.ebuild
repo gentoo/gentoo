@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,6 +16,7 @@ IUSE="+xml static-libs"
 
 RDEPEND="
 	>=dev-libs/libcdio-0.90-r1:0=[-minimal,${MULTILIB_USEDEP}]
+	<dev-libs/libcdio-1.0
 	dev-libs/popt
 	xml? ( dev-libs/libxml2:2 )
 "
