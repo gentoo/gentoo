@@ -1,32 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
+MY_P="${P/_/-}-gtk3"
 inherit gnome2-utils xdg-utils
 
-MY_P="${P/_/-}"
-S="${WORKDIR}/${MY_P}"
-
-DESCRIPTION="Audacious Player - Your music, your way, no exceptions"
+DESCRIPTION="Lightweight and versatile audio player"
 HOMEPAGE="https://audacious-media-player.org/"
-
-if [[ ${PV} == *9999 ]]; then
-	inherit autotools git-r3
-	EGIT_REPO_URI="https://github.com/audacious-media-player/audacious.git"
-else
-	SRC_URI="
-		!gtk3? ( https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2 )
-		gtk3? ( https://distfiles.audacious-media-player.org/${MY_P}-gtk3.tar.bz2 )"
-	KEYWORDS="~amd64 ~x86"
-fi
-
-SRC_URI+=" mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2"
+SRC_URI="https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2
+	mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="gtk gtk3 nls qt5"
-REQUIRED_USE="^^ ( gtk gtk3 qt5 )"
+KEYWORDS="~amd64 ~x86"
+IUSE="nls"
 
 RDEPEND="
 	>=dev-libs/dbus-glib-0.60
@@ -34,29 +22,21 @@ RDEPEND="
 	>=x11-libs/cairo-1.2.6
 	>=x11-libs/pango-1.8.0
 	virtual/freedesktop-icon-theme
-	gtk? ( x11-libs/gtk+:2 )
-	gtk3? ( x11-libs/gtk+:3 )
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-	)"
+	x11-libs/gtk+:3
+"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	nls? ( dev-util/intltool )"
+	nls? ( dev-util/intltool )
+"
 PDEPEND="~media-plugins/audacious-plugins-${PV}"
 
-src_unpack() {
-	default
-	if use gtk3; then
-		mv "${MY_P}"{-gtk3,} || die
-	fi
-	[[ ${PV} == *9999 ]] && git-r3_src_unpack
-}
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
-	[[ ${PV} == *9999 ]] && eautoreconf
+	if ! use nls; then
+		sed -e "/SUBDIRS/s/ po//" -i Makefile || die # bug #512698
+	fi
 }
 
 src_configure() {
@@ -68,9 +48,8 @@ src_configure() {
 	econf \
 		--disable-valgrind \
 		--enable-dbus \
-		$(use_enable $(usex gtk gtk gtk3) gtk) \
-		$(use_enable nls) \
-		$(use_enable qt5 qt)
+		--enable-gtk \
+		$(use_enable nls)
 }
 
 src_install() {
