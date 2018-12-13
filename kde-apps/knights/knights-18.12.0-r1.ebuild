@@ -1,16 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-COMMIT=56762d582d8a8543f50c293ff54d5ac5e546c2d9
 KDE_HANDBOOK="forceoptional"
 KDE_SELINUX_MODULE="games"
-inherit kde5 vcs-snapshot
+inherit kde5
 
 DESCRIPTION="Simple chess board based on KDE Frameworks"
-HOMEPAGE="https://www.linux-apps.com/content/show.php/Knights?content=122046"
-SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://www.kde.org/applications/games/knights/"
 
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
@@ -21,6 +19,7 @@ DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
+	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep kdbusaddons)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kio)
@@ -39,11 +38,11 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	speech? ( $(add_qt_dep qtspeech) )
 "
-RDEPEND="${DEPEND}"
-
-pkg_postinst() {
-	kde5_pkg_postinst
-
-	elog "No chess engines are emerged by default! If you want a chess engine"
-	elog "to play with, you can emerge gnuchess or crafty."
-}
+RDEPEND="${DEPEND}
+	|| (
+		games-board/gnuchess
+		games-board/crafty
+		games-board/stockfish
+		games-board/sjeng
+	)
+"
