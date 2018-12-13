@@ -7412,7 +7412,7 @@ media-gfx/pngtools 0.4-r2: A series of tools for the PNG image format
 media-gfx/potrace 1.15: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
-media-gfx/pqiv 2.10.2: powerful GTK 3 based command-line image viewer with a minimal UI
+media-gfx/pqiv 2.10.4: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
 media-gfx/qrencode 4.0.2: C library for encoding data in a QR Code symbol
