@@ -1,0 +1,195 @@
+--- a/audisp/audispd.c
++++ b/audisp/audispd.c
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+--- a/audisp/plugins/prelude/audisp-prelude.c
++++ b/audisp/plugins/prelude/audisp-prelude.c
+@@ -21,6 +21,8 @@
+  *
+  */
+ 
++#include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <signal.h>
+--- a/audisp/plugins/remote/audisp-remote.c
++++ b/audisp/plugins/remote/audisp-remote.c
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <signal.h>
+ #include <syslog.h>
+--- a/configure.ac
++++ b/configure.ac
+@@ -216,6 +216,9 @@ AC_ARG_ENABLE(zos-remote,
+ AM_CONDITIONAL(ENABLE_ZOS_REMOTE, test "x$enable_zos_remote" != "xno")
+ AC_MSG_RESULT($enable_zos_remote)
+ 
++AC_CHECK_HEADER([asm/ptrace.h], [AC_DEFINE([HAVE_ASM_PTRACE_H],[],[Define to 1 if you have asm/ptrace.h])], [])
++AC_CHECK_HEADER([linux/ptrace.h], [AC_DEFINE([HAVE_LINUX_PTRACE_H],[],[Define to 1 if you have linux/ptrace.h])], [])
++
+ #gssapi
+ AC_ARG_ENABLE(gssapi_krb5,
+ 	[AS_HELP_STRING([--enable-gssapi-krb5],[Enable GSSAPI Kerberos 5 support @<:@default=no@:>@])],
+--- a/contrib/plugin/audisp-example.c
++++ b/contrib/plugin/audisp-example.c
+@@ -37,6 +37,8 @@
+  */
+ 
+ #define _GNU_SOURCE
++#include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <signal.h>
+ #include <string.h>
+--- a/contrib/skeleton.c
++++ b/contrib/skeleton.c
+@@ -13,6 +13,8 @@
+  * gcc skeleton.c -o skeleton -laudit
+  */
+ 
++#include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <sys/types.h>
+ #include <sys/uio.h>
+--- /dev/null
++++ b/lib/fixup.h
+@@ -0,0 +1,17 @@
++#ifndef _AUDIT_IA64_FIXUP_H_
++#define _AUDIT_IA64_FIXUP_H_
++
++#ifdef __ia64__ /* what a pos */
++# include <linux/types.h>
++# define _ASM_IA64_FPU_H
++#endif
++#include <signal.h>
++/*
++#ifdef HAVE_ASM_PTRACE_H
++# include <asm/ptrace.h>
++#endif
++#ifdef HAVE_LINUX_PTRACE_H
++# include <linux/ptrace.h>
++#endif
++*/
++#endif
+--- a/src/auditctl.c
++++ b/src/auditctl.c
+@@ -23,6 +23,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <stdbool.h>
+--- a/src/auditd-config.c
++++ b/src/auditd-config.c
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <sys/stat.h>
+--- a/src/auditd-dispatch.c
++++ b/src/auditd-dispatch.c
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <unistd.h>
+ #include <sys/uio.h>
+ #include <fcntl.h>
+--- a/src/auditd-event.c
++++ b/src/auditd-event.c
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <pthread.h>
+--- a/src/auditd-listen.c
++++ b/src/auditd-listen.c
+@@ -23,6 +23,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <sys/stat.h>
+--- a/src/auditd-reconfig.c
++++ b/src/auditd-reconfig.c
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <pthread.h>
+ #include <signal.h>
+ #include <stdlib.h>
+--- a/src/auditd-sendmail.c
++++ b/src/auditd-sendmail.c
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <unistd.h>		// for access()
+ #include <string.h>
+--- a/src/auditd.c
++++ b/src/auditd.c
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <sys/types.h>
+ #include <unistd.h>
+--- a/src/ausearch.c
++++ b/src/ausearch.c
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <stdio_ext.h>
+ #include <string.h>
+--- a/src/autrace.c
++++ b/src/autrace.c
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <string.h>
+ #include <sys/wait.h>
+--- a/src/delete_all.c
++++ b/src/delete_all.c
+@@ -20,6 +20,7 @@
+  *      Steve Grubb <sgrubb@redhat.com>
+  */
+ #include "config.h"
++#include "fixup.h"
+ #include <stdio.h>
+ #include <string.h>
+ #include <errno.h>
