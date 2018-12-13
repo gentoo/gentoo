@@ -10,7 +10,7 @@ then
 		ewarn "migration guide [0], otherwise important packages such as gcc or glibc will"
 		ewarn "fail to compile and most other packages will be installed incorrectly."
 		ewarn ""
-		ewarn "[0] http://sparc.gentoo.org/multilib.xml"
+		ewarn "[0] https://wiki.gentoo.org/wiki/Sparc/Multilib"
 		echo
 	fi
 fi
