@@ -234,7 +234,6 @@ src_install() {
 	dosbin run/john
 	newsbin run/mailer john-mailer
 
-	die
 	pax-mark -mr "${ED}/usr/sbin/john" || die
 
 	dosym john /usr/sbin/unafs
