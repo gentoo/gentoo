@@ -1,0 +1,17 @@
+--- a/generators/epub/CMakeLists.txt	2018-08-19 21:34:51.151645090 +0200
++++ b/generators/epub/CMakeLists.txt	2018-08-19 21:36:28.771109586 +0200
+@@ -23,12 +23,13 @@
+ 
+ ########### autotests ###############
+ 
++if(BUILD_TESTING)
+ add_definitions( -DKDESRCDIR="${CMAKE_CURRENT_SOURCE_DIR}/" )
+ ecm_add_test(autotests/epubgeneratortest.cpp
+     TEST_NAME "epubgeneratortest"
+     LINK_LIBRARIES Qt5::Test KF5::CoreAddons okularcore
+ )
+-
++endif()
+ 
+ ########### install files ###############
+ install( FILES okularEPub.desktop  DESTINATION  ${KDE_INSTALL_KSERVICES5DIR} )
