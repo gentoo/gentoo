@@ -135,7 +135,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	net-misc/curl
 	net-nds/openldap
 	sci-mathematics/lpsolve
-	sys-libs/zlib:=
+	sys-libs/zlib
 	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl
