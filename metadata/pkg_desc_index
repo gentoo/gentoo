@@ -5384,7 +5384,7 @@ dev-python/pyrfc3339 1.0: Generates and parses RFC 3339 timestamps
 dev-python/pyro 3.16-r1 4.41 4.56: Distributed object middleware for Python (RPC)
 dev-python/pyroute2 0.4.12 0.4.21: A pure Python netlink and Linux network configuration library.
 dev-python/pyrsistent 0.13.0 0.14.2: Persistent/Functional/Immutable data structures
-dev-python/pysaml2 4.0.2-r3 4.5.0: Python implementation of SAML Version 2 to be used in a WSGI environment
+dev-python/pysaml2 4.0.2-r3 4.6.3: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pysendfile 2.0.1: A python interface to the sendfile(2) system call
 dev-python/pyserial 3.2.1: Python Serial Port extension
 dev-python/pysha3 1.0.2-r1: SHA-3 (Keccak) for Python 2.7 - 3.5
@@ -8367,7 +8367,7 @@ net-analyzer/hping 3_pre20051105-r6: A ping-like TCP/IP packet assembler/analyze
 net-analyzer/httping 2.5: http protocol ping-like program
 net-analyzer/hydra 8.1: Advanced parallized login hacker
 net-analyzer/icinga 1.14.2: Nagios Fork - Check daemon, CGIs, docs, IDOutils
-net-analyzer/icinga2 2.8.4 2.9.1 2.10.1-r1: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.8.4 2.9.1 2.10.2: Distributed, general purpose, network monitoring engine
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r1 1.1.0-r2: A simple CLI program for displaying network statistics in real time
 net-analyzer/iftop 1.0_pre4-r2: display bandwidth usage on an interface
