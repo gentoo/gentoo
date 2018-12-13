@@ -330,8 +330,6 @@ ppc		default/linux/musl/ppc					exp
 ppc		hardened/linux/musl/ppc					exp
 ppc		default/linux/powerpc/ppc32/17.0/musl			exp
 ppc		default/linux/powerpc/ppc32/17.0/musl/hardened		exp
-x86		default/linux/musl/x86					exp
-x86		hardened/linux/musl/x86					exp
 x86		default/linux/x86/17.0/musl				exp
 x86		default/linux/x86/17.0/musl/selinux			exp
 
