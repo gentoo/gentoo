@@ -4625,7 +4625,7 @@ dev-python/aodhclient 0.8.0 1.0.0: A client for the OpenStack Aodh API
 dev-python/apipkg 1.4: namespace control and lazy-import mechanism
 dev-python/appdirs 1.4.3: Module for determining appropriate platform-specific dirs
 dev-python/apptools 4.2.1: Enthought Tool Suite: Application tools
-dev-python/apsw 3.19.3_p1: APSW - Another Python SQLite Wrapper
+dev-python/apsw 3.23.1_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
 dev-python/argcomplete 1.4.1 1.9.4: Bash tab completion for argparse
 dev-python/argh 0.26.2 0.26.2-r1: A simple argparse wrapper
@@ -5806,10 +5806,10 @@ dev-qt/qtxml 5.11.1: Implementation of SAX and DOM for the Qt5 framework
 dev-qt/qtxmlpatterns 5.11.1: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
 dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
-dev-ruby/actionpack 5.1.6 5.1.6.1: Eases web-request routing, handling, and response
-dev-ruby/actionview 5.1.6 5.1.6.1: Simple, battle-tested conventions and helpers for building web pages
-dev-ruby/activemodel 5.1.6 5.1.6.1: Toolkit for building modeling frameworks like Active Record and Active Resource
-dev-ruby/activesupport 5.1.6 5.1.6.1: Utility Classes and Extension to the Standard Library
+dev-ruby/actionpack 5.1.6.1: Eases web-request routing, handling, and response
+dev-ruby/actionview 5.1.6.1: Simple, battle-tested conventions and helpers for building web pages
+dev-ruby/activemodel 5.1.6.1: Toolkit for building modeling frameworks like Active Record and Active Resource
+dev-ruby/activesupport 5.1.6.1: Utility Classes and Extension to the Standard Library
 dev-ruby/addressable 2.5.2: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
 dev-ruby/archive-tar-minitar 0.6.1: Provides POSIX tarchive management from Ruby programs
@@ -5938,7 +5938,7 @@ dev-ruby/rack-protection 1.5.5: This gem protects against typical web attacks
 dev-ruby/rack-test 0.6.3: Rack::Test is a small, simple testing API for Rack apps
 dev-ruby/rails-dom-testing 2.0.3: Compare doms and assert certain elements exists in doms using Nokogiri
 dev-ruby/rails-html-sanitizer 1.0.3-r1: Sanitize HTML fragments in Rails applications
-dev-ruby/railties 5.1.6 5.1.6.1: Tools for creating, working with, and running Rails applications
+dev-ruby/railties 5.1.6.1: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 1.1.4-r1 2.2.2 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 10.5.0 12.3.1: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.0.2: Provide a standard and simplified way to build and package Ruby extensions
@@ -8630,7 +8630,7 @@ net-irc/shadowircd 6.3.3-r1: An IRCd based on charybdis that adds several useful
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.0.18-r1: An advanced Internet Relay Chat daemon
-net-irc/weechat 2.0.1 2.3: Portable and multi-interface IRC client
+net-irc/weechat 2.3: Portable and multi-interface IRC client
 net-irc/znc 1.7.1: An advanced IRC Bouncer
 net-libs/accounts-qt 1.15: Qt5 bindings for libaccounts-glib
 net-libs/adns 1.4: Advanced, easy to use, asynchronous-capable DNS client library and utilities
