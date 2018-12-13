@@ -1,0 +1,9 @@
+#!/bin/sh
+# this wrapper disables the auto-updater of telegram-desktop
+# This program is licensed under the same license as telegram-desktop
+
+# telegram-desktop fails to set RestartCommand with the session manager
+# exclude it from session management to prevent restarts without the argument
+unset SESSION_MANAGER
+
+exec /usr/lib/telegram-desktop-bin/Telegram -externalupdater $@
