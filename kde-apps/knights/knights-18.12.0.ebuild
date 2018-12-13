@@ -8,7 +8,7 @@ KDE_SELINUX_MODULE="games"
 inherit kde5
 
 DESCRIPTION="Simple chess board based on KDE Frameworks"
-HOMEPAGE="https://www.linux-apps.com/content/show.php/Knights?content=122046"
+HOMEPAGE="https://www.kde.org/applications/games/knights/"
 
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
