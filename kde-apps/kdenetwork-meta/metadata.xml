@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="dropbox">Enable support for Dropbox in <pkg>kde-apps/dolphin</pkg> via <pkg>kde-apps/dolphin-plugins-dropbox</pkg></flag>
 		<flag name="telepathy">Enable support for Plasma Telepathy (instant messaging) integration via <pkg>kde-apps/plasma-telepathy-meta</pkg></flag>
 	</use>
 </pkgmetadata>
