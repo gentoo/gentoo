@@ -7639,7 +7639,7 @@ media-libs/libmpdclient 2.13: A library for interfacing Music Player Daemon (med
 media-libs/libmpeg2 0.5.1-r2: library for decoding mpeg-2 and mpeg-1 video
 media-libs/libmpeg3 1.8 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0-r1: A library to control MPRIS2 compatible players
-media-libs/libmtp 1.1.15 1.1.16: Implementation of Microsoft's Media Transfer Protocol (MTP)
+media-libs/libmtp 1.1.16: Implementation of Microsoft's Media Transfer Protocol (MTP)
 media-libs/libmygpo-qt 1.1.0: Qt/C++ library wrapping the gpodder.net webservice
 media-libs/libnjb 2.2.7: Library for communicating with the Creative Nomad JukeBox digital audio player
 media-libs/libnut 661: Library and tools to create NUT multimedia files
