@@ -294,11 +294,6 @@ x86-fbsd	default/bsd/fbsd/x86/11.1			exp
 
 # Hardened Profiles
 # @MAINTAINER: hardened@gentoo.org
-amd64		hardened/linux/amd64					stable
-amd64		hardened/linux/amd64/selinux				stable
-amd64		hardened/linux/amd64/no-multilib			stable
-amd64		hardened/linux/amd64/no-multilib/selinux		stable
-amd64		hardened/linux/amd64/x32				dev
 arm		hardened/linux/arm/armv6j				dev
 arm		hardened/linux/arm/armv7a				dev
 ia64		hardened/linux/ia64					dev
