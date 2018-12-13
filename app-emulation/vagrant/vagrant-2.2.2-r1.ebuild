@@ -32,7 +32,7 @@ ruby_add_rdepend "
 	>=dev-ruby/ed25519-1.2.4
 	>=dev-ruby/erubis-2.7.0
 	>=dev-ruby/hashicorp-checkpoint-0.1.5
-	>=dev-ruby/i18n-1.1.1:*
+	>=dev-ruby/i18n-1.1.1:* <dev-ruby/i18n-1.2.0:*
 	>=dev-ruby/listen-3.1.5
 	>=dev-ruby/log4r-1.1.9 <dev-ruby/log4r-1.1.11
 	<dev-ruby/mime-types-3:*
