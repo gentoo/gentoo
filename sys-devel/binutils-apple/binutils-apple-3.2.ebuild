@@ -84,7 +84,6 @@ src_prepare() {
 	epatch "${WORKDIR}"/${PN}-3.1.1-nmedit.patch
 	epatch "${WORKDIR}"/${PN}-3.1.1-no-headers.patch
 	epatch "${WORKDIR}"/${PN}-3.1.1-no-oss-dir.patch
-	epatch "${WORKDIR}"/${P}-armv7-defines.patch
 
 	cd "${S}"/${LD64}
 	epatch "${WORKDIR}"/${PN}-3.1.1-testsuite.patch
