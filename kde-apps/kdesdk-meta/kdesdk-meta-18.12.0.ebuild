@@ -9,10 +9,9 @@ HOMEPAGE="https://www.kde.org/applications/development"
 LICENSE="metapackage"
 SLOT="5"
 KEYWORDS="~amd64 ~x86"
-IUSE="cvs +webkit"
+IUSE="bazaar cvs git mercurial subversion +webkit"
 
 RDEPEND="
-	>=kde-apps/dolphin-plugins-${PV}:${SLOT}
 	>=kde-apps/kapptemplate-${PV}:${SLOT}
 	>=kde-apps/kcachegrind-${PV}:${SLOT}
 	>=kde-apps/kde-dev-scripts-${PV}:${SLOT}
@@ -24,6 +23,10 @@ RDEPEND="
 	>=kde-apps/libkomparediff2-${PV}:${SLOT}
 	>=kde-apps/lokalize-${PV}:${SLOT}
 	>=kde-apps/poxml-${PV}:${SLOT}
+	bazaar? ( >=kde-apps/dolphin-plugins-bazaar-${PV}:${SLOT} )
 	cvs? ( >=kde-apps/cervisia-${PV}:${SLOT} )
+	git? ( >=kde-apps/dolphin-plugins-git-${PV}:${SLOT} )
+	mercurial? ( >=kde-apps/dolphin-plugins-mercurial-${PV}:${SLOT} )
+	subversion? ( >=kde-apps/dolphin-plugins-subversion-${PV}:${SLOT} )
 	webkit? ( >=kde-apps/umbrello-${PV}:${SLOT} )
 "
