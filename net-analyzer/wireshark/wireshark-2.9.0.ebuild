@@ -3,15 +3,15 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_{4,5,6,7} )
-inherit cmake-utils eutils fcaps flag-o-matic git-r3 gnome2-utils ltprune multilib python-r1 qmake-utils user xdg-utils
+inherit cmake-utils eutils fcaps flag-o-matic gnome2-utils ltprune multilib python-r1 qmake-utils user xdg-utils
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
-EGIT_REPO_URI="https://code.wireshark.org/review/wireshark"
+SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc64 ~x86"
 IUSE="
 	adns androiddump bcg729 +capinfos +captype ciscodump +dftest doc +dumpcap
 	+editcap kerberos libxml2 lua lz4 maxminddb +mergecap +netlink nghttp2
@@ -80,6 +80,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4-androiddump.patch
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
+	"${FILESDIR}"/${PN}-2.9.0-tfshark-libm.patch
 	"${FILESDIR}"/${PN}-99999999-androiddump-wsutil.patch
 	"${FILESDIR}"/${PN}-99999999-qtsvg.patch
 	"${FILESDIR}"/${PN}-99999999-ui-needs-wiretap.patch
