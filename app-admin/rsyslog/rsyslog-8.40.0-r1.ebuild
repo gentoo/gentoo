@@ -23,7 +23,7 @@ else
 		doc? ( https://www.rsyslog.com/files/download/${PN}/${PN}-doc-${PV}.tar.gz )
 	"
 
-	PATCHES=( "${FILESDIR}"/${P}-fix-liblogging_stdlog-linking.patch )
+	PATCHES=( "${FILESDIR}"/${PN}-8.40.0-fix-omusrmsg.patch )
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
