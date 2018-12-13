@@ -12,7 +12,7 @@ else
 	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x64-macos ~x64-solaris"
 fi
 
-inherit distutils-r1
+inherit distutils-r1 toolchain-funcs
 
 DESCRIPTION="Open source build system"
 HOMEPAGE="http://mesonbuild.com/"
@@ -30,6 +30,16 @@ python_prepare_all() {
 	sed -i -e 's/test_generate_gir_with_address_sanitizer/_&/' run_unittests.py || die
 
 	distutils-r1_python_prepare_all
+}
+
+src_test() {
+	if tc-is-gcc; then
+		# LTO fails for static libs because the bfd plugin in missing.
+		# Remove this workaround after sys-devel/gcc-config-2.0 is stable.
+		# https://bugs.gentoo.org/672706
+		tc-getPROG AR gcc-ar >/dev/null
+	fi
+	distutils-r1_src_test
 }
 
 python_test() {
