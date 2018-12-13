@@ -313,10 +313,6 @@ x86		hardened/linux/x86/selinux				stable
 
 # musl profiles
 # @MAINTAINER: musl@gentoo.org
-amd64		default/linux/musl/amd64				exp
-amd64		hardened/linux/musl/amd64				exp
-amd64		default/linux/musl/amd64/x32				exp
-amd64		hardened/linux/musl/amd64/x32				exp
 amd64		default/linux/amd64/17.0/musl				exp
 amd64		default/linux/amd64/17.0/musl/hardened			exp
 amd64		default/linux/amd64/17.0/musl/hardened/selinux		exp
