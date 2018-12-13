@@ -1,0 +1,47 @@
+From 8e395b1c1476122963082861c02adaa976d91e9b Mon Sep 17 00:00:00 2001
+From: Michael Weghorn <m.weghorn@posteo.de>
+Date: Tue, 04 Dec 2018 14:42:31 +0100
+Subject: [PATCH] tdf#121399 Join cmd reading thread in gtk3_kde5
+
+Stop reading commands from the pipe on kde5 side once
+the "Quit" command has been sent, in order to have
+the thread that is reading commands from stdin finish
+properly.
+
+Join the thread in the 'FilePickerIpc' destructor, rather than
+just deleting it while it may still be running, which
+resulted in 'terminate()' being called.
+
+Change-Id: Ia184987e7994cc1de0208ff2757a3cf06c8b7194
+---
+
+diff --git a/vcl/unx/gtk3_kde5/kde5_filepicker_ipc.cxx b/vcl/unx/gtk3_kde5/kde5_filepicker_ipc.cxx
+index 550e1d8..a2ea6b7 100644
+--- a/vcl/unx/gtk3_kde5/kde5_filepicker_ipc.cxx
++++ b/vcl/unx/gtk3_kde5/kde5_filepicker_ipc.cxx
+@@ -192,6 +192,12 @@
+         readCommandArgs(command, args);
+ 
+         emit ipc->commandReceived(messageId, command, args);
++
++        // stop processing once 'Quit' command has been sent
++        if (command == Commands::Quit)
++        {
++            return;
++        }
+     }
+ }
+ 
+@@ -211,7 +217,11 @@
+     m_ipcReaderThread = std::unique_ptr<std::thread>{ new std::thread(readCommands, this) };
+ }
+ 
+-FilePickerIpc::~FilePickerIpc() = default;
++FilePickerIpc::~FilePickerIpc()
++{
++    // join thread that reads commands
++    m_ipcReaderThread->join();
++};
+ 
+ bool FilePickerIpc::handleCommand(uint64_t messageId, Commands command, QList<QVariant> args)
+ {
