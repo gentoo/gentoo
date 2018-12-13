@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{4,5,6,7} )
 inherit distutils-r1
 
 DESCRIPTION="Python library for communicating with HTTP 1.1 servers"
-HOMEPAGE="https://bitbucket.org/nikratio/python-dugong/"
+HOMEPAGE="https://github.com/python-dugong/python-dugong/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
