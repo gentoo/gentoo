@@ -7672,7 +7672,7 @@ media-libs/libsmf 1.3: Standard MIDI File format library
 media-libs/libsndfile 1.0.28-r4: C library for reading and writing files containing sampled sound
 media-libs/libsoundtouch 2.0.0-r1: Audio processing library for changing tempo, pitch and playback rates
 media-libs/libtaginfo 0.2.1: a library for reading media metadata
-media-libs/libtheora 1.1.1-r1 1.1.1-r2: The Theora Video Compression Codec
+media-libs/libtheora 1.1.1-r2: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
 media-libs/libtimidity 0.1.0-r2: MIDI to WAVE converter library
 media-libs/libtxc_dxtn 1.0.1-r4: Helper library for S3TC texture (de)compression
@@ -10182,7 +10182,7 @@ sys-fs/quota 4.03 4.04-r1: Linux quota tools
 sys-fs/reiser4progs 1.1.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfsprogs 3.6.25 3.6.27: Reiserfs Utilities
 sys-fs/safecopy 1.7: Tool for fault-tolerant data recovery from damaged (io-errors) devices or files
-sys-fs/shake 0.999 1.0: Defragmenter that runs in userspace while the system is used
+sys-fs/shake 1.0: Defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.3.0: Simple MTP fuse filesystem driver
 sys-fs/squashfs-tools 3.2_p2 3.4 4.3-r2: Tool for creating compressed filesystem type squashfs
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
