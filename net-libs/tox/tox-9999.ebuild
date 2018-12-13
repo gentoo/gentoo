@@ -21,7 +21,7 @@ RDEPEND="
 	av? ( media-libs/libvpx:=
 		media-libs/opus )
 	daemon? ( dev-libs/libconfig )
-	>=dev-libs/libsodium-0.6.1:=[asm,urandom]"
+	>=dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
