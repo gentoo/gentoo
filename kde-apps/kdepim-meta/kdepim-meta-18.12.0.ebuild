@@ -9,7 +9,7 @@ HOMEPAGE="https://www.kde.org/applications/development"
 LICENSE="metapackage"
 SLOT="5"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="bogofilter clamav spamassassin"
 
 RDEPEND="
 	>=kde-apps/akonadi-${PV}:${SLOT}
@@ -68,4 +68,10 @@ RDEPEND="
 	>=kde-apps/pim-sieve-editor-${PV}:${SLOT}
 	>=kde-apps/pimcommon-${PV}:${SLOT}
 	!kde-apps/kdepim-meta:4
+"
+# Optional runtime dependencies: kde-apps/kmail
+RDEPEND="${RDEPEND}
+	bogofilter? ( mail-filter/bogofilter )
+	clamav? ( app-antivirus/clamav )
+	spamassassin? ( mail-filter/spamassassin )
 "
