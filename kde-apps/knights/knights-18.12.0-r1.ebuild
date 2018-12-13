@@ -38,11 +38,11 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	speech? ( $(add_qt_dep qtspeech) )
 "
-RDEPEND="${DEPEND}"
-
-pkg_postinst() {
-	kde5_pkg_postinst
-
-	elog "No chess engines are emerged by default! If you want a chess engine"
-	elog "to play with, you can emerge gnuchess or crafty."
-}
+RDEPEND="${DEPEND}
+	|| (
+		games-board/gnuchess
+		games-board/crafty
+		games-board/stockfish
+		games-board/sjeng
+	)
+"
