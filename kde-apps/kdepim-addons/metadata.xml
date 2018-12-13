@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="importwizard">Enable additional import plugins for <pkg>kde-apps/akonadi-import-wizard</pkg></flag>
+		<flag name="markdown">Enable Markdown support via <pkg>app-text/discount</pkg></flag>
 	</use>
 </pkgmetadata>
