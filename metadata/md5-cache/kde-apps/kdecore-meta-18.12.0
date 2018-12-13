@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=kdecore - merge this to pull in the most basic applications
+EAPI=7
+HOMEPAGE=https://www.kde.org/
+IUSE=+handbook +webengine webkit
+KEYWORDS=~amd64 ~x86
+LICENSE=metapackage
+RDEPEND=>=kde-apps/dolphin-18.12.0:5 >=kde-apps/kdialog-18.12.0:5 >=kde-apps/keditbookmarks-18.12.0:5 >=kde-apps/kfind-18.12.0:5 >=kde-apps/konsole-18.12.0:5 >=kde-apps/kwrite-18.12.0:5 handbook? ( >=kde-apps/khelpcenter-18.12.0:5 ) webengine? ( www-client/falkon ) webkit? ( >=kde-apps/konqueror-18.12.0:5[webengine?] kde-misc/kwebkitpart:5 )
+SLOT=5
+_md5_=0a9a5b7a0a1078a0d38dd17e2fa2d1e1

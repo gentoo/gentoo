@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=Meta package for the KDE Applications collection
+EAPI=7
+HOMEPAGE=https://www.kde.org/
+IUSE=accessibility pim sdk
+KEYWORDS=~amd64 ~x86
+LICENSE=metapackage
+RDEPEND=>=kde-apps/kdeadmin-meta-18.12.0:5 >=kde-apps/kdecore-meta-18.12.0:5 >=kde-apps/kdeedu-meta-18.12.0:5 >=kde-apps/kdegames-meta-18.12.0:5 >=kde-apps/kdegraphics-meta-18.12.0:5 >=kde-apps/kdemultimedia-meta-18.12.0:5 >=kde-apps/kdenetwork-meta-18.12.0:5 >=kde-apps/kdeutils-meta-18.12.0:5 accessibility? ( >=kde-apps/kdeaccessibility-meta-18.12.0:5 ) pim? ( >=kde-apps/kdepim-meta-18.12.0:5 ) sdk? ( >=kde-apps/kdesdk-meta-18.12.0:5 )
+SLOT=5
+_md5_=3f9421c9eb2f65d3c4438802dc811cf2

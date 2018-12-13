@@ -1167,7 +1167,7 @@ app-office/homebank 5.1.3: Free, easy, personal accounting for everyone
 app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking utility written in Java
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/kexi 3.1.0: Visual database applications creator
-app-office/kmymoney 5.0.1-r2: Personal finance manager based on KDE Frameworks
+app-office/kmymoney 5.0.1-r2 5.0.2: Personal finance manager based on KDE Frameworks
 app-office/ledger 3.1.1-r2: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.2: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 6.0.6.2: A full office productivity suite
@@ -1861,6 +1861,7 @@ dev-cpp/sparsehash 1.10 2.0.3-r1: An extremely memory-efficient hash_map impleme
 dev-cpp/tbb 4.3.20150611 2017.20161128: High level abstract threading library
 dev-cpp/tclap 1.2.1: Simple templatized C++ library for parsing command line arguments
 dev-cpp/tree 2.81: An STL-like tree class
+dev-cpp/waylandpp 0.2.3: Wayland C++ bindings
 dev-cpp/yaml-cpp 0.6.2: YAML parser and emitter in C++
 dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
@@ -3258,6 +3259,7 @@ dev-libs/skalibs 2.3.2.0: development files used for building software at skarne
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
 dev-libs/socketstream 0.7.0-r1: C++ Streaming sockets library
 dev-libs/sord 0.16.0-r1: Library for storing RDF data in memory
+dev-libs/spdlog 1.2.1: Very fast, header only, C++ logging library
 dev-libs/starpu 1.1.5: Unified runtime system for heterogeneous multicore architectures
 dev-libs/stfl 0.24: A library which implements a curses-based widget set for text terminals
 dev-libs/svrcore 4.0.4-r1: Mozilla LDAP C SDK
@@ -5068,7 +5070,7 @@ dev-python/logutils 0.3.3: The logutils package provides a set of handlers for t
 dev-python/louie 1.1-r1: Signal dispatching mechanism for Python
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
 dev-python/lxc-python2 0.1: Python bindings for LXC
-dev-python/lxml 4.1.1: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 4.1.1 4.2.5: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.24.0: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
@@ -7695,7 +7697,7 @@ media-libs/mediastreamer 2.9.0-r2: Mediastreaming library for telephony applicat
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 18.2.5: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.8-r1: An Open Source library for Flash movie generation
-media-libs/mlt 6.10.0: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.10.0-r1: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.35.1 1.40.0: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4-r2: Network Audio System
@@ -8258,7 +8260,7 @@ media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to s
 media-video/gaupol 1.4: A subtitle editor for text-based subtitles
 media-video/get_flash_videos 1.24-r1: Downloads videos from various Flash-based video hosting sites
 media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and picture application
-media-video/gpac 0.6.1-r2: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
+media-video/gpac 0.6.1-r2 0.7.1-r1: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
 media-video/griffith 0.13-r2: Movie collection manager
 media-video/gtk-recordmydesktop 0.3.8-r3: GTK+ interface for RecordMyDesktop
 media-video/guvcview 2.0.3 2.0.5: GTK+ UVC Viewer
@@ -10599,7 +10601,7 @@ www-misc/awstats 7.1_p20121017 7.4: AWStats is short for Advanced Web Statistics
 www-misc/fcgiwrap 1.1.0-r1: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
 www-misc/htdig 3.2.0_beta6-r5: HTTP/HTML indexing and searching system
 www-misc/mergelog 4.5-r2: A utility to merge apache logs in chronological order
-www-misc/monitorix 3.9.0 3.10.0-r1: A lightweight system monitoring tool
+www-misc/monitorix 3.9.0 3.10.0-r1 3.10.1: A lightweight system monitoring tool
 www-misc/profile-sync-daemon 5.45.1: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r1: Export command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1-r1: URL shortening command line application that supports various sites

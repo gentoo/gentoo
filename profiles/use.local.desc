@@ -2273,6 +2273,7 @@ kde-apps/artikulate:qtmedia - Enable playback via Qt5Multimedia
 kde-apps/cantor:R - Enable dev-lang/R backend support
 kde-apps/cantor:analitza - Enable kde-apps/analitza backend support
 kde-apps/cantor:julia - Enable dev-lang/julia backend support
+kde-apps/cantor:markdown - Enable Markdown support via app-text/discount
 kde-apps/cantor:qalculate - Enable sci-libs/libqalculate backend support
 kde-apps/dolphin:thumbnail - Enables thumbnail generation
 kde-apps/dolphin-plugins:bazaar - Enable support for the bazaar VCS
@@ -2301,6 +2302,8 @@ kde-apps/kdenlive:gles2 - Use GLES 2.0 or later instead of full OpenGL
 kde-apps/kdenlive:jogshuttle - Enable support for Jog-Shuttle devices
 kde-apps/kdenlive:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/kdepim-addons:importwizard - Enable additional import plugins for kde-apps/akonadi-import-wizard
+kde-apps/kdepim-addons:markdown - Enable Markdown support via app-text/discount
+kde-apps/kdepim-runtime:oauth - Enable support OAuth authentication for EWS via dev-qt/qtnetworkauth
 kde-apps/kdepim-runtime:speech - Enable text-to-speech support
 kde-apps/kdeutils-meta:floppy - Install kde-apps/kfloppy to format and create DOS or ext2fs filesystems in a floppy.
 kde-apps/keditbookmarks:man - Build and install man pages
@@ -2351,8 +2354,10 @@ kde-apps/libksane:kwallet - Enable encrypted storage of passwords with kde-frame
 kde-apps/mailcommon:designer - Build plugins for dev-qt/designer
 kde-apps/marble:aprs - Enable support for APRS data sources
 kde-apps/marble:designer - Install plugin for dev-qt/designer
+kde-apps/marble:geolocation - Enable position information via dev-qt/qtpositioning
 kde-apps/marble:phonon - Enable sound support via media-libs/phonon
 kde-apps/marble:shapefile - Enable support for ESRI shapefiles
+kde-apps/marble:webengine - Use dev-qt/qtwebengine for embedded web browser
 kde-apps/okular:chm - Enable support for Microsoft Compiled HTML Help files
 kde-apps/okular:epub - Enable E-Book support via app-text/ebook-tools
 kde-apps/okular:image-backend - Enable image viewing support
@@ -2363,6 +2368,7 @@ kde-apps/okular:plucker - Enable Plucker E-Book for Palm OS devices support
 kde-apps/okular:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/okular:speech - Enable text-to-speech support
 kde-apps/pimcommon:designer - Build plugins for dev-qt/designer
+kde-apps/pimcommon:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/spectacle:kipi - Enable support for the KDE Image Plugin Interface
 kde-apps/spectacle:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
