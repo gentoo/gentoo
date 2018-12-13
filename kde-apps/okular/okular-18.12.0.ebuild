@@ -66,7 +66,7 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-18.08.0-tests.patch"
-	"${FILESDIR}/${PN}-tests.patch"
+	"${FILESDIR}/${PN}-18.12.0-tests.patch"
 )
 
 src_prepare() {
