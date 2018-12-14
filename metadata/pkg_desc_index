@@ -7697,7 +7697,7 @@ media-libs/lilv 0.24.2-r2: Library to make the use of LV2 plugins as simple as p
 media-libs/lv2 1.14.0-r1: A simple but extensible successor of LADSPA
 media-libs/mediastreamer 2.9.0-r2: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 18.2.5: OpenGL-like graphic library for Linux
+media-libs/mesa 18.2.7: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.8-r1: An Open Source library for Flash movie generation
 media-libs/mlt 6.10.0-r1: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
