@@ -52,6 +52,6 @@ src_install() {
 
 	systemd_dounit misc/*.service
 
-	newinitd "${FILESDIR}/rasdaemon.openrc" rasdaemon
-	newinitd "${FILESDIR}/ras-mc-ctl.openrc" ras-mc-ctl
+	newinitd "${FILESDIR}/rasdaemon.openrc-r1" rasdaemon
+	newinitd "${FILESDIR}/ras-mc-ctl.openrc-r1" ras-mc-ctl
 }
