@@ -1,0 +1,17 @@
+--- a/configure
++++ b/configure
+@@ -152,12 +152,12 @@ rm -f pngquant-gcccheck pngquant-gcccheck.c
+ status "Compiler" "$CC"
+ 
+ # init flags
+-CFLAGS=${CFLAGS:--fno-math-errno -funroll-loops -fomit-frame-pointer -Wall}
++CFLAGS=${CFLAGS:--fno-math-errno -funroll-loops -fomit-frame-pointer}
+ cflags "-std=c99 -I."
+ 
+ # DEBUG
+ if [ -z "$DEBUG" ]; then
+-    cflags "-O3 -DNDEBUG"
++    cflags "-DNDEBUG"
+     status "Debug" "no"
+ else
+     cflags "-O1 -g"
