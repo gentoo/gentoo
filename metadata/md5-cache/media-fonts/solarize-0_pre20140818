@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Large Linux console font (suitable for word processing)
+EAPI=7
+HOMEPAGE=https://github.com/talamus/solarize-12x29-psf
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://github.com/talamus/solarize-12x29-psf/archive/8a856fdb22bc633fdba490b339ea97ef16b700ac.tar.gz -> solarize-12x29-psf-8a856fdb22bc633fdba490b339ea97ef16b700ac.tar.gz
+_md5_=96527bbf35f9801fe91397f8efaf3935
