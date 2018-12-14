@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-libs/glib:2
 		dev-libs/gobject-introspection
+		dev-util/ninja
 		dev-vcs/git
 		virtual/pkgconfig
 	)
