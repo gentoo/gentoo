@@ -33,7 +33,7 @@ PATCH_VER=9
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps cet compile-locales doc gd hardened headers-only +multiarch multilib nscd profile selinux suid systemtap test vanilla"
+IUSE="audit caps cet compile-locales doc gd headers-only +multiarch multilib nscd profile selinux suid systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -61,7 +61,8 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 fi
 
 # We need a new-enough binutils/gcc to match upstream baseline.
-# Also we need to make sure our binutils/gcc supports TLS.
+# Also we need to make sure our binutils/gcc supports TLS,
+# and that gcc already contains the hardened patches.
 COMMON_DEPEND="
 	nscd? ( selinux? (
 		audit? ( sys-process/audit )
@@ -91,13 +92,13 @@ RDEPEND="${COMMON_DEPEND}
 if [[ ${CATEGORY} == cross-* ]] ; then
 	DEPEND+=" !headers-only? (
 		>=${CATEGORY}/binutils-2.24
-		>=${CATEGORY}/gcc-4.9
+		>=${CATEGORY}/gcc-6
 	)"
 	[[ ${CATEGORY} == *-linux* ]] && DEPEND+=" ${CATEGORY}/linux-headers"
 else
 	DEPEND+="
 		>=sys-devel/binutils-2.24
-		>=sys-devel/gcc-4.9
+		>=sys-devel/gcc-6
 		virtual/os-headers
 	"
 	RDEPEND+=" vanilla? ( !sys-libs/timezone-data )"
@@ -371,21 +372,6 @@ setup_flags() {
 	append-flags -O2 -fno-strict-aliasing
 
 	filter-flags '-fstack-protector*'
-
-	# Starting with gcc-6 (and fully upstreamed pie patches) we control
-	# default enabled/disabled pie via use flags. So nothing to do
-	# here then. #618160
-	if [[ $(gcc-major-version) -lt 6 ]]; then
-		if use hardened && tc-enables-pie ; then
-			# Force PIC macro definition for all compilations since they're all
-			# either -fPIC or -fPIE with the default-PIE compiler.
-			append-cppflags -DPIC
-		else
-			# Don't build -fPIE without the default-PIE compiler and the
-			# hardened-pie patch
-			filter-flags -fPIE
-		fi
-	fi
 }
 
 want_tls() {
