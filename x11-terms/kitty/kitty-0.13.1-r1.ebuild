@@ -38,7 +38,7 @@ COMMON_DEPS="
 	x11-libs/libxcb[xkb]
 	wayland? (
 		dev-libs/wayland
-		>=dev-libs/wayland-protocols-1.12
+		>=dev-libs/wayland-protocols-1.17
 	)
 "
 RDEPEND="
