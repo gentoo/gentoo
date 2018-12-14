@@ -19,10 +19,18 @@ HOMEPAGE="http://mesonbuild.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE=""
+IUSE="test"
+RESTIRCT="!test? ( test )"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
+RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
+	test? (
+		dev-libs/glib:2
+		dev-libs/gobject-introspection
+		dev-vcs/git
+		virtual/pkgconfig
+	)
+"
 
 python_prepare_all() {
 	# ASAN and sandbox both want control over LD_PRELOAD
