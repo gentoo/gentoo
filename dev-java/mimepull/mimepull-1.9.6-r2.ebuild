@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 JAVA_PKG_IUSE="source doc"
 
@@ -13,8 +13,7 @@ SRC_URI="https://repo1.maven.org/maven2/org/jvnet/${PN}/${PN}/${PV}/${P}-sources
 
 LICENSE="CDDL"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE=""
+KEYWORDS="amd64 ~ppc64 x86"
 
 DEPEND="
 	>=virtual/jdk-1.7"
