@@ -31,7 +31,7 @@
  
  install-bin: $(BINDIR) lynx$x
 -@MSG_DIR_MAKE@	cd $(PO_DIR) && $(MAKE_RECUR) install
-+@MSG_DIR_MAKE@ $(MAKE) @cf_cv_makeflags@ DESTDIR="$(DESTDIR)" CC="$(CC)" -C $(PO_DIR)
++@MSG_DIR_MAKE@	$(MAKE) @cf_cv_makeflags@ DESTDIR="$(DESTDIR)" CC="$(CC)" -C $(PO_DIR)
  	@ECHO_CC@$(SHELL) -c "P=$(binary_PROG); \
  	if test -f $(BINDIR)/$$P ; then \
  	      mv -f $(BINDIR)/$$P $(BINDIR)/$$P.old; fi"
