@@ -71,6 +71,7 @@ app-admin/hardening-check 2.5 2.6 2.7: Report the hardening characterists of a s
 app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.9 1.2.10: Rebuild Haskell dependencies in Gentoo
 app-admin/hddtemp 0.3_beta15-r26: A simple utility to read the temperature of SMART capable hard drives
+app-admin/helm 2.11.0: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r1: A tool to read SMART information from harddiscs
 app-admin/installer 0.1.1_beta: A software for Gentoo installation
 app-admin/keepass 2.40-r1: A free, open source, light-weight and easy-to-use password manager
@@ -328,7 +329,7 @@ app-crypt/easy-rsa 3.0.4: Small RSA key management package, based on OpenSSL
 app-crypt/gcr 3.20.0 3.28.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201807020151: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
 app-crypt/glep63-check 6: GLEP 63 compliance checker for OpenPGP keys
-app-crypt/gnupg 1.4.21 2.2.8 2.2.10: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 1.4.21 2.2.10: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.10: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
 app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings more easily
