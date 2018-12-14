@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>candrews@gentoo.org</email>
+        <name>Craig Andrews</name>
+    </maintainer>
+    <maintainer type="person">
+        <email>gentoo@holzke.net</email>
+        <name>Wilfried Holzke</name>
+    </maintainer>
+    <upstream>
+        <remote-id type="github">RadeonOpenCompute/ROCR-Runtime</remote-id>
+    </upstream>
+    <longdescription lang="en">
+        Radeon Open Compute Platform Runtime
+    </longdescription>
+</pkgmetadata>
