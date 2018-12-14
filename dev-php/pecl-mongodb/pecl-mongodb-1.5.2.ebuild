@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,6 +28,13 @@ RDEPEND="
 "
 # pkgconfig needed if system libraries are used for bson and libmongoc
 DEPEND="${RDEPEND} virtual/pkgconfig"
+
+src_prepare() {
+	# skip failing test (Bug #670642)
+	rm tests/exception/runtimeexception-haserrorlabel-002.phpt || die
+
+	php-ext-source-r3_src_prepare
+}
 
 src_configure() {
 	local PHP_EXT_ECONF_ARGS=(
