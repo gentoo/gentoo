@@ -292,7 +292,7 @@ src_install() {
 	cmake-utils_src_install
 
 	ROOTSYS=${EPREFIX%/}/usr/$(get_libdir)/${PN}/$(ver_cut 1-2)
-	ROOTENV=9999${PN}-$(ver_cut 1-2)
+	ROOTENV=9900${PN}-$(ver_cut 1-2)
 
 	# ROOT fails without this symlink because it only looks in lib
 	if [[ ! -d ${D}/${ROOTSYS}/lib ]]; then
