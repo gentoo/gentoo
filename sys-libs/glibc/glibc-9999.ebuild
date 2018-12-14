@@ -28,7 +28,7 @@ RELEASE_VER=${PV}
 GCC_BOOTSTRAP_VER=20180511
 
 # Gentoo patchset
-PATCH_VER=8
+PATCH_VER=9
 
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
@@ -1115,7 +1115,7 @@ run_locale_gen() {
 	# if the host locales.gen contains no entries, we'll install everything
 	local root="$1"
 	local locale_list="${root}/etc/locale.gen"
-	if [[ -z $(locale-gen --list --config "${locale_list}") ]] ; then
+	if [[ $(locale-gen --list --config "${locale_list}") == "C.UTF-8" ]] ; then
 		ewarn "Generating all locales; edit /etc/locale.gen to save time/space"
 		locale_list="${root}/usr/share/i18n/SUPPORTED"
 	fi
