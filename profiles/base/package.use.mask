@@ -7,10 +7,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Michał Górny <mgorny@gentoo.org> (08 Dec 2018)
-# Requires z3-4.7.1+ that's not packaged in Gentoo.
->=sys-devel/clang-8 z3
-
 # Michał Górny <mgorny@gentoo.org> (01 Dec 2018)
 # Moved from use.mask to specific packages.
 # Andreas Sturmlechner <asturm@gentoo.org> (10 May 2018)

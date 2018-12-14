@@ -78,7 +78,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 src_prepare() {
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
-	eapply "${FILESDIR}"/9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
+	eapply "${FILESDIR}"/7.0.9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
 
 	# Fix appending -Wl,-rpath-link on non-Linux (-> FreeBSD).
 	eapply "${FILESDIR}"/6.0.1/0001-cmake-Append-Wl-rpath-link-conditionally-to-GNULD.patch

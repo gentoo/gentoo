@@ -76,7 +76,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 src_prepare() {
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
-	eapply "${FILESDIR}"/9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
+	eapply "${FILESDIR}"/7.0.9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
 
 	# Apply the backported patches
 	eapply "${WORKDIR}/llvm-5.0.1-patchset"
