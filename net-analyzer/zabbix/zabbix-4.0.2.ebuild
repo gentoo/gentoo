@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 WEBAPP_MANUAL_SLOT="yes"
 KEYWORDS=""
-IUSE="+agent java curl frontend ipv6 xmpp ldap libxml2 mysql openipmi oracle +postgres proxy server ssh ssl snmp sqlite odbc static"
+IUSE="+agent java curl frontend ipv6 xmpp ldap libxml2 mysql openipmi oracle postgres proxy server ssh ssl snmp sqlite odbc static"
 REQUIRED_USE="|| ( agent frontend proxy server )
 	proxy? ( ^^ ( mysql oracle postgres sqlite odbc ) )
 	server? ( ^^ ( mysql oracle postgres odbc ) )
@@ -28,7 +28,6 @@ COMMON_DEPEND="snmp? ( net-analyzer/net-snmp )
 		=dev-libs/cyrus-sasl-2*
 		net-libs/gnutls
 	)
-	mysql? ( >=virtual/mysql-5.0.3 )
 	sqlite? ( >=dev-db/sqlite-3.3.5 )
 	postgres? ( >=dev-db/postgresql-8.1:* )
 	oracle? ( >=dev-db/oracle-instantclient-basic-10.0.0.0 )
@@ -46,7 +45,6 @@ COMMON_DEPEND="snmp? ( net-analyzer/net-snmp )
 RDEPEND="${COMMON_DEPEND}
 	proxy? ( net-analyzer/fping[suid] )
 	server? ( net-analyzer/fping[suid]
-		app-admin/webapp-config
 		dev-libs/libpcre
 		dev-libs/libevent )
 	java?	(
@@ -70,7 +68,7 @@ DEPEND="${COMMON_DEPEND}
 			=dev-libs/cyrus-sasl-2*[static-libs]
 			net-libs/gnutls[static-libs]
 		)
-	mysql? ( >=virtual/mysql-5.0.3[static-libs] )
+	mysql? ( dev-db/mysql-connector-c )	
 	sqlite? ( >=dev-db/sqlite-3.3.5[static-libs] )
 	postgres? ( >=dev-db/postgresql-8.1:*[static-libs] )
 	libxml2? ( dev-libs/libxml2[static-libs] )
