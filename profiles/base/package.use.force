@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (14 Dec 2018)
+# Security is not optional if available for the architecture/kernel.
+gnome-base/gnome-desktop seccomp
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 Sep 2018)
 # All glibc versions that include RPC code are masked now.
 dev-libs/libspt libtirpc
