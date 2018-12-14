@@ -2724,7 +2724,7 @@ dev-java/mersennetwister 0_pre23765-r1: Modified MersenneTwister java port for F
 dev-java/metainf-services 1.6: Generates META-INF/services files automatically
 dev-java/microba 0.4.4.3-r1: Swing components for date operations and palettes
 dev-java/miglayout 4.0: Easy to use yet very powerful Java Swing layout manager
-dev-java/mimepull 1.8: Pull API for parsing MIME messages
+dev-java/mimepull 1.9.6-r2: Pull API for parsing MIME messages
 dev-java/mina-core 1.1.7-r1: Apache MINA Project
 dev-java/minlog 1.2: Minimal overhead Java logging
 dev-java/mockito 1.9.5-r1: A mocking framework for Java
