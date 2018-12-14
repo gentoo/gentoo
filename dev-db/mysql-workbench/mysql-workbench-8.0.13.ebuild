@@ -97,7 +97,6 @@ src_configure() {
 	ANTLR_JAR_PATH="${DISTDIR}/antlr-4.7.1-complete.jar"
 	local mycmakeargs=(
 		-DWITH_ANTLR_JAR=${ANTLR_JAR_PATH}
-		-DUSE_GNOME_KEYRING="$(usex gnome-keyring)"
 		-DLIB_INSTALL_DIR="/usr/$(get_libdir)"
 		-DIODBC_INCLUDE_PATH="/usr/include/iodbc"
 		${IODBC}
