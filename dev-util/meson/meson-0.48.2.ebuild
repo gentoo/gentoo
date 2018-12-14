@@ -20,7 +20,7 @@ HOMEPAGE="http://mesonbuild.com/"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="test"
-RESTIRCT="!test? ( test )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
