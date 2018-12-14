@@ -7,7 +7,7 @@ inherit gnome2 virtualx
 
 DESCRIPTION="Libraries for the gnome desktop that are not part of the UI"
 HOMEPAGE="https://git.gnome.org/browse/gnome-desktop"
-SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset-r1.tar.xz"
 
 LICENSE="GPL-2+ FDL-1.1+ LGPL-2+"
 SLOT="3/12" # subslot = libgnome-desktop-3 soname version
