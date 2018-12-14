@@ -231,10 +231,6 @@ dev-db/pgadmin3
 # See #669278
 =xfce-base/xfconf-4.13.6
 
-# Sobhan Mohammadpour <sobhan@gentoo.org> (15 Oct 2018)
-# Masked for testing.
-sys-apps/bubblewrap
-
 # Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
 # EOL and has known vulnerabilities. Please move to
 # Firefox 60 or newer if you can.
