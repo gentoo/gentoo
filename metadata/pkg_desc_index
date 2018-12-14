@@ -9313,7 +9313,7 @@ sci-electronics/gtkwave 3.3.68: A wave viewer for LXT, LXT2, VZT, GHW and standa
 sci-electronics/gwave 20090213-r1: Analog waveform viewer for SPICE-like simulations
 sci-electronics/iverilog 0.9.6: A Verilog simulation and synthesis tool
 sci-electronics/kicad 4.0.7: Electronic Schematic and PCB design tools.
-sci-electronics/klayout 0.25-r2: Viewer and editor for GDS and OASIS integrated circuit layouts
+sci-electronics/klayout 0.25.6: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/linsmith 0.99.30-r1: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1: The VLSI design CAD tool
 sci-electronics/oregano 0.69.1-r1: Application for the schematic capturing and simulation of electrical circuits
