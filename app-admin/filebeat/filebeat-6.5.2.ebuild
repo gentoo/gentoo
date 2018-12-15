@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
-DEPEND=">=dev-lang/go-1.10.3"
+DEPEND=">=dev-lang/go-1.11.2"
 RDEPEND="!app-admin/filebeat-bin"
 
 # Do not complain about CFLAGS etc since go projects do not use them.

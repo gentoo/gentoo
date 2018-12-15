@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="x-pack"
 
-RDEPEND=">=net-libs/nodejs-8.11.4"
+RDEPEND=">=net-libs/nodejs-8.14.0"
 
 S="${WORKDIR}/${MY_P}-linux-x86_64"
 
