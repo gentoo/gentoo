@@ -15,10 +15,8 @@ IUSE="+curl mysql postgres +sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 DEPEND=""
-RDEPEND="<dev-lang/php-7.2[curl?,filter,gd,hash,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,xmlreader,xmlwriter,zip]
-	<virtual/httpd-php-7.2"
-
-PATCHES=( "${FILESDIR}"/${PN}-12.0.4-destroy_modal_when_closed.patch )
+RDEPEND="dev-lang/php[curl?,filter,gd,hash,intl,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,truetype,xmlreader,xmlwriter,zip]
+	virtual/httpd-php"
 
 S=${WORKDIR}/${PN}
 
