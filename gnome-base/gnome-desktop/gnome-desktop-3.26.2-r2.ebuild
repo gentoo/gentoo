@@ -44,7 +44,8 @@ DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
 	virtual/pkgconfig
 	app-text/yelp-tools
-" # app-text/yelp-tools for eautoreconf
+	gnome-base/gnome-common
+" # yelp-tools and gnome-common for eautoreconf
 # Includes X11/Xatom.h in libgnome-desktop/gnome-bg.c which comes from xorg-proto
 
 PATCHES=(
