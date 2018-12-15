@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,14 +31,14 @@ RDEPEND="
 		Xaw3d? ( x11-libs/libXaw3d )
 		!Xaw3d? ( x11-libs/libXaw )
 	)
-	gtk? ( x11-libs/gtk+:2 )"
+	gtk? ( x11-libs/gtk+:2 )
+	games-board/gnuchess"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-base/xorg-proto
 	nls? ( sys-devel/gettext )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gettext.patch
 	"${FILESDIR}"/${P}-gnuchess-default.patch
 )
 
