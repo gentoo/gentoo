@@ -3184,7 +3184,7 @@ dev-libs/libunistring 0.9.7: Library for manipulating Unicode and C strings acco
 dev-libs/libusb 1.0.19-r1 1.0.21: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libuv 1.20.0: Cross-platform asychronous I/O
-dev-libs/libverto 0.2.5 0.2.5-r1: Main event loop abstraction library
+dev-libs/libverto 0.2.5-r1: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvterm 0.0_pre20160305: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libwacom 0.30: Library for identifying Wacom tablets and their model-specific features
