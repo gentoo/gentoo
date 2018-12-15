@@ -9032,7 +9032,7 @@ net-misc/taylor-uucp 1.07-r2 1.07-r3: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
 net-misc/throttle 1.2: Bandwidth limiting pipe
-net-misc/tigervnc 1.8.0-r3 1.9.0-r1: Remote desktop viewer display system
+net-misc/tigervnc 1.9.0-r1: Remote desktop viewer display system
 net-misc/tn5250 0.17.4-r1: Telnet client for the IBM AS/400 that emulates 5250 terminals and printers
 net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
