@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">hellosiyan/Viewnior</remote-id>
+		<changelog>https://siyanpanayotov.com/project/viewnior/news</changelog>
 	</upstream>
 </pkgmetadata>
