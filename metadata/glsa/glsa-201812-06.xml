@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201812-06">
+  <title>CouchDB: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in CouchDB, the worst of
+    which could lead to the remote execution of code.
+  </synopsis>
+  <product type="ebuild">couchdb</product>
+  <announced>2018-12-15</announced>
+  <revised count="1">2018-12-15</revised>
+  <bug>630796</bug>
+  <bug>660908</bug>
+  <bug>663164</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/couchdb" auto="yes" arch="*">
+      <vulnerable range="le">2.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache CouchDB is a distributed, fault-tolerant and schema-free
+      document-oriented database.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in CouchDB. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code or escalate privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for CouchDB and recommends that users
+      unmerge the package:
+    </p>
+    
+    <code>
+      # emerge --unmerge "dev-db/couchdb"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-11769">CVE-2018-11769</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-8007">CVE-2018-8007</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-12-11T17:40:03Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-12-15T20:07:59Z">b-man</metadata>
+</glsa>

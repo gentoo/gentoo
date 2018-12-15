@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201812-08">
+  <title>Scala: Privilege escalation</title>
+  <synopsis>A vulnerability in Scala could result in privilege escalation.</synopsis>
+  <product type="ebuild">scala</product>
+  <announced>2018-12-15</announced>
+  <revised count="1">2018-12-15</revised>
+  <bug>637940</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-lang/scala" auto="yes" arch="*">
+      <unaffected range="ge">2.12.4</unaffected>
+      <vulnerable range="lt">2.12.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Scala combines object-oriented and functional programming in one
+      concise, high-level language.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that Scala’s compilation daemon does not properly
+      manage permissions for private files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could escalate privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Scala users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/scala-2.12.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-15288">CVE-2017-15288</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-12-02T21:21:35Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-12-15T20:11:15Z">b-man</metadata>
+</glsa>
