@@ -1,0 +1,26 @@
+From 5bbe8b009d6daa809f679fd1d25c270abba468b4 Mon Sep 17 00:00:00 2001
+From: Robbie Harwood <rharwood@redhat.com>
+Date: Wed, 31 Jan 2018 17:52:39 +0100
+Subject: [PATCH] Verify flags prior to adding them to CFLAGS, not after
+
+---
+ configure.ac | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index b7b5908..4084965 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -8,8 +8,11 @@ m4_ifdef([AC_USE_SYSTEM_EXTENSIONS],
+     [AC_GNU_SOURCE])
+ 
+ AC_PROG_CC_C99
++
+ for flag in -Wall -Wextra; do
+-  AC_TRY_COMPILE([], [return 0;], [CFLAGS="$CFLAGS $flag"],)
++  OLD_CFLAGS=$CFLAGS
++  CFLAGS="$CFLAGS $flag"
++  AC_TRY_COMPILE(, [return 0;], [], [CFLAGS=$OLD_CFLAGS])
+ done
+ 
+ AC_CANONICAL_SYSTEM

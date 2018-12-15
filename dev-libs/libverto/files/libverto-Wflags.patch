@@ -1,0 +1,25 @@
+From f3935464e3a823539394dcb4669a6e7a889a95ef Mon Sep 17 00:00:00 2001
+From: Robbie Harwood <rharwood@redhat.com>
+Date: Wed, 31 Jan 2018 18:21:04 +0100
+Subject: [PATCH] Turn off -Wcast-function-type
+
+The glib event library forces all callbacks to the same type, even
+when they have different arities.  Turn off the gcc warning for this
+gross behavior.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4084965..dcab593 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,7 +9,7 @@ m4_ifdef([AC_USE_SYSTEM_EXTENSIONS],
+ 
+ AC_PROG_CC_C99
+ 
+-for flag in -Wall -Wextra; do
++for flag in -Wall -Wextra -Wno-cast-function-type; do
+   OLD_CFLAGS=$CFLAGS
+   CFLAGS="$CFLAGS $flag"
+   AC_TRY_COMPILE(, [return 0;], [], [CFLAGS=$OLD_CFLAGS])
