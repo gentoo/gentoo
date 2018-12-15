@@ -1749,6 +1749,7 @@ dev-ml/lablgtk:gnomecanvas - Enable libgnomecanvas bindings compilation.
 dev-ml/lablgtk:sourceview - Enable GtkSourceView support
 dev-ml/ocamlnet:httpd - Enables net-httpd web server component
 dev-ml/ocamlnet:zip - Enables netzip support to read/write gzip data using object channels
+dev-ml/zarith:mpir - Use MPIR library instead of GMP.
 dev-perl/Business-ISBN:barcode - Install dev-perl/GD-Barcode for rendering ISBN numbers as barcodes
 dev-perl/Config-Any:conf - Install dev-perl/Config-General to support decoding .conf/.cnf files
 dev-perl/Config-Any:ini - Install dev-perl/Config-Tiny to support decoding INI config files

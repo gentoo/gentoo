@@ -57,7 +57,7 @@ app-admin/eselect 1.4.12 1.4.13: Gentoo's multi-purpose configuration and manage
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/fam 2.7.0-r7 2.7.0_p17_p2: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
-app-admin/filebeat 6.1.1 6.3.2: Lightweight log shipper for Logstash and Elasticsearch
+app-admin/filebeat 6.3.2: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/gam-server 0.1.10-r2: Library providing the FAM File Alteration Monitor API
 app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor API & Server
 app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesystems
@@ -3352,7 +3352,7 @@ dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
 dev-ml/camlp4 4.04_p1: System for writing extensible parsers for programming languages
 dev-ml/camlp5 6.17: A preprocessor-pretty-printer of ocaml
-dev-ml/camlzip 1.06: Compressed file access ML library (ZIP, GZIP and JAR)
+dev-ml/camlzip 1.06 1.07: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/cppo 1.4.1: An equivalent of the C preprocessor for OCaml programs
 dev-ml/cryptokit 1.10: Cryptographic primitives library for Objective Caml
@@ -3363,12 +3363,15 @@ dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Ca
 dev-ml/lablgl 1.05-r1: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.5: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.2: OCaml interface to the Tcl/Tk GUI framework
+dev-ml/menhir 20171013: LR(1) parser generator for the OCaml language
 dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml programs and libraries
 dev-ml/ocaml-ctypes 0.11.2: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-doc 4.04: Ocaml reference manual (html)
 dev-ml/ocaml-ssl 0.5.3: OCaml bindings for OpenSSL
 dev-ml/ocamlbuild 0.10.1: Generic build tool with built-in rules for building OCaml library and programs
+dev-ml/ocamlgraph 1.8.8: O'Caml Graph library
 dev-ml/ocamlnet 4.1.2: Modules for OCaml application-level Internet protocols
+dev-ml/ocamlweb 1.39: O'Caml literate programming tool
 dev-ml/ocplib-simplex 0.3: A library implementing a simplex algorithm
 dev-ml/ocurl 0.6.1: OCaml interface to the libcurl library
 dev-ml/ounit 2.0.0: Unit testing framework for OCaml
@@ -3378,6 +3381,7 @@ dev-ml/pxp 1.2.8-r1: validating XML parser library for O'Caml
 dev-ml/res 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
+dev-ml/zarith 1.7: Arithmetic and logic operations over arbitrary-precision integers
 dev-perl/Ace 1.920.0-r3: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.80.0: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r1: Represent a series of changes in annotate form
