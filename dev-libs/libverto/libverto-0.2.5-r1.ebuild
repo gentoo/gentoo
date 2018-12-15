@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit multilib-minimal
 
 DESCRIPTION="Main event loop abstraction library"
-HOMEPAGE="https://fedorahosted.org/libverto/"
-SRC_URI="https://fedorahosted.org/releases/l/i/libverto/${P}.tar.gz"
+HOMEPAGE="https://github.com/latchset/libverto/"
+SRC_URI="https://github.com/latchset/libverto/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

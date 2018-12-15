@@ -1,13 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit multilib-minimal
+EAPI=7
+inherit autotools multilib-minimal
 
 DESCRIPTION="Main event loop abstraction library"
-HOMEPAGE="https://fedorahosted.org/libverto/"
-SRC_URI="https://fedorahosted.org/releases/l/i/libverto/${P}.tar.gz"
+HOMEPAGE="https://github.com/latchset/libverto/"
+SRC_URI="https://github.com/latchset/libverto/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,11 +26,20 @@ RDEPEND="${DEPEND}"
 
 REQUIRED_USE="|| ( glib libev libevent tevent ) "
 
+PATCHES=( ${FILESDIR}/${PN}-libev-c89.patch \
+	${FILESDIR}/${PN}-verify-cflags.patch \
+	${FILESDIR}/${PN}-Wflags.patch \
+	${FILESDIR}/${PN}-load.patch )
+
+DOCS=( AUTHORS ChangeLog NEWS INSTALL README )
+
 src_prepare() {
+	default
 	# known problem uptream with tevent write test.  tevent does not fire a
 	# callback on error, but we explicitly test for this behaviour.  Do not run
 	# tevent tests for now.
 	sed -i -e 's/def HAVE_TEVENT/ 0/' tests/test.h || die
+	eautoreconf
 }
 
 multilib_src_configure() {
@@ -46,6 +54,6 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	dodoc AUTHORS ChangeLog NEWS INSTALL README
-	use static-libs || prune_libtool_files --all
+	default
+	use static-libs || find "${ED}" -name '*.la' -delete
 }
