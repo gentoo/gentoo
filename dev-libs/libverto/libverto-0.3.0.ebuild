@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools multilib-minimal
 
 DESCRIPTION="Main event loop abstraction library"
@@ -26,10 +27,10 @@ RDEPEND="${DEPEND}"
 
 REQUIRED_USE="|| ( glib libev libevent tevent ) "
 
-PATCHES=( ${FILESDIR}/${PN}-libev-c89.patch \
-	${FILESDIR}/${PN}-verify-cflags.patch \
-	${FILESDIR}/${PN}-Wflags.patch \
-	${FILESDIR}/${PN}-load.patch )
+PATCHES=( "${FILESDIR}/${PN}-libev-c89.patch" \
+	"${FILESDIR}/${PN}-verify-cflags.patch" \
+	"${FILESDIR}/${PN}-Wflags.patch" \
+	"${FILESDIR}/${PN}-load.patch" )
 
 DOCS=( AUTHORS ChangeLog NEWS INSTALL README )
 
