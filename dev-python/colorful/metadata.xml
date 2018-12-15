@@ -2,11 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
     <maintainer type="project">
-		<email>python@gentoo.org</email>
-		<name>Python Project</name>
+        <email>python@gentoo.org</email>
+        <name>Python Project</name>
     </maintainer>
     <upstream>
-		<remote-id type="pypi">colorful</remote-id>
-		<remote-id type="github">timofurrer/colorful</remote-id>
+        <remote-id type="pypi">colorful</remote-id>
+        <remote-id type="github">timofurrer/colorful</remote-id>
     </upstream>
 </pkgmetadata>
