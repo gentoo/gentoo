@@ -23,17 +23,10 @@ RDEPEND="${DEPEND}
 	!kde-apps/kdepim-l10n
 "
 
-src_prepare() {
-	kde5_src_prepare
-
-	# FIXME: Fails test because access to /dev/dri/card0 is denied
-	sed -i \
-		-e "/ecm_add_tests/ s/picturetest\.cpp //" \
-		autotests/CMakeLists.txt || die
-}
-
 src_test() {
-	mkdir -p "${HOME}/.local/share/kf5/kcontacts" || die
-	cp "${S}/src/countrytransl.map" "${HOME}/.local/share/kf5/kcontacts/" || die
+	# bug #566648 (access to /dev/dri/card0 denied), bug #625988
+	local myctestargs=(
+		-E "(kcontacts-addresstest|kcontacts-picturetest)"
+	)
 	kde5_src_test
 }
