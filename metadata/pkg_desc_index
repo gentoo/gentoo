@@ -5843,7 +5843,7 @@ dev-ruby/color 1.8: Colour management with Ruby
 dev-ruby/concurrent-ruby 1.0.5: Modern concurrency tools including agents, futures, promises, thread pools, more
 dev-ruby/connection_pool 2.2.1: Generic connection pooling for Ruby
 dev-ruby/crack 0.4.3-r1: Really simple JSON and XML parsing, ripped from Merb and Rails
-dev-ruby/crass 1.0.3: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
+dev-ruby/crass 1.0.3 1.0.4: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.2.6: Wrap existing ruby scripts to be run as a daemon
 dev-ruby/dalli 2.7.8-r1: A high performance pure Ruby client for accessing memcached servers
@@ -5871,7 +5871,7 @@ dev-ruby/gherkin 4.1.3: Fast Gherkin lexer and parser
 dev-ruby/git 1.4.0: Library for using Git in Ruby
 dev-ruby/gruff 0.7.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.7-r1: A ruby web page templating engine
-dev-ruby/hashdiff 0.3.5: Simple Hash extension to make working with nested hashes easier
+dev-ruby/hashdiff 0.3.5 0.3.7: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashie 2.1.2-r1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 3.4.3: A simple pluggable Hierarchical Database
