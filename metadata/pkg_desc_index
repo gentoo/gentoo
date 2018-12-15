@@ -4613,7 +4613,7 @@ dev-python/PyContracts 1.7.9: Declare constraints on function parameters and ret
 dev-python/PyECLib 1.5.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/PyGithub 1.39: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
-dev-python/PyQt5 5.9.2 5.10.1-r1: Python bindings for the Qt framework
+dev-python/PyQt5 5.10.1-r1: Python bindings for the Qt framework
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
 dev-python/PySocks 1.6.7: SOCKS client module
 dev-python/QtPy 1.3.1-r1: Abstraction layer for PyQt5/PySide
