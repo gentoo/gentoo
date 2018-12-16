@@ -150,7 +150,6 @@ dev-python/django-classy-tags
 dev-python/django-formtools
 dev-python/djangocms-text-ckeditor
 dev-python/django-sekizai
-dev-python/django-treebeard
 
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
