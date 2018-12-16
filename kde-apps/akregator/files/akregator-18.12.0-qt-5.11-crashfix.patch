@@ -1,0 +1,81 @@
+From 91a4ab57a82970bd75eee4a7aee61a7e1c1321ef Mon Sep 17 00:00:00 2001
+From: Andras Mantia <andras@kdab.com>
+Date: Thu, 13 Dec 2018 17:32:52 +0200
+Subject: Don't crash with Qt 5.11+
+
+Summary:
+Based on the patch from https://bugs.kde.org/show_bug.cgi?id=371511
+See also https://bugreports.qt.io/browse/QTBUG-72260
+
+BUG: 371511
+
+Reviewers: PHID-PROJ-odxxyyfgujhgbu6ergrt, mlaurent
+
+Reviewed By: PHID-PROJ-odxxyyfgujhgbu6ergrt, mlaurent
+
+Subscribers: marten, asturmlechner, kfunk, kde-pim
+
+Tags: #kde_pim
+
+Differential Revision: https://phabricator.kde.org/D17563
+---
+ .../webengine/articleviewerwebengine.cpp           | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/src/articleviewer-ng/webengine/articleviewerwebengine.cpp b/src/articleviewer-ng/webengine/articleviewerwebengine.cpp
+index 2463fdf..174c09a 100644
+--- a/src/articleviewer-ng/webengine/articleviewerwebengine.cpp
++++ b/src/articleviewer-ng/webengine/articleviewerwebengine.cpp
+@@ -46,6 +46,7 @@
+ #include <QMenu>
+ #include <viewerplugintoolmanager.h>
+ #include <QWebEngineProfile>
++#include <QWebEngineUrlRequestInterceptor>
+ 
+ #include <WebEngineViewer/WebHitTestResult>
+ #include <WebEngineViewer/WebHitTest>
+@@ -57,6 +58,19 @@
+ 
+ using namespace Akregator;
+ 
++class AkregatorRequestInterceptor : public QWebEngineUrlRequestInterceptor
++{
++    Q_OBJECT
++
++public:
++    explicit AkregatorRequestInterceptor(QObject *parent = nullptr) : QWebEngineUrlRequestInterceptor(parent) {
++    }
++
++    void interceptRequest(QWebEngineUrlRequestInfo &info) override {
++        Q_UNUSED(info);
++    }
++};
++
+ ArticleViewerWebEngine::ArticleViewerWebEngine(KActionCollection *ac, QWidget *parent)
+     : WebEngineViewer::WebEngineView(parent)
+     , mActionCollection(ac)
+@@ -64,10 +78,16 @@ ArticleViewerWebEngine::ArticleViewerWebEngine(KActionCollection *ac, QWidget *p
+     , mViewerPluginToolManager(nullptr)
+ {
+     mNetworkAccessManager = new WebEngineViewer::InterceptorManager(this, ac, this);
++
+     QWebEngineProfile *profile = QWebEngineProfile::defaultProfile();
+     mPageEngine = new ArticleViewerWebEnginePage(profile, this);
+     profile->setPersistentCookiesPolicy(QWebEngineProfile::ForcePersistentCookies);
+ 
++    // Needed to workaround crash in webengine, see https://bugreports.qt.io/browse/QTBUG-72260
++    auto webEngineUrlInterceptor = new AkregatorRequestInterceptor();
++    profile->setRequestInterceptor(webEngineUrlInterceptor);
++    connect(profile, &QObject::destroyed, webEngineUrlInterceptor, &AkregatorRequestInterceptor::deleteLater);
++
+     setPage(mPageEngine);
+ 
+     connect(this, &ArticleViewerWebEngine::showContextMenu, this, &ArticleViewerWebEngine::slotShowContextMenu);
+@@ -494,3 +514,5 @@ void ArticleViewerWebEngine::slotActivatePlugin(MessageViewer::ViewerPluginInter
+     interface->setUrl(mCurrentUrl);
+     interface->execute();
+ }
++
++#include "articleviewerwebengine.moc"
+-- 
+cgit v1.1
