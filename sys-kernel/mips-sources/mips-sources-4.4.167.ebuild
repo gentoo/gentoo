@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # EAPI Version
@@ -7,8 +7,8 @@ EAPI="6"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GITDATE="20180128"			# Date of diff between kernel.org and lmo GIT
-GENPATCHREV="1"				# Tarball revision for patches
+GITDATE="20160123"			# Date of diff between kernel.org and lmo GIT
+GENPATCHREV="2"				# Tarball revision for patches
 
 # Directories
 S="${WORKDIR}/linux-${OKV}-${GITDATE}"
@@ -19,13 +19,17 @@ K_SECURITY_UNSUPPORTED="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
-K_BASE_VER="4.13"
+K_BASE_VER="4.3"
 K_FROM_GIT="yes"
 ETYPE="sources"
 
 # Inherit Eclasses
 inherit kernel-2 eutils eapi7-ver
 detect_version
+
+# EPATCH Vars
+# XXX: Required to properly apply Impact/Odyssey driver patches.
+EPATCH_OPTS="-F3"
 
 # Version Data
 F_KV="${PVR}"
@@ -284,7 +288,7 @@ src_unpack() {
 	cd "${WORKDIR}"
 	unpack "${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
 
-	# Create a new folder called 'patch-symlinks' and create symlinks to
+	# Create a new folder called  'patch-symlinks' and create symlinks to
 	# all mips-patches in there.  If we want to exclude a patch, we'll
 	# just delete the symlink instead of the actual patch.
 	local psym="patch-symlinks"
@@ -338,7 +342,7 @@ src_prepare() {
 
 	# Now go into the kernel source and patch it.
 	cd "${S}"
-	epatch -p1 "${WORKDIR}/${psym}"/*.patch
+	epatch "${WORKDIR}/${psym}"/*.patch
 
 	eapply_user
 }
