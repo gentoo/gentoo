@@ -1,20 +1,26 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils gnome2-utils xdg-utils
+
+inherit gnome2-utils xdg-utils
 
 LANGS="ar ast be bg ca cs de el en_GB es et eu fa fi fr gl he hi hu id it ja kk ko lb lt mn nl nn pl pt pt_BR ro ru sk sl sr sv tr uk vi zh_CN ZH_TW"
 NOSHORTLANGS="en_GB zh_CN zh_TW"
 
 DESCRIPTION="GTK+ based fast and lightweight IDE"
 HOMEPAGE="https://www.geany.org"
-SRC_URI="https://download.geany.org/${P}.tar.bz2"
-
+if [[ "${PV}" = 9999* ]] ; then
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://github.com/geany/geany.git"
+else
+	SRC_URI="https://download.geany.org/${P}.tar.bz2"
+	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+fi
 LICENSE="GPL-2+ HPND"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="gtk3 +vte"
+
+IUSE="+gtk3 +vte"
 
 RDEPEND=">=dev-libs/glib-2.32:2
 	!gtk3? (
@@ -40,30 +46,36 @@ src_prepare() {
 	# Syntax highlighting for Portage
 	sed -i -e "s:*.sh;:*.sh;*.ebuild;*.eclass;:" \
 		data/filetype_extensions.conf || die
+
+	if [[ ${PV} = *_pre* ]] || [[ ${PV} = 9999* ]] ; then
+		eautoreconf
+	fi
 }
 
 src_configure() {
-	econf \
-		--disable-dependency-tracking \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		$(use_enable gtk3) \
+	local myeconfargs=(
+		--disable-html-docs
+		--disable-dependency-tracking
+		--docdir="${EPREFIX}/usr/share/doc/${PF}"
+		$(use_enable gtk3)
 		$(use_enable vte)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" DOCDIR="${ED}/usr/share/doc/${PF}" install
-	rm -f "${ED}"/usr/share/doc/${PF}/{COPYING,GPL-2,ScintillaLicense.txt}
-	prune_libtool_files --all
+	emake DESTDIR="${D}" install
+	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
 }
 
 pkg_preinst() { gnome2_icon_savelist; }
 
 pkg_postinst() {
-	xdg_desktop_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	xdg_desktop_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

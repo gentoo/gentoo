@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ fi
 LICENSE="GPL-2+ HPND"
 SLOT="0"
 
-IUSE="gtk3 +vte"
+IUSE="+gtk3 +vte"
 
 RDEPEND=">=dev-libs/glib-2.32:2
 	!gtk3? (
@@ -65,7 +65,7 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	prune_libtool_files --all
+	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
 }
 
 pkg_preinst() { gnome2_icon_savelist; }

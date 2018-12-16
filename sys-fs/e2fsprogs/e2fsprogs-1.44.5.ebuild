@@ -1,19 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
-case ${PV} in
-*_pre*) UP_PV="${PV%_pre*}-WIP-${PV#*_pre}" ;;
-*)      UP_PV=${PV} ;;
-esac
-
-inherit eutils flag-o-matic multilib toolchain-funcs
+inherit flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="Standard EXT2/EXT3/EXT4 filesystem utilities"
 HOMEPAGE="http://e2fsprogs.sourceforge.net/"
-SRC_URI="mirror://sourceforge/e2fsprogs/${PN}-${UP_PV}.tar.gz
-	mirror://kernel/linux/kernel/people/tytso/e2fsprogs/v${UP_PV}/${PN}-${UP_PV}.tar.gz
+SRC_URI="mirror://sourceforge/e2fsprogs/${P}.tar.xz
+	mirror://kernel/linux/kernel/people/tytso/e2fsprogs/v${PV}/${P}.tar.xz
 	elibc_mintlib? ( mirror://gentoo/${PN}-1.42.9-mint-r1.patch.xz )"
 
 LICENSE="GPL-2 BSD"
@@ -30,8 +25,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-apps/texinfo"
 
-S="${WORKDIR}/${P%_pre*}"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.41.8-makefile.patch
 	"${FILESDIR}"/${PN}-1.40-fbsd.patch
@@ -47,8 +40,15 @@ src_prepare() {
 
 	default
 
+	eapply -R "${FILESDIR}"/${PN}-1.44.4-fix_make_install_for_subset.patch
+
+	cp doc/RelNotes/v${PV}.txt ChangeLog || die "Failed to copy Release Notes"
+
+	# Get rid of doc -- we don't use them. This also prevents a sandbox
+	# violation due to mktexfmt invocation
+	rm -r doc || die "Failed to remove doc dir"
+
 	# blargh ... trick e2fsprogs into using e2fsprogs-libs
-	rm -rf doc
 	sed -i -r \
 		-e 's:@LIBINTL@:@LTLIBINTL@:' \
 		-e '/^(STATIC_)?LIB(COM_ERR|SS)/s:[$][(]LIB[)]/lib([^@]*)@(STATIC_)?LIB_EXT@:-l\1:' \
@@ -71,9 +71,9 @@ src_configure() {
 	append-cppflags -D_GNU_SOURCE
 
 	local myeconfargs=(
-		--with-root-prefix="${EPREFIX}/"
+		--with-root-prefix="${EPREFIX%/}/"
 		--enable-symlink-install
-		$(tc-is-static-only || echo --enable-elf-shlibs)
+		--enable-elf-shlibs
 		$(tc-has-tls || echo --disable-tls)
 		--without-included-gettext
 		$(use_enable fuse fuse2fs)
@@ -84,6 +84,7 @@ src_configure() {
 		--disable-uuidd
 	)
 	ac_cv_path_LDCONFIG=: econf "${myeconfargs[@]}"
+
 	if [[ ${CHOST} != *-uclibc ]] && grep -qs 'USE_INCLUDED_LIBINTL.*yes' config.{log,status} ; then
 		eerror "INTL sanity check failed, aborting build."
 		eerror "Please post your ${S}/config.log file as an"
@@ -107,10 +108,11 @@ src_install() {
 	# econf above (i.e. multilib) will screw up the default #276465
 	emake \
 		STRIP=: \
-		root_libdir="${EPREFIX}/usr/$(get_libdir)" \
-		DESTDIR="${D}" \
+		root_libdir="${EPREFIX%/}/usr/$(get_libdir)" \
+		DESTDIR="${D%/}" \
 		install install-libs
-	dodoc README RELEASE-NOTES
+
+	einstalldocs
 
 	insinto /etc
 	doins "${FILESDIR}"/e2fsck.conf
@@ -118,6 +120,7 @@ src_install() {
 	# Move shared libraries to /lib/, install static libraries to
 	# /usr/lib/, and install linker scripts to /usr/lib/.
 	gen_usr_ldscript -a e2p ext2fs
+
 	# configure doesn't have an option to disable static libs :/
 	if ! use static-libs ; then
 		find "${D}" -name '*.a' -delete || die
