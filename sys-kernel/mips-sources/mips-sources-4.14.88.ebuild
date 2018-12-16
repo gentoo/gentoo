@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # EAPI Version
@@ -7,7 +7,7 @@ EAPI="6"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GITDATE="20161216"			# Date of diff between kernel.org and lmo GIT
+GITDATE="20180128"			# Date of diff between kernel.org and lmo GIT
 GENPATCHREV="1"				# Tarball revision for patches
 
 # Directories
@@ -19,7 +19,7 @@ K_SECURITY_UNSUPPORTED="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
-K_BASE_VER="4.8"
+K_BASE_VER="4.13"
 K_FROM_GIT="yes"
 ETYPE="sources"
 
@@ -284,7 +284,7 @@ src_unpack() {
 	cd "${WORKDIR}"
 	unpack "${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
 
-	# Create a new folder called  'patch-symlinks' and create symlinks to
+	# Create a new folder called 'patch-symlinks' and create symlinks to
 	# all mips-patches in there.  If we want to exclude a patch, we'll
 	# just delete the symlink instead of the actual patch.
 	local psym="patch-symlinks"
@@ -338,7 +338,7 @@ src_prepare() {
 
 	# Now go into the kernel source and patch it.
 	cd "${S}"
-	epatch "${WORKDIR}/${psym}"/*.patch
+	epatch -p1 "${WORKDIR}/${psym}"/*.patch
 
 	eapply_user
 }
