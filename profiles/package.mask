@@ -30,9 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Jeroen Roovers <jer@gentoo.org> (14 Dec 2018)
-# Deprecated short lived branches
-# https://www.nvidia.com/object/unix.html
-# File a bug report if you need to use one of these
+# Deprecated short lived branches https://www.nvidia.com/object/unix.html
+# Unsupported legacy branch 304 https://bugs.gentoo.org/669588
+# See https://nvidia.custhelp.com/app/answers/detail/a_id/3142 for timelines on
+# upstream support for various branches. File a bug report if you absolutely
+# must use one of these ebuilds.
 # Removal on or about 16 January 2019
 =x11-drivers/nvidia-drivers-304*
 =x11-drivers/nvidia-drivers-375*
