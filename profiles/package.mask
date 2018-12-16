@@ -149,7 +149,6 @@ dev-python/djangocms-video
 dev-python/django-classy-tags
 dev-python/django-formtools
 dev-python/djangocms-text-ckeditor
-dev-python/django-sekizai
 
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
