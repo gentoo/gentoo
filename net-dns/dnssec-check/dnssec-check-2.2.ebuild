@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils qmake-utils
+inherit desktop qmake-utils
 
-DESCRIPTION="tests local resolver for support of DNSSEC validation"
+DESCRIPTION="Tests local resolver for support of DNSSEC validation"
 HOMEPAGE="https://www.dnssec-tools.org"
 SRC_URI="https://www.dnssec-tools.org/download/${P}.tar.gz"
 
@@ -14,13 +14,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="net-dns/dnssec-validator[threads]
-	dev-qt/qtdeclarative:5"
+RDEPEND="
+	dev-qt/qtdeclarative:5
+	net-dns/dnssec-validator[threads]
+"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	sed -e '/Exec=/s:/opt::' \
-		-i ${PN}.desktop || die
+	sed -e '/Exec=/s:/opt::' -i ${PN}.desktop || die
 }
 
 src_configure() {
