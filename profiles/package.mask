@@ -137,7 +137,6 @@ net-nds/gosa-plugin-systems
 # Unmaintained and depending on an purged version (1.8) of Django.
 # Removal in 30 days. bug #664012
 dev-python/django-cms
-dev-python/djangocms-admin-style
 
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
