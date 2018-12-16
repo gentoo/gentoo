@@ -145,7 +145,6 @@ dev-python/djangocms-link
 dev-python/djangocms-picture
 dev-python/djangocms-snippet
 dev-python/djangocms-teaser
-dev-python/djangocms-video
 
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
