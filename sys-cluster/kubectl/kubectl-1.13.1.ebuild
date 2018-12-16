@@ -16,7 +16,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-go/go-bindata"
+DEPEND=">=dev-lang/go-1.11
+	dev-go/go-bindata"
 
 RESTRICT="test"
 
