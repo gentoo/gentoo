@@ -8,11 +8,6 @@
 
 # Alpha Profiles
 # @MAINTAINER: alpha@gentoo.org
-alpha           default/linux/alpha/13.0                        stable
-alpha           default/linux/alpha/13.0/desktop                stable
-alpha           default/linux/alpha/13.0/desktop/gnome          stable
-alpha           default/linux/alpha/13.0/desktop/gnome/systemd  stable
-alpha           default/linux/alpha/13.0/developer              stable
 alpha           default/linux/alpha/17.0                        stable
 alpha           default/linux/alpha/17.0/desktop                stable
 alpha           default/linux/alpha/17.0/desktop/gnome          stable
