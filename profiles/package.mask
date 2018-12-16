@@ -138,7 +138,6 @@ net-nds/gosa-plugin-systems
 # Removal in 30 days. bug #664012
 dev-python/django-cms
 dev-python/djangocms-admin-style
-dev-python/djangocms-file
 
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
