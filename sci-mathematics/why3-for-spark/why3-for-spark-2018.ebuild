@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5b0819dec7a447df26c27a43
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="coq doc emacs gtk html hypothesis-selection +ocamlopt profiling zarith zip"
 RESTRICT=strip
 
