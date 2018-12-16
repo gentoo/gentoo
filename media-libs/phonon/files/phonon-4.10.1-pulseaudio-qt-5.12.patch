@@ -1,0 +1,28 @@
+From eef6dae58a19da4c6af90a0b7cce6378e527683d Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Mon, 10 Dec 2018 21:10:13 +0100
+Subject: Fix PulseAudio support with Qt 5.12
+
+QAbstractEventDispatcher::instance()->metaObject()->className() now returns "QXcbGlibEventDispatcher", so the glib event loop test fails
+
+Differential Revision: https://phabricator.kde.org/D17486
+---
+ phonon/pulsesupport.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/phonon/pulsesupport.cpp b/phonon/pulsesupport.cpp
+index b7009b1..d324084 100644
+--- a/phonon/pulsesupport.cpp
++++ b/phonon/pulsesupport.cpp
+@@ -840,7 +840,8 @@ PulseSupport::PulseSupport()
+     }
+ 
+     // We require a glib event loop
+-    if (!QByteArray(QAbstractEventDispatcher::instance()->metaObject()->className()).contains("EventDispatcherGlib")) {
++    if (!QByteArray(QAbstractEventDispatcher::instance()->metaObject()->className()).contains("EventDispatcherGlib") &&
++        !QByteArray(QAbstractEventDispatcher::instance()->metaObject()->className()).contains("GlibEventDispatcher")) {
+         qWarning("WARNING: Disabling PulseAudio integration for lack of GLib event loop.");
+         return;
+     }
+-- 
+cgit v1.1
