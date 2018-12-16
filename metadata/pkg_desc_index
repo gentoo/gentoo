@@ -325,7 +325,7 @@ app-crypt/ccrypt 1.10: Encryption and decryption
 app-crypt/certbot 0.27.1 0.28.0: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 0.27.1 0.28.0: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-nginx 0.27.1 0.28.0: Nginx plugin for certbot (Let's Encrypt Client)
-app-crypt/easy-rsa 3.0.4: Small RSA key management package, based on OpenSSL
+app-crypt/easy-rsa 3.0.4 3.0.5: Small RSA key management package, based on OpenSSL
 app-crypt/gcr 3.20.0 3.28.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201807020151: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
 app-crypt/glep63-check 6: GLEP 63 compliance checker for OpenPGP keys
