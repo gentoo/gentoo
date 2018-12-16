@@ -143,7 +143,6 @@ dev-python/djangocms-flash
 dev-python/djangocms-inherit
 dev-python/djangocms-link
 dev-python/djangocms-picture
-dev-python/djangocms-snippet
 
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
