@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools xdg-utils gnome2-utils
+inherit autotools gnome2-utils xdg-utils
 
 DESCRIPTION="GUI for gnuchess and for internet chess servers"
 HOMEPAGE="https://www.gnu.org/software/xboard/"
