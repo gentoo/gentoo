@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,21 +20,14 @@ RDEPEND="
 	php_targets_php7-0? ( dev-lang/php:7.0[json,ssl,zlib] )
 	php_targets_php7-1? ( dev-lang/php:7.1[json,ssl,zlib] )
 	php_targets_php7-2? ( dev-lang/php:7.2[json,ssl,zlib] )
-	>=dev-libs/libbson-1.12.0
-	>=dev-libs/mongo-c-driver-1.12.0[sasl?,ssl]
+	>=dev-libs/libbson-1.13.0
+	>=dev-libs/mongo-c-driver-1.13.0[sasl?,ssl]
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	sasl? ( dev-libs/cyrus-sasl )
 "
 # pkgconfig needed if system libraries are used for bson and libmongoc
 DEPEND="${RDEPEND} virtual/pkgconfig"
-
-src_prepare() {
-	# skip failing test (Bug #670642)
-	rm tests/exception/runtimeexception-haserrorlabel-002.phpt || die
-
-	php-ext-source-r3_src_prepare
-}
 
 src_configure() {
 	local PHP_EXT_ECONF_ARGS=(
