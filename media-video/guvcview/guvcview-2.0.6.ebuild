@@ -30,6 +30,7 @@ RDEPEND="
 	libav? ( media-video/libav:= )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.15 )
 	qt5? (
+		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 	)
