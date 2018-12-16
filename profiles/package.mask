@@ -153,7 +153,6 @@ dev-python/django-sekizai
 dev-python/django-treebeard
 dev-python/aldryn-search
 dev-python/aldryn-bootstrap3
-dev-python/django-filer
 
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
