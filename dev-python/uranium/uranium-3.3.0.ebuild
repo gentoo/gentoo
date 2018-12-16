@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	~dev-libs/libarcus-${PV}:=[python,${PYTHON_USEDEP}]
-	<dev-python/PyQt5-5.10[${PYTHON_USEDEP},declarative,network,svg]
+	dev-python/PyQt5[${PYTHON_USEDEP},declarative,network,svg]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-1.1[${PYTHON_USEDEP}]
 	dev-qt/qtquickcontrols:5
