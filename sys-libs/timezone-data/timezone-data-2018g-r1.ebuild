@@ -88,6 +88,10 @@ src_install() {
 	tc-is-cross-compiler && zic="zic=${S}-native/zic"
 	_emake install ${zic} DESTDIR="${D}" LIBDIR="/nukeit"
 	rm -rf "${D}/nukeit" "${ED}/etc" || die
+
+	insinto /usr/share/zoneinfo
+	doins "${S}"/leap-seconds.list
+
 	# Delete man pages installed by man-pages package.
 	rm "${ED}"/usr/share/man/man5/tzfile.5* "${ED}"/usr/share/man/man8/{tzselect,zdump,zic}.8 || die
 	dodoc CONTRIBUTING README NEWS *.html
