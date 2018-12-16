@@ -151,7 +151,6 @@ dev-python/django-formtools
 dev-python/djangocms-text-ckeditor
 dev-python/django-sekizai
 dev-python/django-treebeard
-dev-python/aldryn-search
 
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
