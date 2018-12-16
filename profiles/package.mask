@@ -157,12 +157,6 @@ dev-python/django-filer
 dev-python/django-mptt
 dev-python/django-standard-form
 
-# Hans de Graaff <graaff@gentoo.org> (12 Nov 2018)
-# Mask ruby23-only packages for removal. These packages are not
-# compatible with ruby24+ or they are old slots that are ruby23-only
-# in Gentoo. Removal in 30 days. Bug #661262
-dev-ruby/jira-ruby
-
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
 # Removal in 30 days.
