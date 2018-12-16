@@ -42,6 +42,8 @@ PDEPEND="
 	vlc? ( >=media-libs/phonon-vlc-0.9.0[qt5(+)] )
 "
 
+PATCHES=( "${FILESDIR}/${P}-pulseaudio-qt-5.12.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DPHONON_BUILD_PHONON4QT5=ON
