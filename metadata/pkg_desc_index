@@ -9972,7 +9972,7 @@ sys-auth/polkit-qt 0.112.0_p20160416-r2: PolicyKit Qt API wrapper library
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.11-r2: Realtime Policy and Watchdog Daemon
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
-sys-auth/sssd 1.16.3: System Security Services Daemon provides access to identity and authentication
+sys-auth/sssd 1.16.3-r1: System Security Services Daemon provides access to identity and authentication
 sys-auth/ykpers 1.18.0: Library and tool for personalization of Yubico's YubiKey
 sys-block/aoetools 36: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/blktrace 1.2.0: show detailed info about what is happening on a block device io queue
