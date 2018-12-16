@@ -3,6 +3,7 @@
 
 EAPI=6
 
+: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 PYTHON_REQ_USE="libressl?,sqlite,ssl"
 LIBDVDCSS_VERSION="1.4.2-Leia-Beta-5"
 LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-3"
@@ -73,7 +74,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/lzo-2.04
 	dev-libs/tinyxml[stl]
 	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/pycryptodome[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/pycryptodome[${PYTHON_USEDEP}]' 'python3*')
 	>=dev-libs/libcdio-0.94
 	dev-libs/libfmt
 	dev-libs/libfstrcmp
@@ -138,8 +139,8 @@ RDEPEND="${COMMON_DEPEND}
 	lirc? ( app-misc/lirc )
 	!media-tv/xbmc
 	udisks? ( sys-fs/udisks:2 )
-	upower? ( sys-power/upower )"
-
+	upower? ( sys-power/upower )
+"
 DEPEND="${COMMON_DEPEND}
 	app-arch/bzip2
 	app-arch/xz-utils
