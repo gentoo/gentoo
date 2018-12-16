@@ -1,9 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit eapi7-ver
+EAPI=7
 
 MY_DATE="$(ver_cut 4)"
 MY_PN="${PN^^}"
@@ -17,14 +15,16 @@ KEYWORDS="-* ~amd64 ~x86"
 LICENSE="supermicro"
 SLOT="0"
 
-RDEPEND="sys-libs/glibc"
 DEPEND="app-arch/unzip"
 
-RESTRICT="bindist fetch mirror strip"
+RESTRICT="bindist fetch mirror"
 
 S="${WORKDIR}/${MY_PN}_${MY_PV}_build.${MY_DATE}"
 
-QA_PREBUILT="opt/ipmicfg/IPMICFG-Linux.x86 opt/ipmicfg/IPMICFG-Linux.x86_64"
+QA_PREBUILT="
+	opt/ipmicfg/IPMICFG-Linux.x86
+	opt/ipmicfg/IPMICFG-Linux.x86_64
+"
 
 pkg_nofetch() {
 	elog "Please download ${A} from"
@@ -34,27 +34,25 @@ pkg_nofetch() {
 
 src_install() {
 	# Choose ARCH
-	if use amd64; then
-		local my_arch_binary="x86_64"
-		local my_arch_folder="64bit"
-	else
-		local my_arch_binary="x86"
-		local my_arch_folder="32bit"
-	fi
+	local my_arch_binary="$(usex amd64 'x86_64' 'x86')"
+	local my_arch_folder="$(usex amd64 '64bit' '32bit')"
 
 	# Install files
-	insinto "/opt/ipmicfg"
-	doins "Linux/${my_arch_folder}"/*.dat
+	insinto /opt/ipmicfg
+	doins Linux/"${my_arch_folder}"/*.dat
 
 	# Install binary
-	exeinto "/opt/ipmicfg"
-	doexe "Linux/${my_arch_folder}/IPMICFG-Linux.${my_arch_binary}"
+	exeinto /opt/ipmicfg
+	doexe Linux/"${my_arch_folder}"/IPMICFG-Linux."${my_arch_binary}"
 
 	# Install symlink
-	dodir "/opt/bin"
-	dosym "../ipmicfg/IPMICFG-Linux.${my_arch_binary}" "/opt/bin/ipmicfg"
+	dodir /opt/bin
+	dosym ../ipmicfg/IPMICFG-Linux."${my_arch_binary}" /opt/bin/ipmicfg
 
 	# Install docs
-	local DOCS=( "IPMICFG_UserGuide.pdf" "ReleaseNotes.txt" )
+	local DOCS=(
+		"IPMICFG_UserGuide.pdf"
+		"ReleaseNotes.txt"
+	)
 	einstalldocs
 }

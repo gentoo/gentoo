@@ -27,4 +27,4 @@ RDEPEND="${DEPEND}"
 
 DOCS=( "README" "README.Android" "TODO" "syscalls.txt" )
 
-PATCHES=( "${FILESDIR}/${PN}-0.09.42-makefile.patch" )
+PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
