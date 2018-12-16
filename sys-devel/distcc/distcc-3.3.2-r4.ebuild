@@ -32,6 +32,7 @@ CDEPEND="${PYTHON_DEPS}
 	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
 "
 DEPEND="${CDEPEND}
+	sys-devel/autoconf-archive
 	sys-libs/binutils-libs
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
