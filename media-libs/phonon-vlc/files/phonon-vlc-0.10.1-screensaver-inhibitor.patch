@@ -1,0 +1,31 @@
+From cb7c2b74b25380b49b2bb7bbfb7ac3fb37f1cd28 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Tue, 9 Oct 2018 13:22:30 +0200
+Subject: disable the builtin vlc screen saver inhibitor
+
+from a phonon perspective we expect the application to inhibit.
+additionally destructing a player may attempt to uninhibit and block
+on dbus not responding because the call is too late in the lifecycle or
+to an unresponsive remote (all of which the app would ordinarily
+deal with)
+---
+ src/utils/libvlc.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/utils/libvlc.cpp b/src/utils/libvlc.cpp
+index 39e831c..3a33d9a 100644
+--- a/src/utils/libvlc.cpp
++++ b/src/utils/libvlc.cpp
+@@ -90,6 +90,10 @@ bool LibVLC::init()
+     args << "--no-xlib";
+     // Do not preload services discovery modules, we don't use them.
+     args << "--services-discovery=''";
++    // The application is meant to manage this. Also, using the builtin
++    // inhibitor may cause problems on shutdown if VLC tries to uninhibit too
++    // late in the application lifecycle.
++    args << "--no-disable-screensaver";
+     // Allow multiple starts (one gets to wonder whether that makes a difference).
+ #if !defined(Q_OS_MAC) && (defined(Q_OS_WIN) || !defined(PHONON_NO_DBUS))
+     args << "--no-one-instance";
+-- 
+cgit v1.1
