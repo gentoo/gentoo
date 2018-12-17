@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,14 +9,13 @@ inherit linux-info
 
 DESCRIPTION="Microsemi Adaptec RAID Controller Command Line Utility"
 HOMEPAGE="https://www.microsemi.com/"
-SRC_URI="https://download.adaptec.com/raid/storage_manager/${PN}_${MY_PV}.zip"
+SRC_URI="https://download.adaptec.com/raid/storage_manager/${PN}_${MY_PV}_h.zip"
 
 KEYWORDS="-* ~amd64"
 LICENSE="Microsemi"
 SLOT="0"
 
 DEPEND="app-arch/unzip"
-RDEPEND="${RDEPEND}"
 
 RESTRICT="fetch mirror bindist"
 
@@ -26,7 +25,7 @@ QA_PREBUILT="usr/bin/arcconf"
 
 pkg_nofetch() {
 	elog "Please download ${A} from"
-	elog "https://storage.microsemi.com/en-us/speed/raid/storage_manager/${PN}_${MY_PV}_zip.php"
+	elog "https://storage.microsemi.com/en-us/speed/raid/storage_manager/${PN}_${MY_PV}_h_zip.php"
 	elog "and place it in your DISTDIR directory."
 }
 

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PV="v${PV//./_}"
 
@@ -16,7 +16,6 @@ LICENSE="Microsemi"
 SLOT="0"
 
 DEPEND="app-arch/unzip"
-RDEPEND="${RDEPEND}"
 
 RESTRICT="fetch mirror bindist"
 
@@ -39,9 +38,5 @@ pkg_setup() {
 }
 
 src_install() {
-	if use amd64; then
-		dobin linux_x64/cmdline/arcconf
-	else
-		dobin linux/cmdline/arcconf
-	fi
+	dobin linux$(usex amd64 '_x64')/cmdline/arcconf
 }
