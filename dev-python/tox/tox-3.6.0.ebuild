@@ -35,18 +35,9 @@ DEPEND="${RDEPEND}
 		<dev-python/pytest-mock-2.0[${PYTHON_USEDEP}]
 	)"
 
-PATCHES=( "${FILESDIR}/${PN}-3.5.3-skip-broken-tests.patch" )
+# for some reason, --deselect doesn't work in tox's tests
+PATCHES=( "${FILESDIR}/${PN}-3.6.0-skip-broken-tests.patch" )
 
 python_test() {
-	# TODO: find why these 8 tests excluded below fail.
-	pytest -v --no-network \
-		--deselect tests/test_config.py::test_plugin_require \
-		--deselect tests/test_docs.py::test_all_rst_ini_blocks_parse \
-		--deselect tests/test_interpreters.py::test_tox_get_python_executable \
-		--deselect tests/test_session.py::test_tox_parallel_build_safe \
-		--deselect tests/test_venv.py::test_install_python3 \
-		--deselect tests/test_z_cmdline.py::test_alwayscopy \
-		--deselect tests/test_z_cmdline.py::test_tox_quickstart_script \
-		--deselect tests/test_z_cmdline.py::test_tox_console_script \
-		|| die "Testsuite failed under ${EPYTHON}"
+	pytest -v --no-network || die "Testsuite failed under ${EPYTHON}"
 }
