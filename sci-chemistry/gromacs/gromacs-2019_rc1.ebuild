@@ -5,7 +5,9 @@ EAPI=6
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit bash-completion-r1 cmake-utils cuda eutils multilib readme.gentoo-r1 toolchain-funcs xdg-utils
+PYTHON_COMPAT=( python2_7 )
+
+inherit bash-completion-r1 cmake-utils cuda eutils multilib python-single-r1 readme.gentoo-r1 toolchain-funcs xdg-utils
 
 if [[ $PV = *9999* ]]; then
 	EGIT_REPO_URI="git://git.gromacs.org/gromacs.git
@@ -52,7 +54,7 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
-		dev-python/sphinx
+		dev-python/sphinx[${PYTHON_USEDEP}]
 		media-gfx/mscgen
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
@@ -114,6 +116,28 @@ src_prepare() {
 	fi
 
 	DOC_CONTENTS="Gromacs can use sci-chemistry/vmd to read additional file formats"
+
+	# try to create policy for imagemagik
+	mkdir -p ${HOME}/.config/ImageMagick
+	cat >> ${HOME}/.config/ImageMagick/policy.xml <<- EOF
+	<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE policymap [
+	<!ELEMENT policymap (policy)+>
+	!ATTLIST policymap xmlns CDATA #FIXED ''>
+	<!ELEMENT policy EMPTY>
+	<!ATTLIST policy xmlns CDATA #FIXED '' domain NMTOKEN #REQUIRED
+			name NMTOKEN #IMPLIED pattern CDATA #IMPLIED rights NMTOKEN #IMPLIED
+			stealth NMTOKEN #IMPLIED value CDATA #IMPLIED>
+	]>
+	<policymap>
+		<policy domain="coder" rights="read | write" pattern="PS" />
+		<policy domain="coder" rights="read | write" pattern="PS2" />
+		<policy domain="coder" rights="read | write" pattern="PS3" />
+		<policy domain="coder" rights="read | write" pattern="EPS" />
+		<policy domain="coder" rights="read | write" pattern="PDF" />
+		<policy domain="coder" rights="read | write" pattern="XPS" />
+	</policymap>
+	EOF
 }
 
 src_configure() {
@@ -170,6 +194,7 @@ src_configure() {
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
 		-DBUILD_TESTING=$(usex test)
 		-DGMX_BUILD_UNITTESTS=$(usex test)
+		-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
 		${extra}
 	)
 
@@ -226,10 +251,10 @@ src_compile() {
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
 			cmake-utils_src_compile
 		# not 100% necessary for rel ebuilds as available from website
-		#if use doc; then
-		#	BUILD_DIR="${WORKDIR}/${P}_${x}"\
-		#		cmake-utils_src_compile manual
-		#fi
+		if use doc; then
+			BUILD_DIR="${WORKDIR}/${P}_${x}"\
+				cmake-utils_src_compile manual
+		fi
 		use mpi || continue
 		einfo "Compiling for ${x} precision with mpi"
 		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi"\
@@ -248,9 +273,9 @@ src_install() {
 	for x in ${GMX_DIRS}; do
 		BUILD_DIR="${WORKDIR}/${P}_${x}" \
 			cmake-utils_src_install
-		#if use doc; then
-		#	newdoc "${WORKDIR}/${P}_${x}"/docs/manual/gromacs.pdf "${PN}-manual-${PV}.pdf"
-		#fi
+		if use doc; then
+			newdoc "${WORKDIR}/${P}_${x}"/docs/manual/gromacs.pdf "${PN}-manual-${PV}.pdf"
+		fi
 		use mpi || continue
 		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi" \
 			cmake-utils_src_install
