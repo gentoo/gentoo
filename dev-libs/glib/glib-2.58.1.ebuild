@@ -56,8 +56,9 @@ DEPEND="${RDEPEND}
 		sys-devel/gdb
 		>=dev-util/gdbus-codegen-${PV}
 		>=sys-apps/dbus-1.2.14 )
-	!<dev-util/gtk-doc-1.15-r2
 "
+# configure.ac has gtk-doc-am stuff behind m4_ifdef, so we don't need a gtk-doc-am build dep
+
 # Migration of glib-genmarshal, glib-mkenums and gtester-report to a separate
 # python depending package, which can be buildtime depended in packages that
 # need these tools, without pulling in python at runtime.
@@ -129,10 +130,13 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-2.54.3-external-gdbus-codegen.patch
 
 	# Tarball doesn't come with gtk-doc.make and we can't unconditionally depend on dev-util/gtk-doc due
-	# to circular deps during bootstramp. If actually not building gtk-doc, an empty file will do fine as
-	# well - this is also what upstream autogen.sh does if gtkdocize is not found. If gtk-doc is installed,
-	# eautoreconf will call gtkdocize, which overwrites the empty gtk-doc.make with a full copy.
-	touch gtk-doc.make
+	# to circular deps during bootstramp. If actually not building gtk-doc, an almost empty file will do
+	# fine as well - this is also what upstream autogen.sh does if gtkdocize is not found. If gtk-doc is
+	# installed, eautoreconf will call gtkdocize, which overwrites the empty gtk-doc.make with a full copy.
+	cat > gtk-doc.make << EOF
+EXTRA_DIST =
+CLEANFILES =
+EOF
 
 	gnome2_src_prepare
 	epunt_cxx
