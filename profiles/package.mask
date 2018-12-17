@@ -43,6 +43,8 @@
 =x11-drivers/nvidia-drivers-384*
 =x11-drivers/nvidia-drivers-387*
 =x11-drivers/nvidia-drivers-396*
+<x11-base/xorg-server-1.20.3
+<x11-base/xorg-drivers-1.20
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (12 Dec 2018)
 # mask new cmake based fish for testing while in beta
