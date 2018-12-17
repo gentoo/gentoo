@@ -128,6 +128,12 @@ src_prepare() {
 	# gdbus-codegen is a separate package
 	eapply "${FILESDIR}"/${PN}-2.54.3-external-gdbus-codegen.patch
 
+	# Tarball doesn't come with gtk-doc.make and we can't unconditionally depend on dev-util/gtk-doc due
+	# to circular deps during bootstramp. If actually not building gtk-doc, an empty file will do fine as
+	# well - this is also what upstream autogen.sh does if gtkdocize is not found. If gtk-doc is installed,
+	# eautoreconf will call gtkdocize, which overwrites the empty gtk-doc.make with a full copy.
+	touch gtk-doc.make
+
 	gnome2_src_prepare
 	epunt_cxx
 }
