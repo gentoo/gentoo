@@ -19,6 +19,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtprintsupport:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 "
