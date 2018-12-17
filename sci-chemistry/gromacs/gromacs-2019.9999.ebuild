@@ -7,7 +7,7 @@ CMAKE_MAKEFILE_GENERATOR="ninja"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit bash-completion-r1 cmake-utils cuda eutils multilib python-any-r1 readme.gentoo-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 cmake-utils cuda eutils multilib python-single-r1 readme.gentoo-r1 toolchain-funcs xdg-utils
 
 if [[ $PV = *9999* ]]; then
 	EGIT_REPO_URI="git://git.gromacs.org/gromacs.git
@@ -54,8 +54,7 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
-		${PYTHON_DEPS}
-		$(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]')
+		dev-python/sphinx[${PYTHON_USEDEP}]
 		media-gfx/mscgen
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
@@ -117,6 +116,28 @@ src_prepare() {
 	fi
 
 	DOC_CONTENTS="Gromacs can use sci-chemistry/vmd to read additional file formats"
+
+	# try to create policy for imagemagik
+	mkdir -p ${HOME}/.config/ImageMagick
+	cat >> ${HOME}/.config/ImageMagick/policy.xml <<- EOF
+	<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE policymap [
+	<!ELEMENT policymap (policy)+>
+	!ATTLIST policymap xmlns CDATA #FIXED ''>
+	<!ELEMENT policy EMPTY>
+	<!ATTLIST policy xmlns CDATA #FIXED '' domain NMTOKEN #REQUIRED
+			name NMTOKEN #IMPLIED pattern CDATA #IMPLIED rights NMTOKEN #IMPLIED
+			stealth NMTOKEN #IMPLIED value CDATA #IMPLIED>
+	]>
+	<policymap>
+		<policy domain="coder" rights="read | write" pattern="PS" />
+		<policy domain="coder" rights="read | write" pattern="PS2" />
+		<policy domain="coder" rights="read | write" pattern="PS3" />
+		<policy domain="coder" rights="read | write" pattern="EPS" />
+		<policy domain="coder" rights="read | write" pattern="PDF" />
+		<policy domain="coder" rights="read | write" pattern="XPS" />
+	</policymap>
+	EOF
 }
 
 src_configure() {
@@ -167,13 +188,13 @@ src_configure() {
 		-DGMX_COOL_QUOTES=$(usex offensive)
 		-DGMX_USE_TNG=$(usex tng)
 		-DGMX_BUILD_MANUAL=$(usex doc)
-		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DGMX_HWLOC=$(usex hwloc)
 		-DGMX_DEFAULT_SUFFIX=off
 		-DGMX_SIMD="$acce"
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
 		-DBUILD_TESTING=$(usex test)
 		-DGMX_BUILD_UNITTESTS=$(usex test)
+		-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
 		${extra}
 	)
 
