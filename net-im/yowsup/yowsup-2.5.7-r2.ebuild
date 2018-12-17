@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 PYTHON_REQ_USE="readline"
 
 inherit distutils-r1
@@ -20,12 +20,17 @@ RDEPEND="
 	dev-python/configargparse[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
-	dev-python/pycrypto[${PYTHON_USEDEP}]
+	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/python-axolotl-curve25519[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
+
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
-PATCHES=( "${FILESDIR}/${P}-fix-newer-six.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-add-python3.7-support.patch"
+	"${FILESDIR}/${P}-fix-install-path.patch"
+	"${FILESDIR}/${P}-fix-newer-six.patch"
+	)
