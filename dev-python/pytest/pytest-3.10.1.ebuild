@@ -14,8 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc64 ~sparc ~x86 ~amd64-fbsd ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-# doc apparently requires sphinxcontrib_trio, not yet packaged
-IUSE="test" # doc
+IUSE="test"
 
 # When bumping, please check setup.py for the proper py version
 PY_VER="1.5.0"
@@ -33,17 +32,11 @@ RDEPEND="
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 	virtual/python-funcsigs[${PYTHON_USEDEP}]"
 
-#	doc? (
-#		dev-python/pyyaml[${PYTHON_USEDEP}]
-#		dev-python/sphinx[${PYTHON_USEDEP}]
-#	)"
-
 # flake & pytest-capturelog cause a number of tests to fail
 DEPEND="${RDEPEND}
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
-		>=dev-python/pytest-xdist-1.22.2[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2)
 		dev-python/requests[${PYTHON_USEDEP}]
@@ -70,12 +63,3 @@ python_test() {
 	"${PYTHON}" "${BUILD_DIR}"/lib/pytest.py --lsof -rfsxX \
 		-vv testing || die "tests failed with ${EPYTHON}"
 }
-
-#python_compile_all() {
-#	use doc && emake -C doc/en html
-#}
-#
-#python_install_all() {
-#	use doc && HTML_DOCS=( doc/en/_build/html/. )
-#	distutils-r1_python_install_all
-#}
