@@ -99,6 +99,10 @@ src_install() {
 	fi
 }
 
+src_test() {
+	emake -j1 check
+}
+
 pkg_postinst() {
 	gnome2_pkg_postinst
 	if use emacs; then
