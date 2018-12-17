@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,7 +34,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	~dev-util/gtk-doc-am-${PV}
-	app-text/yelp-tools
+	dev-util/itstool
 	virtual/pkgconfig
 "
 
@@ -97,6 +97,10 @@ src_install() {
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 		readme.gentoo_create_doc
 	fi
+}
+
+src_test() {
+	emake -j1 check
 }
 
 pkg_postinst() {
