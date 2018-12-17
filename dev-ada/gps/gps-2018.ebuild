@@ -59,6 +59,7 @@ pkg_setup() {
 	GNATDRV=gnat-${GCC_PV}
 	GNATLS=gnatls-${GCC_PV}
 	llvm_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
