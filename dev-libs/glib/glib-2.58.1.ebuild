@@ -104,6 +104,7 @@ src_prepare() {
 		#if ! has_version x11-terms/xterm && ! has_version x11-terms/gnome-terminal ; then
 		#	ewarn "Some tests will be skipped due to missing terminal program"
 		# These tests seem to sometimes fail even with a terminal; skip for now and reevulate with meson
+		# Also try https://gitlab.gnome.org/GNOME/glib/issues/1601 once ready for backport (or in a bump) and file new issue if still fails
 		sed -i -e "/appinfo\/launch/d" gio/tests/appinfo.c || die
 		# desktop-app-info/launch* might fail similarly
 		sed -i -e "/desktop-app-info\/launch-as-manager/d" gio/tests/desktop-app-info.c || die
