@@ -69,6 +69,7 @@ REQUIRED_USE="corefonts? ( truetype )
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	eapply "${FILESDIR}"/${P}-fix-MagickCore-config.patch
 	default
 
 	# Apply hardening #664236

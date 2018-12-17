@@ -1,0 +1,23 @@
+From 02701e96029c4e2a9902685a9aca84ae21ab1c4c Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Fri, 14 Dec 2018 02:03:07 +0300
+Subject: [PATCH] Remove non-existing "-config" option from pkg-config
+
+This bug produces "Unknown option -config" error.
+---
+ magick/MagickCore-config.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/magick/MagickCore-config.in b/magick/MagickCore-config.in
+index 94bc87b95..e56f34a76 100644
+--- a/magick/MagickCore-config.in
++++ b/magick/MagickCore-config.in
+@@ -38,7 +38,7 @@ while test $# -gt 0; do
+       echo '@PACKAGE_VERSION@ Q@QUANTUM_DEPTH@ @MAGICK_HDRI@'
+       ;;
+     --cflags)
+-      @PKG_CONFIG@ -config --cflags MagickCore
++      @PKG_CONFIG@ --cflags MagickCore
+       ;;
+     --cxxflags)
+       @PKG_CONFIG@ --cflags MagickCore
