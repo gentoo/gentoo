@@ -46,19 +46,19 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/libinput:=
 	>=dev-python/apsw-3.13.0[${PYTHON_USEDEP}]
 	>=dev-python/beautifulsoup-3.0.5:python-2[${PYTHON_USEDEP}]
-	dev-python/chardet[${PYTHON_USEDEP}]
+	>=dev-python/chardet-3.0.3[${PYTHON_USEDEP}]
 	>=dev-python/cssselect-0.7.1[${PYTHON_USEDEP}]
 	>=dev-python/cssutils-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/dbus-python-1.2.4[${PYTHON_USEDEP}]
 	>=dev-libs/dbus-glib-0.106
 	>=sys-apps/dbus-1.10.8
-	dev-python/html5-parser[${PYTHON_USEDEP}]
-	>=dev-python/lxml-3.2.1[${PYTHON_USEDEP}]
-	>=dev-python/mechanize-0.2.5[${PYTHON_USEDEP}]
-	dev-python/msgpack[${PYTHON_USEDEP}]
-	dev-python/netifaces[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/psutil[${PYTHON_USEDEP}]
+	>=dev-python/html5-parser-0.4.3[${PYTHON_USEDEP}]
+	>=dev-python/lxml-3.8.0[${PYTHON_USEDEP}]
+	>=dev-python/mechanize-0.3.5[${PYTHON_USEDEP}]
+	>=dev-python/msgpack-0.5.6[${PYTHON_USEDEP}]
+	>=dev-python/netifaces-0.10.5[${PYTHON_USEDEP}]
+	>=dev-python/pillow-3.2.0[${PYTHON_USEDEP}]
+	>=dev-python/psutil-4.3.0[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.1.3[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
 	>=dev-python/PyQt5-5.8[gui,svg,webkit,widgets,network,printsupport,${PYTHON_USEDEP}]
@@ -75,7 +75,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/libmtp-1.1.11:=
 	>=media-libs/libwmf-0.2.8
 	>=media-gfx/optipng-0.7.6
-	sys-libs/zlib:=
+	>=sys-libs/zlib-1.2.11:=
 	virtual/libusb:1=
 	virtual/python-dnspython[${PYTHON_USEDEP}]
 	x11-libs/libxkbcommon:=
