@@ -3465,6 +3465,7 @@ media-video/ffmpeg:zeromq - Enables net-libs/zeromq support with the zmq/azmq fi
 media-video/ffmpeg:zimg - Enables media-libs/zimg based scale filter.
 media-video/ffmpeg:zvbi - Enables media-libs/zvbi based teletext decoder.
 media-video/ffmpeg2theora:kate - Adds support for Ogg Kate subtitles via libkate.
+media-video/guvcview:qt5 - Build with Qt5 interface instead Gtk+
 media-video/kino:gpac - Enable GPAC support when exporting to 3GPP format
 media-video/kmplayer:npp - Compile the npp backend that plays xembed style browser plugins.
 media-video/libav:aac - Use external vo-aacenc library for AAC encoding
