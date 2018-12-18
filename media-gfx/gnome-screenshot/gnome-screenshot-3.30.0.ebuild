@@ -24,6 +24,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=gnome-base/gsettings-desktop-schemas-0.1.0
 "
 DEPEND="${COMMON_DEPEND}
+	dev-libs/appstream-glib
 	dev-libs/libxml2:2
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
