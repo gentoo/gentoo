@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://my.smithmicro.com/downloads/files/${MY_P}.tar.gz"
 
 LICENSE="Stuffit"
 SLOT="0"
-KEYWORDS="-* x86 amd64"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 RESTRICT="fetch strip"
 
@@ -22,7 +22,7 @@ INSTALLDIR=/opt/stuffit
 pkg_nofetch() {
 	einfo "Please download stuffit from"
 	einfo "${SRC_URI}"
-	einfo "and put the file in ${DISTDIR}"
+	einfo "and place the file in your DISTDIR directory."
 	einfo
 	einfo "Note that StuffIt requires registration within 30 days,"
 	einfo "but StuffIt Expander is freeware."
