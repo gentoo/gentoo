@@ -9,7 +9,7 @@ SRC_URI="https://github.com/neurobin/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc ~sparc x86"
 
 src_install() {
 	dobin src/shc
