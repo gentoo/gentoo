@@ -8,5 +8,5 @@ LICENSE=BSD-2
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/cloudflare/certmgr/archive/v1.6.0.tar.gz -> certmgr-1.6.0.tar.gz
-_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	1b46197451ce01766db03a9955597d7b	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
+_eclasses_=golang-base	e764075c9bbce927b424f8e9b7a25dfe	golang-build	1b46197451ce01766db03a9955597d7b	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
 _md5_=78b15da68325cd1f2f8edbc7fbad766c

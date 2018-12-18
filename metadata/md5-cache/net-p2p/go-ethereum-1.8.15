@@ -10,5 +10,5 @@ RDEPEND=dev-lang/go:= opencl? ( virtual/opencl )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/ethereum/go-ethereum/archive/v1.8.15.tar.gz -> go-ethereum-1.8.15.tar.gz
-_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501
+_eclasses_=golang-base	e764075c9bbce927b424f8e9b7a25dfe
 _md5_=f90badc3e6f60f3bf6b32904e6c3d922
