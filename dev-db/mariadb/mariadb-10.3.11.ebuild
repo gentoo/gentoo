@@ -575,6 +575,10 @@ src_install() {
 
 	#Remove mytop if perl is not selected
 	[[ -e "${ED}/usr/bin/mytop" ]] && ! use perl && rm -f "${ED}/usr/bin/mytop"
+
+	# Fix a dangling symlink when galera is not built
+	[[ -L "${ED}/usr/bin/wsrep_sst_rsync_wan" ]] && ! use galera \
+		&& rm "${ED}/usr/bin/wsrep_sst_rsync_wan" || die
 }
 
 # Official test instructions:
@@ -727,7 +731,7 @@ mysql_init_vars() {
 
 pkg_config() {
 	_getoptval() {
-		local mypd="${EROOT}"/usr/bin/my_print_defaults
+		local mypd="${EROOT}"usr/libexec/mariadb/my_print_defaults
 		local section="$1"
 		local flag="--${2}="
 		local extra_options="${3}"
