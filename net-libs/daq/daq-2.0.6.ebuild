@@ -27,6 +27,9 @@ DEPEND="
 	pcap? ( ${PCAP_DEPEND} )
 "
 RDEPEND="${DEPEND}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.6-parallel-grammar.patch #673390
+)
 
 src_prepare() {
 	default
