@@ -30,6 +30,9 @@ QA_FLAGS_IGNORED='.*'
 
 STRIP_MASK="*.a"
 
+# Do not use the go build cache for go 1.11.
+export GOCACHE=off
+
 # @ECLASS-VARIABLE: EGO_PN
 # @REQUIRED
 # @DESCRIPTION:
