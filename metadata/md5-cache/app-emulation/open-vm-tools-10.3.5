@@ -1,15 +1,15 @@
 BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DEFINED_PHASES=configure install postinst prepare setup
-DEPEND=dev-libs/glib net-libs/libtirpc deploypkg? ( dev-libs/libmspack ) fuse? ( sys-fs/fuse:0 ) pam? ( virtual/pam ) ssl? ( dev-libs/openssl:0 ) vgauth? ( dev-libs/libxml2 dev-libs/xmlsec ) X? ( x11-libs/libXext multimon? ( x11-libs/libXinerama ) x11-libs/libXi x11-libs/libXrender x11-libs/libXrandr x11-libs/libXtst x11-libs/libSM x11-libs/libXcomposite x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 gtkmm? ( dev-cpp/gtkmm:3.0 dev-libs/libsigc++:2 ) ) dnet? ( dev-libs/libdnet ) icu? ( dev-libs/icu:= ) caf? ( dev-libs/log4cpp net-libs/rabbitmq-c ) resolutionkms? ( x11-libs/libdrm[video_cards_vmware] virtual/libudev ) net-libs/rpcsvc-proto
+DEPEND=dev-libs/glib net-libs/libtirpc deploypkg? ( dev-libs/libmspack ) fuse? ( sys-fs/fuse:0 ) pam? ( virtual/pam ) ssl? ( dev-libs/openssl:0 ) vgauth? ( dev-libs/libxml2 dev-libs/xmlsec ) X? ( x11-libs/libXext multimon? ( x11-libs/libXinerama ) x11-libs/libXi x11-libs/libXrender x11-libs/libXrandr x11-libs/libXtst x11-libs/libSM x11-libs/libXcomposite x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 gtkmm? ( dev-cpp/gtkmm:3.0 dev-libs/libsigc++:2 ) ) dnet? ( dev-libs/libdnet ) icu? ( dev-libs/icu:= ) resolutionkms? ( x11-libs/libdrm[video_cards_vmware] virtual/libudev ) net-libs/rpcsvc-proto
 DESCRIPTION=Opensourced tools for VMware guests
 EAPI=7
 HOMEPAGE=https://github.com/vmware/open-vm-tools
-IUSE=X caf +deploypkg +dnet doc +fuse +grabbitmqproxy gtkmm +icu multimon pam +resolutionkms +ssl static-libs +vgauth kernel_linux
+IUSE=X +deploypkg +dnet doc +fuse +grabbitmqproxy gtkmm +icu multimon pam +resolutionkms +ssl static-libs +vgauth kernel_linux
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1
-RDEPEND=dev-libs/glib net-libs/libtirpc deploypkg? ( dev-libs/libmspack ) fuse? ( sys-fs/fuse:0 ) pam? ( virtual/pam ) ssl? ( dev-libs/openssl:0 ) vgauth? ( dev-libs/libxml2 dev-libs/xmlsec ) X? ( x11-libs/libXext multimon? ( x11-libs/libXinerama ) x11-libs/libXi x11-libs/libXrender x11-libs/libXrandr x11-libs/libXtst x11-libs/libSM x11-libs/libXcomposite x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 gtkmm? ( dev-cpp/gtkmm:3.0 dev-libs/libsigc++:2 ) ) dnet? ( dev-libs/libdnet ) icu? ( dev-libs/icu:= ) caf? ( dev-libs/log4cpp net-libs/rabbitmq-c ) resolutionkms? ( x11-libs/libdrm[video_cards_vmware] virtual/libudev )
-REQUIRED_USE=multimon? ( X ) vgauth? ( ssl ) caf? ( vgauth ssl ) grabbitmqproxy? ( ssl )
+RDEPEND=dev-libs/glib net-libs/libtirpc deploypkg? ( dev-libs/libmspack ) fuse? ( sys-fs/fuse:0 ) pam? ( virtual/pam ) ssl? ( dev-libs/openssl:0 ) vgauth? ( dev-libs/libxml2 dev-libs/xmlsec ) X? ( x11-libs/libXext multimon? ( x11-libs/libXinerama ) x11-libs/libXi x11-libs/libXrender x11-libs/libXrandr x11-libs/libXtst x11-libs/libSM x11-libs/libXcomposite x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 gtkmm? ( dev-cpp/gtkmm:3.0 dev-libs/libsigc++:2 ) ) dnet? ( dev-libs/libdnet ) icu? ( dev-libs/icu:= ) resolutionkms? ( x11-libs/libdrm[video_cards_vmware] virtual/libudev )
+REQUIRED_USE=multimon? ( X ) vgauth? ( ssl ) grabbitmqproxy? ( ssl )
 SLOT=0
 SRC_URI=https://github.com/vmware/open-vm-tools/releases/download/stable-10.3.5/open-vm-tools-10.3.5-10430147.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	pam	3e788d86170dfcd5b06824d898315e18	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81
-_md5_=e6351f8c3ced4c91a7503b53815b8a55
+_md5_=1b22c7d5daec8c1a247ae5c94567d5b0
