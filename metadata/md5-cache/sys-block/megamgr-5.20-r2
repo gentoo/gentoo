@@ -8,4 +8,4 @@ LICENSE=LSI
 RESTRICT=mirror fetch
 SLOT=0
 SRC_URI=http://www.lsi.com/downloads/Public/MegaRAID%20Common%20Files/ut_linux_mgr_5.20.zip
-_md5_=cbcfa1353dfbd66a5449018b5fdf96fc
+_md5_=064e8181cec031717c6613d17926bcb6
