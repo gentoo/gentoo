@@ -27,7 +27,8 @@ REQUIRED_USE="openmp? ( !minimal )
 	opencl? ( !minimal )
 	mozilla? ( !minimal )"
 
-RDEPEND="sys-libs/zlib
+RDEPEND="!app-crypt/johntheripper-jumbo
+	sys-libs/zlib
 	!minimal? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
