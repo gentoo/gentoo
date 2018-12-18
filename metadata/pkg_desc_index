@@ -8650,8 +8650,8 @@ net-libs/biblesync 1.1.2-r2: A multicast protocol to support Bible software shar
 net-libs/c-client 2007f-r6: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
 net-libs/ccrtp 2.0.9: GNU ccRTP - Implementation of the IETF real-time transport protocol
-net-libs/courier-authlib 0.65.0-r3 0.66.3 0.66.4: Courier authentication library
-net-libs/courier-unicode 1.1 1.3: Unicode library used by the courier mail server
+net-libs/courier-authlib 0.65.0-r3 0.66.4: Courier authentication library
+net-libs/courier-unicode 1.3: Unicode library used by the courier mail server
 net-libs/cppzmq 0_pre150606: High-level CPP Binding for ZeroMQ
 net-libs/czmq 2.2.0-r2 3.0.2: High-level C Binding for ZeroMQ
 net-libs/daq 0.6.2: Data Acquisition library, for packet I/O
