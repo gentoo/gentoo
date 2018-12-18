@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.rdoc README.md"
@@ -22,12 +22,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
-DEPEND+=" >=dev-libs/libyaml-0.1.7"
+DEPEND+=" >=dev-libs/libyaml-0.2.1"
 
 ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"
 
 all_ruby_prepare() {
 	sed -i -e '1igem "minitest", "~>5.0"' test/psych/helper.rb || die
+
+	sed -i -e 's/require_relative/require/ ; s:lib/psych/versions:./lib/psych/versions:' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
 each_ruby_configure() {
