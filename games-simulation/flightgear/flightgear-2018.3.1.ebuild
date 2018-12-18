@@ -3,16 +3,14 @@
 
 EAPI=6
 
-inherit cmake-utils bash-completion-r1 toolchain-funcs git-r3
+inherit cmake-utils bash-completion-r1 toolchain-funcs
 
 DESCRIPTION="Open Source Flight Simulator"
 HOMEPAGE="http://www.flightgear.org/"
-EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/${PN}
-	git://mapserver.flightgear.org/${PN}"
-EGIT_BRANCH="next"
+SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="dbus debug examples gdal openmp qt5 +udev +utils vim-syntax"
 
@@ -96,7 +94,7 @@ src_configure() {
 		-DENABLE_UIUC_MODEL=ON
 		-DENABLE_YASIM=ON
 		-DEVENT_INPUT=$(usex udev)
-		-DFG_BUILD_TYPE=Nightly
+		-DFG_BUILD_TYPE=Release
 		-DFG_DATA_DIR=/usr/share/${PN}
 		-DJSBSIM_TERRAIN=ON
 		-DOSG_FSTREAM_EXPORT_FIXED=OFF # TODO also see simgear
