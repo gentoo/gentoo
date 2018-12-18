@@ -10625,7 +10625,7 @@ www-servers/lighttpd 1.4.51: Lightweight high-performance web server
 www-servers/monkeyd 1.6.9-r1: A small, fast, and scalable web server
 www-servers/nginx 1.14.1: Robust, small and high performance http and reverse proxy server
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
-www-servers/puma 3.11.0 3.11.4: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
+www-servers/puma 3.11.4: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/spawn-fcgi 1.6.3-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.85 8.0.50 8.5.30 9.0.7: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
