@@ -6,7 +6,7 @@ EAPI=7
 inherit bash-completion-r1 eutils
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="https://git.archlinux.org/netctl.git"
+	EGIT_REPO_URI="git://projects.archlinux.org/netctl.git"
 	inherit git-r3
 	DEPEND="app-text/asciidoc"
 else
