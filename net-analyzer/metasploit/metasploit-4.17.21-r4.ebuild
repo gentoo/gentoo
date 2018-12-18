@@ -4,11 +4,12 @@
 EAPI="6"
 
 #never ever ever have more than one ruby in here
-USE_RUBY="ruby23"
+USE_RUBY="ruby24"
 inherit eutils ruby-ng
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/rapid7/metasploit-framework.git"
+	EGIT_BRANCH="4.x"
 	EGIT_CHECKOUT_DIR="${WORKDIR}"/all
 	inherit git-r3
 	KEYWORDS=""
@@ -17,7 +18,7 @@ else
 	##Tags https://github.com/rapid7/metasploit-framework/releases
 	MY_PV=${PV/_p/-}
 	SRC_URI="https://github.com/rapid7/metasploit-framework/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="~amd64 ~x86"
 	RUBY_S="${PN}-framework-${MY_PV}"
 	inherit eapi7-ver
 	SLOT="$(ver_cut 1).$(ver_cut 2)"
@@ -32,35 +33,43 @@ IUSE="development +java nexpose openvas oracle +pcap test"
 #http://dev.metasploit.com/redmine/issues/8418 - worked around (fix user creation when possible)
 RESTRICT="test"
 
+#grep spec.add_runtime_dependency metasploit-framework.gemspec | sort
 RUBY_COMMON_DEPEND="virtual/ruby-ssl
-	>=dev-ruby/activesupport-4.2.6:4.2
 	>=dev-ruby/actionpack-4.2.6:4.2
 	>=dev-ruby/activerecord-4.2.6:4.2
+	>=dev-ruby/activesupport-4.2.6:4.2
+	dev-ruby/backports
 	dev-ruby/bcrypt-ruby
+	dev-ruby/bcrypt_pbkdf
 	dev-ruby/bit-struct
-	>=dev-ruby/builder-3.0
 	dev-ruby/bundler
+	dev-ruby/dnsruby
+	dev-ruby/faker
 	dev-ruby/filesize:*
-	>=dev-ruby/jsobfu-0.3.0:*
+	dev-ruby/jsobfu:*
 	dev-ruby/json:*
-	dev-ruby/kissfft
-	dev-ruby/metasm:1.0.2
-	>=dev-ruby/metasploit_data_models-2.0.0
-	dev-ruby/meterpreter_bins:0.0.22
-	dev-ruby/metasploit-payloads:1.2.24
-	dev-ruby/metasploit_payloads-mettle:0.1.9
-	>=dev-ruby/metasploit-credential-2.0.0
-	>=dev-ruby/metasploit-concern-2.0.0
-	>=dev-ruby/metasploit-model-2.0.0
+	dev-ruby/metasm:*
+	dev-ruby/metasploit-concern
+	<dev-ruby/metasploit-credential-3.0.0
+	<dev-ruby/metasploit_data_models-3.0.0
+	dev-ruby/metasploit-model
+	dev-ruby/metasploit-payloads:1.3.53
+	dev-ruby/metasploit_payloads-mettle:0.4.2
+	dev-ruby/mqtt
 	dev-ruby/msgpack
 	dev-ruby/net-ssh:*
+	dev-ruby/ed25519
 	dev-ruby/nokogiri
 	dev-ruby/octokit
 	dev-ruby/openssl-ccm:1.2.1
+	dev-ruby/packetfu:1.1.13
 	dev-ruby/patch_finder
-	>=dev-ruby/recog-2.0.14
+	dev-ruby/pdf-reader:*
+	~dev-ruby/pg-0.21.0
+	dev-ruby/railties:*
+	dev-ruby/rb-readline
+	dev-ruby/recog:*
 	dev-ruby/redcarpet
-	>=dev-ruby/rkelly-remix-0.0.6
 	dev-ruby/rex-arch
 	dev-ruby/rex-bin_tools
 	dev-ruby/rex-core
@@ -70,25 +79,24 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/rex-mime
 	dev-ruby/rex-nop
 	dev-ruby/rex-ole
-	dev-ruby/rex-powershell
+	<dev-ruby/rex-powershell-0.1.78
 	dev-ruby/rex-random_identifier
 	dev-ruby/rex-registry
+	dev-ruby/rex-rop_builder
 	dev-ruby/rex-socket
 	dev-ruby/rex-sslscan
-	dev-ruby/rex-rop_builder
 	dev-ruby/rex-struct2
 	dev-ruby/rex-text
 	dev-ruby/rex-zip
+	dev-ruby/ruby-macho
+	dev-ruby/rubyntlm
 	dev-ruby/ruby_smb:*
+	dev-ruby/rubyzip
 	dev-ruby/sqlite3
-	>=dev-ruby/pg-0.11:*
-	dev-ruby/packetfu:1.1.13
-	>=dev-ruby/rubyzip-1.1
-	>=dev-ruby/rb-readline-0.5.4
-	dev-ruby/robots
 	dev-ruby/sshkey
 	dev-ruby/tzinfo:*
 	dev-ruby/windows_error
+	dev-ruby/xdr:2.0.0
 	dev-ruby/xmlrpc
 	java? ( dev-ruby/rjb )
 	nexpose? ( dev-ruby/nexpose )
@@ -115,7 +123,7 @@ ruby_add_bdepend "${RUBY_COMMON_DEPEND}
 ruby_add_rdepend "${RUBY_COMMON_DEPEND}"
 
 COMMON_DEPEND="dev-db/postgresql[server]
-	>=app-crypt/johntheripper-1.7.9-r1[-minimal]
+	|| ( >=app-crypt/johntheripper-1.7.9-r1[-minimal] app-crypt/johntheripper-jumbo )
 	net-analyzer/nmap"
 RDEPEND+=" ${COMMON_DEPEND}
 	>=app-eselect/eselect-metasploit-0.16"
@@ -138,9 +146,14 @@ QA_PREBUILT="
 	usr/lib*/${PN}${SLOT}/data/meterpreter/ext_server_stdapi.lso
 	usr/lib*/${PN}${SLOT}/data/exploits/CVE-2013-2171.bin
 	usr/lib*/${PN}${SLOT}/data/exploits/CVE-2014-3153.elf
+	usr/lib*/${PN}${SLOT}/data/exploits/mysql/lib_mysqludf_sys_32.so
+	usr/lib*/${PN}${SLOT}/data/exploits/*
 	usr/lib*/${PN}${SLOT}/data/android/libs/x86/libndkstager.so
 	usr/lib*/${PN}${SLOT}/data/android/libs/mips/libndkstager.so
 	usr/lib*/${PN}${SLOT}/data/android/libs/armeabi/libndkstager.so
+	usr/lib*/${PN}${SLOT}/data/templates/template_x86_linux_dll.bin
+	usr/lib*/${PN}${SLOT}/data/templates/template_armle_linux_dll.bin
+	usr/lib*/${PN}${SLOT}/data/templates/template_aarch64_linux.bin
 	"
 
 pkg_setup() {
@@ -185,6 +198,9 @@ all_ruby_prepare() {
 	sed -i "/gem 'fivemat'/s/, '1.2.1'//" Gemfile || die
 	#use released packetfu
 	sed -i "s/1.1.13.pre/1.1.13/" metasploit-framework.gemspec || die
+	#use the stable pg
+	#https://github.com/rapid7/metasploit-framework/issues/10234
+	sed -i "s/dependency 'pg', '0.20.0'/dependency 'pg', '0.21.0'/" metasploit-framework.gemspec || die
 	#git gems are only for ruby24 support and we are not there yet
 	sed -i "/git:/d" Gemfile || die
 
@@ -222,9 +238,6 @@ all_ruby_prepare() {
 
 	#https://bugs.gentoo.org/show_bug.cgi?id=584522 no tzinfo-data by choice in gentoo
 	sed -i '/tzinfo-data/d' metasploit-framework.gemspec
-
-	#avoid specifically versioned rex-arch
-	sed -i -e "/rex-arch/ s/, '0.1.4'//" metasploit-framework.gemspec || die
 
 	#let's bogart msfupdate
 	rm msfupdate
@@ -289,9 +302,9 @@ each_ruby_install() {
 
 	#I'm 99% sure that this will only work for as long as we only support one ruby version.  Creativity will be needed if we wish to support multiple.
 	# should be as simple as copying everything into the target...
-	dodir /usr/$(get_libdir)/${PN}${SLOT}
-	cp -R * "${ED}"/usr/$(get_libdir)/${PN}${SLOT} || die "Copy files failed"
-	rm -Rf "${ED}"/usr/$(get_libdir)/${PN}${SLOT}/documentation "${ED}"/usr/$(get_libdir)/${PN}${SLOT}/README.md
+	dodir /usr/lib/${PN}${SLOT}
+	cp -R * "${ED}"/usr/lib/${PN}${SLOT} || die "Copy files failed"
+	rm -Rf "${ED}"/usr/lib/${PN}${SLOT}/documentation "${ED}"/usr/lib${PN}${SLOT}/README.md
 	fowners -R root:0 /
 
 }
@@ -300,16 +313,16 @@ all_ruby_install() {
 	# do not remove LICENSE, bug #238137
 	dodir /usr/share/doc/${PF}
 	cp -R {documentation,README.md} "${ED}"/usr/share/doc/${PF} || die
-	ln -s "../../share/doc/${PF}/documentation" "${ED}/usr/$(get_libdir)/${PN}${SLOT}/documentation"
+	ln -s "../../share/doc/${PF}/documentation" "${ED}/usr/lib/${PN}${SLOT}/documentation"
 
-	fperms +x /usr/$(get_libdir)/${PN}${SLOT}/msfupdate
+	fperms +x /usr/lib/${PN}${SLOT}/msfupdate
 
 	#tell revdep-rebuild to ignore binaries meant for the target
 	dodir /etc/revdep-rebuild
 	cat <<-EOF > "${ED}"/etc/revdep-rebuild/99-metasploit${SLOT}
 		#These dirs contain prebuilt binaries for running on the TARGET not the HOST
-		SEARCH_DIRS_MASK="/usr/lib*/${PN}${SLOT}/data/meterpreter"
-		SEARCH_DIRS_MASK="/usr/lib*/${PN}${SLOT}/data/exploits"
+		SEARCH_DIRS_MASK="/usr/lib/${PN}${SLOT}/data/meterpreter"
+		SEARCH_DIRS_MASK="/usr/lib/${PN}${SLOT}/data/exploits"
 	EOF
 }
 
