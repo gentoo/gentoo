@@ -5,7 +5,7 @@ EAPI=6
 inherit autotools eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="A network programming library in C++"
-HOMEPAGE="https://github.com/apenwarr/wvstreams/"
+HOMEPAGE="http://alumnit.ca/wiki/?WvStreams"
 SRC_URI="https://wvstreams.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
