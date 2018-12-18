@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,13 +15,13 @@ KEYWORDS="amd64 x86"
 IUSE="john"
 
 DEPEND="
-	dev-libs/openssl
+	dev-libs/openssl:*
 	net-libs/libpcap
 	sys-libs/zlib
 "
 
 RDEPEND="${DEPEND}
-	john? ( app-crypt/johntheripper )"
+john? ( || ( app-crypt/johntheripper app-crypt/johntheripper-jumbo ) )"
 
 S="${WORKDIR}/${MY_P}"
 
