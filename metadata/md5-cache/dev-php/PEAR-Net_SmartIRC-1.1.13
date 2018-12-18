@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=PHP class to communicate with IRC networks
+EAPI=6
+HOMEPAGE=https://pear.php.net/package/Net_SmartIRC
+IUSE=doc examples
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/Net_SmartIRC-1.1.13.tgz
+_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
+_md5_=cd8e65256288e1e03b0251007b034580
