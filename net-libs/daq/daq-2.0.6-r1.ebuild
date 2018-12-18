@@ -29,6 +29,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.6-parallel-grammar.patch #673390
+	"${FILESDIR}"/${PN}-2.0.6-static-libs.patch
 )
 
 src_prepare() {
@@ -42,15 +43,16 @@ src_configure() {
 	# cross-compiling doesn't break on us.
 	daq_cv_libpcap_version_1x=yes \
 	econf \
-		$(use_enable ipv6) \
-		$(use_enable pcap pcap-module) \
 		$(use_enable afpacket afpacket-module) \
 		$(use_enable dump dump-module) \
-		$(use_enable nfq nfq-module) \
 		$(use_enable ipq ipq-module) \
+		$(use_enable ipv6) \
+		$(use_enable nfq nfq-module) \
+		$(use_enable pcap pcap-module) \
 		$(use_enable static-libs static) \
+		--disable-bundled-modules \
 		--disable-ipfw-module \
-		--disable-bundled-modules
+		--enable-shared
 }
 
 DOCS=( ChangeLog README )
