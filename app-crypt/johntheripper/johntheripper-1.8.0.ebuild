@@ -20,7 +20,8 @@ CPU_FLAGS="cpu_flags_x86_mmx cpu_flags_x86_sse2 cpu_flags_x86_avx cpu_flags_x86_
 IUSE="custom-cflags openmp ${CPU_FLAGS}"
 
 RDEPEND="sys-libs/zlib"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	!app-crypt/johntheripper-jumbo"
 
 S="${WORKDIR}/${MY_P}"
 

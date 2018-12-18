@@ -26,7 +26,8 @@ REQUIRED_USE="openmp? ( !minimal )
 	cuda? ( !minimal )
 	opencl? ( !minimal )"
 
-RDEPEND="sys-libs/zlib
+RDEPEND="!app-crypt/johntheripper-jumbo
+	sys-libs/zlib
 	!minimal? ( >=dev-libs/openssl-0.9.7:0 )
 	mpi? ( virtual/mpi )
 	cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda-toolkit )
