@@ -30,18 +30,17 @@ LICENSE="LGPL-2.1"
 IUSE="
 	apparmor audit +caps +dbus firewalld fuse glusterfs iscsi +libvirtd lvm
 	libssh lxc +macvtap nfs nls numa openvz parted pcap phyp policykit
-	+qemu rbd sasl selinux +udev uml +vepa virtualbox virt-network
+	+qemu rbd sasl selinux +udev +vepa virtualbox virt-network
 	wireshark-plugins xen zeroconf zfs
 "
 
 REQUIRED_USE="
 	firewalld? ( virt-network )
-	libvirtd? ( || ( lxc openvz qemu uml virtualbox xen ) )
+	libvirtd? ( || ( lxc openvz qemu virtualbox xen ) )
 	lxc? ( caps libvirtd )
 	openvz? ( libvirtd )
 	policykit? ( dbus )
 	qemu? ( libvirtd )
-	uml? ( libvirtd )
 	vepa? ( macvtap )
 	virt-network? ( libvirtd )
 	virtualbox? ( libvirtd )
@@ -272,7 +271,6 @@ src_configure() {
 		$(use_with sasl)
 		$(use_with selinux)
 		$(use_with udev)
-		$(use_with uml)
 		$(use_with vepa virtualport)
 		$(use_with virt-network network)
 		$(use_with wireshark-plugins wireshark-dissector)
