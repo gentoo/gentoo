@@ -13,11 +13,10 @@ SRC_URI="https://github.com/vmware/open-vm-tools/releases/download/stable-${PV}/
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="X caf +deploypkg +dnet doc +fuse +grabbitmqproxy gtkmm +icu multimon pam +resolutionkms +ssl static-libs +vgauth"
+IUSE="X +deploypkg +dnet doc +fuse +grabbitmqproxy gtkmm +icu multimon pam +resolutionkms +ssl static-libs +vgauth"
 REQUIRED_USE="
 	multimon? ( X )
 	vgauth? ( ssl )
-	caf? ( vgauth ssl )
 	grabbitmqproxy? ( ssl )
 "
 
@@ -50,10 +49,6 @@ RDEPEND="
 	)
 	dnet? ( dev-libs/libdnet )
 	icu? ( dev-libs/icu:= )
-	caf? (
-		dev-libs/log4cpp
-		net-libs/rabbitmq-c
-	)
 	resolutionkms? (
 		x11-libs/libdrm[video_cards_vmware]
 		virtual/libudev
@@ -105,7 +100,7 @@ src_configure() {
 		$(use_enable grabbitmqproxy)
 		$(use_with pam)
 		$(use_enable vgauth)
-		$(use_enable caf)
+		--disable-caf
 		$(use_with dnet)
 		$(use_with icu)
 	)
