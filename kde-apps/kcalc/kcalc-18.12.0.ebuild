@@ -31,3 +31,5 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 "
+
+RESTRICT+=" test" # bug #673136
