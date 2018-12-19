@@ -5,4 +5,8 @@
     <email>gokturk@gentoo.org</email>
     <name>Göktürk Yüksek</name>
   </maintainer>
+  <maintainer type="person">
+    <email>zerochaos@gentoo.org</email>
+    <name>Rick Farina</name>
+  </maintainer>
 </pkgmetadata>
