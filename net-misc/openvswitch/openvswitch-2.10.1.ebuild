@@ -102,7 +102,7 @@ src_install() {
 	rm -rf "${ED%/}"/var/run || die
 
 	newconfd "${FILESDIR}/ovsdb-server_conf2" ovsdb-server
-	newconfd "${FILESDIR}/ovs-vswitchd.conf-r2" ovs-vswitchd
+	newconfd "${FILESDIR}/ovs-vswitchd.confd-r2" ovs-vswitchd
 	newinitd "${FILESDIR}/ovsdb-server-r1" ovsdb-server
 	newinitd "${FILESDIR}/ovs-vswitchd-r1" ovs-vswitchd
 
