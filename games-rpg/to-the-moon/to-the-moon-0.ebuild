@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: unbundling sdl-sound breaks the game
@@ -40,9 +40,9 @@ S=${WORKDIR}/data
 
 pkg_nofetch() {
 	einfo
-	einfo "Please buy & download \"${SRC_URI}\" from:"
+	einfo "Please buy & download ${SRC_URI} from:"
 	einfo "  ${HOMEPAGE}"
-	einfo "and move/link it to \"${DISTDIR}\""
+	einfo "and move/link it to your DISTDIR directory."
 	einfo
 }
 
