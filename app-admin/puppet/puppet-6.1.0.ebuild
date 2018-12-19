@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_TASK_DOC="doc:all"
 
 RUBY_FAKEGEM_EXTRAINSTALL="locales"
 
-inherit eutils user ruby-fakegem versionator
+inherit eutils user ruby-fakegem eapi7-ver
 
 DESCRIPTION="A system automation and configuration management software."
 HOMEPAGE="http://puppetlabs.com/"
@@ -19,13 +19,14 @@ SRC_URI="http://downloads.puppetlabs.com/puppet/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="augeas diff doc emacs ldap rrdtool selinux shadow sqlite vim-syntax"
 RESTRICT="test"
 
 ruby_add_rdepend "
 	dev-ruby/hiera
 	dev-ruby/json:=
+	dev-ruby/semantic_puppet
 	>=dev-ruby/facter-3.0.0
 	augeas? ( dev-ruby/ruby-augeas )
 	diff? ( dev-ruby/diff-lcs )
@@ -66,7 +67,7 @@ all_ruby_prepare() {
 	rm spec/lib/matchers/json.rb $( grep -Rl matchers/json spec) || die
 
 	# can't be run within portage.
-	epatch "${FILESDIR}/puppet-fix-tests-4.7.0.patch"
+	epatch "${FILESDIR}/puppet-fix-tests-6.0.0.patch"
 
 	# fix systemd path
 	epatch "${FILESDIR}/puppet-systemd.patch"
@@ -97,8 +98,6 @@ all_ruby_install() {
 
 	# openrc init stuff
 	newinitd "${FILESDIR}"/puppet.init-4.x puppet
-	newinitd "${FILESDIR}"/puppetmaster.init-4.x puppetmaster
-	newconfd "${FILESDIR}"/puppetmaster.confd puppetmaster
 
 	keepdir /etc/puppetlabs/puppet/ssl
 
@@ -132,13 +131,8 @@ pkg_postinst() {
 	elog "Portage Puppet module with Gentoo-specific resources:"
 	elog "http://forge.puppetlabs.com/gentoo/portage"
 	elog
-
-	for v in ${REPLACING_VERSIONS}; do
-		if [ "$(get_major_version $v)" = "4" ]; then
-			elog
-			elog "Please see the following url for the release notes for puppet-5"
-			elog "https://docs.puppet.com/puppet/5.0/release_notes.html#if-youre-upgrading-from-puppet-4x"
-			elog
-		fi
-	done
+	elog "If updating from puppet 5 to 6, keep in mind that webrick (server/master)"
+	elog "suppert was removed for >=6.x, please migrate to puppetserver if you have"
+	elog "not already done so."
+	elog
 }
