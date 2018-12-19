@@ -25,6 +25,7 @@ DEPEND="
 	dev-qt/qtdeclarative:5
 	dev-qt/qtsvg:5
 	dev-qt/qtquickcontrols2:5[widgets]
+	dev-qt/qtquickcontrols:5
 	dev-qt/qtwidgets:5"
 RDEPEND="${DEPEND}"
 
