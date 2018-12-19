@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit autotools eutils linux-info linux-mod python-r1 systemd versionator
+inherit autotools eutils linux-info linux-mod python-r1 systemd
 
 DESCRIPTION="Production quality, multilayer virtual switch"
 HOMEPAGE="https://www.openvswitch.org"
@@ -13,14 +13,14 @@ SRC_URI="https://www.openvswitch.org/releases/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="debug modules monitor +ssl"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	ssl? ( dev-libs/openssl:0= )
 	${PYTHON_DEPS}
-	~dev-python/ovs-2.9.2[${PYTHON_USEDEP}]
+	~dev-python/ovs-2.10.0[${PYTHON_USEDEP}]
 	|| (
 		dev-python/twisted[conch,${PYTHON_USEDEP}]
 		dev-python/twisted-web[${PYTHON_USEDEP}]
@@ -102,12 +102,12 @@ src_install() {
 	rm -rf "${ED%/}"/var/run || die
 
 	newconfd "${FILESDIR}/ovsdb-server_conf2" ovsdb-server
-	newconfd "${FILESDIR}/ovs-vswitchd_conf" ovs-vswitchd
+	newconfd "${FILESDIR}/ovs-vswitchd.conf-r2" ovs-vswitchd
 	newinitd "${FILESDIR}/ovsdb-server-r1" ovsdb-server
 	newinitd "${FILESDIR}/ovs-vswitchd-r1" ovs-vswitchd
 
-	systemd_newunit "${FILESDIR}/ovsdb-server-r2.service" ovsdb-server.service
-	systemd_newunit "${FILESDIR}/ovs-vswitchd-r2.service" ovs-vswitchd.service
+	systemd_newunit "${FILESDIR}/ovsdb-server-r3.service" ovsdb-server.service
+	systemd_newunit "${FILESDIR}/ovs-vswitchd-r3.service" ovs-vswitchd.service
 	systemd_newunit rhel/usr_lib_systemd_system_ovs-delete-transient-ports.service ovs-delete-transient-ports.service
 	systemd_newtmpfilesd "${FILESDIR}/openvswitch.tmpfiles" openvswitch.conf
 
@@ -119,18 +119,6 @@ src_install() {
 
 pkg_postinst() {
 	use modules && linux-mod_pkg_postinst
-
-	local pv
-	for pv in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least 1.9.0 ${pv} ; then
-			ewarn "The configuration database for Open vSwitch got moved in version 1.9.0 from"
-			ewarn "    /etc/openvswitch"
-			ewarn "to"
-			ewarn "    /var/lib/openvswitch"
-			ewarn "Please copy/move the database manually before running the schema upgrade."
-			ewarn "The PKI files are now supposed to go to /etc/ssl/openvswitch"
-		fi
-	done
 
 	# only needed on non-systemd, but helps anyway
 	elog "Use the following command to create an initial database for ovsdb-server:"
