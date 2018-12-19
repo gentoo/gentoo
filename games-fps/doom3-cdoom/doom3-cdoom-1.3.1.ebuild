@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,7 +21,7 @@ RESTRICT="fetch bindist"
 pkg_nofetch() {
 	elog "Please download ${SRC_URI} from:"
 	elog "http://www.filefront.com/8748743"
-	elog "and move it to ${DISTDIR}"
+	elog "and move it to your DISTDIR directory."
 }
 
 src_prepare() {
