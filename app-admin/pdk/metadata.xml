@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<longdescription lang="en">
+		PDK includes testing tools, a complete module skeleton, and command line
+		tools to help you create, validate, and run tests on Puppet modules. PDK
+		also includes all dependencies needed for its use.
+	</longdescription>
+</pkgmetadata>
