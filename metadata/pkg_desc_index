@@ -119,7 +119,7 @@ app-admin/radmind 1.14.1-r1: command-line tools and server to remotely administe
 app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.14.1: Tool to manage OpenRC services that need to be restarted
-app-admin/rsyslog 8.38.0-r2: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.38.0-r2 8.40.0-r1: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617: Rules for Sagan log analyzer
 app-admin/setools 4.1.1: Policy Analysis Tools for SELinux
@@ -3076,7 +3076,7 @@ dev-libs/libedit 20130712.3.1: BSD replacement for libreadline
 dev-libs/libee 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.1.1 1.5.0 1.6.0: Erasure Code API library written in C with pluggable Erasure Code backends.
-dev-libs/libestr 0.1.10: Library for some string essentials
+dev-libs/libestr 0.1.10 0.1.11: Library for some string essentials
 dev-libs/libev 4.23: A high-performance event loop/event model with lots of feature
 dev-libs/libevdev 1.5.9-r1: Handler library for evdev events
 dev-libs/libevent 2.1.8: Library to execute a function when a specific event occurs on a file descriptor
@@ -3114,7 +3114,7 @@ dev-libs/libksba 1.3.5-r1: X.509 and CMS (PKCS#7) library
 dev-libs/liblinear 210-r1: A Library for Large Linear Classification
 dev-libs/liblist 2.4: Generic linked-list manipulation routines, plus queues and stacks
 dev-libs/liblogging 1.0.5 1.0.6: Liblogging is an easy to use, portable, open source library for system logging
-dev-libs/liblognorm 2.0.5: Fast samples-based log normalization library
+dev-libs/liblognorm 2.0.5 2.0.6: Fast samples-based log normalization library
 dev-libs/liblouis 2.5.3: An open-source braille translator and back-translator
 dev-libs/libltdl 1.3.5 1.5.26 2.4.6: A shared library tool for developers
 dev-libs/liblzw 0.2: small C library for reading LZW compressed files (.Z)
@@ -3154,8 +3154,8 @@ dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /pr
 dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.4.0: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 3.2.0: A Qt implementation of XDG standards
-dev-libs/librdkafka 0.11.5: Apache Kafka C/C++ client library
-dev-libs/librelp 1.2.18: An easy to use library for the RELP protocol
+dev-libs/librdkafka 0.11.5 0.11.6: Apache Kafka C/C++ client library
+dev-libs/librelp 1.2.18 1.3.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1 2.9.5: Generic library for reporting software bugs
 dev-libs/libressl 2.6.5: Free version of the SSL/TLS protocol forked from OpenSSL
