@@ -573,12 +573,15 @@ src_install() {
 		doexe "${BUILD_DIR}/extra/my_print_defaults" "${BUILD_DIR}/extra/perror"
 	fi
 
-	#Remove mytop if perl is not selected
-	[[ -e "${ED}/usr/bin/mytop" ]] && ! use perl && rm -f "${ED}/usr/bin/mytop"
+	# Remove mytop if perl is not selected
+	if [[ -e "${ED}/usr/bin/mytop" ]] && ! use perl ; then
+		rm -f "${ED}/usr/bin/mytop" || die
+	fi
 
 	# Fix a dangling symlink when galera is not built
-	[[ -L "${ED}/usr/bin/wsrep_sst_rsync_wan" ]] && ! use galera \
-		&& rm "${ED}/usr/bin/wsrep_sst_rsync_wan" || die
+	if [[ -L "${ED}/usr/bin/wsrep_sst_rsync_wan" ]] && ! use galera ; then
+		rm "${ED}/usr/bin/wsrep_sst_rsync_wan" || die
+	fi
 }
 
 # Official test instructions:
