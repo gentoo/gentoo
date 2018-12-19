@@ -23,7 +23,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.23.2:=
+	>=dev-libs/libuv-1.24.0:=
 	>=net-dns/c-ares-1.15.0
 	>=net-libs/http-parser-2.8.0:=
 	>=net-libs/nghttp2-1.34.0
@@ -40,6 +40,8 @@ DEPEND="
 S="${WORKDIR}/node-v${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
+	"${FILESDIR}"/${PN}-11.4.0-stdarg_h.patch
+	"${FILESDIR}"/${PN}-99999999-llhttp.patch
 )
 
 pkg_pretend() {
