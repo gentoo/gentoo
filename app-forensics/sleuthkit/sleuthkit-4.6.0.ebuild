@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -159,10 +159,8 @@ src_configure() {
 		$(use_with zlib)
 	)
 
-	if use ewf; then
-		tsk_compile_libewf
-		myeconfargs+=( $(use_with ewf libewf "${T}"/image) )
-	fi
+	use ewf && tsk_compile_libewf
+	myeconfargs+=( $(use_with ewf libewf "${T}"/image) )
 
 	if use java; then
 		pushd "${S}"/bindings/java &>/dev/null || die
