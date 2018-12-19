@@ -6,8 +6,8 @@ EAPI="6"
 inherit autotools
 
 DESCRIPTION="Command-line WebDAV client"
-HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+HOMEPAGE="http://webdav.org/cadaver/"
+SRC_URI="http://webdav.org/cadaver/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
