@@ -21,7 +21,7 @@ IUSE="+cxx doc multitarget +nls static-libs test"
 #                      for the patchsets
 #                      Default: slyfox
 
-PATCH_VER=
+PATCH_VER=5
 PATCH_DEV=dilfridge
 
 case ${PV} in
