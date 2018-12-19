@@ -5935,7 +5935,7 @@ dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML 
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/ox 2.8.2 2.9.4: A fast XML parser and Object marshaller
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
-dev-ruby/patron 0.10.0: Patron is a Ruby HTTP client library based on libcurl
+dev-ruby/patron 0.10.0 0.13.1: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pg 0.21.0: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pkg-config 1.2.8: A pkg-config implementation by Ruby
 dev-ruby/power_assert 1.1.1: Shows each value of variables and method calls in the expression
