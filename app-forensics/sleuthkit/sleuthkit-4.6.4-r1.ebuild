@@ -185,10 +185,8 @@ src_configure() {
 		--without-libvmdk
 	)
 
-	if use ewf; then
-		tsk_compile_libewf
-		myeconfargs+=( $(use_with ewf libewf "${T}"/image) )
-	fi
+	use ewf && tsk_compile_libewf
+	myeconfargs+=( $(use_with ewf libewf "${T}"/image) )
 
 	if use java; then
 		pushd "${S}"/bindings/java &>/dev/null || die
