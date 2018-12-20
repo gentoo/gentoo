@@ -154,25 +154,6 @@ net-misc/netctl
 # Requires >=dev-libs/openssl-1.1.0
 dev-libs/gost-engine
 
-# Michał Górny <mgorny@gentoo.org> (06 Nov 2018)
-# LLVM 7.0.1 prereleases, masked for testing.
-=dev-ml/llvm-ocaml-7.0.1_rc*
-=dev-python/clang-python-7.0.1_rc*
-=dev-python/lit-7.0.1_rc*
-=dev-util/lldb-7.0.1_rc*
-=sys-devel/clang-7.0.1_rc*
-=sys-devel/clang-common-7.0.1_rc*
-=sys-devel/clang-runtime-7.0.1_rc*
-=sys-devel/lld-7.0.1_rc*
-=sys-devel/llvm-7.0.1_rc*
-=sys-devel/llvm-common-7.0.1_rc*
-=sys-libs/compiler-rt-7.0.1_rc*
-=sys-libs/compiler-rt-sanitizers-7.0.1_rc*
-=sys-libs/libcxx-7.0.1_rc*
-=sys-libs/libcxxabi-7.0.1_rc*
-=sys-libs/libomp-7.0.1_rc*
-=sys-libs/llvm-libunwind-7.0.1_rc*
-
 # Brian Evans <grknight@gentoo.org> (05 Nov 2018)
 # Causes a dependency loop in the OpenRC script. Bug #651998
 =sys-fs/cryptsetup-2.0.5-r1

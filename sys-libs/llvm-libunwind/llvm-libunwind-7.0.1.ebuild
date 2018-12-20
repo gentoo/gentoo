@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,14 +15,14 @@ LIBCXXABI_P=libcxxabi-${PV/_/}.src
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
-SRC_URI="https://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
 	test? (
-		https://prereleases.llvm.org/${PV/_//}/${LIBCXX_P}.tar.xz
-		https://prereleases.llvm.org/${PV/_//}/${LIBCXXABI_P}.tar.xz )"
+		https://releases.llvm.org/${PV/_//}/${LIBCXX_P}.tar.xz
+		https://releases.llvm.org/${PV/_//}/${LIBCXXABI_P}.tar.xz )"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-fbsd"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-fbsd"
 IUSE="debug +static-libs test"
 RESTRICT="!test? ( test )"
 
