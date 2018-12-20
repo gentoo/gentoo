@@ -22,8 +22,10 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtserialport:5
+	dev-qt/qtsql:5
 	dev-qt/qtprintsupport:5
 	virtual/libusb:1
+	media-libs/hamlib
 	media-libs/portaudio
 	sci-libs/fftw:3.0[threads,fortran]
 	virtual/fortran
@@ -31,7 +33,12 @@ RDEPEND="dev-qt/qtcore:5
 	doc? ( dev-ruby/asciidoctor )"
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${MY_P}
+S=${WORKDIR}/wsjtx
+
+src_unpack() {
+	unpack ${A}
+	unpack "${WORKDIR}/${MY_P}/src/wsjtx.tgz"
+}
 
 src_configure() {
 	local mycmakeargs=(
