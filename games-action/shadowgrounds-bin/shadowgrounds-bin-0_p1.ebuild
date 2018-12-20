@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -36,7 +36,7 @@ QA_TEXTRELS_x86="`echo ${d#/}/lib32/lib{avcodec.so.51,avformat.so.52,avutil.so.4
 QA_TEXTRELS_amd64=${QA_TEXTRELS_x86}
 
 pkg_nofetch() {
-	einfo "Fetch ${SRC_URI} and put it into ${DISTDIR}"
+	einfo "Fetch ${SRC_URI} and put it into your DISTDIR directory."
 	einfo "See http://www.humblebundle.com/ for more info."
 }
 
