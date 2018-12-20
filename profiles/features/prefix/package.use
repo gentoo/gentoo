@@ -1,0 +1,2 @@
+# Don't enable the security measures for convienence
+sys-apps/portage -rsync-verify
