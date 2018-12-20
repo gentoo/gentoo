@@ -1,0 +1,24 @@
+diff --git a/src/docks/recentdock.cpp b/src/docks/recentdock.cpp
+index e4a629f..cb2752c 100644
+--- a/src/docks/recentdock.cpp
++++ b/src/docks/recentdock.cpp
+@@ -24,6 +24,7 @@
+ #include <QDir>
+ #include <QKeyEvent>
+ #include <Logger.h>
++#include <QAction>
+ 
+ static const int MaxItems = 100;
+ 
+diff --git a/src/docks/timelinedock.cpp b/src/docks/timelinedock.cpp
+index dbd986a..a705ca8 100644
+--- a/src/docks/timelinedock.cpp
++++ b/src/docks/timelinedock.cpp
+@@ -31,6 +31,7 @@
+ #include <QtQml>
+ #include <QtQuick>
+ #include <Logger.h>
++#include <QAction>
+ 
+ 
+ TimelineDock::TimelineDock(QWidget *parent) :
