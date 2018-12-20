@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -57,7 +57,7 @@ detect_language() {
 
 pkg_nofetch() {
 	einfo "Please download ${A} from your GOG.com account after buying Arx Fatalis"
-	einfo "and put it into ${DISTDIR}."
+	einfo "and put it into your DISTDIR directory."
 }
 
 src_unpack() {
