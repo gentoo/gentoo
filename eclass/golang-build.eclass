@@ -55,6 +55,7 @@ golang-build_src_compile() {
 
 	ego_pn_check
 	set -- env GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
+		GOCACHE="${T}/go-cache" \
 		go build -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}"
 	echo "$@"
 	"$@" || die
