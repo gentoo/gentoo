@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -21,7 +21,7 @@ S=${WORKDIR}/${A/.zip/}
 
 pkg_nofetch() {
 	einfo "Please download java3d-${PV//./_}-linux-${ARCH/x86/i586}.zip from"
-	einfo "${HOMEPAGE} and place it in ${DISTDIR}"
+	einfo "${HOMEPAGE} and place it into your DISTDIR directory."
 }
 
 src_unpack() {
