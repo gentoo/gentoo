@@ -9,7 +9,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://pagure.io/numad.git"
 	inherit git-r3
 else
-	EGIT_COMMIT=""
+	EGIT_COMMIT="334278ff3d774d105939743436d7378a189e8693"
 	SRC_URI="mirror://gentoo/numad-0.5-${EGIT_COMMIT:0:7}.tar.bz2"
 	KEYWORDS="~amd64 -arm ~arm64 -s390 ~x86"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT:0:7}"
@@ -23,6 +23,11 @@ SLOT="0"
 IUSE=""
 
 CONFIG_CHECK="~NUMA ~CPUSETS"
+
+PATCHES=(
+	"${FILESDIR}/0001-Fix-man-page-directory-creation.patch"
+	"${FILESDIR}/${PN}-0.5-ldlibs.patch"
+)
 
 src_prepare() {
 	default
