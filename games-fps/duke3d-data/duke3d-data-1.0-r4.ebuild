@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ S=${WORKDIR}
 
 pkg_nofetch() {
 	einfo "Please download ${GOG_FILE} from your GOG.com account after buying Duke Nukem 3d"
-	einfo "and put it into ${DISTDIR}."
+	einfo "and put it into your DISTDIR directory."
 }
 
 src_unpack() {
