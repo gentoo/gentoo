@@ -123,7 +123,7 @@ ruby_add_bdepend "${RUBY_COMMON_DEPEND}
 ruby_add_rdepend "${RUBY_COMMON_DEPEND}"
 
 COMMON_DEPEND="dev-db/postgresql[server]
-	|| ( >=app-crypt/johntheripper-1.7.9-r1[-minimal] app-crypt/johntheripper-jumbo )
+	|| ( app-crypt/johntheripper-jumbo >=app-crypt/johntheripper-1.7.9-r1[-minimal] )
 	net-analyzer/nmap"
 RDEPEND+=" ${COMMON_DEPEND}
 	>=app-eselect/eselect-metasploit-0.16"
