@@ -96,7 +96,7 @@ src_install() {
 	dosbin run/john
 	newsbin run/mailer john-mailer
 
-	pax-mark -mr "${ED}usr/sbin/john"
+	pax-mark -mr "${ED}/usr/sbin/john"
 
 	# grep '$(LN)' Makefile.in | head -n-3 | tail -n+2 | cut -d' ' -f3 | cut -d/ -f3
 	for s in \
@@ -111,15 +111,14 @@ src_install() {
 	doins run/*.py
 
 	if use opencl; then
-		insinto /usr/share/john/kernels
-		doins run/kernels/*
+		insinto /etc/john
+		doins -r run/kernels
 	fi
 
 	# config files
 	insinto /etc/john
 	doins run/*.chr run/password.lst
 	doins run/*.conf
-	doins -r run/kernels
 
 	# documentation
 	dodoc doc/*
