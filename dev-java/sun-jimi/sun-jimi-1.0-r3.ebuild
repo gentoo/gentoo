@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,8 @@ S=${WORKDIR}/Jimi
 
 pkg_nofetch() {
 	local download_url="http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-java-client-419417.html#7259-jimi_sdk-1.0-oth-JPR"
-	einfo "Please download ${A} from the following url and place it in ${DISTDIR}"
+	einfo "Please download ${A} from the following url and place it into your"
+	einfo "DISTDIR directory:"
 	einfo "${download_url} "
 }
 
