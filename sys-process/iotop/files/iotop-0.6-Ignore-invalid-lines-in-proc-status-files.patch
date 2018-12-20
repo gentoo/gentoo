@@ -1,0 +1,64 @@
+From 0392b205b5c3973a326721c2e9f97f0fa2eefa82 Mon Sep 17 00:00:00 2001
+From: Paul Wise <pabs3@bonedaddy.net>
+Date: Fri, 25 May 2018 15:13:26 +0800
+Subject: [PATCH 1/2] Ignore invalid lines in /proc/*/status files
+
+One Ubuntu Linux kernel security fix introduced a blank line.
+Some other Linux kernels may have invalid lines in the future.
+
+See-also: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1772671
+Fixes: https://bugs.launchpad.net/ubuntu/+source/iotop/+bug/1772856
+Reported-by: Paul Jaros <jaros.paul@gmail.com>
+Reported-in: <CAEh_nc0_DXTmfu16PxmVyrCi6QQeSrpnGGhtfNu60wJYfa_6Zw@mail.gmail.com>
+Traceback (most recent call last):
+  File "/usr/sbin/iotop", line 17, in <module>
+    main()
+  File "/usr/lib/python2.7/dist-packages/iotop/ui.py", line 620, in main
+    main_loop()
+  File "/usr/lib/python2.7/dist-packages/iotop/ui.py", line 610, in <lambda>
+    main_loop = lambda: run_iotop(options)
+  File "/usr/lib/python2.7/dist-packages/iotop/ui.py", line 508, in run_iotop
+    return curses.wrapper(run_iotop_window, options)
+  File "/usr/lib/python2.7/curses/wrapper.py", line 43, in wrapper
+    return func(stdscr, *args, **kwds)
+  File "/usr/lib/python2.7/dist-packages/iotop/ui.py", line 501, in run_iotop_window
+    ui.run()
+  File "/usr/lib/python2.7/dist-packages/iotop/ui.py", line 155, in run
+    self.process_list.duration)
+  File "/usr/lib/python2.7/dist-packages/iotop/ui.py", line 434, in refresh_display
+    lines = self.get_data()
+  File "/usr/lib/python2.7/dist-packages/iotop/ui.py", line 415, in get_data
+    return list(map(format, processes))
+  File "/usr/lib/python2.7/dist-packages/iotop/ui.py", line 388, in format
+    cmdline = p.get_cmdline()
+  File "/usr/lib/python2.7/dist-packages/iotop/data.py", line 292, in get_cmdline
+    proc_status = parse_proc_pid_status(self.pid)
+  File "/usr/lib/python2.7/dist-packages/iotop/data.py", line 196, in parse_proc_pid_status
+    key, value = line.split(':\t', 1)
+ValueError: need more than 1 value to unpack
+---
+ iotop/data.py | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/iotop/data.py b/iotop/data.py
+index 115bb8f..e0387f0 100644
+--- a/iotop/data.py
++++ b/iotop/data.py
+@@ -208,7 +208,13 @@ def parse_proc_pid_status(pid):
+     result_dict = {}
+     try:
+         for line in open('/proc/%d/status' % pid):
+-            key, value = line.split(':', 1)
++            try:
++                key, value = line.split(':', 1)
++            except ValueError:
++                # Ignore lines that are not formatted correctly as
++                # some downstream kernels may have weird lines and
++                # the needed fields are probably formatted correctly.
++                pass
+             result_dict[key] = value.strip()
+     except IOError:
+         pass  # No such process
+-- 
+2.20.1.97.g81188d93c3-goog
+

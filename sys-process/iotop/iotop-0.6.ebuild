@@ -21,7 +21,12 @@ CONFIG_CHECK="~TASK_IO_ACCOUNTING ~TASK_DELAY_ACCT ~TASKSTATS ~VM_EVENT_COUNTERS
 
 DOCS=( NEWS README THANKS ChangeLog )
 
-PATCHES=( "${FILESDIR}"/${P}-setup.py3.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-setup.py3.patch
+	"${FILESDIR}"/${P}-Only-split-proc-status-lines-on-the-character.patch
+	"${FILESDIR}"/${P}-Ignore-invalid-lines-in-proc-status-files.patch
+	"${FILESDIR}"/${P}-Actually-skip-invalid-lines-in-proc-status.patch
+)
 
 pkg_setup() {
 	linux-info_pkg_setup
