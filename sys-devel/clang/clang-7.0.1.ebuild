@@ -18,10 +18,10 @@ LLVM_P=llvm-${PV/_/}.src
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz
-	https://prereleases.llvm.org/${PV/_//}/${EXTRA_P}.tar.xz
-	test? ( https://prereleases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )"
-#	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2 )"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
+	https://releases.llvm.org/${PV/_//}/${EXTRA_P}.tar.xz
+	test? ( https://releases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )
+	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2 )"
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -108,7 +108,7 @@ src_unpack() {
 		mv "${LLVM_P}" "${WORKDIR}"/llvm || die
 	fi
 
-	if false && ! use doc; then
+	if ! use doc; then
 		einfo "Unpacking llvm-${PV}-manpages.tar.bz2 ..."
 		tar -xf "${DISTDIR}/llvm-${PV}-manpages.tar.bz2" || die
 	fi
@@ -287,7 +287,7 @@ multilib_src_install_all() {
 	fi
 
 	# install pre-generated manpages
-	if false && ! use doc; then
+	if ! use doc; then
 		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
 		doins "${WORKDIR}/x/y/llvm-${PV}-manpages/clang"/*.1
 	fi
