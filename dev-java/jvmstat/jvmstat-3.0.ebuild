@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -28,8 +28,8 @@ pkg_nofetch() {
 
 	einfo "Please go to following URL:"
 	einfo " ${HOMEPAGE}"
-	einfo "download file named ${SRC_URI} and place it in:"
-	einfo " ${DISTDIR}"
+	einfo "download file named ${SRC_URI} and place it into"
+	einfo " your DISTDIR directory."
 
 }
 
