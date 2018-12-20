@@ -74,39 +74,58 @@ multilib_src_test() {
 		popd > /dev/null || die
 		return 0
 	else
+		local FAILEDTEST_LOG="${BUILD_DIR}/Testing/Temporary/LastTestsFailed.log"
+
+		if [[ ! -f "${FAILEDTEST_LOG}" ]] ; then
+			# Should never happen
+			die "Cannot analyze test failures: LastTestsFailed.log is missing!"
+		fi
+
 		echo ""
 		einfo "Note: Upstream is maintaining a list of known test failures."
 		einfo "We will now compare our test results against this list and sort out any known failure."
 
-		local KNOWN_FAILURES_LIST="${S}/tools/travis-ci/knownfailures-all.txt"
-		local FAILEDTEST_LOG="${BUILD_DIR}/Testing/Temporary/LastTestsFailed.log"
-		local FAILURES_LOG="${BUILD_DIR}/Testing/Temporary/failures.txt"
+		local KNOWN_FAILURES_LIST="${T}/known_failures_compiled.txt"
+		cat "${S}/tools/travis-ci/knownfailures-all.txt" > "${KNOWN_FAILURES_LIST}" || die
+
+		local ARCH_SPECIFIC_FAILURES=
+		if use amd64 ; then
+			ARCH_SPECIFIC_FAILURES="$(find "${S}/tools/travis-ci/" -name 'knownfailures-*x86_64*.txt' -print0 | sort -z | tail -z -n 1 | tr -d '\0')"
+		elif use x86 || use arm || use arm64; then
+			ARCH_SPECIFIC_FAILURES="$(find "${S}/tools/travis-ci/" -name 'knownfailures-*i386*.txt' -print0 | sort -z | tail -z -n 1 | tr -d '\0')"
+		fi
+
+		if [[ -f "${ARCH_SPECIFIC_FAILURES}" ]] ; then
+			einfo "Adding architecture specific failures (${ARCH_SPECIFIC_FAILURES}) to known failures list ..."
+			cat "${ARCH_SPECIFIC_FAILURES}" >> "${KNOWN_FAILURES_LIST}" || die
+		fi
+
+		# Logic copied from $S/tools/travis-ci/run.sh
 		local FAILEDTEST=
+		local FAILURES_LOG="${BUILD_DIR}/Testing/Temporary/failures.txt"
 		local HAS_UNKNOWN_TEST_FAILURES=0
-		if [[ -f "${KNOWN_FAILURES_LIST}" && -f "${FAILEDTEST_LOG}" ]]; then
-			# Logic copied from $S/tools/travis-ci/run.sh
 
-			echo ""
+		echo ""
 
-			awk -F: '{ print $2 }' "${FAILEDTEST_LOG}" > "${FAILURES_LOG}"
-			while read FAILEDTEST; do
-				# Common errors
-				if grep -x "${FAILEDTEST}" "${S}/tools/travis-ci/knownfailures-all.txt" > /dev/null; then
-					ewarn "Test '${FAILEDTEST}' is known to fail, ignoring ..."
-					continue
-				fi
-				eerror "New/unknown test failure found: '${FAILEDTEST}'"
-				HAS_UNKNOWN_TEST_FAILURES=1
-			done < "${FAILURES_LOG}"
-
-			if [[ ${HAS_UNKNOWN_TEST_FAILURES} -ne 0 ]]; then
-				die "Test suite failed. New/unknown test failure(s) found!"
-			else
-				echo ""
-				einfo "Test suite passed. No new/unknown test failure(s) found!"
+		awk -F: '{ print $2 }' "${FAILEDTEST_LOG}" > "${FAILURES_LOG}"
+		while read FAILEDTEST; do
+			# is this failure known?
+			if grep -x "${FAILEDTEST}" "${KNOWN_FAILURES_LIST}" > /dev/null; then
+				ewarn "Test '${FAILEDTEST}' is known to fail, ignoring ..."
+				continue
 			fi
 
-			return 0
+			eerror "New/unknown test failure found: '${FAILEDTEST}'"
+			HAS_UNKNOWN_TEST_FAILURES=1
+		done < "${FAILURES_LOG}"
+
+		if [[ ${HAS_UNKNOWN_TEST_FAILURES} -ne 0 ]]; then
+			die "Test suite failed. New/unknown test failure(s) found!"
+		else
+			echo ""
+			einfo "Test suite passed. No new/unknown test failure(s) found!"
 		fi
+
+		return 0
 	fi
 }
