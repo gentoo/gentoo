@@ -6,6 +6,10 @@
 
 # This file contains a list of useflags that cannot be used on sparc.
 
+# Sergei Trofimovich <slyfox@gentoo.org> (12 Dec 2018)
+# mongodb is not keyworded on sparc
+mongodb
+
 # Andreas Sturmlechner <asturm@gentoo.org> (06 Dec 2018)
 # dev-qt/qtdeclarative-5.11.x is broken and blocks re-keywording of Qt5.
 qml
