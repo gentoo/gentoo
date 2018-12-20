@@ -187,7 +187,7 @@ app-emulation/libvirt openvz
 # Michał Górny <mgorny@gentoo.org> (30 Jul 2017)
 # The Z3 backend is unstable and causes assertion failures. Mask it
 # until upstream fixes it properly.
-sys-devel/clang z3
+<sys-devel/clang-8 z3
 
 # Mike Gilbert <floppym@gentoo.org> (09 Jul 2017)
 # Matthias Dahl <matthias.dahl@binary-island.eu> (05 Jul 2017)
