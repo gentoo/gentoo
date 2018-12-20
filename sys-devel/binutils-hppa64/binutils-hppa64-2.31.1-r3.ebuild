@@ -38,8 +38,7 @@ case ${PV} in
 		;;
 esac
 SLOT=$(get_version_component_range 1-2)
-#KEYWORDS="-* ~hppa"
-KEYWORDS=""
+KEYWORDS="-* ~hppa"
 
 #
 # The Gentoo patchset
