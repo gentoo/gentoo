@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,7 @@ S="${WORKDIR}/data/noarch"
 pkg_nofetch() {
 	einfo "Please buy and download \"${SRC_URI}\" from"
 	einfo "https://www.gog.com/game/baldurs_gate_enhanced_edition"
-	einfo "and copy it to \"${DISTDIR}\""
+	einfo "and copy it into your DISTDIR directory."
 }
 
 src_unpack() {
