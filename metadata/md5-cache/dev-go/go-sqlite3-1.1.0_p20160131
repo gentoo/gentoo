@@ -7,5 +7,5 @@ KEYWORDS=~amd64
 LICENSE=MIT
 SLOT=0/1.1.0_p20160131
 SRC_URI=https://github.com/mattn/go-sqlite3/archive/c5aee9649735e8dadac55eb968ccebd9fa29a881.tar.gz -> go-sqlite3-1.1.0_p20160131.tar.gz
-_eclasses_=golang-base	e764075c9bbce927b424f8e9b7a25dfe	golang-build	1b46197451ce01766db03a9955597d7b	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
+_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	42942532e7429ed9b2efaabf93dc0615	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
 _md5_=9245b4ac3991f52a03f8693e327fbedb

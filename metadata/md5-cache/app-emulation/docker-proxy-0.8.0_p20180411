@@ -9,5 +9,5 @@ RDEPEND=!<app-emulation/docker-1.13.0_rc1
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/docker/libnetwork/archive/c15b372ef22125880d378167dde44f4b134e1a77.tar.gz -> docker-proxy-0.8.0_p20180411.tar.gz
-_eclasses_=golang-base	e764075c9bbce927b424f8e9b7a25dfe	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
+_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
 _md5_=4e5c1b68751567fc06a85744abdfe992

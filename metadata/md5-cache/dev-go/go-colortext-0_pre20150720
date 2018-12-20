@@ -7,5 +7,5 @@ KEYWORDS=~amd64
 LICENSE=BSD
 SLOT=0
 SRC_URI=https://github.com/daviddengcn/go-colortext/archive/3b18c85.tar.gz -> go-colortext-0_pre20150720.tar.gz
-_eclasses_=golang-base	e764075c9bbce927b424f8e9b7a25dfe	golang-build	1b46197451ce01766db03a9955597d7b	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
+_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	42942532e7429ed9b2efaabf93dc0615	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
 _md5_=cc46e3cd823119650b0d5a97b22ad4a6

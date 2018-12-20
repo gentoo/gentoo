@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=dev-go/go-bindata
 SLOT=0/0_pre20160822
 SRC_URI=https://github.com/elazarl/go-bindata-assetfs/archive/9a6736ed45b44bf3835afeebb3034b57ed329f3e.tar.gz -> go-bindata-assetfs-0_pre20160822.tar.gz
-_eclasses_=golang-base	e764075c9bbce927b424f8e9b7a25dfe	golang-build	1b46197451ce01766db03a9955597d7b	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
+_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	42942532e7429ed9b2efaabf93dc0615	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
 _md5_=00e416a421efc34792ba337bd841eedf
