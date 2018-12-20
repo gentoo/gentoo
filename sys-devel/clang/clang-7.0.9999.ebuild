@@ -36,7 +36,7 @@ RDEPEND="
 	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
 	static-analyzer? (
 		dev-lang/perl:*
-		z3? ( sci-mathematics/z3:0= )
+		z3? ( <sci-mathematics/z3-4.6:0= )
 	)
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	${PYTHON_DEPS}"
