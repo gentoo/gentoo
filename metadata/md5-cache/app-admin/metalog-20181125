@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst preinst prepare
-DEPEND=>=dev-libs/libpcre-3.4 virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEPEND=>=dev-libs/libpcre-3.4 sys-devel/autoconf-archive virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=A highly configurable replacement for syslogd/klogd
 EAPI=6
 HOMEPAGE=https://github.com/hvisage/metalog
@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/libpcre-3.4
 SLOT=0
 SRC_URI=https://github.com/hvisage/metalog/archive/metalog-20181125.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=55f8c85df1b082a8b75db099da4f7b1d
+_md5_=400fc147a607b02c3a6d0867307b8cfd
