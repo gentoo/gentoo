@@ -28,7 +28,7 @@ PATCHES=(
 RDEPEND="
 	dev-libs/glib:2
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5=
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	>=lxde-base/menu-cache-1.1.0
