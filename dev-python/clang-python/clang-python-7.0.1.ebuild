@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,11 +9,11 @@ inherit python-r1
 MY_P=cfe-${PV/_/}.src
 DESCRIPTION="Python bindings for sys-devel/clang"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://prereleases.llvm.org/${PV/_//}/${MY_P}.tar.xz"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-fbsd"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-fbsd"
 IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -28,12 +28,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}/bindings/python
-
-PATCHES=(
-	# update completion test results due to completion changes
-	# https://reviews.llvm.org/D50171
-	"${FILESDIR}"/7.0.0/0001-python-tests-Update-test_code_completion.patch
-)
 
 src_unpack() {
 	einfo "Unpacking parts of ${MY_P}.tar.xz ..."
