@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -29,7 +29,7 @@ pkg_nofetch() {
 	einfo " 1. Visit ${HOMEPAGE}"
 	einfo " 2. Select 'Java Transaction API Specification 1.1 Maintenance Release'"
 	einfo " 3. Download ${JTA_ZIP}"
-	einfo " 4. Move file to ${DISTDIR}"
+	einfo " 4. Move file to your DISTDIR directory"
 	einfo " 5. Restart the emerge process"
 	einfo
 }
