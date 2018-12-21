@@ -18,7 +18,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 	inherit git-r3
 else
-	# KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 	KEYWORDS=""
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 fi
@@ -28,7 +28,7 @@ RELEASE_VER=${PV}
 GCC_BOOTSTRAP_VER=20180511
 
 # Gentoo patchset
-PATCH_VER=9
+PATCH_VER=10
 
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
@@ -1101,7 +1101,7 @@ run_locale_gen() {
 	# if the host locales.gen contains no entries, we'll install everything
 	local root="$1"
 	local locale_list="${root}/etc/locale.gen"
-	if [[ $(locale-gen --list --config "${locale_list}") == "C.UTF-8" ]] ; then
+	if [[ -z $(locale-gen --list --config "${locale_list}") ]] ; then
 		ewarn "Generating all locales; edit /etc/locale.gen to save time/space"
 		locale_list="${root}/usr/share/i18n/SUPPORTED"
 	fi
