@@ -45,6 +45,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.10a-add-desktop-pc-xpm-files.patch
 	# See bug #662352
 	"${FILESDIR}"/${PN}-1.14-openssl-curl-x11.patch
+	# bug #672998
+	"${FILESDIR}"/${PN}-1.14-fix-big-endian.patch
 )
 
 src_prepare() {
