@@ -146,6 +146,12 @@ arm64           default/linux/arm64/17.0/desktop/systemd        dev
 arm64           default/linux/arm64/17.0/developer              exp
 arm64           default/linux/arm64/17.0/systemd                dev
 
+# ARM64 Profiles (big-endian)
+# @MAINTAINER: slyfox@gentoo.org
+# big-endian profile intentionally does not contain all flavours
+# until it's lightly tested.
+arm64           default/linux/arm64/17.0/big-endian             exp
+
 # HPPA Profiles
 # @MAINTAINER: hppa@gentoo.org
 hppa            default/linux/hppa/13.0                         exp
