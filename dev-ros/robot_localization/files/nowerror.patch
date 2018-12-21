@@ -1,0 +1,13 @@
+Index: robot_localization-2.6.2/CMakeLists.txt
+===================================================================
+--- robot_localization-2.6.2.orig/CMakeLists.txt
++++ robot_localization-2.6.2/CMakeLists.txt
+@@ -36,7 +36,7 @@ if(NOT EIGEN3_FOUND)
+   set(EIGEN_PACKAGE Eigen)
+ endif()
+ 
+-set_directory_properties(PROPERTIES COMPILE_OPTIONS "-std=c++14;-Wall;-Werror")
++set_directory_properties(PROPERTIES COMPILE_OPTIONS "-std=c++14;-Wall")
+ add_definitions(-DEIGEN_NO_DEBUG -DEIGEN_MPL2_ONLY)
+ 
+ set(ROSLINT_CPP_OPTS "--filter=-build/c++11,-runtime/references")
