@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,6 +25,7 @@ RDEPEND="
 	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-python/pymongo[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
+	dev-python/cbor[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
 	test? (
