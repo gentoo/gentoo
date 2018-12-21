@@ -102,7 +102,7 @@ src_test(){
 pkg_postinst() {
 	local p="/usr/share/${PN}/${PN}.bash"
 
-	elog "To start usint ${PN}"
+	elog "To start using ${PN}"
 	elog "Add the following to your ~/.bashrc"
 	elog
 	elog "[[ -f ${p} ]] && source ${p}"
