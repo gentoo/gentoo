@@ -187,9 +187,6 @@ pkg_postinst() {
 		fi
 	fi
 
-	# update the dependency tree after touching all files #224171
-	[[ "${EROOT}" = "/" ]] && "${EROOT}"/lib/rc/bin/rc-depend -u
-
 	if ! use newnet && ! use netifrc; then
 		ewarn "You have emerged OpenRc without network support. This"
 		ewarn "means you need to SET UP a network manager such as"
