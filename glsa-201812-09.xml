@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201812-09">
+  <title>Go: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Go, the worst which
+    could lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">go</product>
+  <announced>2018-12-21</announced>
+  <revised count="1">2018-12-21</revised>
+  <bug>673234</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/go" auto="yes" arch="*">
+      <unaffected range="ge">1.10.7</unaffected>
+      <vulnerable range="lt">1.10.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Go is an open source programming language that makes it easy to build
+      simple, reliable, and efficient software.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Go. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause arbitrary code execution by passing
+      specially crafted Go packages the ‘go get -u’ command.
+    </p>
+    
+    <p>The remote attacker could also craft pathological inputs causing a CPU
+      based Denial of Service condition via the crypto/x509 package.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Go users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/go-1.10.7"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16873">CVE-2018-16873</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16874">CVE-2018-16874</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16875">CVE-2018-16875</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-12-20T18:21:42Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2018-12-21T11:58:46Z">Zlogene</metadata>
+</glsa>
