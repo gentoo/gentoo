@@ -199,11 +199,7 @@ src_install() {
 	local libdir=$(get_libdir)
 	[[ -n $libdir ]] || die "get_libdir returned an empty string"
 
-	# Bug #472690 - Avoid sandbox violation for /dev/dri/card0.
-	local x
-	for x in /dev/dri/card[0-9] ; do
-		[[ -e ${x} ]] && addpredict ${x}
-	done
+	addpredict /dev/dri #665310
 
 	#dodir "/usr/$(get_libdir)/python2.7/site-packages" # for init_calibre.py
 	#dodir $(python_get_sitedir)
