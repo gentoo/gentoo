@@ -1,11 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
+EAPI=7
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-
-inherit distutils-r1 flag-o-matic qmake-utils toolchain-funcs
+inherit distutils-r1 qmake-utils toolchain-funcs
 
 DESCRIPTION="Static analyzer of C/C++ code"
 HOMEPAGE="http://cppcheck.sourceforge.net"
@@ -13,7 +11,7 @@ SRC_URI="https://github.com/danmar/cppcheck/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~sparc ~x86"
 IUSE="htmlreport pcre qt5"
 
 RDEPEND="
@@ -31,39 +29,47 @@ DEPEND="${RDEPEND}
 	dev-libs/libxslt
 	virtual/pkgconfig
 "
-
-PATCHES=( "${FILESDIR}"/${PN}-1.75-tinyxml2.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.75-tinyxml2.patch
+	"${FILESDIR}"/${PN}-1.85-ldflags.patch
+)
 
 src_prepare() {
 	default
-	append-cxxflags -std=c++0x
 
-	# Drop bundled libs, patch Makefile generator and re-run it
 	rm -r externals/tinyxml || die
-	tc-export CXX
-	emake dmake
-	./dmake || die
 }
 
 src_configure() {
+	tc-export CXX PKG_CONFIG
+	export LIBS="$(${PKG_CONFIG} --libs tinyxml2)"
+
+	emake dmake
+	./dmake || die
+
 	if use pcre ; then
 		sed -e '/HAVE_RULES=/s:=no:=yes:' \
 			-i Makefile || die
 	fi
-}
-
-src_compile() {
-	export LIBS="$(pkg-config --libs tinyxml2)"
-	emake ${PN} man \
-		CFGDIR="${EROOT}usr/share/${PN}/cfg" \
-		DB2MAN="${EROOT}usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl"
 
 	if use qt5 ; then
 		pushd gui || die
 		eqmake5
+		popd || die
+	fi
+}
+
+src_compile() {
+	emake ${PN} man \
+		CFGDIR="${EROOT}/usr/share/${PN}/cfg" \
+		DB2MAN="${EROOT}/usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl"
+
+	if use qt5 ; then
+		pushd gui || die
 		emake
 		popd || die
 	fi
+
 	if use htmlreport ; then
 		pushd htmlreport || die
 		distutils-r1_src_compile
