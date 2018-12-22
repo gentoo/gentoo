@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Corentin Pazdera <nado@troglodyte.be> (28 Dec 2018)
+# Requires virtual/pypy which isn't keyworded for ARM.
+www-servers/uwsgi pypy
+
 # Davide Pesavento <pesa@gentoo.org> (27 Dec 2018)
 # The corresponding Qt5 modules are not keyworded on arm, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
