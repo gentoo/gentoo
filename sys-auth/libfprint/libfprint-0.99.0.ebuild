@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( ${FILESDIR}/${P}-fix-implicit-declaration.patch )
+PATCHES=( ${FILESDIR}/${PN}-0.8.2-fix-implicit-declaration.patch )
 
 S="${WORKDIR}/${PN}-V_$(ver_rs 0-3 '_')"
 
