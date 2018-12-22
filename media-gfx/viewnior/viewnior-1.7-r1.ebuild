@@ -15,10 +15,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="media-gfx/exiv2:0=
+RDEPEND="
 	dev-libs/glib:2
-	x11-libs/gtk+:2"
-
+	media-gfx/exiv2:0=
+	x11-libs/gtk+:2
+"
 DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	virtual/pkgconfig
