@@ -7,8 +7,7 @@ KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="A program to view the differences between files"
-HOMEPAGE="https://www.kde.org/applications/development/kompare
-http://www.caffeinated.me.uk/kompare/"
+HOMEPAGE="https://www.kde.org/applications/development/kompare"
 KEYWORDS="amd64 x86"
 IUSE=""
 
