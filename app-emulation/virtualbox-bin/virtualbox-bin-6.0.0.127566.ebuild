@@ -14,7 +14,7 @@ if [[ ${PV} = *_beta* ]] || [[ ${PV} = *_rc* ]] ; then
 	MY_PV="${MY_PV/rc/RC}"
 else
 	MY_PV="${MAIN_PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64" #~x86
 fi
 VBOX_BUILD_ID="$(ver_cut 4)"
 VBOX_PV="${MY_PV}-${VBOX_BUILD_ID}"
@@ -30,8 +30,8 @@ SDK_P="VirtualBoxSDK-${SDK_PV}"
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="amd64? ( https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}_amd64.run )
-	x86? ( https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}_x86.run )
 	https://download.virtualbox.org/virtualbox/${MY_PV}/${EXTP_P}.vbox-extpack -> ${EXTP_P}.tar.gz"
+	#x86? ( https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}_x86.run )
 
 LICENSE="GPL-2 PUEL"
 SLOT="0"
