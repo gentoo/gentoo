@@ -6351,7 +6351,7 @@ dev-util/obs-service-set_version 0.3: Open Build Service client module - set_ver
 dev-util/obs-service-source_validator 0.3: Open Build Service client module - source_validator service
 dev-util/obs-service-tar_scm 0.3.1: Open Build Service client module - tar_scm service
 dev-util/obs-service-verify_file 20130403: Open Build Service client module - verify_file service
-dev-util/oprofile 1.1.0-r1 1.2.0-r1: A transparent low-overhead system-wide profiler
+dev-util/oprofile 1.2.0-r1: A transparent low-overhead system-wide profiler
 dev-util/osc 0.152.0: Command line tool for Open Build Service
 dev-util/patchbin 20160208: Apply binary patches without git
 dev-util/patchelf 0.8: Small utility to modify the dynamic linker and RPATH of ELF executables
