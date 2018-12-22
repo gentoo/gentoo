@@ -1,0 +1,12 @@
+diff -ruN autoconf-2.13.orig/autoscan.pl autoconf-2.13/autoscan.pl
+--- autoconf-2.13.orig/autoscan.pl	1999-01-05 14:28:42.000000000 +0100
++++ autoconf-2.13/autoscan.pl	2018-12-22 19:55:10.986732296 +0100
+@@ -232,7 +232,7 @@
+ 	# Strip out comments and variable references.
+ 	s/#.*//;
+ 	s/\$\([^\)]*\)//g;
+-	s/\${[^\}]*}//g;
++	s/\$\{[^\}]*}//g;
+ 	s/@[^@]*@//g;
+ 
+ 	# Variable assignments.
