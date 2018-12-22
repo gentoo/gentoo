@@ -1,0 +1,188 @@
+From 807ac77061604c2ac7cf84b0a0b29dd949a6c634 Mon Sep 17 00:00:00 2001
+From: "Martin T. H. Sandsmark" <martin.sandsmark@kde.org>
+Date: Thu, 6 Dec 2018 10:02:41 -0500
+Subject: fix drawing box chars, avoid storing and saving state all the time
+
+Summary:
+to get the box chars to be drawn correctly we need to turn on high
+quality antialiasing in qpainter. in addition only turn it on if
+antialiasing is enabled.
+
+lastly qpainter.save()/restore() is called very often, so try to avoid
+that if it isn't necessary.
+
+BUG: 401463
+
+Test Plan:
+`cat tests/boxes.txt`
+
+old:
+
+{F6428268}
+
+new:
+
+{F6450304}
+
+Reviewers: #konsole, hindenburg
+
+Reviewed By: #konsole, hindenburg
+
+Subscribers: wbauer, konsole-devel, #konsole
+
+Tags: #konsole
+
+Differential Revision: https://phabricator.kde.org/D16947
+
+(cherry picked from commit 14b3c8be2c15ed9711b1308b4a991de4aad5802d)
+---
+ src/TerminalDisplay.cpp | 45 ++++++++++++++++++++-------------------------
+ 1 file changed, 20 insertions(+), 25 deletions(-)
+
+diff --git a/src/TerminalDisplay.cpp b/src/TerminalDisplay.cpp
+index 722e200..2b14556 100644
+--- a/src/TerminalDisplay.cpp
++++ b/src/TerminalDisplay.cpp
+@@ -619,7 +619,7 @@ static void drawLineChar(QPainter& paint, int x, int y, int w, int h, uchar code
+ {
+     //Calculate cell midpoints, end points.
+     const int cx = x + w / 2;
+-    const int cy = y + h / 2;
++    const int cy = y + h / 2. - 0.5;
+     const int ex = x + w - 1;
+     const int ey = y + h - 1;
+ 
+@@ -671,33 +671,33 @@ static void drawLineChar(QPainter& paint, int x, int y, int w, int h, uchar code
+ 
+     //Intersection points.
+     if ((toDraw & Int11) != 0u) {
+-        paint.drawPoint(cx - 1, cy - 1);
++        paint.drawPoint(cx - 2, cy - 2);
+     }
+     if ((toDraw & Int12) != 0u) {
+-        paint.drawPoint(cx, cy - 1);
++        paint.drawPoint(cx - 1, cy - 2);
+     }
+     if ((toDraw & Int13) != 0u) {
+-        paint.drawPoint(cx + 1, cy - 1);
++        paint.drawPoint(cx - 0, cy - 2);
+     }
+ 
+     if ((toDraw & Int21) != 0u) {
+-        paint.drawPoint(cx - 1, cy);
++        paint.drawPoint(cx - 2, cy - 1);
+     }
+     if ((toDraw & Int22) != 0u) {
+-        paint.drawPoint(cx, cy);
++        paint.drawPoint(cx - 1, cy - 1);
+     }
+     if ((toDraw & Int23) != 0u) {
+-        paint.drawPoint(cx + 1, cy);
++        paint.drawPoint(cx - 0, cy - 1);
+     }
+ 
+     if ((toDraw & Int31) != 0u) {
+-        paint.drawPoint(cx - 1, cy + 1);
++        paint.drawPoint(cx - 2, cy);
+     }
+     if ((toDraw & Int32) != 0u) {
+-        paint.drawPoint(cx, cy + 1);
++        paint.drawPoint(cx - 1, cy);
+     }
+     if ((toDraw & Int33) != 0u) {
+-        paint.drawPoint(cx + 1, cy + 1);
++        paint.drawPoint(cx - 0, cy);
+     }
+ }
+ 
+@@ -705,7 +705,7 @@ static void drawOtherChar(QPainter& paint, int x, int y, int w, int h, uchar cod
+ {
+     //Calculate cell midpoints, end points.
+     const int cx = x + w / 2;
+-    const int cy = y + h / 2;
++    const int cy = y + h / 2. - 0.5; // Compensate for the translation, to match fonts
+     const int ex = x + w - 1;
+     const int ey = y + h - 1;
+ 
+@@ -792,16 +792,17 @@ void TerminalDisplay::drawLineCharString(QPainter& painter, int x, int y, const
+         const Character* attributes)
+ {
+     painter.save();
+-    painter.setRenderHint(QPainter::Antialiasing);
+ 
+-    const QPen& originalPen = painter.pen();
++    // For antialiasing, we need to shift it so the single pixel width is in the middle
++    painter.translate(0.5, 0.5);
+ 
+     if (((attributes->rendition & RE_BOLD) != 0) && _boldIntense) {
+-        QPen boldPen(originalPen);
+-        boldPen.setWidth(3);
++        QPen boldPen(painter.pen());
++        boldPen.setWidth(4);
+         painter.setPen(boldPen);
+     }
+ 
++
+     for (int i = 0 ; i < str.length(); i++) {
+         const uchar code = str[i].cell();
+         if (LineChars[code] != 0u) {
+@@ -909,10 +910,10 @@ void TerminalDisplay::drawBackground(QPainter& painter, const QRect& rect, const
+         QColor color(backgroundColor);
+         color.setAlpha(qAlpha(_blendColor));
+ 
+-        painter.save();
++        const QPainter::CompositionMode originalMode = painter.compositionMode();
+         painter.setCompositionMode(QPainter::CompositionMode_Source);
+         painter.fillRect(rect, color);
+-        painter.restore();
++        painter.setCompositionMode(originalMode);
+ #endif
+     } else {
+         painter.fillRect(rect, backgroundColor);
+@@ -1041,8 +1042,6 @@ void TerminalDisplay::drawTextFragment(QPainter& painter ,
+                                        const QString& text,
+                                        const Character* style)
+ {
+-    painter.save();
+-
+     // setup painter
+     const QColor foregroundColor = style->foregroundColor.color(_colorTable);
+     const QColor backgroundColor = style->backgroundColor.color(_colorTable);
+@@ -1062,8 +1061,6 @@ void TerminalDisplay::drawTextFragment(QPainter& painter ,
+ 
+     // draw text
+     drawCharacters(painter, rect, text, style, invertCharacterColor);
+-
+-    painter.restore();
+ }
+ 
+ void TerminalDisplay::drawPrinterFriendlyTextFragment(QPainter& painter,
+@@ -1071,8 +1068,6 @@ void TerminalDisplay::drawPrinterFriendlyTextFragment(QPainter& painter,
+         const QString& text,
+         const Character* style)
+ {
+-    painter.save();
+-
+     // Set the colors used to draw to black foreground and white
+     // background for printer friendly output when printing
+     Character print_style = *style;
+@@ -1081,8 +1076,6 @@ void TerminalDisplay::drawPrinterFriendlyTextFragment(QPainter& painter,
+ 
+     // draw text
+     drawCharacters(painter, rect, text, &print_style, false);
+-
+-    painter.restore();
+ }
+ 
+ void TerminalDisplay::setRandomSeed(uint randomSeed)
+@@ -1499,6 +1492,8 @@ void TerminalDisplay::paintEvent(QPaintEvent* pe)
+         drawBackground(paint, rect, getBackgroundColor(), true /* use opacity setting */);
+     }
+ 
++    paint.setRenderHint(QPainter::Antialiasing, _antialiasText);
++
+     foreach(const QRect & rect, dirtyImageRegion.rects()) {
+         drawContents(paint, rect);
+     }
+-- 
+cgit v1.1
