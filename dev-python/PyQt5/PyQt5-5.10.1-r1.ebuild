@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -169,7 +169,7 @@ src_compile() {
 
 src_install() {
 	installation() {
-		local tmp_root=${D%/}/tmp
+		local tmp_root=${D%/}/${PN}_tmp_root
 		emake INSTALL_ROOT="${tmp_root}" install
 
 		local bin_dir=${tmp_root}${EPREFIX}/usr/bin
