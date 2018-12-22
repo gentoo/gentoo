@@ -163,7 +163,7 @@ src_compile() {
 
 src_install() {
 	installation() {
-		local tmp_root=${D}/tmp
+		local tmp_root=${D}/${PN}_tmp_root
 		# parallel install fails (same issue as qscintilla-python-2.10.8)
 		emake -j1 INSTALL_ROOT="${tmp_root}" install
 
