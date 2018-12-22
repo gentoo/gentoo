@@ -5,7 +5,7 @@ EAPI="6"
 
 inherit desktop gnome2-utils systemd xdg-utils
 
-DESCRIPTION="The world's fastest remote desktop application"
+DESCRIPTION="Feature rich multi-platform remote desktop application"
 HOMEPAGE="https://anydesk.com"
 SRC_URI="amd64? ( https://download.anydesk.com/linux/${P}-amd64.tar.gz )
 	x86? ( https://download.anydesk.com/linux/${P}-i686.tar.gz )"
@@ -45,14 +45,20 @@ RDEPEND="
 
 RESTRICT="bindist mirror"
 
-QA_PREBUILT="usr/bin/${PN}"
+QA_PREBUILT="opt/${PN}/*"
 
 src_install() {
-	exeinto /usr/bin
+	local dst="/opt/${PN}"
+
+	dodir ${dst}
+	exeinto ${dst}
 	doexe ${PN}
 
+	dodir /opt/bin
+	dosym ${dst}/${PN} /opt/bin/${PN}
+
 	newinitd "${FILESDIR}"/anydesk.init anydesk
-	systemd_dounit systemd/anydesk.service
+	systemd_newunit "${FILESDIR}"/anydesk-4.0.1.service anydesk.service
 
 	insinto /usr/share/polkit-1/actions
 	doins polkit-1/com.philandro.anydesk.policy
@@ -71,7 +77,7 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	gnome2_icon_cache_update
 
-	if [[ -n ${REPLACING_VERSIONS} ]]; then
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog "To run AnyDesk as background service use:"
 		elog
 		elog "OpenRC:"
