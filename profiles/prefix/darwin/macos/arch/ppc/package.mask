@@ -1,9 +1,13 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # The 32-bits profile is inherited by the 64-bits one!
 # All the Mac OS X profiles inherit from their matching arch profile here.
 
+
+# Fabian Gtoffen <grobian@gentoo.org> (22 Dec 2018)
+# this version of libffi causes gcc to buserror
+=dev-libs/libffi-3.3_rc0
 
 # Fabian Groffen <grobian@gentoo.org> (5 Mar 2012)
 # Apple removed entire PowerPC support from ld in ld64-128.2 (4.3)
