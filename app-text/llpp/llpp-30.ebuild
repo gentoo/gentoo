@@ -51,7 +51,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake -j1 VERSION=${PV}
+	emake -j1 VERSION=${PV} CC="$(tc-getCC)" LIBDIR="/usr/$(get_libdir)"
 }
 
 src_install() {
