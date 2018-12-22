@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	)
 	libav? ( media-video/libav:= )
 	!libav? ( media-video/ffmpeg:0= )
-	mpv? ( media-video/mpv )
+	mpv? ( media-video/mpv[libmpv] )
 	unicode? ( dev-libs/icu:= )
 	xine? (
 		media-libs/xine-lib
