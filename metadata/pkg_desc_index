@@ -8311,7 +8311,7 @@ media-video/smtube 17.5.0-r2: YouTube Browser for SMPlayer
 media-video/snappy 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subviewer srt
 media-video/subliminal 2.0.5-r2: Python library to search and download subtitles
-media-video/subtitlecomposer 0.6.6: Text-based subtitles editor
+media-video/subtitlecomposer 0.6.6-r1: Text-based subtitles editor
 media-video/subtitleeditor 0.54.0: GTK+3 subtitle editing tool
 media-video/subtitleripper 0.3.4-r4: DVD Subtitle Ripper for Linux
 media-video/totem 3.24.0: Media player for GNOME
