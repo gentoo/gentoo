@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+EAPI=7
 
-inherit autotools eapi7-ver python-single-r1 systemd
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+inherit autotools python-single-r1 systemd
 
 MY_PV_MM=$(ver_cut 1-2)
 DESCRIPTION="syslog replacement with advanced filtering features"
@@ -14,20 +14,21 @@ SRC_URI="https://github.com/balabit/syslog-ng/releases/download/${P}/${P}.tar.gz
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="amqp caps dbi geoip http ipv6 json libressl mongodb pacct python redis smtp spoof-source systemd tcpd"
+IUSE="amqp caps dbi geoip geoip2 http ipv6 json libressl mongodb pacct python redis smtp spoof-source systemd tcpd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 # unit tests require https://github.com/Snaipe/Criterion with additional deps
 RESTRICT="test"
 
 RDEPEND="
 	>=dev-libs/glib-2.10.1:2
-	>=dev-libs/ivykis-0.36.1
+	>=dev-libs/ivykis-0.42.3
 	>=dev-libs/libpcre-6.1:=
 	!dev-libs/eventlog
 	amqp? ( >=net-libs/rabbitmq-c-0.8.0:= )
 	caps? ( sys-libs/libcap )
 	dbi? ( >=dev-db/libdbi-0.9.0 )
 	geoip? ( >=dev-libs/geoip-1.5.0 )
+	geoip2? ( dev-libs/libmaxminddb:= )
 	http? ( net-misc/curl )
 	json? ( >=dev-libs/json-c-0.9:= )
 	mongodb? ( >=dev-libs/mongo-c-driver-1.2.0 )
@@ -57,11 +58,16 @@ src_prepare() {
 	use python && python_fix_shebang .
 
 	# remove bundled libs
-	rm -r lib/ivykis modules/afmongodb/mongo-c-driver modules/afamqp/rabbitmq-c || die
+	rm -r lib/ivykis || die
 
 	# drop scl modules requiring json
 	if use !json; then
-		sed -i -r '/cim|elasticsearch|ewmm|graylog2|loggly|logmatic/d' scl/Makefile.am || die
+		sed -i -r '/cim|elasticsearch|ewmm|graylog2|loggly|logmatic|nodejs|osquery|slack/d' scl/Makefile.am || die
+	fi
+
+	# drop scl modules requiring http
+	if use !http; then
+		sed -i -r '/slack|telegram/d' scl/Makefile.am || die
 	fi
 
 	# use gentoo default path
@@ -106,6 +112,7 @@ src_configure() {
 		$(use_enable caps linux-caps)
 		$(use_enable dbi sql)
 		$(use_enable geoip)
+		$(use_enable geoip2)
 		$(use_enable http)
 		$(use_enable ipv6)
 		$(use_enable json)
