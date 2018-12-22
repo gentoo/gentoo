@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,3 +19,8 @@ DEPEND=">=sys-devel/m4-1.4.6
 RDEPEND="${DEPEND}
 	!~sys-devel/${P}:2.5
 	>=sys-devel/autoconf-wrapper-13"
+
+PATCHES=(
+		"${FILESDIR}"/${PN}-2.69-perl-5.26.patch
+		"${FILESDIR}"/${PN}-2.69-perl-5.26-2.patch
+)
