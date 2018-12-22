@@ -175,7 +175,7 @@ else
 	[[ -z "${SRC_URI}" && -n "${DIST_AUTHOR}" ]] && \
 		SRC_URI="mirror://cpan/authors/id/${DIST_AUTHOR:0:1}/${DIST_AUTHOR:0:2}/${DIST_AUTHOR}/${DIST_SECTION:+${DIST_SECTION}/}${DIST_A}"
 	[[ -z "${HOMEPAGE}" ]] && \
-		HOMEPAGE="http://metacpan.org/release/${DIST_NAME}"
+		HOMEPAGE="https://metacpan.org/release/${DIST_NAME}"
 
 	[[ -z "${DIST_EXAMPLES}" ]] || IUSE+=" examples"
 fi
