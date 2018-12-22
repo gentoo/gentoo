@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby24"
 
 RUBY_FAKEGEM_EXTRADOC="NEWS.md README.md"
 
@@ -29,11 +29,12 @@ ruby_add_rdepend "!minimal? (
 	www-servers/adsf
 )
 	>=dev-ruby/addressable-2.5
-	>=dev-ruby/cri-2.13:0
+	>=dev-ruby/cri-2.15:0
 	dev-ruby/ddmemoize:1
 	dev-ruby/ddmetrics:1
 	dev-ruby/ddplugin:1
 	=dev-ruby/hamster-3*
+	>=dev-ruby/json_schema-0.19:0
 	>=dev-ruby/parallel-1.12:1
 	dev-ruby/ref:2
 	>=dev-ruby/slow_enumerator_tools-1.1.0:1
@@ -49,6 +50,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/pry
 	dev-ruby/rdoc
 	dev-ruby/rouge:2
+	dev-ruby/rubypants
 	dev-ruby/systemu
 	dev-ruby/timecop
 	dev-ruby/vcr
@@ -86,6 +88,7 @@ all_ruby_prepare() {
 	sed -i -e '145askip "gentoo"' spec/nanoc/cli/error_handler_spec.rb || die
 	sed -i -e '/does not crash when output dir does not exist and/askip "gentoo"' spec/nanoc/cli/commands/view_spec.rb || die
 	sed -i -e '/watches with --watch/askip "gentoo"' spec/nanoc/cli/commands/compile_spec.rb || die
+	sed -i -e '124askip "ordering issues"' -e '168askip "ordering issues"' spec/nanoc/data_sources/filesystem_spec.rb || die
 }
 
 each_ruby_test() {
