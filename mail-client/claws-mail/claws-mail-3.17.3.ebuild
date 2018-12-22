@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ fi
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
+IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
 REQUIRED_USE="libcanberra? ( notification )
 	libindicate? ( notification )
 	libnotify? ( notification )
@@ -31,6 +31,7 @@ REQUIRED_USE="libcanberra? ( notification )
 COMMONDEPEND="
 	dev-libs/nettle
 	net-mail/ytnef
+	>=x11-libs/gtk+-2.24:2
 	archive? (
 		app-arch/libarchive
 		>=net-misc/curl-7.9.7
@@ -44,8 +45,6 @@ COMMONDEPEND="
 	gdata? ( >=dev-libs/libgdata-0.17.2 )
 	dillo? ( www-client/dillo )
 	gnutls? ( >=net-libs/gnutls-3.0 )
-	gtk3? ( x11-libs/gtk+:3 )
-	!gtk3? ( >=x11-libs/gtk+-2.24:2 )
 	imap? ( >=net-libs/libetpan-0.57 )
 	ldap? ( >=net-nds/openldap-2.0.7 )
 	nls? ( >=sys-devel/gettext-0.18 )
@@ -129,7 +128,6 @@ src_configure() {
 		$(use_enable doc manual)
 		$(use_enable gdata gdata-plugin)
 		$(use_enable gnutls)
-		$(use_enable gtk3)
 		$(use_enable ipv6)
 		$(use_enable ldap)
 		$(use_enable networkmanager)
