@@ -13,7 +13,7 @@ IUSE="teamd"
 COMMON_DEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtnetwork)
-	>=net-misc/networkmanager-1.4.0-r1[teamd=]
+	>=net-misc/networkmanager-1.10.0[teamd=]
 "
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
