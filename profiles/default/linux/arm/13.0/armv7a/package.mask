@@ -6,6 +6,7 @@
 # Please switch to 17.0 profiles that use *eabihf triplets instead.
 # https://bugs.gentoo.org/595834
 dev-python/clang-python
+dev-qt/qdoc
 dev-util/lldb
 sys-devel/clang
 sys-devel/clang-common
