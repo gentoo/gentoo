@@ -8546,7 +8546,7 @@ net-firewall/nfacct 1.0.1: Command line tool to create/retrieve/delete accountin
 net-firewall/nftables 0.8-r3: Linux kernel (3.13+) firewall, NAT and packet mangling tools
 net-firewall/psad 2.2.5: Port Scanning Attack Detection daemon
 net-firewall/rtsp-conntrack 3.7-r1: RTSP conntrack module for Netfilter
-net-firewall/shorewall 5.2.1.2: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.2.1.4: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35-r1: A program used to manage a netfilter firewall
 net-firewall/xtables-addons 2.13: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.2: Kernel based automounter
@@ -10331,7 +10331,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16f: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.11: Utilities and libraries for NUMA systems
 sys-process/numad 0.5 0.5-r1: The NUMA daemon that manages application locality
-sys-process/parallel 20180622: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20181122: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
 sys-process/procps 3.3.15-r1: standard informational utilities and process-handling tools
 sys-process/psmisc 23.1-r1: A set of tools that use the proc filesystem
