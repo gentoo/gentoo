@@ -1,69 +1,87 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="5"
 
 inherit eutils flag-o-matic toolchain-funcs
 
-LD64=ld64-274.2
-CCTOOLS_VERSION=895
+LD64=ld64-242
+CCTOOLS_VERSION=870
 CCTOOLS=cctools-${CCTOOLS_VERSION}
-DYLD=dyld-421.2
+LIBUNWIND=libunwind-35.3
+DYLD=dyld-353.2.1
 
 DESCRIPTION="Darwin assembler as(1) and static linker ld(1), Xcode Tools ${PV}"
 HOMEPAGE="http://www.opensource.apple.com/darwinsource/"
 SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 	http://www.opensource.apple.com/tarballs/cctools/${CCTOOLS}.tar.gz
 	http://www.opensource.apple.com/tarballs/dyld/${DYLD}.tar.gz
+	http://www.opensource.apple.com/tarballs/libunwind/${LIBUNWIND}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-4.3-r1.tar.bz2
 	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-5.1-r2.tar.bz2
-	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.0-r2.tar.bz2
-	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.3-r1.tar.bz2
-	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-8.2-r0.tar.bz2"
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-6.1-r1.tar.bz2
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-6.3-r2.tar.bz2"
 
 LICENSE="APSL-2"
-KEYWORDS="~x64-macos ~x86-macos"
-IUSE="lto tapi classic test"
+KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
+IUSE="lto test libcxx multitarget"
 
-# ld64 can now only be compiled using llvm and libc++ since it massively uses
-# C++11 language features. *But additionally* the as driver now defaults to
-# calling clang as the assembler on many platforms. This can be disabled using
-# -Wa,-Q but since it's default we make llvm a static runtime dependency.
 RDEPEND="sys-devel/binutils-config
-	lto? ( app-arch/xar )
-	tapi? ( sys-libs/tapi )
-	sys-devel/llvm:*
-	sys-libs/libcxx"
+	lto? ( sys-devel/llvm:* )
+	libcxx? ( sys-libs/libcxx )"
 DEPEND="${RDEPEND}
-	test? ( >=dev-lang/perl-5.8.8 )"
+	test? ( >=dev-lang/perl-5.8.8 )
+	|| ( >=sys-devel/gcc-apple-4.2.1 sys-devel/llvm:* )
+	libcxx? ( sys-devel/llvm:* )"
 
-SLOT="8"
+SLOT="6"
 
 S=${WORKDIR}
 
 is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 
 src_prepare() {
+	if use multitarget ; then
+		ewarn "You have enabled support for non-standard target architectures"
+		ewarn "using USE=multitarget. This includes experimental support for"
+		ewarn "ppc and ppc64 which is a community forward-port from the last"
+		ewarn "version of ld64 to officially support PPC."
+
+		if [[ ${CHOST} == powerpc*-darwin* ]] ; then
+			ewarn "HERE BE DRAGONS! Your system seems to be PPC which means that"
+			ewarn "the actual usability of your Gentoo programs will depend on the"
+			ewarn "above-mentioned experimental PPC support in the linker. Be"
+			ewarn "sure to keep a known-to-work version like ${PN}-3.2.6 around!"
+		fi
+	fi
+
 	cd "${S}"/${LD64}/src
 	cp "${S}"/ld64-136-compile_stubs.h ld/compile_stubs.h
-	cp "${S}"/ld64-274.1-Makefile Makefile
+	cp "${S}"/ld64-236.3-Makefile-2 Makefile
 
-	epatch "${S}"/ld64-274.1-nolto.patch
+	epatch "${S}"/ld64-236.3-nolto.patch
+	epatch "${S}"/ld64-241.9-extraneous-includes.patch
+	epatch "${S}"/ld64-241.9-osatomic.patch
 	epatch "${S}"/ld64-236.3-crashreporter.patch
-	epatch "${S}"/ld64-264.3.102-bitcode-case.patch
-	epatch "${S}"/ld64-274.1-unknown-fixup.patch
-	epatch "${S}"/ld64-274.1-notapi.patch
-
-	# workound llvm-3.9.{0,1} issue
-	# https://bugs.gentoo.org/show_bug.cgi?id=603580
-	# https://groups.google.com/forum/#!topic/llvm-dev/JY6nuKE__sU
-	# http://lists.llvm.org/pipermail/cfe-commits/Week-of-Mon-20160829/169553.html
-	sed -i -e '/COMPILE_TIME_ASSERT/d' ld/parsers/libunwind/*.hpp || die
+	epatch "${S}"/ld64-241.9-nosnapshots.patch
+	epatch "${S}"/ld64-242-ppc.patch
+	epatch "${S}"/ld64-236.3-constant-types-2.patch
+	epatch "${S}"/ld64-242-gcc-2.patch
+	epatch "${S}"/ld64-241.9-register-names.patch
+	epatch "${S}"/ld64-241.9-get-comm-align.patch
+	epatch "${S}"/ld64-241.9-cc_md5.patch
+	epatch "${S}"/ld64-253.3-delete-warning.patch
 
 	# provide missing headers from libunwind and dyld
 	mkdir -p include/{mach,mach-o/arm} || die
 	# never present because it's private
 	cp ../../${DYLD}/include/mach-o/dyld_priv.h include/mach-o || die
+	# missing on <= 10.5
+	cp ../../${LIBUNWIND}/include/libunwind.h include/ || die
+	cp ../../${LIBUNWIND}/include/mach-o/compact_unwind_encoding.h include/mach-o || die
+	# missing on <= 10.4
+	cp ../../${DYLD}/include/mach-o/dyld_images.h include/mach-o || die
+	cp ../../${CCTOOLS}/include/mach-o/loader.h include/mach-o || die
 	# use copies from cctools because they're otherwise hidden in some SDK
 	cp ../../${CCTOOLS}/include/mach-o/arm/reloc.h include/mach-o/arm || die
 	# provide all required CPU_TYPEs on all platforms
@@ -72,10 +90,19 @@ src_prepare() {
 	# header only defines the older
 	epatch "${S}"/ld64-236.3-missing-cputypes.patch
 
+	# mimic OS X Leopard-style Availability.h macros for libunwind.h on
+	# older systems
+	[[ ${CHOST} == *darwin* && ${CHOST#*-darwin} -le 8 ]] && \
+		echo "#define __OSX_AVAILABLE_STARTING(x,y)  " > include/Availability.h
+
 	local VER_STR="\"@(#)PROGRAM:ld  PROJECT:${LD64} (Gentoo ${PN}-${PVR})\\n\""
 	echo "char ldVersionString[] = ${VER_STR};" > version.cpp
 
 	epatch "${S}"/ld64-123.2-debug-backtrace.patch
+	if [[ ${CHOST} == powerpc*-darwin* ]] ; then
+		epatch "${S}"/ld64-123.2-darwin8-no-mlong-branch-warning.patch
+		epatch "${S}"/ld64-127.2-thread_state.patch
+	fi
 
 	cd "${S}"/${CCTOOLS}
 	epatch "${S}"/${PN}-4.5-as.patch
@@ -86,14 +113,13 @@ src_prepare() {
 	epatch "${S}"/${PN}-4.0-no-oss-dir.patch
 	epatch "${S}"/cctools-839-intel-retf.patch
 	epatch "${S}"/${PN}-5.1-extraneous-includes.patch
+	epatch "${S}"/${PN}-5.1-otool-stdc.patch
+	epatch "${S}"/${PN}-5.1-constant-types.patch
 	epatch "${S}"/${PN}-5.1-strnlen.patch
-	epatch "${S}"/${PN}-7.3-make-j.patch
-	epatch "${S}"/${PN}-7.0-lto-prefix-2.patch
-	epatch "${S}"/${PN}-7.0-clang-as.patch
-	epatch "${S}"/${PN}-8.1-nolto.patch
-	epatch "${S}"/${PN}-7.3-nollvm.patch
-	epatch "${S}"/${PN}-7.3-no-developertools-dir.patch
-	epatch "${S}"/${PN}-8.1-llvm-tools.patch
+	epatch "${S}"/${PN}-5.1-ppc.patch
+	epatch "${S}"/${PN}-5.1-thread-state-redefined.patch
+	epatch "${S}"/${PN}-5.1-makefile-target-warning.patch
+	epatch "${S}"/${PN}-6.3-lto-prefix.patch
 	cp ../${LD64}/src/other/prune_trie.h include/mach-o/ || die
 
 	# do not build profileable libstuff to save compile time
@@ -107,8 +133,6 @@ src_prepare() {
 	# to include our Gentoo version.
 	sed -i -e "/cctools-.*(RC_ProjectSourceVersion).*OFILE_DIR/s,Version),Version) (Gentoo ${PN}-${PVR})," \
 		libstuff/Makefile
-
-	eapply_user
 
 	# clean up test suite
 	cd "${S}"/${LD64}/unit-tests/test-cases
@@ -167,13 +191,63 @@ src_configure() {
 		BINPATH=/usr/${CTARGET}/binutils-bin/${PV}
 	fi
 
+	if [[ ${CXX} == *clang* ]] ; then
+		if use libcxx ; then
+			append-cxxflags -stdlib=libc++
+			CXXLIB=-stdlib=libc++
+		else
+			# force libstdc++ for systems where libc++ is default (OS X 10.9+?)
+			append-cxxflags -stdlib=libstdc++
+			CXXLIB=-stdlib=libstdc++
+		fi
+	else
+		use libcxx && \
+			ewarn "libcxx only available with clang and your C++ compiler ($CXX) does not seem to be clang"
+
+		# force gcc-apple, FSF gcc doesn't grok this code
+		export CC=${CTARGET}-gcc-4.2.1
+		export CXX=${CTARGET}-g++-4.2.1
+	fi
+
 	# CPPFLAGS only affects ld64, cctools don't use 'em (which currently is
 	# what we want)
 	append-cppflags -DNDEBUG
 
+	# Block API and thus snapshots supported on >= 10.6
+	[[ ${CHOST} == *darwin* && ${CHOST#*-darwin} -ge 10 ]] && \
+		append-cppflags -DSUPPORT_SNAPSHOTS
+
+	CCTOOLS_OFLAG=
+	if [[ ${CHOST} == *darwin* && ${CHOST#*-darwin} -le 8 ]] ; then
+		# cctools expect to use UNIX03 struct member names.
+		# This is default on > 10.4. Activate it on <= 10.4 by defining
+		# __DARWIN_UNIX03 explicitly.
+		CCTOOLS_OFLAG="-D__DARWIN_UNIX03=1"
+	fi
+
+	# if compiling with USE multitarget, extract all the known arches from
+	# create_configure and pass them back to it
+	creco=${LD64}/src/create_configure
+	ARCHS_TO_SUPPORT=""
+	if use multitarget ; then
+		ARCHS_TO_SUPPORT="$(grep KNOWN_ARCHS= $creco | \
+			cut -d\" -f2 | tr ',' ' ')"
+	elif use ppc-macos ; then
+		ARCHS_TO_SUPPORT="ppc ppc750 ppc7400 ppc7450 ppc970 ppc64 $(\
+			grep RC_SUPPORTED_ARCHS= $creco | cut -d\" -f2)"
+	fi
+
 	# Create configure.h for ld64 with SUPPORT_ARCH_<arch> defines in it.
+	einfo "building support for: ${ARCHS_TO_SUPPORT}"
 	DERIVED_FILE_DIR=${LD64}/src \
-		${LD64}/src/create_configure
+	RC_SUPPORTED_ARCHS="$ARCHS_TO_SUPPORT" \
+		$creco
+
+	# do not depend on MachOFileAbstraction.hpp to define
+	# SUPPORT_ARCH_arm_any because that's not included by every file where
+	# our ppc/arm-optional patch uses it, ld.hpp in particular
+	grep "SUPPORT_ARCH_armv[0-9]" ${LD64}/src/configure.h >/dev/null && \
+		echo "#define SUPPORT_ARCH_arm_any 1" >> ${LD64}/src/configure.h
 }
 
 compile_ld64() {
@@ -181,7 +255,6 @@ compile_ld64() {
 	cd "${S}"/${LD64}/src
 	emake \
 		LTO=${ENABLE_LTO} \
-		TAPI=$(use tapi && echo 1 || echo 0) \
 		|| die "emake failed for ld64"
 	use test && emake build_test
 }
@@ -189,6 +262,7 @@ compile_ld64() {
 compile_cctools() {
 	einfo "building ${CCTOOLS}"
 	cd "${S}"/${CCTOOLS}
+	# -j1 because it fails too often with weird errors
 	# Suppress running dsymutil because it will warn about missing debug
 	# info which is expected when compiling without -g as we normally do.
 	# This might need some more thought if anyone ever wanted to build us
@@ -196,21 +270,22 @@ compile_cctools() {
 	emake \
 		LIB_PRUNETRIE="-L../../${LD64}/src -lprunetrie" \
 		EFITOOLS= \
-		LTO="${ENABLE_LTO}" \
-		LTO_LIBDIR=../../../lib \
+		ENABLE_LTO="${ENABLE_LTO}" \
 		COMMON_SUBDIRS='libstuff ar misc otool' \
 		SUBDIRS_32= \
 		LEGACY= \
 		RC_ProjectSourceVersion=${CCTOOLS_VERSION} \
 		RC_CFLAGS="${CFLAGS}" \
 		OFLAG="${CCTOOLS_OFLAG}" \
+		CXXLIB="${CXXLIB}" \
 		DSYMUTIL=": disabled: dsymutil" \
+		-j1 \
 		|| die "emake failed for the cctools"
 	cd "${S}"/${CCTOOLS}/as
 	emake \
 		BUILD_OBSOLETE_ARCH= \
 		RC_ProjectSourceVersion=${CCTOOLS_VERSION} \
-		RC_CFLAGS="-DASLIBEXECDIR=\"\\\"${EPREFIX}${LIBPATH}/\\\"\" -DCLANGDIR=\"\\\"${EPREFIX}/usr/bin/\\\"\" ${CFLAGS}" \
+		RC_CFLAGS="-DASLIBEXECDIR=\"\\\"${EPREFIX}${LIBPATH}/\\\"\" ${CFLAGS}" \
 		OFLAG="${CCTOOLS_OFLAG}" \
 		DSYMUTIL=": disabled: dsymutil" \
 		|| die "emake failed for as"
@@ -249,29 +324,6 @@ install_cctools() {
 		LIBDIR=\"${EPREFIX}\"${LIBPATH} \
 		LOCLIBDIR=\"${EPREFIX}\"${LIBPATH}
 
-	# upstream is starting to replace classic binutils with llvm-integrated
-	# ones. nm and size are now symlinks to llvm-{nm,size} while the classic
-	# version is preserved as {nm,size}-classic.
-	# Since our binutils do not live in the same directory as the llvm
-	# installation, we have to rewrite the symlinks to the llvm tools.
-	# This also means, that these tools still appear to be versioned via
-	# binutils-config but actually always run the currently installed llvm
-	# tool.
-	budir=${D}/${EPREFIX}/${BINPATH}
-	for tool in nm size ; do
-		# ${EPREFIX}/usr/x86_64-apple-darwin15/binutils-bin/7.3/$tool
-		# -> ${EPREFIX}/bin/llvm-$tool
-		use classic && \
-			ln -sfn ${tool}-classic "${budir}/${tool}" || \
-			ln -sfn ../../../bin/llvm-${tool} "${budir}/${tool}"
-	done
-
-	# Also, otool is now based on llvm-objdump. But a small wrapper installed
-	# as llvm-otool remains, providing command line compatibility.
-	use classic && \
-		ln -sfn otool-classic "${budir}/otool" || \
-		ln -sfn llvm-otool "${budir}/otool"
-
 	cd "${ED}"${BINPATH}
 	insinto ${DATAPATH}/man/man1
 	local skips manpage
@@ -309,8 +361,8 @@ src_test() {
 		BUILT_PRODUCTS_DIR="${S}"/${LD64}/src \
 		ARCH="$(arch)" \
 		LD="${S}"/${LD64}/src/ld64 \
-		CC="${CC} -ccc-install-dir $PWD" \
-		CXX="${CXX} -ccc-install-dir $PWD" \
+		CC="clang -ccc-install-dir $PWD" \
+		CXX="clang++ -ccc-install-dir $PWD" \
 		OTOOL="${S}"/${CCTOOLS}/otool/otool.NEW \
 		| perl ../bin/result-filter.pl
 }
