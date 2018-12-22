@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-destdir.patch
 	"${FILESDIR}"/${P}-test-fixes.patch #146592
+	"${FILESDIR}"/${PN}-2.13-perl-5.26.patch
 )
 
 src_configure() {
