@@ -7359,7 +7359,7 @@ media-gfx/gphoto2 2.5.14 2.5.15: Free, redistributable digital camera software a
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.4 0.2.5: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
-media-gfx/graphicsmagick 1.3.27 1.3.30: Collection of tools and libraries for many image formats
+media-gfx/graphicsmagick 1.3.30: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.10: Library providing rendering capabilities for complex non-Roman writing systems
 media-gfx/graphviz 2.40.1-r1: Open Source Graph Visualization Software
 media-gfx/grub-splashes 20091109: Collection of grub splashes
@@ -9816,7 +9816,7 @@ sys-apps/gentoo-systemd-integration 7: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.24.1: Disk Utility for GNOME using udisks
 sys-apps/gptfdisk 1.0.3: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312: Administrative interface for the grsecurity Role Based Access Control system
-sys-apps/grep 3.0 3.1: GNU regular expression matcher
+sys-apps/grep 3.0-r1 3.1-r1: GNU regular expression matcher
 sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
 sys-apps/gscanbus 0.8: Bus scanning, testing and topology visualizing tool for Linux IEEE1394 subsystem
 sys-apps/gsmartcontrol 1.0.2 1.1.3: Hard disk drive health inspection tool
