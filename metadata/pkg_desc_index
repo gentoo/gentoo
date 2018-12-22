@@ -4389,7 +4389,7 @@ dev-perl/X11-XCB 0.170.0-r1: Perl bindings for libxcb
 dev-perl/X500-DN 0.290.0-r1: handle X.500 DNs (Distinguished Names), parse and format them
 dev-perl/XML-Atom 0.420.0: Atom feed and API implementation
 dev-perl/XML-Catalog 1.30.0 1.30.0-r1: Resolve public identifiers and remap system identifiers
-dev-perl/XML-DOM 1.450.0 1.460.0-r1: A Perl module for an DOM Level 1 compliant interface
+dev-perl/XML-DOM 1.460.0-r1: A Perl module for an DOM Level 1 compliant interface
 dev-perl/XML-DOM-XPath 0.140.0-r2: Perl extension to add XPath support to XML::DOM, using XML::XPath engine
 dev-perl/XML-DT 0.680.0: A perl XML down translate module
 dev-perl/XML-DTDParser 2.10.0-r1: Quick and dirty DTD Parser
