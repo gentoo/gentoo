@@ -14,12 +14,14 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_BRANCH="develop"
 else
 	SRC_URI="https://pwmt.org/projects/zathura/download/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="ZLIB"
 SLOT="0"
 IUSE="+magic seccomp sqlite synctex test"
+
+PATCHES=( "${FILESDIR}"/${PN}-find-libm.patch )
 
 RDEPEND=">=dev-libs/girara-0.3.1
 	>=dev-libs/glib-2.50:2
