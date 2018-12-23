@@ -11145,7 +11145,7 @@ x11-plugins/wmdrawer 0.10.5-r3: dockapp which provides a drawer (retractable but
 x11-plugins/wmfire 1.2.4-r3: Load monitoring dockapp displaying dancing flame
 x11-plugins/wmfishtime 1.24-r3: A fun clock applet for your desktop featuring swimming fish
 x11-plugins/wmfortune 0.241-r1: a dockapp showing fortune-mod messages
-x11-plugins/wmfrog 0.2.0-r1 0.3.1-r1: a weather application, it shows the weather in a graphical way
+x11-plugins/wmfrog 0.3.1-r1: a weather application, it shows the weather in a graphical way
 x11-plugins/wmfsm 0.36: dockapp for monitoring filesystem usage
 x11-plugins/wmget 0.6.1: a libcurl based dockapp for automated downloads
 x11-plugins/wmifinfo 0.10-r1: a dockapp for monitoring network interfaces
