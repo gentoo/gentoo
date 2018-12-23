@@ -3623,6 +3623,7 @@ dev-perl/Date-Manip 6.510.0 6.600.0: Perl date manipulation routines
 dev-perl/Date-Pcalc 6.100.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1: A simple date object
 dev-perl/DateTime 1.200.0 1.280.0: A date and time object
+dev-perl/DateTime-Calendar-Julian 0.40.0: Dates in the Julian calendar
 dev-perl/DateTime-Format-Builder 0.810.0-r1: Create DateTime parser classes and objects
 dev-perl/DateTime-Format-DateParse 0.50.0-r1: Parses Date::Parse compatible formats
 dev-perl/DateTime-Format-HTTP 0.420.0: Date conversion routines
@@ -4186,6 +4187,7 @@ dev-perl/Signal-Mask 0.8.0: Signal masks made easy
 dev-perl/Snowball-Norwegian 1.200.0-r1: Porters stemming algorithm for Norwegian
 dev-perl/Snowball-Swedish 1.200.0-r1: Porters stemming algorithm for Swedish
 dev-perl/Socket6 0.270.0 0.280.0: IPv6 related part of the C socket.h defines and structure manipulators
+dev-perl/Sort-Key 1.330.0-r1: sort objects by some (calculated) key
 dev-perl/Sort-Naturally 1.30.0-r1: sort lexically, but sort numeral parts numerically
 dev-perl/Sort-Tree 1.90.0-r1: Organize list of objects into parent/child order
 dev-perl/Sort-Versions 1.620.0: A perl 5 module for sorting of revision-like numbers
