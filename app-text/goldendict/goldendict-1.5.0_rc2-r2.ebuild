@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PV=${PV^^}
 MY_PV=${MY_PV/_/-}
-inherit eutils qmake-utils
+inherit desktop qmake-utils
 
 DESCRIPTION="Feature-rich dictionary lookup program"
 HOMEPAGE="http://goldendict.org/"
@@ -26,7 +26,7 @@ RDEPEND="
 	dev-qt/qthelp:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtsingleapplication[qt5(+)]
+	dev-qt/qtsingleapplication[qt5(+),X]
 	dev-qt/qtsvg:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
@@ -43,7 +43,8 @@ RDEPEND="
 		!libav? ( media-video/ffmpeg:0= )
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 "
@@ -75,10 +76,7 @@ src_prepare() {
 
 src_configure() {
 	local myconf=()
-
-	if ! use ffmpeg ; then
-		myconf+=( DISABLE_INTERNAL_PLAYER=1 )
-	fi
+	use ffmpeg || myconf+=( DISABLE_INTERNAL_PLAYER=1 )
 
 	eqmake5 "${myconf[@]}"
 }
