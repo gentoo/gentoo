@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,8 @@ inherit cmake-utils xdg-utils
 DESCRIPTION="Qt5-based audio player with winamp/xmms skins support"
 HOMEPAGE="http://qmmp.ylsoftware.com"
 if [[ ${PV} != 9999 ]]; then
-	SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2"
+	SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2
+		mirror://sourceforge/${PN}-dev/files/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 else
 	QMMP_DEV_BRANCH="1.2"
