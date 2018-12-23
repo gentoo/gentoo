@@ -5,17 +5,17 @@
 		<name>Mikle Kolyada</name>
 		<email>zlogene@gentoo.org</email>
 	</maintainer>
-  <upstream>
-    <maintainer status="active">
-      <email>mlq@pwmt.org</email>
-      <name>Moritz Lipp</name>
-    </maintainer>
-    <maintainer status="active">
-      <email>sebastian+dev@ramacher.at</email>
-      <name>Sebastian Ramacher</name>
-    </maintainer>
-    <changelog>http://pwmt.org/projects/zathura/download/</changelog>
-    <doc lang="en">http://pwmt.org/projects/zathura/</doc>
-    <bugs-to>http://bugs.pwmt.org/</bugs-to>
-  </upstream>
+	<upstream>
+		<maintainer status="active">
+			<email>mlq@pwmt.org</email>
+			<name>Moritz Lipp</name>
+		</maintainer>
+			<maintainer status="active">
+			<email>sebastian+dev@ramacher.at</email>
+		<name>Sebastian Ramacher</name>
+		</maintainer>
+		<changelog>http://pwmt.org/projects/zathura/download/</changelog>
+		<doc lang="en">http://pwmt.org/projects/zathura/</doc>
+		<bugs-to>http://bugs.pwmt.org/</bugs-to>
+	</upstream>
 </pkgmetadata>
