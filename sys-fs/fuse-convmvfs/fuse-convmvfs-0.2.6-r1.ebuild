@@ -1,9 +1,7 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="FUSE file system to convert filename charset"
 HOMEPAGE="http://fuse-convmvfs.sourceforge.net/"
@@ -14,8 +12,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="sys-fs/fuse"
-RDEPEND="${DEPEND}"
+RDEPEND="sys-fs/fuse:0"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 src_install() {
 	default
