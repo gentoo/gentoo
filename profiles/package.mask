@@ -291,7 +291,6 @@ net-analyzer/mate-netspeed
 =virtual/perl-Test-1.310.0
 =virtual/perl-Time-HiRes-1.975.900
 =virtual/perl-Time-Piece-1.320.400
-=virtual/perl-Unicode-Collate-1.250.0
 =virtual/perl-Unicode-Normalize-1.260.0
 =virtual/perl-XSLoader-0.300.0
 =virtual/perl-bignum-0.490.0
