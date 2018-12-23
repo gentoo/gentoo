@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils autotools python-single-r1
+inherit autotools python-single-r1
 
 DESCRIPTION="Library interface to IPMI"
 HOMEPAGE="https://sourceforge.net/projects/openipmi/"
@@ -38,12 +38,10 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
-	# Bug #338499: The installed OpenIPMIpthread.pc depends on a non-existing
-	# pthread.pc. We patch it to link -lpthread directly instead.
-	"${FILESDIR}/${PN}-2.0.16-pthreads.patch"
-
 	# https://bugs.gentoo.org/501510
-	"${FILESDIR}/${PN}-2.0.21-tinfo.patch"
+	"${FILESDIR}/${PN}-2.0.26-tinfo.patch"
+
+	"${FILESDIR}/${PN}-2.0.26-readline.patch"
 )
 
 pkg_setup() {
