@@ -10063,7 +10063,7 @@ sys-devel/autoconf-archive 2017.03.21 2017.09.28 2018.03.13: GNU Autoconf Macro 
 sys-devel/autoconf-wrapper 13-r1: wrapper for autoconf to manage multiple autoconf versions
 sys-devel/autogen 5.18.4 5.18.4-r1: Program and text file generation
 sys-devel/automake 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.15.1-r2: Used to generate Makefile.in from Makefile.am
-sys-devel/automake-wrapper 10: wrapper for automake to manage multiple automake versions
+sys-devel/automake-wrapper 10 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
 sys-devel/binutils 2.30-r4: Tools necessary to build programs
