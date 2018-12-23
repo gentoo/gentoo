@@ -152,11 +152,6 @@ sys-cluster/openmpi java openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabric
 dev-libs/libsecp256k1 -asm
 <dev-libs/libsecp256k1-0.0.0_pre20161213 asm
 
-# Davide Pesavento <pesa@gentoo.org> (19 Dec 2016)
-# Various unkeyworded deps: >=sys-devel/clang-3.9 (#591822),
-# dev-qt/qtquickcontrols2 (#603054), dev-qt/qtwebengine (#581478)
-dev-qt/qt-creator clangcodemodel clangstaticanalyzer test webengine
-
 # James Le Cuirot <chewi@gentoo.org> (14 Dec 2016)
 # DOSBox + OpenGLide is untested on this arch.
 games-emulation/dosbox glide

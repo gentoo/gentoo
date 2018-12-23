@@ -5,11 +5,6 @@
 # Requires dev-libs/mongo-c-driver which isn't keyworded
 >=app-admin/rsyslog-8.31 mongodb
 
-# Davide Pesavento <pesa@gentoo.org> (19 Dec 2016)
-# Various unkeyworded deps: >=sys-devel/clang-3.9 (#591822),
-# dev-qt/qtquickcontrols2 (#603054), dev-qt/qtwebengine (#581478)
-dev-qt/qt-creator clangcodemodel clangstaticanalyzer test webengine
-
 # Davide Pesavento <pesa@gentoo.org> (28 Jul 2016)
 # The corresponding Qt5 modules are not keyworded on arm, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
