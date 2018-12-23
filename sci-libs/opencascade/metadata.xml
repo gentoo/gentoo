@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <use>
-    <flag name="freeimage">Enable support for image i/o via media-libs/freeimage</flag>
-    <flag name="gl2ps">Use gl2ps PostScript printing library</flag>
-    <flag name="gles2">Use OpenGL ES 2.0</flag>
-    <flag name="tbb">Enable multithreading with the Intel Threads Building Block dev-cpp/tbb</flag>
-    <flag name="vtk">Enable Virtualisation Toolkit</flag>
-  </use>
+<maintainer type="person">
+	<email>waebbl@gmail.com</email>
+	<name>Bernd Waibel</name>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<use>
+	<flag name="freeimage">Enable support for image i/o via media-libs/freeimage</flag>
+	<flag name="gl2ps">Use gl2ps PostScript printing library</flag>
+	<flag name="gles2">Use OpenGL ES 2.0</flag>
+	<flag name="tbb">Enable multithreading with the Intel Threads Building Block dev-cpp/tbb</flag>
+	<flag name="vtk">Enable Virtualisation Toolkit</flag>
+</use>
 </pkgmetadata>
