@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=sys-fs/fuse:0 virtual/pkgconfig
+DESCRIPTION=FUSE file system to convert filename charset
+EAPI=7
+HOMEPAGE=http://fuse-convmvfs.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-fs/fuse:0
+SLOT=0
+SRC_URI=mirror://sourceforge/project/fuse-convmvfs/fuse-convmvfs/0.2.6/fuse-convmvfs-0.2.6.tar.gz
+_md5_=727feb31ac9a703479401159f33c1e77
