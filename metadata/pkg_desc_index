@@ -2999,7 +2999,7 @@ dev-libs/gf-complete 0.0.0: A Comprehensive Open Source Library for Galois Field
 dev-libs/gf2x 1.0-r1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.1: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.46.0 1.48.7: Javascript bindings for GNOME
-dev-libs/glib 2.52.3 2.56.2: The GLib library of C routines
+dev-libs/glib 2.52.3 2.56.2 2.56.4: The GLib library of C routines
 dev-libs/gmime 2.6.23 3.2.0: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.1.2: Library for arbitrary-precision arithmetic on different type of numbers
 dev-libs/gobject-introspection 1.50.0 1.52.1 1.56.1: Introspection system for GObject-based libraries
@@ -6288,13 +6288,13 @@ dev-util/elfkickers 3.0a: collection of programs to manipulate ELF files: sstrip
 dev-util/fix-la-relink-command 0.1.1: Helps prevent .la files from relinking to libraries outside a build tree
 dev-util/flawfinder 1.31: Examines C/C++ source code for security flaws
 dev-util/ftjam 2.5.3_rc2-r1: FTJam is a 100% compatible, enhanced implementation of the make alternative Jam
-dev-util/gdbus-codegen 2.52.3 2.56.2-r1: GDBus code and documentation generator
+dev-util/gdbus-codegen 2.52.3 2.56.2-r1 2.56.4: GDBus code and documentation generator
 dev-util/geany 1.30.1: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.30: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.5.0: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/glade 3.20.2 3.20.4: A user interface designer for GTK+ and GNOME
-dev-util/glib-utils 2.52.3 2.56.2: Build utilities for GLib using projects
+dev-util/glib-utils 2.52.3 2.56.2 2.56.4: Build utilities for GLib using projects
 dev-util/global 6.3.1: tag system to find an object location in various sources
 dev-util/gn 0.1463: GN is a meta-build system that generates build files for Ninja
 dev-util/gnome-builder 3.24.2-r1: Builder attempts to be an IDE for writing software for GNOME
@@ -8968,7 +8968,7 @@ net-misc/networkmanager-openvpn 1.8.8: NetworkManager OpenVPN plugin
 net-misc/networkmanager-pptp 1.2.8: NetworkManager PPTP VPN plugin
 net-misc/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
 net-misc/npapi-sdk 0.27.2: NPAPI headers bundle
-net-misc/ntp 4.2.8_p11: Network Time Protocol suite/programs
+net-misc/ntp 4.2.8_p11 4.2.8_p12: Network Time Protocol suite/programs
 net-misc/ntpclient 2018.244: A NTP (RFC-1305 and RFC-4330) client for unix-alike systems
 net-misc/nx 3.5.0.33 3.5.99.16: NX compression technology core libraries
 net-misc/ofono 1.16: Open Source mobile telephony (GSM/UMTS) daemon
@@ -9987,7 +9987,7 @@ sys-block/hpacucli 9.40.12.0: HP Array Config Utility Command Line Interface (HP
 sys-block/hpssacli 2.40.13.0-r1: HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)
 sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p20130821: Open Source iSCSI target with professional features
 sys-block/kvpm 0.9.10: KDE frontend for Linux LVM2 and GNU parted
-sys-block/mbuffer 20150412 20171011: M(easuring)buffer is a replacement for buffer with additional functionality
+sys-block/mbuffer 20150412 20171011 20181119: M(easuring)buffer is a replacement for buffer with additional functionality
 sys-block/megacli 8.07.10: LSI Logic MegaRAID Command Line Interface management tool
 sys-block/megactl 0.4.1-r2: LSI MegaRAID control utility
 sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration and status of LSI SCSI HBAs
