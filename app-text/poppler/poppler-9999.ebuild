@@ -12,7 +12,7 @@ if [[ "${PV}" == "9999" ]] ; then
 else
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-	SLOT="0/82"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
+	SLOT="0/83"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
 fi
 
 DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
@@ -93,7 +93,7 @@ src_configure() {
 		-DENABLE_SPLASH=ON
 		-DENABLE_ZLIB=ON
 		-DENABLE_ZLIB_UNCOMPRESS=OFF
-		-DENABLE_XPDF_HEADERS=ON
+		-DENABLE_UNSTABLE_API_ABI_HEADERS=ON
 		-DSPLASH_CMYK=OFF
 		-DUSE_FIXEDPOINT=OFF
 		-DUSE_FLOAT=OFF
