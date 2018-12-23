@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -61,7 +61,10 @@ RDEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 "
 
-PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-qt-5.11.patch"
+	"${FILESDIR}/${P}-libraw-0.19.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
