@@ -30,7 +30,7 @@ ruby_add_bdepend "
 		>=dev-ruby/nokogiri-1.5.2
 		>=dev-ruby/syntax-1.0.0
 		>=dev-util/aruba-0.6.1 =dev-util/aruba-0.6*
-		>=dev-ruby/json-1.7
+		>=dev-ruby/json-1.8.6:0
 		>=dev-util/cucumber-3
 		>=dev-ruby/mime-types-2.99:2
 	)"
