@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 	sys-libs/zlib
 	fits? ( sci-libs/cfitsio )
-	indi? ( >=sci-libs/indilib-1.4.0 )
+	indi? ( >=sci-libs/indilib-1.7.5 )
 	password? ( dev-libs/qtkeychain:= )
 	raw? ( media-libs/libraw:= )
 	wcs? ( sci-astronomy/wcslib )
