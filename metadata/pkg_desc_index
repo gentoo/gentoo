@@ -5185,7 +5185,7 @@ dev-python/osc-lib 1.7.0 1.9.0 1.11.1: A package of common support modules for w
 dev-python/osc-placement 1.3.0: OpenStackClient plugin for the Placement service
 dev-python/oslo-cache 1.28.0: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.25.1 3.27.0: library for running multi-thread, multi-process applications
-dev-python/oslo-config 5.2.0 6.4.0: Oslo Configuration API
+dev-python/oslo-config 6.4.1: Oslo Configuration API
 dev-python/oslo-context 2.20.0 2.21.0: Helpers to maintain useful information about a request context
 dev-python/oslo-db 4.33.1 4.40.0: OpenStack Common DB Code
 dev-python/oslo-i18n 3.19.0: Oslo i18n library
