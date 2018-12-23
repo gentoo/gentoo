@@ -14,7 +14,7 @@ SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="doc +dyn-manifest static-libs test"
 
 RDEPEND=">=media-libs/lv2-1.14.0-r1[${MULTILIB_USEDEP}]
