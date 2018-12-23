@@ -1922,13 +1922,17 @@ dev-qt/qt-creator:android - Build plugin for Android devices
 dev-qt/qt-creator:autotools - Enable autotools project manager plugin
 dev-qt/qt-creator:baremetal - Build plugin for bare metal devices
 dev-qt/qt-creator:bazaar - Add support for dev-vcs/bzr version control system
+dev-qt/qt-creator:clang - Build clang-based plugins (code model, format, static analysis)
 dev-qt/qt-creator:clangcodemodel - Build clang-based code model and refactoring plugins
 dev-qt/qt-creator:clangstaticanalyzer - Build clang-based static analyzer plugin
 dev-qt/qt-creator:clearcase - Add support for IBM ClearCase version control system (requires manual installation of ClearCase client)
 dev-qt/qt-creator:cmake - Enable cmake project manager plugin
+dev-qt/qt-creator:cppcheck - Enable integration with dev-util/cppcheck
 dev-qt/qt-creator:designer - Build widget designer plugin
 dev-qt/qt-creator:glsl - Enable GLSL source code editor
+dev-qt/qt-creator:help - Build the help plugin
 dev-qt/qt-creator:ios - Build plugin for Apple iOS devices
+dev-qt/qt-creator:lsp - Add support for the Language Server Protocol (LSP)
 dev-qt/qt-creator:mercurial - Add support for dev-vcs/mercurial version control system
 dev-qt/qt-creator:modeling - Enable graphical model editor
 dev-qt/qt-creator:nim - Enable Nim source code editor
@@ -1937,6 +1941,8 @@ dev-qt/qt-creator:python - Enable Python source code editor
 dev-qt/qt-creator:qbs - Enable QBS project manager plugin
 dev-qt/qt-creator:qnx - Build plugin for QNX devices
 dev-qt/qt-creator:scxml - Enable graphical SCXML editor
+dev-qt/qt-creator:serialterminal - Build serial terminal plugin
+dev-qt/qt-creator:silversearcher - Enable integration with sys-apps/the_silver_searcher
 dev-qt/qt-creator:systemd - Add support for retrieving application output from journald
 dev-qt/qt-creator:valgrind - Add support for memory debugging using dev-util/valgrind
 dev-qt/qt-creator:webengine - Use dev-qt/qtwebengine to view documentation
