@@ -48,6 +48,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-fix-drawing-box-chars.patch" ) # fixed in 18.12.1
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package X X11)

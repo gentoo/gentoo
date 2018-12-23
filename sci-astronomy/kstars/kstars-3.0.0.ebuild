@@ -9,16 +9,15 @@ inherit kde5 python-single-r1
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Desktop Planetarium"
-HOMEPAGE="https://www.kde.org/applications/education/kstars https://edu.kde.org/kstars"
-IUSE="fits indi raw wcs xplanet"
+HOMEPAGE="https://www.kde.org/applications/education/kstars https://edu.kde.org/kstars/"
+IUSE="fits indi +password raw wcs"
 
 REQUIRED_USE="indi? ( fits ) ${PYTHON_REQUIRED_USE}"
 
-# TODO: AstrometryNet requires new package
 COMMON_DEPEND="
 	$(add_frameworks_dep kauth)
 	$(add_frameworks_dep kconfig)
@@ -33,6 +32,7 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kplotting)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
+	$(add_qt_dep qtdatavis3d)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
@@ -40,13 +40,14 @@ COMMON_DEPEND="
 	$(add_qt_dep qtprintsupport)
 	$(add_qt_dep qtsql)
 	$(add_qt_dep qtsvg)
+	$(add_qt_dep qtwebsockets)
 	$(add_qt_dep qtwidgets)
 	sys-libs/zlib
 	fits? ( sci-libs/cfitsio )
-	indi? ( >=sci-libs/indilib-1.4.0 )
+	indi? ( >=sci-libs/indilib-1.7.5 )
+	password? ( dev-libs/qtkeychain:= )
 	raw? ( media-libs/libraw:= )
 	wcs? ( sci-astronomy/wcslib )
-	xplanet? ( x11-misc/xplanet )
 "
 # TODO: Add back when re-enabled by upstream
 # 	opengl? (
@@ -61,19 +62,24 @@ RDEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-qt-5.11.patch"
-	"${FILESDIR}/${P}-libraw-0.19.patch"
-)
-
 src_configure() {
 	local mycmakeargs=(
+		-DFETCH_TRANSLATIONS=OFF
 		$(cmake-utils_use_find_package fits CFitsio)
 		$(cmake-utils_use_find_package indi INDI)
+		$(cmake-utils_use_find_package password Qt5Keychain)
 		$(cmake-utils_use_find_package raw LibRaw)
 		$(cmake-utils_use_find_package wcs WCSLIB)
-		$(cmake-utils_use_find_package xplanet Xplanet)
 	)
 
 	kde5_src_configure
+}
+
+pkg_postinst () {
+	kde5_pkg_postinst
+
+	if [[ -z "${REPLACING_VERSIONS}" ]] && ! has_version "x11-misc/xplanet" ; then
+		elog "${PN} has optional runtime support for x11-misc/xplanet"
+	fi
+	# same for AstrometryNet, which is not packaged.
 }
