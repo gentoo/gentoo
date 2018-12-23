@@ -48,13 +48,13 @@ case ${PV} in
 	;;
 esac
 
-PATCH_VER=""
-PATCH_DEV=""
+PATCH_VER="1"
+PATCH_DEV="slyfox"
 DESCRIPTION="GNU debugger"
 HOMEPAGE="https://sourceware.org/gdb/"
 SRC_URI="${SRC_URI}
-	${PATCH_DEV:+https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz}
-	${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}
+	${PATCH_DEV:+https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${PN}-8.1-patches-${PATCH_VER}.tar.xz}
+	${PATCH_VER:+mirror://gentoo/${PN}-8.1-patches-${PATCH_VER}.tar.xz}
 "
 
 LICENSE="GPL-2 LGPL-2"
@@ -89,6 +89,11 @@ DEPEND="${RDEPEND}
 	)"
 
 S=${WORKDIR}/${PN}-${MY_PV}
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.2-tinfow.patch
+	"${FILESDIR}"/${PN}-8.2-sparc-fix-syntax.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
