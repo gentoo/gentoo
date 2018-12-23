@@ -3045,7 +3045,7 @@ dev-libs/libaio 0.3.110: Asynchronous input/output library that uses the kernels
 dev-libs/libappindicator 12.10.0-r201 12.10.0-r301: A library to allow applications to export a menu into the Unity Menu bar
 dev-libs/libassuan 2.4.3-r1 2.5.1: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19-r1 0.19-r2: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
-dev-libs/libatomic_ops 7.6.4 7.6.6: Implementation for atomic memory update operations
+dev-libs/libatomic_ops 7.6.6: Implementation for atomic memory update operations
 dev-libs/libax25 0.0.12_rc4: AX.25 library for hamradio applications
 dev-libs/libbase58 0.1.4: C implementation of Bitcoin's base58 encoding
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
