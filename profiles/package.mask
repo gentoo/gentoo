@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hanno Boeck <hanno@gentoo.org (23 Dec 2018)
+# Needs new OpenSSL, should be unmasked together with
+# OpenSSL 1.1.1
+>=app-crypt/osslsigncode-2.0
+
 # Jeroen Roovers <jer@gentoo.org> (14 Dec 2018)
 # Deprecated short lived branches https://www.nvidia.com/object/unix.html
 # Unsupported legacy branch 304 https://bugs.gentoo.org/669588
