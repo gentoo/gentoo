@@ -10,4 +10,4 @@ HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=2607"
 SRC_URI="https://github.com/vim-scripts/${PN}.vim/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
