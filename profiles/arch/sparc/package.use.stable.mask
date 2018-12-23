@@ -42,10 +42,6 @@ app-admin/augeas test
 app-text/texlive context l10n_ja
 sys-block/thin-provisioning-tools test
 
-# Davide Pesavento <pesa@gentoo.org> (18 Oct 2015)
-# Requires dev-python/PyQt5, which is not stable on sparc
-media-sound/pulseaudio equalizer
-
 # Pacho Ramos <pacho@gentoo.org> (02 Aug 2015)
 # Missing keywords
 dev-python/pyquery test
