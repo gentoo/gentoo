@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -53,7 +53,7 @@ CDEPEND="
 	>=dev-qt/qtxml-${QT_PV}
 	clangcodemodel? ( >=sys-devel/clang-5:= )
 	designer? ( >=dev-qt/designer-${QT_PV} )
-	qbs? ( >=dev-util/qbs-1.11.1 )
+	qbs? ( ~dev-util/qbs-1.11.1 )
 	systemd? ( sys-apps/systemd:= )
 	webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets] )
 "
