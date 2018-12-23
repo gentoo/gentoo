@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,10 +21,13 @@ DEPEND="
 	dev-libs/boost:=
 	dev-libs/glib:2
 	dev-libs/gmp:0=
+	dev-libs/libzip:=
 	dev-libs/mpfr:0=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtgui:5[-gles2]
+	dev-qt/qtmultimedia:5[-gles2]
 	dev-qt/qtopengl:5
 	media-gfx/opencsg
 	media-libs/fontconfig:1.0
