@@ -16,7 +16,7 @@ else
 		SRC_URI="mirror://gentoo/${P}.tar.gz"
 		S="${WORKDIR}"
 	fi
-	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Alliance for Open Media AV1 Codec SDK"
