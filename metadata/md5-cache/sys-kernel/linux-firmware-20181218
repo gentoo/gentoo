@@ -10,4 +10,4 @@ RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-0f22c8527439eaaf5c3fcf87b31c89445b6fa84d.tar.gz -> linux-firmware-20181218.tar.gz
 _eclasses_=portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e
-_md5_=4f000341ef8bdd11bcfa0ab3de507ff4
+_md5_=e2a76bfe56af45ad7eed1e8032fc94d8

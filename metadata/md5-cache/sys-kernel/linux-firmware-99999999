@@ -9,4 +9,4 @@ RDEPEND=!savedconfig? ( !sys-firmware/alsa-firmware[alsa_cards_ca0132] !sys-firm
 RESTRICT=binchecks strip
 SLOT=0
 _eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e
-_md5_=8b8cb23b6af3f3c5ce59ec691546adc1
+_md5_=350e69a2b323dd468a4575495e2b5f71
