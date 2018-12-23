@@ -1149,6 +1149,7 @@ dev-games/ogre:resman-strict - Resource Manager STRICT : search in default group
 dev-games/ogre:tbb - When USE=threads, use tbb for threading
 dev-games/ogre:tools - Build and install helper tools
 dev-games/openscenegraph:asio - Enable support for dev-cpp/asio library
+dev-games/openscenegraph:egl - Enable EGL support
 dev-games/openscenegraph:fox - Build examples using x11-libs/fox library
 dev-games/openscenegraph:gdal - Enable support for sci-libs/gdal library
 dev-games/openscenegraph:las - Enable support for geospatial data LAS LiDAR format using sci-geosciences/liblas
