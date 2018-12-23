@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit elisp-common git-r3 qmake-utils xdg-utils
+inherit elisp-common git-r3 qmake-utils xdg
 
 SITEFILE="50${PN}-gentoo.el"
 
@@ -70,14 +70,4 @@ src_install() {
 	fi
 
 	einstalldocs
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }

@@ -1,11 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit elisp-common qmake-utils xdg-utils
+inherit elisp-common qmake-utils xdg
 
-MY_PV="2015.03-3"
+# 2015.03-3
+MY_VER=$(ver_cut 1-2) # version component
+MY_REL=$(ver_cut 4) # release component, 'p' being the third component
+MY_PV=${MY_VER}-${MY_REL}
 SITEFILE="50${PN}-gentoo.el"
 
 DESCRIPTION="The Programmers Solid 3D CAD Modeller"
@@ -71,14 +74,4 @@ src_install() {
 	fi
 
 	einstalldocs
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }
