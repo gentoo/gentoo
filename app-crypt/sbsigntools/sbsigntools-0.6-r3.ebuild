@@ -14,10 +14,11 @@ SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/${MY_PN}_${PV}.ori
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
+IUSE="libressl"
 
 RDEPEND="
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	sys-apps/util-linux"
 DEPEND="${RDEPEND}
 	sys-apps/help2man
