@@ -28,7 +28,7 @@ RDEPEND="
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5"
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools"
+	dev-qt/linguist-tools:5"
 
 src_configure() {
 	local mycmakeargs=(
