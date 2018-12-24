@@ -116,10 +116,14 @@ src_prepare() {
 		sed -i -e '/glsl/d' src/libs/libs.pro || die
 	fi
 	if ! use lsp; then
-		sed -i -e '/languageserverprotocol/d' src/libs/libs.pro || die
+		sed -i -e '/languageserverprotocol/d' src/libs/libs.pro tests/auto/auto.pro || die
 	fi
 	if ! use modeling; then
 		sed -i -e '/modelinglib/d' src/libs/libs.pro || die
+	fi
+	if ! use valgrind; then
+		sed -i -e '/valgrindfake/d' src/tools/tools.pro || die
+		sed -i -e '/valgrind/d' tests/auto/auto.pro || die
 	fi
 
 	# automagic dep on qtwebengine
@@ -129,21 +133,18 @@ src_prepare() {
 
 	# disable broken or unreliable tests
 	sed -i -e 's/\(manual\|tools\|unit\)//g' tests/tests.pro || die
-	sed -i -e '/sdktool/ d' tests/auto/auto.pro || die
-	sed -i -e '/\(dumpers\|offsets\)\.pro/ d' tests/auto/debugger/debugger.pro || die
-	sed -i -e '/CONFIG -=/ s/$/ testcase/' tests/auto/extensionsystem/pluginmanager/correctplugins1/plugin?/plugin?.pro || die
-	sed -i -e '/timeline\(items\|notes\|selection\)renderpass/ d' tests/auto/tracing/tracing.pro || die
-	sed -i -e 's/\<memcheck\>//' tests/auto/valgrind/valgrind.pro || die
+	sed -i -e '/\(dumpers\|namedemangler\)\.pro/d' tests/auto/debugger/debugger.pro || die
+	sed -i -e '/CONFIG -=/s/$/ testcase/' tests/auto/extensionsystem/pluginmanager/correctplugins1/plugin?/plugin?.pro || die
 
 	# fix path to some clang headers
-	sed -i -e "/^CLANG_RESOURCE_DIR\s*=/ s:\$\${LLVM_LIBDIR}:${EPREFIX}/usr/lib:" src/shared/clang/clang_defines.pri || die
+	sed -i -e "/^CLANG_RESOURCE_DIR\s*=/s:\$\${LLVM_LIBDIR}:${EPREFIX}/usr/lib:" src/shared/clang/clang_defines.pri || die
 
 	# fix translations
 	local lang languages=
 	for lang in ${PLOCALES}; do
 		use l10n_${lang} && languages+=" ${lang/-/_}"
 	done
-	sed -i -e "/^LANGUAGES\s*=/ s:=.*:=${languages}:" share/qtcreator/translations/translations.pro || die
+	sed -i -e "/^LANGUAGES\s*=/s:=.*:=${languages}:" share/qtcreator/translations/translations.pro || die
 
 	# remove bundled botan
 	rm -rf src/libs/3rdparty/botan || die
