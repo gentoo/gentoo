@@ -48,7 +48,7 @@ RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	metalink? ( >=media-libs/libmetalink-0.1.1[${MULTILIB_USEDEP}] )
 	rtmp? ( media-video/rtmpdump[${MULTILIB_USEDEP}] )
-	ssh? ( net-libs/libssh2[static-libs?,${MULTILIB_USEDEP}] )
+	ssh? ( net-libs/libssh2[${MULTILIB_USEDEP}] )
 	sys-libs/zlib[${MULTILIB_USEDEP}]"
 
 # Do we need to enforce the same ssl backend for curl and rtmpdump? Bug #423303
