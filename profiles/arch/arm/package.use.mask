@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Anthony G. Basile <blueness@gentoo.org> (24 Dec 2018)
+# asm broken on arm, bug #673580
+=dev-libs/libressl-2.9.0 asm
+
 # Aaron W. Swenson <titanofold@gentoo.org> (19 Oct 2018)
 # Requires sys-devel/clang which isn’t keyworded for ARM.
 dev-db/postgresql llvm
