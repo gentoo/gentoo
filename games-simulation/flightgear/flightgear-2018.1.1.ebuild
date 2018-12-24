@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ IUSE="dbus debug examples gdal openmp qt5 test +udev +utils vim-syntax"
 # zlib is some strange auto-dep from simgear
 COMMON_DEPEND="
 	dev-db/sqlite:3
-	>=dev-games/openscenegraph-3.2.0[jpeg,png]
+	>=dev-games/openscenegraph-3.2.0:=[jpeg,png]
 	~dev-games/simgear-${PV}[gdal=]
 	media-libs/openal
 	>=media-libs/speex-1.2.0:0
