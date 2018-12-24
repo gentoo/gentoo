@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>jeffrey@icurse.nl</email>
+		<name>Jeffrey Lin</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Julia is a high-level, high-performance dynamic programming language for
+		technical computing, with syntax that is familiar to users of other
+		technical computing environments. It provides a sophisticated
+		compiler, distributed parallel execution, numerical accuracy, and an
+		extensive mathematical function library. The library, mostly written
+		in Julia itself, also integrates mature, best-of-breed C and Fortran
+		libraries for linear algebra, random number generation, FFTs, and
+		string processing. Julia programs are organized around defining
+		functions, and overloading them for different combinations of
+		argument types (which can also be user-defined).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">JuliaLang/julia</remote-id>
+	</upstream>
+</pkgmetadata>
