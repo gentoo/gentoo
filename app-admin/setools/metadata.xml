@@ -7,6 +7,6 @@
 	</maintainer>
 	<longdescription>SELinux policy analysis tools.</longdescription>
 	<upstream>
-		<remote-id type="github">TresysTechnology/setools</remote-id>
+		<remote-id type="github">SELinuxProject/setools</remote-id>
 	</upstream>
 </pkgmetadata>
