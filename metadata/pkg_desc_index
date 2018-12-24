@@ -9763,7 +9763,7 @@ sys-apps/accountsservice 0.6.50-r1: D-Bus interfaces for querying and manipulati
 sys-apps/ack 2.18-r1: ack is a tool like grep, optimized for programmers
 sys-apps/acl 2.2.52-r1: access control list utilities, libraries and headers
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
-sys-apps/apply-default-acl 0.4.1: Apply default POSIX ACLs to files and directories
+sys-apps/apply-default-acl 0.4.2: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
