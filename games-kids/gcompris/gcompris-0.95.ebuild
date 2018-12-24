@@ -17,16 +17,16 @@ IUSE=""
 S="${WORKDIR}/${PN}-qt-${PV}"
 
 RDEPEND="
-	dev-qt/qtcore
-	dev-qt/qtgraphicaleffects
-	dev-qt/qtgui
-	dev-qt/qtmultimedia[qml]
-	dev-qt/qtnetwork
-	dev-qt/qtquickcontrols
-	dev-qt/qtsensors[qml]
-	dev-qt/qtsvg
-	dev-qt/qtxml
-	dev-qt/qtxmlpatterns"
+	dev-qt/qtcore:5
+	dev-qt/qtgraphicaleffects:5
+	dev-qt/qtgui:5
+	dev-qt/qtmultimedia:5[qml]
+	dev-qt/qtnetwork:5
+	dev-qt/qtquickcontrols:5
+	dev-qt/qtsensors:5[qml]
+	dev-qt/qtsvg:5
+	dev-qt/qtxml:5
+	dev-qt/qtxmlpatterns:5"
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools"
 
