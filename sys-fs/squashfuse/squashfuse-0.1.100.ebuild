@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2016-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ IUSE="lz4 lzma lzo +zlib"
 REQUIRED_USE="|| ( lz4 lzma lzo zlib )"
 
 COMMON_DEPEND="
-	>=sys-fs/fuse-2.8.6:=
+	>=sys-fs/fuse-2.8.6:0=
 	lzma? ( >=app-arch/xz-utils-5.0.4:= )
 	zlib? ( >=sys-libs/zlib-1.2.5-r2:= )
 	lzo? ( >=dev-libs/lzo-2.06:= )
