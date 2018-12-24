@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ IUSE="+dns debug gdal openmp subversion test"
 
 COMMON_DEPEND="
 	dev-libs/expat
-	>=dev-games/openscenegraph-3.2.0
+	>=dev-games/openscenegraph-3.2.0:=
 	media-libs/openal
 	net-misc/curl
 	sys-libs/zlib
