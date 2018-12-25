@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -103,6 +103,7 @@ PATCHES=(
 	# Reduce memory usage by using a fake CSS theme instead of full Adwaita for GTK+ needing plugins; requires eautoreconf
 	# Fix build system to require gudev with wayland, bug #627966
 	"${WORKDIR}"/patches/
+	"${FILESDIR}"/glib-2.58-compat.patch
 )
 
 python_check_deps() {
