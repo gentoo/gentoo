@@ -814,7 +814,7 @@ app-eselect/eselect-python 20160516 20171204: Eselect module for management of m
 app-eselect/eselect-rails 0.23: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.7: Manages renpy symlink
 app-eselect/eselect-repository 4: Manage repos.conf via eselect
-app-eselect/eselect-ruby 20161226 20170723: Manages multiple Ruby versions
+app-eselect/eselect-ruby 20170723: Manages multiple Ruby versions
 app-eselect/eselect-rust 0.3_pre20150428: eselect module for rust
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
 app-eselect/eselect-sh 0.4-r2: Manages the /bin/sh (POSIX shell) symlink
