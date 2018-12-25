@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -38,7 +38,9 @@ all_ruby_prepare() {
 
 	# Avoid unneeded dependency on bundler, bug 603696
 	sed -i -e '/bundler/ s:^:#:' \
-		-e 's/Bundler::GemHelper.gemspec.full_name/"rdoc"/' Rakefile || die
+		-e 's/Bundler::GemHelper.gemspec.full_name/"rdoc"/' \
+		-e '/rubocop\/rake/ s:^:#:' \
+		-e '/RuboCop/,/end/ s:^:#:' Rakefile || die
 
 	# Remove test that is depending on the locale, which we can't garantuee.
 	sed -i -e '/def test_encode_with/,/^  end/ s:^:#:' test/test_rdoc_options.rb || die
