@@ -5,7 +5,13 @@
 # All the Mac OS X profiles inherit from their matching arch profile here.
 
 
-# Fabian Gtoffen <grobian@gentoo.org> (22 Dec 2018)
+# Fabian Groffen <grobian@gentoo.org> (25 Dec 2018)
+# GCC-8.2.0 causes a problem with Perl-5.28 where Configure wrongly
+# believes every function it checks is available.  Need to revisit this
+# at a later point.
+>=sys-devel/gcc-8
+
+# Fabian Groffen <grobian@gentoo.org> (22 Dec 2018)
 # this version of libffi causes gcc to buserror
 =dev-libs/libffi-3.3_rc0
 
@@ -13,8 +19,10 @@
 # Apple removed entire PowerPC support from ld in ld64-128.2 (4.3)
 # a backport of PPC support was kept until compilation with gcc-apple
 # was no longer possible since 7.0.
-# The only working/supported versions are 3.2 and 6.3
+# The only working versions are 3.2 and (patched) 6.3, however the
+# latter causes bus errors whilst compiling e.g. GCC
 =sys-devel/binutils-apple-4.3-r2
 =sys-devel/binutils-apple-5.1-r1
 =sys-devel/binutils-apple-6.1-r1
+=sys-devel/binutils-apple-6.3-r2
 >sys-devel/binutils-apple-6.99999
