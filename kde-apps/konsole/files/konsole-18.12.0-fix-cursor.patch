@@ -1,0 +1,58 @@
+From b48ecb5712037027e6385515c9eced7fabfc3dc3 Mon Sep 17 00:00:00 2001
+From: "Martin T. H. Sandsmark" <martin.sandsmark@kde.org>
+Date: Mon, 10 Dec 2018 10:09:35 -0500
+Subject: fix cursor when anti aliasing is enabled
+
+Summary:
+When there is a margin of 1 pixel, but some of the anti-aliasing
+"blur" leaks to 0,0. so it is fixed with a full update() (e. g. when
+it regains focus), but not when just some content updates in the
+window.   Without this it draws outside the content rect, most
+visible as a vertical line if the cursor is completely to the left and
+then moves.
+
+Reviewers: #konsole, hindenburg
+
+Reviewed By: #konsole, hindenburg
+
+Subscribers: pbraun, konsole-devel, #konsole
+
+Tags: #konsole
+
+Differential Revision: https://phabricator.kde.org/D17414
+
+(cherry picked from commit e7085310d6d594823d0ed491fa8bdbd99dec4932)
+---
+ src/TerminalDisplay.cpp | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/TerminalDisplay.cpp b/src/TerminalDisplay.cpp
+index 6e8b262..64c831c 100644
+--- a/src/TerminalDisplay.cpp
++++ b/src/TerminalDisplay.cpp
+@@ -933,7 +933,7 @@ void TerminalDisplay::drawCursor(QPainter& painter,
+ 
+     // shift rectangle top down one pixel to leave some space
+     // between top and bottom
+-    QRect cursorRect = rect.adjusted(0, 1, 0, 0);
++    QRectF cursorRect = rect.adjusted(0, 1, 0, 0);
+ 
+     QColor cursorColor = _cursorColor.isValid() ? _cursorColor : foregroundColor;
+     painter.setPen(cursorColor);
+@@ -942,10 +942,10 @@ void TerminalDisplay::drawCursor(QPainter& painter,
+         // draw the cursor outline, adjusting the area so that
+         // it is draw entirely inside 'rect'
+         int penWidth = qMax(1, painter.pen().width());
+-        painter.drawRect(cursorRect.adjusted(penWidth / 2,
+-                                             penWidth / 2,
+-                                             - penWidth / 2 - penWidth % 2,
+-                                             - penWidth / 2 - penWidth % 2));
++        painter.drawRect(cursorRect.adjusted(penWidth / 2 + 0.5,
++                                             penWidth / 2 + 0.5,
++                                             - penWidth / 2 - penWidth % 2 + 0.5,
++                                             - penWidth / 2 - penWidth % 2 + 0.5));
+ 
+         // draw the cursor body only when the widget has focus
+         if (hasFocus()) {
+-- 
+cgit v1.1
