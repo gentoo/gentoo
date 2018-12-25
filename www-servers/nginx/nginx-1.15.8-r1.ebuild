@@ -101,7 +101,7 @@ RTMP_MODULE_URI="https://github.com/arut/nginx-rtmp-module/archive/v${RTMP_MODUL
 RTMP_MODULE_WD="${WORKDIR}/nginx-rtmp-module-${RTMP_MODULE_PV}"
 
 # nginx-dav-ext-module (https://github.com/arut/nginx-dav-ext-module, BSD license)
-HTTP_DAV_EXT_MODULE_PV="0.1.0"
+HTTP_DAV_EXT_MODULE_PV="3.0.0"
 HTTP_DAV_EXT_MODULE_P="ngx_http_dav_ext-${HTTP_DAV_EXT_MODULE_PV}"
 HTTP_DAV_EXT_MODULE_URI="https://github.com/arut/nginx-dav-ext-module/archive/v${HTTP_DAV_EXT_MODULE_PV}.tar.gz"
 HTTP_DAV_EXT_MODULE_WD="${WORKDIR}/nginx-dav-ext-module-${HTTP_DAV_EXT_MODULE_PV}"
@@ -114,7 +114,7 @@ HTTP_ECHO_MODULE_WD="${WORKDIR}/echo-nginx-module-${HTTP_ECHO_MODULE_PV}"
 
 # mod_security for nginx (https://modsecurity.org/, Apache-2.0)
 # keep the MODULE_P here consistent with upstream to avoid tarball duplication
-HTTP_SECURITY_MODULE_PV="2.9.2"
+HTTP_SECURITY_MODULE_PV="2.9.3"
 HTTP_SECURITY_MODULE_P="modsecurity-${HTTP_SECURITY_MODULE_PV}"
 HTTP_SECURITY_MODULE_URI="https://www.modsecurity.org/tarball/${HTTP_SECURITY_MODULE_PV}/${HTTP_SECURITY_MODULE_P}.tar.gz"
 HTTP_SECURITY_MODULE_WD="${WORKDIR}/${HTTP_SECURITY_MODULE_P}"
@@ -156,7 +156,7 @@ GEOIP2_MODULE_URI="https://github.com/leev/ngx_http_geoip2_module/archive/${GEOI
 GEOIP2_MODULE_WD="${WORKDIR}/ngx_http_geoip2_module-${GEOIP2_MODULE_PV}"
 
 # njs-module (https://github.com/nginx/njs, as-is)
-NJS_MODULE_PV="0.2.6"
+NJS_MODULE_PV="0.2.7"
 NJS_MODULE_P="njs-${NJS_MODULE_PV}"
 NJS_MODULE_URI="https://github.com/nginx/njs/archive/${NJS_MODULE_PV}.tar.gz"
 NJS_MODULE_WD="${WORKDIR}/njs-${NJS_MODULE_PV}"
@@ -313,7 +313,7 @@ CDEPEND="
 	nginx_modules_http_lua? ( !luajit? ( dev-lang/lua:0= ) luajit? ( dev-lang/luajit:2= ) )
 	nginx_modules_http_auth_pam? ( virtual/pam )
 	nginx_modules_http_metrics? ( dev-libs/yajl:= )
-	nginx_modules_http_dav_ext? ( dev-libs/expat )
+	nginx_modules_http_dav_ext? ( dev-libs/libxml2 )
 	nginx_modules_http_security? (
 		dev-libs/apr:=
 		dev-libs/apr-util:=
@@ -812,7 +812,7 @@ src_install() {
 
 	if use nginx_modules_http_security; then
 		docinto ${HTTP_SECURITY_MODULE_P}
-		dodoc "${HTTP_SECURITY_MODULE_WD}"/{CHANGES,README.TXT,authors.txt}
+		dodoc "${HTTP_SECURITY_MODULE_WD}"/{CHANGES,README.md,authors.txt}
 	fi
 
 	if use nginx_modules_http_push_stream; then
