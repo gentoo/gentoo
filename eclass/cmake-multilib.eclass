@@ -20,7 +20,7 @@
 # phase rather than 'default'.
 
 case ${EAPI:-0} in
-	6) ;;
+	[67]) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
