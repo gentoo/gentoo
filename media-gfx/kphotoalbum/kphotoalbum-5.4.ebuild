@@ -12,7 +12,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+ FDL-1.2"
 KEYWORDS="amd64 x86"
-IUSE="+kipi +map +raw"
+IUSE="+kipi map +raw"
 
 DEPEND="
 	$(add_frameworks_dep karchive)
