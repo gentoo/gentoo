@@ -3,10 +3,10 @@ DEPEND=>=virtual/emacs-23
 DESCRIPTION=Aid in writing like a script kiddie does
 EAPI=5
 HOMEPAGE=https://www.emacswiki.org/emacs/EliteSpeech
-KEYWORDS=amd64 ppc x86
+KEYWORDS=amd64 ppc ~sparc x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=mirror://gentoo/h4x0r-0.13.tar.gz
 _eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54
-_md5_=301f11a63b200eb335215acb45503948
+_md5_=154d6ed2afbea3ca7ec1a1582157717c
