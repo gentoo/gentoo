@@ -61,11 +61,6 @@ app-metrics/collectd collectd_plugins_write_mongodb
 app-metrics/collectd collectd_plugins_xencpu
 app-metrics/collectd collectd_plugins_java
 
-# Ulrich Müller <ulm@gentoo.org> (23 Oct 2017)
-# Needs net-mail/mailutils which is not keyworded, bug #635216.
-app-editors/emacs mailutils
-app-editors/emacs-vcs mailutils
-
 # Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
 # Required dependencies are not keyworded.
 x11-themes/qtcurve plasma
