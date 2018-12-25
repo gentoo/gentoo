@@ -33,6 +33,8 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
 
+PATCHES=( "${FILESDIR}/${P}-systemd-240-soft-rlimit.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package caps Libcap)
