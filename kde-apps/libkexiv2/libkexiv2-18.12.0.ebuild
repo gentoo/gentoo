@@ -3,6 +3,7 @@
 
 EAPI=6
 
+FRAMEWORKS_MINIMAL="5.53.0"
 KDE_BLOCK_SLOT4="false"
 inherit kde5
 
@@ -16,3 +17,5 @@ DEPEND="
 	>=media-gfx/exiv2-0.25:=[xmp=]
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.patch" )
