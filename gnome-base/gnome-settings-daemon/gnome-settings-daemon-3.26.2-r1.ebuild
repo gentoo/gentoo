@@ -98,6 +98,7 @@ PATCHES=(
 	# Allow specifying udevrulesdir via configure, bug 509484; requires eautoreconf
 	# Fix build system to require gudev with wayland, bug #627966; requires eautoreconf
 	"${WORKDIR}"/patches/
+	"${FILESDIR}"/glib-2.58-compat.patch # included in 3.29.1+, might be backported to 3.28 too
 )
 
 python_check_deps() {
