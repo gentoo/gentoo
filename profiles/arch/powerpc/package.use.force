@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (25 Dec 2018)
+# Enable powerpc target by default.
+dev-lang/rust llvm_targets_PowerPC
+
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
 # Force the host target to avoid dependency hell
 sys-devel/clang llvm_targets_PowerPC
