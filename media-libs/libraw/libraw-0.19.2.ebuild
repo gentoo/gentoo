@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multilib-minimal toolchain-funcs
+inherit autotools multilib-minimal toolchain-funcs
 
 MY_PN=LibRaw
 MY_PV="${PV/_b/-B}"
@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-DOCS=( Changelog.txt README )
+DOCS=( Changelog.txt README.md )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -34,6 +34,11 @@ pkg_pretend() {
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 multilib_src_configure() {
@@ -45,8 +50,7 @@ multilib_src_configure() {
 		$(use_enable lcms)
 		$(use_enable openmp)
 	)
-	ECONF_SOURCE="${S}" \
-	econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_install_all() {
