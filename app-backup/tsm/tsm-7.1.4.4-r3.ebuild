@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -34,7 +34,7 @@ LICENSE="Apache-1.1 Apache-2.0 JDOM BSD-2 CC-PD Boost-1.0 MIT CPL-1.0 HPND Exola
 	|| ( BSD GPL-2+ ) gSOAP libpng tsm"
 
 SLOT="0"
-KEYWORDS="~amd64 -*"
+KEYWORDS="-* ~amd64"
 IUSE="acl java +tsm_cit +tsm_hw"
 QA_PREBUILT="*"
 
@@ -54,7 +54,7 @@ DEPEND=""
 RDEPEND="
 	dev-libs/expat
 	dev-libs/libxml2
-	=sys-fs/fuse-2*
+	sys-fs/fuse:0
 	acl? ( sys-apps/acl )
 	java? ( >=virtual/jre-1.7 )
 "
