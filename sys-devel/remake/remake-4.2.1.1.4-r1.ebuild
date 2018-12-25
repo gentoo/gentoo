@@ -31,6 +31,8 @@ src_configure() {
 
 src_install() {
 	default
+
 	# delete files GNU make owns and remake doesn't care about.
 	rm -r "${ED}"/usr/include || die
+	rm "${ED}"/usr/share/info/make.info* || die
 }
