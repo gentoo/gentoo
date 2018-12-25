@@ -5,7 +5,7 @@ EAPI="6"
 
 inherit flag-o-matic
 
-PATCHES="${P}-patches-01.tar.xz"
+PATCHES="${PN}-3.2.3-patches-01.tar.xz"
 
 DESCRIPTION="A general-purpose (yacc-compatible) parser generator"
 HOMEPAGE="https://www.gnu.org/software/bison/"
@@ -25,11 +25,11 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	test? ( dev-lang/perl )"
 
-DOCS=( AUTHORS ChangeLog-2012 NEWS README THANKS TODO ) # ChangeLog-1998 PACKAGING README-alpha README-release
+DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO ) # ChangeLog-2012 ChangeLog-1998 PACKAGING README-alpha README-release
 
 PATCHES=(
 	"${WORKDIR}"/patches/${PN}-3.1-optional-perl.patch #538300
-	"${WORKDIR}"/patches/${PN}-3.2.1-avoid_autoreconf.patch
+	"${WORKDIR}"/patches/${PN}-3.2.3-avoid_autoreconf.patch
 )
 
 src_prepare() {
