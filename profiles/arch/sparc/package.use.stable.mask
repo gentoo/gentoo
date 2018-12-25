@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (25 Dec 2018)
+# Needs net-mail/mailutils and net-libs/webkit-gtk which are not
+# stable (yet?), bug #663248
+app-editors/emacs mailutils xwidgets
+
 # Andreas Sturmlechner <asturm@gentoo.org> (14 Sep 2018)
 # media-libs/libraw is not stable
 media-gfx/imagemagick raw
