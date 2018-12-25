@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools libtool systemd
 
 DESCRIPTION="An IMAP daemon designed specifically for maildirs"
-HOMEPAGE="http://www.courier-mta.org/"
+HOMEPAGE="https://www.courier-mta.org/imap/"
 SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 
 LICENSE="GPL-3"
