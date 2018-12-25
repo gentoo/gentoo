@@ -199,7 +199,7 @@ src_compile() {
 		MAKE="$(get_bmake)" CFLAGS="-Wno-sign-compare" emake CC="$(tc-getCC)" \
 			LD="$(tc-getLD)" LDFLAGS="$(raw-ldflags)" || die
 	elif use kernel_linux; then
-		linux-mod_src_compile
+		BUILD_TARGETS=module linux-mod_src_compile
 	fi
 
 	if use tools; then
