@@ -9,4 +9,4 @@ LICENSE=GPL-1
 RDEPEND=readline? ( sys-libs/readline:0= ) guile? ( >=dev-scheme/guile-1.8:= )
 SLOT=0
 SRC_URI=mirror://sourceforge/bashdb/remake-4.2.1+dbg-1.4.tar.bz2
-_md5_=c8b870dca1876d3e36436a00d56a4351
+_md5_=623d8a7115461aa6135e7618569a3af9
