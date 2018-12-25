@@ -12,8 +12,7 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/gsteele13/spyview.git"
 else
-	SRC_URI="https://github.com/gsteele13/spyview/archive/966012afae2fbb77262bd96a7e530e81b0ed3b90.tar.gz -> $P.tgz
-		https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
+	SRC_URI="https://github.com/gsteele13/spyview/archive/710b9ddb6aa00fada1a758d42b57b75f92bb32a7.tar.gz -> ${P}.tgz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -34,11 +33,6 @@ DEPEND="${COMMON_DEPEND}
 
 RDEPEND="${COMMON_DEPEND}
 	sci-visualization/gnuplot"
-
-PATCHES=(
-	"${WORKDIR}/${P}-patchset/${P}"-gnuplot_interface_fix.patch
-	"${WORKDIR}/${P}-patchset/${P}"-gcc6cxx14-9.patch
-)
 
 src_unpack() {
 	if [[ ${PV} == *9999* ]] ; then

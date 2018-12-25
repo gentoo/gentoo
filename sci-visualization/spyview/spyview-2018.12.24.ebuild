@@ -1,18 +1,23 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools flag-o-matic
 
 DESCRIPTION="2D and 3D data visualization and analysis program"
-HOMEPAGE="http://nsweb.tn.tudelft.nl/~gsteele/spyview/"
-SRC_URI="https://github.com/gsteele13/spyview/archive/966012afae2fbb77262bd96a7e530e81b0ed3b90.tar.gz -> $P.tgz
-	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
+HOMEPAGE="https://github.com/gsteele13/spyview"
+
+if [[ ${PV} == *9999* ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/gsteele13/spyview.git"
+else
+	SRC_URI="https://github.com/gsteele13/spyview/archive/710b9ddb6aa00fada1a758d42b57b75f92bb32a7.tar.gz -> ${P}.tgz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 COMMON_DEPEND="
@@ -29,14 +34,14 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	sci-visualization/gnuplot"
 
-PATCHES=(
-	"${WORKDIR}/${P}-patchset/${P}"-gnuplot_interface_fix.patch
-	"${WORKDIR}/${P}-patchset/${P}"-gcc6cxx14-9.patch
-)
-
 src_unpack() {
-	default
-	mv -v "${WORKDIR}"/spyview-*/source "${S}" || die
+	if [[ ${PV} == *9999* ]] ; then
+		git-r3_src_unpack
+		S="${WORKDIR}/${P}/source"
+	else
+		default
+		mv -v "${WORKDIR}"/spyview-*/source "${S}" || die
+	fi
 }
 
 src_prepare() {
@@ -55,6 +60,10 @@ src_prepare() {
 		sed -i -e 's:-mwindows -mconsole::g' "$file" || die
 	done < <(find "${S}" -name Makefile.am -print0)
 
-	default
+	if [[ ${PV} == *9999* ]] ; then
+		eapply_user
+	else
+		default
+	fi
 	eautoreconf
 }
