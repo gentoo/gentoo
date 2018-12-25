@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,9 +8,7 @@ inherit eutils distutils-r1 xdg-utils
 
 DESCRIPTION="A tool to crop PDF files"
 HOMEPAGE="http://arminstraub.com/software/krop"
-#SRC_URI="http://arminstraub.com/downloads/${PN}/${P}.tar.gz"
-SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.gz"
-# this is a snapshot of the qt5 branch
+SRC_URI="http://arminstraub.com/downloads/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
