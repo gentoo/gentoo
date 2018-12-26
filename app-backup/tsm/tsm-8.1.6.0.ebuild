@@ -64,8 +64,14 @@ S="${WORKDIR}/bacli"
 pkg_setup() {
 	enewgroup tsm
 	DOC_CONTENTS="
-		Note that you have to be either root or member of the group tsm to
-		be able to use the Tivoli Storage Manager client."
+		Note that you have to be root to be able to use the Tivoli Storage Manager
+		client. The dsmtca trusted agent binary does not exist anymore.
+
+		For information on how to give other users access, please see the following
+		URLs:
+		https://www.ibm.com/support/knowledgecenter/SSGSG7_7.1.8/client/c_cfg_nonadmin.html#c_macuninst_nonadmin
+		https://www.ibm.com/support/knowledgecenter/SSGSG7_7.1.8/client/c_secure_pwd.html#c_secure_pwd__sec_no_tca
+	"
 }
 
 src_unpack() {
@@ -161,9 +167,6 @@ src_install(){
 		rm -v "${i}" || die
 		dosym "../..${target}" "${i#${D}}"
 	done
-
-	fowners :tsm /opt/tivoli/tsm/client/ba/bin/dsmtca
-	fperms 4710 /opt/tivoli/tsm/client/ba/bin/dsmtca
 
 	keepdir /var/log/tsm
 	insinto /etc/logrotate.d
