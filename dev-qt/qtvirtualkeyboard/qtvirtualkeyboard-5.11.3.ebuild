@@ -29,9 +29,9 @@ src_configure() {
 		$(usex spell "" CONFIG+=disable-hunspell)
 		$(usex xcb "" CONFIG+=disable-desktop)
 		CONFIG+="lang-ar_AR lang-da_DK lang-de_DE lang-en_GB \
-                        lang-es_ES lang-fa_FA lang-fi_FI lang-fr_FR \
-                        lang-hi_IN lang-it_IT lang-nb_NO lang-pl_PL \
-                        lang-pt_PT lang-ro_RO lang-ru_RU lang-sv_SE"
+			lang-es_ES lang-fa_FA lang-fi_FI lang-fr_FR \
+			lang-hi_IN lang-it_IT lang-nb_NO lang-pl_PL \
+			lang-pt_PT lang-ro_RO lang-ru_RU lang-sv_SE"
 	)
 
 	qt5-build_src_configure
