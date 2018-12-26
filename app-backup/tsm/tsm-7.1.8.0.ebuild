@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit versionator multilib eutils readme.gentoo rpm systemd user pax-utils
+inherit versionator multilib eutils readme.gentoo-r1 rpm systemd user pax-utils
 
 DESCRIPTION="IBM Spectrum Protect (former Tivoli Storage Manager) Backup/Archive Client, API"
 HOMEPAGE="https://www.ibm.com/us-en/marketplace/data-protection-and-recovery"
@@ -34,7 +34,7 @@ LICENSE="Apache-1.1 Apache-2.0 JDOM BSD-2 CC-PD Boost-1.0 MIT CPL-1.0 HPND Exola
 	|| ( BSD GPL-2+ ) gSOAP libpng tsm"
 
 SLOT="0"
-#KEYWORDS="-* ~amd64"
+KEYWORDS="-* ~amd64"
 IUSE="acl java +tsm_cit +tsm_hw"
 QA_PREBUILT="*"
 
@@ -232,5 +232,7 @@ pkg_postinst() {
 	chown root:root "${dirs[@]}" || die
 	chmod 0755 "${dirs[@]}" || die
 
+	FORCE_PRINT_ELOG=1
+	DISABLE_AUTOFORMATTING=1
 	readme.gentoo_print_elog
 }
