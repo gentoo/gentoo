@@ -14,15 +14,19 @@ SRC_URI="https://prosody.im/tmp/${MY_PV}/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~x86"
-IUSE="ipv6 libevent mysql postgres sqlite ssl zlib jit libressl"
+IUSE="ipv6 libevent mysql postgres sqlite ssl zlib jit libressl test"
 
-DEPEND="net-im/jabber-base
+BASE_DEPEND="net-im/jabber-base
 		dev-lua/LuaBitOp
 		!jit? ( >=dev-lang/lua-5.1:0 )
 		jit? ( dev-lang/luajit:2 )
 		>=net-dns/libidn-1.1:=
 		!libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl:= )"
-RDEPEND="${DEPEND}
+
+DEPEND="${BASE_DEPEND}
+		test? ( dev-lua/busted )"
+
+RDEPEND="${BASE_DEPEND}
 		>=dev-lua/luaexpat-1.3.0
 		dev-lua/luafilesystem
 		ipv6? ( >=dev-lua/luasocket-3 )
