@@ -86,7 +86,10 @@ RDEPEND="${COMMON_DEPEND}
 # bug 630508
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${PN}-4.0.3-tests-optional.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-4.0.3-tests-optional.patch"
+	"${FILESDIR}/${P}-exiv2-0.27.patch"
+)
 
 S="${S}.101"
 
