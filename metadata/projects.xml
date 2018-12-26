@@ -3895,6 +3895,12 @@
     </member>
   </project>
   <project>
+    <email>vmware@gentoo.org</email>
+    <name>Gentoo VMware Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project-3AVmware</url>
+    <description>The Gentoo VMware project ("vmware") is the official Gentoo project for the maintenance and development of VMware and VMware-related products in the Gentoo package repository.</description>
+  </project>
+  <project>
     <email>media-video@gentoo.org</email>
     <name>Gentoo Video project</name>
     <url>https://wiki.gentoo.org/wiki/Project-3AVideo</url>
@@ -3983,17 +3989,6 @@
     <member>
       <email>vdupras@gentoo.org</email>
       <name>Virgil Dupras</name>
-    </member>
-  </project>
-  <project>
-    <email>vmware@gentoo.org</email>
-    <name>Gentoo VMware Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project-3AVmware</url>
-    <description>The Gentoo VMware project ("vmware") is the official Gentoo project for the maintenance and development of VMware and VMware-related products in the Gentoo package repository.</description>
-    <member is-lead="1">
-      <email>dilfridge@gentoo.org</email>
-      <name>Andreas K. Hüttel</name>
-      <role>lead</role>
     </member>
   </project>
   <project>
