@@ -161,7 +161,7 @@ src_prepare() {
 			"${FILESDIR}/gentoo-Dont-enable-audit-by-default.patch"
 			"${FILESDIR}/gentoo-systemd-user-pam.patch"
 			"${FILESDIR}/gentoo-uucp-group-r1.patch"
-			"${FILESDIR}/gentoo-generator-path.patch"
+			"${FILESDIR}/gentoo-generator-path-r1.patch"
 		)
 	fi
 
