@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst setup unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g virtual/pkgconfig
+DESCRIPTION=IBM Spectrum Protect (formerly Tivoli Storage Manager) Backup/Archive (B/A) Client and API
+EAPI=5
+HOMEPAGE=https://www.ibm.com/us-en/marketplace/data-protection-and-recovery
+IUSE=acl java +tsm_cit +tsm_hw
+LICENSE=Apache-1.1 Apache-2.0 JDOM BSD-2 CC-PD Boost-1.0 MIT CPL-1.0 HPND Exolab dom4j EPL-1.0 FTL icu unicode IBM Info-ZIP LGPL-2 LGPL-2.1 openafs-krb5-a ZLIB MPL-1.0 MPL-1.1 NPL-1.1 openssl OPENLDAP RSA public-domain W3C || ( BSD GPL-2+ ) gSOAP libpng tsm
+RDEPEND=dev-libs/expat dev-libs/libxml2 sys-fs/fuse:0 acl? ( sys-apps/acl ) java? ( >=virtual/jre-1.7 )
+RESTRICT=strip
+SLOT=0
+SRC_URI=ftp://ftp.software.ibm.com/storage/tivoli-storage-management/maintenance/client/v7r1/Linux/LinuxX86/BA/v718/7.1.8.0-TIV-TSMBAC-LinuxX86.tar
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	pax-utils	e85f015e815dd463b0c206d781ef45a5	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo	566393c426fca4615a83df9a982bb9d9	rpm	f52cfa3a435468d86d3b49c357b9cb35	systemd	47c677ae1d7b69031f11f630ac09f0d1	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
+_md5_=9faa798aae63a6d6c67acc4d3a1d5046
