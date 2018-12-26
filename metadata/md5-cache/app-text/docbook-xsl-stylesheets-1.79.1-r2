@@ -9,5 +9,5 @@ RDEPEND=>=app-text/build-docbook-catalog-1.1 ruby? ( || ( dev-lang/ruby:2.4 dev-
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/docbook/docbook-xsl-1.79.1.tar.bz2
-_eclasses_=ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	7626123a4b2ce4488597d355f9905486
+_eclasses_=ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	10cec86289e60f4b0d731b2e4b545e5d
 _md5_=4130e583e269a69e7501af6f3cb80d26
