@@ -33,6 +33,7 @@ DOCS=( README.md )
 PATCHES=(
 	"${FILESDIR}/${PN}-always-GNUInstallDirs.patch"
 	"${FILESDIR}/${P}-no-rpath.patch"
+	"${FILESDIR}/${P}-use-destdir-for-symlinks-09afc227e0880b12a98e18ee8182f89c3a80e3a6.patch"
 )
 
 src_prepare() {
