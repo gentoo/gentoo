@@ -144,6 +144,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.10.10-eds-3.6-configure.ac.patch"
 	"${FILESDIR}/${PN}-2.10.11-tinfo.patch"
 	"${DISTDIR}/${PN}-2.10.9-irc_join_sleep.patch" # 577286
+	"${FILESDIR}/${PN}-2.13.0-disable-one-jid-test.patch" # 593338
 )
 
 pkg_setup() {
@@ -263,7 +264,8 @@ src_install() {
 }
 
 src_test() {
-	emake check
+	# make default build logs slightly more useful
+	emake check VERBOSE=1
 }
 
 pkg_preinst() { gnome2_icon_savelist; }
