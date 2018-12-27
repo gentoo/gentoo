@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Fabian Groffen <grobian@gentoo.org> (27 Dec 2018)
+# USE-dep fixing, bugs #665088, #667266, #671730, 
+dev-db/postgresql kerberos ldap llvm pam systemd libressl
+
 # Mikle Kolyada <zlogene@gentoo.org> (29 Nov 2014)
 # Masked because of lack of manpower/time (bug #497068)
 dev-vcs/git mediawiki mediawiki-experimental
