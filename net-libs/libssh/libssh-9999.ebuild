@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_P="${PN}-${PV/_rc/rc}"
 inherit cmake-multilib
@@ -13,7 +13,6 @@ if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.libssh.org/projects/libssh.git"
 else
-	inherit eapi7-ver
 	SRC_URI="https://www.libssh.org/files/$(ver_cut 1-2)/${MY_P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 fi
