@@ -28,10 +28,6 @@ VIDEO_CARDS="fbdev glint mga nv r128 radeon tdfx voodoo"
 # Alpha supports the same busses.
 ALSA_CARDS="ali5451 als4000 bt87x ca0106 cmipci emu10k1 ens1370 ens1371 es1938 es1968 fm801 hda-intel intel8x0 maestro3 trident usb-audio via82xx ymfpci"
 
-# Hans de Graaff <graaff@gentoo.org> (12 Nov 2018)
-# Temporary entry to support stable bug 661262
-RUBY_TARGETS="ruby23"
-
 # Tobias Klausmann <klausman@gentoo.org> (25 Jun 2018)
 # Enable USE=libtirpc by default, to ease dependency resolution during
 # the stabilization of glibc-2.26. Bug 657148
