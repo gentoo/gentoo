@@ -17,6 +17,7 @@ IUSE="test"
 
 RDEPEND=">=dev-python/pyparsing-2.0.1[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_test() {
