@@ -436,7 +436,7 @@ pkg_postinst() {
 
 	if [[ -z ${ROOT} && -d /run/systemd/system ]]; then
 		ebegin "Reexecuting system manager"
-		systemctl daemon-reexec || FAIL=1
+		systemctl daemon-reexec
 		eend $?
 	fi
 
