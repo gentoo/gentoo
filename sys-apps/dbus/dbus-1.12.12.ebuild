@@ -83,6 +83,13 @@ src_prepare() {
 
 	default
 
+	if [[ ${CHOST} == *-solaris* ]]; then
+		# fix standards conflict, due to gcc being c99 by default nowadays
+		sed -i \
+			-e 's/_XOPEN_SOURCE=500/_XOPEN_SOURCE=600/' \
+			configure.ac configure || die
+	fi
+
 	# required for bug 263909, cross-compile so don't remove eautoreconf
 	eautoreconf
 }
