@@ -26,22 +26,22 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/libuv-1.23.2:=
 	>=net-dns/c-ares-1.10.1
-	>=net-libs/http-parser-2.8.0:=
+	>net-libs/http-parser-2.8.1:=
 	>=net-libs/nghttp2-1.33.0
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-60.1:= )
 	ssl? ( =dev-libs/openssl-1.0.2*:0=[-bindist] )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	${PYTHON_DEPS}
 	systemtap? ( dev-util/systemtap )
-	test? ( net-misc/curl )"
-
-S="${WORKDIR}/node-v${PV}"
-
+	test? ( net-misc/curl )
+"
 PATCHES=(
 	"${FILESDIR}"/nodejs-10.3.0-global-npm-config.patch
 )
+S="${WORKDIR}/node-v${PV}"
 
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
