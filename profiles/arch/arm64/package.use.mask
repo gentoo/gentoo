@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Davide Pesavento <pesa@gentoo.org> (27 Dec 2018)
+# The corresponding Qt5 modules are not keyworded on arm64, and we don't want to
+# keyword them solely because of PyQt5 while there are no other in-tree users.
+dev-python/PyQt5 networkauth
+
 # Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
 # Requires www-client/firefox which isn't yet keyworded on ARM64
 dev-ruby/capybara test
