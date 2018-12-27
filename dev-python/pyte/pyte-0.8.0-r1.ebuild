@@ -20,7 +20,7 @@ IUSE="test"
 
 RDEPEND="dev-python/wcwidth[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
