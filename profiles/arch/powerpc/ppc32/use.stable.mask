@@ -1,7 +1,3 @@
-# Hans de Graaff <graaff@gentoo.org> (12 Nov 2018)
-# Temporary mask for ruby:2.4, bug 661262
-ruby_targets_ruby24
-
 # Mike Gilbert <floppym@gentoo.org> (08 Jun 2017)
 # dev-lang/python:3.7 is not stable.
 python_targets_python3_7
