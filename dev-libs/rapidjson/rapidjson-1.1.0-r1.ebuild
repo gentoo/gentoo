@@ -33,6 +33,13 @@ PATCHES=(
 	"${FILESDIR}/${P}-gcc-7.patch"
 )
 
+src_prepare() {
+	default
+
+	sed -i -e 's|-Werror||g' CMakeLists.txt || die
+	sed -i -e 's|-Werror||g' example/CMakeLists.txt || die
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DRAPIDJSON_BUILD_DOC=$(usex doc)
