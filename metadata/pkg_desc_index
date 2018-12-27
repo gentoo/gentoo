@@ -5407,7 +5407,7 @@ dev-python/pysrt 1.1.1: Python library used to edit or create SubRip files
 dev-python/pystache 0.5.4: Mustache for Python
 dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
 dev-python/pytables 3.3.0: Hierarchical datasets for Python
-dev-python/pyte 0.5.2-r1 0.5.2-r2: Simple VTXXX-compatible terminal emulator
+dev-python/pyte 0.5.2-r2: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 3.2.2: Simple powerful testing with Python
 dev-python/pytest-cache 1.0-r1: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
@@ -8451,7 +8451,7 @@ net-analyzer/slurm 0.3.3-r2: Realtime network interface monitor based on FreeBSD
 net-analyzer/smokeping 2.6.9-r1: A powerful latency measurement tool
 net-analyzer/sniffit 0.3.7-r4: Interactive Packet Sniffer
 net-analyzer/snortsam 2.50-r1 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
-net-analyzer/speedtest-cli 1.0.7: Command line interface for testing internet bandwidth using speedtest.net
+net-analyzer/speedtest-cli 2.0.2: Command line interface for testing internet bandwidth using speedtest.net
 net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
 net-analyzer/ssldump 0.9_beta3: An SSLv3/TLS network protocol analyzer
