@@ -12,7 +12,7 @@ SRC_URI="https://dbus.freedesktop.org/releases/dbus/${P}.tar.gz"
 
 LICENSE="|| ( AFL-2.1 GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug doc elogind selinux static-libs systemd test user-session X"
 
 #RESTRICT="test"
@@ -82,6 +82,13 @@ src_prepare() {
 		bus/test-main.c || die
 
 	default
+
+	if [[ ${CHOST} == *-solaris* ]]; then
+		# fix standards conflict, due to gcc being c99 by default nowadays
+		sed -i \
+			-e 's/_XOPEN_SOURCE=500/_XOPEN_SOURCE=600/' \
+			configure.ac configure || die
+	fi
 
 	# required for bug 263909, cross-compile so don't remove eautoreconf
 	eautoreconf

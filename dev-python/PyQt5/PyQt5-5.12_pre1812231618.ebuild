@@ -11,7 +11,7 @@ HOMEPAGE="https://www.riverbankcomputing.com/software/pyqt/intro"
 
 MY_P=${PN}_gpl-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
-	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
 else
 	SRC_URI="mirror://sourceforge/pyqt/${MY_P}.tar.gz"
 fi
@@ -20,10 +20,11 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
-# TODO: QtNetworkAuth, QtNfc
+# TODO: QtNfc, QtRemoteObjects (Qt >= 5.12)
 IUSE="bluetooth dbus debug declarative designer examples gles2 gui help location
-	multimedia network opengl positioning printsupport sensors serialport sql svg
-	testlib webchannel webengine webkit websockets widgets x11extras xmlpatterns"
+	multimedia network networkauth opengl positioning printsupport sensors
+	serialport sql svg testlib webchannel webkit websockets widgets x11extras
+	xmlpatterns"
 
 # The requirements below were extracted from configure.py
 # and from the output of 'grep -r "%Import " "${S}"/sip'
@@ -35,6 +36,7 @@ REQUIRED_USE="
 	help? ( gui widgets )
 	location? ( positioning )
 	multimedia? ( gui network )
+	networkauth? ( network )
 	opengl? ( gui widgets )
 	positioning? ( gui )
 	printsupport? ( gui widgets )
@@ -44,7 +46,6 @@ REQUIRED_USE="
 	svg? ( gui widgets )
 	testlib? ( widgets )
 	webchannel? ( network )
-	webengine? ( network widgets? ( printsupport webchannel ) )
 	webkit? ( gui network printsupport widgets )
 	websockets? ( network )
 	widgets? ( gui )
@@ -52,11 +53,11 @@ REQUIRED_USE="
 "
 
 # Minimal supported version of Qt.
-QT_PV="5.9.6:5"
+QT_PV="5.10:5"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/sip-4.19.11:=[${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-sip-4.19.14_pre:=[${PYTHON_USEDEP}]
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
 	virtual/python-enum34[${PYTHON_USEDEP}]
@@ -72,6 +73,7 @@ RDEPEND="
 	location? ( >=dev-qt/qtlocation-${QT_PV} )
 	multimedia? ( >=dev-qt/qtmultimedia-${QT_PV}[widgets?] )
 	network? ( >=dev-qt/qtnetwork-${QT_PV} )
+	networkauth? ( >=dev-qt/qtnetworkauth-${QT_PV} )
 	opengl? ( >=dev-qt/qtopengl-${QT_PV} )
 	positioning? ( >=dev-qt/qtpositioning-${QT_PV} )
 	printsupport? ( >=dev-qt/qtprintsupport-${QT_PV} )
@@ -81,7 +83,6 @@ RDEPEND="
 	svg? ( >=dev-qt/qtsvg-${QT_PV} )
 	testlib? ( >=dev-qt/qttest-${QT_PV} )
 	webchannel? ( >=dev-qt/qtwebchannel-${QT_PV} )
-	webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets?] )
 	webkit? ( dev-qt/qtwebkit:5[printsupport] )
 	websockets? ( >=dev-qt/qtwebsockets-${QT_PV} )
 	widgets? ( >=dev-qt/qtwidgets-${QT_PV} )
@@ -89,12 +90,11 @@ RDEPEND="
 	xmlpatterns? ( >=dev-qt/qtxmlpatterns-${QT_PV} )
 "
 DEPEND="${RDEPEND}
+	>=dev-python/sip-4.19.14_pre[${PYTHON_USEDEP}]
 	dbus? ( virtual/pkgconfig )
 "
 
 S=${WORKDIR}/${MY_P}
-
-DOCS=( "${S}"/{ChangeLog,NEWS} )
 
 pyqt_use_enable() {
 	use "$1" || return
@@ -116,6 +116,7 @@ src_configure() {
 			--verbose
 			--confirm-license
 			--qmake="$(qt5_get_bindir)"/qmake
+			--bindir="${EPREFIX}/usr/bin"
 			--sip-incdir="$(python_get_includedir)"
 			--qsci-api
 			--enable=QtCore
@@ -133,6 +134,7 @@ src_configure() {
 			$(pyqt_use_enable location)
 			$(pyqt_use_enable multimedia QtMultimedia $(usex widgets QtMultimediaWidgets ''))
 			$(pyqt_use_enable network)
+			$(pyqt_use_enable networkauth QtNetworkAuth)
 			$(pyqt_use_enable opengl QtOpenGL)
 			$(pyqt_use_enable positioning)
 			$(pyqt_use_enable printsupport QtPrintSupport)
@@ -142,7 +144,6 @@ src_configure() {
 			$(pyqt_use_enable svg)
 			$(pyqt_use_enable testlib QtTest)
 			$(pyqt_use_enable webchannel QtWebChannel)
-			$(pyqt_use_enable webengine QtWebEngine QtWebEngineCore $(usex widgets QtWebEngineWidgets ''))
 			$(pyqt_use_enable webkit QtWebKit QtWebKitWidgets)
 			$(pyqt_use_enable websockets QtWebSockets)
 			$(pyqt_use_enable widgets)

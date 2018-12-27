@@ -6,10 +6,10 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 inherit python-r1 toolchain-funcs
 
-DESCRIPTION="Python extension module generator for C and C++ libraries"
+DESCRIPTION="Private sip module for PyQt5"
 HOMEPAGE="https://www.riverbankcomputing.com/software/sip/intro"
 
-MY_P=${P/_pre/.dev}
+MY_P=sip-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
 	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
 else
@@ -19,8 +19,8 @@ fi
 # Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h
 SLOT="0/12"
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="debug doc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+IUSE="debug"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -28,8 +28,6 @@ DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
-
-PATCHES=( "${FILESDIR}"/${PN}-4.18-darwin.patch )
 
 src_prepare() {
 	# Sub-slot sanity check
@@ -56,10 +54,9 @@ src_configure() {
 		local myconf=(
 			"${PYTHON}"
 			"${S}"/configure.py
-			--bindir="${EPREFIX}/usr/bin"
-			--destdir="$(python_get_sitedir)"
-			--incdir="$(python_get_includedir)"
 			$(usex debug --debug '')
+			--sip-module PyQt5.sip
+			--no-tools
 			AR="$(tc-getAR) cqs"
 			CC="$(tc-getCC)"
 			CFLAGS="${CFLAGS}"
@@ -87,10 +84,8 @@ src_compile() {
 src_install() {
 	installation() {
 		emake DESTDIR="${D}" install
-		python_optimize
 	}
 	python_foreach_impl run_in_build_dir installation
 
 	einstalldocs
-	use doc && dodoc -r doc/html
 }
