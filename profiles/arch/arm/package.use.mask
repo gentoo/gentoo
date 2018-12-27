@@ -1,6 +1,11 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Davide Pesavento <pesa@gentoo.org> (27 Dec 2018)
+# The corresponding Qt5 modules are not keyworded on arm, and we don't want to
+# keyword them solely because of PyQt5 while there are no other in-tree users.
+dev-python/PyQt5 networkauth
+
 # Anthony G. Basile <blueness@gentoo.org> (24 Dec 2018)
 # asm broken on arm, bug #673580
 =dev-libs/libressl-2.9.0 asm
