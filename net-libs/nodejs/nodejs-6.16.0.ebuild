@@ -23,7 +23,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=dev-libs/libuv-1.16.1:=
-	>=net-libs/http-parser-2.7.0:=
+	>net-libs/http-parser-2.8.1:=
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-58.2:= )
 	ssl? ( >=dev-libs/openssl-1.0.2n:0=[-bindist] )
@@ -33,10 +33,10 @@ DEPEND="
 	${PYTHON_DEPS}
 	test? ( net-misc/curl )
 "
-S="${WORKDIR}/node-v${PV}"
 PATCHES=(
 	"${FILESDIR}"/gentoo-global-npm-config.patch
 )
+S="${WORKDIR}/node-v${PV}"
 
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
