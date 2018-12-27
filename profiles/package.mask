@@ -210,10 +210,6 @@ dev-db/pgadmin3
 # Upstream is not actively maintained. Needs a port to mupdf-1.14.
 app-text/fbpdf
 
-# Davide Pesavento <pesa@gentoo.org> (08 Oct 2018)
-# Ebuild is not ready, major packaging changes required. Bug 668014.
->=dev-python/PyQt5-5.11
-
 # Andreas Sturmlechner <asturm@gentoo.org> (07 Oct 2018)
 # Masked for more testing especially of reverse-deps.
 >=dev-games/ogre-1.11.2
