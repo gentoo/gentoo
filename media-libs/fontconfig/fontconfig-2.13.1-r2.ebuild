@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://fontconfig.org/release/${P}.tar.bz2"
 LICENSE="MIT"
 SLOT="1.0"
 [[ $(ver_cut 3) -ge 90 ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="doc static-libs"
 
 BDEPEND="dev-util/gperf
@@ -26,8 +26,9 @@ BDEPEND="dev-util/gperf
 # default and used by every distro.  See bug #283191.
 RDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.9[${MULTILIB_USEDEP}]
-	!elibc_Darwin? ( sys-apps/util-linux[${MULTILIB_USEDEP}] )
+	!elibc_Darwin? ( !elibc_SunOS? ( sys-apps/util-linux[${MULTILIB_USEDEP}] ) )
 	elibc_Darwin? ( sys-libs/native-uuid )
+	elibc_SunOS? ( sys-libs/libuuid )
 	virtual/libintl[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 PDEPEND="!x86-winnt? ( app-eselect/eselect-fontconfig )
