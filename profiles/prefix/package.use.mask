@@ -9,6 +9,7 @@ net-libs/glib-networking gnome libproxy
 sys-apps/dbus selinux elogind systemd
 app-doc/doxygen clang doxysearch qt5
 app-text/ghostscript-gpl cups
+app-text/texlive-core cjk
 
 # Mikle Kolyada <zlogene@gentoo.org> (29 Nov 2014)
 # Masked because of lack of manpower/time (bug #497068)
