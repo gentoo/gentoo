@@ -178,11 +178,6 @@ qt5-build_src_prepare() {
 		sed -i -e "/^QMAKE_CONF_COMPILER=/ s:=.*:=\"$(tc-getCXX)\":" \
 			configure || die "sed failed (QMAKE_CONF_COMPILER)"
 
-		# Don't inject -msse/-mavx/... into CXXFLAGS when detecting
-		# compiler support for extended instruction sets (bug 552942)
-		find config.tests/common -name '*.pro' -type f -execdir \
-			sed -i -e '/QMAKE_CXXFLAGS\s*+=/ d' '{}' + || die
-
 		# Don't add -O3 to CXXFLAGS (bug 549140)
 		sed -i -e '/CONFIG\s*+=/ s/optimize_full//' \
 			src/{corelib/corelib,gui/gui}.pro || die "sed failed (optimize_full)"
