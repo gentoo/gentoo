@@ -16,6 +16,7 @@
 		<flag name="location">Build bindings for the QtLocation module</flag>
 		<flag name="multimedia">Build bindings for the QtMultimedia module</flag>
 		<flag name="network">Build bindings for the QtNetwork module</flag>
+		<flag name="networkauth">Build bindings for the QtNetworkAuth module</flag>
 		<flag name="opengl">Build bindings for the QtOpenGL module</flag>
 		<flag name="positioning">Build bindings for the QtPositioning module</flag>
 		<flag name="printsupport">Build bindings for the QtPrintSupport module</flag>
