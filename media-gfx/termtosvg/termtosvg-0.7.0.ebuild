@@ -15,10 +15,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
 	>=dev-python/pyte-0.8.0[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
 	"${PYTHON}" -m unittest discover -v || die "tests failed with ${EPYTHON}"
