@@ -9,12 +9,11 @@ inherit python-r1 toolchain-funcs
 DESCRIPTION="Python extension module generator for C and C++ libraries"
 HOMEPAGE="https://www.riverbankcomputing.com/software/sip/intro"
 
+MY_P=${P/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
-	MY_P=${P/_pre/.dev}
 	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
-	S=${WORKDIR}/${MY_P}
 else
-	SRC_URI="mirror://sourceforge/pyqt/${P}.tar.gz"
+	SRC_URI="mirror://sourceforge/pyqt/${MY_P}.tar.gz"
 fi
 
 # Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h
@@ -23,10 +22,12 @@ LICENSE="|| ( GPL-2 GPL-3 SIP )"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug doc"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+S=${WORKDIR}/${MY_P}
 
 PATCHES=( "${FILESDIR}"/${PN}-4.18-darwin.patch )
 
