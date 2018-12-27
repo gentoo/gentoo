@@ -4,6 +4,11 @@
 # Fabian Groffen <grobian@gentoo.org> (27 Dec 2018)
 # USE-dep fixing, bugs #665088, #667266, #671730, 
 dev-db/postgresql kerberos ldap llvm pam systemd libressl
+net-libs/libsoup gssapi samba vala
+net-libs/glib-networking gnome libproxy
+sys-apps/dbus selinux elogind systemd
+app-doc/doxygen clang doxysearch qt5
+app-text/ghostscript-gpl cups
 
 # Mikle Kolyada <zlogene@gentoo.org> (29 Nov 2014)
 # Masked because of lack of manpower/time (bug #497068)
