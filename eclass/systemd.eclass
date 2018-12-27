@@ -468,8 +468,8 @@ systemd_reenable() {
 	type systemctl &>/dev/null || return 0
 	local x
 	for x; do
-		if systemctl --quiet --root="${ROOT}" is-enabled "${x}"; then
-			systemctl --root="${ROOT}" reenable "${x}"
+		if systemctl --quiet --root="${ROOT:-/}" is-enabled "${x}"; then
+			systemctl --root="${ROOT:-/}" reenable "${x}"
 		fi
 	done
 }
