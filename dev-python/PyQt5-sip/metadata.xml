@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>phil@riverbankcomputing.com</email>
+			<name>Phil Thompson</name>
+		</maintainer>
+		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
+		<doc>http://pyqt.sourceforge.net/Docs/sip4/</doc>
+		<remote-id type="pypi">SIP</remote-id>
+		<remote-id type="sourceforge">pyqt</remote-id>
+	</upstream>
+</pkgmetadata>
