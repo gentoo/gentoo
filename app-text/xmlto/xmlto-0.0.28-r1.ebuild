@@ -30,6 +30,11 @@ DOCS="AUTHORS ChangeLog FAQ NEWS README THANKS"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.0.22-format_fo_passivetex_check.patch
+
+	# fix symbol clash on Solaris
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		sed -i -e 's/\(attrib\|val\)/XMLTO\1/g' xmlif/xmlif.l || die
+	fi
 }
 
 src_configure() {
