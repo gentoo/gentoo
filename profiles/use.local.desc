@@ -1808,6 +1808,7 @@ dev-python/PyQt5:help - Build bindings for the QtHelp module
 dev-python/PyQt5:location - Build bindings for the QtLocation module
 dev-python/PyQt5:multimedia - Build bindings for the QtMultimedia module
 dev-python/PyQt5:network - Build bindings for the QtNetwork module
+dev-python/PyQt5:networkauth - Build bindings for the QtNetworkAuth module
 dev-python/PyQt5:opengl - Build bindings for the QtOpenGL module
 dev-python/PyQt5:positioning - Build bindings for the QtPositioning module
 dev-python/PyQt5:printsupport - Build bindings for the QtPrintSupport module
@@ -3201,6 +3202,7 @@ media-sound/lyvi:mpris - Enable MPRIS support
 media-sound/mangler:espeak - Text to speech engine
 media-sound/mangler:g15 - Logitech g15 lcd support
 media-sound/mixxx:hid - Enable HID controller support
+media-sound/mixxx:lv2 - Add support for Ladspa V2 via media-libs/lilv
 media-sound/mixxx:shout - Enable broadcasting support via media-libs/libshout
 media-sound/moc:cache - Enable tags caching support
 media-sound/moc:magic - Use libmagic to determine mimetypes
