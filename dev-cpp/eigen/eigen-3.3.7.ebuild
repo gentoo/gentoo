@@ -18,6 +18,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="!dev-cpp/eigen:0"
 DEPEND="
+	cuda? ( dev-util/nvidia-cuda-toolkit )
 	doc? ( app-doc/doxygen[dot,latex] )
 	test? (
 		dev-libs/gmp:0
@@ -34,7 +35,6 @@ DEPEND="
 		sci-libs/superlu
 		virtual/opengl
 		virtual/pkgconfig
-		cuda? ( dev-util/nvidia-cuda-toolkit )
 	)
 "
 # Missing:
