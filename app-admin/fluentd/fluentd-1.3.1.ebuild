@@ -4,6 +4,8 @@
 EAPI=6
 USE_RUBY="ruby23 ruby24 ruby25"
 
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
+
 inherit ruby-fakegem user
 
 DESCRIPTION="data collector and unified logging layer (project under CNCF)"
