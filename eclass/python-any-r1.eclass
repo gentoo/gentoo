@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-any-r1.eclass
@@ -327,8 +327,8 @@ python_setup() {
 	# fallback to best installed impl.
 	# (reverse iteration over _PYTHON_SUPPORTED_IMPLS)
 	for (( i = ${#_PYTHON_SUPPORTED_IMPLS[@]} - 1; i >= 0; i-- )); do
-		python_export "${_PYTHON_SUPPORTED_IMPLS[i]}" EPYTHON PYTHON
-		if _python_EPYTHON_supported "${EPYTHON}"; then
+		if _python_EPYTHON_supported "${_PYTHON_SUPPORTED_IMPLS[i]}"; then
+			python_export "${_PYTHON_SUPPORTED_IMPLS[i]}" EPYTHON PYTHON
 			python_wrapper_setup
 			return
 		fi
