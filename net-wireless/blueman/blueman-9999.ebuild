@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -90,6 +90,8 @@ src_configure() {
 		# thunar integration is a single data file with no extra deps
 		# so install it unconditionally
 		--enable-thunar-sendto
+		# ignore pointless check
+		NETWORKTOOLS=/bin/true
 	)
 	econf "${myconf[@]}"
 }
