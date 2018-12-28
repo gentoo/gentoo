@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/blueman-project/blueman.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/blueman-project/${PN}/releases/download/${PV}/${P}.tar.xz"
+	SRC_URI="https://github.com/blueman-project/${PN}/releases/download/${PV/_/.}/${P/_/.}.tar.xz"
 	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 fi
 
@@ -58,6 +58,8 @@ RDEPEND="${COMMON_DEPEND}
 	pulseaudio? ( media-sound/pulseaudio[bluetooth] )
 	!net-wireless/gnome-bluetooth
 "
+
+S=${WORKDIR}/${P/_/.}
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
