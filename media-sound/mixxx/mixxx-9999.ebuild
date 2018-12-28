@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac doc ffmpeg hid mp3 mp4 opus shout wavpack"
+IUSE="aac doc ffmpeg hid lv2 mp3 mp4 opus shout wavpack"
 
 # fails to compile system-fidlib. Add ">media-libs/fidlib-0.9.10-r1" once this
 # got fixed
@@ -59,6 +59,7 @@ RDEPEND="
 		media-libs/libmp4v2:0
 	)
 	hid? ( dev-libs/hidapi )
+	lv2? ( >=media-libs/lilv-0.24.2-r3 )
 	mp3? ( media-libs/libmad )
 	mp4? ( media-libs/libmp4v2:= )
 	opus? (	media-libs/opusfile )
@@ -76,6 +77,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.0-docs.patch
+	"${FILESDIR}"/${PN}-2.2.0-lilv_include_fix.patch
 )
 
 src_prepare() {
@@ -107,6 +109,7 @@ src_configure() {
 		ffmpeg="$(usex ffmpeg 1 0)"
 		hid="$(usex hid 1 0)"
 		hifieq=1
+		lilv="$(usex lv2 1 0)"
 		m4a="$(usex mp4 1 0)"
 		mad="$(usex mp3 1 0)"
 		optimize="${myoptimize}"
