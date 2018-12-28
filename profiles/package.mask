@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (28 Dec 2018)
+# Masked while being tested and reverse deps aren't fully compatible
+=dev-libs/openssl-1.1.1*
+
 # Mike Gilbert <floppym@gentoo.org> (25 Dec 2018)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
@@ -169,10 +173,6 @@ net-misc/netctl
 <mail-client/thunderbird-60.0
 <mail-client/thunderbird-bin-60.0
 
-# Craig Andrews <candrews@gentoo.org> (06 Nov 2018)
-# Requires >=dev-libs/openssl-1.1.0
-dev-libs/gost-engine
-
 # Brian Evans <grknight@gentoo.org> (05 Nov 2018)
 # Causes a dependency loop in the OpenRC script. Bug #651998
 =sys-fs/cryptsetup-2.0.5-r1
@@ -240,10 +240,6 @@ net-analyzer/mate-netspeed
 # made it into the tree, bug #665192
 ~dev-lang/julia-0.7.0
 ~dev-lang/julia-1.0.1
-
-# Bernard Cafarelli <voyageur@gentoo.org> (20 Aug 2018)
-# Requires >=dev-libs/openssl-1.1.0
->=net-misc/nextcloud-client-2.5.0_beta1
 
 # Bernard Cafarelli <voyageur@gentoo.org> (13 Aug 2018)
 # Beta release with new features, masked for testing
@@ -333,11 +329,6 @@ media-libs/libglvnd
 # Likely to break a lot of software
 # Masked for initial testing
 >=dev-db/mysql-connector-c++-8.0.0
-
-# Jeroen Roovers <jer@gentoo.org> (6 Apr 2018)
-# Requires >=dev-libs/openssl-1.1.0
-=net-libs/nodejs-10*
-=net-libs/nodejs-11*
 
 # Eray Aslan <eras@gentoo.org> (08 Feb 2018)
 # Mask experimental software
@@ -485,10 +476,6 @@ media-plugins/gst-plugins-ffmpeg
 # Bug: #604678
 <dev-perl/DBD-mysql-4.41.0
 
-# Alon Bar-Lev <alonbl@gentoo.org> (06 Feb 2017)
-# Needs openssl-1.1
->=dev-libs/opencryptoki-3.6
-
 # Michael Orlitzky <mjo@gentoo.org> (07 Jan 2017)
 # This package has some dangerous quality and security issues, but
 # people may still find it useful. It is masked to prevent accidental
@@ -514,10 +501,6 @@ app-admin/amazon-ec2-init
 # Denis Dupeyron <calchan@gentoo.org> (12 Sep 2016)
 # Masked for testing, see bug #588894.
 =x11-misc/light-locker-1.7.0-r1
-
-# Lars Wendler <polynomial-c@gentoo.org> (26 Aug 2016)
-# Masked while being tested and reverse deps aren't fully compatible
-=dev-libs/openssl-1.1*
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (03 Apr 2016)
 # Can exhaust all available memory depending on task
