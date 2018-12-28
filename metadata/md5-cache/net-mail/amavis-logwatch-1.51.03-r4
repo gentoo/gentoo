@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=A log analyzer for amavisd-new
+EAPI=7
+HOMEPAGE=http://logreporters.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=mirror://sourceforge/logreporters/amavis-logwatch-1.51.03.tgz
+_md5_=394a1fd585b5d3c5031e1c49d3b16c29

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=A log analyzer for postfix
+EAPI=7
+HOMEPAGE=http://logreporters.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=mirror://sourceforge/logreporters/postfix-logwatch-1.40.03.tgz
+_md5_=d84434cba0c992e75d9bd98dfccd7ecc
