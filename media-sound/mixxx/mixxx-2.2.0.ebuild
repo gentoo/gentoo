@@ -29,6 +29,7 @@ RDEPEND="
 	dev-libs/protobuf:0=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
@@ -36,6 +37,7 @@ RDEPEND="
 	dev-qt/qtsql:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	media-libs/chromaprint
 	media-libs/flac
