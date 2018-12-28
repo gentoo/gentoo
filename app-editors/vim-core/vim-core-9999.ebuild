@@ -3,7 +3,7 @@
 
 EAPI=6
 VIM_VERSION="8.1"
-inherit estack vim-doc flag-o-matic bash-completion-r1 prefix desktop
+inherit estack vim-doc flag-o-matic bash-completion-r1 prefix desktop gnome2-utils
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -23,6 +23,8 @@ LICENSE="vim"
 IUSE="nls acl minimal"
 
 DEPEND="sys-devel/autoconf"
+# avoid icon file collision bug #673880
+RDEPEND="!!<app-editors/gvim-8.1.0648"
 PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
 S=${WORKDIR}/vim-${PV}
@@ -207,11 +209,17 @@ src_install() {
 }
 
 pkg_postinst() {
-	# Update documentation tags (from vim-doc.eclass)
+	# update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
+
+	# update icon cache
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	# Update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
+
+	# update icon cache
+	gnome2_icon_cache_update
 }
