@@ -93,8 +93,6 @@ src_configure() {
 		# thunar integration is a single data file with no extra deps
 		# so install it unconditionally
 		--enable-thunar-sendto
-		# ignore pointless check
-		NETWORKTOOLS=/bin/true
 	)
 	econf "${myconf[@]}"
 }
@@ -110,11 +108,6 @@ src_install() {
 
 	python_fix_shebang "${D}"
 	rm "${D}"/$(python_get_sitedir)/*.la || die
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-	gnome2_schemas_savelist
 }
 
 pkg_postinst() {
