@@ -21,28 +21,18 @@
       Ensure <pkg>gnome-base/gconf</pkg> is present for pulseaudio GConf
       to GSettings module automatic migration (keeping the user configuration)
     </flag>
-    <flag name="gnome">
-      Use GConf to store user preferences on streams and so on. Don't
-      enable this flag if you want to use a system wide instance. If
-      unsure, enable this flag.
-    </flag>
     <flag name="oss">
       Enable OSS sink/source (output/input). Deprecated, upstream does
       not support this on systems where other sink/source systems are
       available (i.e.: Linux). The padsp wrapper is now always build
       if the system supports OSS at all.
     </flag>
-    <flag name="glib" restrict="&lt;media-sound/pulseaudio-12.0">
-      Add support to <pkg>dev-libs/glib</pkg>-based mainloop for the
-      libpulse client library, to allow using libpulse on glib-based
-      programs.
-    </flag>
-    <flag name="glib" restrict="&gt;=media-sound/pulseaudio-12.0">
+    <flag name="glib">
       Add support to <pkg>dev-libs/glib</pkg>-based mainloop for the
       libpulse client library, to allow using libpulse on glib-based
       programs. Build the GSettings PA module.
     </flag>
-    <flag name="system-wide" restrict="&gt;=media-sound/pulseaudio-0.9.21.1">
+    <flag name="system-wide">
       Allow preparation and installation of the system-wide init
       script for PulseAudio. Since this support is only supported for
       embedded situations, do not enable without reading the upstream
