@@ -1257,7 +1257,7 @@ app-shells/ccsh 0.0.4-r4: UNIX Shell for people already familiar with the C lang
 app-shells/dash 0.5.9.1-r3: Debian Almquist Shell
 app-shells/dsh 0.25.10-r1: Distributed Shell
 app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
-app-shells/fish 2.6.0 2.7.1: Friendly Interactive SHell
+app-shells/fish 2.7.1: Friendly Interactive SHell
 app-shells/fzy 1.0: Fuzzy text selector (interactive grep) for console
 app-shells/gentoo-bashcomp 20140911 20180302: Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)
 app-shells/gentoo-zsh-completions 20150103 20180228: Gentoo specific zsh completion support (includes emerge and ebuild commands)
@@ -8238,7 +8238,7 @@ media-tv/tvnamer 2.4: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20170225: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
 media-tv/v4l-utils 1.10.1: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20141122: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
-media-tv/xmltv 0.5.57 0.5.70: Set of utilities to manage TV listings stored in the XMLTV format
+media-tv/xmltv 0.5.70: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/acidrip 0.14-r4: A gtk-perl mplayer/mencoder frontend for ripping DVDs
 media-video/aegisub 3.2.2_p20160518-r2: Advanced subtitle editor
 media-video/atomicparsley 0.9.0: command line program for reading, parsing and setting iTunes-style metadata in MPEG4 files
