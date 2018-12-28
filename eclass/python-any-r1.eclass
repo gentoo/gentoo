@@ -283,6 +283,11 @@ _python_EPYTHON_supported() {
 python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	# Ensure Python wrappers are created against the build system's
+	# configuration as python-any-r1 is not to be used in packages
+	# requiring Python at runtime. It may not even be installed.
+	local SYSROOT ESYSROOT=${BROOT-${EPREFIX}}
+
 	# support developer override
 	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
 		local impls=( ${PYTHON_COMPAT_OVERRIDE} )
