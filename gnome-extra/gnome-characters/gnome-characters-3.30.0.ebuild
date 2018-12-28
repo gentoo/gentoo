@@ -26,6 +26,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-libs/appstream-glib
 	dev-libs/libxml2:2
+	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
