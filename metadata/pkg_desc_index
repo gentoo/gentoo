@@ -9992,13 +9992,13 @@ sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p201308
 sys-block/kvpm 0.9.10: KDE frontend for Linux LVM2 and GNU parted
 sys-block/mbuffer 20150412 20171011 20181119: M(easuring)buffer is a replacement for buffer with additional functionality
 sys-block/megacli 8.07.10: LSI Logic MegaRAID Command Line Interface management tool
-sys-block/megactl 0.4.1-r2: LSI MegaRAID control utility
+sys-block/megactl 0.4.1-r3: LSI MegaRAID control utility
 sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration and status of LSI SCSI HBAs
 sys-block/ms-sys 2.4.0: A command-line program for writing Microsoft compatible boot records
 sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape drives
 sys-block/nbd 3.15.3: Userland client/server for kernel network block device
 sys-block/noflushd 2.7.3: A daemon to spin down your disks and force accesses to be cached
-sys-block/open-iscsi 2.0.872-r2 2.0.873 2.0.873-r1 2.0.875: A performant, transport independent, multi-platform implementation of RFC3720
+sys-block/open-iscsi 2.0.873-r1 2.0.875: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.98: iSNS server and client for Linux
 sys-block/parted 3.2-r1: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9: Console-based application to efficiently save raw partition data to image file
@@ -11275,7 +11275,7 @@ x11-themes/neutral-xcursors 20150106: A family of smoothed and shadowed cursors 
 x11-themes/nimbus 0.1.7-r1: The default OpenSolaris theme (GTK+ 2.x engine, icon- and metacity theme)
 x11-themes/noia 1.0-r1: The Noia icon theme
 x11-themes/numix-icon-theme 18.07.17: An official icon theme from the Numix Project
-x11-themes/numix-icon-theme-circle 18.08.29 18.09.19 18.10.03: An icon theme for Linux from the Numix project
+x11-themes/numix-icon-theme-circle 18.08.29 18.09.19 18.10.03 18.12.01: An icon theme for Linux from the Numix project
 x11-themes/nuvox 07.1-r1: NuvoX SVG icon theme
 x11-themes/obsidian-xcursors 1.0: A shiny and clean xcursor theme
 x11-themes/oxygen-gtk 1.4.1-r1 1.4.6-r1: Official GTK+:2 port of KDE's Oxygen widget style
