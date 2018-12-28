@@ -95,8 +95,6 @@ src_configure() {
 		# thunar integration is a single data file with no extra deps
 		# so install it unconditionally
 		--enable-thunar-sendto
-		# ignore pointless check
-		NETWORKTOOLS=/bin/true
 	)
 	econf "${myconf[@]}"
 }
