@@ -39,6 +39,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-libs/gdk-pixbuf:2[introspection]
 "
 DEPEND="${COMMON_DEPEND}
+	dev-util/glib-utils
 	>=dev-util/intltool-0.40
 	virtual/pkgconfig
 "
