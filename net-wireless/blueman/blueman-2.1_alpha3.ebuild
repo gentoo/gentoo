@@ -112,11 +112,6 @@ src_install() {
 	rm "${D}"/$(python_get_sitedir)/*.la || die
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-	gnome2_schemas_savelist
-}
-
 pkg_postinst() {
 	gnome2_icon_cache_update
 	gnome2_schemas_update
