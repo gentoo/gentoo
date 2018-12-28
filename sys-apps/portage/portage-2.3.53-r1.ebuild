@@ -95,6 +95,13 @@ pkg_setup() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# Bug 673900 - FEATURES that require unshare may fail
+	# ungracefully if unshare support is somehow broken.
+	sed -e 's: ipc-sandbox::' \
+		-e 's:network-sandbox ::' \
+		-e 's: pid-sandbox::' \
+		-i cnf/make.globals || die
+
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
 		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
