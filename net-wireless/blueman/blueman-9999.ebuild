@@ -44,7 +44,10 @@ RDEPEND="${COMMON_DEPEND}
 	appindicator? ( dev-libs/libappindicator:3[introspection] )
 	network? (
 		net-firewall/iptables
-		sys-apps/net-tools
+		|| (
+			sys-apps/net-tools
+			sys-apps/iproute2
+		)
 		|| (
 			net-dns/dnsmasq
 			net-misc/dhcp
