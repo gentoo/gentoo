@@ -12,7 +12,8 @@ HOMEPAGE="http://libre.adacore.com/tools/gps/"
 SRC_URI="http://mirrors.cdn.adacore.com/art/5b0cf627c7a4475261f97ceb
 	-> ${MYP}.tar.gz
 	http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a59 ->
-		libadalang-tools-gpl-2018-src.tar.gz"
+		libadalang-tools-gpl-2018-src.tar.gz
+	https://dev.gentoo.org/~tupone/distfiles/gpsLib.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -73,6 +74,9 @@ src_prepare() {
 		share/support/core/projects.py \
 		|| die
 	mv "${WORKDIR}"/libadalang-tools-src laltools
+	echo "#!/bin/bash" > gps.sh
+	echo "export LD_LIBRARY_PATH=/opt/lib/gps" >> gps.sh
+	echo 'exec /usr/bin/gps_exe "$@"' >> gps.sh
 }
 
 src_configure() {
@@ -93,4 +97,8 @@ src_compile() {
 src_install() {
 	default
 	make_desktop_entry "${PN}" "GPS" "${EPREFIX}/usr/share/gps/icons/hicolor/32x32/apps/gps_32.png" "Development;IDE;"
+	insinto /opt/lib
+	doins -r ../lib/gps
+	mv "${D}"/usr/bin/gps{,_exe}
+	newbin	gps.sh gps
 }
