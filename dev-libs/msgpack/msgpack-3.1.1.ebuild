@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit cmake-multilib
 
 if [[ ${PV} == 9999 ]]; then
@@ -16,10 +16,11 @@ DESCRIPTION="MessagePack is a binary-based efficient data interchange format"
 HOMEPAGE="https://msgpack.org/ https://github.com/msgpack/msgpack-c/"
 
 LICENSE="Boost-1.0"
-SLOT="0"
-IUSE="+cxx doc examples static-libs test"
+SLOT="0/2"
+IUSE="boost +cxx doc examples static-libs test"
 
-DEPEND="
+RDEPEND="boost? ( dev-libs/boost[context,${MULTILIB_USEDEP}] )"
+DEPEND="${RDEPEND}
 	test? (
 		>=dev-cpp/gtest-1.6.0-r2[${MULTILIB_USEDEP}]
 		sys-libs/zlib[${MULTILIB_USEDEP}]
@@ -27,19 +28,15 @@ DEPEND="
 	doc? ( app-doc/doxygen[dot] )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.2-cflags.patch
-	"${FILESDIR}"/${PN}-1.4.2-static.patch
-)
-
 src_configure() {
 	local mycmakeargs=(
+		-DMSGPACK_BOOST="$(usex boost)"
 		-DMSGPACK_ENABLE_CXX="$(usex cxx)"
-		-DMSGPACK_STATIC="$(usex static-libs)"
+		-DMSGPACK_ENABLE_STATIC="$(usex static-libs)"
 		-DMSGPACK_BUILD_TESTS="$(usex test)"
-		# Don't build the examples
+		# don't build the examples
 		-DMSGPACK_BUILD_EXAMPLES=OFF
-		# Enable C++11 by default
+		# enable C++11 by default
 		-DMSGPACK_CXX11=ON
 	)
 	cmake-multilib_src_configure
