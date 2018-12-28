@@ -34,7 +34,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	sed -i -e 's|-Werror||g' CMakeLists.txt || die
 	sed -i -e 's|-Werror||g' example/CMakeLists.txt || die
