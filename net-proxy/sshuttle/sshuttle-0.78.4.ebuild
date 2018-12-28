@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 
 inherit linux-info distutils-r1
 
@@ -39,7 +39,7 @@ python_prepare_all() {
 }
 
 python_compile_all() {
-	emake -C docs html man
+	emake -j1 -C docs html man
 }
 
 python_test() {
