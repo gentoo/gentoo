@@ -26,7 +26,7 @@ RDEPEND="net-firewall/iptables
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
-	local KCONFIG_OPTS=" \
+	local CONFIG_CHECK=" \
 		~IP_NF_FILTER \
 		~IP_NF_IPTABLES \
 		~IP_NF_MANGLE \
