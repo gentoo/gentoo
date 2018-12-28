@@ -39,7 +39,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.5.13-multilib.patch
 	"${FILESDIR}"/${PN}-8.4.15-aqua.patch
 	"${FILESDIR}"/${P}-conf.patch # Bug 125971
-	"${FILESDIR}"/${PN}-8.6.8-libieee.patch
 )
 
 src_prepare() {
