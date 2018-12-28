@@ -1,20 +1,17 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit toolchain-funcs multilib-minimal
 
-HP_COMMIT="350258965909f249f9c59823aac240313e0d0120"
 DESCRIPTION="HTTP request/response parser for C"
 HOMEPAGE="https://github.com/nodejs/http-parser"
-SRC_URI="https://github.com/nodejs/http-parser/archive/${HP_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/2.8.0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x64-macos ~x64-solaris"
 IUSE="static-libs"
-
-S=${WORKDIR}/${PN}-${HP_COMMIT}
 
 src_prepare() {
 	default
