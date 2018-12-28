@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby23 ruby24 ruby25"
 
-inherit vim-doc flag-o-matic bash-completion-r1 python-single-r1 ruby-single desktop xdg-utils gnome2-utils
+inherit vim-doc flag-o-matic bash-completion-r1 python-single-r1 ruby-single desktop xdg-utils
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -303,9 +303,8 @@ pkg_postinst() {
 	# Call eselect vi update
 	eselect_vi_update
 
-	# update desktop file mime/icon caches
+	# update desktop file mime cache
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
@@ -315,7 +314,6 @@ pkg_postrm() {
 	# Call eselect vi update
 	eselect_vi_update
 
-	# update desktop file mime/icon caches
+	# update desktop file mime cache
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }
