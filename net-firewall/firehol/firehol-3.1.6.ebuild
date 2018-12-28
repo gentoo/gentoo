@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,6 +34,8 @@ pkg_setup() {
 		~IP_NF_TARGET_MASQUERADE
 		~IP_NF_TARGET_REDIRECT \
 		~IP_NF_TARGET_REJECT \
+		~NETFILTER_XT_CONNMARK \
+		~NETFILTER_XT_MATCH_HELPER \
 		~NETFILTER_XT_MATCH_LIMIT \
 		~NETFILTER_XT_MATCH_OWNER \
 		~NETFILTER_XT_MATCH_STATE \
