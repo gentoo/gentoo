@@ -45,7 +45,10 @@ DOCS=( AUTHORS README ChangeLog )
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${PN}-0.8.0-tests.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.8.0-tests.patch"
+	"${FILESDIR}/${PN}-0.8.3-strict-overflow.patch"
+)
 
 src_prepare() {
 	cmake-utils_src_prepare
