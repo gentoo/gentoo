@@ -69,10 +69,6 @@ dev-tex/revtex
 <x11-base/xorg-server-1.20.3
 <x11-base/xorg-drivers-1.20
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (12 Dec 2018)
-# mask new cmake based fish for testing while in beta
->=app-shells/fish-3.0_beta1
-
 # Mikle Kolyada <zlogene@gentoo.org> (12 Dec 2018)
 # grub:0 is dead and not being developed by upstream.
 # Two open bugs (427340, 591574).
