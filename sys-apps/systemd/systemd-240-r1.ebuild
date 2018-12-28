@@ -7,7 +7,8 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}/${P}.tar.gz"
+	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}/${P}.tar.gz
+		https://dev.gentoo.org/~floppym/dist/${P}-patches-0.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
