@@ -9326,7 +9326,7 @@ sci-electronics/linsmith 0.99.30-r1: Smith charting program, mainly designed for
 sci-electronics/magic 7.5.202-r1: The VLSI design CAD tool
 sci-electronics/oregano 0.69.1-r1: Application for the schematic capturing and simulation of electrical circuits
 sci-electronics/pcb 0_p20140316: GPL Electronic Design Automation: Printed Circuit Board editor
-sci-electronics/qelectrotech 0.50 0.61: Qt5 application to design electric diagrams
+sci-electronics/qelectrotech 0.61: Qt5 application to design electric diagrams
 sci-electronics/spice 3.5.5-r2: general-purpose circuit simulation program
 sci-electronics/voacapl 0.6.7 0.7.2: HF propagation prediction tool
 sci-electronics/xcircuit 3.7.48: Circuit drawing and schematic capture program
