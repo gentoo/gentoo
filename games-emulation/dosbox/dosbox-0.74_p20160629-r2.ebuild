@@ -5,25 +5,20 @@ EAPI=6
 
 inherit autotools desktop flag-o-matic
 
-GLIDE_PATCH=841e1071597b64ead14dd08c25a03206b2d1d1b6
-SRC_URI="glide? ( https://raw.githubusercontent.com/voyageur/openglide/${GLIDE_PATCH}/platform/dosbox/dosbox_glide.diff -> dosbox_glide-${GLIDE_PATCH}.diff )"
-
-if [[ ${PV} = 9999 ]]; then
-	ESVN_REPO_URI="https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk"
-	inherit subversion
-else
-	SRC_URI+=" mirror://sourceforge/dosbox/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
-fi
+PATCH=3989
+GLIDE_PATCH=3722fc563b737d2d7933df6a771651c2154e6f7b
 
 DESCRIPTION="DOS emulator"
 HOMEPAGE="http://dosbox.sourceforge.net/"
+SRC_URI="mirror://gentoo/dosbox-code-0-${PATCH}-dosbox-trunk.zip
+	glide? ( https://raw.githubusercontent.com/voyageur/openglide/${GLIDE_PATCH}/platform/dosbox/dosbox_glide.diff -> dosbox_glide-${GLIDE_PATCH}.diff )"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 IUSE="alsa debug glide hardened opengl"
 
-DEPEND="alsa? ( media-libs/alsa-lib )
+RDEPEND="alsa? ( media-libs/alsa-lib )
 	glide? ( media-libs/openglide )
 	opengl? ( virtual/glu virtual/opengl )
 	debug? ( sys-libs/ncurses:0 )
@@ -31,11 +26,10 @@ DEPEND="alsa? ( media-libs/alsa-lib )
 	media-libs/libsdl[joystick,opengl?,video,X]
 	media-libs/sdl-net
 	media-libs/sdl-sound"
-RDEPEND=${DEPEND}
+DEPEND="${RDEPEND}
+	app-arch/unzip"
 
-if [[ ${PV} = 9999 ]]; then
-	S=${WORKDIR}/${PN}
-fi
+S=${WORKDIR}/${PN}-code-0-${PATCH}-dosbox-trunk
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.74-gcc46.patch
