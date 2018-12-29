@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 WX_GTK_VER="3.0"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit mercurial python-single-r1 wxwidgets versionator cmake-utils
+inherit mercurial python-single-r1 wxwidgets cmake-utils eapi7-ver
 
 DESCRIPTION="GUI for the creation & processing of panoramic images"
 HOMEPAGE="http://hugin.sf.net"
@@ -36,6 +36,7 @@ CDEPEND="
 	media-libs/tiff:0
 	>=media-libs/vigra-1.11.0[openexr]
 	sci-libs/fftw:3.0=
+	sci-libs/flann
 	sys-libs/zlib
 	virtual/glu
 	virtual/jpeg:0
@@ -56,7 +57,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DOCS=( authors.txt README TODO )
 
-S=${WORKDIR}/${PN}-$(get_version_component_range 1-3)
+S=${WORKDIR}/${PN}-$(ver_cut 1-2).0
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
