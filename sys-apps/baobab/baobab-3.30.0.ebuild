@@ -17,6 +17,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.20:3
 "
 DEPEND="${RDEPEND}
+	$(vala_depend)
 	dev-libs/appstream-glib
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
