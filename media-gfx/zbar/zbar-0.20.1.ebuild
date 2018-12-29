@@ -12,7 +12,7 @@ SRC_URI="https://linuxtv.org/downloads/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="graphicsmagick gtk imagemagick java jpeg python qt5 static-libs test +threads v4l X xv"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
