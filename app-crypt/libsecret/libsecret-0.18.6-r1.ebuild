@@ -8,7 +8,7 @@ VALA_USE_DEPEND=vapigen
 inherit gnome2 multilib-minimal python-any-r1 vala virtualx
 
 DESCRIPTION="GObject library for accessing the freedesktop.org Secret Service API"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/libsecret/"
+HOMEPAGE="https://wiki.gnome.org/Projects/Libsecret"
 
 LICENSE="LGPL-2.1+ Apache-2.0" # Apache-2.0 license is used for tests only
 SLOT="0"
