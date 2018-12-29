@@ -2184,6 +2184,7 @@ games-emulation/dolphin:egl - Enable EGL support
 games-emulation/dolphin:evdev - Enable evdev input support
 games-emulation/dolphin:log - Increase logging output
 games-emulation/dolphin:lto - Add support for link-time optimizations.
+games-emulation/dosbox:core-inline - Enable memory-increasing inlines for better performance but requiring more build time
 games-emulation/dosbox:glide - Enable unofficial Glide emulation via media-libs/openglide
 games-engines/renpy:development - Install IDE for game developers and an empty game template
 games-misc/xcowsay:fortune - Installs the fortune-mod xcow binary
