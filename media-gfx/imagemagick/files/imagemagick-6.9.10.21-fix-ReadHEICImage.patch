@@ -1,0 +1,13 @@
+https://github.com/ImageMagick/ImageMagick6/issues/33
+
+--- a/coders/heic.c
++++ b/coders/heic.c
+@@ -317,7 +317,7 @@ static Image *ReadHEICImage(const ImageInfo *image_info,
+     image pixels. ReadImage processes "exif:Orientation" expecting pixels to be
+     oriented accordingly. However, in HEIF the pixels are NOT rotated.
+    */
+-  SetImageProperty(image, "exif:Orientation", "1", exception);
++  SetImageProperty(image, "exif:Orientation", "1");
+   return(GetFirstImageInList(image));
+ }
+ #endif
