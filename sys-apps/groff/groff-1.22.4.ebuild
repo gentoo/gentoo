@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 MY_P="${P/_/.}"
 
@@ -28,7 +28,8 @@ RDEPEND="
 		x11-libs/libICE
 	)"
 DEPEND="${RDEPEND}
-	dev-lang/perl"
+	dev-lang/perl
+	sys-apps/texinfo"
 
 DOCS=( BUG-REPORT ChangeLog MORE.STUFF NEWS PROBLEMS PROJECTS README TODO )
 
@@ -40,6 +41,7 @@ PATCHES=(
 
 src_prepare() {
 	default
+	eautoreconf
 
 	# honor Gentoo's docdir
 	sed -i -e '/^docdir=/s/^/#/' \
