@@ -18,7 +18,7 @@ IUSE="+dns debug gdal openmp subversion test"
 
 COMMON_DEPEND="
 	dev-libs/expat
-	>=dev-games/openscenegraph-3.2.0:=
+	<dev-games/openscenegraph-3.5.6:=
 	media-libs/openal
 	net-misc/curl
 	sys-libs/zlib
