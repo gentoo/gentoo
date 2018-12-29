@@ -21,7 +21,7 @@ HOMEPAGE="http://dosbox.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa debug glide hardened opengl X"
+IUSE="alsa +core-inline debug glide hardened opengl X"
 
 DEPEND="alsa? ( media-libs/alsa-lib )
 	glide? ( media-libs/openglide )
@@ -55,6 +55,7 @@ src_configure() {
 	ac_cv_lib_X11_main=$(usex X yes no) \
 	econf \
 		$(use_enable alsa alsa-midi) \
+		$(use_enable core-inline) \
 		$(use_enable !hardened dynamic-core) \
 		$(use_enable !hardened dynamic-x86) \
 		$(use_enable debug) \
