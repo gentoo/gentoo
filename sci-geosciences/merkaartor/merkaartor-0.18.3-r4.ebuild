@@ -37,7 +37,10 @@ DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 "
-PATCHES=( "${FILESDIR}/${P}-sharedir-pluginsdir.patch" ) # bug 621826
+PATCHES=(
+	"${FILESDIR}"/${P}-sharedir-pluginsdir.patch # bug 621826
+	"${FILESDIR}"/${P}-desktopfile.patch
+)
 
 DOCS=( AUTHORS CHANGELOG )
 
