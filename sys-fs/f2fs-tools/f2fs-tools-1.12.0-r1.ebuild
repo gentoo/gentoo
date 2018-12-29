@@ -14,7 +14,9 @@ SLOT="0/6"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="selinux"
 
-RDEPEND="selinux? ( sys-libs/libselinux )"
+RDEPEND="
+	selinux? ( sys-libs/libselinux )
+	elibc_musl? ( sys-libs/queue-standalone )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
