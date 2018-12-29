@@ -56,7 +56,6 @@ RDEPEND="
 		~app-leechcraft/lc-deadlyrics-${PV}
 		~app-leechcraft/lc-dolozhee-${PV}
 		~app-leechcraft/lc-poshuku-${PV}
-		~app-leechcraft/lc-vgrabber-${PV}
 		~app-leechcraft/lc-pogooglue-${PV}
 		~app-leechcraft/lc-seekthru-${PV}
 		~app-leechcraft/lc-tpi-${PV}

@@ -73,7 +73,6 @@ move sys-fs/leechcraft-vrooby app-leechcraft/lc-vrooby
 move www-client/leechcraft-deadlyrics app-leechcraft/lc-deadlyrics
 move www-client/leechcraft-dolozhee app-leechcraft/lc-dolozhee
 move www-client/leechcraft-poshuku app-leechcraft/lc-poshuku
-move www-client/leechcraft-vgrabber app-leechcraft/lc-vgrabber
 move www-misc/leechcraft-pogooglue app-leechcraft/lc-pogooglue
 move www-misc/leechcraft-seekthru app-leechcraft/lc-seekthru
 move x11-plugins/leechcraft-lhtr app-leechcraft/lc-lhtr
