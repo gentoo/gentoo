@@ -10973,7 +10973,7 @@ x11-misc/rendercheck 1.5 1.5-r1: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 5.3.16.3-r1: A fast, small and powerful file manager and graphical shell
 x11-misc/rofi 1.5.1: A window switcher, run dialog and dmenu replacement
-x11-misc/rss-glx 0.9.1 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
+x11-misc/rss-glx 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screengrab 1.99: Qt application for getting screenshots
 x11-misc/sct 0.4: Set color temperature of the screen
 x11-misc/sddm 0.18.0: Simple Desktop Display Manager
