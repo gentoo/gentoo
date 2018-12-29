@@ -9,7 +9,7 @@ SRC_URI="http://www.pdfgrep.org/download/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+pcre test unac"
 
 RDEPEND="
