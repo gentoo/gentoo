@@ -116,27 +116,6 @@ dev-ruby/actioncable:5.0
 dev-ruby/activemodel:5.0
 dev-ruby/activesupport:5.0
 
-# David Seifert <soap@gentoo.org> (29 Nov 2018)
-# Uses ancient APIs, abandoned by upstream, unsalvageable.
-# Removal in 30 days. Bug #662142.
-app-cdr/nero
-
-# Michał Górny <mgorny@gentoo.org> (28 Nov 2018)
-# The sources are no longer fetchable and are restricted from mirroring.
-# The maintainer is unable to find a matching replacement archive.
-# Removal in 30 days.  Bug #640580.
-games-server/ut2003-ded
-
-# Michał Górny <mgorny@gentoo.org> (28 Nov 2018)
-# dev-libs/libexplain does not build.  It is unmaintained upstream
-# and keeps accumulating local patches.  Furthermore, it seems to rely
-# on internal system implementation details.  app-arch/tardy
-# and dev-util/fhist are its only reverse dependencies.
-# Removal in 30 days.  Bug #669530.
-app-arch/tardy
-dev-libs/libexplain
-dev-util/fhist
-
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Nov 2018)
 # Masked per security vulnerability CVE-2018-14345, bug #661510
 # Keeping it masked while users have unsolved issues with >0.15.0.
