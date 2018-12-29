@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.1-docs.patch
 	"${FILESDIR}"/${PN}-2.5.1-openmp-automagic.patch
 	"${FILESDIR}"/${PN}-2.5.1-fits-automagic.patch
+	"${FILESDIR}"/${PN}-2.5.1-exiv2-0.27.patch
 )
 
 pkg_pretend() {
