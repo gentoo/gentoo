@@ -23,7 +23,7 @@ RESTRICT="test"
 # zlib is some strange auto-dep from simgear
 COMMON_DEPEND="
 	dev-db/sqlite:3
-	>=dev-games/openscenegraph-3.2.0:=[jpeg,png]
+	<dev-games/openscenegraph-3.5.6:=[jpeg,png]
 	~dev-games/simgear-${PV}[gdal=]
 	media-libs/openal
 	>=media-libs/speex-1.2.0:0
