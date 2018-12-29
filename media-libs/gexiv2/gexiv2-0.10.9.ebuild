@@ -39,6 +39,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.patch" )
+
 src_prepare() {
 	xdg_environment_reset
 	tc-export CXX

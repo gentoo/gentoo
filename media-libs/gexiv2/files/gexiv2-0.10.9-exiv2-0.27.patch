@@ -1,0 +1,178 @@
+From d8f96634e1df693eb0393cf82893a86dd2a92d2b Mon Sep 17 00:00:00 2001
+From: Jens Georg <mail@jensge.org>
+Date: Tue, 20 Nov 2018 12:43:21 +0100
+Subject: [PATCH] Replace single-file includes
+
+To improve compatibility with exiv2 0.27 as recommended in
+
+Fixes #34
+
+https://github.com/Exiv2/exiv2/issues/555#issuecomment-440023260
+---
+ gexiv2/gexiv2-metadata-exif.cpp            | 2 +-
+ gexiv2/gexiv2-metadata-gps.cpp             | 2 +-
+ gexiv2/gexiv2-metadata-iptc.cpp            | 2 +-
+ gexiv2/gexiv2-metadata-private.h           | 6 +-----
+ gexiv2/gexiv2-metadata-xmp.cpp             | 2 +-
+ gexiv2/gexiv2-metadata.cpp                 | 9 ++-------
+ gexiv2/gexiv2-preview-image-private.h      | 2 +-
+ gexiv2/gexiv2-preview-properties-private.h | 2 +-
+ gexiv2/gexiv2-startup.cpp                  | 2 +-
+ gexiv2/gexiv2-stream-io.cpp                | 2 +-
+ gexiv2/gexiv2-stream-io.h                  | 2 +-
+ 11 files changed, 12 insertions(+), 21 deletions(-)
+
+diff --git a/gexiv2/gexiv2-metadata-exif.cpp b/gexiv2/gexiv2-metadata-exif.cpp
+index c87a460..f931b95 100644
+--- a/gexiv2/gexiv2-metadata-exif.cpp
++++ b/gexiv2/gexiv2-metadata-exif.cpp
+@@ -12,7 +12,7 @@
+ #include "gexiv2-metadata-private.h"
+ #include <string>
+ #include <glib-object.h>
+-#include <exiv2/exif.hpp>
++#include <exiv2/exiv2.hpp>
+ 
+ G_BEGIN_DECLS
+ 
+diff --git a/gexiv2/gexiv2-metadata-gps.cpp b/gexiv2/gexiv2-metadata-gps.cpp
+index d49d97c..47592ec 100644
+--- a/gexiv2/gexiv2-metadata-gps.cpp
++++ b/gexiv2/gexiv2-metadata-gps.cpp
+@@ -15,7 +15,7 @@
+ #include <stdexcept>
+ #include <stdio.h>
+ #include <glib-object.h>
+-#include <exiv2/exif.hpp>
++#include <exiv2/exiv2.hpp>
+ 
+ #include <limits>
+ 
+diff --git a/gexiv2/gexiv2-metadata-iptc.cpp b/gexiv2/gexiv2-metadata-iptc.cpp
+index 2371708..aeac1c7 100644
+--- a/gexiv2/gexiv2-metadata-iptc.cpp
++++ b/gexiv2/gexiv2-metadata-iptc.cpp
+@@ -12,7 +12,7 @@
+ #include "gexiv2-metadata-private.h"
+ #include <string>
+ #include <glib-object.h>
+-#include <exiv2/iptc.hpp>
++#include <exiv2/exiv2.hpp>
+ 
+ G_BEGIN_DECLS
+ 
+diff --git a/gexiv2/gexiv2-metadata-private.h b/gexiv2/gexiv2-metadata-private.h
+index d85453c..8818c22 100644
+--- a/gexiv2/gexiv2-metadata-private.h
++++ b/gexiv2/gexiv2-metadata-private.h
+@@ -11,11 +11,7 @@
+ #define GEXIV2_METADATA_PRIVATE_H
+ 
+ #include <gexiv2/gexiv2-metadata.h>
+-#include <exiv2/image.hpp>
+-#include <exiv2/exif.hpp>
+-#include <exiv2/iptc.hpp>
+-#include <exiv2/xmp.hpp>
+-#include <exiv2/preview.hpp>
++#include <exiv2/exiv2.hpp>
+ 
+ G_BEGIN_DECLS
+ 
+diff --git a/gexiv2/gexiv2-metadata-xmp.cpp b/gexiv2/gexiv2-metadata-xmp.cpp
+index e4900f2..6f60cd0 100644
+--- a/gexiv2/gexiv2-metadata-xmp.cpp
++++ b/gexiv2/gexiv2-metadata-xmp.cpp
+@@ -12,7 +12,7 @@
+ #include "gexiv2-metadata-private.h"
+ #include <string>
+ #include <glib-object.h>
+-#include <exiv2/xmp.hpp>
++#include <exiv2/exiv2.hpp>
+ 
+ G_BEGIN_DECLS
+ 
+diff --git a/gexiv2/gexiv2-metadata.cpp b/gexiv2/gexiv2-metadata.cpp
+index 98ded9d..9c791ef 100644
+--- a/gexiv2/gexiv2-metadata.cpp
++++ b/gexiv2/gexiv2-metadata.cpp
+@@ -22,13 +22,8 @@
+ #include <cmath>
+ #include <glib-object.h>
+ #include <gio/gio.h>
+-#include <exiv2/image.hpp>
+-#include <exiv2/xmpsidecar.hpp>
+-#include <exiv2/exif.hpp>
+-#include <exiv2/iptc.hpp>
+-#include <exiv2/xmp.hpp>
+-#include <exiv2/preview.hpp>
+-#include <exiv2/jpgimage.hpp>
++
++#include <exiv2/exiv2.hpp>
+ 
+ 
+ G_BEGIN_DECLS
+diff --git a/gexiv2/gexiv2-preview-image-private.h b/gexiv2/gexiv2-preview-image-private.h
+index 810304c..b52a84f 100644
+--- a/gexiv2/gexiv2-preview-image-private.h
++++ b/gexiv2/gexiv2-preview-image-private.h
+@@ -11,7 +11,7 @@
+ #define GEXIV2_PREVIEW_IMAGE_PRIVATE_H
+ 
+ #include <gexiv2/gexiv2-preview-image.h>
+-#include <exiv2/preview.hpp>
++#include <exiv2/exiv2.hpp>
+ 
+ G_BEGIN_DECLS
+ 
+diff --git a/gexiv2/gexiv2-preview-properties-private.h b/gexiv2/gexiv2-preview-properties-private.h
+index bacb392..b057604 100644
+--- a/gexiv2/gexiv2-preview-properties-private.h
++++ b/gexiv2/gexiv2-preview-properties-private.h
+@@ -11,7 +11,7 @@
+ #define GEXIV2_PREVIEW_PROPERTIES_PRIVATE_H
+ 
+ #include <gexiv2/gexiv2-preview-properties.h>
+-#include <exiv2/preview.hpp>
++#include <exiv2/exiv2.hpp>
+ 
+ G_BEGIN_DECLS
+ 
+diff --git a/gexiv2/gexiv2-startup.cpp b/gexiv2/gexiv2-startup.cpp
+index 179b6c7..de438de 100644
+--- a/gexiv2/gexiv2-startup.cpp
++++ b/gexiv2/gexiv2-startup.cpp
+@@ -7,7 +7,7 @@
+  * This is free software. See COPYING for details.
+  */
+ 
+-#include <exiv2/xmp.hpp>
++#include <exiv2/exiv2.hpp>
+ #include "gexiv2-startup.h"
+ #include "gexiv2-version.h"
+ 
+diff --git a/gexiv2/gexiv2-stream-io.cpp b/gexiv2/gexiv2-stream-io.cpp
+index b772b74..454305d 100644
+--- a/gexiv2/gexiv2-stream-io.cpp
++++ b/gexiv2/gexiv2-stream-io.cpp
+@@ -13,7 +13,7 @@
+ #include "gexiv2-stream-io.h"
+ #include "gexiv2-managed-stream.h"
+ 
+-#include <exiv2/basicio.hpp>
++#include <exiv2/exiv2.hpp>
+ #include <gio/gio.h>
+ #include <glib.h>
+ #include <stdio.h>
+diff --git a/gexiv2/gexiv2-stream-io.h b/gexiv2/gexiv2-stream-io.h
+index 430ac01..8d1fe76 100644
+--- a/gexiv2/gexiv2-stream-io.h
++++ b/gexiv2/gexiv2-stream-io.h
+@@ -16,7 +16,7 @@
+ #define GEXIV2_STREAM_IO_H
+ 
+ #include <gexiv2/gexiv2-managed-stream.h>
+-#include <exiv2/basicio.hpp>
++#include <exiv2/exiv2.hpp>
+ #include <gio/gio.h>
+ 
+ 
