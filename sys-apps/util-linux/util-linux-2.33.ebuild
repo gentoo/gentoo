@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation and others
+# Copyright 1999-2018 Gentoo Authors and others
 # Copyright 2018 Sony Interactive Entertainment Inc.
 # Distributed under the terms of the GNU General Public License v2
 
@@ -65,6 +65,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/util-linux-2.32.1-skip-oids-test-when-uuidgen-is-not-available.patch"
+	"${FILESDIR}/${P}-sparc-setarch.patch"
 )
 
 src_prepare() {
