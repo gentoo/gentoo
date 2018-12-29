@@ -45,6 +45,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	sys-devel/flex
 	virtual/yacc"
+PATCHES=(
+	"${FILESDIR}"/cve-2017-6430.patch
+	"${FILESDIR}"/${P}-openssl-1.1.patch
+)
 
 src_prepare() {
 	sed -i "s:Release:Release Gentoo:" CMakeLists.txt || die
