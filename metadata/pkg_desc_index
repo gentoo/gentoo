@@ -11236,7 +11236,7 @@ x11-themes/gnome-colors-common 5.5.1-r1: Colorized icons shared between all gnom
 x11-themes/gnome-colors-themes 5.5.1: Some gnome-colors iconsets including a Gentoo one
 x11-themes/gnome-icon-theme-extras 3.12.0: Extra GNOME icons for specific devices and file types
 x11-themes/gnome-icon-theme-symbolic 3.10.1 3.12.0: Symbolic icons for GNOME default icon theme
-x11-themes/gnome-themes-standard 3.22.3: Standard Themes for GNOME Applications
+x11-themes/gnome-themes-standard 3.22.3-r1: Standard Themes for GNOME Applications
 x11-themes/goddard-backgrounds 13.0.0.3-r1: Fedora 13 official background artwork
 x11-themes/golden-xcursors 0.8 0.8-r1: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/greybird 3.20.1-r2: The default theme from Xubuntu
