@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://photoqt.org/pkgs/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="devil exiv2 freeimage graphicsmagick pdf raw"
+IUSE="devil exif freeimage graphicsmagick pdf raw"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -30,7 +30,7 @@ RDEPEND="
 	app-arch/libarchive:=
 	app-arch/unrar
 	devil? ( media-libs/devil )
-	exiv2? ( media-gfx/exiv2:= )
+	exif? ( media-gfx/exiv2:= )
 	freeimage? ( media-libs/freeimage )
 	graphicsmagick? ( >=media-gfx/graphicsmagick-1.3.20:= )
 	pdf? ( app-text/poppler[qt5] )
@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}
 src_configure() {
 	local mycmakeargs=(
 		-DDEVIL=$(usex devil)
-		-DEXIV2=$(usex exiv2)
+		-DEXIV2=$(usex exif)
 		-DFREEIMAGE=$(usex freeimage)
 		-DGM=$(usex graphicsmagick)
 		-DPOPPLER=$(usex pdf)
