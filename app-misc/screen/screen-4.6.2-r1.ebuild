@@ -58,9 +58,12 @@ src_prepare() {
 		doc/screen.1 \
 		|| die
 
-	if [[ ${CHOST} == *-darwin* ]] ; then
+	if [[ ${CHOST} == *-darwin* ]] || use elibc_musl ; then
 		sed -i -e '/^#define UTMPOK/s/define/undef/' acconfig.h || die
 	fi
+
+	# disable musl dummy headers for utmp[x]
+	use elibc_musl && append-cppflags "-D_UTMP_H -D_UTMPX_H"
 
 	# reconfigure
 	eautoreconf
