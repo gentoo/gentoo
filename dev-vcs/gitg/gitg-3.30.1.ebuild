@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,23 +46,19 @@ DEPEND="${RDEPEND}
 	$(vala_depend)
 	>=dev-libs/libgit2-glib-0.24.4[vala]
 	>=dev-util/intltool-0.40
-	gnome-base/gnome-common
-	>=sys-devel/gettext-0.17
+	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
 "
-
-pkg_setup() {
-	use python && [[ ${MERGE_TYPE} != binary ]] && python_setup
-}
 
 src_prepare() {
 	default
 	vala_src_prepare
+	xdg_environment_reset
 }
 
 src_configure() {
 	local emesonargs=(
-		-Dglade_catalog=$(usex glade true false)
+		$(meson_use glade glade_catalog)
 		# we install the module manually anyway
 		-Dpython=false
 	)
