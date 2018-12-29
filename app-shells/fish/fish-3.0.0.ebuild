@@ -54,6 +54,10 @@ src_configure() {
 		-DBUILD_DOCS="$(usex doc)"
 		-DWITH_GETTEXT="$(usex nls)"
 	)
+	# HACK: https://bugs.gentoo.org/673942
+	if has_version -d 'sys-libs/ncurses:0[tinfo]'; then
+		mycmakeargs+=( -DCURSES_EXTRA_LIBRARY=tinfo )
+	fi
 	cmake-utils_src_configure
 }
 
