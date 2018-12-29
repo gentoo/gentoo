@@ -41,6 +41,8 @@ DEPEND="${RDEPEND}
 	kde-frameworks/extra-cmake-modules:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DDEVIL=$(usex devil)
