@@ -16,14 +16,15 @@ SRC_URI="mirror://gentoo/dosbox-code-0-${PATCH}-dosbox-trunk.zip
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
-IUSE="alsa debug glide hardened opengl"
+IUSE="alsa debug glide hardened opengl X"
 
 RDEPEND="alsa? ( media-libs/alsa-lib )
 	glide? ( media-libs/openglide )
 	opengl? ( virtual/glu virtual/opengl )
 	debug? ( sys-libs/ncurses:0 )
+	X? ( x11-libs/libX11 )
 	media-libs/libpng:0
-	media-libs/libsdl[joystick,opengl?,video,X]
+	media-libs/libsdl[joystick,opengl?,video,X?]
 	media-libs/sdl-net
 	media-libs/sdl-sound"
 DEPEND="${RDEPEND}
@@ -44,6 +45,7 @@ src_prepare() {
 src_configure() {
 	use glide && append-cppflags -I"${EPREFIX}"/usr/include/openglide
 
+	ac_cv_lib_X11_main=$(usex X yes no) \
 	econf \
 		$(use_enable alsa alsa-midi) \
 		$(use_enable !hardened dynamic-core) \
