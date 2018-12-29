@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,7 +36,7 @@ src_configure() {
 }
 
 src_compile() {
-	use elibc_musl && append-ldflags "-lfts"
+	use elibc_musl && append-cflags "-lfts"
 
 	# We can't rely on LFS flags as it uses the fts.h interface which lacks 64-bit support.
 	set -- \
