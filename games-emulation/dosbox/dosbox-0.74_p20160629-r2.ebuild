@@ -23,10 +23,11 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 	opengl? ( virtual/glu virtual/opengl )
 	debug? ( sys-libs/ncurses:0 )
 	X? ( x11-libs/libX11 )
-	media-libs/libpng:0
+	media-libs/libpng:0=
 	media-libs/libsdl[joystick,opengl?,video,X?]
 	media-libs/sdl-net
-	media-libs/sdl-sound"
+	media-libs/sdl-sound
+	sys-libs/zlib"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
