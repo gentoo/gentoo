@@ -243,15 +243,15 @@ python_install() {
 }
 
 multilib_src_install() {
+	if multilib_is_native_abi && use python; then
+		python_foreach_impl python_install
+	fi
+
 	emake DESTDIR="${D}" install
 
 	if multilib_is_native_abi && use userland_GNU; then
 		# need the libs in /
 		gen_usr_ldscript -a blkid fdisk mount smartcols uuid
-	fi
-
-	if multilib_is_native_abi && use python; then
-		python_foreach_impl python_install
 	fi
 }
 
