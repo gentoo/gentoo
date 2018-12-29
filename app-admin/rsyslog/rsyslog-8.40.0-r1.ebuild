@@ -81,6 +81,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-archive-2015.02.24
 	virtual/pkgconfig
+	elibc_musl? ( sys-libs/queue-standalone )
 	test? (
 		>=dev-libs/liblogging-1.0.1[stdlog]
 		jemalloc? ( <sys-libs/libfaketime-0.9.7 )

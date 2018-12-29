@@ -25,6 +25,7 @@ CDEPEND="bzip2? ( app-arch/bzip2 )
 	sys-devel/libtool
 	|| ( dev-libs/libpcre2 >dev-libs/libpcre-6 )
 	system-libmspack? ( dev-libs/libmspack )
+	elibc_musl? ( sys-libs/fts-standalone )
 	!!<app-antivirus/clamav-0.99"
 # hard block clamav < 0.99 due to linking problems Bug #567680
 # openssl is now *required* see this link as to why
@@ -54,6 +55,7 @@ src_prepare() {
 }
 
 src_configure() {
+	use elibc_musl && append-ldflags -lfts
 	use ppc64 && append-flags -mminimal-toc
 	use uclibc && export ac_cv_type_error_t=yes
 
