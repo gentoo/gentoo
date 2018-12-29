@@ -10,7 +10,7 @@ SRC_URI="https://archive.hadrons.org/software/libmd/${P}.tar.xz"
 
 LICENSE="|| ( BSD BSD-2 ISC BEER-WARE public-domain )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="static-libs"
 
 src_configure() {
