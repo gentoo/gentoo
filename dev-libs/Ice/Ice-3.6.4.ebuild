@@ -28,7 +28,7 @@ SRC_URI="https://github.com/zeroc-ice/ice/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	doc? ( http://download.zeroc.com/Ice/$(ver_cut 1-2)/${P}.pdf )"
 LICENSE="GPL-2"
 SLOT="0/36"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm x86"
 IUSE="doc examples libressl +ncurses mono php python ruby test debug"
 RESTRICT="test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
