@@ -12,8 +12,5 @@
 		<flag name="freeimage">
 			Support additional iamge formats using <pkg>media-libs/freeimage</pkg>
 		</flag>
-		<flag name="exiv2">
-			Use <pkg>media-gfx/exiv2</pkg> as optional dependency
-		</flag>
 	</use>
 </pkgmetadata>
