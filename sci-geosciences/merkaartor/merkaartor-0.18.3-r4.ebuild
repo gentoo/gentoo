@@ -14,7 +14,7 @@ SRC_URI="https://github.com/openstreetmap/${PN}/archive/${PV}.tar.gz -> ${P}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug exif gps libproxy"
+IUSE="debug exif gps libproxy webengine"
 
 RDEPEND="
 	dev-qt/qtconcurrent:5
@@ -23,7 +23,6 @@ RDEPEND="
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsingleapplication[X,qt5(+)]
 	dev-qt/qtsvg:5
-	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	sci-libs/gdal
@@ -32,6 +31,7 @@ RDEPEND="
 	exif? ( media-gfx/exiv2:= )
 	gps? ( >=sci-geosciences/gpsd-3.17-r2 )
 	libproxy? ( net-libs/libproxy )
+	webengine? ( dev-qt/qtwebengine:5 )
 "
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
@@ -40,6 +40,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-sharedir-pluginsdir.patch # bug 621826
 	"${FILESDIR}"/${P}-desktopfile.patch
+	"${FILESDIR}"/${P}-webengine{1,2,3}.patch
 )
 
 DOCS=( AUTHORS CHANGELOG )
@@ -78,6 +79,7 @@ src_configure() {
 		GEOIMAGE=$(usex exif 1 0) \
 		GPSDLIB=$(usex gps 1 0) \
 		LIBPROXY=$(usex libproxy 1 0) \
+		USEWEBENGINE=$(usex webengine 1 0) \
 		ZBAR=0 \
 		Merkaartor.pro
 }
