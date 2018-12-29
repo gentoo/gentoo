@@ -54,10 +54,14 @@ DEPEND="${RDEPEND}
 	dev-libs/gobject-introspection-common
 	gnome-base/gnome-common
 "
-# eautoreconf needs gobject-introspection-common, gnome-common
 
 # Due to sub-configure
 QA_CONFIGURE_OPTIONS=".*"
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-glib-2.58-compat.patch
+	"${FILESDIR}"/glib-2.58-compat2.patch
+)
 
 src_prepare() {
 	use vala && vala_src_prepare
