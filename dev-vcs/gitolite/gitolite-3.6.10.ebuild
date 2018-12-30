@@ -1,27 +1,38 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+[[ ${PV} == *9999 ]] && SCM="git-2"
+EGIT_REPO_URI="https://github.com/sitaramc/${PN}.git"
+EGIT_MASTER=master
 
-inherit perl-module user versionator
+inherit perl-module user versionator ${SCM}
 
 DESCRIPTION="Highly flexible server for git directory version tracker"
 HOMEPAGE="https://github.com/sitaramc/gitolite"
-SRC_URI="https://github.com/sitaramc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+if [[ ${PV} != *9999 ]]; then
+	SRC_URI="https://github.com/sitaramc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~x86"
+else
+	SRC_URI=""
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
-IUSE="tools vim-syntax"
+IUSE="selinux tools"
 
 DEPEND="dev-lang/perl
 	virtual/perl-File-Path
 	virtual/perl-File-Temp
 	>=dev-vcs/git-1.6.6"
 RDEPEND="${DEPEND}
+	!app-vim/gitolite-syntax
 	!dev-vcs/gitolite-gentoo
-	vim-syntax? ( app-vim/gitolite-syntax )
+	selinux? ( sec-policy/selinux-gitosis )
 	dev-perl/JSON"
+
+PATCHES=( )
 
 pkg_setup() {
 	enewgroup git
@@ -29,7 +40,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	echo $PF > src/VERSION
+	default
+	echo $PF > src/VERSION || die
 }
 
 src_install() {
@@ -40,10 +52,17 @@ src_install() {
 	doins -r src/lib/Gitolite
 
 	dodoc README.markdown CHANGELOG
+	# These are meant by upstream as examples, you are strongly recommended to
+	# customize them for your needs.
+	dodoc contrib/utils/ipa_groups.pl contrib/utils/ldap_groups.sh
+
+	insinto /usr/share/vim/vimfiles
+	doins -r contrib/vim/*
 
 	insopts -m0755
 	insinto $uexec
 	doins -r src/{commands,syntactic-sugar,triggers,VREF}/
+	doins -r contrib/{commands,triggers,hooks}
 
 	insopts -m0644
 	doins src/VERSION
@@ -58,6 +77,7 @@ src_install() {
 
 	if use tools; then
 		dobin check-g2-compat convert-gitosis-conf
+		dobin contrib/utils/rc-format-v3.4
 	fi
 
 	keepdir /var/lib/gitolite
