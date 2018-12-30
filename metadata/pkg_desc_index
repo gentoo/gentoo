@@ -3967,7 +3967,7 @@ dev-perl/Mail-Sendmail 0.790.0-r1 0.800.0: Simple platform independent mailer
 dev-perl/Mail-Transport 3.0.0: Base class for Email Message Exchange
 dev-perl/MailTools 2.140.0 2.190.0: Manipulation of electronic mail addresses
 dev-perl/Math-Base-Convert 0.110.0: Very fast base to base conversion
-dev-perl/Math-BigInt-GMP 1.380.0 1.490.0: Use the GMP library for Math::BigInt routines
+dev-perl/Math-BigInt-GMP 1.490.0: Use the GMP library for Math::BigInt routines
 dev-perl/Math-Calc-Units 1.70.0-r1: Human-readable unit-aware calculator
 dev-perl/Math-Derivative 1.10.0: 1st and 2nd order differentiation of data
 dev-perl/Math-GMP 2.60.0-r1 2.150.0: High speed arbitrary size integer math
