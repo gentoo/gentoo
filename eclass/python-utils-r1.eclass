@@ -1063,7 +1063,14 @@ python_wrapper_setup() {
 
 		# CPython-specific
 		if [[ ${EPYTHON} == python* ]]; then
-			local pysysrootlib=${pysysroot}/usr/$(get_libdir)
+			local pysysrootlib=${pysysroot}/usr/
+
+			case "${EPYTHON}" in
+				python2.*|python3.[0-6])
+					pysysrootlib+=$(get_libdir) ;;
+				*)
+					pysysrootlib+=lib ;;
+			esac
 
 			cat > "${workdir}/bin/python-config" <<-_EOF_ || die
 				#!/bin/sh
@@ -1095,7 +1102,7 @@ python_wrapper_setup() {
 			ln -s "${EPYTHON/python/2to3-}" "${workdir}"/bin/2to3 || die
 
 			# Python 2.7+.
-			ln -s "${pysysrootlib}"/pkgconfig/${EPYTHON/n/n-}.pc \
+			ln -s "${pysysroot}"/usr/$(get_libdir)/pkgconfig/${EPYTHON/n/n-}.pc \
 				"${workdir}"/pkgconfig/python.pc || die
 			ln -s python.pc "${workdir}"/pkgconfig/python${pyver}.pc || die
 		else
