@@ -39,7 +39,7 @@
 >=www-client/chromium-73
 
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Dec 2018)
-# Everything breaks. Tracker bug #673720
+# API breakage, tracker bug #673720
 =media-gfx/exiv2-0.27*
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (25 Dec 2018)
