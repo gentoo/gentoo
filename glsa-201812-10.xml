@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201812-10">
+  <title>GKSu: Arbitrary command execution</title>
+  <synopsis>A vulnerability in GKSu might allow attackers to execute arbitrary
+    commands.
+  </synopsis>
+  <product type="ebuild">gksu</product>
+  <announced>2018-12-30</announced>
+  <revised count="1">2018-12-30</revised>
+  <bug>534540</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/gksu" auto="yes" arch="*">
+      <vulnerable range="le">2.0.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A library that provides a Gtk+ frontend to su and sudo.</p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in GKSu’s gksu-run-helper.</p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could execute arbitrary commands.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for GKSu and recommends that users
+      unmerge the package:
+    </p>
+    
+    <code>
+      # emerge --unmerge "x11-libs/gksu"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2014-2886">CVE-2014-2886</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-12-11T17:31:55Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-12-30T21:10:46Z">b-man</metadata>
+</glsa>
