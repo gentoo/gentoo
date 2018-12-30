@@ -14,4 +14,4 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	$(python_gen_cond_dep '>=dev-python/funcsigs-1' python2_7 python3_{3,4,5} pypy{,3} )"
+	$(python_gen_cond_dep '>=dev-python/funcsigs-1[${PYTHON_USEDEP}]' python2_7 python3_{3,4,5} pypy{,3} )"
