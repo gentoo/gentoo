@@ -32,9 +32,9 @@ ruby_add_rdepend "
 	>=dev-ruby/ed25519-1.2.4
 	>=dev-ruby/erubis-2.7.0
 	>=dev-ruby/hashicorp-checkpoint-0.1.5
-	>=dev-ruby/i18n-1.1.1:* <dev-ruby/i18n-1.2.0:*
+	>=dev-ruby/i18n-1.1.1:1
 	>=dev-ruby/listen-3.1.5
-	>=dev-ruby/log4r-1.1.9 <dev-ruby/log4r-1.1.11
+	<dev-ruby/log4r-1.1.11
 	<dev-ruby/mime-types-3:*
 	>=dev-ruby/net-ssh-5.0.0:*
 	>=dev-ruby/net-sftp-2.1
@@ -58,7 +58,7 @@ all_ruby_prepare() {
 	rm Gemfile || die
 
 	# loosen dependencies
-	sed -e '/hashicorp-checkpoint\|listen\|net-ssh\|net-scp\|rake\|childprocess/s/~>/>=/' \
+	sed -e '/hashicorp-checkpoint\|i18n\|listen\|net-ssh\|net-scp\|rake\|childprocess/s/~>/>=/' \
 		-e '/ruby_dep/s/<=/>=/' \
 		-i ${PN}.gemspec || die
 
