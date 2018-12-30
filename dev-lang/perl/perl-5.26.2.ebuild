@@ -307,6 +307,10 @@ src_prepare() {
 	local patch
 	EPATCH_OPTS+=" -p1"
 
+	if use hppa ; then
+		epatch "${FILESDIR}/${PN}-5.26.2-hppa.patch" # bug 634162
+	fi
+
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# do NOT mess with nsl, on Solaris this is always necessary,
 		# when -lsocket is used e.g. to get h_errno
