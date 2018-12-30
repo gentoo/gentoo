@@ -59,7 +59,9 @@ RDEPEND="
 "
 
 # java dep shouldn't rely on slots, bug #450004
+# TODO: libgee shouldn't be needed at build with USE=-vala, but needs build system fixes - bug 674066
 DEPEND="${RDEPEND}
+	dev-libs/libgee:0.8
 	>=app-text/gnome-doc-utils-0.9
 	app-text/yelp-tools
 	dev-util/glib-utils

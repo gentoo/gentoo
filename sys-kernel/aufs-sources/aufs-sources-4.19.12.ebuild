@@ -5,11 +5,11 @@ EAPI=6
 
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER=23
+K_GENPATCHES_VER=13
 UNIPATCH_STRICTORDER=1
 inherit kernel-2 eutils readme.gentoo-r1
 
-AUFS_VERSION=4.18.11+_p20181112
+AUFS_VERSION=4.19_p20181217
 AUFS_TARBALL="aufs-sources-${AUFS_VERSION}.tar.xz"
 # git archive -v --remote=git://git.code.sf.net/p/aufs/aufs4-standalone aufs${AUFS_VERSION/_p*} > aufs-sources-${AUFS_VERSION}.tar
 AUFS_URI="https://dev.gentoo.org/~jlec/distfiles/${AUFS_TARBALL}"
