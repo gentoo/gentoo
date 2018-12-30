@@ -1,20 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7} )
 
 GENTOO_DEPEND_ON_PERL="no"
 inherit perl-module python-any-r1 cmake-multilib
 
 DESCRIPTION="Library providing rendering capabilities for complex non-Roman writing systems"
-HOMEPAGE="http://graphite.sil.org/"
+HOMEPAGE="https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_home"
 SRC_URI="mirror://sourceforge/silgraphite/${PN}/${P}.tgz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="perl test"
 
 RDEPEND="
@@ -24,21 +24,17 @@ DEPEND="${RDEPEND}
 	perl? (
 		dev-perl/Module-Build
 		dev-perl/Locale-Maketext-Lexicon
-		)
+	)
 	test? (
-		dev-libs/glib:2
-		media-libs/fontconfig
-		$(python_gen_any_dep '
-			dev-python/fonttools[${PYTHON_USEDEP}]
-		')
 		${PYTHON_DEPS}
+		dev-libs/glib:2
+		$(python_gen_any_dep 'dev-python/fonttools[${PYTHON_USEDEP}]')
+		media-libs/fontconfig
 		perl? ( virtual/perl-Test-Simple )
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.3.5-includes-libs-perl.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-1.3.5-includes-libs-perl.patch" )
 
 pkg_setup() {
 	use perl && perl_set_version
@@ -54,19 +50,18 @@ src_prepare() {
 
 	# make tests optional
 	if ! use test; then
-		sed -i \
-			-e '/tests/d' \
-			CMakeLists.txt || die
+		sed -e '/tests/d' -i CMakeLists.txt || die
 	fi
 }
 
 multilib_src_configure() {
 	local mycmakeargs=(
 		# Renamed VM_MACHINE_TYPE to GRAPHITE2_VM_TYPE
-		"-DGRAPHITE2_VM_TYPE=direct"
-		# https://sourceforge.net/p/silgraphite/bugs/49/
-		$([[ ${CHOST} == powerpc*-apple* ]] && \
-			echo "-DGRAPHITE2_NSEGCACHE:BOOL=ON")
+		-DGRAPHITE2_VM_TYPE=direct
+	)
+	# https://sourceforge.net/p/silgraphite/bugs/49/
+	[[ ${CHOST} == powerpc*-apple* ]] && mycmakeargs+=(
+		-DGRAPHITE2_NSEGCACHE:BOOL=ON
 	)
 
 	cmake-utils_src_configure
@@ -74,9 +69,8 @@ multilib_src_configure() {
 	# fix perl linking
 	if multilib_is_native_abi && use perl; then
 		# we rely on the fact that cmake-utils_src_configure sets BUILD_DIR
-		sed -i \
-			-e "s:@BUILD_DIR@:\"${BUILD_DIR}/src\":" \
-			"${S}"/contrib/perl/Build.PL || die
+		sed -e "s:@BUILD_DIR@:\"${BUILD_DIR}/src\":" \
+			-i "${S}"/contrib/perl/Build.PL || die
 	fi
 }
 

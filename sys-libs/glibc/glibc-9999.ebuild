@@ -731,9 +731,6 @@ src_unpack() {
 		unpack ${P}.tar.xz
 	fi
 
-	cd "${S}" || die
-	touch locale/C-translit.h || die #185476 #218003
-
 	cd "${WORKDIR}" || die
 	unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.xz
 }
