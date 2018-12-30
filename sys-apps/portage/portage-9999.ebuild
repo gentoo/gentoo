@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ PYTHON_COMPAT=(
 )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 
-inherit distutils-r1 git-r3 systemd
+inherit distutils-r1 git-r3 linux-info systemd
 
 DESCRIPTION="Portage is the package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
@@ -85,6 +85,12 @@ prefix_src_archives() {
 
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage.git
 	https://github.com/gentoo/portage.git"
+
+pkg_pretend() {
+	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS"
+
+	check_extra_config
+}
 
 pkg_setup() {
 	use epydoc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
