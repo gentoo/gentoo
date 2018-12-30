@@ -44,8 +44,6 @@ DEPEND="${RDEPEND}
 
 DOCS=( README.md doc/ChangeLog doc/cmd.txt )
 
-S="${S}-Source"
-
 PATCHES=(
 	# pending upstream
 	"${FILESDIR}"/${P}-png-broken-icc-profile.patch
@@ -53,6 +51,14 @@ PATCHES=(
 
 pkg_setup() {
 	use doc && python-any-r1_pkg_setup
+}
+
+src_unpack() {
+	# FIXME @upstream: MacOS cruft is getting installed, don't let it in...
+	# https://github.com/Exiv2/exiv2/issues/620
+	tar -C "${WORKDIR}" --exclude=.* -xpf "${DISTDIR}/${A}" --gz 2> /dev/null ||
+		elog "${my_tar}: tar extract command failed at least partially - continuing"
+	mv "${P}-Source" "${S}" || die "Failed to create source dir ${S}"
 }
 
 src_prepare() {
