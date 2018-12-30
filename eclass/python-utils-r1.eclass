@@ -1028,7 +1028,11 @@ python_wrapper_setup() {
 	# overridden but hopefully it will be somewhere under ${T}.
 	local ${lpyvar}=$(PATH=${PATH//${T}//dev/null} type -P "${EPYTHON}" || die "${FUNCNAME}: can't find ${EPYTHON} in PATH")
 
-	local pysysroot=${ESYSROOT-${SYSROOT%/}${EPREFIX}}
+	if [[ ${CATEGORY}/${PN} == dev-lang/python ]]; then
+		local pysysroot=${ED%/}
+	else
+		local pysysroot=${ESYSROOT-${SYSROOT%/}${EPREFIX}}
+	fi
 
 	if [[ ! -x ${workdir}/bin/python ]]; then
 		_python_check_dead_variables
