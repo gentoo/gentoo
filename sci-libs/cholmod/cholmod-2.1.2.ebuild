@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools-utils multilib toolchain-funcs
 
 DESCRIPTION="Sparse Cholesky factorization and update/downdate library"
-HOMEPAGE="http://www.cise.ufl.edu/research/sparse/cholmod/"
+HOMEPAGE="http://faculty.cse.tamu.edu/davis/suitesparse.html"
 SRC_URI="https://dev.gentoo.org/~bicatali/distfiles/${P}.tar.bz2"
 
 LICENSE="minimal? ( LGPL-2.1 ) !minimal? ( GPL-2 )"
