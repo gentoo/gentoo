@@ -11,4 +11,4 @@ RDEPEND=app-text/iso-codes dev-libs/glib:2 <media-gfx/exiv2-0.27:= sys-devel/lib
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gnu/libextractor/libextractor-1.8.tar.gz
-_md5_=284ecc144ab4a3f8169bcc72fe16a459
+_md5_=6493036eb4f1e8619973a5af3a849cd8
