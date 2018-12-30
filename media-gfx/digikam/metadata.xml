@@ -16,5 +16,7 @@
 		<flag name="mediaplayer">Enable support for media player using <pkg>media-libs/qtav</pkg></flag>
 		<flag name="panorama">Build the panorama plugin which requires <pkg>media-gfx/hugin</pkg></flag>
 		<flag name="semantic-desktop">Enable <pkg>kde-frameworks/kfilemetadata</pkg> support</flag>
+		<flag name="vkontakte">Build <pkg>net-libs/libkvkontakte</pkg> plugin for vkontakte.ru</flag>
+		<flag name="webkit">Build with <pkg>dev-qt/qtwebkit</pkg> instead of <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
 </pkgmetadata>
