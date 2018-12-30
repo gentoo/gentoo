@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201812-11">
+  <title>Rust: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Rust, the worst which
+    may allow local attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">rust</product>
+  <announced>2018-12-30</announced>
+  <revised count="1">2018-12-30</revised>
+  <bug>662904</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-lang/rust" auto="yes" arch="*">
+      <unaffected range="ge">1.29.1</unaffected>
+      <vulnerable range="lt">1.29.1</vulnerable>
+    </package>
+    <package name="dev-lang/rust-bin" auto="yes" arch="*">
+      <unaffected range="ge">1.29.1</unaffected>
+      <vulnerable range="lt">1.29.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A systems programming language that runs blazingly fast, prevents
+      segfaults, and guarantees thread safety.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Rust. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker able to control the value passed to Rust’s
+      str::repeat function could possibly cause a Denial of Service condition.
+    </p>
+    
+    <p>In addition, a local attacker could trick another user into executing
+      arbitrary code when using rustdoc.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Rust users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/rust-1.29.1"
+    </code>
+    
+    <p>All Rust binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/rust-bin-1.29.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000622">
+      CVE-2018-1000622
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000810">
+      CVE-2018-1000810
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-12-02T17:19:53Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2018-12-30T21:11:02Z">b-man</metadata>
+</glsa>
