@@ -73,6 +73,7 @@ RDEPEND="${COMMON_DEPEND}
 
 src_prepare() {
 	kde5_src_prepare
+	has_version ">=media-gfx/exiv2-0.27" && eapply "${FILESDIR}/${P}-exiv2-0.27.patch"
 	if ! use mpris; then
 		# FIXME: upstream a better solution
 		sed -e "/set(HAVE_QTDBUS/s/\${Qt5DBus_FOUND}/0/" -i CMakeLists.txt || die
