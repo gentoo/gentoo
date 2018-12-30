@@ -27,7 +27,7 @@ IUSE="doc nls test"
 RDEPEND="
 	>=dev-libs/libpcre2-10.21[pcre32]
 	sys-devel/bc
-	sys-libs/ncurses:0=
+	sys-libs/ncurses:0=[unicode]
 "
 
 DEPEND="${RDEPEND}
@@ -50,14 +50,11 @@ src_configure() {
 		-DCMAKE_INSTALL_BINDIR="${EPREFIX}/bin"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
+		-DCURSES_NEED_NCURSES=ON
 		-DINTERNAL_WCWIDTH=OFF
 		-DBUILD_DOCS="$(usex doc)"
 		-DWITH_GETTEXT="$(usex nls)"
 	)
-	# HACK: https://bugs.gentoo.org/673942
-	if has_version -d 'sys-libs/ncurses:0[tinfo]'; then
-		mycmakeargs+=( -DCURSES_EXTRA_LIBRARY=tinfo )
-	fi
 	cmake-utils_src_configure
 }
 

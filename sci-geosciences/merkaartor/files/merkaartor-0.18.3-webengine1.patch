@@ -1,0 +1,186 @@
+From df515ecf4e6ce1a249af299840e82126c68fcf91 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ladislav=20L=C3=A1ska?= <krakonos@krakonos.org>
+Date: Mon, 26 Sep 2016 13:02:57 +0200
+Subject: [PATCH] Updated QWeb to QWebView.
+
+---
+ src/Layers/LicenseDisplayDialog.ui      |  6 +++---
+ src/QMapControl/browserimagemanager.cpp | 20 +++++++++-----------
+ src/QMapControl/browserimagemanager.h   | 17 ++++++-----------
+ src/src.pro                             |  2 +-
+ 4 files changed, 19 insertions(+), 26 deletions(-)
+
+diff --git a/src/Layers/LicenseDisplayDialog.ui b/src/Layers/LicenseDisplayDialog.ui
+index 103816c6..3dabd130 100755
+--- a/src/Layers/LicenseDisplayDialog.ui
++++ b/src/Layers/LicenseDisplayDialog.ui
+@@ -15,7 +15,7 @@
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+-    <widget class="QWebView" name="webView">
++    <widget class="QWebEngineView" name="webView">
+      <property name="url">
+       <url>
+        <string>about:blank</string>
+@@ -41,9 +41,9 @@
+  </widget>
+  <customwidgets>
+   <customwidget>
+-   <class>QWebView</class>
++   <class>QWebEngineView</class>
+    <extends>QWidget</extends>
+-   <header>QtWebKit/QWebView</header>
++   <header>QWebEngineView</header>
+   </customwidget>
+  </customwidgets>
+  <resources/>
+diff --git a/src/QMapControl/browserimagemanager.cpp b/src/QMapControl/browserimagemanager.cpp
+index 468cf2b6..4021d40f 100644
+--- a/src/QMapControl/browserimagemanager.cpp
++++ b/src/QMapControl/browserimagemanager.cpp
+@@ -47,9 +47,8 @@ void BrowserWebPage::javaScriptConsoleMessage ( const QString & message, int lin
+     //printf("%s\n", s);
+ }
+ 
+-void BrowserWebPage::javaScriptAlert ( QWebFrame * frame, const QString & msg )
++void BrowserWebPage::javaScriptAlert ( const QString & msg )
+ {
+-    Q_UNUSED(frame)
+     //QMessageBox::information(NULL, tr("Javascript alert"), msg);
+ 
+     if (msg.startsWith("Coord")) {
+@@ -105,8 +104,10 @@ void BrowserWebPage::javaScriptAlert ( QWebFrame * frame, const QString & msg )
+ 
+ void BrowserWebPage::launchRequest ( const QUrl & url )
+ {
++    qDebug() << "Warning: you are using BrowserWebPage to render background imagery. "<<
++        "This code is not tested and may not work as expected. If you experience issues, please let us know.";
+     sw = sh = 0;
+-    mainFrame()->load(url);
++    load(url);
+ }
+ 
+ BrowserImageManager* BrowserImageManager::m_BrowserImageManagerInstance = 0;
+@@ -138,8 +139,6 @@ BrowserImageManager::BrowserImageManager(QObject* parent)
+     }
+ 
+     page = new BrowserWebPage();
+-    page->setNetworkAccessManager(m_networkManager);
+-    page->setViewportSize(QSize(1024, 1024));
+ 
+     connect(page, SIGNAL(loadFinished(bool)), this, SLOT(pageLoadFinished(bool)));
+ 
+@@ -220,7 +219,6 @@ void BrowserImageManager::launchRequest()
+ 
+     QUrl u = QUrl( R.url);
+ 
+-    page->networkAccessManager()->setProxy(M_PREFS->getProxy(u));
+     page->launchRequest(u);
+     requestActive = true;
+ #ifndef BROWSERIMAGEMANAGER_IS_THREADED
+@@ -246,7 +244,7 @@ void BrowserImageManager::pageLoadFinished(bool ok)
+         qDebug() << "BrowserImageManager::pageLoadFinished: " << " Hash: " << R.hash;
+         QPixmap pt(page->sw, page->sh);
+         QPainter P(&pt);
+-        page->mainFrame()->render(&P, QRegion(0,0,page->sw,page->sh));
++        page->view()->render(&P, QPoint(), QRegion(0,0,page->sw,page->sh));
+         P.end();
+ 
+ //        if (page->sw != BROWSER_TILE_SIZE || page->sh != BROWSER_TILE_SIZE) {
+@@ -319,7 +317,7 @@ void BrowserImageManager::loadingQueueEmpty()
+ void BrowserImageManager::abortLoading()
+ {
+     //qDebug() << "BrowserImageManager::abortLoading";
+-    page->triggerAction(QWebPage::Stop);
++    page->triggerAction(QWebEnginePage::Stop);
+     if (!loadingRequests.isEmpty()) {
+         LoadingRequest R = loadingRequests.dequeue();
+         loadingRequests.clear();
+@@ -331,7 +329,7 @@ void BrowserImageManager::abortLoading()
+ #ifdef BROWSERIMAGEMANAGER_IS_THREADED
+ void BrowserImageManager::run()
+ {
+-    page = new BrowserWebPage();
++    page = new BrowserWebEnginePage();
+     page->setViewportSize(QSize(1024, 1024));
+ 
+     QTimer theTimer;
+@@ -354,7 +352,7 @@ void BrowserImageManager::checkRequests()
+     } else {
+         if ((requestDuration++) > 100) {
+             requestDuration = 0;
+-            page->triggerAction(QWebPage::Stop);
++            page->triggerAction(QWebEnginePage::Stop);
+             qDebug() << "BrowserImageManager Timeout";
+         }
+     }
+@@ -365,7 +363,7 @@ void BrowserImageManager::checkRequests()
+ void BrowserImageManager::timeout()
+ {
+     qDebug() << "BrowserImageManager::timeout";
+-    page->triggerAction(QWebPage::Stop);
++    page->triggerAction(QWebEnginePage::Stop);
+     pageLoadFinished(false);
+ }
+ #endif // BROWSERIMAGEMANAGER_IS_THREADED
+diff --git a/src/QMapControl/browserimagemanager.h b/src/QMapControl/browserimagemanager.h
+index 10f8a477..ca846e31 100644
+--- a/src/QMapControl/browserimagemanager.h
++++ b/src/QMapControl/browserimagemanager.h
+@@ -24,14 +24,10 @@
+ #include <QPixmap>
+ 
+ #include <QtNetwork/QtNetwork>
+-#include <QWebFrame>
+-#include "qwebhistory.h"
+-#include "qwebhistoryinterface.h"
+-#include "qwebkitglobal.h"
+-#include "qwebpage.h"
+-#include "qwebpluginfactory.h"
+-#include "qwebsettings.h"
+-#include "qwebview.h"
++#include <QWebEnginePage>
++#include <QWebEngineHistory>
++#include <QWebEngineSettings>
++#include <QWebEngineView>
+ 
+ #include <QThread>
+ 
+@@ -41,13 +37,13 @@
+     @author Chris Browet <cbro@semperpax.com>
+ */
+ 
+-class BrowserWebPage : public QWebPage
++class BrowserWebPage : public QWebEnginePage
+ {
+     friend class BrowserImageManager;
+ 
+     protected:
+         virtual void javaScriptConsoleMessage ( const QString & message, int lineNumber, const QString & sourceID );
+-        virtual void javaScriptAlert ( QWebFrame * frame, const QString & msg ) ;
++        virtual void javaScriptAlert ( const QString & msg ) ;
+         void launchRequest ( const QUrl & url );
+ 
+     private:
+@@ -116,7 +112,6 @@ class BrowserImageManager : public QObject, public IImageManager
+         static BrowserImageManager* m_BrowserImageManagerInstance;
+ 
+         BrowserWebPage* page;
+-        QWebFrame *frame;
+         QNetworkAccessManager* qnam;
+ 
+     signals:
+diff --git a/src/src.pro b/src/src.pro
+index eb93b263..137d7e14 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -34,7 +34,7 @@ TEMPLATE = app
+ 
+ CONFIG += rtti stl exceptions
+ #CONFIG -= exceptions
+-QT += svg network xml core gui webkitwidgets concurrent printsupport
++QT += svg network xml core gui webenginewidgets concurrent printsupport
+ win32-msvc* {
+     LIBS += -lzlib
+ } else {

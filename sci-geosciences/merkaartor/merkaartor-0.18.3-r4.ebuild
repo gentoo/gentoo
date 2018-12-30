@@ -5,16 +5,15 @@ EAPI=6
 
 PLOCALES="ar cs de en es et fr hr hu id_ID it ja nl pl pt_BR pt ru sk sv uk vi zh_CN zh_TW"
 
-inherit git-r3 gnome2-utils l10n qmake-utils xdg-utils
+inherit gnome2-utils l10n qmake-utils xdg-utils
 
 DESCRIPTION="Qt based map editor for the openstreetmap.org project"
 HOMEPAGE="http://www.merkaartor.be https://github.com/openstreetmap/merkaartor"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/openstreetmap/merkaartor.git"
+SRC_URI="https://github.com/openstreetmap/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug exif gps libproxy webengine"
 
 RDEPEND="
@@ -38,17 +37,18 @@ DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 "
-
-PATCHES=( "${FILESDIR}/${PN}-0.18.3-sharedir-pluginsdir.patch" ) # bug 621826
+PATCHES=(
+	"${FILESDIR}"/${P}-sharedir-pluginsdir.patch # bug 621826
+	"${FILESDIR}"/${P}-desktopfile.patch
+	"${FILESDIR}"/${P}-webengine{1,2,3}.patch
+)
 
 DOCS=( AUTHORS CHANGELOG )
 
-src_unpack() {
-	git-r3_src_unpack
-}
-
 src_prepare() {
 	default
+
+	rm -r 3rdparty || die "Failed to remove bundled libs"
 
 	my_rm_loc() {
 		sed -i -e "s:../translations/${PN}_${1}.\(ts\|qm\)::" src/src.pro || die
@@ -61,9 +61,7 @@ src_prepare() {
 	fi
 
 	# build system expects to be building from git
-	if [[ ${PV} != *9999 ]] ; then
-		sed -i "${S}"/src/Config.pri -e "s:SION = .*:SION = \"${PV}\":g" || die
-	fi
+	sed -i "${S}"/src/Config.pri -e "s:SION = .*:SION = \"${PV}\":g" || die
 }
 
 src_configure() {
@@ -76,11 +74,13 @@ src_configure() {
 		TRANSDIR_MERKAARTOR="${ED%/}/usr/share/${PN}/translations" \
 		TRANSDIR_SYSTEM="${EPREFIX}/usr/share/qt5/translations" \
 		SYSTEM_QTSA=1 \
+		RELEASE=1 \
 		NODEBUG=$(usex debug 0 1) \
 		GEOIMAGE=$(usex exif 1 0) \
 		GPSDLIB=$(usex gps 1 0) \
 		LIBPROXY=$(usex libproxy 1 0) \
 		USEWEBENGINE=$(usex webengine 1 0) \
+		ZBAR=0 \
 		Merkaartor.pro
 }
 

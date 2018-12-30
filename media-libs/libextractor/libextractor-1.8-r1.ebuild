@@ -58,7 +58,10 @@ RDEPEND="${DEPEND}
 	!sci-biology/glimmer
 "
 
-PATCHES=( "${FILESDIR}"/${P}-CVE-2018-2043{0,1}.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-CVE-2018-2043{0,1}.patch # bug #673742
+	"${FILESDIR}"/${P}-exiv2-0.27.patch # bug #674046
+)
 
 src_prepare() {
 	default
