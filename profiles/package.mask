@@ -41,6 +41,8 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Dec 2018)
 # API breakage, tracker bug #673720
 =media-gfx/exiv2-0.27*
+# Pre-release, adding masked for exiv2-0.27 compatibility
+=media-gfx/digikam-6.0.0_beta3
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (25 Dec 2018)
 # Included in dev-tex/texlive-publishers-2017; there is no
