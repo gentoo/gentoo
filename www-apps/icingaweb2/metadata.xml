@@ -10,5 +10,6 @@
 	</longdescription>
 	<use>
 		<flag name="nginx">Adds support for nginx</flag>
+		<flag name="fpm">Adds FPM support to php</flag>
 	</use>
 </pkgmetadata>
