@@ -6144,7 +6144,7 @@ dev-tex/feynmf 1.08-r6: Combined LaTeX/Metafont package for drawing of Feynman d
 dev-tex/foiltex 2.1.4b: LaTeX package used to create foils and slides
 dev-tex/frakturx 20070103: Collection of blackletter fonts for LaTeX
 dev-tex/g-brief 4.0.2: LaTeX styles for formless letters in German or English
-dev-tex/glossaries 3.04: Create glossaries and lists of acronyms
+dev-tex/glossaries 3.04 4.41: Create glossaries and lists of acronyms
 dev-tex/harvard 2.0.5: The harvard family of bibliographic styles
 dev-tex/hevea 2.29: HeVeA is a quite complete and fast LaTeX to HTML translator
 dev-tex/hlatex 1.0.1-r1: HLaTeX is a LaTeX package to use Hangul with LaTeX
