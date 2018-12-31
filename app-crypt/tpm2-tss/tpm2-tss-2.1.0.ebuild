@@ -54,3 +54,8 @@ src_configure() {
 		--with-udevrulesdir="$(get_udevdir)/rules.d" \
 		--with-udevrulesprefix=60-
 }
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
+}
