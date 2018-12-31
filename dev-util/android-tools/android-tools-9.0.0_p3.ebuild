@@ -95,6 +95,16 @@ src_prepare() {
 	cd "${S}" || die
 	default
 
+	sed -E \
+		-e "s|^(CC =).*|\\1 $(tc-getCC)|g" \
+		-e "s|^(CXX =).*|\\1 $(tc-getCXX)|g" \
+		-e "s|^(CFLAGS =).*|\\1 ${CFLAGS}|g" \
+		-e "s|^(CPPFLAGS =).*|\\1 ${CPPFLAGS}|g" \
+		-e "s|^(CXXFLAGS =).*|\\1 ${CXXFLAGS}|g" \
+		-e "s|^(LDFLAGS =).*|\\1 ${LDFLAGS}|g" \
+		-e "s|^(PKGVER =).*|\\1 ${MY_PV}|g" \
+		-i build.ninja || die
+
 	# The pregenerated ninja file expects the build/ dir.
 	BUILD_DIR="${CMAKE_USE_DIR}/build"
 	cmake-utils_src_prepare
@@ -104,16 +114,6 @@ src_configure() {
 	append-lfs-flags
 
 	cmake-utils_src_configure
-
-	sed -i \
-		-e "s:@CC@:$(tc-getCC):g" \
-		-e "s:@CXX@:$(tc-getCXX):g" \
-		-e "s:@CFLAGS@:${CFLAGS}:g" \
-		-e "s:@CPPFLAGS@:${CPPFLAGS}:g" \
-		-e "s:@CXXFLAGS@:${CXXFLAGS}:g" \
-		-e "s:@LDFLAGS@:${LDFLAGS}:g" \
-		-e "s:@PV@:${PV}:g" \
-		build.ninja || die
 }
 
 src_compile() {
