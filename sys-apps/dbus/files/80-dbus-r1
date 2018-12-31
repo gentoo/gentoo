@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# launches a session dbus instance if not already started
+
+# Reference:
+# dbus-bus.c: init_session_address()
+# dbus-sysdeps-unix.c: _dbus_lookup_user_bus()
+
+if [ -n "$DBUS_SESSION_BUS_ADDRESS" ]; then
+	: Already have a session bus
+elif [ -n "$XDG_RUNTIME_DIR" -a -O "$XDG_RUNTIME_DIR/bus" -a -S "$XDG_RUNTIME_DIR/bus" ]; then
+	: Already have a user bus
+elif command -v dbus-launch >/dev/null; then
+	if [ -n "$command" ]; then
+		command="dbus-launch --exit-with-session $command"
+	else
+		eval `dbus-launch --sh-syntax --exit-with-session`
+	fi
+fi
