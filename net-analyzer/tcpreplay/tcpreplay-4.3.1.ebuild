@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools flag-o-matic
 
 DESCRIPTION="utilities for editing and replaying previously captured network traffic"
@@ -26,7 +26,7 @@ DOCS=(
 	docs/{CHANGELOG,CREDIT,HACKING,TODO}
 )
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.1.0-enable-pcap_findalldevs.patch
+	"${FILESDIR}"/${PN}-4.3.0-enable-pcap_findalldevs.patch
 )
 
 S=${WORKDIR}/${P/_/-}
@@ -52,8 +52,8 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_with pcapnav pcapnav-config /usr/bin/pcapnav-config) \
 		$(use_with tcpdump tcpdump /usr/sbin/tcpdump) \
-		--disable-local-libopts \
 		--enable-dynamic-link \
+		--enable-local-libopts \
 		--enable-shared \
 		--with-libdnet \
 		--with-testnic2=lo \
