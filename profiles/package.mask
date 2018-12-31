@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (31 Dec 2018)
+# Dead upstream since 2014-02-09, does not build.
+# Bugs 463928, 476890, 623172, 662270. Masked for removal in 30 days.
+net-misc/hotot
+
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Dec 2018)
 # Masked for removal.
 kde-apps/syndication
 lxqt-base/lxqt-common
