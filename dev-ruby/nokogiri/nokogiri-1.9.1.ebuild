@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md ROADMAP.md STANDARD_RESPONSES.md"
@@ -31,7 +31,6 @@ DEPEND="${DEPEND}
 	virtual/libiconv"
 
 ruby_add_bdepend "
-	dev-ruby/hoe
 	>=dev-ruby/pkg-config-1.1.7
 	dev-ruby/rexical
 	dev-ruby/rdoc
