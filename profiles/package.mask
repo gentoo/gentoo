@@ -30,6 +30,10 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (31 Dec 2018)
+# Superseded by www-client/falkon. Masked for removal in 30 days.
+www-client/qupzilla
+
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Dec 2018)
 # Package outdated for years, build errors, unable to trade with.
 # Bugs 544800, 592946, 610736. Masked for removal in 30 days.
 app-office/QtBitcoinTrader
