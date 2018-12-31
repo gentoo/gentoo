@@ -9,7 +9,4 @@
 		Google Chrome is a browser that combines a minimal design with
 		sophisticated technology to make the web faster, safer, and easier.
 	</longdescription>
-	<use>
-		<flag name="plugins">Add system plugins path to launcher</flag>
-	</use>
 </pkgmetadata>
