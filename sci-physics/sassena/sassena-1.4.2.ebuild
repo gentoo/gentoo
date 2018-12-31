@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="Software for Calculating Scattering Diagrams on Massively Parallel Computers"
-HOMEPAGE="http://www.sassena.org"
+HOMEPAGE="https://github.com/benlabs/sassena"
 SRC_URI="https://github.com/benlabs/sassena/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
