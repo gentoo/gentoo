@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Converts Apple DMG files to standard HFS+ images"
@@ -13,13 +13,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-RDEPEND="dev-libs/openssl
+RDEPEND="dev-libs/openssl:0=
 	app-arch/bzip2
 	sys-libs/zlib"
-DEPEND="${RDEPEND}
-	sys-apps/sed"
+DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-openssl11.patch #674168
+)
 
 src_prepare() {
+	default
 	sed -i -e 's:-s:$(LDFLAGS):g' Makefile || die "sed failed"
 }
 
