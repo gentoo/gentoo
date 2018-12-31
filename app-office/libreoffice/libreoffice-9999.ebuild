@@ -450,7 +450,6 @@ src_configure() {
 		$(use_with googledrive gdrive-client-id ${google_default_client_id})
 		$(use_with googledrive gdrive-client-secret ${google_default_client_secret})
 		$(use_with java)
-		$(use_with mysql system-mysql-cppconn)
 		$(use_with odk doxygen)
 	)
 
