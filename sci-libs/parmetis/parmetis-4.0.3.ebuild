@@ -47,7 +47,9 @@ src_prepare() {
 	sed -i \
 		-e '/programs/d' \
 		CMakeLists.txt metis/CMakeLists.txt || die
-	use static-libs && mkdir "${WORKDIR}/${PN}_static"
+	if use static-libs; then
+		mkdir "${WORKDIR}/${PN}_static" || die
+	fi
 
 	if use mpi; then
 		export CC=mpicc CXX=mpicxx
@@ -59,11 +61,13 @@ src_prepare() {
 
 	fi
 
-	use int64 && \
-		sed -i -e '/IDXTYPEWIDTH/s/32/64/' metis/include/metis.h
+	if use int64; then
+		sed -i -e '/IDXTYPEWIDTH/s/32/64/' metis/include/metis.h || die
+	fi
 
-	use double-precision && \
-		sed -i -e '/REALTYPEWIDTH/s/32/64/' metis/include/metis.h
+	if use double-precision; then
+		sed -i -e '/REALTYPEWIDTH/s/32/64/' metis/include/metis.h || die
+	fi
 }
 
 src_configure() {
@@ -80,9 +84,10 @@ src_configure() {
 		cmake-utils_src_configure
 	}
 	parmetis_configure -DSHARED=ON
-	use static-libs && \
-		sed -i -e '/fPIC/d' metis/GKlib/GKlibSystem.cmake && \
+	if use static-libs; then
+		sed -i -e '/fPIC/d' metis/GKlib/GKlibSystem.cmake || die
 		BUILD_DIR="${WORKDIR}/${PN}_static" parmetis_configure
+	fi
 }
 
 src_compile() {
