@@ -1,9 +1,7 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit versionator
+EAPI=7
 
 DESCRIPTION="User space headers for aufs3"
 HOMEPAGE="http://aufs.sourceforge.net/"
