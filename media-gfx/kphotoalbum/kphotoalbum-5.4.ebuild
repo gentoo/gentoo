@@ -49,6 +49,8 @@ RDEPEND="${DEPEND}
 
 DOCS=( ChangeLog README )
 
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package kipi KF5Kipi)
