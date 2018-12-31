@@ -7,7 +7,7 @@ inherit versionator
 
 DESCRIPTION="User space headers for aufs3"
 HOMEPAGE="http://aufs.sourceforge.net/"
-# Clone git://aufs.git.sourceforge.net/gitroot/aufs/aufs3-linux.git
+# Clone git://aufs.git.sourceforge.net/gitroot/aufs/aufs4-linux.git
 # Check aufs release Branch
 # Create .config
 # make headers_install INSTALL_HDR_PATH=${T}
