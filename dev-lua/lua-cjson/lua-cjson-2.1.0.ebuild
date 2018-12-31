@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit cmake-utils
 
@@ -15,8 +15,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND=">=dev-lang/lua-5.1:0"
-DEPEND="${RDEPEND}
-	test? ( dev-lang/perl )"
+DEPEND="${RDEPEND}"
+BDEPEND="test? ( dev-lang/perl )"
 
 DOCS=( NEWS THANKS )
 
@@ -29,6 +29,6 @@ src_test() {
 }
 
 src_install() {
+	use doc && local HTML_DOCS=( manual.html performance.html )
 	cmake-utils_src_install
-	use doc && dohtml manual.html performance.html
 }
