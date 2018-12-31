@@ -143,6 +143,7 @@ src_configure() {
 		"$(use_with java java $JAVA_HOME)" \
 		$(use_enable json) \
 		$(use_with ldap) \
+		--with-ldap-libdir-name="$(get_libdir)" \
 		$(use_with mdb mdb /usr) \
 		$(use_with mysql mysql /usr) \
 		$(use_with oci8 oracle) \
