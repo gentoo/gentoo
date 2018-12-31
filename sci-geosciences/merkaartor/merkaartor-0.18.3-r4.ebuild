@@ -31,7 +31,7 @@ RDEPEND="
 	exif? ( media-gfx/exiv2:= )
 	gps? ( >=sci-geosciences/gpsd-3.17-r2 )
 	libproxy? ( net-libs/libproxy )
-	webengine? ( dev-qt/qtwebengine:5 )
+	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
