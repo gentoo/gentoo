@@ -187,7 +187,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
-	mysql? ( dev-db/mysql-connector-c++ )
+	mysql? ( dev-db/mysql-connector-c )
 	pdfimport? ( app-text/poppler:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
 "
@@ -440,7 +440,7 @@ src_configure() {
 		$(use_enable gtk2 gtk)
 		$(use_enable kde kde5)
 		$(use_enable kde qt5)
-		$(use_enable mysql ext-mariadb-connector)
+		$(use_enable mysql bundle-mariadb)
 		$(use_enable odk)
 		$(use_enable pdfimport)
 		$(use_enable postgres postgresql-sdbc)
