@@ -42,5 +42,6 @@ src_prepare() {
 
 	tc-export CC AR
 	export HOSTCC=$(tc-getCC)
+	export STRIP=true
 	default
 }
