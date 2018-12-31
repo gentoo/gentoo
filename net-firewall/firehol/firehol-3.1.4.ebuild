@@ -57,8 +57,8 @@ src_configure() {
 src_install() {
 	default
 
-	newconfd "${FILESDIR}"/firehol.conf.d firehol
-	newinitd "${FILESDIR}"/firehol.initrd firehol
-	newconfd "${FILESDIR}"/fireqos.conf.d fireqos
-	newinitd "${FILESDIR}"/fireqos.initrd fireqos
+	newconfd "${FILESDIR}"/firehol.confd firehol
+	newinitd "${FILESDIR}"/firehol.initd firehol
+	newconfd "${FILESDIR}"/fireqos.confd fireqos
+	newinitd "${FILESDIR}"/fireqos.initd fireqos
 }
