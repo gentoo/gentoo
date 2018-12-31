@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,13 +15,14 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux"
 IUSE=""
 
 DEPEND="
-		dev-libs/boost[mpi]
-		sci-libs/hdf5[mpi]
-		dev-libs/libxml2
-		sci-libs/fftw:3.0
-		virtual/mpi
-		virtual/blas
-		virtual/lapack"
+	dev-libs/boost[mpi]
+	dev-libs/libxml2
+	sci-libs/fftw:3.0
+	sci-libs/hdf5[mpi]
+	virtual/blas
+	virtual/lapack
+	virtual/mpi
+"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
