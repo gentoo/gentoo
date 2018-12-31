@@ -1550,11 +1550,11 @@ app-vim/dbext 26.00: vim plugin: easy access to databases
 app-vim/detectindent 1.0_p20150908: vim plugin: automatically detect file indent settings
 app-vim/dhcpd-syntax 20030825-r1: vim plugin: syntax highlighting for dhcpd.conf
 app-vim/diffchar 7.2: vim plugin: highlight the exact differences, based on characters and words
-app-vim/dirdiff 1.1.5: vim plugin: diff and merge two directories recursively
+app-vim/dirdiff 1.1.5-r1: vim plugin: diff and merge two directories recursively
 app-vim/easy-align 2.10.0: vim plugin: a simple alignment plugin
 app-vim/easytags 3.11: vim plugin: automated tag file generation and syntax highlighting
 app-vim/ebnf-syntax 1.1-r2: vim plugin: EBNF (ISO/IEC 14997) file syntax highlighting
-app-vim/emmet 0.85: vim plugin: HTML and CSS hi-speed coding
+app-vim/emmet 0.85-r1: vim plugin: HTML and CSS hi-speed coding
 app-vim/enhancedcommentify 2.3-r1: vim plugin: enhanced comment creation
 app-vim/errsign 0.1-r1: vim plugin: display marks on lines with errors
 app-vim/eruby-syntax 2.0-r2: vim plugin: syntax highlighting for eruby
@@ -1593,13 +1593,13 @@ app-vim/multvals 3.10-r1: vim plugin: library for helping with arrays
 app-vim/nagios-syntax 1.8: vim plugin: Nagios configuration files syntax
 app-vim/neocomplcache 7.1: vim plugin: ultimate auto completion system
 app-vim/nerdcommenter 2.5.0: vim plugin: easy commenting of code for many filetypes
-app-vim/nerdtree 5.0.0: vim plugin: A tree explorer plugin for navigating the filesystem
+app-vim/nerdtree 5.0.0-r1: vim plugin: A tree explorer plugin for navigating the filesystem
 app-vim/nerdtree-tabs 1.4.7: vim plugin: NERDTree and tabs in vim
 app-vim/nginx-syntax 0.3.3: vim plugin: Nginx configuration files syntax
 app-vim/notes 0.33.4: vim plugin: easy note taking in vim
 app-vim/ntp-syntax 20031001-r1: vim plugin: ntp.conf syntax highlighting
 app-vim/omnicppcomplete 0.41: vim plugin: C/C++ omni-completion with ctags database
-app-vim/pathogen 2.4: vim plugin: manage your runtimepath
+app-vim/pathogen 2.4-r1: vim plugin: manage your runtimepath
 app-vim/pdv 1.0.1-r1: vim plugin: PDV (phpDocumentor for Vim)
 app-vim/perl-support 5.3.2 5.4: vim plugin: Perl-IDE - Write and run Perl scripts using menus and hotkeys
 app-vim/perlomni 2.5: vim plugin: a vim plugin with Perl omni completion functions
@@ -1630,7 +1630,7 @@ app-vim/sudoedit 0.21: vim plugin: edit files using sudo or su
 app-vim/supertab 2.1: vim plugin: enhanced Tab key functionality
 app-vim/surround 2.1-r1: vim plugin: Delete/change/add parentheses/quotes/XML-tags & much more
 app-vim/syntastic 3.8.0: vim plugin: syntax checking using external tools
-app-vim/tagbar 2.6.1: vim plugin: display tags of the current file ordered by scope
+app-vim/tagbar 2.7: vim plugin: display tags of the current file ordered by scope
 app-vim/taglist 4.6: vim plugin: ctags-based source code browser
 app-vim/tasklist 1.0.1: Highlight FIXME/TODO/CUSTOM keywords in a separate list
 app-vim/tcomment 3.08.1: vim plugin: an extensible and universal comment toggler
@@ -1673,7 +1673,7 @@ app-vim/vimoutliner 0.3.6: vim plugin: easy and fast outlining
 app-vim/vimpress 3.2.0: vim plugin: manage wordpress blogs from vim
 app-vim/vimpython 1.13-r1: vim plugin: A set of menus/shortcuts to work with Python files
 app-vim/voom 5.1: vim plugin: emulates a two-pane text outliner
-app-vim/webapi 0.2: vim plugin: interface to Web APIs
+app-vim/webapi 0.3: vim plugin: interface to Web APIs
 app-vim/wikipedia-syntax 20101113-r1: vim plugin: Wikipedia syntax highlighting
 app-vim/xquery-syntax 0.1-r2: vim plugin: XQuery syntax highlighting
 app-vim/xsl-syntax 0.3.11-r2: vim plugin: Syntax for XSLT (with HTML and others)
@@ -10139,8 +10139,6 @@ sys-firmware/vgabios 0.6c-r1 0.7a: VGA BIOS implementation
 sys-firmware/zd1201-firmware 0.14: Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices
 sys-firmware/zd1211-firmware 1.4: Firmware for ZyDAS ZD1211 USB-WLAN devices supported by the zd1211rw driver
 sys-fs/arm-fdisk 3.0.6-r1: edit disk partitions on Acorn machines
-sys-fs/aufs-headers 4.0_p20150420: User space headers for aufs3
-sys-fs/aufs-util 4.0_p20150420: Utilities are always necessary for aufs
 sys-fs/avfs 1.0.4: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
 sys-fs/btrfs-progs 4.4.1 4.10.2 4.19: Btrfs filesystem utilities
