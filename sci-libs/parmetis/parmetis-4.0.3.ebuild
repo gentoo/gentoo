@@ -1,14 +1,13 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils cmake-utils toolchain-funcs
+EAPI=6
 
 # Check metis version bundled in parmetis tar ball
 # by diff of metis and parmetis tar ball
 METISPV=5.1.0
 METISP=metis-${METISPV}
+inherit cmake-utils toolchain-funcs
 
 DESCRIPTION="Parallel (MPI) unstructured graph partitioning library"
 HOMEPAGE="http://www-users.cs.umn.edu/~karypis/metis/parmetis/"
@@ -36,6 +35,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	# libdir love
 	sed -i \
 		-e '/DESTINATION/s/lib/lib${LIB_SUFFIX}/g' \
@@ -47,7 +48,9 @@ src_prepare() {
 	sed -i \
 		-e '/programs/d' \
 		CMakeLists.txt metis/CMakeLists.txt || die
-	use static-libs && mkdir "${WORKDIR}/${PN}_static"
+	if use static-libs; then
+		mkdir "${WORKDIR}/${PN}_static" || die
+	fi
 
 	if use mpi; then
 		export CC=mpicc CXX=mpicxx
@@ -56,14 +59,15 @@ src_prepare() {
 			-e '/add_subdirectory(include/d' \
 			-e '/add_subdirectory(libparmetis/d' \
 			CMakeLists.txt || die
-
 	fi
 
-	use int64 && \
-		sed -i -e '/IDXTYPEWIDTH/s/32/64/' metis/include/metis.h
+	if use int64; then
+		sed -i -e '/IDXTYPEWIDTH/s/32/64/' metis/include/metis.h || die
+	fi
 
-	use double-precision && \
-		sed -i -e '/REALTYPEWIDTH/s/32/64/' metis/include/metis.h
+	if use double-precision; then
+		sed -i -e '/REALTYPEWIDTH/s/32/64/' metis/include/metis.h || die
+	fi
 }
 
 src_configure() {
@@ -73,16 +77,17 @@ src_configure() {
 			-DMETIS_PATH="${S}/metis"
 			-DGKRAND=ON
 			-DMETIS_INSTALL=ON
-			$(cmake-utils_use openmp OPENMP)
-			$(cmake-utils_use pcre PCRE)
+			-DOPENMP=$(usex openmp)
+			-DPCRE=$(usex pcre)
 			$@
 		)
 		cmake-utils_src_configure
 	}
 	parmetis_configure -DSHARED=ON
-	use static-libs && \
-		sed -i -e '/fPIC/d' metis/GKlib/GKlibSystem.cmake && \
+	if use static-libs; then
+		sed -i -e '/fPIC/d' metis/GKlib/GKlibSystem.cmake || die
 		BUILD_DIR="${WORKDIR}/${PN}_static" parmetis_configure
+	fi
 }
 
 src_compile() {
