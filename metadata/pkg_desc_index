@@ -180,7 +180,7 @@ app-arch/gnome-autoar 0.2.2: Automatic archives creating and extracting library
 app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them back together
 app-arch/gzip 1.8: Standard GNU compressor
 app-arch/hardlink 0.2.0: A tool which replaces copies of a file with hardlinks
-app-arch/innoextract 1.6 1.7: A tool to unpack installers created by Inno Setup
+app-arch/innoextract 1.7: A tool to unpack installers created by Inno Setup
 app-arch/lbzip2 2.3-r1 2.5: Parallel bzip2 utility
 app-arch/lha 114i-r7: Utility for creating and opening lzh archives
 app-arch/libarchive 3.3.1: BSD tar command
@@ -8911,7 +8911,6 @@ net-misc/gupnp-tools 0.8.14: Free replacements of Intel UPnP tools that use GUPn
 net-misc/gwget 1.0.4: GTK2 WGet Frontend
 net-misc/gwhois 20120626: generic whois
 net-misc/hath 0.3.0: Hath manipulates network blocks in CIDR notation
-net-misc/hotot 0.9.8.15_p20150812-r2: lightweight & open source microblogging client
 net-misc/hsc 1.0b: An HTML preprocessor using ML syntax
 net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
 net-misc/htpdate 1.0.7 1.2.0: Synchronize local workstation with time offered by remote webservers
@@ -10150,7 +10149,7 @@ sys-fs/cryptsetup 1.7.5-r1: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/dd-rescue 1.46 1.99.8: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.21-r1: Copy data from one file or block device to another with read-error recovery
-sys-fs/dfc 3.0.5-r1 3.1.1: A simple CLI tool that display file system usage, with colors
+sys-fs/dfc 3.1.1: A simple CLI tool that display file system usage, with colors
 sys-fs/diskdev_cmds 332.14_p1: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
 sys-fs/dmraid 1.0.0_rc16-r3: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat

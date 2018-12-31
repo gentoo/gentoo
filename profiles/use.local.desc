@@ -4464,7 +4464,6 @@ net-misc/gnome-online-miners:flickr - Enable Flickr support
 net-misc/gsasl:gcrypt - Use dev-libs/libgcrypt for low-level crypto
 net-misc/gsasl:ntlm - Add support for Microsoft's NTLM mechanism using net-libs/libntlm
 net-misc/gwget:epiphany - Build epiphany extensions
-net-misc/hotot:chrome - Build chrome browser extension
 net-misc/htbinit:esfq - Add support for Enhanced Stochastic Fairness queueing discipline.
 net-misc/hylafaxplus:html - Convert faxes into html email
 net-misc/hylafaxplus:jbig - JBIG Fax Compression Support
