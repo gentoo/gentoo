@@ -1,14 +1,13 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils cmake-utils toolchain-funcs
+EAPI=6
 
 # Check metis version bundled in parmetis tar ball
 # by diff of metis and parmetis tar ball
 METISPV=5.1.0
 METISP=metis-${METISPV}
+inherit cmake-utils toolchain-funcs
 
 DESCRIPTION="Parallel (MPI) unstructured graph partitioning library"
 HOMEPAGE="http://www-users.cs.umn.edu/~karypis/metis/parmetis/"
@@ -36,6 +35,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	# libdir love
 	sed -i \
 		-e '/DESTINATION/s/lib/lib${LIB_SUFFIX}/g' \
@@ -58,7 +59,6 @@ src_prepare() {
 			-e '/add_subdirectory(include/d' \
 			-e '/add_subdirectory(libparmetis/d' \
 			CMakeLists.txt || die
-
 	fi
 
 	if use int64; then
@@ -77,8 +77,8 @@ src_configure() {
 			-DMETIS_PATH="${S}/metis"
 			-DGKRAND=ON
 			-DMETIS_INSTALL=ON
-			$(cmake-utils_use openmp OPENMP)
-			$(cmake-utils_use pcre PCRE)
+			-DOPENMP=$(usex openmp)
+			-DPCRE=$(usex pcre)
 			$@
 		)
 		cmake-utils_src_configure
