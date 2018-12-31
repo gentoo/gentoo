@@ -1,9 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-RESTRICT="test"
 inherit cmake-utils
 
 DESCRIPTION="C++ library for collecting user-defined in-process runtime statistics"
@@ -15,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=""
-DEPEND="${DEPEND}
+RESTRICT="test"
+
+DEPEND="
 	dev-cpp/gtest
 	dev-libs/boost"
