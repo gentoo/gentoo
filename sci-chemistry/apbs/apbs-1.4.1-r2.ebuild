@@ -1,19 +1,17 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=true
-
-inherit cmake-utils distutils-r1 flag-o-matic multilib toolchain-funcs
-
-GITHUB_REV="74fcb8676de69ed04ddab8976a8b05a6caaf4d65"
+COMMIT="74fcb8676de69ed04ddab8976a8b05a6caaf4d65"
+inherit cmake-utils distutils-r1 flag-o-matic toolchain-funcs
 
 DESCRIPTION="Evaluation of electrostatic properties of nanoscale biomolecular systems"
 HOMEPAGE="https://www.poissonboltzmann.org/apbs/"
 #SRC_URI="mirror://sourceforge/${PN}/${P}-source.tar.gz"
-SRC_URI="https://github.com/Electrostatics/apbs-pdb2pqr/archive/${GITHUB_REV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/Electrostatics/apbs-pdb2pqr/archive/${COMMIT}.zip -> ${P}.zip"
 
 SLOT="0"
 LICENSE="BSD"
@@ -44,7 +42,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 "
 
-S="${WORKDIR}"/${PN}-pdb2pqr-${GITHUB_REV}/${PN}
+S="${WORKDIR}"/${PN}-pdb2pqr-${COMMIT}/${PN}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-multilib.patch
@@ -71,24 +69,24 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
-		-DTOOLS_PATH="${ED}"/usr
+		-DTOOLS_PATH="${ED%/}"/usr
 		-DSYS_LIBPATHS="${EPREFIX}"/usr/$(get_libdir)
 		-DLIBRARY_INSTALL_PATH=$(get_libdir)
 		-DFETK_PATH="${EPREFIX}"/usr/
 		-DBUILD_SHARED_LIBS=ON
 		-DENABLE_QUIT=OFF
-		$(cmake-utils_use_build doc DOC)
-		$(cmake-utils_use_build tools TOOLS)
+		-DBUILD_DOC=$(usex doc)
+		-DBUILD_TOOLS=$(usex tools)
 		-DENABLE_BEM=OFF
 # ENABLE_BEM: Boundary element method using TABIPB
-		$(cmake-utils_use_enable debug DEBUG)
-		$(cmake-utils_use_enable debug VERBOSE_DEBUG)
-		$(cmake-utils_use_enable fast FAST)
-		$(cmake-utils_use_enable fetk FETK)
-		$(cmake-utils_use_enable mpi MPI)
-		$(cmake-utils_use_enable python PYTHON)
+		-DENABLE_DEBUG=$(usex debug)
+		-DENABLE_VERBOSE_DEBUG=$(usex debug)
+		-DENABLE_FAST=$(usex fast)
+		-DENABLE_FETK=$(usex fetk)
+		-DENABLE_MPI=$(usex mpi)
+		-DENABLE_PYTHON=$(usex python)
 # ENABLE_TINKER: Enable TINKER support
-		$(cmake-utils_use_enable iapbs iAPBS)
+		-DENABLE_iAPBS=$(usex iapbs)
 # MAX_MEMORY: Set the maximum memory (in MB) to be used for a job
 	)
 	cmake-utils_src_configure

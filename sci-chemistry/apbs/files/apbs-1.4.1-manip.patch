@@ -3,10 +3,10 @@
  apbs/tools/mesh/CMakeLists.txt  | 4 ++--
  4 files changed, 5 insertions(+), 9 deletions(-)
 
-diff --git a/apbs/CMakeLists.txt b/apbs/CMakeLists.txt
+diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 8917fc4..5152008 100644
---- a/apbs/CMakeLists.txt
-+++ b/apbs/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -293,7 +293,7 @@ option(ENABLE_FETK "Enable the finite element solver" OFF)
  
  if(ENABLE_FETK)
@@ -16,10 +16,10 @@ index 8917fc4..5152008 100644
  
      list(APPEND APBS_LIBS "-lstdc++")
      list(APPEND APBS_LIBS "-L${FETK_PATH}/lib")
-diff --git a/apbs/tools/manip/CMakeLists.txt b/apbs/tools/manip/CMakeLists.txt
+diff --git a/tools/manip/CMakeLists.txt b/tools/manip/CMakeLists.txt
 index 937dac7..5768cc5 100644
---- a/apbs/tools/manip/CMakeLists.txt
-+++ b/apbs/tools/manip/CMakeLists.txt
+--- a/tools/manip/CMakeLists.txt
++++ b/tools/manip/CMakeLists.txt
 @@ -4,9 +4,9 @@ set(LIBS "")
  list(APPEND LIBS "apbs_generic")
  list(APPEND LIBS "apbs_mg")
@@ -32,10 +32,10 @@ index 937dac7..5768cc5 100644
  
  message(STATUS "libraries: ${LIBS}")
  
-diff --git a/apbs/tools/mesh/CMakeLists.txt b/apbs/tools/mesh/CMakeLists.txt
+diff --git a/tools/mesh/CMakeLists.txt b/tools/mesh/CMakeLists.txt
 index 1406377..6e6dfb9 100644
---- a/apbs/tools/mesh/CMakeLists.txt
-+++ b/apbs/tools/mesh/CMakeLists.txt
+--- a/tools/mesh/CMakeLists.txt
++++ b/tools/mesh/CMakeLists.txt
 @@ -4,9 +4,9 @@ set(LIBS "")
  list(APPEND LIBS "apbs_generic")
  list(APPEND LIBS "apbs_mg")
