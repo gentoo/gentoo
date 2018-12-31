@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ S=${WORKDIR}/${PN}-${P}
 
 LICENSE="Apache-2.0"
 SLOT="0/10" # slot for libmbedtls.so
-KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="cpu_flags_x86_sse2 doc havege libressl programs test threads zlib"
 
 RDEPEND="
