@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Dec 2018)
+# Masked for removal.
+kde-apps/syndication
+lxqt-base/lxqt-common
+
 # Alon Bar-Lev <alonbl@gentoo.org> (30 Dec 2018)
 # Upstream is dead.
 # Package does not support openssl-1.1, significant change to package.
