@@ -95,7 +95,6 @@ COMMON_DEPEND="
 		x11-libs/libX11
 	)
 	calligra_experimental_features_stage? (
-		$(add_qt_dep qtwebkit)
 		okular? ( $(add_kdeapps_dep okular) )
 	)
 	calligra_features_sheets? ( dev-cpp/eigen:3 )
@@ -124,6 +123,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-stage-qt-5.11.patch
 	"${FILESDIR}"/${P}-poppler-0.69.patch
 	"${FILESDIR}"/${P}-poppler-0.71.patch
+	"${FILESDIR}"/${P}-no-webkit.patch
 )
 
 pkg_pretend() {
@@ -146,11 +146,6 @@ src_prepare() {
 	# Unconditionally disable deprecated deps (required by QtQuick1)
 	punt_bogus_dep Qt5 Declarative
 	punt_bogus_dep Qt5 OpenGL
-
-	if ! use calligra_experimental_features_stage; then
-		punt_bogus_dep Qt5 WebKitWidgets
-		punt_bogus_dep Qt5 WebKit
-	fi
 
 	# Hack around the excessive use of CMake macros
 	if use okular && ! use calligra_features_words; then
