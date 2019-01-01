@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome.org.eclass
@@ -11,7 +11,7 @@
 # @DESCRIPTION:
 # Provide a default SRC_URI for tarball hosted on gnome.org mirrors.
 
-inherit versionator
+[[ ${EAPI} == [0123456] ]] && inherit eapi7-ver
 
 # @ECLASS-VARIABLE: GNOME_TARBALL_SUFFIX
 # @DESCRIPTION:
@@ -41,7 +41,7 @@ fi
 # @INTERNAL
 # @DESCRIPTION:
 # Major and minor numbers of the version number.
-: ${GNOME_ORG_PVP:=$(get_version_component_range 1-2)}
+: ${GNOME_ORG_PVP:=$(ver_cut 1-2)}
 
 SRC_URI="mirror://gnome/sources/${GNOME_ORG_MODULE}/${GNOME_ORG_PVP}/${GNOME_ORG_MODULE}-${PV}.tar.${GNOME_TARBALL_SUFFIX}"
 
