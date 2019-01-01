@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,7 @@ DEPEND="
 	>=net-libs/libupnp-1.8.3[ipv6,reuseaddr]
 	>=dev-db/sqlite-3
 	dev-libs/expat
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c )
 	javascript? ( dev-lang/duktape )
 	taglib? ( >=media-libs/taglib-1.11 )
 	lastfm? ( >=media-libs/lastfmlib-0.4 )
