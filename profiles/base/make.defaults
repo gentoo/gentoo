@@ -64,11 +64,11 @@ GRUB_PLATFORMS=""
 # By default enable all extensions with no dependencies
 LIBREOFFICE_EXTENSIONS="presenter-console presenter-minimizer"
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (15 May 2011)
 # Andreas K. Hüttel <dilfridge@gentoo.org> (19 Aug 2011, 25 Mar 2012)
 # Johannes Huber <johu@gentoo.org> (15 Apr 2018)
-# By default build all calligra features.
-CALLIGRA_FEATURES="karbon plan sheets stage words"
+# Andreas Sturmlechner <asturm@gentoo.org> (01 Jan 2019)
+# By default build all calligra features (except unmaintained: stage).
+CALLIGRA_FEATURES="karbon plan sheets words"
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (28 Sep 2010)
 # Small default list of enabled plugins for collectd
