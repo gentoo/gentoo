@@ -1,35 +1,41 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils git-r3 python-single-r1
+if [[ ${PV} == 9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/balint256/gr-baz.git"
+else
+	KEYWORDS=""
+fi
+inherit cmake-utils python-single-r1
 
 DESCRIPTION="Gnuradio baz"
-HOMEPAGE="http://wiki.spench.net/wiki/Gr-baz"
-EGIT_REPO_URI="https://github.com/balint256/gr-baz.git"
+HOMEPAGE="https://wiki.spench.net/wiki/Gr-baz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
 IUSE="armadillo doc rtlsdr uhd"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="dev-libs/boost[threads,${PYTHON_USEDEP}]
+RDEPEND="${PYTHON_DEPS}
+	dev-libs/boost:=[threads,${PYTHON_USEDEP}]
 	>=net-wireless/gnuradio-3.7.0:=[${PYTHON_USEDEP}]
 	armadillo? ( sci-libs/armadillo )
 	rtlsdr? ( virtual/libusb:1 )
 	uhd? ( net-wireless/uhd[${PYTHON_USEDEP}] )
-	${PYTHON_DEPS}"
+"
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	virtual/pkgconfig"
+"
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
 	cmake-utils_src_configure
