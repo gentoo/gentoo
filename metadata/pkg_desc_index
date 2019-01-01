@@ -178,7 +178,7 @@ app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 0.7 0.8: Library and tool for working with Microsoft Cabinet (CAB) files
 app-arch/gnome-autoar 0.2.2: Automatic archives creating and extracting library
 app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them back together
-app-arch/gzip 1.8: Standard GNU compressor
+app-arch/gzip 1.8 1.9: Standard GNU compressor
 app-arch/hardlink 0.2.0: A tool which replaces copies of a file with hardlinks
 app-arch/innoextract 1.7: A tool to unpack installers created by Inno Setup
 app-arch/lbzip2 2.3-r1 2.5: Parallel bzip2 utility
@@ -10170,7 +10170,7 @@ sys-fs/genext2fs 1.4.1: generate ext2 file systems
 sys-fs/growpart 0.0.1 0.0.30: A script that can grow your rootfs on first boot
 sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
 sys-fs/hfsutils 3.2.6-r5: HFS FS Access utils
-sys-fs/inotify-tools 3.14: a set of command-line programs providing a simple interface to inotify
+sys-fs/inotify-tools 3.14 3.20.1: a set of command-line programs providing a simple interface to inotify
 sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/lessfs 1.5.13 1.7.0: A high performance inline data deduplicating filesystem
 sys-fs/lsscsi 0.29: SCSI sysfs query tool
@@ -10203,7 +10203,7 @@ sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon
 sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
 sys-fs/udev 236-r1 238 239: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 27 32: udev startup scripts for openrc
-sys-fs/udftools 1.1-r1: Ben Fennema's tools for packet writing and the UDF filesystem
+sys-fs/udftools 2.0-r2: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 1.1.1: An automatic disk mounting service using udisks
 sys-fs/udisks 1.0.5-r2 2.1.8 2.7.4-r1: Daemon providing interfaces to work with storage devices
 sys-fs/vhba 20170610: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
