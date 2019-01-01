@@ -1,24 +1,27 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+MY_PV=${PV/_p/-}
+MY_P=${PN}-${MY_PV}
 
 inherit cmake-utils linux-info python-single-r1 toolchain-funcs
 
 DESCRIPTION="Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor"
 HOMEPAGE="http://libcec.pulse-eight.com"
-SRC_URI="https://github.com/Pulse-Eight/${PN}/archive/${P}.tar.gz"
+SRC_URI="https://github.com/Pulse-Eight/${PN}/archive/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="cubox exynos python raspberry-pi +xrandr"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="virtual/udev
 	>=dev-libs/libplatform-2.0.0
+	sys-libs/ncurses:=
 	raspberry-pi? ( >=media-libs/raspberrypi-userland-0_pre20160305-r1 )
 	xrandr? ( x11-libs/libXrandr )
 	python? ( ${PYTHON_DEPS} )"
@@ -28,7 +31,7 @@ DEPEND="${RDEPEND}
 
 CONFIG_CHECK="~USB_ACM"
 
-S="${WORKDIR}/${PN}-${P}"
+S="${WORKDIR}/${PN}-${MY_P}"
 
 pkg_pretend() {
 	linux-info_pkg_setup
@@ -52,9 +55,9 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DSKIP_PYTHON_WRAPPER=$(usex python)
+		-DSKIP_PYTHON_WRAPPER=$(usex !python)
 		-DHAVE_EXYNOS_API=$(usex exynos)
-		-DHAVE_TDA955X_API=$(usex cubox)
+		-DHAVE_TDA995X_API=$(usex cubox)
 		-DHAVE_RPI_API=$(usex raspberry-pi)
 	)
 	use python && mycmakeargs+=(
