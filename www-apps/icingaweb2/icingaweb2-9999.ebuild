@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,14 +12,14 @@ EGIT_BRANCH="master"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="apache2 fpm ldap mysql nginx pdf postgres"
-REQUIRED_USE="^^ ( apache2 nginx )"
+IUSE="apache2 apache2-server fpm ldap mysql nginx pdf postgres"
+REQUIRED_USE="( ^^ ( apache2-server nginx ) ) apache2? ( apache2-server )"
 KEYWORDS=""
 
 DEPEND=">=net-analyzer/icinga2-2.1.1
 		dev-php/pecl-imagick
 		pdf? ( media-gfx/imagemagick[png] )
-		apache2? ( >=www-servers/apache-2.4.0 )
+		apache2-server? ( >=www-servers/apache-2.4.0 )
 		nginx? ( >=www-servers/nginx-1.7.0:* )
 		|| (
 			dev-lang/php:5.6[apache2?,cli,fpm?,gd,json,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
