@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xdg-utils.eclass
@@ -12,6 +12,7 @@
 # This eclass provides a set of auxiliary functions needed by most XDG
 # compliant packages.
 # It provides XDG stack related functions such as:
+#  * Gtk+ icon cache management
 #  * XDG .desktop files cache management
 #  * XDG mime information database management
 
@@ -31,6 +32,12 @@ esac
 # @DESCRIPTION:
 # Directory where .desktop files database is stored
 : ${DESKTOP_DATABASE_DIR="/usr/share/applications"}
+
+# @ECLASS-VARIABLE: GTK_UPDATE_ICON_CACHE
+# @INTERNAL
+# @DESCRIPTION:
+# Path to gtk-update-icon-cache
+: ${GTK_UPDATE_ICON_CACHE:="/usr/bin/gtk-update-icon-cache"}
 
 # @ECLASS-VARIABLE: MIMEINFO_DATABASE_UPDATE_BIN
 # @INTERNAL
@@ -81,6 +88,47 @@ xdg_desktop_database_update() {
 	ebegin "Updating .desktop files database"
 	"${updater}" -q "${EROOT%/}${DESKTOP_DATABASE_DIR}"
 	eend $?
+}
+
+# @FUNCTION: xdg_icon_cache_update
+# @DESCRIPTION:
+# Updates Gtk+ icon cache files under /usr/share/icons.
+# This function should be called from pkg_postinst and pkg_postrm.
+xdg_icon_cache_update() {
+	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
+	local updater="${EROOT%/}${GTK_UPDATE_ICON_CACHE}"
+	if [[ ! -x "${updater}" ]]; then
+		debug-print "${updater} is not executable"
+		return
+	fi
+	ebegin "Updating icons cache"
+	local retval=0
+	local fails=( )
+	for dir in "${EROOT%/}"/usr/share/icons/*
+	do
+		if [[ -f "${dir}/index.theme" ]] ; then
+			local rv=0
+			"${updater}" -qf "${dir}"
+			rv=$?
+			if [[ ! $rv -eq 0 ]] ; then
+				debug-print "Updating cache failed on ${dir}"
+				# Add to the list of failures
+				fails+=( "${dir}" )
+				retval=2
+			fi
+		elif [[ $(ls "${dir}") = "icon-theme.cache" ]]; then
+			# Clear stale cache files after theme uninstallation
+			rm "${dir}/icon-theme.cache"
+		fi
+		if [[ -z $(ls "${dir}") ]]; then
+			# Clear empty theme directories after theme uninstallation
+			rmdir "${dir}"
+		fi
+	done
+	eend ${retval}
+	for f in "${fails[@]}" ; do
+		eerror "Failed to update cache with icon $f"
+	done
 }
 
 # @FUNCTION: xdg_mimeinfo_database_update
