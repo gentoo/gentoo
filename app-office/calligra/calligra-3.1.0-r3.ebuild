@@ -16,11 +16,10 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 
-CAL_FTS=( karbon sheets words )
+CAL_FTS=( karbon sheets stage words )
 
 IUSE="activities +crypt +fontconfig gemini gsl import-filter +lcms okular openexr +pdf
-	phonon pim spacenav +truetype X $(printf 'calligra_features_%s ' ${CAL_FTS[@]})
-	calligra_experimental_features_stage"
+	phonon pim spacenav +truetype X $(printf 'calligra_features_%s ' ${CAL_FTS[@]})"
 
 # TODO: Not packaged: Cauchy (https://bitbucket.org/cyrille/cauchy)
 # Required for the matlab/octave formula tool
@@ -94,10 +93,8 @@ COMMON_DEPEND="
 		$(add_qt_dep qtx11extras)
 		x11-libs/libX11
 	)
-	calligra_experimental_features_stage? (
-		okular? ( $(add_kdeapps_dep okular) )
-	)
 	calligra_features_sheets? ( dev-cpp/eigen:3 )
+	calligra_features_stage? ( okular? ( $(add_kdeapps_dep okular) ) )
 	calligra_features_words? (
 		dev-libs/libxslt
 		okular? ( $(add_kdeapps_dep okular) )
@@ -153,7 +150,7 @@ src_prepare() {
 			extras/CMakeLists.txt || die "Failed to disable OKULAR_GENERATOR_ODT"
 	fi
 
-	if use okular && ! use calligra_experimental_features_stage; then
+	if use okular && ! use calligra_features_stage; then
 		sed -i -e "/add_subdirectory( *okularodpgenerator *)/ s/^/#DONT/" \
 			extras/CMakeLists.txt || die "Failed to disable OKULAR_GENERATOR_ODP"
 	fi
@@ -166,8 +163,6 @@ src_configure() {
 	for cal_ft in ${CAL_FTS[@]}; do
 		use calligra_features_${cal_ft} && myproducts+=( "${cal_ft^^}" )
 	done
-
-	use calligra_experimental_features_stage && myproducts+=( STAGE )
 
 	use lcms && myproducts+=( PLUGIN_COLORENGINES )
 	use spacenav && myproducts+=( PLUGIN_SPACENAVIGATOR )
@@ -197,7 +192,7 @@ src_configure() {
 		-DWITH_OpenEXR=$(usex openexr)
 		-DWITH_Poppler=$(usex pdf)
 		-DWITH_Eigen3=$(usex calligra_features_sheets)
-		-DBUILD_UNMAINTAINED=$(usex calligra_experimental_features_stage)
+		-DBUILD_UNMAINTAINED=$(usex calligra_features_stage)
 		-ENABLE_CSTESTER_TESTING=$(usex test)
 		-DWITH_Freetype=$(usex truetype)
 	)
