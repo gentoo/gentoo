@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 SLOT="0/${PV}"
 
-COMMON_DEPEND=">=dev-libs/openssl-1.1:0="
+COMMON_DEPEND=">=dev-libs/openssl-1.1.1:0="
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	test? (
