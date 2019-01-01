@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE="berkdb crypt debug gdbm ldap libressl mysql pam postgres sqlite static-lib
 RESTRICT="!berkdb? ( test )"
 
 DEPEND="net-mail/mailbase
-		>=net-libs/courier-unicode-2.0
+		>=net-libs/courier-unicode-2.1
 		gdbm? ( sys-libs/gdbm )
 		!gdbm? ( sys-libs/db:= )
 		!libressl? ( dev-libs/openssl:0= )
