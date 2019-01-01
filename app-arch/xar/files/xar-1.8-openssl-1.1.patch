@@ -19,7 +19,7 @@ for it anymore.
  	OpenSSL_add_all_digests();
  	HASH_CTX(hash)->type = EVP_get_digestbyname(digest_name);
 -	EVP_DigestInit(&HASH_CTX(hash)->digest, HASH_CTX(hash)->type);
-+	HASH_CTX(hash)->digest = EVP_MD_CTX_new();
++	HASH_CTX(hash)->digest = EVP_MD_CTX_create();
 +	EVP_DigestInit(HASH_CTX(hash)->digest, HASH_CTX(hash)->type);
  #endif
  	
@@ -39,7 +39,7 @@ for it anymore.
  #else
 -	EVP_DigestFinal(&HASH_CTX(hash)->digest, buffer, &HASH_CTX(hash)->length);
 +	EVP_DigestFinal(HASH_CTX(hash)->digest, buffer, &HASH_CTX(hash)->length);
-+	EVP_MD_CTX_free(HASH_CTX(hash)->digest);
++	EVP_MD_CTX_destroy(HASH_CTX(hash)->digest);
  #endif
  	
  	*nbyte = HASH_CTX(hash)->length;
