@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit bash-completion-r1 multiprocessing
 
@@ -24,6 +24,10 @@ DEPEND="
 	test? ( net-libs/nodejs )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.19.0-paths.patch
+)
+
 _run() {
 	echo "$@"
 	"$@" || die "'$*' failed"
@@ -35,15 +39,18 @@ nim_use_enable() {
 }
 
 src_compile() {
+	export XDG_CACHE_HOME=${T}/cache #667182
+
 	_run ./build.sh
 
 	_run ./bin/nim --parallelBuild:$(makeopts_jobs) c koch
 	_run ./koch boot --parallelBuild:$(makeopts_jobs) -d:release $(nim_use_enable readline useGnuReadline)
 	# build nimble and friends
-	PATH="./bin:$PATH" _run ./koch tools
+	# --stable to avoid pulling HEAD nimble
+	PATH="./bin:$PATH" _run ./koch --stable tools
 
 	if use doc; then
-		PATH="./bin:$PATH" _run ./koch web
+		PATH="./bin:$PATH" _run ./koch doc
 	fi
 }
 
@@ -52,23 +59,22 @@ src_test() {
 }
 
 src_install() {
-	PATH="./bin:$PATH" _run ./koch install "${ED}/usr"
-	rm -r "${ED}/usr/nim/doc" || die "failed to remove 'doc'"
+	PATH="./bin:$PATH" _run ./koch install "${ED%/}"
+	rm -r "${ED%/}/usr/share/nim/doc" || die "failed to remove 'doc'"
 
-	dodir /usr/bin
-	exeinto /usr/nim/bin
+	exeinto /usr/bin
 
 	local bin_exe
 	for bin_exe in bin/*; do
 		# './koch install' installs only 'nim' binary
 		# but not the rest
+		[[ ${bin_exe} == bin/nim ]] && continue
 		doexe "${bin_exe}"
-		dosym ../nim/"${bin_exe}" /usr/"${bin_exe}"
 	done
 
 	if use doc; then
 		insinto /usr/share/doc/${PF}
-		dodoc doc/*.html
+		dodoc doc/html/*.html
 	fi
 
 	newbashcomp tools/nim.bash-completion ${PN}
