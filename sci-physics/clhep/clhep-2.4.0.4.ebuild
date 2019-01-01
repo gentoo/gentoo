@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake-utils
 
 DESCRIPTION="High Energy Physics C++ library"
-HOMEPAGE="http://cern.ch/clhep"
+HOMEPAGE="http://proj-clhep.web.cern.ch/proj-clhep/"
 SRC_URI="http://proj-clhep.web.cern.ch/proj-clhep/DISTRIBUTION/tarFiles/${P}.tgz"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2/${PV}"
