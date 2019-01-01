@@ -6,7 +6,7 @@
 # freedesktop-bugs@gentoo.org
 # @AUTHOR:
 # Original author: Gilles Dartiguelongue <eva@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: Provides phases for XDG compliant packages.
 # @DESCRIPTION:
 # Utility eclass to update the desktop, icon and shared mime info as laid
@@ -15,7 +15,7 @@
 inherit xdg-utils
 
 case "${EAPI:-0}" in
-	4|5|6)
+	4|5|6|7)
 		EXPORT_FUNCTIONS src_prepare pkg_preinst pkg_postinst pkg_postrm
 		;;
 	*) die "EAPI=${EAPI} is not supported" ;;
@@ -35,7 +35,7 @@ fi
 xdg_src_prepare() {
 	xdg_environment_reset
 
-	has ${EAPI:-0} 6 && default
+	[[ ${EAPI:-0} != [45] ]] && default
 }
 
 # @FUNCTION: xdg_pkg_preinst
