@@ -40,7 +40,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_TESTING=$(usex test)
 		-DCLHEP_BUILD_DOCS=$(usex doc)
 		-DCLHEP_SINGLE_THREAD=$(usex threads no yes)
 	)

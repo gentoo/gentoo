@@ -41,7 +41,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_TESTING=$(usex test)
 		-DCLHEP_BUILD_DOCS=$(usex doc)
 	)
 	DESTDIR="${ED}" cmake-utils_src_configure
