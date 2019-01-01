@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of CALLIGRA_FEATURES USE_EXPAND flags.
@@ -7,4 +7,5 @@
 karbon - CALLIGRA_FEATURES option to build vector image editor
 plan - CALLIGRA_FEATURES option to build project planning component
 sheets - CALLIGRA_FEATURES option to build spreadsheet processor
+stage - CALLIGRA_FEATURES option to build presentation processor
 words - CALLIGRA_FEATURES option to build word processor
