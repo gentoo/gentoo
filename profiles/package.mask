@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (1 Jan 2019)
+# Fails to build with glibc-2.28. Removal in 30days (unless
+# fixed). Bug 669332
+app-misc/ckermit
+
 # Andreas Sturmlechner <asturm@gentoo.org> (31 Dec 2018)
 # Superseded by www-client/falkon. Masked for removal in 30 days.
 www-client/qupzilla
