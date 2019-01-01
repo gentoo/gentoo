@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,9 @@ IUSE="bzip2 dbi doc fam gdbm geoip ipv6 kerberos ldap libev libressl lua minimal
 
 REQUIRED_USE="kerberos? ( ssl !libressl ) webdav? ( sqlite )"
 
-CDEPEND="
+BDEPEND="virtual/pkgconfig"
+
+COMMON_DEPEND="
 	bzip2?    ( app-arch/bzip2 )
 	dbi?	( dev-db/libdbi )
 	fam?    ( virtual/fam )
@@ -33,7 +35,7 @@ CDEPEND="
 	rrdtool?  ( net-analyzer/rrdtool )
 	sasl?     ( dev-libs/cyrus-sasl )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.7:0=[kerberos?] )
+		!libressl? ( >=dev-libs/openssl-0.9.7:0=[kerberos(-)?] )
 		libressl? ( dev-libs/libressl:= )
 	)
 	sqlite?	( dev-db/sqlite:3 )
@@ -44,15 +46,14 @@ CDEPEND="
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
 	zlib? ( >=sys-libs/zlib-1.1 )"
 
-DEPEND="${CDEPEND}
-	virtual/pkgconfig
+DEPEND="${COMMON_DEPEND}
 	doc?  ( dev-python/docutils )
 	test? (
 		virtual/perl-Test-Harness
 		dev-libs/fcgi
 	)"
 
-RDEPEND="${CDEPEND}
+RDEPEND="${OMMON_DEPEND}
 	selinux? ( sec-policy/selinux-apache )
 "
 
