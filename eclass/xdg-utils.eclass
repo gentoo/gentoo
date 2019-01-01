@@ -21,29 +21,11 @@ case "${EAPI:-0}" in
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
-# @ECLASS-VARIABLE: DESKTOP_DATABASE_UPDATE_BIN
-# @INTERNAL
-# @DESCRIPTION:
-# Path to update-desktop-database
-: ${DESKTOP_DATABASE_UPDATE_BIN:="/usr/bin/update-desktop-database"}
-
 # @ECLASS-VARIABLE: DESKTOP_DATABASE_DIR
 # @INTERNAL
 # @DESCRIPTION:
 # Directory where .desktop files database is stored
 : ${DESKTOP_DATABASE_DIR="/usr/share/applications"}
-
-# @ECLASS-VARIABLE: GTK_UPDATE_ICON_CACHE
-# @INTERNAL
-# @DESCRIPTION:
-# Path to gtk-update-icon-cache
-: ${GTK_UPDATE_ICON_CACHE:="/usr/bin/gtk-update-icon-cache"}
-
-# @ECLASS-VARIABLE: MIMEINFO_DATABASE_UPDATE_BIN
-# @INTERNAL
-# @DESCRIPTION:
-# Path to update-mime-database
-: ${MIMEINFO_DATABASE_UPDATE_BIN:="/usr/bin/update-mime-database"}
 
 # @ECLASS-VARIABLE: MIMEINFO_DATABASE_DIR
 # @INTERNAL
@@ -74,19 +56,17 @@ xdg_environment_reset() {
 # Updates the .desktop files database.
 # Generates a list of mimetypes linked to applications that can handle them
 xdg_desktop_database_update() {
-	local updater="${EROOT%/}${DESKTOP_DATABASE_UPDATE_BIN}"
-
 	if [[ ${EBUILD_PHASE} != post* ]] ; then
 		die "xdg_desktop_database_update must be used in pkg_post* phases."
 	fi
 
-	if [[ ! -x "${updater}" ]] ; then
-		debug-print "${updater} is not executable"
+	if ! type update-desktop-database &>/dev/null; then
+		debug-print "update-desktop-database is not found"
 		return
 	fi
 
 	ebegin "Updating .desktop files database"
-	"${updater}" -q "${EROOT%/}${DESKTOP_DATABASE_DIR}"
+	update-desktop-database -q "${EROOT%/}${DESKTOP_DATABASE_DIR}"
 	eend $?
 }
 
@@ -95,12 +75,15 @@ xdg_desktop_database_update() {
 # Updates Gtk+ icon cache files under /usr/share/icons.
 # This function should be called from pkg_postinst and pkg_postrm.
 xdg_icon_cache_update() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
-	local updater="${EROOT%/}${GTK_UPDATE_ICON_CACHE}"
-	if [[ ! -x "${updater}" ]]; then
-		debug-print "${updater} is not executable"
+	if [[ ${EBUILD_PHASE} != post* ]] ; then
+		die "xdg_icon_cache_update must be used in pkg_post* phases."
+	fi
+
+	if ! type gtk-update-icon-cache &>/dev/null; then
+		debug-print "gtk-update-icon-cache is not found"
 		return
 	fi
+
 	ebegin "Updating icons cache"
 	local retval=0
 	local fails=( )
@@ -108,7 +91,7 @@ xdg_icon_cache_update() {
 	do
 		if [[ -f "${dir}/index.theme" ]] ; then
 			local rv=0
-			"${updater}" -qf "${dir}"
+			gtk-update-icon-cache -qf "${dir}"
 			rv=$?
 			if [[ ! $rv -eq 0 ]] ; then
 				debug-print "Updating cache failed on ${dir}"
@@ -136,18 +119,16 @@ xdg_icon_cache_update() {
 # Update the mime database.
 # Creates a general list of mime types from several sources
 xdg_mimeinfo_database_update() {
-	local updater="${EROOT%/}${MIMEINFO_DATABASE_UPDATE_BIN}"
-
 	if [[ ${EBUILD_PHASE} != post* ]] ; then
 		die "xdg_mimeinfo_database_update must be used in pkg_post* phases."
 	fi
 
-	if [[ ! -x "${updater}" ]] ; then
-		debug-print "${updater} is not executable"
+	if ! type update-mime-database &>/dev/null; then
+		debug-print "update-mime-database is not found"
 		return
 	fi
 
 	ebegin "Updating shared mime info database"
-	"${updater}" "${EROOT%/}${MIMEINFO_DATABASE_DIR}"
+	update-mime-database "${EROOT%/}${MIMEINFO_DATABASE_DIR}"
 	eend $?
 }
