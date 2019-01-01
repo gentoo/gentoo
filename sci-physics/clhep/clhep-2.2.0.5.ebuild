@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils multilib
 
 DESCRIPTION="High Energy Physics C++ library"
-HOMEPAGE="http://www.cern.ch/clhep"
+HOMEPAGE="http://proj-clhep.web.cern.ch/proj-clhep/"
 SRC_URI="http://proj-clhep.web.cern.ch/proj-clhep/DISTRIBUTION/tarFiles/${P}.tgz"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2/${PV}"
