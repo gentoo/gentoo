@@ -114,6 +114,7 @@ src_configure() {
 
 src_install() {
 	meson_src_install
+	doinitd "${FILESDIR}"/${PN}
 
 	if ! use systemd ; then
 		# Don't timeout when fwupd is running (#673140)
