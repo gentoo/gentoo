@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,7 @@ RDEPEND="
 	metis? (
 		>=sci-libs/camd-2.3
 		>=sci-libs/ccolamd-2.8
-		|| ( sci-libs/metis sci-libs/parmetis ) )"
+		|| ( <sci-libs/metis-5 sci-libs/parmetis ) )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
