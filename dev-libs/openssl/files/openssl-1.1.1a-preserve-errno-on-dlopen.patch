@@ -1,0 +1,51 @@
+From ef97becf522fc4e2e9d98e6ae7bcb26651883d9a Mon Sep 17 00:00:00 2001
+From: Matt Caswell <matt@openssl.org>
+Date: Wed, 21 Nov 2018 11:57:04 +0000
+Subject: [PATCH] Preserve errno on dlopen
+
+For the same reasons as in the previous commit we must preserve errno
+across dlopen calls. Some implementations (e.g. solaris) do not preserve
+errno even on a successful dlopen call.
+
+Fixes #6953
+
+Reviewed-by: Richard Levitte <levitte@openssl.org>
+(Merged from https://github.com/openssl/openssl/pull/7680)
+
+(cherry picked from commit 3cb4e7dc1cf92022f62b9bbdd59695885a1265ff)
+---
+ crypto/dso/dso_dlfcn.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/crypto/dso/dso_dlfcn.c b/crypto/dso/dso_dlfcn.c
+index ad8899c289a..4240f5f5e30 100644
+--- a/crypto/dso/dso_dlfcn.c
++++ b/crypto/dso/dso_dlfcn.c
+@@ -17,6 +17,7 @@
+ #endif
+ 
+ #include "dso_locl.h"
++#include "e_os.h"
+ 
+ #ifdef DSO_DLFCN
+ 
+@@ -99,6 +100,7 @@ static int dlfcn_load(DSO *dso)
+     /* See applicable comments in dso_dl.c */
+     char *filename = DSO_convert_filename(dso, NULL);
+     int flags = DLOPEN_FLAG;
++    int saveerrno = get_last_sys_error();
+ 
+     if (filename == NULL) {
+         DSOerr(DSO_F_DLFCN_LOAD, DSO_R_NO_FILENAME);
+@@ -118,6 +120,11 @@ static int dlfcn_load(DSO *dso)
+         ERR_add_error_data(4, "filename(", filename, "): ", dlerror());
+         goto err;
+     }
++    /*
++     * Some dlopen() implementations (e.g. solaris) do no preserve errno, even
++     * on a successful call.
++     */
++    set_sys_error(saveerrno);
+     if (!sk_void_push(dso->meth_data, (char *)ptr)) {
+         DSOerr(DSO_F_DLFCN_LOAD, DSO_R_STACK_ERROR);
+         goto err;

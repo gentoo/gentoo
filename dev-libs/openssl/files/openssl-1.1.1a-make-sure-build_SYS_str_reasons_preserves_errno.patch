@@ -1,0 +1,68 @@
+From 99992ad22019e752c7b103a45f860a48b6bc0972 Mon Sep 17 00:00:00 2001
+From: Matt Caswell <matt@openssl.org>
+Date: Wed, 21 Nov 2018 11:44:42 +0000
+Subject: [PATCH] Make sure build_SYS_str_reasons() preserves errno
+
+This function can end up being called during ERR_get_error() if we are
+initialising. ERR_get_error() must preserve errno since it gets called via
+SSL_get_error(). If that function returns SSL_ERROR_SYSCALL then you are
+supposed to inspect errno.
+
+Reviewed-by: Richard Levitte <levitte@openssl.org>
+(Merged from https://github.com/openssl/openssl/pull/7680)
+
+(cherry picked from commit 71b1ceffc4c795f5db21861dd1016fbe23a53a53)
+---
+
+diff --git a/crypto/err/err.c b/crypto/err/err.c
+index 03cbd73..2eeeab2 100644
+--- a/crypto/err/err.c
++++ b/crypto/err/err.c
+@@ -19,6 +19,7 @@
+ #include <openssl/bio.h>
+ #include <openssl/opensslconf.h>
+ #include "internal/thread_once.h"
++#include "e_os.h"
+ 
+ static int err_load_strings(const ERR_STRING_DATA *str);
+ 
+@@ -201,6 +202,7 @@ static void build_SYS_str_reasons(void)
+     static char strerror_tab[NUM_SYS_STR_REASONS][LEN_SYS_STR_REASON];
+     static int init = 1;
+     int i;
++    int saveerrno = get_last_sys_error();
+ 
+     CRYPTO_THREAD_write_lock(err_string_lock);
+     if (!init) {
+@@ -229,6 +231,8 @@ static void build_SYS_str_reasons(void)
+     init = 0;
+ 
+     CRYPTO_THREAD_unlock(err_string_lock);
++    /* openssl_strerror_r could change errno, but we want to preserve it */
++    set_sys_error(saveerrno);
+     err_load_strings(SYS_str_reasons);
+ }
+ #endif
+diff --git a/e_os.h b/e_os.h
+index 5340593..8e6efa9 100644
+--- a/e_os.h
++++ b/e_os.h
+@@ -49,6 +49,7 @@
+ 
+ # define get_last_sys_error()    errno
+ # define clear_sys_error()       errno=0
++# define set_sys_error(e)        errno=(e)
+ 
+ /********************************************************************
+  The Microsoft section
+@@ -66,8 +67,10 @@
+ # ifdef WIN32
+ #  undef get_last_sys_error
+ #  undef clear_sys_error
++#  undef set_sys_error
+ #  define get_last_sys_error()    GetLastError()
+ #  define clear_sys_error()       SetLastError(0)
++#  define set_sys_error(e)        SetLastError(e)
+ #  if !defined(WINNT)
+ #   define WIN_CONSOLE_BUG
+ #  endif

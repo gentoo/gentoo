@@ -1,0 +1,57 @@
+From 145419423e1a74ae54cdbd3aed8bb15cbd53c7cc Mon Sep 17 00:00:00 2001
+From: Richard Levitte <levitte@openssl.org>
+Date: Fri, 14 Dec 2018 19:33:55 +0100
+Subject: [PATCH] ERR: preserve system error number in a few more places
+
+It turns out that intialization may change the error number, so we
+need to preserve the system error number in functions where
+initialization is called for.
+These are ERR_get_state() and err_shelve_state()
+
+Fixes #7897
+
+Reviewed-by: Matt Caswell <matt@openssl.org>
+(Merged from https://github.com/openssl/openssl/pull/7902)
+
+(cherry picked from commit 91c5473035aaf2c0d86e4039c2a29a5b70541905)
+---
+ crypto/err/err.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/crypto/err/err.c b/crypto/err/err.c
+index 5cfb02d821b..aef2543d60b 100644
+--- a/crypto/err/err.c
++++ b/crypto/err/err.c
+@@ -697,6 +697,7 @@ DEFINE_RUN_ONCE_STATIC(err_do_init)
+ ERR_STATE *ERR_get_state(void)
+ {
+     ERR_STATE *state;
++    int saveerrno = get_last_sys_error();
+ 
+     if (!OPENSSL_init_crypto(OPENSSL_INIT_BASE_ONLY, NULL))
+         return NULL;
+@@ -728,6 +729,7 @@ ERR_STATE *ERR_get_state(void)
+         OPENSSL_init_crypto(OPENSSL_INIT_LOAD_CRYPTO_STRINGS, NULL);
+     }
+ 
++    set_sys_error(saveerrno);
+     return state;
+ }
+ 
+@@ -737,6 +739,8 @@ ERR_STATE *ERR_get_state(void)
+  */
+ int err_shelve_state(void **state)
+ {
++    int saveerrno = get_last_sys_error();
++
+     if (!OPENSSL_init_crypto(OPENSSL_INIT_BASE_ONLY, NULL))
+         return 0;
+ 
+@@ -747,6 +751,7 @@ int err_shelve_state(void **state)
+     if (!CRYPTO_THREAD_set_local(&err_thread_local, (ERR_STATE*)-1))
+         return 0;
+ 
++    set_sys_error(saveerrno);
+     return 1;
+ }
+ 
