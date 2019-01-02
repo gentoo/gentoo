@@ -1,0 +1,722 @@
+Description: Enable support for OpenSSL 1.1
+Author: Sebastian Andrzej Siewior <sebastian@breakpoint.cc>
+        Ryan Kavanagh <rak@debian.org>
+Origin: Debian
+Bug: https://github.com/OpenSMTPD/OpenSMTPD/issues/738
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=859544
+Forwarded: https://github.com/OpenSMTPD/OpenSMTPD/pull/825
+Last-Update: 2018-03-18
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+diff --git a/openbsd-compat/libressl.c b/openbsd-compat/libressl.c
+index f4f2b52e..d06e006f 100644
+--- a/openbsd-compat/libressl.c
++++ b/openbsd-compat/libressl.c
+@@ -81,14 +81,14 @@ SSL_CTX_use_certificate_chain(SSL_CTX *ctx, char *buf, off_t len)
+ 	x = ca = NULL;
+ 
+ 	if ((in = BIO_new_mem_buf(buf, len)) == NULL) {
+-		SSLerr(SSL_F_SSL_CTX_USE_CERTIFICATE_CHAIN_FILE, ERR_R_BUF_LIB);
++		SSLerr(SSL_F_SSL_CTX_USE_CERTIFICATE_FILE, ERR_R_BUF_LIB);
+ 		goto end;
+ 	}
+ 
+ 	if ((x = PEM_read_bio_X509(in, NULL,
+-		    ctx->default_passwd_callback,
+-		    ctx->default_passwd_callback_userdata)) == NULL) {
+-		SSLerr(SSL_F_SSL_CTX_USE_CERTIFICATE_CHAIN_FILE, ERR_R_PEM_LIB);
++		    SSL_CTX_get_default_passwd_cb(ctx),
++		    SSL_CTX_get_default_passwd_cb_userdata(ctx))) == NULL) {
++		SSLerr(SSL_F_SSL_CTX_USE_CERTIFICATE_FILE, ERR_R_PEM_LIB);
+ 		goto end;
+ 	}
+ 
+@@ -99,14 +99,11 @@ SSL_CTX_use_certificate_chain(SSL_CTX *ctx, char *buf, off_t len)
+ 	 * the CA certificates.
+ 	 */
+ 
+-	if (ctx->extra_certs != NULL) {
+-		sk_X509_pop_free(ctx->extra_certs, X509_free);
+-		ctx->extra_certs = NULL;
+-	}
++	SSL_CTX_clear_extra_chain_certs(ctx);
+ 
+ 	while ((ca = PEM_read_bio_X509(in, NULL,
+-		    ctx->default_passwd_callback,
+-		    ctx->default_passwd_callback_userdata)) != NULL) {
++		    SSL_CTX_get_default_passwd_cb(ctx),
++		    SSL_CTX_get_default_passwd_cb_userdata(ctx))) != NULL) {
+ 
+ 		if (!SSL_CTX_add_extra_chain_cert(ctx, ca))
+ 			goto end;
+diff --git a/smtpd/ca.c b/smtpd/ca.c
+index e383c6a1..29a44b9b 100644
+--- a/smtpd/ca.c
++++ b/smtpd/ca.c
+@@ -170,6 +170,190 @@ ca_verify_cb(int ok, X509_STORE_CTX *ctx)
+ 	return ok;
+ }
+ 
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
++
++static int RSA_meth_get_flags(RSA_METHOD *meth)
++{
++	return meth->flags;
++}
++
++static int RSA_meth_set_flags(RSA_METHOD *meth, int flags)
++{
++	meth->flags = flags;
++	return 1;
++}
++
++static void *RSA_meth_get0_app_data(const RSA_METHOD *meth)
++{
++	return meth->app_data;
++}
++
++static int RSA_meth_set0_app_data(RSA_METHOD *meth, void *app_data)
++{
++	meth->app_data = app_data;
++	return 1;
++}
++
++static int (*RSA_meth_get_pub_enc(const RSA_METHOD *meth))
++(int flen, const unsigned char *from, unsigned char *to, RSA *rsa, int padding)
++{
++	return meth->rsa_pub_enc;
++}
++
++static int RSA_meth_set_pub_enc(RSA_METHOD *meth,
++	int (*pub_enc) (int flen, const unsigned char *from,
++			unsigned char *to, RSA *rsa,
++			int padding))
++{
++	meth->rsa_pub_enc = pub_enc;
++	return 1;
++}
++
++static int (*RSA_meth_get_pub_dec(const RSA_METHOD *meth))
++(int flen, const unsigned char *from, unsigned char *to, RSA *rsa, int padding)
++{
++	return meth->rsa_pub_dec;
++}
++
++static int (*RSA_meth_get_priv_enc(const RSA_METHOD *meth))
++(int flen, const unsigned char *from, unsigned char *to, RSA *rsa, int padding)
++{
++	return meth->rsa_priv_enc;
++}
++
++int RSA_meth_set_priv_enc(RSA_METHOD *meth,
++  int (*priv_enc) (int flen, const unsigned char *from,
++  unsigned char *to, RSA *rsa, int padding))
++{
++	meth->rsa_priv_enc = priv_enc;
++	return 1;
++}
++
++static int (*RSA_meth_get_priv_dec(const RSA_METHOD *meth))
++(int flen, const unsigned char *from, unsigned char *to, RSA *rsa, int padding)
++{
++	return meth->rsa_priv_dec;
++}
++
++static int RSA_meth_set_priv_dec(RSA_METHOD *meth,
++  int (*priv_dec) (int flen, const unsigned char *from,
++  unsigned char *to, RSA *rsa, int padding))
++{
++	meth->rsa_priv_dec = priv_dec;
++	return 1;
++}
++
++static int (*RSA_meth_get_mod_exp(const RSA_METHOD *meth))
++  (BIGNUM *r0, const BIGNUM *I, RSA *rsa, BN_CTX *ctx)
++{
++	return meth->rsa_mod_exp;
++}
++
++static int RSA_meth_set_mod_exp(RSA_METHOD *meth,
++  int (*mod_exp) (BIGNUM *r0, const BIGNUM *I, RSA *rsa, BN_CTX *ctx))
++{
++	meth->rsa_mod_exp = mod_exp;
++	return 1;
++}
++
++static int (*RSA_meth_get_bn_mod_exp(const RSA_METHOD *meth))
++(BIGNUM *r, const BIGNUM *a, const BIGNUM *p, const BIGNUM *m, BN_CTX *ctx, BN_MONT_CTX *m_ctx)
++{
++	return meth->bn_mod_exp;
++}
++
++static int RSA_meth_set_bn_mod_exp(RSA_METHOD *meth, int (*bn_mod_exp)
++  (BIGNUM *r, const BIGNUM *a, const BIGNUM *p, const BIGNUM *m,
++   BN_CTX *ctx, BN_MONT_CTX *m_ctx))
++{
++	meth->bn_mod_exp = bn_mod_exp;
++	return 1;
++}
++
++static int (*RSA_meth_get_init(const RSA_METHOD *meth)) (RSA *rsa)
++{
++	return meth->init;
++}
++
++static int RSA_meth_set_init(RSA_METHOD *meth, int (*init) (RSA *rsa))
++{
++	meth->init = init;
++	return 1;
++}
++
++static int (*RSA_meth_get_finish(const RSA_METHOD *meth)) (RSA *rsa)
++{
++	return meth->finish;
++}
++
++static int RSA_meth_set_finish(RSA_METHOD *meth, int (*finish) (RSA *rsa))
++{
++	meth->finish = finish;
++	return 1;
++}
++
++static int (*RSA_meth_get_keygen(const RSA_METHOD *meth))
++  (RSA *rsa, int bits, BIGNUM *e, BN_GENCB *cb)
++{
++	return meth->rsa_keygen;
++}
++
++static int RSA_meth_set_keygen(RSA_METHOD *meth, int (*keygen)
++  (RSA *rsa, int bits, BIGNUM *e, BN_GENCB *cb))
++{
++	meth->rsa_keygen = keygen;
++	return 1;
++}
++
++static int (*RSA_meth_get_verify(const RSA_METHOD *meth))
++  (int dtype, const unsigned char *m,
++   unsigned int m_length, const unsigned char *sigbuf,
++   unsigned int siglen, const RSA *rsa)
++{
++	if (meth->flags & RSA_FLAG_SIGN_VER)
++		return meth->rsa_verify;
++	return NULL;
++}
++
++static int (*RSA_meth_get_sign(const RSA_METHOD *meth))
++  (int type,
++   const unsigned char *m, unsigned int m_length,
++   unsigned char *sigret, unsigned int *siglen,
++   const RSA *rsa)
++{
++	if (meth->flags & RSA_FLAG_SIGN_VER)
++		return meth->rsa_sign;
++	return NULL;
++}
++
++static int RSA_meth_set_pub_dec(RSA_METHOD *meth,
++ int (*pub_dec) (int flen, const unsigned char *from,
++   unsigned char *to, RSA *rsa, int padding))
++{
++	meth->rsa_pub_dec = pub_dec;
++	return 1;
++}
++
++static RSA_METHOD *RSA_meth_new(const char *name, int flags)
++{
++	RSA_METHOD *meth = malloc(sizeof(*meth));
++
++	if (meth != NULL) {
++		memset(meth, 0, sizeof(*meth));
++		meth->flags = flags;
++
++		meth->name = strdup(name);
++		if (meth->name != NULL)
++			return meth;
++
++		free(meth);
++	}
++
++	return NULL;
++}
++
++#endif
++
+ int
+ ca_X509_verify(void *certificate, void *chain, const char *CAfile,
+     const char *CRLfile, const char **errstr)
+@@ -201,7 +385,7 @@ end:
+ 	*errstr = NULL;
+ 	if (ret != 1) {
+ 		if (xsc)
+-			*errstr = X509_verify_cert_error_string(xsc->error);
++			*errstr = X509_verify_cert_error_string(X509_STORE_CTX_get_error(xsc));
+ 		else if (ERR_peek_last_error())
+ 			*errstr = ERR_error_string(ERR_peek_last_error(), NULL);
+ 	}
+@@ -302,24 +486,9 @@ ca_imsg(struct mproc *p, struct imsg *imsg)
+  * RSA privsep engine (called from unprivileged processes)
+  */
+ 
+-const RSA_METHOD *rsa_default = NULL;
+-
+-static RSA_METHOD rsae_method = {
+-	"RSA privsep engine",
+-	rsae_pub_enc,
+-	rsae_pub_dec,
+-	rsae_priv_enc,
+-	rsae_priv_dec,
+-	rsae_mod_exp,
+-	rsae_bn_mod_exp,
+-	rsae_init,
+-	rsae_finish,
+-	0,
+-	NULL,
+-	NULL,
+-	NULL,
+-	rsae_keygen
+-};
++static const RSA_METHOD *rsa_default = NULL;
++
++static const char *rsae_method_name = "RSA privsep engine";
+ 
+ static int
+ rsae_send_imsg(int flen, const unsigned char *from, unsigned char *to,
+@@ -404,7 +573,7 @@ rsae_pub_enc(int flen,const unsigned char *from, unsigned char *to, RSA *rsa,
+     int padding)
+ {
+ 	log_debug("debug: %s: %s", proc_name(smtpd_process), __func__);
+-	return (rsa_default->rsa_pub_enc(flen, from, to, rsa, padding));
++	return (RSA_meth_get_pub_enc(rsa_default)(flen, from, to, rsa, padding));
+ }
+ 
+ static int
+@@ -412,7 +581,7 @@ rsae_pub_dec(int flen,const unsigned char *from, unsigned char *to, RSA *rsa,
+     int padding)
+ {
+ 	log_debug("debug: %s: %s", proc_name(smtpd_process), __func__);
+-	return (rsa_default->rsa_pub_dec(flen, from, to, rsa, padding));
++	return (RSA_meth_get_pub_dec(rsa_default)(flen, from, to, rsa, padding));
+ }
+ 
+ static int
+@@ -424,7 +593,7 @@ rsae_priv_enc(int flen, const unsigned char *from, unsigned char *to, RSA *rsa,
+ 		return (rsae_send_imsg(flen, from, to, rsa, padding,
+ 		    IMSG_CA_PRIVENC));
+ 	}
+-	return (rsa_default->rsa_priv_enc(flen, from, to, rsa, padding));
++	return (RSA_meth_get_priv_enc(rsa_default)(flen, from, to, rsa, padding));
+ }
+ 
+ static int
+@@ -436,14 +605,14 @@ rsae_priv_dec(int flen, const unsigned char *from, unsigned char *to, RSA *rsa,
+ 		return (rsae_send_imsg(flen, from, to, rsa, padding,
+ 		    IMSG_CA_PRIVDEC));
+ 	}
+-	return (rsa_default->rsa_priv_dec(flen, from, to, rsa, padding));
++	return (RSA_meth_get_priv_dec(rsa_default)(flen, from, to, rsa, padding));
+ }
+ 
+ static int
+ rsae_mod_exp(BIGNUM *r0, const BIGNUM *I, RSA *rsa, BN_CTX *ctx)
+ {
+ 	log_debug("debug: %s: %s", proc_name(smtpd_process), __func__);
+-	return (rsa_default->rsa_mod_exp(r0, I, rsa, ctx));
++	return (RSA_meth_get_mod_exp(rsa_default)(r0, I, rsa, ctx));
+ }
+ 
+ static int
+@@ -451,34 +620,36 @@ rsae_bn_mod_exp(BIGNUM *r, const BIGNUM *a, const BIGNUM *p,
+     const BIGNUM *m, BN_CTX *ctx, BN_MONT_CTX *m_ctx)
+ {
+ 	log_debug("debug: %s: %s", proc_name(smtpd_process), __func__);
+-	return (rsa_default->bn_mod_exp(r, a, p, m, ctx, m_ctx));
++	return (RSA_meth_get_bn_mod_exp(rsa_default)(r, a, p, m, ctx, m_ctx));
+ }
+ 
+ static int
+ rsae_init(RSA *rsa)
+ {
+ 	log_debug("debug: %s: %s", proc_name(smtpd_process), __func__);
+-	if (rsa_default->init == NULL)
++	if (RSA_meth_get_init(rsa_default) == NULL)
+ 		return (1);
+-	return (rsa_default->init(rsa));
++	return (RSA_meth_get_init(rsa_default)(rsa));
+ }
+ 
+ static int
+ rsae_finish(RSA *rsa)
+ {
+ 	log_debug("debug: %s: %s", proc_name(smtpd_process), __func__);
+-	if (rsa_default->finish == NULL)
++	if (RSA_meth_get_finish(rsa_default) == NULL)
+ 		return (1);
+-	return (rsa_default->finish(rsa));
++	return (RSA_meth_get_finish(rsa_default)(rsa));
+ }
+ 
+ static int
+ rsae_keygen(RSA *rsa, int bits, BIGNUM *e, BN_GENCB *cb)
+ {
+ 	log_debug("debug: %s: %s", proc_name(smtpd_process), __func__);
+-	return (rsa_default->rsa_keygen(rsa, bits, e, cb));
++	return (RSA_meth_get_keygen(rsa_default)(rsa, bits, e, cb));
+ }
+ 
++static RSA_METHOD *rsae_method;
++
+ void
+ ca_engine_init(void)
+ {
+@@ -490,7 +661,7 @@ ca_engine_init(void)
+ 			errstr = "ENGINE_new";
+ 			goto fail;
+ 		}
+-		if (!ENGINE_set_name(e, rsae_method.name)) {
++		if (!ENGINE_set_name(e, rsae_method_name)) {
+ 			errstr = "ENGINE_set_name";
+ 			goto fail;
+ 		}
+@@ -503,25 +674,58 @@ ca_engine_init(void)
+ 		goto fail;
+ 	}
+ 
++	rsae_method = RSA_meth_new(rsae_method_name, 0);
++	if (!rsae_method) {
++		errstr = "RSA_meth_new";
++		goto fail;
++	}
++
+ 	if ((name = ENGINE_get_name(e)) == NULL)
+ 		name = "unknown RSA engine";
+ 
+ 	log_debug("debug: %s: using %s", __func__, name);
+ 
+-	if (rsa_default->flags & RSA_FLAG_SIGN_VER)
++	if (RSA_meth_get_sign(rsa_default) ||
++	    RSA_meth_get_verify(rsa_default))
+ 		fatalx("unsupported RSA engine");
+ 
+-	if (rsa_default->rsa_mod_exp == NULL)
+-		rsae_method.rsa_mod_exp = NULL;
+-	if (rsa_default->bn_mod_exp == NULL)
+-		rsae_method.bn_mod_exp = NULL;
+-	if (rsa_default->rsa_keygen == NULL)
+-		rsae_method.rsa_keygen = NULL;
+-	rsae_method.flags = rsa_default->flags |
+-	    RSA_METHOD_FLAG_NO_CHECK;
+-	rsae_method.app_data = rsa_default->app_data;
+-
+-	if (!ENGINE_set_RSA(e, &rsae_method)) {
++	errstr = "Setting callback";
++	if (!RSA_meth_set_pub_enc(rsae_method, rsae_pub_enc))
++		goto fail;
++        if (!RSA_meth_set_pub_dec(rsae_method, rsae_pub_dec))
++		goto fail;
++        if (!RSA_meth_set_priv_enc(rsae_method, rsae_priv_enc))
++		goto fail;
++        if (!RSA_meth_set_priv_dec(rsae_method, rsae_priv_dec))
++		goto fail;
++
++	if (RSA_meth_get_mod_exp(rsa_default)) {
++		if (!RSA_meth_set_mod_exp(rsae_method, rsae_mod_exp))
++			goto fail;
++	}
++
++	if (RSA_meth_get_bn_mod_exp(rsa_default))
++		if (!RSA_meth_set_bn_mod_exp(rsae_method, rsae_bn_mod_exp))
++			goto fail;
++        if (!RSA_meth_set_init(rsae_method, rsae_init))
++		goto fail;
++        if (!RSA_meth_set_finish(rsae_method, rsae_finish))
++		goto fail;
++
++	if (RSA_meth_get_keygen(rsa_default)) {
++		if (!RSA_meth_set_keygen(rsae_method, rsae_keygen))
++			goto fail;
++	}
++
++	if (!RSA_meth_set_flags(rsae_method,
++			   RSA_meth_get_flags(rsa_default) |
++			   RSA_METHOD_FLAG_NO_CHECK))
++		goto fail;
++
++	if (!RSA_meth_set0_app_data(rsae_method, RSA_meth_get0_app_data(rsa_default)))
++		goto fail;
++
++	if (!ENGINE_set_RSA(e, rsae_method)) {
+ 		errstr = "ENGINE_set_RSA";
+ 		goto fail;
+ 	}
+diff --git a/smtpd/crypto.c b/smtpd/crypto.c
+index 76f98807..01452851 100644
+--- a/smtpd/crypto.c
++++ b/smtpd/crypto.c
+@@ -64,7 +64,7 @@ crypto_setup(const char *key, size_t len)
+ int
+ crypto_encrypt_file(FILE * in, FILE * out)
+ {
+-	EVP_CIPHER_CTX	ctx;
++	EVP_CIPHER_CTX	*ctx;
+ 	uint8_t		ibuf[CRYPTO_BUFFER_SIZE];
+ 	uint8_t		obuf[CRYPTO_BUFFER_SIZE];
+ 	uint8_t		iv[IV_SIZE];
+@@ -91,12 +91,14 @@ crypto_encrypt_file(FILE * in, FILE * out)
+ 	if ((w = fwrite(iv, 1, sizeof iv, out)) != sizeof iv)
+ 		return 0;
+ 
+-	EVP_CIPHER_CTX_init(&ctx);
+-	EVP_EncryptInit_ex(&ctx, EVP_aes_256_gcm(), NULL, cp.key, iv);
++        ctx = EVP_CIPHER_CTX_new();
++        if (!ctx)
++                return 0;
++	EVP_EncryptInit_ex(ctx, EVP_aes_256_gcm(), NULL, cp.key, iv);
+ 
+ 	/* encrypt until end of file */
+ 	while ((r = fread(ibuf, 1, CRYPTO_BUFFER_SIZE, in)) != 0) {
+-		if (!EVP_EncryptUpdate(&ctx, obuf, &len, ibuf, r))
++		if (!EVP_EncryptUpdate(ctx, obuf, &len, ibuf, r))
+ 			goto end;
+ 		if (len && (w = fwrite(obuf, len, 1, out)) != 1)
+ 			goto end;
+@@ -105,13 +107,13 @@ crypto_encrypt_file(FILE * in, FILE * out)
+ 		goto end;
+ 
+ 	/* finalize and write last chunk if any */
+-	if (!EVP_EncryptFinal_ex(&ctx, obuf, &len))
++	if (!EVP_EncryptFinal_ex(ctx, obuf, &len))
+ 		goto end;
+ 	if (len && (w = fwrite(obuf, len, 1, out)) != 1)
+ 		goto end;
+ 
+ 	/* get and append tag */
+-	EVP_CIPHER_CTX_ctrl(&ctx, EVP_CTRL_GCM_GET_TAG, sizeof tag, tag);
++	EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_GCM_GET_TAG, sizeof tag, tag);
+ 	if ((w = fwrite(tag, sizeof tag, 1, out)) != 1)
+ 		goto end;
+ 
+@@ -119,14 +121,14 @@ crypto_encrypt_file(FILE * in, FILE * out)
+ 	ret = 1;
+ 
+ end:
+-	EVP_CIPHER_CTX_cleanup(&ctx);
++	EVP_CIPHER_CTX_free(ctx);
+ 	return ret;
+ }
+ 
+ int
+ crypto_decrypt_file(FILE * in, FILE * out)
+ {
+-	EVP_CIPHER_CTX	ctx;
++	EVP_CIPHER_CTX	*ctx;
+ 	uint8_t		ibuf[CRYPTO_BUFFER_SIZE];
+ 	uint8_t		obuf[CRYPTO_BUFFER_SIZE];
+ 	uint8_t		iv[IV_SIZE];
+@@ -171,11 +173,13 @@ crypto_decrypt_file(FILE * in, FILE * out)
+ 	sz -= sizeof tag;
+ 
+ 
+-	EVP_CIPHER_CTX_init(&ctx);
+-	EVP_DecryptInit_ex(&ctx, EVP_aes_256_gcm(), NULL, cp.key, iv);
++        ctx = EVP_CIPHER_CTX_new();
++        if (!ctx)
++                return 0;
++	EVP_DecryptInit_ex(ctx, EVP_aes_256_gcm(), NULL, cp.key, iv);
+ 
+ 	/* set expected tag */
+-	EVP_CIPHER_CTX_ctrl(&ctx, EVP_CTRL_GCM_SET_TAG, sizeof tag, tag);
++	EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_GCM_SET_TAG, sizeof tag, tag);
+ 
+ 	/* decrypt until end of ciphertext */
+ 	while (sz) {
+@@ -185,7 +189,7 @@ crypto_decrypt_file(FILE * in, FILE * out)
+ 			r = fread(ibuf, 1, sz, in);
+ 		if (!r)
+ 			break;
+-		if (!EVP_DecryptUpdate(&ctx, obuf, &len, ibuf, r))
++		if (!EVP_DecryptUpdate(ctx, obuf, &len, ibuf, r))
+ 			goto end;
+ 		if (len && (w = fwrite(obuf, len, 1, out)) != 1)
+ 			goto end;
+@@ -195,7 +199,7 @@ crypto_decrypt_file(FILE * in, FILE * out)
+ 		goto end;
+ 
+ 	/* finalize, write last chunk if any and perform authentication check */
+-	if (!EVP_DecryptFinal_ex(&ctx, obuf, &len))
++	if (!EVP_DecryptFinal_ex(ctx, obuf, &len))
+ 		goto end;
+ 	if (len && (w = fwrite(obuf, len, 1, out)) != 1)
+ 		goto end;
+@@ -204,14 +208,14 @@ crypto_decrypt_file(FILE * in, FILE * out)
+ 	ret = 1;
+ 
+ end:
+-	EVP_CIPHER_CTX_cleanup(&ctx);
++	EVP_CIPHER_CTX_free(ctx);
+ 	return ret;
+ }
+ 
+ size_t
+ crypto_encrypt_buffer(const char *in, size_t inlen, char *out, size_t outlen)
+ {
+-	EVP_CIPHER_CTX	ctx;
++	EVP_CIPHER_CTX	*ctx;
+ 	uint8_t		iv[IV_SIZE];
+ 	uint8_t		tag[GCM_TAG_SIZE];
+ 	uint8_t		version = API_VERSION;
+@@ -239,33 +243,35 @@ crypto_encrypt_buffer(const char *in, size_t inlen, char *out, size_t outlen)
+ 	memcpy(out + len, iv, sizeof iv);
+ 	len += sizeof iv;
+ 
+-	EVP_CIPHER_CTX_init(&ctx);
+-	EVP_EncryptInit_ex(&ctx, EVP_aes_256_gcm(), NULL, cp.key, iv);
++        ctx = EVP_CIPHER_CTX_new();
++        if (!ctx)
++                return 0;
++	EVP_EncryptInit_ex(ctx, EVP_aes_256_gcm(), NULL, cp.key, iv);
+ 
+ 	/* encrypt buffer */
+-	if (!EVP_EncryptUpdate(&ctx, out + len, &olen, in, inlen))
++	if (!EVP_EncryptUpdate(ctx, out + len, &olen, in, inlen))
+ 		goto end;
+ 	len += olen;
+ 
+ 	/* finalize and write last chunk if any */
+-	if (!EVP_EncryptFinal_ex(&ctx, out + len, &olen))
++	if (!EVP_EncryptFinal_ex(ctx, out + len, &olen))
+ 		goto end;
+ 	len += olen;
+ 
+ 	/* get and append tag */
+-	EVP_CIPHER_CTX_ctrl(&ctx, EVP_CTRL_GCM_GET_TAG, sizeof tag, tag);
++	EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_GCM_GET_TAG, sizeof tag, tag);
+ 	memcpy(out + len, tag, sizeof tag);
+ 	ret = len + sizeof tag;
+ 
+ end:
+-	EVP_CIPHER_CTX_cleanup(&ctx);
++	EVP_CIPHER_CTX_cleanup(ctx);
+ 	return ret;
+ }
+ 
+ size_t
+ crypto_decrypt_buffer(const char *in, size_t inlen, char *out, size_t outlen)
+ {
+-	EVP_CIPHER_CTX	ctx;
++	EVP_CIPHER_CTX	*ctx;
+ 	uint8_t		iv[IV_SIZE];
+ 	uint8_t		tag[GCM_TAG_SIZE];
+ 	int		olen;
+@@ -292,24 +298,26 @@ crypto_decrypt_buffer(const char *in, size_t inlen, char *out, size_t outlen)
+ 	inlen -= sizeof iv;
+ 	in += sizeof iv;
+ 
+-	EVP_CIPHER_CTX_init(&ctx);
+-	EVP_DecryptInit_ex(&ctx, EVP_aes_256_gcm(), NULL, cp.key, iv);
++        ctx = EVP_CIPHER_CTX_new();
++        if (!ctx)
++                return 0;
++	EVP_DecryptInit_ex(ctx, EVP_aes_256_gcm(), NULL, cp.key, iv);
+ 
+ 	/* set expected tag */
+-	EVP_CIPHER_CTX_ctrl(&ctx, EVP_CTRL_GCM_SET_TAG, sizeof tag, tag);
++	EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_GCM_SET_TAG, sizeof tag, tag);
+ 
+ 	/* decrypt buffer */
+-	if (!EVP_DecryptUpdate(&ctx, out, &olen, in, inlen))
++	if (!EVP_DecryptUpdate(ctx, out, &olen, in, inlen))
+ 		goto end;
+ 	len += olen;
+ 
+ 	/* finalize, write last chunk if any and perform authentication check */
+-	if (!EVP_DecryptFinal_ex(&ctx, out + len, &olen))
++	if (!EVP_DecryptFinal_ex(ctx, out + len, &olen))
+ 		goto end;
+ 	ret = len + olen;
+ 
+ end:
+-	EVP_CIPHER_CTX_cleanup(&ctx);
++	EVP_CIPHER_CTX_cleanup(ctx);
+ 	return ret;
+ }
+ 
+diff --git a/smtpd/libressl.c b/smtpd/libressl.c
+index 57d74389..db78d943 100644
+--- a/smtpd/libressl.c
++++ b/smtpd/libressl.c
+@@ -94,10 +94,10 @@ ssl_ctx_use_certificate_chain_bio(SSL_CTX *ctx, BIO *in)
+ 
+ 	ERR_clear_error(); /* clear error stack for SSL_CTX_use_certificate() */
+ 
+-	x = PEM_read_bio_X509_AUX(in, NULL, ctx->default_passwd_callback,
+-	    ctx->default_passwd_callback_userdata);
++	x = PEM_read_bio_X509_AUX(in, NULL, SSL_CTX_get_default_passwd_cb(ctx),
++	    SSL_CTX_get_default_passwd_cb_userdata(ctx));
+ 	if (x == NULL) {
+-		SSLerr(SSL_F_SSL_CTX_USE_CERTIFICATE_CHAIN_FILE, ERR_R_PEM_LIB);
++		SSLerr(SSL_F_SSL_CTX_USE_CERTIFICATE_FILE, ERR_R_PEM_LIB);
+ 		goto end;
+ 	}
+ 
+@@ -115,14 +115,11 @@ ssl_ctx_use_certificate_chain_bio(SSL_CTX *ctx, BIO *in)
+ 		int r;
+ 		unsigned long err;
+ 
+-		if (ctx->extra_certs != NULL) {
+-			sk_X509_pop_free(ctx->extra_certs, X509_free);
+-			ctx->extra_certs = NULL;
+-		}
++		SSL_CTX_clear_extra_chain_certs(ctx);
+ 
+ 		while ((ca = PEM_read_bio_X509(in, NULL,
+-		    ctx->default_passwd_callback,
+-		    ctx->default_passwd_callback_userdata)) != NULL) {
++		    SSL_CTX_get_default_passwd_cb(ctx),
++		    SSL_CTX_get_default_passwd_cb_userdata(ctx))) != NULL) {
+ 			r = SSL_CTX_add_extra_chain_cert(ctx, ca);
+ 			if (!r) {
+ 				X509_free(ca);
+@@ -160,7 +157,7 @@ SSL_CTX_use_certificate_chain_mem(SSL_CTX *ctx, void *buf, int len)
+ 
+ 	in = BIO_new_mem_buf(buf, len);
+ 	if (in == NULL) {
+-		SSLerr(SSL_F_SSL_CTX_USE_CERTIFICATE_CHAIN_FILE, ERR_R_BUF_LIB);
++		SSLerr(SSL_F_SSL_CTX_USE_CERTIFICATE_FILE, ERR_R_BUF_LIB);
+ 		goto end;
+ 	}
+ 
+diff --git a/smtpd/ssl.c b/smtpd/ssl.c
+index b88360eb..0c93d87e 100644
+--- a/smtpd/ssl.c
++++ b/smtpd/ssl.c
+@@ -425,7 +425,7 @@ ssl_ctx_fake_private_key(SSL_CTX *ctx, const void *data, size_t datalen,
+ 	 */
+ 	ret = SSL_CTX_use_PrivateKey(ctx, pkey);
+ 	if (!ret)
+-		SSLerr(SSL_F_SSL_CTX_USE_PRIVATEKEY, ERR_R_SSL_LIB);
++		SSLerr(SSL_F_SSL_CTX_USE_PRIVATEKEY, ERR_R_SYS_LIB);
+ 
+ 	if (pkeyptr != NULL)
+ 		*pkeyptr = pkey;
+diff --git a/smtpd/ssl.h b/smtpd/ssl.h
+index 90f018d0..553120d4 100644
+--- a/smtpd/ssl.h
++++ b/smtpd/ssl.h
+@@ -73,3 +73,17 @@ void	SSL_CTX_set_ecdh_auto(SSL_CTX *, int);
+ void	SSL_CTX_set_dh_auto(SSL_CTX *, int);
+ #endif
+ int SSL_CTX_use_certificate_chain_mem(SSL_CTX *, void *, int);
++
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
++
++static inline pem_password_cb *SSL_CTX_get_default_passwd_cb(SSL_CTX *ctx)
++{
++	return ctx->default_passwd_callback;
++}
++
++static inline void *SSL_CTX_get_default_passwd_cb_userdata(SSL_CTX *ctx)
++{
++	return ctx->default_passwd_callback_userdata;
++}
++
++#endif
