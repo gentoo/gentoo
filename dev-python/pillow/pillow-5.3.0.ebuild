@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -75,7 +75,7 @@ python_compile_all() {
 python_test() {
 	"${PYTHON}" selftest.py --installed || die "selftest failed with ${EPYTHON}"
 	# no:relaxed: pytest-relaxed plugin make our tests fail. deactivate if installed
-	virtx pytest -vx Tests/test_*.py -p no:relaxed
+	virtx pytest -vv -p no:relaxed
 }
 
 python_install() {
