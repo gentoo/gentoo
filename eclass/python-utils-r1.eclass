@@ -980,8 +980,8 @@ python_doheader() {
 python_wrapper_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local workdir=${1:-${T}/${EPYTHON}}
 	local impl=${2:-${EPYTHON}}
+	local workdir=${1:-${T}/${impl}}
 
 	[[ ${workdir} ]] || die "${FUNCNAME}: no workdir specified."
 	[[ ${impl} ]] || die "${FUNCNAME}: no impl nor EPYTHON specified."
