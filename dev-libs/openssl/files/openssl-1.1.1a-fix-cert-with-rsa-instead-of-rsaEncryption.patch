@@ -1,0 +1,97 @@
+From c25ae0fff78cb3cb784ef79167329d5cd55b62de Mon Sep 17 00:00:00 2001
+From: Bernd Edlinger <bernd.edlinger@hotmail.de>
+Date: Thu, 27 Dec 2018 22:18:21 +0100
+Subject: [PATCH] Fix cert with rsa instead of rsaEncryption as public key
+ algorithm
+
+Reviewed-by: Kurt Roeckx <kurt@roeckx.be>
+(Merged from https://github.com/openssl/openssl/pull/7962)
+
+(cherry picked from commit 1f483a69bce11c940309edc437eee6e32294d5f2)
+---
+ crypto/rsa/rsa_ameth.c        |  9 ++++++---
+ test/certs/root-cert-rsa2.pem | 18 ++++++++++++++++++
+ test/recipes/25-test_verify.t |  4 +++-
+ 3 files changed, 27 insertions(+), 4 deletions(-)
+ create mode 100644 test/certs/root-cert-rsa2.pem
+
+diff --git a/crypto/rsa/rsa_ameth.c b/crypto/rsa/rsa_ameth.c
+index a6595aec054..75debb3e0a9 100644
+--- a/crypto/rsa/rsa_ameth.c
++++ b/crypto/rsa/rsa_ameth.c
+@@ -34,7 +34,7 @@ static int rsa_param_encode(const EVP_PKEY *pkey,
+ 
+     *pstr = NULL;
+     /* If RSA it's just NULL type */
+-    if (pkey->ameth->pkey_id == EVP_PKEY_RSA) {
++    if (pkey->ameth->pkey_id != EVP_PKEY_RSA_PSS) {
+         *pstrtype = V_ASN1_NULL;
+         return 1;
+     }
+@@ -58,7 +58,7 @@ static int rsa_param_decode(RSA *rsa, const X509_ALGOR *alg)
+     int algptype;
+ 
+     X509_ALGOR_get0(&algoid, &algptype, &algp, alg);
+-    if (OBJ_obj2nid(algoid) == EVP_PKEY_RSA)
++    if (OBJ_obj2nid(algoid) != EVP_PKEY_RSA_PSS)
+         return 1;
+     if (algptype == V_ASN1_UNDEF)
+         return 1;
+@@ -109,7 +109,10 @@ static int rsa_pub_decode(EVP_PKEY *pkey, X509_PUBKEY *pubkey)
+         RSA_free(rsa);
+         return 0;
+     }
+-    EVP_PKEY_assign(pkey, pkey->ameth->pkey_id, rsa);
++    if (!EVP_PKEY_assign(pkey, pkey->ameth->pkey_id, rsa)) {
++        RSA_free(rsa);
++        return 0;
++    }
+     return 1;
+ }
+ 
+diff --git a/test/certs/root-cert-rsa2.pem b/test/certs/root-cert-rsa2.pem
+new file mode 100644
+index 00000000000..b817fdf3e5d
+--- /dev/null
++++ b/test/certs/root-cert-rsa2.pem
+@@ -0,0 +1,18 @@
++-----BEGIN CERTIFICATE-----
++MIIC7DCCAdSgAwIBAgIBATANBgkqhkiG9w0BAQsFADASMRAwDgYDVQQDDAdSb290
++IENBMCAXDTE2MDExNTA4MTk0OVoYDzIxMTYwMTE2MDgxOTQ5WjASMRAwDgYDVQQD
++DAdSb290IENBMIIBHTAIBgRVCAEBBQADggEPADCCAQoCggEBAOHmAPUGvKBGOHkP
++Px5xGRNtAt8rm3Zr/KywIe3WkQhCO6VjNexSW6CiSsXWAJQDl1o9uWco0n3jIVyk
++7cY8jY6E0Z1Uwz3ZdKKWdmdx+cYaUHez/XjuW+DjjIkjwpoi7D7UN54HzcArVREX
++OjRCHGkNOhiw7RWUXsb9nofGHOeUGpLAXwXBc0PlA94JkckkztiOi34u4DFI0YYq
++alUmeugLNk6XseCkydpcaUsDgAhWg6Mfsiq4wUz+xbFN1MABqu2+ziW97mmt9gfN
++biuhiVT1aOuYCe3JYGbLM2JKA7Bo1g6rX8E1VX79Ru6669y2oqPthX9337VoIkN+
++ZiQjr8UCAwEAAaNQME4wHQYDVR0OBBYEFI71Ja8em2uEPXyAmslTnE1y96NSMB8G
++A1UdIwQYMBaAFI71Ja8em2uEPXyAmslTnE1y96NSMAwGA1UdEwQFMAMBAf8wDQYJ
++KoZIhvcNAQELBQADggEBAJ0OIdog3uQ1pmsjv1Qtf1w4If1geOn5uK0EOj2wYBHt
++NxlFn7l8d9+51QMZFO+RlQJ0s3Webyo1ReuaL2dMn2LGJhWMoSBAwrMALAENU3lv
++8jioRbfO2OamsdpJpKxQUyUJYudNe+BoKNX/ry3rxezmsFsRr9nDMiJZpmBCXiMm
++mFFJOJkG0CheexBbMkua4kyStIOwO4rb5bSHszVso/9ucdGHBSC7oRcJXoWSDjBx
++PdQPPBK5g4yqL8Lz26ehgsmhRKL9k32eVyjDKcIzgpmgcPTfTqNbd1KHQJKx4ssb
++7nEpGKHalSo5Oq5L9s9qYrUv37kwBY4OpJFtmGaodoI=
++-----END CERTIFICATE-----
+diff --git a/test/recipes/25-test_verify.t b/test/recipes/25-test_verify.t
+index 6c3deab7c67..b80a1cde3ed 100644
+--- a/test/recipes/25-test_verify.t
++++ b/test/recipes/25-test_verify.t
+@@ -27,7 +27,7 @@ sub verify {
+     run(app([@args]));
+ }
+ 
+-plan tests => 134;
++plan tests => 135;
+ 
+ # Canonical success
+ ok(verify("ee-cert", "sslserver", ["root-cert"], ["ca-cert"]),
+@@ -361,6 +361,8 @@ ok(verify("some-names2", "sslserver", ["many-constraints"], ["many-constraints"]
+     "Not too many names and constraints to check (2)");
+ ok(verify("some-names2", "sslserver", ["many-constraints"], ["many-constraints"], ),
+     "Not too many names and constraints to check (3)");
++ok(verify("root-cert-rsa2", "sslserver", ["root-cert-rsa2"], [], "-check_ss_sig"),
++    "Public Key Algorithm rsa instead of rsaEncryption");
+ 
+ SKIP: {
+     skip "Ed25519 is not supported by this OpenSSL build", 1
