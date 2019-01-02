@@ -13,11 +13,11 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Python Imaging Library (fork)"
 HOMEPAGE="https://python-pillow.org/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/python-pillow/Pillow/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples imagequant jpeg jpeg2k lcms test tiff tk truetype webp zlib"
 
 REQUIRED_USE="test? ( jpeg tiff )"
@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
 	test? (
-		<dev-python/pytest-3.10[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 		media-gfx/imagemagick[png]
 	)
 "
@@ -68,15 +68,6 @@ python_configure_all() {
 	)
 }
 
-python_compile() {
-	# Pillow monkeypatches distutils to achieve parallel compilation. This
-	# conflicts with distutils' builtin parallel computation (since py35)
-	# and make builds hang. To avoid that, we set MAX_CONCURRENCY=1 to
-	# disable monkeypatching. Can be removed when/if
-	# https://github.com/python-pillow/Pillow/pull/3272 is merged.
-	MAX_CONCURRENCY=1 distutils-r1_python_compile
-}
-
 python_compile_all() {
 	use doc && emake -C docs html
 }
@@ -84,7 +75,7 @@ python_compile_all() {
 python_test() {
 	"${PYTHON}" selftest.py --installed || die "selftest failed with ${EPYTHON}"
 	# no:relaxed: pytest-relaxed plugin make our tests fail. deactivate if installed
-	virtx pytest -vx Tests/test_*.py -p no:relaxed
+	virtx pytest -vv -p no:relaxed
 }
 
 python_install() {
