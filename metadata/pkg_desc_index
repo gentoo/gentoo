@@ -8999,6 +8999,7 @@ net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSP
 net-misc/r8168 8.045.08: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.9: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/radvd 2.14 2.17-r1: Linux IPv6 Router Advertisement Daemon
+net-misc/rclone 1.44: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.3: A Remote Desktop Protocol Client
 net-misc/redir 3.2: Redir is a port redirector
