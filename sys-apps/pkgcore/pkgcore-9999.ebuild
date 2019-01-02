@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1
 
@@ -27,7 +27,7 @@ else
 	SPHINX="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 fi
 if [[ ${PV} == *9999 ]]; then
-	RDEPEND+=" =dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
+	RDEPEND+=" ~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
 	RDEPEND+=" >=dev-python/snakeoil-0.8.0[${PYTHON_USEDEP}]"
 fi
