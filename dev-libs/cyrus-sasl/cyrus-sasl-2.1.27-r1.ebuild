@@ -9,6 +9,7 @@ SASLAUTHD_CONF_VER="2.1.26"
 
 DESCRIPTION="The Cyrus SASL (Simple Authentication and Security Layer)"
 HOMEPAGE="https://www.cyrusimap.org/sasl/"
+#SRC_URI="ftp://ftp.cyrusimap.org/cyrus-sasl/${P}.tar.gz"
 SRC_URI="https://github.com/cyrusimap/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD-with-attribution"
@@ -37,9 +38,7 @@ RDEPEND="
 	${CDEPEND}
 	selinux? ( sec-policy/selinux-sasl )"
 
-DEPEND="${CDEPEND}
-	dev-perl/Pod-POM-View-Restructured
-	dev-python/sphinx"
+DEPEND="${CDEPEND}"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/sasl/md5global.h
@@ -110,6 +109,7 @@ multilib_src_configure() {
 		--with-configdir="${EPREFIX}"/etc/sasl2
 		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/sasl2
 		--with-dbpath="${EPREFIX}"/etc/sasl2/sasldb2
+		--with-sphinx-build=no
 		$(use_with ssl openssl)
 		$(use_with pam)
 		$(use_with openldap ldap)
@@ -196,6 +196,8 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
+	doman man/*
+
 	keepdir /etc/sasl2
 
 	dodoc AUTHORS ChangeLog doc/legacy/TODO
