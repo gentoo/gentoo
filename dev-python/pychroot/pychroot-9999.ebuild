@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
@@ -21,7 +21,7 @@ SLOT="0"
 IUSE="test"
 
 if [[ ${PV} == *9999 ]]; then
-	RDEPEND="=dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
+	RDEPEND="~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
 	RDEPEND=">=dev-python/snakeoil-0.8.0[${PYTHON_USEDEP}]"
 fi
