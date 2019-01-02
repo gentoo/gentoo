@@ -22,7 +22,7 @@ RDEPEND="
 	metis? (
 		>=sci-libs/camd-2.3
 		>=sci-libs/ccolamd-2.8
-		|| ( <sci-libs/metis-5 sci-libs/parmetis ) )"
+		|| ( <sci-libs/metis-5 <sci-libs/parmetis-4 ) )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

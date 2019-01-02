@@ -1,26 +1,26 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
 AUTOTOOLS_AUTORECONF=yes
 
-inherit autotools-utils flag-o-matic multilib pam python-r1 systemd versionator
+inherit autotools flag-o-matic multilib pam python-r1 systemd
 
 DESCRIPTION="Open Source AFP server"
 HOMEPAGE="http://netatalk.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/$(get_version_component_range 1-3)/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/project/${PN}/${PN}/$(ver_cut 1-3)/${P}.tar.bz2"
 
 LICENSE="GPL-2 BSD"
-SLOT="0/17.0"
-KEYWORDS="amd64 arm ~ppc ~ppc64 x86 ~x86-fbsd"
-IUSE="acl cracklib dbus debug pgp kerberos ldap pam quota samba +shadow ssl static-libs tracker tcpd +utils zeroconf"
+SLOT="0/18.0"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
+IUSE="acl cracklib dbus debug kerberos ldap pam pgp quota samba +shadow ssl static-libs tracker tcpd +utils zeroconf"
 
 CDEPEND="
 	!app-editors/yudit
-	dev-libs/libevent
+	dev-libs/libevent:0=
 	>=dev-libs/libgcrypt-1.2.3:0
 	sys-apps/coreutils
 	>=sys-libs/db-4.2.52:=
@@ -34,7 +34,7 @@ CDEPEND="
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )
 	pam? ( virtual/pam )
-	ssl? ( dev-libs/openssl:0 )
+	ssl? ( dev-libs/openssl:0= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	tracker? ( app-misc/tracker )
 	utils? ( ${PYTHON_DEPS} )
@@ -53,6 +53,7 @@ RESTRICT="test"
 
 REQUIRED_USE="
 	ldap? ( acl )
+	tracker? ( dbus )
 	utils? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
@@ -61,18 +62,19 @@ PATCHES=(
 )
 
 src_prepare() {
+	default
+	append-flags -fno-strict-aliasing
+
 	if ! use utils; then
 		sed \
 			-e "s:shell_utils::g" \
 			-i contrib/Makefile.am || die
 	fi
-	autotools-utils_src_prepare
+	eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=()
-
-	append-flags -fno-strict-aliasing
 
 	# Ignore --with-init-style=gentoo, we install the init.d by hand and we avoid having
 	# to sed the Makefiles to not do rc-update.
@@ -96,7 +98,8 @@ src_configure() {
 		$(use_with shadow)
 		$(use_with ssl ssl-dir)
 		$(use_with tracker)
-		$(use_with tracker tracker-pkgconfig-version $(get_version_component_range 1-2 $(best_version app-misc/tracker | sed 's:app-misc/tracker-::g')))
+		$(use_with tracker dbus-daemon "${EPREFIX}/usr/bin/dbus-daemon")
+		$(use_with tracker tracker-pkgconfig-version $(ver_cut 1-2 $(best_version app-misc/tracker | sed 's:app-misc/tracker-::g')))
 		--enable-overwrite
 		--disable-krb4-uam
 		--disable-afs
@@ -105,16 +108,16 @@ src_configure() {
 		--with-bdb=/usr
 		--with-uams-path=/usr/$(get_libdir)/${PN}
 		--disable-silent-rules
-		--with-init-style=gentoo
+		--with-init-style=gentoo-openrc
 		--without-libevent
 		--without-tdb
 		--with-lockfile=/run/lock/${PN}
-		)
-	autotools-utils_src_configure
+	)
+	econf ${myeconfargs[@]}
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 
 	if use zeroconf; then
 		sed -i -e '/avahi-daemon/s:use:need:g' "${D}"/etc/init.d/${PN} || die
@@ -139,7 +142,7 @@ src_install() {
 pkg_postinst() {
 	local fle v
 	for v in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least 3 ${v}; then
+		if [[ $(ver_test ${v} -lt 3) ]]; then
 			for fle in afp_signature.conf afp_voluuid.conf; do
 				if [[ -f "${ROOT}"etc/netatalk/${fle} ]]; then
 					if [[ ! -f "${ROOT}"var/lib/netatalk/${fle} ]]; then
