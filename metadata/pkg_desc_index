@@ -10602,7 +10602,7 @@ www-client/ripe-atlas-cousteau 1.0.7 1.2: A Python wrapper around the RIPE Atlas
 www-client/seamonkey 2.49.9.1_p0: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 2.0: a simple web browser based on WebKit/GTK+
-www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
+www-client/surfraw 2.2.9-r1 2.3.0: A fast unix command line interface to WWW
 www-client/uget 2.2.0: Download manager using gtk+ and libcurl
 www-client/w3m 0.5.3_p20180125: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r10: A variant of w3m with support for multiple character encodings
