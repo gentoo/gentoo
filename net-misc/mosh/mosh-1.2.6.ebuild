@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,7 @@ REQUIRED_USE="
 	examples? ( client )"
 
 RDEPEND="
+	dev-libs/openssl:0=
 	dev-libs/protobuf:0=
 	sys-libs/ncurses:0=
 	virtual/ssh
