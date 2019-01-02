@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 inherit eutils flag-o-matic autotools
 
-PATCHREV="r0"
+PATCHREV="r1"
 PATCHSET="gentoo-${PVR}/${PATCHREV}"
 
 DESCRIPTION="A small but very powerful text-based mail client"
@@ -257,6 +257,10 @@ pkg_postinst() {
 		elog "the Gentoo QuickStart Guide to Mutt E-Mail:"
 		elog "   https://wiki.gentoo.org/wiki/Mutt"
 		echo
+	else
+		ewarn "This release removes the conditional date feature in favour"
+		ewarn "of Dynamic \$index_format Content, see:"
+		ewarn "  http://www.mutt.org/doc/manual/#index-format-hook"
 	fi
 	if use crypt || use gpg || use smime ; then
 		ewarn "Please note that the crypto related USE-flags of mutt have changed."
