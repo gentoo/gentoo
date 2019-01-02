@@ -17,7 +17,7 @@ RESTRICT="test"
 DEPEND="
 	app-text/iso-codes
 	dev-libs/glib:2
-	<media-gfx/exiv2-0.27:=
+	media-gfx/exiv2:=
 	sys-devel/libtool
 	virtual/libiconv
 	virtual/libintl
