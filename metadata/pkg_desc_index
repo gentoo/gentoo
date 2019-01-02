@@ -353,7 +353,7 @@ app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large num
 app-crypt/mit-krb5 1.16-r2: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysphere 0.37 0.41: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
-app-crypt/openpgp-keys-gentoo-release 20180706: OpenPGP keys used for Gentoo releases (snapshots, stages)
+app-crypt/openpgp-keys-gentoo-release 20180706 20190102: OpenPGP keys used for Gentoo releases (snapshots, stages)
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions in 2006-2008
 app-crypt/p11-kit 0.23.12: Provides a standard configuration setup for installing PKCS#11
 app-crypt/paperkey 1.4 1.5: OpenPGP key archiver
@@ -1821,7 +1821,7 @@ dev-ada/gnatcoll-db 2018: GNAT Component Collection
 dev-ada/gnatmem 2018: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2018: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r1 2018-r3: Multi-Language Management
-dev-ada/gps 2017 2018: The GNAT Programming Studio
+dev-ada/gps 2017 2018-r1: The GNAT Programming Studio
 dev-ada/gtkada 2017 2018: A complete Ada graphical toolkit
 dev-ada/langkit 2017 2018: A Python framework to generate language parsers
 dev-ada/libadalang 2017-r1 2018: high performance semantic engine for the Ada programming language
