@@ -9,7 +9,8 @@ SASLAUTHD_CONF_VER="2.1.26"
 
 DESCRIPTION="The Cyrus SASL (Simple Authentication and Security Layer)"
 HOMEPAGE="https://www.cyrusimap.org/sasl/"
-SRC_URI="ftp://ftp.cyrusimap.org/cyrus-sasl/${P}.tar.gz"
+#SRC_URI="ftp://ftp.cyrusimap.org/cyrus-sasl/${P}.tar.gz"
+SRC_URI="https://github.com/cyrusimap/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD-with-attribution"
 SLOT="2"
@@ -195,7 +196,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-
 	doman man/*
 
 	keepdir /etc/sasl2
