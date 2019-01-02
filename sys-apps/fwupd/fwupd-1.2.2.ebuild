@@ -66,6 +66,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	$(vala_depend)
+	x11-libs/pango[introspection]
 	doc? ( dev-util/gtk-doc )
 	man? ( app-text/docbook-sgml-utils )
 	nvme? (	>=sys-kernel/linux-headers-4.4 )
