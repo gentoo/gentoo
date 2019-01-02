@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
 	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
+		<dev-python/pytest-3.10[${PYTHON_USEDEP}]
 		media-gfx/imagemagick[png]
 	)
 "
