@@ -200,6 +200,8 @@ multilib_src_install_all() {
 
 	keepdir /etc/sasl2
 
+	# Reset docinto to default value (#674296)
+	docinto
 	dodoc AUTHORS ChangeLog doc/legacy/TODO
 	newdoc pwcheck/README README.pwcheck
 
