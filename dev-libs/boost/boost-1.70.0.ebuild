@@ -91,13 +91,8 @@ create_user-config.jam() {
 
 	if python_bindings_needed; then
 		append_to_user_config() {
-			local py_config
-			if tc-is-cross-compiler; then
-				py_config="using python : ${EPYTHON#python} : : ${ESYSROOT}/usr/include/${EPYTHON} : ${ESYSROOT}/usr/$(get_libdir) ;"
-			else
-				py_config="using python : ${EPYTHON#python} : ${PYTHON} : $(python_get_includedir) ;"
-			fi
-			echo "${py_config}" >> "${user_config_jam}" || die
+			echo "using python : ${EPYTHON#python} : ${PYTHON} : $(python_get_includedir) ;" \
+				 >> "${user_config_jam}" || die
 		}
 		python_foreach_impl append_to_user_config
 	fi
