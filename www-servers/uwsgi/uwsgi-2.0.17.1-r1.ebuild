@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -79,17 +79,22 @@ REQUIRED_USE="|| ( ${LANG_SUPPORT_SIMPLE[@]} ${LANG_SUPPORT_EXTENDED[@]} )
 # 2. General features
 # 3. Plugins
 # 4. Language/app support
-CDEPEND="sys-libs/zlib
+CDEPEND="
+	sys-libs/zlib
 	caps? ( sys-libs/libcap )
-	json? ( !yajl? ( dev-libs/jansson )
-		yajl? ( dev-libs/yajl ) )
+	json? (
+		!yajl? ( dev-libs/jansson )
+		yajl? ( dev-libs/yajl )
+	)
 	pcre? ( dev-libs/libpcre:3 )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
+		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl )
 	)
-	xml? ( !expat? ( dev-libs/libxml2 )
-		expat? ( dev-libs/expat ) )
+	xml? (
+		!expat? ( dev-libs/libxml2 )
+		expat? ( dev-libs/expat )
+	)
 	yaml? ( dev-libs/libyaml )
 	zeromq? ( net-libs/zeromq sys-apps/util-linux )
 	uwsgi_plugins_alarm_curl? ( net-misc/curl )
