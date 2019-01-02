@@ -1,9 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-MESON_AUTO_DEPEND="no"
 inherit meson
 
 DESCRIPTION="Library to help create and query binary XML blobs"
@@ -29,7 +28,6 @@ DEPEND="
 
 BDEPEND="
 	>=dev-util/meson-0.47.0
-	dev-util/ninja
 	virtual/pkgconfig
 "
 

@@ -1,10 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-# Package requires newer meson than eclass provides
-MESON_AUTO_DEPEND="no"
 PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit meson python-single-r1 vala xdg-utils
@@ -33,7 +31,7 @@ RDEPEND="
 	dev-libs/libgpg-error
 	dev-libs/libgudev:=
 	>=dev-libs/libgusb-0.2.9[introspection]
-	>=dev-libs/libxmlb-0.1.3
+	>=dev-libs/libxmlb-0.1.5
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
@@ -75,8 +73,7 @@ DEPEND="
 "
 
 BDEPEND="
-	>=dev-util/meson-0.46.0
-	>=dev-util/ninja-1.7.2
+	>=dev-util/meson-0.47.0
 	virtual/pkgconfig
 "
 
@@ -116,7 +113,12 @@ src_configure() {
 
 src_install() {
 	meson_src_install
-	doinitd "${FILESDIR}"/${PN}
+
+	if ! use systemd ; then
+		# Don't timeout when fwupd is running (#673140)
+		sed '/^IdleTimeout=/s@=[[:digit:]]\+@=0@' \
+			-i "${ED}"/etc/${PN}/daemon.conf || die
+	fi
 }
 
 pkg_postinst() {
