@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/ice-wm/icewm/releases/download/1.5.0/icewm-1.5.0.tar.xz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=2e6d73f30171ba16ff08decddf2c04be
+_md5_=a0313973ecd2cea2e90ae0f69d3e4a42

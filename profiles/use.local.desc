@@ -4598,6 +4598,7 @@ net-misc/spice-gtk:mjpeg - Enable builtin mjpeg video decoder
 net-misc/spice-gtk:policykit - Enable sys-auth/polkit support for the usbredir acl helper
 net-misc/spice-gtk:usbredir - Use sys-apps/usbredir to redirect USB devices to another machine over TCP
 net-misc/spice-gtk:webdav - Support for folder-sharing between guest and client using net-libs/phodav
+net-misc/sshrc:mosh - Install Support for mosh
 net-misc/streamtuner:shout - Enable shoutcast plug-in.
 net-misc/streamtuner:xiph - Enable xiph.org plug-in.
 net-misc/stunnel:stunnel3 - Install the stunnel3 wrapper.
