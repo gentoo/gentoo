@@ -113,6 +113,7 @@ src_install(){
 	default
 
 	docinto html
+	dodoc doc/icewm.html
 	dodoc man/*.html
 
 	exeinto /etc/X11/Sessions
