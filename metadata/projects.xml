@@ -651,6 +651,10 @@
       <email>polynomial-c@gentoo.org</email>
       <name>Lars Wendler</name>
     </member>
+    <member>
+      <email>soap@gentoo.org</email>
+      <name>David Seifert</name>
+    </member>
     <member is-lead="1">
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
