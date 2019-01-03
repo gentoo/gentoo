@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ inherit ruby-fakegem
 DESCRIPTION="Library that implements a subset of the Ruby 1.9 Process::spawn"
 HOMEPAGE="https://github.com/rtomayko/posix-spawn/"
 
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 LICENSE="MIT LGPL-2.1"
 SLOT="0"
