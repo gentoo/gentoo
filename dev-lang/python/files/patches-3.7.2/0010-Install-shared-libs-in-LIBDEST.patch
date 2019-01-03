@@ -1,0 +1,42 @@
+From d1eac07ae884450bad6dc8390b2baf3f0327c701 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 6 Jul 2018 14:49:00 -0400
+Subject: [PATCH 10/10] Install shared libs in LIBDEST
+
+---
+ Makefile.pre.in | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.pre.in b/Makefile.pre.in
+index 418e6d449a..9c9438d739 100644
+--- a/Makefile.pre.in
++++ b/Makefile.pre.in
+@@ -146,7 +146,6 @@ SCRIPTDIR=	$(prefix)/lib
+ ABIFLAGS=	@ABIFLAGS@
+ 
+ # Detailed destination directories
+-BINLIBDEST=	$(LIBDIR)/python$(VERSION)
+ LIBDEST=	$(SCRIPTDIR)/python$(VERSION)
+ INCLUDEPY=	$(INCLUDEDIR)/python$(LDVERSION)
+ CONFINCLUDEPY=	$(CONFINCLUDEDIR)/python$(LDVERSION)
+@@ -157,7 +156,7 @@ EXT_SUFFIX=	@EXT_SUFFIX@
+ LDSHARED=	@LDSHARED@ $(PY_LDFLAGS)
+ BLDSHARED=	@BLDSHARED@ $(PY_CORE_LDFLAGS)
+ LDCXXSHARED=	@LDCXXSHARED@
+-DESTSHARED=	$(BINLIBDEST)/lib-dynload
++DESTSHARED=	$(LIBDEST)/lib-dynload
+ 
+ # Executable suffix (.exe on Windows and Mac OS X)
+ EXE=		@EXEEXT@
+@@ -1140,7 +1139,7 @@ commoninstall:  check-clean-src @FRAMEWORKALTINSTALLFIRST@ \
+ 		@FRAMEWORKALTINSTALLLAST@
+ 
+ # Install shared libraries enabled by Setup
+-DESTDIRS=	$(exec_prefix) $(LIBDIR) $(BINLIBDEST) $(DESTSHARED)
++DESTDIRS=	$(exec_prefix) $(LIBDIR) $(DESTSHARED)
+ 
+ oldsharedinstall: $(DESTSHARED) $(SHAREDMODS)
+ 		@for i in X $(SHAREDMODS); do \
+-- 
+2.19.2
+

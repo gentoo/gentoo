@@ -7,17 +7,16 @@ WANT_LIBTOOL="none"
 inherit autotools flag-o-matic pax-utils python-utils-r1 toolchain-funcs
 
 MY_P="Python-${PV}"
-PATCHSET_VERSION="3.6.4"
+PATCHSET_VERSION="3.7.0"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
-SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
-	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
+SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz"
 
 LICENSE="PSF-2"
-SLOT="3.6/3.6m"
+SLOT="3.7/3.7m"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="bluetooth build examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl test +threads tk wininst +xml"
+IUSE="bluetooth build examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl test tk wininst +xml"
 RESTRICT="!test? ( test )"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -65,25 +64,12 @@ src_prepare() {
 	rm -fr Modules/zlib
 
 	local PATCHES=(
-		"${WORKDIR}/patches"
-		"${FILESDIR}/${PN}-3.5-distutils-OO-build.patch"
-		"${FILESDIR}/3.6.5-disable-nis.patch"
-		"${FILESDIR}/python-3.6.5-libressl-compatibility.patch"
-		"${FILESDIR}/python-3.6.5-hash-unaligned.patch"
+		"${FILESDIR}/patches-3.7.2"
 	)
 
 	default
 
 	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
-		Lib/distutils/command/install.py \
-		Lib/distutils/sysconfig.py \
-		Lib/site.py \
-		Lib/sysconfig.py \
-		Lib/test/test_site.py \
-		Makefile.pre.in \
-		Modules/Setup.dist \
-		Modules/getpath.c \
-		configure.ac \
 		setup.py || die "sed failed to replace @@GENTOO_LIBDIR@@"
 
 	eautoreconf
@@ -138,10 +124,8 @@ src_configure() {
 	fi
 
 	local myeconfargs=(
-		--with-fpectl
 		--enable-shared
 		$(use_enable ipv6)
-		$(use_with threads)
 		--infodir='${prefix}/share/info'
 		--mandir='${prefix}/share/man'
 		--with-computed-gotos
@@ -154,12 +138,6 @@ src_configure() {
 	)
 
 	OPT="" econf "${myeconfargs[@]}"
-
-	if use threads && grep -q "#define POSIX_SEMAPHORES_NOT_ENABLED 1" pyconfig.h; then
-		eerror "configure has detected that the sem_open function is broken."
-		eerror "Please ensure that /dev/shm is mounted as a tmpfs with mode 1777."
-		die "Broken sem_open function (bug 496328)"
-	fi
 }
 
 src_compile() {
@@ -191,6 +169,9 @@ src_test() {
 		mv "${S}"/Lib/test/test_${test}.py "${T}"
 	done
 
+	# bug 660358
+	local -x COLUMNS=80
+
 	local -x PYTHONDONTWRITEBYTECODE=
 
 	emake test EXTRATESTOPTS="-u-network" CPPFLAGS= CFLAGS= LDFLAGS= < /dev/tty
@@ -206,7 +187,7 @@ src_test() {
 	done
 
 	elog "If you would like to run them, you may:"
-	elog "cd '${EPREFIX}/usr/$(get_libdir)/python${PYVER}/test'"
+	elog "cd '${EPREFIX}/usr/lib/python${PYVER}/test'"
 	elog "and run the tests separately."
 
 	if [[ ${result} -ne 0 ]]; then
@@ -215,7 +196,7 @@ src_test() {
 }
 
 src_install() {
-	local libdir=${ED}/usr/$(get_libdir)/python${PYVER}
+	local libdir=${ED%/}/usr/lib/python${PYVER}
 
 	emake DESTDIR="${D}" altinstall
 
@@ -225,13 +206,13 @@ src_install() {
 		-i "${libdir}/config-${PYVER}"*/Makefile || die "sed failed"
 
 	# Fix collisions between different slots of Python.
-	rm -f "${ED}usr/$(get_libdir)/libpython3.so"
+	rm -f "${ED%/}/usr/$(get_libdir)/libpython3.so"
 
 	# Cheap hack to get version with ABIFLAGS
-	local abiver=$(cd "${ED}usr/include"; echo python*)
+	local abiver=$(cd "${ED%/}/usr/include"; echo python*)
 	if [[ ${abiver} != python${PYVER} ]]; then
 		# Replace python3.X with a symlink to python3.Xm
-		rm "${ED}usr/bin/python${PYVER}" || die
+		rm "${ED%/}/usr/bin/python${PYVER}" || die
 		dosym "${abiver}" "/usr/bin/python${PYVER}"
 		# Create python3.X-config symlink
 		dosym "${abiver}-config" "/usr/bin/python${PYVER}-config"
@@ -242,15 +223,14 @@ src_install() {
 	# python seems to get rebuilt in src_install (bug 569908)
 	# Work around it for now.
 	if has_version dev-libs/libffi[pax_kernel]; then
-		pax-mark E "${ED}usr/bin/${abiver}"
+		pax-mark E "${ED%/}/usr/bin/${abiver}"
 	else
-		pax-mark m "${ED}usr/bin/${abiver}"
+		pax-mark m "${ED%/}/usr/bin/${abiver}"
 	fi
 
 	use sqlite || rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
-	use tk || rm -r "${ED}usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
+	use tk || rm -r "${ED%/}/usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
 
-	use threads || rm -r "${libdir}/multiprocessing" || die
 	use wininst || rm "${libdir}/distutils/command/"wininst-*.exe || die
 
 	dodoc "${S}"/Misc/{ACKS,HISTORY,NEWS}
@@ -270,7 +250,7 @@ src_install() {
 	sed \
 		-e "s:@PYDOC_PORT_VARIABLE@:PYDOC${PYVER/./_}_PORT:" \
 		-e "s:@PYDOC@:pydoc${PYVER}:" \
-		-i "${ED}etc/conf.d/pydoc-${PYVER}" "${ED}etc/init.d/pydoc-${PYVER}" || die "sed failed"
+		-i "${ED%/}/etc/conf.d/pydoc-${PYVER}" "${ED%/}/etc/init.d/pydoc-${PYVER}" || die "sed failed"
 
 	# for python-exec
 	local vars=( EPYTHON PYTHON_SITEDIR PYTHON_SCRIPTDIR )
@@ -289,33 +269,26 @@ src_install() {
 
 	# python-exec wrapping support
 	local pymajor=${PYVER%.*}
-	mkdir -p "${D}${PYTHON_SCRIPTDIR}" || die
+	mkdir -p "${D%/}${PYTHON_SCRIPTDIR}" || die
 	# python and pythonX
-	ln -s "../../../bin/${abiver}" \
-		"${D}${PYTHON_SCRIPTDIR}/python${pymajor}" || die
-	ln -s "python${pymajor}" \
-		"${D}${PYTHON_SCRIPTDIR}/python" || die
+	ln -s "../../../bin/${abiver}" "${D%/}${PYTHON_SCRIPTDIR}/python${pymajor}" || die
+	ln -s "python${pymajor}" "${D%/}${PYTHON_SCRIPTDIR}/python" || die
 	# python-config and pythonX-config
 	# note: we need to create a wrapper rather than symlinking it due
 	# to some random dirname(argv[0]) magic performed by python-config
-	cat > "${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" <<-EOF || die
+	cat > "${D%/}${PYTHON_SCRIPTDIR}/python${pymajor}-config" <<-EOF || die
 		#!/bin/sh
 		exec "${abiver}-config" "\${@}"
 	EOF
-	chmod +x "${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" || die
-	ln -s "python${pymajor}-config" \
-		"${D}${PYTHON_SCRIPTDIR}/python-config" || die
+	chmod +x "${D%/}${PYTHON_SCRIPTDIR}/python${pymajor}-config" || die
+	ln -s "python${pymajor}-config" "${D%/}${PYTHON_SCRIPTDIR}/python-config" || die
 	# 2to3, pydoc, pyvenv
-	ln -s "../../../bin/2to3-${PYVER}" \
-		"${D}${PYTHON_SCRIPTDIR}/2to3" || die
-	ln -s "../../../bin/pydoc${PYVER}" \
-		"${D}${PYTHON_SCRIPTDIR}/pydoc" || die
-	ln -s "../../../bin/pyvenv-${PYVER}" \
-		"${D}${PYTHON_SCRIPTDIR}/pyvenv" || die
+	ln -s "../../../bin/2to3-${PYVER}" "${D%/}${PYTHON_SCRIPTDIR}/2to3" || die
+	ln -s "../../../bin/pydoc${PYVER}" "${D%/}${PYTHON_SCRIPTDIR}/pydoc" || die
+	ln -s "../../../bin/pyvenv-${PYVER}" "${D%/}${PYTHON_SCRIPTDIR}/pyvenv" || die
 	# idle
 	if use tk; then
-		ln -s "../../../bin/idle${PYVER}" \
-			"${D}${PYTHON_SCRIPTDIR}/idle" || die
+		ln -s "../../../bin/idle${PYVER}" "${D%/}${PYTHON_SCRIPTDIR}/idle" || die
 	fi
 }
 

@@ -1,0 +1,203 @@
+From 4a00a805ab39d6729c0136d8da2fff8de7d08883 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 5 Jan 2018 13:39:02 -0500
+Subject: [PATCH 06/10] tests environment
+
+https://bugs.python.org/issue1674555
+---
+ Lib/site.py                        |  8 +++--
+ Lib/test/libregrtest/runtest.py    | 56 +++++++++++++++++++++++++++++-
+ Lib/test/libregrtest/runtest_mp.py |  2 +-
+ Lib/test/test_site.py              | 13 +++++++
+ Makefile.pre.in                    |  2 +-
+ 5 files changed, 76 insertions(+), 5 deletions(-)
+
+diff --git a/Lib/site.py b/Lib/site.py
+index ffd132b389..0d5834e2a4 100644
+--- a/Lib/site.py
++++ b/Lib/site.py
+@@ -562,8 +562,12 @@ def main():
+     known_paths = venv(known_paths)
+     if ENABLE_USER_SITE is None:
+         ENABLE_USER_SITE = check_enableusersite()
+-    known_paths = addusersitepackages(known_paths)
+-    known_paths = addsitepackages(known_paths)
++    if os.environ.get("_PYTHONNOSITEPACKAGES") is None:
++        known_paths = addusersitepackages(known_paths)
++        known_paths = addsitepackages(known_paths)
++    else:
++        # Initialize USER_BASE and USER_SITE.
++        getusersitepackages()
+     setquit()
+     setcopyright()
+     sethelper()
+diff --git a/Lib/test/libregrtest/runtest.py b/Lib/test/libregrtest/runtest.py
+index 466b522db9..c8c133391b 100644
+--- a/Lib/test/libregrtest/runtest.py
++++ b/Lib/test/libregrtest/runtest.py
+@@ -1,6 +1,7 @@
+ import faulthandler
+ import importlib
+ import io
++import json
+ import os
+ import sys
+ import time
+@@ -81,7 +82,7 @@ def get_abs_module(ns, test):
+         return 'test.' + test
+ 
+ 
+-def runtest(ns, test):
++def runtest(ns, test, *, slave=False):
+     """Run a single test.
+ 
+     ns -- regrtest namespace of options
+@@ -104,6 +105,25 @@ def runtest(ns, test):
+ 
+     output_on_failure = ns.verbose3
+ 
++    if not slave and test == "test_site":
++        retcode, stdout, stderr = run_test_in_subprocess(test, ns)
++        if retcode != 0:
++            result = (CHILD_ERROR, None)
++        else:
++            stdout, _, result = stdout.strip().rpartition("\n")
++            if not result:
++                return (None, None)
++            result = json.loads(result)
++        stdout = stdout.rstrip()
++        stderr = stderr.rstrip()
++        if stdout:
++            print(stdout, flush=True)
++        if stderr and not ns.pgo:
++            print(stderr, file=sys.stderr, flush=True)
++        if result[0] == INTERRUPTED:
++            raise KeyboardInterrupt
++        return result
++
+     use_timeout = (ns.timeout is not None)
+     if use_timeout:
+         faulthandler.dump_traceback_later(ns.timeout, exit=True)
+@@ -152,6 +172,40 @@ def runtest(ns, test):
+ def post_test_cleanup():
+     support.reap_children()
+ 
++def run_test_in_subprocess(testname, ns):
++    """Run the given test in a subprocess with --slaveargs.
++
++    ns is the option Namespace parsed from command-line arguments. regrtest
++    is invoked in a subprocess with the --slaveargs argument; when the
++    subprocess exits, its return code, stdout and stderr are returned as a
++    3-tuple.
++    """
++    from subprocess import Popen, PIPE
++
++    ns_dict = vars(ns)
++    slaveargs = (ns_dict, testname)
++    slaveargs = json.dumps(slaveargs)
++
++    cmd = [sys.executable, *support.args_from_interpreter_flags(),
++           '-u',    # Unbuffered stdout and stderr
++           '-m', 'test.regrtest',
++           '--slaveargs', slaveargs]
++    if ns.pgo:
++        cmd += ['--pgo']
++
++    # Running the child from the same working directory as regrtest's original
++    # invocation ensures that TEMPDIR for the child is the same when
++    # sysconfig.is_python_build() is true. See issue 15300.
++    popen = Popen(cmd,
++                  stdout=PIPE, stderr=PIPE,
++                  universal_newlines=True,
++                  close_fds=(os.name != 'nt'),
++                  cwd=support.SAVEDCWD)
++    with popen:
++        stdout, stderr = popen.communicate()
++        retcode = popen.wait()
++    return retcode, stdout, stderr
++
+ 
+ def runtest_inner(ns, test, display_failure=True):
+     support.unload(test)
+diff --git a/Lib/test/libregrtest/runtest_mp.py b/Lib/test/libregrtest/runtest_mp.py
+index 6190574afd..4e74c9f2db 100644
+--- a/Lib/test/libregrtest/runtest_mp.py
++++ b/Lib/test/libregrtest/runtest_mp.py
+@@ -10,7 +10,7 @@ import types
+ from test import support
+ 
+ from test.libregrtest.runtest import (
+-    runtest, INTERRUPTED, CHILD_ERROR, PROGRESS_MIN_TIME,
++    runtest, run_test_in_subprocess, INTERRUPTED, CHILD_ERROR, PROGRESS_MIN_TIME,
+     format_test_result)
+ from test.libregrtest.setup import setup_tests
+ from test.libregrtest.utils import format_duration
+diff --git a/Lib/test/test_site.py b/Lib/test/test_site.py
+index a30bd2f006..115639bade 100644
+--- a/Lib/test/test_site.py
++++ b/Lib/test/test_site.py
+@@ -10,6 +10,7 @@ from test import support
+ from test.support import (captured_stderr, TESTFN, EnvironmentVarGuard,
+                           change_cwd)
+ import builtins
++import importlib
+ import os
+ import sys
+ import re
+@@ -33,12 +34,19 @@ import site
+ 
+ 
+ OLD_SYS_PATH = None
++OLD__PYTHONNOSITEPACKAGES = None
+ 
+ 
+ def setUpModule():
+     global OLD_SYS_PATH
+     OLD_SYS_PATH = sys.path[:]
+ 
++    if "_PYTHONNOSITEPACKAGES" in os.environ:
++        global OLD__PYTHONNOSITEPACKAGES
++        OLD__PYTHONNOSITEPACKAGES = os.environ.get("_PYTHONNOSITEPACKAGES")
++        del os.environ["_PYTHONNOSITEPACKAGES"]
++        importlib.reload(site)
++
+     if site.ENABLE_USER_SITE and not os.path.isdir(site.USER_SITE):
+         # need to add user site directory for tests
+         try:
+@@ -52,6 +60,8 @@ def setUpModule():
+ 
+ def tearDownModule():
+     sys.path[:] = OLD_SYS_PATH
++    if OLD__PYTHONNOSITEPACKAGES is not None:
++        os.environ["_PYTHONNOSITEPACKAGES"] = OLD__PYTHONNOSITEPACKAGES
+ 
+ 
+ class HelperFunctionsTests(unittest.TestCase):
+@@ -504,8 +514,11 @@ class StartupImportTests(unittest.TestCase):
+     def test_startup_imports(self):
+         # This tests checks which modules are loaded by Python when it
+         # initially starts upon startup.
++        env = os.environ.copy()
++        env["_PYTHONNOSITEPACKAGES"] = "1"
+         popen = subprocess.Popen([sys.executable, '-I', '-v', '-c',
+                                   'import sys; print(set(sys.modules))'],
++                                 env=env,
+                                  stdout=subprocess.PIPE,
+                                  stderr=subprocess.PIPE,
+                                  encoding='utf-8')
+diff --git a/Makefile.pre.in b/Makefile.pre.in
+index 6abc997a5d..418e6d449a 100644
+--- a/Makefile.pre.in
++++ b/Makefile.pre.in
+@@ -1050,7 +1050,7 @@ $(LIBRARY_OBJS) $(MODOBJS) Programs/python.o: $(PYTHON_HEADERS)
+ ######################################################################
+ 
+ TESTOPTS=	$(EXTRATESTOPTS)
+-TESTPYTHON=	$(RUNSHARED) ./$(BUILDPYTHON) $(TESTPYTHONOPTS)
++TESTPYTHON=	_PYTHONNOSITEPACKAGES=1 $(RUNSHARED) ./$(BUILDPYTHON) $(TESTPYTHONOPTS)
+ TESTRUNNER=	$(TESTPYTHON) $(srcdir)/Tools/scripts/run_tests.py
+ TESTTIMEOUT=	1200
+ 
+-- 
+2.19.2
+

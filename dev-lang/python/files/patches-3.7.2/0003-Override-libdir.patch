@@ -1,0 +1,90 @@
+From f7e2c1a93cdcc42fd7565723ecfce05e6fc99c6e Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 5 Jan 2018 13:31:37 -0500
+Subject: [PATCH 03/10] Override libdir
+
+---
+ setup.py | 24 ++++++++++--------------
+ 1 file changed, 10 insertions(+), 14 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 4a233d62e1..2786a5eba6 100644
+--- a/setup.py
++++ b/setup.py
+@@ -557,7 +557,7 @@ class PyBuildExt(build_ext):
+         # directories (i.e. '.' and 'Include') must be first.  See issue
+         # 10520.
+         if not cross_compiling:
+-            add_dir_to_list(self.compiler.library_dirs, '/usr/local/lib')
++            add_dir_to_list(self.compiler.library_dirs, '/usr/local/@@GENTOO_LIBDIR@@')
+             add_dir_to_list(self.compiler.include_dirs, '/usr/local/include')
+         # only change this for cross builds for 3.3, issues on Mageia
+         if cross_compiling:
+@@ -610,7 +610,7 @@ class PyBuildExt(build_ext):
+             add_dir_to_list(self.compiler.include_dirs,
+                             sysconfig.get_config_var("INCLUDEDIR"))
+ 
+-        system_lib_dirs = ['/lib64', '/usr/lib64', '/lib', '/usr/lib']
++        system_lib_dirs = ['/@@GENTOO_LIBDIR@@', '/usr/@@GENTOO_LIBDIR@@']
+         system_include_dirs = ['/usr/include']
+         # lib_dirs and inc_dirs are used to search for files;
+         # if a file is found in one of those directories, it can
+@@ -863,11 +863,11 @@ class PyBuildExt(build_ext):
+             elif curses_library:
+                 readline_libs.append(curses_library)
+             elif self.compiler.find_library_file(lib_dirs +
+-                                                     ['/usr/lib/termcap'],
++                                                     ['/usr/@@GENTOO_LIBDIR@@/termcap'],
+                                                      'termcap'):
+                 readline_libs.append('termcap')
+             exts.append( Extension('readline', ['readline.c'],
+-                                   library_dirs=['/usr/lib/termcap'],
++                                   library_dirs=['/usr/@@GENTOO_LIBDIR@@/termcap'],
+                                    extra_link_args=readline_extra_link_args,
+                                    libraries=readline_libs) )
+         else:
+@@ -1081,8 +1081,7 @@ class PyBuildExt(build_ext):
+ 
+                 # check lib directories parallel to the location of the header
+                 db_dirs_to_check = [
+-                    db_incdir.replace("include", 'lib64'),
+-                    db_incdir.replace("include", 'lib'),
++                    db_incdir.replace("include", '@@GENTOO_LIBDIR@@'),
+                 ]
+ 
+                 if host_platform != 'darwin':
+@@ -1193,10 +1192,8 @@ class PyBuildExt(build_ext):
+ 
+         if sqlite_incdir:
+             sqlite_dirs_to_check = [
+-                os.path.join(sqlite_incdir, '..', 'lib64'),
+-                os.path.join(sqlite_incdir, '..', 'lib'),
+-                os.path.join(sqlite_incdir, '..', '..', 'lib64'),
+-                os.path.join(sqlite_incdir, '..', '..', 'lib'),
++                os.path.join(sqlite_incdir, '..', '@@GENTOO_LIBDIR@@'),
++                os.path.join(sqlite_incdir, '..', '..', '@@GENTOO_LIBDIR@@'),
+             ]
+             sqlite_libfile = self.compiler.find_library_file(
+                                 sqlite_dirs_to_check + lib_dirs, 'sqlite3')
+@@ -1855,15 +1852,14 @@ class PyBuildExt(build_ext):
+             added_lib_dirs.append('/usr/openwin/lib')
+         elif os.path.exists('/usr/X11R6/include'):
+             include_dirs.append('/usr/X11R6/include')
+-            added_lib_dirs.append('/usr/X11R6/lib64')
+-            added_lib_dirs.append('/usr/X11R6/lib')
++            added_lib_dirs.append('/usr/X11R6/@@GENTOO_LIBDIR@@')
+         elif os.path.exists('/usr/X11R5/include'):
+             include_dirs.append('/usr/X11R5/include')
+-            added_lib_dirs.append('/usr/X11R5/lib')
++            added_lib_dirs.append('/usr/X11R5/@@GENTOO_LIBDIR@@')
+         else:
+             # Assume default location for X11
+             include_dirs.append('/usr/X11/include')
+-            added_lib_dirs.append('/usr/X11/lib')
++            added_lib_dirs.append('/usr/X11/@@GENTOO_LIBDIR@@')
+ 
+         # If Cygwin, then verify that X is installed before proceeding
+         if host_platform == 'cygwin':
+-- 
+2.19.2
+

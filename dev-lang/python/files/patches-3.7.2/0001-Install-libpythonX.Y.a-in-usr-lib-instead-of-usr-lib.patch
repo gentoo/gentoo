@@ -1,0 +1,88 @@
+From a1d1ac07796dd728af1517e3b0fa8d3dbfe70632 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 5 Jan 2018 13:28:45 -0500
+Subject: [PATCH 01/10] Install libpythonX.Y.a in /usr/lib instead of
+ /usr/lib/pythonX.Y/config
+
+https://bugs.gentoo.org/show_bug.cgi?id=252372
+https://bugs.python.org/issue6103
+---
+ Makefile.pre.in          | 4 ++--
+ Misc/python-config.in    | 4 ----
+ Misc/python-config.sh.in | 7 +------
+ Modules/makesetup        | 2 +-
+ 4 files changed, 4 insertions(+), 13 deletions(-)
+
+diff --git a/Makefile.pre.in b/Makefile.pre.in
+index 2d2e11f172..30c6f7a358 100644
+--- a/Makefile.pre.in
++++ b/Makefile.pre.in
+@@ -1486,9 +1486,9 @@ libainstall:	@DEF_MAKE_RULE@ python-config
+ 	@if test -d $(LIBRARY); then :; else \
+ 		if test "$(PYTHONFRAMEWORKDIR)" = no-framework; then \
+ 			if test "$(SHLIB_SUFFIX)" = .dll; then \
+-				$(INSTALL_DATA) $(LDLIBRARY) $(DESTDIR)$(LIBPL) ; \
++				$(INSTALL_DATA) $(LDLIBRARY) $(DESTDIR)$(LIBDIR) ; \
+ 			else \
+-				$(INSTALL_DATA) $(LIBRARY) $(DESTDIR)$(LIBPL)/$(LIBRARY) ; \
++				$(INSTALL_DATA) $(LIBRARY) $(DESTDIR)$(LIBDIR)/$(LIBRARY) ; \
+ 			fi; \
+ 		else \
+ 			echo Skip install of $(LIBRARY) - use make frameworkinstall; \
+diff --git a/Misc/python-config.in b/Misc/python-config.in
+index e13da7543c..ce9ac152cc 100644
+--- a/Misc/python-config.in
++++ b/Misc/python-config.in
+@@ -50,11 +50,7 @@ for opt in opt_flags:
+         libs = ['-lpython' + pyver + sys.abiflags]
+         libs += getvar('LIBS').split()
+         libs += getvar('SYSLIBS').split()
+-        # add the prefix/lib/pythonX.Y/config dir, but only if there is no
+-        # shared library in prefix/lib/.
+         if opt == '--ldflags':
+-            if not getvar('Py_ENABLE_SHARED'):
+-                libs.insert(0, '-L' + getvar('LIBPL'))
+             if not getvar('PYTHONFRAMEWORK'):
+                 libs.extend(getvar('LINKFORSHARED').split())
+         print(' '.join(libs))
+diff --git a/Misc/python-config.sh.in b/Misc/python-config.sh.in
+index d1d3275fa2..0675ae53fe 100644
+--- a/Misc/python-config.sh.in
++++ b/Misc/python-config.sh.in
+@@ -46,7 +46,6 @@ BASECFLAGS="@BASECFLAGS@"
+ LDLIBRARY="@LDLIBRARY@"
+ LINKFORSHARED="@LINKFORSHARED@"
+ OPT="@OPT@"
+-PY_ENABLE_SHARED="@PY_ENABLE_SHARED@"
+ LDVERSION="@LDVERSION@"
+ LIBDEST=${prefix_real}/lib/python${VERSION}
+ LIBPL=$(echo "@LIBPL@" | sed "s#$prefix#$prefix_real#")
+@@ -93,11 +92,7 @@ do
+             if [ -z "$PYTHONFRAMEWORK" ] ; then
+                 LINKFORSHAREDUSED=$LINKFORSHARED
+             fi
+-            LIBPLUSED=
+-            if [ "$PY_ENABLE_SHARED" = "0" ] ; then
+-                LIBPLUSED="-L$LIBPL"
+-            fi
+-            echo "$LIBPLUSED -L$libdir $LIBS $LINKFORSHAREDUSED"
++            echo "-L$libdir $LIBS $LINKFORSHAREDUSED"
+         ;;
+         --extension-suffix)
+             echo "$SO"
+diff --git a/Modules/makesetup b/Modules/makesetup
+index eac97ad134..32dc18060c 100755
+--- a/Modules/makesetup
++++ b/Modules/makesetup
+@@ -92,7 +92,7 @@ CYGWIN*) if test $libdir = .
+ 	 then
+ 	 	ExtraLibDir=.
+ 	 else
+-	 	ExtraLibDir='$(LIBPL)'
++	 	ExtraLibDir='$(LIBDIR)'
+ 	 fi
+ 	 ExtraLibs="-L$ExtraLibDir -lpython\$(LDVERSION)";;
+ esac
+-- 
+2.19.2
+

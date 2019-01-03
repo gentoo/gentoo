@@ -1,0 +1,25 @@
+From 199149ca2fc1db4afc1c771d88e873acc5b03c4b Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Wed, 4 Jul 2018 11:39:21 -0400
+Subject: [PATCH 08/10] Disable nis
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 0867020b61..bb03f8208a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1349,7 +1349,7 @@ class PyBuildExt(build_ext):
+         else:
+             missing.extend(['resource', 'termios'])
+ 
+-        nis = self._detect_nis(inc_dirs, lib_dirs)
++        nis = None
+         if nis is not None:
+             exts.append(nis)
+         else:
+-- 
+2.19.2
+
