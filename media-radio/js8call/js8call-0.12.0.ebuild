@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,8 +14,6 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc"
-
-PATCHES="${FILESDIR}/${PV}-makefile-removesymlink.patch"
 
 RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
