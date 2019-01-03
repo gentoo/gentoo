@@ -84,7 +84,6 @@ src_configure() {
 		-DBUILD_ENGINE_C=$(usex x86)
 		-DNOVIDEOREC=$(usex !x86)
 		-DCMAKE_VERBOSE_MAKEFILE=TRUE
-		-DPHYSFS_SYSTEM=ON
 		# Need to tell the build system where the fonts are located
 		# as it uses PhysFS' symbolic link protection mode which
 		# prevents us from symlinking the fonts into the right directory
