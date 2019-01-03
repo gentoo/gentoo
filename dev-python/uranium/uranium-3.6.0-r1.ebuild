@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,6 +24,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/PyQt5[${PYTHON_USEDEP},declarative,network,svg]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-1.1[${PYTHON_USEDEP}]
+	sci-libs/Shapely[${PYTHON_USEDEP}]
 	dev-qt/qtquickcontrols:5
 	dev-qt/qtquickcontrols2:5"
 
