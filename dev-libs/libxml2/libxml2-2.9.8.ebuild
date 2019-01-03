@@ -81,6 +81,9 @@ src_prepare() {
 	# https://bugzilla.gnome.org/show_bug.cgi?id=760458
 	eapply "${FILESDIR}"/${PN}-2.9.2-python-ABIFLAG.patch
 
+	# Fix python tests when building out of tree #565576
+	eapply "${FILESDIR}"/${PN}-2.9.8-out-of-tree-test.patch
+
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# Avoid final linking arguments for python modules
 		sed -i -e '/PYTHON_LIBS/s/ldflags/libs/' configure.ac || die
