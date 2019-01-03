@@ -1,0 +1,19 @@
+https://github.com/ccache/ccache/issues/344
+
+--- a/configure
++++ b/configure
+@@ -642,4 +642,5 @@ no_implicit_fallthrough_warning
+ more_warnings
+ include_dev_mk
++getopt_long_c
+ extra_libs
+ disable_man
+@@ -4724,4 +4725,8 @@ done
+ 
+ 
++if test x"$ac_cv_func_getopt_long" != x"yes"; then
++    getopt_long_c="src/getopt_long.c"
++fi
++
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for compar_fn_t in stdlib.h" >&5
+ $as_echo_n "checking for compar_fn_t in stdlib.h... " >&6; }

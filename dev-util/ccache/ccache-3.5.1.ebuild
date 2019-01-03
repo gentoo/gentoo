@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit readme.gentoo-r1
 
@@ -22,6 +22,8 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4-size-on-disk.patch #456178
+	"${FILESDIR}"/${PN}-3.5-nvcc-test.patch
+	"${FILESDIR}"/${PN}-3.5.1-configure.patch
 )
 
 src_prepare() {
@@ -32,6 +34,14 @@ src_prepare() {
 	sed \
 		-e "/^EPREFIX=/s:'':'${EPREFIX}':" \
 		"${FILESDIR}"/ccache-config-3 > ccache-config || die
+}
+
+src_compile() {
+	emake V=1
+}
+
+src_test() {
+	emake check V=1
 }
 
 src_install() {
@@ -57,13 +67,13 @@ ccache now supports sys-devel/clang and dev-lang/icc, too!"
 }
 
 pkg_prerm() {
-	if [[ -z ${REPLACED_BY_VERSION} && ${ROOT} == / ]] ; then
+	if [[ -z ${REPLACED_BY_VERSION} && ${ROOT:-/} == / ]] ; then
 		eselect compiler-shadow remove ccache
 	fi
 }
 
 pkg_postinst() {
-	if [[ ${ROOT} == / ]]; then
+	if [[ ${ROOT:-/} == / ]]; then
 		eselect compiler-shadow update ccache
 	fi
 
