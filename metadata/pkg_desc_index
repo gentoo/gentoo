@@ -1840,7 +1840,7 @@ dev-cpp/eigen 3.2.8-r2: C++ template library for linear algebra
 dev-cpp/gccxml 0.9.0_pre20131217: XML output extension to GCC
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.2.0: Google's C++ argument parsing library
-dev-cpp/glibmm 2.50.1 2.52.1-r1 2.56.0: C++ interface for glib2
+dev-cpp/glibmm 2.56.0: C++ interface for glib2
 dev-cpp/glog 0.3.3-r1 0.3.4-r1: Google's C++ logging library
 dev-cpp/gnome-vfsmm 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 0.10.11 1.10.0: C++ interface for GStreamer
@@ -2995,7 +2995,7 @@ dev-libs/freexl 1.0.1: Simple XLS data extraction library
 dev-libs/fribidi 1.0.5: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.2.0-r1: Frame Streams implementation in C
 dev-libs/g-wrap 1.9.13 1.9.14: A tool for exporting C libraries into Scheme
-dev-libs/gdl 3.22.0 3.28.0: GNOME docking library
+dev-libs/gdl 3.28.0: GNOME docking library
 dev-libs/geoip 1.6.9-r1 1.6.10: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1: C/C++ routines for fast arithmetic in GF(2)[x]
