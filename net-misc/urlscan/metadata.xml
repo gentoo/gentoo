@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+      <email>me@aphypnise.eu</email>
+      <name>Andrew Attali</name>
+    </maintainer>
+    <maintainer type="project">
+      <email>proxy-maint@gentoo.org</email>
+      <name>Proxy Maintainers</name>
+    </maintainer>
+    <longdescription>
+      Urlscan is a small program that is designed to integrate with the "mutt"
+      mailreader to allow you to easily launch a Web browser for URLs contained
+      in email messages. It is a replacement for the "urlview" program.
+    </longdescription>
+    <upstream>
+      <remote-id type="github">firecat53/urlscan</remote-id>
+      <bugs-to>mailto:firecat4153@gmail.com</bugs-to>
+    </upstream>
+</pkgmetadata>
