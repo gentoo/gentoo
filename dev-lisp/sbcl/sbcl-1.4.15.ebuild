@@ -104,6 +104,7 @@ src_prepare() {
 
 	eapply "${FILESDIR}"/${PN}-1.2.11-solaris.patch
 	eapply "${FILESDIR}"/${PN}-1.4.0-verbose-build.patch
+	eapply "${FILESDIR}"/${P}-capstone.patch
 
 	eapply_user
 
