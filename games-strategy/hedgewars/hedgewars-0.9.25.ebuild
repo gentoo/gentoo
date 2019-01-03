@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR=emake
 inherit cmake-utils xdg-utils
@@ -13,6 +13,7 @@ DESCRIPTION="A turn-based strategy, artillery, action and comedy game"
 HOMEPAGE="https://www.hedgewars.org/"
 SRC_URI="https://www.hedgewars.org/download/releases/${MY_P}.tar.bz2
 	mirror://debian/pool/main/h/${PN}/${PN}_0.9.23-dfsg-${DEB_PATCH_VER}.debian.tar.xz"
+
 LICENSE="GPL-2 Apache-2.0 FDL-1.3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -22,7 +23,7 @@ QA_FLAGS_IGNORED="/usr/bin/hwengine" # pascal sucks
 QA_PRESTRIPPED="/usr/bin/hwengine" # pascal sucks
 
 # qtcore:5= - depends on private header
-CDEPEND="
+DEPEND="
 	>=dev-games/physfs-3.0.1
 	dev-lang/lua:0=
 	dev-qt/qtcore:5=
@@ -35,13 +36,16 @@ CDEPEND="
 	media-libs/sdl2-mixer:=[vorbis]
 	media-libs/sdl2-net:=
 	media-libs/sdl2-ttf:=
-	sys-libs/zlib:=
+	sys-libs/zlib
 	!x86? (
 		libav? ( media-video/libav:= )
 		!libav? ( media-video/ffmpeg:= )
 	)"
-DEPEND="${CDEPEND}
-	!x86? ( >=dev-lang/fpc-2.4 )
+RDEPEND="${DEPEND}
+	app-arch/xz-utils
+	>=media-fonts/dejavu-2.28
+	media-fonts/wqy-zenhei"
+BDEPEND="
 	dev-qt/linguist-tools:5
 	server? (
 		>=dev-lang/ghc-6.10
@@ -58,14 +62,11 @@ DEPEND="${CDEPEND}
 		dev-haskell/yaml
 		>=dev-haskell/zlib-0.5.3 <dev-haskell/zlib-0.6
 	)
+	!x86? ( >=dev-lang/fpc-2.4 )
 	x86? (
 		>=dev-lang/ghc-6.10
 		dev-haskell/parsec
 	)"
-RDEPEND="${CDEPEND}
-	app-arch/xz-utils
-	>=media-fonts/dejavu-2.28
-	media-fonts/wqy-zenhei"
 
 S="${WORKDIR}"/${MY_P}
 
@@ -79,9 +80,9 @@ src_configure() {
 		-DDATA_INSTALL_DIR="${EPREFIX}/usr/share/${PN}"
 		-Dtarget_binary_install_dir="${EPREFIX}/usr/bin"
 		-Dtarget_library_install_dir="${EPREFIX}/usr/$(get_libdir)"
-		-DNOSERVER=$(usex server FALSE TRUE)
-		-DBUILD_ENGINE_C=$(usex x86 ON OFF)
-		-DNOVIDEOREC=$(usex x86 TRUE FALSE)
+		-DNOSERVER=$(usex !server)
+		-DBUILD_ENGINE_C=$(usex x86)
+		-DNOVIDEOREC=$(usex !x86)
 		-DCMAKE_VERBOSE_MAKEFILE=TRUE
 		-DPHYSFS_SYSTEM=ON
 		# Need to tell the build system where the fonts are located
