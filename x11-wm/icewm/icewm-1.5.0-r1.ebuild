@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ice-wm/icewm/releases/download/${PV}/${P}.tar.xz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="+alsa ao bidi debug doc nls truetype uclibc xinerama"
+IUSE="+alsa ao bidi debug nls truetype uclibc xinerama"
 
 # Tests broken in all versions, patches welcome, bug #323907, #389533
 RESTRICT="test"
@@ -45,9 +45,9 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	app-text/asciidoc
 	gnome-base/librsvg
 	x11-base/xorg-proto
-	doc? ( app-text/linuxdoc-tools )
 	nls? ( >=sys-devel/gettext-0.19.6 )
 	truetype? ( >=media-libs/freetype-2.0.9 )
 "
@@ -57,11 +57,6 @@ src_prepare() {
 	#use uclibc && PATCHES+=( "${FILESDIR}/${PN}-1.3.8-uclibc.patch" )
 
 	default
-
-	if ! use doc ; then
-		sed '/^SUBDIRS =/s@ doc@@' -i Makefile.am || die
-	fi
-
 	eautoreconf
 }
 
