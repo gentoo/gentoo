@@ -18,8 +18,8 @@ IUSE="debug gstreamer"
 
 RDEPEND="
 	>=dev-libs/glib-2.48:2
-	>=x11-libs/gtk+-2.24.0:2
-	>=x11-libs/vte-0.11:0
+	>=x11-libs/gtk+-3.4.0:3
+	>=x11-libs/vte-0.37:2.91
 	dev-libs/libpcre
 	sys-libs/zlib
 	gstreamer? ( media-libs/gstreamer:1.0 )"
