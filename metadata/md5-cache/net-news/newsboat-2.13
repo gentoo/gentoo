@@ -3,10 +3,10 @@ DEPEND=>=dev-db/sqlite-3.5:3 >=dev-libs/stfl-0.21 >=net-misc/curl-7.18.0 >=dev-l
 DESCRIPTION=An RSS/Atom feed reader for text terminals
 EAPI=6
 HOMEPAGE=https://newsboat.org/ https://github.com/newsboat/newsboat
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=MIT
 RDEPEND=>=dev-db/sqlite-3.5:3 >=dev-libs/stfl-0.21 >=net-misc/curl-7.18.0 >=dev-libs/json-c-0.11:= dev-libs/libxml2 sys-libs/ncurses:0=[unicode]
 SLOT=0
 SRC_URI=https://newsboat.org/releases/2.13/newsboat-2.13.tar.xz
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=11cd36b277dd3635d8afaa642963dfc5
+_md5_=392f03e7bd85048fbdc737901c6def14
