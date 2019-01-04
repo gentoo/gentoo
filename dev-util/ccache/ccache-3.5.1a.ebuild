@@ -23,8 +23,9 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4-size-on-disk.patch #456178
 	"${FILESDIR}"/${PN}-3.5-nvcc-test.patch
-	"${FILESDIR}"/${PN}-3.5.1-configure.patch
 )
+
+S=${WORKDIR}/${P%a} # 3.5.1a->3.5.1, bug #674516
 
 src_prepare() {
 	default
