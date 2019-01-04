@@ -19,6 +19,7 @@ DEPEND="
 	media-libs/fdk-aac
 	virtual/ffmpeg
 	media-libs/sbc
+	media-libs/libldac
 	>=net-wireless/bluez-5
 	>=sys-apps/dbus-1.0.0
 	>=net-misc/ofono-1.13
@@ -30,3 +31,4 @@ RDEPEND="${DEPEND}"
 BDEPEND=""
 
 CMAKE_MAKEFILE_GENERATOR="emake"
+mycmakeargs=( -DFORCE_NOT_BUILD_LDAC=ON )
