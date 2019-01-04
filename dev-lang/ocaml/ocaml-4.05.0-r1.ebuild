@@ -8,7 +8,7 @@ inherit flag-o-matic eutils multilib versionator toolchain-funcs
 PATCHLEVEL="9"
 MY_P="${P/_/-}"
 DESCRIPTION="Type-inferring functional programming language descended from the ML family"
-HOMEPAGE="http://www.ocaml.org/"
+HOMEPAGE="https://ocaml.org"
 SRC_URI="https://github.com/ocaml/ocaml/archive/${PV/_/+}.tar.gz -> ${MY_P}.tar.gz
 	mirror://gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2"
 
