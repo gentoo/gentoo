@@ -1,0 +1,94 @@
+Various clean-ups and fix makefile dir creation.
+
+--- cku302/ckcmai.c
++++ cku302/ckcmai.c
+@@ -561,6 +561,8 @@
+ #include "ckntap.h"
+ #endif /* NT */
+ 
++#include <time.h>
++
+ #ifndef NOSERVER
+ /* Text message definitions.. each should be 256 chars long, or less. */
+ #ifdef MINIX
+--- cku302/ckuus5.c
++++ cku302/ckuus5.c
+@@ -7853,7 +7853,7 @@
+           printf(" --bannerfile=%s\n",bannerfile ? bannerfile : "(null)");
+           printf(" --cdfile:%s\n",cdmsgstr ? cdmsgstr : "(null)");
+           printf(" --cdmessage:%d\n",srvcdmsg);
+-          printf(" --helpfile:%d\n",helpfile);
++          printf(" --helpfile:%s\n",helpfile ? helpfile : "(null)");
+           if (inserver) {
+               printf("\n");
+               break;
+--- cku302/ckuusx.c
++++ cku302/ckuusx.c
+@@ -57,7 +57,6 @@
+ #include <termcap.h>
+ #endif /* NOHTERMCAP */
+ #endif /* BSD44 */
+-#else  /* !BSD44 */
+ #ifdef linux
+ #include <term.h>
+ #endif /* linux */
+--- cku302/makefile
++++ cku302/makefile
+@@ -1047,7 +1047,7 @@
+ 		else\
+ 			echo "Creating $(DESTDIR)...";\
+ 			DESTDIR=`echo $(DESTDIR) | sed 's!/*$$!!'`;\
+-			mkdir $$DESTDIR  || exit 1;\
++			mkdir -p $$DESTDIR  || exit 1;\
+ 		fi;\
+ 		chmod 755 $(DESTDIR) || exit 1;\
+ 	fi;\
+@@ -1066,7 +1066,7 @@
+ 		echo  "$(DESTDIR)$(BINDIR) exists...";\
+ 	else\
+ 		echo "Creating $(DESTDIR)$(BINDIR)/...";\
+-		mkdir     $(DESTDIR)$(BINDIR) || exit 1;\
++		mkdir -p  $(DESTDIR)$(BINDIR) || exit 1;\
+ 		chmod 755 $(DESTDIR)$(BINDIR);\
+ 	fi;\
+ 	rm -f $(DESTDIR)$(BINDIR)/kermit;\
+@@ -1104,9 +1104,9 @@
+ 		if test -d $(DESTDIR)$(MANDIR); then\
+ 			echo  "$(DESTDIR)$(MANDIR) exists...";\
+ 		else\
+-			echo "Creating $(MANDIR)...";\
+-			mkdir $(MANDIR) || exit 1;\
+-			chmod 755 $(MANDIR) || exit 1;\
++			echo "Creating $(DESTDIR)$(MANDIR)...";\
++			mkdir -p $(DESTDIR)$(MANDIR) || exit 1;\
++			chmod 755 $(DESTDIR)$(MANDIR) || exit 1;\
+ 		fi;\
+ 		rm -f $(DESTDIR)$(MANDIR)/kermit.$(MANEXT);\
+ 		cp ckuker.nr $(DESTDIR)$(MANDIR)/kermit.$(MANEXT) || exit 1;\
+@@ -1125,7 +1125,7 @@
+ 				echo  "$(CERTDIR) exists...";\
+ 			else\
+ 				echo "Creating $(CERTDIR)...";\
+-				mkdir $(CERTDIR) || exit 1;\
++				mkdir -p $(CERTDIR) || exit 1;\
+ 				chmod 755 $(CERTDIR) || exit 1;\
+ 			fi;\
+ 			echo "Installing certificates file...";\
+@@ -1146,7 +1146,7 @@
+ 			echo  "$(DESTDIR)$(SRCDIR) exists...";\
+ 		else\
+ 			echo "Creating $(DESTDIR)$(SRCDIR)/...";\
+-			mkdir     $(DESTDIR)$(SRCDIR) || exit 1;\
++			mkdir -p  $(DESTDIR)$(SRCDIR) || exit 1;\
+ 			chmod 755 $(DESTDIR)$(SRCDIR);\
+ 		fi;\
+ 		echo "Copying source files to $(DESTDIR)$(SRCDIR)...";\
+@@ -1168,7 +1168,7 @@
+ 			echo  "$(DESTDIR)$(INFODIR) exists...";\
+ 		else\
+ 			echo "Creating $(DESTDIR)$(INFODIR)/...";\
+-			mkdir     $(DESTDIR)$(INFODIR) || exit 1;\
++			mkdir -p  $(DESTDIR)$(INFODIR) || exit 1;\
+ 			chmod 755 $(DESTDIR)$(INFODIR);\
+ 		fi;\
+ 		echo "Copying text files to $(DESTDIR)$(INFODIR)...";\
