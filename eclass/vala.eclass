@@ -148,6 +148,9 @@ vala_src_prepare() {
 	valafoo=$(type -P vapigen-${version})
 	[[ ${valafoo} ]] && export VAPIGEN="${valafoo}"
 
+	valafoo=$(type -P valadoc-${version})
+	[[ ${valafoo} ]] && has valadoc ${VALA_USE_DEPEND} && export VALADOC="${valafoo}"
+
 	valafoo="${EPREFIX}/usr/share/vala/Makefile.vapigen"
 	[[ -e ${valafoo} ]] && export VAPIGEN_MAKEFILE="${valafoo}"
 
