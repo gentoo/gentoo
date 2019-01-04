@@ -7,8 +7,8 @@ inherit cmake-utils flag-o-matic gnome2-utils toolchain-funcs xdg-utils
 
 MY_P=${P/_rc/-rc}
 DESCRIPTION="A powerful cross-platform raw image processing program"
-HOMEPAGE="http://www.rawtherapee.com/"
-SRC_URI="http://rawtherapee.com/shared/source/${MY_P}.tar.xz"
+HOMEPAGE="https://www.rawtherapee.com/"
+SRC_URI="https://rawtherapee.com/shared/source/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
