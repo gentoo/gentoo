@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jeffrey@icurse.nl</email>
+		<name>Jeffrey Lin</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		KLEE is a symbolic virtual machine built on top of the LLVM
+		compiler infrastructure. Currently, there are two primary
+		components: (1) The core symbolic virtual machine engine; this
+		is responsible for executing LLVM bitcode modules with support
+		for symbolic values. This is comprised of the code in lib/.
+		(2) A POSIX/Linux emulation layer oriented towards supporting
+		uClibc, with additional support for making parts of the
+		operating system environment symbolic.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">klee/klee</remote-id>
+	</upstream>
+	<use>
+		<flag name="stp">Enable STP solver support.</flag>
+		<flag name="z3">Enable Z3 solver support.</flag>
+	</use>
+</pkgmetadata>
