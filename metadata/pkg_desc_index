@@ -1570,7 +1570,7 @@ app-vim/genindent 1.1-r1: vim plugin: library for simplifying indent files
 app-vim/gentoo-syntax 20180821 20181023: vim plugin: Gentoo and Portage syntax highlighting
 app-vim/genutils 2.5: vim plugin: library with various useful functions
 app-vim/gist 7.3: vim plugin: interact with gists (gist.github.com)
-app-vim/gitgutter 20171101: vim plugin: shows a git diff in the sign column and stages/reverts hunks
+app-vim/gitgutter 20180316: vim plugin: shows a git diff in the sign column and stages/reverts hunks
 app-vim/gitlog 5.1.0: vim plugin: git log and diff plugin for vim
 app-vim/gitolite-syntax 20111225: vim plugin: gitolite syntax highlighting
 app-vim/gitv 1.3.1: vim plugin: gitk for vim
