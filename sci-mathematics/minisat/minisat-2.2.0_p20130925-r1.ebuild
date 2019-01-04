@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,12 +32,6 @@ src_prepare() {
 
 	sed -i -e "s:\$(exec_prefix)/lib:\$(exec_prefix)/$(get_libdir):" \
 		Makefile || die
-
-	# Fix headers ( #include "minisat/..." -> #include <...> )
-	while IFS="" read -d $'\0' -r file; do
-		einfo Correcting header "$file"
-		sed -i -e 's:#include "minisat/\([^"]*\)":#include <\1>:g' "${file}" || die
-	done < <(find minisat -name "*.h" -print0)
 }
 
 src_configure() {
