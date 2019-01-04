@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils toolchain-funcs flag-o-matic gnome2-utils xdg-utils
+inherit cmake-utils flag-o-matic gnome2-utils toolchain-funcs xdg-utils
 
 MY_P=${P/_rc/-rc}
 DESCRIPTION="A powerful cross-platform raw image processing program"
@@ -16,22 +16,23 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="openmp"
 
-RDEPEND="x11-libs/gtk+:3
+RDEPEND="
 	dev-libs/expat
 	dev-libs/libsigc++:2
-	media-libs/libcanberra[gtk3]
-	media-libs/tiff:0
-	media-libs/libpng:0
-	media-libs/libiptcdata
 	media-libs/lcms:2
 	media-libs/lensfun
+	media-libs/libcanberra[gtk3]
+	media-libs/libiptcdata
+	media-libs/libpng:0
+	media-libs/tiff:0
 	sci-libs/fftw:3.0
 	sys-libs/zlib
-	virtual/jpeg:0"
+	virtual/jpeg:0
+	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
-	virtual/pkgconfig
-	dev-cpp/gtkmm:3.0"
+	dev-cpp/gtkmm:3.0
+	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
