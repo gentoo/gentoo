@@ -1,12 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-COMMIT=048b42324ef6dac807af4351174065cda2f32f44
-EGIT_BRANCH="port-to-kf5"
+COMMIT=f99c63723ca96cfd3d9499ef7fcf0fe7e7b021ca
 KDE_HANDBOOK="optional"
-inherit kde5 vcs-snapshot
+inherit kde5
 
 DESCRIPTION="The japanese warehouse keeper game"
 HOMEPAGE="https://cgit.kde.org/ksokoban.git"
@@ -16,16 +15,18 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="
-	$(add_frameworks_dep kactivities)
+RDEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kiconthemes)
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	$(add_frameworks_dep kiconthemes)
+"
+
+S="${WORKDIR}/${PN}-${COMMIT}"
