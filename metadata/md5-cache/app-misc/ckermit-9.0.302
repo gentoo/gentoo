@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=ncurses? ( >=sys-libs/ncurses-5.2:= )
+DESCRIPTION=combined serial and network communication software package
+EAPI=7
+HOMEPAGE=http://www.kermitproject.org/
+IUSE=ncurses
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86
+LICENSE=Kermit
+RDEPEND=ncurses? ( >=sys-libs/ncurses-5.2:= ) net-dialup/lrzsz
+SLOT=0
+SRC_URI=ftp://kermit.columbia.edu/kermit/archives/cku302.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=9eba783821267029370c9018d9676b47
