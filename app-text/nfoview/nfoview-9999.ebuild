@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit distutils-r1 gnome2-utils xdg-utils
 
@@ -15,20 +15,16 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="simple viewer for NFO files, which are ASCII art in the CP437 codepage"
+DESCRIPTION="Simple viewer for NFO files, which are ASCII art in the CP437 codepage"
 HOMEPAGE="https://otsaloma.io/nfoview/"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 IUSE=""
 
 DEPEND="dev-python/pygobject:3[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	media-fonts/terminus-font"
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
 
 pkg_postinst() {
 	gnome2_icon_cache_update
