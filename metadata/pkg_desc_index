@@ -8973,7 +8973,7 @@ net-misc/networkmanager-openvpn 1.8.8: NetworkManager OpenVPN plugin
 net-misc/networkmanager-pptp 1.2.8: NetworkManager PPTP VPN plugin
 net-misc/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
 net-misc/npapi-sdk 0.27.2: NPAPI headers bundle
-net-misc/ntp 4.2.8_p11 4.2.8_p12: Network Time Protocol suite/programs
+net-misc/ntp 4.2.8_p12: Network Time Protocol suite/programs
 net-misc/ntpclient 2018.244: A NTP (RFC-1305 and RFC-4330) client for unix-alike systems
 net-misc/nx 3.5.0.33 3.5.99.16: NX compression technology core libraries
 net-misc/ofono 1.16: Open Source mobile telephony (GSM/UMTS) daemon
