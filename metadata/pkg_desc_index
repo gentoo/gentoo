@@ -7432,7 +7432,7 @@ media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vec
 media-gfx/qrencode 4.0.2: C library for encoding data in a QR Code symbol
 media-gfx/quat 1.20-r1: A 3D quaternionic fractal generator
 media-gfx/raw-thumbnailer 0.2.1-r1: A lightweight and fast raw image thumbnailer
-media-gfx/rawtherapee 5.2 5.4: A powerful cross-platform raw image processing program
+media-gfx/rawtherapee 5.4: A powerful cross-platform raw image processing program
 media-gfx/recoverjpeg 2.0-r2 2.2.1-r1 2.2.3-r1: Recover JPEG pictures from a possibly corrupted disk image
 media-gfx/ristretto 0.8.3: A fast and lightweight picture viewer for Xfce
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
