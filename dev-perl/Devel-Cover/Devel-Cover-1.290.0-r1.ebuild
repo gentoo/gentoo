@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="minimal test"
 
 RDEPEND="
-	virtual/perl-B-Debug
+	dev-perl/B-Debug
 	virtual/perl-Digest-MD5
 	virtual/perl-Storable
 	>=dev-perl/HTML-Parser-3.690.0
