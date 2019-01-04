@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,6 +47,7 @@ S="${WORKDIR}/${P}/unix"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.53-cross-compile.patch
 	"${FILESDIR}"/${PN}-1.58-build-system.patch
+	"${FILESDIR}"/${P}-without-screenshot_build_fix.patch
 )
 
 src_prepare() {
