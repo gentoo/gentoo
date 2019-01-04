@@ -11,7 +11,7 @@ else
 	inherit vcs-snapshot
 	COMMIT_HASH="37bdd03d176c5e182c7e8dbdc79c3f71d2a04898"
 	SRC_URI="https://github.com/airblade/vim-gitgutter/archive/${COMMIT_HASH}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="vim plugin: shows a git diff in the sign column and stages/reverts hunks"

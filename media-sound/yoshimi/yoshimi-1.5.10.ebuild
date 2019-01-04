@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils gnome2-utils xdg-utils
 
 DESCRIPTION="A software synthesizer based on ZynAddSubFX"
 HOMEPAGE="http://yoshimi.sourceforge.net/"
@@ -20,10 +20,10 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/libsndfile
 	>=media-sound/jack-audio-connection-kit-0.115.6
-	sci-libs/fftw:3.0
+	sci-libs/fftw:3.0=
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
-	sys-libs/zlib
+	sys-libs/zlib:0=
 	x11-libs/cairo[X]
 	x11-libs/fltk:1[opengl]
 	lv2? ( media-libs/lv2 )
@@ -34,13 +34,13 @@ DEPEND="${RDEPEND}
 "
 
 CMAKE_USE_DIR="${WORKDIR}/${P}/src"
+PATCHES=( "${FILESDIR}"/${P}-cxxflags.patch )
+
+DOCS=( Changelog README.txt )
 
 src_prepare() {
-	mv Change{l,L}og || die
-	sed -i \
-		-e '/set (CMAKE_CXX_FLAGS_RELEASE/d' \
-		-e "s:lib/lv2:$(get_libdir)/lv2:" \
-		src/CMakeLists.txt || die
+	# respect doc dir
+	sed -e "s#/doc/yoshimi#/doc/${PF}#" -i src/CMakeLists.txt || die
 
 	cmake-utils_src_prepare
 }
@@ -50,4 +50,14 @@ src_configure() {
 		-DLV2Plugin=$(usex lv2)
 	)
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
