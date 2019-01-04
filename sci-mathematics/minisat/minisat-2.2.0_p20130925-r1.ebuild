@@ -36,7 +36,7 @@ src_prepare() {
 	# Fix headers ( #include "minisat/..." -> #include <...> )
 	while IFS="" read -d $'\0' -r file; do
 		einfo Correcting header "$file"
-		sed -i -e 's:#include "minisat/\([^"]*\)":#include <\1>:g' "${file}" || die
+		sed -i -e 's:#include "minisat/\([^"]*\)":#include <minisat/\1>:g' "${file}" || die
 	done < <(find minisat -name "*.h" -print0)
 }
 
