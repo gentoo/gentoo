@@ -6,13 +6,14 @@ EAPI=6
 inherit eutils toolchain-funcs
 
 # This is the latest commit in the latest branch.
-GIT_SHA1="748af73c67abf473d45bbacd708ce79bfc264ff5"
+GIT_SHA1="a32c930e8c46424a3bba3c296fd78b3e60f50aeb"
 
 DESCRIPTION="Chrome OS verified boot tools"
 HOMEPAGE="https://chromium.googlesource.com/chromiumos/platform/vboot_reference/ http://dev.chromium.org/chromium-os/chromiumos-design-docs/verified-boot"
 # Can't use gitiles directly until b/19710536 is fixed.
 #SRC_URI="https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+archive/${GIT_SHA1}.tar.gz -> ${P}.tar.gz"
-SRC_URI="mirror://gentoo/${P}.tar.xz"
+SRC_URI="mirror://gentoo/${P}.tar.xz
+	https://dev.gentoo.org/~zmedico/dist/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -20,16 +21,22 @@ KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 IUSE="libressl minimal static"
 
 LIB_DEPEND="
-	!libressl? ( <dev-libs/openssl-1.1:0=[static-libs(+)] )
+	dev-libs/libyaml:=[static-libs(+)]
+	app-arch/xz-utils:=[static-libs(+)]"
+LIB_DEPEND_MINIMAL="
+	!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
 	libressl? ( dev-libs/libressl:0=[static-libs(+)] )
-	sys-apps/util-linux:=[static-libs(+)]"
-RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
-	!minimal? (
-		app-arch/xz-utils:=
-		dev-libs/libyaml:=
+	sys-apps/util-linux:=[static-libs(+)]
+	dev-libs/libzip:=[static-libs(+)]"
+RDEPEND="!static? (
+		${LIB_DEPEND_MINIMAL//\[static-libs(+)]}
+		!minimal? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	)"
 DEPEND="${RDEPEND}
-	static? ( ${LIB_DEPEND} )
+	static? (
+		${LIB_DEPEND_MINIMAL}
+		!minimal? ( ${LIB_DEPEND} )
+	)
 	app-crypt/trousers"
 
 S=${WORKDIR}
@@ -39,7 +46,13 @@ src_prepare() {
 	sed -i \
 		-e 's:${DESTDIR}/\(bin\|${LIBDIR}\):${DESTDIR}/usr/\1:g' \
 		-e 's:${DESTDIR}/default:${DESTDIR}/etc/default:g' \
+		-e 's:${TEST_INSTALL_DIR}/bin:${TEST_INSTALL_DIR}/usr/bin:' \
+		-e '/cgpt -D 358400/d' \
 		Makefile || die
+	sed -e 's:^BIN_DIR=${BUILD_DIR}/install_for_test/bin:BIN_DIR=${BUILD_DIR}/install_for_test/usr/bin:' \
+		-i tests/common.sh || die
+	sed -e "s:/mnt/host/source/src/platform/vboot_reference:${S}:" \
+		-i tests/futility/expect_output/* || die
 }
 
 _emake() {
