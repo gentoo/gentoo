@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,10 @@ RDEPEND=">=app-crypt/tpm2-tss-2.0
 DEPEND="${RDEPEND}
 	test? ( dev-util/cmocka )"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${P}-libressl.patch"
+)
 
 src_configure() {
 	econf \
