@@ -12,4 +12,7 @@
 			devmanual@gentoo.org
 		</description>
 	</maintainer>
+	<use>
+		<flag name="fallback">Use alternative minimal stylesheet instead of tyrian theme.</flag>
+	</use>
 </pkgmetadata>
