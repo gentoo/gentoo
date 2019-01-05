@@ -1,13 +1,14 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit autotools eutils flag-o-matic multilib pam systemd toolchain-funcs
+inherit autotools linux-mod flag-o-matic pam systemd toolchain-funcs
 
 MY_PV=${PV/_/}
 MY_P="${PN}-${MY_PV}"
-PVER="20170822"
+PVER=20190105
+KERNEL_LIMIT=4.21
 
 DESCRIPTION="The OpenAFS distributed file system"
 HOMEPAGE="https://www.openafs.org/"
@@ -21,30 +22,75 @@ SRC_URI="
 
 LICENSE="IBM BSD openafs-krb5-a APSL-2"
 SLOT="0"
-KEYWORDS="amd64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 
-IUSE="bitmap-later debug doc fuse kerberos +modules ncurses pam pthreaded-ubik +supergroups"
+IUSE="api bitmap-later debug doc fuse gssapi kauth kerberos +modules +namei
+ncurses perl +pthreaded-ubik +supergroups tsm ubik-read-while-write"
 
-CDEPEND="
-	virtual/libintl
-	fuse? ( sys-fs/fuse:0= )
-	kerberos? ( virtual/krb5 )
-	ncurses? ( sys-libs/ncurses:0= )
-	pam? ( virtual/pam )"
-
-DEPEND="${CDEPEND}
+BDEPEND="
+	dev-lang/perl
+	sys-devel/flex
 	virtual/yacc
+	api? (
+		app-doc/doxygen
+		media-gfx/graphviz
+	)
 	doc? (
 		app-text/docbook-xsl-stylesheets
+		app-text/docbook-xml-dtd
 		dev-libs/libxslt
-	)"
+		|| (
+			dev-java/fop
+			app-text/dblatex
+			app-text/docbook-sgml-utils[jadetex]
+		)
+	)
+	perl? ( dev-lang/swig )"
+DEPEND="
+	!net-fs/openafs-kernel
+	virtual/libintl
+	amd64? ( tsm? ( app-backup/tsm ) )
+	fuse? ( sys-fs/fuse:0= )
+	kauth? ( virtual/pam )
+	kerberos? ( virtual/krb5 )
+	ncurses? ( sys-libs/ncurses:0= )"
+DEPEND="${RDEPEND}"
 
-RDEPEND="${CDEPEND}
-	modules? ( ~net-fs/openafs-kernel-${PV} )"
+REQUIRED_USE="gssapi? ( kerberos )"
 
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=( "${WORKDIR}/gentoo/patches" )
+
+CONFIG_CHECK="~!AFS_FS KEYS"
+ERROR_AFS_FS="OpenAFS conflicts with the in-kernel AFS-support. Make sure not to load both at the same time!"
+ERROR_KEYS="OpenAFS needs CONFIG_KEYS option enabled"
+MODULES_OPTIONAL_USE="modules"
+
+QA_TEXTRELS_x86_fbsd="/boot/modules/libafs.ko"
+QA_TEXTRELS_amd64_fbsd="/boot/modules/libafs.ko"
+
+pkg_pretend() {
+	if use modules && use kernel_linux && kernel_is -ge ${KERNEL_LIMIT/\./ } ; then
+		ewarn "Gentoo supports kernels which are supported by OpenAFS"
+		ewarn "which are limited to the kernel versions: < ${KERNEL_LIMIT}"
+		ewarn ""
+		ewarn "You are free to utilize epatch_user to provide whatever"
+		ewarn "support you feel is appropriate, but will not receive"
+		ewarn "support as a result of those changes."
+		ewarn ""
+		ewarn "Please do not file a bug report about this."
+		ewarn ""
+		ewarn "Alternatively, you may:"
+		ewarn "1. Use OpenAFS FUSE client, build OpenAFS with USE=fuse to enable it."
+		ewarn "2. Use native kernel AFS client: configure your kernel with CONFIG_AFS_FS."
+		ewarn "net-fs/openafs is not required in this case, but client's functionality will be limited."
+	fi
+}
+
+pkg_setup() {
+	use kernel_linux && linux-mod_pkg_setup
+}
 
 src_prepare() {
 	default
@@ -52,46 +98,79 @@ src_prepare() {
 	# fixing 2-nd level makefiles to honor flags
 	sed -i -r 's/\<CFLAGS[[:space:]]*=/CFLAGS+=/; s/\<LDFLAGS[[:space:]]*=/LDFLAGS+=/' \
 		src/*/Makefile.in || die '*/Makefile.in sed failed'
+	# fix xml docs to use local dtd files
+	sed -i 's|http://www.oasis-open.org/docbook/xml/4.3|/usr/share/sgml/docbook/xml-dtd-4.3|' \
+		doc/xml/*/*000.xml || die
 
 	# packaging is f-ed up, so we can't run eautoreconf
 	# run autotools commands based on what is listed in regen.sh
-	eaclocal -I src/cf
+	eaclocal -I src/cf -I src/external/rra-c-util/m4
 	eautoconf
 	eautoconf -o configure-libafs configure-libafs.ac
 	eautoheader
 	einfo "Deleting autom4te.cache directory"
-	rm -rf autom4te.cache
+	rm -rf autom4te.cache || die
 }
 
 src_configure() {
-	local myconf
-	use debug && use pam && myconf="--enable-debug-pam"
+	local -a myconf
+
+	if use debug; then
+		use kauth && myconf+=( --enable-debug-pam )
+		use modules && myconf+=( --enable-debug-kernel )
+	fi
+
+	if use modules; then
+		if use kernel_linux; then
+			if kernel_is -ge 3 17 && kernel_is -le 3 17 2; then
+				myconf+=( --enable-linux-d_splice_alias-extra-iput )
+			fi
+			myconf+=( --with-linux-kernel-headers="${KV_DIR}" \
+					  --with-linux-kernel-build="${KV_OUT_DIR}" )
+		elif use kernel_FreeBSD; then
+			myconf+=( --with-bsd-kernel-build="${BSD_BUILD_DIR}" )
+		fi
+	fi
+
+	use amd64 && use tsm && myconf+=( --enable-tivoli-tsm )
+
+	local ARCH="$(tc-arch-kernel)"
+	local MY_ARCH="$(tc-arch)"
+	local BSD_BUILD_DIR="/usr/src/sys/${MY_ARCH}/compile/GENERIC"
 
 	AFS_SYSKVERS=26 \
 	econf \
-		--disable-kernel-module \
 		--disable-strip-binaries \
 		$(use_enable bitmap-later) \
 		$(use_enable debug) \
+		$(use_enable debug debug-locks) \
 		$(use_enable debug debug-lwp) \
 		$(use_enable fuse fuse-client) \
+		$(use_enable kauth) \
+		$(use_enable modules kernel-module) \
+		$(use_enable namei namei-fileserver) \
 		$(use_enable ncurses gtx) \
-		$(use_enable pam) \
 		$(use_enable pthreaded-ubik) \
 		$(use_enable supergroups) \
-		$(use_with doc html-xsl /usr/share/sgml/docbook/xsl-stylesheets/html/chunk.xsl) \
+		$(use_enable ubik-read-while-write) \
+		$(use_with api dot) \
+		$(use_with doc docbook-stylesheets /usr/share/sgml/docbook/xsl-stylesheets) \
+		$(use_with gssapi) \
 		$(use_with kerberos krb5) \
-		"${myconf}"
+		$(use_with perl swig) \
+		"${myconf[@]}"
 }
 
 src_compile() {
-	emake all_nolibafs
+	ARCH="$(tc-arch-kernel)" AR="$(tc-getAR)" emake V=1
 	local d
 	if use doc; then
-		for d in doc/xml/{AdminGuide,QuickStartUnix,UserGuide}; do
-			emake -C "${d}" html;
-		done
+		emake -C doc/xml/AdminGuide auagd000.pdf
+		emake -C doc/xml/AdminRef auarf000.pdf
+		emake -C doc/xml/QuickStartUnix auqbg000.pdf
+		emake -C doc/xml/UserGuide auusg000.pdf
 	fi
+	use api && doxygen doc/doxygen/Doxyfile
 }
 
 src_install() {
@@ -100,23 +179,45 @@ src_install() {
 
 	emake DESTDIR="${ED}" install_nolibafs
 
+	if use modules; then
+		if use kernel_linux; then
+			local srcdir=$(expr "${S}"/src/libafs/MODLOAD-*)
+			[[ -f ${srcdir}/libafs.${KV_OBJ} ]] || die "Couldn't find compiled kernel module"
+
+			MODULE_NAMES="libafs(fs/openafs:${srcdir})"
+
+			linux-mod_src_install
+		elif use kernel_FreeBSD; then
+			insinto /boot/modules
+			doins "${S}"/src/libafs/MODLOAD/libafs.ko
+		fi
+	fi
+
 	insinto /etc/openafs
 	doins src/afsd/CellServDB
 	echo "/afs:/var/cache/openafs:200000" > "${ED}"/etc/openafs/cacheinfo
 	echo "openafs.org" > "${ED}"/etc/openafs/ThisCell
 
 	# pam_afs and pam_afs.krb have been installed in irregular locations, fix
-	if use pam ; then
+	if use kauth; then
 		dopammod "${ED}"/usr/$(get_libdir)/pam_afs*
 	fi
 	rm -f "${ED}"/usr/$(get_libdir)/pam_afs* || die
 
 	# remove kdump stuff provided by kexec-tools #222455
-	rm -rf "${ED}"/usr/sbin/kdump*
+	rm -rf "${ED}"/usr/sbin/kdump* || die
 
 	# avoid collision with mit_krb5's version of kpasswd
-	mv "${ED}"/usr/bin/kpasswd{,_afs} || die
-	mv "${ED}"/usr/share/man/man1/kpasswd{,_afs}.1 || die
+	if use kauth; then
+		mv "${ED}"/usr/bin/kpasswd{,_afs} || die
+		mv "${ED}"/usr/share/man/man1/kpasswd{,_afs}.1 || die
+	fi
+
+	# avoid collision with heimdal's pagsh
+	if has_version app-crypt/heimdal; then
+		mv "${ED}"/usr/bin/pagsh{,_afs} || die
+		mv "${ED}"/usr/share/man/man1/pagsh{,_afs}.1 || die
+	fi
 
 	# move lwp stuff around #200674 #330061
 	mv "${ED}"/usr/include/{lwp,lock,timer}.h "${ED}"/usr/include/afs/ || die
@@ -129,16 +230,20 @@ src_install() {
 		|| die
 
 	# minimal documentation
-	use pam && doman src/pam/pam_afs.5
+	use kauth && doman src/pam/pam_afs.5
 	DOCS=( "${WORKDIR}/gentoo/README.Gentoo"
 			src/afsd/CellServDB NEWS README )
 
 	# documentation package
-	if use doc ; then
-		DOCS+=( doc/{arch,examples,pdf,protocol,txt} )
-		dohtml -r doc/xml/
+	rm -rf doc/txt/winnotes || die # unneeded docs
+	if use doc; then
+		DOCS+=( doc/{pdf,protocol,txt} CODING CONTRIBUTING )
+		newdoc doc/xml/AdminGuide/auagd000.pdf AdminGuide.pdf
+		newdoc doc/xml/AdminRef/auarf000.pdf AdminRef.pdf
+		newdoc doc/xml/QuickStartUnix/auqbg000.pdf QuickStartUnix.pdf
+		newdoc doc/xml/UserGuide/auusg000.pdf UserGuide.pdf
 	fi
-
+	use api && DOCS+=( doc/doxygen/output/html )
 	einstalldocs
 
 	# Gentoo related scripts
@@ -179,6 +284,12 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	if use modules; then
+		# Update linker.hints file
+		use kernel_FreeBSD && /usr/sbin/kldxref "${EPREFIX}/boot/modules"
+		use kernel_linux && linux-mod_pkg_postinst
+	fi
+
 	elog "This installation should work out of the box (at least the"
 	elog "client part doing global afs-cell browsing, unless you had"
 	elog "a previous and different configuration).  If you want to"
@@ -191,6 +302,14 @@ pkg_postinst() {
 	elog
 	elog "Systemd users should run emerge --config ${CATEGORY}/${PN} before"
 	elog "first use and whenever ${EROOT}/etc/openafs/cacheinfo is edited."
+}
+
+pkg_postrm() {
+	if use modules; then
+		# Update linker.hints file
+		use kernel_FreeBSD && /usr/sbin/kldxref "${EPREFIX}/boot/modules"
+		use kernel_linux && linux-mod_pkg_postrm
+	fi
 }
 
 pkg_config() {
