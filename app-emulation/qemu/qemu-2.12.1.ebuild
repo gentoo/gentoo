@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -196,7 +196,6 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	${PYTHON_DEPS}
 	dev-lang/perl
-	=dev-lang/python-2*
 	sys-apps/texinfo
 	virtual/pkgconfig
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6.35 )
