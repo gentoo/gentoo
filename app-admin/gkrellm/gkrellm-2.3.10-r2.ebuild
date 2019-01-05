@@ -1,15 +1,14 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils multilib user systemd toolchain-funcs
+inherit desktop multilib user systemd toolchain-funcs
 
 MY_P="${P/_/-}"
 
 DESCRIPTION="Single process stack of various system monitors"
 HOMEPAGE="http://www.gkrellm.net/"
-# Upstream named their xz compressed tarball tar.bz2 (*sigh*)
 SRC_URI="http://gkrellm.srcbox.net/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
@@ -39,11 +38,13 @@ RDEPEND="
 		x11-libs/pango
 		)"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+BDEPEND="
+	virtual/pkgconfig
+"
+
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.3.5-cifs.patch
 	"${FILESDIR}"/${PN}-2.3.5-config.patch
 	"${FILESDIR}"/${PN}-2.3.5-width.patch
 	"${FILESDIR}"/${PN}-2.3.5-sansfont.patch
@@ -61,8 +62,6 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	enewgroup gkrellmd
-	enewuser gkrellmd -1 -1 -1 gkrellmd
 	TARGET=
 	use kernel_FreeBSD && TARGET="freebsd"
 }
@@ -139,4 +138,9 @@ src_install() {
 	doins server/gkrellmd.conf
 
 	einstalldocs
+}
+
+pkg_preinst() {
+	enewgroup gkrellmd
+	enewuser gkrellmd -1 -1 -1 gkrellmd
 }
