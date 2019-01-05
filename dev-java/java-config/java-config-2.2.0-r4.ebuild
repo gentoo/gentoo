@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Java environment configuration query tool"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Java"
-SRC_URI="https://dev.gentoo.org/~sera/distfiles/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~gyakovlev/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"
