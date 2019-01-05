@@ -6562,7 +6562,7 @@ gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.24.2: Log messages and event viewer
 gnome-extra/gnome-power-manager 3.24.0: GNOME power management service
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
-gnome-extra/gnome-shell-extension-gsconnect 12: KDE Connect implementation for Gnome Shell
+gnome-extra/gnome-shell-extension-gsconnect 12-r1: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.24.3: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 21: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.24.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
@@ -11206,7 +11206,7 @@ x11-terms/xfce4-terminal 0.8.7.2 0.8.7.4: A terminal emulator for the Xfce deskt
 x11-terms/xterm 327: Terminal Emulator for X Windows
 x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
-x11-themes/QGnomePlatform 0.3-r1 0.4: A Qt Platform Theme aimed to accommodate GNOME settings
+x11-themes/QGnomePlatform 0.4: A Qt Platform Theme aimed to accommodate GNOME settings
 x11-themes/adwaita-icon-theme 3.24.0: GNOME default icon theme
 x11-themes/adwaita-qt 1.0-r1: A style to bend Qt applications to look like they belong into GNOME Shell
 x11-themes/arc-icon-theme 20161122: Vertex icon theme
