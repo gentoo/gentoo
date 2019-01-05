@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,8 @@ PYTHON_COMPAT=( python3_{4,5,6,7} )
 inherit kde5 python-single-r1
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/stable/${PN}/${PV%.1}/${P}.101.tar.gz"
+	SRC_URI="mirror://kde/stable/${PN}/${PV%.1}/${P}.101.tar.gz
+		https://dev.gentoo.org/~asturm/distfiles/${P}-patchset.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -88,7 +89,10 @@ RESTRICT+=" test"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.3-tests-optional.patch"
-	"${FILESDIR}/${P}-exiv2-0.27.patch"
+	"${WORKDIR}/${P}-exiv2-0.27.patch"
+	"${WORKDIR}/${P}-resize-hud.patch"
+	"${WORKDIR}/${P}-overview-docker.patch"
+	"${WORKDIR}/${P}-assert-error.patch"
 )
 
 S="${S}.101"

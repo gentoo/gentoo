@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,6 +45,7 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 
 src_configure() {
 	local myconf=(
+		-no-feature-statx	# bug #672856
 		$(qt_use icu)
 		$(qt_use !icu iconv)
 		$(qt_use systemd journald)
