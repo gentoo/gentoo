@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ PATCH=3989
 GLIDE_PATCH=3722fc563b737d2d7933df6a771651c2154e6f7b
 
 DESCRIPTION="DOS emulator"
-HOMEPAGE="http://dosbox.sourceforge.net/"
+HOMEPAGE="https://www.dosbox.com/"
 SRC_URI="mirror://gentoo/dosbox-code-0-${PATCH}-dosbox-trunk.zip
 	glide? ( https://raw.githubusercontent.com/voyageur/openglide/${GLIDE_PATCH}/platform/dosbox/dosbox_glide.diff -> dosbox_glide-${GLIDE_PATCH}.diff )"
 
@@ -34,7 +34,8 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${PN}-code-0-${PATCH}-dosbox-trunk
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.74-gcc46.patch
+	"${FILESDIR}/${PN}-0.74-gcc46.patch"
+	"${FILESDIR}/${PN}-0.74.2_events.patch"
 )
 
 src_prepare() {

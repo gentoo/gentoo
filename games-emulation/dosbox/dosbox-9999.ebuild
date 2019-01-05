@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="DOS emulator"
-HOMEPAGE="http://dosbox.sourceforge.net/"
+HOMEPAGE="https://www.dosbox.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
