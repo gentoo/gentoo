@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -36,4 +36,8 @@ all_ruby_prepare() {
 
 	# Avoid a spec requiring a specific locale
 	sed -i -e '/copes with encoded strings/ s/RSpec::Support::OS.windows?/true/' spec/rspec/support/differ_spec.rb || die
+
+	# Avoid a brittle spec depending on ruby implementation details
+	# should be fixed upstream in next version
+	sed -i -e '/returns a hash containing nodes for each line number/askip "ruby26"' spec/rspec/support/source_spec.rb || die
 }
