@@ -1,11 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit pax-utils python-utils-r1 unpacker versionator
 
-BINHOST="https://dev.gentoo.org/~mgorny/dist/pypy-bin/${PV}"
+BINHOST="https://dev.gentoo.org/~mgorny/dist/pypy-bin/${PV}.ffi7.ossl11"
+BINHOST_LIBRESSL="https://dev.gentoo.org/~mgorny/dist/pypy-bin/${PV}.ffi7"
 CPY_PATCHSET_VERSION="2.7.14-0"
 MY_P=pypy2-v${PV}
 
@@ -15,31 +16,31 @@ SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2
 	https://dev.gentoo.org/~floppym/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz
 	amd64? (
 		!libressl? (
-			jit? ( ${BINHOST}/${P}-amd64+bzip2+jit+ncurses.tar.lz )
-			!jit? ( ${BINHOST}/${P}-amd64+bzip2+ncurses.tar.lz )
+			jit? ( ${BINHOST}/${P}-amd64+bzip2+jit+ncurses.ffi7.ossl11.tar.lz )
+			!jit? ( ${BINHOST}/${P}-amd64+bzip2+ncurses.ffi7.ossl11.tar.lz )
 		)
 		libressl? (
-			jit? ( ${BINHOST}/${P}-amd64+bzip2+jit+libressl+ncurses.tar.lz )
-			!jit? ( ${BINHOST}/${P}-amd64+bzip2+libressl+ncurses.tar.lz )
+			jit? ( ${BINHOST_LIBRESSL}/${P}-amd64+bzip2+jit+libressl+ncurses.ffi7.tar.lz )
+			!jit? ( ${BINHOST_LIBRESSL}/${P}-amd64+bzip2+libressl+ncurses.ffi7.tar.lz )
 		)
 	)
 	x86? (
 		!libressl? (
 			cpu_flags_x86_sse2? (
-				jit? ( ${BINHOST}/${P}-x86+bzip2+jit+ncurses+sse2.tar.lz )
-				!jit? ( ${BINHOST}/${P}-x86+bzip2+ncurses+sse2.tar.lz )
+				jit? ( ${BINHOST}/${P}-x86+bzip2+jit+ncurses+sse2.ffi7.ossl11.tar.lz )
+				!jit? ( ${BINHOST}/${P}-x86+bzip2+ncurses+sse2.ffi7.ossl11.tar.lz )
 			)
 			!cpu_flags_x86_sse2? (
-				!jit? ( ${BINHOST}/${P}-x86+bzip2+ncurses.tar.lz )
+				!jit? ( ${BINHOST}/${P}-x86+bzip2+ncurses.ffi7.ossl11.tar.lz )
 			)
 		)
 		libressl? (
 			cpu_flags_x86_sse2? (
-				jit? ( ${BINHOST}/${P}-x86+bzip2+jit+libressl+ncurses+sse2.tar.lz )
-				!jit? ( ${BINHOST}/${P}-x86+bzip2+libressl+ncurses+sse2.tar.lz )
+				jit? ( ${BINHOST_LIBRESSL}/${P}-x86+bzip2+jit+libressl+ncurses+sse2.ffi7.tar.lz )
+				!jit? ( ${BINHOST_LIBRESSL}/${P}-x86+bzip2+libressl+ncurses+sse2.ffi7.tar.lz )
 			)
 			!cpu_flags_x86_sse2? (
-				!jit? ( ${BINHOST}/${P}-x86+bzip2+libressl+ncurses.tar.lz )
+				!jit? ( ${BINHOST_LIBRESSL}/${P}-x86+bzip2+libressl+ncurses.ffi7.tar.lz )
 			)
 		)
 	)"
@@ -56,13 +57,13 @@ IUSE="gdbm +jit libressl sqlite cpu_flags_x86_sse2 test tk"
 RDEPEND="
 	app-arch/bzip2:0/1
 	dev-libs/expat:0/0
-	dev-libs/libffi:0/0
+	dev-libs/libffi:0/7
 	sys-devel/gcc:*
 	sys-libs/glibc
 	sys-libs/ncurses:0/6
 	sys-libs/zlib:0/1
 	gdbm? ( sys-libs/gdbm:0= )
-	!libressl? ( dev-libs/openssl:0/0[-bindist] )
+	!libressl? ( dev-libs/openssl:0/1.1[-bindist] )
 	libressl? ( dev-libs/libressl:0/44 )
 	sqlite? ( dev-db/sqlite:3= )
 	tk? (
@@ -148,9 +149,20 @@ src_compile() {
 
 src_test() {
 	# (unset)
-	local -x PYTHONDONTWRITEBYTECODE
+	local -x PYTHONDONTWRITEBYTECODE=
 
-	./pypy-c ./pypy/test_all.py --pypy=./pypy-c lib-python || die
+	local ignored_tests=(
+		# network
+		--ignore=lib-python/2.7/test/test_urllibnet.py
+		--ignore=lib-python/2.7/test/test_urllib2net.py
+		# lots of free space
+		--ignore=lib-python/2.7/test/test_zipfile64.py
+		# no module named 'worker' -- a lot
+		--ignore=lib-python/2.7/test/test_xpickle.py
+	)
+
+	./pypy-c ./pypy/test_all.py --pypy=./pypy-c -vv \
+		"${ignored_tests[@]}" lib-python || die
 }
 
 src_install() {

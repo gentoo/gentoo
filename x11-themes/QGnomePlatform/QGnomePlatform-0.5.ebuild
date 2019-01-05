@@ -1,20 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit qmake-utils
 
 DESCRIPTION="A Qt Platform Theme aimed to accommodate GNOME settings"
-HOMEPAGE="https://github.com/MartinBriza/QGnomePlatform"
-SRC_URI="https://github.com/MartinBriza/QGnomePlatform/archive/${PV}/${P}.tar.gz"
+HOMEPAGE="https://github.com/FedoraQt/QGnomePlatform"
+SRC_URI="https://github.com/FedoraQt/QGnomePlatform/archive/${PV}/${P}.tar.gz"
 
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE=""
 
 DEPEND="
-	dev-qt/qtwidgets:5=
+	>=dev-qt/qtwidgets-5.6:5=
 	x11-libs/gtk+:3[X]
 "
 RDEPEND="${DEPEND}"
@@ -24,6 +24,5 @@ src_configure() {
 }
 
 src_install() {
-	emake INSTALL_ROOT="${D}" install
-	einstalldocs
+	INSTALL_ROOT="${D}" default
 }
