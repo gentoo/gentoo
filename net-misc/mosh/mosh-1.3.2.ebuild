@@ -12,20 +12,25 @@ SRC_URI="https://mosh.org/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~mips ppc x86 ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="+client examples +mosh-hardening +server ufw +utempter"
+IUSE="+client examples libressl +mosh-hardening +server ufw +utempter"
 
 REQUIRED_USE="
 	|| ( client server )
 	examples? ( client )"
 
 RDEPEND="
-	dev-libs/openssl:0=
 	dev-libs/protobuf:0=
 	sys-libs/ncurses:0=
 	virtual/ssh
 	client? (
 		dev-lang/perl
 		dev-perl/IO-Tty
+	)
+	libressl? (
+		dev-libs/libressl:0=
+	)
+	!libressl? (
+		dev-libs/openssl:0=
 	)
 	utempter? (
 		sys-libs/libutempter

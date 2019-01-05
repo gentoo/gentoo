@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/keithw/mosh.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="+client examples +mosh-hardening +server ufw +utempter"
+IUSE="+client examples libressl +mosh-hardening +server ufw +utempter"
 
 REQUIRED_USE="
 	|| ( client server )
@@ -26,6 +26,12 @@ RDEPEND="
 	client? (
 		dev-lang/perl
 		dev-perl/IO-Tty
+	)
+	libressl? (
+		dev-libs/libressl:0=
+	)
+	!libressl? (
+		dev-libs/openssl:0=
 	)
 	utempter? (
 		sys-libs/libutempter
