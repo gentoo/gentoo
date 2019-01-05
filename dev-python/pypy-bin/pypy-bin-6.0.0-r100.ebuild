@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit pax-utils python-utils-r1 unpacker versionator
 
-BINHOST="https://dev.gentoo.org/~mgorny/dist/pypy-bin/${PV}-ffi7"
+BINHOST="https://dev.gentoo.org/~mgorny/dist/pypy-bin/${PV}.ffi7"
 CPY_PATCHSET_VERSION="2.7.14-0"
 MY_P=pypy2-v${PV}
 
@@ -15,31 +15,31 @@ SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2
 	https://dev.gentoo.org/~floppym/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz
 	amd64? (
 		!libressl? (
-			jit? ( ${BINHOST}/${P}-ffi7-amd64+bzip2+jit+ncurses.tar.lz )
-			!jit? ( ${BINHOST}/${P}-ffi7-amd64+bzip2+ncurses.tar.lz )
+			jit? ( ${BINHOST}/${P}-amd64+bzip2+jit+ncurses.ffi7.tar.lz )
+			!jit? ( ${BINHOST}/${P}-amd64+bzip2+ncurses.ffi7.tar.lz )
 		)
 		libressl? (
-			jit? ( ${BINHOST}/${P}-ffi7-amd64+bzip2+jit+libressl+ncurses.tar.lz )
-			!jit? ( ${BINHOST}/${P}-ffi7-amd64+bzip2+libressl+ncurses.tar.lz )
+			jit? ( ${BINHOST}/${P}-amd64+bzip2+jit+libressl+ncurses.ffi7.tar.lz )
+			!jit? ( ${BINHOST}/${P}-amd64+bzip2+libressl+ncurses.ffi7.tar.lz )
 		)
 	)
 	x86? (
 		!libressl? (
 			cpu_flags_x86_sse2? (
-				jit? ( ${BINHOST}/${P}-ffi7-x86+bzip2+jit+ncurses+sse2.tar.lz )
-				!jit? ( ${BINHOST}/${P}-ffi7-x86+bzip2+ncurses+sse2.tar.lz )
+				jit? ( ${BINHOST}/${P}-x86+bzip2+jit+ncurses+sse2.ffi7.tar.lz )
+				!jit? ( ${BINHOST}/${P}-x86+bzip2+ncurses+sse2.ffi7.tar.lz )
 			)
 			!cpu_flags_x86_sse2? (
-				!jit? ( ${BINHOST}/${P}-ffi7-x86+bzip2+ncurses.tar.lz )
+				!jit? ( ${BINHOST}/${P}-x86+bzip2+ncurses.ffi7.tar.lz )
 			)
 		)
 		libressl? (
 			cpu_flags_x86_sse2? (
-				jit? ( ${BINHOST}/${P}-ffi7-x86+bzip2+jit+libressl+ncurses+sse2.tar.lz )
-				!jit? ( ${BINHOST}/${P}-ffi7-x86+bzip2+libressl+ncurses+sse2.tar.lz )
+				jit? ( ${BINHOST}/${P}-x86+bzip2+jit+libressl+ncurses+sse2.ffi7.tar.lz )
+				!jit? ( ${BINHOST}/${P}-x86+bzip2+libressl+ncurses+sse2.ffi7.tar.lz )
 			)
 			!cpu_flags_x86_sse2? (
-				!jit? ( ${BINHOST}/${P}-ffi7-x86+bzip2+libressl+ncurses.tar.lz )
+				!jit? ( ${BINHOST}/${P}-x86+bzip2+libressl+ncurses.ffi7.tar.lz )
 			)
 		)
 	)"
