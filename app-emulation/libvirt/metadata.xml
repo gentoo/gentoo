@@ -11,6 +11,9 @@
 </maintainer>
 <use>
 	<!-- Pool backend flags -->
+	<flag name="iscsi-direct">
+		Allow using libiscsi for iSCSI storage pool backend
+	</flag>
 	<flag name="iscsi">
 		Allow using an iSCSI remote storage server as pool for disk image storage
 	</flag>
