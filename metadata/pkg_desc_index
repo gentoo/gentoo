@@ -1550,7 +1550,7 @@ app-vim/cvsmenu 1.147-r1: vim plugin: CVS(NT) integration script
 app-vim/dbext 26.00: vim plugin: easy access to databases
 app-vim/detectindent 1.0_p20150908: vim plugin: automatically detect file indent settings
 app-vim/dhcpd-syntax 20030825-r1: vim plugin: syntax highlighting for dhcpd.conf
-app-vim/diffchar 7.2: vim plugin: highlight the exact differences, based on characters and words
+app-vim/diffchar 8.1: vim plugin: highlight the exact differences, based on characters and words
 app-vim/dirdiff 1.1.5-r1: vim plugin: diff and merge two directories recursively
 app-vim/easy-align 2.10.0: vim plugin: a simple alignment plugin
 app-vim/easytags 3.11: vim plugin: automated tag file generation and syntax highlighting
@@ -1564,7 +1564,7 @@ app-vim/extra-syntax 4-r2: vim plugin: metapackage for all extra syntax packages
 app-vim/fluxbox-syntax 1.5: vim plugin: fluxbox files syntax and indent
 app-vim/foldutil 3.0-r1: vim plugin: fold creation utility
 app-vim/frawor 0.2.3: vim plugin: modular vim framework
-app-vim/fugitive 2.3: vim plugin: a git wrapper for vim
+app-vim/fugitive 2.4: vim plugin: a git wrapper for vim
 app-vim/fuzzyfinder 4.2.2: vim plugin: buffer/file/command/tag/etc explorer with fuzzy matching
 app-vim/genindent 1.1-r1: vim plugin: library for simplifying indent files
 app-vim/gentoo-syntax 20180821 20181023: vim plugin: Gentoo and Portage syntax highlighting
