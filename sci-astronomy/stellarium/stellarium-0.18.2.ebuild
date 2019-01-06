@@ -43,7 +43,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
 
-PATCHES=( "${FILESDIR}"/${P}-as-needed.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-as-needed.patch
+	"${FILESDIR}"/${P}-fix-test.patch
+)
 
 src_prepare() {
 	cmake-utils_src_prepare
