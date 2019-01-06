@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	inherit vcs-snapshot
 	SRC_URI="https://github.com/tpope/vim-fugitive/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~ppc-macos ~x64-macos"
+	KEYWORDS="amd64 x86 ~ppc-macos ~x64-macos"
 fi
 
 DESCRIPTION="vim plugin: a git wrapper for vim"

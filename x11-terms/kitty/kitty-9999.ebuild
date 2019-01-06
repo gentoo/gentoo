@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,7 +38,7 @@ COMMON_DEPS="
 	x11-libs/libxcb[xkb]
 	wayland? (
 		dev-libs/wayland
-		>=dev-libs/wayland-protocols-1.12
+		>=dev-libs/wayland-protocols-1.17
 	)
 "
 RDEPEND="
@@ -52,7 +52,7 @@ DEPEND="${RDEPEND}
 [[ ${PV} == *9999 ]] && DEPEND+=" >=dev-python/sphinx-1.7[${PYTHON_USEDEP}]"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.11.0-flags.patch
+	"${FILESDIR}"/${PN}-0.13.2-flags.patch
 	"${FILESDIR}"/${PN}-0.11.0-svg-icon.patch
 )
 
