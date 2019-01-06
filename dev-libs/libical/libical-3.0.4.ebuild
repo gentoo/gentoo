@@ -73,6 +73,14 @@ src_compile() {
 	use doc && cmake-utils_src_compile docs
 }
 
+src_test() {
+	local myctestargs=(
+		-E "(icalrecurtest|icalrecurtest-r)" # bug 660282
+	)
+
+	cmake-utils_src_test
+}
+
 src_install() {
 	use doc && HTML_DOCS=( "${BUILD_DIR}"/apidocs/html/. )
 
