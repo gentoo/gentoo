@@ -3928,7 +3928,6 @@ net-fs/nfs-utils:uuid - Support UUID lookups in rpc.mountd
 net-fs/openafs:api - Build API documentation using app-doc/doxygen. May take a *long* time to build.
 net-fs/openafs:bitmap-later - Enable fast startup of file server by not reading bitmap till needed.
 net-fs/openafs:fuse - Build fuse client.
-net-fs/openafs:gssapi - Enable GSSAPI support via Kerberos (virtual/krb5).
 net-fs/openafs:kauth - Install the DEPRECATED kauth server, PAM modules, and utilities
 net-fs/openafs:modules - Build libafs kernel module. Disable only if you know what you're doing: without this module OpenAFS client will not work.
 net-fs/openafs:namei - Enable namei fileserver instead of inode fileserver. You should disable this option only if compatibility with inode format AFS storage is required.
