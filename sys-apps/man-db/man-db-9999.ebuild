@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit ltprune user versionator
+inherit user eapi7-ver
 
 DESCRIPTION="a man replacement that utilizes berkdb instead of flat files"
 HOMEPAGE="http://www.nongnu.org/man-db/"
@@ -17,7 +17,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="berkdb +gdbm +manpager nls seccomp selinux static-libs zlib"
+IUSE="berkdb +gdbm +manpager nls +seccomp selinux static-libs zlib"
 
 CDEPEND="
 	!sys-apps/man
@@ -57,9 +57,8 @@ pkg_setup() {
 src_configure() {
 	export ac_cv_lib_z_gzopen=$(usex zlib)
 	local myeconfargs=(
-		--docdir='$(datarootdir)'/doc/${PF}
 		--with-systemdtmpfilesdir="${EPREFIX}"/usr/lib/tmpfiles.d
-		--enable-setuid
+		--disable-setuid #662438
 		--enable-cache-owner=man
 		--with-sections="1 1p 8 2 3 3p 4 5 6 7 9 0p tcl n l p o 1x 2x 3x 4x 5x 6x 7x 8x"
 		$(use_enable nls)
@@ -78,10 +77,10 @@ src_configure() {
 src_install() {
 	default
 	dodoc docs/{HACKING,TODO}
-	prune_libtool_files
+	find "${ED}" -name "*.la" -delete || die
 
 	exeinto /etc/cron.daily
-	newexe "${FILESDIR}"/man-db.cron man-db #289884
+	newexe "${FILESDIR}"/man-db.cron-r1 man-db #289884
 }
 
 pkg_preinst() {
@@ -115,8 +114,8 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if [[ $(get_version_component_range 2 ${REPLACING_VERSIONS}) -lt 7 ]] ; then
+	if [[ $(ver_cut 2 ${REPLACING_VERSIONS}) -lt 7 ]] ; then
 		einfo "Rebuilding man-db from scratch with new database format!"
-		mandb --quiet --create
+		su man -s /bin/sh -c 'mandb --quiet --create' 2>/dev/null
 	fi
 }
