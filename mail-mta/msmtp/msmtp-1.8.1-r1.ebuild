@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -63,6 +63,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-gai-idn
 		$(use_enable nls)
 		$(use_with daemon msmtpd)
 		$(use_with gnome-keyring libsecret)
