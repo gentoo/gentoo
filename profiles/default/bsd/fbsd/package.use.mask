@@ -1,11 +1,6 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andrew Savcheko <bircoph@gentoo.org> (05 Jan 2019)
-# GSSAPI support in OpenAFS requires Kerberos to be enabled and it
-# is disabled for now (see use.mask)
-net-fs/openafs gssapi
-
 # Michał Górny <mgorny@gentoo.org> (06 Apr 2018)
 # We are building only minimal util-linux, so program flags
 # are irrelevant to us.
