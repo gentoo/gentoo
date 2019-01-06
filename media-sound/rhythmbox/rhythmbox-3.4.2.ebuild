@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -77,12 +77,13 @@ RDEPEND="${COMMON_DEPEND}
 		>=media-plugins/grilo-plugins-0.3:0.3[upnp-av] )
 "
 DEPEND="${COMMON_DEPEND}
-	app-text/yelp-tools
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.35
+	dev-util/itstool
 	virtual/pkgconfig
 	test? ( dev-libs/check )
 "
+# eautoreconf needs yelp-tools
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gstreamer-1.14.patch
