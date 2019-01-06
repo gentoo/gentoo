@@ -1,4 +1,4 @@
-# Copyright 2018 Gentoo Authors
+# Copyright 2018-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,18 +19,18 @@ BDEPEND="
 "
 
 src_compile() {
-	./redo -j$(makeopts_jobs) || die
+	./do -j$(makeopts_jobs) build || die
 }
 
 src_test() {
-	./redo -j$(makeopts_jobs) test || die
+	./do -j$(makeopts_jobs) test || die
 }
 
 src_install() {
 	DESTDIR="${D}" \
 	DOCDIR="${D}/usr/share/doc/${PF}" \
 	LIBDIR="${D}/usr/$(get_libdir)/${PN}" \
-	./redo -j$(makeopts_jobs) \
+	./do -j$(makeopts_jobs) \
 		install || die
 
 	python_fix_shebang "${D}"

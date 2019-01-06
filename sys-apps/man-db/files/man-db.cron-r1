@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Use same perms/settings as the ebuild.
+cachedir="/var/cache/man"
+if [ ! -d "${cachedir}" ]; then
+	mkdir -p "${cachedir}"
+	chown man:man "${cachedir}"
+	chmod 0755 "${cachedir}"
+fi
+
+exec su man -s /bin/sh -c 'nice mandb --quiet' 2>/dev/null
