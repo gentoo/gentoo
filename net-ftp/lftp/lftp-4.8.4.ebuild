@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ RDEPEND="
 	dev-libs/expat
 	sys-libs/zlib
 	convert-mozilla-cookies? ( dev-perl/DBI )
-	idn? ( net-dns/libidn2 )
+	idn? ( net-dns/libidn2:= )
 	socks5? (
 		>=net-proxy/dante-1.1.12
 		virtual/pam
