@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		A modern ls with a lot of pretty colors and awesome icons.
+		This project is heavily inspired by the super colorls project but with some little differences.
+		For example it is written in rust and not in ruby which makes it really faster
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/Peltoche/lsd/issues</bugs-to>
+		<changelog>https://github.com/Peltoche/lsd/blob/master/CHANGELOG.md</changelog>
+		<remote-id type="github">Peltoche/lsd</remote-id>
+	</upstream>
+</pkgmetadata>
