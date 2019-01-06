@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,6 +22,7 @@ DEPEND="
 	doc? (
 		${PYTHON_DEPS}
 		$(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]')
+		$(add_qt_dep qthelp)
 	)
 	test? (
 		$(add_qt_dep qtcore)

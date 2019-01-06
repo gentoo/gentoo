@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,10 +25,10 @@ IUSE="debug gps media nls stars test"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtopengl:5
-	dev-qt/qtscript:5
 	dev-qt/qtnetwork:5
+	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
+	dev-qt/qtscript:5
 	dev-qt/qtserialport:5
 	dev-qt/qtwidgets:5
 	media-fonts/dejavu
@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
 
-PATCHES=( "${FILESDIR}"/${P}.patch )
+PATCHES=( "${FILESDIR}"/${P}-as-needed.patch )
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -53,8 +53,8 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_GPS="$(usex gps)"
-		-DENABLE_NLS="$(usex nls)"
 		-DENABLE_MEDIA="$(usex media)"
+		-DENABLE_NLS="$(usex nls)"
 		-DENABLE_TESTING="$(usex test)"
 	)
 	cmake-utils_src_configure
