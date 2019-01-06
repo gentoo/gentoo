@@ -7,7 +7,7 @@ inherit autotools linux-mod flag-o-matic pam systemd toolchain-funcs
 
 MY_PV=${PV/_/}
 MY_P="${PN}-${MY_PV}"
-PVER=20190105
+PVER=20190106
 KERNEL_LIMIT=4.21
 
 DESCRIPTION="The OpenAFS distributed file system"
@@ -24,7 +24,7 @@ LICENSE="IBM BSD openafs-krb5-a APSL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 
-IUSE="api bitmap-later debug doc fuse gssapi kauth kerberos +modules +namei
+IUSE="api bitmap-later debug doc fuse kauth kerberos +modules +namei
 ncurses perl +pthreaded-ubik +supergroups tsm ubik-read-while-write"
 
 BDEPEND="
@@ -55,8 +55,6 @@ DEPEND="
 	kerberos? ( virtual/krb5 )
 	ncurses? ( sys-libs/ncurses:0= )"
 DEPEND="${RDEPEND}"
-
-REQUIRED_USE="gssapi? ( kerberos )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -155,8 +153,8 @@ src_configure() {
 		$(use_enable ubik-read-while-write) \
 		$(use_with api dot) \
 		$(use_with doc docbook-stylesheets /usr/share/sgml/docbook/xsl-stylesheets) \
-		$(use_with gssapi) \
 		$(use_with kerberos krb5) \
+		$(use_with kerberos gssapi) \
 		$(use_with perl swig) \
 		"${myconf[@]}"
 }
