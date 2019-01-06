@@ -33,6 +33,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
 # have REQUIRED_USE do what it is made for again. bug #607360
 CDEPEND="
 	app-misc/mime-types
+	virtual/libiconv
 
 	berkdb?        ( >=sys-libs/db-4:= )
 	gdbm?          ( sys-libs/gdbm )
@@ -153,13 +154,14 @@ src_configure() {
 		$(use !ssl &&                echo --without-gnutls --without-ssl)
 
 		$(use_with sasl)
-		$(use_with idn)
+		$(use_with idn idn2) --without-idn  # avoid automagic libidn dep
 		$(use_with kerberos gss)
 		"$(use slang && echo --with-slang="${EPREFIX}"/usr || echo a=b)"
 		"$(use_with !slang curses "${EPREFIX}"/usr)"
 
 		"--enable-compressed"
 		"--enable-external-dotlock"
+		"--enable-iconv"
 		"--enable-nfs-fix"
 		"--enable-sidebar"
 		"--sysconfdir=${EPREFIX}/etc/${PN}"
