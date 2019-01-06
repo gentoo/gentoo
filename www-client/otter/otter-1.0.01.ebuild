@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils cmake-utils gnome2-utils xdg-utils
+inherit cmake-utils desktop gnome2-utils xdg-utils
 
 DESCRIPTION="Project aiming to recreate classic Opera (12.x) UI using Qt5"
 HOMEPAGE="http://otter-browser.org/"
