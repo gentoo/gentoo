@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,6 +34,11 @@ DOCS="AUTHORS ChangeLog TODO"
 src_prepare() {
 	cmake-utils_src_prepare
 	local x sed_args
+
+	if use libressl; then
+		sed -e 's:^#ifdef PODOFO_HAVE_OPENSSL_1_1$:#ifndef PODOFO_HAVE_OPENSSL_1_1:' \
+			 -i tools/podofosign/podofosign.cpp || die #663602
+	fi
 
 	# bug 620934 - Disable linking with cppunit when possible, since it
 	# triggers errors with some older compilers.
