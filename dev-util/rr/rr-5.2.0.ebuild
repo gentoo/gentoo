@@ -31,9 +31,9 @@ DEPEND+="
 		sys-devel/gdb[xml]
 	)"
 
-#PATCHES=(
-#	"${FILESDIR}"/${P}-sysmacros.patch
-#)
+PATCHES=(
+	"${FILESDIR}"/${P}-ucontext_t.patch
+)
 
 pkg_setup() {
 	if use kernel_linux; then
