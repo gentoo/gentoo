@@ -22,12 +22,12 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.38:2
 	>=dev-libs/libxml2-2.7.8:2
-	>=x11-libs/gtk+-3.16:3[X,introspection]
+	>=x11-libs/gtk+-3.20.0:3[X,introspection]
 	>=x11-libs/gdk-pixbuf-2.18:2
 	>=dev-libs/gobject-introspection-0.10:=
 	>=dev-libs/libpeas-0.7.3[gtk]
@@ -85,10 +85,6 @@ DEPEND="${COMMON_DEPEND}
 "
 # eautoreconf needs yelp-tools
 
-PATCHES=(
-	"${FILESDIR}"/${P}-gstreamer-1.14.patch
-)
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
@@ -103,7 +99,6 @@ src_configure() {
 		--disable-more-warnings \
 		--disable-static \
 		--disable-vala \
-		--without-hal \
 		$(use_enable daap) \
 		$(use_enable libnotify) \
 		$(use_enable lirc) \

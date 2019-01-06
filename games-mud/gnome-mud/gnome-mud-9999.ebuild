@@ -18,14 +18,15 @@ IUSE="debug gstreamer"
 
 RDEPEND="
 	>=dev-libs/glib-2.48:2
-	>=x11-libs/gtk+-3.10:3
+	>=x11-libs/gtk+-3.22:3
 	>=x11-libs/vte-0.37:2.91
 	dev-libs/libpcre
 	sys-libs/zlib
 	gstreamer? ( media-libs/gstreamer:1.0 )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	>=sys-devel/gettext-0.19.8"
+	dev-util/glib-utils
+	>=sys-devel/gettext-0.19.8
+	virtual/pkgconfig"
 
 src_configure() {
 	local emesonargs=(
