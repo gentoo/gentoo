@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="crypt fam gnutls idn ipv6 ldap"
 
-RDEPEND=">=dev-libs/openssl-0.9.6:*
+RDEPEND=">=dev-libs/openssl-0.9.6:0=
 	dev-libs/libxml2
 	sys-libs/ncurses:=
 	>=net-libs/courier-unicode-1.2
