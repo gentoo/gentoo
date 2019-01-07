@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ IUSE=""
 QT_PV="5.3.2:5"
 
 RDEPEND="
-	>=dev-libs/openssl-1.0.2
+	>=dev-libs/openssl-1.0.2:0=
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtgui-${QT_PV}
 	>=dev-qt/qtnetwork-${QT_PV}
