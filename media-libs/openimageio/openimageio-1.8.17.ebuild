@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -89,7 +89,6 @@ src_configure() {
 		-DINSTALL_DOCS=$(usex doc)
 		-DOIIO_BUILD_TESTS=OFF # as they are RESTRICTed
 		-DSTOP_ON_WARNING=OFF
-		-DUSE_CPP14=ON
 		-DUSE_EXTERNAL_PUGIXML=ON
 		-DUSE_FFMPEG=$(usex ffmpeg)
 		-DUSE_FIELD3D=$(usex field3d)
