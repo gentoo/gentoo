@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,6 +50,7 @@ multilib_src_configure() {
 	use userland_BSD && export HOST="${CHOST}"
 	econf \
 		--includedir="${EPREFIX}"/usr/$(get_libdir)/${P}/include \
+		--disable-multi-os-directory \
 		$(use_enable static-libs static) \
 		$(use_enable pax_kernel pax_emutramp) \
 		$(use_enable debug)
