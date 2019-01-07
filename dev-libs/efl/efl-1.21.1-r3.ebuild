@@ -80,7 +80,7 @@ RDEPEND="
 	ssl? (
 		gnutls? ( net-libs/gnutls:= )
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:= )
+			!libressl? ( dev-libs/openssl:0= )
 			libressl? ( dev-libs/libressl:= )
 		)
 	)
