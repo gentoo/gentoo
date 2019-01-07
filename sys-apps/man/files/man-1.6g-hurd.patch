@@ -1,0 +1,11 @@
+--- a/gencat/genlib.c
++++ b/gencat/genlib.c
+@@ -52,7 +52,7 @@
+ #include <sys/types.h>
+ #include <unistd.h>
+ 
+-#if !defined(__linux__) && !defined(__CYGWIN__) && !defined(__FreeBSD__)
++#if !defined(__linux__) && !defined(__CYGWIN__) && !defined(__FreeBSD__) && !defined(__GNU__)
+ #include <memory.h>
+ static int bcopy(src, dst, length);
+ char *src, *dst;
