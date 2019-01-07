@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ RDEPEND="virtual/perl-Digest-MD5
 		dev-perl/Text-Kakasi )
 	mysql? ( dev-perl/DBD-mysql	)
 	ipv6? ( dev-perl/IO-Socket-INET6 )
-	ssl? ( dev-libs/openssl
+	ssl? ( dev-libs/openssl:0
 		dev-perl/IO-Socket-SSL
 		dev-perl/Net-SSLeay )
 	xmlrpc? ( dev-perl/PlRPC )"
