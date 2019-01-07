@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,7 @@ SRC_URI="https://github.com/tmate-io/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 RDEPEND="
 	sys-libs/zlib[static-libs?]
 	sys-libs/libutempter[static-libs?]
-	dev-libs/openssl[static-libs?]
+	dev-libs/openssl:0=[static-libs?]
 	dev-libs/libevent[static-libs?]
 	dev-libs/msgpack[static-libs?]
 	>=net-libs/libssh-0.6.0[static-libs?]
