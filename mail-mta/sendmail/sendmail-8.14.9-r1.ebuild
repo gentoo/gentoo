@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -18,8 +18,8 @@ DEPEND="net-mail/mailbase
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.10 )
 	tcpd? ( sys-apps/tcp-wrappers )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:= )
 	)
 	ldap? ( net-nds/openldap )
 	>=sys-libs/db-3.2
