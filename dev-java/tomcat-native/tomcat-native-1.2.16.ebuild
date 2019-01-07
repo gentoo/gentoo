@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,7 +15,7 @@ LICENSE="Apache-2.0"
 IUSE="static-libs test"
 
 RDEPEND="dev-libs/apr:1
-	dev-libs/openssl:=
+	dev-libs/openssl:0=
 	>=virtual/jre-1.7"
 
 DEPEND=">=virtual/jdk-1.7
