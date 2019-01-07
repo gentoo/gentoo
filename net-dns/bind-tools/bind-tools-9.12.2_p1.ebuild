@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -32,7 +32,7 @@ CDEPEND="
 	gost? ( >=dev-libs/openssl-1.0.0:0=[-bindist] )
 	xml? ( dev-libs/libxml2 )
 	idn? ( <net-dns/idnkit-2:= )
-	libidn2? ( net-dns/libidn2 )
+	libidn2? ( net-dns/libidn2:= )
 	gssapi? ( virtual/krb5 )
 	libedit? ( dev-libs/libedit )
 	!libedit? (
