@@ -17,3 +17,11 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+src_test() {
+	# unset display to avoid testing errors, tests rely on X11 and a window
+	# manager environment
+	unset DISPLAY
+
+	default
+}
