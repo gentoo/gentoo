@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+EAPI=7
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit cmake-utils python-single-r1
 
@@ -67,11 +67,11 @@ DEPEND="${RDEPEND}
 
 DOCS=( CHANGES.md CREDITS.md README.md src/doc/${PN}.pdf )
 
+S="${WORKDIR}/oiio-Release-${PV}"
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
-
-S="${WORKDIR}/oiio-Release-${PV}"
 
 src_configure() {
 	# Build with SIMD support
