@@ -13,7 +13,7 @@ SLOT="2"
 LICENSE="BSD"
 
 RDEPEND="migration-tool? ( dev-db/sqlite:3= )
-	!libressl? ( dev-libs/openssl:=[bindist=] )
+	!libressl? ( dev-libs/openssl:0=[bindist=] )
 	libressl? ( dev-libs/libressl:= )
 	!~dev-libs/softhsm-2.0.0:0"
 DEPEND="${RDEPEND}"
