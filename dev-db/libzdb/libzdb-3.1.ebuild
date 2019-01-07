@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,7 +20,7 @@ RESTRICT=test
 RDEPEND="mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql )
 	sqlite? ( >=dev-db/sqlite-3.7:3[unlock-notify(+)] )
-	ssl? ( dev-libs/openssl )"
+	ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
