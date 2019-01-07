@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit user eapi7-ver
+inherit user eapi7-ver systemd
 
 DESCRIPTION="a man replacement that utilizes berkdb instead of flat files"
 HOMEPAGE="http://www.nongnu.org/man-db/"
@@ -58,6 +58,7 @@ src_configure() {
 	export ac_cv_lib_z_gzopen=$(usex zlib)
 	local myeconfargs=(
 		--with-systemdtmpfilesdir="${EPREFIX}"/usr/lib/tmpfiles.d
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		--disable-setuid #662438
 		--enable-cache-owner=man
 		--with-sections="1 1p 8 2 3 3p 4 5 6 7 9 0p tcl n l p o 1x 2x 3x 4x 5x 6x 7x 8x"
