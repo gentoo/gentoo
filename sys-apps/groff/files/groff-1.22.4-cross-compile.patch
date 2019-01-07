@@ -1,0 +1,13 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -4228,8 +4228,8 @@ prefixexecbin_SCRIPTS = chem neqn nroff
+ 
+ # Path to binaries and flags used by contribs and doc to generated doc.
+ # These may be overridden if cross-compiling.
+-GROFFBIN = $(abs_top_builddir)/groff
+-GROFF_BIN_PATH = $(abs_top_builddir)
++GROFFBIN = ${EPREFIX}/usr/bin/groff
++GROFF_BIN_PATH =
+ PDFMOMBIN = $(abs_top_builddir)/pdfmom
+ # The second directories are needed for the case "cd build; ../configure".
+ FFLAG = -F$(abs_top_builddir)/font -F$(abs_top_srcdir)/font
