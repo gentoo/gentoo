@@ -18,8 +18,8 @@ IUSE="static-libs"
 RDEPEND="
 	dev-libs/libunistring[${MULTILIB_USEDEP}]
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-lang/perl
 	sys-apps/help2man
 "
