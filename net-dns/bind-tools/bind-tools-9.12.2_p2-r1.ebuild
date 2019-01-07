@@ -40,7 +40,7 @@ CDEPEND="
 	)
 	xml? ( dev-libs/libxml2 )
 	idn? ( <net-dns/idnkit-2:= )
-	libidn2? ( net-dns/libidn2 )
+	libidn2? ( net-dns/libidn2:= )
 	gssapi? ( virtual/krb5 )
 	libedit? ( dev-libs/libedit )
 	!libedit? (
