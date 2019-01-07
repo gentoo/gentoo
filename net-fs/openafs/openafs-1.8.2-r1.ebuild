@@ -36,8 +36,6 @@ BDEPEND="
 		media-gfx/graphviz
 	)
 	doc? (
-		app-text/docbook-xsl-stylesheets
-		app-text/docbook-xml-dtd
 		dev-libs/libxslt
 		|| (
 			dev-java/fop
@@ -50,11 +48,15 @@ DEPEND="
 	!net-fs/openafs-kernel
 	virtual/libintl
 	amd64? ( tsm? ( app-backup/tsm ) )
+	doc? (
+		app-text/docbook-xsl-stylesheets
+		app-text/docbook-xml-dtd:4.3
+	)
 	fuse? ( sys-fs/fuse:0= )
 	kauth? ( virtual/pam )
 	kerberos? ( virtual/krb5 )
 	ncurses? ( sys-libs/ncurses:0= )"
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
