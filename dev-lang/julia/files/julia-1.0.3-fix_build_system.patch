@@ -1,0 +1,87 @@
+diff --git a/Make.inc b/Make.inc
+index e5c102f..c4c6640 100644
+--- a/Make.inc
++++ b/Make.inc
+@@ -181,7 +181,7 @@ USE_GPL_LIBS ?= 1
+ # Directories where said libraries get installed to
+ prefix ?= $(BUILDROOT)/julia-$(JULIA_COMMIT)
+ bindir := $(prefix)/bin
+-libdir := $(prefix)/lib
++libdir := $(prefix)/GENTOOLIBDIR
+ libexecdir := $(prefix)/libexec
+ datarootdir := $(prefix)/share
+ docdir := $(datarootdir)/doc/julia
+@@ -413,7 +413,7 @@ ifneq ($(OS), WINNT)
+ JCXXFLAGS += -pedantic
+ endif
+ DEBUGFLAGS := -O0 -ggdb2 -DJL_DEBUG_BUILD -fstack-protector-all
+-SHIPFLAGS := -O3 -ggdb2 -falign-functions
++SHIPFLAGS := GENTOOCFLAGS
+ endif
+ 
+ ifeq ($(USECLANG),1)
+@@ -424,7 +424,7 @@ JCFLAGS := -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
+ JCPPFLAGS := -fasynchronous-unwind-tables
+ JCXXFLAGS := -pipe $(fPIC) -fno-rtti -pedantic
+ DEBUGFLAGS := -O0 -g -DJL_DEBUG_BUILD -fstack-protector-all
+-SHIPFLAGS := -O3 -g
++SHIPFLAGS := GENTOOCFLAGS
+ ifeq ($(OS), Darwin)
+ ifeq ($(USE_LIBCPP), 1)
+ MACOSX_VERSION_MIN := 10.8
+@@ -453,7 +453,7 @@ JCFLAGS := -std=gnu11 -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
+ JCPPFLAGS :=
+ JCXXFLAGS := -pipe $(fPIC) -fno-rtti
+ DEBUGFLAGS := -O0 -g -DJL_DEBUG_BUILD -fstack-protector-all
+-SHIPFLAGS := -O3 -g -falign-functions
++SHIPFLAGS := GENTOOCFLAGS
+ endif
+ 
+ ifeq ($(USECCACHE), 1)
+diff --git a/base/Makefile b/base/Makefile
+index 21c7ad4..737e40d 100644
+--- a/base/Makefile
++++ b/base/Makefile
+@@ -207,7 +207,6 @@ $(build_private_libdir)/libLLVM.dylib:
+ 	ln -sf "$$REALPATH" "$@"
+ ifneq ($(USE_SYSTEM_LLVM),0)
+ ifneq ($(USE_LLVM_SHLIB),0)
+-SYMLINK_SYSTEM_LIBRARIES += symlink_libLLVM
+ endif
+ endif
+ 
+diff --git a/doc/Makefile b/doc/Makefile
+index 3d07733..8bd3bc0 100644
+--- a/doc/Makefile
++++ b/doc/Makefile
+@@ -29,7 +29,7 @@ deps: UnicodeData.txt
+ 	$(JLCHECKSUM) UnicodeData.txt
+ 
+ clean:
+-	-rm -rf _build/* deps/* docbuild.log UnicodeData.txt
++	@echo "Do not clean doc/_build/html. Just use it..."
+ 
+ cleanall: clean
+ 
+diff --git a/src/Makefile b/src/Makefile
+index 20da34d..84eae21 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -88,16 +88,7 @@ UV_HEADERS += uv/*.h
+ endif
+ PUBLIC_HEADER_TARGETS := $(addprefix $(build_includedir)/julia/,$(notdir $(PUBLIC_HEADERS)) $(UV_HEADERS))
+ 
+-ifeq ($(JULIACODEGEN),LLVM)
+-# In LLVM < 3.4, --ldflags includes both options and libraries, so use it both before and after --libs
+-# In LLVM >= 3.4, --ldflags has only options, and --system-libs has the libraries.
+-ifneq ($(USE_LLVM_SHLIB),1)
+-LLVMLINK += $(shell $(LLVM_CONFIG_HOST) --ldflags) $(shell $(LLVM_CONFIG_HOST) --libs $(LLVM_LIBS)) $(shell $(LLVM_CONFIG_HOST) --ldflags) $(shell $(LLVM_CONFIG_HOST) --system-libs 2> /dev/null)
+-else
+-LLVMLINK += $(shell $(LLVM_CONFIG_HOST) --ldflags) -lLLVM
+-FLAGS += -DLLVM_SHLIB
+-endif # USE_LLVM_SHLIB == 1
+-endif
++LLVMLINK = $(call exec,$(LLVM_CONFIG) --ldflags) $(call exec,$(LLVM_CONFIG) --libs) $(call exec,$(LLVM_CONFIG) --ldflags) $(call exec,$(LLVM_CONFIG) --system-libs)
+ 
+ COMMON_LIBS := -L$(build_shlibdir) -L$(build_libdir) $(LIBUV) $(LIBUTF8PROC) $(NO_WHOLE_ARCHIVE) $(LLVMLINK) $(OSLIBS)
+ DEBUG_LIBS := $(WHOLE_ARCHIVE) $(BUILDDIR)/flisp/libflisp-debug.a $(WHOLE_ARCHIVE) $(BUILDDIR)/support/libsupport-debug.a $(COMMON_LIBS)
