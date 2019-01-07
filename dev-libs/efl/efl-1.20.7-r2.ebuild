@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -80,7 +80,7 @@ COMMON_DEPEND="
 	ssl? (
 		gnutls? ( net-libs/gnutls:= )
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:= )
+			!libressl? ( dev-libs/openssl:0= )
 			libressl? ( dev-libs/libressl:= )
 		)
 	)
