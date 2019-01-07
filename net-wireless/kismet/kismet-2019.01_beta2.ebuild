@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils multilib user python-single-r1
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://www.kismetwireless.net/${PN}.git"
+	EGIT_REPO_URI="https://www.kismetwireless.net/git/${PN}.git"
 	inherit git-r3
 	RESTRICT="strip"
 else
