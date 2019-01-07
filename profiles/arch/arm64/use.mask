@@ -26,6 +26,11 @@
 -neon
 -armvfp
 
+# Mart Raudsepp <leio@gentoo.org> (07 Jan 2019)
+# Does not work on arm64 until dev-lang/luajit-2.1
+# https://github.com/LuaJIT/LuaJIT/issues/26
+luajit
+
 # Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
 # Python 3.7 support requires fresh versions of packages which are stuck
 # at keywordreqs.
@@ -37,10 +42,6 @@ python_single_target_python3_7
 # Michał Górny <mgorny@gentoo.org> (09 Jul 2018)
 # No OpenCL provider is available on arm64.
 opencl
-
-# Michał Górny <mgorny@gentoo.org> (03 Feb 2018)
-# dev-lang/luajit not tested here.
-luajit
 
 # Brian Evans <grknight@gentoo.org> (02 Mar 2018)
 # dev-db/qdbm is net yet keyworded
