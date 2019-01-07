@@ -1,8 +1,8 @@
 diff --git a/Make.inc b/Make.inc
-index 8cb2c1014..d3be9de8e 100644
+index e5c102f..c4c6640 100644
 --- a/Make.inc
 +++ b/Make.inc
-@@ -178,7 +178,7 @@ USE_GPL_LIBS ?= 1
+@@ -181,7 +181,7 @@ USE_GPL_LIBS ?= 1
  # Directories where said libraries get installed to
  prefix ?= $(BUILDROOT)/julia-$(JULIA_COMMIT)
  bindir := $(prefix)/bin
@@ -11,7 +11,7 @@ index 8cb2c1014..d3be9de8e 100644
  libexecdir := $(prefix)/libexec
  datarootdir := $(prefix)/share
  docdir := $(datarootdir)/doc/julia
-@@ -410,7 +410,7 @@ ifneq ($(OS), WINNT)
+@@ -413,7 +413,7 @@ ifneq ($(OS), WINNT)
  JCXXFLAGS += -pedantic
  endif
  DEBUGFLAGS := -O0 -ggdb2 -DJL_DEBUG_BUILD -fstack-protector-all
@@ -20,7 +20,7 @@ index 8cb2c1014..d3be9de8e 100644
  endif
  
  ifeq ($(USECLANG),1)
-@@ -421,7 +421,7 @@ JCFLAGS := -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
+@@ -424,7 +424,7 @@ JCFLAGS := -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
  JCPPFLAGS := -fasynchronous-unwind-tables
  JCXXFLAGS := -pipe $(fPIC) -fno-rtti -pedantic
  DEBUGFLAGS := -O0 -g -DJL_DEBUG_BUILD -fstack-protector-all
@@ -29,7 +29,7 @@ index 8cb2c1014..d3be9de8e 100644
  ifeq ($(OS), Darwin)
  ifeq ($(USE_LIBCPP), 1)
  MACOSX_VERSION_MIN := 10.8
-@@ -450,7 +450,7 @@ JCFLAGS := -std=gnu11 -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
+@@ -453,7 +453,7 @@ JCFLAGS := -std=gnu11 -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
  JCPPFLAGS :=
  JCXXFLAGS := -pipe $(fPIC) -fno-rtti
  DEBUGFLAGS := -O0 -g -DJL_DEBUG_BUILD -fstack-protector-all
@@ -38,8 +38,20 @@ index 8cb2c1014..d3be9de8e 100644
  endif
  
  ifeq ($(USECCACHE), 1)
+diff --git a/base/Makefile b/base/Makefile
+index 21c7ad4..737e40d 100644
+--- a/base/Makefile
++++ b/base/Makefile
+@@ -207,7 +207,6 @@ $(build_private_libdir)/libLLVM.dylib:
+ 	ln -sf "$$REALPATH" "$@"
+ ifneq ($(USE_SYSTEM_LLVM),0)
+ ifneq ($(USE_LLVM_SHLIB),0)
+-SYMLINK_SYSTEM_LIBRARIES += symlink_libLLVM
+ endif
+ endif
+ 
 diff --git a/doc/Makefile b/doc/Makefile
-index 89b79880d..c3125fde1 100644
+index 3d07733..8bd3bc0 100644
 --- a/doc/Makefile
 +++ b/doc/Makefile
 @@ -29,7 +29,7 @@ deps: UnicodeData.txt
@@ -52,10 +64,10 @@ index 89b79880d..c3125fde1 100644
  cleanall: clean
  
 diff --git a/src/Makefile b/src/Makefile
-index 257152d24..240a4a350 100644
+index 20da34d..84eae21 100644
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -85,16 +85,7 @@ UV_HEADERS += uv/*.h
+@@ -88,16 +88,7 @@ UV_HEADERS += uv/*.h
  endif
  PUBLIC_HEADER_TARGETS := $(addprefix $(build_includedir)/julia/,$(notdir $(PUBLIC_HEADERS)) $(UV_HEADERS))
  
@@ -73,14 +85,3 @@ index 257152d24..240a4a350 100644
  
  COMMON_LIBS := -L$(build_shlibdir) -L$(build_libdir) $(LIBUV) $(LIBUTF8PROC) $(NO_WHOLE_ARCHIVE) $(LLVMLINK) $(OSLIBS)
  DEBUG_LIBS := $(WHOLE_ARCHIVE) $(BUILDDIR)/flisp/libflisp-debug.a $(WHOLE_ARCHIVE) $(BUILDDIR)/support/libsupport-debug.a $(COMMON_LIBS)
-
---- a/base/Makefile	2018-08-10 23:56:13.825429621 -0400
-+++ b/base/Makefile	2018-08-10 23:43:29.461769645 -0400
-@@ -207,7 +207,6 @@
- 	ln -sf "$$REALPATH" "$@"
- ifneq ($(USE_SYSTEM_LLVM),0)
- ifneq ($(USE_LLVM_SHLIB),0)
--SYMLINK_SYSTEM_LIBRARIES += symlink_libLLVM
- endif
- endif
- 

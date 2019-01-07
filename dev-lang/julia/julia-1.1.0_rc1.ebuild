@@ -1,31 +1,34 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 RESTRICT="test"
 
-inherit llvm pax-utils toolchain-funcs
+inherit pax-utils toolchain-funcs
+
+MY_PV="${PV//_rc/-rc}"
+MY_LIBUV_V="2348256acf5759a544e5ca7935f638d2bc091d60"
+MY_UTF8PROC_V="97ef668b312b96382714dbb8eaac4affce0816e6"
+MY_LIBWHICH_V="81e9723c0273d78493dc8c8ed570f68d9ce7e89e"
+MY_DSFMT_V="2.2.3"
+MY_LLVM="6.0.1"
 
 DESCRIPTION="High-performance programming language for technical computing"
 HOMEPAGE="https://julialang.org/"
 SRC_URI="
-	https://github.com/JuliaLang/${PN}/releases/download/v${PV}/${P}.tar.gz
-	https://dev.gentoo.org/~tamiko/distfiles/${P}-bundled.tar.gz
+	https://github.com/JuliaLang/${PN}/releases/download/v${MY_PV}/${PN}-${MY_PV}.tar.gz
+	https://api.github.com/repos/JuliaLang/libuv/tarball/${MY_LIBUV_V} -> ${PN}-libuv-${MY_LIBUV_V}.tar.gz
+	https://api.github.com/repos/JuliaLang/utf8proc/tarball/${MY_UTF8PROC_V} -> ${PN}-utf8proc-${MY_UTF8PROC_V}.tar.gz
+	https://api.github.com/repos/vtjnash/libwhich/tarball/${MY_LIBWHICH_V} -> ${PN}-libwhich-${MY_LIBWHICH_V}.tar.gz
+	http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT/dSFMT-src-${MY_DSFMT_V}.tar.gz -> ${PN}-dsfmt-${MY_DSFMT_V}.tar.gz
+	http://releases.llvm.org/${MY_LLVM}/llvm-${MY_LLVM}.src.tar.xz -> ${PN}-llvm-${MY_LLVM}.src.tar.xz
 "
-
-S="${WORKDIR}/julia"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS=""
 IUSE=""
-
-# julia 0.6* is compatible with llvm-4
-RDEPEND="
-	sys-devel/llvm:4=
-	sys-devel/clang:4="
-LLVM_MAX_SLOT=4
 
 RDEPEND+="
 	dev-libs/double-conversion:0=
@@ -57,15 +60,23 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.6.3-fix_build_system.patch
+	"${FILESDIR}"/${PN}-1.1.0-fix_build_system.patch
 )
 
-src_prepare() {
-	mv "${WORKDIR}"/bundled/UnicodeData.txt doc || die
-	mkdir deps/srccache || die
-	mv "${WORKDIR}"/bundled/* deps/srccache || die
-	rmdir "${WORKDIR}"/bundled || die
+S="${WORKDIR}/${PN}-${MY_PV}"
 
+src_unpack() {
+	tounpack=(${A})
+	# the main source tree, followed by deps
+	unpack "${A/%\ */}"
+
+	mkdir -p "${S}/deps/srccache/"
+	for i in "${tounpack[@]:1}"; do
+		cp "${DISTDIR}/${i}" "${S}/deps/srccache/${i#julia-}" || die
+	done
+}
+
+src_prepare() {
 	default
 
 	# Sledgehammer:
@@ -116,28 +127,26 @@ src_configure() {
 
 	# USE_SYSTEM_LIBM=0 implies using external openlibm
 	cat <<-EOF > Make.user
-		USE_SYSTEM_DSFMT=0
-		USE_SYSTEM_LIBUV=0
-		USE_SYSTEM_PCRE=1
-		USE_SYSTEM_RMATH=0
-		USE_SYSTEM_UTF8PROC=0
-		USE_LLVM_SHLIB=1
-		USE_SYSTEM_ARPACK=1
-		USE_SYSTEM_BLAS=1
-		USE_SYSTEM_FFTW=1
-		USE_SYSTEM_GMP=1
-		USE_SYSTEM_GRISU=1
-		USE_SYSTEM_LAPACK=1
-		USE_SYSTEM_LIBGIT2=1
-		USE_SYSTEM_LIBM=0
-		USE_SYSTEM_LIBUNWIND=1
-		USE_SYSTEM_LLVM=1
-		USE_SYSTEM_MPFR=1
-		USE_SYSTEM_OPENLIBM=1
-		USE_SYSTEM_OPENSPECFUN=1
-		USE_SYSTEM_PATCHELF=1
-		USE_SYSTEM_READLINE=1
-		USE_SYSTEM_SUITESPARSE=1
+		USE_SYSTEM_ARPACK:=1
+		USE_SYSTEM_BLAS:=1
+		USE_SYSTEM_DSFMT:=0
+		USE_SYSTEM_GMP:=1
+		USE_SYSTEM_GRISU:=1
+		USE_SYSTEM_LAPACK:=1
+		USE_SYSTEM_LIBGIT2:=1
+		USE_SYSTEM_LIBM:=0
+		USE_SYSTEM_LIBUNWIND:=1
+		USE_SYSTEM_LIBUV:=0
+		USE_SYSTEM_LLVM:=0
+		USE_SYSTEM_MPFR:=1
+		USE_SYSTEM_OPENLIBM:=1
+		USE_SYSTEM_OPENSPECFUN:=1
+		USE_SYSTEM_PATCHELF:=1
+		USE_SYSTEM_PCRE:=1
+		USE_SYSTEM_READLINE:=1
+		USE_SYSTEM_RMATH:=0
+		USE_SYSTEM_SUITESPARSE:=1
+		USE_SYSTEM_UTF8PROC:=0
 		USE_SYSTEM_ZLIB=1
 		VERBOSE=1
 		libdir="${EROOT}/usr/$(get_libdir)"
@@ -151,7 +160,7 @@ src_compile() {
 	addpredict /proc/self/mem
 
 	emake cleanall
-	emake VERBOSE=1 julia-release \
+	emake julia-release \
 		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
 		CC="$(tc-getCC)" CXX="$(tc-getCXX)"
 	pax-mark m $(file usr/bin/julia-* | awk -F : '/ELF/ {print $1}')
@@ -183,7 +192,6 @@ src_install() {
 
 	mv "${ED}"/usr/etc/julia "${ED}"/etc || die
 	rmdir "${ED}"/usr/etc || die
-	mv "${ED}"/usr/share/doc/julia/{examples,html} \
-		"${ED}"/usr/share/doc/${PF} || die
+	mv "${ED}"/usr/share/doc/julia/html "${ED}"/usr/share/doc/${PF} || die
 	rmdir "${ED}"/usr/share/doc/julia || die
 }

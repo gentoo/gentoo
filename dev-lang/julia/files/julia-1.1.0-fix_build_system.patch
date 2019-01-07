@@ -1,0 +1,53 @@
+diff --git a/Make.inc b/Make.inc
+index 81ff923..79e47f1 100644
+--- a/Make.inc
++++ b/Make.inc
+@@ -185,7 +185,7 @@ USE_GPL_LIBS ?= 1
+ # Directories where said libraries get installed to
+ prefix ?= $(BUILDROOT)/julia-$(JULIA_COMMIT)
+ bindir := $(prefix)/bin
+-libdir := $(prefix)/lib
++libdir := $(prefix)/GENTOOLIBDIR
+ libexecdir := $(prefix)/libexec
+ datarootdir := $(prefix)/share
+ docdir := $(datarootdir)/doc/julia
+@@ -417,7 +417,7 @@ ifneq ($(OS), WINNT)
+ JCXXFLAGS += -pedantic
+ endif
+ DEBUGFLAGS := -O0 -ggdb2 -DJL_DEBUG_BUILD -fstack-protector-all
+-SHIPFLAGS := -O3 -ggdb2 -falign-functions
++SHIPFLAGS := GENTOOCFLAGS
+ endif
+ 
+ ifeq ($(USECLANG),1)
+@@ -428,7 +428,7 @@ JCFLAGS := -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
+ JCPPFLAGS := -fasynchronous-unwind-tables
+ JCXXFLAGS := -pipe $(fPIC) -fno-rtti -pedantic
+ DEBUGFLAGS := -O0 -g -DJL_DEBUG_BUILD -fstack-protector-all
+-SHIPFLAGS := -O3 -g
++SHIPFLAGS := GENTOOCFLAGS
+ ifeq ($(OS), Darwin)
+ ifeq ($(USE_LIBCPP), 1)
+ MACOSX_VERSION_MIN := 10.8
+@@ -457,7 +457,7 @@ JCFLAGS := -std=gnu11 -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
+ JCPPFLAGS :=
+ JCXXFLAGS := -pipe $(fPIC) -fno-rtti
+ DEBUGFLAGS := -O0 -g -DJL_DEBUG_BUILD -fstack-protector-all
+-SHIPFLAGS := -O3 -g -falign-functions
++SHIPFLAGS := GENTOOCFLAGS
+ endif
+ 
+ ifeq ($(USECCACHE), 1)
+diff --git a/doc/Makefile b/doc/Makefile
+index 99e60ee..2027fb5 100644
+--- a/doc/Makefile
++++ b/doc/Makefile
+@@ -30,7 +30,7 @@ deps: UnicodeData.txt
+ 	$(JLCHECKSUM) UnicodeData.txt
+ 
+ clean:
+-	-rm -rf _build/* deps/* docbuild.log UnicodeData.txt
++	@echo "Do not clean doc/_build/html. Just use it..."
+ 
+ cleanall: clean
+ 
