@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -45,8 +45,8 @@ DEPEND="
 	!mail-mta/qmail
 	net-mail/queue-repair
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:= )
 	)
 	sys-apps/gentoo-functions
 	sys-apps/groff
