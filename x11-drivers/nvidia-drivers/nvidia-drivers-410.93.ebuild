@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -107,7 +107,7 @@ nvidia_drivers_versions_check() {
 	nvidia-driver-check-warning
 
 	# Kernel features/options to check for
-	CONFIG_CHECK="!DEBUG_MUTEXES !I2C_NVIDIA_GPU ~!LOCKDEP ~MTRR ~SYSVIPC ~ZONE_DMA"
+	CONFIG_CHECK="!DEBUG_MUTEXES ~!LOCKDEP ~MTRR ~PM ~SYSVIPC ~ZONE_DMA"
 
 	# Now do the above checks
 	use kernel_linux && check_extra_config
@@ -509,7 +509,7 @@ src_install-libs() {
 		if use kernel_linux; then
 			NV_GLX_LIBRARIES+=(
 				"libnvidia-ml.so.${NV_SOVER}"
-				"libnvidia-tls.so.${NV_SOVER}"
+				"tls/libnvidia-tls.so.${NV_SOVER}"
 			)
 		fi
 
