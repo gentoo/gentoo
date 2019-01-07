@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,7 +41,7 @@ RDEPEND="sys-apps/pciutils
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
 	libvirt? ( dev-python/libvirt-python[${PYTHON_USEDEP}] )
 	openssl? (
-		dev-libs/openssl:*[-bindist]
+		dev-libs/openssl:0=[-bindist]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 	)
 	raet? (
