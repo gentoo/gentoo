@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -47,7 +47,7 @@ RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 		)
 	)
 	http2? ( net-libs/nghttp2[${MULTILIB_USEDEP}] )
-	idn? ( net-dns/libidn2:0[static-libs?,${MULTILIB_USEDEP}] )
+	idn? ( net-dns/libidn2:0=[static-libs?,${MULTILIB_USEDEP}] )
 	adns? ( net-dns/c-ares:0[${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	metalink? ( >=media-libs/libmetalink-0.1.1[${MULTILIB_USEDEP}] )
