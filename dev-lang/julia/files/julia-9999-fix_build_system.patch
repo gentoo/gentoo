@@ -1,8 +1,8 @@
 diff --git a/Make.inc b/Make.inc
-index 8cb2c1014..d3be9de8e 100644
+index e9cb241198..66f3e6afd7 100644
 --- a/Make.inc
 +++ b/Make.inc
-@@ -178,7 +178,7 @@ USE_GPL_LIBS ?= 1
+@@ -185,7 +185,7 @@ USE_GPL_LIBS ?= 1
  # Directories where said libraries get installed to
  prefix ?= $(BUILDROOT)/julia-$(JULIA_COMMIT)
  bindir := $(prefix)/bin
@@ -11,7 +11,7 @@ index 8cb2c1014..d3be9de8e 100644
  libexecdir := $(prefix)/libexec
  datarootdir := $(prefix)/share
  docdir := $(datarootdir)/doc/julia
-@@ -410,7 +410,7 @@ ifneq ($(OS), WINNT)
+@@ -416,7 +416,7 @@ ifneq ($(OS), WINNT)
  JCXXFLAGS += -pedantic
  endif
  DEBUGFLAGS := -O0 -ggdb2 -DJL_DEBUG_BUILD -fstack-protector-all
@@ -20,7 +20,7 @@ index 8cb2c1014..d3be9de8e 100644
  endif
  
  ifeq ($(USECLANG),1)
-@@ -421,7 +421,7 @@ JCFLAGS := -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
+@@ -427,7 +427,7 @@ JCFLAGS := -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
  JCPPFLAGS := -fasynchronous-unwind-tables
  JCXXFLAGS := -pipe $(fPIC) -fno-rtti -pedantic
  DEBUGFLAGS := -O0 -g -DJL_DEBUG_BUILD -fstack-protector-all
@@ -29,7 +29,7 @@ index 8cb2c1014..d3be9de8e 100644
  ifeq ($(OS), Darwin)
  ifeq ($(USE_LIBCPP), 1)
  MACOSX_VERSION_MIN := 10.8
-@@ -450,7 +450,7 @@ JCFLAGS := -std=gnu11 -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
+@@ -456,7 +456,7 @@ JCFLAGS := -std=gnu11 -pipe $(fPIC) -fno-strict-aliasing -D_FILE_OFFSET_BITS=64
  JCPPFLAGS :=
  JCXXFLAGS := -pipe $(fPIC) -fno-rtti
  DEBUGFLAGS := -O0 -g -DJL_DEBUG_BUILD -fstack-protector-all
@@ -38,11 +38,23 @@ index 8cb2c1014..d3be9de8e 100644
  endif
  
  ifeq ($(USECCACHE), 1)
+diff --git a/base/Makefile b/base/Makefile
+index acdd4bb9f8..4483149b2b 100644
+--- a/base/Makefile
++++ b/base/Makefile
+@@ -216,7 +216,6 @@ $(build_private_libdir)/libLLVM.dylib:
+ 	ln -sf "$$REALPATH" "$@"
+ ifneq ($(USE_SYSTEM_LLVM),0)
+ ifneq ($(USE_LLVM_SHLIB),0)
+-SYMLINK_SYSTEM_LIBRARIES += symlink_libLLVM
+ endif
+ endif
+ 
 diff --git a/doc/Makefile b/doc/Makefile
-index 89b79880d..c3125fde1 100644
+index 99e60ee665..2027fb5952 100644
 --- a/doc/Makefile
 +++ b/doc/Makefile
-@@ -29,7 +29,7 @@ deps: UnicodeData.txt
+@@ -30,7 +30,7 @@ deps: UnicodeData.txt
  	$(JLCHECKSUM) UnicodeData.txt
  
  clean:
@@ -52,24 +64,41 @@ index 89b79880d..c3125fde1 100644
  cleanall: clean
  
 diff --git a/src/Makefile b/src/Makefile
-index 257152d24..240a4a350 100644
+index e4da8c6357..85a411d9b7 100644
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -85,16 +85,7 @@ UV_HEADERS += uv/*.h
+@@ -50,33 +50,7 @@ ifeq ($(USEMSVC), 1)
+ SRCS += getopt
  endif
- PUBLIC_HEADER_TARGETS := $(addprefix $(build_includedir)/julia/,$(notdir $(PUBLIC_HEADERS)) $(UV_HEADERS))
  
+-LLVMLINK :=
+-
 -ifeq ($(JULIACODEGEN),LLVM)
--# In LLVM < 3.4, --ldflags includes both options and libraries, so use it both before and after --libs
--# In LLVM >= 3.4, --ldflags has only options, and --system-libs has the libraries.
--ifneq ($(USE_LLVM_SHLIB),1)
--LLVMLINK += $(shell $(LLVM_CONFIG_HOST) --ldflags) $(shell $(LLVM_CONFIG_HOST) --libs $(LLVM_LIBS)) $(shell $(LLVM_CONFIG_HOST) --ldflags) $(shell $(LLVM_CONFIG_HOST) --system-libs 2> /dev/null)
+-SRCS += codegen jitlayers disasm debuginfo llvm-simdloop llvm-ptls llvm-muladd \
+-	llvm-late-gc-lowering llvm-lower-handlers llvm-gc-invariant-verifier \
+-	llvm-propagate-addrspaces llvm-multiversioning llvm-alloc-opt cgmemmgr \
+-	llvm-api
+-FLAGS += -I$(shell $(LLVM_CONFIG_HOST) --includedir)
+-LLVM_LIBS := all
+-ifeq ($(USE_POLLY),1)
+-LLVMLINK += -lPolly -lPollyISL
+-FLAGS += -I$(shell $(LLVM_CONFIG_HOST) --src-root)/tools/polly/include
+-FLAGS += -I$(shell $(LLVM_CONFIG_HOST) --obj-root)/tools/polly/include
+-FLAGS += -DUSE_POLLY
+-ifeq ($(USE_POLLY_OPENMP),1)
+-FLAGS += -fopenmp
+-endif
+-ifeq ($(USE_POLLY_ACC),1)
+-LLVMLINK += -lPollyPPCG -lGPURuntime
+-FLAGS += -DUSE_POLLY_ACC
+-FLAGS += -I$(shell $(LLVM_CONFIG_HOST) --src-root)/tools/polly/tools # Required to find GPURuntime/GPUJIT.h
+-endif
+-endif
 -else
--LLVMLINK += $(shell $(LLVM_CONFIG_HOST) --ldflags) -lLLVM
--FLAGS += -DLLVM_SHLIB
--endif # USE_LLVM_SHLIB == 1
+-SRCS += anticodegen
+-LLVM_LIBS := support
 -endif
 +LLVMLINK = $(call exec,$(LLVM_CONFIG) --ldflags) $(call exec,$(LLVM_CONFIG) --libs) $(call exec,$(LLVM_CONFIG) --ldflags) $(call exec,$(LLVM_CONFIG) --system-libs)
  
- COMMON_LIBS := -L$(build_shlibdir) -L$(build_libdir) $(LIBUV) $(LIBUTF8PROC) $(NO_WHOLE_ARCHIVE) $(LLVMLINK) $(OSLIBS)
- DEBUG_LIBS := $(WHOLE_ARCHIVE) $(BUILDDIR)/flisp/libflisp-debug.a $(WHOLE_ARCHIVE) $(BUILDDIR)/support/libsupport-debug.a $(COMMON_LIBS)
+ # headers are used for dependency tracking, while public headers will be part of the dist
+ UV_HEADERS :=
