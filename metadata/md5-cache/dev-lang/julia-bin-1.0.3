@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=!dev-lang/julia
+DESCRIPTION=High-performance programming language for technical computing
+EAPI=7
+HOMEPAGE=https://julialang.org/
+IUSE=elibc_glibc elibc_FreeBSD
+KEYWORDS=-* ~amd64 ~arm ~arm64 ~x86 ~amd64-fbsd
+LICENSE=MIT
+RDEPEND=!dev-lang/julia
+SLOT=0
+SRC_URI=x86? ( https://julialang-s3.julialang.org/bin/linux/x86/1.0/julia-1.0.3-linux-i686.tar.gz ) amd64? ( https://julialang-s3.julialang.org/bin/linux/x64/1.0/julia-1.0.3-linux-x86_64.tar.gz ) arm? ( https://julialang-s3.julialang.org/bin/linux/armv7l/1.0/julia-1.0.3-linux-armv7l.tar.gz ) arm64? ( https://julialang-s3.julialang.org/bin/linux/aarch64/1.0/julia-1.0.3-linux-aarch64.tar.gz ) amd64-fbsd? ( https://julialang-s3.julialang.org/bin/freebsd/x64/1.0/julia-1.0.3-freebsd-x86_64.tar.gz )
+_md5_=ac95bcd35be201fe461bf99d93bfd5c2
