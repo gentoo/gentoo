@@ -562,7 +562,6 @@ app-metrics/collectd:xfs - Enable optional capability to filter on XFS file syst
 app-misc/binwalk:graph - Enable support for generating entropy graphs
 app-misc/byobu:screen - Use app-misc/screen as the default backend
 app-misc/ca-certificates:cacert - Include root certificates from CAcert (http://www.cacert.org/) and Software in the Public Interest (http://www.spi-inc.org/)
-app-misc/ca-certificates:insecure_certs - Install certificates which are known to be untrustworthy.
 app-misc/digitemp:ds2490 - Build support for the ds2490 sensor
 app-misc/digitemp:ds9097 - Build support for the ds9097 sensor
 app-misc/digitemp:ds9097u - Build support for the ds9097u sensor
