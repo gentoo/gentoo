@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,8 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="libressl"
 DEPEND="virtual/mysql
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )"
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:= )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
