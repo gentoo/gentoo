@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools
+inherit autotools systemd
 
 DESCRIPTION="A strong & robust keepalive facility to the Linux Virtual Server project"
 HOMEPAGE="http://www.keepalived.org/"
@@ -39,6 +39,7 @@ src_prepare() {
 src_configure() {
 	STRIP=/bin/true \
 	econf \
+		--with-init=custom \
 		--with-kernel-dir=/usr \
 		--enable-sha1 \
 		--enable-vrrp \
@@ -52,8 +53,11 @@ src_configure() {
 src_install() {
 	default
 
-	newinitd "${FILESDIR}"/keepalived.init keepalived
-	newconfd "${FILESDIR}"/keepalived.confd keepalived
+	newinitd "${FILESDIR}"/keepalived.init-r1 keepalived
+	newconfd "${FILESDIR}"/keepalived.confd-r1 keepalived
+
+	systemd_newunit "${FILESDIR}"/${PN}.service ${PN}.service
+	systemd_install_serviced "${FILESDIR}/${PN}.service.conf"
 
 	use snmp && dodoc doc/KEEPALIVED-MIB.txt
 
