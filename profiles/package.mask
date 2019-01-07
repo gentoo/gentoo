@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org (07 Jan 2019)
+# Inactive upstream for many years.
+# Several open bugs.
+# Please migrate to sys-apps/man-db.
+sys-apps/man
+
 # Craig Andrews <candrews@gentoo.org> (1 Jan 2019)
 # Requires dev-libs/openssl-1.1.1, Bug 674148
 dev-libs/gost-engine
