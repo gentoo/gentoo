@@ -23,7 +23,7 @@ esac
 
 inherit multiprocessing
 
-EXPORT_FUNCTIONS src_unpack src_compile src_install
+EXPORT_FUNCTIONS src_unpack src_compile src_install src_test
 
 IUSE="${IUSE} debug"
 
@@ -137,6 +137,16 @@ cargo_src_install() {
 	rm -f "${D}/usr/.crates.toml"
 
 	[ -d "${S}/man" ] && doman "${S}/man" || return 0
+}
+
+# @FUNCTION: cargo_src_test
+# @DESCRIPTION:
+# Test the package using cargo test
+cargo_src_test() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	cargo test -j $(makeopts_jobs) $(usex debug "" --release) "$@" \
+		|| die "cargo test failed"
 }
 
 fi
