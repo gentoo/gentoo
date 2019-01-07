@@ -27,6 +27,10 @@ RDEPEND="sys-apps/iproute2
 	apm? ( sys-apps/apmd )
 	bluetooth? ( net-wireless/bluez:= )"
 
+PATCHES=(
+	"${FILESDIR}/0001-Fix-case-sensitive-name-for-lmt.py.patch"
+)
+
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
