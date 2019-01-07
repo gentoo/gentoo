@@ -9864,7 +9864,6 @@ sys-apps/lomoco 1.0-r9: Lomoco can configure vendor-specific options on Logitech
 sys-apps/lsb-release 1.4 1.4-r3: LSB version query program
 sys-apps/lshw 02.18b: Hardware Lister
 sys-apps/makedev 3.23.1: program used for creating device files in /dev
-sys-apps/man 1.6g-r1: Standard commands to read man pages
 sys-apps/man-db 2.7.6.1-r2: a man replacement that utilizes berkdb instead of flat files
 sys-apps/man-pages 4.16: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
