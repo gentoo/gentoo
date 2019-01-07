@@ -5,6 +5,10 @@
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>apache-bugs@gentoo.org</email>
+		<name>Apache project</name>
+	</maintainer>
 	<longdescription>
 		The Apache HTTP Server Project is an effort to develop and maintain an
 		open-source HTTP server for modern operating systems. The goal of this
