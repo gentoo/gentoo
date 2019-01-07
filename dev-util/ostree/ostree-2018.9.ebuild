@@ -17,7 +17,7 @@ S="${WORKDIR}/lib${P}"
 COMMON_DEPEND="
 	app-arch/xz-utils:=
 	app-crypt/gpgme:=
-	dev-libs/glib:=
+	dev-libs/glib:2=
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error:=
 	dev-libs/openssl:0=
@@ -42,6 +42,7 @@ DEPEND="
 	app-text/docbook-xsl-stylesheets
 	sys-devel/bison
 	dev-libs/libxslt
+	|| ( dev-util/glib-utils <dev-libs/glib-2.56.2:2 )
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
