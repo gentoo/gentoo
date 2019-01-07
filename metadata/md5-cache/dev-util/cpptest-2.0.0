@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=doc? ( app-doc/doxygen )
+DESCRIPTION=Simple but powerful unit testing framework for C++
+EAPI=7
+HOMEPAGE=https://github.com/cpptest/cpptest
+IUSE=doc
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=!dev-util/cpptest:0
+SLOT=1
+SRC_URI=https://github.com/cpptest/cpptest/releases/download/2.0.0/cpptest-2.0.0.tar.bz2
+_md5_=2b733211ecd0aa6d1ee1aea3154e4757
