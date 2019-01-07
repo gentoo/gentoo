@@ -96,4 +96,11 @@ src_install() {
 
 	insinto /etc/containers
 	newins test/registries.conf registries.conf.example
+
+	newinitd "${FILESDIR}"/podman.initd podman
+
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/podman.logrotated" podman
+
+	keepdir /var/lib/containers
 }
