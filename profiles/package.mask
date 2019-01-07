@@ -29,10 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
-# Mike Gilbert <floppym@gentoo.org (07 Jan 2019)
+# Mike Gilbert <floppym@gentoo.org> (07 Jan 2019)
 # Inactive upstream for many years.
 # Several open bugs.
 # Please migrate to sys-apps/man-db.
+# Removal in 30 days.
 sys-apps/man
 
 # Craig Andrews <candrews@gentoo.org> (1 Jan 2019)
