@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils flag-o-matic toolchain-funcs xdg-utils
 
-if [[ "${PV}" == "9999" ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/poppler/poppler.git"
 	SLOT="0/9999"
@@ -24,7 +24,11 @@ IUSE="cairo cjk curl cxx debug doc +introspection +jpeg +jpeg2k +lcms nss png qt
 # No test data provided
 RESTRICT="test"
 
-COMMON_DEPEND="
+BDEPEND="
+	dev-util/glib-utils
+	virtual/pkgconfig
+"
+DEPEND="
 	media-libs/fontconfig
 	media-libs/freetype
 	sys-libs/zlib
@@ -46,11 +50,7 @@ COMMON_DEPEND="
 	)
 	tiff? ( media-libs/tiff:0 )
 "
-DEPEND="${COMMON_DEPEND}
-	dev-util/glib-utils
-	virtual/pkgconfig
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	cjk? ( app-text/poppler-data )
 "
 
@@ -70,11 +70,11 @@ src_prepare() {
 	# Clang doesn't grok this flag, the configure nicely tests that, but
 	# cmake just uses it, so remove it if we use clang
 	if [[ ${CC} == clang ]] ; then
-		sed -i -e 's/-fno-check-new//' cmake/modules/PopplerMacros.cmake || die
+		sed -e 's/-fno-check-new//' -i cmake/modules/PopplerMacros.cmake || die
 	fi
 
 	if ! grep -Fq 'cmake_policy(SET CMP0002 OLD)' CMakeLists.txt ; then
-		sed '/^cmake_minimum_required/acmake_policy(SET CMP0002 OLD)' \
+		sed -e '/^cmake_minimum_required/acmake_policy(SET CMP0002 OLD)' \
 			-i CMakeLists.txt || die
 	else
 		einfo "policy(SET CMP0002 OLD) - workaround can be removed"
@@ -119,7 +119,7 @@ src_install() {
 	cmake-utils_src_install
 
 	# live version doesn't provide html documentation
-	if use cairo && use doc && [[ ${PV} != 9999 ]]; then
+	if use cairo && use doc && [[ ${PV} != *9999* ]]; then
 		# For now install gtk-doc there
 		insinto /usr/share/gtk-doc/html/poppler
 		doins -r "${S}"/glib/reference/html/*
