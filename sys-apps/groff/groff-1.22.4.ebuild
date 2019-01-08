@@ -28,7 +28,8 @@ RDEPEND="
 		x11-libs/libICE
 	)"
 DEPEND="${RDEPEND}
-	dev-lang/perl"
+	dev-lang/perl
+	sys-apps/texinfo"
 
 DOCS=( BUG-REPORT ChangeLog MORE.STUFF NEWS PROBLEMS PROJECTS README TODO )
 
