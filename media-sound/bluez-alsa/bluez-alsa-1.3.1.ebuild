@@ -29,8 +29,8 @@ RDEPEND=">=dev-libs/glib-2.26[dbus,${MULTILIB_USEDEP}]
 		dev-libs/libbsd
 		sys-libs/ncurses:0=
 	)"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
