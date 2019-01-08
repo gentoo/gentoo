@@ -87,24 +87,16 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+RESTRICT="test"
+
 QA_FLAGS_IGNORED="/usr/bin/exa"
 
 src_compile() {
-	export CARGO_HOME="${ECARGO_HOME}"
-
-	cargo build -j $(makeopts_jobs) \
-		$(usex debug "" --release) \
-		$(usex git "" --no-default-features) \
-		|| die "cargo build failed"
+	cargo_src_compile $(usex git "" --no-default-features)
 }
 
 src_install() {
-	cargo install -j $(makeopts_jobs) --root="${D}/usr" \
-		$(usex debug --debug "") \
-		$(usex git "" --no-default-features) \
-		|| die "cargo install failed"
-
-	rm "${D}/usr/.crates.toml" || die
+	cargo_src_install $(usex git "" --no-default-features)
 
 	newbashcomp contrib/completions.bash exa
 
