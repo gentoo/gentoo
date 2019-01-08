@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -66,6 +66,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	$(vala_depend)
+	x11-libs/pango[introspection]
 	doc? ( dev-util/gtk-doc )
 	man? ( app-text/docbook-sgml-utils )
 	nvme? (	>=sys-kernel/linux-headers-4.4 )
@@ -114,6 +115,12 @@ src_configure() {
 src_install() {
 	meson_src_install
 	doinitd "${FILESDIR}"/${PN}
+
+	if ! use systemd ; then
+		# Don't timeout when fwupd is running (#673140)
+		sed '/^IdleTimeout=/s@=[[:digit:]]\+@=0@' \
+			-i "${ED}"/etc/${PN}/daemon.conf || die
+	fi
 }
 
 pkg_postinst() {
