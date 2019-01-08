@@ -20,6 +20,7 @@ RDEPEND="
 	dev-ros/nodelet
 	dev-ros/openni2_camera
 	dev-ros/tf
+	dev-ros/roslaunch
 "
 DEPEND="${RDEPEND}"
 RDEPEND="${RDEPEND}
