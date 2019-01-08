@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,7 @@ RDEPEND="
 		media-libs/libvorbis
 		>=x11-libs/pango-1.22.0
 		>=x11-libs/cairo-1.10.0
-		sys-libs/readline:0
+		sys-libs/readline:0=
 		dbus? ( sys-apps/dbus )
 		fribidi? ( dev-libs/fribidi )
 	)"
