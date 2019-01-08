@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit libtool linux-info udev toolchain-funcs
 
 DESCRIPTION="An interface for filesystems implemented in userspace"
@@ -64,8 +64,8 @@ src_install() {
 	find "${ED}" -name '*.la' -delete || die
 
 	# installed via fuse-common
-	rm -r "${ED%/}"/{etc,$(get_udevdir)} || die
+	rm -r "${ED}"/{etc,$(get_udevdir)} || die
 
 	# handled by the device manager
-	rm -r "${D%/}"/dev || die
+	rm -r "${ED}"/dev || die
 }

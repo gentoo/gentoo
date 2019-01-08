@@ -13,5 +13,6 @@
 	</maintainer>
 	<use>
 		<flag name="lz4">Enable support for lz4 compression</flag>
+		<flag name="zstd">Enable support for zstd compression</flag>
 	</use>
 </pkgmetadata>
