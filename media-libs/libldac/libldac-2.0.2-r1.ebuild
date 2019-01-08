@@ -13,7 +13,7 @@ SRC_URI="https://github.com/EHfive/ldacBT/releases/download/${PACKAGING_VERSION}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
@@ -22,4 +22,8 @@ BDEPEND=""
 
 S="${WORKDIR}/ldacBT"
 
-mycmakeargs=( -DLDAC_SOFT_FLOAT=OFF )
+src_prepare() {
+	eapply_user
+	mycmakeargs=( -DLDAC_SOFT_FLOAT=OFF -DINSTALL_LIBDIR=/usr/$(get_libdir) )
+	cmake-utils_src_prepare
+}

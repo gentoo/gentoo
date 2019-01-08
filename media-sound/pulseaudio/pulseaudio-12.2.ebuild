@@ -1,18 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit bash-completion-r1 flag-o-matic gnome2-utils linux-info systemd user udev multilib-minimal autotools
-
-EXTRA_CODECS_VERSION="1.0"
-EXTRA_CODECS_FILE="patch-${EXTRA_CODECS_VERSION}-pulseaudio-${PV}-bluez5-a2dp-extra-codecs.patch"
+inherit bash-completion-r1 flag-o-matic gnome2-utils linux-info systemd user udev multilib-minimal
 
 DESCRIPTION="A networked sound server with an advanced plugin system"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/PulseAudio/"
-SRC_URI="
-	https://freedesktop.org/software/pulseaudio/releases/${P}.tar.xz
-	bluetooth-extra-codecs? ( https://github.com/EHfive/pulseaudio-modules-bt/releases/download/v${EXTRA_CODECS_VERSION}/${EXTRA_CODECS_FILE} )
-"
+SRC_URI="https://freedesktop.org/software/pulseaudio/releases/${P}.tar.xz"
 
 # libpulse-simple and libpulse link to libpulse-core; this is daemon's
 # library and can link to gdbm and other GPL-only libraries. In this
@@ -24,15 +18,14 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 
 # +alsa-plugin as discussed in bug #519530
-IUSE="+alsa +alsa-plugin +asyncns bluetooth bluetooth-extra-codecs +caps dbus doc
-equalizer gconf +gdbm +glib gtk ipv6 jack libsamplerate libressl lirc native-headset
-neon ofono-headset +orc oss qt5 realtime selinux sox ssl systemd system-wide tcpd test
-+udev +webrtc-aec +X zeroconf"
+IUSE="+alsa +alsa-plugin +asyncns bluetooth +caps dbus doc equalizer gconf +gdbm
++glib gtk ipv6 jack libsamplerate libressl lirc native-headset neon ofono-headset
++orc oss qt5 realtime selinux sox ssl systemd system-wide tcpd test +udev
++webrtc-aec +X zeroconf"
 
 # See "*** BLUEZ support not found (requires D-Bus)" in configure.ac
 REQUIRED_USE="
 	bluetooth? ( dbus )
-	bluetooth-extra-codecs? ( bluetooth )
 	equalizer? ( dbus )
 	ofono-headset? ( bluetooth )
 	native-headset? ( bluetooth )
@@ -69,11 +62,6 @@ CDEPEND="
 		>=net-wireless/bluez-5
 		>=sys-apps/dbus-1.0.0
 		media-libs/sbc
-		bluetooth-extra-codecs? (
-			media-libs/fdk-aac
-			virtual/ffmpeg
-			media-libs/libldac
-		)
 	)
 	asyncns? ( net-libs/libasyncns[${MULTILIB_USEDEP}] )
 	udev? ( >=virtual/udev-143[hwdb(+)] )
@@ -165,11 +153,6 @@ src_prepare() {
 	# Skip test that cannot work with sandbox, bug #501846
 	sed -i -e '/lock-autospawn-test /d' src/Makefile.am || die
 	sed -i -e 's/lock-autospawn-test$(EXEEXT) //' src/Makefile.in || die
-
-	if use bluetooth-extra-codecs; then
-		eapply "${DISTDIR}/${EXTRA_CODECS_FILE}"
-		eautoreconf
-	fi
 }
 
 multilib_src_configure() {
