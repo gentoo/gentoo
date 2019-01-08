@@ -1,0 +1,26 @@
+--- a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx	2019-01-07 23:10:04.301278414 +0100
++++ b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx	2019-01-07 23:29:11.653479068 +0100
+@@ -555,7 +555,11 @@
+     LinkAction* pAction = link->getAction();
+     if (pAction && pAction->getKind() == actionURI)
+     {
++#if POPPLER_CHECK_VERSION(0, 72, 0)
++        const char* pURI = static_cast<LinkURI*>(pAction)->getURI()->c_str();
++#else
+         const char* pURI = static_cast<LinkURI*>(pAction)->getURI()->getCString();
++#endif
+ 
+         std::vector<char> aEsc( lcl_escapeLineFeeds(pURI) );
+ 
+@@ -757,7 +761,11 @@
+ 
+             aFont = it->second;
+ 
++#if POPPLER_CHECK_VERSION(0, 72, 0)
++            std::vector<char> aEsc( lcl_escapeLineFeeds(aFont.familyName.c_str()) );
++#else
+             std::vector<char> aEsc( lcl_escapeLineFeeds(aFont.familyName.getCString()) );
++#endif
+             printf( " %d %d %d %d %f %d %s",
+                     aFont.isEmbedded,
+                     aFont.isBold,
