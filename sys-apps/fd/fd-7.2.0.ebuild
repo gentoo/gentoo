@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -88,8 +88,4 @@ src_install() {
 	doins "${T}"/shell_completions/fd.fish
 	dodoc README.md
 	doman doc/*.1
-}
-
-src_test() {
-	cargo test -j $(makeopts_jobs) $(usex debug "" --release) -v || die "tests failed"
 }
