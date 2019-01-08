@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 inherit eutils flag-o-matic autotools
 
-PATCHREV="r1"
+PATCHREV="r0"
 PATCHSET="gentoo-${PVR}/${PATCHREV}"
 
 DESCRIPTION="A small but very powerful text-based mail client"
@@ -33,6 +33,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
 # have REQUIRED_USE do what it is made for again. bug #607360
 CDEPEND="
 	app-misc/mime-types
+	virtual/libiconv
 
 	berkdb?        ( >=sys-libs/db-4:= )
 	gdbm?          ( sys-libs/gdbm )
@@ -153,13 +154,14 @@ src_configure() {
 		$(use !ssl &&                echo --without-gnutls --without-ssl)
 
 		$(use_with sasl)
-		$(use_with idn)
+		$(use_with idn idn2) --without-idn  # avoid automagic libidn dep
 		$(use_with kerberos gss)
 		"$(use slang && echo --with-slang="${EPREFIX}"/usr || echo a=b)"
 		"$(use_with !slang curses "${EPREFIX}"/usr)"
 
 		"--enable-compressed"
 		"--enable-external-dotlock"
+		"--enable-iconv"
 		"--enable-nfs-fix"
 		"--enable-sidebar"
 		"--sysconfdir=${EPREFIX}/etc/${PN}"
@@ -257,6 +259,10 @@ pkg_postinst() {
 		elog "the Gentoo QuickStart Guide to Mutt E-Mail:"
 		elog "   https://wiki.gentoo.org/wiki/Mutt"
 		echo
+	else
+		ewarn "This release removes the conditional date feature in favour"
+		ewarn "of Dynamic \$index_format Content, see:"
+		ewarn "  http://www.mutt.org/doc/manual/#index-format-hook"
 	fi
 	if use crypt || use gpg || use smime ; then
 		ewarn "Please note that the crypto related USE-flags of mutt have changed."
