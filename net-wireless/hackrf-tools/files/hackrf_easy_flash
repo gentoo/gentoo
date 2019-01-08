@@ -115,6 +115,7 @@ if [ "${CPLD}" = 1 ] && [ "${TARGET}" != "hackrf" ]; then
   exit 1
 fi
 
+printf "This tool is provided by Gentoo, please report bugs on https://bugs.gentoo.org/\n\n"
 if [ ${DFU_MODE} = 1 ]; then
   printf "Preparing to reset hackrf with DFU ${ram_firmware}\n"
   printf "Then flashing with ${firmware}\n\n"
