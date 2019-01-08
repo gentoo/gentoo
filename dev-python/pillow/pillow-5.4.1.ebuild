@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy )
 PYTHON_REQ_USE='tk?,threads(+)'
 
-inherit distutils-r1 virtualx
+inherit distutils-r1 toolchain-funcs virtualx
 
 MY_PN=Pillow
 MY_P=${MY_PN}-${PV}
@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.2.0-fix-lib-paths.patch"
+	"${FILESDIR}"/${PN}-5.4.1-{pkg-config,toolchain-paths}.patch
 )
 
 python_configure_all() {
@@ -66,6 +66,17 @@ python_configure_all() {
 		$(use_enable webp webpmux)
 		$(use_enable zlib)
 	)
+
+	# setup.py sucks at adding the right toolchain paths but it does
+	# accept additional ones from INCLUDE and LIB so set these. You
+	# wouldn't normally need these at all as the toolchain should look
+	# here anyway but this setup.py does stupid things.
+	export \
+		INCLUDE=${ESYSROOT}/usr/include \
+		LIB=${ESYSROOT}/usr/$(get_libdir)
+
+	# We have patched in this env var.
+	tc-export PKG_CONFIG
 }
 
 python_compile_all() {
