@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 
 inherit meson python-any-r1 udev
@@ -26,7 +26,6 @@ RDEPEND="
 	virtual/udev
 "
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	doc? (
 		$(python_gen_any_dep '
 			dev-python/commonmark[${PYTHON_USEDEP}]
@@ -42,6 +41,9 @@ DEPEND="${RDEPEND}
 #		>=dev-libs/check-0.9.10
 #		dev-util/valgrind
 #		sys-libs/libunwind )
+BDEPEND="
+	virtual/pkgconfig
+"
 
 python_check_deps() {
 	has_version "dev-python/commonmark[${PYTHON_USEDEP}]" && \
