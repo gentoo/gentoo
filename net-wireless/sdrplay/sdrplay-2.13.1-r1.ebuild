@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="virtual/libusb
+DEPEND="virtual/libusb:1
 	virtual/udev"
 RDEPEND="${DEPEND}"
 
