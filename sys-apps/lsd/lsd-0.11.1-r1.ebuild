@@ -61,7 +61,3 @@ src_install() {
 	cargo_src_install
 	einstalldocs
 }
-
-src_test() {
-	cargo test -j $(makeopts_jobs) $(usex debug "" --release) || die "tests failed"
-}
