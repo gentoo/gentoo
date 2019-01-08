@@ -72,9 +72,5 @@
     <flag name="ofono-headset">
       Build with oFono HFP backend for bluez 5, requires <pkg>net-misc/ofono</pkg>.
     </flag>
-    <flag name="bluetooth-extra-codecs">
-      Build support for extra Bluetooth codecs, like LDAC, APTX, APTX-HD, and AAC, using:
-      https://github.com/EHfive/pulseaudio-modules-bt
-    </flag>
   </use>
 </pkgmetadata>
