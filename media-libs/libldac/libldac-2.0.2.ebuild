@@ -22,4 +22,8 @@ BDEPEND=""
 
 S="${WORKDIR}/ldacBT"
 
-mycmakeargs=( -DLDAC_SOFT_FLOAT=OFF )
+src_prepare() {
+	eapply_user
+	mycmakeargs=( -DLDAC_SOFT_FLOAT=OFF -DINSTALL_LIBDIR=/usr/$(get_libdir) )
+	cmake-utils_src_prepare
+}
