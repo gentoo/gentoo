@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,6 +30,7 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 	cmake-utils_src_install
+	dosbin "${FILESDIR}/hackrf_easy_flash"
 	if [[ ${PV} != "9999" ]] ; then
 		insinto /usr/share/hackrf
 		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_jawbreaker_usb.bin" hackrf_jawbreaker_usb-${PV}.bin
@@ -41,6 +42,7 @@ src_install() {
 		ln -s hackrf_one_usb-${PV}.bin "${ED}/usr/share/hackrf/hackrf_one_usb.bin"
 		ln -s hackrf_one_usb-${PV}.dfu "${ED}/usr/share/hackrf/hackrf_one_usb_ram.dfu"
 		ln -s hackrf_one_usb-${PV}.dfu "${ED}/usr/share/hackrf/hackrf_one_usb.dfu"
+		ln -s hackrf_cpld_default-${PV}.xsvf "${ED}/usr/share/hackrf/hackrf_cpld_default.xsvf"
 	else
 		ewarn "The compiled firmware files are only available in the versioned releases, you are on your own for this."
 	fi
