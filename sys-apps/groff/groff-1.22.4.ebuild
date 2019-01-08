@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,9 +42,9 @@ src_prepare() {
 	default
 
 	# honor Gentoo's docdir
-	sed -i -e '/^docdir=/s/^/#/' \
-		Makefile.am \
-		|| die "failed to modify Makefile.am"
+	sed -i -e "s|^docdir =.*|docdir = \"${EPREFIX%/}/usr/share/doc/${PF}\"|g" \
+		Makefile.in \
+		|| die "failed to modify Makefile.in"
 
 	# Make sure we can cross-compile this puppy
 	if tc-is-cross-compiler ; then
@@ -73,7 +73,6 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--with-appresdir="${EPREFIX%/}"/usr/share/X11/app-defaults
-		--docdir="${EPREFIX%/}"/usr/share/doc/${PF}
 		$(use_with X x)
 	)
 	econf "${myeconfargs[@]}"
