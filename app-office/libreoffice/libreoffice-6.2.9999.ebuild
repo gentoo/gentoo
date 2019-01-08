@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -251,6 +251,13 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
+
+	# master branch
+	"${FILESDIR}/${PN}-6.2.0.1-poppler-0.71-1.patch"
+	"${FILESDIR}/${PN}-6.2.0.1-poppler-0.71-2.patch"
+
+	# pending upstream
+	"${FILESDIR}/${PN}-6.2.0.1-poppler-0.72.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
