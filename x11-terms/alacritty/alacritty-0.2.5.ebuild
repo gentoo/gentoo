@@ -352,9 +352,7 @@ BDEPEND="dev-util/cmake
 DOCS=( CHANGELOG.md docs/ansicode.txt INSTALL.md README.md alacritty.yml )
 
 src_install() {
-	cargo install -j $(makeopts_jobs) --root="${D}/usr" $(usex debug --debug "") \
-		--path . || die "cargo install failed"
-	rm "${D}/usr/.crates.toml" || die
+	cargo_src_install --path ./
 
 	newbashcomp alacritty-completions.bash alacritty
 
@@ -375,10 +373,6 @@ src_install() {
 	newman alacritty.man alacritty.1
 
 	einstalldocs
-}
-
-src_test() {
-	cargo test -j $(makeopts_jobs) $(usex debug "" --release) || die "tests failed"
 }
 
 pkg_postinst() {
