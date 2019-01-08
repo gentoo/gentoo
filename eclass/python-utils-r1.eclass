@@ -964,7 +964,7 @@ python_doheader() {
 }
 
 # @FUNCTION: python_wrapper_setup
-# @USAGE: [<path> [<impl>]]
+# @USAGE: [<impl> [<path>]]
 # @DESCRIPTION:
 # Create proper 'python' executable and pkg-config wrappers
 # (if available) in the directory named by <path>. Set up PATH
@@ -980,8 +980,8 @@ python_doheader() {
 python_wrapper_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local impl=${2:-${EPYTHON}}
-	local workdir=${1:-${T}/${impl}}
+	local impl=${1:-${EPYTHON}}
+	local workdir=${2:-${T}/${impl}}
 
 	[[ ${workdir} ]] || die "${FUNCNAME}: no workdir specified."
 	[[ ${impl} ]] || die "${FUNCNAME}: no impl nor EPYTHON specified."
