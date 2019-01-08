@@ -23,12 +23,12 @@ RDEPEND=">=dev-libs/libtasn1-4.9:=[${MULTILIB_USEDEP}]
 	dev-libs/libunistring:=[${MULTILIB_USEDEP}]
 	>=dev-libs/nettle-3.1:=[gmp,${MULTILIB_USEDEP}]
 	>=dev-libs/gmp-5.1.3-r1:=[${MULTILIB_USEDEP}]
-	tools? ( sys-devel/autogen )
+	tools? ( sys-devel/autogen:= )
 	dane? ( >=net-dns/unbound-1.4.20:=[${MULTILIB_USEDEP}] )
 	guile? ( >=dev-scheme/guile-2:=[networking] )
-	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
-	pkcs11? ( >=app-crypt/p11-kit-0.23.1[${MULTILIB_USEDEP}] )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
+	nls? ( >=virtual/libintl-0-r1:=[${MULTILIB_USEDEP}] )
+	pkcs11? ( >=app-crypt/p11-kit-0.23.1:=[${MULTILIB_USEDEP}] )
+	zlib? ( >=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )
 	idn? ( >=net-dns/libidn2-0.16-r1:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	test? (
