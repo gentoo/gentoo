@@ -3895,6 +3895,7 @@ net-firewall/iptables:netlink - Build against libnfnetlink which enables the nfn
 net-firewall/iptables:nftables - Support nftables kernel interface
 net-firewall/iptables:pcap - Build against net-libs/libpcap which enables the nfbpf_compile util
 net-firewall/nftables:json - Enable JSON support via dev-libs/jansson
+net-firewall/nftables:modern_kernel - Install init scripts for 3.18 or higher kernels with atomic rule updates
 net-firewall/shorewall:init - Adds the capability to place the firewall in a safe state prior to bringing up the network interfaces
 net-firewall/shorewall:ipv4 - Installs everything needed to create a full IPv4 firewall
 net-firewall/shorewall:ipv6 - Adds the capability to create a full IPv6 firewall (requires net-firewall/shorewall ipv4 USE flag)
