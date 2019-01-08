@@ -253,11 +253,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 
 	# master branch
-	"${FILESDIR}/${PN}-6.2.0.1-poppler-0.71-1.patch"
-	"${FILESDIR}/${PN}-6.2.0.1-poppler-0.71-2.patch"
-
-	# pending upstream
-	"${FILESDIR}/${PN}-6.2.0.1-poppler-0.72.patch"
+	"${FILESDIR}"/${PN}-6.2.0.1-poppler-0.71-{1,2}.patch
+	"${FILESDIR}"/${PN}-6.2.0.1-poppler-0.72.patch
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
