@@ -160,15 +160,6 @@ user_setup() {
 }
 
 pkg_pretend() {
-	if use cephfs; then
-		eerror "Cephfs support is broken in 13.2.2, please mask ${PF} if"
-		eerror "you need cephfs support: "
-		eerror " # echo '=${CATEGORY}/${PF}' >> /etc/portage/package.mask"
-		eerror
-		eerror "See https://bugs.gentoo.org/670592 for more information"
-		die "CephFS support is currently broken"
-	fi
-
 	check-reqs_export_vars
 	check-reqs_pkg_pretend
 }
