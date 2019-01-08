@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
-inherit linux-info autotools eutils python-single-r1
+inherit linux-info autotools python-single-r1 user
 
 DESCRIPTION="A linux trace/probe tool"
 HOMEPAGE="https://www.sourceware.org/systemtap/"
@@ -14,14 +14,27 @@ SRC_URI="https://www.sourceware.org/${PN}/ftp/releases/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="sqlite"
+IUSE="avahi libvirt selinux sqlite +ssl"
 
 RDEPEND=">=dev-libs/elfutils-0.142
-	sys-libs/libcap
+	dev-libs/json-c:=
+	sys-libs/ncurses:0=
+	sys-libs/readline:0=
 	${PYTHON_DEPS}
-	sqlite? ( dev-db/sqlite:3 )"
+	avahi? ( net-dns/avahi )
+	libvirt? ( >=app-emulation/libvirt-1.0.2 )
+	selinux? ( sys-libs/libselinux )
+	sqlite? ( dev-db/sqlite:3 )
+	ssl? (
+		dev-libs/nspr
+		dev-libs/nss
+	)
+"
 DEPEND="${RDEPEND}
-	>=sys-devel/gettext-0.18.2"
+	app-text/xmlto
+	>=sys-devel/gettext-0.18.2
+	libvirt? ( dev-libs/libxml2 )
+"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -32,7 +45,15 @@ ERROR_DEBUG_FS="${PN} works best with support for Debug Filesystem (DEBUG_FS) - 
 
 DOCS="AUTHORS HACKING NEWS README"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.1-ia64.patch
+)
+
 pkg_setup() {
+	enewgroup stapusr 156
+	enewgroup stapsys 157
+	enewgroup stapdev 158
+
 	linux-info_pkg_setup
 	python-single-r1_pkg_setup
 }
@@ -55,18 +76,28 @@ src_prepare() {
 		scripts/kprobes_test/gen_code.py \
 		|| die "Failed to clean up sources"
 
-	epatch_user
+	default
 
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		--without-rpm \
-		--disable-server \
-		--disable-docs \
-		--disable-refdocs \
-		--disable-grapher \
+	local myeconfargs=(
+		--disable-docs
+		--disable-grapher
+		--disable-refdocs
+		--disable-server
+		--enable-pie
+		--with-python3
+		--without-java
+		--without-openssl
+		--without-python2-probes
+		--without-rpm
+		$(use_enable libvirt virt)
 		$(use_enable sqlite)
+		$(use_with avahi)
+		$(use_with ssl nss)
+		$(use_with selinux)
+	)
+	econf "${myeconfargs[@]}"
 }
