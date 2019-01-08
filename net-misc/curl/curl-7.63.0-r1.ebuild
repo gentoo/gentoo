@@ -101,16 +101,11 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-fix-gnutls-nettle.patch
 
 	sed -i '/LD_LIBRARY_PATH=/d' configure.ac || die #382241
+	sed -i '/CURL_MAC_CFLAGS/d' configure.ac || die #637252
 
 	eapply_user
 	eprefixify curl-config.in
 	eautoreconf
-
-	if [[ ${CHOST} == *-darwin17 ]] ; then
-		# https://bugs.gentoo.org/show_bug.cgi?id=637252
-		sed -i -e '/-Werror=partial-availability/s/Werror/Wno-error/g' \
-			configure || die
-	fi
 }
 
 multilib_src_configure() {
