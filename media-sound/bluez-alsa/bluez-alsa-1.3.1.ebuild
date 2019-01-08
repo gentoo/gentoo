@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,6 +23,7 @@ RDEPEND=">=dev-libs/glib-2.26[dbus,${MULTILIB_USEDEP}]
 	>=media-libs/alsa-lib-1.0[${MULTILIB_USEDEP}]
 	>=media-libs/sbc-1.2[${MULTILIB_USEDEP}]
 	>=net-wireless/bluez-5.0[${MULTILIB_USEDEP}]
+	sys-libs/readline:0=
 	aac? ( >=media-libs/fdk-aac-0.1.1:=[${MULTILIB_USEDEP}] )
 	hcitop? (
 		dev-libs/libbsd
