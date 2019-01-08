@@ -9,7 +9,12 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>klondike@gentoo.org</email>
+		<name>Francisco Blas Izquierdo Riera</name>
+	</maintainer>
 	<use>
 		<flag name="json">Enable JSON support via <pkg>dev-libs/jansson</pkg></flag>
+		<flag name="modern_kernel">Install init scripts for 3.18 or higher kernels with atomic rule updates</flag>
 	</use>
 </pkgmetadata>
