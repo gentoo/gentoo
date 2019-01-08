@@ -120,6 +120,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-stage-qt-5.11.patch
 	"${FILESDIR}"/${P}-poppler-0.69.patch
 	"${FILESDIR}"/${P}-poppler-0.71.patch
+	"${FILESDIR}"/${P}-poppler-0.72.patch # not upstreamable
 	"${FILESDIR}"/${P}-no-webkit.patch
 )
 
