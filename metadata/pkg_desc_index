@@ -6297,7 +6297,7 @@ dev-util/geany 1.30.1: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.30: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.5.0: Gertty is a console-based interface to the Gerrit Code Review system.
-dev-util/glade 3.20.2 3.20.4: A user interface designer for GTK+ and GNOME
+dev-util/glade 3.20.4: A user interface designer for GTK+ and GNOME
 dev-util/glib-utils 2.56.4: Build utilities for GLib using projects
 dev-util/global 6.3.1: tag system to find an object location in various sources
 dev-util/gn 0.1463: GN is a meta-build system that generates build files for Ninja
