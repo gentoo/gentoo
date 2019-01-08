@@ -1,4 +1,4 @@
-# Copyright 2017-2018 Gentoo Authors
+# Copyright 2017-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -85,10 +85,6 @@ src_install() {
 	doins "${PN}.bash"
 
 	einstalldocs
-}
-
-src_test(){
-	cargo test -j $(makeopts_jobs) $(usex debug "" --release) || die "tests failed"
 }
 
 pkg_postinst() {
