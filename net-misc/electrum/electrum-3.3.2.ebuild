@@ -1,10 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-#PYTHON_COMPAT=( python3_{4,5,6} )
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="ncurses?"
 
 inherit desktop distutils-r1 gnome2-utils xdg-utils
@@ -16,8 +15,8 @@ SRC_URI="https://download.electrum.org/${PV}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
-MY_LANGS="ar_SA bg_BG cs_CZ da_DK de_DE el_GR eo_UY es_ES fa_IR fr_FR hu_HU hy_AM id_ID it_IT ja_JP ko_KR ky_KG lv_LV nb_NO nl_NL pl_PL pt_BR pt_PT ro_RO ru_RU sk_SK sl_SI ta_IN th_TH tr_TR uk_UA vi_VN zh_CN zh_TW"
+KEYWORDS="~amd64 ~x86"
+MY_LANGS="ar_SA be_BY bg_BG cs_CZ da_DK de_DE el_GR eo_UY es_ES fa_IR fr_FR hu_HU hy_AM id_ID it_IT ja_JP ko_KR ky_KG lv_LV nb_NO nl_NL pl_PL pt_BR pt_PT ro_RO ru_RU sk_SK sl_SI sv_SE ta_IN th_TH tr_TR uk_UA vi_VN zh_CN zh_TW"
 
 my_langs_to_l10n() {
 	# Map all except pt_* and zh_* to their generic codes
@@ -27,7 +26,7 @@ my_langs_to_l10n() {
 	esac
 }
 
-IUSE="audio_modem cli cosign digitalbitbox email greenaddress_it ncurses qrcode +qt5 sync trustedcoin_com vkb"
+IUSE="audio_modem cli coldcard cosign digitalbitbox email greenaddress_it ncurses qrcode +qt5 safe_t sync revealer trustedcoin_com vkb"
 
 for lang in ${MY_LANGS}; do
 	IUSE+=" l10n_$(my_langs_to_l10n ${lang})"
@@ -72,16 +71,18 @@ S="${WORKDIR}/${MY_P}"
 DOCS="RELEASE-NOTES"
 
 src_prepare() {
-	eapply "${FILESDIR}/2.8.0-no-user-root.patch"
+	eapply "${FILESDIR}/3.1.2-no-user-root.patch"
+	eapply "${FILESDIR}/3.2.3-pip-optional-pkgs.patch"
+	eapply "${FILESDIR}/3.3.2-desktop.patch"
 
 	# Prevent icon from being installed in the wrong location
-	sed -i '/icons/d' setup.py || die
+	sed -i '/icons_dirname/d' setup.py || die
 
 	# Remove unrequested localization files:
 	local lang
 	for lang in ${MY_LANGS}; do
 		use l10n_$(my_langs_to_l10n ${lang}) && continue
-		rm -r "lib/locale/${lang}" || die
+		rm -r "${PN}/locale/${lang}" || die
 	done
 
 	local wordlist=
@@ -91,8 +92,8 @@ src_prepare() {
 		$(usex l10n_es    '' spanish) \
 		$(usex l10n_zh-CN '' chinese_simplified) \
 	; do
-		rm -f "lib/wordlist/${wordlist}.txt" || die
-		sed -i "/${wordlist}\\.txt/d" lib/mnemonic.py || die
+		rm -f "${PN}/wordlist/${wordlist}.txt" || die
+		sed -i "/${wordlist}\\.txt/d" ${PN}/mnemonic.py || die
 	done
 
 	# Remove unrequested GUI implementations:
@@ -103,7 +104,7 @@ src_prepare() {
 		$(usex qt5      '' qt   )  \
 		$(usex ncurses  '' text )  \
 	; do
-		rm gui/"${gui}"* -r || die
+		rm ${PN}/gui/"${gui}"* -r || die
 	done
 
 	# And install requested ones...
@@ -123,13 +124,14 @@ src_prepare() {
 	else
 		bestgui=stdio
 	fi
-	sed -i 's/^\([[:space:]]*\)\(config_options\['\''cwd'\''\] = .*\)$/\1\2\n\1config_options.setdefault("gui", "'"${bestgui}"'")\n/' electrum || die
+	sed -i 's/^\([[:space:]]*\)\(config_options\['\''cwd'\''\] = .*\)$/\1\2\n\1config_options.setdefault("gui", "'"${bestgui}"'")\n/' ${PN}/${PN} || die
 
 	local plugin
 	# trezor requires python trezorlib module
 	# keepkey requires trezor
 	for plugin in  \
 		$(usex audio_modem     '' audio_modem          ) \
+		$(usex coldcard        '' coldcard             ) \
 		$(usex cosign          '' cosigner_pool        ) \
 		$(usex digitalbitbox   '' digitalbitbox        ) \
 		$(usex email           '' email_requests       ) \
@@ -137,18 +139,20 @@ src_prepare() {
 		hw_wallet \
 		ledger \
 		keepkey \
+		$(usex safe_t          '' safe_t               ) \
 		$(usex sync            '' labels               ) \
-		revealer \
+		$(usex revealer        '' revealer             ) \
 		trezor  \
 		$(usex trustedcoin_com '' trustedcoin          ) \
 		$(usex vkb             '' virtualkeyboard      ) \
 	; do
-		rm -r plugins/"${plugin}"* || die
+		rm -r ${PN}/plugins/"${plugin}"* || die
 		sed -i "/${plugin}/d" setup.py || die
 	done
 
 	eapply_user
 
+	xdg_environment_reset
 	distutils-r1_src_prepare
 }
 
