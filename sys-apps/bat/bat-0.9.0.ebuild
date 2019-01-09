@@ -147,10 +147,6 @@ BDEPEND=">=virtual/rust-1.29.0"
 QA_FLAGS_IGNORED="/usr/bin/bat"
 
 src_install() {
-	cargo_src_install
+	cargo_src_install --path ./
 	einstalldocs
-}
-
-src_test() {
-	cargo test -j $(makeopts_jobs) $(usex debug "" --release) || die "tests failed"
 }

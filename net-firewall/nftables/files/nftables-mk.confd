@@ -1,0 +1,26 @@
+# /etc/conf.d/nftables
+
+# Location in which nftables initscript will save set rules on
+# service shutdown
+NFTABLES_SAVE="/var/lib/nftables/rules-save"
+
+# Options to pass to nft on save
+SAVE_OPTIONS="-n"
+
+# Save state on stopping nftables
+SAVE_ON_STOP="yes"
+
+# Only for OpenRC systems.
+# Set to "hard" or "soft" to panic when stopping instead of
+# clearing the rules
+# Soft panic loads a ruleset dropping any new or invalid connections
+# Hard panic loads a ruleset dropping all traffic
+PANIC_ON_STOP=""
+
+# If you need to log nftables messages as soon as nftables starts,
+# AND your logger does NOT depend on the network, then you may wish
+# to uncomment the next line.
+# If your logger depends on the network, and you uncomment this line
+# you will create an unresolvable circular dependency during startup.
+# After commenting or uncommenting this line, you must run 'rc-update -u'.
+#rc_use="logger"

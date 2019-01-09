@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -43,7 +43,7 @@ RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 		)
 	)
 	http2? ( net-libs/nghttp2[${MULTILIB_USEDEP}] )
-	idn? ( net-dns/libidn2:0[static-libs?,${MULTILIB_USEDEP}] )
+	idn? ( net-dns/libidn2:0=[static-libs?,${MULTILIB_USEDEP}] )
 	adns? ( net-dns/c-ares:0[${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	metalink? ( >=media-libs/libmetalink-0.1.1[${MULTILIB_USEDEP}] )
@@ -101,16 +101,11 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-fix-gnutls-nettle.patch
 
 	sed -i '/LD_LIBRARY_PATH=/d' configure.ac || die #382241
+	sed -i '/CURL_MAC_CFLAGS/d' configure.ac || die #637252
 
 	eapply_user
 	eprefixify curl-config.in
 	eautoreconf
-
-	if [[ ${CHOST} == *-darwin17 ]] ; then
-		# https://bugs.gentoo.org/show_bug.cgi?id=637252
-		sed -i -e '/-Werror=partial-availability/s/Werror/Wno-error/g' \
-			configure || die
-	fi
 }
 
 multilib_src_configure() {

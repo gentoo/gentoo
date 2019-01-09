@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ REQUIRED_USE=" ntlm? ( !gnutls ssl ) gnutls? ( ssl )"
 
 # Force a newer libidn2 to avoid libunistring deps. #612498
 LIB_DEPEND="
-	idn? ( >=net-dns/libidn2-0.14[static-libs(+)] )
+	idn? ( >=net-dns/libidn2-0.14:=[static-libs(+)] )
 	pcre? ( dev-libs/libpcre2[static-libs(+)] )
 	ssl? (
 		gnutls? ( net-libs/gnutls:0=[static-libs(+)] )

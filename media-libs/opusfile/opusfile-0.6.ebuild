@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ IUSE="doc fixed-point +float +http static-libs"
 
 RDEPEND="media-libs/libogg
 	media-libs/opus
-	http? ( dev-libs/openssl:= )"
+	http? ( dev-libs/openssl:0= )"
 
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -116,25 +116,16 @@ src_test() {
 }
 
 src_compile() {
-	export CARGO_HOME="${ECARGO_HOME}"
-	cargo build -j $(makeopts_jobs) \
-		$(usex debug "" --release) \
-		$(usex pcre "--features pcre2" "") \
-		|| die "cargo build failed"
+	cargo_src_compile $(usex pcre "--features pcre2" "")
 }
 
 src_install() {
-	cargo install -j $(makeopts_jobs) --root="${D}/usr" \
-		$(usex debug --debug "") \
-		$(usex pcre "--features pcre2" "") \
-		|| die "cargo install failed"
-
-	rm -f "${D}/usr/.crates.toml" || die
+	cargo_src_install $(usex pcre "--features pcre2" "")
 
 	# hack to find/install generated files
 	# stamp file can be present in multiple dirs if we build additional features
 	# so grab fist match only
-	local BUILD_DIR=$(dirname $(find target/release -name ripgrep-stamp -print -quit))
+	local BUILD_DIR="$(dirname $(find target/release -name ripgrep-stamp -print -quit))"
 
 	if use man ; then
 	    doman "${BUILD_DIR}"/rg.1

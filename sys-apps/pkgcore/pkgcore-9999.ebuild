@@ -21,25 +21,24 @@ LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
 IUSE="doc test"
 
-if [[ ${PV} == *9999 ]] ; then
-	SPHINX="dev-python/sphinx[${PYTHON_USEDEP}]"
-else
-	SPHINX="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
-fi
+RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
 if [[ ${PV} == *9999 ]]; then
 	RDEPEND+=" ~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
 	RDEPEND+=" >=dev-python/snakeoil-0.8.0[${PYTHON_USEDEP}]"
 fi
 DEPEND="${RDEPEND}
-	${SPHINX}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
 python_compile_all() {
-	esetup.py build_man $(usex doc "build_docs" "")
+	local esetup_args=( $(usex doc "--enable-html-docs" "") )
+	# only build man pages for live ebuilds if doc USE flag is enabled
+	[[ ${PV} == *9999 ]] && esetup_args+=( $(usex doc "--enable-man-pages" "") )
+	esetup.py build "${esetup_args[@]}"
 }
 
 python_test() {
@@ -47,8 +46,9 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install install_man \
-		$(usex doc "install_docs --path="${ED%/}"/usr/share/doc/${PF}/html" "")
+	esetup.py install_docs \
+		--docdir="${ED%/}/usr/share/doc/${PF}" \
+		--mandir="${ED%/}/usr/share/man"
 	distutils-r1_python_install_all
 }
 

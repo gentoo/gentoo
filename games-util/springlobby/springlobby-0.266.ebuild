@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ IUSE="debug +libnotify +nls +sound"
 
 RDEPEND="
 	>=dev-libs/boost-1.35:=
-	dev-libs/openssl:=
+	dev-libs/openssl:0=
 	net-misc/curl
 	sys-libs/zlib[minizip]
 	x11-libs/libICE

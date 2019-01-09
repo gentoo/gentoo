@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,7 @@ IUSE="cdp doc +dot1 +dot3 edp fdp graph +lldpmed old-kernel sanitizers
 
 RDEPEND="dev-libs/libbsd
 	>=dev-libs/libevent-2.0.5:=
+	sys-libs/readline:0=
 	snmp? ( net-analyzer/net-snmp[extensible(+)] )
 	xml? ( dev-libs/libxml2 )
 	seccomp? ( sys-libs/libseccomp )
@@ -35,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}/lldpd-0.9.5-seccomp-add-socket-ops.patch"
 	"${FILESDIR}/lldpd-1.0.1-seccomp-add-brk.patch"
 	"${FILESDIR}/lldpd-1.0.2-seccomp-add-misc.patch"
+	"${FILESDIR}/lldpd-1.0.3-fix-fdp-without-cdp.patch"
 )
 
 pkg_setup() {

@@ -1,32 +1,40 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1 cmake-utils git-r3
+
+if [[ ${PV} == 9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/bistromath/gr-air-modes.git"
+	EGIT_BRANCH="master"
+else
+	KEYWORDS=""
+fi
+inherit cmake-utils python-single-r1
 
 DESCRIPTION="This module implements a complete Mode S and ADS-B receiver for Gnuradio"
 HOMEPAGE="https://www.cgran.org/wiki/gr-air-modes"
 
-EGIT_REPO_URI="https://github.com/bistromath/gr-air-modes.git"
-EGIT_BRANCH="master"
-
-KEYWORDS=""
-
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="rtlsdr fgfs uhd"
-DEPEND=">=net-wireless/gnuradio-3.7.0:=
-	net-wireless/gr-osmosdr
-	dev-python/pyzmq[${PYTHON_USEDEP}]
-	fgfs? ( sci-libs/scipy
-		games-simulation/flightgear )
-	rtlsdr? ( net-wireless/rtl-sdr )
-	uhd? ( >=net-wireless/uhd-3.4.0 )
-	${PYTHON_DEPS}"
-RDEPEND="${DEPEND}"
+IUSE="fgfs rtlsdr uhd"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+DEPEND="${PYTHON_DEPS}
+	dev-python/pyzmq[${PYTHON_USEDEP}]
+	>=net-wireless/gnuradio-3.7.0:=
+	net-wireless/gr-osmosdr
+	fgfs? (
+		games-simulation/flightgear
+		sci-libs/scipy
+	)
+	rtlsdr? ( net-wireless/rtl-sdr )
+	uhd? ( >=net-wireless/uhd-3.4.0 )
+"
+RDEPEND="${DEPEND}"
 
 src_compile() {
 	cmake-utils_src_compile -j1
