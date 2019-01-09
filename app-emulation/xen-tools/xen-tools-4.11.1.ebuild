@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -333,6 +333,10 @@ src_prepare() {
 		-e 's:^#lockfile=:lockfile=:' \
 		-e 's:^#vif.default.script=:vif.default.script=:' \
 		-i tools/examples/xl.conf  || die
+
+	# disable capstone (Bug #673474)
+	sed -e "s:\$\$source/configure:\0 --disable-capstone:" \
+		-i tools/Makefile || die
 
 	default
 }
