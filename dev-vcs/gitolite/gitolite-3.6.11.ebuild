@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 [[ ${PV} == *9999 ]] && SCM="git-2"
 EGIT_REPO_URI="https://github.com/sitaramc/${PN}.git"
 EGIT_MASTER=master
@@ -12,25 +12,27 @@ DESCRIPTION="Highly flexible server for git directory version tracker"
 HOMEPAGE="https://github.com/sitaramc/gitolite"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="https://github.com/sitaramc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 else
 	SRC_URI=""
-	KEYWORDS=""
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="selinux tools vim-syntax"
+IUSE="selinux tools"
 
 DEPEND="dev-lang/perl
 	virtual/perl-File-Path
 	virtual/perl-File-Temp
 	>=dev-vcs/git-1.6.6"
 RDEPEND="${DEPEND}
+	!app-vim/gitolite-syntax
 	!dev-vcs/gitolite-gentoo
 	selinux? ( sec-policy/selinux-gitosis )
-	vim-syntax? ( app-vim/gitolite-syntax )
 	dev-perl/JSON"
+
+PATCHES=( )
 
 pkg_setup() {
 	enewgroup git
@@ -38,7 +40,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	echo $PF > src/VERSION
+	default
+	echo $PF > src/VERSION || die
 }
 
 src_install() {
@@ -53,10 +56,13 @@ src_install() {
 	# customize them for your needs.
 	dodoc contrib/utils/ipa_groups.pl contrib/utils/ldap_groups.sh
 
+	insinto /usr/share/vim/vimfiles
+	doins -r contrib/vim/*
+
 	insopts -m0755
 	insinto $uexec
 	doins -r src/{commands,syntactic-sugar,triggers,VREF}/
-	doins -r contrib/{commands,triggers}
+	doins -r contrib/{commands,triggers,hooks}
 
 	insopts -m0644
 	doins src/VERSION
