@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic toolchain-funcs
 
 APPLE_PV=${PV}
 DESCRIPTION="Apple branch of the GNU Debugger, Developer Tools 4.3"
@@ -20,7 +20,8 @@ IUSE="nls"
 RDEPEND=">=sys-libs/ncurses-5.2-r2
 	=dev-db/sqlite-3*"
 DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+	|| ( >=sys-devel/gcc-apple-4.2.1 sys-devel/llvm:* )"
 
 S=${WORKDIR}/gdb-${APPLE_PV}/src
 
@@ -37,6 +38,12 @@ src_prepare() {
 }
 
 src_configure() {
+	if tc-is-gcc ; then
+		# force gcc-apple, FSF gcc doesn't grok this code
+		export CC=${CTARGET}-gcc-4.2.1
+		export CXX=${CTARGET}-g++-4.2.1
+	fi
+
 	replace-flags -O? -O2
 	econf \
 		--disable-werror \
