@@ -30,6 +30,7 @@ RDEPEND="
 	xmp? ( >=media-gfx/exiv2-0.17:=[xmp] )
 	!xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) )"
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
