@@ -6445,7 +6445,7 @@ dev-vcs/git-bzr-ng 0_pre20120822-r2: Git subcommand providing a bidirectional br
 dev-vcs/git-cola 2.11: The highly caffeinated git GUI
 dev-vcs/git-flow 1.11.0: Git extensions to provide high-level repository operations
 dev-vcs/gitg 3.26.0: git repository viewer for GNOME
-dev-vcs/gitolite 2.3.1-r1 3.6 3.6.3 3.6.6: Highly flexible server for git directory version tracker
+dev-vcs/gitolite 2.3.1-r1 3.6.6: Highly flexible server for git directory version tracker
 dev-vcs/gitolite-gentoo 2.3.1-r1: Highly flexible server for git directory version tracker, Gentoo fork
 dev-vcs/guilt 0.36: A series of bash scripts which add a quilt-like interface to git
 dev-vcs/hg-git 0.8.8: push to and pull from a Git repository using Mercurial
