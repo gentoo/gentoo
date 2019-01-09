@@ -36,6 +36,8 @@ BDEPEND="
 
 PATCHES=( "${FILESDIR}/${PN}-0.10.1-qt-5.11.patch" )
 
+S="${WORKDIR}/${MY_PN}-${PV}"
+
 src_configure() {
 	local mycmakeargs=( -DPHONON_BUILD_PHONON4QT5=ON )
 	cmake-utils_src_configure
