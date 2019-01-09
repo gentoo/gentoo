@@ -3,7 +3,7 @@
 
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby24"
 
 inherit autotools python-single-r1 ruby-single
 
