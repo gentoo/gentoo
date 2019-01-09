@@ -81,3 +81,7 @@ src_configure() {
 		$(use_with X x11) \
 		${myconf}
 }
+
+PATCHES=(
+	"${FILESDIR}"/${P}-slirpinc.patch
+)

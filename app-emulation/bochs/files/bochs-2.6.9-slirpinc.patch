@@ -1,0 +1,11 @@
+--- bochs-2.6.9/iodev/network/slirp/slirp.h.orig	2014-12-25 18:58:26.557466000 +0100
++++ bochs-2.6.9/iodev/network/slirp/slirp.h	2018-07-03 09:54:56.164439625 +0200
+@@ -33,7 +33,7 @@
+ #endif
+ 
+ #include <sys/types.h>
+-#if defined(__OpenBSD__)
++#if defined(__OpenBSD__) || (__linux__)
+ #include <stdint.h>
+ #include <sys/wait.h>
+ #endif
