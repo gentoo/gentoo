@@ -65,8 +65,9 @@ src_prepare() {
 		-e 's:-Werror::g' \
 		configure.ac \
 		Makefile.am \
-		staprun/Makefile.am \
+		stapbpf/Makefile.am \
 		stapdyn/Makefile.am \
+		staprun/Makefile.am \
 		testsuite/systemtap.unprivileged/unprivileged_probes.exp \
 		testsuite/systemtap.unprivileged/unprivileged_myproc.exp \
 		testsuite/systemtap.base/stmt_rel_user.exp \
