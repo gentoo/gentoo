@@ -31,7 +31,8 @@ RDEPEND="
 	tiff? ( media-libs/tiff:0 )
 	xmp? ( >=media-gfx/exiv2-0.17:=[xmp] )
 	!xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
