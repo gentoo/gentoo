@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,13 +12,14 @@ SRC_URI="https://github.com/mongodb/mongo-c-driver/archive/${PV}.tar.gz -> ${P}.
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~hppa x86"
-IUSE="debug examples libressl sasl ssl static-libs test"
+IUSE="debug examples icu libressl sasl ssl static-libs test"
 REQUIRED_USE="test? ( static-libs )"
 
 RDEPEND="app-arch/snappy:=
 	>=dev-libs/libbson-${PV}
 	dev-python/sphinx
 	sys-libs/zlib:=
+	icu? ( dev-libs/icu:= )
 	sasl? ( dev-libs/cyrus-sasl:= )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
@@ -56,6 +57,7 @@ src_configure() {
 		-DCMAKE_SKIP_RPATH=ON # mongoc-stat insecure runpath
 		-DENABLE_BSON=SYSTEM
 		-DENABLE_EXAMPLES=OFF
+		-DENABLE_ICU="$(usex icu ON OFF)"
 		-DENABLE_MAN_PAGES=ON
 		-DENABLE_MONGOC=ON
 		-DENABLE_SNAPPY=SYSTEM
