@@ -36,6 +36,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? ( x11-apps/xhost )"
+PATCHES=(
+	"${FILESDIR}/${P}-disable-failing-tests.patch"
+	"${FILESDIR}/${P}-support-use-of-gdlib-from-system.patch"
+)
 
 src_prepare() {
 	default
