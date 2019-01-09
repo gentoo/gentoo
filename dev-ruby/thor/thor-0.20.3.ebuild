@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -22,7 +22,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
 IUSE="doc"
 
-USE_RUBY="ruby23 ruby24" ruby_add_bdepend "
+USE_RUBY="ruby23 ruby24 ruby25" ruby_add_bdepend "
 	test? (
 		dev-ruby/childlabor
 		dev-ruby/webmock
@@ -48,7 +48,7 @@ all_ruby_prepare() {
 
 each_ruby_test() {
 	case ${RUBY} in
-		*ruby25)
+		*ruby26)
 			einfo "Skipping tests due to circular dependencies"
 			;;
 		*)

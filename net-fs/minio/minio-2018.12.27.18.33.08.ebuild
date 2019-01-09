@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ MY_PV="$(ver_cut 1-3)T$(ver_cut 4-7)Z"
 MY_PV=${MY_PV//./-}
 EGIT_COMMIT="ce419c98352324caa4c79b159a9f840ca714c3d5"
 ARCHIVE_URI="https://${EGO_PN}/archive/RELEASE.${MY_PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~amd64-linux"
 
 DESCRIPTION="An Amazon S3 compatible object storage server"
 HOMEPAGE="https://github.com/minio/minio"
