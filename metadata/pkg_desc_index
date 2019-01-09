@@ -3616,7 +3616,7 @@ dev-perl/Data-Types 0.90.0: Validate and convert data types.
 dev-perl/Data-UUID 1.221.0: Generate Globally/Universally Unique Identifiers (GUIDs/UUIDs)
 dev-perl/Data-Uniqid 0.120.0-r1: Perl extension for simple generating of unique ids
 dev-perl/Data-Utilities 0.40.0-r1: Merge nested Perl data structures
-dev-perl/Data-Validate-Domain 0.110.0: Domain and host name validation
+dev-perl/Data-Validate-Domain 0.110.0 0.140.0: Domain and host name validation
 dev-perl/Data-Validate-IP 0.270.0: Lightweight IPv4 and IPv6 validation module
 dev-perl/Date-Calc 6.400.0: Gregorian calendar date calculations
 dev-perl/Date-Extract 0.60.0: Extract probable dates from strings
@@ -3889,6 +3889,7 @@ dev-perl/Image-Info 1.390.0 1.410.0: The Perl Image-Info Module
 dev-perl/Image-Sane 0.140.0: Access SANE-compatible scanners from Perl
 dev-perl/Image-Size 3.300.0: A library to extract height/width from images
 dev-perl/Import-Into 1.2.5: Import packages into other packages
+dev-perl/Importer 0.24.0: Alternative interface to modules that export symbols
 dev-perl/Inline 0.500.0-r1 0.800.0: Write Perl subroutines in other languages
 dev-perl/Inline-C 0.780.0: C Language Support for Inline
 dev-perl/Inline-Files 0.690.0: Multiple virtual files in a single file
@@ -4211,6 +4212,7 @@ dev-perl/Sub-Exporter 0.987.0: A sophisticated exporter for custom-built routine
 dev-perl/Sub-Exporter-ForMethods 0.100.52: Helper routines for using Sub::Exporter to build methods
 dev-perl/Sub-Exporter-Progressive 0.1.11 0.1.13: Only use Sub::Exporter if you need it
 dev-perl/Sub-Identify 0.140.0: Retrieve names of code references
+dev-perl/Sub-Info 0.2.0: Tool for inspecting subroutines
 dev-perl/Sub-Install 0.928.0: Install subroutines into packages easily
 dev-perl/Sub-Name 0.50.0-r1 0.150.0 0.210.0: (Re)name a sub
 dev-perl/Sub-Override 0.90.0: Perl extension for easily overriding subroutines
@@ -4243,6 +4245,7 @@ dev-perl/Term-ReadPassword 0.110.0-r1 0.110.0-r2: Asking the user for a password
 dev-perl/Term-Screen 1.50.0 1.60.0: A simple Term::Cap based screen positioning module
 dev-perl/Term-ScreenColor 1.200.0-r1: A Term::Screen based screen positioning and coloring module
 dev-perl/Term-ShellUI 0.920.0-r1: A fully-featured shell-like command line environment
+dev-perl/Term-Table 0.8.0: Format a header and rows into a table
 dev-perl/TermReadKey 2.330.0 2.370.0: Change terminal modes, and perform non-blocking reads
 dev-perl/Test-Base 0.880.0: A Data Driven Testing Framework
 dev-perl/Test-CPAN-Meta 0.250.0: Validate your CPAN META.yml file
@@ -4298,6 +4301,7 @@ dev-perl/Test-Warn 0.300.0-r1 0.320.0: Perl extension to test methods for warnin
 dev-perl/Test-Warnings 0.16.0 0.26.0: Test for warnings and the lack of them
 dev-perl/Test-YAML 1.60.0: Testing Module for YAML Implementations
 dev-perl/Test-utf8 1.10.0: Handy utf8 tests
+dev-perl/Test2-Suite 0.0.77: A rich set of tools built upon the Test2 framework
 dev-perl/Text-Aspell 0.90.0-r1 0.90.0-r2: Perl interface to the GNU Aspell Library
 dev-perl/Text-Autoformat 1.740.0: Automatic text wrapping and reformatting
 dev-perl/Text-BibTeX 0.800.0 0.850.0: A Perl library for reading, parsing, and processing BibTeX files
@@ -10528,7 +10532,7 @@ virtual/qmail 1.03: Virtual for qmail
 virtual/resolvconf 1: Virtual to select between different resolvconf providers
 virtual/ruby-ffi 4: Virtual ebuild for the Ruby ffi library
 virtual/ruby-ssl 10: Virtual ebuild for the Ruby OpenSSL bindings
-virtual/rubygems 11 14: Virtual ebuild for rubygems
+virtual/rubygems 14: Virtual ebuild for rubygems
 virtual/rust 1.29.1: Virtual for Rust language compiler
 virtual/service-manager 0: Virtual for various service managers
 virtual/shadow 0: Virtual for user account management utilities
