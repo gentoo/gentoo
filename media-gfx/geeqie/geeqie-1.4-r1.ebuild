@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,6 +34,8 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="gpu-accel? ( gtk3 )
 	map? ( gpu-accel )"
+
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.patch" ) # bug 674044
 
 src_prepare() {
 	default
