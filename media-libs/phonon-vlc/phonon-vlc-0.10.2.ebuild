@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,10 +34,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-qt-5.11.patch"
-	"${FILESDIR}/${P}-screensaver-inhibitor.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-0.10.1-qt-5.11.patch" )
+
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_configure() {
 	local mycmakeargs=( -DPHONON_BUILD_PHONON4QT5=ON )

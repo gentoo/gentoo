@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,8 +41,6 @@ PDEPEND="
 	gstreamer? ( >=media-libs/phonon-gstreamer-4.9.0[qt5(+)] )
 	vlc? ( >=media-libs/phonon-vlc-0.9.0[qt5(+)] )
 "
-
-PATCHES=( "${FILESDIR}/${P}-pulseaudio-qt-5.12.patch" )
 
 src_configure() {
 	local mycmakeargs=(
