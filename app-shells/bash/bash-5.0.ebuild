@@ -97,6 +97,8 @@ src_prepare() {
 	sed -i -r '/^(HS|RL)USER/s:=.*:=:' doc/Makefile.in || die
 	touch -r . doc/*
 
+	eapply -p0 "${FILESDIR}"/${P}-glob-pattern-backslash.patch
+
 	eapply_user
 }
 
