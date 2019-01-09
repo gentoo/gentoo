@@ -137,7 +137,7 @@ multilib_src_configure() {
 		-DCLANG_ENABLE_ARCMT=$(usex static-analyzer)
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
 		# z3 is not multilib-friendly
-		-DCLANG_ANALYZER_BUILD_Z3=$(multilib_native_usex z3)
+		-DCLANG_ANALYZER_ENABLE_Z3_SOLVER=$(multilib_native_usex z3)
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
