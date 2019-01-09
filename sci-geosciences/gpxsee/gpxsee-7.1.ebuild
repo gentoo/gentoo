@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PLOCALES="cs de fi fr pl ru sv"
+PLOCALES="cs da de en fi fr nb pl ru sv tr"
 inherit qmake-utils l10n xdg-utils gnome2-utils
 
 MY_PN="GPXSee"
