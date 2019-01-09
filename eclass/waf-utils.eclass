@@ -88,6 +88,7 @@ waf-utils_src_configure() {
 	local CMD=(
 		CCFLAGS="${CFLAGS}"
 		LINKFLAGS="${CFLAGS} ${LDFLAGS}"
+		PKGCONFIG="$(tc-getPKG_CONFIG)"
 		"${WAF_BINARY}"
 		"--prefix=${EPREFIX}/usr"
 		"${libdir[@]}"
