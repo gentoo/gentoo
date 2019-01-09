@@ -1,4 +1,4 @@
-# Copyright 2018 Gentoo Authors
+# Copyright 2018-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,11 +18,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 
-# NOTE: Apparently nobody cares about libressl support, dropping support
-# IUSE="libressl"
+IUSE="libressl"
 
 RDEPEND="
-	dev-libs/openssl:0=[-bindist(-)]
+	!libressl? ( dev-libs/openssl:0=[-bindist(-)] )
+	libressl? ( dev-libs/libressl:0= )
 	virtual/python-typing[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
@@ -34,6 +34,10 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 # Tests access network, and fail randomly. Bug #431458.
 RESTRICT=test
+
+PATCHES=(
+	"${FILESDIR}/${PN}-libressl-${PV}.patch"
+)
 
 python_compile() {
 	# setup.py looks at platform.machine() to determine swig options.
