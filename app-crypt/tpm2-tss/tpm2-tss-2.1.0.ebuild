@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,6 +24,7 @@ RDEPEND="gcrypt? ( dev-libs/libgcrypt:0= )
 DEPEND="${DEPEND}
 	test? ( dev-util/cmocka )"
 BDEPEND="virtual/pkgconfig
+	sys-devel/autoconf-archive
 	doc? ( app-doc/doxygen )"
 
 PATCHES=(
