@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{4,5,6} )
 PYTHON_REQ_USE="sqlite,threads"
 
-inherit distutils-r1 gnome2-utils python-r1
+inherit distutils-r1 gnome2-utils virtualx
 
 DESCRIPTION="Lutris is an open source gaming platform for GNU/Linux."
 HOMEPAGE="https://lutris.net/"
@@ -22,31 +22,36 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 
-RDEPEND="
-	dev-python/dbus-python[${PYTHON_USEDEP}]
+CDEPEND="
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/python-evdev[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	x11-libs/gtk+:3[introspection]
+"
+RDEPEND="
+	${CDEPEND}
+	app-arch/cabextract
+	gnome-base/gnome-desktop:3[introspection]
+	media-sound/fluid-soundfont
+	net-libs/webkit-gtk:4[introspection]
 	net-libs/libsoup
+	sys-process/psmisc
 	x11-apps/xrandr
-	x11-apps/xgamma"
+	x11-apps/xgamma
+	x11-libs/libnotify[introspection]
+"
+DEPEND="
+	${CDEPEND}
+	test? ( dev-python/nose[${PYTHON_USEDEP}] )
+"
 
-python_install() {
-	distutils-r1_python_install
+python_install_all() {
+	local DOCS=( AUTHORS README.rst docs/installers.rst )
+	distutils-r1_python_install_all
 }
 
-src_prepare() {
-	distutils-r1_src_prepare
-}
-
-src_compile() {
-	distutils-r1_src_compile
-}
-
-src_install() {
-	# README.rst contains list of optional deps
-	DOCS=( AUTHORS README.rst INSTALL.rst )
-	distutils-r1_src_install
+python_test() {
+	virtx nosetests -v || die
 }
 
 pkg_preinst() {
@@ -58,8 +63,11 @@ pkg_postinst() {
 	gnome2_icon_cache_update
 	gnome2_schemas_update
 
-	elog "For a list of optional dependencies (runners) see:"
-	elog "/usr/share/doc/${PF}/README.rst.bz2"
+	# Quote README.rst
+	elog "Lutris installations are fully automated through scripts, which can"
+	elog "be written in either JSON or YAML. The scripting syntax is described"
+	elog "in ${EROOT%/}/usr/share/doc/${PF}/installers.rst.bz2, and is also"
+	elog "available online at lutris.net."
 }
 
 pkg_postrm() {
