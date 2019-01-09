@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ebassi/graphene/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd"
 IUSE="cpu_flags_arm_neon cpu_flags_x86_sse2 doc +introspection test"
 
 RDEPEND="
