@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kde5-functions.eclass
@@ -285,6 +285,7 @@ add_qt_dep() {
 # If the version equals 9999, "live" is returned.
 # If no version is specified, ${PV} is used.
 get_kde_version() {
+	[[ ${EAPI} != 6 ]] && die "${FUNCNAME} is banned in EAPI 7 and later"
 	local ver=${1:-${PV}}
 	local major=$(ver_cut 1 ${ver})
 	local minor=$(ver_cut 2 ${ver})
@@ -303,6 +304,7 @@ get_kde_version() {
 # Output KDE lingua flag name(s) (without prefix(es)) appropriate for
 # given l10n(s).
 kde_l10n2lingua() {
+	[[ ${EAPI} != 6 ]] && die "${FUNCNAME} is banned in EAPI 7 and later"
 	local l
 	for l; do
 		case ${l} in
