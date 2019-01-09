@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="
+DEPEND="
 	$(add_frameworks_dep kbookmarks)
 	$(add_frameworks_dep kcmutils)
 	$(add_frameworks_dep kconfig)
@@ -37,6 +37,6 @@ RDEPEND="
 	dev-libs/grantlee:5
 	dev-libs/libxslt
 "
-DEPEND="${RDEPEND}
-	sys-devel/gettext
+RDEPEND="${DEPEND}
+	!kde-apps/kjots:4
 "
