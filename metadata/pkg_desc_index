@@ -1171,7 +1171,7 @@ app-office/kexi 3.1.0: Visual database applications creator
 app-office/kmymoney 5.0.2: Personal finance manager based on KDE Frameworks
 app-office/ledger 3.1.1-r2: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.2: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 6.0.6.2 6.1.4.2: A full office productivity suite
+app-office/libreoffice 6.1.4.2: A full office productivity suite
 app-office/libreoffice-bin 6.0.6.2 6.1.4.2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.0.6.2 6.1.4.2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 6.0.6.2 6.1.4.2: Translations for the Libreoffice suite
@@ -1390,7 +1390,7 @@ app-text/liblangtag 0.6.2: An interface library to access tags for identifying l
 app-text/libmspub 0.1.4: Library parsing Microsoft Publisher documents
 app-text/libmwaw 0.3.14: Library parsing many pre-OSX MAC text formats
 app-text/libnumbertext 1.0.5: Number to number name and money text conversion libraries
-app-text/libodfgen 0.1.6 0.1.7: Library to generate ODF documents from libwpd and libwpg
+app-text/libodfgen 0.1.7: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24-r2: Library for handling paper characteristics
 app-text/libqxp 0.0.1: Library parsing QuarkXpress documents
 app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
