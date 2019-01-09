@@ -206,9 +206,9 @@ case ${KDE_AUTODEPS} in
 			RDEPEND+=" || ( $(add_frameworks_dep breeze-icons) kde-frameworks/oxygen-icons:* )"
 		fi
 
-		if [[ ${CATEGORY} = kde-apps ]]; then
+		if [[ ${CATEGORY} = kde-apps && ${PV} = 18.08.3 ]]; then
 			[[ ${KDE_BLOCK_SLOT4} = true ]] && RDEPEND+=" !kde-apps/${PN}:4"
-			RDEPEND+=" !kde-apps/kde-l10n" # TODO: drop after 18.08.3 removal
+			RDEPEND+=" !kde-apps/kde-l10n"
 		fi
 		;;
 esac
