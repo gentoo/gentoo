@@ -50,7 +50,8 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf="--disable-dependency-tracking
+	local myeconfargs=(
+		--disable-dependency-tracking
 		--with-readmedir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable debug debug-log)
 		$(use_enable ffmpegthumbnailer)
@@ -61,15 +62,16 @@ src_configure() {
 		$(use_enable lua)
 		$(use_enable lirc)
 		$(use_enable map)
-		$(use_enable tiff)"
+		$(use_enable tiff)
+	)
 
 	if use exif || use xmp; then
-		myconf="${myconf} --enable-exiv2"
+		myeconfargs+=( --enable-exiv2 )
 	else
-		myconf="${myconf} --disable-exiv2"
+		myeconfargs+=( --disable-exiv2)
 	fi
 
-	econf ${myconf}
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
