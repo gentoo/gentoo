@@ -33,6 +33,7 @@ RDEPEND="
 	!xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) )"
 DEPEND="${RDEPEND}"
 BDEPEND="
+	dev-util/glib-utils
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
