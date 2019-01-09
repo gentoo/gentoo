@@ -47,3 +47,42 @@ index c42b487f..f9118642 100644
  dnl ---------  Physical TPM device -----------------------
  
  AC_ARG_WITH([ptpm],
+From 74037d3c15b9f9d98f9b50ca4f1c1a99d239d751 Mon Sep 17 00:00:00 2001
+From: Philip Tricca <flihp@twobit.org>
+Date: Sun, 4 Nov 2018 16:17:19 -0800
+Subject: [PATCH] build: Fix breakage in generated configure script when CFLAGS
+ is set.
+
+This fixes a bug introduced in 3980bad87fe18ad9d32914e9d21dba145eba973f.
+That patch references the documentation for AC_PROG_CC but it misread
+the recommended workaround. The leading colon (aka `:`) in the
+documentation is significant.
+
+The `:` is a shell 'builtin' command that is equivalent to invoking the
+'true' command. By placing the conditional substitution of the CFLAGS
+after this, the result of the substitution will be ignored and the
+script won't fail. Without this the contents of the CFLAGS variable set
+in the environment will be interpreted as a command and since they're
+not commands the configure script will abort.
+
+Signed-off-by: Philip Tricca <flihp@twobit.org>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index c4e4592e..f88fe38b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,7 +31,7 @@ AC_INIT([tpm2-tss],
+         [],
+         [https://github.com/tpm2-software/tpm2-tss])
+ AC_CONFIG_MACRO_DIR([m4])
+-${CFLAGS=""}
++: ${CFLAGS=""}
+ AC_PROG_CC
+ LT_INIT()
+ AM_INIT_AUTOMAKE([foreign
+-- 
+2.19.2
+
