@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils eutils
 
 DESCRIPTION="Software defined radio receiver powered by GNU Radio and Qt"
 HOMEPAGE="http://gqrx.dk/"
@@ -34,6 +34,15 @@ DEPEND=">=net-wireless/gnuradio-3.7_rc:=[audio,analog,filter]
 	portaudio? ( media-libs/portaudio:= )"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	if use !pulseaudio; then
+		sed -i 's/AUDIO_BACKEND = pulse/#AUDIO_BACKEND = pulse/' gqrx.pro || die
+	fi
+	PATCHES=( "${FILESDIR}/gqrx-bladerf-samplerate.patch" )
+	cmake-utils_src_prepare
+	eapply_user
+}
+
 src_configure() {
 	if use pulseaudio; then
 		LINUX_AUDIO_BACKEND=Pulseaudio
@@ -49,13 +58,6 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-src_prepare() {
-	if use !pulseaudio; then
-		sed -i 's/AUDIO_BACKEND = pulse/#AUDIO_BACKEND = pulse/' gqrx.pro || die
-	fi
-	cmake-utils_src_prepare
-	eapply_user
-}
 
 src_install() {
 	dobin "${BUILD_DIR}"/src/gqrx
