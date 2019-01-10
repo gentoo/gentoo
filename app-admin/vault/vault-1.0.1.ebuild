@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,6 +42,9 @@ src_compile() {
 	mkdir bin || die
 	export GOPATH=${S}
 	cd src/${EGO_PN} || die
+	# The fmt target may need to be executed if it was previously
+	# executed by an older version of go (bug 665438).
+	emake fmt
 	XC_ARCH=$(go env GOARCH) \
 	XC_OS=$(go env GOOS) \
 	XC_OSARCH=$(go env GOOS)/$(go env GOARCH) \

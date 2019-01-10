@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs unpacker
+inherit toolchain-funcs unpacker
 
 DESCRIPTION="A powerful and user-friendly console text editor"
 HOMEPAGE="https://www.gnu.org/software/moe/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.lz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	sys-libs/ncurses:0=
@@ -30,7 +30,7 @@ src_prepare() {
 		-e  "/^CXX=/d" \
 		configure || die "sed on configure failed"
 
-	epatch_user
+	eapply_user
 
-	epatch "${FILESDIR}/${P}-tinfo.patch"
+	eapply "${FILESDIR}/${PN}-1.6-tinfo.patch"
 }
