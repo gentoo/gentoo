@@ -53,7 +53,7 @@ DEPEND="${COMMON_DEPEND}
 		dev-libs/fcgi
 	)"
 
-RDEPEND="${OMMON_DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-apache )
 "
 
