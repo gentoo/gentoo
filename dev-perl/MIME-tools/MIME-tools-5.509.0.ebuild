@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,11 @@ DEPEND="${RDEPEND}
 # tests fail when done in parallel
 DIST_TEST="do"
 
-src_test() {
-	perl_rm_files t/02-kwalitee.t t/02-pod-coverage.t t/02-pod.t
-	perl-module_src_test
-}
+PERL_RM_FILES=(
+	# Author tests
+	t/02-kwalitee.t
+	t/02-pod.t
+	t/02-pod-coverage.t
+	# Fails under FEATURES="network-sandbox"
+	t/Smtpsend.t
+)
