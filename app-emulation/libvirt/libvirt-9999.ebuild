@@ -218,6 +218,8 @@ src_prepare() {
 	default
 
 	if [[ ${PV} = *9999* ]]; then
+		# Reinitialize submodules as this is required for gnulib's bootstrap
+		git submodule init
 		# git checkouts require bootstrapping to create the configure script.
 		# Additionally the submodules must be cloned to the right locations
 		# bug #377279
