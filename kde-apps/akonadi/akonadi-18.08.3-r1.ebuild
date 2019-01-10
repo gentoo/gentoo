@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,7 +40,10 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	x11-misc/shared-mime-info
-	sqlite? ( dev-db/sqlite:3 )
+	sqlite? (
+		$(add_qt_dep qtsql 'sqlite' '' '5=')
+		dev-db/sqlite:3
+	)
 	xml? ( dev-libs/libxml2 )
 "
 DEPEND="${COMMON_DEPEND}
