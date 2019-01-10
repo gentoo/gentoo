@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,8 @@ DEPEND="
 	test? ( dev-tcltk/expect )
 "
 
-PATCHES=( "${FILESDIR}/${P}-fix-printf-o-handling-on-ppc.patch" )
+PATCHES=( "${FILESDIR}/${P}-fix-printf-o-handling-on-ppc.patch"
+	"${FILESDIR}/fix-histfile-test-on-ppc.patch" )
 
 S="${WORKDIR}/${MY_P}"
 
