@@ -38,10 +38,6 @@ media-video/vlc aom srt
 # Depends on lots of unstable dependencies
 dev-python/s3fs test
 
-# Andreas Sturmlechner <asturm@gentoo.org> (22 Apr 2018)
-# Huge patchset in 6.0, early crash reports with fix in ~arch KF5/Plasma-5
-=app-office/libreoffice-6.0* kde
-
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Mar 2018)
 # sci-geosciences/grass is not stable
 sci-geosciences/qgis grass
