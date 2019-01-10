@@ -49,6 +49,8 @@ src_prepare() {
 
 src_configure() {
 	configuration() {
+		local incdir=$(python_get_includedir)
+
 		if ! python_is_python3; then
 			local CFLAGS="${CFLAGS} -fno-strict-aliasing"
 		fi
@@ -56,9 +58,10 @@ src_configure() {
 		local myconf=(
 			"${PYTHON}"
 			"${S}"/configure.py
+			--sysroot="${ESYSROOT}/usr"
 			--bindir="${EPREFIX}/usr/bin"
 			--destdir="$(python_get_sitedir)"
-			--incdir="$(python_get_includedir)"
+			--incdir="${incdir#${SYSROOT}}"
 			$(usex debug --debug '')
 			AR="$(tc-getAR) cqs"
 			CC="$(tc-getCC)"
