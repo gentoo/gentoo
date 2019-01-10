@@ -16,12 +16,6 @@ app-admin/sudo sssd
 # app-misc/ddcutil is not yet stable.
 kde-plasma/powerdevil brightness-control
 
-# Andreas Sturmlechner <asturm@gentoo.org> (11 Sep 2018)
-# Sometimes crashes Plasma with Appstream versions pre-0.12.
-# Newer versions of dev-libs/appstream are not stable yet. See also:
-# https://mail.kde.org/pipermail/kde-distro-packagers/2018-September/000347.html
-kde-plasma/plasma-desktop appstream
-
 # Michał Górny <mgorny@gentoo.org> (07 Jun 2018)
 # sys-libs/netbsd-csu not stable yet.
 sys-devel/clang-runtime crt
@@ -37,10 +31,6 @@ media-video/vlc aom srt
 # Andreas Sturmlechner <asturm@gentoo.org> (21 May 2018)
 # Depends on lots of unstable dependencies
 dev-python/s3fs test
-
-# Andreas Sturmlechner <asturm@gentoo.org> (22 Apr 2018)
-# Huge patchset in 6.0, early crash reports with fix in ~arch KF5/Plasma-5
-=app-office/libreoffice-6.0* kde
 
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Mar 2018)
 # sci-geosciences/grass is not stable
