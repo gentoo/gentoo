@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools git-r3 xdg-utils
 
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
@@ -13,26 +14,29 @@ EGIT_REPO_URI="https://github.com/BestImageViewer/geeqie.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug doc exif ffmpegthumbnailer gpu-accel gtk3 jpeg lcms lirc lua map tiff xmp"
+IUSE="debug doc exif ffmpegthumbnailer gpu-accel +gtk3 jpeg lcms lirc lua map tiff xmp"
 
-RDEPEND="gtk3? ( x11-libs/gtk+:3 )
-	!gtk3? ( x11-libs/gtk+:2 )
+RDEPEND="
 	virtual/libintl
 	doc? ( app-text/gnome-doc-utils )
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
 	gpu-accel? ( media-libs/clutter-gtk )
+	gtk3? ( x11-libs/gtk+:3 )
+	!gtk3? ( x11-libs/gtk+:2 )
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
 	lirc? ( app-misc/lirc )
 	lua? ( >=dev-lang/lua-5.1:= )
 	map? ( media-libs/libchamplain:0.12 )
+	tiff? ( media-libs/tiff:0 )
 	xmp? ( >=media-gfx/exiv2-0.17:=[xmp] )
-	!xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) )
-	tiff? ( media-libs/tiff:0 )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+	!xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) )"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	dev-util/glib-utils
 	dev-util/intltool
-	sys-devel/gettext"
+	sys-devel/gettext
+	virtual/pkgconfig"
 
 REQUIRED_USE="gpu-accel? ( gtk3 )
 	map? ( gpu-accel )"
@@ -47,7 +51,8 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf="--disable-dependency-tracking
+	local myeconfargs=(
+		--disable-dependency-tracking
 		--with-readmedir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable debug debug-log)
 		$(use_enable ffmpegthumbnailer)
@@ -58,15 +63,16 @@ src_configure() {
 		$(use_enable lua)
 		$(use_enable lirc)
 		$(use_enable map)
-		$(use_enable tiff)"
+		$(use_enable tiff)
+	)
 
 	if use exif || use xmp; then
-		myconf="${myconf} --enable-exiv2"
+		myeconfargs+=( --enable-exiv2 )
 	else
-		myconf="${myconf} --disable-exiv2"
+		myeconfargs+=( --disable-exiv2)
 	fi
 
-	econf ${myconf}
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
