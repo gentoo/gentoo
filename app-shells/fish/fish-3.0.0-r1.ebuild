@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,6 +35,8 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	test? ( dev-tcltk/expect )
 "
+
+PATCHES=( "${FILESDIR}/fix-histfile-test-on-ppc.patch" )
 
 S="${WORKDIR}/${MY_P}"
 
