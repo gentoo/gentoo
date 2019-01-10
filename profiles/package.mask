@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (10 Jan 2019)
+# Masked due to QA violation (bug #672054)
+sci-electronics/librepcb
+
 # Craig Andrews <candrews@gentoo.org> (1 Jan 2019)
 # Requires dev-libs/openssl-1.1.1, Bug 674148
 dev-libs/gost-engine
