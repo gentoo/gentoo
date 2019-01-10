@@ -17,7 +17,8 @@ KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
 
 IUSE="nls"
 
-RDEPEND=">=sys-libs/ncurses-5.2-r2
+RDEPEND=">=sys-libs/ncurses-5.2-r2:0=
+	sys-libs/readline:0=
 	=dev-db/sqlite-3*"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
@@ -35,13 +36,20 @@ PATCHES=(
 src_prepare() {
 	default
 	[[ ${CHOST} == *-darwin8 ]] && eapply "${FILESDIR}"/${PN}-1518-darwin8.patch
+
+	# use host readline
+	sed -i -e '/host_libs/s/readline//' configure.in configure || die
+	sed -i \
+		-e '/^\(READLINE\|readline\)_/s/=.*$/=/' \
+		-e '/^READLINE /s/=.*$/= -lreadline/' \
+		gdb/Makefile.in || die
 }
 
 src_configure() {
 	if tc-is-gcc ; then
 		# force gcc-apple, FSF gcc doesn't grok this code
-		export CC=${CTARGET}-gcc-4.2.1
-		export CXX=${CTARGET}-g++-4.2.1
+		export CC=${CTARGET:-${CHOST}}-gcc-4.2.1
+		export CXX=${CTARGET:-${CHOST}}-g++-4.2.1
 	fi
 
 	replace-flags -O? -O2
@@ -54,11 +62,15 @@ src_configure() {
 
 src_compile() {
 	# unable to work around parallel make issue
-	emake -j2 || die
+	# ignore texinfo issues (version mismatch, to hard to fix or
+	# disable)
+	emake -j2 MAKEINFOFLAGS="--force" || die
 }
 
 src_install() {
-	emake -j2 DESTDIR="${D}" libdir=/nukeme includedir=/nukeme install || die
+	emake -j2 \
+		DESTDIR="${D}" libdir=/nukeme includedir=/nukeme \
+		MAKEINFOFLAGS="--force" install || die
 	rm -R "${D}"/nukeme || die
 	rm -Rf "${ED}"/usr/${CHOST} || die
 	mv "${ED}"/usr/bin/gdb "${ED}"/
