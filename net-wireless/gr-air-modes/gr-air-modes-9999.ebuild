@@ -42,5 +42,5 @@ src_compile() {
 
 src_install() {
 	cmake-utils_src_install
-	python_fix_shebang "${ED}"usr/bin
+	python_fix_shebang "${ED}"/usr/bin
 }
