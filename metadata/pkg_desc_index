@@ -6637,7 +6637,7 @@ java-virtuals/servlet-api 2.2 2.3 2.4 2.5-r2 3.0-r2 3.1-r1: Virtual for servlet 
 java-virtuals/stax-api 1-r4: Virtual for Streaming API for XML (StAX)
 java-virtuals/transaction-api 1.1: Virtual for Transaction API (javax.transaction)
 java-virtuals/xmlrpc-api 0: Virtual for XML RPC API (javax.xml.rpc)
-kde-apps/akonadi 18.08.3: Storage service for PIM data and libraries for PIM apps
+kde-apps/akonadi 18.08.3-r1: Storage service for PIM data and libraries for PIM apps
 kde-apps/akonadi-calendar 18.08.3: Library for akonadi calendar integration
 kde-apps/akonadi-contacts 18.08.3: Library for akonadi contact integration
 kde-apps/akonadi-import-wizard 18.08.3: Assistant to import PIM data from other applications into Akonadi
@@ -8788,7 +8788,7 @@ net-libs/telepathy-logger-qt 17.08.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.7-r1: Qt bindings for the Telepathy D-Bus protocol
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.0 0.5.1: HTTP web service mocking library
-net-libs/webkit-gtk 2.22.2: Open source web browser engine
+net-libs/webkit-gtk 2.22.2 2.22.5: Open source web browser engine
 net-libs/wvstreams 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 4.4.0 4.8.3: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.1 4.2.2-r2 4.3.0: A brokerless kernel
@@ -9926,7 +9926,7 @@ sys-apps/shadow 4.6: Utilities to deal with user accounts
 sys-apps/smartmontools 6.6: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 239-r2: System and service manager for Linux
+sys-apps/systemd 239-r2 239-r3: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.88-r9 2.91-r1: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
