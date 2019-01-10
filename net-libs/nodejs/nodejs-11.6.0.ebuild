@@ -189,7 +189,7 @@ src_install() {
 			\) \) -exec rm -rf "{}" \;
 	fi
 
-	mv "${D}"/usr/share/doc/node "${D}"/usr/share/doc/${PF} || die
+	mv "${ED}"/usr/share/doc/node "${ED}"/usr/share/doc/${PF} || die
 }
 
 src_test() {
