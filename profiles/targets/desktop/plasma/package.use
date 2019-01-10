@@ -31,8 +31,5 @@ media-libs/mesa egl wayland
 # Required by kde-apps/kdenlive
 media-libs/mlt ffmpeg frei0r kdenlive melt
 
-# Required by kde-plasma/plasma-pa
-media-sound/pulseaudio gnome
-
 # Required by kde-frameworks/kactivities
 sys-libs/zlib minizip
