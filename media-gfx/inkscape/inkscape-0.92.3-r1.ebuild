@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,8 @@ MY_P="${P/_/}"
 
 DESCRIPTION="SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/"
-SRC_URI="https://inkscape.global.ssl.fastly.net/media/resources/file/${P}.tar.bz2"
+SRC_URI="https://inkscape.global.ssl.fastly.net/media/resources/file/${P}.tar.bz2
+	https://dev.gentoo.org/~asturm/distfiles/${P}-poppler-patches.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -98,11 +99,12 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.91_pre3-sk-man.patch"
 	"${FILESDIR}/${PN}-0.48.4-epython.patch"
 	"${FILESDIR}/${PN}-0.92.3-freetype_pkgconfig.patch"
-	"${FILESDIR}/${PN}-0.92.3-poppler-0.64.patch"
-	"${FILESDIR}/${PN}-0.92.3-poppler-0.65.patch"
-	"${FILESDIR}/${PN}-0.92.3-poppler-0.64-2.patch"
-	"${FILESDIR}/${PN}-0.92.3-poppler-0.69.patch"
-	"${FILESDIR}/${PN}-0.92.3-poppler-0.71.patch"
+	"${WORKDIR}/${PN}-0.92.3-poppler-0.64.patch"
+	"${WORKDIR}/${PN}-0.92.3-poppler-0.65.patch"
+	"${WORKDIR}/${PN}-0.92.3-poppler-0.64-2.patch"
+	"${WORKDIR}/${PN}-0.92.3-poppler-0.69.patch"
+	"${WORKDIR}/${PN}-0.92.3-poppler-0.71.patch"
+	"${WORKDIR}/${PN}-0.92.3-poppler-0.72.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
