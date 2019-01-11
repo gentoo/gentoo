@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -307,7 +307,7 @@ src_configure() {
 	fi
 
 	# Transport post-delivery actions
-	if ! use tpda; then
+	if use !tpda && use !dane; then
 		# EVENT is enabled by default
 		cat >> Makefile <<- EOC
 			DISABLE_EVENT=yes
