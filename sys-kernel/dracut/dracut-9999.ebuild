@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit bash-completion-r1 eutils linux-info systemd toolchain-funcs
 
@@ -10,8 +10,8 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/dracutdevs/dracut"
 else
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~alpha amd64 ~arm ia64 ~mips ~ppc ~ppc64 sparc x86"
-	SRC_URI="mirror://kernel/linux/utils/boot/${PN}/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+	SRC_URI="https://github.com/dracutdevs/dracut/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="Generic initramfs generation tool"
@@ -19,37 +19,38 @@ HOMEPAGE="https://dracut.wiki.kernel.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug selinux"
+IUSE="selinux"
 
 # Tests need root privileges, bug #298014
 RESTRICT="test"
 
-COMMON_DEPEND=">=sys-apps/kmod-23[tools]
-	virtual/pkgconfig
-	virtual/udev
-	"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
 	app-arch/cpio
 	>=app-shells/bash-4.0:0
 	sys-apps/coreutils[xattr(-)]
+	>=sys-apps/kmod-23[tools]
 	|| (
 		>=sys-apps/sysvinit-2.87-r3
 		sys-apps/systemd[sysv-utils]
 	)
 	>=sys-apps/util-linux-2.21
+	virtual/pkgconfig
+	virtual/udev
 
-	debug? ( dev-util/strace )
 	selinux? (
 		sec-policy/selinux-dracut
 		sys-libs/libselinux
 		sys-libs/libsepol
 	)
 	"
-DEPEND="${COMMON_DEPEND}
+DEPEND=">=sys-apps/kmod-23"
+
+BDEPEND="
 	app-text/asciidoc
 	app-text/docbook-xml-dtd:4.5
 	>=app-text/docbook-xsl-stylesheets-1.75.2
 	>=dev-libs/libxslt-1.1.26
+	virtual/pkgconfig
 	"
 
 DOCS=( AUTHORS HACKING NEWS README README.generic README.kernel README.modules
@@ -72,6 +73,11 @@ src_configure() {
 
 	echo ./configure "${myconf[@]}"
 	./configure "${myconf[@]}" || die
+
+	if [[ ${PV} != 9999 ]] ; then
+		# Source tarball from github doesn't include this file
+		echo "DRACUT_VERSION=${PV}" > dracut-version.sh || die
+	fi
 }
 
 src_install() {
@@ -126,7 +132,8 @@ pkg_postinst() {
 	elog "To get additional features, a number of optional runtime"
 	elog "dependencies may be installed:"
 	elog ""
-	optfeature "Networking support"  net-misc/curl "net-misc/dhcp[client]" \
+	optfeature "Networking support" net-misc/networkmanager
+	optfeature "Legacy networking support" net-misc/curl "net-misc/dhcp[client]" \
 		sys-apps/iproute2 "net-misc/iputils[arping]"
 	optfeature \
 		"Measure performance of the boot process for later visualisation" \
@@ -153,6 +160,5 @@ pkg_postinst() {
 	optfeature \
 		"Install ssh and scp along with config files and specified keys" \
 		net-misc/openssh
-	optfeature "Enable logging with syslog-ng or rsyslog" app-admin/syslog-ng \
-		app-admin/rsyslog
+	optfeature "Enable logging with rsyslog" app-admin/rsyslog
 }
