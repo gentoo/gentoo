@@ -9,7 +9,4 @@
 		<email>davidroman96@gmail.com</email>
 		<name>David Roman</name>
 	</maintainer>
-	<use>
-		<flag name='system-capstone'>Use <pkg>dev-libs/capstone</pkg> instead of bundled copy.</flag>
-	</use>
 </pkgmetadata>
