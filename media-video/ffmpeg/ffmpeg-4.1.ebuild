@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -82,7 +82,7 @@ FFMPEG_FLAG_MAP=(
 		appkit
 		bs2b:libbs2b chromaprint flite:libflite frei0r
 		fribidi:libfribidi fontconfig ladspa libass lv2 truetype:libfreetype
-		rubberband:librubberband zeromq:libzmq zimg:libzimg
+		rubberband:librubberband vidstab:libvidstab zeromq:libzmq zimg:libzimg
 		# libswresample options
 		libsoxr
 		# Threads; we only support pthread for now but ffmpeg supports more
@@ -236,6 +236,7 @@ RDEPEND="
 	vaapi? ( >=x11-libs/libva-1.2.1-r1[${MULTILIB_USEDEP}] )
 	video_cards_nvidia? ( >=media-libs/nv-codec-headers-8.1.24.2[${MULTILIB_USEDEP}] )
 	vdpau? ( >=x11-libs/libvdpau-0.7[${MULTILIB_USEDEP}] )
+	vidstab? ( media-libs/vidstab[${MULTILIB_USEDEP}] )
 	vorbis? (
 		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
 		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
