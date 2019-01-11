@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit gnome2
 
-DESCRIPTION="GLib geocoding library that uses the Yahoo! Place Finder service"
+DESCRIPTION="GLib helper library for geocoding services"
 HOMEPAGE="https://git.gnome.org/browse/geocode-glib"
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="+introspection test"
