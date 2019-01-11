@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,12 +33,13 @@ REQUIRED_USE="
 	jvm_variant_zero? ( !jvm_variant_server !jvm_variant_client !jvm_variant_minimal )
 "
 
-IUSE="+${IUSE} alsa debug doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source +webstart"
+IUSE="+${IUSE} alsa debug doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source systemtap +webstart"
 
 CDEPEND="
 	media-libs/freetype:2=
 	net-print/cups
 	sys-libs/zlib
+	systemtap? ( dev-util/systemtap )
 	!headless-awt? (
 		x11-libs/libX11
 		x11-libs/libXext
@@ -170,6 +171,7 @@ src_configure() {
 			--with-version-pre=gentoo \
 			--with-version-string=${MY_PV%+*} \
 			--with-version-build=${MY_PV#*+} \
+			--enable-dtrace=$(usex systemtap yes no) \
 			--enable-headless-only=$(usex headless-awt yes no) \
 			--enable-full-docs=no \
 			--disable-ccache \
