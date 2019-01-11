@@ -92,5 +92,9 @@ pkg_postinst() {
 		elog ""
 		elog "If you use ConsoleKit2, remember to launch sway using:"
 		elog "exec ck-launch-session ${dbus_cmd}sway"
+		elog ""
+		elog "If your system does not set the XDG_RUNTIME_DIR environment"
+		elog "variable, you must set it manually to run Sway. See wiki"
+		elog "for details: https://wiki.gentoo.org/wiki/Sway"
 	fi
 }
