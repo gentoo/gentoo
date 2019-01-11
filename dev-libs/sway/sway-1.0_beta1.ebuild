@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 if [[ ${PV} == 9999 ]] ; then
-		EGIT_REPO_URI="https://github.com/swaywm/sway.git"
+		EGIT_REPO_URI="https://github.com/swaywm/${PN}.git"
 		inherit git-r3
 else
 		# Version format: major.minor-beta.betanum
 		SWAY_PV="$(ver_cut 1-2)-$(ver_cut 3).$(ver_cut 4)"
-		SRC_URI="https://github.com/swaywm/sway/archive/${SWAY_PV}.tar.gz -> ${P}.tar.gz"
-		S="${WORKDIR}/sway-${SWAY_PV}"
+		SRC_URI="https://github.com/swaywm/${PN}/archive/${SWAY_PV}.tar.gz -> ${P}.tar.gz"
+		S="${WORKDIR}/${PN}-${SWAY_PV}"
 		KEYWORDS="~amd64 ~x86"
 fi
 
@@ -34,6 +34,7 @@ RDEPEND="~dev-libs/wlroots-0.1[systemd=,elogind=,X=]
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
+	x11-misc/xkeyboard-config
 	elogind? ( >=sys-auth/elogind-237 )
 	swaybar? ( x11-libs/gdk-pixbuf:2[jpeg] )
 	swaybg? ( x11-libs/gdk-pixbuf:2[jpeg] )
@@ -91,5 +92,9 @@ pkg_postinst() {
 		elog ""
 		elog "If you use ConsoleKit2, remember to launch sway using:"
 		elog "exec ck-launch-session ${dbus_cmd}sway"
+		elog ""
+		elog "If your system does not set the XDG_RUNTIME_DIR environment"
+		elog "variable, you must set it manually to run Sway. See wiki"
+		elog "for details: https://wiki.gentoo.org/wiki/Sway"
 	fi
 }
