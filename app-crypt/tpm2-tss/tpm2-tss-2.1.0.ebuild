@@ -24,7 +24,7 @@ RDEPEND="gcrypt? ( dev-libs/libgcrypt:0= )
 DEPEND="${DEPEND}
 	test? ( dev-util/cmocka )"
 BDEPEND="virtual/pkgconfig
-	sys-devel/autoconf-archive
+	~sys-devel/autoconf-archive-2018.03.13
 	doc? ( app-doc/doxygen )"
 
 PATCHES=(
