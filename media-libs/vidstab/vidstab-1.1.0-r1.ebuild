@@ -22,7 +22,9 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="openmp cpu_flags_x86_sse2"
-
+PATCHES=(
+	"${FILESDIR}/vidstab-1.1.0-tests-should-exit-with-code-0-on-success.patch"
+)
 src_prepare() {
 	# USE=cpu_flags_x86_sse2 instead
 	sed -E 's#include (FindSSE)##' -i CMakeLists.txt
