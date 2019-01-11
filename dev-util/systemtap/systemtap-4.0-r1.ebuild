@@ -100,5 +100,6 @@ src_configure() {
 		$(use_with ssl nss)
 		$(use_with selinux)
 	)
+	PYTHON3="${PYTHON}" \
 	econf "${myeconfargs[@]}"
 }
