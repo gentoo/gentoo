@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
 	xattr? ( elibc_glibc? ( sys-apps/attr ) )"
 
+PATCHES=( "${FILESDIR}"/${P}-remove-erroneous-abort-call.patch )
+
 src_prepare() {
 	default
 
