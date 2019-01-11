@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,6 +34,7 @@ RDEPEND="~dev-libs/wlroots-0.2[systemd=,elogind=,X=]
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
+	x11-misc/xkeyboard-config
 	elogind? ( >=sys-auth/elogind-237 )
 	swaybar? ( x11-libs/gdk-pixbuf:2[jpeg] )
 	swaybg? ( x11-libs/gdk-pixbuf:2[jpeg] )
