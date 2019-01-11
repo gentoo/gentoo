@@ -294,11 +294,6 @@ net-analyzer/mate-netspeed
 =virtual/perl-threads-2.220.0
 =virtual/perl-version-0.992.300
 
-# Brian Evans <grknight@gentoo.org> (14 Jun 2018)
-# Mask new php pre-releases for initial testing
-dev-lang/php:7.3
-virtual/httpd-php:7.3
-
 # Kent Fredric <kentnl@gentoo.org> (27 May 2018)
 # Subject to Man-in-the-middle security bypass vulnerability.
 # Retained in tree only for users who need older versions
