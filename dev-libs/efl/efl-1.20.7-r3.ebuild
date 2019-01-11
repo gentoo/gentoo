@@ -6,13 +6,13 @@ EAPI=6
 inherit gnome2-utils pax-utils xdg-utils
 
 DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
-HOMEPAGE="https://www.enlightenment.org"
+HOMEPAGE="https://www.enlightenment.org/"
 SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE="+bmp dds connman debug drm +eet examples fbcon +fontconfig fribidi gif gles2 glib gnutls gstreamer harfbuzz hyphen +ico ibus jpeg2k libressl libuv luajit neon nls opengl ssl pdf physics postscript +ppm +psd pulseaudio raw scim sdl sound static-libs svg +system-lz4 systemd tga tiff tslib unwind v4l valgrind vlc vnc wayland webp X xcf xim xine xpm xpresent zeroconf"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
+IUSE="avahi +bmp dds connman debug doc drm +eet examples fbcon +fontconfig fribidi gif gles2 glib gnutls gstreamer harfbuzz hyphen +ico ibus ivi jpeg2k libressl libuv luajit neon nls opengl ssl pdf physics pixman postscript +ppm +psd pulseaudio raw scim sdl sound static-libs svg systemd tga tiff tslib unwind v4l valgrind vlc vnc wayland webp X xcf xim xine xpm xpresent"
 
 REQUIRED_USE="
 	?? ( gles2 opengl )
@@ -28,16 +28,15 @@ REQUIRED_USE="
 	vnc? ( fbcon X )
 	wayland? ( gles2 !opengl )
 	xim? ( X )
-	xpresent? ( X )
 "
 
-RDEPEND="
-	net-misc/curl
+COMMON_DEPEND="
 	media-libs/libpng:0=
 	sys-apps/dbus
 	sys-apps/util-linux
 	sys-libs/zlib:=
 	virtual/jpeg:0=
+	avahi? ( net-dns/avahi )
 	connman? ( net-misc/connman )
 	drm? (
 		dev-libs/libinput
@@ -48,8 +47,8 @@ RDEPEND="
 	fontconfig? ( media-libs/fontconfig )
 	fribidi? ( dev-libs/fribidi )
 	gif? ( media-libs/giflib:= )
-	gles2? ( media-libs/mesa[egl,gles2] )
 	glib? ( dev-libs/glib:2 )
+	gles2? ( media-libs/mesa[egl,gles2] )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -57,13 +56,14 @@ RDEPEND="
 	harfbuzz? ( media-libs/harfbuzz )
 	hyphen? ( dev-libs/hyphen )
 	ibus? ( app-i18n/ibus )
-	jpeg2k? ( media-libs/openjpeg:= )
+	jpeg2k? ( media-libs/openjpeg:0= )
 	libuv? ( dev-libs/libuv )
 	luajit? ( dev-lang/luajit:= )
 	!luajit? ( dev-lang/lua:* )
 	nls? ( sys-devel/gettext )
 	pdf? ( app-text/poppler:=[cxx] )
 	physics? ( sci-physics/bullet:= )
+	pixman? ( x11-libs/pixman )
 	postscript? ( app-text/libspectre )
 	pulseaudio? ( media-sound/pulseaudio )
 	raw? ( media-libs/libraw:= )
@@ -84,13 +84,12 @@ RDEPEND="
 		gnome-base/librsvg
 		x11-libs/cairo
 	)
-	system-lz4? ( app-arch/lz4 )
 	systemd? ( sys-apps/systemd )
 	tiff? ( media-libs/tiff:0= )
 	tslib? ( x11-libs/tslib:= )
 	unwind? ( sys-libs/libunwind )
 	valgrind? ( dev-util/valgrind )
-	vlc? ( media-video/vlc )
+	vlc? ( >=media-video/vlc-3.0.0 )
 	vnc? ( net-libs/libvncserver )
 	wayland? (
 		dev-libs/wayland
@@ -111,34 +110,46 @@ RDEPEND="
 		x11-libs/libXrender
 		x11-libs/libXtst
 		x11-libs/libXScrnSaver
-		gles2? (
-			x11-libs/libX11
-			x11-libs/libXrender
-			virtual/opengl
-		)
 		opengl? (
 			x11-libs/libX11
 			x11-libs/libXrender
 			virtual/opengl
 		)
+		gles2? (
+			x11-libs/libX11
+			x11-libs/libXrender
+			virtual/opengl
+			xpresent? ( x11-libs/libXpresent )
+		)
 	)
 	xine? ( media-libs/xine-lib )
 	xpm? ( x11-libs/libXpm )
-	xpresent? ( x11-libs/libXpresent )
-	zeroconf? ( net-dns/avahi )
 "
 
 DEPEND="
-	${RDEPEND}
+	${COMMON_DEPEND}
 	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-fix_evas_preload_segfault.patch"
-)
+RDEPEND="
+	${COMMON_DEPEND}
+	!media-libs/elementary
+	!media-plugins/emotion_generic_players
+	!media-plugins/evas_generic_loaders
+"
 
 src_prepare() {
 	default
+
+	# Remove sleep command that forces user to read warnings about their configuration.
+	# Back out gnu make hack that causes regen of Makefiles.
+	# Delete var setting that causes the build to abort.
+	sed -i \
+		-e '/sleep 10/d' \
+		-e '/^#### Work around bug in automake check macro$/,/^#### Info$/d' \
+		-e '/BARF_OK=/s:=.*:=:' \
+		configure || die "Sedding configure file failed in src_prepare."
 
 	# Upstream still doesnt offer a configure flag. #611108
 	if ! use unwind ; then
@@ -151,27 +162,28 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
+		--enable-i-really-know-what-i-am-doing-and-that-this-will-probably-break-things-and-i-will-fix-them-myself-and-send-patches-abb
 		--enable-cserve
 		--enable-image-loader-generic
 		--enable-image-loader-jpeg
 		--enable-image-loader-png
-		--enable-libeeze
 		--enable-libmount
-		--enable-xinput22
+		--enable-xinput2
 
-		--disable-doc
 		--disable-eglfs
 		--disable-gesture
 		--disable-gstreamer
 		--disable-image-loader-tgv
 		--disable-tizen
-		--disable-wayland-ivi-shell
+		--disable-xinput22
 
+		$(use_enable avahi)
 		$(use_enable bmp image-loader-bmp)
 		$(use_enable bmp image-loader-wbmp)
 		$(use_enable dds image-loader-dds)
 		$(use_enable drm)
 		$(use_enable drm elput)
+		$(use_enable doc)
 		$(use_enable eet image-loader-eet)
 		$(use_enable examples always-build-examples)
 		$(use_enable fbcon fb)
@@ -184,6 +196,7 @@ src_configure() {
 		$(use_enable hyphen)
 		$(use_enable ico image-loader-ico)
 		$(use_enable ibus)
+		$(use_enable ivi wayland-ivi-shell)
 		$(use_enable jpeg2k image-loader-jp2k)
 		$(use_enable libuv)
 		$(use_enable !luajit lua-old)
@@ -191,6 +204,13 @@ src_configure() {
 		$(use_enable nls)
 		$(use_enable pdf poppler)
 		$(use_enable physics)
+		$(use_enable pixman)
+		$(use_enable pixman pixman-font)
+		$(use_enable pixman pixman-rect)
+		$(use_enable pixman pixman-line)
+		$(use_enable pixman pixman-poly)
+		$(use_enable pixman pixman-image)
+		$(use_enable pixman pixman-image-scale-sample)
 		$(use_enable postscript spectre)
 		$(use_enable ppm image-loader-pmaps)
 		$(use_enable psd image-loader-psd)
@@ -201,7 +221,6 @@ src_configure() {
 		$(use_enable sound audio)
 		$(use_enable static-libs static)
 		$(use_enable svg librsvg)
-		$(use_enable system-lz4 liblz4)
 		$(use_enable systemd)
 		$(use_enable tga image-loader-tga)
 		$(use_enable tiff image-loader-tiff)
@@ -216,8 +235,6 @@ src_configure() {
 		$(use_enable xim)
 		$(use_enable xine)
 		$(use_enable xpm image-loader-xpm)
-		$(use_enable xpresent)
-		$(use_enable zeroconf avahi)
 
 		--with-crypto=$(usex gnutls gnutls $(usex ssl openssl none))
 		--with-glib=$(usex glib)
@@ -230,6 +247,7 @@ src_configure() {
 	)
 
 	use drm && use wayland && myconf+=( --enable-gl-drm )
+	use X && use xpresent && myconf+=( --enable-xpresent )
 
 	if use opengl ; then
 		myconf+=( --with-opengl=full )
@@ -255,9 +273,17 @@ src_compile() {
 	fi
 
 	V=1 emake || die "Compiling EFL failed."
+
+	if use doc ; then
+		V=1 emake -j1 doc || die "Compiling docs for EFL failed."
+	fi
 }
 
 src_install() {
+	if use doc ; then
+		local HTML_DOCS=( doc/. )
+	fi
+
 	einstalldocs
 
 	V=1 emake install DESTDIR="${D}" || die "Installing EFL files failed."
