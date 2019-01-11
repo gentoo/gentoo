@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (11 Jan 2019)
+# Mask PHP 7.0 for removal; EOL and known security issues
+# Removal in 30 days
+dev-lang/php:7.0
+virtual/httpd-php:7.0
+
 # Mikle Kolyada <zlogene@gentoo.org> (10 Jan 2019)
 # Masked due to QA violation (bug #672054)
 sci-electronics/librepcb
