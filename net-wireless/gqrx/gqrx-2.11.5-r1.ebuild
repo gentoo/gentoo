@@ -58,7 +58,6 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-
 src_install() {
 	dobin "${BUILD_DIR}"/src/gqrx
 }
