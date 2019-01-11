@@ -1,0 +1,45 @@
+diff --git host/CMakeLists.txt host/CMakeLists.txt
+index 2337396e7..3a77776a0 100644
+--- host/CMakeLists.txt
++++ host/CMakeLists.txt
+@@ -531,6 +531,9 @@ endforeach(Boost_Comp)
+ if(ENABLE_USB)
+     list(APPEND UHD_LINK_LIST_STATIC "usb-1.0")
+ endif(ENABLE_USB)
++
++LIST(APPEND UHD_LINK_LIST_STATIC "tinfo")
++
+ # UHDConfig.cmake also needs UHD_RFNOC_FOUND
+ if(ENABLE_RFNOC)
+     set(UHD_RFNOC_FOUND "TRUE")
+diff --git host/examples/CMakeLists.txt host/examples/CMakeLists.txt
+index b384d978c..402aded94 100644
+--- host/examples/CMakeLists.txt
++++ host/examples/CMakeLists.txt
+@@ -58,11 +58,11 @@ find_package(Curses)
+ if(CURSES_FOUND)
+     include_directories(${CURSES_INCLUDE_DIR})
+     add_executable(rx_ascii_art_dft rx_ascii_art_dft.cpp)
+-    target_link_libraries(rx_ascii_art_dft uhd ${CURSES_LIBRARIES} ${Boost_LIBRARIES})
++    target_link_libraries(rx_ascii_art_dft uhd ${CURSES_LIBRARIES} tinfo ${Boost_LIBRARIES})
+     UHD_INSTALL(TARGETS rx_ascii_art_dft RUNTIME DESTINATION ${PKG_LIB_DIR}/examples COMPONENT examples)
+ 
+     add_executable(twinrx_freq_hopping twinrx_freq_hopping.cpp)
+-    target_link_libraries(twinrx_freq_hopping uhd ${CURSES_LIBRARIES} ${Boost_LIBRARIES})
++    target_link_libraries(twinrx_freq_hopping uhd ${CURSES_LIBRARIES} tinfo ${Boost_LIBRARIES})
+     UHD_INSTALL(TARGETS twinrx_freq_hopping RUNTIME DESTINATION ${PKG_LIB_DIR}/examples COMPONENT examples)
+ endif(CURSES_FOUND)
+ 
+diff --git host/utils/latency/CMakeLists.txt host/utils/latency/CMakeLists.txt
+index 05bacd77a..d3b1449a6 100644
+--- host/utils/latency/CMakeLists.txt
++++ host/utils/latency/CMakeLists.txt
+@@ -25,7 +25,7 @@ if(CURSES_FOUND)
+         get_filename_component(name ${source} NAME_WE)
+         add_executable(${name} ${source} ${latency_lib_path})
+     	LIBUHD_APPEND_SOURCES(${name})
+-        target_link_libraries(${name} uhd ${Boost_LIBRARIES} ${CURSES_LIBRARIES})
++        target_link_libraries(${name} uhd ${Boost_LIBRARIES} tinfo ${CURSES_LIBRARIES})
+     	UHD_INSTALL(TARGETS ${name} RUNTIME DESTINATION ${latency_comp_dest} COMPONENT ${latency_comp_name})
+     endforeach(source)
+ 
