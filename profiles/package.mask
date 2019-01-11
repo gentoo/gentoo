@@ -250,56 +250,6 @@ net-analyzer/mate-netspeed
 ~app-portage/gemato-14.0m
 ~app-portage/gemato-9999m
 
-# Kent Fredric <kentnl@gentoo.org> (10 Jul 2018)
-# Perl 5.28 Staging block
-=dev-lang/perl-5.28.0
-=virtual/perl-Attribute-Handlers-1.10.0
-=virtual/perl-B-Debug-1.260.0
-=virtual/perl-CPAN-2.200.0
-=virtual/perl-Carp-1.500.0
-=virtual/perl-Compress-Raw-Zlib-2.76.0
-=virtual/perl-Data-Dumper-2.170.0
-=virtual/perl-Devel-PPPort-3.400.0
-=virtual/perl-Digest-SHA-6.10.0
-=virtual/perl-Encode-2.970.0
-=virtual/perl-Exporter-5.730.0
-=virtual/perl-ExtUtils-CBuilder-0.280.230
-=virtual/perl-ExtUtils-Constant-0.250.0
-=virtual/perl-ExtUtils-Install-2.140.0
-=virtual/perl-ExtUtils-MakeMaker-7.340.0
-=virtual/perl-ExtUtils-ParseXS-3.390.0
-=virtual/perl-File-Path-2.150.0
-=virtual/perl-File-Spec-3.740.0
-=virtual/perl-Filter-Simple-0.950.0
-=virtual/perl-Getopt-Long-2.500.0
-=virtual/perl-I18N-LangTags-0.430.0
-=virtual/perl-IO-Socket-IP-0.390.0
-=virtual/perl-IO-1.390.0
-=virtual/perl-IPC-Cmd-1.0.0
-=virtual/perl-JSON-PP-2.970.10
-=virtual/perl-Locale-Maketext-1.290.0
-=virtual/perl-Math-BigInt-FastCalc-0.500.600
-=virtual/perl-Math-BigInt-1.999.811
-=virtual/perl-Math-BigRat-0.261.300
-=virtual/perl-Net-Ping-2.620.0
-=virtual/perl-Scalar-List-Utils-1.500.0
-=virtual/perl-Socket-2.27.0
-=virtual/perl-Storable-3.80.0
-=virtual/perl-Test-Harness-3.420.0
-=virtual/perl-Test-Simple-1.302.133
-=virtual/perl-Test-1.310.0
-=virtual/perl-Time-HiRes-1.975.900
-=virtual/perl-Time-Piece-1.320.400
-=virtual/perl-Unicode-Normalize-1.260.0
-=virtual/perl-XSLoader-0.300.0
-=virtual/perl-bignum-0.490.0
-=virtual/perl-if-0.60.800
-=virtual/perl-libnet-3.110.0
-=virtual/perl-podlators-4.100.0
-=virtual/perl-threads-shared-1.580.0
-=virtual/perl-threads-2.220.0
-=virtual/perl-version-0.992.300
-
 # Kent Fredric <kentnl@gentoo.org> (27 May 2018)
 # Subject to Man-in-the-middle security bypass vulnerability.
 # Retained in tree only for users who need older versions
