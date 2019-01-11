@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file is only for generic masks. For arch-specific masks (i.e.
@@ -11,10 +11,6 @@ d3d9
 # Aaron W. Swenson <titanofold@gentoo.org> (09 Sep 2018)
 # Mask PostgreSQL 12 while in (pre-)alpha.
 postgres_targets_postgres12
-
-# Brian Evans <grknight@gentoo.org> (10 Aug 2018)
-# Mask PHP 7.3 target while in beta
-php_targets_php7-3
 
 # Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
 # For ancient hardware. Tired of maintaining. Masked for removal in 30 days.
