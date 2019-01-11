@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Brian Evans <grknight@gentoo.org> (11 Jan 2019)
+# Mask PHP 7.0 target as EOL
+php_targets_php7-0
+
 # Matt Turner <mattst88@gentoo.org> (11 Nov 2018)
 # d3d9 only works on amd64/x86.
 d3d9
