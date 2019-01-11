@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (11 Jan 2019)
+# Mask PHP 7.0 for removal; EOL and known security issues
+# Removal in 30 days
+dev-lang/php:7.0
+virtual/httpd-php:7.0
+
 # Mikle Kolyada <zlogene@gentoo.org> (10 Jan 2019)
 # Masked due to QA violation (bug #672054)
 sci-electronics/librepcb
@@ -293,11 +299,6 @@ net-analyzer/mate-netspeed
 =virtual/perl-threads-shared-1.580.0
 =virtual/perl-threads-2.220.0
 =virtual/perl-version-0.992.300
-
-# Brian Evans <grknight@gentoo.org> (14 Jun 2018)
-# Mask new php pre-releases for initial testing
-dev-lang/php:7.3
-virtual/httpd-php:7.3
 
 # Kent Fredric <kentnl@gentoo.org> (27 May 2018)
 # Subject to Man-in-the-middle security bypass vulnerability.
