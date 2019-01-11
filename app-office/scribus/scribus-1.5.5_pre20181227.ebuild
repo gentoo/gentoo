@@ -6,14 +6,12 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk?"
 CMAKE_MAKEFILE_GENERATOR=ninja
-
-inherit cmake-utils desktop flag-o-matic gnome2-utils python-single-r1 subversion xdg-utils
+COMMIT=d857c1a3430acf207cdde2512db6822c45e98732
+inherit cmake-utils desktop flag-o-matic gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="https://www.scribus.net/"
-SRC_URI=""
-ESVN_REPO_URI="svn://scribus.net/trunk/Scribus"
-ESVN_PROJECT=Scribus-1.5
+SRC_URI="https://github.com/${PN}project/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -97,6 +95,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.3-docdir.patch
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
 )
+
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 src_prepare() {
 	rm -r codegen/cheetah || die
