@@ -7381,7 +7381,7 @@ media-gfx/icoutils 0.32.0 0.32.2: Tools to extract and convert images in icon an
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
 media-gfx/imagemagick 6.9.10.23 7.0.8.23: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.2: Utility for image scaling and processing
-media-gfx/inkscape 0.92.2 0.92.3-r1: SVG based generic vector-drawing program
+media-gfx/inkscape 0.92.3-r1: SVG based generic vector-drawing program
 media-gfx/iscan 2.30.2.2: EPSON Image Scan! for Linux (including sane-epkowa backend)
 media-gfx/iscan-data 1.36.0.1: Image Scan! for Linux data files
 media-gfx/iscan-plugin-gt-f720 0.0.1.2: Epson Perfection V300 PHOTO scanner plugin for SANE 'epkowa' backend
@@ -9344,7 +9344,7 @@ sci-electronics/xnec2c 3.5.1: A GTK+ graphical interactive version of nec2c
 sci-electronics/xoscope 2.0: Soundcard Oscilloscope for X
 sci-geosciences/congen 1.6.2: Calculate speeds, equilibrium arguments, node factors of tidal constituents
 sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
-sci-geosciences/geocode-glib 3.24.0: GLib geocoding library that uses the Yahoo! Place Finder service
+sci-geosciences/geocode-glib 3.24.0: GLib helper library for geocoding services
 sci-geosciences/gmt 4.5.6: Powerful map generator
 sci-geosciences/gnome-maps 3.24.3: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1: GPS waypoints, tracks and routes converter
