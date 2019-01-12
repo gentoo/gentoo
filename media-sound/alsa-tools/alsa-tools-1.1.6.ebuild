@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="mirror://alsaproject/tools/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0.9"
-KEYWORDS="alpha amd64 ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~mips ppc ppc64 sparc x86"
 
 IUSE="fltk gtk alsa_cards_hdsp alsa_cards_hdspm alsa_cards_mixart
 alsa_cards_vx222 alsa_cards_usb-usx2y alsa_cards_sb16 alsa_cards_sbawe
