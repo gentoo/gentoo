@@ -1,0 +1,19 @@
+--- a/QtCollider/CMakeLists.txt.orig	2019-01-12 13:11:43.709571808 -0500
++++ b/QtCollider/CMakeLists.txt	2019-01-12 13:15:28.933352785 -0500
+@@ -10,7 +10,6 @@
+   WebEngineCore
+   WebEngineWidgets
+   PrintSupport
+-  OpenGL
+   Quick
+   Qml
+   Sql
+@@ -20,7 +19,7 @@
+ 
+ set (QT_COLLIDER_LIBS
+   Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network Qt5::WebEngineCore Qt5::WebEngineWidgets Qt5::PrintSupport
+-  Qt5::Quick Qt5::Qml Qt5::Sql Qt5::OpenGL Qt5::Svg
++  Qt5::Quick Qt5::Qml Qt5::Sql Qt5::Svg
+   ${MATH_LIBRARY})
+ 
+ if (APPLE)
