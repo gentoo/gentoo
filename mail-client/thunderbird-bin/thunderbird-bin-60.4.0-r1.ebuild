@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,7 +44,8 @@ SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="+crashreporter +ffmpeg +pulseaudio selinux"
 
-DEPEND="app-arch/unzip"
+DEPEND="app-arch/unzip
+	app-arch/zip"
 
 RDEPEND="virtual/freedesktop-icon-theme
 	dev-libs/atk
@@ -90,6 +91,33 @@ src_unpack() {
 	#xpi_unpack lightning-${MOZ_LIGHTNING_VER}.xpi
 }
 
+src_prepare() {
+	default
+
+	# Lightning
+	local emid='{e2fda1a4-762b-4020-b5ad-a41df1933103}'
+	local emxpi="${S}/distribution/extensions/${emid}.xpi"
+	if [[ ! -f "${emxpi}" ]]; then
+		die "Lightning is missing -- something is wrong. Please check ebuild/src!"
+	else
+		ebegin "Add localization to Lightning ..."
+		# hide warning regarding extra bytes at beginning or within zipfile
+		unzip -qo "${emxpi}" -d "${WORKDIR}/${emid}" 2>/dev/null
+		rm -f "${emxpi}" || die
+
+		# Install language packs for calendar
+		mozlinguas_xpistage_langpacks \
+			"${WORKDIR}/${emid}" \
+			"${WORKDIR}"/lightning-${MOZ_LIGHTNING_VER} lightning calendar
+
+		# roll a .xpi that mimicks what upstream would roll
+		pushd "${WORKDIR}/${emid}" &>/dev/null || die
+		zip -9 -q -r "${emxpi}" * || die
+		popd &>/dev/null || die
+		eend 0
+	fi
+}
+
 src_install() {
 	declare MOZILLA_FIVE_HOME="/opt/${MOZ_PN}"
 
@@ -114,13 +142,8 @@ src_install() {
 	cd "${WORKDIR}" || die # PWD no longer exists so move to somewhere that does
 
 	# Install language packs
-	MOZEXTENSION_TARGET="distribution/bundles" \
-	mozlinguas_src_install
-
-	# Install language packs for calendar
-	mozlinguas_xpistage_langpacks \
-		"${ED%/}/${MOZILLA_FIVE_HOME%/}/distribution/extensions/{e2fda1a4-762b-4020-b5ad-a41df1933103}" \
-		"${WORKDIR}"/lightning-${MOZ_LIGHTNING_VER} lightning calendar
+	MOZEXTENSION_TARGET="distribution/extensions" \
+		mozlinguas_src_install
 
 	# Create /usr/bin/thunderbird-bin
 	dodir /usr/bin/
@@ -137,9 +160,9 @@ EOF
 	insinto /etc/revdep-rebuild
 	doins "${FILESDIR}"/10${PN}
 
-	# Enable very specific settings for thunderbird-3
+	# Enable very specific settings for thunderbird
 	insinto ${MOZILLA_FIVE_HOME}/defaults/pref/
-	newins "${FILESDIR}"/thunderbird-gentoo-default-prefs.js all-gentoo.js
+	newins "${FILESDIR}"/thunderbird-gentoo-default-prefs-r1.js all-gentoo.js
 
 	# Plugins dir
 	share_plugins_dir

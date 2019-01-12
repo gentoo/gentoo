@@ -49,6 +49,8 @@ S="${S}-Source"
 PATCHES=(
 	# pending upstream
 	"${FILESDIR}"/${P}-png-broken-icc-profile.patch
+	# bug 675240
+	"${FILESDIR}"/${P}-fix-pkgconfig.patch
 )
 
 pkg_setup() {
