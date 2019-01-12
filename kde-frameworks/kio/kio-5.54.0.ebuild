@@ -68,6 +68,8 @@ PDEPEND="
 # tests hang
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-elapsedtime.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package acl ACL)
