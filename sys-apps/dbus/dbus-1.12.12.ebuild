@@ -34,7 +34,7 @@ CDEPEND="
 # autoconf-archive-2019.01.06 blocker added for bug #674830
 # Please check on bumps if the blocker is still necessary.
 DEPEND="${CDEPEND}
-	!=sys-devel/autoconf-archive-2019.01.06
+	<sys-devel/autoconf-archive-2019.01.06
 	app-text/xmlto
 	app-text/docbook-xml-dtd:4.4
 	dev-libs/expat
