@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,10 @@ CDEPEND="
 		x11-libs/libXt
 		)
 "
+# autoconf-archive-2019.01.06 blocker added for bug #674830
+# Please check on bumps if the blocker is still necessary.
 DEPEND="${CDEPEND}
+	!=sys-devel/autoconf-archive-2019.01.06
 	app-text/xmlto
 	app-text/docbook-xml-dtd:4.4
 	dev-libs/expat
@@ -87,7 +90,7 @@ src_prepare() {
 		# fix standards conflict, due to gcc being c99 by default nowadays
 		sed -i \
 			-e 's/_XOPEN_SOURCE=500/_XOPEN_SOURCE=600/' \
-			configure.ac configure || die
+			configure.ac || die
 	fi
 
 	# required for bug 263909, cross-compile so don't remove eautoreconf
