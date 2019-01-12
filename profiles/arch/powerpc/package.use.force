@@ -1,6 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gmail.com> (12 Jan 2019)
+# Force 'unwind' on for ppc and ppc64 with dev-libs/efl
+# #668486, #657750
+dev-libs/efl unwind
+
 # Sergei Trofimovich <slyfox@gentoo.org> (25 Dec 2018)
 # Enable powerpc target by default.
 dev-lang/rust llvm_targets_PowerPC
