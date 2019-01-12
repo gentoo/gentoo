@@ -63,6 +63,8 @@ src_prepare() {
 	mkdir -p src/obj || die
 	echo "#define BUILD_SUFFIX gentoo${PVR#${PV}}" >src/obj/build.h || die
 
+	eapply "${FILESDIR}/${PV}-no-libevent.patch"
+
 	eautoreconf
 	rm -r src/leveldb src/secp256k1 || die
 }
