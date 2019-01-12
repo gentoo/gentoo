@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -165,6 +165,10 @@ src_prepare() {
 
 	# bug ?
 	epatch "${FILESDIR}/${P}-poppler064.patch"
+
+	if has_version ">=app-text/poppler-0.69.0"; then
+		epatch "${FILESDIR}"/${P}-poppler0{69,71,72}.patch # bug #672854
+	fi
 
 	sed -i \
 		-e "s,/usr/include /usr/local/include.*echo \$KPATHSEA_INCLUDES.*,${EPREFIX}/usr/include\"," \
