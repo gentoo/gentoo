@@ -33,10 +33,6 @@ dev-python/pymongo test
 # media-libs/qtav not keyworded
 media-video/orion qtav
 
-# Andreas Sturmlechner <asturm@gentoo.org> (01 Sep 2018)
-# media-libs/libaom not yet keyworded
-media-video/vlc aom
-
 # Ben Kohler <bkohler@gentoo.org> (23 Aug 2018)
 # Unmask iwd support where net-wireless/iwd is keyworded
 net-misc/connman -iwd
