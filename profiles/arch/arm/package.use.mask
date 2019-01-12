@@ -32,11 +32,6 @@ dev-ruby/capybara test
 # Bug #666651.
 sys-devel/llvm exegesis
 
-# Andreas Sturmlechner <asturm@gentoo.org> (01 Sep 2018)
-# media-libs/libaom not yet keyworded
-# projectm not yet keyworded, bug #314969
-media-video/vlc aom chromaprint opencv projectm
-
 # Christian Ruppert <idl0r@gentoo.org> (25 Aug 2018)
 # pre-built, no ARM support
 net-wireless/gr-osmosdr sdrplay
