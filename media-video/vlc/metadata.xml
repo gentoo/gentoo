@@ -6,12 +6,14 @@
 		<name>Gentoo Video project</name>
 	</maintainer>
 	<use>
+		<flag name="10bit">Enable H264 10-bit encoding support with <pkg>media-libs/x264</pkg></flag>
 		<flag name="aom">Enable experimental support for AV1 codec</flag>
 		<flag name="archive">Enable support for libarchive stream extractor</flag>
 		<flag name="aribsub">Enable support for decoding ARIB STD-B24 subtitles</flag>
 		<flag name="bluray">Enable libbluray for Blu-ray disc support</flag>
 		<flag name="chromaprint">Enable libchromaprint for Chromaprint based audio fingerprinter support</flag>
 		<flag name="chromecast">Enable experimental support for Google Chromecast</flag>
+		<flag name="dav1d">Enable support for <pkg>media-libs/dav1d</pkg> AV1 decoder</flag>
 		<flag name="dc1394">Enable IIDC cameras support</flag>
 		<flag name="directx">Enable Win32 DirectX, D3D11va and DxVA2 support</flag>
 		<flag name="dvbpsi">Enable support for Mpeg-TS files (.ts, .m2ts, .mts) via <pkg>media-libs/libdvbpsi</pkg></flag>
