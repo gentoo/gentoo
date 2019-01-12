@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Jan 2019)
+# Not keyworded on most arches
+media-video/vlc dav1d
+
 # Brian Evans <grknight@gentoo.org> (11 Jan 2019)
 # Depend on the EOL PHP 7.0
 dev-libs/Ice php
