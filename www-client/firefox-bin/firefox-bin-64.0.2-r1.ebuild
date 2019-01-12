@@ -123,18 +123,12 @@ src_install() {
 	insinto ${MOZILLA_FIVE_HOME}/defaults/pref/
 	doins "${FILESDIR}"/local-settings.js
 	insinto ${MOZILLA_FIVE_HOME}
-	newins "${FILESDIR}"/all-gentoo-1.js all-gentoo.js
+	newins "${FILESDIR}"/all-gentoo-2.js all-gentoo.js
 
 	# Install language packs
-	MOZ_INSTALL_L10N_XPIFILE="1" mozlinguas_src_install
-
-	local LANG=${LINGUAS%% *}
-	if [[ -n ${LANG} && ${LANG} != "en" ]]; then
-		elog "Setting default locale to ${LANG}"
-		echo "pref(\"intl.locale.requested\", \"${LANG}\");" \
-			>> "${ED}${MOZILLA_FIVE_HOME}"/defaults/pref/${PN}-prefs.js || \
-			die "sed failed to change locale"
-	fi
+	MOZEXTENSION_TARGET="distribution/extensions" \
+		MOZ_INSTALL_L10N_XPIFILE="1" \
+		mozlinguas_src_install
 
 	# Create /usr/bin/firefox-bin
 	dodir /usr/bin/
