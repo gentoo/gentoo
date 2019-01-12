@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (12 Jan 2019)
+# media-libs/dav1d is available on ~amd64
+media-video/vlc -dav1d
+
 # Thomas Deutschmann <whissi@gentoo.org> (15 Nov 2018)
 # - rdrand plugin is supported on amd64
 net-vpn/strongswan -strongswan_plugins_rdrand
