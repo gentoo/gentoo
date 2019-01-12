@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
@@ -17,19 +17,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
 IUSE=""
 
-RDEPEND=">=dev-python/pygtk-2.24[${PYTHON_USEDEP}]"
+RDEPEND="
+	>=dev-python/pygtk-2.24[${PYTHON_USEDEP}]
+	media-libs/mutagen[${PYTHON_USEDEP}]
+"
 
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/nicotine-plus-${PV}"
 
-pkg_postinst() {
-	echo
-	elog "You may want to install these packages to add additional features"
-	elog "to Nicotine+:"
-	elog
-	elog "dev-python/geoip-python         Country lookup and flag display"
-	elog "media-libs/mutagen              Media metadata extraction"
-	elog "net-libs/miniupnpc              UPnP portmapping"
-	echo
+src_install() {
+	distutils-r1_src_install
+	mv "${ED}/usr/share/doc/nicotine" "${ED}/usr/share/doc/${PF}" || die
 }
