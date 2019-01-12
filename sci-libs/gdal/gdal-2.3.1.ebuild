@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -83,6 +83,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.2.3-bashcomp-path.patch" # bug 641866
 	"${FILESDIR}/${PN}-2.3.0-curl.patch" # bug 659840
 	"${FILESDIR}/${PN}-2.3.1-poppler-0.69.0.patch"
+	"${FILESDIR}/${PN}-2.3.1-poppler-0.71.0.patch" # bug 674556
 )
 
 src_prepare() {
@@ -118,6 +119,9 @@ src_prepare() {
 		-i swig/python/setup.cfg || die "sed python setup.cfg failed"
 
 	default
+
+	# not upstreamable, not fixed in 2.4.0 or master as of 2019-01-12:
+	has_version ">=app-text/poppler-0.72.0" && eapply "${FILESDIR}/${PN}-2.3.1-poppler-0.72.0.patch"
 
 	eautoreconf
 }
@@ -311,6 +315,7 @@ src_install() {
 	fi
 
 	doman "${S}"/man/man*/*
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
