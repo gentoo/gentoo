@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 PATCH_VERSION="5"
 
 DESCRIPTION="Hibernate script supporting multiple suspend methods"
-HOMEPAGE="https://github.com/NigelCunningham/Hibernate-Script"
+HOMEPAGE="https://gitlab.com/nigelcunningham/Hibernate-Script"
 SRC_URI="http://tuxonice.nigelcunningham.com.au/downloads/all/${P}.tar.gz
 	mirror://gentoo/${P}-patches-${PATCH_VERSION}.tar.bz2"
 
