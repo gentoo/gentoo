@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,8 +6,8 @@ EAPI=4
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A package of Plan 9 compatibility libraries"
-HOMEPAGE="http://www.netlib.org/research/9libs/9libs-1.0.README"
-SRC_URI="ftp://www.netlib.org/research/9libs/${P}.tar.bz2"
+HOMEPAGE="https://www.netlib.org/research/9libs/9libs-1.0.README"
+SRC_URI="https://www.netlib.org/research/9libs/${P}.tar.bz2"
 
 LICENSE="PLAN9"
 SLOT="0"
