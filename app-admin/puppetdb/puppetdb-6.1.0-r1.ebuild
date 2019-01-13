@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -77,7 +77,7 @@ src_install() {
 	newconfd ext/default puppetdb
 	systemd_dounit ext/redhat/puppetdb.service
 	systemd_newtmpfilesd ext/puppetdb.tmpfiles.conf puppetdb.conf
-	newinitd "${FILESDIR}/puppetdb.initd" puppetdb
+	newinitd "${FILESDIR}/puppetdb.initd-r2" puppetdb
 	# misc
 	insinto /etc/logrotate.d
 	newins ext/puppetdb.logrotate.conf puppetdb
