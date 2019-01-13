@@ -3,32 +3,30 @@
 
 EAPI=7
 
-DESCRIPTION="WordPerfect Document import/export library"
-HOMEPAGE="http://libwpd.sf.net"
+DESCRIPTION="C++ library to read and parse graphics in WPG"
+HOMEPAGE="http://libwpg.sourceforge.net/libwpg.htm"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 MPL-2.0 )"
-SLOT="0.10"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc64 ~x86 ~x86-fbsd"
-IUSE="doc +tools"
+SLOT="0.3"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc64 ~x86"
+IUSE="doc static-libs"
 
-RDEPEND="dev-libs/librevenge"
-DEPEND="${RDEPEND}
-	dev-libs/boost
+RDEPEND="
+	app-text/libwpd:0.10[tools]
+	dev-libs/librevenge
 "
+DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
 
-PATCHES=( "${FILESDIR}/${P}-gcc-4.8.patch" )
-
 src_configure() {
 	local myeconfargs=(
 		--program-suffix=-${SLOT}
-		--disable-static
 		$(use_with doc docs)
-		$(use_enable tools)
+		$(use_enable static-libs static)
 	)
 	econf "${myeconfargs[@]}"
 }

@@ -1,12 +1,6 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# William Hubbs <williamh@gentoo.org> (13 Jan 2019)
-# For memtest86+ mask the floppy use flag since it requires grub:0 which
-# is being removed
-# (bug #674364)
-sys-apps/memtest86+ floppy
-
 # Jason Zaman <perfinion@gentoo.org> (06 Sep 2015)
 # This is masked in base/package.use.mask as Linux only.
 sys-auth/consolekit -cgroups

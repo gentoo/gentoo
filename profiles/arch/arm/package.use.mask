@@ -97,11 +97,7 @@ app-doc/doxygen clang
 >=app-admin/rsyslog-8.31 mongodb
 
 # Andreas Sturmlechner <asturm@gentoo.org> (11 Oct 2017)
-# Required dependency dev-qt/qtspeech is not keyworded.
-kde-apps/konqueror speech
-kde-apps/kpimtextedit speech
-kde-apps/ktp-text-ui speech
-kde-apps/okular speech
+# Required dependency dev-qt/qtspeech is not keyworded, bug #675340
 kde-frameworks/knotifications speech
 kde-frameworks/ktextwidgets speech
 
