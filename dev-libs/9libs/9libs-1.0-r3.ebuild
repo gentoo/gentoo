@@ -25,13 +25,10 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export CC
 	econf \
 		--includedir=/usr/include/9libs \
 		--enable-shared
-}
-
-src_compile() {
-	emake CC="$(tc-getCC)"
 }
 
 src_install() {
