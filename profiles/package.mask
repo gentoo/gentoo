@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (13 Jan 2019)
+# Deprecated upstream. Use app-emulation/ganeti[htools] instead.
+# Removal in 30 days, bug #675220.
+app-emulation/ganeti-htools
+
 # Brian Evans <grknight@gentoo.org> (11 Jan 2019)
 # Mask PHP 7.0 for removal; EOL and known security issues
 # Removal in 30 days
