@@ -1,11 +1,11 @@
 DEFINED_PHASES=install postinst
 DESCRIPTION=Hibernate script supporting multiple suspend methods
 EAPI=7
-HOMEPAGE=https://github.com/NigelCunningham/Hibernate-Script
+HOMEPAGE=https://gitlab.com/nigelcunningham/Hibernate-Script
 IUSE=vim-syntax
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=!<media-gfx/splashutils-1.5.2
 SLOT=0
 SRC_URI=http://tuxonice.nigelcunningham.com.au/downloads/all/hibernate-script-2.0.tar.gz mirror://gentoo/hibernate-script-2.0-patches-5.tar.bz2
-_md5_=9da7ff519063ce50abeec2186e070623
+_md5_=8da0bc47f05f9be442c24471e8d372b0
