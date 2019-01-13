@@ -31,7 +31,7 @@ SLOT="0/5-9" # vlc - vlccore
 
 IUSE="10bit a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromecast
 	dav1d dbus dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac
-	fluidsynth fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate kms
+	fluidsynth fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate
 	libass libav libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua
 	macosx-notifications macosx-qtkit mad matroska modplug mp3 mpeg mtp musepack ncurses
 	neon nfs ogg omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5
@@ -88,7 +88,7 @@ RDEPEND="
 		>=media-libs/libdvdread-4.9:0
 	)
 	faad? ( media-libs/faad2:0 )
-	fdk? ( media-libs/fdk-aac:0= )
+	fdk? ( <media-libs/fdk-aac-2.0.0:0= )
 	ffmpeg? (
 		!libav? ( >=media-video/ffmpeg-3.1.3:0=[vaapi?,vdpau?] )
 		libav? ( >=media-video/libav-12.2:0=[vaapi?,vdpau?] )
@@ -113,7 +113,6 @@ RDEPEND="
 	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
 	kate? ( media-libs/libkate:0 )
-	kms? ( x11-libs/libdrm )
 	libass? (
 		media-libs/fontconfig:1.0
 		media-libs/libass:0=
@@ -205,13 +204,11 @@ RDEPEND="
 	vpx? ( media-libs/libvpx:0= )
 	wayland? (
 		>=dev-libs/wayland-1.15
-		>=dev-libs/wayland-protocols-1.12
+		dev-libs/wayland-protocols
 	)
 	X? (
 		x11-libs/libX11
-		x11-libs/libxcb[xkb]
-		x11-libs/libXcursor
-		x11-libs/libxkbcommon[X]
+		x11-libs/libxcb
 		x11-libs/xcb-util
 		x11-libs/xcb-util-keysyms
 	)
@@ -243,7 +240,7 @@ src_prepare() {
 	default
 
 	has_version '>=net-libs/libupnp-1.8.0' && \
-		eapply "${FILESDIR}"/${P}-libupnp-slot-1.8.patch
+		eapply "${FILESDIR}"/${PN}-2.2.8-libupnp-slot-1.8.patch
 
 	# Bootstrap when we are on a git checkout.
 	if [[ ${PV} = *9999 ]] ; then
@@ -273,6 +270,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-aa
 		--disable-dependency-tracking
 		--disable-optimizations
 		--disable-rpath
@@ -325,7 +323,6 @@ src_configure() {
 		$(use_enable jack)
 		$(use_enable jpeg)
 		$(use_enable kate)
-		$(use_enable kms)
 		$(use_enable libass)
 		$(use_enable libcaca caca)
 		$(use_enable libnotify notify)
@@ -349,6 +346,7 @@ src_configure() {
 		$(use_enable neon)
 		$(use_enable ogg)
 		$(use_enable omxil)
+		$(use_enable omxil omxil-vout)
 		$(use_enable opencv)
 		$(use_enable optimisememory optimize-memory)
 		$(use_enable opus)
@@ -387,6 +385,7 @@ src_configure() {
 		$(use_enable wma-fixed)
 		$(use_with X x)
 		$(use_enable X xcb)
+		$(use_enable X xvideo)
 		$(use_enable x264)
 		$(use_enable x265)
 		$(use_enable xml libxml2)
@@ -478,12 +477,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ "$ROOT" = "/" ]] && [[ -x "/usr/libexec/vlc/vlc-cache-gen" ]] ; then
-		einfo "Running /usr/libexec/vlc/vlc-cache-gen on /usr/libexec/vlc/plugins/"
-		"/usr/libexec/vlc/vlc-cache-gen" "/usr/libexec/vlc/plugins/"
+	if [[ "$ROOT" = "/" ]] && [[ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
+		einfo "Running /usr/$(get_libdir)/vlc/vlc-cache-gen on /usr/$(get_libdir)/vlc/plugins/"
+		"/usr/$(get_libdir)/vlc/vlc-cache-gen" "/usr/$(get_libdir)/vlc/plugins/"
 	else
 		ewarn "We cannot run vlc-cache-gen (most likely ROOT!=/)"
-		ewarn "Please run /usr/libexec/vlc/vlc-cache-gen manually"
+		ewarn "Please run /usr/$(get_libdir)/vlc/vlc-cache-gen manually"
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 
@@ -493,8 +492,8 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if [[ -e /usr/libexec/vlc/plugins/plugins.dat ]]; then
-		rm /usr/libexec/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
+	if [[ -e /usr/$(get_libdir)/vlc/plugins/plugins.dat ]]; then
+		rm /usr/$(get_libdir)/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
 	fi
 
 	gnome2_icon_cache_update

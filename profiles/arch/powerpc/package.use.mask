@@ -9,10 +9,6 @@ net-libs/gnutls test-full
 # dev-db/mariadb-connector-c not yet keyworded
 net-analyzer/icinga2 mariadb
 
-# Andreas Sturmlechner <asturm@gentoo.org> (01 Sep 2018)
-# media-libs/libaom not yet keyworded
-media-video/vlc aom
-
 # Luca Barbato <lu_zero@gentoo.org> (12 Aug 2018)
 # grub pc is not supported on powerpc
 sys-boot/grub:2 grub_platforms_pc grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_xen
