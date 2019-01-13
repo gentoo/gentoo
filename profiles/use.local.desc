@@ -3582,6 +3582,7 @@ media-video/vdr:ttxtsubs - support for media-plugins/vdr-ttxtsubs
 media-video/vdr:vasarajanauloja - replacement for the liemikuutio patch, adds some nice must haves features
 media-video/vdr:wareagleicon - Replace original icon set in menu
 media-video/vdr:yaepg - Enables support for the vdr-yaepg plugin
+media-video/vlc:10bit - Enable H264 10-bit encoding support with media-libs/x264
 media-video/vlc:X - Enable support for e.g. fullscreen mode via X and the X C-language binding. It does not build a graphical interface
 media-video/vlc:aom - Enable experimental support for AV1 codec
 media-video/vlc:archive - Enable support for libarchive stream extractor
@@ -3589,6 +3590,7 @@ media-video/vlc:aribsub - Enable support for decoding ARIB STD-B24 subtitles
 media-video/vlc:bluray - Enable libbluray for Blu-ray disc support
 media-video/vlc:chromaprint - Enable libchromaprint for Chromaprint based audio fingerprinter support
 media-video/vlc:chromecast - Enable experimental support for Google Chromecast
+media-video/vlc:dav1d - Enable support for media-libs/dav1d AV1 decoder
 media-video/vlc:dc1394 - Enable IIDC cameras support
 media-video/vlc:directx - Enable Win32 DirectX, D3D11va and DxVA2 support
 media-video/vlc:dvbpsi - Enable support for Mpeg-TS files (.ts, .m2ts, .mts) via media-libs/libdvbpsi
