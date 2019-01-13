@@ -40,7 +40,6 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}.init2 jenkins
 	newconfd "${FILESDIR}"/${PN}.confd jenkins
 
-	# SytemD doesn't use /etc/conf.d anymore by default
 	systemd_newunit "${FILESDIR}"/${PN}.service jenkins.service
 	insinto /etc/jenkins/
 	newins "${FILESDIR}"/${PN}-systemd.confd jenkins.conf
