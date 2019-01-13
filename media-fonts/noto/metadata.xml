@@ -13,4 +13,62 @@
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
 	</maintainer>
+	<use>
+		<flag name="brahmi">Install font for Brahmi script</flag>
+		<flag name="music">Install font for music notation</flag>
+		<flag name="cuneiform">Install Cuneiform font</flag>
+		<flag name="cypriot">Install Cypriot font</flag>
+		<flag name="deseret">Install Deseret font</flag>
+		<flag name="duployan">Install Duployan font</flag>
+		<flag name="display">Install Display variant fonts</flag>
+		<flag name="symbols">Install Symbols fonts</flag>
+		<flag name="runic">Install Runic font</flag>
+		<flag name="pau-cin-hau">Install font for Pau Cin Hau script</flag>
+		<flag name="phagspa">Install for 'Phags-pa script</flag>
+		<flag name="old-arabian">Install fonts for Old North and Old South Arabian</flag>
+		<flag name="hieroglyphs">Install fonts for hieroglyphs</flag>
+		<flag name="mono">Install monospace fonts</flag>
+		<flag name="coptic">Install Coptic font</flag>
+		<flag name="linear">Install Linear (Minoan) fonts</flag>
+		<flag name="ancient">Install fonts for historical scripts</flag>
+		<flag name="l10n_ban">Install fonts for Balinese script</flag>
+		<flag name="l10n_bax">Install fonts for Bamum syllabary</flag>
+		<flag name="l10n_ber">Install fonts for Berber script</flag>
+		<flag name="l10n_bho">Install fonts for Kaithi script</flag>
+		<flag name="l10n_bku">Install fonts for Buhid</flag>
+		<flag name="l10n_blt">Install fonts for Tai Viet</flag>
+		<flag name="l10n_bsq">Install fonts for Bassa alphabet (Vah)</flag>
+		<flag name="l10n_bug">Install fonts for Buginese</flag>
+		<flag name="l10n_bya">Install fonts for Tagbanwa alphabet</flag>
+		<flag name="l10n_ccp">Install fonts for Chakma</flag>
+		<flag name="l10n_cja">Install fonts for Cham</flag>
+		<flag name="l10n_cmr">Install fonts for Mro</flag>
+		<flag name="l10n_dv">Install fonts for Thaana</flag>
+		<flag name="l10n_eky">Instal fonts for Kayah Li</flag>
+		<flag name="l10n_hnn">Install fonts for Hanunó'o</flag>
+		<flag name="l10n_hoc">Install fonts for Warang Citi</flag>
+		<flag name="l10n_ii">Install fonts for Yi syllabary</flag>
+		<flag name="l10n_kv">Install fonts for Old Permic script</flag>
+		<flag name="l10n_lep">Install fonts for Lepcha</flag>
+		<flag name="l10n_lif">Install fonts for Limbu</flag>
+		<flag name="l10n_lis">Install fonts for Lisu (Fraser alphabet)</flag>
+		<flag name="l10n_men">Install fonts for Mende Kikakui script</flag>
+		<flag name="l10n_mjl">Install fonts for Takri script</flag>
+		<flag name="l10n_mww">Install fonts for Pahawh Hmong and Miao</flag>
+		<flag name="l10n_new">Install fonts for Newar</flag>
+		<flag name="l10n_nod">Install fonts for Thai Tham alphabet</flag>
+		<flag name="l10n_nqo">Install fonts for N'Ko alphabet</flag>
+		<flag name="l10n_osa">Install fonts for Osage</flag>
+		<flag name="l10n_rej">Install fonts for Rejang</flag>
+		<flag name="l10n_saz">Install fonts for Saurashtra script</flag>
+		<flag name="l10n_skr">Install fonts for Saraiki</flag>
+		<flag name="l10n_srb">Install fonts for Sora Sompeng</flag>
+		<flag name="l10n_su">Install fonts for Sundanese</flag>
+		<flag name="l10n_syl">Install fonts for Sylheti</flag>
+		<flag name="l10n_tbw">Install fonts for Tagbanwa alphabet</flag>
+		<flag name="l10n_vai">Install fonts for Vai syllabary</flag>
+		<flag name="l10n_jv">Install fonts for Javanese script</flag>
+		<flag name="l10n_khb">Install fonts for Tai Tham alphabet</flag>
+		<flag name="l10n_iu">Install fonts for Canadian Aboriginal script</flag>
+	</use>
 </pkgmetadata>
