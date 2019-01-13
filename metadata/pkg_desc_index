@@ -4934,7 +4934,7 @@ dev-python/gdata 2.0.18: Python client library for Google data APIs
 dev-python/genshi 0.7: Python toolkit for stream-based generation of output for the web
 dev-python/genty 1.3.2: Allows you to run a test with multiple data sets
 dev-python/geoalchemy2 0.3: Geospatial extension to SQLAlchemy with PostGIS support
-dev-python/geoip-python 1.3.2 1.3.2-r1: Python bindings for GeoIP
+dev-python/geoip-python 1.3.2-r1: Python bindings for GeoIP
 dev-python/geopy 1.11.0: A Geocoding Toolbox for Python
 dev-python/gevent 1.0.1 1.2.1: Coroutine-based network library
 dev-python/gevent-socketio 0.3.5_rc2-r1: SocketIO server based on the Gevent pywsgi server
