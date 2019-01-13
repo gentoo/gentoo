@@ -1,0 +1,12 @@
+diff -Naur a/ninewinecfg/main.c b/ninewinecfg/main.c
+--- a/ninewinecfg/main.c	2019-01-12 19:43:40.113737110 +0000
++++ b/ninewinecfg/main.c	2019-01-12 19:46:54.213703713 +0000
+@@ -47,7 +47,7 @@
+ #define WINE_STAGING 1
+ #endif
+
+-static const char * const fn_nine_dll = "d3d9-nine.dll";
++static const char * const fn_nine_dll = G9DLL;
+ static const char * const reg_path_dll_overrides = "Software\\Wine\\DllOverrides";
+ static const char * const reg_path_dll_redirects = "Software\\Wine\\DllRedirects";
+ static const char * const reg_key_d3d9 = "d3d9";
