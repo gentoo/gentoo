@@ -84,11 +84,6 @@ dev-python/paramiko server
 # and compiler/binutils combinations.)
 sys-libs/glibc cet
 
-# Nick Sarnie <sarnex@gentoo.org> (15 Jul 2018)
-# Requires media-video/ffmpeg-4 which is masked
-app-emulation/wine-any ffmpeg
-app-emulation/wine-staging ffmpeg
-
 # Göktürk Yüksek <gokturk@gentoo.org> (6 Jul 2018)
 # Dependency app-crypt/jitterentropy is keyworded for
 # only a subset of the archs rng-tools supports
