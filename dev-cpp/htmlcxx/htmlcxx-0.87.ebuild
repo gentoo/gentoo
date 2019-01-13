@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="A simple non-validating CSS 1 and HTML parser for C++"
 HOMEPAGE="http://htmlcxx.sourceforge.net/"
@@ -12,14 +12,6 @@ LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
-
-DEPEND="sys-devel/flex[${MULTILIB_USEDEP}]
-	virtual/yacc"
-
-PATCHES=(
-	"${FILESDIR}"/0001-strstream-is-deprecated-use-sstream-instead.patch
-	"${FILESDIR}"/0002-Update-css_syntax.y-for-use-with-less-ancient-Bison.patch
-)
 
 ECONF_SOURCE="${S}"
 
@@ -30,6 +22,8 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files
+	# libtool archives covered by pkg-config.
+	find "${D}" -name "*.la" -delete || die
+
 	einstalldocs
 }
