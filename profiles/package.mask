@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# William Hubbs <williamh@gentoo.org> (13 Jan 2019)
+# Multiple open bugs including build failures, dead upstream.
+# Please see the following URL for instructions for migrating to grub 2.
+# https://wiki.gentoo.org/wiki/GRUB2_Migration
+# Removal on 1 Feb 2019 (bug #674364)
+sys-boot/grub:0
+
 # Sergei Trofimovich <slyfox@gentoo.org> (13 Jan 2019)
 # Deprecated upstream. Use app-emulation/ganeti[htools] instead.
 # Removal in 30 days, bug #675220.
