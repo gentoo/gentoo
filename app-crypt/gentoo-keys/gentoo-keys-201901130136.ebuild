@@ -1,4 +1,4 @@
-# Copyright 2014-2018 Gentoo Foundation
+# Copyright 2014-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
