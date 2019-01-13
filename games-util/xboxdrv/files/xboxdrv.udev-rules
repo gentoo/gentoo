@@ -1,5 +1,5 @@
 SUBSYSTEM=="usb", ACTION=="add",\
-	ENV{ID_MODEL_FROM_DATABASE}=="Xbox*Controller|Xbox*Controller S",\
+	ENV{ID_MODEL_FROM_DATABASE}=="Xbox*Controller|Xbox*Controller S|Xbox 360 Wireless Adapter",\
 	TAG+="systemd",\
 	ENV{SYSTEMD_ALIAS}="/sys/subsystem/usb/xbox/controller$number",\
 	ENV{SYSTEMD_WANTS}+="xboxdrv.service"
