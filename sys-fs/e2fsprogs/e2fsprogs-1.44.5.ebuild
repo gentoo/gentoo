@@ -123,7 +123,7 @@ src_install() {
 
 	# configure doesn't have an option to disable static libs :/
 	if ! use static-libs ; then
-		find "${D}" -name '*.a' -delete || die
+		find "${ED}" -name '*.a' -delete || die
 	fi
 
 	if use elibc_FreeBSD ; then
