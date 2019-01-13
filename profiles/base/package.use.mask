@@ -7,6 +7,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# William Hubbs <williamh@gentoo.org> (13 Jan 2019)
+# For memtest86+ mask the floppy use flag since it requires grub:0 which
+# is being removed
+# (bug #674364)
+sys-apps/memtest86+ floppy
+
 # Andreas Sturmlechner <asturm@gentoo.org> (12 Jan 2019)
 # Not keyworded on most arches
 media-video/vlc dav1d
