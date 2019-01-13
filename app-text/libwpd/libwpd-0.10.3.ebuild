@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,6 +20,8 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
+
+PATCHES=( "${FILESDIR}/${P}-gcc-4.8.patch" )
 
 src_configure() {
 	local myeconfargs=(
