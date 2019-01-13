@@ -12,5 +12,6 @@
 
 	<use>
 		<flag name="video">Add support for gif/webm playback via libmpv</flag>
+		<flag name="blur">Add support for background blur</flag>
 	</use>
 </pkgmetadata>
