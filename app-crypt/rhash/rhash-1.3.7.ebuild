@@ -20,8 +20,13 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 )"
 
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+DEPEND="
+	${RDEPEND}
+"
+
+BDEPEND="
+	nls? ( sys-devel/gettext )
+"
 
 S="${WORKDIR}/RHash-${PV}"
 
