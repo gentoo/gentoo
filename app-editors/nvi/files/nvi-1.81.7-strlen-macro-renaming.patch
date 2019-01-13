@@ -1,0 +1,37 @@
+From 95f46717b6749424b0c27b27f2b256f9a8197aa9 Mon Sep 17 00:00:00 2001
+From: Felix Janda <felix.janda@posteo.de>
+Date: Sat, 8 Oct 2016 19:33:12 -0400
+Subject: [PATCH 03/11] avoid conflict between perl headers and STRLEN macro
+
+perl uses STRLEN for the type of string lengths, whereas we use
+STRLEN to denote strlen() or wcslen(). We can therefore work around
+the conflict by making STRLEN a function-like macro.
+---
+ common/multibyte.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/common/multibyte.h b/common/multibyte.h
+index 820f4ec..a983f5c 100644
+--- a/common/multibyte.h
++++ b/common/multibyte.h
+@@ -13,7 +13,7 @@ typedef	u_int		UCHAR_T;
+ #define RCHAR_BIT	24
+ 
+ #define ISUPPER		iswupper
+-#define STRLEN		wcslen
++#define STRLEN(x)	wcslen(x)
+ #define STRTOL		wcstol
+ #define STRTOUL		wcstoul
+ #define SPRINTF		swprintf
+@@ -35,7 +35,7 @@ typedef	u_char		UCHAR_T;
+ #define RCHAR_BIT	CHAR_BIT
+ 
+ #define ISUPPER		isupper
+-#define STRLEN		strlen
++#define STRLEN(x)	strlen(x)
+ #define STRTOL		strtol
+ #define STRTOUL		strtoul
+ #define SPRINTF		snprintf
+-- 
+2.7.3
+

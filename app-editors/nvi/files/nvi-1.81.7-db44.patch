@@ -1,0 +1,37 @@
+From a4d7f1885906640b8a230958176bca949379cabd Mon Sep 17 00:00:00 2001
+From: Felix Janda <felix.janda@posteo.de>
+Date: Fri, 11 Nov 2016 20:15:48 -0500
+Subject: [PATCH] fix db version checks for db-6.0.*
+
+Signed-off-by: Felix Janda <felix.janda@posteo.de>
+---
+ common/vi_db.h | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/common/vi_db.h b/common/vi_db.h
+index 081dc3e..fa0f75c 100644
+--- a/common/vi_db.h
++++ b/common/vi_db.h
+@@ -25,7 +25,8 @@ typedef recno_t db_recno_t;
+ 
+ #else
+ 
+-#if DB_VERSION_MAJOR >= 3 && DB_VERSION_MINOR >= 1
++#if (DB_VERSION_MAJOR >= 3 && DB_VERSION_MINOR >= 1)			\
++    || DB_VERSION_MAJOR > 3
+ #define db_env_open(env,path,flags,mode)				\
+     (env)->open(env, path, flags, mode)
+ #define db_env_remove(env,path,flags)					\
+@@ -40,7 +41,8 @@ typedef recno_t db_recno_t;
+ #define db_env_close(env,flags)						\
+     (env)->close(env, flags)
+ 
+-#if DB_VERSION_MAJOR >= 4 && DB_VERSION_MINOR >= 1
++#if (DB_VERSION_MAJOR >= 4 && DB_VERSION_MINOR >= 1)			\
++    || DB_VERSION_MAJOR > 4
+ #define db_open(db,file,type,flags,mode)				\
+     (db)->open(db, NULL, file, NULL, type, flags, mode)
+ #else
+-- 
+2.7.3
+

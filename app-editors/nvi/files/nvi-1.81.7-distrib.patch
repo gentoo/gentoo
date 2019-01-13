@@ -1,0 +1,34 @@
+--- a/dist/distrib
++++ b/dist/distrib
+@@ -1,6 +1,7 @@
+ #! /bin/sh
+ # $Id: distrib,v 8.24 2001/06/25 11:20:24 skimo Exp $ (Berkeley) $Date: 2001/06/25 11:20:24 $
+ 
++if false; then
+ echo "Running libtoolize"
+ libtoolize -c --force
+ 
+@@ -18,6 +19,7 @@
+ echo "Running autoconf"
+ autoconf 2>&1 | sed '/warning: AC_TRY_RUN called without default/d'
+ chmod 555 configure config.guess config.sub install-sh
++fi
+ 
+ msg="/* Do not edit: automatically built by build/distrib. */"
+ # Build automatically generated header files.
+@@ -70,6 +72,7 @@
+ 	chmod 444 $f
+ done
+ 
++if false; then
+ # Build tags files.
+ echo "Building tags files"
+ f=tags
+@@ -80,6 +83,7 @@
+ 	../ipc/*.[ch] ../motif/*.[ch] ../motif_l/*.[ch] ../perl_api/*.[ch] \
+ 	../tcl_api/*.[ch] ../vi/*.[ch]
+ chmod 444 $f
++fi
+ 
+ # Build vi.0
+ echo "Building vi.0"
