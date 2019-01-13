@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -8,8 +8,8 @@ inherit toolchain-funcs
 MY_P="${P/1.0/9libs}"
 
 DESCRIPTION="An emulation of ACME, Plan9's hybrid window system, shell and editor"
-HOMEPAGE="http://www.netlib.org/research/9libs/"
-SRC_URI="ftp://www.netlib.org/research/9libs/${MY_P}.tar.gz"
+HOMEPAGE="https://www.netlib.org/research/9libs/"
+SRC_URI="${HOMEPAGE}${MY_P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
