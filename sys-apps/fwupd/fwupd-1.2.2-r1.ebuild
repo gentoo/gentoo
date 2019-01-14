@@ -11,7 +11,7 @@ DESCRIPTION="Aims to make updating firmware on Linux automatic, safe and reliabl
 HOMEPAGE="https://fwupd.org"
 SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2+"
+LICENSE="LGPL-2.1+"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
