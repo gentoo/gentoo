@@ -736,6 +736,10 @@ app-office/calligra:okular - Enable bindings for kde-apps/okular
 app-office/calligra:phonon - Build stage/eventplugins and videoshape plugin using media-libs/phonon
 app-office/calligra:pim - Enable support for KDE PIM resources integration
 app-office/calligra:spacenav - Enable support for the 3Dconnexion spacenav input device via dev-libs/libspnav
+app-office/calligraplan:activities - Enable kactivities support
+app-office/calligraplan:holidays - Enable kde-frameworks/kholidays integration
+app-office/calligraplan:kwallet - Enable access to encrypted OpenDocument files with kde-frameworks/kwallet storage
+app-office/calligraplan:pim - Enable support for KDE PIM resources integration
 app-office/glabels:barcode - Enable barcode support through external libraries.
 app-office/gnucash:aqbanking - Connect to some internet banks via AqBanking
 app-office/gnucash:chipcard - Enable support for chipcard reading and processing.
