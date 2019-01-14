@@ -2916,7 +2916,7 @@ dev-lang/nasm 2.13.01: groovy little assembler
 dev-lang/ocaml 4.04.2-r1: Type-inferring functional programming language descended from the ML family
 dev-lang/orc 0.4.28-r1: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/perl 5.24.3-r1 5.26.2: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.38 7.1.22 7.2.10: The PHP language runtime engine
+dev-lang/php 5.6.38 5.6.40 7.1.22 7.1.26 7.2.10 7.2.14: The PHP language runtime engine
 dev-lang/python 2.7.15 3.4.5-r1 3.4.8 3.5.4-r1 3.5.5 3.6.3-r1 3.6.5: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6: Python script wrapper
 dev-lang/qu-prolog 10.1: Extended Prolog supporting quantifiers, object-variables and substitutions
@@ -3067,6 +3067,7 @@ dev-libs/libconfig 1.5: Libconfig is a simple library for manipulating structure
 dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
 dev-libs/libcroco 0.6.12-r1: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
 dev-libs/libdaemon 0.14-r1 0.14-r2 0.14-r3: Simple library for creating daemon processes in C
+dev-libs/libdazzle 3.30.2: Experimental new features for GTK+ and GLib
 dev-libs/libdbh 5.0.19: a small library to create and manage 64-bit disk based hash tables
 dev-libs/libdbusmenu 16.04.0: Library to pass menu structure across DBus
 dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r2: Library providing Qt implementation of DBusMenu specification
@@ -3184,7 +3185,7 @@ dev-libs/libtubo 5.0.15: small and simple interprocess communication library
 dev-libs/libunibreak 4.0: Line and word breaking library
 dev-libs/libunicode 0.4-r2: Unicode library
 dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance application
-dev-libs/libunistring 0.9.7: Library for manipulating Unicode and C strings according to Unicode standard
+dev-libs/libunistring 0.9.7 0.9.10: Library for manipulating Unicode and C strings according to Unicode standard
 dev-libs/libusb 1.0.19-r1 1.0.21: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libuv 1.20.0: Cross-platform asychronous I/O
@@ -6966,7 +6967,7 @@ kde-misc/rsibreak 0.12.8: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.1.3: Collection manager based on KDE Frameworks
-kde-misc/wacomtablet 3.1.0: KControl module for Wacom tablets
+kde-misc/wacomtablet 3.1.0 3.1.1: KControl module for Wacom tablets
 kde-misc/yakuake 3.0.5: Quake-style terminal emulator based on konsole
 kde-misc/zanshin 0.5.0: Getting things done application by KDE
 kde-plasma/bluedevil 5.14.3: Bluetooth stack for KDE Plasma
@@ -7407,7 +7408,7 @@ media-gfx/mkgallery 1.1: Creates thumbnails and a HTML index file for a director
 media-gfx/monica 3.7: Monica is a Monitor Calibration Tool
 media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 1.1.0-r2: fast and easy graphics application for digital painters
-media-gfx/nomacs 3.8.1: Qt-based image viewer
+media-gfx/nomacs 3.8.1 3.10.2: Qt-based image viewer
 media-gfx/nvidia-cg-toolkit 3.1.0013-r3: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r3: A set of cuda-enabled texture tools and compressors
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
@@ -7735,9 +7736,9 @@ media-libs/opusfile 0.6: A high-level decoding and seeking API for .opus files
 media-libs/osl 1.8.12: Advanced shading language for production GI renderers
 media-libs/partio 1.1.0_p20170829: A library for particle IO and manipulation
 media-libs/phat 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
-media-libs/phonon 4.10.1: KDE multimedia API
-media-libs/phonon-gstreamer 4.9.0-r2: Phonon GStreamer backend
-media-libs/phonon-vlc 0.10.1: Phonon VLC backend
+media-libs/phonon 4.10.1 4.10.2: KDE multimedia API
+media-libs/phonon-gstreamer 4.9.0-r2 4.9.0-r3: Phonon GStreamer backend
+media-libs/phonon-vlc 0.10.1 0.10.2: Phonon VLC backend
 media-libs/plib 1.8.5-r1: multimedia library used by many games
 media-libs/plotutils 2.6-r2: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
@@ -8282,7 +8283,7 @@ media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and 
 media-video/gpac 0.6.1-r2 0.7.1-r1: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
 media-video/griffith 0.13-r2: Movie collection manager
 media-video/gtk-recordmydesktop 0.3.8-r3: GTK+ interface for RecordMyDesktop
-media-video/guvcview 2.0.5: GTK+ UVC Viewer
+media-video/guvcview 2.0.5 2.0.6: Simple Qt5 or GTK+3 interface for capturing and viewing video from v4l2 devices
 media-video/gxine 0.5.907-r1: GTK+ Front-End for libxine
 media-video/hasciicam 1.1.1: a webcam software displaying ascii art using aalib
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
@@ -10025,7 +10026,7 @@ sys-block/tw_cli 10.2.2.1-r1: 3ware SATA/PATA/SAS RAID controller Command Line I
 sys-block/vblade 20: vblade exports a block device using AoE
 sys-block/viaideinfo 0.5: Query VIA IDE controllers for various information
 sys-block/zram-init 7.1-r1: Scripts to support compressed swap devices or ramdisks with zram
-sys-boot/efibootmgr 14 15: User-space application to modify the EFI boot manager
+sys-boot/efibootmgr 14 15 16: User-space application to modify the EFI boot manager
 sys-boot/gnu-efi 3.0.3: Library for build EFI Applications
 sys-boot/grub 2.02-r1: GNU GRUB boot loader
 sys-boot/lilo 22.8-r2 24.0-r1: Standard Linux boot loader
@@ -10238,7 +10239,7 @@ sys-libs/compiler-rt-sanitizers 4.0.1 5.0.2 6.0.1: Compiler runtime libraries fo
 sys-libs/cracklib 2.9.6-r1: Password Checking Library
 sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r2 5.3.28-r2: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.43.6 1.43.9 1.44.5: e2fsprogs libraries (common error and subsystem)
-sys-libs/efivar 30 31: Tools and library to manipulate EFI variables
+sys-libs/efivar 30 31 37: Tools and library to manipulate EFI variables
 sys-libs/freeipmi 1.4.8: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2: Standard GNU database libraries
@@ -10600,7 +10601,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-client/chromium 71.0.3578.80: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser
-www-client/epiphany 3.26.7: GNOME webbrowser based on Webkit
+www-client/epiphany 3.26.7 3.30.2: GNOME webbrowser based on Webkit
 www-client/falkon 3.0.1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 60.4.0: Firefox Web Browser
