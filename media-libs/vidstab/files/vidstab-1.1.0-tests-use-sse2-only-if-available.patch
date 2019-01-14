@@ -1,0 +1,33 @@
+From 80932fbd1e77d397a7b503697c78fd888ede396a Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Mon, 14 Jan 2019 11:08:30 -0500
+Subject: [PATCH] In tests, use sse2 only if it is available
+
+Use FindSSE and SSE2_FOUND in the same way as done in the main CMakeLists.txt in commit 0f41dfb89ba3fa7d20f45cbeb02cc1ff37c89c27
+---
+ tests/CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 9597141..6812916 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -7,6 +7,8 @@ project (vid.stab)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/../CMakeModules/")
+ 
++include (FindSSE)
++
+ option(USE_OMP "use parallelization use OMP" ON)
+ 
+ # Default to debug builds if no explicit build type specified.
+@@ -23,7 +25,9 @@ else()
+ add_definitions( -DDISABLE_ORC)
+ endif()
+ 
++if(SSE2_FOUND)
+ add_definitions( -DUSE_SSE2 -msse2 -ffast-math -fno-show-column ) # -DUSE_SSE2_ASM
++endif()
+ 
+ if(USE_OMP)
+ add_definitions(-fopenmp -DUSE_OMP)
