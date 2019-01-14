@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit base eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_P="${PN}_${PV}"
 
@@ -14,14 +14,17 @@ SRC_URI="http://mhddfs.uvw.ru/downloads/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64"
+
 IUSE="l10n_ru suid"
 
-RDEPEND=">=sys-fs/fuse-2.7.0"
-DEPEND="${RDEPEND}
-	dev-libs/uthash"
+RDEPEND="sys-fs/fuse:0"
+DEPEND="${RDEPEND}"
 
-DOCS="ChangeLog README"
-PATCHES=( "${FILESDIR}/${PN}-respect-compiler-vars.patch" )
+DOCS=( ChangeLog README )
+PATCHES=(
+	"${FILESDIR}/${PN}-respect-compiler-vars.patch"
+	"${FILESDIR}/${P}-segfault-fix.patch"
+)
 
 src_compile() {
 	emake CC="$(tc-getCC)"
@@ -30,7 +33,7 @@ src_compile() {
 src_install() {
 	dobin mhddfs
 	doman mhddfs.1
-	dodoc ${DOCS}
+	einstalldocs
 	use l10n_ru && dodoc README.ru.UTF-8
 	use suid && fperms u+s /usr/bin/${PN}
 }
