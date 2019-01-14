@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ RDEPEND="
 DEPEND="
 	>=virtual/jdk-1.8
 	dev-java/ant-core
-	dev-java/maven-bin:3.5"
+	dev-java/maven-bin:3.6"
 
 S="${WORKDIR}/clojure-clojure-e5a8cfa"
 
