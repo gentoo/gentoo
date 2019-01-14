@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 COMMIT=72cfbd7664f21fcc0e62b869a6b01bf73eb5e7da
 CMAKE_MAKEFILE_GENERATOR="ninja"
 PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 inherit check-reqs cmake-utils flag-o-matic python-any-r1 qmake-utils ruby-single toolchain-funcs
 
@@ -125,7 +125,9 @@ src_configure() {
 		-DENABLE_X11_TARGET=$(usex X)
 	)
 
-	if has_version "virtual/rubygems[ruby_targets_ruby25]"; then
+	if has_version "virtual/rubygems[ruby_targets_ruby26]"; then
+		mycmakeargs+=( -DRUBY_EXECUTABLE=$(type -P ruby26) )
+	elif has_version "virtual/rubygems[ruby_targets_ruby25]"; then
 		mycmakeargs+=( -DRUBY_EXECUTABLE=$(type -P ruby25) )
 	elif has_version "virtual/rubygems[ruby_targets_ruby24]"; then
 		mycmakeargs+=( -DRUBY_EXECUTABLE=$(type -P ruby24) )
