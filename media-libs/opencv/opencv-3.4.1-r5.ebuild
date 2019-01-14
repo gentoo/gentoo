@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -230,6 +230,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-compilation-C-mode.patch" # https://bugs.gentoo.org/656530
 	"${FILESDIR}/${P}-python-lib-suffix-hack.patch"
 	"${FILESDIR}/${P}-cuda-add-relaxed-constexpr.patch"
+	"${FILESDIR}/${P}-remove-git-autodetect.patch"
 )
 
 pkg_pretend() {
