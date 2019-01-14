@@ -28,7 +28,7 @@ app-accessibility/sphinxbase 0.8: Support library required by the Sphinx Speech 
 app-accessibility/yasr 0.6.9-r1: General-purpose console screen reader
 app-admin/abrt 2.0.12-r2 2.10.10-r2: Automatic bug detection and reporting tool
 app-admin/analog 6.0-r4: A webserver log analyzer
-app-admin/ansible 2.5.13 2.6.10 2.7.4: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.5.14 2.6.11 2.7.5: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.34 2.4.27 2.4.34: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r7: Another Password Generator
@@ -4612,8 +4612,8 @@ dev-php/sebastian-version 2.0.1: Helps with managing the version number of Git-h
 dev-php/smarty 3.1.30: A template engine for PHP
 dev-php/symfony-yaml 2.1.0: Symfony YAML Component
 dev-php/webmozart-assert 1.2.0: Assertions to validate method input/output with nice error messages
-dev-php/xdebug 2.4.1 2.5.3: A PHP debugging and profiling extension
-dev-php/xdebug-client 2.4.1 2.5.3: Xdebug client for the Common Debugger Protocol (DBGP)
+dev-php/xdebug 2.5.3: A PHP debugging and profiling extension
+dev-php/xdebug-client 2.5.3: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-python/3to2 1.1.1 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/Babel 2.5.0 2.5.3 2.5.3-r1: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.4 3.4.7: A pure-Python memory-efficient packed representation for bit arrays
