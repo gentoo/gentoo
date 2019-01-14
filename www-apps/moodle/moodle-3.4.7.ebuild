@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit versionator webapp
 
@@ -41,7 +41,7 @@ REQUIRED_USE="|| ( ${DB_TYPES} )"
 # and the moodle documentation for other possibilities.
 DEPEND=""
 RDEPEND="
-	>=dev-lang/php-5.4.4[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
+	>=dev-lang/php-7.0[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
 	virtual/httpd-php
 	virtual/cron"
 
@@ -86,6 +86,8 @@ src_prepare() {
 	if [[ ${DB_COUNT} -eq 1 ]] ; then
 		sed -i -e "s|mydb|${MYDB}|" config.php
 	fi
+
+	eapply_user
 }
 
 src_install() {
