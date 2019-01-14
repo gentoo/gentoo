@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk?"
 CMAKE_MAKEFILE_GENERATOR=ninja
-COMMIT=d857c1a3430acf207cdde2512db6822c45e98732
+COMMIT=6326f2af85935842fa7a93eb8f86bd2ae698245e
 inherit cmake-utils desktop flag-o-matic gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
@@ -94,6 +94,7 @@ DEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.3-docdir.patch
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
+	"${FILESDIR}"/${P}-poppler-0.73.patch
 )
 
 S="${WORKDIR}"/${PN}-${COMMIT}
