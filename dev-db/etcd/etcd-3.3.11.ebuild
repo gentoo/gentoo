@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,21 +6,29 @@ EAPI=6
 inherit user systemd golang-vcs-snapshot
 
 KEYWORDS="~amd64"
-EGO_PN="github.com/coreos/etcd"
+EGO_PN="github.com/etcd-io/etcd"
+GIT_COMMIT="2cf9e51"
 MY_PV="${PV/_rc/-rc.}"
 DESCRIPTION="Highly-available key value store for shared configuration and service discovery"
-HOMEPAGE="https://github.com/coreos/etcd"
+HOMEPAGE="https://github.com/etcd-io/etcd"
 SRC_URI="https://${EGO_PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="doc +server"
-DEPEND=">=dev-lang/go-1.9:="
+DEPEND=">=dev-lang/go-1.10:="
 RDEPEND="!dev-db/etcdctl"
 
 src_prepare() {
 	default
-	sed -e 's|GIT_SHA=.*|GIT_SHA=v${PV}|'\
+	sed -e "s|GIT_SHA=.*|GIT_SHA=${GIT_COMMIT}|"\
 		-i "${S}"/src/${EGO_PN}/build || die
+	sed -e 's:\(for p in \)shellcheck :\1 :' \
+		-e 's:^			gofmt \\$:\\:' \
+		-e 's:^			govet \\$:\\:' \
+		-i "${S}"/src/${EGO_PN}/test || die
+	# missing ... in args forwarded to print-like function
+	sed -e 's:l\.Logger\.Panic(v):l.Logger.Panic(v...):' \
+		-i "${S}"/src/${EGO_PN}/raft/logger.go || die
 }
 
 pkg_setup() {
@@ -33,7 +41,7 @@ pkg_setup() {
 src_compile() {
 	export GOPATH=${S}
 	pushd src/${EGO_PN} || die
-	./build || die
+	GO_BUILD_FLAGS=-v ./build || die
 	popd || die
 }
 

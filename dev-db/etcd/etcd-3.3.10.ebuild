@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit user systemd golang-vcs-snapshot
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 EGO_PN="github.com/coreos/etcd"
 GIT_COMMIT="27fc7e2"
 MY_PV="${PV/_rc/-rc.}"
