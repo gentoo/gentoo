@@ -32,6 +32,9 @@ S="${WORKDIR}/RHash-${PV}"
 
 src_prepare() {
 	default
+	# fix Solaris detection, upstream:
+	# https://github.com/rhash/RHash/pull/81
+	sed -i -e 's/sunos)/solaris2.*)/' configure || die
 	multilib_copy_sources
 }
 
