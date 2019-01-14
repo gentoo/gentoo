@@ -4612,8 +4612,8 @@ dev-php/sebastian-version 2.0.1: Helps with managing the version number of Git-h
 dev-php/smarty 3.1.30: A template engine for PHP
 dev-php/symfony-yaml 2.1.0: Symfony YAML Component
 dev-php/webmozart-assert 1.2.0: Assertions to validate method input/output with nice error messages
-dev-php/xdebug 2.5.3: A PHP debugging and profiling extension
-dev-php/xdebug-client 2.5.3: Xdebug client for the Common Debugger Protocol (DBGP)
+dev-php/xdebug 2.5.3 2.6.1: A PHP debugging and profiling extension
+dev-php/xdebug-client 2.5.3 2.6.1: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-python/3to2 1.1.1 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/Babel 2.5.0 2.5.3 2.5.3-r1: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.4 3.4.7: A pure-Python memory-efficient packed representation for bit arrays
@@ -6380,7 +6380,7 @@ dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50: quilt patch manager
 dev-util/ragel 6.7-r1 6.10: Compiles finite state machines from regular languages into executable code
 dev-util/rbtools 0.7.10: Command line tools for use with Review Board
-dev-util/re2c 0.13.5-r1 0.16 1.0.3: tool for generating C-based recognizers from regular expressions
+dev-util/re2c 0.13.5-r1 0.16 1.0.3 1.1.1: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.6.1 2.6.4: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16: A utility for solving diff/patch rejects
@@ -7396,7 +7396,7 @@ media-gfx/jpegoptim 1.4.3: Utility to optimize JPEG files
 media-gfx/jpegpixi 1.1.1: almost lossless JPEG pixel interpolator, for correcting digital camera defects
 media-gfx/kgraphviewer 2.4.3: Graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.4: Tool for indexing, searching, and viewing images
-media-gfx/krita 4.1.5 4.1.7-r1: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 4.1.7-r1: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/libimagequant 2.11.7: Palette quantization library that powers pngquant and other PNG optimizers
 media-gfx/librecad 2.1.3-r4: Generic 2D CAD program
 media-gfx/llgal 0.13.17-r2: Command-line static web gallery generator
@@ -7409,7 +7409,7 @@ media-gfx/mkgallery 1.1: Creates thumbnails and a HTML index file for a director
 media-gfx/monica 3.7: Monica is a Monitor Calibration Tool
 media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 1.1.0-r2: fast and easy graphics application for digital painters
-media-gfx/nomacs 3.8.1 3.10.2: Qt-based image viewer
+media-gfx/nomacs 3.10.2: Qt-based image viewer
 media-gfx/nvidia-cg-toolkit 3.1.0013-r3: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r3: A set of cuda-enabled texture tools and compressors
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
@@ -8284,7 +8284,7 @@ media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and 
 media-video/gpac 0.6.1-r2 0.7.1-r1: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
 media-video/griffith 0.13-r2: Movie collection manager
 media-video/gtk-recordmydesktop 0.3.8-r3: GTK+ interface for RecordMyDesktop
-media-video/guvcview 2.0.5 2.0.6: Simple Qt5 or GTK+3 interface for capturing and viewing video from v4l2 devices
+media-video/guvcview 2.0.6: Simple Qt5 or GTK+3 interface for capturing and viewing video from v4l2 devices
 media-video/gxine 0.5.907-r1: GTK+ Front-End for libxine
 media-video/hasciicam 1.1.1: a webcam software displaying ascii art using aalib
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
