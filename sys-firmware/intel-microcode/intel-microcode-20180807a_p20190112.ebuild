@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -34,17 +34,15 @@ S=${WORKDIR}
 # Blacklist bad microcode here.
 # 0x000406f1 aka 06-4f-01 aka CPUID 406F1 require newer microcode loader
 MICROCODE_BLACKLIST_DEFAULT="-s !0x000406f1"
-MICROCODE_BLACKLIST="${MICROCODE_BLACKLIST:=${MICROCODE_BLACKLIST_DEFAULT}}"
 
 # In case we want to set some defaults ...
 MICROCODE_SIGNATURES_DEFAULT=""
 
-# Advanced users only:
-# merge with:
+# Advanced users only!
+# Set MIRCOCODE_SIGNATURES to merge with:
 # only current CPU: MICROCODE_SIGNATURES="-S"
 # only specific CPU: MICROCODE_SIGNATURES="-s 0x00000f4a -s 0x00010676"
 # exclude specific CPU: MICROCODE_SIGNATURES="-s !0x00000686"
-MICROCODE_SIGNATURES="${MICROCODE_SIGNATURES:=${MICROCODE_SIGNATURES_DEFAULT}}"
 
 pkg_pretend() {
 	use initramfs && mount-boot_pkg_pretend
@@ -73,6 +71,10 @@ src_install() {
 		MICROCODE_SRC+=( "${S}"/intel-microcode-collection-${COLLECTION_SNAPSHOT} )
 	fi
 
+	# These will carry into pkg_preinst via env saving.
+	: ${MICROCODE_BLACKLIST=${MICROCODE_BLACKLIST_DEFAULT}}
+	: ${MICROCODE_SIGNATURES=${MICROCODE_SIGNATUES_DEFAULT}}
+
 	opts=(
 		${MICROCODE_BLACKLIST}
 		${MICROCODE_SIGNATURES}
@@ -91,10 +93,9 @@ src_install() {
 	# The earlyfw cpio needs to be in /boot because it must be loaded before
 	# rootfs is mounted.
 	use initramfs && dodir /boot && opts+=( --write-earlyfw="${ED%/}"/boot/intel-uc.img )
-	# split location (we use a temporary location so that we are able
-	# to re-run iucode_tool in pkg_preinst; use keepdir instead of dodir to carry
-	# this folder to pkg_preinst to avoid an error even if no microcode was selected):
-	keepdir /tmp/intel-ucode && opts+=( --write-firmware="${ED%/}"/tmp/intel-ucode )
+
+	keepdir /lib/firmware/intel-ucode
+	opts+=( --write-firmware="${ED%/}/lib/firmware/intel-ucode" )
 
 	iucode_tool \
 		"${opts[@]}" \
@@ -102,35 +103,22 @@ src_install() {
 		|| die "iucode_tool ${opts[@]} ${MICROCODE_SRC[@]}"
 
 	dodoc releasenote
-
-	# Record how package was created so we can show this in build.log
-	# even for binary packages.
-	if [[ "${MICROCODE_BLACKLIST}" != "${MICROCODE_BLACKLIST_DEFAULT}" ]]; then
-		echo ${MICROCODE_BLACKLIST} > "${ED%/}/tmp/.blacklist_altered" || die "Failed to add marker that MICROCODE_BLACKLIST variable was used"
-	fi
-
-	if [[ "${MICROCODE_SIGNATURES}" != "${MICROCODE_SIGNATURES_DEFAULT}" ]]; then
-		echo ${MICROCODE_SIGNATURES} > "${ED%/}/tmp/.signatures_altered" || die "Failed to add marker that MICROCODE_SIGNATURES variable was used"
-	fi
 }
 
 pkg_preinst() {
-	if [[ -f "${ED%/}/tmp/.blacklist_altered" ]]; then
-		local _recorded_MICROCODE_BLACKLIST_value=$(cat "${ED%/}/tmp/.blacklist_altered")
-		ewarn "MICROCODE_BLACKLIST is set to \"${_recorded_MICROCODE_BLACKLIST_value}\" instead of default \"${MICROCODE_BLACKLIST_DEFAULT}\". You are on your own!"
+	if [[ ${MICROCODE_BLACKLIST} != ${MICROCODE_BLACKLIST_DEFAULT} ]]; then
+		ewarn "MICROCODE_BLACKLIST is set to \"${MICROCODE_BLACKLIST}\" instead of default \"${MICROCODE_BLACKLIST_DEFAULT}\". You are on your own!"
 	fi
 
-	if [[ -f "${ED%/}/tmp/.signatures_altered" ]]; then
-		local _recorded_MICROCODE_SIGNATURES_value=$(cat "${ED%/}/tmp/.signatures_altered")
+	if [[ ${MICROCODE_SIGNATURES} != ${MICROCODE_SIGNATURES_DEFAULT} ]]; then
 		ewarn "Package was created using advanced options:"
-		ewarn "MICROCODE_SIGNATURES is set to \"${_recorded_MICROCODE_SIGNATURES_value}\" instead of default \"${MICROCODE_SIGNATURES_DEFAULT}\"!"
+		ewarn "MICROCODE_SIGNATURES is set to \"${MICROCODE_SIGNATURES}\" instead of default \"${MICROCODE_SIGNATURES_DEFAULT}\"!"
 	fi
 
 	# Make sure /boot is available if needed.
 	use initramfs && mount-boot_pkg_preinst
 
 	local _initramfs_file="${ED%/}/boot/intel-uc.img"
-	local _ucode_dir="${ED%/}/lib/firmware/intel-ucode"
 
 	if use hostonly; then
 		# While this output looks redundant we do this check to detect
@@ -159,20 +147,22 @@ pkg_preinst() {
 		# The earlyfw cpio needs to be in /boot because it must be loaded before
 		# rootfs is mounted.
 		use initramfs && opts+=( --write-earlyfw=${_initramfs_file} )
-		# split location:
-		use split-ucode && dodir /lib/firmware/intel-ucode && opts+=( --write-firmware=${_ucode_dir} )
 
-		iucode_tool \
-			"${opts[@]}" \
-			"${ED%/}"/tmp/intel-ucode \
-			|| die "iucode_tool ${opts[@]} ${ED%/}/tmp/intel-ucode"
-
-	else
 		if use split-ucode; then
-			# Temporary /tmp/intel-ucode will become final /lib/firmware/intel-ucode ...
-			dodir /lib/firmware
-			mv "${ED%/}/tmp/intel-ucode" "${ED%/}/lib/firmware" || die "Failed to install splitted ucodes!"
+			opts+=( --write-firmware="${ED%/}/lib/firmware/intel-ucode" )
 		fi
+
+		opts+=( "${ED%/}"/lib/firmware/intel-ucode-temp )
+
+		mv "${ED%/}"/lib/firmware/intel-ucode{,-temp} || die
+		keepdir /lib/firmware/intel-ucode
+
+		iucode_tool "${opts[@]}" || die "iucode_tool ${opts[@]}"
+
+		rm -r "${ED%/}"/lib/firmware/intel-ucode-temp || die
+
+	elif ! use split-ucode; then # hostonly disabled
+		rm -r "${ED%/}"/lib/firmware/intel-ucode || die
 	fi
 
 	# Because it is possible that this package will install not one single file
@@ -183,7 +173,7 @@ pkg_preinst() {
 	if use initramfs && [[ -s "${_initramfs_file}" ]]; then
 		_has_installed_something="yes"
 	elif use split-ucode; then
-		_has_installed_something=$(find "${_ucode_dir}" -maxdepth 0 -not -empty -exec echo yes \;)
+		_has_installed_something=$(find "${ED%/}/lib/firmware/intel-ucode" -maxdepth 0 -not -empty -exec echo yes \;)
 	fi
 
 	if use hostonly && [[ -n "${_has_installed_something}" ]]; then
@@ -193,7 +183,7 @@ pkg_preinst() {
 		elog ""
 	elif [[ -z "${_has_installed_something}" ]]; then
 		ewarn "WARNING:"
-		if [[ -f "${ED%/}/tmp/.signatures_altered" ]]; then
+		if [[ ${MICROCODE_SIGNATURES} != ${MICROCODE_SIGNATURES_DEFAULT} ]]; then
 			ewarn "No ucode was installed! Because you have created this package"
 			ewarn "using MICROCODE_SIGNATURES variable please double check if you"
 			ewarn "have an invalid select."
@@ -213,10 +203,6 @@ pkg_preinst() {
 			ewarn ""
 		fi
 	fi
-
-	# Cleanup any temporary leftovers so that we don't merge any
-	# unneeded files on disk.
-	rm -r "${ED%/}/tmp" || die "Failed to cleanup '${ED%/}/tmp'"
 }
 
 pkg_prerm() {
