@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Bernard Cafarelli <voyageur@gentoo.org> (14 Jan 2019)
+# Requires dev-php/pecl-imagick which is not keyworded on arm
+www-apps/nextcloud imagemagick
+
 # Corentin Pazdera <nado@troglodyte.be> (28 Dec 2018)
 # Requires virtual/pypy which isn't keyworded for ARM.
 www-servers/uwsgi pypy
