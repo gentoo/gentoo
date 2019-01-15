@@ -55,6 +55,7 @@ HTML_DOCS=()
 
 PATCHES=(
 	"${FILESDIR}/${P}-build.patch"
+	"${FILESDIR}/${P}-libressl.patch"
 )
 
 pkg_setup() {
