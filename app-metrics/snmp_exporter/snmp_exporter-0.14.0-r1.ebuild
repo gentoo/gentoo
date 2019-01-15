@@ -33,9 +33,9 @@ src_prepare() {
 
 src_compile() {
 	pushd src/${EGO_PN} || die
-	GO111MODULE=on GOPATH="${S}" promu build -v || die
+	GO111MODULE=on GOPATH="${S}" GOCACHE="${T}"/go-cache promu build -v || die
 	pushd generator || die
-	GO111MODULE=on GOPATH="${S}" go build -mod=vendor -o ../bin/generator . || die
+	GO111MODULE=on GOPATH="${S}" GOCACHE="${T}"/go-cache go build -mod=vendor -o ../bin/generator . || die
 	popd || die
 }
 
