@@ -1,0 +1,42 @@
+From 742b64b7a74eabd67344ef1cc260427dc402588f Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Thu, 7 Jun 2018 23:47:48 +0200
+Subject: [PATCH 5/5] Make gst-inspect calls optional at build-time
+
+Crashes on Gentoo due to plugins trying to access dri nodes which are sandboxed
+---
+ meson_options.txt       | 1 +
+ src/backend/meson.build | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/meson_options.txt b/meson_options.txt
+index 6e056952..631b8cca 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -32,3 +32,4 @@ option('enable-nautilus', type: 'combo', choices: ['yes', 'no', 'auto'], value:
+ option('with-nautilusdir', type: 'string', value: '', description: 'Installation path for Nautilus extension')
+ option('enable-gtk-doc', type: 'boolean', value: false, description: 'use gtk-doc to build documentation')
+ option('enable-introspection', type: 'combo', choices: ['yes', 'no', 'auto'], value: 'auto', description: 'Enable GObject Introspection (depends on GObject)')
++option('gst-inspect', type: 'boolean', value: true, description: 'build-time test of available gstreamer plugins')
+diff --git a/src/backend/meson.build b/src/backend/meson.build
+index 28c8e123..55037a6a 100644
+--- a/src/backend/meson.build
++++ b/src/backend/meson.build
+@@ -1,5 +1,6 @@
+ backend_inc = include_directories('.')
+ 
++if get_option('gst-inspect')
+ gst_inspect = find_program(
+   'gst-inspect-1.0',
+   join_paths(gst_dep.get_pkgconfig_variable('toolsdir'), 'gst-inspect-1.0'),
+@@ -31,6 +32,7 @@ foreach plugin: gst_good_plugins
+   assert(r.returncode() == 0,
+          'Cannot find required GStreamer-1.0 plugin "' + plugin + '". It should be part of gst-plugins-good. Please install it.')
+ endforeach
++endif
+ 
+ sources = files(
+   'bacon-time-label.c',
+-- 
+2.17.0
+
