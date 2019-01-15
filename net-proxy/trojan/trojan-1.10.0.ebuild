@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7} )
 
-inherit cmake-utils python-any-r1
+inherit cmake-utils python-any-r1 systemd
 
 DESCRIPTION="An unidentifiable mechanism that helps you bypass GFW"
 HOMEPAGE="https://github.com/trojan-gfw/${PN}"
@@ -31,6 +31,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_MYSQL=$(usex mysql)
 		-DSYSTEMD_SERVICE=ON
+		-DSYSTEMD_SERVICE_PATH=$(systemd_get_systemunitdir)
 		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
 	)
 	cmake-utils_src_configure
