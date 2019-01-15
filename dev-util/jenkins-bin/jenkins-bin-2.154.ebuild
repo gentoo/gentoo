@@ -42,7 +42,7 @@ src_install() {
 
 	systemd_newunit "${FILESDIR}"/${PN}.service jenkins.service
 	insinto /etc/jenkins/
-	newins "${FILESDIR}"/${PN}-systemd.confd jenkins.conf
+	newins "${FILESDIR}"/${PN}-systemd.conf jenkins.conf
 
 	fowners jenkins:jenkins /var/log/jenkins ${JENKINS_DIR} ${JENKINS_DIR}/home ${JENKINS_DIR}/backup
 }
