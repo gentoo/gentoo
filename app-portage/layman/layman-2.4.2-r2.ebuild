@@ -90,7 +90,8 @@ python_install_all() {
 	doins etc/layman.cfg
 
 	doman doc/layman.8
-	dohtml doc/layman.8.html
+	docinto html
+	dodoc doc/layman.8.html
 
 	keepdir /var/lib/layman
 	keepdir /etc/layman/overlays
