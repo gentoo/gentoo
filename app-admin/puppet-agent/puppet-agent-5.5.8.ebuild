@@ -1,23 +1,24 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils systemd unpacker user
 
-DESCRIPTION="general puppet client utils along with hiera and facter"
+DESCRIPTION="general puppet client utils along with mcollective hiera and facter"
 HOMEPAGE="https://puppetlabs.com/"
-SRC_BASE="http://apt.puppetlabs.com/pool/stretch/puppet/${PN:0:1}/${PN}/${PN}_${PV}-1stretch"
+SRC_BASE="http://apt.puppetlabs.com/pool/stretch/puppet5/${PN:0:1}/${PN}/${PN}_${PV}-1stretch"
 SRC_URI="
 	amd64? ( ${SRC_BASE}_amd64.deb )
 	x86?   ( ${SRC_BASE}_i386.deb )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="puppetdb selinux"
 RESTRICT="strip"
 
 CDEPEND="!app-admin/augeas
+	!app-admin/mcollective
 	!app-admin/puppet
 	!dev-ruby/hiera
 	!dev-ruby/facter
@@ -47,6 +48,7 @@ pkg_setup() {
 src_install() {
 	# conf.d
 	doconfd etc/default/puppet
+	doconfd etc/default/mcollective
 	doconfd etc/default/pxp-agent
 	# logrotate.d
 	insinto /etc/logrotate.d
@@ -64,7 +66,9 @@ src_install() {
 	fperms 0750 /opt/puppetlabs/puppet/cache
 	# init
 	newinitd "${FILESDIR}/puppet.initd" puppet
+	newinitd "${FILESDIR}/mcollective.initd" mcollective
 	systemd_dounit lib/systemd/system/puppet.service
+	systemd_dounit lib/systemd/system/mcollective.service
 	systemd_dounit lib/systemd/system/pxp-agent.service
 	systemd_newtmpfilesd "${FILESDIR}/puppet-agent.conf.tmpfilesd" puppet-agent.conf
 	# symlinks
@@ -72,7 +76,9 @@ src_install() {
 	chmod 0755 "${D}//opt/puppetlabs/puppet/lib/virt-what/virt-what-cpuid-helper"
 	dosym ../../opt/puppetlabs/bin/facter /usr/bin/facter
 	dosym ../../opt/puppetlabs/bin/hiera /usr/bin/hiera
+	dosym ../../opt/puppetlabs/bin/mco /usr/bin/mco
 	dosym ../../opt/puppetlabs/bin/puppet /usr/bin/puppet
+	dosym ../../opt/puppetlabs/puppet/bin/mcollectived /usr/sbin/mcollectived
 	dosym ../../opt/puppetlabs/puppet/bin/virt-what /usr/bin/virt-what
 	dosym ../../opt/puppetlabs/puppet/bin/augparse /usr/bin/augparse
 	dosym ../../opt/puppetlabs/puppet/bin/augtool /usr/bin/augtool
