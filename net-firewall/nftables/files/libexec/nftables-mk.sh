@@ -13,7 +13,8 @@ main() {
 			nft ${SAVE_OPTIONS} list ruleset
 		;;
 		"load")
-			( echo "flush ruleset;"; cat "${NFTABLES_SAVE}" ) | nft -f -
+			# We use an include because cat fails with long rulesets see #675188
+			printf 'flush ruleset\ninclude "%s"\n' "${NFTABLES_SAVE}" | nft -f -
 		;;
 		"panic")
 			panic hard | nft -f -
@@ -25,8 +26,7 @@ main() {
 			local tmp_save="${NFTABLES_SAVE}.tmp"
 			umask 600;
 			(
-				echo "#!/sbin/nft -f"
-				echo "flush ruleset;"
+				printf '#!/sbin/nft -f\nflush ruleset\n'
 				nft ${SAVE_OPTIONS} list ruleset
 			) > "$tmp_save" && mv ${tmp_save} ${NFTABLES_SAVE}
 		;;
@@ -37,6 +37,7 @@ panic() {
 	local erule;
 	[ "$1" = soft ] && erule="ct state established,related accept;" || erule="";
 	cat <<EOF
+flush ruleset
 table inet filter {
 	chain input {
 		type filter hook input priority 0;
