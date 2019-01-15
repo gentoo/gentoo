@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 	)
 	pgm? ( virtual/pkgconfig )"
 
-PATCHES=()
+PATCHES=( "${FILESDIR}"/${P}-fix-test_security_zap.patch )
 
 src_prepare() {
 	sed \
