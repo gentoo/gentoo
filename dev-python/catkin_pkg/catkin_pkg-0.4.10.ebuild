@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
 
 SCM=""
@@ -32,18 +32,20 @@ RDEPEND="
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
+BDEPEND="
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/flake8[${PYTHON_USEDEP}]
 	)
 "
+DEPEND="${RDEPEND} ${BDEPEND}
+	test? (
+		dev-python/flake8[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
+	)"
 RDEPEND="${RDEPEND}
 	!<dev-util/catkin-0.7.14"
 PATCHES=(
 	"${FILESDIR}/catkin_prefix2.patch"
-	"${FILESDIR}/argparse.patch"
 	"${FILESDIR}/ros_packages.patch"
 	"${FILESDIR}/infinite_loop3.patch"
 )
