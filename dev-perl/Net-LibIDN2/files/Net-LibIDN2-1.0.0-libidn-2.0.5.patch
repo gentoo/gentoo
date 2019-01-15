@@ -1,0 +1,98 @@
+From 1fb29989acde21148e5c36b3bdccbf2a4a88059c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Thu, 31 May 2018 15:02:02 +0200
+Subject: [PATCH] Adapt to libidn-2.0.5
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+libidn-2.0.5 enabled non-transitional TR46 by default. This caused
+a test failure. This patch adds IDN2_NO_TR46 flag, document the
+change and adapts the test.
+
+CPAN RT#125440
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ lib/Net/LibIDN2.pm | 11 +++++++++--
+ lib/Net/LibIDN2.xs |  3 +++
+ t/001_basic.t      |  6 +++++-
+ 3 files changed, 17 insertions(+), 3 deletions(-)
+
+diff --git a/lib/Net/LibIDN2.pm b/lib/Net/LibIDN2.pm
+index b27aaa4..c6ca3bd 100644
+--- a/lib/Net/LibIDN2.pm
++++ b/lib/Net/LibIDN2.pm
+@@ -32,6 +32,7 @@ our %EXPORT_TAGS = ( 'all' => [ qw(
+ 	IDN2_NONTRANSITIONAL
+ 	IDN2_ALLOW_UNASSIGNED
+ 	IDN2_USE_STD3_ASCII_RULES
++	IDN2_NO_TR46
+ ) ] );
+ 
+ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+@@ -50,6 +51,7 @@ our @EXPORT = qw(
+ 	IDN2_NONTRANSITIONAL
+ 	IDN2_ALLOW_UNASSIGNED
+ 	IDN2_USE_STD3_ASCII_RULES
++	IDN2_NO_TR46
+ );
+ our $VERSION = '1.00';
+ 
+@@ -102,8 +104,10 @@ Pass B<IDN2_ALABEL_ROUNDTRIP> in flags to convert any input A-labels
+ to U-labels and perform additional testing (not yet implemented).
+ Pass IDN2_TRANSITIONAL to enable Unicode
+ TR46 transitional processing, and IDN2_NONTRANSITIONAL to enable Unicode TR46
+-non-transitional processing.  Multiple flags may be specified
+-by binary or:ing them together, for example B<IDN2_NFC_INPUT> | B<IDN2_ALABEL_ROUNDTRIP>.
++non-transitional processing. Pass IDN2_NO_TR46 (available since Libidn 2.0.5)
++to disable any TR46 transitional or non-transitional processing. Multiple
++flags may be specified by binary or:ing them together, for example
++B<IDN2_NFC_INPUT> | B<IDN2_ALABEL_ROUNDTRIP>.
+ 
+ If linked to library GNU Libidn version > 2.0.3: IDN2_USE_STD3_ASCII_RULES disabled by default.
+ Previously we were eliminating non-STD3 characters from domain strings such as
+@@ -112,6 +116,9 @@ That was an unexpected regression for applications switching from libidn
+ and thus it is no longer applied by default. Use IDN2_USE_STD3_ASCII_RULES
+ to enable that behavior again.
+ 
++If linked to library GNU Libidn version >= 2.0.5: IDNA2008 behavior amended by TR46
++(non-transitional) is default.
++
+ On error, returns undef. If a scalar variable is provided in I<$rc>, 
+ returns the internal libidn2 C library result code as well.
+ 
+diff --git a/lib/Net/LibIDN2.xs b/lib/Net/LibIDN2.xs
+index 5b2f7c3..027285a 100644
+--- a/lib/Net/LibIDN2.xs
++++ b/lib/Net/LibIDN2.xs
+@@ -25,6 +25,9 @@ BOOT:
+ 	newCONSTSUB(stash, "IDN2_NONTRANSITIONAL", newSViv(IDN2_NONTRANSITIONAL));
+ 	newCONSTSUB(stash, "IDN2_ALLOW_UNASSIGNED", newSViv(IDN2_ALLOW_UNASSIGNED));
+ 	newCONSTSUB(stash, "IDN2_USE_STD3_ASCII_RULES", newSViv(IDN2_USE_STD3_ASCII_RULES));
++#if IDN2_VERSION_NUMBER >= 0x02000005
++	newCONSTSUB(stash, "IDN2_NO_TR46", newSViv(IDN2_NO_TR46));
++#endif
+ 
+ 
+ const char *
+diff --git a/t/001_basic.t b/t/001_basic.t
+index 3171478..ada1091 100644
+--- a/t/001_basic.t
++++ b/t/001_basic.t
+@@ -76,7 +76,11 @@ my $muesli_dot_de_punycode = "xn--mli-5ka8l.de";
+ 	my $rc = 0;
+ 	my $result = Net::LibIDN2::idn2_lookup_u8(
+ 		"\x65\x78\x61\x6d\x70\x6c\x65\x2e\xe1\x84\x80\xe1\x85\xa1\xe1\x86\xa8",
+-		0,
++		(IDN2_VERSION_MAJOR > 2 ||
++			(IDN2_VERSION_MAJOR == 2 && (IDN2_VERSION_MINOR > 0 ||
++				IDN2_VERSION_MINOR == 0 && IDN2_VERSION_PATCH >= 5)
++			)
++		) ?  IDN2_NO_TR46 : 0,
+ 		$rc);
+ 
+ 	is(Net::LibIDN2::idn2_strerror_name($rc), "IDN2_NOT_NFC");
+-- 
+2.14.4
+

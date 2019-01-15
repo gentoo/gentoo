@@ -21,3 +21,5 @@ DEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.10.0
 	)
 "
+
+PATCHES=( "${FILESDIR}/${P}"-libidn-2.0.5.patch )
