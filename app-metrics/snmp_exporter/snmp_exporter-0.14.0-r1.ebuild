@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit user golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/prometheus/snmp_exporter"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
-SNMP_EXPORTER_COMMIT="e459171"
+SNMP_EXPORTER_COMMIT="da73490"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
@@ -17,7 +17,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-util/promu"
+DEPEND=">=dev-lang/go-1.11
+	dev-util/promu
+	net-analyzer/net-snmp"
 
 pkg_setup() {
 	enewgroup ${PN}
@@ -31,15 +33,16 @@ src_prepare() {
 
 src_compile() {
 	pushd src/${EGO_PN} || die
-	mkdir -p bin || die
-	GOPATH="${S}" promu build -v --prefix bin || die
+	GO111MODULE=on GOPATH="${S}" promu build -v || die
+	pushd generator || die
+	GO111MODULE=on GOPATH="${S}" go build -mod=vendor -o ../bin/generator . || die
 	popd || die
 }
 
 src_install() {
 	pushd src/${EGO_PN} || die
-	dobin bin/snmp_exporter
-	dodoc {README,CONTRIBUTING}.md
+	dobin bin/*
+	dodoc {README,CONTRIBUTING}.md generator/{FORMAT,README}.md generator/generator.yml
 	insinto /etc/snmp_exporter
 	newins snmp.yml snmp.yml.example
 	popd || die
@@ -47,4 +50,6 @@ src_install() {
 	fowners ${PN}:${PN} /var/lib/snmp_exporter /var/log/snmp_exporter
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/${PN}.logrotated" "${PN}"
 }
