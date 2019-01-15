@@ -12,7 +12,7 @@ HOMEPAGE="https://www.linux-apps.com/content/show.php?action=content&content=114
 SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 CDEPEND="
