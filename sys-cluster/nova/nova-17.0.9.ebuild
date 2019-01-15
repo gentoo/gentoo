@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]];then
 else
 	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/nova/queens/nova.conf.sample -> nova.conf.sample-${PV}
 	https://tarballs.openstack.org/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="Apache-2.0"
