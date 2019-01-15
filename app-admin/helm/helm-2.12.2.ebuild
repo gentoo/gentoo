@@ -107,7 +107,7 @@ GIT_COMMIT="7d2b0c73d734f6586ed222a567c5d103fed435be"
 
 ARCHIVE_URI="https://github.com/kubernetes/helm/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="Kubernetes Package Manager"
 HOMEPAGE="https://github.com/kubernetes/helm https://helm.sh"
