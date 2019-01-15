@@ -29,6 +29,7 @@ src_prepare() {
 }
 
 src_compile() {
+	unset GOPATH
 	./script/build -o bin/${PN} || die
 }
 
