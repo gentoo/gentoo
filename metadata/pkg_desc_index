@@ -6573,7 +6573,7 @@ gnome-extra/gnome-shell-extensions 3.24.3: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 21: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.24.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-system-monitor 3.24.0: The Gnome System Monitor
-gnome-extra/gnome-tweak-tool 3.22.0 3.24.1: Tool to customize GNOME 3 options
+gnome-extra/gnome-tweak-tool 3.24.1: Tool to customize GNOME 3 options
 gnome-extra/gnome-user-docs 3.24.2: GNOME end user documentation
 gnome-extra/gnome-user-share 3.18.3: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
