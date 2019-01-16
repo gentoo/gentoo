@@ -566,7 +566,7 @@ app-editors/jedit 5.2.0-r1: Programmer's editor written in Java
 app-editors/jext 5.0-r2: A text editor written in Java
 app-editors/joe 4.2 4.3-r1 4.4 4.6: A free ASCII-Text Screen Editor for UNIX
 app-editors/jove 4.16.0.73: Jonathan's Own Version of Emacs, a light emacs-like editor without LISP bindings
-app-editors/kile 2.9.92: Latex Editor and TeX shell based on KDE Frameworks
+app-editors/kile 2.9.92 2.9.92-r1: Latex Editor and TeX shell based on KDE Frameworks
 app-editors/latexila 3.22.1: Integrated LaTeX environment for GNOME
 app-editors/le 1.14.3 1.16.3: Terminal text editor
 app-editors/leafpad 0.8.18.1: A simple GTK2 text editor
@@ -3189,6 +3189,7 @@ dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance appl
 dev-libs/libunistring 0.9.7 0.9.10: Library for manipulating Unicode and C strings according to Unicode standard
 dev-libs/libusb 1.0.19-r1 1.0.21: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2: Userspace access to USB devices (libusb-0.1 compat wrapper)
+dev-libs/libutf8proc 2.2.0_p1-r1: mapping tool for UTF-8 strings
 dev-libs/libuv 1.20.0: Cross-platform asychronous I/O
 dev-libs/libverto 0.2.5-r1: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
@@ -6257,7 +6258,7 @@ dev-util/cmdtest 0.30: black box tests Unix command line tools
 dev-util/cmocka 1.1.1: A unit testing framework for C
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10: ESR's utility for making fast comparisons among large source trees
-dev-util/cppcheck 1.81: Static analyzer of C/C++ code
+dev-util/cppcheck 1.81 1.86: Static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 1.1.2: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.13.1 1.13.2-r2 1.14.0: C++ port of the famous JUnit framework for unit testing
@@ -6348,6 +6349,7 @@ dev-util/meson 0.46.1 0.47.1 0.48.2: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netbeans 8.2: Netbeans IDE
+dev-util/netsurf-buildsystem 1.7: Build system used for netsurf and its libs
 dev-util/ninja 1.8.2: A small build system similar to make
 dev-util/obs-service-cpanspec 20130318: Open Build Service client module - cpanspec service
 dev-util/obs-service-download_files 20130716: Open Build Service client module - download_files service
@@ -6463,7 +6465,7 @@ dev-vcs/qgit 2.8: Qt GUI for git repositories
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
 dev-vcs/rcs 5.8.2 5.9.3: Revision Control System
 dev-vcs/stgit 0.16-r2: Manage a stack of patches using GIT as a backend
-dev-vcs/subversion 1.9.7-r1: Advanced version control system
+dev-vcs/subversion 1.9.7-r1 1.10.3: Advanced version control system
 dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/tig 2.3.3: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
@@ -6973,7 +6975,7 @@ kde-misc/skanlite 2.1.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.1.3: Collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.1.1: KControl module for Wacom tablets
-kde-misc/yakuake 3.0.5: Quake-style terminal emulator based on konsole
+kde-misc/yakuake 3.0.5 3.0.5-r1: Quake-style terminal emulator based on konsole
 kde-misc/zanshin 0.5.0: Getting things done application by KDE
 kde-plasma/bluedevil 5.14.3: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.14.3: Breeze visual style for the Plasma desktop
