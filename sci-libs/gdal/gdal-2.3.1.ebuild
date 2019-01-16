@@ -122,6 +122,8 @@ src_prepare() {
 
 	# not upstreamable, not fixed in 2.4.0 or master as of 2019-01-12:
 	has_version ">=app-text/poppler-0.72.0" && eapply "${FILESDIR}/${PN}-2.3.1-poppler-0.72.0.patch"
+	# not upstreamable, not fixed in 2.4.0 or master as of 2019-01-16:
+	has_version ">=app-text/poppler-0.73.0" && eapply "${FILESDIR}/${PN}-2.3.1-poppler-0.73.0.patch"
 
 	eautoreconf
 }
