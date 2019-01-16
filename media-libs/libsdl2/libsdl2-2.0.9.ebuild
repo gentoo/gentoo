@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools flag-o-matic ltprune toolchain-funcs multilib-minimal
+inherit autotools flag-o-matic toolchain-funcs multilib-minimal
 
 MY_P="SDL2-${PV}"
 DESCRIPTION="Simple Direct Media Layer"
@@ -181,6 +181,9 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files
+	find "${ED}" -name "*.la" -delete || die
+	if ! use static-libs ; then
+		find "${ED}" -name "*.a" -delete || die
+	fi
 	dodoc {BUGS,CREDITS,README,README-SDL,TODO,WhatsNew}.txt docs/README*.md
 }
