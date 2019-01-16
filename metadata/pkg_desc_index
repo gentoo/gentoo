@@ -4575,7 +4575,7 @@ dev-php/ming-php 0.4.7 0.4.8: PHP extension for the ming Flash movie generation 
 dev-php/myclabs-deepcopy 1.6.0: Create deep copies (clones) of your objects
 dev-php/pear 1.10.1-r1: PEAR - PHP Extension and Application Repository
 dev-php/pecl-apcu 4.0.11 5.1.8 5.1.12: Stripped down version of APC supporting only user cache
-dev-php/pecl-apcu_bc 1.0.3-r1 1.0.4: Provides APC backwards compatibility functions via APCu
+dev-php/pecl-apcu_bc 1.0.4: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-crack 0.4-r6 0.4-r7: PHP interface to the cracklib libraries
 dev-php/pecl-event 2.2.1: PHP wrapper for libevent2
 dev-php/pecl-geoip 1.1.1-r4: PHP extension to map IP address to geographic places
