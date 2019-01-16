@@ -1,0 +1,35 @@
+From a1ddd91e6c354e8f0dda40f8a522053c3fa19c39 Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Tue, 15 Jan 2019 22:24:08 +0100
+Subject: Guchar -> unsigned char
+
+It was just a typdef and it's now gone
+---
+ filters/karbon/pdf/SvgOutputDev.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/filters/karbon/pdf/SvgOutputDev.cpp b/filters/karbon/pdf/SvgOutputDev.cpp
+index 80f01a5..1a5aa30b 100644
+--- a/filters/karbon/pdf/SvgOutputDev.cpp
++++ b/filters/karbon/pdf/SvgOutputDev.cpp
+@@ -496,7 +496,7 @@ void SvgOutputDev::drawImage(GfxState *state, Object *ref, Stream *str,
+     if (maskColors) {
+         for (int y = 0; y < height; y++) {
+             dest = (unsigned int *)(buffer + y * 4 * width);
+-            Guchar * pix = imgStr->getLine();
++            unsigned char * pix = imgStr->getLine();
+             colorMap->getRGBLine(pix, dest, width);
+ 
+             for (int x = 0; x < width; x++) {
+@@ -515,7 +515,7 @@ void SvgOutputDev::drawImage(GfxState *state, Object *ref, Stream *str,
+     } else {
+         for (int y = 0; y < height; y++) {
+             dest = (unsigned int *)(buffer + y * 4 * width);
+-            Guchar * pix = imgStr->getLine();
++            unsigned char * pix = imgStr->getLine();
+             colorMap->getRGBLine(pix, dest, width);
+         }
+ 
+-- 
+cgit v1.1
+
