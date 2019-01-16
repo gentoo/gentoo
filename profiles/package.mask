@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Zac Medico <zmedico@gentoo.org> (13 Jan 2019)
+# Deprecated upstream. Use hack/tls-setup from the etcd source tree
+# instead. Masked for removal in 30 days.
+app-crypt/etcd-ca
+
 # William Hubbs <williamh@gentoo.org> (13 Jan 2019)
 # Multiple open bugs including build failures, dead upstream.
 # Please see the following URL for instructions for migrating to grub 2.
