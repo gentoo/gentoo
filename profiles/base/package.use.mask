@@ -167,6 +167,7 @@ media-video/ffmpeg appkit
 # packages. Those who wish to experiment with it as a fully recognised
 # Gentoo JVM can unmask the flag.
 dev-java/oracle-jdk-bin:9 gentoo-vm
+dev-java/oracle-jdk-bin:11 gentoo-vm
 dev-java/oracle-jre-bin:9 gentoo-vm
 dev-java/openjdk-bin:11 gentoo-vm
 dev-java/openjdk:11 gentoo-vm
