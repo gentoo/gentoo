@@ -74,7 +74,7 @@ src_configure() {
 	mycmakeargs=(
 		-DSWIPL_INSTALL_PREFIX=$(get_libdir)/swipl
 		-DUSE_GMP=$(usex gmp)
-		-DINSTALL_DOCUMENTATION=$(usex doc)
+		-DINSTALL_DOCUMENTATION=$(use doc && usex archive)
 		-DSWIPL_PACKAGES_BASIC=$(usex !minimal)
 		-DSWIPL_PACKAGES_ARCHIVE=$(usex archive)
 		-DSWIPL_PACKAGES_ODBC=$(usex odbc)
