@@ -68,7 +68,7 @@ LIBREOFFICE_EXTENSIONS="presenter-console presenter-minimizer"
 # Johannes Huber <johu@gentoo.org> (15 Apr 2018)
 # Andreas Sturmlechner <asturm@gentoo.org> (01 Jan 2019)
 # By default build all calligra features (except unmaintained: stage).
-CALLIGRA_FEATURES="karbon plan sheets words"
+CALLIGRA_FEATURES="karbon sheets words"
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (28 Sep 2010)
 # Small default list of enabled plugins for collectd
