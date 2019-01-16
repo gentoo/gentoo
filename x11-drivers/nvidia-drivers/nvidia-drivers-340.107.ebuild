@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ SRC_URI="
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
 KEYWORDS="-* amd64 x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="acpi multilib kernel_FreeBSD kernel_linux pax_kernel static-libs +tools +X"
+IUSE="acpi multilib kernel_FreeBSD kernel_linux static-libs +tools +X"
 RESTRICT="bindist mirror"
 EMULTILIB_PKG="true"
 
@@ -170,14 +170,6 @@ src_prepare() {
 
 		# If greater than 2.6.5 use M= instead of SUBDIR=
 #		convert_to_m "${NV_SRC}"/Makefile.kbuild
-	fi
-
-	if use pax_kernel; then
-		ewarn "Using PAX patches is not supported. You will be asked to"
-		ewarn "use a standard kernel should you have issues. Should you"
-		ewarn "need support with these patches, contact the PaX team."
-		eapply "${FILESDIR}"/${PN}-331.13-pax-usercopy.patch
-		eapply "${FILESDIR}"/${PN}-337.12-pax-constify.patch
 	fi
 
 	local man_file

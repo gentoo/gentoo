@@ -4,9 +4,6 @@
 	<maintainer type="person">
 		<email>jer@gentoo.org</email>
 	</maintainer>
-	<maintainer type="project">
-		<email>hardened@gentoo.org</email>
-	</maintainer>
 	<longdescription>
 		Nvidia provides different branches of its drivers for different batches of its
 		hardware. When maintaining these ebuilds or other ebuilds depending on them,
@@ -19,7 +16,6 @@
 		<flag name="X">Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries</flag>
 		<flag name="gtk3">Install nvidia-settings with support for GTK+ 3</flag>
 		<flag name="kms">Enable support for kernel mode setting (KMS)</flag>
-		<flag name="pax_kernel">PaX patches from the PaX project</flag>
 		<flag name="tools">Install additional tools such as nvidia-settings</flag>
 		<flag name="uvm">Install the Unified Memory kernel module (nvidia-uvm) for sharing memory between CPU and GPU in CUDA programs</flag>
 	</use>
