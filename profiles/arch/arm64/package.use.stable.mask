@@ -53,7 +53,7 @@ net-dns/avahi bookmarks gtk3 utils
 net-misc/openssh X
 sys-apps/dbus test
 sys-apps/man-pages l10n_fr
-sys-apps/systemd cryptsetup http policykit qrcode xkb
+sys-apps/systemd cryptsetup policykit qrcode xkb
 sys-auth/pambase consolekit pam_krb5 pam_ssh passwdqc
 sys-block/thin-provisioning-tools test
 sys-devel/distcc gssapi
