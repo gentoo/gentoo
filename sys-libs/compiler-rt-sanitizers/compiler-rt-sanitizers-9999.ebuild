@@ -77,10 +77,6 @@ src_unpack() {
 src_prepare() {
 	cmake-utils_src_prepare
 
-	# apply the fixes for new glibc / split tirpc
-	eapply "${FILESDIR}/9999/0001-sanitizer_common-Fix-using-libtirpc-on-Linux.patch"
-	eapply "${FILESDIR}/9999/0002-test-Support-using-libtirpc-on-Linux.patch"
-
 	if use test; then
 		# remove tests that are (still) broken by new glibc
 		# https://bugs.llvm.org/show_bug.cgi?id=36065
