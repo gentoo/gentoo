@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ EGIT_REPO_URI="https://git.llvm.org/git/compiler-rt.git
 
 LICENSE="|| ( UoI-NCSA MIT )"
 # Note: this needs to be updated to match version of clang-9999
-SLOT="8.0.0"
+SLOT="9.0.0"
 KEYWORDS=""
 IUSE="+clang +libfuzzer +profile +sanitize test +xray elibc_glibc"
 # FIXME: libfuzzer does not enable all its necessary dependencies
