@@ -1,24 +1,24 @@
-From 5a3255ac6dd1f19fb5fb5ab17452083bfe573f42 Mon Sep 17 00:00:00 2001
-From: Andreas Sturmlechner <asturm@gentoo.org>
-Date: Mon, 14 Jan 2019 23:58:59 +0100
-Subject: [PATCH] Drop obsolete header, does not exist in poppler-0.73
+From d34e59bfe495250ba023ba0f99e672ee32300a27 Mon Sep 17 00:00:00 2001
+From: Jean Ghali <jghali@libertysurf.fr>
+Date: Wed, 16 Jan 2019 00:30:35 +0000
+Subject: [PATCH] #15537: changes in poppler 0.73.0 cause build failure
 
+git-svn-id: svn://scribus.net/trunk/Scribus@22806 11d20701-8431-0410-a711-e3c959e3b870
 ---
- scribus/plugins/import/pdf/slaoutput.h | 1 -
- 1 file changed, 1 deletion(-)
+ scribus/plugins/import/pdf/slaoutput.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/scribus/plugins/import/pdf/slaoutput.h b/scribus/plugins/import/pdf/slaoutput.h
-index c46448b..83e010c 100644
+index c46448b80a..4dac7c3983 100644
 --- a/scribus/plugins/import/pdf/slaoutput.h
 +++ b/scribus/plugins/import/pdf/slaoutput.h
-@@ -28,7 +28,6 @@ for which a new license (GPL+exception) is in place.
+@@ -28,7 +28,9 @@ for which a new license (GPL+exception) is in place.
  #include "selection.h"
  #include "vgradient.h"
  
--#include <poppler/goo/gtypes.h>
++#if POPPLER_ENCODED_VERSION < POPPLER_VERSION_ENCODE(0, 73, 0)
+ #include <poppler/goo/gtypes.h>
++#endif
  #include <poppler/Object.h>
  #include <poppler/OutputDev.h>
  #include <poppler/Gfx.h>
--- 
-2.20.1
-
