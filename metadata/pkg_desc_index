@@ -10096,7 +10096,7 @@ sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling a
 sys-devel/clang 4.0.1 5.0.2 6.0.1: C language family frontend for LLVM
 sys-devel/clang-common 6.0.1: Common files shared between multiple slots of clang
 sys-devel/clang-runtime 3.9.1 4.0.1 5.0.2 6.0.1: Meta-ebuild for clang runtime libraries
-sys-devel/crossdev 20171230: Gentoo Cross-toolchain generator
+sys-devel/crossdev 20171230 20181020: Gentoo Cross-toolchain generator
 sys-devel/dev86 0.16.21-r2: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.2_rc1-r4: Distribute compilation of C code across several machines on a network
 sys-devel/flex 2.6.1 2.6.4-r1: The Fast Lexical Analyzer
