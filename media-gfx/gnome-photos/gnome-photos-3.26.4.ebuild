@@ -3,6 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
+GNOME2_EAUTORECONF="yes"
 
 inherit gnome2 python-any-r1 virtualx
 
@@ -11,16 +12,17 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Photos"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="flickr test upnp-av"
 
+# tracker-2 is supported, but we need to pull in tracker-miners for that, which we didn't have in main tree yet
 COMMON_DEPEND="
 	app-misc/tracker:0/100[miner-fs]
 	>=dev-libs/glib-2.44:2
 	gnome-base/gsettings-desktop-schemas
 	>=dev-libs/libgdata-0.15.2:0=[gnome-online-accounts]
 	media-libs/babl
-	>=media-libs/gegl-0.3.14:0.3[cairo,jpeg2k,raw]
+	>=media-libs/gegl-0.3.15:0.3[cairo,jpeg2k,raw]
 	media-libs/gexiv2
 	>=media-libs/grilo-0.3.0:0.3=
 	>=media-libs/libpng-1.6:0=
@@ -29,7 +31,7 @@ COMMON_DEPEND="
 	sci-geosciences/geocode-glib
 	>=x11-libs/cairo-1.14
 	x11-libs/gdk-pixbuf:2
-	>=x11-libs/gtk+-3.22.15:3
+	>=x11-libs/gtk+-3.22.16:3
 "
 # gnome-online-miners is also used for google, facebook, DLNA - not only flickr
 # but out of all the grilo-plugins, only upnp-av and flickr get used, which have USE flags here,
@@ -43,10 +45,15 @@ DEPEND="${COMMON_DEPEND}
 	app-text/yelp-tools
 	dev-util/desktop-file-utils
 	dev-util/glib-utils
-	>=dev-util/intltool-0.50.1
+	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	test? ( $(python_gen_any_dep 'dev-util/dogtail[${PYTHON_USEDEP}]') )
 "
+# app-text/yelp-tools needed for eautoreconf; otherwise probably just itstool
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-support-tracker1.patch # requires eautoreconf
+)
 
 python_check_deps() {
 	use test && has_version "dev-util/dogtail[${PYTHON_USEDEP}]"
