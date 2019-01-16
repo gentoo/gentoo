@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,6 @@ IUSE="test"
 DEPEND+=" doc? ( dev-lang/perl )"
 
 ruby_add_bdepend "
-	dev-ruby/hoe
 	test? (
 		dev-ruby/diff-lcs
 		dev-ruby/tidy-ext
