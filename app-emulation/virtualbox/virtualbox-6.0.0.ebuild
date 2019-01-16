@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -195,6 +195,7 @@ src_prepare() {
 	fi
 
 	eapply "${WORKDIR}/patches"
+	eapply "${FILESDIR}"/${PN}-6.0.0-libressl.patch #673800
 
 	eapply_user
 }
