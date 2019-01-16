@@ -86,6 +86,7 @@ multilib_src_configure() {
 	# harfbuzz-gobject only used for instrospection, bug #535852
 	local myeconfargs=(
 		--without-coretext
+		--without-fontconfig #609300
 		--without-uniscribe
 		$(use_enable static-libs static)
 		$(multilib_native_use_with cairo)
