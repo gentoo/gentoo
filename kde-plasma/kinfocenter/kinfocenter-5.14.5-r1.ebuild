@@ -35,6 +35,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
+	sys-apps/hwids[pci,usb]
 	x11-libs/libX11
 	ieee1394? ( sys-libs/libraw1394 )
 	opengl? (
@@ -59,6 +60,8 @@ RDEPEND="${COMMON_DEPEND}
 	!kde-plasma/kinfocenter:4
 "
 
+PATCHES=( "${FILESDIR}/${P}-hwids.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package ieee1394 RAW1394)
@@ -78,6 +81,8 @@ src_configure() {
 
 src_install() {
 	kde5_src_install
+
+	rm -r "${D}"/usr/share/kcmusb || die
 
 	insinto /etc/xdg
 	doins "${FILESDIR}"/kcm-about-distrorc
