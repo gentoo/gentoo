@@ -45,3 +45,12 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	!kde-misc/wacomtablet:4
 "
+
+src_test() {
+	# test needs DBus, bug 675548
+	local myctestargs=(
+		-E "(Test.KDED.DBusTabletService)"
+	)
+
+	kde5_src_test
+}
