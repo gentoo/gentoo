@@ -125,32 +125,6 @@ dev-go/sarama
 # Requires >=dev-lang/lua-5.2 which is masked
 >=app-admin/lsyncd-2.2.3
 
-# Hans de Graaff <graaff@gentoo.org> (9 Dec 2018)
-# Old component for Rails that is no longer used and no longer
-# maintained upstream. Masked for removal in 30 days.
-dev-ruby/hike
-
-# Hans de Graaff <graaff@gentoo.org> (9 Dec 2018)
-# No longer provides tests and no tagged upstream releases. No reverse
-# dependencies. Use classifier-reborn instead. Masked for removal
-# in 30 days.
-dev-ruby/classifier
-
-# Hans de Graaff <graaff@gentoo.org> (1 Dec 2018)
-# Old Rails 5.0 version. This version is no longer maintained
-# upstream. Please update to Rails 5.1 or newer.
-# Masked for removal in 30 days.
-dev-ruby/rails:5.0
-dev-ruby/railties:5.0
-dev-ruby/activerecord:5.0
-dev-ruby/actionmailer:5.0
-dev-ruby/actionpack:5.0
-dev-ruby/actionview:5.0
-dev-ruby/activejob:5.0
-dev-ruby/actioncable:5.0
-dev-ruby/activemodel:5.0
-dev-ruby/activesupport:5.0
-
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Nov 2018)
 # Masked per security vulnerability CVE-2018-14345, bug #661510
 # Keeping it masked while users have unsolved issues with >0.15.0.
