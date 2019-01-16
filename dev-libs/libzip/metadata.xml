@@ -9,4 +9,8 @@
 	<email>kde@gentoo.org</email>
 	<name>Gentoo KDE Project</name>
 </maintainer>
+<use>
+	<flag name="gnutls">Use GnuTLS</flag>
+	<flag name="openssl">Use OpenSSL</flag>
+</use>
 </pkgmetadata>
