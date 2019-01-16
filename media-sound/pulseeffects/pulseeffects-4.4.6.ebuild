@@ -42,6 +42,7 @@ RDEPEND="
 	rubberband? ( media-libs/rubberband )
 	>=media-libs/zita-convolver-3.0.0
 	media-libs/libebur128
+	media-libs/libsamplerate
 	media-sound/pulseaudio
 	sys-apps/dbus"
 # see 47a950b00c6db383ad07502a8fc396ecca98c1ce for dev-libs/appstream-glib
