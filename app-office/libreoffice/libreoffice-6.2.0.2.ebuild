@@ -253,7 +253,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 
-	# master branch
+	# 6.2 branch
 	"${FILESDIR}"/${PN}-6.2.0.1-poppler-0.71-{1,2}.patch
 	"${FILESDIR}"/${PN}-6.2.0.1-poppler-0.72.patch
 	"${FILESDIR}"/${P}-poppler-0.73.patch
