@@ -118,7 +118,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-7.8_p1-GSSAPI-dns.patch #165444 integrated into gsskex
 	eapply "${FILESDIR}"/${PN}-6.7_p1-openssl-ignore-status.patch
 	eapply "${FILESDIR}"/${PN}-7.5_p1-disable-conch-interop-tests.patch
-	eapply "${FILESDIR}"/${PN}-7.9_p1-CVE-2018-20685.patch
+	use X509 || eapply "${FILESDIR}"/${PN}-7.9_p1-CVE-2018-20685.patch
 
 	local PATCHSET_VERSION_MACROS=()
 
