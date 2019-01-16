@@ -2940,7 +2940,7 @@ dev-lang/xsb 3.6.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3: YAP is a high-performance Prolog compiler
 dev-lang/yasm 1.2.0-r1 1.3.0: An assembler for x86 and x86_64 instruction sets
 dev-libs/9libs 1.0-r3: A package of Plan 9 compatibility libraries
-dev-libs/Ice 3.6.3-r1: ICE middleware C++ library and generator tools
+dev-libs/Ice 3.6.3-r1 3.6.4: ICE middleware C++ library and generator tools
 dev-libs/ace 5.7.2: The Adaptive Communications Environment
 dev-libs/appstream 0.12.3: Cross-distro effort for providing metadata for software in the Linux ecosystem
 dev-libs/appstream-glib 0.7.9: Provides GObjects and helper methods to read and write AppStream metadata
@@ -9418,7 +9418,7 @@ sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/hdf 4.2.8 4.2.13-r1: General purpose library and format for storing scientific data
 sci-libs/hdf5 1.8.18: General purpose library and file format for storing scientific data
 sci-libs/inchi 1.04: Program and library for generating standard and non-standard InChI and InChIKeys
-sci-libs/indilib 1.6.0: INDI Astronomical Control Protocol library
+sci-libs/indilib 1.6.0 1.7.5: INDI Astronomical Control Protocol library
 sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and communication
 sci-libs/lapack-reference 3.2.1-r4: FORTRAN reference implementation of LAPACK Linear Algebra PACKage
 sci-libs/libcerf 1.4: Efficient and accurate implementation of complex error functions
