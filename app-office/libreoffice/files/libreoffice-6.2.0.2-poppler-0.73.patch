@@ -1,0 +1,101 @@
+From 9e1522ad1d2c2bd775fa50c2b142eb110a56af72 Mon Sep 17 00:00:00 2001
+From: Michael Stahl <Michael.Stahl@cib.de>
+Date: Mon, 14 Jan 2019 15:08:42 +0100
+Subject: sdext: fix build with poppler 0.73
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+... which has removed Guchar, Gushort, Guint, Gulong...
+
+Change-Id: Ia54ad378031f167f6779f6ffe574b85c1e72f26d
+Reviewed-on: https://gerrit.libreoffice.org/66305
+Tested-by: Jenkins
+Reviewed-by: Michael Stahl <Michael.Stahl@cib.de>
+(cherry picked from commit 50d371ae08c66648d9f32f633b2245e1746e2bb6)
+Reviewed-on: https://gerrit.libreoffice.org/66356
+Reviewed-by: Caolán McNamara <caolanm@redhat.com>
+Tested-by: Caolán McNamara <caolanm@redhat.com>
+---
+ sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx | 4 ++--
+ sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx | 6 +++++-
+ sdext/source/pdfimport/xpdfwrapper/pnghelper.cxx      | 6 +++---
+ 3 files changed, 10 insertions(+), 6 deletions(-)
+
+(limited to 'sdext/source/pdfimport/xpdfwrapper')
+
+diff --git a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+index 575a90a..35490a0 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+@@ -298,7 +298,7 @@ static void writePpm_( OutputBuffer&     o_rOutputBuf,
+     o_rOutputBuf.resize(header_size);
+ 
+     // initialize stream
+-    Guchar *p;
++    unsigned char *p;
+     GfxRGB rgb;
+     std::unique_ptr<ImageStream> imgStr(
+         new ImageStream(str,
+@@ -401,7 +401,7 @@ static void writeImage_( OutputBuffer&     o_rOutputBuf,
+                 oneColor = { byteToCol( 0xff ), byteToCol( 0xff ), byteToCol( 0xff ) };
+         if( colorMap->getColorSpace()->getMode() == csIndexed || colorMap->getColorSpace()->getMode() == csDeviceGray )
+         {
+-            Guchar nIndex = 0;
++            unsigned char nIndex = 0;
+             colorMap->getRGB( &nIndex, &zeroColor );
+             nIndex = 1;
+             colorMap->getRGB( &nIndex, &oneColor );
+diff --git a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx
+index da021a2a..443e757 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx
+@@ -267,9 +267,13 @@ extern FILE* g_binary_out;
+ 
+ // note: if you ever change Output_t, please keep in mind that the current code
+ // relies on it being of 8 bit size
+-typedef Guchar Output_t;
++typedef unsigned char Output_t;
+ typedef std::vector< Output_t > OutputBuffer;
+ 
++#if !POPPLER_CHECK_VERSION(0, 73, 0)
++static_assert(std::is_same_v<Guchar, unsigned char>, "unexpected typedef");
++#endif
++
+ #endif // INCLUDED_SDEXT_SOURCE_PDFIMPORT_XPDFWRAPPER_PDFIOUTDEV_GPL_HXX
+ 
+ /* vim:set shiftwidth=4 softtabstop=4 expandtab: */
+diff --git a/sdext/source/pdfimport/xpdfwrapper/pnghelper.cxx b/sdext/source/pdfimport/xpdfwrapper/pnghelper.cxx
+index 4d9e3bb..b582856 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/pnghelper.cxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pnghelper.cxx
+@@ -242,7 +242,7 @@ void PngHelper::createPng( OutputBuffer& o_rOutputBuf,
+     appendIHDR( o_rOutputBuf, width, height, 8, 6 ); // RGBA image
+ 
+     // initialize stream
+-    Guchar *p, *pm;
++    unsigned char *p, *pm;
+     GfxRGB rgb;
+     GfxGray alpha;
+     std::unique_ptr<ImageStream> imgStr(
+@@ -328,7 +328,7 @@ void PngHelper::createPng( OutputBuffer& o_rOutputBuf,
+     appendIHDR( o_rOutputBuf, width, height, 8, 6 ); // RGBA image
+ 
+     // initialize stream
+-    Guchar *p;
++    unsigned char *p;
+     GfxRGB rgb;
+     std::unique_ptr<ImageStream> imgStr(
+         new ImageStream(str,
+@@ -374,7 +374,7 @@ void PngHelper::createPng( OutputBuffer& o_rOutputBuf,
+     {
+         for( int x = 0; x < maskWidth; ++x )
+         {
+-            Guchar aPixel = 0;
++            unsigned char aPixel = 0;
+             imgStrMask->getPixel( &aPixel );
+             int nIndex = (y*height/maskHeight) * (width*4+1) + // mapped line
+                          (x*width/maskWidth)*4 + 1  + 3        // mapped column
+-- 
+cgit v1.1
+
