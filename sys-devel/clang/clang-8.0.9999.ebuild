@@ -17,17 +17,16 @@ HOMEPAGE="https://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://git.llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
+EGIT_BRANCH="release_80"
 
 # Keep in sync with sys-devel/llvm
-ALL_LLVM_EXPERIMENTAL_TARGETS=( AVR Nios2 RISCV WebAssembly )
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC Sparc SystemZ X86 XCore
-	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
+	NVPTX PowerPC Sparc SystemZ X86 XCore )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
-SLOT="9"
+SLOT="$(ver_cut 1)"
 KEYWORDS=""
 IUSE="debug default-compiler-rt default-libcxx doc +static-analyzer
 	test xml z3 kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
