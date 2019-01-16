@@ -48,6 +48,7 @@ PATCHES=(
 	# renames meson options to current git HEAD's names, current naming scheme
 	# is rather awkward
 	"${FILESDIR}"/${PN}-0.10.10-meson-fixup.patch
+	"${FILESDIR}"/${PN}-0.10.10-vala-fixup.patch
 )
 
 src_prepare() {
