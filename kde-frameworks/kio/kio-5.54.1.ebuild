@@ -68,7 +68,7 @@ PDEPEND="
 # tests hang
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${P}-elapsedtime.patch" )
+PATCHES=( "${FILESDIR}/${P}-revert-calcSpeed-refactoring.patch" )
 
 src_configure() {
 	local mycmakeargs=(
