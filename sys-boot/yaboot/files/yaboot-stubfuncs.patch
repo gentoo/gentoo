@@ -1,7 +1,7 @@
 Stub out some functions that are not provided (and unneeded)
 
---- lib/malloc.c
-+++ lib/malloc.c
+--- a/lib/malloc.c
++++ b/lib/malloc.c
 @@ -64,6 +64,15 @@ void *malloc (unsigned int size)
      return caddr;
  }
@@ -18,8 +18,8 @@ Stub out some functions that are not provided (and unneeded)
  /* Do not fall back to the malloc above as posix_memalign is needed by
   * external libraries not yaboot */
  int posix_memalign(void **memptr, size_t alignment, size_t size)
---- lib/nonstd.c
-+++ lib/nonstd.c
+--- a/lib/nonstd.c
++++ b/lib/nonstd.c
 @@ -65,3 +65,208 @@
  {
  	return NULL;
