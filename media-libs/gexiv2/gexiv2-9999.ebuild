@@ -57,8 +57,8 @@ src_configure() {
 		$(meson_use gtk-doc gtk_doc)
 		# prevents installation of python modules (uses install_data from meson
 		# which does not optimize the modules
-		-Dpython2-girdir=no
-		-Dpython3-girdir=no
+		-Dpython2_girdir=no
+		-Dpython3_girdir=no
 	)
 	meson_src_configure
 }
