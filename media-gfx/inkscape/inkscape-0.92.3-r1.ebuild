@@ -12,7 +12,7 @@ MY_P="${P/_/}"
 DESCRIPTION="SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/"
 SRC_URI="https://inkscape.global.ssl.fastly.net/media/resources/file/${P}.tar.bz2
-	https://dev.gentoo.org/~asturm/distfiles/${P}-poppler-patches.tar.xz"
+	https://dev.gentoo.org/~asturm/distfiles/${P}-poppler-patches-1.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
