@@ -121,6 +121,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-poppler-0.69.patch
 	"${FILESDIR}"/${P}-poppler-0.71.patch
 	"${FILESDIR}"/${P}-poppler-0.72.patch # not upstreamable
+	"${FILESDIR}"/${P}-poppler-0.73.patch
 	"${FILESDIR}"/${P}-no-webkit.patch
 )
 
