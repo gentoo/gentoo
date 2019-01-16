@@ -5,7 +5,6 @@
 
 # Keep it sorted.
 karbon - CALLIGRA_FEATURES option to build vector image editor
-plan - CALLIGRA_FEATURES option to build project planning component
 sheets - CALLIGRA_FEATURES option to build spreadsheet processor
 stage - CALLIGRA_FEATURES option to build presentation processor
 words - CALLIGRA_FEATURES option to build word processor
