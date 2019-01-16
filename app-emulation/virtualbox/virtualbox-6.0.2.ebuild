@@ -199,6 +199,7 @@ src_prepare() {
 
 	rm "${WORKDIR}/patches/010_virtualbox-5.2.12-qt511.patch" || die
 	eapply "${WORKDIR}/patches"
+	eapply "${FILESDIR}"/${PN}-6.0.0-libressl.patch #673800
 
 	eapply_user
 }
