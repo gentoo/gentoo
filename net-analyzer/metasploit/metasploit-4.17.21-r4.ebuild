@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,13 +12,13 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_BRANCH="4.x"
 	EGIT_CHECKOUT_DIR="${WORKDIR}"/all
 	inherit git-r3
-	KEYWORDS=""
+	KEYWORDS="~arm"
 	SLOT="9999"
 else
 	##Tags https://github.com/rapid7/metasploit-framework/releases
 	MY_PV=${PV/_p/-}
 	SRC_URI="https://github.com/rapid7/metasploit-framework/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 	RUBY_S="${PN}-framework-${MY_PV}"
 	inherit eapi7-ver
 	SLOT="$(ver_cut 1).$(ver_cut 2)"
