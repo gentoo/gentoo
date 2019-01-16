@@ -167,7 +167,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-poppler064.patch"
 
 	if has_version ">=app-text/poppler-0.69.0"; then
-		epatch "${FILESDIR}"/${P}-poppler0{69,71,72}.patch # bug #672854
+		epatch "${FILESDIR}"/${P}-poppler0{69,71,72,73}.patch # bugs #672854, 675448
 	fi
 
 	sed -i \
