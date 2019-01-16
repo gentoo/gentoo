@@ -10,7 +10,7 @@ HOMEPAGE="https://yakuake.kde.org/"
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz
 	https://dev.gentoo.org/~asturm/distfiles/${P}-patches.tar.xz"
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2 LGPL-2"

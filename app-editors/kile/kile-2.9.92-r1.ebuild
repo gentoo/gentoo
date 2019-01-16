@@ -11,7 +11,7 @@ HOMEPAGE="https://kile.sourceforge.io/"
 [[ ${PV} != *9999* ]] && SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="FDL-1.2 GPL-2"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="+pdf +png"
 
 DEPEND="
