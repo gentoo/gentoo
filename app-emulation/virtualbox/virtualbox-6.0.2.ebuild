@@ -307,7 +307,7 @@ src_install() {
 	if use amd64 && ! has_multilib_profile ; then
 		rcfiles=""
 	fi
-	for each in VBox{Autostart,BalloonCtrl,BugReport,CpuReport,ExtPackHelperApp,Manage,SVC,Tunctl,VMMPreload,XPCOMIPCD} *so *r0 ${rcfiles} iPxeBaseBin rdesktop-vrdp ; do
+	for each in VBox{Autostart,BalloonCtrl,BugReport,CpuReport,ExtPackHelperApp,Manage,SVC,Tunctl,VMMPreload,XPCOMIPCD} *so *r0 ${rcfiles} iPxeBaseBin ; do
 		vbox_inst ${each}
 	done
 
@@ -343,6 +343,7 @@ src_install() {
 	doenvd "${T}/90virtualbox"
 
 	if ! use headless ; then
+		vbox_inst rdesktop-vrdp
 		vbox_inst VBoxSDL 4750
 		pax-mark -m "${ED%/}"${vbox_inst_path}/VBoxSDL
 
