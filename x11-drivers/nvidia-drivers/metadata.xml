@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>jer@gentoo.org</email>
-	</maintainer>
-	<longdescription>
-		Nvidia provides different branches of its drivers for different batches of its
-		hardware. When maintaining these ebuilds or other ebuilds depending on them,
-		you will need to keep in mind that the major versions represent these different
-		branches.
-	</longdescription>
-	<use>
-		<flag name="compat">Install non-GLVND libGL for backwards compatibility</flag>
-		<flag name="driver">Install the kernel driver module</flag>
-		<flag name="X">Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries</flag>
-		<flag name="gtk3">Install nvidia-settings with support for GTK+ 3</flag>
-		<flag name="kms">Enable support for kernel mode setting (KMS)</flag>
-		<flag name="tools">Install additional tools such as nvidia-settings</flag>
-		<flag name="uvm">Install the Unified Memory kernel module (nvidia-uvm) for sharing memory between CPU and GPU in CUDA programs</flag>
-	</use>
+<maintainer type="person">
+<email>jer@gentoo.org</email>
+</maintainer>
+<longdescription>
+Nvidia provides different branches of its drivers for different batches of its
+hardware. When maintaining these ebuilds or other ebuilds depending on them,
+you will need to keep in mind that the major versions represent these different
+branches.
+
+You can use http://www.nvidia.com/Download/Find.aspx to figure out which branch
+best matches your hardware.
+</longdescription>
+<use>
+<flag name="compat">Install non-GLVND libGL for backwards compatibility</flag>
+<flag name="driver">Install the kernel driver module</flag>
+<flag name="X">Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries</flag>
+<flag name="gtk3">Install nvidia-settings with support for GTK+ 3</flag>
+<flag name="kms">Enable support for kernel mode setting (KMS)</flag>
+<flag name="tools">Install additional tools such as nvidia-settings</flag>
+<flag name="uvm">Install the Unified Memory kernel module (nvidia-uvm) for sharing memory between CPU and GPU in CUDA programs</flag>
+</use>
 </pkgmetadata>

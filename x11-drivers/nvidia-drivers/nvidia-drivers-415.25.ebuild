@@ -6,7 +6,7 @@ inherit eutils flag-o-matic linux-info linux-mod multilib-minimal nvidia-driver 
 	portability toolchain-funcs unpacker user udev
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
-HOMEPAGE="http://www.nvidia.com/ http://www.nvidia.com/Download/Find.aspx"
+HOMEPAGE="http://www.nvidia.com/"
 
 AMD64_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86_64-${PV}"
 AMD64_NV_PACKAGE="NVIDIA-Linux-x86_64-${PV}"
