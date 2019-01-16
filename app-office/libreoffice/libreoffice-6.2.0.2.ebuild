@@ -256,6 +256,7 @@ PATCHES=(
 	# master branch
 	"${FILESDIR}"/${PN}-6.2.0.1-poppler-0.71-{1,2}.patch
 	"${FILESDIR}"/${PN}-6.2.0.1-poppler-0.72.patch
+	"${FILESDIR}"/${P}-poppler-0.73.patch
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
