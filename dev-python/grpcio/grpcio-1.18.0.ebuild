@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}
 "
 
 python_compile() {
+	export GRPC_PYTHON_DISABLE_LIBC_COMPATIBILITY=1
 	export GRPC_PYTHON_BUILD_SYSTEM_CARES=1
 	export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
 	export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
