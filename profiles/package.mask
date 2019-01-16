@@ -116,12 +116,6 @@ dev-tex/revtex
 <x11-base/xorg-server-1.20.3
 <x11-base/xorg-drivers-1.20
 
-# Hans de Graaff <graaff@gentoo.org> (12 Dec 2018)
-# Old ruby23 only slots without any reverse dependencies.
-# Use the newer slots instead. Removal in 30 days.
-dev-ruby/net-ssh:2.6
-dev-ruby/rest-client:0
-
 # Zac Medico <zmedico@gentoo.org> (11 Dec 2018)
 # A Go library which has no consumers except those that include
 # it via EGO_VENDOR. Masked for removal in 30 days.
