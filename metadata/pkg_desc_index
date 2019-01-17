@@ -8015,7 +8015,7 @@ media-sound/a2jmidid 8-r2: Daemon for exposing legacy ALSA sequencer application
 media-sound/abcde 2.5.4-r1: A command line CD encoder
 media-sound/abcm2ps 8.12.9: A program to convert abc files to Postscript files
 media-sound/adplay 1.7: A console player for AdLib music
-media-sound/aeolus 0.9.0: A synthesised pipe organ emulator
+media-sound/aeolus 0.9.0 0.9.5: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
 media-sound/alsa-tools 1.1.0 1.1.6: Advanced Linux Sound Architecture tools
 media-sound/alsa-utils 1.1.2 1.1.6: Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
