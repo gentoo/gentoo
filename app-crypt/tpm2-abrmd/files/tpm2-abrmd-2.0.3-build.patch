@@ -30,3 +30,42 @@ index ecbc3bb..5973ff5 100644
  
  AC_SUBST([PATH])
  
+From 353c5e962f46e3739b1e92cbf6b1f3eb500157fc Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Thu, 17 Jan 2019 23:56:50 +0200
+Subject: [PATCH] tests: run without X
+
+Solves:
+
+$ DISPLAY= make check
+
+FAIL: test/tss2-tcti-tabrmd_unit
+
+** (process:17633): CRITICAL **: 23:53:22.403: failed to allocate dbus proxy object:
+Error spawning command line ?dbus-launch --autolaunch=4f9189e347d5cdf343
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+
+https://github.com/tpm2-software/tpm2-abrmd/pull/577
+---
+ .travis.yml | 2 +-
+ Makefile.am | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index b32a5fb..2598f13 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -76,7 +76,8 @@ XFAIL_TESTS = \
+ TEST_EXTENSIONS = .int
+ AM_TESTS_ENVIRONMENT = \
+     TEST_FUNC_LIB=$(srcdir)/scripts/int-test-funcs.sh \
+-    PATH=./src:$(PATH)
++    PATH=./src:$(PATH) \
++    dbus-launch
+ INT_LOG_COMPILER = $(srcdir)/scripts/int-test-setup.sh
+ INT_LOG_FLAGS = --tabrmd-tcti=$(TABRMD_TCTI)
+ 
+-- 
+2.19.2
+
