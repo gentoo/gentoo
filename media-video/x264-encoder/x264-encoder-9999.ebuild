@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,12 +21,12 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="10bit avs custom-cflags ffmpeg ffmpegsource +interlaced mp4 +threads"
+IUSE="avs custom-cflags ffmpeg ffmpegsource +interlaced mp4 +threads"
 
 REQUIRED_USE="ffmpegsource? ( ffmpeg )"
 
 RDEPEND="
-	~media-libs/x264-${PV}[10bit=,interlaced=,threads=]
+	~media-libs/x264-${PV}[interlaced=,threads=]
 	ffmpeg? ( virtual/ffmpeg )
 	ffmpegsource? ( media-libs/ffmpegsource )
 	mp4? ( >=media-video/gpac-0.5.2:= )"
@@ -52,7 +52,6 @@ src_configure() {
 		--system-libx264 \
 		--host="${CHOST}" \
 		--disable-lsmash \
-		$(usex 10bit "--bit-depth=10" "") \
 		$(usex avs "" "--disable-avs") \
 		$(usex ffmpeg "" "--disable-lavf --disable-swscale") \
 		$(usex ffmpegsource "" "--disable-ffms") \
