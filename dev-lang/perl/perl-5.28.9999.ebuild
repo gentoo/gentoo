@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -136,6 +136,7 @@ pkg_setup() {
 		*-netbsd*)    osname="netbsd" ;;
 		*-openbsd*)   osname="openbsd" ;;
 		*-darwin*)    osname="darwin" ;;
+		*-solaris*)   osname="solaris" ;;
 		*-interix*)   osname="interix" ;;
 		*-aix*)       osname="aix" ;;
 		*-cygwin*)    osname="cygwin" ;;
@@ -314,7 +315,9 @@ src_prepare() {
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# do NOT mess with nsl, on Solaris this is always necessary,
 		# when -lsocket is used e.g. to get h_errno
-		sed -i '/gentoo\/no-nsl\.patch/d' "${WORKDIR}/patches/series" || die "Can't exclude libnsl patch"
+		sed -i '/gentoo\/no-nsl\.patch/d' "${WORKDIR}/patches/series" || die
+		# and set a soname
+		sed -i 's/sunos\*/sunos*|solaris*/' Makefile.SH || die
 	fi
 
 	einfo "Applying patches from ${PATCH_BASE} ..."
@@ -466,6 +469,10 @@ src_configure() {
 	# using c89 mode as injected by cflags.SH
 	[[ ${CHOST} == *-darwin* && ${CHOST##*darwin} -le 9 ]] && tc-is-gcc && \
 		append-cflags -Dinline=__inline__
+
+	# fix unaligned access misdetection
+	# https://rt.perl.org/Public/Bug/Display.html?id=133495
+	[[ ${CHOST} == sparc*-solaris* ]] && myconf "-Dd_u32align='define'"
 
 	# Prefix: the host system needs not to follow Gentoo multilib stuff, and in
 	# Prefix itself we don't do multilib either, so make sure perl can find
