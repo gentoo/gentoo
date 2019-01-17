@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}/${P}.tar.gz
 		https://dev.gentoo.org/~floppym/dist/${P}-patches-2.tar.gz"
-	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ia64 ~mips ppc ~ppc64 ~sparc x86"
 fi
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7} )
