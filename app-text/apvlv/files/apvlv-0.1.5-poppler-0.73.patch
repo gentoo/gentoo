@@ -1,0 +1,10 @@
+--- a/src/ApvlvPdf.cc	2015-01-10 15:04:24.000000000 +0100
++++ b/src/ApvlvPdf.cc	2019-01-17 01:29:54.479256848 +0100
+@@ -29,7 +29,6 @@
+ #include "ApvlvPdf.h"
+ 
+ #ifndef POPPLER_WITH_GDK
+-#include <goo/gtypes.h>
+ 
+ static void
+ copy_cairo_surface_to_pixbuf (cairo_surface_t *surface,
