@@ -9,4 +9,8 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">chewi/xboxdrv</remote-id>
+		<remote-id type="gitlab">xboxdrv/xboxdrv</remote-id>
+	</upstream>
 </pkgmetadata>
