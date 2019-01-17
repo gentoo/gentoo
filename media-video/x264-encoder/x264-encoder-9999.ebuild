@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
@@ -12,8 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.videolan.org/git/x264.git"
 	SRC_URI=""
 else
-	inherit versionator
-	MY_P="x264-snapshot-$(get_version_component_range 3)-2245"
+	MY_P="x264-snapshot-$(ver_cut 3)-2245"
 	SRC_URI="http://download.videolan.org/pub/videolan/x264/snapshots/${MY_P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 	S="${WORKDIR}/${MY_P}"
@@ -38,8 +37,8 @@ ASM_DEP=">=dev-lang/nasm-2.13"
 DEPEND="${RDEPEND}
 	amd64? ( ${ASM_DEP} )
 	x86? ( ${ASM_DEP} )
-	x86-fbsd? ( ${ASM_DEP} )
-	virtual/pkgconfig"
+	x86-fbsd? ( ${ASM_DEP} )"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/gpac.patch" )
 
