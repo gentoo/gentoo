@@ -402,6 +402,27 @@
     </member>
   </project>
   <project>
+    <email>bug-wranglers@gentoo.org</email>
+    <name>Bug Wranglers</name>
+    <url>https://wiki.gentoo.org/wiki/Project-3ABug-2Dwranglers</url>
+    <description>The Gentoo Bug Wranglers project controls, describes the tasks to be carried out and goals to be achieved for everyone who wrangles bugs on Gentoo's bug tracker.</description>
+    <member is-lead="1">
+      <email>jer@gentoo.org</email>
+      <name>Jeroen Roovers</name>
+      <role>Developer</role>
+    </member>
+    <member>
+      <email>jstein@gentoo.org</email>
+      <name>Jonas Stein</name>
+      <role>Developer</role>
+    </member>
+    <member>
+      <email>polynomial-c@gentoo.org</email>
+      <name>Lars Wendler</name>
+      <role>Developer</role>
+    </member>
+  </project>
+  <project>
     <email>maintainer-wanted@gentoo.org</email>
     <name>Bug cleaners</name>
     <url>https://wiki.gentoo.org/wiki/Project-3ABug-2Dcleaners</url>
@@ -425,27 +446,6 @@
       <email>wraeth@gentoo.org</email>
       <name>Sam Jorna</name>
       <role>Lead</role>
-    </member>
-  </project>
-  <project>
-    <email>bug-wranglers@gentoo.org</email>
-    <name>Bug Wranglers</name>
-    <url>https://wiki.gentoo.org/wiki/Project-3ABug-2Dwranglers</url>
-    <description>The Gentoo Bug Wranglers project controls, describes the tasks to be carried out and goals to be achieved for everyone who wrangles bugs on Gentoo's bug tracker.</description>
-    <member is-lead="1">
-      <email>jer@gentoo.org</email>
-      <name>Jeroen Roovers</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>jstein@gentoo.org</email>
-      <name>Jonas Stein</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>polynomial-c@gentoo.org</email>
-      <name>Lars Wendler</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>
@@ -3072,8 +3072,8 @@
     <name>Quality Assurance</name>
     <url>https://wiki.gentoo.org/wiki/Project-3AQuality_Assurance</url>
     <description>The Gentoo Quality Assurance team</description>
-    <subproject ref="maintainer-wanted@gentoo.org"/>
     <subproject ref="bug-wranglers@gentoo.org"/>
+    <subproject ref="maintainer-wanted@gentoo.org"/>
     <subproject ref="devmanual@gentoo.org"/>
     <subproject ref="pms@gentoo.org"/>
     <subproject ref="treecleaner@gentoo.org"/>
