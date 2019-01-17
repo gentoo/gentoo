@@ -30,6 +30,7 @@ DEPEND="
 "
 
 BDEPEND="
+	dev-util/glib-utils
 	virtual/pkgconfig
 "
 
