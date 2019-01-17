@@ -1,12 +1,13 @@
+BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure unpack
-DEPEND=~media-libs/x264-9999[10bit=,interlaced=,threads=] ffmpeg? ( virtual/ffmpeg ) ffmpegsource? ( media-libs/ffmpegsource ) mp4? ( >=media-video/gpac-0.5.2:= ) amd64? ( >=dev-lang/nasm-2.13 ) x86? ( >=dev-lang/nasm-2.13 ) x86-fbsd? ( >=dev-lang/nasm-2.13 ) virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=~media-libs/x264-9999[interlaced=,threads=] ffmpeg? ( !libav? ( media-video/ffmpeg:= ) libav? ( media-video/libav:= ) ) ffmpegsource? ( media-libs/ffmpegsource ) mp4? ( >=media-video/gpac-0.5.2:= ) amd64? ( >=dev-lang/nasm-2.13 ) x86? ( >=dev-lang/nasm-2.13 ) x86-fbsd? ( >=dev-lang/nasm-2.13 )
 DESCRIPTION=A free commandline encoder for X264/AVC streams
-EAPI=6
+EAPI=7
 HOMEPAGE=https://www.videolan.org/developers/x264.html
-IUSE=10bit avs custom-cflags ffmpeg ffmpegsource +interlaced mp4 +threads
+IUSE=avs custom-cflags ffmpeg ffmpegsource +interlaced libav mp4 +threads
 LICENSE=GPL-2
-RDEPEND=~media-libs/x264-9999[10bit=,interlaced=,threads=] ffmpeg? ( virtual/ffmpeg ) ffmpegsource? ( media-libs/ffmpegsource ) mp4? ( >=media-video/gpac-0.5.2:= )
+RDEPEND=~media-libs/x264-9999[interlaced=,threads=] ffmpeg? ( !libav? ( media-video/ffmpeg:= ) libav? ( media-video/libav:= ) ) ffmpegsource? ( media-libs/ffmpegsource ) mp4? ( >=media-video/gpac-0.5.2:= )
 REQUIRED_USE=ffmpegsource? ( ffmpeg )
 SLOT=0
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	git-r3	0d4635eeb5a96cd5315597a47eba25c9	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=134329c72890e8d88a334a66a2d23ea8
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=425b1467b45f56a4b24a1e77adf02fa3
