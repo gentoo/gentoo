@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ RDEPEND="
 		>=net-libs/gnutls-3:=[pkcs11,${MULTILIB_USEDEP}] )
 	ssl? (
 		app-misc/ca-certificates
-		>=net-libs/gnutls-3:=[${MULTILIB_USEDEP}] )
+		<net-libs/gnutls-3.6:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.19.4
