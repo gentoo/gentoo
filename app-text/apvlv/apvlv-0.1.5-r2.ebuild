@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils desktop gnome2-utils
+inherit cmake-utils desktop gnome2-utils xdg-utils
 
 DESCRIPTION="Alf's PDF Viewer Like Vim"
 HOMEPAGE="https://naihe2010.github.com/apvlv/"
@@ -53,8 +53,10 @@ src_install() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
