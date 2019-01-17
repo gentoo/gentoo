@@ -957,7 +957,7 @@ app-misc/bijiben 3.26.1: Note editor designed to remain simple to use
 app-misc/binclock 1.5: Displays a binary clock in your terminal
 app-misc/binwalk 2.1.1: A tool for identifying files embedded inside firmware images
 app-misc/birthday 1.6.2-r1: Displays a list of events happening in the near future
-app-misc/bottlerocket 0.04c-r1: CLI interface to the X-10 Firecracker Kit
+app-misc/bottlerocket 0.04c-r2: CLI interface to the X-10 Firecracker Kit
 app-misc/boxes 1.1.2-r1: Draw any kind of boxes around your text
 app-misc/byobu 5.123: A set of profiles for the GNU Screen console window manager (app-misc/screen)
 app-misc/c_rehash 1.7-r1: c_rehash script from OpenSSL
@@ -7644,7 +7644,7 @@ media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for gener
 media-libs/liblo 0.29: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
 media-libs/liblrdf 0.6.1: Library for manipulation of RDF files in LADSPA plugins
-media-libs/liblscp 0.5.8-r1: C++ library for the Linux Sampler control protocol
+media-libs/liblscp 0.5.8-r1 0.6.0: C++ library for the Linux Sampler control protocol
 media-libs/libmad 0.15.1b-r9: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.18.0: Mixer library for MATE Desktop
 media-libs/libmatroska 1.4.5 1.4.8: Extensible multimedia container format based on EBML
