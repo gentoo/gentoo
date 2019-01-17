@@ -1,7 +1,7 @@
-diff --git a/src/makefile b/src/makefile
+diff --git a/makefile b/makefile
 index ee56a33..7f3c81f 100644
---- a/src/makefile
-+++ b/src/makefile
+--- a/makefile
++++ b/makefile
 @@ -203,7 +203,7 @@ CLI_LUAOBJS = \
  #
  # This is my compiler of choice, it seems to work most everywhere
