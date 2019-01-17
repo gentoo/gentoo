@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -43,10 +43,11 @@ RDEPEND="${COMMON_DEPEND}
 	x11-misc/xdg-user-dirs
 "
 DEPEND="${COMMON_DEPEND}
-	app-text/yelp-tools
 	>=dev-util/intltool-0.26
+	dev-util/itstool
 	virtual/pkgconfig
 "
+# eautoreconf needs app-text/yelp-tools
 
 pkg_setup() {
 	python_setup
