@@ -1,0 +1,53 @@
+auth_rimap: provide naive memmem implementation if missing
+
+read_response uses memmem, which is not available on e.g. Solaris 10
+
+Bug: https://github.com/cyrusimap/cyrus-sasl/pull/551
+Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+
+--- a/saslauthd/auth_rimap.c
++++ b/saslauthd/auth_rimap.c
+@@ -367,6 +367,32 @@
+ /* END FUNCTION: process_login_reply */
+ 
+ 
++#ifndef HAVE_MEMMEM
++static void *memmem(
++		const void *big, size_t big_len,
++		const void *little, size_t little_len)
++{
++	const char *bp = (const char *)big;
++	const char *lp = (const char *)little;
++	size_t l;
++
++	if (big_len < little_len || little_len == 0 || big_len == 0)
++		return NULL;
++
++	while (big_len > 0) {
++		for (l = 0; l < little_len; l++) {
++			if (bp[l] != lp[l])
++				break;
++		}
++		if (l == little_len)
++			return (void *)bp;
++		bp++;
++	}
++
++	return NULL;
++}
++#endif
++
+ static int read_response(int s, char *rbuf, int buflen, const char *tag)
+ {
+     int rc = 0;
+--- a/configure.ac
++++ b/configure.ac
+@@ -1292,7 +1292,7 @@
+ 
+ #AC_FUNC_MEMCMP
+ #AC_FUNC_VPRINTF
+-AC_CHECK_FUNCS(gethostname getdomainname getpwnam getspnam gettimeofday inet_aton memcpy mkdir select socket strchr strdup strerror strspn strstr strtol jrand48 getpassphrase asprintf strlcat strlcpy)
++AC_CHECK_FUNCS(gethostname getdomainname getpwnam getspnam gettimeofday inet_aton memcpy memmem mkdir select socket strchr strdup strerror strspn strstr strtol jrand48 getpassphrase asprintf strlcat strlcpy)
+ 
+ if test $ac_cv_func_getspnam = yes; then
+ 	AC_MSG_CHECKING(if getpwnam_r/getspnam_r take 5 arguments)
