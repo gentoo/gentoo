@@ -1,7 +1,7 @@
 # Copyright 2017-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -24,7 +24,8 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/json-glib
 	>=net-im/bitlbee-3[plugins]"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig"
 
