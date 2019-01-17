@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,9 +26,10 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	# preserve cflags
-	"${FILESDIR}/${PN}-0.1.5-cflags.patch"
-	"${FILESDIR}/${PN}-0.1.5-gcc6.patch"
-	"${FILESDIR}/${PN}-0.1.5-gcc7.patch"
+	"${FILESDIR}/${P}-cflags.patch"
+	"${FILESDIR}/${P}-gcc6.patch"
+	"${FILESDIR}/${P}-gcc7.patch"
+	"${FILESDIR}/${P}-poppler-0.73.patch"
 )
 
 src_configure() {
