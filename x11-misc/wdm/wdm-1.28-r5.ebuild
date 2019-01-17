@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-terminateServer.patch
 	"${FILESDIR}"/${P}-remove-fakehome.patch
 	"${FILESDIR}"/${P}-pkg_config.patch
+	"${FILESDIR}"/${P}-ar.patch
 )
 
 src_prepare() {
