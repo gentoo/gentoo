@@ -6,9 +6,8 @@
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
 <use>
-	<flag name="archive">Enables support for accessing media files in archives
-		transparently via <pkg>app-arch/libarchive</pkg></flag>
-	<flag name="quvi">Use <pkg>media-libs/libquvi</pkg> for parsing video
-		links</flag>
+	<flag name="archive">Enables ISO detection with <pkg>app-arch/libarchive</pkg></flag>
+	<flag name="crypt">Support AmazonAMZ decoding with <pkg>dev-libs/libgcrypt</pkg></flag>
+	<flag name="quvi">Use <pkg>media-libs/libquvi</pkg> for parsing video links</flag>
 </use>
 </pkgmetadata>
