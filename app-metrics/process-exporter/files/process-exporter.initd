@@ -1,8 +1,12 @@
 #!/sbin/openrc-run
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 description="Process Exporter for Prometheus"
 command=/usr/bin/process-exporter
 command_args="--config.path /etc/process-exporter/all.yaml
-	--web.listen-address=:9256 ${COMMAND_ARGS}"
+	${COMMAND_ARGS}"
 command_background=yes
-pidfile=/var/run/process-exporter.pid
+error_log=/var/log/process-exporter/${RC_SVCNAME}.log
+output_log=/var/log/process-exporter/${RC_SVCNAME}.log
+pidfile=/var/run/${RC_SVCNAME}.pid
