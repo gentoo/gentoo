@@ -105,7 +105,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	contrib_dnn? ( dev-libs/cereal )
 	eigen? ( dev-cpp/eigen:3 )
-	java?  ( >=virtual/jdk-1.6 )"
+	java?  ( >=virtual/jdk-1.6 )
+	vaapi?  ( x11-libs/libva )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/opencv2/cvconfig.h
@@ -231,6 +232,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-python-lib-suffix-hack.patch"
 	"${FILESDIR}/${P}-cuda-add-relaxed-constexpr.patch"
 	"${FILESDIR}/${P}-remove-git-autodetect.patch"
+	"${FILESDIR}/${P}-fix-build-with-va.patch" # bug https://bugs.gentoo.org/656576
 )
 
 pkg_pretend() {

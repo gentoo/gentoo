@@ -1,0 +1,26 @@
+From 20f5fa8e3e880bc8b2e5156e9f25f7fb756ed8e4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?S=C3=A9rgio=20M=2E=20Basto?= <sergio@serjux.com>
+Date: Wed, 28 Feb 2018 19:21:31 +0000
+Subject: [PATCH] Fix build with VA
+
+This commit readd ${VA_LIBRARIES} ${VA_INTEL_LIBRARIES}
+that was missed in commit 2200e13c7193e0fe9db4b9f7c4bee3a7ef043909
+
+    diff --git a/samples/va_intel/CMakeLists.txt b/samples/va_intel/CMakeLists.txt
+    -    ocv_target_link_libraries(${the_target} ${OPENCV_LINKER_LIBS} ${OPENCV_VA_INTEL_SAMPLES_REQUIRED_DEPS} ${VA_LIBRARIES} ${VA_INTEL_LIBRARIES})
+    +  ocv_target_link_libraries(${tgt} ${OPENCV_LINKER_LIBS} ${OPENCV_VA_INTEL_SAMPLES_REQUIRED_DEPS})
+---
+ samples/va_intel/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/samples/va_intel/CMakeLists.txt b/samples/va_intel/CMakeLists.txt
+index af51dd32061..04f2ea5fd40 100644
+--- a/samples/va_intel/CMakeLists.txt
++++ b/samples/va_intel/CMakeLists.txt
+@@ -17,5 +17,5 @@ ocv_include_modules_recurse(${OPENCV_VA_INTEL_SAMPLES_REQUIRED_DEPS})
+ file(GLOB all_samples RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp)
+ foreach(sample_filename ${all_samples})
+   ocv_define_sample(tgt ${sample_filename} va_intel)
+-  ocv_target_link_libraries(${tgt} ${OPENCV_LINKER_LIBS} ${OPENCV_VA_INTEL_SAMPLES_REQUIRED_DEPS})
++  ocv_target_link_libraries(${tgt} ${OPENCV_LINKER_LIBS} ${OPENCV_VA_INTEL_SAMPLES_REQUIRED_DEPS} ${VA_LIBRARIES} ${VA_INTEL_LIBRARIES})
+ endforeach()
