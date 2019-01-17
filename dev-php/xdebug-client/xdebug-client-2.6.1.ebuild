@@ -3,7 +3,7 @@
 
 EAPI=6
 
-KEYWORDS="amd64 ~hppa ppc ~ppc64 x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 x86"
 
 MY_PV="${PV/_/}"
 MY_PV="${MY_PV/rc/RC}"
