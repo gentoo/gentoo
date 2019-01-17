@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic multilib-minimal toolchain-funcs
 
@@ -11,15 +11,13 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.videolan.org/git/x264.git"
 else
-	inherit versionator
-	MY_P="x264-snapshot-$(get_version_component_range 3)-2245"
+	MY_P="x264-snapshot-$(ver_cut 3)-2245"
 	SRC_URI="https://download.videolan.org/pub/videolan/x264/snapshots/${MY_P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 	S="${WORKDIR}/${MY_P}"
 fi
 
-SONAME="155"
-SLOT="0/${SONAME}"
+SLOT="0/157" # SONAME
 
 LICENSE="GPL-2"
 IUSE="altivec +interlaced opencl pic static-libs cpu_flags_x86_sse +threads"
