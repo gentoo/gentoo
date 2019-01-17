@@ -1,15 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DOWNLOAD_URL="http://www.oracle.com/technetwork/java/javase/documentation/jdk10-doc-downloads-4417029.html"
+DOWNLOAD_URL="http://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html"
 
-SLOT="${PV%%.*}"
+[[ "$(ver_cut 4)" == 0 ]] \
+	|| MY_PV_EXT="u$(ver_cut 4)"
+
+MY_PV="$(ver_cut 2)${MY_PV_EXT}"
+
 DESCRIPTION="Oracle's documentation bundle (including API) for Java SE"
-HOMEPAGE="https://docs.oracle.com/javase/${SLOT}"
-SRC_URI="jdk-${PV}_doc-all.zip"
-LICENSE="oracle-java-documentation-${SLOT}"
+HOMEPAGE="http://download.oracle.com/javase/8/docs/"
+SRC_URI="jdk-${MY_PV}-docs-all.zip"
+LICENSE="oracle-java-documentation-8"
+SLOT="1.8"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 RESTRICT="fetch"
 
@@ -29,6 +34,13 @@ pkg_nofetch() {
 	einfo "the upstream release changed without renaming. Try downloading the file"
 	einfo "again (or a newer revision if available). Otherwise report this to"
 	einfo "https://bugs.gentoo.org/67266 and we will make a new revision."
+}
+
+src_prepare() {
+	default
+
+	# Don't need both .Z and .bz2 archives.
+	find -name "*.Z" -delete || die
 }
 
 src_install() {

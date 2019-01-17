@@ -21,7 +21,9 @@ IUSE="aqua coverage doc +egl +geolocation gles2 gnome-keyring +gstreamer +intros
 
 # webgl needs gstreamer, bug #560612
 # gstreamer with opengl/gles2 needs egl
+# non-GL builds are (temporarily?) broken - https://bugs.webkit.org/show_bug.cgi?id=193380
 REQUIRED_USE="
+	^^ ( opengl gles2 )
 	geolocation? ( introspection )
 	gles2? ( egl !opengl )
 	gstreamer? ( opengl? ( egl ) )

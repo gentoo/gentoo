@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ LICENSE="Apache-2.0 Artistic-2 BSD BSD-2 CC-BY-3.0 CC-BY-4.0 icu ISC MIT MPL-2.0
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND=">=net-libs/nodejs-6.14.4"
+RDEPEND=">=net-libs/nodejs-6.15.1"
 
 # Do not complain about CFLAGS etc since kibana does not use them.
 QA_FLAGS_IGNORED='.*'
