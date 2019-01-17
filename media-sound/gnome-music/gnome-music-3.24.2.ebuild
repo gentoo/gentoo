@@ -18,7 +18,7 @@ KEYWORDS="amd64 x86"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
-	>=app-misc/tracker-1.11.1[introspection(+)]
+	>=app-misc/tracker-1.11.1:0/100[introspection(+)]
 	>=dev-python/pygobject-3.21.1:3[cairo,${PYTHON_USEDEP}]
 	>=dev-libs/glib-2.28:2
 	>=dev-libs/gobject-introspection-1.35.9:=
