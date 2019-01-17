@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.1.27-gss_c_nt_hostbased_service.patch"
 	"${FILESDIR}/${PN}-2.1.26-missing-size_t.patch"
 	"${FILESDIR}/${PN}-2.1.27-doc_build_fix.patch"
+	"${FILESDIR}/${PN}-2.1.27-memmem.patch"
 )
 
 pkg_setup() {
