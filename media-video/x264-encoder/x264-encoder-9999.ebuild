@@ -21,13 +21,16 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="avs custom-cflags ffmpeg ffmpegsource +interlaced mp4 +threads"
+IUSE="avs custom-cflags ffmpeg ffmpegsource +interlaced libav mp4 +threads"
 
 REQUIRED_USE="ffmpegsource? ( ffmpeg )"
 
 RDEPEND="
 	~media-libs/x264-${PV}[interlaced=,threads=]
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? (
+		!libav? ( media-video/ffmpeg:= )
+		libav? ( media-video/libav:= )
+	)
 	ffmpegsource? ( media-libs/ffmpegsource )
 	mp4? ( >=media-video/gpac-0.5.2:= )"
 
