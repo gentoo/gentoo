@@ -41,7 +41,7 @@ src_compile() {
 
 src_install() {
 	pushd src/${EGO_PN} || die
-	dobin bin/*
+	dobin bin/generator snmp_exporter
 	dodoc {README,CONTRIBUTING}.md generator/{FORMAT,README}.md generator/generator.yml
 	insinto /etc/snmp_exporter
 	newins snmp.yml snmp.yml.example
