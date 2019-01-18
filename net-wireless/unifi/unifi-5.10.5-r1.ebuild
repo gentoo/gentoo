@@ -14,7 +14,7 @@ SRC_URI="https://dl.ubnt.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
 
 KEYWORDS=""
 LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
-SLOT="0/5.9"
+SLOT="0/5.10"
 IUSE="systemd"
 
 RDEPEND="dev-db/mongodb
