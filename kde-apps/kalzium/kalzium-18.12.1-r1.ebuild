@@ -44,7 +44,9 @@ RDEPEND="${DEPEND}
 	sci-chemistry/chemical-mime-data
 "
 
-src_configure(){
+PATCHES=( "${FILESDIR}/${P}-deps.patch" )
+
+src_configure() {
 	# Fix missing finite()
 	[[ ${CHOST} == *-solaris* ]] && append-cppflags -DHAVE_IEEEFP_H
 
