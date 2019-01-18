@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 2015-2018 Gentoo Foundation
+# Copyright 2015-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 description="OCI Kubernetes Container Runtime daemon"
@@ -23,8 +23,9 @@ checkconfig() {
 		/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log
 }
 
-start_pre() {
+start() {
 	checkconfig
+	default_start
 }
 
 reload() {
