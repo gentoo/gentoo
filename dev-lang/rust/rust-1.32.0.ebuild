@@ -45,7 +45,7 @@ COMMON_DEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
 		net-libs/libssh2
 		net-libs/http-parser:=
 		net-misc/curl[ssl]
-		system-llvm? ( >=sys-devel/llvm-6:= )"
+		system-llvm? ( >=sys-devel/llvm-7:= )"
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	|| (
@@ -58,6 +58,9 @@ RDEPEND="${COMMON_DEPEND}
 	rustfmt? ( !dev-util/rustfmt )"
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 				x86? ( cpu_flags_x86_sse2 )"
+
+# bug #675752
+REQUIRED_USE+=" !system-llvm"
 
 S="${WORKDIR}/${MY_P}-src"
 
