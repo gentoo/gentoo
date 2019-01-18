@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (18 Jan 2019)
+# Respective x11-drivers/ not tested and stable yet
+x11-base/xorg-drivers input_devices_elographics input_devices_joystick input_devices_void video_cards_dummy video_cards_fbdev video_cards_nouveau
+
 # Mart Raudsepp <leio@gentoo.org> (11 Sep 2018)
 # net-wireless/bluez not stable yet
 dev-lang/python bluetooth
