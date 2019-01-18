@@ -1,0 +1,21 @@
+--- a/Makefile
++++ b/Makefile
+@@ -66,6 +66,9 @@ byte_rchr.o: \
+ compile byte_rchr.c hasmemrchr.h byte.h
+ 	./compile byte_rchr.c
+ 
++check: \
++rts
++
+ chkshsgr: \
+ load chkshsgr.o
+ 	./load chkshsgr 
+@@ -247,7 +250,7 @@ compile iopause.c taia.h tai.h uint64.h select.h iopause.h
+ 	./compile iopause.c
+ 
+ it: \
+-rts sysdeps man
++programs sysdeps man
+ 
+ load: \
+ conf-ld print-ld.sh systype warn-auto.sh
