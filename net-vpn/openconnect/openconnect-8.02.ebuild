@@ -34,6 +34,7 @@ DEPEND="
 		libressl? ( dev-libs/libressl:0=[static-libs?] )
 	)
 	gnutls? (
+		app-crypt/trousers
 		app-misc/ca-certificates
 		dev-libs/nettle
 		>=net-libs/gnutls-3:0=[static-libs?]
