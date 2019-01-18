@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,6 +32,7 @@ RDEPEND="
 # libxml2 required for glib-compile-resources
 DEPEND="${RDEPEND}
 	dev-libs/libxml2:2
+	dev-util/glib-utils
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
