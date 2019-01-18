@@ -1,0 +1,26 @@
+From 8ceab1ea06ea846acf1d75955b0e0e725fc8b2fa Mon Sep 17 00:00:00 2001
+From: Maciej Mrozowski <reavertm@gmail.com>
+Date: Fri, 18 Jan 2019 00:59:28 +0100
+Subject: [PATCH] Fix typo in move cursor left action in QtCreator shortcuts
+ theme
+
+---
+ shortcuts/QtCreator | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/shortcuts/QtCreator b/shortcuts/QtCreator
+index bd1334742e..b74aba9b54 100644
+--- a/shortcuts/QtCreator
++++ b/shortcuts/QtCreator
+@@ -38,7 +38,7 @@
+     <Action shortcut="Down" name="move_line_down"/>
+     <Action shortcut="Up" name="move_line_up"/>
+     <Action shortcut="Right" name="move_cursor_right"/>
+-    <Action shortcut="Left" name="move_cusor_left"/>
++    <Action shortcut="Left" name="move_cursor_left"/>
+     <Action shortcut="Shift+Down" name="select_line_down"/>
+     <Action shortcut="PgUp" name="scroll_page_up"/>
+     <Action shortcut="Shift+PgUp" name="select_page_up"/>
+-- 
+2.19.2
+
