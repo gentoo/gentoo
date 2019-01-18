@@ -65,7 +65,6 @@ python_test() {
 
 python_install_all() {
 	if use doc; then
-		HTML_DOCS=( doc/html/. )
 		DOCS+=( doc/scripts )
 	fi
 	distutils-r1_python_install_all
