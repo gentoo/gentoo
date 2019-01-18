@@ -39,6 +39,7 @@ RDEPEND="sys-libs/ncurses:=
 		virtual/jpeg:0
 		x11-libs/libX11
 		x11-libs/libXft
+		x11-libs/libXinerama
 		x11-libs/libXpm
 		x11-libs/libXt
 		x11-libs/libICE
