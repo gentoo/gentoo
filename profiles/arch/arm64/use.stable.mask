@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Mart Raudsepp <leio@gentoo.org> (18 Jan 2019)
+# x11-libs/libva not stable yet
+vaapi
+
 # Mart Raudsepp <leio@gentoo.org> (27 Nov 2018)
 # x11-libs/fltk not stable yet
 fltk
