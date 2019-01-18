@@ -71,6 +71,9 @@ RDEPEND="
 DEPEND="
 	${CDEPEND}
 	app-arch/zip
+	app-misc/ca-certificates
+	dev-lang/perl
+	dev-libs/openssl:0
 	media-libs/alsa-lib
 	!headless-awt? (
 		x11-base/xorg-proto
@@ -227,6 +230,16 @@ src_install() {
 
 	dodir "${dest}"
 	cp -pPR * "${ddest}" || die
+
+	einfo "Generating cacerts file from certificates in ${EPREFIX}/usr/share/ca-certificates/"
+	mkdir "${T}/certgen" && cd "${T}/certgen" || die
+	cp "${FILESDIR}/generate-cacerts.pl" . && chmod +x generate-cacerts.pl || die
+	for c in "${EPREFIX}"/usr/share/ca-certificates/*/*.crt; do
+		openssl x509 -text -in "${c}" >> all.crt || die
+	done
+	./generate-cacerts.pl "${ddest}/bin/keytool" all.crt || die
+	cp -vRP cacerts "${ddest}/jre/lib/security/" || die
+	chmod 644 "${ddest}/jre/lib/security/cacerts" || die
 
 	use gentoo-vm && java-vm_install-env "${FILESDIR}"/${PN}-${SLOT}.env.sh
 	java-vm_set-pax-markings "${ddest}"
