@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Videos"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-IUSE="cdr gtk-doc +introspection lirc nautilus +python test vala"
+IUSE="cdr gtk-doc +introspection lirc nautilus +python test vala X"
 # see bug #359379
 REQUIRED_USE="
 	python? ( introspection ${PYTHON_REQUIRED_USE} )
@@ -25,9 +25,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 # Runtime dependency on gnome-session-2.91
 COMMON_DEPEND="
 	>=dev-libs/glib-2.43.4:2
-	>=x11-libs/gtk+-3.19.4:3[X,introspection?]
+	>=x11-libs/gtk+-3.19.4:3[introspection?]
 	>=media-libs/gstreamer-1.6.0:1.0
-	>=media-libs/gst-plugins-base-1.6.0:1.0[X,pango]
+	>=media-libs/gst-plugins-base-1.6.0:1.0[pango]
 	>=media-libs/gst-plugins-good-1.6.0:1.0
 	>=media-libs/grilo-0.3.0:0.3[playlist]
 	>=dev-libs/libpeas-1.1.0[gtk]
@@ -48,6 +48,9 @@ COMMON_DEPEND="
 	python? (
 		${PYTHON_DEPS}
 		>=dev-python/pygobject-2.90.3:3[${PYTHON_USEDEP}] )
+	X? (
+		x11-libs/gtk+:3[X]
+		media-libs/gst-plugins-base[X] )
 "
 RDEPEND="${COMMON_DEPEND}
 	media-plugins/grilo-plugins:0.3
