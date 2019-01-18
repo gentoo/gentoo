@@ -47,10 +47,9 @@ DOCS=( README.md doc/ChangeLog doc/cmd.txt )
 S="${S}-Source"
 
 PATCHES=(
-	# pending upstream
-	"${FILESDIR}"/${P}-png-broken-icc-profile.patch
-	# bug 675240
-	"${FILESDIR}"/${P}-fix-pkgconfig.patch
+	"${FILESDIR}"/${P}-png-broken-icc-profile.patch # pending upstream
+	"${FILESDIR}"/${P}-fix-pkgconfig.patch # bug 675240
+	"${FILESDIR}"/${P}-doc.patch # bug 675740
 )
 
 pkg_setup() {
@@ -62,11 +61,6 @@ src_prepare() {
 	einfo "Converting doc/cmd.txt to UTF-8"
 	iconv -f LATIN1 -t UTF-8 doc/cmd.txt > doc/cmd.txt.tmp || die
 	mv -f doc/cmd.txt.tmp doc/cmd.txt || die
-
-	if use doc; then
-		einfo "Updating doxygen config"
-		doxygen &>/dev/null -u config/Doxyfile || die
-	fi
 
 	cmake-utils_src_prepare
 }
@@ -82,6 +76,8 @@ multilib_src_configure() {
 		-DEXIV2_ENABLE_WEBREADY=$(usex webready)
 		-DEXIV2_ENABLE_XMP=$(usex xmp)
 		$(multilib_is_native_abi || echo -DEXIV2_BUILD_EXIV2_COMMAND=NO)
+		$(multilib_is_native_abi && echo -DEXIV2_BUILD_DOC=$(usex doc))
+		-DCMAKE_INSTALL_DOCDIR=${EPREFIX}/usr/share/doc/${PF}/html
 	)
 
 	cmake-utils_src_configure
@@ -91,13 +87,12 @@ multilib_src_compile() {
 	cmake-utils_src_compile
 
 	if multilib_is_native_abi; then
-		use doc && emake -j1 doc
+		use doc && eninja doc
 	fi
 }
 
 multilib_src_install_all() {
 	use xmp && DOCS+=( doc/{COPYING-XMPSDK,README-XMP,cmdxmp.txt} )
-	use doc && HTML_DOCS=( "${S}"/doc/html/. )
 
 	einstalldocs
 	find "${D}" -name '*.la' -delete || die
