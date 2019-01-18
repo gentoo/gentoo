@@ -47,10 +47,12 @@ REQUIRED_USE="
 IUSE="+${IUSE} alsa debug doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source +webstart"
 
 CDEPEND="
+	dev-util/systemtap
 	media-libs/freetype:2=
 	net-print/cups
 	sys-libs/zlib
 	!headless-awt? (
+		media-libs/giflib:0=
 		x11-libs/libX11
 		x11-libs/libXext
 		x11-libs/libXi
@@ -127,8 +129,6 @@ pkg_setup() {
 
 	local vm
 	for vm in ${JAVA_PKG_WANT_BUILD_VM}; do
-	# BUG get_libdir but points to /lib on my system
-		#if [[ -d ${EPREFIX}/usr/$(get_libdir)/jvm/${vm} ]]; then
 		if [[ -d ${EPREFIX}/usr/lib/jvm/${vm} ]]; then
 			java-pkg-2_pkg_setup
 			return
@@ -158,7 +158,6 @@ src_configure() {
 	# Work around stack alignment issue, bug #647954.
 	use x86 && append-flags -mincoming-stack-boundary=2
 
-	# No use for us
 	append-flags -Wno-error
 
 	chmod +x configure || die
@@ -183,11 +182,13 @@ src_configure() {
 		CFLAGS= CXXFLAGS= LDFLAGS= \
 		CONFIG_SITE=/dev/null \
 		econf \
+			--disable-ccache \
 			--enable-unlimited-crypto \
 			--with-boot-jdk="${JDK_HOME}" \
 			--with-extra-cflags="${CFLAGS}" \
 			--with-extra-cxxflags="${CXXFLAGS}" \
 			--with-extra-ldflags="${LDFLAGS}" \
+			--with-giflib=system \
 			--with-jvm-variants=${build_variants%,} \
 			--with-jtreg=no \
 			--with-update-version="$(ver_cut 2)" \
@@ -196,7 +197,6 @@ src_configure() {
 			--with-zlib=system \
 			--with-native-debug-symbols=$(usex debug internal none) \
 			$(usex headless-awt --disable-headful "") \
-			--disable-ccache \
 			"${myconf[@]}"
 	)
 }
