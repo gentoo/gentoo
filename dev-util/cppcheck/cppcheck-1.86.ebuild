@@ -6,8 +6,8 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1 qmake-utils toolchain-funcs
 
 DESCRIPTION="Static analyzer of C/C++ code"
-HOMEPAGE="http://cppcheck.sourceforge.net"
-SRC_URI="https://github.com/danmar/cppcheck/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/danmar/cppcheck"
+SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
