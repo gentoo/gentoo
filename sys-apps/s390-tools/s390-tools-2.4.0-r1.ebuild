@@ -1,25 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 inherit toolchain-funcs udev
 
 DESCRIPTION="User space utilities for the zSeries (s390) Linux kernel and device drivers"
 HOMEPAGE="https://www.ibm.com/developerworks/linux/linux390/s390-tools.html"
-SRC_URI="https://download.boulder.ibm.com/ibmdl/pub/software/dw/linux390/ht_src/${P}.tar.bz2"
+SRC_URI="https://github.com/ibm-s390-tools/s390-tools/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS="-* s390"
+KEYWORDS="-* ~s390"
 IUSE="fuse ncurses pfm snmp zlib"
 
-RDEPEND="fuse? ( sys-fs/fuse )
+RDEPEND="fuse? ( sys-fs/fuse:0= )
 	ncurses? ( sys-libs/ncurses:0= )
 	pfm? ( app-misc/pfm )
 	snmp? ( net-analyzer/net-snmp )
-	zlib? ( sys-libs/zlib )
-	>=sys-apps/util-linux-2.30"
+	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	dev-util/indent
 	app-admin/genromfs"
@@ -49,7 +48,4 @@ src_compile() {
 src_install() {
 	default
 	udev_dorules etc/udev/rules.d/*.rules
-
-	# The chmem tool has moved to util-linux.
-	rm "${ED}"/usr/sbin/{ch,ls}mem "${ED}"/usr/share/man/man8/{ch,ls}mem.8* || die
 }
