@@ -27,7 +27,7 @@ DEPEND="
 	!gnutls? (
 		ssl? (
 			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
-			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+			libressl? ( >=dev-libs/libressl-2.7.0:0=[${MULTILIB_USEDEP}] )
 		)
 	)
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
