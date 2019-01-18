@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit linux-info python-any-r1 scons-utils toolchain-funcs systemd udev
 
-COMMIT="0c0143b59b0fd9718af4968992c96b6b6b2a2557"
+COMMIT="6e5e8a57628095d8d0c8bbb38187afb0f3a42112"
 DESCRIPTION="Userspace Xbox 360 Controller driver"
 HOMEPAGE="https://xboxdrv.gitlab.io"
 SRC_URI="https://github.com/chewi/xboxdrv/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
