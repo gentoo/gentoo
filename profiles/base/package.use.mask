@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sven Wegener <swegener@gentoo.org> (18 Jan 2019)
+# Waiting for >=dev-libs/libressl-2.7 to be unmasked.
+>=net-libs/libvncserver-0.9.12 libressl
+
 # William Hubbs <williamh@gentoo.org> (13 Jan 2019)
 # For memtest86+ mask the floppy use flag since it requires grub:0 which
 # is being removed
