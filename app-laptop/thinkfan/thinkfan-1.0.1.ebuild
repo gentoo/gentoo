@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,15 +19,16 @@ DEPEND="atasmart? ( dev-libs/libatasmart )
 RDEPEND="${DEPEND}
 	nvidia? ( x11-drivers/nvidia-drivers )"
 
-src_prepare() {
-	cmake-utils_src_prepare
+PATCHES=( "${FILESDIR}"/${PN}-1.0.1-update-runscript.patch )
 
-	sed -e "s:share/doc/${PN}:share/doc/${PF}:" \
-		-i CMakeLists.txt || die "sed failed"
-}
+DOC_CONTENTS="
+	Please read the documentation and copy an appropriate
+	file to /etc/thinkfan.conf.
+"
 
 src_configure() {
 	local mycmakeargs+=(
+		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DUSE_NVML="$(usex nvidia)"
 		-DUSE_ATASMART="$(usex atasmart)"
 		-DUSE_YAML="$(usex yaml)"
@@ -38,8 +39,6 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
+
 	readme.gentoo_create_doc
 }
-
-DOC_CONTENTS="Please read the documentation and copy an
-appropriate file to /etc/thinkfan.conf."
