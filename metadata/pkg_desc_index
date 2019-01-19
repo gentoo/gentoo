@@ -6474,6 +6474,7 @@ dev-vcs/topgit 0.9: A different patch queue manager
 dev-vcs/tortoisehg 4.5.2: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/supermariowar 2.0_beta1-r1: Fan-made multiplayer Super Mario Bros. style deathmatch game
+games-arcade/blobwars 2.00: Platform game about a blob and his quest to rescue MIAs from an alien invader
 games-arcade/gnome-nibbles 3.24.1: Nibbles clone for Gnome
 games-arcade/gnome-robots 3.22.3: Avoid the robots and make them crash into each other
 games-board/four-in-a-row 3.28.0: Make lines of the same color to win
