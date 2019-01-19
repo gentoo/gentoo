@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,6 +28,10 @@ multilib_src_configure() {
 	# --disable-pie is needed on x86, see bug #512734
 	if [[ "${MULTILIB_ABI_FLAG}" == "abi_x86_32" ]]; then
 		myconf="${myconf} --disable-pie"
+		# --disable-ssp is needed on musl x86
+		if use elibc_musl; then
+			myconf+="${myconf} --disable-ssp"
+		fi
 	fi
 
 	econf \
