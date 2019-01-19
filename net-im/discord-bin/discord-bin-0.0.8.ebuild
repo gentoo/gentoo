@@ -1,11 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
 MY_PN=${PN/-bin/}
 MY_BIN="D${MY_PN/d/}"
-inherit eutils gnome2-utils unpacker desktop xdg-utils
+
+inherit desktop gnome2-utils pax-utils unpacker xdg-utils
 
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
@@ -14,7 +15,8 @@ SRC_URI="https://dl.discordapp.net/apps/linux/${PV}/${MY_PN}-${PV}.deb"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="pax_kernel"
+RESTRICT="mirror bindist"
 
 RDEPEND="
 	dev-libs/atk
@@ -48,17 +50,16 @@ RDEPEND="
 
 S=${WORKDIR}
 
-RESTRICT="mirror bindist"
-
 QA_PREBUILT="
 	opt/discord/${MY_BIN}
+	opt/discord/libEGL.so
+	opt/discord/libGLESv2.so
+	opt/discord/swiftshader/libEGL.so
+	opt/discord/swiftshader/libGLESv2.so
+	opt/discord/libVkICD_mock_icd.so
 	opt/discord/libnode.so
 	opt/discord/libffmpeg.so
 "
-
-src_unpack() {
-	unpack_deb ${A}
-}
 
 src_prepare() {
 	default
@@ -69,13 +70,15 @@ src_prepare() {
 }
 
 src_install() {
-	domenu opt/${MY_PN}/${MY_PN}.desktop
-	doicon opt/${MY_PN}/${MY_PN}.png
+	doicon usr/share/${MY_PN}/${MY_PN}.png
+	domenu usr/share/${MY_PN}/${MY_PN}.desktop
 
-	insinto /opt
-	doins -r usr/share/${MY_PN}
+	insinto /opt/${MY_PN}
+	doins -r usr/share/${MY_PN}/.
 	fperms +x /opt/${MY_PN}/${MY_BIN}
 	dosym ../../opt/${MY_PN}/${MY_BIN} usr/bin/${MY_PN}
+
+	use pax_kernel && pax-mark -m "${ED%/}"/opt/${MY_PN}/${MY_PN}
 }
 
 pkg_postinst() {
