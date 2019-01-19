@@ -30,11 +30,6 @@
 		<flag name="control-socket">
 			Enables Snort's control socket.
 		</flag>
-		<flag name="dynamicplugin">
-			Enable ability to dynamically load preprocessors, detection engine,
-			and rules library. This is required if you want to use shared 
-			object (SO) snort rules.
-		</flag>
 		<flag name="file-inspect">
 			Enables extended file inspection capabilities.
 		</flag>
@@ -56,11 +51,6 @@
 		<flag name="linux-smp-stats">
 			Enable accurate statistics reporting through /proc on systems with
 			multipule processors.
-		</flag>
-		<flag name="mpls">
-			Enables support for processing and inspecting Multiprotocol Label 
-			Switching MPLS network network traffic. Only needed if you are
-			monitoring an MPLS network.
 		</flag>
 		<flag name="non-ether-decoders">
 			Enable decoding of non-ethernet protocols such as TokenRing, FDDI,
@@ -95,39 +85,19 @@
 			Enables Sourcefire specific build options, which include
 			--enable-perfprofiling and --enable-ppm.
 		</flag>
-		<flag name="targetbased">
-			Enables support in snort for using a host attibute XML file 
-			(attribute_table.dtd). This file needs to be created by the user
-			and should define the IP address, operating system, and services
-			for all hosts on the monitored network. This is cumbersome, but
-			can improve intrusion detection accuracy.
-		</flag>
 		<flag name="reload-error-restart">
 			Enables support for completely restarting snort if an error is 
 			detected durring a reload.
-		</flag>
-		<flag name="zlib">
-			Enables HTTP inspection of compressed web traffic. Requires 
-			dynamicplugin be enabled.
 		</flag>
 		<flag name="active-response">
 			Enables support for automatically sending TCP resets and ICMP 
 			unreachable messages to terminate connections. Used with inline
 			deployments.
 		</flag>
-		<flag name="normalizer">
-			Enables support for normalizing packets in inline deployments to
-			help minimize the chances of detection evasion.
-		</flag>
 		<flag name="flexresp3">
 			Enables support for new flexable response preprocessor for enabling
 			connection tearing for inline deployments. Replaces flexresp and 
 			flexresp2.
-		</flag>
-		<flag name="paf">
-			Enables support for Protocol Aware Flushing. This allows Snort to
-			statefully scan a stream and reassemble a complete protocol data
-			unit regardless of segmentation.
 		</flag>
 		<flag name="large-pcap-64bit">
 			Allows Snort to read pcap files that are larger than 2 GB. ONLY
