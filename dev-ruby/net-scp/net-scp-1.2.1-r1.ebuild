@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGES.txt README.rdoc"
 
@@ -30,13 +30,13 @@ RUBY_PATCHES=(
 	)
 
 ruby_add_bdepend "
-	doc? ( >=dev-ruby/net-ssh-4.0:4 )
+	doc? ( || ( dev-ruby/net-ssh:5 dev-ruby/net-ssh:4 ) )
 	test? (
-		>=dev-ruby/net-ssh-4.0:4
+		|| ( dev-ruby/net-ssh:5 dev-ruby/net-ssh:4 )
 		dev-ruby/mocha
 	)"
 
-ruby_add_rdepend ">=dev-ruby/net-ssh-4.0:4"
+ruby_add_rdepend "|| ( dev-ruby/net-ssh:5 dev-ruby/net-ssh:4 )"
 
 all_ruby_prepare() {
 	sed -i -e 's/>= 2.0.0/~> 2.0/' test/common.rb || die
