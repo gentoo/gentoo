@@ -3221,7 +3221,7 @@ dev-libs/marisa 0.2.4: Matching Algorithm with Recursively Implemented StorAge
 dev-libs/mathjax 2.7.0 2.7.4: JavaScript display engine for LaTeX, MathML and AsciiMath
 dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrate, fast and efficient.
 dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
-dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 1.8.2 1.13.0: Client library written in C for MongoDB
+dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 1.8.2 1.13.0-r1: Client library written in C for MongoDB
 dev-libs/mpc 1.0.3: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 3.1.3_p4 3.1.6: library for multiple-precision floating-point computations with exact rounding
 dev-libs/mxml 2.10: Small XML parsing library to read XML and XML-like data files
