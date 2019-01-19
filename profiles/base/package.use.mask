@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (19 Jan 2019)
+# currently broken, segfaults, bug #675752
+>=dev-lang/rust-1.32.0 system-llvm
+
 # Sven Wegener <swegener@gentoo.org> (18 Jan 2019)
 # Waiting for >=dev-libs/libressl-2.7 to be unmasked.
 >=net-libs/libvncserver-0.9.12 libressl
