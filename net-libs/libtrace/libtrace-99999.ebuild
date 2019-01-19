@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils
+EAPI=7
+inherit autotools git-r3
 
 DESCRIPTION="A library and tools for trace processing"
-HOMEPAGE="http://research.wand.net.nz/software/libtrace.php"
-SRC_URI="http://research.wand.net.nz/software/${PN}/${P/_/-}.tar.gz"
+HOMEPAGE="https://research.wand.net.nz/software/libtrace.php"
+EGIT_REPO_URI="https://github.com/LibtraceTeam/libtrace"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="doc ncurses numa static-libs"
 
 RDEPEND="
@@ -54,5 +54,5 @@ src_install() {
 
 	use doc && dodoc -r docs/doxygen/html
 
-	prune_libtool_files --modules
+	find "${D}" -name "*.la" -delete || die
 }
