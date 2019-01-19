@@ -61,7 +61,10 @@ REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 
 S="${WORKDIR}/${MY_P}-src"
 
-PATCHES=( "${FILESDIR}"/1.30.1-clippy-sysroot.patch )
+PATCHES=(
+	"${FILESDIR}"/1.30.1-clippy-sysroot.patch
+	"${FILESDIR}"/1.32.0-fix-configure-of-bundled-llvm.patch
+)
 
 toml_usex() {
 	usex "$1" true false
