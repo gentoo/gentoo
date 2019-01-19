@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,8 +37,10 @@ DIST_TEST="do"
 
 PATCHES=(
 	# Fix bad escaping of '.' in @INC modification
-	"${FILESDIR}/${PN}-0.45-614122-no-dot-inc.patch"
+	"${FILESDIR}"/${PN}-0.45-614122-no-dot-inc.patch
+	"${FILESDIR}"/${PN}-man.patch
 )
+
 src_prepare() {
 	# Check against locale files in ${S}/pod/bin for mismatches
 	# with languages listed in PLOCALES

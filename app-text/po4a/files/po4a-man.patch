@@ -1,0 +1,18 @@
+--- a/Po4aBuilder.pm
++++ b/Po4aBuilder.pm
+@@ -233,7 +233,6 @@
+         }
+         $parser->parse_from_file ($file, $out);
+ 
+-        system("gzip -9 -f $out") and die;
+         unlink "$file" || die;
+     }
+ 
+@@ -245,7 +244,6 @@
+         if ($file =~ m,(.*/man(.))/([^/]*)\.xml$,) {
+             my ($outdir, $section, $outfile) = ($1, $2, $3);
+             system("xsltproc -o $outdir/$outfile.$section --nonet http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl $file") and die;
+-            system ("gzip -9 -f $outdir/$outfile.$section") and die;
+         }
+         unlink "$file" || die;
+     }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -32,6 +32,8 @@ DEPEND="${RDEPEND}
 		app-text/docbook-sgml-dtd:4.1
 		virtual/tex-base
 	)"
+
+PATCHES=( "${FILESDIR}"/${PN}-man.patch )
 
 PERL_RM_FILES=(
 	t/09-html.t

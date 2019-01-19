@@ -8,7 +8,7 @@ inherit perl-module l10n
 
 DESCRIPTION="Tools to ease the translation of documentation"
 HOMEPAGE="https://po4a.org/"
-SRC_URI="https://github.com/mquinson/po4a/releases/download/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/mquinson/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -33,6 +33,8 @@ DEPEND="${RDEPEND}
 		virtual/tex-base
 	)"
 
+PATCHES=( "${FILESDIR}"/${PN}-man.patch )
+
 PERL_RM_FILES=(
 	t/09-html.t
 )
@@ -47,9 +49,4 @@ src_prepare() {
 	l10n_for_each_disabled_locale_do rm_locale
 
 	perl-module_src_prepare
-}
-
-src_install() {
-	perl-module_src_install
-	find "${ED%/}/usr/share/man" -name '*.gz' -exec gzip -d '{}' +
 }
