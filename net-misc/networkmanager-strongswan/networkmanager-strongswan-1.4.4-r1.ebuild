@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="NetworkManager"
 MY_P="${P/networkmanager/${MY_PN}}"
@@ -15,15 +15,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+glib"
 
-RDEPEND="app-crypt/libsecret
+RDEPEND="
+	app-crypt/libsecret
 	gnome-extra/nm-applet
 	net-misc/networkmanager
 	net-vpn/strongswan[networkmanager]
-	x11-libs/gtk+:3"
+	x11-libs/gtk+:3
+"
 
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	dev-util/intltool
-	virtual/pkgconfig"
+"
+
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 

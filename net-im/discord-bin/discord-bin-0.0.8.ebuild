@@ -1,10 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
 MY_PN=${PN/-bin/}
-inherit eutils gnome2-utils unpacker
+MY_BIN="D${MY_PN/d/}"
+
+inherit desktop gnome2-utils pax-utils unpacker xdg-utils
 
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
@@ -13,7 +15,8 @@ SRC_URI="https://dl.discordapp.net/apps/linux/${PV}/${MY_PN}-${PV}.deb"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="pax_kernel"
+RESTRICT="mirror bindist"
 
 RDEPEND="
 	dev-libs/atk
@@ -47,46 +50,45 @@ RDEPEND="
 
 S=${WORKDIR}
 
-RESTRICT="mirror bindist"
-
 QA_PREBUILT="
-	opt/discord/share/discord/Discord
-	opt/discord/share/discord/libnode.so
-	opt/discord/share/discord/libffmpeg.so
+	opt/discord/${MY_BIN}
+	opt/discord/libEGL.so
+	opt/discord/libGLESv2.so
+	opt/discord/swiftshader/libEGL.so
+	opt/discord/swiftshader/libGLESv2.so
+	opt/discord/libVkICD_mock_icd.so
+	opt/discord/libnode.so
+	opt/discord/libffmpeg.so
 "
-
-src_unpack() {
-	unpack_deb ${A}
-}
 
 src_prepare() {
 	default
 
 	sed -i \
-		-e "s:/usr/share/discord/Discord:discord:g" \
+		-e "s:/usr/share/discord/Discord:/opt/${MY_PN}/${MY_BIN}:g" \
 		usr/share/${MY_PN}/${MY_PN}.desktop || die
 }
 
 src_install() {
+	doicon usr/share/${MY_PN}/${MY_PN}.png
+	domenu usr/share/${MY_PN}/${MY_PN}.desktop
+
 	insinto /opt/${MY_PN}
-	doins -r usr/.
+	doins -r usr/share/${MY_PN}/.
+	fperms +x /opt/${MY_PN}/${MY_BIN}
+	dosym ../../opt/${MY_PN}/${MY_BIN} usr/bin/${MY_PN}
 
-	fperms +x /opt/${MY_PN}/bin/${MY_PN}
-	dosym ../../opt/${MY_PN}/bin/${MY_PN} /usr/bin/${MY_PN}
-	dosym ../../../opt/${MY_PN}/share/applications/${MY_PN}.desktop \
-		/usr/share/applications/${MY_PN}.desktop
-	dosym ../../../opt/${MY_PN}/share/pixmaps/${MY_PN}.png \
-		/usr/share/pixmaps/${MY_PN}.png
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
+	use pax_kernel && pax-mark -m "${ED%/}"/opt/${MY_PN}/${MY_PN}
 }
 
 pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
