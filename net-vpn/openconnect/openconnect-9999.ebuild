@@ -84,6 +84,9 @@ src_configure() {
 		export PYTHON=/bin/false
 	fi
 
+	# Used by tests if userpriv is disabled
+	addwrite /run/netns
+
 	local myconf=(
 		--with-vpnc-script="${EPREFIX}/etc/openconnect/openconnect.sh"
 		--without-openssl-version-check
