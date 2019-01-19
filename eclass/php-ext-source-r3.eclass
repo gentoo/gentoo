@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-ext-source-r3.eclass
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
-# @SUPPORTED_EAPIS: 6
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Compile and install standalone PHP extensions.
 # @DESCRIPTION:
 # A unified interface for compiling and installing standalone PHP
@@ -14,8 +14,8 @@ inherit autotools
 
 EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test
 
-case ${EAPI} in
-	6) ;;
+case ${EAPI:-0} in
+	6|7) ;;
 	*)
 		die "${ECLASS} is not compatible with EAPI=${EAPI}"
 esac
@@ -106,6 +106,7 @@ esac
 # conditional like "php?", but only when PHP_EXT_OPTIONAL_USE is
 # non-null. The option group "|| (..." is always started here.
 REQUIRED_USE="${PHP_EXT_OPTIONAL_USE}${PHP_EXT_OPTIONAL_USE:+? ( }|| ( "
+PHPDEPEND="${PHP_EXT_OPTIONAL_USE}${PHP_EXT_OPTIONAL_USE:+? ( } "
 for _php_target in ${USE_PHP}; do
 	# Now loop through each USE_PHP target and add the corresponding
 	# dev-lang/php slot to PHPDEPEND.
@@ -125,19 +126,17 @@ unset _php_slot _php_target
 # Finally, end the optional group that we started before the loop. Close
 # the USE-conditional if PHP_EXT_OPTIONAL_USE is non-null.
 REQUIRED_USE+=") ${PHP_EXT_OPTIONAL_USE:+ )}"
+PHPDEPEND+=" ${PHP_EXT_OPTIONAL_USE:+ )}"
+TOOLDEPS="sys-devel/m4 sys-devel/libtool"
 
-RDEPEND="${RDEPEND}
-	${PHP_EXT_OPTIONAL_USE}${PHP_EXT_OPTIONAL_USE:+? ( }
-	${PHPDEPEND}
-	${PHP_EXT_OPTIONAL_USE:+ )}"
+RDEPEND="${PHPDEPEND}"
 
-DEPEND="${DEPEND}
-	sys-devel/m4
-	sys-devel/libtool
-	${PHP_EXT_OPTIONAL_USE}${PHP_EXT_OPTIONAL_USE:+? ( }
-	${PHPDEPEND}
-	${PHP_EXT_OPTIONAL_USE:+ )}
-"
+case ${EAPI:-0} in
+	6) DEPEND="${TOOLDEPS} ${PHPDEPEND}" ;;
+	7) DEPEND="${PHPDEPEND}" ; BDEPEND="${TOOLDEPS} ${PHPDEPEND}" ;;
+esac
+
+unset PHPDEPEND TOOLDEPS
 
 # @ECLASS-VARIABLE: PHP_EXT_SKIP_PHPIZE
 # @DEFAULT_UNSET
@@ -209,7 +208,7 @@ php-ext-source-r3_src_configure() {
 
 	# Support either a string or an array for PHP_EXT_ECONF_ARGS.
 	local econf_args
-	if [[ $(declare -p PHP_EXT_ECONF_ARGS) == "declare -a"* ]]; then
+	if [[ -n "${PHP_EXT_ECONF_ARGS}" && $(declare -p PHP_EXT_ECONF_ARGS) == "declare -a"* ]]; then
 		econf_args=( "${PHP_EXT_ECONF_ARGS[@]}" )
 	else
 		econf_args=( ${PHP_EXT_ECONF_ARGS} )
