@@ -96,11 +96,11 @@ src_configure() {
 	econf ${myconf} \
 		--prefix=/usr \
 		--bindir=/usr/sbin \
-		--sbindir=/usr/$(get_libdir)/nagios/cgi-bin \
-		--datadir=/usr/share/nagios/htdocs \
 		--localstatedir=/var/nagios \
 		--sysconfdir=/etc/nagios \
-		--libexecdir=/usr/$(get_libdir)/nagios/plugins
+		--libexecdir=/usr/$(get_libdir)/nagios/plugins \
+		--with-cgibindir=/usr/$(get_libdir)/nagios/cgi-bin \
+		--with-webdir=/usr/share/nagios/htdocs
 }
 
 src_compile() {
