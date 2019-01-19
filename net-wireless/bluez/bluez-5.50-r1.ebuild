@@ -60,6 +60,9 @@ DOC_CONTENTS="
 "
 
 PATCHES=(
+	# Fix missing header (fixed in 'master')
+	"${FILESDIR}"/${P}-btpclient-header.patch
+
 	# Use static group "plugdev" to not force people to become root for
 	# controlling the devices.
 	"${FILESDIR}"/${PN}-plugdev.patch
