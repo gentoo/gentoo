@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (19 Jan 2019)
+# Last release in 1999, last visible upstream activity in 2011.
+# Byte-compilation fails. Masked for removal in 30 days, bug #675814.
+app-emacs/tdtd
+
 # Zac Medico <zmedico@gentoo.org> (13 Jan 2019)
 # Deprecated upstream. Use hack/tls-setup from the etcd source tree
 # instead. Masked for removal in 30 days.
