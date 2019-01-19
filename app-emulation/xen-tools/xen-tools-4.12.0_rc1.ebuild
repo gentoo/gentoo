@@ -16,17 +16,18 @@ if [[ $PV == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	#KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS=""
 	UPSTREAM_VER=
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
-	GENTOO_VER=14
+	GENTOO_VER=15
 	# xen-tools's gentoo patches version which apply to this specific ebuild
 	GENTOO_GPV=0
 	# xen-tools ovmf's patches
 	OVMF_VER=3
 
-	SEABIOS_VER=1.10.0
+	SEABIOS_VER=1.12.0
 	# OVMF upstream 5920a9d16b1ab887c2858224316a98e961d71b05
 	OVMF_PV=20170321
 
@@ -350,6 +351,7 @@ src_configure() {
 		--disable-xen \
 		--enable-tools \
 		--enable-docs \
+		--with-system-ipxe=${PREFIX}/usr/share/ipxe \
 		$(use_enable pam) \
 		$(use_enable api xenapi) \
 		$(use_enable ovmf) \
@@ -439,6 +441,11 @@ src_install() {
 	# Remove files failing QA AFTER emake installs them, avoiding seeking absent files
 	find "${D}" \( -name openbios-sparc32 -o -name openbios-sparc64 \
 		-o -name openbios-ppc -o -name palcode-clipper \) -delete || die
+
+	keepdir /var/lib/xen/dump
+	keepdir /var/lib/xen/xenpaging
+	keepdir /var/lib/xenstored
+	keepdir /var/log/xen
 }
 
 pkg_postinst() {
@@ -446,7 +453,7 @@ pkg_postinst() {
 	elog "https://wiki.gentoo.org/wiki/Xen"
 	elog "https://wiki.xen.org/wiki/Main_Page"
 	elog ""
-	elog "Recommended to utilise the xencommons script to config sytem At boot"
+	elog "Recommended to utilise the xencommons script to config system at boot"
 	elog "Add by use of rc-update on completion of the install"
 
 	if ! use hvm; then
