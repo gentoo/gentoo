@@ -34,6 +34,10 @@ multilib_src_configure() {
 	# --disable-pie is needed on x86, see bug #512734
 	if [[ "${MULTILIB_ABI_FLAG}" == "abi_x86_32" ]]; then
 		myeconfargs+=( --disable-pie )
+		# --disable-ssp is needed on musl x86
+		if use elibc_musl; then
+			myeconfargs+=( --disable-ssp )
+		fi
 	fi
 
 	ECONF_SOURCE="${S}" econf ${myeconfargs[@]}
