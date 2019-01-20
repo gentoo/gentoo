@@ -53,5 +53,5 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	python_foreach_impl pplugincache
+	pplugincache
 }
