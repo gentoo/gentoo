@@ -6031,7 +6031,7 @@ dev-ruby/rubypants 0.7.0: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubyzip 1.2.1: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/sass 3.4.24: An extension of CSS3, adding nested rules, variables, mixins, and more
-dev-ruby/selenium-webdriver 3.10.0 3.12.0: This gem provides Ruby bindings for WebDriver
+dev-ruby/selenium-webdriver 3.12.0: This gem provides Ruby bindings for WebDriver
 dev-ruby/semantic_puppet 1.0.2: Library of tools for working with Semantic Versions and module dependencies
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
 dev-ruby/session 3.2.0: A set of classes to drive external programs via pipe
