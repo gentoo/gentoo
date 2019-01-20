@@ -2580,6 +2580,11 @@
     <url>https://wiki.gentoo.org/wiki/Project-3APlanet</url>
     <description>Planet Gentoo provides a central aggregation of developers' blogs, to keep users and other developers informed of what they are working on.</description>
     <member>
+      <email>alicef@gentoo.org</email>
+      <name>Alice Ferrazzi</name>
+      <role>Administrator</role>
+    </member>
+    <member>
       <email>blueknight@gentoo.org</email>
       <name>Yury German</name>
       <role>Administrator</role>
