@@ -23,7 +23,7 @@ RDEPEND="
 	virtual/libiconv
 	dbus? ( sys-apps/dbus )
 	dvbcsa? ( media-libs/libdvbcsa )
-	ffmpeg? ( media-video/ffmpeg:0/55.57.57[opus?,vpx?,x264?,x265?] )
+	ffmpeg? ( media-video/ffmpeg:0=[opus?,vpx?,x264?,x265?] )
 	hdhomerun? ( media-libs/libhdhomerun )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:= )

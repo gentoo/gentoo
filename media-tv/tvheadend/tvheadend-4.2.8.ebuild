@@ -24,7 +24,7 @@ RDEPEND="
 	dbus? ( sys-apps/dbus )
 	dvbcsa? ( media-libs/libdvbcsa )
 	dvben50221? ( media-tv/linuxtv-dvb-apps )
-	ffmpeg? ( media-video/ffmpeg:0/55.57.57 )
+	ffmpeg? ( media-video/ffmpeg:0= )
 	hdhomerun? ( media-libs/libhdhomerun )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:= )
