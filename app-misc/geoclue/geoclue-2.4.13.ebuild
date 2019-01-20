@@ -7,7 +7,7 @@ GNOME2_EAUTORECONF="yes" # 2.4.13 isn't properly disted, as released concurrentl
 inherit gnome2 systemd user
 
 DESCRIPTION="A geoinformation D-Bus service"
-HOMEPAGE="https://freedesktop.org/wiki/Software/GeoClue"
+HOMEPAGE="https://gitlab.freedesktop.org/geoclue/geoclue/wikis/home"
 SRC_URI="https://gitlab.freedesktop.org/geoclue/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
