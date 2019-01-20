@@ -9,7 +9,6 @@
 	<flag name="dmx">Build the Distributed Multiheaded X server</flag>
 	<flag name="glamor">Enable Glamor OpenGL 2D acceleration</flag>
 	<flag name="kdrive">Build the kdrive X servers</flag>
-	<flag name="tslib">Build with tslib support for touchscreen devices</flag>
 	<flag name="unwind">Enable libunwind usage for backtraces</flag>
 	<flag name="xcsecurity">Build Security extension</flag>
 	<flag name="xnest">Build the Xnest server</flag>
