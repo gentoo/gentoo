@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit desktop qmake-utils
+inherit qmake-utils xdg
 
 DESCRIPTION="A free, open source, cross-platform video editor"
 HOMEPAGE="https://www.shotcut.org/"
@@ -32,7 +32,7 @@ RDEPEND="
 	media-libs/ladspa-sdk
 	media-libs/libsdl:0
 	media-libs/libvpx
-	>=media-libs/mlt-6.6.0-r1[ffmpeg,frei0r,qt5,sdl,sdl2(+),xml]
+	>=media-libs/mlt-6.10.0-r1[ffmpeg,frei0r,qt5,sdl,xml]
 	media-libs/x264
 	media-plugins/frei0r-plugins
 	media-sound/lame
@@ -56,12 +56,5 @@ src_configure() {
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install
-
-	newicon "${S}/icons/shotcut-logo-64.png" "${PN}.png"
-	make_desktop_entry shotcut "Shotcut"
-
-	insinto "/usr/share/${PN}/translations"
-	doins translations/*.qm
-
 	einstalldocs
 }
