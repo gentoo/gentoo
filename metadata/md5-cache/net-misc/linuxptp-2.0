@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install setup
+DESCRIPTION=The Linux Precision Time Protocol (PTP) implementation
+EAPI=7
+HOMEPAGE=http://linuxptp.sourceforge.net/
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/linuxptp/v2.0/linuxptp-2.0.tgz
+_eclasses_=linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=98708bb40f9859b30b5a2af105637607
