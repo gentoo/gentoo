@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -63,7 +63,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="accessibility bluetooth +branding coinmp +cups dbus debug eds firebird
-googledrive gstreamer +gtk gtk2 kde mysql odk pdfimport postgres test vlc
+googledrive gstreamer +gtk gtk2 kde odk pdfimport postgres test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -102,6 +102,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	app-text/mythes
 	>=dev-cpp/clucene-2.3.3.4-r2
 	=dev-cpp/libcmis-0.5*
+	dev-db/mysql-connector-c
 	dev-db/unixODBC
 	dev-lang/perl
 	dev-libs/boost:=[nls]
@@ -187,7 +188,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
-	mysql? ( dev-db/mysql-connector-c )
 	pdfimport? ( app-text/poppler:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
 "
@@ -440,7 +440,6 @@ src_configure() {
 		$(use_enable gtk2 gtk)
 		$(use_enable kde kde5)
 		$(use_enable kde qt5)
-		$(use_enable mysql bundle-mariadb)
 		$(use_enable odk)
 		$(use_enable pdfimport)
 		$(use_enable postgres postgresql-sdbc)
