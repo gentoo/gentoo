@@ -289,7 +289,7 @@ app-cdr/cdemu 3.2.0: Command-line tool for controlling cdemu-daemon
 app-cdr/cdemu-daemon 3.2.1: Daemon of the CDEmu optical media image mounting suite
 app-cdr/cdlabelgen 4.3.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.4: Burn CDs in disk-at-once mode -- with optional GUI frontend
-app-cdr/cdrtools 3.02_alpha07-r1 3.02_alpha09: A set of tools for CD/DVD reading and recording, including cdrecord
+app-cdr/cdrtools 3.02_alpha09: A set of tools for CD/DVD reading and recording, including cdrecord
 app-cdr/cdw 0.8.0: An ncurses based console frontend for cdrtools and dvd+rw-tools
 app-cdr/cuetools 1.4.1: Utilities to manipulate and convert cue and toc files
 app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO

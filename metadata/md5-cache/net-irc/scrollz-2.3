@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=sys-libs/ncurses:0= gmp? ( dev-libs/gmp:0= ) ssl? ( gnutls? ( net-libs/gnutls:0= ) !gnutls? ( dev-libs/openssl:0= ) ) virtual/pkgconfig
+DESCRIPTION=Advanced IRC client based on ircII
+EAPI=7
+HOMEPAGE=http://www.scrollz.info/
+IUSE=gmp gnutls ipv6 socks5 ssl
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=BSD
+RDEPEND=sys-libs/ncurses:0= gmp? ( dev-libs/gmp:0= ) ssl? ( gnutls? ( net-libs/gnutls:0= ) !gnutls? ( dev-libs/openssl:0= ) )
+REQUIRED_USE=gnutls? ( ssl )
+SLOT=0
+SRC_URI=http://www.scrollz.info/download/ScrollZ-2.3.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=5c086e5c7f4d8eb1d639eae4715a8d04
