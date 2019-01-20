@@ -9,11 +9,12 @@ inherit kde5
 DESCRIPTION="Framework for reading and writing configuration"
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="nls"
+IUSE="dbus nls"
 
 RDEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtxml)
+	dbus? ( $(add_qt_dep qtdbus) )
 "
 DEPEND="${RDEPEND}
 	nls? ( $(add_qt_dep linguist-tools) )
@@ -24,3 +25,10 @@ DEPEND="${RDEPEND}
 RESTRICT+=" test"
 
 DOCS=( DESIGN docs/DESIGN.kconfig docs/options.md )
+
+src_configure() {
+	local mycmakeargs=(
+		-DKCONFIG_USE_DBUS=$(usex dbus)
+	)
+	kde5_src_configure
+}
