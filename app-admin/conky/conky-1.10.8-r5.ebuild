@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils linux-info readme.gentoo-r1
 
@@ -12,10 +12,10 @@ SRC_URI="https://github.com/brndnmtthws/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-3 BSD LGPL-2.1 MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
-IUSE="apcupsd audacious cmus curl eve hddtemp ical iconv imlib iostats ipv6 irc
+IUSE="apcupsd cmus curl eve hddtemp ical iconv imlib iostats ipv6 irc
 	lua-cairo lua-imlib lua-rsvg math moc mpd mysql nano-syntax ncurses
 	nvidia +portmon pulseaudio rss systemd thinkpad truetype vim-syntax
-	weather-metar weather-xoap webserver wifi X xmms2"
+	weather-metar webserver wifi X xmms2"
 
 COMMON_DEPEND="
 	X? (
@@ -30,7 +30,6 @@ COMMON_DEPEND="
 		x11-libs/libXinerama
 		x11-libs/libXfixes
 		x11-libs/libXext
-		audacious? ( >=media-sound/audacious-1.5 dev-libs/glib:2 )
 		xmms2? ( media-sound/xmms2 )
 	)
 	cmus? ( media-sound/cmus )
@@ -46,10 +45,9 @@ COMMON_DEPEND="
 	systemd? ( sys-apps/systemd )
 	wifi? ( net-wireless/wireless-tools )
 	weather-metar? ( net-misc/curl )
-	weather-xoap? ( dev-libs/libxml2 net-misc/curl )
 	webserver? ( net-libs/libmicrohttpd )
 	>=dev-lang/lua-5.1.4-r8:0
-	"
+"
 RDEPEND="
 	${COMMON_DEPEND}
 	apcupsd? ( sys-power/apcupsd )
@@ -57,11 +55,11 @@ RDEPEND="
 	moc? ( media-sound/moc )
 	nano-syntax? ( app-editors/nano )
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
-	"
+"
 DEPEND="
 	${COMMON_DEPEND}
 	app-text/docbook2X
-	"
+"
 
 CONFIG_CHECK=~IPV6
 
@@ -73,12 +71,12 @@ PATCHES=(
 )
 
 DISABLE_AUTOFORMATTING="yes"
-DOC_CONTENTS="You can find sample configurations at ${ROOT%/}/usr/share/doc/${PF}.
+DOC_CONTENTS="You can find sample configurations at ${ROOT}/usr/share/doc/${PF}.
 To customize, copy to ${XDG_CONFIG_HOME}/conky/conky.conf
 and edit it to your liking.
 
 There are pretty html docs available at the conky homepage
-or in ${ROOT%/}/usr/share/doc/${PF}/html.
+or in ${ROOT}/usr/share/doc/${PF}/html.
 
 Also see https://wiki.gentoo.org/wiki/Conky/HOWTO"
 
@@ -111,7 +109,6 @@ src_configure() {
 			-DBUILD_LUA_IMLIB2=$(usex lua-imlib)
 			-DBUILD_LUA_RSVG=$(usex lua-rsvg)
 			-DBUILD_NVIDIA=$(usex nvidia)
-			-DBUILD_AUDACIOUS=$(usex audacious)
 			-DBUILD_XMMS2=$(usex xmms2)
 		)
 	else
@@ -121,25 +118,7 @@ src_configure() {
 			-DBUILD_LUA_CAIRO=OFF
 			-DBUILD_LUA_IMLIB2=OFF
 			-DBUILD_LUA_RSVG=OFF
-			-DBUILD_AUDACIOUS=OFF
 			-DBUILD_XMMS2=OFF
-		)
-	fi
-
-	if use weather-xoap; then
-		mycmakeargs+=(
-			-DBUILD_WEATHER_XOAP=ON
-			-DBUILD_WEATHER_METAR=ON
-		)
-	elif use weather-metar; then
-		mycmakeargs+=(
-			-DBUILD_WEATHER_METAR=ON
-			-DBUILD_WEATHER_XOAP=$(usex weather-xoap)
-		)
-	else
-		mycmakeargs+=(
-			-DBUILD_WEATHER_XOAP=OFF
-			-DBUILD_WEATHER_METAR=OFF
 		)
 	fi
 
@@ -165,12 +144,14 @@ src_configure() {
 		-DBUILD_JOURNAL=$(usex systemd)
 		-DBUILD_IBM=$(usex thinkpad)
 		-DBUILD_HTTP=$(usex webserver)
+		-DBUILD_WEATHER_METAR=$(usex weather-metar)
 		-DBUILD_WLAN=$(usex wifi)
 		-DBUILD_BUILTIN_CONFIG=ON
-		-DBUILD_OLD_CONFIG=OFF
+		-DBUILD_OLD_CONFIG=ON
 		-DBUILD_I18N=ON
 		-DMAINTAINER_MODE=ON
 		-DRELEASE=ON
+		-DBUILD_AUDACIOUS=OFF
 		-DBUILD_BMPX=OFF
 		-DDOC_PATH=/usr/share/doc/${PF}
 	)
