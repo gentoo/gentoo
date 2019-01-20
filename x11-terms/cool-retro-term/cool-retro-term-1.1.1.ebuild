@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,13 +6,13 @@ EAPI=6
 inherit gnome2-utils qmake-utils
 
 QTW_PN=qmltermwidget
-QTW_PV=0.1.0
+QTW_PV=0.2.0
 QTW_P=${QTW_PN}-${QTW_PV}
 
 DESCRIPTION="terminal emulator which mimics the look and feel of the old cathode tube screens"
 HOMEPAGE="https://github.com/Swordfish90/cool-retro-term"
 SRC_URI="https://github.com/Swordfish90/cool-retro-term/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/Swordfish90/qmltermwidget/archive/v${QTW_PV}.tar.gz -> ${QTW_P}.tar.gz"
+	https://github.com/Swordfish90/qmltermwidget/archive/${QTW_PV}.tar.gz -> ${QTW_P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
@@ -43,6 +43,7 @@ src_configure() {
 src_install() {
 	# default attempts to install directly to /usr
 	emake INSTALL_ROOT="${D}" install || die
+	doman packaging/debian/cool-retro-term.1
 }
 
 pkg_preinst() { gnome2_icon_savelist; }
