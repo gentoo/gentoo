@@ -1,0 +1,48 @@
+From a074631c0b1748c8a791c4f0dad99da75805a328 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jo=C3=A3o=20Paulo=20Rechi=20Vita?= <jprvita@endlessm.com>
+Date: Mon, 15 Oct 2018 17:05:27 -0700
+Subject: [PATCH] daemon: Consider pending-charge when calculating the display
+ state
+
+Without this change if all batteries in the system are in the
+pending-charge state, the display device state is set to unknown, and
+its icon to battery-missing-symbolic.
+
+This change makes the pending-charge state be considered when
+calculating the DisplayDevice state, setting it to pending-charge if at
+least one battery in the system is pending-charge and no other is
+charging or discharging.
+
+Closes: #81
+Closes: #19
+---
+ src/up-daemon.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/up-daemon.c b/src/up-daemon.c
+index 95fff6b..690f379 100644
+--- a/src/up-daemon.c
++++ b/src/up-daemon.c
+@@ -210,14 +210,18 @@ up_daemon_update_display_battery (UpDaemon *daemon)
+ 			continue;
+ 
+ 		/* If one battery is charging, the composite is charging
+-		 * If all batteries are discharging, the composite is discharging
++		 * If all batteries are discharging or pending-charge, the composite is discharging
+ 		 * If all batteries are fully charged, the composite is fully charged
++		 * If one battery is pending-charge and no other is charging or discharging, then the composite is pending-charge
+ 		 * Everything else is unknown */
+ 		if (state == UP_DEVICE_STATE_CHARGING)
+ 			state_total = UP_DEVICE_STATE_CHARGING;
+ 		else if (state == UP_DEVICE_STATE_DISCHARGING &&
+ 			 state_total != UP_DEVICE_STATE_CHARGING)
+ 			state_total = UP_DEVICE_STATE_DISCHARGING;
++		else if (state == UP_DEVICE_STATE_PENDING_CHARGE &&
++			 (state_total == UP_DEVICE_STATE_UNKNOWN || state_total == UP_DEVICE_STATE_PENDING_CHARGE))
++			state_total = UP_DEVICE_STATE_PENDING_CHARGE;
+ 		else if (state == UP_DEVICE_STATE_FULLY_CHARGED &&
+ 			 state_total == UP_DEVICE_STATE_UNKNOWN)
+ 			state_total = UP_DEVICE_STATE_FULLY_CHARGED;
+-- 
+2.18.1
+
