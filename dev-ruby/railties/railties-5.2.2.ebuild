@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ RUBY_S="rails-${PV}/${PN}"
 # investigation.
 RESTRICT="test"
 
-RDEPEND+=">=app-eselect/eselect-rails-0.23"
+RDEPEND+=">=app-eselect/eselect-rails-0.24"
 
 ruby_add_rdepend "
 	~dev-ruby/activesupport-${PV}
