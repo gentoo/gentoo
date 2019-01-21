@@ -17,10 +17,13 @@
     <flag name="jdepend">Enable Jdepend Ant tasks</flag>
     <flag name="jmf">Enable JMF (Java Media Framework) Ant tasks</flag>
     <flag name="jsch">Disable Jsch (ssh, scp and related) Ant tasks</flag>
+    <flag name="junit">Enable JUnit Ant tasks</flag>
+    <flag name="junit4">Enable JUnit4 Ant tasks</flag>
     <flag name="log4j">Enable Apache log4j Ant tasks</flag>
     <flag name="oro">Enable Apache Oro Ant tasks</flag>
     <flag name="regexp">Enable Apache Regexp Ant tasks</flag>
     <flag name="resolver">Enable Apache Resolver Ant tasks</flag>
+    <flag name="swing">Enable Swing Ant tasks</flag>
     <flag name="testutil">Enable optional test util classes</flag>
   </use>
 </pkgmetadata>
