@@ -28,7 +28,7 @@ RDEPEND="
 	dev-python/toml[${PYTHON_USEDEP}]
 	dev-python/virtualenv[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	>=dev-python/setuptools_scm-2[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/freezegun-0.3.11[${PYTHON_USEDEP}]
 		>=dev-python/pytest-3.6[${PYTHON_USEDEP}]
