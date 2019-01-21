@@ -1,0 +1,25 @@
+From b6c038d4366d003ae00120c96e39a892e5d675c1 Mon Sep 17 00:00:00 2001
+From: Tor Didriksen <tor.didriksen@oracle.com>
+Date: Wed, 18 Jul 2018 10:22:21 +0200
+Subject: [PATCH] Fix build break with modern compilers:
+
+client/mysql.cc: In function void build_completion_hash(bool, bool):
+client/mysql.cc:2674:37: error: invalid conversion from char to char* [-fpermissive]
+       field_names[i][num_fields*2]= '\0';
+---
+ client/mysql.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/client/mysql.cc b/client/mysql.cc
+index 8510361a54e..bc32a58f37e 100644
+--- a/client/mysql.cc
++++ b/client/mysql.cc
+@@ -2671,7 +2671,7 @@ You can turn off this feature to get a quicker startup with -A\n\n");
+         mysql_free_result(fields);
+         break;
+       }
+-      field_names[i][num_fields*2]= '\0';
++      field_names[i][num_fields*2]= NULL;
+       j=0;
+       while ((sql_field=mysql_fetch_field(fields)))
+       {
