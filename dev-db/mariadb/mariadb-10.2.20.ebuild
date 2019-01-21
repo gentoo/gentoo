@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -361,6 +361,7 @@ src_configure(){
 		-DCLIENT_PLUGIN_DIALOG=OFF
 		-DCLIENT_PLUGIN_AUTH_GSSAPI_CLIENT=OFF
 		-DCLIENT_PLUGIN_MYSQL_CLEAR_PASSWORD=STATIC
+		-DCLIENT_PLUGIN_CACHING_SHA2_PASSWORD=OFF
 	)
 	if use test ; then
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mariadb/mysql-test )
