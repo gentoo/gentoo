@@ -48,7 +48,7 @@ src_install() {
 
 	emake "${myeconfargs[@]}"
 
-	mv -v "${D}"/usr/$(get_libdir)/lib${PN}.so{,.${PV}} || die
+	mv -v "${ED}"/usr/$(get_libdir)/lib${PN}.so{,.${PV}} || die
 
 	dosym lib${PN}.so.${PV} /usr/$(get_libdir)/lib${PN}.so
 	dosym lib${PN}.so.${PV} /usr/$(get_libdir)/lib${PN}.so.${PV:0:1}
