@@ -2029,7 +2029,9 @@ eant() {
 
 	if [[ ${cp#:} ]]; then
 		# It seems ant does not like single quotes around ${cp}
-		antflags="${antflags} -Dgentoo.classpath=\"${cp#:}\""
+		# And ant 1.9.13+ also does not like double quotes around ${cp}
+		# https://bz.apache.org/bugzilla/show_bug.cgi?id=58898
+		antflags="${antflags} -Dgentoo.classpath=${cp#:}"
 	fi
 
 	[[ -n ${JAVA_PKG_DEBUG} ]] && echo ant ${antflags} "${@}"
