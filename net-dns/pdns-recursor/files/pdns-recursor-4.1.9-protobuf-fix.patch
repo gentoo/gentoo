@@ -1,0 +1,32 @@
+From 6b34c39dce4483f97d48201929ff6acd4abbef84 Mon Sep 17 00:00:00 2001
+From: Remi Gacogne <remi.gacogne@powerdns.com>
+Date: Mon, 21 Jan 2019 16:07:29 +0100
+Subject: [PATCH] rec: Fix compilation in handleRunningTCPQuestion without
+ protobuf support
+
+---
+ pdns/pdns_recursor.cc | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/pdns_recursor.cc b/pdns_recursor.cc
+index d92b1ffae..98232dca2 100644
+--- a/pdns_recursor.cc
++++ b/pdns_recursor.cc
+@@ -1535,6 +1535,9 @@ static void handleRunningTCPQuestion(int fd, FDMultiplexer::funcparam_t& var)
+             L<<Logger::Warning<<"Error parsing a query packet for tag determination, setting tag=0: "<<e.what()<<endl;
+         }
+       }
++
++      const struct dnsheader* dh = (const struct dnsheader*) conn->data;
++
+ #ifdef HAVE_PROTOBUF
+       if(luaconfsLocal->protobufServer || luaconfsLocal->outgoingProtobufServer) {
+         dc->d_requestorId = requestorId;
+@@ -1542,7 +1545,6 @@ static void handleRunningTCPQuestion(int fd, FDMultiplexer::funcparam_t& var)
+         dc->d_uuid = (*t_uuidGenerator)();
+       }
+ 
+-      const struct dnsheader* dh = (const struct dnsheader*) conn->data;
+       if(luaconfsLocal->protobufServer) {
+         try {
+ 
