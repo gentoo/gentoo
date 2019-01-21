@@ -32,6 +32,11 @@ DEPEND="
 	virtual/pkgconfig
 "
 
+src_unpack() {
+	git-r3_src_unpack
+	default
+}
+
 src_prepare() {
 	default
 
