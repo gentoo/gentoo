@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 LICENSE="GPL-3+"
 KEYWORDS="~amd64 ~ppc64"
 
-RDEPEND=">=dev-lang/php-5.5.9[ctype,curl,crypt,unicode,tokenizer,xml,xmlreader,xmlwriter]
+RDEPEND=">=dev-lang/php-5.6[ctype,curl,unicode,tokenizer,xml,xmlreader,xmlwriter]
 	virtual/httpd-php
 	|| ( >=virtual/mysql-5.1 >=dev-db/postgresql-8.1 )"
 
