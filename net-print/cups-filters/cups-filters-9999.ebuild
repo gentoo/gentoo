@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ IUSE="dbus +foomatic ipp_autosetup jpeg ldap pclm pdf perl png +postscript stati
 
 RDEPEND="
 	>=app-text/poppler-0.32:=[cxx,jpeg?,lcms,tiff?,utils]
-	>=app-text/qpdf-8.1.0:=
+	>=app-text/qpdf-8.3.0:=
 	dev-libs/glib:2
 	media-libs/fontconfig
 	media-libs/freetype:2
