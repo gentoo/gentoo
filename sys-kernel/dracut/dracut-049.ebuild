@@ -5,20 +5,13 @@ EAPI=7
 
 inherit bash-completion-r1 eutils linux-info systemd toolchain-funcs
 
-if [[ ${PV} == 9999 ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/dracutdevs/dracut"
-else
-	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-	SRC_URI="https://github.com/dracutdevs/dracut/archive/${PV}.tar.gz -> ${P}.tar.gz"
-fi
-
 DESCRIPTION="Generic initramfs generation tool"
 HOMEPAGE="https://dracut.wiki.kernel.org"
+SRC_URI="https://github.com/dracutdevs/dracut/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="selinux"
 
 # Tests need root privileges, bug #298014
@@ -59,6 +52,9 @@ DOCS=( AUTHORS HACKING NEWS README README.generic README.kernel README.modules
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
+	"${FILESDIR}"/048-dracut-install-simplify-ldd-parsing-logic.patch
+	"${FILESDIR}"/049-40network-Don-t-include-40network-by-default.patch
+	"${FILESDIR}"/049-remove-bashism-in-various-boot-scripts.patch
 )
 
 src_configure() {
@@ -74,10 +70,8 @@ src_configure() {
 	echo ./configure "${myconf[@]}"
 	./configure "${myconf[@]}" || die
 
-	if [[ ${PV} != 9999 ]] ; then
-		# Source tarball from github doesn't include this file
-		echo "DRACUT_VERSION=${PV}" > dracut-version.sh || die
-	fi
+	# Source tarball from github doesn't include this file
+	echo "DRACUT_VERSION=${PV}" > dracut-version.sh || die
 }
 
 src_install() {
