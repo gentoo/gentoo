@@ -2102,7 +2102,7 @@
   </project>
   <project>
     <email>mips@gentoo.org</email>
-    <name>Gentoo/MIPS Development</name>
+    <name>Gentoo Linux MIPS Development</name>
     <url>https://wiki.gentoo.org/wiki/Project-3AMIPS</url>
     <description>Gentoo/MIPS is a port of the Gentoo GNU/Linux and the Gentoo Portage package management system to mips-based platforms.</description>
     <subproject ref="gentoo-yeeloong@gentoo.org"/>
