@@ -4,9 +4,9 @@ EAPI=6
 HOMEPAGE=https://code-industry.net/free-pdf-editor/
 KEYWORDS=~amd64
 LICENSE=master-pdf-editor
-RDEPEND=>=media-gfx/sane-backends-1.0 >=dev-qt/qtsvg-5.4.1:5 >=dev-qt/qtnetwork-5.4.1:5 >=dev-qt/qtgui-5.4.1:5 >=dev-qt/qtprintsupport-5.4.1:5
+RDEPEND=>=dev-qt/qtcore-5.4.1:5 >=dev-qt/qtgui-5.4.1:5 >=dev-qt/qtnetwork-5.4.1:5 >=dev-qt/qtprintsupport-5.4.1:5 >=dev-qt/qtsvg-5.4.1:5 >=media-gfx/sane-backends-1.0
 RESTRICT=mirror
 SLOT=0
-SRC_URI=https://code-industry.net/public/master-pdf-editor-5.1.36_qt5.amd64.tar.gz
+SRC_URI=https://code-industry.net/public/master-pdf-editor-5.2.20_qt5.amd64.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=e51835cfff34c18145da4e636d89db3c
+_md5_=c1a0fa705cf02b773264971f65050f7a
