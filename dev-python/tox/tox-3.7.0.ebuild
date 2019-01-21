@@ -30,13 +30,14 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
+		>=dev-python/freezegun-0.3.11[${PYTHON_USEDEP}]
 		>=dev-python/pytest-3.6[${PYTHON_USEDEP}]
 		<dev-python/pytest-4.0
 		<dev-python/pytest-mock-2.0[${PYTHON_USEDEP}]
 	)"
 
 # for some reason, --deselect doesn't work in tox's tests
-PATCHES=( "${FILESDIR}/${PN}-3.6.0-skip-broken-tests.patch" )
+PATCHES=( "${FILESDIR}/${PN}-3.7.0-skip-broken-tests.patch" )
 
 python_test() {
 	pytest -v --no-network || die "Testsuite failed under ${EPYTHON}"
