@@ -6249,7 +6249,7 @@ dev-util/ccache 3.2.4 3.3.4-r1: fast compiler cache
 dev-util/cdiff 0.9.8: Colored, side-by-side diff terminal viewer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
-dev-util/checkbashisms 2.18.6: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.18.11: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/cloc 1.72: Count Lines of Code
 dev-util/cmake 3.9.6: Cross platform Make
@@ -9138,7 +9138,7 @@ net-print/cndrvcups-lb 3.50 3.50-r1: Canon UFR II / LIPSLX Printer Driver for Li
 net-print/cnijfilter2 5.50: IJ Printer Driver
 net-print/cups 2.2.7: The Common Unix Printing System
 net-print/cups-bjnp 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.17.9 1.20.4: Cups filters
+net-print/cups-filters 1.20.4: Cups filters
 net-print/cups-pdf 2.6.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
