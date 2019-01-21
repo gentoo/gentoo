@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,15 +14,14 @@ SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="mirror"
 
-COMMON_DEPEND="
-	>=media-gfx/sane-backends-1.0
-	>=dev-qt/qtsvg-5.4.1:5
-	>=dev-qt/qtnetwork-5.4.1:5
+RDEPEND="
+	>=dev-qt/qtcore-5.4.1:5
 	>=dev-qt/qtgui-5.4.1:5
+	>=dev-qt/qtnetwork-5.4.1:5
 	>=dev-qt/qtprintsupport-5.4.1:5
+	>=dev-qt/qtsvg-5.4.1:5
+	>=media-gfx/sane-backends-1.0
 "
-
-RDEPEND="${COMMON_DEPEND}"
 
 QA_PREBUILT="/opt/${PN}/masterpdfeditor5"
 
