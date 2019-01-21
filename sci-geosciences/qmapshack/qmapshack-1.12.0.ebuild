@@ -10,7 +10,7 @@ HOMEPAGE="https://bitbucket.org/maproom/qmapshack/wiki/Home"
 SRC_URI="https://bitbucket.org/maproom/${PN}/downloads/${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 RDEPEND="dev-qt/qtwebengine:5[widgets]
 	dev-qt/qtdeclarative:5[widgets]
