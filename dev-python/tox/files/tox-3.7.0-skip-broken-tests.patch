@@ -1,7 +1,7 @@
-diff --git a/tests/unit/test_config.py b/tests/unit/test_config.py
-index 08a1ced..86e3fb6 100644
---- a/tests/unit/test_config.py
-+++ b/tests/unit/test_config.py
+diff --git a/tests/unit/config/test_config.py b/tests/unit/config/test_config.py
+index ba00b06..b1e7764 100644
+--- a/tests/unit/config/test_config.py
++++ b/tests/unit/config/test_config.py
 @@ -1869,7 +1869,7 @@ class TestConfigTestEnv:
          for name, config in configs.items():
              assert config.basepython == "python{}.{}".format(name[2], name[3])
@@ -12,7 +12,7 @@ index 08a1ced..86e3fb6 100644
              config = newconfig(
                  """
 diff --git a/tests/unit/test_interpreters.py b/tests/unit/test_interpreters.py
-index 0787b95..51e2ccc 100644
+index 9320a10..869189f 100644
 --- a/tests/unit/test_interpreters.py
 +++ b/tests/unit/test_interpreters.py
 @@ -60,7 +60,7 @@ def test_locate_via_py(monkeypatch):
