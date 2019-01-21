@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20180809-1700Z"
+MY_EXTRAS_VER="20181211-1735Z"
 SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
@@ -10,7 +10,7 @@ JAVA_PKG_OPT_USE="jdbc"
 # Keeping eutils in EAPI=6 for emktemp in pkg_config
 
 inherit eutils systemd flag-o-matic prefix toolchain-funcs \
-	java-pkg-opt-2 user cmake-utils multilib-build
+	java-pkg-opt-2 user cmake-utils
 
 SRC_URI="https://downloads.mariadb.org/interstitial/${P}/source/${P}.tar.gz "
 
@@ -31,7 +31,7 @@ SLOT="0/${SUBSLOT:-0}"
 IUSE="+backup bindist client-libs cracklib debug extraengine galera innodb-lz4
 	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 libressl mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
-	sst-rsync sst-mariabackup sst-xtrabackup static static-libs systemd systemtap tcmalloc
+	sst-rsync sst-mariabackup sst-xtrabackup static systemd systemtap tcmalloc
 	test tokudb xml yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
@@ -42,8 +42,7 @@ REQUIRED_USE="jdbc? ( extraengine server !static )
 	?? ( tcmalloc jemalloc )
 	static? ( yassl !pam )"
 
-# REMEMBER: also update eclass/mysql*.eclass before committing!
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -69,7 +68,6 @@ PATCHES=(
 
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
-# MULTILIB_USEDEP only set for libraries used by the client library
 COMMON_DEPEND="
 	kernel_linux? (
 		sys-process/procps:0=
@@ -110,7 +108,6 @@ COMMON_DEPEND="
 		tokudb? ( app-arch/snappy )
 	)
 	>=dev-libs/libpcre-8.41-r1:3=
-	dev-db/mariadb-connector-c[${MULTILIB_USEDEP},static-libs?] dev-db/mysql-connector-c[${MULTILIB_USEDEP},static-libs?]
 "
 DEPEND="virtual/yacc
 	static? ( sys-libs/ncurses[static-libs] )
@@ -243,10 +240,6 @@ pkg_postinst() {
 }
 
 src_unpack() {
-
-	# Initialize the proper variables first
-	mysql_init_vars
-
 	unpack ${A}
 	# Grab the patches
 	[[ "${MY_EXTRAS_VER}" == "live" ]] && S="${WORKDIR}/mysql-extras" git-r3_src_unpack
@@ -262,7 +255,9 @@ src_prepare() {
 		echo > "${S%/}/storage/${1}/CMakeLists.txt" || die
 	}
 
-	if use tcmalloc; then
+	if use jemalloc; then
+		echo "TARGET_LINK_LIBRARIES(mysqld jemalloc)" >> "${S}/sql/CMakeLists.txt"
+	elif use tcmalloc; then
 		echo "TARGET_LINK_LIBRARIES(mysqld tcmalloc)" >> "${S}/sql/CMakeLists.txt"
 	fi
 
@@ -365,6 +360,7 @@ src_configure(){
 		-DCLIENT_PLUGIN_DIALOG=OFF
 		-DCLIENT_PLUGIN_AUTH_GSSAPI_CLIENT=OFF
 		-DCLIENT_PLUGIN_MYSQL_CLEAR_PASSWORD=STATIC
+		-DCLIENT_PLUGIN_CACHING_SHA2_PASSWORD=OFF
 	)
 	if use test ; then
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mariadb/mysql-test )
@@ -395,7 +391,6 @@ src_configure(){
 		fi
 
 		mycmakeargs+=(
-			-DWITH_JEMALLOC=$(usex jemalloc system)
 			-DWITH_PCRE=system
 			-DPLUGIN_OQGRAPH=$(usex oqgraph DYNAMIC NO)
 			-DPLUGIN_SPHINX=$(usex sphinx YES NO)
@@ -579,8 +574,15 @@ src_install() {
 		doexe "${BUILD_DIR}/extra/my_print_defaults" "${BUILD_DIR}/extra/perror"
 	fi
 
-	#Remove mytop if perl is not selected
-	[[ -e "${ED}/usr/bin/mytop" ]] && ! use perl && rm -f "${ED}/usr/bin/mytop"
+	# Remove mytop if perl is not selected
+	if [[ -e "${ED}/usr/bin/mytop" ]] && ! use perl ; then
+		rm -f "${ED}/usr/bin/mytop" || die
+	fi
+
+	# Fix a dangling symlink when galera is not built
+	if [[ -L "${ED}/usr/bin/wsrep_sst_rsync_wan" ]] && ! use galera ; then
+		rm "${ED}/usr/bin/wsrep_sst_rsync_wan" || die
+	fi
 }
 
 # Official test instructions:
@@ -733,7 +735,7 @@ mysql_init_vars() {
 
 pkg_config() {
 	_getoptval() {
-		local mypd="${EROOT}"/usr/bin/my_print_defaults
+		local mypd="${EROOT}"usr/libexec/mariadb/my_print_defaults
 		local section="$1"
 		local flag="--${2}="
 		local extra_options="${3}"
