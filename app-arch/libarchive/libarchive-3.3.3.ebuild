@@ -11,7 +11,7 @@ SRC_URI="http://www.libarchive.org/downloads/${P}.tar.gz"
 LICENSE="BSD BSD-2 BSD-4 public-domain"
 SLOT="0/13"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="acl +bzip2 +e2fsprogs expat +iconv kernel_linux libressl lz4 +lzma lzo nettle static-libs +threads xattr +zlib"
+IUSE="acl +bzip2 +e2fsprogs expat +iconv kernel_linux libressl lz4 +lzma lzo nettle static-libs +threads xattr +zlib zstd"
 
 RDEPEND="
 	acl? ( virtual/acl[${MULTILIB_USEDEP}] )
@@ -28,7 +28,8 @@ RDEPEND="
 	lzma? ( app-arch/xz-utils[threads=,${MULTILIB_USEDEP}] )
 	lzo? ( >=dev-libs/lzo-2[${MULTILIB_USEDEP}] )
 	nettle? ( dev-libs/nettle:0=[${MULTILIB_USEDEP}] )
-	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
+	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	zstd? ( app-arch/zstd[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	kernel_linux? (
 		virtual/os-headers
@@ -65,6 +66,7 @@ multilib_src_configure() {
 		$(use_with lzo lzo2)
 		$(use_with nettle)
 		$(use_with zlib)
+		$(use_with zstd)
 	)
 	if multilib_is_native_abi ; then
 		myconf+=(
