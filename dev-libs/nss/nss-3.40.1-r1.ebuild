@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -43,6 +43,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.32-gentoo-fixups.patch"
 	"${FILESDIR}/${PN}-3.21-gentoo-fixup-warnings.patch"
 	"${FILESDIR}/${PN}-3.23-hppa-byte_order.patch"
+	# fix for bugs ported forward from 3.36.7
+	"${FILESDIR}/${PN}-3.36.7-fix-cms.patch"
 )
 
 src_unpack() {
