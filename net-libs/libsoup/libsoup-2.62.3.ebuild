@@ -3,7 +3,7 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{3_3,3_4,3_5,3_6} )
 VALA_USE_DEPEND="vapigen"
 
 inherit gnome2 multilib-minimal python-any-r1 vala
@@ -44,11 +44,6 @@ DEPEND="${RDEPEND}
 #		dev-lang/php[apache2,xmlrpc]
 #		net-misc/curl
 #		net-libs/glib-networking[ssl])"
-
-PATCHES=(
-	# https://bugs.gentoo.org/630516
-	"${FILESDIR}/${PN}-2.58.2-sparc-unaligned.patch"
-)
 
 src_prepare() {
 	if ! use test; then
