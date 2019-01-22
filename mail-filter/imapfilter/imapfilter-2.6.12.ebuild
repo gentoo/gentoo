@@ -6,7 +6,7 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="An IMAP mail filtering utility"
-HOMEPAGE="http://imapfilter.hellug.gr"
+HOMEPAGE="https://github.com/lefcha/imapfilter"
 SRC_URI="https://github.com/lefcha/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
