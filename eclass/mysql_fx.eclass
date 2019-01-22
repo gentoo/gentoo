@@ -1,10 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # DEPRECATED
 # Recent versions have begun deprecating this eclass.
 # Do not use it in new series.
 
+# @DEAD
 # @ECLASS: mysql_fx.eclass
 # @MAINTAINER:
 #   - MySQL Team <mysql-bugs@gentoo.org>
