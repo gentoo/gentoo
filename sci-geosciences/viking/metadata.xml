@@ -9,6 +9,9 @@
     <name>Gentoo Geosciences Project</name>
   </maintainer>
   <use>
+    <flag name="geoclue">
+      Use <pkg>app-misc/geoclue</pkg> to determine current location
+    </flag>
     <flag name="libexif">
       Use <pkg>media-libs/libexif</pkg> for EXIF support
     </flag>
