@@ -276,7 +276,7 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/${PN}-0.21.1.logrotate ${PN}
 
-	newinitd "${FILESDIR}"/${PN}-0.20.4.init ${PN}
+	newinitd "${FILESDIR}"/${P}.init ${PN}
 
 	if use unicode; then
 		sed -i -e 's:^#filesystem_charset.*$:filesystem_charset "UTF-8":' \
