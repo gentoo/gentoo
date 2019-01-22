@@ -1,5 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (22 Jan 2019)
+# Missing keywords on dependencies.
+app-arch/libarchive zstd
 
 # Mikle Kolyada <zlogene@gentoo.org> (05 Oct 2018)
 # Not keyworded
