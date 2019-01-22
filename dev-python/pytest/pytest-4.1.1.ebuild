@@ -51,15 +51,13 @@ python_prepare_all() {
 	# https://bugs.gentoo.org/598442
 	rm testing/test_pdb.py || die
 
-	# those tests appear to hang with python3.5+;  TODO: investigate why
-	sed -i -e 's:test_runtest_location_shown_before_test_starts:_&:' \
-		testing/test_terminal.py || die
-	sed -i -e 's:test_trial_pdb:_&:' testing/test_unittest.py || die
-
 	distutils-r1_python_prepare_all
 }
 
 python_test() {
-	"${PYTHON}" "${BUILD_DIR}"/lib/pytest.py --lsof -rfsxX \
-		-vv testing || die "tests failed with ${EPYTHON}"
+	# In v4.1.1, pytest started being picky about its own verbosity options.
+	# running pytest on itself with -vv made 3 tests fail. This is why we don't
+	# have it below.
+	"${EPYTHON}" "${BUILD_DIR}"/lib/pytest.py --lsof -rfsxX \
+		|| die "tests failed with ${EPYTHON}"
 }
