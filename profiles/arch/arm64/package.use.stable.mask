@@ -100,7 +100,3 @@ dev-libs/libverto tevent
 # systemtap is not yet stable on arm64
 dev-libs/glib systemtap
 sys-libs/glibc systemtap
-
-# Michael Weber <xmw@gentoo.org> (29 Mar 2017)
-# unstable deps mesa llvm et al.
-x11-libs/cairo gles2 opengl
