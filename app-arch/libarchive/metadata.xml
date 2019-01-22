@@ -32,5 +32,8 @@
 			built-in. It's also needed for supporting extraction of ZIP
 			files.
 		</flag>
+		<flag name="zstd">
+			Enable support for zstd compression using <pkg>app-arch/zstd</pkg>
+		</flag>
 	</use>
 </pkgmetadata>
