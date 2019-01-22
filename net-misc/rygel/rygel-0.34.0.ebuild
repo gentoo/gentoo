@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,13 +9,11 @@ inherit gnome2 systemd versionator virtualx
 DESCRIPTION="Rygel is an open source UPnP/DLNA MediaServer"
 HOMEPAGE="https://wiki.gnome.org/Projects/Rygel"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="X +introspection +sqlite tracker test transcode"
 
-# The deps for tracker? and transcode? are just the earliest available
-# version at the time of writing this ebuild
 RDEPEND="
 	>=dev-libs/glib-2.40.0:2
 	>=dev-libs/libgee-0.8:0.8
@@ -37,7 +35,7 @@ RDEPEND="
 		dev-libs/libunistring:=
 		x11-libs/gdk-pixbuf:2
 	)
-	tracker? ( >=app-misc/tracker-0.16:= )
+	tracker? ( app-misc/tracker:0/100 )
 	transcode? (
 		media-libs/gst-plugins-bad:1.0
 		media-plugins/gst-plugins-twolame:1.0
