@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit gnome2-utils
 
 DESCRIPTION="GPS data editor and analyzer"
 HOMEPAGE="https://sourceforge.net/projects/viking/"
-IUSE="doc +exif libexif gps +magic mapnik nls sqlite"
+IUSE="doc +exif libexif geoclue gps +magic mapnik nls sqlite"
 SRC_URI="
 	mirror://sourceforge/${PN}/${P}.tar.bz2
 	doc? ( mirror://sourceforge/${PN}/${PN}.pdf )"
@@ -18,12 +18,14 @@ KEYWORDS="~amd64 ~x86"
 
 COMMONDEPEND="
 	app-arch/bzip2
+	>=dev-tcltk/expect-5.45.4
 	dev-libs/expat
 	dev-libs/glib:2
 	net-misc/curl
 	sys-libs/zlib
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
+	geoclue? ( app-misc/geoclue:2.0 )
 	gps? ( >=sci-geosciences/gpsd-2.96 )
 	exif? ( libexif? ( media-libs/libexif ) !libexif? ( media-libs/gexiv2 ) )
 	magic? ( sys-apps/file )
@@ -58,6 +60,7 @@ src_configure() {
 		--disable-dem24k \
 		$(use_enable exif geotag) \
 		$(use_with libexif ) \
+		$(use_enable geoclue) \
 		$(use_enable gps realtime-gps-tracking) \
 		$(use_enable magic) \
 		$(use_enable mapnik) \
