@@ -1552,7 +1552,7 @@ app-vim/detectindent 1.0_p20150908: vim plugin: automatically detect file indent
 app-vim/dhcpd-syntax 20030825-r1: vim plugin: syntax highlighting for dhcpd.conf
 app-vim/diffchar 8.1: vim plugin: highlight the exact differences, based on characters and words
 app-vim/dirdiff 1.1.5-r1: vim plugin: diff and merge two directories recursively
-app-vim/easy-align 2.10.0: vim plugin: a simple alignment plugin
+app-vim/easy-align 2.10.0-r1: vim plugin: a simple alignment plugin
 app-vim/easytags 3.11: vim plugin: automated tag file generation and syntax highlighting
 app-vim/ebnf-syntax 1.1-r2: vim plugin: EBNF (ISO/IEC 14997) file syntax highlighting
 app-vim/emmet 0.85-r1: vim plugin: HTML and CSS hi-speed coding
@@ -1567,7 +1567,7 @@ app-vim/frawor 0.2.3: vim plugin: modular vim framework
 app-vim/fugitive 2.4: vim plugin: a git wrapper for vim
 app-vim/fuzzyfinder 4.2.2: vim plugin: buffer/file/command/tag/etc explorer with fuzzy matching
 app-vim/genindent 1.1-r1: vim plugin: library for simplifying indent files
-app-vim/gentoo-syntax 20180821 20181023: vim plugin: Gentoo and Portage syntax highlighting
+app-vim/gentoo-syntax 20181023: vim plugin: Gentoo and Portage syntax highlighting
 app-vim/genutils 2.5: vim plugin: library with various useful functions
 app-vim/gist 7.3: vim plugin: interact with gists (gist.github.com)
 app-vim/gitgutter 20180316: vim plugin: shows a git diff in the sign column and stages/reverts hunks
