@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="A special version of RepBase used by RepeatMasker"
 HOMEPAGE="http://repeatmasker.org/"
-SRC_URI="repeatmaskerlibraries-${PV}.tar.gz"
+SRC_URI="RepBaseRepeatMaskerEdition-${PV}.tar.gz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -28,7 +28,6 @@ pkg_nofetch() {
 
 src_install() {
 	insinto /usr/share/repeatmasker/Libraries
-	doins "${S}"/RepeatMaskerLib.embl
-	dodoc README
-	dohtml README.html
+	doins "${S}"/RMRBSeqs.embl
+	dodoc README.RMRBSeqs
 }
