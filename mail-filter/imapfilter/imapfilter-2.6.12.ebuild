@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -25,6 +25,7 @@ DEPEND="${RDEPEND}"
 DOCS="AUTHORS NEWS README samples/*"
 
 src_prepare() {
+	default
 	sed -i -e "/^PREFIX/s:/usr/local:${EPREFIX}/usr:" \
 		-e "/^MANDIR/s:man:share/man:" \
 		-e "/^CFLAGS/s:CFLAGS =:CFLAGS +=:" \
