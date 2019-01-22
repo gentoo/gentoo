@@ -4,20 +4,19 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-EGIT_REPO_URI="https://github.com/dbcli/mycli.git"
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="CLI for MySQL Database with auto-completion and syntax highlighting"
 
 HOMEPAGE="https://www.mycli.net"
-SRC_URI=""
+SRC_URI="https://github.com/dbcli/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="ssh test"
 RDEPEND="
 	>=dev-python/cli_helpers-1.0.1[${PYTHON_USEDEP}]
-	>=dev-python/click-7.0[${PYTHON_USEDEP}]
+	>=dev-python/click-4.1[${PYTHON_USEDEP}]
 	>=dev-python/configobj-5.0.6[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/prompt_toolkit-2.0.6[${PYTHON_USEDEP}]
