@@ -67,6 +67,9 @@ multilib_src_configure() {
 		$(use_with nettle)
 		$(use_with zlib)
 		$(use_with zstd)
+
+		# Windows-specific
+		--without-cng
 	)
 	if multilib_is_native_abi ; then
 		myconf+=(
