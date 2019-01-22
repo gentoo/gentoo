@@ -67,13 +67,6 @@ sys-devel/gettext cvs
 # Requires masked dependent flags.
 net-dns/avahi howl-compat python
 
-# Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
-# Requires xorg-server[xvfb] for tests
-net-libs/glib-networking test
-dev-util/cmake test
-dev-libs/glib test
-app-crypt/heimdal test
-
 # Michał Górny <mgorny@gentoo.org> (28 Feb 2018)
 # Requires masked dependent flags.
 net-dns/avahi mdnsresponder-compat
@@ -82,7 +75,6 @@ net-fs/samba ads
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # Masked due to unstable deps.
 dev-db/redis tcmalloc
-dev-libs/glib test
 dev-python/hgdistver test
 dev-python/pycurl test
 dev-python/pyopenssl test
