@@ -154,7 +154,7 @@ sys-cluster/neutron haproxy
 # Requires unkeyworded dependencies.
 dev-python/ipython notebook
 dev-python/networkx scipy
-<dev-ruby/haml-5 test
+dev-ruby/haml test
 media-libs/ming php
 media-libs/opencv contrib_dnn
 net-analyzer/icinga2 classicui
