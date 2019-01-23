@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mattsch@gmail.com</email>
+		<name>Matthew Schultz</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>skype-dbus-mock mocks the systemd dbus interface and is meant to provide an alternative to installing elogind or systemd when installing net-im/skypeforlinux-8.30+ on systems that use openrc and consolekit.</longdescription>
+</pkgmetadata>
