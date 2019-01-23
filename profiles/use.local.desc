@@ -1338,6 +1338,7 @@ dev-java/ant:jmf - Enable JMF (Java Media Framework) Ant tasks
 dev-java/ant:jsch - Disable Jsch (ssh, scp and related) Ant tasks
 dev-java/ant:junit - Enable JUnit Ant tasks
 dev-java/ant:junit4 - Enable JUnit4 Ant tasks
+dev-java/ant:junitlauncher - Enable JUnit5 Ant tasks
 dev-java/ant:log4j - Enable Apache log4j Ant tasks
 dev-java/ant:oro - Enable Apache Oro Ant tasks
 dev-java/ant:regexp - Enable Apache Regexp Ant tasks
