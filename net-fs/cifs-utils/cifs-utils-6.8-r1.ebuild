@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils linux-info multilib pam
+inherit autotools linux-info multilib pam
 
 DESCRIPTION="Tools for Managing Linux CIFS Client Filesystems"
 HOMEPAGE="https://wiki.samba.org/index.php/LinuxCIFS_utils"
@@ -12,7 +12,7 @@ SRC_URI="https://ftp.samba.org/pub/linux-cifs/${PN}/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-linux"
-IUSE="+acl +ads +caps +caps-ng creds pam"
+IUSE="+acl +ads +caps creds pam"
 
 RDEPEND="
 	!net-fs/mount-cifs
@@ -22,8 +22,7 @@ RDEPEND="
 		sys-libs/talloc
 		virtual/krb5
 	)
-	caps? ( !caps-ng? ( sys-libs/libcap ) )
-	caps? ( caps-ng? ( sys-libs/libcap-ng ) )
+	caps? ( sys-libs/libcap-ng )
 	pam? ( virtual/pam )
 "
 DEPEND="${RDEPEND}"
@@ -65,8 +64,7 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable acl cifsacl cifsidmap)
 		$(use_enable ads cifsupcall)
-		$(use caps && use_with !caps-ng libcap || echo --without-libcap)
-		$(use caps && use_with caps-ng libcap-ng || echo --without-libcap-ng)
+		$(use_with caps libcap)
 		$(use_enable creds cifscreds)
 		$(use_enable pam)
 		$(use_with pam pamdir $(getpam_mod_dir))
@@ -84,7 +82,7 @@ src_install() {
 
 	if use acl ; then
 		dodir /etc/cifs-utils
-		dosym /usr/$(get_libdir)/cifs-utils/idmapwb.so \
+		dosym ../../usr/$(get_libdir)/cifs-utils/idmapwb.so \
 			/etc/cifs-utils/idmap-plugin
 		dodir /etc/request-key.d
 		echo 'create cifs.idmap * * /usr/sbin/cifs.idmap %k' \
