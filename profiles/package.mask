@@ -169,6 +169,12 @@ net-voip/linphone
 net-libs/libeXosip
 net-libs/libosip
 
+# Aaron W. Swenson <titanofold@gentoo.org> (25 Oct 2018)
+# Fails to build against up to date OpenSSL library (Bug 663966). No longer
+# supported upstream. Use dev-db/pgadmin4.
+# Masked for removal on 2018-11-24, bug #669650.
+dev-db/pgadmin3
+
 # Lars Wendler <polynomial-c@gentoo.org> (22 Oct 2018)
 # Breaks dev-libs/gobject-introspection and its consumers
 # See #669278
