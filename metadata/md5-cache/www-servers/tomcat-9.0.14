@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=dev-java/eclipse-ecj:4.10 dev-java/tomcat-servlet-api:4.0 app-admin/pwgen >=dev-java/ant-core-1.9.13 >=virtual/jdk-11 test? ( >=dev-java/ant-junit-1.9:0 dev-java/easymock:3.2 ) >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
+EAPI=6
+HOMEPAGE=https://tomcat.apache.org/
+IUSE=extra-webapps elibc_FreeBSD doc source test elibc_FreeBSD
+KEYWORDS=~amd64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=Apache-2.0
+RDEPEND=dev-java/eclipse-ecj:4.10 dev-java/tomcat-servlet-api:4.0 !<dev-java/tomcat-native-1.1.24 >=virtual/jre-11 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+RESTRICT=test
+SLOT=9
+SRC_URI=mirror://apache/tomcat/tomcat-9/v9.0.14/src/apache-tomcat-9.0.14-src.tar.gz https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bnd/4.1.0/biz.aQute.bnd-4.1.0.jar https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bndlib/4.1.0/biz.aQute.bndlib-4.1.0.jar
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	java-ant-2	6505e8068920164179b7e3926220c89f	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	99ea75c9f08fd38989951c554dfa56ea	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	prefix	e51c7882b7b721e54e684f7eb143cbfe	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
+_md5_=71a22b46a2e86e50599b2dc41c2beb92
