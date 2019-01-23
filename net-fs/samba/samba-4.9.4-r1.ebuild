@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+),xml(+)'
 
-inherit python-single-r1 waf-utils multilib-minimal linux-info systemd
+inherit python-single-r1 waf-utils multilib-minimal linux-info systemd pam
 
 MY_PV="${PV/_rc/rc}"
 MY_P="${PN}-${MY_PV}"
@@ -49,14 +49,14 @@ CDEPEND="
 	>=dev-util/cmocka-1.1.1[${MULTILIB_USEDEP}]
 	net-libs/libnsl:=[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-1.5.2[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	<sys-libs/ldb-1.6.0[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-1.4.3[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	<sys-libs/ldb-1.5.0[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/libcap
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	sys-libs/readline:0=
-	>=sys-libs/talloc-2.1.15[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.3.17[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.9.38[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.1.14[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.3.16[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.9.37[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libiconv
 	pam? ( virtual/pam )
@@ -203,7 +203,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with dmapi)
 		$(multilib_native_use_with fam)
 		$(multilib_native_use_with gpg gpgme)
-		$(multilib_native_use_with json)
+		$(multilib_native_use_with json json-audit)
 		$(multilib_native_use_enable iprint)
 		$(multilib_native_use_with pam)
 		$(multilib_native_usex pam "--with-pammodulesdir=${EPREFIX}/$(get_libdir)/security" '')
@@ -214,12 +214,11 @@ multilib_src_configure() {
 		$(multilib_native_usex python '' '--disable-python')
 		$(multilib_native_use_enable zeroconf avahi)
 		$(multilib_native_usex test '--enable-selftest' '')
-		$(usex system-mitkrb5 "--with-system-mitkrb5 $(multilib_native_usex addc --with-experimental-mit-ad-dc '')" '')
+		$(usex system-mitkrb5 '--with-system-mitkrb5' '')
 		$(use_enable gnutls)
 		$(use_with debug lttng)
 		$(use_with ldap)
 	)
-
 	multilib_is_native_abi && myconf+=( --with-shared-modules=${SHAREDMODS} )
 
 	CPPFLAGS="-I${SYSROOT}${EPREFIX}/usr/include/et ${CPPFLAGS}" \
@@ -272,6 +271,20 @@ multilib_src_install() {
 		systemd_dounit "${FILESDIR}"/winbindd.service
 		systemd_dounit "${FILESDIR}"/samba.service
 	fi
+
+	if use pam and use winbind ; then
+		newpamd "${CONFDIR}/system-auth-winbind.pam" system-auth-winbind
+		# bugs #376853 and #590374
+		insinto /etc/security
+		doins examples/pam_winbind/pam_winbind.conf || die
+	fi
+
+	keepdir /var/cache/samba
+	keepdir /var/lib/ctdb
+	keepdir /var/lib/samba/{bind-dns,private}
+	keepdir /var/lock/samba
+	keepdir /var/log/samba
+	keepdir /var/run/{ctdb,samba}
 }
 
 multilib_src_test() {
