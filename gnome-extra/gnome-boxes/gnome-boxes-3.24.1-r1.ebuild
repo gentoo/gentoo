@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit gnome2 linux-info readme.gentoo-r1 vala
 DESCRIPTION="Simple GNOME 3 application to access remote or virtual systems"
 HOMEPAGE="https://wiki.gnome.org/Apps/Boxes"
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-2+"
 SLOT="0"
 
 # We force 'bindist' due to licenses from gnome-boxes-nonfree
@@ -41,7 +41,7 @@ RDEPEND="
 	>=net-misc/spice-gtk-0.32[gtk3(+),smartcard,usbredir]
 	virtual/libusb:1
 
-	>=app-misc/tracker-0.16:0=[iso]
+	app-misc/tracker:0/100[iso]
 
 	>=sys-apps/util-linux-2.20
 	>=net-libs/libsoup-2.38:2.4
@@ -53,11 +53,12 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	$(vala_depend)
-	app-text/yelp-tools
 	>=dev-util/intltool-0.40
+	dev-util/itstool
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 "
+# eautoreconf needs yelp-tools
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="Before running gnome-boxes, you will need to load the KVM modules.
