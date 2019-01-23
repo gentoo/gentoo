@@ -552,7 +552,7 @@ src_install() {
 		insinto /usr/$(get_libdir)/${PN}/program
 		newins "${WORKDIR}/branding-sofficerc" sofficerc
 		dodir /etc/env.d
-		echo "CONFIG_PROTECT=/usr/$(get_libdir)/${PN}/program/sofficerc" > "${ED}"etc/env.d/99${PN} || die
+		echo "CONFIG_PROTECT=/usr/$(get_libdir)/${PN}/program/sofficerc" > "${ED%/}"/etc/env.d/99${PN} || die
 	fi
 
 	# Hack for offlinehelp, this needs fixing upstream at some point.
@@ -561,8 +561,8 @@ src_install() {
 	insinto /usr/$(get_libdir)/libreoffice/help
 	doins xmlhelp/util/*.xsl
 
-	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/soffice.bin
-	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/unopkg.bin
+	pax-mark -m "${ED%/}"/usr/$(get_libdir)/libreoffice/program/soffice.bin
+	pax-mark -m "${ED%/}"/usr/$(get_libdir)/libreoffice/program/unopkg.bin
 }
 
 pkg_postinst() {
