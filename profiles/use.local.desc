@@ -768,6 +768,7 @@ app-office/kmymoney:weboob - Enable import of online banking transactions extrac
 app-office/libreoffice:coinmp - Use sci-libs/coinor-mp as alternative solver
 app-office/libreoffice:googledrive - Enable support for remote files on Google Drive
 app-office/libreoffice:gtk2 - Enable legacy gtk2 frontend
+app-office/libreoffice:mariadb - Prefer mariadb connector over mysql connector
 app-office/libreoffice:odk - Build the Office Development Kit
 app-office/libreoffice:pdfimport - Enable PDF import via the Poppler library
 app-office/libreoffice:vlc - Use media-video/vlc for video embedding
