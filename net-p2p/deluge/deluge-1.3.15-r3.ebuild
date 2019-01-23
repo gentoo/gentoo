@@ -10,11 +10,10 @@ inherit distutils-r1 systemd user
 DESCRIPTION="BitTorrent client with a client/server model"
 HOMEPAGE="https://deluge-torrent.org/"
 
-if [[ ${PV} == 1.3.9999 ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://deluge-torrent.org/${PN}.git
 		http://git.deluge-torrent.org/${PN}"
-	EGIT_BRANCH="1.3-stable"
 	SRC_URI=""
 else
 	SRC_URI="http://download.deluge-torrent.org/source/${P}.tar.bz2"
@@ -31,6 +30,7 @@ REQUIRED_USE="
 "
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.5-disable_libtorrent_internal_copy.patch"
+	"${FILESDIR}/${PN}-1.3.15-r1-fix-preferences-ui.patch"
 )
 
 DEPEND="<net-libs/libtorrent-rasterbar-1.2[python,${PYTHON_USEDEP}]
