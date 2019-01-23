@@ -331,14 +331,6 @@ sys-devel/automake:1.8
 # upstream.
 >=app-text/jabref-bin-4.0
 
-# Hans de Graaff <graaff@gentoo.org> (05 Jun 2017)
-# Bundles obsolete and vulnerable webkit version.
-# Upstream has stopped development and recommends using
-# headless mode in >=www-client/chromium-59.
-# Masked for removal in 90 days. Bug #589994.
-www-client/phantomjs
-dev-ruby/poltergeist
-
 # Michał Górny <mgorny@gentoo.org> (22 May 2017)
 # for Maciej S. Szmigiero <mail@maciej.szmigiero.name>
 # Any version above 5.100.138 breaks b43 driver in various ways.
