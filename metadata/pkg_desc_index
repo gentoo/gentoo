@@ -8546,7 +8546,7 @@ net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 4.1.25: An authoritative only, high performance, open source name server
 net-dns/openresolv 3.9.0: A framework for managing DNS information
 net-dns/pdns 4.1.5: The PowerDNS Daemon
-net-dns/pdns-recursor 4.1.8 4.1.9: The PowerDNS Recursor
+net-dns/pdns-recursor 4.1.9: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.5: A wrapper for DNS name resolving or DNS faking
