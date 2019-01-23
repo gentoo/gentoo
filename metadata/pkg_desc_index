@@ -2913,7 +2913,7 @@ dev-lang/mmix 20131017 20160804: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/mono 4.4.1.0 4.8.0.524: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 4.6-r1: Visual Basic Compiler and Runtime
 dev-lang/mujs 1.0.4 1.0.5: An embeddable Javascript interpreter in C.
-dev-lang/nasm 2.13.01: groovy little assembler
+dev-lang/nasm 2.13.01 2.14.02: groovy little assembler
 dev-lang/ocaml 4.04.2-r1: Type-inferring functional programming language descended from the ML family
 dev-lang/orc 0.4.28-r1: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/perl 5.24.3-r1 5.26.2: Larry Wall's Practical Extraction and Report Language
@@ -5168,6 +5168,7 @@ dev-python/nosehtmloutput 0.0.5: Nose plugin to produce test results in html
 dev-python/nosexcover 1.0.10: Extends nose.plugins.cover to add Cobertura-style XML reports
 dev-python/notebook 5.0.0: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
+dev-python/notify2 0.3: Python interface to DBus notifications.
 dev-python/numba 0.27.0 0.37.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numexpr 2.6.1 2.6.8: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.9.2 1.10.4 1.14.5: Fast array and numerical python library
@@ -9149,7 +9150,7 @@ net-print/foomatic-db-engine 4.0.11 4.0.12: Generates ppds out of xml foomatic p
 net-print/foomatic-db-ppds 4.0.20170331: linuxprinting.org PPD files for postscript printers
 net-print/gtklp 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.2.13: Ghostscript and cups printer drivers
-net-print/hplip 3.18.6: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip 3.18.6 3.18.12: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
 net-print/ink 0.5.1: A command line utility to display the ink level of your printer
 net-print/libgnomecups 0.2.3-r3 0.2.3-r5: GNOME cups library
 net-print/libinklevel 0.9.2: A library to get the ink level of your printer
