@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,8 +7,7 @@ inherit bash-completion-r1
 
 DESCRIPTION="Screen capture utility using imlib2 library"
 HOMEPAGE="http://www.linuxbrit.co.uk/"
-SRC_URI="http://www.linuxbrit.co.uk/downloads/${P}.tar.gz"
-
+SRC_URI="http://http.debian.net/debian/pool/main/s/${PN}/${PN}_0.8.orig.tar.gz"
 LICENSE="feh LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
