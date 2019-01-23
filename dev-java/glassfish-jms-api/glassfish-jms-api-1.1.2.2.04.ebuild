@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -36,7 +36,7 @@ src_unpack() {
 }
 
 EANT_BUILD_TARGET="all"
-EANT_EXTRA_ARGS="-Djavaee.jar=\"${S}/${PN}.jar\""
+EANT_EXTRA_ARGS="-Djavaee.jar=${S}/${PN}.jar"
 EANT_DOC_TARGET=""
 
 src_compile() {
