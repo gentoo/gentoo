@@ -21,6 +21,7 @@ COMMONDEPEND="
 	>=dev-tcltk/expect-5.45.4
 	dev-libs/expat
 	dev-libs/glib:2
+	dev-libs/nettle
 	net-misc/curl
 	sys-libs/zlib
 	x11-libs/gdk-pixbuf:2
@@ -51,6 +52,7 @@ src_configure() {
 		--with-libcurl \
 		--with-expat \
 		--enable-google \
+		--enable-nettle \
 		--enable-terraserver \
 		--enable-expedia \
 		--enable-openstreetmap \
