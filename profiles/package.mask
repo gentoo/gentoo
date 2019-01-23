@@ -146,16 +146,6 @@ dev-go/sarama
 # corrupts object files: bug #671760
 >=dev-libs/elfutils-0.175
 
-# Tiziano Müller <dev-zero@gentoo.org> (21 Nov 2018)
-# Project is in maintenance-only mode with the last big release in 2012.
-# Needs a dedicated maintainer with a matching LDAP setup (extra schemas required).
-# Several open issues (#370985, #356827, #399845, #544562, #651092) and one security
-# bug (bug #66912). Therefore removal in 30 days.
-net-nds/gosa-core
-net-nds/gosa-plugin-mail
-net-nds/gosa-plugin-samba
-net-nds/gosa-plugin-systems
-
 # Mike Gilbert <floppym@gentoo.org> (10 Nov 2018)
 # Open bugs and no Gentoo maintainer.
 # Removal in 30 days.
