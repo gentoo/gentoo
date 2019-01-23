@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=x11-libs/gtk+:2 dev-libs/openssl:0 virtual/pkgconfig
+DEPEND=x11-libs/gtk+:2 dev-libs/openssl:0= virtual/pkgconfig
 DESCRIPTION=A One Time Password and S/Key calculator for X
 EAPI=6
 HOMEPAGE=http://killa.net/infosec/otpCalc/
 KEYWORDS=alpha amd64 ppc sparc x86
 LICENSE=GPL-2+
-RDEPEND=x11-libs/gtk+:2 dev-libs/openssl:0
+RDEPEND=x11-libs/gtk+:2 dev-libs/openssl:0=
 SLOT=0
 SRC_URI=http://killa.net/infosec/otpCalc/otpCalc-0.97.tar.gz https://dev.gentoo.org/~ulm/distfiles/otpcalc-0.97-patches-1.tar.xz
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=6fc7c60719d52317df17c74ca6fdede0
+_md5_=de09a9b9fd3fc87ca9708477296fc2c6
