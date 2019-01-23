@@ -3,7 +3,7 @@
 
 EAPI=6
 VALA_USE_DEPEND="vapigen"
-VALA_MIN_API_VERSION="0.28"
+VALA_MIN_API_VERSION="0.36"
 
 inherit gnome2 linux-info readme.gentoo-r1 vala
 
@@ -16,7 +16,7 @@ SLOT="0"
 # We force 'bindist' due to licenses from gnome-boxes-nonfree
 IUSE="" #bindist
 
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 # NOTE: sys-fs/* stuff is called via exec()
 # FIXME: ovirt is not available in tree
@@ -25,9 +25,10 @@ KEYWORDS="amd64"
 #        vala deps like live ebuild has.
 # FIXME: qemu probably needs to depend on spice[smartcard]
 #        directly with USE=spice
+# tracker-2 is supported, but we don't have the USE=iso replacement in main tree yet to depend on
 RDEPEND="
 	>=app-arch/libarchive-3:=
-	>=dev-libs/glib-2.38:2
+	>=dev-libs/glib-2.52:2
 	>=dev-libs/gobject-introspection-0.9.6:=
 	>=dev-libs/libxml2-2.7.8:2
 	>=sys-libs/libosinfo-0.2.12
@@ -43,8 +44,7 @@ RDEPEND="
 
 	app-misc/tracker:0/100[iso]
 
-	>=sys-apps/util-linux-2.20
-	>=net-libs/libsoup-2.38:2.4
+	>=net-libs/libsoup-2.44:2.4
 
 	sys-fs/mtools
 	>=virtual/libgudev-165:=
@@ -53,9 +53,8 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	$(vala_depend)
-	>=dev-util/intltool-0.40
 	dev-util/itstool
-	>=sys-devel/gettext-0.17
+	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
 # eautoreconf needs yelp-tools
@@ -74,7 +73,7 @@ pkg_pretend() {
 	if linux_config_exists; then
 		if ! { linux_chkconfig_present KVM_AMD || \
 			linux_chkconfig_present KVM_INTEL; }; then
-			ewarn "You need KVM support in your kernel to use GNOME Boxes!"
+			ewarn "You need KVM support in your kernel to use GNOME Boxes local support!"
 		fi
 	fi
 }
