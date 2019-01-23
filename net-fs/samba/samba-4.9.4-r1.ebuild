@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+),xml(+)'
 
-inherit python-single-r1 waf-utils multilib-minimal linux-info systemd
+inherit python-single-r1 waf-utils multilib-minimal linux-info systemd pam
 
 MY_PV="${PV/_rc/rc}"
 MY_P="${PN}-${MY_PV}"
@@ -271,6 +271,20 @@ multilib_src_install() {
 		systemd_dounit "${FILESDIR}"/winbindd.service
 		systemd_dounit "${FILESDIR}"/samba.service
 	fi
+
+	if use pam and use winbind ; then
+		newpamd "${CONFDIR}/system-auth-winbind.pam" system-auth-winbind
+		# bugs #376853 and #590374
+		insinto /etc/security
+		doins examples/pam_winbind/pam_winbind.conf || die
+	fi
+
+	keepdir /var/cache/samba
+	keepdir /var/lib/ctdb
+	keepdir /var/lib/samba/{bind-dns,private}
+	keepdir /var/lock/samba
+	keepdir /var/log/samba
+	keepdir /var/run/{ctdb,samba}
 }
 
 multilib_src_test() {
