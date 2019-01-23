@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )  # 3.7 dropped due to dep-hell
 
 inherit distutils-r1
 
@@ -17,20 +17,18 @@ KEYWORDS="~amd64 ~x86 ~x64-solaris"
 
 # whisper appears to have been missed from listing in install_requires in setup.py
 RDEPEND="
-	dev-python/twisted-core[${PYTHON_USEDEP}]
-	dev-python/whisper[${PYTHON_USEDEP}]
-	dev-python/txAMQP[${PYTHON_USEDEP}]"
-
-PATCHES=(
-	# Do not install the configuration and data files. We install them
-	# somewhere sensible by hand. Patch for this vn. 0.9.14 has been extended
-	# due to redhat's init scripts set to install unconditionally in setup.py
-	"${FILESDIR}"/${P}-no-data-files.patch
-	)
+	dev-python/twisted[${PYTHON_USEDEP}]
+	dev-python/cachetools[${PYTHON_USEDEP}]
+	dev-python/txAMQP[${PYTHON_USEDEP}]
+	dev-python/urllib3[${PYTHON_USEDEP}]
+	=dev-python/whisper-${PV}*[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
-	# This sets prefix to /opt/graphite. We want FHS-style paths instead.
-	rm setup.cfg || die
+	# Do not install the configuration and data files. We install them
+	# somewhere sensible by hand.
+	sed -i -e '/data_files=install_files,/d' setup.py || die
+	# We want FHS-style paths instead of /opt/graphite
+	export GRAPHITE_NO_PREFIX=yes
 	distutils-r1_python_prepare_all
 }
 
@@ -40,7 +38,7 @@ python_install_all() {
 	insinto /etc/carbon
 	doins conf/*
 
-	dodir /var/log/carbon /var/lib/carbon/{whisper,lists,rrd}
+	keepdir /var/log/carbon /var/lib/carbon/{whisper,lists,rrd}
 
 	newinitd "${FILESDIR}"/carbon.initd2 carbon-cache
 	newinitd "${FILESDIR}"/carbon.initd2 carbon-relay
