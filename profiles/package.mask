@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (23 Jan 2019)
+# Depends on >=virtual/{jdk,jre}-11 which is masked
+=dev-java/ant-eclipse-ecj-4.10
+=dev-java/eclipse-ecj-4.10
+=www-servers/tomcat-9.0.14
+
 # Ulrich Müller <ulm@gentoo.org> (19 Jan 2019)
 # Last release in 1999, last visible upstream activity in 2011.
 # Byte-compilation fails. Masked for removal in 30 days, bug #675814.
@@ -283,8 +289,6 @@ media-libs/libglvnd
 # Java 9+ is not yet fully supported on Gentoo. Packages cannot depend
 # on it so these virtuals are not yet required. If you wish to use
 # Java 9+ then install oracle-(jdk|jre)-bin or openjdk(-bin) directly.
-virtual/jdk:9
-virtual/jre:9
 virtual/jdk:11
 virtual/jre:11
 
