@@ -233,6 +233,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-cuda-add-relaxed-constexpr.patch"
 	"${FILESDIR}/${P}-remove-git-autodetect.patch"
 	"${FILESDIR}/${P}-fix-build-with-va.patch" # bug https://bugs.gentoo.org/656576
+	"${FILESDIR}/${P}-popcnt.patch" # https://bugs.gentoo.org/633900
 )
 
 pkg_pretend() {
