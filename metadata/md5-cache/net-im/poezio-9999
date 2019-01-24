@@ -10,4 +10,4 @@ RDEPEND=dev-python/aiodns[python_targets_python3_5(-)?,python_targets_python3_6(
 REQUIRED_USE=|| ( python_targets_python3_5 python_targets_python3_6 )
 SLOT=0
 _eclasses_=distutils-r1	71a5ee567fb298e553ce8d1319279151	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=3592bdb930687c001b135797840820b1
+_md5_=dbeea6cc61e3e45433106e26ba272106
