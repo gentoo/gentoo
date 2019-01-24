@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -88,6 +88,7 @@ PATCHES=(
 	"${WORKDIR}"/${PN}-1.8.18-patchset/${PN}-1.8.1-revert_bdb6check.patch
 	"${WORKDIR}"/${PN}-1.8.18-patchset/${PN}-1.8.16-javadoc-nolint.patch
 	"${FILESDIR}"/${P}-kf5.patch
+	"${FILESDIR}"/${PN}-1.9.7-fix-wc-queries-test-test.patch
 )
 
 want_apache
