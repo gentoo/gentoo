@@ -31,6 +31,7 @@ RDEPEND=">=dev-libs/elfutils-0.142
 	)
 "
 DEPEND="${RDEPEND}
+	app-arch/cpio
 	app-text/xmlto
 	>=sys-devel/gettext-0.18.2
 	libvirt? ( dev-libs/libxml2 )
