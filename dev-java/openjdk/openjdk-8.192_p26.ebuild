@@ -71,8 +71,6 @@ DEPEND="
 PDEPEND="webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
 	nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )"
 
-RESTRICT="ccache distcc"
-
 S="${WORKDIR}/jdk${SLOT}u-jdk${MY_PV}"
 
 # The space required to build varies wildly depending on USE flags,
