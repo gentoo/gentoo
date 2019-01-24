@@ -93,6 +93,7 @@ src_configure() {
 }
 
 src_compile() {
+	addpredict /proc/self/oom_score_adj
 	cmake-utils_src_compile
 }
 
