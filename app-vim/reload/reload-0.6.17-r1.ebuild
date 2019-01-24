@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit vim-plugin
 
@@ -15,8 +15,9 @@ RDEPEND=">=app-vim/vim-misc-1.8.5"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 
-S=${WORKDIR}/vim-${P}
+S="${WORKDIR}/vim-${P}"
 
 src_prepare() {
+	default
 	rm addon-info.json *.md || die
 }

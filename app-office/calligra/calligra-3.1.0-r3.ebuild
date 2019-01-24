@@ -104,7 +104,6 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
 	sys-devel/gettext
-	x11-misc/shared-mime-info
 	test? ( $(add_frameworks_dep threadweaver) )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -121,8 +120,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-stage-qt-5.11.patch
 	"${FILESDIR}"/${P}-poppler-0.69.patch
 	"${FILESDIR}"/${P}-poppler-0.71.patch
-	"${FILESDIR}"/${P}-poppler-0.72.patch # not upstreamable
-	"${FILESDIR}"/${P}-poppler-0.73.patch
 	"${FILESDIR}"/${P}-no-webkit.patch
 )
 
@@ -137,6 +134,11 @@ pkg_setup() {
 
 src_prepare() {
 	kde5_src_prepare
+
+	if has_version ">=app-text/poppler-0.72"; then
+		eapply "${FILESDIR}"/${P}-poppler-0.72.patch # not upstreamable
+		eapply "${FILESDIR}"/${P}-poppler-0.73.patch
+	fi
 
 	if ! use test; then
 		sed -e "/add_subdirectory( *benchmarks *)/s/^/#DONT/" \
