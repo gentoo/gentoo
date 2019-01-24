@@ -4,7 +4,7 @@ DESCRIPTION=Geographic Objects for PostgreSQL
 EAPI=6
 HOMEPAGE=http://postgis.net
 IUSE=address-standardizer doc gtk static-libs mapbox test topology postgres_targets_postgres12 postgres_targets_postgres11 postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=~amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=postgres_targets_postgres12? ( dev-db/postgresql:12=[server] ) postgres_targets_postgres11? ( dev-db/postgresql:11=[server] ) postgres_targets_postgres10? ( dev-db/postgresql:10=[server] ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6=[server] ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5=[server] ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4=[server] ) dev-libs/json-c:= dev-libs/libxml2:2 >=sci-libs/geos-3.5.0 >=sci-libs/proj-4.6.0 >=sci-libs/gdal-1.10.0 address-standardizer? ( dev-libs/libpcre ) gtk? ( x11-libs/gtk+:2 ) mapbox? ( dev-libs/protobuf )
 REQUIRED_USE=test? ( doc ) || ( postgres_targets_postgres12 postgres_targets_postgres11 postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://download.osgeo.org/postgis/source/postgis-2.5.1.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	postgres	1d395ef92a41175c81bf7da2cb7fb8cb	postgres-multi	fba0b36e29a3e019a9529049008ebcc6	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=595d528f5451cc8045d92c658990e8a0
+_md5_=b63db44e7c2a3d4bbb2a1b9e6947e5ab

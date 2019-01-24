@@ -4,10 +4,10 @@ DESCRIPTION=Connection pool server for PostgreSQL
 EAPI=6
 HOMEPAGE=http://www.pgpool.net/
 IUSE=doc libressl memcached pam ssl static-libs postgres_targets_postgres11 postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=BSD
 RDEPEND=postgres_targets_postgres11? ( dev-db/postgresql:11= ) postgres_targets_postgres10? ( dev-db/postgresql:10= ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3= ) net-libs/libnsl:0= memcached? ( dev-libs/libmemcached ) pam? ( sys-auth/pambase ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) )
 SLOT=0
 SRC_URI=http://www.pgpool.net/download.php?f=pgpool-II-4.0.2.tar.gz -> pgpool-II-4.0.2.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	postgres	1d395ef92a41175c81bf7da2cb7fb8cb	postgres-multi	fba0b36e29a3e019a9529049008ebcc6	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81
-_md5_=310c64cc6b122fe8c349036ad2f77ad8
+_md5_=911bf410cc2da5e13f7f62ee1948b57b
