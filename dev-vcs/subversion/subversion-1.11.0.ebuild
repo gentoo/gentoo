@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -151,6 +151,7 @@ pkg_setup() {
 
 src_prepare() {
 	eapply "${WORKDIR}/patches"
+	eapply "${FILESDIR}"/${PN}-1.9.7-fix-wc-queries-test-test.patch
 	eapply_user
 
 	fperms +x build/transform_libtool_scripts.sh

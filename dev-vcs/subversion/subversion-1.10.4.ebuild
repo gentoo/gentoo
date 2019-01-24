@@ -151,6 +151,7 @@ pkg_setup() {
 
 src_prepare() {
 	eapply "${WORKDIR}/patches"
+	eapply "${FILESDIR}"/${PN}-1.9.7-fix-wc-queries-test-test.patch
 	eapply_user
 
 	fperms +x build/transform_libtool_scripts.sh
