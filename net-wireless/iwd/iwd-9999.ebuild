@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -66,6 +66,10 @@ pkg_pretend() {
 		WARNING_CRYPTO_SHA512_SSSE3="CRYPTO_SHA512_SSSE3: enable for increased performance"
 	fi
 
+	if use kernel_linux && kernel_is -ge 4 20; then
+		CONFIG_CHECK="${CONFIG_CHECK} ~PKCS8_PRIVATE_KEY_PARSER"
+	fi
+
 	check_extra_config
 }
 
@@ -90,7 +94,8 @@ src_configure() {
 		$(use_enable ofono) \
 		$(use_enable wired) \
 		--enable-systemd-service \
-		--with-systemd-unitdir="$(systemd_get_systemunitdir)"
+		--with-systemd-unitdir="$(systemd_get_systemunitdir)" \
+		--with-systemd-modloaddir=$(_systemd_get_dir modulesloaddir /usr/lib/modules-load.d)
 }
 
 src_install() {
