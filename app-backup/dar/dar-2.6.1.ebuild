@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/dar/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux"
-IUSE="dar32 dar64 doc gcrypt gpg lzo nls static static-libs xattr"
+IUSE="curl dar32 dar64 doc gcrypt gpg lzo nls static static-libs xattr"
 
 RESTRICT="test" # need to be run as root
 
@@ -20,6 +20,7 @@ RDEPEND=">=sys-libs/zlib-1.2.3:=
 		app-arch/bzip2:=
 		app-arch/xz-utils:=
 		sys-libs/libcap
+		curl? ( net-misc/curl )
 		gcrypt? ( dev-libs/libgcrypt:0= )
 		gpg? ( app-crypt/gpgme )
 		lzo? ( dev-libs/lzo:= )
@@ -32,6 +33,7 @@ DEPEND="${RDEPEND}
 		app-arch/xz-utils[static-libs]
 		sys-libs/libcap[static-libs]
 		sys-libs/zlib[static-libs]
+		curl? ( net-misc/curl[static-libs] )
 		gcrypt? ( dev-libs/libgcrypt:0=[static-libs] )
 		gpg? (
 			app-crypt/gpgme[static-libs]
@@ -62,6 +64,7 @@ src_configure() {
 	# logic has been fixed by upstream.
 	local myconf=(
 		--disable-upx
+		$(usex curl '' --disable-libcurl-linking)
 		$(usex dar32 --enable-mode=32 '')
 		$(usex dar64 --enable-mode=64 '')
 		$(usex doc '' --disable-build-html)
@@ -70,6 +73,7 @@ src_configure() {
 		$(usex gpg '' --disable-gpgme-linking)
 		$(usex lzo '' --disable-liblzo2-linking)
 		$(usex nls '' --disable-nls)
+		#$(usex rsync '' --disable-librsync-linking)
 		$(usex xattr '' --disable-ea-support)
 	)
 
