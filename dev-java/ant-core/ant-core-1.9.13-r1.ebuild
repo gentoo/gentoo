@@ -17,7 +17,7 @@ MY_P="apache-ant-${PV}"
 DESCRIPTION="Java-based build tool similar to 'make' that uses XML configuration files"
 HOMEPAGE="https://ant.apache.org/"
 SRC_URI="https://archive.apache.org/dist/ant/source/${MY_P}-src.tar.bz2
-	https://dev.gentoo.org/~fordfrog/distfiles/ant-${PV}-gentoo.tar.bz2"
+	https://dev.gentoo.org/~fordfrog/distfiles/ant-${PV}-r1-gentoo.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -51,6 +51,8 @@ src_prepare() {
 
 src_compile() {
 	export ANT_HOME=""
+	# Avoid error message that package ant-core was not found
+	export ANT_TASKS="none"
 
 	local bsyscp
 
