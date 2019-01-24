@@ -41,7 +41,10 @@ DEPEND="${RDEPEND}
 	kde-frameworks/extra-cmake-modules:5
 "
 
-PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-cmake.patch"
+	"${FILESDIR}/${P}-exiv2-0.27.patch" # bugs 675714, 676194
+)
 
 src_configure() {
 	local mycmakeargs=(
