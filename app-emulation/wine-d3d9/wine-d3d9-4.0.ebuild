@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,23 +19,33 @@ if [[ ${PV} == "9999" ]] ; then
 	#KEYWORDS=""
 else
 	MAJOR_V=$(ver_cut 1)
-	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.x/${MY_P}.tar.xz"
+        MINOR_V=$(ver_cut 2)
+	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.${MINOR_V}/${MY_P}.tar.xz"
 	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 fi
 S="${WORKDIR}/${MY_P}"
 
+D3D9_P="wine-d3d9-${PV}"
+D3D9_DIR="${WORKDIR}/wine-d3d9-patches-${D3D9_P}"
 GWP_V="20180120"
 PATCHDIR="${WORKDIR}/gentoo-wine-patches"
 
-DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
+DESCRIPTION="Free implementation of Windows(tm) on Unix, with Gallium Nine patchset"
 HOMEPAGE="https://www.winehq.org/"
 SRC_URI="${SRC_URI}
 	https://dev.gentoo.org/~np-hardass/distfiles/wine/gentoo-wine-patches-${GWP_V}.tar.xz
 "
 
+if [[ ${PV} == "9999" ]] ; then
+	D3D9_EGIT_REPO_URI="https://github.com/sarnex/wine-d3d9-patches.git"
+else
+	SRC_URI="${SRC_URI}
+	d3d9? ( https://github.com/sarnex/wine-d3d9-patches/archive/${D3D9_P}.tar.gz )"
+fi
+
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl test +threads +truetype udev +udisks v4l vkd3d vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags d3d9 dos elibc_glibc +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl test +threads +truetype udev +udisks v4l vkd3d vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -59,6 +69,12 @@ COMMON_DEPEND="
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	capi? ( net-libs/libcapi[${MULTILIB_USEDEP}] )
 	cups? ( net-print/cups:=[${MULTILIB_USEDEP}] )
+	d3d9? (
+		media-libs/mesa[d3d9,egl,${MULTILIB_USEDEP}]
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libXext[${MULTILIB_USEDEP}]
+		x11-libs/libxcb[${MULTILIB_USEDEP}]
+	)
 	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
 	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
 	gsm? ( media-sound/gsm:=[${MULTILIB_USEDEP}] )
@@ -68,7 +84,7 @@ COMMON_DEPEND="
 		media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}]
 	)
 	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
-	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
+	kerberos? ( virtual/krb5:0=[${MULTILIB_USEDEP}] )
 	lcms? ( media-libs/lcms:2=[${MULTILIB_USEDEP}] )
 	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 	mp3? ( >=media-sound/mpg123-1.5.0[${MULTILIB_USEDEP}] )
@@ -239,9 +255,21 @@ wine_env_vcs_vars() {
 	local pn_live_var="${PN//[-+]/_}_LIVE_COMMIT"
 	local pn_live_val="${pn_live_var}"
 	eval pn_live_val='$'${pn_live_val}
+	if [[ ! -z ${pn_live_val} ]]; then
+		if use d3d9; then
+			eerror "Because of the multi-repo nature of ${MY_PN}, ${pn_live_var}"
+			eerror "cannot be used to set the commit. Instead, you may use the"
+			eerror "environment variables:"
+			eerror "  EGIT_OVERRIDE_COMMIT_WINE"
+			eerror "  EGIT_OVERRIDE_COMMIT_SARNEX_WINE_D3D9_PATCHES"
+			eerror
+			return 1
+		fi
+	fi
 	if [[ ! -z ${EGIT_COMMIT} ]]; then
-		eerror "Commits must now be specified using the environmental variables"
-		eerror "EGIT_OVERRIDE_COMMIT_WINE"
+		eerror "Commits must now be specified using the environment variables:"
+		eerror "  EGIT_OVERRIDE_COMMIT_WINE"
+		eerror "  EGIT_OVERRIDE_COMMIT_SARNEX_WINE_D3D9_PATCHES"
 		eerror
 		return 1
 	fi
@@ -281,6 +309,9 @@ pkg_setup() {
 src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
 		EGIT_CHECKOUT_DIR="${S}" git-r3_src_unpack
+		if use d3d9; then
+			EGIT_CHECKOUT_DIR="${D3D9_DIR}" EGIT_REPO_URI="${D3D9_EGIT_REPO_URI}" git-r3_src_unpack
+		fi
 	fi
 
 	default
@@ -298,6 +329,11 @@ src_prepare() {
 	}
 
 	local md5="$(md5sum server/protocol.def)"
+
+	if use d3d9; then
+		PATCHES+=( "${D3D9_DIR}/d3d9-helper.patch" )
+		PATCHES+=( "${D3D9_DIR}/wine-d3d9.patch" )
+	fi
 
 	default
 	eapply_bin
@@ -414,6 +450,8 @@ multilib_src_configure() {
 		$(use_with xml xslt)
 	)
 
+	use d3d9 && myconf+=( $(use_with d3d9 d3d9-nine) )
+
 	local PKG_CONFIG AR RANLIB
 	# Avoid crossdev's i686-pc-linux-gnu-pkg-config if building wine32 on amd64; #472038
 	# set AR and RANLIB to make QA scripts happy; #483342
@@ -498,6 +536,10 @@ pkg_postinst() {
 	eselect wine register ${P}
 	if [[ ${PN} == "wine-vanilla" ]]; then
 		eselect wine register --vanilla ${P} || die
+	else
+		if use d3d9; then
+			eselect wine register --d3d9 ${P} || die
+		fi
 	fi
 
 	eselect wine update --all --if-unset || die
@@ -522,6 +564,10 @@ pkg_prerm() {
 	eselect wine deregister ${P}
 	if [[ ${PN} == "wine-vanilla" ]]; then
 		eselect wine deregister --vanilla ${P} || die
+	else
+		if use d3d9; then
+			eselect wine deregister --d3d9 ${P} || die
+		fi
 	fi
 
 	eselect wine update --all --if-unset || die
