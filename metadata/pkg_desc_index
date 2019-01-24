@@ -2899,7 +2899,7 @@ dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting langu
 dev-lang/fpc 2.6.4: Free Pascal Compiler
 dev-lang/ghc 7.8.4 7.10.3 8.0.2: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r3 2017 2018-r1: GNAT Ada Compiler - GPL version
-dev-lang/go 1.10.7 1.11.4: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.10.7 1.10.8 1.11.4 1.11.5: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/icon 9.5.1-r1: very high level language
 dev-lang/inform 6.33.1_p2: design system for interactive fiction

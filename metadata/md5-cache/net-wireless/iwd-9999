@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/dbus client? ( sys-libs/readline:0= )
 SLOT=0
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=61301bf05465b5a10f228f71c6455fe7
+_md5_=dd4dd1b0dd665512ac9125889cc948a2
