@@ -1,0 +1,28 @@
+From 6ba59f2f707829242ad2410803f48089062c7241 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 24 Jan 2019 23:20:09 +0100
+Subject: [PATCH] Fix build without Qt5WebKit installed
+
+---
+ skgbasegui/skgtablewithgraph.ui | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/skgbasegui/skgtablewithgraph.ui b/skgbasegui/skgtablewithgraph.ui
+index e1a3058aa..df93115f3 100644
+--- a/skgbasegui/skgtablewithgraph.ui
++++ b/skgbasegui/skgtablewithgraph.ui
+@@ -151,11 +151,6 @@
+   </layout>
+  </widget>
+  <customwidgets>
+-  <customwidget>
+-   <class>QWebView</class>
+-   <extends>QWidget</extends>
+-   <header>QtWebKitWidgets/QWebView</header>
+-  </customwidget>
+   <customwidget>
+    <class>SKGGraphicsView</class>
+    <extends>QWidget</extends>
+-- 
+2.20.1
+

@@ -18,7 +18,7 @@ KEYWORDS="amd64 x86"
 
 CAL_FTS=( karbon sheets stage words )
 
-IUSE="activities +crypt +fontconfig gemini gsl import-filter +lcms okular openexr +pdf
+IUSE="activities +charts +crypt +fontconfig gemini gsl import-filter +lcms okular openexr +pdf
 	phonon pim spacenav +truetype X $(printf 'calligra_features_%s ' ${CAL_FTS[@]})"
 
 # TODO: Not packaged: Cauchy (https://bitbucket.org/cyrille/cauchy)
@@ -65,6 +65,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	virtual/libiconv
 	activities? ( $(add_frameworks_dep kactivities) )
+	charts? ( dev-libs/kreport )
 	crypt? ( app-crypt/qca:2[qt5(+)] )
 	fontconfig? ( media-libs/fontconfig )
 	gemini? ( $(add_qt_dep qtdeclarative 'widgets') )
@@ -175,6 +176,7 @@ src_configure() {
 		-DWITH_Iconv=ON
 		-DPRODUCTSET="${myproducts[*]}"
 		$(cmake-utils_use_find_package activities KF5Activities)
+		$(cmake-utils_use_find_package charts KChart)
 		-DWITH_Qca-qt5=$(usex crypt)
 		-DWITH_Fontconfig=$(usex fontconfig)
 		$(cmake-utils_use_find_package gemini Libgit2)

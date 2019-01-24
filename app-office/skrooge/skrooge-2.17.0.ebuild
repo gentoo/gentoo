@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,8 @@ HOMEPAGE="https://skrooge.org/"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE="activities designer kde ofx webkit"
+
+REQUIRED_USE="test? ( designer )"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep karchive)
@@ -62,7 +64,6 @@ DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kwindowsystem)
 	dev-libs/libxslt
 	virtual/pkgconfig
-	x11-misc/shared-mime-info
 	designer? (
 		$(add_frameworks_dep kdesignerplugin)
 		$(add_qt_dep designer)
@@ -73,10 +74,13 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_qt_dep qtquickcontrols)
 "
 
-REQUIRED_USE="test? ( designer )"
-
 # hangs + installs files
 RESTRICT+=" test"
+
+src_prepare() {
+	use webkit || eapply "${FILESDIR}"/${P}-noqtwebkit.patch # bug 676196
+	kde5_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
