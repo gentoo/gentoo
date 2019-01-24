@@ -21,38 +21,18 @@ SRC_URI="
 	${BASE_URI}/langtools/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-langtools-${PV}.tar.bz2
 	${BASE_URI}/nashorn/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-nashorn-${PV}.tar.bz2
 "
+
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
-
-# Default variant must be first!
-# The rest do not matter.
-JVM_VARIANTS="
-	server
-	client
-	core
-	minimal
-	zero
-"
-
-IUSE=$(printf "jvm_variant_%s " ${JVM_VARIANTS})
-
-REQUIRED_USE="
-	|| ( ${IUSE} )
-	?? ( jvm_variant_core jvm_variant_zero )
-	jvm_variant_core? ( !jvm_variant_server !jvm_variant_client !jvm_variant_minimal )
-	jvm_variant_zero? ( !jvm_variant_server !jvm_variant_client !jvm_variant_minimal )
-"
-
-IUSE="+${IUSE} alsa debug doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source +webstart"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+IUSE="alsa debug cups doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source +webstart"
 
 CDEPEND="
-	dev-util/systemtap
 	media-libs/freetype:2=
-	net-print/cups
 	sys-libs/zlib
+	alsa? ( media-libs/alsa-lib )
 	!headless-awt? (
-		media-libs/giflib:0=
+		media-libs/giflib:0/7
 		x11-libs/libX11
 		x11-libs/libXext
 		x11-libs/libXi
@@ -64,12 +44,14 @@ CDEPEND="
 
 RDEPEND="
 	${CDEPEND}
-	alsa? ( media-libs/alsa-lib )
+	cups? ( net-print/cups )
 	selinux? ( sec-policy/selinux-java )
 "
 
+# cups headers requied to build, runtime dep is optional
 DEPEND="
 	${CDEPEND}
+	net-print/cups
 	app-arch/zip
 	app-misc/ca-certificates
 	dev-lang/perl
@@ -89,21 +71,17 @@ DEPEND="
 PDEPEND="webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
 	nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )"
 
+RESTRICT="ccache distcc"
+
 S="${WORKDIR}/jdk${SLOT}u-jdk${MY_PV}"
 
 # The space required to build varies wildly depending on USE flags,
 # ranging from 2GB to 24GB. This function is certainly not exact but
 # should be close enough to be useful.
 openjdk_check_requirements() {
-	local M variant count=0
-
-	for variant in ${JVM_VARIANTS}; do
-		use jvm_variant_${variant} &&
-			count=$(( $count + 1 ))
-	done
-
+	local M
 	M=$(usex debug 2600 875)
-	M=$(( $(usex debug 2900 375) * $count + $M ))
+	M=$(( $(usex debug 2900 375) + $M ))
 	M=$(( $(usex jbootstrap 2 1) * $M ))
 	M=$(( $(usex doc 300 0) + $(usex source 120 0) + 820 + $M ))
 
@@ -151,6 +129,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	chmod +x configure || die
 	local repo
 	for repo in corba hotspot jdk jaxp jaxws langtools nashorn; do
 		ln -s ../"${repo}-jdk${MY_PV}" "${repo}" || die
@@ -158,20 +137,32 @@ src_prepare() {
 }
 
 src_configure() {
+	# general build info found here:
+	#https://hg.openjdk.java.net/jdk8/jdk8/raw-file/tip/README-builds.html
+
 	# Work around stack alignment issue, bug #647954.
 	use x86 && append-flags -mincoming-stack-boundary=2
 
 	append-flags -Wno-error
 
-	chmod +x configure || die
-
-	local variant build_variants
-	for variant in ${JVM_VARIANTS}; do
-		use jvm_variant_${variant} &&
-			build_variants+=${variant},
-	done
-
-	local myconf=()
+	local myconf=(
+			--disable-ccache
+			--enable-unlimited-crypto
+			--with-boot-jdk="${JDK_HOME}"
+			--with-extra-cflags="${CFLAGS}"
+			--with-extra-cxxflags="${CXXFLAGS}"
+			--with-extra-ldflags="${LDFLAGS}"
+			--with-giflib=system
+			--with-jtreg=no
+			--with-jobs=1
+			--with-num-cores=1
+			--with-update-version="$(ver_cut 2)"
+			--with-build-number="$(ver_cut 4)"
+			--with-milestone="gentoo"
+			--with-zlib=system
+			--with-native-debug-symbols=$(usex debug internal none)
+			$(usex headless-awt --disable-headful '')
+		)
 
 	# PaX breaks pch, bug #601016
 	if use pch && ! host-is-pax; then
@@ -184,30 +175,13 @@ src_configure() {
 		unset JAVA JAVAC XARGS
 		CFLAGS= CXXFLAGS= LDFLAGS= \
 		CONFIG_SITE=/dev/null \
-		econf \
-			--disable-ccache \
-			--enable-unlimited-crypto \
-			--with-boot-jdk="${JDK_HOME}" \
-			--with-extra-cflags="${CFLAGS}" \
-			--with-extra-cxxflags="${CXXFLAGS}" \
-			--with-extra-ldflags="${LDFLAGS}" \
-			--with-giflib=system \
-			--with-jvm-variants=${build_variants%,} \
-			--with-jtreg=no \
-			--with-update-version="$(ver_cut 2)" \
-			--with-build-number="$(ver_cut 3-4)" \
-			--with-milestone="gentoo" \
-			--with-zlib=system \
-			--with-native-debug-symbols=$(usex debug internal none) \
-			$(usex headless-awt --disable-headful "") \
-			"${myconf[@]}"
+		econf "${myconf[@]}"
 	)
 }
 
 src_compile() {
-	emake -j1 \
-		$(usex jbootstrap bootcycle-images images) $(usex doc docs '') \
-		JOBS=$(makeopts_jobs) LOG=debug
+	emake -j1 LOG=debug JOBS=$(makeopts_jobs)\
+		$(usex jbootstrap bootcycle-images images) $(usex doc docs '')
 }
 
 src_install() {
@@ -217,7 +191,7 @@ src_install() {
 	cd "${S}"/build/*-release/images/j2sdk-image || die
 
 	if ! use alsa; then
-		rm -v "${ddest}"/jre/lib/$(get_system_arch)/libjsoundalsa.* || die
+		rm -v jre/lib/$(get_system_arch)/libjsoundalsa.* || die
 	fi
 
 	if ! use examples ; then
