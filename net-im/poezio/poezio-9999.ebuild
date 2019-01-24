@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SLOT="0"
 IUSE="test"
 
 if [[ "${PV}" == "9999" ]]; then
-	EGIT_REPO_URI="https://git.poez.io/${PN}.git"
+	EGIT_REPO_URI="https://lab.louiz.org/${PN}/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
