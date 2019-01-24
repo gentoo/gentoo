@@ -10088,7 +10088,7 @@ sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
 sys-devel/autoconf 2.13-r1 2.64-r1 2.69-r4: Used to create autoconfiguration files
 sys-devel/autoconf-archive 2018.03.13: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13-r1: wrapper for autoconf to manage multiple autoconf versions
-sys-devel/autogen 5.18.4 5.18.4-r1: Program and text file generation
+sys-devel/autogen 5.18.4 5.18.4-r1 5.18.16: Program and text file generation
 sys-devel/automake 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.15.1-r2 1.16.1-r1: Used to generate Makefile.in from Makefile.am
 sys-devel/automake-wrapper 10 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2: Handy console-based calculator utility
