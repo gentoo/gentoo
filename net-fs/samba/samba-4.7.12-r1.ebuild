@@ -299,7 +299,7 @@ multilib_src_install() {
 		systemd_dounit "${FILESDIR}"/samba.service
 	fi
 
-	if use pam and use winbind ; then
+	if use pam && use winbind ; then
 		newpamd "${CONFDIR}/system-auth-winbind.pam" system-auth-winbind
 		# bugs #376853 and #590374
 		insinto /etc/security
