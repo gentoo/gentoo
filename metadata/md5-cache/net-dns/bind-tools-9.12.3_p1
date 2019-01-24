@@ -1,0 +1,16 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install prepare
+DEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) gost? ( || ( =dev-libs/openssl-1.0*[-bindist] ( >=dev-libs/openssl-1.1 dev-libs/gost-engine ) ) ) xml? ( dev-libs/libxml2 ) idn? ( <net-dns/idnkit-2:= ) libidn2? ( net-dns/libidn2:= ) gssapi? ( virtual/krb5 ) libedit? ( dev-libs/libedit ) !libedit? ( readline? ( sys-libs/readline:0= ) ) seccomp? ( sys-libs/libseccomp ) virtual/pkgconfig
+DESCRIPTION=bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
+EAPI=7
+HOMEPAGE=http://www.isc.org/software/bind
+IUSE=doc gost gssapi idn ipv6 libedit libidn2 libressl readline seccomp ssl urandom xml
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0
+RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) gost? ( || ( =dev-libs/openssl-1.0*[-bindist] ( >=dev-libs/openssl-1.1 dev-libs/gost-engine ) ) ) xml? ( dev-libs/libxml2 ) idn? ( <net-dns/idnkit-2:= ) libidn2? ( net-dns/libidn2:= ) gssapi? ( virtual/krb5 ) libedit? ( dev-libs/libedit ) !libedit? ( readline? ( sys-libs/readline:0= ) ) seccomp? ( sys-libs/libseccomp ) !<net-dns/bind-9.10.2
+REQUIRED_USE=gost? ( !libressl ssl ) idn? ( !libidn2 ) libidn2? ( !idn )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://www.isc.org/downloads/file/bind-9.12.3-P1/?version=tar-gz -> bind-9.12.3_p1.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=5e112a67290991f3965d39e485da1d3f
