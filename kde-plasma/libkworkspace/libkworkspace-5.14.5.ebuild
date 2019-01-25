@@ -11,7 +11,7 @@ inherit kde5
 
 DESCRIPTION="Workspace library to interact with the Plasma session manager"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 COMMON_DEPEND="

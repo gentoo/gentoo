@@ -8,7 +8,7 @@ inherit kde5
 DESCRIPTION="Integrate Chrome/Firefox better into Plasma through browser extensions"
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="

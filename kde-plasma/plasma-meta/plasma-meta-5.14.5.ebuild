@@ -8,7 +8,7 @@ HOMEPAGE="https://www.kde.org/plasma-desktop"
 
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="bluetooth +browser-integration consolekit crypt +display-manager elogind grub gtk +handbook
 +legacy-systray networkmanager pam plymouth +pm-utils pulseaudio +sddm sdk systemd +wallpapers"
 

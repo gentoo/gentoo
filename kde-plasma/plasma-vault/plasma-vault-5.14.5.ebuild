@@ -9,7 +9,7 @@ DESCRIPTION="Plasma applet and services for creating encrypted vaults"
 HOMEPAGE+=" https://cukic.co/2017/02/03/vaults-encryption-in-plasma/"
 
 LICENSE="LGPL-3"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="networkmanager"
 
 DEPEND="
