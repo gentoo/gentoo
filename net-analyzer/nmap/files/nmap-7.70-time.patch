@@ -1,0 +1,10 @@
+--- a/nmap_error.cc
++++ b/nmap_error.cc
+@@ -135,6 +135,7 @@
+ #include "xml.h"
+ 
+ #include <errno.h>
++#include <time.h>
+ 
+ extern NmapOps o;
+ 
