@@ -124,7 +124,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.0.0-do-not-use-sysconf.patch
+	"${FILESDIR}"/${PN}-5.1.0-do-not-use-sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-5.0.0-fix-paths-for-apparmor.patch
 )
