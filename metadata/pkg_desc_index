@@ -8646,7 +8646,7 @@ net-irc/epic5 1.1.10-r2: Epic5 IRC Client
 net-irc/hexchat 2.12.4-r2: Graphical IRC client based on XChat
 net-irc/inspircd 2.0.25: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
-net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
+net-irc/iroffer-dinoex 3.30-r1: IRC fileserver using DCC
 net-irc/irssi 1.1.2: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1 1.0.2: Off-The-Record messaging (OTR) for irssi
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
