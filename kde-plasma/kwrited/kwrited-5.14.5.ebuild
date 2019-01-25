@@ -6,7 +6,7 @@ EAPI=6
 inherit kde5
 
 DESCRIPTION="KDE Plasma daemon listening for wall and write messages"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 DEPEND="
