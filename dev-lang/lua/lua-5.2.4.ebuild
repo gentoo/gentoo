@@ -7,12 +7,17 @@ inherit eutils autotools multilib multilib-minimal portability toolchain-funcs v
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
 HOMEPAGE="http://www.lua.org/"
-SRC_URI="http://www.lua.org/ftp/${P}.tar.gz"
+TEST_PV="5.2.2" # no 5.2.3-specific release yet
+TEST_A="${PN}-${TEST_PV}-tests.tar.gz"
+PKG_A="${P}.tar.gz"
+SRC_URI="
+	http://www.lua.org/ftp/${PKG_A}
+	test? ( https://www.lua.org/tests/${TEST_A} )"
 
 LICENSE="MIT"
-SLOT="5.3"
+SLOT="5.2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+deprecated emacs readline static"
+IUSE="+deprecated emacs readline static test test-complete"
 
 RDEPEND="readline? ( sys-libs/readline:0= )
 	app-eselect/eselect-lua
@@ -59,11 +64,8 @@ src_prepare() {
 	fi
 
 	# upstream does not use libtool, but we do (see bug #336167)
-	cp "${FILESDIR}/configure.in" "${S}/configure.ac" || die
+	cp "${FILESDIR}/configure.in" "${S}"/ || die
 	eautoreconf
-
-	# custom Makefiles
-	multilib_copy_sources
 
 	# A slotted Lua uses different directories for headers & names for
 	# libraries, and pkgconfig should reflect that.
@@ -71,6 +73,9 @@ src_prepare() {
 		-e "/^Libs:/s,((-llua)($| )),\2${SLOT}\3," \
 		-e "/^Cflags:/s,((-I..includedir.)($| )),\2/lua${SLOT}\3," \
 		"${S}"/etc/lua.pc
+
+	# custom Makefiles
+	multilib_copy_sources
 }
 
 multilib_src_configure() {
@@ -140,4 +145,34 @@ multilib_src_install_all() {
 
 # Makefile contains a dummy target that doesn't do tests
 # but causes issues with slotted lua (bug #510360)
-src_test() { :; }
+src_test() {
+	debug-print-function ${FUNCNAME} "$@"
+	cd "${WORKDIR}/lua-${TEST_PV}-tests" || die
+	# https://www.lua.org/tests/
+	# There are two sets:
+	# basic
+	# complete.
+	#
+	# The basic subset is selected by passing -e'_U=true'
+	# The complete set is noted to contain tests that may consume too much memory or have non-portable tests.
+	# attrib.lua for example needs some multilib customization (have to compile the stuff in libs/ for each ABI)
+	use test-complete || TEST_OPTS="-e_U=true"
+	TEST_MARKER="${T}/test.failed"
+	rm -f "${TEST_MARKER}"
+
+	# If we are failing, set the marker file, and only check it after done all ABIs
+	abi_src_test() {
+		debug-print-function ${FUNCNAME} "$@"
+		TEST_LOG="${T}/test.${MULTIBUILD_ID}.log"
+		eval "${BUILD_DIR}"/src/lua${SLOT} ${TEST_OPTS} all.lua 2>&1 | tee "${TEST_LOG}" || die
+		grep -sq -e "final OK" "${TEST_LOG}" || echo "FAIL ${MULTIBUILD_ID}" >>"${TEST_MARKER}"
+		return 0
+	}
+
+	multilib_foreach_abi abi_src_test
+
+	if [ -e "${TEST_MARKER}" ]; then
+		cat "${TEST_MARKER}"
+		die "Tests failed"
+	fi
+}
