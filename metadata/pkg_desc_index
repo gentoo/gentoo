@@ -1837,7 +1837,7 @@ dev-cpp/clucene 2.3.3.4-r6: High-performance, full-featured text search engine b
 dev-cpp/commoncpp2 1.8.1-r2 1.8.1-r3: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.1.4: Provides C++ support for the HOCON configuration file format
 dev-cpp/ctemplate 2.3-r1: A simple but powerful template language for C++
-dev-cpp/eigen 3.2.8-r2: C++ template library for linear algebra
+dev-cpp/eigen 3.2.8-r2 3.3.7: C++ template library for linear algebra
 dev-cpp/gccxml 0.9.0_pre20131217: XML output extension to GCC
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.2.0: Google's C++ argument parsing library
@@ -6425,6 +6425,7 @@ dev-util/valgrind 3.12.0 3.13.0: An open-source memory debugger for GNU/Linux
 dev-util/vbindiff 3.0_beta4-r1 3.0_beta5: Visual binary diff utility
 dev-util/vint 0.3.18: Lint tool for Vim script language
 dev-util/vulkan-headers 1.1.92.0: Vulkan Header files and API registry
+dev-util/vulkan-tools 1.1.92.0: Official Vulkan Tools and Utilities for Windows, Linux, Android, and MacOS
 dev-util/weka 3.7.13: A Java data mining package
 dev-util/wiggle 0.9-r1: tool for applying patches that patch cannot apply because of conflicting changes
 dev-util/wxglade 0.8.2: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
@@ -11207,7 +11208,7 @@ x11-plugins/wmwifi 0.6-r1: wireless network interface monitor dockapp
 x11-terms/aterm 1.0.1-r3: rxvt compatible terminal emulator with transparency support
 x11-terms/eterm 0.9.6-r2: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.24.2: The Gnome Terminal
-x11-terms/guake 0.8.8: Drop-down terminal for GTK+ desktops
+x11-terms/guake 0.8.8 3.3.2: Drop-down terminal for GNOME
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/mate-terminal 1.18.2: The MATE Terminal
 x11-terms/mlterm 3.8.4: A multi-lingual terminal emulator

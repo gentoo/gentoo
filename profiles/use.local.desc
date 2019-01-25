@@ -2147,6 +2147,8 @@ dev-util/strace:unwind - Enable stack backtraces (-k flag) via sys-libs/libunwin
 dev-util/suse-build:symlink - Provide compatibility symlinks with original openSUSE package (might clash with other packages)
 dev-util/sysprof:systemd - Build the sysprofd daemon service, required to run the UI without root permissions. Relies on sys-apps/systemd running as the init system.
 dev-util/systemtap:libvirt - Support probing of libvirt domains.
+dev-util/vulkan-tools:cube - Build the cube/cubepp demos
+dev-util/vulkan-tools:vulkaninfo - Build the vulkaninfo utility
 dev-vcs/bzr:sftp - Enable sftp support
 dev-vcs/cssc:valgrind - Enable usage of dev-util/valgrind in tests
 dev-vcs/cvs:server - Enable server support
