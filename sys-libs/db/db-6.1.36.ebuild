@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils db flag-o-matic java-pkg-opt-2 autotools multilib multilib-minimal versionator toolchain-funcs
+EAPI=6
+inherit db flag-o-matic java-pkg-opt-2 autotools multilib multilib-minimal eapi7-ver toolchain-funcs
 
 #Number of official patches
 #PATCHNO=`echo ${PV}|sed -e "s,\(.*_p\)\([0-9]*\),\2,"`
@@ -41,7 +41,7 @@ RDEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )
 	java? ( >=virtual/jre-1.5 )"
 
 MULTILIB_WRAPPED_HEADERS=(
-	/usr/include/db$(get_version_component_range 1-2)/db.h
+	/usr/include/db$(ver_cut 1-2)/db.h
 )
 
 PATCHES=(
@@ -49,7 +49,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.24-java-manifest-location.patch
 
 	# use the includes from the prefix
-	"${FILESDIR}"/${PN}-6.2.32-jni-check-prefix-first.patch
+	"${FILESDIR}"/${PN}-6.2-jni-check-prefix-first.patch
 	"${FILESDIR}"/${PN}-4.3-listen-to-java-options.patch
 
 	# sqlite configure call has an extra leading ..
@@ -66,11 +66,10 @@ src_prepare() {
 	cd "${WORKDIR}"/"${MY_P}"
 	for (( i=1 ; i<=${PATCHNO} ; i++ ))
 	do
-		epatch "${DISTDIR}"/patch."${MY_PV}"."${i}"
+		eapply "${DISTDIR}"/patch."${MY_PV}"."${i}"
 	done
 
-	epatch "${PATCHES[@]}"
-	epatch_user
+	default
 
 	# Upstream release script grabs the dates when the script was run, so lets
 	# end-run them to keep the date the same.
@@ -115,7 +114,25 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myconf=()
+	# sql_compat will cause a collision with sqlite3
+	# --enable-sql_compat
+	# Don't --enable-sql* because we don't want to use bundled sqlite.
+	# See Gentoo bug #605688
+	local myeconfargs=(
+		--enable-compat185
+		--enable-dbm
+		--enable-o_direct
+		--without-uniquename
+		--disable-sql
+		--disable-sql_codegen
+		--disable-sql_compat
+		$([[ ${ABI} == arm ]] && echo --with-mutex=ARM/gcc-assembly)
+		$([[ ${ABI} == amd64 ]] && echo --with-mutex=x86/gcc-assembly)
+		$(use_enable cxx)
+		$(use_enable cxx stl)
+		$(multilib_native_use_enable java)
+		$(use_enable test)
+	)
 
 	tc-ld-disable-gold #470634
 
@@ -134,7 +151,7 @@ multilib_src_configure() {
 
 	# use `set` here since the java opts will contain whitespace
 	if multilib_is_native_abi && use java ; then
-		myconf+=(
+		myeconfargs+=(
 			--with-java-prefix="${JAVA_HOME}"
 			--with-javac-flags="$(java-pkg_javac-args)"
 		)
@@ -142,33 +159,17 @@ multilib_src_configure() {
 
 	# Bug #270851: test needs TCL support
 	if use tcl || use test ; then
-		myconf+=(
+		myeconfargs+=(
 			--enable-tcl
 			--with-tcl="${EPREFIX}/usr/$(get_libdir)"
 		)
 	else
-		myconf+=(--disable-tcl )
+		myeconfargs+=(--disable-tcl )
 	fi
 
-	# sql_compat will cause a collision with sqlite3
-	# --enable-sql_compat
 	ECONF_SOURCE="${S_BASE}"/dist \
 	STRIP="true" \
-	econf \
-		--enable-compat185 \
-		--enable-dbm \
-		--enable-o_direct \
-		--without-uniquename \
-		--enable-sql \
-		--enable-sql_codegen \
-		--disable-sql_compat \
-		$([[ ${ABI} == arm ]] && echo --with-mutex=ARM/gcc-assembly) \
-		$([[ ${ABI} == amd64 ]] && echo --with-mutex=x86/gcc-assembly) \
-		$(use_enable cxx) \
-		$(use_enable cxx stl) \
-		$(multilib_native_use_enable java) \
-		"${myconf[@]}" \
-		$(use_enable test)
+	econf "${myeconfargs[@]}"
 }
 
 multilib_src_install() {
@@ -179,9 +180,9 @@ multilib_src_install() {
 	db_src_install_usrlibcleanup
 
 	if multilib_is_native_abi && use java; then
-		java-pkg_regso "${ED}"/usr/"$(get_libdir)"/libdb_java*.so
-		java-pkg_dojar "${ED}"/usr/"$(get_libdir)"/*.jar
-		rm -f "${ED}"/usr/"$(get_libdir)"/*.jar
+		java-pkg_regso "${ED%/}"/usr/"$(get_libdir)"/libdb_java*.so
+		java-pkg_dojar "${ED%/}"/usr/"$(get_libdir)"/*.jar
+		rm -f "${ED%/}"/usr/"$(get_libdir)"/*.jar
 	fi
 }
 
@@ -192,9 +193,9 @@ multilib_src_install_all() {
 
 	dodir /usr/sbin
 	# This file is not always built, and no longer exists as of db-4.8
-	if [[ -f "${ED}"/usr/bin/berkeley_db_svc ]] ; then
-		mv "${ED}"/usr/bin/berkeley_db_svc \
-			"${ED}"/usr/sbin/berkeley_db"${SLOT/./}"_svc || die
+	if [[ -f "${ED%/}"/usr/bin/berkeley_db_svc ]] ; then
+		mv "${ED%/}"/usr/bin/berkeley_db_svc \
+			"${ED%/}"/usr/sbin/berkeley_db"${SLOT/./}"_svc || die
 	fi
 }
 
