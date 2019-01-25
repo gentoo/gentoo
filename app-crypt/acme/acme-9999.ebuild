@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,10 +24,10 @@ SLOT="0"
 IUSE="test"
 
 RDEPEND="
-	>=dev-python/cryptography-0.8[${PYTHON_USEDEP}]
+	>=dev-python/cryptography-1.2.3[${PYTHON_USEDEP}]
 	>=dev-python/josepy-1.0.0[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
-	>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
+	>=dev-python/pyopenssl-0.13.1[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.10[${PYTHON_USEDEP}]
