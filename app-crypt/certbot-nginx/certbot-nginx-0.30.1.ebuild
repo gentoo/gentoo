@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999* ]]; then
 	S=${WORKDIR}/${P}/${PN}
 else
 	SRC_URI="https://github.com/${PN%-nginx}/${PN%-nginx}/archive/v${PV}.tar.gz -> ${PN%-nginx}-${PV}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 	S=${WORKDIR}/${PN%-nginx}-${PV}/${PN}
 fi
 
