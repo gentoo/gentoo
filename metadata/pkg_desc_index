@@ -8528,7 +8528,7 @@ net-dialup/wvdial 1.61: Excellent program to automatically configure PPP session
 net-dialup/xc 4.3.2-r3 4.3.2-r4: Modem dialout & serial terminal program
 net-dialup/xl2tpd 1.3.10: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
 net-dns/avahi 0.7-r1: System which facilitates service discovery on a local network
-net-dns/bind 9.11.2_p1 9.12.2_p2-r1: BIND - Berkeley Internet Name Domain - Name Server
+net-dns/bind 9.11.2_p1 9.11.4_p2 9.12.2_p2-r1: BIND - Berkeley Internet Name Domain - Name Server
 net-dns/bind-tools 9.11.2_p1 9.12.2_p2-r1: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.13.0: C library that resolves names asynchronously
 net-dns/ddclient 3.8.1-r5 3.9.0-r1: Perl client used to update dynamic DNS entries
