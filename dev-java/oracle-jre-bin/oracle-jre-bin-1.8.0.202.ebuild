@@ -5,7 +5,7 @@ EAPI=6
 
 inherit desktop gnome2-utils java-vm-2 prefix versionator
 
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* amd64 x86"
 
 if [[ "$(get_version_component_range 4)" == 0 ]] ; then
 	S_PV="$(get_version_component_range 1-3)"
