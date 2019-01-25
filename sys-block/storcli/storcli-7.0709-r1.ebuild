@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -24,7 +24,8 @@ DOCS=( readme.txt license.txt )
 
 MY_STORCLI_BASEDIR="/opt/lsi/storcli"
 
-QA_PRESTRIPPED="${MY_STORCLI_BASEDIR:1}/storcli"
+QA_PRESTRIPPED="${MY_STORCLI_BASEDIR:1}/storcli
+	${MY_STORCLI_BASEDIR:1}/storcli32"
 QA_PREBUILT=${QA_PRESTRIPPED}
 
 src_unpack() {
@@ -67,6 +68,8 @@ src_install() {
 	if use x86; then
 		doexe storcli
 	elif use amd64; then
+		# 32-bit version is less crashy than the 64bit (bug #656494)
+		newexe storcli storcli32
 		newexe storcli64 storcli
 	fi
 
