@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -21,7 +21,9 @@ IUSE=""
 
 ruby_add_bdepend "
 	test? (
-		>=dev-ruby/hoe-3.13
-		dev-ruby/hoe-seattlerb
 		>=dev-ruby/minitest-5.5
 	)"
+
+each_ruby_test() {
+	${RUBY} -Ilib:. -e 'Dir["test/test_*.rb"].each{|f| require f}' || die
+}
