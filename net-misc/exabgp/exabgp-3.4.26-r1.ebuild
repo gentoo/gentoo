@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="The BGP swiss army knife of networking"
 HOMEPAGE="https://github.com/Exa-Networks/exabgp"
-SRC_URI="https://github.com/Exa-Networks/${PN}/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/Exa-Networks/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
