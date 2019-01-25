@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -67,6 +67,8 @@ src_install() {
 	if use x86; then
 		doexe storcli
 	elif use amd64; then
+		# 32-bit version is less crashy than the 64bit (bug #656494)
+		newexe storcli storcli32
 		newexe storcli64 storcli
 	fi
 
