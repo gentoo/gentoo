@@ -32,10 +32,6 @@ BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}"/${P/_/-}
 
-PATCHES=(
-	"${FILESDIR}"/${P}-protobuf-fix.patch
-)
-
 pkg_setup() {
 	filter-flags -ftree-vectorize
 }
