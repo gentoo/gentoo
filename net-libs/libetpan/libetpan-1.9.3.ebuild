@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,11 +11,12 @@ SRC_URI="https://github.com/dinhviethoa/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="berkdb gnutls ipv6 liblockfile libressl sasl ssl static-libs"
+IUSE="berkdb gnutls ipv6 liblockfile libressl lmdb sasl ssl static-libs"
 
 # BerkDB is only supported up to version 6.0
 DEPEND="sys-libs/zlib
-	berkdb? ( <sys-libs/db-6.1:= )
+	!lmdb? ( berkdb? ( <sys-libs/db-6.1:= ) )
+	lmdb? ( dev-db/lmdb )
 	ssl? (
 		gnutls? ( net-libs/gnutls:= )
 		!gnutls? (
@@ -31,10 +32,15 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.0-nonnull.patch
 )
 
-pkg_setup() {
+pkg_pretend() {
 	if use gnutls && ! use ssl ; then
 		ewarn "You have \"gnutls\" USE flag enabled but \"ssl\" USE flag disabled!"
 		ewarn "No ssl support will be available in ${PN}."
+	fi
+
+	if use berkdb && use lmdb ; then
+		ewarn "You have \"berkdb\" _and_ \"lmdb\" USE flags enabled."
+		ewarn "Using lmdb as cache DB!"
 	fi
 }
 
@@ -53,6 +59,7 @@ src_configure() {
 		$(use_enable berkdb db)
 		$(use_enable ipv6)
 		$(use_enable liblockfile lockfile)
+		$(use_enable lmdb)
 		$(use_enable static-libs static)
 		$(use_with sasl)
 		$(usex ssl "$(use_with gnutls) $(use_with !gnutls openssl)" '--without-gnutls --without-openssl')
