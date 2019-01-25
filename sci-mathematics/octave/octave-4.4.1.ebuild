@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -160,6 +160,7 @@ src_configure() {
 }
 
 src_compile() {
+	export VARTEXFONTS="${T}/fonts" # otherwise it will write to /var/cache/fonts/ and trip sandbox
 	default
 	if use java; then
 		pax-mark m "${S}/src/.libs/octave-cli"
