@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare test
-DEPEND=>=dev-libs/libparserutils-0.2.1-r1 !net-libs/hubbub dev-util/netsurf-buildsystem virtual/pkgconfig test? ( dev-lang/perl >=dev-libs/json-c-0.10-r1 )
+DEPEND=>=dev-libs/libparserutils-0.2.1-r1 !net-libs/hubbub dev-util/netsurf-buildsystem virtual/pkgconfig test? ( dev-lang/perl <dev-libs/json-c-0.13 )
 DESCRIPTION=HTML5 compliant parsing library, written in C
 EAPI=7
 HOMEPAGE=http://www.netsurf-browser.org/projects/hubbub/
@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=>=dev-libs/libparserutils-0.2.1-r1 !net-libs/hubbub
 SLOT=0/0.3.5
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libhubbub-0.3.5-src.tar.gz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=51e39ce09c25948a00ddaf1003134a3d
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=7351af2ece6997ccdaa215d3fd029ce7

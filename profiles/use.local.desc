@@ -1412,6 +1412,7 @@ dev-lang/go:gccgo - Enable bootstrapping using gccgo
 dev-lang/icon:iplsrc - install the icon programming library source
 dev-lang/lazarus:minimal - Don't build extra packages from the bigide component
 dev-lang/lua:deprecated - make deprecated data structures/routines available
+dev-lang/lua:test-complete - Run the complete (non-portable) testsuite
 dev-lang/luajit:lua52compat - Enable some upwards-compatible features from Lua 5.2 that are unlikely to break existing code.
 dev-lang/mercury:erlang - Support Mercury Erlang grade
 dev-lang/mercury:trail - Support Mercury trail grades
