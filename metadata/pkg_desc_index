@@ -8910,7 +8910,7 @@ net-misc/curl 7.62.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/dhcp 4.3.6_p1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 6.11.3 6.11.5 7.0.1: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 6.11.3 7.0.1: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
 net-misc/dibbler 1.0.1: Portable DHCPv6 implementation (server, client and relay)
