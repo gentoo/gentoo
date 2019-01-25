@@ -1,0 +1,167 @@
+From 789499722508f641c7a1b6ce8857832fd9ae2c08 Mon Sep 17 00:00:00 2001
+From: Mikle Kolyada <zlogene@gentoo.org>
+Date: Fri, 25 Jan 2019 11:47:45 +0300
+Subject: [PATCH] fix config files paths
+
+---
+ beispiel.config | 12 ++++++------
+ exemple.config  | 12 ++++++------
+ sample.config   | 12 ++++++------
+ 3 files changed, 18 insertions(+), 18 deletions(-)
+
+diff --git a/beispiel.config b/beispiel.config
+index 90f76e8..a7f4d06 100644
+--- a/beispiel.config
++++ b/beispiel.config
+@@ -15,19 +15,19 @@
+ ##############################################################################
+ ###                             - pid file -                               ###
+ ### Schreibt die Prozess-ID beim Start in diese Datei                      ###
+-pidfile mybot.pid
++pidfile /var/run/iroffer-dinoex/iroffer-dinoex.pid
+ 
+ ##############################################################################
+ ###                             - log file -                               ###
+ ### logfile gibt die Logdatei für den Bot an.                              ###
+-logfile mybot.log
++logfile /var/log/iroffer-dinoex/mybot.log
+ 
+ ##############################################################################
+ ###                            - log rotate -                              ###
+ ### logrotate gibt den Zeitraum vor, nach dem die Logdatei gewechselt      ###
+ ### wird, mögliche Werte "none" (nie), "monthly" (monatlich),              ###
+ ### "weekly" (wöchentlich), "daily" (täglich) und 1-24 (stündlich).        ###
+-logrotate weekly
++logrotate none
+ 
+ ##############################################################################
+ ###                         - expire logfiles -                            ###
+@@ -41,14 +41,14 @@ logrotate weekly
+ ### Ist logstats aktiviert so schreit der Bot statistische Informationen   ###
+ ### in die Logdatei und meldet diese auch an einen eventuell aktiven       ###
+ ### DCC-Chat. Mögliche Werte yes (ja) und no (nein).                       ###
+-logstats yes
++logstats no
+ 
+ ##############################################################################
+ ###                             - state file -                             ###
+ ### Diese Datei dient als allgemeines Datenlager für die bereitgestellten  ###
+ ### Dateien und die dazugehörigen statistische Daten. Hier werden auch die ###
+ ### Beschreibungen der Pakete gespeichert.                                 ###
+-statefile mybot.state
++statefile /var/lib/iroffer-dinoex/mybot.state
+ 
+ ##############################################################################
+ ###                          - old state file -                            ###
+@@ -74,7 +74,7 @@ statefile mybot.state
+ ### als Packliste auf einer Webseite zu dienen, oder für andere Zwecke.    ###
+ ### Wenn xdcclistfileraw gesetzt ist, werden die IRC-Farbcode auch mit     ###
+ ### ausgegeben.                                                            ###
+-xdcclistfile mybot.txt
++xdcclistfile /var/lib/iroffer-dinoex/mybot.txt
+ #xdcclistfileraw
+ 
+ ##############################################################################
+diff --git a/exemple.config b/exemple.config
+index 566ffe3..8c4130e 100644
+--- a/exemple.config
++++ b/exemple.config
+@@ -15,18 +15,18 @@
+ ##############################################################################
+ ###                             - pid file -                               ###
+ ### Écrit l'identifiant du processus dans ce fichier au lancement.         ###
+-pidfile monbot.pid
++pidfile /var/run/iroffer-dinoex/iroffer-dinoex.pid
+ 
+ ##############################################################################
+ ###                             - log file -                               ###
+ ### Écrit le journal du robot dans ce fichier.                             ###
+-logfile monbot.log
++logfile /var/log/iroffer-dinoex/mybot.log
+ 
+ ##############################################################################
+ ###                            - log rotate -                              ###
+ ### Archivage du journal jamais (« none »), quotidien (« daily »),         ###
+ ### hebdomadaire (« weekly ») ou mensuelle (« monthly »).                  ###
+-logrotate weekly
++logrotate none
+ 
+ ##############################################################################
+ ###                         - expire logfiles -                            ###
+@@ -39,12 +39,12 @@ logrotate weekly
+ ###                            - log stats -                               ###
+ ### Écrit les statistiques du robot. Elles peuvent être envoyées           ###
+ ### par DCC CHAT s'il est actif.                                           ###
+-logstats yes
++logstats no
+ 
+ ##############################################################################
+ ###                             - state file -                             ###
+ ### Fichier temporaire de stockage des informations d'état d'Iroffer.      ###
+-statefile monbot.state
++statefile /var/lib/iroffer-dinoex/mybot.state
+ 
+ ##############################################################################
+ ###                          - old state file -                            ###
+@@ -71,7 +71,7 @@ statefile monbot.state
+ ### « xdcclistfile » et Iroffer écrira la liste XDCC dès que nécessaire.   ###
+ ### Si « xdcclistfileraw » est défini, le fichier sera écrit avec les      ###
+ ### caractères spéciaux IRC (couleur, format, etc.)                        ###
+-xdcclistfile monbot.txt
++xdcclistfile /var/lib/iroffer-dinoex/mybot.txt
+ #xdcclistfileraw
+ 
+ ##############################################################################
+diff --git a/sample.config b/sample.config
+index 5870e37..82fea84 100644
+--- a/sample.config
++++ b/sample.config
+@@ -15,18 +15,18 @@
+ ##############################################################################
+ ###                             - pid file -                               ###
+ ### Writes the process id to this file on startup                          ###
+-pidfile mybot.pid
++pidfile /var/run/iroffer-dinoex/iroffer-dinoex.pid
+ 
+ ##############################################################################
+ ###                             - log file -                               ###
+ ### Writes logging information to this file.                               ###
+-logfile mybot.log
++logfile /var/log/iroffer-dinoex/mybot.log
+ 
+ ##############################################################################
+ ###                            - log rotate -                              ###
+ ### After the time given here a logfile will be rotated.                   ###
+ ### logrotate can be set to none, 1 - 24 hours, daily, weekly or monthly   ###
+-logrotate weekly
++logrotate none
+ 
+ ##############################################################################
+ ###                         - expire logfiles -                            ###
+@@ -39,12 +39,12 @@ logrotate weekly
+ ###                            - log stats -                               ###
+ ### Setting logstats will log statistical information and this will also   ###
+ ###  send this stats to a dcc chat if one is active.                       ###
+-logstats yes
++logstats no
+ 
+ ##############################################################################
+ ###                             - state file -                             ###
+ ### temporary storage for iroffer state information across restarts        ###
+-statefile mybot.state
++statefile /var/lib/iroffer-dinoex/mybot.state
+ 
+ ##############################################################################
+ ###                          - old state file -                            ###
+@@ -71,7 +71,7 @@ statefile mybot.state
+ ### needed.                                                                ###
+ ### If xdcclistfileraw is set the file will be written with the IRC        ###
+ ### control characters included (color, formatting, etc..).                ###
+-xdcclistfile mybot.txt
++xdcclistfile /var/lib/iroffer-dinoex/mybot.txt
+ #xdcclistfileraw
+ 
+ ##############################################################################
+-- 
+2.19.2
+
