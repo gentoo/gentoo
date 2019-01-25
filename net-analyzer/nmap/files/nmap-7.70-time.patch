@@ -8,3 +8,33 @@
  
  extern NmapOps o;
  
+--- a/nmap.cc
++++ b/nmap.cc
+@@ -161,6 +161,7 @@
+ #endif
+ 
+ #include <fcntl.h>
++#include <time.h>
+ 
+ #ifdef HAVE_PWD_H
+ #include <pwd.h>
+--- a/osscan2.cc
++++ b/osscan2.cc
+@@ -147,6 +147,7 @@
+ 
+ #include <list>
+ #include <math.h>
++#include <time.h>
+ 
+ extern NmapOps o;
+ #ifdef WIN32
+--- a/output.cc
++++ b/output.cc
+@@ -153,6 +153,7 @@
+ #include "libnetutil/netutil.h"
+ 
+ #include <math.h>
++#include <time.h>
+ 
+ #include <set>
+ #include <vector>
