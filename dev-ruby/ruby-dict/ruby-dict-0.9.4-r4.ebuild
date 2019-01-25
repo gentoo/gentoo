@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 inherit ruby-ng
 
@@ -26,7 +26,7 @@ all_ruby_install() {
 	dobin rdict
 
 	dodoc README Changelog TODO doc/rfc2229.txt
-	dohtml doc/dict.html doc/rdict.html
+	dodoc doc/dict.html doc/rdict.html
 
 	# This would probably need a 3rb section..
 	# doman doc/dict.3
