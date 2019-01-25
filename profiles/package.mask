@@ -444,8 +444,11 @@ dev-java/jcs
 # FAIL:07:02:35 (00:00:00) db_dump/db_load(./TESTDIR.3/recd001.db:child killed: kill signal): expected 0, got 1
 # FAIL:07:02:35 (00:00:00) Dump/load of ./TESTDIR.3/recd001.db failed.
 # FAIL:07:02:35 (00:00:00) db_verify_preop: expected 0, got 1
+# Lars Wendler <polynomial-c@gentoo.org> (25 Jan 2019)
+# Also masked because of mostly incompatible license (AGPL-3)
 =sys-libs/db-6.1*
 =sys-libs/db-6.2*
+=sys-libs/db-18.1*
 
 # Ulrich Müller <ulm@gentoo.org> (15 Jul 2014)
 # Permanently mask sys-libs/lib-compat and its reverse dependencies,
