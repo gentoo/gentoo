@@ -7,7 +7,7 @@ inherit kde5
 
 DESCRIPTION="Plasma crash handler, gives the user feedback if a program crashed"
 
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="X"
 
 COMMON_DEPEND="
