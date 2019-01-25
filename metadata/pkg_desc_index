@@ -315,16 +315,16 @@ app-cdr/xbiso 0.6.1-r2: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xfburn 0.5.5: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.28.0 0.29.1: An implementation of the ACME protocol
+app-crypt/acme 0.29.1: An implementation of the ACME protocol
 app-crypt/acme-tiny 4.0.4: A tiny, auditable script for Let's Encrypt's ACME Protocol
 app-crypt/aespipe 2.4e: Encrypts data from stdin to stdout
 app-crypt/argon2 20171227: Password hashing software that won the Password Hashing Competition (PHC)
 app-crypt/bcwipe 1.9.13: Secure file removal utility
 app-crypt/ccid 1.4.29: CCID free software driver
 app-crypt/ccrypt 1.10: Encryption and decryption
-app-crypt/certbot 0.28.0 0.29.1: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/certbot-apache 0.28.0 0.29.1: Apache plugin for certbot (Let's Encrypt Client)
-app-crypt/certbot-nginx 0.28.0 0.29.1: Nginx plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot 0.29.1: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot-apache 0.29.1: Apache plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot-nginx 0.29.1: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/easy-rsa 3.0.4 3.0.5: Small RSA key management package, based on OpenSSL
 app-crypt/gcr 3.20.0 3.28.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201901130136: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
