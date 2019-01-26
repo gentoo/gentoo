@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install
+DEPEND=>=dev-libs/openssl-0.9.8e-r3:0= >=sys-libs/ncurses-5.6-r2:0= virtual/libiconv archive? ( app-arch/libarchive ) perl? ( >=dev-lang/perl-5.8.8-r2:= ) tcl? ( dev-lang/tcl:0= ) socks5? ( net-proxy/dante ) ruby? ( || ( dev-lang/ruby:2.4 dev-lang/ruby:2.3 ) virtual/rubygems ) valgrind? ( dev-util/valgrind )
+DESCRIPTION=Epic5 IRC Client
+EAPI=7
+HOMEPAGE=http://epicsol.org/
+IUSE=archive perl tcl ruby socks5 valgrind
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=BSD
+RDEPEND=>=dev-libs/openssl-0.9.8e-r3:0= >=sys-libs/ncurses-5.6-r2:0= virtual/libiconv archive? ( app-arch/libarchive ) perl? ( >=dev-lang/perl-5.8.8-r2:= ) tcl? ( dev-lang/tcl:0= ) socks5? ( net-proxy/dante ) ruby? ( || ( dev-lang/ruby:2.4 dev-lang/ruby:2.3 ) virtual/rubygems )
+SLOT=0
+SRC_URI=ftp://ftp.epicsol.org/pub/epic/EPIC5-PRODUCTION/epic5-2.0.1.tar.xz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	10cec86289e60f4b0d731b2e4b545e5d	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=0984ca0f5df78be8aea8017b711e6673

@@ -10,4 +10,4 @@ RDEPEND=berkdb? ( sys-libs/db:* ) crypt? ( dev-libs/openssl:0= ) lzo? ( dev-libs
 SLOT=0
 SRC_URI=mirror://sourceforge/lessfs/lessfs/lessfs-1.7.0/lessfs-1.7.0.tar.gz
 _eclasses_=readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=183ca41132413e1de56f5918619bd871
+_md5_=7c29bac4c4a3d7cc01364e5dadaad422
