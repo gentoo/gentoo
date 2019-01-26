@@ -9121,7 +9121,6 @@ net-p2p/ctcs 1.4.1: interface for monitoring and managing Enhanced CTorrent clie
 net-p2p/ctorrent 3.3.2-r2: Enhanced CTorrent is a BitTorrent console client written in C and C++
 net-p2p/deluge 1.3.15-r2: BitTorrent client with a client/server model
 net-p2p/ed2k_hash 0.4.0-r1: Tool for generating eDonkey2000 links
-net-p2p/gtk-gnutella 1.1.13: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/ktorrent 5.1.1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
@@ -9496,7 +9495,7 @@ sci-mathematics/normaliz 2.12.2 3.1.1 3.1.3: Tool for computations in affine mon
 sci-mathematics/octave 4.2.2: High-level interactive language for numerical computations
 sci-mathematics/otter 3.3-r3: An Automated Deduction System
 sci-mathematics/prng 3.0.2-r2: Pseudo-Random Number Generator library
-sci-mathematics/pspp 0.10.1 1.2.0: Program for statistical analysis of sampled data
+sci-mathematics/pspp 1.2.0: Program for statistical analysis of sampled data
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
 sci-mathematics/singular 3.1.6 4.0.2: Computer algebra system for polynomial computations
 sci-mathematics/snns 4.3-r2: Stuttgart Neural Network Simulator
