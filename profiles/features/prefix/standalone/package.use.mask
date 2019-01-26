@@ -1,0 +1,6 @@
+# Copyright 1999-2019 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Benda Xu <heroxbd@gentoo.org> (Jan 26, 2019)
+# native-extensions requires >=linux=4.6 for __NR_copy_file_range
+sys-apps/portage native-extensions
