@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (26 Jan 2019)
+# Fails to build with glibc-2.28, bug 669606. Removal in
+# 30 days (unless fixed).
+net-p2p/gtk-gnutella
+
 # Miroslav Šulc <fordfrog@gentoo.org> (23 Jan 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =dev-java/ant-eclipse-ecj-4.10
