@@ -59,6 +59,9 @@ DOCS=( AUTHORS HACKING NEWS README README.generic README.kernel README.modules
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
+	"${FILESDIR}"/048-dracut-install-simplify-ldd-parsing-logic.patch
+	"${FILESDIR}"/049-40network-Don-t-include-40network-by-default.patch
+	"${FILESDIR}"/049-remove-bashism-in-various-boot-scripts.patch
 )
 
 src_configure() {

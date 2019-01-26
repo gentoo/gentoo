@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://www.linuxtv.org/hg/dvb-apps/archive/3d43b280298c.tar.bz2 -> ${P
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ppc ~x86"
 IUSE="alevt usb"
 
 RDEPEND="
