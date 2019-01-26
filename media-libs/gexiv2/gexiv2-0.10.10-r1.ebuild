@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
+	gtk-doc? ( dev-util/gtk-doc )
 	test? (
 		dev-python/pygobject:3
 		media-gfx/exiv2[xmp]
