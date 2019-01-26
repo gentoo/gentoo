@@ -1,5 +1,5 @@
-DEFINED_PHASES=configure prepare unpack
-DEPEND=dev-libs/atk dev-libs/expat dev-libs/glib:2 media-sound/fluidsynth jack? ( virtual/jack ) gtk? ( x11-libs/cairo x11-libs/gtk+:2 x11-libs/gdk-pixbuf x11-libs/pango ) lash? ( media-sound/lash ) lv2? ( media-libs/lv2 ) virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure postinst postrm prepare unpack
+DEPEND=dev-libs/atk dev-libs/expat dev-libs/glib:2 media-sound/fluidsynth jack? ( virtual/jack ) gtk? ( x11-libs/cairo x11-libs/gtk+:2 x11-libs/gdk-pixbuf x11-libs/pango ) lash? ( media-sound/lash ) lv2? ( media-libs/lv2 ) virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=A set of open source instruments and effects for digital audio workstations
 EAPI=6
 HOMEPAGE=http://calf-studio-gear.org/
@@ -7,5 +7,5 @@ IUSE=cpu_flags_x86_sse gtk jack lash lv2 static-libs experimental
 LICENSE=LGPL-2.1
 RDEPEND=dev-libs/atk dev-libs/expat dev-libs/glib:2 media-sound/fluidsynth jack? ( virtual/jack ) gtk? ( x11-libs/cairo x11-libs/gtk+:2 x11-libs/gdk-pixbuf x11-libs/pango ) lash? ( media-sound/lash ) lv2? ( media-libs/lv2 )
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=94ca3aacd8f904030a3387617b2c231c
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	git-r3	0d4635eeb5a96cd5315597a47eba25c9	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_md5_=386d32440b601460d391b67c8d1d15fd
