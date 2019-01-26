@@ -11,4 +11,4 @@ RDEPEND=curl? ( net-misc/curl ) nss? ( dev-libs/nss curl? ( || ( net-misc/curl[s
 REQUIRED_USE=bindist? ( nss )
 SLOT=0
 SRC_URI=mirror://sourceforge/project/liboauth/liboauth-1.0.3.tar.gz
-_md5_=eaf4fe1a7e5d7791cf19e277b4242699
+_md5_=ec10ae4753627cacb0850ee16bf46155
