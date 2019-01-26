@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,5 +26,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	${RUBY} -Ilib:test:. -e "Dir['test/test_r*.rb'].each{|f| require f}"
+	${RUBY} -Ilib:test:. -e "Dir['test/test_r*.rb'].each{|f| require f}" || die
 }
