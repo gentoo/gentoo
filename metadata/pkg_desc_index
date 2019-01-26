@@ -6350,7 +6350,7 @@ dev-util/makeheaders 0_p4: simple utility that will automatically generate heade
 dev-util/mdds 1.3.1: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.18.2: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
-dev-util/meson 0.46.1 0.47.1 0.48.2: Open source build system
+dev-util/meson 0.48.2: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netbeans 8.2: Netbeans IDE
