@@ -33,6 +33,11 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${P}"
 
+PATCHES=(
+	# From Debian
+	"${FILESDIR}/${P}-openssl-1.1.patch"
+)
+
 src_configure() {
 	# Because of our REQUIRED_USE constraints above, we know that
 	# ruby_get_use_implementations will only ever return one ruby
