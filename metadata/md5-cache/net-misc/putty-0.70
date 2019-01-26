@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare
-DEPEND=!net-misc/pssh gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:3[X] x11-libs/libX11 x11-libs/pango ) kerberos? ( virtual/krb5 ) dev-lang/perl virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DEPEND=!net-misc/pssh gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:3[X] x11-libs/libX11 x11-libs/pango ) gssapi? ( virtual/krb5 ) dev-lang/perl virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=A Free Telnet/SSH Client
 EAPI=6
 HOMEPAGE=https://www.chiark.greenend.org.uk/~sgtatham/putty/
-IUSE=doc +gtk ipv6 kerberos
+IUSE=doc +gtk ipv6 gssapi
 KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
 LICENSE=MIT
-RDEPEND=!net-misc/pssh gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:3[X] x11-libs/libX11 x11-libs/pango ) kerberos? ( virtual/krb5 )
+RDEPEND=!net-misc/pssh gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:3[X] x11-libs/libX11 x11-libs/pango ) gssapi? ( virtual/krb5 )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jer/putty-icons.tar.bz2 https://the.earth.li/~sgtatham/putty/latest/putty-0.70.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=e9f1e3dcd434403b28e813557da3589c
+_md5_=7dbb495a13c0c087d2ebd974cfbd3455

@@ -4591,7 +4591,8 @@ net-misc/openssh:livecd - Enable root password logins for live-cd environment.
 net-misc/openssh:ssh1 - Support the legacy/weak SSH1 protocol
 net-misc/openssh:ssl - Enable additional crypto algorithms via OpenSSL
 net-misc/openvswitch:monitor - Build the Python and GUI dependent monitor applications
-net-misc/putty:gtk - Build the PuTTY client which requires x11-libs/gtk+:2. Otherwise only the CLI tools puttygen, plink, pscp and psftp will be built.
+net-misc/putty:gssapi - Enable support for GSSAPI (virtual/krb5)
+net-misc/putty:gtk - Build the PuTTY client which requires x11-libs/gtk+:3. If disabled only the CLI tools puttygen, plink, pscp and psftp will be built.
 net-misc/quagga:bgpclassless - Apply unofficial patch to enable classless prefixes for BGP. Patch and information to be found at http://hasso.linux.ee/doku.php/english:network:quagga
 net-misc/quagga:fpm - Enable Forwarding Plane Manager support
 net-misc/quagga:multipath - Enable multipath routes support for any number of routes
