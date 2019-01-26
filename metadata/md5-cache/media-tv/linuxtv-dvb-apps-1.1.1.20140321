@@ -4,10 +4,10 @@ DESCRIPTION=Small utils for DVB to scan, zap, view signal strength
 EAPI=6
 HOMEPAGE=https://www.linuxtv.org/
 IUSE=alevt usb
-KEYWORDS=~amd64 ~arm ~ppc ~x86
+KEYWORDS=~amd64 ~arm ppc ~x86
 LICENSE=GPL-2
 RDEPEND=alevt? ( !media-video/alevt media-libs/libpng:0= media-libs/zvbi[v4l] sys-libs/zlib x11-libs/libX11 ) usb? ( virtual/libusb:0 ) media-tv/dtv-scan-tables
 SLOT=0
 SRC_URI=https://www.linuxtv.org/hg/dvb-apps/archive/3d43b280298c.tar.bz2 -> linuxtv-dvb-apps-1.1.1.20140321.tar.bz2
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-snapshot	b77011b62e2053c646ad720defe6d921
-_md5_=04c9d876617aec9eba74d78ac803c994
+_md5_=fe7ed764e15c42aa6fc27af4c21201d4
