@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 inherit autotools apache-module
 
 DESCRIPTION="A QOS module for the apache webserver"
@@ -14,10 +14,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-libs/libpcre
-	dev-libs/openssl:0
+	dev-libs/libpcre:3
+	dev-libs/openssl:0=
 	media-libs/libpng:0=
-	sys-libs/zlib
+	sys-libs/zlib:0=
 "
 DEPEND="${DEPEND}"
 

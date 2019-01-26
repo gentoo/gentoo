@@ -1,9 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit eutils multilib toolchain-funcs
+EAPI=7
+inherit toolchain-funcs
 
 DESCRIPTION="VNC viewer that adds encryption security to VNC connections"
 HOMEPAGE="http://www.karlrunge.com/x11vnc/ssvnc.html"
@@ -14,10 +13,11 @@ SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="java"
 
-RDEPEND="sys-libs/zlib
+RDEPEND="
+	sys-libs/zlib:0=
 	virtual/jpeg:0
 	dev-libs/openssl:0=
-	dev-lang/tk:0
+	dev-lang/tk:0=
 	net-misc/stunnel
 	java? ( virtual/jre:* )
 	x11-terms/xterm
@@ -25,11 +25,16 @@ RDEPEND="sys-libs/zlib
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXmu
-	x11-libs/libXt"
+	x11-libs/libXt
+"
 DEPEND="${RDEPEND}
-	java? ( virtual/jdk )"
+	java? ( virtual/jdk )
+"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.0.29-build.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.29-build.patch
+	"${FILESDIR}"/${PN}-1.0.29-openssl1.1.patch
+)
 
 src_prepare() {
 	default
@@ -55,5 +60,5 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
-	dodoc README
+	einstalldocs
 }
