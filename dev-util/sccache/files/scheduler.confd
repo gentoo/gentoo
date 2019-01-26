@@ -1,0 +1,21 @@
+# /etc/conf.d/sccache-scheduler: config file for /etc/init.d/sccache-scheduler
+#
+
+# Full path to config file. /etc/sccache/scheduler.conf is default if not set.
+#SCCACHE_SCHEDULER_CONF="/etc/sccache/scheduler.conf"
+
+# logging is off by default, see https://docs.rs/env_logger for possible values
+#SCCACHE_SCHEDULER_LOGLEVEL=info
+
+# plain file (preferred), change logrotate file as well if you change this.
+#output_log=/var/log/"${RC_SVCNAME}.log"
+#error_log=/var/log/"${RC_SVCNAME}.error.log"
+
+# syslog support via LOGGER(1). Note this spawns logger processes per io stream
+#output_logger="logger -p daemon.none --"
+#error_logger="logger -p daemon.err --"
+
+
+# no limits set by default, see IONICE(1), NICE(1), START-STOP-DAEMON(8)
+#SSD_NICELEVEL=15
+#SSD_IONICELEVEL=3

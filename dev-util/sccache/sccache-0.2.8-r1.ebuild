@@ -289,9 +289,9 @@ xattr-0.2.2
 zip-0.4.2
 "
 
-inherit cargo
+inherit cargo eutils
 
-DESCRIPTION="ccache-like tool with support for rust and cloud storage"
+DESCRIPTION="ccache/distcc like tool with support for rust and cloud storage"
 HOMEPAGE="https://github.com/mozilla/sccache/"
 SRC_URI="https://github.com/mozilla/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
@@ -306,7 +306,10 @@ DEPEND="
 	gcs? ( dev-libs/openssl:0= )
 "
 
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dist-client? ( sys-devel/icecream )
+	dist-server? ( sys-apps/bubblewrap )
+"
 
 src_configure() {
 	myfeatures=(
@@ -327,8 +330,21 @@ src_compile(){
 src_install() {
 	cargo_src_install --path=. ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
 
+	keepdir /etc/sccache
+
 	einstalldocs
 	dodoc -r docs/.
+
+	if use dist-server; then
+		newinitd "${FILESDIR}"/server.initd sccache-server
+		newconfd "${FILESDIR}"/server.confd sccache-server
+
+		newinitd "${FILESDIR}"/scheduler.initd sccache-scheduler
+		newconfd "${FILESDIR}"/scheduler.confd sccache-scheduler
+
+		insinto /etc/logrotate.d
+		newins "${FILESDIR}/logrotated" sccache
+	fi
 }
 
 src_test() {
@@ -339,4 +355,6 @@ pkg_postinst() {
 	ewarn "${PN} is experimental, please use with care"
 	ewarn ""
 	ewarn "Currently there are no initscripts"
+	use memcached && optfeature "memcached backend support" net-misc/memcached
+	use redis && optfeature "redis backend support" dev-db/redis
 }
