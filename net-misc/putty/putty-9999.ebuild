@@ -12,7 +12,7 @@ LICENSE="MIT"
 
 SLOT="0"
 KEYWORDS=""
-IUSE="doc +gtk ipv6 kerberos"
+IUSE="doc +gtk ipv6 gssapi"
 
 RDEPEND="
 	!net-misc/pssh
@@ -23,7 +23,7 @@ RDEPEND="
 		x11-libs/libX11
 		x11-libs/pango
 	)
-	kerberos? ( virtual/krb5 )
+	gssapi? ( virtual/krb5 )
 "
 DEPEND="
 	${RDEPEND}
@@ -53,8 +53,8 @@ src_prepare() {
 src_configure() {
 	cd "${S}"/unix || die
 	econf \
-		$(use_with kerberos gssapi) \
-		$(use_with gtk)
+		$(use_with gssapi) \
+		$(use_with gtk gtk=3)
 }
 
 src_compile() {
