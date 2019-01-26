@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools
+inherit autotools gnome2-utils
 
 DESCRIPTION="A set of open source instruments and effects for digital audio workstations"
 HOMEPAGE="http://calf-studio-gear.org/"
@@ -53,4 +53,12 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_enable cpu_flags_x86_sse sse) \
 		$(use_enable experimental)
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
