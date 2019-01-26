@@ -7486,7 +7486,7 @@ media-libs/aalib 1.4_rc5-r6: A ASCII-Graphics Library
 media-libs/adplug 2.3.1: A free, cross-platform, hardware independent AdLib sound player library
 media-libs/aften 0.0.8-r2: An A/52 (AC-3) audio encoder
 media-libs/aldumb 0.9.3: Allegro support for DUMB (an IT, XM, S3M, and MOD player library)
-media-libs/allegro 4.4.2-r1 5.0.11 5.2.4.0: Cross-platform library aimed at video game and multimedia programming
+media-libs/allegro 4.4.2-r2 5.0.11 5.2.4.0: Cross-platform library aimed at video game and multimedia programming
 media-libs/alsa-lib 1.1.2 1.1.6-r1: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.0.28 1.1.6: Advanced Linux Sound Architecture OSS compatibility layer
 media-libs/alure 1.2-r1: The OpenAL Utility Toolkit
