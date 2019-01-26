@@ -14,6 +14,7 @@
 	and powerful queries).
 	</longdescription>
 	<use>
+		<flag name="lto">Adds support for link time optimization</flag>
 		<flag name="mms-agent">Install the MongoDB Monitoring Service agent</flag>
 		<flag name="tools">Install the MongoDB tools (mongoimport, mongodump...) from <pkg>app-admin/mongo-tools</pkg></flag>
 	</use>
