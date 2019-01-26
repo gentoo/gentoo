@@ -270,7 +270,7 @@ app-benchmarks/iozone 3.471: Filesystem benchmarking program
 app-benchmarks/nbench 2.2.3-r1: Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark
 app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communication
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
-app-benchmarks/siege 3.1.4 4.0.4: A HTTP regression testing and benchmarking utility
+app-benchmarks/siege 4.0.4: A HTTP regression testing and benchmarking utility
 app-benchmarks/spew 1.0.8-r1: Measures I/O performance and/or generates I/O load
 app-benchmarks/stress 1.0.4-r1: Imposes stressful loads on different aspects of the system
 app-benchmarks/sysbench 1.0.10 1.0.15: System performance benchmark
@@ -356,7 +356,7 @@ app-crypt/monkeysphere 0.37 0.41: Leverage the OpenPGP web of trust for OpenSSH 
 app-crypt/openpgp-keys-gentoo-release 20180706 20190102: OpenPGP keys used for Gentoo releases (snapshots, stages)
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions in 2006-2008
 app-crypt/p11-kit 0.23.12: Provides a standard configuration setup for installing PKCS#11
-app-crypt/paperkey 1.4 1.5: OpenPGP key archiver
+app-crypt/paperkey 1.5: OpenPGP key archiver
 app-crypt/pgpdump 0.30: A PGP packet visualizer
 app-crypt/pinentry 1.0.0-r2 1.1.0-r2: Simple passphrase entry dialogs which utilize the Assuan protocol
 app-crypt/qca 2.1.3-r2: Qt Cryptographic Architecture (QCA)
