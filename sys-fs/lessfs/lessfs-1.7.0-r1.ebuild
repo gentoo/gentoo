@@ -33,6 +33,11 @@ DOC_CONTENTS="Default configuration file: /etc/${PN}.cfg.
 	If your host is a client consult the following configuration
 	file: /usr/share/doc/${PF}/${PN}.cfg-slave.*"
 
+PATCHES=(
+	# From PLD-Linux, bug #674422
+	"${FILESDIR}/${P}-openssl11.patch"
+)
+
 src_configure() {
 	econf \
 		$(use_enable debug) $(use_enable debug lckdebug) \
