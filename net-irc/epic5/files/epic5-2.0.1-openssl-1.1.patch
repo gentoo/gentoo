@@ -1,0 +1,77 @@
+Index: epic5-2.0/source/crypto.c
+===================================================================
+--- epic5-2.0.orig/source/crypto.c
++++ epic5-2.0/source/crypto.c
+@@ -282,9 +282,9 @@ static char *	decipher_evp (const unsign
+ 	unsigned char	*iv = NULL;
+ 	unsigned long errcode;
+ 	int	outlen2;
+-        EVP_CIPHER_CTX a;
+-        EVP_CIPHER_CTX_init(&a);
+-	EVP_CIPHER_CTX_set_padding(&a, 0);
++	EVP_CIPHER_CTX *a = EVP_CIPHER_CTX_new();
++	EVP_CIPHER_CTX_init(a);
++	EVP_CIPHER_CTX_set_padding(a, 0);
+ 
+ 	if (ivsize > 0)
+ 		iv = new_malloc(ivsize);
+@@ -292,18 +292,19 @@ static char *	decipher_evp (const unsign
+ 	if (ivsize > 0)
+ 		memcpy(iv, ciphertext, ivsize);
+ 
+-        EVP_DecryptInit_ex(&a, type, NULL, NULL, iv);
+-	EVP_CIPHER_CTX_set_key_length(&a, passwdlen);
+-	EVP_CIPHER_CTX_set_padding(&a, 0);
+-        EVP_DecryptInit_ex(&a, NULL, NULL, passwd, NULL);
++	EVP_DecryptInit_ex(a, type, NULL, NULL, iv);
++	EVP_CIPHER_CTX_set_key_length(a, passwdlen);
++	EVP_CIPHER_CTX_set_padding(a, 0);
++	EVP_DecryptInit_ex(a, NULL, NULL, passwd, NULL);
+ 
+-        if (EVP_DecryptUpdate(&a, outbuf, outlen, ciphertext, cipherlen) != 1)
++	if (EVP_DecryptUpdate(a, outbuf, outlen, ciphertext, cipherlen) != 1)
+ 		yell("EVP_DecryptUpdate died.");
+-	if (EVP_DecryptFinal_ex(&a, outbuf + (*outlen), &outlen2) != 1)
++	if (EVP_DecryptFinal_ex(a, outbuf + (*outlen), &outlen2) != 1)
+ 		yell("EVP_DecryptFinal_Ex died.");
+ 	*outlen += outlen2;
+ 
+-        EVP_CIPHER_CTX_cleanup(&a);
++	EVP_CIPHER_CTX_cleanup(a);
++	EVP_CIPHER_CTX_free(a);
+ 
+ 	ERR_load_crypto_strings();
+ 	while ((errcode = ERR_get_error()))
+@@ -454,9 +455,9 @@ static char *	cipher_evp (const unsigned
+ 	unsigned long errcode;
+ 	u_32int_t	randomval;
+ 	int		iv_count;
+-        EVP_CIPHER_CTX a;
+-        EVP_CIPHER_CTX_init(&a);
+-	EVP_CIPHER_CTX_set_padding(&a, 0);
++	EVP_CIPHER_CTX *a = EVP_CIPHER_CTX_new();
++	EVP_CIPHER_CTX_init(a);
++	EVP_CIPHER_CTX_set_padding(a, 0);
+ 
+ 	if (ivsize < 0)
+ 		ivsize = 0;		/* Shenanigans! */
+@@ -480,12 +481,13 @@ static char *	cipher_evp (const unsigned
+ 	if (iv)
+ 		memcpy(outbuf, iv, ivsize);
+ 
+-        EVP_EncryptInit_ex(&a, type, NULL, NULL, iv);
+-	EVP_CIPHER_CTX_set_key_length(&a, passwdlen);
+-        EVP_EncryptInit_ex(&a, NULL, NULL, passwd, NULL);
+-        EVP_EncryptUpdate(&a, outbuf + ivsize, &outlen, plaintext, plaintextlen);
+-	EVP_EncryptFinal_ex(&a, outbuf + ivsize + outlen, &extralen);
+-        EVP_CIPHER_CTX_cleanup(&a);
++	EVP_EncryptInit_ex(a, type, NULL, NULL, iv);
++	EVP_CIPHER_CTX_set_key_length(a, passwdlen);
++	EVP_EncryptInit_ex(a, NULL, NULL, passwd, NULL);
++	EVP_EncryptUpdate(a, outbuf + ivsize, &outlen, plaintext, plaintextlen);
++	EVP_EncryptFinal_ex(a, outbuf + ivsize + outlen, &extralen);
++	EVP_CIPHER_CTX_cleanup(a);
++	EVP_CIPHER_CTX_free(a);
+ 	outlen += extralen;
+ 
+ 	ERR_load_crypto_strings();
