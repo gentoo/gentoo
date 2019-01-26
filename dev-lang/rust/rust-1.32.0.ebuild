@@ -64,6 +64,7 @@ S="${WORKDIR}/${MY_P}-src"
 PATCHES=(
 	"${FILESDIR}"/1.30.1-clippy-sysroot.patch
 	"${FILESDIR}"/1.32.0-fix-configure-of-bundled-llvm.patch
+	"${FILESDIR}"/1.32.0-system-llvm-7-SIGSEGV.patch
 )
 
 toml_usex() {
