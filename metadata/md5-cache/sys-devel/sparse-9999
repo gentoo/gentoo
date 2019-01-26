@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile prepare unpack
+DEFINED_PHASES=prepare unpack
 DEPEND=gtk? ( x11-libs/gtk+:2 ) llvm? ( >=sys-devel/llvm-3.0 ) xml? ( dev-libs/libxml2 ) gtk? ( virtual/pkgconfig ) xml? ( virtual/pkgconfig ) >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=C semantic parser
 EAPI=6
@@ -8,4 +8,4 @@ LICENSE=MIT
 RDEPEND=gtk? ( x11-libs/gtk+:2 ) llvm? ( >=sys-devel/llvm-3.0 ) xml? ( dev-libs/libxml2 )
 SLOT=0
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	git-r3	0d4635eeb5a96cd5315597a47eba25c9	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=b3888f15d3c2f0b8af84f6b91b9dee27
+_md5_=72d181e3a080223423ba5647abd50d2b
