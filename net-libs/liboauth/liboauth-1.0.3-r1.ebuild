@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,6 +17,7 @@ REQUIRED_USE="bindist? ( nss )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.1-doxygen-out-of-tree.patch
 	"${FILESDIR}"/${PN}-1.0.3-openssl-1.1.patch
+	"${FILESDIR}"/${PN}-1.0.3-openssl-1.1_2.patch
 )
 
 CDEPEND="
