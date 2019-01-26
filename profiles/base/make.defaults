@@ -94,7 +94,7 @@ LCD_DEVICES="bayrad cfontz cfontz633 glk hd44780 lb216 lcdm001 mtxorb ncurses te
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Nov 2008)
 # Netbeans modules/clusters
-NETBEANS="apisupport cnd groovy gsf harness ide identity j2ee java mobility nb php profiler soa visualweb webcommon websvccommon xml"
+NETBEANS_MODULES="apisupport cnd groovy gsf harness ide identity j2ee java mobility nb php profiler soa visualweb webcommon websvccommon xml"
 
 # Manuel Rüger <mrueg@gentoo.org> (09 Sep 2015)
 # Default Ruby build target(s)
