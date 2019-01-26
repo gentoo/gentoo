@@ -1,0 +1,8 @@
+--- /usr/share/applications/plexmediaserver.desktop	2019-02-07 09:00:10.803349202 -0600
++++ /usr/share/applications/plexmediaserver.desktop	2019-02-04 10:31:30.000000000 -0600
+@@ -6,4 +6,4 @@
+ Icon=plexmediaserver
+ Terminal=false
+ Type=Application
+-Categories=Audio;Music;Video;Player;Media;
++Categories=Audio;Music;Video;Player;AudioVideo;
