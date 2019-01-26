@@ -353,8 +353,6 @@ src_test() {
 
 pkg_postinst() {
 	ewarn "${PN} is experimental, please use with care"
-	ewarn ""
-	ewarn "Currently there are no initscripts"
 	use memcached && optfeature "memcached backend support" net-misc/memcached
 	use redis && optfeature "redis backend support" dev-db/redis
 }
