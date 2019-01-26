@@ -1,4 +1,4 @@
-# /etc/conf.d/sccache-scheduler: config file for /etc/init.d/sccache-scheduler
+# /etc/conf.d/sccache-server: config file for /etc/init.d/sccache-server
 #
 
 # Full path to config file. /etc/sccache/server.conf is default if not set.
