@@ -1,28 +1,36 @@
-From 6ba59f2f707829242ad2410803f48089062c7241 Mon Sep 17 00:00:00 2001
-From: Andreas Sturmlechner <asturm@gentoo.org>
-Date: Thu, 24 Jan 2019 23:20:09 +0100
-Subject: [PATCH] Fix build without Qt5WebKit installed
+From dab0fd4adf2cbee89a417c483350ddffda77ed3b Mon Sep 17 00:00:00 2001
+From: Stephane MANKOWSKI <stephane@mankowski.fr>
+Date: Sun, 27 Jan 2019 17:13:28 +0100
+Subject: skrooge w/ -DSKG_WEBENGINE=ON: ui_skgtablewithgraph.h:15:10: fatal
+ error: QtWebKitWidgets/QWebView: No such file or directory BUG:403575
 
 ---
- skgbasegui/skgtablewithgraph.ui | 5 -----
- 1 file changed, 5 deletions(-)
+ skgbasegui/skgtablewithgraph.ui | 6 ------
+ 1 file changed, 6 deletions(-)
 
 diff --git a/skgbasegui/skgtablewithgraph.ui b/skgbasegui/skgtablewithgraph.ui
-index e1a3058aa..df93115f3 100644
+index e1a3058..b00273f 100644
 --- a/skgbasegui/skgtablewithgraph.ui
 +++ b/skgbasegui/skgtablewithgraph.ui
-@@ -151,11 +151,6 @@
-   </layout>
+@@ -152,11 +152,6 @@
   </widget>
   <customwidgets>
--  <customwidget>
+   <customwidget>
 -   <class>QWebView</class>
 -   <extends>QWidget</extends>
 -   <header>QtWebKitWidgets/QWebView</header>
 -  </customwidget>
-   <customwidget>
+-  <customwidget>
     <class>SKGGraphicsView</class>
     <extends>QWidget</extends>
+    <header>skggraphicsview.h</header>
+@@ -173,7 +168,6 @@
+   </customwidget>
+   <customwidget>
+    <class>SKGWebView</class>
+-   <extends>QWebView</extends>
+    <header>skgwebview.h</header>
+   </customwidget>
+  </customwidgets>
 -- 
-2.20.1
-
+cgit v1.1
