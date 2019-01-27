@@ -21,6 +21,7 @@ dev-perl/Error test
 # Raúl Porcel <armin76@gentoo.org> (23 Jan 2013)
 # Architecture is unsupported
 dev-libs/libpcre jit
+dev-libs/libpcre2 jit
 
 # Ryan Hill <dirtyepic@gentoo.org> (20 Jul 2011)
 # graphite requires dev-libs/ppl & dev-libs/cloog-ppl
