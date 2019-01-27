@@ -3,10 +3,10 @@ DEPEND=sys-libs/ncurses:0= virtual/pkgconfig
 DESCRIPTION=A minimal console text editor
 EAPI=6
 HOMEPAGE=http://dav-text.sourceforge.net/
-KEYWORDS=~alpha ~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~alpha ~amd64 ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=http://dav-text.sourceforge.net/files/dav-0.8.5.tar.gz
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=7fbe41d5f7d765e2dd309114ffd67676
+_md5_=677d5db8424e860ef10b23a5309b0172

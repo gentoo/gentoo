@@ -3,9 +3,9 @@ DEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >
 DESCRIPTION=Utility for opening arj archives
 EAPI=6
 HOMEPAGE=http://arj.sourceforge.net/
-KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~ppc64 sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
+KEYWORDS=~amd64 ~arm ~ia64 ppc ~ppc64 sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://debian/pool/main/a/arj/arj_3.10.22.orig.tar.gz mirror://debian/pool/main/a/arj/arj_3.10.22-15.debian.tar.xz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=12a4ae60c6cc61aa4c30cfdc712d01bf
+_md5_=84d93eb1612d945f33df4e7208b9be2c
