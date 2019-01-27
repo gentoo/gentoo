@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,8 +22,8 @@ IUSE="extra-cardsets minimal +sound"
 
 S=${WORKDIR}/${MY_PN}-${P}
 
-DEPEND=""
-RDEPEND="${RDEPEND}
+DEPEND="dev-python/six"
+RDEPEND="${DEPEND}
 	python_targets_python3_5? ( dev-python/random2[python_targets_python3_5] )
 	python_targets_python3_6? ( dev-python/random2[python_targets_python3_6] )
 	!minimal? ( dev-python/pillow[tk,${PYTHON_USEDEP}]
