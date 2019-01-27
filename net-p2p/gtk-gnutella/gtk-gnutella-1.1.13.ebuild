@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
+	eapply "${FILESDIR}/${PN}-1.1.14-statx.patch"
+
 	strip-linguas -i po
 
 	echo "# Gentoo-selected LINGUAS" > po/LINGUAS
