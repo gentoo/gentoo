@@ -7449,7 +7449,7 @@ media-gfx/qrencode 4.0.2: C library for encoding data in a QR Code symbol
 media-gfx/quat 1.20-r1: A 3D quaternionic fractal generator
 media-gfx/raw-thumbnailer 0.2.1-r1: A lightweight and fast raw image thumbnailer
 media-gfx/rawtherapee 5.4: A powerful cross-platform raw image processing program
-media-gfx/recoverjpeg 2.0-r2 2.2.1-r1 2.2.3-r1: Recover JPEG pictures from a possibly corrupted disk image
+media-gfx/recoverjpeg 2.2.3-r1: Recover JPEG pictures from a possibly corrupted disk image
 media-gfx/ristretto 0.8.3: A fast and lightweight picture viewer for Xfce
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
 media-gfx/sam2p 0.49.1 0.49.3: Utility to convert raster images to EPS, PDF and many others
@@ -7470,6 +7470,7 @@ media-gfx/tuxpaint 0.9.21-r2: Drawing program designed for young children
 media-gfx/tuxpaint-stamps 20090628-r1: Set of 'Rubber Stamp' images which can be used within Tux Paint
 media-gfx/ufraw 0.22-r2: RAW Image format viewer and GIMP plugin
 media-gfx/uniconvertor 2.0_pre379-r1 2.0_pre379-r2: Convert vector graphic file formats like .cdr, .svg, wmf and more.
+media-gfx/videorbits 2.205: a collection of programs for creating high dynamic range images
 media-gfx/viewnior 1.6: Fast and simple image viewer
 media-gfx/wings 2.1.5: Wings 3D is an advanced subdivision modeler
 media-gfx/xfig 3.2.6a-r1: A menu-driven tool to draw and manipulate objects interactively in an X window

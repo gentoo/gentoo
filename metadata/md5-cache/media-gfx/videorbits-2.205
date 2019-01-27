@@ -3,10 +3,10 @@ DEPEND=x11-libs/libX11 sys-libs/zlib media-libs/libpng:0= virtual/jpeg:0 sci-lib
 DESCRIPTION=a collection of programs for creating high dynamic range images
 EAPI=6
 HOMEPAGE=http://comparametric.sourceforge.net/
-KEYWORDS=~amd64 ppc x86
+KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 sys-libs/zlib media-libs/libpng:0= virtual/jpeg:0 sci-libs/fftw:2.1 media-libs/netpbm
 SLOT=0
 SRC_URI=mirror://sourceforge/comparametric/videorbits-2.205.tgz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=e059535b1ce2d642a84a09279554d1d2
+_md5_=e7fcd79939bbcdf851d4b06b67fb1521
