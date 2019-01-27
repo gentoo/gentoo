@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -31,7 +31,7 @@ src_prepare() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	rm -r "${D}"/usr/doc || die
+	rm -r "${ED}"/usr/doc || die
 	dodoc AUTHORS ChangeLog
 
 	newbashcomp "${FILESDIR}"/${PN}.bash-completion ${PN}
