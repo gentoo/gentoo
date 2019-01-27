@@ -77,10 +77,9 @@ RDEPEND="${COMMON_DEPEND}
 # hangs + installs files
 RESTRICT+=" test"
 
-src_prepare() {
-	use webkit || eapply "${FILESDIR}"/${P}-noqtwebkit.patch # bug 676196
-	kde5_src_prepare
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-noqtwebkit.patch # bug 676196
+)
 
 src_configure() {
 	local mycmakeargs=(
