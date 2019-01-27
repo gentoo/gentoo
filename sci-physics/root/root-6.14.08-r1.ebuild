@@ -320,6 +320,9 @@ src_install() {
 		rm -r tmva || die
 	fi
 
+	# Environment variables are managed by env.d.
+	rm -f bin/*.{c,}sh || die
+
 	# clean up unnecessary files from installation
 	rm -r emacs test || die
 }
