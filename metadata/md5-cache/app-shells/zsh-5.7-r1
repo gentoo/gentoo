@@ -11,4 +11,4 @@ RDEPEND=>=sys-libs/ncurses-5.1:0= static? ( >=sys-libs/ncurses-5.7-r4:0=[static-
 SLOT=0
 SRC_URI=https://www.zsh.org/pub/zsh-5.7.tar.xz https://www.zsh.org/pub/old/zsh-5.7.tar.xz mirror://sourceforge/zsh/zsh-5.7.tar.xz doc? ( https://www.zsh.org/pub/zsh-5.7-doc.tar.xz mirror://sourceforge/zsh/zsh-5.7-doc.tar.xz )
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=bef2e883e9fa0b1e4d792e9053bec3e2
+_md5_=d2bf05cb1e64b3bde0f422cf38953d17
