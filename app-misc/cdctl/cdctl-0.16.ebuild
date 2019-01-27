@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/cdctl/${P}.tar.gz"
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ppc ppc64 ~x86"
 IUSE=""
 
 DEPEND=""
