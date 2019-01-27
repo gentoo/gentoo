@@ -6435,7 +6435,7 @@ dev-util/xmlindent 0.2.17-r2: XML stream reformatter for ASCII text, but not UTF
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
 dev-util/xxdiff 4.0.1_p20170622: A graphical file and directories comparator and merge tool
 dev-util/yacc 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
-dev-vcs/bzr 2.5.1-r1 2.7.0: Bazaar is a next generation distributed version control system
+dev-vcs/bzr 2.7.0: Bazaar is a next generation distributed version control system
 dev-vcs/bzr-fastimport 0.13.0: Plugin providing fast loading of revision control data into Bazaar
 dev-vcs/bzr-rewrite 0.6.3: Bazaar plugin that adds support for rebasing, similar to git rebase
 dev-vcs/bzr-xmloutput 0.8.8-r2: Bazaar plugin providing an option to generate XML output for builtin commands
@@ -6443,11 +6443,11 @@ dev-vcs/bzrtools 2.5: bzrtools is a useful collection of utilities for bzr
 dev-vcs/colorcvs 1.4-r2: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.3: Subversion output colorizer
 dev-vcs/cssc 1.4.0: The GNU Project's replacement for SCCS
-dev-vcs/cvs 1.12.12-r11 1.12.12-r12: Concurrent Versions System - source code revision control tools
+dev-vcs/cvs 1.12.12-r12: Concurrent Versions System - source code revision control tools
 dev-vcs/cvs2cl 2.71: produces a GNU-style ChangeLog for CVS-controlled sources
 dev-vcs/cvs2svn 2.4.0-r1: Convert a CVS repository to a Subversion repository
 dev-vcs/cvsd 1.0.17: CVS pserver daemon
-dev-vcs/cvsgraph 1.6.1 1.7.0: CVS/RCS repository grapher
+dev-vcs/cvsgraph 1.7.0: CVS/RCS repository grapher
 dev-vcs/cvsps 2.1-r1: Generates patchset information from a CVS repository
 dev-vcs/darcs 2.8.4-r6 2.12.0 2.12.5: a distributed, interactive, smart revision control system
 dev-vcs/fossil 2.6: Simple, high-reliability, source control management, and more
