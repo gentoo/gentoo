@@ -94,12 +94,6 @@ app-office/QtBitcoinTrader
 # Bugs 463928, 476890, 623172, 662270. Masked for removal in 30 days.
 net-misc/hotot
 
-# Alon Bar-Lev <alonbl@gentoo.org> (30 Dec 2018)
-# Upstream is dead.
-# Package does not support openssl-1.1, significant change to package.
-# Removal in 30 days
-app-crypt/openssl-tpm-engine
-
 # Lars Wendler <polynomial-c@gentoo.org> (28 Dec 2018)
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1.1*
