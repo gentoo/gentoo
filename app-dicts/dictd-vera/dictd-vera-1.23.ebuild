@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ SRC_URI="mirror://gnu/vera/vera-${PV}.tar.gz"
 
 SLOT="0"
 LICENSE="FDL-1.3"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ppc ppc64 ~sparc ~x86"
 
 DEPEND=">=app-text/dictd-1.5.5"
 RDEPEND="${DEPEND}"
