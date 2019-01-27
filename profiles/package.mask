@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Virgil Dupras <vdupras@gentoo.org> (27 Jan 2019)
+# Obsolete upstream. See bug #610466 and bug #645170
+dev-python/python-social-auth
+dev-python/python3-openid
+
 # Miroslav Šulc <fordfrog@gentoo.org> (23 Jan 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =dev-java/ant-eclipse-ecj-4.10
