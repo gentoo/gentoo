@@ -30,6 +30,10 @@
 #--- END OF EXAMPLES ---
 
 # Virgil Dupras <vdupras@gentoo.org> (27 Jan 2019)
+# Dead upstream, no revdep. bug #618744
+dev-python/fusil
+
+# Virgil Dupras <vdupras@gentoo.org> (27 Jan 2019)
 # Obsolete upstream. See bug #610466 and bug #645170
 dev-python/python-social-auth
 dev-python/python3-openid
