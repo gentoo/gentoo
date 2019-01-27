@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 inherit flag-o-matic
 
-PATCHES="${P}-patches-01.tar.xz"
+PATCHES="${PN}-3.3-patches-01.tar.xz"
 
 DESCRIPTION="A general-purpose (yacc-compatible) parser generator"
 HOMEPAGE="https://www.gnu.org/software/bison/"
@@ -29,7 +29,7 @@ DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO ) # ChangeLog-2012 ChangeLog-19
 
 PATCHES=(
 	"${WORKDIR}"/patches/${PN}-3.1-optional-perl.patch #538300
-	"${WORKDIR}"/patches/${P}-avoid_autoreconf.patch
+	"${WORKDIR}"/patches/${PN}-3.3-avoid_autoreconf.patch
 )
 
 src_prepare() {
