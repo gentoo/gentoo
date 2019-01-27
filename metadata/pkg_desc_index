@@ -1561,6 +1561,7 @@ app-vim/errsign 0.1-r1: vim plugin: display marks on lines with errors
 app-vim/eruby-syntax 2.0-r2: vim plugin: syntax highlighting for eruby
 app-vim/eselect-syntax 20070506: vim plugin: Eselect syntax highlighting, filetype and indent settings
 app-vim/extra-syntax 4-r2: vim plugin: metapackage for all extra syntax packages
+app-vim/ferret 3.0: vim plugin: enhanced multi-file search
 app-vim/fluxbox-syntax 1.5: vim plugin: fluxbox files syntax and indent
 app-vim/foldutil 3.0-r1: vim plugin: fold creation utility
 app-vim/frawor 0.2.3: vim plugin: modular vim framework
