@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,7 +35,7 @@ src_prepare() {
 		-e "s@/usr/X11R6/include@${EPREFIX}/usr/include/X11@" \
 		-e "s@/usr/X11R6/lib@${EPREFIX}/usr/lib@" \
 		-e "s@-I/usr/include@@" -e "s@-L/usr/lib@@" \
-		-e "s/\/freetype2/\ -I\/usr\/include\/freetype2/" \
+		-e "s@/freetype2@ -I${EPREFIX}/usr/include/freetype2@" \
 		config.mk || die
 	sed -i \
 		-e '/@echo CC/d' \
