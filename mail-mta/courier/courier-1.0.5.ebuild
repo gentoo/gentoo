@@ -34,13 +34,13 @@ DEPEND="
 	!mail-mta/esmtp
 	!mail-mta/exim
 	!mail-mta/mini-qmail
-	!mail-mta/msmtp
+	!mail-mta/msmtp[mta]
 	!mail-mta/netqmail
 	!mail-mta/nullmailer
 	!mail-mta/postfix
 	!mail-mta/qmail-ldap
 	!mail-mta/sendmail
-	!mail-mta/ssmtp
+	!mail-mta/ssmtp[mta]
 	!mail-mta/opensmtpd
 	!net-mail/dot-forward
 	!sys-apps/ucspi-tcp
