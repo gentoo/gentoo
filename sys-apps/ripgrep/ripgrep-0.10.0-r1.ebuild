@@ -100,7 +100,7 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 
 LICENSE="|| ( MIT Unlicense )"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="+man pcre"
 
 RDEPEND="pcre? ( dev-libs/libpcre2 )"
