@@ -1264,7 +1264,7 @@ app-shells/gentoo-zsh-completions 20150103 20180228: Gentoo specific zsh complet
 app-shells/hstr 2.0: Shell history suggest box
 app-shells/ksh 93.20140625: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
-app-shells/mksh 52 56c: MirBSD KSH Shell
+app-shells/mksh 56c: MirBSD KSH Shell
 app-shells/mpv-bash-completion 3.3.16 3.3.17: Bash completion for the mpv video player
 app-shells/pdmenu 1.3.4-r1: A simple console menu program
 app-shells/pdsh 2.26-r1: A high-performance, parallel remote shell utility
@@ -1503,7 +1503,7 @@ app-text/xlhtml 0.5.1_p6: Convert MS Excel and Powerpoint files to HTML
 app-text/xml2doc 20030510-r1: Tool to convert simple XML to a variety of formats (pdf, html, txt, manpage)
 app-text/xmldiff 0.6.10-r2: A tool that figures out the differences between two similar XML files
 app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edit XML documents
-app-text/xmlto 0.0.26-r1 0.0.28-r1: script for converting XML and DocBook documents to a variety of output formats
+app-text/xmlto 0.0.28-r1: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/yelp-tools 3.18.0: Collection of tools for building and converting documentation
 app-text/zathura 0.4.1-r2: A highly customizable and functional document viewer
@@ -1871,7 +1871,7 @@ dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
 dev-db/etcd 3.3.10: Highly-available key value store for shared configuration and service discovery
-dev-db/freetds 1.00.41 1.00.341-r1: Tabular Datastream Library
+dev-db/freetds 1.00.341-r1: Tabular Datastream Library
 dev-db/henplus 0.9.8-r1: Java-based multisession SQL shell for databases with JDBC support
 dev-db/hsqldb 1.8.1.3-r2: The leading SQL relational database engine written in Java
 dev-db/kdb 3.1.0-r2: Database connectivity and creation framework for various vendors
@@ -1922,7 +1922,7 @@ dev-db/spatialite 4.3.0-r1: A complete Spatial DBMS in a nutshell built upon sql
 dev-db/sqlcipher 3.4.1 3.4.2: Full Database Encryption for SQLite
 dev-db/sqldeveloper 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
 dev-db/sqlite 3.23.1 3.24.0 3.25.3: SQL database engine
-dev-db/sqlitebrowser 3.9.1-r1 3.10.1: SQLite Database Browser
+dev-db/sqlitebrowser 3.10.1: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96: ODBC driver to access local SQLite database files
 dev-db/tinycdb 0.77-r2: A very fast and simple package for creating and reading constant data bases
@@ -2889,7 +2889,7 @@ dev-java/zeus-jscl 1.64-r1: Zeus Java Swing Components Library
 dev-lang/R 3.2.2 3.4.1: Language and environment for statistical computing and graphics
 dev-lang/bff 1.0.5: A brainfuck interpreter
 dev-lang/cfortran 4.4-r2: Header file allowing to call Fortran routines from C and C++
-dev-lang/clojure 1.7.0 1.8.0: A dynamic programming language that targets the Java Virtual Machine
+dev-lang/clojure 1.8.0: A dynamic programming language that targets the Java Virtual Machine
 dev-lang/coffee-script 1.9.3-r1: A little language that compiles into javascript
 dev-lang/elixir 1.4.5: Elixir programming language
 dev-lang/erlang 19.1 19.3 20.3: Erlang programming language, runtime environment and libraries (OTP)
@@ -2958,7 +2958,7 @@ dev-libs/boost 1.63.0 1.65.0: Boost Libraries for C++
 dev-libs/botan 1.10.17-r2 2.7.0: A C++ crypto library
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
-dev-libs/cdk 5.0.20131107 5.0.20141106 5.0.20160131: A library of curses widgets
+dev-libs/cdk 5.0.20160131: A library of curses widgets
 dev-libs/cgicc 3.2.9 3.2.16: A C++ class library for writing CGI applications
 dev-libs/cgilib 0.7: A simple and lightweight interface to the CGI for C and C++ programs
 dev-libs/check 0.10.0-r1 0.12.0: A unit test framework for C
@@ -3011,7 +3011,7 @@ dev-libs/gobject-introspection-common 1.56.1: Build infrastructure for GObject I
 dev-libs/gom 0.3.2: GObject to SQLite object mapper library
 dev-libs/granite 0.5.0: Elementary OS library that extends Gtk+
 dev-libs/grantlee 5.1.0: C++ string template engine based on the Django template system
-dev-libs/grok 0.9.2 0.9.2-r2: DRY and RAD for regular expressions
+dev-libs/grok 0.9.2-r2: DRY and RAD for regular expressions
 dev-libs/gtx 0.2.2: Small collection of functions intended to enhance the GLib testing framework
 dev-libs/hashit 0.9.8: Generic C hash library which supports multiple collision handling methods
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
@@ -3037,7 +3037,7 @@ dev-libs/jthread 1.3.3: JThread provides some classes to make use of threads eas
 dev-libs/judy 1.0.5-r2: A C library that implements a dynamic array
 dev-libs/kdiagram 2.6.1: Powerful libraries (KChart, KGantt) for creating business diagrams
 dev-libs/keybinder 0.3.1-r201 0.3.2-r300: A library for registering global keyboard shortcuts
-dev-libs/klibc 2.0.4-r2 2.0.4-r3: A minimal libc subset for use with initramfs
+dev-libs/klibc 2.0.4-r3: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.2.2_p20160523 6.2.3_p20170524: Path searching library for TeX-related files
 dev-libs/kproperty 3.1.0: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kreport 3.1.0: Framework for creation and generation of reports in multiple formats
@@ -3063,7 +3063,7 @@ dev-libs/libcdio-paranoia 0.90_p1-r1 0.93_p1 0.94_p2: an advanced CDDA reader wi
 dev-libs/libcec 4.0.2-r2: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
 dev-libs/libcgroup 0.41-r5: Tools and libraries to configure and manage kernel control groups
 dev-libs/libclc 0.2.0_pre20180915: OpenCL C library
-dev-libs/libcli 1.9.4-r1 1.9.7: Cisco-style (telnet) command-line interface library
+dev-libs/libcli 1.9.7: Cisco-style (telnet) command-line interface library
 dev-libs/libconfig 1.5: Libconfig is a simple library for manipulating structured configuration files
 dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
 dev-libs/libcroco 0.6.12-r1: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
@@ -10590,7 +10590,7 @@ www-apache/mod_xml2enc 1.0.3: An Apache2 module to provide libxml2 encoding
 www-apache/mod_xsendfile 1.0_beta1: Apache module that processes X-SENDFILE headers registered by the output handler
 www-apache/modsecurity-crs 3.0.2: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 5.3.2 5.3.7: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 5.3.7: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/ampache 3.8.3: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/bugzilla 4.4.12-r2 5.0.3-r2: Bugzilla is the Bug-Tracking System from the Mozilla project
