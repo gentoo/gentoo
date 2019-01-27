@@ -160,6 +160,7 @@ src_prepare() {
 
 	# Add local patches here
 	PATCHES+=(
+		"${FILESDIR}/241_rc1-kernel-install-initrd-detection.patch"
 	)
 
 	if ! use vanilla; then

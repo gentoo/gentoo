@@ -1,0 +1,64 @@
+--- a/src/kernel-install/90-loaderentry.install
++++ b/src/kernel-install/90-loaderentry.install
+@@ -83,7 +83,9 @@ cp "$KERNEL_IMAGE" "$BOOT_DIR_ABS/linux" &&
+     exit 1
+ }
+ 
+-for initrd in "${@:${INITRD_OPTIONS_START}}"; do
++INITRD_OPTIONS=( "${@:${INITRD_OPTIONS_START}}" )
++
++for initrd in "${INITRD_OPTIONS[@]}"; do
+     if [[ -f "${initrd}" ]]; then
+         initrd_basename="$(basename ${initrd})"
+         cp "${initrd}" "$BOOT_DIR_ABS/${initrd_basename}" &&
+@@ -95,6 +97,10 @@ for initrd in "${@:${INITRD_OPTIONS_START}}"; do
+     fi
+ done
+ 
++# If no initrd option is supplied, fallback to "initrd" which is
++# the name used by dracut when generating it in its kernel-install hook
++[[ ${#INITRD_OPTIONS[@]} == 0 ]] && INITRD_OPTIONS=( initrd )
++
+ mkdir -p "${LOADER_ENTRY%/*}" || {
+     echo "Could not create loader entry directory '${LOADER_ENTRY%/*}'." >&2
+     exit 1
+@@ -106,7 +112,7 @@ mkdir -p "${LOADER_ENTRY%/*}" || {
+     echo "machine-id $MACHINE_ID"
+     echo "options    ${BOOT_OPTIONS[*]}"
+     echo "linux      $BOOT_DIR/linux"
+-    for initrd in "${@:${INITRD_OPTIONS_START}}"; do
++    for initrd in "${INITRD_OPTIONS[@]}"; do
+         [[ -f $BOOT_DIR_ABS/$(basename ${initrd}) ]] && \
+             echo "initrd     $BOOT_DIR/$(basename ${initrd})"
+     done
+diff --git a/src/kernel-install/kernel-install b/src/kernel-install/kernel-install
+index 7973818bcad..b85c7c557e2 100644
+--- a/src/kernel-install/kernel-install
++++ b/src/kernel-install/kernel-install
+@@ -65,14 +65,16 @@ done
+ 
+ if [[ "${0##*/}" == 'installkernel' ]]; then
+     COMMAND='add'
++    # make install doesn't pass any parameter wrt initrd handling
++    INITRD_OPTIONS=()
+ else
+     COMMAND="$1"
+     shift
++    INITRD_OPTIONS=( "${@:3}" )
+ fi
+ 
+ KERNEL_VERSION="$1"
+ KERNEL_IMAGE="$2"
+-INITRD_OPTIONS_START="3"
+ 
+ if [[ -f /etc/machine-id ]]; then
+     read MACHINE_ID < /etc/machine-id
+@@ -124,7 +126,7 @@ case $COMMAND in
+ 
+         for f in "${PLUGINS[@]}"; do
+             if [[ -x $f ]]; then
+-                "$f" add "$KERNEL_VERSION" "$BOOT_DIR_ABS" "$KERNEL_IMAGE" "${@:${INITRD_OPTIONS_START}}"
++                "$f" add "$KERNEL_VERSION" "$BOOT_DIR_ABS" "$KERNEL_IMAGE" "${INITRD_OPTIONS[@]}"
+                 x=$?
+                 if [[ $x == $SKIP_REMAINING ]]; then
+                     ret=0
