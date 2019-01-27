@@ -20,9 +20,10 @@ S_BASE="${WORKDIR}/${MY_P}"
 S="${S_BASE}/dist"
 DESCRIPTION="Oracle Berkeley DB"
 HOMEPAGE="http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html"
-SRC_URI="http://download.oracle.com/berkeley-db/${MY_P}.tar.gz"
+SRC_URI="https://download.oracle.com/otn/berkeley-db/${MY_P}.tar.gz
+	mirror://gentoo/${MY_P}.tar.gz"
 for (( i=1 ; i<=${PATCHNO} ; i++ )) ; do
-	export SRC_URI="${SRC_URI} http://www.oracle.com/technology/products/berkeley-db/db/update/${MY_PV}/patch.${MY_PV}.${i}"
+	SRC_URI+=" http://www.oracle.com/technology/products/berkeley-db/db/update/${MY_PV}/patch.${MY_PV}.${i}"
 done
 
 LICENSE="AGPL-3"
