@@ -586,7 +586,53 @@ toolchain-glibc_pkg_setup() {
 	[[ ${EAPI:-0} == [0123] ]] && toolchain-glibc_pkg_pretend
 }
 
-int_to_KV() {
+# The following Kernel version handling functions are mostly copied from portage
+# source. It's better not to use linux-info.eclass here since a) it adds too
+# much magic, see bug 326693 for some of the arguments, and b) some of the
+# functions are just not provided.
+
+tc_glibc_get_KV() {
+	uname -r
+	return $?
+}
+
+tc_glibc_KV_major() {
+	[[ -z $1 ]] && return 1
+	local KV=$@
+	echo "${KV%%.*}"
+}
+
+tc_glibc_KV_minor() {
+	[[ -z $1 ]] && return 1
+	local KV=$@
+	KV=${KV#*.}
+	echo "${KV%%.*}"
+}
+
+tc_glibc_KV_micro() {
+	[[ -z $1 ]] && return 1
+	local KV=$@
+	KV=${KV#*.*.}
+	echo "${KV%%[^[:digit:]]*}"
+}
+
+tc_glibc_KV_to_int() {
+	[[ -z $1 ]] && return 1
+	local KV_MAJOR=$(tc_glibc_KV_major "$1")
+	local KV_MINOR=$(tc_glibc_KV_minor "$1")
+	local KV_MICRO=$(tc_glibc_KV_micro "$1")
+	local KV_int=$(( KV_MAJOR * 65536 + KV_MINOR * 256 + KV_MICRO ))
+
+	# We make version 2.2.0 the minimum version we will handle as
+	# a sanity check ... if its less, we fail ...
+	if [[ ${KV_int} -ge 131584 ]] ; then
+		echo "${KV_int}"
+		return 0
+	fi
+	return 1
+}
+
+tc_glibc_int_to_KV() {
 	local version=$1 major minor micro
 	major=$((version / 65536))
 	minor=$(((version % 65536) / 256))
@@ -595,7 +641,7 @@ int_to_KV() {
 }
 
 eend_KV() {
-	[[ $(KV_to_int $1) -ge $(KV_to_int $2) ]]
+	[[ $(tc_glibc_KV_to_int $1) -ge $(tc_glibc_KV_to_int $2) ]]
 	eend $?
 }
 
@@ -610,8 +656,8 @@ check_nptl_support() {
 	just_headers && return
 
 	local run_kv build_kv want_kv
-	run_kv=$(int_to_KV $(get_KV))
-	build_kv=$(int_to_KV $(get_kheader_version))
+	run_kv=$(tc_glibc_get_KV)
+	build_kv=$(tc_glibc_int_to_KV $(get_kheader_version))
 	want_kv=${NPTL_KERN_VER}
 
 	ebegin "Checking gcc for __thread support"
