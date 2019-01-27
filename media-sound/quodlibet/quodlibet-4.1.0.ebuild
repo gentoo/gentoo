@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 inherit distutils-r1 gnome2-utils xdg-utils
 
 DESCRIPTION="audio library tagger, manager, and player for GTK+"
-HOMEPAGE="http://quodlibet.readthedocs.org"
+HOMEPAGE="https://quodlibet.readthedocs.io/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -54,16 +54,12 @@ src_install() {
 	dodoc NEWS README
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	xdg-utils_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	xdg-utils_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }

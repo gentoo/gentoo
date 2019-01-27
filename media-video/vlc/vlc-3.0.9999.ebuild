@@ -212,7 +212,10 @@ RDEPEND="
 		x11-libs/xcb-util
 		x11-libs/xcb-util-keysyms
 	)
-	x264? ( >=media-libs/x264-0.0.20160712:0=[10bit?] )
+	x264? (
+		!10bit? ( >=media-libs/x264-0.0.20160712:0= )
+		10bit? ( >=media-libs/x264-9999:0= )
+	)
 	x265? ( media-libs/x265:0= )
 	xml? ( dev-libs/libxml2:2 )
 	zeroconf? ( net-dns/avahi:0[dbus] )
