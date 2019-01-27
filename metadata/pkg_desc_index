@@ -5542,7 +5542,7 @@ dev-python/reno 2.2.1 2.5.0 2.7.0: Release notes manager, storing release notes 
 dev-python/reportlab 3.3.0-r2: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.6-r2: A tiny LRU cache implementation and decorator
 dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI
-dev-python/requests 2.11.1 2.12.5 2.18.2-r2 2.18.4-r1: HTTP library for human beings
+dev-python/requests 2.18.4-r1: HTTP library for human beings
 dev-python/requests-cache 0.4.12: Persistent cache for requests library
 dev-python/requests-mock 1.2.0 1.5.2: Mock out responses from the requests package
 dev-python/requests-oauthlib 0.7.0: This project provides first-class OAuth library support for Requests
