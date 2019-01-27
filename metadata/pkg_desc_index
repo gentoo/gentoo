@@ -5497,7 +5497,6 @@ dev-python/python-ptrace 0.8.1-r1: A debugger using ptrace (Linux, BSD and Darwi
 dev-python/python-saharaclient 1.1.0 1.5.0: This is a client for the OpenStack Sahara API, aka HADOOP
 dev-python/python-senlinclient 1.0.0 1.2.0: A client for the OpenStack Senlin API
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
-dev-python/python-social-auth 0.1.26 0.2.10: Easy to setup social auth mechanism with support for several frameworks and auth providers
 dev-python/python-sqlparse 0.2.3 0.2.4: A non-validating SQL parser module for Python
 dev-python/python-swiftclient 3.0.0 3.1.0 3.3.0 3.4.0 3.5.0: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 233: Python module for native access to the systemd facilities
@@ -5509,7 +5508,6 @@ dev-python/python-xlib 0.15_rc1-r2: A fully functional X client library for Pyth
 dev-python/python-zaqarclient 1.2.0: A client for the OpenStack Zaqar API
 dev-python/python-zunclient 1.1.0 2.1.0: A client for the OpenStack Zun API
 dev-python/python3-lxc 3.0.1 3.0.2: Python bindings for LXC
-dev-python/python3-openid 3.1.0: Python 3 port of the python-openid library
 dev-python/pythondialog 3.2.2 3.3.0: A Python module for making simple text/console-mode user interfaces
 dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytools 2016.2.6-r1 2017.4-r1: Collection of tools missing from the Python standard library
