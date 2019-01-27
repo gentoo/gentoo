@@ -4930,7 +4930,6 @@ dev-python/functest 0.8.8-r1: Functest is a test tool/framework for testing in P
 dev-python/functools32 3.2.3: Backport of the functools module from Python 3
 dev-python/funcy 1.8: A collection of fancy functional tools focused on practicality
 dev-python/fuse-python 0.2.1-r1: Python FUSE bindings
-dev-python/fusil 1.5: Fusil the fuzzer is a Python library used to write fuzzing programs
 dev-python/future 0.15.2 0.16.0: Easy, clean, reliable Python 2/3 compatibility
 dev-python/futures 3.1.1: Backport of the concurrent.futures package from Python 3.2
 dev-python/futurist 1.3.1 1.6.0: Useful additions to futures, from the future
