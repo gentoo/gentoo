@@ -6974,7 +6974,7 @@ kde-misc/krename 5.0.0: Powerful batch file renamer
 kde-misc/krusader 2.7.1: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 4.2: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/kwebkitpart 1.4.0_pre20180406: WebKit KPart for Konqueror
-kde-misc/latte-dock 0.8.2 0.8.4: Elegant dock, based on KDE Frameworks
+kde-misc/latte-dock 0.8.4: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-redshift-control 1.0.18: Plasma 5 applet for controlling redshift
 kde-misc/rsibreak 0.12.8: Small utility which bothers you at certain intervals
@@ -9378,7 +9378,7 @@ sci-geosciences/mtkbabel 0.8.3.1-r1: MTKBabel is a Perl program to operate the i
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0: Converts OSM data to SQL and insert into PostgreSQL db
 sci-geosciences/qgis 3.2.3: User friendly Geographic Information System
-sci-geosciences/qmapshack 1.11.1-r1 1.12.0: GPS mapping utility
+sci-geosciences/qmapshack 1.12.0: GPS mapping utility
 sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1: Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB
 sci-geosciences/swmm 5.0.022: Storm Water Management Model-SWMM, hydrology, hydraulics, water quality model
