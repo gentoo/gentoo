@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,6 +22,10 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.7.1-disable-broken-tests.patch"
+)
 
 python_test() {
 	PYTHONPATH="${BUILD_DIR}/lib" pytest -v || die "tests failed with ${EPYTHON}"
