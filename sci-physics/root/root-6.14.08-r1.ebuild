@@ -134,6 +134,8 @@ src_prepare() {
 
 	# CSS should use local images
 	sed -i -e 's,http://.*/,,' etc/html/ROOT.css || die "html sed failed"
+
+	hprefixify core/clingutils/CMakeLists.txt
 }
 
 # Note: ROOT uses bundled clang because it is patched and API-incompatible
