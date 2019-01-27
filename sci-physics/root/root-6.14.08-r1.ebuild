@@ -134,6 +134,8 @@ src_prepare() {
 
 	# CSS should use local images
 	sed -i -e 's,http://.*/,,' etc/html/ROOT.css || die "html sed failed"
+
+	hprefixify core/clingutils/CMakeLists.txt
 }
 
 # Note: ROOT uses bundled clang because it is patched and API-incompatible
@@ -317,6 +319,9 @@ src_install() {
 	if ! use tmva; then
 		rm -r tmva || die
 	fi
+
+	# Environment variables are managed by env.d.
+	rm -f bin/*.{c,}sh || die
 
 	# clean up unnecessary files from installation
 	rm -r emacs test || die
