@@ -18,7 +18,7 @@ DEV_URI="
 ADDONS_URI="https://dev-www.libreoffice.org/src/"
 
 BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
-# PATCHSET="${P}-patchset-01.tar.xz"
+PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${MY_PV} == *9999* ]] && inherit git-r3
 inherit autotools bash-completion-r1 check-reqs eapi7-ver flag-o-matic gnome2-utils java-pkg-opt-2 multiprocessing pax-utils python-single-r1 qmake-utils toolchain-funcs xdg-utils
@@ -246,7 +246,7 @@ DEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	# "${WORKDIR}"/${PATCHSET/.tar.xz/}
+	"${WORKDIR}"/${PATCHSET/.tar.xz/}
 
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
