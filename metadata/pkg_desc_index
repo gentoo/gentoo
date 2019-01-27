@@ -4857,7 +4857,7 @@ dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
 dev-python/embedly 0.5.0-r1: Python Library for Embedly
 dev-python/empy 3.3-r1: A powerful and robust templating system for Python
-dev-python/enable 4.4.1 4.5.1 4.7.1: Enthought Tool Suite: Drawing and interaction packages
+dev-python/enable 4.7.1: Enthought Tool Suite: Drawing and interaction packages
 dev-python/enaml 0.10.2: Enthought Tool Suite: framework for writing declarative interfaces
 dev-python/encore 0.5.1: Enthought Tool Suite: collection of core-level utility modules
 dev-python/entrypoints 0.2.3: Discover and load entry points from installed packages
@@ -5611,7 +5611,7 @@ dev-python/socketio-client 0.6.6: A socket.io client library for Python
 dev-python/socketpool 0.5.3: A simple Python socket pool
 dev-python/sortedcollections 0.5.3: Python library to sort collections and containers
 dev-python/sortedcontainers 1.5.7: Python library to sort collections and containers
-dev-python/soya 0.14-r1 0.15_rc1-r1: A high-level 3D engine for Python, designed with games in mind
+dev-python/soya 0.15_rc1-r1: A high-level 3D engine for Python, designed with games in mind
 dev-python/sparql-wrapper 1.7.6 1.8.0: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/sphinx 1.2.2-r1 1.7.5-r1: Python documentation generator
@@ -5686,7 +5686,7 @@ dev-python/translate-toolkit 2.0.0: Toolkit to convert between many translation 
 dev-python/translationstring 1.3: Utility library for i18n relied on by various Repoze packages
 dev-python/trollius 2.1: A port of the Tulip project (asyncio module, PEP3156)
 dev-python/ttfquery 1.0.5-r1: Font metadata and glyph outline extraction utility library
-dev-python/ttystatus 0.23 0.35: Terminal progress bar and status output for command line
+dev-python/ttystatus 0.35: Terminal progress bar and status output for command line
 dev-python/tvdb_api 1.9 1.10_pre20150406-r1: Python interface to thetvdb.com API
 dev-python/twisted 16.6.0-r3: An asynchronous networking framework written in Python
 dev-python/twisted-conch 13.2.0: Twisted SSHv2 implementation
