@@ -73,6 +73,11 @@ src_prepare() {
 
 	# Use sane .so versioning on FreeBSD.
 	elibtoolize
+
+	# detect also guile-2.2, bug#676402
+	# aclocal/autoreconf will require more dependencies
+	# that we want to have
+	sed -i 's/_guile_required_version=2.2$/_guile_required_version=2.0/' configure || die
 }
 
 multilib_src_configure() {
