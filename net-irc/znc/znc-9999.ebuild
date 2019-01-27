@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit cmake-utils python-single-r1 readme.gentoo-r1 systemd user
 
-GTEST_VER="ba96d0b1161f540656efdaed035b3c062b60e006" # 1.8.0 is too old, but newer version not released yet
+GTEST_VER="1.8.1"
 GTEST_URL="https://github.com/google/googletest/archive/${GTEST_VER}.tar.gz -> gtest-${GTEST_VER}.tar.gz"
 DESCRIPTION="An advanced IRC Bouncer"
 
@@ -99,8 +99,8 @@ src_configure() {
 	)
 
 	if [[ ${PV} != *9999* ]] && use test; then
-		export GTEST_ROOT="${WORKDIR}/googletest-${GTEST_VER}/googletest"
-		export GMOCK_ROOT="${WORKDIR}/googletest-${GTEST_VER}/googlemock"
+		export GTEST_ROOT="${WORKDIR}/googletest-release-${GTEST_VER}/googletest"
+		export GMOCK_ROOT="${WORKDIR}/googletest-release-${GTEST_VER}/googlemock"
 	fi
 
 	cmake-utils_src_configure
@@ -109,7 +109,7 @@ src_configure() {
 src_test() {
 	cmake-utils_src_make unittest
 	if has network-sandbox ${FEATURES}; then
-		cmake-utils_src_make install DESTDIR="${T}/inttest"
+		DESTDIR="${T}/inttest" cmake-utils_src_make install
 		local filter='-'
 		if ! use perl; then
 			filter="${filter}:ZNCTest.Modperl*"
