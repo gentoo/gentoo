@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PLOCALES="ar bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru sk sl sr_RS@cyrillic sr_RS@latin sv te th tr uk wa zh_CN zh_TW"
+PLOCALES="ar bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru si sk sl sr_RS@cyrillic sr_RS@latin sv te th tr uk wa zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
 inherit autotools eapi7-ver estack eutils flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx xdg-utils
@@ -12,7 +12,7 @@ MY_PN="${PN%%-*}"
 MY_P="${MY_PN}-${PV}"
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://source.winehq.org/git/wine.git https://github.com/wine-mirror/wine.git"
+	EGIT_REPO_URI="https://source.winehq.org/git/wine.git"
 	EGIT_BRANCH="master"
 	inherit git-r3
 	SRC_URI=""
@@ -139,7 +139,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-emulation/wine:0
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:4.7.3 )
+	mono? ( app-emulation/wine-mono:4.7.5 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
