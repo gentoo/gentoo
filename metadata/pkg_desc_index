@@ -466,8 +466,8 @@ app-dicts/myspell-kk 1.1.2: Kazakh dictionaries for myspell/hunspell
 app-dicts/myspell-km 1.6: Khmer dictionaries for myspell/hunspell
 app-dicts/myspell-ku 0.21: Kurdish dictionaries for myspell/hunspell
 app-dicts/myspell-lt 1.2.1: Lithuanian dictionaries for myspell/hunspell
-app-dicts/myspell-lv 1.0.0 1.3.0: Latvian dictionaries for myspell/hunspell
-app-dicts/myspell-mi 20060316 20060316-r1: Maori dictionaries for myspell/hunspell
+app-dicts/myspell-lv 1.3.0: Latvian dictionaries for myspell/hunspell
+app-dicts/myspell-mi 20060316-r1: Maori dictionaries for myspell/hunspell
 app-dicts/myspell-mk 20060316: Macedonian dictionaries for myspell/hunspell
 app-dicts/myspell-ms 20060316: Malay dictionaries for myspell/hunspell
 app-dicts/myspell-nb 2.0.10: Norwegian dictionaries for myspell/hunspell
@@ -536,7 +536,7 @@ app-doc/zsh-lovers 0.9.0: Tips, tricks and examples for the Z shell
 app-editors/adie 1.7.54: Text editor based on the FOX Toolkit
 app-editors/aee 2.2.15b: An easy to use text editor
 app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
-app-editors/bluefish 2.2.6 2.2.10: A GTK HTML editor for the experienced web designer or programmer
+app-editors/bluefish 2.2.10: A GTK HTML editor for the experienced web designer or programmer
 app-editors/bvi 1.4.0: Display-oriented editor for binary files, based on the vi texteditor
 app-editors/curses-hexedit 0.9.7: full screen curses hex editor (with insert/delete support)
 app-editors/dav 0.8.5-r1: A minimal console text editor
@@ -828,7 +828,7 @@ app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
 app-forensics/afflib 3.7.4: Library that implements the AFF image standard
 app-forensics/aide 0.16-r1: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
 app-forensics/air 2.0.0-r2: A GUI front-end to dd/dc3dd
-app-forensics/chkrootkit 0.51 0.52: Tool to locally check for signs of a rootkit
+app-forensics/chkrootkit 0.52: Tool to locally check for signs of a rootkit
 app-forensics/cmospwd 5.1-r1: CmosPwd decrypts password stored in cmos used to access BIOS SETUP
 app-forensics/examiner 0.5-r2: Utilizes the objdump command to disassemble and comment foreign binaries
 app-forensics/foremost 1.5.7-r3: A console program to recover files based on their headers and footers
@@ -916,7 +916,7 @@ app-i18n/sunpinyin-data 20130220: Data sets for Sunpinyin
 app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
 app-i18n/tomoe 0.6.0-r3: Japanese handwriting recognition engine
 app-i18n/tomoe-gtk 0.6.0-r4: Tomoe GTK+ interface widget library
-app-i18n/transifex-client 0.10 0.12.4: A command line interface for Transifex
+app-i18n/transifex-client 0.12.4: A command line interface for Transifex
 app-i18n/uchardet 0.0.6-r2: An encoding detector library
 app-i18n/uim 1.8.6-r1 1.8.8: A multilingual input method framework
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
