@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 inherit distutils-r1 gnome2-utils xdg-utils
 
 DESCRIPTION="audio library tagger, manager, and player for GTK+"
-HOMEPAGE="http://quodlibet.readthedocs.org"
+HOMEPAGE="https://quodlibet.readthedocs.io/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
