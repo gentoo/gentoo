@@ -6468,7 +6468,7 @@ dev-vcs/qgit 2.8: Qt GUI for git repositories
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
 dev-vcs/rcs 5.8.2 5.9.3: Revision Control System
 dev-vcs/stgit 0.16-r2: Manage a stack of patches using GIT as a backend
-dev-vcs/subversion 1.9.7-r1 1.10.3: Advanced version control system
+dev-vcs/subversion 1.9.7-r1 1.10.3 1.10.4: Advanced version control system
 dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/tig 2.3.3: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
@@ -7656,7 +7656,7 @@ media-libs/libmatemixer 1.18.0: Mixer library for MATE Desktop
 media-libs/libmatroska 1.4.5 1.4.8: Extensible multimedia container format based on EBML
 media-libs/libmediaart 1.9.4: Manages, extracts and handles media art caches
 media-libs/libmediainfo 18.08.1: MediaInfo libraries
-media-libs/libmetalink 0.1.0-r1 0.1.1 0.1.1-r1: Library for handling Metalink files
+media-libs/libmetalink 0.1.1-r1: Library for handling Metalink files
 media-libs/libmikmod 3.3.8: A library to play a wide range of module formats
 media-libs/libmkv 0.6.5.1: Lightweight Matroska muxer written for HandBrake
 media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
@@ -8462,7 +8462,7 @@ net-analyzer/pnp4nagios 0.6.26-r9: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portsentry 1.2-r1: Automated port scan detector and response tool
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
-net-analyzer/ripe-atlas-tools 1.2.2 1.2.3-r1: The official command-line client for RIPE Atlas
+net-analyzer/ripe-atlas-tools 1.2.3-r1: The official command-line client for RIPE Atlas
 net-analyzer/rrdtool 1.6.0-r1: A system to store and display time-series data
 net-analyzer/sarg 2.3.11-r1: Squid Analysis Report Generator
 net-analyzer/sbd 1.37-r1: Netcat-clone, designed to be portable and offer strong encryption
