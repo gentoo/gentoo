@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
-	dev-libs/9libs[X]
+	dev-libs/9libs
 "
 RDEPEND="
 	${DEPEND}
