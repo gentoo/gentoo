@@ -62,7 +62,7 @@ src_prepare() {
 		eapply "${FILESDIR}"/${PN}-5.3-init.d-gentoo.diff
 	fi
 
-	eapply_user
+	default
 
 	if [[ ${PV} == 9999* ]] ; then
 		sed -i "/^VERSION=/s/=.*/=${PV}/" Config/version.mk || die
