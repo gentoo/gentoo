@@ -6,9 +6,9 @@
 
 
 # Fabian Groffen <grobian@gentoo.org> (25 Dec 2018)
-# GCC-8.2.0 causes a problem with Perl-5.28 where Configure wrongly
-# believes every function it checks is available.  Need to revisit this
-# at a later point.
+# GCC-8.2.0 has a faulty libgcc_s, which causes C++ exceptions not the
+# caught in certain conditions.  ld64 is the notable condition leading
+# to configure believing every function it checks is available.
 >=sys-devel/gcc-8
 
 # Fabian Groffen <grobian@gentoo.org> (22 Dec 2018)
