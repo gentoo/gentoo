@@ -4,10 +4,10 @@ DESCRIPTION=Interactive image manipulation program supporting a wide variety of 
 EAPI=6
 HOMEPAGE=http://www.trilon.com/xv/index.html http://www.sonic.net/~roelofs/greg_xv.html
 IUSE=jpeg tiff png
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=xv
 RDEPEND=x11-libs/libXt jpeg? ( virtual/jpeg:0 ) tiff? ( media-libs/tiff:0 ) png? ( >=media-libs/libpng-1.2:0= sys-libs/zlib )
 SLOT=0
 SRC_URI=mirror://sourceforge/png-mng/xv-3.10a-jumbo-patches-20070520.tar.gz ftp://ftp.cis.upenn.edu/pub/xv/xv-3.10a.tar.gz mirror://gentoo/xv-3.10a.png.bz2
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=b94f15a45d46b3110b3861559017721d
+_md5_=bb45563127150b328090c04977685739
