@@ -1,13 +1,14 @@
 [Unit]
-Description=Greenbone Security Assistant Daemon
+Description=OpenVAS Manager
 After=network.target
-Before=openvasmd.service
+After=openvassd.service
+After=openvasmd.service
+Wants=openvasmd.service
 
 [Service]
-EnvironmentFile=-/etc/openvas/gsad-daemon.conf
-ExecStart=/usr/sbin/gsad -f ${ASSISTANT_LISTEN} ${ASSISTANT_PORT} ${MANAGER_LISTEN} ${MANAGER_PORT} ${ASSISTANT_EXTRA_ARGS}
-Restart=always
-RestartSec=1
+Type=forking
+EnvironmentFile=-/etc/openvas/sysconfig/gsad-daemon.conf
+ExecStart=/usr/sbin/gsad $OPENVAS_SECURITY_ASSISTANT_OPTIONS $OPENVAS_SECURITY_ASSISTANT_LISTEN_ADDRESS $OPENVAS_SECURITY_ASSISTANT_LISTEN_PORT $OPENVAS_SECURITY_ASSISTANT_MANAGER_LISTEN_ADDRESS $OPENVAS_SECURITY_ASSISTANT_MANAGER_LISTEN_PORT $OPENVAS_SECURITY_ASSISTANT_GNUTLS_PRIORITIES
 User=root
 Group=root
 TimeoutSec=1200
