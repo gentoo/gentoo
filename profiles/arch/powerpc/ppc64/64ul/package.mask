@@ -3,8 +3,8 @@
 
 # James Le Cuirot <chewi@gentoo.org> (19 Oct 2018)
 # AdoptOpenJDK's ppc64 build is little-endian only.
-dev-java/openjdk
-dev-java/openjdk-bin
+dev-java/openjdk:11
+dev-java/openjdk-bin:11
 
 # <gcc-4 does not compile with >=gcc-4 on ppc64
 sys-libs/libstdc++-v3
