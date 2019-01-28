@@ -5,10 +5,10 @@ DESCRIPTION=User space utilities for the zSeries (s390) Linux kernel and device 
 EAPI=7
 HOMEPAGE=https://www.ibm.com/developerworks/linux/linux390/s390-tools.html
 IUSE=fuse ncurses pfm snmp zlib
-KEYWORDS=-* ~s390
+KEYWORDS=-* s390
 LICENSE=GPL-2 MIT
 RDEPEND=fuse? ( sys-fs/fuse:0= ) ncurses? ( sys-libs/ncurses:0= ) pfm? ( app-misc/pfm ) snmp? ( net-analyzer/net-snmp ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=https://github.com/ibm-s390-tools/s390-tools/archive/v2.4.0.tar.gz -> s390-tools-2.4.0.tar.gz
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	udev	7752f306eec7b286d00bdb47b763e7ac
-_md5_=ec13e23f3ef5c83ac2d1f2551841b92e
+_md5_=b004dfd8663954af9b276581d6368729
