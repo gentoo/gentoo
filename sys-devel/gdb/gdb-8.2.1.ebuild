@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -93,6 +93,7 @@ S=${WORKDIR}/${PN}-${MY_PV}
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.2-tinfow.patch
 	"${FILESDIR}"/${PN}-8.2-sparc-fix-syntax.patch
+	"${FILESDIR}"/${PN}-8.2.1-aarch64-musl.patch
 )
 
 pkg_setup() {
