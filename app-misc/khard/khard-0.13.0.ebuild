@@ -8,7 +8,7 @@ DESCRIPTION="Console CardDAV client"
 HOMEPAGE="https://github.com/scheibler/khard"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="zsh-completion"
+IUSE="test zsh-completion"
 
 if [ "${PV}" == "9999" ]; then
 	inherit git-r3
@@ -18,13 +18,18 @@ else
 	KEYWORDS="~amd64 ~arm64"
 fi
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
 	dev-python/atomicwrites[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 	dev-python/unidecode[${PYTHON_USEDEP}]
 	>dev-python/vobject-0.9.3[${PYTHON_USEDEP}]
+"
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (
+		${RDEPEND}
+	)
 "
 # vobject-0.9.3 breaks khard, see
 # https://github.com/scheibler/khard/issues/87
@@ -39,4 +44,8 @@ src_install() {
 		insinto /usr/share/zsh/site-functions
 		doins misc/zsh/_khard
 	fi
+}
+
+python_test() {
+	esetup.py test
 }
