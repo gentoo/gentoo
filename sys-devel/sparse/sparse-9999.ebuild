@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils multilib toolchain-funcs
 
@@ -28,14 +28,36 @@ DEPEND="${RDEPEND}
 	gtk? ( virtual/pkgconfig )
 	xml? ( virtual/pkgconfig )"
 
-src_prepare() {
-	tc-export AR CC PKG_CONFIG
-	sed -i \
-		-e '/^PREFIX=/s:=.*:=/usr:' \
-		-e "/^LIBDIR=/s:/lib:/$(get_libdir):" \
-		-e '/^COMMON_CFLAGS =/{s:=:= $(CPPFLAGS):;s:-O2 -finline-functions -fno-strict-aliasing -g:-fno-strict-aliasing:}' \
-		-e "s:pkg-config:${PKG_CONFIG}:" \
-		Makefile || die
-	export MAKEOPTS+=" V=1 AR=${AR} CC=${CC} HAVE_GTK2=$(usex gtk) HAVE_LLVM=$(usex llvm) HAVE_LIBXML=$(usex xml)"
-	default
+_emake() {
+	# Makefile does not allow for an easy override of flags.
+	# Collect them here and override default phases.
+	emake \
+		CC="$(tc-getCC)" \
+		LD="$(tc-getCC)" \
+		AR="$(tc-getAR)" \
+		CFLAGS="${CFLAGS}" \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
+		\
+		HAVE_GTK=$(usex gtk) \
+		HAVE_LLVM=$(usex llvm) \
+		HAVE_LIBXML=$(usex xml) \
+		\
+		V=1 \
+		PREFIX="${EPREFIX}/usr" \
+		\
+		"$@"
+}
+
+src_compile() {
+	_emake
+}
+
+src_test() {
+	_emake check
+}
+
+src_install() {
+	_emake DESTDIR="${D}" install
+
+	dodoc FAQ README
 }
