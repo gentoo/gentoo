@@ -12,5 +12,8 @@
 	</maintainer>
 	<use>
 		<flag name="extras">Fonts,pdf results and docs support</flag>
+		<flag name="wmi">Interface with Microsoft Windows Systems through <pkg>net-analyzer/openvas-smb</pkg></flag>
+		<flag name="ldap">Enable support for ldap</flag>
+		<flag name="radius">Enable support for radius</flag>
 	</use>
 </pkgmetadata>
