@@ -61,9 +61,8 @@ DEPEND="
 		x11-base/xorg-proto
 	)
 	|| (
-		dev-java/openjdk-bin:${SLOT}
-		dev-java/openjdk:${SLOT}
 		dev-java/icedtea-bin:${SLOT}
+		dev-java/openjdk:${SLOT}
 		dev-java/icedtea:${SLOT}
 	)
 "
@@ -94,7 +93,7 @@ pkg_setup() {
 	openjdk_check_requirements
 	java-vm-2_pkg_setup
 
-	JAVA_PKG_WANT_BUILD_VM="openjdk-${SLOT} openjdk-bin-${SLOT} icedtea-${SLOT} icedtea-bin-${SLOT}"
+	JAVA_PKG_WANT_BUILD_VM="openjdk-${SLOT} icedtea-${SLOT} icedtea-bin-${SLOT}"
 	JAVA_PKG_WANT_SOURCE="${SLOT}"
 	JAVA_PKG_WANT_TARGET="${SLOT}"
 
