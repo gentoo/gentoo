@@ -8163,7 +8163,7 @@ media-sound/pavucontrol-qt 0.4.0: A Pulseaudio mixer in Qt (port of pavucontrol)
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
 media-sound/pianobar 2016.06.02 2018.06.22: A console-based replacement for Pandora's flash player
-media-sound/picard 2.0.3 2.0.4: Cross-platform music tagger
+media-sound/picard 2.0.4: Cross-platform music tagger
 media-sound/playerctl 0.5.0: A CLI utility to control media players over MPRIS
 media-sound/playmidi 2.5-r2: Command Line and GUI based MIDI Player
 media-sound/pnmixer 0.7.2: Volume mixer for the system tray
