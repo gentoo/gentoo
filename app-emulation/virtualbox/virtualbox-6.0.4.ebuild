@@ -124,7 +124,7 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 "
 
-pkg_setup() {
+pkg_pretend() {
 	if ! use headless && ! use qt5 ; then
 		einfo "No USE=\"qt5\" selected, this build will not include any Qt frontend."
 	elif use headless && use qt5 ; then
@@ -140,6 +140,9 @@ pkg_setup() {
 		einfo "You have disabled the \"python\" USE flag. This will only"
 		einfo "disable the python bindings being installed."
 	fi
+}
+
+pkg_setup() {
 	java-pkg-opt-2_pkg_setup
 	python-single-r1_pkg_setup
 
@@ -194,6 +197,7 @@ src_prepare() {
 		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
 	fi
 
+	rm "${WORKDIR}/patches/010_virtualbox-5.2.12-qt511.patch" || die
 	eapply "${WORKDIR}/patches"
 	eapply "${FILESDIR}"/${PN}-6.0.0-libressl.patch #673800
 
