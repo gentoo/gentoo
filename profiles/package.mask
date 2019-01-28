@@ -30,8 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Dennis Lamm <expeditioneer@gentoo.org> (28 Jan 2019)
+# Depends on >=app-text/enchant-2.0.0 which is masked
+>=app-text/gtkspell-3.0.10
+
+# Dennis Lamm <expeditioneer@gentoo.org> (28 Jan 2019)
 # Depends on >=app-text/enchant-2.1.3 which is masked
 >=app-text/gspell-1.8.1
+
 
 # Virgil Dupras <vdupras@gentoo.org> (27 Jan 2019)
 # Dead upstream, no revdep. bug #618744
