@@ -246,7 +246,11 @@ DEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	"${WORKDIR}"/${PATCHSET/.tar.xz/}
+	# master branch
+	"${WORKDIR}"/${PATCHSET/.tar.xz/}/007-kde5-allow-multiple-mimetypes-clipboard.patch
+	"${WORKDIR}"/${PATCHSET/.tar.xz/}/008-kde5-fix-selection-clipboard.patch
+	"${WORKDIR}"/${PATCHSET/.tar.xz/}/011-qt5kde5-use-logicaldotsperinch-to-report-dpi.patch
+	"${WORKDIR}"/${PATCHSET/.tar.xz/}/012-kde5-no-images-to-clipboard.patch
 
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
@@ -306,8 +310,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	rm "${WORKDIR}"/${PATCHSET/.tar.xz/}/00{3,4}*.patch || die # drop backported to 6.2
-
 	default
 
 	# sandbox violations on many systems, we don't need it. Bug #646406
