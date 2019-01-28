@@ -1,12 +1,13 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile install test unpack
+DEFINED_PHASES=compile install test
 DEPEND=gtk? ( x11-libs/gtk+:2 ) llvm? ( >=sys-devel/llvm-3.0 ) xml? ( dev-libs/libxml2 ) gtk? ( virtual/pkgconfig ) xml? ( virtual/pkgconfig )
 DESCRIPTION=C semantic parser
 EAPI=7
 HOMEPAGE=https://sparse.wiki.kernel.org/index.php/Main_Page
 IUSE=gtk llvm test xml
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=MIT
 RDEPEND=gtk? ( x11-libs/gtk+:2 ) llvm? ( >=sys-devel/llvm-3.0 ) xml? ( dev-libs/libxml2 )
 SLOT=0
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+SRC_URI=mirror://kernel/software/devel/sparse/dist/sparse-0.6.0.tar.xz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=20b93d662ded25279860674c0bb662fb
