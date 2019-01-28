@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -8,74 +8,22 @@ inherit bash-completion-r1 distutils-r1 git-r3 readme.gentoo-r1
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
 HOMEPAGE="https://rg3.github.com/youtube-dl/"
 EGIT_REPO_URI="https://github.com/rg3/youtube-dl"
-
 LICENSE="public-domain"
-SLOT="0"
-KEYWORDS=""
-IUSE="+offensive test"
 
+KEYWORDS=""
+RESTRICT="test"
+SLOT="0"
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 DEPEND="
 	${RDEPEND}
-	test? ( dev-python/nose[coverage(+)] )
 "
-
-python_prepare_all() {
-	if ! use offensive; then
-		sed -i -e "/..version../s|'$|+gentoo.no.offensive.sites'|g" \
-			youtube_dl/version.py || die
-		# these have single line import statements
-		local xxx=(
-			alphaporno anysex behindkink camwithher chaturbate eporner
-			eroprofile extremetube foxgay goshgay hellporno hentaistigma
-			hornbunny keezmovies lovehomeporn mofosex myvidster porn91 porncom
-			pornflip pornhd pornotube pornovoisines pornoxo ruleporn sexu
-			slutload spankbang spankwire sunporno thisav vporn watchindianporn
-			xbef xnxx xtube xvideos xxxymovies youjizz youporn
-		)
-		# these have multi-line import statements
-		local mxxx=(
-			drtuber fourtube motherless pornhub redtube tnaflix tube8 xhamster
-		)
-		# do single line imports
-		sed -i \
-			-e $( printf '/%s/d;' ${xxx[@]} ) \
-			youtube_dl/extractor/extractors.py \
-			|| die
-
-		# do multiple line imports
-		sed -i \
-			-e $( printf '/%s/,/)/d;' ${mxxx[@]} ) \
-			youtube_dl/extractor/extractors.py \
-			|| die
-
-		sed -i \
-			-e $( printf '/%s/d;' ${mxxx[@]} ) \
-			youtube_dl/extractor/generic.py \
-			|| die
-
-		rm \
-			$( printf 'youtube_dl/extractor/%s.py ' ${xxx[@]} ) \
-			$( printf 'youtube_dl/extractor/%s.py ' ${mxxx[@]} ) \
-			test/test_age_restriction.py \
-			|| die
-	fi
-
-	eapply_user
-
-	distutils-r1_python_prepare_all
-}
 
 src_compile() {
 	distutils-r1_src_compile
 
 	emake ${PN}.{bash-completion,fish,zsh}
-}
-
-python_test() {
-	emake test
 }
 
 python_install_all() {
