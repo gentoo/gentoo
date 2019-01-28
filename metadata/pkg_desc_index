@@ -1323,7 +1323,7 @@ app-text/discount 2.2.4: A Markdown-to HTML translator written in C
 app-text/djview 4.10.6-r1: Portable DjVu viewer using Qt
 app-text/djvu 3.5.25.3 3.5.27: DjVu viewers, encoders and utilities
 app-text/docbook-dsssl-stylesheets 1.79-r2: DSSSL Stylesheets for DocBook
-app-text/docbook-sgml 1.0: A helper package for sgml docbook
+app-text/docbook-sgml 1.0-r1: A helper package for sgml docbook
 app-text/docbook-sgml-dtd 3.0-r3 3.1-r3 4.0-r3 4.1-r3 4.2-r2 4.3-r2 4.4 4.5: Docbook SGML DTD 4.5
 app-text/docbook-sgml-utils 0.6.14-r2: Shell scripts to manage DocBook documents
 app-text/docbook-xml-dtd 4.1.2-r6 4.2-r2 4.3-r1 4.4-r2 4.5-r1: Docbook DTD for XML
@@ -9970,7 +9970,7 @@ sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xinetd 2.3.15-r3 2.3.15.3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0 1.2.1: Framework for defining and tracking users, login sessions and seats
-sys-auth/elogind 238.2: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 238.2 239.3: The systemd project's logind, extracted to a standalone package
 sys-auth/fprintd 0.5.0: D-Bus service to access fingerprint readers
 sys-auth/keystone 12.0.2 13.0.2 14.0.1: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.6.0-r2: library to add support for consumer fingerprint readers
