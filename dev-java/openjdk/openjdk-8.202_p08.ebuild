@@ -73,14 +73,14 @@ PDEPEND="webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
 S="${WORKDIR}/jdk${SLOT}u-jdk${MY_PV}"
 
 # The space required to build varies wildly depending on USE flags,
-# ranging from 2GB to 24GB. This function is certainly not exact but
+# ranging from 2GB to 16GB. This function is certainly not exact but
 # should be close enough to be useful.
 openjdk_check_requirements() {
 	local M
-	M=$(usex debug 2600 875)
-	M=$(( $(usex debug 2900 375) + $M ))
+	M=2048
+	M=$(( $(usex debug 3 1) * $M ))
 	M=$(( $(usex jbootstrap 2 1) * $M ))
-	M=$(( $(usex doc 300 0) + $(usex source 120 0) + 820 + $M ))
+	M=$(( $(usex doc 320 0) + $(usex source 128 0) + 192 + $M ))
 
 	CHECKREQS_DISK_BUILD=${M}M check-reqs_pkg_${EBUILD_PHASE}
 }
@@ -219,8 +219,7 @@ src_install() {
 
 	if use doc ; then
 		insinto /usr/share/doc/${PF}/html
-		doins -r "${S}"/build/*-release/images/docs/*
-		dosym ${PF} /usr/share/doc/${PN}-${SLOT}
+		doins -r "${S}"/build/*-release/docs/*
 	fi
 }
 
