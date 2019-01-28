@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=PUEL extensions for VirtualBox
+EAPI=7
+HOMEPAGE=https://www.virtualbox.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=PUEL
+RDEPEND=~app-emulation/virtualbox-6.0.4
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=https://download.virtualbox.org/virtualbox/6.0.4/Oracle_VM_VirtualBox_Extension_Pack-6.0.4-128413.vbox-extpack -> Oracle_VM_VirtualBox_Extension_Pack-6.0.4-128413.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=5d58e9732f1ac2629bd2814f42da839b
