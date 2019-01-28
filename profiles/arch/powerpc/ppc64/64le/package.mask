@@ -3,8 +3,8 @@
 
 # James Le Cuirot <chewi@gentoo.org> (19 Oct 2018)
 # AdoptOpenJDK's ppc64 build is little-endian only.
--dev-java/openjdk:11
--dev-java/openjdk-bin:11
+-dev-java/openjdk
+-dev-java/openjdk-bin
 
 # Sergei Trofimovich <slyfox@gentoo.org> (11 Apr 2018)
 # ltrace is not ported to powerpc64le yet.
