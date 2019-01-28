@@ -1,12 +1,16 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+EGO_VENDOR=( "gopkg.in/yaml.v2 a3f3340b5840cee44f372bddb5880fcbc419b46a github.com/go-yaml/yaml" )
+
 inherit golang-build golang-vcs-snapshot user
 
 EGO_PN="github.com/genuinetools/reg"
-GIT_COMMIT="d021aeb0b9786eac1212b5faaa70d11f56c60991"
-ARCHIVE_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+GIT_COMMIT="d959057b30da67d5f162790f9d5b5160686901fd"
+ARCHIVE_URI="https://${EGO_PN}/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz
+	${EGO_VENDOR_URI}"
 KEYWORDS="~amd64"
 
 DESCRIPTION="Docker registry v2 command line client"
@@ -25,6 +29,7 @@ pkg_setup() {
 
 src_prepare() {
 	pushd src/${EGO_PN} || die
+	eapply "${FILESDIR}"/reg-0.16.0-config.patch
 	default
 	popd || die
 }
