@@ -9945,7 +9945,7 @@ sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
 sys-apps/systemd 239-r2 239-r3: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
-sys-apps/sysvinit 2.88-r9 2.91-r1: /sbin/init - parent of all processes
+sys-apps/sysvinit 2.91-r1: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
 sys-apps/texinfo 6.1 6.3: The GNU info program and utilities
 sys-apps/the_silver_searcher 2.0.0: A code-searching tool similar to ack, but faster
