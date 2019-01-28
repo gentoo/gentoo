@@ -98,7 +98,7 @@ DEPEND="${CDEPEND}
 		!system-mitkrb5? (
 			>=sys-libs/nss_wrapper-1.1.3
 			>=net-dns/resolv_wrapper-1.1.4
-			>=net-libs/socket_wrapper-1.1.7
+			>=net-libs/socket_wrapper-1.1.9
 			>=sys-libs/uid_wrapper-1.2.1
 		)
 	)"
