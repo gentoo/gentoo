@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ibm-s390-tools/s390-tools/archive/v${PV}.tar.gz -> $
 
 LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS="-* ~s390"
+KEYWORDS="-* s390"
 IUSE="fuse ncurses pfm snmp zlib"
 
 RDEPEND="fuse? ( sys-fs/fuse:0= )
