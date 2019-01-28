@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit golang-vcs-snapshot systemd user
-GIT_COMMIT="48d287e"
+GIT_COMMIT="65d2c9b"
 KEYWORDS="~amd64"
 EGO_PN="github.com/hashicorp/consul"
 DESCRIPTION="A tool for service discovery, monitoring and configuration"
@@ -18,7 +18,7 @@ IUSE=""
 RESTRICT="test"
 
 DEPEND="dev-go/gox
-	>=dev-lang/go-1.9:=
+	>=dev-lang/go-1.11:=
 	>=dev-go/go-tools-0_pre20160121"
 RDEPEND=""
 
