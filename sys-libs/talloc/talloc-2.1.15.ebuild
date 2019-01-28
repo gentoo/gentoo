@@ -54,6 +54,7 @@ multilib_src_configure() {
 	local extra_opts=(
 		$(usex compat --enable-talloc-compat1 '')
 		$(multilib_native_usex python '' --disable-python)
+		$([[ ${CHOST} == *-solaris* ]] && echo '--disable-symbol-versions')
 	)
 	waf-utils_src_configure "${extra_opts[@]}"
 }
