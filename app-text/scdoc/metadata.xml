@@ -5,11 +5,20 @@
 		<email>hilobakho@gmail.com</email>
 		<name>Mykyta Holubakha</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>speedjack95@gmail.com</email>
+		<name>Niccolò Scatena</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">swaywm/sway</remote-id>
+		<maintainer status="active">
+			<email>sir@cmpwn.com</email>
+			<name>Drew DeVault</name>
+		</maintainer>
+		<changelog>https://git.sr.ht/~sircmpwn/scdoc/refs</changelog>
 	</upstream>
 </pkgmetadata>
