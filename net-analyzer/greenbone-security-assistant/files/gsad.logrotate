@@ -1,11 +1,9 @@
-# logrotate for openvas
+# logrotate for openvas security agent
 /var/log/openvas/gsad.log {
-        rotate 4
-        weekly
-        compress
-        delaycompress
-        missingok
-	postrotate
-	    /bin/kill -HUP `pidof gsad`
-	endscript
+	daily
+	rotate 7
+	compress
+	missingok
+	notifempty
+	sharedscripts
 }
