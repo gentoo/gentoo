@@ -760,7 +760,8 @@ pkg_postinst() {
 		udev_reload
 	fi
 
-	fcaps cap_net_admin /usr/libexec/qemu-bridge-helper
+	[[ -f ${D}/usr/libexec/qemu-bridge-helper ]] && \
+		fcaps cap_net_admin /usr/libexec/qemu-bridge-helper
 
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_print_elog
