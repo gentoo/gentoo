@@ -4975,7 +4975,7 @@ dev-python/h5py 2.7.0: Simple Python interface to HDF5 files
 dev-python/hachoir-core 1.3.3-r1: Core of Hachoir framework: parse and edit binary files
 dev-python/hachoir-parser 1.3.4-r1: Package of Hachoir parsers used to open binary files
 dev-python/hachoir-regex 1.0.5-r1: Manipulation of regular expressions (regex)
-dev-python/hacking 0.9.2 0.10.3: A client for the OpenStack Nova API
+dev-python/hacking 0.9.2 0.10.3 1.1.0: A client for the OpenStack Nova API
 dev-python/happydoc 3.1-r2: Tool for extracting documentation from Python source code
 dev-python/hcs-utils 1.5: A library containing some useful snippets
 dev-python/hgdistver 0.25: utility lib to generate python package version infos from mercurial tags
@@ -5132,7 +5132,7 @@ dev-python/morbid 0.8.7.3-r1: A Twisted-based publish/subscribe messaging server
 dev-python/more-itertools 3.0.0 4.2.0-r1: More routines for operating on iterables, beyond itertools
 dev-python/moto 0.4.30 1.0.1-r1: Mock library for boto
 dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on EasyMock for Java
-dev-python/mox3 0.10.0 0.24.0: Mock object framework for Python
+dev-python/mox3 0.24.0: Mock object framework for Python
 dev-python/mpi4py 2.0.0: Message Passing Interface for Python
 dev-python/mpmath 1.0.0: Python library for arbitrary-precision floating-point arithmetic
 dev-python/msgpack 0.4.8 0.5.1: MessagePack (de)serializer for Python
@@ -5248,7 +5248,7 @@ dev-python/pecan 1.0.4 1.1.2 1.2.1: A WSGI object-dispatching web framework, lea
 dev-python/peewee 2.7.4 3.1.0: Small python ORM
 dev-python/pep8 1.5.6 1.5.7 1.7.0: Python style guide checker
 dev-python/peppercorn 0.5: A library for converting a token stream into a data structure for use in web form posts
-dev-python/pexpect 4.2.1: Python module for spawning child applications and responding to expected patterns
+dev-python/pexpect 4.2.1: Python module for spawning child apps and responding to expected patterns
 dev-python/pickleshare 0.7.3 0.7.4-r1: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.1.1 2.2.0: Pidfile featuring stale detection and file-locking
 dev-python/piddle 1.0.15-r1: Cross-media, cross-platform 2D graphics package
@@ -5539,7 +5539,7 @@ dev-python/rednose 0.4.1: coloured output for nosetests
 dev-python/regendoc 0.5: Check/update simple file/shell examples in documentation
 dev-python/regex 2017.04.05: Alternative regular expression module to replace re
 dev-python/rencode 1.0.5: similar to bencode from the BitTorrent project
-dev-python/reno 2.2.1 2.5.0 2.7.0: Release notes manager, storing release notes in a git repo and building docs
+dev-python/reno 2.7.0: Release notes manager, storing release notes in a git repo and building docs
 dev-python/reportlab 3.3.0-r2: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.6-r2: A tiny LRU cache implementation and decorator
 dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI
