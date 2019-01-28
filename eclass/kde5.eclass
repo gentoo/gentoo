@@ -636,6 +636,8 @@ kde5_src_configure() {
 			# install mkspecs in the same directory as qt stuff
 			-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 		)
+		# move handbook outside of doc dir for at least two QA warnings, bug 667138
+		[[ ${EAPI} != 6 ]] && cmakeargs+=( -DKDE_INSTALL_DOCBUNDLEDIR="${EPREFIX}/usr/share/help" )
 	fi
 
 	# allow the ebuild to override what we set here
@@ -704,10 +706,13 @@ kde5_src_install() {
 		docompress -x /usr/share/doc/qt-${pv}
 	fi
 
-	# We don't want /usr/share/doc/HTML to be compressed,
-	# because then khelpcenter can't find the docs
-	if [[ -d ${ED%/}/usr/share/doc/HTML ]]; then
-		docompress -x /usr/share/doc/HTML
+	if [[ ${EAPI} = 6 ]]; then
+		# We don't want /usr/share/doc/HTML to be compressed,
+		# because then khelpcenter can't find the docs
+		#todo: clean up trailing slash check when EAPI <7 is removed
+		if [[ -d ${ED%/}/usr/share/doc/HTML ]]; then
+			docompress -x /usr/share/doc/HTML
+		fi
 	fi
 }
 
