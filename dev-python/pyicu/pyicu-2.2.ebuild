@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-libs/icu"
+	dev-libs/icu:="
 DEPEND="${RDEPEND}
 	test? ( dev-python/pytest
 		dev-python/six )"
