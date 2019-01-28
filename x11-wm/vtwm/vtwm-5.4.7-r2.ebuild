@@ -1,17 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
-DESCRIPTION="one of many TWM descendants and implements a Virtual Desktop"
+DESCRIPTION="TWM descendant that implements a Virtual Desktop"
 HOMEPAGE="http://www.vtwm.org/"
 SRC_URI="http://www.vtwm.org/downloads/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 IUSE="rplay"
 
 RDEPEND="x11-libs/libX11
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	x11-misc/imake"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-do-not-rm.patch
+	eapply "${FILESDIR}"/${P}-do-not-rm.patch
 	sed -i Imakefile \
 		-e 's:-L/usr/local/lib::g' \
 		-e 's:-I/usr/local/include::g' \
@@ -39,33 +39,33 @@ src_prepare() {
 			-e 's:^\(SOUNDLIB.*\):XCOMM\ \1:' \
 			-e 's:sound\..::g' \
 			|| die "sed Imakefile"
-		epatch "${FILESDIR}"/${P}-NO_SOUND_SUPPORT.patch
+		eapply "${FILESDIR}"/${P}-NO_SOUND_SUPPORT.patch
 	fi
+	default
 }
 
 src_configure() {
 	xmkmf || die "xmkmf failed"
-	emake depend || die "emake depend"
+	emake depend
 }
 
 src_compile() {
 	emake \
 		CC=$(tc-getCC) \
 		CCOPTIONS="${CFLAGS}" \
-		EXTRA_LDOPTIONS="${LDFLAGS}" \
-		|| die "emake failed"
+		EXTRA_LDOPTIONS="${LDFLAGS}"
 }
 
 src_install() {
 	emake BINDIR=/usr/bin \
 		LIBDIR=/etc/X11 \
 		MANPATH=/usr/share/man \
-		DESTDIR="${D}" install || die "emake install failed"
+		DESTDIR="${D}" install
 
 	echo "#!/bin/sh" > vtwm
 	echo "xsetroot -cursor_name left_ptr &" >> vtwm
 	echo "/usr/bin/vtwm" >> vtwm
 	exeinto /etc/X11/Sessions
-	doexe vtwm || die
-	dodoc doc/{4.7.*,CHANGELOG,BUGS,DEVELOPERS,HISTORY,SOUND,WISHLIST} || die
+	doexe vtwm
+	dodoc doc/{4.7.*,CHANGELOG,BUGS,DEVELOPERS,HISTORY,SOUND,WISHLIST}
 }
