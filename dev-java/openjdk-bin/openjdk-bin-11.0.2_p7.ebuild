@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit java-vm-2
 
 abi_uri() {
 	echo "${2-$1}? (
-			https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk-${MY_PV}/OpenJDK${SLOT}-jdk_${1}_linux_hotspot_${MY_PV//[.+]/_}.tar.gz
+			https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk-${MY_PV}/OpenJDK${SLOT}U-jdk_${1}_linux_hotspot_${MY_PV//+/_}.tar.gz
 		)"
 }
 
@@ -25,8 +25,6 @@ HOMEPAGE="https://adoptopenjdk.net"
 LICENSE="GPL-2-with-classpath-exception"
 KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="alsa cups doc examples +gentoo-vm headless-awt nsplugin selinux source +webstart"
-RESTRICT="preserve-libs"
-QA_PREBUILT="*"
 
 RDEPEND="
 	media-libs/fontconfig:1.0
@@ -47,6 +45,9 @@ RDEPEND="
 
 PDEPEND="webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
 	nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )"
+
+RESTRICT="preserve-libs splitdebug"
+QA_PREBUILT="*"
 
 S="${WORKDIR}/jdk-${MY_PV}"
 
