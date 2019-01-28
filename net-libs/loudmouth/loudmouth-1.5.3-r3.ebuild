@@ -2,11 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools
 
 DESCRIPTION="Lightweight C Jabber library"
-HOMEPAGE="https://github.com/mcabber/loudmouth"
-SRC_URI="https://github.com/mcabber/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://mcabber.com"
+SRC_URI="https://mcabber.com/files/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -26,19 +25,14 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-util/glib-utils
+	dev-util/gtk-doc-am
 	test? ( dev-libs/check )
 	virtual/pkgconfig
 "
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc7.patch
-	"${FILESDIR}"/${P}-skip-gtk-doc.patch
 )
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	local myconf
