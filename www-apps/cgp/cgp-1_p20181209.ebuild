@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=6
 
 inherit webapp
 
 MY_PN="${PN^^}"
-MY_PV="1920ca24a067ac157a6bd8f3c017f4c6244ae245"
+MY_PV="72acfcbffd51da1e77a56517618da68252485ed6"
 
 DESCRIPTION="A graphical web-based front-end for visualizing RRD collected by collectd"
 HOMEPAGE="https://github.com/pommi/CGP"

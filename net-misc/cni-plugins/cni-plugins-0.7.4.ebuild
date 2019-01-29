@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit golang-vcs-snapshot
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 DESCRIPTION="Standard networking plugins for container networking"
 EGO_PN="github.com/containernetworking/plugins"
 HOMEPAGE="https://github.com/containernetworking/plugins"
