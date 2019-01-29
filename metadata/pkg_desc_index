@@ -1593,7 +1593,7 @@ app-vim/molokai 0.1_p20151115: vim plugin: molokai color scheme
 app-vim/multiplesearch 1.3: vim plugin: allows multiple highlighted searches
 app-vim/multvals 3.10-r1: vim plugin: library for helping with arrays
 app-vim/nagios-syntax 1.8: vim plugin: Nagios configuration files syntax
-app-vim/neocomplcache 7.1: vim plugin: ultimate auto completion system
+app-vim/neocomplcache 7.1-r1: vim plugin: ultimate auto completion system
 app-vim/nerdcommenter 2.5.0: vim plugin: easy commenting of code for many filetypes
 app-vim/nerdtree 5.0.0-r1: vim plugin: A tree explorer plugin for navigating the filesystem
 app-vim/nerdtree-tabs 1.4.7: vim plugin: NERDTree and tabs in vim
@@ -8905,6 +8905,7 @@ net-misc/charm 1.9.2-r1: A text based livejournal client
 net-misc/chrony 3.1 3.3: NTP client and server programs
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03: Concurrent Multi-Server Terminal Access
+net-misc/cni-plugins 0.7.4: Standard networking plugins for container networking
 net-misc/connect 1.103: network connection relaying command (proxy)
 net-misc/connman 1.35-r1: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.1.1: GTK GUI for Connman
