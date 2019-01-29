@@ -2572,7 +2572,7 @@ dev-java/htmlparser 1.4-r1: Implementation of the HTML5 parsing algorithm in Jav
 dev-java/httpcomponents-client 4.5: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
-dev-java/icedtea-bin 3.9.0-r1: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea-bin 3.9.0-r1 3.10.0: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
