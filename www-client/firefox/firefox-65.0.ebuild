@@ -106,7 +106,7 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	app-arch/zip
 	app-arch/unzip
-	>=dev-util/cbindgen-0.6.4
+	>=dev-util/cbindgen-0.6.7
 	>=net-libs/nodejs-8.11.0
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
@@ -405,6 +405,10 @@ src_configure() {
 		mozconfig_annotate '' --with-system-libevent="${SYSROOT}${EPREFIX}"/usr
 	fi
 
+	if ! use x86 && [[ ${CHOST} != armv*h* ]] ; then
+		mozconfig_annotate '' --enable-rust-simd
+	fi
+
 	# skia has no support for big-endian platforms
 	if [[ $(tc-endian) == "big" ]] ; then
 		mozconfig_annotate 'big endian target' --disable-skia
@@ -485,7 +489,6 @@ src_compile() {
 
 		addpredict /root
 		addpredict /etc/gconf
-		set -x
 	fi
 
 	MOZ_MAKE_FLAGS="${MAKEOPTS} -O" SHELL="${SHELL:-${EPREFIX}/bin/bash}" MOZ_NOSPAM=1 ${_virtx} \
