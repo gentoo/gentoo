@@ -220,7 +220,7 @@ app-arch/unar 1.10.1: unpacker for various archiving formats, e.g. rar v3
 app-arch/unarj 2.65: Utility for opening arj archives
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7_p1-r1: Script for unpacking various file formats
-app-arch/unrar 5.5.8 5.6.6: Uncompress rar files
+app-arch/unrar 5.6.6: Uncompress rar files
 app-arch/unshield 1.4: InstallShield CAB file extractor
 app-arch/unzip 6.0_p20 6.0_p21-r2: unzipper for pkzip-compressed files
 app-arch/xar 1.8-r1: An easily extensible archive format
