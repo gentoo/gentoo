@@ -3153,7 +3153,7 @@ dev-libs/libparserutils 0.2.3: library for building efficient parsers, written i
 dev-libs/libpcre 8.41-r1: Perl-compatible regular expression library
 dev-libs/libpcre2 10.30: Perl-compatible regular expression library
 dev-libs/libpeas 1.22.0: A GObject plugins library
-dev-libs/libpipeline 1.4.0 1.4.2: a pipeline manipulation library
+dev-libs/libpipeline 1.4.2: a pipeline manipulation library
 dev-libs/libplatform 2.0.1: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpqxx 6.0.0: Standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
@@ -6493,7 +6493,7 @@ games-board/tali 3.22.0: Beat the odds in a poker-style dice game
 games-emulation/caps 20071115: Support library for accessing and using C.A.P.S. images
 games-emulation/dolphin 5.0: Gamecube and Wii game emulator
 games-emulation/dosbox 0.74_p20160629: DOS emulator
-games-emulation/mgba 0.6.1: A new Game Boy Advance emulator written in C.
+games-emulation/mgba 0.6.3: Game Boy Advance emulator written in C
 games-emulation/pcsx2 1.4.0: A PlayStation 2 emulator
 games-engines/renpy 6.99.12.4-r3: Visual novel engine written in python
 games-misc/fortune-mod 1.99.1-r2: The notorious fortune program

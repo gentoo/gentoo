@@ -2208,6 +2208,7 @@ games-emulation/dolphin:log - Increase logging output
 games-emulation/dolphin:lto - Add support for link-time optimizations.
 games-emulation/dosbox:core-inline - Enable memory-increasing inlines for better performance but requiring more build time
 games-emulation/dosbox:glide - Enable unofficial Glide emulation via media-libs/openglide
+games-emulation/mgba:elf - Enable the use of elf utils via dev-libs/elfutils
 games-engines/renpy:development - Install IDE for game developers and an empty game template
 games-misc/xcowsay:fortune - Installs the fortune-mod xcow binary
 games-roguelike/stone-soup:ncurses - Enable for console (uses ncurses) based build. (can be enabled on top of tiles)
