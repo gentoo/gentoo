@@ -4,10 +4,10 @@ DESCRIPTION=A set of utilities for converting to/from the netpbm (and related) f
 EAPI=5
 HOMEPAGE=http://netpbm.sourceforge.net/
 IUSE=doc jbig jpeg jpeg2k png postscript rle cpu_flags_x86_sse2 static-libs svga tiff X xml zlib
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ~ppc ~ppc64 s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=jbig? ( media-libs/jbigkit ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( media-libs/jasper ) png? ( >=media-libs/libpng-1.4:0 ) postscript? ( app-text/ghostscript-gpl ) rle? ( media-libs/urt ) svga? ( media-libs/svgalib ) tiff? ( >=media-libs/tiff-3.5.5:0 ) xml? ( dev-libs/libxml2 ) zlib? ( sys-libs/zlib ) X? ( x11-libs/libX11 )
 SLOT=0
 SRC_URI=mirror://gentoo/netpbm-10.76.00.tar.xz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=53a2035559d997a9eb79f27b415586f9
+_md5_=6ed9a6d0e1116f2d6540fc9708c879f1
