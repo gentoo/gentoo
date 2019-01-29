@@ -30,6 +30,8 @@ DEPEND="${RDEPEND}"
 # goes places, like writing to /dev or creating btrfs volumes
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}/${PV}-correct-test-deps.patch" )
+
 python_compile_all() {
 	use doc && emake -C docs html
 }
