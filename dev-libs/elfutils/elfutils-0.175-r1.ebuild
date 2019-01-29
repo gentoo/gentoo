@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,10 @@ DEPEND="${RDEPEND}
 	>=sys-devel/flex-2.5.4a
 	sys-devel/m4"
 
-PATCHES=("${FILESDIR}"/${PN}-0.118-PaX-support.patch)
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.118-PaX-support.patch
+	"${FILESDIR}"/${PN}-0.173-partial-core.patch
+)
 
 src_prepare() {
 	default
