@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
-DESCRIPTION="Fast erasure codec for the command-line, C, Python, or Haskell"
+DESCRIPTION="Draws ASCII trees"
 HOMEPAGE="https://pypi.org/project/asciitree/"
 SRC_URI="mirror://pypi/a/asciitree/${P}.tar.gz"
 
