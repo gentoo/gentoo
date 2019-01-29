@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
 inherit flag-o-matic
 
@@ -14,9 +14,9 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-linux"
 IUSE="+installkernel static"
 
-PATCHES=( "${FILESDIR}"/${PN}-3.4.2-no-bs-namespace.patch )
-
 S="${WORKDIR}/${PN}"
+
+PATCHES=( "${FILESDIR}"/${PN}-3.4.2-no-bs-namespace.patch )
 
 src_configure() {
 	use static && append-ldflags -static
