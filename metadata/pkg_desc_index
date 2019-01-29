@@ -7077,7 +7077,7 @@ mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.3.8: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
 mail-client/thunderbird 60.4.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 60.4.0-r1: Thunderbird Mail Client
+mail-client/thunderbird-bin 60.4.0-r1 60.5.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r2: A Qt IMAP e-mail client
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1: sendmail milter for amavisd-new
 mail-filter/amavisd-new 2.11.0-r3: High-performance interface between the MTA and content checkers
