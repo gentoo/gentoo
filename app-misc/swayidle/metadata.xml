@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>speedjack95@gmail.com</email>
+		<name>Niccolò Scatena</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Swayidle is the idle management daemon used by <pkg>dev-libs/sway</pkg>.
+		It is compatible with any Wayland compositor which implements the KDE
+		idle protocol.
+	</longdescription>
+	<use>
+		<flag name="elogind">Enable support for rootless session via elogind</flag>
+		<flag name="fish-completion">Enable fish completion support</flag>
+		<flag name="man">Build and install man pages</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">swaywm/swayidle</remote-id>
+		<maintainer status="active">
+			<email>sir@cmpwn.com</email>
+			<name>Drew DeVault</name>
+		</maintainer>
+		<bugs-to>https://github.com/swaywm/swayidle/issues</bugs-to>
+		<changelog>https://github.com/swaywm/swayidle/releases</changelog>
+	</upstream>
+</pkgmetadata>
