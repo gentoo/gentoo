@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,8 +24,8 @@ fi
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
 HOMEPAGE="https://www.jetbrains.com/idea"
 
-LICENSE="IDEA
-	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
+LICENSE="Apache-2.0
+	custom-jdk? ( GPL-2 )"
 IUSE="-custom-jdk"
 
 DEPEND="!dev-util/${PN}:14
@@ -41,8 +41,8 @@ src_prepare() {
 		rm bin/fsnotifier-arm || die
 	fi
 	if ! use custom-jdk; then
-		if [[ -d jre ]]; then
-			rm -r jre || die
+		if [[ -d jre64 ]]; then
+			rm -r jre64 || die
 		fi
 	fi
 }
@@ -55,8 +55,8 @@ src_install() {
 	fperms 755 "${dir}"/bin/{idea.sh,fsnotifier{,64}}
 
 	if use custom-jdk; then
-		if [[ -d jre ]]; then
-		fperms 755 "${dir}"/jre/jre/bin/{java,jjs,keytool,orbd,pack200,policytool,rmid,rmiregistry,servertool,tnameserv,unpack200}
+		if [[ -d jre64 ]]; then
+		fperms 755 "${dir}"/jre64/bin/{java,jjs,keytool,orbd,pack200,policytool,rmid,rmiregistry,servertool,tnameserv,unpack200}
 		fi
 	fi
 
