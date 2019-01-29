@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=!dev-util/idea-community:14 !dev-util/idea-community:15
+DESCRIPTION=A complete toolset for web, mobile and enterprise development
+EAPI=7
+HOMEPAGE=https://www.jetbrains.com/idea
+IUSE=-custom-jdk
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0 custom-jdk? ( GPL-2 )
+RDEPEND=!dev-util/idea-community:14 !dev-util/idea-community:15 >=virtual/jdk-1.7:*
+SLOT=0
+SRC_URI=https://download.jetbrains.com/idea/ideaIC-2018.3.3.tar.gz -> ideaIC-183.5153.38.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8
+_md5_=57386853348d3cebae5c9de374fea5a7
