@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Dennis Lamm <expeditioneer@gentoo.org> (29 Jan 2019)
+# Depends on >=app-text/enchant-2.0.0 which is masked
+=gnome-extra/gtkhtml-4.10.0-r1
+
 # Dennis Lamm <expeditioneer@gentoo.org> (28 Jan 2019)
 # Depends on >=app-text/enchant-2.0.0 which is masked
 >=app-text/gtkspell-3.0.10
