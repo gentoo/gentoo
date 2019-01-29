@@ -21,6 +21,7 @@ PY_VER="1.5.0"
 COMMON_DEPEND="
 	>=dev-python/attrs-17.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pluggy-0.5[${PYTHON_USEDEP}]
+	<dev-python/pluggy-0.7
 	>=dev-python/py-${PY_VER}[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
