@@ -37,5 +37,9 @@
 		instead of bundled.</flag>
 	<flag name="system-sqlite">Use the system-wide <pkg>dev-db/sqlite</pkg>
 		installation with secure-delete enabled</flag>
+	<flag name="system-webp">Use the system-wide <pkg>media-libs/libwebp</pkg>
+		instead of bundled.</flag>
+
+
 </use>
 </pkgmetadata>
