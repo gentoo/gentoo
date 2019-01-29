@@ -58,6 +58,6 @@ BDEPEND=">=virtual/rust-1.30.1"
 QA_FLAGS_IGNORED="/usr/bin/lsd"
 
 src_install() {
-	cargo_src_install
+	cargo_src_install --path .
 	einstalldocs
 }
