@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit eutils flag-o-matic multilib toolchain-funcs
+inherit flag-o-matic multilib toolchain-funcs
 
-MY_PN=${PN}src
+MY_PN="${PN}src"
 
 DESCRIPTION="Uncompress rar files"
 HOMEPAGE="https://www.rarlab.com/rar_add.htm"
@@ -14,7 +14,7 @@ SRC_URI="https://www.rarlab.com/rar/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="unRAR"
 # subslot = soname version
 SLOT="0/5"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 RDEPEND="!<=app-arch/unrar-gpl-0.0.1_p20080417"
@@ -65,4 +65,6 @@ src_install() {
 	insinto /usr/include/libunrar${PV%.*.*}
 	doins *.hpp
 	dosym libunrar${PV%.*.*} /usr/include/libunrar
+
+	find "${ED}" -name "*.a" -delete || die
 }
