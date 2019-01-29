@@ -8431,7 +8431,7 @@ net-analyzer/nagios-check_logfiles 3.7.6.3: A nagios plugin for checking logfile
 net-analyzer/nagios-check_mysql_health 2.1.9.2: A nagios plugin for checking MySQL server health
 net-analyzer/nagios-check_rbl 1.4.1: Monitor whether or not a host is blacklisted
 net-analyzer/nagios-core 4.3.4: Nagios core - monitoring daemon, web GUI, and documentation
-net-analyzer/nagios-plugins 2.0.3-r2 2.2.1-r2: Official plugins for Nagios
+net-analyzer/nagios-plugins 2.0.3-r2 2.2.1-r2 2.2.1-r3: Official plugins for Nagios
 net-analyzer/nagios-plugins-snmp 0.6.0-r2: Additional Nagios plugins for monitoring SNMP capable devices
 net-analyzer/nagstamon 2.0.1: Nagstamon is a systray monitor for displaying realtime status of a Nagios box
 net-analyzer/nbtscan 1.5.1-r3: NBTscan is a program for scanning IP networks for NetBIOS name information
@@ -9418,7 +9418,7 @@ sci-libs/fftw 2.1.5-r9 3.3.6_p2: Fast C library for the Discrete Fourier Transfo
 sci-libs/flann 1.9.1: Fast approximate nearest neighbor searches in high dimensional spaces
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
-sci-libs/gdal 2.3.0-r2: Translator library for raster geospatial data formats (includes OGR support)
+sci-libs/gdal 2.3.0-r2 2.3.1: Translator library for raster geospatial data formats (includes OGR support)
 sci-libs/geos 3.7.0: Geometry engine library for Geographic Information Systems
 sci-libs/gsl 1.16: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
