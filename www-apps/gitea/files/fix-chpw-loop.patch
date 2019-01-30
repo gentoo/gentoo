@@ -1,0 +1,13 @@
+diff --git a/modules/context/auth.go b/modules/context/auth.go
+index 110122cb6..5bc34b55a 100644
+--- a/modules/context/auth.go
++++ b/modules/context/auth.go
+@@ -42,7 +42,7 @@ func Toggle(options *ToggleOptions) macaron.Handler {
+ 			// prevent infinite redirection
+ 			// also make sure that the form cannot be accessed by
+ 			// users who don't need this
+-			if ctx.Req.URL.Path == setting.AppSubURL+"/user/settings/change_password" {
++			if ctx.Req.URL.Path == "/user/settings/change_password" {
+ 				if !ctx.User.MustChangePassword {
+ 					ctx.Redirect(setting.AppSubURL + "/")
+ 				}
