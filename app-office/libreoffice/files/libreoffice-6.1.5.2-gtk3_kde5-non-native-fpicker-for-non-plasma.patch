@@ -1,0 +1,105 @@
+From bf93bae6990b01ee726b59b0969b93585719671a Mon Sep 17 00:00:00 2001
+From: Michael Weghorn <m.weghorn@posteo.de>
+Date: Wed, 30 Jan 2019 10:11:35 +0100
+Subject: tdf#122752 gtk3_kde5: Use non-native fpicker for non-Plasma desktops
+
+Adding the custom widgets to the native dialog currently depends
+on the native dialog using a KFileWidget, which is just the case for
+the native QFileDialog implementation on Plasma/KDE5.
+
+In order not to lose custom controls for non-Plasma desktops,
+fall back to using the non-native QFileDialog there and adding
+the custom controls to its layout.
+This was mostly taken over from Qt5FileDialog.
+(This is a similar approach as that taken for the kde5 VCL plugin
+in https://gerrit.libreoffice.org/#/c/67106/ ).
+
+Adding the controls to the layout returned by 'QFileDialog::layout()'
+cannot be used for the native dialog as well, since a nullptr is
+returned in this case.
+
+From QFileDialog doc:
+
+> By default, a platform-native file dialog will be used if the platform
+> has one. In that case, the widgets which would otherwise be used to
+> construct the dialog will not be instantiated, so related accessors such
+> as layout() and itemDelegate() will return null. You can set the
+> DontUseNativeDialog option to ensure that the widget-based
+> implementation will be used instead of the native dialog.
+
+Change-Id: I75fbe7731da28d0dc7df878f4c57e141d4d89902
+Reviewed-on: https://gerrit.libreoffice.org/67111
+Reviewed-by: Michael Weghorn <m.weghorn@posteo.de>
+Tested-by: Michael Weghorn <m.weghorn@posteo.de>
+---
+ vcl/unx/gtk3_kde5/kde5_filepicker.cxx | 26 +++++++++++++++++++++++++-
+ vcl/unx/gtk3_kde5/kde5_filepicker.hxx |  2 ++
+ 2 files changed, 27 insertions(+), 1 deletion(-)
+
+diff --git a/vcl/unx/gtk3_kde5/kde5_filepicker.cxx b/vcl/unx/gtk3_kde5/kde5_filepicker.cxx
+index 42e278a..33f64ad0 100644
+--- a/vcl/unx/gtk3_kde5/kde5_filepicker.cxx
++++ b/vcl/unx/gtk3_kde5/kde5_filepicker.cxx
+@@ -17,6 +17,8 @@
+  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+  */
+ 
++#include <vcl/svapp.hxx>
++
+ #include "kde5_filepicker.hxx"
+ 
+ #include <KWindowSystem>
+@@ -57,7 +59,7 @@ KDE5FilePicker::KDE5FilePicker(QObject* parent)
+     connect(_dialog, &QFileDialog::filterSelected, this, &KDE5FilePicker::filterChanged);
+     connect(_dialog, &QFileDialog::fileSelected, this, &KDE5FilePicker::selectionChanged);
+ 
+-    qApp->installEventFilter(this);
++    setupCustomWidgets();
+ }
+ 
+ void KDE5FilePicker::enableFolderMode()
+@@ -232,6 +234,28 @@ void KDE5FilePicker::initialize(bool saveDialog)
+ 
+ void KDE5FilePicker::setWinId(sal_uIntPtr winId) { _winId = winId; }
+ 
++void KDE5FilePicker::setupCustomWidgets()
++{
++    // When using the platform-native Plasma/KDE5 file picker, we currently rely on KFileWidget
++    // being present to add the custom controls visible (s. 'eventFilter' method).
++    // Since this doesn't work for other desktop environments, use a non-native
++    // dialog there in order not to lose the custom controls and insert the custom
++    // widget in the layout returned by QFileDialog::layout()
++    // (which returns nullptr for native file dialogs)
++    if (Application::GetDesktopEnvironment() == "KDE5")
++    {
++        qApp->installEventFilter(this);
++    }
++    else
++    {
++        _dialog->setOption(QFileDialog::DontUseNativeDialog);
++        QGridLayout* pLayout = static_cast<QGridLayout*>(_dialog->layout());
++        assert(pLayout);
++        const int row = pLayout->rowCount();
++        pLayout->addWidget(_extraControls, row, 1);
++    }
++}
++
+ bool KDE5FilePicker::eventFilter(QObject* o, QEvent* e)
+ {
+     if (e->type() == QEvent::Show && o->isWidgetType())
+diff --git a/vcl/unx/gtk3_kde5/kde5_filepicker.hxx b/vcl/unx/gtk3_kde5/kde5_filepicker.hxx
+index d999f7b..c979a5d 100644
+--- a/vcl/unx/gtk3_kde5/kde5_filepicker.hxx
++++ b/vcl/unx/gtk3_kde5/kde5_filepicker.hxx
+@@ -98,6 +98,8 @@ public:
+ 
+ private:
+     Q_DISABLE_COPY(KDE5FilePicker)
++    // adds the custom controls to the dialog
++    void setupCustomWidgets();
+ 
+ protected:
+     bool eventFilter(QObject* watched, QEvent* event) override;
+-- 
+cgit v1.1
+
