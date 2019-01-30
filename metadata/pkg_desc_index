@@ -8296,7 +8296,7 @@ media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to s
 media-video/gaupol 1.4: A subtitle editor for text-based subtitles
 media-video/get_flash_videos 1.25.94: Downloads videos from various Flash-based video hosting sites
 media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and picture application
-media-video/gpac 0.6.1-r2 0.7.1-r1: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
+media-video/gpac 0.7.1-r1: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
 media-video/griffith 0.13-r2: Movie collection manager
 media-video/gtk-recordmydesktop 0.3.8-r3: GTK+ interface for RecordMyDesktop
 media-video/guvcview 2.0.6: Simple Qt5 or GTK+3 interface for capturing and viewing video from v4l2 devices
