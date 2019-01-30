@@ -22,6 +22,7 @@ dev-db/mariadb numa
 dev-python/restkit cli
 # not tested yet
 app-misc/mc samba
+app-arch/rpm test
 
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
