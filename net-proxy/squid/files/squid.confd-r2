@@ -1,0 +1,19 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Config file for /etc/init.d/squid
+
+SQUID_OPTS="-YC"
+
+# Kerberos keytab file to use. This is required if you enable kerberos authentication.
+SQUID_KEYTAB=""
+
+# Use max_filedescriptors setting in squid.conf to determine the maximum number
+# of filedescriptors squid can open.
+
+# Set whether Squid should receive two shutdown signals instead of one. If set to "yes",
+# Squid will skip the graceful shutdown step, and will try to immediately close all open
+# file descriptors and helpers. This is useful if you experience very long delays when
+# shutting down the caching proxy.
+SQUID_FAST_SHUTDOWN="no"
