@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (30 Jan 2019)
+# Dead upstream, breaks every other poppler release due to private
+# interface use, blocks poppler security cleanup(s), bugs #656108, #674808
+# Masked for removal in 30 days.
+app-text/pdf2htmlEX
+
 # Dennis Lamm <expeditioneer@gentoo.org> (29 Jan 2019)
 # Depends on >=app-text/enchant-2.0.0 which is masked
 =gnome-extra/gtkhtml-4.10.0-r1
@@ -40,7 +46,6 @@
 # Dennis Lamm <expeditioneer@gentoo.org> (28 Jan 2019)
 # Depends on >=app-text/enchant-2.1.3 which is masked
 >=app-text/gspell-1.8.1
-
 
 # Virgil Dupras <vdupras@gentoo.org> (27 Jan 2019)
 # Dead upstream, no revdep. bug #618744
