@@ -264,10 +264,10 @@ add_qt_dep() {
 	local slot=${4}
 
 	if [[ -z ${version} ]]; then
+		version=${QT_MINIMAL}
 		if [[ ${1} = qtwebkit ]]; then
-			version=5.9.1 # no more upstream release
-		else
-			version=${QT_MINIMAL}
+			version=5.9.1
+			[[ ${EAPI} != 6 ]] && die "${FUNCNAME} is disallowed for 'qtwebkit' in EAPI 7 and later"
 		fi
 	fi
 	if [[ -z ${slot} ]]; then
