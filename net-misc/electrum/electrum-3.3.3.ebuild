@@ -47,6 +47,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="${PYTHON_DEPS}
+	dev-python/aiohttp-socks[${PYTHON_USEDEP}]
 	dev-python/aiorpcX[${PYTHON_USEDEP}]
 	dev-python/ecdsa[${PYTHON_USEDEP}]
 	dev-python/jsonrpclib[${PYTHON_USEDEP}]
