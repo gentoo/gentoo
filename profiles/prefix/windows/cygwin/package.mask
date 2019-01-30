@@ -1,5 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Michael Haubenwallner <haubi@gentoo.org> (30 Jan 2019)
+# Cygwin does not have updated patches yet, is not trivial
+>=sys-apps/coreutils-8.30
 
 # Michael Haubenwallner <haubi@gentoo.org> (02 Jul 2018)
 # Need to import Cygwin upstream patches still.
