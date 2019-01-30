@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-python/pygments-2.1.3[${PYTHON_USEDEP}]
 	>=dev-python/pypeg2-2.15.2[${PYTHON_USEDEP}]
 	>=dev-python/PyQt5-5.7.1[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,webengine,widgets]
-	>=dev-python/pyyaml-3.12[${PYTHON_USEDEP}]
+	>=dev-python/pyyaml-3.12[${PYTHON_USEDEP},libyaml]
 "
 
 # Tests restricted as the deplist (misc/requirements/requirements-tests.txt)
@@ -56,10 +56,6 @@ python_install_all() {
 	doicon -s scalable icons/${PN}.svg
 
 	distutils-r1_python_install_all
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
