@@ -1,7 +1,8 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+inherit autotools
 
 DESCRIPTION="A lightweight volume control that sits in your systray"
 HOMEPAGE="http://softwarebakery.com/maato/volumeicon.html"
@@ -21,6 +22,15 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS="AUTHORS ChangeLog"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-libnotify.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	# $(use_enable !alsa oss) fails wrt #419891, is likely only for OSS4
