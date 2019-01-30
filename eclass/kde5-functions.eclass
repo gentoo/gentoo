@@ -138,7 +138,7 @@ _add_category_dep() {
 
 	if [[ -n ${slot} ]] ; then
 		slot=":${slot}"
-	elif [[ ${SLOT%\/*} = 4 || ${SLOT%\/*} = 5 ]] && ! has kde5-meta-pkg ${INHERITED} ; then
+	elif [[ ${SLOT%\/*} = 5 ]] ; then
 		slot=":${SLOT%\/*}"
 	fi
 
