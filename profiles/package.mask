@@ -102,11 +102,6 @@ www-client/qupzilla
 # Bugs 544800, 592946, 610736. Masked for removal in 30 days.
 app-office/QtBitcoinTrader
 
-# Andreas Sturmlechner <asturm@gentoo.org> (31 Dec 2018)
-# Dead upstream since 2014-02-09, does not build.
-# Bugs 463928, 476890, 623172, 662270. Masked for removal in 30 days.
-net-misc/hotot
-
 # Lars Wendler <polynomial-c@gentoo.org> (28 Dec 2018)
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1.1*
