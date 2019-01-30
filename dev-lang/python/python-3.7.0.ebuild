@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,7 +17,7 @@ SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
 LICENSE="PSF-2"
 SLOT="3.7/3.7m"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="bluetooth build examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl test tk wininst +xml"
+IUSE="bluetooth build examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl systemtap test tk wininst +xml"
 RESTRICT="!test? ( test )"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -51,7 +51,9 @@ DEPEND="${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
 	test? ( app-arch/xz-utils[extra-filters(+)] )
 	virtual/pkgconfig
-	!sys-devel/gcc[libffi(-)]"
+	!sys-devel/gcc[libffi(-)]
+	systemtap? ( dev-util/systemtap )"
+
 RDEPEND+=" !build? ( app-misc/mime-types )"
 PDEPEND=">=app-eselect/eselect-python-20140125-r1"
 
@@ -136,6 +138,7 @@ src_configure() {
 		--without-ensurepip
 		--with-system-expat
 		--with-system-ffi
+		$(use_with systemtap dtrace)
 	)
 
 	OPT="" econf "${myeconfargs[@]}"
