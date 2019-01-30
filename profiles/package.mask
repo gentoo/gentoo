@@ -93,10 +93,6 @@ sci-electronics/librepcb
 # Requires dev-libs/openssl-1.1.1, Bug 674148
 dev-libs/gost-engine
 
-# Andreas Sturmlechner <asturm@gentoo.org> (31 Dec 2018)
-# Superseded by www-client/falkon. Masked for removal in 30 days.
-www-client/qupzilla
-
 # Lars Wendler <polynomial-c@gentoo.org> (28 Dec 2018)
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1.1*
