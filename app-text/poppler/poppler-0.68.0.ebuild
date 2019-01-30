@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.28.1-fix-multilib-configuration.patch"
 	"${FILESDIR}/${PN}-0.61.0-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.57.0-disable-internal-jpx.patch"
+	"${FILESDIR}/${PN}-0.68.0-bool.patch"
 )
 
 src_prepare() {
