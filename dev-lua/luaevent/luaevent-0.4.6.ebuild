@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
 inherit toolchain-funcs
 
@@ -11,11 +11,11 @@ SRC_URI="https://github.com/harningt/luaevent/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
-RDEPEND=">=dev-lang/lua-5.1
-	>=dev-libs/libevent-1.4"
+RDEPEND="dev-lang/lua:0
+	dev-libs/libevent:0="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -32,6 +32,7 @@ src_prepare() {
 		|| die "sed failed"
 	sed -i "s:^INSTALL_DIR_BIN ?=.*:INSTALL_DIR_BIN ?= $(pkg-config --variable INSTALL_CMOD lua):" "${S}/Makefile" \
 		|| die "sed failed"
+	eapply_user
 }
 
 src_install() {
