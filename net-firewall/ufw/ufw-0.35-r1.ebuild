@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/ufw/${PV}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ia64 ppc ppc64 sparc x86"
 IUSE="examples ipv6"
 
 DEPEND="sys-devel/gettext"
