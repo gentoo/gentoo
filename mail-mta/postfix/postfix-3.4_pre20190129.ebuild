@@ -74,8 +74,8 @@ src_prepare() {
 	sed -i -e "s:/usr/local/:/usr/:g" conf/master.cf || die "sed failed"
 	eapply -p0 "${FILESDIR}/${PN}-libressl.patch" \
 		"${FILESDIR}/${PN}-libressl-runtime.patch" \
-		"${FILESDIR}/${PN}-libressl-eccurve.patch" \
-		"${FILESDIR}/${PN}-libressl-session-tickets.patch"
+		"${FILESDIR}/${PN}-libressl-eccurve.patch"
+		#"${FILESDIR}/${PN}-libressl-session-tickets.patch"
 }
 
 src_configure() {
