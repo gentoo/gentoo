@@ -256,7 +256,9 @@ qt5-build_src_install() {
 
 		popd >/dev/null || die
 
-		docompress -x "${QT5_DOCDIR#${EPREFIX}}"/global
+		if [[ ${QT5_MINOR_VERSION} -lt 12 ]]; then
+			docompress -x "${QT5_DOCDIR#${EPREFIX}}"/global
+		fi
 
 		# install an empty Gentoo/gentoo-qconfig.h in ${D}
 		# so that it's placed under package manager control
@@ -414,7 +416,11 @@ qt5_prepare_env() {
 	QT5_IMPORTDIR=${QT5_ARCHDATADIR}/imports
 	QT5_QMLDIR=${QT5_ARCHDATADIR}/qml
 	QT5_DATADIR=${QT5_PREFIX}/share/qt5
-	QT5_DOCDIR=${QT5_PREFIX}/share/doc/qt-${PV}
+	if [[ ${QT5_MINOR_VERSION} -lt 12 ]]; then
+		QT5_DOCDIR=${QT5_PREFIX}/share/doc/qt-${PV}
+	else
+		QT5_DOCDIR=${QT5_PREFIX}/share/qt5-doc
+	fi
 	QT5_TRANSLATIONDIR=${QT5_DATADIR}/translations
 	QT5_EXAMPLESDIR=${QT5_DATADIR}/examples
 	QT5_TESTSDIR=${QT5_DATADIR}/tests
