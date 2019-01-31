@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jeroen Roovers <jer@gentoo.org> (31 Jan 2019)
+# Depends on =dev-libs/openssl-1.1.1*
+# bug #670574
+=net-libs/nodejs-11.9*
+
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Jan 2019)
 # Dead upstream, breaks every other poppler release due to private
 # interface use, blocks poppler security cleanup(s), bugs #656108, #674808
