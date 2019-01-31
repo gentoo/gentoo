@@ -701,8 +701,11 @@ kde5_src_install() {
 	# cmake can't find the tags and qthelp viewers can't find the docs
 	local p=$(best_version dev-qt/qtcore:5)
 	local pv=$(echo ${p/%-r[0-9]*/} | rev | cut -d - -f 1 | rev)
-	if [[ -d ${ED%/}/usr/share/doc/qt-${pv} ]]; then
-		docompress -x /usr/share/doc/qt-${pv}
+	if [[ ${pv} = 5.11* ]]; then
+		#todo: clean up trailing slash check when EAPI <7 is removed
+		if [[ -d ${ED%/}/usr/share/doc/qt-${pv} ]]; then
+			docompress -x /usr/share/doc/qt-${pv}
+		fi
 	fi
 
 	if [[ ${EAPI} = 6 ]]; then
