@@ -8,5 +8,5 @@ LICENSE=prog-express
 RDEPEND=dev-db/sqlite:3 dev-dotnet/gtk-sharp:2 dev-dotnet/libgdiplus dev-lang/mono dev-lang/mono-basic virtual/libusb:1 virtual/udev
 SLOT=0
 SRC_URI=amd64? ( https://www.batronix.com/exe/Batronix/Prog-Express/deb/prog-express-3.7.8-1.amd64.deb ) x86? ( https://www.batronix.com/exe/Batronix/Prog-Express/deb/prog-express-3.7.8-1.i386.deb )
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	udev	7752f306eec7b286d00bdb47b763e7ac	unpacker	ee2f5086cd7e7b747b061f58db14d89e
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	udev	7752f306eec7b286d00bdb47b763e7ac	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
 _md5_=1119ecbcc86f9062850492023099e55c

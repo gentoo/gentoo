@@ -4,11 +4,11 @@ DESCRIPTION=YAML parser/emitter that supports roundtrip comment preservation
 EAPI=6
 HOMEPAGE=https://pypi.org/project/ruamel.yaml/ https://bitbucket.org/ruamel/yaml
 IUSE=test python_targets_python3_4 python_targets_python3_5 python_targets_python3_6
-KEYWORDS=amd64 ~arm64
+KEYWORDS=amd64 ~arm64 ~x86
 LICENSE=MIT
 RDEPEND=python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)] python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
 REQUIRED_USE=|| ( python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 )
 SLOT=0
 SRC_URI=https://bitbucket.org/ruamel/yaml/get/0.15.35.tar.gz -> ruamel-yaml-0.15.35.tar.gz
 _eclasses_=distutils-r1	71a5ee567fb298e553ce8d1319279151	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-snapshot	b77011b62e2053c646ad720defe6d921	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=cec19ca081a0e159de44ea3c8e6e2502
+_md5_=aef235abd30d840787379d55aff640a1

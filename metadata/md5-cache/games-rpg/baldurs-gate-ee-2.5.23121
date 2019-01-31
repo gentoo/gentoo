@@ -9,5 +9,5 @@ RDEPEND=dev-libs/expat dev-libs/openssl:0 media-libs/openal virtual/opengl x11-l
 RESTRICT=bindist fetch
 SLOT=0
 SRC_URI=baldur_s_gate_enhanced_edition_en_2_5_23121.sh
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	unpacker	ee2f5086cd7e7b747b061f58db14d89e
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
 _md5_=598afa2d1f029fe5e055724027221692
