@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/extract-xiso/${P}.tar.gz"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~x86"
+KEYWORDS="~amd64 ppc x86"
 IUSE=""
 
 S=${WORKDIR}/${PN}
