@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -71,7 +71,7 @@ src_configure() {
 		$(use_with odbc)
 		$(use_enable sctp)
 		$(use_with ssl)
-		$(use_with ssl ssl-rpath "no")
+		$(usex ssl "--with-ssl-rpath" "")
 		$(use_enable ssl dynamic-ssl-lib)
 		$(use_enable systemd)
 		$(use_enable pgo)
