@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=x11-libs/fltk:1[threads,xft] media-libs/libsamplerate media-libs/libpng:0 x11-misc/xdg-utils dev-perl/RPC-XML dev-perl/Term-ReadLine-Perl || ( media-libs/portaudio[oss] media-libs/portaudio[alsa] ) hamlib? ( media-libs/hamlib ) pulseaudio? ( media-sound/pulseaudio ) >=media-libs/libsndfile-1.0.10
 SLOT=0
-SRC_URI=mirror://sourceforge/fldigi/fldigi-4.0.17.tar.gz
-_md5_=ffd5c14629100dc7d295d676c81ff23c
+SRC_URI=mirror://sourceforge/fldigi/fldigi-4.1.00.tar.gz
+_md5_=c342b7e483e44447faecf843eea7e8d4

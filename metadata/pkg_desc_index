@@ -8002,7 +8002,7 @@ media-radio/ax25-apps 0.0.8_rc4: Basic AX.25 (Amateur Radio) user tools, additio
 media-radio/ax25-tools 0.0.10_rc4: Basic AX.25 (Amateur Radio) administrative tools and daemons
 media-radio/cwdaemon 0.10.2: A morse daemon for the parallel or serial port
 media-radio/dxcc 20080225-r1: A ham radio callsign DXCC lookup utility
-media-radio/fldigi 4.0.16 4.0.18: Sound card based multimode software modem for Amateur Radio use
+media-radio/fldigi 4.0.18: Sound card based multimode software modem for Amateur Radio use
 media-radio/flrig 1.3.39 1.3.40: Transceiver control program for Amateur Radio use
 media-radio/gpredict 2.2 2.2.1: Real-time satellite tracking and orbit prediction application
 media-radio/grig 0.8.1: A tool for controlling amateur radios
