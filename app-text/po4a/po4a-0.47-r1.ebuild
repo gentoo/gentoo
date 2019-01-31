@@ -17,20 +17,21 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 IUSE="test"
 
-RDEPEND="dev-perl/SGMLSpm
-	>=sys-devel/gettext-0.13
-	app-text/openjade
+RDEPEND="app-text/openjade
 	dev-libs/libxslt
 	dev-perl/Locale-gettext
+	dev-perl/SGMLSpm
 	dev-perl/TermReadKey
-	dev-perl/Text-WrapI18N"
+	dev-perl/Text-WrapI18N
+	sys-devel/gettext"
 DEPEND="${RDEPEND}
-	>=dev-perl/Module-Build-0.380.0
-	app-text/docbook-xsl-stylesheets
 	app-text/docbook-xml-dtd:4.1.2
-	test? ( app-text/docbook-sgml-dtd
-		app-text/docbook-sgml-utils
-		virtual/tex-base )"
+	app-text/docbook-xsl-stylesheets
+	dev-perl/Module-Build
+	test? (
+		app-text/docbook-sgml-dtd:4.1
+		virtual/tex-base
+	)"
 
 # Running tests in parallel fails
 DIST_TEST="do"

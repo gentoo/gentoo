@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	test? (
 		app-text/docbook-sgml-dtd:4.1
-		virtual/tex-base
+		virtual/latex-base
 	)"
 
 PATCHES=( "${FILESDIR}"/${PN}-man.patch )
