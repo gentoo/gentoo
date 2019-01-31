@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -43,6 +43,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.28-pam.patch"
 	"${FILESDIR}/${PN}-1.0.47-MAX_DATA_SIZE.patch"
+	"${FILESDIR}/${PN}-1.0.47-TLSv1.3.patch"
 )
 
 src_configure() {
