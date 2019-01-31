@@ -25,7 +25,7 @@ IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript lastfm libav 
 
 DEPEND="
 	!!net-misc/mediatomb
-	net-libs/libupnp:1.8[ipv6,reuseaddr]
+	>=net-libs/libupnp-1.8.3[ipv6,reuseaddr]
 	>=dev-db/sqlite-3
 	dev-libs/expat
 	mysql? ( dev-db/mysql-connector-c )
@@ -84,7 +84,7 @@ src_install() {
 	newconfd "${FILESDIR}/${PN}-1.0.0.confd" "${PN}"
 
 	insinto /etc/${PN}
-	newins "${FILESDIR}/${PN}-1.0.0.config" config.xml
+	newins "${FILESDIR}/${PN}-1.3.0.config" config.xml
 	fperms 0640 /etc/${PN}/config.xml
 	fowners root:gerbera /etc/${PN}/config.xml
 
