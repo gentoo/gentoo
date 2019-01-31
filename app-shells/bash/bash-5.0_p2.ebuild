@@ -124,7 +124,7 @@ src_configure() {
 		-DSYS_BASH_LOGOUT=\'\"${EPREFIX}/etc/bash/bash_logout\"\' \
 		-DNON_INTERACTIVE_LOGIN_SHELLS \
 		-DSSH_SOURCE_BASHRC \
-		$(use bashlogger && echo -DSYSLOG_HISTORY)
+		$(use bashlogger && echo -DSYSLOG_HISTORY -DSYSLOG_SHOPT)
 
 	# Don't even think about building this statically without
 	# reading Bug 7714 first.  If you still build it statically,
