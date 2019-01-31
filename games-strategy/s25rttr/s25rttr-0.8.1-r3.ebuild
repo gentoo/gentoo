@@ -56,7 +56,6 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCOMPILEFOR="linux"
-		-DCOMPILEARCH="${arch}"
 		-DCMAKE_SKIP_RPATH=YES
 		-DPREFIX="/usr/"
 		-DBINDIR="/usr/bin"
