@@ -4,10 +4,10 @@ DESCRIPTION=Lightweight text-mode editor
 EAPI=6
 HOMEPAGE=http://fte.sourceforge.net
 IUSE=gpm slang X
-KEYWORDS=~alpha ~amd64 ppc -sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~alpha ~amd64 ppc -sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=|| ( GPL-2 Artistic )
 RDEPEND=sys-libs/ncurses:0= X? ( x11-libs/libXdmcp x11-libs/libXau x11-libs/libX11 x11-libs/libXpm ) gpm? ( >=sys-libs/gpm-1.20 )
 SLOT=0
 SRC_URI=mirror://sourceforge/fte/fte-20110708-src.zip mirror://sourceforge/fte/fte-20110708-common.zip
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=0bedbbe97c5697d9ad7510e0b234e925
+_md5_=65ee836246be26ab80a081298d5ca2aa

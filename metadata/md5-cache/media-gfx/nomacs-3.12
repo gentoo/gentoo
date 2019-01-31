@@ -5,11 +5,11 @@ DESCRIPTION=Qt-based image viewer
 EAPI=7
 HOMEPAGE=https://nomacs.org/
 IUSE=heif +jpeg +opencv raw tiff zip
-KEYWORDS=~amd64 ~x86 ~amd64-linux
+KEYWORDS=~amd64 x86 ~amd64-linux
 LICENSE=GPL-3+
 RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5[jpeg?] dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 media-gfx/exiv2:= heif? ( media-libs/libheif:= ) opencv? ( >=media-libs/opencv-3.4:= ) raw? ( media-libs/libraw:= ) tiff? ( dev-qt/qtimageformats:5 media-libs/tiff:0 ) zip? ( dev-libs/quazip[qt5(+)] )
 REQUIRED_USE=raw? ( opencv ) tiff? ( opencv )
 SLOT=0
 SRC_URI=https://github.com/nomacs/nomacs/archive/3.12.tar.gz -> nomacs-3.12.tar.gz
 _eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=4f4b5031d74e51bf9b16d8c26a939622
+_md5_=d49160331e1b16adb03356b20d0a2bf7

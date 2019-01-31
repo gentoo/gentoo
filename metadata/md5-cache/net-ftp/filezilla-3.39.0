@@ -4,10 +4,10 @@ DESCRIPTION=FTP client with lots of useful features and an intuitive interface
 EAPI=6
 HOMEPAGE=https://filezilla-project.org/
 IUSE=dbus nls test
-KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~x86
+KEYWORDS=~amd64 ~arm ~ia64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=>=app-eselect/eselect-wxwidgets-0.7-r1 >=dev-libs/nettle-3.1:= >=dev-db/sqlite-3.7 >=dev-libs/libfilezilla-0.15.1 >=dev-libs/pugixml-1.7 >=net-libs/gnutls-3.4.15 >=x11-libs/wxGTK-3.0.4:3.0-gtk3[X] x11-misc/xdg-utils dbus? ( sys-apps/dbus )
 SLOT=0
 SRC_URI=https://download.filezilla-project.org/client/FileZilla_3.39.0_src.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wxwidgets	ed63935305b6de2210ae97a407719d89	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=ac7dce8a2ed16ea21c6b43d4aa6094c7
+_md5_=eddb949f515775ff477755f0a0d9280d
