@@ -252,6 +252,7 @@ PATCHES=(
 
 	# master branch
 	"${FILESDIR}/${P}-gtk3_kde5-non-native-fpicker-for-non-plasma.patch"
+	"${FILESDIR}/${P}-gtk3_kde5-set-kfilewidgets-custom-widget-only-once.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
