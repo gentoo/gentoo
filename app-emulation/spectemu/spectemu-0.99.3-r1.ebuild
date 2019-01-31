@@ -11,7 +11,7 @@ SRC_URI="http://www.inf.bme.hu/~mszeredi/spectemu/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~x86"
+KEYWORDS="~amd64 ppc x86"
 IUSE="readline svga +X"
 
 REQUIRED_USE="|| ( svga X )"
