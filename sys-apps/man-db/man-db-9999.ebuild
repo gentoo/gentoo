@@ -92,7 +92,7 @@ pkg_preinst() {
 	local _replacing_version=
 	local _setgid_vuln=0
 	for _replacing_version in ${REPLACING_VERSIONS}; do
-		if version_is_at_least '2.7.6.1-r2' "${_replacing_version}"; then
+		if ver_test '2.7.6.1-r2' -gt "${_replacing_version}"; then
 			debug-print "Skipping security bug #602588 ... existing installation (${_replacing_version}) should not be affected!"
 		else
 			_setgid_vuln=1
