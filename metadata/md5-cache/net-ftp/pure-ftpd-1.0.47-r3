@@ -11,4 +11,4 @@ REQUIRED_USE=implicittls? ( ssl )
 SLOT=0
 SRC_URI=ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.47.tar.bz2 http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.47.tar.bz2
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=8cea80739539dc7019e30abd408bc784
+_md5_=ff79815d322903dfe9e1099dfbc94be7
