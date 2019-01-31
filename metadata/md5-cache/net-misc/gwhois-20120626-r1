@@ -2,10 +2,10 @@ DEFINED_PHASES=install postinst
 DESCRIPTION=Generic whois
 EAPI=7
 HOMEPAGE=https://julijane.de/gwhois/
-KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 sparc ~x86
+KEYWORDS=alpha ~amd64 ~hppa ~ppc ~ppc64 sparc ~x86
 LICENSE=GPL-2
 RDEPEND=www-client/lynx net-misc/curl dev-lang/perl:= dev-perl/libwww-perl dev-perl/Net-LibIDN
 SLOT=0
 SRC_URI=mirror://debian/pool/main/g/gwhois/gwhois_20120626-1.2.tar.gz
 _eclasses_=readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=3083272563cf24d9b07a0ee0df1b647b
+_md5_=6eefc5b2dc406fd5bcba4ba08b8b34c9
