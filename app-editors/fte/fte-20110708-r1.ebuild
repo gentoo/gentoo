@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="|| ( GPL-2 Artistic )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ppc -sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ppc -sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="gpm slang X"
 
 S="${WORKDIR}/${PN}"
