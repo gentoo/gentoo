@@ -7,7 +7,8 @@ IUSE=dbus doc elibc_FreeBSD gnome luajit test
 KEYWORDS=amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/lua-5.1:0 luajit? ( dev-lang/luajit:2 ) dev-libs/glib:2 >=dev-libs/libxdg-basedir-1 >=dev-lua/lgi-0.8 x11-libs/cairo[xcb] x11-libs/gdk-pixbuf:2 >=x11-libs/libxcb-1.6[xkb] >=x11-libs/pango-1.19.3[introspection] >=x11-libs/startup-notification-0.10_p20110426 >=x11-libs/xcb-util-0.3.8 x11-libs/xcb-util-cursor >=x11-libs/xcb-util-keysyms-0.3.4 >=x11-libs/xcb-util-wm-0.3.8 >=x11-libs/xcb-util-xrm-1.0 x11-libs/libXcursor x11-libs/libxkbcommon[X] >=x11-libs/libX11-1.3.99.901 dbus? ( >=sys-apps/dbus-1 ) elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
+RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/awesomeWM/awesome-releases/raw/master/awesome-4.2.tar.xz
 _eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	pax-utils	e85f015e815dd463b0c206d781ef45a5	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=0c19c3db02b531f00075d7c4b46dc939
+_md5_=4cb728c601b441ae6f5f10a0733ab088
