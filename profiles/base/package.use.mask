@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (17 Jan 2019 )
+# Mask openjdk:8 for use as system java-vm until it's proven to work
+dev-java/openjdk:8 gentoo-vm
+dev-java/openjdk-bin:8 gentoo-vm
+
 # Sven Wegener <swegener@gentoo.org> (18 Jan 2019)
 # Waiting for >=dev-libs/libressl-2.7 to be unmasked.
 >=net-libs/libvncserver-0.9.12 libressl
