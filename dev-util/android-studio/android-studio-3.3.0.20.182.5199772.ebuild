@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,6 +7,7 @@ inherit eutils java-pkg-2 eapi7-ver
 RESTRICT="strip"
 QA_PREBUILT="opt/${PN}/bin/libbreakgen*.so
 	opt/${PN}/bin/fsnotifier*
+	opt/${PN}/bin/lldb/*
 	opt/${PN}/lib/libpty/linux/x86*/libpty.so
 	opt/${PN}/plugins/android/lib/libwebp_jni*.so
 	opt/${PN}/plugins/android/resources/perfa/*/libperfa.so
@@ -29,7 +30,7 @@ SRC_URI="https://dl.google.com/dl/android/studio/ide-zips/${STUDIO_V}/${PN}-ide-
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="selinux"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="app-arch/zip
 	dev-java/commons-logging:0
@@ -96,15 +97,17 @@ src_install() {
 	local dir="/opt/${PN}"
 
 	insinto "${dir}"
-	# Replaced bundled jre with system vm/jdk
-	# This is really a bundled jdk not a jre
 	doins -r *
 
-	rm -rf "${D}${dir}/jre" || die
+	# Replaced bundled jre with system vm/jdk
+	# This is really a bundled jdk not a jre
+	rm -rf "${ED%/}${dir}/jre" || die
 	dosym "../../etc/java-config-2/current-system-vm" "${dir}/jre"
 
 	fperms 755 "${dir}/bin/studio.sh" "${dir}"/bin/fsnotifier{,64}
-	chmod 755 "${D}${dir}"/gradle/gradle-*/bin/gradle || die
+	fperms -R 755 "${dir}"/bin/lldb/{android,bin}
+	chmod 755 "${ED%/}${dir}"/bin/*.py "${ED%/}${dir}"/bin/*.sh || die
+	chmod 755 "${ED%/}${dir}"/gradle/gradle-*/bin/gradle || die
 
 	newicon "bin/studio.png" "${PN}.png"
 	make_wrapper ${PN} ${dir}/bin/studio.sh
