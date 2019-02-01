@@ -46,6 +46,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
+	"${FILESDIR}/${P}-man-pages.patch"
 	"${FILESDIR}/${P}-porttime.patch"
 )
 
@@ -73,14 +74,6 @@ src_compile() {
 	cd "${BUILD_DIR}" || die
 	cmake-utils_src_make -j1 lrelease manpages
 	cmake-utils_src_compile
-}
-
-src_install() {
-	cmake-utils_src_install
-
-	# Fix man page symlink
-	rm "${D}"/usr/share/man/man1/musescore.1.gz || die "Failed to remove man broken symlink"
-	dosym ${PN}.1.bz2 /usr/share/man/man1/mscore.1.bz2 || die "Failed to create man symlink"
 }
 
 pkg_postinst() {
