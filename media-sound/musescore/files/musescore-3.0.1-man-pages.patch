@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d337fbab5..bf334121a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -667,7 +667,7 @@ if (NOT MINGW AND NOT MSVC AND NOT APPLE)
+     # Compress man pages if gzip is installed (don't on OpenBSD)
+     # Note: Compressing man pages is normal on Linux but not OpenBSD
+     find_program( GZIP_EXECUTABLE gzip DOC "A tool for compressing manpages (optional)." )
+-    if (GZIP_EXECUTABLE AND NOT CMAKE_SYSTEM_NAME MATCHES "OpenBSD")
++    if (GZIP_EXECUTABLE AND NOT CMAKE_SYSTEM_NAME MATCHES "OpenBSD" AND false)
+         message(STATUS "Found 'gzip'. Man pages will be compressed.")
+         set(MAN_TARGET ${MAN_BUILD})
+         set(MAN_EXTENSION ${MAN_EXTENSION}.gz)

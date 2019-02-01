@@ -1,14 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils git-r3 xdg-utils
+inherit git-r3 cmake-utils xdg-utils gnome2-utils
 
 DESCRIPTION="WYSIWYG Music Score Typesetter"
 HOMEPAGE="https://musescore.org/"
 EGIT_REPO_URI="https://github.com/${PN}/MuseScore.git"
-SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}-fix-buildsystem.patch.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -47,16 +46,13 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${WORKDIR}/${P}-fix-buildsystem.patch"
+	"${FILESDIR}/${PN}-3.0.1-man-pages.patch"
+	"${FILESDIR}/${PN}-3.0.1-porttime.patch"
 )
-
-src_unpack() {
-	git-r3_src_unpack
-	default_src_unpack
-}
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_SKIP_RPATH=ON
 		-DUSE_SYSTEM_QTSINGLEAPPLICATION=ON
 		-DUSE_PATH_WITH_EXPLICIT_QT_VERSION=ON
 		-DUSE_SYSTEM_FREETYPE=ON
@@ -67,7 +63,7 @@ src_configure() {
 		-DBUILD_PORTMIDI="$(usex portmidi)"
 		-DBUILD_PULSEAUDIO="$(usex pulseaudio)"
 		-DSOUNDFONT3="$(usex vorbis)"
-		-DBUILD_WEBEBENGINE="$(usex webengine)"
+		-DBUILD_WEBENGINE="$(usex webengine)"
 	)
 	cmake-utils_src_configure
 }
@@ -81,9 +77,11 @@ src_compile() {
 pkg_postinst() {
 	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
