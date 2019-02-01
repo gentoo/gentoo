@@ -22,6 +22,7 @@ COMMONDEPEND="
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nettle
+	net-libs/liboauth
 	net-misc/curl
 	sys-libs/zlib
 	x11-libs/gdk-pixbuf:2
