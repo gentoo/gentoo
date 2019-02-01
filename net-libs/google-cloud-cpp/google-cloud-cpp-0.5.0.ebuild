@@ -21,6 +21,7 @@ IUSE=""
 
 RESTRICT="test"
 RDEPEND="dev-libs/protobuf
+	dev-libs/crc32c
 	net-misc/curl
 	net-libs/grpc"
 DEPEND="${RDEPEND}"
