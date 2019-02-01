@@ -6225,7 +6225,7 @@ dev-texlive/texlive-plaingeneric 2017: TeXLive Plain (La)TeX packages
 dev-texlive/texlive-pstricks 2017: TeXLive PSTricks
 dev-texlive/texlive-publishers 2017: TeXLive Publisher styles, theses, etc.
 dev-texlive/texlive-xetex 2017: TeXLive XeTeX and packages
-dev-util/android-studio 3.1.4.0.173.4907809: A new Android development environment based on IntelliJ IDEA
+dev-util/android-studio 3.2.1.0.181.5056338: A new Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13 6.0.1_p79 8.1.0_p1: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.22.0: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
