@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,22 +8,34 @@ inherit readme.gentoo-r1 distutils-r1
 
 DESCRIPTION="Python library and command line tool for configuring a YubiKey"
 HOMEPAGE="https://developers.yubico.com/yubikey-manager/"
-SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.gz"
+SRC_URI="https://github.com/Yubico/${PN}/archive/${P}.tar.gz"
+S="${WORKDIR}/${PN}-${P}" # <- need this only for github-based SRC_URI
+# Here's the alternative SRC_URI, though tarball contents may differ
+# See: https://github.com/Yubico/yubikey-manager/issues/217
+# SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test"
 
 RDEPEND="
-	app-crypt/libu2f-host
-	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/pyscard[${PYTHON_USEDEP}]
-	dev-python/pyusb[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
-	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7)
-	sys-auth/ykpers
+	dev-python/fido2[${PYTHON_USEDEP}]
+	dev-python/pyopenssl[${PYTHON_USEDEP}]
+	dev-python/pyscard[${PYTHON_USEDEP}]
+	dev-python/pyusb[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
+	>=sys-auth/ykpers-1.19.0
+"
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (
+		${RDEPEND}
+		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2_7')
+	)
 "
 
 python_test() {
@@ -41,8 +53,9 @@ python_install_all() {
 		daemon is running and has correct access permissions to USB
 		devices.
 	"
-
 	readme.gentoo_create_doc
+
+	doman "${S}"/man/ykman.1
 }
 
 pkg_postinst() {
