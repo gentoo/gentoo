@@ -5,8 +5,8 @@ EAPI=6
 HOMEPAGE=https://tmux.github.io/
 IUSE=debug selinux utempter vim-syntax kernel_FreeBSD kernel_linux
 LICENSE=ISC
-RDEPEND=dev-libs/libevent:0= sys-libs/ncurses:0= utempter? ( kernel_linux? ( sys-libs/libutempter ) kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-lib-9.0 sys-libs/libutempter ) ) ) selinux? ( sec-policy/selinux-screen ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
+RDEPEND=dev-libs/libevent:0= sys-libs/ncurses:0= utempter? ( kernel_linux? ( sys-libs/libutempter ) kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-lib-9.0 sys-libs/libutempter ) ) ) selinux? ( sec-policy/selinux-screen ) vim-syntax? ( app-vim/vim-tmux )
 SLOT=0
-SRC_URI=https://raw.githubusercontent.com/przepompownia/tmux-bash-completion/678a27616b70c649c6701cae9cd8c92b58cc051b/completions/tmux -> tmux-bash-completion-678a27616b70c649c6701cae9cd8c92b58cc051b vim-syntax? ( https://raw.githubusercontent.com/keith/tmux.vim/95f6126c187667cc7f9c573c45c3b356cf69f4ca/syntax/tmux.vim -> tmux.vim-95f6126c187667cc7f9c573c45c3b356cf69f4ca )
+SRC_URI=https://raw.githubusercontent.com/przepompownia/tmux-bash-completion/678a27616b70c649c6701cae9cd8c92b58cc051b/completions/tmux -> tmux-bash-completion-678a27616b70c649c6701cae9cd8c92b58cc051b
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=8a7c57df81abd679f84948163f234bcf
+_md5_=a784d9aea50fbbd855d1812a7c128e1a

@@ -6031,7 +6031,7 @@ dev-ruby/ruby_dep 1.5.0: Creates a version constraint of supported Rubies,suitab
 dev-ruby/ruby_parser 3.9.0: A ruby parser written in pure ruby
 dev-ruby/rubygems 2.7.6-r1: Centralized Ruby extension management system
 dev-ruby/rubypants 0.7.0: A Ruby port of the SmartyPants PHP library
-dev-ruby/rubyzip 1.2.1 1.2.2: A ruby library for reading and writing zip files
+dev-ruby/rubyzip 1.2.2: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.4-r3: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/sass 3.4.24: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/selenium-webdriver 3.12.0: This gem provides Ruby bindings for WebDriver
