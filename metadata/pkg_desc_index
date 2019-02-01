@@ -2918,7 +2918,7 @@ dev-lang/nasm 2.13.01 2.14.02: groovy little assembler
 dev-lang/ocaml 4.04.2-r1: Type-inferring functional programming language descended from the ML family
 dev-lang/orc 0.4.28-r1: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/perl 5.24.3-r1 5.26.2: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.38 5.6.40 7.1.22 7.1.26 7.2.10 7.2.14: The PHP language runtime engine
+dev-lang/php 5.6.40 7.1.26 7.2.14: The PHP language runtime engine
 dev-lang/python 2.7.15 3.4.5-r1 3.4.8 3.5.4-r1 3.5.5 3.6.3-r1 3.6.5: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6: Python script wrapper
 dev-lang/qu-prolog 10.1: Extended Prolog supporting quantifiers, object-variables and substitutions
