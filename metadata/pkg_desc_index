@@ -9005,7 +9005,7 @@ net-misc/olsrd 0.9.6.1: An implementation of the Optimized Link State Routing pr
 net-misc/omniORB 4.1.4-r2: A robust, high-performance CORBA 2 ORB
 net-misc/openntpd 6.0_p1: Lightweight NTP server ported from OpenBSD
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
-net-misc/openssh 7.7_p1-r9: Port of OpenBSD's free SSH release
+net-misc/openssh 7.5_p1-r4 7.7_p1-r9: Port of OpenBSD's free SSH release
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
 net-misc/openvswitch 2.8.1 2.10.0-r1: Production quality, multilayer virtual switch
 net-misc/packETH 1.7.3: Packet generator tool for ethernet
