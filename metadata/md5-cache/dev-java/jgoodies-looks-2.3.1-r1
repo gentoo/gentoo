@@ -10,4 +10,4 @@ RDEPEND=>=virtual/jre-1.4 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip
 SLOT=2.0
 SRC_URI=http://www.jgoodies.com/download/libraries/looks/looks-2_3_1.zip
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	java-ant-2	6505e8068920164179b7e3926220c89f	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	99ea75c9f08fd38989951c554dfa56ea	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=3f2e8e5ed7d0100f7dc9d419176eb316
+_md5_=983069e0252768ae08b0477995496529
