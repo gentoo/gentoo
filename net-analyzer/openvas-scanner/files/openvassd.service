@@ -1,13 +1,18 @@
 [Unit]
 Description=OpenVAS Scanner
 After=network.target
+After=redis.service
 Before=openvasmd.service
+Requires=redis.service
 
 [Service]
-EnvironmentFile=-/etc/openvas/openvassd-daemon.conf
-ExecStart=/usr/sbin/openvassd -f ${SCANNER_PORT} ${SCANNER_LISTEN} ${SCANNER_SRCIP} ${SCANNER_EXTRA_ARGS}
-Restart=always
-RestartSec=1
+Type=forking
+EnvironmentFile=-/etc/openvas/sysconfig/openvassd-daemon.conf
+ExecStart=/usr/sbin/openvassd $OPENVAS_SCANNER_OPTIONS $OPENVAS_SCANNER_LISTEN_SOCKET
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=10
+KillMode=mixed
 User=root
 Group=root
 TimeoutSec=1200
