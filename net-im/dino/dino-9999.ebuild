@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,6 +25,7 @@ fi
 RDEPEND="
 	dev-db/sqlite:3
 	dev-libs/glib:2
+	dev-libs/icu
 	dev-libs/libgee:0.8
 	net-libs/glib-networking
 	x11-libs/cairo
