@@ -3019,7 +3019,7 @@ dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Blueto
 dev-libs/hiredis 0.13.3: Minimalistic C client library for the Redis database
 dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyphen 2.8.8: ALTLinux hyphenation library
-dev-libs/icu 60.2 63.1-r1: International Components for Unicode
+dev-libs/icu 63.1-r1: International Components for Unicode
 dev-libs/icu-layoutex 60.2 63.1: External layout part of International Components for Unicode
 dev-libs/icu-le-hb 1.0.3: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/iksemel 1.4-r1: eXtensible Markup Language parser library designed for Jabber applications
