@@ -360,7 +360,7 @@ multilib_src_configure() {
 		   use video_cards_radeonsi ||
 		   use video_cards_nouveau; then
 			emesonargs+=($(meson_use vaapi gallium-va))
-			use vaapi && emesonargs+=( -Dva-libs-path=${EPREFIX}/usr/$(get_libdir)/va/drivers )
+			use vaapi && emesonargs+=( -Dva-libs-path="${EPREFIX}"/usr/$(get_libdir)/va/drivers )
 		else
 			emesonargs+=(-Dgallium-va=false)
 		fi
