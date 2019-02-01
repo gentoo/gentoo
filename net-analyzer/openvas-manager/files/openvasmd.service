@@ -2,12 +2,15 @@
 Description=OpenVAS Manager
 After=network.target
 After=openvassd.service
+Wants=openvassd.service
+Before=gsad.service
 
 [Service]
-EnvironmentFile=-/etc/openvas/openvasmd.conf
-ExecStart=/usr/sbin/openvasmd -f ${MANAGER_LISTEN} ${MANAGER_PORT} ${SCANNER_LISTEN} ${SCANNER_PORT} ${MANAGER_EXTRA_ARGS}
-Restart=always
-RestartSec=1
+Type=forking
+EnvironmentFile=-/etc/openvas/sysconfig/openvasmd-daemon.conf
+ExecStart=/usr/sbin/openvasmd $OPENVAS_MANAGER_OPTIONS $OPENVAS_MANAGER_PORT $OPENVAS_MANAGER_LISTEN_ADDRESS $OPENVAS_MANAGER_SCANNER_HOST $OPENVAS_MANAGER_GNUTLS_PRIORITIES 
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=mixed
 User=root
 Group=root
 TimeoutSec=1200
