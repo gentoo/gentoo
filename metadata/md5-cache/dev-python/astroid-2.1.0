@@ -12,4 +12,4 @@ REQUIRED_USE=|| ( python_targets_python3_5 python_targets_python3_6 python_targe
 SLOT=0
 SRC_URI=mirror://pypi/a/astroid/astroid-2.1.0.tar.gz
 _eclasses_=distutils-r1	71a5ee567fb298e553ce8d1319279151	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=84877924d01454269baab089b88a78e4
+_md5_=1b1ebcc9f5f8833b99540995438c2d97
