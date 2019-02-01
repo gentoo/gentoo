@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,6 +31,10 @@ DEPEND="
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
 	)"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.1.0-fix-tests.patch"
+)
 
 python_prepare_all() {
 	# Disable failing tests
