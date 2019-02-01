@@ -1172,9 +1172,9 @@ app-office/kmymoney 5.0.2: Personal finance manager based on KDE Frameworks
 app-office/ledger 3.1.1-r2: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.2: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 6.1.4.2: A full office productivity suite
-app-office/libreoffice-bin 6.0.6.2 6.1.4.2: A full office productivity suite. Binary package
-app-office/libreoffice-bin-debug 6.0.6.2 6.1.4.2: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 6.0.6.2 6.1.4.2: Translations for the Libreoffice suite
+app-office/libreoffice-bin 6.1.4.2: A full office productivity suite. Binary package
+app-office/libreoffice-bin-debug 6.1.4.2: LibreOffice, a full office productivity suite. Binary package, debug info
+app-office/libreoffice-l10n 6.1.4.2: Translations for the Libreoffice suite
 app-office/lyx 2.3.0: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
@@ -3020,7 +3020,7 @@ dev-libs/hiredis 0.13.3: Minimalistic C client library for the Redis database
 dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyphen 2.8.8: ALTLinux hyphenation library
 dev-libs/icu 63.1-r1: International Components for Unicode
-dev-libs/icu-layoutex 60.2 63.1: External layout part of International Components for Unicode
+dev-libs/icu-layoutex 63.1: External layout part of International Components for Unicode
 dev-libs/icu-le-hb 1.0.3: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/iksemel 1.4-r1: eXtensible Markup Language parser library designed for Jabber applications
 dev-libs/ilbc-rfc3951 0-r1: iLBC is a speech codec suitable for robust voice communication over IP
