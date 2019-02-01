@@ -34,6 +34,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.1.0-fix-tests.patch"
+	"${FILESDIR}/${PN}-2.1.0-no-pytest-runner.patch"
 )
 
 python_prepare_all() {
