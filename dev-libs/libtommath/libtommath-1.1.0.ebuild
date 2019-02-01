@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools eutils multilib toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Optimized and portable routines for integer theoretic applications"
 HOMEPAGE="http://www.libtom.net/"
@@ -15,9 +15,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="doc examples static-libs"
 
 DEPEND="sys-devel/libtool"
-RDEPEND=""
 
 src_prepare() {
+	default
 	# need libtool for cross compilation. Bug #376643
 	cat <<-EOF > configure.ac
 	AC_INIT(libtommath, 0)
@@ -36,7 +36,11 @@ src_configure() {
 }
 
 _emake() {
-	emake CC="$(tc-getCC)" -f makefile.shared \
+	emake \
+		CC="$(tc-getCC)" \
+		AR="$(tc-getAR)" \
+		RANLIB="$(tc-getRANLIB)" \
+		-f makefile.shared \
 		IGNORE_SPEED=1 \
 		LIBPATH="${EPREFIX}/usr/$(get_libdir)" \
 		INCPATH="${EPREFIX}/usr/include" \
@@ -47,10 +51,18 @@ src_compile() {
 	_emake
 }
 
+src_test() {
+	_emake test_standalone
+	./test || die
+}
+
 src_install() {
 	_emake DESTDIR="${D}" install
 	# We only link against -lc, so drop the .la file.
-	find "${ED}" -name '*.la' -delete
+	find "${ED}" -name '*.la' -delete || die
+	if ! use static-libs ; then
+		find "${ED}" -name "*.a" -delete || die
+	fi
 
 	dodoc changes.txt
 
