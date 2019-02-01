@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/mccabe[${PYTHON_USEDEP}]
 	virtual/python-singledispatch[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/pytest-runner[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( ${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
