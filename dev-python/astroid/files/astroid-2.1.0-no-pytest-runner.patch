@@ -1,0 +1,12 @@
+diff --git a/setup.py b/setup.py
+index 2ad90aac..4628a40f 100644
+--- a/setup.py
++++ b/setup.py
+@@ -42,7 +42,6 @@ def install():
+                  install_requires = install_requires,
+                  extras_require=extras_require,
+                  packages=find_packages(exclude=['astroid.tests']) + ['astroid.brain'],
+-                 setup_requires=['pytest-runner'],
+                  test_suite='test',
+                  tests_require=['pytest'],
+                  )
