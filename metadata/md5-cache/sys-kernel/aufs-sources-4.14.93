@@ -9,7 +9,7 @@ LICENSE=GPL-2 linux-firmware
 PDEPEND==sys-fs/aufs-util-4*
 RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf )
 RESTRICT=binchecks strip
-SLOT=4.19.10
-SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.19.tar.xz https://dev.gentoo.org/~jlec/distfiles/aufs-sources-4.19_p20181217.tar.xz !vanilla? ( mirror://gentoo/genpatches-4.19-11.base.tar.xz mirror://gentoo/genpatches-4.19-11.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.19-11.experimental.tar.xz ) )
+SLOT=4.14.93
+SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.14.tar.xz https://dev.gentoo.org/~jlec/distfiles/aufs-sources-4.14.56+_p20181217.tar.xz !vanilla? ( mirror://gentoo/genpatches-4.14-100.base.tar.xz mirror://gentoo/genpatches-4.14-100.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.14-100.experimental.tar.xz ) )
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	kernel-2	97f96577827180eddaa76c6bce3470ee	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=7a92855cb85631bf0c6508f9642a8546
+_md5_=fb075f2b1f4fd5cbcf84ac7413d8931a
