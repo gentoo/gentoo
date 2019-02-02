@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER=10
+K_GENPATCHES_VER=19
 UNIPATCH_STRICTORDER=1
 inherit kernel-2 eutils readme.gentoo-r1
 
