@@ -9086,7 +9086,7 @@ net-misc/x2goclient 4.1.2.1: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2019.01.17: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2019.01.30.1: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.3.3: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
