@@ -16,7 +16,7 @@ SRC_URI="https://github.com/fedora-python/python-ethtool/archive/v${PV}.tar.gz -
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~amd64"
+KEYWORDS="~amd64"
 
 DEPEND="dev-libs/libnl:3"
 RDEPEND="${DEPEND}"
