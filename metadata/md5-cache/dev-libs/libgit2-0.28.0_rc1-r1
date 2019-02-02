@@ -8,7 +8,7 @@ KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86 ~ppc-macos
 LICENSE=GPL-2-with-linking-exception
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-libs/zlib net-libs/http-parser:= gssapi? ( virtual/krb5 ) ssh? ( net-libs/libssh2 )
 RESTRICT=!test? ( test )
-SLOT=0/27
+SLOT=0/28
 SRC_URI=https://github.com/libgit2/libgit2/archive/v0.28.0-rc1.tar.gz -> libgit2-0.28.0-rc1.tar.gz
 _eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=70d3d0e8ed9d0bcfa042b2c65ca694de
+_md5_=495cf232ee231a099376a8795ad70ea3
