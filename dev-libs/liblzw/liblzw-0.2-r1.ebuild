@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/freestdf/${P}.tar.lzma"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~m68k ~s390 ~sh ~x86"
+KEYWORDS="~amd64 ~arm hppa ~ia64 ~m68k ~s390 ~sh ~x86"
 
 src_configure(){
 	econf --disable-static
