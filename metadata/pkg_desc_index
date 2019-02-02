@@ -580,7 +580,7 @@ app-editors/nano 2.9.8: GNU GPL'd Pico clone with more functionality
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r7: Vi clone
-app-editors/okteta 0.25.4: Hex editor by KDE
+app-editors/okteta 0.25.4 0.25.5: Hex editor by KDE
 app-editors/pluma 1.18.3: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qxmledit 0.9.7: Simple Qt-based XML editor
@@ -1373,7 +1373,7 @@ app-text/iso-codes 3.76: ISO language, territory, currency, script codes and the
 app-text/jabref 2.10-r2: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 3.7 3.8.2: Java GUI for managing BibTeX and other bibliographies
 app-text/jadetex 3.13-r7: TeX macros used by Jade TeX output
-app-text/kbibtex 0.8.1: BibTeX editor to edit bibliographies used with LaTeX
+app-text/kbibtex 0.8.1 0.8.2: BibTeX editor to edit bibliographies used with LaTeX
 app-text/kchmviewer 7.7-r1: Feature rich chm file viewer, based on Qt
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/landslide 1.1.3: Generates a slideshow using the slides that power the html5-slides presentation
@@ -7801,7 +7801,7 @@ media-libs/sratom 0.6.0-r1: Library for serialising LV2 atoms to/from RDF, parti
 media-libs/stimg 0.1.0: Simple and tiny image loading library
 media-libs/stops 0.3.0: Organ stops for aeolus by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/t1lib 5.1.2-r2: A Type 1 Font Rasterizer Library for UNIX/X11
-media-libs/taglib 1.11.1-r1: A library for reading and editing audio meta data
+media-libs/taglib 1.11.1-r1 1.11.1_p20181028: A library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
 media-libs/tiff 3.9.7-r1 4.0.9-r4: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
