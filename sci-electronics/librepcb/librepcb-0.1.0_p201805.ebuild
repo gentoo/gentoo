@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit qmake-utils
 
 DESCRIPTION="Free EDA software to develop printed circuit boards"
-HOMEPAGE="http://librepcb.org/"
+HOMEPAGE="https://librepcb.org/"
 MY_P="LibrePCB-first_pcb"
 SRC_URI="https://github.com/LibrePCB/LibrePCB/archive/first_pcb.tar.gz -> ${MY_P}.tar.gz"
 
