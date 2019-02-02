@@ -5,7 +5,7 @@ DESCRIPTION=Proxy cache for Gentoo packages
 EAPI=7
 HOMEPAGE=https://sourceforge.net/projects/http-replicator
 IUSE=python_targets_python2_7
-KEYWORDS=~alpha ~amd64 hppa ~ppc ~sparc ~x86
+KEYWORDS=~alpha ~amd64 hppa ppc ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] sys-apps/portage[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/http-replicator/http-replicator_4.0alpha2.tgz
 _eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=2e02ee1ba591549bfbb7b7d4f6b07f50
+_md5_=d551ed15bac0ff436a0dcce10c1d53c9

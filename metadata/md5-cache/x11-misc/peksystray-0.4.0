@@ -3,9 +3,9 @@ DEPEND=x11-libs/libX11 x11-libs/libXt >=app-portage/elt-patches-20170815 !<sys-d
 DESCRIPTION=A system tray dockapp for window managers supporting docking
 EAPI=6
 HOMEPAGE=http://peksystray.sourceforge.net/
-KEYWORDS=alpha ~amd64 ~ppc ~x86
+KEYWORDS=alpha ~amd64 ppc ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/peksystray/peksystray-0.4.0.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=b29177b836e833a823323e4cc2966e4e
+_md5_=9a1f35b0c5abb6793898ad5c64a2216c
