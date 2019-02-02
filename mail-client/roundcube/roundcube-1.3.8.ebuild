@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/${PN}/${MY_PN}/releases/download/${PV}/${MY_P}-compl
 # roundcube is GPL-licensed, the rest of the licenses here are
 # for bundled PEAR components, googiespell and utf8.class.php
 LICENSE="GPL-3 BSD PHP-2.02 PHP-3 MIT public-domain"
-KEYWORDS="amd64 arm ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 sparc x86"
 
 IUSE="change-password enigma ldap managesieve mysql postgres sqlite ssl spell"
 REQUIRED_USE="|| ( mysql postgres sqlite )"

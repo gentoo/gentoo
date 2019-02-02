@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CMAKE_REMOVE_MODULES="no"
-inherit bash-completion-r1 elisp-common eutils flag-o-matic gnome2-utils toolchain-funcs eapi7-ver virtualx xdg-utils cmake-utils
+inherit bash-completion-r1 elisp-common flag-o-matic gnome2-utils toolchain-funcs eapi7-ver virtualx xdg-utils cmake-utils
 
 MY_P="${P/_/-}"
 
@@ -71,9 +71,9 @@ PATCHES=(
 cmake_src_bootstrap() {
 	# Cleanup args to extract only JOBS.
 	# Because bootstrap does not know anything else.
-	echo ${MAKEOPTS} | egrep -o '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+' > /dev/null
-	if [ $? -eq 0 ]; then
-		par_arg=$(echo ${MAKEOPTS} | egrep -o '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+' | tail -n1 | egrep -o '[[:digit:]]+')
+	grep -Eo '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+' <<< "${MAKEOPTS}" > /dev/null
+	if [[ $? -eq 0 ]] ; then
+		par_arg=$(grep -Eo '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+' <<< "${MAKEOPTS}" | tail -n1 | grep -o '[[:digit:]]+')
 		par_arg="--parallel=${par_arg}"
 	else
 		par_arg="--parallel=1"
@@ -114,9 +114,10 @@ cmake_src_test() {
 	# Excluded tests:
 	#    BootstrapTest: we actualy bootstrap it every time so why test it.
 	#    BundleUtilities: bundle creation broken
+	#    CMakeOnly.AllFindModules: pthread issues
 	#    CTest.updatecvs: which fails to commit as root
 	#    Fortran: requires fortran
-	#    Qt4Deploy, which tries to break sandbox and ignores prefix
+	#    RunCMake.CompilerLauncher: also requires fortran
 	#    RunCMake.CPack_RPM: breaks if app-arch/rpm is installed because
 	#        debugedit binary is not in the expected location
 	#    TestUpload, which requires network access
@@ -124,7 +125,7 @@ cmake_src_test() {
 		-j "$(makeopts_jobs)" \
 		--test-load "$(makeopts_loadavg)" \
 		${ctestargs} \
-		-E "(BootstrapTest|BundleUtilities|CTest.UpdateCVS|Fortran|Qt4Deploy|RunCMake.CPack_RPM|TestUpload)" \
+		-E "(BootstrapTest|BundleUtilities|CMakeOnly.AllFindModules|CTest.UpdateCVS|Fortran|RunCMake.CompilerLauncher|RunCMake.CPack_RPM|TestUpload)" \
 		|| die "Tests failed"
 
 	popd > /dev/null
@@ -204,7 +205,7 @@ src_install() {
 
 	dobashcomp Auxiliary/bash-completion/{${PN},ctest,cpack}
 
-	rm -r "${ED}"/usr/share/cmake/{completions,editors} || die
+	rm -r "${ED%/}"/usr/share/cmake/{completions,editors} || die
 }
 
 pkg_postinst() {
