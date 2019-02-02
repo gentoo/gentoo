@@ -21,3 +21,9 @@ KEYWORDS="~amd64"
 DEPEND="dev-libs/libnl:3"
 RDEPEND="${DEPEND}"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+
+PATCHES=( "${FILESDIR}"/test-skip-wg-dev.patch )
+
+python_test() {
+	esetup.py test || die "Tests failed with ${EPYTHON}"
+}
