@@ -1,11 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install unpack
-DEPEND=!static? ( !xz? ( !lzo? ( sys-libs/zlib ) ) lz4? ( app-arch/lz4 ) lzma? ( app-arch/xz-utils ) lzo? ( dev-libs/lzo ) sys-libs/zlib xattr? ( sys-apps/attr ) xz? ( app-arch/xz-utils ) zstd? ( app-arch/zstd ) ) static? ( !xz? ( !lzo? ( sys-libs/zlib[static-libs(+)] ) ) lz4? ( app-arch/lz4[static-libs(+)] ) lzma? ( app-arch/xz-utils[static-libs(+)] ) lzo? ( dev-libs/lzo[static-libs(+)] ) sys-libs/zlib[static-libs(+)] xattr? ( sys-apps/attr[static-libs(+)] ) xz? ( app-arch/xz-utils[static-libs(+)] ) zstd? ( app-arch/zstd[static-libs(+)] ) ) >=dev-vcs/git-1.8.2.1[curl]
-DESCRIPTION=Tool for creating compressed filesystem type squashfs
-EAPI=6
+DEPEND=!static? ( !xz? ( !lzo? ( sys-libs/zlib ) ) lz4? ( app-arch/lz4 ) lzma? ( app-arch/xz-utils ) lzo? ( dev-libs/lzo ) sys-libs/zlib xattr? ( sys-apps/attr ) xz? ( app-arch/xz-utils ) zstd? ( app-arch/zstd ) ) static? ( !xz? ( !lzo? ( sys-libs/zlib[static-libs(+)] ) ) lz4? ( app-arch/lz4[static-libs(+)] ) lzma? ( app-arch/xz-utils[static-libs(+)] ) lzo? ( dev-libs/lzo[static-libs(+)] ) sys-libs/zlib[static-libs(+)] xattr? ( sys-apps/attr[static-libs(+)] ) xz? ( app-arch/xz-utils[static-libs(+)] ) zstd? ( app-arch/zstd[static-libs(+)] ) )
+DESCRIPTION=tools to create and extract Squashfs filesystems
+EAPI=7
 HOMEPAGE=http://squashfs.sourceforge.net https://github.com/plougher/squashfs-tools
 IUSE=debug lz4 lzma lzo static xattr +xz zstd
 LICENSE=GPL-2
 RDEPEND=!static? ( !xz? ( !lzo? ( sys-libs/zlib ) ) lz4? ( app-arch/lz4 ) lzma? ( app-arch/xz-utils ) lzo? ( dev-libs/lzo ) sys-libs/zlib xattr? ( sys-apps/attr ) xz? ( app-arch/xz-utils ) zstd? ( app-arch/zstd ) )
 SLOT=0
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	git-r3	0d4635eeb5a96cd5315597a47eba25c9	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=426c7134079fb6292b7f88e45f027d56
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=48f6858d7c574a095d494e4f5e3ebc77

@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install prepare
 DEPEND=!static? ( sys-libs/zlib !xz? ( !lzo? ( sys-libs/zlib ) ) lz4? ( app-arch/lz4 ) lzma? ( app-arch/xz-utils ) lzo? ( dev-libs/lzo ) xattr? ( sys-apps/attr ) xz? ( app-arch/xz-utils ) ) static? ( sys-libs/zlib[static-libs(+)] !xz? ( !lzo? ( sys-libs/zlib[static-libs(+)] ) ) lz4? ( app-arch/lz4[static-libs(+)] ) lzma? ( app-arch/xz-utils[static-libs(+)] ) lzo? ( dev-libs/lzo[static-libs(+)] ) xattr? ( sys-apps/attr[static-libs(+)] ) xz? ( app-arch/xz-utils[static-libs(+)] ) )
-DESCRIPTION=Tool for creating compressed filesystem type squashfs
+DESCRIPTION=tools to create and extract Squashfs filesystems
 EAPI=7
 HOMEPAGE=http://squashfs.sourceforge.net
 IUSE=debug lz4 lzma lzo static xattr +xz
@@ -10,4 +10,4 @@ RDEPEND=!static? ( sys-libs/zlib !xz? ( !lzo? ( sys-libs/zlib ) ) lz4? ( app-arc
 SLOT=0
 SRC_URI=mirror://sourceforge/squashfs/squashfs4.3.tar.gz mirror://debian/pool/main/s/squashfs-tools/squashfs-tools_4.3-7.debian.tar.xz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=14db88fb56ed698fbe9b057bdf445d3d
+_md5_=c061241a0b59211185fb415b28d24a12
