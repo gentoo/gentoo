@@ -3,10 +3,10 @@ DEPEND=>=app-text/sgml-common-0.6.3-r2
 DESCRIPTION=DSSSL Stylesheets for DocBook
 EAPI=5
 HOMEPAGE=https://github.com/docbook/wiki/wiki
-KEYWORDS=alpha ~amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris
+KEYWORDS=alpha ~amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris
 LICENSE=MIT
 RDEPEND=app-text/sgml-common app-text/docbook-sgml-dtd:3.0
 SLOT=0
 SRC_URI=mirror://sourceforge/docbook/docbook-dsssl-1.79.tar.bz2
 _eclasses_=base	2ec5c64f5de125f0c65a927c4c128fef	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	sgml-catalog	a1731744d7cca1d14638e0e054ceea6e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=472567a4cb9632db88b16c60df4a2fd6
+_md5_=9bd37267d60df907e571bc6c91f561f9
