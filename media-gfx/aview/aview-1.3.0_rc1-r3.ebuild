@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -13,7 +13,7 @@ HOMEPAGE="http://aa-project.sourceforge.net/aview/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
+KEYWORDS="~amd64 ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
 IUSE=""
 
 DEPEND=">=media-libs/aalib-1.4_rc4"

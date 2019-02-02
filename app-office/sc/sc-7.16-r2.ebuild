@@ -10,7 +10,7 @@ HOMEPAGE="http://ibiblio.org/pub/Linux/apps/financial/spreadsheet/"
 
 SLOT="0"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc sparc ~x86"
+KEYWORDS="~amd64 ppc sparc ~x86"
 
 COMMON_DEPEND="
 	>=sys-libs/ncurses-5.2

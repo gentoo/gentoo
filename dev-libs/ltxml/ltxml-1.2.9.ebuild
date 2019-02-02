@@ -11,7 +11,7 @@ SRC_URI=ftp://ftp.cogsci.ed.ac.uk/pub/LTXML/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ia64 ~ppc ~x86"
+KEYWORDS="~amd64 ia64 ppc ~x86"
 IUSE=""
 
 DEPEND="dev-lang/perl"
