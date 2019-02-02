@@ -363,8 +363,7 @@ src_install() {
 				pax-mark -m "${ED%/}"${vbox_inst_path}/VBoxTestOGL
 			fi
 
-			#for each in virtualbox{,vm} VirtualBox{,VM} ; do
-			for each in virtualbox VirtualBox ; do
+			for each in virtualbox{,vm} VirtualBox{,VM} ; do
 				dosym ${vbox_inst_path}/VBox /usr/bin/${each}
 			done
 
