@@ -8,5 +8,6 @@ LICENSE=GPL-2
 RDEPEND=dev-qt/designer:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qthelp:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 >=dev-qt/qtsingleapplication-2.6.1_p20171024 dev-qt/qtsvg:5 dev-qt/qtxml:5 dev-qt/qtxmlpatterns:5 >=media-libs/freetype-2.5.2 media-libs/libsndfile sys-libs/zlib:= alsa? ( >=media-libs/alsa-lib-1.0.0 ) jack? ( virtual/jack ) mp3? ( media-sound/lame ) portaudio? ( media-libs/portaudio ) portmidi? ( media-libs/portmidi ) pulseaudio? ( media-sound/pulseaudio ) vorbis? ( media-libs/libvorbis ) webengine? ( dev-qt/qtwebengine:5[widgets] )
 REQUIRED_USE=portmidi? ( portaudio )
 SLOT=0
+SRC_URI=https://dev.gentoo.org/~fordfrog/distfiles/MuseScore_General-0.1.3.tar.bz2
 _eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	git-r3	0d4635eeb5a96cd5315597a47eba25c9	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=986b6d79be67854893b28b41001ed722
+_md5_=b5ea2c6acbcb263f77e85c1a68765edb
