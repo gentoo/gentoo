@@ -26,6 +26,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.118-PaX-support.patch
 	"${FILESDIR}"/${PN}-0.173-partial-core.patch
+	"${FILESDIR}"/${PN}-0.175-disable-biarch-test-PR24158.patch
 )
 
 src_prepare() {
