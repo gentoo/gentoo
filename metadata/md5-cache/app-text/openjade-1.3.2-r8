@@ -5,10 +5,10 @@ DESCRIPTION=Jade is an implementation of DSSSL for formatting SGML and XML docum
 EAPI=7
 HOMEPAGE=http://openjade.sourceforge.net
 IUSE=static-libs
-KEYWORDS=alpha ~amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ~ppc64 ~s390 ~sh sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha ~amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=MIT
 RDEPEND=app-text/sgml-common >=app-text/opensp-1.5.1
 SLOT=0
 SRC_URI=mirror://sourceforge/openjade/openjade-1.3.2.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	sgml-catalog	a1731744d7cca1d14638e0e054ceea6e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=3b2ab050d4c6712d117da31531891aa4
+_md5_=e8354d7274944518fe54821613b7cdee
