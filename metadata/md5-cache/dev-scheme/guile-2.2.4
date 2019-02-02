@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig sys-devel/libtool sys-devel/gettext
+DEFINED_PHASES=configure install
+DEPEND=>=dev-libs/boehm-gc-7.0:=[threads?] dev-libs/gmp:= virtual/libffi:= dev-libs/libltdl:= dev-libs/libunistring:0= sys-libs/ncurses:0= sys-libs/readline:0=
+DESCRIPTION=GNU Ubiquitous Intelligent Language for Extensions
+EAPI=7
+HOMEPAGE=https://www.gnu.org/software/guile/
+IUSE=debug debug-malloc +deprecated +networking +nls +regex +threads
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=LGPL-3+
+RDEPEND=>=dev-libs/boehm-gc-7.0:=[threads?] dev-libs/gmp:= virtual/libffi:= dev-libs/libltdl:= dev-libs/libunistring:0= sys-libs/ncurses:0= sys-libs/readline:0=
+REQUIRED_USE=regex
+RESTRICT=strip
+SLOT=12/2.2-1
+SRC_URI=mirror://gnu/guile/guile-2.2.4.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=9ce221304cbc9a96b3c3002d564781b6
