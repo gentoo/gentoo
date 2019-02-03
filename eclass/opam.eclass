@@ -13,8 +13,8 @@
 # src_install for opam-based packages.
 
 case ${EAPI:-0} in
-    0|1|2|3|4) die "You need at least EAPI-5 to use opam.eclass";;
-    *) ;;
+	5|6|7) ;;
+    *) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
 RDEPEND=">=dev-lang/ocaml-4:="
