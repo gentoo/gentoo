@@ -5,8 +5,6 @@ EAPI=7
 
 inherit flag-o-matic linux-info meson systemd user
 
-MESON_AUTO_DEPEND="no"
-
 DESCRIPTION="The Music Player Daemon (mpd)"
 HOMEPAGE="https://www.musicpd.org https://github.com/MusicPlayerDaemon/MPD"
 SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
@@ -111,8 +109,7 @@ DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.58:=
 	test? ( dev-cpp/gtest )"
 
-BDEPEND=">dev-util/meson-0.47.1
-	 virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.18.conf.patch
