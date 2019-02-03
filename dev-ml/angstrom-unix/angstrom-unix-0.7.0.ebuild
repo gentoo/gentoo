@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="dev-ml/angstrom:="
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder"
+	dev-ml/dune"
 
 S="${WORKDIR}/angstrom-${PV}"
 

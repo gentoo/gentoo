@@ -16,7 +16,7 @@ IUSE="test"
 
 RDEPEND="dev-ml/result:="
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder
+	dev-ml/dune
 	test? ( dev-ml/alcotest )"
 
 src_compile() {

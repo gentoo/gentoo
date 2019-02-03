@@ -26,7 +26,7 @@ RDEPEND="
 	dev-ml/sexplib:=
 	dev-ml/ocaml-migrate-parsetree:=
 "
-DEPEND="${RDEPEND} dev-ml/opam dev-ml/jbuilder"
+DEPEND="${RDEPEND} dev-ml/opam dev-ml/dune"
 
 S="${WORKDIR}/bin_prot-${PV}"
 

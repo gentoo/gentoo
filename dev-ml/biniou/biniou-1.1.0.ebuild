@@ -18,7 +18,7 @@ RDEPEND=">=dev-lang/ocaml-3.11:=[ocamlopt?]
 	dev-ml/easy-format:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder
+	dev-ml/dune
 	dev-ml/opam
 "
 

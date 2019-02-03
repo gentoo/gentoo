@@ -22,7 +22,7 @@ RDEPEND="
 	dev-ml/dns:=
 "
 DEPEND="
-	dev-ml/jbuilder
+	dev-ml/dune
 	test? (
 		dev-ml/dns-lwt-unix
 	)

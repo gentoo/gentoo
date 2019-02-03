@@ -24,7 +24,7 @@ RDEPEND="
 	dev-ml/ocaml-migrate-parsetree:=
 	dev-ml/pcre-ocaml:=
 "
-DEPEND="${RDEPEND} dev-ml/opam dev-ml/jbuilder"
+DEPEND="${RDEPEND} dev-ml/opam dev-ml/dune"
 
 src_install() {
 	opam-installer -i \

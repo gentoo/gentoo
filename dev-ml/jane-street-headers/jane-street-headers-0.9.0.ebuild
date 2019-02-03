@@ -16,7 +16,7 @@ DEPEND="
 	dev-lang/ocaml:=
 	"
 RDEPEND="${DEPEND}"
-DEPEND="${DEPEND} dev-ml/opam dev-ml/jbuilder"
+DEPEND="${DEPEND} dev-ml/opam dev-ml/dune"
 
 src_install() {
 	opam-installer -i \

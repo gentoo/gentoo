@@ -24,7 +24,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ml/core:= dev-ml/ounit )
-	dev-ml/jbuilder
+	dev-ml/dune
 "
 
 src_compile() {

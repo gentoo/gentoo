@@ -31,7 +31,7 @@ RDEPEND="
 	dev-ml/type-conv:=
 "
 DEPEND="
-	dev-ml/jbuilder
+	dev-ml/dune
 	test? (
 		dev-ml/ounit
 		ppx? ( dev-ml/ppx_driver dev-ml/ppx_sexp_conv )

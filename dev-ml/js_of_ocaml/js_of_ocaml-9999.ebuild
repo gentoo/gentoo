@@ -43,7 +43,7 @@ RDEPEND="
 	xml? ( >=dev-ml/tyxml-4:= dev-ml/reactiveData:= )
 "
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder
+	dev-ml/dune
 	dev-ml/opam
 	test? ( dev-util/patdiff )
 "

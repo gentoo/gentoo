@@ -26,4 +26,4 @@ RDEPEND="
 	dev-ml/stdio:=
 	dev-ml/ocaml-migrate-parsetree:=
 "
-DEPEND="${RDEPEND} dev-ml/jbuilder"
+DEPEND="${RDEPEND} dev-ml/dune"

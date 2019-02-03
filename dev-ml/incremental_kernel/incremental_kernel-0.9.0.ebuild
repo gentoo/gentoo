@@ -22,7 +22,7 @@ DEPEND="
 	<dev-ml/ppx_driver-100
 "
 RDEPEND="${DEPEND}"
-DEPEND="${DEPEND} dev-ml/opam dev-ml/jbuilder"
+DEPEND="${DEPEND} dev-ml/opam dev-ml/dune"
 
 src_install() {
 	opam-installer -i \

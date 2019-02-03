@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND=""
-DEPEND="${RDEPEND} dev-ml/jbuilder"
+DEPEND="${RDEPEND} dev-ml/dune"
 
 src_test() {
 	jbuilder runtest || die

@@ -20,7 +20,7 @@ RDEPEND=">=dev-lang/ocaml-3.11:=[ocamlopt]
 "
 DEPEND="${RDEPEND}
 	dev-ml/cppo
-	dev-ml/jbuilder
+	dev-ml/dune
 "
 
 src_install() {

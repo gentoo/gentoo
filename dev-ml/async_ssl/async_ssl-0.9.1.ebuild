@@ -27,7 +27,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-ml/opam
-	dev-ml/jbuilder
+	dev-ml/dune
 "
 
 src_install() {

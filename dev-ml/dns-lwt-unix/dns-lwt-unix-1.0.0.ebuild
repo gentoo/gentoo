@@ -25,7 +25,7 @@ RDEPEND="
 	dev-ml/ocaml-ipaddr:=
 "
 DEPEND="
-	dev-ml/jbuilder
+	dev-ml/dune
 	test? (
 		dev-ml/ounit
 	)

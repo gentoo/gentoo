@@ -12,7 +12,7 @@ LICENSE="LGPL-2.1-with-linking-exception"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder
+	dev-ml/dune
 	>=dev-ml/findlib-1.5"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc ~x86"

@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND=">=dev-db/sqlite-3.3.3"
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder
+	dev-ml/dune
 	dev-ml/base
 	dev-ml/stdio
 	dev-ml/configurator

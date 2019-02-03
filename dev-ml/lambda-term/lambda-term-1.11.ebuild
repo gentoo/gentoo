@@ -22,7 +22,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
-	dev-ml/jbuilder
+	dev-ml/dune
 "
 
 PATCHES=( "${FILESDIR}/lwtreact.patch" )

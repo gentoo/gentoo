@@ -16,7 +16,7 @@ RDEPEND="
 	>=dev-ml/ocaml-ssl-0.4.0:=
 "
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder"
+	dev-ml/dune"
 
 SLOT="0/${PV}"
 LICENSE="LGPL-2.1-with-linking-exception"

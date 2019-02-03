@@ -25,7 +25,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? ( >=dev-ml/ounit-1.0.2 )
-	dev-ml/jbuilder
+	dev-ml/dune
 "
 
 src_install() {

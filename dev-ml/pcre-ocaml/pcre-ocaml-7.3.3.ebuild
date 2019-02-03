@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND=">=dev-libs/libpcre-4.5"
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder
+	dev-ml/dune
 	dev-ml/base
 	dev-ml/stdio
 	dev-ml/configurator

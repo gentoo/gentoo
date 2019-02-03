@@ -19,4 +19,4 @@ RDEPEND="
 	dev-ml/ppx_driver:=
 	dev-ml/ocaml-migrate-parsetree:=
 "
-DEPEND="${RDEPEND} dev-ml/jbuilder"
+DEPEND="${RDEPEND} dev-ml/dune"

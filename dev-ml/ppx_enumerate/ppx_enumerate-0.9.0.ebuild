@@ -22,4 +22,4 @@ DEPEND="
 	dev-ml/ocaml-migrate-parsetree:=
 "
 RDEPEND="${DEPEND}"
-DEPEND="${DEPEND} dev-ml/jbuilder"
+DEPEND="${DEPEND} dev-ml/dune"

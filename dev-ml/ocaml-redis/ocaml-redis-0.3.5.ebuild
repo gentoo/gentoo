@@ -20,7 +20,7 @@ RDEPEND="
 	dev-ml/uuidm:=
 "
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder
+	dev-ml/dune
 	test? ( dev-ml/ounit dev-db/redis dev-ml/lwt )"
 
 src_compile() {

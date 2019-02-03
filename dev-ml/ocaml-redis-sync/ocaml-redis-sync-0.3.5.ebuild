@@ -19,7 +19,7 @@ RDEPEND="
 	dev-ml/ocaml-redis:=
 "
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder
+	dev-ml/dune
 	dev-ml/opam
 	test? ( dev-ml/ounit )"
 

@@ -21,7 +21,7 @@ RDEPEND="
 	sci-mathematics/glpk:=
 "
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder"
+	dev-ml/dune"
 
 S=${WORKDIR}/ocaml-${PN}-$(replace_version_separator 2 '-')
 

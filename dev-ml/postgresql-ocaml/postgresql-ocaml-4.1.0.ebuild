@@ -16,7 +16,7 @@ RDEPEND="
 	dev-db/postgresql:=[server]
 "
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder
+	dev-ml/dune
 	>=dev-ml/findlib-1.5"
 
 SLOT="0/${PV}"

@@ -21,7 +21,7 @@ RDEPEND="
 	dev-ml/result:=
 "
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder
+	dev-ml/dune
 	dev-ml/findlib"
 
 src_compile() {

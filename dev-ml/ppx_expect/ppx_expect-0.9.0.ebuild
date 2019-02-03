@@ -33,4 +33,4 @@ DEPEND="
 	dev-ml/ocaml-re:=
 "
 RDEPEND="${DEPEND}"
-DEPEND="${DEPEND} dev-ml/jbuilder"
+DEPEND="${DEPEND} dev-ml/dune"

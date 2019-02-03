@@ -17,7 +17,7 @@ RDEPEND="
 	dev-ml/sexplib:=
 	<dev-ml/sexplib-100
 "
-DEPEND="${RDEPEND} dev-ml/opam dev-ml/jbuilder"
+DEPEND="${RDEPEND} dev-ml/opam dev-ml/dune"
 
 src_test() {
 	jbuilder runtest || die

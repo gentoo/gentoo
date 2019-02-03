@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}
 DEPEND="${DEPEND}
 	dev-ml/cppo
 	dev-ml/findlib
-	dev-ml/jbuilder
+	dev-ml/dune
 	dev-ml/opam"
 
 SLOT="0/${PV}"

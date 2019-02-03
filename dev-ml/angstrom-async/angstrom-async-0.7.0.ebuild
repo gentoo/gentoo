@@ -20,7 +20,7 @@ RDEPEND="
 	dev-ml/async:=
 "
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder"
+	dev-ml/dune"
 
 S="${WORKDIR}/angstrom-${PV}"
 

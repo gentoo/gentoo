@@ -21,7 +21,7 @@ RDEPEND="dev-ml/sexplib:=
 	dev-lang/ocaml:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder
+	dev-ml/dune
 	dev-ml/findlib
 	test? ( dev-ml/ounit )
 "

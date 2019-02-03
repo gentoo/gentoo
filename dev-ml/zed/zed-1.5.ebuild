@@ -20,7 +20,7 @@ DEPEND="
 	dev-ml/react:="
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
-	dev-ml/jbuilder"
+	dev-ml/dune"
 
 src_compile() {
 	jbuilder build --only-packages zed @install || die

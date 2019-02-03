@@ -20,4 +20,4 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 DEPEND="${RDEPEND}
-	dev-ml/jbuilder"
+	dev-ml/dune"

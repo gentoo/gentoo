@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,10 +6,10 @@ EAPI=5
 inherit opam
 
 MY_PV="${PV/_/+}"
-MY_P="${PN}-${PV/_/-}"
+MY_P="jbuilder-${PV/_/-}"
 
 DESCRIPTION="A composable build system for OCaml"
-HOMEPAGE="https://github.com/janestreet/jbuilder"
+HOMEPAGE="https://dune.build"
 SRC_URI="https://github.com/janestreet/jbuilder/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"

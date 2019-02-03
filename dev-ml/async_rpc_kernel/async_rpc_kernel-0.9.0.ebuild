@@ -20,7 +20,7 @@ RDEPEND="
 	dev-ml/ppx_jane:=
 	dev-ml/ocaml-migrate-parsetree:=
 "
-DEPEND="${RDEPEND} dev-ml/opam dev-ml/jbuilder"
+DEPEND="${RDEPEND} dev-ml/opam dev-ml/dune"
 
 src_install() {
 	opam-installer -i \

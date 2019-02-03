@@ -25,7 +25,7 @@ RDEPEND="
 	!dev-ml/odns
 "
 DEPEND="
-	dev-ml/jbuilder
+	dev-ml/dune
 	${RDEPEND}
 "
 

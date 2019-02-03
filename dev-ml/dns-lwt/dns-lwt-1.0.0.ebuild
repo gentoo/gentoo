@@ -23,7 +23,7 @@ RDEPEND="
 	dev-ml/mirage-profile:=
 "
 DEPEND="
-	dev-ml/jbuilder
+	dev-ml/dune
 	test? (
 		dev-ml/dns-lwt-unix
 	)

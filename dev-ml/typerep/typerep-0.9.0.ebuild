@@ -16,4 +16,4 @@ IUSE=""
 
 DEPEND="dev-ml/base:="
 RDEPEND="${DEPEND}"
-DEPEND="${DEPEND} dev-ml/jbuilder"
+DEPEND="${DEPEND} dev-ml/dune"
