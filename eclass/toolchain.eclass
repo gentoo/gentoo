@@ -1299,7 +1299,8 @@ toolchain_src_configure() {
 	fi
 
 	if tc_version_is_at_least 4.8 && in_iuse sanitize ; then
-		confgcc+=( $(use_enable sanitize libsanitizer) )
+		# See Note [implicitly enabled flags]
+		confgcc+=( $(usex sanitize '' --disable-libsanitizer) )
 	fi
 
 	if tc_version_is_at_least 6.0 && in_iuse pie ; then
@@ -2494,3 +2495,19 @@ toolchain_death_notice() {
 		popd >/dev/null
 	fi
 }
+
+# Note [implicitly enabled flags]
+# -------------------------------
+# Usually configure-based packages handle explicit feature requests
+# like
+#     ./configure --enable-foo
+# as explicit request to check for suppor of 'foo' and bail out at
+# configure time.
+#
+# GCC does not follow this pattern an instead overrides autodetection
+# of the feature and enables it unconditionally.
+# See https://gcc.gnu.org/PR85663
+#
+# Thus safer way to enable/disable the feature is to rely on implicit
+# enabled-by-default state:
+#    econf $(usex foo '' --disable-foo)
