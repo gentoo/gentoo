@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pdfrw[${PYTHON_USEDEP}] )"
+	test? (
+		dev-python/pdfrw[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP},tiff,zlib]
+	)"
 RDEPEND="dev-python/pillow[${PYTHON_USEDEP}]"
 
 python_test() {

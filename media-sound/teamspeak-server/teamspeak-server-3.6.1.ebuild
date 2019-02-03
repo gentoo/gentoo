@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
 inherit systemd user
 
@@ -50,9 +50,9 @@ src_install() {
 
 	exeinto /opt/teamspeak3-server
 	doexe ts3server
-	doexe "${FILESDIR}"/ts3server-bin
+
 	dodir /opt/bin
-	dosym ../teamspeak3-server/ts3server-bin /opt/bin/ts3server
+	dosym ../teamspeak3-server/ts3server /opt/bin/ts3server
 
 	exeinto /opt/teamspeak3-server
 	doexe libts3db_sqlite3.so libts3_ssh.so
