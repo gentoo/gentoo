@@ -26,7 +26,7 @@ CDEPEND="
 	x11-libs/libxkbfile
 	ayatana? ( dev-libs/libappindicator:3 )
 	crypt? ( dev-libs/libgcrypt:0= )
-	rdp? ( >=net-misc/freerdp-2.0.0_rc2 )
+	rdp? ( >=net-misc/freerdp-2.0.0_rc4 )
 	gnome-keyring? ( app-crypt/libsecret )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )

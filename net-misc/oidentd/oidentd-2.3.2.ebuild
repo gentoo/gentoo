@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit linux-info systemd user
+inherit systemd user
 
 DESCRIPTION="Another (RFC1413 compliant) ident daemon"
 HOMEPAGE="https://oidentd.janikrabe.com/"
-SRC_URI="https://ftp.janikrabe.com/pub/${PN}/releases/${PV}/${P}.tar.gz"
+SRC_URI="https://files.janikrabe.com/pub/${PN}/releases/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,18 +22,21 @@ RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-oident )"
 
 pkg_setup() {
-	local CONFIG_CHECK="~INET_TCP_DIAG"
-
-	linux-info_pkg_setup
-
 	enewgroup oidentd
 	enewuser oidentd -1 -1 -1 oidentd
+}
+
+src_prepare() {
+	sed -i '/ExecStart/ s|$| -u oidentd -g oidentd|' contrib/systemd/*.service || die
+
+	default
 }
 
 src_configure() {
 	local myconf=(
 		$(use_enable debug)
 		$(use_enable ipv6)
+		$(use_enable masquerade libnfct)
 		$(use_enable masquerade masq)
 		$(use_enable masquerade nat)
 	)
@@ -46,7 +49,7 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}-2.0.7-init ${PN}
 	newconfd "${FILESDIR}"/${PN}-2.2.2-confd ${PN}
 
-	systemd_newunit "${FILESDIR}"/${PN}_at.service-r1 ${PN}@.service
-	systemd_dounit "${FILESDIR}"/${PN}.socket
-	systemd_dounit "${FILESDIR}"/${PN}.service-r1
+	systemd_dounit contrib/systemd/${PN}@.service
+	systemd_dounit contrib/systemd/${PN}.socket
+	systemd_dounit contrib/systemd/${PN}.service
 }
