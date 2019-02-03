@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools out-of-source
 
 DESCRIPTION="i3 fork with gaps and some more features"
 HOMEPAGE="https://github.com/Airblader/i3"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Airblader/i3/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="doc +man"
 
 DEPEND="
 	dev-libs/glib:2
@@ -32,6 +32,12 @@ DEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
+	doc? ( app-text/asciidoc )
+	man? (
+		app-text/asciidoc
+		app-text/xmlto
+		dev-lang/perl
+	)
 "
 RDEPEND="${DEPEND}
 	dev-lang/perl
@@ -40,41 +46,42 @@ RDEPEND="${DEPEND}
 	!x11-wm/i3
 "
 
-S=${WORKDIR}/i3-${PV}
+S="${WORKDIR}/i3-${PV}"
 
-DOCS=( RELEASE-NOTES-$(ver_cut 1-2) )
-
-PATCHES=( "${FILESDIR}/${PN}-$(ver_cut 1-2)-musl.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-$(ver_cut 1-2)-musl.patch"
+)
 
 src_prepare() {
 	default
-	sed -e '/AC_PATH_PROG(\[PATH_ASCIIDOC/d' -i configure.ac || die
-	eautoreconf
+
 	cat <<- EOF > "${T}"/i3wm
 		#!/bin/sh
 		exec /usr/bin/i3
 	EOF
+
+	eautoreconf
 }
 
-src_configure() {
+my_src_configure() {
 	# disable sanitizer: otherwise injects -O0 -g
 	local myeconfargs=(
+		$(use_enable doc docs)
+		$(use_enable man mans)
 		--enable-debug=no
 		--disable-sanitizers
 	)
 	econf "${myeconfargs[@]}"
 }
 
-src_compile() {
-	emake -C "${CBUILD}"
-}
+my_src_install_all() {
+	use man && doman "${BUILD_DIR}/man"/*.1
 
-src_install() {
-	emake -C "${CBUILD}" DESTDIR="${D}" install
 	einstalldocs
+	use doc && dodoc -r "${BUILD_DIR}/docs" "RELEASE-NOTES-$(ver_cut 1-2)"
 
 	exeinto /etc/X11/Sessions
-	doexe "${T}"/i3wm
+	doexe "${T}/i3wm"
 }
 
 pkg_postinst() {
