@@ -1,11 +1,12 @@
-DEFINED_PHASES=-
-DEPEND=sys-fs/fuse:= >=x11-libs/libX11-1.6.5 virtual/pkgconfig
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=test
+DEPEND=sys-fs/fuse:0= >=x11-libs/libX11-1.6.5
 DESCRIPTION=FUSE-based X11 Window-Manager file system
-EAPI=6
+EAPI=7
 HOMEPAGE=https://github.com/gerstner-hub/xwmfs
-KEYWORDS=~amd64 ~x86 ~arm
+KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
-RDEPEND=sys-fs/fuse:= >=x11-libs/libX11-1.6.5
+RDEPEND=sys-fs/fuse:0= >=x11-libs/libX11-1.6.5
 SLOT=0
 SRC_URI=https://github.com/gerstner-hub/xwmfs/releases/download/v0.82/xwmfs-0.82-dist.tar.gz -> xwmfs-0.82.tar.gz
-_md5_=7b9d363d4b21648b9b468085570286ad
+_md5_=861bdb2503f453bd7989f27da27b99c4
