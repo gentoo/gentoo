@@ -2080,6 +2080,7 @@ dev-util/anjuta:devhelp - Enable devhelp integration
 dev-util/anjuta:glade - Build glade plugin for anjuta
 dev-util/anjuta:packagekit - Use packagekit to search for missing tools
 dev-util/anjuta:terminal - Enable terminal plugin based on x11-libs/vte
+dev-util/bazel:tools - Install extra bazel tools to build from sources
 dev-util/bitcoin-tx:knots - Build enhanced Bitcoin Knots version, rather than Bitcoin Core
 dev-util/buildbot:docker - Add support for worker docker command steps
 dev-util/buildbot:irc - Add support for status delivery through an ircbot.
