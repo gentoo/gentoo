@@ -4,11 +4,11 @@ DESCRIPTION=Ethernet settings python bindings
 EAPI=5
 HOMEPAGE=https://fedorahosted.org/python-ethtool/
 IUSE=python_targets_python2_7
-KEYWORDS=~amd64 ~amd64
+KEYWORDS=~amd64
 LICENSE=GPL-2
 RDEPEND=dev-libs/libnl:3 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://fedorahosted.org/releases/p/y/python-ethtool/python-ethtool-0.11.tar.bz2
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	distutils-r1	71a5ee567fb298e553ce8d1319279151	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
-_md5_=ea6de2a752c39a0cceefd87f2b0817e4
+_md5_=bae7bd64ba4c1d4543aad86aa4f8944b
