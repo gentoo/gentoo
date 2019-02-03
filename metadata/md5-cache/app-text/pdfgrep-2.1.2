@@ -1,0 +1,13 @@
+BDEPEND=app-text/asciidoc virtual/pkgconfig test? ( dev-texlive/texlive-latex dev-texlive/texlive-latexrecommended dev-util/dejagnu )
+DEFINED_PHASES=configure
+DEPEND=app-text/poppler:=[cxx] dev-libs/libgcrypt:0= pcre? ( dev-libs/libpcre[cxx] ) unac? ( app-text/unac )
+DESCRIPTION=A tool similar to grep which searches text in PDFs
+EAPI=7
+HOMEPAGE=https://pdfgrep.org/
+IUSE=+pcre test unac
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-text/poppler:=[cxx] dev-libs/libgcrypt:0= pcre? ( dev-libs/libpcre[cxx] ) unac? ( app-text/unac )
+SLOT=0
+SRC_URI=https://www.pdfgrep.org/download/pdfgrep-2.1.2.tar.gz
+_md5_=32207d16e2cd06bcfdd2e65ae75460e9
