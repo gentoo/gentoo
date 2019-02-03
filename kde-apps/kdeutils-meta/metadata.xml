@@ -6,6 +6,9 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="7zip">Install <pkg>app-arch/p7zip</pkg> for 7zip archive support in <pkg>kde-apps/ark</pkg></flag>
 		<flag name="floppy">Install <pkg>kde-apps/kfloppy</pkg> to format and create DOS or ext2fs filesystems in a floppy.</flag>
+		<flag name="lrz">Install <pkg>app-arch/lrzip</pkg> for LRZ archive support in <pkg>kde-apps/ark</pkg></flag>
+		<flag name="rar">Install <pkg>app-arch/unar</pkg> or <pkg>app-arch/unrar</pkg> for RAR archive support in <pkg>kde-apps/ark</pkg></flag>
 	</use>
 </pkgmetadata>

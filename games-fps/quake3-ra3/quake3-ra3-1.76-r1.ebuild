@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,11 +8,11 @@ MOD_DIR="arena"
 
 inherit games games-mods
 
-HOMEPAGE="http://www.moddb.com/mods/rocket-arena-3"
+HOMEPAGE="https://www.moddb.com/mods/rocket-arena-3"
 SRC_URI="mirror://quakeunity/modifications/rocketarena3/ra3${PV/.}.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 QA_PREBUILT="${INS_DIR:1}/${MOD_DIR}/*so"

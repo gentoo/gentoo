@@ -1,5 +1,5 @@
---- src/bs2bconvert.c.orig	2015-03-06 12:24:00.168451618 +0000
-+++ src/bs2bconvert.c	2015-03-06 12:22:20.504446655 +0000
+--- a/src/bs2bconvert.c	2015-03-06 12:24:00.168451618 +0000
++++ b/src/bs2bconvert.c	2015-03-06 12:22:20.504446655 +0000
 @@ -153,7 +153,7 @@
  	if( ( infile = sf_open( infilename, SFM_READ, &sfinfo ) ) == NULL )
  	{

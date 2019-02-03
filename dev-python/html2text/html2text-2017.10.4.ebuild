@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy{,3} )
 inherit distutils-r1
 
 DESCRIPTION="Turn HTML into equivalent Markdown-structured text"
-HOMEPAGE="https://github.com/Alir3z4/html2text https://pypi.python.org/pypi/html2text"
+HOMEPAGE="https://github.com/Alir3z4/html2text https://pypi.org/project/html2text/"
 SRC_URI="https://github.com/Alir3z4/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${CDEPEND}

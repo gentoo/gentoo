@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools user
 
 DESCRIPTION="Network traffic analyzer with cute web interface"
-HOMEPAGE="http://unix4lyfe.org/darkstat/"
-SRC_URI="http://unix4lyfe.org/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://unix4lyfe.org/darkstat/"
+SRC_URI="https://unix4lyfe.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

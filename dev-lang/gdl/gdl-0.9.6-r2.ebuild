@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-utils eutils python-r1 wxwidgets toolchain-funcs virtualx
 
 DESCRIPTION="GNU Data Language"
-HOMEPAGE="http://gnudatalanguage.sourceforge.net/"
+HOMEPAGE="https://github.com/gnudatalanguage/gdl"
 SRC_URI="mirror://sourceforge/gnudatalanguage/${P}v2.tgz"
 
 LICENSE="GPL-2"
@@ -77,7 +77,7 @@ src_prepare() {
 	use hdf5 && has_version sci-libs/hdf5[mpi] && export CXX=mpicxx
 
 	# make sure antlr includes are from system and rebuild the sources with it
-	# https://sourceforge.net/tracker/?func=detail&atid=618685&aid=3465878&group_id=97659
+	# https://sourceforge.net/p/gnudatalanguage/patches/39/
 	rm -r src/antlr || die
 	einfo "Regenerating grammar"
 	pushd src >/dev/null || die

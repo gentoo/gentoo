@@ -1,14 +1,17 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: sgml-catalog.eclass
 # @MAINTAINER:
-# SGML Herd <sgml@gentoo.org>
+# No maintainer <maintainer-needed@gentoo.org>
 # @AUTHOR:
 # Author Matthew Turk <satai@gentoo.org>
 # @BLURB: Functions for installing SGML catalogs
 
-inherit base
+case ${EAPI:-0} in
+	0|1|2|3|4|5) inherit base ;;
+	*) ;;
+esac
 
 DEPEND=">=app-text/sgml-common-0.6.3-r2"
 

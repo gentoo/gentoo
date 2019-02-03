@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ VERSION="1911" # every bump, new version
 RESTRICT="strip"
 
 DESCRIPTION="Addon needed for XXV - WWW Admin for the Video Disk Recorder"
-HOMEPAGE="http://projects.vdr-developer.org/projects/xxv"
+HOMEPAGE="https://projects.vdr-developer.org/projects/xxv"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz
 		mirror://gentoo/${P}.tgz"
 

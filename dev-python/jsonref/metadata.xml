@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>dolsen@gentoo.org</email>
 		<name>Brian Dolbec</name>
-		<description>Primary maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>

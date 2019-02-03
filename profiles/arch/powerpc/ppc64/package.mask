@@ -1,0 +1,13 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Virgil Dupras <vdupras@gentoo.org> (12 Aug 2018)
+# ppc64 stabilization is too long and make us miss our security target delay
+# on bug #662780. Masking app-emulation/lxc and revdeps until it is stabilized.
+app-emulation/lxc
+app-emulation/lxc-templates
+dev-python/python3-lxc
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (21 Feb 2018)
+# Mozc supports only little-endian architectures.
+app-i18n/mozc

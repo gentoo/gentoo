@@ -18,12 +18,9 @@
 
 		* Update a repository no more frequently than once every twelve hours.
 		* Run an arbitrary command before committing to a repository.
-		* When updating a git repository, pull from two different upstreams
-		  and merge the two together.
-		* Run several repository updates in parallel, greatly speeding up
-		  the update process.
-		* Remember actions that failed due to a laptop being offline,
-		  so they can be retried when it comes back online.
+		* When updating a git repository, pull from two different upstreams and merge the two together.
+		* Run several repository updates in parallel, greatly speeding up the update process.
+		* Remember actions that failed due to a laptop being offline, so they can be retried when it comes back online.
 
 		This package also includes the webcheckout command.
 	</longdescription>

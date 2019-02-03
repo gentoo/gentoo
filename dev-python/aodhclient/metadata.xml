@@ -10,8 +10,8 @@
 		<name>Openstack</name>
 	</maintainer>
 	<longdescription lang="en">
-    This is a client for the OpenStack Aodh API.
-  </longdescription>
+		This is a client for the OpenStack Aodh API.
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">python-aodhclient</remote-id>
 		<remote-id type="github">openstack/python-aodhclient</remote-id>

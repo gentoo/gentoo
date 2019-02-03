@@ -18,9 +18,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
 	x11-libs/libXt
-	x11-proto/recordproto
-	x11-proto/xf86vidmodeproto
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 PATCHES=(
 		"${FILESDIR}"/${P}-desktop-entry.patch

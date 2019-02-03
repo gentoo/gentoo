@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">KhronosGroup/Vulkan-LoaderAndValidationLayers</remote-id>
 	</upstream>
+	<use>
+		<flag name="layers">Include the vulkan layers</flag>
+	</use>
 </pkgmetadata>

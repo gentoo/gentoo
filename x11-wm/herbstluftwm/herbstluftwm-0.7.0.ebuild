@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,13 +9,13 @@ if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/herbstluftwm/herbstluftwm.git"
 	EXTRA_DEPEND="app-text/asciidoc"
 else
-	SRC_URI="http://herbstluftwm.org/tarballs/${P}.tar.gz"
+	SRC_URI="https://herbstluftwm.org/tarballs/${P}.tar.gz"
 	KEYWORDS="amd64 x86"
 	EXTRA_DEPEND=""
 fi
 
 DESCRIPTION="A manual tiling window manager for X"
-HOMEPAGE="http://herbstluftwm.org"
+HOMEPAGE="https://herbstluftwm.org/"
 
 LICENSE="BSD-2"
 SLOT="0"

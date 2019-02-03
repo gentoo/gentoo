@@ -1,0 +1,17 @@
+diff -up sane-backends-1.0.27/backend/genesys.c.canon-lide-100 sane-backends-1.0.27/backend/genesys.c
+--- sane-backends-1.0.27/backend/genesys.c.canon-lide-100	2018-02-01 10:37:26.160044539 +0100
++++ sane-backends-1.0.27/backend/genesys.c	2018-02-01 10:45:44.616653277 +0100
+@@ -2070,11 +2070,9 @@ genesys_white_shading_calibration (Genes
+   dev->model->cmd_set->set_lamp_power (dev, dev->calib_reg, SANE_TRUE);
+   dev->model->cmd_set->set_motor_power (dev->calib_reg, motor);
+ 
+-  /* if needed, go back before doin next scan, by using rewind, registers and
+-   * slopes table are kept intact from previous scan */
+-  if (dev->model->flags & GENESYS_FLAG_SHADING_REPARK && dev->model->cmd_set->rewind)
++  if (dev->model->flags & GENESYS_FLAG_SHADING_REPARK)
+     {
+-      status = dev->model->cmd_set->rewind (dev);
++      status = dev->model->cmd_set->slow_back_home (dev, SANE_TRUE);
+     }
+ 
+   status =

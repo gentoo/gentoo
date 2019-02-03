@@ -1,5 +1,5 @@
---- faxd/Makefile.LINUXdso.original	2011-12-30 18:17:59.000000000 +0100
-+++ faxd/Makefile.LINUXdso	2011-12-30 18:18:51.000000000 +0100
+--- a/faxd/Makefile.LINUXdso.original	2011-12-30 18:17:59.000000000 +0100
++++ b/faxd/Makefile.LINUXdso	2011-12-30 18:18:51.000000000 +0100
 @@ -37,7 +37,6 @@
  
  installDSO: libfaxserver.${DSO}

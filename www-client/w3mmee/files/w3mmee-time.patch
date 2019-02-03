@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/586258
+
+Author: kouyu <ckyoog@gmail.com>
+
+--- a/terms.c
++++ b/terms.c
+@@ -305,11 +305,7 @@
+ 		     struct timeval *tout)
+ {
+     static struct timeval polltv = {
+-#if CLOCKS_PER_SEC > 1
+-	0, 1000000 / CLOCKS_PER_SEC
+-#else
+-	0, 10000
+-#endif
++	0, CLOCKS_PER_SEC > 1 ? 1000000 / CLOCKS_PER_SEC : 10000
+     };
+     int m;
+     struct timeval tv;
+@@ -779,11 +775,7 @@
+ #endif
+ 
+ static struct timeval display_delta = {
+-#if CLOCKS_PER_SEC > 1
+-    0, 1000000 / CLOCKS_PER_SEC,
+-#else
+-    0, 10000
+-#endif
++    0, CLOCKS_PER_SEC > 1 ? 1000000 / CLOCKS_PER_SEC : 10000
+ };
+ 
+ static int

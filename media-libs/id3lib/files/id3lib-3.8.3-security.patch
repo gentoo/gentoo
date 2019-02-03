@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/189610
 
---- src/tag_file.cpp
-+++ src/tag_file.cpp
+--- a/src/tag_file.cpp
++++ b/src/tag_file.cpp
 @@ -242,8 +242,8 @@
      strcpy(sTempFile, filename.c_str());
      strcat(sTempFile, sTmpSuffix.c_str());

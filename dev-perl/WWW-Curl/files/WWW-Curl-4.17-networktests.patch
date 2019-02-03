@@ -1,0 +1,190 @@
+From 7102fd54eb385920ddf41c59e1196fc221ad9ea2 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 21 Mar 2018 21:08:45 +1300
+Subject: Disable network tests w/ NO_NETWORK_TESTING set.
+
+Gentoo users can opt-in to these tests by doing:
+
+  DIST_TEST_OVERRIDE="do network"
+
+Or Similar
+---
+ t/01basic.t              | 6 ++++++
+ t/02callbacks.t          | 7 +++++++
+ t/04abort-test.t         | 7 +++++++
+ t/05progress.t           | 7 +++++++
+ t/08ssl.t                | 7 +++++++
+ t/09times.t              | 7 +++++++
+ t/14duphandle.t          | 7 ++++++-
+ t/15duphandle-callback.t | 7 ++++++-
+ t/18twinhandles.t        | 7 ++++++-
+ t/21write-to-scalar.t    | 6 ++++++
+ 10 files changed, 65 insertions(+), 3 deletions(-)
+
+diff --git a/t/01basic.t b/t/01basic.t
+index 93e12b1..77ca444 100644
+--- a/t/01basic.t
++++ b/t/01basic.t
+@@ -1,5 +1,11 @@
+ #!perl
+ 
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print "1..0 # SKIP NO_NETWORK_TESTING set";
++    exit 0;
++  }
++}
+ use strict;
+ use warnings;
+ use Test::More tests => 19;
+diff --git a/t/02callbacks.t b/t/02callbacks.t
+index 76aff4f..344b4c5 100644
+--- a/t/02callbacks.t
++++ b/t/02callbacks.t
+@@ -1,5 +1,12 @@
+ #!perl
+ 
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print "1..0 # SKIP NO_NETWORK_TESTING set";
++    exit 0;
++  }
++}
++
+ use strict;
+ use warnings;
+ use Test::More tests => 7;
+diff --git a/t/04abort-test.t b/t/04abort-test.t
+index c653c49..dcba4fd 100644
+--- a/t/04abort-test.t
++++ b/t/04abort-test.t
+@@ -1,5 +1,12 @@
+ #!perl
+ 
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print "1..0 # SKIP NO_NETWORK_TESTING set";
++    exit 0;
++  }
++}
++
+ use strict;
+ use warnings;
+ use Test::More tests => 8;
+diff --git a/t/05progress.t b/t/05progress.t
+index 52129ea..25a08fa 100644
+--- a/t/05progress.t
++++ b/t/05progress.t
+@@ -1,5 +1,12 @@
+ #!perl
+ 
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print "1..0 # SKIP NO_NETWORK_TESTING set";
++    exit 0;
++  }
++}
++
+ use strict;
+ use warnings;
+ use Test::More tests => 16;
+diff --git a/t/08ssl.t b/t/08ssl.t
+index 7374e06..d332d37 100644
+--- a/t/08ssl.t
++++ b/t/08ssl.t
+@@ -1,5 +1,12 @@
+ #!perl
+ 
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print "1..0 # SKIP NO_NETWORK_TESTING set";
++    exit 0;
++  }
++}
++
+ use strict;
+ use warnings;
+ use Test::More;
+diff --git a/t/09times.t b/t/09times.t
+index 6b3c43a..49bf76a 100644
+--- a/t/09times.t
++++ b/t/09times.t
+@@ -1,5 +1,12 @@
+ #!perl
+ 
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print "1..0 # SKIP NO_NETWORK_TESTING set";
++    exit 0;
++  }
++}
++
+ use strict;
+ use warnings;
+ use Test::More tests => 19;
+diff --git a/t/14duphandle.t b/t/14duphandle.t
+index f56ac57..f4211d0 100644
+--- a/t/14duphandle.t
++++ b/t/14duphandle.t
+@@ -1,5 +1,10 @@
+ #!perl
+-
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print "1..0 # SKIP NO_NETWORK_TESTING set";
++    exit 0;
++  }
++}
+ use strict;
+ use warnings;
+ use lib 'inc';
+diff --git a/t/15duphandle-callback.t b/t/15duphandle-callback.t
+index 3c5ecd0..ee67b8a 100644
+--- a/t/15duphandle-callback.t
++++ b/t/15duphandle-callback.t
+@@ -1,5 +1,10 @@
+ #!perl
+-
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print "1..0 # SKIP NO_NETWORK_TESTING set";
++    exit 0;
++  }
++}
+ use strict;
+ use warnings;
+ use lib 'inc';
+diff --git a/t/18twinhandles.t b/t/18twinhandles.t
+index 5b0b86b..a6acdb7 100644
+--- a/t/18twinhandles.t
++++ b/t/18twinhandles.t
+@@ -1,5 +1,10 @@
+ #!perl
+-
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print "1..0 # SKIP NO_NETWORK_TESTING set";
++    exit 0;
++  }
++}
+ use strict;
+ use warnings;
+ use Test::More tests => 12;
+diff --git a/t/21write-to-scalar.t b/t/21write-to-scalar.t
+index 85d916e..6b691b5 100644
+--- a/t/21write-to-scalar.t
++++ b/t/21write-to-scalar.t
+@@ -1,4 +1,10 @@
+ #!perl
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print "1..0 # SKIP NO_NETWORK_TESTING set";
++    exit 0;
++  }
++}
+ use strict;
+ use warnings;
+ use Test::More 'no_plan';
+-- 
+2.16.2
+

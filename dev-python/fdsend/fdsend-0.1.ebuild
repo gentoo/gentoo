@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="flexible file descriptor passing"
-HOMEPAGE="https://pypi.python.org/pypi/fdsend/"
+HOMEPAGE="https://pypi.org/project/fdsend/"
 SRC_URI="http://pilcrow.madison.wi.us/sw/${P}.tar.gz"
 
 SLOT="0"

@@ -8,4 +8,7 @@
   <upstream>
     <remote-id type="github">brianmario/mysql2</remote-id>
   </upstream>
+  <use>
+    <flag name="mariadb">Use mariadb bindings</flag>
+  </use>
 </pkgmetadata>

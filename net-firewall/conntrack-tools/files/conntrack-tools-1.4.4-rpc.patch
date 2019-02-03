@@ -1,6 +1,5 @@
-diff -ruN conntrack-tools-1.4.4.orig/configure.ac conntrack-tools-1.4.4/configure.ac
---- conntrack-tools-1.4.4.orig/configure.ac	2016-08-22 10:43:02.954671362 -0000
-+++ conntrack-tools-1.4.4/configure.ac	2017-09-24 19:50:37.225517482 -0000
+--- a/configure.ac
++++ b/configure.ac
 @@ -50,6 +50,25 @@
          AS_HELP_STRING([--enable-systemd], [Build systemd support]),
          [enable_systemd="$enableval"], [enable_systemd="no"])
@@ -27,9 +26,8 @@ diff -ruN conntrack-tools-1.4.4.orig/configure.ac conntrack-tools-1.4.4/configur
  PKG_CHECK_MODULES([LIBNFNETLINK], [libnfnetlink >= 1.0.1])
  PKG_CHECK_MODULES([LIBMNL], [libmnl >= 1.0.3])
  PKG_CHECK_MODULES([LIBNETFILTER_CONNTRACK], [libnetfilter_conntrack >= 1.0.6])
-diff -ruN conntrack-tools-1.4.4.orig/src/helpers/Makefile.am conntrack-tools-1.4.4/src/helpers/Makefile.am
---- conntrack-tools-1.4.4.orig/src/helpers/Makefile.am	2015-02-11 15:36:00.650610125 -0000
-+++ conntrack-tools-1.4.4/src/helpers/Makefile.am	2017-09-24 19:52:11.644990587 -0000
+--- a/src/helpers/Makefile.am
++++ b/src/helpers/Makefile.am
 @@ -22,8 +22,8 @@
  ct_helper_ftp_la_CFLAGS = $(AM_CFLAGS) $(LIBNETFILTER_CONNTRACK_CFLAGS)
  

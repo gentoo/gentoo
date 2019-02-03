@@ -13,7 +13,7 @@ SRC_URI="http://packages.vstone.eu/quake3/install/cpma${PV//.}-nomaps.zip
 	http://packages.vstone.eu/quake3/install/cpma-mappack-full.zip"
 
 LICENSE="all-rights-reserved"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 src_prepare() {

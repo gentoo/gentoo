@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of L10N USE_EXPAND flags.
@@ -42,18 +42,22 @@ ca - Catalan
 ca-valencia - Catalan (Valencian)
 cak - Kaqchikel
 chr - Cherokee
+cnr - Montenegrin
 cs - Czech
-csb - Kashubian
 cy - Welsh
 da - Danish
 de - German
 de-1901 - German (traditional orthography)
+de-CH - German (Switzerland)
+de-DE - German (Germany)
 dgo - Dogri (individual language)
 doi - Dogri (macrolanguage)
 dsb - Lower Sorbian
 dz - Dzongkha
 el - Modern Greek
 en - English
+en-AU - English (Australia)
+en-CA - English (Canada)
 en-GB - English (United Kingdom)
 en-US - English (United States)
 en-ZA - English (South Africa)
@@ -82,7 +86,6 @@ gu - Gujarati
 gug - Paraguayan Guarani
 he - Hebrew
 hi - Hindi
-hne - Chhattisgarhi
 hr - Croatian
 hsb - Upper Sorbian
 hu - Hungarian
@@ -118,8 +121,8 @@ mni - Manipuri
 mr - Marathi
 ms - Malay (macrolanguage)
 my - Burmese
+nan - Min Nan Chinese
 nb - Norwegian Bokmål
-nds - Low German
 ne - Nepali
 nl - Dutch
 nn - Norwegian Nynorsk
@@ -147,13 +150,11 @@ si - Sinhala
 sid - Sidamo
 sk - Slovak
 sl - Slovenian
+so - Somali
 son - Songhai languages
 sq - Albanian
 sr - Serbian
-sr-ijekavsk - Serbian (Ijekavian pronunciation)
 sr-Latn - Serbian (Latin script)
-sr-Latn-ijekavsk - Serbian (Latin script, Ijekavian pronunciation)
-sr-ME - Serbian (Montenegro)
 ss - Swati
 st - Southern Sotho
 sv - Swedish
@@ -173,12 +174,10 @@ ts - Tsonga
 tt - Tatar
 ug - Uyghur
 uk - Ukrainian
-ur-PK - Urdu (Pakistan)
+ur - Urdu
 uz - Uzbek
-uz-Cyrl - Uzbek (Cyrillic script)
 ve - Venda
 vi - Vietnamese
-wa - Walloon
 xh - Xhosa
 zh - Chinese
 zh-CN - Chinese (China)

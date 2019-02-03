@@ -1,0 +1,10 @@
+--- a/src/node.cc
++++ b/src/node.cc
+@@ -75,6 +75,7 @@
+ #include <fcntl.h>  // _O_RDWR
+ #include <limits.h>  // PATH_MAX
+ #include <signal.h>
++#include <stdarg.h> // va_start/va_end
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

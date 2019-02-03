@@ -18,16 +18,12 @@ move net-wireless/b43-firmware sys-firmware/b43-firmware
 move net-wireless/b43legacy-firmware sys-firmware/b43legacy-firmware
 move dev-util/qt-creator dev-qt/qt-creator
 move x11-libs/qt-assistant dev-qt/qthelp
-move x11-libs/qt-bearer dev-qt/qtbearer
 move x11-libs/qt-core dev-qt/qtcore
 move x11-libs/qt-dbus dev-qt/qtdbus
 move x11-libs/qt-declarative dev-qt/qtdeclarative
-move x11-libs/qt-demo dev-qt/qtdemo
 move x11-libs/qt-gui dev-qt/qtgui
-move x11-libs/qt-meta dev-qt/qt-meta
 move x11-libs/qt-multimedia dev-qt/qtmultimedia
 move x11-libs/qt-opengl dev-qt/qtopengl
-move x11-libs/qt-qt3support dev-qt/qt3support
 move x11-libs/qt-script dev-qt/qtscript
 move x11-libs/qt-sql dev-qt/qtsql
 move x11-libs/qt-svg dev-qt/qtsvg
@@ -77,7 +73,6 @@ move sys-fs/leechcraft-vrooby app-leechcraft/lc-vrooby
 move www-client/leechcraft-deadlyrics app-leechcraft/lc-deadlyrics
 move www-client/leechcraft-dolozhee app-leechcraft/lc-dolozhee
 move www-client/leechcraft-poshuku app-leechcraft/lc-poshuku
-move www-client/leechcraft-vgrabber app-leechcraft/lc-vgrabber
 move www-misc/leechcraft-pogooglue app-leechcraft/lc-pogooglue
 move www-misc/leechcraft-seekthru app-leechcraft/lc-seekthru
 move x11-plugins/leechcraft-lhtr app-leechcraft/lc-lhtr

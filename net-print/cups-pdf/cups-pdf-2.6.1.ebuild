@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,8 +6,8 @@ EAPI=4
 inherit toolchain-funcs
 
 DESCRIPTION="Provides a virtual printer for CUPS to produce PDF files"
-HOMEPAGE="http://www.cups-pdf.de/"
-SRC_URI="http://www.cups-pdf.de/src/${PN}_${PV}.tar.gz"
+HOMEPAGE="https://www.cups-pdf.de/"
+SRC_URI="https://www.cups-pdf.de/src/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

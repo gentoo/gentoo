@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -21,11 +21,10 @@ KEYWORDS="~amd64 ~x86"
 # jopt *must* be 4.6, see http://mail.openjdk.java.net/pipermail/jmh-dev/2016-October/002395.html
 CDEPEND="
 	dev-java/asm:4
-	dev-java/commons-math:3
-	=dev-java/jopt-simple-4.6:0
 	dev-java/junit:4
-	source? ( app-arch/zip )
-"
+	dev-java/commons-math:3
+	dev-java/jopt-simple:4.6
+	source? ( app-arch/zip )"
 
 DEPEND=">=virtual/jdk-1.7
 	${CDEPEND}"

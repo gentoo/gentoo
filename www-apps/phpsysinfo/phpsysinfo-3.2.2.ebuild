@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit webapp
 
-DESCRIPTION="phpSysInfo is a nice package that will display your system stats via PHP"
+DESCRIPTION="A nice package that will display your system stats via PHP"
 HOMEPAGE="https://rk4an.github.com/phpsysinfo/"
 SRC_URI="https://github.com/rk4an/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit cmake-utils eutils
 DESCRIPTION="A set of cuda-enabled texture tools and compressors"
 HOMEPAGE="http://developer.nvidia.com/object/texture_tools.html"
 SRC_URI="https://${PN}.googlecode.com/files/${P}-1.tar.gz
-	https://dev.gentoo.org/~ssuominen/${P}-patchset-1.tar.xz"
+	https://dev.gentoo.org/~soap/distfiles/${P}-patchset-1-r1.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -28,9 +28,10 @@ RDEPEND="
 	glew? ( media-libs/glew:0= )
 	glut? ( media-libs/freeglut )
 	openexr? ( media-libs/openexr:= )
-	"
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-cg.patch" # fix bug #414509
@@ -38,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-openexr.patch" # fix bug #462494
 	"${FILESDIR}/${P}-clang.patch" # fix clang build
 	"${FILESDIR}/${P}-cpp14.patch" # fix bug #594938
+	"${WORKDIR}/patches"
 )
 
 S="${WORKDIR}/${PN}"
@@ -53,7 +55,6 @@ pkg_setup() {
 
 src_prepare() {
 	edos2unix cmake/*
-	EPATCH_SUFFIX=patch epatch "${WORKDIR}/patches"
 	cmake-utils_src_prepare
 }
 

@@ -13,7 +13,7 @@ SRC_URI="http://changeling.ixionstudios.com/xlogical/downloads/${MY_P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="alt_gfx"
 
 RDEPEND="media-libs/libsdl[sound,video]

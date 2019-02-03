@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,15 +13,15 @@ HOMEPAGE="http://www.gamefront.com/files/10716974"
 SRC_URI="event_horizon_xv_${PV}.zip"
 
 LICENSE="all-rights-reserved"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 RESTRICT="fetch mirror"
 
 pkg_nofetch() {
 	einfo
-	einfo "Please download \"${SRC_URI}\" from:"
+	einfo "Please download ${SRC_URI} from:"
 	einfo "  ${HOMEPAGE}"
-	einfo "and move/link it to \"${DISTDIR}\""
+	einfo "and move it to your DISTDIR directory."
 	einfo
 }
 

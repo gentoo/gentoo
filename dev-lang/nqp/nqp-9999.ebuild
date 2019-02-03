@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Not Quite Perl, a Perl 6 bootstrapping compiler"
-HOMEPAGE="http://rakudo.org/"
+HOMEPAGE="https://rakudo.org"
 
 LICENSE="Artistic-2"
 SLOT="0"

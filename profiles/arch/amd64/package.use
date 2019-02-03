@@ -17,7 +17,6 @@ dev-java/icedtea-bin -multilib
 
 # Michał Górny <mgorny@gentoo.org> (28 Jun 2014)
 # Packages that should be multilib by default.
-x11-drivers/ati-drivers abi_x86_32
 x11-drivers/nvidia-drivers abi_x86_32
 
 # Doug Goldstein <cardoe@gentoo.org> (29 Oct 2012)

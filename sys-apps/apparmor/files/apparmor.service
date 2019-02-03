@@ -1,0 +1,14 @@
+[Unit]
+Description=AppArmor profiles
+DefaultDependencies=no
+After=local-fs.target
+Before=sysinit.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/share/apparmor/apparmor_load.sh
+ExecStop=/usr/share/apparmor/apparmor_unload.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 2003-2018 Arfrever Frehtes Taifersar Arahesis and others
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,11 +8,11 @@ inherit cmake-utils gnome2-utils xdg-utils
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/fcitx/fcitx"
+	EGIT_REPO_URI="https://gitlab.com/fcitx/fcitx.git"
 fi
 
 DESCRIPTION="Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework"
-HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx"
+HOMEPAGE="https://fcitx-im.org/ https://gitlab.com/fcitx/fcitx"
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	SRC_URI="https://download.fcitx-im.org/data/pinyin.tar.gz -> fcitx-data-pinyin.tar.gz
 		https://download.fcitx-im.org/data/table.tar.gz -> fcitx-data-table.tar.gz
@@ -26,8 +26,8 @@ fi
 LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT"
 SLOT="4"
 KEYWORDS=""
-IUSE="+X +autostart +cairo debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
-REQUIRED_USE="cairo? ( X ) pango? ( cairo ) qt4? ( X )"
+IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango static-libs +table test +xml"
+REQUIRED_USE="cairo? ( X ) pango? ( cairo )"
 
 RDEPEND="dev-libs/glib:2
 	sys-apps/dbus
@@ -58,16 +58,12 @@ RDEPEND="dev-libs/glib:2
 	lua? ( dev-lang/lua:= )
 	nls? ( sys-devel/gettext )
 	opencc? ( app-i18n/opencc:= )
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtdbus:4
-		dev-qt/qtgui:4
-	)
 	xml? (
 		app-text/iso-codes
 		dev-libs/libxml2
 	)"
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	kde-frameworks/extra-cmake-modules:5
 	virtual/pkgconfig"
 
@@ -82,7 +78,7 @@ src_prepare() {
 		ln -s "${DISTDIR}/fcitx-data-en_dict-20121020.tar.gz" src/module/spell/dict/en_dict-20121020.tar.gz || die
 	fi
 
-	# https://github.com/fcitx/fcitx/issues/250
+	# https://gitlab.com/fcitx/fcitx/issues/250
 	sed \
 		-e "/find_package(XkbFile REQUIRED)/i\\    if(ENABLE_X11)" \
 		-e "/find_package(XkbFile REQUIRED)/s/^/    /" \
@@ -109,9 +105,9 @@ src_configure() {
 		-DENABLE_LUA=$(usex lua)
 		-DENABLE_OPENCC=$(usex opencc)
 		-DENABLE_PANGO=$(usex pango)
-		-DENABLE_QT=$(usex qt4)
-		-DENABLE_QT_GUI=$(usex qt4)
-		-DENABLE_QT_IM_MODULE=$(usex qt4)
+		-DENABLE_QT=OFF
+		-DENABLE_QT_GUI=OFF
+		-DENABLE_QT_IM_MODULE=OFF
 		-DENABLE_SNOOPER=$(if use gtk2 || use gtk3; then echo yes; else echo no; fi)
 		-DENABLE_STATIC=$(usex static-libs)
 		-DENABLE_TABLE=$(usex table)

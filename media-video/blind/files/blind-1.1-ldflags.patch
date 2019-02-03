@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -80,7 +80,7 @@
+ all: $(BIN)
+ 
+ %: %.o util.o stream.o
+-	$(CC) $(LDFLAGS) -o $@ $^
++	$(CC) -o $@ $^ $(LDFLAGS)
+ 
+ %.o: src/%.c src/*.h src/*/*.h
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<

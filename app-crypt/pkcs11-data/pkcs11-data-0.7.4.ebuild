@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Utilities for PKCS#11 data object manipulation in"
 HOMEPAGE="https://github.com/alonbl/pkcs11-data"
@@ -12,8 +12,6 @@ SLOT="0"
 
 KEYWORDS="~amd64"
 
-IUSE=""
-
 RDEPEND=">=dev-libs/pkcs11-helper-1.02"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"

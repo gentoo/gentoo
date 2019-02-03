@@ -9,7 +9,7 @@ inherit distutils-r1
 MY_PN="spark_parser"
 
 DESCRIPTION="An Early-Algorithm Context-free grammar Parser"
-HOMEPAGE="https://github.com/rocky/python-spark/ https://pypi.python.org/pypi/spark_parser"
+HOMEPAGE="https://github.com/rocky/python-spark/ https://pypi.org/project/spark_parser/"
 SRC_URI="mirror://pypi/${P:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"

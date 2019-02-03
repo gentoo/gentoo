@@ -1,0 +1,23 @@
+diff -Naur postgis-2.4.2.old/liblwgeom/lwin_geojson.c postgis-2.4.2/liblwgeom/lwin_geojson.c
+--- postgis-2.4.2.old/liblwgeom/lwin_geojson.c	2017-12-21 22:52:40.422802160 +0100
++++ postgis-2.4.2/liblwgeom/lwin_geojson.c	2017-12-21 22:55:36.605430945 +0100
+@@ -31,13 +31,19 @@
+ 
+ #if defined(HAVE_LIBJSON) || defined(HAVE_LIBJSON_C) /* --{ */
+ 
++#define JSON_C_VERSION_013 (13 << 8)
++
+ #ifdef HAVE_LIBJSON_C
+ #include <json-c/json.h>
++#if !defined(JSON_C_VERSION_NUM) || JSON_C_VERSION_NUM < JSON_C_VERSION_013
+ #include <json-c/json_object_private.h>
++#endif
+ #else
+ #include <json/json.h>
++#if !defined(JSON_C_VERSION_NUM) || JSON_C_VERSION_NUM < JSON_C_VERSION_013
+ #include <json/json_object_private.h>
+ #endif
++#endif
+ 
+ #ifndef JSON_C_VERSION
+ /* Adds support for libjson < 0.10 */

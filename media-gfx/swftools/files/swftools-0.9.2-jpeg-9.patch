@@ -1,0 +1,17 @@
+Patch kindly borrowed from macports.org.
+
+--- a/lib/jpeg.c	2011-10-14 15:46:10.000000000 -0500
++++ b/lib/jpeg.c	2014-08-06 20:15:51.000000000 -0500
+@@ -5,6 +5,12 @@
+ #include "../config.h"
+ 
+ #ifdef HAVE_JPEGLIB
++#ifndef FALSE
++#define FALSE 0
++#endif
++#ifndef TRUE
++#define TRUE 1
++#endif
+ #define HAVE_BOOLEAN
+ #include <jpeglib.h>
+ 

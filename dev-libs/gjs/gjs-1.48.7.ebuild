@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,15 +10,15 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Gjs"
 LICENSE="MIT || ( MPL-1.1 LGPL-2+ GPL-2+ )"
 SLOT="0"
 IUSE="+cairo examples gtk test"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ia64 ppc ~ppc64 sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.52.1
 	>=dev-libs/gobject-introspection-1.52.1:=
 
-	sys-libs/readline:0
+	sys-libs/readline:0=
 	dev-lang/spidermonkey:38
-	virtual/libffi
+	virtual/libffi:=
 	cairo? ( x11-libs/cairo[X] )
 	gtk? ( >=x11-libs/gtk+-3.20:3 )
 "

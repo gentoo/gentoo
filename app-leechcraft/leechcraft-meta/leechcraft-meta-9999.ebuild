@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Metapackage containing all ready-to-use LeechCraft plugins"
-HOMEPAGE="http://leechcraft.org/"
+HOMEPAGE="https://leechcraft.org/"
 
 SLOT="0"
 KEYWORDS=""
@@ -56,7 +56,6 @@ RDEPEND="
 		~app-leechcraft/lc-deadlyrics-${PV}
 		~app-leechcraft/lc-dolozhee-${PV}
 		~app-leechcraft/lc-poshuku-${PV}
-		~app-leechcraft/lc-vgrabber-${PV}
 		~app-leechcraft/lc-pogooglue-${PV}
 		~app-leechcraft/lc-seekthru-${PV}
 		~app-leechcraft/lc-tpi-${PV}

@@ -6,12 +6,9 @@
 		<name>Richard Yao</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>fearedbliss@gentoo.org</email>
-		<name>Jonathan Vasquez</name>
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
 	</maintainer>
-	<use>
-		<flag name="debug-log">Enable additional diagnostics</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">zfsonlinux/spl</remote-id>
 	</upstream>

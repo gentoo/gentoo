@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ inherit readme.gentoo versionator
 
 MY_PV=$(replace_all_version_separators "-")
 DESCRIPTION="A set of font rendering and replacement rules for fontconfig-infinality"
-HOMEPAGE="http://bohoomil.com/"
+HOMEPAGE="https://www.gentoo.org/"
 SRC_URI="https://github.com/bohoomil/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

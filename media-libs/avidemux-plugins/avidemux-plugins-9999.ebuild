@@ -1,25 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-
-PYTHON_COMPAT=( python2_7 )
-
-inherit cmake-utils python-single-r1
-
-DESCRIPTION="Plugins for the video editor media-video/avidemux"
-HOMEPAGE="http://fixounet.free.fr/avidemux"
-
-# Multiple licenses because of all the bundled stuff.
-LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
-SLOT="2.6"
-IUSE="aac aften a52 alsa amr dcaenc debug dts fdk fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx opengl nvenc opus oss pulseaudio qt4 qt5 vorbis truetype twolame xv xvid x264 x265 vdpau vpx"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+EAPI=6
 
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/mean00/avidemux2.git"
 	EGIT_CHECKOUT_DIR=${WORKDIR}
-
 	inherit git-r3
 else
 	MY_PN="${PN/-plugins/}"
@@ -27,10 +13,21 @@ else
 	SRC_URI="mirror://sourceforge/${MY_PN}/${MY_PN}/${PV}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
+PYTHON_COMPAT=( python2_7 )
+inherit cmake-utils python-single-r1
 
-RDEPEND="
+DESCRIPTION="Plugins for the video editor media-video/avidemux"
+HOMEPAGE="http://fixounet.free.fr/avidemux"
+
+# Multiple licenses because of all the bundled stuff.
+LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
+SLOT="2.7"
+IUSE="a52 aac aften alsa amr dcaenc debug dts fdk fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx nvenc opengl opus oss pulseaudio qt5 truetype twolame vdpau vorbis vpx x264 x265 xv xvid"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+COMMON_DEPEND="${PYTHON_DEPS}
 	~media-libs/avidemux-core-${PV}:${SLOT}[vdpau?]
-	~media-video/avidemux-${PV}:${SLOT}[opengl?,qt4?,qt5?]
+	~media-video/avidemux-${PV}:${SLOT}[opengl?,qt5?]
 	>=dev-lang/spidermonkey-1.5-r2:0=
 	dev-libs/libxml2:2
 	media-libs/a52dec:0
@@ -40,7 +37,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	virtual/libiconv:0
 	aac? (
-		media-libs/faac:0
+		>=media-libs/faac-1.29.9.2:0
 		media-libs/faad2:0
 	)
 	aften? ( media-libs/aften:0 )
@@ -59,8 +56,15 @@ RDEPEND="
 	nvenc? ( amd64? ( media-video/nvidia_video_sdk:0 ) )
 	opus? ( media-libs/opus:0 )
 	pulseaudio? ( media-sound/pulseaudio:0 )
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+	)
 	truetype? ( media-libs/freetype:2 )
 	twolame? ( media-sound/twolame:0 )
+	vorbis? ( media-libs/libvorbis:0 )
+	vpx? ( media-libs/libvpx:0= )
 	x264? ( media-libs/x264:0= )
 	x265? ( media-libs/x265:0= )
 	xv? (
@@ -69,12 +73,13 @@ RDEPEND="
 		x11-libs/libXv:0
 	)
 	xvid? ( media-libs/xvid:0 )
-	vorbis? ( media-libs/libvorbis:0 )
-	vpx? ( media-libs/libvpx:0 )
-	${PYTHON_DEPS}
 "
-DEPEND="${RDEPEND}
-	oss? ( virtual/os-headers:0 )"
+DEPEND="${COMMON_DEPEND}
+	oss? ( virtual/os-headers:0 )
+"
+RDEPEND="${COMMON_DEPEND}
+	!<media-libs/avidemux-plugins-${PV}
+"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -83,12 +88,12 @@ PATCHES=( "${FILESDIR}"/${PN}-2.6.20-optional-pulse.patch )
 src_prepare() {
 	default
 
-	#Don't reapply PATCHES during cmake-utils_src_prepare
+	# Don't reapply PATCHES during cmake-utils_src_prepare
 	unset PATCHES
 
 	processes="buildPluginsCommon:avidemux_plugins
 		buildPluginsCLI:avidemux_plugins"
-	use qt4 && processes+=" buildPluginsQt4:avidemux_plugins"
+	use qt5 && processes+=" buildPluginsQt4:avidemux_plugins"
 
 	for process in ${processes} ; do
 		CMAKE_USE_DIR="${S}"/${process#*:} cmake-utils_src_prepare
@@ -126,7 +131,7 @@ src_configure() {
 			-DOPUS="$(usex opus)"
 			-DOSS="$(usex oss)"
 			-DPULSEAUDIOSIMPLE="$(usex pulseaudio)"
-			-DQT4="$(usex qt4)"
+			-DQT4=OFF
 			-DFREETYPE2="$(usex truetype)"
 			-DTWOLAME="$(usex twolame)"
 			-DX264="$(usex x264)"

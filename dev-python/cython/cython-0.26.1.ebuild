@@ -12,7 +12,7 @@ MY_PN="Cython"
 MY_P="${MY_PN}-${PV/_/}"
 
 DESCRIPTION="A Python to C compiler"
-HOMEPAGE="http://cython.org https://pypi.python.org/pypi/Cython"
+HOMEPAGE="http://cython.org https://pypi.org/project/Cython/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"

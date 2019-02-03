@@ -1,18 +1,18 @@
-# Fixes the default linker options for portage
-# Upstream commit ba286136bf8e48c71ffd6c2fd9ce97e64a6eeeb1
-
-diff --git a/libtcc.c b/libtcc.c
-index 127806f..dc78643 100644
---- a/libtcc.c
-+++ b/libtcc.c
-@@ -1560,6 +1560,10 @@ static int tcc_set_linker(TCCState *s, const char *option)
-             } else
-                 goto err;
+# Fix compiling tcc with clang. Upstream commit 73ac39c317a20accaf3b25ba833deee0c2e2849f
+# Gentoo bug #502452
+diff --git a/lib/libtcc1.c b/lib/libtcc1.c
+index cf9babf..b46fb5d 100644
+--- a/lib/libtcc1.c
++++ b/lib/libtcc1.c
+@@ -647,6 +647,11 @@ struct __va_list_struct {
+     char *reg_save_area;
+ };
  
-+        } else if (link_option(option, "as-needed", &p)) {
-+            ignoring = 1;
-+        } else if (link_option(option, "O", &p)) {
-+            ignoring = 1;
-         } else if (link_option(option, "rpath=", &p)) {
-             s->rpath = copy_linker_arg(p);
-         } else if (link_option(option, "section-alignment=", &p)) {
++#undef __va_start
++#undef __va_arg
++#undef __va_copy
++#undef __va_end
++
+ void *__va_start(void *fp)
+ {
+     struct __va_list_struct *ap =

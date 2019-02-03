@@ -1,0 +1,60 @@
+From 76cfc06afb69019dcf0bbd9938f6378168e37411 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?G=C3=B6kt=C3=BCrk=20Y=C3=BCksek?= <gokturk@gentoo.org>
+Date: Wed, 26 Sep 2018 13:32:39 -0400
+Subject: [PATCH] configure.ac: control jitterentropy support using
+ --with-jitter
+
+Replace automagic detection of jitterentropy DSO with an AC_ARG_WITH
+macro so that rngd can be compiled without jitter support even when
+the jitterentropy library is available on the system.
+---
+ configure.ac | 26 +++++++++++++++++++-------
+ 1 file changed, 19 insertions(+), 7 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b1544d9..1e58184 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -40,6 +40,13 @@ AC_ARG_WITH([nistbeacon],
+ 	[with_nistbeacon=check]
+ )
+ 
++AC_ARG_WITH([jitter],
++	AS_HELP_STRING([--without-jitter],
++		[Disable jitter entropy library support. ]),
++	[],
++	[with_jitter=check]
++)
++
+ dnl Make sure anyone changing configure.ac/Makefile.am has a clue
+ AM_MAINTAINER_MODE
+ AM_PROG_AS
+@@ -61,13 +68,18 @@ AS_IF([test $target_cpu = powerpc64le], [AC_DEFINE([HAVE_DARN],1,[Enable DARN])]
+ 
+ AM_CONDITIONAL([JITTER], [false])
+ AM_CONDITIONAL([JITTER_DSO], [false])
+-AS_IF([test -f jitterentropy-library/Makefile],
+-		[AM_CONDITIONAL([JITTER], [true])
+-		 AC_DEFINE([HAVE_JITTER],1,[Enable JITTER])],
+-		[AC_SEARCH_LIBS(jent_version,jitterentropy,
+-			[AM_CONDITIONAL([JITTER_DSO], [true])
+-			 AC_DEFINE([HAVE_JITTER],1,[Enable JITTER])],
+-			[AC_MSG_NOTICE([Disabling JITTER entropy source])])])
++AS_IF(
++	[ test "x$with_jitter" != "xno" ],
++	[
++		AS_IF([test -f jitterentropy-library/Makefile],
++				[AM_CONDITIONAL([JITTER], [true])
++				 AC_DEFINE([HAVE_JITTER],1,[Enable JITTER])],
++				[AC_SEARCH_LIBS(jent_version,jitterentropy,
++					[AM_CONDITIONAL([JITTER_DSO], [true])
++					 AC_DEFINE([HAVE_JITTER],1,[Enable JITTER])],
++					[AC_MSG_NOTICE([Disabling JITTER entropy source])])])
++	]
++)
+ 
+ #AM_CONDITIONAL([JITTER], [test -f jitterentropy-library/Makefile])
+ #AS_IF([test -f jitterentropy-library/Makefile], [AC_DEFINE([HAVE_JITTER],1,[Enable JITTER])],[AC_MSG_NOTICE([Disabling JITTER entropy source])])
+-- 
+2.19.0
+

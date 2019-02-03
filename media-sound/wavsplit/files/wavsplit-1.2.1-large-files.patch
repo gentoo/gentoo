@@ -1,5 +1,5 @@
---- Makefile	2004-11-17 23:19:17.000000000 +0100
-+++ Makefile	2005-01-16 21:23:33.000000000 +0100
+--- a/Makefile	2004-11-17 23:19:17.000000000 +0100
++++ b/Makefile	2005-01-16 21:23:33.000000000 +0100
 @@ -6,7 +6,7 @@
  version = 1.2.1
  
@@ -9,8 +9,8 @@
  LIBS = -lm
  
  all: wavsplit wavren
---- wavsplit.c	2004-11-17 23:19:17.000000000 +0100
-+++ wavsplit.c	2005-01-16 22:04:39.000000000 +0100
+--- a/wavsplit.c	2004-11-17 23:19:17.000000000 +0100
++++ b/wavsplit.c	2005-01-16 22:04:39.000000000 +0100
 @@ -269,9 +269,9 @@
             timepos * split)
  {
@@ -161,8 +161,8 @@
  
    while (to_be_read) {
      n_read = read (ifd, buf, to_be_read);
---- wavsplit.h	2004-11-17 23:19:17.000000000 +0100
-+++ wavsplit.h	2005-01-16 21:23:33.000000000 +0100
+--- a/wavsplit.h	2004-11-17 23:19:17.000000000 +0100
++++ b/wavsplit.h	2005-01-16 21:23:33.000000000 +0100
 @@ -121,15 +121,15 @@
  static int split (unsigned int UseHours, unsigned int UseFrames,
                    unsigned int fps, unsigned int UseTrackLens,

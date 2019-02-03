@@ -1,0 +1,43 @@
+From 85dd6c8d78ab332921c109d9a8e8577d39502b7c Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 3 Jan 2018 23:24:42 +1300
+Subject: Add basic load and match test
+
+---
+ MANIFEST  |  1 +
+ t/basic.t | 14 ++++++++++++++
+ 2 files changed, 15 insertions(+)
+ create mode 100644 t/basic.t
+
+diff --git a/MANIFEST b/MANIFEST
+index 9f7ef84..b5de94a 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -14,3 +14,4 @@ Makefile.PL
+ MANIFEST			This list of files
+ META.yml
+ README
++t/basic.t
+diff --git a/t/basic.t b/t/basic.t
+new file mode 100644
+index 0000000..48c2487
+--- /dev/null
++++ b/t/basic.t
+@@ -0,0 +1,14 @@
++
++use strict;
++use warnings;
++
++use Test::More;
++use Regexp::Common;
++use Regexp::Common::net::CIDR;
++
++ok( "1.2.3.4/1" =~ /$RE{net}{CIDR}{IPv4}/, "1.2.3.4/1 is a CIDR");
++ok( "1.2.3.4" !~ /$RE{net}{CIDR}{IPv4}/, "1.2.3.4 is not a CIDR");
++
++done_testing;
++
++
+-- 
+2.15.1
+

@@ -10,8 +10,8 @@
 		<name>Openstack</name>
 	</maintainer>
 	<longdescription lang="en">
-    This is a client for the OpenStack Manila API.
-  </longdescription>
+		This is a client for the OpenStack Manila API.
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">python-manilaclient</remote-id>
 		<remote-id type="github">openstack/python-manilaclient</remote-id>

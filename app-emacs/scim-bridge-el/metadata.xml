@@ -11,6 +11,7 @@
 <longdescription>
   A SCIM-Bridge client for Emacs.
 </longdescription>
+<stabilize-allarches/>
 <upstream>
   <remote-id type="launchpad">scim-bridge.el</remote-id>
 </upstream>

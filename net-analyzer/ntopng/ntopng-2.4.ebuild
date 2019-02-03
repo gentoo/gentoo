@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools eutils user toolchain-funcs
 
 DESCRIPTION="Network traffic analyzer with web interface"
-HOMEPAGE="http://www.ntop.org/"
+HOMEPAGE="https://www.ntop.org/"
 SRC_URI="mirror://sourceforge/ntop/${PN}/${P}-stable.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -16,7 +16,7 @@ IUSE=""
 DEPEND="dev-db/sqlite:3
 	dev-python/pyzmq
 	dev-lang/luajit:2
-	dev-libs/json-c
+	dev-libs/json-c:=
 	dev-libs/geoip
 	dev-libs/glib:2
 	dev-libs/hiredis

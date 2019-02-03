@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils git-r3 llvm python-any-r1
+inherit cmake-utils git-r3 llvm multiprocessing python-any-r1
 
 DESCRIPTION="OCaml bindings for LLVM"
 HOMEPAGE="https://llvm.org/"
@@ -28,6 +28,7 @@ LICENSE="UoI-NCSA"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="debug test ${ALL_LLVM_TARGETS[*]}"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.00.0:0=
@@ -38,8 +39,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-ml/findlib
-	test? ( dev-ml/ounit
-		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]") )
+	test? ( dev-ml/ounit )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
 
@@ -48,11 +48,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
-
-python_check_deps() {
-	! use test \
-		|| has_version "dev-python/lit[${PYTHON_USEDEP}]"
-}
 
 pkg_setup() {
 	llvm_pkg_setup
@@ -63,8 +58,7 @@ src_prepare() {
 	# Python is needed to run tests using lit
 	python_setup
 
-	# User patches
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 src_configure() {
@@ -98,8 +92,7 @@ src_configure() {
 	)
 
 	use test && mycmakeargs+=(
-		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-		-DLLVM_LIT_ARGS="-vv"
+		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844

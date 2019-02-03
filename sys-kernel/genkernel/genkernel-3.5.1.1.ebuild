@@ -1,10 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # genkernel-9999        -> latest Git branch "master"
 # genkernel-VERSION     -> normal genkernel release
 
 EAPI=5 # approved 2012.09.11, required by all profiles since 2014.03.12
+
+inherit bash-completion-r1 epatch
 
 VERSION_BUSYBOX='1.26.0'
 VERSION_DMRAID='1.0.0.rc16-3'
@@ -26,19 +28,19 @@ COMMON_URI="${DM_HOME}/dmraid-${VERSION_DMRAID}.tar.bz2
 		${RH_HOME}/lvm2/old/LVM2.${VERSION_LVM}.tgz
 		${BB_HOME}/busybox-${VERSION_BUSYBOX}.tar.bz2
 		http://www.open-iscsi.org/bits/open-iscsi-${VERSION_ISCSI}.tar.gz
+		mirror://gentoo/open-iscsi-${VERSION_ISCSI}.tar.gz
 		mirror://sourceforge/fuse/fuse-${VERSION_FUSE}.tar.gz
 		http://podgorny.cz/unionfs-fuse/releases/unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.bz2
+		mirror://gentoo/unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.bz2
 		mirror://gnupg/gnupg/gnupg-${VERSION_GPG}.tar.bz2"
 
 if [[ ${PV} == 9999* ]]
 then
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/${PN}.git
-		https://anongit.gentoo.org/git/proj/${PN}.git"
-	inherit git-2 bash-completion-r1 eutils
-	S="${WORKDIR}/${PN}"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
+	inherit git-r3
+	S="${WORKDIR}/${P}"
 	SRC_URI="${COMMON_URI}"
 else
-	inherit bash-completion-r1 eutils
 	SRC_URI="mirror://gentoo/${P}.tar.xz
 		${COMMON_URI}"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
@@ -73,14 +75,6 @@ pkg_pretend() {
 		ewarn "to have genkernel create an initramfs with LUKS support."
 		ewarn "Sorry for the inconvenience."
 		echo
-	fi
-}
-
-src_unpack() {
-	if [[ ${PV} == 9999* ]] ; then
-		git-2_src_unpack
-	else
-		unpack ${P}.tar.xz
 	fi
 }
 

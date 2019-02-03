@@ -1,0 +1,43 @@
+--- quex-0.65.4/quex-exe.py.old	2017-12-13 21:42:48.633280478 +0100
++++ quex-0.65.4/quex-exe.py	2017-12-13 21:43:02.066040530 +0100
+@@ -40,11 +40,6 @@
+     print("error: Please, use Python versions 2.x.")
+     sys.exit(-1)
+ 
+-if os.environ.has_key("QUEX_PATH") == False:
+-    print("Environment variable QUEX_PATH has not been defined.")
+-else:
+-    sys.path.insert(0, os.environ["QUEX_PATH"])
+-
+ try:
+     exception_checker.do_on_import(sys.argv)
+     import quex.DEFINITIONS
+--- quex-0.65.4/quex/DEFINITIONS.py.old	2017-12-13 21:48:52.887765325 +0100
++++ quex-0.65.4/quex/DEFINITIONS.py	2017-12-13 21:52:29.805877359 +0100
+@@ -23,7 +23,7 @@
+ QUEX_VERSION = '0.65.4'
+ 
+ try:
+-    QUEX_INSTALLATION_DIR = os.environ["QUEX_PATH"]
++    QUEX_INSTALLATION_DIR = "@PYTHON_SITEDIR@"
+     # Note, that windows can also deal with backslashes.
+     QUEX_INSTALLATION_DIR = QUEX_INSTALLATION_DIR.replace("\\", "/")
+ except:
+@@ -49,15 +49,14 @@
+     sys.exit(-1) # sys.exit(-1) is acceptable
+ 
+ QUEX_PATH          = QUEX_INSTALLATION_DIR
+-QUEX_CODEC_DB_PATH = QUEX_PATH + "/quex/engine/codec_db/database"
++QUEX_CODEC_DB_PATH = "/usr/share/quex/database"
+ 
+-sys.path.insert(0, QUEX_INSTALLATION_DIR)
+ 
+ def check():
+     global QUEX_INSTALLATION_DIR
+ 
+     # -- Try to acces the file 'quex-exe.py' in order to verify
+-    if os.access(QUEX_INSTALLATION_DIR + "/quex-exe.py", os.F_OK) == False:
++    if False:
+         print "error: Environment variable 'QUEX_PATH' does not point to"
+         print "error: a valid installation directory of quex."
+         print "error: current setting of 'QUEX_PATH':"

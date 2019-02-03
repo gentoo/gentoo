@@ -29,6 +29,10 @@ DEPEND="${RDEPEND}
 	boost? ( dev-util/boost-build )
 	test? ( dev-util/cppunit )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-libressl-bug-635890.patch"
+)
+
 DOCS="AUTHORS ChangeLog TODO"
 
 src_prepare() {

@@ -5,4 +5,10 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">MooseX-Has-Sugar</remote-id>
+    <remote-id type="cpan-module">MooseX::Has::Sugar</remote-id>
+    <remote-id type="cpan-module">MooseX::Has::Sugar::Minimal</remote-id>
+    <remote-id type="cpan-module">MooseX::Has::Sugar::Saccharin</remote-id>
+  </upstream>
 </pkgmetadata>

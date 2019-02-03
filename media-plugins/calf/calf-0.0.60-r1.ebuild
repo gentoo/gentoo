@@ -18,7 +18,7 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="lash lv2 static-libs"
+IUSE="lash lv2 static-libs experimental"
 
 RDEPEND="dev-libs/atk
 	dev-libs/expat
@@ -44,6 +44,7 @@ src_configure() {
 		--with-lv2-dir=/usr/$(get_libdir)/lv2
 		$(use_with lash)
 		$(use_with lv2)
+		$(use_enable experimental)
 	)
 	autotools-utils_src_configure
 }

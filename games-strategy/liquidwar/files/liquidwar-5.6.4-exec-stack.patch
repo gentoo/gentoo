@@ -1,5 +1,5 @@
---- src/glouglou.s
-+++ src/glouglou.s
+--- a/src/glouglou.s
++++ b/src/glouglou.s
 @@ -240,3 +240,6 @@
  
     ret
@@ -7,8 +7,8 @@
 +#ifdef __ELF__
 +.section .note.GNU-stack,"",%progbits
 +#endif
---- src/monster.s
-+++ src/monster.s
+--- a/src/monster.s
++++ b/src/monster.s
 @@ -972,3 +972,6 @@
     ret                              # retour au c
  
@@ -16,8 +16,8 @@
 +#ifdef __ELF__
 +.section .note.GNU-stack,"",%progbits
 +#endif
---- src/spread.s
-+++ src/spread.s
+--- a/src/spread.s
++++ b/src/spread.s
 @@ -957,3 +957,6 @@
  
  

@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+CMAKE_MAKEFILE_GENERATOR=emake
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit cmake-utils python-any-r1
@@ -23,7 +24,7 @@ if [[ "${PV}" == 9999 ]] ; then
 else
 	SRC_URI="https://github.com/cryfs/cryfs/releases/download/${PV}/${P}.tar.xz
 	https://dev.gentoo.org/~johu/distfiles/${P}-spdlog.patch.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~arm x86"
 	S="${WORKDIR}"
 fi
 
@@ -37,6 +38,10 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
 PATCHES=( "${WORKDIR}/${P}-spdlog.patch" )
+
+# tests work, but let install fail
+# revisit with 0.9.8 version bump.
+RESTRICT="test"
 
 src_prepare() {
 	cmake-utils_src_prepare

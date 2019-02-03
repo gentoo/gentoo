@@ -2,13 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>idl0r@gentoo.org</email>
-		<name>Christian Ruppert</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>peter@stuge.se</email>
 		<name>Peter Stuge</name>
-		<description>Please CC on all bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
@@ -22,6 +17,8 @@
 		<flag name="buspirate_spi">Enable Bus Pirate SPI programmer</flag>
 		<flag name="ch341a_spi">Enable WCH CH341A SPI programmer</flag>
 		<flag name="dediprog">Dediprog SF100 support</flag>
+		<flag name="developerbox_spi">Enable Devloperbox SPI recovery support</flag>
+		<flag name="digilent_spi">Enable support for Digilent iCEblink40 development board</flag>
 		<flag name="drkaiser">Enable Dr. Kaiser programmer</flag>
 		<flag name="dummy">Enable dummy tracing</flag>
 		<flag name="ft2232_spi">Enable ftdi programmer, flashing through FTDI/SPI USB interface</flag>
@@ -29,6 +26,7 @@
 		<flag name="internal">Enable internal/onboard support</flag>
 		<flag name="internal_dmi">Enable internal DMI decoding rather than use <pkg>sys-apps/dmidecode</pkg></flag>
 		<flag name="it8212">Support for ITE IT8212F ATA/RAID controllers</flag>
+		<flag name="linux_mtd">Enable support for Linux mtd SPI flash devices</flag>
 		<flag name="linux_spi">Enable support for Linux userspace spidev interface</flag>
 		<flag name="mstarddc_spi">Support for SPI flash ROMs accessible through DDC in MSTAR-equipped displays</flag>
 		<flag name="nic3com">Enable 3Com NIC programmer</flag>
@@ -50,17 +48,17 @@
 		<flag name="wiki">Enable wiki informations, like supported devices etc.</flag>
 	</use>
 	<longdescription lang="en">
-flashrom is a utility for identifying, reading, writing, verifying and erasing flash chips. It is designed to flash BIOS/EFI/coreboot/firmware/optionROM images on mainboards, network/graphics/storage controller cards, and various other programmer devices.
+		flashrom is a utility for identifying, reading, writing, verifying and erasing flash chips. It is designed to flash BIOS/EFI/coreboot/firmware/optionROM images on mainboards, network/graphics/storage controller cards, and various other programmer devices.
 
-    Supports more than 380 flash chips, 260 chipsets, 450 mainboards, 50 PCI devices, 12 USB devices and various parallel/serial port-based programmers.
-    Supports parallel, LPC, FWH and SPI flash interfaces and various chip packages (DIP32, PLCC32, DIP8, SO8/SOIC8, TSOP32, TSOP40, TSOP48, BGA and more)
-    No physical access needed, root access is sufficient (not needed for some programmers).
-    No bootable floppy disk, bootable CD-ROM or other media needed.
-    No keyboard or monitor needed. Simply reflash remotely via SSH.
-    No instant reboot needed. Reflash your chip in a running system, verify it, be happy. The new firmware will be present next time you boot.
-    Crossflashing and hotflashing is possible as long as the flash chips are electrically and logically compatible (same protocol). Great for recovery.
-    Scriptability. Reflash a whole pool of identical machines at the same time from the command line. It is recommended to check flashrom output and error codes.
-    Speed. flashrom is often much faster than most vendor flash tools.
-    Portability. Supports DOS, Linux, FreeBSD, NetBSD, OpenBSD, DragonFly BSD, Solaris, Mac OS X, and other Unix-like OSes. Partial Windows support is available (no internal programmer support at the moment, hence no "BIOS flashing").
+		Supports more than 380 flash chips, 260 chipsets, 450 mainboards, 50 PCI devices, 12 USB devices and various parallel/serial port-based programmers.
+		Supports parallel, LPC, FWH and SPI flash interfaces and various chip packages (DIP32, PLCC32, DIP8, SO8/SOIC8, TSOP32, TSOP40, TSOP48, BGA and more)
+		No physical access needed, root access is sufficient (not needed for some programmers).
+		No bootable floppy disk, bootable CD-ROM or other media needed.
+		No keyboard or monitor needed. Simply reflash remotely via SSH.
+		No instant reboot needed. Reflash your chip in a running system, verify it, be happy. The new firmware will be present next time you boot.
+		Crossflashing and hotflashing is possible as long as the flash chips are electrically and logically compatible (same protocol). Great for recovery.
+		Scriptability. Reflash a whole pool of identical machines at the same time from the command line. It is recommended to check flashrom output and error codes.
+		Speed. flashrom is often much faster than most vendor flash tools.
+		Portability. Supports DOS, Linux, FreeBSD, NetBSD, OpenBSD, DragonFly BSD, Solaris, Mac OS X, and other Unix-like OSes. Partial Windows support is available (no internal programmer support at the moment, hence no "BIOS flashing").
 	</longdescription>
 </pkgmetadata>

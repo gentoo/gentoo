@@ -1,5 +1,6 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
 EAPI=5
 inherit games
 
@@ -10,7 +11,7 @@ SRC_URI="http://www.gamers.org/pub/idgames2/quakec/compilations/kqp220z.zip
 
 LICENSE="quake1-killer"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""

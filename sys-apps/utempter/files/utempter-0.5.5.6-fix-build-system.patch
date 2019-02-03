@@ -1,0 +1,41 @@
+--- a/Makefile
++++ b/Makefile
+@@ -5,12 +5,14 @@
+ CVSROOT=$(shell cat CVS/Root)
+ # major number of the .so lib
+ SOMAJOR = 0
++# minor number of the .so lib
++SOMINOR = 5
++# micro number of the .so lib
++SOMICRO = 5
+ 
+ SHAREDLIB = lib$(NAME).so
+ SONAME = $(SHAREDLIB).$(SOMAJOR)
+ 
+-CFLAGS = -Wall $(RPM_OPT_FLAGS)
+-
+ TARGETS = $(NAME) utmp $(SHAREDLIB)
+ 
+ all:	$(TARGETS)
+@@ -19,7 +21,7 @@
+ 	rm -f *.so utempter utmp *.os
+ 
+ %.os : %.c
+-	$(CC) -c $(CFLAGS) -fPIC $< -o $@
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) -fPIC $< -o $@
+ 
+ install:
+ 	mkdir -p $(RPM_BUILD_ROOT)/usr/sbin
+@@ -29,9 +31,11 @@
+ 	install -m 644 utempter.h $(RPM_BUILD_ROOT)/usr/include
+ 	install -m 644 $(SHAREDLIB) $(RPM_BUILD_ROOT)/$(LIBDIR)/$(SHAREDLIB).$(VERSION)
+ 	ln -sf $(SHAREDLIB).$(VERSION) $(RPM_BUILD_ROOT)/$(LIBDIR)/$(SHAREDLIB)
++	ln -sf $(SHAREDLIB).$(VERSION) $(RPM_BUILD_ROOT)/$(LIBDIR)/$(SHAREDLIB).$(SOMAJOR).$(SOMINOR)
++	ln -sf $(SHAREDLIB).$(VERSION) $(RPM_BUILD_ROOT)/$(LIBDIR)/$(SHAREDLIB).$(SOMAJOR)
+ 
+ $(SHAREDLIB): utmpintf.os
+-	$(CC) -o $@ -shared -Wl,-soname,$(SONAME) $^ -lc
++	$(CC) $(LDFLAGS) -o $@ -shared -Wl,-soname,$(SONAME) $^ -lc $(LIBS)
+ 
+ utmpintf.o: utmpintf.c utempter.h
+ 

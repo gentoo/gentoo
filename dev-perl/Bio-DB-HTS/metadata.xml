@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Ensembl/Bio-DB-HTS</remote-id>
+		<remote-id type="cpan">Bio-DB-HTS</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS</remote-id>
+	</upstream>
+</pkgmetadata>

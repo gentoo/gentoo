@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ MY_PV=${PV%_*}
 DEB_PATCH=${PV#*p}
 
 DESCRIPTION="Convert files between various character sets"
-HOMEPAGE="http://recode.progiciels-bpi.ca/"
+HOMEPAGE="https://github.com/rrthomas/recode"
 SRC_URI="
 	mirror://gnu/${PN}/${MY_P}.tar.gz
 	mirror://debian/pool/main/r/${PN}/${PN}_${MY_PV}-${DEB_PATCH}.debian.tar.gz"

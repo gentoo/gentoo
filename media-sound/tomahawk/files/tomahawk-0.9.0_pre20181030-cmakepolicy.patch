@@ -1,0 +1,37 @@
+From 663981b4dd28fca6cac0b079bed26c411e7d1722 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 25 Jan 2019 21:13:05 +0100
+Subject: [PATCH] Fix build with <cmake-3.10
+
+---
+ CMakeLists.txt | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b44d2ee43..9422a808e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,14 +2,18 @@ PROJECT( tomahawk )
+ CMAKE_MINIMUM_REQUIRED( VERSION 2.8.12 )
+ CMAKE_POLICY(SET CMP0017 NEW)
+ CMAKE_POLICY(SET CMP0022 NEW)
+-CMAKE_POLICY(SET CMP0075 NEW)
++IF(POLICY CMP0075)
++    CMAKE_POLICY(SET CMP0075 NEW)
++ENDIF()
+ 
+ # TODO:
+ # Update to NEW and fix things up
+ CMAKE_POLICY(SET CMP0023 NEW)
+ 
+ # Let AUTOMOC and AUTOUIC process generated files
+-CMAKE_POLICY(SET CMP0071 NEW)
++IF(POLICY CMP0071)
++    CMAKE_POLICY(SET CMP0071 NEW)
++ENDIF()
+ 
+ # TODO:
+ # Disable automatic qtmain linking
+-- 
+2.20.1
+

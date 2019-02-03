@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 FINDLIB_USE="ocaml"
 
 inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic \
@@ -15,7 +15,7 @@ SRC_URI="http://brltty.com/archive/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 x86"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 x86"
 IUSE="+api +beeper bluetooth +contracted-braille doc +fm gpm iconv icu
 		java +midi ncurses nls ocaml +pcm python usb +speech
 		tcl X"
@@ -42,11 +42,17 @@ DEPEND="virtual/pkgconfig
 RDEPEND="java? ( >=virtual/jre-1.4 )
 	${COMMON_DEP}"
 
+HTML_DOCS=( "${S}"/Documents/Manual-BrlAPI/. )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.2-fix-ldflags.patch
+	"${FILESDIR}"/${PN}-5.2-udev.patch
+	"${FILESDIR}"/${PN}-5.2-respect-AR.patch
+	"${FILESDIR}"/${PN}-5.2-sysmacros.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-fix-ldflags.patch \
-		"${FILESDIR}"/${P}-udev.patch \
-		"${FILESDIR}"/${P}-respect-AR.patch \
-		"${FILESDIR}"/${P}-major.patch
+	default
 
 	java-pkg-opt-2_src_prepare
 
@@ -64,6 +70,9 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cppflags "$($(tc-getPKG_CONFIG) --cflags ncurses)"
+	append-libs "$($(tc-getPKG_CONFIG) --libs ncurses)"
+
 	tc-export AR LD PKG_CONFIG
 	# override prefix in order to install into /
 	# braille terminal needs to be available as soon in the boot process as
@@ -163,27 +172,26 @@ src_install() {
 	mv "${D}"/${libdir}/*.a "${D}"/usr/${libdir}/
 	gen_usr_ldscript libbrlapi.so
 
-	cd Documents
-	mv Manual-BRLTTY/English/BRLTTY.txt BRLTTY-en.txt
-	mv Manual-BRLTTY/French/BRLTTY.txt BRLTTY-fr.txt
-	mv Manual-BrlAPI/English/BrlAPI.txt BrlAPI-en.txt
+	cd Documents || die
+	mv Manual-BRLTTY/English/BRLTTY.txt BRLTTY-en.txt || die
+	mv Manual-BRLTTY/French/BRLTTY.txt BRLTTY-fr.txt || die
+	mv Manual-BrlAPI/English/BrlAPI.txt BrlAPI-en.txt || die
 	dodoc CONTRIBUTORS ChangeLog HISTORY README* TODO BRLTTY-*.txt
-	dohtml -r Manual-BRLTTY
 	if use doc; then
-		dohtml -r Manual-BrlAPI
 		dodoc BrlAPI-*.txt
+		HTML_DOCS="Manual-BRLTTY" einstalldocs
 	fi
 
-	keepdir /var/lib/brlapi
-	rmdir "${D}/run/brltty"
-	rmdir "${D}/run"
+	keepdir /var/lib/BrlAPI
+	rmdir "${D}/run/brltty" || die
+	rmdir "${D}/run" || die
 }
 
 pkg_postinst() {
 	elog
-	elog please be sure "${ROOT}"etc/brltty.conf is correct for your system.
+	elog "please be sure ${ROOT}etc/brltty.conf is correct for your system."
 	elog
-	elog To make brltty start on boot, type this command as root:
+	elog "To make brltty start on boot, type this command as root:"
 	elog
-	elog rc-update add brltty boot
+	elog "rc-update add brltty boot"
 }

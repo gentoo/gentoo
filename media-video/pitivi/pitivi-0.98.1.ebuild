@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 PYTHON_REQ_USE="sqlite"
 
 inherit gnome.org meson python-single-r1 virtualx
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.pitivi.org"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="v4l test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

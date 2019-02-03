@@ -34,10 +34,7 @@ UIRDEPEND="
 	virtual/opengl
 	alsa? ( media-libs/alsa-lib )
 	sdl? ( media-libs/libsdl[joystick,opengl,video] )"
-UIDEPEND="x11-proto/xextproto
-	x11-proto/xf86dgaproto
-	x11-proto/xf86vidmodeproto
-	x11-proto/xproto"
+UIDEPEND="x11-base/xorg-proto"
 RDEPEND="virtual/jpeg:0
 	net-misc/curl
 	opengl? ( ${UIRDEPEND} )

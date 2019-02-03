@@ -1,5 +1,5 @@
---- Makefile	2002-10-23 18:36:20.000000000 +0200
-+++ Makefile_new	2013-03-16 14:02:42.979029588 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -12,10 +12,10 @@
  # This should point to the GKrellM headers
  GKRELLM_HDRS = /usr/include

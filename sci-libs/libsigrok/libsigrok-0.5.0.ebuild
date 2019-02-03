@@ -1,22 +1,22 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
-inherit eutils python-single-r1 java-pkg-opt-2
+inherit eutils gnome2-utils python-single-r1 java-pkg-opt-2 xdg-utils
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
 	inherit git-r3 autotools
 else
-	SRC_URI="http://sigrok.org/download/source/${PN}/${P}.tar.gz"
+	SRC_URI="https://sigrok.org/download/source/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="basic hardware drivers for logic analyzers and input/output file format support"
-HOMEPAGE="http://sigrok.org/wiki/Libsigrok"
+HOMEPAGE="https://sigrok.org/wiki/Libsigrok"
 
 LICENSE="GPL-3"
 SLOT="0/4"
@@ -43,6 +43,8 @@ DEPEND="${LIB_DEPEND//\[static-libs(+)]}
 		>=virtual/jdk-1.4
 	)
 	python? (
+		dev-python/setuptools[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 		>=dev-lang/swig-3.0.6
 	)
 	virtual/pkgconfig"
@@ -77,4 +79,14 @@ src_test() {
 src_install() {
 	default
 	prune_libtool_files
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_mimeinfo_database_update
 }

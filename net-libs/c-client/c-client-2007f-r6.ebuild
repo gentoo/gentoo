@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit flag-o-matic eutils libtool toolchain-funcs multilib
+inherit flag-o-matic libtool toolchain-funcs multilib
 
 MY_PN=imap
 MY_P="${MY_PN}-${PV}"
@@ -30,8 +30,27 @@ DEPEND="${RDEPEND}
 	kernel_linux? ( pam? ( >=sys-libs/pam-0.72 ) )
 "
 
+PATCHES=(
+	# Apply a patch to only build the stuff we need for c-client
+	"${FILESDIR}/${PN}-2006k_GENTOO_Makefile.patch"
+
+	# Apply patch to add the compilation of a .so for PHP
+	# This was previously conditional, but is more widely useful.
+	"${FILESDIR}/${PN}-2006k_GENTOO_amd64-so-fix.patch"
+
+	# Respect LDFLAGS
+	"${FILESDIR}/${PN}-2007f-ldflags.patch"
+
+	# openssl-1.1 build fix #647616
+	"${FILESDIR}/${PN}-2007f-openssl-1.1.patch"
+)
+
 src_prepare() {
+	use topal && PATCHES+=( "${FILESDIR}/${P}-topal.patch" )
+
 	default
+
+	use chappa && eapply -p2 "${WORKDIR}/${P}-chappa-${CHAPPA_PL}-all.patch"
 
 	# Tarball packed with bad file perms
 	chmod -R u+rwX,go-w . || die "failed to fix permissions"
@@ -60,27 +79,15 @@ src_prepare() {
 		-i src/osdep/unix/Makefile \
 		|| die "failed to fix the FreeBSD ACTIVEFILE path in the Makefile"
 
-	# Apply a patch to only build the stuff we need for c-client
-	eapply "${FILESDIR}/${PN}-2006k_GENTOO_Makefile.patch"
-
-	# Apply patch to add the compilation of a .so for PHP
-	# This was previously conditional, but is more widely useful.
-	eapply "${FILESDIR}/${PN}-2006k_GENTOO_amd64-so-fix.patch"
-
 	# Remove the pesky checks about SSL stuff
 	sed -e '/read.*exit/d' -i Makefile \
 		|| die "failed to disable SSL warning in the Makefile"
 
-	# Respect LDFLAGS
-	eapply "${FILESDIR}/${PN}-2007f-ldflags.patch"
 	sed -e "s:CC=cc:CC=$(tc-getCC):" \
 		-e "s:ARRC=ar:ARRC=$(tc-getAR):" \
 		-e "s:RANLIB=ranlib:RANLIB=$(tc-getRANLIB):" \
 		-i src/osdep/unix/Makefile \
 		|| die "failed to fix build flags support in the Makefile"
-
-	use topal && eapply "${FILESDIR}/${P}-topal.patch"
-	use chappa && epatch "${DISTDIR}/${P}-chappa-${CHAPPA_PL}-all.patch.gz"
 
 	elibtoolize
 }

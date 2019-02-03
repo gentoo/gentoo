@@ -1,42 +1,44 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-AUTOTOOLS_AUTORECONF="1"
-
-inherit eutils autotools autotools-utils
+inherit autotools
 if [[ ${PV} == "9999" ]] ; then
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/sahlberg/${PN}.git"
-	inherit git-2
 else
 	SRC_URI="https://github.com/sahlberg/${PN}/archive/${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~x86"
+	S="${WORKDIR}/${PN}-${P}"
 fi
 
 DESCRIPTION="Client library for accessing NFS shares over a network"
 HOMEPAGE="https://github.com/sahlberg/libnfs"
 
 LICENSE="LGPL-2.1 GPL-3"
-SLOT="0/11"  # sub-slot matches SONAME major
-IUSE="examples static-libs"
+SLOT="0/12"  # sub-slot matches SONAME major
+IUSE="examples static-libs utils"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-S="${WORKDIR}/${PN}-${P}"
-
 src_prepare() {
 	default
-
-	epatch_user
-
 	eautoreconf
 }
 
+src_configure() {
+	local myeconfargs=(
+		$(use_enable static-libs static)
+		$(use_enable utils)
+	)
+	econf "${myeconfargs[@]}"
+}
+
 src_install() {
-	autotools-utils_src_install
+	default
 	if use examples; then
 		# --enable-examples configure switch just compiles them
 		# better install sources instead
@@ -45,4 +47,5 @@ src_install() {
 			doexe examples/${program}.c
 		done
 	fi
+	find "${ED}" -name "*.la" -delete || die
 }

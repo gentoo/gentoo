@@ -1,5 +1,5 @@
---- src/execve/ldso.c	2013-01-23 16:22:37.870287856 +0400
-+++ src/execve/ldso.c	2013-01-23 16:31:40.219283675 +0400
+--- a/src/execve/ldso.c	2013-01-23 16:22:37.870287856 +0400
++++ b/src/execve/ldso.c	2013-01-23 16:31:40.219283675 +0400
 @@ -285,16 +285,10 @@
  	/* 6. /lib, /usr/lib + /usr/local/lib  */
  	if (IS_CLASS32(elf_header))

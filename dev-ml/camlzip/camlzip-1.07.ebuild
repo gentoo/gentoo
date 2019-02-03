@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/xavierleroy/camlzip/archive/rel$(delete_all_version_
 
 SLOT="1/${PV}"
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~x86 ~x86-fbsd"
 
 RDEPEND=">=dev-lang/ocaml-4.02:=[ocamlopt?]
 		>=sys-libs/zlib-1.1.3"

@@ -1,0 +1,11 @@
+diff -aurN a/src/ppb_video_capture.c b/src/ppb_video_capture.c
+--- a/src/ppb_video_capture.c	2017-12-23 09:34:01.000000000 -0500
++++ b/src/ppb_video_capture.c	2018-01-10 20:03:05.498415644 -0500
+@@ -75,6 +75,7 @@
+ 
+ #if !HAVE_LIBV4L2
+ // define simple wrappers, if libv4l2 is not used
++#include <sys/ioctl.h>
+ static
+ ssize_t
+ v4l2_read(int fd, void *buffer, size_t n)

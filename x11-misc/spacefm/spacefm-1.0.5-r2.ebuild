@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit fdo-mime gnome2-utils linux-info
+inherit gnome2-utils linux-info xdg-utils
 
 DESCRIPTION="A multi-panel tabbed file manager"
 HOMEPAGE="https://ignorantguru.github.com/spacefm/"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ignorantguru/${PN}/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="gtk2 +gtk3 +startup-notification +video-thumbnails"
 
 RDEPEND="dev-libs/glib:2
@@ -32,9 +32,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-include-sysmacros.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-include-sysmacros.patch )
 
 src_configure() {
 	econf \
@@ -47,13 +45,9 @@ src_configure() {
 		$(use_with gtk3 gtk3 "yes")
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 
 	einfo
@@ -83,7 +77,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }

@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="Sieve Command Line Interface"
-HOMEPAGE="http://people.spodhuis.org/phil.pennock/software/"
+HOMEPAGE="https://people.spodhuis.org/phil.pennock/software/"
 SRC_URI="https://github.com/syscomet/sieve-connect/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"

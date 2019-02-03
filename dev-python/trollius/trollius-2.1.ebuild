@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} pypy )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy )
 
 inherit distutils-r1
 
 DESCRIPTION="A port of the Tulip project (asyncio module, PEP3156)"
-HOMEPAGE="https://github.com/haypo/trollius https://pypi.python.org/pypi/trollius/"
+HOMEPAGE="https://github.com/haypo/trollius https://pypi.org/project/trollius/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

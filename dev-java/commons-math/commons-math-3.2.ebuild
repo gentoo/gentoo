@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,8 +12,8 @@ MY_PN="${PN}3"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Lightweight, self-contained mathematics and statistics components"
-HOMEPAGE="http://commons.apache.org/math/"
-SRC_URI="mirror://apache/commons/math/source/${MY_P}-src.tar.gz"
+HOMEPAGE="https://commons.apache.org/math/"
+SRC_URI="https://archive.apache.org/dist/commons/math/source/${MY_P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="3"

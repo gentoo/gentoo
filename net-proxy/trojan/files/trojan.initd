@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+TJ_CONFIG="/etc/trojan/config.json"
+TJ_PIDFILE="/run/trojan.pid"
+TJ_LOG="/var/log/trojan.log"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting Trojan, Log File: ${TJ_LOG}"
+	start-stop-daemon --start -b \
+		-1 "${TJ_LOG}" -2 "${TJ_LOG}" \
+		-m -p "${TJ_PIDFILE}" \
+		--exec /usr/bin/trojan  -- "${TJ_CONFIG}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Trojan"
+	start-stop-daemon --stop -p "${TJ_PIDFILE}"
+	eend $?
+}

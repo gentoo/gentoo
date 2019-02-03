@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ else
 	https://dev.gentoo.org/~blueness/musl-misc/getconf.c
 	https://dev.gentoo.org/~blueness/musl-misc/getent.c
 	https://dev.gentoo.org/~blueness/musl-misc/iconv.c"
-	KEYWORDS="-* ~amd64 ~arm ~mips ~ppc ~x86"
+	KEYWORDS="-* ~amd64 ~arm ~arm64 ~mips ~ppc ~x86"
 fi
 
 export CBUILD=${CBUILD:-${CHOST}}
@@ -32,7 +32,7 @@ DESCRIPTION="Light, fast and simple C library focused on standards-conformance a
 HOMEPAGE="http://www.musl-libc.org/"
 LICENSE="MIT LGPL-2 GPL-2"
 SLOT="0"
-IUSE="crosscompile_opts_headers-only"
+IUSE="headers-only"
 
 QA_SONAME="/usr/lib/libc.so"
 QA_DT_NEEDED="/usr/lib/libc.so"
@@ -42,7 +42,7 @@ is_crosscompile() {
 }
 
 just_headers() {
-	use crosscompile_opts_headers-only && is_crosscompile
+	use headers-only && is_crosscompile
 }
 
 pkg_setup() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,7 +15,7 @@ SRC_URI="http://www.festvox.org/packed/festival/${PV}/${MY_P}-release.tar.gz
 
 LICENSE="FESTIVAL HPND BSD rc regexp-UofT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm ~hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="nas X"
 
 RDEPEND="
@@ -25,7 +25,7 @@ RDEPEND="
 	>=media-libs/alsa-lib-1.0.20-r1
 	!<app-accessibility/festival-1.96_beta
 	!sys-power/powerman
-	>=sys-libs/ncurses-5.6-r2
+	>=sys-libs/ncurses-5.6-r2:0=
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

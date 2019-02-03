@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
 
 DESCRIPTION="Core sounds for asterisk"
 HOMEPAGE="http://www.asterisk.org/"
-LINGUAS="^en fr es ru" # ^ is used to indicate to the loops below to NOT set this as an optional
+MY_L10N="^en fr es ru" # ^ is used to indicate to the loops below to NOT set this as an optional
 CODECS="alaw g722 g729 +gsm siren7 siren14 sln16 ulaw wav"
 
 SRC_URI=""
@@ -13,8 +13,8 @@ IUSE=""
 for c in ${CODECS}; do
 	[[ "${c}" != +* ]] && IUSE+=" ${c}"
 done
-for l in ${LINGUAS}; do
-	[[ "${l}" != ^* ]] && IUSE+=" linguas_${l}" && SRC_URI+=" linguas_${l}? ("
+for l in ${MY_L10N}; do
+	[[ "${l}" != ^* ]] && IUSE+=" l10n_${l}" && SRC_URI+=" l10n_${l}? ("
 	for c in ${CODECS}; do
 		[[ "${c}" != +* ]] &&
 		SRC_URI+=" ${c#+}? ( http://downloads.asterisk.org/pub/telephony/sounds/releases/${PN}-${l#^}-${c#+}-${PV}.tar.gz )" ||
@@ -47,8 +47,8 @@ src_unpack() {
 }
 
 src_install() {
-	for l in ${LINGUAS}; do
-		if [[ "${l}" = ^* ]] || use linguas_${l}; then
+	for l in ${MY_L10N}; do
+		if [[ "${l}" = ^* ]] || use l10n_${l}; then
 			l="${l#^}"
 			ebegin "Installing documentation for \"${l}\""
 				dodoc ${l}/CHANGES-${PN%-sounds}-${l}-${PV} ${l}/${PN#asterisk-}-${l}.txt

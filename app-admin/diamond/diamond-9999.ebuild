@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,7 +32,10 @@ RDEPEND="dev-python/configobj
 	redis? ( dev-python/redis-py )
 	!kernel_linux? ( >=dev-python/psutil-3 )"
 DEPEND="${RDEPEND}
-	test? ( dev-python/mock )"
+	test? (
+		dev-python/mock
+		dev-python/pysnmp
+	)"
 
 src_prepare() {
 	# adjust for Prefix
@@ -42,6 +45,10 @@ src_prepare() {
 }
 
 python_test() {
+	# don't want to depend on docker for just this
+	mv src/collectors/docker_collector/test/{test,no}docker_collector.py || die
+	# fails on binding ports
+	mv src/collectors/portstat/tests/{test,no}_portstat.py || die
 	"${PYTHON}" ./test.py || die "Tests fail with ${PYTHON}"
 }
 

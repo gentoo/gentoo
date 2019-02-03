@@ -1,7 +1,7 @@
 Fixes taken from netpbm
 
---- lib/rle_global.c
-+++ lib/rle_global.c
+--- a/lib/rle_global.c
++++ b/lib/rle_global.c
 @@ -76,7 +76,7 @@ rle_hdr rle_dflt_hdr = {
      8,				/* cmaplen (log2 of length of color map) */
      NULL,			/* pointer to color map */
@@ -11,8 +11,8 @@ Fixes taken from netpbm
      { 7 },			/* RGB channels only */
      0L,				/* Can't free name and file fields. */
      "Urt",			/* Default "program name". */
---- lib/rle_hdr.c
-+++ lib/rle_hdr.c
+--- a/lib/rle_hdr.c
++++ b/lib/rle_hdr.c
 @@ -269,6 +273,9 @@
  {
      rle_hdr *ret_hdr;
@@ -23,8 +23,8 @@ Fixes taken from netpbm
      if ( the_hdr == &rle_dflt_hdr )
  	return the_hdr;
  
---- lib/dither.c
-+++ lib/dither.c
+--- a/lib/dither.c
++++ b/lib/dither.c
 @@ -38,10 +38,10 @@ void	make_square();
  #endif
  
@@ -40,8 +40,8 @@ Fixes taken from netpbm
  };
  
  /* basic dithering macro */
---- lib/rle_open_f.c
-+++ lib/rle_open_f.c
+--- a/lib/rle_open_f.c
++++ b/lib/rle_open_f.c
 @@ -9,7 +9,11 @@
   */
  
@@ -62,8 +62,8 @@ Fixes taken from netpbm
  
      /* Check args. */
      if ( *mode != 'r' && *mode != 'w' )
---- lib/rle_getcom.c
-+++ lib/rle_getcom.c
+--- a/lib/rle_getcom.c
++++ b/lib/rle_getcom.c
 @@ -53,11 +53,12 @@
  {
      for ( ; *n != '\0' && *n != '=' && *n == *v; n++, v++ )
@@ -78,8 +78,8 @@ Fixes taken from netpbm
  
      return NULL;
  }
---- lib/scanargs.c
-+++ lib/scanargs.c
+--- a/lib/scanargs.c
++++ b/lib/scanargs.c
 @@ -128,10 +130,10 @@
  va_list argl;
  {
@@ -124,8 +124,8 @@ Fixes taken from netpbm
  				    if (typchr == 'N')
  					tmpflg = toupper( tmpflg );
  
---- lib/inv_cmap.c
-+++ lib/inv_cmap.c
+--- a/lib/inv_cmap.c
++++ b/lib/inv_cmap.c
 @@ -42,7 +42,7 @@
  static long cbinc, cginc, crinc;
  static unsigned long *gdp, *rdp, *cdp;
@@ -135,8 +135,8 @@ Fixes taken from netpbm
  static long x, xsqr, colormax;
  static int cindex;
  #ifdef INSTRUMENT_IT
---- lib/rle_getrow.c
-+++ lib/rle_getrow.c
+--- a/lib/rle_getrow.c
++++ b/lib/rle_getrow.c
 @@ -351,7 +351,7 @@
  	    bzero( (char *)scanline[-1] + the_hdr->xmin,
  		   the_hdr->xmax - the_hdr->xmin + 1 );
@@ -185,8 +185,8 @@ Fixes taken from netpbm
  	    if ( RLE_BIT( *the_hdr, channel ) )
  	    {
  		/* Don't fill past end of scanline! */
---- lib/rle_putcom.c
-+++ lib/rle_putcom.c
+--- a/lib/rle_putcom.c
++++ b/lib/rle_putcom.c
 @@ -53,11 +53,12 @@
  {
      for ( ; *n != '\0' && *n != '=' && *n == *v; n++, v++ )

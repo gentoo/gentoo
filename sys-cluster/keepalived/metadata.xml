@@ -8,4 +8,7 @@
 	<longdescription>
 		VRRP2 implementation. Used for setting up high availability clusters.
 	</longdescription>
+	<use>
+		<flag name="json">compile with signal to dump configuration and stats as JSON.</flag>
+	</use>
 </pkgmetadata>

@@ -1,6 +1,5 @@
-diff -Naur flite-1.4-release/config/common_make_rules flite-1.4-release.new/config/common_make_rules
---- flite-1.4-release/config/common_make_rules	2009-07-30 14:52:56.000000000 +0000
-+++ flite-1.4-release.new/config/common_make_rules	2011-03-26 20:22:59.000000000 +0000
+--- a/config/common_make_rules
++++ b/config/common_make_rules
 @@ -68,7 +68,7 @@
  
  FLITELIBS = $(BUILDDIR)/lib/libflite.a
@@ -19,8 +18,8 @@ diff -Naur flite-1.4-release/config/common_make_rules flite-1.4-release.new/conf
  	@ (cd $(LIBDIR) && ln -s `basename $@.${PROJECT_VERSION}` `basename $@.${PROJECT_SHLIB_VERSION}` )
  	@ (cd $(LIBDIR) && ln -s `basename $@.${PROJECT_SHLIB_VERSION}` `basename $@` )
  	@ rm -rf shared_os
---- flite-1.4-release/tools/Makefile~	2009-08-22 20:19:01.000000000 +0100
-+++ flite-1.4-release.new/tools/Makefile	2013-01-20 20:06:34.259527220 +0000
+--- a/tools/Makefile
++++ b/tools/Makefile
 @@ -62,9 +62,9 @@
  LOCAL_CLEAN = $(BINDIR)/find_sts $(BINDIR)/flite_sort
  

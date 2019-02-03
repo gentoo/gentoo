@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+Generic tools for recursive and iterative tree traversal based on
+clojure.walk and clojure.zip respectively.  Depends on `map', a map
+manipulation library built in Emacs 25.1.  All functions are prefixed
+with "treepy-"
+</longdescription>
+<stabilize-allarches/>
+<upstream>
+  <remote-id type="github">volrath/treepy.el</remote-id>
+</upstream>
+</pkgmetadata>

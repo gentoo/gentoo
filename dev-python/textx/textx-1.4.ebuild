@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_PN=textX
 MY_P=${MY_PN}-${PV}
 DESCRIPTION="Meta-language for DSL implementation inspired by Xtext"
-HOMEPAGE="https://pypi.python.org/pypi/${MY_PN} https://github.com/igordejanovic/${MY_PN}"
+HOMEPAGE="https://pypi.org/project/textX/ https://github.com/igordejanovic/textX"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 # pypi tarball omits tests
 RESTRICT="test"

@@ -1,7 +1,7 @@
 Use system copy of qtsingleapplication.
 
---- sialantools/sialantools.pri
-+++ sialantools/sialantools.pri
+--- a/sialantools/sialantools.pri
++++ b/sialantools/sialantools.pri
 @@ -1,4 +1,5 @@
  QT += qml quick
 +CONFIG += qtsingleapplication
@@ -30,8 +30,8 @@ Use system copy of qtsingleapplication.
      }
  }
 
---- sialantools/sialanapplication.h
-+++ sialantools/sialanapplication.h
+--- a/sialantools/sialanapplication.h
++++ b/sialantools/sialanapplication.h
 @@ -22,7 +22,7 @@
  #include "sialan_macros.h"
  

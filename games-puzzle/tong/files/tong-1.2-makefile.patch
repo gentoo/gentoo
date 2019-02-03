@@ -1,5 +1,5 @@
---- Makefile.orig
-+++ Makefile
+--- a/Makefile.orig
++++ b/Makefile
 @@ -1,11 +1,10 @@
  # TONG! makefile, tweak as you see fit
  

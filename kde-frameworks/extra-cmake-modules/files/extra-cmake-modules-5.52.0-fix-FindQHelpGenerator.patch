@@ -1,0 +1,47 @@
+From 96d169b87292d935646b1924952829b0f4d5d669 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Sat, 17 Nov 2018 08:57:09 +0100
+Subject: FindQHelpGenerator: try to find Qt5Help instead of Qt5Core
+
+Summary:
+The Qt5Help CMake modules contain the Qt5::qhelpgenerator target, so
+look for that instead of Qt5Core.  Otherwise, the Qt5::qhelpgenerator
+is available only if Qt5Help was searched previously (which does not
+happen often).
+
+Using the Qt5::qhelpgenerator is more reliable than the search for the
+qhelpgenerator executable based on the qmake path.
+
+Test Plan:
+build some framework with -DBUILD_QCH=ON, and notice that
+the right path of qhelpgenerator is found directly with the
+Qt5::qhelpgenerator target.
+
+Reviewers: kossebau
+
+Reviewed By: kossebau
+
+Subscribers: kde-frameworks-devel, kde-buildsystem
+
+Tags: #frameworks, #build_system
+
+Differential Revision: https://phabricator.kde.org/D16938
+---
+ find-modules/FindQHelpGenerator.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/find-modules/FindQHelpGenerator.cmake b/find-modules/FindQHelpGenerator.cmake
+index 50aef27..272e587 100644
+--- a/find-modules/FindQHelpGenerator.cmake
++++ b/find-modules/FindQHelpGenerator.cmake
+@@ -33,7 +33,7 @@
+ # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #=============================================================================
+ 
+-find_package(Qt5Core QUIET)
++find_package(Qt5Help QUIET)
+ if (TARGET Qt5::qhelpgenerator)
+     get_target_property(QHelpGenerator_EXECUTABLE Qt5::qhelpgenerator LOCATION)
+ else()
+-- 
+cgit v0.11.2

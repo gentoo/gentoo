@@ -1,6 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
 # @ECLASS: mysql-cmake.eclass
 # @MAINTAINER:
 # Maintainers:
@@ -15,7 +16,7 @@
 # the src_prepare, src_configure, src_compile, and src_install
 # phase hooks.
 
-inherit cmake-utils flag-o-matic multilib prefix eutils toolchain-funcs
+inherit cmake-utils flag-o-matic multilib prefix eutils toolchain-funcs versionator
 
 #
 # HELPER FUNCTIONS:

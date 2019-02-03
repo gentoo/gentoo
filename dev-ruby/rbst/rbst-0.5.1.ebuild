@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-USE_RUBY="ruby22 ruby23 ruby24"
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_NAME="RbST"
 RUBY_FAKEGEM_GEMSPEC="RbST.gemspec"
@@ -20,9 +20,10 @@ KEYWORDS="~amd64"
 IUSE="test"
 
 RDEPEND="dev-python/docutils"
-DEPEND="
+DEPEND="test? ( ${RDEPEND} )"
+
+ruby_add_bdepend "
 	test? (
-		${RDEPEND}
 		>=dev-ruby/mocha-1.1.0:1.0
 		>=dev-ruby/shoulda-3.5.0:3
 		>=dev-ruby/test-unit-3.0.9:2

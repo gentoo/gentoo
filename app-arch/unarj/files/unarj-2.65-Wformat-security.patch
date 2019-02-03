@@ -1,0 +1,66 @@
+Bug: https://bugs.gentoo.org/520478
+
+--- a/unarj.c
++++ b/unarj.c
+@@ -699,7 +699,7 @@
+     }
+     if ((arj_flags & GARBLE_FLAG) != 0)
+     {
+-        printf(M_ENCRYPT);
++        puts(M_ENCRYPT);
+         printf(M_SKIPPED, filename);
+         skip();
+         return -1;
+@@ -763,7 +763,7 @@
+     }
+     printf(M_EXTRACT, name);
+     if (host_os != OS && file_type == BINARY_TYPE)
+-        printf(M_DIFFHOST);
++        puts(M_DIFFHOST);
+     printf("  ");
+ 
+     crc = CRC_MASK;
+@@ -779,10 +779,10 @@
+     set_ftime_mode(name, time_stamp, file_mode, (uint) host_os);
+ 
+     if ((crc ^ CRC_MASK) == file_crc)
+-        printf(M_CRCOK);
++        puts(M_CRCOK);
+     else
+     {
+-        printf(M_CRCERROR);
++        puts(M_CRCERROR);
+         error_count++;
+     }
+     return 1;
+@@ -808,10 +808,10 @@
+         decode_f();
+ 
+     if ((crc ^ CRC_MASK) == file_crc)
+-        printf(M_CRCOK);
++        puts(M_CRCOK);
+     else
+     {
+-        printf(M_CRCERROR);
++        puts(M_CRCERROR);
+         error_count++;
+     }
+     return 1;
+@@ -958,7 +958,7 @@
+     int i;
+ 
+     for (i = 0; M_USAGE[i] != NULL; i++)
+-        printf(M_USAGE[i]);
++        puts(M_USAGE[i]);
+ }
+ 
+ int
+@@ -973,7 +973,7 @@
+     argc = ccommand(&argv);
+ #endif
+ 
+-    printf(M_VERSION);
++    puts(M_VERSION);
+ 
+     if (argc == 1)
+     {

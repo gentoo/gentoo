@@ -1,0 +1,42 @@
+From 7b54f3db98e96231fc9f16429f325cdb1f37498c Mon Sep 17 00:00:00 2001
+From: Michael Weghorn <m.weghorn@posteo.de>
+Date: Thu, 31 Jan 2019 09:52:51 +0100
+Subject: tdf#123077 gtk3_kde5: Set KFileWidget's custom widget only once
+
+Since the event filter is only used to set the custom
+widget in the KFileWidget, it can and needs to be removed
+again once this has been done; which also avoids crashes.
+
+(s. https://gerrit.libreoffice.org/#/c/67185/ for more
+infos, where the same thing is done for kde5)
+
+Change-Id: I5c719fb17510916b4730ed5c00bb638df2f183e3
+Reviewed-on: https://gerrit.libreoffice.org/67184
+Tested-by: Jenkins
+Reviewed-by: Michael Weghorn <m.weghorn@posteo.de>
+(cherry picked from commit 30cc54a4532a732a0cf6dfe9943521978ff7292f)
+Reviewed-on: https://gerrit.libreoffice.org/67203
+Reviewed-by: Katarina Behrens <Katarina.Behrens@cib.de>
+---
+ vcl/unx/gtk3_kde5/kde5_filepicker.cxx | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/vcl/unx/gtk3_kde5/kde5_filepicker.cxx b/vcl/unx/gtk3_kde5/kde5_filepicker.cxx
+index 33f64ad0..9914869 100644
+--- a/vcl/unx/gtk3_kde5/kde5_filepicker.cxx
++++ b/vcl/unx/gtk3_kde5/kde5_filepicker.cxx
+@@ -265,7 +265,11 @@ bool KDE5FilePicker::eventFilter(QObject* o, QEvent* e)
+         {
+             KWindowSystem::setMainWindow(w, _winId);
+             if (auto* fileWidget = w->findChild<KFileWidget*>({}, Qt::FindDirectChildrenOnly))
++            {
+                 fileWidget->setCustomWidget(_extraControls);
++                // remove event filter again; the only purpose was to set the custom widget here
++                qApp->removeEventFilter(this);
++            }
+         }
+     }
+     return QObject::eventFilter(o, e);
+-- 
+cgit v1.1
+

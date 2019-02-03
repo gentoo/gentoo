@@ -1,5 +1,5 @@
---- config.input.dist	2003-04-11 14:03:36.000000000 -0700
-+++ config.input	2003-04-11 14:05:47.000000000 -0700
+--- a/config.input
++++ b/config.input
 @@ -20,7 +20,7 @@
  # See the QuickPage documentation for complete details about
  # the syntax of the configuration file.
@@ -18,8 +18,8 @@
  
  
  #
---- qpage.man.dist	2003-04-18 14:43:45.000000000 -0700
-+++ qpage.man	2003-04-18 14:43:55.000000000 -0700
+--- a/qpage.man
++++ b/qpage.man
 @@ -867,7 +867,7 @@
  must be able to detect when it's safe to send dial commands to the modem.
  .LP
@@ -29,8 +29,8 @@
  .SH SEE ALSO
  .B RFC-1861
  .SH KNOWN BUGS
---- example.cf.dist	2003-04-25 09:55:47.000000000 -0700
-+++ example.cf	2003-04-25 10:55:11.000000000 -0700
+--- a/example.cf
++++ b/example.cf
 @@ -21,7 +21,7 @@
  #
  #	modem=<modem name>
@@ -59,8 +59,8 @@
  	baudrate=1200
  	parity=even
  	allowpid=yes
---- ixo.c.dist	2003-04-25 11:36:30.000000000 -0700
-+++ ixo.c	2003-04-25 11:37:37.000000000 -0700
+--- a/ixo.c
++++ b/ixo.c
 @@ -192,7 +192,7 @@
  		if ((i = read_modem(fd, seconds)) < 0)
  			return(NULL);

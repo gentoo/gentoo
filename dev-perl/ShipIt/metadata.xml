@@ -33,6 +33,5 @@
     <remote-id type="cpan-module">ShipIt::VC::Mercurial</remote-id>
     <remote-id type="cpan-module">ShipIt::VC::SVK</remote-id>
     <remote-id type="cpan-module">ShipIt::VC::SVN</remote-id>
-    <remote-id type="cpan-module">__ShipIt_Temp_Package</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PATCHVER="003"
 
@@ -18,10 +18,9 @@ IUSE="debug"
 RDEPEND=">=sys-apps/pcsc-lite-1.6.4
 	dev-libs/nss[utils]
 	sys-libs/zlib"
-
 DEPEND="${RDEPEND}
-	>=app-crypt/ccid-1.4.0
-	virtual/pkgconfig"
+	>=app-crypt/ccid-1.4.0"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${WORKDIR}/${PN}-patches"

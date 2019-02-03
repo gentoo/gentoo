@@ -1,15 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
+EAPI="6"
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 inherit autotools python-r1
 
-DESCRIPTION="The Python bindings to libcangjie"
-HOMEPAGE="http://cangjians.github.io"
-SRC_URI="https://github.com/Cangjians/pycangjie/releases/download/v${PV}/cangjie-${PV}.tar.xz"
+DESCRIPTION="Python wrapper for libcangjie"
+HOMEPAGE="http://cangjians.github.io/"
+SRC_URI="https://github.com/Cangjians/py${PN}/releases/download/v${PV}/${P#py}.tar.xz"
 
 LICENSE="LGPL-3+"
 SLOT="0"
@@ -17,15 +16,13 @@ KEYWORDS="amd64 x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="
-	app-i18n/libcangjie
-	${PYTHON_DEPS}"
-DEPEND="
-	${RDEPEND}
+RDEPEND="${PYTHON_DEPS}
+	app-i18n/libcangjie"
+DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${P}-cython-022.patch" )
+PATCHES=( "${FILESDIR}"/${P}-cython-0.22.patch )
 
 src_prepare() {
 	default
@@ -33,10 +30,10 @@ src_prepare() {
 }
 
 src_configure() {
-	myeconf() {
-		ECONF_SOURCE="${S}" econf PYTHON="${PYTHON}"
+	python_configure() {
+		ECONF_SOURCE="${S}" econf
 	}
-	python_foreach_impl run_in_build_dir myeconf
+	python_foreach_impl run_in_build_dir python_configure
 }
 
 src_compile() {
@@ -51,6 +48,5 @@ src_install() {
 	python_foreach_impl run_in_build_dir default
 	einstalldocs
 
-	# package only installs python modules
 	find "${D}" -name '*.la' -delete || die
 }

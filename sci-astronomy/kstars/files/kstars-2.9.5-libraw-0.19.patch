@@ -1,0 +1,73 @@
+From 25630e41c71990d619f9f96693624056a8d89039 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Tue, 31 Jul 2018 20:48:17 +0200
+Subject: cmake: fix enabling of exceptions
+
+Use the ECM module KDECompilerSettings unconditionally on every
+platform, as it provides the kde_enable_exceptions cmake macro needed.
+This might break build on android, but then the exclusion of
+KDECompilerSettings on android is a 2 years old hack, most probably
+working around a different issue which will need its own investigation,
+and fix.
+
+Use kde_enable_exceptions() unconditionally, which will do the right job
+for all the different compilers. This also removes the -Dfexceptions
+defines (which effectively does nothing), and the manual -fexceptions in
+htmesh.
+
+Incidentally, this fixes the build with libraw 0.19.0, which requires
+the usage of exceptions in case LIBRAW_NO_MEMPOOL_CHECK is not defined.
+
+* 2018-12-23: asturm@gentoo.org: backported to 2.9.5.
+
+---
+ CMakeLists.txt               | 9 ++++-----
+ kstars/htmesh/CMakeLists.txt | 4 ----
+ 2 files changed, 4 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 69f2409..73224cc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -87,10 +87,7 @@ include(ECMAddAppIcon)
+ include(KDEInstallDirs)
+ include(MacroBoolTo01)
+ include(ECMQtDeclareLoggingCategory)
+-if(NOT CMAKE_TOOLCHAIN_FILE STREQUAL ${CMAKE_SOURCE_DIR}/android/toolchain-android.cmake)
+-    #We get error "could not find main method" with this module
+-    include(KDECompilerSettings NO_POLICY_SCOPE)
+-endif()
++include(KDECompilerSettings NO_POLICY_SCOPE)
+ include(KDECMakeSettings)
+ include(FeatureSummary)
+ 
+@@ -252,8 +249,10 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+ endif()
+ add_definitions(-DQT_NO_CAST_TO_ASCII)
+ 
++# Needed for htmesh, and libraw
++kde_enable_exceptions()
++
+ if (UNIX)
+-  add_definitions(-Dfexceptions)
+ 
+   # TEMPORARY: To disable QCustomPlot warning until 2.0.0 is released which fixes these warnings
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-non-virtual-dtor")
+diff --git a/kstars/htmesh/CMakeLists.txt b/kstars/htmesh/CMakeLists.txt
+index e76d84e..0dbdc8f 100644
+--- a/kstars/htmesh/CMakeLists.txt
++++ b/kstars/htmesh/CMakeLists.txt
+@@ -32,10 +32,6 @@ IF (ANDROID)
+     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+ ENDIF ()
+ 
+-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}")
+-#TODO is there KF5_ENABLE_EXCEPTIONS?
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fexceptions")
+-
+ add_library(htmesh STATIC ${HTMesh_LIB_SRC})
+ 
+ add_definitions(-D_EXPORTING)
+-- 
+cgit v1.1
+

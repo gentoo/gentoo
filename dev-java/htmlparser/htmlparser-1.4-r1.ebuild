@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,8 +8,8 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Implementation of the HTML5 parsing algorithm in Java"
-HOMEPAGE="http://about.validator.nu/htmlparser/"
-SRC_URI="http://about.validator.nu/${PN}/${P}.zip"
+HOMEPAGE="https://about.validator.nu/htmlparser/"
+SRC_URI="https://about.validator.nu/${PN}/${P}.zip"
 
 LICENSE="W3C"
 SLOT="0"

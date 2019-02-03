@@ -27,7 +27,7 @@ DEPEND="
 		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-0.9.36[${PYTHON_USEDEP}]
-		<dev-python/testtools-1.2.0[${PYTHON_USEDEP}]
+		!~dev-python/testtools-1.2.0[${PYTHON_USEDEP}]
 		${RDEPEND}
 	)
 	doc? (

@@ -1,5 +1,5 @@
---- m4/objc.m4.old
-+++ m4/objc.m4
+--- a/m4/objc.m4.old
++++ b/m4/objc.m4
 @@ -448,32 +448,32 @@
  
  # AC_LANG_SOURCE(Objective C)(BODY)

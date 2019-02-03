@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ RDEPEND="sys-libs/readline
 	unicode? ( >=dev-libs/icu-2.6:= )
 	gdbm? ( >=sys-libs/gdbm-1.8.3-r1 )
 	gmp? ( >=dev-libs/gmp-4.1.4 )
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0= )
 	pcre? ( dev-libs/libpcre )
 	doc? ( dev-perl/JSON )"
 

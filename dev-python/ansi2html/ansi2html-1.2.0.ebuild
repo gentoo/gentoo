@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Convert text with ANSI color codes to HTML"
-HOMEPAGE="https://pypi.python.org/pypi/ansi2html https://github.com/ralphbean/ansi2html"
+HOMEPAGE="https://pypi.org/project/ansi2html/ https://github.com/ralphbean/ansi2html"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 arm x86"
 IUSE="test"
 
 # They miserably fail.

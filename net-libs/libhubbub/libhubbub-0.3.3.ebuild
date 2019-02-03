@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,4 +23,9 @@ DEPEND="${RDEPEND}
 
 DOCS=( README docs/{Architecture,Macros,Todo,Treebuilder,Updated} )
 
-#RESTRICT=test
+src_prepare() {
+	sed -e '1i#pragma GCC diagnostic ignored "-Wimplicit-fallthrough"' \
+		-i test/tree2.c || die
+
+	netsurf_src_prepare
+}

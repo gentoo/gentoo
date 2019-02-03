@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit bsdmk freebsd flag-o-matic multilib toolchain-funcs eutils multibuild mu
 
 DESCRIPTION="FreeBSD's base system libraries"
 SLOT="0"
-KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~amd64-fbsd ~x86-fbsd"
 
 # Crypto is needed to have an internal OpenSSL header
 # sys is needed for libalias, probably we can just extract that instead of
@@ -27,7 +27,6 @@ SRC_URI="mirror://gentoo/${LIB}.tar.bz2
 
 if [ "${CATEGORY#*cross-}" = "${CATEGORY}" ]; then
 	RDEPEND="ssl? ( dev-libs/openssl )
-		hesiod? ( net-dns/hesiod )
 		kerberos? ( app-crypt/heimdal )
 		usb? ( !dev-libs/libusb )
 		zfs? ( =sys-freebsd/freebsd-cddl-${RV}* )
@@ -53,8 +52,8 @@ if [ "${CTARGET}" = "${CHOST}" -a "${CATEGORY#*cross-}" != "${CATEGORY}" ]; then
 	export CTARGET=${CATEGORY/cross-}
 fi
 
-IUSE="atm bluetooth ssl hesiod ipv6 kerberos usb netware
-	build crosscompile_opts_headers-only zfs
+IUSE="atm bluetooth ssl ipv6 kerberos usb netware
+	build headers-only zfs
 	userland_GNU userland_BSD"
 
 QA_DT_NEEDED="lib/libc.so.7 usr/lib32/libc.so.7"
@@ -69,7 +68,7 @@ pkg_setup() {
 
 	use atm || mymakeopts="${mymakeopts} WITHOUT_ATM= "
 	use bluetooth || mymakeopts="${mymakeopts} WITHOUT_BLUETOOTH= "
-	use hesiod || mymakeopts="${mymakeopts} WITHOUT_HESIOD= "
+	mymakeopts="${mymakeopts} WITHOUT_HESIOD= "
 	use ipv6 || mymakeopts="${mymakeopts} WITHOUT_INET6_SUPPORT= "
 	use kerberos || mymakeopts="${mymakeopts} WITHOUT_KERBEROS_SUPPORT= WITHOUT_GSSAPI= "
 	use netware || mymakeopts="${mymakeopts} WITHOUT_IPX= WITHOUT_IPX_SUPPORT= WITHOUT_NCP= "
@@ -358,7 +357,7 @@ src_compile() {
 	cd "${WORKDIR}/include"
 	$(freebsd_get_bmake) CC="$(tc-getCC)" || die "make include failed"
 
-	use crosscompile_opts_headers-only && return 0
+	use headers-only && return 0
 
 	# Bug #270098
 	append-flags $(test-flags -fno-strict-aliasing)
@@ -485,7 +484,7 @@ do_install() {
 	CTARGET="${CHOST}" \
 		install_includes ${INCLUDEDIR}
 
-	is_crosscompile && use crosscompile_opts_headers-only && return 0
+	is_crosscompile && use headers-only && return 0
 
 	for i in $(get_subdirs) ; do
 		einfo "Installing in ${i}..."

@@ -7,7 +7,8 @@ inherit autotools gnome2
 
 DESCRIPTION="Fully featured yet light and fast cross platform word processor"
 HOMEPAGE="http://www.abisource.com/"
-SRC_URI="http://www.abisource.com/downloads/${PN}/${PV}/source/${P}.tar.gz"
+SRC_URI="http://www.abisource.com/downloads/${PN}/${PV}/source/${P}.tar.gz
+	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"
@@ -64,15 +65,15 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.8.3-desktop.patch
-	"${FILESDIR}"/${PN}-2.6.0-boolean.patch
-	"${FILESDIR}"/${PN}-3.0.0-librevenge.patch
-	"${FILESDIR}"/${PN}-3.0.0-link-grammar-5-second.patch
-	"${FILESDIR}"/${PN}-3.0.0-libwp.patch
-	"${FILESDIR}"/${PN}-3.0.1-libwps-0.4.patch
-	"${FILESDIR}"/${PN}-3.0.1-fixwps.patch
-	"${FILESDIR}"/${PN}-3.0.2-fix-installing-readme.patch
-	"${FILESDIR}"/${PN}-3.0.2-fix-nullptr-c++98.patch
+	"${WORKDIR}"/${P}-patchset/${PN}-2.8.3-desktop.patch
+	"${WORKDIR}"/${P}-patchset/${PN}-2.6.0-boolean.patch
+	"${WORKDIR}"/${P}-patchset/${PN}-3.0.0-librevenge.patch
+	"${WORKDIR}"/${P}-patchset/${PN}-3.0.0-link-grammar-5-second.patch
+	"${WORKDIR}"/${P}-patchset/${PN}-3.0.0-libwp.patch
+	"${WORKDIR}"/${P}-patchset/${PN}-3.0.1-libwps-0.4.patch
+	"${WORKDIR}"/${P}-patchset/${PN}-3.0.1-fixwps.patch
+	"${WORKDIR}"/${P}-patchset/${PN}-3.0.2-fix-installing-readme.patch
+	"${WORKDIR}"/${P}-patchset/${PN}-3.0.2-fix-nullptr-c++98.patch
 )
 
 src_prepare() {

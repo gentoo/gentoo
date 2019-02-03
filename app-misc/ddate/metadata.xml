@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <upstream>
-    <remote-id type="github">bo0ts/ddate</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Converts gregorian dates to discordian dates.
+		Sacred document of the frogs (old erisian poem):
+		73 Days hath chaos, discord, confusion, bureaucracy and aftermath.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/bo0ts/ddate/issues</bugs-to>
+		<remote-id type="github">bo0ts/ddate</remote-id>
+	</upstream>
 </pkgmetadata>

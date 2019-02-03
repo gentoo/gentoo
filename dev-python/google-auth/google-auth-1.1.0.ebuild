@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Google Authentication Library"
-HOMEPAGE="https://pypi.python.org/pypi/google-auth/"
+HOMEPAGE="https://pypi.org/project/google-auth/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

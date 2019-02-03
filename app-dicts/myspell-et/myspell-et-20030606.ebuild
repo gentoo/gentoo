@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 MYSPELL_DICT=(
 	"latin-9/et_EE.aff"
@@ -29,6 +29,7 @@ IUSE=""
 S="${WORKDIR}/ispell-et-${PV}"
 
 src_prepare() {
+	default
 	# naming handling to be inline with others
 	mv hyph_et.dic hyph_et_EE.dic || die
 

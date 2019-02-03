@@ -1,13 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit cmake-utils systemd
-
-MY_PN=openvasmd
+EAPI=7
 
 DL_ID=2195
+MY_PN=openvasmd
+inherit cmake-utils systemd
 
 DESCRIPTION="A remote security scanner for Linux (openvas-manager)"
 HOMEPAGE="http://www.openvas.org/"
@@ -15,35 +13,39 @@ SRC_URI="http://wald.intevation.org/frs/download.php/${DL_ID}/${P/_beta/+beta}.t
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS=" ~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE=""
 
-RDEPEND="
-	>=net-analyzer/openvas-libraries-8.0.5
-	>=dev-db/sqlite-3
+DEPEND="
 	dev-db/redis
-	!net-analyzer/openvas-administrator"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	>=dev-db/sqlite-3
+	>=net-analyzer/openvas-libraries-8.0.5
+"
+RDEPEND="${DEPEND}
+	!net-analyzer/openvas-administrator
+"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}"/${P}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.1-bsdsource.patch
-	)
+)
 
 src_prepare() {
+	cmake-utils_src_prepare
 	sed \
 		-e '/^install.*OPENVAS_CACHE_DIR.*/d' \
 		-i CMakeLists.txt || die
-	cmake-utils_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DLOCALSTATEDIR="${EPREFIX}/var"
 		-DSYSCONFDIR="${EPREFIX}/etc"
-		)
+	)
 	cmake-utils_src_configure
 }
 

@@ -1,0 +1,50 @@
+From 2a5df7b875a8c5acb99be05baf84e5c9800d52a3 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Sat, 13 May 2017 18:57:15 +0200
+Subject: cmake: fix endif syntax
+
+it does not match the if condition, so just remove it (also to ease
+reading it)
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 057fcc4..14a55d2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -81,7 +81,7 @@ add_subdirectory(src)
+ add_subdirectory(icons)
+ if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/doc" AND KF5DocTools_VERSION)
+   add_subdirectory(doc)
+-endif(KF5DocTools_VERSION)
++endif()
+ add_subdirectory(data)
+ 
+ if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
+
+From 41a284a0f5f728556280b9f942961631566ad7ff Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Sat, 13 May 2017 19:04:47 +0200
+Subject: cmake: use NO_POLICY_SCOPE for KDECompilerSettings
+
+just like done for all the other projects
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 14a55d2..5a58a35 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,7 +15,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_D
+ 
+ include(KDEInstallDirs)
+ include(KDECMakeSettings)
+-include(KDECompilerSettings)
++include(KDECompilerSettings NO_POLICY_SCOPE)
+ include(ECMInstallIcons)
+ #include(ECMSetupVersion)
+ include(FeatureSummary)
+-- 
+cgit v0.11.2

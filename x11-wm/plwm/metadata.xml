@@ -5,9 +5,9 @@
 		<email>axs@gentoo.org</email>
 	</maintainer>
 	<longdescription>
-		 PLWM is a Python package, containing classes suitable for 
-		 implementing a window manager. PLWM is also a window manager, 
-		 using the PLWM package.
+		PLWM is a Python package, containing classes suitable for
+		implementing a window manager. PLWM is also a window manager,
+		using the PLWM package.
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">plwm</remote-id>

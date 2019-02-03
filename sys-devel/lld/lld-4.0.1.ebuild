@@ -51,7 +51,7 @@ src_prepare() {
 	eapply "${FILESDIR}/4.0.1/0002-test-Use-LLD-specific-binary-library-dirs-when-build.patch"
 	eapply "${FILESDIR}/4.0.1/0003-test-Fix-zlib-cond-when-building-stand-alone-clean-u.patch"
 
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 src_configure() {

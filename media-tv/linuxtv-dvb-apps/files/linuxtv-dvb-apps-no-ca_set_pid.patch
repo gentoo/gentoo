@@ -1,0 +1,41 @@
+diff -ruN a/include/ca.h b/include/ca.h
+--- a/include/ca.h
++++ b/include/ca.h
+@@ -85,6 +85,5 @@
+ #define CA_GET_MSG        _IOR('o', 132, ca_msg_t)
+ #define CA_SEND_MSG       _IOW('o', 133, ca_msg_t)
+ #define CA_SET_DESCR      _IOW('o', 134, ca_descr_t)
+-#define CA_SET_PID        _IOW('o', 135, ca_pid_t)
+ 
+ #endif
+diff -ruN a/util/dst-utils/dst_test.c b/util/dst-utils/dst_test.c
+--- a/util/dst-utils/dst_test.c
++++ b/util/dst-utils/dst_test.c
+@@ -111,16 +111,6 @@
+ 	return 0;
+ }
+ 
+-static int dst_set_pid(int cafd)
+-{
+-	if ((ioctl(cafd, CA_SET_PID)) < 0) {
+-		printf("%s: ioctl failed ..\n", __FUNCTION__);
+-		return -1;
+-	}
+-
+-	return 0;
+-}
+-
+ static int dst_get_descr(int cafd)
+ {
+ 	if ((ioctl(cafd, CA_GET_DESCR_INFO)) < 0) {
+@@ -229,10 +219,6 @@
+ 				printf("%s: Reset\n", __FUNCTION__);
+ 				dst_reset(cafd);
+ 				break;
+-			case 'p':
+-				printf("%s: PID\n", __FUNCTION__);
+-				dst_set_pid(cafd);
+-				break;
+ 			case 'g':
+ 				printf("%s: Get Desc\n", __FUNCTION__);
+ 				dst_get_descr(cafd);

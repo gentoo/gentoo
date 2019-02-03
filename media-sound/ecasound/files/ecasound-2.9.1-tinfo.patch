@@ -1,0 +1,21 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -810,7 +810,9 @@
+ dnl switch to C for testing
+ AC_LANG_C
+ 
+-AC_CHECK_LIB(ncurses, main, termcap_library=ncurses,
++AC_CHECK_LIB(ncurses, main,
++	[termcap_library=ncurses]
++	AC_SEARCH_LIBS(tigetstr, tinfo),
+ 	AC_CHECK_LIB(termcap, main, termcap_library=termcap,
+ 		termcap_library=none))
+ 
+@@ -821,6 +823,7 @@
+ 	        y | yes)
+ 		  AC_MSG_RESULT(yes)
+ 		  termcap_library=ncurses
++
+ 		;;
+ 
+ 		n | no)

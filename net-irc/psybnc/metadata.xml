@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>gurligebis@gentoo.org</email>
-		<name>Bjarke Istrup Pedersen</name>
-	</maintainer>
 	<use>
 		<flag name="oidentd">Adds support for oidentd</flag>
 		<flag name="scripting">Adds scripting support</flag>

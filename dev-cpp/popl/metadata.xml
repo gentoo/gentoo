@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>cb-gentoo@guya.de</email>
+		<name>Christian Buchinger</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<name>Johannes Pohl</name>
+			<email>github@badaix.de</email>
+		</maintainer>
+		<bugs-to>https://github.com/badaix/popl/issues</bugs-to>
+		<remote-id type="github">badaix/popl</remote-id>
+	</upstream>
+</pkgmetadata>

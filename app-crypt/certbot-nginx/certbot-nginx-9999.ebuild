@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999* ]]; then
 	S=${WORKDIR}/${P}/${PN}
 else
 	SRC_URI="https://github.com/${PN%-nginx}/${PN%-nginx}/archive/v${PV}.tar.gz -> ${PN%-nginx}-${PV}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 	S=${WORKDIR}/${PN%-nginx}-${PV}/${PN}
 fi
 
@@ -23,10 +23,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-CDEPEND=">=dev-python/setuptools-1.0[${PYTHON_USEDEP}]"
+CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${CDEPEND}
-	~app-crypt/certbot-${PV}[${PYTHON_USEDEP}]
-	~app-crypt/acme-${PV}[${PYTHON_USEDEP}]
+	>=app-crypt/certbot-0.22.0[${PYTHON_USEDEP}]
+	>=app-crypt/acme-0.26.0[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-1.5.5[${PYTHON_USEDEP}]

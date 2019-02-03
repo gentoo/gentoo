@@ -7,7 +7,6 @@
   </maintainer>
   <use>
     <flag name="authexternal">Enable authentication by an external program</flag>
-    <flag name="drac">Enable dynamic relay support in the tpop3d pop3 server</flag>
     <flag name="flatfile">Enable authentication against /etc/passwd-style flat files</flag>
     <flag name="passwd">Enable /etc/passwd authentication</flag>
     <flag name="sha1">Use OpenSSL for sha1 encrypted passwords.</flag>

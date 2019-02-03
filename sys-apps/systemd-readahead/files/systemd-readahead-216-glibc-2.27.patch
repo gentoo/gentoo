@@ -1,0 +1,15 @@
+--- a/src/shared/missing.h.orig	2018-10-21 16:47:25.858241043 +0200
++++ b/src/shared/missing.h	2018-10-21 16:47:36.986335212 +0200
+@@ -204,12 +204,6 @@
+ }
+ #endif
+ 
+-#ifndef HAVE_MEMFD_CREATE
+-static inline int memfd_create(const char *name, uint64_t flags) {
+-        return syscall(__NR_memfd_create, name, flags);
+-}
+-#endif
+-
+ #ifndef BTRFS_IOCTL_MAGIC
+ #define BTRFS_IOCTL_MAGIC 0x94
+ #endif

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,10 +12,14 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 sparc x86"
 IUSE="doc"
 
 DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.7-BE-test.patch
+)
 
 python_compile_all() {
 	use doc && emake -C docs html

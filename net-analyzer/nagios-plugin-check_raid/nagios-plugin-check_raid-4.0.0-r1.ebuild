@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="3ware aacraid dmraid hpa hpsa i2o megaraid-sas megaraid-scsi mpt mpt-sas2"
+IUSE="3ware aacraid dmraid hpa hpsa megaraid-sas megaraid-scsi mpt mpt-sas2"
 
 DEPEND="dev-perl/Monitoring-Plugin
 		dev-perl/Module-Pluggable"
@@ -24,7 +24,6 @@ RDEPEND="${DEPEND}
 		dmraid? ( sys-fs/dmraid )
 		hpa? ( sys-block/hpacucli )
 		hpsa? ( sys-apps/cciss_vol_status )
-		i2o? ( sys-apps/raidutils )
 		megaraid-sas? ( sys-block/megacli )
 		megaraid-scsi? ( sys-block/megarc )
 		mpt-sas2? ( sys-block/sas2ircu )

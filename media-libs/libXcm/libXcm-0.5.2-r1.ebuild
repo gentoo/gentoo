@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,11 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="X static-libs"
 
-RDEPEND="X? ( >=x11-libs/libXmu-1.1.1-r1[${MULTILIB_USEDEP}]
+RDEPEND="X? (
+		>=x11-libs/libXmu-1.1.1-r1[${MULTILIB_USEDEP}]
 		>=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}]
-		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
-		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}"
+		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}] )"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 
 src_configure() {
 	local myeconfargs=(

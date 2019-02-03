@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,20 +12,20 @@ SRC_URI="mirror://sourceforge/wsjt/${MY_P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc"
 
 RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
-	dev-qt/qtnetwork
-	dev-qt/qtwidgets
-	dev-qt/qtconcurrent
-	dev-qt/qtserialport
-	dev-qt/qtprintsupport
+	dev-qt/qtnetwork:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtconcurrent:5
+	dev-qt/qtserialport:5
+	dev-qt/qtprintsupport:5
 	virtual/libusb:1
 	media-libs/portaudio
-	sci-libs/fftw:3.0[threads]
+	sci-libs/fftw:3.0[threads,fortran]
 	virtual/fortran
 	app-text/asciidoc
 	doc? ( dev-ruby/asciidoctor )"

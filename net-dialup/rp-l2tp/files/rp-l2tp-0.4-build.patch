@@ -1,5 +1,5 @@
---- Makefile.in.orig	2014-06-24 15:20:47.028342728 +0400
-+++ Makefile.in	2014-06-24 15:21:07.468320934 +0400
+--- a/Makefile.in.orig	2014-06-24 15:20:47.028342728 +0400
++++ b/Makefile.in	2014-06-24 15:21:07.468320934 +0400
 @@ -39,8 +39,8 @@
  
  libl2tp.a: $(OBJS)
@@ -11,8 +11,8 @@
  
  l2tpd: libl2tp.a libevent/libevent.a
  	$(MAKE) -C handlers
---- libevent/Makefile.in.orig	2002-09-30 23:45:00.000000000 +0400
-+++ libevent/Makefile.in	2014-06-24 15:24:31.535105268 +0400
+--- a/libevent/Makefile.in.orig	2002-09-30 23:45:00.000000000 +0400
++++ b/libevent/Makefile.in	2014-06-24 15:24:31.535105268 +0400
 @@ -18,20 +18,20 @@
  
  libevent.a: $(OBJS)
@@ -39,8 +39,8 @@
  
  clean: FORCE
  	rm -f *.a *.o *~
---- handlers/Makefile.in.orig	2014-06-24 15:31:35.186667624 +0400
-+++ handlers/Makefile.in	2014-06-24 15:32:26.659615281 +0400
+--- a/handlers/Makefile.in.orig	2014-06-24 15:31:35.186667624 +0400
++++ b/handlers/Makefile.in	2014-06-24 15:32:26.659615281 +0400
 @@ -20,19 +20,19 @@
  all: $(HANDLERS) l2tp-control
  

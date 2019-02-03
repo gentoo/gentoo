@@ -1,0 +1,47 @@
+From 2126d76b8f16381e576de779b94b5b4555e562c2 Mon Sep 17 00:00:00 2001
+From: Luigi Toscano <luigi.toscano@tiscali.it>
+Date: Sat, 13 May 2017 21:13:43 +0200
+Subject: Fix .desktop: Qt5 apps accept qwindowtitle, not caption
+
+---
+ src/org.kde.kmplayer.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/org.kde.kmplayer.desktop b/src/org.kde.kmplayer.desktop
+index fcc5255..2b5435c 100644
+--- a/src/org.kde.kmplayer.desktop
++++ b/src/org.kde.kmplayer.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Type=Application
+-Exec=kmplayer -caption %c %i %U
++Exec=kmplayer -qwindowtitle %c %i %U
+ Icon=kmplayer
+ X-DocPath=kmplayer/index.html
+ Comment=KDE interface for MPlayer
+
+From 6b7757397c6181664d58d0a9e09cc329f279cc72 Mon Sep 17 00:00:00 2001
+From: Luigi Toscano <luigi.toscano@tiscali.it>
+Date: Sat, 13 May 2017 21:13:36 +0200
+Subject: Add org namespace to the desktop file
+
+Required by the Desktop Entry Specification for desktop file
+with Type=Application.
+---
+ src/CMakeLists.txt           |   2 +-
+ src/kmplayer_part.desktop    |   2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 7a05382..f675d9a 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -122,7 +122,7 @@ install(TARGETS kdeinit_kmplayer  ${INSTALL_TARGETS_DEFAULT_ARGS} )
+ 
+ install(TARGETS kmplayer ${INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+-install(FILES kmplayer.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
++install(FILES org.kde.kmplayer.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+ 
+ #qt5_add_dbus_interface(kmplayer_SRCS org.kde.Konqueror.Main.xml kmplayer_interface)
+ 

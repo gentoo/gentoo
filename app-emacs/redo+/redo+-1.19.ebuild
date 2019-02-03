@@ -6,8 +6,8 @@ EAPI=5
 inherit readme.gentoo elisp
 
 DESCRIPTION="Redo/undo system for Emacs"
-HOMEPAGE="http://www.emacswiki.org/emacs/RedoPlus
-	http://www11.atwiki.jp/s-irie/pages/18.html"
+HOMEPAGE="https://www.emacswiki.org/emacs/RedoPlus
+	https://www11.atwiki.jp/s-irie/pages/18.html"
 # taken from http://www.emacswiki.org/emacs/${PN}.el
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 

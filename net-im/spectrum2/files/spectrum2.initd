@@ -1,0 +1,47 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/spectrum2_manager"
+command_group="spectrum"
+command_user="spectrum"
+name="Spectrum2 Transport"
+shell="/bin/sh"
+su="/bin/su"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting ${name}"
+	"${su}" "${command_user}" -c "${command} start" -s "${shell}"
+	eend $?
+}
+
+start_pre() {
+	# Ensure /run/spectrum2 dir is owned by spectrum user.
+	# spectrum2_manager stores pidfiles of individual services here.
+	# See security related comment at the bottom.
+	checkpath -d -o "${command_user}:${command_group}" -q "/run/spectrum2"
+}
+
+status() {
+	ebegin "Status ${name}"
+	"${su}" "${command_user}" -c "${command} status" -s "${shell}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${name}"
+	"${su}" "${command_user}" -c "${command} stop" -s "${shell}"
+	eend $?
+}
+
+# Andrey Utkin <andrey_utkin@gentoo.org> (24 Nov 2018)
+# Conrad Kostecki <conrad@kostecki.com> (24 Nov 2018)
+# We are aware of many security issues caused by careless chowning, see
+# http://michael.orlitzky.com/articles/end_root_chowning_now_(make_etc-init.d_great_again).xhtml
+# We believe none of these issues apply.
+# These pidfiles are not read by any privileged process.
+# checkpath here chowns only the dir itself and doesn't act recursively.

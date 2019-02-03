@@ -1,0 +1,22 @@
+From d8bb66d26288293ebde7f8d88979c13c208ffce5 Mon Sep 17 00:00:00 2001
+From: Assaf Gordon <assafgordon@gmail.com>
+Date: Mon, 14 Aug 2017 11:52:09 -0600
+Subject: [PATCH] text_line_reader: adjust to new compilers
+
+Fixes https://github.com/agordon/libgtextutils/issues/10 .
+---
+ src/gtextutils/text_line_reader.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gtextutils/text_line_reader.cpp b/src/gtextutils/text_line_reader.cpp
+index fede933..f0984d5 100644
+--- a/src/gtextutils/text_line_reader.cpp
++++ b/src/gtextutils/text_line_reader.cpp
+@@ -44,6 +44,6 @@ bool TextLineReader::next_line()
+ 	if (input_stream.eof())
+ 		return false;
+ 
+-	return input_stream ;
++	return input_stream.good() ;
+ }
+ 

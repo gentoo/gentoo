@@ -1,0 +1,3 @@
+move app-crypt/sbsigntool app-crypt/sbsigntools
+move x11-apps/radeontop app-misc/radeontop
+move gnome-extra/authenticator sys-auth/authenticator

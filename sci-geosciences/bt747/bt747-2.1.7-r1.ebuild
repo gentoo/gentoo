@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,9 +6,9 @@ EAPI=6
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="MTK GPS Datalogger Device Control"
-HOMEPAGE="http://www.bt747.org"
+HOMEPAGE="https://www.bt747.org"
 SRC_URI="mirror://sourceforge/${PN}/Stable/BT747_${PV}_full.zip
-	http://www.bt747.org/icon/bt747_128x128.gif -> ${PN}.gif"
+	https://www.bt747.org/icon/bt747_128x128.gif -> ${PN}.gif"
 
 LICENSE="GPL-3"
 SLOT="1"

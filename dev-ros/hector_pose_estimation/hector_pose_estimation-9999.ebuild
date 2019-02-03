@@ -22,6 +22,7 @@ RDEPEND="
 	dev-ros/tf
 	dev-ros/message_filters
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 # dev-ros/hector_timing
 DEPEND="${RDEPEND}"

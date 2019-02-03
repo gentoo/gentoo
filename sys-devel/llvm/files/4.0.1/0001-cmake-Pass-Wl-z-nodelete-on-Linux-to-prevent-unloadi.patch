@@ -1,0 +1,56 @@
+From 937b23b5fffa59deb1dc342cc5602d387d84a762 Mon Sep 17 00:00:00 2001
+From: Michal Gorny <mgorny@gentoo.org>
+Date: Mon, 27 Nov 2017 22:23:09 +0000
+Subject: [PATCH] [cmake] Pass -Wl,-z,nodelete on Linux to prevent unloading
+
+Prevent unloading shared libraries on Linux when dlclose() is called.
+This is necessary since command-line option parsing API relies on
+registering the global option instances in the option parser instance
+which can be loaded in a different shared library.
+
+Given that we can't reliably remove those options when a library is
+unloaded, the parser ends up containing dangling references. Since glibc
+has relatively complex library unloading rules, some of the LLVM
+libraries can be unloaded while others (including the Support library)
+stay loaded causing quite a mayhem. To reliably prevent that, just
+forbid unloading all libraries -- it's a very bad idea anyway.
+
+While the issue arguably happens only with BUILD_SHARED_LIBS, it may
+affect any library reusing llvm::cl interface.
+
+Based on patch provided Ross Hayward on https://bugs.gentoo.org/617154.
+Previously hit by Fedora back in Feb 2016:
+https://lists.freedesktop.org/archives/mesa-dev/2016-February/107242.html
+
+Differential Revision: https://reviews.llvm.org/D40459
+
+git-svn-id: https://llvm.org/svn/llvm-project/llvm/trunk@319105 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ cmake/modules/HandleLLVMOptions.cmake           | 8 ++++++++
+ unittests/Support/DynamicLibrary/CMakeLists.txt | 7 +++++++
+ 2 files changed, 15 insertions(+)
+
+ 4.0.1 backport: removed the unittest part
+
+diff --git a/cmake/modules/HandleLLVMOptions.cmake b/cmake/modules/HandleLLVMOptions.cmake
+index c5390371845..b5059a8a60e 100644
+--- a/cmake/modules/HandleLLVMOptions.cmake
++++ b/cmake/modules/HandleLLVMOptions.cmake
+@@ -151,6 +151,14 @@ if(NOT (${CMAKE_SYSTEM_NAME} MATCHES "Darwin" OR WIN32 OR CYGWIN OR
+   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-z,defs")
+ endif()
+ 
++# Pass -Wl,-z,nodelete. This makes sure our shared libraries are not unloaded
++# by dlclose(). We need that since the CLI API relies on cross-references
++# between global objects which became horribly broken when one of the libraries
++# is unloaded.
++if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
++  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-z,nodelete")
++endif()
++
+ 
+ function(append value)
+   foreach(variable ${ARGN})
+-- 
+2.15.1
+

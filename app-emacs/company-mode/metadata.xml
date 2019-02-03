@@ -5,6 +5,7 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
+<stabilize-allarches/>
 <use>
   <flag name="ropemacs">Install backend for
     <pkg>dev-python/ropemacs</pkg></flag>

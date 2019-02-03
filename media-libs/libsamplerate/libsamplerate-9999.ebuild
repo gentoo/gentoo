@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,19 +18,15 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="sndfile static-libs test"
-REQUIRED_USE="test? ( sndfile )"
+IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
-RDEPEND="
-	sndfile? (
-		media-libs/libsndfile:=[${MULTILIB_USEDEP}]
-	)"
-# Alsa/FFTW are only consumed
-# by tests, not by the main library.
+# Alsa/FFTW are only required for tests
+# libsndfile is only used by examples and tests
 DEPEND="
-	${RDEPEND}
 	test? (
 		media-libs/alsa-lib[${MULTILIB_USEDEP}]
+		media-libs/libsndfile[${MULTILIB_USEDEP}]
 		sci-libs/fftw:3.0[${MULTILIB_USEDEP}]
 	)
 	virtual/pkgconfig"
@@ -43,10 +39,10 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
-		$(use_enable sndfile) \
 		$(use_enable static-libs static) \
 		$(use_enable test alsa) \
-		$(use_enable test fftw)
+		$(use_enable test fftw) \
+		$(use_enable test sndfile)
 }
 
 multilib_src_install_all() {

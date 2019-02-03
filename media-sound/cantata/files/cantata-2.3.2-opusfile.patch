@@ -1,0 +1,22 @@
+From cdf4363df91475b091ad20000078ca8ef21ce91f Mon Sep 17 00:00:00 2001
+From: Craig Drummond <craig.p.drummond@gmail.com>
+Date: Sat, 11 Aug 2018 08:31:40 +0100
+Subject: [PATCH] Add '.opus' to list of recognised extensions for local files.
+
+---
+ models/playqueuemodel.cpp | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletion(-)
+
+diff --git a/models/playqueuemodel.cpp b/models/playqueuemodel.cpp
+index deaaa78f3..c6c4c4130 100644
+--- a/models/playqueuemodel.cpp
++++ b/models/playqueuemodel.cpp
+@@ -89,7 +89,7 @@ QSet<QString> PlayQueueModel::constFileExtensions = QSet<QString>()
+                                                   << QLatin1String("m4b") << QLatin1String("mp4") << QLatin1String("m4p") << QLatin1String("wav") << QLatin1String("wv")
+                                                   << QLatin1String("wvp") << QLatin1String("aiff") << QLatin1String("aif") << QLatin1String("aifc") << QLatin1String("ape")
+                                                   << QLatin1String("spx") << QLatin1String("tta") << QLatin1String("mpc") << QLatin1String("mpp") << QLatin1String("mp+")
+-                                                  << QLatin1String("dff") << QLatin1String("dsf")
++                                                  << QLatin1String("dff") << QLatin1String("dsf") << QLatin1String("opus")
+                                                   // And playlists...
+                                                   << QLatin1String("m3u") << QLatin1String("m3u8") << constPlsPlaylist << constXspfPlaylist;
+ 

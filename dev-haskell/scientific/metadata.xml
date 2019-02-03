@@ -8,11 +8,11 @@
 	<longdescription>
 		A @Scientific@ number is an arbitrary-precision floating-point number
 		represented using scientific notation.
-		
+
 		A scientific number with 'coefficient' @c@ and
 		'base10Exponent' @e@ corresponds to the
 		'Fractional' number: @'fromInteger' c * 10 '^^' e@
-		
+
 		Its primary use-case is to serve as the target of
 		parsing floating point numbers. Since the textual
 		representation of floating point numbers use
@@ -20,8 +20,10 @@
 		parsed to a @Scientific@ number.
 	</longdescription>
 	<use>
-		<flag name="bytestring-builder">Provide the
-          Data.ByteString.Builder.Scientific module (requires bytestring &gt;= 0.10).</flag>
+		<flag name="bytestring-builder">
+			Provide the Data.ByteString.Builder.Scientific
+			module (requires bytestring &gt;= 0.10).
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">basvandijk/scientific</remote-id>

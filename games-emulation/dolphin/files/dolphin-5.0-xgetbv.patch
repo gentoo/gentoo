@@ -1,0 +1,24 @@
+Workaround collision of _xgetbv intrinsic redeclaration:
+
+Source/Core/Common/x64CPUDetect.cpp:45:12: error: ambiguating new declaration of ‘u64 _xgetbv(u32)’
+ static u64 _xgetbv(u32 index)
+            ^~~~~~~
+In file included from /usr/lib/gcc/x86_64-pc-linux-gnu/8.1.0/include/x86intrin.h:74,
+                 from Source/Core/Common/Intrinsics.h:12,
+                 from Source/Core/Common/x64CPUDetect.cpp:10:
+/usr/lib/gcc/x86_64-pc-linux-gnu/8.1.0/include/xsaveintrin.h:60:1: note: old declaration ‘long long int _xgetbv(unsigned int)’
+ _xgetbv (unsigned int __A)
+ ^~~~~~~
+
+Upstream fied it in
+    commit 823fdda30c38be953c3d425874f2adeabed2b5a8
+    intrinsics: stop defining _xgetbv/_XCR_XFEATURE_ENABLED_MASK, which are reserved
+
+--- a/Source/Core/Common/x64CPUDetect.cpp
++++ b/Source/Core/Common/x64CPUDetect.cpp
+@@ -45 +45 @@ static inline void __cpuid(int info[4], int function_id)
+-static u64 _xgetbv(u32 index)
++static u64 _xgetbv_dolphin(u32 index)
+@@ -137 +137 @@ void CPUInfo::Detect()
+-			if ((_xgetbv(_XCR_XFEATURE_ENABLED_MASK) & 0x6) == 0x6)
++			if ((_xgetbv_dolphin(_XCR_XFEATURE_ENABLED_MASK) & 0x6) == 0x6)

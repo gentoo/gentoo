@@ -7,6 +7,7 @@
 # @AUTHOR:
 # 0xd34df00d@gmail.com
 # NightNord@niifaq.ru
+# @SUPPORTED_EAPIS: 6
 # @BLURB: Common functions and setup utilities for the LeechCraft app
 # @DESCRIPTION:
 # The leechcraft eclass contains a common set of functions and steps
@@ -18,7 +19,7 @@
 #
 # Thanks for original eclass to Andrian Nord <NightNord@niifaq.ru>.
 #
-# Only EAPI >4 supported
+# Only EAPI >=6 is supported
 
 case ${EAPI:-0} in
 	6) ;;

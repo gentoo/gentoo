@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -17,7 +17,7 @@ SRC_URI="${SRC_URI_amd64} ${SRC_URI_ppc} ${SRC_URI_x86} ${SRC_URI_sparc}"
 
 LICENSE="distributed.net GPL-2"
 SLOT="0"
-KEYWORDS="~amd64" # ppc,x86 not available for this version
+KEYWORDS="~amd64 ~ppc ~x86" # ppc,x86 not available for this version
 IUSE=""
 RESTRICT="mirror"
 

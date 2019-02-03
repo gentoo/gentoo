@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit vdr-plugin-2 ssl-cert
 VERSION="1971" # every bump, new version
 
 DESCRIPTION="VDR Plugin: remote programming VDR using VDR-Manager running on Android devices"
-HOMEPAGE="http://projects.vdr-developer.org/projects/vdr-manager/wiki"
+HOMEPAGE="https://projects.vdr-developer.org/projects/vdr-manager/wiki"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
 KEYWORDS="~x86 ~amd64"
@@ -63,7 +63,7 @@ pkg_postinst() {
 	einfo "Add a password to /etc/conf.d/vdr.vdrmanager"
 
 	if use ssl ; then
-		if path_exists -a "${ROOT}${VDRMANAGER_SSL_KEY_FILE}.pem"; then
+		if [[ -f ${ROOT}${VDRMANAGER_SSL_KEY_FILE}.pem ]]; then
 			einfo "found an existing SSL cert, to create a new SSL cert, run:\n"
 			einfo "emerge --config ${PN}"
 		else

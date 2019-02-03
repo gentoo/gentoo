@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
-DEPEND="|| ( <dev-lang/php-5.3[pcre] >=dev-lang/php-5.3 )
+DEPEND=">=dev-lang/php-5.3
 	dev-lang/php[mysql,session]
 	app-admin/webapp-config
 	app-text/bibutils"

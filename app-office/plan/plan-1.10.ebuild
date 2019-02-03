@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Motif based schedule planner"
-HOMEPAGE="http://www.bitrot.de/plan.html"
+HOMEPAGE="https://www.bitrot.de/plan.html"
 SRC_URI="ftp://ftp.fu-berlin.de/unix/X11/apps/plan/${P}.tar.gz
 	mirror://gentoo/${P}-gentoo.tar.xz"
 

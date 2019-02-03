@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGES README.md"
 
@@ -17,7 +17,7 @@ DESCRIPTION="A template language aiming to reduce the syntax to the essential pa
 HOMEPAGE="http://slim-lang.com/"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 x86"
 SLOT="0"
 IUSE="doc"
 
@@ -26,7 +26,7 @@ ruby_add_rdepend ">=dev-ruby/tilt-1.3.3:* <dev-ruby/tilt-2.1:*
 
 ruby_add_bdepend "doc? ( dev-ruby/yard dev-ruby/redcarpet )"
 
-ruby_add_bdepend "test? ( dev-ruby/sass )"
+ruby_add_bdepend "test? ( dev-ruby/redcarpet dev-ruby/sass )"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/I s:^:#:' Rakefile || die

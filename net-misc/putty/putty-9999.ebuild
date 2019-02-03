@@ -1,18 +1,18 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools eutils gnome2-utils git-r3 toolchain-funcs
 
 DESCRIPTION="A Free Telnet/SSH Client"
-HOMEPAGE="http://www.chiark.greenend.org.uk/~sgtatham/putty/"
-EGIT_REPO_URI="git://git.tartarus.org/simon/putty.git"
+HOMEPAGE="https://www.chiark.greenend.org.uk/~sgtatham/putty/"
+EGIT_REPO_URI="https://git.tartarus.org/simon/putty.git"
 SRC_URI="https://dev.gentoo.org/~jer/${PN}-icons.tar.bz2"
 LICENSE="MIT"
 
 SLOT="0"
 KEYWORDS=""
-IUSE="doc +gtk ipv6 kerberos"
+IUSE="doc +gtk ipv6 gssapi"
 
 RDEPEND="
 	!net-misc/pssh
@@ -23,7 +23,7 @@ RDEPEND="
 		x11-libs/libX11
 		x11-libs/pango
 	)
-	kerberos? ( virtual/krb5 )
+	gssapi? ( virtual/krb5 )
 "
 DEPEND="
 	${RDEPEND}
@@ -53,13 +53,18 @@ src_prepare() {
 src_configure() {
 	cd "${S}"/unix || die
 	econf \
-		$(use_with kerberos gssapi) \
-		$(use_with gtk)
+		$(use_with gssapi) \
+		$(use_with gtk gtk=3)
 }
 
 src_compile() {
 	emake -C "${S}"/doc
 	emake -C "${S}"/unix AR=$(tc-getAR) $(usex ipv6 '' COMPAT=-DNO_IPV6)
+}
+
+src_test() {
+	emake -C unix cgtest
+	unix/cgtest || die
 }
 
 src_install() {

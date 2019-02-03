@@ -9,7 +9,7 @@ inherit distutils-r1
 MY_PN="AddOns"
 
 DESCRIPTION="Dynamically extend other objects (formerly ObjectRoles)"
-HOMEPAGE="https://pypi.python.org/pypi/AddOns/"
+HOMEPAGE="https://pypi.org/project/AddOns/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.zip -> ${P}.zip"
 
 KEYWORDS="amd64 x86"

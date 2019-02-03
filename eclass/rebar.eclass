@@ -6,6 +6,7 @@
 # Amadeusz Żołnowski <aidecoe@gentoo.org>
 # @AUTHOR:
 # Amadeusz Żołnowski <aidecoe@gentoo.org>
+# @SUPPORTED_EAPIS: 6
 # @BLURB: Build Erlang/OTP projects using dev-util/rebar.
 # @DESCRIPTION:
 # An eclass providing functions to build Erlang/OTP projects using

@@ -1,0 +1,39 @@
+From d802d2aacd08605db24f58f7021df2f452d9b1e1 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 3 Jan 2018 20:40:13 +1300
+Subject: Prevent installing README.pod to INC
+
+Unfortunately, ".pod" extensions are treated the same as top-level
+'.pl' and '.pm' extensions and installed to @INC under the packages
+prefix directory.
+
+This avoids this problem by filtering out the .pod file in the blib/
+to DESTDIR install stage.
+
+Bug: https://github.com/trinitum/perl-RedisDB-Parser/pull/1
+---
+ INSTALL.SKIP | 1 +
+ MANIFEST     | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 INSTALL.SKIP
+
+diff --git a/INSTALL.SKIP b/INSTALL.SKIP
+new file mode 100644
+index 0000000..4fd94be
+--- /dev/null
++++ b/INSTALL.SKIP
+@@ -0,0 +1 @@
++README\.pod$
+diff --git a/MANIFEST b/MANIFEST
+index 8bb93d3..967554a 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -1,4 +1,5 @@
+ Changes
++INSTALL.SKIP
+ lib/RedisDB/Parser.pm
+ lib/RedisDB/Parser/Error.pm
+ lib/RedisDB/Parser/PP.pm
+-- 
+2.15.1
+

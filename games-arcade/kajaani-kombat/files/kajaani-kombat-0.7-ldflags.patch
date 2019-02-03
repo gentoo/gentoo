@@ -1,5 +1,5 @@
---- Makefile.old	2010-10-15 15:48:06.000000000 +0200
-+++ Makefile	2010-10-15 15:48:18.000000000 +0200
+--- a/Makefile.old	2010-10-15 15:48:06.000000000 +0200
++++ b/Makefile	2010-10-15 15:48:18.000000000 +0200
 @@ -85,7 +85,7 @@
  client_net.o: client_net.h client_net.cpp globals.h monitor_queue.h msg.h
  

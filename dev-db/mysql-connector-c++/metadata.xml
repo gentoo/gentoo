@@ -3,6 +3,7 @@
 <pkgmetadata>
 <use>
 	<flag name="gcov">Build coverage support</flag>
+	<flag name="legacy">Build the legacy 1.x API as well as the DevX API</flag>
 </use>
 <maintainer type="project">
 	<email>mysql-bugs@gentoo.org</email>

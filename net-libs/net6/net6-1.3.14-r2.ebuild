@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,10 +34,4 @@ src_configure() {
 src_install() {
 	default
 	prune_libtool_files
-}
-
-pkg_postinst() {
-	elog "Please note that because of the use of C++ templates"
-	elog "Gobby 0.4 has to be recompiled against the new ${PN}"
-	elog "to pick up the changes."
 }

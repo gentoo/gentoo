@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit udev
 
@@ -14,12 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="kernel_linux"
 
-RDEPEND="sys-apps/pcsc-lite
+DEPEND="sys-apps/pcsc-lite
 	dev-libs/libzip"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
-RDEPEND="${RDEPEND}
+RDEPEND="${DEPEND}
 	>=app-crypt/ccid-1.4.18[usb]"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	econf \

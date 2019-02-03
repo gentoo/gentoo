@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ KEYWORDS=""
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}
-	media-libs/liblastfm[qt5]
+	media-libs/liblastfm[qt5(+)]
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 "

@@ -4,8 +4,8 @@ linking since symbols are used from both
 
 http://bugs.gentoo.org/459650
 
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -125,12 +125,7 @@
  # End compile emacs stuff
  
@@ -20,8 +20,8 @@ http://bugs.gentoo.org/459650
  # End check for ncurses
  
  # Check for PAM support
---- src/libraries/Makefile.am
-+++ src/libraries/Makefile.am
+--- a/src/libraries/Makefile.am
++++ b/src/libraries/Makefile.am
 @@ -4,7 +4,7 @@
  INCLUDES      = -I../.. -I../
  BUILT_SOURCES = parse_settings.h

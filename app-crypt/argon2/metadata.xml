@@ -10,6 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>Argon2 is a password hashing tool and library that won the Password Hashing Competition (PHC)</longdescription>
+	<slots>
+		<subslots>Reflect ABI of libargon2.so.</subslots>
+	</slots>
 	<upstream>
 		<remote-id type="github">P-H-C/phc-winner-argon2</remote-id>
 	</upstream>

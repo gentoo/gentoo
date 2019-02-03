@@ -1,0 +1,30 @@
+From a2d6fc7ac040c6ef94a36515f9ea24428f8f1ecc Mon Sep 17 00:00:00 2001
+From: Alexander Alekhin <alexander.alekhin@intel.com>
+Date: Tue, 24 Apr 2018 12:40:25 +0300
+Subject: [PATCH] cmake: fix popcnt detection
+
+via GCC/Clang __POPCNT__ define
+---
+ cmake/checks/cpu_popcnt.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/checks/cpu_popcnt.cpp b/cmake/checks/cpu_popcnt.cpp
+index 16e5575108b..44c7deda053 100644
+--- a/cmake/checks/cpu_popcnt.cpp
++++ b/cmake/checks/cpu_popcnt.cpp
+@@ -4,12 +4,14 @@
+ #    define CV_POPCNT_U64 _mm_popcnt_u64
+ #  endif
+ #  define CV_POPCNT_U32 _mm_popcnt_u32
+-#else
++#elif defined(__POPCNT__)
+ #  include <popcntintrin.h>
+ #  if defined(__x86_64__)
+ #    define CV_POPCNT_U64 __builtin_popcountll
+ #  endif
+ #  define CV_POPCNT_U32 __builtin_popcount
++#else
++#  error "__POPCNT__ is not defined by compiler"
+ #endif
+ 
+ int main()

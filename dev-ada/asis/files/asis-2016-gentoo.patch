@@ -1,6 +1,6 @@
---- asis-gpl-2015-src/Makefile.old	2017-01-03 13:59:38.106788092 +0000
-+++ asis-gpl-2015-src/Makefile	2017-01-03 14:01:43.735605615 +0000
-@@ -10,15 +10,18 @@
+--- a/Makefile	2017-01-03 13:59:38.106788092 +0000
++++ b/Makefile	2017-01-03 14:01:43.735605615 +0000
+@@ -10,15 +10,19 @@
  # ==================================================== build
  
  all:
@@ -19,13 +19,14 @@
  
  setup:
 -	$(GPRBUILD) -p  -XBLD=$(BLD) tools/tool_utils/generate_factory.gpr
-+	$(GPRBUILD) -p -j$(PROCESSORS) -XBLD=$(BLD) tools/tool_utils/generate_factory.gpr \
++	$(GPRBUILD) -p -j$(PROCESSORS) -XBLD=$(BLD) \
++	  $(GPRBUILD_FLAGS) tools/tool_utils/generate_factory.gpr \
 +	  -cargs $(ADAFLAGS)
  	rm -rf tools/tool_utils/ada_trees-factory.ads tools/tool_utils/ada_trees-factory.adb
  	rm -rf tools/gnat2xml/ada_trees-factory.ads tools/gnat2xml/ada_trees-factory.adb
  	cd tools/tool_utils ; ./ada_trees-generate_factory$(exe_ext)
---- asis-gpl-2016-src/Makefile.stub.old	2017-04-06 21:16:41.802376709 +0200
-+++ asis-gpl-2016-src/Makefile.stub	2017-04-06 21:17:01.627023825 +0200
+--- a/Makefile.stub	2017-04-06 21:16:41.802376709 +0200
++++ b/Makefile.stub	2017-04-06 21:17:01.627023825 +0200
 @@ -3,7 +3,6 @@
  
  # Where Asis library should be installed

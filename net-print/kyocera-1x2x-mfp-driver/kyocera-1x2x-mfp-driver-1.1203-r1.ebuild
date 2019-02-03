@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="-* ~amd64"
 
 IUSE_L10N=(en ar cs de el es fr he hu it ko pl pt ro ru th tr vi zh-CN zh-TW)
-IUSE="+rastertokpsl-fix ${IUSE_L10N[@]/#/l10n_}"
+IUSE="+rastertokpsl-fix +${IUSE_L10N[@]/#/l10n_}"
 REQUIRED_USE="|| ( ${IUSE_L10N[@]/#/l10n_} )"
 
 RDEPEND="net-print/cups"

@@ -1,0 +1,60 @@
+From 1528e780825b1fc49639ea16d332c5752051dab7 Mon Sep 17 00:00:00 2001
+From: John Lindgren <john@jlindgren.net>
+Date: Sun, 19 Aug 2018 14:12:30 -0400
+Subject: [PATCH] Fix crash when an invalid field name is sent via D-Bus. 
+ Closes: #817.
+
+Regression introduced by commit 203b41f8e249.
+---
+ src/audacious/dbus-server.cc | 31 +++++++++++++++++--------------
+ 1 file changed, 17 insertions(+), 14 deletions(-)
+
+diff --git a/src/audacious/dbus-server.cc b/src/audacious/dbus-server.cc
+index 7602ace22..20a6c5839 100644
+--- a/src/audacious/dbus-server.cc
++++ b/src/audacious/dbus-server.cc
+@@ -635,27 +635,30 @@ static gboolean do_song_title (Obj * obj, Invoc * invoc, unsigned pos)
+ static gboolean do_song_tuple (Obj * obj, Invoc * invoc, unsigned pos, const char * key)
+ {
+     Tuple::Field field = Tuple::field_by_name (key);
+-    Tuple tuple;
+-    GVariant * var;
++    GVariant * var = nullptr;
+ 
+     if (field >= 0)
+-        tuple = CURRENT.entry_tuple (pos);
+-
+-    switch (tuple.get_value_type (field))
+     {
+-    case Tuple::String:
+-        var = g_variant_new_string (tuple.get_str (field));
+-        break;
++        Tuple tuple = CURRENT.entry_tuple (pos);
+ 
+-    case Tuple::Int:
+-        var = g_variant_new_int32 (tuple.get_int (field));
+-        break;
++        switch (tuple.get_value_type (field))
++        {
++        case Tuple::String:
++            var = g_variant_new_string (tuple.get_str (field));
++            break;
+ 
+-    default:
+-        var = g_variant_new_string ("");
+-        break;
++        case Tuple::Int:
++            var = g_variant_new_int32 (tuple.get_int (field));
++            break;
++
++        default:
++            break;
++        }
+     }
+ 
++    if (! var)
++        var = g_variant_new_string ("");
++
+     FINISH2 (song_tuple, g_variant_new_variant (var));
+     return true;
+ }

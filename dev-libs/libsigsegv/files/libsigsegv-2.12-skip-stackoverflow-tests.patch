@@ -1,0 +1,13 @@
+diff -Nuar a/tests/Makefile.am b/tests/Makefile.am
+--- a/tests/Makefile.am	2016-10-22 04:41:06.000000000 +0200
++++ b/tests/Makefile.am	2018-04-24 14:23:16.658681749 +0200
+@@ -20,7 +20,8 @@
+ 
+ AUTOMAKE_OPTIONS = 1.11 gnits no-dependencies color-tests
+ 
+-TESTS = sigsegv1 sigsegv2 sigsegv3 stackoverflow1 stackoverflow2
++#TESTS = sigsegv1 sigsegv2 sigsegv3 stackoverflow1 stackoverflow2
++TESTS = sigsegv1 sigsegv2 sigsegv3
+ 
+ EXTRA_DIST = mmaputil.h altstack.h
+ 

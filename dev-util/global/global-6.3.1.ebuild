@@ -5,7 +5,7 @@ EAPI="5"
 
 inherit autotools elisp-common eutils
 
-DESCRIPTION="GNU Global is a tag system to find the locations of a specified object in various sources"
+DESCRIPTION="tag system to find an object location in various sources"
 HOMEPAGE="https://www.gnu.org/software/global/global.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 

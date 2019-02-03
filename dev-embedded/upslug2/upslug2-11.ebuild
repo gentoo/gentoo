@@ -1,5 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="util for flashing NSLU2 machines remotely"
 HOMEPAGE="http://www.nslu2-linux.org/wiki/Main/UpSlug2"

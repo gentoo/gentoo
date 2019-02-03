@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_DOC=""
 
@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/topfunky/gruff"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-macos"
+KEYWORDS="amd64 x86 ~x86-macos"
 IUSE=""
 
 # imagemagick is an indirect dependency through rmagick. However, for
@@ -37,6 +37,7 @@ ruby_add_bdepend "
 
 all_ruby_prepare() {
 	sed -i -e '/reporters/I s:^:#:' test/gruff_test_case.rb || die
+	sed -i -e '2irequire "date"' test/test_scatter.rb || die
 }
 
 each_ruby_test() {

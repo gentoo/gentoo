@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,12 +11,12 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tds.tgz"
 
 LICENSE="LPPL-1.3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="+biber doc examples"
 
 DEPEND="dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-latexextra
-	|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericextra )"
+	dev-texlive/texlive-plaingeneric"
 RDEPEND="${DEPEND}"
 PDEPEND="biber? ( ~dev-tex/biber-2.7 )"
 

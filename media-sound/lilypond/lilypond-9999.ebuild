@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,10 +8,10 @@ PYTHON_COMPAT=( python2_7 )
 inherit elisp-common autotools python-single-r1 xdg-utils
 
 if [[ "${PV}" = "9999" ]]; then
-	EGIT_REPO_URI="git://git.sv.gnu.org/lilypond.git"
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/lilypond.git"
 else
 	SRC_URI="http://download.linuxaudio.org/lilypond/sources/v${PV:0:4}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 fi
 
 DESCRIPTION="GNU Music Typesetter"
@@ -20,8 +20,9 @@ HOMEPAGE="http://lilypond.org/"
 LICENSE="GPL-3 FDL-1.3"
 SLOT="0"
 LANGS=" ca cs da de el eo es fi fr it ja nl ru sv tr uk vi zh_TW"
-IUSE="debug emacs guile2 profile vim-syntax ${LANGS// / linguas_}"
+IUSE="debug emacs guile2 profile vim-syntax"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+PATCHES=(${FILESDIR}/$P-programming_error.patch)
 
 RDEPEND=">=app-text/ghostscript-gpl-8.15
 	>=dev-scheme/guile-1.8.2:12[deprecated,regex]
@@ -81,11 +82,11 @@ src_prepare() {
 	sed -i 's/OPTIMIZE -g/OPTIMIZE/' aclocal.m4 || die
 
 	for lang in ${LANGS}; do
-		use linguas_${lang} || rm po/${lang}.po || die
+		has ${lang} ${LINGUAS-${lang}} || rm po/${lang}.po || die
 	done
 
 	# respect AR
-	sed -i "s/^AR=ar/AR=$(tc-getAR)/" stepmake/stepmake/library-vars.make || die
+	sed -i "s:^AR=ar:AR=$(tc-getAR):" stepmake/stepmake/library-vars.make || die
 
 	# remove bundled texinfo file (fixes bug #448560)
 	rm tex/texinfo.tex || die

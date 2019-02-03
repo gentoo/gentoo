@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -14,17 +14,18 @@ else
 fi
 
 DESCRIPTION="C library for developing embedded Linux systems"
-HOMEPAGE="http://www.uclibc-ng.org/"
+HOMEPAGE="https://uclibc-ng.org/"
 if [[ ${PV} != "9999" ]] ; then
 	PATCH_VER=""
-	SRC_URI="http://downloads.uclibc-ng.org/releases/${PV}/${MY_P}.tar.bz2"
-	KEYWORDS="-* amd64 arm ~mips ppc x86"
+	SRC_URI="https://downloads.uclibc-ng.org/releases/${PV}/${MY_P}.tar.bz2"
+	KEYWORDS="-* amd64 arm ~mips ~ppc x86"
 fi
 
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="debug hardened iconv ipv6 rpc symlink-compat crosscompile_opts_headers-only"
-RESTRICT="strip"
+IUSE="debug hardened iconv ipv6 rpc symlink-compat headers-only"
+# tests fail due to unusual makefile
+RESTRICT="strip test"
 
 # 1) We can't upgrade from uclibc to uclibc-ng via a soft blocker since portage
 #    will delete the ld.so sym link prematurely and break the system. So we
@@ -59,7 +60,7 @@ alt_build_kprefix() {
 }
 
 just_headers() {
-	use crosscompile_opts_headers-only && is_crosscompile
+	use headers-only && is_crosscompile
 }
 
 uclibc_endian() {

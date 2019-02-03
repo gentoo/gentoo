@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>palipalo9@googlemail.com</email>
-		<name>Ingolf Wagner</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+<!-- maintainer-needed -->
 	<longdescription>
 		maim (Make Image) is a utility that takes screenshots of your desktop using imlib2.
 	</longdescription>

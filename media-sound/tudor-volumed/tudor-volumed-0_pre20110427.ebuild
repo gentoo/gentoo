@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -17,7 +17,7 @@ IUSE=""
 RDEPEND="media-libs/alsa-lib
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 pkg_setup() {
 	tc-export CXX

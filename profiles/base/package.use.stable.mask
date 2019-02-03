@@ -1,8 +1,73 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
+
+# Brian Evans <grknight@gentoo.org> (06 Dec 2018)
+# Mask USE flag since argon2 dependency is not stable on most arches
+dev-lang/php argon2
+
+# Mikle Kolyada <zlogene@gentoo.org> (07 Nov 2018)
+# sssd is only stable for amd64 and x86
+app-admin/sudo sssd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2018)
+# app-misc/ddcutil is not yet stable.
+kde-plasma/powerdevil brightness-control
+
+# Michał Górny <mgorny@gentoo.org> (07 Jun 2018)
+# sys-libs/netbsd-csu not stable yet.
+sys-devel/clang-runtime crt
+
+# Thomas Deutschmann <whissi@gentoo.org> (01 Jun 2018)
+# Needs dev-ruby/asciidoctor which has a lot of unstable deps
+net-analyzer/wireshark doc
+
+# Andreas Sturmlechner <asturm@gentoo.org> (29 May 2018)
+# Depends on unstable media-libs/libaom, net-libs/srt
+media-video/vlc aom srt
+
+# Andreas Sturmlechner <asturm@gentoo.org> (21 May 2018)
+# Depends on lots of unstable dependencies
+dev-python/s3fs test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (03 Mar 2018)
+# sci-geosciences/grass is not stable
+sci-geosciences/qgis grass
+
+# Thomas Beierlein <tomjbe@gentoo.org> (21 Mar 2018)
+# ~app-backup/bacula-9.0.6 does not compile with USE=libressl (bug #641492)
+~app-backup/bacula-9.0.6 libressl
+
+# Matthias Maier <tamiko@gentoo.org> (18 Mar 2018)
+# dev-libs/capstone hasn't been stabilized yet
+app-emulation/qemu capstone
+
+# Kent Fredric <kentnl@gentoo.org> (3 Mar 2018)
+# Not an officially supported configuration, as it causes unpredictable
+# fragility and/or dependency headaches due to the very narrow interop window
+# Bugs #649408, #641108, #640724
+dev-perl/DBD-SQLite system-sqlite
+
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (13 Feb 2018)
+# Requires >=dev-lang/mujs-1.0.0 stabilized. mpv-0.27.2 is stabilized
+# due to a security bug, so we won't bother with javascript this time.
+~media-video/mpv-0.27.2 javascript
+
+# Andrey Grozin <grozin@gentoo.org> (24 Jan 2018)
+# Depends on unstable dev-python/sphinx-gallery.
+# Bug #643840.
+dev-python/matplotlib doc
+
+# Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
+# Requires proprietary fetch-restricted package that is not suitable
+# for stabilization. Bug #645092.
+net-proxy/haproxy device-atlas
+
+# Bernard Cafarelli <voyageur@gentoo.org> (27 Nov 2017)
+# Dependencies have no stable keyword
+app-backup/backup-manager s3
 
 # Brian Evans <grknight@gentoo.org (6 Nov 2017)
 # Requires stable phpunit
@@ -13,17 +78,6 @@ dev-php/PEAR-Text_Password test
 # The go flag requires stable masked dev-lang/go[gccgo].
 www-servers/uwsgi go pypy uwsgi_plugins_alarm_xmpp
 
-# Andreas Sturmlechner <asturm@gentoo.org> (11 Oct 2017)
-# Requires unstable dependency dev-qt/qtspeech.
-kde-apps/kanagram speech
-kde-apps/kdepim-runtime speech
-kde-apps/konqueror speech
-kde-apps/kpimtextedit speech
-kde-apps/ktp-text-ui speech
-kde-apps/okular speech
-kde-frameworks/knotifications speech
-kde-frameworks/ktextwidgets speech
-
 # Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
 # Required dependeny is not stable
 sci-libs/gdal mdb
@@ -32,21 +86,9 @@ sci-libs/gdal mdb
 # Requires guile-2 which is still unstable.
 >=net-irc/weechat-1.7 guile
 
-# Andreas Sturmlechner <asturm@gentoo.org> (17 Aug 2017)
-# Unstable dependencies.
-kde-apps/kopete cryptography
-
-# Andreas Sturmlechner <asturm@gentoo.org> (12 Aug 2017)
-# Not operational, bug #619534
->=kde-apps/cantor-17.04.3 R
-
 # Michael Palimaka <kensington@gentoo.org) (11 Aug 2017)
 # Unstable dependencies.
 dev-util/rpmdevtools emacs
-
-# Andreas Sturmlechner <asturm@gentoo.org> (06 Aug 2017)
-# Requires dev-lang/python-3.5 stabilisation
->=kde-apps/kdegames-meta-17.04.3 python
 
 # Patrick McLean <chutzpah@gentoo.org> (11 Jul 2017)
 # Requires >=net-dns/libidn2-2.0 stabilization
@@ -56,21 +98,9 @@ net-dns/dnsmasq libidn2
 # Requires dev-lang/julia stabilisation, bug #613576
 kde-apps/cantor julia
 
-# Andreas Sturmlechner <asturm@gentoo.org> (22 Feb 2017)
-# Requires not yet stabilised sci-geosciences/grass,
-# which probably needs bump to solve several issues.
-sci-geosciences/qgis grass
-
 # Brian Dolbec <dolsen@gentoo.org> (14 Feb 2017)
 # This is stable masked as g-sorcery is being not actively developed.
 app-portage/layman g-sorcery
-
-# Mart Raudsepp <leio@gentoo.org> (13 Feb 2017)
-# No stable multilib supporting sys-libs/libunwind yet,
-# temporarily masked to let stabilization #601354 proceed.
-# The feature provided by this is also only useful for a
-# leak tracer, which is mostly useful for upstream CI testing.
-media-libs/gstreamer unwind
 
 # David Seifert <soap@gentoo.org> (12 Feb 2017)
 # Unknown future, stable deps are hopelessly
@@ -99,12 +129,6 @@ app-office/kmymoney weboob
 # Stable-masking it so Boost 1.62 stabilization can go ahead
 sci-libs/vtk mpi
 
-# Doug Goldstein <cardoe@gentoo.org> (04 Jan 2017)
-# libcxx is not stable so we can't let users use it
-dev-lang/rust libcxx
-# llvm 3.8.x is not stable so we can't let users use it
-dev-lang/rust system-llvm
-
 # Alon Bar-Lev <alonbl@gentoo.org> (01 Jan 2017)
 # Will always require unstable packages.
 net-libs/gnutls test-full
@@ -132,19 +156,10 @@ dev-lang/go gccgo
 # Mask monitoring capabilities of Ganeti on stable branches
 app-emulation/ganeti monitoring
 
-# Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
-# Unmask stable-masked implementations for python-exec
-dev-lang/python-exec -python_targets_python3_5
-dev-lang/python-exec -python_targets_python3_6
-
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Version compatible with current ffmpeg is not ready to be stabilized
 # bug #539212
 app-emulation/vice ffmpeg
-
-# Pacho Ramos <pacho@gentoo.org> (13 May 2015)
-# texinfo-5 cannot be stabilized yet
-=dev-lang/gnat-gcc-4.6* doc
 
 # Jeroen Roovers <jer@gentoo.org> (26 Apr 2015)
 # mongodb support is nice, but dev-libs/mongo-c-driver upstream is not ready
@@ -155,10 +170,6 @@ net-analyzer/pmacct mongodb
 # sci-visualization/paraview is not ready for stabilization yet
 # See bug #541012
 sci-libs/openfoam paraview
-
-# Pacho Ramos <pacho@gentoo.org>
-# dev-libs/libappindicator isn't going to be stabilized
-x11-misc/redshift appindicator
 
 # Ben de Groot <yngwin@gentoo.org>
 # Mask experimental feature on stable. This also needs not yet stable mupdf.
@@ -175,7 +186,7 @@ media-libs/opencv vtk
 
 # Mikle Kolyada <zlogene@gentoo.org> (16 Aug 2014)
 # Not yet stabilized dependency, need more testing
->=dev-perl/PDL-2.4.11 pdl2 pgplot plplot
+>=dev-perl/PDL-2.4.11 pdl2 pgplot
 
 # Samuli Suominen <ssuominen@gentoo.org> (01 Aug 2014)
 # Optional (not required by anything in gentoo-x86) and fragile (based on
@@ -187,14 +198,6 @@ media-libs/libcaca java mono
 # Alon Bar-Lev <alonbl@gentoo.org> (21 Jul 2014)
 # dev-libs/opencryptoki will not be stabile any time soon (bug#510204)
 app-crypt/tpm-tools pkcs11
-
-# Sergey Popov <pinkbyte@gentoo.org> (28 Oct 2013)
-# sys-cluster/cman is still in ~arch.
-sys-cluster/pacemaker cman
-
-# Samuli Suominen <ssuominen@gentoo.org> (01 Aug 2013)
-# The dependencies for these flags are still in ~arch.
-sys-fs/lvm2 clvm cman
 
 # Doug Goldstein <cardoe@gentoo.org> (12 Sep 2013)
 # Waiting on glusterfs maintainers in bug #484016
@@ -213,5 +216,5 @@ app-emulation/xen-tools ocaml
 media-gfx/imagemagick opencl
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (28 Mar 2013)
-# No stable sci-chemistry/avogadro yet but we want kde-4.10 to go stable
->=kde-apps/kalzium-4.10.0 editor
+# Depends on unstable sci-libs/avogadrolibs
+kde-apps/kalzium editor

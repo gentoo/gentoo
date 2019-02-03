@@ -17,6 +17,8 @@ KEYWORDS=""
 IUSE=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
-	dev-python/terminaltables[${PYTHON_USEDEP}]
+	>=dev-python/backports-csv-1.0[${PYTHON_USEDEP}]
+	>=dev-python/tabulate-0.8.0[${PYTHON_USEDEP}]
+	>=dev-python/terminaltables-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
 "

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -53,7 +53,7 @@ DEPEND="${RDEPEND}
 SITEFILE=50${PN}-gentoo.el
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-5.5.0.0-gentoo.patch
+	epatch "${FILESDIR}"/${PN}-5.6.0.0-gentoo.patch
 }
 
 src_compile() {

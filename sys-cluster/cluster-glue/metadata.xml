@@ -7,6 +7,7 @@
 	</maintainer>
 	<longdescription>Cluster Glue is a set of libraries, tools and utilities suitable for the Heartbeat/Pacemaker cluster stack.</longdescription>
 	<use>
+		<flag name="ipmilan">Install the ipmilan plugin (requires <pkg>sys-libs/openipmi</pkg>)</flag>
 		<flag name="libnet">Force use of <pkg>net-libs/libnet</pkg></flag>
 	</use>
 </pkgmetadata>

@@ -1,0 +1,43 @@
+https://bugs.gentoo.org/631250
+https://631250.bugs.gentoo.org/attachment.cgi?id=513720
+
+diff --git a/spice-common/common/ssl_verify.c b/spice-common/common/ssl_verify.c
+index a9ed650..821faa9 100644
+--- a/spice-common/common/ssl_verify.c
++++ b/spice-common/common/ssl_verify.c
+@@ -33,7 +33,7 @@
+ #include <string.h>
+ #include <gio/gio.h>
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000
++#if OPENSSL_VERSION_NUMBER < 0x10100000 || defined(LIBRESSL_VERSION_NUMBER)
+ static const unsigned char *ASN1_STRING_get0_data(const ASN1_STRING *asn1)
+ {
+     return M_ASN1_STRING_data(asn1);
+diff --git a/src/bio-gio.c b/src/bio-gio.c
+index 9358fae..30aa73b 100644
+--- a/src/bio-gio.c
++++ b/src/bio-gio.c
+@@ -23,7 +23,7 @@
+ #include "spice-util.h"
+ #include "bio-gio.h"
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000
++#if OPENSSL_VERSION_NUMBER < 0x10100000 || defined(LIBRESSL_VERSION_NUMBER)
+ static BIO_METHOD one_static_bio;
+ 
+ static int BIO_meth_set_read(BIO_METHOD *biom,
+diff --git a/src/spice-channel.c b/src/spice-channel.c
+index 4c3db9d..9df0203 100644
+--- a/src/spice-channel.c
++++ b/src/spice-channel.c
+@@ -55,7 +55,7 @@ static void spice_channel_reset_capabilities(SpiceChannel *channel);
+ static void spice_channel_send_migration_handshake(SpiceChannel *channel);
+ static gboolean channel_connect(SpiceChannel *channel, gboolean tls);
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000
++#if OPENSSL_VERSION_NUMBER < 0x10100000 || defined(LIBRESSL_VERSION_NUMBER)
+ static RSA *EVP_PKEY_get0_RSA(EVP_PKEY *pkey)
+ {
+     if (pkey->type != EVP_PKEY_RSA) {
+

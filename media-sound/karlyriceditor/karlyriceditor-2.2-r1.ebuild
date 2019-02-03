@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils qmake-utils
+inherit desktop qmake-utils
 
 DESCRIPTION="Application to edit and synchronize lyrics with karaoke songs in various formats"
-HOMEPAGE="http://www.ulduzsoft.com/linux/karaoke-lyrics-editor/"
+HOMEPAGE="https://www.ulduzsoft.com/linux/karaoke-lyrics-editor/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
@@ -26,6 +26,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
+
+PATCHES=( "${FILESDIR}/${P}-ffmpeg-4.patch" )
 
 src_configure() {
 	eqmake5 "${PN}.pro"

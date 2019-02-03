@@ -14,10 +14,10 @@
 		<name>Python</name>
 	</maintainer>
 	<longdescription lang="en">
-    OpenStack test framework and test fixtures
-	The oslotest package is cross-tested against its consuming projects to
-	ensure that no changes to the library break the tests in those other projects.
-  </longdescription>
+		OpenStack test framework and test fixtures
+		The oslotest package is cross-tested against its consuming projects to
+		ensure that no changes to the library break the tests in those other projects.
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">oslotest</remote-id>
 		<remote-id type="launchpad">oslo</remote-id>

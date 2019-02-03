@@ -6,7 +6,7 @@ source tests-common.sh
 
 inherit flag-o-matic
 
-CFLAGS="-a -b -c=1"
+CFLAGS="-a -b -c=1 --param l1-cache-size=32"
 CXXFLAGS="-x -y -z=2"
 LDFLAGS="-l -m -n=3"
 ftend() {
@@ -55,7 +55,7 @@ done <<<"
 
 tbegin "strip-unsupported-flags"
 strip-unsupported-flags
-[[ ${CFLAGS} == "" ]] && [[ ${CXXFLAGS} == "-z=2" ]] && [[ ${LDFLAGS} == "" ]]
+[[ ${CFLAGS} == "--param l1-cache-size=32" ]] && [[ ${CXXFLAGS} == "-z=2" ]] && [[ ${LDFLAGS} == "" ]]
 ftend
 
 for var in $(all-flag-vars) ; do

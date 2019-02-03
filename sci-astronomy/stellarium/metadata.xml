@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>mr_bones_@gentoo.org</email>
-  </maintainer>
   <maintainer type="project">
     <email>sci-astronomy@gentoo.org</email>
     <name>Gentoo Astronomy Project</name>
@@ -17,7 +14,6 @@
   <use>
     <flag name="media">Enable sound and video support</flag>
     <flag name="stars">Install extra star catalogs</flag>
-    <flag name="sound">Enable sound support</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">stellarium</remote-id>

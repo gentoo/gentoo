@@ -13,6 +13,6 @@
 		Information Extraction and Text Chunking.
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">crfpp</remote-id>
+		<remote-id type="github">taku910/crfpp</remote-id>
 	</upstream>
 </pkgmetadata>

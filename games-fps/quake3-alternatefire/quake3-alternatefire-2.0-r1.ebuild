@@ -13,5 +13,5 @@ SRC_URI="mirror://quakeunity/modifications/alternatefire/alternatefire-${PV}.zip
 
 LICENSE="freedist"
 
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ EGIT_BRANCH="stable/pike"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="compute-only dhcp ipv6 l3 metadata openvswitch linuxbridge server sqlite mysql postgres"
+IUSE="compute-only dhcp haproxy ipv6 l3 metadata openvswitch linuxbridge server sqlite mysql postgres"
 REQUIRED_USE="!compute-only? ( || ( mysql postgres sqlite ) )
 						compute-only? ( !mysql !postgres !sqlite !dhcp !l3 !metadata !server
 						|| ( openvswitch linuxbridge ) )"
@@ -122,7 +122,7 @@ RDEPEND="
 	>=dev-python/ovs-2.7.0[${PYTHON_USEDEP}]
 	>=dev-python/ovsdbapp-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/psutil-3.2.2[${PYTHON_USEDEP}]
-	>=dev-python/pyroute2-0.4.17[${PYTHON_USEDEP}]
+	>=dev-python/pyroute2-0.4.21[${PYTHON_USEDEP}]
 	>=dev-python/weakrefmethod-1.0.2[$(python_gen_usedep 'python2_7')]
 	>=dev-python/python-novaclient-9.0.0[${PYTHON_USEDEP}]
 	>=dev-python/python-designateclient-1.5.0[${PYTHON_USEDEP}]
@@ -135,8 +135,8 @@ RDEPEND="
 	net-firewall/iptables
 	net-firewall/ebtables
 	net-firewall/conntrack-tools
-	net-proxy/haproxy
-	openvswitch? ( <=net-misc/openvswitch-2.8.9999 )
+	haproxy? ( net-proxy/haproxy )
+	openvswitch? ( net-misc/openvswitch )
 	ipv6? (
 		net-misc/radvd
 		>=net-misc/dibbler-1.0.1
@@ -178,30 +178,30 @@ src_prepare() {
 python_install_all() {
 	distutils-r1_python_install_all
 	if use server; then
-		newinitd "${FILESDIR}/neutron.initd-2" "neutron-server"
+		newinitd "${FILESDIR}/neutron.initd" "neutron-server"
 		newconfd "${FILESDIR}/neutron-server.confd" "neutron-server"
 		dosym /etc/neutron/plugin.ini /etc/neutron/plugins/ml2/ml2_conf.ini
 	fi
 	if use dhcp; then
-		newinitd "${FILESDIR}/neutron.initd-2" "neutron-dhcp-agent"
+		newinitd "${FILESDIR}/neutron.initd" "neutron-dhcp-agent"
 		newconfd "${FILESDIR}/neutron-dhcp-agent.confd" "neutron-dhcp-agent"
 	fi
 	if use l3; then
-		newinitd "${FILESDIR}/neutron.initd-2" "neutron-l3-agent"
+		newinitd "${FILESDIR}/neutron.initd" "neutron-l3-agent"
 		newconfd "${FILESDIR}/neutron-l3-agent.confd" "neutron-l3-agent"
 	fi
 	if use metadata; then
-		newinitd "${FILESDIR}/neutron.initd-2" "neutron-metadata-agent"
+		newinitd "${FILESDIR}/neutron.initd" "neutron-metadata-agent"
 		newconfd "${FILESDIR}/neutron-metadata-agent.confd" "neutron-metadata-agent"
 	fi
 	if use openvswitch; then
-		newinitd "${FILESDIR}/neutron.initd-2" "neutron-openvswitch-agent"
+		newinitd "${FILESDIR}/neutron.initd" "neutron-openvswitch-agent"
 		newconfd "${FILESDIR}/neutron-openvswitch-agent.confd" "neutron-openvswitch-agent"
-		newinitd "${FILESDIR}/neutron.initd-2" "neutron-ovs-cleanup"
+		newinitd "${FILESDIR}/neutron.initd" "neutron-ovs-cleanup"
 		newconfd "${FILESDIR}/neutron-openvswitch-agent.confd" "neutron-ovs-cleanup"
 	fi
 	if use linuxbridge; then
-		newinitd "${FILESDIR}/neutron.initd-2" "neutron-linuxbridge-agent"
+		newinitd "${FILESDIR}/neutron.initd" "neutron-linuxbridge-agent"
 		newconfd "${FILESDIR}/neutron-linuxbridge-agent.confd" "neutron-linuxbridge-agent"
 	fi
 	diropts -m 755 -o neutron -g neutron

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit autotools-multilib
 
 DESCRIPTION="Library set needed for build sssd"
-HOMEPAGE="https://fedorahosted.org/sssd"
-SRC_URI="https://fedorahosted.org/released/${PN}/${P}.tar.gz"
+HOMEPAGE="https://pagure.io/SSSD/ding-libs"
+SRC_URI="https://releases.pagure.org/SSSD/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3 GPL-3"
 SLOT="0"

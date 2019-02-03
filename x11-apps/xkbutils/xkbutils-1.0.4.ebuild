@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,5 +14,4 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXt
 	x11-libs/libXaw"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	x11-proto/inputproto"
+	x11-base/xorg-proto"

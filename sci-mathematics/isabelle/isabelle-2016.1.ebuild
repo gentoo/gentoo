@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -65,7 +65,7 @@ XZ_JAVA_P="${XZ_JAVA_PN}-${XZ_JAVA_PV}"
 XZ_JAVA_IC_PN="${XZ_JAVA_PN}-isabelle-component"
 XZ_JAVA_IC_P="${XZ_JAVA_IC_PN}-${XZ_JAVA_PV}"
 
-SS="2.11"
+SS="2.12"
 
 DESCRIPTION="Isabelle is a generic proof assistant"
 HOMEPAGE="http://www.cl.cam.ac.uk/research/hvg/Isabelle/index.html"
@@ -105,7 +105,7 @@ DEPEND=">=app-shells/bash-3.0:*
 		virtual/latex-base
 		dev-tex/rail
 	)
-	>=dev-lang/scala-2.11.8:${SS}
+	dev-lang/scala:${SS}
 	ledit? (
 		app-misc/ledit
 	)
@@ -113,10 +113,10 @@ DEPEND=">=app-shells/bash-3.0:*
 		app-misc/rlwrap
 	)"
 
-RDEPEND="dev-perl/libwww-perl
+RDEPEND="
+	dev-perl/libwww-perl
 	sci-mathematics/sha1-polyml
-	>=virtual/jre-1.8
-	${DEPEND}"
+	>=virtual/jre-1.8"
 
 S="${WORKDIR}"/Isabelle${MY_PV}
 TARGETDIR="/usr/share/Isabelle"

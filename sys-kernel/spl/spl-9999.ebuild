@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -14,15 +14,16 @@ fi
 
 inherit flag-o-matic linux-info linux-mod autotools-utils
 
-DESCRIPTION="The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs"
-HOMEPAGE="http://zfsonlinux.org/"
+DESCRIPTION="The Solaris Porting Layer provides many of the Solaris kernel APIs"
+HOMEPAGE="https://zfsonlinux.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="custom-cflags debug"
 RESTRICT="debug? ( strip ) test"
 
-COMMON_DEPEND="dev-lang/perl
+COMMON_DEPEND="
+	dev-lang/perl
 	virtual/awk"
 
 DEPEND="${COMMON_DEPEND}"
@@ -38,6 +39,7 @@ pkg_setup() {
 	linux-info_pkg_setup
 	CONFIG_CHECK="
 		!DEBUG_LOCK_ALLOC
+		!CONFIG_REISER4_FS
 		!GRKERNSEC_RANDSTRUCT
 		KALLSYMS
 		MODULES
@@ -55,7 +57,7 @@ pkg_setup() {
 	kernel_is ge 2 6 32 || die "Linux 2.6.32 or newer required"
 
 	[ ${PV} != "9999" ] && \
-		{ kernel_is le 4 13 || die "Linux 4.13 is the latest supported version."; }
+		{ kernel_is le 4 17 || die "Linux 4.17 is the latest supported version."; }
 
 	check_extra_config
 }

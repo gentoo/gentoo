@@ -7,8 +7,8 @@ commit d40e181bec22014a9ea312ab6837f7f0bc4f9e42 .
 
 Index: libvo/vo_vdpau.c
 ===================================================================
---- libvo/vo_vdpau.c	(revision 37931)
-+++ libvo/vo_vdpau.c	(revision 37932)
+--- a/libvo/vo_vdpau.c	(revision 37931)
++++ b/libvo/vo_vdpau.c	(revision 37932)
 @@ -34,6 +34,7 @@
  
  #include <stdio.h>

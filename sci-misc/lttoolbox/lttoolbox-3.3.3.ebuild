@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools
+
+inherit autotools flag-o-matic
 
 DESCRIPTION="Toolbox for lexical processing, morphological analysis and generation of words"
 HOMEPAGE="https://www.apertium.org"
@@ -23,5 +24,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug 619446
+	append-cxxflags -std=c++14
+
 	econf $(use_enable static-libs static)
 }

@@ -1,0 +1,33 @@
+From 6cc48d8cbbf11fa82ec78cac0b29d52f05eabb60 Mon Sep 17 00:00:00 2001
+From: Ting-Wei Lan <lantw@src.gnome.org>
+Date: Sun, 24 Dec 2017 17:55:14 +0800
+Subject: [PATCH] build: Fix non-wayland builds
+
+meta_dnd_wayland_handle_end_modal is not available on non-wayland build.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=791916
+---
+ src/compositor/compositor.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/compositor/compositor.c b/src/compositor/compositor.c
+index 51d22bc17..aa49347c9 100644
+--- a/src/compositor/compositor.c
++++ b/src/compositor/compositor.c
+@@ -419,11 +419,13 @@ meta_end_modal_for_plugin (MetaCompositor *compositor,
+   meta_backend_ungrab_device (backend, META_VIRTUAL_CORE_POINTER_ID, timestamp);
+   meta_backend_ungrab_device (backend, META_VIRTUAL_CORE_KEYBOARD_ID, timestamp);
+ 
++#ifdef HAVE_WAYLAND
+   if (meta_is_wayland_compositor ())
+     {
+       meta_dnd_wayland_handle_end_modal (compositor);
+       meta_display_sync_wayland_input_focus (display);
+     }
++#endif
+ }
+ 
+ static void
+-- 
+2.18.0
+

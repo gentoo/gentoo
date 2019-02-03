@@ -1,0 +1,25 @@
+From 6d7ee026a19e889cbadbdaf9134588edf52e22c2 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 27 Dec 2017 13:23:26 +1300
+Subject: Fix test skips without '.' in @INC on Perl 5.25.7+
+
+---
+ test.pl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test.pl b/test.pl
+index d9a787c..d1b75ca 100755
+--- a/test.pl
++++ b/test.pl
+@@ -35,7 +35,7 @@ foreach $jjj (1..12) {
+ 
+    print "============== Running test$jjj.p ==============\n";
+    %@ = ();       # Clear error status
+-   do "test$jjj.p";
++   do "./test$jjj.p";
+    warn $@ if $@; # Report any error detected
+    if($dev eq '/PNG' && $^O =~ /mswin32/i) {
+      system("ren pgplot.png pgplot_$jjj.png");
+-- 
+2.15.1
+

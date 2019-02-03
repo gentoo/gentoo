@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="mkvalidator is a command line tool to verify Matroska files for spec conformance"
-HOMEPAGE="http://www.matroska.org/downloads/mkvalidator.html"
-SRC_URI="http://downloads.sourceforge.net/project/matroska/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://www.matroska.org/downloads/mkvalidator.html"
+SRC_URI="https://downloads.sourceforge.net/project/matroska/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

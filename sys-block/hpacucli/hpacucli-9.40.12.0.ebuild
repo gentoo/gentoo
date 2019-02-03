@@ -13,7 +13,7 @@ AMD64_VID="80070"
 X86_PID="414707558"
 X86_VID="80071"
 
-DESCRIPTION="HP Array Configuration Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)"
+DESCRIPTION="HP Array Config Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)"
 HOMEPAGE="http://h18000.www1.hp.com/products/servers/linux/documentation.html"
 SRC_URI="
 	amd64? ( ${SRC_URI_BASE}/p${AMD64_PID}/v${AMD64_VID}/${PN}-${MY_PV}.x86_64.rpm )

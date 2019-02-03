@@ -1,15 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils multilib gnome2-utils
+inherit desktop eutils multilib gnome2-utils
 
 MY_PN="${PN}-portable"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A brainstorming and mind mapping software tool"
-HOMEPAGE="http://www.xmind.net"
+HOMEPAGE="https://www.xmind.net"
 SRC_URI="http://dl2.xmind.net/xmind-downloads/${MY_P}.zip
 	https://dev.gentoo.org/~creffett/distfiles/xmind-icons.tar.xz"
 LICENSE="EPL-1.0 LGPL-3"

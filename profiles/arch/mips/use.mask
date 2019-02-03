@@ -1,8 +1,29 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -mips
+
+# Matt Turner <mattst88@gentoo.org> (25 Mar 2018)
+# Unmask systemd since it is keyworded here.
+-systemd
+
+# Mart Raudsepp <leio@gentoo.org> (11 Feb 2018)
+# dev-util/valgrind is not keyworded here yet,
+# though the MIPS platform is supported upstream
+valgrind
+
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# net-misc/networkmanager is not keyworded here.
+networkmanager
+
+# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# sci-geosciences/gpsd is not keyworded here.
+gps
+
+# Brian Evans <grknight@gentoo.org> (15 Jan 2018)
+# Mask tcmalloc as dev-util/google-perftools is unavailable
+tcmalloc
 
 # James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
 # Unmask as this profile is big endian.
@@ -70,7 +91,6 @@ openexr
 
 # Ryan Hill <dirtyepic@gentoo.org>
 # Various Gnome flags
-gtkhtml
 gnome
 
 # Peter Volkov <pva@gentoo.org> MPI was never tested on mips, but
@@ -81,10 +101,6 @@ mpi
 # virtual/blas virtual/cblas and virtual/lapack not keyworded
 lapack
 blas
-
-# Alexander Færøy <eroyf@gentoo.org>
-# ldap -- untested, masking for now.
-ldap
 
 # Alexander Færøy <eroyf@gentoo.org>
 # Clamav -- untested, masking for now.
@@ -101,55 +117,27 @@ fuse
 # Modular X: mask for architectures lacking direct rendering
 dri
 
-# James Le Cuirot <chewi@gentoo.org>
-# Unmask as Vivante is available for mips.
+# Available on for mips.
+-video_cards_newport
+-video_cards_siliconmotion
 -video_cards_vivante
 
 # Stephen P. Becker <geoman@gentoo.org>
--video_cards_newport
-
-# Stephen P. Becker <geoman@gentoo.org>
 # more modular X stuff
-video_cards_epson
 video_cards_tdfx
-video_cards_sunffb
-video_cards_mach64
 video_cards_mga
 video_cards_nouveau
 video_cards_nv
 video_cards_r128
 video_cards_radeon
-video_cards_sis
-input_devices_acecad
-input_devices_aiptek
-input_devices_dynapro
-input_devices_elo2300
 input_devices_elographics
-input_devices_fpit
-input_devices_hyperpen
-input_devices_mutouch
-input_devices_penmount
 input_devices_synaptics
 input_devices_vmmouse
 input_devices_void
 input_devices_wacom
 input_devices_joystick
-video_cards_chips
-video_cards_cirrus
 video_cards_glint
 video_cards_nvidia
-video_cards_s3
-video_cards_s3virge
-video_cards_savage
-video_cards_sisusb
-video_cards_sunbw2
-video_cards_suncg14
-video_cards_suncg3
-video_cards_suncg6
-video_cards_sunleo
-video_cards_suntcx
-video_cards_trident
-video_cards_vmware
 video_cards_voodoo
 
 # Matt Turner <mattst88@gentoo.org>
@@ -160,26 +148,6 @@ video_cards_r200
 video_cards_r300
 video_cards_r600
 video_cards_radeonsi
-video_cards_i915
-video_cards_i965
-video_cards_ilo
-# vmware wasn't added with mesa-8.0, but it should still be masked
-video_cards_vmware
-
-# 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
-# Modular X: mask for architectures on which they aren't available
-video_cards_apm
-video_cards_ark
-video_cards_i128
-video_cards_i740
-video_cards_intel
-video_cards_neomagic
-video_cards_nsc
-video_cards_rendition
-video_cards_tga
-video_cards_tseng
-video_cards_vesa
-video_cards_ast
 
 # Diego Pettenò <flameeyes@gentoo.org>
 # Until xine-lib's keywording can be maintained, please leave it masked.
@@ -328,23 +296,12 @@ ocamlopt
 fluidsynth
 
 # Mips USE flags
--ip27
--ip28
--ip30
 -fixed-point
 -loongson2f
-
-# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
-# libdlm and cman are not keyworded
-cman
-clvm
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
 # virtual/opencl is not keyworded
 opencl
-
-# Unmask once sys-libs/libunwind gets keyworded.
-unwind
 
 # Ben de Groot <yngwin@gentoo.org> (01 Feb 2015)
 # please remove when keyworded

@@ -18,9 +18,6 @@
 			container (OggFLAC), but might have better support for exotic features like
 			24-bit samples or 96kHz sample rates.
 		</flag>
-		<flag name="fusionsound">
-			Enable support for the Fusion audio sub system
-		</flag>
 		<flag name="gtk">
 			Build the gdkpixbuf-based image decoder plugin.
 		</flag>

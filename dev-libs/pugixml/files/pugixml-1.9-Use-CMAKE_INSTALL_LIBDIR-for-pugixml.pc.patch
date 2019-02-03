@@ -1,0 +1,39 @@
+From c12889f7ccee3a91754f12a4f5b2bf5eb87acabd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Wolfgang=20St=C3=B6ggl?= <c72578@yahoo.de>
+Date: Wed, 27 Jun 2018 00:53:42 +0200
+Subject: [PATCH] Use CMAKE_INSTALL_LIBDIR for pugixml.pc (#215)
+
+- Up to now, the libdir was hardcoded to "lib" inside pugixml.pc and
+  the install directory of pugixml.pc was "lib/pkgconfig"
+- Adds support for lib and lib64 by using CMAKE_INSTALL_LIBDIR variable
+---
+ CMakeLists.txt        | 2 +-
+ scripts/pugixml.pc.in | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 148f7b0d..d322a631 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -76,7 +76,7 @@ install(FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}${INSTALL_SUFFIX
+ install(EXPORT pugixml-config DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pugixml)
+ 
+ configure_file(scripts/pugixml.pc.in ${PROJECT_BINARY_DIR}/pugixml.pc @ONLY)
+-install(FILES ${PROJECT_BINARY_DIR}/pugixml.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
++install(FILES ${PROJECT_BINARY_DIR}/pugixml.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ 
+ if(BUILD_TESTS)
+ 	file(GLOB TEST_SOURCES tests/*.cpp)
+diff --git a/scripts/pugixml.pc.in b/scripts/pugixml.pc.in
+index 04b4d3b0..fbb7f8b8 100644
+--- a/scripts/pugixml.pc.in
++++ b/scripts/pugixml.pc.in
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+ includedir=${prefix}/include@INSTALL_SUFFIX@
+-libdir=${exec_prefix}/lib@INSTALL_SUFFIX@
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@@INSTALL_SUFFIX@
+ 
+ Name: pugixml
+ Description: Light-weight, simple and fast XML parser for C++ with XPath support.

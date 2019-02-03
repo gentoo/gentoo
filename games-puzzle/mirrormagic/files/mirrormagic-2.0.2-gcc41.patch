@@ -1,5 +1,5 @@
---- src/main.h.old
-+++ src/main.h
+--- a/src/main.h.old
++++ b/src/main.h
 @@ -459,7 +459,6 @@
  #endif
  extern struct HiScore		highscore[];

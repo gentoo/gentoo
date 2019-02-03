@@ -1,6 +1,5 @@
-Subject: [PATCH] Do not have target "build" call target "test"
---- a/build.xml	2017-03-18 16:30:34.000000000 +0300
-+++ b/build.xml	2017-08-25 12:24:24.000000000 +0300
+--- a/build.xml
++++ b/build.xml
 @@ -505,7 +505,7 @@
  	</target>
  

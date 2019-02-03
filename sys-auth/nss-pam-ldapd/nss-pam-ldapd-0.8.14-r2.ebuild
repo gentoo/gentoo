@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit multilib-minimal user
 
 DESCRIPTION="NSS module for name lookups using LDAP"
-HOMEPAGE="http://arthurdejong.org/nss-pam-ldapd/"
-SRC_URI="http://arthurdejong.org/nss-pam-ldapd/${P}.tar.gz"
+HOMEPAGE="https://arthurdejong.org/nss-pam-ldapd/"
+SRC_URI="https://arthurdejong.org/nss-pam-ldapd/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,7 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.6.14:= )
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	virtual/pkgconfig
 "
 # dev-libs/gobject-introspection-common needed for eautoreconf

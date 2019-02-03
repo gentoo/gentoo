@@ -1,25 +1,27 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit cmake-utils
+EAPI=7
+
+inherit cmake-utils xdg-utils
 
 DESCRIPTION="Vim-fork focused on extensibility and agility."
 HOMEPAGE="https://neovim.io"
+
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/neovim/neovim.git"
 else
 	SRC_URI="https://github.com/neovim/neovim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="Apache-2.0 vim"
 SLOT="0"
-IUSE="+clipboard +luajit +nvimpager python ruby +tui +jemalloc"
+IUSE="+clipboard +luajit +nvimpager python remote ruby +tui +jemalloc"
 
-CDEPEND=">=dev-libs/libuv-1.2.0
-	>=dev-libs/msgpack-1.0.0
+CDEPEND=">=dev-libs/libuv-1.2.0:0=
+	>=dev-libs/msgpack-1.0.0:0=
 	luajit? ( dev-lang/luajit:2 )
 	!luajit? (
 		dev-lang/lua:=
@@ -27,22 +29,28 @@ CDEPEND=">=dev-libs/libuv-1.2.0
 	)
 	tui? (
 		>=dev-libs/libtermkey-0.19
-		>=dev-libs/unibilium-1.1.1
+		>=dev-libs/unibilium-2.0.0:0=
 	)
 	dev-libs/libvterm
 	dev-lua/lpeg[luajit=]
 	dev-lua/mpack[luajit=]
 	jemalloc? ( dev-libs/jemalloc )
-"
-DEPEND="${CDEPEND}
+	net-libs/libnsl"
+
+DEPEND="
+	${CDEPEND}
+	dev-util/gperf
 	virtual/libiconv
 	virtual/libintl"
-RDEPEND="${CDEPEND}
+
+RDEPEND="
+	${CDEPEND}
 	python? ( dev-python/neovim-python-client )
 	ruby? ( dev-ruby/neovim-ruby-client )
+	remote? ( dev-python/neovim-remote )
 	clipboard? ( || ( x11-misc/xsel x11-misc/xclip ) )"
 
-CMAKE_BUILD_TYPE=RelWithDebInfo
+CMAKE_BUILD_TYPE=Release
 
 src_prepare() {
 	# use our system vim dir
@@ -59,7 +67,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DFEAT_TUI=$(usex tui)
 		-DENABLE_JEMALLOC=$(usex jemalloc)
-		)
+		-DPREFER_LUA=$(usex luajit no yes)
+	)
 	cmake-utils_src_configure
 }
 
@@ -74,4 +83,12 @@ src_install() {
 	if use nvimpager; then
 		dosym ../share/nvim/runtime/macros/less.sh /usr/bin/nvimpager
 	fi
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }

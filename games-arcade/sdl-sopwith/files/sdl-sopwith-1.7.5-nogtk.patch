@@ -1,5 +1,5 @@
---- configure.in.old
-+++ configure.in
+--- a/configure.in.old
++++ b/configure.in
 @@ -61,11 +61,6 @@
  	SOPWITH_SUBDIRS="$SOPWITH_SUBDIRS sdl"
  ],)
@@ -21,8 +21,8 @@
  
  dnl generate Makefiles
  
---- src/Makefile.am.old
-+++ src/Makefile.am
+--- a/src/Makefile.am.old
++++ b/src/Makefile.am
 @@ -6,7 +6,7 @@
  bin_PROGRAMS = @SOPWITH_BINS@
  EXTRA_PROGRAMS = sopwith gtksopwith psopwith
@@ -32,8 +32,8 @@
  
  COMMON_SRC =       \
  video.h	    swcollsn.c  swgames.h   swmain.h    swutil.h 	\
---- src/sdl/Makefile.am.old
-+++ src/sdl/Makefile.am
+--- a/src/sdl/Makefile.am.old
++++ b/src/sdl/Makefile.am
 @@ -1,4 +1,4 @@
 -CFLAGS=@CFLAGS@ @SDL_CFLAGS@ -I..
 +AM_CFLAGS = @SDL_CFLAGS@ -I..

@@ -12,7 +12,7 @@
 	<longdescription>
 	uClibc-ng is a small C library for developing embedded Linux systems. It is much
 	smaller than the GNU C Library, but nearly all applications supported by glibc
-	also work perfectly with uClibc-ng. 
+	also work perfectly with uClibc-ng.
 	</longdescription>
 	<use>
 		<flag name="rpc">Enable sun nis/rpc support (you should use libtirpc though)</flag>

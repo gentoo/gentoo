@@ -7,7 +7,7 @@ inherit autotools-multilib
 
 DESCRIPTION="Open implementation of the Advanced Access Content System (AACS) specification"
 HOMEPAGE="https://www.videolan.org/developers/libaacs.html"
-SRC_URI="https://ftp.videolan.org/pub/videolan/libaacs/${PV}/${P}.tar.bz2"
+SRC_URI="https://downloads.videolan.org/pub/videolan/libaacs/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

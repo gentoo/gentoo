@@ -8,7 +8,7 @@
 	<longdescription>
 		This library is useful for creating, comparing, parsing and
 		printing Universally Unique Identifiers.
-		See &lt;http://en.wikipedia.org/wiki/UUID&gt; for the general idea.
+		See &lt;https://en.wikipedia.org/wiki/UUID&gt; for the general idea.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">aslatter/uuid</remote-id>

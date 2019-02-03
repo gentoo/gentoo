@@ -1,5 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils
 
@@ -9,7 +11,7 @@ SRC_URI="mirror://sourceforge/linux-diag/${P}.tar.gz"
 HOMEPAGE="http://linux-diag.sourceforge.net/servicelog/"
 
 SLOT="0"
-LICENSE="IBM"
+LICENSE="GPL-2+"
 KEYWORDS="ppc ppc64"
 IUSE=""
 

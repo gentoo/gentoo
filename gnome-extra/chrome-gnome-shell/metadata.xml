@@ -6,9 +6,9 @@
 		<name>Yuri Konotopov</name>
 	</maintainer>
 	<maintainer type="project">
-                <email>proxy-maint@gentoo.org</email>
-                <name>Proxy Maintainers</name>
-        </maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<bugs-to>https://github.com/nE0sIghT/chrome-gnome-shell-mirror/issues</bugs-to>
 		<remote-id type="github">GNOME/chrome-gnome-shell</remote-id>

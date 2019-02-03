@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-multilib git-r3 python-any-r1
+inherit cmake-multilib git-r3 linux-info multiprocessing python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
@@ -23,19 +23,28 @@ EGIT_REPO_URI="https://git.llvm.org/git/openmp.git
 LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
 SLOT="0"
 KEYWORDS=""
-IUSE="hwloc ompt test"
+IUSE="cuda hwloc kernel_linux offload ompt test"
+# CUDA works only with the x86_64 ABI
+REQUIRED_USE="offload? ( cuda? ( abi_x86_64 ) )"
+RESTRICT="!test? ( test )"
 
-RDEPEND="hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )"
+RDEPEND="
+	hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )
+	offload? (
+		virtual/libelf:=[${MULTILIB_USEDEP}]
+		virtual/libffi:=[${MULTILIB_USEDEP}]
+		cuda? ( dev-util/nvidia-cuda-sdk:= )
+	)"
 # tests:
 # - dev-python/lit provides the test runner
 # - sys-devel/llvm provide test utils (e.g. FileCheck)
 # - sys-devel/clang provides the compiler to run tests
 DEPEND="${RDEPEND}
 	dev-lang/perl
+	offload? ( virtual/pkgconfig[${MULTILIB_USEDEP}] )
 	test? (
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
-		sys-devel/llvm
-		>=sys-devel/clang-3.9.0
+		>=sys-devel/clang-6
 	)"
 
 # least intrusive of all
@@ -45,6 +54,23 @@ python_check_deps() {
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
+kernel_pds_check() {
+	if use kernel_linux && kernel_is -lt 4 15 && kernel_is -ge 4 13; then
+		local CONFIG_CHECK="~!SCHED_PDS"
+		local ERROR_SCHED_PDS="\
+PDS scheduler versions >= 0.98c < 0.98i (e.g. used in kernels >= 4.13-pf11
+< 4.14-pf9) do not implement sched_yield() call which may result in horrible
+performance problems with libomp. If you are using one of the specified
+kernel versions, you may want to disable the PDS scheduler."
+
+		check_extra_config
+	fi
+}
+
+pkg_pretend() {
+	kernel_pds_check
+}
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
@@ -52,19 +78,31 @@ pkg_setup() {
 multilib_src_configure() {
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
-		-DLIBOMP_LIBDIR_SUFFIX="${libdir#lib}"
-		-DLIBOMPTARGET_LIBDIR_SUFFIX="${libdir#lib}"
+		-DOPENMP_LIBDIR_SUFFIX="${libdir#lib}"
+
 		-DLIBOMP_USE_HWLOC=$(usex hwloc)
 		-DLIBOMP_OMPT_SUPPORT=$(usex ompt)
+
+		-DOPENMP_ENABLE_LIBOMPTARGET=$(usex offload)
+
 		# do not install libgomp.so & libiomp5.so aliases
 		-DLIBOMP_INSTALL_ALIASES=OFF
 		# disable unnecessary hack copying stuff back to srcdir
 		-DLIBOMP_COPY_EXPORTS=OFF
-		-DLIBOMP_TEST_COMPILER="$(type -P "${CHOST}-clang")"
+	)
+	use offload && mycmakeargs+=(
+		# this is non-fatal and libomp checks for CUDA conditionally
+		# to ABI, so we can just ignore passing the wrong value
+		# on non-amd64 ABIs
+		-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=$(usex !cuda)
 	)
 	use test && mycmakeargs+=(
-		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-		-DLLVM_LIT_ARGS="-vv"
+		# this project does not use standard LLVM cmake macros
+		-DOPENMP_LLVM_LIT_EXECUTABLE="${EPREFIX}/usr/bin/lit"
+		-DOPENMP_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
+
+		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang")"
+		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++")"
 	)
 	cmake-utils_src_configure
 }

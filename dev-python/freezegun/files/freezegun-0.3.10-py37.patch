@@ -1,0 +1,58 @@
+From 4fdad69659f15a9e62cf4f6c15c9f319276cf9b0 Mon Sep 17 00:00:00 2001
+From: Jonas Obrist <jonas.obrist@hde.co.jp>
+Date: Tue, 6 Mar 2018 12:21:38 +0900
+Subject: [PATCH] add support for Python 3.7 uuid module changes
+
+Python 3.7 removed uuid._uuid_generate_time. It now has
+uuid._load_system_functions and uuid._generate_time_safe.
+_generate_time_safe is set by calling _load_system_functions (subsequent
+calls to that function are no-op). This change detects the missing
+uuid._uuid_generate_time attribute and uses the new attribute/function
+if they're missing.
+---
+ freezegun/api.py | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/freezegun/api.py b/freezegun/api.py
+index eb09932..a88a392 100644
+--- a/freezegun/api.py
++++ b/freezegun/api.py
+@@ -27,8 +27,14 @@ _real_time_object_ids = set(id(obj) for obj in real_date_objects)
+ 
+ try:
+     real_uuid_generate_time = uuid._uuid_generate_time
+-except (AttributeError, ImportError):
++    uuid_generate_time_attr = '_uuid_generate_time'
++except AttributeError:
++    uuid._load_system_functions()
++    real_uuid_generate_time = uuid._generate_time_safe
++    uuid_generate_time_attr = '_generate_time_safe'
++except ImportError:
+     real_uuid_generate_time = None
++    uuid_generate_time_attr = None
+ 
+ try:
+     real_uuid_create = uuid._UuidCreate
+@@ -482,7 +488,8 @@ class _freeze_time(object):
+         time.localtime = fake_localtime
+         time.gmtime = fake_gmtime
+         time.strftime = fake_strftime
+-        uuid._uuid_generate_time = None
++        if uuid_generate_time_attr:
++            setattr(uuid, uuid_generate_time_attr, None)
+         uuid._UuidCreate = None
+         uuid._last_timestamp = None
+ 
+@@ -573,7 +580,8 @@ class _freeze_time(object):
+         time.localtime = time.localtime.previous_localtime_function
+         time.strftime = time.strftime.previous_strftime_function
+ 
+-        uuid._uuid_generate_time = real_uuid_generate_time
++        if uuid_generate_time_attr:
++            setattr(uuid, uuid_generate_time_attr, real_uuid_generate_time)
+         uuid._UuidCreate = real_uuid_create
+         uuid._last_timestamp = None
+ 
+-- 
+2.18.0
+

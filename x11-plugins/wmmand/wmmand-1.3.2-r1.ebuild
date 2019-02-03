@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 MY_P=wmMand-${PV}
 
 DESCRIPTION="a dockable mandelbrot browser"
-HOMEPAGE="http://ciotog.homelinux.net/software/wmMand/"
+HOMEPAGE="https://sourceforge.net/projects/wmmand/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -19,8 +19,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}/${MY_P}/wmMand
 

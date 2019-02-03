@@ -24,6 +24,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_FEDORA_TMP_DIR="${T}"
 		-DDATA_DIR="${EPREFIX}"/usr/share
+		-DMANAGE_DEPENDENCY_PACKAGE_EXISTS_CMD=false
 		-DPRJ_DOC_DIR="${EPREFIX}"/usr/share/doc/${PF}
 	)
 	cmake-utils_src_configure

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -20,8 +20,8 @@ SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-4.3-r1.tar.bz2
 	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-5.1-r2.tar.bz2
 	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-6.1-r1.tar.bz2
-	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-6.3-r1.tar.bz2
-	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.0-r2.tar.bz2"
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-6.3-r2.tar.bz2
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.0-r3.tar.bz2"
 
 LICENSE="APSL-2"
 KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
@@ -33,7 +33,7 @@ IUSE="lto test multitarget"
 # -Wa,-Q but since it's default we make llvm a static runtime dependency.
 RDEPEND="sys-devel/binutils-config
 	lto? ( app-arch/xar )
-	sys-devel/llvm
+	sys-devel/llvm:*
 	sys-libs/libcxx"
 DEPEND="${RDEPEND}
 	test? ( >=dev-lang/perl-5.8.8 )"

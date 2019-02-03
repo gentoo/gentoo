@@ -3,8 +3,8 @@
 # Not sending this to upstrem.
 # neurogeek@gentoo.org
 
---- bin/lavennin.orig	2009-05-08 01:05:48.000000000 -0430
-+++ bin/lavennin	2009-05-08 01:07:07.000000000 -0430
+--- a/lavennin/bin/lavennin
++++ b/lavennin/bin/lavennin
 @@ -164,8 +164,8 @@
      $HOME = get_home_directory();
  }

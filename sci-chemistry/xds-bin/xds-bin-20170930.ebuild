@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,10 +12,7 @@ SRC_URI="
 LICENSE="free-noncomm"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="smp X"
-
-RDEPEND="X? ( sci-visualization/xds-viewer )"
-DEPEND=""
+IUSE="smp"
 
 QA_PREBUILT="opt/xds-bin/*"
 

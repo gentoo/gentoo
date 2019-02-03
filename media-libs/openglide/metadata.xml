@@ -14,8 +14,8 @@
 		<remote-id type="sourceforge">openglide</remote-id>
 	</upstream>
 	<longdescription>
-	  OpenGLide is a Glide to OpenGL wrapper. It emulates a Voodoo
-	  board so you can run old DOS/Windows Glide games by translating
-	  Glide calls into OpenGL.
+		OpenGLide is a Glide to OpenGL wrapper. It emulates a Voodoo
+		board so you can run old DOS/Windows Glide games by translating
+		Glide calls into OpenGL.
 	</longdescription>
 </pkgmetadata>

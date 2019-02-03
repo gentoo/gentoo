@@ -1,0 +1,243 @@
+From 065632e2095bcb32f15a370633e60d6a6a3dd78e Mon Sep 17 00:00:00 2001
+From: Michael R Sweet <michael.r.sweet@gmail.com>
+Date: Sat, 8 Dec 2018 08:12:52 -0500
+Subject: [PATCH] Fix compile errors - not sure why these didn't show up
+ before...
+
+---
+ cups/adminutil.c | 197 -----------------------------------------------
+ scheduler/main.c |   2 +-
+ 2 files changed, 1 insertion(+), 198 deletions(-)
+
+diff --git a/cups/adminutil.c b/cups/adminutil.c
+index 5ecada44c..1a5067f1b 100644
+--- a/cups/adminutil.c
++++ b/cups/adminutil.c
+@@ -32,12 +32,6 @@ static http_status_t	get_cupsd_conf(http_t *http, _cups_globals_t *cg,
+ 			               time_t last_update, char *name,
+ 				       size_t namelen, int *remote);
+ static void		invalidate_cupsd_cache(_cups_globals_t *cg);
+-static void		write_option(cups_file_t *dstfp, int order,
+-			             const char *name, const char *text,
+-				     const char *attrname,
+-		        	     ipp_attribute_t *suppattr,
+-				     ipp_attribute_t *defattr, int defval,
+-				     int valcount);
+ 
+ 
+ /*
+@@ -1330,88 +1324,6 @@ cupsAdminSetServerSettings(
+ }
+ 
+ 
+-/*
+- * 'do_samba_command()' - Do a SAMBA command.
+- */
+-
+-static int				/* O - Status of command */
+-do_samba_command(const char *command,	/* I - Command to run */
+-                 const char *address,	/* I - Address for command */
+-                 const char *subcmd,	/* I - Sub-command */
+-		 const char *authfile,	/* I - Samba authentication file */
+-		 FILE *logfile)		/* I - Optional log file */
+-{
+-#ifdef _WIN32
+-  return (1);				/* Always fail on Windows... */
+-
+-#else
+-  int		status;			/* Status of command */
+-  int		pid;			/* Process ID of child */
+-
+-
+-  if (logfile)
+-    _cupsLangPrintf(logfile,
+-                    _("Running command: %s %s -N -A %s -c \'%s\'"),
+-        	    command, address, authfile, subcmd);
+-
+-  if ((pid = fork()) == 0)
+-  {
+-   /*
+-    * Child goes here, redirect stdin/out/err and execute the command...
+-    */
+-
+-    int fd = open("/dev/null", O_RDONLY);
+-
+-    if (fd > 0)
+-    {
+-      dup2(fd, 0);
+-      close(fd);
+-    }
+-
+-    if (logfile)
+-      dup2(fileno(logfile), 1);
+-    else if ((fd = open("/dev/null", O_WRONLY)) > 1)
+-    {
+-      dup2(fd, 1);
+-      close(fd);
+-    }
+-
+-    dup2(1, 2);
+-
+-    execlp(command, command, address, "-N", "-A", authfile, "-c", subcmd,
+-           (char *)0);
+-    exit(errno);
+-  }
+-  else if (pid < 0)
+-  {
+-    status = -1;
+-
+-    if (logfile)
+-      _cupsLangPrintf(logfile, _("Unable to run \"%s\": %s"),
+-                      command, strerror(errno));
+-  }
+-  else
+-  {
+-   /*
+-    * Wait for the process to complete...
+-    */
+-
+-    while (wait(&status) != pid);
+-  }
+-
+-  if (logfile)
+-    _cupsLangPuts(logfile, "");
+-
+-  DEBUG_printf(("9do_samba_command: status=%d", status));
+-
+-  if (WIFEXITED(status))
+-    return (WEXITSTATUS(status));
+-  else
+-    return (-WTERMSIG(status));
+-#endif /* _WIN32 */
+-}
+-
+-
+ /*
+  * 'get_cupsd_conf()' - Get the current cupsd.conf file.
+  */
+@@ -1527,112 +1439,3 @@ invalidate_cupsd_cache(
+   cg->cupsd_num_settings = 0;
+   cg->cupsd_settings     = NULL;
+ }
+-
+-
+-/*
+- * 'write_option()' - Write a CUPS option to a PPD file.
+- */
+-
+-static void
+-write_option(cups_file_t     *dstfp,	/* I - PPD file */
+-             int             order,	/* I - Order dependency */
+-             const char      *name,	/* I - Option name */
+-	     const char      *text,	/* I - Option text */
+-             const char      *attrname,	/* I - Attribute name */
+-             ipp_attribute_t *suppattr,	/* I - IPP -supported attribute */
+-	     ipp_attribute_t *defattr,	/* I - IPP -default attribute */
+-	     int             defval,	/* I - Default value number */
+-	     int             valcount)	/* I - Number of values */
+-{
+-  int	i;				/* Looping var */
+-
+-
+-  cupsFilePrintf(dstfp, "*JCLOpenUI *%s/%s: PickOne\n"
+-                        "*OrderDependency: %d JCLSetup *%s\n",
+-                 name, text, order, name);
+-
+-  if (defattr->value_tag == IPP_TAG_INTEGER)
+-  {
+-   /*
+-    * Do numeric options with a range or list...
+-    */
+-
+-    cupsFilePrintf(dstfp, "*Default%s: %d\n", name,
+-                   defattr->values[defval].integer);
+-
+-    if (suppattr->value_tag == IPP_TAG_RANGE)
+-    {
+-     /*
+-      * List each number in the range...
+-      */
+-
+-      for (i = suppattr->values[0].range.lower;
+-           i <= suppattr->values[0].range.upper;
+-	   i ++)
+-      {
+-        cupsFilePrintf(dstfp, "*%s %d: \"", name, i);
+-
+-        if (valcount == 1)
+-	  cupsFilePrintf(dstfp, "%%cupsJobTicket: %s=%d\n\"\n*End\n",
+-	                 attrname, i);
+-        else if (defval == 0)
+-	  cupsFilePrintf(dstfp, "%%cupsJobTicket: %s=%d\"\n", attrname, i);
+-        else if (defval < (valcount - 1))
+-	  cupsFilePrintf(dstfp, ",%d\"\n", i);
+-        else
+-	  cupsFilePrintf(dstfp, ",%d\n\"\n*End\n", i);
+-      }
+-    }
+-    else
+-    {
+-     /*
+-      * List explicit numbers...
+-      */
+-
+-      for (i = 0; i < suppattr->num_values; i ++)
+-      {
+-        cupsFilePrintf(dstfp, "*%s %d: \"", name, suppattr->values[i].integer);
+-
+-        if (valcount == 1)
+-	  cupsFilePrintf(dstfp, "%%cupsJobTicket: %s=%d\n\"\n*End\n", attrname,
+-	          suppattr->values[i].integer);
+-        else if (defval == 0)
+-	  cupsFilePrintf(dstfp, "%%cupsJobTicket: %s=%d\"\n", attrname,
+-	          suppattr->values[i].integer);
+-        else if (defval < (valcount - 1))
+-	  cupsFilePrintf(dstfp, ",%d\"\n", suppattr->values[i].integer);
+-        else
+-	  cupsFilePrintf(dstfp, ",%d\n\"\n*End\n", suppattr->values[i].integer);
+-      }
+-    }
+-  }
+-  else
+-  {
+-   /*
+-    * Do text options with a list...
+-    */
+-
+-    cupsFilePrintf(dstfp, "*Default%s: %s\n", name,
+-                   defattr->values[defval].string.text);
+-
+-    for (i = 0; i < suppattr->num_values; i ++)
+-    {
+-      cupsFilePrintf(dstfp, "*%s %s: \"", name,
+-                     suppattr->values[i].string.text);
+-
+-      if (valcount == 1)
+-	cupsFilePrintf(dstfp, "%%cupsJobTicket: %s=%s\n\"\n*End\n", attrname,
+-	        suppattr->values[i].string.text);
+-      else if (defval == 0)
+-	cupsFilePrintf(dstfp, "%%cupsJobTicket: %s=%s\"\n", attrname,
+-	        suppattr->values[i].string.text);
+-      else if (defval < (valcount - 1))
+-	cupsFilePrintf(dstfp, ",%s\"\n", suppattr->values[i].string.text);
+-      else
+-	cupsFilePrintf(dstfp, ",%s\n\"\n*End\n",
+-	               suppattr->values[i].string.text);
+-    }
+-  }
+-
+-  cupsFilePrintf(dstfp, "*JCLCloseUI: *%s\n\n", name);
+-}
+diff --git a/scheduler/main.c b/scheduler/main.c
+index ce7df89c0..5b00efae2 100644
+--- a/scheduler/main.c
++++ b/scheduler/main.c
+@@ -155,7 +155,7 @@ main(int  argc,				/* I - Number of command-line args */
+   for (i = 1; i < argc; i ++)
+   {
+     if (!strcmp(argv[i], "--help"))
+-      usage();
++      usage(0);
+     else if (argv[i][0] == '-')
+     {
+       for (opt = argv[i] + 1; *opt != '\0'; opt ++)

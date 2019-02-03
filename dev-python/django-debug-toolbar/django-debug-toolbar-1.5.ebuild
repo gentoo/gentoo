@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A configurable set of panels that display debug information"
 HOMEPAGE="
-	https://pypi.python.org/pypi/django-debug-toolbar/
+	https://pypi.org/project/django-debug-toolbar/
 	https://github.com/django-debug-toolbar/django-debug-toolbar/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 

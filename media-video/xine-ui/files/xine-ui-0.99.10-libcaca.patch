@@ -1,0 +1,24 @@
+diff -r efe11fb1562e configure.ac
+--- a/configure.ac	Thu Dec 28 18:08:02 2017 +0200
++++ b/configure.ac	Sun Apr 01 23:00:22 2018 -0600
+@@ -374,7 +374,7 @@
+    if test "x$with_caca" = "xyes" && test "x$have_caca" = "xno"; then
+       AC_MSG_ERROR([CACA support requested, but libcaca 0.99 not found])
+    fi
+-   if test test "x$have_caca" = "xyes"; then
++   if test "x$have_caca" = "xyes"; then
+      AM_DL()
+    fi
+    AC_COMPILE_IFELSE( [AC_LANG_PROGRAM([[#include <caca.h> 
+
+--- a/configure 	Thu Dec 28 18:08:02 2017 +0200
++++ b/configure 	Sun Apr 01 23:00:22 2018 -0600
+@@ -12651,7 +12651,7 @@
+    if test "x$with_caca" = "xyes" && test "x$have_caca" = "xno"; then
+       as_fn_error $? "CACA support requested, but libcaca 0.99 not found" "$LINENO" 5
+    fi
+-   if test test "x$have_caca" = "xyes"; then
++   if test "x$have_caca" = "xyes"; then
+
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for dlopen in -lc" >&5
+ $as_echo_n "checking for dlopen in -lc... " >&6; }

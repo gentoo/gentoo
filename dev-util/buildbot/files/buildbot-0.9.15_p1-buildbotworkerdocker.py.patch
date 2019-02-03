@@ -1,0 +1,32 @@
+From 7051ebdac8c8a9054e8a37ab7dd8fb6f0ac1affb Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Mon, 15 Jan 2018 13:50:36 -0800
+Subject: [PATCH] master/buildbot/worker/docker.py: Fix test fail when docker
+ is not installed
+
+This fixes numerous tracebacks (note, only partial traceback):
+
+  File "/usr/lib64/python3.6/site-packages/buildbot/worker/docker.py", line 259, in _thd_start_instance
+    if docker_py_version >= 2.2:
+builtins.NameError: name 'docker_py_version' is not defined
+
+With this patch, the tests pass.
+---
+ master/buildbot/worker/docker.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/buildbot/worker/docker.py b/master/buildbot/worker/docker.py
+index 62e30785f..e558d69ff 100644
+--- a/buildbot/worker/docker.py
++++ b/buildbot/worker/docker.py
+@@ -41,6 +41,7 @@ try:
+ except ImportError:
+     docker = None
+     client = None
++    docker_py_version = 0.0
+ 
+ 
+ def _handle_stream_line(line):
+-- 
+2.15.1
+

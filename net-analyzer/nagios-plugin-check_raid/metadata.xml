@@ -23,6 +23,5 @@
 		<flag name='megaraid-scsi'>Support LSI MegaRAID SCSI controllers</flag>
 		<flag name='mpt-sas2'>Support LSI SAS-2 controllers</flag>
 		<flag name='mpt'>Support LSI MPT Fusion controllers</flag>
-		<flag name='i2o'>Support DPT-I2O controllers (mostly Adaptec)</flag>
 	</use>
 </pkgmetadata>

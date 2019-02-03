@@ -4,12 +4,10 @@
 	<maintainer type="person">
 		<email>paolo.pedroni@iol.it</email>
 		<name>Paolo Pedroni</name>
-		<description>Proxied Maintainer, assign bugs to him</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>k_f@gentoo.org</email>
 		<name>Kristian Fiskerstrand</name>
-		<description>Proxy Maintainer, CC on bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
@@ -19,8 +17,5 @@
 	<flag name="webinterface">Install dependencies needed for the web
 		interface</flag>
 	<flag name="console">Enable default console UI</flag>
-	<flag name="linguas_nap">Neapolitan locale</flag>
-	<flag name="linguas_iu">Inuktitut locale</flag>
-	<flag name="linguas_pms">Piemontese locale</flag>
 </use>
 </pkgmetadata>

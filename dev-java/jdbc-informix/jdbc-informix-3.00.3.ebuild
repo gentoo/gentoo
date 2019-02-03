@@ -1,5 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 JAVA_PKG_IUSE="doc examples"
 
@@ -28,7 +30,7 @@ pkg_nofetch() {
 	elog "Click on the 'Informix JDBC Driver' link, version ${MY_PV}"
 	elog "Sign up with your IBM account (you need to register)."
 	elog "Go through the license agreement and survey."
-	elog "Download ${At} and place it into ${DISTDIR}"
+	elog "Download ${At} and place it into your DISTDIR directory."
 	elog "And restart the installation."
 }
 

@@ -1,5 +1,5 @@
---- a/build.xml	2013-12-26 00:00:51.019721667 +0100
-+++ b/build.xml	2013-12-26 00:22:27.616511976 +0100
+--- a/build.xml
++++ b/build.xml
 @@ -279,6 +279,8 @@
                 classpathref="compile.classpath"
                 classname="org.apache.log.Logger"/>

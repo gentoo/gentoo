@@ -13,4 +13,5 @@
   else which is quickly locatable via a prebuilt database or path list.
   Completion is also available for many commands.
 </longdescription>
+<stabilize-allarches/>
 </pkgmetadata>

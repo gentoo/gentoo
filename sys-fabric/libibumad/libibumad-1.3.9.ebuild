@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -10,8 +10,8 @@ OFED_SUFFIX="1"
 
 inherit openib
 
-DESCRIPTION="OpenIB User MAD library functions which sit on top of the user MAD modules in the kernel"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+DESCRIPTION="OpenIB User MAD lib functions which sit on top of the user MAD kernel modules"
+KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE=""
 
 DEPEND="

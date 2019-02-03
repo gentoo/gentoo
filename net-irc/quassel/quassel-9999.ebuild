@@ -1,25 +1,31 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils eutils pax-utils systemd user
+inherit cmake-utils gnome2-utils pax-utils systemd user
 
-EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" "git://git.${PN}-irc.org/${PN}" )
-[[ "${PV}" == "9999" ]] && inherit git-r3
+if [[ ${PV} != *9999* ]]; then
+	MY_P=${PN}-${PV/_/-}
+	SRC_URI="http://quassel-irc.org/pub/${MY_P}.tar.bz2"
+	KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~sparc-solaris"
+	S="${WORKDIR}/${MY_P}"
+else
+	EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" "git://git.${PN}-irc.org/${PN}" )
+	inherit git-r3
+fi
 
 DESCRIPTION="Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity"
 HOMEPAGE="http://quassel-irc.org/"
-[[ "${PV}" == "9999" ]] || SRC_URI="http://quassel-irc.org/pub/${P}.tar.bz2"
-
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE="+breeze crypt +dbus debug kde monolithic oxygen postgres +server snorenotify +ssl syslog urlpreview X"
+IUSE="bundled-icons crypt +dbus debug kde ldap monolithic oxygen postgres +server
+snorenotify +ssl syslog urlpreview X"
 
 SERVER_RDEPEND="
 	dev-qt/qtscript:5
-	crypt? ( app-crypt/qca:2[qt5,ssl] )
+	crypt? ( app-crypt/qca:2[qt5(+),ssl] )
+	ldap? ( net-nds/openldap )
 	postgres? ( dev-qt/qtsql:5[postgres] )
 	!postgres? ( dev-qt/qtsql:5[sqlite] dev-db/sqlite:3[threadsafe(+),-secure-delete] )
 	syslog? ( virtual/logger )
@@ -29,7 +35,10 @@ GUI_RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtwidgets:5
-	breeze? ( kde-frameworks/breeze-icons:5 )
+	!bundled-icons? (
+		kde-frameworks/breeze-icons:5
+		oxygen? ( kde-frameworks/oxygen-icons:5 )
+	)
 	dbus? (
 		>=dev-libs/libdbusmenu-qt-0.9.3_pre20140619[qt5(+)]
 		dev-qt/qtdbus:5
@@ -44,15 +53,14 @@ GUI_RDEPEND="
 		kde-frameworks/kxmlgui:5
 		kde-frameworks/sonnet:5
 	)
-	oxygen? ( kde-frameworks/oxygen-icons:5 )
 	snorenotify? ( >=x11-libs/snorenotify-0.7.0 )
 	urlpreview? ( dev-qt/qtwebengine:5[widgets] )
 "
 
 RDEPEND="
-	sys-libs/zlib
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl?]
+	sys-libs/zlib
 	monolithic? (
 		${SERVER_RDEPEND}
 		${GUI_RDEPEND}
@@ -72,12 +80,11 @@ DOCS=( AUTHORS ChangeLog README.md )
 REQUIRED_USE="
 	|| ( X server monolithic )
 	crypt? ( || ( server monolithic ) )
-	kde? ( || ( X monolithic ) )
-	monolithic? ( || ( breeze oxygen ) )
+	kde? ( || ( X monolithic ) dbus )
+	ldap? ( || ( server monolithic ) )
 	postgres? ( || ( server monolithic ) )
 	snorenotify? ( || ( X monolithic ) )
 	syslog? ( || ( server monolithic ) )
-	X? ( || ( breeze oxygen ) )
 "
 
 pkg_setup() {
@@ -94,21 +101,26 @@ src_configure() {
 	local mycmakeargs=(
 		-DUSE_QT4=OFF
 		-DUSE_QT5=ON
-		-DWANT_CORE=$(usex server)
-		-DWANT_MONO=$(usex monolithic)
-		-DWANT_QTCLIENT=$(usex X)
-		-DWITH_KDE=$(usex kde)
-		-DWITH_WEBKIT=OFF
-		-DWITH_WEBENGINE=$(usex urlpreview)
-		-DWITH_BREEZE=OFF
-		-DWITH_BREEZE_DARK=OFF
-		-DWITH_OXYGEN=OFF
-		-DEMBED_DATA=OFF
+		-DUSE_CCACHE=OFF
 		-DCMAKE_SKIP_RPATH=ON
-		$(cmake-utils_use_find_package crypt QCA2-QT5)
+		-DEMBED_DATA=OFF
+		-DWITH_WEBKIT=OFF
+		-DWITH_BUNDLED_ICONS=$(usex bundled-icons)
 		$(cmake-utils_use_find_package dbus dbusmenu-qt5)
+		$(cmake-utils_use_find_package dbus Qt5DBus)
+		-DWITH_KDE=$(usex kde)
+		-DWITH_LDAP=$(usex ldap)
+		-DWANT_MONO=$(usex monolithic)
+		-DWITH_OXYGEN_ICONS=$(usex oxygen)
+		-DWANT_CORE=$(usex server)
 		$(cmake-utils_use_find_package snorenotify LibsnoreQt5)
+		-DWITH_WEBENGINE=$(usex urlpreview)
+		-DWANT_QTCLIENT=$(usex X)
 	)
+
+	if use server || use monolithic; then
+		mycmakeargs+=(  $(cmake-utils_use_find_package crypt QCA2-QT5) )
+	fi
 
 	cmake-utils_src_configure
 }
@@ -125,8 +137,8 @@ src_install() {
 		fowners "${QUASSEL_USER}":"${QUASSEL_USER}" "${QUASSEL_DIR}"
 
 		# init scripts & systemd unit
-		newinitd "${FILESDIR}"/quasselcore.init quasselcore
-		newconfd "${FILESDIR}"/quasselcore.conf quasselcore
+		newinitd "${FILESDIR}"/quasselcore.init-r1 quasselcore
+		newconfd "${FILESDIR}"/quasselcore.conf-r1 quasselcore
 		systemd_dounit "${FILESDIR}"/quasselcore.service
 
 		# logrotate
@@ -150,6 +162,12 @@ pkg_postinst() {
 		einfo "Quassel can use net-misc/oidentd package if installed on your system."
 		einfo "Consider installing it if you want to run quassel within identd daemon."
 	fi
+
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }
 
 pkg_config() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit fortran-2 multilib
 
 DESCRIPTION="A collection of special mathematical functions"
-HOMEPAGE="http://julialang.org/"
+HOMEPAGE="https://julialang.org"
 SRC_URI="https://github.com/JuliaLang/openspecfun/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT public-domain"

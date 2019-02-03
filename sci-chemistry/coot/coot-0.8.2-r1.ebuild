@@ -19,7 +19,7 @@ DESCRIPTION="Crystallographic Object-Oriented Toolkit"
 HOMEPAGE="https://www2.mrc-lmb.cam.ac.uk/Personal/pemsley/coot/"
 SRC_URI="
 	http://www2.mrc-lmb.cam.ac.uk/Personal/pemsley/coot/source/releases/${MY_P}.tar.gz
-	test? ( https://www2.mrc-lmb.cam.ac.uk/Personal/pemsley/coot/data/greg-data.tar.gz -> ${P}-greg-data.tar.gz )"
+	test? ( https://dev.gentoo.org/~jlec/distfiles/${P}-greg-data.tar.gz )"
 
 SLOT="0"
 LICENSE="GPL-3"

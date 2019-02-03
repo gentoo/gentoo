@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,12 +10,12 @@ MY_PN="Flask-Security"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Simple security for Flask apps"
-HOMEPAGE="http://pythonhosted.org/Flask-Security/ https://pypi.python.org/pypi/Flask-Security"
+HOMEPAGE="https://pythonhosted.org/Flask-Security/ https://pypi.org/project/Flask-Security/"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 # tests are foobar
 RESTRICT="test"

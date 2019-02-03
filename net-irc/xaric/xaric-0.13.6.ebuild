@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="An IRC client similar to ircII, BitchX, or ircII EPIC"
-HOMEPAGE="http://xaric.org/"
-SRC_URI="http://xaric.org/software/${PN}/releases/${P}.tar.gz"
+HOMEPAGE="https://xaric.org/"
+SRC_URI="https://xaric.org/software/${PN}/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

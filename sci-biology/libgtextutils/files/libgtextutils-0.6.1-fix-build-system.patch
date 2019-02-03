@@ -1,0 +1,61 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -15,7 +15,7 @@
+ 
+ AC_CONFIG_AUX_DIR(config)
+ AC_CONFIG_MACRO_DIR([m4])
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
+ AM_INIT_AUTOMAKE([dist-bzip2])
+ 
+ # dynamic library version
+@@ -25,12 +25,12 @@
+ 
+ AC_PROG_CC
+ AC_PROG_CXX
+-AC_PROG_LIBTOOL
++LT_INIT
+ 
+ dnl --enable-wall
+-EXTRA_CHECKS="-Wall -Wextra -Wformat-nonliteral -Wformat-security -Wswitch-default -Wswitch-enum -Wunused-parameter -Wfloat-equal -Werror"
++EXTRA_CHECKS="-Wall -Wextra -Wformat-nonliteral -Wformat-security -Wswitch-default -Wswitch-enum -Wunused-parameter -Wfloat-equal"
+ AC_ARG_ENABLE(wall,
+-[  --enable-wall          Enable many common GCC warnings (-Wall,-Wextra, -Werror etc., default enabled)],
++[  --enable-wall          Enable many common GCC warnings (-Wall,-Wextra etc., default enabled)],
+ [case "${enableval}" in
+   yes) wall=true ;;
+   no)  wall=false ;;
+@@ -42,22 +42,6 @@
+   CXXFLAGS="${CXXFLAGS} ${EXTRA_CHECKS}"
+ fi
+ 
+-dnl --enable-debug
+-AC_ARG_ENABLE(debug,
+-[  --enable-debug          Enable debug mode (default enabled)],
+-[case "${enableval}" in
+-  yes) debug=true ;;
+-  no)  debug=false ;;
+-  *) AC_MSG_ERROR(bad value ${enableval} for --enable-debug) ;;
+-esac],[debug=true])
+-if test "$debug" = "true"
+-then
+-  CFLAGS="${CFLAGS} -DDEBUG -g -O1"
+-  CXXFLAGS="${CFLAGS} -DDEBUG -g -O1"
+-else
+-  CFLAGS="${CFLAGS} -O3"
+-  CXXFLAGS="${CFLAGS} -O3"
+-fi
+ 
+ 
+ dnl --enable-tuple-parser-check
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -9,7 +9,7 @@
+ # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ 
+ EXTRA_DIST = reconf configure
+-SUBDIRS = m4 src doc tests
++SUBDIRS = src doc tests
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = gtextutils.pc

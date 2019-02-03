@@ -1,0 +1,18 @@
+--- a/configure.in
++++ b/configure.in
+@@ -89,6 +89,7 @@
+ 	then
+ 		AC_CHECK_LIB(curses, initscr, NCURSLIB="curses", NCURSLIB="")
+ 	fi
++	AC_SEARCH_LIBS(stdscr,tinfo)
+ fi
+ if test "x$NCURSLIB" != "x"
+ then
+@@ -97,6 +98,7 @@
+ 	AC_DEFINE(HAVE_NCURSES)
+ 	LIBS="$LIBS -l$NCURSLIB"
+ 	umix_CONDOBJS="$umix_CONDOBJS ui_ncurses.o"
++	AC_SEARCH_LIBS(stdscr,tinfo)
+ else
+ 	have_ncurses="no"
+ fi

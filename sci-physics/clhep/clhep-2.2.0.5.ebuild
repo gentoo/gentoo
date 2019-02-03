@@ -1,21 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit cmake-utils multilib
+inherit cmake-utils
 
 DESCRIPTION="High Energy Physics C++ library"
-HOMEPAGE="http://www.cern.ch/clhep"
+HOMEPAGE="http://proj-clhep.web.cern.ch/proj-clhep/"
 SRC_URI="http://proj-clhep.web.cern.ch/proj-clhep/DISTRIBUTION/tarFiles/${P}.tgz"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2/${PV}"
 KEYWORDS="amd64 hppa ppc x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 IUSE="doc static-libs test"
-RDEPEND=""
-DEPEND="${RDEPEND}
-	doc? ( virtual/latex-base )"
+
+BDEPEND="doc? ( virtual/latex-base )"
 
 S="${WORKDIR}/${PV}/CLHEP"
 
@@ -42,8 +41,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_enable test TESTING)
-		$(cmake-utils_use doc CLHEP_BUILD_DOCS)
+		-DCLHEP_BUILD_DOCS=$(usex doc)
 	)
 	DESTDIR="${ED}" cmake-utils_src_configure
 	use doc && MAKEOPTS+=" -j1"
@@ -51,5 +49,7 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	use static-libs || rm "${ED}"/usr/$(get_libdir)/*.a
+	if ! use static-libs; then
+		rm "${ED}"/usr/$(get_libdir)/*.a || die
+	fi
 }

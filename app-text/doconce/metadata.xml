@@ -14,7 +14,7 @@
     for paper, tablets, and phones.
   </longdescription>
   <upstream>
-    <remote-id type="pypi">processing</remote-id>
+    <remote-id type="pypi">Doconce</remote-id>
     <remote-id type="github">hplgit/doconce</remote-id>
   </upstream>
 </pkgmetadata>

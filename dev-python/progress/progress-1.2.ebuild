@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="Easy to use progress bars"
-HOMEPAGE="https://pypi.python.org/pypi/progress https://github.com/verigak/progress/"
+HOMEPAGE="https://pypi.org/project/progress/ https://github.com/verigak/progress/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"

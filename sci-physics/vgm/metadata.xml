@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>o.freyermuth@googlemail.com</email>
+    <name>Oliver Freyermuth</name>
+    <description>Proxy-maintainer, assign bugs</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription lang="en">
+    The Virtual Geometry Model (VGM) is an
+    abstraction layer between the Geant4 and ROOT software.
+  </longdescription>
+  <use>
+    <flag name="geant4">Enable interaction with Geant4(<pkg>sci-physics/geant</pkg>:4)</flag>
+    <flag name="root">Enable interaction with ROOT (<pkg>sci-physics/root</pkg>)</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">vmc-project/vgm</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -5,11 +5,6 @@
 #
 #INSPIRCD_CONFIGFILE="/etc/inspircd/inspircd.conf"
 
-# Location of log file. Modify if you don't like the standard
-# one.
-#
-#INSPIRCD_LOGFILE="/var/log/inspircd/ircd.log"
-
 # File used to store the PID file. Usually you won't need to touch it.
 # If you are changing PID file do not forget to set new PID file in
 # INSPIRCD_CONFIGFILE as well.

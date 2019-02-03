@@ -10,8 +10,8 @@
 		<name>Python</name>
 	</maintainer>
 	<longdescription lang="en">
-	Python object model built on JSON schema and JSON patch.
-  </longdescription>
+		Python object model built on JSON schema and JSON patch.
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">warlock</remote-id>
 		<remote-id type="github">bcwaldon/warlock</remote-id>

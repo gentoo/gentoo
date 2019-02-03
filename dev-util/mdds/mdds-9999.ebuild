@@ -1,33 +1,35 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-EGIT_REPO_URI="https://gitlab.com/mdds/mdds.git"
-[[ ${PV} == 9999 ]] && GITECLASS="git-r3"
-
-inherit autotools toolchain-funcs ${GITECLASS}
+if [[ ${PV} == 9999 ]]; then
+	EGIT_REPO_URI="https://gitlab.com/mdds/mdds.git"
+	inherit git-r3
+else
+	SRC_URI="https://kohei.us/files/${PN}/src/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+fi
+inherit autotools toolchain-funcs
 
 DESCRIPTION="A collection of multi-dimensional data structure and indexing algorithm"
 HOMEPAGE="https://gitlab.com/mdds/mdds"
-[[ ${PV} == 9999 ]] || SRC_URI="https://kohei.us/files/${PN}/src/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="1/${PV%.*}"
 IUSE="doc valgrind"
 
-[[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-
 RDEPEND="dev-libs/boost:="
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	doc? (
 		app-doc/doxygen
 		dev-python/sphinx
 	)
+	valgrind? ( dev-util/valgrind )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.2.3-buildsystem.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.4.3-buildsystem.patch" )
 
 src_prepare(){
 	default

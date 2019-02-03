@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit toolchain-funcs eutils multilib multilib-minimal
 
-DESCRIPTION="Audio processing plugin system for plugins that extract descriptive information from audio data"
-HOMEPAGE="http://www.vamp-plugins.org"
+DESCRIPTION="Audio processing system for plugins to extract information from audio data"
+HOMEPAGE="https://www.vamp-plugins.org"
 SRC_URI="https://code.soundsoftware.ac.uk/attachments/download/2206/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sparc x86"
 IUSE="doc static-libs"
 
 RDEPEND="media-libs/libsndfile"
@@ -25,7 +25,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	# multilib for default search paths
-	sed -i -e "s:/usr/lib/vamp:/usr/$(get_libdir)/vamp:" src/vamp-hostsdk/PluginHostAdapter.cpp || die "sed failed"
+	sed -i -e "s:/usr/lib/vamp:${EPREFIX}/usr/$(get_libdir)/vamp:" src/vamp-hostsdk/PluginHostAdapter.cpp || die "sed failed"
 	econf
 }
 
@@ -39,7 +39,7 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" INSTALL_SDK_LIBS="/usr/$(get_libdir)" INSTALL_PKGCONFIG="/usr/$(get_libdir)/pkgconfig" INSTALL_PLUGINS="/usr/$(get_libdir)/vamp" install
+	emake DESTDIR="${D}" INSTALL_SDK_LIBS="${EPREFIX}/usr/$(get_libdir)" INSTALL_PKGCONFIG="${EPREFIX}/usr/$(get_libdir)/pkgconfig" INSTALL_PLUGINS="${EPREFIX}/usr/$(get_libdir)/vamp" install
 	multilib_is_native_abi && use doc && dohtml -r build/doc/html/*
 }
 

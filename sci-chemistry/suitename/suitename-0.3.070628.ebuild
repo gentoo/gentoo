@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 MY_P="${PN}.${PV}"
 
-DESCRIPTION="The ROC RNA Ontology Consortium consensus RNA backbone nomenclature and conformer-list development"
+DESCRIPTION="The ROC RNA Ontology nomenclature and conformer-list development"
 HOMEPAGE="http://kinemage.biochem.duke.edu/software/suitename.php"
 SRC_URI="http://kinemage.biochem.duke.edu/downloads/software/${PN}/${MY_P}.src.tgz"
 

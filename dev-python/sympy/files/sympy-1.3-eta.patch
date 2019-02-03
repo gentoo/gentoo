@@ -1,0 +1,12 @@
+diff -r -U3 sympy-1.3.orig/sympy/functions/special/zeta_functions.py sympy-1.3/sympy/functions/special/zeta_functions.py
+--- sympy-1.3.orig/sympy/functions/special/zeta_functions.py	2018-09-07 02:27:20.000000000 +0700
++++ sympy-1.3/sympy/functions/special/zeta_functions.py	2018-09-17 22:05:34.374733619 +0700
+@@ -509,7 +509,7 @@
+ 
+     For `\operatorname{Re}(s) > 0`, this function is defined as
+ 
+-    .. math:: \eta(s) = \sum_{n=1}^\infty \frac{(-1)^n}{n^s}.
++    .. math:: \eta(s) = \sum_{n=1}^\infty \frac{(-1)^{n-1}}{n^s}.
+ 
+     It admits a unique analytic continuation to all of :math:`\mathbb{C}`.
+     It is an entire, unbranched function.

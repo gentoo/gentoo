@@ -1,0 +1,36 @@
+From ac00de69665a14bc1884be90ec83f8e8bc4d69f0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?G=C3=B6kt=C3=BCrk=20Y=C3=BCksek?= <gokturk@gentoo.org>
+Date: Wed, 19 Sep 2018 16:45:37 -0400
+Subject: [PATCH] Makefile.am: use the libjitterentropy available on the system
+
+---
+ Makefile.am | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index fa8ecca..abc759a 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,9 +2,7 @@
+ ## Toplevel Makefile.am for rng-tools
+ ##
+ if JITTER
+- JSUBDIR = jitterentropy-library
+- JSUBLIB = ./jitterentropy-library/libjitterentropy.a
+- AM_CPPFLAGS = -I./jitterentropy-library
++ jitterentropy_LIBS = -ljitterentropy
+ endif
+ 
+ SUBDIRS		= contrib tests $(JSUBDIR) 
+@@ -33,7 +31,7 @@ if JITTER
+ rngd_SOURCES	+= rngd_jitter.c
+ endif
+ 
+-rngd_LDADD	= librngd.a -lsysfs $(JSUBLIB) ${libcurl_LIBS} ${libxml2_LIBS} ${openssl_LIBS} $(PTHREAD_LIBS)
++rngd_LDADD	= librngd.a -lsysfs $(jitterentropy_LIBS) ${libcurl_LIBS} ${libxml2_LIBS} ${openssl_LIBS} $(PTHREAD_LIBS)
+ 
+ rngd_CFLAGS	= ${libxml2_CFLAGS} ${openssl_CFLAGS} $(PTHREAD_CFLAGS)
+ rngd_LDFLAGS	= $(PTHREAD_CFLAGS)
+-- 
+2.19.0
+

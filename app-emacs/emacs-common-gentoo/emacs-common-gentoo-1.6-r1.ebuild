@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit elisp-common eutils xdg-utils gnome2-utils readme.gentoo-r1 user
+inherit elisp-common desktop xdg-utils gnome2-utils readme.gentoo-r1 user
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="games X"
 
 PDEPEND="virtual/emacs"
@@ -87,13 +87,6 @@ pkg_preinst() {
 			chgrp gamestat "${ED}${f}" || die
 			chmod g+w "${ED}${f}" || die
 		done
-
-		if has 1.4-r1 ${REPLACING_VERSIONS} \
-				&& [[ -d ${EROOT}/var/games/emacs ]]; then
-			elog "Updating owner and permissions of score file directory."
-			chown 0:gamestat "${EROOT}"/var/games/emacs || die
-			chmod 775 "${EROOT}"/var/games/emacs || die
-		fi
 	fi
 }
 

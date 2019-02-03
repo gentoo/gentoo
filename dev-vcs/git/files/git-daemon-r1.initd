@@ -5,7 +5,8 @@
 pidfile="/var/run/git-daemon.pid"
 command="/usr/bin/git"
 command_args="daemon ${GITDAEMON_OPTS}"
-start_stop_daemon_args="-e HOME= -e XDG_CONFIG_HOME= -b -m -p ${pidfile} -u ${GIT_USER:-nobody}:${GIT_GROUP:-nobody}"
+command_user="${GIT_USER:-nobody}:${GIT_GROUP:-nobody}"
+start_stop_daemon_args="-e HOME= -e XDG_CONFIG_HOME= -b -m"
 
 depend() {
 	use logger

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ IUSE="doc examples fuse http kerberos python readline rbd ssl test"
 CDEPEND="
 	!<sci-physics/root-5.32[xrootd]
 	sys-libs/zlib
-	fuse? ( sys-fs/fuse )
+	fuse? ( sys-fs/fuse:0 )
 	kerberos? ( virtual/krb5 )
 	python? ( ${PYTHON_DEPS} )
 	rbd? ( sys-cluster/ceph )

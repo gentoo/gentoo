@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,6 +17,32 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (02 Dec 2018)
+# gnome-base/nautilus is not stable
+media-sound/easytag nautilus
+
+# Michał Górny <mgorny@gentoo.org> (26 Aug 2018)
+# Non-stable dependency.  Used to be masked completely.
+media-sound/abcde replaygain
+
+# Ulrich Müller <ulm@gentoo.org> (09 Aug 2018)
+# Needs net-mail/mailutils and net-libs/webkit-gtk which are not
+# stable (yet?), bug #663248
+app-editors/emacs mailutils xwidgets
+
+# Andreas Sturmlechner <asturm@gentoo.org> (20 Jun 2018)
+# dev-python/PyQt5 is not stable.
+media-sound/pulseaudio qt5
+net-print/hplip qt5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (15 Mar 2018)
+# Requires media-libs/portmidi which is not stable
+media-sound/hydrogen portmidi
+
+# Andreas Sturmlechner <asturm@gentoo.org> (06 Feb 2018)
+# Requires sci-geosciences/gpsd which is not stable
+app-misc/geoclue gps
+
 # David Seifert <soap@gentoo.org> (23 Sep 2017)
 # MPI does not have stable keywords on ppc/ppc64
 sci-libs/fftw mpi
@@ -24,8 +50,7 @@ sci-libs/fftw mpi
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Sep 2017)
 # Stable-masking mpi support so Boost stabilization can go ahead
 # Boost 1.63 (bug 624662), Boost 1.62 (bug 590244)
-=dev-libs/boost-1.62* mpi
-=dev-libs/boost-1.63* mpi
+dev-libs/boost mpi
 
 # Mikle Kolyada <zlogene@gentoo.org> (25 Aug 2017)
 # ceph has never been stabilized under either ~ppc or ~ppc64
@@ -47,18 +72,12 @@ media-video/vlc opencv
 # Michael Palimaka <kensington@gentoo.org> (25 May 2016)
 # Dependencies not stable
 app-arch/p7zip kde
-app-i18n/uim kde
 dev-vcs/subversion kwallet
 games-arcade/jumpnbump kde
-media-video/vlc kde
 net-irc/quassel kde
 net-libs/libproxy kde
 sys-auth/polkit kde
 x11-misc/xscreensaver new-login
-
-# Pacho Ramos <pacho@gentoo.org> (15 May 2015)
-# Missing stable
-dev-libs/protobuf python
 
 # Pacho Ramos <pacho@gentoo.org> (06 Sep 2015)
 # webkit-gtk is going to stay in ~all but amd64/x86

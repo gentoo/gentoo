@@ -6,6 +6,8 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="pypi">responses</remote-id>
 		<remote-id type="github">getsentry/responses</remote-id>
+		<bugs-to>https://github.com/getsentry/responses/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

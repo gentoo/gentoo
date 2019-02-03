@@ -1,5 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils autotools
 
@@ -13,7 +15,7 @@ KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND="x11-libs/libX11"
-DEPEND="x11-proto/xproto
+DEPEND="x11-base/xorg-proto
 	${RDEPEND}"
 
 src_unpack() {

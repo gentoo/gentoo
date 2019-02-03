@@ -1,10 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
 EAPI=6
 
 inherit pam eutils autotools
 DESCRIPTION="Toolkit for using one-time password authentication with HOTP/TOTP algorithms"
-HOMEPAGE="http://www.nongnu.org/oath-toolkit/ http://gitorious.org/oath-toolkit/"
+HOMEPAGE="http://www.nongnu.org/oath-toolkit/"
 SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.gz"
 LICENSE="GPL-3 LGPL-2.1"
 
@@ -19,7 +20,22 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/libxml2 )
 	dev-util/gtk-doc-am"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc7.patch
+	"${FILESDIR}"/${P}-glibc228.patch
+)
+
 src_prepare() {
+	default
+
+	# Below files are verbatim copy. Effectively apply ${P}-gcc7.patch
+	# to all of them.
+	local s='oathtool/gl/intprops.h' d
+	for d in {liboath/gl/tests,libpskc/gl,pskctool/gl}/intprops.h; do
+		echo "Copy '${s}' to '${d}'"
+		cp "${s}" "${d}" || die
+	done
+
 	# These tests need git/cvs and don't reflect anything in the final app
 	sed -i -r \
 		-e '/TESTS/s,test-vc-list-files-(git|cvs).sh,,g' \
@@ -29,7 +45,6 @@ src_prepare() {
 		-e '/AM_INIT_AUTOMAKE/ s:-Wall:\0 -Wno-portability:' \
 		{liboath,libpskc}/configure.ac
 	eautoreconf
-	default
 }
 
 src_configure() {

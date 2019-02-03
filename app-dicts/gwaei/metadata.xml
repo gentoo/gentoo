@@ -6,18 +6,14 @@
 		<name>Cjk</name>
 	</maintainer>
 	<longdescription lang="en">
-    gWaei is a drop-in replacement for Gjiten. The main feature of
-    this dictonary program is regular expression support. For example,
-    you can use periods in place of unknown Kanji of a word to search
-    for it.
-  </longdescription>
+		gWaei is a drop-in replacement for Gjiten. The main feature of
+		this dictonary program is regular expression support. For example,
+		you can use periods in place of unknown Kanji of a word to search
+		for it.
+	</longdescription>
 	<use>
-		<flag name="mecab">
-	  Enable <pkg>app-text/mecab</pkg> support
-	</flag>
-		<flag name="hunspell">
-	  Enable <pkg>app-text/hunspell</pkg> spellchecking and morphological analysis
-	</flag>
+		<flag name="mecab">Enable <pkg>app-text/mecab</pkg> support</flag>
+		<flag name="hunspell">Enable <pkg>app-text/hunspell</pkg> spellchecking and morphological analysis</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">gwaei</remote-id>

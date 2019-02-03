@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,11 +19,11 @@ REQUIRED_USE="
 	vala? ( introspection )
 "
 
-KEYWORDS="alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.44.0:2
-	>=dev-libs/json-glib-0.15
+	>=dev-libs/json-glib-0.15[introspection?]
 	>=dev-libs/libxml2-2:2
 	>=net-libs/liboauth-0.9.4
 	>=net-libs/libsoup-2.55.90:2.4[introspection?]
@@ -33,12 +33,15 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.9.7:= )
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.25
 	>=dev-util/intltool-0.40
+	sys-devel/autoconf-archive
 	virtual/pkgconfig
 	test? ( >=net-libs/uhttpmock-0.5 )
 	vala? ( $(vala_depend) )
 "
+# eautoreconf needs autoconf-archive
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.17.8-disable-demos.patch

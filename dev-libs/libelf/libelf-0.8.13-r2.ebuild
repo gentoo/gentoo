@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils multilib autotools multilib-minimal
 
@@ -11,21 +11,18 @@ SRC_URI="http://www.mr511.de/software/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ~mips ppc ppc64 sparc x86 -amd64-fbsd -x86-fbsd ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug nls elibc_FreeBSD"
 
-RDEPEND="!dev-libs/elfutils
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20130224-r11
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+RDEPEND="!dev-libs/elfutils"
 DEPEND="nls? ( sys-devel/gettext )"
 
 DOCS=( ChangeLog README )
 MULTILIB_WRAPPED_HEADERS=( /usr/include/libelf/sys_elf.h )
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-build.patch"
+	eapply "${FILESDIR}/${P}-build.patch"
+	eapply_user
 	eautoreconf
 }
 

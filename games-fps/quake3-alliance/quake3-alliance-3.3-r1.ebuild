@@ -15,7 +15,7 @@ SRC_URI="mirror://quakeunity/modifications/alliance/alliance30.zip
 	http://www.superkeff.net/mods/mods/alliance/alliance30-33.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 src_prepare() {

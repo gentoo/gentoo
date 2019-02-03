@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>wschlich@gentoo.org</email>
-	<name>Wolfram Schlich</name>
-	<description>Maintainer</description>
-</maintainer>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="sybase">Add support for the Sybase SQL Database
+			Server</flag>
+	</use>
 </pkgmetadata>

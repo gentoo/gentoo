@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -27,7 +27,7 @@ IUSE="emacs tk nls unicode X ${LISPS[*]}"
 # Languages
 LANGS="de es pt pt_BR"
 for lang in ${LANGS}; do
-	IUSE="${IUSE} linguas_${lang}"
+	IUSE="${IUSE} l10n_${lang/_/-}"
 done
 
 # texlive-latexrecommended needed by imaxima for breqn.sty
@@ -131,7 +131,7 @@ src_configure() {
 	# enable existing translated doc
 	if use nls; then
 		for lang in ${LANGS}; do
-			if use "linguas_${lang}"; then
+			if use "l10n_${lang/_/-}"; then
 				CONFS="${CONFS} --enable-lang-${lang}"
 				use unicode && CONFS="${CONFS} --enable-lang-${lang}-utf8"
 			fi

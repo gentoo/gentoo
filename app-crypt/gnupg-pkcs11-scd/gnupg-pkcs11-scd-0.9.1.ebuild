@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit user
 
@@ -21,8 +21,8 @@ RDEPEND="
 	>=dev-libs/libgcrypt-1.2.2:=
 	>=dev-libs/libgpg-error-1.3:=
 	>=dev-libs/pkcs11-helper-1.02:="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 pkg_setup() {
 	if use proxy; then

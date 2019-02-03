@@ -4,11 +4,14 @@
 	<maintainer type="person">
 		<email>swegener@gentoo.org</email>
 		<name>Sven Wegener</name>
-		<description>Primary Maintainer</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>monsieurp@gentoo.org</email>
 		<name>Patrice Clement</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
 	</maintainer>
 	<use>
 		<flag name="proxy">Adds support for a loadable IRC proxy module</flag>

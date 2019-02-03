@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ inherit java-pkg-2 java-ant-2
 RESTRICT="test"
 
 DESCRIPTION="Java library for reading and writing CSV and plain delimited text files"
-HOMEPAGE="http://www.csvreader.com/java_csv.php"
+HOMEPAGE="https://www.csvreader.com/java_csv.php"
 SRC_URI="mirror://sourceforge/${PN}/${P/-/}.zip"
 LICENSE="LGPL-2.1"
 SLOT="0"

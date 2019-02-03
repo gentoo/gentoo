@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ RDEPEND="sys-apps/pciutils[-zlib]
 		x11-libs/libXxf86vm )"
 
 DEPEND="${RDEPEND}
-	X? ( x11-proto/xf86vidmodeproto )"
+	X? ( x11-base/xorg-proto )"
 
 PATCHES=( "${FILESDIR}/respect-cflags.patch" )
 

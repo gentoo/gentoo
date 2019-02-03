@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,7 +6,7 @@ EAPI="6"
 inherit toolchain-funcs
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20170804"
+MY_RELEASEDATE="20180524"
 
 SEPOL_VER="${PV}"
 SEMNG_VER="${PV}"
@@ -44,7 +44,6 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" \
-		LIBSEPOLA="/usr/$(get_libdir)/libsepol.a" \
 		install
 
 	if use debug; then
@@ -54,5 +53,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "This checkpolicy can compile version `checkpolicy -V |cut -f 1 -d ' '` policy."
+	einfo "This checkpolicy can compile version `checkpolicy -V | cut -f 1 -d ' '` policy."
 }

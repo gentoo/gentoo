@@ -14,7 +14,7 @@ SRC_URI="https://marisa-trie.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
 IUSE="python doc static-libs cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_sse4a cpu_flags_x86_popcnt"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"

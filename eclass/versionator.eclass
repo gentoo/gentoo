@@ -1,10 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: versionator.eclass
 # @MAINTAINER:
 # Jonathan Callen <jcallen@gentoo.org>
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: functions which simplify manipulation of ${PV} and similar version strings
 # @DESCRIPTION:
 # This eclass provides functions which simplify manipulating $PV and similar
@@ -28,7 +29,14 @@
 if [[ -z ${_VERSIONATOR_ECLASS} ]]; then
 _VERSIONATOR_ECLASS=1
 
-inherit eutils
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6)
+		;;
+	*)
+		die "${ECLASS}: banned in EAPI=${EAPI}; use ver_* instead";;
+esac
+
+inherit estack
 
 # @FUNCTION: get_all_version_components
 # @USAGE: [version]

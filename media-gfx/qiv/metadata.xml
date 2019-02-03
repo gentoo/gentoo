@@ -8,4 +8,7 @@
 	<use>
 		<flag name="magic">Use libmagic to determine mimetypes</flag>
 	</use>
+	<upstream>
+		<remote-id type="bitbucket">ciberandy/qiv</remote-id>
+	</upstream>
 </pkgmetadata>

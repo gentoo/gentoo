@@ -6,14 +6,7 @@
 		<changelog>https://git.archlinux.org/pacman.git/tree/NEWS</changelog>
 		<doc>https://www.archlinux.org/pacman/</doc>
 	</upstream>
-	<maintainer type="person">
-		<email>holgersson@posteo.de</email>
-		<name>Nils Freydank</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<slots>
 		<subslots>Reflect major ABI of libalpm.so.</subslots>
 	</slots>

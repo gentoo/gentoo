@@ -13,7 +13,7 @@ HOMEPAGE="http://gtk2-perl.sf.net/ ${HOMEPAGE}"
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="alpha amd64 ppc ppc64 x86"
+KEYWORDS="alpha amd64 ppc64 x86"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2

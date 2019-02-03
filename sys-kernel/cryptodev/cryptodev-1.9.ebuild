@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,6 +21,12 @@ RESTRICT="test"
 S=${WORKDIR}/${PN}-linux-${PV}
 
 MODULE_NAMES="cryptodev(extra:${S})"
+BUILD_PARAMS="KERNEL_DIR=\"\${KV_OUT_DIR}\""
+
+PATCHES=(
+	"${FILESDIR}"/cryptodev-1.9-fix-build-with-4.14-629958.patch
+	"${FILESDIR}"/ioctl.c-Fix-build-with-linux-4.17.patch
+)
 
 pkg_pretend() {
 	if use kernel_linux ; then

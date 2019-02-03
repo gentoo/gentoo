@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ RDEPEND="
 	stubgen? ( dev-libs/argtable:= )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
-	test? ( dev-cpp/catch )"
+	test? ( dev-cpp/catch:0 )"
 
 RESTRICT="!test? ( test )"
 
@@ -35,11 +35,16 @@ src_configure() {
 		-DHTTP_SERVER=$(usex http-server)
 		-DREDIS_CLIENT=$(usex redis-client)
 		-DREDIS_SERVER=$(usex redis-server)
+		# they have no deps
+		-DTCP_SOCKET_CLIENT=ON
+		-DTCP_SOCKET_SERVER=ON
+		-DUNIX_DOMAIN_SOCKET_CLIENT=ON
+		-DUNIX_DOMAIN_SOCKET_SERVER=ON
 		# they are not installed
 		-DCOMPILE_EXAMPLES=OFF
 		-DCOMPILE_STUBGEN=$(usex stubgen)
 		-DCOMPILE_TESTS=$(usex test)
-		-DCATCH_INCLUDE_DIR="${EPREFIX}/usr/include/catch"
+		-DCATCH_INCLUDE_DIR="${EPREFIX}/usr/include/catch2"
 	)
 
 	cmake-utils_src_configure

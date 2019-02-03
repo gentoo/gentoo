@@ -3,6 +3,6 @@
 <pkgmetadata>
 <maintainer type="project">
   <email>sandbox@gentoo.org</email>
-  <description>Sandbox Maintainers</description>
+  <name>Sandbox Maintainers</name>
 </maintainer>
 </pkgmetadata>

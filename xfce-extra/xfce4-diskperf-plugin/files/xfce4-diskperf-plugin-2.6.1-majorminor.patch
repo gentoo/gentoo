@@ -1,0 +1,58 @@
+From: Nico R. <n-roeser@gmx.net>
+Date: Sun, 28 Jan 2018 15:15:07 +0100
+Subject: [PATCH] work around glibc namespace pollution
+
+---
+ panel-plugin/devperf.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/panel-plugin/devperf.c b/panel-plugin/devperf.c
+index 29bcb87..95d2f0e 100644
+--- a/panel-plugin/devperf.c
++++ b/panel-plugin/devperf.c
+@@ -69,7 +69,7 @@ static int DevGetPerfData1 (dev_t p_iDevice, struct devperf_t *p_poPerf)
+ 	iMinorNo = minor(p_iDevice);
+     struct timeval  oTimeStamp;
+     FILE           *pF;
+-    unsigned int    major, minor, rsect, wsect, ruse, wuse, use;
++    unsigned int    majorNo, minorNo, rsect, wsect, ruse, wuse, use;
+     int             running;
+     char            acStats[128];
+     int             c, n;
+@@ -80,10 +80,10 @@ static int DevGetPerfData1 (dev_t p_iDevice, struct devperf_t *p_poPerf)
+ 	return (-1);
+     }
+     while (1) {
+-	n = fscanf (pF, "%u %u", &major, &minor);
++	n = fscanf (pF, "%u %u", &majorNo, &minorNo);
+ 	if (n != 2)
+ 	    goto Error;
+-	if ((major != iMajorNo) || (minor != iMinorNo)) {
++	if ((majorNo != iMajorNo) || (minorNo != iMinorNo)) {
+ 	    while ((c = fgetc (pF)) && (c != '\n'));	/* Goto next line */
+ 	    continue;
+ 	}
+@@ -126,7 +126,7 @@ static int DevGetPerfData2 (dev_t p_iDevice, struct devperf_t *p_poPerf)
+ 	iMinorNo = p_iDevice & 0xFF;
+     struct timeval  oTimeStamp;
+     FILE           *pF;
+-    unsigned int    major, minor, rsect, wsect, ruse, wuse, use;
++    unsigned int    majorNo, minorNo, rsect, wsect, ruse, wuse, use;
+     int             running;
+     int             c, n;
+ 
+@@ -138,9 +138,9 @@ static int DevGetPerfData2 (dev_t p_iDevice, struct devperf_t *p_poPerf)
+     while ((c = fgetc (pF)) && (c != '\n'));	/* Skip the header line */
+     while ((n = fscanf (pF,
+ 			"%u %u %*u %*s %*u %*u %u %u %*u %*u %u %u %d %u %*u",
+-			&major, &minor, &rsect, &ruse, &wsect,
++			&majorNo, &minorNo, &rsect, &ruse, &wsect,
+ 			&wuse, &running, &use)) == 8)
+-	if ((major == iMajorNo) && (minor == iMinorNo)) {
++	if ((majorNo == iMajorNo) && (minorNo == iMinorNo)) {
+ 	    fclose (pF);
+ 	    gettimeofday (&oTimeStamp, 0);
+ 	    p_poPerf->timestamp_ns =
+-- 
+2.16.1
+

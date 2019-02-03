@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PLOCALES="ar cs de en es et fr hr hu id_ID it ja nl pl pt_BR pt ru sk sv uk vi zh_CN zh_TW"
 
-inherit fdo-mime gnome2-utils git-r3 l10n qmake-utils
+inherit git-r3 gnome2-utils l10n qmake-utils xdg-utils
 
 DESCRIPTION="Qt based map editor for the openstreetmap.org project"
 HOMEPAGE="http://www.merkaartor.be https://github.com/openstreetmap/merkaartor"
@@ -22,7 +22,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtsingleapplication[X,qt5]
+	dev-qt/qtsingleapplication[X,qt5(+)]
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
@@ -30,7 +30,7 @@ RDEPEND="
 	sci-libs/proj
 	sys-libs/zlib
 	exif? ( media-gfx/exiv2:= )
-	gps? ( >=sci-geosciences/gpsd-3.13[cxx] )
+	gps? ( >=sci-geosciences/gpsd-3.17-r2 )
 	libproxy? ( net-libs/libproxy )
 	webengine? ( dev-qt/qtwebengine:5 )
 "
@@ -38,6 +38,8 @@ DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 "
+
+PATCHES=( "${FILESDIR}/${PN}-0.18.3-sharedir-pluginsdir.patch" ) # bug 621826
 
 DOCS=( AUTHORS CHANGELOG )
 
@@ -67,9 +69,11 @@ src_prepare() {
 src_configure() {
 	# TRANSDIR_SYSTEM is for bug #385671
 	eqmake5 \
-		PREFIX="${ED}usr" \
-		LIBDIR="${ED}usr/$(get_libdir)" \
-		TRANSDIR_MERKAARTOR="${ED}usr/share/${PN}/translations" \
+		PREFIX="${ED%/}/usr" \
+		LIBDIR="${ED%/}/usr/$(get_libdir)" \
+		PLUGINS_DIR="/usr/$(get_libdir)/${PN}/plugins" \
+		SHARE_DIR_PATH="/usr/share/${PN}" \
+		TRANSDIR_MERKAARTOR="${ED%/}/usr/share/${PN}/translations" \
 		TRANSDIR_SYSTEM="${EPREFIX}/usr/share/qt5/translations" \
 		SYSTEM_QTSA=1 \
 		NODEBUG=$(usex debug 0 1) \
@@ -80,16 +84,12 @@ src_configure() {
 		Merkaartor.pro
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }

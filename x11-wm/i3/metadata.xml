@@ -4,12 +4,10 @@
 	<maintainer type="person">
 		<email>nelo@wallus.de</email>
 		<name>Nelo-Thara Wallus</name>
-		<description>Proxied by Polynomial-C</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
-		<description>Proxy maintainer for Nelo</description>
 	</maintainer>
 	<use>
 		<flag name="doc">Build and install the HTML documentation and regenerate the man pages</flag>

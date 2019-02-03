@@ -1,0 +1,52 @@
+Bug: https://bugs.gentoo.org/646538
+Upstream commit: https://bitbucket.org/odedevs/ode/commits/6f44023660dc830147a56314ea0627a23f11ad86
+
+# HG changeset patch
+# User oleh_derevenko <>
+# Date 1521993135 -10800
+# Node ID 6f44023660dc830147a56314ea0627a23f11ad86
+# Parent  6a68227619feebf85513331d7320b5a89eadf44f
+Fixed: Command line parameter validation errors have been fixed in some demos (reported by Peter Levine)
+
+diff --git a/ode/demo/demo_jointPR.cpp b/ode/demo/demo_jointPR.cpp
+--- a/ode/demo/demo_jointPR.cpp
++++ b/ode/demo/demo_jointPR.cpp
+@@ -328,8 +328,8 @@
+             if (0 == strcmp("-t", argv[i]) || 0 == strcmp("--texture-path", argv[i]))
+             {
+                 int j = i+1;
+-                if ( j+1 > argc      ||  // Check if we have enough arguments
+-                        argv[j] == '\0' ||  // We should have a path here
++                if ( j >= argc      ||  // Check if we have enough arguments
++                        argv[j][0] == '\0' ||  // We should have a path here
+                         argv[j][0] == '-' ) // We should have a path not a command line
+                     Help(argv);
+                 else
+diff --git a/ode/demo/demo_jointPU.cpp b/ode/demo/demo_jointPU.cpp
+--- a/ode/demo/demo_jointPU.cpp
++++ b/ode/demo/demo_jointPU.cpp
+@@ -575,8 +575,8 @@
+ 
+       if (0 == strcmp ("-t", argv[i]) || 0 == strcmp ("--texture-path", argv[i]) ) {
+         int j = i+1;
+-        if ( j+1 > argc      ||  // Check if we have enough arguments
+-             argv[j] == '\0' ||  // We should have a path here
++        if ( j >= argc      ||  // Check if we have enough arguments
++             argv[j][0] == '\0' ||  // We should have a path here
+              argv[j][0] == '-' ) // We should have a path not a command line
+           Help (argv);
+         else
+diff --git a/ode/demo/demo_piston.cpp b/ode/demo/demo_piston.cpp
+--- a/ode/demo/demo_piston.cpp
++++ b/ode/demo/demo_piston.cpp
+@@ -658,8 +658,8 @@
+                 if ( 0 == strcmp ("-t", argv[i]) || 0 == strcmp ("--texture-path", argv[i]) )
+                 {
+                     int j = i+1;
+-                    if ( j+1 > argc      ||  // Check if we have enough arguments
+-                            argv[j] == '\0' ||  // We should have a path here
++                    if ( j >= argc      ||  // Check if we have enough arguments
++                            argv[j][0] == '\0' ||  // We should have a path here
+                             argv[j][0] == '-' ) // We should have a path not a command line
+                         Help (argv);
+                     else

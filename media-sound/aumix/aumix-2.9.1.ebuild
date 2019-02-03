@@ -1,8 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils
+EAPI=7
+
+inherit desktop
 
 DESCRIPTION="Aumix volume/mixer control program"
 HOMEPAGE="http://jpj.net/~trevor/aumix.html"
@@ -13,7 +14,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86"
 IUSE="gpm gtk nls"
 
-RDEPEND="sys-libs/ncurses
+RDEPEND="sys-libs/ncurses:0
 	gpm? ( sys-libs/gpm )
 	gtk? ( x11-libs/gtk+:2 )
 	nls? ( virtual/libintl )"
@@ -34,8 +35,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS BUGS ChangeLog NEWS README TODO
+	default
 
 	newinitd "${FILESDIR}"/aumix.rc6 aumix
 

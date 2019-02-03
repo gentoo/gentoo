@@ -1,8 +1,8 @@
 * no idea where these macros are, but we can surely do without this, for
   now -- grobian@gentoo.org
 
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -504,16 +504,6 @@
  
  AC_MSG_RESULT($result)

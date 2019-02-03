@@ -15,6 +15,7 @@
     <flag name="cblas">Build with CBLAS <pkg>virtual/cblas</pkg></flag>
     <flag name="cuda">Enable support for CUDA for Deep Neural Networks (cuDNN) on GPU (experimental)</flag>
     <flag name="mkl">Enable support for Intel FFT <pkg>sci-libs/mkl</pkg></flag>
+    <flag name="python">Enable support for Python API bindings</flag>
   </use>
   <upstream>
     <remote-id type="github">davisking/dlib</remote-id>

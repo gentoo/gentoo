@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PLOCALES="ca cs es fr hr hu id ja ko pl pt_BR ru sv zh_CN zh_TW"
 
-inherit eutils fdo-mime gnome2-utils l10n python-single-r1
+inherit eutils gnome2-utils l10n python-single-r1 xdg-utils
 
 DESCRIPTION="A GTK image viewer specifically designed to handle comic books"
 HOMEPAGE="http://comix.sourceforge.net"
@@ -66,13 +66,13 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_gconf_install
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }

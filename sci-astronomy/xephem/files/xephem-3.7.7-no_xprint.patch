@@ -1,0 +1,11 @@
+--- a/GUI/xephem/Makefile
++++ b/GUI/xephem/Makefile
+@@ -30,7 +30,7 @@
+ endif
+ 
+ # for linux and Apple OS X
+-XLIBS = -lXm -lXp -lXt -lXext -lXmu -lX11
++XLIBS = -lXm -lXt -lXext -lXmu -lX11
+ CFLAGS := $(LIBINC) $(CFLAGS)
+ LIBS = $(LIBLNK) $(XLIBS) $(LIBLIB) -lm
+ 

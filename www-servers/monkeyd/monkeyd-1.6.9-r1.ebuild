@@ -1,17 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 inherit eutils flag-o-matic toolchain-funcs user multilib
 
 DESCRIPTION="A small, fast, and scalable web server"
 HOMEPAGE="http://www.monkey-project.com/"
 MY_P="${PN/d}-${PV}"
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/monkey/monkey.git"
-	inherit git-2
-	KEYWORDS="amd64 arm ppc64"
+	inherit git-r3
+	KEYWORDS=""
 else
 	SRC_URI="http://monkey-project.com/releases/${PV:0:3}/${MY_P}.tar.gz"
 	KEYWORDS="amd64 arm ~mips ppc ppc64 x86"

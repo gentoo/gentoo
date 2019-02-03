@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,7 +44,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	dev-util/intltool
-	x11-proto/videoproto
+	x11-base/xorg-proto
 	nls? ( sys-devel/gettext:0 )
 	x86? ( dev-lang/nasm )
 "

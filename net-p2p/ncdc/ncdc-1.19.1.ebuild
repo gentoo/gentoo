@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="ncurses directconnect client"
-HOMEPAGE="http://dev.yorhel.nl/ncdc"
-SRC_URI="http://dev.yorhel.nl/download/${P}.tar.gz"
+HOMEPAGE="https://dev.yorhel.nl/ncdc"
+SRC_URI="https://dev.yorhel.nl/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

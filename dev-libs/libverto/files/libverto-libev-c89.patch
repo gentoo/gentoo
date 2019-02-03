@@ -1,0 +1,15 @@
+diff --git a/configure.ac b/configure.ac
+index 09ee123..b7b5908 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -7,8 +7,8 @@ m4_ifdef([AC_USE_SYSTEM_EXTENSIONS],
+     [AC_USE_SYSTEM_EXTENSIONS],
+     [AC_GNU_SOURCE])
+ 
+-AC_PROG_CC_C89
+-for flag in -std=c89 -Wall -Wextra; do
++AC_PROG_CC_C99
++for flag in -Wall -Wextra; do
+   AC_TRY_COMPILE([], [return 0;], [CFLAGS="$CFLAGS $flag"],)
+ done
+ 

@@ -2,8 +2,8 @@ http://bugs.gentoo.org/455374
 http://github.com/rocky/libcdio-paranoia/issues/1
 https://savannah.gnu.org/bugs/index.php?38273
 
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -74,6 +74,8 @@
  dnl Checks for programs.
  AC_AIX
@@ -13,8 +13,8 @@ https://savannah.gnu.org/bugs/index.php?38273
  if test "x$GCC" != "xyes" 
  then
    AC_MSG_WARN([
---- doc/ja/Makefile.am
-+++ doc/ja/Makefile.am
+--- a/doc/ja/Makefile.am
++++ b/doc/ja/Makefile.am
 @@ -25,7 +25,7 @@
  
  install-man1: $(man_MANS)

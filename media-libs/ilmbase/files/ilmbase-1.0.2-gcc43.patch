@@ -1,5 +1,5 @@
---- Imath/ImathMatrix.h
-+++ Imath/ImathMatrix.h
+--- a/Imath/ImathMatrix.h
++++ b/Imath/ImathMatrix.h
 @@ -37,6 +37,8 @@
  #ifndef INCLUDED_IMATHMATRIX_H
  #define INCLUDED_IMATHMATRIX_H

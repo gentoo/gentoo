@@ -7,19 +7,12 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="cpan">Net-DNS-SEC</remote-id>
-		<remote-id type="cpan-module">Net::DNS::Keyset</remote-id>
-		<remote-id type="cpan-module">Net::DNS::RR::CDNSKEY</remote-id>
-		<remote-id type="cpan-module">Net::DNS::RR::CDS</remote-id>
-		<remote-id type="cpan-module">Net::DNS::RR::DLV</remote-id>
-		<remote-id type="cpan-module">Net::DNS::RR::DNSKEY</remote-id>
-		<remote-id type="cpan-module">Net::DNS::RR::DS</remote-id>
-		<remote-id type="cpan-module">Net::DNS::RR::KEY</remote-id>
-		<remote-id type="cpan-module">Net::DNS::RR::NSEC</remote-id>
-		<remote-id type="cpan-module">Net::DNS::RR::NSEC3</remote-id>
-		<remote-id type="cpan-module">Net::DNS::RR::NSEC3PARAM</remote-id>
-		<remote-id type="cpan-module">Net::DNS::RR::RRSIG</remote-id>
-		<remote-id type="cpan-module">Net::DNS::RR::SIG</remote-id>
 		<remote-id type="cpan-module">Net::DNS::SEC</remote-id>
+		<remote-id type="cpan-module">Net::DNS::SEC::DSA</remote-id>
+		<remote-id type="cpan-module">Net::DNS::SEC::ECCGOST</remote-id>
+		<remote-id type="cpan-module">Net::DNS::SEC::ECDSA</remote-id>
+		<remote-id type="cpan-module">Net::DNS::SEC::Keyset</remote-id>
 		<remote-id type="cpan-module">Net::DNS::SEC::Private</remote-id>
+		<remote-id type="cpan-module">Net::DNS::SEC::RSA</remote-id>
 	</upstream>
 </pkgmetadata>

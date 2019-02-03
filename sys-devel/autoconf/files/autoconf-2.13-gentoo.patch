@@ -1,5 +1,5 @@
---- configure.orig	Wed Feb 28 20:51:53 2001
-+++ configure	Wed Feb 28 20:52:03 2001
+--- a/configure
++++ b/configure
 @@ -654,12 +654,10 @@
    echo "$ac_t""no" 1>&6
  fi
@@ -16,8 +16,8 @@
  ac_aux_dir=
  for ac_dir in $srcdir $srcdir/.. $srcdir/../..; do
    if test -f $ac_dir/install-sh; then
---- configure.orig	Wed Feb 28 20:53:24 2001
-+++ configure.in	Wed Feb 28 20:53:28 2001
+--- a/configure.in
++++ b/configure.in
 @@ -14,12 +14,10 @@
  AC_PATH_PROG(PERL, perl, no)
  AC_SUBST(PERL)dnl

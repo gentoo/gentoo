@@ -1,0 +1,11 @@
+--- ruby-1.9.3-preview1.orig/configure.in
++++ ruby-1.9.3-preview1/configure.in
+@@ -2038,7 +2038,7 @@ if test "$with_dln_a_out" != yes; then
+ 	[linux* | gnu* | k*bsd*-gnu | netbsd* | bsdi* | kopensolaris*-gnu], [
+ 			: ${LDSHARED='$(CC) -shared'}
+ 			if test "$rb_cv_binary_elf" = yes; then
+-			    LDFLAGS="$LDFLAGS -Wl,-export-dynamic"
++			    LDFLAGS="$LDFLAGS -Wl,-export-dynamic -Wl,--no-undefined"
+ 			fi
+ 			rb_cv_dlopen=yes],
+ 	[interix*], [	: ${LDSHARED='$(CC) -shared'}

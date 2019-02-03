@@ -6,8 +6,8 @@
 		<name>Richard Yao</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>fearedbliss@gentoo.org</email>
-		<name>Jonathan Vasquez</name>
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
 	</maintainer>
 	<use>
 		<flag name="rootfs">Install zfs-shutdown script to support exporting a pool containing rootfs</flag>

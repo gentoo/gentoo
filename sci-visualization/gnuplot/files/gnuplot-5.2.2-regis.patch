@@ -1,0 +1,43 @@
+Add configure option for ReGIS support.
+https://bugs.gentoo.org/643888
+
+--- gnuplot-5.2.2-orig/configure.ac
++++ gnuplot-5.2.2/configure.ac
+@@ -1057,6 +1057,13 @@
+   AC_DEFINE(HAVE_MIF,1,
+           [ Define to include support for mif terminal ],))
+ 
++dnl ReGIS terminal
++AC_ARG_WITH(regis,dnl
++[  --with-regis            ReGIS terminal])
++AS_IF([test "x${with_regis}" = "xyes"],
++  AC_DEFINE(HAVE_REGIS,1,
++          [ Define to include support for ReGIS terminal ],))
++
+ AC_ARG_WITH(cairo,dnl
+ [  --without-cairo         cairo-based terminals (default enabled)],,
+   [test -z "${with_cairo}" && with_cairo=yes])
+@@ -1350,6 +1357,12 @@
+   AC_MSG_RESULT([  mif terminal: no   (use --with-mif to enable)])
+ fi
+ 
++if test "$with_regis" = yes; then
++  AC_MSG_RESULT([  ReGIS terminal: yes])
++else
++  AC_MSG_RESULT([  ReGIS terminal: no (use --with-regis to enable)])
++fi
++
+ if test "$is_msdos" = yes; then
+   AC_MSG_RESULT([  svga terminal (MSDOS/djgpp): yes])
+ fi
+--- gnuplot-5.2.2-orig/src/term.h
++++ gnuplot-5.2.2/src/term.h
+@@ -182,7 +182,7 @@
+ #endif
+ 
+ /* REGIS graphics language */
+-#ifdef VMS
++#if defined(VMS) || defined(HAVE_REGIS)
+ # include "regis.trm"
+ #endif
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,11 +9,11 @@ inherit distutils-r1
 
 DESCRIPTION="A Python package for creating beautiful command line interfaces"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
-HOMEPAGE="http://click.pocoo.org/ https://pypi.python.org/pypi/click"
+HOMEPAGE="http://click.pocoo.org/ https://pypi.org/project/click/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="doc examples test"
 
 REQUIRED_USE="doc? ( || ( $(python_gen_useflags 'python2*') ) )"
@@ -22,6 +22,11 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+
+PATCHES=(
+	# From upstream, can be removed in next release.
+	"${FILESDIR}/${PN}-6.7-fix-tests.patch"
+)
 
 pkg_setup() {
 	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )

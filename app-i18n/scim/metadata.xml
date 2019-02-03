@@ -9,6 +9,6 @@
 		<flag name="gtk3">Enable support for <pkg>x11-libs/gtk+</pkg>:3</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">scim</remote-id>
+		<remote-id type="github">scim-im/scim</remote-id>
 	</upstream>
 </pkgmetadata>

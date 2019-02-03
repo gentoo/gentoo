@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,12 +11,12 @@ MY_PV=${PV/_/}
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Python networking library that uses greenlet to provide synchronous API"
-HOMEPAGE="http://gevent.org/ https://pypi.python.org/pypi/gevent/"
+HOMEPAGE="http://gevent.org/ https://pypi.org/project/gevent/"
 SRC_URI="https://github.com/surfly/${PN}/releases/download/${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
 RDEPEND="dev-libs/libev

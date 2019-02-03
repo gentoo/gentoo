@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>lloyd@randombit.net</email>
 		<name>Jack Lloyd </name>
-		<description>Ebuild contributor and botan author</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>crypto@gentoo.org</email>

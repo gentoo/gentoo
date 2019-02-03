@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Distributed Emacs Lisp for Erlang"
 HOMEPAGE="https://code.google.com/p/distel/
-	http://www.emacswiki.org/emacs/DistributedEmacsLisp"
+	https://www.emacswiki.org/emacs/DistributedEmacsLisp"
 SRC_URI="https://github.com/massemanet/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 # "New BSD License" according to https://code.google.com/p/distel/

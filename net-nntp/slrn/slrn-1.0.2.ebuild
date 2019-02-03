@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ MY_P="${PN}_${PV/_/~}"
 
 DESCRIPTION="A s-lang based newsreader"
 HOMEPAGE="http://slrn.sourceforge.net/"
-SRC_URI="http://jedsoft.org/releases/${PN}/${P}.tar.bz2"
+SRC_URI="https://jedsoft.org/releases/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

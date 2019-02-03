@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-glibc.eclass
 # @MAINTAINER:
 # <toolchain@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: Common code for sys-libs/glibc ebuilds
 # @DESCRIPTION:
 # This eclass contains the common phase functions migrated from
@@ -227,6 +228,7 @@ setup_flags() {
 	strip-flags
 	strip-unsupported-flags
 	filter-flags -m32 -m64 -mabi=*
+	filter-ldflags -Wl,-rpath=*
 
 	# Bug 492892.
 	filter-flags -frecord-gcc-switches
@@ -362,11 +364,20 @@ setup_env() {
 		# and fall back on CFLAGS.
 		local VAR=CFLAGS_${CTARGET//[-.]/_}
 		CFLAGS=${!VAR-${CFLAGS}}
+		einfo " $(printf '%15s' 'Manual CFLAGS:')   ${CFLAGS}"
 	fi
 
 	setup_flags
 
 	export ABI=${ABI:-${DEFAULT_ABI:-default}}
+
+	if use headers-only ; then
+		# Avoid mixing host's CC and target's CFLAGS_${ABI}:
+		# At this bootstrap stage we have only binutils for
+		# target but not compiler yet.
+		einfo "Skip CC ABI injection. We can't use (cross-)compiler yet."
+		return 0
+	fi
 
 	local VAR=CFLAGS_${ABI}
 	# We need to export CFLAGS with abi information in them because glibc's
@@ -375,6 +386,7 @@ setup_env() {
 	# top of each other.
 	: ${__GLIBC_CC:=$(tc-getCC ${CTARGET_OPT:-${CTARGET}})}
 	export __GLIBC_CC CC="${__GLIBC_CC} ${!VAR}"
+	einfo " $(printf '%15s' 'Manual CC:')   ${CC}"
 }
 
 foreach_abi() {
@@ -398,7 +410,7 @@ foreach_abi() {
 }
 
 just_headers() {
-	is_crosscompile && use crosscompile_opts_headers-only
+	is_crosscompile && use headers-only
 }
 
 glibc_banner() {
@@ -545,9 +557,6 @@ toolchain-glibc_pkg_pretend() {
 		ewarn "hypervisor, which is probably not what you want."
 	fi
 
-	use hardened && ! tc-enables-pie && \
-		ewarn "PIE hardening not applied, as your compiler doesn't default to PIE"
-
 	# Make sure host system is up to date #394453
 	if has_version '<sys-libs/glibc-2.13' && \
 	   [[ -n $(scanelf -qys__guard -F'#s%F' "${EROOT}"/lib*/l*-*.so) ]]
@@ -577,7 +586,53 @@ toolchain-glibc_pkg_setup() {
 	[[ ${EAPI:-0} == [0123] ]] && toolchain-glibc_pkg_pretend
 }
 
-int_to_KV() {
+# The following Kernel version handling functions are mostly copied from portage
+# source. It's better not to use linux-info.eclass here since a) it adds too
+# much magic, see bug 326693 for some of the arguments, and b) some of the
+# functions are just not provided.
+
+tc_glibc_get_KV() {
+	uname -r
+	return $?
+}
+
+tc_glibc_KV_major() {
+	[[ -z $1 ]] && return 1
+	local KV=$@
+	echo "${KV%%.*}"
+}
+
+tc_glibc_KV_minor() {
+	[[ -z $1 ]] && return 1
+	local KV=$@
+	KV=${KV#*.}
+	echo "${KV%%.*}"
+}
+
+tc_glibc_KV_micro() {
+	[[ -z $1 ]] && return 1
+	local KV=$@
+	KV=${KV#*.*.}
+	echo "${KV%%[^[:digit:]]*}"
+}
+
+tc_glibc_KV_to_int() {
+	[[ -z $1 ]] && return 1
+	local KV_MAJOR=$(tc_glibc_KV_major "$1")
+	local KV_MINOR=$(tc_glibc_KV_minor "$1")
+	local KV_MICRO=$(tc_glibc_KV_micro "$1")
+	local KV_int=$(( KV_MAJOR * 65536 + KV_MINOR * 256 + KV_MICRO ))
+
+	# We make version 2.2.0 the minimum version we will handle as
+	# a sanity check ... if its less, we fail ...
+	if [[ ${KV_int} -ge 131584 ]] ; then
+		echo "${KV_int}"
+		return 0
+	fi
+	return 1
+}
+
+tc_glibc_int_to_KV() {
 	local version=$1 major minor micro
 	major=$((version / 65536))
 	minor=$(((version % 65536) / 256))
@@ -586,13 +641,13 @@ int_to_KV() {
 }
 
 eend_KV() {
-	[[ $(KV_to_int $1) -ge $(KV_to_int $2) ]]
+	[[ $(tc_glibc_KV_to_int $1) -ge $(tc_glibc_KV_to_int $2) ]]
 	eend $?
 }
 
 get_kheader_version() {
 	printf '#include <linux/version.h>\nLINUX_VERSION_CODE\n' | \
-	$(tc-getCPP ${CTARGET}) -I "${EPREFIX}/$(alt_build_headers)" - | \
+	$(tc-getCPP ${CTARGET}) -I "$(alt_build_headers)" - | \
 	tail -n 1
 }
 
@@ -601,8 +656,8 @@ check_nptl_support() {
 	just_headers && return
 
 	local run_kv build_kv want_kv
-	run_kv=$(int_to_KV $(get_KV))
-	build_kv=$(int_to_KV $(get_kheader_version))
+	run_kv=$(tc_glibc_get_KV)
+	build_kv=$(tc_glibc_int_to_KV $(get_kheader_version))
 	want_kv=${NPTL_KERN_VER}
 
 	ebegin "Checking gcc for __thread support"
@@ -656,16 +711,7 @@ toolchain-glibc_do_src_unpack() {
 	# Check NPTL support _before_ we unpack things to save some time
 	want_nptl && check_nptl_support
 
-	if [[ -n ${EGIT_REPO_URIS} ]] ; then
-		local i d
-		for ((i=0; i<${#EGIT_REPO_URIS[@]}; ++i)) ; do
-			EGIT_REPO_URI=${EGIT_REPO_URIS[$i]}
-			EGIT_SOURCEDIR=${EGIT_SOURCEDIRS[$i]}
-			git-2_src_unpack
-		done
-	else
-		unpack_pkg
-	fi
+	unpack_pkg
 
 	cd "${S}"
 	touch locale/C-translit.h #185476 #218003
@@ -796,6 +842,11 @@ glibc_do_configure() {
 
 	if version_is_at_least 2.25 ; then
 		case ${CTARGET} in
+			mips*)
+				# dlopen() detects stack smash on mips n32 ABI.
+				# Cause is unknown: https://bugs.gentoo.org/640130
+				myconf+=( --enable-stack-protector=no )
+				;;
 			powerpc-*)
 				# Currently gcc on powerpc32 generates invalid code for
 				# __builtin_return_address(0) calls. Normally programs
@@ -809,6 +860,17 @@ glibc_do_configure() {
 				;;
 		esac
 	fi
+
+	# Keep a whitelist of targets supporing IFUNC. glibc's ./configure
+	# is not robust enough to detect proper support:
+	#    https://bugs.gentoo.org/641216
+	#    https://sourceware.org/PR22634#c0
+	case $(tc-arch ${CTARGET}) in
+		# Keep whitelist of targets where autodetection mostly works.
+		amd64|x86|sparc|ppc|ppc64|arm|arm64|s390) ;;
+		# Blacklist everywhere else
+		*) myconf+=( libc_cv_ld_gnu_indirect_function=no ) ;;
+	esac
 
 	if version_is_at_least 2.25 ; then
 		myconf+=( --enable-stackguard-randomization )

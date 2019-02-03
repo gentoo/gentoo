@@ -1,0 +1,26 @@
+From 9d7a18a0491638944b64b69b0f9244a6eb98f6c4 Mon Sep 17 00:00:00 2001
+From: Yamakura Makoto <yakina@gentoo.org>
+Date: Thu, 18 Sep 2003 13:12:14 +1200
+Subject: Fix Makefile.PL for system inc/lib paths
+
+---
+ Makefile.PL | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 6640058..513dabc 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -6,7 +6,7 @@ use ExtUtils::MakeMaker;
+ WriteMakefile(
+ 	      'NAME' => 'Text::Kakasi',
+ 	      'VERSION_FROM' => 'Kakasi.pm',
+-	      'INC' => '-I/usr/local/include',
+-	      'LIBS' => ['-L/usr/local/lib -lkakasi'],
++	      'INC' => '-I/usr/include',
++	      'LIBS' => ['-L/usr/lib -lkakasi'],
+ 	      'DEFINE' => '-DWAKATIGAKI',
+ );
+-- 
+2.16.2
+

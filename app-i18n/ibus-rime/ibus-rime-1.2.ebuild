@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="6"
 
-DESCRIPTION="Rime Input Method Engine for IBus Framework"
-HOMEPAGE="http://rime.im/"
+DESCRIPTION="Chinese Rime Input Method Engine for IBus"
+HOMEPAGE="https://rime.im/ https://github.com/rime/ibus-rime"
 SRC_URI="http://dl.bintray.com/lotem/rime/${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -12,17 +12,23 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-COMMON_DEPEND="app-i18n/ibus
+CDEPEND="app-i18n/ibus
 	app-i18n/librime
 	x11-libs/libnotify"
-DEPEND="${COMMON_DEPEND}
-	dev-util/cmake"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${CDEPEND}
 	app-i18n/rime-data"
-
-S=${WORKDIR}/${PN}
+DEPEND="${CDEPEND}
+	dev-util/cmake
+	virtual/pkgconfig"
+S="${WORKDIR}/${PN}"
 
 src_prepare() {
-	sed -i -e "/^libexecdir/s:/lib:/libexec:" Makefile || die
-	sed -i -e "/exec/s:/usr/lib:/usr/libexec:" rime.xml || die
+	sed -i \
+		-e "/^libexecdir/s:/lib:/libexec:" \
+		-e "/^[[:space:]]*PREFIX/s:/usr:${EPREFIX}/usr:" \
+		-e "s/ make/ \$(MAKE)/" \
+		Makefile
+	sed -i "/exec>/s:/usr/lib:${EPREFIX}/usr/libexec:" rime.xml
+
+	default
 }

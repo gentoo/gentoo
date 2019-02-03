@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -76,10 +76,13 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "There are several packages that you may find useful with ${PN} and"
-	einfo "their usage is suggested by the upstream maintainers, namely:"
-	einfo "  x11-misc/dmenu"
-	einfo "  x11-misc/i3status"
-	einfo "  x11-misc/i3lock"
-	einfo "Please refer to their description for additional info."
+	# Only show the elog information on a new install
+	if [[ ! ${REPLACING_VERSIONS} ]]; then
+		elog "There are several packages that you may find useful with ${PN} and"
+		elog "their usage is suggested by the upstream maintainers, namely:"
+		elog "  x11-misc/dmenu"
+		elog "  x11-misc/i3status"
+		elog "  x11-misc/i3lock"
+		elog "Please refer to their description for additional info."
+	fi
 }

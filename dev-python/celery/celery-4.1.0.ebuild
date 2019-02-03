@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,18 +8,19 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1 bash-completion-r1
 
 DESCRIPTION="Asynchronous task queue/job queue based on distributed message passing"
-HOMEPAGE="http://celeryproject.org/ https://pypi.python.org/pypi/celery"
+HOMEPAGE="http://celeryproject.org/ https://pypi.org/project/celery/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 # There are a number of other optional 'extras' which overlap with those of kombu, however
 # there has been no apparent expression of interest or demand by users for them. See requires.txt
 IUSE="doc examples redis sqs test yaml"
 
+# kombu < 4.2: #666228 (can be loosened in next bump)
 RDEPEND="
-	<dev-python/kombu-5.0[${PYTHON_USEDEP}]
+	<dev-python/kombu-4.2[${PYTHON_USEDEP}]
 	>=dev-python/kombu-4.0.2[${PYTHON_USEDEP}]
 	>=dev-python/billiard-3.5.0.2[${PYTHON_USEDEP}]
 	<dev-python/billiard-3.6.0[${PYTHON_USEDEP}]
@@ -94,7 +95,6 @@ pkg_postinst() {
 	optfeature "eventlet support" dev-python/eventlet
 	#optfeature "couchbase support" dev-python/couchbase
 	optfeature "redis support" dev-db/redis dev-python/redis-py
-	optfeature "couchdb support" dev-db/couchdb dev-python/couchdb-python
 	optfeature "gevent support" dev-python/gevent
 	optfeature "auth support" dev-python/pyopenssl
 	optfeature "pyro support" dev-python/pyro:4

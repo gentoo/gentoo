@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vdr-plugin-2
 
@@ -29,9 +29,9 @@ src_configure() {
 src_prepare() {
 	vdr-plugin-2_src_prepare
 
-	epatch "${WORKDIR}/atscepg-${PV}_vdr-1.7.13.diff"
+	eapply "${WORKDIR}/atscepg-${PV}_vdr-1.7.13.diff"
 
-	epatch "${FILESDIR}/${P}_gcc6.patch"
+	eapply "${FILESDIR}/${P}_gcc6.patch"
 
 	fix_vdr_libsi_include tables.cpp filter.cpp scanner.cpp
 }

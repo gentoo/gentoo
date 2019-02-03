@@ -18,6 +18,11 @@ IUSE=""
 
 RDEPEND="!sys-devel/llvm:0"
 
+src_unpack() {
+	git-r3_fetch
+	git-r3_checkout '' '' '' utils/vim
+}
+
 src_configure() { :; }
 src_compile() { :; }
 src_test() { :; }

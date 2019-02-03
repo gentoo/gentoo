@@ -2,11 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>chithanh@gentoo.org</email>
-		<name>Chí-Thanh Christopher Nguyễn</name>
+		<email>BetaRays@protonmail.com</email>
 	</maintainer>
-<maintainer type="project">
-		<email>games@gentoo.org</email>
-		<name>Gentoo Games Project</name>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 </pkgmetadata>

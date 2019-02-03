@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -7,8 +7,8 @@ inherit eutils
 
 DESCRIPTION="Modified versions of kinit for refreshing kerberos tickets
 automatically"
-HOMEPAGE="http://www.eyrie.org/~eagle/software/kstart"
-SRC_URI="http://archives.eyrie.org/software/kerberos/${P}.tar.gz"
+HOMEPAGE="https://www.eyrie.org/~eagle/software/kstart/"
+SRC_URI="https://archives.eyrie.org/software/kerberos/${P}.tar.gz"
 
 LICENSE="|| ( MIT Stanford ISC )"
 SLOT="0"

@@ -1,0 +1,1065 @@
+diff -ru a/src/scim_anthy_prefs.cpp b/src/scim_anthy_prefs.cpp
+--- a/src/scim_anthy_prefs.cpp	2008-04-24 11:49:53.000000000 +0800
++++ b/src/scim_anthy_prefs.cpp	2018-05-31 09:31:40.289517678 +0800
+@@ -36,7 +36,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CLOSE_CAND_WIN_ON_SELECT,
+@@ -46,7 +46,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_LEARN_ON_MANUAL_COMMIT,
+@@ -56,7 +56,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_LEARN_ON_AUTO_COMMIT,
+@@ -66,7 +66,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_ROMAJI_HALF_SYMBOL,
+@@ -76,7 +76,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_ROMAJI_HALF_NUMBER,
+@@ -86,7 +86,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_ROMAJI_ALLOW_SPLIT,
+@@ -95,7 +95,7 @@
+         N_("A_llow spliting romaji on editing preedit string"),
+         NULL,
+         N_("If this check is enabled, you can delete each letter."),
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_ROMAJI_PSEUDO_ASCII_MODE,
+@@ -104,7 +104,7 @@
+         N_("_Entering the pseudo ASCII input mode with capital letters."),
+         NULL,
+         N_("If this check is enabled, capital letters will becomes a trigger to enter the pseudo ASCII input mode."),
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_ROMAJI_PSEUDO_ASCII_BLANK_BEHAVIOR,
+@@ -113,7 +113,7 @@
+         N_("Insert a _blank with a blank key."),
+         NULL,
+         N_("If this check is enabled, a blank key will works to insert a blank when entering the pseudo ASCII input mode."),
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_PREDICT_ON_INPUT,
+@@ -122,7 +122,7 @@
+         N_("_Show predicted candidates while inputting letters"),
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_USE_DIRECT_KEY_ON_PREDICT,
+@@ -131,7 +131,7 @@
+         N_("Use _direct select keys while predicting"),
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SHOW_INPUT_MODE_LABEL,
+@@ -141,7 +141,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SHOW_CONVERSION_MODE_LABEL,
+@@ -151,7 +151,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SHOW_TYPING_METHOD_LABEL,
+@@ -161,7 +161,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SHOW_PERIOD_STYLE_LABEL,
+@@ -171,7 +171,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SHOW_SYMBOL_STYLE_LABEL,
+@@ -181,7 +181,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SHOW_DICT_LABEL,
+@@ -191,7 +191,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SHOW_DICT_ADMIN_LABEL,
+@@ -201,7 +201,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SHOW_ADD_WORD_LABEL,
+@@ -211,7 +211,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         NULL,
+@@ -221,7 +221,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+ };
+ 
+@@ -237,7 +237,7 @@
+         NULL,
+         N_("Specify the number of candidates to show in a page of the candidates window."),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_N_TRIGGERS_TO_SHOW_CAND_WIN,
+@@ -250,7 +250,7 @@
+         N_("The number of times to press a conversion key until show the candidates window."
+            "Specify 0 to never show it."),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_NICOLA_TIME,
+@@ -262,7 +262,7 @@
+         NULL,
+         N_("Time to regard as simultaneous key pressing."),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         NULL,
+@@ -273,7 +273,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+ };
+ 
+@@ -287,7 +287,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_TYPING_METHOD,
+@@ -297,7 +297,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CONVERSION_MODE,
+@@ -307,7 +307,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_PERIOD_STYLE,
+@@ -317,7 +317,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SYMBOL_STYLE,
+@@ -327,7 +327,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SPACE_TYPE,
+@@ -337,7 +337,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_TEN_KEY_TYPE,
+@@ -347,7 +347,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_BEHAVIOR_ON_PERIOD,
+@@ -357,7 +357,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_BEHAVIOR_ON_FOCUS_OUT,
+@@ -367,7 +367,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_LEFT_THUMB_SHIFT_KEY,
+@@ -377,7 +377,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_RIGHT_THUMB_SHIFT_KEY,
+@@ -387,7 +387,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_COMMIT_REVERSE_LEARN_KEY,
+@@ -398,7 +398,7 @@
+         N_("The key events to commit the preedit string "
+            "with reversing the preference of learning. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_COMMIT_FIRST_SEGMENT_REVERSE_LEARN_KEY,
+@@ -409,7 +409,7 @@
+         N_("The key events to commit the first segment "
+            "with reversing the preference of learning. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_COMMIT_SELECTED_SEGMENT_REVERSE_LEARN_KEY,
+@@ -420,7 +420,7 @@
+         N_("The key events to commit the selected segment "
+            "with reversing the preference of learning. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_DICT_ENCODING,
+@@ -433,7 +433,7 @@
+            "but it depends on the implementation of your operating system "
+            "and actual encoding of your dictionary."),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_DICT_ADMIN_COMMAND,
+@@ -443,7 +443,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_ADD_WORD_COMMAND,
+@@ -453,7 +453,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_PREEDIT_STYLE,
+@@ -463,7 +463,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CONVERSION_STYLE,
+@@ -473,7 +473,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECTED_SEGMENT_STYLE,
+@@ -483,7 +483,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         NULL,
+@@ -493,7 +493,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+ };
+ 
+@@ -507,7 +507,7 @@
+         N_("Select toggle on/off keys"),
+         N_("The key events to toggle on/off Japanese mode. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CIRCLE_INPUT_MODE_KEY,
+@@ -517,7 +517,7 @@
+         N_("Select circle input mode keys"),
+         N_("The key events to circle input mode. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CIRCLE_KANA_MODE_KEY,
+@@ -527,7 +527,7 @@
+         N_("Select circle kana mode keys"),
+         N_("The key events to circle kana mode. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_LATIN_MODE_KEY,
+@@ -537,7 +537,7 @@
+         N_("Select Latin mode keys"),
+         N_("The key events to switch input mode to Latin. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_WIDE_LATIN_MODE_KEY,
+@@ -547,7 +547,7 @@
+         N_("Select wide Latin mode keys"),
+         N_("The key events to switch input mode to wide Latin. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_HIRAGANA_MODE_KEY,
+@@ -557,7 +557,7 @@
+         N_("Select hiragana mode keys"),
+         N_("The key events to switch input mode to hiragana. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_KATAKANA_MODE_KEY,
+@@ -567,7 +567,7 @@
+         N_("Select katakana mode keys"),
+         N_("The key events to switch input mode to katakana. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_HALF_KATAKANA_MODE_KEY,
+@@ -577,7 +577,7 @@
+         N_("Select half katakana mode keys"),
+         N_("The key events to switch input mode to half katakana. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CANCEL_PSEUDO_ASCII_MODE_KEY,
+@@ -587,7 +587,7 @@
+         N_("Select pseudo ASCII mode cancel key"),
+         N_("The key events to cancel the pseudo ASCII mode."),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CIRCLE_TYPING_METHOD_KEY,
+@@ -597,7 +597,7 @@
+         N_("Select circle typing method keys"),
+         N_("The key events to circle typing method. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         NULL,
+@@ -607,7 +607,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+ };
+ 
+@@ -621,7 +621,7 @@
+         N_("Select inserting space keys"),
+         N_("The key events to insert a space. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_INSERT_ALT_SPACE_KEY,
+@@ -631,7 +631,7 @@
+         N_("Select inserting alternative space keys"),
+         N_("The key events to insert a alternative space. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_INSERT_HALF_SPACE_KEY,
+@@ -641,7 +641,7 @@
+         N_("Select inserting half width space keys"),
+         N_("The key events to insert a half width space. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_INSERT_WIDE_SPACE_KEY,
+@@ -651,7 +651,7 @@
+         N_("Select inserting wide space keys"),
+         N_("The key events to insert a wide space. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_BACKSPACE_KEY,
+@@ -661,7 +661,7 @@
+         N_("Select backspace keys"),
+         N_("The key events to delete a character before caret. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_DELETE_KEY,
+@@ -671,7 +671,7 @@
+         N_("Select delete keys"),
+         N_("The key events to delete a character after caret. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_COMMIT_KEY,
+@@ -681,7 +681,7 @@
+         N_("Select commit keys"),
+         N_("The key events to commit the preedit string. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CONVERT_KEY,
+@@ -691,7 +691,7 @@
+         N_("Select convert keys"),
+         N_("The key events to convert the preedit string to kanji. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_PREDICT_KEY,
+@@ -701,7 +701,7 @@
+         N_("Select predict keys"),
+         N_("The key events to predict a word or sentence from already inserted text. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CANCEL_KEY,
+@@ -711,7 +711,7 @@
+         N_("Select cancel keys"),
+         N_("The key events to cancel preediting or converting. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CANCEL_ALL_KEY,
+@@ -721,7 +721,7 @@
+         N_("Select cancel all keys"),
+         N_("The key events to return to initial state. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_RECONVERT_KEY,
+@@ -731,7 +731,7 @@
+         N_("Select reconvert keys"),
+         N_("The key events to reconvert the commited string in selection. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_DO_NOTHING_KEY,
+@@ -742,7 +742,7 @@
+         N_("The key events to eat and do nothing anymore. "
+            "For example, it can be used to disable space key completely."),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         NULL,
+@@ -752,7 +752,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+ };
+ 
+@@ -766,7 +766,7 @@
+         N_("Select move caret to first keys"),
+         N_("The key events to move the caret to the first of preedit string. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_MOVE_CARET_LAST_KEY,
+@@ -776,7 +776,7 @@
+         N_("Select move caret to last keys"),
+         N_("The key events to move the caret to the last of the preedit string. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_MOVE_CARET_FORWARD_KEY,
+@@ -786,7 +786,7 @@
+         N_("Select move caret forward keys"),
+         N_("The key events to move the caret forward. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_MOVE_CARET_BACKWARD_KEY,
+@@ -796,7 +796,7 @@
+         N_("Select move caret backward keys"),
+         N_("The key events to move the caret backward. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         NULL,
+@@ -806,7 +806,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+ };
+ 
+@@ -820,7 +820,7 @@
+         N_("Select keys to select the first segment"),
+         N_("The key events to select the first segment. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECT_LAST_SEGMENT_KEY,
+@@ -830,7 +830,7 @@
+         N_("Select keys to select the last segment"),
+         N_("The key events to select the the last segment. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECT_NEXT_SEGMENT_KEY,
+@@ -840,7 +840,7 @@
+         N_("Select keys to select the next segment"),
+         N_("The key events to select the next segment. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECT_PREV_SEGMENT_KEY,
+@@ -850,7 +850,7 @@
+         N_("Select keys to select the previous segment"),
+         N_("The key events to select the previous segment. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SHRINK_SEGMENT_KEY,
+@@ -860,7 +860,7 @@
+         N_("Select keys to shrink the segment"),
+         N_("The key events to shrink the selected segment. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_EXPAND_SEGMENT_KEY,
+@@ -870,7 +870,7 @@
+         N_("Select keys to expand the segment"),
+         N_("The key events to expand the selected segment. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_COMMIT_FIRST_SEGMENT_KEY,
+@@ -880,7 +880,7 @@
+         N_("Select keys to commit the first segment"),
+         N_("The key events to commit the first segment. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_COMMIT_SELECTED_SEGMENT_KEY,
+@@ -890,7 +890,7 @@
+         N_("Select keys to commit the selected segment"),
+         N_("The key events to commit the selected segment. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         NULL,
+@@ -900,7 +900,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+ };
+ 
+@@ -914,7 +914,7 @@
+         N_("Select the first candidate keys"),
+         N_("The key events to select the first candidate. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECT_LAST_CANDIDATE_KEY,
+@@ -924,7 +924,7 @@
+         N_("Select the last candidate keys"),
+         N_("The key events to the select last candidate. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECT_NEXT_CANDIDATE_KEY,
+@@ -934,7 +934,7 @@
+         N_("Select the next candidate keys"),
+         N_("The key events to select the next candidate. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECT_PREV_CANDIDATE_KEY,
+@@ -944,7 +944,7 @@
+         N_("Select the previous candidate keys"),
+         N_("The key events to select the previous candidate. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CANDIDATES_PAGE_UP_KEY,
+@@ -954,7 +954,7 @@
+         N_("Select page up candidates keys"),
+         N_("The key events to switch candidates page up. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CANDIDATES_PAGE_DOWN_KEY,
+@@ -964,7 +964,7 @@
+         N_("Select page down candidates keys"),
+         N_("The key events to switch candidates page down. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         NULL,
+@@ -974,7 +974,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+ };
+ 
+@@ -988,7 +988,7 @@
+         N_("Select keys to select 1st candidate"),
+         N_("The key events to select the 1st candidate. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECT_CANDIDATE_2_KEY,
+@@ -998,7 +998,7 @@
+         N_("Select keys to select 2nd candidate"),
+         N_("The key events to select the 2nd candidate. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECT_CANDIDATE_3_KEY,
+@@ -1008,7 +1008,7 @@
+         N_("Select keys to select 3rd candidate"),
+         N_("The key events to select the 3rd candidate. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECT_CANDIDATE_4_KEY,
+@@ -1018,7 +1018,7 @@
+         N_("Select keys to select 4th candidate"),
+         N_("The key events to select the 4th candidate. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECT_CANDIDATE_5_KEY,
+@@ -1028,7 +1028,7 @@
+         N_("Select keys to select 5th candidate"),
+         N_("The key events to select the 5th candidate. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECT_CANDIDATE_6_KEY,
+@@ -1038,7 +1038,7 @@
+         N_("Select keys to select 6th candidate"),
+         N_("The key events to select the 6th candidate. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECT_CANDIDATE_7_KEY,
+@@ -1048,7 +1048,7 @@
+         N_("Select keys to select 7th candidate"),
+         N_("The key events to select the 7th candidate. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECT_CANDIDATE_8_KEY,
+@@ -1058,7 +1058,7 @@
+         N_("Select keys to select 8th candidate"),
+         N_("The key events to select the 8th candidate. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECT_CANDIDATE_9_KEY,
+@@ -1068,7 +1068,7 @@
+         N_("Select keys to select 9th candidate"),
+         N_("The key events to select the 9th candidate. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECT_CANDIDATE_10_KEY,
+@@ -1078,7 +1078,7 @@
+         N_("Select keys to select 10th candidate"),
+         N_("The key events to select the 10th candidate. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         NULL,
+@@ -1088,7 +1088,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+ };
+ 
+@@ -1102,7 +1102,7 @@
+         N_("Select keys to convert character type forward"),
+         N_("Rotate character type forward."),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CONV_CHAR_TYPE_BACKWARD_KEY,
+@@ -1112,7 +1112,7 @@
+         N_("Select keys to convert character type backward"),
+         N_("Rotate character type backward."),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CONV_TO_HIRAGANA_KEY,
+@@ -1122,7 +1122,7 @@
+         N_("Select keys to convert to hiragana"),
+         N_("The key events to convert the preedit string to hiragana. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CONV_TO_KATAKANA_KEY,
+@@ -1132,7 +1132,7 @@
+         N_("Select keys to convert to katakana"),
+         N_("The key events to convert the preedit string to katakana. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CONV_TO_HALF_KEY,
+@@ -1142,7 +1142,7 @@
+         N_("Select keys to convert to half width"),
+         N_("The key events to convert the preedit string to half width. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CONV_TO_HALF_KATAKANA_KEY,
+@@ -1152,7 +1152,7 @@
+         N_("Select keys to convert to half width katakana"),
+         N_("The key events to convert the preedit string to half width katakana. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CONV_TO_WIDE_LATIN_KEY,
+@@ -1162,7 +1162,7 @@
+         N_("Select keys to convert to wide latin"),
+         N_("The key events to convert the preedit string to wide latin. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CONV_TO_LATIN_KEY,
+@@ -1172,7 +1172,7 @@
+         N_("Select keys to convert to latin"),
+         N_("The key events to convert the preedit string to latin. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         NULL,
+@@ -1182,7 +1182,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+ };
+ 
+@@ -1196,7 +1196,7 @@
+         N_("Select edit dictionary keys"),
+         N_("The key events to launch dictionary administration tool. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_ADD_WORD_KEY,
+@@ -1206,7 +1206,7 @@
+         N_("Select add a word keys"),
+         N_("The key events to launch the tool to add a word. "),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         NULL,
+@@ -1216,7 +1216,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+ };
+ 
+@@ -1233,7 +1233,7 @@
+         N_("The color of preediting text"),
+         N_("The color of preediting text"),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_CONVERSION_FG_COLOR,
+@@ -1246,7 +1246,7 @@
+         N_("The color of conversion text"),
+         N_("The color of conversion text"),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         SCIM_ANTHY_CONFIG_SELECTED_SEGMENT_FG_COLOR,
+@@ -1259,7 +1259,7 @@
+         N_("The color of selected segment text"),
+         N_("The color of selected segment text in the conversion text"),
+         NULL,
+-        false,
++        NULL,
+     },
+     {
+         NULL,
+@@ -1272,7 +1272,7 @@
+         NULL,
+         NULL,
+         NULL,
+-        false,
++        NULL,
+     },
+ };
+ 

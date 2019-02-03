@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>embedded@gentoo.org</email>
+		<name>Embedded Gentoo</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">arduino/ctags</remote-id>
+	</upstream>
+	<longdescription>
+		Arduino's build process includes a preprocessing phase that involves ctags,
+		but not any version of ctags, *Arduino's* ctags, a private fork that
+		Arduino maintains. We can't use dev-util/ctags because it causes Arduino
+		to produce corrupt executables.
+	</longdescription>
+</pkgmetadata>

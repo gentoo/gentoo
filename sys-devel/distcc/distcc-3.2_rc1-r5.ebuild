@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="https://distcc.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gnome gssapi gtk hardened ipv6 selinux xinetd zeroconf"
 
 RESTRICT="test"
@@ -166,10 +166,8 @@ pkg_postinst() {
 	elog "Tips on using distcc with Gentoo can be found at"
 	elog "https://wiki.gentoo.org/wiki/Distcc"
 	elog
-	elog "How to use pump mode with Gentoo:"
-	elog "# distcc-config --set-hosts \"foo,cpp,lzo bar,cpp,lzo baz,cpp,lzo\""
-	elog "# echo 'FEATURES=\"\${FEATURES} distcc distcc-pump\"' >> /etc/portage/make.conf"
-	elog "# emerge -u world"
+	elog "distcc-pump is known to cause breakage with multiple packages."
+	elog "Do NOT enable it globally."
 	elog
 	elog "To use the distccmon programs with Gentoo you should use this command:"
 	elog "# DISTCC_DIR=\"${DISTCC_DIR:-${BUILD_PREFIX}/.distcc}\" distccmon-text 5"

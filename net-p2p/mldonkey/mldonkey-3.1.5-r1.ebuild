@@ -1,14 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-WANT_AUTOCONF=2.5
 
 inherit flag-o-matic eutils autotools toolchain-funcs user
 
 IUSE="bittorrent doc fasttrack gd gnutella gtk guionly magic +ocamlopt"
 
-DESCRIPTION="A multi-network P2P application written in Ocaml, with its own Gtk GUI, web and telnet interface"
+DESCRIPTION="Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface"
 HOMEPAGE="http://mldonkey.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 

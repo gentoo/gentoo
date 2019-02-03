@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils pam multilib libtool
+inherit eutils pam multilib libtool tmpfiles
 if [[ ${PV} == "9999" ]] ; then
-	EHG_REPO_URI="http://www.sudo.ws/repos/sudo"
+	EHG_REPO_URI="https://www.sudo.ws/repos/sudo"
 	inherit mercurial
 fi
 
@@ -18,12 +18,12 @@ case ${P} in
 esac
 
 DESCRIPTION="Allows users or groups to run commands as other users"
-HOMEPAGE="http://www.sudo.ws/"
+HOMEPAGE="https://www.sudo.ws/"
 if [[ ${PV} != "9999" ]] ; then
-	SRC_URI="http://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
+	SRC_URI="https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
 		ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz"
 	if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~sparc-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~sparc-solaris"
 	fi
 fi
 
@@ -31,15 +31,15 @@ fi
 # 3-clause BSD license
 LICENSE="ISC BSD"
 SLOT="0"
-IUSE="gcrypt ldap nls openssl offensive pam sasl selinux +sendmail skey"
+IUSE="gcrypt ldap nls offensive openssl pam sasl selinux +sendmail skey"
 
 CDEPEND="
-	sys-libs/zlib
+	sys-libs/zlib:=
+	gcrypt? ( dev-libs/libgcrypt:= )
 	ldap? (
 		>=net-nds/openldap-2.1.30-r1
 		dev-libs/cyrus-sasl
 	)
-	gcrypt? ( dev-libs/libgcrypt:= )
 	openssl? ( dev-libs/openssl:0= )
 	pam? ( virtual/pam )
 	sasl? ( dev-libs/cyrus-sasl )
@@ -74,16 +74,23 @@ src_prepare() {
 	elibtoolize
 }
 
-set_rootpath() {
-	# FIXME: secure_path is a compile time setting. using ROOTPATH
-	# is not perfect, env-update may invalidate this, but until it
+set_secure_path() {
+	# FIXME: secure_path is a compile time setting. using PATH or
+	# ROOTPATH is not perfect, env-update may invalidate this, but until it
 	# is available as a sudoers setting this will have to do.
 	einfo "Setting secure_path ..."
 
 	# first extract the default ROOTPATH from build env
-	ROOTPATH=$(unset ROOTPATH; . "${EPREFIX}"/etc/profile.env; echo "${ROOTPATH}")
-	if [[ -z ${ROOTPATH} ]] ; then
-		ewarn "	Failed to find ROOTPATH, please report this"
+	SECURE_PATH=$(unset ROOTPATH; . "${EPREFIX}"/etc/profile.env;
+		echo "${ROOTPATH}")
+		case "${SECURE_PATH}" in
+			*/usr/sbin*) ;;
+			*) SECURE_PATH=$(unset PATH;
+				. "${EPREFIX}"/etc/profile.env; echo "${PATH}")
+				;;
+		esac
+	if [[ -z ${SECURE_PATH} ]] ; then
+		ewarn "	Failed to detect SECURE_PATH, please report this"
 	fi
 
 	# then remove duplicate path entries
@@ -96,18 +103,18 @@ set_rootpath() {
 				einfo "   Duplicate entry ${thisp} removed..."
 			fi
 		done
-		ROOTPATH=${newpath#:}
+		SECURE_PATH=${newpath#:}
 	}
-	cleanpath /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/bin${ROOTPATH:+:${ROOTPATH}}
+	cleanpath /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/bin${SECURE_PATH:+:${SECURE_PATH}}
 
 	# finally, strip gcc paths #136027
 	rmpath() {
 		local e newpath thisp IFS=:
-		for thisp in ${ROOTPATH} ; do
+		for thisp in ${SECURE_PATH} ; do
 			for e ; do [[ $thisp == $e ]] && continue 2 ; done
 			newpath+=:$thisp
 		done
-		ROOTPATH=${newpath#:}
+		SECURE_PATH=${newpath#:}
 	}
 	rmpath '*/gcc-bin/*' '*/gnat-gcc-bin/*' '*/gnat-gcc/*'
 
@@ -115,8 +122,8 @@ set_rootpath() {
 }
 
 src_configure() {
-	local ROOTPATH
-	set_rootpath
+	local SECURE_PATH
+	set_secure_path
 
 	# audit: somebody got to explain me how I can test this before I
 	# enable it.. - Diego
@@ -125,11 +132,12 @@ src_configure() {
 	# basing off other values.
 	myeconfargs=(
 		--enable-zlib=system
+		--enable-tmpfiles.d="${EPREFIX}"/usr/lib/tmpfiles.d
 		--with-editor="${EPREFIX}"/usr/libexec/editor
 		--with-env-editor
 		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/sudo
-		--with-rundir="${EPREFIX}"/var/run/sudo
-		--with-secure-path="${ROOTPATH}"
+		--with-rundir="${EPREFIX}"/run/sudo
+		--with-secure-path="${SECURE_PATH}"
 		--with-vardir="${EPREFIX}"/var/db/sudo
 		--without-linux-audit
 		--without-opie
@@ -154,7 +162,6 @@ src_install() {
 
 	if use ldap ; then
 		dodoc README.LDAP
-		dosbin plugins/sudoers/sudoers2ldif
 
 		cat <<-EOF > "${T}"/ldap.conf.sudo
 		# See ldap.conf(5) and README.LDAP for details
@@ -175,15 +182,24 @@ src_install() {
 
 	pamd_mimic system-auth sudo auth account session
 
-	keepdir /var/db/sudo
-	fperms 0700 /var/db/sudo
+	keepdir /var/db/sudo/lectured
+	fperms 0700 /var/db/sudo/lectured
+	fperms 0711 /var/db/sudo #652958
 
-	# Don't install into /var/run as that is a tmpfs most of the time
+	# Don't install into /run as that is a tmpfs most of the time
 	# (bug #504854)
-	rm -rf "${D}"/var/run
+	rm -rf "${ED%/}"/run
 }
 
 pkg_postinst() {
+	tmpfiles_process sudo.conf
+
+	#652958
+	local sudo_db="${EROOT}/var/db/sudo"
+	if [[ "$(stat -c %a "${sudo_db}")" -ne 711 ]] ; then
+		chmod 711 "${sudo_db}" || die
+	fi
+
 	if use ldap ; then
 		ewarn
 		ewarn "sudo uses the /etc/ldap.conf.sudo file for ldap configuration."

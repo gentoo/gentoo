@@ -1,5 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit autotools base eutils
 
@@ -12,9 +14,6 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ppc x86"
 IUSE="nls"
 LANGS="am ar bn gu hi ja kn ko ml ne pa ru ta te th uk vi zh"
-for i in ${LANGS} ; do
-	IUSE="${IUSE} linguas_${i}"
-done
 
 RDEPEND=">=app-i18n/scim-1.4.7-r2
 	nls? ( virtual/libintl )"

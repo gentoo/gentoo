@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit distutils-r1
 
@@ -11,7 +11,7 @@ MY_PN=numdifftools
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Solves automatic numerical differentiation problems in one or more variables"
-HOMEPAGE="https://pypi.python.org/pypi/Numdifftools https://github.com/pbrod/numdifftools"
+HOMEPAGE="https://pypi.org/project/Numdifftools/ https://github.com/pbrod/numdifftools"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.zip"
 
 SLOT="0"

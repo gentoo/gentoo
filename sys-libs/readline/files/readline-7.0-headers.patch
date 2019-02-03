@@ -9,8 +9,8 @@ Subject: [PATCH] include ctype.h for isdigit usage
 
 diff --git a/lib/readline/histexpand.c b/lib/readline/histexpand.c
 index 46a99aa62e30..13248db83048 100644
---- a/lib/readline/histexpand.c
-+++ b/lib/readline/histexpand.c
+--- a/histexpand.c
++++ b/histexpand.c
 @@ -26,6 +26,7 @@
  #endif
  

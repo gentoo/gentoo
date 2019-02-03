@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby23 ruby24"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC=""
@@ -13,7 +13,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Puppet environment and module deployment"
-HOMEPAGE="https://github.com/adrienthebo/r10k"
+HOMEPAGE="https://github.com/puppetlabs/r10k"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -52,7 +52,7 @@ pkg_postinst() {
 	ewarn "If you are upgrading from 1.1.0 and are using multiple sources, please read"
 	ewarn "this. (If not, feel free to continue with your regularly scheduled day.)"
 	ewarn
-	ewarn "GH-48 (https://github.com/adrienthebo/r10k/issues/48) introduced the ability"
+	ewarn "GH-48 (https://github.com/puppetlabs/r10k/issues/48) introduced the ability"
 	ewarn "for environments to be prefixed with the source name so that multiple sources"
 	ewarn "installed into the same directory would not overwrite each other. However"
 	ewarn "prefixing was automatically enabled and would break existing setups where"
@@ -63,6 +63,6 @@ pkg_postinst() {
 	ewarn "to off. If you are relying on this behavior you will need to update your r10k.yaml"
 	ewarn "to enable prefixing on a per-source basis."
 	ewarn
-	ewarn "Please see the issue (https://github.com/adrienthebo/r10k/issues/48) for more"
+	ewarn "Please see the issue (https://github.com/puppetlabs/r10k/issues/48) for more"
 	ewarn "information."
 }

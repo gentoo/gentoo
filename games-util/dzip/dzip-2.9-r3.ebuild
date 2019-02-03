@@ -10,7 +10,7 @@ SRC_URI="http://speeddemosarchive.com/dzip/dz${PV/./}src.zip"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 DEPEND="app-arch/unzip"
 RDEPEND=""

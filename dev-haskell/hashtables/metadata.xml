@@ -24,7 +24,7 @@
 		
 		2. "Data.HashTable.ST.Cuckoo" contains an implementation of \"cuckoo
 		hashing\" as introduced by Pagh and Rodler in 2001 (see
-		&lt;http://en.wikipedia.org/wiki/Cuckoo_hashing&gt;). Cuckoo hashing has
+		&lt;https://en.wikipedia.org/wiki/Cuckoo_hashing&gt;). Cuckoo hashing has
 		worst-case /O(1)/ lookups and can reach a high \"load factor\", in which
 		the table can perform acceptably well even when more than 90% full.
 		Randomized testing shows this implementation of cuckoo hashing to be
@@ -35,7 +35,7 @@
 		when the table is resized.
 		
 		3. "Data.HashTable.ST.Linear" contains a linear hash table (see
-		&lt;http://en.wikipedia.org/wiki/Linear_hashing&gt;), which trades some insert
+		&lt;https://en.wikipedia.org/wiki/Linear_hashing&gt;), which trades some insert
 		and lookup performance for higher space efficiency and much shorter
 		delays when expanding the table. In most cases, benchmarks show this
 		table to be currently slightly faster than @Data.HashTable@ from the
@@ -70,7 +70,7 @@
 		incompatible with HPC code coverage reports.
 		
 		* @sse41@, default /OFF/. If this flag is enabled, we use some SSE 4.1
-		instructions (see &lt;http://en.wikipedia.org/wiki/SSE4&gt;, first available on
+		instructions (see &lt;https://en.wikipedia.org/wiki/SSE4&gt;, first available on
 		Intel Core 2 processors) to speed up cache-line searches for cuckoo
 		hashing.
 		

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7} )
 inherit gnome2-utils linux-info python-single-r1 systemd
 
 DESCRIPTION="Simple and intuitive GTK+ Bluetooth Manager"
@@ -23,7 +23,7 @@ SLOT="0"
 IUSE="appindicator network nls policykit pulseaudio"
 
 COMMON_DEPEND="
-	dev-python/pygobject:3
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=net-wireless/bluez-5:=
 	${PYTHON_DEPS}"
 DEPEND="${COMMON_DEPEND}
@@ -39,13 +39,15 @@ RDEPEND="${COMMON_DEPEND}
 	|| (
 		x11-themes/adwaita-icon-theme
 		x11-themes/faenza-icon-theme
-		x11-themes/gnome-icon-theme
 		x11-themes/mate-icon-theme
 	)
 	appindicator? ( dev-libs/libappindicator:3[introspection] )
 	network? (
 		net-firewall/iptables
-		sys-apps/net-tools
+		|| (
+			sys-apps/net-tools
+			sys-apps/iproute2
+		)
 		|| (
 			net-dns/dnsmasq
 			net-misc/dhcp
@@ -82,8 +84,8 @@ src_configure() {
 		--docdir=/usr/share/doc/${PF}
 		--disable-runtime-deps-check
 		--disable-static
-		# TODO: replace upstream with sane system/user unitdir getters
-		--with-systemdunitdir="$(systemd_get_utildir)"
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
+		--with-systemduserunitdir="$(systemd_get_userunitdir)"
 		$(use_enable appindicator)
 		$(use_enable policykit polkit)
 		$(use_enable nls)
@@ -106,11 +108,6 @@ src_install() {
 
 	python_fix_shebang "${D}"
 	rm "${D}"/$(python_get_sitedir)/*.la || die
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-	gnome2_schemas_savelist
 }
 
 pkg_postinst() {

@@ -3,6 +3,7 @@
 
 # Author: Michael Cummings <mcummings@gentoo.org>
 # Maintained by the Perl herd <perl@gentoo.org>
+# @SUPPORTED_EAPIS: 5
 
 # If the ebuild doesn't override this, ensure we do not depend on the perl subslot value
 : ${GENTOO_DEPEND_ON_PERL_SUBSLOT:="no"}

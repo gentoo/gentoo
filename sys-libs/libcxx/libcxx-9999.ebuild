@@ -14,7 +14,8 @@ PYTHON_COMPAT=( python2_7 )
 
 [[ ${PV} == 9999 ]] && SCM="git-r3" || SCM=""
 
-inherit ${SCM} cmake-multilib llvm python-any-r1 toolchain-funcs
+inherit ${SCM} cmake-multilib llvm multiprocessing python-any-r1 \
+	toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="https://libcxx.llvm.org/"
@@ -35,19 +36,20 @@ fi
 IUSE="elibc_glibc elibc_musl +libcxxabi libcxxrt +libunwind +static-libs test"
 REQUIRED_USE="libunwind? ( || ( libcxxabi libcxxrt ) )
 	?? ( libcxxabi libcxxrt )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	libcxxabi? ( ~sys-libs/libcxxabi-${PV}[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
 	libcxxrt? ( sys-libs/libcxxrt[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
 	!libcxxabi? ( !libcxxrt? ( >=sys-devel/gcc-4.7:=[cxx] ) )"
-# LLVM 4 required for llvm-config --cmakedir
+# llvm-6 for new lit options
 # clang-3.9.0 installs necessary target symlinks unconditionally
 # which removes the need for MULTILIB_USEDEP
 DEPEND="${RDEPEND}
 	test? ( >=sys-devel/clang-3.9.0
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]') )
 	app-arch/xz-utils
-	>=sys-devel/llvm-4"
+	>=sys-devel/llvm-6"
 
 DOCS=( CREDITS.TXT )
 
@@ -82,7 +84,14 @@ pkg_setup() {
 	fi
 }
 
-multilib_src_configure() {
+test_compiler() {
+	$(tc-getCXX) ${CXXFLAGS} ${LDFLAGS} "${@}" -o /dev/null -x c++ - \
+		<<<'int main() { return 0; }' &>/dev/null
+}
+
+src_configure() {
+	# note: we need to do this before multilib kicks in since it will
+	# alter the CHOST
 	local cxxabi cxxabi_incs
 	if use libcxxabi; then
 		cxxabi=libcxxabi
@@ -96,6 +105,10 @@ multilib_src_configure() {
 		cxxabi_incs="${gcc_inc};${gcc_inc}/${CHOST}"
 	fi
 
+	multilib-minimal_src_configure
+}
+
+multilib_src_configure() {
 	# we want -lgcc_s for unwinder, and for compiler runtime when using
 	# gcc, clang with gcc runtime (or any unknown compiler)
 	local extra_libs=() want_gcc_s=ON
@@ -105,16 +118,21 @@ multilib_src_configure() {
 		# if we're using libunwind and clang with compiler-rt, we want
 		# to link to compiler-rt instead of -lgcc_s
 		if tc-is-clang; then
-			# get the full library list out of 'pretend mode'
-			# and grep it for libclang_rt references
-			local args=( $($(tc-getCC) -### -x c - 2>&1 | tail -n 1) )
-			local i
-			for i in "${args[@]}"; do
-				if [[ ${i} == *libclang_rt* ]]; then
-					want_gcc_s=OFF
-					extra_libs+=( "${i}" )
-				fi
-			done
+			local compiler_rt=$($(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
+			   ${LDFLAGS} -print-libgcc-file-name)
+			if [[ ${compiler_rt} == *libclang_rt* ]]; then
+				want_gcc_s=OFF
+				extra_libs+=( "${compiler_rt}" )
+			fi
+		fi
+	fi
+
+	# bootstrap: cmake is unhappy if compiler can't link to stdlib
+	local nolib_flags=( -nodefaultlibs -lc )
+	if ! test_compiler; then
+		if test_compiler "${nolib_flags[@]}"; then
+			local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
+			ewarn "${CXX} seems to lack runtime, trying with ${nolib_flags[*]}"
 		fi
 	fi
 
@@ -134,20 +152,20 @@ multilib_src_configure() {
 	)
 
 	if use test; then
+		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
+		local jobs=${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}
+
+		[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
+
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-			-DLLVM_LIT_ARGS="-vv"
+			-DLLVM_LIT_ARGS="-vv;-j;${jobs};--param=cxx_under_test=${clang_path}"
 		)
 	fi
 	cmake-utils_src_configure
 }
 
 multilib_src_test() {
-	local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
-
-	[[ -n ${clang_path} ]] || die "Unable to find ${CHOST}-clang for tests"
-	sed -i -e "/cxx_under_test/s^\".*\"^\"${clang_path}\"^" test/lit.site.cfg || die
-
 	cmake-utils_src_make check-libcxx
 }
 

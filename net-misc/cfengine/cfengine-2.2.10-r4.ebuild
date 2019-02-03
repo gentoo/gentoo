@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -17,7 +17,8 @@ IUSE="vim-syntax"
 
 RDEPEND=">=sys-libs/db-4
 	>=dev-libs/openssl-0.9.7
-	app-portage/portage-utils"
+	app-portage/portage-utils
+	net-libs/libnsl"
 DEPEND="${RDEPEND}
 	virtual/yacc
 	sys-devel/flex"

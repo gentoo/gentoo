@@ -1,9 +1,9 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Displays a binary clock in your terminal"
 HOMEPAGE="http://www.ngolde.de/binclock/"
@@ -17,16 +17,15 @@ IUSE=""
 RDEPEND=""
 DEPEND=">=sys-apps/sed-4"
 
-src_prepare() {
-	sed -i -e s/strip/true/ Makefile || die
-}
+PATCHES=( "${FILESDIR}/binclock-1.5-Makefile.patch" )
 
-src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${LDFLAGS}" || die "emake failed"
+src_configure() {
+	append-cflags -Wall -pedantic
+	tc-export CC
 }
 
 src_install() {
-	dobin binclock || die "dobin failed"
-	doman doc/binclock.1 || die "doman failed"
-	dodoc CHANGELOG README binclockrc || die "dodoc failed"
+	dobin binclock
+	doman doc/binclock.1
+	dodoc CHANGELOG README binclockrc
 }

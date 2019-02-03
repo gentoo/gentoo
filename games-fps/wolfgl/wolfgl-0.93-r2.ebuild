@@ -24,7 +24,7 @@ IUSE=""
 RDEPEND="virtual/opengl"
 DEPEND="${RDEPEND}
 	app-arch/unzip
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-gcc.patch

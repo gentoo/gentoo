@@ -6,8 +6,8 @@
 		<name>Gentoo Mathematics Project</name>
 	</maintainer>
 	<longdescription lang="en">
-  Python wrapper modules for the linear programming library lpsolve.
-</longdescription>
+		Python wrapper modules for the linear programming library lpsolve.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">lpsolve</remote-id>
 	</upstream>

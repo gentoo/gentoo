@@ -1,0 +1,10 @@
+# Copyright 1999-2018 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="powerpc-gentoo-linux-musl"
+
+# Anthony G. Basile <blueness@gentoo.org> (01 Jul 2014)
+# Multilib-related setup, bug #515130
+MULTILIB_ABIS="ppc"
+CHOST_ppc="${CHOST}"
+LIBDIR_ppc="lib"

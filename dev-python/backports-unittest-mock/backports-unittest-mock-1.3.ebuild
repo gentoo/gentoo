@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # It is the developer's intention that backports.unittest_mock will be
 # used even for Python 3: https://github.com/jaraco/jaraco.timing/pull/1
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} pypy{,3} )
 
 inherit distutils-r1
 
@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd"
 IUSE="doc test"
 
 RDEPEND="dev-python/backports[${PYTHON_USEDEP}]
@@ -26,8 +26,8 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/jaraco-packaging[${PYTHON_USEDEP}]
-		dev-python/rst-linker[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
+		>=dev-python/rst-linker-1.9[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-1.5.2[${PYTHON_USEDEP}]
 	)
 	test? (
 		${RDEPEND}

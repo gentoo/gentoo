@@ -1,0 +1,12 @@
+diff -ruN libav-11.8.orig/doc/texi2pod.pl libav-11.8/doc/texi2pod.pl
+--- libav-11.8.orig/doc/texi2pod.pl	2016-09-06 18:09:14.000000000 +0200
++++ libav-11.8/doc/texi2pod.pl	2018-02-16 18:25:11.823113370 +0100
+@@ -379,7 +379,7 @@
+     # @* is also impossible in .pod; we discard it and any newline that
+     # follows it.  Similarly, our macro @gol must be discarded.
+ 
+-    s/\@anchor{(?:[^\}]*)\}//g;
++    s/\@anchor\{(?:[^\}]*)\}//g;
+     s/\(?\@xref\{(?:[^\}]*)\}(?:[^.<]|(?:<[^<>]*>))*\.\)?//g;
+     s/\s+\(\@pxref\{(?:[^\}]*)\}\)//g;
+     s/;\s+\@pxref\{(?:[^\}]*)\}//g;

@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<maintainer type="project">
 		<email>ruby@gentoo.org</email>
-        <name>Gentoo Ruby Project</name>
+		<name>Gentoo Ruby Project</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">pusher-community/pusher-websocket-ruby</remote-id>

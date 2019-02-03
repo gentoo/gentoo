@@ -1,0 +1,19 @@
+commit e83487a20bacd4f9b33d0478861671bf79468f59
+Author: Louis Sautier <sautier.louis@gmail.com>
+Date:   Mon Aug 13 12:15:13 2018 +0200
+
+    Allow x-gzip as MIME type for gzip files, fixes #96
+
+diff --git a/test/test.py b/test/test.py
+index e29335f..e3ee703 100755
+--- a/test/test.py
++++ b/test/test.py
+@@ -54,7 +54,7 @@ class MagicTest(unittest.TestCase):
+             self.assert_values(m, {
+                 'magic._pyc_': 'application/octet-stream',
+                 'test.pdf': 'application/pdf',
+-                'test.gz': 'application/gzip',
++                'test.gz': ('application/gzip', 'application/x-gzip'),
+                 'text.txt': 'text/plain',
+                 b'\xce\xbb'.decode('utf-8'): 'text/plain',
+                 b'\xce\xbb': 'text/plain',

@@ -1,0 +1,66 @@
+diff --git a/validation/include-eval.c b/validation/include-eval.c
+new file mode 100644
+index 000000000..bf9bf63fe
+--- /dev/null
++++ b/validation/include-eval.c
+@@ -0,0 +1,7 @@
++/* nothing */
++
++/*
++ * check-name: include-eval.c
++ * check-command: sparse -include ./include-eval.inc $file
++ * check-known-to-fail
++ */
+diff --git a/validation/include-eval.inc b/validation/include-eval.inc
+new file mode 100644
+index 000000000..e2561ca41
+--- /dev/null
++++ b/validation/include-eval.inc
+@@ -0,0 +1,12 @@
++typedef unsigned long long_t;
++
++inline
++static unsigned int ok(void)
++{
++	return sizeof(long_t);
++}
++
++static unsigned int ko(void)
++{
++	return sizeof(long_t);
++}
+diff --git a/lib.c b/lib.c
+index 4602cf85d..b255fec14 100644
+--- a/lib.c
++++ b/lib.c
+@@ -1351,6 +1351,20 @@ struct symbol_list *sparse_initialize(int argc, char **argv, struct string_list
+ 		 */
+ 		protect_token_alloc();
+ 	}
++	/*
++	 * Evaluate the complete symbol list
++	 * Note: This is not needed for normal cases.
++	 *	 These symbols should only be predefined defines and
++	 *	 declaratons which will be evaluated later, when needed.
++	 *	 This is also the case when a file is directly included via
++	 *	 '-include <file>' on the command line *AND* the file only
++	 *	 contains defines, declarations and inline definitions.
++	 *	 However, in the rare cases where the given file should
++	 *	 contain some definitions, these will never be evaluated
++	 *	 and thus won't be able to be linearized correctly.
++	 *	 Hence the evaluate_symbol_list() here under.
++	 */
++	evaluate_symbol_list(list);
+ 	return list;
+ }
+ 
+diff --git a/validation/include-eval.c b/validation/include-eval.c
+index bf9bf63fe..1a91dab84 100644
+--- a/validation/include-eval.c
++++ b/validation/include-eval.c
+@@ -3,5 +3,4 @@
+ /*
+  * check-name: include-eval.c
+  * check-command: sparse -include ./include-eval.inc $file
+- * check-known-to-fail
+  */

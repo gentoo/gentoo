@@ -6,7 +6,7 @@ EAPI=4
 inherit elisp
 
 DESCRIPTION="Emacs thumbnail previewer for image files"
-HOMEPAGE="http://www.emacswiki.org/emacs/ThumbsMode"
+HOMEPAGE="https://www.emacswiki.org/emacs/ThumbsMode"
 SRC_URI="mirror://gentoo/${P}.el.bz2"
 
 LICENSE="GPL-2"

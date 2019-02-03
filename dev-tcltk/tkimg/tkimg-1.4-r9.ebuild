@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -40,6 +40,7 @@ S="${WORKDIR}/${MYP}"
 src_prepare() {
 	epatch \
 		"${WORKDIR}"/${P}-jpeg.patch \
+		"${FILESDIR}"/${P}-jpeg-9.patch \
 		"${WORKDIR}"/${P}-tiff.patch \
 		"${WORKDIR}"/${P}-png.patch \
 		"${FILESDIR}"/${P}-png2.patch \

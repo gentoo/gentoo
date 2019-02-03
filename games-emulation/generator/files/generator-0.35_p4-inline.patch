@@ -1,0 +1,12 @@
+diff -aur generator-0.35-cbiere-r4/ym2612/support.h generator-0.35-cbiere-r4-patched/ym2612/support.h
+--- generator-0.35-cbiere-r4/ym2612/support.h	2005-08-27 05:12:29.000000000 -0400
++++ generator-0.35-cbiere-r4-patched/ym2612/support.h	2018-03-26 11:49:36.000000000 -0400
+@@ -3,7 +3,7 @@
+ #include "config.h"
+ 
+ #define errorlog 0
+-#define INLINE inline
++#define INLINE
+ #define HAS_YM2612 1
+ #define YM2612UpdateRequest(x) 
+ #define AY8910_set_clock(chip,clock)

@@ -17,6 +17,33 @@
 
 #--- END OF EXAMPLES ---
 
+# Amy Liffey <amynka@gentoo.org> (15 Jan 2019)
+# Mask experimental contrib repo
+media-libs/opencv contrib contrib_cvv contrib_dnn contrib_hdf contrib_sfm contrib_xfeatures2d gflags glog tesseract
+
+# Brian Evans <grknight@gentoo.org> (06 Dec 2018)
+# Unmask argon2 for php
+dev-lang/php -argon2
+
+# Mikle Kolyada <zlogene@gentoo.org> (07 Nov 2018)
+# unmask sssd for sudo
+app-admin/sudo -sssd
+
+# Mart Raudsepp <leio@gentoo.org> (01 Nov 2018)
+# net-wireless/iwd not stable yet
+net-misc/networkmanager iwd
+
+# Thomas Deutschmann <whissi@gentoo.org> (27 Sep 2018)
+# sys-devel/lld is unstable
+www-client/firefox clang
+
+# Thomas Deutschmann <whissi@gentoo.org> (01 Jun 2018)
+net-analyzer/wireshark -doc
+
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Nov 2017)
+# Requires not yet stabilised media-libs/qtav
+media-gfx/digikam mediaplayer
+
 # Thomas Deutschmann <whissi@gentoo.org> (01 Oct 2017)
 # Stable mask dev-ruby/haml test till rails is stabilized.
 dev-ruby/haml test
@@ -55,16 +82,8 @@ dev-cpp/eigen test
 # mayavi is broken, bug #500104
 dev-python/apptools test
 
-# Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
-# Masked since skype isn't stable
-net-im/bitlbee skype
-
 # Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
 dev-lang/python-exec -python_targets_pypy
 dev-lang/python-exec -python_targets_pypy3
-
-# Tom Wijsman <TomWij@gentoo.org> (06 Feb 2014)
-# [QA] Masked jit USE flag on www-apps/cgit as dev-lang/luajit is not stable.
-www-apps/cgit jit

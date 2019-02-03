@@ -6,7 +6,6 @@
 # profile have a USE flag associated with (such as altivec, mmx, etc).
 
 # Unmask x86 instruction sets
--ifc
 -cpu_flags_x86_mmx
 -cpu_flags_x86_mmxext
 -cpu_flags_x86_sse
@@ -26,9 +25,6 @@
 -input_devices_wacom
 -video_cards_nvidia
 -video_cards_vmware
-
-# Modular X: mask for architectures on which they aren't available
-video_cards_newport
 
 # ibm is only used for ppc64 stuff
 ibm

@@ -1,0 +1,24 @@
+From: Guilherme Amadio <amadio@cern.ch>
+Date: Wed, 14 Nov 2018 11:36:49 +0100
+Subject: Fix FindOracle.cmake to find version 18.x
+
+---
+ cmake/modules/FindOracle.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/modules/FindOracle.cmake b/cmake/modules/FindOracle.cmake
+index b7c8cfbb99..6672cb1bbd 100644
+--- a/cmake/modules/FindOracle.cmake
++++ b/cmake/modules/FindOracle.cmake
+@@ -55,7 +55,7 @@ FIND_LIBRARY(
+ )
+ FIND_LIBRARY(
+     ORACLE_LIBRARY_LNNZ
+-    NAMES libnnz10 nnz10 libnnz11 nnz11 libnnz12 nnz12 ociw32
++    NAMES libnnz10 nnz10 libnnz11 nnz11 libnnz12 nnz12 nnz18 ociw32
+     PATHS ${ORACLE_LIB_LOCATION}
+ )
+ 
+-- 
+2.19.1
+

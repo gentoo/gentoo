@@ -21,9 +21,3 @@
 # Magnus Granberg <zorry@gentoo.org> (29 Nov 2012)
 # Bug #444786 disable nvidia on app-admin/conky
 app-admin/conky nvidia
-
-# Cernlib has address space issues on amd64 and package is no
-# longer supported by upstream. Thus masking it and its reverse
-# dependencies.
-# See bugs 426764, 556612.
-=sci-physics/geant-4.9.4* geant3

@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils fdo-mime
+
+inherit autotools eutils xdg-utils
 
 MY_P=${PN}-${PV/_}
 
@@ -12,11 +13,12 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="nls"
 
 RDEPEND=">=dev-libs/glib-2.14
-	>=x11-libs/gtk+-2.10:2"
+	>=x11-libs/gtk+-2.10:2
+	x11-misc/xdotool"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? (
@@ -41,9 +43,9 @@ src_configure() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

@@ -1,0 +1,22 @@
+diff --git a/config/get_fltk b/config/get_fltk
+index 87d0c1d..22f5bd8 100644
+--- a/config/get_fltk
++++ b/config/get_fltk
+@@ -2,13 +2,16 @@ if test -z "$with_fltk"; then
+   with_fltk=yes
+ fi
+ 
++cmd="FLTK_CXXFLAGS=\`fltk-config --cxxflags\`"
++. log_cmd
++
+ cmd="FLTK_LIBS=\`fltk-config --ldflags\`"
+ . log_cmd
+ 
+ exe=$osname-$arch-fltk$$$exe_suff
+ cxx=$CXX
+ if test -z "$cxx"; then cxx=g++; fi;
+-cmd="$cxx $CFLAGS $FLTK_LIBS -o $exe has_fltk.c"
++cmd="$cxx $CFLAGS $FLTK_CXXFLAGS $FLTK_LIBS -o $exe has_fltk.c"
+ . log_cmd
+ if test -r "$exe"; then
+   echo "Using FLTK library"

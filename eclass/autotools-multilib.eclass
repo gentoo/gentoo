@@ -6,6 +6,7 @@
 # gx86-multilib team <multilib@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5
 # @BLURB: autotools-utils wrapper for multilib builds
 # @DESCRIPTION:
 # The autotools-multilib.eclass provides a glue between

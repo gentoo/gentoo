@@ -1,8 +1,24 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # PPC Specific use flags
 #
+
+# Matt Turner <mattst88@gentoo.org> (18 Sep 2018)
+# sci-libs/coinor-mp is not keyworded
+coinmp
+
+# Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
+# Python 3.7 support requires fresh versions of packages which are stuck
+# at keywordreqs.
+# bug #661306: dev-python/pytest
+# bug #661320: dev-python/twisted
+python_targets_python3_7
+python_single_target_python3_7
+
+# Sergei Trofimovich <slyfox@gentoo.org> (18 Mar 20180)
+# mongodb is not keyworded on ppc/ppc64 (broken)
+mongodb
 
 # David Seifert <soap@gentoo.org> (08 Jul 2017)
 # Games are not keyworded anymore on ppc
@@ -57,7 +73,6 @@ acpi
 lm_sensors
 rar
 hdf
-fmod
 xvmc
 # cg is only provided by nvidia's binary only cg toolkit
 cg
@@ -109,37 +124,6 @@ lcd_devices_stv5730
 # Both
 lcd_devices_t6963
 
-# 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
-# Modular X: mask for architectures on which they aren't available
-video_cards_apm
-video_cards_ark
-video_cards_ast
-video_cards_i128
-video_cards_i740
-video_cards_intel
-video_cards_neomagic
-video_cards_nsc
-video_cards_rendition
-video_cards_siliconmotion
-video_cards_sis
-video_cards_tga
-video_cards_tseng
-video_cards_vesa
-
-# Matt Turner <mattst88@gentoo.org>
-# Mask more VIDEO_CARDs added with mesa-8.0
-video_cards_i915
-video_cards_i965
-video_cards_ilo
-# vmware wasn't added with mesa-8.0, but it should still be masked
-video_cards_vmware
-
-# Intel Integrated Primitive (sci-libs/ipp) support
-ipp
-
-# dev-lang/orc doesn't play nice
-schroedinger
-
 # This will need >=media-libs/libgpod-0.8.0 keyworded and stabilized on both ppc/ppc64, bugs 313691 and 325839
 ipod
 ios
@@ -149,10 +133,6 @@ ios
 # Samuli Suominen <ssuominen@gentoo.org> (03 Nov 2010)
 # and it's also masked in arch/powerpc/ppc64/32ul/package.mask
 lirc
-
-# Matt Turner <mattst88@gmail.com> (06 May 2011)
-# media-sound/mumble not keyworded on ppc
-mumble
 
 # Kacper Kowalik <xarthisius@gentoo.org> (26 Jul 2011)
 # ppc keywords were dropped for dev-libs/prelude
@@ -164,14 +144,6 @@ nvtt
 
 # fdk-aac is already keyworded here
 -fdk
-
-# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
-# libdlm and cman are not keyworded
-cman
-clvm
-
-# for gnome 3.6 keywording
--zeitgeist
 
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2014)
 # Unmask systemd since it is keyworded here.

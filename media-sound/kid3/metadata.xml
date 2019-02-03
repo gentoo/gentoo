@@ -14,7 +14,7 @@
       (<pkg>media-libs/chromaprint</pkg>)</flag>
   </use>
   <upstream>
-    <bugs-to>https://sourceforge.net/tracker/?group_id=70849</bugs-to>
+    <bugs-to>https://sourceforge.net/p/kid3/bugs/</bugs-to>
     <remote-id type="sourceforge">kid3</remote-id>
   </upstream>
 </pkgmetadata>

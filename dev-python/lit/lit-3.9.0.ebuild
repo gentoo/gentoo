@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://llvm.org/git/llvm.git
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-fbsd"
 IUSE="test"
 
 S=${WORKDIR}/${MY_P}.src/utils/lit

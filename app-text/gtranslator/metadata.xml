@@ -9,6 +9,15 @@
 		<flag name="gnome-dictionary">Enable plugin for dictionary lookups using <pkg>app-dicts/gnome-dictionary</pkg>.</flag>
 		<flag name="gucharmap">Enable plugin for unicode symbols selection using <pkg>gnome-extra/gucharmap</pkg>.</flag>
 	</use>
+	<longdescription lang="en">
+		Gtranslator is an enhanced gettext po file editor for the GNOME desktop
+		environment.
+		It handles all forms of gettext po files and includes very useful features
+		like find/replace, translation memory, different translator profiles,
+		messages table (for having an overview of the translations/messages in the
+		po file), easy navigation and editing of translation messages and comments
+		of the translation where accurate.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">gtranslator</remote-id>
 	</upstream>

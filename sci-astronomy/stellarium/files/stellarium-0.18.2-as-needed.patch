@@ -1,0 +1,47 @@
+From e1bd46e11fead134ee9d8ec4d72f2592c3e18c72 Mon Sep 17 00:00:00 2001
+From: Alexey Sokolov <sokolov@google.com>
+Date: Thu, 8 Nov 2018 23:30:02 +0000
+Subject: [PATCH] Fix build with --as-needed
+
+Fixes the following error:
+
+/usr/bin/x86_64-pc-linux-gnu-g++  -O2 -pipe -march=bdver2 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-unused-result  -Wl,-O1 -Wl,--as-needed -rdynamic CMakeFiles/stellarium.dir/main.cpp.o CMakeFiles/stellarium.dir/stellarium_autogen/mocs_compilation.cpp.o  -o stellarium -lz external/libqtcompress_stel.a external/libglues_stel.a external/libqcustomplot_stel.a ../plugins/AngleMeasure/src/libAngleMeasure.a ../plugins/ArchaeoLines/src/libArchaeoLines.a ../plugins/CompassMarks/src/libCompassMarks.a ../plugins/Exoplanets/src/libExoplanets.a ../plugins/EquationOfTime/src/libEquationOfTime.a ../plugins/FOV/src/libFOV.a ../plugins/MeteorShowers/src/libMeteorShowers.a ../plugins/NavStars/src/libNavStars.a ../plugins/Novae/src/libNovae.a ../plugins/Observability/src/libObservability.a ../plugins/Oculars/src/libOculars.a ../plugins/PointerCoordinates/src/libPointerCoordinates.a ../plugins/Pulsars/src/libPulsars.a ../plugins/Quasars/src/libQuasars.a ../plugins/RemoteControl/src/libRemoteControl.a ../plugins/RemoteSync/src/libRemoteSync.a ../plugins/Satellites/src/libSatellites.a ../plugins/Scenery3d/src/libScenery3d.a ../plugins/SolarSystemEditor/src/libSolarSystemEditor.a ../plugins/Supernovae/src/libSupernovae.a ../plugins/TextUserInterface/src/libTextUserInterface.a ../plugins/TelescopeControl/src/libTelescopeControl.a libstelMain.a external/libqtcompress_stel.a -lz external/libglues_stel.a ../plugins/AngleMeasure/src/libAngleMeasure.a ../plugins/ArchaeoLines/src/libArchaeoLines.a ../plugins/CompassMarks/src/libCompassMarks.a ../plugins/Exoplanets/src/libExoplanets.a external/libqcustomplot_stel.a /usr/lib64/libQt5PrintSupport.so.5.11.1 ../plugins/EquationOfTime/src/libEquationOfTime.a ../plugins/FOV/src/libFOV.a ../plugins/MeteorShowers/src/libMeteorShowers.a ../plugins/NavStars/src/libNavStars.a ../plugins/Novae/src/libNovae.a ../plugins/Observability/src/libObservability.a ../plugins/Oculars/src/libOculars.a ../plugins/PointerCoordinates/src/libPointerCoordinates.a ../plugins/Pulsars/src/libPulsars.a ../plugins/Quasars/src/libQuasars.a ../plugins/RemoteControl/src/libRemoteControl.a ../plugins/RemoteSync/src/libRemoteSync.a ../plugins/Satellites/src/libSatellites.a ../plugins/Scenery3d/src/libScenery3d.a ../plugins/SolarSystemEditor/src/libSolarSystemEditor.a ../plugins/Supernovae/src/libSupernovae.a ../plugins/TextUserInterface/src/libTextUserInterface.a ../plugins/TelescopeControl/src/libTelescopeControl.a /usr/lib64/libQt5SerialPort.so.5.11.1 ../plugins/TelescopeControl/src/gui/libTelescopeControl_gui.a ../plugins/TelescopeControl/src/Lx200/libTelescopeControl_Lx200.a ../plugins/TelescopeControl/src/INDI/libTelescopeControl_INDI.a external/libindiclient.a external/libzlib_stel.a -lpthread ../plugins/TelescopeControl/src/NexStar/libTelescopeControl_NexStar.a ../plugins/TelescopeControl/src/Rts2/libTelescopeControl_Rts2.a ../plugins/TelescopeControl/src/common/libTelescopeControl_common.a /usr/lib64/libQt5Concurrent.so.5.11.1 /usr/lib64/libQt5Network.so.5.11.1 /usr/lib64/libQt5Widgets.so.5.11.1 /usr/lib64/libQt5Gui.so.5.11.1 /usr/lib64/libQt5Script.so.5.11.1 /usr/lib64/libQt5Core.so.5.11.1
+../plugins/TelescopeControl/src/gui/libTelescopeControl_gui.a(TelescopeConfigurationDialog.cpp.o): In function `QList<QSerialPortInfo>::dealloc(QListData::Data*) [clone .isra.21]':
+/usr/include/qt5/QtCore/qlist.h:494: undefined reference to `QSerialPortInfo::~QSerialPortInfo()'
+../plugins/TelescopeControl/src/gui/libTelescopeControl_gui.a(TelescopeConfigurationDialog.cpp.o): In function `TelescopeConfigurationDialog::listSerialPorts()':
+/mnt/portagetmp/portage/sci-astronomy/stellarium-0.18.2/work/stellarium-0.18.2/plugins/TelescopeControl/src/gui/TelescopeConfigurationDialog.cpp:73: undefined reference to `QSerialPortInfo::availablePorts()'
+/mnt/portagetmp/portage/sci-astronomy/stellarium-0.18.2/work/stellarium-0.18.2/plugins/TelescopeControl/src/gui/TelescopeConfigurationDialog.cpp:80: undefined reference to `QSerialPortInfo::portName() const'
+/mnt/portagetmp/portage/sci-astronomy/stellarium-0.18.2/work/stellarium-0.18.2/plugins/TelescopeControl/src/gui/TelescopeConfigurationDialog.cpp:81: undefined reference to `QSerialPortInfo::vendorIdentifier() const'
+/mnt/portagetmp/portage/sci-astronomy/stellarium-0.18.2/work/stellarium-0.18.2/plugins/TelescopeControl/src/gui/TelescopeConfigurationDialog.cpp:82: undefined reference to `QSerialPortInfo::productIdentifier() const'
+/mnt/portagetmp/portage/sci-astronomy/stellarium-0.18.2/work/stellarium-0.18.2/plugins/TelescopeControl/src/gui/TelescopeConfigurationDialog.cpp:78: undefined reference to `QSerialPortInfo::systemLocation() const'
+../plugins/TelescopeControl/src/gui/libTelescopeControl_gui.a(TelescopeConfigurationDialog.cpp.o): In function `QList<QSerialPortInfo>::detach_helper(int)':
+/usr/include/qt5/QtCore/qlist.h:462: undefined reference to `QSerialPortInfo::QSerialPortInfo(QSerialPortInfo const&)'
+/usr/include/qt5/QtCore/qlist.h:468: undefined reference to `QSerialPortInfo::~QSerialPortInfo()'
+collect2: error: ld returned 1 exit status
+---
+ plugins/TelescopeControl/src/CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/plugins/TelescopeControl/src/CMakeLists.txt b/plugins/TelescopeControl/src/CMakeLists.txt
+index e8dc3212fe..34586b7528 100644
+--- a/plugins/TelescopeControl/src/CMakeLists.txt
++++ b/plugins/TelescopeControl/src/CMakeLists.txt
+@@ -22,15 +22,15 @@ ADD_LIBRARY(TelescopeControl-static STATIC
+ SET_TARGET_PROPERTIES(TelescopeControl-static PROPERTIES OUTPUT_NAME "TelescopeControl")
+ 
+ TARGET_LINK_LIBRARIES(TelescopeControl-static
+-    Qt5::Core
+-    Qt5::Widgets
+-    Qt5::SerialPort
+     TelescopeControl_gui
+     TelescopeControl_Lx200
+     TelescopeControl_INDI
+     TelescopeControl_NexStar
+     TelescopeControl_Rts2
+     TelescopeControl_common
++    Qt5::Core
++    Qt5::Widgets
++    Qt5::SerialPort
+     )
+ 
+ SET_TARGET_PROPERTIES(TelescopeControl-static PROPERTIES COMPILE_FLAGS "-DQT_STATICPLUGIN")

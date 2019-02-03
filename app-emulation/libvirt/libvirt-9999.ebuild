@@ -1,22 +1,24 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils user linux-info systemd readme.gentoo-r1
+PYTHON_COMPAT=( python3_{4,5,6,7} )
+
+inherit autotools bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd user
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://libvirt.org/libvirt.git"
+	EGIT_REPO_URI="https://libvirt.org/git/libvirt.git"
 	SRC_URI=""
 	KEYWORDS=""
 	SLOT="0"
 else
 	# Versions with 4 numbers are stable updates:
 	if [[ ${PV} =~ ^[0-9]+(\.[0-9]+){3} ]]; then
-		SRC_URI="http://libvirt.org/sources/stable_updates/${P}.tar.xz"
+		SRC_URI="https://libvirt.org/sources/stable_updates/${P}.tar.xz"
 	else
-		SRC_URI="http://libvirt.org/sources/${P}.tar.xz"
+		SRC_URI="https://libvirt.org/sources/${P}.tar.xz"
 	fi
 	KEYWORDS="~amd64 ~arm64 ~x86"
 	SLOT="0/${PV}"
@@ -28,18 +30,17 @@ LICENSE="LGPL-2.1"
 IUSE="
 	apparmor audit +caps +dbus firewalld fuse glusterfs iscsi +libvirtd lvm
 	libssh lxc +macvtap nfs nls numa openvz parted pcap phyp policykit
-	+qemu rbd sasl selinux +udev uml +vepa virtualbox virt-network
+	+qemu rbd sasl selinux +udev +vepa virtualbox virt-network
 	wireshark-plugins xen zeroconf zfs
 "
 
 REQUIRED_USE="
 	firewalld? ( virt-network )
-	libvirtd? ( || ( lxc openvz qemu uml virtualbox xen ) )
+	libvirtd? ( || ( lxc openvz qemu virtualbox xen ) )
 	lxc? ( caps libvirtd )
 	openvz? ( libvirtd )
 	policykit? ( dbus )
 	qemu? ( libvirtd )
-	uml? ( libvirtd )
 	vepa? ( macvtap )
 	virt-network? ( libvirtd )
 	virtualbox? ( libvirtd )
@@ -58,6 +59,8 @@ RDEPEND="
 	|| ( >=net-analyzer/netcat6-1.0-r2 >=net-analyzer/openbsd-netcat-1.105-r1 )
 	>=net-libs/gnutls-1.0.25:0=
 	net-libs/libssh2
+	net-libs/libtirpc
+	net-libs/rpcsvc-proto
 	>=net-misc/curl-7.18.0
 	sys-apps/dmidecode
 	>=sys-apps/util-linux-2.17
@@ -86,7 +89,7 @@ RDEPEND="
 	pcap? ( >=net-libs/libpcap-1.0.0 )
 	policykit? ( >=sys-auth/polkit-0.9 )
 	qemu? (
-		>=app-emulation/qemu-0.13.0
+		>=app-emulation/qemu-1.5.0
 		dev-libs/yajl
 	)
 	rbd? ( sys-cluster/ceph )
@@ -102,7 +105,7 @@ RDEPEND="
 	virtualbox? ( || ( app-emulation/virtualbox >=app-emulation/virtualbox-bin-2.2.0 ) )
 	wireshark-plugins? ( net-analyzer/wireshark:= )
 	xen? (
-		app-emulation/xen
+		>=app-emulation/xen-4.6.0
 		app-emulation/xen-tools:=
 	)
 	udev? (
@@ -113,6 +116,7 @@ RDEPEND="
 	zfs? ( sys-fs/zfs )"
 
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	app-text/xhtml1
 	dev-lang/perl
 	dev-libs/libxslt
@@ -120,10 +124,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.3.0-do_not_use_sysconf.patch
+	"${FILESDIR}"/${PN}-5.1.0-do-not-use-sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
-	"${FILESDIR}"/${PN}-3.0.0-fix_paths_for_apparmor.patch
-	"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
+	"${FILESDIR}"/${PN}-5.0.0-fix-paths-for-apparmor.patch
 )
 
 pkg_setup() {
@@ -187,6 +190,7 @@ pkg_setup() {
 	# Bandwidth Limiting Support
 	use virt-network && CONFIG_CHECK+="
 		~BRIDGE_EBT_T_NAT
+		~IP_NF_TARGET_REJECT
 		~NET_ACT_POLICE
 		~NET_CLS_FW
 		~NET_CLS_U32
@@ -214,6 +218,8 @@ src_prepare() {
 	default
 
 	if [[ ${PV} = *9999* ]]; then
+		# Reinitialize submodules as this is required for gnulib's bootstrap
+		git submodule init
 		# git checkouts require bootstrapping to create the configure script.
 		# Additionally the submodules must be cloned to the right locations
 		# bug #377279
@@ -267,12 +273,9 @@ src_configure() {
 		$(use_with sasl)
 		$(use_with selinux)
 		$(use_with udev)
-		$(use_with uml)
 		$(use_with vepa virtualport)
 		$(use_with virt-network network)
 		$(use_with wireshark-plugins wireshark-dissector)
-		$(use_with xen)
-		$(use_with xen xen-inotify)
 		$(use_with xen libxl)
 		$(use_with zeroconf avahi)
 		$(use_with zfs storage-zfs)
@@ -280,7 +283,6 @@ src_configure() {
 		--without-hal
 		--without-netcf
 		--without-sanlock
-		--without-xenapi
 
 		--with-esx
 		--with-init-script=systemd
@@ -335,9 +337,7 @@ src_install() {
 	# Remove bogus, empty directories. They are either not used, or
 	# libvirtd is able to create them on demand
 	rm -rf "${D}"/etc/sysconfig
-	rm -rf "${D}"/var/cache
-	rm -rf "${D}"/var/run
-	rm -rf "${D}"/var/log
+	rm -rf "${D}"/var
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
@@ -348,12 +348,15 @@ src_install() {
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
 	newinitd "${S}/libvirtd.init" libvirtd || die
-	newinitd "${FILESDIR}/libvirt-guests.init-r2" libvirt-guests || die
+	newinitd "${FILESDIR}/libvirt-guests.init-r3" libvirt-guests || die
 	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd || die
 	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd || die
 
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests || die
+
+	newbashcomp "${S}/tools/bash-completion/vsh" vsh
+	bashcomp_alias vsh virsh virt-admin
 
 	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true

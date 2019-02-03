@@ -6,8 +6,8 @@
 @DPATCH@
 
 diff -ru libdkim-1.0.19/src/dkimverify.cpp libdkim-1.0.19-new/src/dkimverify.cpp
---- libdkim-1.0.19/src/dkimverify.cpp	2008-05-12 20:08:06.000000000 +1000
-+++ libdkim-1.0.19-new/src/dkimverify.cpp	2009-06-11 18:28:10.000000000 +1000
+--- src/dkimverify.cpp	2008-05-12 20:08:06.000000000 +1000
++++ src/dkimverify.cpp	2009-06-11 18:28:10.000000000 +1000
 @@ -855,6 +855,9 @@
  ////////////////////////////////////////////////////////////////////////////////
  int CDKIMVerify::ParseDKIMSignature( const string& sHeader, SignatureInfo &sig )

@@ -1,0 +1,15 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (19 Oct 2018)
+# AdoptOpenJDK's ppc64 build is little-endian only.
+-dev-java/openjdk
+-dev-java/openjdk-bin
+
+# Sergei Trofimovich <slyfox@gentoo.org> (11 Apr 2018)
+# ltrace is not ported to powerpc64le yet.
+dev-util/ltrace
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (21 Feb 2018)
+# Mozc supports only little-endian architectures.
+-app-i18n/mozc

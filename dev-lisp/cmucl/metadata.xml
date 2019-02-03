@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>grozin@gentoo.org</email>
-<name>Andrey Grozin</name>
-</maintainer>
 <maintainer type="project">
 <email>common-lisp@gentoo.org</email>
 <name>Gentoo Common Lisp Project</name>
@@ -34,6 +30,8 @@ ANSI Common Lisp standard. Here is a summary of its main features:
    code profiler.
 </longdescription>
 <use>
+<flag name="doc">Installs package documentation</flag>
 <flag name="source">Include source code for CMUCL in installation</flag>
+<flag name="X">Build CLX, CLM, or Hemlock</flag>
 </use>
 </pkgmetadata>

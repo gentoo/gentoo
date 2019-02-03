@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Major mode for color moccur"
 HOMEPAGE="http://www.bookshelf.jp/
-	http://www.emacswiki.org/emacs/SearchBuffers"
+	https://www.emacswiki.org/emacs/SearchBuffers"
 # taken from http://www.bookshelf.jp/elc/color-moccur.el
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 

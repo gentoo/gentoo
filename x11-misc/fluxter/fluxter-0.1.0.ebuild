@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit autotools eutils
+EAPI=6
+inherit autotools
 
 DESCRIPTION="workspace pager dockapp, particularly useful with the Fluxbox window manager"
 HOMEPAGE="http://www.isomedia.com/homes/stevencooper"
@@ -17,17 +17,14 @@ DEPEND="x11-libs/libX11
 	x11-libs/libSM
 	x11-libs/libICE"
 
+PATCHES=( "${FILESDIR}/${P}-asneeded.patch" )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-asneeded.patch
+	default
 	eautoreconf
 }
 
 src_configure() {
 	econf \
-		--datadir=/usr/share/commonbox
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS BUGS ChangeLog README TODO
+		--datadir="${EPREFIX}"/usr/share/commonbox
 }

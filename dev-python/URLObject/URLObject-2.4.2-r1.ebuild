@@ -9,7 +9,7 @@ inherit distutils-r1
 
 GITHUB_P=${P,,}
 DESCRIPTION="A utility class for manipulating URLs"
-HOMEPAGE="https://pypi.python.org/pypi/URLObject"
+HOMEPAGE="https://pypi.org/project/URLObject/"
 # note: pypi tarball lacks tests
 # https://github.com/zacharyvoase/urlobject/issues/39
 SRC_URI="https://github.com/zacharyvoase/urlobject/archive/v${PV}.tar.gz -> ${GITHUB_P}.tar.gz"

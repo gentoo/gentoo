@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="diff-like program that operates at the word level instead of the line level"
-HOMEPAGE="http://os.ghalkes.nl/dwdiff.html"
-SRC_URI="http://os.ghalkes.nl/dist/${P}.tar.bz2"
+DESCRIPTION="diff-like program operating at word level instead of line level"
+HOMEPAGE="https://os.ghalkes.nl/dwdiff.html"
+SRC_URI="https://os.ghalkes.nl/dist/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE="nls"
 
 CDEPEND="dev-libs/icu:="

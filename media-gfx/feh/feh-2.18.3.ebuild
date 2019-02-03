@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,8 +22,8 @@ COMMON_DEPEND="media-libs/imlib2[X]
 RDEPEND="${COMMON_DEPEND}
 	virtual/jpeg:0"
 DEPEND="${COMMON_DEPEND}
+	x11-base/xorg-proto
 	x11-libs/libXt
-	x11-proto/xproto
 	test? (
 		>=dev-lang/perl-5.10
 		dev-perl/Test-Command

@@ -16,6 +16,7 @@ app-forensics
 app-i18n
 app-laptop
 app-leechcraft
+app-metrics
 app-misc
 app-mobilephone
 app-office
@@ -156,7 +157,6 @@ x11-drivers
 x11-libs
 x11-misc
 x11-plugins
-x11-proto
 x11-terms
 x11-themes
 x11-wm

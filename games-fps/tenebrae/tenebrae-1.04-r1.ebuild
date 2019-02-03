@@ -26,9 +26,7 @@ RDEPEND="
 	x11-libs/libXxf86vm"
 DEPEND="${RDEPEND}
 	app-arch/unzip
-	x11-proto/xextproto
-	x11-proto/xf86dgaproto
-	x11-proto/xf86vidmodeproto"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}
 

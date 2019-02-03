@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: unbundling sdl-sound breaks the game
@@ -8,13 +8,13 @@ EAPI=5
 inherit eutils unpacker gnome2-utils games
 
 MY_PN=ToTheMoon
-DESCRIPTION="Indie Adventure RPG, two doctors traversing the memories of a dying man to fulfill his last wish"
+DESCRIPTION="Two doctors traversing the memories of a dying man to fulfill his last wish"
 HOMEPAGE="http://freebirdgames.com/games/to-the-moon"
 SRC_URI="${MY_PN}_linux_1389114090.sh"
 
 LICENSE="all-rights-reserved bundled-libs? ( LGPL-2 LGPL-2.1 ZLIB )"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="bundled-libs"
 RESTRICT="fetch bindist splitdebug"
 
@@ -40,9 +40,9 @@ S=${WORKDIR}/data
 
 pkg_nofetch() {
 	einfo
-	einfo "Please buy & download \"${SRC_URI}\" from:"
+	einfo "Please buy & download ${SRC_URI} from:"
 	einfo "  ${HOMEPAGE}"
-	einfo "and move/link it to \"${DISTDIR}\""
+	einfo "and move/link it to your DISTDIR directory."
 	einfo
 }
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.jimwilkie.co.uk/mitm/"
 SRC_URI="MakeItToMorning1-6.zip"
 
 LICENSE="all-rights-reserved"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="fetch"
 
@@ -21,7 +21,7 @@ RDEPEND="games-fps/doom3-roe
 
 pkg_nofetch() {
 	elog "Go to http://www.gamewatcher.com/mods/doom-3-resurrection-of-evil-mod/make-it-to-morning-1-6"
-	elog "and download ${A} and place the file in ${DISTDIR}"
+	elog "and download ${A} and place the file into your DISTDIR directory."
 }
 
 src_unpack() {

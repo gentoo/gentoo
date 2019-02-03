@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -23,7 +23,7 @@ LICENSE="BSD"
 SLOT="0"
 # Collides with mingw-runtime-4.x
 #KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="crosscompile_opts_headers-only"
+IUSE="headers-only"
 RESTRICT="strip"
 
 DEPEND="app-arch/xz-utils"
@@ -32,7 +32,7 @@ RDEPEND=""
 S=${WORKDIR}/${MY_P/-m/.m}-src
 
 just_headers() {
-	use crosscompile_opts_headers-only && [[ ${CHOST} != ${CTARGET} ]]
+	use headers-only && [[ ${CHOST} != ${CTARGET} ]]
 }
 
 pkg_setup() {
@@ -59,7 +59,6 @@ src_install() {
 		doins -r include/*
 	else
 		emake -j1 install DESTDIR="${D}"
-		env -uRESTRICT CHOST=${CTARGET} prepallstrip
 
 		# Make sure diff cross-compilers don't collide #414075
 		mv "${D}"/usr/share/doc/{${PF},${CTARGET}-${PF}} || die

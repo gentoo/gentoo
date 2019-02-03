@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Translate between binary data and a human-readable
+		collection of words.
+		
+		The PGP Word List consists of two phonetic alphabets, each
+		with one word per possible byte value. A string of bytes
+		is translated with these alphabets, alternating between
+		them at each byte.
+		
+		The PGP words corresponding to the bytes @5B 1D CA 6E@
+		are &quot;erase breakaway spellbind headwaters&quot;, for example.
+		
+		For further information, see
+		&lt;http://en.wikipedia.org/wiki/PGP_word_list Wikipedia&gt;.
+	</longdescription>
+</pkgmetadata>

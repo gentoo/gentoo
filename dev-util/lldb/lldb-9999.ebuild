@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,8 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils git-r3 llvm python-single-r1 toolchain-funcs
+inherit cmake-utils git-r3 llvm multiprocessing python-single-r1 \
+	toolchain-funcs
 
 DESCRIPTION="The LLVM debugger"
 HOMEPAGE="https://llvm.org/"
@@ -20,6 +21,7 @@ LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
 IUSE="libedit ncurses python test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	libedit? ( dev-libs/libedit:0= )
@@ -29,10 +31,8 @@ RDEPEND="
 	~sys-devel/clang-${PV}[xml]
 	~sys-devel/llvm-${PV}
 	!<sys-devel/llvm-4.0"
-# swig-3.0.9+ generates invalid wrappers, #598708
-# upstream: https://github.com/swig/swig/issues/769
 DEPEND="${RDEPEND}
-	python? ( <dev-lang/swig-3.0.9 )
+	python? ( >=dev-lang/swig-3.0.11 )
 	test? ( ~dev-python/lit-${PV}[${PYTHON_USEDEP}] )
 	${PYTHON_DEPS}"
 
@@ -56,7 +56,7 @@ src_unpack() {
 
 	if use test; then
 		git-r3_checkout https://llvm.org/git/llvm.git \
-			"${WORKDIR}"/llvm
+			"${WORKDIR}"/llvm '' lib/Testing/Support utils/unittest
 	fi
 	git-r3_checkout
 }
@@ -66,14 +66,10 @@ src_configure() {
 		-DLLDB_DISABLE_CURSES=$(usex !ncurses)
 		-DLLDB_DISABLE_LIBEDIT=$(usex !libedit)
 		-DLLDB_DISABLE_PYTHON=$(usex !python)
+		-DLLDB_USE_SYSTEM_SIX=1
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
 
-		-DLLVM_BUILD_TESTS=$(usex test)
-		# compilers for lit tests
-		-DLLDB_TEST_C_COMPILER="$(type -P clang)"
-		-DLLDB_TEST_CXX_COMPILER="$(type -P clang++)"
-		# compiler for ole' python tests
-		-DLLDB_TEST_COMPILER="$(type -P clang)"
+		-DLLDB_INCLUDE_TESTS=$(usex test)
 
 		# TODO: fix upstream to detect this properly
 		-DHAVE_LIBDL=ON
@@ -86,9 +82,14 @@ src_configure() {
 		-DCURSES_NEED_NCURSES=ON
 	)
 	use test && mycmakeargs+=(
+		-DLLVM_BUILD_TESTS=$(usex test)
+		# compilers for lit tests
+		-DLLDB_TEST_C_COMPILER="$(type -P clang)"
+		-DLLDB_TEST_CXX_COMPILER="$(type -P clang++)"
+
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
-		-DLLVM_LIT_ARGS="-vv"
+		-DLLVM_LIT_ARGS="-vv;-j;${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}"
 	)
 
 	cmake-utils_src_configure
@@ -104,9 +105,6 @@ src_install() {
 
 	# oh my...
 	if use python; then
-		# remove bundled six module
-		rm "${D}$(python_get_sitedir)/six.py" || die
-
 		# remove custom readline.so for now
 		# TODO: figure out how to deal with it
 		# upstream is basically building a custom readline.so with -ledit

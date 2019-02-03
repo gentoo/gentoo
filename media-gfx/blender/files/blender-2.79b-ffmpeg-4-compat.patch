@@ -1,0 +1,62 @@
+diff -urN a/intern/ffmpeg/ffmpeg_compat.h b/intern/ffmpeg/ffmpeg_compat.h
+--- a/intern/ffmpeg/ffmpeg_compat.h	2018-03-23 15:22:25.000000000 +0000
++++ b/intern/ffmpeg/ffmpeg_compat.h	2018-08-16 14:39:23.484489828 +0100
+@@ -109,6 +109,45 @@
+ 
+ #endif
+ 
++/* XXX TODO Probably fix to correct modern flags in code? Not sure how old FFMPEG we want to support though,
++ * so for now this will do. */
++
++#ifndef FF_MIN_BUFFER_SIZE
++#  ifdef AV_INPUT_BUFFER_MIN_SIZE
++#    define FF_MIN_BUFFER_SIZE AV_INPUT_BUFFER_MIN_SIZE
++#  endif
++#endif
++
++#ifndef FF_INPUT_BUFFER_PADDING_SIZE
++#  ifdef AV_INPUT_BUFFER_PADDING_SIZE
++#    define FF_INPUT_BUFFER_PADDING_SIZE AV_INPUT_BUFFER_PADDING_SIZE
++#  endif
++#endif
++
++#ifndef CODEC_FLAG_GLOBAL_HEADER
++#  ifdef AV_CODEC_FLAG_GLOBAL_HEADER
++#    define CODEC_FLAG_GLOBAL_HEADER AV_CODEC_FLAG_GLOBAL_HEADER
++#  endif
++#endif
++
++#ifndef CODEC_FLAG_GLOBAL_HEADER
++#  ifdef AV_CODEC_FLAG_GLOBAL_HEADER
++#    define CODEC_FLAG_GLOBAL_HEADER AV_CODEC_FLAG_GLOBAL_HEADER
++#  endif
++#endif
++
++#ifndef CODEC_FLAG_INTERLACED_DCT
++#  ifdef AV_CODEC_FLAG_INTERLACED_DCT
++#    define CODEC_FLAG_INTERLACED_DCT AV_CODEC_FLAG_INTERLACED_DCT
++#  endif
++#endif
++
++#ifndef CODEC_FLAG_INTERLACED_ME
++#  ifdef AV_CODEC_FLAG_INTERLACED_ME
++#    define CODEC_FLAG_INTERLACED_ME AV_CODEC_FLAG_INTERLACED_ME
++#  endif
++#endif
++
+ /* FFmpeg upstream 1.0 is the first who added AV_ prefix. */
+ #if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(54, 59, 100)
+ #  define AV_CODEC_ID_NONE CODEC_ID_NONE
+diff -urN a/source/blender/blenkernel/intern/writeffmpeg.c b/source/blender/blenkernel/intern/writeffmpeg.c
+--- a/source/blender/blenkernel/intern/writeffmpeg.c	2018-03-23 15:22:25.000000000 +0000
++++ b/source/blender/blenkernel/intern/writeffmpeg.c	2018-08-16 14:39:21.702484751 +0100
+@@ -605,7 +605,8 @@
+ 	c->rc_buffer_aggressivity = 1.0;
+ #endif
+ 
+-	c->me_method = ME_EPZS;
++	/* Deprecated and not doing anything since July 2015, deleted in recent ffmpeg */
++	//c->me_method = ME_EPZS;
+ 	
+ 	codec = avcodec_find_encoder(c->codec_id);
+ 	if (!codec)

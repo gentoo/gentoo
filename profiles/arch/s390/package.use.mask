@@ -1,9 +1,42 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Mikle Kolyada <zlogene@gentoo.org> (03 Jun 2018)
+# Not tested
+app-crypt/pinentry fltk
+dev-python/cssselect doc
+dev-vcs/subversion kwallet
+app-text/ghostscript-gpl cups
+# not really interested in supporting alternative
+# VCS for oberlays yet.
+app-portage/layman bazaar darcs mercurial
+dev-python/setuptools_scm mercurial test
+# no nmap gui
+net-analyzer/nmap zenmap
+# no lua support for vim
+app-editors/vim luajit lua
+# not keyworded yet
+media-gfx/imagemagick raw
+dev-db/mariadb numa
+# ipython is not really tested
+dev-python/restkit cli
+# not tested yet
+app-misc/mc samba
+app-arch/rpm test
+
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
 media-libs/mesa vulkan
+
+# Robin H. Johnson <robbat2@gentoo.org> (05 Aug 2017)
+# Upstream Git is switching to PCRE2 w/ JIT.
+# This is not available on some arches, where a fallback to PCRE1 without JIT is used.
+dev-vcs/git pcre-jit
+
+# Lars Wendler <polynomial-c@gentoo.org> (17 Nov 2016)
+# jit not supported on ia64 (bug #600052).
+dev-libs/libpcre2 jit
 
 # Sergey Popov <pinkbyte@gentoo.org> (24 Oct 2015)
 # Not tested
@@ -41,10 +74,6 @@ dev-libs/libpcre jit
 # Sebastian Pipping <sping@gentoo.org> (22 Feb 2011)
 # No media-sound/lilypond here, yet (bug #356069)
 app-text/asciidoc test
-
-# Mike Frysinger <vapier@gentoo.org> (10 Feb 2011)
-# Waiting for keywording #354309
-net-firewall/iptables netlink
 
 # Raúl Porcel <armin76@gentoo.org> (27 Mar 2008)
 # Needs gtk USE-flag

@@ -1,16 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: git-r3.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: Eclass for fetching and unpacking git repositories.
 # @DESCRIPTION:
 # Third generation eclass for easing maintenance of live ebuilds using
 # git as remote repository.
 
 case "${EAPI:-0}" in
-	0|1|2|3|4|5|6)
+	0|1|2|3)
+		die "Unsupported EAPI=${EAPI} (obsolete) for ${ECLASS}"
+		;;
+	4|5|6|7)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -22,7 +26,11 @@ EXPORT_FUNCTIONS src_unpack
 if [[ ! ${_GIT_R3} ]]; then
 
 if [[ ! ${_INHERITED_BY_GIT_2} ]]; then
-	DEPEND=">=dev-vcs/git-1.8.2.1"
+	if [[ ${EAPI:-0} != [0123456] ]]; then
+		BDEPEND=">=dev-vcs/git-1.8.2.1[curl]"
+	else
+		DEPEND=">=dev-vcs/git-1.8.2.1[curl]"
+	fi
 fi
 
 # @ECLASS-VARIABLE: EGIT_CLONE_TYPE
@@ -114,8 +122,6 @@ fi
 # URIs are completely unsecured and their use (even if only as
 # a fallback) renders the ebuild completely vulnerable to MITM attacks.
 #
-# It can be overridden via env using ${PN}_LIVE_REPO variable.
-#
 # Can be a whitespace-separated list or an array.
 #
 # Example:
@@ -144,8 +150,6 @@ fi
 # @DESCRIPTION:
 # The branch name to check out. If unset, the upstream default (HEAD)
 # will be used.
-#
-# It can be overriden via env using ${PN}_LIVE_BRANCH variable.
 
 # @ECLASS-VARIABLE: EGIT_COMMIT
 # @DEFAULT_UNSET
@@ -154,8 +158,6 @@ fi
 # commit from the branch will be used. Note that if set to a commit
 # not on HEAD branch, EGIT_BRANCH needs to be set to a branch on which
 # the commit is available.
-#
-# It can be overriden via env using ${PN}_LIVE_COMMIT variable.
 
 # @ECLASS-VARIABLE: EGIT_COMMIT_DATE
 # @DEFAULT_UNSET
@@ -170,8 +172,6 @@ fi
 # (assuming that merges are done correctly). In other words, each merge
 # will be considered alike a single commit with date corresponding
 # to the merge commit date.
-#
-# It can be overriden via env using ${PN}_LIVE_COMMIT_DATE variable.
 
 # @ECLASS-VARIABLE: EGIT_CHECKOUT_DIR
 # @DESCRIPTION:
@@ -254,6 +254,7 @@ _git-r3_env_setup() {
 	esc_pn=${PN//[-+]/_}
 	[[ ${esc_pn} == [0-9]* ]] && esc_pn=_${esc_pn}
 
+	# note: deprecated, use EGIT_OVERRIDE_* instead
 	livevar=${esc_pn}_LIVE_REPO
 	EGIT_REPO_URI=${!livevar-${EGIT_REPO_URI}}
 	[[ ${!livevar} ]] \
@@ -553,6 +554,7 @@ _git-r3_is_local_repo() {
 git-r3_fetch() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	# process repos first since we create repo_name from it
 	local repos
 	if [[ ${1} ]]; then
 		repos=( ${1} )
@@ -561,12 +563,6 @@ git-r3_fetch() {
 	else
 		repos=( ${EGIT_REPO_URI} )
 	fi
-
-	local branch=${EGIT_BRANCH:+refs/heads/${EGIT_BRANCH}}
-	local remote_ref=${2:-${EGIT_COMMIT:-${branch:-HEAD}}}
-	local local_id=${3:-${CATEGORY}/${PN}/${SLOT%/*}}
-	local local_ref=refs/git-r3/${local_id}/__main__
-	local commit_date=${4:-${EGIT_COMMIT_DATE}}
 
 	[[ ${repos[@]} ]] || die "No URI provided and EGIT_REPO_URI unset"
 
@@ -583,6 +579,8 @@ git-r3_fetch() {
 	local -x GIT_DIR
 	_git-r3_set_gitdir "${repos[0]}"
 
+	einfo "Repository id: ${GIT_DIR##*/}"
+
 	# prepend the local mirror if applicable
 	if [[ ${EGIT_MIRROR_URI} ]]; then
 		repos=(
@@ -590,6 +588,62 @@ git-r3_fetch() {
 			"${repos[@]}"
 		)
 	fi
+
+	# get the default values for the common variables and override them
+	local branch_name=${EGIT_BRANCH}
+	local commit_id=${2:-${EGIT_COMMIT}}
+	local commit_date=${4:-${EGIT_COMMIT_DATE}}
+
+	# support new override API for EAPI 6+
+	if ! has "${EAPI:-0}" 0 1 2 3 4 5; then
+		# get the name and do some more processing:
+		# 1) kill .git suffix,
+		# 2) underscore (remaining) non-variable characters,
+		# 3) add preceding underscore if it starts with a digit,
+		# 4) uppercase.
+		local override_name=${GIT_DIR##*/}
+		override_name=${override_name%.git}
+		override_name=${override_name//[^a-zA-Z0-9_]/_}
+		override_name=${override_name^^}
+
+		local varmap=(
+			REPO:repos
+			BRANCH:branch_name
+			COMMIT:commit_id
+			COMMIT_DATE:commit_date
+		)
+
+		local localvar livevar live_warn= override_vars=()
+		for localvar in "${varmap[@]}"; do
+			livevar=EGIT_OVERRIDE_${localvar%:*}_${override_name}
+			localvar=${localvar#*:}
+			override_vars+=( "${livevar}" )
+
+			if [[ -n ${!livevar} ]]; then
+				[[ ${localvar} == repos ]] && repos=()
+				live_warn=1
+				ewarn "Using ${livevar}=${!livevar}"
+				declare "${localvar}=${!livevar}"
+			fi
+		done
+
+		if [[ ${live_warn} ]]; then
+			ewarn "No support will be provided."
+		else
+			einfo "To override fetched repository properties, use:"
+			local x
+			for x in "${override_vars[@]}"; do
+				einfo "  ${x}"
+			done
+			einfo
+		fi
+	fi
+
+	# set final variables after applying overrides
+	local branch=${branch_name:+refs/heads/${branch_name}}
+	local remote_ref=${commit_id:-${branch:-HEAD}}
+	local local_id=${3:-${CATEGORY}/${PN}/${SLOT%/*}}
+	local local_ref=refs/git-r3/${local_id}/__main__
 
 	# try to fetch from the remote
 	local success saved_umask
@@ -603,20 +657,6 @@ git-r3_fetch() {
 
 			local fetch_command=( git fetch "${r}" )
 			local clone_type=${EGIT_CLONE_TYPE}
-
-			if [[ ${r} == http://* || ${r} == https://* ]] &&
-					[[ ! ${EGIT_CURL_WARNED} ]] &&
-					! ROOT=/ has_version 'dev-vcs/git[curl]'
-			then
-				ewarn "git-r3: fetching from HTTP(S) requested. In order to support HTTP(S),"
-				ewarn "dev-vcs/git needs to be built with USE=curl. Example solution:"
-				ewarn
-				ewarn "	echo dev-vcs/git curl >> /etc/portage/package.use"
-				ewarn "	emerge -1v dev-vcs/git"
-				ewarn
-				ewarn "HTTP(S) URIs will be skipped."
-				EGIT_CURL_WARNED=1
-			fi
 
 			if [[ ${clone_type} == mirror ]]; then
 				fetch_command+=(
@@ -803,7 +843,7 @@ git-r3_fetch() {
 }
 
 # @FUNCTION: git-r3_checkout
-# @USAGE: [<repo-uri> [<checkout-path> [<local-id>]]]
+# @USAGE: [<repo-uri> [<checkout-path> [<local-id> [<checkout-paths>...]]]]
 # @DESCRIPTION:
 # Check the previously fetched tree to the working copy.
 #
@@ -818,6 +858,12 @@ git-r3_fetch() {
 #
 # <local-id> needs to specify the local identifier that was used
 # for respective git-r3_fetch.
+#
+# If <checkout-paths> are specified, then the specified paths are passed
+# to 'git checkout' to effect a partial checkout. Please note that such
+# checkout will not cause the repository to switch branches,
+# and submodules will be skipped at the moment. The submodules matching
+# those paths might be checked out in a future version of the eclass.
 #
 # The checkout operation will write to the working copy, and export
 # the repository state into the environment. If the repository contains
@@ -836,6 +882,7 @@ git-r3_checkout() {
 
 	local out_dir=${2:-${EGIT_CHECKOUT_DIR:-${WORKDIR}/${P}}}
 	local local_id=${3:-${CATEGORY}/${PN}/${SLOT%/*}}
+	local checkout_paths=( "${@:4}" )
 
 	local -x GIT_DIR
 	_git-r3_set_gitdir "${repos[0]}"
@@ -883,6 +930,9 @@ git-r3_checkout() {
 		else
 			set -- "${@}" "${new_commit_id}"
 		fi
+		if [[ ${checkout_paths[@]} ]]; then
+			set -- "${@}" -- "${checkout_paths[@]}"
+		fi
 		echo "${@}" >&2
 		"${@}" || die "git checkout ${remote_ref:-${new_commit_id}} failed"
 	}
@@ -905,8 +955,12 @@ git-r3_checkout() {
 			echo "   updating from commit:     ${old_commit_id}"
 			echo "   to commit:                ${new_commit_id}"
 
-			git --no-pager diff --stat \
+			set -- git --no-pager diff --stat \
 				${old_commit_id}..${new_commit_id}
+			if [[ ${checkout_paths[@]} ]]; then
+				set -- "${@}" -- "${checkout_paths[@]}"
+			fi
+			"${@}"
 		else
 			echo "   at the commit:            ${new_commit_id}"
 		fi
@@ -914,7 +968,7 @@ git-r3_checkout() {
 	git update-ref --no-deref refs/git-r3/"${local_id}"/{__old__,__main__} || die
 
 	# recursively checkout submodules
-	if [[ -f ${out_dir}/.gitmodules ]]; then
+	if [[ -f ${out_dir}/.gitmodules && ! ${checkout_paths} ]]; then
 		local submodules
 		_git-r3_set_submodules \
 			"$(<"${out_dir}"/.gitmodules)"

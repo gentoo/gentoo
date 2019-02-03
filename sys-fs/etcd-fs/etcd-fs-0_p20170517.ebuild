@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit golang-base
 KEYWORDS="~amd64"
 EGO_PN="github.com/xetorthio/${PN}"
 DESCRIPTION="Use etcd as a FUSE filesystem"
-HOMEPAGE="https://${EGO_PN}"
+HOMEPAGE="https://github.com/xetorthio/etcd-fs"
 EGIT_COMMIT="1eeace3bc20b15e4347c631a1cf7b45f3852518a"
 SRC_URI="${HOMEPAGE}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"

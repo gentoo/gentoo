@@ -1,0 +1,42 @@
+--- a/src/pcaputil.c
++++ b/src/pcaputil.c
+@@ -52,7 +52,7 @@
+ #include "pcaputil.h"
+ 
+ pcap_t *
+-pcap_open(char *device)
++labrea_pcap_open(char *device)
+ {
+ 	char ebuf[PCAP_ERRBUF_SIZE];
+ 	pcap_t *pcap;
+--- a/src/lbio.c
++++ b/src/lbio.c
+@@ -190,7 +190,7 @@
+   /*
+    * Open the WinPcap device for sniffing
+    */
+-  if ((io.pcap = pcap_open(io.adapter_name_list[j])) == NULL) {
++  if ((io.pcap = labrea_pcap_open(io.adapter_name_list[j])) == NULL) {
+     warnx("*** Couldn't open WinPcap adapter" );
+     return(-1);
+   }
+@@ -286,7 +286,7 @@
+       util_clean_exit(1);
+ 
+   } else { /* open Unix pcap device for sniffing */
+-    if ((io.pcap = pcap_open(io.ifent->intf_name)) == NULL) {
++    if ((io.pcap = labrea_pcap_open(io.ifent->intf_name)) == NULL) {
+       warnx("*** Couldn't open pcap device for sniffing" );
+       util_clean_exit(1);
+     }
+--- a/inc/pcaputil.h
++++ b/inc/pcaputil.h
+@@ -15,7 +15,7 @@
+ #endif
+ 
+ 
+-pcap_t * pcap_open(char *device);
++pcap_t * labrea_pcap_open(char *device);
+ int	pcap_dloff(pcap_t *pcap);
+ int	pcap_filter(pcap_t *pcap, const char *fmt, ...);
+ void	pcap_stat (pcap_t *pd);

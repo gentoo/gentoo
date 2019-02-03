@@ -1,0 +1,12 @@
+[Unit]
+	Description=Bareos File Daemon
+	After=syslog.target network.target
+
+[Install]
+	WantedBy=multi-user.target
+
+[Service]
+	Type=forking
+	User=root
+	ExecStartPre=-/bin/mkdir /run/bareos
+	ExecStart=/usr/sbin/bareos-fd

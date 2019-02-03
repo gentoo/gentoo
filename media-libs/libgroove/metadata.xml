@@ -4,7 +4,6 @@
 <maintainer type="person">
 	<email>sir.suriv@gmail.com</email>
 	<name>Diogo Pereira</name>
-	<description>Proxy maintainer. Assign bugs to him.</description>
 </maintainer>
 <maintainer type="project">
 	<email>proxy-maint@gentoo.org</email>
@@ -19,10 +18,11 @@
 	<flag name="sound">Enable audio playing.</flag>
 </use>
 <upstream>
-	<maintainer status="active">
+	<maintainer status="inactive">
 		<email>superjoe30@gmail.com</email>
 		<name>Andrew Kelley</name>
 	</maintainer>
 	<remote-id type="github">andrewrk/libgroove</remote-id>
+	<bugs-to>https://github.com/andrewrk/libgroove/issues</bugs-to>
 </upstream>
 </pkgmetadata>

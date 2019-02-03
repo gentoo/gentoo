@@ -1,0 +1,22 @@
+From a044c5659bf29df8152feabba63a83dc6feb7a99 Mon Sep 17 00:00:00 2001
+From: denmord <denis.khabenkov@gmail.com>
+Date: Fri, 20 Jan 2017 20:36:31 +0300
+Subject: [PATCH] Fixed writing outside the bounds of the array
+
+---
+ fileio.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fileio.cpp b/fileio.cpp
+index 35d992f..edfe2de 100644
+--- a/fileio.cpp
++++ b/fileio.cpp
+@@ -154,7 +154,7 @@ FileIO::Status FileIO::resetTimes(const char *filename, const FileTimes &times)
+ }
+ 
+ FileIO::Status FileIO::createDir(const char *path) {
+-	char *directory = new char[strlen(path + 1)];
++	char *directory = new char[strlen(path) + 1];
+ 	char *curr = directory;
+ 	struct stat stats;
+ 	Status ret = Success;

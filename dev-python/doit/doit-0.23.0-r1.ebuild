@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_4} pypy )
 inherit eutils distutils-r1
 
 DESCRIPTION="Automation tool"
-HOMEPAGE="http://python-doit.sourceforge.net/ https://pypi.python.org/pypi/doit"
+HOMEPAGE="http://python-doit.sourceforge.net/ https://pypi.org/project/doit/"
 SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

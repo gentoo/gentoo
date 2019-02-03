@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="3"
+EAPI=6
 
-inherit eutils fdo-mime java-pkg-2
+inherit desktop xdg-utils java-pkg-2
 
 DESCRIPTION="Modelling tool that helps you do your design using UML"
 HOMEPAGE="http://argouml.tigris.org"
@@ -36,13 +36,17 @@ src_install() {
 
 	java-pkg_dolauncher ${PN} --main org.argouml.application.Main
 
-	dodoc ${P}/README.txt || die
+	dodoc ${P}/README.txt
 
-	if use doc ; then
-		dohtml -r release/{Readme.htm,www}
-		insinto /usr/share/doc/${P}
-		doins "${DISTDIR}/manual-${PV}.pdf"
-		doins "${DISTDIR}/quickguide-${PV}.pdf"
+	if use doc; then
+		find release/ \( -name Thumbs.db -o -name filelist.xml \) \
+			-delete || die
+		HTML_DOCS=( release/{Readme.htm,www} )
+		DOCS=(
+			"${DISTDIR}"/manual-${PV}.pdf
+			"${DISTDIR}"/quickguide-${PV}.pdf
+		)
+		einstalldocs
 	fi
 
 	newicon ${P}/icon/ArgoIcon128x128.png ${PN}.png || die
@@ -50,9 +54,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

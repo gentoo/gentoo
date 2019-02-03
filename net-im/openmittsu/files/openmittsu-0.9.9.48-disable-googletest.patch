@@ -1,0 +1,79 @@
+Disable googletest for now, in order to avoid accessing the network
+at configure time.
+
+--- openmittsu-0.9.9.48-orig/CMakeLists.txt
++++ openmittsu-0.9.9.48/CMakeLists.txt
+@@ -212,28 +212,6 @@
+ # Add the binary dir include directory
+ include_directories("${PROJECT_BINARY_DIR}/include")
+ 
+-##########################################################
+-#
+-# Google Testing Framework
+-#
+-##########################################################
+-# Download and unpack googletest at configure time
+-configure_file("${PROJECT_SOURCE_DIR}/cmake/GoogleTest.cmake.in" googletest-download/CMakeLists.txt)
+-execute_process(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+-  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/googletest-download" )
+-execute_process(COMMAND "${CMAKE_COMMAND}" --build .
+-  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/googletest-download" )
+- 
+-# Prevent GoogleTest from overriding our compiler/linker options
+-# when building with Visual Studio
+-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+- 
+-# Add googletest directly to our build. This adds
+-# the following targets: gtest, gtest_main, gmock
+-# and gmock_main
+-add_subdirectory("${CMAKE_BINARY_DIR}/googletest-src"
+-                 "${CMAKE_BINARY_DIR}/googletest-build" EXCLUDE_FROM_ALL)
+- 
+ 
+ # Main Sources
+ file(GLOB OPENMITTSU_HEADERS ${PROJECT_SOURCE_DIR}/src/*.h)
+@@ -399,24 +377,17 @@
+ 
+ add_executable(openMittsuVersionInfo ${OPENMITTSU_BUILDTOOLS_VERSIONINFO_HEADERS} ${OPENMITTSU_BUILDTOOLS_VERSIONINFO_SOURCES_CPP} ${OPENMITTSU_HEADERS_GENERATED} ${OPENMITTSU_SOURCES_GENERATED})
+ 
+-add_executable(openMittsuTests ${OPENMITTSU_TEST_MAIN_FILE} ${OPENMITTSU_TEST_FILES}
+-	${OPENMITTSU_RESOURCESOURCES}
+-)
+-
+ if (MSVC)
+ 	set_target_properties(openMittsu PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS")
+ endif(MSVC)
+ 
+ # Add target link dependencies
+-target_link_libraries(openMittsuCore ${Libsodium_LIBRARIES} gtest)
++target_link_libraries(openMittsuCore ${Libsodium_LIBRARIES})
+ target_link_libraries(openMittsu ${LIBQRENCODE_LIBRARY})
+ 
+-add_dependencies(openMittsuTests gtest)
+-
+ # Use the required modules from Qt 5.
+ target_link_libraries(openMittsuCore Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network Qt5::Multimedia Qt5::Sql)
+ target_link_libraries(openMittsu openMittsuCore Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network Qt5::Multimedia Qt5::Sql)
+-target_link_libraries(openMittsuTests openMittsuCore Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network Qt5::Multimedia Qt5::Sql)
+ target_link_libraries(openMittsuVersionInfo Qt5::Core)
+ 
+ # Link against libc++abi if requested.
+@@ -424,7 +395,6 @@
+ 	target_link_libraries(openMittsu "c++abi")
+ 	target_link_libraries(openMittsuCore "c++abi")
+ 	target_link_libraries(openMittsuVersionInfo "c++abi")
+-	target_link_libraries(openMittsuTests "c++abi")
+ endif(OPENMITTSU_LINK_LIBCXXABI)
+ 
+ # Targets, CPACK...
+@@ -438,10 +408,6 @@
+    RUNTIME
+    DESTINATION bin
+    COMPONENT installComponent)
+-install(TARGETS openMittsuTests
+-   RUNTIME
+-   DESTINATION bin
+-   COMPONENT installComponent)
+    
+ if (MSVC)
+ 	set(OPENMITTSU_WINDEPLOYQT_EXE "${Qt5Core_DIR}/../../../bin/windeployqt.exe")

@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/670252
+
+From de34900993bff73c8da651319027b2fa8c490172 Mon Sep 17 00:00:00 2001
+From: Ed Porras <ed@motologic.com>
+Date: Sun, 26 Aug 2018 20:24:23 +0200
+Subject: [PATCH] fix macOS compilation due to boolean define in jpeglib
+
+typedef enum { FALSE = 0, TRUE = 1 } boolean;
+---
+ goo/JpegWriter.cc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/goo/JpegWriter.cc b/goo/JpegWriter.cc
+index 16c97afe..26fa77a7 100644
+--- a/goo/JpegWriter.cc
++++ b/goo/JpegWriter.cc
+@@ -11,6 +11,7 @@
+ // Copyright (C) 2013 Peter Breitenlohner <peb@mppmu.mpg.de>
+ // Copyright (C) 2017, 2018 Albert Astals Cid <aacid@kde.org>
+ // Copyright (C) 2018 Martin Packman <gzlist@googlemail.com>
++// Copyright (C) 2018 Ed Porras <ed@motologic.com>
+ //
+ //========================================================================
+ 
+@@ -143,7 +144,7 @@ bool JpegWriter::init(FILE *f, int width, int height, int hDPI, int vDPI)
+   }
+ 
+   // Set whether to compute optimal Huffman coding tables
+-  priv->cinfo.optimize_coding = priv->optimize;
++  priv->cinfo.optimize_coding = static_cast<boolean>(priv->optimize);
+ 
+   // Get ready for data
+   jpeg_start_compress(&priv->cinfo, TRUE);
+-- 
+2.20.1
+

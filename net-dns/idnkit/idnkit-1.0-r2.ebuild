@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,12 +6,12 @@ EAPI="5"
 inherit autotools eutils
 
 DESCRIPTION="Toolkit for Internationalized Domain Names (IDN)"
-HOMEPAGE="http://www.nic.ad.jp/ja/idn/idnkit/download/"
-SRC_URI="http://www.nic.ad.jp/ja/idn/idnkit/download/sources/${P}-src.tar.gz"
+HOMEPAGE="https://www.nic.ad.jp/ja/idn/idnkit/download/"
+SRC_URI="https://www.nic.ad.jp/ja/idn/idnkit/download/sources/${P}-src.tar.gz"
 
 LICENSE="JNIC"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="static-libs"
 
 DEPEND="virtual/libiconv"
@@ -21,7 +21,8 @@ S=${WORKDIR}/${P}-src
 src_prepare() {
 	# Bug 263135, old broken libtool bundled
 	rm -f aclocal.m4 || die "rm failed"
-	epatch "${FILESDIR}/${P}-autotools.patch"
+	epatch "${FILESDIR}"/${P}-autotools.patch
+	epatch "${FILESDIR}"/${P}-test-subdirs.patch
 	mv configure.{in,ac} || die
 	eautoreconf
 }

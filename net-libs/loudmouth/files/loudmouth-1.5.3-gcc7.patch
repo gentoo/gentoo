@@ -1,0 +1,25 @@
+Bug: https://bugs.gentoo.org/618330
+Upstream commit: https://github.com/mcabber/loudmouth/commit/01fdfa0f5d1b8502b92d2e78d757e9b19661d054
+
+From 01fdfa0f5d1b8502b92d2e78d757e9b19661d054 Mon Sep 17 00:00:00 2001
+From: tmp170422 <tmp131110@ya.ru>
+Date: Sun, 14 May 2017 12:18:32 +0300
+Subject: [PATCH] An apparent typo
+
+---
+ loudmouth/lm-sasl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/loudmouth/lm-sasl.c b/loudmouth/lm-sasl.c
+index 00cf9b7..38cd88c 100644
+--- a/loudmouth/lm-sasl.c
++++ b/loudmouth/lm-sasl.c
+@@ -529,7 +529,7 @@ sasl_md5_prepare_response (LmSASL *sasl, GHashTable *challenge)
+     }
+ 
+     nonce = g_hash_table_lookup (challenge, "nonce");
+-    if (nonce == NULL || nonce == '\0') {
++    if (nonce == NULL || nonce[0] == '\0') {
+         g_log (LM_LOG_DOMAIN, LM_LOG_LEVEL_SASL,
+                "%s: server didn't provide a nonce in the challenge",
+                G_STRFUNC);

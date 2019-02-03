@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 RUBY_FAKEGEM_TASK_DOC=""
 inherit ruby-ng
 
@@ -10,8 +10,8 @@ MY_P=${P/-bindings}
 MY_P=${MY_P/_/-}
 
 DESCRIPTION="Ruby bindings for rrdtool"
-HOMEPAGE="http://oss.oetiker.ch/rrdtool/"
-SRC_URI="http://oss.oetiker.ch/rrdtool/pub/${MY_P}.tar.gz"
+HOMEPAGE="https://oss.oetiker.ch/rrdtool/"
+SRC_URI="${HOMEPAGE}pub/${MY_P}.tar.gz"
 RUBY_S="$MY_P"/bindings/ruby
 
 LICENSE="GPL-2"

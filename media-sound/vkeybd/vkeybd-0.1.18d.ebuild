@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -18,10 +18,7 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 	lash? ( media-sound/lash )
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
-	x11-proto/xf86bigfontproto
-	x11-proto/bigreqsproto
-	x11-proto/xextproto
-	x11-proto/xcmiscproto"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}/${PN}
 

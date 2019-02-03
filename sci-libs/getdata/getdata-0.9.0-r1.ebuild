@@ -1,14 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
-
 FORTRAN_STANDARD="95"
 FORTRAN_NEEDED=fortran
-
-inherit autotools eutils fortran-2 python-single-r1
+PYTHON_COMPAT=( python2_7 )
+inherit autotools fortran-2 python-single-r1
 
 DESCRIPTION="Reference implementation of the Dirfile, format for time-ordered binary data"
 HOMEPAGE="http://getdata.sourceforge.net/"
@@ -28,9 +26,11 @@ DEPEND="
 	python? ( dev-python/numpy[${PYTHON_USEDEP}] ${PYTHON_DEPS} )"
 RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/${P}-remove-python-test.patch"
-)
+PATCHES=( "${FILESDIR}/${P}-remove-python-test.patch" )
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
 
 src_prepare() {
 	default
@@ -42,23 +42,23 @@ src_configure() {
 		--disable-idl \
 		--disable-matlab \
 		--disable-php \
-		$(use_enable cxx cplusplus) \
-		$(use_enable debug) \
-		$(use_enable fortran) \
-		$(use_enable fortran fortran95) \
-		$(use_enable perl) \
-		$(use_enable python) \
-		$(use_enable static-libs static) \
 		--with-libz \
 		--without-libslim \
 		--without-libzzip \
 		$(use_with bzip2 libbz2) \
+		$(use_enable cxx cplusplus) \
+		$(use_enable debug) \
 		$(use_with flac libFLAC) \
+		$(use_enable fortran) \
+		$(use_enable fortran fortran95) \
 		$(use_with lzma liblzma) \
-		$(usex perl --with-perl-dir=vendor)
+		$(use_enable perl) \
+		$(usex perl --with-perl-dir=vendor) \
+		$(use_enable python) \
+		$(use_enable static-libs static)
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }

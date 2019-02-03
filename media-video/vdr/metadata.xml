@@ -10,7 +10,7 @@
 		<flag name="bidi">fribidi support, for languages, written from right to left</flag>
 		<flag name="ddepgentry">remove duplicate EPG entries</flag>
 		<flag name="dvlvidprefer">controls video-dir choice on recording</flag>
-		<flag name="graphtft">support for <pkg>media-plugins/vdr-graphtft</pkg>plugin up from version 0.1.7</flag>
+		<flag name="graphtft">support for vdr-graphtft plugin up from version 0.1.7</flag>
 		<flag name="html">Install HTML documentation</flag>
 		<flag name="jumpplay">Enables automatic jumping over cut marks while watching a recording</flag>
 		<flag name="jumpingseconds">skip seconds in played records</flag>
@@ -23,7 +23,7 @@
 		<flag name="permashift_v1">permanent timeshift by recording live TV on RAM, need plugin &gt;=mediaplugins/vdr-permashift-1</flag>
 		<flag name="pinplugin">Support for <pkg>media-plugins/vdr-pin</pkg></flag>
 		<flag name="resumereset">rreset resume of EOF</flag>
-		<flag name="rotor">Enable support for plugin <pkg>media-plugins/vdr-rotor</pkg> for dish-positioner.</flag>
+		<flag name="rotor">Enable support for plugin vdr-rotor for dish-positioner.</flag>
 		<flag name="ttxtsubs">support for <pkg>media-plugins/vdr-ttxtsubs</pkg></flag>
 		<flag name="vasarajanauloja">replacement for the liemikuutio patch, adds some nice must haves features</flag>
 		<flag name="wareagleicon">Replace original icon set in menu</flag>

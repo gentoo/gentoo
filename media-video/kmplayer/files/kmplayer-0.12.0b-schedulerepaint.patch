@@ -1,0 +1,61 @@
+From 5517262a2a328518dd42a8aa0e37a34152a06282 Mon Sep 17 00:00:00 2001
+From: Koos Vriezen <koos.vriezen@gmail.com>
+Date: Sun, 30 Oct 2016 12:50:03 +0100
+Subject: scheduleRepaint should be called with pixel coordinates
+
+---
+ src/viewarea.cpp | 31 ++++++++++++++++++++++++++-----
+ 1 file changed, 26 insertions(+), 5 deletions(-)
+
+diff --git a/src/viewarea.cpp b/src/viewarea.cpp
+index 24f68cf..e4df941 100644
+--- a/src/viewarea.cpp
++++ b/src/viewarea.cpp
+@@ -2117,9 +2117,20 @@ KDE_NO_EXPORT void ViewArea::syncVisual () {
+ 
+ KDE_NO_EXPORT void ViewArea::paintEvent (QPaintEvent * pe) {
+ #ifdef KMPLAYER_WITH_CAIRO
+-    if (surface->node)
+-        scheduleRepaint (IRect (pe->rect ().x (), pe->rect ().y (), pe->rect ().width (), pe->rect ().height ()));
+-    else
++    if (surface->node) {
++#if QT_VERSION >= 0x050600
++        int x = (int)(pe->rect().x() * devicePixelRatioF());
++        int y = (int)(pe->rect().y() * devicePixelRatioF());
++        int w = (int)(pe->rect().width() * devicePixelRatioF());
++        int h = (int)(pe->rect().height() * devicePixelRatioF());
++#else
++        int x = pe->rect().x();
++        int y = pe->rect().y();
++        int w = pe->rect().width();
++        int h = pe->rect().height();
++#endif
++        scheduleRepaint(IRect(x, y, w, h));
++    } else
+ #endif
+         if (m_fullscreen || m_paint_background)
+     {
+@@ -2647,8 +2658,18 @@ void VideoOutput::setGeometry (const IRect &rect) {
+ void VideoOutput::setAspect (float a) {
+     m_aspect = a;
+     QRect r = geometry ();
+-    m_view->viewArea ()->scheduleRepaint (
+-            IRect (r.x (), r.y (), r.width (), r.height ()));
++#if QT_VERSION >= 0x050600
++    int x = (int)(r.x() * devicePixelRatioF());
++    int y = (int)(r.y() * devicePixelRatioF());
++    int w = (int)(r.width() * devicePixelRatioF());
++    int h = (int)(r.height() * devicePixelRatioF());
++#else
++    int x = r.x();
++    int y = r.y();
++    int w = r.width();
++    int h = r.height();
++#endif
++    m_view->viewArea()->scheduleRepaint(IRect(x, y, w, h));
+ }
+ 
+ KDE_NO_EXPORT void VideoOutput::map () {
+-- 
+cgit v0.11.2
+

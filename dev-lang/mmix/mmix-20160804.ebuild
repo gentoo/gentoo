@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,18 +6,16 @@ EAPI=6
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Donald Knuth's MMIX Assembler and Simulator"
-HOMEPAGE="http://www-cs-faculty.stanford.edu/~knuth/mmix.html http://mmix.cs.hm.edu"
+HOMEPAGE="https://www-cs-faculty.stanford.edu/~knuth/mmix.html http://mmix.cs.hm.edu"
 SRC_URI="http://mmix.cs.hm.edu/src/${P}.tgz"
 
-RESTRICT="mirror"
-
 DEPEND="virtual/tex-base
-	doc? ( || ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended ) )"
+	doc? ( dev-texlive/texlive-plaingeneric )"
 RDEPEND=""
 
 SLOT="0"
 LICENSE="${PN}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 S="${WORKDIR}"
@@ -28,6 +26,7 @@ PATCHES=(
 )
 
 src_compile() {
+	export VARTEXFONTS=${T}/fonts
 	emake all \
 		CFLAGS="${CFLAGS}" \
 		CC="$(tc-getCC)"

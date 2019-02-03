@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,9 +21,9 @@ RDEPEND=">=media-libs/freetype-2.4.9
 	)"
 DEPEND="${RDEPEND}
 	X? (
+		x11-base/xorg-proto
 		x11-libs/libICE
 		x11-libs/libXmu
-		x11-proto/xproto
 	)"
 
 DOCS="AUTHORS ChangeLog NEWS README"

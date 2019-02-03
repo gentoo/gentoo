@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-  	<email>hwoarang@gentoo.org</email>
-	<name>Markos Chandras</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>lxde@gentoo.org</email>
-    <name>Gentoo LXDE Project</name>
-  </maintainer>
-  <use>
- 	 <flag name="session">Enables support for session managers</flag>
-	 <flag name="xdg">Install the python xdg files for xdg autostart</flag>
-  </use>
-  <upstream>
-    <maintainer status="active">
-      <email>danakj@orodu.net</email>
-      <name>Dana Jansens</name>
-    </maintainer>
-    <changelog>http://openbox.org/wiki/Openbox:News</changelog>
-    <doc>http://openbox.org/wiki/Help:Contents</doc>
-    <bugs-to>http://openbox.org/wiki/Openbox:Contribute</bugs-to>
-  </upstream>
+	<maintainer type="project">
+		<email>lxde@gentoo.org</email>
+		<name>Gentoo LXDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="session">Enables support for session managers</flag>
+		<flag name="xdg">Install the python xdg files for xdg autostart</flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<email>danakj@orodu.net</email>
+			<name>Dana Jansens</name>
+		</maintainer>
+		<changelog>http://openbox.org/wiki/Openbox:News</changelog>
+		<doc>http://openbox.org/wiki/Help:Contents</doc>
+		<bugs-to>http://openbox.org/wiki/Openbox:Contribute</bugs-to>
+	</upstream>
 </pkgmetadata>

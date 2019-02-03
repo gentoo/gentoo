@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python2_7 )
@@ -30,28 +30,38 @@ GPSD_PROTOCOLS=(
 	tripmate tsip ublox
 )
 IUSE_GPSD_PROTOCOLS=${GPSD_PROTOCOLS[@]/#/gpsd_protocols_}
-IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth cxx debug dbus ipv6 latency_timing ncurses ntp python qt4 +shm +sockets static test udev usb X"
+IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug ipv6 latency_timing ncurses ntp python qt5 +shm +sockets static test udev usb X"
 REQUIRED_USE="X? ( python )
 	gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm )
-	python? ( ${PYTHON_REQUIRED_USE} )"
+	python? ( ${PYTHON_REQUIRED_USE} )
+	qt5? ( cxx )"
 
-RDEPEND="X? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
-	ncurses? ( sys-libs/ncurses:= )
+RDEPEND="
+	>=net-misc/pps-tools-0.0.20120407
 	bluetooth? ( net-wireless/bluez )
-	usb? ( virtual/libusb:1 )
 	dbus? (
 		sys-apps/dbus
 		dev-libs/dbus-glib
 	)
-	ntp? ( || ( net-misc/ntp net-misc/chrony ) )
-	qt4? ( dev-qt/qtgui:4 )
-	python? ( ${PYTHON_DEPS} )"
+	ncurses? ( sys-libs/ncurses:= )
+	ntp? ( || (
+		net-misc/ntp
+		net-misc/ntpsec
+		net-misc/chrony
+	) )
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtnetwork:5
+	)
+	python? ( ${PYTHON_DEPS} )
+	usb? ( virtual/libusb:1 )
+	X? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( sys-devel/bc )"
 
 # xml packages are for man page generation
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	DEPEND+="
 		app-text/xmlto
 		=app-text/docbook-xml-dtd-4.1*"
@@ -119,11 +129,13 @@ src_configure() {
 		$(use_scons ncurses)
 		$(use_scons ntp ntpshm)
 		$(use_scons ntp pps)
+		$(use_scons qt5 qt)
 		$(use_scons shm shm_export)
 		$(use_scons sockets socket_export)
-		$(use_scons qt4 libQgpsmm)
 		$(use_scons usb)
 	)
+
+	use qt5 && myesconsargs+=( qt_versioned=5 )
 
 	# enable specified protocols
 	local protocol
@@ -150,7 +162,7 @@ src_install() {
 	if use python ; then
 		distutils-r1_src_install
 		# Delete all X related packages if user doesn't want them
-		if ! use X ; then
+		if ! use X && [[ -f "${ED%/}"/usr/bin/xgps ]]; then
 			rm "${ED%/}"/usr/bin/xgps* || die
 		fi
 	fi

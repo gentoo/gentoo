@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,11 +16,10 @@ S="${WORKDIR}/fuse4bsd-498acaef33b0"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~x86-fbsd"
-IUSE="doc"
+IUSE=""
 
 DEPEND=">=sys-freebsd/freebsd-sources-9.1
-	virtual/pmake
-	doc? ( app-text/deplate )"
+	virtual/pmake"
 RDEPEND="sys-fs/fuse"
 
 QA_TEXTRELS="boot/modules/fuse.ko"
@@ -30,8 +29,6 @@ src_prepare() {
 	cp "${WORKDIR}/sbin/mount/getmntopts.c" mount_fusefs/ || die
 	epatch "${FILESDIR}"/${P}-ports.patch
 	epatch "${FILESDIR}"/${P}-fbsd91.patch
-	sed -i -e "s:^DEPLATE=.*:DEPLATE=${EPREFIX}/usr/bin/deplate:" \
-		doc/Makefile || die
 }
 
 src_compile() {
@@ -48,11 +45,6 @@ src_compile() {
 		KMODDIR=/boot/modules BINDIR=/usr/sbin MANDIR=/usr/share/man/man \
 		MOUNT="${WORKDIR}/sbin/mount" \
 		|| die "$(get_bmake) failed"
-
-	if use doc; then
-		cd "${S}"/doc
-		$(get_bmake) all || die "$(get_bmake) failed"
-	fi
 }
 
 src_install() {
@@ -63,9 +55,4 @@ src_install() {
 		|| die "$(get_bmake) failed"
 
 	dodoc doc/{CREDITS,README}
-	if use doc; then
-		dodoc doc/plaintext_out/* doc/pdf_out/*.pdf
-		docinto html
-		dodoc doc/html_chunked_out/*
-	fi
 }

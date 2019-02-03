@@ -1,5 +1,5 @@
---- unix/jkAudIO_alsa.c   2005-12-14 12:29:38.000000000 +0100
-+++ unix/jkAudIO_alsa.c   2008-09-01 22:51:20.000000000 +0200
+--- a/unix/jkAudIO_alsa.c   2005-12-14 12:29:38.000000000 +0100
++++ b/unix/jkAudIO_alsa.c   2008-09-01 22:51:20.000000000 +0200
 @@ -49,6 +49,8 @@
  
  static int minNumChan = 1;

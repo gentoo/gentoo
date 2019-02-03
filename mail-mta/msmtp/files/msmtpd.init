@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Local mta daemon that pipes mails (by default) to msmtp"
+pidfile="/var/run/msmtpd.pid"
+command="/usr/bin/msmtpd"
+command_user="${MSMTPD_USER:-msmtpd}"
+command_args="${MSMTPD_ARGS}"
+command_background="true"

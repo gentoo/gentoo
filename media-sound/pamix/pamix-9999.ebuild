@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 SCM=""
 [[ "${PV}" == 9999 ]] && SCM="git-r3"
-inherit autotools ${SCM}
+inherit cmake-utils ${SCM}
 unset SCM
 
 DESCRIPTION="A PulseAudio NCurses mixer"
@@ -28,11 +28,9 @@ DEPEND="sys-devel/autoconf-archive
 	virtual/pkgconfig
 	${RDEPEND}"
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
-	econf $(use_enable unicode)
+	local mycmakeargs=(
+		-DWITH_UNICODE="$(usex unicode)"
+	)
+	cmake-utils_src_configure
 }

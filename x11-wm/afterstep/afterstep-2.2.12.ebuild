@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,18 +11,12 @@ SRC_URI="ftp://ftp.afterstep.org/stable/AfterStep-${PV}.tar.bz2
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ~hppa ia64 ~mips ppc ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="alsa debug dbus gif gtk jpeg cpu_flags_x86_mmx nls png svg tiff xinerama"
 
-RDEPEND="media-libs/freetype
-	alsa? ( media-libs/alsa-lib )
-	dbus? ( sys-apps/dbus )
-	jpeg? ( virtual/jpeg:= )
-	gif? ( >=media-libs/giflib-4.1.0 )
-	gtk? ( x11-libs/gtk+:2 )
-	png? ( media-libs/libpng:0= )
-	svg? ( gnome-base/librsvg:2 )
-	tiff? ( media-libs/tiff:0 )
+RDEPEND="
+	media-libs/freetype
+	sys-libs/readline:0=
 	x11-libs/libICE
 	x11-libs/libXext
 	x11-libs/libSM
@@ -31,14 +25,23 @@ RDEPEND="media-libs/freetype
 	x11-libs/libX11
 	x11-libs/libXpm
 	x11-libs/libXrender
-	xinerama? ( x11-libs/libXinerama )"
-DEPEND="${RDEPEND}
+	alsa? ( media-libs/alsa-lib )
+	dbus? ( sys-apps/dbus )
+	jpeg? ( virtual/jpeg:= )
+	gif? ( >=media-libs/giflib-4.1.0 )
+	gtk? ( x11-libs/gtk+:2 )
+	png? ( media-libs/libpng:0= )
+	svg? ( gnome-base/librsvg:2 )
+	tiff? ( media-libs/tiff:0 )
+	xinerama? ( x11-libs/libXinerama )
+"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
 	!!media-libs/libafterimage
-	x11-proto/xextproto
-	x11-proto/xproto
-	xinerama? ( x11-proto/xineramaproto )"
+"
 
-S=${WORKDIR}/${PN}-devel-${PV}
+S="${WORKDIR}/${PN}-devel-${PV}"
 
 src_prepare() {
 	sed -i -e '/^install:/s:install.alternative ::' Makefile.in || die

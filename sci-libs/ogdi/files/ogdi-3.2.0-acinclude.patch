@@ -1,0 +1,18 @@
+From 9e56a8be9e228b466d6464f09349a8ea2c3ec637 Mon Sep 17 00:00:00 2001
+From: Dennis Schridde <devurandom@gmx.net>
+Date: Tue, 28 Nov 2017 23:23:11 +0100
+Subject: [PATCH 2/6] Rename aclocal.m4 to acinclude.m4 to prevent clash with
+ actual aclocal generated file
+
+---
+ aclocal.m4 => acinclude.m4 | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename aclocal.m4 => acinclude.m4 (100%)
+
+diff --git a/aclocal.m4 b/acinclude.m4
+similarity index 100%
+rename from aclocal.m4
+rename to acinclude.m4
+-- 
+2.15.0
+

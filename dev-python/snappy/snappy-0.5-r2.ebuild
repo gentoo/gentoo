@@ -11,7 +11,7 @@ MY_PN=python-${PN}
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Python library for the snappy compression library from Google"
-HOMEPAGE="https://pypi.python.org/pypi/python-snappy"
+HOMEPAGE="https://pypi.org/project/python-snappy/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

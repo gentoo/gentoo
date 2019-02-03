@@ -13,16 +13,12 @@ HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="accessibility lua"
 
 RDEPEND="
 	>=x11-libs/gtk+-2.24.23:2[${MULTILIB_USEDEP}]
 	lua? ( dev-lang/lua:0[${MULTILIB_USEDEP}] )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-gtklibs-20140508
-		!app-emulation/emul-linux-x86-gtklibs[-abi_x86_32(-)]
-	)
 "
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.31

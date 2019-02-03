@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ is it ja kk km ko lg lt lv ms nl pa pl pt pt_BR ro ru si sk sl sr sr@latin sv
 te th tr tt_RU ug uk vi zh_CN zh_TW"
 PLOCALE_BACKUP="en_GB"
 
-inherit eutils fdo-mime l10n readme.gentoo-r1
+inherit eutils xdg-utils l10n readme.gentoo-r1
 
 MY_PV="${PV/_/}"
 MY_P="${PN}-${MY_PV}"
@@ -19,7 +19,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~mips ppc x86"
 IUSE="debug"
 
 RDEPEND=">=dev-libs/glib-2.18:2
@@ -61,12 +61,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	readme.gentoo_print_elog
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }

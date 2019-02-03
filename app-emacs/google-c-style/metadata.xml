@@ -9,6 +9,7 @@
   <email>chromium@gentoo.org</email>
   <name>Chromium in Gentoo Project</name>
 </maintainer>
+<stabilize-allarches/>
 <upstream>
   <remote-id type="github">google/styleguide</remote-id>
 </upstream>

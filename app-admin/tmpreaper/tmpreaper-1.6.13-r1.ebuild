@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit eutils
 
 MY_P="${PN}_${PV}+nmu1"
 DESCRIPTION="A utility for removing files based on when they were last accessed"
-HOMEPAGE="http://packages.debian.org/sid/tmpreaper"
+HOMEPAGE="https://packages.debian.org/sid/tmpreaper"
 SRC_URI="mirror://debian/pool/main/t/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

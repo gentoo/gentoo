@@ -10,7 +10,7 @@ SRC_URI="http://www.geeqie.org/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="debug doc exif gpu-accel gtk3 jpeg lcms lirc lua map tiff xmp"
 
 RDEPEND="gtk3? ( x11-libs/gtk+:3 )

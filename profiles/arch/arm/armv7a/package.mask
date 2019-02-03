@@ -1,13 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-
-# James Le Cuirot <chewi@gentoo.org> (05 Aug 2016)
-# The ARM32 JIT code is broken as of 7.2.6.6. Without this, Java 7 is
-# no faster than Java 8. It seems more likely that Java 8 will see a
-# new HotSpot port before this breakage is fixed. Earlier versions
-# have vulnerabilities so please switch to icedtea(-bin):8.
-dev-java/icedtea:7
-dev-java/icedtea-bin:7
 
 # James Le Cuirot <chewi@gentoo.org> (09 Jan 2016)
 # This is built for armv6 so unmask against the wider arm mask.

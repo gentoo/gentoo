@@ -1,0 +1,16 @@
+--- openssh-7.9p1.orig/evp-compat.h	2018-12-07 17:07:37.929762570 -0800
++++ openssh-7.9p1/evp-compat.h	2018-12-07 17:08:03.923592845 -0800
+@@ -100,11 +100,13 @@
+ }
+ 
+ 
++#if LIBRESSL_VERSION_NUMBER < 0x20800000L
+ static inline int
+ EVP_CIPHER_CTX_encrypting(const EVP_CIPHER_CTX *ctx)
+ {
+ 	return(ctx->encrypt);
+ }
++#endif /* LIBRESSL_VERSION_NUMBER < 0x20800000L */
+ 
+ 
+ static inline void*

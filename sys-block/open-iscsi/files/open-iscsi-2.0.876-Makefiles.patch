@@ -1,0 +1,61 @@
+--- a/usr/Makefile
++++ b/usr/Makefile
+@@ -69,9 +69,9 @@ iscsistart: $(ISCSI_LIB_SRCS) $(INITIATOR_SRCS) $(FW_BOOT_SRCS) \
+ 		iscsistart.o statics.o
+ 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -lrt $(ISCSI_LIB)
+ clean:
+-	rm -f *.o $(PROGRAMS) .depend $(LIBSYS)
++	$(RM) *.o $(PROGRAMS) .depend $(LIBSYS)
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -10,9 +10,9 @@ iscsi-iname: md5.o iscsi-iname.o
+ 	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(DBM_LIB) -o $@
+ 
+ clean:
+-	rm -f *.o $(PROGRAMS) .depend
++	$(RM) *.o $(PROGRAMS) .depend
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+--- a/utils/fwparam_ibft/Makefile
++++ b/utils/fwparam_ibft/Makefile
+@@ -41,11 +41,11 @@ LDFLAGS += -L$(TOPDIR)/libopeniscsiusr -liscsiusr
+ all: $(OBJS)
+ 
+ clean:
+-	rm -f *.o $(CLEANFILES) .depend
++	$(RM) *.o $(CLEANFILES) .depend
+ 
+ $(OBJS): prom_parse.tab.h prom_parse.h fwparam_ibft.h
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+--- a/utils/sysdeps/Makefile
++++ b/utils/sysdeps/Makefile
+@@ -8,9 +8,9 @@ SYSDEPS_OBJS=sysdeps.o
+ all: $(SYSDEPS_OBJS)
+ 
+ clean:
+-	rm -f *.o .depend
++	$(RM) *.o .depend
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+-- 
+2.16.2
+

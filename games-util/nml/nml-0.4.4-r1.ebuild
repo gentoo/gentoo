@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Compiler of NML files into grf/nfo files"
-HOMEPAGE="http://dev.openttdcoop.org/projects/nml"
+HOMEPAGE="https://dev.openttdcoop.org/projects/nml"
 SRC_URI="http://bundles.openttdcoop.org/nml/releases/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 RDEPEND="dev-python/pillow[zlib,${PYTHON_USEDEP}]
 	dev-python/ply[${PYTHON_USEDEP}]"

@@ -23,7 +23,4 @@
     <remote-id type="cpan-module">Net::OpenSSH::ShellQuoter::fish</remote-id>
     <remote-id type="cpan-module">mod_perl_openssh</remote-id>
   </upstream>
-  <use>
-    <flag name="sftp">Enable SFTP protocol support.</flag>
-  </use>
 </pkgmetadata>

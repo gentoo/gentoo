@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -21,8 +21,8 @@ SRC_URI="mirror://sourceforge/mingw/${MY_P}-src.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="crosscompile_opts_headers-only"
+KEYWORDS="~amd64 ~x86"
+IUSE="headers-only"
 RESTRICT="strip"
 
 S=${WORKDIR}/${MY_P}
@@ -31,7 +31,7 @@ is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
 just_headers() {
-	use crosscompile_opts_headers-only && [[ ${CHOST} != ${CTARGET} ]]
+	use headers-only && [[ ${CHOST} != ${CTARGET} ]]
 }
 
 pkg_setup() {
@@ -67,7 +67,6 @@ src_install() {
 			&& insdir="${D}/usr/${CTARGET}" \
 			|| insdir="${D}"
 		emake install DESTDIR="${insdir}" || die
-		env -uRESTRICT CHOST=${CTARGET} prepallstrip
 		rm -rf "${insdir}"/usr/doc
 		docinto ${CTARGET} # Avoid collisions with other cross-compilers.
 		dodoc CONTRIBUTORS ChangeLog README TODO readme.txt

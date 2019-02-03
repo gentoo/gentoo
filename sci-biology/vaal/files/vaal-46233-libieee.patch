@@ -1,0 +1,12 @@
+diff -ruN vaal-46233.orig/configure.ac vaal-46233/configure.ac
+--- vaal-46233.orig/configure.ac	2018-09-29 21:58:06.059065798 +0200
++++ vaal-46233/configure.ac	2018-09-29 22:22:35.947845554 +0200
+@@ -12,7 +12,7 @@
+ AX_PTHREAD
+ AC_OPENMP
+ 
+-CXXFLAGS="$CXXFLAGS -std=c++11 -Wextra -Wall -Wsign-promo -Woverloaded-virtual -Wendif-labels -Wno-unused -Wno-deprecated -Wno-long-long -Wno-parentheses -fno-nonansi-builtins -mieee-fp -fno-strict-aliasing -iquote .  -DNDEBUG"
++CXXFLAGS="$CXXFLAGS -std=c++11 -Wextra -Wall -Wsign-promo -Woverloaded-virtual -Wendif-labels -Wno-unused -Wno-deprecated -Wno-long-long -Wno-parentheses -fno-nonansi-builtins -fno-strict-aliasing -iquote .  -DNDEBUG"
+ 
+ OS_RELEASE="`uname -r`"
+ AC_SUBST(CXXFLAGS)

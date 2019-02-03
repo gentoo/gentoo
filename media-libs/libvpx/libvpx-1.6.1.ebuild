@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,13 +14,13 @@ inherit toolchain-funcs multilib-minimal
 LIBVPX_TESTDATA_VER=1.6.1
 
 DESCRIPTION="WebM VP8 and VP9 Codec SDK"
-HOMEPAGE="http://www.webmproject.org"
-SRC_URI="http://storage.googleapis.com/downloads.webmproject.org/releases/webm/${P}.tar.bz2
+HOMEPAGE="https://www.webmproject.org"
+SRC_URI="https://storage.googleapis.com/downloads.webmproject.org/releases/webm/${P}.tar.bz2
 	test? ( mirror://gentoo/${PN}-testdata-${LIBVPX_TESTDATA_VER}.tar.bz2 )"
 
 LICENSE="BSD"
 SLOT="0/4"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="cpu_flags_x86_avx cpu_flags_x86_avx2 doc cpu_flags_x86_mmx postproc cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 +highbitdepth static-libs svc test +threads"
 
 REQUIRED_USE="
@@ -32,7 +32,7 @@ REQUIRED_USE="
 # Disable test phase when USE="-test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="abi_x86_32? ( !app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+RDEPEND=""
 DEPEND="abi_x86_32? ( dev-lang/yasm )
 	abi_x86_64? ( dev-lang/yasm )
 	abi_x86_x32? ( dev-lang/yasm )

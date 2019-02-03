@@ -11,7 +11,7 @@ MY_PN="${PN/_/.}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Alternate keyring implementations"
-HOMEPAGE="https://github.com/jaraco/keyrings.alt https://pypi.python.org/pypi/keyrings.alt"
+HOMEPAGE="https://github.com/jaraco/keyrings.alt https://pypi.org/project/keyrings.alt/"
 SRC_URI="mirror://pypi/${P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

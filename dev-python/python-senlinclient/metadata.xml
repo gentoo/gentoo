@@ -10,8 +10,8 @@
 		<name>Openstack</name>
 	</maintainer>
 	<longdescription lang="en">
-    This is a client for the OpenStack Senlin API.
-  </longdescription>
+		This is a client for the OpenStack Senlin API.
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">python-senlinclient</remote-id>
 		<remote-id type="github">openstack/python-senlinclient</remote-id>

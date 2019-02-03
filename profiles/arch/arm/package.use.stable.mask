@@ -1,38 +1,62 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (04 Nov 2018)
+# media-libs/libmtp stabilisation timeout, bug #661162
+gnome-base/gvfs mtp
+
+# Ulrich Müller <ulm@gentoo.org> (09 Aug 2018)
+# Needs net-libs/webkit-gtk which is not stable, bug #663248
+app-editors/emacs xwidgets
+
+# Mikle Kolyada <zlogene@gentoo.org> (16 Jul 2018)
+# No stable qtnetwork
+net-irc/znc test
+
+# Akinori Hattori <hattya@gentoo.org> (23 Jun 2018)
+# No stable Java
+dev-db/qdbm java
+
+# Pacho Ramos <pacho@gentoo.org> (28 May 2018)
+# Don't rely on stable inkscape
+app-text/dblatex inkscape
+
+# Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
+# Requires not stabilised dev-python/restkit
+dev-python/wsgiproxy2 test
+dev-python/pyquery test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
+# Requires not stabilised Qt5
+app-i18n/ibus kde
+dev-qt/qtchooser test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
+# Requires not stabilised dev-python/matplotlib
+dev-python/numpydoc test
+dev-python/ipython matplotlib
+
+# Andreas Sturmlechner <asturm@gentoo.org> (25 Jan 2018)
+# Requires not stabilised app-text/libexttextcat, bug #637086
+net-mail/dovecot textcat
 
 # Brian Evans <grknight@gentoo.org> (9 Jun 2017)
 # sys-cluster/galera needs additional deps stable
 dev-db/mariadb galera
 
 # Alexis Ballier <aballier@gentoo.org> (30 May 2017)
-# No stable libtar yet
-<media-video/vlc-2.3 libtar
-
-# Alexis Ballier <aballier@gentoo.org> (30 May 2017)
 # No stable fluidsynth yet
 media-libs/sdl-mixer fluidsynth
 media-sound/mpd fluidsynth
-<media-video/vlc-2.3 fluidsynth
 
 # Alexis Ballier <aballier@gentoo.org> (29 May 2017)
 # frei0r-plugins is not stable yet, mask it on stable versions
-<media-video/libav-12 frei0r
-<=media-video/ffmpeg-3.3.4 frei0r sofalizer
-
-# Alexis Ballier <aballier@gentoo.org> (26 May 2017)
-# toolame not stable yet
-~media-video/mplayer-1.2.1 toolame
-
-# Alexis Ballier <aballier@gentoo.org> (26 May 2017)
-# No musepack-tools stable yet
-media-video/vlc musepack
-media-plugins/gst-plugins-meta:0.10 musepack
-media-sound/mpd musepack
+<media-video/libav-13 frei0r
+<=media-video/ffmpeg-3.3.6 frei0r sofalizer
 
 # Alexis Ballier <aballier@gentoo.org> (18 Apr 2017)
-# No gst-plugins-vp8:0.10 stable
-media-plugins/gst-plugins-meta:0.10 vpx
+# No gst-plugins-vp8:0.10, gst-plugins-musepack:0.10 stable
+media-plugins/gst-plugins-meta:0.10 musepack vpx
 
 # Michael Weber <xmw@gentoo.org> (1 Apr 2017)
 # no stable jdk
@@ -41,7 +65,7 @@ media-libs/libbluray java
 # Thomas Deutschmann <whissi@gentoo.org> (20 Mar 2017)
 # Requires dev-java/java-config and deps which is not stable on arm
 # Requires app-emulation/xen-tools which is not stable on arm
-app-admin/collectd collectd_plugins_java collectd_plugins_xencpu
+app-metrics/collectd collectd_plugins_java collectd_plugins_xencpu
 
 # Michael Palimaka <kensington@gentoo.org> (19 Mar 2017)
 # Required media-plugins/gst-plugins-x264 is not stable
@@ -70,9 +94,6 @@ sys-fs/dmraid dietlibc klibc
 # Christoph Junghans <junghans@gentoo.org> (27 Nov 2016)
 # no stable mpi on arm yet, but maybe in the future
 <=app-crypt/johntheripper-1.7.9-r6 mpi
-<=dev-libs/boost-1.56.0-r1 mpi
-<=dev-util/valgrind-3.10.1 mpi
-<=sci-chemistry/gromacs-5.0.4 mpi
 <=sci-libs/fftw-3.3.4 mpi
 
 # Markus Meier <maekke@gentoo.org> (27 Sep 2016)
@@ -89,7 +110,6 @@ net-misc/networkmanager teamd
 
 # Michael Palimaka <kensington@gentoo.org> (28 Oct 2015)
 # KDE is not stable on arm
-media-video/vlc kde
 virtual/notification-daemon kde
 
 # Pacho Ramos <pacho@gentoo.org> (03 Oct 2015)
@@ -108,19 +128,12 @@ media-libs/gegl umfpack
 # Missing stable
 net-misc/connman l2tp pptp
 
-# Michael Palimaka <kensington@gentoo.org> (11 May 2015)
-# kde-frameworks/kwallet is not stable on arm
-www-client/qupzilla kwallet
-
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
 # Mask due Gnome3 not going to be stabilized on this arch
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
-media-gfx/gimp webkit
 net-libs/libproxy webkit
->=net-libs/webkit-gtk-2.4 geoloc
 >=x11-libs/gtk+-3.12.2 cloudprint
-x11-libs/gksu gnome
 
 # Ian Whyman <thev00d00@gentoo.org> (22 May 2016)
 # RPI support on arm

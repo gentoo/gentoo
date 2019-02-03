@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kde5-functions.eclass
 # @MAINTAINER:
 # kde@gentoo.org
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Common ebuild functions for packages based on KDE Frameworks 5.
 # @DESCRIPTION:
 # This eclass contains functions shared by the other KDE eclasses and forms
@@ -14,13 +15,11 @@
 if [[ -z ${_KDE5_FUNCTIONS_ECLASS} ]]; then
 _KDE5_FUNCTIONS_ECLASS=1
 
-inherit toolchain-funcs versionator
+inherit toolchain-funcs
 
-# @ECLASS-VARIABLE: EAPI
-# @DESCRIPTION:
-# Currently EAPI 6 is supported.
 case ${EAPI} in
-	6) ;;
+	7) ;;
+	6) inherit eapi7-ver ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
@@ -28,44 +27,46 @@ esac
 # @DESCRIPTION:
 # If PV matches "*9999*", this is automatically set to "live".
 # Otherwise, this is automatically set to "release".
+KDE_BUILD_TYPE="release"
 if [[ ${PV} = *9999* ]]; then
 	KDE_BUILD_TYPE="live"
-else
-	KDE_BUILD_TYPE="release"
 fi
 export KDE_BUILD_TYPE
 
 case ${CATEGORY} in
 	kde-frameworks)
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
+		[[ ${PV} = 5.52.0* ]] && : ${QT_MINIMAL:=5.9.4}
 		;;
 	kde-plasma)
-		[[ ${PV} = 5.11* ]] && : ${FRAMEWORKS_MINIMAL:=5.38.0}
-		if [[ ${KDE_BUILD_TYPE} = live ]]; then
+		if [[ ${KDE_BUILD_TYPE} = live && ${PV} != 5.??.49* ]]; then
 			: ${FRAMEWORKS_MINIMAL:=9999}
 		fi
+		;;
+	kde-apps)
+		[[ ${PV} = 18.08.3* ]] && : ${QT_MINIMAL:=5.9.4}
 		;;
 esac
 
 # @ECLASS-VARIABLE: QT_MINIMAL
 # @DESCRIPTION:
 # Minimum version of Qt to require. This affects add_qt_dep.
-: ${QT_MINIMAL:=5.7.1}
+: ${QT_MINIMAL:=5.11.1}
 
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimum version of Frameworks to require. This affects add_frameworks_dep.
-: ${FRAMEWORKS_MINIMAL:=5.37.0}
+: ${FRAMEWORKS_MINIMAL:=5.52.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
 # Minimum version of Plasma to require. This affects add_plasma_dep.
-: ${PLASMA_MINIMAL:=5.10.5}
+: ${PLASMA_MINIMAL:=5.12.5}
 
 # @ECLASS-VARIABLE: KDE_APPS_MINIMAL
 # @DESCRIPTION:
 # Minimum version of KDE Applications to require. This affects add_kdeapps_dep.
-: ${KDE_APPS_MINIMAL:=14.12.0}
+: ${KDE_APPS_MINIMAL:=18.08.3}
 
 # @ECLASS-VARIABLE: KDE_GCC_MINIMAL
 # @DEFAULT_UNSET
@@ -74,6 +75,7 @@ esac
 # kde5_pkg_pretend and kde5_pkg_setup.
 
 # @ECLASS-VARIABLE: KDEBASE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This gets set to a non-zero value when a package is considered a
 # kdevelop ebuild.
@@ -82,17 +84,6 @@ if [[ ${KMNAME-${PN}} = kdevelop ]]; then
 fi
 
 debug-print "${ECLASS}: ${KDEBASE} ebuild recognized"
-
-# @ECLASS-VARIABLE: KDE_SCM
-# @DESCRIPTION:
-# SCM to use if KDE_BUILD_TYPE is determined to be "live".
-# Currently, only git is supported.
-: ${KDE_SCM:=git}
-
-case ${KDE_SCM} in
-	git) ;;
-	*) die "KDE_SCM: ${KDE_SCM} is not supported" ;;
-esac
 
 # @FUNCTION: _check_gcc_version
 # @INTERNAL
@@ -178,7 +169,7 @@ add_frameworks_dep() {
 	if [[ -n ${3} ]]; then
 		version=${3}
 	elif [[ ${CATEGORY} = kde-frameworks ]]; then
-		version=$(get_version_component_range 1-2)
+		version=$(ver_cut 1-2)
 	elif [[ -z ${3} ]] ; then
 		version=${FRAMEWORKS_MINIMAL}
 	fi
@@ -210,7 +201,7 @@ add_plasma_dep() {
 	if [[ -n ${3} ]]; then
 		version=${3}
 	elif [[ ${CATEGORY} = kde-plasma ]]; then
-		version=$(get_version_component_range 1-3)
+		version=$(ver_cut 1-3)
 	elif [[ -z ${3} ]] ; then
 		version=${PLASMA_MINIMAL}
 	fi
@@ -242,7 +233,7 @@ add_kdeapps_dep() {
 	if [[ -n ${3} ]]; then
 		version=${3}
 	elif [[ ${CATEGORY} = kde-apps ]]; then
-		version=$(get_version_component_range 1-3)
+		version=$(ver_cut 1-3)
 	elif [[ -z ${3} ]] ; then
 		version=${KDE_APPS_MINIMAL}
 	fi
@@ -273,7 +264,11 @@ add_qt_dep() {
 	local slot=${4}
 
 	if [[ -z ${version} ]]; then
-		version=${QT_MINIMAL}
+		if [[ ${1} = qtwebkit && $(ver_cut 2 ${QT_MINIMAL}) -ge 9 ]]; then
+			version=5.9.1 # no more upstream release, need bug #624404
+		else
+			version=${QT_MINIMAL}
+		fi
 	fi
 	if [[ -z ${slot} ]]; then
 		slot="5"
@@ -290,10 +285,11 @@ add_qt_dep() {
 # If the version equals 9999, "live" is returned.
 # If no version is specified, ${PV} is used.
 get_kde_version() {
+	[[ ${EAPI} != 6 ]] && die "${FUNCNAME} is banned in EAPI 7 and later"
 	local ver=${1:-${PV}}
-	local major=$(get_major_version ${ver})
-	local minor=$(get_version_component_range 2 ${ver})
-	local micro=$(get_version_component_range 3 ${ver})
+	local major=$(ver_cut 1 ${ver})
+	local minor=$(ver_cut 2 ${ver})
+	local micro=$(ver_cut 3 ${ver})
 	if [[ ${ver} == 9999 ]]; then
 		echo live
 	else
@@ -308,6 +304,7 @@ get_kde_version() {
 # Output KDE lingua flag name(s) (without prefix(es)) appropriate for
 # given l10n(s).
 kde_l10n2lingua() {
+	[[ ${EAPI} != 6 ]] && die "${FUNCNAME} is banned in EAPI 7 and later"
 	local l
 	for l; do
 		case ${l} in

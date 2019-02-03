@@ -42,3 +42,8 @@ IUSE_IMPLICIT="abi_x86_32"
 # Michał Górny <mgorny@gentoo.org> (01 Jul 2014)
 # Default to abi_x86_32 for packages that don't have it forced.
 ABI_X86="32"
+
+# Thomas Deutschmann <whissi@gentoo.org> (6 Jun 2018)
+# Enable USE=libtirpc by default, to ease dependency resolution during
+# the stabilization of glibc-2.26. Bug 657148
+USE="libtirpc"

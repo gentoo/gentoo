@@ -3,7 +3,6 @@
 <pkgmetadata>
 <maintainer type="person">
 	<email>axs@gentoo.org</email>
-	<description>Primary maintainer</description>
 </maintainer>
 <longdescription>
 This is a simple launcher script and .desktop entry to associate MS Windows *.URL (text/x-uri) 

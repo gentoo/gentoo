@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -47,8 +47,6 @@ RDEPEND="
 	dev-games/ogre
 	sci-libs/pcl
 	dev-libs/boost:=
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4
 	dev-ros/roslib[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"

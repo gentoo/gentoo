@@ -7,7 +7,7 @@ inherit xfconf multilib-minimal
 
 DESCRIPTION="A port of Xfce engine to GTK+ 2.x"
 HOMEPAGE="https://git.xfce.org/xfce/gtk-xfce-engine/"
-SRC_URI="mirror://xfce/src/xfce/${MY_PN}/${PV%.*}/${MY_PN}-${PV}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/xfce/${MY_PN}/${PV%.*}/${MY_PN}-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,11 +15,7 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd
 IUSE="debug"
 
 RDEPEND=">=dev-libs/glib-2.34.3[${MULTILIB_USEDEP}]
-	>=x11-libs/gtk+-2.24.23:2[${MULTILIB_USEDEP}]
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-gtklibs-20140508
-		!app-emulation/emul-linux-x86-gtklibs[-abi_x86_32(-)]
-	)"
+	>=x11-libs/gtk+-2.24.23:2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]"
 

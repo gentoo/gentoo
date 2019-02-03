@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/659804
+
+diff --git a/numba/tests/test_linalg.py b/numba/tests/test_linalg.py
+index 46bff63e8..53056ab23 100644
+--- a/numba/tests/test_linalg.py
++++ b/numba/tests/test_linalg.py
+@@ -1282,6 +1282,7 @@ class TestLinalgLstsq(TestLinalgSystems):
+     # Suggestions for improvements are welcomed!
+ 
+     @needs_lapack
++    @unittest.skipIf(sys.maxsize < 2 ** 31, "errors with 32-bit address space")
+     def test_linalg_lstsq(self):
+         """
+         Test np.linalg.lstsq

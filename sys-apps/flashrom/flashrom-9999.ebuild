@@ -1,19 +1,19 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 if [[ ${PV} == "9999" ]] ; then
-	ESVN_REPO_URI="https://code.coreboot.org/svn/flashrom/trunk"
-	inherit subversion
+	EGIT_REPO_URI="https://review.coreboot.org/flashrom.git"
+	inherit git-r3
 else
-	SRC_URI="http://download.flashrom.org/releases/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+	SRC_URI="https://download.flashrom.org/releases/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="Utility for reading, writing, erasing and verifying flash ROM chips"
-HOMEPAGE="http://flashrom.org/"
+HOMEPAGE="https://flashrom.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,17 +21,20 @@ SLOT="0"
 # Note: Do not list bitbang_spi as it is not a programmer; it's a backend used
 # by some other spi programmers.
 IUSE_PROGRAMMERS="
-atahpt +atapromise +atavia +buspirate_spi ch341a_spi dediprog +drkaiser +dummy
-+ft2232_spi +gfxnvidia +internal +it8212 +linux_spi mstarddc_spi +nic3com
-+nicintel +nicintel_eeprom +nicintel_spi nicnatsemi +nicrealtek +ogp_spi
-+pickit2_spi +pony_spi +rayer_spi +satamv +satasii +serprog +usbblaster_spi"
+atahpt +atapromise +atavia +buspirate_spi +ch341a_spi +dediprog +developerbox_spi
++digilent_spi +drkaiser +dummy +ft2232_spi +gfxnvidia +internal +it8212
++linux_mtd +linux_spi mstarddc_spi +nic3com +nicintel +nicintel_eeprom
++nicintel_spi nicnatsemi +nicrealtek +ogp_spi +pickit2_spi +pony_spi +rayer_spi
++satamv +satasii +serprog +usbblaster_spi"
 IUSE="${IUSE_PROGRAMMERS} +internal_dmi static tools +wiki"
 
 LIB_DEPEND="atahpt? ( sys-apps/pciutils[static-libs(+)] )
 	atapromise? ( sys-apps/pciutils[static-libs(+)] )
 	atavia? ( sys-apps/pciutils[static-libs(+)] )
-	ch341a_spi? ( virtual/libusb:0[static-libs(+)] )
-	dediprog? ( virtual/libusb:0[static-libs(+)] )
+	ch341a_spi? ( virtual/libusb:1[static-libs(+)] )
+	dediprog? ( virtual/libusb:1[static-libs(+)] )
+	developerbox_spi? ( virtual/libusb:1[static-libs(+)] )
+	digilent_spi? ( virtual/libusb:1[static-libs(+)] )
 	drkaiser? ( sys-apps/pciutils[static-libs(+)] )
 	ft2232_spi? ( dev-embedded/libftdi:=[static-libs(+)] )
 	gfxnvidia? ( sys-apps/pciutils[static-libs(+)] )
@@ -62,12 +65,6 @@ _flashrom_enable() {
 flashrom_enable() {
 	local u
 	for u ; do _flashrom_enable "${u}" ; done
-}
-
-src_prepare() {
-	sed -i \
-		-e 's:pkg-config:$(PKG_CONFIG):' \
-		Makefile || die
 }
 
 src_compile() {

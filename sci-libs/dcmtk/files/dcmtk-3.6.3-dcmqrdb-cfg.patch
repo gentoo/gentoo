@@ -1,0 +1,87 @@
+Author: Jürgen Salk <jsa@debian.org>
+Description: The original maintainer Jürgen Salk applied
+ a set of patches to the original code.  This file contains
+ changes to C++ code
+
+Index: dcmtk-3.6.0/dcmqrdb/etc/dcmqrscp.cfg
+===================================================================
+--- a/dcmqrdb/etc/dcmqrscp.cfg	2010-09-09 19:20:25.000000000 +0200
++++ b/dcmqrdb/etc/dcmqrscp.cfg	2011-01-28 09:49:02.000000000 +0100
+@@ -10,7 +10,9 @@
+ NetworkTCPPort  = 104
+ MaxPDUSize      = 16384
+ MaxAssociations = 16
++UserName        = "dcmtk"
++GroupName       = "dcmtk"
+ 
+ #
+ # Default settings for specific character set behavior:
+ # SpecificCharacterSet = fallback
+@@ -28,12 +30,13 @@
+ # NOTE: in the current implementation you cannot substitute an IP address
+ # for a hostname.
+ #
+-acme1           = (ACME1, acmehost1, 5678)
+-acme2           = (ACME2, acmehost2, 5678)
+-acmeCTcompany   = acme1, acme2
+-united1         = (UNITED1, unitedhost1, 104)
+-united2         = (UNITED2, unitedhost2, 104)
+-unitedMRcompany = united1, united2
++# Example:
++#acme1           = (ACME1, acmehost1, 5678)
++#acme2           = (ACME2, acmehost2, 5678)
++#acmeCTcompany   = acme1, acme2
++#united1         = (UNITED1, unitedhost1, 104)
++#united2         = (UNITED2, unitedhost2, 104)
++#unitedMRcompany = united1, united2
+ #
+ HostTable END
+ 
+@@ -51,8 +54,9 @@
+ #       VendorName = SymbolicName
+ # The symbolic name should be defined in the HostTable.
+ #
+-"Acme CT Company"   = acmeCTcompany
+-"United MR Company" = unitedMRcompany
++# Example:
++#"Acme CT Company"   = acmeCTcompany
++#"United MR Company" = unitedMRcompany
+ #
+ VendorTable END
+ 
+@@ -70,8 +74,13 @@
+ #               Entry in HostTable                      |
+ #               ANY
+ #
+-COMMON       /home/dicom/db/COMMON       R  (200, 1024mb) ANY
+-ACME_STORE   /home/dicom/db/ACME_STORE   RW (9, 1024mb)   acmeCTcompany
+-UNITED_STORE /home/dicom/db/UNITED_STORE RW (9, 1024mb)   unitedMRcompany
++# Example:
++#
++#ACME_STORE   /var/lib/dcmtk/db/ACME_STORE   RW (9, 1024mb)   acmeCTcompany
++#UNITED_STORE /var/lib/dcmtk/db/UNITED_STORE RW (9, 1024mb)   unitedMRcompany
++#
++# Uncomment and adjust the following lines for a common r/rw storage area:
++#READWRITE     /var/lib/dcmtk/db/READWRITE    RW (10, 1024mb)  ANY
++#READ          /var/lib/dcmtk/db/READ         R  (200, 1024mb) ANY
+ #
+ AETable END
+Index: dcmtk-3.6.0/dcmqrdb/docs/dcmqrcnf.txt
+--- a/dcmqrdb/docs/dcmqrcnf.txt	2010-09-09 19:20:12.000000000 +0200
++++ b/dcmqrdb/docs/dcmqrcnf.txt	2011-01-28 09:46:02.000000000 +0100
+@@ -44,8 +44,8 @@
+ MaxPDUSize           = 8192
+ MaxAssociations      = 20
+ SpecificCharacterSet = fallback
+-UserName             = (do not change user)
+-GroupName            = (do not change group)
++UserName             = "dcmtk"
++GroupName            = "dcmtk"
+ 
+ Available options for specific character sets are:
+ 
+Index: dcmtk-3.6.0/dcmwlm/wlistdb/OFFIS/lockfile
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ dcmtk-3.6.0/dcmwlm/wlistdb/OFFIS/lockfile	2011-01-28 09:46:02.000000000 +0100
+@@ -0,0 +1 @@
++

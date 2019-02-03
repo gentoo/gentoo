@@ -1,0 +1,25 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -308,6 +308,9 @@
+ 
+ include(CTest)
+ 
++# Approval tests require python 2.7 or 3
++find_package(PythonInterp)
++
+ if (BUILD_TESTING AND NOT_SUBPROJECT)
+     add_executable(SelfTest ${TEST_SOURCES} ${IMPL_SOURCES} ${REPORTER_SOURCES} ${SURROGATE_SOURCES} ${HEADERS})
+     target_include_directories(SelfTest PRIVATE ${HEADER_DIR})
+@@ -384,7 +387,11 @@
+     set_tests_properties(NoTest PROPERTIES PASS_REGULAR_EXPRESSION "No test cases matched")
+ 
+     # AppVeyor has a Python 2.7 in path, but doesn't have .py files as autorunnable
+-    add_test(NAME ApprovalTests COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/scripts/approvalTests.py $<TARGET_FILE:SelfTest>)
++    if(NOT ${PYTHONINTERP_FOUND})
++        message(FATAL_ERROR "Python not found, but required for running tests!")
++    endif()
++
++    add_test(NAME ApprovalTests COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/approvalTests.py $<TARGET_FILE:SelfTest>)
+     set_tests_properties(ApprovalTests PROPERTIES FAIL_REGULAR_EXPRESSION "Results differed")
+ 
+     if (CATCH_USE_VALGRIND)

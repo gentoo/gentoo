@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -7,7 +7,7 @@ DESCRIPTION="Library implementation for listing vpds"
 HOMEPAGE="https://sourceforge.net/projects/linux-diag/"
 SRC_URI="https://sourceforge.net/projects/linux-diag/files/libvpd/${PV}/libvpd-${PV}.tar.gz"
 
-LICENSE="IBM"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="ppc ppc64"
 IUSE=""

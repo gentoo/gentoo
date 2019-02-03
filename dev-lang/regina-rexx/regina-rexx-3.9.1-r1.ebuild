@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,7 +6,7 @@ EAPI=4
 inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="Portable Rexx interpreter"
-HOMEPAGE="http://regina-rexx.sourceforge.net"
+HOMEPAGE="https://regina-rexx.sourceforge.io/"
 SRC_URI="mirror://sourceforge/${PN}/Regina-REXX-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1 MPL-1.0"

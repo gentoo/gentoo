@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zoltan@sinustrom.info</email>
+		<name>Zoltan Puskas</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The KiCad 3D model libraries are the individual .3dshapes directories.
+		These 3d models are best used in combination with the official footprint
+		libs. Each directory directory contains multiple 3D model files, with
+		the following supported file formats: WRL, STEP.
+	</longdescription>
+	<use>
+		<flag name="occ">
+			Use <pkg>sci-libs/opencascade</pkg> for data exchange
+		</flag>
+		<flag name="oce">
+			Use <pkg>sci-libs/oce</pkg> for data exchange
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">kicad/kicad-packages3d</remote-id>
+	</upstream>
+</pkgmetadata>

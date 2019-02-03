@@ -1,5 +1,5 @@
---- configure.ac.orig	2015-09-14 11:27:54.974472081 +0200
-+++ configure.ac	2015-09-14 11:34:37.729155044 +0200
+--- rdesktop.orig/configure.ac	2015-09-14 11:27:54.974472081 +0200
++++ rdesktop/configure.ac		2015-09-14 11:34:37.729155044 +0200
 @@ -151,9 +151,12 @@
  AC_SUBST(CREDSSPOBJ)
  

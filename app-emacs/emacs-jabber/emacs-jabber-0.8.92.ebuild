@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="A Jabber client for Emacs"
 HOMEPAGE="http://emacs-jabber.sourceforge.net/
-	http://emacswiki.org/emacs/JabberEl"
+	https://www.emacswiki.org/emacs/JabberEl"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+"

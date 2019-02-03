@@ -1,0 +1,12 @@
+diff -Naur Electrum-3.1.1.orig/setup.py Electrum-3.1.1/setup.py
+--- Electrum-3.1.1.orig/setup.py	2018-03-12 13:25:11.000000000 -0400
++++ Electrum-3.1.1/setup.py	2018-03-17 17:49:54.481961514 -0400
+@@ -86,8 +86,3 @@
+     url="https://electrum.org",
+     long_description="""Lightweight Bitcoin Wallet"""
+ )
+-
+-# Optional modules (not required to run Electrum)
+-import pip
+-opt_modules = requirements_hw + ['pycryptodomex']
+-[ pip.main(['install', m]) for m in opt_modules ]

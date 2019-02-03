@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
@@ -22,15 +22,16 @@ start() {
 		eerror "Failed to create munge key"
 		eend 1 && exit 1
 	fi
-	checkpath -d -m 755 -o munge:munge /var/run/munge
+	checkpath -d -m 755 -o munge:munge /run/munge
 	checkpath -d -m 711 -o munge:munge /var/lib/munge
 	checkpath -d -m 700 -o munge:munge /var/log/munge
-	checkpath -f -m 640 -o root:munge "${KEYFILE}"
+	checkpath -f -m 600 -o munge:munge "${KEYFILE}"
 	start-stop-daemon -S /usr/sbin/munged \
 		--user munge \
 		--group munge \
-		--pidfile /var/run/munge/munged.pid \
+		--pidfile /run/munge/munged.pid \
 		-- \
+		--log-file=/var/log/munge/munged.log \
 		--key-file="${KEYFILE}" \
 		--group-check-mtime="${GROUP_CHECK_MTIME}" \
 		--group-update-time="${GROUP_UPDATE_TIME}" \
@@ -41,7 +42,7 @@ start() {
 stop() {
 	ebegin "Stopping munged"
 	start-stop-daemon -K /usr/sbin/munged \
-		--pidfile /var/run/munge/munged.pid
+		--pidfile /run/munge/munged.pid
 	eend ${?}
 }
 

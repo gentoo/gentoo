@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 PYTHON_REQ_USE="ncurses,readline"
 
 PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
-FIRMWARE_ABI_VERSION="2.9.0-r52"
+FIRMWARE_ABI_VERSION="2.11.1-r50"
 
 inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
 	user udev fcaps readme.gentoo-r1 pax-utils l10n
@@ -18,7 +18,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
 else
-	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.bz2"
+	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 fi
 
@@ -27,20 +27,23 @@ HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
-IUSE="accessibility +aio alsa bluetooth bzip2 +caps +curl debug +fdt
-	glusterfs gnutls gtk gtk2 infiniband iscsi +jpeg kernel_linux
+IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug
+	+fdt glusterfs gnutls gtk infiniband iscsi +jpeg kernel_linux
 	kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs +png
-	pulseaudio python rbd sasl +seccomp sdl sdl2 selinux smartcard snappy
+	pulseaudio python rbd sasl +seccomp sdl selinux smartcard snappy
 	spice ssh static static-user systemtap tci test usb usbredir vde
 	+vhost-net virgl virtfs +vnc vte xattr xen xfs"
 
-COMMON_TARGETS="aarch64 alpha arm cris i386 m68k microblaze microblazeel
-	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 s390x sh4 sh4eb sparc
-	sparc64 x86_64"
+RESTRICT=strip
+
+COMMON_TARGETS="aarch64 alpha arm cris hppa i386 m68k microblaze microblazeel
+	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 riscv32 riscv64 s390x
+	sh4 sh4eb sparc sparc64 x86_64 xtensa xtensaeb"
 IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS}
-	lm32 moxie ppcemb tricore unicore32 xtensa xtensaeb"
+	lm32 moxie tricore unicore32"
 IUSE_USER_TARGETS="${COMMON_TARGETS}
-	armeb hppa mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus tilegx"
+	aarch64_be armeb mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus
+	tilegx"
 
 use_softmmu_targets=$(printf ' qemu_softmmu_targets_%s' ${IUSE_SOFTMMU_TARGETS})
 use_user_targets=$(printf ' qemu_user_targets_%s' ${IUSE_USER_TARGETS})
@@ -49,14 +52,14 @@ IUSE+=" ${use_softmmu_targets} ${use_user_targets}"
 # Allow no targets to be built so that people can get a tools-only build.
 # Block USE flag configurations known to not work.
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	gtk2? ( gtk )
 	qemu_softmmu_targets_arm? ( fdt )
 	qemu_softmmu_targets_microblaze? ( fdt )
 	qemu_softmmu_targets_mips64el? ( fdt )
-	qemu_softmmu_targets_ppc? ( fdt )
 	qemu_softmmu_targets_ppc64? ( fdt )
-	sdl2? ( sdl )
-	static? ( static-user !alsa !bluetooth !gtk !gtk2 !opengl !pulseaudio )
+	qemu_softmmu_targets_ppc? ( fdt )
+	qemu_softmmu_targets_riscv32? ( fdt )
+	qemu_softmmu_targets_riscv64? ( fdt )
+	static? ( static-user !alsa !gtk !opengl !pulseaudio !snappy )
 	virtfs? ( xattr )
 	vte? ( gtk )"
 
@@ -67,7 +70,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 #
 # The attr lib isn't always linked in (although the USE flag is always
 # respected).  This is because qemu supports using the C library's API
-# when available rather than always using the extranl library.
+# when available rather than always using the external library.
 ALL_DEPEND="
 	>=dev-libs/glib-2.0[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
@@ -78,14 +81,17 @@ ALL_DEPEND="
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # softmmu targets (qemu-system-*).
 SOFTMMU_TOOLS_DEPEND="
+	dev-libs/libxml2[static-libs(+)]
+	x11-libs/libxkbcommon[static-libs(+)]
+	>=x11-libs/pixman-0.28.0[static-libs(+)]
 	accessibility? (
 		app-accessibility/brltty[api]
 		app-accessibility/brltty[static-libs(+)]
 	)
 	aio? ( dev-libs/libaio[static-libs(+)] )
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
-	bluetooth? ( net-wireless/bluez )
 	bzip2? ( app-arch/bzip2[static-libs(+)] )
+	capstone? ( dev-libs/capstone:= )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
 	fdt? ( >=sys-apps/dtc-1.4.2[static-libs(+)] )
@@ -95,16 +101,14 @@ SOFTMMU_TOOLS_DEPEND="
 		>=net-libs/gnutls-3.0:=[static-libs(+)]
 	)
 	gtk? (
-		gtk2? (
-			x11-libs/gtk+:2
-			vte? ( x11-libs/vte:0 )
-		)
-		!gtk2? (
-			x11-libs/gtk+:3
-			vte? ( x11-libs/vte:2.91 )
-		)
+		x11-libs/gtk+:3
+		vte? ( x11-libs/vte:2.91 )
 	)
-	infiniband? ( sys-fabric/librdmacm:=[static-libs(+)] )
+	infiniband? (
+		sys-fabric/libibumad:=[static-libs(+)]
+		sys-fabric/libibverbs:=[static-libs(+)]
+		sys-fabric/librdmacm:=[static-libs(+)]
+	)
 	iscsi? ( net-libs/libiscsi )
 	jpeg? ( virtual/jpeg:0=[static-libs(+)] )
 	lzo? ( dev-libs/lzo:2[static-libs(+)] )
@@ -112,7 +116,7 @@ SOFTMMU_TOOLS_DEPEND="
 		sys-libs/ncurses:0=[unicode]
 		sys-libs/ncurses:0=[static-libs(+)]
 	)
-	nfs? ( >=net-fs/libnfs-1.9.3[static-libs(+)] )
+	nfs? ( >=net-fs/libnfs-1.9.3:=[static-libs(+)] )
 	numa? ( sys-process/numactl[static-libs(+)] )
 	opengl? (
 		virtual/opengl
@@ -125,18 +129,12 @@ SOFTMMU_TOOLS_DEPEND="
 	rbd? ( sys-cluster/ceph[static-libs(+)] )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)] )
 	sdl? (
-		!sdl2? (
-			media-libs/libsdl[X]
-			>=media-libs/libsdl-1.2.11[static-libs(+)]
-		)
-		sdl2? (
-			media-libs/libsdl2[X]
-			media-libs/libsdl2[static-libs(+)]
-		)
+		media-libs/libsdl2[X]
+		media-libs/libsdl2[static-libs(+)]
 	)
 	seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
 	smartcard? ( >=app-emulation/libcacard-2.5.0[static-libs(+)] )
-	snappy? ( app-arch/snappy:=[static-libs(+)] )
+	snappy? ( app-arch/snappy:= )
 	spice? (
 		>=app-emulation/spice-protocol-0.12.3
 		>=app-emulation/spice-0.12.0[static-libs(+)]
@@ -152,10 +150,10 @@ SOFTMMU_TOOLS_DEPEND="
 
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/edk2-ovmf-2017_pre20170505[binary]
-		~sys-firmware/ipxe-1.0.0_p20160620
-		~sys-firmware/seabios-1.10.2[binary,seavgabios]
-		~sys-firmware/sgabios-0.1_pre8
+		~sys-firmware/edk2-ovmf-2017_p20180211[binary]
+		~sys-firmware/ipxe-1.0.0_p20180211[binary]
+		~sys-firmware/seabios-1.11.0[binary,seavgabios]
+		~sys-firmware/sgabios-0.1_pre8[binary]
 	)
 	!pin-upstream-blobs? (
 		sys-firmware/edk2-ovmf
@@ -165,7 +163,7 @@ X86_FIRMWARE_DEPEND="
 	)"
 PPC64_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/seabios-1.10.2[binary,seavgabios]
+		~sys-firmware/seabios-1.11.0[binary,seavgabios]
 	)
 	!pin-upstream-blobs? (
 		>=sys-firmware/seabios-1.10.2[seavgabios]
@@ -182,8 +180,8 @@ CDEPEND="
 	qemu_softmmu_targets_ppc64? ( ${PPC64_FIRMWARE_DEPEND} )
 "
 DEPEND="${CDEPEND}
+	${PYTHON_DEPS}
 	dev-lang/perl
-	=dev-lang/python-2*
 	sys-apps/texinfo
 	virtual/pkgconfig
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6.35 )
@@ -203,11 +201,11 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
+	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
 )
 
-STRIP_MASK="/usr/share/qemu/palcode-clipper"
-
 QA_PREBUILT="
+	usr/share/qemu/hppa-firmware.img
 	usr/share/qemu/openbios-ppc
 	usr/share/qemu/openbios-sparc64
 	usr/share/qemu/openbios-sparc32
@@ -283,7 +281,11 @@ pkg_pretend() {
 			ERROR_VHOST_NET+=" support"
 
 			if use amd64 || use x86 || use amd64-linux || use x86-linux; then
-				CONFIG_CHECK+=" ~KVM_AMD ~KVM_INTEL"
+				if grep -q AuthenticAMD /proc/cpuinfo; then
+					CONFIG_CHECK+=" ~KVM_AMD"
+				elif grep -q GenuineIntel /proc/cpuinfo; then
+					CONFIG_CHECK+=" ~KVM_INTEL"
+				fi
 			fi
 
 			use python && CONFIG_CHECK+=" ~DEBUG_FS"
@@ -421,10 +423,11 @@ qemu_src_configure() {
 		fi
 	}
 	conf_opts+=(
+		--disable-bluez
 		$(conf_notuser accessibility brlapi)
 		$(conf_notuser aio linux-aio)
 		$(conf_notuser bzip2)
-		$(conf_notuser bluetooth bluez)
+		$(conf_notuser capstone)
 		$(conf_notuser caps cap-ng)
 		$(conf_notuser curl)
 		$(conf_notuser fdt)
@@ -463,6 +466,12 @@ qemu_src_configure() {
 		$(conf_notuser xfs xfsctl)
 	)
 
+	if [[ ${buildtype} == "user" ]] ; then
+		conf_opts+=( --disable-libxml2 )
+	else
+		conf_opts+=( --enable-libxml2 )
+	fi
+
 	if [[ ! ${buildtype} == "user" ]] ; then
 		# audio options
 		local audio_opts="oss"
@@ -472,8 +481,7 @@ qemu_src_configure() {
 		conf_opts+=(
 			--audio-drv-list="${audio_opts}"
 		)
-		use gtk && conf_opts+=( --with-gtkabi=$(usex gtk2 2.0 3.0) )
-		use sdl && conf_opts+=( --with-sdlabi=$(usex sdl2 2.0 1.2) )
+		use sdl && conf_opts+=( --with-sdlabi=2.0 )
 	fi
 
 	case ${buildtype} in
@@ -740,7 +748,7 @@ src_install() {
 firmware_abi_change() {
 	local pv
 	for pv in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least ${FIRMWARE_ABI_VERSION} ${pv}; then
+		if ver_test $pv -lt ${FIRMWARE_ABI_VERSION}; then
 			return 0
 		fi
 	done
@@ -752,7 +760,8 @@ pkg_postinst() {
 		udev_reload
 	fi
 
-	fcaps cap_net_admin /usr/libexec/qemu-bridge-helper
+	[[ -f ${D}/usr/libexec/qemu-bridge-helper ]] && \
+		fcaps cap_net_admin /usr/libexec/qemu-bridge-helper
 
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_print_elog

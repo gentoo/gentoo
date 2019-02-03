@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,9 +21,9 @@ SLOT="0/${PV}"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="binary doc"
 
-DEPEND="dev-libs/gmp
+DEPEND="dev-libs/gmp:*
 		doc? ( virtual/latex-base )"
-RDEPEND="dev-libs/gmp"
+RDEPEND="dev-libs/gmp:*"
 
 QA_PRESTRIPPED="binary? (
 	usr/bin/mlnlffigen

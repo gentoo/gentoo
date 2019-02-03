@@ -1,5 +1,5 @@
---- example/Makefile.am
-+++ example/Makefile.am
+--- a/example/Makefile.am
++++ b/example/Makefile.am
 @@ -37,8 +37,7 @@
  otfdump_LDADD = ${CommonLDADD}
  
@@ -10,8 +10,8 @@
  
  otftobdf_SOURCE = otftobdf.c
  otftobdf_LDADD = ${CommonLDADD}
---- libotf.pc.in
-+++ libotf.pc.in
+--- a/libotf.pc.in
++++ b/libotf.pc.in
 @@ -7,5 +7,6 @@
  Description: OpenType font library
  Version: @PACKAGE_VERSION@

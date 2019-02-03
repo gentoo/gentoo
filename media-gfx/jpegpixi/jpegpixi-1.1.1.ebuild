@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
 DESCRIPTION="almost lossless JPEG pixel interpolator, for correcting digital camera defects"
 HOMEPAGE="http://www.zero-based.org/software/jpegpixi/"
@@ -15,7 +15,7 @@ IUSE=""
 DEPEND="virtual/jpeg"
 
 src_install() {
-	dobin jpegpixi jpeghotp || die
-	doman man/jpegpixi.1 man/jpeghotp.1
-	dodoc AUTHORS NEWS README README.jpeglib ChangeLog
+	dobin jpeg{hotp,pixi}
+	doman man/jpeg{hotp,pixi}.1
+	einstalldocs AUTHORS NEWS README README.jpeglib ChangeLog
 }

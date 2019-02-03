@@ -10,7 +10,7 @@ SRC_URI="http://www.xbill.org/download/${P}.tar.gz"
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="alpha amd64 x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="gtk"
 
 RDEPEND="gtk? ( x11-libs/gtk+:2 )

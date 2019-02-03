@@ -13,6 +13,7 @@
     <remote-id type="cpan-module">SQL::Translator::Filter::DefaultExtra</remote-id>
     <remote-id type="cpan-module">SQL::Translator::Filter::Globals</remote-id>
     <remote-id type="cpan-module">SQL::Translator::Filter::Names</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Generator::DDL::MySQL</remote-id>
     <remote-id type="cpan-module">SQL::Translator::Generator::DDL::PostgreSQL</remote-id>
     <remote-id type="cpan-module">SQL::Translator::Generator::DDL::SQLServer</remote-id>
     <remote-id type="cpan-module">SQL::Translator::Generator::DDL::SQLite</remote-id>
@@ -31,6 +32,7 @@
     <remote-id type="cpan-module">SQL::Translator::Parser::DBI::SQLite</remote-id>
     <remote-id type="cpan-module">SQL::Translator::Parser::DBI::Sybase</remote-id>
     <remote-id type="cpan-module">SQL::Translator::Parser::Excel</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::JSON</remote-id>
     <remote-id type="cpan-module">SQL::Translator::Parser::MySQL</remote-id>
     <remote-id type="cpan-module">SQL::Translator::Parser::Oracle</remote-id>
     <remote-id type="cpan-module">SQL::Translator::Parser::PostgreSQL</remote-id>
@@ -50,6 +52,7 @@
     <remote-id type="cpan-module">SQL::Translator::Producer::Dumper</remote-id>
     <remote-id type="cpan-module">SQL::Translator::Producer::GraphViz</remote-id>
     <remote-id type="cpan-module">SQL::Translator::Producer::HTML</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::JSON</remote-id>
     <remote-id type="cpan-module">SQL::Translator::Producer::Latex</remote-id>
     <remote-id type="cpan-module">SQL::Translator::Producer::MySQL</remote-id>
     <remote-id type="cpan-module">SQL::Translator::Producer::Oracle</remote-id>

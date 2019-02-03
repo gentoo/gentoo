@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,12 +6,12 @@ EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="Ice Window Manager with Themes"
-HOMEPAGE="http://www.icewm.org/ https://github.com/bbidulock/icewm"
+HOMEPAGE="https://ice-wm.org/ https://github.com/bbidulock/icewm"
 LICENSE="GPL-2"
 SRC_URI="https://github.com/bbidulock/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE="bidi debug doc minimal nls truetype uclibc xinerama"
 
 # Tests broken in all versions, patches welcome, bug #323907, #389533
@@ -36,13 +36,10 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	>=sys-apps/sed-4
-	x11-proto/xextproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 	doc? ( app-text/linuxdoc-tools )
 	nls? ( >=sys-devel/gettext-0.19.6 )
 	truetype? ( >=media-libs/freetype-2.0.9 )
-	xinerama? ( x11-proto/xineramaproto )
 "
 
 pkg_setup() {

@@ -1,4 +1,0 @@
-# Config file for /etc/init.d/ypserv
-
-# Command line options to pass to ypserv:
-YPSERV_OPTS=""

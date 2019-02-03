@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="An open source Java library for parsing font files"
-HOMEPAGE="http://pdfbox.apache.org/"
+HOMEPAGE="https://pdfbox.apache.org/"
 SRC_URI="mirror://apache/${MY_PN}/${PV}/${MY_P}-src.zip"
 LICENSE="Apache-2.0"
 SLOT="1.8"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,10 +17,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (25 Dec 2018)
+# Needs net-mail/mailutils and net-libs/webkit-gtk which are not
+# stable (yet?), bug #663248
+app-editors/emacs mailutils xwidgets
+
+# Andreas Sturmlechner <asturm@gentoo.org> (14 Sep 2018)
+# media-libs/libraw is not stable
+media-gfx/imagemagick raw
+
+# Andreas Sturmlechner <asturm@gentoo.org> (7 May 2018)
+# sci-visualization/gnuplot is not stable.
+app-admin/sysstat isag
+dev-util/ddd gnuplot
+sci-libs/libqalculate gnuplot
+sci-mathematics/octave gnuplot
+
 # Mart Raudsepp <leio@gentoo.org> (02 Sep 2017)
 # Drop stable gstreamer on sparc, can move to use.stable.mask
 # after gstreamer:0.10 is gone; #601354
-media-plugins/evas_generic_loaders gstreamer
 dev-libs/efl gstreamer
 media-sound/mp3splt-gtk gstreamer
 net-im/pidgin gstreamer
@@ -32,21 +47,8 @@ app-admin/augeas test
 app-text/texlive context l10n_ja
 sys-block/thin-provisioning-tools test
 
-# Gilles Dartiguelongue <eva@gentoo.org> (13 Nov 2016)
-# Remove when stabilized, see bug #538828
-<=x11-base/xorg-drivers-1.17 input_devices_libinput
-
-# Gilles Dartiguelongue <eva@gentoo.org> (13 Nov 2016)
-# Dependency not stable on this arch, bug #542570 and bug #538828.
-xfce-base/xfce4-settings libinput
-
-# Davide Pesavento <pesa@gentoo.org> (18 Oct 2015)
-# Requires dev-python/PyQt4, which is not stable on sparc
-media-sound/pulseaudio equalizer
-
 # Pacho Ramos <pacho@gentoo.org> (02 Aug 2015)
 # Missing keywords
-dev-libs/protobuf python
 dev-python/pyquery test
 sys-fs/dmraid klibc
 
@@ -55,13 +57,4 @@ sys-fs/dmraid klibc
 dev-util/geany-plugins gtkspell
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
->=net-libs/webkit-gtk-2.4 geoloc
 >=x11-libs/gtk+-3.12.2 cloudprint
-x11-libs/gksu gnome
-x11-wm/icewm gnome
-
-# sufficiently recent wayland is not stable yet, bug #559062
-~dev-libs/efl-1.15.2 wayland
-~dev-libs/efl-1.17.0 wayland
-~media-libs/elementary-1.15.2 wayland
-~media-libs/elementary-1.17.0 wayland

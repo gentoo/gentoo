@@ -1,7 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 inherit elisp-common eutils flag-o-matic
 
 DESCRIPTION="GNU Common Lisp"
@@ -17,10 +18,10 @@ IUSE="+ansi athena emacs +readline tk X"
 RESTRICT="strip"
 
 RDEPEND="emacs? ( virtual/emacs )
-	readline? ( sys-libs/readline )
+	readline? ( sys-libs/readline:= )
 	athena? ( x11-libs/libXaw )
-	>=dev-libs/gmp-4.1
-	tk? ( dev-lang/tk )
+	>=dev-libs/gmp-4.1:=
+	tk? ( dev-lang/tk:= )
 	X? ( x11-libs/libXt x11-libs/libXext x11-libs/libXmu x11-libs/libXaw )
 	virtual/latex-base"
 DEPEND="${RDEPEND}
@@ -85,7 +86,7 @@ src_configure() {
 
 src_compile() {
 	emake -j1
-	emake -C info gcl.info
+	VARTEXFONTS="${T}"/fonts emake -C info gcl.info
 	if use athena; then
 		pushd xgcl-2 > /dev/null
 		pdflatex dwdoc.tex

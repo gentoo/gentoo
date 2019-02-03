@@ -1,0 +1,26 @@
+From 3ccccb91ae1c07a4310778b3d7ba74ff4ff787f0 Mon Sep 17 00:00:00 2001
+From: Paul Yang <yang.yang@baishancloud.com>
+Date: Wed, 21 Nov 2018 13:16:27 +0800
+Subject: [PATCH] Fix wrong return value in ssl3_ctx_ctrl
+
+This fixes issue #7677
+
+Reviewed-by: Matt Caswell <matt@openssl.org>
+(Merged from https://github.com/openssl/openssl/pull/7678)
+---
+ ssl/s3_lib.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ssl/s3_lib.c b/ssl/s3_lib.c
+index 866ca4dfa9b..99ae48199c2 100644
+--- a/ssl/s3_lib.c
++++ b/ssl/s3_lib.c
+@@ -3781,7 +3781,7 @@ long ssl3_ctx_ctrl(SSL_CTX *ctx, int cmd, long larg, void *parg)
+                                   EVP_PKEY_security_bits(pkdh), 0, pkdh)) {
+                 SSLerr(SSL_F_SSL3_CTX_CTRL, SSL_R_DH_KEY_TOO_SMALL);
+                 EVP_PKEY_free(pkdh);
+-                return 1;
++                return 0;
+             }
+             EVP_PKEY_free(ctx->cert->dh_tmp);
+             ctx->cert->dh_tmp = pkdh;

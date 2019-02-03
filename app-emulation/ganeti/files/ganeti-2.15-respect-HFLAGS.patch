@@ -1,0 +1,12 @@
+diff --git a/Makefile.am b/Makefile.am
+index a04b95ae3..e26508ad9 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -803,6 +803,7 @@ HFLAGS = \
+ 	-fwarn-tabs \
+ 	-optP-include -optP$(HASKELL_PACKAGE_VERSIONS_FILE) \
+ 	-hide-all-packages \
++	$(HCFLAGS) \
+ 	`cat $(HASKELL_PACKAGE_IDS_FILE)` \
+ 	$(GHC_BYVERSION_FLAGS)
+ if DEVELOPER_MODE

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessin
 
 PATCH_VER=1
 CROSS_VER=1.1.7
-PATCH_BASE="perl-5.25.11-patches-${PATCH_VER}"
+PATCH_BASE="perl-5.26.1-patches-${PATCH_VER}"
 
 DIST_AUTHOR=SHAY
 
@@ -56,7 +56,7 @@ IUSE="berkdb debug doc gdbm ithreads"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
-	gdbm? ( >=sys-libs/gdbm-1.8.3 )
+	gdbm? ( >=sys-libs/gdbm-1.8.3:= )
 	app-arch/bzip2
 	sys-libs/zlib
 "
@@ -284,10 +284,6 @@ echo "${patchoutput}" >> "${S}/MANIFEST"
 
 src_prepare_perlcross() {
 	cp -a ../perl-cross-${CROSS_VER}/* . || die
-
-	sed -i \
-		-e 's/(15 + $CLEANUP)/(13 + $CLEANUP)/' \
-		cnf/diffs/perl5-${PV}/makemaker-test.patch || die
 
 	sed -i \
 		-e 's/MakeMaker\.pm .*/MakeMaker.pm bf9174c70a0e50ff2fee4552c7df89b37d292da1/' \

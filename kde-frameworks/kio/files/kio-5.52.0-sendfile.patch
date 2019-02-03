@@ -1,0 +1,109 @@
+From 31980ecd1cacac9bd75ce35e3048946e1c27e1a0 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Wed, 21 Nov 2018 15:30:48 +0000
+Subject: Restore sendfile support
+
+Summary:
+Somehow in the kdelibs -> framework port the cmake checks for
+HAVE_SENDFILE got lost.
+
+That re-enables a massive optimisation in the file kioslave that has all the code existing and used in kdelibs4 that we're currently missing.
+
+Test Plan:
+Put a compilation fail inside the #ifdef, before it wasn't triggered, now it is.
+
+Ran unit tests
+Moved a file in dolphin
+
+Reviewers: dfaure
+
+Reviewed By: dfaure
+
+Subscribers: ngraham, apol, kde-frameworks-devel
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D17048
+---
+ src/ioslaves/file/ConfigureChecks.cmake        | 1 +
+ src/ioslaves/file/config-kioslave-file.h.cmake | 2 ++
+ src/ioslaves/file/file_unix.cpp                | 2 +-
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/ioslaves/file/ConfigureChecks.cmake b/src/ioslaves/file/ConfigureChecks.cmake
+index 5a83d1b..39fcd6f 100644
+--- a/src/ioslaves/file/ConfigureChecks.cmake
++++ b/src/ioslaves/file/ConfigureChecks.cmake
+@@ -7,6 +7,7 @@ include(CheckStructHasMember)
+ check_include_files(sys/time.h    HAVE_SYS_TIME_H)
+ check_include_files(string.h      HAVE_STRING_H)
+ check_include_files(limits.h      HAVE_LIMITS_H)
++check_function_exists(sendfile    HAVE_SENDFILE)
+ 
+ check_function_exists(posix_fadvise    HAVE_FADVISE)                  # kioslave
+ 
+diff --git a/src/ioslaves/file/config-kioslave-file.h.cmake b/src/ioslaves/file/config-kioslave-file.h.cmake
+index e47fdb2..3df7ebd 100644
+--- a/src/ioslaves/file/config-kioslave-file.h.cmake
++++ b/src/ioslaves/file/config-kioslave-file.h.cmake
+@@ -13,3 +13,5 @@
+ /* Defined if system has extended file attributes support. */
+ #cmakedefine01 HAVE_SYS_XATTR_H
+ 
++/* Defined if system has the sendfile function. */
++#cmakedefine01 HAVE_SENDFILE
+diff --git a/src/ioslaves/file/file_unix.cpp b/src/ioslaves/file/file_unix.cpp
+index 817cce8..34422e5 100644
+--- a/src/ioslaves/file/file_unix.cpp
++++ b/src/ioslaves/file/file_unix.cpp
+@@ -49,7 +49,7 @@
+ #include "fdreceiver.h"
+ 
+ //sendfile has different semantics in different platforms
+-#if defined HAVE_SENDFILE && defined Q_OS_LINUX
++#if HAVE_SENDFILE && defined Q_OS_LINUX
+ #define USE_SENDFILE 1
+ #endif
+ 
+-- 
+cgit v0.11.2
+From 8f926e4596221b11e62c7ac80bb5864d3d8cf4f6 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Wed, 21 Nov 2018 15:30:53 +0000
+Subject: Use correct variable type for returned value from read/sendfile
+
+Summary:
+n stores the read/transferred bytes. This returns a ssize_t.
+We were casting to an int, which theoretically is a loss of data.
+
+In practice it isn't an issue as we only read a max of MAX_IPC_SIZE at a
+time, which would fit in an int.
+
+Reviewers: apol
+
+Reviewed By: apol
+
+Subscribers: kde-frameworks-devel
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D17051
+---
+ src/ioslaves/file/file_unix.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ioslaves/file/file_unix.cpp b/src/ioslaves/file/file_unix.cpp
+index 34422e5..7ed0ae8 100644
+--- a/src/ioslaves/file/file_unix.cpp
++++ b/src/ioslaves/file/file_unix.cpp
+@@ -251,7 +251,7 @@ void FileProtocol::copy(const QUrl &srcUrl, const QUrl &destUrl,
+ 
+     KIO::filesize_t processed_size = 0;
+     char buffer[ MAX_IPC_SIZE ];
+-    int n;
++    ssize_t n = 0;
+ #ifdef USE_SENDFILE
+     bool use_sendfile = buff_src.st_size < 0x7FFFFFFF;
+ #endif
+-- 
+cgit v0.11.2

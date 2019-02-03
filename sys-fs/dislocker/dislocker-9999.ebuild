@@ -22,7 +22,7 @@ IUSE="ruby"
 
 DEPEND="sys-fs/fuse:*
 	net-libs/mbedtls
-	ruby? ( || ( dev-lang/ruby:2.2 dev-lang/ruby:2.3 ) )"
+	ruby? ( dev-lang/ruby:2.3 )"
 
 RDEPEND="${DEPEND}"
 

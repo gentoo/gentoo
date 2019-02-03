@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,9 +6,8 @@ inherit toolchain-funcs user
 
 MY_P="logsurfer-${PV}"
 DESCRIPTION="Real Time Log Monitoring and Alerting"
-HOMEPAGE="http://www.crypt.gen.nz/logsurfer/"
-SRC_URI="http://kerryt.orcon.net.nz/${MY_P}.tar.gz
-	http://www.crypt.gen.nz/logsurfer/${MY_P}.tar.gz"
+HOMEPAGE="https://www.crypt.gen.nz/logsurfer/"
+SRC_URI="mirror://sourceforge/logsurfer/${MY_P}.tar.gz"
 
 LICENSE="freedist GPL-2+"
 SLOT="0"

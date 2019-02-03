@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>zlg@gentoo.org</email>
-		<name>Daniel Campbell</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="sudo">Use the sudo backend instead the su one</flag>
 	</use>

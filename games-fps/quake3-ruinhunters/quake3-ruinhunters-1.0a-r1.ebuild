@@ -14,7 +14,7 @@ SRC_URI="
 	mirror://quakeunity/modifications/ruinhunters/ruin_hunters_v10a_patch.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 src_prepare() {

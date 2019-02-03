@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,8 +11,8 @@ MY_PN="Jama"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A Java Matrix Package"
-HOMEPAGE="http://math.nist.gov/javanumerics/jama/"
-SRC_URI="http://math.nist.gov/javanumerics/${PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://math.nist.gov/javanumerics/jama/"
+SRC_URI="https://math.nist.gov/javanumerics/${PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

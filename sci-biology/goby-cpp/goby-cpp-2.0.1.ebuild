@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,8 @@ inherit autotools-utils
 
 DESCRIPTION="A DNA sequencing data management framework - C/C++ API"
 HOMEPAGE="http://campagnelab.org/software/goby/"
-SRC_URI="http://chagall.med.cornell.edu/goby/releases/archive/release-goby_${PV}/goby_${PV}-cpp.zip"
+SRC_URI="http://chagall.med.cornell.edu/goby/releases/archive/release-goby_${PV}/goby_${PV}-cpp.zip
+	https://dev.gentoo.org/~mgorny/dist/${P}-files.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -24,7 +25,7 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PV}/cpp"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-underlinking.patch
+	"${WORKDIR}"/${P}-files/${P}-underlinking.patch
 )
 
 src_prepare() {
@@ -33,7 +34,7 @@ src_prepare() {
 		-i src/Makefile.am || die
 
 	pushd src/goby > /dev/null || die
-	cp "${FILESDIR}"/*.proto . || die
+	cp "${WORKDIR}"/${P}-files/*.proto . || die
 	protoc --cpp_out=. *.proto || die
 	popd > /dev/null || die
 

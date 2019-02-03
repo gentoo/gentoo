@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils fixheadtails qmail user
 
 HOMEPAGE="http://www.inter7.com/index.php?page=vpopmail"
-DESCRIPTION="A collection of programs to manage virtual email domains and accounts on your Qmail mail servers"
+DESCRIPTION="Collection of programs to manage virtual email on Qmail servers"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -18,7 +18,7 @@ REQUIRED_USE="mysql? ( !postgres )"
 DEPEND="virtual/qmail
 	maildrop? ( mail-filter/maildrop )
 	mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql[server] )
+	postgres? ( dev-db/postgresql:=[server] )
 	spamassassin? ( mail-filter/spamassassin )"
 RDEPEND="${DEPEND}"
 
@@ -28,7 +28,6 @@ VPOP_DEFAULT_HOME="/var/vpopmail"
 vpopmail_set_homedir() {
 	VPOP_HOME=$(egethome vpopmail)
 	if [[ -z "${VPOP_HOME}" ]]; then
-		ebeep
 		eerror "vpopmail's home directory is null in passwd data!"
 		eerror "You probably want to check that out."
 		eerror "Continuing with default."
@@ -82,14 +81,15 @@ src_configure() {
 
 	local authopts
 	if use mysql; then
-		mysqlinc=$(mysql_config --include)
-		authopts="--enable-incdir=${mysqlinc#-I}"
+		incdir=$(mysql_config --variable=pkgincludedir)
+		libdir=$(mysql_config --variable=pkglibdir)
 		authopts+=" --enable-auth-module=mysql"
-		authopts+="	--enable-libdir=/usr/$(get_libdir)/mysql"
-		authopts+="	--enable-sql-logging"
+		authopts+=" --enable-incdir=${incdir}"
+		authopts+=" --enable-libdir=${libdir}"
+		authopts+=" --enable-sql-logging"
 		authopts+=" --enable-valias"
-		authopts+="	--disable-mysql-replication"
-		authopts+="	--enable-mysql-limits"
+		authopts+=" --disable-mysql-replication"
+		authopts+=" --enable-mysql-limits"
 	elif use postgres; then
 		pglibdir=$(pg_config --libdir)
 		authopts+=" --enable-auth-module=pgsql"
@@ -140,13 +140,17 @@ src_install() {
 	dodoc doc/AUTHORS ChangeLog doc/FAQ doc/INSTALL doc/README*
 	dohtml doc/doc_html/* doc/man_html/*
 	rm -rf "${D}/${VPOP_HOME}"/doc
-	dosym /usr/share/doc/${PF}/ "${VPOP_HOME}"/doc
+	dosym \
+		$(realpath --relative-to "${D}/${VPOP_HOME}"/ "${D}"/usr/share/doc/${PF}/) \
+		"${VPOP_HOME}"/doc
 
 	# create /etc/vpopmail.conf
 	if use mysql; then
 		dodir /etc
 		mv "${D}${VPOP_HOME}"/etc/vpopmail.mysql "${D}"/etc/vpopmail.conf
-		dosym /etc/vpopmail.conf "${VPOP_HOME}"/etc/vpopmail.mysql
+		dosym \
+			$(realpath --relative-to "${D}/${VPOP_HOME}"/etc/ "${D}"/etc/vpopmail.conf) \
+			"${VPOP_HOME}"/etc/vpopmail.mysql
 
 		sed -e '12d' -i "${D}"/etc/vpopmail.conf
 		echo '# Read-only DB' >> "${D}"/etc/vpopmail.conf

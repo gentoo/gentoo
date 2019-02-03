@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="efficient generation of subroutines via string eval"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ppc x86"
+KEYWORDS="amd64 ~arm hppa ~ia64 ppc ~ppc64 ~sparc x86"
 IUSE="test minimal"
 
 RDEPEND="

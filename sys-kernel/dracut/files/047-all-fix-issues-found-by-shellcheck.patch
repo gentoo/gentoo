@@ -1,0 +1,77 @@
+From 3aa37cafde734719f2377600a17459fad30edfbc Mon Sep 17 00:00:00 2001
+From: Lukas Nykryn <lnykryn@redhat.com>
+Date: Fri, 2 Mar 2018 12:29:46 +0100
+Subject: [PATCH 06/14] all: fix issues found by shellcheck
+To: <initramfs@vger.kernel.org>
+
+Error: SHELLCHECK_WARNING:
+/usr/lib/dracut/dracut-init.sh:939:20: error: Argument to implicit -n is always true due to literal strings. [SC2157]
+  937|   dracut_kernel_post() {
+  938|       for _f in modules.builtin.bin modules.builtin modules.order; do
+  939|->         [[ $srcmods/$_f ]] && inst_simple "$srcmods/$_f" "/lib/modules/$kernel/$_f"
+  940|       done
+  941|
+
+Error: SHELLCHECK_WARNING:
+/usr/lib/dracut/modules.d/98syslog/parse-syslog-opts.sh:18:12: error: This expression is constant. Did you forget a $ somewhere? [SC2078]
+   16|       elif [ -e /sbin/syslogd ]; then
+   17|           syslogtype="syslogd"
+   18|->     elif [ /sbin/syslog-ng ]; then
+   19|           syslogtype="syslog-ng"
+   20|       else
+
+Error: SHELLCHECK_WARNING:
+/usr/lib/dracut/modules.d/90crypt/crypt-lib.sh:15:29: error: Since you double quoted this, it will not word split, and the loop will only run once. [SC2066]
+   13|               strstr "$d" "${luks##luks-}" && return 0
+   14|               if [ -n "$dev" ]; then
+   15|->                 for _dev in "$(devnames $d)"; do
+   16|                       [ "$dev" -ef "$_dev" ] && return 0
+   17|                   done
+---
+ dracut-init.sh                          | 2 +-
+ modules.d/90crypt/crypt-lib.sh          | 2 +-
+ modules.d/98syslog/parse-syslog-opts.sh | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/dracut-init.sh b/dracut-init.sh
+index 53e6f13a..1278c638 100644
+--- a/dracut-init.sh
++++ b/dracut-init.sh
+@@ -942,7 +942,7 @@ for_each_kmod_dep() {
+ 
+ dracut_kernel_post() {
+     for _f in modules.builtin.bin modules.builtin modules.order; do
+-        [[ $srcmods/$_f ]] && inst_simple "$srcmods/$_f" "/lib/modules/$kernel/$_f"
++        [[ -e $srcmods/$_f ]] && inst_simple "$srcmods/$_f" "/lib/modules/$kernel/$_f"
+     done
+ 
+     # generate module dependencies for the initrd
+diff --git a/modules.d/90crypt/crypt-lib.sh b/modules.d/90crypt/crypt-lib.sh
+index 532b9a71..bbf485e0 100755
+--- a/modules.d/90crypt/crypt-lib.sh
++++ b/modules.d/90crypt/crypt-lib.sh
+@@ -12,7 +12,7 @@ crypttab_contains() {
+             strstr "${l##luks-}" "${luks##luks-}" && return 0
+             strstr "$d" "${luks##luks-}" && return 0
+             if [ -n "$dev" ]; then
+-                for _dev in "$(devnames $d)"; do
++                for _dev in $(devnames $d); do
+                     [ "$dev" -ef "$_dev" ] && return 0
+                 done
+             fi
+diff --git a/modules.d/98syslog/parse-syslog-opts.sh b/modules.d/98syslog/parse-syslog-opts.sh
+index 50ec2759..9ec6ad47 100755
+--- a/modules.d/98syslog/parse-syslog-opts.sh
++++ b/modules.d/98syslog/parse-syslog-opts.sh
+@@ -15,7 +15,7 @@ detect_syslog() {
+         syslogtype="rsyslogd"
+     elif [ -e /sbin/syslogd ]; then
+         syslogtype="syslogd"
+-    elif [ /sbin/syslog-ng ]; then
++    elif [ -e /sbin/syslog-ng ]; then
+         syslogtype="syslog-ng"
+     else
+         warn "Could not find any syslog binary although the syslogmodule is selected to be installed. Please check."
+-- 
+2.16.1
+

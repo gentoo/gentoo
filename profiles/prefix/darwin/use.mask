@@ -18,12 +18,9 @@ acpi
 alsa
 apm
 caps
-cman
-clvm
 directfb
 djbfft
 fbcon
-fmod
 ggi
 gpm
 hardened

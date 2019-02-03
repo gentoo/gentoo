@@ -1,10 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# we don't ever will install these, so no need to depend on them
--*virtual/libc
--*virtual/os-headers
-
 -*>=sys-apps/baselayout-2
 # add back prefix baselayout
 *sys-apps/baselayout-prefix

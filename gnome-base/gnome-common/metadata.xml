@@ -5,8 +5,4 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
-<use>
-	<flag name="autoconf-archive">Pull in <pkg>sys-devel/autoconf-archive</pkg> for ax_*.m4 files
-		instead of installing them from the gnome-common tarball</flag>
-</use>
 </pkgmetadata>

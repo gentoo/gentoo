@@ -1,13 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit autotools-utils
-
-if [[ ${PV} == 9999 ]]; then
+if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/Flameeyes/unpaper.git"
-	inherit git-2 autotools
+	inherit git-r3 autotools
 else
 	SRC_URI="https://www.flameeyes.eu/files/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
@@ -17,7 +15,6 @@ DESCRIPTION="Post-processor for scanned and photocopied book pages"
 HOMEPAGE="https://www.flameeyes.eu/projects/unpaper"
 
 LICENSE="GPL-2"
-
 SLOT="0"
 IUSE="libav test"
 
@@ -33,9 +30,7 @@ DEPEND="dev-libs/libxslt
 # images. Wait until we get a better testsuite.
 RESTRICT="test"
 
-if [[ ${PV} == 9999 ]]; then
-	src_prepare() {
-		eautoreconf
-		autotools-utils_src_prepare
-	}
-fi
+src_prepare() {
+	default
+	[[ ${PV} == *9999 ]] && eautoreconf
+}

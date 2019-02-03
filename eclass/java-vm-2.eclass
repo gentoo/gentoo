@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-vm-2.eclass
 # @MAINTAINER:
 # java@gentoo.org
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: Java Virtual Machine eclass
 # @DESCRIPTION:
 # This eclass provides functionality which assists with installing
@@ -14,13 +15,13 @@ case ${EAPI:-0} in
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
-inherit fdo-mime multilib pax-utils prefix
+inherit multilib pax-utils prefix xdg-utils
 
 EXPORT_FUNCTIONS pkg_setup pkg_postinst pkg_prerm pkg_postrm
 
 RDEPEND="
 	>=dev-java/java-config-2.2.0-r3
-	>=app-eselect/eselect-java-0.2.0"
+	>=app-eselect/eselect-java-0.4.0"
 DEPEND="${RDEPEND}"
 
 export WANT_JAVA_CONFIG=2
@@ -73,20 +74,12 @@ java-vm-2_pkg_setup() {
 # invalid. Also update mime database.
 
 java-vm-2_pkg_postinst() {
-	# Note that we cannot rely on java-config here, as it will silently recognize
-	# e.g. icedtea6-bin as valid system VM if icedtea6 is set but invalid (e.g. due
-	# to the migration to icedtea-6)
-	if [[ ! -L "${EROOT}${JAVA_VM_SYSTEM}" ]]; then
-		java_set_default_vm_
-	else
-		local current_vm_path=$(readlink "${EROOT}${JAVA_VM_SYSTEM}")
-		local current_vm=$(basename "${ROOT}${current_vm_path}")
-		if [[ ! -L "${EROOT}${JAVA_VM_DIR}/${current_vm}" ]]; then
-			java_set_default_vm_
-		fi
+	if [[ ! -d ${EROOT}${JAVA_VM_SYSTEM} ]]; then
+		eselect java-vm set system "${VMHANDLE}"
+		einfo "${P} set as the default system-vm."
 	fi
 
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 
@@ -97,10 +90,10 @@ java-vm-2_pkg_postinst() {
 # Warn user if removing system-vm.
 
 java-vm-2_pkg_prerm() {
-	if [[ "$(GENTOO_VM="" java-config -f 2>/dev/null)" == "${VMHANDLE}" && -z "${REPLACED_BY_VERSION}" ]]; then
-		ewarn "It appears you are removing your system-vm!"
-		ewarn "Please run java-config -L to list available VMs,"
-		ewarn "then use java-config -S to set a new system-vm!"
+	if [[ $(GENTOO_VM= java-config -f 2>/dev/null) == ${VMHANDLE} && -z ${REPLACED_BY_VERSION} ]]; then
+		ewarn "It appears you are removing your system-vm! Please run"
+		ewarn "\"eselect java-vm list\" to list available VMs, then use"
+		ewarn "\"eselect java-vm set system\" to set a new system-vm!"
 	fi
 }
 
@@ -112,19 +105,7 @@ java-vm-2_pkg_prerm() {
 # Update mime database.
 
 java-vm-2_pkg_postrm() {
-	fdo-mime_desktop_database_update
-}
-
-
-# @FUNCTION: java_set_default_vm_
-# @INTERNAL
-# @DESCRIPTION:
-# Set system-vm.
-
-java_set_default_vm_() {
-	java-config-2 --set-system-vm="${VMHANDLE}"
-
-	einfo " ${P} set as the default system-vm."
+	xdg_desktop_database_update
 }
 
 

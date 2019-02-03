@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-single-r1
 
 DESCRIPTION="a package for multitrack audio processing"
-HOMEPAGE="http://ecasound.seul.org/ecasound"
-SRC_URI="http://${PN}.seul.org/download/${P}.tar.gz"
+HOMEPAGE="https://ecasound.seul.org/ecasound/"
+SRC_URI="https://${PN}.seul.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="1"

@@ -1,0 +1,38 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Defaults
+: ${UNREALIRCD_CONF:=/etc/unrealircd/${SVCNAME}.conf}
+: ${UNREALIRCD_PIDFILE:=/run/unrealircd/${SVCNAME#unreal}.pid}
+
+command="/usr/bin/unrealircd"
+# Run the daemon in the foreground and let OpenRC background it.
+# This way the PID file is created securely, as root.
+command_args="-F -f ${UNREALIRCD_CONF} ${UNREALIRCD_OPTS}"
+command_user=unrealircd
+command_background=true
+pidfile="${UNREALIRCD_PIDFILE}"
+start_stop_daemon_args="${UNREALIRCD_SSD_OPTS}"
+extra_started_commands="reload"
+
+depend() {
+	use dns net
+	provide ircd
+}
+
+# It is unsafe for the unrealircd user to be able to write to its own
+# PID file, since root will be sending e.g. kill signals to the PID
+# listed in that file. Ensure that we overwrite the ownership and
+# permissions on /run/unrealircd from previous init scripts.
+start_pre() {
+	checkpath --directory --owner root:root --mode 0700 /run/unrealircd
+}
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	start-stop-daemon --signal HUP \
+			  --pidfile "${pidfile}" \
+			  ${UNREALIRCD_SSD_OPTS}
+	eend $?
+}

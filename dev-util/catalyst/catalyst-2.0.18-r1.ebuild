@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -36,9 +36,9 @@ RDEPEND="
 	app-arch/lbzip2
 	app-crypt/shash
 	app-arch/tar[xattr]
+	sys-fs/dosfstools
 	virtual/cdrtools
 	amd64? ( >=sys-boot/syslinux-3.72 )
-	ia64? ( sys-fs/dosfstools )
 	x86? ( >=sys-boot/syslinux-3.72 )
 	ccache? ( dev-util/ccache )
 	kernel_linux? ( app-misc/zisofs-tools >=sys-fs/squashfs-tools-2.1 )
@@ -111,5 +111,5 @@ src_install() {
 pkg_postinst() {
 	einfo "You can find more information about catalyst by checking out the"
 	einfo "catalyst project page at:"
-	einfo "https://www.gentoo.org/proj/en/releng/catalyst/index.xml"
+	einfo "https://wiki.gentoo.org/wiki/Catalyst"
 }

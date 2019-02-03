@@ -8,7 +8,7 @@ DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1
 
-DESCRIPTION="A Bazaar plugin that provides a option to generate XML output forbuiltin commands."
+DESCRIPTION="Bazaar plugin providing an option to generate XML output for builtin commands"
 HOMEPAGE="http://bazaar-vcs.org/XMLOutput"
 SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz"
 

@@ -1,0 +1,29 @@
+Index: hdf-4.2.13/configure.ac
+===================================================================
+--- hdf-4.2.13.orig/configure.ac
++++ hdf-4.2.13/configure.ac
+@@ -673,6 +673,9 @@ case "$host" in
+   *-pc-cygwin*)
+     LIBS="$LIBS -ltirpc"
+     CPPFLAGS="$CPPFLAGS -I/usr/include/tirpc"  ;;
++  *-pc-linux*)
++    LIBS="$LIBS -ltirpc"
++    CPPFLAGS="$CPPFLAGS -I/usr/include/tirpc"  ;;
+   *) ;;
+ esac
+ 
+@@ -703,6 +706,14 @@ if test "X$BUILD_XDR" != "Xyes"; then
+       HAVE_RPC="yes"
+       AC_CHECK_HEADER([rpc.h],[:], [unset HAVE_RPC])
+       AC_CHECK_LIB([tirpc], [xdr_opaque],[:], [unset HAVE_RPC])
++      if test -z "$HAVE_RPC"; then
++        AC_MSG_ERROR([couldn't find tirpc library])
++      fi
++      ;;
++     *-pc-linux*)
++      HAVE_RPC="yes"
++      AC_CHECK_HEADER([rpc/rpc.h],[:], [unset HAVE_RPC])
++      AC_CHECK_LIB([tirpc], [xdr_opaque],[:], [unset HAVE_RPC])
+       if test -z "$HAVE_RPC"; then
+         AC_MSG_ERROR([couldn't find tirpc library])
+       fi

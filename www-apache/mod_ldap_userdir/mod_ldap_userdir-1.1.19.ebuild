@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit apache-module depend.apache
 
 DESCRIPTION="Look up Apache ~user directories in an LDAP directory"
-HOMEPAGE="http://horde.net/~jwm/software/${PN}/"
-SRC_URI="http://horde.net/~jwm/software/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.horde.net/~jwm/software/mod_ldap_userdir/"
+SRC_URI="https://horde.net/~jwm/software/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-1"
 SLOT="0"

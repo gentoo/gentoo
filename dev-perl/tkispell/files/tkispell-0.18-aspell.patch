@@ -1,0 +1,46 @@
+From ed7ede66c01fbae6c5de0e6dc28d991a1f27016c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Sat, 11 Oct 2014 21:48:27 +1300
+Subject: Patch to use aspell instead of ispell
+
+---
+ Makefile.PL | 8 ++++----
+ tkispell    | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 4cebdea..8a49493 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,11 +1,11 @@
+ use ExtUtils::MakeMaker;
+ 
+-my $ispell_bin = `which ispell`;
++my $ispell_bin = `which ispell-aspell`;
+ # The first match is for Solaris which.  The second is for 
+ # Linux which.
+-if (($ispell_bin =~ /no ispell/) || (length($ispell_bin) == 0)) {
+-    print "Could not find locate ispell.  Make sure that\n";
+-    print "the ispell program is installed in a directory\n";
++if (($ispell_bin =~ /no ispell-aspell/) || (length($ispell_bin) == 0)) {
++    print "Could not find locate ispell-aspell.  Make sure that\n";
++    print "the ispell-aspell program is installed in a directory\n";
+     print "named in the PATH environment variable.\n";  
+     exit 1;
+ }
+diff --git a/tkispell b/tkispell
+index fbc6cc7..6bde051 100644
+--- a/tkispell
++++ b/tkispell
+@@ -14,7 +14,7 @@ my $lang = $ENV{LANG};
+ if ($lang =~ /^C$/ || ! defined ($lang)) {$lang = 'default'; }
+ my $hdict = $ENV{HOME}."/.ispell_$lang"; # Personal dictionary. 
+ 
+-my $ispell_prog = `which ispell`;  
++my $ispell_prog = `which ispell-aspell`;
+ chomp $ispell_prog;
+ my ($cw, $b1, @misspelledlist, @replacementlist, @addlist, $midx);
+ my $ifname = '';
+-- 
+2.16.2
+

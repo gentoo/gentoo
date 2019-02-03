@@ -16,6 +16,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/message_filters
 	dev-ros/nodelet
+	dev-libs/console_bridge:=
 	dev-ros/roscpp
 	dev-ros/roslaunch
 	dev-ros/tf2

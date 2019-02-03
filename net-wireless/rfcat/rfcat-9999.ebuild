@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,8 +10,8 @@ DESCRIPTION="The swiss army knife of subGHz"
 HOMEPAGE="https://bitbucket.org/atlas0fd00m/rfcat/"
 
 if [ "${PV}" = "9999" ]; then
-	EHG_REPO_URI="https://bitbucket.org/atlas0fd00m/rfcat"
-	inherit mercurial
+	EGIT_REPO_URI="https://github.com/atlas0fd00m/rfcat.git"
+	inherit git-r3
 	KEYWORDS=""
 else
 	DATE="170508"

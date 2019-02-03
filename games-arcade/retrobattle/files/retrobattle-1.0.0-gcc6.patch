@@ -1,5 +1,5 @@
---- a/src/GameLogic.h
-+++ b/src/GameLogic.h
+--- src/GameLogic.h
++++ src/GameLogic.h
 @@ -52,8 +52,8 @@
    /* Fixed interval time-based animation */
    static const int maximumFrameRate = 60;
@@ -11,8 +11,8 @@
  
    float lastFrameTime;
    float cyclesLeftOver;
---- a/src/GameLogic.cc
-+++ b/src/GameLogic.cc
+--- src/GameLogic.cc
++++ src/GameLogic.cc
 @@ -206,3 +206,6 @@
  {
    sprintf(buf, "%s/data/gfx/%s", datadir, file);

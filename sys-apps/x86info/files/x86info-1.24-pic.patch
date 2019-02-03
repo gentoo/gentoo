@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/270388
 
---- cpuid.c
-+++ cpuid.c
+--- a/cpuid.c
++++ b/cpuid.c
 @@ -62,12 +62,28 @@
  		sched_setaffinity(getpid(), sizeof(set), &set);
  	}

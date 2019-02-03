@@ -1,34 +1,37 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Multiple sequence alignment"
 HOMEPAGE="http://bibiserv.techfak.uni-bielefeld.de/dialign"
-SRC_URI="http://bibiserv.techfak.uni-bielefeld.de/applications/dialign/resources/downloads/dialign-2.2.1-src.tar.gz"
+SRC_URI="http://bibiserv.techfak.uni-bielefeld.de/applications/dialign/resources/downloads/dialign-${PV}-src.tar.gz"
 
-SLOT="0"
 LICENSE="LGPL-2.1"
+SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
-S="${WORKDIR}"/dialign_package
+S=${WORKDIR}/dialign_package
+PATCHES=( "${FILESDIR}"/${PN}-2.2.1-fix-build-system.patch )
+
+src_configure() {
+	tc-export CC
+	append-cppflags -I. -DCONS
+}
 
 src_compile() {
-	emake -C src \
-		CC="$(tc-getCC)" \
-		CFLAGS="${CFLAGS} -I. -DCONS -c"
+	emake -C src
 }
 
 src_install() {
 	dobin src/${PN}-2
 	insinto /usr/share/${PN}
-	doins dialign2_dir/*
+	doins -r dialign2_dir/.
 
-	cat >> "${T}"/80${PN} <<- EOF
-	DIALIGN2_DIR="${EPREFIX}/usr/share/${PN}"
+	cat >> "${T}"/80${PN} <<- EOF || die
+		DIALIGN2_DIR="${EPREFIX}/usr/share/${PN}"
 	EOF
 	doenvd "${T}"/80${PN}
 }

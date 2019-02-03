@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -10,7 +10,7 @@ SRC_URI="mirror://kernel/linux/network/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86"
 
 IUSE="${IUSE} bluetooth debug doc examples +ethernet iptables l2tp nftables"
 IUSE="${IUSE} ofono openvpn openconnect pptp policykit tools vpnc +wifi wispr networkmanager"
@@ -40,6 +40,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-1.33-polkit-configure-check-fix.patch"
 	"${FILESDIR}/${PN}-1.33-resolv-conf-overwrite.patch"
+	"${FILESDIR}/${PN}-1.35-include-ifbridge-before-netinet.patch"
 )
 
 src_prepare() {

@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Fast erasure codec for the command-line, C, Python, or Haskell"
-HOMEPAGE="https://pypi.python.org/pypi/zfec"
+HOMEPAGE="https://pypi.org/project/zfec/"
 SRC_URI="mirror://pypi/z/zfec/zfec-${PV}.tar.gz"
 
 LICENSE="GPL-2"

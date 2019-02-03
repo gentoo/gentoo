@@ -1,0 +1,25 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -330,11 +330,13 @@
+ 
+-AC_ARG_WITH(pam,
+-    [  --with-pam     build with PAM support],
+-    [AC_DEFINE([USE_PAM], 1, [Define to 1 to build with PAM support. (--with-pam)])])
+-if test "$with_pam" = yes ; then
+-   AC_CHECK_LIB(pam, pam_start, [], [AC_MSG_ERROR([library 'pam' is required for PAM])])
+-   AC_CHECK_HEADERS(security/pam_appl.h, [],
+-                    [AC_CHECK_HEADERS(pam/pam_appl.h, [],
+-                                      [AC_MSG_ERROR([header file <security/pam_appl.h> or <pam/pam_appl.h> is required for PAM.])])])
+-fi
++AC_ARG_WITH([pam], AS_HELP_STRING([--with-pam], [Build with PAM support]))
++
++AS_IF([test "x$with_pam" = "xyes"], [
++    AC_DEFINE([USE_PAM], 1, [Define to 1 to build with PAM support])
++    AC_CHECK_LIB(pam, pam_start, [], [AC_MSG_ERROR([library 'pam' is required for PAM])])
++    AC_CHECK_HEADERS(security/pam_appl.h,
++        [],
++        [AC_CHECK_HEADERS(pam/pam_appl.h, [],
++        [AC_MSG_ERROR([header file <security/pam_appl.h> or <pam/pam_appl.h> is required for PAM.])])])
++
++])
+ 

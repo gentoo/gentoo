@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit gkrellm-plugin
 
 DESCRIPTION="A plugin for GKrellM2 that has a VU meter and a sound chart"
@@ -14,16 +15,15 @@ KEYWORDS="~alpha amd64 ~ppc ~sparc x86"
 IUSE="nls"
 
 RDEPEND="
-	app-admin/gkrellm[X]
+	app-admin/gkrellm:2[X]
 	media-libs/alsa-lib
-	sci-libs/fftw:3.0=
-"
+	sci-libs/fftw:3.0="
 DEPEND="${RDEPEND}"
 
-PLUGIN_SO="src/gkrellmss.so"
-PLUGIN_DOCS="Themes"
+PATCHES=( "${FILESDIR}"/${P}-Respect-LDFLAGS.patch )
 
-PATCHES=( "${FILESDIR}/${P}-Respect-LDFLAGS.patch" )
+PLUGIN_SO=( src/gkrellmss$(get_modname) )
+PLUGIN_DOCS=( Themes )
 
 src_compile() {
 	addpredict /dev/snd

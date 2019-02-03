@@ -1,0 +1,22 @@
+--- libvncserver-LibVNCServer-0.9.12/CMakeLists.txt
++++ libvncserver-LibVNCServer-0.9.12/CMakeLists.txt
+@@ -666,8 +666,8 @@
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libvncclient.pc.cmakein ${CMAKE_CURRENT_BINARY_DIR}/libvncclient.pc @ONLY)
+ 
+ 
+-install_targets(/lib vncserver)
+-install_targets(/lib vncclient)
++install_targets(/${CMAKE_INSTALL_LIBDIR} vncserver)
++install_targets(/${CMAKE_INSTALL_LIBDIR} vncclient)
+ install_files(/include/rfb FILES
+     rfb/keysym.h
+     rfb/rfb.h
+@@ -677,7 +677,7 @@
+     rfb/rfbregion.h
+ )
+ 
+-install_files(/lib/pkgconfig FILES
++install_files(/${CMAKE_INSTALL_LIBDIR}/pkgconfig FILES
+     libvncserver.pc
+     libvncclient.pc
+ )

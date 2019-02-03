@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 # "ayatana" support pending on GTK+-3.x version of synapse wrt #411613
-IUSE="plugins +zeitgeist"
+IUSE="plugins"
 
 RDEPEND="
 	dev-libs/libgee:0.8
@@ -32,11 +32,8 @@ RDEPEND="
 	x11-libs/libnotify
 	x11-libs/pango
 	x11-themes/adwaita-icon-theme
-	plugins? ( >=net-libs/rest-0.7 )
-	zeitgeist? (
-		dev-libs/libzeitgeist
-		>=gnome-extra/zeitgeist-0.9.14[fts]
-		)"
+	plugins? ( >=net-libs/rest-0.7 )"
+
 	#ayatana? ( dev-libs/libappindicator )
 DEPEND="${RDEPEND}
 	$(vala_depend)
@@ -51,9 +48,9 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--enable-indicator=no
 		$(use_enable plugins librest yes)
-		$(use_enable zeitgeist)
+		--disable-zeitgeist
+		--enable-indicator=no
 		)
 	autotools-utils_src_configure
 }

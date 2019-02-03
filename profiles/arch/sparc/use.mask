@@ -1,10 +1,31 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License, v2
 
 # Unmask the flag which corresponds to ARCH.
 -sparc
 
 # This file contains a list of useflags that cannot be used on sparc.
+
+# Sergei Trofimovich <slyfox@gentoo.org> (12 Dec 2018)
+# mongodb is not keyworded on sparc
+mongodb
+
+# Andreas Sturmlechner <asturm@gentoo.org> (06 Dec 2018)
+# dev-qt/qtdeclarative-5.11.x is broken and blocks re-keywording of Qt5.
+qml
+
+# Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
+# Python 3.7 support requires fresh versions of packages which are stuck
+# at keywordreqs.
+# bug #661306: dev-python/pytest
+# bug #661320: dev-python/twisted
+python_targets_python3_7
+python_single_target_python3_7
+
+# Sergei Trofimovich <slyfox@gentoo.org> (19 Nov 2017)
+# There is no luajit support on sparc. Bug #554376
+luajit
+luajittex
 
 # David Seifert <soap@gentoo.org> (08 Jul 2017)
 # Games are not keyworded anymore on sparc
@@ -38,7 +59,6 @@ nagios-game
 
 # Samuli Suominen <ssuominen@gentoo.org> (07 May 2012)
 # Missing keywording in www-client/firefox wrt #360427
-firefox
 mozilla
 thunderbird
 
@@ -79,10 +99,6 @@ romio
 dar32
 dar64
 
-# 2006/09/05 - Tupone Alfredo <tupone@gentoo.org>
-# doomsday ebuild is not available on this architecture
-doomsday
-
 # Needs java
 pdfannotextractor
 
@@ -108,7 +124,6 @@ lqr
 indi
 chm
 ebook
-celt
 capi
 lensfun
 jingle
@@ -151,15 +166,10 @@ bluray
 gps
 
 # Stuff we don't want
-schroedinger
 ots
 frei0r
 prelude
 redis
-
-# Asterisk use flag masking
-zaptel
-
 
 # USE-flags from differents origins
 brltty
@@ -185,47 +195,12 @@ hdf5
 
 # This should probably never be touched
 
-# Unmask sparc-only video cards
--video_cards_sunbw2
--video_cards_suncg14
--video_cards_suncg3
--video_cards_suncg6
--video_cards_sunffb
--video_cards_sunleo
--video_cards_suntcx
-
 # 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available
-video_cards_nsc
-video_cards_s3
-video_cards_sis
-video_cards_tseng
-video_cards_s3virge
-video_cards_i128
-video_cards_trident
-video_cards_neomagic
-video_cards_cirrus
-video_cards_tga
-video_cards_i740
-video_cards_siliconmotion
-video_cards_ark
-video_cards_rendition
-video_cards_newport
-video_cards_chips
-video_cards_apm
-video_cards_intel
 video_cards_nv
-video_cards_vesa
-video_cards_ast
 video_cards_nouveau
 
 # Matt Turner <mattst88@gentoo.org>
-# Mask more VIDEO_CARDs added with mesa-8.0
-video_cards_i915
-video_cards_i965
-video_cards_ilo
-# vmware wasn't added with mesa-8.0, but it should still be masked
-video_cards_vmware
 # llvm is not keyworded
 video_cards_amdgpu
 video_cards_radeonsi
@@ -250,13 +225,6 @@ multilib
 # Ben de Groot <yngwin@gentoo.org> (11 Feb 2009)
 # Both dev-qt/qtphonon and media-sound/phonon are unkeyworded
 phonon
-
-# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
-# libdlm and cman are not keyworded
-cman
-clvm
-
--zeitgeist
 
 # nvidia toolkit for binary drivers
 cg

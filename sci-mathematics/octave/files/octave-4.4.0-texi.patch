@@ -1,0 +1,11 @@
+--- a/doc/interpreter/module.mk	2018-04-30 19:03:56.000000000 +0200
++++ a/doc/interpreter/module.mk.new	2018-05-22 12:17:03.587175816 +0200
+@@ -368,6 +368,8 @@
+ 	$(AWK) -f $(srcdir)/%reldir%/mkcontrib.awk $(srcdir)/%reldir%/contributors.in > $@-t && \
+ 	mv $@-t $@
+ 
++%reldir%/preface.texi: %reldir%/contributors.texi
++
+ AUTHORS: %reldir%/preface.texi %reldir%/contributors.texi | %reldir%/$(octave_dirstamp)
+ 	$(AM_V_MAKEINFO)rm -f $@-t $@ && \
+ 	if [ "x$(srcdir)" != "x." ] && [ -f $(srcdir)/%reldir%/contributors.texi ] && [ ! -f %reldir%/contributors.texi ]; then \

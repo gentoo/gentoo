@@ -1,0 +1,68 @@
+https://github.com/xmms2/xmms2-devel/pull/5
+
+From 82741bf3094c8e0bca8eb1b7f3bc147eeb51ea06 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Thu, 6 Dec 2018 07:19:08 +0000
+Subject: [PATCH] OTHER: fix c++ client dangling reference
+
+On #xmm2 Chewi reported c++/tut7 to be broken at start:
+
+```
+GLib-WARNING **: glib-2.56.2/glib/giounix.c:410
+Error while getting flags for FD: Bad file descriptor (9)
+```
+
+valgrind shows the problem as read of uninitialized data:
+
+```
+$ valgrind ./tut7
+
+==32268== Conditional jump or move depends on uninitialised value(s)
+==32268==    at 0x49DC36B: xmmsc_mainloop_gmain_init (xmmsclient-glib.c:80)
+==32268==    by 0x49E11BE: Xmms::GMainloop::GMainloop(xmmsc_connection_St*) (xmmsclient++-glib.cpp:11)
+==32268==    by 0x10C64D: main (in /home/slyfox/dev/git/xmms2-devel/doc/tutorial/c++/tut7)
+==32268==  Uninitialised value was created by a stack allocation
+==32268==    at 0x49E119A: Xmms::GMainloop::GMainloop(xmmsc_connection_St*) (xmmsclient++-glib.cpp:8)
+```
+
+This happens due to use of dangling C++ reference to stack variable:
+
+```
+// somewhere in src/include/xmmsclient/xmmsclient++/mainloop.h
+class MainloopInterface {
+    MainloopInterface( xmmsc_connection_t* conn ) :
+        running_( false ), conn_( conn ) { }
+  protected:
+    bool running_;
+    xmmsc_connection_t*& conn_;
+}
+```
+
+Note: `conn_` refers to dangling local variable of
+`MainloopInterface::MainloopInterface` constructor.
+
+The fix is to pass through pointer reference.
+`MainLoop::MainLoop()` already does it.
+
+Reported-by: James Le Cuirot
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ src/include/xmmsclient/xmmsclient++/mainloop.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/include/xmmsclient/xmmsclient++/mainloop.h b/src/include/xmmsclient/xmmsclient++/mainloop.h
+index de97e20d..268ca6f7 100644
+--- a/src/include/xmmsclient/xmmsclient++/mainloop.h
++++ b/src/include/xmmsclient/xmmsclient++/mainloop.h
+@@ -41,7 +41,7 @@ namespace Xmms
+ 			 *  @note The constructor should only initialize the
+ 			 *        mainloop, not start it!
+ 			 */
+-			MainloopInterface( xmmsc_connection_t* conn ) :
++			MainloopInterface( xmmsc_connection_t*& conn ) :
+ 				running_( false ), conn_( conn ) { }
+ 
+ 			/** Destructor.  Should also stop the loop.
+-- 
+2.19.2
+

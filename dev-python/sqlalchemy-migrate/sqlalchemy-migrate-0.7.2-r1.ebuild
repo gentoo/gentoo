@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="SQLAlchemy Schema Migration Tools"
-HOMEPAGE="https://pypi.python.org/pypi/sqlalchemy-migrate"
+HOMEPAGE="https://pypi.org/project/sqlalchemy-migrate/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

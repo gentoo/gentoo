@@ -18,6 +18,8 @@
 		<remote-id type="github">openstack/glance_store</remote-id>
 	</upstream>
 	<use>
-		<flag name="cinder">adds cinder backend support</flag>
+		<flag name="cinder">enable cinder backend supprt</flag>
+		<flag name="swift">enable swift backend supprt</flag>
+		<flag name="vmware">enable vmware backend supprt</flag>
 	</use>
 </pkgmetadata>

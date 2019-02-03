@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SRC_URI=""
 
 LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
-SLOT="0/59"
+SLOT="0/60"
 KEYWORDS=""
 IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 tk"
 
@@ -46,7 +46,6 @@ DEPEND="${RDEPEND}
 			)
 		)
 	)"
-#	doc? ( dev-python/sphinx )
 
 # Who would care about predictable directory names?
 S="${WORKDIR}/pypy3-v${PV%_*}-src"
@@ -179,8 +178,6 @@ src_compile() {
 	cp -p "${T}"/usession*-0/testing_1/{pypy3-c,libpypy3-c.so} . || die
 	pax-mark m pypy3-c libpypy3-c.so
 
-	#use doc && emake -C pypy/doc html
-
 	einfo "Generating caches and CFFI modules ..."
 
 	# Generate Grammar and PatternGrammar pickles.
@@ -223,11 +220,11 @@ src_compile() {
 
 src_test() {
 	# (unset)
-	local -x PYTHONDONTWRITEBYTECODE
+	local -x PYTHONDONTWRITEBYTECODE=
 
 	# Test runner requires Python 2 too. However, it spawns PyPy3
 	# internally so that we end up testing the correct interpreter.
-	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy3-c lib-python || die
+	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy3-c -vv lib-python || die
 }
 
 src_install() {
@@ -237,6 +234,8 @@ src_install() {
 	doexe pypy3-c libpypy3-c.so
 	pax-mark m "${ED%/}${dest}/pypy3-c" "${ED%/}${dest}/libpypy3-c.so"
 	insinto "${dest}"
+	# preserve mtimes to avoid obsoleting caches
+	insopts -p
 	doins -r include lib_pypy lib-python
 	dosym ../$(get_libdir)/pypy3/pypy3-c /usr/bin/pypy3
 	dodoc README.rst
@@ -255,9 +254,6 @@ src_install() {
 			"${ED%/}${dest}"/lib_pypy/_tkinter \
 			"${ED%/}${dest}"/lib-python/*3/test/test_{tcl,tk,ttk*}.py || die
 	fi
-
-	# Install docs
-	#use doc && dohtml -r pypy/doc/_build/html/
 
 	einfo "Generating caches and byte-compiling ..."
 

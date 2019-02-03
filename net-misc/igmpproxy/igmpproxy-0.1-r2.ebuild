@@ -5,7 +5,7 @@ EAPI=6
 inherit linux-info systemd
 
 DESCRIPTION="Multicast Routing Daemon using only IGMP signalling"
-HOMEPAGE="https://sourceforge.net/projects/igmpproxy"
+HOMEPAGE="https://github.com/pali/igmpproxy"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 Stanford"
@@ -17,7 +17,6 @@ CONFIG_CHECK="~IP_MULTICAST ~IP_MROUTE"
 
 src_install() {
 	emake DESTDIR="${D}" install
-
 	newinitd "${FILESDIR}/${PN}-init.d" ${PN}
 	newconfd "${FILESDIR}/${PN}-conf.d" ${PN}
 	systemd_dounit "${FILESDIR}/${PN}.service"

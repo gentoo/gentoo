@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -17,13 +17,13 @@ IUSE="syslog"
 # en on first place so others can override it
 LANGS="en cs es fr it nl"
 for lng in ${LANGS}; do
-	IUSE+=" linguas_${lng}"
+	IUSE+=" l10n_${lng}"
 done
 
 RDEPEND="
 	app-text/ghostscript-gpl
 	net-print/cups
-	|| ( >=net-print/cups-filters-1.0.43-r1[foomatic] net-print/foomatic-filters )
+	>=net-print/cups-filters-1.0.43-r1[foomatic]
 	sys-libs/glibc
 	syslog? ( virtual/logger )
 "
@@ -33,7 +33,7 @@ src_configure() {
 	local lng i withval
 
 	for lng in ${LANGS}; do
-		if use linguas_${lng}; then
+		if use l10n_${lng}; then
 			if [[ -n ${i} ]] ; then
 				ewarn "This package supports only one translation at a time."
 				ewarn "Overriding previous value: \"${withval}\" with \"${lng}\""

@@ -1,5 +1,5 @@
---- game/main.cpp
-+++ game/main.cpp
+--- a/game/main.cpp
++++ b/game/main.cpp
 @@ -28,6 +28,8 @@
  #include <sys/stat.h>
  #include <sys/types.h>
@@ -9,8 +9,8 @@
  void migrateConfig( void)
  {
      //if onlineCheck is not set, default it to true
---- utilssdl/PNG.cpp
-+++ utilssdl/PNG.cpp
+--- a/utilssdl/PNG.cpp
++++ b/utilssdl/PNG.cpp
 @@ -45,7 +45,7 @@
  {
      png_size_t check;

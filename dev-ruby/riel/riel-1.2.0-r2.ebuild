@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/jpace/riel/archive/v${PV}.tar.gz -> ${PN}-git-${PV}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 hppa ~ppc ~sparc x86"
+KEYWORDS="amd64 ~hppa ~ppc ~sparc x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rainbow-1.1.4:* dev-ruby/logue"

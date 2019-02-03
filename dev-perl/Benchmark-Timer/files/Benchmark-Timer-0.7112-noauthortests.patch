@@ -1,0 +1,143 @@
+From 891cdf3a0cef46a5ee2d36e2a0c937537d9916bc Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 19 Aug 2018 16:02:25 +1200
+Subject: Remove "Cute" generation of author tests during install time.
+
+Author tests aren't useful for end users, nor are the additional
+dependencies ( Test::Compile, UNIVERSAL::require, URI ) needed
+to support all this behaviour which is functionally static once
+published.
+---
+ MANIFEST                                      |   9 --
+ META.yml                                      |   3 -
+ Makefile.PL                                   |  38 -----
+ inc/Module/Install/AutomatedTester.pm         |  24 ---
+ inc/Module/Install/Bugtracker.pm              |  29 ----
+ inc/Module/Install/GithubMeta.pm              |  53 -------
+ .../PRIVATE/Enable_Verbose_CPAN_Testing.pm    |  51 -------
+ inc/Module/Install/StandardTests.pm           | 139 ------------------
+ inc/URI/Escape.pm                             |  89 -----------
+ .../PRIVATE/Enable_Verbose_CPAN_Testing.pm    |  50 -------
+ 10 files changed, 485 deletions(-)
+ delete mode 100644 inc/Module/Install/AutomatedTester.pm
+ delete mode 100644 inc/Module/Install/Bugtracker.pm
+ delete mode 100644 inc/Module/Install/GithubMeta.pm
+ delete mode 100644 inc/Module/Install/PRIVATE/Enable_Verbose_CPAN_Testing.pm
+ delete mode 100644 inc/Module/Install/StandardTests.pm
+ delete mode 100644 inc/URI/Escape.pm
+ delete mode 100644 private-lib/Module/Install/PRIVATE/Enable_Verbose_CPAN_Testing.pm
+
+diff --git a/MANIFEST b/MANIFEST
+index 8fbb909..7653c9b 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -20,23 +20,14 @@ t/99_errors.t
+ inc/Module/AutoInstall.pm
+ inc/Module/Install.pm
+ inc/Module/Install/AutoLicense.pm
+-inc/Module/Install/AutomatedTester.pm
+ inc/Module/Install/Base.pm
+-inc/Module/Install/Bugtracker.pm
+ inc/Module/Install/Can.pm
+ inc/Module/Install/CheckOptional.pm
+ inc/Module/Install/Fetch.pm
+-inc/Module/Install/GithubMeta.pm
+ inc/Module/Install/Include.pm
+ inc/Module/Install/Makefile.pm
+ inc/Module/Install/Metadata.pm
+-inc/Module/Install/StandardTests.pm
+ inc/Module/Install/Win32.pm
+ inc/Module/Install/WriteAll.pm
+-inc/Module/Install/PRIVATE/Enable_Verbose_CPAN_Testing.pm
+-inc/URI/Escape.pm
+-
+-# Private Module::Install extensions
+-private-lib/Module/Install/PRIVATE/Enable_Verbose_CPAN_Testing.pm
+ 
+ META.yml
+diff --git a/META.yml b/META.yml
+index b5fd365..a653d31 100644
+--- a/META.yml
++++ b/META.yml
+@@ -4,12 +4,9 @@ author:
+   - '-2001 Andrew Ho.'
+ build_requires:
+   ExtUtils::MakeMaker: 6.36
+-  Test::Compile: 0
+   Test::More: 0
+-  UNIVERSAL::require: 0
+ configure_requires:
+   ExtUtils::MakeMaker: 6.36
+-  URI::Escape: 0
+ distribution_type: module
+ dynamic_config: 1
+ generated_by: 'Module::Install version 1.19'
+diff --git a/Makefile.PL b/Makefile.PL
+index a187b91..386b90f 100755
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -10,17 +10,9 @@ use inc::Module::Install;
+ 
+ all_from('lib/Benchmark/Timer.pm');
+ 
+-auto_set_bugtracker;
+-githubmeta;
+-
+ # Perl 5.6 doesn't work with URI::Escape. We get an error about Exporter not exporting "import"
+ perl_version '5.008';
+ 
+-configure_requires(
+-  # Module::Install::Bugtracker needs this
+-  'URI::Escape' => 0,
+-);
+-
+ requires(
+   'Time::HiRes' => 0,
+ );
+@@ -31,8 +23,6 @@ test_requires(
+ 
+ license 'gpl2';
+ 
+-use_standard_tests;
+-
+ auto_license(holder => 'David Coppit');
+ 
+ check_optional('Statistics::PointEstimation' => 0,
+@@ -41,34 +31,6 @@ check_optional('Statistics::PointEstimation' => 0,
+ no_index 'file' => 'delta.pl';
+ no_index 'directory' => 'private-lib';
+ 
+-enable_verbose_cpan_testing();
+-
+ realclean_files('inc');
+ 
+ WriteAll;
+-
+-# ---- Workaround for broken module ----
+-# https://rt.cpan.org/Ticket/Display.html?id=125772
+-{
+-  package Module::Install::StandardTests;
+-
+-  sub write_standard_test_compile {
+-      my $self = shift;
+-      $self->write_test_file('000_standard__compile.t', q/
+-          BEGIN {
+-            if ($^O eq 'MSWin32') {
+-              require Test::More;
+-              Test::More->import(skip_all =>
+-                  "Test::Compile doesn't work properly on Windows");
+-            } else {
+-              require Test::More;
+-              Test::More->import();
+-              eval "use Test::Compile";
+-              Test::More->builder->BAIL_OUT(
+-                  "Test::Compile required for testing compilation") if $@;
+-              all_pm_files_ok();
+-            }
+-          }
+-      /);
+-  }
+-}
+-- 
+2.17.1
+

@@ -1,0 +1,38 @@
+diff -Naur a/brainworkshop.pyw b/brainworkshop.pyw
+--- a/brainworkshop.pyw	2018-07-14 19:11:17.536581902 +0100
++++ b/brainworkshop.pyw	2018-07-14 19:12:07.582695292 +0100
+@@ -41,7 +41,7 @@
+             error_msg("Expected an argument following %s" % arg)
+             exit(1)
+ 
+-import random, os, sys, imp, socket, webbrowser, time, math, traceback, datetime
++import random, os, sys, imp, socket, webbrowser, time, math, traceback, datetime, errno
+ if sys.version_info >= (3,0):
+     import urllib.request, configparser as ConfigParser
+     from io import StringIO
+@@ -173,7 +173,7 @@
+     if rtrn:
+         return rtrn
+     else:
+-        return os.path.join(get_main_dir(), FOLDER_RES)
++        return '@GENTOO_DATADIR@'
+ def edit_config_ini():
+     if sys.platform == 'win32':
+         cmd = 'notepad'
+@@ -823,7 +823,15 @@
+         f = open(os.path.join(get_data_dir(), STATS_BINARY), 'w')
+         f.close()
+ 
+-check_and_move_user_data()
++try:
++    path = get_data_dir()
++    os.makedirs(path)
++except OSError as exc:
++    if exc.errno == errno.EEXIST and os.path.isdir(path):
++        pass
++    else:
++        raise
++
+ load_last_user('defaults.ini')
+ 
+ cfg = parse_config(CONFIGFILE)

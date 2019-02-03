@@ -1,30 +1,38 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 BASHCOMP_P=bashcomp-2.0.2
-EGIT_REPO_URI="https://github.com/scop/bash-completion"
-inherit autotools git-r3 versionator
+PYTHON_COMPAT=( python3_{5,6} )
+inherit autotools eapi7-ver git-r3 python-any-r1
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
+EGIT_REPO_URI="https://github.com/scop/bash-completion"
 SRC_URI="https://bitbucket.org/mgorny/bashcomp2/downloads/${BASHCOMP_P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
-RDEPEND=">=app-shells/bash-4.3_p30-r1
+# completion collision with net-fs/mc
+RDEPEND=">=app-shells/bash-4.3_p30-r1:0
 	sys-apps/miscfiles
-	!app-eselect/eselect-bashcomp"
+	!app-eselect/eselect-bashcomp
+	!!net-fs/mc"
 DEPEND="app-arch/xz-utils
 	test? (
 		${RDEPEND}
 		app-misc/dtach
 		dev-util/dejagnu
 		dev-tcltk/tcllib
+		$(python_gen_any_dep '
+			dev-python/pexpect[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
+		')
 	)"
 PDEPEND=">=app-shells/gentoo-bashcomp-20140911"
 
@@ -43,12 +51,17 @@ STRIP_COMPLETIONS=(
 	# Now-dead symlinks to deprecated completions
 	hd ncal
 
-	# Installed by sys-apps/util-linux-2.28
-	mount umount mount.linux umount.linux
+	# Installed by sys-apps/util-linux-2.28 (and now deprecated)
+	_mount _umount _mount.linux _umount.linux
 
 	# Deprecated in favor of sys-apps/util-linux-2.31
 	_rfkill
 )
+
+python_check_deps() {
+	has_version "dev-python/pexpect[${PYTHON_USEDEP}]" &&
+	has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+}
 
 src_unpack() {
 	git-r3_src_unpack
@@ -58,6 +71,7 @@ src_unpack() {
 src_prepare() {
 	eapply "${WORKDIR}/${BASHCOMP_P}/${PN}"-2.1_p*.patch
 	eapply_user
+
 	eautoreconf
 }
 
@@ -92,7 +106,8 @@ src_install() {
 
 	local file
 	for file in "${STRIP_COMPLETIONS[@]}"; do
-		rm "${ED}"/usr/share/bash-completion/completions/${file} || die
+		rm "${ED}"/usr/share/bash-completion/completions/${file} ||
+			die "stripping ${file} failed"
 	done
 	# remove deprecated completions (moved to other packages)
 	rm "${ED}"/usr/share/bash-completion/completions/_* || die
@@ -108,7 +123,7 @@ src_install() {
 pkg_postinst() {
 	local v
 	for v in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least 2.1-r90 ${v}; then
+		if ver_test "${v}" -lt 2.1-r90; then
 			ewarn "For bash-completion autoloader to work, all completions need to"
 			ewarn "be installed in /usr/share/bash-completion/completions. You may"
 			ewarn "need to rebuild packages that installed completions in the old"

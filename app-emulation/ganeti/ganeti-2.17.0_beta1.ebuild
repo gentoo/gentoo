@@ -127,12 +127,7 @@ DEPEND="
 		app-emulation/qemu
 	)
 	lxc? ( app-emulation/lxc )
-	drbd? (
-		|| (
-			<sys-cluster/drbd-8.5
-			sys-cluster/drbd-utils
-		)
-	)
+	drbd? ( sys-cluster/drbd-utils )
 	rbd? ( sys-cluster/ceph )
 	ipv6? ( net-misc/ndisc6 )
 	${PYTHON_DEPS}"

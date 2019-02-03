@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,13 +9,13 @@ MY_PN="quake2"
 FILE="q2-${MY_PV}-demo-x86.exe"
 
 DESCRIPTION="Demo data for Quake 2"
-HOMEPAGE="http://en.wikipedia.org/wiki/Quake_II"
+HOMEPAGE="https://en.wikipedia.org/wiki/Quake_II"
 SRC_URI="mirror://idsoftware/${MY_PN}/${FILE}"
 
 # See license.txt - it's a bit different to Q2EULA in Portage
 LICENSE="quake2-demodata"
 SLOT="0"
-KEYWORDS="~alpha amd64 x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~x86 ~x86-fbsd"
 IUSE="symlink"
 
 RDEPEND=""

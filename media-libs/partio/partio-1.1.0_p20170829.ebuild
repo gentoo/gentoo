@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,14 +7,14 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit cmake-utils vcs-snapshot python-single-r1
 
 DESCRIPTION="A library for particle IO and manipulation"
-HOMEPAGE="http://www.disneyanimation.com/technology/partio.html"
+HOMEPAGE="https://www.disneyanimation.com/technology/partio.html"
 
 MY_GIT_COMMIT="2774ef3958da46d9f8a4230ebda9e04b1aa8f4e5"
 SRC_URI="https://github.com/wdas/${PN}/archive/${MY_GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

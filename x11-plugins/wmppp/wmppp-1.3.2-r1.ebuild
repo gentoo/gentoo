@@ -7,7 +7,7 @@ inherit toolchain-funcs
 MY_P=${PN}.app-${PV}
 DESCRIPTION="PPP dial control and network load monitor with NeXTStep look"
 HOMEPAGE="http://www.dockapps.net/wmppp.app"
-SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${MY_P}.tar.gz"
+SRC_URI="http://www.dockapps.net/download/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,10 +18,10 @@ RDEPEND=">=x11-libs/libdockapp-0.7:=
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
-DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${MY_P}
+# Specific to this tarball
+S=${WORKDIR}/dockapps-7ec9002
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"

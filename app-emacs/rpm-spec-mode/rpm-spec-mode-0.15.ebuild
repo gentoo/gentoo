@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Emacs mode to ease editing of RPM spec files"
-HOMEPAGE="http://www.emacswiki.org/emacs/RpmSpecMode"
+HOMEPAGE="https://www.emacswiki.org/emacs/RpmSpecMode"
 # taken from http://www.tihlde.org/~stigb/${PN}.el
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 

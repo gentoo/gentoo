@@ -3,7 +3,7 @@
 
 EAPI=5
 
-DESCRIPTION="spampd is a program to scan messages for possible Unsolicited Commercial E-mail content"
+DESCRIPTION="spampd is a program to scan messages for Unsolicited Commercial E-mail content"
 HOMEPAGE="http://www.worlddesign.com/index.cfm/rd/mta/spampd.htm"
 SRC_URI="https://github.com/mpaperno/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"

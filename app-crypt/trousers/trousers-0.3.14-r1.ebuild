@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools linux-info ltprune readme.gentoo-r1 systemd user udev
+inherit autotools linux-info readme.gentoo-r1 systemd user udev
 
 DESCRIPTION="An open-source TCG Software Stack (TSS) v1.1 implementation"
 HOMEPAGE="http://trousers.sf.net"
@@ -17,14 +17,12 @@ IUSE="doc libressl selinux" # gtk
 # gtk support presently does NOT compile.
 #	gtk? ( >=x11-libs/gtk+-2 )
 
-CDEPEND=">=dev-libs/glib-2
+DEPEND=">=dev-libs/glib-2
 	!libressl? ( >=dev-libs/openssl-0.9.7:0 )
-	libressl? ( dev-libs/libressl )
-"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
-RDEPEND="${CDEPEND}
+	libressl? ( dev-libs/libressl )"
+RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-tcsd )"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.3.13-nouseradd.patch"
@@ -93,6 +91,8 @@ src_configure() {
 
 src_install() {
 	default
+	find "${D}" -name '*.la' -delete || die
+
 	keepdir /var/lib/tpm
 	use doc && dodoc doc/*
 	newinitd "${FILESDIR}"/tcsd.initd tcsd
@@ -100,6 +100,5 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/tcsd.service
 	udev_dorules "${FILESDIR}"/61-trousers.rules
 	fowners tss:tss /var/lib/tpm
-	prune_libtool_files
 	readme.gentoo_create_doc
 }

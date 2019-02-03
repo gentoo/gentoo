@@ -6,7 +6,7 @@
 		<name>Gentoo VDR Project</name>
 	</maintainer>
 	<use>
-	    <flag name="client">
+		<flag name="client">
 			Compile the VDR plugin vdr-streamdev-client
 			that acts like a dvb-budget card
 		</flag>

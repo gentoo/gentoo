@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,13 +14,13 @@ HOMEPAGE="http://www.mpich.org/"
 SRC_URI="http://www.mpich.org/static/downloads/${PV}/${P}.tar.gz"
 
 SLOT="0"
-LICENSE="mpich"
+LICENSE="mpich2"
 KEYWORDS="amd64 ~arm64 hppa ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+cxx doc fortran mpi-threads romio threads"
 
 COMMON_DEPEND="
 	>=dev-libs/libaio-0.3.109-r5[${MULTILIB_USEDEP}]
-	>=sys-apps/hwloc-1.10.0-r2[${MULTILIB_USEDEP}]
+	<sys-apps/hwloc-2[${MULTILIB_USEDEP}]
 	romio? ( net-fs/nfs-utils )"
 
 DEPEND="${COMMON_DEPEND}

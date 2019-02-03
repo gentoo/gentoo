@@ -1,0 +1,20 @@
+--- aubio-0.4.8/wscript
++++ aubio-0.4.8/wscript
+@@ -548,7 +548,7 @@
+                 source = 'doc/web.cfg',
+                 target = '../doc/web/html/index.html',
+                 cwd = 'doc')
+-        bld.install_files( '${DATAROOTDIR}' + '/doc/libaubio-doc',
++        bld.install_files( '${DATAROOTDIR}' + '/doc/' + os.environ['PF'] + '/libaubio-doc',
+                 bld.path.ant_glob('doc/web/html/**'),
+                 cwd = bld.path.find_dir ('doc/web'),
+                 relative_trick = True)
+@@ -564,7 +564,7 @@
+                         ' `dirname ${SRC}` `dirname ${TGT}`',
+                 source = 'doc/conf.py',
+                 target = '../doc/_build/html/index.html')
+-        bld.install_files( '${DATAROOTDIR}' + '/doc/libaubio-doc/sphinx',
++        bld.install_files( '${DATAROOTDIR}' + '/doc/' + os.environ['PF'] + '/libaubio-doc/sphinx',
+                 bld.path.ant_glob('doc/_build/html/**'),
+                 cwd = bld.path.find_dir('doc/_build/html'),
+                 relative_trick = True)

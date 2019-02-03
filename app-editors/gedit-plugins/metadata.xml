@@ -11,6 +11,5 @@
 		them</flag>
 	<flag name="git">Shows document changes related to git's HEAD</flag>
 	<flag name="terminal">Embed a terminal in the bottom pane</flag>
-	<flag name="zeitgeist">Build the plugin to inject events to <pkg>gnome-extra/zeitgeist</pkg></flag>
 </use>
 </pkgmetadata>

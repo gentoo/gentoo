@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 : ${ICINGACFG:=/etc/icinga/icinga.cfg}
@@ -41,9 +41,12 @@ reload()
 }
 
 start_pre() {
-	checkpath -d -o icinga:icinga $(get_config temp_path)  $(dirname $(get_config lock_file)) $(dirname $(get_config log_file)) $(dirname $(get_config status_file))
+	checkpath -d -o icinga:icinga $(dirname $(get_config lock_file)) $(dirname $(get_config log_file)) $(dirname $(get_config status_file))
 	checkpath -f -o icinga:icinga $(get_config log_file)
 	rm -f $(get_config command_file)
+	# Temp dir must NOT be group-writable
+	# grsec: denied untrusted exec (due to file in group-writable directory)
+	checkpath -d -o icinga:icinga -m 0750 $(get_config temp_path)
 }
 
 stop_post() {

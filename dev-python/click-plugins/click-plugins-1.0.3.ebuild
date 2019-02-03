@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{3,4,5,6}} )
 inherit distutils-r1
 
 DESCRIPTION="Module for click to enable registering CLI commands via setuptools entry-points"
-HOMEPAGE="https://pypi.python.org/pypi/click-plugins"
+HOMEPAGE="https://pypi.org/project/click-plugins/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

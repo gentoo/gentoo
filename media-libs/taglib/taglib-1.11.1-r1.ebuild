@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-multilib
+inherit cmake-multilib flag-o-matic
 
 DESCRIPTION="A library for reading and editing audio meta data"
 HOMEPAGE="https://taglib.github.io/"
@@ -36,6 +36,9 @@ src_prepare() {
 	sed -e "s/BUILD_TESTS AND NOT BUILD_SHARED_LIBS/BUILD_TESTS/" \
 		-i CMakeLists.txt \
 		-i ConfigureChecks.cmake || die
+
+	# bug 651744
+	append-cxxflags -std=c++11
 }
 
 multilib_src_configure() {

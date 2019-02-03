@@ -9,6 +9,9 @@ PRIVATE_KEY="db:Open_vSwitch,SSL,private_key"
 CERTIFICATE="db:Open_vSwitch,SSL,certificate"
 BOOTSTRAP_CA_CERT="db:Open_vSwitch,SSL,ca_cert"
 
+# Default user
+OVS_USER_ID="root:root"
+
 # Alternative path for the database (default is /etc/openvswitch/conf.db)
 # DATABASE="/etc/openvswitch/conf.db"
 

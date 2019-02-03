@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python{2_7,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Remove outdated built kernels"
-HOMEPAGE="https://bitbucket.org/mgorny/eclean-kernel/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/eclean-kernel/"
+SRC_URI="https://github.com/mgorny/${PN}/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~mips x86 ~x86-fbsd"
+KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND="kernel_linux? ( dev-python/pymountboot[${PYTHON_USEDEP}] )"

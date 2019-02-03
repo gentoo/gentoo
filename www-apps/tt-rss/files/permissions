@@ -1,0 +1,25 @@
+#!/bin/bash -e
+
+cd "${MY_INSTALLDIR}"
+
+if [[ $1 = install ]]; then
+	# We need to lock down cache/ for the operations below to be
+	# safe. The permissions match the webapp-config defaults but these
+	# can be changed and existing installations may also differ.
+	chown root:root cache/
+	chmod 00755 cache/
+
+	chgrp --no-dereference ttrssd feed-icons/ lock/ cache/*/
+	chmod g+ws feed-icons/ lock/ cache/*/
+
+	# Files within lock/ are exclusively written by the update
+	# daemon. Files within feed-icons/ are always unlinked before
+	# modification. Only cache/ holds files that are modified in place
+	# by both processes and therefore ACLs are required to ensure that
+	# the files themselves are created as group writable.
+	if ! setfacl --modify d:g::rwX cache/*/; then
+		echo "WARNING: ACLs are not available on this filesystem. Either enable them or set TTRSSD_USER to your PHP user in /etc/conf.d/ttrssd to avoid permission issues."
+	elif [[ -n $(find cache/ -type f ! -name ".*" ! \( -group ttrssd -perm -020 \) -print -quit) ]]; then
+		echo "WARNING: Files that are not writable by the ttrssd group found within the cache directory. Either delete them or correct their permissions."
+	fi
+fi

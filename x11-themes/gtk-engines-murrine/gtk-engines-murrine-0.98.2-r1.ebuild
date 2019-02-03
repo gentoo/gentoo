@@ -12,7 +12,7 @@ HOMEPAGE="http://www.cimitan.com/murrine/"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="+themes animation-rtl"
 
 RDEPEND=">=x11-libs/gtk+-2.24.23:2[${MULTILIB_USEDEP}]
@@ -20,11 +20,7 @@ RDEPEND=">=x11-libs/gtk+-2.24.23:2[${MULTILIB_USEDEP}]
 	>=x11-libs/gdk-pixbuf-2.30.7:2[${MULTILIB_USEDEP}]
 	>=x11-libs/cairo-1.12.14-r4[${MULTILIB_USEDEP}]
 	>=x11-libs/pango-1.36.3[${MULTILIB_USEDEP}]
-	>=x11-libs/pixman-0.32.4[${MULTILIB_USEDEP}]
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-gtklibs-20140508
-		!app-emulation/emul-linux-x86-gtklibs[-abi_x86_32(-)]
-	)"
+	>=x11-libs/pixman-0.32.4[${MULTILIB_USEDEP}]"
 PDEPEND="themes? ( x11-themes/murrine-themes )"
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.37.1

@@ -1,19 +1,21 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit multilib cmake-multilib
+EAPI=6
+
+inherit cmake-multilib
 
 DESCRIPTION="An open-source JPEG 2000 library"
-HOMEPAGE="http://www.openjpeg.org"
+HOMEPAGE="https://www.openjpeg.org"
 SRC_URI="mirror://sourceforge/${PN}.mirror/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/5" # based on SONAME
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc static-libs test"
 
-RDEPEND="media-libs/lcms:2=
+RDEPEND="
+	media-libs/lcms:2=
 	media-libs/libpng:0=
 	media-libs/tiff:0=
 	sys-libs/zlib:="
@@ -22,7 +24,7 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS CHANGES NEWS README THANKS )
 
-RESTRICT="test" #409263
+RESTRICT="test" # bug 409263
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -33,20 +35,20 @@ src_prepare() {
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DOPENJPEG_INSTALL_LIB_DIR="$(get_libdir)"
-		$(cmake-utils_use_build test TESTING)
+		-DBUILD_TESTING=$(usex test)
 		-DBUILD_DOC=$(multilib_native_usex doc ON OFF)
 		-DBUILD_CODEC=$(multilib_is_native_abi && echo ON || echo OFF)
-		)
+	)
 
 	cmake-utils_src_configure
 
 	if use static-libs; then
 		mycmakeargs=(
 			-DOPENJPEG_INSTALL_LIB_DIR="$(get_libdir)"
-			$(cmake-utils_use_build test TESTING)
+			-DBUILD_TESTING=$(usex test)
 			-DBUILD_SHARED_LIBS=OFF
 			-DBUILD_CODEC=OFF
-			)
+		)
 		BUILD_DIR=${BUILD_DIR}_static cmake-utils_src_configure
 	fi
 }

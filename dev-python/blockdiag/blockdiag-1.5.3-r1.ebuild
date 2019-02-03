@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="blockdiag generates block-diagram image from text"
-HOMEPAGE="http://blockdiag.com/ https://pypi.python.org/pypi/blockdiag/ https://bitbucket.org/blockdiag/blockdiag/"
+HOMEPAGE="http://blockdiag.com/ https://pypi.org/project/blockdiag/ https://bitbucket.org/blockdiag/blockdiag/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -19,6 +19,7 @@ RDEPEND="
 	>=dev-python/funcparserlib-0.3.6[${PYTHON_USEDEP}]
 	>=dev-python/pillow-2.2.1[${PYTHON_USEDEP}]
 	dev-python/webcolors[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/configparser[${PYTHON_USEDEP}]' 'python2_7')
 "
 DEPEND="
 	${RDEPEND}
@@ -48,6 +49,6 @@ pkg_postinst() {
 	einfo "For additional functionality, install the following optional packages:"
 	einfo "    dev-python/reportlab for pdf format"
 	einfo "    media-gfx/imagemagick"
-	einfo "    wand: https://pypi.python.org/pypi/Wand"
+	einfo "    wand: https://pypi.org/project/Wand"
 	einfo "          Ctypes-based simple MagickWand API binding for Python"
 }

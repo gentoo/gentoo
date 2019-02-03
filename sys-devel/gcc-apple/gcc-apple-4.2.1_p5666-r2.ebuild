@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -26,7 +26,6 @@ RDEPEND=">=sys-libs/zlib-1.1.4
 	>=sys-libs/ncurses-5.2-r2
 	nls? ( sys-devel/gettext )
 	>=sys-devel/gcc-config-1.8-r1
-	sys-libs/csu
 	!<sys-apps/portage-2.2.14
 	fortran? (
 		>=dev-libs/gmp-4.2.1
@@ -37,6 +36,7 @@ DEPEND="${RDEPEND}
 	>=sys-devel/bison-1.875
 	${CATEGORY}/binutils-apple
 	>=dev-libs/mpfr-2.2.0_p10"
+PDEPEND="sys-libs/csu"
 
 S=${WORKDIR}/gcc-${APPLE_VERS}
 
@@ -110,7 +110,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-darwin14.patch
 
 	# bootstrapping might fail with host provided gcc on 10.4/x86
-	if ! is_crosscompile && ! echo "int main(){return 0;}" | gcc -o "${T}"/foo \
+	if ! is_crosscompile && ! echo "int main(){return 0;}" | $(tc-getCC) -o "${T}"/foo \
 		-mdynamic-no-pic -x c - >/dev/null 2>&1;
 	then
 		einfo "-mdynamic-no-pic doesn't work - disabling..."
@@ -119,6 +119,14 @@ src_prepare() {
 		awk 'BEGIN{x=1}{if ($0 ~ "use -mdynamic-no-pic to build x86")
 		{x=1-x} else if (x) print}' $XD > t && mv t $XD \
 			|| die "Failed to rewrite $XD"
+	fi
+
+	if [[ ${CHOST} == powerpc*-darwin* ]] && \
+		! echo "int main(){return 0;}" | \
+			$(tc-getCC) -o "${T}"/foo -no-cpp-precomp -x c - >/dev/null 2>&1;
+	then
+		einfo "-no-cpp-precomp not supported by compiler - disabling ..."
+		sed -i -e 's/-no-cpp-precomp//' configure.in configure || die
 	fi
 
 	epatch "${FILESDIR}"/${P}-perl-5.18.patch
@@ -138,6 +146,7 @@ src_prepare() {
 
 	local BRANDING_GCC_PKGVERSION="$(sed -n -e '/^#define VERSUFFIX/s/^[^"]*"\([^"]\+\)".*$/\1/p' "${S}"/gcc/version.c)"
 	BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/(/(Gentoo ${PVR}, }
+	# ) ) } # <- to help Vim highlight this correctly
 	einfo "patching gcc version: ${GCC_VERS}${BRANDING_GCC_PKGVERSION}"
 
 	sed -i -e "s~VERSUFFIX \"[^\"]*~VERSUFFIX \"${BRANDING_GCC_PKGVERSION}~" \
@@ -314,9 +323,9 @@ src_install() {
 			ln -sf ${CTARGET}-${x} ${x}
 
 			# Create version-ed symlinks
-			dosym ${BINPATH#${EPREFIX}}/${CTARGET}-${x} \
+			dosym ../${BINPATH#${EPREFIX}/usr/}/${CTARGET}-${x} \
 				/usr/bin/${CTARGET}-${x}-${GCC_VERS}
-			dosym ${BINPATH#${EPREFIX}}/${CTARGET}-${x} \
+			dosym ../${BINPATH#${EPREFIX}/usr/}/${CTARGET}-${x} \
 				/usr/bin/${x}-${GCC_VERS}
 		fi
 
@@ -337,13 +346,6 @@ src_install() {
 		rm -r "${D}"${LIBPATH}/include/libffi || die
 	fi
 
-	# Now do the fun stripping stuff
-	env RESTRICT="" CHOST=${CHOST} prepstrip "${D}${BINPATH}"
-	env RESTRICT="" CHOST=${CTARGET} prepstrip "${D}${LIBPATH}"
-	# gcc used to install helper binaries in lib/ but then moved to libexec/
-	[[ -d ${ED}/usr/libexec/gcc ]] && \
-		env RESTRICT="" CHOST=${CHOST} prepstrip "${ED}/usr/libexec/gcc/${CTARGET}/${GCC_VERS}"
-
 	# prune empty dirs left behind
 	find "${ED}" -type d | xargs rmdir >& /dev/null
 
@@ -358,8 +360,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	# beware this also switches when it's on another branch version of GCC
-	gcc-config ${CTARGET}-${GCC_VERS}
+	# only activate this compiler if nothing else is activated
+	gcc-config -c >& /dev/null || gcc-config ${CTARGET}-${GCC_VERS}
 }
 
 pkg_postrm() {

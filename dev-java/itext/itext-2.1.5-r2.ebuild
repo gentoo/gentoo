@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -12,7 +12,7 @@ ASIANJAR="iTextAsian.jar"
 ASIANCMAPSJAR="iTextAsianCmaps.jar"
 
 DESCRIPTION="Generate documents in the Portable Document Format (PDF) and/or HTML"
-HOMEPAGE="http://www.lowagie.com/iText/"
+HOMEPAGE="https://itextpdf.com"
 SRC_URI="mirror://sourceforge/itext/${DISTFILE}
 	cjk? ( mirror://sourceforge/itext/${ASIANJAR}
 		mirror://sourceforge/itext/${ASIANCMAPSJAR} )"

@@ -1,0 +1,57 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -29,6 +29,7 @@
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_MAKE_SET
++PKG_PROG_PKG_CONFIG
+ 
+ 
+ # Internationalization
+@@ -109,16 +110,13 @@
+ 	
+ 	echo "checking whether FOX was compiled with Xft support... yes"
+ 
+-	# Check for FreeType2 headers
+-	freetype_config=''
+-	AC_CHECK_PROGS(freetype_config,freetype-config,)
+-	if test -n "$freetype_config"; then
+-	  freetype_cflags=`$freetype_config --cflags`
+-	  freetype_libs=`$freetype_config --libs`
+-	  LIBS="$LIBS $freetype_libs"
+-	  CPPFLAGS="$freetype_cflags $CPPFLAGS"
+-	fi
+-	AC_CHECK_HEADER(config/ftheader.h,,[AC_CHECK_HEADER(freetype/config/ftheader.h,,AC_MSG_ERROR("ftheader.h not found"))])
++	# Check for FreeType2
++	PKG_CHECK_MODULES(FREETYPE, freetype2, [
++		freetype_cflags="$FREETYPE_CFLAGS"
++		freetype_libs="$FREETYPE_LIBS"
++		LIBS="$LIBS $freetype_libs"
++		CPPFLAGS="$freetype_cflags $CPPFLAGS"
++	], AC_MSG_ERROR("freetype not found"))
+ 
+ 	# Check for Xft headers
+ 	xft_config=''
+@@ -131,15 +129,13 @@
+ 	  CXXFLAGS="${CXXFLAGS} -DHAVE_XFT_H"
+ 	else
+ 		# On some systems (e.g. Fedora) xft-config is deprecated and pkg-config should be used instead
+-		pkg_config=''
+-		AC_CHECK_PROGS(pkg_config,pkg-config,)
+-		if test -n "$pkg_config"; then
+-		  xft_cflags=`$pkg_config --cflags xft`
+-		  xft_libs=`$pkg_config --libs xft`
+-		  LIBS="$LIBS $xft_libs"
+-		  CPPFLAGS="$xft_cflags $CPPFLAGS"
+-		  CXXFLAGS="${CXXFLAGS} -DHAVE_XFT_H"
+-		fi
++		PKG_CHECK_MODULES(XFT, xft, [
++			xft_cflags="$XFT_CFLAGS"
++			xft_libs="$XFT_LIBS"
++			LIBS="$LIBS $xft_libs"
++			CPPFLAGS="$xft_cflags $CPPFLAGS"
++			CXXFLAGS="$CXXFLAGS -DHAVE_XFT_H"
++		], AC_MSG_ERROR("Xft not found"))
+ 	fi
+ 	AC_CHECK_HEADER(X11/Xft/Xft.h,,AC_MSG_ERROR("Xft.h not found"))
+ 

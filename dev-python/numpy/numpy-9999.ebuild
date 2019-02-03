@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 FORTRAN_NEEDED=lapack
@@ -14,7 +14,7 @@ DOC_PV="1.9.1"
 DOC_P="${PN}-${DOC_PV}"
 
 DESCRIPTION="Fast array and numerical python library"
-HOMEPAGE="http://www.numpy.org/"
+HOMEPAGE="https://www.numpy.org"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/numpy/numpy.git"
 
@@ -104,6 +104,8 @@ python_prepare_all() {
 }
 
 python_compile() {
+	export MAKEOPTS=-j1 # bug #660754
+
 	distutils-r1_python_compile -j $(makeopts_jobs) ${NUMPY_FCONFIG}
 }
 

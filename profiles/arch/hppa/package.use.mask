@@ -4,6 +4,29 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Jeroen Roovers (jer@gentoo.org) (22 Mar 2018)
+# HiPE does not work on HPPA
+dev-lang/erlang hipe
+
+# Thomas Deutschmann <whissi@gentoo.org> (04 Jul 2018)
+# dev-libs/xxhash not keyworded for hppa
+app-admin/rsyslog xxhash
+
+# Jeroen Roovers (jer@gentoo.org) (22 Mar 2018)
+# dev-ruby/capybara depends on www-client/firefox which has not been ported to
+# HPPA
+dev-ruby/capybara test
+
+# Jeroen Roovers (jer@gentoo.org) (22 Mar 2018)
+# dev-ruby/haml depends on dev-ruby/action* which lost their keywords, so that
+# kills the fun
+dev-ruby/haml test
+
+# Jeroen Roovers (jer@gentoo.org) (22 Mar 2018)
+# dev-ruby/tilt requires dev-ruby/coffee-script which requires net-libs/nodejs
+# which has not been ported to HPPA
+dev-ruby/tilt test
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (4 Oct 2017)
 # -fstack-protector is not supported for hppa, bug 630702
 >=sys-devel/gcc-6.0 ssp
@@ -46,10 +69,6 @@ dev-vcs/git pcre-jit
 # no point in pursuing it right now.
 app-shells/bash-completion test
 
-# Jeroen Roovers <jer@gentoo.org> (26 Feb 2017)
-# app-crypt/libsecret is not keyworded for HPPA
-dev-vcs/git libsecret
-
 # Jeroen Roovers <jer@gentoo.org> (4 Feb 2017)
 # media-libs/libilbc has not been ported to HPPA
 # media-libs/zimg triggers a toolchain issue (bug #597152)
@@ -75,10 +94,6 @@ kde-frameworks/extra-cmake-modules doc
 # Jeroen Roovers <jer@gentoo.org> (19 May 2016)
 # pulls in many dev-ruby/asciidoctor dependencies (bug #583390)
 net-misc/chrony html
-
-# Mike Frysinger <vapier@gentoo.org> (21 Feb 2016)
-# Needs arch love for elementary. #575322
-media-libs/elementary javascript
 
 # Jeroen Roovers <jer@gentoo.org> (16 Aug 2015)
 # Bundles luajit which has not been ported to HPPA (bug #554376)
@@ -124,17 +139,9 @@ dev-python/pymongo test
 # USE=gui requires x11-libs/qscintilla,
 sci-mathematics/octave gui
 
-# Jeroen Roovers <jer@gentoo.org> (31 Jan 2014)
-# Mask x11-libs/libgksu dependency (bug #499900)
-xfce-extra/xfce4-taskmanager gksu
-
 # Julian Ospald <hasufell@gentoo.org> (23 Nov 2013)
 # needs app-arch/innoextract (bug #492326)
 games-fps/duke3d-data gog
-
-# Jeroen Roovers <jer@gentoo.org> (25 Oct 2013)
-# Building against libatomic_ops fails (bug #453704)
-sys-libs/libunwind libatomic
 
 # Jeroen Roovers <jer@gentoo.org> (23 Jul 2013)
 # graphite is not implemented on HPPA
@@ -167,7 +174,7 @@ net-libs/gupnp connman
 dev-libs/libpcre jit
 
 # Arun Raghavan <ford_prefect@gentoo.org> (24 May 2012)
-# media-sound/pulseaudio needs PyQt4[dbus] for making the equalizer module
+# media-sound/pulseaudio needs PyQt5[dbus] for making the equalizer module
 # usable. Mask until this is available.
 # Jeroen Roovers <jer@gentoo.org> (18 Feb 2014)
 # OSS is the only kernel audio interface that works on HPPA
@@ -176,10 +183,6 @@ media-sound/pulseaudio equalizer -oss
 # Jeroen Roovers <jer@gentoo.org> (21 May 2012)
 # media-sound/lilypond has problems running mpost (bug #416961)
 app-text/asciidoc test
-
-# Jeroen Roovers <jer@gentoo.org> (26 Apr 2012)
-# Untested dependency on net-misc/connman
-dev-qt/qtbearer connman
 
 # Jeroen Roovers <jer@gentoo.org> (19 Apr 2012)
 # Requires sys-power/upower or sys-power/upower-pm-utils which are
@@ -204,10 +207,6 @@ app-text/texlive pdfannotextractor
 # Mask doc-pdf because of Java dependencies (bug #347259)
 net-analyzer/wireshark doc-pdf
 
-# Jeroen Roovers <jer@gentoo.org> (25 Nov 2010)
-# No support for sci-libs/ipp on HPPA (bug #340269)
-media-libs/opencv ipp
-
 # Justin Lecher <jlec@gentoo.org> (13 Aug 2010)
 # MKL not available on this arch
 media-gfx/povray mkl
@@ -218,7 +217,6 @@ net-im/pidgin gstreamer
 x11-misc/xscreensaver gdm new-login
 x11-libs/wxGTK gstreamer
 net-p2p/mldonkey guionly gtk
-dev-vcs/git gtk
 net-im/pidgin eds
 
 # Jeroen Roovers <jer@gentoo.org> (15 Apr 2008)

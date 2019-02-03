@@ -9,4 +9,5 @@
   This package provides visible, buffer local, bookmarks and the ability to
   jump forward and backward to the next bookmark.
 </longdescription>
+<stabilize-allarches/>
 </pkgmetadata>

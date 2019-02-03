@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,22 +7,22 @@ PYTHON_COMPAT=( python2_7 )
 # vala and introspection support is broken, bug #468208
 VALA_USE_DEPEND=vapigen
 
-inherit versionator gnome2-utils eutils autotools python-any-r1 vala
+inherit autotools gnome2-utils python-any-r1 vala
 
 if [[ ${PV} == *9999* ]]; then
-	inherit autotools git-r3
-	EGIT_REPO_URI="git://git.gnome.org/gegl"
+	inherit git-r3
+	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gegl.git"
 	SRC_URI=""
 else
 	SRC_URI="http://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A graph based image processing framework"
 HOMEPAGE="http://www.gegl.org/"
 
-LICENSE="|| ( GPL-3 LGPL-3 )"
-SLOT="0.3"
+LICENSE="|| ( GPL-3+ LGPL-3 )"
+SLOT="0.4"
 
 IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg2k lcms lensfun libav openexr raw sdl svg test tiff umfpack vala v4l webp"
 REQUIRED_USE="
@@ -30,42 +30,47 @@ REQUIRED_USE="
 	vala? ( introspection )
 "
 
+# NOTE: Even current libav 11.4 does not have AV_CODEC_CAP_VARIABLE_FRAME_SIZE
+#       so there is no chance to support libav right now (Gentoo bug #567638)
+#       If it returns, please check prior GEGL ebuilds for how libav was integrated.  Thanks!
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	dev-libs/json-glib
-	>=media-libs/babl-0.1.30
+	>=media-libs/babl-0.1.56
+	>=media-libs/libpng-1.6.0:0=
 	sys-libs/zlib
+	virtual/jpeg:0=
 	>=x11-libs/gdk-pixbuf-2.32:2
 	x11-libs/pango
-
-	cairo? ( x11-libs/cairo )
+	cairo? ( >=x11-libs/cairo-1.12.2 )
 	ffmpeg? (
 		libav? ( media-video/libav:0= )
 		!libav? ( media-video/ffmpeg:0= )
 	)
 	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
-	virtual/jpeg:0=
 	jpeg2k? ( >=media-libs/jasper-1.900.1:= )
-	lcms? ( >=media-libs/lcms-2.2:2 )
+	lcms? ( >=media-libs/lcms-2.8:2 )
 	lensfun? ( >=media-libs/lensfun-0.2.5 )
-	openexr? ( media-libs/openexr:= )
-	media-libs/libpng:0=
+	openexr? ( >=media-libs/openexr-2.2.0:= )
 	raw? ( >=media-libs/libraw-0.15.4:0= )
-	sdl? ( media-libs/libsdl )
-	svg? ( >=gnome-base/librsvg-2.14:2 )
+	sdl? ( >=media-libs/libsdl-1.2.0 )
+	svg? ( >=gnome-base/librsvg-2.40.6:2 )
 	tiff? ( >=media-libs/tiff-4:0 )
 	umfpack? ( sci-libs/umfpack )
 	v4l? ( >=media-libs/libv4l-1.0.1 )
-	webp? ( media-libs/libwebp )
+	webp? ( >=media-libs/libwebp-0.5.0:= )
 "
 DEPEND="${RDEPEND}
-	>=dev-util/gtk-doc-am-1
-	>=dev-util/intltool-0.40.1
 	dev-lang/perl
+	>=dev-util/gtk-doc-am-1
+	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	>=sys-devel/libtool-2.2
-	test? ( introspection? (
-		$(python_gen_any_dep '>=dev-python/pygobject-3.2[${PYTHON_USEDEP}]') ) )
+	test? ( ffmpeg? ( media-libs/gexiv2 )
+		introspection? (
+			$(python_gen_any_dep '>=dev-python/pygobject-3.2[${PYTHON_USEDEP}]')
+		)
+	)
 	vala? ( $(vala_depend) )
 "
 
@@ -97,68 +102,59 @@ src_prepare() {
 }
 
 src_configure() {
-	# never enable altering of CFLAGS via profile option
-	# libspiro: not in portage main tree
-	# disable documentation as the generating is bit automagic
-	#    if anyone wants to work on it just create bug with patch
-
-	# Also please note that:
-	#
-	#  - Some auto-detections are not patched away since the docs are
-	#    not built (--disable-docs, lack of --enable-gtk-doc) and these
-	#    tools affect re-generation of docs, only
-	#    (e.g. ruby, asciidoc, dot (of graphviz), enscript)
-	#
-	#  - Parameter --with-exiv2 compiles a noinst-app only, no use
-	#
-	#  - Parameter --disable-workshop disables any use of Lua, effectivly
-	#
-	#  - v4l support does not work with our media-libs/libv4l-0.8.9,
-	#    upstream bug at https://bugzilla.gnome.org/show_bug.cgi?id=654675
-	#
-	#  - There are two checks for dot, one controllable by --with(out)-graphviz
-	#    which toggles HAVE_GRAPHVIZ that is not used anywhere.  Yes.
-	#
-	#  - mrg is not in tree and gexiv2 support only has effect when mrg support
-	#    is enabled
-	#
-	# So that's why USE="exif graphviz lua v4l" got resolved.  More at:
-	# https://bugs.gentoo.org/show_bug.cgi?id=451136
-	#
-	econf \
-		--disable-docs \
-		--disable-profile \
-		--disable-silent-rules \
-		--disable-workshop \
-		--program-suffix=-${SLOT} \
-		--with-gdk-pixbuf \
-		--with-pango \
-		--without-libspiro \
-		$(use_enable cpu_flags_x86_mmx mmx) \
-		$(use_enable cpu_flags_x86_sse sse) \
-		$(use_enable debug) \
-		$(use_with cairo) \
-		$(use_with cairo pangocairo) \
-		--without-exiv2 \
-		$(use_with ffmpeg libavformat) \
-		--without-gexiv2 \
-		--without-graphviz \
-		$(use_with jpeg2k jasper) \
-		$(use_with lcms) \
-		$(use_with lensfun) \
-		--without-lua \
-		--without-mrg \
-		$(use_with openexr) \
-		$(use_with raw libraw) \
-		$(use_with sdl) \
-		$(use_with svg librsvg) \
-		$(use_with tiff libtiff) \
-		$(use_with umfpack) \
-		$(use_with v4l libv4l) \
-		$(use_with v4l libv4l2) \
-		$(use_enable introspection) \
-		$(use_with vala) \
+	local myeconfargs=(
+		# disable documentation as the generating is bit automagic
+		#    if anyone wants to work on it just create bug with patch
+		--disable-docs
+		# never enable altering of CFLAGS via profile option
+		--disable-profile
+		--disable-silent-rules
+		#  - Parameter --disable-workshop disables any use of Lua, effectivly
+		--disable-workshop
+		--program-suffix=-${SLOT}
+		--with-gdk-pixbuf
+		--with-pango
+		#  - Parameter --with-exiv2 compiles a noinst-app only, no use
+		#    but needed during testing
+		--without-exiv2
+		#  - There are two checks for dot, one controllable by --with(out)-graphviz
+		#    which toggles HAVE_GRAPHVIZ that is not used anywhere.  Yes.
+		--without-graphviz
+		# libspiro: not in portage main tree
+		--without-libspiro
+		--without-lua
+		--without-mrg
+		$(use_enable cpu_flags_x86_mmx mmx)
+		$(use_enable cpu_flags_x86_sse sse)
+		$(use_enable debug)
+		$(use_enable introspection)
+		$(use_with cairo)
+		$(use_with cairo pangocairo)
+		$(use_with ffmpeg libavformat)
+		$(use_with jpeg2k jasper)
+		$(use_with lcms)
+		$(use_with lensfun)
+		$(use_with openexr)
+		$(use_with raw libraw)
+		$(use_with sdl)
+		$(use_with svg librsvg)
+		$(use_with tiff libtiff)
+		$(use_with umfpack)
+		#  - v4l support does not work with our media-libs/libv4l-0.8.9,
+		#    upstream bug at https://bugzilla.gnome.org/show_bug.cgi?id=654675
+		$(use_with v4l libv4l)
+		$(use_with v4l libv4l2)
+		$(use_with vala)
 		$(use_with webp)
+	)
+
+	if use test; then
+		myeconfargs+=( $(use_with ffmpeg gexiv2) )
+	else
+		myeconfargs+=( --without-gexiv2 )
+	fi
+
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -169,5 +165,5 @@ src_compile() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }

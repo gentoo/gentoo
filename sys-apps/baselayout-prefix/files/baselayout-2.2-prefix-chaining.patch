@@ -1,5 +1,5 @@
---- baselayout-2.2/etc/profile.orig	2017-03-23 16:46:29.922123300 +0100
-+++ baselayout-2.2/etc/profile	2017-03-23 16:58:43.578360900 +0100
+--- a/etc/profile
++++ b/etc/profile
 @@ -4,6 +4,46 @@
  # environment for login shells.
  #

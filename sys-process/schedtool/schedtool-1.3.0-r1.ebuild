@@ -1,21 +1,27 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
 DESCRIPTION="A tool to query or alter a process' scheduling policy"
-HOMEPAGE="http://freequaos.host.sk/schedtool"
-SRC_URI="http://freequaos.host.sk/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/freequaos/schedtool"
+SRC_URI="https://github.com/freequaos/schedtool/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT=0
 KEYWORDS="amd64 ~arm ~mips ppc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
+S="${WORKDIR}/${PN}-${P}"
+
 src_prepare() {
-	sed -i '/^CFLAGS=/d;/^install:/s/install-doc//' Makefile || die
+	default
+	sed \
+		-e '/^CFLAGS=/d;/^install:/s@ install-doc zipman@@' \
+		-e '/install/s@\(schedtool.8\).gz@\1@' \
+		-i Makefile || die
 }
 
 src_compile() {

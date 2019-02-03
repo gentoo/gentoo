@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -27,7 +27,7 @@ done
 
 LICENSE="AGPL-3"
 SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="doc java cxx tcl test"
 
 REQUIRED_USE="test? ( tcl )"
@@ -101,6 +101,12 @@ src_prepare() {
 		local ev="__EDIT_${v}__"
 		sed -i -e "s/${ev}/${!v}/g" configure || die
 	done
+
+	# This is a false positive skip in the tests as the test-reviewer code
+	# looks for 'Skipping\s'
+	sed -i \
+		-e '/db_repsite/s,Skipping:,Skipping,g' \
+		"${S_BASE}"/test/tcl/reputils.tcl || die
 }
 
 multilib_src_configure() {

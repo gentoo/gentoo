@@ -3,7 +3,7 @@
 
 # @ECLASS: obs-download.eclass
 # @MAINTAINER:
-# suse@gentoo.org
+# maintainer-needed@gentoo.org
 # @BLURB: Simplifies downloading from openSUSE Build Service.
 # @DESCRIPTION:
 # This eclass constructs OBS_URI based on provided project in openSUSE Build
@@ -27,7 +27,7 @@
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # In which obs project pakage is.
-# This variable does not have to be set and is overriden, if
+# This variable does not have to be set and is overridden, if
 # OPENSUSE_RELEASE is provided.
 
 # @ECLASS-VARIABLE: OBS_PACKAGE

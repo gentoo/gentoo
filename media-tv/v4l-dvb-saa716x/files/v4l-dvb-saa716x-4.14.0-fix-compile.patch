@@ -1,0 +1,11 @@
+--- a/linux/drivers/media/common/saa716x/saa716x_pci.c	2018-03-24 11:39:20.777643694 +0100
++++ b/linux/drivers/media/common/saa716x/saa716x_pci.c	2018-03-24 11:41:02.135696671 +0100
+@@ -39,7 +39,7 @@
+ 	for (i = 0; i < SAA716x_MSI_MAX_VECTORS; i++)
+ 		saa716x->msix_entries[i].entry = i;
+ 
+-	ret = pci_enable_msix(pdev, saa716x->msix_entries, SAA716x_MSI_MAX_VECTORS);
++	ret = pci_enable_msix_range(pdev, saa716x->msix_entries, SAA716x_MSI_MAX_VECTORS, SAA716x_MSI_MAX_VECTORS);
+ 	if (ret < 0)
+ 		dprintk(SAA716x_ERROR, 1, "MSI-X request failed <%d>", ret);
+ 	if (ret > 0)

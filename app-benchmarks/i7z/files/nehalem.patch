@@ -1,0 +1,15 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix some nehalem detected as haswell, too
+Bug-Debian: https://bugs.debian.org/856806
+
+--- a/helper_functions.c
++++ b/helper_functions.c
+@@ -420,7 +420,7 @@ void Print_Information_Processor(bool* n
+    	    *nehalem = true;
+ 	    *sandy_bridge = false;
+ 	    *ivy_bridge = false;
+-	    *haswell = true;
++	    *haswell = false;
+ 
+         } else if (proc_info.extended_model == 0x2) {
+             switch (proc_info.model)

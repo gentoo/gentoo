@@ -12,7 +12,7 @@
   random search. The OpenGL-viewer supports zooming, scaling, rotating
   and translating as well as filed lightning or surface properties.
   Special effects are transparency, textures, fog and motion blur.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">zhu3d</remote-id>
   </upstream>

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -52,7 +52,7 @@ RDEPEND="
 		${PYTHON_DEPS}
 		dev-java/fop
 		dev-python/reportlab )
-	ssl? ( dev-libs/openssl:= )
+	ssl? ( <dev-libs/openssl-1.1:0= )
 	>=dev-db/sqlite-3.6.22:3=
 	vala? ( dev-libs/libgee:0.8 )
 "
@@ -61,6 +61,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=app-text/gnome-doc-utils-0.9
 	app-text/yelp-tools
+	dev-util/glib-utils
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.40.6
 	virtual/pkgconfig

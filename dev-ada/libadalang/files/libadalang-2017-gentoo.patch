@@ -1,0 +1,20 @@
+--- a/ada/testsuite/python_support/utils.py	2018-11-14 22:21:36.366873970 +0100
++++ b/ada/testsuite/python_support/utils.py	2018-11-14 22:21:59.397477086 +0100
+@@ -28,6 +28,7 @@
+     library_kind = 'static' if LAL_DISABLE_SHARED else 'relocatable'
+     argv.extend([
+         '-XLIBRARY_TYPE={}'.format(library_kind),
++        '-XGPR_BUILD={}'.format(library_kind),
+         '-XXMLADA_BUILD={}'.format(library_kind),
+     ])
+     subprocess.check_call(argv)
+--- a/ada/testsuite/testsuite_support/base_driver.py	2018-11-14 22:22:37.698817058 +0100
++++ b/ada/testsuite/testsuite_support/base_driver.py	2018-11-14 22:30:37.631613448 +0100
+@@ -310,6 +310,7 @@
+         """
+         library_type = 'static' if self.disable_shared else 'relocatable'
+         return ['-XLIBRARY_TYPE={}'.format(library_type),
++                '-XGPR_BUILD={}'.format(library_type),
+                 '-XXMLADA_BUILD={}'.format(library_type)]
+ 
+     #

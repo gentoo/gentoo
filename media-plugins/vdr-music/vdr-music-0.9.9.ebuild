@@ -15,22 +15,18 @@ SRC_URI="http://www.glaserei-franz.de/VDR/Moronimo/files/${MY_P}.tgz"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="+imagemagick debug graphtft sndfile vorbis"
+IUSE="+imagemagick debug sndfile vorbis"
 
 DEPEND=">=media-video/vdr-1.6.0
 		media-libs/libmad
 		media-libs/libid3tag
-		graphtft? ( media-gfx/imagemagick[png] )
 		imagemagick? ( media-gfx/imagemagick[png] )
 		sndfile? ( media-libs/libsndfile )
 		vorbis? ( media-libs/libvorbis )
-		!imagemagick? (
-			!graphtft? ( media-libs/imlib2[png] )
-		)"
+		!imagemagick? ( media-libs/imlib2[png] )"
 
 RDEPEND="sys-process/at
-		media-sound/id3v2
-		graphtft? ( >=media-plugins/vdr-graphtft-0.1.5 )"
+		media-sound/id3v2"
 
 src_prepare() {
 #	# prepare sources with new Makefile handling
@@ -44,7 +40,7 @@ src_prepare() {
 	use !vorbis && sed -i Makefile -e "s:#WITHOUT_LIBVORBISFILE=1:WITHOUT_LIBVORBISFILE=1:"
 	use !sndfile && sed -i Makefile -e "s:#WITHOUT_LIBSNDFILE=1:WITHOUT_LIBSNDFILE=1:"
 	use !debug && sed -i Makefile -e "s:DEBUG=1:#DEBUG=1:"
-	use graphtft || use imagemagick && sed -i Makefile \
+	use imagemagick && sed -i Makefile \
 		-e "s:#HAVE_MAGICK=1:HAVE_MAGICK=1:" \
 		-e "s:#MAGICKDIR=:MAGICKDIR=:"
 }

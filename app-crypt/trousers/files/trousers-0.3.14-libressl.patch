@@ -3,6 +3,8 @@ From: Alon Bar-Lev <alon.barlev@gmail.com>
 Date: Wed, 7 Dec 2016 09:36:34 +0200
 Subject: [PATCH] tspi: support libressl
 
+Bug: https://sourceforge.net/p/trousers/bugs/222/
+
 Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
 ---
  src/trspi/crypto/openssl/rsa.c | 2 +-
@@ -17,7 +19,7 @@ index 2b1205f..3e56015 100644
  #endif
  
 -#if OPENSSL_VERSION_NUMBER < 0x10100001L
-+#if OPENSSL_VERSION_NUMBER < 0x10100001L || defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER < 0x10100001L || (defined(LIBRESSL_VERSION_NUMBER) && LIBRESSL_VERSION_NUMBER < 0x20700000L)
  static int
  RSA_set0_key(RSA *r, BIGNUM *n, BIGNUM *e, BIGNUM *d)
  {

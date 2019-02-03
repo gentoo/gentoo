@@ -16,13 +16,21 @@
 		of virtual machines.
 	</longdescription>
 	<use>
+		<flag name="caf">Build Common Agent Framework</flag>
+		<flag name="deploypkg">Build deploypkg plugin</flag>
+		<flag name="dnet">Enable support for nicinfo</flag>
 		<flag name="doc">Generate API documentation</flag>
-		<flag name="grabbitmqproxy">Enable grabbitmqproxy</flag>
+		<flag name="fuse">Enable vmblock-fuse/vmhgfs-fuse</flag>
+		<flag name="grabbitmqproxy">Build grabbitmqproxy plugin</flag>
+		<flag name="gtkmm">Compile with Gtkmm and sigc++ (Recommended)</flag>
+		<flag name="multimon">Enable multimon (Requires X)</flag>
 		<flag name="pic">Force shared libraries to be built as PIC</flag>
-		<flag name="vgauth">Enable vgauth</flag>
+		<flag name="resolutionkms">Build the linux/unix resolutionkms module</flag>
+		<flag name="vgauth">Build vgauth</flag>
+		<flag name="xml-security-c">Build vgauth with xml-security-c instead of xmlsec1</flag>
+		<flag name="xmlsec">Build vgauth with xmlsec1 instead of xml-security-c</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">vmware/open-vm-tools</remote-id>
-		<remote-id type="sourceforge">open-vm-tools</remote-id>
 	</upstream>
 </pkgmetadata>

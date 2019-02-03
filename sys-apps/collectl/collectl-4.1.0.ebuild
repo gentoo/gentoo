@@ -3,7 +3,7 @@
 
 EAPI=5
 
-DESCRIPTION="light-weight performance monitoring tool capable of reporting interactively and logging to disk"
+DESCRIPTION="Performance monitoring tool capable of interactive reporting and logging to disk"
 HOMEPAGE="http://collectl.sourceforge.net/"
 SRC_URI="mirror://sourceforge/collectl/${P}.src.tar.gz"
 

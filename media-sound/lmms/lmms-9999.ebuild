@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils xdg-utils
 
 DESCRIPTION="Cross-platform music production software"
 HOMEPAGE="https://lmms.io"
@@ -11,14 +11,15 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/LMMS/lmms.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/LMMS/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/LMMS/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${P/_/-}"
 fi
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 
-IUSE="alsa debug fluidsynth jack libgig ogg portaudio pulseaudio sdl soundio stk vst"
+IUSE="alsa debug fluidsynth jack libgig mp3 ogg portaudio pulseaudio sdl soundio stk vst"
 
 COMMON_DEPEND="
 	dev-qt/qtcore:5
@@ -32,6 +33,7 @@ COMMON_DEPEND="
 	fluidsynth? ( media-sound/fluidsynth )
 	jack? ( virtual/jack )
 	libgig? ( media-libs/libgig )
+	mp3? ( media-sound/lame )
 	ogg? (
 		media-libs/libogg
 		media-libs/libvorbis
@@ -44,7 +46,7 @@ COMMON_DEPEND="
 	)
 	soundio? ( media-libs/libsoundio )
 	stk? ( media-libs/stk )
-	vst? ( || ( app-emulation/wine virtual/wine ) )
+	vst? ( virtual/wine )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
@@ -74,6 +76,7 @@ src_configure() {
 		-DWANT_ALSA=$(usex alsa)
 		-DWANT_JACK=$(usex jack)
 		-DWANT_GIG=$(usex libgig)
+		-DWANT_MP3LAME=$(usex mp3)
 		-DWANT_OGGVORBIS=$(usex ogg)
 		-DWANT_PORTAUDIO=$(usex portaudio)
 		-DWANT_PULSEAUDIO=$(usex pulseaudio)
@@ -84,4 +87,14 @@ src_configure() {
 		-DWANT_SF2=$(usex fluidsynth)
 	)
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }

@@ -1,14 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-
-# Fabian Groffen <grobian@gentoo.org> (18 Dec 2016)
-# has multiple compilation issue, resolved for 1.1.8, bug #602990
-=app-misc/pax-utils-1.1.7
-
-# Fabian Groffen <grobian@gentoo.org> (13 Jun 2015)
-# Needs patching to compile (d_type and DT_REG), bug #551696
-=app-portage/portage-utils-0.56
+# Fabian Groffen <grobian@gentoo.org> (12 Nov 2018)
+# this version of binutils produces shared libraries with symbol lookup
+# errors, probably a versioning problem, confirmed on Solaris 10 and
+# OpenIndiana (11)
+=sys-devel/binutils-2.31.1*
 
 # Fabian Groffen <grobian@gentoo.org> (14 Jan 2014)
 # util-linux has no business on Solaris systems

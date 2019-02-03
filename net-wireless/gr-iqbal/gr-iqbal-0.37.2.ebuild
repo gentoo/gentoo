@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils python-single-r1
@@ -12,7 +12,7 @@ HOMEPAGE="http://git.osmocom.org/gr-iqbal/"
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="git://git.osmocom.org/${PN}.git"
+	EGIT_REPO_URI="https://git.osmocom.org/gr-iqbal"
 	KEYWORDS=""
 else
 	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz"

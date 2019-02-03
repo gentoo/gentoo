@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!--
+This is the example metadata file.
+The root element of this file is <pkgmetadata>. Within this element a
+number of subelements are allowed, the most common being maintainer.
+
+For a full description look at:
+https://devmanual.gentoo.org/ebuild-writing/misc-files/metadata/
+
+Before committing, please remove the comments from this file. They are
+not relevant for general metadata.xml files.
+-->
+<pkgmetadata>
+<maintainer type="person">
+	<email>axs@gentoo.org</email>
+	<name>Ian Stakenvicius</name>
+</maintainer>
+<longdescription>
+An extension for postgresql databases to allow direct usage of <pkg>dev-lang/R</pkg>
+in SQL queries and database functions
+</longdescription>
+</pkgmetadata>

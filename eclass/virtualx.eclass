@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: virtualx.eclass
@@ -6,22 +6,23 @@
 # x11@gentoo.org
 # @AUTHOR:
 # Original author: Martin Schlemmer <azarah@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: This eclass can be used for packages that needs a working X environment to build.
 
 if [[ ! ${_VIRTUAL_X} ]]; then
 
 case "${EAPI:-0}" in
-	0|1)
+	0|1|2|3)
 		die "virtualx.eclass: EAPI ${EAPI} is too old."
 		;;
-	2|3|4|5|6)
+	4|5|6|7)
 		;;
 	*)
 		die "virtualx.eclass: EAPI ${EAPI} is not supported yet."
 		;;
 esac
 
-[[ ${EAPI} == [2345] ]] && inherit eutils
+[[ ${EAPI} == [45] ]] && inherit eutils
 
 # @ECLASS-VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
@@ -53,11 +54,15 @@ case ${VIRTUALX_REQUIRED} in
 	manual)
 		;;
 	always)
-		DEPEND="${VIRTUALX_DEPEND}"
+		if [[ ${EAPI:-0} != [0123456] ]]; then
+			BDEPEND="${VIRTUALX_DEPEND}"
+		else
+			DEPEND="${VIRTUALX_DEPEND}"
+		fi
 		RDEPEND=""
 		;;
 	optional|tests)
-		[[ ${EAPI} == [2345] ]] \
+		[[ ${EAPI} == [45] ]] \
 			|| die 'Values "optional" and "tests" for VIRTUALX_REQUIRED are banned in EAPI > 5'
 		# deprecated section YAY.
 		eqawarn "VIRTUALX_REQUIRED=optional and VIRTUALX_REQUIRED=tests are deprecated."
@@ -77,7 +82,11 @@ case ${VIRTUALX_REQUIRED} in
 		IUSE="${VIRTUALX_USE}"
 		;;
 	*)
-		DEPEND="${VIRTUALX_REQUIRED}? ( ${VIRTUALX_DEPEND} )"
+		if [[ ${EAPI:-0} != [0123456] ]]; then
+			BDEPEND="${VIRTUALX_REQUIRED}? ( ${VIRTUALX_DEPEND} )"
+		else
+			DEPEND="${VIRTUALX_REQUIRED}? ( ${VIRTUALX_DEPEND} )"
+		fi
 		RDEPEND=""
 		IUSE="${VIRTUALX_REQUIRED}"
 		;;
@@ -90,12 +99,12 @@ esac
 virtualmake() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	[[ ${EAPI} == [2345] ]] \
+	[[ ${EAPI} == [45] ]] \
 		|| die "${FUNCNAME} is unsupported in EAPI > 5, please use virtx"
 
 	# backcompat for maketype
 	if [[ -n ${maketype} ]]; then
-		[[ ${EAPI} == [2345] ]] || die "maketype is banned in EAPI > 5"
+		[[ ${EAPI} == [45] ]] || die "maketype is banned in EAPI > 5"
 		eqawarn "ebuild is exporting \$maketype=${maketype}"
 		eqawarn "Ebuild should be migrated to use 'virtx command' instead."
 		VIRTUALX_COMMAND=${maketype}
@@ -205,13 +214,8 @@ virtx() {
 	# Do not break on error, but setup $retval, as we need
 	# to kill Xvfb
 	debug-print "${FUNCNAME}: $@"
-	if has "${EAPI}" 2 3; then
-		"$@"
-		retval=$?
-	else
-		nonfatal "$@"
-		retval=$?
-	fi
+	nonfatal "$@"
+	retval=$?
 
 	# Now kill Xvfb
 	kill $(cat /tmp/.X${XDISPLAY}-lock)
@@ -229,7 +233,7 @@ virtx() {
 Xmake() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	[[ ${EAPI} == [2345] ]] \
+	[[ ${EAPI} == [45] ]] \
 		|| die "${FUNCNAME} is unsupported in EAPI > 5, please use 'virtx emake -j1 ....'"
 
 	eqawarn "you should not execute make directly"
@@ -243,7 +247,7 @@ Xmake() {
 Xemake() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	[[ ${EAPI} == [2345] ]] \
+	[[ ${EAPI} == [45] ]] \
 		|| die "${FUNCNAME} is unsupported in EAPI > 5, please use 'virtx emake ....'"
 
 	VIRTUALX_COMMAND="emake" virtualmake "$@"
@@ -255,7 +259,7 @@ Xemake() {
 Xeconf() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	[[ ${EAPI} == [2345] ]] \
+	[[ ${EAPI} == [45] ]] \
 		|| die "${FUNCNAME} is unsupported in EAPI > 5, please use 'virtx econf ....'"
 
 	VIRTUALX_COMMAND="econf" virtualmake "$@"

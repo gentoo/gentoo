@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -26,10 +26,10 @@ KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
 IUSE="lto test multitarget"
 
 RDEPEND="sys-devel/binutils-config
-	lto? ( sys-devel/llvm )"
+	lto? ( sys-devel/llvm:* )"
 DEPEND="${RDEPEND}
 	test? ( >=dev-lang/perl-5.8.8 )
-	|| ( >=sys-devel/gcc-apple-4.2.1 sys-devel/llvm )"
+	|| ( >=sys-devel/gcc-apple-4.2.1 sys-devel/llvm:* )"
 
 SLOT="4"
 

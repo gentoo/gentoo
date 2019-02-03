@@ -21,6 +21,7 @@ RDEPEND="
 	dev-ros/hardware_interface
 	dev-ros/roscpp
 	dev-libs/boost:=
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"

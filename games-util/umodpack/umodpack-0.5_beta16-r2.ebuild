@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${MY_P}-allinone.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="tk"
 
 DEPEND="virtual/perl-IO-Compress

@@ -5,7 +5,7 @@ EAPI=5
 
 inherit autotools-utils multilib
 
-DESCRIPTION="library that provides an efficient and accurate implementation of complex error functions"
+DESCRIPTION="Efficient and accurate implementation of complex error functions"
 HOMEPAGE="http://apps.jcns.fz-juelich.de/doku/sc/libcerf"
 SRC_URI="http://apps.jcns.fz-juelich.de/src/${PN}/${P}.tgz"
 

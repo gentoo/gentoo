@@ -1,0 +1,29 @@
+From 36c14369372f0371e033019c9cea197b31a93bde Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sat, 5 Mar 2016 12:41:11 +1300
+Subject: Fix network tests re: Networking
+
+---
+ inc/Module/Install/PRIVATE/Net/SSLeay.pm | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/inc/Module/Install/PRIVATE/Net/SSLeay.pm b/inc/Module/Install/PRIVATE/Net/SSLeay.pm
+index 0a3aa24..f27b43f 100644
+--- a/inc/Module/Install/PRIVATE/Net/SSLeay.pm
++++ b/inc/Module/Install/PRIVATE/Net/SSLeay.pm
+@@ -46,11 +46,7 @@ EOM
+         LIBS => join(' ', (map {"-L$_"} @{$opts->{lib_paths}}), (map {"-l$_"} @{$opts->{lib_links}})),
+     );
+ 
+-    if ( $self->prompt(
+-            "Do you want to run external tests?\n".
+-            "These tests *will* *fail* if you do not have network connectivity.",
+-            'n',
+-    ) =~ /^y/i ) {
++    if ( 'yes' eq ( $ENV{NETWORK_TESTS} || '' ) ) {
+         $self->tests('t/*/*.t t/*/*/*.t');
+     } else {
+         $self->tests('t/local/*.t t/handle/local/*.t');
+-- 
+2.14.3
+

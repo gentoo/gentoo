@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,9 +6,8 @@ EAPI=6
 inherit autotools git-r3 flag-o-matic versionator
 
 DESCRIPTION="Terminal multiplexer"
-HOMEPAGE="http://tmux.github.io/"
-SRC_URI="https://raw.githubusercontent.com/przepompownia/tmux-bash-completion/678a27616b70c649c6701cae9cd8c92b58cc051b/completions/tmux -> tmux-bash-completion-678a27616b70c649c6701cae9cd8c92b58cc051b
-vim-syntax? ( https://raw.githubusercontent.com/keith/tmux.vim/95f6126c187667cc7f9c573c45c3b356cf69f4ca/syntax/tmux.vim -> tmux.vim-95f6126c187667cc7f9c573c45c3b356cf69f4ca )"
+HOMEPAGE="https://tmux.github.io/"
+SRC_URI="https://raw.githubusercontent.com/przepompownia/tmux-bash-completion/678a27616b70c649c6701cae9cd8c92b58cc051b/completions/tmux -> tmux-bash-completion-678a27616b70c649c6701cae9cd8c92b58cc051b"
 EGIT_REPO_URI="https://github.com/tmux/tmux.git"
 
 LICENSE="ISC"
@@ -31,12 +30,7 @@ DEPEND="
 RDEPEND="
 	${CDEPEND}
 	selinux? ( sec-policy/selinux-screen )
-	vim-syntax? (
-		|| (
-			app-editors/vim
-			app-editors/gvim
-		)
-	)"
+	vim-syntax? ( app-vim/vim-tmux )"
 
 DOCS=( CHANGES README TODO )
 

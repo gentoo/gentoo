@@ -1,6 +1,6 @@
-diff -Naur id3lib-3.8.3-orig/configure.in id3lib-3.8.3/configure.in
---- id3lib-3.8.3-orig/configure.in	2008-03-05 18:03:25.000000000 -0600
-+++ id3lib-3.8.3/configure.in	2008-03-05 18:15:42.000000000 -0600
+diff -Naur a/configure.in id3lib-3.8.3/configure.in
+--- a/configure.in	2008-03-05 18:03:25.000000000 -0600
++++ b/configure.in	2008-03-05 18:15:42.000000000 -0600
 @@ -227,7 +227,6 @@
  )
  AC_CHECK_HEADERS(               \
@@ -9,9 +9,9 @@ diff -Naur id3lib-3.8.3-orig/configure.in id3lib-3.8.3/configure.in
    ,,AC_MSG_ERROR([Missing a vital header file for id3lib])
  )
  
-diff -Naur id3lib-3.8.3-orig/include/id3/id3lib_strings.h id3lib-3.8.3/include/id3/id3lib_strings.h
---- id3lib-3.8.3-orig/include/id3/id3lib_strings.h	2008-03-05 18:19:46.000000000 -0600
-+++ id3lib-3.8.3/include/id3/id3lib_strings.h	2008-03-05 18:19:38.000000000 -0600
+diff -Naur a/include/id3/id3lib_strings.h id3lib-3.8.3/include/id3/id3lib_strings.h
+--- a/include/id3/id3lib_strings.h	2008-03-05 18:19:46.000000000 -0600
++++ b/include/id3/id3lib_strings.h	2008-03-05 18:19:38.000000000 -0600
 @@ -30,6 +30,7 @@
  #define _ID3LIB_STRINGS_H_
  
@@ -20,9 +20,9 @@ diff -Naur id3lib-3.8.3-orig/include/id3/id3lib_strings.h id3lib-3.8.3/include/i
  
  #if (defined(__GNUC__) && (__GNUC__ >= 3) || (defined(_MSC_VER) && _MSC_VER > 1000))
  namespace std
-diff -Naur id3lib-3.8.3-orig/include/id3/writers.h id3lib-3.8.3/include/id3/writers.h
---- id3lib-3.8.3-orig/include/id3/writers.h	2003-03-01 18:23:00.000000000 -0600
-+++ id3lib-3.8.3/include/id3/writers.h	2008-03-05 18:23:05.000000000 -0600
+diff -Naur a/include/id3/writers.h id3lib-3.8.3/include/id3/writers.h
+--- a/include/id3/writers.h	2003-03-01 18:23:00.000000000 -0600
++++ b/include/id3/writers.h	2008-03-05 18:23:05.000000000 -0600
 @@ -30,7 +30,7 @@
  
  #include "id3/writer.h"
@@ -32,9 +32,9 @@ diff -Naur id3lib-3.8.3-orig/include/id3/writers.h id3lib-3.8.3/include/id3/writ
  
  class ID3_CPP_EXPORT ID3_OStreamWriter : public ID3_Writer
  {
-diff -Naur id3lib-3.8.3-orig/examples/demo_convert.cpp id3lib-3.8.3/examples/demo_convert.cpp
---- id3lib-3.8.3-orig/examples/demo_convert.cpp	2003-03-01 18:23:00.000000000 -0600
-+++ id3lib-3.8.3/examples/demo_convert.cpp	2008-03-05 18:26:50.000000000 -0600
+diff -Naur a/examples/demo_convert.cpp id3lib-3.8.3/examples/demo_convert.cpp
+--- a/examples/demo_convert.cpp	2003-03-01 18:23:00.000000000 -0600
++++ b/examples/demo_convert.cpp	2008-03-05 18:26:50.000000000 -0600
 @@ -84,7 +84,7 @@
    }
  }
@@ -44,9 +44,9 @@ diff -Naur id3lib-3.8.3-orig/examples/demo_convert.cpp id3lib-3.8.3/examples/dem
  {
    flags_t ulFlag = ID3TT_ALL;
    gengetopt_args_info args;
-diff -Naur id3lib-3.8.3-orig/examples/demo_info.cpp id3lib-3.8.3/examples/demo_info.cpp
---- id3lib-3.8.3-orig/examples/demo_info.cpp	2003-03-01 18:23:00.000000000 -0600
-+++ id3lib-3.8.3/examples/demo_info.cpp	2008-03-05 18:27:40.000000000 -0600
+diff -Naur a/examples/demo_info.cpp id3lib-3.8.3/examples/demo_info.cpp
+--- a/examples/demo_info.cpp	2003-03-01 18:23:00.000000000 -0600
++++ b/examples/demo_info.cpp	2008-03-05 18:27:40.000000000 -0600
 @@ -309,7 +309,7 @@
  
  #define DEBUG
@@ -56,9 +56,9 @@ diff -Naur id3lib-3.8.3-orig/examples/demo_info.cpp id3lib-3.8.3/examples/demo_i
  {
    ID3D_INIT_DOUT();
  
-diff -Naur id3lib-3.8.3-orig/examples/demo_tag.cpp id3lib-3.8.3/examples/demo_tag.cpp
---- id3lib-3.8.3-orig/examples/demo_tag.cpp	2003-03-01 18:23:00.000000000 -0600
-+++ id3lib-3.8.3/examples/demo_tag.cpp	2008-03-05 18:31:20.000000000 -0600
+diff -Naur a/examples/demo_tag.cpp id3lib-3.8.3/examples/demo_tag.cpp
+--- a/examples/demo_tag.cpp	2003-03-01 18:23:00.000000000 -0600
++++ b/examples/demo_tag.cpp	2008-03-05 18:31:20.000000000 -0600
 @@ -46,7 +46,7 @@
      os << "v2";
  }
@@ -68,9 +68,9 @@ diff -Naur id3lib-3.8.3-orig/examples/demo_tag.cpp id3lib-3.8.3/examples/demo_ta
  {
    int ulFlag = ID3TT_ID3;
    ID3D_INIT_DOUT();
-diff -Naur id3lib-3.8.3-orig/examples/demo_copy.cpp id3lib-3.8.3/examples/demo_copy.cpp
---- id3lib-3.8.3-orig/examples/demo_copy.cpp	2003-03-01 18:23:00.000000000 -0600
-+++ id3lib-3.8.3/examples/demo_copy.cpp	2008-03-05 18:32:44.000000000 -0600
+diff -Naur a/examples/demo_copy.cpp id3lib-3.8.3/examples/demo_copy.cpp
+--- a/examples/demo_copy.cpp	2003-03-01 18:23:00.000000000 -0600
++++ b/examples/demo_copy.cpp	2008-03-05 18:32:44.000000000 -0600
 @@ -81,7 +81,7 @@
    }
  }

@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+inherit prefix
 
 if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
@@ -9,7 +10,7 @@ if [[ ${PV} = 9999* ]]; then
 else
 	SRC_URI="https://github.com/openrc/${PN}/archive/${PV}.tar.gz ->
 		${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="A standalone utility to process systemd-style tmpfiles.d files"
@@ -22,8 +23,13 @@ IUSE="selinux"
 RDEPEND="!<sys-apps/openrc-0.23
 	selinux? ( sec-policy/selinux-base-policy )"
 
-src_install() {
+src_prepare() {
 	default
+	hprefixify tmpfiles
+}
+src_install() {
+	emake DESTDIR="${ED}" install
+	einstalldocs
 	cd openrc
 	for f in opentmpfiles-dev opentmpfiles-setup; do
 		newconfd ${f}.confd ${f}
@@ -36,6 +42,7 @@ add_service() {
 	local runlevel=$2
 
 	elog "Auto-adding '${initd}' service to your ${runlevel} runlevel"
+	mkdir -p "${EROOT}"etc/runlevels/${runlevel}
 	ln -snf /etc/init.d/${initd} "${EROOT}"etc/runlevels/${runlevel}/${initd}
 }
 

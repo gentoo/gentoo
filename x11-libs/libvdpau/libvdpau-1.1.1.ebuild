@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,8 +18,7 @@ RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	dri? ( >=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}] )
 	!=x11-drivers/nvidia-drivers-180*
 	!=x11-drivers/nvidia-drivers-185*
-	!=x11-drivers/nvidia-drivers-190*
-	abi_x86_32? ( !app-emulation/emul-linux-x86-xlibs[-abi_x86_32(-)] )"
+	!=x11-drivers/nvidia-drivers-190*"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? (
@@ -27,7 +26,7 @@ DEPEND="${RDEPEND}
 		media-gfx/graphviz
 		virtual/latex-base
 		)
-	dri? ( >=x11-proto/dri2proto-2.2 )"
+	dri? ( x11-base/xorg-proto )"
 
 src_configure() {
 	append-cppflags -D_GNU_SOURCE

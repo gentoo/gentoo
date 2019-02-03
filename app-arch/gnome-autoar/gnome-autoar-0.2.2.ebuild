@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,12 +14,12 @@ SLOT="0"
 IUSE="gtk +introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha amd64 ~arm64 ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	>=app-arch/libarchive-3.2.0
 	>=dev-libs/glib-2.35.6:2
-	gtk? ( >=x11-libs/gtk+-3.2:3 )
+	gtk? ( >=x11-libs/gtk+-3.2:3[introspection?] )
 	introspection? ( >=dev-libs/gobject-introspection-1.30.0:= )
 "
 DEPEND="${RDEPEND}

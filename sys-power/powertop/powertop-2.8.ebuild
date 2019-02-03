@@ -3,15 +3,9 @@
 
 EAPI="5"
 
-inherit eutils linux-info
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/fenrus75/powertop.git"
-	inherit git-2 autotools
-	SRC_URI=""
-else
-	SRC_URI="https://01.org/sites/default/files/downloads/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 arm ppc sparc x86 ~amd64-linux ~x86-linux"
-fi
+inherit eutils linux-info autotools
+SRC_URI="https://01.org/sites/default/files/downloads/${PN}/${P}.tar.gz"
+KEYWORDS="amd64 arm ppc sparc x86 ~amd64-linux ~x86-linux"
 
 DESCRIPTION="tool that helps you find what software is using the most power"
 HOMEPAGE="https://01.org/powertop/"
@@ -51,7 +45,6 @@ pkg_setup() {
 		~CPU_FREQ_GOV_ONDEMAND
 		~FTRACE
 		~BLK_DEV_IO_TRACE
-		~TIMER_STATS
 		~TRACING
 	"
 	ERROR_KERNEL_X86_MSR="X86_MSR is not enabled in the kernel, you almost certainly need it"
@@ -64,8 +57,7 @@ pkg_setup() {
 	ERROR_KERNEL_CPU_FREQ_STAT="CPU_FREQ_STAT should be enabled in the kernel for full powertop function"
 	ERROR_KERNEL_CPU_FREQ_GOV_ONDEMAND="CPU_FREQ_GOV_ONDEMAND should be enabled in the kernel for full powertop function"
 	ERROR_KERNEL_FTRACE="FTRACE needs to be turned on to enable BLK_DEV_IO_TRACE"
-	ERROR_KERNEL_BLK_DEV_IO_TRACE="BLK_DEV_IO_TRACE needs to be turned on to enable TIMER_STATS, TRACING and EVENT_POWER_TRACING_DEPRECATED"
-	ERROR_KERNEL_TIMER_STATS="TIMER_STATS should be enabled in the kernel for full powertop function"
+	ERROR_KERNEL_BLK_DEV_IO_TRACE="BLK_DEV_IO_TRACE needs to be turned on to enable other config options"
 	ERROR_KERNEL_TRACING="TRACING should be enabled in the kernel for full powertop function"
 	linux-info_pkg_setup
 	if linux_config_exists; then
@@ -90,15 +82,19 @@ pkg_setup() {
 			ERROR_KERNEL_PM="PM should be enabled in the kernel for full powertop function"
 			check_extra_config
 		fi
+		if kernel_is -lt 4 11; then
+			CONFIG_CHECK="~TIMER_STATS"
+			ERROR_KERNEL_TIMER_STATS="TIMER_STATS should be enabled in the kernel for full powertop function"
+			check_extra_config
+		fi
 	fi
 }
 
 src_prepare() {
-	if [[ ${PV} == "9999" ]] ; then
-		eautoreconf
-	else
-		default
-	fi
+	epatch "${FILESDIR}"/${P}-ncurses_tinfo.patch
+
+	# Call eautoreconf since ncurses patch touches configure.ac.
+	eautoreconf
 }
 
 src_configure() {

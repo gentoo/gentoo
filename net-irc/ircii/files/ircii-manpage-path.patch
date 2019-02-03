@@ -1,0 +1,12 @@
+diff -ur ircii-20151120/Makefile.in ircii-20151120.new/Makefile.in
+--- ircii-20151120/Makefile.in	2015-11-11 17:01:46.000000000 -0600
++++ ircii-20151120.new/Makefile.in	2016-04-12 13:11:58.553493486 -0500
+@@ -64,7 +64,7 @@
+ libdir = $(DESTDIR)@libdir@
+ libexecdir = $(DESTDIR)@libexecdir@
+ # @mandir@ tends to be $datarootdir which already has $DESTDIR.
+-mandir = @mandir@/man1
++mandir = $(DESTDIR)@mandir@/man1
+ 
+ # Where the ircII binary will be installed.
+ # 'make install' will compile and install the program

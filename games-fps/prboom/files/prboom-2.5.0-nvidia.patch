@@ -1,5 +1,5 @@
---- src/gl_intern.h.orig	2003-09-21 16:39:30.247451624 -0400
-+++ src/gl_intern.h	2003-09-21 16:39:41.610724144 -0400
+--- a/src/gl_intern.h.orig	2003-09-21 16:39:30.247451624 -0400
++++ b/src/gl_intern.h	2003-09-21 16:39:41.610724144 -0400
 @@ -84,6 +84,6 @@
  #define min(a,b) ((a)<(b)?(a):(b))
  #endif
@@ -8,8 +8,8 @@
 +//PFNGLCOLORTABLEEXTPROC gld_ColorTableEXT;
  
  #endif // _GL_INTERN_H
---- src/gl_main.c.orig	2003-09-21 16:39:55.436622288 -0400
-+++ src/gl_main.c	2003-09-21 16:43:00.943420968 -0400
+--- a/src/gl_main.c.orig	2003-09-21 16:39:55.436622288 -0400
++++ b/src/gl_main.c	2003-09-21 16:43:00.943420968 -0400
 @@ -285,6 +285,7 @@
  
      if (strcasecmp(extension, "GL_EXT_texture_filter_anisotropic") == 0)
@@ -35,8 +35,8 @@
      W_UnlockLumpName("PLAYPAL");
    } else {
      if (palette>0)
---- src/gl_texture.c.orig	2003-09-21 16:43:18.450759448 -0400
-+++ src/gl_texture.c	2003-09-21 16:43:39.549551944 -0400
+--- a/src/gl_texture.c.orig	2003-09-21 16:43:18.450759448 -0400
++++ b/src/gl_texture.c	2003-09-21 16:43:39.549551944 -0400
 @@ -178,7 +178,7 @@
    pal[transparent_pal_index*4+1]=0;
    pal[transparent_pal_index*4+2]=0;

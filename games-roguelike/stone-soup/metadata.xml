@@ -11,8 +11,6 @@
 		<remote-id type="sourceforge">crawl-ref</remote-id>
 	</upstream>
 	<use>
-		<flag name="luajit">Use <pkg>dev-lang/luajit</pkg> as
-			scripting backend instead of <pkg>dev-lang/lua</pkg>.</flag>
 		<flag name="tiles">Enable for graphical (tiled) build.
 			(can be enabled on top of ncurses)
 		</flag>

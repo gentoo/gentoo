@@ -8,7 +8,6 @@
 	<maintainer type="person">
 		<email>zoltan@sinustrom.info</email>
 		<name>Zoltan Puskas</name>
-		<description>Proxied maintainer, CC him on bugs.</description>
 	</maintainer>
 	<upstream>
 		<maintainer status="active">

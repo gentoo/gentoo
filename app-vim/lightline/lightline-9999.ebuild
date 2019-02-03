@@ -15,7 +15,7 @@ fi
 
 DESCRIPTION="vim plugin: A light and configurable statusline/tabline"
 HOMEPAGE="https://github.com/itchyny/lightline.vim/"
-LICENSE="vim.org"
+LICENSE="MIT"
 VIM_PLUGIN_HELPFILES="${PN}"
 
 src_compile() { :; }

@@ -6,6 +6,7 @@
 # tex@gentoo.org
 # @AUTHOR:
 # Original Author: Alexis Ballier <aballier@gentoo.org>
+# @SUPPORTED_EAPIS: 3 4 5 6 7
 # @BLURB: Provide various functions used by both texlive-core and texlive modules
 # @DESCRIPTION:
 # Purpose: Provide various functions used by both texlive-core and texlive

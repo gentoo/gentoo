@@ -1,0 +1,10 @@
+--- a/keditfiletype/CMakeLists.txt	2018-02-14 22:09:07.341549164 -0700
++++ b/keditfiletype/CMakeLists.txt	2018-02-14 23:02:11.126749356 -0700
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ # KI18N Translation Domain for this library
+ add_definitions(-DTRANSLATION_DOMAIN=\"kcm5_filetypes\")

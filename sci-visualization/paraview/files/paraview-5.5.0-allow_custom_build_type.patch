@@ -1,0 +1,18 @@
+diff -urNd ParaView-v5.5.0/VTK/ThirdParty/eigen/vtkeigen/CMakeLists.txt ParaView-v5.5.0-fix/VTK/ThirdParty/eigen/vtkeigen/CMakeLists.txt
+--- ParaView-v5.5.0/VTK/ThirdParty/eigen/vtkeigen/CMakeLists.txt	2018-04-07 06:03:33.000000000 +1000
++++ ParaView-v5.5.0-fix/VTK/ThirdParty/eigen/vtkeigen/CMakeLists.txt	2018-04-10 16:19:08.841144557 +1000
+@@ -21,14 +21,6 @@
+   set(CMAKE_BUILD_TYPE "Release")
+ endif()
+ 
+-string(TOLOWER "${CMAKE_BUILD_TYPE}" cmake_build_type_tolower)
+-if(    NOT cmake_build_type_tolower STREQUAL "debug"
+-   AND NOT cmake_build_type_tolower STREQUAL "release"
+-   AND NOT cmake_build_type_tolower STREQUAL "relwithdebinfo")
+-  message(FATAL_ERROR "Unknown build type \"${CMAKE_BUILD_TYPE}\". Allowed values are Debug, Release, RelWithDebInfo (case-insensitive).")
+-endif()
+-
+-
+ #############################################################################
+ # retrieve version infomation                                               #
+ #############################################################################

@@ -1,0 +1,17 @@
+Install perl modules into /usr, not /usr/local.
+
+$ perl -MConfig -e 'print "$Config{archlib}\n"'
+/usr/lib64/perl5/5.24.3/x86_64-linux
+$ perl -MConfig -e 'print "$Config{sitearch}\n"'
+/usr/local/lib64/perl5/5.24.3/x86_64-linux
+--- a/waflib/Tools/perl.py
++++ b/waflib/Tools/perl.py
+@@ -75,7 +75,7 @@ def check_perl_ext_devel(self):
+ 	env.EXTUTILS_TYPEMAP=cfg_lst('$Config{privlib}/ExtUtils/typemap')
+ 	env.XSUBPP=find_xsubpp()
+ 	if not getattr(Options.options,'perlarchdir',None):
+-		env.ARCHDIR_PERL=cfg_str('$Config{sitearch}')
++		env.ARCHDIR_PERL=cfg_str('$Config{archlib}')
+ 	else:
+ 		env.ARCHDIR_PERL=getattr(Options.options,'perlarchdir')
+ 	env.perlext_PATTERN='%s.'+cfg_str('$Config{dlext}')

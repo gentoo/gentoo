@@ -5,4 +5,7 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<use>
+	<flag name="forced-sandbox">Always enable --sandbox mode for simpler/secure runtime (disables the ! command in dc)</flag>
+</use>
 </pkgmetadata>

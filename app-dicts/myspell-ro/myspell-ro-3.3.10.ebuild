@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,7 +20,7 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="Romanian dictionaries for myspell/hunspell"
-HOMEPAGE="http://rospell.wordpress.com/"
+HOMEPAGE="https://rospell.wordpress.com"
 SRC_URI="
 	mirror://sourceforge/rospell/ro_RO.${PV}.zip
 	mirror://sourceforge/rospell/hyph_ro_RO.${PV}.zip

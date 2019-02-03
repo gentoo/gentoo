@@ -17,7 +17,7 @@ SRC_URI="mirror://3dgamers/wolfensteinet/et-linux-2.60.x86.run
 
 LICENSE="RTCW-ETEULA"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="dedicated"
 RESTRICT="mirror strip"
 

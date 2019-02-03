@@ -1,5 +1,5 @@
---- Makefile.orig	2006-03-29 00:08:39.000000000 -0500
-+++ Makefile	2006-03-29 00:09:36.000000000 -0500
+--- a/Makefile
++++ b/Makefile
 @@ -2,7 +2,7 @@
  
  include Makefile.conf
@@ -95,8 +95,8 @@
  	ln -sf libSGE.so.$(API_VER).$(SGE_VER) libSGE.so.$(API_VER);\
  	ln -sf libSGE.so.$(API_VER) libSGE.so
  	@echo "** Headerfiles installed in $(PREFIX_H)"
---- Makefile.conf.orig	2006-03-29 00:08:39.000000000 -0500
-+++ Makefile.conf	2006-03-29 00:08:39.000000000 -0500
+--- a/Makefile.conf
++++ b/Makefile.conf
 @@ -11,6 +11,7 @@
  # Compilers (C and C++)
  CC=gcc

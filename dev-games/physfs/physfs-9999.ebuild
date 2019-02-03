@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,36 +16,41 @@ fi
 
 LICENSE="ZLIB"
 SLOT="0"
-IUSE="grp hog mvl qpak static-libs wad +zip"
+IUSE="7zip doc grp hog iso mvl qpak slb static-libs vdf wad +zip"
 
 RDEPEND=""
 DEPEND=""
 
 DOCS=( docs/CHANGELOG.txt docs/CREDITS.txt docs/TODO.txt )
 
-src_prepare() {
-	cmake-utils_src_prepare
-
-	sed -i -e 's:-Werror::' CMakeLists.txt || die
-	# make sure these libs aren't used
-	rm -rf lzma zlib*
-}
-
-src_configure() {
+multilib_src_configure() {
 	local mycmakeargs=(
-		-DPHYSFS_ARCHIVE_7Z=OFF
 		-DPHYSFS_BUILD_SHARED=ON
 		-DPHYSFS_BUILD_TEST=OFF
-		-DPHYSFS_BUILD_WX_TEST=OFF
-		-DPHYSFS_INTERNAL_ZLIB=OFF
 		-DPHYSFS_BUILD_STATIC="$(usex static-libs)"
+		-DPHYSFS_ARCHIVE_7Z="$(usex 7zip)"
 		-DPHYSFS_ARCHIVE_GRP="$(usex grp)"
 		-DPHYSFS_ARCHIVE_HOG="$(usex hog)"
+		-DPHYSFS_ARCHIVE_ISO9660="$(usex iso)"
 		-DPHYSFS_ARCHIVE_MVL="$(usex mvl)"
+		-DPHYSFS_ARCHIVE_SLB="$(usex slb)"
+		-DPHYSFS_ARCHIVE_VDF="$(usex vdf)"
 		-DPHYSFS_ARCHIVE_WAD="$(usex wad)"
 		-DPHYSFS_ARCHIVE_QPAK="$(usex qpak)"
 		-DPHYSFS_ARCHIVE_ZIP="$(usex zip)"
 	)
+	cmake-utils_src_configure
+}
 
-	cmake-multilib_src_configure
+multilib_src_compile() {
+	cmake-utils_src_compile
+	multilib_is_native_abi && use doc && cmake-utils_src_compile docs
+}
+
+multilib_src_install_all() {
+	einstalldocs
+	if use doc ; then
+		docinto html
+		dodoc -r "${CMAKE_BUILD_DIR}"/docs/html/*
+	fi
 }

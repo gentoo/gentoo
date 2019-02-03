@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ HOMEPAGE="https://git.gnome.org/browse/gnome-color-manager"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="packagekit raw"
 
 # Need gtk+-3.3.8 for https://bugzilla.gnome.org/show_bug.cgi?id=673331
@@ -26,7 +26,7 @@ RDEPEND="
 	>=x11-libs/colord-gtk-0.1.20
 
 	packagekit? ( app-admin/packagekit-base )
-	raw? ( media-gfx/exiv2 )
+	raw? ( media-gfx/exiv2:0= )
 "
 # docbook-sgml-{utils,dtd:4.1} needed to generate man pages
 DEPEND="${RDEPEND}
@@ -38,6 +38,11 @@ DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	# https://gitlab.gnome.org/GNOME/gnome-color-manager/issues/4
+	"${FILESDIR}"/${P}-exiv2-0.27.patch # bug 674086
+)
 
 src_configure() {
 	# Always enable tests since they are check_PROGRAMS anyway

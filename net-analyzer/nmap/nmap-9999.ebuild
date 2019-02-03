@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,xml"
 inherit autotools flag-o-matic git-r3 python-single-r1 toolchain-funcs user
@@ -23,25 +22,26 @@ IUSE="
 	zenmap
 "
 NMAP_LINGUAS=( de fr hi hr it ja pl pt_BR ru zh )
-IUSE+=" ${NMAP_LINGUAS[@]/#/linguas_}"
-
 REQUIRED_USE="
 	system-lua? ( nse )
 	ndiff? ( ${PYTHON_REQUIRED_USE} )
 	zenmap? ( ${PYTHON_REQUIRED_USE} )
 "
-
 RDEPEND="
 	dev-libs/liblinear:=
 	dev-libs/libpcre
 	net-libs/libpcap
-	libssh2? ( net-libs/libssh2[zlib] )
+	libssh2? (
+		net-libs/libssh2[zlib]
+		sys-libs/zlib
+	)
 	ndiff? ( ${PYTHON_DEPS} )
 	nls? ( virtual/libintl )
 	nmap-update? (
 		dev-libs/apr
 		dev-vcs/subversion
 	)
+	nse? ( sys-libs/zlib )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch
 	"${FILESDIR}"/${PN}-7.25-libpcre.patch
 	"${FILESDIR}"/${PN}-7.31-libnl.patch
+	"${FILESDIR}"/${PN}-7.70-time.patch
 )
 S="${WORKDIR}/${MY_P}"
 
@@ -75,16 +76,16 @@ pkg_setup() {
 }
 
 src_prepare() {
-	rm -r libpcap/ || die
+	rm -r liblinear/ libpcap/ libpcre/ libssh2/ libz/ || die
 
 	cat "${FILESDIR}"/nls.m4 >> "${S}"/acinclude.m4 || die
 
 	default
 
+	local lingua
 	if use nls; then
-		local lingua=''
 		for lingua in ${NMAP_LINGUAS[@]}; do
-			if ! use linguas_${lingua}; then
+			if ! has ${lingua} ${LINGUAS-${lingua}}; then
 				rm -r zenmap/share/zenmap/locale/${lingua} || die
 				rm zenmap/share/zenmap/locale/${lingua}.po || die
 			fi
@@ -135,6 +136,7 @@ src_configure() {
 		$(use_with ssl openssl) \
 		$(use_with zenmap) \
 		$(usex libssh2 --with-zlib) \
+		$(usex nse --with-zlib) \
 		$(usex nse --with-liblua=$(usex system-lua /usr included '' '') --without-liblua) \
 		--cache-file="${S}"/config.cache \
 		--with-libdnet=included \

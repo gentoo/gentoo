@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -26,7 +26,8 @@ DEPEND=">=sys-libs/db-4
 	qdbm? ( dev-db/qdbm )
 	libvirt? ( app-emulation/libvirt )
 	>=dev-libs/openssl-0.9.7
-	dev-libs/libpcre"
+	dev-libs/libpcre
+	net-libs/libnsl"
 RDEPEND="${DEPEND}"
 PDEPEND="vim-syntax? ( app-vim/cfengine-syntax )"
 

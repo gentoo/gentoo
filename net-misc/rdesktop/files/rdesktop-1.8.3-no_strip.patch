@@ -1,0 +1,12 @@
+diff -Naur rdesktop-1.8.3.orig/Makefile.in rdesktop-1.8.3/Makefile.in
+--- rdesktop-1.8.3.orig/Makefile.in	2013-01-21 13:28:14.000000000 +0100
++++ rdesktop-1.8.3/Makefile.in	2018-08-20 18:05:38.401218002 +0200
+@@ -60,7 +60,7 @@
+ installbin: rdesktop
+ 	mkdir -p $(DESTDIR)$(bindir)
+ 	$(INSTALL) rdesktop $(DESTDIR)$(bindir)
+-	$(STRIP) $(DESTDIR)$(bindir)/rdesktop
++	
+ 	chmod 755 $(DESTDIR)$(bindir)/rdesktop
+ 
+ .PHONY: installman

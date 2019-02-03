@@ -5,4 +5,19 @@
         <email>perl@gentoo.org</email>
         <name>Gentoo Perl Project</name>
     </maintainer>
+    <upstream>
+        <remote-id type="cpan">MooseX-Role-WithOverloading</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::WithOverloading</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::WithOverloading::Meta::Role</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::WithOverloading::Meta::Role::Application</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::WithOverloading::Meta::Role::Application::Composite</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::WithOverloading::Meta::Role::Application::Composite::ToClass</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::WithOverloading::Meta::Role::Application::Composite::ToInstance</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::WithOverloading::Meta::Role::Application::Composite::ToRole</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::WithOverloading::Meta::Role::Application::FixOverloadedRefs</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::WithOverloading::Meta::Role::Application::ToClass</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::WithOverloading::Meta::Role::Application::ToInstance</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::WithOverloading::Meta::Role::Application::ToRole</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::WithOverloading::Meta::Role::Composite</remote-id>
+    </upstream>
 </pkgmetadata>

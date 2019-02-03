@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
+
+inherit autotools desktop
 
 MY_P=${PN//-/_}-${PV}
 DESCRIPTION="Snipe terrorists from your orbital base"

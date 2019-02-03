@@ -10,6 +10,6 @@
 		<name>Python</name>
 	</maintainer>
 	<longdescription>
-	  A pure-Python memory-efficient packed representation for bit arrays
+		A pure-Python memory-efficient packed representation for bit arrays
 	</longdescription>
 </pkgmetadata>

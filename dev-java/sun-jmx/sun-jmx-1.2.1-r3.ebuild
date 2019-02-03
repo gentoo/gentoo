@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -14,7 +14,7 @@ SRC_URI="${MY_P}-ri.zip"
 
 LICENSE="Oracle-BCLA-JavaSE"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc64 x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ~arm ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.4
@@ -35,7 +35,7 @@ pkg_nofetch() {
 	einfo
 	einfo " 1. Visit ${DOWNLOADSITE} and follow instructions"
 	einfo " 2. Download ${SRC_URI}"
-	einfo " 3. Move file to ${DISTDIR}"
+	einfo " 3. Move file to your DISTDIR directory"
 	einfo " 4. Run emerge on this package again to complete"
 	einfo
 }

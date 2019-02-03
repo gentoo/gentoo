@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SRC_URI="sp_hc_final.zip
 	hardcorehellcampaign_patch.zip"
 
 LICENSE="GameFront"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 RESTRICT="fetch bindist"
 
@@ -22,7 +22,7 @@ pkg_nofetch() {
 	elog "Please download the following files:"
 	elog "http://www.filefront.com/4445166"
 	elog "http://www.filefront.com/4593578"
-	elog "and move them to ${DISTDIR}"
+	elog "and move them to your DISTDIR directory."
 }
 
 src_unpack() {

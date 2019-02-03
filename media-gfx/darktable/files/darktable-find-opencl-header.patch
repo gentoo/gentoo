@@ -1,0 +1,12 @@
+diff -Nur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2017-12-24 09:09:10.000000000 +0000
++++ b/CMakeLists.txt	2017-12-25 20:42:40.998693994 +0000
+@@ -355,7 +355,7 @@
+       message(STATUS "Found clang compiler - ${CLANG_OPENCL_COMPILER}")
+ 
+       find_path(CLANG_OPENCL_INCLUDE_DIR opencl-c.h
+-        HINTS ${LLVM_INSTALL_PREFIX}/lib/clang ${LLVM_INSTALL_PREFIX}/lib64/clang
++        HINTS ${LLVM_INSTALL_PREFIX}/lib/clang ${LLVM_INSTALL_PREFIX}/lib64/clang /usr/lib/clang /usr/lib64/clang
+         PATH_SUFFIXES include ${LLVM_PACKAGE_VERSION}/include
+         NO_DEFAULT_PATH
+       )

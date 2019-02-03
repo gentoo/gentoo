@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ DEPEND=""
 
 src_prepare() {
 	sed -i -e '/cd\(backup\|restore\)/,+1 s:CFLAGS:LDFLAGS:' \
-                "${S}"/Makefile || die "sed Makefile failed"
+		"${S}"/Makefile || die "sed Makefile failed"
 	default
 }
 

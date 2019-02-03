@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,14 +13,13 @@ SRC_URI="http://hollandbackup.org/releases/stable/${PV%.*}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc examples +mysql postgres sqlite"
+IUSE="doc examples postgres sqlite"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
 RDEPEND="
-	mysql? ( ~app-backup/holland-backup-mysql-meta-${PV}[${PYTHON_USEDEP}] )
 	postgres? ( ~app-backup/holland-backup-pgdump-${PV}[${PYTHON_USEDEP}] )
 	sqlite? ( ~app-backup/holland-backup-sqlite-${PV}[${PYTHON_USEDEP}] )
 	examples? (

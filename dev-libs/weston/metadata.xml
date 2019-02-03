@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>x11@gentoo.org</email>
-	<name>X11</name>
+<maintainer type="person">
+	<email>chewi@gentoo.org</email>
+	<name>James Le Cuirot</name>
 </maintainer>
 <use>
 	<flag name="colord">Allow setting color managment</flag>
@@ -15,12 +15,11 @@
 	<flag name="ivi">Enable the IVI shell</flag>
 	<flag name="launch">Install weston-launch utility</flag>
 	<flag name="rdp">Enable Remote Desktop Protocol compositor support</flag>
+	<flag name="remoting">Enable plugin to stream output to remote hosts using <pkg>media-libs/gstreamer</pkg></flag>
 	<flag name="resize-optimization">Increase performance, allocate more RAM. Recommended to disable on Raspberry Pi</flag>
-	<flag name="rpi">Raspberry Pi GPU support</flag>
 	<flag name="screen-sharing">Enable screen-sharing through RDP</flag>
 	<flag name="unwind">Enable libunwind usage for backtraces</flag>
 	<flag name="wayland-compositor">Enable Wayland compositor support</flag>
-	<flag name="webp">Add support for the WebP image format</flag>
 	<flag name="xwayland">Enable ability support native X11 applications</flag>
 </use>
 </pkgmetadata>

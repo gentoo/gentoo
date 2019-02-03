@@ -1,27 +1,31 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit flag-o-matic eutils toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.code.sf.net/p/strace/code"
-	EGIT_PROJECT="${PN}"
-	inherit git-2 autotools
+	EGIT_REPO_URI="https://github.com/strace/strace.git"
+	inherit git-r3 autotools
 else
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="A useful diagnostic, instructional, and debugging tool"
-HOMEPAGE="https://sourceforge.net/projects/strace/"
+HOMEPAGE="https://strace.io/"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="aio perl static unwind"
+IUSE="aio perl static unwind elfutils"
 
-LIB_DEPEND="unwind? ( sys-libs/libunwind[static-libs(+)] )"
+REQUIRED_USE="?? ( unwind elfutils )"
+
+LIB_DEPEND="
+	unwind? ( sys-libs/libunwind[static-libs(+)] )
+	elfutils? ( dev-libs/elfutils[static-libs(+)] )
+"
 # strace only uses the header from libaio to decode structs
 DEPEND="
 	static? ( ${LIB_DEPEND} )
@@ -34,16 +38,19 @@ RDEPEND="
 "
 
 src_prepare() {
-	if epatch_user || [[ ! -e configure ]] ; then
+	default
+
+	if [[ ! -e configure ]] ; then
 		# git generation
-		./xlat/gen.sh || die
-		./generate_mpers_am.sh || die
+		sed /autoreconf/d -i bootstrap || die
+		./bootstrap || die
 		eautoreconf
 		[[ ! -e CREDITS ]] && cp CREDITS{.in,}
 	fi
 
 	filter-lfs-flags # configure handles this sanely
-	use static && append-ldflags -static
+	# Add -pthread since strace wants -lrt for timer_create, and -lrt uses -lpthread.
+	use static && append-ldflags -static -pthread
 
 	export ac_cv_header_libaio_h=$(usex aio)
 	use elibc_musl && export ac_cv_header_stdc=no
@@ -61,11 +68,24 @@ src_configure() {
 		export "${v}_FOR_BUILD=${!bv}"
 	done
 
-	econf $(use_with unwind libunwind)
+	# Don't require mpers support on non-multilib systems. #649560
+	econf \
+		--enable-mpers=check \
+		$(use_with unwind libunwind) \
+		$(use_with elfutils libdw)
+}
+
+src_test() {
+	if has usersandbox $FEATURES ; then
+		ewarn "Test suite is known to fail with FEATURES=usersandbox -- skipping ..." #643044
+		return 0
+	fi
+
+	default
 }
 
 src_install() {
 	default
-	use perl || rm "${ED}"/usr/bin/strace-graph
+	use perl || rm "${ED%/}"/usr/bin/strace-graph
 	dodoc CREDITS
 }

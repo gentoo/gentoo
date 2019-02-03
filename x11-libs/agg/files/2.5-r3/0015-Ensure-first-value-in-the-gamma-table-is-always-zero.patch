@@ -1,0 +1,24 @@
+From ca818d4dcd428c5560fc3c341fbaf427a7485e32 Mon Sep 17 00:00:00 2001
+From: Tom Hughes <tom@compton.nu>
+Date: Sat, 22 Jun 2013 12:34:37 +0100
+Subject: [PATCH 15/15] Ensure first value in the gamma table is always zero
+
+---
+ include/agg_gamma_functions.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/agg_gamma_functions.h b/include/agg_gamma_functions.h
+index beb0c04..b8eda52 100644
+--- a/include/agg_gamma_functions.h
++++ b/include/agg_gamma_functions.h
+@@ -49,6 +49,7 @@ namespace agg
+ 
+         double operator() (double x) const
+         {
++            if (x == 0.0) return 0.0;
+             return pow(x, m_gamma);
+         }
+ 
+-- 
+1.8.1.4
+

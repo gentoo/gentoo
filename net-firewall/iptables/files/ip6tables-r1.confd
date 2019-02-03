@@ -1,0 +1,27 @@
+# /etc/conf.d/ip6tables
+
+# Set wait option for xtables lock in seconds
+# DEFAULT: 60
+#IPTABLES_LOCK_WAIT_TIME="60"
+
+# Set wait interval option for xtables lock in microseconds
+# DEFAULT: 1000
+#IPTABLES_LOCK_WAIT_INTERVAL="1000"
+
+# Location in which ip6tables initscript will save set rules on
+# service shutdown
+IP6TABLES_SAVE="/var/lib/ip6tables/rules-save"
+
+# Options to pass to ip6tables-save and ip6tables-restore 
+SAVE_RESTORE_OPTIONS="-c"
+
+# Save state on stopping ip6tables
+SAVE_ON_STOP="yes"
+
+# If you need to log ip6tables messages as soon as ip6tables starts,
+# AND your logger does NOT depend on the network, then you may wish
+# to uncomment the next line.
+# If your logger depends on the network, and you uncomment this line
+# you will create an unresolvable circular dependency during startup.
+# After commenting or uncommenting this line, you must run 'rc-update -u'.
+#rc_use="logger"

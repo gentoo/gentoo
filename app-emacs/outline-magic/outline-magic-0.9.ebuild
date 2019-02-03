@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Outline mode extensions for Emacs"
 HOMEPAGE="https://github.com/tj64/outline-magic
-	http://www.emacswiki.org/emacs/OutlineMagic"
+	https://www.emacswiki.org/emacs/OutlineMagic"
 SRC_URI="mirror://gentoo/${P}.el.bz2"
 
 LICENSE="GPL-2+"

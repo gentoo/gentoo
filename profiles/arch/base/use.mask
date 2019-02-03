@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
@@ -23,9 +23,6 @@ cuda
 
 # masking here, and unmasking in arch/x86/use.mask
 vidix
-
-# Mask as long its not available everywhere
-zeitgeist
 
 # vdpau is currently only available with binary nvidia-drivers, thus amd64/x86*
 vdpau
@@ -108,7 +105,6 @@ armvfp
 armv5te
 armv6
 armv6t2
-iwmmxt
 neon
 
 # nVidia XvMC requires nvidia-drivers/nvidia-legacy-drivers
@@ -122,25 +118,23 @@ oracle
 video_cards_geode
 video_cards_voodoo
 
-# not needed on non-sparc systems
-video_cards_sunbw2
-video_cards_suncg14
-video_cards_suncg3
-video_cards_suncg6
-video_cards_sunffb
-video_cards_sunleo
-video_cards_suntcx
-
 # not needed on non-mips systems
 video_cards_newport
 
 # not needed on non-x86, non-amd64 systems
 input_devices_vmmouse
+video_cards_ast
+video_cards_i915
+video_cards_i965
+video_cards_intel
 video_cards_nvidia
-video_cards_fglrx
+video_cards_vesa
 video_cards_via
 video_cards_vmware
 video_cards_virtualbox
+
+# not needed on non-x86, non-amd64, non-mips systems
+video_cards_siliconmotion
 
 # not needed on non-arm systems
 video_cards_exynos
@@ -165,10 +159,6 @@ input_devices_wacom
 # Only works on x86 or amd64
 lcd_devices_svga
 lcd_devices_luise
-
-# Joseph Jezak <josejx@gentoo.org> (11 Mar 2007)
-# Only for x86 and amd64 (in pbbuttonsd)
-macbook
 
 # George Shapovalov <george@gentoo.org> (8 Apr 2007)
 # Ada is supported only on x86, amd64 and ppc at present
@@ -242,13 +232,10 @@ hppa
 ia64
 m68k
 mips
-nios2
 ppc
 ppc64
-riscv
 s390
 sh
 sparc
-sparc-fbsd
 x86
 x86-fbsd

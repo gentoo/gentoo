@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit multilib
 
@@ -21,13 +21,20 @@ RDEPEND="
 	dev-tcltk/tcllib"
 DEPEND="${RDEPEND}"
 
-src_install() {
+PATCHES=( "${FILESDIR}"/${P}-doc.patch )
+
+src_compile() {
 	default
+	use doc && emake doc
+}
+
+src_install() {
+	HTML_DOCS=
 	if use doc; then
-		emake DESTDIR="${D}" doc
-		dohtml doc/html/*
+		HTML_DOCS=doc/html/*
 	fi
-	dodoc DESCRIPTION.txt README*
+	default
+	dodoc DESCRIPTION.txt
 	dosym ${PN}${PV} /usr/$(get_libdir)/${PN}
 
 	mv "${ED}"/usr/share/man/mann/datefield{,-${PN}}.n || die

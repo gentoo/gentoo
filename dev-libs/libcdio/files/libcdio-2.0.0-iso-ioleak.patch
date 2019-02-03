@@ -1,0 +1,37 @@
+From 8c0de2d3f0324ecf3fd135589589dcd783c15556 Mon Sep 17 00:00:00 2001
+From: rocky <rocky@gnu.org>
+Date: Fri, 16 Feb 2018 09:14:17 -0500
+Subject: Fix small I/O leak when we can't read ISO file
+
+See Savannah bug #53170. Thanks to David Binderman.
+---
+ src/iso-read.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/iso-read.c b/src/iso-read.c
+index 0541e27..8647485 100644
+--- a/src/iso-read.c
++++ b/src/iso-read.c
+@@ -1,5 +1,6 @@
+ /*
+-  Copyright (C) 2004-2006, 2008, 2012-2013, 2017 Rocky Bernstein <rocky@gnu.org>
++  Copyright (C) 2004-2006, 2008, 2012-2013, 2017-2018 Rocky Bernstein
++  <rocky@gnu.org>
+ 
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+@@ -364,7 +365,10 @@ main(int argc, char *argv[])
+       ret = read_iso_file (opts.iso9660_image, opts.file_name,
+                            outfd, &bytes_written);
+   }
+-  if (ret != 0) return ret;
++  if (ret != 0) {
++    fclose (outfd);
++    return ret;
++  }
+ 
+   fflush (outfd);
+ 
+-- 
+cgit v1.0-41-gc330
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ RDEPEND="
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtprintsupport:5
-	dev-qt/qtsingleapplication[X,qt5(-)]
+	dev-qt/qtsingleapplication[X,qt5(+)]
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5

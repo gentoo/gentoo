@@ -6,6 +6,11 @@
 # fonts@gentoo.org
 # @BLURB: Eclass to make font installation uniform
 
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6) ;;
+	*)             die "EAPI ${EAPI} is not supported by font.eclass." ;;
+esac
+
 inherit eutils
 
 EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst pkg_postrm

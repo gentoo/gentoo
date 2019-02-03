@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -11,15 +11,17 @@ SRC_URI="http://www.cycom.se/uploads/36/19/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
+
 IUSE="ssl"
 
 DEPEND="ssl? ( dev-libs/openssl:0= )"
 RDEPEND="${DEPEND}"
 
-PATCH=( "${FILESDIR}"/"${P}"-asneeded.patch)
-
-DOCS=( CHANGES README )
+PATCHES=(
+	"${FILESDIR}/${P}-asneeded.patch"
+	"${FILESDIR}/${P}-drop-old-ssl-algos.patch"
+)
 
 src_prepare() {
 	default

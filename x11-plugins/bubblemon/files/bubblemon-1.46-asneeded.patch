@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -32,14 +32,12 @@
  OBJS = bubblemon.o
  BUBBLEMON = bubblemon

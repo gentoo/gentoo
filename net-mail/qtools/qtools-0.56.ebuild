@@ -1,9 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="Several utilities for use with qmail, typically as part of .qmail command processing"
+DESCRIPTION="Utilities for use with qmail, typically as part of .qmail command processing"
 HOMEPAGE="http://www.superscript.com/qtools/intro.html"
 SRC_URI="http://www.superscript.com/qtools/${P}.tar.gz"
 

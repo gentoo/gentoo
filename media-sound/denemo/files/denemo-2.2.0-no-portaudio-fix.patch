@@ -1,0 +1,29 @@
+From 2e3c3b974e3e27873841c0ad9a05537a682e85f5 Mon Sep 17 00:00:00 2001 
+From: Richard Shann <richard@rshann.plus.com> 
+Date: Sat, 30 Dec 2017 15:32:35 +0000 
+Subject: [PATCH 1/2] Fix bug #52741: Can't build with --disable-portaudio 
+
+--- 
+src/audio/midi.c | 7 +++++++ 
+1 file changed, 7 insertions(+) 
+
+diff --git a/src/audio/midi.c b/src/audio/midi.c 
+index 55683cfe3..71c5df2cd 100644 
+--- a/src/audio/midi.c 
++++ b/src/audio/midi.c 
+@@ -29,6 +29,13 @@ 
+ 
+ #define SHAVING (0.01) //seconds to shave off a note start time to ensure stopping before noteon is sent, and starting with noteon first note may depend of speed of machine??? FIXME 
+ 
++#ifndef _HAVE_PORTAUDIO_ 
++gdouble get_playback_speed (void) 
++{ 
++ return 1.0; 
++} 
++void set_playback_speed (double speed) {} 
++#endif 
+ 
+ static volatile gboolean playing = FALSE; 
+ 
+-- 
+2.11.0

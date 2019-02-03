@@ -5,9 +5,11 @@
 		<email>embedded@gentoo.org</email>
 		<name>Embedded Gentoo</name>
 	</maintainer>
-	<longdescription>ICDPROG is a simple command line programmer for Microchip PIC
-    controllers, using the Microchip ICD (in circuit debugger)
-    hardware.</longdescription>
+	<longdescription>
+		ICDPROG is a simple command line programmer for Microchip PIC
+		controllers, using the Microchip ICD (in circuit debugger)
+		hardware.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">icdprog</remote-id>
 	</upstream>

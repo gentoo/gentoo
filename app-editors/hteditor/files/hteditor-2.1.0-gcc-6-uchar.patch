@@ -1,0 +1,45 @@
+https://github.com/sebastianbiallas/ht/pull/21
+
+From 7ce68c4bca7fd64c0073f1770c6b5761c03174f0 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Wed, 21 Mar 2018 21:30:31 +0000
+Subject: [PATCH] ht: fix build failure on -funsigned-char platforms
+
+powerpc (and arm) have 'char' == 'unsigned char' by default.
+This causes build failures on c++11:
+
+```
+$ ./configure CFLAGS=-funsigned-char CXXFLAGS=-funsigned-char
+$ make
+
+g++ -DHAVE_CONFIG_H -I.   -I./analyser -I./asm -I./info -I./io/posix -I./io -I./output -I./eval -I.   -DNOMACROS -pipe -O3 -fomit-frame-pointer -Wall -fsigned-char -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -std=c++14 -Woverloaded-virtual -Wnon-virtual-dtor -funsigned-char -MT htcoffhd.o -MD -MP -MF .deps/htcoffhd.Tpo -c -o htcoffhd.o htcoffhd.cc
+htcoffhd.cc:93:1: error: narrowing conversion of '-1' from 'int' to 'char' inside { } [-Wnarrowing]
+ };
+ ^
+htcoffhd.cc:131:1: error: narrowing conversion of '-1' from 'int' to 'char' inside { } [-Wnarrowing]
+ };
+```
+
+Use 'signed char' explicitly to maintain existing behavior.
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ httag.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/httag.h b/httag.h
+index 7f5da1c..83e5c22 100644
+--- a/httag.h
++++ b/httag.h
+@@ -69,7 +69,7 @@ struct ht_tag_flags {
+ } PACKED;
+ 
+ struct ht_tag_flags_s {
+-	char bitidx;
++	signed char bitidx;
+ 	const char *desc;
+ } PACKED;
+ 
+-- 
+2.16.2
+

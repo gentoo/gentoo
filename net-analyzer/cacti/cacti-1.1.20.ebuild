@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,13 +12,13 @@ HOMEPAGE="https://www.cacti.net/"
 SRC_URI="https://www.cacti.net/downloads/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm ~hppa ~ppc ~ppc64 sparc x86"
 IUSE="snmp doc"
 
 need_httpd
 
 RDEPEND="
-	dev-lang/php[cli,mysql,session,sockets,xml]
+	dev-lang/php[cli,mysql,pdo,session,sockets,xml]
 	dev-php/adodb
 	net-analyzer/rrdtool[graph]
 	virtual/cron

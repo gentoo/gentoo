@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,10 +6,10 @@ EAPI="6"
 inherit python-utils-r1 systemd user
 
 DESCRIPTION="The open-source database for the realtime web."
-HOMEPAGE="http://www.rethinkdb.com"
+HOMEPAGE="https://www.rethinkdb.com"
 LICENSE="AGPL-3"
 SLOT="0"
-SRC_URI="http://download.rethinkdb.com/dist/${P}.tgz"
+SRC_URI="https://download.rethinkdb.com/dist/${P}.tgz"
 
 KEYWORDS="~amd64 ~x86"
 IUSE="doc +jemalloc tcmalloc"

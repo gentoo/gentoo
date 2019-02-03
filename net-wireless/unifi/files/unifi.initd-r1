@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+ACE_LIB="lib/ace.jar"
+DAEMON="${JAVA_HOME-/etc/java-config-2/current-system-vm}"/bin/java
+JAVA_OPTS="-Dorg.xerial.snappy.tempdir=/usr/lib/unifi/tmp -Djava.library.path="
+UNIFI_PATH="/usr/lib/unifi"
+
+UNIFI_USER="unifi"
+UNIFI_GROUP="unifi"
+
+name="UniFi Controller"
+
+start_stop_daemon_args="--chdir ${UNIFI_PATH}"
+
+command="${DAEMON}"
+command_args="${JAVA_OPTS} -jar ${ACE_LIB} start"
+command_background=true
+pidfile="/run/${RC_SVCNAME}.pid"
+
+command_user="${UNIFI_USER}:${UNIFI_GROUP}"
+
+command_progress=true
+retry=TERM/60

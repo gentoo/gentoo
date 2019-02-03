@@ -1,5 +1,5 @@
---- julius-4.2.2/jcontrol/Makefile.in
-+++ julius-4.2.2/jcontrol/Makefile.in
+--- a/jcontrol/Makefile.in
++++ b/jcontrol/Makefile.in
 @@ -14,7 +14,7 @@
  CC=@CC@
  CFLAGS=@CFLAGS@

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: eutils.eclass
@@ -20,53 +20,10 @@ _EUTILS_ECLASS=1
 # implicitly inherited (now split) eclasses
 case ${EAPI:-0} in
 0|1|2|3|4|5|6)
-	inherit epatch estack ltprune multilib toolchain-funcs
+	inherit desktop epatch estack ltprune multilib preserve-libs \
+		toolchain-funcs vcs-clean
 	;;
 esac
-
-# @FUNCTION: eqawarn
-# @USAGE: [message]
-# @DESCRIPTION:
-# Proxy to ewarn for package managers that don't provide eqawarn and use the PM
-# implementation if available. Reuses PORTAGE_ELOG_CLASSES as set by the dev
-# profile.
-if ! declare -F eqawarn >/dev/null ; then
-	eqawarn() {
-		has qa ${PORTAGE_ELOG_CLASSES} && ewarn "$@"
-		:
-	}
-fi
-
-# @FUNCTION: ecvs_clean
-# @USAGE: [list of dirs]
-# @DESCRIPTION:
-# Remove CVS directories recursiveley.  Useful when a source tarball contains
-# internal CVS directories.  Defaults to $PWD.
-ecvs_clean() {
-	[[ $# -eq 0 ]] && set -- .
-	find "$@" -type d -name 'CVS' -prune -print0 | xargs -0 rm -rf
-	find "$@" -type f -name '.cvs*' -print0 | xargs -0 rm -rf
-}
-
-# @FUNCTION: esvn_clean
-# @USAGE: [list of dirs]
-# @DESCRIPTION:
-# Remove .svn directories recursiveley.  Useful when a source tarball contains
-# internal Subversion directories.  Defaults to $PWD.
-esvn_clean() {
-	[[ $# -eq 0 ]] && set -- .
-	find "$@" -type d -name '.svn' -prune -print0 | xargs -0 rm -rf
-}
-
-# @FUNCTION: egit_clean
-# @USAGE: [list of dirs]
-# @DESCRIPTION:
-# Remove .git* directories/files recursiveley.  Useful when a source tarball
-# contains internal Git directories.  Defaults to $PWD.
-egit_clean() {
-	[[ $# -eq 0 ]] && set -- .
-	find "$@" -type d -name '.git*' -prune -print0 | xargs -0 rm -rf
-}
 
 # @FUNCTION: emktemp
 # @USAGE: [temp dir]
@@ -113,427 +70,6 @@ emktemp() {
 edos2unix() {
 	[[ $# -eq 0 ]] && return 0
 	sed -i 's/\r$//' -- "$@" || die
-}
-
-# @FUNCTION: make_desktop_entry
-# @USAGE: make_desktop_entry(<command>, [name], [icon], [type], [fields])
-# @DESCRIPTION:
-# Make a .desktop file.
-#
-# @CODE
-# binary:   what command does the app run with ?
-# name:     the name that will show up in the menu
-# icon:     the icon to use in the menu entry
-#           this can be relative (to /usr/share/pixmaps) or
-#           a full path to an icon
-# type:     what kind of application is this?
-#           for categories:
-#           https://specifications.freedesktop.org/menu-spec/latest/apa.html
-#           if unset, function tries to guess from package's category
-# fields:	extra fields to append to the desktop file; a printf string
-# @CODE
-make_desktop_entry() {
-	[[ -z $1 ]] && die "make_desktop_entry: You must specify the executable"
-
-	local exec=${1}
-	local name=${2:-${PN}}
-	local icon=${3:-${PN}}
-	local type=${4}
-	local fields=${5}
-
-	if [[ -z ${type} ]] ; then
-		local catmaj=${CATEGORY%%-*}
-		local catmin=${CATEGORY##*-}
-		case ${catmaj} in
-			app)
-				case ${catmin} in
-					accessibility) type="Utility;Accessibility";;
-					admin)         type=System;;
-					antivirus)     type=System;;
-					arch)          type="Utility;Archiving";;
-					backup)        type="Utility;Archiving";;
-					cdr)           type="AudioVideo;DiscBurning";;
-					dicts)         type="Office;Dictionary";;
-					doc)           type=Documentation;;
-					editors)       type="Utility;TextEditor";;
-					emacs)         type="Development;TextEditor";;
-					emulation)     type="System;Emulator";;
-					laptop)        type="Settings;HardwareSettings";;
-					office)        type=Office;;
-					pda)           type="Office;PDA";;
-					vim)           type="Development;TextEditor";;
-					xemacs)        type="Development;TextEditor";;
-				esac
-				;;
-
-			dev)
-				type="Development"
-				;;
-
-			games)
-				case ${catmin} in
-					action|fps) type=ActionGame;;
-					arcade)     type=ArcadeGame;;
-					board)      type=BoardGame;;
-					emulation)  type=Emulator;;
-					kids)       type=KidsGame;;
-					puzzle)     type=LogicGame;;
-					roguelike)  type=RolePlaying;;
-					rpg)        type=RolePlaying;;
-					simulation) type=Simulation;;
-					sports)     type=SportsGame;;
-					strategy)   type=StrategyGame;;
-				esac
-				type="Game;${type}"
-				;;
-
-			gnome)
-				type="Gnome;GTK"
-				;;
-
-			kde)
-				type="KDE;Qt"
-				;;
-
-			mail)
-				type="Network;Email"
-				;;
-
-			media)
-				case ${catmin} in
-					gfx)
-						type=Graphics
-						;;
-					*)
-						case ${catmin} in
-							radio) type=Tuner;;
-							sound) type=Audio;;
-							tv)    type=TV;;
-							video) type=Video;;
-						esac
-						type="AudioVideo;${type}"
-						;;
-				esac
-				;;
-
-			net)
-				case ${catmin} in
-					dialup) type=Dialup;;
-					ftp)    type=FileTransfer;;
-					im)     type=InstantMessaging;;
-					irc)    type=IRCClient;;
-					mail)   type=Email;;
-					news)   type=News;;
-					nntp)   type=News;;
-					p2p)    type=FileTransfer;;
-					voip)   type=Telephony;;
-				esac
-				type="Network;${type}"
-				;;
-
-			sci)
-				case ${catmin} in
-					astro*)  type=Astronomy;;
-					bio*)    type=Biology;;
-					calc*)   type=Calculator;;
-					chem*)   type=Chemistry;;
-					elec*)   type=Electronics;;
-					geo*)    type=Geology;;
-					math*)   type=Math;;
-					physics) type=Physics;;
-					visual*) type=DataVisualization;;
-				esac
-				type="Education;Science;${type}"
-				;;
-
-			sys)
-				type="System"
-				;;
-
-			www)
-				case ${catmin} in
-					client) type=WebBrowser;;
-				esac
-				type="Network;${type}"
-				;;
-
-			*)
-				type=
-				;;
-		esac
-	fi
-	local slot=${SLOT%/*}
-	if [[ ${slot} == "0" ]] ; then
-		local desktop_name="${PN}"
-	else
-		local desktop_name="${PN}-${slot}"
-	fi
-	local desktop="${T}/$(echo ${exec} | sed 's:[[:space:]/:]:_:g')-${desktop_name}.desktop"
-	#local desktop=${T}/${exec%% *:-${desktop_name}}.desktop
-
-	# Don't append another ";" when a valid category value is provided.
-	type=${type%;}${type:+;}
-
-	if [[ -n ${icon} && ${icon} != /* ]] && [[ ${icon} == *.xpm || ${icon} == *.png || ${icon} == *.svg ]]; then
-		ewarn "As described in the Icon Theme Specification, icon file extensions are not"
-		ewarn "allowed in .desktop files if the value is not an absolute path."
-		icon=${icon%.*}
-	fi
-
-	cat <<-EOF > "${desktop}"
-	[Desktop Entry]
-	Name=${name}
-	Type=Application
-	Comment=${DESCRIPTION}
-	Exec=${exec}
-	TryExec=${exec%% *}
-	Icon=${icon}
-	Categories=${type}
-	EOF
-
-	if [[ ${fields:-=} != *=* ]] ; then
-		# 5th arg used to be value to Path=
-		ewarn "make_desktop_entry: update your 5th arg to read Path=${fields}"
-		fields="Path=${fields}"
-	fi
-	[[ -n ${fields} ]] && printf '%b\n' "${fields}" >> "${desktop}"
-
-	(
-		# wrap the env here so that the 'insinto' call
-		# doesn't corrupt the env of the caller
-		insinto /usr/share/applications
-		doins "${desktop}"
-	) || die "installing desktop file failed"
-}
-
-# @FUNCTION: _eutils_eprefix_init
-# @INTERNAL
-# @DESCRIPTION:
-# Initialized prefix variables for EAPI<3.
-_eutils_eprefix_init() {
-	has "${EAPI:-0}" 0 1 2 && : ${ED:=${D}} ${EPREFIX:=} ${EROOT:=${ROOT}}
-}
-
-# @FUNCTION: validate_desktop_entries
-# @USAGE: [directories]
-# @DESCRIPTION:
-# Validate desktop entries using desktop-file-utils
-validate_desktop_entries() {
-	eqawarn "validate_desktop_entries is deprecated and should be not be used."
-	eqawarn ".desktop file validation is done implicitly by Portage now."
-
-	_eutils_eprefix_init
-	if [[ -x "${EPREFIX}"/usr/bin/desktop-file-validate ]] ; then
-		einfo "Checking desktop entry validity"
-		local directories=""
-		for d in /usr/share/applications $@ ; do
-			[[ -d ${ED}${d} ]] && directories="${directories} ${ED}${d}"
-		done
-		if [[ -n ${directories} ]] ; then
-			for FILE in $(find ${directories} -name "*\.desktop" \
-							-not -path '*.hidden*' | sort -u 2>/dev/null)
-			do
-				local temp=$(desktop-file-validate ${FILE} | grep -v "warning:" | \
-								sed -e "s|error: ||" -e "s|${FILE}:|--|g" )
-				[[ -n $temp ]] && elog ${temp/--/${FILE/${ED}/}:}
-			done
-		fi
-		echo ""
-	else
-		einfo "Passing desktop entry validity check. Install dev-util/desktop-file-utils, if you want to help to improve Gentoo."
-	fi
-}
-
-# @FUNCTION: make_session_desktop
-# @USAGE: <title> <command> [command args...]
-# @DESCRIPTION:
-# Make a GDM/KDM Session file.  The title is the file to execute to start the
-# Window Manager.  The command is the name of the Window Manager.
-#
-# You can set the name of the file via the ${wm} variable.
-make_session_desktop() {
-	[[ -z $1 ]] && eerror "$0: You must specify the title" && return 1
-	[[ -z $2 ]] && eerror "$0: You must specify the command" && return 1
-
-	local title=$1
-	local command=$2
-	local desktop=${T}/${wm:-${PN}}.desktop
-	shift 2
-
-	cat <<-EOF > "${desktop}"
-	[Desktop Entry]
-	Name=${title}
-	Comment=This session logs you into ${title}
-	Exec=${command} $*
-	TryExec=${command}
-	Type=XSession
-	EOF
-
-	(
-	# wrap the env here so that the 'insinto' call
-	# doesn't corrupt the env of the caller
-	insinto /usr/share/xsessions
-	doins "${desktop}"
-	)
-}
-
-# @FUNCTION: domenu
-# @USAGE: <menus>
-# @DESCRIPTION:
-# Install the list of .desktop menu files into the appropriate directory
-# (/usr/share/applications).
-domenu() {
-	(
-	# wrap the env here so that the 'insinto' call
-	# doesn't corrupt the env of the caller
-	local i j ret=0
-	insinto /usr/share/applications
-	for i in "$@" ; do
-		if [[ -f ${i} ]] ; then
-			doins "${i}"
-			((ret+=$?))
-		elif [[ -d ${i} ]] ; then
-			for j in "${i}"/*.desktop ; do
-				doins "${j}"
-				((ret+=$?))
-			done
-		else
-			((++ret))
-		fi
-	done
-	exit ${ret}
-	)
-}
-
-# @FUNCTION: newmenu
-# @USAGE: <menu> <newname>
-# @DESCRIPTION:
-# Like all other new* functions, install the specified menu as newname.
-newmenu() {
-	(
-	# wrap the env here so that the 'insinto' call
-	# doesn't corrupt the env of the caller
-	insinto /usr/share/applications
-	newins "$@"
-	)
-}
-
-# @FUNCTION: _iconins
-# @INTERNAL
-# @DESCRIPTION:
-# function for use in doicon and newicon
-_iconins() {
-	(
-	# wrap the env here so that the 'insinto' call
-	# doesn't corrupt the env of the caller
-	local funcname=$1; shift
-	local size dir
-	local context=apps
-	local theme=hicolor
-
-	while [[ $# -gt 0 ]] ; do
-		case $1 in
-		-s|--size)
-			if [[ ${2%%x*}x${2%%x*} == "$2" ]] ; then
-				size=${2%%x*}
-			else
-				size=${2}
-			fi
-			case ${size} in
-			16|22|24|32|36|48|64|72|96|128|192|256|512)
-				size=${size}x${size};;
-			scalable)
-				;;
-			*)
-				eerror "${size} is an unsupported icon size!"
-				exit 1;;
-			esac
-			shift 2;;
-		-t|--theme)
-			theme=${2}
-			shift 2;;
-		-c|--context)
-			context=${2}
-			shift 2;;
-		*)
-			if [[ -z ${size} ]] ; then
-				insinto /usr/share/pixmaps
-			else
-				insinto /usr/share/icons/${theme}/${size}/${context}
-			fi
-
-			if [[ ${funcname} == doicon ]] ; then
-				if [[ -f $1 ]] ; then
-					doins "${1}"
-				elif [[ -d $1 ]] ; then
-					shopt -s nullglob
-					doins "${1}"/*.{png,svg}
-					shopt -u nullglob
-				else
-					eerror "${1} is not a valid file/directory!"
-					exit 1
-				fi
-			else
-				break
-			fi
-			shift 1;;
-		esac
-	done
-	if [[ ${funcname} == newicon ]] ; then
-		newins "$@"
-	fi
-	) || die
-}
-
-# @FUNCTION: doicon
-# @USAGE: [options] <icons>
-# @DESCRIPTION:
-# Install icon into the icon directory /usr/share/icons or into
-# /usr/share/pixmaps if "--size" is not set.
-# This is useful in conjunction with creating desktop/menu files.
-#
-# @CODE
-#  options:
-#  -s, --size
-#    !!! must specify to install into /usr/share/icons/... !!!
-#    size of the icon, like 48 or 48x48
-#    supported icon sizes are:
-#    16 22 24 32 36 48 64 72 96 128 192 256 512 scalable
-#  -c, --context
-#    defaults to "apps"
-#  -t, --theme
-#    defaults to "hicolor"
-#
-# icons: list of icons
-#
-# example 1: doicon foobar.png fuqbar.svg suckbar.png
-# results in: insinto /usr/share/pixmaps
-#             doins foobar.png fuqbar.svg suckbar.png
-#
-# example 2: doicon -s 48 foobar.png fuqbar.png blobbar.png
-# results in: insinto /usr/share/icons/hicolor/48x48/apps
-#             doins foobar.png fuqbar.png blobbar.png
-# @CODE
-doicon() {
-	_iconins ${FUNCNAME} "$@"
-}
-
-# @FUNCTION: newicon
-# @USAGE: [options] <icon> <newname>
-# @DESCRIPTION:
-# Like doicon, install the specified icon as newname.
-#
-# @CODE
-# example 1: newicon foobar.png NEWNAME.png
-# results in: insinto /usr/share/pixmaps
-#             newins foobar.png NEWNAME.png
-#
-# example 2: newicon -s 48 foobar.png NEWNAME.png
-# results in: insinto /usr/share/icons/hicolor/48x48/apps
-#             newins foobar.png NEWNAME.png
-# @CODE
-newicon() {
-	_iconins ${FUNCNAME} "$@"
 }
 
 # @FUNCTION: strip-linguas
@@ -585,159 +121,6 @@ strip-linguas() {
 	export LINGUAS=${newls:1}
 }
 
-# @FUNCTION: preserve_old_lib
-# @USAGE: <libs to preserve> [more libs]
-# @DESCRIPTION:
-# These functions are useful when a lib in your package changes ABI SONAME.
-# An example might be from libogg.so.0 to libogg.so.1.  Removing libogg.so.0
-# would break packages that link against it.  Most people get around this
-# by using the portage SLOT mechanism, but that is not always a relevant
-# solution, so instead you can call this from pkg_preinst.  See also the
-# preserve_old_lib_notify function.
-preserve_old_lib() {
-	_eutils_eprefix_init
-	if [[ ${EBUILD_PHASE} != "preinst" ]] ; then
-		eerror "preserve_old_lib() must be called from pkg_preinst() only"
-		die "Invalid preserve_old_lib() usage"
-	fi
-	[[ -z $1 ]] && die "Usage: preserve_old_lib <library to preserve> [more libraries to preserve]"
-
-	# let portage worry about it
-	has preserve-libs ${FEATURES} && return 0
-
-	local lib dir
-	for lib in "$@" ; do
-		[[ -e ${EROOT}/${lib} ]] || continue
-		dir=${lib%/*}
-		dodir ${dir} || die "dodir ${dir} failed"
-		cp "${EROOT}"/${lib} "${ED}"/${lib} || die "cp ${lib} failed"
-		touch "${ED}"/${lib}
-	done
-}
-
-# @FUNCTION: preserve_old_lib_notify
-# @USAGE: <libs to notify> [more libs]
-# @DESCRIPTION:
-# Spit helpful messages about the libraries preserved by preserve_old_lib.
-preserve_old_lib_notify() {
-	if [[ ${EBUILD_PHASE} != "postinst" ]] ; then
-		eerror "preserve_old_lib_notify() must be called from pkg_postinst() only"
-		die "Invalid preserve_old_lib_notify() usage"
-	fi
-
-	# let portage worry about it
-	has preserve-libs ${FEATURES} && return 0
-
-	_eutils_eprefix_init
-
-	local lib notice=0
-	for lib in "$@" ; do
-		[[ -e ${EROOT}/${lib} ]] || continue
-		if [[ ${notice} -eq 0 ]] ; then
-			notice=1
-			ewarn "Old versions of installed libraries were detected on your system."
-			ewarn "In order to avoid breaking packages that depend on these old libs,"
-			ewarn "the libraries are not being removed.  You need to run revdep-rebuild"
-			ewarn "in order to remove these old dependencies.  If you do not have this"
-			ewarn "helper program, simply emerge the 'gentoolkit' package."
-			ewarn
-		fi
-		ewarn "  # revdep-rebuild --library '${lib}' && rm '${lib}'"
-	done
-}
-
-# @FUNCTION: built_with_use
-# @USAGE: [--hidden] [--missing <action>] [-a|-o] <DEPEND ATOM> <List of USE flags>
-# @DESCRIPTION:
-#
-# Deprecated: Use EAPI 2 use deps in DEPEND|RDEPEND and with has_version calls.
-#
-# A temporary hack until portage properly supports DEPENDing on USE
-# flags being enabled in packages.  This will check to see if the specified
-# DEPEND atom was built with the specified list of USE flags.  The
-# --missing option controls the behavior if called on a package that does
-# not actually support the defined USE flags (aka listed in IUSE).
-# The default is to abort (call die).  The -a and -o flags control
-# the requirements of the USE flags.  They correspond to "and" and "or"
-# logic.  So the -a flag means all listed USE flags must be enabled
-# while the -o flag means at least one of the listed IUSE flags must be
-# enabled.  The --hidden option is really for internal use only as it
-# means the USE flag we're checking is hidden expanded, so it won't be found
-# in IUSE like normal USE flags.
-#
-# Remember that this function isn't terribly intelligent so order of optional
-# flags matter.
-built_with_use() {
-	_eutils_eprefix_init
-	local hidden="no"
-	if [[ $1 == "--hidden" ]] ; then
-		hidden="yes"
-		shift
-	fi
-
-	local missing_action="die"
-	if [[ $1 == "--missing" ]] ; then
-		missing_action=$2
-		shift ; shift
-		case ${missing_action} in
-			true|false|die) ;;
-			*) die "unknown action '${missing_action}'";;
-		esac
-	fi
-
-	local opt=$1
-	[[ ${opt:0:1} = "-" ]] && shift || opt="-a"
-
-	local PKG=$(best_version $1)
-	[[ -z ${PKG} ]] && die "Unable to resolve $1 to an installed package"
-	shift
-
-	local USEFILE=${EROOT}/var/db/pkg/${PKG}/USE
-	local IUSEFILE=${EROOT}/var/db/pkg/${PKG}/IUSE
-
-	# if the IUSE file doesn't exist, the read will error out, we need to handle
-	# this gracefully
-	if [[ ! -e ${USEFILE} ]] || [[ ! -e ${IUSEFILE} && ${hidden} == "no" ]] ; then
-		case ${missing_action} in
-			true)	return 0;;
-			false)	return 1;;
-			die)	die "Unable to determine what USE flags $PKG was built with";;
-		esac
-	fi
-
-	if [[ ${hidden} == "no" ]] ; then
-		local IUSE_BUILT=( $(<"${IUSEFILE}") )
-		# Don't check USE_EXPAND #147237
-		local expand
-		for expand in $(echo ${USE_EXPAND} | tr '[:upper:]' '[:lower:]') ; do
-			if [[ $1 == ${expand}_* ]] ; then
-				expand=""
-				break
-			fi
-		done
-		if [[ -n ${expand} ]] ; then
-			if ! has $1 ${IUSE_BUILT[@]#[-+]} ; then
-				case ${missing_action} in
-					true)  return 0;;
-					false) return 1;;
-					die)   die "$PKG does not actually support the $1 USE flag!";;
-				esac
-			fi
-		fi
-	fi
-
-	local USE_BUILT=$(<${USEFILE})
-	while [[ $# -gt 0 ]] ; do
-		if [[ ${opt} = "-o" ]] ; then
-			has $1 ${USE_BUILT} && return 0
-		else
-			has $1 ${USE_BUILT} || return 1
-		fi
-		shift
-	done
-	[[ ${opt} = "-a" ]]
-}
-
 # @FUNCTION: make_wrapper
 # @USAGE: <wrapper> <target> [chdir] [libpaths] [installpath]
 # @DESCRIPTION:
@@ -746,13 +129,12 @@ built_with_use() {
 # first optionally setting LD_LIBRARY_PATH to the colon-delimited
 # libpaths followed by optionally changing directory to chdir.
 make_wrapper() {
-	_eutils_eprefix_init
 	local wrapper=$1 bin=$2 chdir=$3 libdir=$4 path=$5
 	local tmpwrapper=$(emktemp)
+	has "${EAPI:-0}" 0 1 2 && local EPREFIX=""
 
 	(
 	echo '#!/bin/sh'
-	[[ -n ${chdir} ]] && printf 'cd "%s"\n' "${EPREFIX}${chdir}"
 	if [[ -n ${libdir} ]] ; then
 		local var
 		if [[ ${CHOST} == *-darwin* ]] ; then
@@ -768,6 +150,7 @@ make_wrapper() {
 			fi
 		EOF
 	fi
+	[[ -n ${chdir} ]] && printf 'cd "%s" &&\n' "${EPREFIX}${chdir}"
 	# We don't want to quote ${bin} so that people can pass complex
 	# things as ${bin} ... "./someprog --args"
 	printf 'exec %s "$@"\n' "${bin/#\//${EPREFIX}/}"
@@ -776,6 +159,7 @@ make_wrapper() {
 
 	if [[ -n ${path} ]] ; then
 		(
+		exeopts -m 0755
 		exeinto "${path}"
 		newexe "${tmpwrapper}" "${wrapper}"
 		) || die
@@ -784,33 +168,11 @@ make_wrapper() {
 	fi
 }
 
-# @FUNCTION: path_exists
-# @USAGE: [-a|-o] <paths>
-# @DESCRIPTION:
-# Check if the specified paths exist.  Works for all types of paths
-# (files/dirs/etc...).  The -a and -o flags control the requirements
-# of the paths.  They correspond to "and" and "or" logic.  So the -a
-# flag means all the paths must exist while the -o flag means at least
-# one of the paths must exist.  The default behavior is "and".  If no
-# paths are specified, then the return value is "false".
 path_exists() {
-	local opt=$1
-	[[ ${opt} == -[ao] ]] && shift || opt="-a"
-
-	# no paths -> return false
-	# same behavior as: [[ -e "" ]]
-	[[ $# -eq 0 ]] && return 1
-
-	local p r=0
-	for p in "$@" ; do
-		[[ -e ${p} ]]
-		: $(( r += $? ))
-	done
-
-	case ${opt} in
-		-a) return $(( r != 0 )) ;;
-		-o) return $(( r == $# )) ;;
-	esac
+	eerror "path_exists has been removed.  Please see the following post"
+	eerror "for a replacement snippet:"
+	eerror "https://blogs.gentoo.org/mgorny/2018/08/09/inlining-path_exists/"
+	die "path_exists is banned"
 }
 
 # @FUNCTION: use_if_iuse
@@ -867,10 +229,6 @@ optfeature() {
 			elog "${msg}"
 		done
 	fi
-}
-
-check_license() {
-	die "you no longer need this as portage supports ACCEPT_LICENSE itself"
 }
 
 case ${EAPI:-0} in
@@ -940,12 +298,14 @@ case ${EAPI:-0} in
 
 # @FUNCTION: einstalldocs
 # @DESCRIPTION:
-# Install documentation using DOCS and HTML_DOCS.
+# Install documentation using DOCS and HTML_DOCS, in EAPIs that do not
+# provide this function.  When available (i.e., in EAPI 6 or later),
+# the package manager implementation should be used instead.
 #
 # If DOCS is declared and non-empty, all files listed in it are
-# installed. The files must exist, otherwise the function will fail.
-# In EAPI 4 and subsequent EAPIs DOCS may specify directories as well,
-# in other EAPIs using directories is unsupported.
+# installed.  The files must exist, otherwise the function will fail.
+# In EAPI 4 and 5, DOCS may specify directories as well; in earlier
+# EAPIs using directories is unsupported.
 #
 # If DOCS is not declared, the files matching patterns given
 # in the default EAPI implementation of src_install will be installed.
@@ -1002,10 +362,11 @@ einstalldocs() {
 # @FUNCTION: in_iuse
 # @USAGE: <flag>
 # @DESCRIPTION:
-# Determines whether the given flag is in IUSE. Strips IUSE default prefixes
-# as necessary.
+# Determines whether the given flag is in IUSE.  Strips IUSE default
+# prefixes as necessary.  In EAPIs where it is available (i.e., EAPI 6
+# or later), the package manager implementation should be used instead.
 #
-# Note that this function should not be used in the global scope.
+# Note that this function must not be used in the global scope.
 in_iuse() {
 	debug-print-function ${FUNCNAME} "${@}"
 	[[ ${#} -eq 1 ]] || die "Invalid args to ${FUNCNAME}()"
@@ -1015,6 +376,25 @@ in_iuse() {
 
 	has "${flag}" "${liuse[@]#[+-]}"
 }
+
+;;
+esac
+
+case ${EAPI:-0} in
+0|1|2|3|4|5|6)
+
+# @FUNCTION: eqawarn
+# @USAGE: [message]
+# @DESCRIPTION:
+# Proxy to ewarn for package managers that don't provide eqawarn and use the PM
+# implementation if available. Reuses PORTAGE_ELOG_CLASSES as set by the dev
+# profile.
+if ! declare -F eqawarn >/dev/null ; then
+	eqawarn() {
+		has qa ${PORTAGE_ELOG_CLASSES} && ewarn "$@"
+		:
+	}
+fi
 
 ;;
 esac

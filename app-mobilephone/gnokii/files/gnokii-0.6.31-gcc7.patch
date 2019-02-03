@@ -1,0 +1,17 @@
+Patch by Robert Scheck <robert@fedoraproject.org> for gnokii <= 0.6.31 to avoid
+build failures with GCC 7.x as "../common/.libs/libgnokii.so: undefined reference
+to `local_atoi'". The "inline" is only a hint that the compiler doesn't complain
+about double defined symbols, but does not guarantee that a function is inlined
+or that a symbol is generated when needed.
+
+--- gnokii-0.6.31/common/gsm-filetypes.c	2011-12-02 15:53:04.000000000 +0100
++++ gnokii-0.6.31/common/gsm-filetypes.c.gcc7	2017-02-12 00:55:39.000000000 +0100
+@@ -1409,7 +1409,7 @@
+ #define GET_NEXT_TOKEN()	o = get_next_token(line + offset, ';')
+ #define STORE_TOKEN(a)		strip_slashes(a, line + offset, sizeof(a) - 1, o - 1)
+ 
+-inline int local_atoi(char *str, int len)
++static int local_atoi(char *str, int len)
+ {
+ 	int retval;
+ 	char *aux = strndup(str, len);

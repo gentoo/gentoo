@@ -5,8 +5,8 @@ EAPI=5
 inherit autotools eutils flag-o-matic multilib multilib-minimal
 
 DESCRIPTION="library for decoding DTS Coherent Acoustics streams used in DVD"
-HOMEPAGE="http://www.videolan.org/developers/libdca.html"
-SRC_URI="http://www.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.bz2
+HOMEPAGE="https://www.videolan.org/developers/libdca.html"
+SRC_URI="https://www.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.bz2
 	mirror://gentoo/${P}-constant.patch.bz2"
 
 LICENSE="GPL-2"
@@ -14,9 +14,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="debug oss static-libs"
 
-RDEPEND="!media-libs/libdts
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r3
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+RDEPEND="!media-libs/libdts"
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README TODO doc/${PN}.txt )

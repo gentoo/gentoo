@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils cmake-utils
+
+inherit cmake-utils desktop
 
 DESCRIPTION="3D arcade with unique fighting system and anthropomorphic characters"
 HOMEPAGE="https://bitbucket.org/osslugaru/lugaru/wiki/Home"

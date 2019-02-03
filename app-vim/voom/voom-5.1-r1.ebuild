@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 vim-plugin
 
 DESCRIPTION="vim plugin: emulates a two-pane text outliner"
-HOMEPAGE="https://vim-voom.github.com/ http://www.vim.org/scripts/script.php?script_id=2657"
+HOMEPAGE="https://vim-voom.github.com/ https://www.vim.org/scripts/script.php?script_id=2657"
 
 LICENSE="CC0-1.0"
 KEYWORDS="~amd64 ~x86"

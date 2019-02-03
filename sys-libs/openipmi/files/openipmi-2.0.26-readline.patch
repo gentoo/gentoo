@@ -1,0 +1,11 @@
+--- OpenIPMI-2.0.26/sample/ipmi_serial_bmc_emu.c
++++ OpenIPMI-2.0.26/sample/ipmi_serial_bmc_emu.c
+@@ -42,7 +42,7 @@
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include <sys/select.h>
+-#include <editline/readline.h>
++#include <readline/readline.h>
+ 
+ #define _GNU_SOURCE
+ #include <getopt.h>

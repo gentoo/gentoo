@@ -3,13 +3,12 @@
 <pkgmetadata>
   <maintainer type="person">
     <email>vincent.hardy.be@gmail.com</email>
-    <description>Proxied maintainer, assign bugs to him</description>
   </maintainer>
-<maintainer type="project">
+  <maintainer type="project">
     <email>crypto@gentoo.org</email>
     <name>Crypto</name>
   </maintainer>
-<maintainer type="project">
+  <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>

@@ -1,0 +1,22 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -55,7 +55,18 @@
+ AC_CHECK_FUNCS([dup2 ftruncate gettimeofday select strcspn strstr]dnl
+ [ strchr memcpy bzero setutent setutxent updwtmp updwtmpx _openpty revoke getsid]dnl
+ [ setsid setpgrp snprintf sigaction cfmakeraw])
++AC_ARG_WITH([libtirpc],
++  [AS_HELP_STRING([--with-libtirpc],[Use libtirpc as RPC implementation (instead of sunrpc)])])
++AS_IF([test "x$with_libtirpc" = xyes], 
++  [PKG_CHECK_MODULES([TIRPC], 
++    [libtirpc], 
++    [CFLAGS="$CFLAGS $TIRPC_CFLAGS"; LIBS="$LIBS $TIRPC_LIBS";],
++    [AC_MSG_ERROR([libtirpc requested, but library not found.])]
++  )], 
++  [AC_CHECK_HEADER(rpc/rpc.h, 
++    [],
++    [AC_MSG_ERROR([sunrpc requested, but headers are not present.])]
++)])
+-AC_SEARCH_LIBS([xdr_free],[nsl rpclib])
+ AC_SEARCH_LIBS([socket],[socket])
+ AC_SEARCH_LIBS([nanosleep],[posix4])
+ 

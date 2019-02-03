@@ -1,0 +1,73 @@
+From: Markus Koschany <apo@debian.org>
+Date: Thu, 10 Aug 2017 19:39:05 +0000
+Subject: gcc7
+
+Bug-Debian: https://bugs.debian.org/853425
+Forwarded: no
+---
+ src/cpu.c    | 10 +++++-----
+ src/memory.c |  2 +-
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/cpu.c b/src/cpu.c
+index 57bc209..5209548 100644
+--- a/src/cpu.c
++++ b/src/cpu.c
+@@ -61,7 +61,7 @@ static Uint8 a;
+ #define H (gbcpu->hl.b.h)
+ #define L (gbcpu->hl.b.l)
+ 
+-__inline__ Uint16 get_word(void)
++extern __inline__ Uint16 get_word(void)
+ {
+   //Uint16 v=((Uint16)(mem_read(PC)));
+   Uint16 v1,v2;
+@@ -74,7 +74,7 @@ __inline__ Uint16 get_word(void)
+   //return v;
+ }
+ 
+-__inline__ Uint8 get_byte(void)
++extern __inline__ Uint8 get_byte(void)
+ {
+   //Uint8 t=mem_read(PC);
+   Uint8 t;
+@@ -83,7 +83,7 @@ __inline__ Uint8 get_byte(void)
+   return t;
+ }
+ 
+-__inline__ void push_r(REG *r)
++extern __inline__ void push_r(REG *r)
+ {
+   //mem_write(--SP,(r)->b.h);
+   //mem_write(--SP,(r)->b.l);
+@@ -93,7 +93,7 @@ __inline__ void push_r(REG *r)
+   mem_write_fast(SP,(r)->b.l);
+ }
+ 
+-__inline__ void pop_r(REG *r)
++extern __inline__ void pop_r(REG *r)
+ {
+   //(r)->b.l=mem_read(SP);
+   mem_read_fast(SP,(r)->b.l);
+@@ -176,7 +176,7 @@ __inline__ Uint8 unknown(void){
+ 
+ 
+ 
+-__inline__ Uint8 gbcpu_exec_one(void)
++extern __inline__ Uint8 gbcpu_exec_one(void)
+ {
+ 	static Uint8 opcode;
+ 	if (gbcpu->ei_flag==1) {
+diff --git a/src/memory.c b/src/memory.c
+index 26e42d9..fd06738 100644
+--- a/src/memory.c
++++ b/src/memory.c
+@@ -737,7 +737,7 @@ Uint8 mem_read_default(Uint16 adr)
+   return 0xFF;
+ }
+ 
+-__inline__ void update_gb_pad(void) {
++extern __inline__ void update_gb_pad(void) {
+   gb_pad=0;
+   if (!conf.play_movie) {
+ 

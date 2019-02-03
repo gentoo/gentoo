@@ -5,10 +5,6 @@
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
-  <maintainer type="project">
-    <email>sound@gentoo.org</email>
-    <name>Gentoo Sound project</name>
-  </maintainer>
   <use>
     <flag name="X">
       Build the X11 publish module to export PulseAudio information
@@ -21,10 +17,9 @@
       PulseAudio plugin enabled. This ensures that clients supporting
       ALSA only will use PulseAudio.
     </flag>
-    <flag name="gnome">
-      Use GConf to store user preferences on streams and so on. Don't
-      enable this flag if you want to use a system wide instance. If
-      unsure, enable this flag.
+    <flag name="gconf">
+      Ensure <pkg>gnome-base/gconf</pkg> is present for pulseaudio GConf
+      to GSettings module automatic migration (keeping the user configuration)
     </flag>
     <flag name="oss">
       Enable OSS sink/source (output/input). Deprecated, upstream does
@@ -35,9 +30,9 @@
     <flag name="glib">
       Add support to <pkg>dev-libs/glib</pkg>-based mainloop for the
       libpulse client library, to allow using libpulse on glib-based
-      programs.
+      programs. Build the GSettings PA module.
     </flag>
-    <flag name="system-wide" restrict="&gt;=media-sound/pulseaudio-0.9.21.1">
+    <flag name="system-wide">
       Allow preparation and installation of the system-wide init
       script for PulseAudio. Since this support is only supported for
       embedded situations, do not enable without reading the upstream
@@ -46,7 +41,7 @@
     </flag>
     <flag name="asyncns">Use libasyncns for asynchronous name resolution.</flag>
     <flag name="doc">Build the doxygen-described API documentation.</flag>
-    <flag name="realtime" restrict="&gt;=media-sound/pulseaudio-0.9.21.2-r1">
+    <flag name="realtime">
       Makes PulseAudio use RealtimeKit (<pkg>sys-auth/rtkit</pkg>) to get
       real-time priority while running.
     </flag>

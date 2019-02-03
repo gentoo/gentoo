@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="PowWow Console MUD Client"
-HOMEPAGE="http://hoopajoo.net/projects/powwow.html"
-SRC_URI="http://hoopajoo.net/static/projects/${P}.tar.gz"
+HOMEPAGE="https://www.hoopajoo.net/projects/powwow.html"
+SRC_URI="https://www.hoopajoo.net/static/projects/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

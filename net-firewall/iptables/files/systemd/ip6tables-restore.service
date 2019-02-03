@@ -8,7 +8,7 @@ Wants=network-pre.target
 
 [Service]
 Type=oneshot
-ExecStart=/sbin/ip6tables-restore /var/lib/ip6tables/rules-save
+ExecStart=/sbin/ip6tables-restore -w -- /var/lib/ip6tables/rules-save
 
 [Install]
 WantedBy=basic.target

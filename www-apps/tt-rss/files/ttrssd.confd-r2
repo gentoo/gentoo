@@ -1,0 +1,47 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Space-separated paths of TT-RSS instances that you want to start the
+# update daemon for. If left empty, these will be automatically
+# detected using data from /var/db/webapps/tt-rss. Instances without
+# the update_daemon2.php script present will be skipped.
+#
+# Default:
+#  INSTANCE_DIRS=""
+# Example:
+#  INSTANCE_DIRS="/some/webhost/htdocs/tt-rss /some/otherwebhost/htdocs/newsreader"
+#
+INSTANCE_DIRS=""
+
+# Path to the log files. One log file will be created for each TT-RSS
+# instance. Update the logrotate file after changing this.
+#
+# Default:
+#  LOG_DIR="/var/log/ttrssd"
+#
+LOG_DIR="/var/log/ttrssd"
+
+# User to run the update daemon as. You should not run this as
+# root. If ACLs are unavailable on the filesystem used by the TT-RSS
+# instances then choosing the same user that serves the PHP web
+# interface is recommended to avoid permission issues. You *must* add
+# this user to the ttrssd group. If the PHP user is not the same as
+# the web server user (e.g. apache or nginx) then this user must be
+# added to the ttrssd group too.
+#
+# Default:
+#  TTRSSD_USER="ttrssd"
+#
+TTRSSD_USER="ttrssd"
+
+# Additional options to pass to the update daemon. If you want to pass
+# different options to different TT-RSS instances then create symlinks
+# of the ttrssd init.d script (e.g. ttrssd.foo, ttrssd.bar) and
+# configure INSTANCE_DIRS and TTRSSD_OPTS for each of these.
+#
+# Default:
+#  TTRSSD_OPTS=""
+# Example:
+#  TTRSSD_OPTS="--tasks=1 --interval=300"
+#
+TTRSSD_OPTS=""

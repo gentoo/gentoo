@@ -1,5 +1,5 @@
---- demo/Makefile.am.old	2011-05-20 11:13:18.822445466 +0200
-+++ demo/Makefile.am	2011-05-20 11:13:28.271042994 +0200
+--- a/demo/Makefile.am
++++ b/demo/Makefile.am
 @@ -17,7 +17,7 @@
      $(NULL)
  c_demo_CFLAGS = $(FT2_CFLAGS) $(GL_CFLAGS)

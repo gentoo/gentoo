@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 DESCRIPTION="Rules for Sagan log analyzer"
 HOMEPAGE="http://sagan.softwink.com/"
@@ -20,10 +20,10 @@ S=${WORKDIR}/rules
 
 src_install() {
 	insinto /etc/sagan-rules
-	doins ./*.config
-	doins ./*rules
-	doins ./*map
+	doins *.config
+	doins *rules
+	doins *map
 	if use lognorm ; then
-		doins ./*normalize.rulebase
+		doins *normalize.rulebase
 	fi
 }

@@ -24,7 +24,7 @@ IUSE=""
 
 SLOT="0"
 LICENSE="|| ( Ruby GPL-2 )"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 RDEPEND="${RDEPEND}
 	>=x11-libs/cairo-1.2.0[svg]"
@@ -32,7 +32,7 @@ DEPEND="${DEPEND}
 	>=x11-libs/cairo-1.2.0[svg]"
 
 ruby_add_bdepend "
-	>=dev-ruby/pkg-config-1.1.5
+	>=dev-ruby/pkg-config-1.2.2
 	dev-ruby/ruby-glib2
 	test? ( >=dev-ruby/test-unit-2.1.0-r1:2 )"
 

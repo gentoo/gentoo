@@ -1,0 +1,54 @@
+Description: fix typos
+Author: Andreas Beckmann <anbe@debian.org>
+
+--- a/cuneiform_src/Kern/rblock/sources/c/ltmain.c
++++ b/cuneiform_src/Kern/rblock/sources/c/ltmain.c
+@@ -344,7 +344,7 @@ i=0; i=i;
+ # ifdef LT_DEBUG
+     //if (LT_DebugGraphicsLevel >= 2)
+ 	if(!LDPUMA_Skip(hFirstDustAbsorbtion))
+-        LT_GraphicsBlocksOutput ("After first dust absorbtion");
++        LT_GraphicsBlocksOutput ("After first dust absorption");
+ # endif
+ 
+     PageMatrixExcludeSeparators (TRUE);
+@@ -368,7 +368,7 @@ i=0; i=i;
+ # ifdef LT_DEBUG
+     //if (LT_DebugGraphicsLevel >= 2)
+ 	if(!LDPUMA_Skip(hSecondDustAbsorbtion))
+-        LT_GraphicsBlocksOutput ("After second dust absorbtion");
++        LT_GraphicsBlocksOutput ("After second dust absorption");
+ # endif
+ 
+     if (cut_page_left || cut_page_right)
+--- a/cuneiform_src/Kern/rstr/src/pass3.c
++++ b/cuneiform_src/Kern/rstr/src/pass3.c
+@@ -648,7 +648,7 @@ ready_BL:;
+             {
+             if (snap_activity('d'))
+                 {
+-                snap_show_text("Skiped as dust");
++                snap_show_text("Skipped as dust");
+                 snap_monitor();
+                 }
+ 
+@@ -3135,7 +3135,7 @@ Bool match_word_prepare(CSTR_line ln, uc
+         {
+         if (snap_activity('n'))
+                 {
+-                snap_show_text("Skiped as dust");
++                snap_show_text("Skipped as dust");
+                 snap_monitor();
+                 }
+                         return FALSE;
+--- a/cuneiform_src/Kern/rstr/src/snap.c
++++ b/cuneiform_src/Kern/rstr/src/snap.c
+@@ -542,7 +542,7 @@ if( short_spell_re(wrd,lang)   )
+ else
+     strcat(buf," n");
+ 
+-strcat(buf," new agressive : ");
++strcat(buf," new aggressive : ");
+ if( _spell_agressive(wrd,lang) )
+     strcat(buf,"y ");
+ else

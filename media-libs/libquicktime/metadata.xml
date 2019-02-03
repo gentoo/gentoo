@@ -4,9 +4,6 @@
 	<maintainer type="project">
 		<email>media-video@gentoo.org</email>
 	</maintainer>
-	<use>
-		<flag name="schroedinger">Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec)</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">libquicktime</remote-id>
 	</upstream>

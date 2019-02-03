@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit user
 
 DESCRIPTION="Log parsing and notification program"
-HOMEPAGE="http://dev.inversepath.com/trac/tenshi"
+HOMEPAGE="https://inversepath.com/tenshi.html https://github.com/inversepath/tenshi"
 SRC_URI="https://github.com/inversepath/${PN}/archive/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl

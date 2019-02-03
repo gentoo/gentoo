@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,10 +20,7 @@ DEPEND="
 	sys-libs/talloc
 "
 RDEPEND="${DEPEND}
-	|| (
-		<net-fs/samba-3.6[smbtav2]
-		>=net-fs/samba-3.6
-	)
+	>=net-fs/samba-3.6
 "
 
 DOCS=( README AUTHORS )

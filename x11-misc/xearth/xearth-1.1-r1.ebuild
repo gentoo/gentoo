@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,9 +21,9 @@ RDEPEND="
 	x11-libs/libXt
 "
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	x11-misc/imake
 	app-text/rman
-	x11-proto/xproto
 "
 
 src_prepare() {

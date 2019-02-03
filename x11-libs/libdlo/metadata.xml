@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		A fully open source GPL driver which supports all DisplayLink devices
+		in the mainline Linux kernel, called udlfb. It's possible to write
+		custom applications for it or to the libdlo user mode library itself.
+		And it's also possible to configure X and standard X applications to run on udlfb.
+	</longdescription>
+	<use>
+		<flag name="test-program">Build the program for testing Displaylink devices.</flag>
+	</use>
+</pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ninja-build/ninja.git"
 else
 	SRC_URI="https://github.com/ninja-build/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 fi
 
 DESCRIPTION="A small build system similar to make"
@@ -21,7 +21,7 @@ HOMEPAGE="https://ninja-build.org/"
 LICENSE="Apache-2.0"
 SLOT="0"
 
-IUSE="doc emacs test vim-syntax zsh-completion"
+IUSE="doc emacs test vim-syntax"
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -41,7 +41,6 @@ RDEPEND="
 			app-editors/gvim
 		)
 	)
-	zsh-completion? ( app-shells/zsh )
 	!<net-irc/ninja-1.5.9_pre14-r1" #436804
 
 run_for_build() {
@@ -91,8 +90,9 @@ src_test() {
 src_install() {
 	dodoc README HACKING.md
 	if use doc; then
-		dohtml -r doc/doxygen/html/*
-		dohtml doc/manual.html
+		docinto html
+		dodoc -r doc/doxygen/html/.
+		dodoc doc/manual.html
 	fi
 	dobin ninja
 
@@ -107,10 +107,8 @@ src_install() {
 		doins "${T}/${PN}.vim"
 	fi
 
-	if use zsh-completion; then
-		insinto /usr/share/zsh/site-functions
-		newins misc/zsh-completion _ninja
-	fi
+	insinto /usr/share/zsh/site-functions
+	newins misc/zsh-completion _ninja
 
 	if use emacs; then
 		cd misc || die

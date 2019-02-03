@@ -1,0 +1,230 @@
+diff --git a/frontends/xml/vcd_xml_rip.c b/frontends/xml/vcd_xml_rip.c
+index 3d28065..f1be95d 100644
+--- a/frontends/xml/vcd_xml_rip.c
++++ b/frontends/xml/vcd_xml_rip.c
+@@ -769,7 +769,7 @@ _visit_lot (pbc_ctx_t *p_pbc_ctx)
+       _visit_pbc (p_pbc_ctx, n + 1, tmp, true);
+ 
+   _vcd_list_sort (p_pbc_ctx->offset_list, 
+-		  (_cdio_list_cmp_func) vcdinf_lid_t_cmp);
++		  (_cdio_list_cmp_func_t) vcdinf_lid_t_cmp);
+ }
+ 
+ static int
+diff --git a/include/libvcd/info.h b/include/libvcd/info.h
+index 2d70940..b62d541 100644
+--- a/include/libvcd/info.h
++++ b/include/libvcd/info.h
+@@ -455,12 +455,12 @@ extern "C" {
+   /*!
+     Get the VCD info list.
+   */
+-  CdioList *vcdinfo_get_offset_list(const vcdinfo_obj_t *p_vcdinfo);
++  CdioList_t *vcdinfo_get_offset_list(const vcdinfo_obj_t *p_vcdinfo);
+ 
+   /*!
+     Get the VCD info extended offset list.
+   */
+-  CdioList *vcdinfo_get_offset_x_list(const vcdinfo_obj_t *p_vcdinfo);
++  CdioList_t *vcdinfo_get_offset_x_list(const vcdinfo_obj_t *p_vcdinfo);
+ 
+   /*!
+     Get the VCD info offset multiplier.
+diff --git a/lib/data_structures.c b/lib/data_structures.c
+index 4415ae1..cef7381 100644
+--- a/lib/data_structures.c
++++ b/lib/data_structures.c
+@@ -58,7 +58,7 @@ struct _CdioListNode
+ /* impl */
+ 
+ static bool
+-_bubble_sort_iteration (CdioList_t *p_list, _cdio_list_cmp_func cmp_func)
++_bubble_sort_iteration (CdioList_t *p_list, _cdio_list_cmp_func_t cmp_func)
+ {
+   CdioListNode_t **pp_node;
+   bool changed = false;
+@@ -86,7 +86,7 @@ _bubble_sort_iteration (CdioList_t *p_list, _cdio_list_cmp_func cmp_func)
+   return changed;
+ }
+ 
+-void _vcd_list_sort (CdioList_t *list, _cdio_list_cmp_func cmp_func)
++void _vcd_list_sort (CdioList_t *list, _cdio_list_cmp_func_t cmp_func)
+ {
+   /* fixme -- this is bubble sort -- worst sorting algo... */
+ 
+@@ -263,7 +263,7 @@ _vcd_tree_node_sort_children (VcdTreeNode_t *p_node,
+   vcd_assert (p_node != NULL);
+ 
+   if (p_node->children)
+-    _vcd_list_sort (p_node->children, (_cdio_list_cmp_func) cmp_func);
++    _vcd_list_sort (p_node->children, (_cdio_list_cmp_func_t) cmp_func);
+ }
+ 
+ void
+diff --git a/lib/data_structures.h b/lib/data_structures.h
+index d0932a9..eb5ba48 100644
+--- a/lib/data_structures.h
++++ b/lib/data_structures.h
+@@ -28,7 +28,7 @@
+ 
+ CdioListNode_t *_vcd_list_at (CdioList_t *list, int idx);
+ 
+-void _vcd_list_sort (CdioList_t *p_list, _cdio_list_cmp_func cmp_func);
++void _vcd_list_sort (CdioList_t *p_list, _cdio_list_cmp_func_t cmp_func);
+ 
+ /* n-way tree */
+ 
+diff --git a/lib/dict.h b/lib/dict.h
+index c3e2ce3..fa003f6 100644
+--- a/lib/dict.h
++++ b/lib/dict.h
+@@ -88,7 +88,7 @@ _dict_get_bykey (VcdObj_t *obj, const char key[])
+   vcd_assert (key != NULL);
+ 
+   node = _cdio_list_find (obj->buffer_dict_list,
+-			  (_cdio_list_iterfunc) _dict_key_cmp,
++			  (_cdio_list_iterfunc_t) _dict_key_cmp,
+ 			  (char *) key);
+   
+   if (node)
+@@ -106,7 +106,7 @@ _dict_get_bysector (VcdObj_t *obj, uint32_t sector)
+   vcd_assert (sector != SECTOR_NIL);
+ 
+   node = _cdio_list_find (obj->buffer_dict_list, 
+-			  (_cdio_list_iterfunc) _dict_sector_cmp, 
++			  (_cdio_list_iterfunc_t) _dict_sector_cmp, 
+ 			  &sector);
+ 
+   if (node)
+diff --git a/lib/files.c b/lib/files.c
+index 79fa8fe..61e8077 100644
+--- a/lib/files.c
++++ b/lib/files.c
+@@ -634,7 +634,7 @@ get_search_dat_size (const VcdObj_t *p_vcdobj)
+     + (_get_scanpoint_count (p_vcdobj) * sizeof (msf_t));
+ }
+ 
+-static CdioList *
++static CdioList_t *
+ _make_track_scantable (const VcdObj_t *p_vcdobj)
+ {
+   CdioList_t *p_all_aps = _cdio_list_new ();
+diff --git a/lib/image_bincue.c b/lib/image_bincue.c
+index 69091b3..4e4d460 100644
+--- a/lib/image_bincue.c
++++ b/lib/image_bincue.c
+@@ -88,7 +88,7 @@ _sink_free (void *user_data)
+ }
+ 
+ static int
+-_set_cuesheet (void *user_data, const CdioList *vcd_cue_list)
++_set_cuesheet (void *user_data, const CdioList_t *vcd_cue_list)
+ {
+   _img_bincue_snk_t *_obj = user_data;
+   CdioListNode_t *node;
+@@ -102,7 +102,7 @@ _set_cuesheet (void *user_data, const CdioList *vcd_cue_list)
+ 
+   track_no = 0;
+   index_no = 0;
+-  _CDIO_LIST_FOREACH (node, (CdioList *) vcd_cue_list)
++  _CDIO_LIST_FOREACH (node, (CdioList_t *) vcd_cue_list)
+     {
+       const vcd_cue_t *_cue = _cdio_list_node_data (node);
+       char *psz_msf;
+diff --git a/lib/info_private.c b/lib/info_private.c
+index 648ef27..53edff7 100644
+--- a/lib/info_private.c
++++ b/lib/info_private.c
+@@ -136,7 +136,7 @@ vcdinf_visit_lot (struct _vcdinf_pbc_ctx *obj)
+       ret &= vcdinf_visit_pbc (obj, n + 1, tmp, true);
+ 
+   _vcd_list_sort (obj->extended ? obj->offset_x_list : obj->offset_list, 
+-                  (_cdio_list_cmp_func) vcdinf_lid_t_cmp);
++                  (_cdio_list_cmp_func_t) vcdinf_lid_t_cmp);
+ 
+   /* Now really complete the offset table with LIDs.  This routine
+      might obviate the need for vcdinf_visit_pbc() or some of it which is
+diff --git a/lib/mpeg.h b/lib/mpeg.h
+index 0425db6..7df668a 100644
+--- a/lib/mpeg.h
++++ b/lib/mpeg.h
+@@ -103,7 +103,7 @@ typedef struct {
+       unsigned vbvsize;
+       bool constrained_flag;
+ 
+-      CdioList *aps_list; /* filled up by vcd_mpeg_source */
++      CdioList_t *aps_list; /* filled up by vcd_mpeg_source */
+       double last_aps_pts; /* temp, see ->packet */
+       
+     } shdr[3];
+diff --git a/lib/mpeg_stream.c b/lib/mpeg_stream.c
+index 8384780..2ee3f41 100644
+--- a/lib/mpeg_stream.c
++++ b/lib/mpeg_stream.c
+@@ -270,7 +270,7 @@ vcd_mpeg_source_scan (VcdMpegSource_t *obj, bool strict_aps, bool fix_scan_info,
+ }
+ 
+ static double
+-_approx_pts (CdioList *aps_list, uint32_t packet_no)
++_approx_pts (CdioList_t *aps_list, uint32_t packet_no)
+ {
+   double retval = 0;
+   CdioListNode_t *node;
+@@ -324,7 +324,7 @@ _set_scan_msf (msf_t *_msf, long lsn)
+ 
+ static void 
+ _fix_scan_info (struct vcd_mpeg_scan_data_t *scan_data_ptr,
+-                unsigned packet_no, double pts, CdioList *aps_list)
++                unsigned packet_no, double pts, CdioList_t *aps_list)
+ {
+   CdioListNode_t *node;
+   long _next = -1, _prev = -1, _forw = -1, _back = -1;
+diff --git a/lib/vcd.c b/lib/vcd.c
+index 4936c09..b1545a0 100644
+--- a/lib/vcd.c
++++ b/lib/vcd.c
+@@ -583,7 +583,7 @@ vcd_obj_add_sequence_pause (VcdObj_t *obj, const char sequence_id[],
+   }
+ 
+   _vcd_list_sort (p_sequence->pause_list, 
+-                  (_cdio_list_cmp_func) _pause_cmp);
++                  (_cdio_list_cmp_func_t) _pause_cmp);
+ 
+   vcd_debug ("added autopause point at %f", pause_time);
+ 
+@@ -623,7 +623,7 @@ vcd_obj_add_segment_pause (VcdObj_t *p_obj, const char segment_id[],
+   }
+ 
+   _vcd_list_sort (_segment->pause_list, 
+-                  (_cdio_list_cmp_func) _pause_cmp);
++                  (_cdio_list_cmp_func_t) _pause_cmp);
+ 
+   vcd_debug ("added autopause point at %f", pause_time);
+ 
+@@ -685,7 +685,7 @@ vcd_obj_add_sequence_entry (VcdObj_t *p_obj, const char sequence_id[],
+   }
+ 
+   _vcd_list_sort (p_sequence->entry_list, 
+-                  (_cdio_list_cmp_func) _entry_cmp);
++                  (_cdio_list_cmp_func_t) _entry_cmp);
+ 
+   return 0;
+ }
+@@ -1001,7 +1001,7 @@ vcd_obj_add_dir (VcdObj_t *p_obj, const char iso_pathname[])
+   _cdio_list_append (p_obj->custom_dir_list, _iso_pathname);
+ 
+   _vcd_list_sort (p_obj->custom_dir_list, 
+-                  (_cdio_list_cmp_func) strcmp);
++                  (_cdio_list_cmp_func_t) strcmp);
+ 
+   return 0;
+ }
+@@ -2290,7 +2290,7 @@ vcd_obj_write_image (VcdObj_t *p_obj, VcdImageSink_t *p_image_sink,
+   /* start with meta info */
+ 
+   {
+-    CdioList *p_cue_list;
++    CdioList_t *p_cue_list;
+     vcd_cue_t *p_cue;
+ 
+     p_cue_list = _cdio_list_new ();

@@ -1,0 +1,80 @@
+Index: /trunk/gdal/frmts/nitf/nitfrasterband.cpp
+===================================================================
+--- a/frmts/nitf/nitfrasterband.cpp	(revision 38657)
++++ b/frmts/nitf/nitfrasterband.cpp	(revision 38658)
+@@ -824,4 +826,20 @@
+         pUnpackData[i+7] = ((pDataSrc[k+2]) & 0x7);
+       }
++      if( i < n )
++      {
++        pUnpackData[i+0] = ((pDataSrc[k+0] >> 5));
++        if( i + 1 < n )
++            pUnpackData[i+1] = ((pDataSrc[k+0] >> 2) & 0x07);
++        if( i + 2 < n )
++            pUnpackData[i+2] = ((pDataSrc[k+0] << 1) & 0x07) | (pDataSrc[k+1] >> 7);
++        if( i + 3 < n )
++            pUnpackData[i+3] = ((pDataSrc[k+1] >> 4) & 0x07);
++        if( i + 4 < n )
++            pUnpackData[i+4] = ((pDataSrc[k+1] >> 1) & 0x07);
++        if( i + 5 < n )
++            pUnpackData[i+5] = ((pDataSrc[k+1] << 2) & 0x07) | (pDataSrc[k+2] >> 6);
++        if( i + 6 < n )
++            pUnpackData[i+6] = ((pDataSrc[k+2] >> 3) & 0x07);
++      }
+ 
+       memcpy(pData, pUnpackData, n);
+@@ -842,4 +862,20 @@
+         pUnpackData[i+7] = ((pDataSrc[k+4]) & 0x1f);
+       }
++      if( i < n )
++      {
++        pUnpackData[i+0] = ((pDataSrc[k+0] >> 3));
++        if( i + 1 < n )
++            pUnpackData[i+1] = ((pDataSrc[k+0] << 2) & 0x1f) | (pDataSrc[k+1] >> 6);
++        if( i + 2 < n )
++            pUnpackData[i+2] = ((pDataSrc[k+1] >> 1) & 0x1f);
++        if( i + 3 < n )
++            pUnpackData[i+3] = ((pDataSrc[k+1] << 4) & 0x1f) | (pDataSrc[k+2] >> 4);
++        if( i + 4 < n )
++            pUnpackData[i+4] = ((pDataSrc[k+2] << 1) & 0x1f) | (pDataSrc[k+3] >> 7);
++        if( i + 5 < n )
++            pUnpackData[i+5] = ((pDataSrc[k+3] >> 2) & 0x1f);
++        if( i + 6 < n )
++            pUnpackData[i+6] = ((pDataSrc[k+3] << 3) & 0x1f) | (pDataSrc[k+4] >> 5);
++      }
+ 
+       memcpy(pData, pUnpackData, n);
+@@ -856,4 +894,12 @@
+         pUnpackData[i+3] = ((pDataSrc[k+2]) & 0x3f);
+       }
++      if( i < n )
++      {
++        pUnpackData[i+0] = ((pDataSrc[k+0] >> 2));
++        if( i + 1 < n )
++            pUnpackData[i+1] = ((pDataSrc[k+0] << 4) & 0x3f) | (pDataSrc[k+1] >> 4);
++        if( i + 2 < n )
++            pUnpackData[i+2] = ((pDataSrc[k+1] << 2) & 0x3f) | (pDataSrc[k+2] >> 6);
++      }
+ 
+       memcpy(pData, pUnpackData, n);
+@@ -873,4 +921,20 @@
+         pUnpackData[i+6] = ((pDataSrc[k+5] << 1) & 0x7f) | (pDataSrc[k+6] >> 7);
+         pUnpackData[i+7] = ((pDataSrc[k+6]) & 0x7f);
++      }
++      if( i < n )
++      {
++        pUnpackData[i+0] = ((pDataSrc[k+0] >> 1));
++        if( i + 1 < n )
++            pUnpackData[i+1] = ((pDataSrc[k+0] << 6) & 0x7f) | (pDataSrc[k+1] >> 2);
++        if( i + 2 < n )
++            pUnpackData[i+2] = ((pDataSrc[k+1] << 5) & 0x7f) | (pDataSrc[k+2] >> 3) ;
++        if( i + 3 < n )
++            pUnpackData[i+3] = ((pDataSrc[k+2] << 4) & 0x7f) | (pDataSrc[k+3] >> 4);
++        if( i + 4 < n )
++            pUnpackData[i+4] = ((pDataSrc[k+3] << 3) & 0x7f) | (pDataSrc[k+4] >> 5);
++        if( i + 5 < n )
++            pUnpackData[i+5] = ((pDataSrc[k+4] << 2) & 0x7f) | (pDataSrc[k+5] >> 6);
++        if( i + 6 < n )
++            pUnpackData[i+6] = ((pDataSrc[k+5] << 1) & 0x7f) | (pDataSrc[k+6] >> 7);
+       }
+ 

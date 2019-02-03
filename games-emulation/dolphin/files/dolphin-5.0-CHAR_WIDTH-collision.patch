@@ -1,0 +1,49 @@
+Avoid clash with TS 18661-1:2014 macros
+https://bugs.gentoo.org/637986
+
+--- a/Source/Core/VideoBackends/OGL/RasterFont.cpp
++++ b/Source/Core/VideoBackends/OGL/RasterFont.cpp
+@@ -15,7 +15,7 @@
+ namespace OGL
+ {
+ 
+-static const int CHAR_WIDTH = 8;
++static const int DOLPHIN_CHAR_WIDTH = 8;
+ static const int CHAR_HEIGHT = 13;
+ static const int CHAR_OFFSET = 32;
+ static const int CHAR_COUNT = 95;
+@@ -146,20 +146,20 @@
+ 	glGenTextures(1, &texture);
+ 	glActiveTexture(GL_TEXTURE8);
+ 	glBindTexture(GL_TEXTURE_2D, texture);
+-	std::vector<u32> texture_data(CHAR_WIDTH * CHAR_COUNT * CHAR_HEIGHT);
++	std::vector<u32> texture_data(DOLPHIN_CHAR_WIDTH * CHAR_COUNT * CHAR_HEIGHT);
+ 	for (int y = 0; y < CHAR_HEIGHT; y++)
+ 	{
+ 		for (int c = 0; c < CHAR_COUNT; c++)
+ 		{
+-			for (int x = 0; x < CHAR_WIDTH; x++)
++			for (int x = 0; x < DOLPHIN_CHAR_WIDTH; x++)
+ 			{
+-				bool pixel = (0 != (rasters[c][y] & (1 << (CHAR_WIDTH - x - 1))));
+-				texture_data[CHAR_WIDTH * CHAR_COUNT * y + CHAR_WIDTH * c + x] = pixel ? -1 : 0;
++				bool pixel = (0 != (rasters[c][y] & (1 << (DOLPHIN_CHAR_WIDTH - x - 1))));
++				texture_data[DOLPHIN_CHAR_WIDTH * CHAR_COUNT * y + DOLPHIN_CHAR_WIDTH * c + x] = pixel ? -1 : 0;
+ 			}
+ 		}
+ 	}
+ 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
+-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, CHAR_WIDTH * CHAR_COUNT, CHAR_HEIGHT, 0, GL_RGBA, GL_UNSIGNED_BYTE, texture_data.data());
++	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, DOLPHIN_CHAR_WIDTH * CHAR_COUNT, CHAR_HEIGHT, 0, GL_RGBA, GL_UNSIGNED_BYTE, texture_data.data());
+ 
+ 	// generate shader
+ 	ProgramShaderCache::CompileShader(s_shader, s_vertexShaderSrc, s_fragmentShaderSrc);
+@@ -196,7 +196,7 @@
+ 	std::vector<GLfloat> vertices(text.length() * 6 * 4);
+ 
+ 	int usage = 0;
+-	GLfloat delta_x = GLfloat(2 * CHAR_WIDTH) / GLfloat(bbWidth);
++	GLfloat delta_x = GLfloat(2 * DOLPHIN_CHAR_WIDTH) / GLfloat(bbWidth);
+ 	GLfloat delta_y = GLfloat(2 * CHAR_HEIGHT) / GLfloat(bbHeight);
+ 	GLfloat border_x = 2.0f / GLfloat(bbWidth);
+ 	GLfloat border_y = 4.0f / GLfloat(bbHeight);

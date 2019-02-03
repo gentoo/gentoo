@@ -35,8 +35,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-ml/findlib
-	test? ( dev-ml/ounit
-		$(python_gen_any_dep "~dev-python/lit-${PV}[\${PYTHON_USEDEP}]") )
+	test? ( dev-ml/ounit )
 	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
 
@@ -48,11 +47,6 @@ S=${WORKDIR}/${MY_P/_/}.src
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
-python_check_deps() {
-	! use test \
-		|| has_version "dev-python/lit[${PYTHON_USEDEP}]"
-}
-
 pkg_setup() {
 	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
 	python-any-r1_pkg_setup
@@ -62,8 +56,7 @@ src_prepare() {
 	# Python is needed to run tests using lit
 	python_setup
 
-	# User patches
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 src_configure() {
@@ -91,10 +84,6 @@ src_configure() {
 		-DGO_EXECUTABLE=GO_EXECUTABLE-NOTFOUND
 
 		# TODO: ocamldoc
-	)
-
-	use test && mycmakeargs+=(
-		-DLIT_COMMAND="${EPREFIX}/usr/bin/lit"
 	)
 
 	cmake-utils_src_configure

@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit linux-mod readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="Wrapper for using Windows drivers for some wireless cards"
@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.59-cflags.patch
 	"${FILESDIR}"/${PN}-1.61-kernel-4.11.patch
 	"${FILESDIR}"/${PN}-1.61-kernel-4.13.patch
+	"${FILESDIR}"/${PN}-1.61-kernel-4.15.patch
 )
 
 MODULE_NAMES="ndiswrapper(misc:${S}/driver)"

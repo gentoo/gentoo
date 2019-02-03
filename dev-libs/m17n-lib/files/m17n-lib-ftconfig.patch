@@ -1,0 +1,29 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -210,21 +210,20 @@
+ dnl Check for Freetype2 usability.
+ AC_ARG_WITH(freetype,
+ 	    AS_HELP_STRING([--with-freetype],[enable Freetype support]))
+-AC_CHECK_PROG(HAVE_FREETYPE_CONFIG, freetype-config, yes)
+-if test "x$with_freetype" != "xno" -a "x$HAVE_FREETYPE_CONFIG" = "xyes"; then
+-  FREETYPE_INC=`freetype-config --cflags`
++if test "x$with_freetype" != "xno"; then
++  PKG_CHECK_MODULES([FT2], [freetype2])
+   save_CPPFLAGS="$CPPFLAGS"
+-  CPPFLAGS="$CPPFLAGS $FREETYPE_INC"
++  CPPFLAGS="$CPPFLAGS $FT2_CFLAGS"
+   AC_CHECK_HEADER(ft2build.h, HAVE_FREETYPE=yes,
+   			      HAVE_FREETYPE=no CPPFLAGS="$save_CPPFLAGS")
+   if test "x$HAVE_FREETYPE" = "xyes" ; then
+     save_LIBS="$LIBS"
+-    LIBS="$LIBS `freetype-config --libs`"
++    LIBS="$LIBS $FT2_LIBS"
+     AC_CHECK_LIB(freetype, FT_Init_FreeType, HAVE_FREETYPE=yes,
+     			   		     HAVE_FREETYPE=no)
+     LIBS="$save_LIBS"
+     if test "x$HAVE_FREETYPE" = "xyes"; then
+-      FREETYPE_LD_FLAGS=`freetype-config --libs`
++      FREETYPE_LD_FLAGS=$FT2_LIBS
+       AC_DEFINE(HAVE_FREETYPE, 1, 
+ 		[Define to 1 if you have FreeType library and header file.])
+       M17N_EXT_LIBS="$M17N_EXT_LIBS freetype"

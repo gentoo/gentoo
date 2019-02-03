@@ -1,0 +1,11 @@
+--- a/src/Main.c.orig	2005-03-05 09:20:04.000000000 -0700
++++ b/src/Main.c	2011-03-14 10:08:31.846413904 -0600
+@@ -35,8 +35,6 @@
+     for(i = 0; modes[i]; ++i)
+       printf("\t%d x %d\n", modes[i]->w, modes[i]->h);
+   }
+-
+-  free(modes);
+ }
+ 
+ void

@@ -1,0 +1,15 @@
+--- a/data/qalculate-gtk.desktop.in
++++ b/data/qalculate-gtk.desktop.in
+@@ -1,5 +1,4 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ _Name=Qalculate!
+ _Comment=Powerful and easy to use calculator
+ Exec=qalculate-gtk
+@@ -7,5 +6,5 @@
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Categories=GTK;Application;Utility;Calculator;Science;Math;
++Categories=GTK;Utility;Calculator;Science;Math;
+ 

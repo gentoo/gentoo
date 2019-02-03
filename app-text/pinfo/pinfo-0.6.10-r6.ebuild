@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,6 +21,7 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
+	sys-apps/texinfo
 	sys-devel/bison
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
@@ -37,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.10-ncurses-check.patch
 	"${FILESDIR}"/${PN}-0.6.10-libc-basename.patch
 	"${FILESDIR}"/${PN}-0.6.10-clearfilenameprefix.patch
+	"${FILESDIR}"/${PN}-0.6.10-gcc-7-inline.patch
 )
 
 src_prepare() {

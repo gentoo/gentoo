@@ -13,7 +13,7 @@ HOMEPAGE="http://ducttape.glenmurphy.com/"
 SRC_URI="http://ducttape.glenmurphy.com/ducttape${PV}.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"
 
 src_unpack() {

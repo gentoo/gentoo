@@ -1,0 +1,35 @@
+#!/sbin/openrc-run
+# Copyright 2015-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="OCI Kubernetes Container Runtime daemon"
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+extra_started_commands="reload"
+command="/usr/bin/${RC_SVCNAME}"
+command_args="${command_args}"
+command_background="true"
+start_stop_daemon_args=" \
+	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
+	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	checkpath --directory --owner root:root --mode 0775 \
+		/var/log/${RC_SVCNAME}
+	checkpath --file --owner root:root --mode 0644 \
+		/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log
+}
+
+start() {
+	checkconfig
+	default_start
+}
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $?
+}

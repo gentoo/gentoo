@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ src_prepare() {
 
 	sed -i \
 		-e "/Nothing/d" \
-        -e "/LN/ s:../libexec:/usr/share:" \
+		-e "/LN/ s:../libexec:/usr/share:" \
 		Makefile || die
 }
 

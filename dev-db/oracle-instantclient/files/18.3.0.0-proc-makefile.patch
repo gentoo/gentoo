@@ -1,0 +1,27 @@
+--- instantclient_18_3/sdk/demo/demo_proc_ic.mk.orig	2018-10-22 13:34:44.302293002 +0200
++++ instantclient_18_3/sdk/demo/demo_proc_ic.mk	2018-10-22 13:38:55.015321571 +0200
+@@ -37,8 +37,13 @@
+ cc=/usr/bin/gcc
+ 
+ # InstantClient Directories.
+-ICSDKHOME=../
+-ICLIBHOME=../../
++ifeq ($(BUILD32),T)
++LIBDIR=lib32
++else
++LIBDIR=lib
++endif
++ICSDKHOME=$(ORACLE_HOME)/
++ICLIBHOME=$(ORACLE_HOME)/$(LIBDIR)
+ 
+ MKLINK=ln
+ REMOVE=rm -rf
+@@ -48,7 +53,7 @@
+ MAKEFILE=demo_proc_ic.mk
+ PROCDEMO=procdemo
+ 
+-PROC=$(ICSDKHOME)proc
++PROC=$(ICSDKHOME)bin/proc
+ SO_EXT=.so
+ I_SYM=-I
+ 

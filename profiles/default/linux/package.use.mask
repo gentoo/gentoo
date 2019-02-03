@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Jason Zaman <perfinion@gentoo.org> (06 Sep 2015)
@@ -7,7 +7,6 @@ sys-auth/consolekit -cgroups
 
 # Michael Palimaka <kensington@gentoo.org> (03 Sep 2015)
 # Native inotify support is preferred on linux.
-kde-frameworks/kdelibs fam
 kde-frameworks/kcoreaddons fam
 
 # Christian Ruppert <idl0r@gentoo.org> (23 Aug 2015)
@@ -15,22 +14,6 @@ kde-frameworks/kcoreaddons fam
 # apparently... #558100
 # https://archives.gentoo.org/gentoo-dev/message/38503d86a1c41bccfa607745467b1be7
 net-dns/bind seccomp
-
-# Matt Turner <mattst88@gentoo.org> (07 Mar 2014)
-# media-libs/libomxil-bellagio keyworded on amd64/x86
-media-libs/mesa openmax
-
-# Thomas Sachau <tommy@gentoo.org> (25 Dez 2013)
-# mask frost USE flag, broken with >=net-libs/polarssl-1.3.0, bug 489256
-net-p2p/fms frost
-
-# Markos Chandras <hwoarang@gentoo.org> (10 Nov 2013)
-# Does not build with polarssl in the tree.
-# see eg 9e36f0475f011912ee0897aa6487d7b9c190600e
-# in polarssl upstream.
-# The polarssl use flag may go away if the rtmpdump
-# upstream will not fix this problem soon
-media-video/rtmpdump polarssl
 
 # Diego Elio Pettenò (27 Aug 2012)
 # The libpci access is only used for linux.

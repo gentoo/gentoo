@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,6 +29,9 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# https://github.com/systemd/systemd/pull/2838 , bug #604614
 	"${FILESDIR}/${P}-sysmacros.patch"
+
+	# https://github.com/systemd/systemd/issues/8099, bug #650314
+	"${FILESDIR}"/${P}-glibc-2.27.patch
 )
 
 src_prepare() {
@@ -135,8 +138,16 @@ src_configure() {
 }
 
 src_compile() {
-	echo 'BUILT_SOURCES: $(BUILT_SOURCES)' > "${T}"/Makefile.extra
-	emake -f Makefile -f "${T}"/Makefile.extra BUILT_SOURCES
+	echo 'BUILT_SOURCES: $(BUILT_SOURCES)' > ./Makefile.extra
+	emake -f Makefile -f ./Makefile.extra BUILT_SOURCES
+
+	# Fix compilation, bug #607068
+	# From comments at https://aur.archlinux.org/packages/systemd-readahead
+	gperf < src/libsystemd/sd-bus/bus-error-mapping.gperf > src/libsystemd/sd-bus/bus-error-mapping.c || die
+	sed -i -e "/bus_error_mapping_lookup/s/size_t/unsigned int/" src/libsystemd/sd-bus/bus-error-mapping.c || die
+	sed -i -e "/lookup_errno/s/size_t/unsigned int/" src/shared/errno-from-name.h || die
+	sed -i -e "/lookup_af/s/size_t/unsigned int/" src/shared/af-from-name.h || die
+	sed -i -e "/lookup_arphrd/s/size_t/unsigned int/" src/shared/arphrd-from-name.h || die
 
 	emake systemd-readahead
 	emake units/systemd-readahead-{drop,collect,replay,done}.service units/systemd-readahead-done.timer

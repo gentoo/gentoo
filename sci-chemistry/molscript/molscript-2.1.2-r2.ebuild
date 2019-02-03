@@ -5,7 +5,7 @@ EAPI=5
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="Display molecular 3D structures, such as proteins, in both schematic and detailed representations"
+DESCRIPTION="Display 3D molecules (e.g., proteins) in schematic and detailed representations"
 HOMEPAGE="http://www.avatar.se/molscript/"
 SRC_URI="${P}.tar.gz"
 

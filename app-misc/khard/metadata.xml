@@ -1,0 +1,11 @@
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>andrey_utkin@gentoo.org</email>
+	<name>Andrey Utkin</name>
+</maintainer>
+<upstream>
+	<remote-id type="github">scheibler/khard</remote-id>
+</upstream>
+<longdescription>Console CardDAV client</longdescription>
+</pkgmetadata>

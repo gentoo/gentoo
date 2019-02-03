@@ -5,12 +5,4 @@
     <email>office@gentoo.org</email>
     <name>Gentoo Office project</name>
   </maintainer>
-  <maintainer type="project">
-    <email>perl@gentoo.org</email>
-    <name>Gentoo Perl project</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>nibheis@gmail.com</email>
-    <name>Pierre-Olivier Vallès</name>
-  </maintainer>
 </pkgmetadata>

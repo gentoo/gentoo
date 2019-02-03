@@ -1,4 +1,0 @@
-Make sure you edit ${MY_INSTALLDIR}/conf/config.inc.php
-
-To use the reports database, you have to manually execute
-psql -f ${MY_INSTALLDIR}/sql/reports-pgsql.sql

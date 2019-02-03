@@ -5,9 +5,9 @@
 
 @DPATCH@
 
-diff -ru libdkim-1.0.19.orig/src/dkim.cpp libdkim-1.0.19/src/dkim.cpp
---- libdkim-1.0.19.orig/src/dkim.cpp	2008-05-12 20:07:32.000000000 +1000
-+++ libdkim-1.0.19/src/dkim.cpp	2009-04-15 19:38:08.000000000 +1000
+diff -ru src/dkim.cpp src/dkim.cpp
+--- src/dkim.cpp	2008-05-12 20:07:32.000000000 +1000
++++ src/dkim.cpp	2009-04-15 19:38:08.000000000 +1000
 @@ -172,7 +172,7 @@
  }
  
@@ -42,9 +42,9 @@ diff -ru libdkim-1.0.19.orig/src/dkim.cpp libdkim-1.0.19/src/dkim.cpp
  {
  	if (ErrorCode >= 0 || ErrorCode <= DKIM_MAX_ERROR)
  		return "Unknown";
-diff -ru libdkim-1.0.19.orig/src/dkim.h libdkim-1.0.19/src/dkim.h
---- libdkim-1.0.19.orig/src/dkim.h	2009-04-15 19:37:48.000000000 +1000
-+++ libdkim-1.0.19/src/dkim.h	2009-04-15 19:38:08.000000000 +1000
+diff -ru src/dkim.h src/dkim.h
+--- src/dkim.h	2009-04-15 19:37:48.000000000 +1000
++++ src/dkim.h	2009-04-15 19:38:08.000000000 +1000
 @@ -155,14 +155,14 @@
  void DKIM_CALL DKIMSignFree( DKIMContext* pSignContext );
  
@@ -63,9 +63,9 @@ diff -ru libdkim-1.0.19.orig/src/dkim.h libdkim-1.0.19/src/dkim.h
  
  #ifdef __cplusplus
  }
-diff -ru libdkim-1.0.19.orig/src/dkimbase.cpp libdkim-1.0.19/src/dkimbase.cpp
---- libdkim-1.0.19.orig/src/dkimbase.cpp	2008-05-12 20:07:36.000000000 +1000
-+++ libdkim-1.0.19/src/dkimbase.cpp	2009-04-15 19:49:32.000000000 +1000
+diff -ru src/dkimbase.cpp src/dkimbase.cpp
+--- src/dkimbase.cpp	2008-05-12 20:07:36.000000000 +1000
++++ src/dkimbase.cpp	2009-04-15 19:49:32.000000000 +1000
 @@ -118,10 +118,10 @@
  // Process - split buffers into lines without any CRs or LFs at the end.
  //
@@ -102,9 +102,9 @@ diff -ru libdkim-1.0.19.orig/src/dkimbase.cpp libdkim-1.0.19/src/dkimbase.cpp
  	{
  		// no colon?!
  	}
-diff -ru libdkim-1.0.19.orig/src/dkimbase.h libdkim-1.0.19/src/dkimbase.h
---- libdkim-1.0.19.orig/src/dkimbase.h	2008-05-12 20:07:24.000000000 +1000
-+++ libdkim-1.0.19/src/dkimbase.h	2009-04-15 19:49:32.000000000 +1000
+diff -ru src/dkimbase.h src/dkimbase.h
+--- src/dkimbase.h	2008-05-12 20:07:24.000000000 +1000
++++ src/dkimbase.h	2009-04-15 19:49:32.000000000 +1000
 @@ -41,7 +41,7 @@
  
  	int Init(void);
@@ -114,9 +114,9 @@ diff -ru libdkim-1.0.19.orig/src/dkimbase.h libdkim-1.0.19/src/dkimbase.h
  	int ProcessFinal(void);
  
  	int Alloc( char*& szBuffer, int nRequiredSize );
-diff -ru libdkim-1.0.19.orig/src/dkimsign.cpp libdkim-1.0.19/src/dkimsign.cpp
---- libdkim-1.0.19.orig/src/dkimsign.cpp	2008-05-12 20:07:46.000000000 +1000
-+++ libdkim-1.0.19/src/dkimsign.cpp	2009-04-15 19:49:32.000000000 +1000
+diff -ru src/dkimsign.cpp src/dkimsign.cpp
+--- src/dkimsign.cpp	2008-05-12 20:07:46.000000000 +1000
++++ src/dkimsign.cpp	2009-04-15 19:49:32.000000000 +1000
 @@ -144,7 +144,7 @@
  
  	fwrite( szBuffer, 1, nBufLength, fpdebug );
@@ -183,9 +183,9 @@ diff -ru libdkim-1.0.19.orig/src/dkimsign.cpp libdkim-1.0.19/src/dkimsign.cpp
  	{
        OPENSSL_free(sig);
        BIO_free_all(b64);
-diff -ru libdkim-1.0.19.orig/src/dkimsign.h libdkim-1.0.19/src/dkimsign.h
---- libdkim-1.0.19.orig/src/dkimsign.h	2008-05-12 20:07:58.000000000 +1000
-+++ libdkim-1.0.19/src/dkimsign.h	2009-04-15 19:49:32.000000000 +1000
+diff -ru src/dkimsign.h src/dkimsign.h
+--- src/dkimsign.h	2008-05-12 20:07:58.000000000 +1000
++++ src/dkimsign.h	2009-04-15 19:49:32.000000000 +1000
 @@ -32,7 +32,7 @@
  
  	int Init( DKIMSignOptions* pOptions );
@@ -206,9 +206,9 @@ diff -ru libdkim-1.0.19.orig/src/dkimsign.h libdkim-1.0.19/src/dkimsign.h
  	void AddInterTagSpace( int nSizeOfNextTag );
  	void AddFoldedValueToSig( const string &sValue, char cbrk );
  
-diff -ru libdkim-1.0.19.orig/src/dkimverify.cpp libdkim-1.0.19/src/dkimverify.cpp
---- libdkim-1.0.19.orig/src/dkimverify.cpp	2009-04-15 19:37:48.000000000 +1000
-+++ libdkim-1.0.19/src/dkimverify.cpp	2009-04-15 19:49:32.000000000 +1000
+diff -ru src/dkimverify.cpp src/dkimverify.cpp
+--- src/dkimverify.cpp	2009-04-15 19:37:48.000000000 +1000
++++ src/dkimverify.cpp	2009-04-15 19:49:32.000000000 +1000
 @@ -440,7 +440,7 @@
  {
  	ProcessFinal();
@@ -275,9 +275,9 @@ diff -ru libdkim-1.0.19.orig/src/dkimverify.cpp libdkim-1.0.19/src/dkimverify.cp
  		{
  			if (values[j] != NULL && values[j] < values[0])
  			{
-diff -ru libdkim-1.0.19.orig/src/libdkimtest.cpp libdkim-1.0.19/src/libdkimtest.cpp
---- libdkim-1.0.19.orig/src/libdkimtest.cpp	2008-05-12 20:08:54.000000000 +1000
-+++ libdkim-1.0.19/src/libdkimtest.cpp	2009-04-15 19:38:08.000000000 +1000
+diff -ru src/libdkimtest.cpp src/libdkimtest.cpp
+--- src/libdkimtest.cpp	2008-05-12 20:08:54.000000000 +1000
++++ src/libdkimtest.cpp	2009-04-15 19:38:08.000000000 +1000
 @@ -60,9 +60,9 @@
  int main(int argc, char* argv[])
  {

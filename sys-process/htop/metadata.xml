@@ -10,7 +10,6 @@
 		<name>Lars Wendler</name>
 	</maintainer>
 	<use>
-		<flag name="oom">Add column to track the OOM-killer score of processes</flag>
 		<flag name="openvz">Enable openvz support</flag>
 		<flag name="vserver">Enable vserver support</flag>
 	</use>

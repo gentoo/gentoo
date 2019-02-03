@@ -1,0 +1,13 @@
+diff --git a/PyImath/Makefile.am b/PyImath/Makefile.am
+index bf87542..ad69515 100644
+--- a/PyImath/Makefile.am
++++ b/PyImath/Makefile.am
+@@ -82,7 +82,7 @@ imathmodule_la_SOURCES = imathmodule.cpp \
+     PyImathBasicTypes.cpp 
+ 
+ imathmodule_la_LDFLAGS = -avoid-version -module
+-imathmodule_la_LIBADD  = -lPyImath @BOOST_PYTHON_LIBS@
++imathmodule_la_LIBADD  = libPyImath.la @BOOST_PYTHON_LIBS@
+ 
+ noinst_HEADERS = PyImathFun.h \
+     PyImathBasicTypes.h 

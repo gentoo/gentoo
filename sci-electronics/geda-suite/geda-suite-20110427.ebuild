@@ -1,5 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 HOMEPAGE="http://www.geda.seul.org"
 DESCRIPTION="Metapackage for all components for a full-featured gEDA/gaf system"
@@ -13,7 +15,7 @@ RDEPEND="sci-electronics/geda
 	sci-electronics/gerbv
 	>=sci-electronics/gnucap-0.35.20091207
 	>=sci-electronics/gwave-20090213-r1
-	>=sci-electronics/pcb-20100929
+	sci-electronics/pcb
 	>=sci-electronics/geda-xgsch2pcb-0.1.3-r2
 	>=sci-electronics/iverilog-0.9.1
 	sci-electronics/ngspice

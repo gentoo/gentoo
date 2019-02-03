@@ -14,5 +14,5 @@ HOMEPAGE="http://www.ludocraft.com/entertainment/airbuccaneers-mod/"
 SRC_URI="http://bin.ludocraft.com/files/airbuccaneers_mod_1_6_zipinstall_with_info.zip"
 
 LICENSE="freedist"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated opengl"

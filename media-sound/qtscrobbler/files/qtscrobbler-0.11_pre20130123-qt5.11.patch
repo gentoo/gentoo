@@ -1,0 +1,24 @@
+From 11d70c80a634aaf1606a435688dddbc3db36b7ff Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sat, 14 Jul 2018 15:35:25 +0200
+Subject: [PATCH] Fix build with Qt 5.11
+
+---
+ src/qt/src/qtscrob.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/qt/src/qtscrob.cpp b/src/qt/src/qtscrob.cpp
+index 5b7a561..c6084e3 100644
+--- a/src/qt/src/qtscrob.cpp
++++ b/src/qt/src/qtscrob.cpp
+@@ -17,6 +17,7 @@
+  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
+  ***************************************************************************/
+ 
++#include <QHeaderView>
+ #include <QtGui>
+ #include <QTime>
+ #include "qtscrob.h"
+-- 
+2.18.0
+

@@ -1,16 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit bsdmk
 
 DESCRIPTION="pidof(1) utility for *BSD"
-HOMEPAGE="http://people.freebsd.org/~novel/pidof.html"
+HOMEPAGE="https://people.freebsd.org/~novel/pidof.html"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 DEPEND="sys-freebsd/freebsd-mk-defs"

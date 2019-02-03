@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,12 +40,12 @@ unset i j k m tb345
 
 LICENSE="public-domain" # machine-generated tables
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="6-pieces"
 
 # there is no use-conditional mirror restriction,
 # so depend on another slot of the same package instead
-RDEPEND="6-pieces? ( ~${CATEGORY}/${P}:nofetch )"
+PDEPEND="6-pieces? ( ~${CATEGORY}/${P}:nofetch )"
 
 S="${WORKDIR}"
 CHECKREQS_DISK_USR="939M"

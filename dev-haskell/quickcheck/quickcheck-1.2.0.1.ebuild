@@ -1,5 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 CABAL_FEATURES="lib profile haddock"
 inherit haskell-cabal
@@ -8,7 +10,7 @@ MY_PN="QuickCheck"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Automatic testing of Haskell programs"
-HOMEPAGE="http://www.math.chalmers.se/~rjmh/QuickCheck/"
+HOMEPAGE="https://github.com/nick8325/quickcheck"
 SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

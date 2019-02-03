@@ -1,83 +1,98 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit git-r3 eutils cmake-utils
+if [[ ${PV} == 9999 ]] ; then
+		EGIT_REPO_URI="https://github.com/swaywm/sway.git"
+		inherit git-r3
+else
+		# Version format: major.minor-beta.betanum
+		SWAY_PV="$(ver_cut 1-2)-$(ver_cut 3).$(ver_cut 4)"
+		SRC_URI="https://github.com/swaywm/sway/archive/${SWAY_PV}.tar.gz -> ${P}.tar.gz"
+		S="${WORKDIR}/sway-${SWAY_PV}"
+		KEYWORDS="~amd64 ~x86"
+fi
+
+inherit eutils fcaps meson
 
 DESCRIPTION="i3-compatible Wayland window manager"
-HOMEPAGE="http://swaywm.org/"
-
-EGIT_REPO_URI="https://github.com/swaywm/sway.git"
+HOMEPAGE="https://swaywm.org"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
-IUSE="+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wallpapers systemd +tray"
+IUSE="elogind fish-completion +pam +swaybar +swaybg +swayidle +swaylock +swaymsg +swaynag systemd +tray wallpapers X zsh-completion"
+REQUIRED_USE="?? ( elogind systemd )"
 
-REQUIRED_USE="tray? ( swaybar )"
-
-RDEPEND="=dev-libs/wlc-9999[systemd=]
-	>=dev-libs/json-c-0.12.1
+RDEPEND="~dev-libs/wlroots-9999[systemd=,elogind=,X=]
+	>=dev-libs/json-c-0.13:0=
+	>=dev-libs/libinput-1.6.0:0=
 	dev-libs/libpcre
-	dev-libs/libinput
-	x11-libs/libxkbcommon
 	dev-libs/wayland
-	sys-libs/libcap
-	x11-libs/pango
+	>=dev-libs/wayland-protocols-1.14
 	x11-libs/cairo
-	swaylock? ( virtual/pam )
-	tray? ( sys-apps/dbus )
-	gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )"
+	x11-libs/libxkbcommon
+	x11-libs/pango
+	x11-libs/pixman
+	elogind? ( >=sys-auth/elogind-237 )
+	swaybar? ( x11-libs/gdk-pixbuf:2[jpeg] )
+	swaybg? ( x11-libs/gdk-pixbuf:2[jpeg] )
+	swaylock? (
+		pam? ( virtual/pam )
+		x11-libs/gdk-pixbuf:2[jpeg]
+	)
+	systemd? ( >=sys-apps/systemd-237 )
+	tray? ( >=sys-apps/dbus-1.10 )
+	X? ( x11-libs/libxcb:0= )"
+DEPEND="${RDEPEND}"
+BDEPEND="app-text/scdoc
+	virtual/pkgconfig"
 
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	app-text/asciidoc"
+FILECAPS=( cap_sys_admin usr/bin/sway )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	default
 
-	# remove bad CFLAGS that upstream is trying to add
-	sed -i -e '/add_compile_options/s/-Werror//' CMakeLists.txt || die
+	use swaybar || sed -e "s/subdir('swaybar')//g" -i meson.build || die
+	use swaybg || sed -e "s/subdir('swaybg')//g" -i meson.build || die
+	use swayidle || sed -e "s/subdir('swayidle')//g" -e "/swayidle.[0-9].scd/d" \
+		-e "/completions\/[a-z]\+\/_\?swayidle/d" -i meson.build || die
+	use swaylock || sed -e "s/subdir('swaylock')//g" -e "/swaylock.[0-9].scd/d" \
+		-e "/completions\/[a-z]\+\/_\?swaylock/d" -i meson.build || die
+	use swaymsg || sed -e "s/subdir('swaymsg')//g" -e "/swaymsg.[0-9].scd/d" \
+		-e "/completions\/[a-z]\+\/_\?swaymsg/d" -i meson.build || die
+	use swaynag || sed -e "s/subdir('swaynag')//g" -e "/swaynag.[0-9].scd/d" \
+		-e "/completions\/[a-z]\+\/_\?swaynag/d" -i meson.build || die
 }
 
 src_configure() {
-	local mycmakeargs=(
-		-Denable-swaybar=$(usex swaybar)
-		-Denable-swaybg=$(usex swaybg)
-		-Denable-swaygrab=$(usex swaygrab)
-		-Denable-swaylock=$(usex swaylock)
-		-Denable-swaymsg=$(usex swaymsg)
-		-Denable-tray=$(usex tray)
-
-		-Ddefault-wallpaper=$(usex wallpapers)
-
-		-Denable-gdk-pixbuf=$(usex gdk-pixbuf)
-		-Dzsh-completions=$(usex zsh-completion)
-
-		-DCMAKE_INSTALL_SYSCONFDIR="/etc"
+	local emesonargs=(
+		$(meson_use wallpapers default-wallpaper)
+		$(meson_use zsh-completion zsh-completions)
+		$(meson_use fish-completion fish-completions)
+		$(meson_use X enable-xwayland)
+		"-Dbash-completions=true"
+		"-Dwerror=false"
 	)
 
-	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
-
-	use !systemd && fperms u+s /usr/bin/sway
+	meson_src_configure
 }
 
 pkg_postinst() {
-	if use swaygrab
-	then
-		optfeature "swaygrab screenshot support" media-gfx/imagemagick[png]
-		optfeature "swaygrab video capture support" virtual/ffmpeg
+	elog "You must be in the input group to allow sway to access input devices!"
+	local dbus_cmd=""
+	if use tray ; then
+		elog ""
+		optfeature "experimental xembed tray icons support" kde-plasma/xembed-sni-proxy
+		dbus_cmd="dbus-launch --sh-syntax --exit-with-session "
 	fi
-	if use tray
-	then
-		optfeature "experimental xembed tray icons support" \
-			x11-misc/xembedsniproxy
+	if ! use systemd && ! use elogind ; then
+		fcaps_pkg_postinst
+		elog ""
+		elog "If you use ConsoleKit2, remember to launch sway using:"
+		elog "exec ck-launch-session ${dbus_cmd}sway"
 	fi
-	optfeature "X11 applications support" dev-libs/wlc[xwayland] x11-base/xorg-server[wayland]
-
+	if use swaylock && ! use pam; then
+		fcaps cap_sys_admin usr/bin/swaylock
+	fi
 }

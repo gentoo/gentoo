@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ DESCRIPTION="Module signature file manipulation"
 
 LICENSE="CC0-1.0 || ( Artistic GPL-2+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-solaris"
+KEYWORDS="amd64 x86 ~x86-solaris"
 IUSE="test"
 
 RDEPEND="
@@ -25,8 +25,6 @@ DEPEND="${RDEPEND}
 		dev-perl/IPC-Run
 	)
 "
-
-SRC_TEST="do parallel"
 
 src_prepare() {
 	sed -i -e 's/use inc::Module::Install /use lib q[.]; use inc::Module::Install /' Makefile.PL ||

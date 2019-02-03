@@ -1,0 +1,23 @@
+move app-portage/kuroo4 app-portage/kuroo
+slotmove app-portage/kuroo 4 0
+move dev-cpp/gsl dev-cpp/ms-gsl
+slotmove =dev-util/cucumber-core-3.1.0 3.0 3.1
+move app-admin/restart_services app-admin/restart-services
+move dev-libs/purpose kde-frameworks/purpose
+move kde-misc/plasma-applet-redshift-control kde-misc/plasma-redshift-control
+move x11-proto/xorgproto x11-base/xorg-proto
+move games-action/trine-bin games-action/trine
+move app-admin/bind_exporter app-metrics/bind_exporter
+move app-admin/elasticsearch_exporter app-metrics/elasticsearch_exporter
+move app-admin/mongodb_exporter app-metrics/mongodb_exporter
+move app-admin/nginx-vts-exporter app-metrics/nginx-vts-exporter
+move app-admin/prom2json app-metrics/prom2json
+move net-analyzer/prometheus app-metrics/prometheus
+move net-analyzer/prometheus-alertmanager app-metrics/alertmanager
+move dev-util/buildbot-prometheus app-metrics/buildbot-prometheus
+move net-analyzer/prometheus-node_exporter app-metrics/node_exporter
+move net-analyzer/prometheus-blackbox_exporter app-metrics/blackbox_exporter
+move net-analyzer/prometheus-snmp_exporter app-metrics/snmp_exporter
+move net-analyzer/prometheus-redis_exporter app-metrics/redis_exporter
+move net-analyzer/prometheus-uwsgi_exporter app-metrics/uwsgi_exporter
+move net-analyzer/prometheus-pushgateway app-metrics/pushgateway

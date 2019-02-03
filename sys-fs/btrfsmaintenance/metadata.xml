@@ -12,4 +12,9 @@
 	<upstream>
 		<remote-id type="github">kdave/btrfsmaintenance</remote-id>
 	</upstream>
+	<use>
+		<flag name="systemd">
+			Enable systemd services and timers instead of cron timers
+		</flag>
+	</use>
 </pkgmetadata>

@@ -4,6 +4,7 @@
 # @ECLASS: xfconf.eclass
 # @MAINTAINER:
 # XFCE maintainers <xfce@gentoo.org>
+# @SUPPORTED_EAPIS: 5
 # @BLURB: Default XFCE ebuild layout
 # @DESCRIPTION:
 # Default XFCE ebuild layout
@@ -25,7 +26,7 @@ fi
 unset _xfconf_live
 [[ $PV == *9999* ]] && _xfconf_live=git-2
 
-inherit ${_xfconf_live} autotools eutils fdo-mime gnome2-utils libtool
+inherit ${_xfconf_live} autotools eutils gnome2-utils libtool xdg-utils
 
 EGIT_BOOTSTRAP=autogen.sh
 EGIT_REPO_URI="git://git.xfce.org/xfce/${MY_PN:-${PN}}"
@@ -134,11 +135,11 @@ xfconf_pkg_preinst() {
 
 # @FUNCTION: xfconf_pkg_postinst
 # @DESCRIPTION:
-# Run fdo-mime_{desktop,mime}_database_update and gnome2_icon_cache_update
+# Run xdg_{desktop,mimeinfo}_database_update and gnome2_icon_cache_update
 xfconf_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "$@"
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
 		gnome2_icon_cache_update
 	fi
@@ -146,11 +147,11 @@ xfconf_pkg_postinst() {
 
 # @FUNCTION: xfconf_pkg_postrm
 # @DESCRIPTION:
-# Run fdo-mime_{desktop,mime}_database_update and gnome2_icon_cache_update
+# Run xdg_{desktop,mimeinfo}_database_update and gnome2_icon_cache_update
 xfconf_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "$@"
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
 		gnome2_icon_cache_update
 	fi

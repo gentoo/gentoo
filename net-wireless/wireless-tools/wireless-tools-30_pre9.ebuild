@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -16,7 +16,7 @@ SRC_URI="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sh ~sparc x86"
-IUSE="linguas_cs linguas_fr multicall"
+IUSE="multicall"
 
 DEPEND="sys-apps/sed"
 RDEPEND=""
@@ -53,9 +53,9 @@ src_install() {
 		emake PREFIX="${ED}" install-iwmulticall
 	fi
 
-	has cs ${LINGUAS} || rm -rf "${ED}"/usr/share/man/cs
-	has fr ${LINGUAS} || rm -rf "${ED}"/usr/share/man/fr.{ISO8859-1,UTF-8}
+	has cs ${LINGUAS-cs} || rm -rf "${ED}"/usr/share/man/cs
+	has fr ${LINGUAS-fr} || rm -rf "${ED}"/usr/share/man/fr.{ISO8859-1,UTF-8}
 
 	dodoc CHANGELOG.h HOTPLUG-UDEV.txt IFRENAME-VS-XXX.txt PCMCIA.txt README
-	has fr ${LINGUAS} && dodoc README.fr
+	has fr ${LINGUAS-fr} && dodoc README.fr
 }

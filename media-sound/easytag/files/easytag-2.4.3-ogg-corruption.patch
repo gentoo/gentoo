@@ -1,0 +1,246 @@
+From e5c640ca3f259f1b74e716723345521987a7bd68 Mon Sep 17 00:00:00 2001
+From: David King <amigadave@amigadave.com>
+Date: Wed, 9 Nov 2016 17:29:34 +0000
+Subject: Do not maintain an open handle on Ogg files
+
+Only keep a file open for reading long enough to read the necessary
+items from the file. Remove the file input stream from EtOggState, as
+it is no longer preserved across function calls.
+
+ src/tags/vcedit.c | 92 ++++++++++++++++++++++---------------------------------
+ 1 file changed, 36 insertions(+), 56 deletions(-)
+
+--- b/src/tags/vcedit.c
++++ a/src/tags/vcedit.c
+@@ -35,6 +35,7 @@
+ struct _EtOggState
+ {
+     /*< private >*/
++    GFileInputStream *in;
+ #ifdef ENABLE_SPEEX
+     SpeexHeader *si;
+ #endif
+@@ -125,6 +126,11 @@
+     }
+ #endif /* ENABLE_OPUS */
+ 
++    if (state->in)
++    {
++        g_object_unref (state->in);
++    }
++
+     memset (state, 0, sizeof (*state));
+ }
+ 
+@@ -239,7 +245,6 @@
+ 
+ static gboolean
+ _fetch_next_packet (EtOggState *s,
+-                    GInputStream *istream,
+                     ogg_packet *p,
+                     ogg_page *page,
+                     GError **error)
+@@ -269,8 +274,8 @@
+         while (ogg_sync_pageout (s->oy, page) <= 0)
+         {
+             buffer = ogg_sync_buffer (s->oy, CHUNKSIZE);
++            bytes = g_input_stream_read (G_INPUT_STREAM (s->in), buffer,
++                                         CHUNKSIZE, NULL, error);
+-            bytes = g_input_stream_read (istream, buffer, CHUNKSIZE, NULL,
+-                                         error);
+             ogg_sync_wrote (s->oy, bytes);
+ 
+             if(bytes == 0)
+@@ -303,7 +308,7 @@
+ 
+         g_assert (error == NULL || *error == NULL);
+         ogg_stream_pagein (s->os, page);
++        return _fetch_next_packet (s, p, page, error);
+-        return _fetch_next_packet (s, istream, p, page, error);
+     }
+ }
+ 
+@@ -402,13 +407,14 @@
+         return FALSE;
+     }
+ 
++    state->in = istream;
+     state->oy = g_slice_new (ogg_sync_state);
+     ogg_sync_init (state->oy);
+ 
+     while(1)
+     {
+         buffer = ogg_sync_buffer (state->oy, CHUNKSIZE);
++        bytes = g_input_stream_read (G_INPUT_STREAM (state->in), buffer,
+-        bytes = g_input_stream_read (G_INPUT_STREAM (istream), buffer,
+                                      CHUNKSIZE, NULL, error);
+         if (bytes == -1)
+         {
+@@ -648,7 +654,7 @@
+         }
+ 
+         buffer = ogg_sync_buffer (state->oy, CHUNKSIZE);
++        bytes = g_input_stream_read (G_INPUT_STREAM (state->in), buffer,
+-        bytes = g_input_stream_read (G_INPUT_STREAM (istream), buffer,
+                                      CHUNKSIZE, NULL, error);
+ 
+         if (bytes == -1)
+@@ -670,14 +676,11 @@
+ 
+     /* Headers are done! */
+     g_assert (error == NULL || *error == NULL);
+-    /* TODO: Handle error during stream close. */
+-    g_object_unref (istream);
+ 
+     return TRUE;
+ 
+ err:
+     g_assert (error == NULL || *error != NULL);
+-    g_object_unref (istream);
+     vcedit_clear_internals (state);
+     return FALSE;
+ }
+@@ -699,7 +702,6 @@
+     char *buffer;
+     int bytes;
+     int needflush = 0, needout = 0;
+-    GFileInputStream *istream;
+     GOutputStream *ostream;
+     gchar *buf;
+     gsize size;
+@@ -707,22 +709,11 @@
+ 
+     g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+ 
++    fileinfo = g_file_query_info (file, G_FILE_ATTRIBUTE_STANDARD_SIZE,
++                                  G_FILE_QUERY_INFO_NONE, NULL, error);
+-    istream = g_file_read (file, NULL, error);
+-
+-    if (!istream)
+-    {
+-        g_assert (error == NULL || *error != NULL);
+-        return FALSE;
+-    }
+-
+-    fileinfo = g_file_input_stream_query_info (istream,
+-                                               G_FILE_ATTRIBUTE_STANDARD_SIZE,
+-                                               NULL, error);
+-
+     if (!fileinfo)
+     {
+         g_assert (error == NULL || *error != NULL);
+-        g_object_unref (istream);
+         return FALSE;
+     }
+ 
+@@ -783,8 +774,7 @@
+         }
+     }
+ 
++    while (_fetch_next_packet (state, &op, &ogin, error))
+-    while (_fetch_next_packet (state, G_INPUT_STREAM (istream), &op, &ogin,
+-                               error))
+     {
+         if (needflush)
+         {
+@@ -960,7 +950,7 @@
+     {
+         /* We copy the rest of the stream (other logical streams)
+          * through, a page at a time. */
++        while(1)
+-        while (1)
+         {
+             result = ogg_sync_pageout (state->oy, &ogout);
+ 
+@@ -999,7 +989,7 @@
+ 
+         buffer = ogg_sync_buffer (state->oy, CHUNKSIZE);
+ 
++        bytes = g_input_stream_read (G_INPUT_STREAM (state->in), buffer,
+-        bytes = g_input_stream_read (G_INPUT_STREAM (istream), buffer,
+                                      CHUNKSIZE, NULL, error);
+ 
+         if (bytes == -1)
+@@ -1017,19 +1007,11 @@
+         }
+     }
+ 
++
+ cleanup:
+     ogg_stream_clear (&streamout);
+     ogg_packet_clear (&header_comments);
+ 
+-    if (!g_input_stream_close (G_INPUT_STREAM (istream), NULL, error))
+-    {
+-        /* Ignore the _close() failure, and try the write anyway. */
+-        g_warning ("Error closing Ogg file for reading: %s",
+-                   (*error)->message);
+-        g_clear_error (error);
+-    }
+-
+-    g_object_unref (istream);
+     g_free (state->mainbuf);
+     g_free (state->bookbuf);
+     state->mainbuf = state->bookbuf = NULL;
+@@ -1063,13 +1045,41 @@
+     buf = g_memory_output_stream_steal_data (G_MEMORY_OUTPUT_STREAM (ostream));
+     size = g_memory_output_stream_get_data_size (G_MEMORY_OUTPUT_STREAM (ostream));
+ 
++    /* At least on Windows, writing to a file with an open-for-reading stream
++     * fails, so close the input stream before writing to the file. */
++    if (!g_input_stream_close (G_INPUT_STREAM (state->in), NULL, error))
++    {
++        /* Ignore the _close() failure, and try the write anyway. */
++        g_warning ("Error closing Ogg file for reading: %s",
++                   (*error)->message);
++        g_clear_error (error);
++    }
++
++    g_object_unref (state->in);
++    state->in = NULL;
++
+     /* Write the in-memory data back out to the original file. */
+     if (!g_file_replace_contents (file, buf, size, NULL, FALSE,
+                                   G_FILE_CREATE_NONE, NULL, NULL, error))
+     {
++        GError *tmp_error = NULL;
++
+         g_object_unref (ostream);
+         g_free (buf);
+ 
++        /* Re-open the file for reading, to keep the internal state
++         * consistent. */
++        state->in = g_file_read (file, NULL, &tmp_error);
++
++        if (!state->in)
++        {
++            g_warning ("Error opening Ogg file for reading after write failure: %s",
++                       tmp_error->message);
++            g_clear_error (&tmp_error);
++            g_assert (error == NULL || *error != NULL);
++            return FALSE;
++        }
++
+         g_assert (error == NULL || *error != NULL);
+         return FALSE;
+     }
+@@ -1077,6 +1087,16 @@
+     g_free (buf);
+     g_object_unref (ostream);
+ 
++    /* Re-open the file, now that the write has completed. */
++    state->in = g_file_read (file, NULL, error);
++
++    if (!state->in)
++    {
++        g_assert (error == NULL || *error != NULL);
++        return FALSE;
++    }
++
++
+     return TRUE;
+ }
+ 
+-- 
+cgit v0.12
+

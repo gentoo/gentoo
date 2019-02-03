@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ else
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
-inherit libtool linux-info systemd
+inherit flag-o-matic libtool linux-info systemd
 
 DESCRIPTION="Load another kernel from the currently executing Linux kernel"
 HOMEPAGE="https://kernel.org/pub/linux/utils/kernel/kexec/"
@@ -46,6 +46,7 @@ src_prepare() {
 	else
 		elibtoolize
 	fi
+	filter-flags '-mindirect-branch=thunk*'
 }
 
 src_configure() {

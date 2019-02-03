@@ -1,5 +1,5 @@
---- data/Makefile.old	2015-01-07 14:22:34.852150894 +0100
-+++ data/Makefile	2015-01-07 14:57:44.079822614 +0100
+--- a/data/Makefile.old	2015-01-07 14:22:34.852150894 +0100
++++ b/data/Makefile	2015-01-07 14:57:44.079822614 +0100
 @@ -15,20 +15,29 @@
  	ar r libdata.a $(OBJS)
  	ranlib libdata.a

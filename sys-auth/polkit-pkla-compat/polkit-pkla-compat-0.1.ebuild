@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="Rules for polkit to add compatibility with pklocalauthority"
-HOMEPAGE="http://fedorahosted.org/polkit-pkla-compat/"
-SRC_URI="http://fedorahosted.org/releases/${PN:0:1}/${PN:1:1}/${PN}/${P}.tar.xz"
+HOMEPAGE="https://pagure.io/polkit-pkla-compat"
+SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="0"

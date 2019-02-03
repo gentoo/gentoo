@@ -1,0 +1,25 @@
+From 216529de46898bdeda075f084f4f62c796bfef87 Mon Sep 17 00:00:00 2001
+From: Dennis Schridde <devurandom@gmx.net>
+Date: Tue, 28 Nov 2017 23:53:03 +0100
+Subject: [PATCH 4/6] Respect LDFLAGS provided to ./configure
+
+---
+ config/generic.mak.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/generic.mak.in b/config/generic.mak.in
+index 699166b..86b7fa2 100644
+--- a/config/generic.mak.in
++++ b/config/generic.mak.in
+@@ -38,7 +38,7 @@ SHLIB_CFLAGS	= @C_PIC@
+ COMMON_CFLAGS	= $(OPTIMIZATION) @CFLAGS@ @C_WFLAGS@ -DUNIX=1
+ 
+ SHLIB_LDFLAGS	= -shared 
+-COMMON_LDFLAGS  = $(OPTIMIZATION) 
++COMMON_LDFLAGS  = $(OPTIMIZATION) @LDFLAGS@
+ 
+ RPC_INCLUDES = @RPC_INCLUDES@
+ 
+-- 
+2.15.0
+

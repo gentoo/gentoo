@@ -1,0 +1,82 @@
+From f14f78efcd5c865b470173dc06959c8de61e9711 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 8 Mar 2018 19:31:17 +0100
+Subject: [PATCH] build: Always use $(MAKE) to spawn sub-make
+
+Always use $(MAKE) instead of literal 'make' to spawn the correct make
+variant. Otherwise, e.g. when using 'gmake' on FreeBSD the Makefiles
+spawn BSD make and things fail because of incompatible MAKEFLAGS
+set by GNU make.
+---
+ bootblocks/Makefile | 10 +++++-----
+ libbsd/Makefile     |  2 +-
+ makefile.in         |  2 +-
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/bootblocks/Makefile b/bootblocks/Makefile
+index d954ea1..2887d86 100644
+--- a/bootblocks/Makefile
++++ b/bootblocks/Makefile
+@@ -55,31 +55,31 @@ fs_min.o: minix.h
+ 
+ bootfile.sys: $(MSRC) $(MINC)
+ 	@rm -f $(MOBJ)
+-	make 'CFLAGS=$(CFLAGS) -DDOSFLOPPY' monitor.out
++	$(MAKE) 'CFLAGS=$(CFLAGS) -DDOSFLOPPY' monitor.out
+ 	mv monitor.out bootfile.sys
+ 	@rm -f $(MOBJ)
+ 
+ boottar.sys: $(MSRC) $(MINC) tarboot.bin
+ 	@rm -f $(MOBJ)
+-	make 'CFLAGS=$(CFLAGS) -DTARFLOPPY' monitor.out
++	$(MAKE) 'CFLAGS=$(CFLAGS) -DTARFLOPPY' monitor.out
+ 	mv monitor.out boottar.sys
+ 	@rm -f $(MOBJ)
+ 
+ bootminix.sys: $(MSRC) $(MINC) minix.bin
+ 	@rm -f $(MOBJ)
+-	make 'CFLAGS=$(CFLAGS) -DMINFLOPPY' monitor.out
++	$(MAKE) 'CFLAGS=$(CFLAGS) -DMINFLOPPY' monitor.out
+ 	mv monitor.out bootminix.sys
+ 	@rm -f $(MOBJ)
+ 
+ monitor.sys: $(MSRC) $(MINC)
+ 	@rm -f $(MOBJ)
+-	make monitor.out
++	$(MAKE) monitor.out
+ 	mv monitor.out monitor.sys
+ 	@rm -f $(MOBJ)
+ 
+ monitor: $(MSRC) $(MINC)
+ 	@rm -f $(MOBJ)
+-	make 'CFLAGS=-ansi $(DEFS)' monitor.out
++	$(MAKE) 'CFLAGS=-ansi $(DEFS)' monitor.out
+ 	mv monitor.out monitor
+ 	@rm -f $(MOBJ)
+ 
+diff --git a/libbsd/Makefile b/libbsd/Makefile
+index 2b29f72..722b86d 100644
+--- a/libbsd/Makefile
++++ b/libbsd/Makefile
+@@ -29,7 +29,7 @@ install: all
+ 	install -m 644 $(LIBBSD) $(LIBDIR)/i86
+ 
+ tests: dummy
+-	make -C tests
++	$(MAKE) -C tests
+ 
+ $(LIBBSD): $(OBJS)
+ 	$(AR) rc $(LIBBSD) $(OBJS)
+diff --git a/makefile.in b/makefile.in
+index b586da1..97ea519 100644
+--- a/makefile.in
++++ b/makefile.in
+@@ -326,7 +326,7 @@ config: ;
+ #endif
+ 
+ makec:
+-	echo 'cd $$1 ; shift ; make "$$@"' > makec
++	echo 'cd $$1 ; shift ; $(MAKE) "$$@"' > makec
+ 	chmod +x makec
+ 
+ versions: bcc/version.h

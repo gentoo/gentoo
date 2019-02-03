@@ -1,0 +1,12 @@
+--- a/configure.in.JeR
++++ b/configure.in
+@@ -51,8 +51,7 @@
+ dnl
+ if test $ac_cv_prog_gcc = yes; then
+ dnl if test -z $CFLAGS; then 
+-    CCOPTS='-O2 -funroll-loops -fomit-frame-pointer -Wall'
+-    CFLAGS="$CCOPTS"
++:
+ dnl fi
+ fi
+ 

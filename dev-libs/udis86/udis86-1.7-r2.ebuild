@@ -20,8 +20,7 @@ DEPEND="test? (
 		x86? ( dev-lang/yasm )
 		x86-fbsd? ( dev-lang/yasm )
 	)"
-RDEPEND="abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r1
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
+RDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}"/${P}-yasm.patch

@@ -1,5 +1,5 @@
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -99,7 +99,7 @@ if test "x$TARGET" = xWIN32; then
  else
      LIBS="-L/usr/local/lib -L/usr/X11R6/lib $LIBS"

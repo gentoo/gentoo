@@ -2,8 +2,8 @@ Write a pid when we daemonize
 
 patch by Mike Frysinger
 
---- mbmon.c
-+++ mbmon.c
+--- a/bmon.c
++++ b/mbmon.c
 @@ -229,4 +229,5 @@
  static void daemonize()
  {

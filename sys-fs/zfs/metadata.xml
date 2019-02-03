@@ -6,8 +6,8 @@
 		<name>Richard Yao</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>fearedbliss@gentoo.org</email>
-		<name>Jonathan Vasquez</name>
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
 	</maintainer>
 	<use>
 		<flag name="kernel-builtin">Disable dependency on sys-fs/zfs-kmod under the assumption that ZFS is part of the kernel source tree</flag>

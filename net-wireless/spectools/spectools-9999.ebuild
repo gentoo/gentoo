@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,12 +16,12 @@ if [[ ${PV} == "9999" ]] ; then
 		inherit git-r3
 		KEYWORDS=""
 else
-		SRC_URI="http://www.kismetwireless.net/code/${MY_P}.tar.xz"
+		SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz"
 		KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 fi
 
 DESCRIPTION="Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware"
-HOMEPAGE="http://www.kismetwireless.net/spectools/"
+HOMEPAGE="https://www.kismetwireless.net/spectools/"
 
 LICENSE="GPL-2"
 SLOT="0"

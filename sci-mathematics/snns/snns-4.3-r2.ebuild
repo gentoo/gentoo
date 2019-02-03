@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,7 @@ RDEPEND="X? (
 		x11-libs/libXt
 	)"
 DEPEND="${RDEPEND}
-	X? ( x11-proto/xproto )
+	X? ( x11-base/xorg-proto )
 	>=sys-devel/bison-1.2.2"
 
 RDEPEND+=" python? ( ${PYTHON_DEPS} )"
@@ -114,7 +114,7 @@ src_install() {
 
 	if use doc; then
 		insinto /usr/share/doc/${PF}
-		doins "${DISTDIR}"/${MY_P}.Manual.pdf
+		doins "${DISTDIR}"/SNNSv4.2.Manual.pdf
 	fi
 
 	insinto /usr/share/doc/${PF}/examples

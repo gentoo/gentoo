@@ -8,6 +8,7 @@
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on the work of: Arun raghaven <ford_prefect@gentoo.org>
 # which in turn was based on the work of Jim Ramsay <lack@gentoo.org>
+# @SUPPORTED_EAPIS: 5
 # @BLURB: Common functionality for building gnome-python* bindings
 # @DESCRIPTION:
 # This eclass provides python-r1 support for the GNOME2 library Python

@@ -10,7 +10,7 @@
 		<flag name="input-sdl">Enable SDL input plugin.</flag>
 		<flag name="rsp-hle">Enable HLE RSP plugin.</flag>
 		<flag name="ui-console">Enable default console UI.</flag>
-		<flag name="ui-m64py">Enable PyQt4 UI using <pkg>games-emulation/m64py</pkg>.</flag>
+		<flag name="ui-m64py">Enable PyQt5 UI using <pkg>games-emulation/m64py</pkg>.</flag>
 		<flag name="video-glide64mk2">Enable Glide64mk2 video plugin.</flag>
 		<flag name="video-rice">Enable Rice video plugin.</flag>
 	</use>

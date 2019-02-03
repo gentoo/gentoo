@@ -1,0 +1,3 @@
+# >=glibc-2.20 requires >=linux-2.6.32.
+# https://lwn.net/Articles/611162
+<sys-libs/glibc-2.20

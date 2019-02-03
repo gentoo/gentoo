@@ -6,6 +6,10 @@
     <name>Python</name>
   </maintainer>
   <upstream>
+    <!-- 2.1+ -->
+    <remote-id type="pypi">PyPyDispatcher</remote-id>
+    <remote-id type="github">scrapy/pypydispatcher</remote-id>
+    <!-- for <2.1 -->
     <remote-id type="pypi">PyDispatcher</remote-id>
     <remote-id type="sourceforge">pydispatcher</remote-id>
   </upstream>

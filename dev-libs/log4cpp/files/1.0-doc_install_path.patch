@@ -1,11 +1,10 @@
---- doc/Makefile.am.orig	2007-10-13 09:39:44.000000000 +0200
-+++ doc/Makefile.am	2007-10-13 09:40:03.000000000 +0200
-@@ -1,7 +1,7 @@
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -1,7 +1,6 @@
  SUBDIRS = html
  
  man3dir = $(mandir)/man3
 -docdir  = $(prefix)/doc/@PACKAGE_TARNAME@-@PACKAGE_VERSION@
-+docdir  = $(prefix)/share/doc/@PACKAGE_TARNAME@-@PACKAGE_VERSION@
  
  EXTRA_DIST = \
  	mainPage.txt

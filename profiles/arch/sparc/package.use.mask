@@ -1,5 +1,37 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sergei Trofimovich <slyfox@gentoo.org> (28 Sep 2018)
+# No stable nftables yet. Let new iptables stabilization
+# to pick nftables up. Meanwhile keep old iptables off
+# nftables.
+<net-firewall/iptables-1.6.2 nftables
+
+# Virgil Dupras <vdupras@gentoo.org> (08 Oct 2018)
+# app-text/mupdf sparc keyword was dropped in bug #631970
+net-print/cups-filters pdf
+
+# Sergei Trofimovich <slyfox@gentoo.org> (28 Sep 2018)
+# mpir fails to build at least on sparc: bug #640424
+dev-python/gmpy mpir
+
+# Sergei Trofimovich <slyfox@gentoo.org> (30 Aug 2018)
+# dev-games/openscenegraph is a heavy unkeyworded dependency.
+# Skip keywording it for now.
+app-office/scribus osg
+
+# Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2018)
+# Mask broken HIPE support on sparc32 (bug #656618)
+dev-lang/erlang hipe
+
+# Sergei Trofimovich <slyfox@gentoo.org> (08 May 2018)
+# Mask USE=games to avoid unkeyworded games-util/qstat.
+net-analyzer/monitoring-plugins game
+
+# Sergei Trofimovich <slyfox@gentoo.org> (20 Dec 2017)
+# Mask USE=rados for net-analyzer/rrdtool since sys-cluster/ceph is not
+# keyworded (bug #597174)
+net-analyzer/rrdtool rados
 
 # Sergei Trofimovich <slyfox@gentoo.org> (09 Nov 2017)
 # pulls in many dev-ruby/asciidoctor dependencies (bug #599048)
@@ -71,10 +103,6 @@ x11-terms/gnome-terminal gnome-shell
 # unkeyworded rev deps
 dev-games/openscenegraph gdal las
 
-# Justin Lecher <jlec@gentoo.org> (15 Jan 2017)
-# masked rev deps
-media-libs/libsdl2 fusionsound
-
 # Pacho Ramos <pacho@gentoo.org> (02 Jan 2017)
 # Don't keyword redis
 dev-libs/hiredis test
@@ -103,10 +131,6 @@ gnome-extra/nm-applet teamd
 # Missing test deps keyword #575366
 dev-cpp/eigen test
 
-# Mike Frysinger <vapier@gentoo.org> (21 Feb 2016)
-# Needs arch love for elementary. #575322
-media-libs/elementary javascript
-
 # Pacho Ramos <pacho@gentoo.org> (20 Feb 2016)
 # Missing keywords, bug #551580
 app-office/planner eds
@@ -119,14 +143,6 @@ media-video/ffmpeg snappy
 # scrollview requires Java, which is unsupported on SPARC.
 app-text/tesseract scrollview
 
-# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
-# no sparc support in media-libs/glfw
-app-text/mupdf opengl
-
-# Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
-# Needs keywording. #569254
-net-firewall/iptables nftables
-
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires
 # dev-python/socketpool which requires dev-python/gevent which requires
@@ -137,10 +153,6 @@ dev-python/pyquery test
 # Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
 # Missing keywords
 >=media-plugins/grilo-plugins-0.2.14 upnp-av
-
-# Julian Ospald <hasufell@gentoo.org> (08 Nov 2015)
-# Requires net-libs/http-parser
-net-im/jabberd2 websocket
 
 # Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
 # Tests require non-keyworded qt5
@@ -175,13 +187,12 @@ net-misc/spice-gtk smartcard webdav
 gnome-base/gvfs nfs
 
 # Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
-# dev-lang/luajit and dev-lua/lgi and lack sparc keyword, bug #551540
-dev-libs/libpeas lua jit
+# dev-lua/lgi lacks sparc keyword, bug #551540
+dev-libs/libpeas lua
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
 dev-libs/efl physics sdl
-media-libs/elementary sdl
 
 # Alexis Ballier <aballier@gentoo.org> (11 Feb 2015)
 # Missing ffmpeg deps, bug #510340
@@ -200,7 +211,6 @@ net-misc/networkmanager teamd
 # See bug #533420.
 media-libs/clutter egl wayland
 media-libs/clutter-gtk wayland
-x11-wm/mutter kms
 
 # Mark Wright <gienah@gentoo.org> (14-23 Dec 2014, 1 Apr 2015)
 # test dependencies need keywording
@@ -254,10 +264,6 @@ net-im/telepathy-connection-managers sipe
 # template-haskell not yet available
 dev-haskell/dataenc test
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
-# dev-libs/jemalloc is not keyworded
-www-plugins/gnash jemalloc
-
 # Pacho Ramos <pacho@gentoo.org> (20 Jul 2013)
 # Keywords pending, bug #476710
 >=gnome-base/gnome-extra-apps-3.8 games
@@ -272,7 +278,7 @@ media-sound/rhythmbox upnp-av
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (31 Jan 2013)
 # remove mask when net-libs/libqmi is keyworded here
-net-misc/modemmanager qmi qmi-newest
+net-misc/modemmanager qmi
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (22 Jan 2013)
 # remove mask if/when media-gfx/argyllcms is keywored here.
@@ -325,10 +331,6 @@ app-text/asciidoc test
 # missing keywords on dependencies
 media-video/x264-encoder ffmpegsource
 
-# Robin H. Johnson <robbat2@gentoo.org> (03 Sep 2011)
-# Remove this for your arch after you keyword dev-utils/google-perftools (bug #381737
-dev-libs/libmemcached tcmalloc
-
 # Alexey Shvetsov <alexxy@gentoo.org> (31 Aug 2011)
 # Mask numa use flag per bug #381313
 sys-apps/hwloc numa
@@ -350,14 +352,9 @@ net-analyzer/wireshark doc-pdf
 # MKL not available on this arch
 media-gfx/povray mkl
 
-# Ben de Groot <yngwin@gentoo.org> (16 Jan 2010)
-# qtmultimedia is not keyworded, bug 293671
-dev-python/PyQt4 multimedia
-
 # Ben de Groot <yngwin@gentoo.org> (11 Nov 2009)
 # Requires qthelp, which requires qtwebkit, bug 292838
 dev-libs/uriparser doc
-media-libs/libxspf doc
 
 # Raúl Porcel <armin76@gentoo.org>
 # Depends on dev-java/fop which requires java...
@@ -374,9 +371,6 @@ app-text/texlive xindy
 
 # Needs krb4 USE flag for mit-krb5 (Bug #255579), and we believe it to be unstable.
 net-im/pidgin zephyr
-
-# Mask zemberek for enchant because it requires java.
-app-text/enchant zemberek
 
 # Mask srtp for ortp because libsrtp is marked -sparc
 net-libs/ortp srtp

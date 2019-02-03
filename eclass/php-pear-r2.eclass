@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-pear-r2.eclass
@@ -6,6 +6,7 @@
 # Gentoo PHP Team <php-bugs@gentoo.org>
 # @AUTHOR:
 # Author: Brian Evans <grknight@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Provides means for an easy installation of PEAR packages.
 # @DESCRIPTION:
 # This eclass provides means for an easy installation of PEAR packages.
@@ -16,7 +17,7 @@
 EXPORT_FUNCTIONS src_install pkg_postinst pkg_postrm
 
 case "${EAPI:-0}" in
-	6)
+	6|7)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} for ${ECLASS}"
@@ -36,6 +37,9 @@ RDEPEND=">=dev-php/pear-1.8.1"
 # Set in ebuild if the ${PV} breaks SRC_URI for alpha/beta/rc versions
 : ${PEAR_PV:=${PV}}
 
+# @ECLASS-VARIABLE: PEAR-P
+# @INTERNAL
+# @DESCRIPTION: Combines PHP_PEAR_PKG_NAME and PEAR_PV
 PEAR_P="${PHP_PEAR_PKG_NAME}-${PEAR_PV}"
 
 # @ECLASS-VARIABLE: PHP_PEAR_DOMAIN
@@ -60,7 +64,7 @@ fi
 
 S="${WORKDIR}/${PEAR_P}"
 
-# @FUNCTION php-pear-r2_install_packagexml
+# @FUNCTION: php-pear-r2_install_packagexml
 # @DESCRIPTION:
 # Copies the package2.xml or package.xml file and, optionally, the channel.xml
 # file to a Gentoo-specific location so that pkg_postinst can install the package
@@ -96,20 +100,20 @@ php-pear-r2_src_install() {
 # Register package with the local PEAR database.
 php-pear-r2_pkg_postinst() {
 	# Add unknown channels
-	if [[ -f "${EROOT}usr/share/php/.packagexml/${PEAR_P}-channel.xml" ]] ; then
-		"${EROOT}usr/bin/peardev" channel-info "${PHP_PEAR_DOMAIN}" &> /dev/null
+	if [[ -f "${EROOT%/}/usr/share/php/.packagexml/${PEAR_P}-channel.xml" ]] ; then
+		"${EROOT%/}/usr/bin/peardev" channel-info "${PHP_PEAR_DOMAIN}" &> /dev/null
 		if [[ $? -ne 0 ]]; then
-			"${EROOT}usr/bin/peardev" channel-add \
-				"${EROOT}usr/share/php/.packagexml/${PEAR_P}-channel.xml" \
+			"${EROOT%/}/usr/bin/peardev" channel-add \
+				"${EROOT%/}/usr/share/php/.packagexml/${PEAR_P}-channel.xml" \
 				|| einfo "Ignore any errors about existing channels"
 		fi
 	fi
 
 	# Register the package from the package{,2}.xml file
 	# It is not critical to complete so only warn on failure
-	if [[ -f "${EROOT}usr/share/php/.packagexml/${PEAR_P}.xml" ]] ; then
-		"${EROOT}usr/bin/peardev" install -nrO --force \
-			"${EROOT}usr/share/php/.packagexml/${PEAR_P}.xml" 2> /dev/null \
+	if [[ -f "${EROOT%/}/usr/share/php/.packagexml/${PEAR_P}.xml" ]] ; then
+		"${EROOT%/}/usr/bin/peardev" install -nrO --force \
+			"${EROOT%/}/usr/share/php/.packagexml/${PEAR_P}.xml" 2> /dev/null \
 			|| ewarn "Failed to insert package into local PEAR database"
 	fi
 }
@@ -119,5 +123,5 @@ php-pear-r2_pkg_postinst() {
 # Deregister package from the local PEAR database
 php-pear-r2_pkg_postrm() {
 	# Uninstall known dependency
-	"${EROOT}usr/bin/peardev" uninstall -nrO "${PHP_PEAR_DOMAIN}/${PHP_PEAR_PKG_NAME}"
+	"${EROOT%/}/usr/bin/peardev" uninstall -nrO "${PHP_PEAR_DOMAIN}/${PHP_PEAR_PKG_NAME}"
 }

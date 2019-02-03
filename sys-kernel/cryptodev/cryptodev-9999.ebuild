@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,6 +27,7 @@ DEPEND="virtual/linux-sources"
 RESTRICT="test"
 
 MODULE_NAMES="cryptodev(extra:${S})"
+BUILD_PARAMS="KERNEL_DIR=\"\${KV_OUT_DIR}\""
 
 pkg_pretend() {
 	if use kernel_linux ; then

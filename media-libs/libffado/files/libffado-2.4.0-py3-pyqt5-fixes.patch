@@ -1,0 +1,197 @@
+------------------------------------------------------------------------
+r2726 | jwoithe | 2018-01-05 18:56:40 +0900 (Fri, 05 Jan 2018) | 13 lines
+
+Further Python3/PyQt5 compatibility fixes, enhance "About" dialog box.
+
+This patch was prepared by Orcan Ogetbil on Fedora and tested on that
+distribution with PyQt4-4.12.1 and PyQt5-5.9.1.  It is primarily concerned
+with additional compatibility between Python2/3 and PyQt4/5.  It has also
+been tested under python 2 with pyqt 4.11.4.  Further testing under
+different python/pyqt environments would be welcomed.
+
+An enhancement to the "About" dialog is also included which adds version
+strings and updates the copyright year range.
+
+The patch was submitted to the ffado-devel mailing list.
+
+
+Index: support/mixer-qt4/ffado/ffadowindow.py
+===================================================================
+--- a/support/mixer-qt4/ffado/ffadowindow.py	(revision 2725)
++++ b/support/mixer-qt4/ffado/ffadowindow.py	(revision 2726)
+@@ -22,6 +22,8 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #
+ 
++import ctypes
++import datetime
+ import os
+ 
+ from ffado.config import *
+@@ -92,7 +94,8 @@
+             self.menuTheme[theme].setCheckable(True)
+ 
+             if (ffado_python3 and (self.style().objectName().lower() == theme.lower()) or
+-                    not(ffado_python3) and (self.style().objectName().toLower() == theme.toLower())):
++                    not(ffado_python3) and (self.style().objectName().toLower() == theme.toLower() if ffado_pyqt_version == 4 else
++                                            self.style().objectName().lower() == theme.lower())):
+                 self.menuTheme[theme].setDisabled(True)
+                 self.menuTheme[theme].setChecked(True)
+             self.menuTheme[theme].triggered.connect(self.switchTheme )
+@@ -174,9 +177,11 @@
+         QMessageBox.about( self, "About FFADO", """
+ <h1>ffado.org</h1>
+ 
++<p>{ffado_version}</p>
++
+ <p>FFADO is the new approach to have firewire audio on linux.</p>
+ 
+-<p>&copy; 2006-2014 by the FFADO developers<br />ffado is licensed under the GPLv3, for the full license text see <a href="http://www.gnu.org/licenses/">www.gnu.org/licenses</a> or the LICENSE.* files shipped with ffado.</p>
++        <p>&copy; 2006-2018 by the FFADO developers<br />ffado is licensed under the GPLv3, for the full license text see <a href="http://www.gnu.org/licenses/">www.gnu.org/licenses</a> or the LICENSE.* files shipped with ffado.</p>
+ 
+ <p>FFADO developers are:<ul>
+ <li>Pieter Palmers
+@@ -191,8 +196,17 @@
+ <li>Stefan Richter
+ <li>Jano Svitok
+ </ul>
+-""" )
++        """.format(ffado_version=get_ffado_version(), thisyear=datetime.datetime.now().year))
+ 
++def get_ffado_version():
++    try:
++        # call the C function ffado_get_version() to figure out the version
++        lib = ctypes.cdll.LoadLibrary('libffado.so')
++        func = ctypes.CFUNCTYPE(ctypes.c_char_p)
++        ffado_get_version = func(('ffado_get_version', lib))
++        return ffado_get_version()
++    except:
++        return "libffado"
+ 
+ def get_lock(process_name):
+     import socket
+@@ -252,6 +266,7 @@
+     logging.getLogger('global').setLevel(debug_level)
+ 
+     log = logging.getLogger('main')
++    log.debug("Using %s with Qt: %s PyQt: %s" % (get_ffado_version(), QtCore.QT_VERSION_STR, QtCore.PYQT_VERSION_STR))
+ 
+     app = QApplication(args)
+     app.setWindowIcon( QIcon( SHAREDIR + "/icons/hi64-apps-ffado.png" ) )
+Index: support/mixer-qt4/ffado/logginghandler.py
+===================================================================
+--- a/support/mixer-qt4/ffado/logginghandler.py	(revision 2725)
++++ b/support/mixer-qt4/ffado/logginghandler.py	(revision 2726)
+@@ -28,7 +28,7 @@
+ log = logging.getLogger('logginghandler')
+ 
+ class QStatusLogger( QObject, logging.Handler ):
+-    log = pyqtSignal(QString, int, name='log')
++    log = pyqtSignal(QString if ffado_pyqt_version == 4 else str, int, name='log')
+     def __init__( self, parent, statusbar, level=logging.NOTSET ):
+         QObject.__init__( self, parent )
+         logging.Handler.__init__( self, level )
+Index: support/mixer-qt4/ffado/panelmanager.py
+===================================================================
+--- a/support/mixer-qt4/ffado/panelmanager.py	(revision 2725)
++++ b/support/mixer-qt4/ffado/panelmanager.py	(revision 2726)
+@@ -378,7 +378,7 @@
+         action = self.sender()
+         # Extract the action data and store as a dbus.String type so 
+         # it is usable as a key into self.panels[].
+-        panel_key = dbus.String(action.data().toString())
++        panel_key = dbus.String(action.data().toString() if ffado_pyqt_version == 4 else action.data())
+         self.tabs.setCurrentIndex(self.tabs.indexOf(self.panels[panel_key]))
+ 
+     def displayPanels(self):
+@@ -515,6 +515,8 @@
+           saveString.append('</device>\n')
+         # file saving
+         savefilename = QFileDialog.getSaveFileName(self, 'Save File', os.getenv('HOME'))
++        if isinstance(savefilename, tuple): # newer PyQt5
++            savefilename = savefilename[0]
+         try:
+           f = open(savefilename, 'w')
+         except IOError:
+@@ -526,6 +528,8 @@
+ 
+     def readSettings(self):
+         readfilename = QFileDialog.getOpenFileName(self, 'Open File', os.getenv('HOME'))
++        if isinstance(readfilename, tuple): # newer PyQt5
++            readfilename = readfilename[0]
+         try:
+           f = open(readfilename, 'r')
+         except IOError:
+Index: support/mixer-qt4/ffado/widgets/crossbarrouter.py
+===================================================================
+--- a/support/mixer-qt4/ffado/widgets/crossbarrouter.py	(revision 2725)
++++ b/support/mixer-qt4/ffado/widgets/crossbarrouter.py	(revision 2726)
+@@ -168,7 +168,10 @@
+         self.timer.setInterval(200)
+         self.timer.timeout.connect(self.updateLevels)
+ 
+-        self.vubtn.setChecked(self.settings.value("crossbarrouter/runvu", False).toBool())
++        if ffado_pyqt_version == 4:
++            self.vubtn.setChecked(self.settings.value("crossbarrouter/runvu", False).toBool())
++        else:
++            self.vubtn.setChecked(self.settings.value("crossbarrouter/runvu", False) == u'true')
+ 
+     def __del__(self):
+         print( "CrossbarRouter.__del__()" )
+Index: support/mixer-qt4/ffado/widgets/matrixmixer.py
+===================================================================
+--- a/support/mixer-qt4/ffado/widgets/matrixmixer.py	(revision 2725)
++++ b/support/mixer-qt4/ffado/widgets/matrixmixer.py	(revision 2726)
+@@ -200,7 +200,7 @@
+ 
+     def mousePressEvent(self, ev):
+         if ev.buttons() & Qt.LeftButton:
+-            self.pos = ev.posF()
++            self.pos = ev.posF() if ffado_pyqt_version == 4 else ev.localPos()
+             self.tmpvalue = self.value()
+             ev.accept()
+             #log.debug("MixerNode.mousePressEvent() %s" % str(self.pos))
+@@ -207,7 +207,7 @@
+ 
+     def mouseMoveEvent(self, ev):
+         if hasattr(self, "tmpvalue") and self.pos is not QtCore.QPointF(0, 0):
+-            newpos = ev.posF()
++            newpos = ev.posF() if ffado_pyqt_version == 4 else ev.localPos()
+             change = newpos.y() - self.pos.y()
+             #log.debug("MixerNode.mouseReleaseEvent() change %s" % (str(change)))
+             self.setValue( self.tmpvalue - math.copysign(pow(abs(change), 2), change) )
+@@ -215,7 +215,7 @@
+ 
+     def mouseReleaseEvent(self, ev):
+         if hasattr(self, "tmpvalue") and self.pos is not QtCore.QPointF(0, 0):
+-            newpos = ev.posF()
++            newpos = ev.posF() if ffado_pyqt_version == 4 else ev.localPos()
+             change = newpos.y() - self.pos.y()
+             #log.debug("MixerNode.mouseReleaseEvent() change %s" % (str(change)))
+             self.setValue( self.tmpvalue - math.copysign(pow(abs(change), 2), change) )
+@@ -257,19 +257,19 @@
+         if v == 0:
+             symb_inf = u"\u221E"
+             text = "-" + symb_inf + " dB"
+-        if ffado_python3:
++        if ffado_python3 or ffado_pyqt_version == 5:
+             # Python3 uses native python UTF strings rather than QString.
+             # This therefore appears to be the correct way to display this
+             # UTF8 string, but testing may prove otherwise.
+             p.drawText(rect, Qt.AlignCenter, text)
+         else:
+-            p.drawText(rect, Qt.AlignCenter, QtCore.QString.fromUtf8(text))
++            p.drawText(rect, Qt.AlignCenter, QString.fromUtf8(text))
+         if (self.inv_action!=None and self.inv_action.isChecked()):
+-            if ffado_python3:
++            if ffado_python3 or ffado_pyqt_version == 5:
+                 # Refer to the comment about about Python UTF8 strings.
+                 p.drawText(rect, Qt.AlignLeft|Qt.AlignTop, " ϕ")
+             else:
+-                p.drawText(rect, Qt.AlignLeft|Qt.AlignTop, QtCore.QString.fromUtf8(" ϕ"))
++                p.drawText(rect, Qt.AlignLeft|Qt.AlignTop, QString.fromUtf8(" ϕ"))
+ 
+     def internalValueChanged(self, value):
+         #log.debug("MixerNode.internalValueChanged( %i )" % value)
+
+------------------------------------------------------------------------

@@ -21,6 +21,9 @@ are supported. SFTP client mode is now supported too.
 用している所です。有名なCipherとHash処理の全てがサポートされています。SFTPクライ
 アントもサポートされています。
 </longdescription>
+  <use>
+    <flag name="server">Enable server feature</flag>
+  </use>
   <upstream>
     <remote-id type="pypi">paramiko</remote-id>
     <remote-id type="github">paramiko/paramiko</remote-id>

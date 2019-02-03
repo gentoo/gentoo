@@ -1,0 +1,33 @@
+diff -Naur a/apps/ministreaming/java/build.xml b/apps/ministreaming/java/build.xml
+--- a/apps/ministreaming/java/build.xml	2018-10-04 12:05:09.000000000 +0200
++++ b/apps/ministreaming/java/build.xml	2018-10-12 08:15:16.481532093 +0200
+@@ -194,6 +194,7 @@
+             includeAntRuntime="false"
+             destdir="./build/obj" >
+             <classpath>
++                <pathelement path="${javac.classpath}" />
+                 <pathelement location="../../../core/java/build/i2p.jar" />
+                 <pathelement location="${junit.home}/junit4.jar" />
+                 <pathelement location="${hamcrest.home}/hamcrest.jar" />
+diff -Naur a/apps/streaming/java/build.xml b/apps/streaming/java/build.xml
+--- a/apps/streaming/java/build.xml	2018-10-04 12:05:09.000000000 +0200
++++ b/apps/streaming/java/build.xml	2018-10-12 11:17:22.814404049 +0200
+@@ -62,6 +62,7 @@
+             includeAntRuntime="false"
+             destdir="./build/obj" >
+             <classpath>
++                <pathelement path="${javac.classpath}" />
+                 <pathelement location="../../../core/java/build/i2p.jar" />
+                 <pathelement location="../../ministreaming/java/build/mstreaming.jar" />
+                 <pathelement location="${junit.home}/junit4.jar" />
+diff -Naur a/router/java/build.xml b/router/java/build.xml
+--- a/router/java/build.xml	2018-10-04 12:05:14.000000000 +0200
++++ b/router/java/build.xml	2018-10-12 08:14:52.921530213 +0200
+@@ -162,6 +162,7 @@
+             includeAntRuntime="true"
+             destdir="./build/obj">
+             <classpath>
++                <pathelement path="${javac.classpath}" />
+                 <pathelement location="${hamcrest.home}/hamcrest-core.jar" />
+                 <pathelement location="${hamcrest.home}/hamcrest-library.jar" />
+                 <pathelement location="${hamcrest.home}/hamcrest-integration.jar" />

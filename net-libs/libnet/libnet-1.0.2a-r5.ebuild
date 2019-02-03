@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -16,10 +16,10 @@ IUSE=""
 S=${WORKDIR}/Libnet-${PV}
 
 src_prepare() {
-	epatch "${FILESDIR}"/libnet-gcc33-fix \
-		"${FILESDIR}"/${PV}-slot.patch
+	epatch "${FILESDIR}"/${PN}-1.0.2a-gcc33-fix.patch \
+		"${FILESDIR}"/${PN}-1.0.2a-slot.patch
 
-	use arm && epatch "${FILESDIR}"/${PV}-endian.patch
+	use arm && epatch "${FILESDIR}"/${PN}-1.0.2a-endian.patch
 
 	cd "${S}"
 	mv libnet-config.in libnet-${SLOT}-config.in || die "moving libnet-config"

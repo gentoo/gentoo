@@ -3,6 +3,7 @@
 <pkgmetadata>
   <use>
     <flag name="pax_kernel">Triggers a paxmarking of the main Spotify binary</flag>
+    <flag name="systray">Pulls in dependencies needed for systray support on some desktop environments</flag>
   </use>
 <maintainer type="person">
 <email>prometheanfire@gentoo.org</email>

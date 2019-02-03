@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ VERSION="961" # every bump, new version
 inherit vdr-plugin-2 flag-o-matic
 
 DESCRIPTION="VDR plugin: Show another channel in the OSD"
-HOMEPAGE="http://projects.vdr-developer.org/projects/plg-osdpip"
+HOMEPAGE="https://projects.vdr-developer.org/projects/plg-osdpip"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
 KEYWORDS="amd64 x86"

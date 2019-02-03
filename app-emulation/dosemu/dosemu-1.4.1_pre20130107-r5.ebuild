@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,7 +37,7 @@ RDEPEND="X? ( x11-libs/libX11
 	>=sys-libs/slang-1.4"
 
 DEPEND="${RDEPEND}
-	X? ( x11-proto/xf86dgaproto )
+	X? ( x11-base/xorg-proto )
 	>=sys-devel/autoconf-2.57"
 
 S="${WORKDIR}/${PN}-code-${COMMIT}"

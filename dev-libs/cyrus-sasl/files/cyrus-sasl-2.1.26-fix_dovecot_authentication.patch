@@ -1,6 +1,6 @@
 Bug #510320
---- saslauthd/auth_rimap.c	2012-10-12 14:05:48.000000000 +0000
-+++ saslauthd/auth_rimap.c	2014-05-15 05:23:02.000000000 +0000
+--- a/saslauthd/auth_rimap.c
++++ b/saslauthd/auth_rimap.c
 @@ -371,7 +371,7 @@
      if ( rc>0 ) {
          /* check if there is more to read */
@@ -65,8 +65,8 @@ Bug #510320
                   rc += ret;
                }
             }
---- lib/checkpw.c	2012-01-27 23:31:36.000000000 +0000
-+++ lib/checkpw.c	2014-05-15 05:19:35.000000000 +0000
+--- a/lib/checkpw.c
++++ b/lib/checkpw.c
 @@ -587,16 +587,14 @@
  	    /* Timeout. */
  	    errno = ETIMEDOUT;

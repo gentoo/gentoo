@@ -6,10 +6,10 @@
 		<name>Gentoo Science Project</name>
 	</maintainer>
 	<longdescription lang="en">
-  A free IDL (Interactive Data Language) compatible incremental compiler
-  (ie. runs IDL programs). IDL is a registered trademark of ITT Visual 
-  Information Solutions.
-</longdescription>
+		A free IDL (Interactive Data Language) compatible incremental compiler
+		(ie. runs IDL programs). IDL is a registered trademark of ITT Visual
+		Information Solutions.
+	</longdescription>
 	<use>
 		<flag name="eigen">Build matrix manipulation with <pkg>dev-cpp/eigen</pkg></flag>
 		<flag name="hdf">Add support for the Hierarchical Data Format v.4</flag>

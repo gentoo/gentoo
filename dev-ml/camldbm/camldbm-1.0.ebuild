@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,9 +14,8 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 arm ppc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
-DEPEND="|| ( >=sys-libs/gdbm-1.9.1-r2[berkdb] <sys-libs/gdbm-1.9.1-r2 )
-	>=dev-lang/ocaml-3.12:=[ocamlopt]
-	!<dev-lang/ocaml-4[gdbm]"
+DEPEND=">=sys-libs/gdbm-1.9.1-r2[berkdb]
+	>=dev-lang/ocaml-3.12:=[ocamlopt]"
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/hasgotfix.patch" "${FILESDIR}/include_fix.patch" )

@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils
+inherit ltprune
 
 if [[ ${PV} == *9999* ]]; then
 	inherit autotools git-r3
-	EGIT_REPO_URI="git://git.gnome.org/babl"
+	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/babl.git"
 	SRC_URI=""
 else
 	SRC_URI="http://ftp.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A dynamic, any to any, pixel format conversion library"
@@ -19,7 +19,7 @@ HOMEPAGE="http://www.gegl.org/babl/"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="altivec cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_mmx cpu_flags_x86_f16c"
+IUSE="altivec cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_mmx cpu_flags_x86_f16c"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
@@ -46,6 +46,7 @@ src_configure() {
 		$(use_enable cpu_flags_x86_mmx mmx) \
 		$(use_enable cpu_flags_x86_sse sse) \
 		$(use_enable cpu_flags_x86_sse2 sse2) \
+		$(use_enable cpu_flags_x86_sse3 sse3) \
 		$(use_enable cpu_flags_x86_sse4_1 sse4_1)
 }
 

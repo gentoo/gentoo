@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils
+inherit distutils-r1 xdg-utils
 
-DESCRIPTION="Commandline tool for popular vector formats convertion"
-HOMEPAGE="http://sk1project.org/modules.php?name=Products&product=uniconvertor https://code.google.com/p/uniconvertor/"
+DESCRIPTION="Convert vector graphic file formats like .cdr, .svg, wmf and more."
+HOMEPAGE="https://sk1project.net/modules.php?name=Products&product=uniconvertor"
 SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~x86-solaris"
 SLOT="0"
 LICENSE="GPL-2 LGPL-2"
 IUSE=""
@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-import.patch
 	"${FILESDIR}"/${P}-libimg.patch
 	"${FILESDIR}"/${P}-test.patch
+	"${FILESDIR}"/${P}-abs.patch
 	)
 
 python_prepare_all() {
@@ -59,4 +60,14 @@ python_test() {
 	#distutils_install_for_testing
 	cd src/unittests || die
 	${EPYTHON} all_tests.py || die
+}
+
+pkg_postinst() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
 }

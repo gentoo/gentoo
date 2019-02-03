@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa x86"
+KEYWORDS="~alpha amd64 hppa x86"
 IUSE=""
 
 PATCHES=( "${FILESDIR}/${P}-fix-py35-test-failures.patch" )

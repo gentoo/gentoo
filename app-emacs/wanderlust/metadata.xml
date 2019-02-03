@@ -9,6 +9,7 @@
   <email>net-mail@gentoo.org</email>
   <name>Net-Mail</name>
 </maintainer>
+<stabilize-allarches/>
 <use>
   <flag name="bbdb">Include support for <pkg>app-emacs/bbdb</pkg></flag>
 </use>

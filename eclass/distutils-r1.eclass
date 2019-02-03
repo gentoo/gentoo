@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: distutils-r1.eclass
@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on the work of: Krzysztof Pawlik <nelchael@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: A simple eclass to build Python packages using distutils.
 # @DESCRIPTION:
 # A simple eclass providing functions to build Python packages using
@@ -46,7 +47,7 @@ case "${EAPI:-0}" in
 	0|1|2|3|4)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	5|6)
+	5|6|7)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -79,10 +80,11 @@ esac
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
 [[ ${EAPI} == [45] ]] && inherit eutils
-inherit toolchain-funcs xdg-utils
+[[ ${EAPI} == [56] ]] && inherit xdg-utils
+inherit multiprocessing toolchain-funcs
 
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-	inherit multiprocessing python-r1
+	inherit python-r1
 else
 	inherit python-single-r1
 fi
@@ -97,7 +99,11 @@ if [[ ! ${_DISTUTILS_R1} ]]; then
 
 if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
 	RDEPEND=${PYTHON_DEPS}
-	DEPEND=${PYTHON_DEPS}
+	if [[ ${EAPI} != [56] ]]; then
+		BDEPEND=${PYTHON_DEPS}
+	else
+		DEPEND=${PYTHON_DEPS}
+	fi
 	REQUIRED_USE=${PYTHON_REQUIRED_USE}
 fi
 
@@ -230,13 +236,13 @@ fi
 # @USAGE: [<args>...]
 # @DESCRIPTION:
 # Run setup.py using currently selected Python interpreter
-# (if ${PYTHON} is set; fallback 'python' otherwise).
+# (if ${EPYTHON} is set; fallback 'python' otherwise).
 #
 # setup.py will be passed the following, in order:
 # 1. ${mydistutilsargs[@]}
 # 2. additional arguments passed to the esetup.py function.
 #
-# Please note that setup.py will respect defaults (unless overriden
+# Please note that setup.py will respect defaults (unless overridden
 # via command-line options) from setup.cfg that is created
 # in distutils-r1_python_compile and in distutils-r1_python_install.
 #
@@ -249,7 +255,7 @@ esetup.py() {
 
 	[[ ${BUILD_DIR} ]] && _distutils-r1_create_setup_cfg
 
-	set -- "${PYTHON:-python}" setup.py "${mydistutilsargs[@]}" "${@}"
+	set -- "${EPYTHON:-python}" setup.py "${mydistutilsargs[@]}" "${@}"
 
 	echo "${@}" >&2
 	"${@}" || die "${die_args[@]}"
@@ -390,7 +396,7 @@ _distutils-r1_create_setup_cfg() {
 		#
 		# note: due to some packages (wxpython) relying on separate
 		# platlib & purelib dirs, we do not set --build-lib (which
-		# can not be overriden with --build-*lib)
+		# can not be overridden with --build-*lib)
 		build-platlib = %(build-base)s/lib
 		build-purelib = %(build-base)s/lib
 
@@ -412,7 +418,7 @@ _distutils-r1_create_setup_cfg() {
 			[install]
 			compile = True
 			optimize = 2
-			root = ${D}
+			root = ${D%/}
 		_EOF_
 
 		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
@@ -449,7 +455,23 @@ distutils-r1_python_compile() {
 
 	_distutils-r1_copy_egg_info
 
-	esetup.py build "${@}"
+	local build_args=()
+	# distutils is parallel-capable since py3.5
+	# to avoid breaking stable ebuilds, enable it only if either:
+	# a. we're dealing with EAPI 7
+	# b. we're dealing with Python 3.7 or PyPy3
+	if python_is_python3 && [[ ${EPYTHON} != python3.4 ]]; then
+		if [[ ${EAPI} != [56] || ${EPYTHON} != python3.[56] ]]; then
+			local jobs=$(makeopts_jobs "${MAKEOPTS}" INF)
+			if [[ ${jobs} == INF ]]; then
+				local nproc=$(get_nproc)
+				jobs=$(( nproc + 1 ))
+			fi
+			build_args+=( -j "${jobs}" )
+		fi
+	fi
+
+	esetup.py build "${build_args[@]}" "${@}"
 }
 
 # @FUNCTION: _distutils-r1_wrap_scripts
@@ -523,6 +545,7 @@ distutils-r1_python_install() {
 
 	# python likes to compile any module it sees, which triggers sandbox
 	# failures if some packages haven't compiled their modules yet.
+	addpredict "${EPREFIX}/usr/lib/${EPYTHON}"
 	addpredict "${EPREFIX}/usr/$(get_libdir)/${EPYTHON}"
 	addpredict /usr/lib/portage/pym
 	addpredict /usr/local # bug 498232
@@ -582,7 +605,7 @@ distutils-r1_python_install() {
 
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 		_distutils-r1_wrap_scripts "${root}" "${scriptdir}"
-		multibuild_merge_root "${root}" "${D}"
+		multibuild_merge_root "${root}" "${D%/}"
 	fi
 }
 
@@ -739,7 +762,7 @@ distutils-r1_src_prepare() {
 
 distutils-r1_src_configure() {
 	python_export_utf8_locale
-	xdg_environment_reset # Bug 577704
+	[[ ${EAPI} == [56] ]] && xdg_environment_reset # Bug 577704
 
 	if declare -f python_configure >/dev/null; then
 		_distutils-r1_run_foreach_impl python_configure
@@ -797,7 +820,7 @@ _distutils-r1_check_namespace_pth() {
 
 	while IFS= read -r -d '' f; do
 		pth+=( "${f}" )
-	done < <(find "${ED}" -name '*-nspkg.pth' -print0)
+	done < <(find "${ED%/}" -name '*-nspkg.pth' -print0)
 
 	if [[ ${pth[@]} ]]; then
 		ewarn "The following *-nspkg.pth files were found installed:"

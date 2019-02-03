@@ -13,7 +13,7 @@ SRC_URI="http://gwp.lunix.com.ar/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls opengl python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

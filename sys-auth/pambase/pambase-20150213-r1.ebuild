@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,8 +9,8 @@ SRC_URI="https://dev.gentoo.org/~vapier/dist/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 -sparc-fbsd -x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="consolekit cracklib debug elogind gnome-keyring minimal mktemp +nullok pam_krb5 pam_ssh passwdqc securetty selinux +sha512 systemd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 -x86-fbsd ~amd64-linux ~x86-linux"
+IUSE="consolekit +cracklib debug elogind gnome-keyring minimal mktemp +nullok pam_krb5 pam_ssh passwdqc securetty selinux +sha512 systemd"
 
 RESTRICT="binchecks"
 
@@ -19,7 +19,7 @@ MIN_PAM_REQ=1.1.3
 RDEPEND="
 	|| (
 		>=sys-libs/pam-${MIN_PAM_REQ}
-		( sys-auth/openpam || ( sys-freebsd/freebsd-pam-modules sys-netbsd/netbsd-pam-modules ) )
+		( sys-auth/openpam sys-freebsd/freebsd-pam-modules )
 	)
 	consolekit? ( sys-auth/consolekit[pam] )
 	cracklib? ( sys-libs/pam[cracklib] )

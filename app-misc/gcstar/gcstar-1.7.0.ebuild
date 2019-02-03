@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -7,7 +7,9 @@ inherit eutils fdo-mime gnome2-utils
 
 DESCRIPTION="Manage your collections of movies, games, books, music and more"
 HOMEPAGE="http://www.gcstar.org/"
-SRC_URI="http://download.gna.org/gcstar/${P}.tar.gz"
+# Gna permanently shut down in May 2017
+# Original SRC_URI was http://download.gna.org/gcstar/${P}.tar.gz
+SRC_URI="https://dev.gentoo.org/~tetromino/distfiles/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

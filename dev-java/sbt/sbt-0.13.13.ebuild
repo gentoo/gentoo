@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,10 +9,8 @@ inherit eutils java-pkg-2 # git-r3
 L_PN="sbt-launch"
 L_P="${L_PN}-${PV}"
 
-SV="2.11"
-
 DESCRIPTION="sbt is a build tool for Scala and Java projects that aims to do the basics well"
-HOMEPAGE="http://www.scala-sbt.org/"
+HOMEPAGE="https://www.scala-sbt.org/"
 EGIT_COMMIT="v${PV}"
 EGIT_REPO_URI="https://github.com/sbt/sbt.git"
 SRC_URI="
@@ -27,13 +25,16 @@ SRC_URI="
 	)"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="binary"
 
-DEPEND=">=virtual/jdk-1.8
-	>=dev-lang/scala-2.11.8:${SV}"
-RDEPEND=">=virtual/jre-1.8
-	>=dev-lang/scala-2.11.8:${SV}"
+DEPEND="
+	>=virtual/jdk-1.8
+	dev-lang/scala"
+
+RDEPEND="
+	>=virtual/jre-1.8
+	dev-lang/scala"
 
 # test hangs or fails
 RESTRICT="test"
@@ -155,7 +156,7 @@ src_test() {
 src_install() {
 	# Place sbt-launch.jar at the end of the CLASSPATH
 	java-pkg_dojar $(find "${WORKDIR}"/.ivy2/local -name \*.jar -print | grep -v sbt-launch.jar) \
-				   $(find "${WORKDIR}"/.ivy2/local -name sbt-launch.jar -print)
+		$(find "${WORKDIR}"/.ivy2/local -name sbt-launch.jar -print)
 	local ja="-Dsbt.version=${PV} -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled"
 	java-pkg_dolauncher sbt --jar sbt-launch.jar --java_args "${ja}"
 }

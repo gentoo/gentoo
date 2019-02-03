@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/FreeRDP/Remmina/archive/v${MY_PV}.tar.gz -> ${P}.tar
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="ayatana crypt rdp gnome-keyring nls spice ssh telepathy vnc zeroconf"
 
 CDEPEND="
@@ -24,7 +24,7 @@ CDEPEND="
 	x11-libs/libxkbfile
 	ayatana? ( dev-libs/libappindicator:3 )
 	crypt? ( dev-libs/libgcrypt:0= )
-	rdp? ( >=net-misc/freerdp-2.0.0_rc0 )
+	rdp? ( >=net-misc/freerdp-2.0.0_rc0 <net-misc/freerdp-2.0.0_rc3 )
 	gnome-keyring? ( app-crypt/libsecret )
 	spice? ( net-misc/spice-gtk[gtk3] )
 	ssh? ( net-libs/libssh[sftp]

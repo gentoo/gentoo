@@ -12,6 +12,9 @@
     <flag name="unwind">
       Enable stack backtraces (-k flag) via <pkg>sys-libs/libunwind</pkg>
     </flag>
+    <flag name="elfutils">
+      Enable stack backtraces (-k flag) via <pkg>dev-libs/elfutils</pkg>
+    </flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">strace</remote-id>

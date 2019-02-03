@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,17 +11,14 @@ SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="gflags static-libs test unwind"
 
 RDEPEND="
 	gflags? ( >=dev-cpp/gflags-2.0-r1[${MULTILIB_USEDEP}] )
 	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	test? (
-		>=dev-cpp/gmock-1.7.0-r1[${MULTILIB_USEDEP}]
-		>=dev-cpp/gtest-1.6.0-r2[${MULTILIB_USEDEP}]
-	)"
+	test? ( >=dev-cpp/gtest-1.8.0[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.2-avoid-inline-asm.patch

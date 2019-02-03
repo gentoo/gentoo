@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils
 
@@ -39,9 +39,9 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DVERSION="${PV}"
-		$(cmake-utils_use_has cpu_flags_x86_sse3 sse3)
-		$(cmake-utils_use_use openmp)
-		$(cmake-utils_use_use double-precision double)
+		-DHAS_SSE3=$(usex cpu_flags_x86_sse3)
+		-DUSE_OPENMP=$(usex openmp)
+		-DUSE_DOUBLE=$(usex double-precision)
 	)
 	cmake-utils_src_configure
 }

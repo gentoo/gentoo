@@ -1,0 +1,342 @@
+From 6c9a65ff8a2c896e7359d9b2da47fc8836c5dfe9 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 28 Feb 2018 08:34:19 +1300
+Subject: Fix test failures on 5.26+ due to removal of '.' from @INC
+
+'.' not being in @INC means `require "foo"` no longer implies
+`require "./foo"` will occur as a result of @INC traversal.
+
+This changes to use explicit paths ( ie: paths with a leading '/'
+ or './' ) which disables @INC traversal and restores expected
+semantics.
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=124610
+Bug: https://bugs.gentoo.org/623128
+---
+ t/api.t                       | 2 +-
+ t/cleanup.t                   | 2 +-
+ t/client-time-unsync.t        | 2 +-
+ t/coalesce.t                  | 2 +-
+ t/dead-dbs.t                  | 2 +-
+ t/declined.t                  | 2 +-
+ t/empty-db.t                  | 2 +-
+ t/evenly-distribute.t         | 2 +-
+ t/fail-working-multiple.t     | 2 +-
+ t/funcid.t                    | 2 +-
+ t/grab-race.t                 | 2 +-
+ t/grab_and_work_on.t          | 2 +-
+ t/high-funcid-starvation.t    | 2 +-
+ t/insert-and-do.t             | 2 +-
+ t/parallel-workers.t          | 2 +-
+ t/priority.t                  | 2 +-
+ t/replace-abort.t             | 2 +-
+ t/replace-with.t              | 2 +-
+ t/retry-delay.t               | 2 +-
+ t/scoreboard.t                | 2 +-
+ t/server-time.t               | 2 +-
+ t/unique.t                    | 2 +-
+ t/work-before-funcids-exist.t | 2 +-
+ 23 files changed, 23 insertions(+), 23 deletions(-)
+
+diff --git a/t/api.t b/t/api.t
+index 9d4d177..fb9c7b2 100644
+--- a/t/api.t
++++ b/t/api.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 58 * 3;
+diff --git a/t/cleanup.t b/t/cleanup.t
+index 034dc59..f13f23f 100644
+--- a/t/cleanup.t
++++ b/t/cleanup.t
+@@ -3,7 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 30;
+diff --git a/t/client-time-unsync.t b/t/client-time-unsync.t
+index fa19a85..fd10047 100644
+--- a/t/client-time-unsync.t
++++ b/t/client-time-unsync.t
+@@ -17,7 +17,7 @@ BEGIN {
+ }
+ no warnings 'redefine';
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 2;
+diff --git a/t/coalesce.t b/t/coalesce.t
+index b42f732..0c152f4 100644
+--- a/t/coalesce.t
++++ b/t/coalesce.t
+@@ -3,7 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 14 * 3;
+diff --git a/t/dead-dbs.t b/t/dead-dbs.t
+index eee73a6..673f5b4 100644
+--- a/t/dead-dbs.t
++++ b/t/dead-dbs.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 6;
+diff --git a/t/declined.t b/t/declined.t
+index 8fca90d..78dca2f 100644
+--- a/t/declined.t
++++ b/t/declined.t
+@@ -1,7 +1,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => (5 + 21) * 3;
+diff --git a/t/empty-db.t b/t/empty-db.t
+index 17353cd..6fc9bc1 100644
+--- a/t/empty-db.t
++++ b/t/empty-db.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 9;
+diff --git a/t/evenly-distribute.t b/t/evenly-distribute.t
+index 56533f0..3fc9082 100644
+--- a/t/evenly-distribute.t
++++ b/t/evenly-distribute.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 12;
+diff --git a/t/fail-working-multiple.t b/t/fail-working-multiple.t
+index 3750fc7..94f07f7 100644
+--- a/t/fail-working-multiple.t
++++ b/t/fail-working-multiple.t
+@@ -3,7 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 12;
+diff --git a/t/funcid.t b/t/funcid.t
+index f363791..60510ba 100644
+--- a/t/funcid.t
++++ b/t/funcid.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 24;
+diff --git a/t/grab-race.t b/t/grab-race.t
+index 1071362..efcdff8 100644
+--- a/t/grab-race.t
++++ b/t/grab-race.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 2;
+diff --git a/t/grab_and_work_on.t b/t/grab_and_work_on.t
+index 7f7628e..be99827 100644
+--- a/t/grab_and_work_on.t
++++ b/t/grab_and_work_on.t
+@@ -3,7 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 27;
+diff --git a/t/high-funcid-starvation.t b/t/high-funcid-starvation.t
+index 8469e9d..c879049 100644
+--- a/t/high-funcid-starvation.t
++++ b/t/high-funcid-starvation.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 12;
+diff --git a/t/insert-and-do.t b/t/insert-and-do.t
+index f6cc9f9..662abbd 100644
+--- a/t/insert-and-do.t
++++ b/t/insert-and-do.t
+@@ -3,7 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 26 * 3;
+diff --git a/t/parallel-workers.t b/t/parallel-workers.t
+index 1834041..5300385 100644
+--- a/t/parallel-workers.t
++++ b/t/parallel-workers.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 2;
+diff --git a/t/priority.t b/t/priority.t
+index b6e1208..3ce6c6e 100644
+--- a/t/priority.t
++++ b/t/priority.t
+@@ -3,7 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => ( ( 31 * 3 ) + ( 16 * 3 ) + ( 12 * 3 ) );
+diff --git a/t/replace-abort.t b/t/replace-abort.t
+index 86d70f0..252bfb0 100644
+--- a/t/replace-abort.t
++++ b/t/replace-abort.t
+@@ -3,7 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 13;
+diff --git a/t/replace-with.t b/t/replace-with.t
+index f9e7978..6887988 100644
+--- a/t/replace-with.t
++++ b/t/replace-with.t
+@@ -3,7 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 30;
+diff --git a/t/retry-delay.t b/t/retry-delay.t
+index 27c5663..fdda944 100644
+--- a/t/retry-delay.t
++++ b/t/retry-delay.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 24;
+diff --git a/t/scoreboard.t b/t/scoreboard.t
+index c19a9d8..bc197d0 100644
+--- a/t/scoreboard.t
++++ b/t/scoreboard.t
+@@ -3,7 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use Test::More tests => 30;
+ 
+diff --git a/t/server-time.t b/t/server-time.t
+index 870ab8e..47ded3a 100644
+--- a/t/server-time.t
++++ b/t/server-time.t
+@@ -3,7 +3,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 6;
+diff --git a/t/unique.t b/t/unique.t
+index f0bcea5..e013a32 100644
+--- a/t/unique.t
++++ b/t/unique.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 18;
+diff --git a/t/work-before-funcids-exist.t b/t/work-before-funcids-exist.t
+index 9c06e43..17efbbc 100644
+--- a/t/work-before-funcids-exist.t
++++ b/t/work-before-funcids-exist.t
+@@ -4,7 +4,7 @@
+ use strict;
+ use warnings;
+ 
+-require 't/lib/db-common.pl';
++require './t/lib/db-common.pl';
+ 
+ use TheSchwartz;
+ use Test::More tests => 6;
+-- 
+2.15.1
+

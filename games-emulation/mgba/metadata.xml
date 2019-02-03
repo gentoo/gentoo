@@ -5,6 +5,9 @@
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
+  <use>
+    <flag name="elf">Enable the use of elf utils via <pkg>dev-libs/elfutils</pkg></flag>
+  </use>
   <upstream>
     <remote-id type="github">mgba-emu/mgba</remote-id>
   </upstream>

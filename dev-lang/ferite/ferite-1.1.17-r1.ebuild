@@ -1,9 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit autotools eutils multilib
+EAPI=7
+inherit autotools
 
 DESCRIPTION="A clean, lightweight, object oriented scripting language"
 HOMEPAGE="http://www.ferite.org/"
@@ -14,13 +13,17 @@ SLOT="1"
 KEYWORDS="~alpha amd64 ppc -sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
-DEPEND="
-	>=dev-libs/libpcre-5
-	dev-libs/libxml2"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	dev-libs/boehm-gc[threads]
+	>=dev-libs/libpcre-5:3
+	dev-libs/libxml2:2
+"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/ferite-pcre.patch
+	default
+
+	eapply "${FILESDIR}"/ferite-pcre.patch
 
 	# use docsdir variable, install to DESTDIR
 	sed \
@@ -70,9 +73,11 @@ src_configure() {
 src_install() {
 	cp tools/doc/feritedoc "${T}" || die
 	sed -i -e '/^prefix/s:prefix:${T}:g' "${T}"/feritedoc || die
-	sed -i -e '/^$prefix/s:$prefix/bin/ferite:'"${ED}"'usr/bin/ferite:' "${T}"/feritedoc || die
+	sed -i -e '/^$prefix/s:$prefix/bin/ferite:'"${ED}"'/usr/bin/ferite:' "${T}"/feritedoc || die
 	sed -i -e 's:$library_path $library_path:${S}/tools/doc ${S}/tools/doc:' "${T}"/feritedoc || die
-	export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}${LD_LIBRARY_PATH:+:}${ED}usr/lib"
+
+	export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}${LD_LIBRARY_PATH:+:}${ED}/usr/lib"
 	emake DESTDIR="${D}" LIBDIR="${EPREFIX}"/usr/$(get_libdir) install
-	prune_libtool_files
+
+	find "${D}" -name '*.la' -delete || die
 }

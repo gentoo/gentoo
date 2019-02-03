@@ -1,0 +1,11 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# 17 Aug 2014; Anthony G. Basile <blueness@gentoo.org>
+# Avoid pulling in glib
+dev-util/pkgconfig internal-glib
+
+# Anthony G. Basile <blueness@gentoo.org> (14 Jul 2018)
+# We need this to break a circular dependency with
+# 'sys-libs/libcap pam' in stage3 catalyst builds
+sys-libs/pam -filecaps

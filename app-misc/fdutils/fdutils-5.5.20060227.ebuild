@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit eutils
 MY_P=${PN}_5.5-20060227
 
 DESCRIPTION="utilities for configuring and debugging the Linux floppy driver"
-HOMEPAGE="http://fdutils.linux.lu/"
+HOMEPAGE="https://fdutils.linux.lu"
 SRC_URI="mirror://debian/pool/main/f/${PN}/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/f/${PN}/${MY_P}-6.debian.tar.gz"
 

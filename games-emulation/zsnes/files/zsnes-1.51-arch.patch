@@ -1,5 +1,5 @@
---- configure.in.orig
-+++ configure.in
+--- a/configure.in.orig
++++ b/configure.in
 @@ -233,72 +233,8 @@
    debug=no)
  AC_MSG_CHECKING(if you want gdb friendly executable)

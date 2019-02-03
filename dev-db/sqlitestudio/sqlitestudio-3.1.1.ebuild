@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,6 +38,8 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}"
 core_build_dir="${S}/output/build"
 plugins_build_dir="${core_build_dir}/Plugins"
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
 
 src_prepare() {
 	xdg_src_prepare

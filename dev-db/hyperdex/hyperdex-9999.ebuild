@@ -31,7 +31,7 @@ DEPEND="
 	dev-libs/busybee
 	dev-libs/popt
 	dev-libs/replicant
-	dev-libs/json-c
+	dev-libs/json-c:=
 	python? ( ${PYTHON_DEPS} )"
 RDEPEND="${DEPEND}"
 

@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="A utility for designing Emacs color themes"
-HOMEPAGE="http://www.emacswiki.org/emacs/KahlilHodgson"
+HOMEPAGE="https://www.emacswiki.org/emacs/KahlilHodgson"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2+"

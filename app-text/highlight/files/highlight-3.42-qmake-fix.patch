@@ -1,0 +1,32 @@
+From 8464afed560fa1096d37aa82aef99c00819fec87 Mon Sep 17 00:00:00 2001
+From: Chris Mayo <aklhfex@gmail.com>
+Date: Fri, 2 Mar 2018 19:15:35 +0000
+Subject: [PATCH] fix directories passed to qmake being ignored
+
+contains() matches the whole value, add regular expressions for the path
+components.
+---
+ src/gui-qt/highlight.pro | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/gui-qt/highlight.pro b/src/gui-qt/highlight.pro
+index bae8d7c..0380a90 100644
+--- a/src/gui-qt/highlight.pro
++++ b/src/gui-qt/highlight.pro
+@@ -43,13 +43,13 @@ unix {
+     PKGCONFIG += lua
+ 
+     # to make it run within Qt Creator
+-    !contains(DEFINES, DATA_DIR) {
++    !contains(DEFINES, DATA_DIR.*) {
+         DEFINES+=DATA_DIR=\\\"/usr/share/highlight/\\\"
+     }
+-    !contains(DEFINES, CONFIG_DIR) {
++    !contains(DEFINES, CONFIG_DIR.*) {
+         DEFINES+=CONFIG_DIR=\\\"/etc/highlight/\\\"
+     }
+-    !contains(DEFINES, DOC_DIR) {
++    !contains(DEFINES, DOC_DIR.*) {
+         DEFINES+=DOC_DIR=\\\"/usr/share/doc/highlight/\\\"
+     }
+ }

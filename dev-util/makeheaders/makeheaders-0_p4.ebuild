@@ -1,13 +1,14 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=3
+EAPI=6
 
 inherit toolchain-funcs
 
 DESCRIPTION="simple utility that will automatically generate header files"
 HOMEPAGE="http://www.hwaci.com/sw/mkhdr/"
-SRC_URI="http://www.hwaci.com/sw/mkhdr/makeheaders.c -> ${P}.c
+SRC_URI="
+	http://www.hwaci.com/sw/mkhdr/makeheaders.c -> ${P}.c
 	http://www.hwaci.com/sw/mkhdr/makeheaders.html -> ${P}.html"
 
 LICENSE="BSD-2"
@@ -15,21 +16,15 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND=""
-
-src_unpack() {
-	local my_a
-	for my_a in ${A} ; do
-		cp -v "${DISTDIR}"/"${my_a}" . || die
-	done
-}
+S=${WORKDIR}
 
 src_compile() {
-	$(tc-getCC) ${CFLAGS} -o ${PN} ${P}.c ${LDFLAGS} || die
+	$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -o ${PN} "${DISTDIR}"/${P}.c || die
 }
 
 src_install() {
-	dobin ${PN} || die
-	dohtml ${P}.html || die
+	dobin ${PN}
+
+	local HTML_DOCS=( "${DISTDIR}"/${P}.html )
+	einstalldocs
 }

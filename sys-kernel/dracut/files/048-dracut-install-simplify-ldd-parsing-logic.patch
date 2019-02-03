@@ -1,0 +1,41 @@
+From 6d886bb74d1608e4565d926aa259ea5afc9df7b9 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Thu, 4 Oct 2018 16:45:47 -0400
+Subject: [PATCH] dracut-install: simplify ldd parsing logic
+
+The previous logic would not handle absolute paths on the left side of
+the "=>" properly. For example, on Gentoo ARM64, ldd outputs this:
+
+	/lib/ld-linux-aarch64.so.1 => /lib64/ld-linux-aarch64.so.1
+
+At runtime, the kernel tries to load the file from /lib, and fails if we
+only provide it in /lib64.
+
+Instead of looking for the first slash after the "=>", just look for the
+first slash, period. This would fail if we somehow had a relative path
+on the left side (foo/libbar.so), but I'm not aware of any binaries that
+would contain such an entry in DT_NEEDED.
+
+Bug: https://bugs.gentoo.org/667752
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ install/dracut-install.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/install/dracut-install.c b/install/dracut-install.c
+index 88bca1d44..5f352b360 100644
+--- a/install/dracut-install.c
++++ b/install/dracut-install.c
+@@ -479,11 +479,7 @@ static int resolve_deps(const char *src)
+                 if (strstr(buf, destrootdir))
+                         break;
+ 
+-                p = strstr(buf, "=>");
+-                if (!p)
+-                        p = buf;
+-
+-                p = strchr(p, '/');
++                p = strchr(buf, '/');
+                 if (p) {
+                         char *q;
+ 

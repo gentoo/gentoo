@@ -1,0 +1,46 @@
+Avoid pulling in a lot of unnecessary test and setup deps.
+
+--- wstools-0.4.5/setup.py
++++ wstools-0.4.5/setup.py
+@@ -9,7 +9,7 @@
+ 
+ from setuptools import setup, find_packages, Command
+ from setuptools.command.test import test as TestCommand
+-from pip.req import parse_requirements
++#from pip.req import parse_requirements
+ 
+ NAME = "wstools"
+ url = "https://github.com/pycontribs/wstools.git"
+@@ -55,13 +55,13 @@
+ 
+     def run_tests(self):
+         # before running tests we need to run autopep8
+-        try:
+-            subprocess.check_call(
+-                "python -m autopep8 -r --in-place wstools/ tests/",
+-                shell=True)
+-        except subprocess.CalledProcessError:
+-            logging.getLogger().warn('autopep8 is not installed so '
+-                                     'it will not be run')
++        # try:
++        #     subprocess.check_call(
++        #         "python -m autopep8 -r --in-place wstools/ tests/",
++        #         shell=True)
++        # except subprocess.CalledProcessError:
++        #     logging.getLogger().warn('autopep8 is not installed so '
++        #                              'it will not be run')
+         # import here, cause outside the eggs aren't loaded
+         import pytest  # noqa
+         errno = pytest.main(self.pytest_args)
+@@ -136,9 +136,9 @@
+     cmdclass={'test': PyTest, 'release': Release, 'prerelease': PreRelease},
+     packages=find_packages(exclude=['tests']),
+     include_package_data=True,
+-    tests_require=get_requirements(base_path, 'requirements-dev.txt'),
++    #tests_require=get_requirements(base_path, 'requirements-dev.txt'),
+     setup_requires=['setuptools'],
+-    install_requires=get_requirements(base_path, 'requirements.txt'),
++    install_requires=['six'],
+ 
+     license='BSD',
+     description="WSDL parsing services package for Web Services for Python. see" + url,

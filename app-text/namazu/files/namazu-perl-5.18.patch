@@ -1,0 +1,48 @@
+2013-12-15  Tadamasa Teranishi  <yw3t-trns@asahi-net.or.jp>
+
+        * scripts/mknmz.in, filter/mhonarc.pl: support random HASH
+          for Perl 5.8.1, 5.18.X.
+
+--- a/filter/mhonarc.pl	2008/05/09 07:52:21	1.23.8.8
++++ b/filter/mhonarc.pl	2013/12/15 04:01:53	1.23.8.9
+@@ -1,10 +1,10 @@
+ #
+ # -*- Perl -*-
+-# $Id: mhonarc.pl,v 1.23.8.8 2008-05-09 07:52:21 opengl2772 Exp $
++# $Id: mhonarc.pl,v 1.23.8.9 2013-12-15 04:01:53 opengl2772 Exp $
+ # Copyright (C) 1997-2000 Satoru Takabayashi ,
+ #               1999 NOKUBI Takatsugu ,
+ #               2002 Earl Hood ,
+-#               2000-2008 Namazu Project All rights reserved.
++#               2000-2013 Namazu Project All rights reserved.
+ #     This is free software with ABSOLUTELY NO WARRANTY.
+ #
+ #  This program is free software; you can redistribute it and/or modify
+@@ -141,9 +141,8 @@
+ 
+     # Format MHonArc X comment extracted headers as regular headers
+     my $mha_header = "";
+-    my($fld_name, $fld_value);
+-    while (($fld_name, $fld_value) = each %$mha_fields) {
+-	$mha_header .= join('', $fld_name, ': ', $fld_value, "\n");
++    for my $key (sort keys %$mha_fields) {
++	$mha_header .= join('', $key, ': ', $mha_fields->{$key}, "\n");
+     }
+ 
+     # Added header back to content string.
+--- a/scripts/mknmz.in	2011/07/23 23:50:59	1.85.4.102
++++ b/scripts/mknmz.in	2013/12/15 04:01:53	1.85.4.103
+@@ -77,13 +77,6 @@
+ sub main {
+     my $start_time = time;
+ 
+-    if ($English::PERL_VERSION == 5.008001) {
+-        unless (defined $ENV{PERL_HASH_SEED} && $ENV{PERL_HASH_SEED} eq 0) {
+-            print "Run mknmz with the environment variable PERL_HASH_SEED=0\n";
+-            exit 1;
+-        }
+-    }
+-
+     init();
+ 
+     # At first, loading pl/conf.pl to prevent overriding some variables.

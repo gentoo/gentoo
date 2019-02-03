@@ -3,6 +3,14 @@
 
 # This is a list of USE flags that should not be used on ia64.
 
+# Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
+# Python 3.7 support requires fresh versions of packages which are stuck
+# at keywordreqs.
+# bug #661306: dev-python/pytest
+# bug #661320: dev-python/twisted
+python_targets_python3_7
+python_single_target_python3_7
+
 # Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2017)
 # There is no luajit support on ia64. Bug #554376
 luajit
@@ -49,7 +57,6 @@ emboss
 jack
 lapack
 lqr
-celt
 capi
 lensfun
 kde
@@ -79,9 +86,7 @@ nut
 sctp
 bs2b
 tokyocabinet
-schroedinger
 ots
-eclipse
 vaapi
 librtmp
 rtmp
@@ -114,10 +119,6 @@ ocamlopt
 # Needs to be tested
 video_cards_nouveau
 
-# Matt Turner <mattst88@gmail.com> (06 May 2011)
-# media-sound/mumble not keyworded on ppc
-mumble
-
 # Samuli Suominen <ssuominen@gentoo.org> (02 Dec 2009)
 # This will need media-sound/musepack-tools
 musepack
@@ -141,25 +142,7 @@ qdbm
 java
 pdfannotextractor
 
-# 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
-# Modular X: mask for architectures on which they aren't available
-video_cards_ast
-video_cards_nsc
-video_cards_newport
-video_cards_siliconmotion
-video_cards_sis
-
-# Matt Turner <mattst88@gentoo.org> (02 Jan 2013)
-# Not available on ia64. See bugs 449816, 448606.
-video_cards_intel
-
 # Matt Turner <mattst88@gentoo.org>
-# Mask more VIDEO_CARDs added with mesa-8.0
-video_cards_i915
-video_cards_i965
-video_cards_ilo
-# vmware wasn't added with mesa-8.0, but it should still be masked
-video_cards_vmware
 # llvm is not keyworded
 video_cards_amdgpu
 video_cards_radeonsi
@@ -188,12 +171,6 @@ connman
 # media-libs/xine-lib is not keyworded
 xine
 
-# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
-# libdlm and cman are not keyworded
-cman
-clvm
-
--zeitgeist
 template_haskell
 
 # toolkit for nvidia binary drivers

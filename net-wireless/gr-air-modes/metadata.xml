@@ -9,6 +9,5 @@
 	<flag name="rtlsdr">Build with Realtek RTL2832U (rtlsdr) support</flag>
 	<flag name="uhd">Build with Ettus Research USRP Hardware Driver support</flag>
 	<flag name="fgfs">Support FlightGear</flag>
-	<flag name="gui">Build the GUI</flag>
 </use>
 </pkgmetadata>

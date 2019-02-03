@@ -1,0 +1,18 @@
+--- a/mugshot/MugshotWindow.py	2018-08-08 11:22:42.000000000 +0200
++++ b/mugshot/MugshotWindow.py	2018-08-15 22:48:39.998699923 +0200
+@@ -256,10 +256,11 @@
+ 
+             if os.path.isfile(face):
+                 try:
+-                    if os.path.samefile(image, face):
+-                        self.updated_image = face
+-                    else:
+-                        self.updated_image = None
++                    if os.path.exists(image):
++                        if os.path.samefile(image, face):
++                            self.updated_image = face
++                        else:
++                            self.updated_image = None
+                 except FileNotFoundError:
+                     self.updated_image = None
+                 self.set_user_image(face)

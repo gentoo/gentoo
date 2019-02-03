@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 DESCRIPTION="Library for hangul input method logic, hanja dictionary"
-HOMEPAGE="https://github.com/choehwanjin/libhangul"
-SRC_URI="https://libhangul.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://github.com/libhangul/libhangul"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/1"
@@ -19,8 +19,6 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	test? ( dev-libs/check )"
 
-DOCS=(AUTHORS ChangeLog NEWS)
-
 src_configure() {
 	econf \
 		$(use_enable nls) \
@@ -33,5 +31,5 @@ src_test() {
 
 src_install() {
 	default
-	find "${D}" -name "*.la" -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }

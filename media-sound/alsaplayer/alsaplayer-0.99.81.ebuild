@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit autotools eutils
+EAPI=6
+
+inherit autotools desktop
 
 DESCRIPTION="A heavily multi-threaded pluggable audio player"
 HOMEPAGE="http://www.alsaplayer.org/"
@@ -13,8 +14,9 @@ SLOT="0"
 KEYWORDS="amd64 ~mips ~ppc ~sparc x86"
 IUSE="+alsa audiofile doc flac gtk id3tag jack mad mikmod nas nls ogg opengl oss vorbis xosd"
 
-RDEPEND="media-libs/libsndfile
-	sys-libs/zlib
+RDEPEND="
+	media-libs/libsndfile:=
+	sys-libs/zlib:=
 	alsa? ( media-libs/alsa-lib )
 	audiofile? ( media-libs/audiofile )
 	flac? ( media-libs/flac )
@@ -36,6 +38,8 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="|| ( alsa jack nas oss )"
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e 's:AM_CFLAGS = $(AM_CXXFLAGS)::' \
 		output/jack/Makefile.am || die
@@ -48,11 +52,11 @@ src_prepare() {
 }
 
 src_configure() {
-	use doc || export ac_cv_prog_HAVE_DOXYGEN=false
-	use xosd || export ac_cv_lib_xosd_xosd_create=no
+	export ac_cv_prog_HAVE_DOXYGEN=$(usex doc true false)
+	export ac_cv_lib_xosd_xosd_create=$(usex xosd)
 
 	econf \
-		--docdir=/usr/share/doc/${PF} \
+		--disable-esd \
 		$(use_enable nls) \
 		$(use_enable opengl) \
 		$(use_enable mikmod) \
@@ -64,16 +68,16 @@ src_configure() {
 		$(use_enable gtk systray) \
 		$(use_enable jack) \
 		$(use_enable alsa) \
-		--disable-esd \
 		$(use_enable oss) \
 		$(use_enable gtk gtk2) \
 		$(use_enable nas)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS ChangeLog README TODO docs/*.txt
+	default
+	dodoc docs/*.txt
+
 	newicon interface/gtk2/pixmaps/logo.xpm ${PN}.xpm
 
-	find "${ED}" -name '*.la' -exec rm -f {} +
+	find "${D}" -name '*.la' -delete || die
 }

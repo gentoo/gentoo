@@ -2,11 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>wibrown@redhat.com</email>
-		<name>William Brown</name>
-		<description>Part of the 389-ds core team</description>
-	</maintainer>
-	<maintainer type="person">
 		<email>wes@sol1.com.au</email>
 		<name>Wes</name>
 	</maintainer>

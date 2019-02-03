@@ -1,0 +1,13 @@
+Index: hdf-4.2.13/configure.ac
+===================================================================
+--- hdf-4.2.13.orig/configure.ac
++++ hdf-4.2.13/configure.ac
+@@ -676,7 +676,7 @@ case "$host" in
+   *) ;;
+ esac
+ 
+-if test "X$BUILD_XDR" != "Xyes"; then
++if test "X$BUILD_XDR" = "Xyes"; then
+     AC_TRY_LINK([
+     #include <rpc/types.h>
+     #include <rpc/xdr.h>], [xdr_int],

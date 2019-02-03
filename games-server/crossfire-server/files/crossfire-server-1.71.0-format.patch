@@ -1,5 +1,5 @@
---- server/c_chat.c.old	2015-12-15 21:35:30.024866220 +0100
-+++ server/c_chat.c	2015-12-15 21:36:58.479266312 +0100
+--- a/server/c_chat.c.old	2015-12-15 21:35:30.024866220 +0100
++++ b/server/c_chat.c	2015-12-15 21:36:58.479266312 +0100
 @@ -483,7 +483,7 @@
      { "You spit over your left shoulder.", "%s spits over his left shoulder." },
      { "Strut your stuff.", "%s struts proudly." },

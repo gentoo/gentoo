@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="http://registrationcenter.intel.com/irc_nas/4181/intel_sdk_for_ocl_appl
 
 LICENSE="Intel-SDP"
 SLOT="0"
-IUSE="android +system-tbb system-clang +system-boost +system-qt"
+IUSE="android +system-tbb system-clang +system-boost"
 KEYWORDS="-* ~amd64"
 RESTRICT="mirror"
 
@@ -20,11 +20,7 @@ RDEPEND="app-eselect/eselect-opencl
 	system-tbb? ( >=dev-cpp/tbb-4.2.20131118 )
 	system-clang? ( =sys-devel/clang-3.4* )
 	system-boost? ( >=dev-libs/boost-1.52.0:= )
-	system-qt? (
-		>=dev-qt/qtgui-4.8.5:4
-		>=dev-qt/qtcore-4.8.5:4
-		)
-	"
+"
 DEPEND=""
 
 S=${WORKDIR}/intel_sdk_for_ocl_applications_2014_ubuntu_${PV}_x64/
@@ -55,9 +51,6 @@ src_prepare() {
 	fi
 	if use system-clang; then
 		rm -f "${WORKDIR}/${INTEL_CL}"/lib64/libclang*
-	fi
-	if use system-qt; then
-		rm -f "${WORKDIR}/${INTEL_CL}"/lib64/libQt*
 	fi
 	if use system-tbb; then
 		rm -f "${WORKDIR}/${INTEL_CL}"/lib64/libtbb*

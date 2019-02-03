@@ -1,0 +1,27 @@
+diff -r -U2 gle-graphics-4.2.5.orig/src/gle/fitcf.h gle-graphics-4.2.5/src/gle/fitcf.h
+--- gle-graphics-4.2.5.orig/src/gle/fitcf.h	2015-08-16 13:51:24.000000000 +0600
++++ gle-graphics-4.2.5/src/gle/fitcf.h	2018-01-13 13:57:23.140749391 +0700
+@@ -182,8 +182,8 @@
+ typedef struct Namelist Namelist;
+ 
+-#define abs(x) ((x) >= 0 ? (x) : -(x))
++/*#define abs(x) ((x) >= 0 ? (x) : -(x))*/
+ #define dabs(x) (doublereal)abs(x)
+-#define min(a,b) ((a) <= (b) ? (a) : (b))
+-#define max(a,b) ((a) >= (b) ? (a) : (b))
++/*#define min(a,b) ((a) <= (b) ? (a) : (b))*/
++/*#define max(a,b) ((a) >= (b) ? (a) : (b))*/
+ #define dmin(a,b) (doublereal)min(a,b)
+ #define dmax(a,b) (doublereal)max(a,b)
+diff -r -U2 gle-graphics-4.2.5.orig/src/gle/surface/ffitcontour.cpp gle-graphics-4.2.5/src/gle/surface/ffitcontour.cpp
+--- gle-graphics-4.2.5.orig/src/gle/surface/ffitcontour.cpp	2015-08-16 13:51:24.000000000 +0600
++++ gle-graphics-4.2.5/src/gle/surface/ffitcontour.cpp	2018-01-13 14:08:08.169722265 +0700
+@@ -49,7 +49,7 @@
+ #include "f2c.h"
+ #else
+-#include "f2c.h"
+ #include <stdio.h>
+ #include <math.h>
++#include "f2c.h"
+ #endif
+ 

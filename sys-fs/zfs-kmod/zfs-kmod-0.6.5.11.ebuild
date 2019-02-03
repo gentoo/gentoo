@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -10,13 +10,13 @@ if [ ${PV} == "9999" ]; then
 else
 	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
 	S="${WORKDIR}/zfs-${PV}"
-	KEYWORDS=" ~amd64"
+	KEYWORDS="amd64"
 fi
 
 inherit flag-o-matic linux-info linux-mod toolchain-funcs autotools-utils
 
 DESCRIPTION="Linux ZFS kernel module for sys-fs/zfs"
-HOMEPAGE="http://zfsonlinux.org/"
+HOMEPAGE="https://zfsonlinux.org/"
 
 LICENSE="CDDL debug? ( GPL-2+ )"
 SLOT="0"
@@ -40,7 +40,9 @@ DOCS=( AUTHORS COPYRIGHT DISCLAIMER README.markdown )
 
 pkg_setup() {
 	linux-info_pkg_setup
-	CONFIG_CHECK="!DEBUG_LOCK_ALLOC
+	CONFIG_CHECK="
+		!DEBUG_LOCK_ALLOC
+		!REISER4_FS
 		EFI_PARTITION
 		IOSCHED_NOOP
 		MODULES

@@ -16,7 +16,7 @@ inherit eutils toolchain-funcs multilib
 
 # Return all the flag variables that our high level funcs operate on.
 all-flag-vars() {
-	echo {C,CPP,CXX,CCAS,F,FC,LD}FLAGS
+	echo {ADA,C,CPP,CXX,CCAS,F,FC,LD}FLAGS
 }
 
 # {C,CPP,CXX,CCAS,F,FC,LD}FLAGS that we allow in strip-flags
@@ -27,13 +27,16 @@ setup-allowed-flags() {
 		'-fstack-protector*' '-fsanitize*' '-fstack-check*' -fno-stack-check
 		-fbounds-check -fbounds-checking -fno-strict-overflow
 		-fno-PIE -fno-pie -nopie -no-pie -fno-unit-at-a-time
-		-g '-g[0-9]' -ggdb '-ggdb[0-9]' '-gdwarf-*' gstabs -gstabs+
+		-g '-g[0-9]' -ggdb '-ggdb[0-9]' '-gdwarf-*' gstabs -gstabs+ -gz
 		-fno-ident -fpermissive -frecord-gcc-switches
 		'-fdiagnostics*' '-fplugin*'
 		'-W*' -w
 
 		# CPPFLAGS and LDFLAGS
 		'-[DUILR]*' '-Wl,*'
+
+		# Linker choice flag
+		'-fuse-ld'
 	)
 
 	# allow a bunch of flags that negate features / control ABI
@@ -421,9 +424,9 @@ strip-flags() {
 test-flag-PROG() {
 	local comp=$1
 	local lang=$2
-	local flag=$3
+	shift 2
 
-	[[ -z ${comp} || -z ${flag} ]] && return 1
+	[[ -z ${comp} || -z $1 ]] && return 1
 
 	local cmdline=(
 		$(tc-get${comp})
@@ -434,11 +437,11 @@ test-flag-PROG() {
 		-c -o /dev/null
 	)
 	if "${cmdline[@]}" -x${lang} - </dev/null &>/dev/null ; then
-		cmdline+=( "${flag}" -x${lang} - )
+		cmdline+=( "$@" -x${lang} - )
 	else
 		# XXX: what's the purpose of this? does it even work with
 		# any compiler?
-		cmdline+=( "${flag}" -c -o /dev/null /dev/null )
+		cmdline+=( "$@" -c -o /dev/null /dev/null )
 	fi
 
 	if ! "${cmdline[@]}" </dev/null &>/dev/null; then
@@ -455,25 +458,25 @@ test-flag-PROG() {
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the C compiler, else returns shell false.
-test-flag-CC() { test-flag-PROG "CC" c "$1"; }
+test-flag-CC() { test-flag-PROG "CC" c "$@"; }
 
 # @FUNCTION: test-flag-CXX
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the C++ compiler, else returns shell false.
-test-flag-CXX() { test-flag-PROG "CXX" c++ "$1"; }
+test-flag-CXX() { test-flag-PROG "CXX" c++ "$@"; }
 
 # @FUNCTION: test-flag-F77
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the Fortran 77 compiler, else returns shell false.
-test-flag-F77() { test-flag-PROG "F77" f77 "$1"; }
+test-flag-F77() { test-flag-PROG "F77" f77 "$@"; }
 
 # @FUNCTION: test-flag-FC
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the Fortran 90 compiler, else returns shell false.
-test-flag-FC() { test-flag-PROG "FC" f95 "$1"; }
+test-flag-FC() { test-flag-PROG "FC" f95 "$@"; }
 
 test-flags-PROG() {
 	local comp=$1
@@ -484,8 +487,21 @@ test-flags-PROG() {
 
 	[[ -z ${comp} ]] && return 1
 
-	for x ; do
-		test-flag-${comp} "${x}" && flags+=( "${x}" )
+	while (( $# )); do
+		case "$1" in
+			--param)
+				if test-flag-${comp} "$1" "$2"; then
+					flags+=( "$1" "$2" )
+				fi
+				shift 2
+				;;
+			*)
+				if test-flag-${comp} "$1"; then
+					flags+=( "$1" )
+				fi
+				shift 1
+				;;
+		esac
 	done
 
 	echo "${flags[*]}"

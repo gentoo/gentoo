@@ -1,6 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
 # @ECLASS: mysql-v2.eclass
 # @MAINTAINER:
 # Maintainers:
@@ -8,6 +9,7 @@
 #	- Robin H. Johnson <robbat2@gentoo.org>
 #	- Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
 #	- Brian Evans <grknight@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5
 # @BLURB: This eclass provides most of the functions for mysql ebuilds
 # @DESCRIPTION:
 # The mysql-v2.eclass is the base eclass to build the mysql and
@@ -41,6 +43,7 @@ esac
 MYSQL_EXTRAS=""
 
 # @ECLASS-VARIABLE: MYSQL_EXTRAS_VER
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # The version of the MYSQL_EXTRAS repo to use to build mysql
 # Use "none" to disable it's use
@@ -188,17 +191,17 @@ if [[ ${MY_EXTRAS_VER} != "live" && ${MY_EXTRAS_VER} != "none" ]]; then
 fi
 
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
-HOMEPAGE="http://www.mysql.com/"
+HOMEPAGE="https://www.mysql.com/"
 if [[ ${PN} == "mariadb" ]]; then
-	HOMEPAGE="http://mariadb.org/"
+	HOMEPAGE="https://mariadb.org/"
 	DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 fi
 if [[ ${PN} == "mariadb-galera" ]]; then
-	HOMEPAGE="http://mariadb.org/"
+	HOMEPAGE="https://mariadb.org/"
 	DESCRIPTION="An enhanced, drop-in replacement for MySQL with Galera Replication"
 fi
 if [[ ${PN} == "percona-server" ]]; then
-	HOMEPAGE="http://www.percona.com/software/percona-server"
+	HOMEPAGE="https://www.percona.com/software/mysql-database/percona-server"
 	DESCRIPTION="An enhanced, drop-in replacement for MySQL from the Percona team"
 fi
 LICENSE="GPL-2"

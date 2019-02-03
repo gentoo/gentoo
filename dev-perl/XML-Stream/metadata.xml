@@ -13,6 +13,7 @@
     <remote-id type="cpan-module">XML::Stream::Node</remote-id>
     <remote-id type="cpan-module">XML::Stream::Parser</remote-id>
     <remote-id type="cpan-module">XML::Stream::Parser::DTD</remote-id>
+    <remote-id type="cpan-module">XML::Stream::Tools</remote-id>
     <remote-id type="cpan-module">XML::Stream::Tree</remote-id>
     <remote-id type="cpan-module">XML::Stream::XPath</remote-id>
     <remote-id type="cpan-module">XML::Stream::XPath::AllOp</remote-id>

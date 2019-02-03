@@ -1,0 +1,8 @@
+/var/log/dnsmasq.log {
+	create 640 dnsmasq root
+	notifempty
+	missingok
+	postrotate
+		test -r /var/run/dnsmasq.pid && kill -USR2 "$(head -n1 /var/run/dnsmasq.pid)"
+	endscript
+}

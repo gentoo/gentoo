@@ -1,0 +1,15 @@
+diff -uNr a/src/third_party/backup/CMakeLists.txt b/src/third_party/backup/CMakeLists.txt
+--- a/src/third_party/backup/CMakeLists.txt	2018-07-06 20:36:58.242767167 +0200
++++ b/src/third_party/backup/CMakeLists.txt	2018-07-06 20:37:31.575390786 +0200
+@@ -1,11 +1,6 @@
+ cmake_minimum_required(VERSION 2.8.8)
+ project(HotBackup)
+ 
+-# No implicit templates, since that's how mysql compiles.
+-if (NOT CMAKE_CXX_COMPILER_ID MATCHES Clang)
+-  set(CMAKE_CXX_FLAGS "-fno-implicit-templates  ${CMAKE_CXX_FLAGS}")
+-endif ()
+-
+ set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS 
+   _FILE_OFFSET_BITS=64 
+   _LARGEFILE64_SOURCE)

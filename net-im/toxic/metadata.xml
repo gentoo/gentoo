@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>zlg@gentoo.org</email>
-		<name>Daniel Campbell</name>
+		<email>JoMull01@protonmail.com</email>
+		<name>Josiah Mullins</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
 		<maintainer>
@@ -16,10 +20,9 @@
 		An ncurses-based Tox client written in C. Supports audio and video calling, file sharing, and desktop notifications.
 	</longdescription>
 	<use>
-		<flag name="audio">Enables audio calling</flag>
-		<flag name="av">Enables audio/video functionality (deprecated)</flag>
-		<flag name="notifications">Enables desktop notifications with libnotify, with sound support.</flag>
+		<flag name="notification">Enables desktop notifications with libnotify, with sound support.</flag>
 		<flag name="qrcode">Enables QR code support</flag>
+		<flag name="sound">Enables audio calling</flag>
 		<flag name="video">Enables video calling</flag>
 	</use>
 </pkgmetadata>

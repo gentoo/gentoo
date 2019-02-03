@@ -1,5 +1,5 @@
---- src/pingus/pingus_main.cpp.orig	2012-07-08 14:02:40.343767438 +0200
-+++ src/pingus/pingus_main.cpp	2012-07-08 14:02:54.062768168 +0200
+--- a/src/pingus/pingus_main.cpp
++++ b/src/pingus/pingus_main.cpp
 @@ -465,7 +465,7 @@
  void
  PingusMain::print_greeting_message()
@@ -9,8 +9,8 @@
    greeting += "!";
    std::cout <<  greeting << std::endl;
    for (unsigned int i = 0; i < greeting.length(); ++i)
---- src/pingus/screens/pingus_menu.cpp.orig	2012-07-08 14:03:05.549768782 +0200
-+++ src/pingus/screens/pingus_menu.cpp	2012-07-08 14:03:17.015769393 +0200
+--- a/src/pingus/screens/pingus_menu.cpp
++++ b/src/pingus/screens/pingus_menu.cpp
 @@ -153,7 +153,7 @@
                           gc.get_height()/2 - 280));
  

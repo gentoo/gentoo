@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P="${P/_rc/-rc}"
 
 DESCRIPTION="A helper for using rope refactoring library in IDEs"
-HOMEPAGE="https://pypi.python.org/pypi/ropemode"
+HOMEPAGE="https://pypi.org/project/ropemode/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

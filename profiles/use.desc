@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Keep them sorted
@@ -14,7 +14,6 @@ acl - Add support for Access Control Lists
 acpi - Add support for Advanced Configuration and Power Interface
 adns - Add support for asynchronous DNS resolution
 afs - Add OpenAFS support (distributed file system)
-aim - Enable AIM IM protocol support
 alsa - Add support for media-libs/alsa-lib (Advanced Linux Sound Architecture)
 altivec - Add support for optimizations for G4 and G5/ppc970 processors
 ao - Use libao audio output library for sound playback
@@ -27,7 +26,6 @@ audit - Enable support for Linux audit subsystem using sys-process/audit
 avahi - Add avahi/Zeroconf support
 ayatana - Build in support for Ayatana notification using the libindicate or libappindicator plugin
 bash-completion - Enable bash-completion support
-bcmath - Add support for libbcmath
 berkdb - Add support for sys-libs/db (Berkeley DB for MySQL)
 bidi - Enable bidirectional language support
 big-endian - Big-endian toolchain support
@@ -35,9 +33,7 @@ bindist - Flag to enable or disable options for prebuilt (GRP) packages (eg. due
 blas - Add support for the virtual/blas numerical library
 bluetooth - Enable Bluetooth Support
 bootstrap - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during original system bootstrapping [make stage2]
-boundschecking - Add the bounds checking patch by Haj Ten Brugge, this will DISABLE the hardened PIE+SSP patches
 branding - Enable Gentoo specific branding
-bsf - Enable support for Apache Bean Scripting Framework (dev-java/bsf)
 build - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used for creating build images and the first half of bootstrapping [make stage1]
 bzip2 - Use the bzlib compression library
 cairo - Enable support for the cairo graphics library
@@ -57,9 +53,7 @@ connman - Add support for net-misc/connman
 coreaudio - Build the CoreAudio driver on Mac OS X systems
 cracklib - Support for cracklib strong password checking
 crypt - Add support for encryption -- using mcrypt or gpg where applicable
-cscope - Enable cscope interface -- in vim for example
 css - Enable reading of encrypted DVDs
-ctype - Enable ctype functions
 cups - Add support for CUPS (Common Unix Printing System)
 curl - Add support for client-side URL transfer library
 custom-cflags - Build with user-specified CFLAGS (unsupported)
@@ -84,8 +78,6 @@ eds - Enable support for Evolution-Data-Server (EDS)
 emacs - Add support for GNU Emacs
 emboss - Add support for the European Molecular Biology Open Software Suite
 encode - Add support for encoding of audio or video files
-enscript - Add enscript support to colourize code stored in the repository
-evo - Add support for mail-client/evolution
 examples - Install examples, usually source code
 exif - Add support for reading EXIF headers from JPEG and TIFF images
 expat - Enable the use of dev-libs/expat for XML parsing
@@ -97,10 +89,8 @@ fftw - Use FFTW library for computing Fourier transforms
 filecaps - Use Linux file capabilities to control privilege rather than set*id (this is orthogonal to USE=caps which uses capabilities at runtime e.g. libcap)
 firebird - Add support for the Firebird relational database
 flac - Add support for FLAC: Free Lossless Audio Codec
-flatfile - Add dbm support for flat files
 fltk - Add support for the Fast Light Toolkit gui interface
 fontconfig - Support for configuring and customizing font access via media-libs/fontconfig
-foomaticdb - Add support for the foomatic printing driver database
 fortran - Add support for fortran
 freetds - Add support for the TDS protocol to connect to MSSQL/Sybase databases
 freewnn - Add support for FreeWnn kana to kanji conversion engine
@@ -119,7 +109,7 @@ gmp - Add support for dev-libs/gmp (GNU MP library)
 gnome - Add GNOME support
 gnome-keyring - Enable support for storing passwords via gnome-keyring
 gnuplot - Enable support for gnuplot (data and function plotting)
-gnutls - Add support for net-libs/gnutls (TLS 1.0 and SSL 3.0 support)
+gnutls - Prefer net-libs/gnutls as SSL/TLS provider (ineffective with USE=-ssl)
 gphoto2 - Add digital camera support
 gpm - Add support for sys-libs/gpm (Console-based mouse driver)
 gps - Add support for Global Positioning System
@@ -129,12 +119,14 @@ gsl - Use the GNU scientific library for calculations
 gsm - Add support for the gsm lossy speech compression codec
 gstreamer - Add support for media-libs/gstreamer (Streaming media)
 gtk - Add support for x11-libs/gtk+ (The GIMP Toolkit)
+gtk-doc - Build and install gtk-doc based developer documentation for dev-util/devhelp, IDE and offline use
 guile - Add support for the guile Scheme interpreter
 gzip - Compress files with Lempel-Ziv coding (LZ77)
 handbook - Enable handbooks generation for packages by KDE
 hardened - Activate default security enhancements for toolchain (gcc, glibc, binutils)
 hddtemp - Enable monitoring of hdd temperature (app-admin/hddtemp)
 hdf5 - Add support for the Hierarchical Data Format v5
+headers-only - Install only C headers instead of whole package. Mainly used by sys-devel/crossdev for toolchain bootstrap.
 hscolour - Include coloured haskell sources to generated documentation (dev-haskell/hscolour)
 ibm - Add support for IBM ppc64 specific systems
 iconv - Enable support for the iconv character set conversion library
@@ -146,26 +138,24 @@ imagemagick - Enable optional support for the ImageMagick or GraphicsMagick imag
 imap - Add support for IMAP (Internet Mail Application Protocol)
 imlib - Add support for imlib, an image loading and rendering library
 infiniband - Enable Infiniband RDMA transport support
-inifile - Add dbm support for .ini files
 inotify - Enable inotify filesystem monitoring support
 introspection - Add support for GObject based introspection
 iodbc - Add support for iODBC library
 ios - Enable support for Apple's iDevice with iOS operating system (iPad, iPhone, iPod, etc)
 ipod - Enable support for iPod device access
 ipv6 - Add support for IP version 6
-iwmmxt - Add support for optimizations for ARM iwMMXt instructions
 jack - Add support for the JACK Audio Connection Kit
 java - Add support for Java
 javascript - Enable javascript support
 jbig - Enable jbig-kit support for tiff, Hylafax, ImageMagick, etc
+jemalloc - Use dev-libs/jemalloc for memory management
 jingle - Enable voice calls for jabber
 jit - Enable just-in-time compilation for improved performance. May prevent use of some PaX memory protection features in Gentoo Hardened.
 joystick - Add support for joysticks in all packages
 jpeg - Add JPEG image support
 jpeg2k - Support for JPEG 2000, a wavelet-based image compression format
-kde - Add support for KDE (K Desktop Environment)
+kde - Add support for software made by KDE, a free software community
 kerberos - Add kerberos support
-kontact - Enable support for the KDE personal information manager (kde-apps/kdepim*)
 ladspa - Enable the ability to support ladspa plugins
 lame - Prefer using LAME libraries for MP3 encoding support
 lapack - Add support for the virtual/lapack numerical library
@@ -179,13 +169,14 @@ libcaca - Add support for colored ASCII-art graphics
 libedit - Use the libedit library (replacement for readline)
 libffi - Enable support for Foreign Function Interface library
 libnotify - Enable desktop notification support
-libressl - Use dev-libs/libressl as SSL provider (might need ssl USE flag), packages should not depend on this USE flag
+libressl - Use dev-libs/libressl instead of dev-libs/openssl when applicable (see also the ssl useflag)
 libsamplerate - Build with support for converting sample rates using libsamplerate
 libwww - Add libwww support (General purpose WEB API)
 lirc - Add support for lirc (Linux's Infra-Red Remote Control)
 livecd - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during livecd building
 lm_sensors - Add linux lm_sensors (hardware sensors) support
 lua - Enable Lua scripting support
+luajit - Use dev-lang/luajit instead of dev-lang/lua (ineffective with USE=-lua)
 lzma - Support for LZMA (de)compression algorithm
 lzo - Enable support for lzo compression
 m17n-lib - Enable m17n-lib support
@@ -194,12 +185,9 @@ maildir - Add support for maildir (~/.maildir) style mail spools
 matroska - Add support for the matroska container format (extensions .mkv, .mka and .mks)
 mbox - Add support for mbox (/var/spool/mail) style mail spools
 memcached - Add support for memcached
-memlimit - Add memory usage limiting in supporting programs
 mhash - Add support for the mhash library
-migemo - Enable migemo support for Japanese
 mikmod - Add libmikmod support to allow playing of SoundTracker-style music files
 milter - Add sendmail mail filter (milter) support
-mime - Add MIME support
 minimal - Install a very minimal build (disables, for example, plugins, fonts, most drivers, non-critical features)
 mmap - Add mmap (memory map) support
 mms - Support for Microsoft Media Server (MMS) streams
@@ -208,7 +196,6 @@ modplug - Add libmodplug support for playing SoundTracker-style music files
 modules - Build the kernel modules
 mono - Build Mono bindings to support dotnet type stuff
 motif - Add support for the Motif toolkit
-mozilla - Add support for the Mozilla web-browser
 mp3 - Add support for reading mp3 files
 mp4 - Support for MP4 container format
 mpeg - Add libmpeg3 support to various packages
@@ -217,7 +204,6 @@ mplayer - Enable mplayer support for playback or encoding
 msn - Enable MSN Messenger IM protocol support
 mssql - Add support for Microsoft SQL Server database
 mtp - Enable support for Media Transfer Protocol
-mule - Add multi-language support to XEmacs
 multilib - On 64bit systems, if you want to be able to compile 32bit and 64bit binaries
 musepack - Enable support for the musepack audio codec
 musicbrainz - Lookup audio metadata using MusicBrainz community service (musicbrainz.org)
@@ -227,7 +213,6 @@ nas - Add support for network audio sound
 ncurses - Add ncurses support (console display library)
 neXt - Enable neXt toolkit
 neon - Enable optimization support for ARM NEON processors
-netboot - Enable network booting
 netcdf - Enable NetCDF data format support
 networkmanager - Enable net-misc/networkmanager support
 nis - Support for NIS/YP services
@@ -248,6 +233,7 @@ openal - Add support for the Open Audio Library
 openexr - Support for the OpenEXR graphics file format
 opengl - Add support for OpenGL (3D graphics)
 openmp - Build support for the OpenMP (support parallel computing), requires >=sys-devel/gcc-4.2 built with USE="openmp"
+opus - Enable Opus audio codec support
 oracle - Enable Oracle Database support
 orc - Use dev-lang/orc for just-in-time optimization of array operations
 osc - Enable support for Open Sound Control
@@ -256,7 +242,6 @@ oss - Add support for OSS (Open Sound System)
 pam - Add support for PAM (Pluggable Authentication Modules) - DANGEROUS to arbitrarily flip
 pch - Enable precompiled header support for faster compilation at the expense of disk space and memory (>=sys-devel/gcc-3.4 only)
 pcmcia - Add support for PCMCIA slots/devices found on laptop computers
-pcntl - Add support for process creation functions
 pcre - Add support for Perl Compatible Regular Expressions
 pda - Add support for portable devices
 pdf - Add general support for PDF (Portable Document Format), this replaces the pdflib and cpdflib flags
@@ -279,7 +264,6 @@ pulseaudio - Add support for PulseAudio sound server
 python - Add optional support/bindings for the Python language
 qdbm - Add support for the qdbm (Quick Database Manager) library
 qmail-spp - Add support for qmail SMTP plugins
-qt4 - Add support for the Qt GUI/Application Toolkit version 4.x
 qt5 - Add support for the Qt 5 application and UI framework
 quicktime - Add support for OpenQuickTime
 radius - Add support for RADIUS authentication
@@ -295,14 +279,10 @@ savedconfig - Use this to restore your config from /etc/portage/savedconfig ${CA
 scanner - Add support for scanner hardware (e.g. build the sane frontend in kdegraphics)
 sctp - Support for Stream Control Transmission Protocol
 sdl - Add support for Simple Direct Layer (media library)
-seamonkey - Add support for the Seamonkey web-browser
 seccomp - Enable seccomp (secure computing mode) to perform system call filtering at runtime to increase security of programs
 selinux - !!internal use only!! Security Enhanced Linux support, this must be set by the selinux profile or breakage will occur
 semantic-desktop - Cross-KDE support for semantic search and information retrieval
 session - Add persistent session support
-sharedmem - Add support for shared memory use
-shorten - Add support for the shorten audio compressor
-simplexml - Support for SimpleXML
 skey - Enable S/Key (Single use password) authentication support
 slang - Add support for the slang text display library (it's like ncurses, but different)
 slp - Add Service Locator Protocol support
@@ -319,7 +299,7 @@ sox - Add support for Sound eXchange (SoX)
 speex - Add support for the speex audio codec (used for speech)
 spell - Add dictionary support
 sqlite - Add support for sqlite - embedded sql database
-ssl - Add support for Secure Socket Layer connections
+ssl - Add support for SSL/TLS connections (Secure Socket Layer / Transport Layer Security)
 startup-notification - Enable application startup event feedback mechanism
 static - !!do not set this during bootstrap!! Causes binaries to be statically linked instead of dynamically
 static-libs - Build static versions of dynamic libraries as well
@@ -327,25 +307,21 @@ subversion - Enable subversion (version control system) support
 suid - Enable setuid root program, with potential security risks
 svg - Add support for SVG (Scalable Vector Graphics)
 svga - Add support for SVGAlib (graphics library)
-sybase - Add support for the Sybase SQL Database Server
-sybase-ct - Add support for Sybase-CT
 symlink - Force kernel ebuilds to automatically update the /usr/src/linux symlink
 syslog - Enable support for syslog
 systemd - Enable use of systemd-specific libraries and features like socket activation or session tracking
-sysvipc - Support for System V-compatible inter-process communication
 szip - Use the szip compression library
 taglib - Enable tagging support with taglib
 tcl - Add support the Tcl language
 tcmalloc - Use the dev-util/google-perftools libraries to replace the malloc() implementation with a possibly faster one
 tcpd - Add support for TCP wrappers
-test - Workaround to pull in packages needed to run with FEATURES=test. Portage-2.1.2 handles this internally, so don't set it in make.conf/package.use anymore
+test - Enable dependencies and/or preparations necessary to run tests (usually controlled by FEATURES=test but can be toggled independently)
 theora - Add support for the Theora Video Compression Codec
 threads - Add threads support for various packages. Usually pthreads
 tidy - Add support for HTML Tidy
 tiff - Add support for the TIFF image format
 timidity - Build with Timidity++ (MIDI sequencer) support
 tk - Add support for Tk GUI toolkit
-tokenizer - Add support for the PHP file parser
 truetype - Add support for FreeType and/or FreeType2 fonts
 uclibc - Enable uclibc specific patches and build or link uclibc
 udev - Enable virtual/udev integration (device discovery, power and storage device support, etc)
@@ -369,7 +345,6 @@ vnc - Enable VNC (remote desktop viewer) support
 vorbis - Add support for the OggVorbis audio codec
 wavpack - Add support for wavpack audio compression tools
 wayland - Enable dev-libs/wayland backend
-wddx - Add support for Web Distributed Data eXchange
 webkit - Add support for the WebKit HTML rendering/layout engine
 webp - Add support for the WebP image format
 wifi - Enable wireless network functions
@@ -383,7 +358,7 @@ xemacs - Add support for XEmacs
 xface - Add xface support used to allow a small image of xface format to be included in an email via the header 'X-Face'
 xft - Build with support for XFT font renderer (x11-libs/libXft)
 xine - Add support for the XINE movie libraries
-xinerama - Add support for the xinerama X11 extension, which is mandatory if you work in multiple monitors setup
+xinerama - Add support for querying multi-monitor screen geometry through the Xinerama API
 xinetd - Add support for the xinetd super-server
 xml - Add support for XML files
 xmlrpc - Support for xml-rpc library
@@ -395,7 +370,7 @@ xscreensaver - Add support for XScreenSaver extension
 xv - Add in optional support for the Xvideo extension (an X API for video playback)
 xvid - Add support for xvid.org's open-source mpeg-4 codec
 yahoo - Enable Yahoo Messenger IM protocol support
-yaz - Add in optional support for the Z39.50 Protocol for Information Retrieval (YAZ)
 zeroconf - Support for DNS Service Discovery (DNS-SD)
+zip - Enable support for ZIP archives
 zlib - Add support for zlib (de)compression
 zsh-completion - Enable zsh completion support

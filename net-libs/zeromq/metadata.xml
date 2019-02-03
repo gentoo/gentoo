@@ -28,6 +28,10 @@
 		<subslots>Reflect ABI of libzmq.so.</subslots>
 	</slots>
 	<use>
+		<flag name="drafts">
+			Build draft API, which may change at any time without any notice, and
+			is therefore not recommended for normal use.
+		</flag>
 		<flag name="pgm">
 			Build PGM (Pragmatic General Multicast)extention, a protocol for reliable 
 			multicast transport of data over IP networks.

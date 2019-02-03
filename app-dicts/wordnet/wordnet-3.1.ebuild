@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools eutils flag-o-matic
 
 DESCRIPTION="A lexical database for the English language"
-HOMEPAGE="http://wordnet.princeton.edu/"
+HOMEPAGE="https://wordnet.princeton.edu/"
 SRC_URI="
 	http://wordnetcode.princeton.edu/3.0/WordNet-3.0.tar.gz
 	mirror://gentoo/${PN}-3.0-patchset-1.tar.bz2
@@ -90,5 +90,5 @@ src_install(){
 
 pkg_postinst(){
 	elog "The WordNet 3.1 ebuild has installed WordNet v3.0 with v3.1 database files instead."
-	elog "See http://wordnet.princeton.edu/wordnet/download/current-version/ for more."
+	elog "See https://wordnet.princeton.edu/download/current-version/ for more."
 }

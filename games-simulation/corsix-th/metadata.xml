@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		A reimplementation of the 1997 Bullfrog business sim Theme
+		Hospital. As well as faithfully recreating the original,
+		CorsixTH adds support for modern operating systems (Windows,
+		Mac OSX and Linux), high resolutions and much more.
+	</longdescription>
+	<use>
+		<flag name="midi">Adds support for background MIDI music via SDL_mixer</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">CorsixTH/CorsixTH</remote-id>
+	</upstream>
+</pkgmetadata>

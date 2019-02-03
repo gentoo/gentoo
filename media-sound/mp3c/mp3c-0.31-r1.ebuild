@@ -1,5 +1,7 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils
 
@@ -17,12 +19,6 @@ RDEPEND="mp3? ( media-sound/lame
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="amd64 ppc sparc x86"
-
-LANGS="de es it pl pt"
-
-for X in ${LANGS}; do
-	IUSE="${IUSE} linguas_${X}"
-done
 
 src_unpack() {
 	unpack ${A}

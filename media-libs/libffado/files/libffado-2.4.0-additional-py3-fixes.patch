@@ -1,0 +1,96 @@
+--- a/support/mixer-qt4/ffado/panelmanager.py	2018-01-11 12:27:20.518923209 +0900
++++ a/support/mixer-qt4/ffado/panelmanager.py	2018-01-11 12:31:03.956299962 +0900
+@@ -38,6 +38,7 @@
+ 
+ import sys
+ import time
++import importlib
+ 
+ import logging
+ log = logging.getLogger('panelmanager')
+@@ -302,20 +303,15 @@
+         #
+         # Specific (or dummy) mixer widgets get loaded in the following
+         #
++        found = False
+         if 'mixer' in dev and dev['mixer'] != None:
+             mixerapp = dev['mixer']
+-            global mixerwidget
+-            exec( """
+-try:
+-    import ffado.mixer.%s
+-    globals()["mixerwidget"] = ffado.mixer.%s.%s( w )
+-    found = True
+-except ImportError:
+-    log.debug("bypassdbus set, %s module not available: ignored")
+-    found = False
+-""" % (mixerapp.lower(), mixerapp.lower(), mixerapp, mixerapp.lower()) )
+-        else:
+-            found = False
++            try:
++                mixer_module = importlib.import_module("ffado.mixer.%s" % mixerapp.lower())
++                mixerwidget = getattr(mixer_module, mixerapp)(w)
++                found = True
++            except ImportError:
++                log.debug("bypassdbus set, %s module not available: ignored" % mixerapp.lower())
+ 
+         if not found:
+             mixerwidget = Dummy( w )
+--- a/support/mixer-qt4/ffado/widgets/crossbarrouter.py	2018-01-11 12:34:10.200777889 +0900
++++ b/support/mixer-qt4/ffado/widgets/crossbarrouter.py	2018-01-11 12:45:13.278911705 +0900
+@@ -194,7 +194,7 @@
+         #log.debug("Got %i peaks" % len(peakvalues))
+         for peak in peakvalues:
+             #log.debug("peak = [%s,%s]" % (str(peak[0]),str(peak[1])))
+-            if peak[0] >= 0:
++            if peak[1] >= 0:
+                 self.switchers[peak[0]].peakValue(peak[1])
+ 
+     def updateMixerRouting(self):
+--- a/support/mixer-qt4/ffado/widgets/matrixmixer.py	2018-01-11 12:54:27.545361864 +0900
++++ b/support/mixer-qt4/ffado/widgets/matrixmixer.py	2018-01-11 12:56:36.899124318 +0900
+@@ -512,7 +512,7 @@
+                     self.rowHeaders[j].lbl.setText(row_name)
+ 
+     def updateValues(self, n):
+-        nbitems = len(n)/3
++        nbitems = len(n) // 3
+         for i in range(nbitems):
+             n_0 = n[3*i]    
+             n_1 = n[3*i+1]   
+@@ -951,7 +951,7 @@
+             return self.interface.setValue(In, Out, val)            
+ 
+     def updateValues(self, n):
+-        nbitems = len(n)/3
++        nbitems = len(n) // 3
+         for j in range(nbitems):
+             n_0 = n[3*j]    
+             n_1 = n[3*j+1]   
+@@ -1406,7 +1406,7 @@
+     def matrixControlChanged(self, n):
+         # Update value needed for "per Out" view
+         #log.debug("Update per Output( %s )" % str(n))
+-        nbitems = len(n)/3
++        nbitems = len(n) // 3
+         if (self.rule == "Columns_are_inputs"):
+            n_t = n
+         else:
+@@ -1420,7 +1420,7 @@
+     def sliderControlChanged(self, n):
+         # Update value needed for matrix view
+         #log.debug("Update Matrix( %s )" % str(n))
+-        nbitems = len(n)/3
++        nbitems = len(n) // 3
+         if (((self.rule == "Columns_are_inputs") and not self.transpose) or ((self.rule != "Columns_are_inputs") and self.transpose)):
+             n_t = ()
+             for i in range(nbitems):
+@@ -1512,7 +1512,7 @@
+                 log.debug("Number of stereo output channels must be specified")
+                 return False
+             n = int(readMixerString[idx+2])
+-            if n > self.perOut.nbOut/2:
++            if n > self.perOut.nbOut // 2:
+                 log.debug("Incoherent number of stereo channels")
+                 return False
+             if n > 0:

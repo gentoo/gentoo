@@ -1,11 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-VIM_VERSION="8.0"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-PYTHON_REQ_USE=threads
-inherit vim-doc flag-o-matic xdg-utils gnome2-utils versionator bash-completion-r1 prefix python-single-r1
+VIM_VERSION="8.1"
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
+PYTHON_REQ_USE="threads(+)"
+USE_RUBY="ruby23 ruby24 ruby25"
+
+inherit vim-doc flag-o-matic xdg-utils gnome2-utils bash-completion-r1 prefix python-single-r1 ruby-single
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -14,7 +16,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
 		https://dev.gentoo.org/~radhermit/vim/vim-8.0.0938-gentoo-patches.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 fi
 
 DESCRIPTION="GUI version of the Vim text editor"
@@ -46,7 +48,6 @@ RDEPEND="
 			gtk? (
 				>=x11-libs/gtk+-2.6:2
 				x11-libs/libXft
-				gnome? ( >=gnome-base/libgnomeui-2.6 )
 			)
 			!gtk? (
 				motif? ( >=x11-libs/motif-2.3:0 )
@@ -66,7 +67,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	racket? ( dev-scheme/racket )
-	ruby? ( || ( dev-lang/ruby:2.4 dev-lang/ruby:2.3 dev-lang/ruby:2.2 ) )
+	ruby? ( ${RUBY_DEPS} )
 	selinux? ( sys-libs/libselinux )
 	session? ( x11-libs/libSM )
 	tcl? ( dev-lang/tcl:0= )
@@ -279,14 +280,14 @@ src_compile() {
 }
 
 src_test() {
-	echo
+	einfo
 	einfo "Starting vim tests. Several error messages will be shown"
 	einfo "while the tests run. This is normal behaviour and does not"
 	einfo "indicate a fault."
-	echo
+	einfo
 	ewarn "If the tests fail, your terminal may be left in a strange"
 	ewarn "state. Usually, running 'reset' will fix this."
-	echo
+	einfo
 
 	# Don't let vim talk to X
 	unset DISPLAY
@@ -332,8 +333,6 @@ src_install() {
 	insinto /etc/vim
 	newins "${FILESDIR}"/gvimrc-r1 gvimrc
 	eprefixify "${ED}"/etc/vim/gvimrc
-
-	doicon -s scalable "${FILESDIR}"/gvim.svg
 
 	# bash completion script, bug #79018.
 	newbashcomp "${FILESDIR}"/${PN}-completion ${PN}

@@ -1,0 +1,11 @@
+--- a/support/mixer-qt4/ffado/widgets/crossbarrouter.py	2018-01-11 12:34:10.200777889 +0900
++++ b/support/mixer-qt4/ffado/widgets/crossbarrouter.py	2018-01-11 12:45:13.278911705 +0900
+@@ -98,7 +98,7 @@
+             self.combo.setCurrentIndex(self.combo.findText(src))
+         else:
+             self.combo.setCurrentIndex(0)
+-        self.combo.activated.connect(self.comboCurrentChanged)
++        self.combo.activated[str].connect(self.comboCurrentChanged)
+ 
+ 
+     def peakValue(self, value):

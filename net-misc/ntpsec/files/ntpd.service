@@ -1,0 +1,15 @@
+[Unit]
+Description=Network Time Service
+After=network.target nss-lookup.target
+Conflicts=systemd-timesyncd.service
+
+[Service]
+Type=forking
+PrivateTmp=true
+EnvironmentFile=-/etc/conf.d/ntp
+ExecStart=/usr/sbin/ntpd ${NTPD_OPTS}
+Restart=always
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

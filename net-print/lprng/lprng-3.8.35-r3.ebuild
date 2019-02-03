@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -17,7 +17,7 @@ IUSE="foomaticdb kerberos nls ssl"
 
 RDEPEND="sys-process/procps
 	ssl? ( dev-libs/openssl )
-	foomaticdb? ( || ( net-print/cups-filters[foomatic] net-print/foomatic-filters )
+	foomaticdb? ( net-print/cups-filters[foomatic]
 		net-print/foomatic-db )
 	!>=net-print/cups-1.6.2-r4[-lprng-compat]
 	!<net-print/cups-1.6.2-r4"

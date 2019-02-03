@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,12 +6,12 @@ inherit games
 
 IUSE=""
 DESCRIPTION="Community Bonus Pack for UT2003"
-HOMEPAGE="http://liandri.beyondunreal.com/Unreal_Tournament_2003"
+HOMEPAGE="https://liandri.beyondunreal.com/Unreal_Tournament_2003"
 SRC_URI="https://ut.rushbase.net/beyondunreal/mods/cbp2003.zip"
 
 LICENSE="ut2003"
 SLOT="1"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 RESTRICT="mirror strip"
 
 RDEPEND="games-fps/ut2003"

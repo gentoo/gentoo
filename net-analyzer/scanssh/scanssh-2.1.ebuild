@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils
 
 DESCRIPTION="network scanner that gathers info on SSH protocols and versions"
-HOMEPAGE="http://monkey.org/~provos/scanssh/"
-SRC_URI="http://monkey.org/~provos/${P}.tar.gz"
+HOMEPAGE="https://monkey.org/~provos/scanssh/"
+SRC_URI="https://monkey.org/~provos/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

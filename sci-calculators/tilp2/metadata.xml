@@ -6,11 +6,11 @@
 		<name>Gentoo Science Project</name>
 	</maintainer>
 	<longdescription lang="en">
-  TiLP is a linking program for Texas Instruments' graphing
-  calculators. It can handle any TI calculator (from TI73 to V200) with
-  any link cable. TiLP has all the functions of a linking program and
-  more.
-</longdescription>
+		TiLP is a linking program for Texas Instruments' graphing
+		calculators. It can handle any TI calculator (from TI73 to V200) with
+		any link cable. TiLP has all the functions of a linking program and
+		more.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">tilp</remote-id>
 	</upstream>

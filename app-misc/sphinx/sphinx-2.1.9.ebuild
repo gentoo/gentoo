@@ -1,7 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
+WANT_AUTOMAKE=1.15
+
 inherit eutils autotools toolchain-funcs
 
 #MY_P=${P/_/-}
@@ -17,7 +20,7 @@ KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linu
 IUSE="debug id64 mysql odbc postgres stemmer syslog test xml"
 
 RDEPEND="mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:* )
 	odbc? ( dev-db/unixODBC )
 	stemmer? ( dev-libs/snowball-stemmer )
 	xml? ( dev-libs/expat )

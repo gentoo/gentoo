@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>anthonyryan1@gmail.com</email>
 		<name>Anthony Ryan</name>
-		<description>Proxied maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
@@ -13,7 +12,6 @@
 	<maintainer type="person">
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
-		<description>Proxy maintainer for Nicholas and Anthony</description>
 	</maintainer>
 	<use>
 		<flag name="libcanberra">Enable sound event support using

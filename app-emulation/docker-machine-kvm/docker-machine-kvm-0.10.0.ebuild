@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ inherit golang-build golang-vcs-snapshot
 KEYWORDS="~amd64"
 DESCRIPTION="KVM driver for docker-machine"
 
-HOMEPAGE="http://${EGO_PN}"
+HOMEPAGE="https://github.com/dhiltgen/docker-machine-kvm"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""

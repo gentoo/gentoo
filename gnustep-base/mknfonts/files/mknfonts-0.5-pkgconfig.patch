@@ -1,0 +1,14 @@
+diff -Naur mknfonts-0.5.orig/GNUmakefile mknfonts-0.5/GNUmakefile
+--- mknfonts-0.5.orig/GNUmakefile	2002-09-28 12:27:26.000000000 +0200
++++ mknfonts-0.5/GNUmakefile	2018-06-29 11:27:01.871588321 +0200
+@@ -9,8 +9,8 @@
+ 
+ ADDITIONAL_OBJCFLAGS += -Wall -O2
+ 
+-ADDITIONAL_INCLUDE_DIRS += `freetype-config --cflags`
+-ADDITIONAL_LDFLAGS += `freetype-config --libs`
++ADDITIONAL_INCLUDE_DIRS += `pkg-config --cflags freetype2`
++ADDITIONAL_LDFLAGS += `pkg-config --libs freetype2`
+ 
+ mknfonts_OBJC_FILES = mknfonts.m
+ 

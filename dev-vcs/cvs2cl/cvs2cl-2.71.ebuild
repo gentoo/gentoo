@@ -1,8 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+EAPI=0
+
 DESCRIPTION="produces a GNU-style ChangeLog for CVS-controlled sources"
-HOMEPAGE="http://www.red-bean.com/cvs2cl/"
+HOMEPAGE="https://www.red-bean.com/cvs2cl/"
 SRC_URI="mirror://gentoo/${P}.pl.bz2"
 
 LICENSE="GPL-2"

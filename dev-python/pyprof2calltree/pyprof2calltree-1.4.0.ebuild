@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 inherit distutils-r1
 
 DESCRIPTION="convert python profile data to kcachegrind calltree form"
-HOMEPAGE="https://pypi.python.org/pypi/pyprof2calltree/"
+HOMEPAGE="https://pypi.org/project/pyprof2calltree/"
 # pypi tarball lacks tests
 SRC_URI="https://github.com/pwaller/pyprof2calltree/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

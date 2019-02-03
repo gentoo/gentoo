@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -39,6 +39,10 @@ PDEPEND="gnome-base/gvfs"
 src_prepare() {
 	# Make sure menus have icons. People don't like change
 	epatch "${FILESDIR}/${PN}-2.28.0-menus-have-icons.patch"
+
+	# Remove UTF-8 character from headers
+	# https://bugs.gentoo.org/639336
+	epatch "${FILESDIR}"/${PN}-2.32.1-utf8-header.patch
 
 	use branding && epatch "${FILESDIR}"/${PN}-2.26.0-branding.patch
 

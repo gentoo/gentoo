@@ -1,0 +1,64 @@
+commit 95f1c7e9081866ea1e716743ea039a74565f80c6
+Author: Louis Sautier <sautier.louis@gmail.com>
+Date:   Sun Jul 15 15:36:21 2018 +0200
+
+    Allow integration tests to be run inside a different root
+    
+    Based on DarthGandalf's patch submitted in
+    https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=15112014e7605d13624297d7601504b5d187a6de
+
+diff --git a/include/znc/znc.h b/include/znc/znc.h
+index ecb2b41a..a791a648 100644
+--- a/include/znc/znc.h
++++ b/include/znc/znc.h
+@@ -251,6 +251,7 @@ class CZNC : private CCoreTranslationMixin {
+     void DisableConfigTimer();
+ 
+     static void DumpConfig(const CConfig* Config);
++    static CString UnusualRoot();
+ 
+   private:
+     static CString FormatBindError();
+diff --git a/src/Modules.cpp b/src/Modules.cpp
+index 5aec7805..6f9c34ae 100644
+--- a/src/Modules.cpp
++++ b/src/Modules.cpp
+@@ -1899,9 +1899,10 @@ CModules::ModDirList CModules::GetModDirs() {
+     sDir = CZNC::Get().GetModPath() + "/";
+     ret.push(std::make_pair(sDir, sDir));
+ 
++    CString sUnusualRoot = CZNC::UnusualRoot();
+     // <moduledir> and <datadir> (<prefix>/lib/znc)
+-    ret.push(std::make_pair(_MODDIR_ + CString("/"),
+-                            _DATADIR_ + CString("/modules/")));
++    ret.push(std::make_pair(sUnusualRoot + _MODDIR_ + CString("/"),
++                            sUnusualRoot + _DATADIR_ + CString("/modules/")));
+ 
+     return ret;
+ }
+diff --git a/src/WebModules.cpp b/src/WebModules.cpp
+index a5841987..f1b8a421 100644
+--- a/src/WebModules.cpp
++++ b/src/WebModules.cpp
+@@ -565,7 +565,7 @@ CString CWebSock::GetSkinPath(const CString& sSkinName) {
+         sRet = CZNC::Get().GetCurPath() + "/webskins/" + sSkin;
+ 
+         if (!CFile::IsDir(sRet)) {
+-            sRet = CString(_SKINDIR_) + "/" + sSkin;
++            sRet = CZNC::UnusualRoot() + CString(_SKINDIR_) + "/" + sSkin;
+         }
+     }
+ 
+diff --git a/src/znc.cpp b/src/znc.cpp
+index 4e7216ee..dd901497 100644
+--- a/src/znc.cpp
++++ b/src/znc.cpp
+@@ -2130,3 +2130,8 @@ void CZNC::DisableConfigTimer() {
+         m_pConfigTimer = nullptr;
+     }
+ }
++
++CString CZNC::UnusualRoot() {
++    char* szUnusualRoot = getenv("ZNC_UNUSUAL_ROOT");
++    return szUnusualRoot ? szUnusualRoot : "";
++}

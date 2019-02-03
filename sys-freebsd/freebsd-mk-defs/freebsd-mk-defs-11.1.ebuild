@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit bsdmk freebsd
 
-DESCRIPTION="Makefiles definitions used for building and installing libraries and system files"
+DESCRIPTION="Makefile definitions used for building and installing libraries and system files"
 SLOT="0"
 
 IUSE="userland_GNU"
 
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
 EXTRACTONLY="share/"

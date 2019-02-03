@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,6 +16,6 @@ IUSE=""
 RDEPEND="
 	>=dev-ros/mavlink-gbp-release-2016.7.7
 	dev-libs/boost:=
-	dev-libs/console_bridge
+	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"

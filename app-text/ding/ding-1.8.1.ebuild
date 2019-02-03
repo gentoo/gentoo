@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils
 
 DESCRIPTION="Tk based dictionary (German-English) (incl. dictionary itself)"
-HOMEPAGE="http://www-user.tu-chemnitz.de/~fri/ding/"
+HOMEPAGE="https://www-user.tu-chemnitz.de/~fri/ding/"
 SRC_URI="http://wftp.tu-chemnitz.de/pub/Local/urz/ding/${P}.tar.gz"
 
 LICENSE="GPL-2"

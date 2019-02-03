@@ -6,13 +6,8 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
-		<flag name="exceptions">Add support for exceptions - like catching them
-			inside the event loop (recommended by upstream)</flag>
 		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
 		<flag name="localstorage">Build the LocalStorage import for QtQuick (requires QtSql)</flag>
-		<flag name="qt3support">Enable the Qt3Support libraries for Qt4. Note that
-			this does not mean you can compile pure Qt3 programs with Qt4.</flag>
-		<flag name="webkit">Build the WebView QML component</flag>
 		<flag name="widgets">Enable QtWidgets support</flag>
 		<flag name="xml">Build the XmlListModel import for QtQuick (requires QtXmlPatterns)</flag>
 	</use>

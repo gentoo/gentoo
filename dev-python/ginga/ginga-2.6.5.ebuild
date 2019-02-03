@@ -15,24 +15,17 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="examples gtk qt4 qt5 test tk"
+IUSE="examples gtk qt5 test tk"
 
 RDEPEND="
 	dev-python/astropy[${PYTHON_USEDEP}]
 	media-fonts/roboto
 	gtk? (  dev-python/pygobject[${PYTHON_USEDEP},cairo] )
-	qt4? ( || (
-		   dev-python/pyside[${PYTHON_USEDEP},help,X]
-		   dev-python/PyQt4[${PYTHON_USEDEP},help,X]
-		  )
-		  dev-python/QtPy[${PYTHON_USEDEP},gui]
-	   )
 	qt5? (
 		 dev-python/PyQt5[${PYTHON_USEDEP},help,gui,widgets]
 		 dev-python/QtPy[${PYTHON_USEDEP},gui]
 	)
 "
-
 DEPEND="${RDEPEND}
 	dev-python/astropy-helpers[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]

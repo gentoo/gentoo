@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite"
 inherit twisted-r1
 
 DESCRIPTION="Object database implemented on top of SQLite"
-HOMEPAGE="https://github.com/twisted/axiom https://pypi.python.org/pypi/Axiom"
+HOMEPAGE="https://github.com/twisted/axiom https://pypi.org/project/Axiom/"
 SRC_URI="mirror://pypi/${TWISTED_PN:0:1}/${TWISTED_PN}/${TWISTED_P}.tar.gz"
 
 LICENSE="MIT"

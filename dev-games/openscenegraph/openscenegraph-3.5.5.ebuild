@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/${PN}/${MY_PN}/archive/${MY_P}.tar.gz"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/145" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
-KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ~ia64 ppc ppc64 x86"
 IUSE="asio curl debug doc examples ffmpeg fltk fox gdal gif glut gstreamer gtk jpeg
 jpeg2k las libav lua openexr openinventor osgapps pdf png sdl sdl2 svg tiff
 truetype vnc wxwidgets xine xrandr zlib"
@@ -74,15 +74,15 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	virtual/pkgconfig
-	x11-proto/xextproto
+	x11-base/xorg-proto
 	doc? ( app-doc/doxygen )
-	xrandr? ( x11-proto/randrproto )
 "
 
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5.5-cmake.patch
+	"${FILESDIR}"/${PN}-3.5.1-jpeg-9.patch
 )
 
 src_configure() {

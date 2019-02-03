@@ -10,8 +10,8 @@ inherit autotools elisp-common eutils java-pkg-opt-2 multilib systemd versionato
 # open up a bug to let it be created.
 
 DESCRIPTION="Erlang programming language, runtime environment and libraries (OTP)"
-HOMEPAGE="http://www.erlang.org/"
-SRC_URI="http://www.erlang.org/download/otp_src_${PV}.tar.gz
+HOMEPAGE="https://www.erlang.org/"
+SRC_URI="http://erlang.org/download/otp_src_${PV}.tar.gz
 	http://erlang.org/download/otp_doc_man_${PV}.tar.gz
 	doc? ( http://erlang.org/download/otp_doc_html_${PV}.tar.gz )"
 

@@ -1,7 +1,72 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires >=portage-2.1.1
+
+# Thomas Deutschmann <whissi@gentoo.org> (15 Nov 2018)
+# - rdrand plugin is supported on x86
+# - padlock plugin is supported on x86
+net-vpn/strongswan -strongswan_plugins_rdrand -strongswan_plugins_padlock
+
+# Alexys Jacob <ultrabug@gentoo.org> (05 Nov 2018)
+# Requires dev-db/mongodb which has dropped x86 support
+net-analyzer/zmap mongo
+
+# Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
+# www-client/firefox and mail-client/thunderbird is
+# available on x86
+app-misc/tracker -firefox-bookmarks -thunderbird
+
+# Michael Palimaka <kensington@gentoo.org> (12 Oct 2018)
+# Unmask arch-specific USE flag available on x86
+net-analyzer/testssl -bundled-openssl
+
+# Thomas Deutschmann <whissi@gentoo.org> (30 Sep 2018)
+# Unmask libheif support where media-libs/libheif is keyworded
+media-gfx/imagemagick -heif
+
+# Tomáš Mózes <hydrapolic@gmail.com> (28 Sep 2018)
+# Requires dev-db/mongodb which has dropped x86 support
+dev-python/pymongo test
+
+# Bernard Cafarelli <voyageur@gentoo.org> (27 Sep 2018)
+# media-libs/qtav not keyworded
+media-video/orion qtav
+
+# Ben Kohler <bkohler@gentoo.org> (23 Aug 2018)
+# Unmask iwd support where net-wireless/iwd is keyworded
+net-misc/connman -iwd
+net-misc/networkmanager -iwd
+
+# Thomas Deutschmann <whissi@gentoo.org> (23 Aug 2018)
+# Dependency sys-cluster/ceph is keyworded for x86
+net-fs/samba -ceph
+
+# Rick Farina <zerochaos@gentoo.org> (27 Jun 2018)
+# Catalyst has support for assembling bootloader on this arch
+dev-util/catalyst -system-bootloader
+
+# Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (14 Mar 2018)
+# Expose SVGA backend for x86 users
+app-emulation/fuse -backend-svga
+
+# Thomas Deutschmann <whissi@gentoo.org> (10 Feb 2018)
+# Requires dev-db/mongodb which has dropped x86 support
+dev-libs/mongo-c-driver test
+
+# Thomas Deutschmann <whissi@gentoo.org> (05 Jan 2018)
+# Requires dev-python/neovim-remote, which is not keyworded on x86.
+app-editors/neovim remote
+
+# Michał Górny <mgorny@gentoo.org> (30 Dec 2017)
+# Moved from use.mask since it is a flag local to one package:
+# pbbuttonsd and macbook for KDE and pbuttonsd it
+app-laptop/pbbuttonsd -macbook
+
+# Hans de Graaff <graaff@gentoo.org> (8 Dec 2017)
+# Test dependencies are no longer keyworded due to dropped Rails
+# keyword.
+dev-ruby/asciidoctor test
 
 # Tim Harder <radhermit@gentoo.org> (11 Sep 2017)
 # Pulls in dev-ruby/asciidoctor which has too large of a ruby testing
@@ -15,10 +80,6 @@ media-gfx/digikam mediaplayer
 # Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
 # Requires USE=cuda that is masked in this profile.
 media-gfx/blender opensubdiv
-
-# Brian Evans <grknight@gentoo.org> (21 Jul 2017)
-# app-crypt/argon2 is keyworded on x86
-dev-lang/php -argon2
 
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # dev-libs/libmaxminddb is keyworded on x86
@@ -53,7 +114,7 @@ app-emulation/libvirt zfs
 
 # Thomas Deutschmann <whissi@gentoo.org> (22 Sep 2016)
 # Enable MQTT support on supported architectures
-app-admin/collectd -collectd_plugins_mqtt
+app-metrics/collectd -collectd_plugins_mqtt
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # Enable numa support on supported architectures
@@ -63,10 +124,6 @@ dev-db/percona-server -numa
 # Brian Evans <grknight@gentoo.org> (18 Aug 2016)
 # Allow jdbc on this arch
 dev-db/mariadb -jdbc
-
-# Rick Farina <zerochaos@gentoo.org> (23 Mar 2016)
-# rspec:3 is not keyworded for x86 at this time
-=dev-ruby/bundler-audit-0.5.0 test
 
 # Mike Gilbert <floppym@gentoo.org> (03 Mar 2016)
 # chrome-binary-plugins dropped x86 support
@@ -83,7 +140,7 @@ dev-util/geany-plugins -git
 
 # Brian Evans <grknight@gentoo.org (14 Sep 2015)
 # Unmask new USE flags for mariadb on supported arches
->=dev-db/mariadb-10.1.0 -mroonga -sst-xtrabackup -galera
+>=dev-db/mariadb-10.1.0 -sst-xtrabackup -galera
 
 # Mike Gilbert <floppym@gentoo.org> (05 Sep 2015)
 # sys-boot/gnu-efi is not supported on all archs.
@@ -106,10 +163,6 @@ net-im/telepathy-connection-managers -steam
 # >x11-drivers/nvidia-drivers-346 on x86 has no UVM support (bug #534156)
 >x11-drivers/nvidia-drivers-346 uvm
 
-# Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
-# Unmask skype support for unstable keywords
-net-im/bitlbee -skype
-
 # Mike Frysinger <vapier@gentoo.org> (04 Aug 2014)
 # Unmask flashrom drivers that only work on x86 due to in/out asm insns #454024
 sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer_spi -satamv
@@ -121,10 +174,6 @@ sys-cluster/ceph zfs
 # Lars Wendler <polynomial-c@gentoo.org (23 Apr 2014)
 # Works on 32bit x86
 media-sound/lmms -vst
-
-# Matt Turner <mattst88@gentoo.org> (07 Mar 2014)
-# media-libs/libomxil-bellagio keyworded on amd64/x86
-media-libs/mesa -openmax
 
 # Samuli Suominen <ssuominen@gentoo.org> (16 Feb 2014)
 # Still considered experimental by upstream:
@@ -173,9 +222,7 @@ app-arch/zpaq -jit
 # Arun Raghavan <ford_prefect@gentoo.org> (29 Mar 2012)
 # webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
 # added.
-# Arun Raghavan <ford_prefect@gentoo.org> (24 May 2012)
-# Mask xen USE flag by default, unmask on x86/amd64 where it is supported.
-media-sound/pulseaudio -webrtc-aec -xen
+media-sound/pulseaudio -webrtc-aec
 
 # Bernard Cafarelli <voyageur@gentoo.org> (27 Feb 2012)
 # Masked in base profile, supported on this arch
@@ -212,11 +259,6 @@ www-client/links -suid
 # PPS should work on all arches, but only keyworded on amd64/x86
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
 
-# Alexey Shvetsov <alexxy@gentoo.org> (1 Jul 2011)
-# Use mask infiniband for stable corosync and glusterfs
-=sys-cluster/glusterfs-3.1.2 infiniband
-=sys-cluster/corosync-1.3.0 infiniband
-
 # Tim Harder <radhermit@gentoo.org> (13 Feb 2011)
 # Masked in base, unmask for amd64/x86
 >=media-video/mplayer-1.0_rc4_p20101219 -bluray
@@ -232,9 +274,6 @@ sys-power/pm-utils -video_cards_intel -video_cards_radeon
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (23 Sep 2009)
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan -X
-
-# Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
-app-text/enchant -zemberek
 
 x11-terms/eterm cpu_flags_x86_sse2
 

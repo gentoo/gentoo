@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: unbundle media-libs/cal3d, lib hacked or old version
@@ -13,7 +13,7 @@ SRC_URI="tinyandbig_grandpasleftovers-retail-linux-${PV}_1370968537.tar.bz2"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs"
 RESTRICT="bindist fetch bundled-libs? ( splitdebug )"
 
@@ -35,7 +35,7 @@ S=${WORKDIR}/tinyandbig
 pkg_nofetch() {
 	einfo "Please buy & download ${SRC_URI} from:"
 	einfo "  ${HOMEPAGE}"
-	einfo "and move it to ${DISTDIR}"
+	einfo "and move it to your DISTDIR directory."
 	einfo
 }
 

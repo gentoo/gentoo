@@ -1,0 +1,23 @@
+--- a/common/CMakeLists.txt.old    2018-09-13 16:21:29.642915273 +0200
++++ a/common/CMakeLists.txt    2018-09-13 16:23:25.146914833 +0200
+@@ -337,14 +337,17 @@
+     list( APPEND COMMON_SRCS strtok_r.c )
+ endif()
+ 
++if( BUILD_GITHUB_PLUGIN )
++    list( APPEND COMMON_SRCS
++        kicad_curl/kicad_curl.cpp
++        kicad_curl/kicad_curl_easy.cpp
++    )
++endif()
+ 
+ set( COMMON_SRCS
+     ${COMMON_SRCS}
+     system/libcontext.cpp
+ 
+-    kicad_curl/kicad_curl.cpp
+-    kicad_curl/kicad_curl_easy.cpp
+-
+     view/view.cpp
+     view/view_item.cpp
+     view/view_group.cpp

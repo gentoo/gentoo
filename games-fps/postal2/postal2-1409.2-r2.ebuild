@@ -11,7 +11,7 @@ SRC_URI="http://updatefiles.linuxgamepublishing.com/${PN}/${P/%?/1}.run
 
 LICENSE="postal2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="strip"
 

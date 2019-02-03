@@ -1,0 +1,8 @@
+diff -N -a -u1 a/Makefile b/Makefile
+--- a/Makefile	2016-01-03 14:41:40.000000000 +0100
++++ b/Makefile	2018-12-11 23:47:44.942218496 +0100
+@@ -36,3 +36,3 @@
+ 	cp -f ./define.release ./define.h
+-	make -C /lib/modules/$(shell uname -r)/build/ SUBDIRS=$(PWD) modules
++	+make -C $(KERNELDIR) SUBDIRS=$(PWD) modules
+ debug:

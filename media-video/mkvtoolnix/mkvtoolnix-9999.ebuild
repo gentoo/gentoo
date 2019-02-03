@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs versionator multiprocessing
+inherit toolchain-funcs versionator multiprocessing xdg-utils qmake-utils gnome2-utils
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/mbunkus/mkvtoolnix.git"
+	EGIT_REPO_URI="https://gitlab.com/mbunkus/mkvtoolnix.git"
 	inherit git-r3
 else
 	SRC_URI="https://mkvtoolnix.download/sources/${P}.tar.xz"
@@ -13,18 +13,18 @@ else
 fi
 
 DESCRIPTION="Tools to create, alter, and inspect Matroska files"
-HOMEPAGE="https://mkvtoolnix.download/ https://github.com/mbunkus/mkvtoolnix"
+HOMEPAGE="https://mkvtoolnix.download/ https://gitlab.com/mbunkus/mkvtoolnix"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug pch test qt5"
+IUSE="debug nls pch test qt5"
 
 # check NEWS.md for build system changes entries for boost/libebml/libmatroska
 # version requirement updates and other packaging info
 RDEPEND="
+	dev-libs/libfmt:=
 	>=dev-libs/boost-1.49.0:=
 	>=dev-libs/libebml-1.3.5:=
-	dev-libs/jsoncpp:=
 	dev-libs/pugixml
 	media-libs/flac
 	>=media-libs/libmatroska-1.4.8:=
@@ -34,20 +34,26 @@ RDEPEND="
 	sys-libs/zlib
 	qt5? (
 		dev-qt/qtcore:5
+		dev-qt/qtdbus:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtwidgets:5
 		dev-qt/qtconcurrent:5
 		dev-qt/qtmultimedia:5
+		app-text/cmark
 	)
 "
 DEPEND="${RDEPEND}
+	dev-cpp/nlohmann_json
+	dev-libs/utfcpp
 	dev-ruby/rake
-	sys-devel/gettext
 	virtual/pkgconfig
 	dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets
-	app-text/po4a
+	nls? (
+		sys-devel/gettext
+		app-text/po4a
+	)
 	test? ( dev-cpp/gtest )
 "
 
@@ -69,28 +75,30 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
+	local myeconfargs=(
+		$(use_enable debug)
+		$(usex pch "" --disable-precompiled-headers)
+		$(use_enable qt5 qt)
+		$(use_with nls gettext)
+		$(usex nls "" --with-po4a-translate=false)
+		--disable-update-check
+		--disable-optimization
+		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		--with-boost="${EPREFIX}"/usr
+		--with-boost-libdir="${EPREFIX}"/usr/$(get_libdir)
+	)
 
 	if use qt5 ; then
 		# ac/qt5.m4 finds default Qt version set by qtchooser, bug #532600
-		myconf+=(
-			--with-moc=/usr/$(get_libdir)/qt5/bin/moc
-			--with-uic=/usr/$(get_libdir)/qt5/bin/uic
-			--with-rcc=/usr/$(get_libdir)/qt5/bin/rcc
-			--with-qmake=/usr/$(get_libdir)/qt5/bin/qmake
+		myeconfargs+=(
+			--with-moc=$(qt5_get_bindir)/moc
+			--with-uic=$(qt5_get_bindir)/uic
+			--with-rcc=$(qt5_get_bindir)/rcc
+			--with-qmake=$(qt5_get_bindir)/qmake
 		)
 	fi
 
-	econf \
-		$(use_enable debug) \
-		$(use_enable qt5 qt) \
-		$(usex pch "" --disable-precompiled-headers) \
-		"${myconf[@]}" \
-		--disable-update-check \
-		--disable-optimization \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		--with-boost="${EPREFIX}"/usr \
-		--with-boost-libdir="${EPREFIX}"/usr/$(get_libdir)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -107,4 +115,16 @@ src_install() {
 
 	einstalldocs
 	doman doc/man/*.1
+}
+
+pkg_postrm() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
+}
+
+pkg_postinst() {
+	xdg_mimeinfo_database_update
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }

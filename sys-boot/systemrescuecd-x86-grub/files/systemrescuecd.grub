@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 . /usr/share/grub/grub-mkconfig_lib
@@ -32,28 +32,28 @@ if [ -f "${srcd}" ]; then
 submenu "${longname}" --class submenu {
 	menuentry "${longname} (32bit standard${bootops}" --class rescue {
 ${grub_string}
-		set isofile=${srcd}
+		set isofile=${path}
 		loopback loop \${isofile}
 		linux (loop)/isolinux/rescue32 ${SRCD_BOOTOPTIONS} isoloop=\${isofile}
 		initrd (loop)/isolinux/initram.igz
 	}
 	menuentry "${longname} (64bit standard${bootops}" --class rescue {
 ${grub_string}
-		set isofile=${srcd}
+		set isofile=${path}
 		loopback loop \${isofile}
 		linux (loop)/isolinux/rescue64 ${SRCD_BOOTOPTIONS} isoloop=\${isofile}
 		initrd (loop)/isolinux/initram.igz
 	}
 	menuentry "${longname} (32bit alternative${bootops}" --class rescue {
 ${grub_string}
-		set isofile=${srcd}
+		set isofile=${path}
 		loopback loop \${isofile}
 		linux (loop)/isolinux/altker32 ${SRCD_BOOTOPTIONS} isoloop=\${isofile}
 		initrd (loop)/isolinux/initram.igz
 	}
 	menuentry "${longname} (64bit alternative${bootops}" --class rescue {
 ${grub_string}
-		set isofile=${srcd}
+		set isofile=${path}
 		loopback loop \${isofile}
 		linux (loop)/isolinux/altker64 ${SRCD_BOOTOPTIONS} isoloop=\${isofile}
 		initrd (loop)/isolinux/initram.igz

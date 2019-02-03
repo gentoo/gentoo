@@ -18,10 +18,6 @@ media-sound/pulseaudio native-headset ofono-headset
 x11-base/xorg-server glamor wayland
 x11-drivers/xf86-video-ati glamor
 
-# Mike Frysinger <vapier@gentoo.org> 21 Feb 2016
-# Needs arch love for elementary. #575322
-media-libs/elementary javascript
-
 # Sergey Popov <pinkbyte@gentoo.org> (24 Oct 2015)
 # Not tested
 net-mail/dovecot lz4

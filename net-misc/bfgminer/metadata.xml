@@ -11,11 +11,13 @@
 	</maintainer>
 	<use>
 		<flag name="adl">Enable support for controlling fans and overclocking on AMD cards with AMD Display Library</flag>
+		<flag name="alchemist">Enable support for mining with AlcheMist</flag>
 		<flag name="antminer">Enable support for mining with AntMiner U1 sticks</flag>
 		<flag name="avalon">Enable support for mining with Avalon 1 ASIC modules</flag>
 		<flag name="avalonmm">Enable support for mining with Avalon 2/3 ASIC modules</flag>
 		<flag name="bifury">Enable support for mining with Bi*fury USB sticks</flag>
 		<flag name="bitforce">Enable support for mining with ButterFly Labs BitFORCE ASICs and/or FPGAs</flag>
+		<flag name="bitmain">Enable support for mining with Bitmain Antminer S* series</flag>
 		<flag name="bfsb">Enable support for mining on BFSB host Raspberry Pi</flag>
 		<flag name="bfx">Enable support for mining with BFx2 USB sticks</flag>
 		<flag name="bigpic">Enable support for mining with Big Picture Mining USB sticks (Red/BlueFury, BF1, etc)</flag>

@@ -1,0 +1,17 @@
+diff --git a/setup.py b/setup.py
+index 234c92b..3ef3237 100644
+--- a/setup.py
++++ b/setup.py
+@@ -20,11 +20,11 @@ requirements = [
+ 
+ setup_requirements = [
+     'cffi',
+-    'pytest-runner',
+ ]
+ 
+ test_requirements = [
+     'pytest',
++    'pytest-runner',
+ ]
+ 
+ if sys.platform not in ['linux', 'linux2', 'win32', 'darwin']:

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby23 ruby24"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md UPGRADE.md"
 RUBY_FAKEGEM_TASK_DOC=""
@@ -13,7 +13,8 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Runs HTTP requests in parallel while cleanly encapsulating handling logic"
-HOMEPAGE="http://rubygems.org/gems/typhoeus/"
+HOMEPAGE="https://rubygems.org/gems/typhoeus/
+	https://github.com/typhoeus/typhoeus"
 
 LICENSE="Ruby"
 SLOT="0"

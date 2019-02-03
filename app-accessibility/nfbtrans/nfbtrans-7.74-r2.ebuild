@@ -11,7 +11,7 @@ SRC_URI="http://www.nfb.org/Images/nfb/Products_Technology/nfbtr774.zip"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 DEPEND=" >=app-arch/unzip-5.50-r2"

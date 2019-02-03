@@ -1,0 +1,70 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -174,6 +174,19 @@
+     SET(WSLAY_LIBRARIES -lwslay)
+ ENDIF (NOT WSLAY_FOUND)
+ 
++IF (PKG_CONFIG_FOUND)
++    PKG_CHECK_MODULES(ONIG onigmo)
++    IF (NOT ONIG_FOUND)
++	PKG_CHECK_MODULES(ONIG oniguruma)
++    ENDIF (NOT ONIG_FOUND)
++    IF (ONIG_FOUND)
++        LINK_DIRECTORIES(${ONIG_LIBRARY_DIRS})
++    ENDIF (ONIG_FOUND)
++ENDIF (PKG_CONFIG_FOUND)
++IF (NOT ONIG_FOUND AND WITH_MRUBY)
++    MESSAGE(FATAL_ERROR "Onigmo/Oniguruma not found")
++ENDIF (NOT ONIG_FOUND AND WITH_MRUBY)
++
+ IF (ZLIB_FOUND)
+     INCLUDE_DIRECTORIES(${ZLIB_INCLUDE_DIRS})
+     LINK_DIRECTORIES(${ZLIB_LIBRARY_DIRS})
+@@ -533,7 +546,7 @@
+     ELSE ()
+         SET(MRUBY_TOOLCHAIN "gcc")
+     ENDIF ()
+-    ADD_CUSTOM_TARGET(mruby MRUBY_TOOLCHAIN=${MRUBY_TOOLCHAIN} MRUBY_CONFIG=${CMAKE_CURRENT_SOURCE_DIR}/misc/mruby_config.rb MRUBY_BUILD_DIR=${CMAKE_CURRENT_BINARY_DIR}/mruby MRUBY_ADDITIONAL_CONFIG=${MRUBY_ADDITIONAL_CONFIG} ruby minirake
++    ADD_CUSTOM_TARGET(mruby MRUBY_TOOLCHAIN=${MRUBY_TOOLCHAIN} MRUBY_CONFIG=${CMAKE_CURRENT_SOURCE_DIR}/misc/mruby_config.rb MRUBY_BUILD_DIR=${CMAKE_CURRENT_BINARY_DIR}/mruby MRUBY_ADDITIONAL_CONFIG=${MRUBY_ADDITIONAL_CONFIG} ruby minirake -v
+         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/deps/mruby)
+     LIST(APPEND STANDALONE_SOURCE_FILES
+         lib/handler/mruby.c
+@@ -560,7 +573,7 @@
+     # note: the paths need to be determined before libmruby.flags.mak is generated
+     TARGET_LINK_LIBRARIES(h2o
+         "${CMAKE_CURRENT_BINARY_DIR}/mruby/host/lib/libmruby.a"
+-        "${CMAKE_CURRENT_BINARY_DIR}/mruby/host/mrbgems/mruby-onig-regexp/onigmo-6.1.2/.libs/libonigmo.a"
++        ${ONIG_LIBRARIES}
+         "m")
+     ADD_DEPENDENCIES(h2o mruby)
+ ENDIF (WITH_MRUBY)
+--- a/deps/mruby-onig-regexp/mrbgem.rake
++++ b/deps/mruby-onig-regexp/mrbgem.rake
+@@ -103,10 +103,8 @@
+ 
+   if spec.respond_to? :search_package and spec.search_package 'onigmo'
+     spec.cc.defines += ['HAVE_ONIGMO_H']
+-    spec.linker.libraries << 'onig'
+   elsif spec.respond_to? :search_package and spec.search_package 'oniguruma'
+     spec.cc.defines += ['HAVE_ONIGURUMA_H']
+-    spec.linker.libraries << 'onig'
+   elsif build.cc.respond_to? :search_header_path and build.cc.search_header_path 'onigmo.h'
+     spec.cc.defines += ['HAVE_ONIGMO_H']
+     spec.linker.libraries << 'onigmo'
+--- a/misc/mruby_config.rb
++++ b/misc/mruby_config.rb
+@@ -15,13 +15,7 @@
+   # use mrbgems
+   Dir.glob("../mruby-*/mrbgem.rake") do |x|
+     g = File.basename File.dirname x
+-    if g == 'mruby-onig-regexp'
+-      conf.gem "../deps/#{g}" do |c|
+-        c.bundle_onigmo
+-      end
+-    else
+-      conf.gem "../deps/#{g}"
+-    end
++    conf.gem "../deps/#{g}"
+   end
+ 
+   # include all the core GEMs

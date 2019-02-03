@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ RDEPEND="dev-qt/qtconcurrent:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	>=dev-libs/quazip-0.7.2[qt5]"
+	>=dev-libs/quazip-0.7.2[qt5(+)]"
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.40"
 

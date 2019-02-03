@@ -19,7 +19,8 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/01org/libyami/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/01org/libyami/archive/${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${P}"
 fi
 
 LICENSE="Apache-2.0"
@@ -27,7 +28,7 @@ SLOT="0"
 IUSE="debug egl dmabuf doc md5 v4l X test wayland"
 
 RDEPEND="
-	>=x11-libs/libva-1.7.2[drm,X?,wayland?,${MULTILIB_USEDEP}]
+	>=x11-libs/libva-1.7.2:=[drm,X?,wayland?,${MULTILIB_USEDEP}]
 	v4l? (
 		>=virtual/opengl-7[${MULTILIB_USEDEP}]
 		>=media-libs/libv4l-1.6.2[${MULTILIB_USEDEP}]
@@ -49,7 +50,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	append-cppflags -I"${S}/"
+	append-cppflags -I"${S}/" -I"${BUILD_DIR}/interface"
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable debug) \
 		$(use_enable egl) \

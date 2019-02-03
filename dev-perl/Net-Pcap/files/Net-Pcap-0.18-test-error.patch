@@ -1,0 +1,39 @@
+From 7c831efcb06d6254e54423cdcd95bebbb7725270 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Fri, 8 Dec 2017 17:52:13 +1300
+Subject: Allow error message to be a suffix
+
+Previously, the error message emitted by the native calls was of the
+form:
+
+    'syntax error'
+
+However, more recently the error message takes the form:
+
+    'syntax error in filter expression: syntax error'
+
+This patch pretends the part before the ":" is functionally equivalent
+to a line start, for the purposes of testing.
+
+Bug: https://github.com/maddingue/Net-Pcap/issues/8
+Bug: https://github.com/maddingue/Net-Pcap/pull/9
+---
+ t/09-error.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/09-error.t b/t/09-error.t
+index 90337b8..eee679d 100644
+--- a/t/09-error.t
++++ b/t/09-error.t
+@@ -22,7 +22,7 @@ is(   $@,   '', "compile() with an invalid filter string" );
+ is(   $res, -1, " - result must not be null: $res" );
+ eval { $err = Net::Pcap::geterr($pcap) };
+ is(   $@,   '', "geterr()" );
+-like( $err, '/^(?:parse|syntax) error$/', " - \$err must not be null: $err" );
++like( $err, '/(^|: )(?:parse|syntax) error$/', " - \$err must not be null: $err" );
+ 
+ # Testing compile() with a valid filter
+ eval { $res = Net::Pcap::compile($pcap, \$filter, "tcp", 0, $mask) };
+-- 
+2.14.3
+

@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Terminal-based YouTube player and downloader"
-HOMEPAGE="https://github.com/mps-youtube/mps-youtube https://pypi.python.org/pypi/mps-youtube"
+HOMEPAGE="https://github.com/mps-youtube/mps-youtube https://pypi.org/project/mps-youtube/"
 
 LICENSE="GPL-3"
 SLOT="0"

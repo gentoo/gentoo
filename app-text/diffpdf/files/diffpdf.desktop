@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=DiffPDF
+Comment=Compare two PDF files
+Exec=diffpdf
+Icon=diffpdf
+Terminal=false
+Type=Application
+Categories=Utility;Qt;

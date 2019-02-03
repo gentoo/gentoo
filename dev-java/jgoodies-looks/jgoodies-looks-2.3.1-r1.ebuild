@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ SRC_URI="http://www.jgoodies.com/download/libraries/${MY_PN}/${MY_P}.zip"
 
 LICENSE="BSD"
 SLOT="2.0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -32,7 +32,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 EANT_FILTER_COMPILER="jikes"
 # jar target fails unless we make descriptors.dir an existing directory
 # update: it's where it looks for all.txt file
-EANT_EXTRA_ARGS="-Ddescriptors.dir=\"${S}\""
+EANT_EXTRA_ARGS="-Ddescriptors.dir=${S}"
 
 EANT_BUILD_TARGET="jar-all"
 

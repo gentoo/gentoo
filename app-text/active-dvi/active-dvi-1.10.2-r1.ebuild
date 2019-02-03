@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 	dev-texlive/texlive-pstricks
 	dev-texlive/texlive-pictures
 	dev-texlive/texlive-latexextra
-	x11-proto/xineramaproto
+	x11-base/xorg-proto
 	dev-ml/findlib
 	app-text/htmlc
 	dev-tex/hevea"

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>xmw@gentoo.org</email>
-<name>Michael Weber</name>
-</maintainer>
+<!-- maintainer-needed -->
 <longdescription lang="en">
 DCP-o-matic is a free, open-source program to create Digital Cinema Packages (DCPs) from videos, images, sound and subtitle files. You can use it to make content for playback on DCI-compliant cinema projectors.
 

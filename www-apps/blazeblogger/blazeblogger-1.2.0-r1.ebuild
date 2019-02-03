@@ -5,7 +5,7 @@ EAPI=4
 
 inherit eutils
 
-DESCRIPTION="simple-to-use, capable content management system for the cmdline producing static content"
+DESCRIPTION="Simple, capable content management system for producing static content"
 HOMEPAGE="http://blaze.blackened.cz/"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz
 	doc? ( https://${PN}.googlecode.com/files/${PN}-doc-${PV}.tar.gz ) "

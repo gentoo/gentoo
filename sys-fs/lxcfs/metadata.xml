@@ -9,6 +9,10 @@
 		<email>john@irc.tm</email>
 		<name>John Cooke</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
+	</maintainer>
 	<longdescription>
 		LXCFS is a simple userspace filesystem designed to
 		provide a cgroupfs-like tree which is container aware

@@ -1,0 +1,20 @@
+diff -r -U2 gle-graphics-4.2.5.orig/src/gui/MakefileAC.in gle-graphics-4.2.5/src/gui/MakefileAC.in
+--- gle-graphics-4.2.5.orig/src/gui/MakefileAC.in	2015-08-16 13:51:24.000000000 +0600
++++ gle-graphics-4.2.5/src/gui/MakefileAC.in	2018-01-13 14:23:09.066684378 +0700
+@@ -83,12 +83,12 @@
+ 	$(QMAKE_PROG) $(QMAKE_OPTS)
+ 
+-domake:
+-	$(MAKE_PROG)
++domake: Makefile
++	$(MAKE)
+ 
+-repmake:
++repmake: Makefile
+ 	perl ../../platform/autopackage/qt-replace.pl Makefile
+ 
+ doclean:
+-	-$(MAKE_PROG) clean
++	-$(MAKE) clean
+ 	-@$(RM) qgle install_qgle_name_mac Makefile
+ 	-@$(RMDIR) moc

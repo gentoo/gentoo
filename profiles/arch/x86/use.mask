@@ -4,6 +4,27 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Andreas Sturmlechner <asturm@gentoo.org> (17 Nov 2018)
+# media-sound/audacious is keyworded on x86
+-audacious
+
+# Matt Turner <mattst88@gentoo.org> (11 Nov 2018)
+# d3d9 works on x86
+-d3d9
+
+# Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
+# Python 3.7 support requires fresh versions of packages which are stuck
+# at keywordreqs.
+# bug #661320: dev-python/twisted
+python_targets_python3_7
+python_single_target_python3_7
+
+# Michael Orlitzky <mjo@gentoo.org> (13 Jan 2018)
+# Oracle database stuff should work on x86.
+-oci8
+-oci8-instant-client
+-oracle
+
 # Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
 # Unmask elogind since it is keyworded here.
 -elogind
@@ -69,10 +90,6 @@
 # Unmasking vidix for x86 which is masked in base/use.mask for others
 -vidix
 
-# Justin Lecher <jlec@gentoo.org> (04 Feb 2012)
-# Unmask because deps are keyworded
--zeitgeist
-
 # This file masks out USE flags that are simply NOT allowed in the default
 # x86 profile.  This works, for example, if another architecture's
 # profile have a USE flag associated with (such as altivec, mmx, etc).
@@ -95,10 +112,6 @@
 # 2010/05/03 - Alex Legler <a3li@gentoo.org>
 # Add support for Ruby Enterprise Edition targets where rubyee is available
 # -ruby_targets_ree18
-
-# pbbuttonsd and macbook for KDE and pbuttonsd it
-#-pbbuttonsd
--macbook
 
 # Unmask x86 instruction sets
 -lilo
@@ -128,29 +141,22 @@
 # Unmask nvidia XvMC support
 -nvidia
 
-# Unmask dev-db/oracle-instantclient-basic support
--oci8-instant-client
--oracle
-
 # Modular X: unmask for architectures on which they are available
 -input_devices_synaptics
 -input_devices_vmmouse
 -input_devices_wacom
+-video_cards_ast
+-video_cards_i915
+-video_cards_i965
+-video_cards_intel
 -video_cards_nvidia
+-video_cards_siliconmotion
 -video_cards_vmware
 -video_cards_geode
+-video_cards_vesa
 -video_cards_via
 -video_cards_virtualbox
 -video_cards_qxl
-
-# Modular X: mask for architectures on which they aren't available
-video_cards_newport
-
-# Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
-# Unmask the flags for PHP that are available only on x86
-#
-# Shared with amd64
--oci8
 
 # Robert Buchholz <rbu@gentoo.org> (03 Jun 2007)
 # Unmask as it works on x86

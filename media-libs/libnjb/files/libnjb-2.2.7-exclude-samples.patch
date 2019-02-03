@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -249,7 +249,7 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-SUBDIRS = src sample doc
++SUBDIRS = src doc
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = libnjb.pc
+ EXTRA_DIST = libnjb.pc \

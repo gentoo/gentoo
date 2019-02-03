@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=(python2_7 python3_4 python3_5 python3_6)
 inherit python-single-r1 vim-plugin
 
 DESCRIPTION="vim plugin: Support EditorConfig files "
-HOMEPAGE="http://editorconfig.org/"
+HOMEPAGE="https://editorconfig.org/"
 SRC_URI="https://github.com/${PN%-vim}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"

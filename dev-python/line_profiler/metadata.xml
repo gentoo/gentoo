@@ -9,6 +9,10 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Gentoo Proxy Maintainers Project</name>
+  </maintainer>
   <longdescription>
     line_profiler is a module for doing line-by-line profiling of
     functions. kernprof is a convenient script for running either

@@ -9,6 +9,9 @@
     <email>cjk@gentoo.org</email>
     <name>Cjk</name>
   </maintainer>
+  <use>
+    <flag name="extra">Install extra packages</flag>
+  </use>
   <upstream>
     <maintainer>
       <email>chen.sst@gmail.com</email>

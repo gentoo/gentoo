@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="person">
-        <email>titanofold@gentoo.org</email>
-        <name>Aaron W. Swenson</name>
-    </maintainer>
-    <maintainer type="project">
-        <email>perl@gentoo.org</email>
-        <name>Gentoo Perl Project</name>
-    </maintainer>
-    <upstream>
-        <remote-id type="cpan">TAP-Parser-SourceHandler-pgTAP</remote-id>
-        <remote-id type="cpan-module">TAP::Parser::SourceHandler::pgTAP</remote-id>
-    </upstream>
+	<maintainer type="person">
+		<email>titanofold@gentoo.org</email>
+		<name>Aaron W. Swenson</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>pgsql-bugs@gentoo.org</email>
+		<name>PostgreSQL</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">TAP-Parser-SourceHandler-pgTAP</remote-id>
+		<remote-id type="cpan-module">TAP::Parser::SourceHandler::pgTAP</remote-id>
+	</upstream>
 </pkgmetadata>

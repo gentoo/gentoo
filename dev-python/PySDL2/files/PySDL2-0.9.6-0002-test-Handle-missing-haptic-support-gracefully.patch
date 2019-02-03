@@ -1,0 +1,26 @@
+From 4a38a0ef4c13ec3c518b78c0e56550fb8af43119 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 1 Jan 2018 13:29:16 +0100
+Subject: [PATCH 2/2] test: Handle missing haptic support gracefully
+
+---
+ sdl2/test/sdl_test.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/sdl2/test/sdl_test.py b/sdl2/test/sdl_test.py
+index 70c2e98..402e549 100644
+--- a/sdl2/test/sdl_test.py
++++ b/sdl2/test/sdl_test.py
+@@ -47,7 +47,8 @@ class SDLTest(unittest.TestCase):
+                      "FreeBSD des not support haptic input yet")
+     def test_SDL_INIT_HAPTIC(self):
+         ret = SDL_Init(SDL_INIT_HAPTIC)
+-        self.assertEqual(ret, 0, SDL_GetError())
++        if ret != 0:
++            self.skipTest('Haptic subsystem not supported')
+         ret = SDL_WasInit(SDL_INIT_HAPTIC)
+         self.assertEqual(ret, SDL_INIT_HAPTIC)
+         SDL_QuitSubSystem(SDL_INIT_HAPTIC)
+-- 
+2.16.0.rc0
+

@@ -1,5 +1,21 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License, v2
+
+# Matt Turner <mattst88@gentoo.org> (22 Dec 2018)
+# net-libs/zeromq is not keyworded
+zeromq
+
+# Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
+# Python 3.7 support requires fresh versions of packages which are stuck
+# at keywordreqs.
+# bug #661306: dev-python/pytest
+# bug #661320: dev-python/twisted
+python_targets_python3_7
+python_single_target_python3_7
+
+# Andrey Utkin <andrey_utkin@gentoo.org> (13 Jun 2018)
+# No ACPI support on alpha. Bug #657332
+acpi
 
 # Tobias Klausmann <klausman@gentoo.org> (03 March 2017)
 # There is no luajit support on alpha. Bugs #554376, #608322.
@@ -86,7 +102,6 @@ openexr
 
 # Stuff we don't want
 afs
-schroedinger
 ots
 frei0r
 libev
@@ -121,33 +136,7 @@ vpopmail
 # We don't have any virtual/mpi (bug 111807)
 mpi
 
-# masks required for asterisk
-zaptel
-
-# Modular X: mask non-alpha cards
-video_cards_apm
-video_cards_ark
-video_cards_ast
-video_cards_chips
-video_cards_i128
-video_cards_i740
-video_cards_intel
-video_cards_neomagic
-video_cards_newport
-video_cards_nsc
-video_cards_siliconmotion
-video_cards_sis
-video_cards_trident
-video_cards_tseng
-video_cards_vesa
-
 # Matt Turner <mattst88@gentoo.org>
-# Mask more VIDEO_CARDs added with mesa-8.0
-video_cards_i915
-video_cards_i965
-video_cards_ilo
-# vmware wasn't added with mesa-8.0, but it should still be masked
-video_cards_vmware
 # llvm is not keyworded
 video_cards_amdgpu
 video_cards_radeonsi
@@ -182,12 +171,6 @@ entropy
 # media-libs/xine-lib is not keyworded
 xine
 
-# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
-# libdlm and cman are not keyworded
-cman
-clvm
-
--zeitgeist
 template_haskell
 
 # nvidia cg toolkit for binary drivers

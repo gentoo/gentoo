@@ -7,6 +7,9 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">Statistics-TTest</remote-id>
+    <remote-id type="cpan-module">Statistics::PointEstimation</remote-id>
+    <remote-id type="cpan-module">Statistics::PointEstimation::Sufficient</remote-id>
     <remote-id type="cpan-module">Statistics::TTest</remote-id>
+    <remote-id type="cpan-module">Statistics::TTest::Sufficient</remote-id>
   </upstream>
 </pkgmetadata>

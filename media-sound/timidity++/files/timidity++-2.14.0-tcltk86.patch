@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/451296
 
---- interface/tk_c.c
-+++ interface/tk_c.c
+--- a/interface/tk_c.c
++++ b/interface/tk_c.c
 @@ -913,7 +913,7 @@
  	vsnprintf(buf, sizeof(buf), fmt, ap);
  	Tcl_Eval(my_interp, buf);

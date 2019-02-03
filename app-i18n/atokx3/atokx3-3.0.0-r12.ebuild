@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,7 +11,7 @@ MY_UPDATE_GTK="${PN}gtk216"
 MY_ZIPCODE_P="a20y1406lx"
 
 DESCRIPTION="ATOK X3 for Linux - The most famous Japanese Input Method Engine"
-HOMEPAGE="http://www.justsystems.com/jp/products/atok_linux/"
+HOMEPAGE="https://www.justsystems.com/jp/products/atok_linux/"
 SRC_URI="https://gate.justsystems.com/download/atok/up/lin/${MY_UPDATE_P}.tar.gz
 	https://gate.justsystems.com/download/atok/up/lin/${MY_UPDATE_GTK}.tar.gz
 	https://gate.justsystems.com/download/zipcode/up/lin/${MY_ZIPCODE_P}.tgz"

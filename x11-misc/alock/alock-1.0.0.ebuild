@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit eutils toolchain-funcs
 
 # we need this since there are no tagged releases yet
 DESCRIPTION="locks the local X display until a password is entered"
-HOMEPAGE="http://darkshed.net/projects/alock
+HOMEPAGE="https://darkshed.net/projects/alock
 	https://github.com/mgumz/alock"
 SRC_URI="https://github.com/mgumz/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -25,14 +25,13 @@ DEPEND="x11-libs/libX11
 	doc? ( app-text/asciidoc )"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/implicit_pointer_conversion_fix_amd64.patch
-	epatch "${FILESDIR}"/check-setuid.patch
-	epatch "${FILESDIR}"/tidy-printf.patch
-	epatch "${FILESDIR}"/fix-aliasing.patch
-	epatch "${FILESDIR}"/no-xf86misc.patch
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}"/implicit_pointer_conversion_fix_amd64.patch
+	"${FILESDIR}"/check-setuid.patch
+	"${FILESDIR}"/tidy-printf.patch
+	"${FILESDIR}"/fix-aliasing.patch
+	"${FILESDIR}"/no-xf86misc.patch
+)
 
 src_configure() {
 	tc-export CC

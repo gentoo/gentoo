@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of possible protocols for gpsd package.
@@ -18,7 +18,6 @@ isync - Isync protocol support
 itrax - iTrax protocol support
 mtk3301 - MTK-3301 protocol support
 navcom - Navcom protocol support
-nmea - NMEA protocol support
 nmea0183 - NMEA protocol support
 nmea2000 - NMEA2000/CAN support
 ntrip - NTRIP protocol support

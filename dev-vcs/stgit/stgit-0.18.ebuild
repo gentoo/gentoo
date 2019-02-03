@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,15 +47,12 @@ pkg_setup() {
 
 python_prepare_all() {
 	# Upstream's patchset
-	if [[ -n ${UPSTREAM_VER} ]]; then
-		EPATCH_SUFFIX="patch" \
-		EPATCH_FORCE="yes" \
-			epatch "${WORKDIR}"/patches-upstream
-	fi
+	[[ -n ${UPSTREAM_VER} ]] && \
+		eapply "${WORKDIR}"/patches-upstream
 
 	# this will be a noop, as we are working with a tarball,
 	# but throws git errors --> just get rid of it
-	sed -i -e 's/version\.write_builtin_version()//' setup.py || die
+	echo "version=\"${PV}\"" > "${S}"/stgit/builtin_version.py
 
 	distutils-r1_python_prepare_all
 }

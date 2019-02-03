@@ -1,5 +1,5 @@
---- utempter-0.5.5/utempter.c.mps	2004-12-11 14:54:06.000000000 +0100
-+++ utempter-0.5.5/utempter.c	2004-12-11 14:57:46.000000000 +0100
+--- a/utempter.c
++++ b/utempter.c
 @@ -11,7 +11,9 @@
  #include <sys/stat.h>
  #include <sys/sysmacros.h>

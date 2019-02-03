@@ -4,8 +4,8 @@ Subject: build system
 
 respect CFLAGS
 
---- src/Makefile.am
-+++ src/Makefile.am
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -8,7 +8,7 @@
  
  SUBDIRS = bmp wav stg

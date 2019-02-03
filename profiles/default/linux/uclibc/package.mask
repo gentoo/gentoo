@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 
 sys-libs/musl
@@ -11,6 +11,7 @@ sys-fs/udev
 
 # Working on it, bug #470884
 dev-libs/elfutils
+>virtual/libelf-2
 
 # These binary pkgs have a hard dep on glibc; make repoman shut up
 app-arch/rar
@@ -20,8 +21,7 @@ games-action/descent3
 games-action/descent3-demo
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
-games-action/trine-bin
-games-arcade/marbleblastgold-demo
+games-action/trine
 games-fps/enemy-territory
 games-fps/enemy-territory-etpro
 games-fps/enemy-territory-truecombat
@@ -29,7 +29,6 @@ games-fps/etqw-bin
 games-fps/glxquake-bin
 games-fps/legends
 games-fps/postal2
-games-fps/postal2mp-demo
 games-fps/quake3-bin
 games-fps/quake3-demo
 games-fps/rtcwmp-demo
@@ -75,10 +74,10 @@ games-action/hotline-miami
 games-action/intrusion2
 games-action/solar2
 games-action/swordandsworcery
+games-action/trine-enchanted-edition
 games-action/trine2
 games-arcade/dynamitejack
 games-arcade/thinktanks-demo
-games-kids/crayon-physics
 games-misc/little-inferno
 games-misc/papers-please
 games-rpg/dear-esther

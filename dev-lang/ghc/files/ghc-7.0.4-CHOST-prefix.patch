@@ -1,7 +1,7 @@
 Strip versioning components from *HOST for Darwin and Solaris
 
---- aclocal.m4
-+++ aclocal.m4
+--- a/aclocal.m4
++++ b/aclocal.m4
 @@ -1358,6 +1358,12 @@
    freebsd*)
      $2="freebsd"

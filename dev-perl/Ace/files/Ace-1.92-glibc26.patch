@@ -1,0 +1,29 @@
+From 79cbe4803f73eab5474e709b20ed570a44071182 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Sat, 31 Mar 2018 08:12:32 +1300
+Subject: Fix building with GlibC 2.26
+
+Bug: https://bugs.gentoo.org/637114
+---
+ acelib/wmake/LINUX_DEF | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/acelib/wmake/LINUX_DEF b/acelib/wmake/LINUX_DEF
+index ba96774..bd89334 100644
+--- a/acelib/wmake/LINUX_DEF
++++ b/acelib/wmake/LINUX_DEF
+@@ -18,9 +18,9 @@
+ NAME = LINUX
+ COMPILER = gcc -g -Wall -O2 -DACEDB4
+ LINKER = gcc -g
+-USEROPTS=-fPIC
++USEROPTS=-I/usr/include/tirpc -fPIC
+ 
+-LIBS = -lm
++LIBS = -ltirpc -lm
+ Xt_LIBS = -L/usr/X11R6/lib -lXaw -lXt -lXmu -lXext -lX11
+ LEX_LIBS = 
+ 
+-- 
+2.16.2
+

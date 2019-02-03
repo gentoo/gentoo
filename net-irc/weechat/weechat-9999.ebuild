@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 CMAKE_MAKEFILE_GENERATOR=emake
-inherit python-single-r1 cmake-utils
+inherit cmake-utils gnome2-utils python-single-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/weechat/weechat.git"
 else
 	SRC_URI="https://weechat.org/files/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~x86 ~x64-macos"
 fi
 
 DESCRIPTION="Portable and multi-interface IRC client"
@@ -21,11 +21,11 @@ LICENSE="GPL-3"
 SLOT="0"
 
 NETWORKS="+irc"
-PLUGINS="+alias +buflist +charset +exec +fifo +logger +relay +scripts +spell +trigger +xfer"
+PLUGINS="+alias +buflist +charset +exec +fset +fifo +logger +relay +scripts +spell +trigger +xfer"
 # dev-lang/v8 was dropped from Gentoo so we can't enable javascript support
-SCRIPT_LANGS="guile lua +perl +python ruby tcl"
+SCRIPT_LANGS="guile lua +perl php +python ruby tcl"
 LANGS=" cs de es fr hu it ja pl pt pt_BR ru tr"
-IUSE="doc nls +ssl test ${LANGS// / linguas_} ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
+IUSE="doc nls +ssl test ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
@@ -38,8 +38,9 @@ RDEPEND="
 	lua? ( dev-lang/lua:0[deprecated] )
 	nls? ( virtual/libintl )
 	perl? ( dev-lang/perl:= )
+	php? ( >=dev-lang/php-7.0:* )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( || ( dev-lang/ruby:2.4 dev-lang/ruby:2.3 dev-lang/ruby:2.2 ) )
+	ruby? ( || ( dev-lang/ruby:2.5 dev-lang/ruby:2.4 dev-lang/ruby:2.3 ) )
 	ssl? ( net-libs/gnutls )
 	spell? ( app-text/aspell )
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
@@ -58,7 +59,7 @@ DOCS="AUTHORS.adoc ChangeLog.adoc Contributing.adoc ReleaseNotes.adoc README.ado
 # tests need to be fixed to not use system plugins if weechat is already installed
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.2-tinfo.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.2-tinfo.patch )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -76,7 +77,7 @@ src_prepare() {
 	# install only required translations
 	local i
 	for i in ${LANGS} ; do
-		if ! use linguas_${i} ; then
+		if ! has ${i} ${LINGUAS-${i}} ; then
 			sed -i \
 				-e "/${i}.po/d" \
 				po/CMakeLists.txt || die
@@ -86,7 +87,7 @@ src_prepare() {
 	# install only required documentation ; en always
 	for i in $(grep add_subdirectory doc/CMakeLists.txt \
 			| sed -e 's/.*add_subdirectory(\(..\)).*/\1/' -e '/en/d'); do
-		if ! use linguas_${i} ; then
+		if ! has ${i} ${LINGUAS-${i}} ; then
 			sed -i \
 				-e '/add_subdirectory('${i}')/d' \
 				doc/CMakeLists.txt || die
@@ -95,6 +96,15 @@ src_prepare() {
 
 	# install docs in correct directory
 	sed -i "s#\${SHAREDIR}/doc/\${PROJECT_NAME}#\0-${PV}/html#" doc/*/CMakeLists.txt || die
+
+	if [[ ${CHOST} == *-darwin* ]]; then
+		# fix linking error on Darwin
+		sed -i "s/+ get_config_var('LINKFORSHARED')//" \
+			cmake/FindPython.cmake || die
+		# allow to find the plugins by default
+		sed -i 's/".so,.dll"/".bundle,.so,.dll"/' \
+			src/core/wee-config.c || die
+	fi
 }
 
 src_configure() {
@@ -108,6 +118,7 @@ src_configure() {
 		-DENABLE_BUFLIST=$(usex buflist)
 		-DENABLE_CHARSET=$(usex charset)
 		-DENABLE_EXEC=$(usex exec)
+		-DENABLE_FSET=$(usex fset)
 		-DENABLE_FIFO=$(usex fifo)
 		-DENABLE_IRC=$(usex irc)
 		-DENABLE_LOGGER=$(usex logger)
@@ -115,6 +126,7 @@ src_configure() {
 		-DENABLE_SCRIPT=$(usex scripts)
 		-DENABLE_SCRIPTS=$(usex scripts)
 		-DENABLE_PERL=$(usex perl)
+		-DENABLE_PHP=$(usex php)
 		-DENABLE_PYTHON=$(usex python)
 		-DENABLE_RUBY=$(usex ruby)
 		-DENABLE_LUA=$(usex lua)
@@ -136,4 +148,12 @@ src_configure() {
 	fi
 
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
 }

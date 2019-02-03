@@ -68,13 +68,3 @@
  	${INSTALLER} -p -f -m -XOS=$(OS_TYPE) -XBUILD=$(BUILD_TYPE) \
  		-XLIBRARY_TYPE=static-pic \
  		--prefix=$(prefix) \
---- gnat_util-gpl-2016-src/gnat_util.gpr.old	2017-02-09 22:15:27.153827164 +0100
-+++ gnat_util-gpl-2016-src/gnat_util.gpr	2017-02-09 22:15:38.307627480 +0100
-@@ -31,6 +31,7 @@
-             for Default_Switches ("Ada") use ("-O0", "-gnato", "-g", "-gnata");
-             for Default_Switches ("C") use ("-g");
-       end case;
-+      for Driver ("C") use External ("CC", "gcc");
-    end Compiler;
- 
-    package Builder is

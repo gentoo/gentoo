@@ -1,0 +1,21 @@
+commit 762cca3fd4aa754b266f928ec3fa2ad2261a831e
+Author: Alexander Zubkov <green@qrator.net>
+Date:   Mon Oct 22 20:31:04 2018 +0200
+
+    honor standalone '.' in path, split jail dir on "/./" pattern
+
+diff --git a/src/jail.c b/src/jail.c
+index 74f3eb1..3d649c4 100644
+--- a/src/jail.c
++++ b/src/jail.c
+@@ -121,8 +121,9 @@ void make_jail_dir( char*  dir )
+ {
+     for( ; *dir != '\0'; ++dir )
+     {
+-        if( *dir == '.' )
++        if( dir[0] == '/' && dir[1] == '.' && dir[2] == '/' )
+         {
++            ++dir;
+             *dir = '\0';
+             break;
+ 	}

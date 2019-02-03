@@ -1,0 +1,11 @@
+--- a/usr_sbin/ccstools.h
++++ b/usr_sbin/ccstools.h
+@@ -23,7 +23,7 @@
+ #define _FILE_OFFSET_BITS 64
+ #define _LARGEFILE_SOURCE
+ #define _LARGEFILE64_SOURCE
+-#define _GNU_SOURCE
++
+ #include <arpa/inet.h>
+ #include <asm/types.h>
+ #include <dirent.h>

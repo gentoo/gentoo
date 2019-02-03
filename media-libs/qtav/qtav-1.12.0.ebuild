@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ https://dev.gentoo.org/~johu/distfiles/${P}-capi.h-${CAPI_HASH}.xz"
 
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="gui libav opengl portaudio pulseaudio vaapi"
 REQUIRED_USE="gui? ( opengl )"
 
@@ -37,7 +37,10 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-PATCHES=( "${FILESDIR}/${P}-multilib.patch" )
+PATCHES=(
+	"${FILESDIR}"/${P}-multilib.patch
+	"${FILESDIR}"/${P}-ffmpeg4-{1,2}.patch # bugs 660852, 670765
+)
 
 src_prepare() {
 	cmake-utils_src_prepare

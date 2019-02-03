@@ -19,7 +19,6 @@
     <flag name="modules">Compile graphicsmagick with dynamically loadable modules</flag>
     <flag name="q16">Set storage quantum size to 16 (~2*memory)</flag>
     <flag name="q32">Set storage quantum size to 32 (~5*memory)</flag>
-    <flag name="webp">Enable support for webp image format</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">graphicsmagick</remote-id>

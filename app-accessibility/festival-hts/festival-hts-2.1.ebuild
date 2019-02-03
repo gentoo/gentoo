@@ -1,7 +1,7 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
 DESCRIPTION="HTS voices for Festival"
 HOMEPAGE="http://hts.sp.nitech.ac.jp/"
@@ -18,10 +18,12 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 
-DEPEND=">=app-accessibility/festival-1.96"
-RDEPEND="${DEPEND}"
+DEPEND=""
+RDEPEND=">=app-accessibility/festival-1.96"
+
+S=${WORKDIR}
 
 src_install() {
-	insinto /usr/share/festival/voices/
-	doins -r lib/voices/*
+	insinto /usr/share/festival/voices
+	doins -r lib/voices/.
 }

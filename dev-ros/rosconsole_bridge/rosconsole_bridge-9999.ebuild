@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,6 +12,6 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-libs/console_bridge
+RDEPEND="dev-libs/console_bridge:=
 	dev-ros/rosconsole"
 DEPEND="${RDEPEND}"

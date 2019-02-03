@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,13 +6,13 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Minor mode to highlight current line in buffer"
-HOMEPAGE="http://www.emacswiki.org/emacs/HighlineMode"
+HOMEPAGE="https://www.emacswiki.org/emacs/HighlineMode"
 # taken from: http://www.emacswiki.org/emacs/download/${PN}.el
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ppc ~s390 x86"
+KEYWORDS="amd64 ppc ~s390 ~sparc x86"
 
 SITEFILE="50${PN}-gentoo.el"
 

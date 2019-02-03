@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils python-single-r1
 
 DESCRIPTION="roleplaying game engine"
-HOMEPAGE="http://adonthell.linuxgames.com/"
+HOMEPAGE="http://adonthell.nongnu.org/"
 SRC_URI="https://savannah.nongnu.org/download/${PN}/${PN}-src-${PV}.tar.gz"
 
 LICENSE="GPL-2"
@@ -27,6 +27,7 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	dev-lang/swig
+	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
 		media-gfx/graphviz
@@ -40,6 +41,7 @@ PATCHES=(
 		"${FILESDIR}"/${P}-format.patch
 		"${FILESDIR}"/${P}-gcc46.patch
 		"${FILESDIR}"/${P}-glibc-2.10.patch
+		"${FILESDIR}"/${P}-freetype_pkgconfig.patch
 )
 
 pkg_setup() {

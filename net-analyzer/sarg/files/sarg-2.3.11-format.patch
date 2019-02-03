@@ -1,0 +1,36 @@
+--- a/report.c
++++ b/report.c
+@@ -54,7 +54,7 @@
+ 	char accsmart[MAXLEN];
+ 	char crc2[MAXLEN/2 -1];
+ 	char siteind[MAX_TRUNCATED_URL];
+-	char arqtt[256];
++	char arqtt[MAX_USER_FNAME_LEN * 2 + MAXLEN + 10];
+ 	char *oldurltt=NULL;
+ 	char oldaccdiatt[11],oldacchoratt[9];
+ 	char tmp3[MAXLEN];
+--- a/index.c
++++ b/index.c
+@@ -89,9 +89,9 @@
+ 	char monthdir[MAXLEN];
+ 	char monthname1[9], monthname2[9];
+ 	char nmonth[30];
+-	char monthnum[10];
++	char monthnum[15];
+ 	char dayindex[MAXLEN];
+-	char daynum[10];
++	char daynum[15];
+ 	char title[80];
+ 	int yearsort[150];
+ 	int nyears;
+--- a/userinfo.c
++++ b/userinfo.c
+@@ -67,7 +67,7 @@
+ 	int skip;
+ 	int flen;
+ 	int count, clen;
+-	char cstr[9];
++	char cstr[10];
+ 
+ 	last=NULL;
+ 	for (group=first_user_group ; group ; group=group->next) {

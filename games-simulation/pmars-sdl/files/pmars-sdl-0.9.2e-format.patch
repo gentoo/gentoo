@@ -1,5 +1,5 @@
---- src/asm.c.old	2015-10-28 13:23:53.465014342 +0100
-+++ src/asm.c	2015-10-28 13:23:10.502813377 +0100
+--- a/src/asm.c.old	2015-10-28 13:23:53.465014342 +0100
++++ b/src/asm.c	2015-10-28 13:23:10.502813377 +0100
 @@ -652,7 +652,7 @@
    macputs(str);
  #else
@@ -27,8 +27,8 @@
  #ifndef VMS
      textout(outs);
  #else
---- src/cdb.c.old	2015-10-28 13:24:04.669805966 +0100
-+++ src/cdb.c	2015-10-28 13:23:10.502813377 +0100
+--- a/src/cdb.c.old	2015-10-28 13:24:04.669805966 +0100
++++ b/src/cdb.c	2015-10-28 13:23:10.502813377 +0100
 @@ -2760,7 +2760,7 @@
        fprintf(outp, nameByAuthorScores, warrior[idxV[i]].name, warrior[idxV[i]].authorName,
                scrV[idxV[i]]);
@@ -38,8 +38,8 @@
          for (j = 0; j < warriors; ++j) {
            fprintf(outp, " %d", warrior[idxV[i]].score[j]);
          }
---- src/clparse.c.old	2015-10-28 13:24:10.648694768 +0100
-+++ src/clparse.c	2015-10-28 13:23:10.502813377 +0100
+--- a/src/clparse.c.old	2015-10-28 13:24:10.648694768 +0100
++++ b/src/clparse.c	2015-10-28 13:23:10.502813377 +0100
 @@ -289,7 +289,7 @@
                if (next_input(filep, inputs)) {
                  if (!strcmp(inputs, "-")) {

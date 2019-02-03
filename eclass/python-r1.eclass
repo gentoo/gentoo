@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-r1.eclass
@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: A common, simple eclass for Python packages.
 # @DESCRIPTION:
 # A common eclass providing helper functions to build and install
@@ -32,7 +33,7 @@ case "${EAPI:-0}" in
 	0|1|2|3|4)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	5|6)
+	5|6|7)
 		# EAPI=5 is required for sane USE_EXPAND dependencies
 		;;
 	*)
@@ -810,6 +811,7 @@ python_replicate_script() {
 		python_export PYTHON_SCRIPTDIR
 
 		(
+			exeopts -m 0755
 			exeinto "${PYTHON_SCRIPTDIR#${EPREFIX}}"
 			doexe "${files[@]}"
 		)

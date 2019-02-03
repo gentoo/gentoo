@@ -1,7 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
 DESCRIPTION="GTK2-configuration dialog for xvid4"
 HOMEPAGE="http://cvs.exit1.org/cgi-bin/viewcvs.cgi/xvid4conf/"
@@ -15,10 +15,3 @@ IUSE=""
 RDEPEND=">=x11-libs/gtk+-2.2.4:2"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-src_install() {
-	dodir /usr/{include,lib}
-	einstall || die
-
-	dodoc AUTHORS ChangeLog README
-}

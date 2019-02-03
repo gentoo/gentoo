@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -5,20 +5,15 @@
  VERPAT		= 7
  VERSION		= $(VERMAJ).$(VERMIN).$(VERPAT)

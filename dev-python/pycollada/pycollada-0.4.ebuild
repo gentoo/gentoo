@@ -16,7 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples test"
 
-DEPEND="doc? ( dev-python/sphinx )
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	doc? ( dev-python/sphinx )
 	test? ( dev-python/python-dateutil )"
 RDEPEND="dev-python/numpy
 	dev-python/lxml

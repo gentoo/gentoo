@@ -1,0 +1,49 @@
+diff -Naur powARman-v4l-dvb-saa716x-3b9fce66666a.orig/linux/drivers/media/common/saa716x/saa716x_adap.c powARman-v4l-dvb-saa716x-3b9fce66666a/linux/drivers/media/common/saa716x/saa716x_adap.c
+--- powARman-v4l-dvb-saa716x-3b9fce66666a.orig/linux/drivers/media/common/saa716x/saa716x_adap.c	2018-04-04 08:24:59.454708009 +0200
++++ powARman-v4l-dvb-saa716x-3b9fce66666a/linux/drivers/media/common/saa716x/saa716x_adap.c	2018-04-04 08:25:36.263560559 +0200
+@@ -1,9 +1,9 @@
+ #include <linux/bitops.h>
+ 
+-#include "dmxdev.h"
+-#include "dvbdev.h"
+-#include "dvb_demux.h"
+-#include "dvb_frontend.h"
++#include <media/dmxdev.h>
++#include <media/dvbdev.h>
++#include <media/dvb_demux.h>
++#include <media/dvb_frontend.h>
+ 
+ #include "saa716x_mod.h"
+ #include "saa716x_spi.h"
+diff -Naur powARman-v4l-dvb-saa716x-3b9fce66666a.orig/linux/drivers/media/common/saa716x/saa716x_ff.h powARman-v4l-dvb-saa716x-3b9fce66666a/linux/drivers/media/common/saa716x/saa716x_ff.h
+--- powARman-v4l-dvb-saa716x-3b9fce66666a.orig/linux/drivers/media/common/saa716x/saa716x_ff.h	2018-04-04 08:24:59.458708101 +0200
++++ powARman-v4l-dvb-saa716x-3b9fce66666a/linux/drivers/media/common/saa716x/saa716x_ff.h	2018-04-04 08:25:36.263560559 +0200
+@@ -1,7 +1,7 @@
+ #ifndef __SAA716x_FF_H
+ #define __SAA716x_FF_H
+ 
+-#include "dvb_ringbuffer.h"
++#include <media/dvb_ringbuffer.h>
+ #include <linux/version.h>
+ #include <linux/workqueue.h>
+ 
+diff -Naur powARman-v4l-dvb-saa716x-3b9fce66666a.orig/linux/drivers/media/common/saa716x/saa716x_priv.h powARman-v4l-dvb-saa716x-3b9fce66666a/linux/drivers/media/common/saa716x/saa716x_priv.h
+--- powARman-v4l-dvb-saa716x-3b9fce66666a.orig/linux/drivers/media/common/saa716x/saa716x_priv.h	2018-04-04 08:24:59.458708101 +0200
++++ powARman-v4l-dvb-saa716x-3b9fce66666a/linux/drivers/media/common/saa716x/saa716x_priv.h	2018-04-04 08:25:36.263560559 +0200
+@@ -18,11 +18,11 @@
+ #include "saa716x_spi.h"
+ #include "saa716x_vip.h"
+ 
+-#include "dvbdev.h"
+-#include "dvb_demux.h"
+-#include "dmxdev.h"
+-#include "dvb_frontend.h"
+-#include "dvb_net.h"
++#include <media/dvbdev.h>
++#include <media/dvb_demux.h>
++#include <media/dmxdev.h>
++#include <media/dvb_frontend.h>
++#include <media/dvb_net.h>
+ 
+ #define SAA716x_ERROR		0
+ #define SAA716x_NOTICE		1

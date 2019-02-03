@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit out-of-source
+
 DESCRIPTION="A free, cross-platform, hardware independent AdLib sound player library"
 HOMEPAGE="http://adplug.sourceforge.net"
 
@@ -10,7 +12,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/adplug/adplug.git"
 else
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+	SRC_URI="https://github.com/adplug/${PN}/releases/download/${P}/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 fi
 
@@ -27,13 +29,13 @@ src_prepare() {
 	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
-src_configure() {
+my_src_configure() {
 	econf \
 		$(use_enable static-libs static) \
 		$(use_enable debug)
 }
 
-src_install() {
-	default
+my_src_install_all() {
+	einstalldocs
 	find "${D}" -name '*.la' -delete || die
 }

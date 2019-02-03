@@ -1,5 +1,5 @@
---- configure.ac.orig	2009-06-30 10:35:14.000000000 +0200
-+++ configure.ac	2009-06-30 11:35:10.000000000 +0200
+--- rdesktop.orig/configure.ac	2009-06-30 10:35:14.000000000 +0200
++++ rdesktop/configure.ac		2009-06-30 11:35:10.000000000 +0200
 @@ -228,7 +228,11 @@
  if test -n "$PKG_CONFIG"; then
      PKG_CHECK_MODULES(LIBAO, ao, [HAVE_LIBAO=1], [HAVE_LIBAO=0])

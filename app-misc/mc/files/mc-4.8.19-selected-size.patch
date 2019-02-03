@@ -1,0 +1,30 @@
+From 069306eb2e7174f431bd3eecbc8f489f9652b782 Mon Sep 17 00:00:00 2001
+From: Andrew Borodin <aborodin@vmail.ru>
+Date: Sat, 2 Dec 2017 14:39:50 +0300
+Subject: [PATCH] Ticket #3883: size_trunc_sep() breaks on multibyte locales.
+
+The bug was introduced in b3867a6e154420833d6a1117f556b9ab2d64c6ab.
+
+Signed-off-by: Andrew Borodin <aborodin@vmail.ru>
+---
+ lib/util.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/lib/util.c b/lib/util.c
+index 0326f65e8..c23d91fba 100644
+--- a/lib/util.c
++++ b/lib/util.c
+@@ -383,7 +383,9 @@ size_trunc_sep (uintmax_t size, gboolean use_si)
+     p += strlen (p) - 1;
+     d = x + sizeof (x) - 1;
+     *d-- = '\0';
+-    while (p >= y && (isalpha ((unsigned char) *p) || (unsigned char) *p == ' '))
++    /* @size format is "size unit", i.e. "[digits][space][letters]".
++       Copy all charactes after digits. */
++    while (p >= y && !g_ascii_isdigit (*p))
+         *d-- = *p--;
+     for (count = 0; p >= y; count++)
+     {
+-- 
+2.15.1
+

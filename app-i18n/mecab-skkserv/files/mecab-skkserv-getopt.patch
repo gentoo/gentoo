@@ -1,0 +1,19 @@
+--- a/mecab-skkserv.cpp
++++ b/mecab-skkserv.cpp
+@@ -33,15 +33,9 @@
+ #include <stdexcept>
+ #include <set>
+ 
+-#ifdef HAVE_GETOPT_H
+-#include <getopt.h>
+-#endif
+-
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+-#endif
+-
+-#if defined HAVE_GETOPT_H && defined HAVE_GETOPT_LONG
++#elif defined(HAVE_GETOPT_H)
+ #include <getopt.h>
+ #else
+ #include "getopt.h"

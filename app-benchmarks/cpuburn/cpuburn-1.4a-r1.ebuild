@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,7 +20,7 @@ IUSE=""
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-flags.patch \
-		"${FILESDIR}"/01-variables.patch
+		"${FILESDIR}"/${P}-variables.patch
 	use amd64 && append-flags -m32 #65719
 	tc-export CC
 }

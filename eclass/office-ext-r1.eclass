@@ -6,9 +6,10 @@
 # The office team <openoffice@gentoo.org>
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: Eclass for installing libreoffice/openoffice extensions
 # @DESCRIPTION:
-# Eclass for easing maitenance of libreoffice/openoffice extensions.
+# Eclass for easing maintenance of libreoffice/openoffice extensions.
 
 case "${EAPI:-0}" in
 	5|6) OEXT_EXPORTED_FUNCTIONS="src_unpack src_install pkg_postinst pkg_prerm" ;;

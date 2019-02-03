@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>nixphoeni@gentoo.org</email>
-		<name>Joe Sapp</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>python@gentoo.org</email>
-		<name>Python</name>
-	</maintainer>
+	<!--maintainer-needed-->
 	<longdescription>
 		The elib.intl module provides enhanced internationalization
 		(I18N) services for your Python modules and applications.

@@ -1,13 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=7
 
 inherit multilib
 
 DESCRIPTION="An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin"
-HOMEPAGE="http://www.waider.ie/hacks/workshop/c/rvp/"
-SRC_URI="http://www.waider.ie/hacks/workshop/c/rvp/${P}.tar.gz"
+HOMEPAGE="https://www.waider.ie/hacks/workshop/c/rvp/"
+SRC_URI="https://www.waider.ie/hacks/workshop/c/rvp/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,11 +19,6 @@ DEPEND="virtual/pkgconfig
 	${RDEPEND}"
 
 src_configure() {
-	econf --with-gaim-plugin-dir=/usr/$(get_libdir)/pidgin \
-		--with-gaim-data-dir=/usr/share/pixmaps/pidgin
-}
-
-src_install() {
-	make install DESTDIR="${D}" || die "install failure"
-	dodoc AUTHORS ChangeLog INSTALL NEWS README
+	econf --with-gaim-plugin-dir="${EPREFIX}"/usr/$(get_libdir)/pidgin \
+		--with-gaim-data-dir="${EPREFIX}"/usr/share/pixmaps/pidgin
 }

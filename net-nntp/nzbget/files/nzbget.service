@@ -1,0 +1,18 @@
+[Unit]
+Description=NZBGet binary newsgrabber
+Documentation=https://nzbget.net/Documentation
+After=network.target
+
+[Service]
+User=nzbget
+Group=nzbget
+Type=forking
+PIDFile=/run/nzbget/nzbget.pid
+RuntimeDirectory=nzbget
+RuntimeDirectoryMode=0755
+ExecStart=/usr/bin/nzbget -c /etc/nzbgetd.conf -o LockFile=/run/nzbget/nzbget.pid -D
+ExecStop=/usr/bin/nzbget -c /etc/nzbgetd.conf -Q
+ExecReload=/usr/bin/nzbget -c /etc/nzbgetd.conf -O
+
+[Install]
+WantedBy=multi-user.target

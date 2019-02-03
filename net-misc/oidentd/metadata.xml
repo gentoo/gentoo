@@ -13,6 +13,6 @@
 		<flag name="masquerade">Enable support for masqueraded/NAT connections</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">ojnk</remote-id>
+		<remote-id type="github">janikrabe/oidentd</remote-id>
 	</upstream>
 </pkgmetadata>

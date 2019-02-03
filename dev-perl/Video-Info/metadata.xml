@@ -7,5 +7,16 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">Video-Info</remote-id>
+    <remote-id type="cpan-module">Video::Info</remote-id>
+    <remote-id type="cpan-module">Video::Info::ASF</remote-id>
+    <remote-id type="cpan-module">Video::Info::FOO</remote-id>
+    <remote-id type="cpan-module">Video::Info::MPEG</remote-id>
+    <remote-id type="cpan-module">Video::Info::MPEG::Audio</remote-id>
+    <remote-id type="cpan-module">Video::Info::MPEG::Constants</remote-id>
+    <remote-id type="cpan-module">Video::Info::MPEG::System</remote-id>
+    <remote-id type="cpan-module">Video::Info::MPEG::Video</remote-id>
+    <remote-id type="cpan-module">Video::Info::Magic</remote-id>
+    <remote-id type="cpan-module">Video::Info::Quicktime</remote-id>
+    <remote-id type="cpan-module">Video::Info::RIFF</remote-id>
   </upstream>
 </pkgmetadata>

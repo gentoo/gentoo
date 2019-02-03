@@ -5,7 +5,7 @@ EAPI="5"
 
 inherit pam autotools multilib
 
-DESCRIPTION="Linux PAM module providing ability to authenticate via a bluetooth compatible device"
+DESCRIPTION="PAM module providing ability to authenticate via a bluetooth compatible device"
 HOMEPAGE="http://pam.0xdef.net/"
 SRC_URI="http://pam.0xdef.net/source/${P}.tar.bz2"
 

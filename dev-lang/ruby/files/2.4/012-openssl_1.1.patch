@@ -1,0 +1,339 @@
+From 7af808153dd34a980e027a04d4490ae38019b3ed Mon Sep 17 00:00:00 2001
+From: Mark Wright <gienah@gentoo.org>
+Date: Sun, 15 Oct 2017 01:24:12 +1100
+Subject: [PATCH] Fix build failure against OpenSSL 1.1 built with
+ no-deprecated Thanks rhenium for the code review and fixes.
+
+---
+ ext/openssl/openssl_missing.h |  4 +++
+ ext/openssl/ossl.c            | 23 ++++++---------
+ ext/openssl/ossl.h            |  5 ++++
+ ext/openssl/ossl_cipher.c     | 14 ++++-----
+ ext/openssl/ossl_engine.c     | 54 ++++++++++++++++++++++-------------
+ ext/openssl/ossl_ssl.c        |  2 +-
+ ext/openssl/ossl_x509cert.c   |  4 +--
+ ext/openssl/ossl_x509crl.c    |  4 +--
+ 8 files changed, 63 insertions(+), 47 deletions(-)
+
+diff --git a/ext/openssl/openssl_missing.h b/ext/openssl/openssl_missing.h
+index cc31f6ac..debd25ad 100644
+--- a/ext/openssl/openssl_missing.h
++++ b/ext/openssl/openssl_missing.h
+@@ -209,6 +209,10 @@ IMPL_PKEY_GETTER(EC_KEY, ec)
+ #  define X509_get0_notAfter(x) X509_get_notAfter(x)
+ #  define X509_CRL_get0_lastUpdate(x) X509_CRL_get_lastUpdate(x)
+ #  define X509_CRL_get0_nextUpdate(x) X509_CRL_get_nextUpdate(x)
++#  define X509_set1_notBefore(x, t) X509_set_notBefore(x, t)
++#  define X509_set1_notAfter(x, t) X509_set_notAfter(x, t)
++#  define X509_CRL_set1_lastUpdate(x, t) X509_CRL_set_lastUpdate(x, t)
++#  define X509_CRL_set1_nextUpdate(x, t) X509_CRL_set_nextUpdate(x, t)
+ #endif
+ 
+ #if !defined(HAVE_SSL_SESSION_GET_PROTOCOL_VERSION)
+diff --git a/ext/openssl/ossl.c b/ext/openssl/ossl.c
+index 93ecc7d4..245385e7 100644
+--- a/ext/openssl/ossl.c
++++ b/ext/openssl/ossl.c
+@@ -1109,25 +1109,14 @@ Init_openssl(void)
+     /*
+      * Init all digests, ciphers
+      */
+-    /* CRYPTO_malloc_init(); */
+-    /* ENGINE_load_builtin_engines(); */
++#if !defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER >= 0x10100000
++    if (!OPENSSL_init_ssl(0, NULL))
++        rb_raise(rb_eRuntimeError, "OPENSSL_init_ssl");
++#else
+     OpenSSL_add_ssl_algorithms();
+     OpenSSL_add_all_algorithms();
+     ERR_load_crypto_strings();
+     SSL_load_error_strings();
+-
+-    /*
+-     * FIXME:
+-     * On unload do:
+-     */
+-#if 0
+-    CONF_modules_unload(1);
+-    destroy_ui_method();
+-    EVP_cleanup();
+-    ENGINE_cleanup();
+-    CRYPTO_cleanup_all_ex_data();
+-    ERR_remove_state(0);
+-    ERR_free_strings();
+ #endif
+ 
+     /*
+@@ -1149,7 +1138,11 @@ Init_openssl(void)
+     /*
+      * Version of OpenSSL the ruby OpenSSL extension is running with
+      */
++#if !defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER >= 0x10100000
++    rb_define_const(mOSSL, "OPENSSL_LIBRARY_VERSION", rb_str_new2(OpenSSL_version(OPENSSL_VERSION)));
++#else
+     rb_define_const(mOSSL, "OPENSSL_LIBRARY_VERSION", rb_str_new2(SSLeay_version(SSLEAY_VERSION)));
++#endif
+ 
+     /*
+      * Version number of OpenSSL the ruby OpenSSL extension was built with
+diff --git a/ext/openssl/ossl.h b/ext/openssl/ossl.h
+index f08889b2..5a15839c 100644
+--- a/ext/openssl/ossl.h
++++ b/ext/openssl/ossl.h
+@@ -35,6 +35,11 @@
+ #if !defined(OPENSSL_NO_OCSP)
+ #  include <openssl/ocsp.h>
+ #endif
++#include <openssl/bn.h>
++#include <openssl/rsa.h>
++#include <openssl/dsa.h>
++#include <openssl/evp.h>
++#include <openssl/dh.h>
+ 
+ /*
+  * Common Module
+diff --git a/ext/openssl/ossl_cipher.c b/ext/openssl/ossl_cipher.c
+index bfa76c1a..e6179733 100644
+--- a/ext/openssl/ossl_cipher.c
++++ b/ext/openssl/ossl_cipher.c
+@@ -508,9 +508,9 @@ ossl_cipher_set_iv(VALUE self, VALUE iv)
+     StringValue(iv);
+     GetCipher(self, ctx);
+ 
+ #if defined(HAVE_AUTHENTICATED_ENCRYPTION)
+-    if (EVP_CIPHER_CTX_flags(ctx) & EVP_CIPH_FLAG_AEAD_CIPHER)
++    if (EVP_CIPHER_flags(EVP_CIPHER_CTX_cipher(ctx)) & EVP_CIPH_FLAG_AEAD_CIPHER)
+ 	iv_len = (int)(VALUE)EVP_CIPHER_CTX_get_app_data(ctx);
+ #endif
+     if (!iv_len)
+ 	iv_len = EVP_CIPHER_CTX_iv_length(ctx);
+@@ -535,7 +535,7 @@ ossl_cipher_is_authenticated(VALUE self)
+ 
+     GetCipher(self, ctx);
+ 
+ #if defined(HAVE_AUTHENTICATED_ENCRYPTION)
+-    return (EVP_CIPHER_CTX_flags(ctx) & EVP_CIPH_FLAG_AEAD_CIPHER) ? Qtrue : Qfalse;
++    return (EVP_CIPHER_flags(EVP_CIPHER_CTX_cipher(ctx)) & EVP_CIPH_FLAG_AEAD_CIPHER) ? Qtrue : Qfalse;
+ #else
+     return Qfalse;
+ #endif
+@@ -606,7 +606,7 @@ ossl_cipher_get_auth_tag(int argc, VALUE *argv, VALUE self)
+ 
+     GetCipher(self, ctx);
+ 
+-    if (!(EVP_CIPHER_CTX_flags(ctx) & EVP_CIPH_FLAG_AEAD_CIPHER))
++    if (!(EVP_CIPHER_flags(EVP_CIPHER_CTX_cipher(ctx)) & EVP_CIPH_FLAG_AEAD_CIPHER))
+ 	ossl_raise(eCipherError, "authentication tag not supported by this cipher");
+ 
+     ret = rb_str_new(NULL, tag_len);
+@@ -641,7 +641,7 @@ ossl_cipher_set_auth_tag(VALUE self, VALUE vtag)
+     tag_len = RSTRING_LENINT(vtag);
+ 
+     GetCipher(self, ctx);
+-    if (!(EVP_CIPHER_CTX_flags(ctx) & EVP_CIPH_FLAG_AEAD_CIPHER))
++    if (!(EVP_CIPHER_flags(EVP_CIPHER_CTX_cipher(ctx)) & EVP_CIPH_FLAG_AEAD_CIPHER))
+ 	ossl_raise(eCipherError, "authentication tag not supported by this cipher");
+ 
+     if (!EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_AEAD_SET_TAG, tag_len, tag))
+@@ -668,7 +668,7 @@ ossl_cipher_set_auth_tag_len(VALUE self, VALUE vlen)
+     EVP_CIPHER_CTX *ctx;
+ 
+     GetCipher(self, ctx);
+-    if (!(EVP_CIPHER_CTX_flags(ctx) & EVP_CIPH_FLAG_AEAD_CIPHER))
++    if (!(EVP_CIPHER_flags(EVP_CIPHER_CTX_cipher(ctx)) & EVP_CIPH_FLAG_AEAD_CIPHER))
+ 	ossl_raise(eCipherError, "AEAD not supported by this cipher");
+ 
+     if (!EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_AEAD_SET_TAG, tag_len, NULL))
+@@ -695,7 +695,7 @@ ossl_cipher_set_iv_length(VALUE self, VALUE iv_length)
+     EVP_CIPHER_CTX *ctx;
+ 
+     GetCipher(self, ctx);
+-    if (!(EVP_CIPHER_CTX_flags(ctx) & EVP_CIPH_FLAG_AEAD_CIPHER))
++    if (!(EVP_CIPHER_flags(EVP_CIPHER_CTX_cipher(ctx)) & EVP_CIPH_FLAG_AEAD_CIPHER))
+ 	ossl_raise(eCipherError, "cipher does not support AEAD");
+ 
+     if (!EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_AEAD_SET_IVLEN, len, NULL))
+@@ -786,9 +786,9 @@ ossl_cipher_iv_length(VALUE self)
+     int len = 0;
+ 
+     GetCipher(self, ctx);
+ #if defined(HAVE_AUTHENTICATED_ENCRYPTION)
+-    if (EVP_CIPHER_CTX_flags(ctx) & EVP_CIPH_FLAG_AEAD_CIPHER)
++    if (EVP_CIPHER_flags(EVP_CIPHER_CTX_cipher(ctx)) & EVP_CIPH_FLAG_AEAD_CIPHER)
+ 	len = (int)(VALUE)EVP_CIPHER_CTX_get_app_data(ctx);
+ #endif
+     if (!len)
+ 	len = EVP_CIPHER_CTX_iv_length(ctx);
+diff --git a/ext/openssl/ossl_engine.c b/ext/openssl/ossl_engine.c
+index d69b5dca..5ca0d4ca 100644
+--- a/ext/openssl/ossl_engine.c
++++ b/ext/openssl/ossl_engine.c
+@@ -46,13 +46,25 @@ VALUE eEngineError;
+ /*
+  * Private
+  */
+-#define OSSL_ENGINE_LOAD_IF_MATCH(x) \
++#if !defined(LIBRESSL_VERSION_NUMBER) && OPENSSL_VERSION_NUMBER >= 0x10100000
++#define OSSL_ENGINE_LOAD_IF_MATCH(engine_name, x) \
+ do{\
+-  if(!strcmp(#x, RSTRING_PTR(name))){\
+-    ENGINE_load_##x();\
++  if(!strcmp(#engine_name, RSTRING_PTR(name))){\
++    if (OPENSSL_init_crypto(OPENSSL_INIT_ENGINE_##x, NULL))\
++      return Qtrue;\
++    else\
++      ossl_raise(eEngineError, "OPENSSL_init_crypto"); \
++  }\
++}while(0)
++#else
++#define OSSL_ENGINE_LOAD_IF_MATCH(engine_name, x)  \
++do{\
++  if(!strcmp(#engine_name, RSTRING_PTR(name))){\
++    ENGINE_load_##engine_name();\
+     return Qtrue;\
+   }\
+ }while(0)
++#endif
+ 
+ static void
+ ossl_engine_free(void *engine)
+@@ -94,55 +106,55 @@ ossl_engine_s_load(int argc, VALUE *argv, VALUE klass)
+     StringValueCStr(name);
+ #ifndef OPENSSL_NO_STATIC_ENGINE
+ #if HAVE_ENGINE_LOAD_DYNAMIC
+-    OSSL_ENGINE_LOAD_IF_MATCH(dynamic);
++    OSSL_ENGINE_LOAD_IF_MATCH(dynamic, DYNAMIC);
+ #endif
+ #if HAVE_ENGINE_LOAD_4758CCA
+-    OSSL_ENGINE_LOAD_IF_MATCH(4758cca);
++    OSSL_ENGINE_LOAD_IF_MATCH(4758cca, 4758CCA);
+ #endif
+ #if HAVE_ENGINE_LOAD_AEP
+-    OSSL_ENGINE_LOAD_IF_MATCH(aep);
++    OSSL_ENGINE_LOAD_IF_MATCH(aep, AEP);
+ #endif
+ #if HAVE_ENGINE_LOAD_ATALLA
+-    OSSL_ENGINE_LOAD_IF_MATCH(atalla);
++    OSSL_ENGINE_LOAD_IF_MATCH(atalla, ATALLA);
+ #endif
+ #if HAVE_ENGINE_LOAD_CHIL
+-    OSSL_ENGINE_LOAD_IF_MATCH(chil);
++    OSSL_ENGINE_LOAD_IF_MATCH(chil, CHIL);
+ #endif
+ #if HAVE_ENGINE_LOAD_CSWIFT
+-    OSSL_ENGINE_LOAD_IF_MATCH(cswift);
++    OSSL_ENGINE_LOAD_IF_MATCH(cswift, CSWIFT);
+ #endif
+ #if HAVE_ENGINE_LOAD_NURON
+-    OSSL_ENGINE_LOAD_IF_MATCH(nuron);
++    OSSL_ENGINE_LOAD_IF_MATCH(nuron, NURON);
+ #endif
+ #if HAVE_ENGINE_LOAD_SUREWARE
+-    OSSL_ENGINE_LOAD_IF_MATCH(sureware);
++    OSSL_ENGINE_LOAD_IF_MATCH(sureware, SUREWARE);
+ #endif
+ #if HAVE_ENGINE_LOAD_UBSEC
+-    OSSL_ENGINE_LOAD_IF_MATCH(ubsec);
++    OSSL_ENGINE_LOAD_IF_MATCH(ubsec, UBSEC);
+ #endif
+ #if HAVE_ENGINE_LOAD_PADLOCK
+-    OSSL_ENGINE_LOAD_IF_MATCH(padlock);
++    OSSL_ENGINE_LOAD_IF_MATCH(padlock, PADLOCK);
+ #endif
+ #if HAVE_ENGINE_LOAD_CAPI
+-    OSSL_ENGINE_LOAD_IF_MATCH(capi);
++    OSSL_ENGINE_LOAD_IF_MATCH(capi, CAPI);
+ #endif
+ #if HAVE_ENGINE_LOAD_GMP
+-    OSSL_ENGINE_LOAD_IF_MATCH(gmp);
++    OSSL_ENGINE_LOAD_IF_MATCH(gmp, GMP);
+ #endif
+ #if HAVE_ENGINE_LOAD_GOST
+-    OSSL_ENGINE_LOAD_IF_MATCH(gost);
++    OSSL_ENGINE_LOAD_IF_MATCH(gost, GOST);
+ #endif
+ #if HAVE_ENGINE_LOAD_CRYPTODEV
+-    OSSL_ENGINE_LOAD_IF_MATCH(cryptodev);
++    OSSL_ENGINE_LOAD_IF_MATCH(cryptodev, CRYPTODEV);
+ #endif
+ #if HAVE_ENGINE_LOAD_AESNI
+-    OSSL_ENGINE_LOAD_IF_MATCH(aesni);
++    OSSL_ENGINE_LOAD_IF_MATCH(aesni, AESNI);
+ #endif
+ #endif
+ #ifdef HAVE_ENGINE_LOAD_OPENBSD_DEV_CRYPTO
+-    OSSL_ENGINE_LOAD_IF_MATCH(openbsd_dev_crypto);
++    OSSL_ENGINE_LOAD_IF_MATCH(openbsd_dev_crypto, OPENBSD_DEV_CRYPTO);
+ #endif
+-    OSSL_ENGINE_LOAD_IF_MATCH(openssl);
++    OSSL_ENGINE_LOAD_IF_MATCH(openssl, OPENSSL);
+     rb_warning("no such builtin loader for `%"PRIsVALUE"'", name);
+     return Qnil;
+ #endif /* HAVE_ENGINE_LOAD_BUILTIN_ENGINES */
+@@ -160,7 +172,9 @@ ossl_engine_s_load(int argc, VALUE *argv, VALUE klass)
+ static VALUE
+ ossl_engine_s_cleanup(VALUE self)
+ {
++#if defined(LIBRESSL_VERSION_NUMBER) || OPENSSL_VERSION_NUMBER < 0x10100000
+     ENGINE_cleanup();
++#endif
+     return Qnil;
+ }
+ 
+diff --git a/ext/openssl/ossl_ssl.c b/ext/openssl/ossl_ssl.c
+index 8e3c0c42..d32a299c 100644
+--- a/ext/openssl/ossl_ssl.c
++++ b/ext/openssl/ossl_ssl.c
+@@ -379,7 +379,7 @@ ossl_call_session_get_cb(VALUE ary)
+ 
+ /* this method is currently only called for servers (in OpenSSL <= 0.9.8e) */
+ static SSL_SESSION *
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000 && !defined(LIBRESSL_VERSION_NUMBER)
+ ossl_sslctx_session_get_cb(SSL *ssl, const unsigned char *buf, int len, int *copy)
+ #else
+ ossl_sslctx_session_get_cb(SSL *ssl, unsigned char *buf, int len, int *copy)
+diff --git a/ext/openssl/ossl_x509cert.c b/ext/openssl/ossl_x509cert.c
+index cf82a53d..8d16b9b7 100644
+--- a/ext/openssl/ossl_x509cert.c
++++ b/ext/openssl/ossl_x509cert.c
+@@ -440,7 +440,7 @@ ossl_x509_set_not_before(VALUE self, VALUE time)
+ 
+     GetX509(self, x509);
+     asn1time = ossl_x509_time_adjust(NULL, time);
+-    if (!X509_set_notBefore(x509, asn1time)) {
++    if (!X509_set1_notBefore(x509, asn1time)) {
+ 	ASN1_TIME_free(asn1time);
+ 	ossl_raise(eX509CertError, "X509_set_notBefore");
+     }
+@@ -479,7 +479,7 @@ ossl_x509_set_not_after(VALUE self, VALUE time)
+ 
+     GetX509(self, x509);
+     asn1time = ossl_x509_time_adjust(NULL, time);
+-    if (!X509_set_notAfter(x509, asn1time)) {
++    if (!X509_set1_notAfter(x509, asn1time)) {
+ 	ASN1_TIME_free(asn1time);
+ 	ossl_raise(eX509CertError, "X509_set_notAfter");
+     }
+diff --git a/ext/openssl/ossl_x509crl.c b/ext/openssl/ossl_x509crl.c
+index 5ecd7ea0..45cf7fb4 100644
+--- a/ext/openssl/ossl_x509crl.c
++++ b/ext/openssl/ossl_x509crl.c
+@@ -226,7 +226,7 @@ ossl_x509crl_set_last_update(VALUE self, VALUE time)
+ 
+     GetX509CRL(self, crl);
+     asn1time = ossl_x509_time_adjust(NULL, time);
+-    if (!X509_CRL_set_lastUpdate(crl, asn1time)) {
++    if (!X509_CRL_set1_lastUpdate(crl, asn1time)) {
+ 	ASN1_TIME_free(asn1time);
+ 	ossl_raise(eX509CRLError, "X509_CRL_set_lastUpdate");
+     }
+@@ -257,7 +257,7 @@ ossl_x509crl_set_next_update(VALUE self, VALUE time)
+ 
+     GetX509CRL(self, crl);
+     asn1time = ossl_x509_time_adjust(NULL, time);
+-    if (!X509_CRL_set_nextUpdate(crl, asn1time)) {
++    if (!X509_CRL_set1_nextUpdate(crl, asn1time)) {
+ 	ASN1_TIME_free(asn1time);
+ 	ossl_raise(eX509CRLError, "X509_CRL_set_nextUpdate");
+     }

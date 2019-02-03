@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,11 +6,11 @@ EAPI=6
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: quickly switch between .c and .h files"
-HOMEPAGE="https://github.com/vim-scripts/a.vim"
+HOMEPAGE="https://github.com/vim-scripts/a.vim https://www.vim.org/scripts/script.php?script_id=31"
+
 SRC_URI="
-	https://github.com/vim-scripts/a.vim/archive/${PV}.tar.bz2 -> ${P}.tar.bz2
-	http://www.vim.org/scripts/download_script.php?src_id=6347 -> ${PN}.txt
-"
+	https://github.com/vim-scripts/a.vim/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://www.vim.org/scripts/download_script.php?src_id=6347 -> ${PN}.txt"
 
 LICENSE="alternate"
 KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
@@ -25,6 +25,8 @@ VIM_PLUGIN_HELPFILES="${PN}.txt"
 PATCHES=(
 	"${FILESDIR}"/${P}-hh-cc-alternation.patch
 )
+
+S="${WORKDIR}/a.vim-${PV}"
 
 src_prepare() {
 	default

@@ -11,7 +11,7 @@
 # often via packages like libcap.
 #
 # Due to probable capability-loss on moving or copying, this happens in
-# pkg_postinst-phase (at least for now).
+# pkg_postinst phase (at least for now).
 #
 # @EXAMPLE:
 # You can manually set the caps on ping and ping6 by doing:
@@ -110,11 +110,12 @@ fcaps() {
 		root=${EROOT:-${ROOT}}
 		;;
 	esac
+	root=${root%/}
 
 	# Process every file!
 	local file
 	for file ; do
-		[[ ${file} != /* ]] && file="${root}${file}"
+		[[ ${file} != /* ]] && file="${root}/${file}"
 
 		if use filecaps ; then
 			# Try to set capabilities.  Ignore errors when the

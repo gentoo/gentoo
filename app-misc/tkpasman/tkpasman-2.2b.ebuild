@@ -1,9 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=7
 
 MY_P="TkPasMan-${PV}"
 
@@ -20,13 +18,17 @@ DEPEND="
 	>=dev-lang/tcl-8.3:0=
 	>=dev-lang/tk-8.3:0="
 RDEPEND="${DEPEND}
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0= )
 	"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2a-gentoo.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.2a-gentoo.patch
+	default
 
 	if use ssl; then
 		sed -i "s:^USE_OPENSSL=true:USE_OPENSSL=false:g" config || die

@@ -11,10 +11,12 @@
 	</maintainer>
 	<use>
 		<flag name="minimal">Avoid collision with <pkg>app-misc/pwsafe</pkg></flag>
+		<flag name="qr">Enable QR code password display</flag>
 		<flag name="yubikey">Enable support for Yubikey</flag>
 		<flag name="xml">Enable XML import support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">pwsafe/pwsafe</remote-id>
+		<remote-id type="sourceforge">passwordsafe</remote-id>
 	</upstream>
 </pkgmetadata>

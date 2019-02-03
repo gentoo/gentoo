@@ -1,0 +1,30 @@
+--- a/Makefile
++++ b/Makefile
+@@ -23,8 +23,8 @@
+ ### compiler
+ 
+ ### gcc
+-CC=gcc
+-CFLAGS= -O -Werror -Wall -Wcast-qual -Wstrict-prototypes \
++CC ?= gcc
++CFLAGS += -Wall -Wcast-qual -Wstrict-prototypes \
+ 	-Wmissing-prototypes -Wmissing-declarations -Winline -Wcast-align 
+ ### cc
+ #CC=cc
+@@ -72,7 +72,7 @@
+ 
+ # compiler stuff
+ # --------------
+-CC_OPT= $(CFLAGS) -DFETCHLOG_VERSION_NO=\"$(FETCHLOG_VERSION)\" \
++CPPFLAGS += -DFETCHLOG_VERSION_NO=\"$(FETCHLOG_VERSION)\" \
+ 	$(HAS_MADVISE) $(HAS_REGEX)
+ 
+ # all
+@@ -82,7 +82,6 @@
+ # fetchlog
+ # -------
+ fetchlog: fetchlog.c 
+-	$(CC) $(CC_OPT) fetchlog.c -o fetchlog
+ 
+ 
+ # install

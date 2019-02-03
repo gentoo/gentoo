@@ -1,24 +1,23 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils multilib versionator prefix
+inherit multilib versionator prefix
 
 DESCRIPTION="Filesystem baselayout and init scripts"
 HOMEPAGE="https://www.gentoo.org/"
-
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/${PN}.git/snapshot/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="build kernel_linux"
+IUSE="build kernel_FreeBSD kernel_linux +split-usr"
 
 pkg_setup() {
 	multilib_layout
@@ -26,15 +25,22 @@ pkg_setup() {
 
 # Create our multilib dirs - the Makefile has no knowledge of this
 multilib_layout() {
-	local libdir libdirs=$(get_all_libdirs) def_libdir=$(get_abi_LIBDIR $DEFAULT_ABI)
+	local def_libdir libdir libdirs
+	def_libdir=$(get_abi_LIBDIR $DEFAULT_ABI)
+	libdirs=$(get_all_libdirs)
 	: ${libdirs:=lib}	# it isn't that we don't trust multilib.eclass...
 
-	[ -z "${def_libdir}" ] && die "your DEFAULT_ABI=$DEFAULT_ABI appears to be invalid"
+	[ -z "${def_libdir}" ] &&
+		die "your DEFAULT_ABI=$DEFAULT_ABI appears to be invalid"
 
 	# figure out which paths should be symlinks and which should be directories
 	local dirs syms exp d
 	for libdir in ${libdirs} ; do
-		exp=( {,usr/,usr/local/}${libdir} )
+		if use split-usr ; then
+			exp=( {,usr/,usr/local/}${libdir} )
+		else
+			exp=( {usr/,usr/local/}${libdir} )
+		fi
 		for d in "${exp[@]}" ; do
 			# most things should be dirs
 			if [ "${SYMLINK_LIB}" = "yes" ] && [ "${libdir}" = "lib" ] ; then
@@ -56,8 +62,13 @@ multilib_layout() {
 
 	# setup symlinks and dirs where we expect them to be; do not migrate
 	# data ... just fall over in that case.
-	local prefix
-	for prefix in "${EROOT}"{,usr/,usr/local/} ; do
+	local prefix prefix_lst
+	if use split-usr ; then
+		prefix_lst=( "${EROOT}"{,usr/,usr/local/} )
+	else
+		prefix_lst=( "${EROOT}"{usr/,usr/local/} )
+	fi
+	for prefix in "${prefix_lst[@]}"; do
 		if [ "${SYMLINK_LIB}" = yes ] ; then
 			# we need to make sure "lib" points to the native libdir
 			if [ -h "${prefix}lib" ] ; then
@@ -99,7 +110,7 @@ multilib_layout() {
 				case ${CHOST} in
 				*-gentoo-freebsd*) ;; # We want it the other way on fbsd.
 				i?86*|x86_64*|powerpc*|sparc*|s390*)
-					if [ -d "${prefix}lib32" ] ; then
+					if [[ -d ${prefix}lib32 && ! -h ${prefix}lib32 ]] ; then
 						rm -f "${prefix}lib32"/.keep
 						if ! rmdir "${prefix}lib32" 2>/dev/null ; then
 							ewarn "You need to merge ${prefix}lib32 into ${prefix}lib"
@@ -115,16 +126,16 @@ multilib_layout() {
 			fi
 		fi
 	done
+	if ! use split-usr ; then
+		for libdir in ${libdirs}; do
+			if [[ ! -e "${EROOT}${libdir}" ]]; then
+				ln -s usr/"${libdir}" "${EROOT}${libdir}"
+			fi
+		done
+	fi
 }
 
 pkg_preinst() {
-	# Bug #217848 - Since the remap_dns_vars() called by pkg_preinst() of
-	# the baselayout-1.x ebuild copies all the real configs from the user's
-	# /etc/conf.d into ${D}, it makes them all appear to be the default
-	# versions. In order to protect them from being unmerged after this
-	# upgrade, modify their timestamps.
-	touch "${EROOT}"/etc/conf.d/* 2>/dev/null
-
 	# This is written in src_install (so it's in CONTENTS), but punt all
 	# pending updates to avoid user having to do etc-update (and make the
 	# pkg_postinst logic simpler).
@@ -135,7 +146,11 @@ pkg_preinst() {
 	# Also, we cannot reference $S as binpkg will break so we do this.
 	multilib_layout
 	if use build ; then
-		emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout || die
+		if use split-usr ; then
+			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout
+		else
+			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout-usrmerge
+		fi
 	fi
 	rm -f "${ED}"/usr/share/${PN}/Makefile
 }
@@ -212,10 +227,6 @@ pkg_postinst() {
 		fi
 	fi
 
-	# baselayout leaves behind a lot of .keep files, so let's clean them up
-	find "${EROOT}"lib*/rcscripts/ -name .keep -exec rm -f {} + 2>/dev/null
-	find "${EROOT}"lib*/rcscripts/ -depth -type d -exec rmdir {} + 2>/dev/null
-
 	# whine about users with invalid shells #215698
 	if [[ -e "${EROOT}"etc/passwd ]] ; then
 		local bad_shells=$(awk -F: 'system("test -e " $7) { print $1 " - " $7}' "${EROOT}"etc/passwd | sort)
@@ -239,10 +250,19 @@ pkg_postinst() {
 	fi
 
 	for x in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least 2.4 ${v}; then
+		if ! version_is_at_least 2.4 ${x}; then
 			ewarn "After updating ${EROOT}etc/profile, please run"
-			ewarn "env-update and . /etc/profile"
-			break
+			ewarn "env-update && . /etc/profile"
+		fi
+
+		if ! version_is_at_least 2.6 ${x}; then
+			ewarn "Please run env-update then log out and back in to"
+			ewarn "update your path."
+		fi
+		# clean up after 2.5 typos
+		# https://bugs.gentoo.org/show_bug.cgi?id=656380
+		if [[ ${x} == 2.5 ]]; then
+			rm -fr "${EROOT}{,usr"
 		fi
 	done
 

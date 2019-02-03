@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,18 +11,18 @@ SRC_URI="http://libmpeg2.sourceforge.net/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
 IUSE="sdl static-libs X"
 
 RDEPEND="sdl? ( media-libs/libsdl )
-	X? ( x11-libs/libXv
+	X? (
+		x11-libs/libXv
 		x11-libs/libICE
 		x11-libs/libSM
-		x11-libs/libXt )
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r9
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
+		x11-libs/libXt
+	)"
 DEPEND="${RDEPEND}
-	X? ( x11-proto/xextproto )"
+	X? ( x11-base/xorg-proto )"
 
 DOCS=( AUTHORS ChangeLog NEWS README TODO )
 

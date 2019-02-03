@@ -2,11 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>neil@digimed.co.uk</email>
-		<name>Neil Bothwick</name>
+		<email>ramage.lucas@protonmail.com</email>
+		<name>Lucas Ramage</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<changelog>https://github.com/zerotier/ZeroTierOne/raw/master/RELEASE-NOTES.md</changelog>
+		<remote-id type="github">zerotier/ZeroTierOne</remote-id>
+	</upstream>
 </pkgmetadata>

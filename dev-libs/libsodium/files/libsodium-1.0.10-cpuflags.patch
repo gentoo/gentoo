@@ -24,7 +24,7 @@
    CFLAGS="$oldcflags"
  
 +AC_ARG_ENABLE(aesni, [AS_HELP_STRING(--disable-aesni,Do not use aesni code)],
-+  AS_IF([test "x$enableval" = "xyes"], check_aeni="yes", check_aesni="no"),
++  AS_IF([test "x$enableval" = "xyes"], check_aesni="yes", check_aesni="no"),
 +  check_aesni="yes")
 +AS_IF([test "$check_aesni" = "yes"],[
    oldcflags="$CFLAGS"

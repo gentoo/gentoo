@@ -1,44 +1,46 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 PYTHON_COMPAT=( python2_7 )
-
-inherit cmake-utils python-single-r1
-
-DESCRIPTION="gnuradio FM RDS Receiver"
-HOMEPAGE="https://github.com/bastibl/gr-rds"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/bastibl/${PN}"
+else
 	KEYWORDS=""
-#else
-#	SRC_URI=""
-#	KEYWORDS=""
 fi
+inherit cmake-utils python-single-r1
+
+DESCRIPTION="GNU Radio FM RDS Receiver"
+HOMEPAGE="https://github.com/bastibl/gr-rds"
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 
-RDEPEND=">=net-wireless/gnuradio-3.7_rc:0=[${PYTHON_USEDEP}]
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=[${PYTHON_USEDEP}]
-	${PYTHON_DEPS}"
-DEPEND="${RDEPEND}
-	dev-lang/swig:0"
+	>=net-wireless/gnuradio-3.7_rc:0=[${PYTHON_USEDEP}]
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	dev-lang/swig:0
+"
 #cppunit is listed in cmake, but only needed for tests and there are no tests
 #	dev-util/cppunit"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
 src_prepare() {
+	cmake-utils_src_prepare
 	#although cppunit is not used, it fails if it isn't there, fix it
-	sed -i 's#FATAL_ERROR "CppUnit#MESSAGE "CppUnit#' CMakeLists.txt
-	sed -i '/${CPPUNIT_INCLUDE_DIRS}/d' CMakeLists.txt
-	sed -i '/${CPPUNIT_LIBRARY_DIRS}/d' CMakeLists.txt
+	sed -i 's#FATAL_ERROR "CppUnit#MESSAGE "CppUnit#' CMakeLists.txt || die
+	sed -i '/${CPPUNIT_INCLUDE_DIRS}/d' CMakeLists.txt || die
+	sed -i '/${CPPUNIT_LIBRARY_DIRS}/d' CMakeLists.txt || die
 }
 
 src_configure() {
-	mycmakeargs=( -DPYTHON_EXECUTABLE="${PYTHON}" )
+	local mycmakeargs=( -DPYTHON_EXECUTABLE="${PYTHON}" )
 	cmake-utils_src_configure
 }

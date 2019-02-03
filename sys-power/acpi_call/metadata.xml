@@ -5,6 +5,6 @@
 		<email>maksbotan@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">mkottman/acpi_call</remote-id>
+		<remote-id type="github">teleshoes/acpi_call</remote-id>
 	</upstream>
 </pkgmetadata>

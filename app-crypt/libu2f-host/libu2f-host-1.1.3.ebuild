@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit linux-info udev user
 
@@ -11,16 +11,14 @@ SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="kernel_linux static-libs systemd"
 
-RDEPEND="
-	dev-libs/hidapi
-	dev-libs/json-c"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
-RDEPEND="${RDEPEND}
+DEPEND="dev-libs/hidapi
+	dev-libs/json-c:="
+RDEPEND="${DEPEND}
 	systemd? ( sys-apps/systemd[acl] )"
+BDEPEND="virtual/pkgconfig"
 
 CONFIG_CHECK="~HIDRAW"
 

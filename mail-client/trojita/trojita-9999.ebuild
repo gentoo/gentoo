@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 EGIT_REPO_URI="https://anongit.kde.org/${PN}.git"
-inherit cmake-utils fdo-mime gnome2-utils virtualx
+inherit cmake-utils gnome2-utils virtualx xdg-utils
 [[ ${PV} == 9999 ]] && inherit git-r3
 
 DESCRIPTION="A Qt IMAP e-mail client"
@@ -16,7 +16,9 @@ fi
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-IUSE="+crypt debug +dbus +password test +zlib"
+IUSE="+crypt +dbus debug +password test +zlib"
+
+REQUIRED_USE="password? ( dbus )"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -27,8 +29,8 @@ RDEPEND="
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	crypt? (
-		dev-libs/mimetic
 		>=app-crypt/gpgme-1.8.0[cxx,qt5]
+		dev-libs/mimetic
 	)
 	dbus? ( dev-qt/qtdbus:5 )
 	password? ( dev-libs/qtkeychain[qt5(+)] )
@@ -40,7 +42,7 @@ DEPEND="${RDEPEND}
 	zlib? ( virtual/pkgconfig )
 "
 
-DOCS="README LICENSE"
+DOCS=( README LICENSE )
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -56,7 +58,7 @@ src_configure() {
 		-DWITH_GPGMEPP=$(usex crypt)
 		-DWITH_MIMETIC=$(usex crypt)
 		-DWITH_DBUS=$(usex dbus)
-		-DWITH_QTKEYCHAINPLUGIN=$(usex password)
+		-DWITH_QTKEYCHAIN_PLUGIN=$(usex password)
 		-DWITH_TESTS=$(usex test)
 		-DWITH_ZLIB=$(usex zlib)
 	)
@@ -73,11 +75,11 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }

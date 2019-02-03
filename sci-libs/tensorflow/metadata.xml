@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>perfinion@gentoo.org</email>
+		<name>Jason Zaman</name>
+	</maintainer>
+	<longdescription lang="en">
+		An open source machine learning framework for everyone
+	</longdescription>
+	<use>
+		<flag name="cuda">Enable support for nVidia CUDA</flag>
+		<flag name="mpi">Enable support for MPI</flag>
+		<flag name="system-libs">Link with system instead of bundled libraries</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">tensorflow/tensorflow</remote-id>
+	</upstream>
+</pkgmetadata>

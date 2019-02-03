@@ -1,0 +1,16 @@
+typed_ast doesn't support py37 yet and disables its support under py37.
+However, when dev-python/types-ast is installed, the test suite mistakenly
+thinks that it has to test typed_ast-related things and fails.
+diff --git a/astroid/tests/unittest_nodes.py b/astroid/tests/unittest_nodes.py
+index 56b195c2..762f1af2 100644
+--- a/astroid/tests/unittest_nodes.py
++++ b/astroid/tests/unittest_nodes.py
+@@ -49,6 +49,8 @@ try:
+ except ImportError:
+     HAS_TYPED_AST = False
+ 
++if sys.version_info[:2] >= (3, 7):
++    HAS_TYPED_AST = False
+ 
+ class AsStringTest(resources.SysPathSetup, unittest.TestCase):
+     def test_tuple_as_string(self):

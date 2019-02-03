@@ -1,21 +1,20 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
 EAPI=4
 
-inherit autotools git-2
+EGIT_SUBMODULES=( '*' )
+EGIT_REPO_URI="https://github.com/dylan-lang/opendylan.git"
 
-RESTRICT="test"
+inherit autotools git-r3
 
 DESCRIPTION="OpenDylan language runtime environment"
-
 HOMEPAGE="http://opendylan.org"
-EGIT_HAS_SUBMODULES="1"
-EGIT_REPO_URI="https://github.com/dylan-lang/opendylan.git"
 
 LICENSE="Opendylan"
 SLOT="0"
-
 IUSE=""
+RESTRICT="test"
 
 DEPEND="dev-libs/boehm-gc[threads]
 	dev-lang/perl

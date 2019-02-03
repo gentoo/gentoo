@@ -1,48 +1,38 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
-[[ ${PV} == 9999* ]] && inherit git-2
+inherit meson xdg-utils
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.pwmt.org/pwmt/zathura-pdf-poppler.git"
+	EGIT_BRANCH="develop"
+else
+	KEYWORDS="~amd64 ~arm ~x86"
+	SRC_URI="http://pwmt.org/projects/zathura/plugins/download/${P}.tar.xz"
+fi
 
 DESCRIPTION="PDF plug-in for zathura"
-HOMEPAGE="http://pwmt.org/projects/zathura/"
-if ! [[ ${PV} == 9999* ]]; then
-SRC_URI="http://pwmt.org/projects/zathura/plugins/download/${P}.tar.gz"
-fi
-EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
-EGIT_BRANCH="develop"
+HOMEPAGE="https://pwmt.org/projects/zathura-pdf-poppler"
 
 LICENSE="ZLIB"
 SLOT="0"
-if ! [[ ${PV} == 9999* ]]; then
-KEYWORDS="~amd64 ~arm ~x86"
-else
-KEYWORDS=""
-fi
-IUSE=""
 
-RDEPEND="app-text/poppler:=[cairo]
-	>=app-text/zathura-0.2.7
-	x11-libs/cairo:="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="app-text/poppler[cairo]
+	>=app-text/zathura-0.3.9
+	dev-libs/girara
+	dev-libs/glib:2"
 
-pkg_setup() {
-	myzathuraconf=(
-		CC="$(tc-getCC)"
-		LD="$(tc-getLD)"
-		VERBOSE=1
-		DESTDIR="${D}"
-	)
+RDEPEND="${DEPEND}"
+
+BDEPEND="virtual/pkgconfig"
+
+pkg_postinst() {
+	xdg_desktop_database_update
 }
 
-src_compile() {
-	emake "${myzathuraconf[@]}"
-}
-
-src_install() {
-	emake "${myzathuraconf[@]}" install
-	dodoc AUTHORS
+pkg_postrm() {
+	xdg_desktop_database_update
 }

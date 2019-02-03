@@ -15,5 +15,5 @@
   </upstream>
   <use>
     <flag name="s3">Support for the Amazon Simple Storage Service</flag>
-  </use>		
+  </use>
 </pkgmetadata>

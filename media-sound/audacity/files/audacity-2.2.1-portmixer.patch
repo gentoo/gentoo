@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/624264
+
+Patch by Vladimir
+
+--- audacity-minsrc-2.2.1-rc3/configure.ac
++++ audacity-minsrc-2.2.1-rc3/configure.ac
+@@ -540,7 +540,7 @@
+      [compile with PortMixer [default=yes]])],
+   use_portmixer=$withval,
+   use_portmixer="yes")
+-
++AM_CONDITIONAL([USE_PORTMIXER], [test "$use_portmixer" = yes])
+ 
+ AC_CANONICAL_HOST
+ 
+--- audacity-minsrc-2.2.1-rc3/lib-src/Makefile.am
++++ audacity-minsrc-2.2.1-rc3/lib-src/Makefile.am
+@@ -92,7 +92,6 @@
+ 	libsoxr \
+ 	lib-widget-extra \
+ 	lv2 \
+-	portmixer \
+ 	portsmf \
+ 	sbsms \
+ 	$(NULL)
+@@ -156,8 +155,10 @@
+ SUBDIRS += portaudio-v19
+ endif
+ 
++if USE_PORTMIXER
+ # Note: portmixer needs to be linked against (the local or system) portaudio.
+ SUBDIRS += portmixer
++endif
+ 
+ if USE_LOCAL_PORTSMF
+ SUBDIRS += portsmf

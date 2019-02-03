@@ -9,9 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="fuse">Enable runtime support for <pkg>sys-fs/fuse</pkg></flag>
-	</use>
 	<longdescription lang="en">
 	IPFS is a decentralized torrent-like networking system with transparent
 	file adding/downloading.

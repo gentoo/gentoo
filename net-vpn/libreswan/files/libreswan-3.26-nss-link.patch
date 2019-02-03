@@ -1,0 +1,22 @@
+From b3199806cc66de4888917ddc85b511b433e43d63 Mon Sep 17 00:00:00 2001
+From: Paul Wouters <pwouters@redhat.com>
+Date: Mon, 17 Sep 2018 11:23:11 -0400
+Subject: [PATCH] building: -lfreebl is no longer needed
+
+---
+ mk/config.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mk/config.mk b/mk/config.mk
+index 3bd2527497..d8497c2104 100644
+--- a/mk/config.mk
++++ b/mk/config.mk
+@@ -234,7 +234,7 @@ BISONOSFLAGS?=
+ NSSFLAGS?=$(shell pkg-config --cflags nss)
+ # We don't want to link against every library pkg-config --libs nss
+ # returns
+-NSS_LDFLAGS ?= -lnss3 -lfreebl -lnssutil3
++NSS_LDFLAGS ?= -lnss3 -lnssutil3
+ NSS_SMIME_LDFLAGS ?= -lsmime3
+ NSS_UTIL_LDFLAGS ?= -lnssutil3
+ NSPR_LDFLAGS ?= -lnspr4

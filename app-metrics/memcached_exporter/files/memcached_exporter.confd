@@ -1,0 +1,2 @@
+# arguments for prometheus memcached exporter
+command_args=""

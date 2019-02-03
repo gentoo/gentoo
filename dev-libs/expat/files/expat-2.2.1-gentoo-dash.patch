@@ -10,8 +10,8 @@ Subject: [PATCH] conftools/get-version.sh: Use printf rather than try to infer
 
 diff --git a/expat/conftools/get-version.sh b/expat/conftools/get-version.sh
 index a70e0fb..91e5c64 100755
---- a/expat/conftools/get-version.sh
-+++ b/expat/conftools/get-version.sh
+--- a/conftools/get-version.sh
++++ b/conftools/get-version.sh
 @@ -32,15 +32,4 @@ MAJOR_VERSION="`sed -n -e '/MAJOR_VERSION/s/[^0-9]*//gp' $hdr`"
  MINOR_VERSION="`sed -n -e '/MINOR_VERSION/s/[^0-9]*//gp' $hdr`"
  MICRO_VERSION="`sed -n -e '/MICRO_VERSION/s/[^0-9]*//gp' $hdr`"

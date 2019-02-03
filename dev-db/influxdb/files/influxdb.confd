@@ -1,0 +1,12 @@
+#The convention in this file is to show the default setting commented
+#out.
+#To change the setting, uncomment it then change the value.
+
+#This is the influxd error log:
+#error_log="/var/log/influxdb/influxd.log"
+
+#This is the influxd output log:
+#output_log="/dev/null"
+
+# Extra options to pass to influxd:
+#influxd_opts=""

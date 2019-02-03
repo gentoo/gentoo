@@ -12,6 +12,5 @@
     </maintainer>
     <bugs-to>https://github.com/mgorny/eclean-kernel2/issues/</bugs-to>
     <remote-id type="github">mgorny/eclean-kernel2</remote-id>
-    <remote-id type="bitbucket">mgorny/eclean-kernel</remote-id>
   </upstream>
 </pkgmetadata>

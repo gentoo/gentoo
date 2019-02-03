@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,8 +8,8 @@ inherit eutils flag-o-matic toolchain-funcs
 MY_P=${PN}_${PV}
 
 DESCRIPTION="A sequence assembler for very short reads"
-HOMEPAGE="http://www.ebi.ac.uk/~zerbino/velvet/"
-SRC_URI="http://www.ebi.ac.uk/~zerbino/velvet/${MY_P}.tgz"
+HOMEPAGE="https://www.ebi.ac.uk/~zerbino/velvet/"
+SRC_URI="https://www.ebi.ac.uk/~zerbino/velvet/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -19,16 +19,10 @@ RDEPEND=">=media-libs/gstreamer-${PV}:0.10[introspection?,${MULTILIB_USEDEP}]
 	app-text/iso-codes
 	introspection? ( >=dev-libs/gobject-introspection-0.9.12 )
 	orc? ( >=dev-lang/orc-0.4.17[${MULTILIB_USEDEP}] )
+	!<media-libs/gst-plugins-bad-0.10.10:0.10
 "
 DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.3
-"
-RDEPEND="${RDEPEND}
-	!<media-libs/gst-plugins-bad-0.10.10:0.10
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-medialibs-20140508-r5
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)]
-	)
 "
 
 src_prepare() {

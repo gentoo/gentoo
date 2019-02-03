@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1
 
 DESCRIPTION="Iterative JSON parser with a Pythonic interface"
-HOMEPAGE="https://github.com/isagalaev/ijson https://pypi.python.org/pypi/ijson/"
+HOMEPAGE="https://github.com/isagalaev/ijson https://pypi.org/project/ijson/"
 SRC_URI="https://github.com/isagalaev/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

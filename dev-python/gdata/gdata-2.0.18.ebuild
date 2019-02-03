@@ -8,12 +8,12 @@ PYTHON_REQ_USE="ssl(+),xml(+)"
 inherit distutils-r1
 
 DESCRIPTION="Python client library for Google data APIs"
-HOMEPAGE="https://github.com/google/gdata-python-client https://pypi.python.org/pypi/gdata"
+HOMEPAGE="https://github.com/google/gdata-python-client https://pypi.org/project/gdata/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="examples"
 
 python_test() {

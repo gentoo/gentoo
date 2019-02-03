@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ RDEPEND="
 	tiff?	( media-libs/tiff:0 )
 	truetype? ( media-libs/freetype )"
 DEPEND="${RDEPEND}
-	X?		( x11-proto/xextproto )
+	X?		( x11-base/xorg-proto )
 	virtual/pkgconfig
 	!!x11-wm/afterstep"
 REQUIRED_USE="

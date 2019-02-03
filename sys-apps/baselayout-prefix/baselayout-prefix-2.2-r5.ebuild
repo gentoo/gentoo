@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/${MY_P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~arm ~ppc-aix ~x64-cygwin ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+KEYWORDS="~arm ~arm64 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 
 RDEPEND="sys-apps/gentoo-functions"
 DEPEND="${RDEPEND}"
@@ -29,7 +29,7 @@ pkg_preinst() {
 
 src_prepare() {
 	if use prefix-chain; then
-		epatch "${FILESDIR}"/baselayout-${PV}-prefix-chaining.patch
+		eapply "${FILESDIR}"/baselayout-${PV}-prefix-chaining.patch
 
 		# need to set the PKG_CONFIG_PATH globally for this prefix, when
 		# chaining is enabled, since pkg-config may not be installed locally,

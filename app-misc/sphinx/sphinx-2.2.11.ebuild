@@ -1,7 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
+WANT_AUTOMAKE=1.15
+
 inherit eutils autotools toolchain-funcs
 
 #MY_P=${P/_/-}
@@ -13,7 +16,7 @@ SRC_URI="http://sphinxsearch.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris"
+KEYWORDS="amd64 ~arm ~ia64 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris"
 IUSE="debug +id64 mysql odbc postgres re2 stemmer syslog xml"
 
 RDEPEND="mysql? ( virtual/mysql )

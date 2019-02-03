@@ -1,0 +1,15 @@
+The '~' character doesn't expand to $HOME in all build envs.
+
+--- qtile-0.12.0/test/test_bar.py
++++ qtile-0.12.0/test/test_bar.py
+@@ -105,8 +105,8 @@
+     assert c.complete("/bi") == "/bin/"
+     c.reset()
+     assert c.complete("/bin") != "/bin/"
+-    c.reset()
+-    assert c.complete("~") != "~"
++    #c.reset()
++    #assert c.complete("~") != "~"
+ 
+     c.reset()
+     s = "thisisatotallynonexistantpathforsure"

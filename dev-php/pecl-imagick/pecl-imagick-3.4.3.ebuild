@@ -5,7 +5,7 @@ EAPI=6
 
 MY_PV="${PV/rc/RC}"
 
-USE_PHP="php5-6 php7-0 php7-1"
+USE_PHP="php5-6 php7-0 php7-1 php7-2"
 
 inherit php-ext-pecl-r3
 

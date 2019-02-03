@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ HOMEPAGE="https://newsboat.org/ https://github.com/newsboat/newsboat"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
+IUSE=""
 
 RDEPEND="
 	>=dev-db/sqlite-3.5:3
@@ -29,24 +29,14 @@ RDEPEND="
 	sys-libs/ncurses:0=[unicode]
 "
 DEPEND="${RDEPEND}
-	dev-lang/perl
+	app-text/asciidoc
 	virtual/pkgconfig
 	sys-devel/gettext
-	test? (
-		dev-libs/boost
-		sys-devel/bc
-	)
 "
-[[ ${PV} == 9999 ]] && DEPEND+=" app-text/asciidoc"
 
-# tests require network access
-RESTRICT="test"
-
-src_prepare() {
-	default
-
-	sed -e 's:-ggdb::' -e 's:-Werror::' -i Makefile || die
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.11-flags.patch
+)
 
 src_configure() {
 	./config.sh || die
@@ -54,11 +44,11 @@ src_configure() {
 
 src_compile() {
 	emake prefix="/usr" CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
-	[[ ${PV} == 9999 ]] && emake doc
 }
 
 src_test() {
-	emake test
+	# tests require UTF-8 locale
+	emake CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" test
 	# Tests fail if in ${S} rather than in ${S}/test
 	cd "${S}"/test || die
 	./test || die

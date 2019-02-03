@@ -1,0 +1,18 @@
+Fix underlinking problems in shared libraries.
+
+--- a/avogadro/qtplugins/playertool/CMakeLists.txt
++++ b/avogadro/qtplugins/playertool/CMakeLists.txt
+@@ -7,3 +7,5 @@
+   ""
+   playertool.qrc
+ )
++
++target_link_libraries(PlayerTool LINK_PRIVATE Qt5OpenGL)
+--- a/avogadro/qtplugins/qtaim/CMakeLists.txt
++++ b/avogadro/qtplugins/qtaim/CMakeLists.txt
+@@ -34,3 +34,5 @@
+ 
+ target_link_libraries(QTAIMScenePlugin
+   LINK_PRIVATE AvogadroRendering ${Qt5Concurrent_LIBRARIES})
++target_link_libraries(QTAIMExtension
++  LINK_PRIVATE ${Qt5Concurrent_LIBRARIES})

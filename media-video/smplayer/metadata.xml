@@ -18,9 +18,6 @@
       Interfacing Specification, version 2), a DBus interface for remote
       control, which requires <pkg>dev-qt/qtdbus</pkg> as dependency.
     </flag>
-    <flag name="streaming">Support for streaming video sites through
-      <pkg>net-misc/youtube-dl</pkg> (MPV only).
-    </flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">smplayer</remote-id>

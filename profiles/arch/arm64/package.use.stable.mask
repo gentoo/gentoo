@@ -1,18 +1,94 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Thomas Deutschmann <whissi@gentoo.org> (26 Oct 2017)
-# idn: Needs net-dns/libidn2 which is not stabilized yet on arm64
-# gnutls: Needs net-libs/gnutls which is not stabilized yet on arm64
-net-misc/wget idn gnutls
+# Mart Raudsepp <leio@gentoo.org> (18 Jan 2019)
+# Respective x11-drivers/ not tested and stable yet
+x11-base/xorg-drivers input_devices_elographics input_devices_joystick input_devices_void video_cards_dummy video_cards_fbdev video_cards_nouveau
 
-# Michael Weber <xmw@gentoo.org> (29 Mar 2017)
-# unstable deps mesa llvm et al.
-x11-libs/cairo gles2 opengl
+# Mart Raudsepp <leio@gentoo.org> (11 Sep 2018)
+# net-wireless/bluez not stable yet
+dev-lang/python bluetooth
 
-# Michael Weber <xmw@gentoo.org> (29 Mar 2017)
-# unstable deps
-media-libs/freetype X harfbuzz
-app-text/poppler introspection
-x11-libs/pango introspection
-media-libs/harfbuzz introspection
+# Mart Raudsepp <leio@gentoo.org> (24 Jul 2018)
+# Temporary mask due to test failures in sys-libs/libcxxabi
+# and sys-libs/compiler-rt-sanitizers
+sys-devel/clang-runtime libcxx sanitize
+sys-devel/clang default-libcxx
+
+# Mart Raudsepp <leio@gentoo.org> (28 Jun 2018)
+# net-misc/lksctp-tools not stable yet
+dev-libs/openssl sctp
+net-misc/openssh sctp
+
+# Mart Raudsepp <leio@gentoo.org> (30 May 2018)
+# app-text/docbook2X not stable yet, fails tests (bug #511902)
+dev-vcs/git doc
+
+# Mart Raudsepp <leio@gentoo.org> (29 May 2018)
+# sys-devel/clang, dev-libs/xapian, app-text/texlive not stable yet
+# USE=doc requires USE=latex
+app-doc/doxygen clang doxysearch latex doc
+
+# Mart Raudsepp <leio@gentoo.org> (29 May 2018)
+# virtual/opengl and media-libs/freeglut not stable yet
+media-libs/libwebp opengl
+
+# Mart Raudsepp <leio@gentoo.org> (06 May 2018)
+# No media-libs/freeglut and co stable yet
+media-libs/jasper opengl
+
+# Mart Raudsepp <leio@gentoo.org> (04 May 2018)
+# sci-libs/mpir fails tests, bug 640424
+dev-python/gmpy mpir
+
+# Michał Górny <mgorny@gentoo.org> (01 May 2018)
+# More non-stable dependencies.
+dev-python/urllib3 test
+
+# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
+# Non-stable dependencies.
+app-admin/syslog-ng spoof-source
+app-portage/layman cvs subversion test
+app-text/xmlto latex
+dev-libs/apr-util freetds odbc
+gnome-base/dconf test
+gnome-base/librsvg tools
+net-dns/avahi bookmarks gtk3 utils
+net-misc/openssh X
+sys-apps/dbus test
+sys-apps/man-pages l10n_fr
+sys-apps/systemd cryptsetup policykit qrcode xkb
+sys-auth/pambase consolekit pam_krb5 pam_ssh passwdqc
+sys-block/thin-provisioning-tools test
+sys-devel/distcc gssapi
+sys-devel/gettext cvs
+
+# Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
+# Requires masked dependent flags.
+net-dns/avahi howl-compat python
+
+# Michał Górny <mgorny@gentoo.org> (28 Feb 2018)
+# Requires masked dependent flags.
+net-dns/avahi mdnsresponder-compat
+net-fs/samba ads
+
+# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# Masked due to unstable deps.
+dev-db/redis tcmalloc
+dev-python/hgdistver test
+dev-python/pycurl test
+dev-python/pyopenssl test
+dev-python/pyyaml libyaml
+dev-python/setuptools_scm mercurial test
+dev-python/sphinx latex test
+dev-python/twisted-core gtk serial
+net-analyzer/netcat crypt
+
+# Michał Górny <mgorny@gentoo.org> (07 Feb 2018)
+# sys-libs/tevent is not stable here.
+dev-libs/libverto tevent
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (21 Jan 2018)
+# systemtap is not yet stable on arm64
+dev-libs/glib systemtap
+sys-libs/glibc systemtap

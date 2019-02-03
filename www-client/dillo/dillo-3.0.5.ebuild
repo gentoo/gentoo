@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Lean FLTK based web browser"
-HOMEPAGE="http://www.dillo.org/"
-SRC_URI="http://www.dillo.org/download/${P}.tar.bz2
+HOMEPAGE="https://www.dillo.org/"
+SRC_URI="https://www.dillo.org/download/${P}.tar.bz2
 	mirror://gentoo/${PN}.png"
 
 LICENSE="GPL-3"
@@ -19,7 +19,7 @@ RDEPEND="
 	sys-libs/zlib
 	jpeg? ( virtual/jpeg:0 )
 	png? ( >=media-libs/libpng-1.2:0 )
-	ssl? ( dev-libs/openssl:0 )
+	ssl? ( dev-libs/openssl:0= )
 "
 DEPEND="
 	${RDEPEND}

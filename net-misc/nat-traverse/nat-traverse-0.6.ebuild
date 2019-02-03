@@ -1,5 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="Traverse NAT gateways with the Use of UDP"
 HOMEPAGE="http://linide.sourceforge.net/nat-traverse/"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ elif [[ ${PV} = *_pre* ]]; then
 else
 	SRC_URI="https://github.com/tdf/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
-inherit alternatives autotools ${SCM_ECLASS}
+inherit alternatives autotools flag-o-matic ${SCM_ECLASS}
 unset SCM_ECLASS
 
 DESCRIPTION="C++ client library for the CMIS interface"
@@ -59,6 +59,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug 618778
+	append-cxxflags -std=c++14
+
 	econf \
 		--program-suffix=-${SLOT} \
 		--disable-werror \

@@ -17,10 +17,7 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	dev-ada/gnatcoll[iconv,postgresql,projects,readline,sqlite]
-	dev-ada/gprbuild[shared]
-	dev-db/sqlite
-	dev-lang/gnat-gpl
+	dev-ada/gnatcoll[gnat_2016,iconv,postgres,projects,readline,sqlite]
 	dev-libs/atk
 	dev-libs/glib
 	dev-libs/gobject-introspection
@@ -38,24 +35,16 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}"/${MY_P}
 
-pkg_setup() {
-	GCC=${ADA:-$(tc-getCC)}
-	GNATLS="${GCC/gcc/gnatls}"
-	GNAT="${GCC/gcc/gnat}"
-	GNATMAKE="${GCC/gcc/gnatmake}"
-	if [[ -z "$(type ${GNATLS} 2>/dev/null)" ]] ; then
-		eerror "You need a gcc compiler that provides the Ada Compiler:"
-		eerror "1) use gcc-config to select the right compiler or"
-		eerror "2) set ADA=gcc-4.9.4 in make.conf"
-		die "ada compiler not available"
-	fi
-}
-
 src_compile() {
 	:
 }
 
 src_install() {
+	GCC_PV=4.9.4
+	GCC=gcc-${GCC_PV}
+	GNATLS=gnatls-${GCC_PV}
+	GNAT=gnatt-${GCC_PV}
+	GNATMAKE=gnatmake-${GCC_PV}
 	into /opt/${P}
 	dobin bin/gps_exe
 	dobin bin/gps_cli

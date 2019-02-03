@@ -1,0 +1,23 @@
+1. Add to user-defined CFLAGS instead of being overwritten by them
+2. Don't strip binaries: it leads to QA warnings
+diff --git a/Makefile b/Makefile
+index 7284f51..7615158 100644
+--- a/Makefile
++++ b/Makefile
+@@ -15,7 +15,7 @@ endif
+ 
+ # Compiler flags for various configurations:
+ 
+-CFLAGS := -std=c99 -pedantic -Wall -Wextra -Wno-unused-parameter
++CFLAGS += -std=c99 -pedantic -Wall -Wextra -Wno-unused-parameter
+ 
+ ifeq "$(CC)" "clang"
+   CFLAGS += -Wunreachable-code
+@@ -32,7 +32,6 @@ else ifeq "$(build)" "sanitize"
+   LDFLAGS += -fsanitize=address
+ else
+   CFLAGS += -Os
+-  LDFLAGS += -Wl,-s
+ endif
+ 
+ ifeq "$(HAVE_READLINE)" "yes"

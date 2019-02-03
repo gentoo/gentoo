@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="Mark commercial breaks in VDR recordings"
@@ -31,7 +31,7 @@ src_prepare() {
 	sed -e "sCODEC_ID_PROBE:AV_CODEC_ID_PROBE:" -i ffmpeg_decoder.cpp
 
 	# tested libav-9, ffmepg-2.2.9
-	epatch "${FILESDIR}/patches-0.8.x/${P}-libav9.diff" \
+	eapply "${FILESDIR}/patches-0.8.x/${P}-libav9.diff" \
 		"${FILESDIR}/patches-0.8.x/${P}-ffmpeg25.patch"
 
 	eautoreconf

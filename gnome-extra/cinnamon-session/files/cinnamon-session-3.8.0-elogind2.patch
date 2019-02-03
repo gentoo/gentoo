@@ -1,0 +1,25 @@
+From 10148b8831ba26c7991b4643cbb05d92445f4b61 Mon Sep 17 00:00:00 2001
+From: Kristian Fiskerstrand <kf@sumptuouscapital.com>
+Date: Mon, 9 Jul 2018 13:56:57 +0200
+Subject: [PATCH] elogind
+
+---
+ cinnamon-session/meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cinnamon-session/meson.build b/cinnamon-session/meson.build
+index 1d0db5b..4be50e5 100644
+--- a/cinnamon-session/meson.build
++++ b/cinnamon-session/meson.build
+@@ -77,7 +77,7 @@ executable('cinnamon-session',
+     xext,
+     xrender,
+     xtest,
+-    # elogind,
++    elogind,
+   ],
+   link_with: [
+     libegg,
+-- 
+2.16.4
+
