@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="Mouse accessibility enhancements for the GNOME desktop"
-HOMEPAGE="https://live.gnome.org/Mousetweaks/Home"
+HOMEPAGE="https://wiki.gnome.org/action/show/Projects/Mousetweaks"
 
 LICENSE="GPL-3"
 SLOT="0"
