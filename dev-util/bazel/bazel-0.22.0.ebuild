@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,20 +6,19 @@ EAPI=6
 inherit bash-completion-r1 java-pkg-2 multiprocessing
 
 DESCRIPTION="Fast and correct automated build system"
-HOMEPAGE="http://bazel.io/"
+HOMEPAGE="https://bazel.build/"
 
 SRC_URI="https://github.com/bazelbuild/bazel/releases/download/${PV}/${P}-dist.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="examples tools zsh-completion"
+IUSE="examples tools"
 # strip corrupts the bazel binary
 RESTRICT="strip"
 RDEPEND="virtual/jdk:1.8"
 DEPEND="${RDEPEND}
-	app-arch/unzip
-	app-arch/zip"
+	app-arch/unzip"
 
 S="${WORKDIR}"
 QA_FLAGS_IGNORED="usr/bin/bazel"
@@ -56,8 +55,6 @@ src_unpack() {
 src_prepare() {
 	default
 
-	sed -i 's@//src:bazel@//src:bazel_nojdk@' scripts/BUILD || die
-
 	# F: fopen_wr
 	# S: deny
 	# P: /proc/self/setgroups
@@ -68,25 +65,27 @@ src_prepare() {
 
 	# Use standalone strategy to deactivate the bazel sandbox, since it
 	# conflicts with FEATURES=sandbox.
-	cat > "${T}/bazelrc" <<-EOF
-	build --verbose_failures
-	build --spawn_strategy=standalone --genrule_strategy=standalone
+	cat > "${T}/bazelrc" <<-EOF || die
+		build --verbose_failures
+		build --spawn_strategy=standalone --genrule_strategy=standalone
 
-	build --distdir=${S}/derived/distdir/
-	build --jobs=$(makeopts_jobs) $(bazel-get-flags)
+		build --distdir="${S}/derived/distdir/"
+		build --jobs=$(makeopts_jobs) $(bazel-get-flags)
 
-	test --verbose_failures --verbose_test_summary
-	test --spawn_strategy=standalone --genrule_strategy=standalone
-	EOF
-
-	echo "import ${T}/bazelrc" >> "${S}/.bazelrc"
+		test --verbose_failures --verbose_test_summary
+		test --spawn_strategy=standalone --genrule_strategy=standalone
+		EOF
 }
 
 src_compile() {
-	export EXTRA_BAZEL_ARGS="--jobs=$(makeopts_jobs)"
+	export EXTRA_BAZEL_ARGS="--jobs=$(makeopts_jobs) --host_javabase=@local_jdk//:jdk"
 	VERBOSE=yes ./compile.sh || die
-	output/bazel --bazelrc="${T}/bazelrc" build //scripts:bazel-complete.bash || die
-	output/bazel shutdown
+
+	./scripts/generate_bash_completion.sh \
+		--bazel=output/bazel \
+		--output=bazel-complete.bash \
+		--prepend=scripts/bazel-complete-header.bash \
+		--prepend=scripts/bazel-complete-template.bash
 }
 
 src_test() {
@@ -101,12 +100,10 @@ src_test() {
 
 src_install() {
 	dobin output/bazel
-	newbashcomp bazel-bin/scripts/bazel-complete.bash ${PN}
+	newbashcomp bazel-complete.bash ${PN}
 	bashcomp_alias ${PN} ibazel
-	if use zsh-completion ; then
-		insinto /usr/share/zsh/site-functions
-		doins scripts/zsh_completion/_bazel
-	fi
+	insinto /usr/share/zsh/site-functions
+	doins scripts/zsh_completion/_bazel
 
 	if use examples; then
 		docinto examples
