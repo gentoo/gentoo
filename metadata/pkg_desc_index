@@ -9001,7 +9001,7 @@ net-misc/ntp 4.2.8_p12: Network Time Protocol suite/programs
 net-misc/ntpclient 2018.244: A NTP (RFC-1305 and RFC-4330) client for unix-alike systems
 net-misc/nx 3.5.0.33 3.5.99.16: NX compression technology core libraries
 net-misc/ofono 1.16: Open Source mobile telephony (GSM/UMTS) daemon
-net-misc/oidentd 2.0.8-r5 2.0.8-r6: Another (RFC1413 compliant) ident daemon
+net-misc/oidentd 2.0.8-r6: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.9.6.1: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.1.4-r2: A robust, high-performance CORBA 2 ORB
 net-misc/openntpd 6.0_p1: Lightweight NTP server ported from OpenBSD
