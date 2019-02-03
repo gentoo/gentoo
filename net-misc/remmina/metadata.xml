@@ -27,7 +27,7 @@
 		<flag name="telepathy">Enable telepathy support</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">FreeRDP/Remmina</remote-id>
-		<bugs-to>https://github.com/FreeRDP/Remmina/issues</bugs-to>
+		<remote-id type="gitlab">Remmina/Remmina</remote-id>
+		<bugs-to>https://gitlab.com/Remmina/Remmina/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
