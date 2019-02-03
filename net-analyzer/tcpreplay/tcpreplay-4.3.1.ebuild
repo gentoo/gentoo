@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ LICENSE="BSD GPL-3"
 SRC_URI="https://github.com/appneta/${PN}/releases/download/v${PV/_/-}/${P/_/-}.tar.xz -> ${P}.tar.xz"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~sparc x86"
 IUSE="debug pcapnav +tcpdump"
 
 DEPEND="
