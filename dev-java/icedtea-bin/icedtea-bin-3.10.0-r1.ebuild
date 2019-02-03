@@ -19,13 +19,13 @@ abi_uri() {
 BASE_URI="https://dev.gentoo.org/~gyakovlev/distfiles"
 SRC_URI="doc? ( ${BASE_URI}/${PN}-doc-${PV}.tar.xz )
 	source? ( ${BASE_URI}/${PN}-src-${PV}.tar.xz )
-	multilib? ( amd64? ( abi_x86_32? ( ${BASE_URI}/${PN}-core-${PV}-x86.tar.xz ) ) )
+	multilib? ( amd64? ( abi_x86_32? ( ${BASE_URI}/${PN}-core-${PV}-r1-x86.tar.xz ) ) )
 	big-endian? ( $(abi_uri ppc64) )
 	!big-endian? ( $(abi_uri ppc64le ppc64) )
 	$(abi_uri amd64)
 	$(abi_uri arm)
 	$(abi_uri arm64)
-	$(abi_uri x86 x86)"
+	$(abi_uri x86 x86 1)"
 
 DESCRIPTION="A Gentoo-made binary build of the IcedTea JDK"
 HOMEPAGE="http://icedtea.classpath.org"
