@@ -9,22 +9,24 @@ WANT_AUTOMAKE=none
 PATCHSET=3
 GENTOO_DEPEND_ON_PERL=no
 
-inherit autotools distutils-r1 eutils perl-module systemd
+inherit autotools distutils-r1 eutils git-r3 perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://www.net-snmp.org/"
+EGIT_REPO_URI="https://git.code.sf.net/p/net-snmp/code"
 SRC_URI="
-	mirror://sourceforge/project/${PN}/${PN}/${PV/_p*/}/${P/_p*/}.tar.gz
 	https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-3.tar.xz
 "
-
-S=${WORKDIR}/${P/_/.}
 
 # GPL-2 for the init scripts
 LICENSE="HPND BSD GPL-2"
 SLOT="0/35"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS=""
 IUSE="X bzip2 doc elf ipv6 libressl lm_sensors mfd-rewrites minimal mysql netlink pci perl python rpm selinux smux ssl tcpd ucd-compat zlib"
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
+	rpm? ( bzip2 zlib )
+"
 
 COMMON_DEPEND="
 	ssl? (
@@ -61,31 +63,32 @@ RDEPEND="
 	)
 	selinux? ( sec-policy/selinux-snmp )
 "
-
-REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
-	rpm? ( bzip2 zlib )
-"
+S=${WORKDIR}/${P/_/.}
 S=${WORKDIR}/${P/_p*/}
-
 RESTRICT=test
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.7.3-include-limits.patch
+	"${FILESDIR}"/${PN}-5.8-tinfo.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
+}
+
+src_unpack() {
+	default
+	git-r3_src_unpack
 }
 
 src_prepare() {
 	# snmpconf generates config files with proper selinux context
 	use selinux && eapply "${FILESDIR}"/${PN}-5.1.2-snmpconf-selinux.patch
 
-	eapply "${FILESDIR}"/${PN}-5.7.3-include-limits.patch
-	eapply "${FILESDIR}"/${PN}-5.8-tinfo.patch
-
 	mv "${WORKDIR}"/patches/0002-Respect-DESTDIR-for-pythoninstall.patch{,.disabled} || die
 	mv "${WORKDIR}"/patches/0004-Don-t-report-CFLAGS-and-LDFLAGS-in-net-snmp-config.patch{,.disabled} || die
 	eapply "${WORKDIR}"/patches/*.patch
 
-	eapply_user
+	default
 
 	eautoconf
 }
