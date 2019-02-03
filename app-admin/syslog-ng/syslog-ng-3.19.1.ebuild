@@ -41,6 +41,7 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
 DEPEND="${RDEPEND}
+	<sys-devel/bison-3.3.1
 	sys-devel/flex
 	virtual/pkgconfig"
 
