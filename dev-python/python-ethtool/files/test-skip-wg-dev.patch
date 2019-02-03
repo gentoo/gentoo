@@ -1,0 +1,29 @@
+From aa18c4a046ed2b508a87161f886e07c6d3716dd3 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Sat, 2 Feb 2019 14:00:52 -0800
+Subject: [PATCH] tests/test_ethtool.py: skip test_get_active_devices for wg
+
+wg is a wireguard interface and this test fails with
+OSError: [Errno 95] Operation not supported
+---
+ tests/test_ethtool.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_ethtool.py b/tests/test_ethtool.py
+index 6162cd3..0ff78b1 100755
+--- a/tests/test_ethtool.py
++++ b/tests/test_ethtool.py
+@@ -254,8 +254,8 @@ class EthtoolTests(unittest.TestCase):
+ 
+     def test_get_active_devices(self):
+         for devname in ethtool.get_active_devices():
+-            # Skip these test on tun devices
+-            if devname.startswith('tun'):
++            # Skip these test on tun and wg devices
++            if devname.startswith('tun') or devname.startswith('wg'):
+                 continue
+             self._functions_accepting_devnames(devname)
+ 
+-- 
+2.20.1
+
