@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic git-r3
 
 DESCRIPTION="utilities for editing and replaying previously captured network traffic"
 HOMEPAGE="http://tcpreplay.appneta.com/ https://github.com/appneta/tcpreplay"
 LICENSE="BSD GPL-3"
-SRC_URI="https://github.com/appneta/${PN}/releases/download/v${PV/_/-}/${P/_/-}.tar.xz -> ${P}.tar.xz"
+EGIT_REPO_URI="https://github.com/appneta/tcpreplay"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~sparc x86"
+KEYWORDS=""
 IUSE="debug pcapnav +tcpdump"
 
 DEPEND="
@@ -21,7 +21,6 @@ DEPEND="
 	pcapnav? ( net-libs/libpcapnav )
 "
 RDEPEND="${DEPEND}"
-
 DOCS=(
 	docs/{CHANGELOG,CREDIT,HACKING,TODO}
 )
@@ -52,8 +51,8 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_with pcapnav pcapnav-config /usr/bin/pcapnav-config) \
 		$(use_with tcpdump tcpdump /usr/sbin/tcpdump) \
+		--disable-local-libopts \
 		--enable-dynamic-link \
-		--enable-local-libopts \
 		--enable-shared \
 		--with-libdnet \
 		--with-testnic2=lo \
@@ -62,7 +61,7 @@ src_configure() {
 
 src_test() {
 	if [[ ! ${EUID} -eq 0 ]]; then
-		ewarn "Some tests were disabled due to FEATURES=userpriv"
+		ewarn "Some tests will be disabled due to FEATURES=userpriv"
 		ewarn "To run all tests issue the following command as root:"
 		ewarn " # make -C ${S}/test"
 		emake -j1 -C test tcpprep || die "self test failed - see ${S}/test/test.log"
