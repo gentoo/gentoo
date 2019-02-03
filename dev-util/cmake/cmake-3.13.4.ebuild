@@ -50,7 +50,7 @@ SITEFILE="50${PN}-gentoo.el"
 PATCHES=(
 	# prefix
 	"${FILESDIR}"/${PN}-3.4.0_rc1-darwin-bundle.patch
-	"${FILESDIR}"/${PN}-3.9.0_rc2-prefix-dirs.patch
+	"${FILESDIR}"/${PN}-3.13.4-prefix-dirs.patch
 	"${FILESDIR}"/${PN}-3.1.0-darwin-isysroot.patch
 
 	# handle gentoo packaging in find modules
@@ -143,6 +143,7 @@ src_prepare() {
 	# Add gcc libs to the default link paths
 	sed -i \
 		-e "s|@GENTOO_PORTAGE_GCCLIBDIR@|${EPREFIX}/usr/${CHOST}/lib/|g" \
+		-e "$(usex prefix-guest "s|@GENTOO_HOST@||" "/@GENTOO_HOST@/d")" \
 		-e "s|@GENTOO_PORTAGE_EPREFIX@|${EPREFIX}/|g" \
 		Modules/Platform/{UnixPaths,Darwin}.cmake || die "sed failed"
 	if ! has_version \>=${CATEGORY}/${PN}-3.4.0_rc1 ; then
