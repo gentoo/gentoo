@@ -128,12 +128,10 @@ else
 	LICENSE="GPL-2+ LGPL-2.1+ FDL-1.1+"
 fi
 
-IUSE="regression-test vanilla"
-IUSE_DEF=( nls nptl )
+IUSE="regression-test vanilla +nls +nptl"
 
 if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
-	IUSE+=" altivec debug"
-	IUSE_DEF+=( cxx fortran )
+	IUSE+=" altivec debug +cxx +fortran"
 	[[ -n ${PIE_VER} ]] && IUSE+=" nopie"
 	[[ -n ${HTB_VER} ]] && IUSE+=" boundschecking"
 	[[ -n ${D_VER}   ]] && IUSE+=" d"
@@ -144,13 +142,13 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 4.0 && IUSE+=" objc-gc"
 	tc_version_is_between 4.0 4.9 && IUSE+=" mudflap"
 	tc_version_is_at_least 4.1 && IUSE+=" libssp objc++"
-	tc_version_is_at_least 4.2 && IUSE_DEF+=( openmp )
+	tc_version_is_at_least 4.2 && IUSE+=" +openmp"
 	tc_version_is_at_least 4.3 && IUSE+=" fixed-point"
 	tc_version_is_at_least 4.7 && IUSE+=" go"
 	# Note: while <=gcc-4.7 also supported graphite, it required forked ppl
 	# versions which we dropped.  Since graphite was also experimental in
 	# the older versions, we don't want to bother supporting it.  #448024
-	tc_version_is_at_least 4.8 && IUSE+=" graphite" IUSE_DEF+=( sanitize )
+	tc_version_is_at_least 4.8 && IUSE+=" graphite +sanitize"
 	tc_version_is_between 4.9 8 && IUSE+=" cilk"
 	tc_version_is_at_least 4.9 && IUSE+=" +vtv"
 	tc_version_is_at_least 5.0 && IUSE+=" jit mpx"
@@ -158,8 +156,6 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	# systemtap is a gentoo-specific switch: bug #654748
 	tc_version_is_at_least 8.0 && IUSE+=" systemtap"
 fi
-
-IUSE+=" ${IUSE_DEF[*]/#/+}"
 
 SLOT="${GCC_CONFIG_VER}"
 
@@ -1303,7 +1299,8 @@ toolchain_src_configure() {
 	fi
 
 	if tc_version_is_at_least 4.8 && in_iuse sanitize ; then
-		confgcc+=( $(use_enable sanitize libsanitizer) )
+		# See Note [implicitly enabled flags]
+		confgcc+=( $(usex sanitize '' --disable-libsanitizer) )
 	fi
 
 	if tc_version_is_at_least 6.0 && in_iuse pie ; then
@@ -2498,3 +2495,19 @@ toolchain_death_notice() {
 		popd >/dev/null
 	fi
 }
+
+# Note [implicitly enabled flags]
+# -------------------------------
+# Usually configure-based packages handle explicit feature requests
+# like
+#     ./configure --enable-foo
+# as explicit request to check for suppor of 'foo' and bail out at
+# configure time.
+#
+# GCC does not follow this pattern an instead overrides autodetection
+# of the feature and enables it unconditionally.
+# See https://gcc.gnu.org/PR85663
+#
+# Thus safer way to enable/disable the feature is to rely on implicit
+# enabled-by-default state:
+#    econf $(usex foo '' --disable-foo)
