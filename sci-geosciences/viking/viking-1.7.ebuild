@@ -7,7 +7,7 @@ inherit gnome2-utils
 
 DESCRIPTION="GPS data editor and analyzer"
 HOMEPAGE="https://sourceforge.net/projects/viking/"
-IUSE="doc +exif libexif geoclue gps +magic mapnik nls sqlite"
+IUSE="doc +exif libexif geoclue gps +magic mapnik nls oauth sqlite"
 SRC_URI="
 	mirror://sourceforge/${PN}/${P}.tar.bz2
 	doc? ( mirror://sourceforge/${PN}/${PN}.pdf )"
@@ -22,7 +22,6 @@ COMMONDEPEND="
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nettle
-	net-libs/liboauth
 	net-misc/curl
 	sys-libs/zlib
 	x11-libs/gdk-pixbuf:2
@@ -32,6 +31,7 @@ COMMONDEPEND="
 	exif? ( libexif? ( media-libs/libexif ) !libexif? ( media-libs/gexiv2 ) )
 	magic? ( sys-apps/file )
 	mapnik? ( sci-geosciences/mapnik )
+	oauth? ( net-libs/liboauth )
 	sqlite? ( dev-db/sqlite:3 )
 "
 RDEPEND="${COMMONDEPEND}
@@ -68,6 +68,7 @@ src_configure() {
 		$(use_enable magic) \
 		$(use_enable mapnik) \
 		$(use_enable nls) \
+		$(use_enable oauth) \
 		$(use_enable sqlite mbtiles )
 }
 
