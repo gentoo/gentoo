@@ -16,7 +16,7 @@ SLOT="2"
 KEYWORDS=""
 
 LANGS="am ar ast az be bg br ca ca@valencia cs csb da de dz el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km kn ko lt lv mk ml ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
-IUSE="alsa aalib altivec aqua debug doc openexr gnome heif postscript jpeg2k cpu_flags_x86_mmx mng python smp cpu_flags_x86_sse udev unwind vector-icons webp wmf xpm"
+IUSE="alsa aalib altivec aqua debug doc openexr gnome heif postscript jpeg2k cpu_flags_x86_mmx mng python cpu_flags_x86_sse udev unwind vector-icons webp wmf xpm"
 
 RDEPEND=">=dev-libs/glib-2.56.0:2
 	>=dev-libs/atk-2.2.0
@@ -126,7 +126,7 @@ src_configure() {
 		$(use_with webp)
 		$(use_with heif libheif)
 		$(use_enable python)
-		$(use_enable smp mp)
+		--enable-mp
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_with udev gudev)
 		$(use_with unwind)
