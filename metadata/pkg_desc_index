@@ -8487,7 +8487,7 @@ net-analyzer/synscan 5.01: A fast asynchronous half-open TCP portscanner
 net-analyzer/tcpdump 4.9.2: A Tool for network monitoring and data acquisition
 net-analyzer/tcpflow 1.4.5_p1-r1: A tool for monitoring, capturing and storing TCP connections flows
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
-net-analyzer/tcpreplay 4.1.2-r1 4.3.1: utilities for editing and replaying previously captured network traffic
+net-analyzer/tcpreplay 4.3.1: utilities for editing and replaying previously captured network traffic
 net-analyzer/tcpstat 1.5 1.5-r1: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7_p4_p1: A Tool for analyzing network packet dumps
 net-analyzer/tcptraceroute 1.5_beta7-r2: tcptraceroute is a traceroute implementation using TCP packets
