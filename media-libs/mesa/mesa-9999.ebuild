@@ -67,7 +67,7 @@ REQUIRED_USE="
 	video_cards_vmware? ( gallium )
 "
 
-LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.96"
+LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.97"
 RDEPEND="
 	!app-eselect/eselect-mesa
 	>=app-eselect/eselect-opengl-1.3.0
