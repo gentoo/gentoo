@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -61,7 +61,7 @@ pkg_nofetch() {
 	elog "${VMD_DOWNLOAD}"
 	elog "after agreeing to the license and get"
 	elog "https://dev.gentoo.org/~jlec/distfiles/${P}-gentoo-patches.tar.xz"
-	elog "Place both in ${DISTDIR}"
+	elog "Place both into your DISTDIR directory"
 }
 
 src_prepare() {
