@@ -12,24 +12,21 @@ SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${P}.tar.xz"
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE="+bmp dds connman debug drm +eet egl examples fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz hyphen +ico ibus jpeg2k libressl libuv luajit neon nls opengl ssl pdf physics postscript +ppm +psd pulseaudio raw scim sdl sound static-libs svg +system-lz4 systemd tga tiff tslib unwind v4l valgrind vlc vnc wayland webp X xcf xim xine xpm xpresent zeroconf"
+IUSE="+bmp dds connman debug drm +eet examples fbcon +fontconfig fribidi gif gles2 glib gnutls gstreamer harfbuzz hyphen +ico ibus jpeg2k libressl libuv luajit neon nls opengl ssl pdf physics postscript +ppm +psd pulseaudio raw scim sdl sound static-libs svg +system-lz4 systemd tga tiff tslib unwind v4l valgrind vlc vnc wayland webp X xcf xim xine xpm xpresent zeroconf"
 
 REQUIRED_USE="
-	?? ( opengl egl )
-	?? ( opengl gles )
-	egl? ( gles )
+	?? ( gles2 opengl )
 	fbcon? ( !tslib )
-	gles? (
-		|| ( X wayland )
+	gles2? (
+		|| ( wayland X )
 		!sdl
-		egl
 	)
 	ibus? ( glib )
 	opengl? ( X )
 	pulseaudio? ( sound )
 	sdl? ( opengl )
-	vnc? ( X fbcon )
-	wayland? ( egl gles !opengl )
+	vnc? ( fbcon X )
+	wayland? ( gles2 !opengl )
 	xim? ( X )
 	xpresent? ( X )
 "
@@ -48,11 +45,10 @@ RDEPEND="
 		x11-libs/libdrm
 		x11-libs/libxkbcommon
 	)
-	egl? ( media-libs/mesa[egl] )
 	fontconfig? ( media-libs/fontconfig )
 	fribidi? ( dev-libs/fribidi )
 	gif? ( media-libs/giflib:= )
-	gles? ( media-libs/mesa[gles2] )
+	gles2? ( media-libs/mesa[egl,gles2] )
 	glib? ( dev-libs/glib:2 )
 	gstreamer? (
 		media-libs/gstreamer:1.0
@@ -115,7 +111,7 @@ RDEPEND="
 		x11-libs/libXrender
 		x11-libs/libXtst
 		x11-libs/libXScrnSaver
-		gles? (
+		gles2? (
 			x11-libs/libX11
 			x11-libs/libXrender
 			virtual/opengl
@@ -177,12 +173,12 @@ src_configure() {
 		$(use_enable drm)
 		$(use_enable drm elput)
 		$(use_enable eet image-loader-eet)
-		$(use_enable egl)
 		$(use_enable examples always-build-examples)
 		$(use_enable fbcon fb)
 		$(use_enable fontconfig)
 		$(use_enable fribidi)
 		$(use_enable gif image-loader-gif)
+		$(use_enable gles2 egl)
 		$(use_enable gstreamer gstreamer1)
 		$(use_enable harfbuzz)
 		$(use_enable hyphen)
@@ -237,7 +233,7 @@ src_configure() {
 
 	if use opengl ; then
 		myconf+=( --with-opengl=full )
-	elif use egl ; then
+	elif use gles2 ; then
 		myconf+=( --with-opengl=es )
 	elif use drm && use wayland ; then
 		myconf+=( --with-opengl=es )

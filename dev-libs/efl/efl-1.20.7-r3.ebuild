@@ -12,24 +12,21 @@ SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${P}.tar.xz"
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
-IUSE="avahi +bmp dds connman debug doc drm +eet egl examples fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz hyphen +ico ibus ivi jpeg2k libressl libuv luajit neon nls opengl ssl pdf physics pixman postscript +ppm +psd pulseaudio raw scim sdl sound static-libs svg systemd tga tiff tslib unwind v4l valgrind vlc vnc wayland webp X xcf xim xine xpresent xpm"
+IUSE="avahi +bmp dds connman debug doc drm +eet examples fbcon +fontconfig fribidi gif gles2 glib gnutls gstreamer harfbuzz hyphen +ico ibus ivi jpeg2k libressl libuv luajit neon nls opengl ssl pdf physics pixman postscript +ppm +psd pulseaudio raw scim sdl sound static-libs svg systemd tga tiff tslib unwind v4l valgrind vlc vnc wayland webp X xcf xim xine xpm xpresent"
 
 REQUIRED_USE="
-	?? ( opengl egl )
-	?? ( opengl gles )
-	egl ( gles )
+	?? ( gles2 opengl )
 	fbcon? ( !tslib )
-	gles? (
-		|| ( X wayland )
+	gles2? (
+		|| ( wayland X )
 		!sdl
-		egl
 	)
 	ibus? ( glib )
 	opengl? ( X )
 	pulseaudio? ( sound )
 	sdl? ( opengl )
-	vnc? ( X fbcon )
-	wayland? ( egl gles !opengl )
+	vnc? ( fbcon X )
+	wayland? ( gles2 !opengl )
 	xim? ( X )
 "
 
@@ -47,12 +44,11 @@ COMMON_DEPEND="
 		x11-libs/libdrm
 		x11-libs/libxkbcommon
 	)
-	egl? ( media-libs/mesa[egl] )
 	fontconfig? ( media-libs/fontconfig )
 	fribidi? ( dev-libs/fribidi )
 	gif? ( media-libs/giflib:= )
 	glib? ( dev-libs/glib:2 )
-	gles? ( media-libs/mesa[gles2] )
+	gles2? ( media-libs/mesa[egl,gles2] )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -119,7 +115,7 @@ COMMON_DEPEND="
 			x11-libs/libXrender
 			virtual/opengl
 		)
-		gles? (
+		gles2? (
 			x11-libs/libX11
 			x11-libs/libXrender
 			virtual/opengl
@@ -174,6 +170,7 @@ src_configure() {
 		--enable-libmount
 		--enable-xinput2
 
+		--disable-eglfs
 		--disable-gesture
 		--disable-gstreamer
 		--disable-image-loader-tgv
@@ -188,12 +185,12 @@ src_configure() {
 		$(use_enable drm elput)
 		$(use_enable doc)
 		$(use_enable eet image-loader-eet)
-		$(use_enable egl)
 		$(use_enable examples always-build-examples)
 		$(use_enable fbcon fb)
 		$(use_enable fontconfig)
 		$(use_enable fribidi)
 		$(use_enable gif image-loader-gif)
+		$(use_enable gles2 egl)
 		$(use_enable gstreamer gstreamer1)
 		$(use_enable harfbuzz)
 		$(use_enable hyphen)
@@ -249,13 +246,12 @@ src_configure() {
 		$(use_with X x)
 	)
 
-	use fbcon && use egl &&	myconf+=( --enable-eglfs )
 	use drm && use wayland && myconf+=( --enable-gl-drm )
 	use X && use xpresent && myconf+=( --enable-xpresent )
 
 	if use opengl ; then
 		myconf+=( --with-opengl=full )
-	elif use egl ; then
+	elif use gles2 ; then
 		myconf+=( --with-opengl=es )
 	elif use drm && use wayland ; then
 		myconf+=( --with-opengl=es )

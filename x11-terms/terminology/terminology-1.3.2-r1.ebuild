@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="nls"
 
 RDEPEND="
-	|| ( dev-libs/efl[egl] dev-libs/efl[opengl] )
+	|| ( dev-libs/efl[gles2] dev-libs/efl[opengl] )
 	|| ( dev-libs/efl[X] dev-libs/efl[wayland] )
 	app-arch/lz4
 	dev-libs/efl[eet,fontconfig]

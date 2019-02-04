@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit desktop unpacker
 
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 RDEPEND="media-libs/freetype
 	media-libs/libsdl[X,sound,opengl,video]
 	media-libs/libpng
@@ -43,7 +43,7 @@ src_prepare() {
 		rm game/data/FTL.amd64 || die
 	fi
 
-	sed -i start.sh -e '/chmod/d'
+	sed -i start.sh -e '/chmod/d' || die
 }
 
 src_install() {
