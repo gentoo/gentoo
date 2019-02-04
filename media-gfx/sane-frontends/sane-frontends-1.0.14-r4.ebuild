@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,6 +50,8 @@ src_install() {
 			plugindir="$(gimptool --gimpplugindir)/plug-ins"
 		elif type gimptool-2.0 &>/dev/null; then
 			plugindir="$(gimptool-2.0 --gimpplugindir)/plug-ins"
+		elif type gimptool-2.99 &>/dev/null; then
+			plugindir="$(gimptool-2.99 --gimpplugindir)/plug-ins"
 		else
 			die "Can't find GIMP plugin directory."
 		fi
