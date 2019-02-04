@@ -53,7 +53,7 @@ _MESON_ECLASS=1
 MESON_DEPEND=">=dev-util/meson-0.45.1
 	>=dev-util/ninja-1.7.2"
 
-if [[ ${EAPI:-0} == [0123456] ]]; then
+if [[ ${EAPI:-0} == [6] ]]; then
 	DEPEND=${MESON_DEPEND}
 else
 	BDEPEND=${MESON_DEPEND}
