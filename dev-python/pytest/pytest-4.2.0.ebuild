@@ -42,6 +42,7 @@ DEPEND="${RDEPEND}
 		dev-python/requests[${PYTHON_USEDEP}]
 		!!dev-python/flaky
 		!!dev-python/pytest-capturelog
+		!!<dev-python/pytest-xdist-1.22
 	)"
 
 python_prepare_all() {
