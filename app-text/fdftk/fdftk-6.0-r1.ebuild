@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -25,7 +25,7 @@ pkg_nofetch() {
 	einfo "1. Visit ${HOMEPAGE}"
 	einfo "2. Review EULA"
 	einfo "3. Download ${At}"
-	einfo "4. Move ${At} to ${DISTDIR}"
+	einfo "4. Move ${At} to your DISTDIR directory"
 }
 
 src_unpack() {
