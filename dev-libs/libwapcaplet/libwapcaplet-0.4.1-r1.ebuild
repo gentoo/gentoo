@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~m68k-mint"
 IUSE="test"
 
 DEPEND="
-	dev-util/netsurf-buildsystem
+	>=dev-util/netsurf-buildsystem-1.7-r1
 	test? ( >=dev-libs/check-0.9.11 )"
 
 PATCHES=(
