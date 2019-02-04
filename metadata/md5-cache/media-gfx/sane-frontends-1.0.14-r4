@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=media-gfx/sane-backends gimp? ( media-gfx/gimp:2 ) gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
+DESCRIPTION=Scanner Access Now Easy
+EAPI=7
+HOMEPAGE=http://www.sane-project.org
+IUSE=gimp gtk
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=media-gfx/sane-backends gimp? ( media-gfx/gimp:2 ) gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
+REQUIRED_USE=gimp? ( gtk )
+SLOT=0
+SRC_URI=https://salsa.debian.org/debian/sane-frontends/-/archive/upstream/1.0.14/sane-frontends-upstream-1.0.14.tar.gz
+_md5_=6db02739e3f4e03bbcca5dfe7ee17540
