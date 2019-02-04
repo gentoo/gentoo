@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,10 +22,13 @@ RDEPEND="
 	dev-python/pytest-forked[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
+
+# See #673106 about the pytest-xdist blocker.
 DEPEND="${RDEPEND}
 	!!dev-python/pytest-capturelog
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	test? ( !!<dev-python/pytest-xdist-1.22 )
 "
 
 python_test() {
