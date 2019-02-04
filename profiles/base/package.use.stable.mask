@@ -90,10 +90,6 @@ sci-libs/gdal mdb
 # Unstable dependencies.
 dev-util/rpmdevtools emacs
 
-# Patrick McLean <chutzpah@gentoo.org> (11 Jul 2017)
-# Requires >=net-dns/libidn2-2.0 stabilization
-net-dns/dnsmasq libidn2
-
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2017)
 # Requires dev-lang/julia stabilisation, bug #613576
 kde-apps/cantor julia
