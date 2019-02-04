@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ IUSE="examples selinux"
 DEPEND="dev-util/patchelf"
 
 RDEPEND="
-	dev-libs/openssl
+	=dev-libs/openssl-1.0*:*
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/libpng:1.2
