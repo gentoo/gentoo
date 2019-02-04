@@ -10,7 +10,7 @@ HOMEPAGE="http://proj-clhep.web.cern.ch/proj-clhep/"
 SRC_URI="http://proj-clhep.web.cern.ch/proj-clhep/DISTRIBUTION/tarFiles/${P}.tgz"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2/${PV}"
-KEYWORDS="amd64 ~hppa ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 hppa ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 IUSE="doc test threads"
 
