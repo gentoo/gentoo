@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,6 +42,7 @@ DEPEND="${RDEPEND}
 		dev-python/requests[${PYTHON_USEDEP}]
 		!!dev-python/flaky
 		!!dev-python/pytest-capturelog
+		!!<dev-python/pytest-xdist-1.22
 	)"
 
 python_prepare_all() {
