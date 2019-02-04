@@ -2501,10 +2501,10 @@ toolchain_death_notice() {
 # Usually configure-based packages handle explicit feature requests
 # like
 #     ./configure --enable-foo
-# as explicit request to check for suppor of 'foo' and bail out at
+# as explicit request to check for support of 'foo' and bail out at
 # configure time.
 #
-# GCC does not follow this pattern an instead overrides autodetection
+# GCC does not follow this pattern and instead overrides autodetection
 # of the feature and enables it unconditionally.
 # See https://gcc.gnu.org/PR85663
 #
