@@ -6,8 +6,8 @@
 		<name>Sergey Popov</name>
 	</maintainer>
 	<use>
-		<flag name="gre-extreme-debug">Log all GRE accepted packages when in debug
-		mode (required if you want upstream support)</flag>
+		<flag name="gre-extreme-debug">Log all GRE accepted packets when in
+		debug mode (required if you want upstream support)</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">poptop</remote-id>
