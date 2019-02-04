@@ -67,7 +67,7 @@ REQUIRED_USE="
 	video_cards_vmware? ( gallium )
 "
 
-LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.96"
+LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.97"
 RDEPEND="
 	!app-eselect/eselect-mesa
 	>=app-eselect/eselect-opengl-1.3.0
@@ -138,10 +138,6 @@ LLVM_MAX_SLOT="7"
 LLVM_DEPSTR="
 	|| (
 		sys-devel/llvm:7[${MULTILIB_USEDEP}]
-		sys-devel/llvm:6[${MULTILIB_USEDEP}]
-		sys-devel/llvm:5[${MULTILIB_USEDEP}]
-		sys-devel/llvm:4[${MULTILIB_USEDEP}]
-		>=sys-devel/llvm-3.9.0:0[${MULTILIB_USEDEP}]
 	)
 	sys-devel/llvm:=[${MULTILIB_USEDEP}]
 "
