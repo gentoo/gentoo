@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ RDEPEND="
 	>=dev-libs/libparserutils-0.2.1-r1
 	>=dev-libs/libwapcaplet-0.4.0"
 DEPEND="${RDEPEND}
-	dev-util/netsurf-buildsystem
+	>=dev-util/netsurf-buildsystem-1.7-r1
 	virtual/pkgconfig
 	test? ( dev-lang/perl )"
 
