@@ -50,7 +50,3 @@ python_install_all() {
 		--mandir="${ED%/}/usr/share/man"
 	distutils-r1_python_install_all
 }
-
-pkg_postinst() {
-	pplugincache pkgcheck.plugins
-}
