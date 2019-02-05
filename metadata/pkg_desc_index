@@ -3334,7 +3334,7 @@ dev-lua/ldoc 1.4.6: A LuaDoc-compatible documentation generation system
 dev-lua/lgi 0.7.2 0.9.0: Lua bindings using gobject-introspection
 dev-lua/lpeg 1.0.1: Parsing Expression Grammars for Lua
 dev-lua/lua-term 0.3: Terminal functions for Lua
-dev-lua/lua-zlib 0.3 1.1: Lua bindings to zlib
+dev-lua/lua-zlib 1.1: Lua bindings to zlib
 dev-lua/lua_cliargs 3.0_p1: A command-line argument parser.
 dev-lua/luacheck 0.20.0: A tool for linting and static analysis of Lua code
 dev-lua/luadbi 0.5-r5: DBI module for Lua
