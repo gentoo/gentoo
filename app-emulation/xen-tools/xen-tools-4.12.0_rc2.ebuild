@@ -8,7 +8,7 @@ PYTHON_REQ_USE='ncurses,xml,threads'
 
 inherit bash-completion-r1 flag-o-matic multilib python-single-r1 toolchain-funcs
 
-MY_PV=${PV/_/-}
+MY_PV=${PV/.0_/-}
 
 if [[ $PV == *9999 ]]; then
 	inherit git-r3
@@ -131,6 +131,7 @@ RDEPEND="${COMMON_DEPEND}
 # Approved by QA team in bug #144032
 QA_WX_LOAD="
 	usr/libexec/xen/boot/hvmloader
+	usr/share/qemu-xen/qemu/hppa-firmware.img
 	usr/share/qemu-xen/qemu/s390-ccw.img
 	usr/share/qemu-xen/qemu/u-boot.e500
 "
