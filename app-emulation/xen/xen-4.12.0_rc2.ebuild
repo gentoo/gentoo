@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit flag-o-matic mount-boot multilib python-any-r1 toolchain-funcs
 
-MY_PV=${PV/_/-}
+MY_PV=${PV/.0_/-}
 MY_P=${PN}-${MY_PV}
 
 if [[ $PV == *9999 ]]; then
