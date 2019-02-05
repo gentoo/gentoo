@@ -574,8 +574,7 @@ qt5_base_configure() {
 		-no-openssl -no-libproxy
 		-no-xcb-xlib
 		$([[ ${QT5_MINOR_VERSION} -lt 12 ]] && echo -no-xinput2 -no-xkbcommon-x11 -no-xkbcommon-evdev)
-		$([[ ${PV} = 5.12.0* ]] && echo -no-xcb-xinput -no-xkbcommon-x11 -no-xkbcommon-evdev) # bug 672340
-		$([[ ${QT5_MINOR_VERSION} -ge 12 && ${PV} != 5.12.0* ]] && echo -no-xcb-xinput -no-xkbcommon) # bug 672340
+		$([[ ${QT5_MINOR_VERSION} -ge 12 ]] && echo -no-xcb-xinput -no-xkbcommon) # bug 672340
 
 		# cannot use -no-gif because there is no way to override it later
 		#-no-gif
