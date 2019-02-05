@@ -9,4 +9,7 @@
 		<remote-id type="launchpad">exaile</remote-id>
 		<remote-id type="github">exaile/exaile</remote-id>
 	</upstream>
+	<use>
+		<flag name="scrobbler">Enable audioscrobbler/last.fm support</flag>
+	</use>
 </pkgmetadata>
