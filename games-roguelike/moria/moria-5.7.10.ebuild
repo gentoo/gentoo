@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_IN_SOURCE_BUILD="yes"
-inherit cmake-utils user
+inherit cmake-utils prefix user
 
 DESCRIPTION="The Dungeons of Moria, a single player roguelike game, also known as Umoria"
 HOMEPAGE="https://umoria.org/"
@@ -30,6 +30,7 @@ pkg_setup(){
 src_prepare() {
 	cmake-utils_src_prepare
 	sed -i "s/@PF@/${PF}/" src/config.cpp || die
+	hprefixify src/config.cpp
 }
 
 src_install() {
