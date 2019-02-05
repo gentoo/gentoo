@@ -7,4 +7,4 @@ LICENSE=free-noncomm
 RESTRICT=fetch
 SLOT=0
 SRC_URI=amd64? ( anode_amd64.bz2 ciftab_amd64.bz2 shelxc_amd64.bz2 shelxd_amd64.bz2 shelxe_amd64.bz2 shelxl_amd64.bz2 shelxs_amd64.bz2 shelxt_amd64.bz2 shredcif_amd64.bz2 ) x86? ( anode_x86.bz2 ciftab_x86.bz2 shelxc_x86.bz2 shelxd_x86.bz2 shelxe_x86.bz2 shelxl_x86.bz2 shelxs_x86.bz2 shelxt_x86.bz2 shredcif_x86.bz2 )
-_md5_=b169253fd8af7308865dff74b5225d8f
+_md5_=ae4a7c8630b2618562cdf0891d635c66

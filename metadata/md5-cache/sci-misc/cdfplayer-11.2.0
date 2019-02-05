@@ -9,4 +9,4 @@ RESTRICT=strip mirror bindist fetch
 SLOT=0
 SRC_URI=CDFPlayer_11.2.0_LINUX.sh
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=202a892a1c2c8aad21549e358f2d098d
+_md5_=dbdd29a0c699f03248c715de889de50a
