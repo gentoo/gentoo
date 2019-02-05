@@ -203,10 +203,6 @@ dev-db/pgadmin3
 <www-client/firefox-60
 <www-client/firefox-bin-60
 
-# Sergei Trofimovich <slyfox@gentoo.org> (09 Oct 2018)
-# Upstream is not actively maintained. Needs a port to mupdf-1.14.
-app-text/fbpdf
-
 # Andreas Sturmlechner <asturm@gentoo.org> (07 Oct 2018)
 # Masked for more testing especially of reverse-deps.
 >=dev-games/ogre-1.11.2
