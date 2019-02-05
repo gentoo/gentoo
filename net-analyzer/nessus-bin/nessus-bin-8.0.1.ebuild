@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ S="${WORKDIR}"
 
 pkg_nofetch() {
 	einfo "Please download ${A} from ${HOMEPAGE}/downloads/nessus"
-	einfo "The archive should then be placed into ${DISTDIR}."
+	einfo "The archive should then be placed into your DISTDIR directory."
 }
 
 src_install() {
