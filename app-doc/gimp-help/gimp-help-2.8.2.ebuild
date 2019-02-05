@@ -24,3 +24,8 @@ DEPEND="${PYTHON_DEPS}
 src_configure() {
 	econf --without-gimp
 }
+
+src_compile() {
+	# see https://bugs.gentoo.org/677198
+	emake -j 1
+}
