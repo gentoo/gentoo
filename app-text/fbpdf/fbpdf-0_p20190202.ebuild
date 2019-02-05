@@ -1,15 +1,18 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit toolchain-funcs
+inherit toolchain-funcs vcs-snapshot
+
+COMMIT="dfe9f0067549f759cdc04f2f62b4f89cd6e1b199"
 
 DESCRIPTION="framebuffer pdf and djvu viewer"
-HOMEPAGE="http://repo.or.cz/fbpdf.git"
-SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.gz"
+HOMEPAGE="https://github.com/aligrudi/fbpdf"
 
-LICENSE="BSD"
+SRC_URI="https://github.com/aligrudi/fbpdf/archive/${COMMIT}.tar.gz -> ${P}-${COMMIT}.tar.gz"
+
+LICENSE="BSD ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
@@ -27,11 +30,10 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${PN}
+S=${WORKDIR}/${P}-${COMMIT}
 
 PATCHES=(
-	"${FILESDIR}"/${P}-format.patch
-	"${FILESDIR}"/${P}-mupdfthird.patch
+	"${FILESDIR}"/${P}-use-pkg-config.patch
 )
 
 src_compile() {
