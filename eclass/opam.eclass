@@ -14,7 +14,7 @@
 
 case ${EAPI:-0} in
 	5|6|7) ;;
-    *) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
 RDEPEND=">=dev-lang/ocaml-4:="
