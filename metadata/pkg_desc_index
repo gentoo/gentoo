@@ -7854,21 +7854,21 @@ media-plugins/gmpc-playlistsort 0.20.0: This plugin adds a dialog to sort the cu
 media-plugins/gmpc-shout 0.20.0: This plugin calls ogg123 and points it at mpd's shoutstream
 media-plugins/gmpc-tagedit 11.8.16: This plugin allows you to edit tags in your library
 media-plugins/grilo-plugins 0.2.17 0.3.7: A framework for easy media discovery and browsing
-media-plugins/gst-plugins-a52dec 0.10.19-r1 1.14.1 1.14.3: ATSC A/52 audio decoder plugin for GStreamer
+media-plugins/gst-plugins-a52dec 0.10.19-r1 1.14.3: ATSC A/52 audio decoder plugin for GStreamer
 media-plugins/gst-plugins-alsa 0.10.36-r1: plugin for gstreamer
-media-plugins/gst-plugins-amr 0.10.19-r1 1.14.1 1.14.3: AMRNB encoder/decoder and AMRWB decoder plugin for GStreamer
+media-plugins/gst-plugins-amr 0.10.19-r1 1.14.3: AMRNB encoder/decoder and AMRWB decoder plugin for GStreamer
 media-plugins/gst-plugins-annodex 0.10.31-r1: GStreamer plugin for annodex stream manipulation
 media-plugins/gst-plugins-assrender 0.10.23-r1 1.14.3: ASS/SSA rendering with effects support plugin for GStreamer
 media-plugins/gst-plugins-bluez 1.14.3: AVDTP source/sink and A2DP sink plugin for GStreamer
 media-plugins/gst-plugins-bs2b 1.14.3: bs2b elements for Gstreamer
-media-plugins/gst-plugins-cdio 0.10.19-r1 1.14.1 1.14.3: CD Audio Source (cdda) plugin for GStreamer
+media-plugins/gst-plugins-cdio 0.10.19-r1 1.14.3: CD Audio Source (cdda) plugin for GStreamer
 media-plugins/gst-plugins-cdparanoia 0.10.36-r1 1.14.1 1.14.4: CD Audio Source (cdda) plugin for GStreamer
 media-plugins/gst-plugins-dash 1.14.3: MPEG-DASH plugin for GStreamer
 media-plugins/gst-plugins-dtls 1.14.3: DTLS encoder/decoder with SRTP support plugin for GStreamer
 media-plugins/gst-plugins-dts 0.10.23-r1 1.14.3: DTS audio decoder plugin for Gstreamer
 media-plugins/gst-plugins-dv 0.10.31-r1 1.14.1 1.14.4: DV demuxer and decoder plugin for GStreamer
 media-plugins/gst-plugins-dvb 0.10.23-r1 1.14.3: plugin for gstreamer
-media-plugins/gst-plugins-dvdread 0.10.19-r1 1.14.1 1.14.3: DVD read plugin for GStreamer
+media-plugins/gst-plugins-dvdread 0.10.19-r1 1.14.3: DVD read plugin for GStreamer
 media-plugins/gst-plugins-faac 0.10.23-r1 1.14.3: AAC audio encoder plugin for GStreamer
 media-plugins/gst-plugins-faad 0.10.23-r2 1.14.3: AAC audio decoder plugin.
 media-plugins/gst-plugins-flac 0.10.31-r1 1.14.1 1.14.4: FLAC encoder/decoder/tagger plugin for GStreamer
@@ -7885,7 +7885,7 @@ media-plugins/gst-plugins-jack 0.10.31-r1 1.14.1 1.14.4: plugin for gstreamer
 media-plugins/gst-plugins-jpeg 0.10.31-r1 1.14.1 1.14.4: JPEG image encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-ladspa 0.10.23-r1 1.14.3: Ladspa elements for Gstreamer
 media-plugins/gst-plugins-lame 0.10.19-r1 1.14.1 1.14.4: MP3 encoder plugin for GStreamer
-media-plugins/gst-plugins-libav 1.14.1 1.14.4.3.4.5: FFmpeg based gstreamer plugin
+media-plugins/gst-plugins-libav 1.14.4.3.4.5: FFmpeg based gstreamer plugin
 media-plugins/gst-plugins-libde265 1.14.3: H.265 decoder plugin for GStreamer
 media-plugins/gst-plugins-libmms 0.10.23-r1 1.14.3: Microsoft Multi Media Server source plugin for GStreamer
 media-plugins/gst-plugins-libnice 0.1.13 0.1.13-r100: GStreamer plugin for ICE (RFC 5245) support
@@ -7895,7 +7895,7 @@ media-plugins/gst-plugins-lv2 1.14.3: Lv2 elements for Gstreamer
 media-plugins/gst-plugins-mad 0.10.19-r1: plugin for gstreamer
 media-plugins/gst-plugins-meta 0.10-r11 1.14.1 1.14.3: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-modplug 0.10.23-r1 1.14.3: MOD audio decoder plugin for GStreamer
-media-plugins/gst-plugins-mpeg2dec 0.10.19-r1 1.14.1 1.14.3: MPEG2 decoder plugin for GStreamer
+media-plugins/gst-plugins-mpeg2dec 0.10.19-r1 1.14.3: MPEG2 decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2enc 0.10.23-r1 1.14.3: MPEG-1/2 video encoding plugin for GStreamer
 media-plugins/gst-plugins-mpg123 1.14.1 1.14.4: MP3 decoder plugin for GStreamer
 media-plugins/gst-plugins-mplex 0.10.23-r1 1.14.3: MPEG/DVD/SVCD/VCD video/audio multiplexing plugin for GStreamer
@@ -7912,7 +7912,7 @@ media-plugins/gst-plugins-raw1394 0.10.31-r1 1.14.1 1.14.4: Fiwewire DV/HDV capt
 media-plugins/gst-plugins-resindvd 0.10.23-r1 1.14.3: DVD playback support plugin for GStreamer
 media-plugins/gst-plugins-rtmp 0.10.23-r1 1.14.3: RTMP source/sink plugin for GStreamer
 media-plugins/gst-plugins-shout2 0.10.31-r1 1.14.1 1.14.4: Icecast server sink plugin for GStreamer
-media-plugins/gst-plugins-sidplay 0.10.19-r1 1.14.1 1.14.3: Sid decoder plugin for GStreamer
+media-plugins/gst-plugins-sidplay 0.10.19-r1 1.14.3: Sid decoder plugin for GStreamer
 media-plugins/gst-plugins-smoothstreaming 1.14.3: Smooth Streaming plugin for GStreamer
 media-plugins/gst-plugins-soundtouch 0.10.23-r1 1.14.3: Beats-per-minute detection and pitch controlling plugin for GStreamer
 media-plugins/gst-plugins-soup 0.10.31-r2 1.14.1 1.14.4: HTTP client source/sink plugin for GStreamer
@@ -7931,7 +7931,7 @@ media-plugins/gst-plugins-vp8 0.10.23-r3: GStreamer decoder for vpx video format
 media-plugins/gst-plugins-vpx 1.14.1 1.14.4: VP8/VP9 video encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-wavpack 0.10.31-r1 1.14.1 1.14.4: Wavpack audio encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-x 0.10.36-r1: plugin for gstreamer
-media-plugins/gst-plugins-x264 0.10.19-r1 1.14.1 1.14.3: H.264 encoder plugin for GStreamer
+media-plugins/gst-plugins-x264 0.10.19-r1 1.14.3: H.264 encoder plugin for GStreamer
 media-plugins/gst-plugins-x265 1.14.3: H.265 encoder plugin for GStreamer
 media-plugins/gst-plugins-ximagesrc 0.10.31-r2 1.14.1 1.14.4: X11 video capture stream plugin for GStreamer
 media-plugins/gst-plugins-xvid 0.10.23-r1: GStreamer plugin for XviD (MPEG-4) video encoding/decoding support
