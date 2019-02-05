@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 toolchain-funcs
+inherit savedconfig toolchain-funcs
 
 DESCRIPTION="a dynamic window manager for X11"
 HOMEPAGE="https://dwm.suckless.org/"
-EGIT_REPO_URI="https://git.suckless.org/dwm"
+SRC_URI="https://dl.suckless.org/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="xinerama"
 
 RDEPEND="
@@ -31,6 +31,8 @@ src_prepare() {
 		-e "s/ -Os / /" \
 		-e "/^\(LDFLAGS\|CFLAGS\|CPPFLAGS\)/{s| = | += |g;s|-s ||g}" \
 		config.mk || die
+
+	restore_config config.h
 }
 
 src_compile() {
@@ -51,4 +53,6 @@ src_install() {
 	doins "${FILESDIR}"/dwm.desktop
 
 	dodoc README
+
+	save_config config.h
 }
