@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_IN_SOURCE_BUILD="yes"
-inherit cmake-utils
+inherit cmake-utils prefix user
 
 DESCRIPTION="The Dungeons of Moria, a single player roguelike game, also known as Umoria"
 HOMEPAGE="https://umoria.org/"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/dungeons-of-moria/umoria/archive/v${PV}.tar.gz -> ${
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~m68k ~x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND=">=sys-libs/ncurses-6.0:0="
@@ -23,9 +23,14 @@ S="${WORKDIR}/umoria-${PV}"
 
 PATCHES=( "${FILESDIR}/${P}-gentoo-paths.patch" )
 
+pkg_setup(){
+	enewgroup gamestat 36
+}
+
 src_prepare() {
 	cmake-utils_src_prepare
 	sed -i "s/@PF@/${PF}/" src/config.cpp || die
+	hprefixify src/config.cpp
 }
 
 src_install() {
@@ -36,7 +41,7 @@ src_install() {
 
 	insinto /var/lib/moria
 	doins data/scores.dat
-	fowners root:games /var/lib/moria/scores.dat
+	fowners root:gamestat /var/lib/moria/scores.dat
 	fperms g+w /var/lib/moria/scores.dat
 
 	doman "${FILESDIR}"/${PN}.6
@@ -46,4 +51,11 @@ src_install() {
 	insinto /usr/share/doc/${PF}
 	doins LICENSE
 	docompress -x /usr/share/doc/${PF}/LICENSE
+}
+
+pkg_postinst() {
+	elog
+	elog "Please add users to the 'gamestat' group, so they can run Moria:"
+	elog "  usermod -aG gamestat <user>"
+	elog
 }
