@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,11 +25,12 @@ S="${WORKDIR}/${PN}"
 
 pkg_nofetch() {
 	elog "Please visit http://www.ebi.ac.uk/thornton-srv/software/PROCHECK/download.html"
-	elog "And follow the instruction for downloading."
-	elog "Files should be stored in following way"
-	elog "${PN}.tar.gz  ->  ${DISTDIR}/${P}.tar.gz"
-	elog "README  ->  ${DISTDIR}/${P}-README"
-	use doc && elog "manual.tar.gz  ->  ${DISTDIR}/${P}-manual.tar.gz"
+	elog "and follow the instruction for downloading."
+	elog "Files should be renamed in the following way before being copied to your"
+	elog "DISTDIR directory:"
+	elog "  ${PN}.tar.gz  ->  ${P}.tar.gz"
+	elog "  README  ->  ${P}-README"
+	use doc && elog "  manual.tar.gz  ->  ${P}-manual.tar.gz"
 }
 
 PATCHES=(

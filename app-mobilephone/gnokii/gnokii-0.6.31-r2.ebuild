@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 inherit autotools desktop eutils linux-info
 
 HOMEPAGE="http://www.gnokii.org/"
@@ -32,11 +31,13 @@ RDEPEND="
 		mysql? ( dev-db/mysql-connector-c:= )
 	)
 	usb? ( virtual/libusb:0 )
-	X? ( x11-libs/gtk+:2 )"
+	X? ( x11-libs/gtk+:2 )
+"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	irda? ( virtual/os-headers )
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 
 CONFIG_CHECK="~UNIX98_PTYS"
 
@@ -49,6 +50,7 @@ MY_AVAILABLE_LINGUAS=" cs de et fi fr it nl pl pt sk sl sv zh_CN"
 PATCHES=(
 	"${FILESDIR}"/${P}-fix_xgnokii_inclusion.patch
 	"${FILESDIR}"/${P}-gcc5.patch
+	"${FILESDIR}"/${P}-gcc7.patch
 )
 
 src_prepare() {
@@ -61,6 +63,7 @@ src_prepare() {
 	sed -i -e "s:/usr/local:${EPREFIX}/usr:" Docs/sample/gnokiirc || die
 
 	default
+	mv configure.{in,ac} || die
 
 	eautoreconf
 }
@@ -77,6 +80,7 @@ src_configure() {
 
 	econf \
 		--disable-static \
+		--enable-security \
 		--disable-unix98test \
 		$(use_enable bluetooth) \
 		${config_xdebug} \

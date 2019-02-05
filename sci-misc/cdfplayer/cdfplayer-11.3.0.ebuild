@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -90,5 +90,5 @@ src_install() {
 pkg_nofetch() {
 	einfo "Sadly Wolfram provides no permanent link to the player files."
 	einfo "Please download the Wolfram CFD Player installation file ${SRC_URI} from"
-	einfo "${HOMEPAGE} and place it in ${DISTDIR}"
+	einfo "${HOMEPAGE} and place it into your DISTDIR directory."
 }
