@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -31,7 +31,7 @@ pkg_setup() {
 pkg_nofetch() {
 	elog "Please visit http://www.ventrilo.com/download.php"
 	elog "and download the Linux i386 - 32bit ${PV} server."
-	elog "Just save it in ${DISTDIR} !"
+	elog "Just save it into your DISTDIR directory!"
 }
 
 src_install() {
