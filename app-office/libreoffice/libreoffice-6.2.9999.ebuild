@@ -247,8 +247,6 @@ DEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	# master branch
-	"${WORKDIR}"/${PATCHSET/.tar.xz/}/009-kde5-allow-multiple-mimetypes-clipboard.patch
-	"${WORKDIR}"/${PATCHSET/.tar.xz/}/010-kde5-fix-selection-clipboard.patch
 	"${WORKDIR}"/${PATCHSET/.tar.xz/}/011-qt5-change-salgraphics-gettextlayout-def.patch
 	"${WORKDIR}"/${PATCHSET/.tar.xz/}/012-qt5-initialize-glyphcache-for-psp-graphics.patch
 	"${WORKDIR}"/${PATCHSET/.tar.xz/}/013-qt5-assert-missing-salgraphics-font-on-gettextlayout.patch
