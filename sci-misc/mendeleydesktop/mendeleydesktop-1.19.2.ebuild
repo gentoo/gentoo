@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -54,7 +54,7 @@ PATCHES=(
 pkg_nofetch() {
 	elog "Please download ${A} from:"
 	elog "http://www.mendeley.com/download-mendeley-desktop/"
-	elog "and move it to ${DISTDIR}"
+	elog "and move it to your DISTDIR directory."
 }
 
 src_unpack() {
