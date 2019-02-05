@@ -3209,6 +3209,7 @@ media-sound/drumstick:fluidsynth - Enable support for media-sound/fluidsynth
 media-sound/easytag:nautilus - Build gnome-base/nautilus extension
 media-sound/ecasound:lv2 - Add support for Ladspa V2
 media-sound/ecasound:oil - Use dev-libs/liboil for inner loop optimizations
+media-sound/exaile:scrobbler - Enable audioscrobbler/last.fm support
 media-sound/fapg:xspf - Enable support for saving XSPF playlists.
 media-sound/gimmix:cover - Enable cover art fetching
 media-sound/gimmix:lyrics - Enable lyric fetching
