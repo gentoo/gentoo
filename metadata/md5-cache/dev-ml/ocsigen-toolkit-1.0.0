@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=dev-lang/ocaml:=[ocamlopt?] >dev-ml/js_of_ocaml-2.7:= >=dev-ml/eliom-5.1:=[ppx] dev-ml/ppx_deriving:= dev-ml/calendar:= dev-ml/lwt:= >=dev-lang/ocaml-4:=
 SLOT=0/1.0.0
 SRC_URI=https://github.com/ocsigen/ocsigen-toolkit/archive/1.0.0.tar.gz -> ocsigen-toolkit-1.0.0.tar.gz
-_eclasses_=findlib	45d6030075064a68da8d7143726a1150	opam	14f75966224f5922dd3bc77f7bd61338
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150	opam	3f1ccc0b5a5708088c2c156d4ca79a20
 _md5_=3c71932883f9e7b977c7d9ea22525c89

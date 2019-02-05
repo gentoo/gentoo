@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-libs/libpcre-4.5 >=dev-lang/ocaml-4:=
 SLOT=0/7.3.0
 SRC_URI=https://github.com/mmottl/pcre-ocaml/releases/download/7.3.0/pcre-7.3.0.tbz -> pcre-ocaml-7.3.0.tbz
-_eclasses_=opam	14f75966224f5922dd3bc77f7bd61338
+_eclasses_=opam	3f1ccc0b5a5708088c2c156d4ca79a20
 _md5_=cdd1c35b287d7ea819942b36346cf6d8

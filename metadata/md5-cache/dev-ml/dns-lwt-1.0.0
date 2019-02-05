@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/ocaml-4:= dev-ml/lwt:= dev-ml/dns:= dev-ml/mirage-profile:= >
 RESTRICT=test
 SLOT=0/1.0.0
 SRC_URI=https://github.com/mirage/ocaml-dns/archive/v1.0.0.tar.gz -> ocaml-dns-1.0.0.tar.gz
-_eclasses_=findlib	45d6030075064a68da8d7143726a1150	opam	14f75966224f5922dd3bc77f7bd61338
+_eclasses_=findlib	45d6030075064a68da8d7143726a1150	opam	3f1ccc0b5a5708088c2c156d4ca79a20
 _md5_=14e4d9980c24a5e7b3c6530658f3183d

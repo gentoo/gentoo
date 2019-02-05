@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=dev-ml/lwt_react:= >=dev-ml/lwt-2.4.0:= >=dev-ml/zed-1.2:= >=dev-ml/react-1.2:= >=dev-lang/ocaml-4:=
 SLOT=0/1.11
 SRC_URI=https://github.com/diml/lambda-term/archive/1.11.tar.gz -> lambda-term-1.11.tar.gz
-_eclasses_=opam	14f75966224f5922dd3bc77f7bd61338
+_eclasses_=opam	3f1ccc0b5a5708088c2c156d4ca79a20
 _md5_=76322c6e5fe7ed17b151542c87c7d98f
