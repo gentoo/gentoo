@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -78,7 +78,7 @@ RDEPEND="${DEPEND}
 
 pkg_nofetch() {
 	einfo "Please visit ${HOMEPAGE}"
-	einfo "and place ${A} in ${DISTDIR}"
+	einfo "and place ${A} into your DISTDIR directory"
 }
 
 src_unpack() {
