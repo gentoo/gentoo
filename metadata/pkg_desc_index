@@ -105,6 +105,7 @@ app-admin/perl-cleaner 2.25 2.27: User land tool for cleaning up old perl instal
 app-admin/petrovich 1.0.0-r1: Filesystem Integrity Checker
 app-admin/pprocm 1.0-r2: ncurses-based program to monitor CPU, disk, network and memory usage
 app-admin/procinfo-ng 2.0.304-r1: Completely rewrite of the old system monitoring app procinfo
+app-admin/ps_mem 3.13: A utility to report core memory usage per program
 app-admin/psmon 1.39-r1: Monitors process table to slay aggressive, and spawn dead, processes
 app-admin/puppet 4.10.12 5.5.8 6.0.4 6.1.0: A system automation and configuration management software.
 app-admin/puppet-agent 5.5.7 6.1.0: general puppet client utils along with hiera and facter
