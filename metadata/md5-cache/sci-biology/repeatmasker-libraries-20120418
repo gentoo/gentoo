@@ -7,4 +7,4 @@ LICENSE=all-rights-reserved
 RESTRICT=fetch
 SLOT=0
 SRC_URI=repeatmaskerlibraries-20120418.tar.gz
-_md5_=0cb0252babed9e448a9b2b06eaa2220c
+_md5_=58d2bc25a79cc7136e64f302004caa16
