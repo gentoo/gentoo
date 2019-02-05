@@ -8,4 +8,4 @@ LICENSE=LSI-tw_cli
 RESTRICT=strip primaryuri
 SLOT=0
 SRC_URI=kernel_linux? ( http://www.lsi.com/downloads/Public/SATA/SATA%20Common%20Files//CLI_linux-from_the_10.2.2.1_9.5.5.1_codesets.zip https://docs.broadcom.com/docs-and-downloads/kb-documents/lsi/368_tw_cli_debian8_beta.tgz ) https://gitweb.gentoo.org/repo/gentoo.git/plain/licenses/LSI-tw_cli
-_md5_=db8453d876a7ecacffd16ddaa40be54b
+_md5_=01fa202b012d51032cc1a073bec8c76f
