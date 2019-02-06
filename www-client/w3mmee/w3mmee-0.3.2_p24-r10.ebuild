@@ -13,7 +13,7 @@ HOMEPAGE="http://pub.ks-and-ks.ne.jp/prog/w3mmee/"
 SRC_URI="http://pub.ks-and-ks.ne.jp/prog/pub/${MY_P}.tar.gz"
 
 SLOT="0"
-LICENSE="public-domain"
+LICENSE="w3m"
 KEYWORDS="amd64 ppc x86"
 IUSE="gpm imlib libressl nls ssl xface"
 
