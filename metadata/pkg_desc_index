@@ -7090,7 +7090,6 @@ mail-filter/clamsmtp 1.10: An SMTP filter to check for viruses using the ClamAV 
 mail-filter/couriersrs 0.1.2: SRS (Sender Rewriting Scheme) wrapper for the courier MTA
 mail-filter/dcc 1.3.158: Distributed Checksum Clearinghouse
 mail-filter/dkimproxy 1.4.1: An SMTP proxy server for adding DKIM headers
-mail-filter/dovecot-antispam 2.0_pre20130429: A dovecot antispam plugin supporting multiple backends
 mail-filter/dspam 3.10.2-r1: A statistical-algorithmic hybrid anti-spam filter
 mail-filter/gld 1.7-r2: A standalone anti-spam greylisting algorithm on top of Postfix
 mail-filter/imapfilter 2.5.4 2.5.6: An IMAP mail filtering utility
