@@ -1179,7 +1179,7 @@ app-office/libreoffice-l10n 6.1.4.2: Translations for the Libreoffice suite
 app-office/lyx 2.3.0: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
-app-office/openoffice-bin 4.1.4 4.1.5: Apache OpenOffice productivity suite
+app-office/openoffice-bin 4.1.4 4.1.5 4.1.6: Apache OpenOffice productivity suite
 app-office/orage 4.12.1-r1: A time managing application (and panel plug-in) for the Xfce desktop environment
 app-office/pinpoint 0.1.8-r1: A tool for making hackers do excellent presentations
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
@@ -10236,7 +10236,7 @@ sys-fs/udev 236-r1 238 239: Linux dynamic and persistent device naming support (
 sys-fs/udev-init-scripts 27 32: udev startup scripts for openrc
 sys-fs/udftools 2.0-r2: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 1.1.1: An automatic disk mounting service using udisks
-sys-fs/udisks 1.0.5-r2 2.1.8 2.7.4-r1: Daemon providing interfaces to work with storage devices
+sys-fs/udisks 1.0.5-r2 2.1.8 2.7.4-r1 2.8.1: Daemon providing interfaces to work with storage devices
 sys-fs/vhba 20170610: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.6 3.1.8: xfs dump/restore utilities
@@ -10270,7 +10270,7 @@ sys-libs/ldb 1.1.26 1.1.29-r1 1.3.6: An LDAP-like embedded database
 sys-libs/libaal 1.0.6: library required by reiser4progs
 sys-libs/libapparmor 2.12.0: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r1: library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
-sys-libs/libblockdev 2.14-r1: A library for manipulating block devices
+sys-libs/libblockdev 2.14-r1 2.20: A library for manipulating block devices
 sys-libs/libcap 2.25: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.4: Library for accessing chip cards via chip card readers (terminals)
@@ -10623,7 +10623,7 @@ www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web brow
 www-client/epiphany 3.30.2: GNOME webbrowser based on Webkit
 www-client/falkon 3.0.1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 60.4.0: Firefox Web Browser
+www-client/firefox 60.4.0 60.5.0: Firefox Web Browser
 www-client/firefox-bin 60.4.0-r1 60.5.0 64.0.2-r1 65.0: Firefox Web Browser
 www-client/httrack 3.48.21-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/links 2.14-r1: A fast and lightweight web browser running in both graphics and text mode
