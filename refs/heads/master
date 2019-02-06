@@ -1,13 +1,13 @@
 certificate version 0.1
-pusher 9A607DDF 1549461280 +0900
-pushee git.gentoo.org:repo/gentoo.git
-nonce 1549461280-e2459d396681f9c7f47ddd4d917f97e06a471548
+pusher 0x0E2548BBC607E5AE 1549461367 +0100
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1549461366-e996a33f948ed37626f982a04531eebee538da66
 
-b9be94d2cfbf8e900cfe74eb51a1b7db0a4cf0a3 3fd419b9bf6b3132470c163408c92e34fcba6852 refs/heads/master
+3fd419b9bf6b3132470c163408c92e34fcba6852 2436a43144a0bdfaab4139b08dd45875fe7410ec refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQSDxqXwJPoNVMvU3abSCUStmmB93wUCXFrnIAAKCRDSCUStmmB9
-3yjkAP0dM86pfmhlWoDfuXzGuXsiolIMqRD115qpzTnGDL29jwEAoYYtaASCfp9o
-gmrogu0ROBL4c2rSfGmXjjRDsSd1sA4=
-=JaYH
+iHUEABEIAB0WIQSpOxaxaZikKNVNlsYOJUi7xgflrgUCXFrndwAKCRAOJUi7xgfl
+rkWMAPwOqEpu52CfUDi8KmgYC6CwxVr3wm7deBOqAdlVJI+rrwD/dTx7jXdwBtk4
+fyiCAVlBsi6eI6ToeRtNcExoT40sNaY=
+=HDyW
 -----END PGP SIGNATURE-----
