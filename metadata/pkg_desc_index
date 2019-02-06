@@ -10637,7 +10637,7 @@ www-client/surf 2.0: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1 2.3.0: A fast unix command line interface to WWW
 www-client/uget 2.2.0: Download manager using gtk+ and libcurl
 www-client/w3m 0.5.3_p20180125: Text based WWW browser, supports tables and frames
-www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r10: A variant of w3m with support for multiple character encodings
+www-client/w3mmee 0.3.2_p24-r10: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.1_p20121017 7.4: AWStats is short for Advanced Web Statistics
 www-misc/fcgiwrap 1.1.0-r1: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
 www-misc/htdig 3.2.0_beta6-r5: HTTP/HTML indexing and searching system
