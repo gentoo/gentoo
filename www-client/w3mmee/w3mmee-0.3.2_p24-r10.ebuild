@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -51,6 +51,7 @@ HTML_DOCS=( 00INCOMPATIBLE.html )
 src_prepare() {
 	default
 
+	sed -i "s:/lib\([^a-z$]\):/$(get_libdir)\1:g" configure
 	sed -i "/^AR=/s:ar:$(tc-getAR):" XMakefile
 }
 
