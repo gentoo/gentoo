@@ -1,0 +1,67 @@
+From d7e3f14367acaefae38d28ba8d82f2e7aa7a2091 Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Tue, 25 Sep 2018 16:27:02 +0200
+Subject: [PATCH 1/2] Make cmake 3.0 the minimum cmake version
+
+Should fix the build on macOS.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3b1f345..4d3b585 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,7 +9,7 @@ project(libkexiv2)
+ message(STATUS "----------------------------------------------------------------------------------")
+ message(STATUS "Starting CMake configuration for: ${PROJECT_NAME}")
+ 
+-set(CMAKE_MIN_VERSION   "2.8.12")
++set(CMAKE_MIN_VERSION   "3.0.0")
+ set(ECM_MIN_VERSION     "1.1.0")
+ set(REQUIRED_QT_VERSION "5.2.0")
+ set(EXIV2_MIN_VERSION   "0.24")
+-- 
+2.20.1
+
+
+From 2772f91f2a494ed1219f1bb7c6cf3e317892e3c4 Mon Sep 17 00:00:00 2001
+From: Hannah von Reth <vonreth@kde.org>
+Date: Tue, 25 Sep 2018 16:59:20 +0200
+Subject: [PATCH 2/2] Initialize cmake project after cmake_minimum_required was
+ set
+
+---
+ CMakeLists.txt | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4d3b585..d13ef27 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,11 +4,6 @@
+ # Redistribution and use is allowed according to the terms of the BSD license.
+ # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+ 
+-project(libkexiv2)
+-
+-message(STATUS "----------------------------------------------------------------------------------")
+-message(STATUS "Starting CMake configuration for: ${PROJECT_NAME}")
+-
+ set(CMAKE_MIN_VERSION   "3.0.0")
+ set(ECM_MIN_VERSION     "1.1.0")
+ set(REQUIRED_QT_VERSION "5.2.0")
+@@ -16,6 +11,11 @@ set(EXIV2_MIN_VERSION   "0.24")
+ 
+ cmake_minimum_required(VERSION ${CMAKE_MIN_VERSION})
+ 
++project(libkexiv2)
++
++message(STATUS "----------------------------------------------------------------------------------")
++message(STATUS "Starting CMake configuration for: ${PROJECT_NAME}")
++
+ # =======================================================
+ # Information to update before to release this library.
+ 
+-- 
+2.20.1
