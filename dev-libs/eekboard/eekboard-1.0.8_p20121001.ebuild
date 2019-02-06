@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -31,6 +31,7 @@ RDEPEND="app-accessibility/at-spi2-core
 	xtest? ( x11-libs/libXtst )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
+	dev-util/glib-utils
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
 	dev-util/intltool
