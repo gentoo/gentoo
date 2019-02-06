@@ -39,6 +39,8 @@ DEPEND="${BDEPEND}
 	tre? ( dev-libs/tre )"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/pid-patch.patch" )
+
 S="${WORKDIR}/${P}-source"
 
 pkg_pretend() {
