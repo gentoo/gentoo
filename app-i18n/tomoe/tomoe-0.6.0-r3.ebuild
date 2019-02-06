@@ -5,7 +5,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 USE_RUBY="ruby23 ruby24"
 
-inherit autotools ltprune python-single-r1 ruby-single
+inherit autotools python-single-r1 ruby-single
 
 DESCRIPTION="Japanese handwriting recognition engine"
 HOMEPAGE="http://tomoe.osdn.jp/"
@@ -90,5 +90,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${ED}" -name '*.la' -delete || die
 }
