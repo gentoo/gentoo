@@ -5,7 +5,7 @@ EAPI="6"
 
 inherit alternatives multilib toolchain-funcs
 
-MY_PV="${PV##*_}-22"
+MY_PV="${PV##*_}-23"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="A variant of w3m with support for multiple character encodings"
@@ -14,7 +14,7 @@ SRC_URI="http://pub.ks-and-ks.ne.jp/prog/pub/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="w3m"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="gpm imlib libressl nls ssl xface"
 
 DEPEND=">=dev-libs/boehm-gc-7.2
