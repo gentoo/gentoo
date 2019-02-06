@@ -5,7 +5,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools gnome2-utils ltprune python-any-r1 vala vcs-snapshot virtualx xdg-utils
+inherit autotools gnome2-utils python-any-r1 vala vcs-snapshot virtualx xdg-utils
 
 DESCRIPTION="An easy to use virtual keyboard toolkit"
 HOMEPAGE="https://github.com/ueno/eekboard"
@@ -59,7 +59,7 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
 
 src_test() {
