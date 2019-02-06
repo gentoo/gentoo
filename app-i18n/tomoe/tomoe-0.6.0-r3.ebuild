@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 USE_RUBY="ruby23 ruby24"
 
-inherit autotools ltprune python-single-r1 ruby-single
+inherit autotools python-single-r1 ruby-single
 
 DESCRIPTION="Japanese handwriting recognition engine"
 HOMEPAGE="http://tomoe.osdn.jp/"
@@ -43,6 +43,7 @@ RDEPEND="dev-libs/glib:2
 	)
 	subversion? ( dev-vcs/subversion )"
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	dev-util/gtk-doc-am
 	dev-util/intltool
 	virtual/pkgconfig"
@@ -89,5 +90,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${ED}" -name '*.la' -delete || die
 }
