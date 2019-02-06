@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -43,6 +43,7 @@ RDEPEND="dev-libs/glib:2
 	)
 	subversion? ( dev-vcs/subversion )"
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	dev-util/gtk-doc-am
 	dev-util/intltool
 	virtual/pkgconfig"
