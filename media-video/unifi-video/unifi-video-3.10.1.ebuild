@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,11 +8,11 @@ inherit systemd user
 MY_PV="${PV/_beta/-beta.}"
 DESCRIPTION="UniFi Video Server"
 HOMEPAGE="https://www.ubnt.com/download/unifi-video/"
-SRC_URI="https://dl.ubnt.com/firmwares/ufv/v${MY_PV}/unifi-video.Ubuntu16.04_amd64.v${MY_PV}.deb"
+SRC_URI="https://dl.ubnt.com/firmwares/unifi-video/v${MY_PV}/unifi-video.Ubuntu16.04_amd64.v${MY_PV}.deb"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE=""
 RESTRICT="mirror"
 
@@ -54,10 +54,6 @@ src_install() {
 	fperms -R +x ${static_dir}/bin
 	fowners -R ${PN}:${PN} ${static_dir}/conf/evostream/
 
-	#wrapper to work around mongodb-3.6 compat issue
-	exeinto ${static_dir}/bin/
-	newexe "${FILESDIR}"/mongod-wrapper mongod
-
 	#prepare runtime-data dirs which live in /var but are symlinked from static
 	#data dir, and are writable by non-root user
 	dodir /var/log/${PN}
@@ -77,6 +73,7 @@ src_install() {
 
 	into /usr
 	dosbin usr/sbin/${PN}
+	dosym ../../../bin/mongod ${static_dir}/bin/mongod
 
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	systemd_dounit "${FILESDIR}"/${PN}.service

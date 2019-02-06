@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Tim Harder <radhermit@gentoo.org> (6 Feb 2019)
+# Deprecated and unmaintained, use sieve for a replacement.
+# https://wiki2.dovecot.org/HowTo/AntispamWithSieve
+# Masked for removal in 30 days.
+mail-filter/dovecot-antispam
+
 # Brian Evans <grknight@gentoo.org> (5 Feb 2019)
 # Unsolvable dependencies
 # Bug 677284
