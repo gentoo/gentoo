@@ -14,7 +14,7 @@ SRC_URI="https://s3-us-west-2.amazonaws.com/grafana-releases/release/${MY_PN}-${
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
