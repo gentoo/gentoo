@@ -159,7 +159,7 @@ app-arch/advancecomp 2.0: Recompress ZIP, PNG and MNG, considerably improving co
 app-arch/afio 2.5.1-r1: Afio creates cpio-format archives.
 app-arch/alien 8.95: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
 app-arch/arc 5.21p: Create & extract files from DOS .ARC files
-app-arch/arj 3.10.22-r5: Utility for opening arj archives
+app-arch/arj 3.10.22-r7: Utility for opening arj archives
 app-arch/atool 0.39.0: a script for managing file archives of various types
 app-arch/brotli 1.0.2 1.0.6-r1: Generic-purpose lossless compression algorithm
 app-arch/bsdsfv 1.18-r2: all-in-one SFV checksum utility
@@ -1034,7 +1034,7 @@ app-misc/ifp-line 0.3: iRiver iFP open-source driver
 app-misc/ignuit 2.24.3: Memorization aid based on the Leitner flashcard system
 app-misc/inputlircd 0.0.1_pre15-r2: Inputlirc daemon to utilize /dev/input/event*
 app-misc/interceptty 0.6-r1: a program that can sit between a serial port and an application
-app-misc/jail 2.0-r1: Builds a chroot and configures all the required files, directories and libraries
+app-misc/jail 2.0-r4: Builds a chroot and configures all the required files, directories and libraries
 app-misc/jitac 0.3.0: An image to ASCII converter written in Java
 app-misc/jot 9.0-r1: Print out increasing, decreasing, random, or redundant data
 app-misc/joy2key 1.6.3-r1: An application that translates joystick events to keyboard events
