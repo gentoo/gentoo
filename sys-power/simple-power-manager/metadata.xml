@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <upstream>
+        <maintainer>
+            <email>sch@efers.org</email>
+            <name>Adam Schaefers</name>
+        </maintainer>
+        <doc lang="en">https://github.com/a-schaefers/simple-power-manager</doc>
+        <bugs-to>https://github.com/a-schaefers/simple-power-manager/issues</bugs-to>
+    </upstream>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <longdescription>
+        A programmable shell daemon that performs actions based on power thresholds
+    </longdescription>
+</pkgmetadata>
