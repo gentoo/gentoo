@@ -10,7 +10,7 @@ depend() {
 	use net
 }
 
-DAEMON_UTIL="/usr/lib64/ganeti/daemon-util"
+DAEMON_UTIL="/usr/%LIBDIR%/ganeti/daemon-util"
 
 is_master() {
 	[ -z "${ganeti_master}" ] && ganeti_master="$(gnt-cluster getmaster)"
