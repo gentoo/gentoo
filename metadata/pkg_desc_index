@@ -72,7 +72,7 @@ app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for 
 app-admin/haskell-updater 1.2.9 1.2.10: Rebuild Haskell dependencies in Gentoo
 app-admin/hddtemp 0.3_beta15-r26: A simple utility to read the temperature of SMART capable hard drives
 app-admin/helm 2.11.0 2.12.2: Kubernetes Package Manager
-app-admin/ide-smart 1.4-r1: A tool to read SMART information from harddiscs
+app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/installer 0.1.1_beta: A software for Gentoo installation
 app-admin/keepass 2.40-r1: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassxc 2.3.3: KeePassXC - KeePass Cross-platform Community Edition
@@ -3313,7 +3313,7 @@ dev-libs/xxhash 0.6.5: Extremely fast non-cryptographic hash algorithm
 dev-libs/yajl 2.1.0-r1: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zthread 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
-dev-libs/zziplib 0.13.62-r2: Lightweight library for extracting data from files archived in a single zip file
+dev-libs/zziplib 0.13.69: Lightweight library for extracting data from files archived in a single zip file
 dev-lisp/abcl 1.5.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM.
 dev-lisp/asdf 3.1.5: ASDF is Another System Definition Facility for Common Lisp
 dev-lisp/cl-ppcre 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
@@ -7428,7 +7428,7 @@ media-gfx/mkgallery 1.1: Creates thumbnails and a HTML index file for a director
 media-gfx/monica 3.7: Monica is a Monitor Calibration Tool
 media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 1.1.0-r2: fast and easy graphics application for digital painters
-media-gfx/nomacs 3.10.2: Qt-based image viewer
+media-gfx/nomacs 3.10.2 3.12: Qt-based image viewer
 media-gfx/nvidia-cg-toolkit 3.1.0013-r3: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r3: A set of cuda-enabled texture tools and compressors
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
@@ -8920,7 +8920,7 @@ net-misc/connman-gtk 1.1.1: GTK GUI for Connman
 net-misc/curl 7.62.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1: Userspace tools to configure the kernel modules from net-misc/dahdi
-net-misc/dhcp 4.3.6_p1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
+net-misc/dhcp 4.3.6_p1 4.4.1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
 net-misc/dhcpcd 6.11.3 7.0.1: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
