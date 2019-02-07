@@ -512,7 +512,7 @@ app-doc/clsync-docs 0.4.2: Clsync and libclsync API documentation
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.14-r1: Documentation system for most programming languages
 app-doc/elisp-manual 18.1.03 21.2.8-r2 22.2.9 23.4 24.5 25.3: The GNU Emacs Lisp Reference Manual
-app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
+app-doc/gimp-help 2.6.1 2.8.2: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 3.2-r1 3.3: Documentation package for GnuCash
 app-doc/halibut 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
