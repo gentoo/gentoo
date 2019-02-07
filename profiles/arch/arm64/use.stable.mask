@@ -4,6 +4,26 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
+# app-misc/tracker not stable yet
+tracker
+
+# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
+# media-sound/musepack-tools not stable yet
+musepack
+
+# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
+# media-libs/portaudio not stable yet
+portaudio
+
+# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
+# net-fs/samba not stable yet
+samba
+
+# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
+# x11-misc/colord not stable yet
+colord
+
 # Mart Raudsepp <leio@gentoo.org> (18 Jan 2019)
 # x11-libs/libva not stable yet
 vaapi

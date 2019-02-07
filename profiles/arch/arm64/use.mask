@@ -59,14 +59,6 @@ smi
 # sci-geosciences/gpsd is not keyworded here.
 gps
 
-# Mart Raudsepp <leio@gentoo.org> (17 Feb 2017)
-# x11-misc/colord not tested on arm64 yet
-colord
-
-# Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
-# net-fs/samba not tested on arm64 yet
-samba
-
 # Mart Raudsepp <leio@gentoo.org> (01 Feb 2017)
 # Unmask systemd since it is keyworded here.
 -systemd
@@ -75,10 +67,6 @@ samba
 # dev-util/valgrind not tested on arm64 yet
 # Upstream seems to have architecture support, however
 valgrind
-
-# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
-# media-libs/portaudio not tested on arm64 yet
-portaudio
 
 # Markus Meier <maekke@gentoo.org> (22 Aug 2010)
 # net-wireless/wimax not tested
@@ -91,14 +79,6 @@ clamav
 # Kacper Kowalik <xarthisius@gentoo.org> (9 Aug 2010)
 # cblas-external as virtual/cblas is also masked
 cblas-external
-
-# Samuli Suominen <ssuominen@gentoo.org> (17 Oct 2009)
-# Required package: media-sound/musepack-tools
-musepack
-
-# Raúl Porcel <armin76@gentoo.org>
-# I've been told xfs is broken on ARM
-xfs
 
 # Raúl Porcel <armin76@gentoo.org>
 # Fails to build/work
@@ -125,7 +105,6 @@ dmi
 fuse
 R
 octave
-tracker
 xindy
 mpi
 lasi
