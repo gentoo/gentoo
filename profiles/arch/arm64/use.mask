@@ -105,7 +105,6 @@ dmi
 fuse
 R
 octave
-tracker
 xindy
 mpi
 lasi
