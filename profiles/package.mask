@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Erik Mackdanz <stasibear@gentoo.org> (6 Feb 2019)
+# Dead upstream #677400
+# Masked for removal in 30 days.
+sys-fs/cloudfuse
+
 # Tim Harder <radhermit@gentoo.org> (6 Feb 2019)
 # Deprecated and unmaintained, use sieve for a replacement.
 # https://wiki2.dovecot.org/HowTo/AntispamWithSieve
