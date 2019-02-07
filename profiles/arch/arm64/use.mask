@@ -59,10 +59,6 @@ smi
 # sci-geosciences/gpsd is not keyworded here.
 gps
 
-# Mart Raudsepp <leio@gentoo.org> (17 Feb 2017)
-# x11-misc/colord not tested on arm64 yet
-colord
-
 # Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
 # net-fs/samba not tested on arm64 yet
 samba
