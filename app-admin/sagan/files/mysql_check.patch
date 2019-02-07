@@ -16,8 +16,8 @@ rename to configure.ac
 -	AC_CHECK_LIB(mysqlclient_r, main,,AC_MSG_ERROR(The MySQL library libmysqlclient_r is missing!
 -If you're not interested in MySQL support use the --disable-mysql flag.))
 -	fi
-+	LIBS=$(mysql_config --libs_r) 
-+	AC_CHECK_LIB(mysqlclient_r, main,,AC_MSG_ERROR(The MySQL library libmysqlclient_r is missing!))
++	LIBS=$(mysql_config --libs)
++	AC_CHECK_LIB(mysqlclient, main,,AC_MSG_ERROR(The MySQL library libmysqlclient is missing!))
 +fi
 +LIBS="$save_LIBS $LIBS"
 +
