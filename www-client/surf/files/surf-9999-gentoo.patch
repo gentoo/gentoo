@@ -1,6 +1,8 @@
+diff --git a/config.mk b/config.mk
+index 5e68e38..fa45b55 100644
 --- a/config.mk
 +++ b/config.mk
-@@ -4,18 +4,18 @@
+@@ -4,18 +4,18 @@ VERSION = 2.0
  # Customize below to fit your system
  
  # paths
@@ -19,48 +21,11 @@
 -GTKLIB = `pkg-config --libs gtk+-3.0 gcr-3 webkit2gtk-4.0`
 -WEBEXTINC = `pkg-config --cflags webkit2gtk-4.0 webkit2gtk-web-extension-4.0`
 -WEBEXTLIBS = `pkg-config --libs webkit2gtk-4.0 webkit2gtk-web-extension-4.0`
-+GTKINC = $(shell $(PKG_CONFIG) --cflags gtk+-3.0 gcr-3 gthread-2.0)
-+GTKLIB = $(shell $(PKG_CONFIG) --libs gtk+-3.0 gcr-3 gthread-2.0)
++GTKINC = $(shell $(PKG_CONFIG) --cflags gtk+-3.0 gcr-3 webkit2gtk-4.0)
++GTKLIB = $(shell $(PKG_CONFIG) --libs gtk+-3.0 gcr-3 webkit2gtk-4.0)
 +WEBEXTINC = $(shell $(PKG_CONFIG) --cflags webkit2gtk-4.0 webkit2gtk-web-extension-4.0)
 +WEBEXTLIBS = $(shell $(PKG_CONFIG) --libs webkit2gtk-4.0 webkit2gtk-web-extension-4.0)
  
  # includes and libs
  INCS = $(X11INC) $(GTKINC)
-@@ -24,7 +24,7 @@
- # flags
- CPPFLAGS = -DVERSION=\"$(VERSION)\" -DWEBEXTDIR=\"$(LIBDIR)\" \
-            -D_DEFAULT_SOURCE -DGCR_API_SUBJECT_TO_CHANGE
--SURFCFLAGS = $(INCS) $(CPPFLAGS)
-+SURFCFLAGS = $(INCS) $(CPPFLAGS) $(CFLAGS)
- WEBEXTCFLAGS = -fPIC $(WEBEXTINC)
- 
- # compiler
---- a/Makefile
-+++ b/Makefile
-@@ -9,7 +9,7 @@
- WEBEXTSRC = libsurf-webext.c
- WEBEXTOBJ = $(WEBEXTSRC:.c=.o)
- 
--all: options libsurf-webext.so surf
-+all: libsurf-webext.so surf
- 
- options:
- 	@echo surf build options:
-@@ -19,7 +19,7 @@
- 	@echo "LDFLAGS       = $(LDFLAGS)"
- 
- .c.o:
--	$(CC) $(SURFCFLAGS) $(CFLAGS) -c $<
-+	$(CC) $(WEBEXTCFLAGS) $(SURFCFLAGS) $(CFLAGS) -c $<
- 
- config.h:
- 	cp config.def.h $@
-@@ -33,7 +33,7 @@
- 	$(CC) -shared -Wl,-soname,$@ $(LDFLAGS) -o $@ $< $(WEBEXTLIBS) -lc
- 
- surf: $(OBJ)
--	$(CC) $(SURFLDLAGS) $(LDFLAGS) -o $@ $(OBJ) $(LIBS)
-+	$(CC) $(WEBEXTLIBS) $(LDFLAGS) -o $@ $(OBJ) $(LIBS)
- 
- clean:
- 	rm -f surf $(OBJ)
+
