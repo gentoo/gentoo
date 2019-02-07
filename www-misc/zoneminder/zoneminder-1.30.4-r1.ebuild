@@ -1,19 +1,19 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TO DO:
 # * dependencies of unknown status:
 #	dev-perl/Device-SerialPort
-# 	dev-perl/MIME-Lite
-# 	dev-perl/MIME-tools
-# 	dev-perl/PHP-Serialization
-# 	virtual/perl-Archive-Tar
-# 	virtual/perl-libnet
-# 	virtual/perl-Module-Load
+#	dev-perl/MIME-Lite
+#	dev-perl/MIME-tools
+#	dev-perl/PHP-Serialization
+#	virtual/perl-Archive-Tar
+#	virtual/perl-libnet
+#	virtual/perl-Module-Load
 
 EAPI=6
 
-inherit versionator perl-functions readme.gentoo-r1 cmake-utils depend.apache flag-o-matic systemd
+inherit eapi7-ver perl-functions readme.gentoo-r1 cmake-utils depend.apache flag-o-matic systemd
 
 MY_PN="ZoneMinder"
 
@@ -37,6 +37,7 @@ REQUIRED_USE="
 
 DEPEND="
 	app-eselect/eselect-php[apache2]
+	dev-db/mysql-connector-c:0=
 	dev-lang/perl:=
 	dev-lang/php:*[apache2,cgi,curl,gd,inifile,pdo,mysql,mysqli,sockets]
 	dev-libs/libpcre
@@ -59,7 +60,6 @@ DEPEND="
 	virtual/ffmpeg
 	virtual/httpd-php:*
 	virtual/jpeg:0
-	virtual/mysql
 	virtual/perl-ExtUtils-MakeMaker
 	virtual/perl-Getopt-Long
 	virtual/perl-Sys-Syslog
@@ -171,7 +171,7 @@ pkg_postinst() {
 
 	local v
 	for v in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least ${PV} ${v}; then
+		if ver_test ${PV} -gt ${v}; then
 			elog "You have upgraded zoneminder and may have to upgrade your database now using the 'zmupdate.pl' script."
 		fi
 	done
