@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_HANDBOOK="optional"
 KDE_TEST="forceoptional"
@@ -18,6 +18,10 @@ IUSE="activities designer kde ofx webkit"
 
 REQUIRED_USE="test? ( designer )"
 
+BDEPEND="
+	dev-libs/libxslt
+	virtual/pkgconfig
+"
 COMMON_DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kcompletion)
@@ -55,15 +59,13 @@ COMMON_DEPEND="
 	activities? ( $(add_frameworks_dep kactivities) )
 	kde? ( $(add_frameworks_dep krunner) )
 	ofx? ( dev-libs/libofx )
-	webkit? ( $(add_qt_dep qtwebkit) )
+	webkit? ( >=dev-qt/qtwebkit-5.212.0_pre20180120:5 )
 	!webkit? ( $(add_qt_dep qtwebengine 'widgets') )
 "
 DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kguiaddons)
 	$(add_frameworks_dep kjobwidgets)
 	$(add_frameworks_dep kwindowsystem)
-	dev-libs/libxslt
-	virtual/pkgconfig
 	designer? (
 		$(add_frameworks_dep kdesignerplugin)
 		$(add_qt_dep designer)
