@@ -36,15 +36,18 @@ export KDE_BUILD_TYPE
 case ${CATEGORY} in
 	kde-frameworks)
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
-		[[ ${PV} = 5.52.0* ]] && : ${QT_MINIMAL:=5.9.4}
 		;;
 	kde-plasma)
+		[[ ${PV} = 5.14.5 ]] && : ${FRAMEWORKS_MINIMAL:=5.52.0}
 		if [[ ${KDE_BUILD_TYPE} = live && ${PV} != 5.??.49* ]]; then
 			: ${FRAMEWORKS_MINIMAL:=9999}
 		fi
 		;;
 	kde-apps)
-		[[ ${PV} = 18.08.3* ]] && : ${QT_MINIMAL:=5.9.4}
+		if [[ ${PV} = 18.08.3* ]]; then
+			: ${QT_MINIMAL:=5.9.4}
+			: ${FRAMEWORKS_MINIMAL:=5.52.0}
+		fi
 		;;
 esac
 
@@ -56,7 +59,7 @@ esac
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimum version of Frameworks to require. This affects add_frameworks_dep.
-: ${FRAMEWORKS_MINIMAL:=5.52.0}
+: ${FRAMEWORKS_MINIMAL:=5.54.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
@@ -138,7 +141,7 @@ _add_category_dep() {
 
 	if [[ -n ${slot} ]] ; then
 		slot=":${slot}"
-	elif [[ ${SLOT%\/*} = 4 || ${SLOT%\/*} = 5 ]] && ! has kde5-meta-pkg ${INHERITED} ; then
+	elif [[ ${SLOT%\/*} = 5 ]] ; then
 		slot=":${SLOT%\/*}"
 	fi
 
@@ -264,10 +267,10 @@ add_qt_dep() {
 	local slot=${4}
 
 	if [[ -z ${version} ]]; then
-		if [[ ${1} = qtwebkit && $(ver_cut 2 ${QT_MINIMAL}) -ge 9 ]]; then
-			version=5.9.1 # no more upstream release, need bug #624404
-		else
-			version=${QT_MINIMAL}
+		version=${QT_MINIMAL}
+		if [[ ${1} = qtwebkit ]]; then
+			version=5.9.1
+			[[ ${EAPI} != 6 ]] && die "${FUNCNAME} is disallowed for 'qtwebkit' in EAPI 7 and later"
 		fi
 	fi
 	if [[ -z ${slot} ]]; then

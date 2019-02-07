@@ -31,10 +31,11 @@ _KDE5_ECLASS=1
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit cmake-utils flag-o-matic gnome2-utils kde5-functions virtualx xdg
+inherit cmake-utils flag-o-matic kde5-functions virtualx
 
 case ${EAPI} in
-	6) inherit eapi7-ver eutils ;;
+	6) inherit eapi7-ver eutils gnome2-utils xdg ;;
+	7) inherit xdg-utils ;;
 esac
 
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
@@ -197,7 +198,7 @@ esac
 case ${KDE_AUTODEPS} in
 	false)	;;
 	*)
-		DEPEND+=" $(add_frameworks_dep extra-cmake-modules)"
+		BDEPEND+=" $(add_frameworks_dep extra-cmake-modules)"
 		RDEPEND+=" >=kde-frameworks/kf-env-4"
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
@@ -224,7 +225,7 @@ case ${KDE_DESIGNERPLUGIN} in
 	false)  ;;
 	*)
 		IUSE+=" designer"
-		DEPEND+=" designer? ( $(add_frameworks_dep kdesignerplugin) )"
+		BDEPEND+=" designer? ( $(add_frameworks_dep kdesignerplugin) )"
 esac
 
 case ${KDE_EXAMPLES} in
@@ -238,7 +239,7 @@ case ${KDE_HANDBOOK} in
 	false)	;;
 	*)
 		IUSE+=" +handbook"
-		DEPEND+=" handbook? ( $(add_frameworks_dep kdoctools) )"
+		BDEPEND+=" handbook? ( $(add_frameworks_dep kdoctools) )"
 		;;
 esac
 
@@ -247,7 +248,7 @@ case ${KDE_QTHELP} in
 	*)
 		IUSE+=" doc"
 		COMMONDEPEND+=" doc? ( $(add_qt_dep qt-docs) )"
-		DEPEND+=" doc? (
+		BDEPEND+=" doc? (
 			$(add_qt_dep qthelp)
 			>=app-doc/doxygen-1.8.13-r1
 		)"
@@ -268,6 +269,10 @@ case ${KDE_SELINUX_MODULE} in
 		IUSE+=" selinux"
 		RDEPEND+=" selinux? ( sec-policy/selinux-${KDE_SELINUX_MODULE} )"
 		;;
+esac
+
+case ${EAPI} in
+	6) DEPEND+=" ${BDEPEND}" ;;
 esac
 
 DEPEND+=" ${COMMONDEPEND} dev-util/desktop-file-utils"
@@ -632,6 +637,8 @@ kde5_src_configure() {
 			# install mkspecs in the same directory as qt stuff
 			-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 		)
+		# move handbook outside of doc dir for at least two QA warnings, bug 667138
+		[[ ${EAPI} != 6 ]] && cmakeargs+=( -DKDE_INSTALL_DOCBUNDLEDIR="${EPREFIX}/usr/share/help" )
 	fi
 
 	# allow the ebuild to override what we set here
@@ -700,10 +707,127 @@ kde5_src_install() {
 		docompress -x /usr/share/doc/qt-${pv}
 	fi
 
-	# We don't want /usr/share/doc/HTML to be compressed,
-	# because then khelpcenter can't find the docs
-	if [[ -d ${ED%/}/usr/share/doc/HTML ]]; then
-		docompress -x /usr/share/doc/HTML
+	if [[ ${EAPI} = 6 ]]; then
+		# We don't want /usr/share/doc/HTML to be compressed,
+		# because then khelpcenter can't find the docs
+		#todo: clean up trailing slash check when EAPI <7 is removed
+		if [[ -d ${ED%/}/usr/share/doc/HTML ]]; then
+			docompress -x /usr/share/doc/HTML
+		fi
+	fi
+}
+
+# @FUNCTION: _xdg_icon_cache_update
+# @DESCRIPTION: Forked from future xdg-utils.eclass. REMOVEME!
+# Updates Gtk+ icon cache files under /usr/share/icons.
+# This function should be called from pkg_postinst and pkg_postrm.
+_xdg_icon_cache_update() {
+	if [[ ${EBUILD_PHASE} != post* ]] ; then
+		die "xdg_icon_cache_update must be used in pkg_post* phases."
+	fi
+
+	if ! type gtk-update-icon-cache &>/dev/null; then
+		debug-print "gtk-update-icon-cache is not found"
+		return
+	fi
+
+	ebegin "Updating icons cache"
+	local retval=0
+	local fails=( )
+	for dir in "${EROOT%/}"/usr/share/icons/*
+	do
+		if [[ -f "${dir}/index.theme" ]] ; then
+			local rv=0
+			gtk-update-icon-cache -qf "${dir}"
+			rv=$?
+			if [[ ! $rv -eq 0 ]] ; then
+				debug-print "Updating cache failed on ${dir}"
+				# Add to the list of failures
+				fails+=( "${dir}" )
+				retval=2
+			fi
+		elif [[ $(ls "${dir}") = "icon-theme.cache" ]]; then
+			# Clear stale cache files after theme uninstallation
+			rm "${dir}/icon-theme.cache"
+		fi
+		if [[ -z $(ls "${dir}") ]]; then
+			# Clear empty theme directories after theme uninstallation
+			rmdir "${dir}"
+		fi
+	done
+	eend ${retval}
+	for f in "${fails[@]}" ; do
+		eerror "Failed to update cache with icon $f"
+	done
+}
+
+# @FUNCTION: _xdg_pkg_preinst
+# @DESCRIPTION: Forked from future xdg.eclass. REMOVEME!
+# Finds .desktop, icon and mime info files for later handling in pkg_postinst.
+# Locations are stored in XDG_ECLASS_DESKTOPFILES, XDG_ECLASS_ICONFILES
+# and XDG_ECLASS_MIMEINFOFILES respectively.
+_xdg_pkg_preinst() {
+	local f
+
+	XDG_ECLASS_DESKTOPFILES=()
+	while IFS= read -r -d '' f; do
+		XDG_ECLASS_DESKTOPFILES+=( ${f} )
+	done < <(cd "${ED}" && find 'usr/share/applications' -type f -print0 2>/dev/null)
+
+	XDG_ECLASS_ICONFILES=()
+	while IFS= read -r -d '' f; do
+		XDG_ECLASS_ICONFILES+=( ${f} )
+	done < <(cd "${ED}" && find 'usr/share/icons' -type f -print0 2>/dev/null)
+
+	XDG_ECLASS_MIMEINFOFILES=()
+	while IFS= read -r -d '' f; do
+		XDG_ECLASS_MIMEINFOFILES+=( ${f} )
+	done < <(cd "${ED}" && find 'usr/share/mime' -type f -print0 2>/dev/null)
+}
+
+# @FUNCTION: _xdg_pkg_postinst
+# @DESCRIPTION: Forked from future xdg.eclass. REMOVEME!
+# Handle desktop, icon and mime info database updates.
+_xdg_pkg_postinst() {
+	if [[ ${#XDG_ECLASS_DESKTOPFILES[@]} -gt 0 ]]; then
+		xdg_desktop_database_update
+	else
+		debug-print "No .desktop files to add to database"
+	fi
+
+	if [[ ${#XDG_ECLASS_ICONFILES[@]} -gt 0 ]]; then
+		_xdg_icon_cache_update
+	else
+		debug-print "No icon files to add to cache"
+	fi
+
+	if [[ ${#XDG_ECLASS_MIMEINFOFILES[@]} -gt 0 ]]; then
+		xdg_mimeinfo_database_update
+	else
+		debug-print "No mime info files to add to database"
+	fi
+}
+
+# @FUNCTION: _xdg_pkg_postrm
+# @DESCRIPTION: Forked from future xdg.eclass. REMOVEME!
+# Handle desktop, icon and mime info database updates.
+_xdg_pkg_postrm() {
+	if [[ ${#XDG_ECLASS_DESKTOPFILES[@]} -gt 0 ]]; then
+		xdg_desktop_database_update
+	else
+		debug-print "No .desktop files to add to database"
+	fi
+
+	if [[ ${#XDG_ECLASS_ICONFILES[@]} -gt 0 ]]; then
+		_xdg_icon_cache_update
+	else
+		debug-print "No icon files to add to cache"
+	fi
+
+	if [[ ${#XDG_ECLASS_MIMEINFOFILES[@]} -gt 0 ]]; then
+		xdg_mimeinfo_database_update
+	else
+		debug-print "No mime info files to add to database"
 	fi
 }
 
@@ -713,8 +837,9 @@ kde5_src_install() {
 kde5_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	gnome2_icon_savelist
-	xdg_pkg_preinst
+	[[ ${EAPI} == 6 ]] && gnome2_icon_savelist
+	[[ ${EAPI} == 6 ]] && xdg_pkg_preinst
+	[[ ${EAPI} == 7 ]] && _xdg_pkg_preinst
 }
 
 # @FUNCTION: kde5_pkg_postinst
@@ -723,10 +848,11 @@ kde5_pkg_preinst() {
 kde5_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
+	if [[ ${EAPI} == 6 && -n ${GNOME2_ECLASS_ICONS} ]]; then
 		gnome2_icon_cache_update
 	fi
-	xdg_pkg_postinst
+	[[ ${EAPI} == 6 ]] && xdg_pkg_postinst
+	[[ ${EAPI} == 7 ]] && _xdg_pkg_postinst
 
 	if [[ -z ${I_KNOW_WHAT_I_AM_DOING} ]]; then
 		if [[ ${KDE_BUILD_TYPE} = live ]]; then
@@ -744,10 +870,11 @@ kde5_pkg_postinst() {
 kde5_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
+	if [[ ${EAPI} == 6 && -n ${GNOME2_ECLASS_ICONS} ]]; then
 		gnome2_icon_cache_update
 	fi
-	xdg_pkg_postrm
+	[[ ${EAPI} == 6 ]] && xdg_pkg_postrm
+	[[ ${EAPI} == 7 ]] && _xdg_pkg_postrm
 }
 
 fi

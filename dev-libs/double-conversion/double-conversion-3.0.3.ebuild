@@ -46,7 +46,7 @@ src_install() {
 	myinstall() {
 		[[ ${MULTIBUILD_VARIANT} = shared ]] && cmake-utils_src_install
 		[[ ${MULTIBUILD_VARIANT} = static-libs ]] && \
-			dolib ${BUILD_DIR}/double-conversion/libdouble-conversion.a
+			dolib.a ${BUILD_DIR}/double-conversion/libdouble-conversion.a
 	}
 
 	multibuild_foreach_variant myinstall
