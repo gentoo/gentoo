@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit kde5
 
@@ -22,7 +22,7 @@ DEPEND="
 	$(add_frameworks_dep kxmlgui)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	webkit? ( $(add_qt_dep qtwebkit) )
+	webkit? ( >=dev-qt/qtwebkit-5.212.0_pre20180120:5 )
 	!webkit? (
 		$(add_qt_dep qtwebchannel)
 		$(add_qt_dep qtwebengine 'widgets')
