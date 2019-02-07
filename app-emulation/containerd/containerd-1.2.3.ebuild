@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	MY_PV="${PV/_rc/-rc.}"
 	EGIT_COMMIT="v${MY_PV}"
-	CONTAINERD_COMMIT="d64c661f1d51c48782c9cec8fda7604785f93587"
+	CONTAINERD_COMMIT="7f5f1176dd9fb3cc8d3ce5de91759ed3dc969fa2"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 	inherit golang-vcs-snapshot
@@ -22,12 +22,12 @@ HOMEPAGE="https://containerd.tools"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="+btrfs hardened"
+IUSE="apparmor +btrfs +cri hardened +seccomp"
 
-DEPEND="btrfs? ( sys-fs/btrfs-progs )"
-RDEPEND="|| ( >=app-emulation/docker-runc-1.0.0_rc4
-	>=app-emulation/runc-1.0.0_rc4 )
-	sys-libs/libseccomp"
+DEPEND="btrfs? ( sys-fs/btrfs-progs )
+	seccomp? ( sys-libs/libseccomp )"
+RDEPEND=">=app-emulation/runc-1.0.0_rc5
+	seccomp? ( sys-libs/libseccomp )"
 
 S=${WORKDIR}/${P}/src/${EGO_PN}
 
@@ -44,11 +44,13 @@ src_prepare() {
 }
 
 src_compile() {
-	local options=( $(usex btrfs "" "no_btrfs") )
+	local options=( $(usex btrfs "" "no_btrfs") $(usex cri "" "no_cri") $(usex seccomp "seccomp" "") $(usex apparmor "apparmor" "") )
 	export GOPATH="${WORKDIR}/${P}" # ${PWD}/vendor
-	LDFLAGS=$(usex hardened '-extldflags -fno-PIC' '') emake BUILDTAGS="${options[@]}"
+	LDFLAGS=$(usex hardened '-extldflags -fno-PIC' '') BUILDTAGS="${options[@]}" emake
 }
 
 src_install() {
-	dobin bin/containerd{-shim,-stress,} bin/ctr
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
+	keepdir /var/lib/containerd
+	dobin bin/*
 }
