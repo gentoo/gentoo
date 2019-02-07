@@ -121,6 +121,11 @@ src_prepare() {
 		strip_builddir SRC_SUBDIRS examples Makefile.{am,in}
 	fi
 
+	# Add fallback to no glyph for GtkSwitch, so if no glyph for some reason is found, it at least doesn't mess things up completely
+	# gtk+-3.24.5 replaces these with CSS gadget icons, but we include this simpler version in revbump as a stable candidate without
+	# the Adwaita theme changes found in 3.24.5
+	eapply "${FILESDIR}"/${PV}-more-gtkswitch-fallback.patch
+
 	# gtk-update-icon-cache is installed by dev-util/gtk-update-icon-cache
 	eapply "${FILESDIR}"/${PN}-3.22.2-update-icon-cache.patch
 
