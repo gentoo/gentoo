@@ -50,7 +50,7 @@ EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-MESON_DEPEND=">=dev-util/meson-0.45.1
+MESON_DEPEND=">=dev-util/meson-0.48.2
 	>=dev-util/ninja-1.7.2"
 
 if [[ ${EAPI:-0} == [6] ]]; then
