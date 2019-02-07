@@ -11,7 +11,8 @@
 # @DESCRIPTION:
 # Provide a default SRC_URI for tarball hosted on gnome.org mirrors.
 
-[[ ${EAPI} == [0123456] ]] && inherit eapi7-ver
+# versionator inherit kept for older EAPIs due to ebuilds (potentially) relying on it
+[[ ${EAPI} == [0123456] ]] && inherit eapi7-ver versionator
 
 # @ECLASS-VARIABLE: GNOME_TARBALL_SUFFIX
 # @DESCRIPTION:
