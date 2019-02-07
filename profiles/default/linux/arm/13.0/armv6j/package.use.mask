@@ -4,6 +4,7 @@
 # Davide Pesavento <pesa@gentoo.org> (23 Dec 2018)
 # These require masked sys-devel/clang.
 dev-qt/qt-creator clang clangcodemodel clangstaticanalyzer
+dev-util/perf clang
 
 # Michał Górny <mgorny@gentoo.org> (22 Dec 2018)
 # Those require masked dev-qt/qdoc.
