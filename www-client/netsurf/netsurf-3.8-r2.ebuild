@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,7 +38,7 @@ RDEPEND="
 		x11-libs/gtk+:3 )
 	gtk2? ( dev-libs/glib:2
 		x11-libs/gtk+:2 )
-	javascript? ( >=dev-libs/nsgenbind-0.3
+	javascript? ( >=dev-libs/nsgenbind-0.6
 		!duktape? ( dev-lang/spidermonkey:0= ) )
 	jpeg? ( >=virtual/jpeg-0-r2:0 )
 	mng? ( >=media-libs/libmng-1.0.10-r2 )
@@ -51,7 +51,8 @@ RDEPEND="
 	webp? ( >=media-libs/libwebp-0.3.0 )"
 DEPEND="${RDEPEND}
 	dev-libs/check
-	dev-perl/HTML-Parser"
+	dev-perl/HTML-Parser
+	>=dev-util/netsurf-buildsystem-1.7-r1"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.8-CFLAGS.patch
