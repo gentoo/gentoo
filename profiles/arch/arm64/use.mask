@@ -81,10 +81,6 @@ clamav
 cblas-external
 
 # Raúl Porcel <armin76@gentoo.org>
-# I've been told xfs is broken on ARM
-xfs
-
-# Raúl Porcel <armin76@gentoo.org>
 # Fails to build/work
 openexr
 
