@@ -5,6 +5,10 @@
 # Please use the same syntax as in use.mask
 
 # Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
+# media-sound/musepack-tools not stable yet
+musepack
+
+# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
 # media-libs/portaudio not stable yet
 portaudio
 
