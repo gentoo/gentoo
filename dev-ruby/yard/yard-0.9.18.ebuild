@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC="yard"
@@ -43,4 +43,7 @@ all_ruby_prepare() {
 
 	# Avoid redcarpet-specific spec that is not optional
 	sed -i -e '/autolinks URLs/askip "make redcarpet optional"' spec/templates/helpers/html_helper_spec.rb || die
+
+	# Avoid asciidoc-specific spec that is not optional
+	sed -i -e '/AsciiDoc specific/askip "skipping asciidoc test"' spec/templates/helpers/html_helper_spec.rb || die
 }
