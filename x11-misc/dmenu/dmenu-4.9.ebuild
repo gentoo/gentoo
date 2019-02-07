@@ -43,6 +43,8 @@ src_compile() {
 	emake CC=$(tc-getCC) \
 		"FREETYPEINC=$( $(tc-getPKG_CONFIG) --cflags x11 fontconfig xft 2>/dev/null )" \
 		"FREETYPELIBS=$( $(tc-getPKG_CONFIG) --libs x11 fontconfig xft 2>/dev/null )" \
+		"X11INC=$( $(tc-getPKG_CONFIG) --cflags x11 2>/dev/null )" \
+		"X11LIB=$( $(tc-getPKG_CONFIG) --libs x11 2>/dev/null )" \
 		"XINERAMAFLAGS=$(
 			usex xinerama "-DXINERAMA $(
 				$(tc-getPKG_CONFIG) --cflags xinerama 2>/dev/null
