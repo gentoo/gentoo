@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare unpack
-DEPEND=app-crypt/gpgme:= >=app-emulation/cri-o-1.13.0 app-emulation/runc dev-libs/libassuan:= dev-libs/libgpg-error:= sys-fs/lvm2 sys-libs/libseccomp:= apparmor? ( sys-libs/libapparmor ) btrfs? ( sys-fs/btrfs-progs ) ostree? ( dev-libs/glib:= dev-util/ostree:= ) selinux? ( sys-libs/libselinux:= ) dev-go/go-md2man >=dev-lang/go-1.9 virtual/pkgconfig
+DEPEND=app-crypt/gpgme:= >=app-emulation/cri-o-1.13.0 app-emulation/runc dev-libs/libassuan:= dev-libs/libgpg-error:= sys-fs/lvm2 sys-libs/libseccomp:= apparmor? ( sys-libs/libapparmor ) btrfs? ( sys-fs/btrfs-progs ) ostree? ( dev-libs/glib:= dev-util/ostree:= ) selinux? ( sys-libs/libselinux:= ) dev-go/go-md2man >=dev-lang/go-1.10 virtual/pkgconfig
 DESCRIPTION=Library and podman tool for running OCI-based containers in Pods
 EAPI=6
 HOMEPAGE=https://github.com/containers/libpod/
@@ -11,5 +11,5 @@ REQUIRED_USE=!selinux? ( !ostree )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/containers/libpod/archive/v0.12.1.2.tar.gz -> libpod-0.12.1.2.tar.gz
-_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=e0825d6bdb8be104f4d6c69881b6a0e9

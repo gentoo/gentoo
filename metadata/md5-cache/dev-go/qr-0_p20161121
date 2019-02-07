@@ -1,11 +1,12 @@
 DEFINED_PHASES=compile install test unpack
-DEPEND=>=dev-lang/go-1.9
+DEPEND=>=dev-lang/go-1.10
 DESCRIPTION=Basic QR code library for Go
 EAPI=6
 HOMEPAGE=https://github.com/rsc/qr
 KEYWORDS=~amd64
 LICENSE=MIT
+RESTRICT=strip
 SLOT=0/0_p20161121
 SRC_URI=https://github.com/rsc/qr/archive/48b2ede4844e13f1a2b7ce4d2529c9af7e359fc5.tar.gz -> qr-0_p20161121.tar.gz
-_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	42942532e7429ed9b2efaabf93dc0615	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
 _md5_=7b13fc2418419ea1d778f68343bba3a2

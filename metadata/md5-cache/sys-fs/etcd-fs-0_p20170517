@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install
-DEPEND=dev-db/go-etcd:= dev-libs/go-fuse:= >=dev-lang/go-1.9
+DEPEND=dev-db/go-etcd:= dev-libs/go-fuse:= >=dev-lang/go-1.10
 DESCRIPTION=Use etcd as a FUSE filesystem
 EAPI=6
 HOMEPAGE=https://github.com/xetorthio/etcd-fs
@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/xetorthio/etcd-fs/archive/1eeace3bc20b15e4347c631a1cf7b45f3852518a.tar.gz -> etcd-fs-0_p20170517.tar.gz
-_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892
 _md5_=a6f64bca49c9e20659f135db5218c9cb

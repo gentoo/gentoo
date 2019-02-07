@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install unpack
-DEPEND=>=dev-lang/go-1.9
+DEPEND=>=dev-lang/go-1.10
 DESCRIPTION=A source-level debugger for the Go programming language
 EAPI=6
 HOMEPAGE=https://github.com/derekparker/delve
@@ -8,5 +8,5 @@ LICENSE=MIT
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/derekparker/delve/archive/v1.0.0.tar.gz -> delve-1.0.0.tar.gz
-_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
 _md5_=5ecb74d0e548178d8be36f87d29a9334

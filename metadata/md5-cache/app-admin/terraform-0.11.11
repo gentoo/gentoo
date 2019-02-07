@@ -1,11 +1,12 @@
 DEFINED_PHASES=compile install unpack
-DEPEND=>=dev-lang/go-1.11.0 >=dev-lang/go-1.9
+DEPEND=>=dev-lang/go-1.11.0 >=dev-lang/go-1.10
 DESCRIPTION=A tool for building, changing, and combining infrastructure safely
 EAPI=6
 HOMEPAGE=https://www.terraform.io/
 KEYWORDS=~amd64
 LICENSE=MPL-2.0
+RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/hashicorp/terraform/archive/v0.11.11.tar.gz -> terraform-0.11.11.tar.gz
-_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
 _md5_=ba39dd2622ac787724bbaa26aac6babd

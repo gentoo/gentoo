@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install test unpack
-DEPEND=app-arch/zip >=dev-lang/go-1.9 virtual/pkgconfig
+DEPEND=app-arch/zip >=dev-lang/go-1.10 virtual/pkgconfig
 DESCRIPTION=Modern SSH server for teams managing distributed infrastructure
 EAPI=6
 HOMEPAGE=https://gravitational.com/teleport
@@ -10,5 +10,5 @@ RDEPEND=pam? ( sys-libs/pam )
 RESTRICT=test strip
 SLOT=0
 SRC_URI=https://github.com/gravitational/teleport/archive/v3.0.0.tar.gz -> teleport-3.0.0.tar.gz
-_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	42942532e7429ed9b2efaabf93dc0615	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=ab657325f8d9faae6266739d57e32a4e

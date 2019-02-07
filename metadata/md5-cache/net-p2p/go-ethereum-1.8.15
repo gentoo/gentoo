@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install
-DEPEND=dev-lang/go:= opencl? ( virtual/opencl ) >=dev-lang/go-1.9
+DEPEND=dev-lang/go:= opencl? ( virtual/opencl ) >=dev-lang/go-1.10
 DESCRIPTION=Official golang implementation of the Ethereum protocol
 EAPI=6
 HOMEPAGE=https://github.com/ethereum/go-ethereum
@@ -10,5 +10,5 @@ RDEPEND=dev-lang/go:= opencl? ( virtual/opencl )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/ethereum/go-ethereum/archive/v1.8.15.tar.gz -> go-ethereum-1.8.15.tar.gz
-_eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892
 _md5_=f90badc3e6f60f3bf6b32904e6c3d922
