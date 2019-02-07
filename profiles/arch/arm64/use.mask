@@ -68,10 +68,6 @@ gps
 # Upstream seems to have architecture support, however
 valgrind
 
-# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
-# media-libs/portaudio not tested on arm64 yet
-portaudio
-
 # Markus Meier <maekke@gentoo.org> (22 Aug 2010)
 # net-wireless/wimax not tested
 wimax
