@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit apache-module
 
@@ -22,15 +22,19 @@ DEPEND="mp3? ( media-libs/libmad media-libs/libid3tag )
 	flac? ( media-libs/flac )
 	vorbis? ( media-libs/libvorbis )
 	archive? ( app-arch/libarchive )
-	mysql? ( virtual/mysql )"
+	mysql? ( dev-db/mysql-connector-c:0= )"
 RDEPEND="${DEPEND}
 	sys-devel/libtool"
 
 APACHE2_MOD_CONF="50_${PN}"
 APACHE2_MOD_DEFINE="MUSICINDEX"
-DOCFILES="AUTHORS BUGS ChangeLog README UPGRADING"
+DOCS=( AUTHORS BUGS ChangeLog README UPGRADING )
 
 need_apache2
+
+pkg_setup() {
+	_init_apache2_late
+}
 
 src_configure() {
 	econf \
@@ -44,11 +48,11 @@ src_configure() {
 }
 
 src_compile() {
-	emake || die "emake failed"
+	default
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake failed"
+	default
 	apache-module_src_install
 
 	# install W3C images
