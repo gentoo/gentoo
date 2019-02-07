@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,13 +11,13 @@ SLOT="0"
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/lxc/lxcfs.git"
-	EGIT_BRANCH="master"
+	EGIT_BRANCH="master"
 	inherit git-r3
-	SRC_URI=""
+	SRC_URI=""
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/lxc/lxcfs/archive/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 # Omit all dbus.  Upstream appears to require it because systemd, but
