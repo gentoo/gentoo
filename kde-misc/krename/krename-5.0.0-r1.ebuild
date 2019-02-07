@@ -1,9 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-FRAMEWORKS_MINIMAL="5.53.0"
 KDE_TEST="true"
 inherit kde5
 
@@ -33,7 +32,7 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	exif? ( media-gfx/exiv2:= )
-	pdf? ( app-text/podofo )
+	pdf? ( app-text/podofo:= )
 	taglib? ( media-libs/taglib )
 	truetype? ( media-libs/freetype:2 )
 "
@@ -46,8 +45,8 @@ PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.patch" )
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package exif LibExiv2)
-		$(cmake-utils_use_find_package taglib Taglib)
 		$(cmake-utils_use_find_package pdf PoDoFo)
+		$(cmake-utils_use_find_package taglib Taglib)
 		$(cmake-utils_use_find_package truetype Freetype)
 	)
 
