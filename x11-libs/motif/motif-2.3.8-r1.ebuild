@@ -39,10 +39,10 @@ src_prepare() {
 	eapply_user
 
 	# disable compilation of demo binaries
-	sed -i -e '/^SUBDIRS/{:x;/\\$/{N;bx;};s/[ \t\n\\]*demos//;}' Makefile.am || die
+	sed -i -e '/^SUBDIRS/{:x;/\\$/{N;bx;};s/[ \t\n\\]*demos//;}' Makefile.am
 
 	# add X.Org vendor string to aliases for virtual bindings
-	echo -e '"The X.Org Foundation"\t\t\t\t\tpc' >>bindings/xmbind.alias || die
+	echo -e '"The X.Org Foundation"\t\t\t\t\tpc' >>bindings/xmbind.alias
 
 	AT_M4DIR=. eautoreconf
 
@@ -108,7 +108,7 @@ multilib_src_install_all() {
 	newins "${FILESDIR}"/Mwm.defaults Mwm
 
 	# cleanup
-	rm -rf "${ED}"/usr/share/Xm || die
+	rm -rf "${ED}"/usr/share/Xm
 	find "${D}" -type f -name "*.la" -delete || die
 
 	dodoc BUGREPORT ChangeLog README RELEASE RELNOTES TODO
