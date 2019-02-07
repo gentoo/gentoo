@@ -326,6 +326,7 @@ app-crypt/ccrypt 1.10: Encryption and decryption
 app-crypt/certbot 0.29.1: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 0.29.1: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-nginx 0.29.1: Nginx plugin for certbot (Let's Encrypt Client)
+app-crypt/cfssl 1.3.2: Cloudflare's PKI and TLS toolkit
 app-crypt/easy-rsa 3.0.4 3.0.5: Small RSA key management package, based on OpenSSL
 app-crypt/gcr 3.20.0 3.28.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201901130136: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
@@ -618,7 +619,7 @@ app-emacs/crypt++ 2.92: Handle all sorts of compressed and encrypted files
 app-emacs/csharp-mode 0.7.0-r1 0.9.0: A derived Emacs mode implementing most of the C# rules
 app-emacs/css-mode 0.11-r1: A major mode for editing Cascading Style Sheets (CSS)
 app-emacs/csv-mode 1.50: A major mode for editing comma-separated value files
-app-emacs/dash 2.13.0: A modern list library for Emacs
+app-emacs/dash 2.13.0 2.14.1: A modern list library for Emacs
 app-emacs/ddskk 16.2: One Japanese input methods on Emacs
 app-emacs/develock 0.45: An Emacs minor mode for highlighting broken formatting rules
 app-emacs/df-mode 20050509: Minor mode to show space left on devices in the mode line
@@ -645,7 +646,7 @@ app-emacs/filladapt 2.12-r1: Filladapt enhances the behavior of Emacs' fill func
 app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and answers
 app-emacs/flim 1.14.9-r2: A library to provide basic features about message representation or encoding
 app-emacs/folding 2012.0226.1623 2013.0613.1821: A folding-editor-like Emacs minor mode
-app-emacs/ghub 2.0.0: minuscule client library for the Github API
+app-emacs/ghub 2.0.0 2.0.1: minuscule client library for the Github API
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
 app-emacs/gnuserv 3.12.8-r4: Attach to an already running Emacs
 app-emacs/google-c-style 20091009-r1: Provides the google C/C++ coding style
@@ -667,7 +668,7 @@ app-emacs/limit 1.14.10_pre200811252332: Library about Internet Message, for IT 
 app-emacs/lookup 1.4.1: An interface to search CD-ROM books and network dictionaries
 app-emacs/lua-mode 20130419: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20180410: Elisp client for the LysKOM conference system
-app-emacs/magit 2.11.0 2.12.1: A Git porcelain inside Emacs
+app-emacs/magit 2.11.0 2.12.1 2.13.1: A Git porcelain inside Emacs
 app-emacs/magit-popup 2.12.3: Define prefix-infix-suffix command combos
 app-emacs/mailcrypt 3.5.9-r1: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
@@ -724,7 +725,7 @@ app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
 app-emacs/wanderlust 2.14.0-r6 2.15.9_p20130619: Yet Another Message Interface on Emacsen
 app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r1: Mode for editing Wikipedia articles off-line
-app-emacs/with-editor 2.7.2: Use the Emacsclient as the $EDITOR of child processes
+app-emacs/with-editor 2.7.2 2.7.4: Use the Emacsclient as the $EDITOR of child processes
 app-emacs/xrdb-mode 3.0: An Emacs major mode for editing X resource database files
 app-emacs/xslide 0.2.2: An Emacs major mode for editing XSL stylesheets and running XSL processes
 app-emacs/yatex 1.77: Yet Another TeX mode for Emacs
@@ -1019,7 +1020,7 @@ app-misc/glcdprocdriver 0.0.6: Glue library for the glcdlib LCDproc driver based
 app-misc/glimpse 4.18.6-r1: A index/query system to search a large set of files quickly
 app-misc/gnote 3.24.1: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
-app-misc/go-jira 1.0.17: A simple JIRA commandline client in Go
+app-misc/go-jira 1.0.17 1.0.20: A simple JIRA commandline client in Go
 app-misc/golly 2.7-r1: simulator for Conway's Game of Life and other cellular automata
 app-misc/gourmet 0.17.4-r2: Recipe Organizer and Shopping List Generator for Gnome
 app-misc/gramps 4.2.5 4.2.8: Genealogical Research and Analysis Management Programming System
@@ -1328,7 +1329,7 @@ app-text/docbook-sgml 1.0-r1: A helper package for sgml docbook
 app-text/docbook-sgml-dtd 3.0-r3 3.1-r3 4.0-r3 4.1-r3 4.2-r2 4.3-r2 4.4 4.5: Docbook SGML DTD 4.5
 app-text/docbook-sgml-utils 0.6.14-r2: Shell scripts to manage DocBook documents
 app-text/docbook-xml-dtd 4.1.2-r6 4.2-r2 4.3-r1 4.4-r2 4.5-r1: Docbook DTD for XML
-app-text/docbook-xml-simple-dtd 1.0-r1 4.1.2.4-r2 4.1.2.5-r2: Simplified Docbook DTD for XML
+app-text/docbook-xml-simple-dtd 1.0-r1 1.0-r2 4.1.2.4-r2 4.1.2.4-r3 4.1.2.5-r2: Simplified Docbook DTD for XML
 app-text/docbook-xsl-ns-stylesheets 1.78.0: XSL Stylesheets for Docbook
 app-text/docbook-xsl-stylesheets 1.79.1-r2: XSL Stylesheets for Docbook
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
@@ -3092,7 +3093,7 @@ dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20110801-r4: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.2.1: a portable, high level programming interface to various calling conventions
-dev-libs/libfilezilla 0.12.3: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.12.3 0.15.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libfmt 5.2.0: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7: Make fuzzy comparisons of strings and byte arrays
 dev-libs/libg15 1.2.7-r1: The libg15 library gives low-level access to the Logitech G15 keyboard
@@ -3346,7 +3347,7 @@ dev-lua/luafilesystem 1.5.0 1.6.3: File System Library for the Lua Programming L
 dev-lua/luajson 1.3.2: JSON Parser/Constructor for Lua
 dev-lua/luarocks 2.2.0: A deployment and management system for Lua modules
 dev-lua/luasec 0.5.1: Lua binding for OpenSSL library to provide TLS/SSL communication
-dev-lua/luasocket 3.0_rc1-r3: Networking support library for the Lua language
+dev-lua/luasocket 3.0_rc1-r3 3.0_rc1-r4: Networking support library for the Lua language
 dev-lua/luassert 1.7.9: Lua Assertions Extension
 dev-lua/luasystem 0.2.0_p0: platform independent system calls for lua
 dev-lua/lutok 0.4-r1: Lightweight C++ API library for Lua
@@ -4656,6 +4657,7 @@ dev-python/argcomplete 1.4.1 1.9.4: Bash tab completion for argparse
 dev-python/argh 0.26.2 0.26.2-r1: A simple argparse wrapper
 dev-python/args 0.1.0: Command Arguments for Humans
 dev-python/arrayterator 1.0.1-r1: A buffered iterator for reading big arrays in small contiguous blocks
+dev-python/arrow 0.12.1: Better dates and times for Python
 dev-python/asciimatics 1.10.0: Pythonic library to create text UIs and ASCII art animations
 dev-python/asn1crypto 0.22.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
@@ -5036,6 +5038,7 @@ dev-python/jaxml 3.02-r1: XML generator written in Python
 dev-python/jdcal 1.0: Julian dates from proleptic Gregorian and Julian calendars
 dev-python/jedi 0.10.2: Autocompletion library for Python
 dev-python/jinja 2.9.5 2.10: A full-featured template engine for Python
+dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jmespath 0.9.3 0.9.3-r1: JSON Matching Expressions
 dev-python/joblib 0.10.0 0.11: Tools to provide lightweight pipelining in Python
 dev-python/jonpy 0.11: Powerful multi-threaded object-oriented CGI/FastCGI/mod_python/html-templating facilities
@@ -5271,6 +5274,7 @@ dev-python/polib 1.0.7: A library to manipulate gettext files (.po and .mo files
 dev-python/polygon 2.0.6 3.0.7: Python package to handle polygonal shapes in 2D
 dev-python/positional 1.0.1 1.1.1 1.1.2: A decorator which enforces only some args may be passed positionally.
 dev-python/posix_ipc 0.9.8: POSIX IPC primitives (semaphores, shared memory and message queues) for Python
+dev-python/poyo 0.4.1: A lightweight YAML Parser for Python
 dev-python/pretend 1.0.8: A library for stubbing in Python
 dev-python/pretty-yaml 15.6.3 15.8.2: PyYAML-based module to produce pretty and readable YAML-serialized data
 dev-python/prettytable 0.7.1-r1 0.7.2: Easily displaying tabular data in a visually appealing ASCII table format
@@ -5743,6 +5747,7 @@ dev-python/webtest 2.0.21 2.0.29: Helper to test WSGI applications
 dev-python/webut 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/werkzeug 0.12.2 0.14.1: Collection of various utilities for WSGI applications
 dev-python/wheel 0.29.0: A built-package format for Python
+dev-python/whichcraft 0.4.1: This package provides cross-platform cross-python shutil.which functionality
 dev-python/whisper 0.9.13: Fixed size round-robin style database
 dev-python/whoosh 2.6.0 2.7.4: Fast, pure-Python full text indexing, search and spell checking library
 dev-python/widgetsnbextension 3.0.0: IPython HTML widgets for Jupyter
@@ -7082,7 +7087,7 @@ mail-client/thunderbird 60.4.0: Thunderbird Mail Client
 mail-client/thunderbird-bin 60.4.0-r1 60.5.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r2: A Qt IMAP e-mail client
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1: sendmail milter for amavisd-new
-mail-filter/amavisd-new 2.11.0-r3: High-performance interface between the MTA and content checkers
+mail-filter/amavisd-new 2.11.0-r3 2.11.1-r3: High-performance interface between the MTA and content checkers
 mail-filter/bmf 0.9.4-r2: A fast and small Bayesian spam filter
 mail-filter/bogofilter 1.2.4-r2: Bayesian spam filter designed with fast algorithms, and tuned for speed
 mail-filter/clamassassin 1.2.4: Simple spamassassin-like script for virus scanning and filtering e-mail messages
@@ -8593,7 +8598,7 @@ net-fs/sshfs 2.10-r1: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7-r5 0.7-r6: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.34.0: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.34.0 3.39.0: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5: A transparent ftp proxy
 net-ftp/ftp 0.17-r7 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r2: FTP layout package
@@ -10025,7 +10030,7 @@ sys-block/megactl 0.4.1-r3: LSI MegaRAID control utility
 sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration and status of LSI SCSI HBAs
 sys-block/ms-sys 2.4.0: A command-line program for writing Microsoft compatible boot records
 sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape drives
-sys-block/nbd 3.15.3: Userland client/server for kernel network block device
+sys-block/nbd 3.15.3 3.18: Userland client/server for kernel network block device
 sys-block/noflushd 2.7.3: A daemon to spin down your disks and force accesses to be cached
 sys-block/open-iscsi 2.0.873-r1 2.0.875: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.98: iSNS server and client for Linux
@@ -10598,6 +10603,7 @@ www-apps/bugzilla 4.4.12-r2 5.0.3-r2: Bugzilla is the Bug-Tracking System from t
 www-apps/cgit 1.2.1: a fast web-interface for git repositories
 www-apps/curator 3.0_p20110120-r2: Gallery generator
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
+www-apps/grafana-bin 5.4.3: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/groupoffice 3.7.52 4.0.97 4.1.7: Group-Office is a powerful modular Intranet application framework
 www-apps/icingaweb2 2.6.1 2.6.2: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-graphite 1.0.1-r1: Icinga Web 2 plugin for Graphite
@@ -10620,7 +10626,7 @@ www-client/chromium 71.0.3578.80: Open-source version of Google Chrome web brows
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.2: GNOME webbrowser based on Webkit
-www-client/falkon 3.0.1: Cross-platform web browser using QtWebEngine
+www-client/falkon 3.0.1 3.0.1-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 60.5.0: Firefox Web Browser
 www-client/firefox-bin 60.5.0 65.0: Firefox Web Browser
@@ -10650,6 +10656,7 @@ www-misc/vdradmin-am 3.6.9: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-servers/apache 2.2.34 2.4.27-r1 2.4.34-r2: The Apache Web Server
+www-servers/caddy 0.10.11: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 www-servers/gunicorn 19.1.1 19.6.0 19.8.1: A WSGI HTTP Server for UNIX
 www-servers/lighttpd 1.4.51: Lightweight high-performance web server
 www-servers/monkeyd 1.6.9-r1: A small, fast, and scalable web server
@@ -11022,6 +11029,7 @@ x11-misc/touchcal 0.80: Touchscreen calibration utility
 x11-misc/trayer 1.0-r2: Lightweight GTK+ based systray for UNIX desktop
 x11-misc/trayer-srg 1.1.6-r1: trayer fork with multi monitor support and cleaned up codebase
 x11-misc/unclutter 8-r4: Hides mouse pointer while not in use
+x11-misc/unclutter-xfixes 1.5: A rewrite of unclutter using the x11-xfixes extension
 x11-misc/urxvt-font-size 1.1 1.3: Perl extension for rxvt-unicode to change the font size on the fly
 x11-misc/urxvt-perls 2.2: Perl extensions for rxvt-unicode
 x11-misc/util-macros 1.19.2-r1: X.Org autotools utility macros

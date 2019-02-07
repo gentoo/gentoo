@@ -3,10 +3,10 @@ DEPEND=>=dev-lang/go-1.9
 DESCRIPTION=Fast, cross-platform HTTP/2 web server with automatic HTTPS
 EAPI=6
 HOMEPAGE=https://github.com/mholt/caddy
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=Apache-2.0
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/mholt/caddy/archive/v0.10.11.tar.gz -> caddy-0.10.11.tar.gz
 _eclasses_=golang-base	8e4d7f712ec0e170e2c190c1e3da6501	golang-build	42942532e7429ed9b2efaabf93dc0615	golang-vcs-snapshot	6f66975a5b570c5e05ed96910c574abc
-_md5_=54e80c898faeb02889e12e218e3d9055
+_md5_=fefe3d85344621b3f53d062c5fabdd91
