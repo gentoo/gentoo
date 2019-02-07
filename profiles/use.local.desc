@@ -4008,6 +4008,7 @@ net-ftp/proftpd:rewrite - Enable support for the rewrite module
 net-ftp/proftpd:sftp - Enable support for the mod_sftp module and optionally mod_sftp_sql and mod_sftp_pam if matching USE flags are enabled
 net-ftp/proftpd:shaper - Enable support for the mod_shaper module
 net-ftp/proftpd:sitemisc - Enable support for the sitemisc module
+net-ftp/proftpd:sodium - Use dev-libs/libsodium for password encryption an key exchange
 net-ftp/proftpd:softquota - Enable support for the quotatab module
 net-ftp/proftpd:trace - Build with trace support. Should not be enabled on production servers
 net-ftp/proftpd:unique_id - Enable support for the mod_unique_id module, every connection gets unique ID.
