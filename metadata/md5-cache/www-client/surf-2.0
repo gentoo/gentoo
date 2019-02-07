@@ -10,4 +10,4 @@ RDEPEND=!sci-chemistry/surf dev-libs/glib:2 net-libs/libsoup net-libs/webkit-gtk
 SLOT=0
 SRC_URI=https://dl.suckless.org/surf/surf-2.0.tar.gz
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	e6948c872ff47e15a10e5ad1be15c18e	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=19bb2c5bde50c8bd2194db9273e6c7e9
+_md5_=20fb9ca4632475f3926fa2178bbfcb8c

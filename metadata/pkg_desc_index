@@ -377,7 +377,7 @@ app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical
 app-crypt/stoken 0.92: Software Token for Linux/UNIX
 app-crypt/tpm-tools 1.3.9.1: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/trousers 0.3.14-r1: An open-source TCG Software Stack (TSS) v1.1 implementation
-app-crypt/veracrypt 1.22: Disk encryption with strong security based on TrueCrypt
+app-crypt/veracrypt 1.22 1.23: Disk encryption with strong security based on TrueCrypt
 app-crypt/xca 1.4.1: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
 app-dicts/aspell-af 0.50.0: Afrikaans language dictionary for aspell
@@ -1324,7 +1324,7 @@ app-text/ding 1.8.1: Tk based dictionary (German-English) (incl. dictionary itse
 app-text/discount 2.2.4: A Markdown-to HTML translator written in C
 app-text/djview 4.10.6-r1: Portable DjVu viewer using Qt
 app-text/djvu 3.5.25.3 3.5.27: DjVu viewers, encoders and utilities
-app-text/docbook-dsssl-stylesheets 1.79-r2: DSSSL Stylesheets for DocBook
+app-text/docbook-dsssl-stylesheets 1.79-r3: DSSSL Stylesheets for DocBook
 app-text/docbook-sgml 1.0-r1: A helper package for sgml docbook
 app-text/docbook-sgml-dtd 3.0-r3 3.1-r3 4.0-r3 4.1-r3 4.2-r2 4.3-r2 4.4 4.5: Docbook SGML DTD 4.5
 app-text/docbook-sgml-utils 0.6.14-r2: Shell scripts to manage DocBook documents
@@ -4694,6 +4694,7 @@ dev-python/beautifulsoup 3.2.1-r1 4.5.1: Provides pythonic idioms for iterating,
 dev-python/betamax 0.8.0: python-requests HTTP exchanges recorder
 dev-python/bicyclerepair 0.9-r3: Bicycle Repair Man is the Python Refactoring Browser
 dev-python/billiard 3.3.0.23 3.5.0.0 3.5.0.2: Python multiprocessing fork
+dev-python/binaryornot 0.4.3: Ultra-lightweight pure Python package to guess whether a file is binary or text
 dev-python/biplist 1.0.1: A binary plist parser/generator for Python
 dev-python/bitarray 0.8.1: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.5: A pure Python module for creation and analysis of binary data
@@ -6268,6 +6269,7 @@ dev-util/cmdtest 0.30: black box tests Unix command line tools
 dev-util/cmocka 1.1.1: A unit testing framework for C
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10: ESR's utility for making fast comparisons among large source trees
+dev-util/cookiecutter 1.6.0: Command-line utility to create projects from cookiecutters (project templates)
 dev-util/cppcheck 1.86: Static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 1.1.2: Simple but powerful unit testing framework for C++
