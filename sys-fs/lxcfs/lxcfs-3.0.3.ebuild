@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit systemd vcs-snapshot versionator
+inherit systemd vcs-snapshot
 DESCRIPTION="FUSE filesystem for LXC"
 HOMEPAGE="https://linuxcontainers.org/lxcfs/introduction/"
 LICENSE="Apache-2.0"
@@ -16,10 +16,8 @@ if [[ ${PV} == "9999" ]] ; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	# e.g. upstream is 2.0.0.beta2, we want 2.0.0_beta2
-	UPSTREAM_PV=$(replace_version_separator 3 '.' )
-	SRC_URI="https://github.com/lxc/lxcfs/archive/${PN}-${UPSTREAM_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64"
+	SRC_URI="https://github.com/lxc/lxcfs/archive/${P}.tar.gz"
+	KEYWORDS="~amd64"
 fi
 
 # Omit all dbus.  Upstream appears to require it because systemd, but
@@ -32,7 +30,7 @@ DEPEND="
 	sys-apps/help2man
 	${RDEPEND}
 "
-PATCHES="${FILESDIR}/${P}-fusermount-path.patch"
+PATCHES="${FILESDIR}/${PN}-fusermount-path.patch"
 
 src_prepare() {
 	default
@@ -53,7 +51,7 @@ src_configure() {
 src_install() {
 	default
 	keepdir /var/lib/lxcfs
-	newinitd "${FILESDIR}"/${P}.initd lxcfs
+	newinitd "${FILESDIR}"/${PN}.initd lxcfs
 	systemd_dounit config/init/systemd/lxcfs.service
 }
 

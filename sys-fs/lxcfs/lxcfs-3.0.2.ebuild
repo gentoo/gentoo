@@ -30,7 +30,7 @@ DEPEND="
 	sys-apps/help2man
 	${RDEPEND}
 "
-PATCHES="${FILESDIR}/${P}-fusermount-path.patch"
+PATCHES="${FILESDIR}/${PN}-fusermount-path.patch"
 
 src_prepare() {
 	default
@@ -51,7 +51,7 @@ src_configure() {
 src_install() {
 	default
 	keepdir /var/lib/lxcfs
-	newinitd "${FILESDIR}"/${P}.initd lxcfs
+	newinitd "${FILESDIR}"/${PN}.initd lxcfs
 	systemd_dounit config/init/systemd/lxcfs.service
 }
 
