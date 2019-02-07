@@ -11,7 +11,7 @@ SRC_URI="http://www.hping.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~x86"
+KEYWORDS="amd64 ppc ~x86"
 
 S="${WORKDIR}/${P/-/_}"
 
