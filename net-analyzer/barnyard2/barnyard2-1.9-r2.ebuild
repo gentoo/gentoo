@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Parser for Snort unified/unified2 files"
 HOMEPAGE="https://github.com/firnsy/barnyard2 https://firnsy.com/projects"
-SRC_URI="https://github.com/firnsy/barnyard2/archive/v2-${PV}.tar.gz -> ${PF}.tar.gz"
+SRC_URI="https://github.com/firnsy/barnyard2/archive/v2-${PV}.tar.gz -> ${P}-github.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug gre mpls mysql odbc postgres static"
 
 DEPEND="net-libs/libpcap
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( dev-db/unixODBC )
 	postgres? ( dev-db/postgresql:*[server] )"
 RDEPEND="${DEPEND}"
@@ -58,11 +58,7 @@ src_install () {
 	newconfd "${FILESDIR}/barnyard2.confd" barnyard2
 	newinitd "${FILESDIR}/barnyard2.initd" barnyard2
 
-	dodir /etc/barnyard2 \
-		/var/log/snort \
-		/var/log/snort/archive \
-		/var/log/barnyard2
-
+	dodir /etc/barnyard2
 	keepdir /var/log/barnyard2
 	keepdir /var/log/snort/archive
 
