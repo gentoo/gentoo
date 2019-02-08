@@ -541,7 +541,7 @@ app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
 app-editors/bluefish 2.2.10: A GTK HTML editor for the experienced web designer or programmer
 app-editors/bvi 1.4.0: Display-oriented editor for binary files, based on the vi texteditor
 app-editors/curses-hexedit 0.9.7: full screen curses hex editor (with insert/delete support)
-app-editors/dav 0.8.5-r1: A minimal console text editor
+app-editors/dav 0.8.5-r2: A minimal console text editor
 app-editors/dhex 0.68: ncurses-based hex-editor with diff mode
 app-editors/e3 2.8: Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings
 app-editors/editra 0.7.20-r2: Multi-platform text editor supporting over 50 programming languages
@@ -11376,7 +11376,7 @@ x11-wm/oroborus 2.0.20-r1: Small and fast window manager
 x11-wm/pekwm 0.1.17-r1: A lightweight window manager initially based on aewm++
 x11-wm/ratpoison 1.4.8-r1 1.4.9: window manager without mouse dependency
 x11-wm/sawfish 1.9.1-r2: Extensible window manager using a Lisp-based scripting language
-x11-wm/selectwm 0.4.1: window manager selector tool
+x11-wm/selectwm 0.4.1-r1: window manager selector tool
 x11-wm/spectrwm 2.7.2-r1 3.1.0: Small dynamic tiling window manager for X11
 x11-wm/twm 1.0.10: X.Org Tab Window Manager
 x11-wm/windowlab 1.40-r1: small and simple window manager of novel design
