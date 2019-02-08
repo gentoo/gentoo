@@ -968,7 +968,7 @@ app-misc/calendar 0.9.1-r1: Standard unix calendar program for Linux, ported fro
 app-misc/cbrpager 0.9.22: a simple comic book pager
 app-misc/cdargs 1.35-r2: Bookmarks and browser for the shell builtin cd command
 app-misc/cdcat 0.3-r1: Simple yet effective CD indexing program
-app-misc/cdctl 0.15: Utility to control your cd/dvd drive
+app-misc/cdctl 0.16: Utility to control your cd/dvd drive
 app-misc/cdircmp 0.3-r2: Compare directories and select files to copy
 app-misc/cdspeed 0.4-r2: Change the speed of your CD drive
 app-misc/chkcrontab 1.6 1.7: A tool to detect crontab errors
@@ -1124,7 +1124,7 @@ app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
 app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
 app-misc/tracker 1.12.4: A tagging metadata database, search tool and indexer
-app-misc/trash-cli 0.12.9.14-r2: Python scripts to manipulate trash cans via the command line
+app-misc/trash-cli 0.12.9.14-r2 0.17.1.14_p20170816: Python scripts to manipulate trash cans via the command line
 app-misc/ttyload 0.5.3: color-coded graph of load averages over time
 app-misc/ttyrec 1.0.8-r2: ttyrec provides tools to record and replay a terminal session
 app-misc/unfoo 1.0.8: A simple bash driven frontend to simplify decompression of files
