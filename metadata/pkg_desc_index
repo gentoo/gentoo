@@ -7393,7 +7393,7 @@ media-gfx/graphite2 1.3.10: Library providing rendering capabilities for complex
 media-gfx/graphviz 2.40.1-r1: Open Source Graph Visualization Software
 media-gfx/grub-splashes 20091109: Collection of grub splashes
 media-gfx/gscan2pdf 1.8.11: Scan documents, perform OCR, produce PDFs and DjVus
-media-gfx/gthumb 3.6.1: Image viewer and browser for Gnome
+media-gfx/gthumb 3.6.1 3.6.2: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
 media-gfx/hugin 2016.2.0 2018.0.0: GUI for the creation & processing of panoramic images
@@ -7545,7 +7545,7 @@ media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/gavl 1.2.0 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.2.5-r1: Graphics library for fast image creation
 media-libs/gegl 0.2.0-r2 0.2.0-r5 0.3.0 0.3.26: A graph based image processing framework
-media-libs/gexiv2 0.10.8: GObject-based wrapper around the Exiv2 library
+media-libs/gexiv2 0.10.8 0.10.10-r1: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 4.1.6-r2 4.1.6-r3 5.1.4: Library to handle, display and manipulate GIF images
 media-libs/glew 2.1.0: The OpenGL Extension Wrangler Library
@@ -11004,7 +11004,7 @@ x11-misc/qlipper 5.0.0: Lightweight and cross-platform clipboard history applet
 x11-misc/qps 1.10.18: Visual process manager - Qt version of ps/top
 x11-misc/qt5ct 0.35: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.7.1: A BBS client based on Qt
-x11-misc/qtfm 5.9-r1: A small, lightweight file manager for desktops based on pure Qt
+x11-misc/qtfm 5.9-r1 6.1.5: A small, lightweight file manager for desktops based on pure Qt
 x11-misc/read-edid 1.4.2 3.0.2: Program that can get information from a PnP monitor
 x11-misc/redshift 1.12: A screen color temperature adjusting software
 x11-misc/rendercheck 1.5 1.5-r1: Tests for compliance with X RENDER extension
