@@ -6427,6 +6427,7 @@ dev-util/systemtap 2.4-r1 3.1-r1: A linux trace/probe tool
 dev-util/tkdiff 4.2: Graphical front end to the diff program
 dev-util/tmake 2.12-r1: A Cross platform Makefile tool
 dev-util/treecc 0.3.10: compiler-compiler tool for aspect-oriented programming
+dev-util/tup 0.7.8: A file-based build system
 dev-util/txt2regex 0.8-r3: A Regular Expression wizard that converts human sentences to regexs
 dev-util/uncrustify 0.66.1: C/C++/C#/D/Java/Pawn code indenter and beautifier
 dev-util/unifdef 2.10: remove #ifdef'ed lines from a file while otherwise leaving the file alone
