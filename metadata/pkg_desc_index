@@ -533,7 +533,7 @@ app-doc/selflinux 0.13.0: german-language hypertext tutorial about Linux
 app-doc/single-unix-specification 4_p2: The Single UNIX Specification, Version 4, 2016 Edition
 app-doc/tldp-howto 20120707: The Linux Documentation Project HOWTOs
 app-doc/vilearn 1.0: An interactive vi tutorial comprised of 5 tutorials for the vi-impaired
-app-doc/xmltoman 0.4: Simple scripts for converting xml to groff or html
+app-doc/xmltoman 0.4 0.4-r1: Simple scripts for converting xml to groff or html
 app-doc/zsh-lovers 0.9.0: Tips, tricks and examples for the Z shell
 app-editors/adie 1.7.54: Text editor based on the FOX Toolkit
 app-editors/aee 2.2.15b: An easy to use text editor
