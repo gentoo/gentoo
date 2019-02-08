@@ -27,6 +27,10 @@ COMMON_DEPEND="udev? ( virtual/udev )"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-disable_inet6_fix.patch #677508
+)
+
 src_configure() {
 	local dev hooks=() rundir
 	use udev || dev="--without-dev --without-udev"
