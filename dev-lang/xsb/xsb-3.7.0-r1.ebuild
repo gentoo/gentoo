@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 MY_P="XSB${PV//./}"
 
 PATCHSET_VER="3"
 
-inherit eutils autotools java-pkg-opt-2
+inherit autotools java-pkg-opt-2
 
 DESCRIPTION="XSB is a logic programming and deductive database system"
 HOMEPAGE="http://xsb.sourceforge.net"
@@ -22,7 +22,7 @@ IUSE="curl debug iodbc java mysql odbc pcre threads xml"
 RDEPEND="curl? ( net-misc/curl )
 	iodbc? ( dev-db/libiodbc )
 	java? ( >=virtual/jdk-1.4:= )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( dev-db/unixODBC )
 	pcre? ( dev-libs/libpcre )
 	xml? ( dev-libs/libxml2 )"
@@ -31,13 +31,10 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/XSB
 
-src_prepare() {
-	EPATCH_FORCE=yes
-	EPATCH_SUFFIX=patch
-	if [[ -d "${WORKDIR}"/${PV} ]] ; then
-		epatch "${WORKDIR}"/${PV}
-	fi
+PATCHES=( "${WORKDIR}/${PV}" )
 
+src_prepare() {
+	default
 	cd "${S}"/build
 	eautoconf
 }
@@ -83,120 +80,120 @@ src_configure() {
 src_compile() {
 	cd "${S}"/build
 
-	emake || die "emake failed"
+	default
 
 	# All XSB Packages are compiled using a single Prolog engine.
 	# Consequently they must all be compiled using a single make job.
 
 	cd "${S}"/packages
 	rm -f *.xwam
-	emake -j1 || die "emake packages failed"
+	emake -j1
 
 	if use curl ; then
-		emake -j1 curl || die "emake curl package failed"
-		emake -j1 sgml || die "emake sgml package failed"
+		emake -j1 curl
+		emake -j1 sgml
 		if use xml ; then
-			emake -j1 xpath || die "emake xpath package failed"
+			emake -j1 xpath
 		fi
 	fi
 
 	if use mysql ; then
-		emake -j1 mysql || die "emake mysql package failed"
+		emake -j1 mysql
 	fi
 
 	if use odbc ; then
-		emake -j1 odbc || die "emake odbc package failed"
+		emake -j1 odbc
 	fi
 
 	if use pcre ; then
-		emake -j1 pcre || die "emake pcre package failed"
+		emake -j1 pcre
 	fi
 }
 
 src_install() {
 	cd "${S}"/build
-	emake DESTDIR="${D}" install || die "make install failed"
+	default
 
 	local XSB_INSTALL_DIR=/usr/$(get_libdir)/xsb-${PV}
-	dosym ${XSB_INSTALL_DIR}/bin/xsb /usr/bin/xsb || die
+	dosym ${XSB_INSTALL_DIR}/bin/xsb /usr/bin/xsb
 
 	cd "${S}"/packages
 	local PACKAGES=${XSB_INSTALL_DIR}/packages
 	insinto ${PACKAGES}
-	doins *.xwam || die
+	doins *.xwam
 
 	insinto ${PACKAGES}/chr
-	doins chr/*.xwam || die
+	doins chr/*.xwam
 
 	insinto ${PACKAGES}/clpqr
-	doins clpqr/*.xwam || die
+	doins clpqr/*.xwam
 
 	insinto ${PACKAGES}/gap
-	doins gap/*.xwam || die
+	doins gap/*.xwam
 
 	insinto ${PACKAGES}/justify
-	doins justify/*.xwam || die
-	doins justify/*.H || die
+	doins justify/*.xwam
+	doins justify/*.H
 
 	insinto ${PACKAGES}/regmatch
-	doins regmatch/*.xwam || die
+	doins regmatch/*.xwam
 	insinto ${PACKAGES}/regmatch/cc
-	doins regmatch/cc/*.H || die
+	doins regmatch/cc/*.H
 
 	insinto ${PACKAGES}/slx
-	doins slx/*.xwam || die
+	doins slx/*.xwam
 
 	insinto ${PACKAGES}/wildmatch
-	doins wildmatch/*.xwam || die
+	doins wildmatch/*.xwam
 	insinto ${PACKAGES}/wildmatch/cc
-	doins wildmatch/cc/*.H || die
+	doins wildmatch/cc/*.H
 
 	if use curl ; then
 		insinto ${PACKAGES}/curl
-		doins curl/*.xwam || die
+		doins curl/*.xwam
 		insinto ${PACKAGES}/curl/cc
-		doins curl/cc/*.H || die
+		doins curl/cc/*.H
 		insinto ${PACKAGES}/sgml
-		doins sgml/*.xwam || die
+		doins sgml/*.xwam
 		insinto ${PACKAGES}/sgml/cc
-		doins sgml/cc/*.H || die
+		doins sgml/cc/*.H
 		insinto ${PACKAGES}/sgml/cc/dtd
-		doins sgml/cc/dtd/* || die
+		doins sgml/cc/dtd/*
 		if use xml ; then
 			insinto ${PACKAGES}/xpath
-			doins xpath/*xwam || die
+			doins xpath/*xwam
 			insinto ${PACKAGES}/xpath/cc
-			doins xpath/cc/*.H || die
+			doins xpath/cc/*.H
 		fi
 	fi
 
 	if use mysql || use odbc ; then
 		insinto ${PACKAGES}/dbdrivers
-		doins dbdrivers/*.xwam || die
-		doins dbdrivers/*.H || die
+		doins dbdrivers/*.xwam
+		doins dbdrivers/*.H
 		insinto ${PACKAGES}/dbdrivers/cc
-		doins dbdrivers/cc/*.H || die
+		doins dbdrivers/cc/*.H
 		if use mysql ; then
 			insinto ${PACKAGES}/dbdrivers/mysql
-			doins dbdrivers/mysql/*.xwam || die
+			doins dbdrivers/mysql/*.xwam
 			insinto ${PACKAGES}/dbdrivers/mysql/cc
-			doins dbdrivers/mysql/cc/*.H || die
+			doins dbdrivers/mysql/cc/*.H
 		fi
 		if use odbc ; then
 			insinto ${PACKAGES}/dbdrivers/odbc
-			doins dbdrivers/odbc/*.xwam || die
+			doins dbdrivers/odbc/*.xwam
 			insinto ${PACKAGES}/dbdrivers/odbc/cc
-			doins dbdrivers/odbc/cc/*.H || die
+			doins dbdrivers/odbc/cc/*.H
 		fi
 	fi
 
 	if use pcre ; then
 		insinto ${PACKAGES}/pcre
-		doins pcre/*.xwam || die
+		doins pcre/*.xwam
 		insinto ${PACKAGES}/pcre/cc
-		doins pcre/cc/*.H || die
+		doins pcre/cc/*.H
 	fi
 
 	cd "${S}"
-	dodoc FAQ README || die
+	dodoc FAQ README
 }
