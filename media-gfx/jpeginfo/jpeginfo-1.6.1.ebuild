@@ -1,12 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
+
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Prints information and tests integrity of JPEG/JFIF files"
-HOMEPAGE="http://www.kokkonen.net/tjko/projects.html"
-SRC_URI="http://www.kokkonen.net/tjko/src/${P}.tar.gz"
+HOMEPAGE="https://www.kokkonen.net/tjko/projects.html"
+SRC_URI="https://www.kokkonen.net/tjko/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
