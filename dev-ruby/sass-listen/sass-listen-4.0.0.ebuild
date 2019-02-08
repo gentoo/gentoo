@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -23,6 +23,8 @@ LICENSE="MIT"
 SLOT="4"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="test"
+
+PATCHES=( "${FILESDIR}/listen-3.1.5-ruby26.patch" )
 
 ruby_add_rdepend ">=dev-ruby/rb-inotify-0.9.7"
 
