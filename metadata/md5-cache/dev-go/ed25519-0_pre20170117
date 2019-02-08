@@ -1,0 +1,14 @@
+BDEPEND=>=dev-lang/go-1.10
+DEFINED_PHASES=compile install test unpack
+DEPEND=test? ( dev-go/go-crypto )
+DESCRIPTION=ed25519 for Go
+EAPI=7
+HOMEPAGE=https://github.com/agl/ed25519/
+IUSE=test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/agl/ed25519/archive/5312a61534124124185d41f09206b9fef1d88403.tar.gz -> ed25519-0_pre20170117.tar.gz
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
+_md5_=44cdb639692ac180ed0640711dbc0df8

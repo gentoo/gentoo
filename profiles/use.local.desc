@@ -5386,7 +5386,6 @@ sys-boot/grub:fonts - Build and install fonts for the gfxterm module
 sys-boot/grub:libzfs - Enable support for sys-fs/zfs
 sys-boot/grub:mount - Build and install the grub-mount utility
 sys-boot/grub:multislot - Allow concurrent installation of sys-boot/grub SLOT 0 and sys-boot/grub SLOT 2 by renaming all programs.
-sys-boot/grub:netboot - Enable network booting
 sys-boot/grub:themes - Build and install GRUB themes (starfield)
 sys-boot/grub:truetype - Build and install grub-mkfont conversion utility
 sys-boot/lilo:device-mapper - Enable support for device-mapper from sys-fs/lvm2
