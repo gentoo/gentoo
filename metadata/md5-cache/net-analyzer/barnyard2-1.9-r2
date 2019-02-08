@@ -1,14 +1,14 @@
 BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=net-libs/libpcap mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) postgres? ( dev-db/postgresql:*[server] )
+DEPEND=net-libs/libpcap mysql? ( dev-db/mysql-connector-c:0= ) odbc? ( dev-db/unixODBC ) postgres? ( dev-db/postgresql:*[server] )
 DESCRIPTION=Parser for Snort unified/unified2 files
 EAPI=7
 HOMEPAGE=https://github.com/firnsy/barnyard2 https://firnsy.com/projects
 IUSE=debug gre mpls mysql odbc postgres static
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=net-libs/libpcap mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) postgres? ( dev-db/postgresql:*[server] )
+RDEPEND=net-libs/libpcap mysql? ( dev-db/mysql-connector-c:0= ) odbc? ( dev-db/unixODBC ) postgres? ( dev-db/postgresql:*[server] )
 SLOT=0
-SRC_URI=https://github.com/firnsy/barnyard2/archive/v2-1.9.tar.gz -> barnyard2-1.9-r1.tar.gz
+SRC_URI=https://github.com/firnsy/barnyard2/archive/v2-1.9.tar.gz -> barnyard2-1.9-github.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=cb5414756020947b071a0c2225588d58
+_md5_=b33f58235db93927a7e4c3bf70566225
