@@ -1363,7 +1363,7 @@ app-text/highlight 3.42-r1: Converts source code to formatted text (HTML, LaTeX,
 app-text/hnb 1.9.18-r1: A program to organize many kinds of data in one place
 app-text/htag 0.0.24-r1: random signature maker
 app-text/html-xml-utils 7.1: A number of simple utilities for manipulating HTML and XML files
-app-text/html2text 1.3.2a: A HTML to text converter
+app-text/html2text 1.3.2a 1.3.2a-r2: HTML to text converter
 app-text/html401 19991224-r3: DTDs for the HyperText Markup Language 4.01
 app-text/htmldoc 1.8.30: Convert HTML pages into a PDF document
 app-text/htmlmin 0.1.11_pre20170909 0.1.12: A configurable HTML Minifier with safety features
@@ -4700,7 +4700,7 @@ dev-python/bitarray 0.8.1: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.5: A pure Python module for creation and analysis of binary data
 dev-python/bjoern 1.3.2: A screamingly fast Python WSGI server written in C
 dev-python/blaze 0.10.2 0.11.3: Next generation Python numpy
-dev-python/bleach 2.1.3: an easy whitelist-based HTML-sanitizing tool
+dev-python/bleach 2.1.3 3.0.2: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessings 1.6-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4: Fast, simple object-to-object and broadcast signaling
 dev-python/blockcanvas 4.0.3-r1: Enthought Tool Suite: Numerical modeling
