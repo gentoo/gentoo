@@ -3274,6 +3274,7 @@ media-sound/ncmpc:async-connect - Enable asynchronous connect
 media-sound/ncmpc:chat-screen - Enable the chat screen
 media-sound/ncmpc:help-screen - Enable the help screen
 media-sound/ncmpc:key-screen - Enable key editor screen
+media-sound/ncmpc:library-screen - Enable library screen
 media-sound/ncmpc:lyrics-screen - Enable lyrics screen
 media-sound/ncmpc:mouse - Enable curses getmouse support
 media-sound/ncmpc:outputs-screen - Enable the outputs screen
