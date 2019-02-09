@@ -26,7 +26,7 @@ src_prepare() {
 	EOF
 	touch NEWS README AUTHORS ChangeLog Makefile.am
 	eautoreconf
-	export LT="${S}"/libtool
+	export LIBTOOL="${S}"/libtool
 }
 
 src_configure() {
