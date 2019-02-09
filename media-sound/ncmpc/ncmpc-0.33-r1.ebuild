@@ -5,14 +5,14 @@ EAPI=7
 
 inherit meson
 
-DESCRIPTION="A ncurses client for the Music Player Daemon (MPD)"
+DESCRIPTION="Ncurses client for the Music Player Daemon (MPD)"
 HOMEPAGE="https://www.musicpd.org/clients/ncmpc/ https://github.com/MusicPlayerDaemon/ncmpc"
 SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="async-connect chat-screen doc +help-screen key-screen +library-screen lirc lyrics-screen outputs-screen search-screen +song-screen +mouse nls pcre"
+IUSE="async-connect chat-screen doc +help-screen key-screen +library-screen lirc lyrics-screen +mouse nls outputs-screen pcre search-screen +song-screen"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -49,22 +49,22 @@ src_configure() {
 		-Dcolors=true
 		-Dmini=false
 		-Dlyrics_plugin_dir="${EPREFIX}/usr/$(get_libdir)/ncmpc/lyrics"
-		-Dlibrary_screen=$(usex library-screen true false)
 		-Dasync_connect=$(usex async-connect true false)
 		-Dchat_screen=$(usex chat-screen true false)
 		-Ddocumentation=$(usex doc enabled disabled)
 		-Dhelp_screen=$(usex help-screen true false)
 		-Dkey_screen=$(usex key-screen true false)
-		-Dlyrics_screen=$(usex lyrics-screen true false)
-		-Doutputs_screen=$(usex outputs-screen true false)
-		-Dsearch_screen=$(usex search-screen true false)
-		-Dsong_screen=$(usex song-screen true false)
+		-Dlibrary_screen=$(usex library-screen true false)
+		-Dlirc=$(usex lirc enabled disabled)
 		-Dlocale=$(usex nls enabled disabled)
+		-Dlyrics_screen=$(usex lyrics-screen true false)
+		-Dmouse=$(usex mouse enabled disabled)
 		-Dmultibyte=$(usex nls true false)
 		-Dnls=$(usex nls enabled disabled)
-		-Dlirc=$(usex lirc enabled disabled)
-		-Dmouse=$(usex mouse enabled disabled)
+		-Doutputs_screen=$(usex outputs-screen true false)
 		-Dregex=$(usex pcre enabled disabled)
+		-Dsearch_screen=$(usex search-screen true false)
+		-Dsong_screen=$(usex song-screen true false)
 	)
 
 	meson_src_configure
