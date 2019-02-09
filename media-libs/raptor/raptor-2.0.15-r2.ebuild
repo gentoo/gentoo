@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit libtool
+inherit autotools libtool
 
 MY_PN=${PN}2
 MY_P=${MY_PN}-${PV}
@@ -14,7 +14,7 @@ SRC_URI="http://download.librdf.org/source/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2 LGPL-2.1"
 SLOT="2"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+curl debug json static-libs unicode"
 
 DEPEND="
@@ -38,10 +38,14 @@ S="${WORKDIR}/${MY_P}"
 DOCS=( AUTHORS ChangeLog NEWS NOTICE README )
 HTML_DOCS=( {NEWS,README,RELEASE,UPGRADING}.html )
 
-PATCHES=( "${FILESDIR}/${P}-heap-overflow.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-heap-overflow.patch"
+	"${FILESDIR}/${P}-dont_use_curl-config.patch" #552474
+)
 
 src_prepare() {
 	default
+	eautoreconf #552474
 	elibtoolize # Keep this for ~*-fbsd
 }
 
@@ -66,5 +70,5 @@ src_test() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
