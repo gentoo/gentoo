@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile
+DEPEND=app-text/xmlto >=sys-libs/libsepol-2.9_rc1
+DESCRIPTION=SELinux Common Intermediate Language (CIL) Compiler
+EAPI=6
+HOMEPAGE=https://github.com/SELinuxProject/selinux/wiki
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/libsepol-2.9_rc1
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/SELinuxProject/selinux/releases/download/20190125/secilc-2.9-rc1.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=8e79c5a03b46a9228b44cea129931980
