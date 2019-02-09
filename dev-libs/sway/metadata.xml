@@ -6,6 +6,10 @@
 		<name>Aaron Bauman</name>
 	</maintainer>
 	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>hilobakho@gmail.com</email>
 		<name>Mykyta Holubakha</name>
 	</maintainer>
