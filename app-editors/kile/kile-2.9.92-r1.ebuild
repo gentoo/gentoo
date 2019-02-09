@@ -19,7 +19,6 @@ DEPEND="
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep kdbusaddons)
-	$(add_frameworks_dep kdoctools)
 	$(add_frameworks_dep kguiaddons)
 	$(add_frameworks_dep khtml)
 	$(add_frameworks_dep ki18n)
@@ -57,6 +56,7 @@ DOCS=( AUTHORS ChangeLog kile-remote-control.txt README README.cwl )
 
 PATCHES=(
 	"${FILESDIR}/${P}-cmake.patch"
+	"${FILESDIR}/${P}-kf5doctools.patch"
 	"${FILESDIR}/${P}-desktopfile.patch"
 	"${FILESDIR}/${P}-no-empty-filename.patch"
 	"${FILESDIR}/${P}-viewtab-crash.patch"
