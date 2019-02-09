@@ -34,10 +34,13 @@ src_prepare() {
 	default
 
 	# use correct docdir and don't install license file
-	sed \
-		-e "/^docdir =/s/meson.project_name()/'${PF}'/" \
+	sed -e "/^docdir =/s/meson.project_name()/'${PF}'/" \
 		-e "s/'COPYING', //" \
 		-i meson.build || die
+
+	# use correct (html) docdir
+	sed -e "/install_dir:.*doc/s/meson.project_name()/'${PF}'/" \
+		-i doc/meson.build || die
 }
 
 src_configure() {
