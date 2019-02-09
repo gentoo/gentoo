@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ IUSE="mysql postgres sguil"
 
 DEPEND="
 	net-libs/libpcap
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:*[server] )
 	sguil? ( dev-lang/tcl:0 )"
 RDEPEND="${DEPEND}
@@ -62,23 +62,20 @@ src_install () {
 
 	insinto /etc/snort
 	newins etc/barnyard.conf barnyard.conf
+	newconfd "${FILESDIR}"/barnyard.confd barnyard
+	newinitd "${FILESDIR}"/barnyard.rc6 barnyard
+
 	if use sguil ; then
 		sed -i -e "/config hostname:/s%snorthost%$(hostname)%" \
 		-e "/config interface/s:fxp0:eth0:" \
 		-e "s:output alert_fast:#output alert_fast:" \
 		-e "s:output log_dump:#output log_dump:" \
 			"${D}/etc/snort/barnyard.conf" || die "sed failed"
-	fi
 
-	newconfd "${FILESDIR}"/barnyard.confd barnyard
-	if use sguil ; then
 		sed -i -e s:/var/log/snort:/var/lib/sguil/$(hostname): \
 		-e s:/var/run/barnyard.pid:/var/run/sguil/barnyard.pid: \
 			"${D}/etc/conf.d/barnyard" || die "sed failed"
-	fi
 
-	newinitd "${FILESDIR}"/barnyard.rc6 barnyard
-	if use sguil ; then
 		sed -i -e "/start-stop-daemon --start/s:--exec:-c sguil --exec:" \
 			"${D}/etc/init.d/barnyard" || die "sed failed"
 	fi
