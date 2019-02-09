@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Small, fast and conformant XML pull parser written in C
+EAPI=7
+HOMEPAGE=http://faxpp.sourceforge.net/
+IUSE=doc examples
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=mirror://sourceforge/faxpp/faxpp-0.4.tar.gz
+_md5_=41d0d0a344257e25cd5333e2c0630f60
