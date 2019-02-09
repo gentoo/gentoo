@@ -10,7 +10,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 
-# Unfortunatetly I receive segfaults from upmpcli on any newer version
 DEPEND="
 	dev-libs/expat
 	net-libs/libupnp:0
