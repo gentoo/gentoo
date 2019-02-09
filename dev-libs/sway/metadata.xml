@@ -13,7 +13,7 @@
 		<email>hilobakho@gmail.com</email>
 		<name>Mykyta Holubakha</name>
 	</maintainer>
-	<maintainer restrict="&gt;=dev-libs/sway-1.0_beta1" type="person">
+	<maintainer type="person">
 		<email>speedjack95@gmail.com</email>
 		<name>Niccolò Scatena</name>
 	</maintainer>
@@ -30,11 +30,10 @@
 		something else.
 	</longdescription>
 	<use>
-		<flag name="clipboard">Install 'wl-clipboard': clipboard management</flag>
 		<flag name="elogind">Enable support for rootless session via elogind</flag>
-		<flag name="filecaps">Use Linux capability SYS_CAP_ADMIN rather than set*id for sway binary</flag>
 		<flag name="fish-completion">Enable fish completion support</flag>
 		<flag name="gdk-pixbuf">Enable additional image format support via the <pkg>x11-libs/gdk-pixbuf</pkg> library</flag>
+		<flag name="man">Build and install man pages</flag>
 		<flag name="swaybar">Install 'swaybar': sway's status bar component</flag>
 		<flag name="swaybg">Install 'swaybg': allows to set a desktop background image</flag>
 		<flag name="swaygrab">Install 'swaygrab': allows taking screenshots or screencasts</flag>
