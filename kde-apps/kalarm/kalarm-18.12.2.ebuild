@@ -12,7 +12,7 @@ LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 KEYWORDS="~amd64 ~x86"
 IUSE="X"
 
-BDEPEND="${COMMON_DEPEND}
+BDEPEND="
 	dev-libs/libxslt
 "
 DEPEND="
