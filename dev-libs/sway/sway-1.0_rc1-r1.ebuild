@@ -3,26 +3,26 @@
 
 EAPI=7
 
-inherit eutils fcaps meson
+inherit eutils meson
 
 DESCRIPTION="i3-compatible Wayland window manager"
 HOMEPAGE="https://swaywm.org"
 
 if [[ ${PV} == 9999 ]]; then
-		inherit git-r3
-		EGIT_REPO_URI="https://github.com/swaywm/${PN}.git"
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/swaywm/${PN}.git"
 else
-		# Version format: major.minor-beta.betanum
-		MY_PV="$(ver_cut 1-2)-$(ver_cut 3).$(ver_cut 4)"
-		SRC_URI="https://github.com/swaywm/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-		S="${WORKDIR}/${PN}-${MY_PV}"
-		KEYWORDS="~amd64 ~x86"
+	MY_PV=${PV/_rc/-rc}
+	SRC_URI="https://github.com/swaywm/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="elogind fish-completion +pam +swaybar +swaybg +swayidle +swaylock +swaymsg +swaynag systemd +tray wallpapers X zsh-completion"
-REQUIRED_USE="?? ( elogind systemd )"
+IUSE="elogind fish-completion +man +swaybar +swaybg +swayidle +swaylock +swaymsg +swaynag systemd tray wallpapers X zsh-completion"
+REQUIRED_USE="?? ( elogind systemd )
+	tray? ( || ( elogind systemd ) )"
 
 DEPEND="
 	>=dev-libs/json-c-0.13:0=
@@ -33,43 +33,35 @@ DEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
-	elogind? ( >=sys-auth/elogind-237 )
+	elogind? ( >=sys-auth/elogind-239 )
 	swaybar? ( x11-libs/gdk-pixbuf:2 )
 	swaybg? ( x11-libs/gdk-pixbuf:2 )
-	swaylock? (
-		pam? ( virtual/pam )
-		x11-libs/gdk-pixbuf:2
-	)
-	systemd? ( >=sys-apps/systemd-237 )
-	tray? ( >=sys-apps/dbus-1.10 )
+	swayidle? ( dev-libs/swayidle )
+	swaylock? ( dev-libs/swaylock )
+	systemd? ( >=sys-apps/systemd-239 )
 	X? ( x11-libs/libxcb:0= )
 "
 if [[ ${PV} == 9999 ]]; then
-	DEPEND+="~dev-libs/wlroots-9999[elogind=,filecaps?,systemd=,X=]"
+	DEPEND+="~dev-libs/wlroots-9999[elogind=,systemd=,X=]"
 else
-	DEPEND+=">=dev-libs/wlroots-0.2[elogind=,filecaps?,systemd=,X=]"
+	DEPEND+=">=dev-libs/wlroots-0.3[elogind=,systemd=,X=]"
 fi
 RDEPEND="
 	x11-misc/xkeyboard-config
 	${DEPEND}
 "
 BDEPEND="
-	app-text/scdoc
 	>=dev-libs/wayland-protocols-1.14
 	virtual/pkgconfig
+	man? ( >=app-text/scdoc-1.8.1 )
 "
-
-FILECAPS=( cap_sys_admin usr/bin/sway )
 
 src_prepare() {
 	default
 
-	use swaybar || sed -e "s/subdir('swaybar')//g" -i meson.build || die
+	use swaybar || sed -e "s/subdir('swaybar')//g" -e "/sway-bar.[0-9].scd/d" \
+		-e "/completions\/[a-z]\+\/_\?swaybar/d" -i meson.build || die
 	use swaybg || sed -e "s/subdir('swaybg')//g" -i meson.build || die
-	use swayidle || sed -e "s/subdir('swayidle')//g" -e "/swayidle.[0-9].scd/d" \
-		-e "/completions\/[a-z]\+\/_\?swayidle/d" -i meson.build || die
-	use swaylock || sed -e "s/subdir('swaylock')//g" -e "/swaylock.[0-9].scd/d" \
-		-e "/completions\/[a-z]\+\/_\?swaylock/d" -i meson.build || die
 	use swaymsg || sed -e "s/subdir('swaymsg')//g" -e "/swaymsg.[0-9].scd/d" \
 		-e "/completions\/[a-z]\+\/_\?swaymsg/d" -i meson.build || die
 	use swaynag || sed -e "s/subdir('swaynag')//g" -e "/swaynag.[0-9].scd/d" \
@@ -78,13 +70,21 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
+		-Dman-pages=$(usex man enabled disabled)
+		-Dtray=$(usex tray enabled disabled)
+		-Dxwayland=$(usex X enabled disabled)
 		$(meson_use wallpapers default-wallpaper)
-		$(meson_use zsh-completion zsh-completions)
 		$(meson_use fish-completion fish-completions)
-		$(meson_use X enable-xwayland)
+		$(meson_use zsh-completion zsh-completions)
 		"-Dbash-completions=true"
 		"-Dwerror=false"
 	)
+
+	if use swaybar || use swaybg; then
+		emesonargs+=("-Dgdk-pixbuf=enabled")
+	else
+		emesonargs+=("-Dgdk-pixbuf=disabled")
+	fi
 
 	if [[ ${PV} != 9999 ]]; then
 		emesonargs+=("-Dsway-version=${MY_PV}")
@@ -93,23 +93,21 @@ src_configure() {
 	meson_src_configure
 }
 
-pkg_postinst() {
-	elog "You must be in the input group to allow sway to access input devices!"
-	local dbus_cmd=""
-	if use tray; then
-		dbus_cmd="dbus-launch --sh-syntax --exit-with-session "
-	fi
+pkg_preinst() {
 	if ! use systemd && ! use elogind; then
-		fcaps_pkg_postinst
+		fowners root:0 /usr/bin/sway
+		fperms 4511 /usr/bin/sway
+	fi
+}
+
+pkg_postinst() {
+	if ! use systemd && ! use elogind; then
 		elog ""
 		elog "If you use ConsoleKit2, remember to launch sway using:"
-		elog "exec ck-launch-session ${dbus_cmd}sway"
+		elog "exec ck-launch-session sway"
 		elog ""
 		elog "If your system does not set the XDG_RUNTIME_DIR environment"
 		elog "variable, you must set it manually to run Sway. See wiki"
 		elog "for details: https://wiki.gentoo.org/wiki/Sway"
-	fi
-	if use swaylock && ! use pam; then
-		fcaps cap_sys_admin usr/bin/swaylock
 	fi
 }
