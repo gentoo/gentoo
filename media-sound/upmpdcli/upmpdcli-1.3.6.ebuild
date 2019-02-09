@@ -18,7 +18,7 @@ DEPEND="
 	dev-libs/jsoncpp
 	media-libs/libmpdclient
 	net-libs/libmicrohttpd
-	net-libs/libupnpp
+	<net-libs/libupnpp-0.17.0
 "
 RDEPEND="
 	${DEPEND}
@@ -33,7 +33,7 @@ pkg_setup() {
 
 src_install() {
 	default
-	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
+	newinitd "${FILESDIR}/${P}.initd" "${PN}"
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 	systemd_dounit systemd/upmpdcli.service
 }
