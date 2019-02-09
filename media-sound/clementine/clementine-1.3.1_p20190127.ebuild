@@ -81,6 +81,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-cpp/gtest-1.8.0
 	dev-libs/boost
 	dev-qt/linguist-tools:5
+	dev-qt/qtopengl:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	sys-devel/gettext
@@ -88,7 +89,6 @@ DEPEND="${COMMON_DEPEND}
 	box? ( dev-cpp/sparsehash )
 	dropbox? ( dev-cpp/sparsehash )
 	googledrive? ( dev-cpp/sparsehash )
-	projectm? ( dev-qt/qtopengl:5 )
 	pulseaudio? ( media-sound/pulseaudio )
 	seafile? ( dev-cpp/sparsehash )
 	skydrive? ( dev-cpp/sparsehash )
