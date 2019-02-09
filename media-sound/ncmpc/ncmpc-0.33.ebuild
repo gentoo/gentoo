@@ -14,18 +14,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+artist-screen async-connect chat-screen doc +help-screen key-screen lirc lyrics-screen outputs-screen search-screen +song-screen +mouse nls pcre"
 
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( dev-python/sphinx )
+"
 RDEPEND="
 	>=media-libs/libmpdclient-2.9
 	sys-libs/ncurses:0=[unicode]
 	lirc? ( app-misc/lirc )
 	pcre? ( dev-libs/libpcre )
 "
-
 DEPEND="${RDEPEND}
-	>=dev-util/meson-0.47
 	>=dev-libs/boost-1.62
-	virtual/pkgconfig
-	doc? ( dev-python/sphinx )
 "
 
 src_prepare() {
