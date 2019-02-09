@@ -6,6 +6,10 @@
 		<name>Aaron Bauman</name>
 	</maintainer>
 	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>hilobakho@gmail.com</email>
 		<name>Mykyta Holubakha</name>
 	</maintainer>
@@ -26,6 +30,7 @@
 		something else.
 	</longdescription>
 	<use>
+		<flag name="clipboard">Install 'wl-clipboard': clipboard management</flag>
 		<flag name="elogind">Enable support for rootless session via elogind</flag>
 		<flag name="filecaps">Use Linux capability SYS_CAP_ADMIN rather than set*id for sway binary</flag>
 		<flag name="fish-completion">Enable fish completion support</flag>

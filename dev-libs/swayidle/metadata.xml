@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<longdescription lang="en">
+		Sway's idle management daemon, compatible with any Wayland compositor which implements the KDE idle protocol.
+	</longdescription>
+	<use>
+		<flag name="elogind">Enable support for rootless session via elogind</flag>
+		<flag name="fish-completion">Enable fish completion support</flag>
+	</use>
+</pkgmetadata>
