@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,6 +20,7 @@ IUSE="+curl debug json static-libs unicode"
 DEPEND="
 	dev-libs/libxml2
 	dev-libs/libxslt
+	net-dns/libidn2:=
 	curl? ( net-misc/curl )
 	json? ( dev-libs/yajl )
 	unicode? ( dev-libs/icu:= )
