@@ -59,6 +59,9 @@ PATCHES=(
 	"${FILESDIR}/${P}-webinspector.patch"
 )
 
+# bug 653046
+RESTRICT+=" test"
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_PySide2=ON
