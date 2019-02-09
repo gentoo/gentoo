@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	EGIT_REPO_URI="git://git.claws-mail.org/claws.git"
 else
 	SRC_URI="https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
-	KEYWORDS="alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="alpha amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 SLOT="0"
