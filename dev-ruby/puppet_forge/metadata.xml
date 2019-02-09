@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ruby@gentoo.org</email>
+    <name>Gentoo Ruby Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Tools that can be used to access Forge API information on Modules,
+    Users, and Releases. As well as download, unpack, and install
+    Releases to a directory.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">puppetlabs/semantic_puppet</remote-id>
+  </upstream>
+</pkgmetadata>
