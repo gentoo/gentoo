@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/expat net-libs/libupnp:0 net-misc/curl
 SLOT=0
 SRC_URI=https://www.lesbonscomptes.com/upmpdcli/downloads/libupnpp-0.17.0.tar.gz
-_md5_=b4543fc1a63d10fd2d1bd84bd79cafc3
+_md5_=1de05290b0164cb4d95caa2a2ca3c8a7
