@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -55,7 +55,7 @@ S=${WORKDIR}/${P/-}
 
 src_prepare() {
 	# Keep tests in ${T}
-	sed -i -e "s#\"/tmp#\"${T}#g" test/test*.cpp || die "sed failed"
+	sed -i -e "s#\"/tmp#\"${T}#g" test/test*.cpp || die
 
 	if ! use nautilus; then
 		pushd shell_integration > /dev/null || die
