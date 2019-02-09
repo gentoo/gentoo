@@ -3,7 +3,6 @@
 
 EAPI=7
 
-KDE_HANDBOOK="true"
 inherit kde5
 
 DESCRIPTION="The KDE Help Center"

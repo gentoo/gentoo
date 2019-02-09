@@ -3,7 +3,7 @@
 
 EAPI=7
 
-KDE_HANDBOOK="true"
+KDE_HANDBOOK="optional"
 inherit kde5
 
 DESCRIPTION="Language learning application that helps improving pronunciation skills"
