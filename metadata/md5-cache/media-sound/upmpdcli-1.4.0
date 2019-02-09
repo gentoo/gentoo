@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install postinst setup
+DEPEND=dev-libs/jsoncpp media-libs/libmpdclient net-libs/libmicrohttpd >=net-libs/libupnpp-0.17.0
+DESCRIPTION=UPnP Media Renderer front-end for MPD, the Music Player Daemon
+EAPI=7
+HOMEPAGE=https://www.lesbonscomptes.com/upmpdcli/index.html
+IUSE=thirdparty
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=dev-libs/jsoncpp media-libs/libmpdclient net-libs/libmicrohttpd >=net-libs/libupnpp-0.17.0 thirdparty? ( dev-python/requests )
+SLOT=0
+SRC_URI=https://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-1.4.0.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bc2845510e2109af75e3eeac607ec81
+_md5_=82c8573fa0ad1a1f6e84b5d4b23b3834
