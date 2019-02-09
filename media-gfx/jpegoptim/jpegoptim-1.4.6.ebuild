@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Utility to optimize JPEG files"
 HOMEPAGE="https://www.kokkonen.net/tjko/projects.html https://github.com/tjko/jpegoptim"
@@ -11,5 +11,5 @@ LICENSE="GPL-2+" # While COPYING is plain GPL-2, COPYRIGHT is clarifying it to b
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
-RDEPEND="virtual/jpeg:0"
-DEPEND="${RDEPEND}"
+DEPEND="virtual/jpeg:0"
+RDEPEND="${DEPEND}"

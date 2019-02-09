@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Prints information and tests integrity of JPEG/JFIF files"
 HOMEPAGE="https://www.kokkonen.net/tjko/projects.html"
@@ -11,15 +11,12 @@ SRC_URI="https://www.kokkonen.net/tjko/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
-RDEPEND="virtual/jpeg"
+RDEPEND="virtual/jpeg:0"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.6.0-parallel_install.patch
-}
+PATCHES=( "${FILESDIR}"/${PN}-1.6.0-parallel_install.patch )
 
 src_configure() {
 	tc-export CC
