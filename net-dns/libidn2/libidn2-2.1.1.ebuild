@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils flag-o-matic multilib-minimal
+EAPI=7
+inherit multilib-minimal
 
 DESCRIPTION="An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)"
 HOMEPAGE="https://www.gnu.org/software/libidn/#libidn2 https://gitlab.com/jas/libidn2"
@@ -18,8 +18,8 @@ IUSE="static-libs"
 RDEPEND="
 	dev-libs/libunistring[${MULTILIB_USEDEP}]
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-lang/perl
 	sys-apps/help2man
 "
@@ -47,5 +47,5 @@ multilib_src_configure() {
 multilib_src_install() {
 	default
 
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
