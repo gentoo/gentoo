@@ -29,7 +29,11 @@ fi
 # Even though xz-utils are in @system, they must still be added to DEPEND; see
 # https://archives.gentoo.org/gentoo-dev/msg_a0d4833eb314d1be5d5802a3b710e0a4.xml
 if [[ ${GNOME_TARBALL_SUFFIX} == "xz" ]]; then
-	DEPEND="${DEPEND} app-arch/xz-utils"
+	if [[ ${EAPI:-0} != [0123456] ]]; then
+		BDEPEND="app-arch/xz-utils"
+	else
+		DEPEND="app-arch/xz-utils"
+	fi
 fi
 
 # @ECLASS-VARIABLE: GNOME_ORG_MODULE
