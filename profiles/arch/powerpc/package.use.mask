@@ -13,12 +13,6 @@ net-analyzer/icinga2 mariadb
 # grub pc is not supported on powerpc
 sys-boot/grub:2 grub_platforms_pc grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_xen
 
-# Pacho Ramos <pacho@gentoo.org> (27 May 2018)
-# kde-frameworks/kdelibs4support not keyworded on ppc
-# Michał Górny <mgorny@gentoo.org> (09 Jul 2018)
-# Moved to parent powerpc profile as it applies to ppc64 as well
-x11-wm/sawfish kde
-
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (08 Jun 2018)
 # Requires unported sys-libs/netbsd-csu
 sys-devel/clang-runtime crt
@@ -131,6 +125,7 @@ net-libs/libproxy kde
 sys-auth/polkit kde
 sys-block/gparted kde
 virtual/notification-daemon kde
+x11-wm/sawfish kde
 
 # Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
 # Missing test deps keyword #575366

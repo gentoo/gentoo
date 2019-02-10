@@ -38,6 +38,8 @@ dev-db/redis luajit
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (01 Aug 2016)
 # kde-frameworks/*:5 not keyworded.
 net-irc/kvirc kde
+app-arch/p7zip kde
+dev-vcs/subversion kwallet
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
 # Missing keywords on app-text/gspell - bug #587368
@@ -80,12 +82,6 @@ gnome-extra/sushi office
 # Kacper Kowalik <xarthisius@gentoo.org> (02 Sep 2011)
 # Mask www-client/seamonkey[ipc] on ppc64 wrt #381191
 www-client/seamonkey ipc
-
-# Samuli Suominen <ssuominen@gentoo.org> (21 Jun 2010)
-# These need stable KDE Frameworks 5
-app-arch/p7zip kde
-dev-vcs/subversion kwallet
-net-libs/libproxy kde
 
 # Kacper Kowalik <xarthisius@gentoo.org> (30 May 2010)
 # quesoglc is not keyworded
