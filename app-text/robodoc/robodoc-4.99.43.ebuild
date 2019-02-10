@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="Automating Software Documentation"
-HOMEPAGE="http://www.xs4all.nl/~rfsber/Robo/robodoc.html"
-SRC_URI="http://www.xs4all.nl/~rfsber/Robo/DistSource/${P}.tar.gz"
+HOMEPAGE="https://www.xs4all.nl/~rfsber/Robo/robodoc.html"
+SRC_URI="https://rfsber.home.xs4all.nl/Robo/archives/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -22,15 +22,13 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	default
 
 	insinto /usr/share/${PN}
-	doins Contributions/* || die "doins failed"
-
-	rm -f "${D}"/usr/share/doc/${PF}/{COPYING,INSTALL}
+	doins Contributions/*
 
 	if use examples; then
 		insinto /usr/share/${PN}
-		doins -r Examples/PerlExample || die "doins failed"
+		doins -r Examples/PerlExample
 	fi
 }
