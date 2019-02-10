@@ -42,6 +42,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-dont-compress-manpages.patch"
+)
+
 src_configure() {
 	append-cxxflags -std=c++11
 	econf \
