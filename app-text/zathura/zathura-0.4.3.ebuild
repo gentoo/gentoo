@@ -42,7 +42,6 @@ BDEPEND="doc? ( dev-python/sphinx )
 
 src_configure() {
 	local emesonargs=(
-		--libdir=/usr/$(get_libdir)
 		-Dconvert-icon=disabled
 		-Dmagic=$(usex magic enabled disabled)
 		-Dmanpages=$(usex doc enabled disabled)
