@@ -95,7 +95,10 @@ CDEPEND="
 	system-icu? ( >=dev-libs/icu-59.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1:= )
 	system-libevent? ( >=dev-libs/libevent-2.0:0= )
-	system-libvpx? ( >=media-libs/libvpx-1.5.0:0=[postproc] )
+	system-libvpx? (
+		>=media-libs/libvpx-1.5.0:0=[postproc]
+		<media-libs/libvpx-1.8
+	)
 	system-sqlite? ( >=dev-db/sqlite-3.23.1:3[secure-delete,debug=] )
 	wifi? (
 		kernel_linux? (
