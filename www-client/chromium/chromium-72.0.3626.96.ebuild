@@ -13,11 +13,11 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
-	https://dev.gentoo.org/~floppym/dist/chromium-webrtc-includes.patch.xz"
+	https://dev.gentoo.org/~floppym/dist/chromium-webrtc-includes-r1.patch.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="component-build cups gnome-keyring +hangouts jumbo-build kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-icu +system-libvpx +tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
@@ -189,7 +189,7 @@ src_prepare() {
 	default
 
 	pushd third_party/webrtc >/dev/null || die
-	eapply "${WORKDIR}"/chromium-webrtc-includes.patch
+	eapply "${WORKDIR}"/chromium-webrtc-includes-r1.patch
 	popd >/dev/null || die
 
 	mkdir -p third_party/node/linux/node-linux-x64/bin || die
